@@ -1,70 +1,109 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1622223obb;
-        Tue, 27 Oct 2015 04:17:07 -0700 (PDT)
-X-Received: by 10.31.12.10 with SMTP id 10mr24788426vkm.35.1445944627295;
-        Tue, 27 Oct 2015 04:17:07 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x230.google.com (mail-vk0-x230.google.com. [2607:f8b0:400c:c05::230])
-        by mx.google.com with ESMTPS id t131si20610043vke.42.2015.10.27.04.17.07
-        for <alex.bennee@linaro.org>
+Received: by 10.182.105.169 with SMTP id gn9csp1752482obb;
+        Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
+X-Received: by 10.194.86.161 with SMTP id q1mr40177168wjz.88.1445958780651;
+        Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
+Return-Path: <crosthwaitepeter@gmail.com>
+Received: from mail-wi0-x22b.google.com (mail-wi0-x22b.google.com. [2a00:1450:400c:c05::22b])
+        by mx.google.com with ESMTPS id lz9si50628523wjb.39.2015.10.27.08.13.00
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 04:17:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) client-ip=2607:f8b0:400c:c05::230;
+        Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosthwaitepeter@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) client-ip=2a00:1450:400c:c05::22b;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by vkfw189 with SMTP id w189so117523823vkf.2
-        for <alex.bennee@linaro.org>; Tue, 27 Oct 2015 04:17:07 -0700 (PDT)
+       spf=pass (google.com: domain of crosthwaitepeter@gmail.com designates 2a00:1450:400c:c05::22b as permitted sender) smtp.mailfrom=crosthwaitepeter@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by wicll6 with SMTP id ll6so165086900wic.1;
+        Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=6Zjzy7KdvOtJZgmmasBhIHCtDlw3hnrp/HVTUvoxCkI=;
-        b=heHtJmN/ekuXsy8VoVH0sEKaOkgNXpETyIti+9aExIrbwpJx8aHTFLR1vuHrLEddMA
-         rqdqQvW9E39yBSj1V8M0/2Dj5XptdM2rJUvhYzYrg6N8tJHWV/klzx6c2PE96VDNjEXS
-         WviBrp3PStlIJTJIw9E9aJnnwGLvWycwACeB3d+SDgXGuX06mmtP1QtN4j4NiAQIejZD
-         TJGGnWLisbSfntqxFX/HHSAtxbMX7OqzzGdOdGeqdGTVoeXLiYFSgqvNzYpgjQ9mXmKw
-         ZKjZGV24tg25DsBEui6pZRrIppy5zebCHqTIYKQfiEdjS+xAmstKLBi0W/lUV7TMeUoE
-         VH2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=6Zjzy7KdvOtJZgmmasBhIHCtDlw3hnrp/HVTUvoxCkI=;
-        b=SbnbuvLll4DvSrc6Z658Z3L3onczFNbfva8bQx7IM64cD5UCqlMYG748DjnMDwgVx0
-         aVk2nT2cFCPgLSKqB7KKi8Zr+EyczgT3WeHSPddKphP6ihvX64rW8iBXJUf3caUrEB5K
-         3GfOlSRKNA/m8eTsNCCnrIlpRqfypA5DFqXzFcqldziV2pW8xBWNjYJM6QFxEVtp37f7
-         gt453eGGcRtLxUUh3SsfdHkJJT1EGAAO9CwQz6arVjLAIFYcEBqZqZKpdVVxJMVIatFt
-         4MaPUB4S4oIMJvvYXqiPJh1aXa1RYnnR7nXRNrt4Rz8CeNubBsra25ZbpmhWOvnBXBE4
-         g4YQ==
-X-Gm-Message-State: ALoCoQlgSaHrHSNBs3UTD2xE94/EFFRG21i2ijfngY45+weNJ7O0VOecIo359aTghHkMXbOzdxpV
-X-Received: by 10.31.8.69 with SMTP id 66mr6923000vki.82.1445944626973; Tue,
- 27 Oct 2015 04:17:06 -0700 (PDT)
+        bh=PioGG3Sw9W8L1COnunYBLChCpwlTs4OhAcdhF3ncYHA=;
+        b=jSxgMJZHXjEeYc1Lq1MeEAz3ymNFHSQ37Z6g2fjRBkyRrTkl2gQNrZSsZBHKpn6Bju
+         +bA4/wqZ67L+e1PkHbiZNVIfVmLuY91S3rqVXif/+mlkZsUubYdiFGGeZOAEUZrHR+FF
+         2fbyezHu78lCJt87DNL6Fn9FapAF6AQQdRghM5PmqrepMWqTunaaeIayefq8Zy1xKlEv
+         JbcCqqtQVO+Xu3hNING48JpxxRWwjr1TuEXMjaUo8Mcv9itsfGhBbg3rihCueK4gp4Tb
+         jIbUZNP3IJZkpUCkH4eQhQEYi2vK0JcTb64B+NEEKuKEwzesxKGB+OW+vbEdQW/REAwu
+         GxLQ==
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 27 Oct 2015 04:16:47 -0700 (PDT)
-In-Reply-To: <012d01d110a7$b1915690$14b403b0$@samsung.com>
+X-Received: by 10.180.182.84 with SMTP id ec20mr28172637wic.42.1445958780285;
+ Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
+Received: by 10.28.88.75 with HTTP; Tue, 27 Oct 2015 08:13:00 -0700 (PDT)
+In-Reply-To: <20151027110233.GE18847@toto>
 References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
- <012d01d110a7$b1915690$14b403b0$@samsung.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Oct 2015 11:16:47 +0000
-Message-ID: <CAFEAcA9H6vegRYU+_0aULnH8dRcm70M28Eg7uzB8013sspG8Yg@mail.gmail.com>
-Subject: Re: [Qemu-devel] proposal: new qemu-arm mailing list
-To: Pavel Fedin <p.fedin@samsung.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	<20151027110233.GE18847@toto>
+Date: Tue, 27 Oct 2015 08:13:00 -0700
+Message-ID: <CAPokK=rjh9tF1tBcmpfU0E7nBP-abasgSv09LUcUd_b291RtTg@mail.gmail.com>
+Subject: Re: proposal: new qemu-arm mailing list
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary=047d7b6250a875797d0523178314
+X-TUID: YRXD0SKzllRl
+
+--047d7b6250a875797d0523178314
 Content-Type: text/plain; charset=UTF-8
-X-TUID: E/0152yGg7ln
 
-On 27 October 2015 at 11:07, Pavel Fedin <p.fedin@samsung.com> wrote:
->> (Everything should still be cc'd to qemu-devel as well.)
+On Tue, Oct 27, 2015 at 4:02 AM, Edgar E. Iglesias <edgar.iglesias@gmail.com
+> wrote:
+
+> On Tue, Oct 27, 2015 at 10:15:32AM +0000, Peter Maydell wrote:
+> > Hi; it's been suggested to me that it would be helpful to have a
+> > qemu-arm mailing list, along the lines of the existing qemu-ppc
+> > and qemu-block lists. The idea would be to get people to cc the
+> > list with their ARM related patches, so it would mostly act as
+> > a way for people to filter their mail to separate the ARM stuff
+> > out from the qemu-devel firehose. (Everything should still be
+> > cc'd to qemu-devel as well.)
+> >
+> > Any objections/opinions?
+> >
 >
->  I would drop this requirement, except for stuff which could touch
-> core functionality (qom, qobject).
+> Sounds good to me!
+>
+>
++1.
 
-This is a standard requirement for all our sub-mailing lists --
-not everybody is subscribed to all of them, and it is useful
-to be able to get an overview of everything going on by
-subscribing to a single mailing list.
+Regards,
+Peter
 
-thanks
--- PMM
+
+
+> Best regards,
+> Edgar
+>
+
+--047d7b6250a875797d0523178314
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Tue, Oct 27, 2015 at 4:02 AM, Edgar E. Iglesias <span dir=3D"ltr">&l=
+t;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">edgar.igles=
+ias@gmail.com</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><span=
+ class=3D"">On Tue, Oct 27, 2015 at 10:15:32AM +0000, Peter Maydell wrote:<=
+br>
+</span><span class=3D"">&gt; Hi; it&#39;s been suggested to me that it woul=
+d be helpful to have a<br>
+&gt; qemu-arm mailing list, along the lines of the existing qemu-ppc<br>
+&gt; and qemu-block lists. The idea would be to get people to cc the<br>
+&gt; list with their ARM related patches, so it would mostly act as<br>
+&gt; a way for people to filter their mail to separate the ARM stuff<br>
+&gt; out from the qemu-devel firehose. (Everything should still be<br>
+&gt; cc&#39;d to qemu-devel as well.)<br>
+&gt;<br>
+&gt; Any objections/opinions?<br>
+&gt;<br>
+<br>
+</span>Sounds good to me!<br>
+<br></blockquote><div><br>+1.<br><br></div><div>Regards,<br></div><div>Pete=
+r<br></div><div><br>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+Best regards,<br>
+Edgar<br>
+</blockquote></div><br></div></div>
+
+--047d7b6250a875797d0523178314--

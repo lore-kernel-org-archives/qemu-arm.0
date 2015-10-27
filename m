@@ -1,67 +1,77 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1614251obb;
-        Tue, 27 Oct 2015 04:02:38 -0700 (PDT)
-X-Received: by 10.68.65.42 with SMTP id u10mr27485330pbs.8.1445943757968;
-        Tue, 27 Oct 2015 04:02:37 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by mx.google.com with ESMTPS id xx1si61046231pbc.232.2015.10.27.04.02.37
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 04:02:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+Received: by 10.182.105.169 with SMTP id gn9csp1617161obb;
+        Tue, 27 Oct 2015 04:07:43 -0700 (PDT)
+X-Received: by 10.68.213.162 with SMTP id nt2mr27746326pbc.86.1445944063666;
+        Tue, 27 Oct 2015 04:07:43 -0700 (PDT)
+Return-Path: <p.fedin@samsung.com>
+Received: from mailout1.w1.samsung.com (mailout1.w1.samsung.com. [210.118.77.11])
+        by mx.google.com with ESMTPS id sc6si61122054pac.7.2015.10.27.04.07.42
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 04:07:43 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of p.fedin@samsung.com designates 210.118.77.11 as permitted sender) client-ip=210.118.77.11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pasz6 with SMTP id z6so219582348pas.2;
-        Tue, 27 Oct 2015 04:02:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=SSI33O1zQ6i11RVgRQB+0n3Fsc4gB4nKBD/Dhd6Kvew=;
-        b=Qa/PWS7dTqxOrGpXnHMebk1D4TWloeMt26sRJXfQD0v4I5tacleg0Gko+rrhR7yXnh
-         gi/FNiOIZY/w6w1J3DmVGUNdypVXFqWovyle7GaOxcwxCTHtL2IdtB651KzjsEVEWYjj
-         odpCkvRkobFDYxx3e28Cu0VfY7U+1ScBZ0yGZ8w7RC5dmONeaUmbExINfveo0FfqpXIe
-         p72Y9lWNVkRBfqSfQxgGC7C+zz5coWHjQlBEJUKRe8sYocbv2tNm/rpSOVQdODu7rJaZ
-         CyQBlSz4Iw4JUfCjOAQx2nmH1AIpaDEG+yHXEm7QOkbY+cex4jq0K/y4sWUXefp799C+
-         iueA==
-X-Received: by 10.68.174.1 with SMTP id bo1mr27198607pbc.110.1445943757631;
-        Tue, 27 Oct 2015 04:02:37 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id zn9sm39317833pac.48.2015.10.27.04.02.35
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Tue, 27 Oct 2015 04:02:36 -0700 (PDT)
-Date: Tue, 27 Oct 2015 12:02:33 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: proposal: new qemu-arm mailing list
-Message-ID: <20151027110233.GE18847@toto>
+       spf=pass (google.com: best guess record for domain of p.fedin@samsung.com designates 210.118.77.11 as permitted sender) smtp.mailfrom=p.fedin@samsung.com
+Received: from eucpsbgm2.samsung.com (unknown [203.254.199.245])
+ by mailout1.w1.samsung.com
+ (Oracle Communications Messaging Server 7.0.5.31.0 64bit (built May  5 2014))
+ with ESMTP id <0NWV006UULKR4OA0@mailout1.w1.samsung.com>; Tue,
+ 27 Oct 2015 11:07:39 +0000 (GMT)
+X-AuditID: cbfec7f5-f794b6d000001495-4a-562f5afb7b5e
+Received: from eusync4.samsung.com ( [203.254.199.214])
+	by eucpsbgm2.samsung.com (EUCPMTA) with SMTP id A8.81.05269.BFA5F265; Tue,
+ 27 Oct 2015 11:07:39 +0000 (GMT)
+Received: from fedinw7x64 ([106.109.131.169])
+ by eusync4.samsung.com (Oracle Communications Messaging Server 7.0.5.31.0
+ 64bit (built May  5 2014))
+ with ESMTPA id <0NWV0093CLKQOXC0@eusync4.samsung.com>; Tue,
+ 27 Oct 2015 11:07:39 +0000 (GMT)
+From: Pavel Fedin <p.fedin@samsung.com>
+To: 'Peter Maydell' <peter.maydell@linaro.org>,
+ 'QEMU Developers' <qemu-devel@nongnu.org>
+Cc: "'Edgar E. Iglesias'" <edgar.iglesias@gmail.com>,
+ 'Peter Crosthwaite' <crosthwaitepeter@gmail.com>,
+ =?UTF-8?Q?'Alex_Benn=C3=A9e'?= <alex.bennee@linaro.org>,
+ 'Paolo Bonzini' <pbonzini@redhat.com>
 References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: Q9tuzkpNn9Ub
+In-reply-to:
+ <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
+Subject: RE: [Qemu-devel] proposal: new qemu-arm mailing list
+Date: Tue, 27 Oct 2015 14:07:38 +0300
+Message-id: <012d01d110a7$b1915690$14b403b0$@samsung.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=UTF-8
+Content-transfer-encoding: 7bit
+X-Mailer: Microsoft Outlook 14.0
+Thread-index: AQFnQCx/j7T7xS+vOqHOddNFPYsWV59SzmtQ
+Content-language: ru
+X-Brightmail-Tracker:
+ H4sIAAAAAAAAA+NgFvrOLMWRmVeSWpSXmKPExsVy+t/xa7q/o/TDDG63qFt0PGhgtHjWuo7V
+	YuKWX+wW+7f9Y7WYc+YBi8Xx3h0sDmweO2fdZfe4c20Pm8eTa5uZPN7vu8oWwBLFZZOSmpNZ
+	llqkb5fAlfH3zjPmgjMsFSfXXWdsYDzD3MXIySEhYCIxaX4jC4QtJnHh3nq2LkYuDiGBpYwS
+	v5fMZIZwvjNKzFh7nRWkik1AXeL01w9gHSIC0RJbLs4CizMLnGGU+PyYCcQWEgiQ2Hb/AVgN
+	p0CwxII7PWBxYQFbiY+fN7OD2CwCqhIT+m6B9fIKWEos+X2RGcIWlPgx+R4LxEx1iUnzFjFD
+	2PISm9e8hbpaQWLH2deMEDcYSey9coMRokZEYtq/e8wTGIVmIRk1C8moWUhGzULSsoCRZRWj
+	aGppckFxUnqukV5xYm5xaV66XnJ+7iZGSHR83cG49JjVIUYBDkYlHl6DCr0wIdbEsuLK3EOM
+	EhzMSiK8gjr6YUK8KYmVValF+fFFpTmpxYcYpTlYlMR5Z+56HyIkkJ5YkpqdmlqQWgSTZeLg
+	lGpgLFm/4aXG3YKzs7wLc1r3OqgqXwtJDP/Clr89TpQri9trQ/vp34GLvxslTvG+x2FkK3Pc
+	VcjuZ7nYagUTo1jeJ2vL1+pYndsVfOZM6E0Za/kXGnc9/ze5nf13JGDKs9/G7BVcpvtuXCpt
+	/rnkyGSF9ptfRR6/arhSL3dbMjhBf8av/cx2u49+U2Ipzkg01GIuKk4EAL4d50WKAgAA
+X-TUID: IS4y/l7LHwPh
 
-On Tue, Oct 27, 2015 at 10:15:32AM +0000, Peter Maydell wrote:
-> Hi; it's been suggested to me that it would be helpful to have a
-> qemu-arm mailing list, along the lines of the existing qemu-ppc
-> and qemu-block lists. The idea would be to get people to cc the
+ Hello!
+
+> The idea would be to get people to cc the
 > list with their ARM related patches, so it would mostly act as
 > a way for people to filter their mail to separate the ARM stuff
-> out from the qemu-devel firehose. (Everything should still be
-> cc'd to qemu-devel as well.)
-> 
-> Any objections/opinions?
->
+> out from the qemu-devel firehose.
 
-Sounds good to me!
+ I also vote for it. The main qemu-devel traffic is quite high, and not everyone wants to get it.
 
-Best regards,
-Edgar 
+> (Everything should still be cc'd to qemu-devel as well.)
+
+ I would drop this requirement, except for stuff which could touch core functionality (qom, qobject).
+
+Kind regards,
+Pavel Fedin
+Expert Engineer
+Samsung Electronics Research center Russia
+

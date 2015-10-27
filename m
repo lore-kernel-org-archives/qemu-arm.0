@@ -1,64 +1,59 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1592878obb;
-        Tue, 27 Oct 2015 03:15:51 -0700 (PDT)
-X-Received: by 10.31.130.71 with SMTP id e68mr13126950vkd.11.1445940951748;
-        Tue, 27 Oct 2015 03:15:51 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x230.google.com (mail-vk0-x230.google.com. [2607:f8b0:400c:c05::230])
-        by mx.google.com with ESMTPS id x10si22431930vkd.168.2015.10.27.03.15.51
-        for <alex.bennee@linaro.org>
+Received: by 10.182.105.169 with SMTP id gn9csp1609845obb;
+        Tue, 27 Oct 2015 03:53:28 -0700 (PDT)
+X-Received: by 10.55.197.216 with SMTP id k85mr48188398qkl.77.1445943207990;
+        Tue, 27 Oct 2015 03:53:27 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id o103si4101117qko.28.2015.10.27.03.53.27
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 03:15:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) client-ip=2607:f8b0:400c:c05::230;
+        Tue, 27 Oct 2015 03:53:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by vkgy127 with SMTP id y127so117404718vkg.0
-        for <alex.bennee@linaro.org>; Tue, 27 Oct 2015 03:15:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:from:date:message-id:subject:to:cc:content-type;
-        bh=ikYEqtzNl95aQvJF8YCkrBREW1XLSqRbIONgLN6E4EY=;
-        b=RqeRpch6V54bSLdUiY1Zmi0UvSOX3EnR3N9SfqQeh3rDKS1y2kon9cGG07GArDQreW
-         3T9tXDhhaaccPTNt+1YIBopRY71MF5Bzemrke/6xaNe15OdfcFzJwFRbYoZiSrrhSUdB
-         pBFwrEt7LXBuA47eW+iRNJyD/VFkbAjCTHW1ofhfozkdyUBLHZyIaGMvObNsWn0j2IeI
-         BEll/+FVoPfBHea45auZvO+KcTv6TC1q+sx1RPHrboGFwT6VLkYJ/lqU4NNv1u20JhD/
-         fRnu7SRZdqmokzIy0dU8xeN7AKjJAZfPPhIJD0/uIGKXK6JhNjNnw5xXbm3eS+E75qfB
-         NN7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
-         :content-type;
-        bh=ikYEqtzNl95aQvJF8YCkrBREW1XLSqRbIONgLN6E4EY=;
-        b=Ptj8kzWMdcuwlrseCLMdGlYD6pt569U7u+nTf5kmnWtqCVC6+UO1i1ue6i5L5Vu9fM
-         qx9K6FT57P4G11z/kQjPgqho4Tm7+Cq6aMdtGucFa5XZ3rOz7X/2gpg80GD3IFurFqG/
-         v65+0k99XirMgPWNRg/b3BPFnmFfaY21Py1rdULs0CLhxdqG/kPWDOe3Eoig+SHqyer4
-         G1Z/aCsV273mObWkyMyOgpPhs2da51rQjmRBhDbZAL4ofd6T1rMv14VF0JT5WH7TauPU
-         AR6SuiKXF9g/nLRk60hz6aHek7BWHANI4CVY/craj95+tZARKEC+5ucpmINzbfwepXA3
-         KJaA==
-X-Gm-Message-State: ALoCoQnUNnvN5KO/rBA76I2B6vyEwGgw9FQ6VYfBfzp+Epzi4//t5krWmbYReLWkLOkQ1KME00ea
-X-Received: by 10.31.16.3 with SMTP id g3mr25338785vki.83.1445940951483; Tue,
- 27 Oct 2015 03:15:51 -0700 (PDT)
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1B16CC0AF7A3;
+	Tue, 27 Oct 2015 10:53:27 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-27.brq.redhat.com [10.40.204.27])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t9RArMwO020538
+	(version=TLSv1/SSLv3 cipher=AES256-SHA bits=256 verify=NO);
+	Tue, 27 Oct 2015 06:53:25 -0400
+Date: Tue, 27 Oct 2015 11:53:22 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+        Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-devel] proposal: new qemu-arm mailing list
+Message-ID: <20151027105322.GA16832@hawk.localdomain>
+References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 27 Oct 2015 03:15:32 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Oct 2015 10:15:32 +0000
-Message-ID: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
-Subject: proposal: new qemu-arm mailing list
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: GCiU86CvRfPh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-TUID: +GxqUsPxJuIm
 
-Hi; it's been suggested to me that it would be helpful to have a
-qemu-arm mailing list, along the lines of the existing qemu-ppc
-and qemu-block lists. The idea would be to get people to cc the
-list with their ARM related patches, so it would mostly act as
-a way for people to filter their mail to separate the ARM stuff
-out from the qemu-devel firehose. (Everything should still be
-cc'd to qemu-devel as well.)
+On Tue, Oct 27, 2015 at 10:15:32AM +0000, Peter Maydell wrote:
+> Hi; it's been suggested to me that it would be helpful to have a
+> qemu-arm mailing list, along the lines of the existing qemu-ppc
+> and qemu-block lists. The idea would be to get people to cc the
+> list with their ARM related patches, so it would mostly act as
+> a way for people to filter their mail to separate the ARM stuff
+> out from the qemu-devel firehose. (Everything should still be
+> cc'd to qemu-devel as well.)
+> 
+> Any objections/opinions?
 
-Any objections/opinions?
+FWIW, I like the idea. Although
 
-thanks
--- PMM
+notmuch tag +qemu-arm -- tag:new \
+                         and to:qemu-devel@nongnu.org \
+                         and \( subject:arm or subject:aarch64 \)
+
+also seems to work pretty well for me.
+
+Thanks,
+drew

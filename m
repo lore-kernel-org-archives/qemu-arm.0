@@ -1,67 +1,76 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1810856obb;
-        Tue, 27 Oct 2015 09:59:37 -0700 (PDT)
-X-Received: by 10.140.233.196 with SMTP id e187mr51439284qhc.86.1445965177018;
-        Tue, 27 Oct 2015 09:59:37 -0700 (PDT)
-Return-Path: <jsnow@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id s93si37918307qgs.72.2015.10.27.09.59.36
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 27 Oct 2015 09:59:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.182.105.169 with SMTP id gn9csp2136224obb;
+        Tue, 27 Oct 2015 23:49:25 -0700 (PDT)
+X-Received: by 10.66.161.73 with SMTP id xq9mr32410463pab.0.1446014965243;
+        Tue, 27 Oct 2015 23:49:25 -0700 (PDT)
+Return-Path: <p.fedin@samsung.com>
+Received: from mailout3.w1.samsung.com (mailout3.w1.samsung.com. [210.118.77.13])
+        by mx.google.com with ESMTPS id y1si20102604par.57.2015.10.27.23.49.24
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 27 Oct 2015 23:49:25 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of p.fedin@samsung.com designates 210.118.77.13 as permitted sender) client-ip=210.118.77.13;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 59590C0A147D;
-	Tue, 27 Oct 2015 16:59:36 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-163.bos.redhat.com [10.18.17.163])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t9RGxZac026609;
-	Tue, 27 Oct 2015 12:59:35 -0400
-Subject: Re: [Qemu-devel] proposal: new qemu-arm mailing list
-To: Peter Maydell <peter.maydell@linaro.org>,
-        Pavel Fedin <p.fedin@samsung.com>
-References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
+       spf=pass (google.com: best guess record for domain of p.fedin@samsung.com designates 210.118.77.13 as permitted sender) smtp.mailfrom=p.fedin@samsung.com
+Received: from eucpsbgm2.samsung.com (unknown [203.254.199.245])
+ by mailout3.w1.samsung.com
+ (Oracle Communications Messaging Server 7.0.5.31.0 64bit (built May  5 2014))
+ with ESMTP id <0NWX00KCE4A97T30@mailout3.w1.samsung.com>; Wed,
+ 28 Oct 2015 06:49:21 +0000 (GMT)
+X-AuditID: cbfec7f5-f794b6d000001495-4a-56306ff0a5c8
+Received: from eusync4.samsung.com ( [203.254.199.214])
+	by eucpsbgm2.samsung.com (EUCPMTA) with SMTP id A6.A1.05269.0FF60365; Wed,
+ 28 Oct 2015 06:49:20 +0000 (GMT)
+Received: from fedinw7x64 ([106.109.131.169])
+ by eusync4.samsung.com (Oracle Communications Messaging Server 7.0.5.31.0
+ 64bit (built May  5 2014))
+ with ESMTPA id <0NWX008T04A7TI80@eusync4.samsung.com>; Wed,
+ 28 Oct 2015 06:49:20 +0000 (GMT)
+From: Pavel Fedin <p.fedin@samsung.com>
+To: 'John Snow' <jsnow@redhat.com>, 'Peter Maydell' <peter.maydell@linaro.org>
+Cc: "'Edgar E. Iglesias'" <edgar.iglesias@gmail.com>,
+ 'Peter Crosthwaite' <crosthwaitepeter@gmail.com>,
+ =?UTF-8?Q?'Alex_Benn=C3=A9e'?= <alex.bennee@linaro.org>,
+ 'QEMU Developers' <qemu-devel@nongnu.org>,
+ 'Paolo Bonzini' <pbonzini@redhat.com>
+References:
+ <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
  <012d01d110a7$b1915690$14b403b0$@samsung.com>
  <CAFEAcA9H6vegRYU+_0aULnH8dRcm70M28Eg7uzB8013sspG8Yg@mail.gmail.com>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-        =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <562FAD77.6060704@redhat.com>
-Date: Tue, 27 Oct 2015 12:59:35 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.3.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9H6vegRYU+_0aULnH8dRcm70M28Eg7uzB8013sspG8Yg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-TUID: BDH9gSUZEL28
+ <562FAD77.6060704@redhat.com>
+In-reply-to: <562FAD77.6060704@redhat.com>
+Subject: RE: [Qemu-devel] proposal: new qemu-arm mailing list
+Date: Wed, 28 Oct 2015 09:49:19 +0300
+Message-id: <008601d1114c$c5fa0aa0$51ee1fe0$@samsung.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=UTF-8
+Content-transfer-encoding: 7bit
+X-Mailer: Microsoft Outlook 14.0
+Thread-index: AQFnQCx/j7T7xS+vOqHOddNFPYsWVwHMWMPuAXYtQq0DGtxxF58hLebQ
+Content-language: ru
+X-Brightmail-Tracker:
+ H4sIAAAAAAAAA+NgFvrNLMWRmVeSWpSXmKPExsVy+t/xa7of8g3CDDqXmVh0PGhgtHjWuo7V
+	YuKWX+wW+5qtLfZv+8dqMefMAxaL4707WBzYPXbOusvucefaHjaPJ9c2M3m833eVLYAlissm
+	JTUnsyy1SN8ugSvj+89pbAXLmCvOrnjC2sB4kqmLkYNDQsBE4mRPThcjJ5ApJnHh3nq2LkYu
+	DiGBpYwSO3ZuZYdwvjNKbHt/jh2kik1AXeL01w8sILaIgJ/E+s+TmEBsZoGfjBKth9wgGl4y
+	Suy8u58NJMEpoCXR1PSMGcQWFrCV+Ph5M9ggFgFViZ79F8DivAKWEt/3LmCEsAUlfky+xwIx
+	VF1i0rxFzBC2vMTmNW+ZIU5VkNhx9jUjxBFuEp8On4eqEZGY9u8e8wRGoVlIRs1CMmoWklGz
+	kLQsYGRZxSiaWppcUJyUnmukV5yYW1yal66XnJ+7iRESJV93MC49ZnWIUYCDUYmH16BCL0yI
+	NbGsuDL3EKMEB7OSCG+NoEGYEG9KYmVValF+fFFpTmrxIUZpDhYlcd6Zu96HCAmkJ5akZqem
+	FqQWwWSZODilGhhV+1S4TSOXi57fwd01l+XdrIvqFw0lJoV/4Suxl4jJrlZLlHoYa5B84ECf
+	1VnZXSHTNKw/CfFVzKr4xLHs5v79ZkIrmS0Pz5gvzbErO9L5L/+hFJXfH0werHhjPLk65tVW
+	tWalay6MZ/ee1p6esG+bkV3kZpstXaGZLxclHcmsfbx4oaXOnrVKLMUZiYZazEXFiQB+Y3sS
+	jgIAAA==
+X-TUID: 2tCTftd3OnkB
 
+ Hello!
 
+> Just to jump on and bead a dead horse, I am not OK with the idea of a
+> mailing list where patches might get reviewed and staged for pull
+> without the general population of qemu-devel being able to look first.
 
-On 10/27/2015 07:16 AM, Peter Maydell wrote:
-> On 27 October 2015 at 11:07, Pavel Fedin <p.fedin@samsung.com> wrote:
->>> (Everything should still be cc'd to qemu-devel as well.)
->>
->>  I would drop this requirement, except for stuff which could touch
->> core functionality (qom, qobject).
-> 
-> This is a standard requirement for all our sub-mailing lists --
-> not everybody is subscribed to all of them, and it is useful
-> to be able to get an overview of everything going on by
-> subscribing to a single mailing list.
-> 
-> thanks
-> -- PMM
-> 
+ Ok ok, i don't object, Peter has already explained a similar thing to me, and i silently agreed.
 
-Just to jump on and bead a dead horse, I am not OK with the idea of a
-mailing list where patches might get reviewed and staged for pull
-without the general population of qemu-devel being able to look first.
+Kind regards,
+Pavel Fedin
+Expert Engineer
+Samsung Electronics Research center Russia
 
-I don't want to have to scan the [PULL] tag hoping to catch things of
-interest to me that were reviewed on opaque-to-me sub-mailing lists.
-
---js

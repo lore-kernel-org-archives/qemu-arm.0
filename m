@@ -1,66 +1,63 @@
-Received: by 10.182.105.169 with SMTP id gn9csp2368276obb;
-        Wed, 28 Oct 2015 08:20:34 -0700 (PDT)
-X-Received: by 10.140.240.17 with SMTP id l17mr30804330qhc.69.1446045633840;
-        Wed, 28 Oct 2015 08:20:33 -0700 (PDT)
-Return-Path: <jsnow@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id o89si42562026qkl.8.2015.10.28.08.20.33
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 28 Oct 2015 08:20:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.182.105.169 with SMTP id gn9csp273568obb;
+        Wed, 28 Oct 2015 20:51:58 -0700 (PDT)
+X-Received: by 10.66.102.101 with SMTP id fn5mr37420961pab.111.1446090718440;
+        Wed, 28 Oct 2015 20:51:58 -0700 (PDT)
+Return-Path: <zhaoshenglong@huawei.com>
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com. [58.251.152.64])
+        by mx.google.com with ESMTPS id ea2si75212852pbc.135.2015.10.28.20.51.57
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Wed, 28 Oct 2015 20:51:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhaoshenglong@huawei.com designates 58.251.152.64 as permitted sender) client-ip=58.251.152.64;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id C26D2225;
-	Wed, 28 Oct 2015 15:20:32 +0000 (UTC)
-Received: from scv.usersys.redhat.com (dhcp-17-163.bos.redhat.com [10.18.17.163])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id t9SFKVmA021601;
-	Wed, 28 Oct 2015 11:20:31 -0400
-Subject: Re: [Qemu-devel] proposal: new qemu-arm mailing list
-To: Pavel Fedin <p.fedin@samsung.com>,
-        "'Peter Maydell'" <peter.maydell@linaro.org>
-References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com>
- <012d01d110a7$b1915690$14b403b0$@samsung.com>
- <CAFEAcA9H6vegRYU+_0aULnH8dRcm70M28Eg7uzB8013sspG8Yg@mail.gmail.com>
- <562FAD77.6060704@redhat.com> <008601d1114c$c5fa0aa0$51ee1fe0$@samsung.com>
-Cc: "'Edgar E. Iglesias'" <edgar.iglesias@gmail.com>,
-        "'Peter Crosthwaite'" <crosthwaitepeter@gmail.com>,
-        "=?UTF-8?Q?'Alex_Benn=c3=a9e'?=" <alex.bennee@linaro.org>,
-        "'QEMU Developers'" <qemu-devel@nongnu.org>,
-        "'Paolo Bonzini'" <pbonzini@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <5630E7BF.8000000@redhat.com>
-Date: Wed, 28 Oct 2015 11:20:31 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.3.0
+       spf=pass (google.com: domain of zhaoshenglong@huawei.com designates 58.251.152.64 as permitted sender) smtp.mailfrom=zhaoshenglong@huawei.com
+Received: from 172.24.1.49 (EHLO szxeml426-hub.china.huawei.com) ([172.24.1.49])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CYA80740;
+	Thu, 29 Oct 2015 11:51:52 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml426-hub.china.huawei.com
+ (10.82.67.181) with Microsoft SMTP Server id 14.3.235.1; Thu, 29 Oct 2015
+ 11:51:48 +0800
+Message-ID: <563197D3.5050206@huawei.com>
+Date: Thu, 29 Oct 2015 11:51:47 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-In-Reply-To: <008601d1114c$c5fa0aa0$51ee1fe0$@samsung.com>
-Content-Type: text/plain; charset=utf-8
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Peter Maydell
+	<peter.maydell@linaro.org>
+CC: Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Crosthwaite
+	<crosthwaitepeter@gmail.com>,
+        =?ISO-8859-1?Q?Alex_Benn=E9e?=
+	<alex.bennee@linaro.org>,
+        QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] proposal: new qemu-arm mailing list
+References: <CAFEAcA-s_hSQiLCkQDeX2rR12PcPx5yZ885yZy7C=ZWA5DDbTw@mail.gmail.com> <20151027110233.GE18847@toto>
+In-Reply-To: <20151027110233.GE18847@toto>
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-TUID: nWzlWGbdnl6w
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-TUID: tTnluvuLxh8l
 
 
 
-On 10/28/2015 02:49 AM, Pavel Fedin wrote:
->  Hello!
+On 2015/10/27 19:02, Edgar E. Iglesias wrote:
+> On Tue, Oct 27, 2015 at 10:15:32AM +0000, Peter Maydell wrote:
+>> Hi; it's been suggested to me that it would be helpful to have a
+>> qemu-arm mailing list, along the lines of the existing qemu-ppc
+>> and qemu-block lists. The idea would be to get people to cc the
+>> list with their ARM related patches, so it would mostly act as
+>> a way for people to filter their mail to separate the ARM stuff
+>> out from the qemu-devel firehose. (Everything should still be
+>> cc'd to qemu-devel as well.)
+>>
+>> Any objections/opinions?
+>>
 > 
->> Just to jump on and bead a dead horse, I am not OK with the idea of a
->> mailing list where patches might get reviewed and staged for pull
->> without the general population of qemu-devel being able to look first.
+> Sounds good to me!
 > 
->  Ok ok, i don't object, Peter has already explained a similar thing to me, and i silently agreed.
-> 
-> Kind regards,
-> Pavel Fedin
-> Expert Engineer
-> Samsung Electronics Research center Russia
-> 
-> 
++1
 
-Sorry :)
-
-I am of course in favor of the list in general. qemu-block has been very
-useful for us.
-
---js
+-- 
+Shannon

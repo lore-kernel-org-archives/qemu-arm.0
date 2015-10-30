@@ -1,146 +1,126 @@
-Received: by 10.182.105.169 with SMTP id gn9csp94077obb;
-        Fri, 30 Oct 2015 13:49:43 -0700 (PDT)
-X-Received: by 10.55.51.200 with SMTP id z191mr13067153qkz.21.1446238183121;
-        Fri, 30 Oct 2015 13:49:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.105.169 with SMTP id gn9csp909963obb;
+        Thu, 29 Oct 2015 22:37:50 -0700 (PDT)
+X-Received: by 10.140.91.135 with SMTP id z7mr7282783qgd.91.1446183470324;
+        Thu, 29 Oct 2015 22:37:50 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b94si920594qga.13.2015.10.30.13.49.43
+        by mx.google.com with ESMTPS id j185si4529608qhc.70.2015.10.29.22.37.50
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Fri, 30 Oct 2015 13:49:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 29 Oct 2015 22:37:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
-Received: from localhost ([::1]:53020 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48499 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZsGcI-0006ec-Qu
-	for alex.bennee@linaro.org; Fri, 30 Oct 2015 16:49:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47804)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1Zs2Nq-0000ra-1D
+	for alex.bennee@linaro.org; Fri, 30 Oct 2015 01:37:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZsGcF-0006dR-TV
-	for qemu-arm@nongnu.org; Fri, 30 Oct 2015 16:49:40 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Zs2LR-0005Jq-DA
+	for qemu-devel@nongnu.org; Fri, 30 Oct 2015 01:35:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZsGcE-0004wh-VW
-	for qemu-arm@nongnu.org; Fri, 30 Oct 2015 16:49:39 -0400
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:36858)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Zs2LO-0002Ou-C4
+	for qemu-devel@nongnu.org; Fri, 30 Oct 2015 01:35:21 -0400
+Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:33934)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZsGcE-0004wG-Qz
-	for qemu-arm@nongnu.org; Fri, 30 Oct 2015 16:49:38 -0400
-Received: by vkex70 with SMTP id x70so54752713vke.3
-	for <qemu-arm@nongnu.org>; Fri, 30 Oct 2015 13:49:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=Rr22GQxuKIh78YjkRbuJ0GMDVwWt9DYv3A9vc+raj/Y=;
-	b=JZPjj5tyJEAdP/ISIH4lixj/h5VjrMZayOGt3snRaGchDDMmK63qzSMMeZGUHHK0GY
-	uPIRCN05NiHix8w5Fht6VmuuV0Ec95QALaMfo6dSC1FvoLvqQNBzFGf2O/4Mk4IT6OU4
-	wLVePBiQxUn3kESZ8DbBFvq8H+CxxufU8RTvRam9Tct9Au1u8CB8E0FLShovZU1SAOcn
-	v2SiESRXOnd1Q5ivl9iwVF7PTibYXdW3A+rdlfWjMqT3yyC4m1A60+RBmpILViZuMNMt
-	STzf54zef1nR/fdwaQrrF9XYHRUKFOYtPZbU/270D9flhSIwy1otGHkiDl770m07+8mC
-	wE3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=Rr22GQxuKIh78YjkRbuJ0GMDVwWt9DYv3A9vc+raj/Y=;
-	b=l0tWPdTJ9Aup/LxBV0b97GbU4fOPT8+YO9tKbeZqzztxz9Nc+/rsQc1fGucAVliGvb
-	o6emciHIJhiI3ba4mRDn+47t/Zmt/DXJvyukPobeUWUI4lyecQzzNlxtIj5X/PmlSwIr
-	evaiSlw8ceH2/VxCREOG5LXhjkkxPGNjetKxBnqPg5fc7fTCq9cA2/0Qa0beijuKNexe
-	jPIvuFF8JhoRNyqvHDmvUNVX9RgfA20tKBST4ZifkqPoH/geTt9R7pPtfoBgNy3VN0p+
-	0JzlZnYiN3lBU2EJrb2phoycZKS2p3h/FOfGpZ1W785iEmOroyabmry8rU/OCVOLZb2S
-	5M8g==
-X-Gm-Message-State: ALoCoQkxCqwIITxLrkB0nVkJsPorSo4VycNl3htOaLGIJiCv0s792gnB/NboMBieZd1Zeyqbnd5k
-X-Received: by 10.31.136.144 with SMTP id k138mr6645680vkd.92.1446238178456;
-	Fri, 30 Oct 2015 13:49:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 30 Oct 2015 13:49:19 -0700 (PDT)
-In-Reply-To: <8f5368aaa0623a87797edc2305d7f7eac40b2e32.1446182614.git.crosthwaite.peter@gmail.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1Zs2LO-0002Op-6G; Fri, 30 Oct 2015 01:35:18 -0400
+Received: by padhk11 with SMTP id hk11so63266432pad.1;
+	Thu, 29 Oct 2015 22:35:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=5XN/Vwe1uFCF8PD6ZrwPhiamaoHBUr868rxGSwyX+O0=;
+	b=bBnxVpRcXWJ/fl8pT4h80WXgNNoSceQxIvVToWUrrBh81/fnrLJlbF2aE/HZqJS1qK
+	BoCfXKqNKegBA+tjFiqmXJiti8yJd8JEyqxNC3ulRr6vIwvCvSGF8GEhKD+KH1XbDYnI
+	hzIo64fQETCckZef2LSGIQ6jPuNld1VGkjW+5d26fZ3YLfdhQZG4z2HiSj1MrX/dJ/5i
+	6M3epB1KX5El3jxwEFIaD9aczaLfJHuND53xqdgDRh+H7VqEmC0pYmVbx5VvYP6gA9un
+	A9jMAPaZJu35sn4K5B+1fACr1WhQXON2A9gBKJhYQ4/iHyNC5NbF+34h/4AMyFUSRwSj
+	5Dnw==
+X-Received: by 10.66.220.69 with SMTP id pu5mr6460354pac.59.1446183317759;
+	Thu, 29 Oct 2015 22:35:17 -0700 (PDT)
+Received: from pcrost-box.hsd1.ca.comcast.net
+	(c-24-130-130-137.hsd1.ca.comcast.net. [24.130.130.137])
+	by smtp.gmail.com with ESMTPSA id
+	yi8sm5604313pab.22.2015.10.29.22.35.16
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 29 Oct 2015 22:35:16 -0700 (PDT)
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 29 Oct 2015 22:34:56 -0700
+Message-Id: <b9b9bb8f1c307c1ef8a3f26ff1f34fabb34b332e.1446182614.git.crosthwaite.peter@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1446182614.git.crosthwaite.peter@gmail.com>
 References: <cover.1446182614.git.crosthwaite.peter@gmail.com>
-	<8f5368aaa0623a87797edc2305d7f7eac40b2e32.1446182614.git.crosthwaite.peter@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Oct 2015 20:49:19 +0000
-Message-ID: <CAFEAcA9yMi1Ye7n2sQtQ8-fRoothTV=3TjeXmnQCJbE4=0AHGg@mail.gmail.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <cover.1446182614.git.crosthwaite.peter@gmail.com>
+References: <cover.1446182614.git.crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400c:c05::22a
-Cc: Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
-	QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [Qemu-arm] [PATCH v2 4/5] arm: boot: Add secure_board_setup flag
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c03::229
+Cc: peter.maydell@linaro.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	qemu-arm@nongnu.org, linux@roeck-us.net, robh@kernel.org
+Subject: [Qemu-devel] [PATCH v2 1/5] arm: boot: Adjust indentation of FIXUP
+	comments
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7rXX2Q0y2kGr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zLFf49pEC+mc
 
-On 30 October 2015 at 05:34, Peter Crosthwaite
-<crosthwaitepeter@gmail.com> wrote:
-> Add a flag that when set, will cause the primary CPU to start in secure
-> mode, even if the overall boot in non-secure. This is useful for when
+These comments start immediately after the current longest name in the
+list. Tab them out to the next tab stop to give a little breathing room
+and prepare for FIXUP_BOARD_SETUP which will require more indent.
 
-"is non-secure".
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+---
+Changed since v1:
+s/comment/comments in commit message.
 
-> there is a board-setup blob that needs to run from secure mode, but
-> device and secondary CPU init should still be done as-normal for a non-
-> secure boot.
->
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> ---
->
->  hw/arm/boot.c        | 3 ++-
->  include/hw/arm/arm.h | 6 ++++++
->  2 files changed, 8 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index b0879a5..6680d45 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -495,7 +495,8 @@ static void do_cpu_reset(void *opaque)
->                  }
->
->                  /* Set to non-secure if not a secure boot */
-> -                if (!info->secure_boot) {
-> +                if (!info->secure_boot &&
-> +                    (cs != first_cpu || !info->secure_board_setup)) {
->                      /* Linux expects non-secure state */
->                      env->cp15.scr_el3 |= SCR_NS;
->                  }
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index 9217b70..60dc919 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -97,6 +97,12 @@ struct arm_boot_info {
->      hwaddr board_setup_addr;
->      void (*write_board_setup)(ARMCPU *cpu,
->                                const struct arm_boot_info *info);
-> +
-> +    /* If set, the board specific loader/setup blob will be run from secure
-> +     * mode, regardless of secure_boot. The blob becomes responsible for
-> +     * changing to non-secure state if implementing a non-secure boot
-> +     */
-> +    bool secure_board_setup;
->  };
+ hw/arm/boot.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-I thought you were planning to have the generic code do the
-S->NS transition; but I guess it works better in the board
-code (we have to go up into Monitor and back down again, right?)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index bef451b..2a151e2 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -28,14 +28,14 @@
+ #define KERNEL64_LOAD_ADDR 0x00080000
+ 
+ typedef enum {
+-    FIXUP_NONE = 0,   /* do nothing */
+-    FIXUP_TERMINATOR, /* end of insns */
+-    FIXUP_BOARDID,    /* overwrite with board ID number */
+-    FIXUP_ARGPTR,     /* overwrite with pointer to kernel args */
+-    FIXUP_ENTRYPOINT, /* overwrite with kernel entry point */
+-    FIXUP_GIC_CPU_IF, /* overwrite with GIC CPU interface address */
+-    FIXUP_BOOTREG,    /* overwrite with boot register address */
+-    FIXUP_DSB,        /* overwrite with correct DSB insn for cpu */
++    FIXUP_NONE = 0,     /* do nothing */
++    FIXUP_TERMINATOR,   /* end of insns */
++    FIXUP_BOARDID,      /* overwrite with board ID number */
++    FIXUP_ARGPTR,       /* overwrite with pointer to kernel args */
++    FIXUP_ENTRYPOINT,   /* overwrite with kernel entry point */
++    FIXUP_GIC_CPU_IF,   /* overwrite with GIC CPU interface address */
++    FIXUP_BOOTREG,      /* overwrite with boot register address */
++    FIXUP_DSB,          /* overwrite with correct DSB insn for cpu */
+     FIXUP_MAX,
+ } FixupType;
+ 
+-- 
+1.9.1
 
-Is it an error for the board to set secure_board_setup if
-the CPU doesn't have EL3? (if so, worth mentioning in this
-comment; maybe assert?)
-
-thanks
--- PMM

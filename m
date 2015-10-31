@@ -1,61 +1,52 @@
-Received: by 10.182.105.169 with SMTP id gn9csp575667obb;
-        Thu, 5 Nov 2015 08:55:22 -0800 (PST)
-X-Received: by 10.31.149.76 with SMTP id x73mr7987655vkd.12.1446742522774;
-        Thu, 05 Nov 2015 08:55:22 -0800 (PST)
+Received: by 10.182.105.169 with SMTP id gn9csp327425obb;
+        Sat, 31 Oct 2015 02:51:11 -0700 (PDT)
+X-Received: by 10.55.53.136 with SMTP id c130mr15862940qka.63.1446285071064;
+        Sat, 31 Oct 2015 02:51:11 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v81si5285947vke.15.2015.11.05.08.55.22
+        by mx.google.com with ESMTPS id l136si9674136qhl.14.2015.10.31.02.51.10
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 05 Nov 2015 08:55:22 -0800 (PST)
+        Sat, 31 Oct 2015 02:51:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33517 helo=lists.gnu.org)
+Received: from localhost ([::1]:54916 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZuNoo-0002Bd-GU
-	for alex.bennee@linaro.org; Thu, 05 Nov 2015 11:55:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49194)
+	id 1ZsSoY-0004j0-PE
+	for alex.bennee@linaro.org; Sat, 31 Oct 2015 05:51:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ZuNoh-0002BL-0N
-	for qemu-arm@nongnu.org; Thu, 05 Nov 2015 11:55:20 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1ZsSoW-0004gq-J2
+	for qemu-arm@nongnu.org; Sat, 31 Oct 2015 05:51:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ZuNoe-0004Ia-Bw
-	for qemu-arm@nongnu.org; Thu, 05 Nov 2015 11:55:14 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43127)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1ZsSoV-0002rs-It
+	for qemu-arm@nongnu.org; Sat, 31 Oct 2015 05:51:08 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:8145)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1ZuNoe-0004IW-77; Thu, 05 Nov 2015 11:55:12 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id A0DF936B365;
-	Thu,  5 Nov 2015 16:55:11 +0000 (UTC)
-Received: from [10.10.57.107] (vpn-57-107.rdu2.redhat.com [10.10.57.107])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tA5Gt9Gq001801
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 5 Nov 2015 11:55:10 -0500
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1446736357-17610-1-git-send-email-wei@redhat.com>
-	<CAFEAcA_9bk0DONJPK3DtDN-_Ym53TDq-83pzGg9-JSt3LTdcNg@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <563B89ED.70606@redhat.com>
-Date: Thu, 5 Nov 2015 10:55:09 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1ZsSoP-0002qO-JE; Sat, 31 Oct 2015 05:51:02 -0400
+Received: from 172.24.1.49 (EHLO SZXEML424-HUB.china.huawei.com)
+	([172.24.1.49])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CYE81980; Sat, 31 Oct 2015 17:50:20 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	SZXEML424-HUB.china.huawei.com (10.82.67.153) with Microsoft SMTP
+	Server id 14.3.235.1; Sat, 31 Oct 2015 17:50:10 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
+Date: Sat, 31 Oct 2015 17:50:01 +0800
+Message-ID: <1446285001-7316-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_9bk0DONJPK3DtDN-_Ym53TDq-83pzGg9-JSt3LTdcNg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org,
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH Trivial] hw/intc/arm_gic: Use pre-defined
- macro for cpu_num in code
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: shannon.zhao@linaro.org, qemu-devel@nongnu.org, peter.huangpeng@huawei.com
+Subject: [Qemu-arm] [PATCH] ARM: ACPI: Fix MPIDR value in ACPI table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,30 +60,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aCivm1h7fEo9
+X-TUID: aj23BIZgeFMq
+
+From: Shannon Zhao <shannon.zhao@linaro.org>
+
+Use mp_affinity of ARMCPU as the CPU MPIDR instead of the CPU index.
+
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+This patch is based on below patch.
+http://lists.nongnu.org/archive/html/qemu-devel/2015-10/msg06919.html
+
+ hw/arm/virt-acpi-build.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 29a1980..1c621cb 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -451,13 +451,15 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
+     for (i = 0; i < guest_info->smp_cpus; i++) {
+         AcpiMadtGenericInterrupt *gicc = acpi_data_push(table_data,
+                                                      sizeof *gicc);
++        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
++
+         gicc->type = ACPI_APIC_GENERIC_INTERRUPT;
+         gicc->length = sizeof(*gicc);
+         if (guest_info->gic_version == 2) {
+             gicc->base_address = memmap[VIRT_GIC_CPU].base;
+         }
+         gicc->cpu_interface_number = i;
+-        gicc->arm_mpidr = i;
++        gicc->arm_mpidr = armcpu->mp_affinity;
+         gicc->uid = i;
+         if (test_bit(i, cpuinfo->found_cpus)) {
+             gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+-- 
+2.0.4
 
 
-
-On 11/05/2015 09:31 AM, Peter Maydell wrote:
-> On 5 November 2015 at 15:12, Wei Huang <wei@redhat.com> wrote:
->> Given that there is a macro, NUM_CPU(s), defined for CPU number in
->> arm_gic.c, it is better to use it instead of using s->num_cpu in
->> this file. Code is more consistent after this change.
-> 
-> Hi. I think that actually since the NUM_CPU is just a relic from
-
-Looks like the relic was from c988bfadc9cab. I prefer macro for this
-case; but will fix based on your comments.
-
-Thanks,
--Wei
-
-> when it used to possibly defined as something other than s->num_cpu,
-> we should go in the opposite direction, and remove the macro entirely
-> in favour of just using s->num_cpu directly.
-> 
-> (PS: you forgot to cc qemu-devel.)
-> 
-> thanks
-> -- PMM
-> 

@@ -1,114 +1,88 @@
-Received: by 10.182.105.169 with SMTP id gn9csp585339obb;
-        Thu, 5 Nov 2015 09:11:25 -0800 (PST)
-X-Received: by 10.31.8.132 with SMTP id 126mr8220211vki.147.1446743485763;
-        Thu, 05 Nov 2015 09:11:25 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.105.169 with SMTP id gn9csp586886obb;
+        Thu, 5 Nov 2015 09:14:15 -0800 (PST)
+X-Received: by 10.31.146.76 with SMTP id u73mr8274818vkd.42.1446743655659;
+        Thu, 05 Nov 2015 09:14:15 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q65si5326734vkf.136.2015.11.05.09.11.25
+        by mx.google.com with ESMTPS id b195si5328918vka.156.2015.11.05.09.14.15
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 05 Nov 2015 09:11:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 05 Nov 2015 09:14:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33769 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33787 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZuO4L-0006q8-Fb
-	for alex.bennee@linaro.org; Thu, 05 Nov 2015 12:11:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55328)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZuO75-0001Kt-Eg
+	for alex.bennee@linaro.org; Thu, 05 Nov 2015 12:14:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56142)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ZuO4J-0006nS-Ct
-	for qemu-arm@nongnu.org; Thu, 05 Nov 2015 12:11:24 -0500
+	(envelope-from <afaerber@suse.de>) id 1ZuO6g-0000yh-L2
+	for qemu-devel@nongnu.org; Thu, 05 Nov 2015 12:13:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1ZuO4G-0002O4-0U
-	for qemu-arm@nongnu.org; Thu, 05 Nov 2015 12:11:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51497)
+	(envelope-from <afaerber@suse.de>) id 1ZuO6f-0002pd-NE
+	for qemu-devel@nongnu.org; Thu, 05 Nov 2015 12:13:50 -0500
+Received: from mx2.suse.de ([195.135.220.15]:52306)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1ZuO4F-0002Nz-SY; Thu, 05 Nov 2015 12:11:19 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 6B3CD8F316;
-	Thu,  5 Nov 2015 17:11:19 +0000 (UTC)
-Received: from rhlaptop.redhat.com (vpn-57-107.rdu2.redhat.com [10.10.57.107])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id tA5HBIus008874; Thu, 5 Nov 2015 12:11:18 -0500
-From: Wei Huang <wei@redhat.com>
-To: qemu-arm@nongnu.org
-Date: Thu,  5 Nov 2015 11:11:17 -0600
-Message-Id: <1446743477-21579-1-git-send-email-wei@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, afaerber@suse.de, qemu-devel@nongnu.org
-Subject: [Qemu-arm] [PATCH Trivial] hw/intc/arm_gic: Remove the definition
-	of NUM_CPU
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <afaerber@suse.de>)
+	id 1ZuO6b-0002oj-A0; Thu, 05 Nov 2015 12:13:45 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 6E093AC61;
+	Thu,  5 Nov 2015 17:13:26 +0000 (UTC)
+To: Wei Huang <wei@redhat.com>, qemu-arm@nongnu.org
+References: <1446743477-21579-1-git-send-email-wei@redhat.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+Message-ID: <563B8E48.8020407@suse.de>
+Date: Thu, 5 Nov 2015 18:13:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <1446743477-21579-1-git-send-email-wei@redhat.com>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 195.135.220.15
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH Trivial] hw/intc/arm_gic: Remove the
+	definition of NUM_CPU
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xvxgeJxSoSoB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: g4AP0UbYcBGH
 
-arm_gic.c retrieves CPU number using either NUM_CPU(s) or s->num_cpu.
-Such mixed-uses make source code inconsistent. This patch removes
-NUM_CPU(s), which was defined for MPCore tweak long ago, and instead
-favors s->num_cpu. The source is more consistent after this tweak.
+Am 05.11.2015 um 18:11 schrieb Wei Huang:
+> arm_gic.c retrieves CPU number using either NUM_CPU(s) or s->num_cpu.
+> Such mixed-uses make source code inconsistent. This patch removes
+> NUM_CPU(s), which was defined for MPCore tweak long ago, and instead
+> favors s->num_cpu. The source is more consistent after this tweak.
+>=20
+> Signed-off-by: Wei Huang <wei@redhat.com>
+> ---
+>  hw/intc/arm_gic.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
 
-Signed-off-by: Wei Huang <wei@redhat.com>
----
- hw/intc/arm_gic.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+I don't mind either way, and it'll go through Peter's queue I guess,
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 8bad132..2f76f0b 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -35,8 +35,6 @@ static const uint8_t gic_id[] = {
-     0x90, 0x13, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1
- };
- 
--#define NUM_CPU(s) ((s)->num_cpu)
--
- static inline int gic_get_current_cpu(GICState *s)
- {
-     if (s->num_cpu > 1) {
-@@ -64,7 +62,7 @@ void gic_update(GICState *s)
-     int cpu;
-     int cm;
- 
--    for (cpu = 0; cpu < NUM_CPU(s); cpu++) {
-+    for (cpu = 0; cpu < s->num_cpu; cpu++) {
-         cm = 1 << cpu;
-         s->current_pending[cpu] = 1023;
-         if (!(s->ctlr & (GICD_CTLR_EN_GRP0 | GICD_CTLR_EN_GRP1))
-@@ -567,7 +565,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
-         if (offset == 4)
-             /* Interrupt Controller Type Register */
-             return ((s->num_irq / 32) - 1)
--                    | ((NUM_CPU(s) - 1) << 5)
-+                    | (s->num_cpu - 1) << 5)
-                     | (s->security_extn << 10);
-         if (offset < 0x08)
-             return 0;
-@@ -1284,7 +1282,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
-      * GIC v2 defines a larger memory region (0x1000) so this will need
-      * to be extended when we implement A15.
-      */
--    for (i = 0; i < NUM_CPU(s); i++) {
-+    for (i = 0; i < s->num_cpu; i++) {
-         s->backref[i] = s;
-         memory_region_init_io(&s->cpuiomem[i+1], OBJECT(s), &gic_cpu_ops,
-                               &s->backref[i], "gic_cpu", 0x100);
--- 
-2.4.3
+Reviewed-by: Andreas F=E4rber <afaerber@suse.de>
 
+Cheers,
+Andreas
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
+rnberg)

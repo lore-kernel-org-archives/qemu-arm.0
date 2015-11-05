@@ -1,135 +1,57 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id di8sm5271617wjc.34.2016.01.22.02.28.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Jan 2016 02:28:44 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 1D7CB3E01C9;
-	Fri, 22 Jan 2016 10:28:44 +0000 (GMT)
-References: <1453375108-25229-1-git-send-email-edgar.iglesias@gmail.com> <1453375108-25229-4-git-send-email-edgar.iglesias@gmail.com>
-User-agent: mu4e 0.9.16; emacs 25.0.50.5
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org, edgar.iglesias@xilinx.com
-Subject: Re: [PATCH v2 3/3] target-arm: Implement the S2 MMU inputsize > pamax check
-In-reply-to: <1453375108-25229-4-git-send-email-edgar.iglesias@gmail.com>
-Date: Fri, 22 Jan 2016 10:28:43 +0000
-Message-ID: <8737tpj4bo.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: NJFRxoewMH45
+Received: by 10.182.105.169 with SMTP id gn9csp619198obb;
+        Thu, 5 Nov 2015 10:16:37 -0800 (PST)
+X-Received: by 10.66.184.42 with SMTP id er10mr11261585pac.117.1446747376769;
+        Thu, 05 Nov 2015 10:16:16 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id mr9si11682112pbb.183.2015.11.05.10.16.15
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 05 Nov 2015 10:16:16 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZuP4p-0004l9-Ii; Thu, 05 Nov 2015 18:15:59 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	qemu-arm@nongnu.org
+Subject: [PATCH 14/16] hw/arm/virt: Wire up memory region to CPUs explicitly
+Date: Thu,  5 Nov 2015 18:15:56 +0000
+Message-Id: <1446747358-18214-15-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: tCJMzj6F/UZW
 
+Wire up the system memory region to the CPUs explicitly
+by setting the QOM property. This doesn't change anything
+over letting it default, but will be needed for adding
+a secure memory region later.
 
-Edgar E. Iglesias <edgar.iglesias@gmail.com> writes:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/virt.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Implement the inputsize > pamax check for Stage 2 translations.
-> We have multiple choices for how to respond to errors and
-> choose to fault.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  target-arm/helper.c | 16 ++++++++++++----
->  1 file changed, 12 insertions(+), 4 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 4abeb4d..9a7ff5e 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -6808,7 +6808,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->           */
->          int startlevel = extract32(tcr->raw_tcr, 6, 2);
->          unsigned int pamax = arm_pamax(cpu);
-> -        bool ok;
-> +        bool ok = true;
->
->          if (va_size == 32 || stride == 9) {
->              /* AArch32 or 4KB pages */
-> @@ -6818,9 +6818,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->              level = 3 - startlevel;
->          }
->
-> -        /* Check that the starting level is valid. */
-> -        ok = check_s2_startlevel(cpu, va_size == 64, level,
-> -                                 inputsize, stride, pamax);
-> +        if (va_size == 64 &&
-> +            inputsize > pamax &&
-> +            (arm_el_is_aa64(env, 1) || inputsize > 40)) {
-
-If va_size == 64 doesn't that imply arm_el_is_aa64(env, 1)? Looking
-further up the function it seems that is what sets va_size in the first
-place. I think that makes the inputsize > 40 check redundant.
-
-> +            /* We have multiple choices but choose to fault.  */
-> +            ok = false;
-> +        }
-> +        if (ok) {
-> +            /* Check that the starting level is valid. */
-> +            ok = check_s2_startlevel(cpu, va_size == 64, level,
-> +                                     inputsize, stride, pamax);
-> +        }
->          if (!ok) {
->              /* AArch64 reports these as level 0 faults.
->               * AArch32 reports these as level 1 faults.
-
-I'm not a fan of the ok = true / ok = false / ok =
-check_s2_start_level() / if (!ok) ping-pong here as it is hard to
-follow. I'm not sure how you could make it cleaner to follow though.
-Maybe something like:
-
-        /* For stage 2 translations the starting level is specified by the
-         * VTCR_EL2.SL0 field (whose interpretation depends on the page size)
-         */
-        int startlevel = extract32(tcr->raw_tcr, 6, 2);
-        unsigned int pamax = arm_pamax(cpu);
-        bool is_aarch64_regime = (va_size == 64);
-        bool ok;
-
-        if (va_size == 32 || stride == 9) {
-            /* AArch32 or 4KB pages */
-            level = 2 - startlevel;
-        } else {
-            /* 16KB or 64KB pages */
-            level = 3 - startlevel;
-        }
-
-        if (is_aarch64_regime &&
-            inputsize > pamax) {
-            /* We have multiple choices but choose to fault.  */
-            ok = false;
-        } else {
-            /* Check that the starting level is valid. */
-            ok = check_s2_startlevel(cpu, is_aarch64_regime, level,
-                                     inputsize, stride, pamax);
-        }
-        if (!ok) {
-            /* AArch64 reports these as level 0 faults.
-             * AArch32 reports these as level 1 faults.
-             */
-            level = is_aarch64_regime ? 0 : 1;
-            fault_type = translation_fault;
-            goto do_fault;
-        }
-
-But I'm wondering if it just makes more sense to push the:
-
-    is_aarch64_regime && inputsize > pamax
-
-Check into check_s2_startlevel? Then you could just have a simple call
-which succeeds or falls through to a fault?
-
-        /* Check that the starting level is valid. */
-        if (!check_s2_startlevel(cpu, is_aarch64_regime, level,
-                                     inputsize, stride, pamax) ){
-            /* AArch64 reports these as level 0 faults.
-             * AArch32 reports these as level 1 faults.
-             */
-            level = is_aarch64_regime ? 0 : 1;
-            fault_type = translation_fault;
-            goto do_fault;
-        }
-
---
-Alex Bennée
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 77d9267..3ab31e0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1020,6 +1020,9 @@ static void machvirt_init(MachineState *machine)
+                                     "reset-cbar", &error_abort);
+         }
+ 
++        object_property_set_link(cpuobj, OBJECT(sysmem), "memory",
++                                 &error_abort);
++
+         object_property_set_bool(cpuobj, true, "realized", NULL);
+     }
+     g_strfreev(cpustr);
+-- 
+1.9.1

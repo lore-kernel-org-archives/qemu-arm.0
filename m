@@ -1,85 +1,177 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1089647obb;
-        Fri, 6 Nov 2015 06:13:21 -0800 (PST)
-X-Received: by 10.68.233.134 with SMTP id tw6mr11113968pbc.46.1446819201905;
-        Fri, 06 Nov 2015 06:13:21 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pa0-x22a.google.com (mail-pa0-x22a.google.com. [2607:f8b0:400e:c03::22a])
-        by mx.google.com with ESMTPS id qh12si308694pab.145.2015.11.06.06.13.21
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Nov 2015 06:13:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) client-ip=2607:f8b0:400e:c03::22a;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22a as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pacdm15 with SMTP id dm15so100026256pac.3;
-        Fri, 06 Nov 2015 06:13:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=RoRAsQgjZapOU9me89gqOAo8OMLPorZOVFKRJdRB6sE=;
-        b=h4KF8UYgNjhzOkKpr1bX5LyX9JJZonk5eQPrbQnOMyFVD9/9OefIsFm8KqP+DAc+eq
-         +nLJcpsYnoYnEtRaG27j8gyWKz/CpsqLnSeFkFpGxoHYsjCdg3Kk5YZrglKNoO4JS+5Q
-         bBLp8CrXAA/AxBvC+eLnBtZRkssWzZzA44TLaIPwFIRq0FcnW1MIPsH0I/XGrYCgtcVt
-         g6BmNIMn5qIVa3DwTQmb37ZGH9lmdSYrHPtL+SCooxPQj8oKO4kLGJ3N8VimlDuWwpj0
-         3AM2kCapFb/o9G1hPMh9buHZzUCGQ3hA6uwBZyvuLqdET9a7YP6XrwtKNvojy4Xn5Afi
-         bUwA==
-X-Received: by 10.68.226.41 with SMTP id rp9mr18220524pbc.55.1446819201494;
-        Fri, 06 Nov 2015 06:13:21 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id bs3sm357167pbd.89.2015.11.06.06.13.19
+Received: by 10.182.105.169 with SMTP id gn9csp618978obb;
+        Thu, 5 Nov 2015 10:16:11 -0800 (PST)
+X-Received: by 10.68.173.5 with SMTP id bg5mr11011344pbc.104.1446747365273;
+        Thu, 05 Nov 2015 10:16:05 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id sc1si9350269pbb.21.2015.11.05.10.16.04
         (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 06 Nov 2015 06:13:20 -0800 (PST)
-Date: Fri, 6 Nov 2015 15:13:17 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Thu, 05 Nov 2015 10:16:05 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZuP4p-0004kR-0q; Thu, 05 Nov 2015 18:15:59 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	qemu-arm@nongnu.org
-Subject: Re: [PATCH 04/16] exec.c: Add address space index to CPUIOTLBEntry
-Message-ID: <20151106141317.GK13308@toto>
+Subject: [PATCH 03/16] tlb_set_page_with_attrs: Take argument specifying AddressSpace to use
+Date: Thu,  5 Nov 2015 18:15:45 +0000
+Message-Id: <1446747358-18214-4-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
 References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-5-git-send-email-peter.maydell@linaro.org>
- <20151106133448.GD13308@toto>
- <CAFEAcA_4Euo5vFnjwvBDYuOE28E6kpi22WPPFZjzwpt_sPR2+g@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_4Euo5vFnjwvBDYuOE28E6kpi22WPPFZjzwpt_sPR2+g@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: sagFDw+uuQlH
+X-TUID: u3lOzhqluGVm
 
-On Fri, Nov 06, 2015 at 01:45:29PM +0000, Peter Maydell wrote:
-> On 6 November 2015 at 13:34, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> > On Thu, Nov 05, 2015 at 06:15:46PM +0000, Peter Maydell wrote:
-> >> Add the address space index to CPUIOTLBEntry, and use this to pass it
-> >> to iotlb_to_region(), so that we use the correct AddressSpace when
-> >> doing IO path lookups.
-> >
-> > Hi Peter,
-> >
-> > I think this works but eventually when we add support for CPUs behind
-> > IOMMUs I think things will be easier if we store a pointer to the
-> > AS instead of an index in the IOTLB. address_space_translate_for_iotlb()
-> > with IOMMU support may be implemented so that it returns a different
-> > address space as it walks tha memory hierarchy and translate things.
-> >
-> > Do you see any issues with storing pointers to the AS instead of an
-> > index?
-> 
-> Yeah, we can't deal with arbitrary AddressSpaces here. We need a
-> CPUAddressSpace, because we use the cached RCU-protected memory_dispatch
-> pointer. Once you know that you have to be dealing with one of the fixed
-> CPUAddressSpaces, then you might as well just keep the index rather than
-> an arbitrary pointer.
+Add an argument to tlb_set_page_with_attrs which allows the target CPU code
+to tell the core code which AddressSpace to use.
 
-OK, I think we'll have to have another look once we do the IOMMU stuff. My
-view has probably been to simplistic.
+The AddressSpace is specified by the index into the array of ASes which
+were registered with cpu_address_space_init().
 
-Best regards,
-Edgar
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ cputlb.c                |  6 +++---
+ exec.c                  |  7 ++++---
+ include/exec/exec-all.h | 33 ++++++++++++++++++++++++++++++---
+ target-arm/helper.c     |  2 +-
+ target-i386/helper.c    |  2 +-
+ 5 files changed, 39 insertions(+), 11 deletions(-)
+
+diff --git a/cputlb.c b/cputlb.c
+index bf1d50a..e753083 100644
+--- a/cputlb.c
++++ b/cputlb.c
+@@ -343,7 +343,7 @@ static void tlb_add_large_page(CPUArchState *env, target_ulong vaddr,
+  * Called from TCG-generated code, which is under an RCU read-side
+  * critical section.
+  */
+-void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
++void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr, int asidx,
+                              hwaddr paddr, MemTxAttrs attrs, int prot,
+                              int mmu_idx, target_ulong size)
+ {
+@@ -363,7 +363,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+     }
+ 
+     sz = size;
+-    section = address_space_translate_for_iotlb(cpu, paddr, &xlat, &sz);
++    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz);
+     assert(sz >= TARGET_PAGE_SIZE);
+ 
+ #if defined(DEBUG_TLB)
+@@ -433,7 +433,7 @@ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+                   hwaddr paddr, int prot,
+                   int mmu_idx, target_ulong size)
+ {
+-    tlb_set_page_with_attrs(cpu, vaddr, paddr, MEMTXATTRS_UNSPECIFIED,
++    tlb_set_page_with_attrs(cpu, vaddr, 0, paddr, MEMTXATTRS_UNSPECIFIED,
+                             prot, mmu_idx, size);
+ }
+ 
+diff --git a/exec.c b/exec.c
+index 6a2a694..92e76fa 100644
+--- a/exec.c
++++ b/exec.c
+@@ -445,12 +445,13 @@ MemoryRegion *address_space_translate(AddressSpace *as, hwaddr addr,
+ 
+ /* Called from RCU critical section */
+ MemoryRegionSection *
+-address_space_translate_for_iotlb(CPUState *cpu, hwaddr addr,
++address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+                                   hwaddr *xlat, hwaddr *plen)
+ {
+     MemoryRegionSection *section;
+-    section = address_space_translate_internal(cpu->cpu_ases[0].memory_dispatch,
+-                                               addr, xlat, plen, false);
++    AddressSpaceDispatch *d = cpu->cpu_ases[asidx].memory_dispatch;
++
++    section = address_space_translate_internal(d, addr, xlat, plen, false);
+ 
+     assert(!section->mr->iommu_ops);
+     return section;
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 90130ca..472d0fc 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -144,7 +144,34 @@ void tlb_flush_by_mmuidx(CPUState *cpu, ...);
+ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+                   hwaddr paddr, int prot,
+                   int mmu_idx, target_ulong size);
+-void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
++/**
++ * tlb_set_page_with_attrs:
++ * @cpu: CPU to add this TLB entry for
++ * @vaddr: virtual address of page to add entry for
++ * @asidx: index of the AddressSpace the physical address is in
++ * @paddr: physical address of the page
++ * @attrs: memory transaction attributes
++ * @prot: access permissions (PAGE_READ/PAGE_WRITE/PAGE_EXEC bits)
++ * @mmu_idx: MMU index to insert TLB entry for
++ * @size: size of the page in bytes
++ *
++ * Add an entry to this CPU's TLB (a mapping from virtual address
++ * @vaddr to physical address @paddr) with the specified memory
++ * transaction attributes. This is generally called by the target CPU
++ * specific code after it has been called through the tlb_fill()
++ * entry point and performed a successful page table walk to find
++ * the physical address and attributes for the virtual address
++ * which provoked the TLB miss.
++ *
++ * At most one entry for a given virtual address is permitted. Only a
++ * single TARGET_PAGE_SIZE region is mapped; the supplied @size is only
++ * used by tlb_flush_page.
++ *
++ * @asidx is the index of the AddressSpace in the cpu->ases array;
++ * if the CPU does not support multiple AddressSpaces then it will
++ * always be zero.
++ */
++void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr, int asidx,
+                              hwaddr paddr, MemTxAttrs attrs,
+                              int prot, int mmu_idx, target_ulong size);
+ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr);
+@@ -400,8 +427,8 @@ void tlb_set_dirty(CPUState *cpu, target_ulong vaddr);
+ void tb_flush_jmp_cache(CPUState *cpu, target_ulong addr);
+ 
+ MemoryRegionSection *
+-address_space_translate_for_iotlb(CPUState *cpu, hwaddr addr, hwaddr *xlat,
+-                                  hwaddr *plen);
++address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
++                                  hwaddr *xlat, hwaddr *plen);
+ hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+                                        MemoryRegionSection *section,
+                                        target_ulong vaddr,
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index 4ecae61..174371b 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -7315,7 +7315,7 @@ bool arm_tlb_fill(CPUState *cs, vaddr address,
+         /* Map a single [sub]page.  */
+         phys_addr &= TARGET_PAGE_MASK;
+         address &= TARGET_PAGE_MASK;
+-        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
++        tlb_set_page_with_attrs(cs, address, 0, phys_addr, attrs,
+                                 prot, mmu_idx, page_size);
+         return 0;
+     }
+diff --git a/target-i386/helper.c b/target-i386/helper.c
+index d18be95..1c43717 100644
+--- a/target-i386/helper.c
++++ b/target-i386/helper.c
+@@ -962,7 +962,7 @@ do_check_protect_pse36:
+     page_offset = vaddr & (page_size - 1);
+     paddr = pte + page_offset;
+ 
+-    tlb_set_page_with_attrs(cs, vaddr, paddr, cpu_get_mem_attrs(env),
++    tlb_set_page_with_attrs(cs, vaddr, 0, paddr, cpu_get_mem_attrs(env),
+                             prot, mmu_idx, page_size);
+     return 0;
+  do_fault_rsvd:
+-- 
+1.9.1

@@ -1,84 +1,158 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1109985obb;
-        Fri, 6 Nov 2015 06:51:38 -0800 (PST)
-X-Received: by 10.31.166.194 with SMTP id p185mr13718987vke.52.1446821498712;
-        Fri, 06 Nov 2015 06:51:38 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22e.google.com (mail-vk0-x22e.google.com. [2607:f8b0:400c:c05::22e])
-        by mx.google.com with ESMTPS id w136si421919vke.109.2015.11.06.06.51.38
-        for <alex.bennee@linaro.org>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Nov 2015 06:51:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) client-ip=2607:f8b0:400c:c05::22e;
+Received: by 10.182.105.169 with SMTP id gn9csp619039obb;
+        Thu, 5 Nov 2015 10:16:18 -0800 (PST)
+X-Received: by 10.194.60.179 with SMTP id i19mr10182009wjr.135.1446747369601;
+        Thu, 05 Nov 2015 10:16:09 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id r81si11500735wmg.13.2015.11.05.10.16.09
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 05 Nov 2015 10:16:09 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by vkbk63 with SMTP id k63so3826460vkb.0
-        for <alex.bennee@linaro.org>; Fri, 06 Nov 2015 06:51:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=DsGhNSsl0mqM57c5GeIjJtzSAfldOD2EWO3S7OcoEjk=;
-        b=psIxvpL+tKSLZZkM+ZtWU7inHzc1Tc9+fmbm+Wp141/kwmoH1q+7FAiIW4th3d89X2
-         fy974oooCbWd0jnKlMNUO2pKEeFv6kY75SV7O/IQnaUrojRw0arfLuL4OdLzTAQVULXB
-         Q3wPSOhT2W2wmBxefkPziLJsMC9kHLC2ZuOB8DKoEVBVqApTuY+JmOpNJ4iy+hP/90tS
-         zoyZZxJ9//kbdo+bLn9U4V5Tto94JaHSvYB7dNH8Och6sZyNPgymreWmWSOY4EHScr/P
-         KryG1w+ziT9jTvx8rIqFOu3bInNT4SIfJbhy9NvTbSqPsLvHUG8NBjiH2JyVVkBxQi8F
-         XLjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=DsGhNSsl0mqM57c5GeIjJtzSAfldOD2EWO3S7OcoEjk=;
-        b=bIcIFUgopEeKUKAO0gh7bbfLfaAaOV/T+JtiWR7igJl+h1KyVOrunW/0gWCWKUTWN8
-         lyNzC014yHU03R3ytF/90D5TwN9tQxHPRGazDQEiBzQU6f9OB3BlV/CTEmIT4FG8/ssP
-         BkkRhh727fSqy4zEHTe43yEKoP2RpPnVjWEAYMdl7DOv9tRwY88XOStiKh9ak12GxuxU
-         uGcyIH/9Nmayd8VdI+p0mfj72JENS4qM71FWUmor8KunJKQCuSeKHyZQxYIlJMTv2sSN
-         CMFr3sXXAD7rz8GAiOYxwhVfrgXYwxQnQgCjjksF32O4UvkVIhBtJ6dwoo6PyRmf4JO1
-         vgYA==
-X-Gm-Message-State: ALoCoQmG+Xu/AFb9sa3Eg4IgYH7SvzTJ7BX6Od6deKh2w2IO0XSA9oy40WrRveN8bDEFlBuOj9T/
-X-Received: by 10.31.56.198 with SMTP id f189mr9552153vka.83.1446821498488;
- Fri, 06 Nov 2015 06:51:38 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 6 Nov 2015 06:51:19 -0800 (PST)
-In-Reply-To: <20151106144559.GQ13308@toto>
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-15-git-send-email-peter.maydell@linaro.org> <20151106144559.GQ13308@toto>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZuP4p-0004kx-DV; Thu, 05 Nov 2015 18:15:59 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Nov 2015 14:51:19 +0000
-Message-ID: <CAFEAcA9ccrLoiGdKdiaQ0Q71yHRWBtca+NvMiKoXwtYOK7pqNw@mail.gmail.com>
-Subject: Re: [PATCH 14/16] hw/arm/virt: Wire up memory region to CPUs explicitly
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	qemu-arm@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-TUID: 7dojtvSrhT5D
+Subject: [PATCH 11/16] memory: Add address_space_init_shareable()
+Date: Thu,  5 Nov 2015 18:15:53 +0000
+Message-Id: <1446747358-18214-12-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: JLhw3BnruuBt
 
-On 6 November 2015 at 14:45, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> On Thu, Nov 05, 2015 at 06:15:56PM +0000, Peter Maydell wrote:
->> Wire up the system memory region to the CPUs explicitly
->> by setting the QOM property. This doesn't change anything
->> over letting it default, but will be needed for adding
->> a secure memory region later.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> I'm not sure I understand this, if not set, wouldn't "memory"
-> just default to sysmem anyway regardless of if we set
-> "secure-memory" or not? I'm probably missing something
-> in the init/setup sequence...
->
-> Anyway, I don't mind explicitely setting "memory":
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 
-Yes, you're right, it would default to the same thing;
-but it seemed clearer to me if the board is going to be
-setting memory regions explicitly on the CPU to set them
-all rather than letting one default and one not.
-(Also it provides an example in the code base of how to
-do it right ;-))
+This will either create a new AS or return a pointer to an
+already existing equivalent one, if we have already created
+an AS for the specified root memory region.
 
-thanks
--- PMM
+The motivation is to reuse address spaces as much as possible.
+It's going to be quite common that bus masters out in device land
+have pointers to the same memory region for their mastering yet
+each will need to create its own address space. Let the memory
+API implement sharing for them.
+
+Aside from the perf optimisations, this should reduce the amount
+of redundant output on info mtree as well.
+
+Thee returned value will be malloced, but the malloc will be
+automatically freed when the AS runs out of refs.
+
+Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+[PMM: dropped check for NULL root as unused; added doc-comment;
+ squashed Peter C's reference-counting patch into this one;
+ don't compare name string when deciding if we can share ASes;
+ read as->malloced before the unref of as->root to avoid possible
+ read-after-free if as->root was the owner of as]
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/exec/memory.h | 18 ++++++++++++++++++
+ memory.c              | 27 +++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index e5d98f8..1d1740a 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -236,6 +236,8 @@ struct AddressSpace {
+     struct rcu_head rcu;
+     char *name;
+     MemoryRegion *root;
++    int ref_count;
++    bool malloced;
+ 
+     /* Accessed via RCU.  */
+     struct FlatView *current_map;
+@@ -1167,6 +1169,22 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
+  */
+ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name);
+ 
++/**
++ * address_space_init_shareable: return an address space for a memory region,
++ *                               creating it if it does not already exist
++ *
++ * @root: a #MemoryRegion that routes addresses for the address space
++ * @name: an address space name.  The name is only used for debugging
++ *        output.
++ *
++ * This function will return a pointer to an existing AddressSpace
++ * which was initialized with the specified MemoryRegion, or it will
++ * create and initialize one if it does not already exist. The ASes
++ * are reference-counted, so the memory will be freed automatically
++ * when the AddressSpace is destroyed via address_space_destroy.
++ */
++AddressSpace *address_space_init_shareable(MemoryRegion *root,
++                                           const char *name);
+ 
+ /**
+  * address_space_destroy: destroy an address space
+diff --git a/memory.c b/memory.c
+index c435c88..6c98a71 100644
+--- a/memory.c
++++ b/memory.c
+@@ -2101,7 +2101,9 @@ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
+ {
+     memory_region_ref(root);
+     memory_region_transaction_begin();
++    as->ref_count = 1;
+     as->root = root;
++    as->malloced = false;
+     as->current_map = g_new(FlatView, 1);
+     flatview_init(as->current_map);
+     as->ioeventfd_nb = 0;
+@@ -2116,6 +2118,7 @@ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
+ static void do_address_space_destroy(AddressSpace *as)
+ {
+     MemoryListener *listener;
++    bool do_free = as->malloced;
+ 
+     address_space_destroy_dispatch(as);
+ 
+@@ -2127,12 +2130,36 @@ static void do_address_space_destroy(AddressSpace *as)
+     g_free(as->name);
+     g_free(as->ioeventfds);
+     memory_region_unref(as->root);
++    if (do_free) {
++        g_free(as);
++    }
++}
++
++AddressSpace *address_space_init_shareable(MemoryRegion *root, const char *name)
++{
++    AddressSpace *as;
++
++    QTAILQ_FOREACH(as, &address_spaces, address_spaces_link) {
++        if (root == as->root) {
++            as->ref_count++;
++            return as;
++        }
++    }
++
++    as = g_malloc0(sizeof *as);
++    address_space_init(as, root, name);
++    as->malloced = true;
++    return as;
+ }
+ 
+ void address_space_destroy(AddressSpace *as)
+ {
+     MemoryRegion *root = as->root;
+ 
++    as->ref_count--;
++    if (as->ref_count) {
++        return;
++    }
+     /* Flush out anything from MemoryListeners listening in on this */
+     memory_region_transaction_begin();
+     as->root = NULL;
+-- 
+1.9.1

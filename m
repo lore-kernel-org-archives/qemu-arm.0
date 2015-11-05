@@ -1,88 +1,106 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1109314obb;
-        Fri, 6 Nov 2015 06:50:16 -0800 (PST)
-X-Received: by 10.31.135.12 with SMTP id j12mr13944054vkd.73.1446821416404;
-        Fri, 06 Nov 2015 06:50:16 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22b.google.com (mail-vk0-x22b.google.com. [2607:f8b0:400c:c05::22b])
-        by mx.google.com with ESMTPS id o9si438167vke.23.2015.11.06.06.50.16
-        for <alex.bennee@linaro.org>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Nov 2015 06:50:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) client-ip=2607:f8b0:400c:c05::22b;
+Received: by 10.182.105.169 with SMTP id gn9csp619140obb;
+        Thu, 5 Nov 2015 10:16:30 -0800 (PST)
+X-Received: by 10.28.19.7 with SMTP id 7mr5651409wmt.89.1446747373832;
+        Thu, 05 Nov 2015 10:16:13 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id r187si11512383wmg.44.2015.11.05.10.16.13
+        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
+        Thu, 05 Nov 2015 10:16:13 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by vkfw189 with SMTP id w189so15519006vkf.2
-        for <alex.bennee@linaro.org>; Fri, 06 Nov 2015 06:50:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=zWZrHRpHdAoVuffoairh3oQHt3/HNPmnkVRZ+vfHT7I=;
-        b=KWsfBJNQtLYnzOVuTOlk64Rp4WnATI1PbBfc6vClRW+7pR9KVhxBKCMNef/mFZnCdE
-         SrS/94f09rQ+45gz9Qc8jrR6NKCnYzBM2XJkBH7lgTaSNXiY+/DBJuLCn4HQ68YbNoEg
-         OnFzgJ+1902lEQLKdjFwmFAOxbLbny3ZZw4Bl87L9ORCG5XwACAChhlN3Exx24ExXb8b
-         0seKMV1YjWHFpvv3zoevOpIO/atZOqQ86r3G1WTcHEaG86+Z1lVyQ2CLs9ZCyPF2VP/d
-         W7lqa2vl0eU50A2cvnbYXbl65DdYxrPZYHFZGp3CPCPxCWX8MrZKEyWOwdDh0OsoPsz6
-         1nGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=zWZrHRpHdAoVuffoairh3oQHt3/HNPmnkVRZ+vfHT7I=;
-        b=B8oOO7oO2ByEi9qbrrsYJ5vl1jQoNoaL48x5HCRZ5XE4Xn9VC4DXUuM662mPrtjDWC
-         xuaNM3Ri2oDjR3qDgCo9ylXHsDq45eVd9el1J4wbUTjjBn+ffPBe+oSOBfDAOA27vbW9
-         +zzDI15Hy/fOGS5KMsMrgVITo7tU4TSoCkPISf0/qb30CQT3dubDpubY2kiiCxHpKqWv
-         BmnI9kgKiQlDsCYp7QaJz+kHDKGasGkGDFu31rLmmMRq1RtqhCSHmjo51pdiEv+Z3Q6B
-         Sz5sJaFU6qJIzQbO8Z3m0BER/BSwPIA8P8ln2fmzHYjUSm1hlC0FqkszN9aUUbzePLyL
-         +V0g==
-X-Gm-Message-State: ALoCoQm0kOm0vzAmPRPVq9N7s9USY/FMSC429TL3/KnKR5yZBtDu5+ppgP4t2VPvco4gfkqIh6eX
-X-Received: by 10.31.8.69 with SMTP id 66mr13606988vki.82.1446821416126; Fri,
- 06 Nov 2015 06:50:16 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 6 Nov 2015 06:49:56 -0800 (PST)
-In-Reply-To: <20151106142955.GN13308@toto>
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-12-git-send-email-peter.maydell@linaro.org> <20151106142955.GN13308@toto>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZuP4p-0004l5-Gr; Thu, 05 Nov 2015 18:15:59 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Nov 2015 14:49:56 +0000
-Message-ID: <CAFEAcA_9Bv6_ktNJPZ06m4HL3DCmk66vN7T2450atzwF-3EGgg@mail.gmail.com>
-Subject: Re: [PATCH 11/16] memory: Add address_space_init_shareable()
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	qemu-arm@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-TUID: SSFxdXZoKzWB
+Subject: [PATCH 13/16] target-arm: Add QOM property for Secure memory region
+Date: Thu,  5 Nov 2015 18:15:55 +0000
+Message-Id: <1446747358-18214-14-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: ECwO8ls94ndO
 
-On 6 November 2015 at 14:29, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> On Thu, Nov 05, 2015 at 06:15:53PM +0000, Peter Maydell wrote:
+Add QOM property to the ARM CPU which boards can use to tell us what
+memory region to use for secure accesses. Nonsecure accesses
+go via the memory region specified with the base CPU class 'memory'
+property.
 
->> +AddressSpace *address_space_init_shareable(MemoryRegion *root, const char *name)
->> +{
->> +    AddressSpace *as;
->> +
->> +    QTAILQ_FOREACH(as, &address_spaces, address_spaces_link) {
->> +        if (root == as->root) {
->> +            as->ref_count++;
->> +            return as;
->> +        }
->> +    }
->> +
->> +    as = g_malloc0(sizeof *as);
->> +    address_space_init(as, root, name);
->
-> Nit-pick but IIUC, address_space_init does not need AS to be zeroed
-> so this could be changed to a g_malloc().
+By default, if no secure region is specified it is the same as the
+nonsecure region, and if no nonsecure region is specified we will use
+address_space_memory.
 
-I tend to prefer to be conservative about these things,
-so I use zero-allocation unless I'm really sure it's
-unnecessary.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target-arm/cpu-qom.h |  3 +++
+ target-arm/cpu.c     | 26 ++++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+)
 
-> either-way:
->
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-thanks
--- PMM
+diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
+index 53d3129..75dc74e 100644
+--- a/target-arm/cpu-qom.h
++++ b/target-arm/cpu-qom.h
+@@ -87,6 +87,9 @@ typedef struct ARMCPU {
+     /* GPIO outputs for generic timer */
+     qemu_irq gt_timer_outputs[NUM_GTIMERS];
+ 
++    /* MemoryRegion to use for secure physical accesses */
++    MemoryRegion *secure_memory;
++
+     /* 'compatible' string for this CPU for Linux device trees */
+     const char *dtb_compatible;
+ 
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 7789d50..85e2bc8 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -542,6 +542,15 @@ static void arm_cpu_post_init(Object *obj)
+          */
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_el3_property,
+                                  &error_abort);
++
++#ifndef CONFIG_USER_ONLY
++        object_property_add_link(obj, "secure-memory",
++                                 TYPE_MEMORY_REGION,
++                                 (Object **)&cpu->secure_memory,
++                                 qdev_prop_allow_set_link_before_realize,
++                                 OBJ_PROP_LINK_UNREF_ON_RELEASE,
++                                 &error_abort);
++#endif
+     }
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
+@@ -665,6 +674,23 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+ 
+     init_cpreg_list(cpu);
+ 
++#ifndef CONFIG_USER_ONLY
++    if (cpu->has_el3) {
++        AddressSpace *as;
++
++        if (!cpu->secure_memory) {
++            cpu->secure_memory = cs->memory;
++        }
++        as = address_space_init_shareable(cpu->secure_memory,
++                                          "cpu-secure-memory");
++        cpu_address_space_init(cs, as, ARMASIdx_S);
++    }
++    cpu_address_space_init(cs,
++                           address_space_init_shareable(cs->memory,
++                                                        "cpu-memory"),
++                           ARMASIdx_NS);
++#endif
++
+     qemu_init_vcpu(cs);
+     cpu_reset(cs);
+ 
+-- 
+1.9.1

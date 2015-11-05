@@ -1,127 +1,103 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p128sm1654630wmb.1.2017.10.13.09.32.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Oct 2017 09:32:03 -0700 (PDT)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 6AC973E0BFD;
-	Fri, 13 Oct 2017 17:24:39 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: richard.henderson@linaro.org
-Cc: peter.maydell@linaro.org,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [RFC PATCH 14/30] softfloat: 16 bit helpers for shr, clz and rounding and packing
-Date: Fri, 13 Oct 2017 17:24:22 +0100
-Message-Id: <20171013162438.32458-15-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20171013162438.32458-1-alex.bennee@linaro.org>
-References: <20171013162438.32458-1-alex.bennee@linaro.org>
+Received: by 10.182.105.169 with SMTP id gn9csp529766obb;
+        Thu, 5 Nov 2015 07:32:31 -0800 (PST)
+X-Received: by 10.31.32.204 with SMTP id g195mr1277783vkg.2.1446737550792;
+        Thu, 05 Nov 2015 07:32:30 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 135si4918607vke.173.2015.11.05.07.32.30
+        for <alex.bennee@linaro.org>
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 05 Nov 2015 07:32:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
+Received: from localhost ([::1]:33060 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZuMWc-0008TO-EX
+	for alex.bennee@linaro.org; Thu, 05 Nov 2015 10:32:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46579)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMW6-0007rU-Bf
+	for qemu-devel@nongnu.org; Thu, 05 Nov 2015 10:31:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMVy-00036A-Rp
+	for qemu-devel@nongnu.org; Thu, 05 Nov 2015 10:31:58 -0500
+Received: from mail-yk0-x22f.google.com ([2607:f8b0:4002:c07::22f]:33891)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZuMVy-00035x-Lz
+	for qemu-devel@nongnu.org; Thu, 05 Nov 2015 10:31:50 -0500
+Received: by ykdr3 with SMTP id r3so136556315ykd.1
+	for <qemu-devel@nongnu.org>; Thu, 05 Nov 2015 07:31:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro_org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=f+KjdLhlQ05hPuv6xJMO6mq5opdmPDZQ26HehNkKdlI=;
+	b=APLdhti6Cnj9R+bMeNCGG5HbF27hfs+TXAdKYwQIFrpmjaIpJJEQyMTnk7/FIz/yhO
+	N7iNZ8r8ntREQK2R428zXS5W/01dSQZkPXyfE7NgJAu012V4euvGvXSJayXBkYl0FOUx
+	FEsA6xaKGrrUS6ConzTKi0wuqw1CFrqvcKBZA/x2vBVX/UDHMqMxX9zAc7N9j25QQD1a
+	hpSylZD2bOW8O+Ur6oiZF7GqN6Tr0b3bczdB+IR0hkBfHv/boPkgeIqcDU4qAflZeOOc
+	YPKDp/chzteoXbdtpb9Qvii5kAWPdnOcQzOIpqh5kYr8+ZIrY6HJ7ManKOFhVhD2siOR
+	z0Vw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=f+KjdLhlQ05hPuv6xJMO6mq5opdmPDZQ26HehNkKdlI=;
+	b=IdqbY+/Rlt/56jWj+enTtLYO7r6k+Vkit+s2socH1L6KTX6xxNgInd/uHFmoC9wqp2
+	eWPUden7DILFazPQ1emTROUb1NSjWpB0mnhIRKCgGh9KxU3r3glb2pNhXUt9/+WO8xWZ
+	dxS0kvJwREv/tYIw8VTrtD7CFxGsroK7g9opwyfgVAKqWTIHALvEgusZBB31irjWRAWb
+	LbS3aG+ZIWDm4EUalDmcFWJTR8MtrA2R9ySnW0+3EFbKmRHNVpxhPNF2UvGuIaO/l55k
+	NitM8Q26g54aMmszzVFBFQO4LBTOgYL+O8FX0rWzDZF80EauwMbGRq4snOdBHgd2iirg
+	ejuw==
+X-Gm-Message-State: ALoCoQmw0loQ3Ww1wK1mHPzD9truBLUcTJl6SBtiDjdZNXecdS9dYED3kMGGmrgIT8Mw6GgotymW
+X-Received: by 10.31.107.81 with SMTP id g78mr1728238vkc.6.1446737510244; Thu,
+	05 Nov 2015 07:31:50 -0800 (PST)
 MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Thu, 5 Nov 2015 07:31:30 -0800 (PST)
+In-Reply-To: <1446736357-17610-1-git-send-email-wei@redhat.com>
+References: <1446736357-17610-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Nov 2015 15:31:30 +0000
+Message-ID: <CAFEAcA_9bk0DONJPK3DtDN-_Ym53TDq-83pzGg9-JSt3LTdcNg@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: xA6PXIjgcDQ7
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:4002:c07::22f
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm@nongnu.org,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH Trivial] hw/intc/arm_gic: Use pre-defined
+ macro for cpu_num in code
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: N2yPMmw3cnW6
 
-Half-precision helpers for float16 maths. I didn't bother hand-coding
-the count leading zeros as we could always fall-back to host-utils if
-we needed to.
+On 5 November 2015 at 15:12, Wei Huang <wei@redhat.com> wrote:
+> Given that there is a macro, NUM_CPU(s), defined for CPU number in
+> arm_gic.c, it is better to use it instead of using s->num_cpu in
+> this file. Code is more consistent after this change.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- fpu/softfloat-macros.h | 39 +++++++++++++++++++++++++++++++++++++++
- fpu/softfloat.c        | 21 +++++++++++++++++++++
- 2 files changed, 60 insertions(+)
+Hi. I think that actually since the NUM_CPU is just a relic from
+when it used to possibly defined as something other than s->num_cpu,
+we should go in the opposite direction, and remove the macro entirely
+in favour of just using s->num_cpu directly.
 
-diff --git a/fpu/softfloat-macros.h b/fpu/softfloat-macros.h
-index 9cc6158cb4..73091a88a8 100644
---- a/fpu/softfloat-macros.h
-+++ b/fpu/softfloat-macros.h
-@@ -89,6 +89,31 @@ this code that are retained.
- # define SOFTFLOAT_GNUC_PREREQ(maj, min) 0
- #endif
- 
-+/*----------------------------------------------------------------------------
-+| Shifts `a' right by the number of bits given in `count'.  If any nonzero
-+| bits are shifted off, they are ``jammed'' into the least significant bit of
-+| the result by setting the least significant bit to 1.  The value of `count'
-+| can be arbitrarily large; in particular, if `count' is greater than 16, the
-+| result will be either 0 or 1, depending on whether `a' is zero or nonzero.
-+| The result is stored in the location pointed to by `zPtr'.
-+*----------------------------------------------------------------------------*/
-+
-+static inline void shift16RightJamming(uint16_t a, int count, uint16_t *zPtr)
-+{
-+    uint16_t z;
-+
-+    if ( count == 0 ) {
-+        z = a;
-+    }
-+    else if ( count < 16 ) {
-+        z = ( a>>count ) | ( ( a<<( ( - count ) & 16 ) ) != 0 );
-+    }
-+    else {
-+        z = ( a != 0 );
-+    }
-+    *zPtr = z;
-+
-+}
- 
- /*----------------------------------------------------------------------------
- | Shifts `a' right by the number of bits given in `count'.  If any nonzero
-@@ -664,6 +689,20 @@ static uint32_t estimateSqrt32(int aExp, uint32_t a)
- 
- }
- 
-+/*----------------------------------------------------------------------------
-+| Returns the number of leading 0 bits before the most-significant 1 bit of
-+| `a'.  If `a' is zero, 16 is returned.
-+*----------------------------------------------------------------------------*/
-+
-+static int8_t countLeadingZeros16( uint16_t a )
-+{
-+    if (a) {
-+        return __builtin_clz(a);
-+    } else {
-+        return 16;
-+    }
-+}
-+
- /*----------------------------------------------------------------------------
- | Returns the number of leading 0 bits before the most-significant 1 bit of
- | `a'.  If `a' is zero, 32 is returned.
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 6ab4b39c09..cf7bf6d4f4 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -3488,6 +3488,27 @@ static float16 roundAndPackFloat16(flag zSign, int zExp,
-     return packFloat16(zSign, zExp, zSig >> 13);
- }
- 
-+/*----------------------------------------------------------------------------
-+| Takes an abstract floating-point value having sign `zSign', exponent `zExp',
-+| and significand `zSig', and returns the proper single-precision floating-
-+| point value corresponding to the abstract input.  This routine is just like
-+| `roundAndPackFloat32' except that `zSig' does not have to be normalized.
-+| Bit 15 of `zSig' must be zero, and `zExp' must be 1 less than the ``true''
-+| floating-point exponent.
-+*----------------------------------------------------------------------------*/
-+
-+static float16
-+ normalizeRoundAndPackFloat16(flag zSign, int zExp, uint16_t zSig,
-+                              float_status *status)
-+{
-+    int8_t shiftCount;
-+
-+    shiftCount = countLeadingZeros16( zSig ) - 1;
-+    return roundAndPackFloat16(zSign, zExp - shiftCount, zSig<<shiftCount,
-+                               true, status);
-+
-+}
-+
- /*----------------------------------------------------------------------------
- | If `a' is denormal and we are in flush-to-zero mode then set the
- | input-denormal exception and return zero. Otherwise just return the value.
--- 
-2.14.1
+(PS: you forgot to cc qemu-devel.)
+
+thanks
+-- PMM

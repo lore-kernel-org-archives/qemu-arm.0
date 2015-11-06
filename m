@@ -1,121 +1,88 @@
-Received: by 10.182.105.169 with SMTP id gn9csp530942obb;
-        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
-X-Received: by 10.129.154.138 with SMTP id r132mr16124892ywg.195.1447356235480;
-        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o127si10500151ywe.300.2015.11.12.11.23.55
+Received: by 10.182.105.169 with SMTP id gn9csp1109314obb;
+        Fri, 6 Nov 2015 06:50:16 -0800 (PST)
+X-Received: by 10.31.135.12 with SMTP id j12mr13944054vkd.73.1446821416404;
+        Fri, 06 Nov 2015 06:50:16 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x22b.google.com (mail-vk0-x22b.google.com. [2607:f8b0:400c:c05::22b])
+        by mx.google.com with ESMTPS id o9si438167vke.23.2015.11.06.06.50.16
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 06 Nov 2015 06:50:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) client-ip=2607:f8b0:400c:c05::22b;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@roeck-us.net
-Received: from localhost ([::1]:49388 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZwxTP-00074X-17
-	for alex.bennee@linaro.org; Thu, 12 Nov 2015 14:23:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35376)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1ZwxSs-0006WM-J2
-	for qemu-devel@nongnu.org; Thu, 12 Nov 2015 14:23:26 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1ZwxSo-00025q-Hw
-	for qemu-devel@nongnu.org; Thu, 12 Nov 2015 14:23:22 -0500
-Received: from bh-25.webhostbox.net ([208.91.199.152]:44746)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>)
-	id 1ZwxSo-000259-Bk; Thu, 12 Nov 2015 14:23:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=roeck-us.net;
-	s=default; 
-	h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date;
-	bh=8uLVvb0qCWJt1sPCIl1yZES23fxJGJytVPTml0dj5fE=; 
-	b=EJW7cUYBD7Gjk8SnCt0POs2og4HA1pEdm/viGwL1i/wxiGDXPnXFDJ2H1aVmaEBo+CFP0jnjGlslQWL834y5bb6P51ucd+jxA3dLQpJH71xFU4CW9kwvfK0DV+RojC7BdvaY2VNXLXDkKZf9R2qtRWg2TL/u9ZxnXY1/S2nN59o=;
-Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
-	([108.223.40.66]:56367 helo=localhost)
-	by bh-25.webhostbox.net with esmtpa (Exim 4.85)
-	(envelope-from <linux@roeck-us.net>)
-	id 1ZwxSr-003sOs-Fv; Thu, 12 Nov 2015 19:23:21 +0000
-Date: Thu, 12 Nov 2015 11:23:13 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Message-ID: <20151112192313.GA31667@roeck-us.net>
-References: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
+Received: by vkfw189 with SMTP id w189so15519006vkf.2
+        for <alex.bennee@linaro.org>; Fri, 06 Nov 2015 06:50:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro_org.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=zWZrHRpHdAoVuffoairh3oQHt3/HNPmnkVRZ+vfHT7I=;
+        b=KWsfBJNQtLYnzOVuTOlk64Rp4WnATI1PbBfc6vClRW+7pR9KVhxBKCMNef/mFZnCdE
+         SrS/94f09rQ+45gz9Qc8jrR6NKCnYzBM2XJkBH7lgTaSNXiY+/DBJuLCn4HQ68YbNoEg
+         OnFzgJ+1902lEQLKdjFwmFAOxbLbny3ZZw4Bl87L9ORCG5XwACAChhlN3Exx24ExXb8b
+         0seKMV1YjWHFpvv3zoevOpIO/atZOqQ86r3G1WTcHEaG86+Z1lVyQ2CLs9ZCyPF2VP/d
+         W7lqa2vl0eU50A2cvnbYXbl65DdYxrPZYHFZGp3CPCPxCWX8MrZKEyWOwdDh0OsoPsz6
+         1nGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=zWZrHRpHdAoVuffoairh3oQHt3/HNPmnkVRZ+vfHT7I=;
+        b=B8oOO7oO2ByEi9qbrrsYJ5vl1jQoNoaL48x5HCRZ5XE4Xn9VC4DXUuM662mPrtjDWC
+         xuaNM3Ri2oDjR3qDgCo9ylXHsDq45eVd9el1J4wbUTjjBn+ffPBe+oSOBfDAOA27vbW9
+         +zzDI15Hy/fOGS5KMsMrgVITo7tU4TSoCkPISf0/qb30CQT3dubDpubY2kiiCxHpKqWv
+         BmnI9kgKiQlDsCYp7QaJz+kHDKGasGkGDFu31rLmmMRq1RtqhCSHmjo51pdiEv+Z3Q6B
+         Sz5sJaFU6qJIzQbO8Z3m0BER/BSwPIA8P8ln2fmzHYjUSm1hlC0FqkszN9aUUbzePLyL
+         +V0g==
+X-Gm-Message-State: ALoCoQm0kOm0vzAmPRPVq9N7s9USY/FMSC429TL3/KnKR5yZBtDu5+ppgP4t2VPvco4gfkqIh6eX
+X-Received: by 10.31.8.69 with SMTP id 66mr13606988vki.82.1446821416126; Fri,
+ 06 Nov 2015 06:50:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Authenticated_sender: guenter@roeck-us.net
-X-OutGoing-Spam-Status: No, score=-1.0
-X-AntiAbuse: This header was added to track abuse,
-	please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - roeck-us.net
-X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
-	guenter@roeck-us.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 208.91.199.152
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alistair.francis@xilinx.com
-Subject: Re: [Qemu-devel] [PATCH for-2.5 v5 1/1] hw/misc: Add support for
- ADC controller in Xilinx Zynq 7000
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KTwV8S9cb84F
+Received: by 10.31.153.15 with HTTP; Fri, 6 Nov 2015 06:49:56 -0800 (PST)
+In-Reply-To: <20151106142955.GN13308@toto>
+References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+ <1446747358-18214-12-git-send-email-peter.maydell@linaro.org> <20151106142955.GN13308@toto>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Nov 2015 14:49:56 +0000
+Message-ID: <CAFEAcA_9Bv6_ktNJPZ06m4HL3DCmk66vN7T2450atzwF-3EGgg@mail.gmail.com>
+Subject: Re: [PATCH 11/16] memory: Add address_space_init_shareable()
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-TUID: SSFxdXZoKzWB
 
-On Thu, Nov 12, 2015 at 09:54:55AM -0800, Peter Crosthwaite wrote:
-> From: Guenter Roeck <linux@roeck-us.net>
-> 
-> Add support for the Xilinx XADC core used in Zynq 7000.
-> 
-> References:
-> - Zynq-7000 All Programmable SoC Technical Reference Manual
-> - 7 Series FPGAs and Zynq-7000 All Programmable SoC XADC
->   Dual 12-Bit 1 MSPS Analog-to-Digital Converter
-> 
-> Tested with Linux using QEMU machine xilinx-zynq-a9 with devicetree
-> files zynq-zc702.dtb and zynq-zc706.dtb, and kernel configuration
-> multi_v7_defconfig.
-> 
-> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> [ PC changes:
->   * Changed macro names to match TRM where possible
->   * Made programmers model macro scheme consistent
->   * Dropped XADC_ZYNQ_ prefix on local macros
->   * Fix ALM field width
->   * Update threshold-comparison interrupts in _update_ints()
->   * factored out DFIFO pushes into helper. Renamed to "push/pop"
->   * Changed xadc_reg to 10 bits and added OOB check.
->   * Reduced scope of MCTL reset to just stop channel coms.
->   * Added dummy read data to write commands
->   * Changed _ to - seperators in string names and filenames
->   * Dropped ------------ in header comment
->   * Catchall'ed _update_ints() in _write handler.
->   * Minor whitespace changes.
->   * Use ZYNQ_XADC_FIFO_DEPTH instead of ARRAY_SIZE()
-> ]
-> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+On 6 November 2015 at 14:29, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> On Thu, Nov 05, 2015 at 06:15:53PM +0000, Peter Maydell wrote:
 
-For v5 (same configuration as above):
+>> +AddressSpace *address_space_init_shareable(MemoryRegion *root, const char *name)
+>> +{
+>> +    AddressSpace *as;
+>> +
+>> +    QTAILQ_FOREACH(as, &address_spaces, address_spaces_link) {
+>> +        if (root == as->root) {
+>> +            as->ref_count++;
+>> +            return as;
+>> +        }
+>> +    }
+>> +
+>> +    as = g_malloc0(sizeof *as);
+>> +    address_space_init(as, root, name);
+>
+> Nit-pick but IIUC, address_space_init does not need AS to be zeroed
+> so this could be changed to a g_malloc().
 
-Tested-by: Guenter Roeck <linux@roeck-us.net>
+I tend to prefer to be conservative about these things,
+so I use zero-allocation unless I'm really sure it's
+unnecessary.
+
+> either-way:
+>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+thanks
+-- PMM

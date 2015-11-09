@@ -1,76 +1,66 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1240299obb;
-        Mon, 9 Nov 2015 08:04:50 -0800 (PST)
-X-Received: by 10.140.98.195 with SMTP id o61mr17146505qge.70.1447085090701;
-        Mon, 09 Nov 2015 08:04:50 -0800 (PST)
+Received: by 10.182.105.169 with SMTP id gn9csp1325942obb;
+        Mon, 9 Nov 2015 10:52:13 -0800 (PST)
+X-Received: by 10.55.78.143 with SMTP id c137mr32045186qkb.72.1447095133390;
+        Mon, 09 Nov 2015 10:52:13 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id f98si961292qge.78.2015.11.09.08.04.50
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q94si12205789qkh.115.2015.11.09.10.52.13
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 09 Nov 2015 08:04:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Mon, 09 Nov 2015 10:52:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
-Received: from localhost ([::1]:53644 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55004 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zvow6-0004Ye-0v
-	for alex.bennee@linaro.org; Mon, 09 Nov 2015 11:04:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35112)
+	id 1ZvrY5-0000gQ-5g
+	for alex.bennee@linaro.org; Mon, 09 Nov 2015 13:52:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35515)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZvovQ-0003Ht-2M
-	for qemu-arm@nongnu.org; Mon, 09 Nov 2015 11:04:08 -0500
+	(envelope-from <armbru@redhat.com>) id 1ZvrY2-0000fx-Ca
+	for qemu-arm@nongnu.org; Mon, 09 Nov 2015 13:52:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZvovP-0006Td-8q
-	for qemu-arm@nongnu.org; Mon, 09 Nov 2015 11:04:07 -0500
-Received: from mail-yk0-x232.google.com ([2607:f8b0:4002:c07::232]:34376)
+	(envelope-from <armbru@redhat.com>) id 1ZvrXz-0001im-33
+	for qemu-arm@nongnu.org; Mon, 09 Nov 2015 13:52:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40121)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZvovP-0006TT-5N
-	for qemu-arm@nongnu.org; Mon, 09 Nov 2015 11:04:07 -0500
-Received: by ykfs79 with SMTP id s79so42976933ykf.1
-	for <qemu-arm@nongnu.org>; Mon, 09 Nov 2015 08:04:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=035MvBeeFzTG6SEKEDEEjAgZDj4Zs6vrP5gG66sU7rY=;
-	b=mO4PEMSz0b8V/FkZhjOympbRBowv1lr5y+BFpqpFp4/4tKkE10OU7+qukL/7BUF/F7
-	242pq2DmxyR9yaibYe37Ioi83Lx52Q/Y3fKac7PSCRCjdYEN+bZp3GP+rV1Fkzj2FkNx
-	reKXtlq9MhVbILX4LPS7HtmJWcEWMSxGpG/4LOalaDTxA84BMJ7hxXWKOumYuyZ8SqcN
-	BJEt+F9c21q9T1WzAQJlschFED14ux4Fm9HlHqunvZWsyWilQBHOnd49K6QnN6XED5IJ
-	pPOir875Gq05IshLNyitEyRwZKGS5/007X8ErWgGRFC6ks2c3oKfuAKBuXyPrI/bioPf
-	iE1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=035MvBeeFzTG6SEKEDEEjAgZDj4Zs6vrP5gG66sU7rY=;
-	b=MZM5/fbMqg1djEiE75UJLj37K6nxrBPlDEtMJEO9Mqr1Scrl0VaTs9WyoCM08bcmhj
-	eGGLKuKxw/A65g90MJygj1NtIVDG2dp3r65v5ip4MXSYmN+j6ba3yB8ROTZAqUgXCno4
-	wWyZvwA4YUi6C9IJ86kgmQH/2RNSqdXTZgZdik+TQoiUhcpfulJQpFuyTb+iLcpyAOMD
-	c/mVgc+oS3zdN/HaLjQ/QFgKSouE6+SM3j7H/GnmLI6P4DVHxy0ICQZZ2LEAqhjTj6cu
-	W4jWGBiiOQ5KvmFD0sF5PPn8Jf33O+a4AIQmkmroFMdfKipMBaOMp/YDRJeL3Kd+ugIC
-	UKSA==
-X-Gm-Message-State: ALoCoQkJiieaX1H5Q/nkkaWhJUudK2ff+Z7r4mDbLYVo+CweGSgiUOl/AcWCbPANYHRbUnPQNfuU
-X-Received: by 10.129.99.9 with SMTP id x9mr23861539ywb.345.1447085042168;
-	Mon, 09 Nov 2015 08:04:02 -0800 (PST)
+	(envelope-from <armbru@redhat.com>)
+	id 1ZvrXy-0001ii-Sb; Mon, 09 Nov 2015 13:52:07 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 7A86A14AA9;
+	Mon,  9 Nov 2015 18:52:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-35.ams2.redhat.com
+	[10.36.116.35])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tA9Iq4AW001707
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 9 Nov 2015 13:52:06 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A6529303F90E; Mon,  9 Nov 2015 19:52:03 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1446909925-12201-1-git-send-email-drjones@redhat.com>
+	<CAFEAcA_Pk7_MourHFc-SLCQ-StTfc8ssZ_Kz6HahE5=9bxMHyA@mail.gmail.com>
+	<87twovpqg1.fsf@blackfin.pond.sub.org>
+	<CAFEAcA8rsWg=9ZV75ZmJYPrPznUH-bQObvzHUem1Tciv3_5CaA@mail.gmail.com>
+	<87oaf3jww7.fsf@blackfin.pond.sub.org>
+	<CAFEAcA8Rh9ts2r-nMGbNm7Y=SpdxL4gv0ch3CBWOHiHTRMeztg@mail.gmail.com>
+Date: Mon, 09 Nov 2015 19:52:03 +0100
+In-Reply-To: <CAFEAcA8Rh9ts2r-nMGbNm7Y=SpdxL4gv0ch3CBWOHiHTRMeztg@mail.gmail.com>
+	(Peter Maydell's message of "Mon, 9 Nov 2015 15:47:00 +0000")
+Message-ID: <878u67atv0.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Mon, 9 Nov 2015 08:03:42 -0800 (PST)
-In-Reply-To: <cover.1447007690.git.crosthwaite.peter@gmail.com>
-References: <cover.1447007690.git.crosthwaite.peter@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 Nov 2015 16:03:42 +0000
-Message-ID: <CAFEAcA9Po7Gf341ODGm0Atkr2BgHR2AOuf3hrG_nT0mWp0XnTQ@mail.gmail.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c07::232
-Cc: Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org,
-	QEMU Developers <qemu-devel@nongnu.org>, Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [Qemu-arm] [PATCH for-2.5 v4 0/3] ARM: Highbank: Highbank: Add
-	monitor support
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm@nongnu.org,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: error_report
+	cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -84,27 +74,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tXQoOaI/Xfk8
+X-TUID: oCk21mjuChoD
 
-On 9 November 2015 at 07:10, Peter Crosthwaite
-<crosthwaitepeter@gmail.com> wrote:
-> Hi,
->
-> This adds dummy monitor support to the Highbank board. It is needed by
-> the Highbank kernel which expects a monitor to be present.
->
-> A feature is added to arm/boot's board_setup feature, that allows the
-> board_setup entry point to be entered in secure mode (which is needed
-> to configure a monitor).
->
-> This feature does not play nice with -cpu override, but cpu override
-> is not valid for well-defined ARM SoCs. So defeature -cpu for Highbank.
->
-> Regards,
-> Peter
->
-> See indiv. patches for detailed change logs.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Applied this version to target-arm.next, thanks.
+> On 9 November 2015 at 10:21, Markus Armbruster <armbru@redhat.com> wrote:
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>
+>>> On 9 November 2015 at 07:44, Markus Armbruster <armbru@redhat.com> wrote:
+>>>> For consistency, error messages should be a phrase, not a full sentence,
+>>>> let alone a paraphraph.
+>>>
+>>> This is in direct conflict with wanting them to be actually useful
+>>> to users :-(
+>>
+>> I appreciate your drive for useful error messages.  Judging from the
+>> error messages we got, it's a rare thing.
+>>
+>> Let me rephrase.  The error message proper (the thing emitted by
+>> error_report()) should be a phrase, and it should be short and to the
+>> point.  It can be followed by hints.  Compare:
+>>
+>>     qemu-system-arm: Unable to determine GIC version supported by
+>> host. KVM acceleration is probably not supported.
+>>
+>> and
+>>
+>>     qemu-system-arm: Unable to determine GIC version supported by host
+>>     KVM acceleration is probably not supported
+>>
+>> I prefer the latter.  The error message proper is short and to the
+>> point.  The hint points to the most probable cause.  Sensible line
+>> lengths.
+>
+> I agree that the latter is preferable; I had been under the
+> impression that we weren't allowed to use newlines in error
+> messages, though...
 
--- PMM
+error_report()'s contract:
+
+/*
+ * Print an error message to current monitor if we have one, else to stderr.
+ * Format arguments like sprintf().  The result should not contain
+ * newlines.
+ * Prepend the current location and append a newline.
+ * It's wrong to call this in a QMP monitor.  Use error_setg() there.
+ */
+
+If you want to print additional information, that's totally fine!  Use
+error-printf().
+
+>> By the way, the error.h API supports this message + hints convention
+>> since commit 50b7b00.
+>
+> Thanks, I had missed this useful improvement to the API.
+> How does it work in cases like this where we don't have
+> an Error* to fill in?
+
+You do what error_report_err() would do had you had an Error *err to
+fill in:
+
+void error_report_err(Error *err)
+{
+    error_report("%s", error_get_pretty(err));
+    if (err->hint) {
+        error_printf_unless_qmp("%s\n", err->hint->str);
+    }
+    error_free(err);
+}
+
+In other words, you print the error message proper with error_report(),
+and the additional information with error_printf().
+
+error_report_err() uses error_printf_unless_qmp() instead because it
+wants to tolerate misuse in QMP context.  It isn't an assertion failure
+error mostly for historical reasons.

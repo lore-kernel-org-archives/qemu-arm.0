@@ -1,10 +1,10 @@
-Received: by 10.182.105.169 with SMTP id gn9csp901309obb;
+Received: by 10.182.105.169 with SMTP id gn9csp901310obb;
         Sun, 8 Nov 2015 17:16:14 -0800 (PST)
-X-Received: by 10.141.23.82 with SMTP id z79mr28183390qhd.39.1447031774232;
+X-Received: by 10.55.74.7 with SMTP id x7mr26752239qka.71.1447031774241;
         Sun, 08 Nov 2015 17:16:14 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z85si9309505qka.78.2015.11.08.17.16.14
+        by mx.google.com with ESMTPS id f143si9310038qhc.30.2015.11.08.17.16.14
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
         Sun, 08 Nov 2015 17:16:14 -0800 (PST)
@@ -13,52 +13,55 @@ Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49373 helo=lists.gnu.org)
+Received: from localhost ([::1]:49374 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zvb49-000601-Ru
+	id 1Zvb49-00060W-Rh
 	for alex.bennee@linaro.org; Sun, 08 Nov 2015 20:16:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52284)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52281)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1O-0001KZ-4p
-	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:23 -0500
+	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1O-0001KW-4I
+	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1J-0007ts-Kp
-	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:22 -0500
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:33212)
+	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1J-0007t4-34
+	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:21 -0500
+Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:34278)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mdavidsaver@gmail.com>)
-	id 1Zvb1J-0007re-Hw; Sun, 08 Nov 2015 20:13:17 -0500
-Received: by qkas77 with SMTP id s77so61962149qka.0;
-	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
+	id 1Zvb1I-0007sV-TH; Sun, 08 Nov 2015 20:13:16 -0500
+Received: by qkcn129 with SMTP id n129so65854091qkc.1;
+	Sun, 08 Nov 2015 17:13:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=R6sdd8VzGvyLT6ykX6gaj3KhJY5hoiCVqLYdtvDU3+w=;
-	b=O4fw/Qbm1q1VRfAzYEM2qYiZyL2b//FqajOwzCCOyAyZZQ2cRI0g6UrplCgI5AbUAY
-	GjYhC5w0N5vuJhsbjqiCiZqupZe71+48eI+bW8Nn+ff9zDkV2025jZ2/DoeS4Q/CrK++
-	lBB1TLhbEzbs/4kbFkf66hp6wuvmlkS2orCJCHD/lzb+pFoC02nORu+8wL9dndOrykkl
-	CWsPEfTYQYcZz3rpxzhi8Jvk7D/Odi4C0qYqumaWYOV8CzWnDEZ2jdFQOKShj2regRXA
-	WWi3kkmoZ2ACOjDzavkau42eYU5V3ZQXnmH17Xg26jThpgP5P0X+TPMvutuI4wnJH1rD
-	ejIA==
-X-Received: by 10.55.19.213 with SMTP id 82mr27115669qkt.51.1447031595806;
-	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=BbdhP65eqMnAIukaHzvR3HRm1jiehdbpos4l4gkiW3s=;
+	b=N06M9xeSKciCmB31tJl1zNmr6mKMi3UZAsnC6SvgNwxK8Fg8T9mhgRIGKrguH5YNue
+	SAUhGxAlCjya0MFKGrPESW4V9focPZrZx9NHAvhx3q2htZbZPEPH9PNlLJGay5xxLCGl
+	rVhJpzlKJEqB8j1yhSG9LS6NKyC1x89EffKmFR3Pavc8BKiRI37KQIu6qqYeYSVXMxUQ
+	6TGLcQnWEqrHuok3PT1GjOozx/2ZnFm8gPDYT2GCgOly4xKHXlX59zCsvq5LoinVkpuP
+	cbXqm3ZTSDDfT5UJpWSnHCnwHlwMd8JL9t4jAWNBz58vog5CvZnOkNoPgukDb23zhNo3
+	ysRw==
+X-Received: by 10.55.200.132 with SMTP id t4mr26602105qkl.78.1447031596462;
+	Sun, 08 Nov 2015 17:13:16 -0800 (PST)
 Received: from localhost.localdomain (ool-182df582.dyn.optonline.net.
 	[24.45.245.130])
-	by smtp.gmail.com with ESMTPSA id g97sm3915552qge.6.2015.11.08.17.13.14
+	by smtp.gmail.com with ESMTPSA id g97sm3915552qge.6.2015.11.08.17.13.15
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
+	Sun, 08 Nov 2015 17:13:16 -0800 (PST)
 From: Michael Davidsaver <mdavidsaver@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun,  8 Nov 2015 20:11:27 -0500
-Message-Id: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
+Date: Sun,  8 Nov 2015 20:11:28 -0500
+Message-Id: <1447031505-12477-2-git-send-email-mdavidsaver@gmail.com>
 X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
+References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
 X-Received-From: 2607:f8b0:400d:c09::233
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm@nongnu.org, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: [Qemu-devel] [PATCH 00/18] Fix exception handling and msr/mrs access
+Subject: [Qemu-devel] [PATCH 01/18] armv7m: MRS/MSR handle unprivileged
+	access
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,73 +75,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xa3+qS3lYGgq
+X-TUID: ZzlduRO+aOhQ
 
-This series grew from a previous incorrect patch attempting to fix some incorrect behavior.  After spending some time going through the arch. ref. manual for v7-M I think I understand better how this should work and have made a number of changes which actually improve the situation.
+The MRS and MSR instruction handling isn't checking
+the current permission level.
 
-These changes have not yet been cross checked against real hardware, and I therefore don't consider them mergeable.  It's gotten big enough though that I'd like to get some feedback.
+Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
+---
+ target-arm/helper.c | 79 +++++++++++++++++++++++++----------------------------
+ 1 file changed, 37 insertions(+), 42 deletions(-)
 
-I think the changes in this series effect only ARMv7-M specific code with the exception of removing references to NVIC from the GIC code.
-
-* Add unprivileged access case for MRS/MSR instructions
-* Priority based exception masking with PRIMASK, FAULTMASK, and BASEPRI.
-* Auto-clear FAULTMASK on exception return (except NMI)
-* Validation and consistency checking on exception return
-* Exception priorities using PRIGROUP
-* Exception escalation to HardFault when priority permits
-* Escalation to unrecoverable exception otherwise (though the action is not correct, see below)
-* Correct calculation of the RETTOBASE field of ICSR
-* Remove the need for the armv7m.hack MemoryRegion to catch exception returns
-* Fill in previously unimplemented HFSR, CFSR, and CCR registers
-
-This series removes the dependence of the NVIC code on the GIC.  The GIC doesn't have the concept of PRIGROUP to change the size of the group priority field.  Also, there are a lot of cases in this code which I don't understand and worry about breaking.  Now that I have things working (I think), I could look at recombining them if this is desired.
-
-Some additional state is also added to v7m in struct CPUARMState so that all the information needed
-in arm_v7m_cpu_exec_interrupt() is found in one place.  I started by having this state split between CPU and struct nvic_state, but found this confusing.  Some guidance would be helpful.
-
-I add a pointer to ARMCPU* in struct nvic_state which is populated in armv7m_nvic_realize().  I think this is reasonable given the tight coupling between NVIC and CPU, but it does look ugly.
-
-At the moment I've left the action of an unrecoverable exception to call cpu_abort().  I'm not sure of the value of implementing the actual defined behavior in the context of QEMU.
-
-I've tried to add VMState as appropriate, but have not tested it.
-
-I looked briefly at qtest, but can't quite see how to use it given the need to execute code to test most of the exception behavior.  Is something like this feasible at present?
-
-Regards,
-Michael
-
-
-Michael Davidsaver (18):
-  armv7m: MRS/MSR handle unprivileged access
-  armv7m: Undo armv7m.hack
-  armv7m: Complain about incorrect exception table entries.
-  armv7m: Explicit error for bad vector table
-  armv7m: expand NVIC state
-  armv7m: new NVIC utility functions
-  armv7m: Update NVIC registers
-  armv7m: fix RETTOBASE
-  armv7m: NVIC update vmstate
-  armv7m: NVIC initialization
-  armv7m: fix I and F flag handling
-  armv7m: simpler/faster exception start
-  armv7m: implement CFSR and HFSR
-  armv7m: auto-clear FAULTMASK
-  arm: gic: Remove references to NVIC
-  armv7m: check exception return consistency
-  armv7m: implement CCR
-  armv7m: prevent unprivileged write to STIR
-
- hw/arm/armv7m.c          |   8 -
- hw/intc/arm_gic.c        |  14 +-
- hw/intc/arm_gic_common.c |  23 +-
- hw/intc/armv7m_nvic.c    | 777 ++++++++++++++++++++++++++++++++++++-----------
- hw/intc/gic_internal.h   |   7 +-
- target-arm/cpu.c         |  44 +--
- target-arm/cpu.h         |  35 ++-
- target-arm/helper.c      | 222 ++++++++++----
- target-arm/machine.c     |   7 +-
- 9 files changed, 843 insertions(+), 294 deletions(-)
-
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index 4ecae61..4408100 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -7365,23 +7365,32 @@ uint32_t HELPER(get_r13_banked)(CPUARMState *env, uint32_t mode)
+ 
+ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+ {
+-    ARMCPU *cpu = arm_env_get_cpu(env);
++    uint32_t mask;
++    unsigned el = arm_current_el(env);
++
++    /* First handle registers which unprivileged can read */
++
++    switch (reg) {
++    case 0 ... 7: /* xPSR sub-fields */
++        mask = 0;
++        if ((reg&1) && el) {
++            mask |= 0x000001ff; /* IPSR (unpriv. reads as zero) */
++        }
++        if (!(reg&4)) {
++            mask |= 0xf8000000; /* APSR */
++        }
++        /* EPSR reads as zero */
++        return xpsr_read(env) & mask;
++        break;
++    case 20: /* CONTROL */
++        return env->v7m.control;
++    }
++
++    if (el == 0) {
++        return 0; /* unprivileged reads others as zero */
++    }
+ 
+     switch (reg) {
+-    case 0: /* APSR */
+-        return xpsr_read(env) & 0xf8000000;
+-    case 1: /* IAPSR */
+-        return xpsr_read(env) & 0xf80001ff;
+-    case 2: /* EAPSR */
+-        return xpsr_read(env) & 0xff00fc00;
+-    case 3: /* xPSR */
+-        return xpsr_read(env) & 0xff00fdff;
+-    case 5: /* IPSR */
+-        return xpsr_read(env) & 0x000001ff;
+-    case 6: /* EPSR */
+-        return xpsr_read(env) & 0x0700fc00;
+-    case 7: /* IEPSR */
+-        return xpsr_read(env) & 0x0700edff;
+     case 8: /* MSP */
+         return env->v7m.current_sp ? env->v7m.other_sp : env->regs[13];
+     case 9: /* PSP */
+@@ -7393,40 +7402,26 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+         return env->v7m.basepri;
+     case 19: /* FAULTMASK */
+         return (env->daif & PSTATE_F) != 0;
+-    case 20: /* CONTROL */
+-        return env->v7m.control;
+     default:
+-        /* ??? For debugging only.  */
+-        cpu_abort(CPU(cpu), "Unimplemented system register read (%d)\n", reg);
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to read unknown special"
++                                       " register %d\n", reg);
+         return 0;
+     }
+ }
+ 
+ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
+ {
+-    ARMCPU *cpu = arm_env_get_cpu(env);
++    if (arm_current_el(env) == 0 && reg > 7) {
++        /* only xPSR sub-fields may be written by unprivileged */
++        return;
++    }
+ 
+     switch (reg) {
+-    case 0: /* APSR */
+-        xpsr_write(env, val, 0xf8000000);
+-        break;
+-    case 1: /* IAPSR */
+-        xpsr_write(env, val, 0xf8000000);
+-        break;
+-    case 2: /* EAPSR */
+-        xpsr_write(env, val, 0xfe00fc00);
+-        break;
+-    case 3: /* xPSR */
+-        xpsr_write(env, val, 0xfe00fc00);
+-        break;
+-    case 5: /* IPSR */
+-        /* IPSR bits are readonly.  */
+-        break;
+-    case 6: /* EPSR */
+-        xpsr_write(env, val, 0x0600fc00);
+-        break;
+-    case 7: /* IEPSR */
+-        xpsr_write(env, val, 0x0600fc00);
++    case 0 ... 7: /* xPSR sub-fields */
++        /* only APSR is actually writable */
++        if (reg&4) {
++            xpsr_write(env, val, 0xf8000000); /* APSR */
++        }
+         break;
+     case 8: /* MSP */
+         if (env->v7m.current_sp)
+@@ -7467,8 +7462,8 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
+         switch_v7m_sp(env, (val & 2) != 0);
+         break;
+     default:
+-        /* ??? For debugging only.  */
+-        cpu_abort(CPU(cpu), "Unimplemented system register write (%d)\n", reg);
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
++                                       " register %d\n", reg);
+         return;
+     }
+ }
 -- 
 2.1.4
 

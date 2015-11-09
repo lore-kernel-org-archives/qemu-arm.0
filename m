@@ -1,67 +1,64 @@
-Received: by 10.182.105.169 with SMTP id gn9csp900684obb;
-        Sun, 8 Nov 2015 17:14:17 -0800 (PST)
-X-Received: by 10.140.91.109 with SMTP id y100mr22834731qgd.20.1447031655617;
-        Sun, 08 Nov 2015 17:14:15 -0800 (PST)
+Received: by 10.182.105.169 with SMTP id gn9csp901309obb;
+        Sun, 8 Nov 2015 17:16:14 -0800 (PST)
+X-Received: by 10.141.23.82 with SMTP id z79mr28183390qhd.39.1447031774232;
+        Sun, 08 Nov 2015 17:16:14 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 38si9324862qgm.44.2015.11.08.17.14.15
+        by mx.google.com with ESMTPS id z85si9309505qka.78.2015.11.08.17.16.14
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Sun, 08 Nov 2015 17:14:15 -0800 (PST)
+        Sun, 08 Nov 2015 17:16:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49350 helo=lists.gnu.org)
+Received: from localhost ([::1]:49373 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zvb2F-0002XK-Aq
-	for alex.bennee@linaro.org; Sun, 08 Nov 2015 20:14:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52283)
+	id 1Zvb49-000601-Ru
+	for alex.bennee@linaro.org; Sun, 08 Nov 2015 20:16:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52284)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1O-0001KY-4F
+	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1O-0001KZ-4p
 	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1K-0007uC-NK
+	(envelope-from <mdavidsaver@gmail.com>) id 1Zvb1J-0007ts-Kp
 	for qemu-devel@nongnu.org; Sun, 08 Nov 2015 20:13:22 -0500
-Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:33215)
+Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:33212)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mdavidsaver@gmail.com>)
-	id 1Zvb1K-0007u7-JB; Sun, 08 Nov 2015 20:13:18 -0500
-Received: by qkas77 with SMTP id s77so61962345qka.0;
-	Sun, 08 Nov 2015 17:13:18 -0800 (PST)
+	id 1Zvb1J-0007re-Hw; Sun, 08 Nov 2015 20:13:17 -0500
+Received: by qkas77 with SMTP id s77so61962149qka.0;
+	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=o9d2HY1ekIVFaVGdmhNsYzEXvAz3FMsq3Hs0L4dXGfY=;
-	b=cSky7kTWYwh9fwDGbsYAs/1bTGNSmWMfsTViXE94wVQHAawp22uXV53XcsQzGCdwdD
-	YQ3LUHKcnkaC9UvgzxQZRLTVzhzcQkOLHdH0IzeQRbU2GpgWu88dXaVb7+wgAja+VxjI
-	iB4gFcrIW922qoBt9rtI8zhIrACNdy89bFivQMKFlaJqD6iYknZUc03Pzbu2Ym9xXT3a
-	16JEIaqzJSfHMgS3N6PrTy7YZX3VcKLsomiCfyzDdzwG5L3QWCoKyIn7IfVYF4qOdBoW
-	bU114Fm6poGeJ6wEs6A9K0ynW3fQoEEbVpwTSfzx3+m3gf7IuManqy2M6GZ9geKpO7VK
-	n8SQ==
-X-Received: by 10.55.73.18 with SMTP id w18mr26848045qka.95.1447031598196;
-	Sun, 08 Nov 2015 17:13:18 -0800 (PST)
+	h=from:to:cc:subject:date:message-id;
+	bh=R6sdd8VzGvyLT6ykX6gaj3KhJY5hoiCVqLYdtvDU3+w=;
+	b=O4fw/Qbm1q1VRfAzYEM2qYiZyL2b//FqajOwzCCOyAyZZQ2cRI0g6UrplCgI5AbUAY
+	GjYhC5w0N5vuJhsbjqiCiZqupZe71+48eI+bW8Nn+ff9zDkV2025jZ2/DoeS4Q/CrK++
+	lBB1TLhbEzbs/4kbFkf66hp6wuvmlkS2orCJCHD/lzb+pFoC02nORu+8wL9dndOrykkl
+	CWsPEfTYQYcZz3rpxzhi8Jvk7D/Odi4C0qYqumaWYOV8CzWnDEZ2jdFQOKShj2regRXA
+	WWi3kkmoZ2ACOjDzavkau42eYU5V3ZQXnmH17Xg26jThpgP5P0X+TPMvutuI4wnJH1rD
+	ejIA==
+X-Received: by 10.55.19.213 with SMTP id 82mr27115669qkt.51.1447031595806;
+	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
 Received: from localhost.localdomain (ool-182df582.dyn.optonline.net.
 	[24.45.245.130])
-	by smtp.gmail.com with ESMTPSA id g97sm3915552qge.6.2015.11.08.17.13.17
+	by smtp.gmail.com with ESMTPSA id g97sm3915552qge.6.2015.11.08.17.13.14
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 08 Nov 2015 17:13:17 -0800 (PST)
+	Sun, 08 Nov 2015 17:13:15 -0800 (PST)
 From: Michael Davidsaver <mdavidsaver@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sun,  8 Nov 2015 20:11:31 -0500
-Message-Id: <1447031505-12477-5-git-send-email-mdavidsaver@gmail.com>
+Date: Sun,  8 Nov 2015 20:11:27 -0500
+Message-Id: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
-References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c09::22d
+X-Received-From: 2607:f8b0:400d:c09::233
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm@nongnu.org, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: [Qemu-devel] [PATCH 04/18] armv7m: Explicit error for bad vector
-	table
+Subject: [Qemu-devel] [PATCH 00/18] Fix exception handling and msr/mrs access
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -75,41 +72,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dfoXq9LzXRZo
+X-TUID: xa3+qS3lYGgq
 
-Give an explicit error and abort when a load
-from VECBASE fails.  Otherwise would likely
-jump to 0, which for v7-m holds the reset stack
-pointer address.
+This series grew from a previous incorrect patch attempting to fix some incorrect behavior.  After spending some time going through the arch. ref. manual for v7-M I think I understand better how this should work and have made a number of changes which actually improve the situation.
 
-Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
----
- target-arm/helper.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+These changes have not yet been cross checked against real hardware, and I therefore don't consider them mergeable.  It's gotten big enough though that I'd like to get some feedback.
 
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 4178400..1d7ac43 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -5496,7 +5496,17 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     /* Clear IT bits */
-     env->condexec_bits = 0;
-     env->regs[14] = lr;
--    addr = ldl_phys(cs->as, env->v7m.vecbase + env->v7m.exception * 4);
-+    {
-+        MemTxResult result;
-+        addr = address_space_ldl(cs->as,
-+                                 env->v7m.vecbase + env->v7m.exception * 4,
-+                                 MEMTXATTRS_UNSPECIFIED, &result);
-+        if (result != MEMTX_OK) {
-+            cpu_abort(cs, "Failed to read from exception vector table "
-+                      "entry %08x\n",
-+                      env->v7m.vecbase + env->v7m.exception * 4);
-+        }
-+    }
-     env->regs[15] = addr & 0xfffffffe;
-     env->thumb = addr & 1;
-     if (!env->thumb) {
+I think the changes in this series effect only ARMv7-M specific code with the exception of removing references to NVIC from the GIC code.
+
+* Add unprivileged access case for MRS/MSR instructions
+* Priority based exception masking with PRIMASK, FAULTMASK, and BASEPRI.
+* Auto-clear FAULTMASK on exception return (except NMI)
+* Validation and consistency checking on exception return
+* Exception priorities using PRIGROUP
+* Exception escalation to HardFault when priority permits
+* Escalation to unrecoverable exception otherwise (though the action is not correct, see below)
+* Correct calculation of the RETTOBASE field of ICSR
+* Remove the need for the armv7m.hack MemoryRegion to catch exception returns
+* Fill in previously unimplemented HFSR, CFSR, and CCR registers
+
+This series removes the dependence of the NVIC code on the GIC.  The GIC doesn't have the concept of PRIGROUP to change the size of the group priority field.  Also, there are a lot of cases in this code which I don't understand and worry about breaking.  Now that I have things working (I think), I could look at recombining them if this is desired.
+
+Some additional state is also added to v7m in struct CPUARMState so that all the information needed
+in arm_v7m_cpu_exec_interrupt() is found in one place.  I started by having this state split between CPU and struct nvic_state, but found this confusing.  Some guidance would be helpful.
+
+I add a pointer to ARMCPU* in struct nvic_state which is populated in armv7m_nvic_realize().  I think this is reasonable given the tight coupling between NVIC and CPU, but it does look ugly.
+
+At the moment I've left the action of an unrecoverable exception to call cpu_abort().  I'm not sure of the value of implementing the actual defined behavior in the context of QEMU.
+
+I've tried to add VMState as appropriate, but have not tested it.
+
+I looked briefly at qtest, but can't quite see how to use it given the need to execute code to test most of the exception behavior.  Is something like this feasible at present?
+
+Regards,
+Michael
+
+
+Michael Davidsaver (18):
+  armv7m: MRS/MSR handle unprivileged access
+  armv7m: Undo armv7m.hack
+  armv7m: Complain about incorrect exception table entries.
+  armv7m: Explicit error for bad vector table
+  armv7m: expand NVIC state
+  armv7m: new NVIC utility functions
+  armv7m: Update NVIC registers
+  armv7m: fix RETTOBASE
+  armv7m: NVIC update vmstate
+  armv7m: NVIC initialization
+  armv7m: fix I and F flag handling
+  armv7m: simpler/faster exception start
+  armv7m: implement CFSR and HFSR
+  armv7m: auto-clear FAULTMASK
+  arm: gic: Remove references to NVIC
+  armv7m: check exception return consistency
+  armv7m: implement CCR
+  armv7m: prevent unprivileged write to STIR
+
+ hw/arm/armv7m.c          |   8 -
+ hw/intc/arm_gic.c        |  14 +-
+ hw/intc/arm_gic_common.c |  23 +-
+ hw/intc/armv7m_nvic.c    | 777 ++++++++++++++++++++++++++++++++++++-----------
+ hw/intc/gic_internal.h   |   7 +-
+ target-arm/cpu.c         |  44 +--
+ target-arm/cpu.h         |  35 ++-
+ target-arm/helper.c      | 222 ++++++++++----
+ target-arm/machine.c     |   7 +-
+ 9 files changed, 843 insertions(+), 294 deletions(-)
+
 -- 
 2.1.4
 

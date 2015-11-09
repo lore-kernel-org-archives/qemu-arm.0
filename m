@@ -1,63 +1,90 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1087033obb;
-        Mon, 9 Nov 2015 02:56:23 -0800 (PST)
-X-Received: by 10.129.34.131 with SMTP id i125mr23541030ywi.186.1447066581496;
-        Mon, 09 Nov 2015 02:56:21 -0800 (PST)
-Return-Path: <pbonzini@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id p2si7156322ywb.232.2015.11.09.02.56.21
+Received: by 10.182.105.169 with SMTP id gn9csp1087763obb;
+        Mon, 9 Nov 2015 02:58:25 -0800 (PST)
+X-Received: by 10.13.238.132 with SMTP id x126mr21970271ywe.221.1447066705378;
+        Mon, 09 Nov 2015 02:58:25 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-yk0-x22b.google.com (mail-yk0-x22b.google.com. [2607:f8b0:4002:c07::22b])
+        by mx.google.com with ESMTPS id q200si7152934ywg.206.2015.11.09.02.58.25
+        for <alex.bennee@linaro.org>
         (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Nov 2015 02:56:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Mon, 09 Nov 2015 02:58:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c07::22b as permitted sender) client-ip=2607:f8b0:4002:c07::22b;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=pbonzini@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id B2E3C461D7;
-	Mon,  9 Nov 2015 10:56:20 +0000 (UTC)
-Received: from [10.36.112.64] (ovpn-112-64.ams2.redhat.com [10.36.112.64])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id tA9AuFrd013316
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 9 Nov 2015 05:56:18 -0500
-Subject: Re: [PATCH 12/16] qom/cpu: Add MemoryRegion property
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-13-git-send-email-peter.maydell@linaro.org>
-Cc: patches@linaro.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
-        qemu-arm@nongnu.org
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56407BCF.3070307@redhat.com>
-Date: Mon, 9 Nov 2015 11:56:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.3.0
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c07::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
+Received: by ykba4 with SMTP id a4so257512573ykb.3
+        for <alex.bennee@linaro.org>; Mon, 09 Nov 2015 02:58:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro_org.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=M1K0NPtLjAQDz7Qx7ks/kjUZea1APD2pEkqv6Yj/jxk=;
+        b=aXa4VB+NQemiXWuv6vpPgPKcPZqCh+vqRAzkeHEts4pwf+hqW4S1z9PgEoeMRXWhq0
+         c+gPMZ14ETxiQpKRem82eD3QIM5FJART0wKCSf52I/i/Ug7513t0LTv3OtgJdY1M6R0+
+         d/CrXD0g5CU4rzwo1r9D68OegwLmg+BTiTkyq6TyhZIiwa+hQz2ZSaWMUwU7xm2gi6b4
+         9YJncMnNvZyX2mLCaLmNqDcS9KkysobwGFCRBFboQMnt7j1741yvICDDcEixzgdOvBFL
+         vpVJpAGIZ+s1r49h+4j0F4006YkSaNTaf7WelNE6lP0llNLvN3N9HDAnmSWT/ZVbw6Tk
+         jH0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=M1K0NPtLjAQDz7Qx7ks/kjUZea1APD2pEkqv6Yj/jxk=;
+        b=bSX4Qmy+WHdB5JO5YCAN1VCJ9Xscz6COoThsg1eBfmIEy3p5wjGbMilRoTXpk61VHU
+         D0wCL5+E3oadwUpbCr71sD+5oJvAelBaIjqPY8oZQpgJgkQiIH7XO8sTHVTIATcQNXcZ
+         nzYx7PFGv0e1CxrcPUDx2g5A/O/gYHdWRruxRFCqVdBdjsRHHztVORG4uxu3iEn5vk3j
+         ysn7qqobaX6CraltKozMGTCHtT40FmmGm/ANSPWFEh52DlWNZCjOPBco/msSDwCAb3IJ
+         MfmXAAbjzX0xaJJOWyrQxMicCD4c9nftAiyXSjD37bKkZ5CkOUyoEuG1WnjQgjf8XLrB
+         IG5g==
+X-Gm-Message-State: ALoCoQlclukzo0q4do/gXUkdpBEzVojX9SvN9rXdFdS/jXoUCZUo04ejaD3lqjqAMLTuunu/K5Nt
+X-Received: by 10.129.99.9 with SMTP id x9mr22266398ywb.345.1447066705082;
+ Mon, 09 Nov 2015 02:58:25 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1446747358-18214-13-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-TUID: KyeC8K1RT9BB
+Received: by 10.31.153.15 with HTTP; Mon, 9 Nov 2015 02:58:05 -0800 (PST)
+In-Reply-To: <56407AC8.9020100@redhat.com>
+References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
+ <1446747358-18214-10-git-send-email-peter.maydell@linaro.org> <56407AC8.9020100@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Nov 2015 10:58:05 +0000
+Message-ID: <CAFEAcA9KrB0wZwQzYUmGBW2NPZWkxHFk-JUnW-XwOfbo4wbWUQ@mail.gmail.com>
+Subject: Re: [PATCH 09/16] target-arm: Support multiple address spaces in page
+ table walks
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-TUID: /Pkr9v1vWDJ9
 
+On 9 November 2015 at 10:51, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+>
+> On 05/11/2015 19:15, Peter Maydell wrote:
+>> If we have a secure address space, use it in page table walks:
+>>  * when doing the physical accesses to read descriptors,
+>>    make them through the correct address space
+>>  * when the final result indicates a secure access, pass the
+>>    correct address space index to tlb_set_page_with_attrs()
+>>
+>> (The descriptor reads are the only direct physical accesses
+>> made in target-arm/ for CPUs which might have TrustZone.)
+>
+> What is the case where you have no secure address space and you have
+> TrustZone?  KVM doesn't have TrustZone, so it should never be in a
+> secure regime, should it?
 
+You mean "what is the case where is_secure but cpu->num_ases == 1" ?
+That happens if you have a TrustZone CPU but the board has only
+connected up one address space, because there is no difference
+in the view from Secure and NonSecure. (vexpress is like this
+in hardware, and most of our board models for TZ CPUS are like
+that now even if the real h/w makes a distinction.)
 
-On 05/11/2015 19:15, Peter Maydell wrote:
-> +
-> +    /* This is a softmmu CPU object, so create a property for it
-> +     * so users can wire up its memory. (This can't go in qom/cpu.c
-> +     * because that file is compiled only once for both user-mode
-> +     * and system builds.) The default if no link is set up is to use
-> +     * the system address space.
-> +     */
-> +    object_property_add_link(OBJECT(cpu), "memory", TYPE_MEMORY_REGION,
-> +                             (Object **)&cpu->memory,
-> +                             qdev_prop_allow_set_link_before_realize,
-> +                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
-> +                             &error_abort);
-> +    cpu->memory = system_memory;
+I could have handled that by making the CPU init code always
+register two ASes (using the same one twice if the board code
+only passes one or using system_address_space twice if the
+board code doesn't pass one at all), but that seemed a bit wasteful.
 
-You need object_ref(cpu->memory) here, because setting cpu->memory will
-drop a reference from the previously-set value.
-
-Paolo
-
->  #endif
+thanks
+-- PMM

@@ -1,96 +1,112 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1861930obb;
-        Tue, 10 Nov 2015 08:13:54 -0800 (PST)
-X-Received: by 10.31.139.200 with SMTP id n191mr3187914vkd.100.1447172034908;
-        Tue, 10 Nov 2015 08:13:54 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x232.google.com (mail-vk0-x232.google.com. [2607:f8b0:400c:c05::232])
-        by mx.google.com with ESMTPS id 130si2612732vko.107.2015.11.10.08.13.54
+Received: by 10.182.105.169 with SMTP id gn9csp1900973obb;
+        Tue, 10 Nov 2015 09:24:30 -0800 (PST)
+X-Received: by 10.55.50.149 with SMTP id y143mr5736978qky.86.1447176270721;
+        Tue, 10 Nov 2015 09:24:30 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f96si3735418qge.24.2015.11.10.09.24.30
         for <alex.bennee@linaro.org>
-        (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Nov 2015 08:13:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::232 as permitted sender) client-ip=2607:f8b0:400c:c05::232;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Tue, 10 Nov 2015 09:24:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::232 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by vkbk63 with SMTP id k63so974731vkb.0
-        for <alex.bennee@linaro.org>; Tue, 10 Nov 2015 08:13:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=qprR8/O1o4YyANrNEOcbhc6O9DLH4xtsGj9i5UdJ6Gc=;
-        b=yxZDNnEwZgmBMP65aXkg45gK41ZGpbuRiEFK+h8+StaYrh8nIjgfPGJEAhcMEAmtiJ
-         f1fIZ+5qNuUO7bSVc52Q/BiBDKuVY0aJ7RLs7KFrLSGiIppIpcPCb8J7XNPqgYtGeHwV
-         uNGtQ+k3LsRKOOv29rtEGcVjtYtBNVdysrBIFvR7rsEEXeDp4YhzcRempHpHEX9a/vBu
-         +tknyYoh9QZoDKZTPE3Bv1f7A1oeypJNjJYk/Y2msFWCJgjS9Gg/OsgVIYKNlV5q2rmN
-         XuvsdYPlNTWG870k2xn+kmJPUqSwJ/IWuFhXZ47HRylCjs6Cx05vN1YU5kOMJtDiTTsq
-         girw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=qprR8/O1o4YyANrNEOcbhc6O9DLH4xtsGj9i5UdJ6Gc=;
-        b=ThBIMVIqbPxol+WDhHTqsHl4NL04zzYR6jZxvqkXQaI7uqPc0idoAEw4UkePxTlJr1
-         MgJSwhi55DJcoXmbNHm6YcFhML4dWbh/m3CMzUINJe74LhCTjbI63yMM6jx9lCGMkvOW
-         DH6frzeiLtFNlctUqJcVQOQqK5uGbSu7PbCbbtEE0m6pv0++0PauZNpi/EfHtDYJ6l0P
-         s8VTxE7Ksgp9HQ5/pJR08aaYSHLoYVa8jQEKa9R7PnvN6j0wrEJV9QflZoBhyc4Y4XDO
-         JZjEc+tf/cQCBoQDHcXDE/LBGCBZvR2dXYd52vezKefa8PFdGlz7FkFB/D7RJPROkOn4
-         0yTQ==
-X-Gm-Message-State: ALoCoQmo+E8jbQie0TNT4TOrlggUK+HYL3xP8uY8hCFSiuxflrypFVM+7zParVXJxCfzePWf/FHh
-X-Received: by 10.31.132.8 with SMTP id g8mr3086848vkd.92.1447172034523; Tue,
- 10 Nov 2015 08:13:54 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 10 Nov 2015 08:13:35 -0800 (PST)
-In-Reply-To: <CAFEAcA90=U_RTmEtVOeHEmptEQwXc40RcV-kVJQ_88z8MYqwfw@mail.gmail.com>
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-4-git-send-email-peter.maydell@linaro.org>
- <56407909.2080607@redhat.com> <CAFEAcA90=U_RTmEtVOeHEmptEQwXc40RcV-kVJQ_88z8MYqwfw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 Nov 2015 16:13:35 +0000
-Message-ID: <CAFEAcA_uct+Em93ARsckq=E-eVSaaHi+FC2nvNb2fwZ62b2g6g@mail.gmail.com>
-Subject: Re: [PATCH 03/16] tlb_set_page_with_attrs: Take argument specifying
- AddressSpace to use
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	qemu-arm@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-TUID: nmc3u6uozl6B
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34403 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZwCej-0004kt-T8
+	for alex.bennee@linaro.org; Tue, 10 Nov 2015 12:24:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40942)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1ZwCeC-00047g-Hi
+	for qemu-devel@nongnu.org; Tue, 10 Nov 2015 12:23:57 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1ZwCe9-0002tG-6r
+	for qemu-devel@nongnu.org; Tue, 10 Nov 2015 12:23:56 -0500
+Received: from mail-lf0-x232.google.com ([2a00:1450:4010:c07::232]:36770)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1ZwCe9-0002sm-0b; Tue, 10 Nov 2015 12:23:53 -0500
+Received: by lfs39 with SMTP id 39so2091837lfs.3;
+	Tue, 10 Nov 2015 09:23:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=5SYENuA4FA2cdZ2JphwEUEGh4z3D8CbABv+CKZ8Znnw=;
+	b=IvGh2DP8syZiPROl/GfOg4CYQU6dkBIY5+qMiCisKlSe2zLTf2b0VwR1kOyB1PeCin
+	mr75jE88MwLU0gszYM/kVFEWCAtnw2RgAtWlwZEbbJ5cDziS6lMIxo24wZ2B3h3PYl+L
+	P7GcUMIb7dt36yWEpa1AN04o/DNsg1j0sITnIO3FpMNickg1HWb7INVJ60nriA03HNbX
+	FctSzmvzNAjDbDokceKxozitK22yauO5n0nXEmlBckoAcIVpI/x73e382Q81uRxnUdeJ
+	vGvqCJJJYPJmSML8GOm/usac3XTO84zRs3fxQZssAHO1HzxI9VMC4CV0yuRi2sy/SQcP
+	8EGQ==
+X-Received: by 10.25.159.193 with SMTP id i184mr2212298lfe.63.1447176232063;
+	Tue, 10 Nov 2015 09:23:52 -0800 (PST)
+Received: from sfedorov-laptop.smware.local ([213.243.91.10])
+	by smtp.gmail.com with ESMTPSA id y79sm695626lfd.45.2015.11.10.09.23.50
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 10 Nov 2015 09:23:51 -0800 (PST)
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 10 Nov 2015 20:23:42 +0300
+Message-Id: <1447176222-16401-1-git-send-email-serge.fdrv@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:4010:c07::232
+Cc: Sergey Fedorov <serge.fdrv@gmail.com>, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [Qemu-devel] [PATCH] target-arm: Update PC before calling
+	gen_helper_check_breakpoints()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pfyJxx3OPIW9
 
-On 9 November 2015 at 10:49, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 9 November 2015 at 10:44, Paolo Bonzini <pbonzini@redhat.com> wrote:
->>
->>
->> On 05/11/2015 19:15, Peter Maydell wrote:
->>> Add an argument to tlb_set_page_with_attrs which allows the target CPU code
->>> to tell the core code which AddressSpace to use.
->>>
->>> The AddressSpace is specified by the index into the array of ASes which
->>> were registered with cpu_address_space_init().
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>
->> Can it be deduced from the attributes instead?  Basically, you would have
->>
->>    int cpu_get_asidx(MemTxAttrs attrs);
->>
->> in cpu.h, which is called by tlb_set_page_with_attrs.
->> cpu_get_phys_page_asidx_debug could also be replaced by
->> cpu_get_phys_page_attrs_debug.
->
-> For ARM it could, certainly (and as you say, if we go that
-> way then some of the extra passing around of asidxes collapses,
-> and in particular we don't need to keep them separately in the
-> iotlb entries). I wasn't convinced that this would be true for
-> all possible uses of AddressSpaces.
+PC should be updated in the CPU state before calling check_breakpoints()
+helper. Otherwise, the helper would not see the correct PC in the CPU
+state if it is not at the start of a TB.
 
-Having thought a bit more about this, I think you're right. At
-any rate, our current planned multi-as use will certainly work
-with the existing attrs. And we could always steal a few bits
-in the MemTxAttrs to indicate the asidx for some hypothetical
-future usage even if they wouldn't otherwise have to be
-exposed to the rest of the system outside the CPU.
+Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+---
+ target-arm/translate-a64.c | 1 +
+ target-arm/translate.c     | 1 +
+ 2 files changed, 2 insertions(+)
 
-thanks
--- PMM
+diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+index d7e0954..fe485a4 100644
+--- a/target-arm/translate-a64.c
++++ b/target-arm/translate-a64.c
+@@ -11102,6 +11102,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+             QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
+                 if (bp->pc == dc->pc) {
+                     if (bp->flags & BP_CPU) {
++                        gen_a64_set_pc_im(dc->pc);
+                         gen_helper_check_breakpoints(cpu_env);
+                         /* End the TB early; it likely won't be executed */
+                         dc->is_jmp = DISAS_UPDATE;
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index a56f7fe..4351854 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -11373,6 +11373,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+             QTAILQ_FOREACH(bp, &cs->breakpoints, entry) {
+                 if (bp->pc == dc->pc) {
+                     if (bp->flags & BP_CPU) {
++                        gen_set_pc_im(dc, dc->pc);
+                         gen_helper_check_breakpoints(cpu_env);
+                         /* End the TB early; it's likely not going to be executed */
+                         dc->is_jmp = DISAS_UPDATE;
+-- 
+1.9.1
+

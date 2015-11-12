@@ -1,101 +1,121 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1077426obb;
-        Fri, 6 Nov 2015 05:52:40 -0800 (PST)
-X-Received: by 10.66.124.165 with SMTP id mj5mr17547433pab.97.1446817960077;
-        Fri, 06 Nov 2015 05:52:40 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pa0-x22e.google.com (mail-pa0-x22e.google.com. [2607:f8b0:400e:c03::22e])
-        by mx.google.com with ESMTPS id ia2si334524pbb.85.2015.11.06.05.52.39
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Nov 2015 05:52:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) client-ip=2607:f8b0:400e:c03::22e;
+Received: by 10.182.105.169 with SMTP id gn9csp530942obb;
+        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
+X-Received: by 10.129.154.138 with SMTP id r132mr16124892ywg.195.1447356235480;
+        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id o127si10500151ywe.300.2015.11.12.11.23.55
+        for <alex.bennee@linaro.org>
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 12 Nov 2015 11:23:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::22e as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by pasz6 with SMTP id z6so127930860pas.2;
-        Fri, 06 Nov 2015 05:52:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=dpye2Llox2RiB7OR/2mx4XszRZTepDkJamVoLpDkp9A=;
-        b=a4WxVbIi144434dUop9eJWVSgrEWevrZjdz1aNG3fJmGENj8whbGNC/jvWzXe/xsv2
-         jDVjJWIdW49tdssxFNeTZ/b1wN9WyOqnFDIpyFxLDmWn0UEZb4g2MInKvxntqcOOervq
-         V1rTfGpEKr1HrmSSdVRez6P/7KgaAbA2VjZWO7/z4GM/EnPdyxfURkUpt9OiIFOWseV9
-         qeffbsmq7NXgm6gU/8bpFs3MD7BMrgmQjAD5gJywIpr9V7B5XzHlSJIKwVwsyHxG90MG
-         SYOhwNg1oslQQvWhfTyPDrA/3m0GKSzBUv06RzSKm1pN5/OgCvaHx0DR+gGiythtX4bb
-         oSSQ==
-X-Received: by 10.66.249.201 with SMTP id yw9mr17887750pac.90.1446817959652;
-        Fri, 06 Nov 2015 05:52:39 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id y3sm325099pbt.23.2015.11.06.05.52.37
-        (version=TLSv1.2 cipher=RC4-SHA bits=128/128);
-        Fri, 06 Nov 2015 05:52:38 -0800 (PST)
-Date: Fri, 6 Nov 2015 14:52:35 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	qemu-arm@nongnu.org
-Subject: Re: [PATCH 03/16] tlb_set_page_with_attrs: Take argument specifying
- AddressSpace to use
-Message-ID: <20151106135235.GJ13308@toto>
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-4-git-send-email-peter.maydell@linaro.org>
- <20151106132759.GC13308@toto>
- <CAFEAcA_SXyN1CxJd7CA-hkGXGoVkiPP3_wKo31KNZekjvNt0kw@mail.gmail.com>
- <20151106134905.GH13308@toto>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@roeck-us.net
+Received: from localhost ([::1]:49388 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZwxTP-00074X-17
+	for alex.bennee@linaro.org; Thu, 12 Nov 2015 14:23:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35376)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <linux@roeck-us.net>) id 1ZwxSs-0006WM-J2
+	for qemu-devel@nongnu.org; Thu, 12 Nov 2015 14:23:26 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <linux@roeck-us.net>) id 1ZwxSo-00025q-Hw
+	for qemu-devel@nongnu.org; Thu, 12 Nov 2015 14:23:22 -0500
+Received: from bh-25.webhostbox.net ([208.91.199.152]:44746)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <linux@roeck-us.net>)
+	id 1ZwxSo-000259-Bk; Thu, 12 Nov 2015 14:23:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=roeck-us.net;
+	s=default; 
+	h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date;
+	bh=8uLVvb0qCWJt1sPCIl1yZES23fxJGJytVPTml0dj5fE=; 
+	b=EJW7cUYBD7Gjk8SnCt0POs2og4HA1pEdm/viGwL1i/wxiGDXPnXFDJ2H1aVmaEBo+CFP0jnjGlslQWL834y5bb6P51ucd+jxA3dLQpJH71xFU4CW9kwvfK0DV+RojC7BdvaY2VNXLXDkKZf9R2qtRWg2TL/u9ZxnXY1/S2nN59o=;
+Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
+	([108.223.40.66]:56367 helo=localhost)
+	by bh-25.webhostbox.net with esmtpa (Exim 4.85)
+	(envelope-from <linux@roeck-us.net>)
+	id 1ZwxSr-003sOs-Fv; Thu, 12 Nov 2015 19:23:21 +0000
+Date: Thu, 12 Nov 2015 11:23:13 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Message-ID: <20151112192313.GA31667@roeck-us.net>
+References: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20151106134905.GH13308@toto>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: F6nPwD2+Bs7I
+In-Reply-To: <da12a1acf1328d40eec6ca59c9e1baa150b7f18a.1447350661.git.crosthwaite.peter@gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Authenticated_sender: guenter@roeck-us.net
+X-OutGoing-Spam-Status: No, score=-1.0
+X-AntiAbuse: This header was added to track abuse,
+	please include it with any abuse report
+X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
+X-AntiAbuse: Original Domain - nongnu.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - roeck-us.net
+X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
+	guenter@roeck-us.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 208.91.199.152
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alistair.francis@xilinx.com
+Subject: Re: [Qemu-devel] [PATCH for-2.5 v5 1/1] hw/misc: Add support for
+ ADC controller in Xilinx Zynq 7000
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KTwV8S9cb84F
 
-On Fri, Nov 06, 2015 at 02:49:05PM +0100, Edgar E. Iglesias wrote:
-> On Fri, Nov 06, 2015 at 01:41:54PM +0000, Peter Maydell wrote:
-> > On 6 November 2015 at 13:27, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> > > On Thu, Nov 05, 2015 at 06:15:45PM +0000, Peter Maydell wrote:
-> > >> Add an argument to tlb_set_page_with_attrs which allows the target CPU code
-> > >> to tell the core code which AddressSpace to use.
-> > >>
-> > >> The AddressSpace is specified by the index into the array of ASes which
-> > >> were registered with cpu_address_space_init().
-> > 
-> > >> --- a/exec.c
-> > >> +++ b/exec.c
-> > >> @@ -445,12 +445,13 @@ MemoryRegion *address_space_translate(AddressSpace *as, hwaddr addr,
-> > >>
-> > >>  /* Called from RCU critical section */
-> > >>  MemoryRegionSection *
-> > >> -address_space_translate_for_iotlb(CPUState *cpu, hwaddr addr,
-> > >> +address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
-> > >>                                    hwaddr *xlat, hwaddr *plen)
-> > >
-> > > Does it make sense to replace the CPUState argument with an AddressSpace *
-> > > and have the callers do the cpu->cpu_ases[asidx]?
-> > > It would be more consistent and eventually maybe eliminate the need for
-> > > address_space_translate_for_iotlb in favor of calling address_space_translate
-> > > directly?
-> > 
-> > We can't accept an arbitrary AddressSpace, it has to be one which is
-> > embedded in a CPUAddressSpace and which we can thus find the
-> > memory_dispatch for. So you could pass a CPUAddressSpace*, but not
-> > an AddressSpace*. But to pass a CPUAddressSpace we would have to
-> > expose the currently-private-to-exec.c layout of the CPUAddressSpace
-> > struct. I chose not to do that (and you can see the results elsewhere
-> > in the patch series, like the function that's basically just "do
-> > the cs_ases array lookup for me"); there's an argument for making
-> > the structure more widely available to avoid some of that.
+On Thu, Nov 12, 2015 at 09:54:55AM -0800, Peter Crosthwaite wrote:
+> From: Guenter Roeck <linux@roeck-us.net>
 > 
-> Aha, I see.. Thanks for clarifying.
->
+> Add support for the Xilinx XADC core used in Zynq 7000.
+> 
+> References:
+> - Zynq-7000 All Programmable SoC Technical Reference Manual
+> - 7 Series FPGAs and Zynq-7000 All Programmable SoC XADC
+>   Dual 12-Bit 1 MSPS Analog-to-Digital Converter
+> 
+> Tested with Linux using QEMU machine xilinx-zynq-a9 with devicetree
+> files zynq-zc702.dtb and zynq-zc706.dtb, and kernel configuration
+> multi_v7_defconfig.
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> [ PC changes:
+>   * Changed macro names to match TRM where possible
+>   * Made programmers model macro scheme consistent
+>   * Dropped XADC_ZYNQ_ prefix on local macros
+>   * Fix ALM field width
+>   * Update threshold-comparison interrupts in _update_ints()
+>   * factored out DFIFO pushes into helper. Renamed to "push/pop"
+>   * Changed xadc_reg to 10 bits and added OOB check.
+>   * Reduced scope of MCTL reset to just stop channel coms.
+>   * Added dummy read data to write commands
+>   * Changed _ to - seperators in string names and filenames
+>   * Dropped ------------ in header comment
+>   * Catchall'ed _update_ints() in _write handler.
+>   * Minor whitespace changes.
+>   * Use ZYNQ_XADC_FIFO_DEPTH instead of ARRAY_SIZE()
+> ]
+> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 
-That was the only comment I had so:
+For v5 (same configuration as above):
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
- 
+Tested-by: Guenter Roeck <linux@roeck-us.net>

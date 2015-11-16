@@ -1,58 +1,66 @@
-Received: by 10.182.158.201 with SMTP id ww9csp129529obb;
+Received: by 10.182.158.201 with SMTP id ww9csp129581obb;
+        Mon, 16 Nov 2015 06:22:18 -0800 (PST)
+X-Received: by 10.28.32.65 with SMTP id g62mr18322324wmg.81.1447683734612;
         Mon, 16 Nov 2015 06:22:14 -0800 (PST)
-X-Received: by 10.28.136.15 with SMTP id k15mr18347119wmd.51.1447683731988;
-        Mon, 16 Nov 2015 06:22:11 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id 190si8186060wmh.13.2015.11.16.06.22.11
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Nov 2015 06:22:11 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Return-Path: <afaerber@suse.de>
+Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
+        by mx.google.com with ESMTPS id w201si14314445wmd.84.2015.11.16.06.22.14
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 16 Nov 2015 06:22:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of afaerber@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ZyKPM-00013i-2W; Mon, 16 Nov 2015 14:05:24 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 17/19] hw/arm/virt: Wire up memory region to CPUs explicitly
-Date: Mon, 16 Nov 2015 14:05:21 +0000
-Message-Id: <1447682723-3977-18-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of afaerber@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=afaerber@suse.de
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id E56B6AAC1;
+	Mon, 16 Nov 2015 14:21:50 +0000 (UTC)
+Subject: Re: [PATCH v2 04/19] include/qom/cpu.h: Add new
+ get_phys_page_attrs_debug method
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: p7sISBJaD3cJ
+ <1447682723-3977-5-git-send-email-peter.maydell@linaro.org>
+ <5649E323.8050407@suse.de>
+Cc: patches@linaro.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+Message-ID: <5649E695.2080903@suse.de>
+Date: Mon, 16 Nov 2015 15:22:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <5649E323.8050407@suse.de>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: 8bit
+X-TUID: n/5JUO54OYSS
 
-Wire up the system memory region to the CPUs explicitly
-by setting the QOM property. This doesn't change anything
-over letting it default, but will be needed for adding
-a secure memory region later.
+Am 16.11.2015 um 15:07 schrieb Andreas Färber:
+> Am 16.11.2015 um 15:05 schrieb Peter Maydell:
+>> Add a new optional method get_phys_page_attrs_debug to CPUClass.
+>> This is like the existing get_phys_page_debug, but also returns
+>> the memory transaction attributes to use for the access.
+>> This will be necessary for CPUs which have multiple address
+>> spaces and use the attributes to select the correct address
+>> space.
+>>
+>> We provide a wrapper function cpu_get_phys_page_attrs_debug()
+>> which falls back to the existing get_phys_page_debug(), so we
+>> don't need to change every target CPU.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  include/qom/cpu.h | 36 ++++++++++++++++++++++++++++++++++--
+>>  1 file changed, 34 insertions(+), 2 deletions(-)
+> 
+> Please use "qom:" and () by convention, otherwise looks fine.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/virt.c | 3 +++
- 1 file changed, 3 insertions(+)
+Err, obviously I meant "cpu:".
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9c6792c..47cc196 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1020,6 +1020,9 @@ static void machvirt_init(MachineState *machine)
-                                     "reset-cbar", &error_abort);
-         }
- 
-+        object_property_set_link(cpuobj, OBJECT(sysmem), "memory",
-+                                 &error_abort);
-+
-         object_property_set_bool(cpuobj, true, "realized", NULL);
-     }
-     g_strfreev(cpustr);
+> 
+> Regards,
+> Andreas
+
 -- 
-1.9.1
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 Nürnberg, Germany
+GF: Felix Imendörffer, Jane Smithard, Graham Norton; HRB 21284 (AG Nürnberg)

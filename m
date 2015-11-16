@@ -1,145 +1,74 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id n48sm7272695wrb.0.2017.09.18.07.00.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Sep 2017 07:00:24 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id B11653E0268;
-	Mon, 18 Sep 2017 15:00:23 +0100 (BST)
-References: <20170224112109.3147-1-alex.bennee@linaro.org> <20170224112109.3147-23-alex.bennee@linaro.org> <7468f944-914c-de89-66fb-f8ad49eb59c1@gmail.com> <87poapbgt0.fsf@linaro.org> <e511a895-b1e3-150f-6555-12ba1fa16273@gmail.com> <87a81sjp15.fsf@linaro.org> <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com>
-User-agent: mu4e 0.9.19; emacs 25.3.50.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Dmitry Osipenko <digetx@gmail.com>
-Cc: peter.maydell@linaro.org, "open list\:ARM" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
-Subject: Re: [PULL 22/24] target-arm: ensure all cross vCPUs TLB flushes complete
-In-reply-to: <70057789-ab76-1150-ab2e-b5a3239a0209@gmail.com>
-Date: Mon, 18 Sep 2017 15:00:23 +0100
-Message-ID: <87d16ods3s.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 2LH7dYnPu8Ad
+Received: by 10.182.158.201 with SMTP id ww9csp119032obb;
+        Mon, 16 Nov 2015 06:05:32 -0800 (PST)
+X-Received: by 10.28.211.12 with SMTP id k12mr15028142wmg.29.1447682729370;
+        Mon, 16 Nov 2015 06:05:29 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id fa15si5362950wjc.132.2015.11.16.06.05.28
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Mon, 16 Nov 2015 06:05:29 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ZyKPL-00013W-TM; Mon, 16 Nov 2015 14:05:23 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 14/19] target-arm: Implement asidx_from_attrs
+Date: Mon, 16 Nov 2015 14:05:18 +0000
+Message-Id: <1447682723-3977-15-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
+References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: 4TRjLDqMEqPb
 
+Implement the asidx_from_attrs CPU method to return the
+Secure or NonSecure address space as appropriate.
 
-Dmitry Osipenko <digetx@gmail.com> writes:
+(The function is inline so we can use it directly in target-arm
+code to be added in later patches.)
 
-> On 18.09.2017 13:10, Alex Bennée wrote:
->>
->> Dmitry Osipenko <digetx@gmail.com> writes:
->>
->>> On 17.09.2017 16:22, Alex Bennée wrote:
->>>>
->>>> Dmitry Osipenko <digetx@gmail.com> writes:
->>>>
->>>>> On 24.02.2017 14:21, Alex Bennée wrote:
->>>>>> Previously flushes on other vCPUs would only get serviced when they
->>>>>> exited their TranslationBlocks. While this isn't overly problematic it
->>>>>> violates the semantics of TLB flush from the point of view of source
->>>>>> vCPU.
->>>>>>
->>>>>> To solve this we call the cputlb *_all_cpus_synced() functions to do
->>>>>> the flushes which ensures all flushes are completed by the time the
->>>>>> vCPU next schedules its own work. As the TLB instructions are modelled
->>>>>> as CP writes the TB ends at this point meaning cpu->exit_request will
->>>>>> be checked before the next instruction is executed.
->>>>>>
->>>>>> Deferring the work until the architectural sync point is a possible
->>>>>> future optimisation.
->>>>>>
->>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>>> Reviewed-by: Richard Henderson <rth@twiddle.net>
->>>>>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->>>>>> ---
->>>>>>  target/arm/helper.c | 165 ++++++++++++++++++++++------------------------------
->>>>>>  1 file changed, 69 insertions(+), 96 deletions(-)
->>>>>>
->>>>>
->>>>> Hello,
->>>>>
->>>>> I have an issue with Linux kernel stopping to boot on a SMP 32bit ARM (haven't
->>>>> checked 64bit) in a single-threaded TCG mode. Kernel reaches point where it
->>>>> should mount rootfs over NFS and vCPUs stop. This issue is reproducible with any
->>>>> 32bit ARM machine type. Kernel boots fine with a MTTCG accel, only
->>>>> single-threaded TCG is affected. Git bisection lead to this patch, any
->>>>> ideas?
->>>>
->>>> It shouldn't cause a problem but can you obtain a backtrace of the
->>>> system when hung?
->>>>
->>>
->>> Actually, it looks like TCG enters infinite loop. Do you mean backtrace of QEMU
->>> by 'backtrace of the system'? If so, here it is:
->>>
->>> Thread 4 (Thread 0x7ffa37f10700 (LWP 20716)):
->>>
->>> #0  0x00007ffa601888bd in poll () at ../sysdeps/unix/syscall-template.S:84
->>>
->>> #1  0x00007ffa5e3aa561 in poll (__timeout=-1, __nfds=2, __fds=0x7ffa30006dc0) at
->>> /usr/include/bits/poll2.h:46
->>> #2  poll_func (ufds=0x7ffa30006dc0, nfds=2, timeout=-1, userdata=0x557bd603eae0)
->>> at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:69
->>> #3  0x00007ffa5e39bbb1 in pa_mainloop_poll (m=m@entry=0x557bd60401f0) at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:844
->>> #4  0x00007ffa5e39c24e in pa_mainloop_iterate (m=0x557bd60401f0,
->>> block=<optimized out>, retval=0x0) at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:926
->>> #5  0x00007ffa5e39c300 in pa_mainloop_run (m=0x557bd60401f0,
->>> retval=retval@entry=0x0) at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/mainloop.c:944
->>>
->>> #6  0x00007ffa5e3aa4a9 in thread (userdata=0x557bd60400f0) at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulse/thread-mainloop.c:100
->>>
->>> #7  0x00007ffa599eea38 in internal_thread_func (userdata=0x557bd603e090) at
->>> /var/tmp/portage/media-sound/pulseaudio-10.0/work/pulseaudio-10.0/src/pulsecore/thread-posix.c:81
->>>
->>> #8  0x00007ffa60453657 in start_thread (arg=0x7ffa37f10700) at
->>> pthread_create.c:456
->>>
->>> #9  0x00007ffa60193c5f in clone () at
->>> ../sysdeps/unix/sysv/linux/x86_64/clone.S:97
->>>
->>>
->>>
->>>
->>>
->>> Thread 3 (Thread 0x7ffa4adff700 (LWP 20715)):
->>>
->>>
->>> #0  0x00007ffa53e51caf in code_gen_buffer ()
->>>
->>
->> Well it's not locked up in servicing any flush tasks as it's executing
->> code. Maybe the guest code is spinning on something?
->>
->
-> Indeed, I should have used 'exec' instead of 'in_asm'.
->
->> In the monitor:
->>
->>   info registers
->>
->> Will show you where things are, see if the ip is moving each time. Also
->> you can do a disassemble dump from there to see what code it is stuck
->> on.
->>
->
-> I've attached with GDB to QEMU to see where it got stuck. Turned out it is
-> caused by CONFIG_STRICT_KERNEL_RWX=y of the Linux kernel. Upon boot completion
-> kernel changes memory permissions and that changing is executed on a dedicated
-> CPU, while other CPUs are 'stopped' in a busy loop.
->
-> This patch just introduced a noticeable performance regression for a
-> single-threaded TCG, which is probably fine since MTTCG is the default now.
-> Thank you very much for the suggestions and all your work on MTTCG!
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target-arm/cpu.c | 1 +
+ target-arm/cpu.h | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
-Hmm well it would be nice to know the exact mechanism for that failure.
-If we just end up with a very long list of tasks in
-cpu->queued_work_first then I guess that explains it but it would be
-nice to quantify the problem.
-
-I had trouble seeing where this loop is in the kernel code, got a pointer?
-
---
-Alex Bennée
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 690d984..32d0b5c 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -1450,6 +1450,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+ #else
+     cc->do_interrupt = arm_cpu_do_interrupt;
+     cc->get_phys_page_debug = arm_cpu_get_phys_page_debug;
++    cc->asidx_from_attrs = arm_asidx_from_attrs;
+     cc->vmsd = &vmstate_arm_cpu;
+     cc->virtio_is_big_endian = arm_cpu_is_big_endian;
+ #endif
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 9108b5b..ee873b7 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -1997,4 +1997,12 @@ enum {
+     QEMU_PSCI_CONDUIT_HVC = 2,
+ };
+ 
++#ifndef CONFIG_USER_ONLY
++/* Return the address space index to use for a memory access */
++static inline int arm_asidx_from_attrs(CPUState *cs, MemTxAttrs attrs)
++{
++    return attrs.secure ? ARMASIdx_S : ARMASIdx_NS;
++}
++#endif
++
+ #endif
+-- 
+1.9.1

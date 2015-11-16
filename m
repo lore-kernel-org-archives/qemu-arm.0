@@ -1,118 +1,61 @@
-Received: by 10.182.158.201 with SMTP id ww9csp119127obb;
-        Mon, 16 Nov 2015 06:05:39 -0800 (PST)
-X-Received: by 10.194.2.144 with SMTP id 16mr37268680wju.90.1447682729735;
-        Mon, 16 Nov 2015 06:05:29 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id md5si46155524wjb.79.2015.11.16.06.05.29
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Nov 2015 06:05:29 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Received: by 10.182.158.201 with SMTP id ww9csp120450obb;
+        Mon, 16 Nov 2015 06:07:32 -0800 (PST)
+X-Received: by 10.194.133.137 with SMTP id pc9mr26618610wjb.77.1447682852086;
+        Mon, 16 Nov 2015 06:07:32 -0800 (PST)
+Return-Path: <afaerber@suse.de>
+Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
+        by mx.google.com with ESMTPS id y84si15206442wmg.105.2015.11.16.06.07.31
+        (version=TLSv1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);
+        Mon, 16 Nov 2015 06:07:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of afaerber@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ZyKPL-00012s-D7; Mon, 16 Nov 2015 14:05:23 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 04/19] include/qom/cpu.h: Add new get_phys_page_attrs_debug method
-Date: Mon, 16 Nov 2015 14:05:08 +0000
-Message-Id: <1447682723-3977-5-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of afaerber@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=afaerber@suse.de
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+	by mx2.suse.de (Postfix) with ESMTP id 86CEEAAC1;
+	Mon, 16 Nov 2015 14:07:08 +0000 (UTC)
+Subject: Re: [PATCH v2 04/19] include/qom/cpu.h: Add new
+ get_phys_page_attrs_debug method
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: eb1aT9zKJVWf
+ <1447682723-3977-5-git-send-email-peter.maydell@linaro.org>
+Cc: patches@linaro.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Linux GmbH
+Message-ID: <5649E323.8050407@suse.de>
+Date: Mon, 16 Nov 2015 15:07:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <1447682723-3977-5-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: 8bit
+X-TUID: z77qQhRPDEVJ
 
-Add a new optional method get_phys_page_attrs_debug to CPUClass.
-This is like the existing get_phys_page_debug, but also returns
-the memory transaction attributes to use for the access.
-This will be necessary for CPUs which have multiple address
-spaces and use the attributes to select the correct address
-space.
+Am 16.11.2015 um 15:05 schrieb Peter Maydell:
+> Add a new optional method get_phys_page_attrs_debug to CPUClass.
+> This is like the existing get_phys_page_debug, but also returns
+> the memory transaction attributes to use for the access.
+> This will be necessary for CPUs which have multiple address
+> spaces and use the attributes to select the correct address
+> space.
+> 
+> We provide a wrapper function cpu_get_phys_page_attrs_debug()
+> which falls back to the existing get_phys_page_debug(), so we
+> don't need to change every target CPU.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/qom/cpu.h | 36 ++++++++++++++++++++++++++++++++++--
+>  1 file changed, 34 insertions(+), 2 deletions(-)
 
-We provide a wrapper function cpu_get_phys_page_attrs_debug()
-which falls back to the existing get_phys_page_debug(), so we
-don't need to change every target CPU.
+Please use "qom:" and () by convention, otherwise looks fine.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/qom/cpu.h | 36 ++++++++++++++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+Regards,
+Andreas
 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index ae17932..58605a5 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -98,6 +98,10 @@ struct TranslationBlock;
-  * #TranslationBlock.
-  * @handle_mmu_fault: Callback for handling an MMU fault.
-  * @get_phys_page_debug: Callback for obtaining a physical address.
-+ * @get_phys_page_attrs_debug: Callback for obtaining a physical address and the
-+ *       associated memory transaction attributes to use for the access.
-+ *       CPUs which use memory transaction attributes should implement this
-+ *       instead of get_phys_page_debug.
-  * @gdb_read_register: Callback for letting GDB read a register.
-  * @gdb_write_register: Callback for letting GDB write a register.
-  * @debug_excp_handler: Callback for handling debug exceptions.
-@@ -152,6 +156,8 @@ typedef struct CPUClass {
-     int (*handle_mmu_fault)(CPUState *cpu, vaddr address, int rw,
-                             int mmu_index);
-     hwaddr (*get_phys_page_debug)(CPUState *cpu, vaddr addr);
-+    hwaddr (*get_phys_page_attrs_debug)(CPUState *cpu, vaddr addr,
-+                                        MemTxAttrs *attrs);
-     int (*gdb_read_register)(CPUState *cpu, uint8_t *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-     void (*debug_excp_handler)(CPUState *cpu);
-@@ -445,6 +451,32 @@ void cpu_dump_statistics(CPUState *cpu, FILE *f, fprintf_function cpu_fprintf,
- 
- #ifndef CONFIG_USER_ONLY
- /**
-+ * cpu_get_phys_page_attrs_debug:
-+ * @cpu: The CPU to obtain the physical page address for.
-+ * @addr: The virtual address.
-+ * @attrs: Updated on return with the memory transaction attributes to use
-+ *         for this access.
-+ *
-+ * Obtains the physical page corresponding to a virtual one, together
-+ * with the corresponding memory transaction attributes to use for the access.
-+ * Use it only for debugging because no protection checks are done.
-+ *
-+ * Returns: Corresponding physical page address or -1 if no page found.
-+ */
-+static inline hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-+                                                   MemTxAttrs *attrs)
-+{
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-+
-+    if (cc->get_phys_page_attrs_debug) {
-+        return cc->get_phys_page_attrs_debug(cpu, addr, attrs);
-+    }
-+    /* Fallback for CPUs which don't implement the _attrs_ hook */
-+    *attrs = MEMTXATTRS_UNSPECIFIED;
-+    return cc->get_phys_page_debug(cpu, addr);
-+}
-+
-+/**
-  * cpu_get_phys_page_debug:
-  * @cpu: The CPU to obtain the physical page address for.
-  * @addr: The virtual address.
-@@ -456,9 +488,9 @@ void cpu_dump_statistics(CPUState *cpu, FILE *f, fprintf_function cpu_fprintf,
-  */
- static inline hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
-+    MemTxAttrs attrs = {};
- 
--    return cc->get_phys_page_debug(cpu, addr);
-+    return cpu_get_phys_page_attrs_debug(cpu, addr, &attrs);
- }
- #endif
- 
 -- 
-1.9.1
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 Nürnberg, Germany
+GF: Felix Imendörffer, Jane Smithard, Graham Norton; HRB 21284 (AG Nürnberg)

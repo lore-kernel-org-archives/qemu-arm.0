@@ -1,18 +1,18 @@
-Received: by 10.182.158.201 with SMTP id ww9csp129724obb;
-        Mon, 16 Nov 2015 06:22:32 -0800 (PST)
-X-Received: by 10.194.90.169 with SMTP id bx9mr36714183wjb.1.1447683747844;
-        Mon, 16 Nov 2015 06:22:27 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp129816obb;
+        Mon, 16 Nov 2015 06:22:42 -0800 (PST)
+X-Received: by 10.28.16.72 with SMTP id 69mr7562440wmq.100.1447683762174;
+        Mon, 16 Nov 2015 06:22:42 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id wp4si46241511wjc.97.2015.11.16.06.22.27
+        by mx.google.com with ESMTPS id x9si14446325wjf.139.2015.11.16.06.22.41
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Nov 2015 06:22:27 -0800 (PST)
+        Mon, 16 Nov 2015 06:22:42 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1ZyKPL-00012o-Bb; Mon, 16 Nov 2015 14:05:23 +0000
+	id 1ZyKPL-00012k-A8; Mon, 16 Nov 2015 14:05:23 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: patches@linaro.org,
@@ -21,69 +21,141 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 03/19] exec-all.h: Document tlb_set_page_with_attrs, tlb_set_page
-Date: Mon, 16 Nov 2015 14:05:07 +0000
-Message-Id: <1447682723-3977-4-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH v2 02/19] exec.c: Allow target CPUs to define multiple AddressSpaces
+Date: Mon, 16 Nov 2015 14:05:06 +0000
+Message-Id: <1447682723-3977-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
 References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: hGcaF2HJ+kZT
+X-TUID: GMiEsBGWR2T8
 
-Add documentation comments for tlb_set_page_with_attrs()
-and tlb_set_page().
+Allow multiple calls to cpu_address_space_init(); each
+call adds an entry to the cpu->ases array at the specified
+index. It is up to the target-specific CPU code to actually use
+these extra address spaces.
+
+Since this multiple AddressSpace support won't work with
+KVM, add an assertion to avoid confusing failures.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/exec/exec-all.h | 34 +++++++++++++++++++++++++++++++---
- 1 file changed, 31 insertions(+), 3 deletions(-)
+ cpus.c                  |  1 +
+ exec.c                  | 25 +++++++++++++++----------
+ include/exec/exec-all.h |  4 ++++
+ include/qom/cpu.h       |  2 ++
+ target-i386/cpu.c       |  1 +
+ 5 files changed, 23 insertions(+), 10 deletions(-)
 
+diff --git a/cpus.c b/cpus.c
+index b347e42..4cea798 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1375,6 +1375,7 @@ void qemu_init_vcpu(CPUState *cpu)
+         /* If the target cpu hasn't set up any address spaces itself,
+          * give it the default one.
+          */
++        cpu->num_ases = 1;
+         cpu_address_space_init(cpu, &address_space_memory, 0);
+     }
+ 
+diff --git a/exec.c b/exec.c
+index 1313fad..ddb692c 100644
+--- a/exec.c
++++ b/exec.c
+@@ -553,25 +553,29 @@ CPUState *qemu_get_cpu(int index)
+ #if !defined(CONFIG_USER_ONLY)
+ void cpu_address_space_init(CPUState *cpu, AddressSpace *as, int asidx)
+ {
++    CPUAddressSpace *newas;
++
++    /* Target code should have set num_ases before calling us */
++    assert(asidx < cpu->num_ases);
++
+     if (asidx == 0) {
+         /* address space 0 gets the convenience alias */
+         cpu->as = as;
+     }
+ 
+-    /* We only support one address space per cpu at the moment.  */
+-    assert(cpu->as == as);
++    /* KVM cannot currently support multiple address spaces. */
++    assert(asidx == 0 || !kvm_enabled());
+ 
+-    if (cpu->cpu_ases) {
+-        /* We've already registered the listener for our only AS */
+-        return;
++    if (!cpu->cpu_ases) {
++        cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
+     }
+ 
+-    cpu->cpu_ases = g_new0(CPUAddressSpace, 1);
+-    cpu->cpu_ases[0].cpu = cpu;
+-    cpu->cpu_ases[0].as = as;
++    newas = &cpu->cpu_ases[asidx];
++    newas->cpu = cpu;
++    newas->as = as;
+     if (tcg_enabled()) {
+-        cpu->cpu_ases[0].tcg_as_listener.commit = tcg_commit;
+-        memory_listener_register(&cpu->cpu_ases[0].tcg_as_listener, as);
++        newas->tcg_as_listener.commit = tcg_commit;
++        memory_listener_register(&newas->tcg_as_listener, as);
+     }
+ }
+ #endif
+@@ -628,6 +632,7 @@ void cpu_exec_init(CPUState *cpu, Error **errp)
+     Error *local_err = NULL;
+ 
+     cpu->as = NULL;
++    cpu->num_ases = 0;
+ 
+ #ifndef CONFIG_USER_ONLY
+     cpu->thread_id = qemu_get_thread_id();
 diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 9be0165..caa78a9 100644
+index eb3890a..9be0165 100644
 --- a/include/exec/exec-all.h
 +++ b/include/exec/exec-all.h
-@@ -144,12 +144,40 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, ...);
-  * MMU indexes.
+@@ -96,6 +96,10 @@ void cpu_reloading_memory_map(void);
+  * The target-specific code which registers ASes is responsible
+  * for defining what semantics address space 0, 1, 2, etc have.
+  *
++ * Before the first call to this function, the caller must set
++ * cpu->num_ases to the total number of address spaces it needs
++ * to support.
++ *
+  * Note that with KVM only one address space is supported.
   */
- void tlb_flush_by_mmuidx(CPUState *cpu, ...);
--void tlb_set_page(CPUState *cpu, target_ulong vaddr,
--                  hwaddr paddr, int prot,
--                  int mmu_idx, target_ulong size);
-+/**
-+ * tlb_set_page_with_attrs:
-+ * @cpu: CPU to add this TLB entry for
-+ * @vaddr: virtual address of page to add entry for
-+ * @paddr: physical address of the page
-+ * @attrs: memory transaction attributes
-+ * @prot: access permissions (PAGE_READ/PAGE_WRITE/PAGE_EXEC bits)
-+ * @mmu_idx: MMU index to insert TLB entry for
-+ * @size: size of the page in bytes
-+ *
-+ * Add an entry to this CPU's TLB (a mapping from virtual address
-+ * @vaddr to physical address @paddr) with the specified memory
-+ * transaction attributes. This is generally called by the target CPU
-+ * specific code after it has been called through the tlb_fill()
-+ * entry point and performed a successful page table walk to find
-+ * the physical address and attributes for the virtual address
-+ * which provoked the TLB miss.
-+ *
-+ * At most one entry for a given virtual address is permitted. Only a
-+ * single TARGET_PAGE_SIZE region is mapped; the supplied @size is only
-+ * used by tlb_flush_page.
-+ */
- void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
-                              hwaddr paddr, MemTxAttrs attrs,
-                              int prot, int mmu_idx, target_ulong size);
-+/* tlb_set_page:
-+ *
-+ * This function is equivalent to calling tlb_set_page_with_attrs()
-+ * with an @attrs argument of MEMTXATTRS_UNSPECIFIED. It's provided
-+ * as a convenience for CPUs which don't use memory transaction attributes.
-+ */
-+void tlb_set_page(CPUState *cpu, target_ulong vaddr,
-+                  hwaddr paddr, int prot,
-+                  int mmu_idx, target_ulong size);
- void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr);
- void probe_write(CPUArchState *env, target_ulong addr, int mmu_idx,
-                  uintptr_t retaddr);
+ void cpu_address_space_init(CPUState *cpu, AddressSpace *as, int asidx);
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 51a1323..ae17932 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -236,6 +236,7 @@ struct kvm_run;
+  * so that interrupts take effect immediately.
+  * @cpu_ases: Pointer to array of CPUAddressSpaces (which define the
+  *            AddressSpaces this CPU has)
++ * @num_ases: number of CPUAddressSpaces in @cpu_ases
+  * @as: Pointer to the first AddressSpace, for the convenience of targets which
+  *      only have a single AddressSpace
+  * @env_ptr: Pointer to subclass-specific CPUArchState field.
+@@ -285,6 +286,7 @@ struct CPUState {
+     struct qemu_work_item *queued_work_first, *queued_work_last;
+ 
+     CPUAddressSpace *cpu_ases;
++    int num_ases;
+     AddressSpace *as;
+ 
+     void *env_ptr; /* CPUArchState */
+diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+index 9cf9f02..3f90323 100644
+--- a/target-i386/cpu.c
++++ b/target-i386/cpu.c
+@@ -2874,6 +2874,7 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+         memory_region_add_subregion_overlap(cpu->cpu_as_root, 0, cpu->cpu_as_mem, 0);
+         memory_region_set_enabled(cpu->cpu_as_mem, true);
+         address_space_init(newas, cpu->cpu_as_root, "CPU");
++        cs->num_ases = 1;
+         cpu_address_space_init(cs, newas, 0);
+ 
+         /* ... SMRAM with higher priority, linked from /machine/smram.  */
 -- 
 1.9.1

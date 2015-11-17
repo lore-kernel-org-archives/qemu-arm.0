@@ -1,176 +1,142 @@
-Received: by 10.182.158.201 with SMTP id ww9csp856868obb;
-        Tue, 17 Nov 2015 09:21:49 -0800 (PST)
-X-Received: by 10.13.219.15 with SMTP id d15mr42070921ywe.51.1447780909648;
-        Tue, 17 Nov 2015 09:21:49 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp863050obb;
+        Tue, 17 Nov 2015 09:33:28 -0800 (PST)
+X-Received: by 10.129.159.7 with SMTP id w7mr648440ywg.70.1447781608777;
+        Tue, 17 Nov 2015 09:33:28 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w63si16369430ywa.92.2015.11.17.09.21.49
+        by mx.google.com with ESMTPS id o64si27381964ywo.214.2015.11.17.09.33.28
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 17 Nov 2015 09:21:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 17 Nov 2015 09:33:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
-Received: from localhost ([::1]:59846 helo=lists.gnu.org)
+Received: from localhost ([::1]:59910 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zyjwz-0008JI-41
-	for alex.bennee@linaro.org; Tue, 17 Nov 2015 12:21:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43583)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1Zyk8G-0007Ar-9S
+	for alex.bennee@linaro.org; Tue, 17 Nov 2015 12:33:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47041)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZyjwQ-0007i7-4o
-	for qemu-devel@nongnu.org; Tue, 17 Nov 2015 12:21:15 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1Zyk8E-00078o-Ju
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:33:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZyjwP-0000PL-7G
-	for qemu-devel@nongnu.org; Tue, 17 Nov 2015 12:21:14 -0500
-Received: from mail-yk0-x22a.google.com ([2607:f8b0:4002:c07::22a]:34476)
+	(envelope-from <peter.maydell@linaro.org>) id 1Zyk8D-0003gY-Jy
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:33:26 -0500
+Received: from mail-yk0-x229.google.com ([2607:f8b0:4002:c07::229]:35067)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ZyjwP-0000PG-0g
-	for qemu-devel@nongnu.org; Tue, 17 Nov 2015 12:21:13 -0500
-Received: by ykfs79 with SMTP id s79so17619889ykf.1
-	for <qemu-devel@nongnu.org>; Tue, 17 Nov 2015 09:21:12 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1Zyk8D-0003gN-Ga
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:33:25 -0500
+Received: by ykba77 with SMTP id a77so18122642ykb.2
+	for <qemu-arm@nongnu.org>; Tue, 17 Nov 2015 09:33:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=linaro_org.20150623.gappssmtp.com; s=20150623;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=LSAhocJJX4oJ/JIE9ypujS+tBVSwnAZ/XbR8hIuGgGA=;
-	b=M8I6pLRfCX7NjPD/ovfKt5XnD3Jej4u4ZodtKmlyHEUBYx2xdxDOgMUnPHweSmlkuj
-	pBzkpsUvRv9cHsxhC0Uitff/SOD+gS7w/sr/e1RyIV/U7lv1hIjF9276OjwQUQ7RUT3A
-	St8mg/aBrDVEKCNKthMaH44QNUQ3Ivd39xslvSSgrqlFaN9O34X37dNv1kM0W0+/2/VS
-	VPCw6lcHuSHActaYSO+NipRfJ6kslcaFlUOzr4UmRkpdGpjwBErgI2cwBQUW+cbW8cyg
-	GQuLW4swvT+zwYQOWptnjBmiK5l2H8AytWHkGXh7K6S5dT23RmlMCBcQRjh1UTuMG4ja
-	YdVA==
+	bh=gFk6/nUiJaCwNmA2C7SngxurUHVTxYEUCq1Sa46Y1aU=;
+	b=Gu1iX5+GLqju78dPU4y+BG8HNpNcX7XauhdNWt08LjbSDHPei1xUfk4/jN7PVrmIOz
+	emlCdfGAttHDFxga1D9TvTyAD+uD2dftbsda8MEk+lC3AGQC7gei7yW85xXiAlbVmn+n
+	dumWnPp/CfGgwlMQr5ynZmS3sfCt7wGboWbGSWKDCd7m9f3nBLgcL95/lSPyqTPyXmTR
+	AcQA+uDXCm32Rxgmhq7frrK9FW1qdwK1gfrJu7Pm482qeQuFjFKDZYfQyuAiVpg00DEH
+	+BDXOYW5cgg6ue9I1vswCaVHpGAX/Cdq65Vj1eSzIHp55KA1nQDuNay7MyM2QK62BCUm
+	zKSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=LSAhocJJX4oJ/JIE9ypujS+tBVSwnAZ/XbR8hIuGgGA=;
-	b=S14phkpOJSuRssbPgl00IPQIL0Pbs4Iy95I9VAxlVQxv8Z2Gzi4X9PCP0/8gg5i2Vx
-	WY0udLus5hmw2HlNDsUJ+5aDiHJRyuhel+MyYQC4N2Fr/MSUo8RcTOBWwxuvwr/Yw0wQ
-	Dyd9IdgFmZzzUaCleeNS2BXQ98oy0WoPrI+yVTbSWEXhaRPtc1hdhfgxT9rPOCjz3u1r
-	yfu60UVoBuRiN106sedymO/1N11+KqAwWOdVPJBRPSrQOFufHdvGn3bs0fwCfBYcB7R5
-	BbWgPkX+jW2bFR/whGcezKy9NJKOo2G4f+nlw2kLbLK6n6muCD37fw6rxIcxPmyTR+c+
-	X5Qg==
-X-Gm-Message-State: ALoCoQnGUj6NlddGqXvVEs4Y/MGtUqUzSGma4Uj1PmRwxAcl5gv0Lbte1F7WYlkuAqZ7Z2FVUHer
-X-Received: by 10.129.110.70 with SMTP id j67mr45612264ywc.180.1447780871779; 
-	Tue, 17 Nov 2015 09:21:11 -0800 (PST)
+	bh=gFk6/nUiJaCwNmA2C7SngxurUHVTxYEUCq1Sa46Y1aU=;
+	b=TsKwZu517bVXhhHQ+RBGEa+jYYkATk5hkbiKggv2fyigevaPPc2OVZTxzZ27Tafd6x
+	BJvpo5j3VUNTRyHoRKtNQjxi1b0h/UOWe+K8j1ZPEN2L/HSE0kxmsaTvmVVIenD0RwMx
+	+bpLIv2KC26p1hxftgh0172eEShM0KhoHaeMQDF9OE8+FzrD5FhRxOk4KHu4mlLPe/wB
+	ndYDos2C2dv4HDic3/M0kl7LoJweHh6U3AgDIFh85PVmpaWyQF8h5KsX0BoA9XWwoWAo
+	bMvWc9MOul5EZtX61CzFlBeFK+oROsfDy9XYVbIYXUiVz+tV+AHBnIXQVLS88e9n1jtA
+	UqAQ==
+X-Gm-Message-State: ALoCoQljLdoWASs79huRVAaRxrnzEfrGlSQmUa5El1wZRLPfTPOj/k3B9cgvt6Cgb5g/sb5sGXJm
+X-Received: by 10.129.57.68 with SMTP id g65mr12449655ywa.105.1447781605122;
+	Tue, 17 Nov 2015 09:33:25 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 17 Nov 2015 09:20:52 -0800 (PST)
-In-Reply-To: <1447031505-12477-4-git-send-email-mdavidsaver@gmail.com>
+Received: by 10.31.153.15 with HTTP; Tue, 17 Nov 2015 09:33:05 -0800 (PST)
+In-Reply-To: <1447031505-12477-5-git-send-email-mdavidsaver@gmail.com>
 References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
-	<1447031505-12477-4-git-send-email-mdavidsaver@gmail.com>
+	<1447031505-12477-5-git-send-email-mdavidsaver@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Nov 2015 17:20:52 +0000
-Message-ID: <CAFEAcA_As6k3yg0roE1ZSgWo4bufsRXkXYLaO7Q7YZBk==FPAg@mail.gmail.com>
+Date: Tue, 17 Nov 2015 17:33:05 +0000
+Message-ID: <CAFEAcA-yuKpZzEV1T1VMOU1HPbspTHP8PsSw80=UPr7mw2aBjw@mail.gmail.com>
 To: Michael Davidsaver <mdavidsaver@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c07::22a
+X-Received-From: 2607:f8b0:4002:c07::229
 Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH 03/18] armv7m: Complain about incorrect
-	exception table entries.
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH 04/18] armv7m: Explicit error for bad vector
+	table
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zLT8jFmzpclT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kZ5mNnCuj3Zc
 
 On 9 November 2015 at 01:11, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> For -M  These should always be thumb mode.
-> Log a message if this is seen.
+> Give an explicit error and abort when a load
+> from VECBASE fails.  Otherwise would likely
+> jump to 0, which for v7-m holds the reset stack
+> pointer address.
 >
 > Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
-
-This one's not really correct, I'm afraid (though the spec-mandated
-behaviour is a bit subtle).
-
 > ---
->  target-arm/helper.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
+>  target-arm/helper.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 >
 > diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 4408100..4178400 100644
+> index 4178400..1d7ac43 100644
 > --- a/target-arm/helper.c
 > +++ b/target-arm/helper.c
-> @@ -5396,7 +5396,8 @@ static void do_v7m_exception_exit(CPUARMState *env)
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "M profile return from interrupt with misaligned "
->                        "PC is UNPREDICTABLE\n");
-> -        /* Actual hardware seems to ignore the lsbit, and there are several
-> +        /* The ARM calls for UsageFault when the T bit isn't set, but
-> +         * actual hardware seems to ignore the lsbit, and there are several
-
-No, this is UNPREDICTABLE, as the error message above says. See the
-PopStack() pseudocode. No fault of any kind is mandated here (and
-ignoring the lsbit in the exception return frame is within the set
-of things UNPREDICTABLE allows us and the hardware to do).
-
->           * RTOSes out there which incorrectly assume the r15 in the stack
->           * frame should be a Thumb-style "lsbit indicates ARM/Thumb" value.
->           */
-> @@ -5498,6 +5499,12 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
->      addr = ldl_phys(cs->as, env->v7m.vecbase + env->v7m.exception * 4);
->      env->regs[15] = addr & 0xfffffffe;
->      env->thumb = addr & 1;
-> +    if (!env->thumb) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "M profile interrupt handler %d with incorrect "
-> +                      "instruction mode in PC is UNPREDICTABLE\n",
-> +                      env->v7m.exception);
+> @@ -5496,7 +5496,17 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+>      /* Clear IT bits */
+>      env->condexec_bits = 0;
+>      env->regs[14] = lr;
+> -    addr = ldl_phys(cs->as, env->v7m.vecbase + env->v7m.exception * 4);
+> +    {
+> +        MemTxResult result;
+> +        addr = address_space_ldl(cs->as,
+> +                                 env->v7m.vecbase + env->v7m.exception * 4,
+> +                                 MEMTXATTRS_UNSPECIFIED, &result);
+> +        if (result != MEMTX_OK) {
+> +            cpu_abort(cs, "Failed to read from exception vector table "
+> +                      "entry %08x\n",
+> +                      env->v7m.vecbase + env->v7m.exception * 4);
+> +        }
 > +    }
 
-This is also wrong -- the behaviour here is defined by the
-ExceptionTaken pseudocode, which requires that we set the EPSR.T
-bit from the low bit of the exception vector table entry, so it's
-not UNPREDICTABLE at all. (See also section B1.5.3 of the v7M ARM ARM
-rev E.b.)
+The behaviour on a failed vector table read is actually architecturally
+specified: we should take a nested exception (escalated to HardFault).
+If it happens while we're trying to take a HardFault in the first place
+then we go into Lockup (where the CPU sits around repeatedly trying
+to execute an instruction at 0xFFFFFFFE; it is technically possible
+to get back out of Lockup by taking an NMI or a system reset).
 
-The part we do not implement of this is that the architecture
-mandates that attempts to *execute an instruction* with the T bit
-clear should generate a UsageFault. (Similarly, it's valid to
-execute a branch instruction with BX that clears the T bit, but
-when you get to the destination you'll get a UsageFault on first
-attempt to execute an instruction.)
+That said, trying to get nested exceptions and priority escalation
+right is fairly involved, and implementing lockup is both involved
+and an exercise in pointlessness. So I think this code is an
+improvement overall. I would suggest some small changes, though:
 
-The correct place to implement this behaviour is in translate.c:
-in the bit of code that currently reads:
-
-        if (dc->thumb) {
-            disas_thumb_insn(env, dc);
-            if (dc->condexec_mask) {
-                dc->condexec_cond = (dc->condexec_cond & 0xe)
-                                   | ((dc->condexec_mask >> 4) & 1);
-                dc->condexec_mask = (dc->condexec_mask << 1) & 0x1f;
-                if (dc->condexec_mask == 0) {
-                    dc->condexec_cond = 0;
-                }
-            }
-        } else {
-            unsigned int insn = arm_ldl_code(env, dc->pc, dc->bswap_code);
-            dc->pc += 4;
-            disas_arm_insn(dc, insn);
-        }
-
-the else branch should have:
-    if (arm_dc_feature(dc, ARM_FEATURE_M)) {
-        /* For M profile any attempt to execute with EPSR.T clear triggers
-         * an INVSTATE UsageFault.
-         */
-        gen_exception(something);
-        goto done_generating;
-    }
+(1) factor this out into its own function, something like:
+static uint32_t v7m_read_vector(CPUARMState *env, int excnum)
+so the calling code can just do
+   addr = v7m_read_vector(env, env->v7m.exception);
+(2) use a local variable for "env->v7m.vecbase + excnum * 4"
+rather than calculating it twice
 
 thanks
 -- PMM

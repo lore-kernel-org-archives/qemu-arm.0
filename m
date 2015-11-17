@@ -1,72 +1,76 @@
-Received: by 10.182.158.201 with SMTP id ww9csp740272obb;
-        Tue, 17 Nov 2015 06:01:47 -0800 (PST)
-X-Received: by 10.31.8.202 with SMTP id 193mr3572645vki.16.1447768907535;
-        Tue, 17 Nov 2015 06:01:47 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp848800obb;
+        Tue, 17 Nov 2015 09:08:09 -0800 (PST)
+X-Received: by 10.31.152.83 with SMTP id a80mr4712407vke.137.1447780089816;
+        Tue, 17 Nov 2015 09:08:09 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h88si2805142vkc.188.2015.11.17.06.01.47
+        by mx.google.com with ESMTPS id b62si3669035vke.145.2015.11.17.09.08.09
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Tue, 17 Nov 2015 06:01:47 -0800 (PST)
+        Tue, 17 Nov 2015 09:08:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@pebble_com.20150623.gappssmtp.com
-Received: from localhost ([::1]:58651 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
+Received: from localhost ([::1]:59770 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZygpO-00009w-V9
-	for alex.bennee@linaro.org; Tue, 17 Nov 2015 09:01:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33637)
+	id 1Zyjjl-0000ne-IZ
+	for alex.bennee@linaro.org; Tue, 17 Nov 2015 12:08:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39529)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <francois@pebble.com>) id 1ZycJv-000783-IQ
-	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 04:13:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ZyjjF-0008QY-Ge
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:07:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <francois@pebble.com>) id 1ZycJu-0004Px-0y
-	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 04:12:59 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:34203)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZyjjE-0004gF-B7
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:07:37 -0500
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:33087)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <francois@pebble.com>) id 1ZycJt-0004Pr-Np
-	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 04:12:57 -0500
-Received: by wmvv187 with SMTP id v187so216487868wmv.1
-	for <qemu-arm@nongnu.org>; Tue, 17 Nov 2015 01:12:56 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZyjjE-0004fv-6n
+	for qemu-arm@nongnu.org; Tue, 17 Nov 2015 12:07:36 -0500
+Received: by vkgy188 with SMTP id y188so6956755vkg.0
+	for <qemu-arm@nongnu.org>; Tue, 17 Nov 2015 09:07:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=pebble_com.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:from:date:message-id:subject:to:cc:content-type;
-	bh=x48wsHYhlyHcNMutUES+y/VadKD4N+qcnWRPPRl0A7E=;
-	b=SRSTNhikl6l4tsaA6iKcEI0DXYSqvdGU5LVNusrDyvadv7sF8wQYZbiBSswiohiu5s
-	012ACH/pb8P/GF8Recn4L53KlrGtu+TjHBEgGDccoDwVVJk3hOimJVNGXtx07PG/O8uH
-	7+6uiTgqCr7aNa7cH+EATbAeRdnIV34AJNSmrCk4Z8CnyzvF2qvx6hVX2w8YpwaOsLmW
-	OGyGiwBHorTxVq4EMX9oLEA4me77j3A6D46pOPjkfP0n/nXuFnaXABg4cai+mEgBHSB3
-	GVMedLVSPgi/rvo678dEeJ05ZaMdwmGuGQn7oL/yK+Dd8Vnr3iYDxHra05Wvg6+lFXo0
-	lA1g==
+	d=linaro_org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=wCOjJk4yIKRn6y4lrHuX69/PgHS44dfMzoKKmUWIEMQ=;
+	b=b/c9oZJ39J/BSwUmcgE1EC8SGqxFeA6uQ8Inyl1PIp4i+yIP3waaALVYLKp843QUpC
+	8rSVKt843OTJthwbT39heDzOI/VAVITCH+VJ/DIT4JuJMiGVnf6dz6T1gNrzEF1xrEBA
+	FA74EuK4jtrZ346RyMfm+2ROnGXzqyZ8Vi94XlsJeX01cMlcj3B/Il0UqaBGR8PqPf7p
+	tXdaGSmN2n77le25+594yp0Ku/Ge46clOaPMJapNO1y6G4sRdxmgqgyjOnV9+zxozJ9f
+	lCBgcYSeaqJ6JXqm5UWdpXNzCq5v3USvcIJcalGpONXIvLS5C2qtAB6KloX2LxFrWvCY
+	nf2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
-	:content-type;
-	bh=x48wsHYhlyHcNMutUES+y/VadKD4N+qcnWRPPRl0A7E=;
-	b=EbRwcI/zzILdoKKi8Slk+zB3DhZ2NswdvLiVes/+C5I6D9b1dyGeXkF+o/b9mOZfGY
-	aIZdItIM9nc+TMZZR+mtrrQYY4pnkwq3nRos7Zzp0hPP2ulEQZdD+ruFEHOQ7BDIachV
-	9FtMQd26MKfC/hhUSAW3raUukgy0FHkB/4z9RPkiXgFJlZbT9+a02GlxN9nFoxqGbA18
-	jfH1vb6p0utJUwm3uIrqj+Eta7ehCHXTSERDKWvQs0Bo/UZca0E5T8P5qGsy+xliTvZC
-	AqAurAMhb+zvL8S4L9iy9YzeFsrYQEoztIoVQIUG6Zm02AydQxW8KyFvWzchAftpV3FO
-	qysA==
-X-Gm-Message-State: ALoCoQlmQ5XqAyJq+wUUBBxGl8OBDRnCoJuaDW2i4d7dKdHpUEAY1JfivpOKr78AmzC0yvAuzxr1
-X-Received: by 10.28.88.203 with SMTP id m194mr1285886wmb.68.1447751576703;
-	Tue, 17 Nov 2015 01:12:56 -0800 (PST)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=wCOjJk4yIKRn6y4lrHuX69/PgHS44dfMzoKKmUWIEMQ=;
+	b=NX8AgdIs721IAnlXYhd6fnXJ2X1+iQHNz4RHKMSV1aMPMbSarV42jVK9i3KFg9wBG0
+	Y2ShM4WZwLw2PnIIR7bysfVWrL2lP81zMK47YlElLvsXtEYi1WNacf4HruBTieQi5657
+	Iiqjph1e1/tmSTyYKBohtMzRhGx2kgkdhmCR8tYHo+4WJPl9u6EaQKKYGYBkTeGJLcp8
+	XuoDC1TBxbtcmiT1YQdgPruN+/YCiOMGG5kSe9czZ1E157YbCd1Foo0kSlMwBdtCIkAT
+	JJpHSeiY3uickzpwpL8vgKSrEiPewKITU2qlLjEpYX4l9gSC8ixoVCR4HCk0RaSuVBvJ
+	V2zw==
+X-Gm-Message-State: ALoCoQm6RKQ1QUMNpkU8s/Llk4JMEickdbQPAiipaX5aMmqD/ySTRGlcfS+BSX/frwWmDoOwcqtl
+X-Received: by 10.31.190.208 with SMTP id o199mr4954887vkf.90.1447780055827;
+	Tue, 17 Nov 2015 09:07:35 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.28.169.139 with HTTP; Tue, 17 Nov 2015 01:12:37 -0800 (PST)
-From: Francois Baldassari <francois@pebble.com>
-Date: Tue, 17 Nov 2015 01:12:37 -0800
-Message-ID: <CAHpaMEYsvr7374EO2Pufu3epfFZXDh7iE6ctyXHiSnqJNVa8Cw@mail.gmail.com>
-To: qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary=001a114431ac73eca10524b8eed3
+Received: by 10.31.153.15 with HTTP; Tue, 17 Nov 2015 09:07:16 -0800 (PST)
+In-Reply-To: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
+References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Nov 2015 17:07:16 +0000
+Message-ID: <CAFEAcA-WerwObfwekpnRbfpcsUdkvV3Gqxr+krfiSJAFP-CxAw@mail.gmail.com>
+To: Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::230
-X-Mailman-Approved-At: Tue, 17 Nov 2015 09:01:46 -0500
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: [Qemu-arm] [PATCH] hw/arm_gic: Correctly restore nested irq priority
+X-Received-From: 2607:f8b0:400c:c05::22b
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH 00/18] Fix exception handling and msr/mrs
+	access
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -80,75 +84,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v8oxYkGHMtQo
+X-TUID: Q3LUcRGaVIZ8
 
---001a114431ac73eca10524b8eed3
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+On 9 November 2015 at 01:11, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
+> This series grew from a previous incorrect patch attempting to fix
+> some incorrect behavior.  After spending some time going through the
+> arch. ref. manual for v7-M I think I understand better how this should
+> work and have made a number of changes which actually improve the situation.
+>
+> These changes have not yet been cross checked against real hardware, and
+> I therefore don't consider them mergeable.  It's gotten big enough though
+> that I'd like to get some feedback.
 
-Upon activating an interrupt, set the corresponding priority bit in the
-APR/NSAPR registers without touching the currently set bits. In the event
-of nested interrupts, the GIC will then have the information it needs to
-restore the priority of the pre-empted interrupt once the higher priority
-interrupt finishes execution.
+Thanks for this -- our M profile code has been in need of some love
+for quite a while now.
 
-Signed-off-by: Fran=C3=A7ois Baldassari <francois@pebble.com>
----
-First time submitter here - I tried to follow
-http://qemu-project.org/Contribute/SubmitAPatch as best I could but do let
-me know if I missed anything.
+> This series removes the dependence of the NVIC code on the GIC.  The GIC
+> doesn't have the concept of PRIGROUP to change the size of the group
+> priority field.  Also, there are a lot of cases in this code which
+> I don't understand and worry about breaking.  Now that I have things
+> working (I think), I could look at recombining them if this is desired.
 
- hw/intc/arm_gic.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I think separating out the NVIC is the right thing. Some of the
+programmer-visible register views are superficially similar to the GIC,
+but the underlying logic of how exceptions are dealt with is definitely
+different, and trying to share code just makes it harder to maintain
+both. (In particular for M profile external interrupts are just another
+kind of exception and get prioritised along with all the internal
+exceptions; for A/R profile the GIC really is an external thing
+that prioritises external interrupts only to forward to the CPU.)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index d71aeb8..13e297d 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -254,9 +254,9 @@ static void gic_activate_irq(GICState *s, int cpu, int
-irq)
-     int bitno =3D preemption_level % 32;
+> I looked briefly at qtest, but can't quite see how to use it given
+> the need to execute code to test most of the exception behavior.
+>  Is something like this feasible at present?
 
-     if (gic_has_groups(s) && GIC_TEST_GROUP(irq, (1 << cpu))) {
--        s->nsapr[regno][cpu] &=3D (1 << bitno);
-+        s->nsapr[regno][cpu] |=3D (1 << bitno);
-     } else {
--        s->apr[regno][cpu] &=3D (1 << bitno);
-+        s->apr[regno][cpu] |=3D (1 << bitno);
-     }
+You're correct that we don't have a very good story for how to test
+parts of the system that really need execution of guest code.
 
-     s->running_priority[cpu] =3D prio;
---=20
-2.4.0
+I'll reply to the various patches individually with comments.
 
---001a114431ac73eca10524b8eed3
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><div>Upon activating an interrupt, set the correspond=
-ing priority bit in the APR/NSAPR registers without touching the currently =
-set bits. In the event of nested interrupts, the GIC will then have the inf=
-ormation it needs to restore the priority of the pre-empted interrupt once =
-the higher priority interrupt finishes execution.<br><br>Signed-off-by: Fra=
-n=C3=A7ois Baldassari &lt;<a href=3D"mailto:francois@pebble.com">francois@p=
-ebble.com</a>&gt;<br>---<br></div>First time submitter here - I tried to fo=
-llow <a href=3D"http://qemu-project.org/Contribute/SubmitAPatch">http://qem=
-u-project.org/Contribute/SubmitAPatch</a> as best I could but do let me kno=
-w if I missed anything.<br></div><div><div><div><br>=C2=A0hw/intc/arm_gic.c=
- | 4 ++--<br>=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br><br>d=
-iff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c<br>index d71aeb8..13e297d=
- 100644<br>--- a/hw/intc/arm_gic.c<br>+++ b/hw/intc/arm_gic.c<br>@@ -254,9 =
-+254,9 @@ static void gic_activate_irq(GICState *s, int cpu, int irq)<br>=
-=C2=A0=C2=A0=C2=A0=C2=A0 int bitno =3D preemption_level % 32;<br>=C2=A0<br>=
-=C2=A0=C2=A0=C2=A0=C2=A0 if (gic_has_groups(s) &amp;&amp; GIC_TEST_GROUP(ir=
-q, (1 &lt;&lt; cpu))) {<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s-&g=
-t;nsapr[regno][cpu] &amp;=3D (1 &lt;&lt; bitno);<br>+=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 s-&gt;nsapr[regno][cpu] |=3D (1 &lt;&lt; bitno);<br>=
-=C2=A0=C2=A0=C2=A0=C2=A0 } else {<br>-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 s-&gt;apr[regno][cpu] &amp;=3D (1 &lt;&lt; bitno);<br>+=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s-&gt;apr[regno][cpu] |=3D (1 &lt;&lt; bitno=
-);<br>=C2=A0=C2=A0=C2=A0=C2=A0 }<br>=C2=A0<br>=C2=A0=C2=A0=C2=A0=C2=A0 s-&g=
-t;running_priority[cpu] =3D prio;<br>-- <br>2.4.0<br><br><br></div></div></=
-div></div>
-
---001a114431ac73eca10524b8eed3--
+thanks
+-- PMM

@@ -1,183 +1,196 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1497226obb;
-        Wed, 18 Nov 2015 10:16:48 -0800 (PST)
-X-Received: by 10.31.159.87 with SMTP id i84mr139449vke.18.1447870608582;
-        Wed, 18 Nov 2015 10:16:48 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1535213obb;
+        Wed, 18 Nov 2015 11:36:02 -0800 (PST)
+X-Received: by 10.31.16.230 with SMTP id 99mr494885vkq.135.1447875362461;
+        Wed, 18 Nov 2015 11:36:02 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i191si162017vkd.37.2015.11.18.10.16.48
+        by mx.google.com with ESMTPS id u14si567839vkd.188.2015.11.18.11.36.02
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 18 Nov 2015 10:16:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 18 Nov 2015 11:36:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:37465 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37951 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zz7Hj-0006Hf-Va
-	for alex.bennee@linaro.org; Wed, 18 Nov 2015 13:16:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47312)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1Zz8WQ-000570-2y
+	for alex.bennee@linaro.org; Wed, 18 Nov 2015 14:36:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47488)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1Zz7Hf-0006BQ-4g
-	for qemu-arm@nongnu.org; Wed, 18 Nov 2015 13:16:46 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Zz8Vx-0004j4-4M
+	for qemu-devel@nongnu.org; Wed, 18 Nov 2015 14:35:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1Zz7He-00005D-0I
-	for qemu-arm@nongnu.org; Wed, 18 Nov 2015 13:16:43 -0500
-Received: from mail-bl2on0116.outbound.protection.outlook.com
-	([65.55.169.116]:43680
-	helo=na01-bl2-obe.outbound.protection.outlook.com)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1Zz8Vv-0006Cp-8m
+	for qemu-devel@nongnu.org; Wed, 18 Nov 2015 14:35:32 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:36239)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1Zz7HW-0008Vu-84; Wed, 18 Nov 2015 13:16:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=SjLvNIbbg4dO6uQdl7Ou03nwfCPSjbTDkl/XW/FZjeA=;
-	b=URz7wC5VNFxebT0zAnE56XtobN/EMuFeWBgwwe9lgR5EXF4ECF4IalESIc79q3RJkXqQCZwfSgEKpZjQv4KySN7/Y3bJRNI4hiJ+E0QuC+MiLOcOpaJxg+gvjGdwDD2d48WeKiyhgvfp+/WmyLhBw3waVffnm3hBvXNyUGXaR7I=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
-	SMTP Server (TLS) id 15.1.325.17; Wed, 18 Nov 2015 18:16:32 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0325.019; Wed, 18 Nov 2015 18:16:32 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
-Thread-Index: AdEem9sZHjs9/bX/Q4+JMP7QmdOAYQDOg3SAABS0aqA=
-Date: Wed, 18 Nov 2015 18:16:32 +0000
-Message-ID: <BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1Zz8Vu-0006Cl-W2; Wed, 18 Nov 2015 14:35:31 -0500
+Received: by wmww144 with SMTP id w144so211272271wmw.1;
+	Wed, 18 Nov 2015 11:35:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=3YLWOlMW2qOZWpbU7l9SFhF49VZDy2VohDMzzXS4OLY=;
+	b=YveD2ie7XuNODyyO9wH1CERlNJrcBnrBaUSCz/rM05lbf6E4SQw7RmV8V10DFoFe3G
+	atoBTXHvaqkd8uee9Yz5JnntXnPix98NPypu2SI1u0sI3ZpjBu1Z/9bxJHPEGHyFyvb0
+	2fFsiPA50o+swsVbuvyFgh5FHVZzNGv6snyI3EpO2Ju8INJDXoNv1CSLLG2gPvhBdVha
+	Oc60AxV18HT31cpm9JXh+DpPAUEjj5sQNLJqWRmFVZCjyn3IBSLEn0YHsPUp8yRpuV4Z
+	HAjDYm4sUeDqcUrOTz1sWuVJ0u4vrQe6yA4UuM58Ji7zN40rgCChbTP1Vadehmh8B7Jd
+	qSgg==
+MIME-Version: 1.0
+X-Received: by 10.28.18.9 with SMTP id 9mr10897083wms.96.1447875330381; Wed,
+	18 Nov 2015 11:35:30 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Wed, 18 Nov 2015 11:35:30 -0800 (PST)
+In-Reply-To: <BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
-In-Reply-To: <CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:3::709]
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
-	5:RyfWF0uGcemuEXXCWaUfkPAvk9fwne2Th3+RCzZyS/HQROgBxQuX14hk8BUfWi8VFwZMt7cxp9bPMFyZh2Ip1QIYdV97f8dIXJZ05X6GxPmm98CfcFI5D1DDp8BqOwsvcViss718A4sT5BvKAqGlXw==;
-	24:0QT1AKfQYwIStw92ROxjmoZgi9OxcX03r2Ngo307HXdwCMUKA93zXLeZSHlF+4NfOYoackUncUCN9vkOjzkVicGVM+fbqEPxBqS/80SNdDk=;
-	20:l3/r1enSg7KVz7X4/RHP0Mj4nJF1N+lckRfDFNdBLy1nglCKVkRJSxlPWvyvQZ2n7EDDNsPbl72GmtllxD5FkA==
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
-x-microsoft-antispam-prvs: <BLUPR0301MB203435526BD7386EE86FDEAE9E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425024)(601004)(2401047)(520078)(5005006)(8121501046)(10201501046)(3002001)(61426024)(61427024);
-	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; 
-x-forefront-prvs: 0764C4A8CD
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(164054003)(189002)(199003)(99286002)(50986999)(8990500004)(2900100001)(2950100001)(230783001)(86612001)(106356001)(105586002)(10290500002)(5004730100002)(102836003)(6116002)(10400500002)(76576001)(74316001)(122556002)(575784001)(10090500001)(87936001)(11100500001)(5005710100001)(40100003)(77096005)(86362001)(5001920100001)(5008740100001)(5007970100001)(189998001)(7520500002)(97736004)(5001960100002)(76176999)(1411001)(101416001)(33656002)(5002640100001)(586003)(54356999)(5003600100002)(81156007)(110136002)(19580405001)(92566002)(19580395003)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Nov 2015 18:16:32.1166 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 65.55.169.116
-Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Wed, 18 Nov 2015 11:35:30 -0800
+Message-ID: <CAPokK=pv1CdRojAz5v9xiy=f2WYGOPP1xTCFJJQD6dbqGaYGuA@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c09::22d
+Cc: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	=?utf-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
+	=?UTF-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
-	Windows-on-ARM support
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qail6pqWiE2V
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ng7cU80Fsneq
 
-SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgeW91ciBmZWVkYmFjayENCg0KRnJvbTogUGV0ZXIgQ3Jv
-c3Rod2FpdGUgW21haWx0bzpjcm9zdGh3YWl0ZXBldGVyQGdtYWlsLmNvbV0NClNlbnQ6IFR1ZXNk
-YXksIDE3IE5vdmVtYmVyIDIwMTUgMjM6NTENCj4gSSBoYXZlbid0IGxvb2tlZCBiZXlvbmQgdGhl
-IGRpZmZzdGF0IHlldCwgYnV0IGEgdG9wIGxldmVsDQo+IGFyY2hpdGVjdHVyYWwgY29tbWVudCwg
-SSBvbmx5IHNlZSB0aGUgb25lIGZpbGUgaW4gaHcvYXJtLiBXZSBhcmUNCj4gcHJvbW90aW5nIHRo
-ZSBzcGxpdCBvZiBib2FyZCBhbmQgU29DIG5vdyBhcyB0d28gc2VwYXJhdGUgb2JqZWN0cy4gRWFj
-aA0KPiBvZiB0aGUgcGF0Y2ggc2VyaWVzIGxpbmtlZCBhYm92ZSBkZW1vbnN0cmF0ZXMgdGhpcy4g
-VGhlIEJDTSBTb0Mgd291bGQNCj4gYmUgYW4gb2JqZWN0IGluIGl0cyBvd24gcmlnaHQsIHRoZW4g
-dGhlIGJvYXJkIGluc3RhbnRpYXRlcyB0aGUgU29DIGFzDQo+IGEgY29tcG9zaXRlIGRldmljZS4N
-Cg0KSSB1bmRlcnN0YW5kIHRoZSByYXRpb25hbGUgaGVyZSwgYnV0IGlzIHRoZXJlIG11Y2ggdmFs
-dWUgcHVyc3VpbmcgdGhpcyBmb3IgdGhlIFBpPyBBcyBmYXIgYXMgSSBrbm93LCB0aGUgUGkxLzIg
-U09DcyAoYmNtMjgzNSBhbmQgMjgzNikgYXJlIG9uZS1vZmYgZGVzaWducyB1c2VkIG9ubHkgaW4g
-dGhlIFBpLiBNb3Jlb3ZlciwgdGhlIDI4MzYgaXMgYmFzaWNhbGx5IGEgY29weSBvZiB0aGUgMjgz
-NSB3aXRoIHRoZSBhZGRpdGlvbiBvZiBhIG5ldyBibG9jayBmb3IgYSBtdWx0aS1jb3JlIGludGVy
-cnVwdCBjb250cm9sbGVyIGFuZCBtYWlsYm94ZXMsIHNvIHRyeWluZyB0byBzcGxpdCB0aG9zZSBv
-dXQgaW50byB0d28gc2VwYXJhdGUgU09DIGRlZmluaXRpb24gZmlsZXMgd291bGQgcmVxdWlyZSBl
-aXRoZXIgbG90cyBvZiBkdXBsaWNhdGlvbiwgb3IgYSB0aWdodCBjb3VwbGluZyBiZXR3ZWVuIHRo
-ZSB0d28uIEZpbmFsbHksIHRoZXJlIGlzIGJhc2ljYWxseSBub3RoaW5nIG9uIHRoZSBib2FyZCBi
-ZXNpZGVzIHRoZSBTb0MgYW5kIFJBTSAoanVzdCBhIFVTQi1FdGhlcm5ldCBhZGFwdGVyKSwgc28g
-dGhlIGFjdHVhbCBib2FyZCBkZWZpbml0aW9uIGZpbGVzIHdvdWxkIGJlIGFsbW9zdCBlbXB0eS4g
-QXMgaXQgaXMsIEkndmUgYWxyZWFkeSBmYWN0b3JlZCBvdXQgYWxsIHRoZSBjb21tb24gZGV2aWNl
-cyB3aXRoaW4gaHcvYXJtL3Jhc3BpLmMgLS0gbXkgZmVlbGluZyBpcyB0aGF0IHRoaXMgaXMgYSBj
-bGVhbmVyIHdheSB0byBkbyBpdCBmb3IgdGhlIFBpLg0KDQo+IEl0IGlzIGJpZy4gV29yayBvZiB0
-aGlzIG1hZ25pdHVkZSBpcyBnZW5lcmFsbHkgYmV0dGVyIG1hbmFnZWQgYXMNCj4gbXVsdGlwbGUg
-c2VyaWVzIChlYWNoIG9mIG11bHRpcGxlIHBhdGNoZXMpLiBBIGdlbmVyYWwgYXBwcm9hY2ggd2l0
-aA0KPiBuZXcgQVJNIGJvYXJkcyBpcyB0aGUgZmlyc3Qgc2VyaWVzIGlzIHRoZSBiYXJlIG1pbmlt
-dW0gbmVlZGVkIHRvIGdldCBhDQo+IGxpbnV4IGJvb3Qgb3ZlciB0aGUgVUFSVCBjb25zb2xlLiBU
-aGlzIHVzdWFsbHkgbWVhbnMgYW55IENQVQ0KPiBjdXN0b21pc2F0aW9ucywgdGltZXIsIFVBUlQs
-IGludGMsIFNvQyBhbmQgYm9hcmRzLCBtYXliZSB0aGUNCj4gc3lzdGVtL3Bvd2VyIGNvbnRyb2xs
-ZXJzIChpZiB0aGUga2VybmVsIHRvdWNoZXMgdGhlbSBpbiBib290KSBhbmQNCj4gb3B0aW9uYWxs
-eSBuZXR3b3JrIG9yIGVtbWMuIFdpdGggbmV0d29yayB5b3UgY2FuIGRvIGFuIE5GUyByb290ICh0
-aGlzDQo+IHdhcyB0aGUgb25seSBvcHRpb24gb24gQWxsd2lubmVyL2N1YmllYm9hcmQgZm9yIHF1
-aXRlIHNvbWUgdGltZSkgYW5kDQo+IHdpdGggZW1tYyB5b3UgY2FuIGRvIHlvdXIgcm9vdD0vZGV2
-L21tY2JsazBwMiBzdHlsZSBib290IGFzIG5vcm1hbC4gSWYNCj4geW91IGFyZSB1c2luZyBleGlz
-dGluZyBsYW45MTE4LCBuZXR3b3JrIGZpcnN0IG1pZ2h0IGJlIGEgY2xlYXIgd2luLA0KPiBhbHRo
-b3VnaCBlbW1jIGlzIG1vcmUgcmVhbGlzdGljLiBDYW4gYWx3YXlzIGRvIGJvdGguDQo+IA0KPiBU
-aGUgeW91IGNhbiBmb2xsb3cgdXAgd2l0aCB0aGUgVVNCLCBETUEsIEFVWCwgLi4uIGVhY2ggaW5k
-ZXBlbmRlbnRseQ0KPiBvciBhcyBhIGZvbGxvdyB1cCBzZXJpZXMnLg0KPiANCj4gQW55IGNvcmUg
-Y29kZSBhbmQgQVJNIENQVSB3b3JrIHRoYXQgaXMgYSBidWdmaXggb3Igc3RhbmRzIGluIGl0cyBv
-d24NCj4gcmlnaHQsIHlvdSBzaG91bGQgc2VuZCBzdHJhaWdodCB1cCBhcyBhIHNlcGFyYXRlIHdv
-cmsuDQoNCk9rLCB1bmRlcnN0b29kLiBFdmVuIGZvbGxvd2luZyB0aGlzIGd1aWRhbmNlLCB0aGUg
-Zmlyc3QgcGF0Y2ggd2lsbCBiZSBiaWcgLS0gUGkgaGFzIGN1c3RvbSBpbnRlcnJ1cHQgYW5kIERN
-QSBjb250cm9sbGVycywgYW5kIHRoZSBHUFUgZ2V0cyBpdHNlbGYgaW52b2x2ZWQgaW4gdGhlIGJv
-b3QgcHJvY2Vzcy4gSSB0aGluayB3ZSBjb3VsZCBwcm9iYWJseSBsZWF2ZSBvdXQgZmIvdXNiIGFu
-ZCBtYXliZSBhbHNvIGRtYSwgbXBoaSwgdmNoaXEgYW5kIHBvd2VyLCBidXQgbW9zdCBvZiB0aGUg
-cmVzdCB3aWxsIGJlIG5lZWRlZCB0byBib290IGFueXRoaW5nLg0KDQpCVFcsIEkgdXNlZCBsYW45
-MTE4IGFzIGEga2x1ZGdlIGZvciBXaW5kb3dzLCBidXQgaXQgaXNuJ3QgcHJlc2VudCBvbiBhIHJl
-YWwgUGksIGFuZCB0aGUgZGV2aWNlIGRlZmluaXRpb24gbm8gbG9uZ2VyIGluc3RhbnRpYXRlcyBp
-dC4gQXQgcHJlc2VudCwgdGhlcmUgaXMgbm8gdXNhYmxlIG5ldHdvcmsgZGV2aWNlLg0KDQo+IEN1
-cmlvdXMsIGRvZXMgclBpIGtlcm5lbCBzdXBwb3J0IGRldmljZSB0cmVlIGJvb3Q/IFRoaXMgd291
-bGQgYmUgbmljZQ0KPiBmb3IgdGVzdGluZyB3aXRoIGEgZ2VuZXJpYyBrZXJuZWwuDQoNCkkgYmVs
-aWV2ZSBpdCBkb2VzIG9uIHJlY2VudCBSYXNwYmlhbiBpbWFnZXMgKEkgc2VlIGEgbnVtYmVyIG9m
-IGR0YiBmaWxlcyBpbiBSYXNwYmlhbidzIGJvb3QgcGFydGl0aW9uKSwgYnV0IEkgaGF2ZW4ndCB0
-cmllZCB0byBmaWd1cmUgb3V0IGhvdyB0byB1c2UgdGhlbS4gSW4gZ2VuZXJhbCwgd2UgaGF2ZSBs
-aW1pdGF0aW9ucyB3aGVyZSB0aGUgYm9vdGxvYWRlciBpcyBjb25jZXJuZWQuIE9uIFBpIEhXLCB0
-aGUgYm9vdCBwcm9jZXNzIGlzIGRyaXZlbiBieSB0aGUgR1BVLCB3aGljaCByZWFkcyBhIHBsZXRo
-b3JhIG9mIG9wdGlvbnMgZnJvbSBjb25maWcgZmlsZXMgKGNvbmZpZy50eHQgYW5kIGNtZGxpbmUu
-dHh0KSBvbiB0aGUgYm9vdCBwYXJ0aXRpb24uIFdlIGRvbid0IGVtdWxhdGUgYW55IG9mIHRoYXQg
-c3R1ZmYuLi4gaW5zdGVhZCwgdGhlIHByZXZpb3VzIHJhc3BpIGNvZGUgZGlkIGp1c3QgZW5vdWdo
-IHRvIGJvb3QgTGludXggdXNpbmcgcWVtdSdzIExpbnV4IGxvYWRlciBzdXBwb3J0LCBhbmQgSSBm
-aWd1cmVkIG91dCBob3cgdG8gbWFrZSBVRUZJIGhhcHB5IG9uIHJhc3BpMiBzbyBpdCBjYW4gYm9v
-dCBXaW5kb3dzLCBidXQgdGhhdCdzIGFib3V0IGFsbC4NCg0KSSB3aWxsIHRha2UgYSBsb29rIGF0
-IHRoZSBwYXRjaGVzIHlvdSByZWZlcnJlZCB0bywgYW5kIHRyeSB0byByZWZhY3RvciB0aGUgZGV2
-aWNlcyBhY2NvcmRpbmdseS4NCg0KQlRXLCBteSBtYWluIGdvYWwgaGVyZSBpcyBXaW5kb3dzIHN1
-cHBvcnQgKHN1cnByaXNlISA6KSwgc28gaWYgYW55b25lIGVsc2UgaXMgd2lsbGluZyB0byBoZWxw
-IG91dCB3aXRoIExpbnV4IHRoYXQgd291bGQgYmUgbXVjaCBhcHByZWNpYXRlZC4gVGhlIGtlcm5l
-bCBjdXJyZW50bHkgbGltcHMgaW50byBlYXJseSB1c2Vyc3BhY2UgYmVmb3JlIGNyYXNoaW5nIG9u
-IGEgU0VURU5EIGluc3RydWN0aW9uLCBhbmQgaXMgY2xlYXJseSBub3QgYXMgaGFwcHkgYXMgaXQg
-d2FzIHdoZW4gdGhlIG9yaWdpbmFsIFBpMSBzdXBwb3J0IHdhcyBiZWluZyBhY3RpdmVseSBkZXZl
-bG9wZWQgfjIgeWVhcnMgYWdvLg0KDQpUaGFua3MsDQpBbmRyZXcNCg==
+On Wed, Nov 18, 2015 at 10:16 AM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Hi Peter,
+>
+> Thanks for your feedback!
+>
+> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+> Sent: Tuesday, 17 November 2015 23:51
+>> I haven't looked beyond the diffstat yet, but a top level
+>> architectural comment, I only see the one file in hw/arm. We are
+>> promoting the split of board and SoC now as two separate objects. Each
+>> of the patch series linked above demonstrates this. The BCM SoC would
+>> be an object in its own right, then the board instantiates the SoC as
+>> a composite device.
+>
+> I understand the rationale here, but is there much value pursuing this fo=
+r the Pi? As far as I know, the Pi1/2 SOCs (bcm2835 and 2836) are one-off d=
+esigns used only in the Pi. Moreover, the 2836 is basically a copy of the 2=
+835 with the addition of a new block for a multi-core interrupt controller =
+and mailboxes, so trying to split those out into two separate SOC definitio=
+n files would require either lots of duplication, or a tight coupling betwe=
+en the two.
+
+Duplication is not right. You can code share by either having a QOM
+inheritance between the two SoCs (the QOM object oriented model allows
+this) from a common abstraction, or a QOM property that drives the
+needed iffery. Even if the board is thin, I would still do it split,
+and several of the in-tree machine models are like this. If anyone
+wants to model the lower level stuff like the power supplies or play
+with the GPIOs etc there some framework there. If the board ever gets
+cloned and modded then the SoC is ready to go.
+
+> Finally, there is basically nothing on the board besides the SoC and RAM =
+(just a USB-Ethernet adapter), so the actual board definition files would b=
+e almost empty.
+
+USB-Ethernet is non trivial though isn't it? I'm looking at the
+schematic and my gut is the lan9152 warrants a board/SoC split.
+
+> As it is, I've already factored out all the common devices within hw/arm/=
+raspi.c -- my feeling is that this is a cleaner way to do it for the Pi.
+>
+
+You will probably find that the way to do it is covert your board as
+it stands to SoC, rebadging rPi as BCM SoC then put a thin rPI board
+around it that sets just the RAM initially.
+
+>> It is big. Work of this magnitude is generally better managed as
+>> multiple series (each of multiple patches). A general approach with
+>> new ARM boards is the first series is the bare minimum needed to get a
+>> linux boot over the UART console. This usually means any CPU
+>> customisations, timer, UART, intc, SoC and boards, maybe the
+>> system/power controllers (if the kernel touches them in boot) and
+>> optionally network or emmc. With network you can do an NFS root (this
+>> was the only option on Allwinner/cubieboard for quite some time) and
+>> with emmc you can do your root=3D/dev/mmcblk0p2 style boot as normal. If
+>> you are using existing lan9118, network first might be a clear win,
+>> although emmc is more realistic. Can always do both.
+>>
+>> The you can follow up with the USB, DMA, AUX, ... each independently
+>> or as a follow up series'.
+>>
+>> Any core code and ARM CPU work that is a bugfix or stands in its own
+>> right, you should send straight up as a separate work.
+>
+> Ok, understood. Even following this guidance, the first patch will be big=
+ -- Pi has custom interrupt and DMA controllers, and the GPU gets itself in=
+volved in the boot process. I think we could probably leave out fb/usb and =
+maybe also dma, mphi, vchiq and power, but most of the rest will be needed =
+to boot anything.
+>
+> BTW, I used lan9118 as a kludge for Windows, but it isn't present on a re=
+al Pi, and the device definition no longer instantiates it. At present, the=
+re is no usable network device.
+>
+
+Ok I guess just start with emmc. If that diff to sd.c is for emmc card
+support (currently missing), I would start early and send that
+straight away.
+
+>> Curious, does rPi kernel support device tree boot? This would be nice
+>> for testing with a generic kernel.
+>
+> I believe it does on recent Raspbian images (I see a number of dtb files =
+in Raspbian's boot partition), but I haven't tried to figure out how to use=
+ them. In general, we have limitations where the bootloader is concerned. O=
+n Pi HW, the boot process is driven by the GPU, which reads a plethora of o=
+ptions from config files (config.txt and cmdline.txt) on the boot partition=
+. We don't emulate any of that stuff... instead, the previous raspi code di=
+d just enough to boot Linux using qemu's Linux loader support, and I figure=
+d out how to make UEFI happy on raspi2 so it can boot Windows, but that's a=
+bout all.
+>
+> I will take a look at the patches you referred to, and try to refactor th=
+e devices accordingly.
+>
+> BTW, my main goal here is Windows support (surprise! :), so if anyone els=
+e is willing to help out with Linux that would be much appreciated. The ker=
+nel currently limps into early userspace before crashing on a SETEND instru=
+ction, and is clearly not as happy as it was when the original Pi1 support =
+was being actively developed ~2 years ago.
+>
+
+Yeh I think Paolo tried to fix that with the ARM BE support. I
+reworked that recently but for v7+ ARM, so I didn't have the BE32
+support anymore (I had no test cases). That BE work really needs to go
+up as you are at least the 4th person to need it.
+
+Regards,
+Peter
+
+> Thanks,
+> Andrew

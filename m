@@ -1,52 +1,76 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2003678obb;
-        Thu, 19 Nov 2015 06:55:31 -0800 (PST)
-X-Received: by 10.31.183.145 with SMTP id h139mr5187675vkf.140.1447944921024;
-        Thu, 19 Nov 2015 06:55:21 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2022617obb;
+        Thu, 19 Nov 2015 07:25:50 -0800 (PST)
+X-Received: by 10.13.231.199 with SMTP id q190mr7607144ywe.273.1447946750927;
+        Thu, 19 Nov 2015 07:25:50 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 140si4354456vkf.205.2015.11.19.06.55.20
+        by mx.google.com with ESMTPS id z6si6158792ywf.197.2015.11.19.07.25.50
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 19 Nov 2015 06:55:21 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 19 Nov 2015 07:25:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42214 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:42435 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZzQcK-0001xK-K3
-	for alex.bennee@linaro.org; Thu, 19 Nov 2015 09:55:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53495)
+	id 1ZzR5q-0000q4-F0
+	for alex.bennee@linaro.org; Thu, 19 Nov 2015 10:25:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33399)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ZzQbH-0000EQ-M0
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 09:54:17 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2R-0003J3-Fs
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ZzQbF-0001Gk-Ux
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 09:54:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58885)
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2O-0000gs-5C
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:19 -0500
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:35041)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1ZzQb7-0001Bt-UA; Thu, 19 Nov 2015 09:54:06 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 8C61A65664;
-	Thu, 19 Nov 2015 14:54:05 +0000 (UTC)
-Received: from hawk.localdomain.com (ovpn-116-106.ams2.redhat.com
-	[10.36.116.106])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tAJEreNN000808; Thu, 19 Nov 2015 09:54:01 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 19 Nov 2015 09:53:37 -0500
-Message-Id: <1447944817-13286-6-git-send-email-drjones@redhat.com>
-In-Reply-To: <1447944817-13286-1-git-send-email-drjones@redhat.com>
-References: <1447944817-13286-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, afaerber@suse.de, rth@twiddle.net
-Subject: [Qemu-devel] [PATCH 5/5] target-arm: support QMP dump-guest-memory
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2N-0000ga-UX
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:16 -0500
+Received: by wmdw130 with SMTP id w130so244786106wmd.0
+	for <qemu-devel@nongnu.org>; Thu, 19 Nov 2015 07:22:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=/9CMAVc37pBtRQVwKEwKbLeOBi188fRTfxZFmLdKwDM=;
+	b=fdVYHL5abTN0BacMWOBMmvULMoQs9cXUMFG2KtvqhYTagxpKs6Z7hGy46Il3aWjuWz
+	6J3OQ1LI8q+ZZkcICcN2NxGAt0dVXIfG0iPbV/pqHxQ9gh9g1Hc1OLDF0G+ZXkRzf/tv
+	2HW+g5Aarp0kUPGMjTcreLBXDcKr1qaZ3eVEw5KiBFcKxNXQCc8ZTiK01qxt7D1uUkFO
+	mDfR5q7JO38PtK6pdi8ickQ5fr48UqYfR7zfsPcU3rFKBMBzhAYQHHOs8Omkxu8RMGu4
+	3QfNkTLz4vbAePITGgJrjXbDh9usnX4PUEoNg6dRP0K3Z+7YdXayioOuhCWtbQ22eCP4
+	TC1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=/9CMAVc37pBtRQVwKEwKbLeOBi188fRTfxZFmLdKwDM=;
+	b=W7lGcUxejRJi3kvDDEuj5a9K9XCLfaGDJig6jk0irtTetAbgarzW6qWsjsWTHYJJCA
+	YOv9TX9jxqhce8gCFUpDPLggoHZwYGT10aYGfGYuZWiIv+zW+iSd/zEZn5p62Qea1omW
+	nP4PiaASW2RoEkKV66BHEOgjnBGVI4nQgtqW6cddk4EdSBf/8tfTAkRet+/WhaDn/vgA
+	DfGJW0aqA8hABY86gEHa+EraB4btxn8AZwqBKyKRSWyL1QRDyFDxIBtlz2lv4F1O9MBj
+	qAnSUNFWhpXI5TJIIILY0yFc/RQKkVYW7ktyEfeMtiMyKuglOlhZHb983V9SIP6hFxrC
+	Qa7Q==
+X-Gm-Message-State: ALoCoQkXlPP1Jz/WlbHbIHHy96wZLNcUM4QDyAkQDJu+eMFMjAaJoD+hdHRkQ7iuSRIvg/GvJj86
+X-Received: by 10.28.11.71 with SMTP id 68mr11894084wml.77.1447946534873;
+	Thu, 19 Nov 2015 07:22:14 -0800 (PST)
+Received: from midway01-04-00.lavalab ([81.128.185.50])
+	by smtp.gmail.com with ESMTPSA id
+	vr10sm8367221wjc.38.2015.11.19.07.22.13
+	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 19 Nov 2015 07:22:13 -0800 (PST)
+From: Eric Auger <eric.auger@linaro.org>
+To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org
+Date: Thu, 19 Nov 2015 15:22:02 +0000
+Message-Id: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.8.3.2
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c09::235
+Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
+	patches@linaro.org, suravee.suthikulpanit@amd.com,
+	pbonzini@redhat.com, christoffer.dall@linaro.org
+Subject: [Qemu-devel] [RESEND RFC 0/6] AMD XGBE KVM platform passthrough
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,296 +84,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PUq1XZm49z2k
+X-TUID: qyRR6dkQx8sJ
 
-Add the support needed for creating prstatus elf notes. This
-allows us to use QMP dump-guest-memory.
+I am resending this RFC from Oct 12, after kernel 4.4-rc1 and
+QEMU 2.5-rc1, hoping things have calmed down a little bit.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- target-arm/Makefile.objs |   3 +-
- target-arm/arch_dump.c   | 222 +++++++++++++++++++++++++++++++++++++++++++++++
- target-arm/cpu-qom.h     |   5 ++
- target-arm/cpu.c         |   3 +
- 4 files changed, 231 insertions(+), 2 deletions(-)
- create mode 100644 target-arm/arch_dump.c
+This RFC allows to set up AMD XGBE passthrough. This was tested on AMD
+Seattle.
 
-diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
-index 9460b409a5a1c..a80eb39743a78 100644
---- a/target-arm/Makefile.objs
-+++ b/target-arm/Makefile.objs
-@@ -1,5 +1,5 @@
- obj-y += arm-semi.o
--obj-$(CONFIG_SOFTMMU) += machine.o
-+obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o
- obj-$(CONFIG_KVM) += kvm.o
- obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
- obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
-@@ -7,6 +7,5 @@ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
- obj-y += translate.o op_helper.o helper.o cpu.o
- obj-y += neon_helper.o iwmmxt_helper.o
- obj-y += gdbstub.o
--obj-$(CONFIG_SOFTMMU) += psci.o
- obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
- obj-y += crypto_helper.o
-diff --git a/target-arm/arch_dump.c b/target-arm/arch_dump.c
-new file mode 100644
-index 0000000000000..5822204e85c72
---- /dev/null
-+++ b/target-arm/arch_dump.c
-@@ -0,0 +1,222 @@
-+/* Support for writing ELF notes for ARM architectures
-+ *
-+ * Copyright (C) 2015 Red Hat Inc.
-+ *
-+ * Author: Andrew Jones <drjones@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "cpu.h"
-+#include "elf.h"
-+#include "sysemu/dump.h"
-+
-+#define NOTE_NAME       "CORE"
-+#define NOTE_NAMESZ     5
-+
-+struct aarch64_user_regs {
-+    uint64_t regs[31];
-+    uint64_t sp;
-+    uint64_t pc;
-+    uint64_t pstate;
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_regs) != 272);
-+
-+struct aarch64_elf_prstatus {
-+    char pad1[32]; /* 32 == offsetof(struct elf_prstatus, pr_pid) */
-+    uint32_t pr_pid;
-+    char pad2[76]; /* 76 == offsetof(struct elf_prstatus, pr_reg) -
-+                            offsetof(struct elf_prstatus, pr_ppid) */
-+    struct aarch64_user_regs pr_reg;
-+    int pr_fpvalid;
-+    char pad3[4];
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct aarch64_elf_prstatus) != 392);
-+
-+struct aarch64_note {
-+    Elf64_Nhdr hdr;
-+    char name[QEMU_ALIGN_UP(NOTE_NAMESZ, 4)];
-+    struct aarch64_elf_prstatus prstatus;
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct aarch64_note) != 412);
-+
-+static int
-+aarch64_write_elf64_note(WriteCoreDumpFunction f, CPUARMState *env,
-+                         int id, DumpState *s)
-+{
-+    struct aarch64_note note;
-+    int ret, i;
-+
-+    memset(&note, 0, sizeof(note));
-+
-+    note.hdr.n_namesz = cpu_to_dump32(s, NOTE_NAMESZ);
-+    note.hdr.n_descsz = cpu_to_dump32(s, sizeof(note.prstatus));
-+    note.hdr.n_type = cpu_to_dump32(s, NT_PRSTATUS);
-+
-+    memcpy(note.name, NOTE_NAME, NOTE_NAMESZ);
-+    note.prstatus.pr_pid = cpu_to_dump32(s, id);
-+
-+    for (i = 0; i < 31; ++i) {
-+        note.prstatus.pr_reg.regs[i] = cpu_to_dump64(s, env->xregs[i]);
-+    }
-+    note.prstatus.pr_reg.sp = cpu_to_dump64(s, env->xregs[31]);
-+    note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
-+    note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate_read(env));
-+
-+    ret = f(&note, sizeof(note), s);
-+    if (ret < 0) {
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+struct arm_user_regs {
-+    uint32_t regs[17];
-+    char pad[4];
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct arm_user_regs) != 72);
-+
-+struct arm_elf_prstatus {
-+    char pad1[24]; /* 24 == offsetof(struct elf_prstatus, pr_pid) */
-+    uint32_t pr_pid;
-+    char pad2[44]; /* 44 == offsetof(struct elf_prstatus, pr_reg) -
-+                            offsetof(struct elf_prstatus, pr_ppid) */
-+    struct arm_user_regs pr_reg;
-+    int pr_fpvalid;
-+} QEMU_PACKED arm_elf_prstatus;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct arm_elf_prstatus) != 148);
-+
-+struct arm_note {
-+    Elf32_Nhdr hdr;
-+    char name[QEMU_ALIGN_UP(NOTE_NAMESZ, 4)];
-+    struct arm_elf_prstatus prstatus;
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct arm_note) != 168);
-+
-+static int
-+arm_write_elf32_note(WriteCoreDumpFunction f, CPUARMState *env,
-+                     int id, DumpState *s)
-+{
-+    struct arm_note note;
-+    int ret, i;
-+
-+    memset(&note, 0, sizeof(note));
-+
-+    note.hdr.n_namesz = cpu_to_dump32(s, NOTE_NAMESZ);
-+    note.hdr.n_descsz = cpu_to_dump32(s, sizeof(note.prstatus));
-+    note.hdr.n_type = cpu_to_dump32(s, NT_PRSTATUS);
-+
-+    memcpy(note.name, NOTE_NAME, NOTE_NAMESZ);
-+    note.prstatus.pr_pid = cpu_to_dump32(s, id);
-+
-+    for (i = 0; i < 16; ++i) {
-+        note.prstatus.pr_reg.regs[i] = cpu_to_dump32(s, env->regs[i]);
-+    }
-+    note.prstatus.pr_reg.regs[16] = cpu_to_dump32(s, cpsr_read(env));
-+
-+    ret = f(&note, sizeof(note), s);
-+    if (ret < 0) {
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-+                             int cpuid, void *opaque)
-+{
-+    CPUARMState *env = &ARM_CPU(cs)->env;
-+    int ret;
-+
-+    if (is_a64(env)) {
-+        ret = aarch64_write_elf64_note(f, env, cpuid, opaque);
-+    } else {
-+        ret = arm_write_elf32_note(f, env, cpuid, opaque);
-+    }
-+    return ret;
-+}
-+
-+int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-+                             int cpuid, void *opaque)
-+{
-+    return arm_write_elf32_note(f, &ARM_CPU(cs)->env, cpuid, opaque);
-+}
-+
-+int cpu_get_dump_info(ArchDumpInfo *info,
-+                      const GuestPhysBlockList *guest_phys_blocks)
-+{
-+    ARMCPU *cpu = ARM_CPU(first_cpu);
-+    CPUARMState *env = &cpu->env;
-+    int cur_el = arm_current_el(env), be;
-+    GuestPhysBlock *block;
-+    hwaddr lowest_addr = ULLONG_MAX;
-+
-+    /* Take a best guess at the phys_base. If we get it wrong then crash
-+     * will need '--machdep phys_offset=<phys-offset>' added to its command
-+     * line, which isn't any worse than assuming we can use zero, but being
-+     * wrong. This is the same algorithm the crash utility uses when
-+     * attempting to guess as it loads non-dumpfile formatted files.
-+     */
-+    QTAILQ_FOREACH(block, &guest_phys_blocks->head, next) {
-+        if (block->target_start < lowest_addr) {
-+            lowest_addr = block->target_start;
-+        }
-+    }
-+
-+    if (is_a64(env)) {
-+        info->d_machine = EM_AARCH64;
-+        info->d_class = ELFCLASS64;
-+        if (cur_el == 0) {
-+            be = (env->cp15.sctlr_el[1] & SCTLR_E0E) != 0;
-+        } else {
-+            be = (env->cp15.sctlr_el[cur_el] & SCTLR_EE) != 0;
-+        }
-+        info->page_size = (1 << 16); /* aarch64 max pagesize */
-+        if (lowest_addr != ULLONG_MAX) {
-+            info->phys_base = lowest_addr;
-+        }
-+    } else {
-+        info->d_machine = EM_ARM;
-+        info->d_class = ELFCLASS32;
-+        be = (env->uncached_cpsr & CPSR_E) != 0;
-+        info->page_size = (1 << 12);
-+        if (lowest_addr < UINT_MAX) {
-+            info->phys_base = lowest_addr;
-+        }
-+    }
-+
-+    info->d_endian = be ? ELFDATA2MSB : ELFDATA2LSB;
-+
-+    return 0;
-+}
-+
-+ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
-+{
-+    size_t note_size;
-+
-+    if (class == ELFCLASS64) {
-+        note_size = sizeof(struct aarch64_note);
-+    } else {
-+        note_size = sizeof(struct arm_note);
-+    }
-+
-+    return note_size * nr_cpus;
-+}
-diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-index 25fb1ce0f3f3d..5bd9b7bb9fa7e 100644
---- a/target-arm/cpu-qom.h
-+++ b/target-arm/cpu-qom.h
-@@ -221,6 +221,11 @@ hwaddr arm_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- 
-+int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-+                             int cpuid, void *opaque);
-+int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-+                             int cpuid, void *opaque);
-+
- /* Callback functions for the generic timer's timers. */
- void arm_gt_ptimer_cb(void *opaque);
- void arm_gt_vtimer_cb(void *opaque);
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 30739fc0dfa74..db91a3f9eb467 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -1428,6 +1428,9 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- 
-     cc->disas_set_info = arm_disas_set_info;
- 
-+    cc->write_elf64_note = arm_cpu_write_elf64_note;
-+    cc->write_elf32_note = arm_cpu_write_elf32_note;
-+
-     /*
-      * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
-      * the object in cpus -> dangling pointer after final
+The first upstreamed device supporting KVM platform passthrough was the
+Calxeda Midway XGMAC. Compared to this latter, the XGBE XGMAC exposes a
+much more complex device tree node. Generating the device tree node for
+the guest is the challenging and controversary part of this series.
+
+- First There are 2 device tree node formats:
+one where XGBE and PHY are described in separate nodes and another one
+that combines both description in a single node (only supported by 4.2
+onwards kernels). Only the combined description is supported for passthrough,
+meaning the host must be >= 4.2 and must feature a device tree with a combined
+description. The guest will also be exposed with a combined description,
+meaning only >= 4.2 guest are supported. It is not planned to support
+separate node representation since assignment of the PHY is less
+straigtforward.
+
+- the XGMAC/PHY node depends on 2 clock nodes (DMA and PTP).
+The code checks those clocks are fixed to make sure they cannot be
+switched off at some point after the native driver gets unbound.
+
+- there are many property values to populate on guest side. Most of them
+cannot be hardcoded. That series proposes a way to parse the host device
+tree blob and retrieve host values to feed guest representation. Current
+approach relies on dtc binary availability plus libfdt usage.
+Other alternatives were discussed in:
+http://www.spinics.net/lists/kvm-arm/msg16648.html.
+
+- Currently host booted with ACPI is not supported.
+
+The patches can be found at
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.4.0-xgbe-rfc
+
+Best Regards
+
+Eric
+
+
+Eric Auger (6):
+  hw/vfio/platform: amd-xgbe device
+  device_tree: introduce load_device_tree_from_sysfs
+  device_tree: introduce qemu_fdt_node_path
+  device_tree: introduce qemu_fdt_getprop_optional
+  hw/arm/sysbus-fdt: helpers for clock node generation
+  hw/arm/sysbus-fdt: enable amd-xgbe dynamic instantiation
+
+ device_tree.c                   |  97 ++++++++++++++
+ hw/arm/sysbus-fdt.c             | 273 ++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/Makefile.objs           |   1 +
+ hw/vfio/amd-xgbe.c              |  55 ++++++++
+ include/hw/vfio/vfio-amd-xgbe.h |  51 ++++++++
+ include/sysemu/device_tree.h    |   6 +
+ 6 files changed, 483 insertions(+)
+ create mode 100644 hw/vfio/amd-xgbe.c
+ create mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+
 -- 
-2.4.3
+1.8.3.2
 

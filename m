@@ -1,104 +1,103 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1588024obb;
-        Wed, 18 Nov 2015 13:35:52 -0800 (PST)
-X-Received: by 10.31.153.143 with SMTP id b137mr1028477vke.157.1447882552165;
-        Wed, 18 Nov 2015 13:35:52 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1942170obb;
+        Thu, 19 Nov 2015 05:08:12 -0800 (PST)
+X-Received: by 10.31.16.16 with SMTP id g16mr4338533vki.138.1447938492596;
+        Thu, 19 Nov 2015 05:08:12 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y69si1083279vky.106.2015.11.18.13.35.52
+        by mx.google.com with ESMTPS id 75si3911003vko.70.2015.11.19.05.08.12
         for <alex.bennee@linaro.org>
         (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Wed, 18 Nov 2015 13:35:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Nov 2015 05:08:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38496 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:41532 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZzAON-0000AX-QK
-	for alex.bennee@linaro.org; Wed, 18 Nov 2015 16:35:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52325)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZzOwe-0004wh-Bo
+	for alex.bennee@linaro.org; Thu, 19 Nov 2015 08:08:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55437)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1ZzAOL-00006K-1t
-	for qemu-arm@nongnu.org; Wed, 18 Nov 2015 16:35:49 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzOwF-0004dl-Pn
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 08:07:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1ZzAOK-0002eL-70
-	for qemu-arm@nongnu.org; Wed, 18 Nov 2015 16:35:48 -0500
-Received: from mail-qg0-x22d.google.com ([2607:f8b0:400d:c04::22d]:33406)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzOwE-0005Lc-Us
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 08:07:47 -0500
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:33963)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>)
-	id 1ZzAOG-0002co-4R; Wed, 18 Nov 2015 16:35:44 -0500
-Received: by qgea14 with SMTP id a14so38478919qge.0;
-	Wed, 18 Nov 2015 13:35:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=+fpvhh+rQez/fA/BdpZLkUmShX1yZl3PTlzr27g/b7Q=;
-	b=BJms5xegq0DYRo5K7DzU6KaCraq+ZO2HUnxra3q/9rgI9beCyOmZ4Fh6njuh8+A0wS
-	fSYRhlMArrI+L72sAMoz5hwmbW2D1LYPulIVZTSmG+f41QkYeeyKXp38xxc8sMGe/MyK
-	X3Wr9i2YnT3QGAgU6hR4Uj7evkxCFQHpnB75YzZMDrZ10edT1NGCiq8ObzdxBCaGE4O0
-	M5dtv9LZ3rSNnyspux8wlZjqSU5HFXoi8+imNdDgMckSfcFEu8n6d4rAXXN97ZV2YQeZ
-	gvtuHqzV9r16LuQzB6nec7xqaPkZ8zLjBpmAjKZkdPCH3n8TdyHMQUZvYm9jXO2SKDF2
-	kxLQ==
-X-Received: by 10.140.167.69 with SMTP id n66mr4023203qhn.41.1447882543466;
-	Wed, 18 Nov 2015 13:35:43 -0800 (PST)
-Received: from [164.54.92.32] (apsvisit32a.anlgh.org. [164.54.92.32])
-	by smtp.gmail.com with ESMTPSA id
-	v19sm1468686qhb.48.2015.11.18.13.35.42
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 18 Nov 2015 13:35:43 -0800 (PST)
-Message-ID: <564CEF2E.3080002@gmail.com>
-Date: Wed, 18 Nov 2015 15:35:42 -0600
-From: Michael Davidsaver <mdavidsaver@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux x86_64;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzOwE-0005L0-Om
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 08:07:46 -0500
+Received: by vkfr145 with SMTP id r145so16039712vkf.1
+	for <qemu-devel@nongnu.org>; Thu, 19 Nov 2015 05:07:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=EmQ3jiFN8HwLjD1tgsq1P0pDfaDnafrBsUMrNPINQNc=;
+	b=T+G2JzguZChqMagyGTLQYB8pzYGEoQ91LWHAekRdHSvoJE0LtaM0NYFcbDUROr3LPC
+	clpceb3Rf3tCwqKiEsNoooD5yIf5EDBlyGokh4bd3rcEoYM2Kdr7xcjdXhASLcEFHVXS
+	VF9vFSxGvn8nWNoSaExSr1EMRK9i+AAzUe+diSKsn4XBrymbIg5NYF2rvsYkxwkOEAlR
+	yKestO+bYcgq29RRqs8ZeR3nZyYJn8SbX+Vnx13w7qLQdBQRM865Om0sAA2AV0Z0a2Gw
+	TOHQYG6iP35bUKxrz1/DhsAgXClX6ueiY2FR+Qrcc0i9FGop6xRT69Dk6AoYEoafn59P
+	53mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=EmQ3jiFN8HwLjD1tgsq1P0pDfaDnafrBsUMrNPINQNc=;
+	b=TmrL77zR+Xb4NvVCJO9C7GoJTV8iDGdDfcOdOZCVwVOFit/sYuvOdcT7GCUXqOU7oH
+	2INGp/bLZEn6gXE3Zik2ExSja0LejxJgUfKzrCG95e/eMab8gMsT7Pt/OzcRSHYM6OLl
+	HhPjrT7bKzPRoJpDEfKkKRiwQ4jvfZN29zxRK0We+4dSr3nY0qyyOv3KPpXcVREtHXhI
+	SY/GYFE7s1jxESP/rlwuEBSeNCpZ04kgx2rfFjVzlcDDY0jvtrLlxZFoixvPjABUW11r
+	ceb7gFzrFKAHVn24TwheQv3Q1ABlBBye5JVgUsHL2z1YrkonzfpMC47wfDtoa5CRYZ4S
+	HaFg==
+X-Gm-Message-State: ALoCoQlzB0Rfe9B+CIQgAFmBZHyqAT7td7kGMP/bfh5bUQpSmNcH3pzhB5ml6qJ2hjrhVgjQIYQn
+X-Received: by 10.31.3.155 with SMTP id f27mr4363843vki.27.1447938466010; Thu,
+	19 Nov 2015 05:07:46 -0800 (PST)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	Francois Baldassari <francois@pebble.com>
-References: <1447796430-90226-1-git-send-email-francois@getpebble.com>
-	<CAFEAcA-oUjbRbOPdReNTEmW5bSXX6j9X+tdNyqr-fpKk8TqK2w@mail.gmail.com>
-	<CAHpaMEZVHNbjGx9sRqevBn8XGoyB=3tqWfMAqM-LXFMSBXwdvw@mail.gmail.com>
-	<CAPokK=pn93wX9ePin_BQAtzYc43jJ0dYnNVVCRAYaifXst0cPw@mail.gmail.com>
-	<CAHpaMEZPBp1xniXKQcJxqxA9STL0-5GQ+Y+ok1+=AUxEmJXu+Q@mail.gmail.com>
-	<CAFEAcA--Ja0gfodVPgM_Ld+KVpWLijF6w7CBBD11VXd6QEHJVw@mail.gmail.com>
-In-Reply-To: <CAFEAcA--Ja0gfodVPgM_Ld+KVpWLijF6w7CBBD11VXd6QEHJVw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Received: by 10.31.153.15 with HTTP; Thu, 19 Nov 2015 05:07:26 -0800 (PST)
+In-Reply-To: <1447767527-21268-1-git-send-email-serge.fdrv@gmail.com>
+References: <1447767527-21268-1-git-send-email-serge.fdrv@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Nov 2015 13:07:26 +0000
+Message-ID: <CAFEAcA8nUr8RM_ZUT=VE2hLwWPBmmGo7pX1_GtQkNrh9x8FPBg@mail.gmail.com>
+To: Sergey Fedorov <serge.fdrv@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400d:c04::22d
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] target-arm: Priority masking with basepri on
- v7m
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22b
+Cc: qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH v2 0/2] target-arm: Missed
+	gen_set_condexec() in AA32 translation
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4edKCCL+dCvT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jRhc5UgGZQCm
 
-On 11/18/2015 02:41 PM, Peter Maydell wrote:
-> For a big patchset like this the easiest thing is to just ask
-> Michael if he has a public git repo with the patches in (I've
-> cc'd him).
+On 17 November 2015 at 13:38, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+> Changes in v2:
+>  * Typo fixed in the first patch
+>
+> Sergey Fedorov (2):
+>   target-arm: Update condexec before CP access check in AA32 translation
+>   target-arm: Update condexec before arch BP check in AA32 translation
+>
+>  target-arm/translate.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
-https://github.com/mdavidsaver/qemu/tree/fixirq
 
-The posted patches were
 
-https://github.com/qemu/qemu/compare/c4a7bf54e588ff2de9fba0898b686156251b2063...dd7fc89e3c70b1e0074efa41e3ca89f5cee43054
+Applied to target-arm.next, thanks.
 
-This branch also has more recent changesets which weren't posted.  Some
-of this will be posted in future (MPU stuff), and some should just be
-ignored (qtest fumbling).
-
+-- PMM

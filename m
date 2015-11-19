@@ -1,645 +1,239 @@
-Received: by 10.25.159.19 with SMTP id i19csp1201094lfe;
-        Wed, 13 Jan 2016 07:52:39 -0800 (PST)
-X-Received: by 10.140.220.207 with SMTP id q198mr51690693qhb.24.1452700352915;
-        Wed, 13 Jan 2016 07:52:32 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp2023392obb;
+        Thu, 19 Nov 2015 07:27:06 -0800 (PST)
+X-Received: by 10.31.130.139 with SMTP id e133mr5283470vkd.52.1447946825971;
+        Thu, 19 Nov 2015 07:27:05 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c187si1904761qhd.24.2016.01.13.07.52.32
+        by mx.google.com with ESMTPS id 199si4481164vki.197.2015.11.19.07.27.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jan 2016 07:52:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Nov 2015 07:27:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37767 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:42448 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aJNiq-0004n4-Fp
-	for alex.bennee@linaro.org; Wed, 13 Jan 2016 10:52:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36644)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZzR73-0002Yr-A1
+	for alex.bennee@linaro.org; Thu, 19 Nov 2015 10:27:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aJNaM-00040H-IZ
-	for qemu-arm@nongnu.org; Wed, 13 Jan 2016 10:43:50 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2U-0003Mf-Nt
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aJNaJ-00014z-SW
-	for qemu-arm@nongnu.org; Wed, 13 Jan 2016 10:43:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59266)
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2T-0000jw-NY
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:22 -0500
+Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:36183)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aJNaJ-00014i-IB; Wed, 13 Jan 2016 10:43:43 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 2C73E6E78C;
-	Wed, 13 Jan 2016 15:43:43 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-28.phx2.redhat.com
-	[10.3.113.28])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0DFheDa015841
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 13 Jan 2016 10:43:41 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 34864300383C; Wed, 13 Jan 2016 16:43:39 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 13 Jan 2016 16:43:00 +0100
-Message-Id: <1452699819-26608-3-git-send-email-armbru@redhat.com>
-In-Reply-To: <1452699819-26608-1-git-send-email-armbru@redhat.com>
-References: <1452699819-26608-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [Qemu-arm] [PULL 02/41] Use error_fatal to simplify obvious fatal
-	errors
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <eric.auger@linaro.org>) id 1ZzR2T-0000jX-FH
+	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:21 -0500
+Received: by wmww144 with SMTP id w144so242970826wmw.1
+	for <qemu-devel@nongnu.org>; Thu, 19 Nov 2015 07:22:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=ibG/X+FCqU88Fa17mVaPwzqjzFflb6oUWsB98AHMVVI=;
+	b=gJ5cCmAQ4KHFQxHDPM/dJTBYKtj4oGcbRzHeFxsgZCJyS6+ckilR/e1HTOrNnBY/E9
+	K7rDfG6tBSJ7j6243qqWfyITknTU8OtN4Af9sSEtJFxZPEFsW8DiTu2n8BjC3r5XHmP7
+	Q2pcRsPCuaudTcxGXP/ObBjWddNUvtUqjKv0DyBimI7WDNnpf+8u4Fmu4iI1dFwHm9Kv
+	NUV+jYxp++YcHD6on094vlLRlZuOk/JtnUZsN5jDKC5/rzNX7fg9ym+CTJJxuEwyB6NP
+	nFhRKfiMuPbMHOKbr0LMyPnygn8ASUy1Qaxdpvssz4A/7QZ8IGIuHsnx8GNsl+MLZ5lv
+	lXBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=ibG/X+FCqU88Fa17mVaPwzqjzFflb6oUWsB98AHMVVI=;
+	b=HSz9+nP/xzFEKIXP348etuSvhj3WHM3MWmbeskcwFzjZ78dy1/N9m8HNpkirg2q1ZD
+	DOPYFRGRIbp398moYFXpPRVxEOLvYMUfdjDz7remY8lgpTJzBDJLVqTPz9eE3eGHNVHJ
+	+W2lek/fkpYlx+CwvQGiQrInAA+BwWkgGMSxoxDtUu3n79yj+uTpX0prNhlaV+5CVB9T
+	nEFpyuhOnC5ZFDv+5PsNLq3lD8PtKu9hhB2h6zG/Rx/Q7s15MpKD87BMu2zTSOkKfD+M
+	uN4O/SLQY7bQeUanXJFvkVVYHUArgllUstja9tWm2q3JcOM2QPAmvx6kWRCR41zPyHO0
+	aKKw==
+X-Gm-Message-State: ALoCoQlccAE8LFir83UaNPa/Kx49fA+cg9oZxBXyij1NhVEmRB/219AdtwYNTAV8Dd/QIPDpvd64
+X-Received: by 10.194.243.227 with SMTP id xb3mr9665657wjc.96.1447946540880;
+	Thu, 19 Nov 2015 07:22:20 -0800 (PST)
+Received: from midway01-04-00.lavalab ([81.128.185.50])
+	by smtp.gmail.com with ESMTPSA id
+	vr10sm8367221wjc.38.2015.11.19.07.22.19
+	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 19 Nov 2015 07:22:20 -0800 (PST)
+From: Eric Auger <eric.auger@linaro.org>
+To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org
+Date: Thu, 19 Nov 2015 15:22:07 +0000
+Message-Id: <1447946528-1533-6-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.8.3.2
+In-Reply-To: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
+References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c09::22c
+Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
+	patches@linaro.org, suravee.suthikulpanit@amd.com,
+	pbonzini@redhat.com, christoffer.dall@linaro.org
+Subject: [Qemu-devel] [RESEND RFC 5/6] hw/arm/sysbus-fdt: helpers for clock
+	node generation
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lO6Qzk2xh61R
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iTx+rvEU2zdV
 
-Done with this Coccinelle semantic patch:
+Some passthrough'ed devices depend on clock nodes. Those need to be
+generated in the guest device tree. This patch introduces some helpers
+to build a clock node from information retrieved from host device tree.
 
-    @@
-    type T;
-    identifier FUN, RET;
-    expression list ARGS;
-    expression ERR, EC;
-    @@
-    (
-    -    T RET = FUN(ARGS, &ERR);
-    +    T RET = FUN(ARGS, &error_fatal);
-    |
-    -    RET = FUN(ARGS, &ERR);
-    +    RET = FUN(ARGS, &error_fatal);
-    |
-    -    FUN(ARGS, &ERR);
-    +    FUN(ARGS, &error_fatal);
-    )
-    -    if (ERR != NULL) {
-    -        error_report_err(ERR);
-    -        exit(EC);
-    -    }
+- inherit_properties copies properties from a host device tree node to
+  a guest device tree node
+- fdt_build_clock_node builds a guest clock node and checks the host
+  fellow clock is a fixed one.
 
-This is actually a more elegant version of my initial semantic patch
-by courtesy of Eduardo.
+fdt_build_clock_node will become static as soon as a they get used
 
-It leaves dead Error * variables behind, cleaned up manually.
-
-Cc: qemu-arm@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@linaro.org>
 ---
- hw/arm/exynos4210.c              | 13 ++----------
- hw/arm/highbank.c                |  7 +------
- hw/arm/integratorcp.c            | 13 ++----------
- hw/arm/realview.c                | 20 ++++---------------
- hw/arm/versatilepb.c             | 13 ++----------
- hw/arm/vexpress.c                |  7 +------
- hw/arm/xilinx_zynq.c             | 28 ++++++--------------------
- hw/char/serial.c                 | 14 ++-----------
- hw/core/qdev-properties-system.c |  8 +-------
- hw/i386/pc.c                     | 14 ++-----------
- hw/smbios/smbios.c               | 43 +++++++---------------------------------
- numa.c                           |  8 ++------
- vl.c                             | 21 +++-----------------
- 13 files changed, 35 insertions(+), 174 deletions(-)
+ hw/arm/sysbus-fdt.c | 110 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 110 insertions(+)
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index d934980..79b7c5a 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -150,27 +150,18 @@ Exynos4210State *exynos4210_init(MemoryRegion *system_mem,
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index 9d28797..22e5801 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -21,6 +21,7 @@
+  *
+  */
  
-     for (n = 0; n < EXYNOS4210_NCPUS; n++) {
-         Object *cpuobj = object_new(object_class_get_name(cpu_oc));
--        Error *err = NULL;
++#include <libfdt.h>
+ #include "hw/arm/sysbus-fdt.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/device_tree.h"
+@@ -56,6 +57,115 @@ typedef struct NodeCreationPair {
+     int (*add_fdt_node_fn)(SysBusDevice *sbdev, void *opaque);
+ } NodeCreationPair;
  
-         /* By default A9 CPUs have EL3 enabled.  This board does not currently
-          * support EL3 so the CPU EL3 property is disabled before realization.
-          */
-         if (object_property_find(cpuobj, "has_el3", NULL)) {
--            object_property_set_bool(cpuobj, false, "has_el3", &err);
--            if (err) {
--                error_report_err(err);
--                exit(1);
--            }
-+            object_property_set_bool(cpuobj, false, "has_el3", &error_fatal);
-         }
++/* helpers */
++
++struct HostProperty {
++    const char *name;
++    bool optional;
++};
++
++typedef struct HostProperty HostProperty;
++
++/**
++ * inherit_properties
++ *
++ * copies properties listed in an array from host device tree to
++ * guest device tree. If a non optional property is not found, the
++ * function exits. Not found optional ones are ignored.
++ * props: array of HostProperty to copy
++ * nb_props: number of properties in the array
++ * host_dt: host device tree blob
++ * guest_dt: guest device tree blob
++ * node_path: host dt node path where the property is supposed to be
++              found
++ * nodename: guest node name the properties should be added to
++ *
++ */
++static void inherit_properties(HostProperty *props, int nb_props,
++                               void *host_fdt, void *guest_fdt,
++                               char *node_path, char *nodename)
++{
++    int i, prop_len;
++    const void *r;
++
++    for (i = 0; i < nb_props; i++) {
++        r = qemu_fdt_getprop_optional(host_fdt, node_path,
++                             props[i].name,
++                             props[i].optional,
++                             &prop_len);
++        if (r) {
++            qemu_fdt_setprop(guest_fdt, nodename,
++                             props[i].name, r, prop_len);
++        }
++    }
++}
++
++/* clock properties whose values are copied/pasted from host */
++static HostProperty clock_inherited_properties[] = {
++    {"compatible", 0},
++    {"#clock-cells", 0},
++    {"clock-frequency", 1},
++    {"clock-output-names", 1},
++};
++
++/**
++ * fdt_build_clock_node
++ *
++ * Build a guest clock node, used as a dependency from a passthrough'ed
++ * device. Most information are retrieved from the host fellow node.
++ * Also check the host clock is a fixed one.
++ *
++ * host_fdt: host device tree blob from which info are retrieved
++ * guest_fdt: guest device tree blob where the clock node is added
++ * host_phandle: phandle of the clock in host device tree
++ * guest_phandle: phandle to assign to the guest node
++ */
++int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
++                                uint32_t host_phandle,
++                                uint32_t guest_phandle);
++int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
++                                uint32_t host_phandle,
++                                uint32_t guest_phandle)
++{
++    char node_path[256];
++    char *nodename;
++    const void *r;
++    int ret, prop_len;
++
++    ret = fdt_node_offset_by_phandle(host_fdt, host_phandle);
++    if (ret <= 0) {
++        error_report("not able to locate clock handle %d in host device tree\n",
++                     host_phandle);
++        goto out;
++    }
++    ret = fdt_get_path(host_fdt, ret, node_path, 256);
++    if (ret < 0) {
++        error_report("not able to retrieve node path for clock handle %d\n",
++                     host_phandle);
++        goto out;
++    }
++
++    r = qemu_fdt_getprop(host_fdt, node_path, "compatible", &prop_len);
++    if (strcmp(r, "fixed-clock")) {
++        error_report("clock handle %d is not a fixed clock\n", host_phandle);
++        ret = -1;
++        goto out;
++    }
++
++    nodename = strrchr(node_path, '/');
++    qemu_fdt_add_subnode(guest_fdt, nodename);
++
++    inherit_properties(clock_inherited_properties,
++                       ARRAY_SIZE(clock_inherited_properties),
++                       host_fdt, guest_fdt,
++                       node_path, nodename);
++
++    qemu_fdt_setprop_cell(guest_fdt, nodename, "phandle", guest_phandle);
++
++out:
++    return ret;
++}
++
+ /* Device Specific Code */
  
-         s->cpu[n] = ARM_CPU(cpuobj);
-         object_property_set_int(cpuobj, EXYNOS4210_SMP_PRIVATE_BASE_ADDR,
-                                 "reset-cbar", &error_abort);
--        object_property_set_bool(cpuobj, true, "realized", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
-     }
- 
-     /*** IRQs ***/
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index 85ae69e..a0a5a06 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -279,7 +279,6 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-         ObjectClass *oc = cpu_class_by_name(TYPE_ARM_CPU, cpu_model);
-         Object *cpuobj;
-         ARMCPU *cpu;
--        Error *err = NULL;
- 
-         cpuobj = object_new(object_class_get_name(oc));
-         cpu = ARM_CPU(cpuobj);
-@@ -297,11 +296,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
-             object_property_set_int(cpuobj, MPCORE_PERIPHBASE,
-                                     "reset-cbar", &error_abort);
-         }
--        object_property_set_bool(cpuobj, true, "realized", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
-         cpu_irq[n] = qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ);
-         cpu_fiq[n] = qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_FIQ);
-     }
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 421bde9..96dedce 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -533,7 +533,6 @@ static void integratorcp_init(MachineState *machine)
-     qemu_irq pic[32];
-     DeviceState *dev, *sic, *icp;
-     int i;
--    Error *err = NULL;
- 
-     if (!cpu_model) {
-         cpu_model = "arm926";
-@@ -552,18 +551,10 @@ static void integratorcp_init(MachineState *machine)
-      * realization.
-      */
-     if (object_property_find(cpuobj, "has_el3", NULL)) {
--        object_property_set_bool(cpuobj, false, "has_el3", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, false, "has_el3", &error_fatal);
-     }
- 
--    object_property_set_bool(cpuobj, true, "realized", &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
-+    object_property_set_bool(cpuobj, true, "realized", &error_fatal);
- 
-     cpu = ARM_CPU(cpuobj);
- 
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index e14828d..2d6952c 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -99,33 +99,21 @@ static void realview_init(MachineState *machine,
- 
-     for (n = 0; n < smp_cpus; n++) {
-         Object *cpuobj = object_new(object_class_get_name(cpu_oc));
--        Error *err = NULL;
- 
-         /* By default A9,A15 and ARM1176 CPUs have EL3 enabled.  This board
-          * does not currently support EL3 so the CPU EL3 property is disabled
-          * before realization.
-          */
-         if (object_property_find(cpuobj, "has_el3", NULL)) {
--            object_property_set_bool(cpuobj, false, "has_el3", &err);
--            if (err) {
--                error_report_err(err);
--                exit(1);
--            }
-+            object_property_set_bool(cpuobj, false, "has_el3", &error_fatal);
-         }
- 
-         if (is_pb && is_mpcore) {
--            object_property_set_int(cpuobj, periphbase, "reset-cbar", &err);
--            if (err) {
--                error_report_err(err);
--                exit(1);
--            }
-+            object_property_set_int(cpuobj, periphbase, "reset-cbar",
-+                                    &error_fatal);
-         }
- 
--        object_property_set_bool(cpuobj, true, "realized", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
- 
-         cpu_irq[n] = qdev_get_gpio_in(DEVICE(cpuobj), ARM_CPU_IRQ);
-     }
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 912c290..70eefe9 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -192,7 +192,6 @@ static void versatile_init(MachineState *machine, int board_id)
-     int n;
-     int done_smc = 0;
-     DriveInfo *dinfo;
--    Error *err = NULL;
- 
-     if (!machine->cpu_model) {
-         machine->cpu_model = "arm926";
-@@ -211,18 +210,10 @@ static void versatile_init(MachineState *machine, int board_id)
-      * realization.
-      */
-     if (object_property_find(cpuobj, "has_el3", NULL)) {
--        object_property_set_bool(cpuobj, false, "has_el3", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, false, "has_el3", &error_fatal);
-     }
- 
--    object_property_set_bool(cpuobj, true, "realized", &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
-+    object_property_set_bool(cpuobj, true, "realized", &error_fatal);
- 
-     cpu = ARM_CPU(cpuobj);
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 058abbd..ea9a984 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -211,7 +211,6 @@ static void init_cpus(const char *cpu_model, const char *privdev,
-     /* Create the actual CPUs */
-     for (n = 0; n < smp_cpus; n++) {
-         Object *cpuobj = object_new(object_class_get_name(cpu_oc));
--        Error *err = NULL;
- 
-         if (!secure) {
-             object_property_set_bool(cpuobj, false, "has_el3", NULL);
-@@ -221,11 +220,7 @@ static void init_cpus(const char *cpu_model, const char *privdev,
-             object_property_set_int(cpuobj, periphbase,
-                                     "reset-cbar", &error_abort);
-         }
--        object_property_set_bool(cpuobj, true, "realized", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
-     }
- 
-     /* Create the private peripheral devices (including the GIC);
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 1c1a445..65e92e1 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -156,7 +156,6 @@ static void zynq_init(MachineState *machine)
-     DeviceState *dev;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
--    Error *err = NULL;
-     int n;
- 
-     if (!cpu_model) {
-@@ -171,29 +170,14 @@ static void zynq_init(MachineState *machine)
-      * realization.
-      */
-     if (object_property_find(OBJECT(cpu), "has_el3", NULL)) {
--        object_property_set_bool(OBJECT(cpu), false, "has_el3", &err);
--        if (err) {
--            error_report_err(err);
--            exit(1);
--        }
-+        object_property_set_bool(OBJECT(cpu), false, "has_el3", &error_fatal);
-     }
- 
--    object_property_set_int(OBJECT(cpu), ZYNQ_BOARD_MIDR, "midr", &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
--
--    object_property_set_int(OBJECT(cpu), MPCORE_PERIPHBASE, "reset-cbar", &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
--    object_property_set_bool(OBJECT(cpu), true, "realized", &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
-+    object_property_set_int(OBJECT(cpu), ZYNQ_BOARD_MIDR, "midr",
-+                            &error_fatal);
-+    object_property_set_int(OBJECT(cpu), MPCORE_PERIPHBASE, "reset-cbar",
-+                            &error_fatal);
-+    object_property_set_bool(OBJECT(cpu), true, "realized", &error_fatal);
- 
-     /* max 2GB ram */
-     if (ram_size > 0x80000000) {
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 513d73c..566e9ef 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -888,18 +888,13 @@ SerialState *serial_init(int base, qemu_irq irq, int baudbase,
-                          CharDriverState *chr, MemoryRegion *system_io)
- {
-     SerialState *s;
--    Error *err = NULL;
- 
-     s = g_malloc0(sizeof(SerialState));
- 
-     s->irq = irq;
-     s->baudbase = baudbase;
-     s->chr = chr;
--    serial_realize_core(s, &err);
--    if (err != NULL) {
--        error_report_err(err);
--        exit(1);
--    }
-+    serial_realize_core(s, &error_fatal);
- 
-     vmstate_register(NULL, base, &vmstate_serial, s);
- 
-@@ -949,7 +944,6 @@ SerialState *serial_mm_init(MemoryRegion *address_space,
-                             CharDriverState *chr, enum device_endian end)
- {
-     SerialState *s;
--    Error *err = NULL;
- 
-     s = g_malloc0(sizeof(SerialState));
- 
-@@ -958,11 +952,7 @@ SerialState *serial_mm_init(MemoryRegion *address_space,
-     s->baudbase = baudbase;
-     s->chr = chr;
- 
--    serial_realize_core(s, &err);
--    if (err != NULL) {
--        error_report_err(err);
--        exit(1);
--    }
-+    serial_realize_core(s, &error_fatal);
-     vmstate_register(NULL, base, &vmstate_serial, s);
- 
-     memory_region_init_io(&s->io, NULL, &serial_mm_ops[end], s,
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 921e799..d515e99 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -367,13 +367,7 @@ void qdev_prop_set_drive(DeviceState *dev, const char *name,
- void qdev_prop_set_drive_nofail(DeviceState *dev, const char *name,
-                                 BlockBackend *value)
- {
--    Error *err = NULL;
--
--    qdev_prop_set_drive(dev, name, value, &err);
--    if (err) {
--        error_report_err(err);
--        exit(1);
--    }
-+    qdev_prop_set_drive(dev, name, value, &error_fatal);
- }
- 
- void qdev_prop_set_chr(DeviceState *dev, const char *name,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index c36b8cf..166e8e2 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -433,7 +433,6 @@ void pc_cmos_init(PCMachineState *pcms,
- {
-     int val;
-     static pc_cmos_init_late_arg arg;
--    Error *local_err = NULL;
- 
-     /* various important CMOS locations needed by PC/Bochs bios */
- 
-@@ -481,11 +480,7 @@ void pc_cmos_init(PCMachineState *pcms,
-     object_property_set_link(OBJECT(pcms), OBJECT(s),
-                              "rtc_state", &error_abort);
- 
--    set_boot_dev(s, MACHINE(pcms)->boot_order, &local_err);
--    if (local_err) {
--        error_report_err(local_err);
--        exit(1);
--    }
-+    set_boot_dev(s, MACHINE(pcms)->boot_order, &error_fatal);
- 
-     val = 0;
-     val |= 0x02; /* FPU is there */
-@@ -1123,7 +1118,6 @@ void pc_cpus_init(PCMachineState *pcms)
-     int i;
-     X86CPU *cpu = NULL;
-     MachineState *machine = MACHINE(pcms);
--    Error *error = NULL;
-     unsigned long apic_id_limit;
- 
-     /* init CPUs */
-@@ -1144,11 +1138,7 @@ void pc_cpus_init(PCMachineState *pcms)
- 
-     for (i = 0; i < smp_cpus; i++) {
-         cpu = pc_new_cpu(machine->cpu_model, x86_cpu_apic_id_from_index(i),
--                         &error);
--        if (error) {
--            error_report_err(error);
--            exit(1);
--        }
-+                         &error_fatal);
-         object_unref(OBJECT(cpu));
-     }
- 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index b81a1d3..a3e575a 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -937,7 +937,6 @@ static void save_opt(const char **dest, QemuOpts *opts, const char *name)
- 
- void smbios_entry_add(QemuOpts *opts)
- {
--    Error *local_err = NULL;
-     const char *val;
- 
-     assert(!smbios_immutable);
-@@ -948,11 +947,7 @@ void smbios_entry_add(QemuOpts *opts)
-         int size;
-         struct smbios_table *table; /* legacy mode only */
- 
--        qemu_opts_validate(opts, qemu_smbios_file_opts, &local_err);
--        if (local_err) {
--            error_report_err(local_err);
--            exit(1);
--        }
-+        qemu_opts_validate(opts, qemu_smbios_file_opts, &error_fatal);
- 
-         size = get_image_size(val);
-         if (size == -1 || size < sizeof(struct smbios_structure_header)) {
-@@ -1034,11 +1029,7 @@ void smbios_entry_add(QemuOpts *opts)
- 
-         switch (type) {
-         case 0:
--            qemu_opts_validate(opts, qemu_smbios_type0_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type0_opts, &error_fatal);
-             save_opt(&type0.vendor, opts, "vendor");
-             save_opt(&type0.version, opts, "version");
-             save_opt(&type0.date, opts, "date");
-@@ -1054,11 +1045,7 @@ void smbios_entry_add(QemuOpts *opts)
-             }
-             return;
-         case 1:
--            qemu_opts_validate(opts, qemu_smbios_type1_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type1_opts, &error_fatal);
-             save_opt(&type1.manufacturer, opts, "manufacturer");
-             save_opt(&type1.product, opts, "product");
-             save_opt(&type1.version, opts, "version");
-@@ -1076,11 +1063,7 @@ void smbios_entry_add(QemuOpts *opts)
-             }
-             return;
-         case 2:
--            qemu_opts_validate(opts, qemu_smbios_type2_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type2_opts, &error_fatal);
-             save_opt(&type2.manufacturer, opts, "manufacturer");
-             save_opt(&type2.product, opts, "product");
-             save_opt(&type2.version, opts, "version");
-@@ -1089,11 +1072,7 @@ void smbios_entry_add(QemuOpts *opts)
-             save_opt(&type2.location, opts, "location");
-             return;
-         case 3:
--            qemu_opts_validate(opts, qemu_smbios_type3_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type3_opts, &error_fatal);
-             save_opt(&type3.manufacturer, opts, "manufacturer");
-             save_opt(&type3.version, opts, "version");
-             save_opt(&type3.serial, opts, "serial");
-@@ -1101,11 +1080,7 @@ void smbios_entry_add(QemuOpts *opts)
-             save_opt(&type3.sku, opts, "sku");
-             return;
-         case 4:
--            qemu_opts_validate(opts, qemu_smbios_type4_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type4_opts, &error_fatal);
-             save_opt(&type4.sock_pfx, opts, "sock_pfx");
-             save_opt(&type4.manufacturer, opts, "manufacturer");
-             save_opt(&type4.version, opts, "version");
-@@ -1114,11 +1089,7 @@ void smbios_entry_add(QemuOpts *opts)
-             save_opt(&type4.part, opts, "part");
-             return;
-         case 17:
--            qemu_opts_validate(opts, qemu_smbios_type17_opts, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            qemu_opts_validate(opts, qemu_smbios_type17_opts, &error_fatal);
-             save_opt(&type17.loc_pfx, opts, "loc_pfx");
-             save_opt(&type17.bank, opts, "bank");
-             save_opt(&type17.manufacturer, opts, "manufacturer");
-diff --git a/numa.c b/numa.c
-index 1710946..425ef8d 100644
---- a/numa.c
-+++ b/numa.c
-@@ -450,17 +450,13 @@ void memory_region_allocate_system_memory(MemoryRegion *mr, Object *owner,
- 
-     memory_region_init(mr, owner, name, ram_size);
-     for (i = 0; i < MAX_NODES; i++) {
--        Error *local_err = NULL;
-         uint64_t size = numa_info[i].node_mem;
-         HostMemoryBackend *backend = numa_info[i].node_memdev;
-         if (!backend) {
-             continue;
-         }
--        MemoryRegion *seg = host_memory_backend_get_memory(backend, &local_err);
--        if (local_err) {
--            error_report_err(local_err);
--            exit(1);
--        }
-+        MemoryRegion *seg = host_memory_backend_get_memory(backend,
-+                                                           &error_fatal);
- 
-         if (memory_region_is_mapped(seg)) {
-             char *path = object_get_canonical_path_component(OBJECT(backend));
-diff --git a/vl.c b/vl.c
-index 5aaea77..6c2add9 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4329,12 +4329,7 @@ int main(int argc, char **argv, char **envp)
-     configure_accelerator(current_machine);
- 
-     if (qtest_chrdev) {
--        Error *local_err = NULL;
--        qtest_init(qtest_chrdev, qtest_log, &local_err);
--        if (local_err) {
--            error_report_err(local_err);
--            exit(1);
--        }
-+        qtest_init(qtest_chrdev, qtest_log, &error_fatal);
-     }
- 
-     machine_opts = qemu_get_machine_opts();
-@@ -4345,24 +4340,14 @@ int main(int argc, char **argv, char **envp)
- 
-     opts = qemu_opts_find(qemu_find_opts("boot-opts"), NULL);
-     if (opts) {
--        Error *local_err = NULL;
--
-         boot_order = qemu_opt_get(opts, "order");
-         if (boot_order) {
--            validate_bootdevices(boot_order, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            validate_bootdevices(boot_order, &error_fatal);
-         }
- 
-         boot_once = qemu_opt_get(opts, "once");
-         if (boot_once) {
--            validate_bootdevices(boot_once, &local_err);
--            if (local_err) {
--                error_report_err(local_err);
--                exit(1);
--            }
-+            validate_bootdevices(boot_once, &error_fatal);
-         }
- 
-         boot_menu = qemu_opt_get_bool(opts, "menu", boot_menu);
+ /**
 -- 
-2.4.3
+1.8.3.2
 

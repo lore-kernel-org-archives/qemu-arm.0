@@ -1,95 +1,141 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1127437obb;
-        Fri, 13 Nov 2015 10:52:02 -0800 (PST)
-X-Received: by 10.129.154.86 with SMTP id r83mr23460560ywg.149.1447440722440;
-        Fri, 13 Nov 2015 10:52:02 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-yk0-x229.google.com (mail-yk0-x229.google.com. [2607:f8b0:4002:c07::229])
-        by mx.google.com with ESMTPS id j129si15313315ywf.20.2015.11.13.10.52.02
+Received: by 10.182.158.201 with SMTP id ww9csp2002821obb;
+        Thu, 19 Nov 2015 06:53:54 -0800 (PST)
+X-Received: by 10.31.134.79 with SMTP id i76mr5402159vkd.51.1447944834383;
+        Thu, 19 Nov 2015 06:53:54 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r192si4343973vke.105.2015.11.19.06.53.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 13 Nov 2015 10:52:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c07::229 as permitted sender) client-ip=2607:f8b0:4002:c07::229;
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 19 Nov 2015 06:53:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c07::229 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro_org.20150623.gappssmtp.com
-Received: by ykdr82 with SMTP id r82so162156260ykd.3
-        for <alex.bennee@linaro.org>; Fri, 13 Nov 2015 10:52:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro_org.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=lIi8GYt/M6yjTOfTdmFTfsQbvUv/rkotfPCbhFU058M=;
-        b=astixXppfHmBdJP42OeQ62Y1xLWmcAdEubmgw6OQsIaxSbH0i5wuFTpBLSevBrGpwX
-         dQGeZyL7HoTAFzoCcE/cRnOdYkuAMgYv60vySYv/KlpGPKmAj7XCLYyzkTlTlkR7tyRx
-         sAeo0qi56kQzcLIdayPUbXl6ZDGSBMDFnK4ofjG/VEeKBIsuexfN2p1fH890SXPXnKZs
-         gh5mpqnyP2IzhKaUgNrJwrsl4Th1yaejiMMEwfKZ+Xsm6kGUwIrxub87hf05/98gUXC/
-         F4Pfcz10KNq/lzDK5eDZ4ZH868GUF6RsgkDyAq8W54OdEVoSFK2V6IDsnqh3NMa6IeK9
-         dAVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=lIi8GYt/M6yjTOfTdmFTfsQbvUv/rkotfPCbhFU058M=;
-        b=h8rF4MvIopzDKiS6O3THDpPF2xjYrHMGNzB+zbnzpvpzUZ5qOh3juSF5Tq78iazOiT
-         itw82kHu9kLlE7Ei+bs8j6bn/PZKKReB86rq5UB9/3nbhImciWX0WmxbT1RX7dHKNgJ6
-         mviCdxCzBmX4gG58thFrH/9W0Desm4AvQG/BIeGlE6xYvQGAjkxKzsXHDFiQLqCqaci9
-         gW5osrDFI1OHm+5GDVFyeU2n30eKEYmwEHXvRHcm0OUx67T/JtpTc5Bb5ZIq+Jl4BoZa
-         2eoBByJvF5pC7cOqs16Eb1azgOKTq5rfg0pHH9RagcwySVTPvHTFUafS5SyJoYwIO7Ox
-         rFpA==
-X-Gm-Message-State: ALoCoQlVpw85zADKKfxJTJskJTa7opzQ+1zlCtQancOwYwq5xyK3N2RznrfMDai2s8duTiUUnJD0
-X-Received: by 10.129.99.195 with SMTP id x186mr21717040ywb.345.1447440722181;
- Fri, 13 Nov 2015 10:52:02 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 13 Nov 2015 10:51:42 -0800 (PST)
-In-Reply-To: <CAFEAcA9KrB0wZwQzYUmGBW2NPZWkxHFk-JUnW-XwOfbo4wbWUQ@mail.gmail.com>
-References: <1446747358-18214-1-git-send-email-peter.maydell@linaro.org>
- <1446747358-18214-10-git-send-email-peter.maydell@linaro.org>
- <56407AC8.9020100@redhat.com> <CAFEAcA9KrB0wZwQzYUmGBW2NPZWkxHFk-JUnW-XwOfbo4wbWUQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Nov 2015 18:51:42 +0000
-Message-ID: <CAFEAcA-rt0J-mHb8fdYWuk5FR+bTcZyvzXgYB-hk3HYNthNBUw@mail.gmail.com>
-Subject: Re: [PATCH 09/16] target-arm: Support multiple address spaces in page
- table walks
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	qemu-arm@nongnu.org
-Content-Type: text/plain; charset=UTF-8
-X-TUID: PiasBs3puPiW
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42197 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZzQav-00087E-T0
+	for alex.bennee@linaro.org; Thu, 19 Nov 2015 09:53:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53274)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1ZzQat-000879-HD
+	for qemu-arm@nongnu.org; Thu, 19 Nov 2015 09:53:52 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1ZzQao-00010d-I0
+	for qemu-arm@nongnu.org; Thu, 19 Nov 2015 09:53:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52313)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>)
+	id 1ZzQao-00010X-Aa; Thu, 19 Nov 2015 09:53:46 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 5E399C0BFBA9;
+	Thu, 19 Nov 2015 14:53:45 +0000 (UTC)
+Received: from hawk.localdomain.com (ovpn-116-106.ams2.redhat.com
+	[10.36.116.106])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tAJEreNI000808; Thu, 19 Nov 2015 09:53:41 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 19 Nov 2015 09:53:32 -0500
+Message-Id: <1447944817-13286-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, eblake@redhat.com,
+	afaerber@suse.de, rth@twiddle.net
+Subject: [Qemu-arm] [PATCH 0/5] target-arm: enable qmp-dump-guest-memory
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Vdjwa1lc0fiF
 
-On 9 November 2015 at 10:58, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 9 November 2015 at 10:51, Paolo Bonzini <pbonzini@redhat.com> wrote:
->>
->>
->> On 05/11/2015 19:15, Peter Maydell wrote:
->>> If we have a secure address space, use it in page table walks:
->>>  * when doing the physical accesses to read descriptors,
->>>    make them through the correct address space
->>>  * when the final result indicates a secure access, pass the
->>>    correct address space index to tlb_set_page_with_attrs()
->>>
->>> (The descriptor reads are the only direct physical accesses
->>> made in target-arm/ for CPUs which might have TrustZone.)
->>
->> What is the case where you have no secure address space and you have
->> TrustZone?  KVM doesn't have TrustZone, so it should never be in a
->> secure regime, should it?
->
-> You mean "what is the case where is_secure but cpu->num_ases == 1" ?
-> That happens if you have a TrustZone CPU but the board has only
-> connected up one address space, because there is no difference
-> in the view from Secure and NonSecure. (vexpress is like this
-> in hardware, and most of our board models for TZ CPUS are like
-> that now even if the real h/w makes a distinction.)
+This series brings qmp-dump-guest-memory to arm and aarch64
+targets. I've detailed my testing and the results in the
+following table.
 
-Looking more closely at my own code I was wrong here. The
-case where you have only one AS is when the CPU is using KVM.
-In that case in theory we should never end up being asked to
-pick an AddressSpace for a set of MemTxAttrs that say "secure"
-[in the new design where we figure out the asidx from the
-txattrs], but it's a bit tricky to be absolutely certain that never
-happens...
+arm/aarch64 kvm guest kdump testing (P - PASS, F - FAIL). Testing done
+with a latest mainline crash utility patched with [*]
 
-thanks
--- PMM
+.-----------------------------------------------------------------------.
+|				Host	| arm32	| arm64	| arm64	| arm64	|
+|---------------------------------------|-------|-------|-------|-------|
+|				Guest	| arm32	| arm64	| arm64	| arm32	|
+|---------------------------------------|-------|-------|-------|-------|
+|				Pagesize| 4K	| 4K	| 64K	| 4K	|
+|=======================================================================|
+| kdump in guest			| F[1]	| P[2]	| P[3]	| F[1]	|
+|---------------------------------------|-------|-------|-------|-------|
+| qmp-dump-guest-memory <filename>[4]	| P	| P	| P	| P	|
+|---------------------------------------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -z <filename>[5]| F[8]	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -l <filename>[6]| F[8]	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -s <filename>[7]| F[8]	| P	| P	| F[8]	|
+.-----------------------------------------------------------------------.
+
+[1] Kernel v4.4-rc1 crashes with a NULL pointer dereference at virtual
+    address 00000000 in a memcpy (crash_kexec/machine_kexec/fncpy/memcpy).
+    Needs kernel debugging.
+[2] Not sure about mainline, but works with the RHEL kernel,
+    makedumpfile does not yet support arm64 with 4K pages, but using
+    'core_collector cp' in /etc/kdump.conf allows saving an uncompressed
+    elf file.
+[3] Not sure about mainline, but works with the RHEL kernel,
+    uses makedumpfile, thus generates a makedumpfile formatted file
+    using zlib compression.
+[4] No format specified, creates an uncompressed elf formatted file.
+[5] makedumpfile format, with zlib compression
+[6] makedumpfile format, with lzo compression
+[7] makedumpfile format, with snappy compression
+[8] The crash utility doesn't seem to like arm32 dumps in makedumpfile
+    format. Looks like the physical page bitmap is all zeros? Needs
+    qemu and crash debugging.
+
+Additional notes:
+1) QEMU also has scripts/dump-guest-memory.py, which can and should be
+   updated to support multiple architectures, pagesizes, and physbases.
+   This is currently left as future work.
+
+[*] https://www.redhat.com/archives/crash-utility/2015-November/msg00031.html
+
+Andrew Jones (5):
+  qapi-schema: dump-guest-memory: Improve text
+  dump: qemunotes aren't commonly needed
+  dump: allow target to set the page size
+  dump: allow target to set the phys_base
+  target-arm: support QMP dump-guest-memory
+
+ dump.c                      | 129 +++++++++++++++----------
+ include/sysemu/dump-arch.h  |   9 +-
+ include/sysemu/dump.h       |  11 +--
+ qapi-schema.json            |   4 +-
+ qom/cpu.c                   |   4 +-
+ target-arm/Makefile.objs    |   3 +-
+ target-arm/arch_dump.c      | 222 ++++++++++++++++++++++++++++++++++++++++++++
+ target-arm/cpu-qom.h        |   5 +
+ target-arm/cpu.c            |   3 +
+ target-ppc/arch_dump.c      |   6 --
+ target-ppc/cpu-qom.h        |   2 -
+ target-ppc/translate_init.c |   1 -
+ target-s390x/arch_dump.c    |   6 --
+ target-s390x/cpu-qom.h      |   2 -
+ target-s390x/cpu.c          |   1 -
+ 15 files changed, 321 insertions(+), 87 deletions(-)
+ create mode 100644 target-arm/arch_dump.c
+
+-- 
+2.4.3
+

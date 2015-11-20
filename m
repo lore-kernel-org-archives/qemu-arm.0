@@ -1,124 +1,129 @@
-Received: by 10.182.158.201 with SMTP id ww9csp541090obb;
-        Thu, 26 Nov 2015 02:58:01 -0800 (PST)
-X-Received: by 10.55.72.3 with SMTP id v3mr21621006qka.107.1448535476541;
-        Thu, 26 Nov 2015 02:57:56 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l89si25809232qki.93.2015.11.26.02.57.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Nov 2015 02:57:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.182.158.201 with SMTP id ww9csp537311obb;
+        Fri, 20 Nov 2015 07:12:14 -0800 (PST)
+X-Received: by 10.68.244.199 with SMTP id xi7mr19964516pbc.87.1448032334744;
+        Fri, 20 Nov 2015 07:12:14 -0800 (PST)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id gy9si20144367pbc.83.2015.11.20.07.12.14;
+        Fri, 20 Nov 2015 07:12:14 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50444 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a1uFQ-0002RZ-9z
-	for alex.bennee@linaro.org; Thu, 26 Nov 2015 05:57:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41783)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1a1uF4-000286-2d
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 05:57:34 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1a1uF3-0007II-72
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 05:57:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45517)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1a1uEy-0007HV-P9; Thu, 26 Nov 2015 05:57:28 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 6EB949249B;
-	Thu, 26 Nov 2015 10:57:26 +0000 (UTC)
-Received: from [10.36.5.196] (vpn1-5-196.ams2.redhat.com [10.36.5.196])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tAQAvLnh011460
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 26 Nov 2015 05:57:23 -0500
-To: Eric Auger <eric.auger@linaro.org>, eric.auger@st.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com, 
-	peter.maydell@linaro.org
-References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-	<1447946528-1533-3-git-send-email-eric.auger@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <5656E590.3040001@redhat.com>
-Date: Thu, 26 Nov 2015 11:57:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=neutral (body hash did not verify) header.i=@linaro-org.20150623.gappssmtp.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+	id S1163035AbbKTPMM (ORCPT <rfc822;riku.voipio@linaro.org>
+	+ 6 others); Fri, 20 Nov 2015 10:12:12 -0500
+Received: from mail-qk0-f181.google.com ([209.85.220.181]:35996 "EHLO
+	mail-qk0-f181.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+	with ESMTP id S1163031AbbKTPMK convert rfc822-to-8bit (ORCPT
+	<rfc822;kvm@vger.kernel.org>); Fri, 20 Nov 2015 10:12:10 -0500
+Received: by qkda6 with SMTP id a6so37260286qkd.3
+        for <kvm@vger.kernel.org>; Fri, 20 Nov 2015 07:12:10 -0800 (PST)
+DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro-org.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type:content-transfer-encoding;
+        bh=OW5N+CgsoEtt+qMURjxwBFyxpM/spBcvoTM39h80bms=;
+        b=HfXlOJsNDcahaqtCCdWongVhWBMnD5mNxgxjFhlBnLynfu7+C0fMwesabnCDSt1nGK
+         ScOgyPNZOCCZCu5LbBIpTJ3yzyGUHAdN1ZtOs6dbm5C/clMLso32Ulqy9Ux44TqsE2+U
+         pyZBRIxR+3oE8vG5uU+vGn71P/PLOSGsIOlvJraIrfUYLqYKNdOEd77qSnRIElYqk8kB
+         VoSZyqUXIOlTL12gbd3s21DJp8QFCip5usHf66vbqgJ+xZfCu6iKFKQuUz8jrX15QRBF
+         qtUrTtW55zxkAmTE81jzKpZuvTb+u06+hAZJZexaUB4NKyBni9IXQFgULt27WA51kLWR
+         6Q+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type:content-transfer-encoding;
+        bh=OW5N+CgsoEtt+qMURjxwBFyxpM/spBcvoTM39h80bms=;
+        b=RVN1QhxHAZnENXa//UJZ2FJz7/R2SRRWC8Ya70F+Agy0ewRSGct1Hga97XPaRLPVhJ
+         8satlZgifmyczvlmbYfbvJ44yfLzhlXz4IkPiSH0tJQ8CE3aAMWp/T1l2u2FIttBRJKu
+         XmocXNtK2aJ7pdd+lvCGd7z/GQwrNfJI2SHqDHpb3j8RTo+7Zcr5rO19P3Xv7VyrO6es
+         yDcTtMoRoQLuHw0BLDLwd4GlFqrtNINq9ieNV0MzV9eCP/w1IYe46wSey/65j2zYXUKU
+         uMWCQVG1hR7twwKyUZGYHbShpNfe27nMT9uy9YD7xTvkD6uKVnYE7wWwdctuZ5EzpNsP
+         +zdg==
+X-Gm-Message-State: ALoCoQludMkcCaXyZCn1h06oCAUFMFE8oDmugCowd783vJCsTEOE7pk5ciLlaHohH1JOm+ZcAY21
+X-Received: by 10.129.157.70 with SMTP id u67mr13569908ywg.160.1448032329875;
+ Fri, 20 Nov 2015 07:12:09 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1447946528-1533-3-git-send-email-eric.auger@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
-	patches@linaro.org, suravee.suthikulpanit@amd.com,
-	pbonzini@redhat.com, christoffer.dall@linaro.org,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-devel] [RESEND RFC 2/6] device_tree: introduce
- load_device_tree_from_sysfs
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Rv4Mh4CeSbj2
+Received: by 10.31.153.15 with HTTP; Fri, 20 Nov 2015 07:11:50 -0800 (PST)
+In-Reply-To: <CAFEAcA-u3ACj=99NkTRsEL=2KA6LETeAmEf+5Vo03gz0GMh5Zw@mail.gmail.com>
+References: <1447345251-22625-1-git-send-email-alex.bennee@linaro.org>
+ <1447345251-22625-2-git-send-email-alex.bennee@linaro.org> <CAFEAcA-u3ACj=99NkTRsEL=2KA6LETeAmEf+5Vo03gz0GMh5Zw@mail.gmail.com>
+From:	Peter Maydell <peter.maydell@linaro.org>
+Date:	Fri, 20 Nov 2015 15:11:50 +0000
+Message-ID: <CAFEAcA8bdjYaDiCParJt8jVe+720+tzh4CuKD2YGfHeo2UJNcQ@mail.gmail.com>
+Subject: Re: [PATCH v9 1/6] target-arm: kvm64 - introduce kvm_arm_init_debug()
+To:	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc:	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+	Christoffer Dall <christoffer.dall@linaro.org>,
+	Zhichao Huang <zhichao.huang@linaro.org>,
+	kvm-devel <kvm@vger.kernel.org>,
+	arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+	"kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
+	Marc Zyngier <marc.zyngier@arm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Sender:	kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List:	kvm@vger.kernel.org
+X-TUID: Ysp5StMAIeyH
 
-On 19/11/15 16:22, Eric Auger wrote:
-> This function returns the host device tree blob from sysfs
-> (/sys/firmware/devicetree/base).
-> 
-> This has a runtime dependency on the dtc binary. This functionality
-> is useful for platform device passthrough where the host device tree
-> needs to be parsed to feed information into the guest device tree.
-> 
-> Signed-off-by: Eric Auger <eric.auger@linaro.org>
-> ---
->  device_tree.c                | 40 ++++++++++++++++++++++++++++++++++++++++
->  include/sysemu/device_tree.h |  1 +
->  2 files changed, 41 insertions(+)
-> 
-> diff --git a/device_tree.c b/device_tree.c
-> index a9f5f8e..58a5329 100644
-> --- a/device_tree.c
-> +++ b/device_tree.c
-> @@ -117,6 +117,46 @@ fail:
->      return NULL;
->  }
->  
-> +/**
-> + * load_device_tree_from_sysfs
-> + *
-> + * extract the dt blob from host sysfs
-> + * this has a runtime dependency on the dtc binary
-> + */
-> +void *load_device_tree_from_sysfs(void)
-> +{
-> +    char cmd[] = "dtc -I fs -O dtb /sys/firmware/devicetree/base";
-> +    FILE *pipe;
-> +    void *fdt;
-> +    int ret, actual_dt_size;
-> +
-> +    pipe = popen(cmd, "r");
-> +    if (!pipe) {
-> +        error_report("%s: Error when executing dtc", __func__);
-> +        return NULL;
-> +    }
+On 20 November 2015 at 15:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 12 November 2015 at 16:20, Alex Bennée <alex.bennee@linaro.org> wrote:
+>> As we haven't always had guest debug support we need to probe for it.
+>> Additionally we don't do this in the start-up capability code so we
+>> don't fall over on old kernels.
+>>
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> ---
+>>  target-arm/kvm64.c | 18 ++++++++++++++++++
+>>  1 file changed, 18 insertions(+)
+>>
+>> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+>> index ceebfeb..d087794 100644
+>> --- a/target-arm/kvm64.c
+>> +++ b/target-arm/kvm64.c
+>> @@ -25,6 +25,22 @@
+>>  #include "internals.h"
+>>  #include "hw/arm/arm.h"
+>>
+>> +static bool have_guest_debug;
+>> +
+>> +/**
+>> + * kvm_arm_init_debug()
+>> + * @cs: CPUState
+>> + *
+>> + * Check for guest debug capabilities.
+>> + *
+>> + */
+>> +static void kvm_arm_init_debug(CPUState *cs)
+>> +{
+>> +    have_guest_debug = kvm_check_extension(cs->kvm_state,
+>> +                                           KVM_CAP_SET_GUEST_DEBUG);
+>> +    return;
+>> +}
+>> +
+>>  static inline void set_feature(uint64_t *features, int feature)
+>>  {
+>>      *features |= 1ULL << feature;
+>> @@ -121,6 +137,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>      }
+>>      cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>>
+>> +    kvm_arm_init_debug(cs);
+>> +
+>>      return kvm_arm_init_cpreg_list(cpu);
+>>  }
+>
+> I assume in practice the kernel guarantees that either all
+> CPUs have the SET_GUEST_DEBUG cap, or none do :-)
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-The Device Tree Compiler binary is normally only installed on
-developer's machines, so I somewhat doubt that it is a good idea to rely
-on the availability of that binary in QEMU? Maybe you should rather
-extend libfdt to support such a feature?
+...except I've just noticed that nothing else in this patchset
+ever reads the have_guest_debug bool we just set, so what is
+the purpose of this patch?
 
- Thomas
-
+thanks
+-- PMM

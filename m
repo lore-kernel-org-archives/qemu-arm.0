@@ -1,340 +1,667 @@
-Received: by 10.25.134.130 with SMTP id i124csp1101311lfd;
-        Sat, 9 Jan 2016 09:44:49 -0800 (PST)
-X-Received: by 10.140.32.194 with SMTP id h60mr151318554qgh.79.1452361486234;
-        Sat, 09 Jan 2016 09:44:46 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n187si106165190qhc.34.2016.01.09.09.44.46
+Received: by 10.182.158.201 with SMTP id ww9csp557348obb;
+        Fri, 20 Nov 2015 07:48:48 -0800 (PST)
+X-Received: by 10.31.149.75 with SMTP id x72mr7726vkd.81.1448034528184;
+        Fri, 20 Nov 2015 07:48:48 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x233.google.com (mail-vk0-x233.google.com. [2607:f8b0:400c:c05::233])
+        by mx.google.com with ESMTPS id v200si4345vkv.160.2015.11.20.07.48.47
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Jan 2016 09:44:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Nov 2015 07:48:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::233 as permitted sender) client-ip=2607:f8b0:400c:c05::233;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41777 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aHxZF-000706-PV
-	for alex.bennee@linaro.org; Sat, 09 Jan 2016 12:44:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53938)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aHxXW-0003YD-R4
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 12:43:00 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aHxXR-0000kl-Ov
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 12:42:58 -0500
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34429)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1aHxXM-0000iA-SI; Sat, 09 Jan 2016 12:42:49 -0500
-Received: by mail-lf0-x244.google.com with SMTP id n70so17776653lfn.1;
-	Sat, 09 Jan 2016 09:42:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=0HwnqjtWW2IwoDO3aUatloe/0QX1L+SeUqOhB2/XflM=;
-	b=m1UesSPIwQbQIQUZxoDHYYZjgQpbR64gIsHI2IrVWgH4sVpCvt5jEjhiuzfGpninya
-	bd8WeN9wWNMAzSuRLMHTxObFWUBnp3k0DM8s3AM02obwVwvGfXLEh79bGM6mc+IaDs2y
-	7vnPOqroc2fzEkiZEAjW3rO1PXHgixixe/kLVx2hdCKNdarsttcC6bqdaS1rYArHXYTQ
-	WpfDyzUa9EMeWeQ0l/6h45aJ5bmCa9VwI1rW5kOvstSsY5jLPJ2nPJ/B7hSRu3TpIdaM
-	nWlzPVtvOOE/gbfbQ9mOvk7pXipjI/ak6gxDDZHcWMVQJbzUEzXQwmRCFwA8gbA8Vncq
-	LFtw==
-X-Received: by 10.25.23.232 with SMTP id 101mr274888lfx.68.1452361368187;
-	Sat, 09 Jan 2016 09:42:48 -0800 (PST)
-Received: from localhost.localdomain (ppp46-138-151-163.pppoe.spdop.ru.
-	[46.138.151.163]) by smtp.gmail.com with ESMTPSA id
-	f186sm8406450lfd.26.2016.01.09.09.42.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 09 Jan 2016 09:42:47 -0800 (PST)
-From: Dmitry Osipenko <digetx@gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm@nongnu.org
-Date: Sat,  9 Jan 2016 20:39:55 +0300
-Message-Id: <c0c346dfae4cc4d823a4bb10000af2af97e44b4d.1452359845.git.digetx@gmail.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <cover.1452359845.git.digetx@gmail.com>
-References: <cover.1452359845.git.digetx@gmail.com>
-In-Reply-To: <cover.1452359845.git.digetx@gmail.com>
-References: <cover.1452359845.git.digetx@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::244
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Subject: [Qemu-arm] [PATCH v10 7/7] arm_mptimer: Convert to use ptimer
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fKybVowHwMCv
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::233 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro-org.20150623.gappssmtp.com
+Received: by vkfr145 with SMTP id r145so8298vkf.0
+        for <alex.bennee@linaro.org>; Fri, 20 Nov 2015 07:48:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro-org.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type:content-transfer-encoding;
+        bh=zysh7iJOBAIWsCuxNvipr3J82fM9Y2owdM20QZgwKoE=;
+        b=eC0aIpgICas7dUxqDCOyupuQC0vAQB8hSyR6n0Ey5qJs7th5uRLsOxofM2JKNui5d+
+         Eh6aiPF+p6l4uw3LrdagQuTm4ndrN4nc2c254kjg5uAP+teE2TU16Nylml4SeNoSWFwE
+         QxJrs60FFBnF99aYmZyOjXja06n99E1vwo8CahP0Bu4rjlsHEzZU2pxuJXYOTjenp7FP
+         89bbTaenfNsSebddm2NZ65lERLj6liOaRTuHqpIL8eRcxgH5P49IYibemet/33Cnr532
+         G1xRTx9UjLgtoCV4PV5Nf8evIM4o30IOSVCC4e5Hz0HowzqS04RaQFhvowWZfv6nLnGI
+         z+3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type:content-transfer-encoding;
+        bh=zysh7iJOBAIWsCuxNvipr3J82fM9Y2owdM20QZgwKoE=;
+        b=lDmiy7mdNbPT5oaFR5PtOI0uzVOvcR62QMr4PQ70F17PR3RhvfuuLxZSoGs7dKvuzU
+         ok8Tnp12PX3zQ2By3GsdZIdSYLWNKdMdjHn/D4jj9kT1xUaLzwcmx/kKS33s25WxRyp9
+         pyl3TQbaT/PWyN6/FVjd/tBhEJSoWveIwE/AQ6VdHIz9l+SIcXUhU6B28eDj7Zl2H9Kd
+         gM9WLFWKMl45a8tqKEe5FmNPEzgY3kI7alWw3aXl3782ra/W7UkUrP5DBgXbhoQcIgFj
+         mkr6qpsirwro3JaK6O41I3szuxFQszzx65QPRJMzr1uScVBQtwwsVOSCi2aWxEgjShl4
+         p5Mg==
+X-Gm-Message-State: ALoCoQn36tGQn+QBfnctkRGmXOExYU2Ak2aLOLiQtMY7pJCoQCBftyJ75aG24yNUWINAjBhsjBsP
+X-Received: by 10.31.107.193 with SMTP id k62mr7895vki.27.1448034527767; Fri,
+ 20 Nov 2015 07:48:47 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Fri, 20 Nov 2015 07:48:28 -0800 (PST)
+In-Reply-To: <1447345251-22625-5-git-send-email-alex.bennee@linaro.org>
+References: <1447345251-22625-1-git-send-email-alex.bennee@linaro.org> <1447345251-22625-5-git-send-email-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Nov 2015 15:48:28 +0000
+Message-ID: <CAFEAcA-kb5FVvKtq6kSpk2ehoMfJjzS6X+KCqbmV3xwNprfZLw@mail.gmail.com>
+Subject: Re: [PATCH v9 4/6] target-arm: kvm - add support for HW assisted debug
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org, 
+	Christoffer Dall <christoffer.dall@linaro.org>, Zhichao Huang <zhichao.huang@linaro.org>, 
+	kvm-devel <kvm@vger.kernel.org>, arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	"kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>, Marc Zyngier <marc.zyngier@arm.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: l73VlhkJ9gLr
 
-Current ARM MPTimer implementation uses QEMUTimer for the actual timer,
-this implementation isn't complete and mostly tries to duplicate of what
-generic ptimer is already doing fine.
+On 12 November 2015 at 16:20, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> This adds basic support for HW assisted debug. The ioctl interface to
+> KVM allows us to pass an implementation defined number of break and
+> watch point registers. When KVM_GUESTDBG_USE_HW is specified these
+> debug registers will be installed in place on the world switch into the
+> guest.
+>
+> The hardware is actually capable of more advanced matching but it is
+> unclear if this expressiveness is available via the gdbstub protocol.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> ---
+> v2
+>   - correct setting of PMC/BAS/MASK
+>   - improved commentary
+>   - added helper function to check watchpoint in range
+>   - fix find/deletion of watchpoints
+> v3
+>   - use internals.h definitions
+> v6
+>   - KVM_GUESTDBG_USE_HW_BP->KVM_GUESTDBG_USE_HW
+>   - renamed some helper functions to avoid confusion
+> v9
+>   - fix merge conflicts on re-base
+>   - rm asm/ptrace.h include
+>   - add additional commentry for hw breakpoints
+>   - explain gdb's model for HW bkpts
+>   - fix up spacing, formatting as per checkpatch
+>   - better PAC values
+>   - use is_power_of_2
+>   - use _arm_ fn naming and add docs
+>   - add a CPUWatchpoint structure for reporting
+>   - replace manual array manipulation with g_array abstraction
+> ---
+>  target-arm/kvm.c     |  38 +++---
+>  target-arm/kvm64.c   | 352 +++++++++++++++++++++++++++++++++++++++++++++=
++++++-
+>  target-arm/kvm_arm.h |  38 ++++++
+>  3 files changed, 406 insertions(+), 22 deletions(-)
+>
+> diff --git a/target-arm/kvm.c b/target-arm/kvm.c
+> index d505a7e..1f57e92 100644
+> --- a/target-arm/kvm.c
+> +++ b/target-arm/kvm.c
+> @@ -547,6 +547,20 @@ static int kvm_handle_debug(CPUState *cs, struct kvm=
+_run *run)
+>              return true;
+>          }
+>          break;
+> +    case EC_BREAKPOINT:
+> +        if (kvm_arm_find_hw_breakpoint(cs, env->pc)) {
+> +            return true;
+> +        }
+> +        break;
+> +    case EC_WATCHPOINT:
+> +    {
+> +        CPUWatchpoint *wp =3D kvm_arm_find_hw_watchpoint(cs, arch_info->=
+far);
 
-Conversion to ptimer brings the following benefits and fixes:
-	- Simple timer pausing implementation
-	- Fixes counter value preservation after stopping the timer
-	- Correctly handles prescaler != 0 cases
-	- Code simplification and reduction
+This won't compile for 32-bit ARM.
 
-Bump VMSD to version 3, since VMState is changed and is not compatible
-with the previous implementation.
+> +        if (wp) {
+> +            cs->watchpoint_hit =3D wp;
+> +            return true;
+> +        }
+> +        break;
+> +    }
+>      default:
+>          error_report("%s: unhandled debug exit (%"PRIx32", %"PRIx64")\n"=
+,
+>                       __func__, arch_info->hsr, env->pc);
+> @@ -608,6 +622,10 @@ void kvm_arch_update_guest_debug(CPUState *cs, struc=
+t kvm_guest_debug *dbg)
+>      if (kvm_sw_breakpoints_active(cs)) {
+>          dbg->control |=3D KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+>      }
+> +    if (kvm_arm_hw_debug_active(cs)) {
+> +        dbg->control |=3D KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_HW;
+> +        kvm_arm_copy_hw_debug_data(&dbg->arch);
+> +    }
+>  }
+>
+>  /* C6.6.29 BRK instruction */
+> @@ -635,26 +653,6 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, stru=
+ct kvm_sw_breakpoint *bp)
+>      return 0;
+>  }
+>
+> -int kvm_arch_insert_hw_breakpoint(target_ulong addr,
+> -                                  target_ulong len, int type)
+> -{
+> -    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+> -    return -EINVAL;
+> -}
 
-Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
----
- hw/timer/arm_mptimer.c         | 127 ++++++++++++++++++++---------------------
- include/hw/timer/arm_mptimer.h |   5 +-
- 2 files changed, 63 insertions(+), 69 deletions(-)
+You've moved these functions into kvm64.c but haven't provided
+a stub version in kvm32.c...
 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 3e59c2a..5568300 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -19,8 +19,9 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
-+#include "hw/ptimer.h"
- #include "hw/timer/arm_mptimer.h"
--#include "qemu/timer.h"
-+#include "qemu/main-loop.h"
- #include "qom/cpu.h"
- 
- /* This device implements the per-cpu private timer and watchdog block
-@@ -42,33 +43,33 @@ static inline void timerblock_update_irq(TimerBlock *tb)
- }
- 
- /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
--static inline uint32_t timerblock_scale(TimerBlock *tb)
-+static inline uint32_t timerblock_scale(uint32_t control)
- {
--    return (((tb->control >> 8) & 0xff) + 1) * 10;
-+    return (((control >> 8) & 0xff) + 1) * 10;
- }
- 
--static void timerblock_reload(TimerBlock *tb, int restart)
-+static inline void timerblock_set_count(TimerBlock *tb, uint32_t control,
-+                                        uint64_t *count)
- {
--    if (tb->count == 0) {
--        return;
-+    /* PTimer would immediately trigger interrupt for periodic timer
-+     * when counter set to 0, MPtimer under certain condition only.  */
-+    if ((control & 3) == 3 && (*count == 0) && (control & 0xff00) == 0) {
-+        *count = ptimer_get_limit(tb->timer);
-     }
--    if (restart) {
--        tb->tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    ptimer_set_count(tb->timer, *count);
-+}
-+
-+static inline void timerblock_run(TimerBlock *tb, uint32_t control, int cond)
-+{
-+    if (cond) {
-+        ptimer_run(tb->timer, !(control & 2));
-     }
--    tb->tick += (int64_t)tb->count * timerblock_scale(tb);
--    timer_mod(tb->timer, tb->tick);
- }
- 
- static void timerblock_tick(void *opaque)
- {
-     TimerBlock *tb = (TimerBlock *)opaque;
-     tb->status = 1;
--    if (tb->control & 2) {
--        tb->count = tb->load;
--        timerblock_reload(tb, 0);
--    } else {
--        tb->count = 0;
--    }
-     timerblock_update_irq(tb);
- }
- 
-@@ -76,21 +77,11 @@ static uint64_t timerblock_read(void *opaque, hwaddr addr,
-                                 unsigned size)
- {
-     TimerBlock *tb = (TimerBlock *)opaque;
--    int64_t val;
-     switch (addr) {
-     case 0: /* Load */
--        return tb->load;
-+        return ptimer_get_limit(tb->timer);
-     case 4: /* Counter.  */
--        if (((tb->control & 1) == 0) || (tb->count == 0)) {
--            return 0;
--        }
--        /* Slow and ugly, but hopefully won't happen too often.  */
--        val = tb->tick - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        val /= timerblock_scale(tb);
--        if (val < 0) {
--            val = 0;
--        }
--        return val;
-+        return ptimer_get_count(tb->timer);
-     case 8: /* Control.  */
-         return tb->control;
-     case 12: /* Interrupt status.  */
-@@ -104,39 +95,48 @@ static void timerblock_write(void *opaque, hwaddr addr,
-                              uint64_t value, unsigned size)
- {
-     TimerBlock *tb = (TimerBlock *)opaque;
--    int64_t old;
-+    uint32_t control = tb->control;
-     switch (addr) {
-     case 0: /* Load */
--        tb->load = value;
--        /* Fall through.  */
--    case 4: /* Counter.  */
--        if ((tb->control & 1) && tb->count) {
--            /* Cancel the previous timer.  */
--            timer_del(tb->timer);
-+        /* Setting load to 0 stops the timer if prescaler == 0.  */
-+        if ((control & 1) && (value == 0) && (control & 0xff00) == 0) {
-+            ptimer_stop(tb->timer);
-+            control &= ~1;
-         }
--        tb->count = value;
--        if (tb->control & 1) {
--            timerblock_reload(tb, 1);
-+        ptimer_set_limit(tb->timer, value, 1);
-+        timerblock_run(tb, control, (control & 1));
-+        break;
-+    case 4: /* Counter.  */
-+        /* Setting counter to 0 stops the one-shot timer if prescaler == 0.  */
-+        if ((control & 3) == 1 && (value == 0) && (control & 0xff00) == 0) {
-+            ptimer_stop(tb->timer);
-+            control &= ~1;
-         }
-+        timerblock_set_count(tb, control, &value);
-+        timerblock_run(tb, control, (value != 0) && (control & 1));
-         break;
-     case 8: /* Control.  */
--        old = tb->control;
--        tb->control = value;
--        if (value & 1) {
--            if ((old & 1) && (tb->count != 0)) {
--                /* Do nothing if timer is ticking right now.  */
--                break;
-+        if ((value & 1) && (control & 3) != (value & 3)) {
-+            uint64_t count = (value & 0xff00) ? 1 : ptimer_get_count(tb->timer);
-+            if ((count == 0) && (value & 2)) {
-+                timerblock_set_count(tb, value, &count);
-             }
--            if (tb->control & 2) {
--                tb->count = tb->load;
--            }
--            timerblock_reload(tb, 1);
--        } else if (old & 1) {
--            /* Shutdown the timer.  */
--            timer_del(tb->timer);
-+            timerblock_run(tb, value, (count != 0));
-+        } else if ((control & 1) && !(value & 1)) {
-+            ptimer_stop(tb->timer);
-+        }
-+        if ((control & 0xff00) != (value & 0xff00)) {
-+            ptimer_set_period(tb->timer, timerblock_scale(value));
-         }
-+        tb->control = value;
-         break;
-     case 12: /* Interrupt status.  */
-+        /* Simulate continuous IRQ gen.  */
-+        if ((control & 3) == 3 && (control & 0xff00) != 0) {
-+            if (ptimer_get_limit(tb->timer) == 0) {
-+                break;
-+            }
-+        }
-         tb->status &= ~value;
-         timerblock_update_irq(tb);
-         break;
-@@ -184,13 +184,12 @@ static const MemoryRegionOps timerblock_ops = {
- 
- static void timerblock_reset(TimerBlock *tb)
- {
--    tb->count = 0;
--    tb->load = 0;
-     tb->control = 0;
-     tb->status = 0;
--    tb->tick = 0;
-     if (tb->timer) {
--        timer_del(tb->timer);
-+        ptimer_stop(tb->timer);
-+        ptimer_set_limit(tb->timer, 0, 1);
-+        ptimer_set_period(tb->timer, timerblock_scale(0));
-     }
- }
- 
-@@ -235,7 +234,8 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-      */
-     for (i = 0; i < s->num_cpu; i++) {
-         TimerBlock *tb = &s->timerblock[i];
--        tb->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, timerblock_tick, tb);
-+        QEMUBH *bh = qemu_bh_new(timerblock_tick, tb);
-+        tb->timer = ptimer_init(bh);
-         sysbus_init_irq(sbd, &tb->irq);
-         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
-                               "arm_mptimer_timerblock", 0x20);
-@@ -245,26 +245,23 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
- 
- static const VMStateDescription vmstate_timerblock = {
-     .name = "arm_mptimer_timerblock",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(count, TimerBlock),
--        VMSTATE_UINT32(load, TimerBlock),
-         VMSTATE_UINT32(control, TimerBlock),
-         VMSTATE_UINT32(status, TimerBlock),
--        VMSTATE_INT64(tick, TimerBlock),
--        VMSTATE_TIMER_PTR(timer, TimerBlock),
-+        VMSTATE_PTIMER(timer, TimerBlock),
-         VMSTATE_END_OF_LIST()
-     }
- };
- 
- static const VMStateDescription vmstate_arm_mptimer = {
-     .name = "arm_mptimer",
--    .version_id = 2,
--    .minimum_version_id = 2,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (VMStateField[]) {
-         VMSTATE_STRUCT_VARRAY_UINT32(timerblock, ARMMPTimerState, num_cpu,
--                                     2, vmstate_timerblock, TimerBlock),
-+                                     3, vmstate_timerblock, TimerBlock),
-         VMSTATE_END_OF_LIST()
-     }
- };
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index b34cba0..c46d8d2 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -27,12 +27,9 @@
- 
- /* State of a single timer or watchdog block */
- typedef struct {
--    uint32_t count;
--    uint32_t load;
-     uint32_t control;
-     uint32_t status;
--    int64_t tick;
--    QEMUTimer *timer;
-+    struct ptimer_state *timer;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
--- 
-2.6.4
+> -
+> -int kvm_arch_remove_hw_breakpoint(target_ulong addr,
+> -                                  target_ulong len, int type)
+> -{
+> -    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+> -    return -EINVAL;
+> -}
+> -
+> -
+> -void kvm_arch_remove_all_hw_breakpoints(void)
+> -{
+> -    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+> -}
+> -
+>  void kvm_arch_init_irq_routing(KVMState *s)
+>  {
+>  }
+> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+> index d087794..c468324 100644
+> --- a/target-arm/kvm64.c
+> +++ b/target-arm/kvm64.c
+> @@ -2,6 +2,7 @@
+>   * ARM implementation of KVM hooks, 64 bit specific code
+>   *
+>   * Copyright Mian-M. Hamayun 2013, Virtual Open Systems
+> + * Copyright Alex Benn=C3=A9e 2014, Linaro
+>   *
+>   * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+>   * See the COPYING file in the top-level directory.
+> @@ -12,12 +13,17 @@
+>  #include <sys/types.h>
+>  #include <sys/ioctl.h>
+>  #include <sys/mman.h>
+> +#include <sys/ptrace.h>
+>
+> +#include <linux/elf.h>
+>  #include <linux/kvm.h>
+>
+>  #include "config-host.h"
+>  #include "qemu-common.h"
+>  #include "qemu/timer.h"
+> +#include "qemu/host-utils.h"
+> +#include "qemu/error-report.h"
+> +#include "exec/gdbstub.h"
+>  #include "sysemu/sysemu.h"
+>  #include "sysemu/kvm.h"
+>  #include "kvm_arm.h"
+> @@ -27,20 +33,362 @@
+>
+>  static bool have_guest_debug;
+>
+> +/*
+> + * Although the ARM implementation of hardware assisted debugging
+> + * allows for different breakpoints per-core the current GDB interface
 
+Comma after "per-core".
+
+> + * treats them as a global pool of registers (which seems to be the
+> + * case for x86, ppc and s390). As a result we store one copy of
+> + * registers which is used for all active cores.
+> + *
+> + * Write access is serialised by virtue of the GDB protocol which
+> + * updates things. Read access (i.e. when the values are copied to the
+> + * vCPU) is also gated by GDBs run control.
+
+"GDB's".
+
+> + *
+> + * This is not unreasonable as most of the time debugging kernels you
+> + * never know which core will eventually execute your function.
+> + */
+> +
+> +typedef struct {
+> +    uint64_t bcr;
+> +    uint64_t bvr;
+> +} HWBreakpoint;
+> +
+> +/* The watchpoint registers can cover more area than the requested
+> + * watchpoint so we need to store the additional information
+> + * somewhere. We also need to supply a CPUWatchpoint to the GDB stub
+> + * when the watchpoint is hit.
+> + */
+> +typedef struct {
+> +    uint64_t wcr;
+> +    uint64_t wvr;
+> +    CPUWatchpoint details;
+> +} HWWatchpoint;
+> +
+> +/* Maximum and current break/watch point counts */
+> +int max_hw_bps, max_hw_wps;
+> +GArray *hw_breakpoints, *hw_watchpoints;
+> +
+> +#define cur_hw_wps      (hw_watchpoints->len)
+> +#define cur_hw_bps      (hw_breakpoints->len)
+> +#define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i)=
+)
+> +#define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i)=
+)
+> +
+>  /**
+> - * kvm_arm_init_debug()
+> + * kvm_arm_init_debug() - check for guest debug capabilities
+>   * @cs: CPUState
+>   *
+> - * Check for guest debug capabilities.
+> + * kvm_check_extension returns 0 if we have no debug registers or the
+> + * number we have.
+
+this would be easier to read phrased as "kvm_check_extension returns
+the number of debug registers we have (which might be none)".
+
+>   *
+>   */
+>  static void kvm_arm_init_debug(CPUState *cs)
+>  {
+>      have_guest_debug =3D kvm_check_extension(cs->kvm_state,
+>                                             KVM_CAP_SET_GUEST_DEBUG);
+> +
+> +    max_hw_wps =3D kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBU=
+G_HW_WPS);
+> +    hw_watchpoints =3D g_array_sized_new(true, true,
+> +                                       sizeof(HWWatchpoint), max_hw_wps)=
+;
+> +
+> +    max_hw_bps =3D kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBU=
+G_HW_BPS);
+> +    hw_breakpoints =3D g_array_sized_new(true, true,
+> +                                       sizeof(HWBreakpoint), max_hw_bps)=
+;
+>      return;
+>  }
+>
+> +/**
+> + * insert_hw_breakpoint()
+> + * @addr: address of breakpoint
+> + *
+> + * See ARM ARM D2.9.1 for details but here we are only going to create
+> + * simple un-linked breakpoints (i.e. we don't chain breakpoints
+> + * together to match address and context or vmid). The hardware is
+> + * capable of fancier matching but that will require exposing that
+> + * fanciness to GDB's interface
+> + *
+> + * D7.3.2 DBGBCR<n>_EL1, Debug Breakpoint Control Registers
+> + *
+> + *  31  24 23  20 19   16 15 14  13  12   9 8   5 4    3 2   1  0
+> + * +------+------+-------+-----+----+------+-----+------+-----+---+
+> + * | RES0 |  BT  |  LBN  | SSC | HMC| RES0 | BAS | RES0 | PMC | E |
+> + * +------+------+-------+-----+----+------+-----+------+-----+---+
+> + *
+> + * BT: Breakpoint type (0 =3D unlinked address match)
+> + * LBN: Linked BP number (0 =3D unused)
+> + * SSC/HMC/PMC: Security, Higher and Priv access control (Table D-12)
+> + * BAS: Byte Address Select (RES1 for AArch64)
+> + * E: Enable bit
+> + */
+> +static int insert_hw_breakpoint(target_ulong addr)
+> +{
+> +    HWBreakpoint brk =3D {
+> +        .bcr =3D 0x1,                             /* BCR E=3D1, enable *=
+/
+> +        .bvr =3D addr
+> +    };
+> +
+> +    if (cur_hw_bps >=3D max_hw_bps) {
+> +        return -ENOBUFS;
+> +    }
+> +
+> +    brk.bcr =3D deposit32(brk.bcr, 1, 2, 0x3);   /* PMC =3D 11 */
+> +    brk.bcr =3D deposit32(brk.bcr, 5, 4, 0xf);   /* BAS =3D RES1 */
+> +
+> +    g_array_append_val(hw_breakpoints, brk);
+> +
+> +    return 0;
+> +}
+> +
+> +/**
+> + * delete_hw_breakpoint()
+> + * @pc: address of breakpoint
+> + *
+> + * Delete a breakpoint and shuffle any above down
+> + */
+> +
+> +static int delete_hw_breakpoint(target_ulong pc)
+> +{
+> +    int i;
+> +    for (i =3D 0; i < hw_breakpoints->len; i++) {
+> +        HWBreakpoint *brk =3D get_hw_bp(i);
+> +        if (brk->bvr =3D=3D pc) {
+> +            g_array_remove_index(hw_breakpoints, i);
+> +            return 0;
+> +        }
+> +    }
+> +    return -ENOENT;
+> +}
+> +
+> +/**
+> + * insert_hw_watchpoint()
+> + * @addr: address of watch point
+> + * @len: size of area
+> + * @type: type of watch point
+> + *
+> + * See ARM ARM D2.10. As with the breakpoints we can do some advanced
+> + * stuff if we want to. The watch points can be linked with the break
+> + * points above to make them context aware. However for simplicity
+> + * currently we only deal with simple read/write watch points.
+> + *
+> + * D7.3.11 DBGWCR<n>_EL1, Debug Watchpoint Control Registers
+> + *
+> + *  31  29 28   24 23  21  20  19 16 15 14  13   12  5 4   3 2   1  0
+> + * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
+> + * | RES0 |  MASK | RES0 | WT | LBN | SSC | HMC | BAS | LSC | PAC | E |
+> + * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
+> + *
+> + * MASK: num bits addr mask (0=3Dnone,01/10=3Dres,11=3D3 bits (8 bytes))
+> + * WT: 0 - unlinked, 1 - linked (not currently used)
+> + * LBN: Linked BP number (not currently used)
+> + * SSC/HMC/PAC: Security, Higher and Priv access control (Table D2-11)
+> + * BAS: Byte Address Select
+> + * LSC: Load/Store control (01: load, 10: store, 11: both)
+> + * E: Enable
+> + *
+> + * The bottom 2 bits of the value register are masked. Therefore to
+> + * break on any sizes smaller than an unaligned word you need to set
+> + * MASK=3D0, BAS=3Dbit per byte in question. For larger regions (^2) you
+> + * need to ensure you mask the address as required and set BAS=3D0xff
+> + */
+> +
+> +static int insert_hw_watchpoint(target_ulong addr,
+> +                                target_ulong len, int type)
+> +{
+> +    HWWatchpoint wp =3D {
+> +        .wcr =3D 1, /* E=3D1, enable */
+> +        .wvr =3D addr & (~0x7ULL),
+> +        .details =3D { .vaddr =3D addr, .len =3D len}
+
+Should at least have a space after "len".
+
+> +    };
+> +
+> +    if (cur_hw_wps >=3D max_hw_wps) {
+> +        return -ENOBUFS;
+> +    }
+> +
+> +    /*
+> +     * HMC=3D0 SSC=3D0 PAC=3D3 will hit EL0 or EL1, any security state,
+> +     * valid whether EL3 is implemented or not
+> +     */
+> +    wp.wcr =3D deposit32(wp.wcr, 1, 2, 3);
+> +
+> +    switch (type) {
+> +    case GDB_WATCHPOINT_READ:
+> +        wp.wcr =3D deposit32(wp.wcr, 3, 2, 1);
+> +        wp.details.flags =3D BP_MEM_READ;
+> +        break;
+> +    case GDB_WATCHPOINT_WRITE:
+> +        wp.wcr =3D deposit32(wp.wcr, 3, 2, 2);
+> +        wp.details.flags =3D BP_MEM_WRITE;
+> +        break;
+> +    case GDB_WATCHPOINT_ACCESS:
+> +        wp.wcr =3D deposit32(wp.wcr, 3, 2, 3);
+> +        wp.details.flags =3D BP_MEM_ACCESS;
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +        break;
+> +    }
+> +    if (len <=3D 8) {
+> +        /* we align the address and set the bits in BAS */
+> +        int off =3D addr & 0x7;
+> +        int bas =3D (1 << len)-1;
+
+Missing spaces around operator "-" (here and below).
+
+> +
+> +        wp.wcr =3D deposit32(wp.wcr, 5 + off, 8 - off, bas);
+> +    } else {
+> +        /* For ranges above 8 bytes we need to be a power of 2 */
+> +        if (is_power_of_2(len)) {
+> +            int bits =3D ctz64(len);
+> +
+> +            wp.wvr &=3D ~((1 << bits)-1);
+> +            wp.wcr =3D deposit32(wp.wcr, 24, 4, bits);
+> +            wp.wcr =3D deposit32(wp.wcr, 5, 8, 0xff);
+> +        } else {
+> +            return -ENOBUFS;
+> +        }
+> +    }
+> +
+> +    g_array_append_val(hw_watchpoints, wp);
+> +    return 0;
+> +}
+> +
+> +
+> +static bool check_watchpoint_in_range(int i, target_ulong addr)
+> +{
+> +    HWWatchpoint *wp =3D get_hw_wp(i);
+> +    uint64_t addr_top, addr_bottom =3D wp->wvr;
+> +    int bas =3D extract32(wp->wcr, 5, 8);
+> +    int mask =3D extract32(wp->wcr, 24, 4);
+> +
+> +    if (mask) {
+> +        addr_top =3D addr_bottom + (1 << mask);
+> +    } else {
+> +        /* BAS must be contiguous but can offset against the base
+> +         * address in DBGWVR */
+> +        addr_bottom =3D addr_bottom + ctz32(bas);
+> +        addr_top =3D addr_bottom + clo32(bas);
+> +    }
+> +
+> +    if (addr >=3D addr_bottom && addr <=3D addr_top) {
+> +        return true;
+> +    }
+> +
+> +    return false;
+> +}
+> +
+> +/**
+> + * delete_hw_watchpoint()
+> + * @addr: address of breakpoint
+> + *
+> + * Delete a breakpoint and shuffle any above down
+> + */
+> +
+> +static int delete_hw_watchpoint(target_ulong addr,
+> +                                target_ulong len, int type)
+> +{
+> +    int i;
+> +    for (i =3D 0; i < cur_hw_wps; i++) {
+> +        if (check_watchpoint_in_range(i, addr)) {
+> +            g_array_remove_index(hw_watchpoints, i);
+> +            return 0;
+> +        }
+> +    }
+> +    return -ENOENT;
+> +}
+> +
+> +
+> +int kvm_arch_insert_hw_breakpoint(target_ulong addr,
+> +                                  target_ulong len, int type)
+> +{
+> +    switch (type) {
+> +    case GDB_BREAKPOINT_HW:
+> +        return insert_hw_breakpoint(addr);
+> +        break;
+> +    case GDB_WATCHPOINT_READ:
+> +    case GDB_WATCHPOINT_WRITE:
+> +    case GDB_WATCHPOINT_ACCESS:
+> +        return insert_hw_watchpoint(addr, len, type);
+> +    default:
+> +        return -ENOSYS;
+> +    }
+> +}
+> +
+> +int kvm_arch_remove_hw_breakpoint(target_ulong addr,
+> +                                  target_ulong len, int type)
+> +{
+> +    switch (type) {
+> +    case GDB_BREAKPOINT_HW:
+> +        return delete_hw_breakpoint(addr);
+> +        break;
+> +    case GDB_WATCHPOINT_READ:
+> +    case GDB_WATCHPOINT_WRITE:
+> +    case GDB_WATCHPOINT_ACCESS:
+> +        return delete_hw_watchpoint(addr, len, type);
+> +    default:
+> +        return -ENOSYS;
+> +    }
+> +}
+> +
+> +
+> +void kvm_arch_remove_all_hw_breakpoints(void)
+> +{
+> +    if (cur_hw_wps > 0) {
+> +        g_array_remove_range(hw_watchpoints, 0, cur_hw_wps);
+> +    }
+> +    if (cur_hw_bps > 0) {
+> +        g_array_remove_range(hw_breakpoints, 0, cur_hw_bps);
+> +    }
+> +}
+> +
+> +void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
+> +{
+> +    int i;
+> +    memset(ptr, 0, sizeof(struct kvm_guest_debug_arch));
+> +
+> +    for (i =3D 0; i < max_hw_wps; i++) {
+> +        HWWatchpoint *wp =3D get_hw_wp(i);
+> +        ptr->dbg_wcr[i] =3D wp->wcr;
+> +        ptr->dbg_wvr[i] =3D wp->wvr;
+> +    }
+> +    for (i =3D 0; i < max_hw_bps; i++) {
+> +        HWBreakpoint *bp =3D get_hw_bp(i);
+> +        ptr->dbg_bcr[i] =3D bp->bcr;
+> +        ptr->dbg_bvr[i] =3D bp->bvr;
+> +    }
+> +}
+> +
+> +bool kvm_arm_hw_debug_active(CPUState *cs)
+> +{
+> +    return ((cur_hw_wps > 0) || (cur_hw_bps > 0)) ? true : false;
+
+You don't nede the ?: here.
+
+> +}
+> +
+> +bool kvm_arm_find_hw_breakpoint(CPUState *cpu, target_ulong pc)
+> +{
+> +    if (kvm_arm_hw_debug_active(cpu)) {
+
+Do we need to do this check? I think the loop condition
+will DTRT if there aren't any current breakpoints.
+
+> +        int i;
+> +
+> +        for (i =3D 0; i < cur_hw_bps; i++) {
+> +            HWBreakpoint *bp =3D get_hw_bp(i);
+> +            if (bp->bvr =3D=3D pc) {
+> +                return true;
+> +            }
+> +        }
+> +    }
+> +    return false;
+> +}
+> +
+> +CPUWatchpoint *kvm_arm_find_hw_watchpoint(CPUState *cpu, target_ulong ad=
+dr)
+> +{
+> +    if (kvm_arm_hw_debug_active(cpu)) {
+
+Similarly here.
+
+> +        int i;
+> +
+> +        for (i =3D 0; i < cur_hw_wps; i++) {
+> +            if (check_watchpoint_in_range(i, addr)) {
+> +                return &get_hw_wp(i)->details;
+> +            }
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+> +
+>  static inline void set_feature(uint64_t *features, int feature)
+>  {
+>      *features |=3D 1ULL << feature;
+> diff --git a/target-arm/kvm_arm.h b/target-arm/kvm_arm.h
+> index b516041..da88658 100644
+> --- a/target-arm/kvm_arm.h
+> +++ b/target-arm/kvm_arm.h
+> @@ -215,4 +215,42 @@ static inline const char *gic_class_name(void)
+>   */
+>  const char *gicv3_class_name(void);
+>
+> +/**
+> + * kvm_arm_hw_debug_active:
+> + *
+> + * Return TRUE is any hardware breakpoints in use.
+
+"if".
+
+> + */
+> +
+> +bool kvm_arm_hw_debug_active(CPUState *cs);
+> +
+> +/**
+> + * kvm_arm_copy_hw_debug_data:
+> + *
+> + * @ptr: kvm_guest_debug_arch structure
+> + *
+> + * Copy the architecture specific debug registers into the
+> + * kvm_guest_debug ioctl structure.
+> + */
+> +struct kvm_guest_debug_arch;
+> +
+> +void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
+> +
+> +/**
+> + * kvm_arm_find_hw_breakpoint:
+> + * @cpu: CPUState
+> + * @pc: pc of breakpoint
+> + *
+> + * Return TRUE if the pc matches one of our breakpoints.
+> + */
+> +bool kvm_arm_find_hw_breakpoint(CPUState *cpu, target_ulong pc);
+> +
+> +/**
+> + * kvm_arm_find_hw_watchpoint:
+> + * @cpu: CPUState
+> + * @addr: address of watchpoint
+> + *
+> + * Return the CPUWatchpoint structure the addr matches one of our watchp=
+oints.
+
+Missing "if" ? (or needs rephrasing)
+
+> + */
+> +CPUWatchpoint *kvm_arm_find_hw_watchpoint(CPUState *cpu, target_ulong ad=
+dr);
+> +
+>  #endif
+> --
+> 2.6.3
+>
+
+thanks
+-- PMM

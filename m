@@ -1,48 +1,86 @@
-Received: by 10.182.158.201 with SMTP id ww9csp515837obb;
-        Fri, 20 Nov 2015 06:33:24 -0800 (PST)
-X-Received: by 10.129.133.69 with SMTP id v66mr13645691ywf.68.1448030004009;
-        Fri, 20 Nov 2015 06:33:24 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp537102obb;
+        Fri, 20 Nov 2015 07:11:56 -0800 (PST)
+X-Received: by 10.25.39.19 with SMTP id n19mr5049483lfn.156.1448032316386;
+        Fri, 20 Nov 2015 07:11:56 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c184si10785793ywa.56.2015.11.20.06.33.23
+        by mx.google.com with ESMTPS id 42si5416lfx.24.2015.11.20.07.11.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Nov 2015 06:33:23 -0800 (PST)
+        Fri, 20 Nov 2015 07:11:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47695 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:47978 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1Zzmkd-0004Oo-K1
-	for alex.bennee@linaro.org; Fri, 20 Nov 2015 09:33:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55538)
+	id 1ZznLu-0006z2-O2
+	for alex.bennee@linaro.org; Fri, 20 Nov 2015 10:11:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ZzmkH-0003zF-3g
-	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 09:33:02 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1ZznL9-00067r-KC
+	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 10:11:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ZzmkG-0002Aq-8N
-	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 09:33:00 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:35522)
+	(envelope-from <eric.auger@linaro.org>) id 1ZznL5-0005Vu-E7
+	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 10:11:07 -0500
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:38669)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ZzmkG-0002AU-1V; Fri, 20 Nov 2015 09:33:00 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1Zzmk7-0002Zk-VI; Fri, 20 Nov 2015 14:32:51 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 20 Nov 2015 14:32:51 +0000
-Message-Id: <1448029971-9875-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
+	(envelope-from <eric.auger@linaro.org>) id 1ZznL5-0005Vk-58
+	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 10:11:03 -0500
+Received: by wmec201 with SMTP id c201so24950294wme.1
+	for <qemu-devel@nongnu.org>; Fri, 20 Nov 2015 07:11:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=P0O9Ee2s02VbOr2XDbEJdFRX895yvDMAElzaUHhF6lw=;
+	b=pWF2QjRrf6DnVHzbWpgMr+q58KSZV5PsjZ7+zRWHeBXfFlE7muXUqNxuQaT3a/eNGB
+	BO91ZzLmduN5gO/xtvpn9GFJ/jam0BBGVcpwzpZWK62iABblYDvirhAgCdGPMbCoKgdr
+	HD5YrYYGN75DvZ++SLjatqlHMX3iIkd+tyY6Fx1UTlDNjJQAusi5gJ5Ndyp7COx+EUfO
+	E0ms/7tu5I/gRooopKbjvp1ZkELoeaGQo1ZzB/hlfpQAUDssfZ6ZbeRYGHgxJ2RwR299
+	xQ/L12wp/GLHdwUHIoCL21rRuf+yLXHHSS3i8M6PIgTF6c/qE0R8vNTt4VJniwkO2ikU
+	t+4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=P0O9Ee2s02VbOr2XDbEJdFRX895yvDMAElzaUHhF6lw=;
+	b=h1YjBMoGDCtv5C38DEpmSe5izJ/IjaG97pmo5dcMD2w+ppPBHyR60z1GNaQOnTda7n
+	5UeeLuUq+aDPrsEnRhR0am06AE7ChiFbILKacm45FQ5+LIkJbnoCj4ul5iNCnS6ZE8Uc
+	5+FHvZIyAIJJ1jinNQoV6NvOIty7Fba1qqrxotdE0pLS68JWIK0Dg89r3j8wAAVzxH23
+	JNs/zfF1LBjrZjpWLpl+5QbMZriczvzFMKHFAZ421vo2WWFngrti6y0K6RpdQQ767K9+
+	E40ditn+OlrOqYzTmj9Sz+3E8oAwiciS2EVJOxXEAMsETHeu6Z3xlSDOCpQWDUE2ecyQ
+	3b9A==
+X-Gm-Message-State: ALoCoQlNMGi3uRY89unzvBk1+MCIks+lkwyUrLETNgVbGPpr1lBf17+U+boRwE7XDfZt97pJGbAy
+X-Received: by 10.28.172.129 with SMTP id v123mr2958107wme.47.1448032262238;
+	Fri, 20 Nov 2015 07:11:02 -0800 (PST)
+Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
+	[80.11.198.90]) by smtp.googlemail.com with ESMTPSA id
+	w141sm3099641wmw.24.2015.11.20.07.11.00
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 20 Nov 2015 07:11:01 -0800 (PST)
+To: Alex Williamson <alex.williamson@redhat.com>
+References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
+	<1447976660.4697.210.camel@redhat.com>
+From: Eric Auger <eric.auger@linaro.org>
+Message-ID: <564F3800.1090507@linaro.org>
+Date: Fri, 20 Nov 2015 16:10:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <1447976660.4697.210.camel@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2001:8b0:1d0::1
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-arm@nongnu.org, patches@linaro.org
-Subject: [Qemu-devel] [PATCH for-2.5] target-arm: Don't mask out bits
-	[47:40] in LPAE descriptors for v8
+X-Received-From: 2a00:1450:400c:c09::22f
+Cc: b.reynal@virtualopensystems.com, peter.maydell@linaro.org,
+	eric.auger@st.com, patches@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, suravee.suthikulpanit@amd.com,
+	pbonzini@redhat.com, thomas.lendacky@amd.com, christoffer.dall@linaro.org
+Subject: Re: [Qemu-devel] [RESEND RFC 0/6] AMD XGBE KVM platform passthrough
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -56,64 +94,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /oqqERH9h+zg
+X-TUID: bwtRfuHOdpTj
 
-In an LPAE format descriptor in ARMv8 the address field extends
-up to bit 47, not just bit 39. Correct the masking so we don't
-give incorrect results if the output address size is greater
-than 40 bits, as it can be for AArch64.
+Hi Alex,
+On 11/20/2015 12:44 AM, Alex Williamson wrote:
+> On Thu, 2015-11-19 at 15:22 +0000, Eric Auger wrote:
+>> I am resending this RFC from Oct 12, after kernel 4.4-rc1 and
+>> QEMU 2.5-rc1, hoping things have calmed down a little bit.
+>>
+>> This RFC allows to set up AMD XGBE passthrough. This was tested on AMD
+>> Seattle.
+>>
+>> The first upstreamed device supporting KVM platform passthrough was the
+>> Calxeda Midway XGMAC. Compared to this latter, the XGBE XGMAC exposes a
+>> much more complex device tree node. Generating the device tree node for
+>> the guest is the challenging and controversary part of this series.
+>>
+>> - First There are 2 device tree node formats:
+>> one where XGBE and PHY are described in separate nodes and another one
+>> that combines both description in a single node (only supported by 4.2
+>> onwards kernels). Only the combined description is supported for passthrough,
+>> meaning the host must be >= 4.2 and must feature a device tree with a combined
+>> description. The guest will also be exposed with a combined description,
+>> meaning only >= 4.2 guest are supported. It is not planned to support
+>> separate node representation since assignment of the PHY is less
+>> straigtforward.
+>>
+>> - the XGMAC/PHY node depends on 2 clock nodes (DMA and PTP).
+>> The code checks those clocks are fixed to make sure they cannot be
+>> switched off at some point after the native driver gets unbound.
+>>
+>> - there are many property values to populate on guest side. Most of them
+>> cannot be hardcoded. That series proposes a way to parse the host device
+>> tree blob and retrieve host values to feed guest representation. Current
+>> approach relies on dtc binary availability plus libfdt usage.
+>> Other alternatives were discussed in:
+>> http://www.spinics.net/lists/kvm-arm/msg16648.html.
+>>
+>> - Currently host booted with ACPI is not supported.
+> 
+> I won't pretend to know all the politics in the ARM space, but doesn't
+> this last bullet sort of imply that this is dead-on-arrival code?  Maybe
+> not in the embedded space, but certainly in the server space, I thought
+> ACPI was declared the winner.  Thanks,
 
-(Note that we don't yet support the new-in-v8 Address Size fault which
-should be generated if any translation table entry or TTBR contains
-an address with non-zero bits above the most significant bit of the
-maximum output address size.)
+When the code was written, no ACPI description was available yet
+including IOMMU. Now I think there is a specification that would enable
+the description of the system (IORT/DSDT tables) and I will investigate
+whether we have one ready for the HW I am using and mainlined.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is worth fixing for 2.5 I think. As the commit message notes,
-we don't support the Addres Size faults we ought to take in some
-cases, but that seems more 2.6-ish.
----
- target-arm/helper.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+Nethertheless we had a discussion end of Sept with Marc Zyngier,
+Christoffer, Will Deacon and other people working in the ARM ecosystem
+and we decided starting with FDT host description was a reasonable
+choice at this moment. To be fully honest Peter also thought we should
+consider the ACPI case from day 0. But I think nobody -AFAIK - has an
+ideal solution about how to address ACPI/DT in a unified way and people
+seem to be against introducing IOCTL API.
 
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 4ecae61..afc4163 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -6642,6 +6642,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     int ap, ns, xn, pxn;
-     uint32_t el = regime_el(env, mmu_idx);
-     bool ttbr1_valid = true;
-+    uint64_t descaddrmask;
- 
-     /* TODO:
-      * This code does not handle the different format TCR for VTCR_EL2.
-@@ -6831,6 +6832,15 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     descaddr = extract64(ttbr, 0, 48);
-     descaddr &= ~((1ULL << (inputsize - (stride * (4 - level)))) - 1);
- 
-+    /* The address field in the descriptor goes up to bit 39 for ARMv7
-+     * but up to bit 47 for ARMv8.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_V8)) {
-+        descaddrmask = 0xfffffffff000ULL;
-+    } else {
-+        descaddrmask = 0xfffffff000ULL;
-+    }
-+
-     /* Secure accesses start with the page table in secure memory and
-      * can be downgraded to non-secure at any step. Non-secure accesses
-      * remain non-secure. We implement this by just ORing in the NSTable/NS
-@@ -6854,7 +6864,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-             /* Invalid, or the Reserved level 3 encoding */
-             goto do_fault;
-         }
--        descaddr = descriptor & 0xfffffff000ULL;
-+        descaddr = descriptor & descaddrmask;
- 
-         if ((descriptor & 2) && (level < 3)) {
-             /* Table entry. The top five bits are attributes which  may
--- 
-1.9.1
+Among solutions I foresee the 1st one below was considered the simplest
+and chosen:
+1) rely on external applications to decode/parse dt/ACPI table
+2) build a unified fs representation for dt/ACPI
+3) create unified IOCTL API to retrieve dt/ACPI info (attempted by VOSYS
+but at VFIO level)
+
+The idea of this series is
+- to rely on external dtc binary to build the blob from
+/sys/firmware/devicetree/base
+- introduce some helpers using libfdt that manipulate the host dt blob
+- use those helpers in sysbus-fdt.c to build the clock and xgbe nodes
+for the guest
+
+Assuming we have an ACPI description I guess we would/could use a
+similar approach to parse/decode the ACPI table from QEMU (relying on
+acpidump, acpixtract, iasl, ../.. combination). So the current proposal
+brings a solution for embedded world and can be easily reused for other
+devices. Next step is to propose a similar approach for ACPI. Now I
+would like to make sure the open approach is accepted (with external
+dependency on dtc binary as we would have ext dependency on ACPI utilities).
+
+Best Regards
+
+Eric
+
+
+> 
+> Alex
+> 
 

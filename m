@@ -1,125 +1,121 @@
-Received: by 10.182.158.201 with SMTP id ww9csp545383obb;
-        Fri, 20 Nov 2015 07:26:20 -0800 (PST)
-X-Received: by 10.13.224.195 with SMTP id j186mr9630011ywe.116.1448033180907;
-        Fri, 20 Nov 2015 07:26:20 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp578277obb;
+        Fri, 20 Nov 2015 08:26:54 -0800 (PST)
+X-Received: by 10.31.170.199 with SMTP id t190mr193911vke.66.1448036814359;
+        Fri, 20 Nov 2015 08:26:54 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f67si20354ywa.327.2015.11.20.07.26.20
+        by mx.google.com with ESMTPS id 71si171158vkc.163.2015.11.20.08.26.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Nov 2015 07:26:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 20 Nov 2015 08:26:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48095 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:48394 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZznZs-000182-F8
-	for alex.bennee@linaro.org; Fri, 20 Nov 2015 10:26:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43677)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ZzoWT-0001gN-Vt
+	for alex.bennee@linaro.org; Fri, 20 Nov 2015 11:26:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59369)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent.desnogues@gmail.com>) id 1ZznZT-0000gy-0s
-	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 10:25:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzoWS-0001ed-Kw
+	for qemu-arm@nongnu.org; Fri, 20 Nov 2015 11:26:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent.desnogues@gmail.com>) id 1ZznZS-0000wo-7T
-	for qemu-devel@nongnu.org; Fri, 20 Nov 2015 10:25:54 -0500
-Received: from mail-yk0-x22a.google.com ([2607:f8b0:4002:c07::22a]:33678)
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzoWR-0000wq-SU
+	for qemu-arm@nongnu.org; Fri, 20 Nov 2015 11:26:52 -0500
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:34502)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent.desnogues@gmail.com>)
-	id 1ZznZR-0000wJ-Vp; Fri, 20 Nov 2015 10:25:54 -0500
-Received: by ykdv3 with SMTP id v3so167347370ykd.0;
-	Fri, 20 Nov 2015 07:25:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	(envelope-from <peter.maydell@linaro.org>) id 1ZzoWR-0000wk-PF
+	for qemu-arm@nongnu.org; Fri, 20 Nov 2015 11:26:51 -0500
+Received: by vkbs1 with SMTP id s1so804573vkb.1
+	for <qemu-arm@nongnu.org>; Fri, 20 Nov 2015 08:26:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=0XKnTtoZtiUuwi5tlfehQuniHJtngcf4QUVXkhZroYQ=;
-	b=wfsoVsj2vwzohE7da+kwTq9U3hBchKbD8+9VFKunexSl8T2SjUnW+aTnLmWWQb0X0Z
-	QIw8MMUcF0C+YCQeuuptWprOQ3HCriZbrZ9CfT36D8AUcTZuVNRKyTwnmumd5508Wua9
-	pRxbOhJHVVF+lecd9INl+T7LjPWIhWk3nFUPW/G8/svy4xvYsOlssOkOBgQWbUol1sUa
-	4tXHqNWhN6LP3DBDK+KCAAG/9MLbT1YlHtBXuXHrp6UjBFHEy6QLoAuiZldgRDiUhLqt
-	rUDOULuzbamtlypLDX1yau/KYLOTiE1QrSP0spiKil/rdet5kq/Dqf9JTmC2fKS/PAbl
-	WTbg==
+	bh=aUxOZ+GDgCLmHRvjoe8H24IHJn7lMvDEbRt+CAiaOas=;
+	b=UCc4EyRR7IsjNqIej324U6W13PkWjBsDa/h77jrr+sIHXkpWYS4oKoF9a/1eHpfAxi
+	2vv9V44G8eE4LC+l41lgG4RnP7Qb5DdnWQL4tK+Zdtyxvc9ViyqdMKm8y4ZSlgV6zTzA
+	nsOQFAHWeygl/UZk2bE46ZOBMFsyNyNmlTXcHK5pNfQFYfWs/SVcLZTGb46pjBlsjnLr
+	1Jjm9FIxAAsYS0RH7IAoSQf12jlLT7LWhKGemh5A5csA8FAmE0g8ZywNINNbp7ZhPYfw
+	+6o0g/MhwD28rvplLTY5A8CGSDdiymmGrUSwZY6CnW96XZZuFqm/jdbhlA7R49Z4Ipf+
+	ypTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=aUxOZ+GDgCLmHRvjoe8H24IHJn7lMvDEbRt+CAiaOas=;
+	b=K9ujC35ioi0vZoufZ493Ta+Q7w2Hx69oG4VKMLlT+7gm5kv4k1f6xZ85Y/YZ20Z1kb
+	bxXcr+1syLxaWep4U66p4c7Bv16so4TDHQC7tUpUuUW8cvAODCxQGseWrNdWDu30mfR/
+	W9sUwM2ClNxcecjU0hj8OlmV5aiOdIDSbgS9b9ZKUMUPDW/j9G/q/m0iH/zzmOGEiCWP
+	S4E2XnXNAoO/w6Qeo3n5ckLwC2HNlH3n/5yKmxh6bFOmwYtz3mAfUFDIW3+f5fmyf0Ew
+	CJp62LbsftHBL38JzPEu5TIxptY1ttgXBqe1KvCGVjwLJxjVIeQrfW1E//NT+ZmVsGbP
+	xvgQ==
+X-Gm-Message-State: ALoCoQlGptUvW0JW4sOmVAON7+x9AZ+Q3sTtntrdixPRQGdgHIYVLAe2ZovwfAI//MWqVu4FdcmE
+X-Received: by 10.31.131.201 with SMTP id f192mr198949vkd.90.1448036811431;
+	Fri, 20 Nov 2015 08:26:51 -0800 (PST)
 MIME-Version: 1.0
-X-Received: by 10.129.42.4 with SMTP id q4mr14821996ywq.35.1448033153525; Fri,
-	20 Nov 2015 07:25:53 -0800 (PST)
-Received: by 10.31.219.3 with HTTP; Fri, 20 Nov 2015 07:25:53 -0800 (PST)
-In-Reply-To: <CAFEAcA_tbHjcOFGNSetXhRMdH9P_tSyrAji83wXyG7th_0HRaQ@mail.gmail.com>
-References: <1448029971-9875-1-git-send-email-peter.maydell@linaro.org>
-	<CABoDooP4ya0uG_1C7Ux65CQP3JsQQO68fPJkdihXVbxGWHei5g@mail.gmail.com>
-	<CAFEAcA_tbHjcOFGNSetXhRMdH9P_tSyrAji83wXyG7th_0HRaQ@mail.gmail.com>
-Date: Fri, 20 Nov 2015 16:25:53 +0100
-Message-ID: <CABoDooNoXc3e6x+V6F_f+s7ZUFMANo7AKJ+JJXcfPRcbAp4d0A@mail.gmail.com>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.31.153.15 with HTTP; Fri, 20 Nov 2015 08:26:32 -0800 (PST)
+In-Reply-To: <20151112150423.GJ4180@thinpad.lan.raisama.net>
+References: <1447278167-320-1-git-send-email-ehabkost@redhat.com>
+	<20151112133747-mutt-send-email-mst@redhat.com>
+	<20151112150423.GJ4180@thinpad.lan.raisama.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Nov 2015 16:26:32 +0000
+Message-ID: <CAFEAcA_4LmM9pH4HNv-XUGjzmnj=rEJe=sKbN7M1JEREn_uX=w@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:4002:c07::22a
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH for-2.5] target-arm: Don't mask out bits
- [47:40] in LPAE descriptors for v8
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22d
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Andrew Zaborowski <balrogg@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH] nseries: Don't use qemu_hw_version()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wHQIak9Isbau
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q4gvBkPCTLDf
 
-On Fri, Nov 20, 2015 at 4:20 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 20 November 2015 at 15:18, Laurent Desnogues
-> <laurent.desnogues@gmail.com> wrote:
->> Hello,
+On 12 November 2015 at 15:04, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> On Thu, Nov 12, 2015 at 01:39:24PM +0200, Michael S. Tsirkin wrote:
+>> On Wed, Nov 11, 2015 at 07:42:47PM -0200, Eduardo Habkost wrote:
+>> > nseries doesn't use qemu_set_hw_version() and doesn't need the
+>> > compatibility magic of qemu_hw_version(). Use QEMU_VERSION
+>> > directly.
+>> >
+>> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 >>
->> On Fri, Nov 20, 2015 at 3:32 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> In an LPAE format descriptor in ARMv8 the address field extends
->>> up to bit 47, not just bit 39. Correct the masking so we don't
->>> give incorrect results if the output address size is greater
->>> than 40 bits, as it can be for AArch64.
->>>
->>> (Note that we don't yet support the new-in-v8 Address Size fault which
->>> should be generated if any translation table entry or TTBR contains
->>> an address with non-zero bits above the most significant bit of the
->>> maximum output address size.)
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> This looks very wrong.
+>> We should be reducing the users of QEMU_VERSION,
+>> not adding more.
 >
->>> +    /* The address field in the descriptor goes up to bit 39 for ARMv7
->>> +     * but up to bit 47 for ARMv8.
->>> +     */
->>> +    if (arm_feature(env, ARM_FEATURE_V8)) {
->>> +        descaddrmask = 0xfffffffff000ULL;
->>> +    } else {
->>> +        descaddrmask = 0xfffffff000ULL;
->>> +    }
->>
->> My understanding is that 48 bits are used if you are running AArch64
->> code, and 40 bits are used for 32-bit code even on an ARMv8 CPU, so
->> checking for ARM_FEATURE_V8 is perhaps not enough.
->
-> For v8 32-bit code the usable address width is only 40 bits, but
-> setting a bit in [47:40] causes an AddressSize fault on v8 (but not
-> v7). So the mask should be 48 bits for v8 regardless of 32-vs-64,
-> and when we support AddressSize faults we'll then check the upper
-> bits of the masked-out address and raise a fault if needed.
+> I would like to hear from the users and maintainers of the
+> nseries machines, to judge this. I assume they don't need ABI
+> compatibility betweeen QEMU versions, and maybe they want to know
+> the QEMU version they are running.
 
-That makes sense.
+I suspect you won't find many users or maintainers on this
+list (or anywhere else). My guess is that this was useful
+for when Nokia were actively shipping an SDK that used QEMU
+(because then they could surface the QEMU and other component
+version information to SDK end-users and get better bug reports
+and so on as a result), but that anybody still using upstream
+QEMU to emulate an n-series device is capable of reporting
+what QEMU version they're using without having to have it
+reported via a dialog box inside the guest :-)
 
-So here we go:
-
-Reviewed-by: <laurent.desnogues@gmail.com>
-
-Thanks,
-
-Laurent
+thanks
+-- PMM

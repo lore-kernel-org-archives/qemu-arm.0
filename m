@@ -1,147 +1,154 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1339472obb;
-        Mon, 23 Nov 2015 03:59:15 -0800 (PST)
-X-Received: by 10.31.174.142 with SMTP id x136mr18378168vke.11.1448279955358;
-        Mon, 23 Nov 2015 03:59:15 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1563487obb;
+        Mon, 23 Nov 2015 10:42:56 -0800 (PST)
+X-Received: by 10.31.169.137 with SMTP id s131mr21066941vke.144.1448304176534;
+        Mon, 23 Nov 2015 10:42:56 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 68si12181895vkf.197.2015.11.23.03.59.15
+        by mx.google.com with ESMTPS id t145si13861295vke.73.2015.11.23.10.42.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Nov 2015 03:59:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 23 Nov 2015 10:42:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60028 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34064 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a0pm7-0003nA-3i
-	for alex.bennee@linaro.org; Mon, 23 Nov 2015 06:59:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43255)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a0w4m-0008Ro-7D
+	for alex.bennee@linaro.org; Mon, 23 Nov 2015 13:42:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41437)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1a0pll-0003TY-Dr
-	for qemu-devel@nongnu.org; Mon, 23 Nov 2015 06:58:54 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1a0w4k-0008Ot-0r
+	for qemu-arm@nongnu.org; Mon, 23 Nov 2015 13:42:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1a0pli-00065A-7y
-	for qemu-devel@nongnu.org; Mon, 23 Nov 2015 06:58:53 -0500
-Received: from mail-pa0-x22a.google.com ([2607:f8b0:400e:c03::22a]:34117)
+	(envelope-from <serge.fdrv@gmail.com>) id 1a0w4f-0008IG-EC
+	for qemu-arm@nongnu.org; Mon, 23 Nov 2015 13:42:53 -0500
+Received: from mail-lf0-x236.google.com ([2a00:1450:4010:c07::236]:35027)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1a0pli-000656-2Y; Mon, 23 Nov 2015 06:58:50 -0500
-Received: by padhx2 with SMTP id hx2so189357842pad.1;
-	Mon, 23 Nov 2015 03:58:49 -0800 (PST)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1a0w4f-0008IA-25; Mon, 23 Nov 2015 13:42:49 -0500
+Received: by lfdl133 with SMTP id l133so33917505lfd.2;
+	Mon, 23 Nov 2015 10:42:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=8/+kJbHchZmj12eLS874RUTNizw/lMtqwiTVqidLx9E=;
-	b=VW11Iv8NNcf3T2JoOsrp+lzq2F9YItYwjHsrwGnd1GZnlQNS+fKY7AEOl3G2PicinA
-	Jgk8kvWiZ6rthBa8thF5AXJsEZ6uljcTrIMNUzOQbjCzyp/VGCHt2XQE89ZxWUVrzKwu
-	SmKmy9tt6KIR7tPhqAvE9OTRjPu6TxNm9hq35h0Joi/AQDNNFjUao/mfOGNmPN2L6Rpz
-	hO2XuyqHtFFtO1clWYeO8ijh16BS3nA/fh5DcVzxD3Sl6x6VyGdRAulL+FIg4QjxN247
-	opVZoeNrUkTmCTCaW64Jz784alJgsLbU0JPxISf9EccRF4XgGoHnzTHYfyzNfTU3uRjr
-	sA1w==
-X-Received: by 10.66.142.201 with SMTP id ry9mr35819762pab.89.1448279929206;
-	Mon, 23 Nov 2015 03:58:49 -0800 (PST)
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
-	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
-	ud10sm10264218pab.27.2015.11.23.03.58.47
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Mon, 23 Nov 2015 03:58:48 -0800 (PST)
-Date: Mon, 23 Nov 2015 12:58:44 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20151123115844.GB12172@toto>
-References: <1448029971-9875-1-git-send-email-peter.maydell@linaro.org>
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=sMMx7b2/KB6zwYdlj2aTyiZBtZ2qR/j5bKI2MK3yCLE=;
+	b=Micpy6Wh0SioekDy//2gGSpJEbvILdFJdSDbhy8h7YkEqJSoMXwH2htU0nN4uUAl1d
+	wtkpCPvI1GC/d9UU9/+K2E8DoWGknFcn0PhNu9UEkBWiW+MfuLaO9j/JIKPjLc+VpnlC
+	wYFdqy0LJb5mzg1uAYeEIPqs41J8xbaJEAJLNYYrZmIDP/r3A3QLJgVQrosPpfxr/p0H
+	aF/3a436BPYD3dvY+Ps35XydkKVFgtsw4uFRgVOlrTqiYk3EZNnTvIP9MS7blYPq3AQu
+	KydUzGyKIGMjAjWU5SbXGKsiG9CleNVUecCIQAOWRkDDAA0beFK0wryTy0htvO5Juk9L
+	o7yA==
+X-Received: by 10.112.161.228 with SMTP id xv4mr10653573lbb.60.1448304167916; 
+	Mon, 23 Nov 2015 10:42:47 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	y79sm2015071lfd.45.2015.11.23.10.42.46
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 23 Nov 2015 10:42:46 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <1447698531-4751-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8Xvw+Q4PjOrhswT__M4a-Aj2uPpEcsZqpNbSAoKmTBmQ@mail.gmail.com>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56535E25.90305@gmail.com>
+Date: Mon, 23 Nov 2015 21:42:45 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1448029971-9875-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <CAFEAcA8Xvw+Q4PjOrhswT__M4a-Aj2uPpEcsZqpNbSAoKmTBmQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::22a
+X-Received-From: 2a00:1450:4010:c07::236
 Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-devel] [PATCH for-2.5] target-arm: Don't mask out bits
- [47:40] in LPAE descriptors for v8
-X-BeenThere: qemu-devel@nongnu.org
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH] target-arm/translate-a64.c: Correct
+ unallocated checks for ldst_excl
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W7CLh9QoC8qe
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HUbv+u5HON/V
 
-On Fri, Nov 20, 2015 at 02:32:51PM +0000, Peter Maydell wrote:
-> In an LPAE format descriptor in ARMv8 the address field extends
-> up to bit 47, not just bit 39. Correct the masking so we don't
-> give incorrect results if the output address size is greater
-> than 40 bits, as it can be for AArch64.
-> 
-> (Note that we don't yet support the new-in-v8 Address Size fault which
-> should be generated if any translation table entry or TTBR contains
-> an address with non-zero bits above the most significant bit of the
-> maximum output address size.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 23.11.2015 19:49, Peter Maydell wrote:
+> Ping? I forgot to mark this for-2.5, and given how long the bug's
+> been hanging around there's not much urgency to fixing it, but
+> we might as well put the fix into 2.5 if it gets reviewed.
+>
 
+Hi, Peter. I'm going to review this carefully in a few days :)
+For now, I see that the comment for this function should be updated to
+match new code.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Best,
+Sergey
 
+>
+> On 16 November 2015 at 18:28, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> The checks for the unallocated encodings in the ldst_excl group
+>> (exclusives and load-acquire/store-release) were not correct. This
+>> error meant that in turn we ended up with code attempting to handle
+>> the non-existent case of "non-exclusive load-acquire/store-release
+>> pair". Delete that broken and now unreachable code.
+>>
+>> Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> The easiest way to validate that we have the unallocated
+>> conditions correct now is to look at C4.4.6 "load/store exclusive"
+>> in the v8 ARM ARM rev A.h: our three conditions correspond
+>> to the three "unallocated" rows in the decode table.
+>>
+>> PS: Laurent originally reported this way back in 2014:
+>> http://lists.gnu.org/archive/html/qemu-devel/2014-10/msg01255.html
+>>
+>>  target-arm/translate-a64.c | 12 ++----------
+>>  1 file changed, 2 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+>> index fe485a4..890ace4 100644
+>> --- a/target-arm/translate-a64.c
+>> +++ b/target-arm/translate-a64.c
+>> @@ -1833,7 +1833,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+>>      int size = extract32(insn, 30, 2);
+>>      TCGv_i64 tcg_addr;
+>>
+>> -    if ((!is_excl && !is_lasr) ||
+>> +    if ((!is_excl && !is_pair && !is_lasr) ||
+>> +        (!is_excl && is_pair) ||
+>>          (is_pair && size < 2)) {
+>>          unallocated_encoding(s);
+>>          return;
+>> @@ -1862,15 +1863,6 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+>>          } else {
+>>              do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
+>>          }
+>> -        if (is_pair) {
+>> -            TCGv_i64 tcg_rt2 = cpu_reg(s, rt);
+>> -            tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
+>> -            if (is_store) {
+>> -                do_gpr_st(s, tcg_rt2, tcg_addr, size);
+>> -            } else {
+>> -                do_gpr_ld(s, tcg_rt2, tcg_addr, size, false, false);
+>> -            }
+>> -        }
+>>      }
+>>  }
+>>
+>> --
+>> 1.9.1
+>>
 
-> ---
-> This is worth fixing for 2.5 I think. As the commit message notes,
-> we don't support the Addres Size faults we ought to take in some
-> cases, but that seems more 2.6-ish.
-> ---
->  target-arm/helper.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 4ecae61..afc4163 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -6642,6 +6642,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->      int ap, ns, xn, pxn;
->      uint32_t el = regime_el(env, mmu_idx);
->      bool ttbr1_valid = true;
-> +    uint64_t descaddrmask;
->  
->      /* TODO:
->       * This code does not handle the different format TCR for VTCR_EL2.
-> @@ -6831,6 +6832,15 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->      descaddr = extract64(ttbr, 0, 48);
->      descaddr &= ~((1ULL << (inputsize - (stride * (4 - level)))) - 1);
->  
-> +    /* The address field in the descriptor goes up to bit 39 for ARMv7
-> +     * but up to bit 47 for ARMv8.
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_V8)) {
-> +        descaddrmask = 0xfffffffff000ULL;
-> +    } else {
-> +        descaddrmask = 0xfffffff000ULL;
-> +    }
-> +
->      /* Secure accesses start with the page table in secure memory and
->       * can be downgraded to non-secure at any step. Non-secure accesses
->       * remain non-secure. We implement this by just ORing in the NSTable/NS
-> @@ -6854,7 +6864,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->              /* Invalid, or the Reserved level 3 encoding */
->              goto do_fault;
->          }
-> -        descaddr = descriptor & 0xfffffff000ULL;
-> +        descaddr = descriptor & descaddrmask;
->  
->          if ((descriptor & 2) && (level < 3)) {
->              /* Table entry. The top five bits are attributes which  may
-> -- 
-> 1.9.1
-> 

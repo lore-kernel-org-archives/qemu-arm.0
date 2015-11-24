@@ -1,76 +1,75 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1982575obb;
-        Tue, 24 Nov 2015 04:07:42 -0800 (PST)
-X-Received: by 10.31.47.204 with SMTP id v195mr26263511vkv.119.1448366861939;
-        Tue, 24 Nov 2015 04:07:41 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1986502obb;
+        Tue, 24 Nov 2015 04:14:17 -0800 (PST)
+X-Received: by 10.31.128.82 with SMTP id b79mr25296444vkd.47.1448367257424;
+        Tue, 24 Nov 2015 04:14:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n15si11193272vkd.211.2015.11.24.04.07.41
+        by mx.google.com with ESMTPS id s71si8721562vkf.105.2015.11.24.04.14.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Nov 2015 04:07:41 -0800 (PST)
+        Tue, 24 Nov 2015 04:14:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
-Received: from localhost ([::1]:37962 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37982 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a1CNp-0001en-NL
-	for alex.bennee@linaro.org; Tue, 24 Nov 2015 07:07:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34054)
+	id 1a1CUC-0004A3-UB
+	for alex.bennee@linaro.org; Tue, 24 Nov 2015 07:14:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35578)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a1CNn-0001eh-QE
-	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:07:40 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1a1CUB-00049x-1w
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:14:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a1CNm-0007lD-T5
-	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:07:39 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:35497)
+	(envelope-from <serge.fdrv@gmail.com>) id 1a1CU7-000187-Sx
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:14:14 -0500
+Received: from mail-lf0-x22e.google.com ([2a00:1450:4010:c07::22e]:36089)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a1CNm-0007l6-Jc
-	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:07:38 -0500
-Received: by vkha189 with SMTP id a189so9642896vkh.2
-	for <qemu-arm@nongnu.org>; Tue, 24 Nov 2015 04:07:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro-org.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=o7ojOzfVo2tAkY3J9HjMV+sYtltvUbtYcDhJLxdiiJQ=;
-	b=JnyXFMR98ws5RIsnqVa9V8wu0wpO7MEQxa7+gC2RrEWPg/7oP5aKkXvr34xb+7ujCu
-	S8FfDS2qRuKS3+lQb76iGa9KfIJ8U8vuTJCLHSK2IpLlLTqZP+uCNIA4Y/cjWXrksaXp
-	/Zis6jKywTkv+A43sGRWTu7vLYI1aWdSwUcSGRz5FWRgHo0pdSlkF1yZStnLrVglFtxr
-	pNYchIEFmzC7FvzyMpu9jn7qHmp/xK4fshSwZPKaT4p/3Yj60eiVS/Id9u1H+GJfcoBA
-	uUNYAnRGpBRdCYNwwHGLmBN01Toaw+nJQIW2jmyWtuPfSNN2XgTcrfrRXslHMAQLLsJS
-	SIKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=o7ojOzfVo2tAkY3J9HjMV+sYtltvUbtYcDhJLxdiiJQ=;
-	b=mFQ0PEGyqXUBdNcZ831FRSKt8UL07caMuHmQ2tF3lR7ybXKoijv2+NgTVgWG7PW+OV
-	pzbbgcmbGw8Yhz1MF/nmi5/SCJBFnOWJJsW46wv22VGZxMvMYL/OWSiAUj2HyIUsu5fa
-	K7avAP/eBRlw8Wp75q7Mmi+VA9T5vm9K6BdBdyA/rs6hDicRr9kuPvlt/JhMBCSbqqAb
-	v6ETGpbz2KKkGNH74ZSxRgRvroln6z0/kfSka9F0+3N9geSgOVqUQUic7S083OGEHh6w
-	qImSYeRiXyXNfFJuJvhr8fY7pCE2fQzQeSWiJEB89bfLxgSccBseLlFhReuOZ4/9uZ9+
-	S0QQ==
-X-Gm-Message-State: ALoCoQkW/8bPtM/PTDWkMlYAVcglCGJuTQJLRZ61wj397kv5dzEBBDZYDuTiRrPOMbDSF+JLm7P3
-X-Received: by 10.31.194.201 with SMTP id s192mr25826881vkf.92.1448366857948; 
-	Tue, 24 Nov 2015 04:07:37 -0800 (PST)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1a1CU7-000181-L1; Tue, 24 Nov 2015 07:14:11 -0500
+Received: by lfs39 with SMTP id 39so17803042lfs.3;
+	Tue, 24 Nov 2015 04:14:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=TSeY514QFC1rvyYMFJabGd0qDEPKCKkctIkP7ADVSlw=;
+	b=pC4uocF9GEj8dm134b6fFl6sO0K7YPzci7t7a38vv0FFk4Xqir8TkGHRtBn0K73PUD
+	qqlfnOLp/bJaRz42MKI7qUk2BXLDZXFwhdyVxp4t/X6njP3aa5dbY0Nm5KR+JwT8a/VC
+	yUSGDej+DJ1o+cpWjXhUDl/bitXeCq9aZid6HNNAfIIzwoEcomkl48D19OYzrEQZv8Jy
+	UGV9/qBLdf6INYe5mKAfhdFVWLeibg1oVL/1CCgeZ+Gbwt+6UqPp/yZA+s2OTAPFL7ML
+	Pc/vFSqr5AoWPuPBG17H5x8/dmeDrpKiHxAzUt/ZsRRVHULN7DHaN7L/fuic4aRRA4Wm
+	brKA==
+X-Received: by 10.25.64.5 with SMTP id n5mr11048486lfa.18.1448367250572;
+	Tue, 24 Nov 2015 04:14:10 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	n65sm1585713lfb.43.2015.11.24.04.14.08
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 24 Nov 2015 04:14:09 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1447698531-4751-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8Xvw+Q4PjOrhswT__M4a-Aj2uPpEcsZqpNbSAoKmTBmQ@mail.gmail.com>
+	<56535E25.90305@gmail.com> <565360FD.6010301@gmail.com>
+	<CAFEAcA_M2GVTK-Xt--EsoHN=44Hq3S1jz_ZoDG0dCKjx3NY41g@mail.gmail.com>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56545490.4060305@gmail.com>
+Date: Tue, 24 Nov 2015 15:14:08 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 24 Nov 2015 04:07:18 -0800 (PST)
-In-Reply-To: <1448366481-10279-1-git-send-email-peter.maydell@linaro.org>
-References: <1448366481-10279-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Nov 2015 12:07:18 +0000
-Message-ID: <CAFEAcA9mN6MDSu65ZHcBRRBX=2EnjEc7GyYE4aWMbNdwA3ti1g@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA_M2GVTK-Xt--EsoHN=44Hq3S1jz_ZoDG0dCKjx3NY41g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2607:f8b0:400c:c05::233
+X-Received-From: 2a00:1450:4010:c07::22e
 Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, qemu-arm@nongnu.org,
+	QEMU Developers <qemu-devel@nongnu.org>,
 	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-arm] [PATCH v2 for-2.5] target-arm/translate-a64.c:
- Correct unallocated checks for ldst_excl
+Subject: Re: [Qemu-arm] [PATCH] target-arm/translate-a64.c: Correct
+ unallocated checks for ldst_excl
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -84,71 +83,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DptnF2Y55XXx
+X-TUID: kaSpjCLji51L
 
-(Apologies if you got two copies of this -- I mangled the
---from argument to git send-email first time round and the list
-servers rejected the mail. -- PMM)
+On 24.11.2015 14:03, Peter Maydell wrote:
+> On 23 November 2015 at 18:54, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+>> On 23.11.2015 21:42, Sergey Fedorov wrote:
+>>> On 23.11.2015 19:49, Peter Maydell wrote:
+>>>> Ping? I forgot to mark this for-2.5, and given how long the bug's
+>>>> been hanging around there's not much urgency to fixing it, but
+>>>> we might as well put the fix into 2.5 if it gets reviewed.
+>>>>
+>>> Hi, Peter. I'm going to review this carefully in a few days :)
+>>> For now, I see that the comment for this function should be updated to
+>>> match new code.
+>>>
+>> However, I've just checked the logic of the patch was correct. Just the
+>> comment needs to be adjusted.
+> Looking through the rest of the file, in general we don't try
+> to note in the instruction-format comments all the unallocated
+> encoding possibilities, so I think the simplest thing will be
+> just to delete that part of the comment. I don't think duplicating
+> the information in the code itself really gains us much.
+>
+> I'll send out a v2.
+>
 
-On 24 November 2015 at 12:01, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The checks for the unallocated encodings in the ldst_excl group
-> (exclusives and load-acquire/store-release) were not correct. This
-> error meant that in turn we ended up with code attempting to handle
-> the non-existent case of "non-exclusive load-acquire/store-release
-> pair". Delete that broken and now unreachable code.
->
-> Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> The easiest way to validate that we have the unallocated
-> conditions correct now is to look at C4.4.6 "load/store exclusive"
-> in the v8 ARM ARM rev A.3h: our three conditions correspond
-> to the three "unallocated" rows in the decode table.
->
-> v2 changes: remove incorrect comment too.
-> ---
->  target-arm/translate-a64.c | 15 ++-------------
->  1 file changed, 2 insertions(+), 13 deletions(-)
->
-> diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-> index fe485a4..14e8131 100644
-> --- a/target-arm/translate-a64.c
-> +++ b/target-arm/translate-a64.c
-> @@ -1816,9 +1816,6 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
->   *  o2: 0 -> exclusive, 1 -> not
->   *  o1: 0 -> single register, 1 -> register pair
->   *  o0: 1 -> load-acquire/store-release, 0 -> not
-> - *
-> - *  o0 == 0 AND o2 == 1 is un-allocated
-> - *  o1 == 1 is un-allocated except for 32 and 64 bit sizes
->   */
->  static void disas_ldst_excl(DisasContext *s, uint32_t insn)
->  {
-> @@ -1833,7 +1830,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
->      int size = extract32(insn, 30, 2);
->      TCGv_i64 tcg_addr;
->
-> -    if ((!is_excl && !is_lasr) ||
-> +    if ((!is_excl && !is_pair && !is_lasr) ||
-> +        (!is_excl && is_pair) ||
->          (is_pair && size < 2)) {
->          unallocated_encoding(s);
->          return;
-> @@ -1862,15 +1860,6 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
->          } else {
->              do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
->          }
-> -        if (is_pair) {
-> -            TCGv_i64 tcg_rt2 = cpu_reg(s, rt);
-> -            tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
-> -            if (is_store) {
-> -                do_gpr_st(s, tcg_rt2, tcg_addr, size);
-> -            } else {
-> -                do_gpr_ld(s, tcg_rt2, tcg_addr, size, false, false);
-> -            }
-> -        }
->      }
->  }
->
-> --
-> 1.9.1
+I would just agree with you. No need to duplicate that low-level
+knowledge which is obvious from the code.
+
+Best regards,
+Sergey

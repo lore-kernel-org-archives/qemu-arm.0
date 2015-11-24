@@ -1,69 +1,62 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1987979obb;
-        Tue, 24 Nov 2015 04:16:43 -0800 (PST)
-X-Received: by 10.31.8.4 with SMTP id 4mr26173307vki.131.1448367403377;
-        Tue, 24 Nov 2015 04:16:43 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1990651obb;
+        Tue, 24 Nov 2015 04:21:47 -0800 (PST)
+X-Received: by 10.31.8.147 with SMTP id 141mr25815554vki.33.1448367707467;
+        Tue, 24 Nov 2015 04:21:47 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d131si725402vka.203.2015.11.24.04.16.43
+        by mx.google.com with ESMTPS id g10si17471184vkf.94.2015.11.24.04.21.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Nov 2015 04:16:43 -0800 (PST)
+        Tue, 24 Nov 2015 04:21:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38007 helo=lists.gnu.org)
+Received: from localhost ([::1]:38043 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a1CWZ-0006bd-6J
-	for alex.bennee@linaro.org; Tue, 24 Nov 2015 07:16:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36141)
+	id 1a1CbT-00032D-3H
+	for alex.bennee@linaro.org; Tue, 24 Nov 2015 07:21:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a1CWW-0006bX-TJ
-	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:16:42 -0500
+	(envelope-from <laurent.desnogues@gmail.com>) id 1a1CbQ-0002yy-F9
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:21:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a1CWT-0001hq-Mk
-	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:16:40 -0500
-Received: from mail-lf0-x22a.google.com ([2a00:1450:4010:c07::22a]:32998)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1a1CbP-00035n-Jk
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 07:21:44 -0500
+Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:36440)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1a1CWT-0001hh-9q; Tue, 24 Nov 2015 07:16:37 -0500
-Received: by lfaz4 with SMTP id z4so18000156lfa.0;
-	Tue, 24 Nov 2015 04:16:36 -0800 (PST)
+	(envelope-from <laurent.desnogues@gmail.com>)
+	id 1a1CbN-00035S-L9; Tue, 24 Nov 2015 07:21:41 -0500
+Received: by vkay187 with SMTP id y187so9895580vka.3;
+	Tue, 24 Nov 2015 04:21:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=+hnoJngqNK6g5w13GJ08CWZ1LfBcB6LX0EGD+JL1sLs=;
-	b=eilLeSCVxgNOIrqiJbsMXVARXtHw+S6JhtKMzRQSulPqvg5sFkM77w0pxQvoSAhCzi
-	zUl+LtVN7JJSY1ku/wCmvcQdqM7pKoP23BQlhtBe8z3x/qEG0Ky0XT5sMwQcFuOgXqb+
-	sdw9zjVTSHDWJBhINatWv9TezZUR1G6Lwt0Xdmhe1+UlQ+OY8JyXnf/wKKi+7mqAM4uP
-	m4lHAU4slaY4xBJLGsY/tksbGtlGmIfg3bASRR5ruYq2h13B3FZBcrNIp2qXQWrQWRb2
-	cjHzCn7bH9R7aIt4y4THj3QQEwTI3NkxK5Gb8tEqfWMlrGSBZnJqSEEQsboW0CAjFoBJ
-	840g==
-X-Received: by 10.25.161.78 with SMTP id k75mr10727601lfe.31.1448367396456;
-	Tue, 24 Nov 2015 04:16:36 -0800 (PST)
-Received: from [10.30.10.50] ([213.243.91.10])
-	by smtp.googlemail.com with ESMTPSA id
-	g80sm2619120lfg.44.2015.11.24.04.16.34
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 24 Nov 2015 04:16:35 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1448366481-10279-1-git-send-email-peter.maydell@linaro.org>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56545522.5060508@gmail.com>
-Date: Tue, 24 Nov 2015 15:16:34 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=MqecpdyXfn6/ALS9mxSt6xM83AfvMybFS0mC8+p04ds=;
+	b=zh998hfO/9WAZVyXvuVqZt+WbXUlQsEnquEW1YwjbKpw23wbaDX5Wj2AETWuhLbaN3
+	sRbKS++vzbFlr5dNGdZ/vGAswhKEMnKni6Xw97wvpolbwIcDzlTZq9PIlsOMESUoD5iT
+	1jSwXDeWo2UEzrw9Tl4ij8jIoF68kpkOO9b7PLoFyPpiKLRrNcuIRFJ4Y0BdbwH224ek
+	Jg6+m3CVKlasw0V5TpKc8QrmGM9km8nCySUMujlC+Mvqn5BahlcdPUT63R66hQ4QgRaA
+	afTrCx6Cp1hFepiUOR8iy3Hzc7Q5rPI/p4v4Ex3Er9ZCBtZ1SYaWp7sGLKXFoX4FU3VC
+	2GPA==
 MIME-Version: 1.0
+X-Received: by 10.31.156.78 with SMTP id f75mr25775194vke.40.1448367700838;
+	Tue, 24 Nov 2015 04:21:40 -0800 (PST)
+Received: by 10.31.219.3 with HTTP; Tue, 24 Nov 2015 04:21:40 -0800 (PST)
 In-Reply-To: <1448366481-10279-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+References: <1448366481-10279-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 24 Nov 2015 13:21:40 +0100
+Message-ID: <CABoDooNF_CcCHV-QWNpv7oO3C2Z19De1ME5+T2mJTUA499i3bQ@mail.gmail.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
 	(bad octet value).
-X-Received-From: 2a00:1450:4010:c07::22a
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, qemu-arm@nongnu.org,
-	patches@linaro.org
+X-Received-From: 2607:f8b0:400c:c05::229
+Cc: qemu-arm@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
 Subject: Re: [Qemu-arm] [PATCH v2 for-2.5] target-arm/translate-a64.c:
  Correct unallocated checks for ldst_excl
 X-BeenThere: qemu-arm@nongnu.org
@@ -79,9 +72,9 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9Qsm9ITZ3HD6
+X-TUID: ikDsbqxRNSO2
 
-On 24.11.2015 15:01, Peter Maydell wrote:
+On Tue, Nov 24, 2015 at 1:01 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
 > The checks for the unallocated encodings in the ldst_excl group
 > (exclusives and load-acquire/store-release) were not correct. This
 > error meant that in turn we ended up with code attempting to handle
@@ -91,7 +84,10 @@ On 24.11.2015 15:01, Peter Maydell wrote:
 > Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+
+
+Laurent
 
 > ---
 > The easiest way to validate that we have the unallocated
@@ -121,7 +117,7 @@ Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 > @@ -1833,7 +1830,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
 >      int size = extract32(insn, 30, 2);
 >      TCGv_i64 tcg_addr;
->  
+>
 > -    if ((!is_excl && !is_lasr) ||
 > +    if ((!is_excl && !is_pair && !is_lasr) ||
 > +        (!is_excl && is_pair) ||
@@ -143,5 +139,7 @@ Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 > -        }
 >      }
 >  }
->  
-
+>
+> --
+> 1.9.1
+>

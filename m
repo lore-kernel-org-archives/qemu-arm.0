@@ -1,332 +1,180 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2021002obb;
-        Thu, 19 Nov 2015 07:23:23 -0800 (PST)
-X-Received: by 10.31.52.68 with SMTP id b65mr5167992vka.112.1447946602452;
-        Thu, 19 Nov 2015 07:23:22 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp2389555obb;
+        Tue, 24 Nov 2015 16:00:13 -0800 (PST)
+X-Received: by 10.31.21.213 with SMTP id 204mr29510367vkv.29.1448409613771;
+        Tue, 24 Nov 2015 16:00:13 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w184si4463909vkw.4.2015.11.19.07.23.22
+        by mx.google.com with ESMTPS id m78si20864441vke.187.2015.11.24.16.00.13
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Thu, 19 Nov 2015 07:23:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 24 Nov 2015 16:00:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
-Received: from localhost ([::1]:42403 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:42105 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZzR3R-0004nt-OF
-	for alex.bennee@linaro.org; Thu, 19 Nov 2015 10:23:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33519)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a1NVN-0005NO-AS
+	for alex.bennee@linaro.org; Tue, 24 Nov 2015 19:00:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2W-0003Qc-H7
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:28 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a1NVK-0005Fn-E2
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 19:00:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2V-0000kX-2E
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:24 -0500
-Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:35121)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a1NVJ-00011e-8x
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 19:00:10 -0500
+Received: from mail-bn1on0145.outbound.protection.outlook.com
+	([157.56.110.145]:21245
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2U-0000kF-PP
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:23 -0500
-Received: by wmdw130 with SMTP id w130so244791182wmd.0
-	for <qemu-devel@nongnu.org>; Thu, 19 Nov 2015 07:22:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro-org.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=tIFxbVuqPKc9oHqtCaN+21+zTAQmnwY9MCIvw9CB7wM=;
-	b=EP01Y42nZ+qclYD1vPBuzwWAFfYXylq1+RA4uB6vEceVAoWp8lnfEf+WyvbeiAe8NB
-	zPYapRmsLcwzouQyeOqRY9902nHccQXVXfEOQpit575qWc5GJWuVN61S/Q/QIlJRjpBi
-	xGJ79DF8n41qZNCRXrFT1y+9TXNJhf0Lq+qlBK5siNz64osSMN1ZXmX3dGDekRKqcL2g
-	DyqktQmp79g2MfTWHycE3wF4p953Yw6D2Ce2j3elnjWKqZMh2eZFpp4dNPk5ZpCgAloy
-	c0inRXKODqRAMPZe5rKZQhILjXf9q3TxoaSeicScA2P7AQx7A8SBTYx40URTN/rvCraX
-	VRuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=tIFxbVuqPKc9oHqtCaN+21+zTAQmnwY9MCIvw9CB7wM=;
-	b=g7pYj3JMPhLJjr8Qo2Pw8BX14VnVNxQXoZPAtPkp00IwxshDWcjWi1SFwMNbpshNeF
-	hJ9c/zD7zvlOSHGbrGLu5Olb6a51JgC3+uuzUF4h2q/dnNntKoy7e6ouyc4DAtGt+hQ1
-	z+wamvogxpg7w2HIwNfo7wk349dnzL0QjeARGo+XjBZg8t2Iue9/L25H6Fo/KIRv1pp4
-	exVN6d39zhjb0KNeP3CJLy2Da2AOCTLZSCKMtegh2x4FSEg9E330gthwg0FWczpxMvaX
-	Iv0WmDFQ7baVpuAI5nkUCZzq+jP6ubCgcOBUtqwHwSiSfFyd44kbZdVPaquVcDIGudOi
-	odng==
-X-Gm-Message-State: ALoCoQkZTey6NiiSrfPkl1r4d+8ZAaoDubL0kAXLYrsDag8Eq2wCzAYnScQPos1q1Ok8nADf1acW
-X-Received: by 10.28.137.194 with SMTP id l185mr10857935wmd.21.1447946542067; 
-	Thu, 19 Nov 2015 07:22:22 -0800 (PST)
-Received: from midway01-04-00.lavalab ([81.128.185.50])
-	by smtp.gmail.com with ESMTPSA id
-	vr10sm8367221wjc.38.2015.11.19.07.22.20
-	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 19 Nov 2015 07:22:21 -0800 (PST)
-From: Eric Auger <eric.auger@linaro.org>
-To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org
-Date: Thu, 19 Nov 2015 15:22:08 +0000
-Message-Id: <1447946528-1533-7-git-send-email-eric.auger@linaro.org>
-X-Mailer: git-send-email 1.8.3.2
-In-Reply-To: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::236
-Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
-	patches@linaro.org, suravee.suthikulpanit@amd.com,
-	pbonzini@redhat.com, christoffer.dall@linaro.org
-Subject: [Qemu-devel] [RESEND RFC 6/6] hw/arm/sysbus-fdt: enable amd-xgbe
-	dynamic instantiation
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1a1NVE-0000uZ-DL; Tue, 24 Nov 2015 19:00:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=FzmFH8nJ00jLNnW4X21WxIwvDh+yV4qKIOhwOA0wCqo=;
+	b=QahlTs86n4MNKqlsWACup3nKPHtelZW9Pk4LOQgWcdrAxlfKQDguFFJqOZzzOCwT8wSVtpCnMgejQOXV5NIwSWdpqbC73ELXluixmwYIpOxUc/RaF5a7log0R2YRq+Zib9jSsqy6M48P4Za965PWEaDPQxnDzA7v7FAOxUHqgtw=
+Received: from BY2PR0301MB2040.namprd03.prod.outlook.com (10.163.196.154) by
+	BY2PR0301MB2039.namprd03.prod.outlook.com (10.163.196.153) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.331.20; Wed, 25 Nov 2015 00:00:01 +0000
+Received: from BY2PR0301MB2040.namprd03.prod.outlook.com ([10.163.196.154]) by
+	BY2PR0301MB2040.namprd03.prod.outlook.com ([10.163.196.154]) with
+	mapi id 15.01.0331.023; Wed, 25 Nov 2015 00:00:01 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Thread-Topic: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
+Thread-Index: AdEem9sZHjs9/bX/Q4+JMP7QmdOAYQDOg3SAABS0aqAAA+N6AAEDWg8Q
+Date: Wed, 25 Nov 2015 00:00:01 +0000
+Message-ID: <BY2PR0301MB20409F279E0D56AA4DCDCC1F9E050@BY2PR0301MB2040.namprd03.prod.outlook.com>
+References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
+	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=pv1CdRojAz5v9xiy=f2WYGOPP1xTCFJJQD6dbqGaYGuA@mail.gmail.com>
+In-Reply-To: <CAPokK=pv1CdRojAz5v9xiy=f2WYGOPP1xTCFJJQD6dbqGaYGuA@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [2001:4898:80e8:7::724]
+x-microsoft-exchange-diagnostics: 1; BY2PR0301MB2039;
+	5:GthLaqqzse9x/nmwVebqwhfiLcUqi4oMN7ZngX3tesFNrWb+UG8kU1idfQzOffhWQJT4HLG4TJnZbhKmRAGk8hI4YigUbtvWZri5pzxDtusRlKStx9v4s8UtxQDaVTfJaY8OuRcHUct1axfMhYxgTg==;
+	24:Sjav07Yf0mkmPNWhjLLImJqxEBLtlH+RnOqhHI0k1vv0yY57ksCIG+4YsjgeVphYilnsK5Vri6sih3iByprmSZDh1odXECMLHdjCNDNllyo=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BY2PR0301MB2039;
+x-microsoft-antispam-prvs: <BY2PR0301MB20394E7AD5DF830E0C61BFF49E050@BY2PR0301MB2039.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425024)(601004)(2401047)(5005006)(8121501046)(520078)(3002001)(10201501046)(61426024)(61427024);
+	SRVR:BY2PR0301MB2039; BCL:0; PCL:0; RULEID:;
+	SRVR:BY2PR0301MB2039; 
+x-forefront-prvs: 0771670921
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(979002)(6009001)(199003)(164054003)(189002)(19580395003)(2950100001)(189998001)(5002640100001)(586003)(5003600100002)(77096005)(86362001)(2900100001)(110136002)(5001960100002)(101416001)(76576001)(122556002)(86612001)(93886004)(15975445007)(230783001)(87936001)(5008740100001)(11100500001)(10090500001)(1411001)(10400500002)(8990500004)(76176999)(92566002)(74316001)(5005710100001)(54356999)(106356001)(99286002)(10290500002)(50986999)(5007970100001)(105586002)(33656002)(5004730100002)(40100003)(97736004)(6116002)(81156007)(5001920100001)(102836003)(7059030)(3826002)(969003)(989001)(999001)(1009001)(1019001);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BY2PR0301MB2039;
+	H:BY2PR0301MB2040.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2015 00:00:01.3645 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR0301MB2039
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.110.145
+Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	=?utf-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>, Sai Pavan
+	Boddu <saipava@xilinx.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
+	Windows-on-ARM support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SNJ6mggypqT8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uQg4Q8EfyxqD
 
-This patch allows the instantiation of the vfio-amd-xgbe device
-from the QEMU command line (-device vfio-amd-xgbe,host="<device>").
-
-The guest is exposed with a device tree node that combines the description
-of both XGBE and PHY (representation supported from 4.2 onwards kernel):
-Documentation/devicetree/bindings/net/amd-xgbe.txt.
-
-There are 5 register regions, 6 interrupts including 4 optional
-edge-sensitive per-channel interrupts.
-
-Property values are inherited from host device tree. It is mandated
-host uses device tree, dtc binary is installed, and the host also uses a
-combined XGBE/PHY representation (>= 4.2 host kernel).
-
-2 clock nodes (dma and ptp) also are created. It is mandated those clocks
-are fixed on host side.
-
-Signed-off-by: Eric Auger <eric.auger@linaro.org>
----
- hw/arm/sysbus-fdt.c | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 167 insertions(+), 4 deletions(-)
-
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 22e5801..b13d380 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -22,6 +22,7 @@
-  */
- 
- #include <libfdt.h>
-+#include <linux/vfio.h>
- #include "hw/arm/sysbus-fdt.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
-@@ -29,8 +30,10 @@
- #include "sysemu/sysemu.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
-+#include "hw/vfio/vfio-amd-xgbe.h"
- #include "hw/arm/fdt.h"
- 
-+
- /*
-  * internal struct that contains the information to create dynamic
-  * sysbus device node
-@@ -120,10 +123,7 @@ static HostProperty clock_inherited_properties[] = {
-  * host_phandle: phandle of the clock in host device tree
-  * guest_phandle: phandle to assign to the guest node
-  */
--int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
--                                uint32_t host_phandle,
--                                uint32_t guest_phandle);
--int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
-+static int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
-                                 uint32_t host_phandle,
-                                 uint32_t guest_phandle)
- {
-@@ -166,6 +166,21 @@ out:
-     return ret;
- }
- 
-+/**
-+ * sysfs_to_dt_name
-+ *
-+ * convert the name found in sysfs into the node name
-+ * for instance e0900000.xgmac is converted into xgmac@e0900000
-+ */
-+static char *sysfs_to_dt_name(const char *sysfs_name)
-+{
-+    gchar **substrings =  g_strsplit(sysfs_name, ".", 2);
-+    char *dt_name;
-+
-+    dt_name = g_strdup_printf("%s@%s", substrings[1], substrings[0]);
-+    return dt_name;
-+}
-+
- /* Device Specific Code */
- 
- /**
-@@ -233,9 +248,157 @@ fail_reg:
-     return ret;
- }
- 
-+
-+/* AMD xgbe properties whose values are copied/pasted from host */
-+static HostProperty amd_xgbe_inherited_properties[] = {
-+    {"compatible", 0},
-+    {"dma-coherent", 1},
-+    {"amd,per-channel-interrupt", 1},
-+    {"phy-mode", 0},
-+    {"mac-address", 1},
-+    {"amd,speed-set", 0},
-+    {"amd,serdes-blwc", 1},
-+    {"amd,serdes-cdr-rate", 1},
-+    {"amd,serdes-pq-skew", 1},
-+    {"amd,serdes-tx-amp", 1},
-+    {"amd,serdes-dfe-tap-config", 1},
-+    {"amd,serdes-dfe-tap-enable", 1},
-+    {"clock-names", 0},
-+};
-+
-+/**
-+ * add_amd_xgbe_fdt_node
-+ *
-+ * Generates the combined xgbe/phy node following kernel >=4.2
-+ * binding documentation:
-+ * Documentation/devicetree/bindings/net/amd-xgbe.txt:
-+ * Also 2 clock nodes are created (dma and ptp)
-+ */
-+static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
-+{
-+    PlatformBusFDTData *data = opaque;
-+    PlatformBusDevice *pbus = data->pbus;
-+    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-+    VFIODevice *vbasedev = &vdev->vbasedev;
-+    VFIOINTp *intp;
-+    const char *parent_node = data->pbus_node_name;
-+    char *node_path, *nodename, *dt_name;
-+    void *guest_fdt = data->fdt, *host_fdt;
-+    const void *r;
-+    int i, ret = -1, prop_len;
-+    uint32_t *irq_attr, *reg_attr, *host_clock_phandles;
-+    uint64_t mmio_base, irq_number;
-+    uint32_t guest_clock_phandles[2];
-+
-+    host_fdt = load_device_tree_from_sysfs();
-+    if (!host_fdt) {
-+        goto stop;
-+    }
-+    dt_name = sysfs_to_dt_name(vbasedev->name);
-+    ret = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat, &node_path);
-+    g_free(dt_name);
-+
-+    if (ret) {
-+        goto stop;
-+    }
-+
-+    /* generate nodes for DMA_CLK and PTP_CLK */
-+    r = qemu_fdt_getprop(host_fdt, node_path, "clocks", &prop_len);
-+    if (prop_len != 8) {
-+        goto stop;
-+    }
-+    host_clock_phandles = (uint32_t *)r;
-+    host_clock_phandles[0] = be32_to_cpu(host_clock_phandles[0]);
-+    host_clock_phandles[1] = be32_to_cpu(host_clock_phandles[1]);
-+    guest_clock_phandles[0] = qemu_fdt_alloc_phandle(guest_fdt);
-+    guest_clock_phandles[1] = qemu_fdt_alloc_phandle(guest_fdt);
-+
-+    ret = fdt_build_clock_node(host_fdt, guest_fdt,
-+                               host_clock_phandles[0],
-+                               guest_clock_phandles[0]);
-+    if (ret) {
-+        goto stop;
-+    }
-+
-+    ret = fdt_build_clock_node(host_fdt, guest_fdt,
-+                               host_clock_phandles[1],
-+                               guest_clock_phandles[1]);
-+    if (ret) {
-+        goto stop;
-+    }
-+
-+    /* combined XGBE/PHY node */
-+    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
-+                               vbasedev->name, mmio_base);
-+    qemu_fdt_add_subnode(guest_fdt, nodename);
-+
-+    inherit_properties(amd_xgbe_inherited_properties,
-+                       ARRAY_SIZE(amd_xgbe_inherited_properties),
-+                       host_fdt, guest_fdt,
-+                       node_path, nodename);
-+
-+    qemu_fdt_setprop_cells(guest_fdt, nodename, "clocks",
-+                           guest_clock_phandles[0],
-+                           guest_clock_phandles[1]);
-+
-+    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
-+    for (i = 0; i < vbasedev->num_regions; i++) {
-+        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
-+        reg_attr[2 * i] = cpu_to_be32(mmio_base);
-+        reg_attr[2 * i + 1] = cpu_to_be32(
-+                                memory_region_size(&vdev->regions[i]->mem));
-+    }
-+    ret = qemu_fdt_setprop(guest_fdt, nodename, "reg", reg_attr,
-+                           vbasedev->num_regions * 2 * sizeof(uint32_t));
-+    if (ret) {
-+        error_report("could not set reg property of node %s", nodename);
-+        goto fail_reg;
-+    }
-+
-+    irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-+    for (i = 0; i < vbasedev->num_irqs; i++) {
-+        irq_number = platform_bus_get_irqn(pbus, sbdev , i)
-+                         + data->irq_start;
-+        irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
-+        irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-+        /*
-+          * General device interrupt and PCS auto-negociation interrupts are
-+          * level-sensitive while the 4 per-channel interrupts are edge
-+          * sensitive
-+          */
-+        QLIST_FOREACH(intp, &vdev->intp_list, next) {
-+            if (intp->pin == i) {
-+                break;
-+            }
-+        }
-+        if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
-+            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+        } else {
-+            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+        }
-+    }
-+    ret = qemu_fdt_setprop(guest_fdt, nodename, "interrupts",
-+                     irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
-+    if (ret) {
-+        error_report("could not set interrupts property of node %s",
-+                     nodename);
-+    }
-+    g_free(host_fdt);
-+    g_free(node_path);
-+    g_free(irq_attr);
-+fail_reg:
-+    g_free(reg_attr);
-+    g_free(nodename);
-+    return ret;
-+stop:
-+    exit(1);
-+}
-+
- /* list of supported dynamic sysbus devices */
- static const NodeCreationPair add_fdt_node_functions[] = {
-     {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
-+    {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
-     {"", NULL}, /* last element */
- };
- 
--- 
-1.8.3.2
-
+SGkgUGV0ZXIgKGV0IGFsKSwNCg0KSSBhbSB3b3JraW5nIG9uIHJlZmFjdG9yaW5nIHRoZSBQaSBz
+dXBwb3J0IGNvZGUgYXMgeW91IHN1Z2dlc3RlZC4gSSBoYXZlIHNwbGl0IHRoZSBQaSBTT0NzIGlu
+dG8gc2VwYXJhdGUgb2JqZWN0cyAoYmNtMjgzNSBhbmQgYmNtMjgzNikgd2hpY2ggYm90aCBpbnN0
+YW50aWF0ZSBhIHRoaXJkIGNvbW1vbiBiY20yODM1X3BlcmlwaGVyYWxzIGRldmljZSB0aGF0IGlu
+IHR1cm4gY29udGFpbnMgYWxsIHRoZSBjb21tb24gZGV2aWNlcy4gSSBoYXZlIGFsc28gc3dpdGNo
+ZWQgdGhlIGNvZGUgdG8gdXNlIG9iamVjdCBwcm9wZXJ0aWVzIHJhdGhlciB0aGFuIGdsb2JhbCB2
+YXJpYWJsZXMgdG8gY29tbXVuaWNhdGUgc3RhdGUgd2hlcmUgZGV2aWNlcyBpbnRlcmFjdCB3aXRo
+IGVhY2ggb3RoZXIuDQoNCkJlZm9yZSBJIGdvIGZ1cnRoZXIsIEkgd2FudGVkIHRvIGFzayBhIGNv
+dXBsZSBvZiBoaWdoLWxldmVsIHF1ZXN0aW9ucyBhYm91dCB0aGUgZGVzaXJlZCBjb2RlIHN0eWxl
+IGZvciBuZXcgZGV2aWNlcy4NCg0KMS4gTXVzdCBldmVyeSBuZXcgZGV2aWNlIGhhdmUgYSBoZWFk
+ZXIgZmlsZSB0aGF0IGRlY2xhcmVzIGl0cyBwcml2YXRlIHN0YXRlIHN0cnVjdCwgb3IgaXMgaXQg
+b2sgdG8ga2VlcCB0aG9zZSBpbiB0aGUgQyBmaWxlIGZvciBsZWFmIGRldmljZXMgYW5kIHJlZmVy
+IHRvIHRoZW0gdGhyb3VnaCBvcGFxdWUgcG9pbnRlcnM/DQoyLiBXaGF0J3MgdGhlIHN0YXR1cyBv
+ZiB0aGUgc3lzYnVzIEFQST8gSXQgaXMgb2J2aW91c2x5IGEgZmFpcmx5IHRoaW4gbGF5ZXIgb3Zl
+ciBxZGV2L3FvbSwgYnV0IGl0J3Mgbm90IGNsZWFyIHdoZXRoZXIgdGhlIEFQSXMgYXJlIGRlcHJl
+Y2F0ZWQuIENhbiBuZXcgY29kZSBpbnN0YW50aWF0ZSBjaGlsZHJlbiBvZiBUWVBFX1NZU19CVVNf
+REVWSUNFIGFuZCB1c2UgdGhlIGlycS9tbWlvIGV4cG9ydCBmZWF0dXJlcyBpdCBwcm92aWRlcywg
+b3Igc2hvdWxkIHdlIGJlIHN0aWNraW5nIG9ubHkgdG8gbG93ZXItbGV2ZWwgKHFkZXY/KSBBUElz
+PyBJZiBzbywgd2hhdCdzIHRoZSByaWdodCB3YXkgdG8gZXhwb3J0IGludGVycnVwdHMgYW5kIG1t
+aW8gc3BhY2UgZnJvbSBhIGRldmljZT8NCjMuIFNpbWlsYXJseSwgaXMgdXNpbmcgU3lzQnVzRGV2
+aWNlQ2xhc3MuaW5pdCBvaywgb3Igc2hvdWxkIHdlIGJlIHVzaW5nIERldmljZUNsYXNzLnJlYWxp
+emU/IEluIGdlbmVyYWwsIHdoYXQncyB0aGUgZ3VpZGFuY2Ugb24gd2hhdCBiZWxvbmdzIGluIG9i
+amVjdCBpbml0IHZzLiB0aGUgcmVhbGl6ZSBtZXRob2Q/DQo0LiBJIGhhdmUgc29tZSBwcm9wZXJ0
+eSB2YWx1ZXMgKGUuZy4gdmlkZW8gcmFtIHNpemUpIHRoYXQgYXJlIHNldCBpbiB0aGUgdG9wLWxl
+dmVsIG1hY2hpbmUgZGVmaW5pdGlvbiBjb2RlIChyYXNwaS5jKSwgYW5kIG5lZWQgdG8gcGFzcyBk
+b3duIHRocm91Z2ggc2V2ZXJhbCBsYXllcnMgb2YgYWJzdHJhY3Rpb24gKGUuZy4gcmFzcGkuYyBk
+ZWNsYXJlcyB0aGUgbWFjaGluZSBjbGFzcyB3aGljaCBpbnN0YW50aWF0ZXMgYSBiY20yODM2IG9i
+amVjdCB3aGljaCBpbiB0dXJuIGluc3RhbnRpYXRlcyBiY20yODM1X3BlcmlwaGVyYWxzLCB3aGlj
+aCBpbiB0dXJuIGluc3RhbnRpYXRlcyBiY20yODM1X2ZiKS4gRGVmaW5pbmcgcHJvcGVydGllcyBh
+dCBlYWNoIGxldmVsIGp1c3QgdG8gcGFzcyB0aGVzZSBhbG9uZyBpcyBwYWluZnVsL2ZyYWdpbGUu
+IElzIHRoZXJlIGEgcHJvZ3JhbW1hdGljIHdheSB0byBoYXZlIHByb3BlcnRpZXMgdGhhdCBhcmUg
+ZGVmaW5lZCBnbG9iYWxseSBhbmQgcGFzc2VkIHRocm91Z2gsIHJvdWdobHkgZXF1aXZhbGVudCB0
+byAtZ2xvYmFsIG9uIHRoZSBjb21tYW5kIGxpbmU/IElzIGl0IGFjY2VwdGFibGUgdG8gdXNlIHRo
+YXQ/DQoNCkZvcmdpdmUgbWUgaWYgdGhlcmUgaXMgZG9jdW1lbnRhdGlvbi9ndWlkYW5jZSBvbiB0
+aGlzIHN0dWZmIGFscmVhZHkgLS0gSSBkaWRuJ3QgbWFuYWdlIHRvIGZpbmQgdmVyeSBtdWNoLg0K
+DQpJZiBhbnlvbmUgd2FudHMgdG8gdGFrZSBhIGxvb2ssIG15IHdvcmtpbmcgdHJlZSBpcyBhdDoN
+Cmh0dHBzOi8vZ2l0aHViLmNvbS8weGFidS9xZW11L3RyZWUvcmFzcGkNCg0KVGhlIHJlbGV2YW50
+IGZpbGVzIGFyZToNCiBody9hcm0vYmNtMjgzNS5jICAgICAgICAgICAgICAgICAgICAgfCAgIDky
+ICsrKw0KIGh3L2FybS9iY20yODM1X3BlcmlwaGVyYWxzLmMgICAgICAgICB8ICAzNjggKysrKysr
+KysrKysrDQogaHcvYXJtL2JjbTI4MzYuYyAgICAgICAgICAgICAgICAgICAgIHwgIDE0OSArKysr
+Kw0KIGh3L2FybS9yYXNwaS5jICAgICAgICAgICAgICAgICAgICAgICB8ICAyMjggKysrKysrKysN
+CiBody9jaGFyL2JjbTI4MzVfYXV4LmMgICAgICAgICAgICAgICAgfCAgMjUwICsrKysrKysrDQog
+aHcvZGlzcGxheS9iY20yODM1X2ZiLmMgICAgICAgICAgICAgIHwgIDQyNyArKysrKysrKysrKysr
+Kw0KIGh3L2RtYS9iY20yODM1X2RtYS5jICAgICAgICAgICAgICAgICB8ICAzNjYgKysrKysrKysr
+KysrDQogaHcvaW50Yy9iY20yODM1X2ljLmMgICAgICAgICAgICAgICAgIHwgIDI0OCArKysrKysr
+Kw0KIGh3L2ludGMvYmNtMjgzNl9jb250cm9sLmMgICAgICAgICAgICB8ICAzNzMgKysrKysrKysr
+KysrDQogaHcvbWlzYy9iY20yODM1X21waGkuYyAgICAgICAgICAgICAgIHwgIDE3NiArKysrKysN
+CiBody9taXNjL2JjbTI4MzVfcG93ZXIuYyAgICAgICAgICAgICAgfCAgMTEzICsrKysNCiBody9t
+aXNjL2JjbTI4MzVfcHJvcGVydHkuYyAgICAgICAgICAgfCAgNDE3ICsrKysrKysrKysrKysNCiBo
+dy9taXNjL2JjbTI4MzVfc2JtLmMgICAgICAgICAgICAgICAgfCAgMzEwICsrKysrKysrKysNCiBo
+dy9taXNjL2JjbTI4MzVfdmNoaXEuYyAgICAgICAgICAgICAgfCAgMTE0ICsrKysNCiBody9zZC9i
+Y20yODM1X2VtbWMuYyAgICAgICAgICAgICAgICAgfCAgODQ0ICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKw0KIGh3L3RpbWVyL2FybV90aW1lci5jICAgICAgICAgICAgICAgICB8ICAgMzkgKysN
+CiBody90aW1lci9iY20yODM1X3N0LmMgICAgICAgICAgICAgICAgfCAgMjAxICsrKysrKysNCiBo
+dy90aW1lci9iY20yODM1X3RpbWVyLmMgICAgICAgICAgICAgfCAgMjQyICsrKysrKysrDQogaHcv
+dXNiL2JjbTI4MzVfdXNiLmMgICAgICAgICAgICAgICAgIHwgIDY1NSArKysrKysrKysrKysrKysr
+KysrKysNCiBody91c2IvYmNtMjgzNV91c2JfcmVncy5oICAgICAgICAgICAgfCAxMDYxICsrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysNCiBpbmNsdWRlL2h3L2FybS9iY20yODM1Lmgg
+ICAgICAgICAgICAgfCAgIDMxICsNCiBpbmNsdWRlL2h3L2FybS9iY20yODM1X2FybV9jb250cm9s
+LmggfCAgNDgxICsrKysrKysrKysrKysrKw0KIGluY2x1ZGUvaHcvYXJtL2JjbTI4MzVfbWJveC5o
+ICAgICAgICB8ICAgMTQgKw0KIGluY2x1ZGUvaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJhbHMuaCB8
+ICAgMzUgKysNCiBpbmNsdWRlL2h3L2FybS9iY20yODM2LmggICAgICAgICAgICAgfCAgIDM0ICsr
+DQogaW5jbHVkZS9ody9hcm0vcmFzcGlfcGxhdGZvcm0uaCAgICAgIHwgIDE2MCArKysrKw0KIGlu
+Y2x1ZGUvaHcvZGlzcGxheS9iY20yODM1X2ZiLmggICAgICB8ICAgMjkgKw0KDQpUaGFua3MsDQpB
+bmRyZXcNCg==

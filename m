@@ -1,185 +1,153 @@
-Received: by 10.25.159.19 with SMTP id i19csp1756580lfe;
-        Sun, 17 Jan 2016 23:21:01 -0800 (PST)
-X-Received: by 10.140.180.80 with SMTP id b77mr10840316qha.67.1453101661605;
-        Sun, 17 Jan 2016 23:21:01 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp2404283obb;
+        Tue, 24 Nov 2015 16:38:15 -0800 (PST)
+X-Received: by 10.31.8.65 with SMTP id 62mr29908170vki.75.1448411895099;
+        Tue, 24 Nov 2015 16:38:15 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 201si29538600qhm.125.2016.01.17.23.20.32
+        by mx.google.com with ESMTPS id h6si21018444vka.154.2015.11.24.16.38.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Jan 2016 23:21:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 24 Nov 2015 16:38:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58061 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42242 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aL475-00080K-No
-	for alex.bennee@linaro.org; Mon, 18 Jan 2016 02:20:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42506)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a1O6A-0005VR-O4
+	for alex.bennee@linaro.org; Tue, 24 Nov 2015 19:38:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL3zs-0003Aj-1D
-	for qemu-devel@nongnu.org; Mon, 18 Jan 2016 02:13:08 -0500
+	(envelope-from <drjones@redhat.com>) id 1a1O68-0005Tx-8J
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 19:38:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL3zr-00074W-26
-	for qemu-devel@nongnu.org; Mon, 18 Jan 2016 02:13:03 -0500
-Received: from mail-pa0-x232.google.com ([2607:f8b0:400e:c03::232]:36736)
+	(envelope-from <drjones@redhat.com>) id 1a1O63-0002Ct-7i
+	for qemu-arm@nongnu.org; Tue, 24 Nov 2015 19:38:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48012)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aL3zq-00074L-Ox; Mon, 18 Jan 2016 02:13:03 -0500
-Received: by mail-pa0-x232.google.com with SMTP id yy13so336755276pab.3;
-	Sun, 17 Jan 2016 23:13:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=PXPXN+K05sxgzUVal5JLtA5eT1UEt8v+7dE1SEEGAB0=;
-	b=Y5WsYSbtZFkBL4jasmfT1smoossuUTfn411jrL2imdAMk5byfxhM4drrmekJmSAwo+
-	Q7uxK9NVwezvMiYPIFQXMcV457FHoYi16sGk8dkFBQ+cQR7zvQ7KIHmh4Z2PqnJF+qAv
-	ar+sVnwDxBL2HOWC7JM6Uq1BMXrwgEEcpDg6mtbatbZnD3z2fP5EySvbz37wcPV373vU
-	7jGl/5quwB/tcs4GEDyDeAHYWU9732H67v31q/o1Pt75KGiuLQGYCx/tOfjk3mPWg0O/
-	Y21GGf+X+YD13gs9f9Xrwdo2CCbvQCS+ddHljDpyeQirtxdPo2vYe+sXa60n/vzOku9U
-	y7Jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:in-reply-to:references;
-	bh=PXPXN+K05sxgzUVal5JLtA5eT1UEt8v+7dE1SEEGAB0=;
-	b=f2soFrr/tpZjYDY2jTIdSUMXHDHwMiYg36qbrgw3ioglSpNGH8CLUDBwdb2iMdlPFJ
-	rkpPA2SrlN6E/S0qNMgWfjWcQNl7Q+v5f74ShJAMzY0vxW+iQGSMcCx3foV5YDKqsid5
-	wLtzCH6Th+Pk2UhmI3kcMRzUsIwgKE8mXAxoLuOaNBD6Lofkkqiowj7Yzszu1SXaytYr
-	6nvkA/BasyXZucw34Og9zusNUuxbkY2Kn6r8PJkTVnJcJdc0pQr6T2gS/RBMFuM9uvaT
-	fhe3BKDJB7PlnchPngxjcy2QPI1R6Dqd69xGxaMo3G+OtQdsr+iqmUkH4BQDU6uJPGh5
-	UGCA==
-X-Gm-Message-State: ALoCoQkvw1xZemudkEFw5mdst8Otw0PHzHZHumyfWGch+jySyUHZReC5yy1Wp7rPSjtQbUa1nud4QFF6XF5wFsYE9u9FphDP4w==
-X-Received: by 10.66.236.69 with SMTP id us5mr34285183pac.93.1453101182240;
-	Sun, 17 Jan 2016 23:13:02 -0800 (PST)
-Received: from localhost.localdomain (c-73-70-184-119.hsd1.ca.comcast.net.
-	[73.70.184.119]) by smtp.gmail.com with ESMTPSA id
-	xv2sm31471880pab.10.2016.01.17.23.13.00
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 17 Jan 2016 23:13:01 -0800 (PST)
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+	(envelope-from <drjones@redhat.com>)
+	id 1a1O63-0002Cl-04; Tue, 24 Nov 2015 19:38:07 -0500
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4C09643;
+	Wed, 25 Nov 2015 00:38:06 +0000 (UTC)
+Received: from hawk.localdomain.com (ovpn-116-38.ams2.redhat.com
+	[10.36.116.38])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tAP0c1rv014074; Tue, 24 Nov 2015 19:38:02 -0500
+From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Sun, 17 Jan 2016 23:12:35 -0800
-Message-Id: <2d20fa6a88faf2b99719ac90c9205e280e632634.1453100525.git.crosthwaite.peter@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::232
-Cc: peter.maydell@linaro.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	alistair.francis@xilinx.com, sridhar_kulk@yahoo.com,
-	qemu-arm@nongnu.org, pbonzini@redhat.com, piotr.krol@3mdeb.com
-Subject: [Qemu-devel] [PATCH v1 08/17] target-arm: cpu: Move
-	cpu_is_big_endian to header
-X-BeenThere: qemu-devel@nongnu.org
+Date: Tue, 24 Nov 2015 19:37:51 -0500
+Message-Id: <1448411877-22019-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, eblake@redhat.com,
+	afaerber@suse.de, rth@twiddle.net
+Subject: [Qemu-arm] [PATCH v2 0/6] target-arm: enable qmp-dump-guest-memory
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3DboovNlK2D/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LDEoSWC5A5Te
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+This series brings qmp-dump-guest-memory to arm and aarch64
+targets. I've detailed my testing and the results in the
+following table.
 
-There is a CPU data endianness test that is used to drive the
-virtio_big_endian test.
+v2: changes thanks to Peter's review questions
+ - Threw in the FP registers. Can view them with gdb on elf
+   formatted dumps.
+ - Added comments stating where the register structs come from.
+ - Fixed determination of 32 vs. 64-bit and LE vs. BE formats.
+   Added a new config to the test matrix below to test this fix.
+ - Added a couple R-b's
 
-Move this up to the header so it can be more generally used for endian
-tests. The KVM specific cpu_syncronize_state call is left behind in the
-virtio specific function.
 
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
----
+arm/aarch64 kvm guest kdump testing (P - PASS, F - FAIL). Testing done
+with a latest mainline crash utility (all new patches needed are now in
+master).
 
- target-arm/cpu.c | 19 +++----------------
- target-arm/cpu.h | 19 +++++++++++++++++++
- 2 files changed, 22 insertions(+), 16 deletions(-)
+.-------------------------------------------------------------------------------.
+|				Host	| arm32	| arm64	| arm64 | arm64	| arm64	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|				Guest	| arm32	| arm64	| arm64 | arm64	| arm32	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|			     User binary| arm32	| arm64	| arm32 | arm64	| arm32	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|				Pagesize| 4K	| 4K	| 4K	| 64K	| 4K	|
+|===============================================================================|
+| kdump in guest			| F[1]	| P[2]	| P[2]	| P[3]	| F[1]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory <filename>[4]	| P	| P	| P	| P	| P	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -z <filename>[5]| F[8]	| P	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -l <filename>[6]| F[8]	| P	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -s <filename>[7]| F[8]	| P	| P	| P	| F[8]	|
+.-------------------------------------------------------------------------------.
 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 35a1f12..d3b73bf 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -368,26 +368,13 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
- #endif
- }
- 
--static bool arm_cpu_is_big_endian(CPUState *cs)
-+static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    int cur_el;
- 
-     cpu_synchronize_state(cs);
--
--    /* In 32bit guest endianness is determined by looking at CPSR's E bit */
--    if (!is_a64(env)) {
--        return (env->uncached_cpsr & CPSR_E) ? 1 : 0;
--    }
--
--    cur_el = arm_current_el(env);
--
--    if (cur_el == 0) {
--        return (env->cp15.sctlr_el[1] & SCTLR_E0E) != 0;
--    }
--
--    return (env->cp15.sctlr_el[cur_el] & SCTLR_EE) != 0;
-+    return arm_cpu_is_big_endian(env);
- }
- 
- #endif
-@@ -1420,7 +1407,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->do_unaligned_access = arm_cpu_do_unaligned_access;
-     cc->get_phys_page_debug = arm_cpu_get_phys_page_debug;
-     cc->vmsd = &vmstate_arm_cpu;
--    cc->virtio_is_big_endian = arm_cpu_is_big_endian;
-+    cc->virtio_is_big_endian = arm_cpu_virtio_is_big_endian;
- #endif
-     cc->gdb_num_core_regs = 26;
-     cc->gdb_core_xml_file = "arm-core.xml";
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index f83070a..54675c7 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -1795,6 +1795,25 @@ static inline bool arm_singlestep_active(CPUARMState *env)
-         && arm_generate_debug_exceptions(env);
- }
- 
-+/* Return true if the processor is in big-endian mode. */
-+static bool arm_cpu_is_big_endian(CPUARMState *env)
-+{
-+    int cur_el;
-+
-+    /* In 32bit endianness is determined by looking at CPSR's E bit */
-+    if (!is_a64(env)) {
-+        return (env->uncached_cpsr & CPSR_E) ? 1 : 0;
-+    }
-+
-+    cur_el = arm_current_el(env);
-+
-+    if (cur_el == 0) {
-+        return (env->cp15.sctlr_el[1] & SCTLR_E0E) != 0;
-+    }
-+
-+    return (env->cp15.sctlr_el[cur_el] & SCTLR_EE) != 0;
-+}
-+
- #include "exec/cpu-all.h"
- 
- /* Bit usage in the TB flags field: bit 31 indicates whether we are
+[1] Kernel v4.4-rc1 crashes with a NULL pointer dereference at virtual
+    address 00000000 in a memcpy (crash_kexec/machine_kexec/fncpy/memcpy).
+    Needs kernel debugging.
+[2] Not sure about mainline, but works with the RHEL kernel,
+    makedumpfile does not yet support arm64 with 4K pages, but using
+    'core_collector cp' in /etc/kdump.conf allows saving an uncompressed
+    elf file.
+[3] Not sure about mainline, but works with the RHEL kernel,
+    uses makedumpfile, thus generates a makedumpfile formatted file
+    using zlib compression.
+[4] No format specified, creates an uncompressed elf formatted file.
+[5] makedumpfile format, with zlib compression
+[6] makedumpfile format, with lzo compression
+[7] makedumpfile format, with snappy compression
+[8] The crash utility doesn't seem to like arm32 dumps in makedumpfile
+    format. Looks like the physical page bitmap is all zeros? Needs
+    qemu and crash debugging.
+
+Additional notes:
+1) QEMU also has scripts/dump-guest-memory.py, which can and should be
+   updated to support multiple architectures, pagesizes, and physbases.
+   This is currently left as future work.
+
+
+Andrew Jones (6):
+  qapi-schema: dump-guest-memory: Improve text
+  dump: qemunotes aren't commonly needed
+  dump: allow target to set the page size
+  dump: allow target to set the physical base
+  target-arm: support QMP dump-guest-memory
+  target-arm: dump-guest-memory: add fpregset notes
+
+ dump.c                      | 131 ++++++++++-------
+ include/sysemu/dump-arch.h  |   9 +-
+ include/sysemu/dump.h       |  11 +-
+ qapi-schema.json            |   4 +-
+ qom/cpu.c                   |   4 +-
+ target-arm/Makefile.objs    |   3 +-
+ target-arm/arch_dump.c      | 347 ++++++++++++++++++++++++++++++++++++++++++++
+ target-arm/cpu-qom.h        |   5 +
+ target-arm/cpu.c            |   3 +
+ target-ppc/arch_dump.c      |   6 -
+ target-ppc/cpu-qom.h        |   2 -
+ target-ppc/translate_init.c |   1 -
+ target-s390x/arch_dump.c    |   6 -
+ target-s390x/cpu-qom.h      |   2 -
+ target-s390x/cpu.c          |   1 -
+ 15 files changed, 448 insertions(+), 87 deletions(-)
+ create mode 100644 target-arm/arch_dump.c
+
 -- 
-1.9.1
+2.4.3
 

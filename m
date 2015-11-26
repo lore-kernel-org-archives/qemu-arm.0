@@ -1,139 +1,288 @@
-Received: by 10.182.158.201 with SMTP id ww9csp132092obb;
-        Wed, 25 Nov 2015 10:15:10 -0800 (PST)
-X-Received: by 10.55.74.200 with SMTP id x191mr35031653qka.28.1448475310721;
-        Wed, 25 Nov 2015 10:15:10 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m82si22058762qki.10.2015.11.25.10.15.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Nov 2015 10:15:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:47032 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a1eb0-0008MW-AY
-	for alex.bennee@linaro.org; Wed, 25 Nov 2015 13:15:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35482)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a1eay-0008IH-9E
-	for qemu-arm@nongnu.org; Wed, 25 Nov 2015 13:15:09 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a1eax-0006Ke-6l
-	for qemu-arm@nongnu.org; Wed, 25 Nov 2015 13:15:08 -0500
-Received: from mail-by2on0114.outbound.protection.outlook.com
-	([207.46.100.114]:21584
-	helo=na01-by2-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1a1eaq-0006Dp-SQ; Wed, 25 Nov 2015 13:15:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=3HWx/ktiZ4i2e/edWxuSIzJcj/DWnX/xsGIGMDbzZlk=;
-	b=H5b1Me37PZGZDrqI4hjAZ0sB3TZ9lbgGcTkXcxtHu8WDE0gKfE6iKqxQ538tTqNi8gwTeXoJrEZAH2Z0xemvhTtrsreTpmM4fFv+X3RFDZE/PSEuLN32sdKpsEVK5XRXjdWVUmNsHpbQ+AuqEZZw5NqUTy3fkRwSj1EYZV9/ILs=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2035.namprd03.prod.outlook.com (10.164.22.25) with Microsoft
-	SMTP Server (TLS) id 15.1.331.20; Wed, 25 Nov 2015 18:14:58 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0331.023; Wed, 25 Nov 2015 18:14:58 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Peter Crosthwaite
-	<crosthwaitepeter@gmail.com>
-Thread-Topic: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
-Thread-Index: AdEem9sZHjs9/bX/Q4+JMP7QmdOAYQDOg3SAABS0aqAAA+N6AAEDWg8QAEBZ1YAABojOgAAStxVw
-Date: Wed, 25 Nov 2015 18:14:58 +0000
-Message-ID: <BLUPR0301MB2034372751CF518EE0A3067B9E050@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
-	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<CAPokK=pv1CdRojAz5v9xiy=f2WYGOPP1xTCFJJQD6dbqGaYGuA@mail.gmail.com>
-	<BY2PR0301MB20409F279E0D56AA4DCDCC1F9E050@BY2PR0301MB2040.namprd03.prod.outlook.com>
-	<CAPokK=p6yG3JHPR0zcd14xTAE-JNk9ezVSr5hriX9xWpiOaV5A@mail.gmail.com>
-	<CAFEAcA86U8yuTA7w_M5OsJOGdYm49+MqtXP7y09QDXTzKyVzkA@mail.gmail.com>
-In-Reply-To: <CAFEAcA86U8yuTA7w_M5OsJOGdYm49+MqtXP7y09QDXTzKyVzkA@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:b::724]
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2035;
-	5:yEL0Nuouh2f6awVGeUf2EAhh5c5zb8yL9VrDinf3GfakEEb678jRG280ZYSyAQwjTy2O9NtsvjUyZocPYeYCPswmxnHSYN+ILA1Qj3x/rbddhYkkjluqHiqt0y3J+6b1pQMA7LXR/ngjmqqW73Uk4Q==;
-	24:fDAZficUEl1GvdBtgBffwQz9SeTt38SE86ppKn5WpdguM7nGZCFfHYHlfyaBM6vUl1SwQOWgpHu1s5q+Ds3FQyPm1e7UVySNpL8eHxo6CLY=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2035;
-x-microsoft-antispam-prvs: <BLUPR0301MB2035A15E55D316B2B6AC75C99E050@BLUPR0301MB2035.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:(108003899814671);
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425024)(601004)(2401047)(5005006)(520078)(8121501046)(3002001)(10201501046)(61426024)(61427024);
-	SRVR:BLUPR0301MB2035; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2035; 
-x-forefront-prvs: 0771670921
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(189002)(164054003)(24454002)(377454003)(199003)(230783001)(87936001)(5001960100002)(5001770100001)(40100003)(189998001)(81156007)(97736004)(11100500001)(92566002)(5007970100001)(5004730100002)(5008740100001)(19580395003)(19580405001)(10290500002)(93886004)(5005710100001)(10090500001)(74316001)(5003600100002)(10400500002)(86362001)(8990500004)(99286002)(77096005)(2950100001)(2900100001)(105586002)(5002640100001)(106356001)(33656002)(122556002)(6116002)(102836003)(76176999)(54356999)(586003)(101416001)(76576001)(50986999)(1220700001)(86612001)(7059030)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2035;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id ot9sm28999715wjc.12.2015.11.26.09.14.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 26 Nov 2015 09:14:55 -0800 (PST)
+Received: from zen.linaro.local (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id B3EDC3E02EA;
+	Thu, 26 Nov 2015 17:14:54 +0000 (GMT)
+References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org> <1447946528-1533-7-git-send-email-eric.auger@linaro.org>
+User-agent: mu4e 0.9.15; emacs 24.5.50.4
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Eric Auger <eric.auger@linaro.org>
+Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org, thomas.lendacky@amd.com, b.reynal@virtualopensystems.com, patches@linaro.org, suravee.suthikulpanit@amd.com, pbonzini@redhat.com, christoffer.dall@linaro.org
+Subject: Re: [Qemu-devel] [RESEND RFC 6/6] hw/arm/sysbus-fdt: enable amd-xgbe dynamic instantiation
+In-reply-to: <1447946528-1533-7-git-send-email-eric.auger@linaro.org>
+Date: Thu, 26 Nov 2015 17:14:54 +0000
+Message-ID: <87vb8obs35.fsf@linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Nov 2015 18:14:58.3772 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2035
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.114
-Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>, Stefan
-	Weil <sw@weilnetz.de>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	=?utf-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Paolo
-	Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
-	Windows-on-ARM support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0ntnrPODoQQ1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: nBsSsPxuUEsA
 
-PiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWlsdG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0K
-PiBTZW50OiBXZWRuZXNkYXksIDI1IE5vdmVtYmVyIDIwMTUgMDE6MTENCj4gT24gMjUgTm92ZW1i
-ZXIgMjAxNSBhdCAwNjowNCwgUGV0ZXIgQ3Jvc3Rod2FpdGUNCj4gPGNyb3N0aHdhaXRlcGV0ZXJA
-Z21haWwuY29tPiB3cm90ZToNCj4gPiBPbiBUdWUsIE5vdiAyNCwgMjAxNSBhdCA0OjAwIFBNLCBB
-bmRyZXcgQmF1bWFubg0KPiA+IDxBbmRyZXcuQmF1bWFubkBtaWNyb3NvZnQuY29tPiB3cm90ZToN
-Cj4gPj5JbiBnZW5lcmFsLCB3aGF0J3MgdGhlIGd1aWRhbmNlIG9uIHdoYXQgYmVsb25ncyBpbiBv
-YmplY3QgaW5pdCB2cy4gdGhlDQo+IHJlYWxpemUgbWV0aG9kPw0KPiA+DQo+ID4gSWYgaXQgZG9l
-c24ndCBkZXBlbmQgb24gcHJvcGVydHkgdmFsdWVzLCBpdCBnb2VzIGluIGluaXQuIElmIGl0IGRv
-ZXMNCj4gPiByZWFsaXplLiBUb3AgbGV2ZWwgY29ubmVjdGl2aXR5IChlLmcuIGNvbm5lY3Rpbmcg
-dG8gVUFSVHMgYXJlIGluaXRpbmcNCj4gPiBkcml2ZXMpIGdlbmVyYWxseSBhcmUgcmVhbGl6ZS4N
-Cj4gDQo+IEFsc28sIHJlYWxpemUgaGFzIGEgbWVjaGFuaXNtIGZvciByZXBvcnRpbmcgZXJyb3Jz
-ICh0aGUgRXJyb3IqKiBhcmd1bWVudCkNCj4gYW5kIGluc3RhbmNlIGluaXQgZG9lcyBub3QsIHNv
-IGFueXRoaW5nIHRoYXQgbWlnaHQgZmFpbCBtdXN0IGdvIGluDQo+IHJlYWxpemUuDQoNCkhvdyBk
-b2VzIHRoaXMgd29yayBvdXQgd2l0aCBvYmplY3RfcHJvcGVydHlfYWRkX2FsaWFzPyBJdCBjYW4g
-ZmFpbCBhbmQgcmV0dXJucyBhbiBlcnJvciwgc28gaXQgc2hvdWxkIGJlIGNhbGxlZCBmcm9tIHJl
-YWxpemUsIGJ1dCBpdCBhZGRzIGEgbmV3IHByb3BlcnR5IG9uIHRoZSBvYmplY3QsIHNvIHRoZSBw
-cm9wZXJ0eSB3b24ndCBiZSB1c2VmdWwgaWYgaXQgY2FuIG9ubHkgYmUgc2V0IGFmdGVyIHJlYWxp
-emUgaGFzIGFkZGVkIGl0Lg0KDQpJdCBzZWVtcyBsaWtlIGV2ZXJ5b25lIGNhbGxpbmcgb2JqZWN0
-X3Byb3BlcnR5X2FkZF9hbGlhcyBwYXNzZXMgJmVycm9yX2Fib3J0LCBzbyBJIHN1cHBvc2UgdGhh
-dCBpcyB0aGUgZ2V0LW91dC1vZi1qYWlsIGNhcmQgZm9yIHJlcG9ydGluZyBlcnJvcnMgZnJvbSBp
-bml0Li4uDQoNClRoYW5rcywNCkFuZHJldw0K
+
+Eric Auger <eric.auger@linaro.org> writes:
+
+> This patch allows the instantiation of the vfio-amd-xgbe device
+> from the QEMU command line (-device vfio-amd-xgbe,host="<device>").
+>
+> The guest is exposed with a device tree node that combines the description
+> of both XGBE and PHY (representation supported from 4.2 onwards kernel):
+> Documentation/devicetree/bindings/net/amd-xgbe.txt.
+>
+> There are 5 register regions, 6 interrupts including 4 optional
+> edge-sensitive per-channel interrupts.
+>
+> Property values are inherited from host device tree. It is mandated
+> host uses device tree, dtc binary is installed, and the host also uses a
+> combined XGBE/PHY representation (>= 4.2 host kernel).
+
+I might ping you later about this as I'm running 4.3 but can't see the
+device. However my board could be a very old rev.
+
+>
+> 2 clock nodes (dma and ptp) also are created. It is mandated those clocks
+> are fixed on host side.
+>
+> Signed-off-by: Eric Auger <eric.auger@linaro.org>
+> ---
+>  hw/arm/sysbus-fdt.c | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 167 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+> index 22e5801..b13d380 100644
+> --- a/hw/arm/sysbus-fdt.c
+> +++ b/hw/arm/sysbus-fdt.c
+> @@ -22,6 +22,7 @@
+>   */
+>
+>  #include <libfdt.h>
+> +#include <linux/vfio.h>
+>  #include "hw/arm/sysbus-fdt.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/device_tree.h"
+> @@ -29,8 +30,10 @@
+>  #include "sysemu/sysemu.h"
+>  #include "hw/vfio/vfio-platform.h"
+>  #include "hw/vfio/vfio-calxeda-xgmac.h"
+> +#include "hw/vfio/vfio-amd-xgbe.h"
+>  #include "hw/arm/fdt.h"
+>
+> +
+>  /*
+>   * internal struct that contains the information to create dynamic
+>   * sysbus device node
+> @@ -120,10 +123,7 @@ static HostProperty clock_inherited_properties[] = {
+>   * host_phandle: phandle of the clock in host device tree
+>   * guest_phandle: phandle to assign to the guest node
+>   */
+> -int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
+> -                                uint32_t host_phandle,
+> -                                uint32_t guest_phandle);
+> -int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
+> +static int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
+>                                  uint32_t host_phandle,
+>                                  uint32_t guest_phandle)
+>  {
+
+This looks like it should be squashed with 5/6.
+
+> @@ -166,6 +166,21 @@ out:
+>      return ret;
+>  }
+>
+> +/**
+> + * sysfs_to_dt_name
+> + *
+> + * convert the name found in sysfs into the node name
+> + * for instance e0900000.xgmac is converted into xgmac@e0900000
+> + */
+> +static char *sysfs_to_dt_name(const char *sysfs_name)
+> +{
+> +    gchar **substrings =  g_strsplit(sysfs_name, ".", 2);
+> +    char *dt_name;
+> +
+> +    dt_name = g_strdup_printf("%s@%s", substrings[1], substrings[0]);
+
+You need to g_strfreev(substrings) once you are done.
+
+> +    return dt_name;
+> +}
+> +
+>  /* Device Specific Code */
+>
+>  /**
+> @@ -233,9 +248,157 @@ fail_reg:
+>      return ret;
+>  }
+>
+> +
+> +/* AMD xgbe properties whose values are copied/pasted from host */
+> +static HostProperty amd_xgbe_inherited_properties[] = {
+> +    {"compatible", 0},
+> +    {"dma-coherent", 1},
+> +    {"amd,per-channel-interrupt", 1},
+> +    {"phy-mode", 0},
+> +    {"mac-address", 1},
+> +    {"amd,speed-set", 0},
+> +    {"amd,serdes-blwc", 1},
+> +    {"amd,serdes-cdr-rate", 1},
+> +    {"amd,serdes-pq-skew", 1},
+> +    {"amd,serdes-tx-amp", 1},
+> +    {"amd,serdes-dfe-tap-config", 1},
+> +    {"amd,serdes-dfe-tap-enable", 1},
+> +    {"clock-names", 0},
+> +};
+> +
+> +/**
+> + * add_amd_xgbe_fdt_node
+> + *
+> + * Generates the combined xgbe/phy node following kernel >=4.2
+> + * binding documentation:
+> + * Documentation/devicetree/bindings/net/amd-xgbe.txt:
+> + * Also 2 clock nodes are created (dma and ptp)
+> + */
+> +static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+> +{
+> +    PlatformBusFDTData *data = opaque;
+> +    PlatformBusDevice *pbus = data->pbus;
+> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
+> +    VFIODevice *vbasedev = &vdev->vbasedev;
+> +    VFIOINTp *intp;
+> +    const char *parent_node = data->pbus_node_name;
+> +    char *node_path, *nodename, *dt_name;
+> +    void *guest_fdt = data->fdt, *host_fdt;
+> +    const void *r;
+> +    int i, ret = -1, prop_len;
+> +    uint32_t *irq_attr, *reg_attr, *host_clock_phandles;
+> +    uint64_t mmio_base, irq_number;
+> +    uint32_t guest_clock_phandles[2];
+> +
+> +    host_fdt = load_device_tree_from_sysfs();
+> +    if (!host_fdt) {
+> +        goto stop;
+> +    }
+> +    dt_name = sysfs_to_dt_name(vbasedev->name);
+> +    ret = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat, &node_path);
+> +    g_free(dt_name);
+> +
+> +    if (ret) {
+> +        goto stop;
+> +    }
+> +
+> +    /* generate nodes for DMA_CLK and PTP_CLK */
+> +    r = qemu_fdt_getprop(host_fdt, node_path, "clocks", &prop_len);
+> +    if (prop_len != 8) {
+> +        goto stop;
+> +    }
+> +    host_clock_phandles = (uint32_t *)r;
+> +    host_clock_phandles[0] = be32_to_cpu(host_clock_phandles[0]);
+> +    host_clock_phandles[1] = be32_to_cpu(host_clock_phandles[1]);
+> +    guest_clock_phandles[0] = qemu_fdt_alloc_phandle(guest_fdt);
+> +    guest_clock_phandles[1] = qemu_fdt_alloc_phandle(guest_fdt);
+> +
+> +    ret = fdt_build_clock_node(host_fdt, guest_fdt,
+> +                               host_clock_phandles[0],
+> +                               guest_clock_phandles[0]);
+
+Hmm a little comment about the endianess here would be worthwhile. It
+seems odd to have a fdt function return stuff in be32 form but need it
+in host cpu form in other calls.
+
+As you only use host_clock_phandles[] once you could push the endian
+conversion to the call rather than the in-place swizzle.:
+
+        ret = fdt_build_clock_node(host_fdt, guest_fdt,
+                                   be32_to_cpu(host_clock_phandles[0]),
+                                   guest_clock_phandles[0]);
+
+
+> +    if (ret) {
+> +        goto stop;
+> +    }
+> +
+> +    ret = fdt_build_clock_node(host_fdt, guest_fdt,
+> +                               host_clock_phandles[1],
+> +                               guest_clock_phandles[1]);
+> +    if (ret) {
+> +        goto stop;
+> +    }
+> +
+> +    /* combined XGBE/PHY node */
+> +    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+> +    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
+> +                               vbasedev->name, mmio_base);
+> +    qemu_fdt_add_subnode(guest_fdt, nodename);
+> +
+> +    inherit_properties(amd_xgbe_inherited_properties,
+> +                       ARRAY_SIZE(amd_xgbe_inherited_properties),
+> +                       host_fdt, guest_fdt,
+> +                       node_path, nodename);
+> +
+> +    qemu_fdt_setprop_cells(guest_fdt, nodename, "clocks",
+> +                           guest_clock_phandles[0],
+> +                           guest_clock_phandles[1]);
+> +
+> +    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
+> +    for (i = 0; i < vbasedev->num_regions; i++) {
+> +        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
+> +        reg_attr[2 * i] = cpu_to_be32(mmio_base);
+> +        reg_attr[2 * i + 1] = cpu_to_be32(
+> +                                memory_region_size(&vdev->regions[i]->mem));
+> +    }
+> +    ret = qemu_fdt_setprop(guest_fdt, nodename, "reg", reg_attr,
+> +                           vbasedev->num_regions * 2 * sizeof(uint32_t));
+> +    if (ret) {
+> +        error_report("could not set reg property of node %s", nodename);
+> +        goto fail_reg;
+> +    }
+> +
+> +    irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
+> +    for (i = 0; i < vbasedev->num_irqs; i++) {
+> +        irq_number = platform_bus_get_irqn(pbus, sbdev , i)
+> +                         + data->irq_start;
+> +        irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
+> +        irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
+> +        /*
+> +          * General device interrupt and PCS auto-negociation interrupts are
+> +          * level-sensitive while the 4 per-channel interrupts are edge
+> +          * sensitive
+> +          */
+> +        QLIST_FOREACH(intp, &vdev->intp_list, next) {
+> +            if (intp->pin == i) {
+> +                break;
+> +            }
+> +        }
+> +        if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
+> +            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +        } else {
+> +            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+> +        }
+> +    }
+> +    ret = qemu_fdt_setprop(guest_fdt, nodename, "interrupts",
+> +                     irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
+> +    if (ret) {
+> +        error_report("could not set interrupts property of node %s",
+> +                     nodename);
+> +    }
+> +    g_free(host_fdt);
+> +    g_free(node_path);
+> +    g_free(irq_attr);
+> +fail_reg:
+> +    g_free(reg_attr);
+> +    g_free(nodename);
+> +    return ret;
+> +stop:
+> +    exit(1);
+> +}
+> +
+>  /* list of supported dynamic sysbus devices */
+>  static const NodeCreationPair add_fdt_node_functions[] = {
+>      {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
+> +    {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
+>      {"", NULL}, /* last element */
+>  };
+
+
+--
+Alex Bennée

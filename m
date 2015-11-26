@@ -1,288 +1,123 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id ot9sm28999715wjc.12.2015.11.26.09.14.55
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Nov 2015 09:14:55 -0800 (PST)
-Received: from zen.linaro.local (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id B3EDC3E02EA;
-	Thu, 26 Nov 2015 17:14:54 +0000 (GMT)
-References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org> <1447946528-1533-7-git-send-email-eric.auger@linaro.org>
-User-agent: mu4e 0.9.15; emacs 24.5.50.4
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Eric Auger <eric.auger@linaro.org>
-Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org, thomas.lendacky@amd.com, b.reynal@virtualopensystems.com, patches@linaro.org, suravee.suthikulpanit@amd.com, pbonzini@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [RESEND RFC 6/6] hw/arm/sysbus-fdt: enable amd-xgbe dynamic instantiation
-In-reply-to: <1447946528-1533-7-git-send-email-eric.auger@linaro.org>
-Date: Thu, 26 Nov 2015 17:14:54 +0000
-Message-ID: <87vb8obs35.fsf@linaro.org>
+Received: by 10.182.158.201 with SMTP id ww9csp826571obb;
+        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
+X-Received: by 10.140.41.234 with SMTP id z97mr8041710qgz.64.1448566732573;
+        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id j141si27612675qhc.86.2015.11.26.11.38.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52936 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a22NY-0005H1-6o
+	for alex.bennee@linaro.org; Thu, 26 Nov 2015 14:38:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58431)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a22NV-0005Cm-9V
+	for qemu-arm@nongnu.org; Thu, 26 Nov 2015 14:38:50 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a22NU-0006sB-94
+	for qemu-arm@nongnu.org; Thu, 26 Nov 2015 14:38:49 -0500
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:38249)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1a22NS-0006rE-7U; Thu, 26 Nov 2015 14:38:46 -0500
+Received: by wmec201 with SMTP id c201so33903392wme.1;
+	Thu, 26 Nov 2015 11:38:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=3UTm3CgyJ2n9VeJkIX5MhF0zsWuNNggfM8zYqywzKWM=;
+	b=kuPtZxrBWWVdFO62xZexXxsOhtabCr8SLGkd8EKkJL+eNu8poyUBowrODjj38AWQUg
+	lo3Muh05bZJ96tvQGJLjj4hzOVjYUmhrj0pvg/T7oV9Cg+XvCLuUJDT62nYFpQMuen77
+	hbtnNEp5VvWe+YWiuTMT5CzvQ7zJgW4vsVmoX6mZJ6FSFvQHs/s4b9hmT5FoNGV8pqXd
+	wEIfUMeKzqzgAAlwVZVHD3/7KDml2ENoyA0AgAHHJcBqIIUdl6gjMUhXn1HpDtPS1lgZ
+	R+S0SjD8n7zVsU4AywHgk8Mr4TBlLf4ySxaGuUXd2wSym9zBGURCByujF1QFl1McPqSl
+	S8Tw==
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: nBsSsPxuUEsA
+X-Received: by 10.194.114.105 with SMTP id jf9mr49991077wjb.102.1448566725326; 
+	Thu, 26 Nov 2015 11:38:45 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Thu, 26 Nov 2015 11:38:45 -0800 (PST)
+In-Reply-To: <BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
+	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Thu, 26 Nov 2015 11:38:45 -0800
+Message-ID: <CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2a00:1450:400c:c09::233
+Cc: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	=?UTF-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
+	Windows-on-ARM support
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ne7cbRXvFHtW
 
-
-Eric Auger <eric.auger@linaro.org> writes:
-
-> This patch allows the instantiation of the vfio-amd-xgbe device
-> from the QEMU command line (-device vfio-amd-xgbe,host="<device>").
+On Wed, Nov 18, 2015 at 10:16 AM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Hi Peter,
 >
-> The guest is exposed with a device tree node that combines the description
-> of both XGBE and PHY (representation supported from 4.2 onwards kernel):
-> Documentation/devicetree/bindings/net/amd-xgbe.txt.
+> Thanks for your feedback!
 >
-> There are 5 register regions, 6 interrupts including 4 optional
-> edge-sensitive per-channel interrupts.
+> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+> Sent: Tuesday, 17 November 2015 23:51
+>> I haven't looked beyond the diffstat yet, but a top level
+>> architectural comment, I only see the one file in hw/arm. We are
+>> promoting the split of board and SoC now as two separate objects. Each
+>> of the patch series linked above demonstrates this. The BCM SoC would
+>> be an object in its own right, then the board instantiates the SoC as
+>> a composite device.
 >
-> Property values are inherited from host device tree. It is mandated
-> host uses device tree, dtc binary is installed, and the host also uses a
-> combined XGBE/PHY representation (>= 4.2 host kernel).
-
-I might ping you later about this as I'm running 4.3 but can't see the
-device. However my board could be a very old rev.
-
+> I understand the rationale here, but is there much value pursuing this fo=
+r the Pi? As far as I know, the Pi1/2 SOCs (bcm2835 and 2836) are one-off d=
+esigns used only in the Pi. Moreover, the 2836 is basically a copy of the 2=
+835 with the addition of a new block for a multi-core interrupt controller =
+and mailboxes, so trying to split those out into two separate SOC definitio=
+n files would require either lots of duplication, or a tight coupling betwe=
+en the two. Finally, there is basically nothing on the board besides the So=
+C and RAM (just a USB-Ethernet adapter), so the actual board definition fil=
+es would be almost empty. As it is, I've already factored out all the commo=
+n devices within hw/arm/raspi.c -- my feeling is that this is a cleaner way=
+ to do it for the Pi.
 >
-> 2 clock nodes (dma and ptp) also are created. It is mandated those clocks
-> are fixed on host side.
->
-> Signed-off-by: Eric Auger <eric.auger@linaro.org>
-> ---
->  hw/arm/sysbus-fdt.c | 171 ++++++++++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 167 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index 22e5801..b13d380 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -22,6 +22,7 @@
->   */
->
->  #include <libfdt.h>
-> +#include <linux/vfio.h>
->  #include "hw/arm/sysbus-fdt.h"
->  #include "qemu/error-report.h"
->  #include "sysemu/device_tree.h"
-> @@ -29,8 +30,10 @@
->  #include "sysemu/sysemu.h"
->  #include "hw/vfio/vfio-platform.h"
->  #include "hw/vfio/vfio-calxeda-xgmac.h"
-> +#include "hw/vfio/vfio-amd-xgbe.h"
->  #include "hw/arm/fdt.h"
->
-> +
->  /*
->   * internal struct that contains the information to create dynamic
->   * sysbus device node
-> @@ -120,10 +123,7 @@ static HostProperty clock_inherited_properties[] = {
->   * host_phandle: phandle of the clock in host device tree
->   * guest_phandle: phandle to assign to the guest node
->   */
-> -int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
-> -                                uint32_t host_phandle,
-> -                                uint32_t guest_phandle);
-> -int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
-> +static int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
->                                  uint32_t host_phandle,
->                                  uint32_t guest_phandle)
->  {
 
-This looks like it should be squashed with 5/6.
+So I am looking at some recent news, and there is the RPi Zero which
+reuses the bcm2835 as a different board. Can't find the schematic yet,
+but from what I can see, this is a raw SoC (no USB ethernet). With
+your SoC/board split we should be able pickup the Zero board quite
+cheaply as follow up work.
 
-> @@ -166,6 +166,21 @@ out:
->      return ret;
->  }
->
-> +/**
-> + * sysfs_to_dt_name
-> + *
-> + * convert the name found in sysfs into the node name
-> + * for instance e0900000.xgmac is converted into xgmac@e0900000
-> + */
-> +static char *sysfs_to_dt_name(const char *sysfs_name)
-> +{
-> +    gchar **substrings =  g_strsplit(sysfs_name, ".", 2);
-> +    char *dt_name;
-> +
-> +    dt_name = g_strdup_printf("%s@%s", substrings[1], substrings[0]);
+Regards,
+Peter
 
-You need to g_strfreev(substrings) once you are done.
-
-> +    return dt_name;
-> +}
-> +
->  /* Device Specific Code */
->
->  /**
-> @@ -233,9 +248,157 @@ fail_reg:
->      return ret;
->  }
->
-> +
-> +/* AMD xgbe properties whose values are copied/pasted from host */
-> +static HostProperty amd_xgbe_inherited_properties[] = {
-> +    {"compatible", 0},
-> +    {"dma-coherent", 1},
-> +    {"amd,per-channel-interrupt", 1},
-> +    {"phy-mode", 0},
-> +    {"mac-address", 1},
-> +    {"amd,speed-set", 0},
-> +    {"amd,serdes-blwc", 1},
-> +    {"amd,serdes-cdr-rate", 1},
-> +    {"amd,serdes-pq-skew", 1},
-> +    {"amd,serdes-tx-amp", 1},
-> +    {"amd,serdes-dfe-tap-config", 1},
-> +    {"amd,serdes-dfe-tap-enable", 1},
-> +    {"clock-names", 0},
-> +};
-> +
-> +/**
-> + * add_amd_xgbe_fdt_node
-> + *
-> + * Generates the combined xgbe/phy node following kernel >=4.2
-> + * binding documentation:
-> + * Documentation/devicetree/bindings/net/amd-xgbe.txt:
-> + * Also 2 clock nodes are created (dma and ptp)
-> + */
-> +static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
-> +{
-> +    PlatformBusFDTData *data = opaque;
-> +    PlatformBusDevice *pbus = data->pbus;
-> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-> +    VFIODevice *vbasedev = &vdev->vbasedev;
-> +    VFIOINTp *intp;
-> +    const char *parent_node = data->pbus_node_name;
-> +    char *node_path, *nodename, *dt_name;
-> +    void *guest_fdt = data->fdt, *host_fdt;
-> +    const void *r;
-> +    int i, ret = -1, prop_len;
-> +    uint32_t *irq_attr, *reg_attr, *host_clock_phandles;
-> +    uint64_t mmio_base, irq_number;
-> +    uint32_t guest_clock_phandles[2];
-> +
-> +    host_fdt = load_device_tree_from_sysfs();
-> +    if (!host_fdt) {
-> +        goto stop;
-> +    }
-> +    dt_name = sysfs_to_dt_name(vbasedev->name);
-> +    ret = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat, &node_path);
-> +    g_free(dt_name);
-> +
-> +    if (ret) {
-> +        goto stop;
-> +    }
-> +
-> +    /* generate nodes for DMA_CLK and PTP_CLK */
-> +    r = qemu_fdt_getprop(host_fdt, node_path, "clocks", &prop_len);
-> +    if (prop_len != 8) {
-> +        goto stop;
-> +    }
-> +    host_clock_phandles = (uint32_t *)r;
-> +    host_clock_phandles[0] = be32_to_cpu(host_clock_phandles[0]);
-> +    host_clock_phandles[1] = be32_to_cpu(host_clock_phandles[1]);
-> +    guest_clock_phandles[0] = qemu_fdt_alloc_phandle(guest_fdt);
-> +    guest_clock_phandles[1] = qemu_fdt_alloc_phandle(guest_fdt);
-> +
-> +    ret = fdt_build_clock_node(host_fdt, guest_fdt,
-> +                               host_clock_phandles[0],
-> +                               guest_clock_phandles[0]);
-
-Hmm a little comment about the endianess here would be worthwhile. It
-seems odd to have a fdt function return stuff in be32 form but need it
-in host cpu form in other calls.
-
-As you only use host_clock_phandles[] once you could push the endian
-conversion to the call rather than the in-place swizzle.:
-
-        ret = fdt_build_clock_node(host_fdt, guest_fdt,
-                                   be32_to_cpu(host_clock_phandles[0]),
-                                   guest_clock_phandles[0]);
-
-
-> +    if (ret) {
-> +        goto stop;
-> +    }
-> +
-> +    ret = fdt_build_clock_node(host_fdt, guest_fdt,
-> +                               host_clock_phandles[1],
-> +                               guest_clock_phandles[1]);
-> +    if (ret) {
-> +        goto stop;
-> +    }
-> +
-> +    /* combined XGBE/PHY node */
-> +    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> +    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
-> +                               vbasedev->name, mmio_base);
-> +    qemu_fdt_add_subnode(guest_fdt, nodename);
-> +
-> +    inherit_properties(amd_xgbe_inherited_properties,
-> +                       ARRAY_SIZE(amd_xgbe_inherited_properties),
-> +                       host_fdt, guest_fdt,
-> +                       node_path, nodename);
-> +
-> +    qemu_fdt_setprop_cells(guest_fdt, nodename, "clocks",
-> +                           guest_clock_phandles[0],
-> +                           guest_clock_phandles[1]);
-> +
-> +    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
-> +    for (i = 0; i < vbasedev->num_regions; i++) {
-> +        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
-> +        reg_attr[2 * i] = cpu_to_be32(mmio_base);
-> +        reg_attr[2 * i + 1] = cpu_to_be32(
-> +                                memory_region_size(&vdev->regions[i]->mem));
-> +    }
-> +    ret = qemu_fdt_setprop(guest_fdt, nodename, "reg", reg_attr,
-> +                           vbasedev->num_regions * 2 * sizeof(uint32_t));
-> +    if (ret) {
-> +        error_report("could not set reg property of node %s", nodename);
-> +        goto fail_reg;
-> +    }
-> +
-> +    irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-> +    for (i = 0; i < vbasedev->num_irqs; i++) {
-> +        irq_number = platform_bus_get_irqn(pbus, sbdev , i)
-> +                         + data->irq_start;
-> +        irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
-> +        irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-> +        /*
-> +          * General device interrupt and PCS auto-negociation interrupts are
-> +          * level-sensitive while the 4 per-channel interrupts are edge
-> +          * sensitive
-> +          */
-> +        QLIST_FOREACH(intp, &vdev->intp_list, next) {
-> +            if (intp->pin == i) {
-> +                break;
-> +            }
-> +        }
-> +        if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
-> +            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +        } else {
-> +            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-> +        }
-> +    }
-> +    ret = qemu_fdt_setprop(guest_fdt, nodename, "interrupts",
-> +                     irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
-> +    if (ret) {
-> +        error_report("could not set interrupts property of node %s",
-> +                     nodename);
-> +    }
-> +    g_free(host_fdt);
-> +    g_free(node_path);
-> +    g_free(irq_attr);
-> +fail_reg:
-> +    g_free(reg_attr);
-> +    g_free(nodename);
-> +    return ret;
-> +stop:
-> +    exit(1);
-> +}
-> +
->  /* list of supported dynamic sysbus devices */
->  static const NodeCreationPair add_fdt_node_functions[] = {
->      {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
-> +    {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
->      {"", NULL}, /* last element */
->  };
-
-
---
-Alex Bennée
+>> It is big. Work of this magnitude is generally better managed as
+>> multiple series (each of multiple patches). A general approach with
+>> new ARM boards is the first series is the bare minimum needed to get a

@@ -1,110 +1,124 @@
-Received: by 10.182.158.201 with SMTP id ww9csp437645obb;
-        Mon, 16 Nov 2015 17:37:19 -0800 (PST)
-X-Received: by 10.31.155.131 with SMTP id d125mr1118704vke.86.1447724239479;
-        Mon, 16 Nov 2015 17:37:19 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp856912obb;
+        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
+X-Received: by 10.55.217.147 with SMTP id q19mr50074599qkl.109.1448570972670;
+        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g201si844156vkf.173.2015.11.16.17.37.19
+        by mx.google.com with ESMTPS id c137si27960558qhc.4.2015.11.26.12.49.32
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 16 Nov 2015 17:37:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 26 Nov 2015 12:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro_org.20150623.gappssmtp.com
-Received: from localhost ([::1]:55160 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:53118 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZyVCx-0001Kc-0h
-	for alex.bennee@linaro.org; Mon, 16 Nov 2015 20:37:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50276)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a23Tw-0006LJ-Dd
+	for alex.bennee@linaro.org; Thu, 26 Nov 2015 15:49:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42372)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1ZyVCu-0001J9-IG
-	for qemu-arm@nongnu.org; Mon, 16 Nov 2015 20:37:17 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a23Tb-00062s-33
+	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 15:49:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1ZyVCq-00035S-B5
-	for qemu-arm@nongnu.org; Mon, 16 Nov 2015 20:37:16 -0500
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:36614)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a23TX-00067s-2u
+	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 15:49:11 -0500
+Received: from mail-bl2on0106.outbound.protection.outlook.com
+	([65.55.169.106]:51520
+	helo=na01-bl2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1ZyVCq-00035H-4C
-	for qemu-arm@nongnu.org; Mon, 16 Nov 2015 20:37:12 -0500
-Received: by wmww144 with SMTP id w144so134248114wmw.1
-	for <qemu-arm@nongnu.org>; Mon, 16 Nov 2015 17:37:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro_org.20150623.gappssmtp.com; s=20150623;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=YQxjO4ASSQhjma2MM70Pi3IcyK9/IlL+E/68IMlA31M=;
-	b=e8U9/iXRbOInRq3TG5uwLKaGgLj9VP2e8YlVqzL6tUxydysQOeDmdGkWTPc8meSe49
-	jgrizhsVOzrw9rF3/6r/I3p7vEgg01a0f43gGALRgUf+3nyEecloAEkFq7+ktuGHc8k7
-	xA/Ul+K+PAGXi5PQDGu7ta7KBYAO9itwCsWi857WJx1jO6w8HD4caHeSdHCxAedzJhZH
-	LlxPgAhzn4dksvPnGK1KG0XltgeADoAbT04gxd6r9t+b8zgOjmnXK7nzhGnGkSHAo1hF
-	RnV5gAIA54RUO1sdjPYEgls3JPdMtQiyQPsyrZVOtQWhyY9Vtjp7wjkSzwYLw+eBsx2F
-	v0kw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=YQxjO4ASSQhjma2MM70Pi3IcyK9/IlL+E/68IMlA31M=;
-	b=hIPpCvI6/3XZoEVUjbb8WjxJ0gfTLExkED0KEWYBRLfNgyywLgxUQa7zvu3RShnSAH
-	n5Jm6Mx3bOdzCjQz8bzNaabf0iq/Q1AvtqkcyVrbknvzwiyhb9Ga+qqsNB2hKdTz76Ew
-	RvOFS5tgHx5f1ua3noc3cjsRALiWg3k/Po7hFdnr0hXFr+kgTZIY1MTF6XN4TO07Ls5r
-	N4R2VF+iazZVpxIuzU8Je2TPIFw4Cvx1bENTf7cj5X+9/pEC23ZrpMd0j3Zvlw15o3Jz
-	5tDMQKuf+nuVcxNw6Ix9aNgM+S0MR91XAE+VeM/ZzBcfs/cudKdeHkkKxaJcDeTqW2vB
-	VleQ==
-X-Gm-Message-State: ALoCoQlmKpQE8B/tWeIczY24vLD71ZJ6PvBqbquM5rNASMrR7G/nhELAFPIRNkRwFYjyPwmLvQ9x
-X-Received: by 10.194.90.169 with SMTP id bx9mr39928512wjb.1.1447724231363;
-	Mon, 16 Nov 2015 17:37:11 -0800 (PST)
-Received: from [10.15.9.90] ([78.129.251.54])
-	by smtp.googlemail.com with ESMTPSA id
-	l128sm21171012wmf.10.2015.11.16.17.37.05
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 16 Nov 2015 17:37:10 -0800 (PST)
-To: qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
-	imammedo@redhat.com, wei@redhat.com
-References: <1447680189-2128-1-git-send-email-shannon.zhao@linaro.org>
-From: Shannon Zhao <shannon.zhao@linaro.org>
-Message-ID: <564A84BD.3070905@linaro.org>
-Date: Tue, 17 Nov 2015 09:37:01 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1a23TW-00067o-Sg; Thu, 26 Nov 2015 15:49:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=RSCSN6Lev7MA2xvA27hDc1XVKYohG1FVmaT+UvzicAM=;
+	b=hv9UGoKsqS5vMjQkQnbVYNa5uaNvE2JTTd9Rc2YJPsayHT2HsnX7dvmyb2/IeFRXeSXlN5rylZbmcLa12Msdop5fvBFUKPrtDMy2llZmnuA4pT+Qh8JZxUcq8VyP3vJ1XycCwKHt0BM2hWoJYwUzGdb9tt4fKNBqg/vRbuR+GEs=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with Microsoft
+	SMTP Server (TLS) id 15.1.331.20; Thu, 26 Nov 2015 20:49:04 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0331.023; Thu, 26 Nov 2015 20:49:04 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Thread-Topic: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
+Thread-Index: AdEem9sZHjs9/bX/Q4+JMP7QmdOAYQDOg3SAABS0aqABllVcgAACX9EQ
+Date: Thu, 26 Nov 2015 20:49:04 +0000
+Message-ID: <BLUPR0301MB2034ED0BA94F53043E553E729E040@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
+	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
+In-Reply-To: <CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [50.46.154.109]
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2033;
+	5:8COWlISvMzjP3YdxAuqGrwyI9T4ub3ItRfJg2dLunBrmEGzAz1i9MXK5k+X/Ettq5YXMiI/8MXoNGmV2MJeoy11lnvTfVwA2veQtn03Catmbr5S85WJPtRmxK7HfOV5xY69MMkiw36L1Kjz6TZgCpA==;
+	24:paxoVXHwfADS/qPqCkj3bDumFZ5qH+E2bAzbDI10VZvb/tx0RkSziVg6RRqo/r4IbS5M5ZLbzyz4UGoU3pH2fCyY9S1OGhgSKgEgHGgemcE=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2033;
+x-microsoft-antispam-prvs: <BLUPR0301MB203372251D565519C9830D399E040@BLUPR0301MB2033.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425024)(601004)(2401047)(5005006)(8121501046)(520078)(3002001)(10201501046)(61426024)(61427024);
+	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2033; 
+x-forefront-prvs: 0772E5DAD5
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(189002)(199003)(40100003)(87936001)(54356999)(122556002)(5002640100001)(76176999)(101416001)(86362001)(33656002)(3846002)(586003)(1096002)(50986999)(74316001)(19580395003)(92566002)(6116002)(102836003)(1411001)(5004730100002)(19580405001)(11100500001)(5005710100001)(10290500002)(2900100001)(5003600100002)(10090500001)(2950100001)(66066001)(77096005)(10400500002)(86612001)(8990500004)(105586002)(93886004)(230783001)(99286002)(189998001)(106356001)(5001960100002)(110136002)(1220700001)(5008740100001)(76576001)(81156007)(97736004);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <1447680189-2128-1-git-send-email-shannon.zhao@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::232
-Cc: zhaoshenglong@huawei.com, qemu-devel@nongnu.org, graeme.gregory@linaro.org,
-	peter.huangpeng@huawei.com
-Subject: Re: [Qemu-arm] [PATCH v3 0/8] Add system_powerdown support on ARM
- for ACPI and DT
-X-BeenThere: qemu-arm@nongnu.org
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Nov 2015 20:49:04.3911 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 65.55.169.106
+Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	=?utf-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-devel] RFC: raspberry pi / pi2 / Windows-on-ARM support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5lP1Qvd5r0xU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Vrn836LrG7qN
 
-Hi,
-
-On 2015/11/16 21:23, shannon.zhao@linaro.org wrote:
-> [1] https://git.linaro.org/people/shannon.zhao/qemu.git/shortlog/refs/heads/PowerButton_v2
-Sorry, this link should be
-https://git.linaro.org/people/shannon.zhao/qemu.git/shortlog/refs/heads/PowerButton_v3
-
-> [2] https://lkml.org/lkml/2015/9/30/392
-> [3] http://people.linaro.org/~shannon.zhao/ACPI_ARM/QEMU_EFI.fd
-> [4] https://wiki.linaro.org/LEG/Engineering/Kernel/ACPI/GPIOPowerButton
-
--- 
-Shannon
+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
+Y29tXQ0KPiBTZW50OiBUaHVyc2RheSwgMjYgTm92ZW1iZXIgMjAxNSAxMTozOQ0KPiBTbyBJIGFt
+IGxvb2tpbmcgYXQgc29tZSByZWNlbnQgbmV3cywgYW5kIHRoZXJlIGlzIHRoZSBSUGkgWmVybyB3
+aGljaCByZXVzZXMNCj4gdGhlIGJjbTI4MzUgYXMgYSBkaWZmZXJlbnQgYm9hcmQuIENhbid0IGZp
+bmQgdGhlIHNjaGVtYXRpYyB5ZXQsIGJ1dCBmcm9tDQo+IHdoYXQgSSBjYW4gc2VlLCB0aGlzIGlz
+IGEgcmF3IFNvQyAobm8gVVNCIGV0aGVybmV0KS4gV2l0aCB5b3VyIFNvQy9ib2FyZCBzcGxpdA0K
+PiB3ZSBzaG91bGQgYmUgYWJsZSBwaWNrdXAgdGhlIFplcm8gYm9hcmQgcXVpdGUgY2hlYXBseSBh
+cyBmb2xsb3cgdXAgd29yay4NCg0KWWVzLCBpbiBmYWN0IGZyb20gd2hhdCBJJ3ZlIHNlZW4gdGhl
+IFBpIHplcm8gaXMgZnVuY3Rpb25hbGx5IGVxdWl2YWxlbnQgdG8gb3VyIGN1cnJlbnQgZW11bGF0
+aW9uIG9mIHRoZSBQaTEgLS0gd2UgZG9uJ3QgZW11bGF0ZSB0aGUgUGkncyBVU0ItRXRoZXJuZXQg
+YWRhcHRlciBlaXRoZXIuDQoNCkFuZHJldw0K

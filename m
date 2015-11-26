@@ -1,61 +1,72 @@
-Received: by 10.182.158.201 with SMTP id ww9csp876123obb;
-        Sun, 29 Nov 2015 00:23:25 -0800 (PST)
-X-Received: by 10.140.152.150 with SMTP id 144mr70550832qhy.8.1448785402936;
-        Sun, 29 Nov 2015 00:23:22 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp883561obb;
+        Sun, 29 Nov 2015 00:50:43 -0800 (PST)
+X-Received: by 10.141.23.195 with SMTP id z186mr6583880qhd.52.1448787043469;
+        Sun, 29 Nov 2015 00:50:43 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j133si39786088qhj.106.2015.11.29.00.23.22
+        by mx.google.com with ESMTPS id w76si13017338qka.0.2015.11.29.00.50.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 29 Nov 2015 00:23:22 -0800 (PST)
+        Sun, 29 Nov 2015 00:50:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35312 helo=lists.gnu.org)
+Received: from localhost ([::1]:35396 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a2xGU-0008NL-Ip
-	for alex.bennee@linaro.org; Sun, 29 Nov 2015 03:23:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56800)
+	id 1a2xgx-0007hb-3v
+	for alex.bennee@linaro.org; Sun, 29 Nov 2015 03:50:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33207)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a2xGR-0008MG-Vi
-	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:23:20 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1a2xgv-0007hU-Ai
+	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:50:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a2xGO-0003qz-SC
-	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:23:19 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:10822)
+	(envelope-from <pbonzini@redhat.com>) id 1a2xgs-0001gS-33
+	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:50:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42521)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1a2xGO-0003qr-8O; Sun, 29 Nov 2015 03:23:16 -0500
-Received: from 172.24.1.50 (EHLO SZXEML429-HUB.china.huawei.com)
-	([172.24.1.50])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BRU76657; Sun, 29 Nov 2015 16:23:14 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	SZXEML429-HUB.china.huawei.com (10.82.67.184) with Microsoft SMTP
-	Server id 14.3.235.1; Sun, 29 Nov 2015 16:23:04 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <p.fedin@samsung.com>
-Date: Sun, 29 Nov 2015 16:22:50 +0800
-Message-ID: <1448785370-12176-3-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1448785370-12176-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1448785370-12176-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1a2xgr-0001fW-Pa; Sun, 29 Nov 2015 03:50:37 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id BF9F58E22F;
+	Sun, 29 Nov 2015 08:50:36 +0000 (UTC)
+Received: from [10.36.112.28] (ovpn-112-28.ams2.redhat.com [10.36.112.28])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tAT8oVfu022625
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Sun, 29 Nov 2015 03:50:33 -0500
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>
+References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
+	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=pv1CdRojAz5v9xiy=f2WYGOPP1xTCFJJQD6dbqGaYGuA@mail.gmail.com>
+	<BY2PR0301MB20409F279E0D56AA4DCDCC1F9E050@BY2PR0301MB2040.namprd03.prod.outlook.com>
+	<CAPokK=p6yG3JHPR0zcd14xTAE-JNk9ezVSr5hriX9xWpiOaV5A@mail.gmail.com>
+	<CAFEAcA86U8yuTA7w_M5OsJOGdYm49+MqtXP7y09QDXTzKyVzkA@mail.gmail.com>
+	<BLUPR0301MB2034372751CF518EE0A3067B9E050@BLUPR0301MB2034.namprd03.prod.outlook.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56573913.2020407@redhat.com>
+Date: Thu, 26 Nov 2015 17:53:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020201.565AB5F2.00A3, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 2a2a0c5e8249a46e6f4ddc8175594a3b
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: hangaohuai@huawei.com, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
-Subject: [Qemu-arm] [RFC PATCH 2/2] ARM: Virt: ACPI: Add GIC ITS description
-	in ACPI MADT table
+In-Reply-To: <BLUPR0301MB2034372751CF518EE0A3067B9E050@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: =?UTF-8?Q?Gr=c3=a9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Jan_Petrou=c5=a1?= <jan.petrous@tieto.com>,
+	Sai Pavan Boddu <saipava@xilinx.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
+	Windows-on-ARM support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,55 +80,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z86B7UA6mNfM
-
-From: Shannon Zhao <shannon.zhao@linaro.org>
-
-If GIC ITS is supported, add description in ACPI MADT table, then guest
-could use ITS when booting with ACPI.
-
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- hw/arm/virt-acpi-build.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 3c2c5d6..f200086 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -41,6 +41,7 @@
- #include "hw/acpi/aml-build.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
-+#include "kvm_arm.h"
- 
- #define ARM_SPI_BASE 32
- 
-@@ -440,6 +441,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
-     AcpiMultipleApicTable *madt;
-     AcpiMadtGenericDistributor *gicd;
-     AcpiMadtGenericMsiFrame *gic_msi;
-+    AcpiMadtGenericTranslator *gic_its;
-     int i;
- 
-     madt = acpi_data_push(table_data, sizeof *madt);
-@@ -475,6 +477,15 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
-         gicr->length = sizeof(*gicr);
-         gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST].base);
-         gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST].size);
-+
-+        if (!its_class_name()) {
-+            return;
-+        }
-+        gic_its = acpi_data_push(table_data, sizeof *gic_its);
-+        gic_its->type =  ACPI_APIC_GENERIC_TRANSLATOR;
-+        gic_its->length = sizeof(*gic_its);
-+        gic_its->translation_id = 0;
-+        gic_its->base_address = cpu_to_le64(memmap[VIRT_GIC_ITS].base);
-     } else {
-         gic_msi = acpi_data_push(table_data, sizeof *gic_msi);
-         gic_msi->type = ACPI_APIC_GENERIC_MSI_FRAME;
--- 
-2.0.4
+X-TUID: OCkN4zV9NYGu
 
 
+
+On 25/11/2015 19:14, Andrew Baumann wrote:
+> How does this work out with object_property_add_alias? It can fail
+> and returns an error, so it should be called from realize, but it
+> adds a new property on the object, so the property won't be useful if
+> it can only be set after realize has added it.
+
+If you know it cannot fail, just pass &error_abort and call it from
+instance_init.
+
+Paolo

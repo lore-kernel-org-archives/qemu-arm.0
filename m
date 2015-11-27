@@ -1,1058 +1,223 @@
-Received: by 10.182.158.201 with SMTP id ww9csp992081obb;
-        Thu, 26 Nov 2015 18:41:19 -0800 (PST)
-X-Received: by 10.140.28.98 with SMTP id 89mr50151962qgy.40.1448592079105;
-        Thu, 26 Nov 2015 18:41:19 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp166494obb;
+        Fri, 27 Nov 2015 13:43:16 -0800 (PST)
+X-Received: by 10.140.156.199 with SMTP id c190mr59446074qhc.85.1448660596176;
+        Fri, 27 Nov 2015 13:43:16 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u8si29324515qka.53.2015.11.26.18.41.18
+        by mx.google.com with ESMTPS id 92si33130704qks.80.2015.11.27.13.43.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Nov 2015 18:41:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 27 Nov 2015 13:43:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54314 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@roeck-us.net
+Received: from localhost ([::1]:58632 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a28yM-00052e-Lk
-	for alex.bennee@linaro.org; Thu, 26 Nov 2015 21:41:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52471)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a2QnT-0001kq-Id
+	for alex.bennee@linaro.org; Fri, 27 Nov 2015 16:43:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43789)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a28xo-0004Pp-Qw
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 21:40:48 -0500
+	(envelope-from <linux@roeck-us.net>) id 1a2QnQ-0001hI-MC
+	for qemu-arm@nongnu.org; Fri, 27 Nov 2015 16:43:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a28xl-0003Fq-7s
-	for qemu-devel@nongnu.org; Thu, 26 Nov 2015 21:40:44 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38458)
+	(envelope-from <linux@roeck-us.net>) id 1a2QnN-0006RO-9n
+	for qemu-arm@nongnu.org; Fri, 27 Nov 2015 16:43:12 -0500
+Received: from bh-25.webhostbox.net ([208.91.199.152]:40113)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1a28xk-0003Fh-RK; Thu, 26 Nov 2015 21:40:41 -0500
-Received: by wmec201 with SMTP id c201so41624087wme.1;
-	Thu, 26 Nov 2015 18:40:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=qXYmVGbmemLUs9jUyZae58NYTlxrjfOZmlbNLRW7BTE=;
-	b=Uk6oBKurzgTEpXNyNHPOtJLswfzBy3PuUo0RG9QnbKfw2oZGfqWnaTNQkr2kUhGgv/
-	c7skbeNymCtkNUgsgHIagZoKauxWzF/Hfn/qZFfp5oyLZKR9m5Pty+cmiwvMouKfYlPM
-	8cwPyDhvTZHjljMreESfvomr0KMX1t6GvIe5pH8GFOGXIjzgflG1RC4l+gj7Mt2DxULp
-	zaUyirqGWwdx6wAi1RpiTq6yyjWdUqb4EYw9/yKd+FfJL/UIiyBxQE7Lpawup++C9aj7
-	yQuTM9XNZYoen2io5SqFnguMx2XQzQ3khtET+e4rZ/hraW0fAyhKOPV+a1k5yMINvhw/
-	ILIg==
-MIME-Version: 1.0
-X-Received: by 10.194.120.226 with SMTP id lf2mr52371179wjb.108.1448592040351; 
-	Thu, 26 Nov 2015 18:40:40 -0800 (PST)
-Received: by 10.28.88.11 with HTTP; Thu, 26 Nov 2015 18:40:40 -0800 (PST)
-In-Reply-To: <5cf3676a20572a2d4975f3720207123b7b34d178.1448521065.git.jcd@tribudubois.net>
+	(envelope-from <linux@roeck-us.net>)
+	id 1a2QnN-0006RD-2H; Fri, 27 Nov 2015 16:43:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=roeck-us.net;
+	s=default; 
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:Cc:References:To:Subject;
+	bh=OO5OoqL2BgE/J8jA31Xu1QwlIcakBC5ytFp0SBSZ4Eo=; 
+	b=8YBA1WUr2Y/EPCyw2tsK46sxguQfaYI8Y8GISpQcWaUvMJ29RZ/KlExkBD1UHI9MRbRfcgyPyMEW0Uq4s6asAFXDKVGhuw/OH6zSt9ECHMwp4aiE2M/0ceED+sRwUm/x/bv40o8XarGt6AD4wCFZnEPL2Z0ztIrIqLdQRwRsCNM=;
+Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
+	([108.223.40.66]:58271 helo=server.roeck-us.net)
+	by bh-25.webhostbox.net with esmtpsa (TLSv1:DHE-RSA-AES128-SHA:128)
+	(Exim 4.85) (envelope-from <linux@roeck-us.net>)
+	id 1a2QnT-000uTn-Lq; Fri, 27 Nov 2015 21:43:16 +0000
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Jean-Christophe DUBOIS <jcd@tribudubois.net>
 References: <cover.1448521064.git.jcd@tribudubois.net>
-	<5cf3676a20572a2d4975f3720207123b7b34d178.1448521065.git.jcd@tribudubois.net>
-Date: Thu, 26 Nov 2015 18:40:40 -0800
-Message-ID: <CAPokK=pDiEh_e+zzkXpnRpFh-b0KMRPLKnRbmoWKjEis9uK-Sg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Jean-Christophe Dubois <jcd@tribudubois.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::230
+	<d53f34e3cf05dde424b6eab7d51cef6f244ef80a.1448521065.git.jcd@tribudubois.net>
+	<CAPokK=pUqOnccS-jSqm6ai4iG5v4+Zr+F-LyJwCGZQv-BjkPpQ@mail.gmail.com>
+	<5658B4EA.8070005@tribudubois.net>
+	<CAPokK=p5UF7z4PtoNukVc4rAOv1Tw6oEkFSwvBFm=TVz=Oo_BQ@mail.gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <5658CE67.2010201@roeck-us.net>
+Date: Fri, 27 Nov 2015 13:43:03 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <CAPokK=p5UF7z4PtoNukVc4rAOv1Tw6oEkFSwvBFm=TVz=Oo_BQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Authenticated_sender: linux@roeck-us.net
+X-OutGoing-Spam-Status: No, score=-1.0
+X-AntiAbuse: This header was added to track abuse,
+	please include it with any abuse report
+X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
+X-AntiAbuse: Original Domain - nongnu.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - roeck-us.net
+X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
+	linux@roeck-us.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 208.91.199.152
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v4 2/3] i.MX: Split the CCM class into an
- abstact base class and a concrete class.
-X-BeenThere: qemu-devel@nongnu.org
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v4 3/3] i.MX: Add an i.MX25 specific CCM
+	class/instance.
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Vskciwq3Ix4t
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aS9NgJDQpBHK
 
-On Wed, Nov 25, 2015 at 11:16 PM, Jean-Christophe Dubois
-<jcd@tribudubois.net> wrote:
-> The IMX_CCM class is now the base abstract class that is used by EPIT and GPT
-> timer implementation.
+On 11/27/2015 12:26 PM, Peter Crosthwaite wrote:
+> On Fri, Nov 27, 2015 at 11:54 AM, Jean-Christophe DUBOIS
+> <jcd@tribudubois.net> wrote:
+>> Le 27/11/2015 03:39, Peter Crosthwaite a écrit :
+>>
+>> On Wed, Nov 25, 2015 at 11:16 PM, Jean-Christophe Dubois
+>> <jcd@tribudubois.net> wrote:
+>>
+>> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+>>
+>> This seems to slow down boot performance for i.MX25 Linux. Admittedly,
+>> the issue looks to be in timeout code for an unmodelled periph (NAND):
+>>
+>> ------------[ cut here ]------------
+>> WARNING: CPU: 0 PID: 1 at
+>> /home/pcrost/poky/build/tmp/work-shared/qemuarmv5imx/kernel-source/drivers/mtd/nand/mxc_nand.c:464
+>> wait_op_done+0xf0/0x114()
+>> timeout! useirq=0
+>> Modules linked in:
+>> CPU: 0 PID: 1 Comm: swapper Not tainted 4.2.1 #1
+>> Hardware name: Freescale i.MX25 (Device Tree Support)
+>> [<c000eec8>] (unwind_backtrace) from [<c000d2b0>] (show_stack+0x10/0x14)
+>> [<c000d2b0>] (show_stack) from [<c0019154>] (warn_slowpath_common+0x74/0xac)
+>> [<c0019154>] (warn_slowpath_common) from [<c00191bc>]
+>> (warn_slowpath_fmt+0x30/0x40)
+>> [<c00191bc>] (warn_slowpath_fmt) from [<c036eaa0>] (wait_op_done+0xf0/0x114)
+>> [<c036eaa0>] (wait_op_done) from [<c0369698>] (nand_scan_ident+0xdc/0x1560)
+>> [<c0369698>] (nand_scan_ident) from [<c036e6a8>] (mxcnd_probe+0x378/0x5c0)
+>> [<c036e6a8>] (mxcnd_probe) from [<c03081a4>] (platform_drv_probe+0x44/0xac)
+>> [<c03081a4>] (platform_drv_probe) from [<c0306654>]
+>> (driver_probe_device+0x180/0x2c4)
+>> [<c0306654>] (driver_probe_device) from [<c0306824>]
+>> (__driver_attach+0x8c/0x90)
+>> [<c0306824>] (__driver_attach) from [<c0304a80>]
+>> (bus_for_each_dev+0x70/0xa0)
+>> [<c0304a80>] (bus_for_each_dev) from [<c0305d08>]
+>> (bus_add_driver+0x188/0x210)
+>> [<c0305d08>] (bus_add_driver) from [<c03071d4>] (driver_register+0x78/0xf8)
+>> [<c03071d4>] (driver_register) from [<c00095e0>]
+>> (do_one_initcall+0x84/0x1f0)
+>> [<c00095e0>] (do_one_initcall) from [<c071bd24>]
+>> (kernel_init_freeable+0x108/0x1c8)
+>> [<c071bd24>] (kernel_init_freeable) from [<c0541a0c>] (kernel_init+0x8/0xec)
+>> [<c0541a0c>] (kernel_init) from [<c000a340>] (ret_from_fork+0x14/0x34)
+>> ---[ end trace 13248cb1a1bbcb9c ]---
+>>
+>> <<Delay happens here>>
+>>
+>> nand: No NAND device found
+>> ...
+>>
+>> Without this patch, the delay is around 2 seconds, with this patch it
+>> is 10+. Any idea what would cause it? Are you removing the NAND from
+>> DTS for your testing and do we not care about these errors paths?
+>>
+>> Regards,
+>> Peter
+>>
+>> The kernel I am testing with is 3.19.0 but without without DTS tree.
+>> Linux version 3.19.0 (jcd@jcd-U31SG) (gcc version 4.6.3 (GCC) ) #2 Mon Jun
+>> 22 00:32:04 CEST 2015
+>>
+>> So I am not up to date on this side and I might not test the same devices as
+>> you do as I generated a "minimal" kernel for my test.
+>>
 >
-> IMX31_CCM class is the concrete class implementing CCM for i.MX31 SOC.
+> So the DTB+defconfig boot is actually in pretty good shape. That NAND
+> thing is the only real bootlog issue. All other missing peripherals
+> fail gracefully.
 >
-> For now the i.MX25 continues to use the i.MX31 CCM implementation.
->
-> An i.MX25 specific CCM will be introduced in a later patch.
->
-> We also rework initialization to stop using deprecated sysbus device init
->
-> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
-> Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 
-Tested-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+In my runtime linux kernel tests, I disable CONFIG_MTD_NAND_MXC to avoid
+the nand problem - both the log message and the long boot time.
 
-> ---
+Guenter
+
+>> Anyway, testing the timer code I found that running "sleep 60" on both PTF
+>> doesn't give the expected 60 seconds in "real world time":
+>>
+>> On i.MX31 (using i.MX31 CCM) => 47 seconds
 >
-> Changes since v1:
->  * None
+>> On i.MX25 (using i.MX31 CCM) => 52 seconds (before change. close enough?)
 >
-> Changes since v2:
->  * We moved to an inheritance QOM scheme
+> Confirmed this result, exactly the same here.
 >
-> Changes since v3:
->  * Rework logging based on comment on i.MX25 CCM patch.
->  * Change abstract class function parameter to abstract class type instead
->    of DEVICE type.
->  * EPIT and GPT timers use abstract class instead of DEVICE class.
+>> On i.MX25 (using i.MX25 CCM) => 80 seconds
+>>
+>> Another indication, the bogomips:
+>>
+>> On i.MX31 (using i.MX31 CCM) => 78
+>> On i.MX25 (using i.MX31 CCM) => 87 (before change. close enough?)
+>> On i.MX25 (using i.MX25 CCM) => 133
+>>
 >
->  hw/arm/fsl-imx25.c          |   6 +-
->  hw/arm/fsl-imx31.c          |   6 +-
->  hw/misc/Makefile.objs       |   1 +
->  hw/misc/imx31_ccm.c         | 306 ++++++++++++++++++++++++++++++++++++++++++++
->  hw/misc/imx_ccm.c           | 226 +++-----------------------------
->  include/hw/arm/fsl-imx25.h  |   4 +-
->  include/hw/arm/fsl-imx31.h  |   4 +-
->  include/hw/misc/imx31_ccm.h |  64 +++++++++
->  include/hw/misc/imx_ccm.h   |  69 ++++------
->  include/hw/timer/imx_epit.h |   5 +-
->  include/hw/timer/imx_gpt.h  |   5 +-
->  11 files changed, 428 insertions(+), 268 deletions(-)
->  create mode 100644 hw/misc/imx31_ccm.c
->  create mode 100644 include/hw/misc/imx31_ccm.h
+> I wouldn't worry about this, this is rarely accurate in QEMU.
 >
-> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-> index e1cadac..9f302ed 100644
-> --- a/hw/arm/fsl-imx25.c
-> +++ b/hw/arm/fsl-imx25.c
-> @@ -38,7 +38,7 @@ static void fsl_imx25_init(Object *obj)
->      object_initialize(&s->avic, sizeof(s->avic), TYPE_IMX_AVIC);
->      qdev_set_parent_bus(DEVICE(&s->avic), sysbus_get_default());
+> Regards,
+> Peter
 >
-> -    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX_CCM);
-> +    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX31_CCM);
->      qdev_set_parent_bus(DEVICE(&s->ccm), sysbus_get_default());
+>> So, yes, for some reason "time goes slower" after switching to i.MX25 CCM
+>> ... (but it was also going too fast before with i.MX31 CCM)
+>>
+>> As the CCM doesn't really provide any clock (just a clock value) something
+>> must not be right in the way the i.MX GPT timer is computing time.
+>>
+>> I need to look after this.
+>>
+>> JC
+>>
+>> ---
+>>
+>> Changes since v1:
+>>   * rework loging to match other i.MX drivers
+>>
+>> Changes since v2:
+>>   * We moved to an inheritance QOM scheme
+>>
+>> Changes since v3:
+>>   * Rework logging based on comments.
+>>
+>>   hw/arm/fsl-imx25.c          |   2 +-
+>>   hw/misc/Makefile.objs       |   1 +
+>>   hw/misc/imx25_ccm.c         | 276
+>> ++++++++++++++++++++++++++++++++++++++++++++
+>>   include/hw/arm/fsl-imx25.h  |   4 +-
+>>   include/hw/misc/imx25_ccm.h |  59 ++++++++++
+>>   5 files changed, 339 insertions(+), 3 deletions(-)
+>>   create mode 100644 hw/misc/imx25_ccm.c
+>>   create mode 100644 include/hw/misc/imx25_ccm.h
+>>
+>>
 >
->      for (i = 0; i < FSL_IMX25_NUM_UARTS; i++) {
-> @@ -150,7 +150,7 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
->              { FSL_IMX25_GPT4_ADDR, FSL_IMX25_GPT4_IRQ }
->          };
->
-> -        s->gpt[i].ccm = DEVICE(&s->ccm);
-> +        s->gpt[i].ccm = IMX_CCM(&s->ccm);
->
->          object_property_set_bool(OBJECT(&s->gpt[i]), true, "realized", &err);
->          if (err) {
-> @@ -173,7 +173,7 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
->              { FSL_IMX25_EPIT2_ADDR, FSL_IMX25_EPIT2_IRQ }
->          };
->
-> -        s->epit[i].ccm = DEVICE(&s->ccm);
-> +        s->epit[i].ccm = IMX_CCM(&s->ccm);
->
->          object_property_set_bool(OBJECT(&s->epit[i]), true, "realized", &err);
->          if (err) {
-> diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-> index 53d4473..abdea06 100644
-> --- a/hw/arm/fsl-imx31.c
-> +++ b/hw/arm/fsl-imx31.c
-> @@ -35,7 +35,7 @@ static void fsl_imx31_init(Object *obj)
->      object_initialize(&s->avic, sizeof(s->avic), TYPE_IMX_AVIC);
->      qdev_set_parent_bus(DEVICE(&s->avic), sysbus_get_default());
->
-> -    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX_CCM);
-> +    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX31_CCM);
->      qdev_set_parent_bus(DEVICE(&s->ccm), sysbus_get_default());
->
->      for (i = 0; i < FSL_IMX31_NUM_UARTS; i++) {
-> @@ -128,7 +128,7 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
->                                              serial_table[i].irq));
->      }
->
-> -    s->gpt.ccm = DEVICE(&s->ccm);
-> +    s->gpt.ccm = IMX_CCM(&s->ccm);
->
->      object_property_set_bool(OBJECT(&s->gpt), true, "realized", &err);
->      if (err) {
-> @@ -150,7 +150,7 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
->              { FSL_IMX31_EPIT2_ADDR, FSL_IMX31_EPIT2_IRQ },
->          };
->
-> -        s->epit[i].ccm = DEVICE(&s->ccm);
-> +        s->epit[i].ccm = IMX_CCM(&s->ccm);
->
->          object_property_set_bool(OBJECT(&s->epit[i]), true, "realized", &err);
->          if (err) {
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index aeb6b7d..c77f3e3 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -26,6 +26,7 @@ obj-$(CONFIG_NSERIES) += cbus.o
->  obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
->  obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o
->  obj-$(CONFIG_IMX) += imx_ccm.o
-> +obj-$(CONFIG_IMX) += imx31_ccm.o
->  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
->  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
->  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
-> diff --git a/hw/misc/imx31_ccm.c b/hw/misc/imx31_ccm.c
-> new file mode 100644
-> index 0000000..81245d4
-> --- /dev/null
-> +++ b/hw/misc/imx31_ccm.c
-> @@ -0,0 +1,306 @@
-> +/*
-> + * IMX31 Clock Control Module
-> + *
-> + * Copyright (C) 2012 NICTA
-> + * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + *
-> + * To get the timer frequencies right, we need to emulate at least part of
-> + * the i.MX31 CCM.
-> + */
-> +
-> +#include "hw/misc/imx31_ccm.h"
-> +
-> +#define CKIH_FREQ 26000000 /* 26MHz crystal input */
-> +
-> +#ifndef DEBUG_IMX31_CCM
-> +#define DEBUG_IMX31_CCM 0
-> +#endif
-> +
-> +#define DPRINTF(fmt, args...) \
-> +    do { \
-> +        if (DEBUG_IMX31_CCM) { \
-> +            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX31_CCM, \
-> +                                             __func__, ##args); \
-> +        } \
-> +    } while (0)
-> +
-> +static char const *imx31_ccm_reg_name(uint32_t reg)
-> +{
-> +    switch (reg) {
-> +    case 0: /* CCMR */
-> +        return "CCMR";
-> +    case 1:
-> +        return "PDR0";
-> +    case 2:
-> +        return "PDR1";
-> +    case 4:
-> +        return "MPCTL";
-> +    case 6:
-> +        return "SPCTL";
-> +    case 8:
-> +        return "CGR0";
-> +    case 9:
-> +        return "CGR1";
-> +    case 10:
-> +        return "CGR2";
-> +    case 18:
-> +        return "LTR1";
-> +    case 23:
-> +        return "PMCR0";
-> +    default:
-> +        return "???";
-> +    }
-> +}
-> +
-> +static const VMStateDescription vmstate_imx31_ccm = {
-> +    .name = TYPE_IMX31_CCM,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(ccmr, IMX31CCMState),
-> +        VMSTATE_UINT32(pdr0, IMX31CCMState),
-> +        VMSTATE_UINT32(pdr1, IMX31CCMState),
-> +        VMSTATE_UINT32(mpctl, IMX31CCMState),
-> +        VMSTATE_UINT32(spctl, IMX31CCMState),
-> +        VMSTATE_UINT32_ARRAY(cgr, IMX31CCMState, 3),
-> +        VMSTATE_UINT32(pmcr0, IMX31CCMState),
-> +        VMSTATE_UINT32(pmcr1, IMX31CCMState),
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
-> +
-> +static uint32_t imx31_ccm_get_ref_clk(IMXCCMState *dev)
-> +{
-> +    IMX31CCMState *s = IMX31_CCM(dev);
-> +
-> +    DPRINTF("()\n");
-> +
-> +    if ((s->ccmr & CCMR_PRCS) == 2) {
-> +        return CKIL_FREQ * 1024;
-> +    } else {
-> +        return CKIH_FREQ;
-> +    }
-> +}
-> +
-> +static uint32_t imx31_ccm_get_mcu_clk(IMXCCMState *dev)
-> +{
-> +    IMX31CCMState *s = IMX31_CCM(dev);
-> +
-> +    DPRINTF("()\n");
-> +
-> +    if ((s->ccmr & CCMR_MDS) || !(s->ccmr & CCMR_MPE)) {
-> +        return imx31_ccm_get_ref_clk(dev);
-> +    } else {
-> +        return imx_ccm_calc_pll(s->mpctl, imx31_ccm_get_ref_clk(dev));
-> +    }
-> +}
-> +
-> +static uint32_t imx31_ccm_get_hsp_clk(IMXCCMState *dev)
-> +{
-> +    IMX31CCMState *s = IMX31_CCM(dev);
-> +
-> +    DPRINTF("()\n");
-> +
-> +    return imx31_ccm_get_mcu_clk(dev) / (1 + EXTRACT(s->pdr0, HSP));
-> +}
-> +
-> +static uint32_t imx31_ccm_get_ipg_clk(IMXCCMState *dev)
-> +{
-> +    IMX31CCMState *s = IMX31_CCM(dev);
-> +
-> +    DPRINTF("()\n");
-> +
-> +    return imx31_ccm_get_hsp_clk(dev) / (1 + EXTRACT(s->pdr0, IPG));
-> +}
-> +
-> +static uint32_t imx31_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-> +{
-> +    uint32_t freq = 0;
-> +
-> +    switch (clock) {
-> +    case NOCLK:
-> +        break;
-> +    case CLK_MCU:
-> +        freq = imx31_ccm_get_mcu_clk(dev);
-> +        break;
-> +    case CLK_HSP:
-> +        freq = imx31_ccm_get_hsp_clk(dev);
-> +        break;
-> +    case CLK_IPG:
-> +        freq = imx31_ccm_get_ipg_clk(dev);
-> +        break;
-> +    case CLK_32k:
-> +        freq = CKIL_FREQ;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: unsupported clock %d\n",
-> +                      TYPE_IMX31_CCM, __func__, clock);
-> +        break;
-> +    }
-> +
-> +    DPRINTF("Clock = %d) = %d\n", clock, freq);
-> +
-> +    return freq;
-> +}
-> +
-> +static void imx31_ccm_reset(DeviceState *dev)
-> +{
-> +    IMX31CCMState *s = IMX31_CCM(dev);
-> +
-> +    DPRINTF("()\n");
-> +
-> +    s->ccmr = 0x074b0b7b;
-> +    s->pdr0 = 0xff870b48;
-> +    s->pdr1 = 0x49fcfe7f;
-> +    s->mpctl = PLL_PD(1) | PLL_MFD(0) | PLL_MFI(6) | PLL_MFN(0);
-> +    s->cgr[0] = s->cgr[1] = s->cgr[2] = 0xffffffff;
-> +    s->spctl = PLL_PD(1) | PLL_MFD(4) | PLL_MFI(0xc) | PLL_MFN(1);
-> +    s->pmcr0 = 0x80209828;
-> +}
-> +
-> +static uint64_t imx31_ccm_read(void *opaque, hwaddr offset, unsigned size)
-> +{
-> +    uint32 value = 0;
-> +    IMX31CCMState *s = (IMX31CCMState *)opaque;
-> +
-> +    switch (offset >> 2) {
-> +    case 0: /* CCMR */
-> +        value = s->ccmr;
-> +        break;
-> +    case 1:
-> +        value = s->pdr0;
-> +        break;
-> +    case 2:
-> +        value = s->pdr1;
-> +        break;
-> +    case 4:
-> +        value = s->mpctl;
-> +        break;
-> +    case 6:
-> +        value = s->spctl;
-> +        break;
-> +    case 8:
-> +        value = s->cgr[0];
-> +        break;
-> +    case 9:
-> +        value = s->cgr[1];
-> +        break;
-> +    case 10:
-> +        value = s->cgr[2];
-> +        break;
-> +    case 18: /* LTR1 */
-> +        value = 0x00004040;
-> +        break;
-> +    case 23:
-> +        value = s->pmcr0;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-> +                      HWADDR_PRIx "\n", TYPE_IMX31_CCM, __func__, offset);
-> +        break;
-> +    }
-> +
-> +    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx31_ccm_reg_name(offset >> 2),
-> +            value);
-> +
-> +    return (uint64_t)value;
-> +}
-> +
-> +static void imx31_ccm_write(void *opaque, hwaddr offset, uint64_t value,
-> +                            unsigned size)
-> +{
-> +    IMX31CCMState *s = (IMX31CCMState *)opaque;
-> +
-> +    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx31_ccm_reg_name(offset >> 2),
-> +            (uint32_t)value);
-> +
-> +    switch (offset >> 2) {
-> +    case 0:
-> +        s->ccmr = CCMR_FPMF | (value & 0x3b6fdfff);
-> +        break;
-> +    case 1:
-> +        s->pdr0 = value & 0xff9f3fff;
-> +        break;
-> +    case 2:
-> +        s->pdr1 = value;
-> +        break;
-> +    case 4:
-> +        s->mpctl = value & 0xbfff3fff;
-> +        break;
-> +    case 6:
-> +        s->spctl = value & 0xbfff3fff;
-> +        break;
-> +    case 8:
-> +        s->cgr[0] = value;
-> +        break;
-> +    case 9:
-> +        s->cgr[1] = value;
-> +        break;
-> +    case 10:
-> +        s->cgr[2] = value;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-> +                      HWADDR_PRIx "\n", TYPE_IMX31_CCM, __func__, offset);
-> +        break;
-> +    }
-> +}
-> +
-> +static const struct MemoryRegionOps imx31_ccm_ops = {
-> +    .read = imx31_ccm_read,
-> +    .write = imx31_ccm_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .valid = {
-> +        /*
-> +         * Our device would not work correctly if the guest was doing
-> +         * unaligned access. This might not be a limitation on the real
-> +         * device but in practice there is no reason for a guest to access
-> +         * this device unaligned.
-> +         */
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +        .unaligned = false,
-> +    },
-> +
-> +};
-> +
-> +static void imx31_ccm_init(Object *obj)
-> +{
-> +    DeviceState *dev = DEVICE(obj);
-> +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-> +    IMX31CCMState *s = IMX31_CCM(obj);
-> +
-> +    memory_region_init_io(&s->iomem, OBJECT(dev), &imx31_ccm_ops, s,
-> +                          TYPE_IMX31_CCM, 0x1000);
-> +    sysbus_init_mmio(sd, &s->iomem);
-> +}
-> +
-> +static void imx31_ccm_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
-> +
-> +    dc->reset = imx31_ccm_reset;
-> +    dc->vmsd = &vmstate_imx31_ccm;
-> +    dc->desc = "i.MX31 Clock Control Module";
-> +
-> +    ccm->get_clock_frequency = imx31_ccm_get_clock_frequency;
-> +}
-> +
-> +static const TypeInfo imx31_ccm_info = {
-> +    .name          = TYPE_IMX31_CCM,
-> +    .parent        = TYPE_IMX_CCM,
-> +    .instance_size = sizeof(IMX31CCMState),
-> +    .instance_init = imx31_ccm_init,
-> +    .class_init    = imx31_ccm_class_init,
-> +};
-> +
-> +static void imx31_ccm_register_types(void)
-> +{
-> +    type_register_static(&imx31_ccm_info);
-> +}
-> +
-> +type_init(imx31_ccm_register_types)
-> diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
-> index 415937f..d8c2c34 100644
-> --- a/hw/misc/imx_ccm.c
-> +++ b/hw/misc/imx_ccm.c
-> @@ -7,15 +7,12 @@
->   * This work is licensed under the terms of the GNU GPL, version 2 or later.
->   * See the COPYING file in the top-level directory.
->   *
-> - * To get the timer frequencies right, we need to emulate at least part of
-> - * the CCM.
-> + * This is an abstract base class used to get a common interface to
-> + * retrieve the CCM frequencies from the various i.MX SOC.
->   */
->
->  #include "hw/misc/imx_ccm.h"
->
-> -#define CKIH_FREQ 26000000 /* 26MHz crystal input */
-> -#define CKIL_FREQ    32768 /* nominal 32khz clock */
-> -
->  #ifndef DEBUG_IMX_CCM
->  #define DEBUG_IMX_CCM 0
->  #endif
-> @@ -28,59 +25,36 @@
->          } \
->      } while (0)
->
-> -static int imx_ccm_post_load(void *opaque, int version_id);
->
-> -static const VMStateDescription vmstate_imx_ccm = {
-> -    .name = TYPE_IMX_CCM,
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> -    .fields = (VMStateField[]) {
-> -        VMSTATE_UINT32(ccmr, IMXCCMState),
-> -        VMSTATE_UINT32(pdr0, IMXCCMState),
-> -        VMSTATE_UINT32(pdr1, IMXCCMState),
-> -        VMSTATE_UINT32(mpctl, IMXCCMState),
-> -        VMSTATE_UINT32(spctl, IMXCCMState),
-> -        VMSTATE_UINT32_ARRAY(cgr, IMXCCMState, 3),
-> -        VMSTATE_UINT32(pmcr0, IMXCCMState),
-> -        VMSTATE_UINT32(pmcr1, IMXCCMState),
-> -        VMSTATE_UINT32(pll_refclk_freq, IMXCCMState),
-> -        VMSTATE_END_OF_LIST()
-> -    },
-> -    .post_load = imx_ccm_post_load,
-> -};
-> -
-> -uint32_t imx_ccm_get_clock_frequency(DeviceState *dev, IMXClk clock)
-> +uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
->  {
-> -    IMXCCMState *s = IMX_CCM(dev);
-> +    IMXCCMClass *klass = IMX_GET_CLASS(dev);
->
-> -    switch (clock) {
-> -    case NOCLK:
-> +    DPRINTF("Clock = %d)\n", clock);
-> +
-> +    if (klass->get_clock_frequency) {
-> +        return klass->get_clock_frequency(dev, clock);
-> +    } else {
->          return 0;
-> -    case CLK_MCU:
-> -        return s->mcu_clk_freq;
-> -    case CLK_HSP:
-> -        return s->hsp_clk_freq;
-> -    case CLK_IPG:
-> -        return s->ipg_clk_freq;
-> -    case CLK_32k:
-> -        return CKIL_FREQ;
->      }
-> -    return 0;
->  }
->
->  /*
->   * Calculate PLL output frequency
->   */
-> -static uint32_t calc_pll(uint32_t pllreg, uint32_t base_freq)
-> +uint32_t imx_ccm_calc_pll(uint32_t pllreg, uint32_t base_freq)
->  {
->      int32_t mfn = MFN(pllreg);  /* Numerator */
->      uint32_t mfi = MFI(pllreg); /* Integer part */
->      uint32_t mfd = 1 + MFD(pllreg); /* Denominator */
->      uint32_t pd = 1 + PD(pllreg);   /* Pre-divider */
->
-> +    DPRINTF("pllreg = %d, base_freq = %d)\n", pllreg, base_freq);
-> +
->      if (mfi < 5) {
->          mfi = 5;
->      }
-> +
->      /* mfn is 10-bit signed twos-complement */
->      mfn <<= 32 - 10;
->      mfn >>= 32 - 10;
-> @@ -89,178 +63,12 @@ static uint32_t calc_pll(uint32_t pllreg, uint32_t base_freq)
->              (mfd * pd)) << 10;
->  }
->
-> -static void update_clocks(IMXCCMState *s)
-> -{
-> -    /*
-> -     * If we ever emulate more clocks, this should switch to a data-driven
-> -     * approach
-> -     */
-> -
-> -    if ((s->ccmr & CCMR_PRCS) == 2) {
-> -        s->pll_refclk_freq = CKIL_FREQ * 1024;
-> -    } else {
-> -        s->pll_refclk_freq = CKIH_FREQ;
-> -    }
-> -
-> -    /* ipg_clk_arm aka MCU clock */
-> -    if ((s->ccmr & CCMR_MDS) || !(s->ccmr & CCMR_MPE)) {
-> -        s->mcu_clk_freq = s->pll_refclk_freq;
-> -    } else {
-> -        s->mcu_clk_freq = calc_pll(s->mpctl, s->pll_refclk_freq);
-> -    }
-> -
-> -    /* High-speed clock */
-> -    s->hsp_clk_freq = s->mcu_clk_freq / (1 + EXTRACT(s->pdr0, HSP));
-> -    s->ipg_clk_freq = s->hsp_clk_freq / (1 + EXTRACT(s->pdr0, IPG));
-> -
-> -    DPRINTF("mcu %uMHz, HSP %uMHz, IPG %uHz\n",
-> -            s->mcu_clk_freq / 1000000,
-> -            s->hsp_clk_freq / 1000000,
-> -            s->ipg_clk_freq);
-> -}
-> -
-> -static void imx_ccm_reset(DeviceState *dev)
-> -{
-> -    IMXCCMState *s = IMX_CCM(dev);
-> -
-> -    s->ccmr = 0x074b0b7b;
-> -    s->pdr0 = 0xff870b48;
-> -    s->pdr1 = 0x49fcfe7f;
-> -    s->mpctl = PLL_PD(1) | PLL_MFD(0) | PLL_MFI(6) | PLL_MFN(0);
-> -    s->cgr[0] = s->cgr[1] = s->cgr[2] = 0xffffffff;
-> -    s->spctl = PLL_PD(1) | PLL_MFD(4) | PLL_MFI(0xc) | PLL_MFN(1);
-> -    s->pmcr0 = 0x80209828;
-> -
-> -    update_clocks(s);
-> -}
-> -
-> -static uint64_t imx_ccm_read(void *opaque, hwaddr offset,
-> -                                unsigned size)
-> -{
-> -    IMXCCMState *s = (IMXCCMState *)opaque;
-> -
-> -    DPRINTF("(offset=0x%" HWADDR_PRIx ")\n", offset);
-> -
-> -    switch (offset >> 2) {
-> -    case 0: /* CCMR */
-> -        DPRINTF(" ccmr = 0x%x\n", s->ccmr);
-> -        return s->ccmr;
-> -    case 1:
-> -        DPRINTF(" pdr0 = 0x%x\n", s->pdr0);
-> -        return s->pdr0;
-> -    case 2:
-> -        DPRINTF(" pdr1 = 0x%x\n", s->pdr1);
-> -        return s->pdr1;
-> -    case 4:
-> -        DPRINTF(" mpctl = 0x%x\n", s->mpctl);
-> -        return s->mpctl;
-> -    case 6:
-> -        DPRINTF(" spctl = 0x%x\n", s->spctl);
-> -        return s->spctl;
-> -    case 8:
-> -        DPRINTF(" cgr0 = 0x%x\n", s->cgr[0]);
-> -        return s->cgr[0];
-> -    case 9:
-> -        DPRINTF(" cgr1 = 0x%x\n", s->cgr[1]);
-> -        return s->cgr[1];
-> -    case 10:
-> -        DPRINTF(" cgr2 = 0x%x\n", s->cgr[2]);
-> -        return s->cgr[2];
-> -    case 18: /* LTR1 */
-> -        return 0x00004040;
-> -    case 23:
-> -        DPRINTF(" pcmr0 = 0x%x\n", s->pmcr0);
-> -        return s->pmcr0;
-> -    default:
-> -        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-> -                      HWADDR_PRIx "\n", TYPE_IMX_CCM, __func__, offset);
-> -        return 0;
-> -    }
-> -}
-> -
-> -static void imx_ccm_write(void *opaque, hwaddr offset,
-> -                          uint64_t value, unsigned size)
-> -{
-> -    IMXCCMState *s = (IMXCCMState *)opaque;
-> -
-> -    DPRINTF("(offset=0x%" HWADDR_PRIx ", value = 0x%x)\n",
-> -            offset, (unsigned int)value);
-> -
-> -    switch (offset >> 2) {
-> -    case 0:
-> -        s->ccmr = CCMR_FPMF | (value & 0x3b6fdfff);
-> -        break;
-> -    case 1:
-> -        s->pdr0 = value & 0xff9f3fff;
-> -        break;
-> -    case 2:
-> -        s->pdr1 = value;
-> -        break;
-> -    case 4:
-> -        s->mpctl = value & 0xbfff3fff;
-> -        break;
-> -    case 6:
-> -        s->spctl = value & 0xbfff3fff;
-> -        break;
-> -    case 8:
-> -        s->cgr[0] = value;
-> -        return;
-> -    case 9:
-> -        s->cgr[1] = value;
-> -        return;
-> -    case 10:
-> -        s->cgr[2] = value;
-> -        return;
-> -
-> -    default:
-> -        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-> -                      HWADDR_PRIx "\n", TYPE_IMX_CCM, __func__, offset);
-> -        return;
-> -    }
-> -    update_clocks(s);
-> -}
-> -
-> -static const struct MemoryRegionOps imx_ccm_ops = {
-> -    .read = imx_ccm_read,
-> -    .write = imx_ccm_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> -};
-> -
-> -static int imx_ccm_init(SysBusDevice *dev)
-> -{
-> -    IMXCCMState *s = IMX_CCM(dev);
-> -
-> -    memory_region_init_io(&s->iomem, OBJECT(dev), &imx_ccm_ops, s,
-> -                          TYPE_IMX_CCM, 0x1000);
-> -    sysbus_init_mmio(dev, &s->iomem);
-> -
-> -    return 0;
-> -}
-> -
-> -static int imx_ccm_post_load(void *opaque, int version_id)
-> -{
-> -    IMXCCMState *s = (IMXCCMState *)opaque;
-> -
-> -    update_clocks(s);
-> -    return 0;
-> -}
-> -
-> -static void imx_ccm_class_init(ObjectClass *klass, void *data)
-> -{
-> -    DeviceClass *dc = DEVICE_CLASS(klass);
-> -    SysBusDeviceClass *sbc = SYS_BUS_DEVICE_CLASS(klass);
-> -
-> -    sbc->init = imx_ccm_init;
-> -    dc->reset = imx_ccm_reset;
-> -    dc->vmsd = &vmstate_imx_ccm;
-> -    dc->desc = "i.MX Clock Control Module";
-> -}
-> -
->  static const TypeInfo imx_ccm_info = {
-> -    .name = TYPE_IMX_CCM,
-> -    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .name          = TYPE_IMX_CCM,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
->      .instance_size = sizeof(IMXCCMState),
-> -    .class_init = imx_ccm_class_init,
-> +    .class_size    = sizeof(IMXCCMClass),
-> +    .abstract      = true,
->  };
->
->  static void imx_ccm_register_types(void)
-> diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
-> index 73f50c6..5c62fde 100644
-> --- a/include/hw/arm/fsl-imx25.h
-> +++ b/include/hw/arm/fsl-imx25.h
-> @@ -19,7 +19,7 @@
->
->  #include "hw/arm/arm.h"
->  #include "hw/intc/imx_avic.h"
-> -#include "hw/misc/imx_ccm.h"
-> +#include "hw/misc/imx31_ccm.h"
->  #include "hw/char/imx_serial.h"
->  #include "hw/timer/imx_gpt.h"
->  #include "hw/timer/imx_epit.h"
-> @@ -44,7 +44,7 @@ typedef struct FslIMX25State {
->      /*< public >*/
->      ARMCPU         cpu;
->      IMXAVICState   avic;
-> -    IMXCCMState    ccm;
-> +    IMX31CCMState  ccm;
->      IMXSerialState uart[FSL_IMX25_NUM_UARTS];
->      IMXGPTState    gpt[FSL_IMX25_NUM_GPTS];
->      IMXEPITState   epit[FSL_IMX25_NUM_EPITS];
-> diff --git a/include/hw/arm/fsl-imx31.h b/include/hw/arm/fsl-imx31.h
-> index 5e8f795..d408abb 100644
-> --- a/include/hw/arm/fsl-imx31.h
-> +++ b/include/hw/arm/fsl-imx31.h
-> @@ -19,7 +19,7 @@
->
->  #include "hw/arm/arm.h"
->  #include "hw/intc/imx_avic.h"
-> -#include "hw/misc/imx_ccm.h"
-> +#include "hw/misc/imx31_ccm.h"
->  #include "hw/char/imx_serial.h"
->  #include "hw/timer/imx_gpt.h"
->  #include "hw/timer/imx_epit.h"
-> @@ -42,7 +42,7 @@ typedef struct FslIMX31State {
->      /*< public >*/
->      ARMCPU         cpu;
->      IMXAVICState   avic;
-> -    IMXCCMState    ccm;
-> +    IMX31CCMState  ccm;
->      IMXSerialState uart[FSL_IMX31_NUM_UARTS];
->      IMXGPTState    gpt;
->      IMXEPITState   epit[FSL_IMX31_NUM_EPITS];
-> diff --git a/include/hw/misc/imx31_ccm.h b/include/hw/misc/imx31_ccm.h
-> new file mode 100644
-> index 0000000..47be0cd
-> --- /dev/null
-> +++ b/include/hw/misc/imx31_ccm.h
-> @@ -0,0 +1,64 @@
-> +/*
-> + * IMX31 Clock Control Module
-> + *
-> + * Copyright (C) 2012 NICTA
-> + * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef IMX31_CCM_H
-> +#define IMX31_CCM_H
-> +
-> +#include "hw/misc/imx_ccm.h"
-> +
-> +/* CCMR */
-> +#define CCMR_FPME (1<<0)
-> +#define CCMR_MPE  (1<<3)
-> +#define CCMR_MDS  (1<<7)
-> +#define CCMR_FPMF (1<<26)
-> +#define CCMR_PRCS (3<<1)
-> +
-> +/* PDR0 */
-> +#define PDR0_MCU_PODF_SHIFT (0)
-> +#define PDR0_MCU_PODF_MASK (0x7)
-> +#define PDR0_MAX_PODF_SHIFT (3)
-> +#define PDR0_MAX_PODF_MASK (0x7)
-> +#define PDR0_IPG_PODF_SHIFT (6)
-> +#define PDR0_IPG_PODF_MASK (0x3)
-> +#define PDR0_NFC_PODF_SHIFT (8)
-> +#define PDR0_NFC_PODF_MASK (0x7)
-> +#define PDR0_HSP_PODF_SHIFT (11)
-> +#define PDR0_HSP_PODF_MASK (0x7)
-> +#define PDR0_PER_PODF_SHIFT (16)
-> +#define PDR0_PER_PODF_MASK (0x1f)
-> +#define PDR0_CSI_PODF_SHIFT (23)
-> +#define PDR0_CSI_PODF_MASK (0x1ff)
-> +
-> +#define EXTRACT(value, name) (((value) >> PDR0_##name##_PODF_SHIFT) \
-> +                              & PDR0_##name##_PODF_MASK)
-> +#define INSERT(value, name) (((value) & PDR0_##name##_PODF_MASK) << \
-> +                             PDR0_##name##_PODF_SHIFT)
-> +
-> +#define TYPE_IMX31_CCM "imx31.ccm"
-> +#define IMX31_CCM(obj) OBJECT_CHECK(IMX31CCMState, (obj), TYPE_IMX31_CCM)
-> +
-> +typedef struct IMX31CCMState {
-> +    /* <private> */
-> +    IMXCCMState parent_obj;
-> +
-> +    /* <public> */
-> +    MemoryRegion iomem;
-> +
-> +    uint32_t ccmr;
-> +    uint32_t pdr0;
-> +    uint32_t pdr1;
-> +    uint32_t mpctl;
-> +    uint32_t spctl;
-> +    uint32_t cgr[3];
-> +    uint32_t pmcr0;
-> +    uint32_t pmcr1;
-> +} IMX31CCMState;
-> +
-> +#endif /* IMX31_CCM_H */
-> diff --git a/include/hw/misc/imx_ccm.h b/include/hw/misc/imx_ccm.h
-> index 09f6248..5c4b795 100644
-> --- a/include/hw/misc/imx_ccm.h
-> +++ b/include/hw/misc/imx_ccm.h
-> @@ -1,5 +1,5 @@
->  /*
-> - * IMX31 Clock Control Module
-> + * IMX Clock Control Module base class
->   *
->   * Copyright (C) 2012 NICTA
->   * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-> @@ -13,33 +13,7 @@
->
->  #include "hw/sysbus.h"
->
-> -/* CCMR */
-> -#define CCMR_FPME (1<<0)
-> -#define CCMR_MPE  (1<<3)
-> -#define CCMR_MDS  (1<<7)
-> -#define CCMR_FPMF (1<<26)
-> -#define CCMR_PRCS (3<<1)
-> -
-> -/* PDR0 */
-> -#define PDR0_MCU_PODF_SHIFT (0)
-> -#define PDR0_MCU_PODF_MASK (0x7)
-> -#define PDR0_MAX_PODF_SHIFT (3)
-> -#define PDR0_MAX_PODF_MASK (0x7)
-> -#define PDR0_IPG_PODF_SHIFT (6)
-> -#define PDR0_IPG_PODF_MASK (0x3)
-> -#define PDR0_NFC_PODF_SHIFT (8)
-> -#define PDR0_NFC_PODF_MASK (0x7)
-> -#define PDR0_HSP_PODF_SHIFT (11)
-> -#define PDR0_HSP_PODF_MASK (0x7)
-> -#define PDR0_PER_PODF_SHIFT (16)
-> -#define PDR0_PER_PODF_MASK (0x1f)
-> -#define PDR0_CSI_PODF_SHIFT (23)
-> -#define PDR0_CSI_PODF_MASK (0x1ff)
-> -
-> -#define EXTRACT(value, name) (((value) >> PDR0_##name##_PODF_SHIFT) \
-> -                              & PDR0_##name##_PODF_MASK)
-> -#define INSERT(value, name) (((value) & PDR0_##name##_PODF_MASK) << \
-> -                             PDR0_##name##_PODF_SHIFT)
-> +#define CKIL_FREQ 32768 /* nominal 32khz clock */
->
->  /* PLL control registers */
->  #define PD(v) (((v) >> 26) & 0xf)
-> @@ -53,39 +27,44 @@
->  #define PLL_MFN(x)              (((x) & 0x3ff) << 0)
->
->  #define TYPE_IMX_CCM "imx.ccm"
-> -#define IMX_CCM(obj) OBJECT_CHECK(IMXCCMState, (obj), TYPE_IMX_CCM)
-> +#define IMX_CCM(obj) \
-> +     OBJECT_CHECK(IMXCCMState, (obj), TYPE_IMX_CCM)
-> +#define IMX_CCM_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(IMXCCMClass, (klass), TYPE_IMX_CCM)
-> +#define IMX_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(IMXCCMClass, (obj), TYPE_IMX_CCM)
->
->  typedef struct IMXCCMState {
->      /* <private> */
->      SysBusDevice parent_obj;
->
->      /* <public> */
-> -    MemoryRegion iomem;
->
-> -    uint32_t ccmr;
-> -    uint32_t pdr0;
-> -    uint32_t pdr1;
-> -    uint32_t mpctl;
-> -    uint32_t spctl;
-> -    uint32_t cgr[3];
-> -    uint32_t pmcr0;
-> -    uint32_t pmcr1;
-> -
-> -    /* Frequencies precalculated on register changes */
-> -    uint32_t pll_refclk_freq;
-> -    uint32_t mcu_clk_freq;
-> -    uint32_t hsp_clk_freq;
-> -    uint32_t ipg_clk_freq;
->  } IMXCCMState;
->
->  typedef enum  {
->      NOCLK,
-> +    CLK_MPLL,
-> +    CLK_UPLL,
->      CLK_MCU,
->      CLK_HSP,
-> +    CLK_MAX,
-> +    CLK_AHB,
->      CLK_IPG,
-> +    CLK_PER,
->      CLK_32k
->  } IMXClk;
->
-> -uint32_t imx_ccm_get_clock_frequency(DeviceState *s, IMXClk clock);
-> +typedef struct IMXCCMClass {
-> +    /* <private> */
-> +    SysBusDeviceClass parent_class;
-> +
-> +    /* <public> */
-> +    uint32_t (*get_clock_frequency)(IMXCCMState *s, IMXClk clk);
-> +} IMXCCMClass;
-> +
-> +uint32_t imx_ccm_calc_pll(uint32_t pllreg, uint32_t base_freq);
-> +
-> +uint32_t imx_ccm_get_clock_frequency(IMXCCMState *s, IMXClk clock);
->
->  #endif /* IMX_CCM_H */
-> diff --git a/include/hw/timer/imx_epit.h b/include/hw/timer/imx_epit.h
-> index c5328ae..0730ac3 100644
-> --- a/include/hw/timer/imx_epit.h
-> +++ b/include/hw/timer/imx_epit.h
-> @@ -31,6 +31,7 @@
->
->  #include "hw/sysbus.h"
->  #include "hw/ptimer.h"
-> +#include "hw/misc/imx_ccm.h"
->
->  /*
->   * EPIT: Enhanced periodic interrupt timer
-> @@ -63,8 +64,8 @@ typedef struct IMXEPITState{
->      /*< public >*/
->      ptimer_state *timer_reload;
->      ptimer_state *timer_cmp;
-> -    MemoryRegion iomem;
-> -    DeviceState *ccm;
-> +    MemoryRegion  iomem;
-> +    IMXCCMState  *ccm;
->
->      uint32_t cr;
->      uint32_t sr;
-> diff --git a/include/hw/timer/imx_gpt.h b/include/hw/timer/imx_gpt.h
-> index 3f02d3b..461adbe 100644
-> --- a/include/hw/timer/imx_gpt.h
-> +++ b/include/hw/timer/imx_gpt.h
-> @@ -31,6 +31,7 @@
->
->  #include "hw/sysbus.h"
->  #include "hw/ptimer.h"
-> +#include "hw/misc/imx_ccm.h"
->
->  /*
->   * GPT : General purpose timer
-> @@ -82,8 +83,8 @@ typedef struct IMXGPTState{
->
->      /*< public >*/
->      ptimer_state *timer;
-> -    MemoryRegion iomem;
-> -    DeviceState *ccm;
-> +    MemoryRegion  iomem;
-> +    IMXCCMState  *ccm;
->
->      uint32_t cr;
->      uint32_t pr;
-> --
-> 2.5.0
->
+

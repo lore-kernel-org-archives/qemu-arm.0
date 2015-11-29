@@ -1,60 +1,75 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1012699obb;
-        Sun, 29 Nov 2015 06:41:32 -0800 (PST)
-X-Received: by 10.55.203.151 with SMTP id u23mr64858771qkl.84.1448808092797;
-        Sun, 29 Nov 2015 06:41:32 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1062239obb;
+        Sun, 29 Nov 2015 08:37:52 -0800 (PST)
+X-Received: by 10.55.20.227 with SMTP id 96mr66663321qku.67.1448815071995;
+        Sun, 29 Nov 2015 08:37:51 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g131si40878799qkb.102.2015.11.29.06.41.32
+        by mx.google.com with ESMTPS id 94si41337708qkt.38.2015.11.29.08.37.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 29 Nov 2015 06:41:32 -0800 (PST)
+        Sun, 29 Nov 2015 08:37:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36494 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=pass header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:36907 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a33AS-0000gU-3w
-	for alex.bennee@linaro.org; Sun, 29 Nov 2015 09:41:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57776)
+	id 1a34z1-0002lR-M8
+	for alex.bennee@linaro.org; Sun, 29 Nov 2015 11:37:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <web@jimmystone.cn>) id 1a2xNK-0003gr-QR
-	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:30:27 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a34z0-0002kb-1w
+	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 11:37:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <web@jimmystone.cn>) id 1a2xNH-0005N6-JG
-	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:30:26 -0500
-Received: from smtpbg202.qq.com ([184.105.206.29]:37973)
+	(envelope-from <peter.maydell@linaro.org>) id 1a34yy-0006VE-QU
+	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 11:37:49 -0500
+Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:33650)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <web@jimmystone.cn>) id 1a2xNH-0005Mp-Bm
-	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 03:30:23 -0500
-X-QQ-GoodBg: 0
-X-QQ-SSF: 00100000000000F0
-X-QQ-FEAT: cjCJQiWPIAsQUCrmZZ2vasW9oNF70DAkOhs9tkX0MgUjr/LJwbnay/AaNo2om
-	mD2krgqzE2RplAliQuv2bY6YHm7Lz6Fm6RCE2BLb2IfRKdZCJCzh01QnoHpjKEzkWQPIzWR
-	T/R+SVrHQFi3J5nmyXo1R+4ic+qc0sTHizlPP8wylHBP3Ld6vNwqpJ3t/i6Hs9Fe76svi2S
-	qytz0NRnqSykkFqcjpyEK1MyChl0yvl259Ps0UGo4+g==
-X-QQ-BUSINESS-ORIGIN: 2
-X-Originating-IP: 192.227.97.24
-X-QQ-STYLE: 
-X-QQ-mid: bizmailfree37t1448785814t6497
-From: "=?ISO-8859-1?B?SmltbXkgU2l0dQ==?=" <web@jimmystone.cn>
-To: "=?ISO-8859-1?B?cWVtdS1hcm0=?=" <qemu-arm@nongnu.org>
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_565AB796_0AA5FC88_3E7E4CFD"
-Content-Transfer-Encoding: 8Bit
-Date: Sun, 29 Nov 2015 16:30:14 +0800
-X-Priority: 3
-Message-ID: <tencent_36F2633E3F3DBE7C54299DA6@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-X-QQ-SENDSIZE: 520
-X-QQ-Bgrelay: 1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 184.105.206.29
-X-Mailman-Approved-At: Sun, 29 Nov 2015 09:41:31 -0500
-Subject: [Qemu-arm] How to get memroy trace in qemu-system-arm or qemu-arm
+	(envelope-from <peter.maydell@linaro.org>) id 1a34yy-0006V4-Hi
+	for qemu-arm@nongnu.org; Sun, 29 Nov 2015 11:37:48 -0500
+Received: by vkca188 with SMTP id a188so34226316vkc.0
+	for <qemu-arm@nongnu.org>; Sun, 29 Nov 2015 08:37:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=jaeQOK5woS/c8nqhjQhErxkhdgy8MbZJjm/LyknAv7M=;
+	b=qShZgpI634UDVE2wXZjhALldW1Beuo9rsurXGe0A0cXgoJm9SOMs5ciJnlcwtkxGWt
+	sgLalMpYJY9ubqXrZkxMLC5HYERAFpaJ6eGu6kVBqyYl+m+8K4N1cC5OXT5ZLDkxDECX
+	TyaVtuyirWalVHw5h2lyTYp3ZuMmo2A+vOMuyBGTTvuTJdYJz0aA7j9wKBB82H5BOUbb
+	OK2vMUn0xbiJnwqw0UgGcYxH4zzhGoHEWKhI2+aHKDVnT9Uu3osIOSUCDPmXkse+UP1h
+	qg8B98c9LfP9LpFiD0p8d2GAoDvAH+LgpiOSTSyqM6tqfWO1+OOPUv2ZhtQMf6Ne3/IO
+	T+sA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=jaeQOK5woS/c8nqhjQhErxkhdgy8MbZJjm/LyknAv7M=;
+	b=eWb6+3V2g7unD9ae8+lx5t2j1re2ihIAyG9cLn+IikO/5/zf/zNqsr2WOi54UliKgM
+	XXUD7+rb/UTvIDdoBz0bRsUPx4ho3sIefNqjafw+7ZxrJp1HBzWH5w68XpNzXycUCV+R
+	jC3zecxDST5+fezbva2jt/R+02Y7rQwBtoyLwFUYvl3jh34Z1UrGkVurj1hmLJgT5wIo
+	O1JJ05EaRJQuDsxTNSCWST5iQqMTyMX+QWPz8PRdpZdRoT5ZjePb4UOqSnJYvfugizVN
+	IVKMw7yNaMbvVlzlq/BF4Pmx5h2FdpNpuiD4MV0HxSXtI57RPP2gionCEVv8R54cau0B
+	upCg==
+X-Gm-Message-State: ALoCoQkuzs+BG1W2EqG9EuFY2Qqe0xxXZfFQADfmto4gI0AmkN/4SWHHGJ5u+5k+OUcUpuNYPAnE
+X-Received: by 10.31.52.211 with SMTP id b202mr49442350vka.82.1448815068119;
+	Sun, 29 Nov 2015 08:37:48 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Sun, 29 Nov 2015 08:37:28 -0800 (PST)
+In-Reply-To: <tencent_36F2633E3F3DBE7C54299DA6@qq.com>
+References: <tencent_36F2633E3F3DBE7C54299DA6@qq.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 29 Nov 2015 16:37:28 +0000
+Message-ID: <CAFEAcA878azNUm4AbhyAw09bUXuDWNqMnx7b+5hEnF7iX8nqWA@mail.gmail.com>
+To: Jimmy Situ <web@jimmystone.cn>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
+	(bad octet value).
+X-Received-From: 2607:f8b0:400c:c05::22c
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-arm] How to get memroy trace in qemu-system-arm or
+	qemu-arm
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -68,42 +83,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Pe/Q7RK9JAXB
+X-TUID: JYGGvVvQcDEg
 
-This is a multi-part message in MIME format.
+On 29 November 2015 at 08:30, Jimmy Situ <web@jimmystone.cn> wrote:
+> I am trying to capture memory access with qemu-system-arm, and I find there
+> is get_phys_addr in target-arm/helper.c
+> So I add a qemu trace event in it. It seems this trace can capture some
+> memroy access. However, the trace address trace doses not make any sence.
+>
+> Do anyone know about this get_phys_addr() function. Does it call by every
+> memory access?
+> If not, how could I capture the memory trace correctly?
 
-------=_NextPart_565AB796_0AA5FC88_3E7E4CFD
-Content-Type: text/plain;
-	charset="ISO-8859-1"
-Content-Transfer-Encoding: base64
+No, get_phys_addr is not called for every access:
+(1) we cache the results of virtual-to-physical lookups in
+a TLB, because they're expensive; subsequent TLB hits won't
+call the function again
+(2) direct physical address accesses won't go through the
+function (for ARM this just means the memory accesses done
+as part of the page table walk)
 
-RGVhciBhbGwsDQoNCkkgYW0gdHJ5aW5nIHRvIGNhcHR1cmUgbWVtb3J5IGFjY2VzcyB3aXRo
-IHFlbXUtc3lzdGVtLWFybSwgYW5kIEkgZmluZCB0aGVyZSBpcyBnZXRfcGh5c19hZGRyIGlu
-IHRhcmdldC1hcm0vaGVscGVyLmMNClNvICBJIGFkZCBhIHFlbXUgdHJhY2UgZXZlbnQgaW4g
-aXQuIEl0IHNlZW1zIHRoaXMgdHJhY2UgY2FuIGNhcHR1cmUgc29tZSAgbWVtcm95IGFjY2Vz
-cy4gSG93ZXZlciwgdGhlIHRyYWNlIGFkZHJlc3MgdHJhY2UgZG9zZXMgbm90IG1ha2UgYW55
-ICBzZW5jZS4NCg0KRG8gYW55b25lIGtub3cgYWJvdXQgdGhpcyBnZXRfcGh5c19hZGRyKCkg
-ZnVuY3Rpb24uIERvZXMgaXQgY2FsbCBieSBldmVyeSBtZW1vcnkgYWNjZXNzPw0KSWYgbm90
-LCBob3cgY291bGQgSSBjYXB0dXJlIHRoZSBtZW1vcnkgdHJhY2UgY29ycmVjdGx5Pw0KDQpU
-aGFua3Mu
+QEMU doesn't currently provide any way of tracing all guest memory
+accesses, I'm afraid -- our design is more aimed at running
+guest code fast, rather than providing detailed information
+on things the guest is doing.
 
-------=_NextPart_565AB796_0AA5FC88_3E7E4CFD
-Content-Type: text/html;
-	charset="ISO-8859-1"
-Content-Transfer-Encoding: base64
-
-RGVhciBhbGwsPGJyPjxicj5JIGFtIHRyeWluZyB0byBjYXB0dXJlIG1lbW9yeSBhY2Nlc3Mg
-d2l0aCBxZW11LXN5c3RlbS1hcm0sIGFuZCBJIGZpbmQgdGhlcmUgaXMgZ2V0X3BoeXNfYWRk
-ciBpbiB0YXJnZXQtYXJtL2hlbHBlci5jPGJyPlNvDQogSSBhZGQgYSBxZW11IHRyYWNlIGV2
-ZW50IGluIGl0LiBJdCBzZWVtcyB0aGlzIHRyYWNlIGNhbiBjYXB0dXJlIHNvbWUgDQptZW1y
-b3kgYWNjZXNzLiBIb3dldmVyLCB0aGUgdHJhY2UgYWRkcmVzcyB0cmFjZSBkb3NlcyBub3Qg
-bWFrZSBhbnkgDQpzZW5jZS48YnI+PGJyPkRvIGFueW9uZSBrbm93IGFib3V0IHRoaXMgZ2V0
-X3BoeXNfYWRkcigpIGZ1bmN0aW9uLiBEb2VzIGl0IGNhbGwgYnkgZXZlcnkgbWVtb3J5IGFj
-Y2Vzcz88YnI+SWYgbm90LCBob3cgY291bGQgSSBjYXB0dXJlIHRoZSBtZW1vcnkgdHJhY2Ug
-Y29ycmVjdGx5Pzxicj48YnI+VGhhbmtzLjxkaXY+PGluY2x1ZGV0YWlsPjwhLS08IVtlbmRp
-Zl0tLT48L2luY2x1ZGV0YWlsPjwvZGl2Pg==
-
-------=_NextPart_565AB796_0AA5FC88_3E7E4CFD--
-
-
-
+thanks
+-- PMM

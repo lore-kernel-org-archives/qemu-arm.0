@@ -1,424 +1,291 @@
-Received: by 10.223.172.38 with SMTP id v35csp3752798wrc;
-        Mon, 18 Sep 2017 06:25:59 -0700 (PDT)
-X-Received: by 10.55.159.81 with SMTP id i78mr20294159qke.81.1505741159197;
-        Mon, 18 Sep 2017 06:25:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505741159; cv=none;
-        d=google.com; s=arc-20160816;
-        b=FAG2DyLqIjBFmz+dfi/QzJdtTPxy2exnQC31av7rujsmLExEuJ7kRl/Io94vnjYB5c
-         mmsS/nPHzoYkKHLZ67lGZj4clJ/eBQArAYE1BMvqLg2flKfdhT3mpSQtKiEDCqSiYMpA
-         xJ3/PPJ9DwMDGJUkckAM6JSGqutjmpVI9z+oG00GfODuSop6AS+Dd6jz64Tiaf8CRW2B
-         CcwROqzjeIzs/7QpIlAuHoVA5xy1BHG64l3CriXIxAkpv9zpWu06ob1wLoe4rbeDSbRp
-         QMtTN9zE+HZZOmT7LiOgS71gi5Rc+6NgLeCMTS36oQMjWXC3wO/KuLZPq3g9lr1sKl92
-         pP0w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=NjTdmSPzoc4IQs40uhCbH2Jy+09Xl+UUf65hb10gcbo=;
-        b=MD+4btHIIyn9jsGvXfMM7MYU8RVysv1rf78mc1GEwtJtHSX/aMz+ezhSeJLMcyTUT2
-         i7ujgVu/MChhZQ4xyKmHQOxXuevFGcY9qR0dpuFwsqo9+r+7zAXWt5u6Q6wYPzitEPZE
-         creNgzOtXjGhX46m3290wLFYAdhfFZIweqSt6gjEsqXP/TLlljs9cYogxHPeSsCyrSSH
-         +GJNTXU1aqUWe8Rl4EC7yY66XU9KXzSemhTbWM7TGn/JnYv6NkDcTfvBEYDXWPXhVVDJ
-         WjMo+9TcIiZNxuMCubvqw+ry1215NRCZAvsWwCeLEGzD0DFbosUiDw/GmXykCHjpg9tN
-         ffjA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n5a0vyrp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1907439obb;
+        Mon, 30 Nov 2015 14:24:54 -0800 (PST)
+X-Received: by 10.55.78.78 with SMTP id c75mr58058393qkb.71.1448922293314;
+        Mon, 30 Nov 2015 14:24:53 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s29si7052495qtk.103.2017.09.18.06.25.58
+        by mx.google.com with ESMTPS id 16si47183143qho.16.2015.11.30.14.24.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 06:25:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Nov 2015 14:24:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n5a0vyrp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36630 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:43657 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dtw3g-0005HD-TA
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 09:25:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52362)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a3WsO-00055u-T3
+	for alex.bennee@linaro.org; Mon, 30 Nov 2015 17:24:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtw3G-00053m-UD
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 09:25:32 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a3Wrz-0004oN-JX
+	for qemu-devel@nongnu.org; Mon, 30 Nov 2015 17:24:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sundeep.lkml@gmail.com>) id 1dtw3F-0007G1-Ah
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 09:25:30 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:38774)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
-	id 1dtw3A-0007A6-LY; Mon, 18 Sep 2017 09:25:24 -0400
-Received: by mail-vk0-x243.google.com with SMTP id o22so134089vke.5;
-	Mon, 18 Sep 2017 06:25:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=NjTdmSPzoc4IQs40uhCbH2Jy+09Xl+UUf65hb10gcbo=;
-	b=n5a0vyrpB5FcW/7ilEevaQv2ihL+v0/TrHXNFCCMljkru6s94W3mEF0d91733sbLqw
-	Wg83qREtUXN9LwZge4Kcm4aasbBFv3qF1RlRRt40UOvNd14UJ6ywJ5HHSKdMMOmiAlXd
-	ld5iUkygmyydMa5QnkyiSFSgRgiAt97bYFqQcdBmyy8lbrU6Sm4FtuxetYvYWNjvtM6Y
-	QUQe0Dqs9pQzfGsxw5qmf+eldIHkyWCWzbVLWrf6l8yaSiyk95Pf8YcLjd5u9+oIRQTo
-	PJeYJyB6wtRdKSWWxWo1l+NwE/bcnex+mF4ezILsW7GYJvIBlvTM8Kogar1kcS2tIANR
-	RdUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=NjTdmSPzoc4IQs40uhCbH2Jy+09Xl+UUf65hb10gcbo=;
-	b=gt7cAH1H8HT7edFgPOnurGgHBXdyhaKo6YEFYgUV+35Yy0Olb9EchOKkLq8dK1EMnY
-	DiAIMSt6+LCPXHR0c1XKDfwTHcJRko+8RBX/IS5DcVtYkFjH3pqmgjujLqwJ1TjuL73b
-	R5q0XIAUeVqxyipKswY9IYbcISRoH+9DQDPEsWVstmg/vPmvWtnyzEgisJdoFivuVR9P
-	FAIvbX84PvasoG+LpkFY94hURFej31wipn7kI+PrItX0i8F5cqOEYk5m/teLI3t4TvW7
-	du/lOOUh1fbBvwbLtbBwSnF3yUELdZHq8IsWccuhR/TWmbeMfpXbEGWrEr2m+VlmCrxr
-	Gs3g==
-X-Gm-Message-State: AHPjjUjFyL52ZaTmdotGQofjbYmyFhHLYEeQ8sORtbXWTrcf9WypwFgt
-	e3xv+oeuNDYlMRkQnH97ZrkkajnUeECR0jGhJFk=
-X-Google-Smtp-Source: AOwi7QCiGQz72z9r3hS3ixkKC+PJ+dh0bZSWUFcS2MGUtlJZelki3S8p47ko9/Wje25TL5/hRajIXM0fJPHQflnotIw=
-X-Received: by 10.31.160.204 with SMTP id j195mr25443635vke.172.1505741123684; 
-	Mon, 18 Sep 2017 06:25:23 -0700 (PDT)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a3Wrw-00009K-AW
+	for qemu-devel@nongnu.org; Mon, 30 Nov 2015 17:24:27 -0500
+Received: from mail-bn1bon0145.outbound.protection.outlook.com
+	([157.56.111.145]:41408
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a3Wrv-00008n-Ml
+	for qemu-devel@nongnu.org; Mon, 30 Nov 2015 17:24:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=v7h920vdKPR7XPBU2TIlfwLi//m0Vmi0LSnF7Bepvp4=;
+	b=WTgHljqd/Av/jIRLjYkr0Zt49uJjLDxfh0luSx4GDL9OfZn4NE/DprLqCgGrTOvlx5eSdawGF22a40/3laWaT8+BRwSKuuKoBo09wQnH7uPHssxCD6+zfERxTFSUSTFQEazx8J41e3C5VXkKkoPTPf+QtR9s4PBrt4gF0txWY1s=
+Authentication-Results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:5::724)
+	by BY2PR0301MB2037.namprd03.prod.outlook.com (10.163.196.151) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.331.20; Mon, 30 Nov 2015 22:24:20 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 30 Nov 2015 14:23:58 -0800
+Message-ID: <1448922238-5696-1-git-send-email-Andrew.Baumann@microsoft.com>
+X-Mailer: git-send-email 2.5.1
 MIME-Version: 1.0
-Received: by 10.176.66.68 with HTTP; Mon, 18 Sep 2017 06:25:23 -0700 (PDT)
-In-Reply-To: <CAFEAcA9vydmYr81oMazziyi409S+DpQf+RGaCTHfRxXhPj-aYw@mail.gmail.com>
-References: <1505494753-10837-1-git-send-email-sundeep.lkml@gmail.com>
-	<1505494753-10837-3-git-send-email-sundeep.lkml@gmail.com>
-	<2c6a4136-fb80-2000-940c-1df5e718cbf1@amsat.org>
-	<CALHRZurRLysJCRwvm+SbJUn8YBAst_Q38RCzJkmT4z=mfnYuiQ@mail.gmail.com>
-	<CAFEAcA9vydmYr81oMazziyi409S+DpQf+RGaCTHfRxXhPj-aYw@mail.gmail.com>
-From: sundeep subbaraya <sundeep.lkml@gmail.com>
-Date: Mon, 18 Sep 2017 18:55:23 +0530
-Message-ID: <CALHRZuoMibZoUf5BSqMDyY9zknui-6Jc507-c=EJ03XoV0fibQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="001a114696f6cd0e4f055976ac9c"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c05::243
-Subject: Re: [Qemu-arm] [Qemu devel v9 PATCH 2/5] msf2: Microsemi
- Smartfusion2 System Register block
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+Content-Type: text/plain
+X-Originating-IP: [2001:4898:80e8:5::724]
+X-ClientProxiedBy: CY1PR21CA0033.namprd21.prod.outlook.com (25.161.247.43) To
+	BY2PR0301MB2037.namprd03.prod.outlook.com (25.163.196.151)
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0301MB2037;
+	2:3dJ+r4S4yYMTo0CA3cp9hjSB3t7DnvVg+YBYMu4ixpCZVq9Q2lkN4tIbc9hdZO96h3X4CnwWrd9PBiod+vIXv+nuvsIeaGmrdWWy9/4tn3uGH4ccsjYAfjJoZ65sqe7xSvRPQX6tbOu+kFJgmwOnpA==;
+	3:omo5AgYbPVbpO+4AmYggyGYDBkKSBMY1eCRn2B+GBqwIOIV1LOz0eLGNXrKAlnt8r+e9+hcq0fxmPpKCRj6IOVs0k4ZVDCUn1LI/2NebG3bsa5n0YqOsCB7CdwCyykgl;
+	25:JDw8e329KZToiWEHGUXvEJ5O80L5z8fO6fRgwL3QJdP3F/nE22eNCujpWCxxVTY8j5KnmBbqBgSlWCwcxqZf0Ym8+HV8KVlHMRr6CzNkxSTIUSA4kWawSIcJi7ierOYpl5y0IopYLQodR90AI8DhKzQd+yL/x2S1bBT8covcsoH13SxK4n6W4F3EsBdaeal1P2oQty9tbCbPnEosbv+MkpSJshAk5T3QdL4cTEH8+jnyPWzoWPiwuj0DCFcYAO/IMUyxRbsIR8j9bKFIvHXsvA==
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BY2PR0301MB2037;
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0301MB2037;
+	20:fi5stkLTz0wjco+/smAc/SoB1FuchX8JZccDbMEj1wWqjtpLarftWFMa8WSalw1SWaaqo9CWM5h5q+jeaGkQVtZxZaOzooqHFHdSJo3G7gNhujCoqemlbkGJJvqJDIgcKMyO+idy4MB6VH29sVNUJMMPkYn+1nWdgSYaLblvQ4HGmIJpmQOv6EOipu9+oXLTqU2zRDPVeYrcDr13gJaT2RoG5UVBFLJAptl0G9w33TpK6/iQX2T1+aHsIpBy0oYFhfJQQ0QOkTmpApnpYIMfRauOTjogP7zj/kVSjOQ9uvpW0eM29I4kXlWo0R1v8I0oR5enc3WgMozA3bMtjlZkwj2ixmNBnnfvv5XrAembFfWfJ/kw8NH394HociKnZPmcmzx7ksigZGv4wWEQ3pIn7oTmXp6jKTI1ozFFNhYwjkoBeh/jnMQnKNu6Q+A4FXbr5g1T27qXUKaxO0CQzxuHTQz2Lm5XxkQg5dltSMtNRDnBkgwuNYvwkTCrG0j1VEgu;
+	4:ntoDIREGOnpyXUtnMFRwYqQw/bYUfvZ0AnN/z8a1u2Rz0vtCBb9ho/3geB3sL2sJ4RVl9GCCEqsNcW9qm2NWDQB1c4T6/Bt+t9cHIvcw/yC+QySHOGhAhtdAXSj6oaposI3m1J7DWQ0mSXs+oF3ZD3aDDYSXwxG3eCdC/vX6+vl3cFRZ+vs2kGEekiJRwZkqVIWvIr/zZnSnffPowuB78hfSY5I0DQGLWLnHaNT4fTLAtyVsCQkgoLYAyk0/fpaejZOVyRZq/HZvivr/cQ5RV2xL9dnu5jrGgjAVxzanBGQ0MliZVS5SLou3LiIrm0YtLGWAN1UhF2iIyQSzDZMi8gFlGXJvRSd8vw8tIw5s9dO93dCEcqjk6AskB5LSGfPeIAR86v7RZ+usnWLGDsWNvgGtK7R+7EatjMgd3imoaSHq06VcGTXjBby2bgVEDUHb
+X-Microsoft-Antispam-PRVS: <BY2PR0301MB2037AD489081E1C0089582409E000@BY2PR0301MB2037.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(108003899814671);
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(520078)(5005006)(8121501046)(10201501046)(3002001);
+	SRVR:BY2PR0301MB2037; BCL:0; PCL:0; RULEID:;
+	SRVR:BY2PR0301MB2037; 
+X-Forefront-PRVS: 0776C39A48
+X-Forefront-Antispam-Report: SFV:NSPM;
+	SFS:(10019020)(6009001)(199003)(189002)(5008740100001)(5005710100001)(6116002)(19580405001)(19580395003)(40100003)(87976001)(229853001)(50226001)(97736004)(101416001)(47776003)(110136002)(2351001)(586003)(81156007)(5001960100002)(36756003)(189998001)(77096005)(10290500002)(5004730100002)(107886002)(1096002)(106356001)(50986999)(92566002)(4001430100002)(10090500001)(5003940100001)(105586002)(42186005)(48376002)(86362001)(122386002)(50466002)(86612001)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BY2PR0301MB2037;
+	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
+Received-SPF: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BY2PR0301MB2037;
+	23:NeVEo5MLkCfQ1iIuKrnOO3ouHkmuKDLCnRLYQ5C?=
+	=?us-ascii?Q?ppoc6sJXs8FImsAlKZWGOaIeNpW7qo69NiD6VpOZrnePiFvp3b2RqLOalUAm?=
+	=?us-ascii?Q?GUru4IKHOJUCveb2679rLqHHhW6zOcYXw60818SiMuDP4wnQioNvUms2a+hz?=
+	=?us-ascii?Q?4+1VStMVsSMHh3Nl71CqQTeGFmliXd2Z42pDoH/YCok0puabg8xhEYHXc/WQ?=
+	=?us-ascii?Q?5JXnyfKlg1jlzIU8zalCheUagZf8qZfn+iDfEIxW9o//mFGryMVq5L6yRFnM?=
+	=?us-ascii?Q?iKqY/H5r11qmgeSNq7eVXwrO5RTuEvfTGEyMGrUnBSUK5nu7ft2YoAk9UMR7?=
+	=?us-ascii?Q?kubzRXwdUYwAlvtwbyM3AR5kps/03TnAerQzuEow0dWDs73GP2rXt6zkWGHh?=
+	=?us-ascii?Q?h+vG7rDhyqMehUxCqRrJQEFzxlDTAyj9/Y4CPNi3pti0QHI/mKu/5MRg7u8x?=
+	=?us-ascii?Q?ilfSL5GLbwQSdqfTSdKWMu3eVbi1B+oYaUIZ60PJzecPJRfAS8zd+kB5l1fH?=
+	=?us-ascii?Q?QB5RPDFhJQIePn6B/Qn+XZdijK4KqHI11Y8bpS2JJr/UbeXm0aKWl7YcOKc5?=
+	=?us-ascii?Q?90senLCS8k0kcLRUo3RoFKUb0fCSZzvDYTdwDXeaWP2jye+tx0nXPohrzYrB?=
+	=?us-ascii?Q?5qkUO3xkQ4TvykggKiJvPOxbWes+kXaZ6ln7Gh1wmEBUaYpTzk2XOxj0hUJp?=
+	=?us-ascii?Q?YQ97DDdKol0PtPcoAkLsNIBQBi0ZTsZgOIe9yv3gw6nE4m4ReKULoAeWojMP?=
+	=?us-ascii?Q?PpKAJisNDyKojcM/rVPXcRAnW2mYtd2jIvnHiJUhVDkK5Z1WKXcVU9C1HZUB?=
+	=?us-ascii?Q?i6xguhDiVgjVefW2Sx5Gu0YUoIw7mCSUQdAbxOQWDrq9b+8O4R1lTbXhi+P7?=
+	=?us-ascii?Q?5E8Y9Ot7dNQk1IND4ruJX4Uhoq10JOijBmwJjkFuQV1ZCrSyZWvJiUJH0DOV?=
+	=?us-ascii?Q?U4TvLxD11jDRavD04Tghaj9vOFRe6yzzQMN9kk4YjrqoPlf7shHze/4J6+hJ?=
+	=?us-ascii?Q?EHj2HtKKV8jIFAFtf1h6IPuHoNbqu52JLM2QF70KyusfDNaDkxHwHMc4Uu0w?=
+	=?us-ascii?Q?M9tgg8gNMf9ZteH5wgnSRthzxr0Y3wqTqPi5GxzuOfIoUoQn1vcl5aKR9rLb?=
+	=?us-ascii?Q?fKQjX/0R2r5M=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; BY2PR0301MB2037;
+	5:ZHJ4MFHDu7eqk3CaE4QTRCx7InwGXZMsnKquB0SEMsC2ugffiGFtp5MvKfd3OCa9kO6ZzGRTbDXlSdUz7zH/qLG/UuGRlBCJyMwaNHMBEEaSQeDdhd9oUUJGh/JJ6dWJ0n4BmLIvmVvk38hs3HpwUA==;
+	24:Apow3C2vgLxRC3hOHT+aDDrME54M+fTi9FkE32HfY44uPVpR+e9HLl1HwibCW7oBV84Uj0rakYFWemkXSpmawzWHsJc7UFY0quY/1PpsnyE=
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2015 22:24:20.7468 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2PR0301MB2037
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.111.145
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Andrew
+	Baumann <Andrew.Baumann@microsoft.com>
+Subject: [Qemu-devel] [PATCH] target-arm: raise exception on misaligned
+	LDREX operands
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n5xEPiScEcZg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2n7XdTXagd4K
 
---001a114696f6cd0e4f055976ac9c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Qemu does not generally perform alignment checks. However, the ARM ARM
+requires implementation of alignment exceptions for a number of cases
+including LDREX, and Windows-on-ARM relies on this.
 
-H Peter,
+This change adds a helper function to raise an alignment exception
+(data abort), a framework for implementing alignment checks in
+translated instructions, and adds one such check to the translation of
+LDREX instruction (for all variants except single-byte loads).
 
-On Mon, Sep 18, 2017 at 4:05 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+---
+I realise this will need to wait until after 2.5, but wanted to get
+the review feedback started. If needed, I can resend this later.
 
-> On 18 September 2017 at 11:17, sundeep subbaraya <sundeep.lkml@gmail.com>
-> wrote:
-> > Hi Philippe,
-> >
-> > On Mon, Sep 18, 2017 at 6:31 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
-at.org
-> >
-> > wrote:
-> >>
-> >> Hi Sundeep, Peter,
-> >>
-> >>
-> >> On 09/15/2017 01:59 PM, Subbaraya Sundeep wrote:
-> >>>
-> >>> Added Sytem register block of Smartfusion2.
-> >>> This block has PLL registers which are accessed by guest.
-> >>>
-> >>> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> >>> Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-> >>> ---
-> >>>   hw/misc/Makefile.objs         |   1 +
-> >>>   hw/misc/msf2-sysreg.c         | 168
-> >>> ++++++++++++++++++++++++++++++++++++++++++
-> >>>   hw/misc/trace-events          |   5 ++
-> >>>   include/hw/misc/msf2-sysreg.h |  77 +++++++++++++++++++
-> >>>   4 files changed, 251 insertions(+)
-> >>>   create mode 100644 hw/misc/msf2-sysreg.c
-> >>>   create mode 100644 include/hw/misc/msf2-sysreg.h
-> >>>
-> >>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> >>> index 29fb922..e8f0a02 100644
-> >>> --- a/hw/misc/Makefile.objs
-> >>> +++ b/hw/misc/Makefile.objs
-> >>> @@ -59,3 +59,4 @@ obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o
-> >>>   obj-$(CONFIG_AUX) +=3D auxbus.o
-> >>>   obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
-> >>>   obj-y +=3D mmio_interface.o
-> >>> +obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o
-> >>> diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c
-> >>> new file mode 100644
-> >>> index 0000000..dc3597b
-> >>> --- /dev/null
-> >>> +++ b/hw/misc/msf2-sysreg.c
-> >>> @@ -0,0 +1,168 @@
-> >>> +/*
-> >>> + * System Register block model of Microsemi SmartFusion2.
-> >>> + *
-> >>> + * Copyright (c) 2017 Subbaraya Sundeep <sundeep.lkml@gmail.com>
-> >>> + *
-> >>> + * This program is free software; you can redistribute it and/or
-> >>> + * modify it under the terms of the GNU General Public License
-> >>> + * as published by the Free Software Foundation; either version
-> >>> + * 2 of the License, or (at your option) any later version.
-> >>> + *
-> >>> + * You should have received a copy of the GNU General Public License
-> >>> along
-> >>> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> >>> + */
-> >>> +
-> >>> +#include "qemu/osdep.h"
-> >>> +#include "qemu/log.h"
-> >>> +#include "hw/misc/msf2-sysreg.h"
-> >>> +#include "trace.h"
-> >>> +
-> >>> +static inline int msf2_divbits(uint32_t div)
-> >>> +{
-> >>> +    int ret =3D 0;
-> >>> +
-> >>> +    switch (div) {
-> >>> +    case 1:
-> >>> +        ret =3D 0;
-> >>> +        break;
-> >>> +    case 2:
-> >>> +        ret =3D 1;
-> >>> +        break;
-> >>> +    case 4:
-> >>> +        ret =3D 2;
-> >>> +        break;
-> >>> +    case 8:
-> >>> +        ret =3D 4;
-> >>> +        break;
-> >>> +    case 16:
-> >>> +        ret =3D 5;
-> >>> +        break;
-> >>> +    case 32:
-> >>> +        ret =3D 6;
-> >>> +        break;
-> >>> +    default:
-> >>> +        break;
-> >>
-> >>
-> >> eh?
-> >>
-> >>> +    }
-> >>> +
-> >>> +    return ret;
-> >>> +}
-> >>> +
-> >>> +static void msf2_sysreg_reset(DeviceState *d)
-> >>> +{
-> >>> +    MSF2SysregState *s =3D MSF2_SYSREG(d);
-> >>> +
-> >>> +    s->regs[MSSDDR_PLL_STATUS_LOW_CR] =3D 0x021A2358;
-> >>> +    s->regs[MSSDDR_PLL_STATUS] =3D 0x3;
-> >>> +    s->regs[MSSDDR_FACC1_CR] =3D msf2_divbits(s->apb0div) << 5 |
-> >>
-> >>
-> >> ctz32(s->apb0div) << 5 ...
-> >
-> >
-> > I will modify like below:
-> > div0 =3D s->apb0div < 8 ? ctz32(s->apb0div) : ctz32(s->apb0div) + 1;
-> > div1 =3D s->apb1div < 8 ? ctz32(s->apb1div) : ctz32(s->apb1div) + 1;
->
-> I think you should keep an msf2_divbits() function for that,
-> even if it's only
->
-> static inline int msf2_divbits(uint32_t div)
-> {
->     int r =3D ctz32(div);
->
->     return (div < 8) ? r : r + 1;
-> }
->
-> Ok will change like this.
+arm_regime_using_lpae_format() is a no-op wrapper I added to export
+regime_using_lpae_format (which is a static inline). Would it be
+preferable to simply export the existing function, and rename it? If
+so, is this still the correct name to use for the function?
 
-Thanks,
-Sundeep
+CONFIG_ALIGNMENT_EXCEPTIONS shows how the check can be conditionally
+enabled, but isn't presently hooked up to any configure mechanism. I
+figured that the overhead of an alignment check in LDREX is not high
+enough to warrant disabling the feature, but if it gets used more
+widely it might be.
 
+The same change is almost certainly applicable to arm64, but I am not
+in a position to test it.
 
-> thanks
-> -- PMM
->
+ target-arm/helper.c    |  8 ++++++++
+ target-arm/helper.h    |  1 +
+ target-arm/internals.h |  3 +++
+ target-arm/op_helper.c | 21 +++++++++++++++++++++
+ target-arm/translate.c | 29 +++++++++++++++++++++++++++++
+ 5 files changed, 62 insertions(+)
 
---001a114696f6cd0e4f055976ac9c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index afc4163..59d5a41 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -5996,6 +5996,14 @@ static inline bool regime_using_lpae_format(CPUARMState *env,
+     return false;
+ }
+ 
++/* Returns true if the translation regime is using LPAE format page tables.
++ * Used when raising alignment exceptions, whose FSR changes depending on
++ * whether the long or short descriptor format is in use. */
++bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
++{
++    return regime_using_lpae_format(env, mmu_idx);
++}
++
+ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+     switch (mmu_idx) {
+diff --git a/target-arm/helper.h b/target-arm/helper.h
+index c2a85c7..16d0137 100644
+--- a/target-arm/helper.h
++++ b/target-arm/helper.h
+@@ -48,6 +48,7 @@ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
+                    i32, i32, i32, i32)
+ DEF_HELPER_2(exception_internal, void, env, i32)
+ DEF_HELPER_4(exception_with_syndrome, void, env, i32, i32, i32)
++DEF_HELPER_2(alignment_exception, void, env, tl)
+ DEF_HELPER_1(wfi, void, env)
+ DEF_HELPER_1(wfe, void, env)
+ DEF_HELPER_1(yield, void, env)
+diff --git a/target-arm/internals.h b/target-arm/internals.h
+index 347998c..17afe2a 100644
+--- a/target-arm/internals.h
++++ b/target-arm/internals.h
+@@ -441,4 +441,7 @@ struct ARMMMUFaultInfo {
+ bool arm_tlb_fill(CPUState *cpu, vaddr address, int rw, int mmu_idx,
+                   uint32_t *fsr, ARMMMUFaultInfo *fi);
+ 
++/* Return true if the translation regime is using LPAE format page tables */
++bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
++
+ #endif
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index 6cd54c8..5c46210 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -376,6 +376,27 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
+     raise_exception(env, excp, syndrome, target_el);
+ }
+ 
++/* Raise a data fault alignment exception for the specified virtual address */
++void HELPER(alignment_exception)(CPUARMState *env, target_ulong vaddr)
++{
++    int target_el = exception_target_el(env);
++    bool same_el = (arm_current_el(env) != target_el);
++
++    env->exception.vaddress = vaddr;
++
++    /* the DFSR for an alignment fault depends on whether we're using
++     * the LPAE long descriptor format, or the short descriptor format */
++    if (arm_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
++        env->exception.fsr = 0x21;
++    } else {
++        env->exception.fsr = 0x1;
++    }
++
++    raise_exception(env, EXCP_DATA_ABORT,
++                    syn_data_abort(same_el, 0, 0, 0, 0, 0x21),
++                    target_el);
++}
++
+ uint32_t HELPER(cpsr_read)(CPUARMState *env)
+ {
+     return cpsr_read(env) & ~(CPSR_EXEC | CPSR_RESERVED);
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 5d22879..c05ea1f 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -37,6 +37,7 @@
+ 
+ #include "trace-tcg.h"
+ 
++#define CONFIG_ALIGNMENT_EXCEPTIONS 1
+ 
+ #define ENABLE_ARCH_4T    arm_dc_feature(s, ARM_FEATURE_V4T)
+ #define ENABLE_ARCH_5     arm_dc_feature(s, ARM_FEATURE_V5)
+@@ -1058,6 +1059,28 @@ static void gen_exception_insn(DisasContext *s, int offset, int excp,
+     s->is_jmp = DISAS_JUMP;
+ }
+ 
++/* Emit an inline alignment check, which raises an exception if the given
++ * address is not aligned according to "size" (which must be a power of 2). */
++static void gen_alignment_check(DisasContext *s, int pc_offset,
++                                target_ulong size, TCGv addr)
++{
++#ifdef CONFIG_ALIGNMENT_EXCEPTIONS
++    TCGLabel *alignok_label = gen_new_label();
++    TCGv tmp = tcg_temp_new();
++
++    /* check alignment, branch to alignok_label if aligned */
++    tcg_gen_andi_tl(tmp, addr, size - 1);
++    tcg_gen_brcondi_tl(TCG_COND_EQ, tmp, 0, alignok_label);
++
++    /* emit alignment exception */
++    gen_set_pc_im(s, s->pc - pc_offset);
++    gen_helper_alignment_exception(cpu_env, addr);
++
++    gen_set_label(alignok_label);
++    tcg_temp_free(tmp);
++#endif
++}
++
+ /* Force a TB lookup after an instruction that changes the CPU state.  */
+ static inline void gen_lookup_tb(DisasContext *s)
+ {
+@@ -7430,6 +7453,12 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+ 
+     s->is_ldex = true;
+ 
++    /* emit alignment check if needed */
++    if (size != 0) {
++        /* NB: all LDREX variants (incl. thumb) occupy 4 bytes */
++        gen_alignment_check(s, 4, (target_ulong)1 << size, addr);
++    }
++
+     switch (size) {
+     case 0:
+         gen_aa32_ld8u(tmp, addr, get_mem_index(s));
+-- 
+2.5.3
 
-<div dir=3D"ltr">H Peter,<div class=3D"gmail_extra"><br><div class=3D"gmail=
-_quote">On Mon, Sep 18, 2017 at 4:05 PM, Peter Maydell <span dir=3D"ltr">&l=
-t;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.mayde=
-ll@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div =
-class=3D"HOEnZb"><div class=3D"h5">On 18 September 2017 at 11:17, sundeep s=
-ubbaraya &lt;<a href=3D"mailto:sundeep.lkml@gmail.com">sundeep.lkml@gmail.c=
-om</a>&gt; wrote:<br>
-&gt; Hi Philippe,<br>
-&gt;<br>
-&gt; On Mon, Sep 18, 2017 at 6:31 AM, Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
-ef=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt;<br>
-&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; Hi Sundeep, Peter,<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; On 09/15/2017 01:59 PM, Subbaraya Sundeep wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Added Sytem register block of Smartfusion2.<br>
-&gt;&gt;&gt; This block has PLL registers which are accessed by guest.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Signed-off-by: Subbaraya Sundeep &lt;<a href=3D"mailto:sundeep=
-.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt;<br>
-&gt;&gt;&gt; Reviewed-by: Alistair Francis &lt;<a href=3D"mailto:alistair.f=
-rancis@xilinx.com">alistair.francis@xilinx.com</a>&gt;<br>
-&gt;&gt;&gt; ---<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0|=C2=A0 =C2=A01 +<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0hw/misc/msf2-sysreg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 168<br>
-&gt;&gt;&gt; ++++++++++++++++++++++++++++++<wbr>++++++++++++<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 |=C2=A0 =C2=A05 ++<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0include/hw/misc/msf2-sysreg.h |=C2=A0 77 +++++++++=
-++++++++++<br>
-&gt;&gt;&gt;=C2=A0 =C2=A04 files changed, 251 insertions(+)<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0create mode 100644 hw/misc/msf2-sysreg.c<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0create mode 100644 include/hw/misc/msf2-sysreg.h<b=
-r>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs<br>
-&gt;&gt;&gt; index 29fb922..e8f0a02 100644<br>
-&gt;&gt;&gt; --- a/hw/misc/Makefile.objs<br>
-&gt;&gt;&gt; +++ b/hw/misc/Makefile.objs<br>
-&gt;&gt;&gt; @@ -59,3 +59,4 @@ obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_tes=
-tdev.o<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0obj-$(CONFIG_AUX) +=3D auxbus.o<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_=
-sdmc.o<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0obj-y +=3D mmio_interface.o<br>
-&gt;&gt;&gt; +obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o<br>
-&gt;&gt;&gt; diff --git a/hw/misc/msf2-sysreg.c b/hw/misc/msf2-sysreg.c<br>
-&gt;&gt;&gt; new file mode 100644<br>
-&gt;&gt;&gt; index 0000000..dc3597b<br>
-&gt;&gt;&gt; --- /dev/null<br>
-&gt;&gt;&gt; +++ b/hw/misc/msf2-sysreg.c<br>
-&gt;&gt;&gt; @@ -0,0 +1,168 @@<br>
-&gt;&gt;&gt; +/*<br>
-&gt;&gt;&gt; + * System Register block model of Microsemi SmartFusion2.<br>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * Copyright (c) 2017 Subbaraya Sundeep &lt;<a href=3D"mailto=
-:sundeep.lkml@gmail.com">sundeep.lkml@gmail.com</a>&gt;<br>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * This program is free software; you can redistribute it and=
-/or<br>
-&gt;&gt;&gt; + * modify it under the terms of the GNU General Public Licens=
-e<br>
-&gt;&gt;&gt; + * as published by the Free Software Foundation; either versi=
-on<br>
-&gt;&gt;&gt; + * 2 of the License, or (at your option) any later version.<b=
-r>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * You should have received a copy of the GNU General Public =
-License<br>
-&gt;&gt;&gt; along<br>
-&gt;&gt;&gt; + * with this program; if not, see &lt;<a href=3D"http://www.g=
-nu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/l=
-icenses/</a>&gt;<wbr>.<br>
-&gt;&gt;&gt; + */<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;qemu/log.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;hw/misc/msf2-sysreg.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;trace.h&quot;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static inline int msf2_divbits(uint32_t div)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 int ret =3D 0;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 switch (div) {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 1:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 0;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 2:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 1;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 4:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 2;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 8:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 4;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 16:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 5;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 case 32:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 ret =3D 6;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 default:<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; eh?<br>
-&gt;&gt;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 return ret;<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void msf2_sysreg_reset(DeviceState *d)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MSF2SysregState *s =3D MSF2_SYSREG(d);<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS_LOW_<wbr>CR] =3D 0=
-x021A2358;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_PLL_STATUS] =3D 0x3;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;regs[MSSDDR_FACC1_CR] =3D msf2_divbits(s-=
-&gt;apb0div) &lt;&lt; 5 |<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; ctz32(s-&gt;apb0div) &lt;&lt; 5 ...<br>
-&gt;<br>
-&gt;<br>
-&gt; I will modify like below:<br>
-&gt; div0 =3D s-&gt;apb0div &lt; 8 ? ctz32(s-&gt;apb0div) : ctz32(s-&gt;apb=
-0div) + 1;<br>
-&gt; div1 =3D s-&gt;apb1div &lt; 8 ? ctz32(s-&gt;apb1div) : ctz32(s-&gt;apb=
-1div) + 1;<br>
-<br>
-</div></div>I think you should keep an msf2_divbits() function for that,<br=
->
-even if it&#39;s only<br>
-<br>
-static inline int msf2_divbits(uint32_t div)<br>
-{<br>
-=C2=A0 =C2=A0 int r =3D ctz32(div);<br>
-<br>
-=C2=A0 =C2=A0 return (div &lt; 8) ? r : r + 1;<br>
-}<br>
-<br></blockquote><div>Ok will change like this.</div><div><br></div><div>Th=
-anks,</div><div>Sundeep</div><div>=C2=A0</div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex=
-">
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div></div>
-
---001a114696f6cd0e4f055976ac9c--

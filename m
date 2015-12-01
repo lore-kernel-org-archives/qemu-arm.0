@@ -1,64 +1,64 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2588116obb;
-        Tue, 1 Dec 2015 12:25:42 -0800 (PST)
-X-Received: by 10.55.82.137 with SMTP id g131mr84201301qkb.66.1449001541527;
-        Tue, 01 Dec 2015 12:25:41 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2588167obb;
+        Tue, 1 Dec 2015 12:25:47 -0800 (PST)
+X-Received: by 10.140.93.52 with SMTP id c49mr83720160qge.101.1449001547436;
+        Tue, 01 Dec 2015 12:25:47 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c187si51705429qhd.24.2015.12.01.12.25.41
+        by mx.google.com with ESMTPS id l130si51707106qhc.36.2015.12.01.12.25.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Dec 2015 12:25:41 -0800 (PST)
+        Tue, 01 Dec 2015 12:25:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54746 helo=lists.gnu.org)
+Received: from localhost ([::1]:54748 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a3rUb-0003LW-0Q
-	for alex.bennee@linaro.org; Tue, 01 Dec 2015 15:25:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42081)
+	id 1a3rUg-0003Pg-Bu
+	for alex.bennee@linaro.org; Tue, 01 Dec 2015 15:25:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1a3rUX-0003Kp-Ny
-	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:38 -0500
+	(envelope-from <jcd@tribudubois.net>) id 1a3rUb-0003Li-4b
+	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1a3rUU-0005Zc-BG
-	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:37 -0500
-Received: from zose-mta02.web4all.fr ([185.49.20.43]:56881)
+	(envelope-from <jcd@tribudubois.net>) id 1a3rUX-0005c1-OV
+	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:41 -0500
+Received: from zose-mta03.web4all.fr ([185.49.20.44]:50305)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <jcd@tribudubois.net>)
-	id 1a3rUT-0005ZE-Nf; Tue, 01 Dec 2015 15:25:34 -0500
+	id 1a3rUX-0005b8-9Q; Tue, 01 Dec 2015 15:25:37 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by zose-mta02.web4all.fr (Postfix) with ESMTP id E5B60432A5;
-	Tue,  1 Dec 2015 21:25:32 +0100 (CET)
-Received: from zose-mta02.web4all.fr ([127.0.0.1])
-	by localhost (zose-mta02.web4all.fr [127.0.0.1]) (amavisd-new,
+	by zose-mta03.web4all.fr (Postfix) with ESMTP id 8227842054;
+	Tue,  1 Dec 2015 21:25:36 +0100 (CET)
+Received: from zose-mta03.web4all.fr ([127.0.0.1])
+	by localhost (zose-mta03.web4all.fr [127.0.0.1]) (amavisd-new,
 	port 10032)
-	with ESMTP id U3LrB8rzTMU1; Tue,  1 Dec 2015 21:25:32 +0100 (CET)
+	with ESMTP id DRxoZ1Ef7Ibx; Tue,  1 Dec 2015 21:25:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by zose-mta02.web4all.fr (Postfix) with ESMTP id 6E72B432A6;
-	Tue,  1 Dec 2015 21:25:32 +0100 (CET)
-X-Virus-Scanned: amavisd-new at zose-mta-02.w4a.fr
-Received: from zose-mta02.web4all.fr ([127.0.0.1])
-	by localhost (zose-mta02.web4all.fr [127.0.0.1]) (amavisd-new,
+	by zose-mta03.web4all.fr (Postfix) with ESMTP id D9601425C6;
+	Tue,  1 Dec 2015 21:25:35 +0100 (CET)
+X-Virus-Scanned: amavisd-new at zose-mta-03.w4a.fr
+Received: from zose-mta03.web4all.fr ([127.0.0.1])
+	by localhost (zose-mta03.web4all.fr [127.0.0.1]) (amavisd-new,
 	port 10026)
-	with ESMTP id j4a7KbIqg8kV; Tue,  1 Dec 2015 21:25:32 +0100 (CET)
+	with ESMTP id JucecrhdVQBk; Tue,  1 Dec 2015 21:25:35 +0100 (CET)
 Received: from localhost.localdomain (smm49-1-78-235-240-156.fbx.proxad.net
 	[78.235.240.156])
-	by zose-mta02.web4all.fr (Postfix) with ESMTPSA id 04867432A5;
-	Tue,  1 Dec 2015 21:25:31 +0100 (CET)
+	by zose-mta03.web4all.fr (Postfix) with ESMTPSA id 7F7CB42054;
+	Tue,  1 Dec 2015 21:25:35 +0100 (CET)
 From: Jean-Christophe Dubois <jcd@tribudubois.net>
 To: qemu-devel@nongnu.org, peter.maydell@linaro.org,
 	crosthwaite.peter@gmail.com, qemu-arm@nongnu.org
-Date: Tue,  1 Dec 2015 21:25:30 +0100
-Message-Id: <edf36adfc0a1a1f4d2994473001549857d7ed192.1449000671.git.jcd@tribudubois.net>
+Date: Tue,  1 Dec 2015 21:25:33 +0100
+Message-Id: <5cf6eb5f7f8abaf56dfd8241a441edf2bed10032.1449000671.git.jcd@tribudubois.net>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <cover.1449000671.git.jcd@tribudubois.net>
 References: <cover.1449000671.git.jcd@tribudubois.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.49.20.43
+X-Received-From: 185.49.20.44
 Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
-Subject: [Qemu-arm] [PATCH v5 1/4] i.MX: Fix i.MX31 default/reset
-	configuration.
+Subject: [Qemu-arm] [PATCH v5 2/4] i.MX: rename i.MX CCM get_clock()
+	function and CLK ID enum names
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,22 +72,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JLGmsphqM7bk
+X-TUID: vOPkVG4fvU7Z
 
-Linux on i.MX31/KZM is expecting the CCM to use the CKIH ref clock instead
-of the CKIL plus the FPM multiplier.
+This is to prepare for CCM code refactoring.
 
-We change the CCMR reg reset value to match linux expected config.
+This is just a bit of function and enum values renaming.
 
-This allow the CCM to provide a 39MHz clk (as expected by linux) instead of
-the actual 50MHz.
-
-With this change the "sleep 60" command on linux is time accurate with
-"real world time".
+We also remove some useless intermediate variables.
 
 Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
-
 Changes since v1:
  * Not present 
   
@@ -95,27 +90,145 @@ Changes since v2:
  * Not present 
 
 Changes since v3:
- * Not present
+ * None
 
 Changes since v4:
- * Not present
+ * None
 
- hw/misc/imx_ccm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/misc/imx_ccm.c         |  8 ++++----
+ hw/timer/imx_epit.c       | 20 +++++++++-----------
+ hw/timer/imx_gpt.c        | 16 ++++++++--------
+ include/hw/misc/imx_ccm.h |  8 ++++----
+ 4 files changed, 25 insertions(+), 27 deletions(-)
 
 diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
-index 4cc2bbc..500dda5 100644
+index 500dda5..1ac697a 100644
 --- a/hw/misc/imx_ccm.c
 +++ b/hw/misc/imx_ccm.c
-@@ -123,7 +123,7 @@ static void imx_ccm_reset(DeviceState *dev)
+@@ -49,18 +49,18 @@ static const VMStateDescription vmstate_imx_ccm = {
+     .post_load = imx_ccm_post_load,
+ };
+ 
+-uint32_t imx_clock_frequency(DeviceState *dev, IMXClk clock)
++uint32_t imx_ccm_get_clock_frequency(DeviceState *dev, IMXClk clock)
  {
      IMXCCMState *s = IMX_CCM(dev);
  
--    s->ccmr = 0x074b0b7b;
-+    s->ccmr = 0x074b0b7d;
-     s->pdr0 = 0xff870b48;
-     s->pdr1 = 0x49fcfe7f;
-     s->mpctl = PLL_PD(1) | PLL_MFD(0) | PLL_MFI(6) | PLL_MFN(0);
+     switch (clock) {
+     case NOCLK:
+         return 0;
+-    case MCU:
++    case CLK_MCU:
+         return s->mcu_clk_freq;
+-    case HSP:
++    case CLK_HSP:
+         return s->hsp_clk_freq;
+-    case IPG:
++    case CLK_IPG:
+         return s->ipg_clk_freq;
+     case CLK_32k:
+         return CKIL_FREQ;
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index 967be4a..50bf83c 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -51,9 +51,9 @@ static char const *imx_epit_reg_name(uint32_t reg)
+  * These are typical.
+  */
+ static const IMXClk imx_epit_clocks[] =  {
+-    0,        /* 00 disabled */
+-    IPG,      /* 01 ipg_clk, ~532MHz */
+-    IPG,      /* 10 ipg_clk_highfreq */
++    NOCLK,    /* 00 disabled */
++    CLK_IPG,  /* 01 ipg_clk, ~532MHz */
++    CLK_IPG,  /* 10 ipg_clk_highfreq */
+     CLK_32k,  /* 11 ipg_clk_32k -- ~32kHz */
+ };
+ 
+@@ -73,20 +73,18 @@ static void imx_epit_set_freq(IMXEPITState *s)
+ {
+     uint32_t clksrc;
+     uint32_t prescaler;
+-    uint32_t freq;
+ 
+     clksrc = extract32(s->cr, CR_CLKSRC_SHIFT, 2);
+     prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, 12);
+ 
+-    freq = imx_clock_frequency(s->ccm, imx_epit_clocks[clksrc]) / prescaler;
++    s->freq = imx_ccm_get_clock_frequency(s->ccm,
++                                imx_epit_clocks[clksrc]) / prescaler;
+ 
+-    s->freq = freq;
++    DPRINTF("Setting ptimer frequency to %u\n", s->freq);
+ 
+-    DPRINTF("Setting ptimer frequency to %u\n", freq);
+-
+-    if (freq) {
+-        ptimer_set_freq(s->timer_reload, freq);
+-        ptimer_set_freq(s->timer_cmp, freq);
++    if (s->freq) {
++        ptimer_set_freq(s->timer_reload, s->freq);
++        ptimer_set_freq(s->timer_cmp, s->freq);
+     }
+ }
+ 
+diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
+index 7257f42..b1893b8 100644
+--- a/hw/timer/imx_gpt.c
++++ b/hw/timer/imx_gpt.c
+@@ -81,8 +81,8 @@ static const VMStateDescription vmstate_imx_timer_gpt = {
+ 
+ static const IMXClk imx_gpt_clocks[] = {
+     NOCLK,    /* 000 No clock source */
+-    IPG,      /* 001 ipg_clk, 532MHz*/
+-    IPG,      /* 010 ipg_clk_highfreq */
++    CLK_IPG,  /* 001 ipg_clk, 532MHz*/
++    CLK_IPG,  /* 010 ipg_clk_highfreq */
+     NOCLK,    /* 011 not defined */
+     CLK_32k,  /* 100 ipg_clk_32k */
+     NOCLK,    /* 101 not defined */
+@@ -93,14 +93,14 @@ static const IMXClk imx_gpt_clocks[] = {
+ static void imx_gpt_set_freq(IMXGPTState *s)
+ {
+     uint32_t clksrc = extract32(s->cr, GPT_CR_CLKSRC_SHIFT, 3);
+-    uint32_t freq = imx_clock_frequency(s->ccm, imx_gpt_clocks[clksrc])
+-                    / (1 + s->pr);
+-    s->freq = freq;
+ 
+-    DPRINTF("Setting clksrc %d to frequency %d\n", clksrc, freq);
++    s->freq = imx_ccm_get_clock_frequency(s->ccm,
++                                imx_gpt_clocks[clksrc]) / (1 + s->pr);
+ 
+-    if (freq) {
+-        ptimer_set_freq(s->timer, freq);
++    DPRINTF("Setting clksrc %d to frequency %d\n", clksrc, s->freq);
++
++    if (s->freq) {
++        ptimer_set_freq(s->timer, s->freq);
+     }
+ }
+ 
+diff --git a/include/hw/misc/imx_ccm.h b/include/hw/misc/imx_ccm.h
+index 0f2e469..09f6248 100644
+--- a/include/hw/misc/imx_ccm.h
++++ b/include/hw/misc/imx_ccm.h
+@@ -80,12 +80,12 @@ typedef struct IMXCCMState {
+ 
+ typedef enum  {
+     NOCLK,
+-    MCU,
+-    HSP,
+-    IPG,
++    CLK_MCU,
++    CLK_HSP,
++    CLK_IPG,
+     CLK_32k
+ } IMXClk;
+ 
+-uint32_t imx_clock_frequency(DeviceState *s, IMXClk clock);
++uint32_t imx_ccm_get_clock_frequency(DeviceState *s, IMXClk clock);
+ 
+ #endif /* IMX_CCM_H */
 -- 
 2.5.0
 

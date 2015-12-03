@@ -1,158 +1,165 @@
-Received: by 10.182.158.201 with SMTP id ww9csp20057obb;
-        Thu, 3 Dec 2015 07:20:08 -0800 (PST)
-X-Received: by 10.55.71.143 with SMTP id u137mr10658863qka.1.1449156008220;
-        Thu, 03 Dec 2015 07:20:08 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v86si8979978qkv.59.2015.12.03.07.20.08
+Received: by 10.182.158.201 with SMTP id ww9csp34492obb;
+        Thu, 3 Dec 2015 07:44:51 -0800 (PST)
+X-Received: by 10.28.47.8 with SMTP id v8mr52226139wmv.30.1449157491112;
+        Thu, 03 Dec 2015 07:44:51 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
+        by mx.google.com with ESMTPS id c125si10008370wmd.11.2015.12.03.07.44.50
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Dec 2015 07:20:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Dec 2015 07:44:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::229 as permitted sender) client-ip=2a00:1450:400c:c09::229;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
-Received: from localhost ([::1]:35970 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4Vfz-0006yi-VP
-	for alex.bennee@linaro.org; Thu, 03 Dec 2015 10:20:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34851)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1a4Vfw-0006rD-U3
-	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 10:20:05 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1a4Vfs-00054O-7X
-	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 10:20:04 -0500
-Received: from mail-wm0-x232.google.com ([2a00:1450:400c:c09::232]:38407)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1a4Vfr-000547-Tv
-	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 10:20:00 -0500
-Received: by wmec201 with SMTP id c201so26708874wme.1
-	for <qemu-arm@nongnu.org>; Thu, 03 Dec 2015 07:19:58 -0800 (PST)
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       dkim=pass header.i=@linaro-org.20150623.gappssmtp.com
+Received: by wmuu63 with SMTP id u63so26628482wmu.0
+        for <alex.bennee@linaro.org>; Thu, 03 Dec 2015 07:44:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro-org.20150623.gappssmtp.com; s=20150623;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=jTSU7/ZNiAY8RTtQhePQoJGbnVNBswNJ5gyVRHEKQ7I=;
-	b=AhaK76NzhxHYRcqGyVAKwtSOy9cqIj8Xa4sfOjWOHG6+5569b6RajGngzKRLUDkoa/
-	nsxxMuSpad7y6G0u+EwEwG+GIi9q290/OhENEFwFMIDpzlpo2quJO1k04DNwLa2lHslI
-	/tXXkY9ETOySZeLMHxgRw+YUxrNP+te4CO0FzsRh6xiAwmiLHC+HVv0+dE6uOe1mS6hW
-	QXXDKtnKNDsHTdZSj/2QY0Bdxsxg/QU2pg5xFkkoPUauCC4PkkE2Ldl4/EuoNUuLSoe5
-	mrDf/95is1AR2Ylz5EWIZX44pH2AAro3z0aUyr0p1o2g0MuE0j5rs2AiegHTI1d9viBR
-	r96A==
+        d=linaro-org.20150623.gappssmtp.com; s=20150623;
+        h=subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=NdOGruPK8iCao+z0RsoJZQXsTw7IUVt4TdZulfP3HAM=;
+        b=k5XEuwwrzzygWdQIc3GJFfuY2RjvbwvcTRyzajymoZPzy3kZLKdyT6912f9r7uGSPL
+         miX+yAko8mnAEAHaxFBCjSg+eBBEae9NRNyX0ORZNRRM5BwjJqlBx2e2zol6cqBOI9Y9
+         0thfV+xn+QoyW6PR6zZeaIntRdlwBaa/1+wBcpxFFRrodOCXMH8Uq5sKjucJyGkpRLfB
+         KpTkEmvZxqBvHeR1a3M5tJzsNdJZiOSkmPL3XrHiMSK7HoKeUPB8/Dy9mLVDc0OuiGEE
+         wBu9PiRUR0l4FouDiRgq79Yq8iW0S6ZQ2dBIXVjajKtv4ElM46Jmf5DNsjxEdMol7n+/
+         toAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=jTSU7/ZNiAY8RTtQhePQoJGbnVNBswNJ5gyVRHEKQ7I=;
-	b=lGlLKlT3qRz1KJdQF+hE+nnqmd0+itrZDWjdcbm68jJU7JUUY0UCC3JO2Pc7EKes+f
-	MJcaYmcDYiar6m9LfE5W2Q/GFmnL1CyMmtvOdpWvon2bzDqoW8uJ3oR8claSL558arny
-	DryIgr2IBYUqERd9DdoMonoZUIEdHS/uyzfpTaXNDHOGqDCtSob9GDek3ufKQ1HZicB7
-	0kaGxG4O3CBrvckziSTG/KsBIstoR6sMmBjDy8y2QJiZTqcZ17loD+CLH7zFMwDA5sW0
-	LpsbVl3/on9KUCGtMsBRVJdMrXlTKrQy/FfR6O6I3LQCTG9B3hulT6NGNa8ps4jYyqsX
-	SyCA==
-X-Gm-Message-State: ALoCoQkNgq+72RxZjEBTXUVzv4YZ7irT7e0TOFfIXGXBTDS3QqustYh1NXExzAIAev9c1mzbOgfJ
-X-Received: by 10.28.175.135 with SMTP id y129mr13613416wme.24.1449155998855; 
-	Thu, 03 Dec 2015 07:19:58 -0800 (PST)
-Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
-	[80.11.198.90]) by smtp.googlemail.com with ESMTPSA id
-	h67sm35873779wmf.17.2015.12.03.07.19.56
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 03 Dec 2015 07:19:57 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, eric.auger@st.com, qemu-devel@nongnu.org, 
-	qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=NdOGruPK8iCao+z0RsoJZQXsTw7IUVt4TdZulfP3HAM=;
+        b=F17PfE+4Bmwf9Zsdwlj1DZbG8+CBg+aeKmigrmpxJ/t6t0XaqeouhuLKyENYEwnJAx
+         fJ+9o3GMU/9yuD9C+bbVI+PqHwDgZm0mFE9349m//MM7B+BOiZrCdUKfSAbE63obrJte
+         QB4/4lhqG9xbBksAKFPsGq3i4GnDXAqvo3qJaK3vLQtAaDJkiNggxXpehbPm3NAVG0rb
+         tuCVqDrUIXbN7C/Fo81ap2Dd8SyaSeNVCPBxeZpa7vP/dMYftYvKEd57BId/vMnTrW3u
+         IQQCO/3GPJ84Zx0mwI8g1xf80XerIMFQu5gAihgiIPxwGaH+Iv52oLRJMey61P3Wczi9
+         vJVQ==
+X-Gm-Message-State: ALoCoQn4tc4sx6qS6fs50bOLXJLuFUdmjKd1H5arWTQF/qno3Ade3Yq+z5D2PllNzwMmMBbd60dG
+X-Received: by 10.28.158.75 with SMTP id h72mr12997016wme.74.1449157490845;
+        Thu, 03 Dec 2015 07:44:50 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.googlemail.com with ESMTPSA id n7sm8449554wmf.21.2015.12.03.07.44.48
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 03 Dec 2015 07:44:49 -0800 (PST)
+Subject: Re: [Qemu-devel] [RESEND RFC 3/6] device_tree: introduce
+ qemu_fdt_node_path
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-	<1447946528-1533-3-git-send-email-eric.auger@linaro.org>
-	<5656E590.3040001@redhat.com>
+ <1447946528-1533-4-git-send-email-eric.auger@linaro.org>
+ <8737vtyngq.fsf@linaro.org>
+Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, peter.maydell@linaro.org,
+ thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
+ patches@linaro.org, suravee.suthikulpanit@amd.com, pbonzini@redhat.com,
+ christoffer.dall@linaro.org
 From: Eric Auger <eric.auger@linaro.org>
-Message-ID: <56605D80.70402@linaro.org>
-Date: Thu, 3 Dec 2015 16:19:28 +0100
+Message-ID: <56606353.2050108@linaro.org>
+Date: Thu, 3 Dec 2015 16:44:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+ Thunderbird/38.3.0
 MIME-Version: 1.0
-In-Reply-To: <5656E590.3040001@redhat.com>
+In-Reply-To: <8737vtyngq.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::232
-Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
-	patches@linaro.org, suravee.suthikulpanit@amd.com,
-	pbonzini@redhat.com, christoffer.dall@linaro.org,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: Re: [Qemu-arm] [Qemu-devel] [RESEND RFC 2/6] device_tree: introduce
- load_device_tree_from_sysfs
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dYzpOvLY/U6W
+Content-Transfer-Encoding: 8bit
+X-TUID: LFTVrXYy1KHV
 
-Hi Thomas, Alex,
-On 11/26/2015 11:57 AM, Thomas Huth wrote:
-> On 19/11/15 16:22, Eric Auger wrote:
->> This function returns the host device tree blob from sysfs
->> (/sys/firmware/devicetree/base).
->>
->> This has a runtime dependency on the dtc binary. This functionality
->> is useful for platform device passthrough where the host device tree
->> needs to be parsed to feed information into the guest device tree.
+On 11/26/2015 01:06 PM, Alex Bennée wrote:
+> 
+> Eric Auger <eric.auger@linaro.org> writes:
+> 
+>> This new helper routine returns the node path of a device
+>> referred to by its name and compat string.
 >>
 >> Signed-off-by: Eric Auger <eric.auger@linaro.org>
 >> ---
 >>  device_tree.c                | 40 ++++++++++++++++++++++++++++++++++++++++
->>  include/sysemu/device_tree.h |  1 +
->>  2 files changed, 41 insertions(+)
+>>  include/sysemu/device_tree.h |  3 +++
+>>  2 files changed, 43 insertions(+)
 >>
 >> diff --git a/device_tree.c b/device_tree.c
->> index a9f5f8e..58a5329 100644
+>> index 58a5329..f184e3c 100644
 >> --- a/device_tree.c
 >> +++ b/device_tree.c
->> @@ -117,6 +117,46 @@ fail:
->>      return NULL;
+>> @@ -171,6 +171,46 @@ static int findnode_nofail(void *fdt, const char *node_path)
+>>      return offset;
 >>  }
->>  
+>>
 >> +/**
->> + * load_device_tree_from_sysfs
+>> + * qemu_fdt_node_path
 >> + *
->> + * extract the dt blob from host sysfs
->> + * this has a runtime dependency on the dtc binary
+>> + * return the node path of a device, referred to by its node name
+>> + * and its compat string
+>> + * fdt: pointer to the dt blob
+>> + * name: name of the device
+>> + * compat: compatibility string of the device
+>> + *
+>> + * returns the node path
 >> + */
->> +void *load_device_tree_from_sysfs(void)
+>> +int qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+>> +                       char **node_path)
 >> +{
->> +    char cmd[] = "dtc -I fs -O dtb /sys/firmware/devicetree/base";
->> +    FILE *pipe;
->> +    void *fdt;
->> +    int ret, actual_dt_size;
+>> +    int offset = 0, len;
+>> +    const char *iter_name;
+>> +    char path[256];
+>> +    int ret;
 >> +
->> +    pipe = popen(cmd, "r");
->> +    if (!pipe) {
->> +        error_report("%s: Error when executing dtc", __func__);
->> +        return NULL;
->> +    }
+>> +    *node_path = NULL;
+>> +    while (1) {
+>> +        offset = fdt_node_offset_by_compatible(fdt, offset, compat);
+>> +        if (offset == -FDT_ERR_NOTFOUND) {
 > 
-> The Device Tree Compiler binary is normally only installed on
-> developer's machines, so I somewhat doubt that it is a good idea to rely
-> on the availability of that binary in QEMU? Maybe you should rather
-> extend libfdt to support such a feature?
+> Is this not the only error code fdt_node_offset_by_compatible() won't
+> return?
+> 
+>> +            break;
+>> +        }
+>> +        iter_name = fdt_get_name(fdt, offset, &len);
+>> +        if (!strncmp(iter_name, name, len)) {
+> 
+> is it possible for fdt_get_name to fail here and give you NULL and -len?
+I agree with both of your comments. Thanks for spotting my wrong
+handling of the errors.
 
-Sorry for the delay and thank you for your review/comments. According to
-your feedbacks I give up my plan about using dtc binary.
-
-Thanks
+Thank you for your time!
 
 Eric
 > 
->  Thomas
+>> +            goto found;
+>> +        }
+>> +    }
+>> +    return offset;
+>> +
+>> +found:
+>> +    ret = fdt_get_path(fdt, offset, path, 256);
+>> +    if (!ret) {
+>> +        *node_path = g_strdup(path);
+>> +    }
+>> +    return ret;
+>> +}
+>> +
+>>  int qemu_fdt_setprop(void *fdt, const char *node_path,
+>>                       const char *property, const void *val, int size)
+>>  {
+>> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+>> index 307e53d..f9e6e6e 100644
+>> --- a/include/sysemu/device_tree.h
+>> +++ b/include/sysemu/device_tree.h
+>> @@ -18,6 +18,9 @@ void *create_device_tree(int *sizep);
+>>  void *load_device_tree(const char *filename_path, int *sizep);
+>>  void *load_device_tree_from_sysfs(void);
+>>
+>> +int qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+>> +                       char **node_path);
+>> +
+>>  int qemu_fdt_setprop(void *fdt, const char *node_path,
+>>                       const char *property, const void *val, int size);
+>>  int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
 > 
-
+> 
+> --
+> Alex Bennée
+> 

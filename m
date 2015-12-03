@@ -1,82 +1,81 @@
-Received: by 10.25.159.19 with SMTP id i19csp1756244lfe;
-        Sun, 17 Jan 2016 23:19:59 -0800 (PST)
-X-Received: by 10.140.139.71 with SMTP id 68mr32077020qhl.51.1453101599886;
-        Sun, 17 Jan 2016 23:19:59 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp175207obb;
+        Thu, 3 Dec 2015 11:55:11 -0800 (PST)
+X-Received: by 10.140.84.202 with SMTP id l68mr13267706qgd.21.1449172511828;
+        Thu, 03 Dec 2015 11:55:11 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 75si29592811qkz.111.2016.01.17.23.19.59
+        by mx.google.com with ESMTPS id w186si10110718qhc.131.2015.12.03.11.55.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Jan 2016 23:19:59 -0800 (PST)
+        Thu, 03 Dec 2015 11:55:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58053 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:37181 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aL46Z-0007Mk-8Z
-	for alex.bennee@linaro.org; Mon, 18 Jan 2016 02:19:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42703)
+	id 1a4ZyB-0000U9-G7
+	for alex.bennee@linaro.org; Thu, 03 Dec 2015 14:55:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57980)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL404-0003Yo-EQ
-	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 02:13:18 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a4Zy8-0000RM-Cz
+	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 14:55:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL402-00078G-FX
-	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 02:13:16 -0500
-Received: from mail-pa0-x22c.google.com ([2607:f8b0:400e:c03::22c]:33617)
+	(envelope-from <peter.maydell@linaro.org>) id 1a4Zy7-0006tf-3I
+	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 14:55:08 -0500
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35424)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aL3zx-00076n-6b; Mon, 18 Jan 2016 02:13:09 -0500
-Received: by mail-pa0-x22c.google.com with SMTP id cy9so429594024pac.0;
-	Sun, 17 Jan 2016 23:13:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=HNNt1h/nDWB2MQ6DxyRraWr+k7XbDOLcAxTIOF1fPaY=;
-	b=I6K0Q6gmBR3uIiJO/zuqs/o+vkom/uMfclML/kZFk0ffwOSEy9dUhLdKx4Z6ht63mj
-	4rcjDmgYCgGX0Vn3fyHqn6jP4CRr/bDT6R2wrS9/KsnuolxPMKms5svgDt4TDstNyXCt
-	s9v0gVs3XaYhICRHDb1jyL3NB32MoVvi+Ts3fc3NO9hTfE1d7Yf6NIuvdGYblhreUy6L
-	Lr5enbNZZL71eP5qxfgIXfM06CiHWaQAe7igRSVQfMMb4tmqCcpkG+2F2ZIJazRo5RFK
-	gu/79sWnAdV2IQ6G+69HyuD4QIbD973Qw/QKy1xHBlJkAZTXNl1FTFyaJuUDtoyjhplb
-	iNgg==
+	(envelope-from <peter.maydell@linaro.org>) id 1a4Zy6-0006sw-Qj
+	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 14:55:07 -0500
+Received: by vkha189 with SMTP id a189so52303157vkh.2
+	for <qemu-arm@nongnu.org>; Thu, 03 Dec 2015 11:55:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=NGWpAuxxpnqlDKcdi8hkba5aNECoajKXaQXJsCCFuxY=;
+	b=rWqNxi0zMjWBisR8qVifTh7jfCtHB/CTnX4+6OKEeS8jekvAxL/gpCLHqTmFdMBj9J
+	wRZB6FkOEIJxCHCrsyUawSPYv38HnokgLxLYzVFjmMsmP8hsXxJvtSsXj6+WN48V2Bwa
+	hoL90PO8yxcH0ctF+zYuoOwBPoAu60DigjotozNgcg2EsR9YsFnMI/ELXq6oFERNtCBv
+	aGTqvlMk68iFbUS6R/ceTNm96hvjWdQQvHd3v0jaKj/FqDrXm1PUn+AEwV38jFhIg69J
+	fOLzDY3piiv2iisv0sHXR5Tir++aqHi2cHs1+rwmoSWUdz5CW/x7mn4pNNm3CBgbKLGn
+	o4iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:in-reply-to:references;
-	bh=HNNt1h/nDWB2MQ6DxyRraWr+k7XbDOLcAxTIOF1fPaY=;
-	b=RvLi1IUc3K+LTm4csXr4bVnEDcnd2yISf+MbkXrAgwFvgSEyWabDPdQc29yZQqffP3
-	jszQMbRwob48EG/613V4f5g9iomikD73MOrRm1YFMw5oeL0WXbW+WryPl6c4uMlQn3GE
-	fv+UlUvEe0OMlZifjZ3TSz6zs7EVQYTLJPRxFkcg878+aaZWtKQ5fskrkpm8UWf8iTAp
-	ZQAMuX+DpjraM/NthaqgwWjaE0cPIhJZob0d2n87giL1aMeCo0tZTuY6J2hnkyt0rxmv
-	TvSEQEguURdM6uA4ToFSGh9+WcAuPcKbhzo11WHcq0irXtninS2cLuRkDFASLJz9Zs14
-	JlOg==
-X-Gm-Message-State: ALoCoQl/pJdFsE7Lc3CTZFvQP8YBQ5NrjR5wrK8qlcAVnwnI3yCmWxOCg+PTCwHdCFrq1Eq6ehcQt4gnyGSduhM7tYl2uv5UBw==
-X-Received: by 10.66.242.17 with SMTP id wm17mr33863903pac.155.1453101188720; 
-	Sun, 17 Jan 2016 23:13:08 -0800 (PST)
-Received: from localhost.localdomain (c-73-70-184-119.hsd1.ca.comcast.net.
-	[73.70.184.119]) by smtp.gmail.com with ESMTPSA id
-	xv2sm31471880pab.10.2016.01.17.23.13.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 17 Jan 2016 23:13:07 -0800 (PST)
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Sun, 17 Jan 2016 23:12:39 -0800
-Message-Id: <923e454020ea0b713a1225ab81ff0db636c76a4f.1453100525.git.crosthwaite.peter@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=NGWpAuxxpnqlDKcdi8hkba5aNECoajKXaQXJsCCFuxY=;
+	b=hPMVwGMAiljS91DDpWFSmsdMvslNE9DecYEsvP9wfQ2DuAtSOgD3UIQ5VaUd3d+d0G
+	hrmRft7uWp6VsUDVuT4/1NHvWeTLyOZm7SA8614a58qIMYrnrhYN8Oplg7Hof9FYxgn7
+	7S5lAzw/vE5KHGGnxia7dah7UBHTFf119o3lCT0un44Uu75tcyupaJ+nuOn60m4RuarK
+	+OKK+Ni72k1Y3fNNdK5FT4Dba2k+WRXetMjLoNO7Bl+nC60t9Isl9EgpSQoe6or46Gd2
+	oF2ZLF8ldME8OSsnxBHnG3ckFOhH6FtQSrngDRi7W+A4dYR7bjWX02OGYgWXZt02ienF
+	kF9A==
+X-Gm-Message-State: ALoCoQkYTQVfasOZRe2XUlMNwJgiB03vNlInwUCoD437rQqRyh5C/8ShU4EQStzQxOgLTvQwgIfz
+X-Received: by 10.31.47.197 with SMTP id v188mr7224376vkv.6.1449172506445;
+	Thu, 03 Dec 2015 11:55:06 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Thu, 3 Dec 2015 11:54:46 -0800 (PST)
+In-Reply-To: <20151203185529.GA4850@hawk.localdomain>
+References: <1448411877-22019-1-git-send-email-drjones@redhat.com>
+	<1448411877-22019-6-git-send-email-drjones@redhat.com>
+	<CAFEAcA8+c5kOdBCSuVEgBf=Ga1chMiAV+rsLr4KNduTigQu7nQ@mail.gmail.com>
+	<20151203185529.GA4850@hawk.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Dec 2015 19:54:46 +0000
+Message-ID: <CAFEAcA98DaB-YDV5T-pxXG53mm7ZckKX2u4QHp62eE5o6yJDtw@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::22c
-Cc: peter.maydell@linaro.org, alistair.francis@xilinx.com,
-	sridhar_kulk@yahoo.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	piotr.krol@3mdeb.com
-Subject: [Qemu-arm] [PATCH v1 12/17] target-arm: implement SCTLR.B,
-	drop bswap_code
+X-Received-From: 2607:f8b0:400c:c05::235
+Cc: Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 5/6] target-arm: support QMP
+	dump-guest-memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -90,355 +89,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8+pl5S40l6nm
+X-TUID: bJ4KByRabPyx
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+On 3 December 2015 at 18:55, Andrew Jones <drjones@redhat.com> wrote:
+> On Thu, Dec 03, 2015 at 11:44:05AM +0000, Peter Maydell wrote:
+>> On 25 November 2015 at 00:37, Andrew Jones <drjones@redhat.com> wrote:
+>> > Add the support needed for creating prstatus elf notes. This
+>> > allows us to use QMP dump-guest-memory.
+>>
+>> > +
+>> > +    if (is_a64(env)) {
+>> > +        for (i = 0; i < 31; ++i) {
+>> > +            note.prstatus.pr_reg.regs[i] = cpu_to_dump64(s, env->xregs[i]);
+>> > +        }
+>> > +        note.prstatus.pr_reg.sp = cpu_to_dump64(s, env->xregs[31]);
+>> > +        note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
+>> > +        note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate_read(env));
+>> > +    } else {
+>> > +        aarch64_sync_64_to_32(env);
+>> > +        for (i = 0; i < 16; ++i) {
+>> > +            note.prstatus.pr_reg.regs[i] = cpu_to_dump64(s, env->regs[i]);
+>> > +        }
+>> > +        note.prstatus.pr_reg.sp = note.prstatus.pr_reg.regs[13];
+>> > +        note.prstatus.pr_reg.pc = note.prstatus.pr_reg.regs[15];
+>> > +        note.prstatus.pr_reg.pstate = cpu_to_dump64(s, cpsr_read(env));
+>> > +    }
+>>
+>> This doesn't look right. sync_64_to_32 is copying the state held
+>> in the 64-bit env->xregs etc into the 32-bit env->regs. But if we're
+>> in 32-bit state then the true state is in the 32-bit fields and
+>> this will trash it. You want to sync_32_to_64 here, and then the
+>> code to write the values to the dump is the same either way
+>> (except for pstate vs cpsr which we haven't managed to clean up
+>> and unify yet, sadly).
+>
+> Besides the unnecessary call to aarch64_sync_64_to_32(), then, for the
+> KVM case, the above code is correct. However, for the TCG case, I now
+> see why it's wrong.
+>
+> The KVM case starts with 64-bit state, because this function is dealing
+> with 64-bit guest kernels. The TCG case, when userspace is running a
+> 32-bit binary, starts with 32-bit state. In both cases we want to get
+> 32-bit state into a 64-bit elf note. KVM needs aarch64_sync_64_to_32(),
+> which is actually already done by cpu_synchronize_all_states(), and
+> then to shoehorn the 32-bit registers into the 64-bit elf note, as done
+> above. TCG, on the other hand, doesn't need to sync any state, it just
+> needs to shoehorn. So the above aarch64_sync_64_to_32() call, which I
+> actually added *for* TCG (since I misunderstood your comment on v1),
+> actually makes it wrong. Needless to say, I didn't test TCG :-)
+>
+> Now, to fix it, we could do what you have here below
+>
+>>
+>> I think you want
+>>    uint64_t pstate;
+>>    [...]
+>>
+>>    if (!is_a64(env)) {
+>>        aarch64_sync_32_to_64(env);
+>>        pstate = cpsr_read(env);
+>>    } else {
+>>        pstate = pstate_read(env);
+>>    }
+>>    for (i = 0; i < 31; ++i) {
+>>        note.prstatus.pr_reg.regs[i] = cpu_to_dump64(s, env->xregs[i]);
+>>    }
+>
+> But, this adds an unnecessary aarch64_sync_32_to_64() call to the kvm
+> case (although it wouldn't hurt, as aarch64_sync_32_to_64 is the inverse
+> of aarch64_sync_64_to_32, which we've already done earlier). It also
+> always adds register values 16..30 to the elf note (which may not always
+> be zero in the 32-bit userspace case?). The way I have it above makes
+> sure those registers are zero in that case.
 
-bswap_code is a CPU property of sorts ("is the iside endianness the
-opposite way round to TARGET_WORDS_BIGENDIAN?") but it is not the
-actual CPU state involved here which is SCTLR.B (set for BE32
-binaries, clear for BE8).
+If you do that then you'll lose the information about the other
+32-bit registers (the svc/irq/etc banked versions). Those aren't
+relevant if the 32-bit code is in usermode, but probably you want
+them if you're doing a dump of a 64-bit (emulated) hypervisor
+that happens to be running a 32-bit guest kernel at point of dump.
 
-Replace bswap_code with SCTLR.B, and pass that to arm_ld*_code.
-The next patches will make data fetches honor both SCTLR.B and
-CPSR.E appropriately.
+> So, how about we just remove the aarch64_sync_64_to_32() from the code
+> I have above? Won't that make it work for both KVM and TCG?
+>
+>
+>>    note.prstatus.pr_reg.sp = cpu_to_dump64(s, env->xregs[31]);
+>>    note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
+>>    note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate);
+>>
+>> (Note that the 32-bit SP is not architecturally in X31;
+>> it's in one of the other xregs, depending what mode the CPU
+>> was in. For 32-bit userspace that will be USR and it's in X13.)
+>
+> Yup, that's why I was pulling it from x13 in the above code. In your
+> version you can now use x31, due to the aarch64_sync_32_to_64().
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-[PC changes:
- * rebased on master (Jan 2016)
- * Dropped comment about CPSR.E being unimplemented
- * s/TARGET_USER_ONLY/CONFIG_USER_ONLY
- * Use bswap_code() for disas_set_info() instead of raw sctlr_b
-]
-Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
----
+Note that sync_32_to_64 does not copy regs[13] into x31, which was
+my point. In a 64-bit-format dump of a VM that happens to be
+running 32 bit code you should not expect pstate.sp to be the
+32-bit process's SP...
 
- linux-user/main.c          | 13 ++++++++-----
- target-arm/arm_ldst.h      |  8 ++++----
- target-arm/cpu.c           |  2 +-
- target-arm/cpu.h           | 47 ++++++++++++++++++++++++++++++++++++++--------
- target-arm/helper.c        |  8 ++++----
- target-arm/translate-a64.c |  6 +++---
- target-arm/translate.c     | 12 ++++++------
- target-arm/translate.h     |  2 +-
- 8 files changed, 66 insertions(+), 32 deletions(-)
+>> > +int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+>> > +                             int cpuid, void *opaque)
+>> > +{
+>> > +    CPUARMState *env = &ARM_CPU(cs)->env;
+>> > +    int ret;
+>> > +
+>> > +    if (arm_el_is_aa64(env, 1)) {
+>> > +        ret = aarch64_write_elf64_note(f, env, cpuid, opaque);
+>> > +    } else {
+>> > +        ret = arm_write_elf32_note(f, env, cpuid, opaque);
+>> > +    }
+>>
+>> This might produce the wrong kind of dump if we're in EL2
+>> or EL3 at the point we take it (can only happen in emulation
+>> and only once we add EL2 and EL3 emulation support, which isn't
+>> active yet). Do we care?
+>
+> "care" is loaded word :-) If I can tweak this in some easy way now to get
+> it ready for el2/el3 emulation, then I'm happy to do so. However, without
+> a test environment, and without strong motivation to use this feature on
+> emulation in the first place, then I'd rather not bother for the initial
+> introduction of it. We can always modify it later.
 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 2157774..d481458 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -441,7 +441,7 @@ void cpu_loop(CPUX86State *env)
- 
- #define get_user_code_u32(x, gaddr, env)                \
-     ({ abi_long __r = get_user_u32((x), (gaddr));       \
--        if (!__r && (env)->bswap_code) {                \
-+        if (!__r && bswap_code(arm_sctlr_b(env))) {     \
-             (x) = bswap32(x);                           \
-         }                                               \
-         __r;                                            \
-@@ -449,7 +449,7 @@ void cpu_loop(CPUX86State *env)
- 
- #define get_user_code_u16(x, gaddr, env)                \
-     ({ abi_long __r = get_user_u16((x), (gaddr));       \
--        if (!__r && (env)->bswap_code) {                \
-+        if (!__r && bswap_code(arm_sctlr_b(env))) {     \
-             (x) = bswap16(x);                           \
-         }                                               \
-         __r;                                            \
-@@ -4489,14 +4489,17 @@ int main(int argc, char **argv, char **envp)
-             env->regs[i] = regs->uregs[i];
-         }
- #ifdef TARGET_WORDS_BIGENDIAN
--        env->uncached_cpsr |= CPSR_E;
-         env->cp15.sctlr_el[1] |= SCTLR_E0E;
--#endif
-         /* Enable BE8.  */
-         if (EF_ARM_EABI_VERSION(info->elf_flags) >= EF_ARM_EABI_VER4
-             && (info->elf_flags & EF_ARM_BE8)) {
--            env->bswap_code = 1;
-+            env->uncached_cpsr |= CPSR_E;
-+        } else {
-+            env->cp15.sctlr_el[1] |= SCTLR_B;
-+            /* We model BE32 as regular BE, so set CPSR_E */
-+            env->uncached_cpsr |= CPSR_E;
-         }
-+#endif
-     }
- #elif defined(TARGET_UNICORE32)
-     {
-diff --git a/target-arm/arm_ldst.h b/target-arm/arm_ldst.h
-index b1ece01..35c2c43 100644
---- a/target-arm/arm_ldst.h
-+++ b/target-arm/arm_ldst.h
-@@ -25,10 +25,10 @@
- 
- /* Load an instruction and return it in the standard little-endian order */
- static inline uint32_t arm_ldl_code(CPUARMState *env, target_ulong addr,
--                                    bool do_swap)
-+                                    bool sctlr_b)
- {
-     uint32_t insn = cpu_ldl_code(env, addr);
--    if (do_swap) {
-+    if (bswap_code(sctlr_b)) {
-         return bswap32(insn);
-     }
-     return insn;
-@@ -36,10 +36,10 @@ static inline uint32_t arm_ldl_code(CPUARMState *env, target_ulong addr,
- 
- /* Ditto, for a halfword (Thumb) instruction */
- static inline uint16_t arm_lduw_code(CPUARMState *env, target_ulong addr,
--                                     bool do_swap)
-+                                     bool sctlr_b)
- {
-     uint16_t insn = cpu_lduw_code(env, addr);
--    if (do_swap) {
-+    if (bswap_code(sctlr_b)) {
-         return bswap16(insn);
-     }
-     return insn;
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index d3b73bf..cec5147 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -413,7 +413,7 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
-     } else {
-         info->print_insn = print_insn_arm;
-     }
--    if (env->bswap_code) {
-+    if (bswap_code(arm_sctlr_b(env))) {
- #ifdef TARGET_WORDS_BIGENDIAN
-         info->endian = BFD_ENDIAN_LITTLE;
- #else
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 74048d1..3edd56b 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -478,9 +478,6 @@ typedef struct CPUARMState {
-         uint32_t cregs[16];
-     } iwmmxt;
- 
--    /* For mixed endian mode.  */
--    bool bswap_code;
--
- #if defined(CONFIG_USER_ONLY)
-     /* For usermode syscall translation.  */
-     int eabi;
-@@ -1795,6 +1792,19 @@ static inline bool arm_singlestep_active(CPUARMState *env)
-         && arm_generate_debug_exceptions(env);
- }
- 
-+static inline bool arm_sctlr_b(CPUARMState *env)
-+{
-+    return
-+        /* We need not implement SCTLR.ITD in user-mode emulation, so
-+         * let linux-user ignore the fact that it conflicts with SCTLR_B.
-+         * This lets people run BE32 binaries with "-cpu any".
-+         */
-+#ifndef CONFIG_USER_ONLY
-+        !arm_feature(env, ARM_FEATURE_V7) &&
-+#endif
-+        (env->cp15.sctlr_el[1] & SCTLR_B) != 0;
-+}
-+
- /* Return true if the processor is in big-endian mode. */
- static bool arm_cpu_is_big_endian(CPUARMState *env)
- {
-@@ -1844,8 +1854,8 @@ static bool arm_cpu_is_big_endian(CPUARMState *env)
- #define ARM_TBFLAG_VFPEN_MASK       (1 << ARM_TBFLAG_VFPEN_SHIFT)
- #define ARM_TBFLAG_CONDEXEC_SHIFT   8
- #define ARM_TBFLAG_CONDEXEC_MASK    (0xff << ARM_TBFLAG_CONDEXEC_SHIFT)
--#define ARM_TBFLAG_BSWAP_CODE_SHIFT 16
--#define ARM_TBFLAG_BSWAP_CODE_MASK  (1 << ARM_TBFLAG_BSWAP_CODE_SHIFT)
-+#define ARM_TBFLAG_SCTLR_B_SHIFT    16
-+#define ARM_TBFLAG_SCTLR_B_MASK     (1 << ARM_TBFLAG_SCTLR_B_SHIFT)
- /* We store the bottom two bits of the CPAR as TB flags and handle
-  * checks on the other bits at runtime
-  */
-@@ -1883,8 +1893,8 @@ static bool arm_cpu_is_big_endian(CPUARMState *env)
-     (((F) & ARM_TBFLAG_VFPEN_MASK) >> ARM_TBFLAG_VFPEN_SHIFT)
- #define ARM_TBFLAG_CONDEXEC(F) \
-     (((F) & ARM_TBFLAG_CONDEXEC_MASK) >> ARM_TBFLAG_CONDEXEC_SHIFT)
--#define ARM_TBFLAG_BSWAP_CODE(F) \
--    (((F) & ARM_TBFLAG_BSWAP_CODE_MASK) >> ARM_TBFLAG_BSWAP_CODE_SHIFT)
-+#define ARM_TBFLAG_SCTLR_B(F) \
-+    (((F) & ARM_TBFLAG_SCTLR_B_MASK) >> ARM_TBFLAG_SCTLR_B_SHIFT)
- #define ARM_TBFLAG_XSCALE_CPAR(F) \
-     (((F) & ARM_TBFLAG_XSCALE_CPAR_MASK) >> ARM_TBFLAG_XSCALE_CPAR_SHIFT)
- #define ARM_TBFLAG_NS(F) \
-@@ -1892,6 +1902,27 @@ static bool arm_cpu_is_big_endian(CPUARMState *env)
- #define ARM_TBFLAG_MOE(F) \
-     (((F) & ARM_TBFLAG_MOE_MASK) >> ARM_TBFLAG_MOE_SHIFT)
- 
-+static inline bool bswap_code(bool sctlr_b)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    /* BE8 (SCTLR.B = 0, TARGET_WORDS_BIGENDIAN = 1) is mixed endian.
-+     * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_WORDS_BIGENDIAN=0
-+     * would also end up as a mixed-endian mode with BE code, LE data.
-+     */
-+    return
-+#ifdef TARGET_WORDS_BIGENDIAN
-+        1 ^
-+#endif
-+        sctlr_b;
-+#else
-+    /* We do not implement BE32 mode for system-mode emulation, but
-+     * anyway it would always do little-endian accesses with
-+     * TARGET_WORDS_BIGENDIAN = 0.
-+     */
-+    return 0;
-+#endif
-+}
-+
- /* Return the exception level to which FP-disabled exceptions should
-  * be taken, or 0 if FP is enabled.
-  */
-@@ -1990,7 +2021,7 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-             | (env->vfp.vec_len << ARM_TBFLAG_VECLEN_SHIFT)
-             | (env->vfp.vec_stride << ARM_TBFLAG_VECSTRIDE_SHIFT)
-             | (env->condexec_bits << ARM_TBFLAG_CONDEXEC_SHIFT)
--            | (env->bswap_code << ARM_TBFLAG_BSWAP_CODE_SHIFT);
-+            | (arm_sctlr_b(env) << ARM_TBFLAG_SCTLR_B_SHIFT);
-         if (!(access_secure_reg(env))) {
-             *flags |= ARM_TBFLAG_NS_MASK;
-         }
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index afac1b2..a69a82c 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -5452,7 +5452,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     case EXCP_BKPT:
-         if (semihosting_enabled()) {
-             int nr;
--            nr = arm_lduw_code(env, env->regs[15], env->bswap_code) & 0xff;
-+            nr = arm_lduw_code(env, env->regs[15], arm_sctlr_b(env)) & 0xff;
-             if (nr == 0xab) {
-                 env->regs[15] += 2;
-                 qemu_log_mask(CPU_LOG_INT,
-@@ -5767,10 +5767,10 @@ void arm_cpu_do_interrupt(CPUState *cs)
-         if (semihosting_enabled()) {
-             /* Check for semihosting interrupt.  */
-             if (env->thumb) {
--                mask = arm_lduw_code(env, env->regs[15] - 2, env->bswap_code)
-+                mask = arm_lduw_code(env, env->regs[15] - 2, arm_sctlr_b(env))
-                     & 0xff;
-             } else {
--                mask = arm_ldl_code(env, env->regs[15] - 4, env->bswap_code)
-+                mask = arm_ldl_code(env, env->regs[15] - 4, arm_sctlr_b(env))
-                     & 0xffffff;
-             }
-             /* Only intercept calls from privileged modes, to provide some
-@@ -5794,7 +5794,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     case EXCP_BKPT:
-         /* See if this is a semihosting syscall.  */
-         if (env->thumb && semihosting_enabled()) {
--            mask = arm_lduw_code(env, env->regs[15], env->bswap_code) & 0xff;
-+            mask = arm_lduw_code(env, env->regs[15], arm_sctlr_b(env)) & 0xff;
-             if (mask == 0xab
-                   && (env->uncached_cpsr & CPSR_M) != ARM_CPU_MODE_USR) {
-                 env->regs[15] += 2;
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index db68662..4fd266b 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -10978,7 +10978,7 @@ static void disas_a64_insn(CPUARMState *env, DisasContext *s)
- {
-     uint32_t insn;
- 
--    insn = arm_ldl_code(env, s->pc, s->bswap_code);
-+    insn = arm_ldl_code(env, s->pc, s->sctlr_b);
-     s->insn = insn;
-     s->pc += 4;
- 
-@@ -11043,7 +11043,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-     dc->secure_routed_to_el3 = arm_feature(env, ARM_FEATURE_EL3) &&
-                                !arm_el_is_aa64(env, 3);
-     dc->thumb = 0;
--    dc->bswap_code = 0;
-+    dc->sctlr_b = 0;
-     dc->mo_endianness = ARM_TBFLAG_MOE(tb->flags) ? MO_BE : MO_LE;
-     dc->condexec_mask = 0;
-     dc->condexec_cond = 0;
-@@ -11230,7 +11230,7 @@ done_generating:
-         qemu_log("----------------\n");
-         qemu_log("IN: %s\n", lookup_symbol(pc_start));
-         log_target_disas(cs, pc_start, dc->pc - pc_start,
--                         4 | (dc->bswap_code << 1));
-+                         4 | (bswap_code(dc->sctlr_b) ? 2 : 0));
-         qemu_log("\n");
-     }
- #endif
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 192a5d6..44c3ac9 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -9251,7 +9251,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
-         /* Fall through to 32-bit decode.  */
-     }
- 
--    insn = arm_lduw_code(env, s->pc, s->bswap_code);
-+    insn = arm_lduw_code(env, s->pc, s->sctlr_b);
-     s->pc += 2;
-     insn |= (uint32_t)insn_hw1 << 16;
- 
-@@ -10493,7 +10493,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
-         }
-     }
- 
--    insn = arm_lduw_code(env, s->pc, s->bswap_code);
-+    insn = arm_lduw_code(env, s->pc, s->sctlr_b);
-     s->pc += 2;
- 
-     switch (insn >> 12) {
-@@ -11218,7 +11218,7 @@ static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
-     }
- 
-     /* This must be a Thumb insn */
--    insn = arm_lduw_code(env, s->pc, s->bswap_code);
-+    insn = arm_lduw_code(env, s->pc, s->sctlr_b);
- 
-     if ((insn >> 11) >= 0x1d) {
-         /* Top five bits 0b11101 / 0b11110 / 0b11111 : this is the
-@@ -11273,7 +11273,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-     dc->secure_routed_to_el3 = arm_feature(env, ARM_FEATURE_EL3) &&
-                                !arm_el_is_aa64(env, 3);
-     dc->thumb = ARM_TBFLAG_THUMB(tb->flags);
--    dc->bswap_code = ARM_TBFLAG_BSWAP_CODE(tb->flags);
-+    dc->sctlr_b = ARM_TBFLAG_SCTLR_B(tb->flags);
-     dc->mo_endianness = ARM_TBFLAG_MOE(tb->flags) ? MO_BE : MO_LE;
-     dc->condexec_mask = (ARM_TBFLAG_CONDEXEC(tb->flags) & 0xf) << 1;
-     dc->condexec_cond = ARM_TBFLAG_CONDEXEC(tb->flags) >> 4;
-@@ -11454,7 +11454,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-                 }
-             }
-         } else {
--            unsigned int insn = arm_ldl_code(env, dc->pc, dc->bswap_code);
-+            unsigned int insn = arm_ldl_code(env, dc->pc, dc->sctlr_b);
-             dc->pc += 4;
-             disas_arm_insn(dc, insn);
-         }
-@@ -11611,7 +11611,7 @@ done_generating:
-         qemu_log("----------------\n");
-         qemu_log("IN: %s\n", lookup_symbol(pc_start));
-         log_target_disas(cs, pc_start, dc->pc - pc_start,
--                         dc->thumb | (dc->bswap_code << 1));
-+                         dc->thumb | (dc->sctlr_b << 1));
-         qemu_log("\n");
-     }
- #endif
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 95c3b94..7d7f449 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -16,7 +16,7 @@ typedef struct DisasContext {
-     struct TranslationBlock *tb;
-     int singlestep_enabled;
-     int thumb;
--    int bswap_code;
-+    int sctlr_b;
-     TCGMemOp mo_endianness;
- #if !defined(CONFIG_USER_ONLY)
-     int user;
--- 
-1.9.1
+For this test I think you can just say
+  if (arm_feature(env, ARM_FEATURE_AARCH64)) {
 
+which basically says "64-bit dump if the CPU supports 64-bit" (32-bit
+KVM VMs won't have this feature bit). The other awkward part is
+figuring out which endianness to use. I think there we can just put
+in a comment
+    /* We assume the relevant endianness is that of EL1; this is right
+     * for kernels but might give the wrong answer if you're trying to
+     * take a dump of a hypervisor that happens currently to be running
+     * a wrong-endian kernel.
+     */
+and leave it for somebody who cares to try to figure out the right
+semantics.
+
+thanks
+-- PMM

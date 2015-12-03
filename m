@@ -1,57 +1,47 @@
-Received: by 10.182.158.201 with SMTP id ww9csp30701obb;
-        Thu, 3 Dec 2015 07:37:42 -0800 (PST)
-X-Received: by 10.55.73.201 with SMTP id w192mr11567541qka.17.1449157062397;
-        Thu, 03 Dec 2015 07:37:42 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp254117obb;
+        Thu, 3 Dec 2015 14:47:50 -0800 (PST)
+X-Received: by 10.140.99.86 with SMTP id p80mr14162913qge.97.1449182870148;
+        Thu, 03 Dec 2015 14:47:50 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j78si90490qge.116.2015.12.03.07.37.42
+        by mx.google.com with ESMTPS id h8si3088462qgd.114.2015.12.03.14.47.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Dec 2015 07:37:42 -0800 (PST)
+        Thu, 03 Dec 2015 14:47:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36073 helo=lists.gnu.org)
+Received: from localhost ([::1]:37754 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4Vx0-0003LZ-11
-	for alex.bennee@linaro.org; Thu, 03 Dec 2015 10:37:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43684)
+	id 1a4cfF-0004Dv-Qg
+	for alex.bennee@linaro.org; Thu, 03 Dec 2015 17:47:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1a4Vwy-0003LU-Lf
-	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 10:37:41 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1a4cfD-0004AY-SE
+	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 17:47:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1a4Vws-0006ub-UN
-	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 10:37:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43777)
+	(envelope-from <pm215@archaic.org.uk>) id 1a4cfC-00029t-Vk
+	for qemu-arm@nongnu.org; Thu, 03 Dec 2015 17:47:47 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:59044)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1a4Vws-0006uX-OY; Thu, 03 Dec 2015 10:37:34 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 57DD24258A;
-	Thu,  3 Dec 2015 15:37:34 +0000 (UTC)
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tB3FbVu8002269; Thu, 3 Dec 2015 10:37:32 -0500
-Date: Thu, 3 Dec 2015 16:37:30 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: shannon.zhao@linaro.org
-Message-ID: <20151203163730.66c769f7@nial.brq.redhat.com>
-In-Reply-To: <1447680189-2128-6-git-send-email-shannon.zhao@linaro.org>
-References: <1447680189-2128-1-git-send-email-shannon.zhao@linaro.org>
-	<1447680189-2128-6-git-send-email-shannon.zhao@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1a4cfA-00029I-TB; Thu, 03 Dec 2015 17:47:45 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1a4cIq-0005ms-H0; Thu, 03 Dec 2015 22:24:40 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu,  3 Dec 2015 22:24:40 +0000
+Message-Id: <1449181480-22209-4-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+In-Reply-To: <1449181480-22209-1-git-send-email-peter.maydell@linaro.org>
+References: <1449181480-22209-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, graeme.gregory@linaro.org, mst@redhat.com,
-	qemu-devel@nongnu.org, peter.huangpeng@huawei.com,
-	qemu-arm@nongnu.org, zhaoshenglong@huawei.com
-Subject: Re: [Qemu-arm] [PATCH v3 5/8] hw/acpi/aml-build: Add a wrapper for
- GPIO Interrupt Connection
+X-Received-From: 2001:8b0:1d0::1
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>, patches@linaro.org
+Subject: [Qemu-arm] [PATCH v2 3/3] hw/sd/pxa2xx_mmci: Add reset function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -65,21 +55,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r+Zx0+qFUufX
+X-TUID: urwD8sOVf0Zv
 
-On Mon, 16 Nov 2015 21:23:06 +0800
-shannon.zhao@linaro.org wrote:
+Add a reset function to the pxa2xx_mmci device; previously it had
+no handling for system reset at all.
 
-[...]
-> + * ACPI 5.0: 19.5.53
-> + * GpioInt(GPIO Interrupt Connection Resource Descriptor Macro)
-> + */
-> +Aml *aml_gpio_int(AmlConsumerAndProducer con_and_pro,
-> +                  AmlLevelAndEdge level_and_edge,
-> +                  AmlActiveHighAndLow high_and_low, AmlShared shared,
-> +                  AmlPinConfig pin_cfg, int16_t debounce_timeout,
-> +                  int32_t pin_num[], int32_t pin_count, const char *name,
-also we never going to change pin_num[], so could be const
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/sd/pxa2xx_mmci.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-[...]
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index fd76ffe..3f21021 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -469,6 +469,35 @@ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+     sd_set_cb(s->card, readonly, coverswitch);
+ }
+ 
++static void pxa2xx_mmci_reset(DeviceState *d)
++{
++    PXA2xxMMCIState *s = PXA2XX_MMCI(d);
++
++    s->status = 0;
++    s->clkrt = 0;
++    s->spi = 0;
++    s->cmdat = 0;
++    s->resp_tout = 0;
++    s->read_tout = 0;
++    s->blklen = 0;
++    s->numblk = 0;
++    s->intmask = 0;
++    s->intreq = 0;
++    s->cmd = 0;
++    s->arg = 0;
++    s->active = 0;
++    s->bytesleft = 0;
++    s->tx_start = 0;
++    s->tx_len = 0;
++    s->rx_start = 0;
++    s->rx_len = 0;
++    s->resp_len = 0;
++    s->cmdreq = 0;
++    memset(s->tx_fifo, 0, sizeof(s->tx_fifo));
++    memset(s->rx_fifo, 0, sizeof(s->rx_fifo));
++    memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
++}
++
+ static void pxa2xx_mmci_instance_init(Object *obj)
+ {
+     PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
+@@ -506,6 +535,7 @@ static void pxa2xx_mmci_class_init(ObjectClass *klass, void *data)
+     dc->realize = pxa2xx_mmci_realize;
+     dc->props = pxa2xx_mmci_properties;
+     dc->vmsd = &vmstate_pxa2xx_mmci;
++    dc->reset = pxa2xx_mmci_reset;
+ }
+ 
+ static const TypeInfo pxa2xx_mmci_info = {
+-- 
+1.9.1
 

@@ -1,238 +1,298 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3390487obb;
-        Wed, 2 Dec 2015 15:22:44 -0800 (PST)
-X-Received: by 10.55.72.23 with SMTP id v23mr7295251qka.24.1449098564916;
-        Wed, 02 Dec 2015 15:22:44 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp3409970obb;
+        Wed, 2 Dec 2015 16:12:22 -0800 (PST)
+X-Received: by 10.140.159.206 with SMTP id f197mr8110540qhf.72.1449101542865;
+        Wed, 02 Dec 2015 16:12:22 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 25si5925780qky.58.2015.12.02.15.22.44
+        by mx.google.com with ESMTPS id u75si6120996qki.94.2015.12.02.16.12.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Dec 2015 15:22:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 02 Dec 2015 16:12:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60776 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:60888 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4GjU-00019X-G5
-	for alex.bennee@linaro.org; Wed, 02 Dec 2015 18:22:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50848)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a4HVW-0002RI-LU
+	for alex.bennee@linaro.org; Wed, 02 Dec 2015 19:12:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1a4GjR-00016A-Oi
-	for qemu-arm@nongnu.org; Wed, 02 Dec 2015 18:22:43 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a4HVA-0002AI-86
+	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:12:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1a4GjO-00021M-LE
-	for qemu-arm@nongnu.org; Wed, 02 Dec 2015 18:22:41 -0500
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:34624)
+	(envelope-from <peter.maydell@linaro.org>) id 1a4HV8-0008Jh-Jh
+	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:12:00 -0500
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:35648)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>)
-	id 1a4GjO-00021H-Gd; Wed, 02 Dec 2015 18:22:38 -0500
-Received: by qkfo3 with SMTP id o3so23344544qkf.1;
-	Wed, 02 Dec 2015 15:22:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=message-id:date:from:user-agent:mime-version:to:cc:subject
-	:references:in-reply-to:content-type:content-transfer-encoding;
-	bh=ZYCGWKJav3bz6Y44/R9VZOiQAoinf/SPCaYWP0qCXAo=;
-	b=W5i8G2cuOfm2UJlgX7CeeI8FkV3fWEKE+s73RrOG05hlBycCp36mA2z0L/XPZ/sA5W
-	wYolVOgC9/Dy2YgWYOLssE4YvQ2Id8BOp+daKrUR0IZZjxS0Lpkyg1teY+XqMU+9GvqB
-	dobmF7EVI1pZ/mBGsbrnSvtzjFPcorbbPdfEWjCdmRisR72y71F4lhrANNWfS+tpo+yR
-	Ff4BQihwrVsMuE3ei+Wy9s9ptDSRAdW/g8lyfCKWwKz3o07DH2o27cdebEAHZ7eF/Qit
-	s621r0npFcD4hsBRkBHTftFMwXHWL9CbpQyeTtE0u7ejSodfLLrUCl554roOBBNJiLnT
-	zvWw==
-X-Received: by 10.55.72.10 with SMTP id v10mr7095022qka.14.1449098558088;
-	Wed, 02 Dec 2015 15:22:38 -0800 (PST)
-Received: from [10.142.1.2] (ool-182df582.dyn.optonline.net. [24.45.245.130])
-	by smtp.gmail.com with ESMTPSA id
-	c80sm2212735qkj.4.2015.12.02.15.22.37
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 02 Dec 2015 15:22:37 -0800 (PST)
-Message-ID: <565F7D3D.4030501@gmail.com>
-Date: Wed, 02 Dec 2015 18:22:37 -0500
-From: Michael Davidsaver <mdavidsaver@gmail.com>
-User-Agent: Mozilla/5.0 (X11; Linux i686;
-	rv:31.0) Gecko/20100101 Icedove/31.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1a4HV8-0008JE-EV
+	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:11:58 -0500
+Received: by vkha189 with SMTP id a189so35577648vkh.2
+	for <qemu-devel@nongnu.org>; Wed, 02 Dec 2015 16:11:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=KgwHF7dBtxLhxEtcPQMkMQIJyk5DhpWDCaKhFIEAnFk=;
+	b=Kopo4e+Mgs03WtM3LCUMBx7p0QzomC3J1UT0SYmSCyfcfMo2/DhtKZgdv545c7ghiA
+	rMCVhEUJkm3CjYVaJy+9pJI4yvH9pPhEUnXw/Mze4N5KkhrqePJ40Mj06v+PUeql7/fS
+	NgnXpFmITOXOQgtsCbvOxwGmZyKwtCaTw3t+5o+obFO0i8wMCpON5/CmLGjD1To+NQUJ
+	qVEA5pUvSq9EzynafXJ8RfK5DFCemjTHq+EvYZ9mjzr36oBoYeHprsqoAW2pcBK2s1CY
+	TIGAfxUGcw/nlDgGKURwHg29OnbluwB3e4qSxmldE7KDAJjrK6SCLwUzXEYSVorHlb3X
+	1RwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=KgwHF7dBtxLhxEtcPQMkMQIJyk5DhpWDCaKhFIEAnFk=;
+	b=EBhYI4acMM43z/GXwHbXTJ7XDWCZW6OT+C71DNxnHQNTXobCS6YInTi8SWp25w45l3
+	/5GLmvhNTYoS+iM0HSDR53nuLkRsIKVk78E+lo4b2c9fs38Sj/fgUbkxwTBouITxB86S
+	zlg6q12jL4a4Y43P3h2cSly2+0s58lJS5Cnx907dKf7mCkHLQlfKpxuFhMsB7NFDeyHE
+	j2vEJwGiRDXjs3W8sj6QsYea/tUiJbrBS8uZu3KE1+w9ENHLWvuXL6u6KPf1mDt2YLFF
+	bRT27Ncbeu3D3ZQFhksLea+EL9GLjgi6HNjjn8zfpe/waTp7lWXBQQ73smekGOA/I9O2
+	LfIg==
+X-Gm-Message-State: ALoCoQmcUJruwdjb8DO5kQd08aN+UsnPnCRUWFJDpRVavVQBI3px+HDp8J1zj/WyjQA8ViSPm2k5
+X-Received: by 10.31.16.214 with SMTP id 83mr3732466vkq.139.1449101517801;
+	Wed, 02 Dec 2015 16:11:57 -0800 (PST)
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 10.31.153.15 with HTTP; Wed, 2 Dec 2015 16:11:38 -0800 (PST)
+In-Reply-To: <565F7C2F.1020708@gmail.com>
 References: <1447031505-12477-1-git-send-email-mdavidsaver@gmail.com>
-	<1447031505-12477-12-git-send-email-mdavidsaver@gmail.com>
-	<CAFEAcA_M0z=QaeASNBfM6QfOhZ=+hvZD0XkX9nM4C4x3Fs0EEw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_M0z=QaeASNBfM6QfOhZ=+hvZD0XkX9nM4C4x3Fs0EEw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+	<1447031505-12477-7-git-send-email-mdavidsaver@gmail.com>
+	<CAFEAcA-kjyt2qVjrMN-3+aEapb4u0tRqy62+=8j5EsrNVUSc6Q@mail.gmail.com>
+	<565F7C2F.1020708@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Dec 2015 00:11:38 +0000
+Message-ID: <CAFEAcA86Oo6CUiAt5nqonpGsCkfvtuLWUgrUQgOx62ejWFyzNA@mail.gmail.com>
+To: Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::233
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH 11/18] armv7m: fix I and F flag handling
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::232
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH 06/18] armv7m: new NVIC utility functions
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6ViRX8MXui3k
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tO6V2zZOj4YJ
 
-On 11/20/2015 08:47 AM, Peter Maydell wrote:
-> On 9 November 2015 at 01:11, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
->> Despite having the same notation, these bits
->> have completely different meaning than -AR.
+On 2 December 2015 at 23:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
+> On 11/20/2015 08:25 AM, Peter Maydell wrote:
+>> Hi; I have a lot of review comments on this patch set, but that's
+>> really because v7M exception logic is pretty complicated and
+>> our current code is a long way away from correct. You might
+>> find it helpful to separate out "restructure the NVIC code
+>> into its own device" into separate patches from "and now add
+>> functionality like exception escalation", perhaps.
+>
+> I'd certainly find this helpful :) I'm just not sure how to accomplish
+> this and still make every patch compile.
+
+The idea would be to have a patch which is just moving (copying)
+the old code into the new code structure, so you get the old behaviour
+but in the new device. Then you have patches which change the old
+behaviour to the desired new behaviour.
+
+>>> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
+>>> ---
+>>>  hw/intc/armv7m_nvic.c | 250 +++++++++++++++++++++++++++++++++++++++++++++++---
+>>>  1 file changed, 235 insertions(+), 15 deletions(-)
+>>>
+>>> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+>>> index 487a09a..ebb4d4e 100644
+>>> --- a/hw/intc/armv7m_nvic.c
+>>> +++ b/hw/intc/armv7m_nvic.c
+>>> @@ -140,36 +140,256 @@ static void systick_reset(nvic_state *s)
+>>>      timer_del(s->systick.timer);
+>>>  }
+>>>
+>>> -/* The external routines use the hardware vector numbering, ie. the first
+>>> -   IRQ is #16.  The internal GIC routines use #32 as the first IRQ.  */
+>>> +/* caller must call nvic_irq_update() after this */
+>>> +static
+>>> +void set_prio(nvic_state *s, unsigned irq, uint8_t prio)
+>>> +{
+>>> +    unsigned submask = (1<<(s->prigroup+1))-1;
+>>> +
+>>> +    assert(irq > 3); /* only use for configurable prios */
+>>> +    assert(irq < NVIC_MAX_VECTORS);
+>>> +
+>>> +    s->vectors[irq].raw_prio = prio;
+>>> +    s->vectors[irq].prio_group = (prio>>(s->prigroup+1));
+>>> +    s->vectors[irq].prio_sub = irq + (prio&submask)*NVIC_MAX_VECTORS;
 >>
->> Add armv7m_excp_unmasked()
->> to calculate the currently runable exception priority
->> taking into account masks and active handlers.
->> Use this in conjunction with the pending exception
->> priority to determine if the pending exception
->> can interrupt execution.
-> 
-> This function is used by code added in earlier patches in
-> this series, so this patch needs to be moved earlier in the
-> series, or those patches won't compile.
+>> Precalculating the group priority seems a bit odd, since it
+>> will change later anyway if the guest writes to PRIGROUP.
+>
+> I've kept the pre-calculation as the alternative comparison code is
+> no simpler when tie breaking with exception number is done.
 
-Should be fixed.
+Precalculation means you end up either (a) migrating state which
+isn't really device state, or (b) having to re-calculate the
+precalculations on migration load. (a) isn't really a good idea
+since it turns internal details of the implementation into ABI
+we might eventually have to support for backward compatibility
+of migrations, and (b) is extra code.
 
->> Signed-off-by: Michael Davidsaver <mdavidsaver@gmail.com>
->> ---
->>  target-arm/cpu.c | 26 +++++++-------------------
->>  target-arm/cpu.h | 27 ++++++++++++++++++++++++++-
->>  2 files changed, 33 insertions(+), 20 deletions(-)
+>>> +
+>>> +    DPRINTF(0, "Set %u priority grp %d sub %u\n", irq,
+>>> +            s->vectors[irq].prio_group, s->vectors[irq].prio_sub);
+>>> +}
+>>> +
+>>> +/* recompute highest pending */
+>>> +static
+>>> +void nvic_irq_update(nvic_state *s, int update_active)
+>>> +{
+>>> +    unsigned i;
+>>> +    int lvl;
+>>> +    CPUARMState *env = &s->cpu->env;
+>>> +    int16_t act_group = 0x100, pend_group = 0x100;
+>>> +    uint16_t act_sub = 0, pend_sub = 0;
+>>> +    uint16_t act_irq = 0, pend_irq = 0;
+>>> +
+>>> +    /* find highest priority */
+>>> +    for (i = 1; i < s->num_irq; i++) {
+>>> +        vec_info *I = &s->vectors[i];
 >>
->> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
->> index be026bc..5d03117 100644
->> --- a/target-arm/cpu.c
->> +++ b/target-arm/cpu.c
->> @@ -173,6 +173,8 @@ static void arm_cpu_reset(CPUState *s)
->>          uint32_t initial_pc; /* Loaded from 0x4 */
->>          uint8_t *rom;
+>> Minor style issue: we prefer lower case for variable names,
+>> and CamelCase for structure type names (see CODING_STYLE).
+>> So this would be VecInfo *vec; or something similar.
+>
+> Done.
+>
+>>> +
+>>> +        DPRINTF(2, " VECT %d %d:%u\n", i, I->prio_group, I->prio_sub);
+>>> +
+>>> +        if (I->active && ((I->prio_group < act_group)
+>>> +                || (I->prio_group == act_group && I->prio_sub < act_sub)))
 >>
->> +        env->v7m.exception_prio = env->v7m.pending_prio = 0x100;
->> +
->>          env->daif &= ~PSTATE_I;
->>          rom = rom_ptr(0);
->>          if (rom) {
->> @@ -301,29 +303,15 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->>  {
->>      CPUClass *cc = CPU_GET_CLASS(cs);
->>      ARMCPU *cpu = ARM_CPU(cs);
->> -    CPUARMState *env = &cpu->env;
->>      bool ret = false;
+>> Because the group priority and sub priority are just two contiguous
+>> parts of the raw priority, you get the same effect here by just
+>> doing a comparison on the raw value: "I->raw_prio <  act_raw_prio".
+>
+> Not quite since it's possible that I->raw_prio == act_raw_prio.  As
+> I read the ARM this situation should be avoided by using the exception
+> number to break the tie.  This way no two priorities are ever equal.
+>  This is the reason that act_sub is "irq + (prio&submask)*NVIC_MAX_VECTORS".
+
+You should use the exception number to break the tie, yes, but
+I don't see why that requires you to encode the irq number into
+anything, because you can arrange that you get that behaviour
+by coding the loop suitably. The code I had isn't quite right,
+though...
+
+>> Note however that the running priority is actually only the
+>> group priority part (see the pseudocode ExecutionPriority function)
+>> and so you want something more like:
 >>
->> -
->> -    if (interrupt_request & CPU_INTERRUPT_FIQ
->> -        && !(env->daif & PSTATE_F)) {
->> -        cs->exception_index = EXCP_FIQ;
->> -        cc->do_interrupt(cs);
->> -        ret = true;
->> -    }
->> -    /* ARMv7-M interrupt return works by loading a magic value
->> -     * into the PC.  On real hardware the load causes the
->> -     * return to occur.  The qemu implementation performs the
->> -     * jump normally, then does the exception return when the
->> -     * CPU tries to execute code at the magic address.
->> -     * This will cause the magic PC value to be pushed to
->> -     * the stack if an interrupt occurred at the wrong time.
->> -     * We avoid this by disabling interrupts when
->> -     * pc contains a magic address.
-> 
-> This (removing this comment and the checks for the magic address)
-> seem to be part of a separate change [probably the one in
-> "armv7m: Undo armv7m.hack"] and shouldn't be in this patch.
+>>     highestpri = 0x100;
+>>     for (each vector) {
+>>         if (vector->active && vector->raw_prio < highestpri) {
+>>             highestpri = vector->raw_prio & prigroup_mask;
+>>             act_sub = vector->raw_prio & ~prigroup_mask; // if you need it
+>>         }
+>>     }
 
-Relocated.
+...try:
 
->> +    /* ARMv7-M interrupt masking works differently than -A or -R.
->> +     * There is no FIQ/IRQ distinction.
->> +     * Instead of masking interrupt sources, the I and F bits
->> +     * (along with basepri) mask certain exception priority levels.
->>       */
->>      if (interrupt_request & CPU_INTERRUPT_HARD
->> -        && !(env->daif & PSTATE_I)
->> -        && (env->regs[15] < 0xfffffff0)) {
->> +            && (armv7m_excp_unmasked(cpu) >= cpu->env.v7m.pending_prio)) {
->>          cs->exception_index = EXCP_IRQ;
->>          cc->do_interrupt(cs);
->>          ret = true;
->> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
->> index c193fbb..29d89ce 100644
->> --- a/target-arm/cpu.h
->> +++ b/target-arm/cpu.h
->> @@ -1033,9 +1033,34 @@ void arm_cpu_list(FILE *f, fprintf_function cpu_fprintf);
->>  uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
->>                                   uint32_t cur_el, bool secure);
+   highestpri = current_running_priority;
+   /* find highest priority active vector; this will correctly
+    * handle group and subgroup priority fields, and in the case
+    * of a tie we'll get the vector with the lowest exception
+    * number, because the comparison is '<' and we start from 0.
+    */
+   for (each vector starting from 0) {
+       if (vector->active && vector->raw_prio < highestpri) {
+           highestpri = vector->raw_prio;
+       }
+   }
+   if ((highestpri & prigroup_mask) < current_running_priority) {
+       /* this interrupt should actually preempt */
+   }
+
+(I think we also have similar loop-through-all-interrupts logic in
+the "return current running priority" function, though -- we should
+only do the calculation in one place if we can.)
+
+>>> +        unsigned escalate = 0;
+>>> +        if (I->active) {
+>>> +            /* trying to pend an active fault (possibly nested).
+>>> +             * eg. UsageFault in UsageFault handler
+>>> +             */
+>>> +            escalate = 1;
+>>> +            DPRINTF(0, " Escalate, active\n");
 >>
->> +/* @returns highest (numerically lowest) unmasked exception priority
->> + */
->> +static inline
->> +int armv7m_excp_unmasked(ARMCPU *cpu)
-> 
-> What this is really calculating is the current execution
-> priority (running priority) of the CPU, so I think a better
-> name would be armv7m_current_exec_priority() or
-> armv7m_current_priority() or armv7m_running_priority() or similar.
+>> You don't need to explicitly check for this case, because it
+>> will be caught by the "is the running priority too high" check
+>> (the current running priority must be at least as high as the
+>> priority of an active fault handler). If you look at the ARM ARM
+>> section on priority escalation you'll see that "undef in a
+>> UsageFault handler" is listed in the "examples of things that
+>> cause priority escalation" bullet list, not the "definition of
+>> what causes escalation" list.
+>
+> Good point.  On re-reading this I think I understand better how
+> priority changes take effect (immediately).  I've move this test
+> last and made it a hw_error() since it should only be hit if
+> some bug results in inconsistency between the NVIC and ARMCPU
+> priorities fields.
 
-Now armv7m_excp_running_prio()
+It can happen for synchronous exceptions, like the example
+case of UsageFault in a UsageFault handler (eg executing an
+undefined insn in the handler).
 
->> +{
->> +    CPUARMState *env = &cpu->env;
->> +    int runnable;
->> +
->> +    /* find highest (numerically lowest) priority which could
->> +     * run based on masks
->> +     */
->> +    if (env->daif&PSTATE_F) { /* FAULTMASK */
-> 
-> Style issue -- operands should have spaces around them.
-> 
->> +        runnable = -2;
-> 
-> These all seem to be off by one: FAULTMASK sets the
-> running priority to -1, not -2, PRIMASK sets it to 0,
-> not -1, and so on.
-
-The off by one was due to my confusing runnable vs. running distinction, now gone.
-
->> +    } else if (env->daif&PSTATE_I) { /* PRIMASK */
->> +        runnable = -1;
->> +    } else if (env->v7m.basepri > 0) {
->> +        /* BASEPRI==1 -> runnable==-1 (same as PRIMASK==1) */
-> 
-> (applies to operands in comments too)
-> 
->> +        runnable = env->v7m.basepri-2;
-> 
-> Where is this - 2 from? Also, BASEPRI values honour the
-> PRIGROUP setting. (Compare the ExecutionPriority pseudocode).
-
-The off by two for BASEPRI was my mis-reading the definition.
-
->> +    } else {
->> +        runnable = 0x100; /* lower than any possible priority */
->> +    }
->> +    /* consider priority of active handler */
->> +    return MIN(runnable, env->v7m.exception_prio-1);
-> 
-> I don't think this -1 should be here.
-
-It is gone.
-
->> +}
->> +
->>  /* Interface between CPU and Interrupt controller.  */
->>  void armv7m_nvic_set_pending(void *opaque, int irq);
->> -int armv7m_nvic_acknowledge_irq(void *opaque);
->> +void armv7m_nvic_acknowledge_irq(void *opaque);
->>  void armv7m_nvic_complete_irq(void *opaque, int irq);
+>>> +            escalate = 1;
+>>> +        }
+>>> +
+>>> +        if (escalate) {
+>>> +#ifdef DEBUG_NVIC
+>>> +            int oldirq = irq;
+>>> +#endif
+>>> +            if (runnable < -1) {
+>>> +                /* TODO: actual unrecoverable exception actions */
+>>> +                cpu_abort(&s->cpu->parent_obj,
+>>> +                          "%d in %d escalates to unrecoverable exception\n",
+>>> +                          irq, active);
+>>> +            } else {
+>>> +                irq = ARMV7M_EXCP_HARD;
+>>> +            }
+>>> +            I = &s->vectors[irq];
+>>> +
+>>> +            DPRINTF(0, "Escalate %d to %d\n", oldirq, irq);
 >>
->>  /* Interface for defining coprocessor registers.
-> 
-> thanks
-> -- PMM
-> 
+>> Faults escalated to HardFault retain the ReturnAddress
+>> behaviour of the original fault (ie what return-address
+>> is saved to the stack as part of the exception stacking and
+>> so whether we resume execution on the faulting insn or the
+>> next one). So it's not sufficient to just say "treat it
+>> exactly as if it were a HardFault" like this.
+>
+> I'm confused.  From my testing it seems like the PC has already
+> been adjusted by this point and no further changes are needed.
+> Am I missing something?
+
+You're right -- for arm_v7m_cpu_do_interrupt() we expect the
+PC to have already been adjusted as required (this is unlike
+the A/R profile do_interrupt function which does the adjustment
+of the LR according to type of exception, which is why I thought
+there was a problem.)
+
+In that case we should just have a comment here that says
+that since env->regs[15] has already been adjusted appropriately
+for the original fault type we can just change the irq number
+here and still get the correct ReturnAddress behaviour for
+the original fault.
+
+thanks
+-- PMM

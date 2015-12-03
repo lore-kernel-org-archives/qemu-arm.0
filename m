@@ -1,65 +1,65 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3414066obb;
-        Wed, 2 Dec 2015 16:23:42 -0800 (PST)
-X-Received: by 10.140.176.143 with SMTP id w137mr7198137qhw.20.1449102222554;
-        Wed, 02 Dec 2015 16:23:42 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3414091obb;
+        Wed, 2 Dec 2015 16:23:46 -0800 (PST)
+X-Received: by 10.55.207.139 with SMTP id v11mr7450188qkl.53.1449102226845;
+        Wed, 02 Dec 2015 16:23:46 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b71si1978815qkj.108.2015.12.02.16.23.42
+        by mx.google.com with ESMTPS id h95si4379812qge.82.2015.12.02.16.23.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Dec 2015 16:23:42 -0800 (PST)
+        Wed, 02 Dec 2015 16:23:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60956 helo=lists.gnu.org)
+Received: from localhost ([::1]:60957 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4HgU-0003y5-2c
-	for alex.bennee@linaro.org; Wed, 02 Dec 2015 19:23:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36099)
+	id 1a4HgY-00047a-ED
+	for alex.bennee@linaro.org; Wed, 02 Dec 2015 19:23:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36265)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1a4Hc0-00049B-AU
-	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:19:05 -0500
+	(envelope-from <mdavidsaver@gmail.com>) id 1a4Hc4-0004Eg-Ge
+	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:19:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1a4Hbz-0001wr-6G
-	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:19:04 -0500
-Received: from mail-qk0-x22e.google.com ([2607:f8b0:400d:c09::22e]:36356)
+	(envelope-from <mdavidsaver@gmail.com>) id 1a4Hc3-0001zz-NL
+	for qemu-devel@nongnu.org; Wed, 02 Dec 2015 19:19:08 -0500
+Received: from mail-qg0-x229.google.com ([2607:f8b0:400d:c04::229]:34967)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mdavidsaver@gmail.com>)
-	id 1a4Hbz-0001wm-2B; Wed, 02 Dec 2015 19:19:03 -0500
-Received: by qkda6 with SMTP id a6so23874819qkd.3;
-	Wed, 02 Dec 2015 16:19:02 -0800 (PST)
+	id 1a4Hc3-0001zo-Is; Wed, 02 Dec 2015 19:19:07 -0500
+Received: by qgec40 with SMTP id c40so48208167qge.2;
+	Wed, 02 Dec 2015 16:19:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=+3xmU8KDwWJLtqOnoX2n8E9231QHiPgo6nkkW+saefM=;
-	b=D4tUX9vMTfJrCymIaP0M42YEbIkhyOoW+5bRXu+/vBNk65wKTCOBkEOQXu77ciV7nt
-	y10QnwWO7OA8JszWnVcw7w3vGeu0L9NRSXbS4M6t3OJP4zqySyVJ4sn5s20R6HUo0/m9
-	5JjCuUP6JMHeNrAYpxJjaj/0uHajRygmMjP6cxGWA8Tin1Y2TcBLr9vZKoLx+s91iiQz
-	De9G57e6W2aRrpEA57Qar6Qn5kVo7D+LEjJAdGRakOE/rq2Lf8sFtVjumViYL19qNcZm
-	VhvwS7xMVAqRwcQ/jDPpZrq2ltT0O9TjEI7Z9bjRLm7f43odSFwdJ6ehoxVLB6uL4xu5
-	gNLg==
-X-Received: by 10.55.82.193 with SMTP id g184mr7561727qkb.65.1449101942666;
-	Wed, 02 Dec 2015 16:19:02 -0800 (PST)
+	bh=1LOESrnGHMohoz0TXB+RMsifE10tR0fkFD3+EW/I19U=;
+	b=IDrXnjxGzMW2B5ajngoWBvvs5hFQNT+nHOVo6jf4iWbnOvYMmrqPKOaoA7z+TRkMll
+	gdrR2q61bjhrEW4siOlc51cI1q1F8/daoaOfUFaAcW4WvweXJtT2fCVzfRbtt5/zujVy
+	yGh7TjYmk3jZRlVZ7faUTRaVlYrAYy1B0tHJ71TnEhZ1yS8fzn3jhTqEfk0j1p76U1CP
+	vMzQxK9PQ9A6K34FjYwwDe+xqZVch+63uIhXFjD0uSGQx0nalMADqtFjfZo8bilND2Z3
+	eO1uzEQ7Aac5Twdd3QMWLQ0barqNt889HWEhxoz16G0KVmjo4weWf/3gOtTxi9znKa/a
+	vomQ==
+X-Received: by 10.140.242.77 with SMTP id n74mr8156662qhc.37.1449101947194;
+	Wed, 02 Dec 2015 16:19:07 -0800 (PST)
 Received: from desktop.local (ool-182df582.dyn.optonline.net. [24.45.245.130])
 	by smtp.gmail.com with ESMTPSA id
-	e31sm2276326qge.11.2015.12.02.16.19.02
+	e31sm2276326qge.11.2015.12.02.16.19.06
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 02 Dec 2015 16:19:02 -0800 (PST)
+	Wed, 02 Dec 2015 16:19:06 -0800 (PST)
 From: Michael Davidsaver <mdavidsaver@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  2 Dec 2015 19:18:32 -0500
-Message-Id: <1449101933-24928-6-git-send-email-mdavidsaver@gmail.com>
+Date: Wed,  2 Dec 2015 19:18:37 -0500
+Message-Id: <1449101933-24928-11-git-send-email-mdavidsaver@gmail.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
 References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::22e
+X-Received-From: 2607:f8b0:400d:c04::229
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm@nongnu.org, Michael Davidsaver <mdavidsaver@gmail.com>
-Subject: [Qemu-devel] [PATCH v2 05/26] armv7m: add armv7m_excp_running_prio()
+Subject: [Qemu-devel] [PATCH v2 10/26] armv7m: auto-clear FAULTMASK
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -73,75 +73,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bQQoll95TpdI
+X-TUID: oq0MCohCS3Ge
 
-Implements v7m exception priority algorithm
-using FAULTMASK, PRIMASK, BASEPRI, and the highest
-priority active exception.
-
-The number returned is the current execution priority
-which may be in the range [-2,0x7f] when an exception is active
-or 0x100 when no exception is active.
+on return from all exceptions other than NMI
 ---
- hw/intc/armv7m_nvic.c | 25 +++++++++++++++++++++++++
- target-arm/cpu.h      |  1 +
- 2 files changed, 26 insertions(+)
+ target-arm/helper.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 6fc167e..0145ca7 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -18,6 +18,8 @@
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index d1ca011..b6ec761 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -5379,8 +5379,13 @@ static void do_v7m_exception_exit(CPUARMState *env)
+     uint32_t xpsr;
  
- typedef struct {
-     GICState gic;
-+    uint8_t prigroup;
-+
-     struct {
-         uint32_t control;
-         uint32_t reload;
-@@ -116,6 +118,29 @@ static void systick_reset(nvic_state *s)
-     timer_del(s->systick.timer);
- }
- 
-+/* @returns the active (running) exception priority.
-+ *    only a higher (numerically lower) priority can preempt.
-+ */
-+int armv7m_excp_running_prio(ARMCPU *cpu)
-+{
-+    CPUARMState *env = &cpu->env;
-+    nvic_state *s = env->nvic;
-+    int running;
-+
-+    if (env->daif & PSTATE_F) { /* FAULTMASK */
-+        running = -1;
-+    } else if (env->daif & PSTATE_I) { /* PRIMASK */
-+        running = 0;
-+    } else if (env->v7m.basepri > 0) {
-+        /* BASEPRI==1 -> masks [1,255] (not same as PRIMASK==1) */
-+        running = env->v7m.basepri >> (s->prigroup+1);
-+    } else {
-+        running = 0x100; /* lower than any possible priority */
+     type = env->regs[15];
+-    if (env->v7m.exception != 0)
++    if (env->v7m.exception != ARMV7M_EXCP_NMI) {
++        /* Auto-clear FAULTMASK on return from other than NMI */
++        env->daif &= ~PSTATE_F;
 +    }
-+    /* consider priority of active handler */
-+    return MIN(running, env->v7m.exception_prio);
-+}
-+
- /* The external routines use the hardware vector numbering, ie. the first
-    IRQ is #16.  The internal GIC routines use #32 as the first IRQ.  */
- void armv7m_nvic_set_pending(void *opaque, int irq)
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index c193fbb..e2d9e75 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -1034,6 +1034,7 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
-                                  uint32_t cur_el, bool secure);
++    if (env->v7m.exception != 0) {
+         armv7m_nvic_complete_irq(env->nvic, env->v7m.exception);
++    }
  
- /* Interface between CPU and Interrupt controller.  */
-+int armv7m_excp_running_prio(ARMCPU *cpu);
- void armv7m_nvic_set_pending(void *opaque, int irq);
- int armv7m_nvic_acknowledge_irq(void *opaque);
- void armv7m_nvic_complete_irq(void *opaque, int irq);
+     /* Switch to the target stack.  */
+     switch_v7m_sp(env, (type & 4) != 0);
 -- 
 2.1.4
 

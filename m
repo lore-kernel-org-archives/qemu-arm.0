@@ -1,118 +1,68 @@
-Received: by 10.182.158.201 with SMTP id ww9csp414748obb;
-        Thu, 3 Dec 2015 22:05:25 -0800 (PST)
-X-Received: by 10.140.153.213 with SMTP id 204mr17405539qhz.30.1449209125790;
-        Thu, 03 Dec 2015 22:05:25 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1582213obb;
+        Sat, 5 Dec 2015 21:19:47 -0800 (PST)
+X-Received: by 10.140.98.117 with SMTP id n108mr29040842qge.56.1449379187903;
+        Sat, 05 Dec 2015 21:19:47 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y65si4891759qhy.43.2015.12.03.22.05.25
+        by mx.google.com with ESMTPS id 200si21921128qhm.3.2015.12.05.21.19.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Dec 2015 22:05:25 -0800 (PST)
+        Sat, 05 Dec 2015 21:19:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:38838 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48731 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4jUj-0004fo-I6
-	for alex.bennee@linaro.org; Fri, 04 Dec 2015 01:05:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47275)
+	id 1a5Rjf-0001Nk-DH
+	for alex.bennee@linaro.org; Sun, 06 Dec 2015 00:19:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a4jSk-0000jC-83
-	for qemu-arm@nongnu.org; Fri, 04 Dec 2015 01:03:23 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5Rjb-0001IL-Kj
+	for qemu-arm@nongnu.org; Sun, 06 Dec 2015 00:19:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a4jSi-0000Em-Nr
-	for qemu-arm@nongnu.org; Fri, 04 Dec 2015 01:03:22 -0500
-Received: from mail-bn1on0111.outbound.protection.outlook.com
-	([157.56.110.111]:25728
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5RjZ-0002OH-V9
+	for qemu-arm@nongnu.org; Sun, 06 Dec 2015 00:19:43 -0500
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:35312)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1a4jSd-0000CJ-K6; Fri, 04 Dec 2015 01:03:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=Z3+4CK+m3wxGanAy2YfScBkGgL5ymaPt+P2DeWbcO9s=;
-	b=nC0KCLAZsCDERIS7XMxeA4Zfp9gyI2omVVIQppYpmWDvWHS6rdNbrrK+aecADOp/23e/qa3uiQfss4IvcupiBUWqPlT9gPBqI/di50crHnnDDuxDwd9aoBefc9/CCsRngOda7fyZHKflAjFXj63s+SuzDnAp7KkDtDDhLiG2a4c=
-Authentication-Results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:6::724)
-	by SN1PR0301MB2046.namprd03.prod.outlook.com (10.163.226.155) with
-	Microsoft
-	SMTP Server (TLS) id 15.1.331.20; Fri, 4 Dec 2015 06:03:13 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 3 Dec 2015 22:01:26 -0800
-Message-ID: <1449208887-9564-7-git-send-email-Andrew.Baumann@microsoft.com>
-X-Mailer: git-send-email 2.5.1
-In-Reply-To: <1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1a5RjW-0002NP-20; Sun, 06 Dec 2015 00:19:38 -0500
+Received: by wmuu63 with SMTP id u63so104869565wmu.0;
+	Sat, 05 Dec 2015 21:19:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=c30CcedlSrHc+MbuVNsfH5M8X63gqAF/P1A19nOd9tY=;
+	b=vvVl2s5P9qGZK53DOwlxHQkYWSNlDVuDahofqD91y6cCEBJVT4WST+U2sk1FjGHWrl
+	V8PGFYpip5oADAneeyKa3k/pQp2luHuV+U6koov3WFhKHLStvWrLSe+sY9kMiECS2LCG
+	NFypK8UwCj5dai2SbF0vgbWQotdRqZUh4fHgdo8NapMCTWT2FGgeyupwXg/PPh5GTEWm
+	qsXgJuQ2uJOuQbQOafZCDdXhHBH92Tt3brQNzy+PUHSyT6Cqktnh3tkFqFDt60K6eFwy
+	PMh9CIcr3bf8eKY6lz3zQTNq+dkNrfoq+RvLqsOgw4IJnJyGJN/+cP7D7qxyUTvBPjYn
+	uFtg==
+MIME-Version: 1.0
+X-Received: by 10.194.204.166 with SMTP id kz6mr1570980wjc.174.1449379176930; 
+	Sat, 05 Dec 2015 21:19:36 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Sat, 5 Dec 2015 21:19:36 -0800 (PST)
+In-Reply-To: <1449208887-9564-3-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [2001:4898:80e8:6::724]
-X-ClientProxiedBy: CY1PR21CA0026.namprd21.prod.outlook.com (25.161.247.36) To
-	SN1PR0301MB2046.namprd03.prod.outlook.com (25.163.226.155)
-X-Microsoft-Exchange-Diagnostics: 1; SN1PR0301MB2046;
-	2:5lC36AoXie+ZTRiaVZoYuPOJW1VOnBmLcYAVPL2gd+ZG+SMozkuUOB10LscVia64vHMeaJcinXd3xc9TKvr9d1vjBsfVh/YaDFN1P/1duyc9phE9MIfU5+E1qm2/FwPWxtNtknUpMrMbUyAxrU/FWg==;
-	3:8uLgqCUoumzyQdEsfjul5rX6uI8C2WNmT93NJm8Gwt7vhgx6ifZf/GAuvO19PtWqsYwbnfikhejXUPUiKnnKO/8VAHbPl3nRNynLiS2RlRHEfktGH2vhD4MdtMDK41o9;
-	25:PgazNljvXJs1EiY163fXHR5wayhzr9+r9WcgoZERbjgR49HSYU3vbqdhbn7vCz6Dz/b4tRuNFK+aM5iLzLff9/ETBZmEUk80JUAtP7V32c4Kl8Maau0BazCEBShLwoXFAlaEjatCfIjEQ5ylgNDM2fw/4iY6/j1hVwmuJOW9t5Vz12wHUqr5OYAlhqJMUVSfZQmTwm0pDlV/j7hVBKx7S88qyRoEWcqlacBvvFqUrnSHF3cbBFuhetfII5y5IwCOd0Q/smuQTreFICX3kzvYzw==
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:SN1PR0301MB2046;
-X-Microsoft-Exchange-Diagnostics: 1; SN1PR0301MB2046;
-	20:E5sLD5GKLZF20Ml8Nqb58xnqnEId77xgB6xm/W1ylqtX4LxseY40iriGWux/+sedv4WwqwrUGpVbMZyV/K0D09raYQqTwQtpcZ2EngXKSj3vAsNP3ubwp/RCmeELZLKI7rEJUXPJy4pD+qTY8wWDia4WDFoVFmUJczre2+G81T2JiHc+7wZgqm3RlapxD798cg54Z20BnC2ynev661HAY31M0n9UTQy0hksjNm4f1KjSYIRq2pStIjLA3uutsHhKfHXeutU1F3jN3EgEiNfkC94Fgm7Lvb1JPRoo/Yt1d9Al4BzZ5gRzUDc9qyc1mSVP8hjNmyF8fD4bhgm1S3oqBa4RF2db0NERouPYlmxVAgaiighTc9yScdRQlcO2I0c3ucDbCiY/eC680JMoUXZuE3CR72uHdbcnHOyeaZjNdyMnA8rZoiEVdNLwJfXXnO66hZwL9fgdsWg73Ov3MC+uumnbaMy30V6gTb26RVVQa0oNnNTxSI5xyOXp22212Ree;
-	4:6iae3dOCkhGXV+HRyOMjRVtHU4qElXohRCxRLYg/bmKTdFrIRwR/6dWAv4L81Mp/Yi5a2nLT57X9WY/QIU6J0OQcAznb7q1uzel2ecLzAcnTaZLjwzupuuINQLu/PlQ1UtE0mCXlMl/+jaFo22fBgTeOKYRk83j5DnyM7fmalRMCr9Qo7hB1KWfwiMFmP/amWiAF6A7isjLI6T44R0GWRnq0oeWIirjp4uQtdqeCg9RUuHs94uXwKcL0ABQGLyJbqBY7V2bpT3Q/jTHRO6LCt4MdTIUiGBNdNruwlEKKad9NAlI0zZdnPEA//7ZH61B357XZS9LMUvtrtn4FvBQMT4r7yb6kyxEmmemPfuh35x1nEw8LpeM46dElYyVP8Yvo5JX9iYw41cZZg6kA8PUh0nHRFZ2NFKGW6Be5IpDM3yCUjtzbzAGU2dgu3Ttcvazr
-X-Microsoft-Antispam-PRVS: <SN1PR0301MB20464E3BAA1BBEA3CB68A1569E0C0@SN1PR0301MB2046.namprd03.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(108003899814671);
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(8121501046)(520078)(5005006)(10201501046)(3002001);
-	SRVR:SN1PR0301MB2046; BCL:0; PCL:0; RULEID:;
-	SRVR:SN1PR0301MB2046; 
-X-Forefront-PRVS: 07807C55DC
-X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(6009001)(189002)(199003)(101416001)(5005710100001)(50226001)(4001430100002)(105586002)(6116002)(106356001)(42186005)(86612001)(77096005)(48376002)(36756003)(5008740100001)(5004730100002)(10090500001)(1096002)(10290500002)(2950100001)(189998001)(87976001)(586003)(92566002)(2351001)(81156007)(19580405001)(5003940100001)(122386002)(19580395003)(86362001)(50986999)(40100003)(50466002)(110136002)(47776003)(5001960100002)(107886002)(76176999)(229853001)(97736004)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:SN1PR0301MB2046;
-	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-Received-SPF: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; SN1PR0301MB2046;
-	23:jyiPeRaKVIE6t2CkmWC8fPBm+jA2eXFz5rcqbsL?=
-	=?us-ascii?Q?hLMZb7S2MnanlFLkWUIYoDd6lzM8NyhvTz1sNxkf7Gh/6RwLhUhols5n5lUa?=
-	=?us-ascii?Q?VKXANyVf+IPEzTN+5K78ZMkihAxBqY2eaKShKNJ4nS4rbIqrovLlUy0TxqLD?=
-	=?us-ascii?Q?bY111PmsXvWF96kD7JMfTHw4GE9efpv+P1p9iJXhkpKfyYd/aU1eOuVbNuof?=
-	=?us-ascii?Q?INpxxafaZL4+EVJkldBwkb/3iNtfJkEUbJlwevRid5bSQcM6qnK4s+k1Sw4D?=
-	=?us-ascii?Q?6Xm8HnHFX8cdioYRbffhiBvnw9iFy+bG3M/Dd5ugGb3KcVfnWJ86dCOIFU2k?=
-	=?us-ascii?Q?8Xlpdjo25RXbQJMiGxed8XzolH63hGc0RhCP4EauMnXYP/qqXaC9QYybwVnG?=
-	=?us-ascii?Q?JB5CgJc8Zq3wWCouub0CleiSY4KlzwdWGSRnqdx55vET8lqn11lPpE6I+F4H?=
-	=?us-ascii?Q?iAHkOiZJYNkfEsKthmIZjf++aSKYjOrMomhgL/Dn0fMVZB+01GZzV5UTGim+?=
-	=?us-ascii?Q?O69f5OnczQeCYC6PBmu7FH81WKqOt2KQreLgXpVY7ySQwfSe0CD8YqZhdR6B?=
-	=?us-ascii?Q?PvwHMFDtmT2XV0oMEi4zzdx1ChkdaibM0ORI1A3AsmTEUo4H5lWTqzucxvUV?=
-	=?us-ascii?Q?qxj6gjyf3+WQjYpJXmbMg0XFeI0JMfM7/RMeXdoH1m3eIeTMMUBiYuACLEQQ?=
-	=?us-ascii?Q?f3+lyLDknUCO2zifMaKc+e0z3b34QybB1yLAfa9ffp2dBvfq7rIfrucbR4T6?=
-	=?us-ascii?Q?ENFDF0uhq4iNp0G9swWWkYOduuyoUN8e9lkIgfmrpHJoH+u2O90GISV3rAnL?=
-	=?us-ascii?Q?gocVFlo2ljIDDEeAIMZqSvG7va+XyJKqrVv5VfSGkGLb3ScAUO/7pMfroj/e?=
-	=?us-ascii?Q?1pAq6RYWzN7w1V/P/IdfCQ07n/E07iOt+YGpw52c7x9VS/FOYPRTwruIm40U?=
-	=?us-ascii?Q?38DoDgBJ23jDtdZpvXbsSnA/mIE1bXJEZBf5Asw820FN4RaPO/U40HCN11S1?=
-	=?us-ascii?Q?bkpcWTmm2Iz7UFylgUOlMIYXXohmjiN22gCyhk6tlC8OwQwqCk8kCszcHYki?=
-	=?us-ascii?Q?NlBU7QrebCX2F/Ba6aCtOxncd5I+0gbohb5M3XWsvAPO3HzrqFHQt427A9x5?=
-	=?us-ascii?Q?C5jaZWPZn1mIYovLaOcTvDlsFz5xSRoS7+rEyeB0mnNgyxILHOb5KzA=3D?=
-	=?us-ascii?Q?=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; SN1PR0301MB2046;
-	5:EE6WbY6DPwMuZw4YeSXb0kIhf6oX1JjYWoIwzIw7PztOIb51YLwzU7s071K6TzflBFQGsCjz6UM5Ip0rIr0hlSoMCF8d1J83K00vf7LhDKhu4EUhVd8SJuDguwvEcyGuQI0k0kMqcRwcoDJidWenAw==;
-	24:59ZO3EFYuHuI0mvaAR081RJv3yxNQt0h9GLkz0n5QoyNxwj8+ghp45qfDY9UkIQBnEaa1WoUUECZYNv6yAuPtiJAr1Sr19d6O/NK5OSVL68=
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Dec 2015 06:03:13.5974 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR0301MB2046
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.110.111
+	<1449208887-9564-3-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Sat, 5 Dec 2015 21:19:36 -0800
+Message-ID: <CAPokK=r_c4yK3C8yp7mmqAsBKUrnA-3fLgKyp2eHKJyWy9HC9w@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22a
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-arm] [PATCH 7/8] bcm2836: add bcm2836 soc device
+Subject: Re: [Qemu-arm] [PATCH 3/8] bcm2835_ic: add bcm2835 interrupt
+	controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -126,212 +76,441 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sllQ/xK+BM1j
+X-TUID: pNs+9uxWF6vo
 
-This is the SoC for Raspberry Pi 2.
+On Thu, Dec 3, 2015 at 10:01 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> ---
+>  hw/intc/Makefile.objs        |   1 +
+>  hw/intc/bcm2835_ic.c         | 234 +++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/intc/bcm2835_ic.h |  26 +++++
+>  3 files changed, 261 insertions(+)
+>  create mode 100644 hw/intc/bcm2835_ic.c
+>  create mode 100644 include/hw/intc/bcm2835_ic.h
+>
+> diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+> index 004b0c2..2ad1204 100644
+> --- a/hw/intc/Makefile.objs
+> +++ b/hw/intc/Makefile.objs
+> @@ -24,6 +24,7 @@ obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+>  obj-$(CONFIG_IOAPIC) += ioapic.o
+>  obj-$(CONFIG_OMAP) += omap_intc.o
+>  obj-$(CONFIG_OPENPIC_KVM) += openpic_kvm.o
+> +obj-$(CONFIG_RASPI) += bcm2835_ic.o
 
-Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
----
- hw/arm/Makefile.objs     |   2 +-
- hw/arm/bcm2836.c         | 135 +++++++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/bcm2836.h |  33 ++++++++++++
- 3 files changed, 169 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/bcm2836.c
- create mode 100644 include/hw/arm/bcm2836.h
+We are trying to encourage -'s for the separators in new file names,
+although admittedly is does seem that intc/ is lagging here.
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 82cc142..f55f8d2 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
- obj-$(CONFIG_DIGIC) += digic.o
- obj-y += omap1.o omap2.o strongarm.o
- obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
--obj-$(CONFIG_RASPI) += bcm2835_peripherals.o
-+obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o
- obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
- obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
- obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-new file mode 100644
-index 0000000..4b0544e
---- /dev/null
-+++ b/hw/arm/bcm2836.c
-@@ -0,0 +1,135 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-+ *
-+ * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#include "hw/arm/bcm2836.h"
-+#include "hw/arm/raspi_platform.h"
-+#include "hw/sysbus.h"
-+#include "sysemu/sysemu.h" /* for smp_cpus */
-+#include "exec/address-spaces.h"
-+
-+static void bcm2836_init(Object *obj)
-+{
-+    BCM2836State *s = BCM2836(obj);
-+    int n;
-+
-+    /* TODO: probably shouldn't be using smp_cpus here */
-+    assert(smp_cpus <= BCM2836_NCPUS);
-+    for (n = 0; n < smp_cpus; n++) {
-+        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
-+                          "cortex-a15-" TYPE_ARM_CPU);
-+        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
-+                                  &error_abort);
-+    }
-+
-+    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2836_CONTROL);
-+    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-+    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-+
-+    object_initialize(&s->peripherals, sizeof(s->peripherals),
-+                      TYPE_BCM2835_PERIPHERALS);
-+    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
-+                              &error_abort);
-+    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
-+}
-+
-+static void bcm2836_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2836State *s = BCM2836(dev);
-+    Error *err = NULL;
-+    int n;
-+
-+    /* common peripherals from bcm2835 */
-+    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
-+                            BCM2836_PERI_BASE, 1);
-+
-+    /* bcm2836 interrupt controller (and mailboxes, etc.) */
-+    object_property_set_bool(OBJECT(&s->ic), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ic), 0, BCM2836_CONTROL_BASE);
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-+                       qdev_get_gpio_in_named(DEVICE(&s->ic), "gpu_irq", 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-+                       qdev_get_gpio_in_named(DEVICE(&s->ic), "gpu_fiq", 0));
-+
-+    /* TODO: probably shouldn't be using smp_cpus here */
-+    assert(smp_cpus <= BCM2836_NCPUS);
-+    for (n = 0; n < smp_cpus; n++) {
-+        /* Mirror bcm2836, which has clusterid set to 0xf */
-+        s->cpus[n].mp_affinity = 0xF00 | n;
-+
-+        /* set periphbase/CBAR value for CPU-local registers */
-+        object_property_set_int(OBJECT(&s->cpus[n]),
-+                                BCM2836_PERI_BASE + MCORE_OFFSET,
-+                                "reset-cbar", &err);
-+        if (err) {
-+            error_report_err(err);
-+            exit(1);
-+        }
-+
-+        object_property_set_bool(OBJECT(&s->cpus[n]), true, "realized", &err);
-+        if (err) {
-+            error_report_err(err);
-+            exit(1);
-+        }
-+
-+        /* Connect irq/fiq outputs from the interrupt controller. */
-+        qdev_connect_gpio_out_named(DEVICE(&s->ic), "irq", n,
-+                                    qdev_get_gpio_in(DEVICE(&s->cpus[n]),
-+                                                     ARM_CPU_IRQ));
-+        qdev_connect_gpio_out_named(DEVICE(&s->ic), "fiq", n,
-+                                    qdev_get_gpio_in(DEVICE(&s->cpus[n]),
-+                                                     ARM_CPU_FIQ));
-+
-+        /* Connect timers from the CPU to the interrupt controller */
-+        s->cpus[n].gt_timer_outputs[GTIMER_PHYS]
-+            = qdev_get_gpio_in_named(DEVICE(&s->ic), "cntpsirq", 0);
-+        s->cpus[n].gt_timer_outputs[GTIMER_VIRT]
-+            = qdev_get_gpio_in_named(DEVICE(&s->ic), "cntvirq", 0);
-+    }
-+}
-+
-+static void bcm2836_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = bcm2836_realize;
-+
-+    /*
-+     * Reason: creates an ARM CPU, thus use after free(), see
-+     * arm_cpu_class_init()
-+     */
-+    dc->cannot_destroy_with_object_finalize_yet = true;
-+}
-+
-+static const TypeInfo bcm2836_type_info = {
-+    .name = TYPE_BCM2836,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2836State),
-+    .instance_init = bcm2836_init,
-+    .class_init = bcm2836_class_init,
-+};
-+
-+static void bcm2836_register_types(void)
-+{
-+    type_register_static(&bcm2836_type_info);
-+}
-+
-+type_init(bcm2836_register_types)
-diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-new file mode 100644
-index 0000000..a78e919
---- /dev/null
-+++ b/include/hw/arm/bcm2836.h
-@@ -0,0 +1,33 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-+ *
-+ * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#ifndef BCM2836_H
-+#define BCM2836_H
-+
-+#include "hw/arm/arm.h"
-+#include "hw/arm/bcm2835_peripherals.h"
-+#include "hw/intc/bcm2836_control.h"
-+
-+#define TYPE_BCM2836 "bcm2836"
-+#define BCM2836(obj) OBJECT_CHECK(BCM2836State, (obj), TYPE_BCM2836)
-+
-+#define BCM2836_NCPUS 4
-+
-+typedef struct BCM2836State {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+    /*< public >*/
-+
-+    ARMCPU cpus[BCM2836_NCPUS];
-+    BCM2836ControlState ic;
-+    BCM2835PeripheralState peripherals;
-+} BCM2836State;
-+
-+#endif /* BCM2836_H */
--- 
-2.5.3
+>  obj-$(CONFIG_SH4) += sh_intc.o
+>  obj-$(CONFIG_XICS) += xics.o
+>  obj-$(CONFIG_XICS_KVM) += xics_kvm.o
+> diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
+> new file mode 100644
+> index 0000000..2419575
+> --- /dev/null
+> +++ b/hw/intc/bcm2835_ic.c
+> @@ -0,0 +1,234 @@
+> +/*
+> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
+> + * This code is licensed under the GNU GPLv2 and later.
+> + */
+> +
+> +/* Heavily based on pl190.c, copyright terms below. */
+> +
+> +/*
 
+You can just make this one header comment rather than stop and start
+block comments again.
+
+> + * Arm PrimeCell PL190 Vector Interrupt Controller
+> + *
+> + * Copyright (c) 2006 CodeSourcery.
+> + * Written by Paul Brook
+> + *
+> + * This code is licensed under the GPL.
+> + */
+> +
+> +#include "hw/intc/bcm2835_ic.h"
+> +
+> +#define IR_B 2
+
+IR_B should move down. Although some of my following comment may
+obsolete this def anyway.
+
+> +#define IR_1 0
+> +#define IR_2 1
+> +
+> +/* Update interrupts.  */
+> +static void bcm2835_ic_update(BCM2835IcState *s)
+> +{
+> +    int set;
+> +    int i;
+> +
+> +    set = 0;
+> +    if (s->fiq_enable) {
+> +        set = s->level[s->fiq_select >> 5] & (1u << (s->fiq_select & 0x1f));
+> +    }
+> +    qemu_set_irq(s->fiq, set);
+> +
+> +    set = 0;
+> +    for (i = 0; i < 3; i++) {
+> +        set |= (s->level[i] & s->irq_enable[i]);
+> +    }
+> +    qemu_set_irq(s->irq, set);
+> +
+> +}
+> +
+> +static void bcm2835_ic_set_irq(void *opaque, int irq, int level)
+> +{
+> +    BCM2835IcState *s = (BCM2835IcState *)opaque;
+> +
+> +    if (irq >= 0 && irq <= 71) {
+
+I assume the 72 comes from 64 GPU interrupts +8 ARM interrupts.
+Looking at the TRM, these seem to be different enumeration schemes and
+not considered one interrupt list. You should use named GPIOs to split
+it into the two named sets "GPU" and "ARM", I notice in patch 5 you
+have:
+
++#define ARM_IRQ0_BASE                  64
+
+To convert the ARM IRQ indexing scheme to the GPU one. This would go
+away with the separate name sets.
+
+> +        if (level) {
+> +                s->level[irq >> 5] |= 1u << (irq & 0x1f);
+
+It also means you can have a single uint64_t (perhaps named
+"gpu_level") in the state to hold the full GPU interrupt list,
+avoiding the need for the >> 5 ... & 0x1f logic that you need a few
+times. The ARM interrupts then become their own separate uint8_t
+(arm_level?).
+
+> +        } else {
+> +                s->level[irq >> 5] &= ~(1u << (irq & 0x1f));
+> +        }
+
+So these 5 lines will reduce to:
+
+s->gpu_level = deposit64(s->gpu_level, index, 1, !!level);
+
+> +    } else {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "bcm2835_ic_set_irq: Bad irq %d\n", irq);
+
+As you explicitly define the length of the interrupts list at 72, this
+would be fatal and should g_assert_not_reached(). But I would drip the
+if-else (and the check) altogether as the GPIO API should be doing its
+own checking.
+
+> +    }
+> +
+> +    bcm2835_ic_update(s);
+> +}
+> +
+> +static const int irq_dups[] = { 7, 9, 10, 18, 19, 53, 54, 55, 56, 57, 62, -1 };
+> +
+> +static uint64_t bcm2835_ic_read(void *opaque, hwaddr offset,
+> +    unsigned size)
+> +{
+> +    BCM2835IcState *s = (BCM2835IcState *)opaque;
+
+Cast unneeded.
+
+> +    int i;
+> +    int p = 0;
+> +    uint32_t res = 0;
+> +
+> +    switch (offset) {
+> +    case 0x00:  /* IRQ basic pending */
+
+Rather than commenting the hex, define macros for the register map
+that are then used for both read and write switches.
+
+> +        /* bits 0-7 - ARM irqs */
+> +        res = (s->level[IR_B] & s->irq_enable[IR_B]) & 0xff;
+> +        for (i = 0; i < 64; i++) {
+> +            if (i == irq_dups[p]) {
+> +                /* bits 10-20 - selected GPU irqs */
+> +                if (s->level[i >> 5] & s->irq_enable[i >> 5]
+> +                    & (1u << (i & 0x1f))) {
+> +                    res |= (1u << (10 + p));
+
+This will get simpler with the unit64_t GPU interrupt list.
+
+> +                }
+> +                p++;
+> +            } else {
+> +                /* bits 8-9 - one or more bits set in pending registers 1-2 */
+> +                if (s->level[i >> 5] & s->irq_enable[i >> 5]
+> +                    & (1u << (i & 0x1f))) {
+
+The common subexpression
+
+s->level[i >> 5] & s->irq_enable[i >> 5] & (1u << (i & 0x1f))
+
+can be avoided with a local variable (bool irq_pending).
+
+> +                    res |= (1u << (8 + (i >> 5)));
+
+A nit, but i /32 better documents the intent of the shift.
+
+> +                }
+> +            }
+> +        }
+> +        break;
+> +    case 0x04:  /* IRQ pending 1 */
+> +        res = s->level[IR_1] & s->irq_enable[IR_1];
+
+extract64 with a case-fallthrough would be usable for getting the two
+halves from a uint64_t:
+
+something like:
+
+case 0x08:
+    shift = 32;
+   /* fallthrough */
+case 0x04:
+    res = extract64(s->gpu_level, shift, 32) &
+extract64(s->gpu_irq_enable, shift, 32);
+    break;
+
+> +        break;
+> +    case 0x08:  /* IRQ pending 2 */
+> +        res = s->level[IR_2] & s->irq_enable[IR_2];
+> +        break;
+> +    case 0x0C:  /* FIQ register */
+> +        res = (s->fiq_enable << 7) | s->fiq_select;
+> +        break;
+> +    case 0x10:  /* Interrupt enable register 1 */
+> +        res = s->irq_enable[IR_1];
+
+irq_enable would also be split to gpu_irq_enable and arm_irq_enable
+separate variables under split GPIO namespace implementation.
+
+> +        break;
+> +    case 0x14:  /* Interrupt enable register 2 */
+> +        res = s->irq_enable[IR_2];
+> +        break;
+> +    case 0x18:  /* Base interrupt enable register */
+> +        res = s->irq_enable[IR_B];
+> +        break;
+> +    case 0x1C:  /* Interrupt disable register 1 */
+> +        res = ~s->irq_enable[IR_1];
+> +        break;
+> +    case 0x20:  /* Interrupt disable register 2 */
+> +        res = ~s->irq_enable[IR_2];
+> +        break;
+> +    case 0x24:  /* Base interrupt disable register */
+> +        res = ~s->irq_enable[IR_B];
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "bcm2835_ic_read: Bad offset %x\n", (int)offset);
+
+%s __func__ for the function name component. This guards against the
+message going stale if the function is renamed.
+
+Use HWADDR_PRIx rather than cast the offset.
+
+> +        return 0;
+> +    }
+> +
+> +    return res;
+> +}
+> +
+> +static void bcm2835_ic_write(void *opaque, hwaddr offset,
+> +    uint64_t val, unsigned size)
+
+Indentation of continued argument lists should indent to one past the
+"(" which started the list:
+
+static void bcm2835_ic_write(void *opaque, hwaddr offset,
+                             uint64_t val, unsigned size)
+
+> +{
+> +    BCM2835IcState *s = (BCM2835IcState *)opaque;
+
+Cast unneeded.
+
+> +
+> +    switch (offset) {
+> +    case 0x0C:  /* FIQ register */
+> +        s->fiq_select = (val & 0x7f);
+> +        s->fiq_enable = (val >> 7) & 0x1;
+> +        break;
+> +    case 0x10:  /* Interrupt enable register 1 */
+> +        s->irq_enable[IR_1] |= val;
+> +        break;
+> +    case 0x14:  /* Interrupt enable register 2 */
+> +        s->irq_enable[IR_2] |= val;
+> +        break;
+> +    case 0x18:  /* Base interrupt enable register */
+> +        s->irq_enable[IR_B] |= (val & 0xff);
+> +        break;
+> +    case 0x1C:  /* Interrupt disable register 1 */
+> +        s->irq_enable[IR_1] &= ~val;
+> +        break;
+> +    case 0x20:  /* Interrupt disable register 2 */
+> +        s->irq_enable[IR_2] &= ~val;
+> +        break;
+> +    case 0x24:  /* Base interrupt disable register */
+> +        s->irq_enable[IR_B] &= (~val & 0xff);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "bcm2835_ic_write: Bad offset %x\n", (int)offset);
+> +        return;
+> +    }
+> +    bcm2835_ic_update(s);
+> +}
+> +
+> +static const MemoryRegionOps bcm2835_ic_ops = {
+> +    .read = bcm2835_ic_read,
+> +    .write = bcm2835_ic_write,
+
+You do not handle anything that is not a word access so you should add
+the min_access_size and max_access_size definitions.
+
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static void bcm2835_ic_reset(DeviceState *d)
+> +{
+> +    BCM2835IcState *s = BCM2835_IC(d);
+> +    int i;
+> +
+> +    for (i = 0; i < 3; i++) {
+> +        s->irq_enable[i] = 0;
+> +    }
+> +    s->fiq_enable = 0;
+> +    s->fiq_select = 0;
+> +}
+> +
+> +static void bcm2835_ic_init(Object *obj)
+> +{
+> +    BCM2835IcState *s = BCM2835_IC(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &bcm2835_ic_ops, s, TYPE_BCM2835_IC,
+> +                          0x200);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+> +
+> +    qdev_init_gpio_in(DEVICE(s), bcm2835_ic_set_irq, 72);
+
+This is where the split would happen:
+
+qdev_init_gpio_in_named(DEVICE(s), bcm2835_ic_set_irq, BCM2835_IC_GPU_IRQ, 64);
+qdev_init_gpio_in_named(DEVICE(s), bcm2835_ic_set_irq, BCM2835_IC_ARM_IRQ, 8);
+
+Where the two macros are something like "gpu-irq" and "arm-irq".
+
+> +    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
+> +    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->fiq);
+> +}
+> +
+> +static void bcm2835_ic_realize(DeviceState *dev, Error **errp)
+> +{
+> +}
+
+Nop realize is not needed. Just leave the callback unset in class_init.
+
+> +
+> +static const VMStateDescription vmstate_bcm2835_ic = {
+> +    .name = TYPE_BCM2835_IC,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(level, BCM2835IcState, 3),
+> +        VMSTATE_UINT32_ARRAY(irq_enable, BCM2835IcState, 3),
+> +        VMSTATE_INT32(fiq_enable, BCM2835IcState),
+> +        VMSTATE_INT32(fiq_select, BCM2835IcState),
+
+fiq_select should be a bool.
+
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void bcm2835_ic_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = bcm2835_ic_realize;
+
+So this line can be dropped.
+
+> +    dc->reset = bcm2835_ic_reset;
+> +    dc->vmsd = &vmstate_bcm2835_ic;
+> +}
+> +
+> +static TypeInfo bcm2835_ic_info = {
+> +    .name          = TYPE_BCM2835_IC,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(BCM2835IcState),
+> +    .class_init    = bcm2835_ic_class_init,
+> +    .instance_init = bcm2835_ic_init,
+> +};
+> +
+> +static void bcm2835_ic_register_types(void)
+> +{
+> +    type_register_static(&bcm2835_ic_info);
+> +}
+> +
+> +type_init(bcm2835_ic_register_types)
+> diff --git a/include/hw/intc/bcm2835_ic.h b/include/hw/intc/bcm2835_ic.h
+> new file mode 100644
+> index 0000000..428139d
+> --- /dev/null
+> +++ b/include/hw/intc/bcm2835_ic.h
+> @@ -0,0 +1,26 @@
+> +/*
+> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
+> + * This code is licensed under the GNU GPLv2 and later.
+> + */
+> +
+> +#ifndef BCM2835_IC_H
+> +#define BCM2835_IC_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_BCM2835_IC "bcm2835_ic"
+> +#define BCM2835_IC(obj) OBJECT_CHECK(BCM2835IcState, (obj), TYPE_BCM2835_IC)
+> +
+> +typedef struct BCM2835IcState {
+
+Add the comments:
+
+/*< private >*/
+
+> +    SysBusDevice busdev;
+
+and:
+
+/*< public >*/
+
+As they make some auto-generated documentation nicer.
+
+> +    MemoryRegion iomem;
+> +
+> +    uint32_t level[3];
+> +    uint32_t irq_enable[3];
+> +    int fiq_enable;
+
+You migrate this as a uint32_t so it must be a uint32_t here as well.
+
+> +    int fiq_select;
+> +    qemu_irq irq;
+> +    qemu_irq fiq;
+> +} BCM2835IcState;
+
+BCM2835ICState. Acronyms in camel case should be all caps.
+
+Regards,
+Peter
+
+> +
+> +#endif
+> --
+> 2.5.3
+>

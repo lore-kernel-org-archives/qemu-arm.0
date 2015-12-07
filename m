@@ -1,44 +1,44 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2143369obb;
-        Sun, 6 Dec 2015 23:44:58 -0800 (PST)
-X-Received: by 10.140.36.232 with SMTP id p95mr34868617qgp.55.1449474298150;
-        Sun, 06 Dec 2015 23:44:58 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2143770obb;
+        Sun, 6 Dec 2015 23:46:04 -0800 (PST)
+X-Received: by 10.140.174.68 with SMTP id u65mr37268086qhu.62.1449474364369;
+        Sun, 06 Dec 2015 23:46:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e8si23561363qgf.2.2015.12.06.23.44.58
+        by mx.google.com with ESMTPS id y63si19829569qka.95.2015.12.06.23.46.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Dec 2015 23:44:58 -0800 (PST)
+        Sun, 06 Dec 2015 23:46:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53082 helo=lists.gnu.org)
+Received: from localhost ([::1]:53097 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a5qTh-0007yN-QZ
-	for alex.bennee@linaro.org; Mon, 07 Dec 2015 02:44:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43895)
+	id 1a5qUm-0001MR-27
+	for alex.bennee@linaro.org; Mon, 07 Dec 2015 02:46:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a5qTd-0007rS-L9
-	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 02:44:56 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a5qTq-0008Fc-Hi
+	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 02:45:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1a5qTc-0005nd-OC
-	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 02:44:53 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:2611)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a5qTm-0005ry-8X
+	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 02:45:06 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:2751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1a5qTb-0005lW-SW; Mon, 07 Dec 2015 02:44:52 -0500
+	id 1a5qTl-0005qE-Er; Mon, 07 Dec 2015 02:45:02 -0500
 Received: from 172.24.1.50 (EHLO szxeml427-hub.china.huawei.com)
 	([172.24.1.50])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BSG33289; Mon, 07 Dec 2015 15:40:18 +0800 (CST)
+	with ESMTP id BSG33295; Mon, 07 Dec 2015 15:40:18 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	szxeml427-hub.china.huawei.com (10.82.67.182) with Microsoft SMTP
-	Server id 14.3.235.1; Mon, 7 Dec 2015 15:40:11 +0800
+	Server id 14.3.235.1; Mon, 7 Dec 2015 15:40:10 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <mst@redhat.com>,
 	<imammedo@redhat.com>, <wei@redhat.com>
-Date: Mon, 7 Dec 2015 15:39:50 +0800
-Message-ID: <1449473992-11560-7-git-send-email-zhaoshenglong@huawei.com>
+Date: Mon, 7 Dec 2015 15:39:49 +0800
+Message-ID: <1449473992-11560-6-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
 In-Reply-To: <1449473992-11560-1-git-send-email-zhaoshenglong@huawei.com>
 References: <1449473992-11560-1-git-send-email-zhaoshenglong@huawei.com>
@@ -47,15 +47,16 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.566537E2.010D, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020204.566537E5.00D7, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 40ffed225c9061ff1fd46c0950b0c6bd
+X-Mirapoint-Loop-Id: 9014f4744c7983cc58fe3ec86be00066
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
 Cc: peter.huangpeng@huawei.com, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
 	graeme.gregory@linaro.org, shannon.zhao@linaro.org
-Subject: [Qemu-arm] [PATCH v4 6/8] ARM: ACPI: Add _E03 for Power Button
+Subject: [Qemu-arm] [PATCH v4 5/8] ACPI: Add aml_gpio_int() wrapper for GPIO
+	Interrupt Connection
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,44 +70,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ot9BTUxYNDT1
+X-TUID: aA0nBuzkLtuR
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
-
-Here GPIO pin 3 is used for Power Button, add _E03 in ACPI DSDT table.
 
 Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 Tested-by: Wei Huang <wei@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ hw/acpi/aml-build.c         | 20 ++++++++++++++++++++
+ include/hw/acpi/aml-build.h |  7 +++++++
+ 2 files changed, 27 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 1424672..d693135 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -338,6 +338,20 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
-     aml_append(crs, aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-                                   AML_EXCLUSIVE, gpio_irq));
-     aml_append(dev, aml_name_decl("_CRS", crs));
-+
-+    Aml *aei = aml_resource_template();
-+    /* Pin 3 for power button */
-+    const uint32_t pin_list[1] = {3};
-+    aml_append(aei, aml_gpio_int(AML_CONSUMER_PRODUCER, AML_EDGE,
-+                                 AML_ACTIVE_HIGH, AML_EXCLUSIVE, AML_PULL_UP, 0,
-+                                 pin_list, 1, "GPO0", NULL, 0));
-+    aml_append(dev, aml_name_decl("_AEI", aei));
-+
-+    /* _E03 is handle for power button */
-+    Aml *method = aml_method("_E03", 0);
-+    aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
-+                                  aml_int(0x80)));
-+    aml_append(dev, method);
-     aml_append(scope, dev);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 4e1469a..41ac5db 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -633,6 +633,26 @@ static Aml *aml_gpio_connection(AmlGpioConnectionType type,
  }
  
+ /*
++ * ACPI 5.0: 19.5.53
++ * GpioInt(GPIO Interrupt Connection Resource Descriptor Macro)
++ */
++Aml *aml_gpio_int(AmlConsumerAndProducer con_and_pro,
++                  AmlLevelAndEdge edge_level,
++                  AmlActiveHighAndLow active_level, AmlShared shared,
++                  AmlPinConfig pin_config, uint16_t debounce_timeout,
++                  const uint32_t pin_list[], uint32_t pin_count,
++                  const char *resource_source_name,
++                  const uint8_t *vendor_data, uint16_t vendor_data_len)
++{
++    uint8_t flags = edge_level | (active_level << 1) | (shared << 3);
++
++    return aml_gpio_connection(AML_INTERRUPT_CONNECTION, con_and_pro, flags,
++                               pin_config, 0, debounce_timeout, pin_list,
++                               pin_count, resource_source_name, vendor_data,
++                               vendor_data_len);
++}
++
++/*
+  * ACPI 1.0b: 6.4.3.4 32-Bit Fixed Location Memory Range Descriptor
+  * (Type 1, Large Item Name 0x6)
+  */
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index a8dba9e..41ffe29 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -232,6 +232,13 @@ Aml *aml_call1(const char *method, Aml *arg1);
+ Aml *aml_call2(const char *method, Aml *arg1, Aml *arg2);
+ Aml *aml_call3(const char *method, Aml *arg1, Aml *arg2, Aml *arg3);
+ Aml *aml_call4(const char *method, Aml *arg1, Aml *arg2, Aml *arg3, Aml *arg4);
++Aml *aml_gpio_int(AmlConsumerAndProducer con_and_pro,
++                  AmlLevelAndEdge edge_level,
++                  AmlActiveHighAndLow active_level, AmlShared shared,
++                  AmlPinConfig pin_config, uint16_t debounce_timeout,
++                  const uint32_t pin_list[], uint32_t pin_count,
++                  const char *resource_source_name,
++                  const uint8_t *vendor_data, uint16_t vendor_data_len);
+ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
+                         AmlReadAndWrite read_and_write);
+ Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
 -- 
 2.0.4
 

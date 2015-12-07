@@ -1,105 +1,118 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1213416obb;
-        Fri, 18 Dec 2015 09:07:25 -0800 (PST)
-X-Received: by 10.140.88.51 with SMTP id s48mr6377310qgd.48.1450458445276;
-        Fri, 18 Dec 2015 09:07:25 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp2607549obb;
+        Mon, 7 Dec 2015 14:53:33 -0800 (PST)
+X-Received: by 10.55.77.9 with SMTP id a9mr408901qkb.38.1449528813644;
+        Mon, 07 Dec 2015 14:53:33 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c129si16931236qha.15.2015.12.18.09.07.25
+        by mx.google.com with ESMTPS id 63si336531qhz.53.2015.12.07.14.53.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 18 Dec 2015 09:07:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 07 Dec 2015 14:53:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:33852 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56831 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9yV2-0003WT-Db
-	for alex.bennee@linaro.org; Fri, 18 Dec 2015 12:07:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60338)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a64ey-00018F-QX
+	for alex.bennee@linaro.org; Mon, 07 Dec 2015 17:53:32 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43115)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9whv-0001T3-Q3
-	for qemu-devel@nongnu.org; Fri, 18 Dec 2015 10:12:36 -0500
+	(envelope-from <jcd@tribudubois.net>) id 1a64ew-000184-It
+	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 17:53:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9whu-0005Zu-OC
-	for qemu-devel@nongnu.org; Fri, 18 Dec 2015 10:12:35 -0500
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:34267)
+	(envelope-from <jcd@tribudubois.net>) id 1a64et-0004y0-8i
+	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 17:53:30 -0500
+Received: from zose-mta03.web4all.fr ([185.49.20.44]:45170)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9whu-0005Zi-K9
-	for qemu-devel@nongnu.org; Fri, 18 Dec 2015 10:12:34 -0500
-Received: by mail-vk0-x232.google.com with SMTP id j66so66901780vkg.1
-	for <qemu-devel@nongnu.org>; Fri, 18 Dec 2015 07:12:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=YvFFHuxDDFJGDhxxyvYq1k6TTKGr0oAb35ohS+0coLs=;
-	b=XiKxCgsvr3OpeeztUbysVgvtbx8pklJNfGhLExOIydLbBN2n6pyRHX3Kd7Y6uvF1rQ
-	BDhUIaRusBViUENfYN45AqKC5oB+V/WA7UUDkNHYssp8hHZoH3Hmlbw9GV6BckK2XuVk
-	TIKoJf6cnOyb7knqwqU9dtkCjOsZS4woL7pBI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=YvFFHuxDDFJGDhxxyvYq1k6TTKGr0oAb35ohS+0coLs=;
-	b=bOhd4Q56ZqM34JTh11yArJHXh8ramY4xTTGW9inCj1EDFqbBrDyM/5AgV3qibrKCqM
-	VbekRiNaZ3bMnMSJ3vTbszSA0gmGLtQzWwCed/xN1xyLjNJInzAr0YFc/WPh3yJ8aFJU
-	mEEwBGGT9XzaAVgW7OWrsUxaTiFsMXmi5iXLBSLPZa6vmmgfGNxDgnkheczCikXDFLE6
-	2pOtqxtoI9ZgWs8r8V+GvvhAS+v5f0Lr0rntm2zeLBCHXmkIyA4RccB/l1weFqsynroT
-	bvsmj65gV2nUEv02sO21DipMkJrQ3sGhJZVHPNcwAjW5foU/y/6OBPcYmcx2+Yxf06pi
-	Frsw==
-X-Gm-Message-State: ALoCoQnui8Vq1ehWXuK9Oqko8/rat0D53wLqPhdpH1/s/CMgieEHcbCsVDL3DukrH3LZRI52XHzKw2L88zvk1MAK7YS+ACmm76nWxgSGT6KPsmTYtYuLjDM=
-X-Received: by 10.31.0.136 with SMTP id 130mr2291728vka.139.1450451553035;
-	Fri, 18 Dec 2015 07:12:33 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 18 Dec 2015 07:12:13 -0800 (PST)
-In-Reply-To: <1448785370-12176-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1448785370-12176-1-git-send-email-zhaoshenglong@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 18 Dec 2015 15:12:13 +0000
-Message-ID: <CAFEAcA9wM6wNuhVZB7pD2P3+QZu3bvU+_m=eCn8ty35z0okq=Q@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <jcd@tribudubois.net>)
+	id 1a64et-0004xP-2m; Mon, 07 Dec 2015 17:53:27 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by zose-mta03.web4all.fr (Postfix) with ESMTP id 87CE544F6C;
+	Mon,  7 Dec 2015 23:53:25 +0100 (CET)
+Received: from zose-mta03.web4all.fr ([127.0.0.1])
+	by localhost (zose-mta03.web4all.fr [127.0.0.1]) (amavisd-new,
+	port 10032)
+	with ESMTP id 0PpPnbLNSwGi; Mon,  7 Dec 2015 23:53:25 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zose-mta03.web4all.fr (Postfix) with ESMTP id 1F1D844F6F;
+	Mon,  7 Dec 2015 23:53:25 +0100 (CET)
+X-Virus-Scanned: amavisd-new at zose-mta-03.w4a.fr
+Received: from zose-mta03.web4all.fr ([127.0.0.1])
+	by localhost (zose-mta03.web4all.fr [127.0.0.1]) (amavisd-new,
+	port 10026)
+	with ESMTP id S5j97fFNq7f7; Mon,  7 Dec 2015 23:53:25 +0100 (CET)
+Received: from localhost.localdomain (smm49-1-78-235-240-156.fbx.proxad.net
+	[78.235.240.156])
+	by zose-mta03.web4all.fr (Postfix) with ESMTPSA id C6B3044F6C;
+	Mon,  7 Dec 2015 23:53:24 +0100 (CET)
+From: Jean-Christophe Dubois <jcd@tribudubois.net>
+To: qemu-devel@nongnu.org, peter.maydell@linaro.org,
+	crosthwaite.peter@gmail.com, qemu-arm@nongnu.org
+Date: Mon,  7 Dec 2015 23:53:22 +0100
+Message-Id: <cover.1449528242.git.jcd@tribudubois.net>
+X-Mailer: git-send-email 2.5.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::232
-Cc: hangaohuai@huawei.com, qemu-arm <qemu-arm@nongnu.org>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 0/2] Add GIC ITS description in ACPI
-	MADT table
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 185.49.20.44
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+Subject: [Qemu-arm] [PATCH v6 0/5] Add an i.MX25 specific CCM driver
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8JDjMmeRyRXy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wkpWecqdoPEY
 
-On 29 November 2015 at 08:22, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
->
-> These two patches add ITS description in ACPI MADT table. It bases on
-> Pavel Fedin's ITS series[1].
->
-> [1]https://www.mail-archive.com/qemu-devel@nongnu.org/msg337421.html
->
-> Shannon Zhao (2):
->   ACPI: Add GIC Interrupt Translation Service Structure definition
->   ARM: Virt: ACPI: Add GIC ITS description in ACPI MADT table
->
->  hw/arm/virt-acpi-build.c    | 11 +++++++++++
->  include/hw/acpi/acpi-defs.h | 13 ++++++++++++-
->  2 files changed, 23 insertions(+), 1 deletion(-)
+i.MX25 SOC has a different CCM device than i.MX31.
 
-Just a note to say these patches look fine and I'm assuming you'll
-resend them when we get the ITS support in.
+Qemu i.MX25 emulation was built with i.MX31 CCM driver. This allows
+Linux to work on top of the i.MX25 emultion but this is not correct.
 
-thanks
--- PMM
+Furthermore, other SOC we could emulate like i.MX6 have yet a different
+implementation of the CCM device.
+
+So we split the i.MX31 into a generic base class and a specific i.MX31
+class.
+
+We then add an i.MX25 specific CCM Device and have the i.MX25 SOC use it.
+
+Jean-Christophe Dubois (5):
+  i.MX: Fix i.MX31 default/reset configuration.
+  i.MX: rename i.MX CCM get_clock() function and CLK ID enum names
+  i.MX: Split the CCM class into an abstact base class and a concrete
+    class.
+  i.MX: Add an i.MX25 specific CCM class/instance.
+  i.MX: move i.MX31 CCM object to register array.
+
+ hw/arm/fsl-imx25.c          |   6 +-
+ hw/arm/fsl-imx31.c          |   6 +-
+ hw/misc/Makefile.objs       |   2 +
+ hw/misc/imx25_ccm.c         | 341 ++++++++++++++++++++++++++++++++++++++++
+ hw/misc/imx31_ccm.c         | 374 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/imx_ccm.c           | 231 +++------------------------
+ hw/timer/imx_epit.c         |  20 ++-
+ hw/timer/imx_gpt.c          |  16 +-
+ include/hw/arm/fsl-imx25.h  |   4 +-
+ include/hw/arm/fsl-imx31.h  |   4 +-
+ include/hw/misc/imx25_ccm.h |  79 ++++++++++
+ include/hw/misc/imx31_ccm.h |  88 +++++++++++
+ include/hw/misc/imx_ccm.h   |  75 ++++-----
+ include/hw/timer/imx_epit.h |   5 +-
+ include/hw/timer/imx_gpt.h  |   5 +-
+ 15 files changed, 966 insertions(+), 290 deletions(-)
+ create mode 100644 hw/misc/imx25_ccm.c
+ create mode 100644 hw/misc/imx31_ccm.c
+ create mode 100644 include/hw/misc/imx25_ccm.h
+ create mode 100644 include/hw/misc/imx31_ccm.h
+
+-- 
+2.5.0
+

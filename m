@@ -1,209 +1,609 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2345944wrx;
-        Thu, 25 Apr 2019 16:05:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwvS8iYCImOrVYlZlWR0E/OQVFxUc32FgTwjq5OvaFqJY7sQw8ZHO4s8iZBSiuj8j8zziUI
-X-Received: by 2002:adf:e892:: with SMTP id d18mr14931066wrm.271.1556233516349;
-        Thu, 25 Apr 2019 16:05:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556233516; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tQWQ3+KMMRZZV9Pc0ktPKi+hboWI5RUYL+Kz7hJPVtIQitqB3+HvUONkD8PxcggMIY
-         kuzRzRkf+9WKyIdt+rS7ANFuwonPoT/VTavDSH7GcBQO+APQR5ivj8xj+KOuGcIu56Oa
-         Bnc39ubS7uiAyXS7deTN5+z0+0y5xYy8CDj1/IUzobi39vJ0TEUelyIB13Fspc9tQUXK
-         HIh2eWL2Rv5IazOZXrfkCAdi7N7g4cNPFNeYbe48njNr6aQtBQ1nvGj0lH5TjwDRRjdz
-         z/A8Pgv6DMGIP9vH0Xx3sY8PBt4c7AE6CKnCkQ6V0jiuxwqbxwzkchEGRFUwkSxdd+uZ
-         92Ig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=IU5UJBuhFXGGDvEgWcZM9aYlS0j+byjsNMPbMY2GKOQ=;
-        b=wEsxe0XM0evbxlYCv+XUa0sGd5CPLNZbaDiDMmHJnVJG8XYK39UbcuG/I/XV6pzbAS
-         sIHQWqCzfNgRZFEZG35XJCCTijQHz4uRM2+eKDctDSyhWq78q2tSO2i2jej4SUk3u4LZ
-         92EZAmRGa1QOWq7fQwFQHR69WN6chZ110TQ8TWLNcRdhIsU1JR1nzW2f5+8Z3qKECL7J
-         bMxzS5nQrh3FLdPirFHNDgjESTdArZA+XnIfJh5LSNJj08b9nWLk+TZMBGUIvy36rpx2
-         mdJM+L55c1YOCc9BAa/bsyBNqfm+ZELwwGAr9+mEtiEPHjRae6oztcrPDe09I3l3NFaN
-         G/Bw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 10.182.158.201 with SMTP id ww9csp2079726obb;
+        Sun, 6 Dec 2015 20:41:57 -0800 (PST)
+X-Received: by 10.140.242.141 with SMTP id n135mr35808686qhc.59.1449463317363;
+        Sun, 06 Dec 2015 20:41:57 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si16653430wrl.301.2019.04.25.16.05.16
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id g131si25889489qkb.102.2015.12.06.20.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Apr 2019 16:05:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 06 Dec 2015 20:41:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36308 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52471 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hJnQZ-0001MK-BQ
-	for alex.bennee@linaro.org; Thu, 25 Apr 2019 19:05:15 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45798)
+	id 1a5nca-0007sp-W4
+	for alex.bennee@linaro.org; Sun, 06 Dec 2015 23:41:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJnQK-0000sX-Ji
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 19:05:01 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5ncX-0007oa-86
+	for qemu-arm@nongnu.org; Sun, 06 Dec 2015 23:41:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJnDJ-0005SG-40
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 18:51:34 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:35727)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJnDH-0005P9-0K
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 18:51:32 -0400
-Received: by mail-wm1-f68.google.com with SMTP id y197so1533354wmd.0
-	for <qemu-arm@nongnu.org>; Thu, 25 Apr 2019 15:51:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=IU5UJBuhFXGGDvEgWcZM9aYlS0j+byjsNMPbMY2GKOQ=;
-	b=LnTNNCJv7KEkIELiaQmuT81UPzs4kbVr2hXK3E/ksvFSmZBqFhYB1kEhKXNvatBW2M
-	ZL8GiElhDnNql+f8jVSV2+oyP6NBZcqe6thyeNC7NvU0yhO3cgTtAdvmHtY3+uDL0so3
-	0KZ8FWyD4IJIaxE6Ip49Lxqw0ol2nA/S++tSmCHEdER4Kr04imIhm9Bp1kM9TCQwjF+g
-	qB9YEc7fc7DiSi4u2ijhmhdmAQWoCztdOLAlDMQnijrXtY41NOOm1UXmcjhh23vSaLDi
-	IcroI/642nwdPUf4hhFV+qBcZ54/i3SX5mZRRlVBBhJf12omvg5qy0n8ThoGtIua8tsg
-	YliQ==
-X-Gm-Message-State: APjAAAWSLd16HXSzKJ6m6IVBN07bzJlnmx5jyQt8EI4bfF7ejrqg2E1T
-	IL4NIMSHk1kDAuWmJ8hhYHTEFA==
-X-Received: by 2002:a1c:c012:: with SMTP id q18mr1469861wmf.140.1556232686276; 
-	Thu, 25 Apr 2019 15:51:26 -0700 (PDT)
-Received: from [192.168.1.25] (abayonne-654-1-209-122.w109-222.abo.wanadoo.fr.
-	[109.222.216.122])
-	by smtp.gmail.com with ESMTPSA id e3sm7503978wro.35.2019.04.25.15.51.21
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 25 Apr 2019 15:51:25 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, yang.zhong@intel.com,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	pbonzini@redhat.com
-References: <20190418180057.3593-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <2f02bf38-4bb0-9ca4-438a-b753d6ab5f49@redhat.com>
-Date: Fri, 26 Apr 2019 00:51:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5ncV-0005oQ-6U
+	for qemu-arm@nongnu.org; Sun, 06 Dec 2015 23:41:53 -0500
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:37082)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1a5ncQ-0005ns-Bk; Sun, 06 Dec 2015 23:41:46 -0500
+Received: by wmww144 with SMTP id w144so134458563wmw.0;
+	Sun, 06 Dec 2015 20:41:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=nZ/v5rBmzTqIeHEIcWD7dV0azkdJ9FpqBDC/kyiudRM=;
+	b=MS8oUGhtj63lC+j7YSNJByobPYUO6lBNyH8WEDuMFjjzDqM/9G9GVvnLfpk4ZxUMhx
+	m7+j2WSSnGyxXT5WptT4VHGXCJQJYM/MBZDUC3X/xuA15COnEieb6/PMEVTW40Wl7ZYg
+	Ccrh8a7xS6qXjs4Mg4x8GBMp3lLYSrrHC9zcS1t2naGEJXsvoKRyv7Op75zea8CKoknS
+	g8ngscJufI1QCv8dDBKD9SLULcghEdfs9HgyGOIlL0Bae2MqSfX9ayJno4eQeVwFL5cA
+	Hrf7PvHFjlj4orqGvtPIXtr+AySboIdTftmK1I5ym5zajXBCc9/EJ8c+BIdypu80Ux10
+	3MGw==
 MIME-Version: 1.0
-In-Reply-To: <20190418180057.3593-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Received: by 10.28.133.4 with SMTP id h4mr17505867wmd.59.1449463305844; Sun,
+	06 Dec 2015 20:41:45 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Sun, 6 Dec 2015 20:41:45 -0800 (PST)
+In-Reply-To: <892db0a19c91b831f3f1a2ad9487a9b55b866490.1449000671.git.jcd@tribudubois.net>
+References: <cover.1449000671.git.jcd@tribudubois.net>
+	<892db0a19c91b831f3f1a2ad9487a9b55b866490.1449000671.git.jcd@tribudubois.net>
+Date: Sun, 6 Dec 2015 20:41:45 -0800
+Message-ID: <CAPokK=pP7i6nNHexwasE+Qa9HV9=s7wrf2kBT0wMkMOt_iFW9w@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Jean-Christophe Dubois <jcd@tribudubois.net>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 00/29] Kconfig
- dependencies for ARM machines
+X-Received-From: 2a00:1450:400c:c09::230
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v5 4/4] i.MX: Add an i.MX25 specific CCM
+	class/instance.
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-block@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Philippe Mathieu-Daude <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Beniamino Galvani <b.galvani@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
-	Cedric Le Goater <clg@kaod.org>, qemu-arm@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	John Snow <jsnow@redhat.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0OoiYQPgyTul
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AEZibtti5pRL
 
-Hi Thomas,
+On Tue, Dec 1, 2015 at 12:25 PM, Jean-Christophe Dubois
+<jcd@tribudubois.net> wrote:
+> With this CCM, i.MX25 timer is accurate with "real world time".
+>
+> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+> ---
+> Changes since v1:
+>  * rework loging to match other i.MX drivers
+>
+> Changes since v2:
+>  * We moved to an inheritance QOM scheme
+>
+> Changes since v3:
+>  * Rework logging based on comments.
+>
+> Changes since v4:
+>  * Improve debug logging.
+>
+>  hw/arm/fsl-imx25.c          |   2 +-
+>  hw/misc/Makefile.objs       |   1 +
+>  hw/misc/imx25_ccm.c         | 367 ++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/fsl-imx25.h  |   4 +-
+>  include/hw/misc/imx25_ccm.h |  61 ++++++++
+>  5 files changed, 432 insertions(+), 3 deletions(-)
+>  create mode 100644 hw/misc/imx25_ccm.c
+>  create mode 100644 include/hw/misc/imx25_ccm.h
+>
+> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+> index 9f302ed..36818ee 100644
+> --- a/hw/arm/fsl-imx25.c
+> +++ b/hw/arm/fsl-imx25.c
+> @@ -38,7 +38,7 @@ static void fsl_imx25_init(Object *obj)
+>      object_initialize(&s->avic, sizeof(s->avic), TYPE_IMX_AVIC);
+>      qdev_set_parent_bus(DEVICE(&s->avic), sysbus_get_default());
+>
+> -    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX31_CCM);
+> +    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX25_CCM);
+>      qdev_set_parent_bus(DEVICE(&s->ccm), sysbus_get_default());
+>
+>      for (i = 0; i < FSL_IMX25_NUM_UARTS; i++) {
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index c77f3e3..8a235df 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -27,6 +27,7 @@ obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
+>  obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o
+>  obj-$(CONFIG_IMX) += imx_ccm.o
+>  obj-$(CONFIG_IMX) += imx31_ccm.o
+> +obj-$(CONFIG_IMX) += imx25_ccm.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
+>  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
+>  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
+> diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
+> new file mode 100644
+> index 0000000..fcba903
+> --- /dev/null
+> +++ b/hw/misc/imx25_ccm.c
+> @@ -0,0 +1,367 @@
+> +/*
+> + * IMX25 Clock Control Module
+> + *
+> + * Copyright (C) 2012 NICTA
+> + * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + *
+> + * To get the timer frequencies right, we need to emulate at least part of
+> + * the CCM.
+> + */
+> +
+> +#include "hw/misc/imx25_ccm.h"
+> +
+> +#ifndef DEBUG_IMX25_CCM
+> +#define DEBUG_IMX25_CCM 0
+> +#endif
+> +
+> +#define DPRINTF(fmt, args...) \
+> +    do { \
+> +        if (DEBUG_IMX25_CCM) { \
+> +            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX25_CCM, \
+> +                                             __func__, ##args); \
+> +        } \
+> +    } while (0)
+> +
+> +static char const *imx25_ccm_reg_name(uint32_t reg)
+> +{
+> +    static char unknown[20];
+> +
+> +    switch (reg) {
+> +    case 0:
+> +        return "mpctl";
+> +    case 1:
+> +        return "upctl";
+> +    case 2:
+> +        return "cctl";
+> +    case 3:
+> +        return "cgcr0";
+> +    case 4:
+> +        return "cgcr1";
+> +    case 5:
+> +        return "cgcr2";
+> +    case 6:
+> +        return "pcdr0";
+> +    case 7:
+> +        return "pcdr1";
+> +    case 8:
+> +        return "pcdr2";
+> +    case 9:
+> +        return "pcdr3";
+> +    case 10:
+> +        return "rcsr";
+> +    case 11:
+> +        return "crdr";
+> +    case 12:
+> +        return "dcvr0";
+> +    case 13:
+> +        return "dcvr1";
+> +    case 14:
+> +        return "dcvr2";
+> +    case 15:
+> +        return "dcvr3";
+> +    case 16:
+> +        return "ltr0";
+> +    case 17:
+> +        return "ltr1";
+> +    case 18:
+> +        return "ltr2";
+> +    case 19:
+> +        return "ltr3";
+> +    case 20:
+> +        return "ltbr0";
+> +    case 21:
+> +        return "ltbr1";
+> +    case 22:
+> +        return "pmcr0";
+> +    case 23:
+> +        return "pmcr1";
+> +    case 24:
+> +        return "pmcr2";
+> +    case 25:
+> +        return "mcr";
+> +    case 26:
+> +        return "lpimr0";
+> +    case 27:
+> +        return "lpimr1";
+> +    default:
+> +        sprintf(unknown, "[%d ?]", reg);
+> +        return unknown;
+> +    }
+> +}
+> +#define CKIH_FREQ 24000000 /* 24MHz crystal input */
+> +
+> +static const VMStateDescription vmstate_imx25_ccm = {
+> +    .name = TYPE_IMX25_CCM,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(mpctl, IMX25CCMState),
+> +        VMSTATE_UINT32(upctl, IMX25CCMState),
+> +        VMSTATE_UINT32(cctl, IMX25CCMState),
+> +        VMSTATE_UINT32_ARRAY(cgcr, IMX25CCMState, 3),
+> +        VMSTATE_UINT32_ARRAY(pcdr, IMX25CCMState, 4),
+> +        VMSTATE_UINT32(rcsr, IMX25CCMState),
+> +        VMSTATE_UINT32(crdr, IMX25CCMState),
+> +        VMSTATE_UINT32_ARRAY(dcvr, IMX25CCMState, 4),
+> +        VMSTATE_UINT32_ARRAY(ltr, IMX25CCMState, 4),
+> +        VMSTATE_UINT32_ARRAY(ltbr, IMX25CCMState, 2),
+> +        VMSTATE_UINT32_ARRAY(pmcr, IMX25CCMState, 3),
+> +        VMSTATE_UINT32(mcr, IMX25CCMState),
+> +        VMSTATE_UINT32_ARRAY(lpimr, IMX25CCMState, 2),
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+> +
+> +static uint32_t imx25_ccm_get_mpll_clk(IMXCCMState *dev)
+> +{
+> +    uint32_t freq;
+> +    IMX25CCMState *s = IMX25_CCM(dev);
+> +
+> +    if (EXTRACT(s->cctl, MPLL_BYPASS)) {
+> +        freq = CKIH_FREQ;
+> +    } else {
+> +        freq = imx_ccm_calc_pll(s->mpctl, CKIH_FREQ);
+> +    }
+> +
+> +    DPRINTF("freq = %d\n", freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static uint32_t imx25_ccm_get_upll_clk(IMXCCMState *dev)
+> +{
+> +    uint32_t freq = 0;
+> +    IMX25CCMState *s = IMX25_CCM(dev);
+> +
+> +    if (!EXTRACT(s->cctl, UPLL_DIS)) {
+> +        freq = imx_ccm_calc_pll(s->upctl, CKIH_FREQ);
+> +    }
+> +
+> +    DPRINTF("freq = %d\n", freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
+> +{
+> +    uint32_t freq;
+> +    IMX25CCMState *s = IMX25_CCM(dev);
+> +
+> +    freq = imx25_ccm_get_mpll_clk(dev);
+> +
+> +    if (EXTRACT(s->cctl, ARM_SRC)) {
+> +        freq = (freq * 3 / 4);
+> +    }
+> +
+> +    freq = freq / (1 + EXTRACT(s->cctl, ARM_CLK_DIV));
+> +
+> +    DPRINTF("freq = %d\n", freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static uint32_t imx25_ccm_get_ahb_clk(IMXCCMState *dev)
+> +{
+> +    uint32_t freq;
+> +    IMX25CCMState *s = IMX25_CCM(dev);
+> +
+> +    freq = imx25_ccm_get_mcu_clk(dev) / (1 + EXTRACT(s->cctl, AHB_CLK_DIV));
+> +
+> +    DPRINTF("freq = %d\n", freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
+> +{
+> +    uint32_t freq;
+> +
+> +    freq = imx25_ccm_get_ahb_clk(dev) / 2;
+> +
+> +    DPRINTF("freq = %d\n", freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+> +{
+> +    uint32_t freq = 0;
+> +    DPRINTF("Clock = %d)\n", clock);
+> +
+> +    switch (clock) {
+> +    case NOCLK:
+> +        break;
+> +    case CLK_MPLL:
+> +        freq = imx25_ccm_get_mpll_clk(dev);
+> +        break;
+> +    case CLK_UPLL:
+> +        freq = imx25_ccm_get_upll_clk(dev);
+> +        break;
+> +    case CLK_MCU:
+> +        freq = imx25_ccm_get_mcu_clk(dev);
+> +        break;
+> +    case CLK_AHB:
+> +        freq = imx25_ccm_get_ahb_clk(dev);
+> +        break;
+> +    case CLK_IPG:
+> +        freq = imx25_ccm_get_ipg_clk(dev);
+> +        break;
+> +    case CLK_32k:
+> +        freq = CKIL_FREQ;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: unsupported clock %d\n",
+> +                      TYPE_IMX25_CCM, __func__, clock);
+> +        break;
+> +    }
+> +
+> +    DPRINTF("Clock = %d) = %d\n", clock, freq);
+> +
+> +    return freq;
+> +}
+> +
+> +static void imx25_ccm_reset(DeviceState *dev)
+> +{
+> +    IMX25CCMState *s = IMX25_CCM(dev);
+> +
+> +    DPRINTF("\n");
+> +
+> +    s->mpctl   = 0x800b2c01;
+> +    s->upctl   = 0x84042800;
+> +    /*
+> +     * The value below gives:
+> +     * CPU = 133 MHz, AHB = 66,5 MHz, IPG = 33 MHz.
+> +     */
+> +    s->cctl    = 0xd0030000;
+> +    s->cgcr[0] = 0x028A0100;
+> +    s->cgcr[1] = 0x04008100;
+> +    s->cgcr[2] = 0x00000438;
+> +    s->pcdr[0] = 0x01010101;
+> +    s->pcdr[1] = 0x01010101;
+> +    s->pcdr[2] = 0x01010101;
+> +    s->pcdr[3] = 0x01010101;
+> +    s->rcsr    = 0;
+> +    s->crdr    = 0;
+> +    s->dcvr[0] = 0;
+> +    s->dcvr[1] = 0;
+> +    s->dcvr[2] = 0;
+> +    s->dcvr[3] = 0;
+> +    s->ltr[0]  = 0;
+> +    s->ltr[1]  = 0;
+> +    s->ltr[2]  = 0;
+> +    s->ltr[3]  = 0;
+> +    s->ltbr[0] = 0;
+> +    s->ltbr[1] = 0;
+> +    s->pmcr[0] = 0x00A00000;
+> +    s->pmcr[1] = 0x0000A030;
+> +    s->pmcr[2] = 0x0000A030;
+> +    s->mcr     = 0x43000000;
+> +    s->lpimr[0] = 0;
+> +    s->lpimr[1] = 0;
+> +
+> +    /*
+> +     * default boot will change the reset values to allow:
+> +     * CPU = 399 MHz, AHB = 133 MHz, IPG = 66,5 MHz.
+> +     * For some reason, this doesn't work. With the value below, linux
+> +     * detects a 88 MHz IPG CLK instead of 66,5 MHz.
+> +     */
+> +    //s->cctl = 0x20032000;
 
-On 4/18/19 8:00 PM, Thomas Huth wrote:
-> This series reworks the default-configs/arm-softmmu.mak and
-> default-configs/aarch64-softmmu.mak files to use the new Kconfig-style
-> dependencies instead.
-> 
-> Some of the patches are slightly based on the work by Ákos Kovács:
-> 
->  https://lists.nongnu.org/archive/html/qemu-devel/2013-08/msg03730.html
-> 
-> The other patches have been created by looking at the sources and finding
-> out the dependencies the hard way via trial-and-error (i.e. by enabling
-> only one machine at a time and checking whether it can be compiled and
-> started).
-> 
-> v5:
->  - Rebased the series to the current master branch
->  - Added "hw/usb/hcd-ohci: Move PCI-related code into a separate file"
->    patch and got rid of unneeded dependencies to CONFIG_PCI in the
->    ARM machines that do not have a PCI bus
-> 
-> v4:
->  - Rebased the series to Paolo's latest kconfig tree
-> 
-> v3:
->  - Addressed review feedback from v2
->  - Included patches to clean up the PCI dependencies of AHCI and SDHCI
->    (so CONFIG_AHCI and CONFIG_SDHCI do not depend on CONFIG_PCI anymore)
->  - Added an additional patch for the new "musca" machines
-> 
-> v2: Adressed review-feedback from v1
->  - CONFIG_SDHCI and CONFIG_AHCI now select CONFIG_PCI
->  - Added switches for MICROBIT and EMCRAFT_SF2
-> 
-> Thomas Huth (29):
->   hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci stubs
->   hw/ide/ahci: Add a Kconfig switch for the AHDI-ICH9 device
->   hw/usb/hcd-ohci: Move PCI-related code into a separate file
->   hw/arm: Express dependencies of the exynos machines with Kconfig
->   hw/arm: Express dependencies of the highbank machines with Kconfig
->   hw/arm: Express dependencies of integratorcp with Kconfig
->   hw/arm: Express dependencies of the fsl-imx31 machine with Kconfig
->   hw/arm: Express dependencies of musicpal with Kconfig
->   hw/arm: Express dependencies of the OMAP machines with Kconfig
->   hw/arm: Express dependencies of stellaris with Kconfig
->   hw/arm: Express dependencies of realview, versatile and vexpress with
->     Kconfig
->   hw/arm: Express dependencies of the PXA2xx machines with Kconfig
->   hw/arm: Express dependencies of xilinx-zynq with Kconfig
->   hw/arm: Express dependencies of collie with Kconfig
->   hw/arm: Express dependencies of the aspeed boards with Kconfig
->   hw/arm: Express dependencies of the virt machine with Kconfig
->   hw/arm: Express dependencies of netduino / stm32f2xx with Kconfig
->   hw/arm: Express dependencies of allwinner / cubieboard with Kconfig
->   hw/arm: Express dependencies of the MPS2 boards with Kconfig
->   hw/arm: Express dependencies of the raspi machines with Kconfig
->   hw/arm: Express dependencies of canon-a1100 with Kconfig
->   hw/arm: Express dependencies of sabrelite with Kconfig
->   hw/arm: Express dependencies of the MSF2 / EMCRAFT_SF2 machine with
->     Kconfig
->   hw/arm: Express dependencies for remaining IMX boards with Kconfig
->   hw/arm: Express dependencies of the microbit / nrf51 machine with
->     Kconfig
->   hw/arm: Express dependencies of the ZynqMP zcu102 machine with Kconfig
->   hw/arm: Express dependencies of the xlnx-versal-virt machine with
->     Kconfig
->   hw/arm: Express dependencies of the musca machines with Kconfig
->   hw/arm: Remove hard-enablement of the remaining PCI devices
+Should be a C style comment rather than C++.
 
-I tested each machines of your series.
-I replaced patch #3 "hw/usb/hcd-ohci: Move PCI-related code into a
-separate file" by your more recent series "Fix ohci_die() and move PCI
-code to separate file",
-https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg03344.html
+> +}
+> +
+> +static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    uint32 value = 0;
+> +    IMX25CCMState *s = (IMX25CCMState *)opaque;
+> +    uint32_t *reg = &s->mpctl;
 
-So for all patches except 3/29:
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-(well, I also tested it, but expect you to use the splitted respin)
+Still not a fan of taking the field address as an array base. So with
+either the union or array-MACRO conversion,
+
+Reviewed-by Peter Crosthwaite <crosthwaite.peter@gmail.com>
+
+The main reason I worry about this, is so the VMSD will be array-form
+from the get-go avoid a later conversion and version bump. In the
+union solution the VMSD should be the single VWSTATE_UINT32_ARRAY.
 
 Regards,
+Peter
 
-Phil.
+> +
+> +    if (offset < 0x70) {
+> +        value = reg[offset >> 2];
+> +    } else {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
+> +                      HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
+> +    }
+> +
+> +    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
+> +            value);
+> +
+> +    return value;
+> +}
+> +
+> +static void imx25_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+> +                            unsigned size)
+> +{
+> +    IMX25CCMState *s = (IMX25CCMState *)opaque;
+> +    uint32_t *reg = &s->mpctl;
+> +
+> +    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
+> +            (uint32_t)value);
+> +
+> +    if (offset < 0x70) {
+> +        /*
+> +         * We will do a better implementation later. In particular some bits
+> +         * cannot be written to.
+> +         */
+> +        reg[offset >> 2] = value;
+> +    } else {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
+> +                      HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
+> +    }
+> +}
+> +
+> +static const struct MemoryRegionOps imx25_ccm_ops = {
+> +    .read = imx25_ccm_read,
+> +    .write = imx25_ccm_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .valid = {
+> +        /*
+> +         * Our device would not work correctly if the guest was doing
+> +         * unaligned access. This might not be a limitation on the real
+> +         * device but in practice there is no reason for a guest to access
+> +         * this device unaligned.
+> +         */
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +        .unaligned = false,
+> +    },
+> +};
+> +
+> +static void imx25_ccm_init(Object *obj)
+> +{
+> +    DeviceState *dev = DEVICE(obj);
+> +    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
+> +    IMX25CCMState *s = IMX25_CCM(obj);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(dev), &imx25_ccm_ops, s,
+> +                          TYPE_IMX25_CCM, 0x1000);
+> +    sysbus_init_mmio(sd, &s->iomem);
+> +}
+> +
+> +static void imx25_ccm_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
+> +
+> +    dc->reset = imx25_ccm_reset;
+> +    dc->vmsd = &vmstate_imx25_ccm;
+> +    dc->desc = "i.MX25 Clock Control Module";
+> +
+> +    ccm->get_clock_frequency = imx25_ccm_get_clock_frequency;
+> +}
+> +
+> +static const TypeInfo imx25_ccm_info = {
+> +    .name          = TYPE_IMX25_CCM,
+> +    .parent        = TYPE_IMX_CCM,
+> +    .instance_size = sizeof(IMX25CCMState),
+> +    .instance_init = imx25_ccm_init,
+> +    .class_init    = imx25_ccm_class_init,
+> +};
+> +
+> +static void imx25_ccm_register_types(void)
+> +{
+> +    type_register_static(&imx25_ccm_info);
+> +}
+> +
+> +type_init(imx25_ccm_register_types)
+> diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+> index 5c62fde..d0e8e9d 100644
+> --- a/include/hw/arm/fsl-imx25.h
+> +++ b/include/hw/arm/fsl-imx25.h
+> @@ -19,7 +19,7 @@
+>
+>  #include "hw/arm/arm.h"
+>  #include "hw/intc/imx_avic.h"
+> -#include "hw/misc/imx31_ccm.h"
+> +#include "hw/misc/imx25_ccm.h"
+>  #include "hw/char/imx_serial.h"
+>  #include "hw/timer/imx_gpt.h"
+>  #include "hw/timer/imx_epit.h"
+> @@ -44,7 +44,7 @@ typedef struct FslIMX25State {
+>      /*< public >*/
+>      ARMCPU         cpu;
+>      IMXAVICState   avic;
+> -    IMX31CCMState  ccm;
+> +    IMX25CCMState  ccm;
+>      IMXSerialState uart[FSL_IMX25_NUM_UARTS];
+>      IMXGPTState    gpt[FSL_IMX25_NUM_GPTS];
+>      IMXEPITState   epit[FSL_IMX25_NUM_EPITS];
+> diff --git a/include/hw/misc/imx25_ccm.h b/include/hw/misc/imx25_ccm.h
+> new file mode 100644
+> index 0000000..a2dbcea
+> --- /dev/null
+> +++ b/include/hw/misc/imx25_ccm.h
+> @@ -0,0 +1,61 @@
+> +/*
+> + * IMX25 Clock Control Module
+> + *
+> + * Copyright (C) 2012 NICTA
+> + * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef IMX25_CCM_H
+> +#define IMX25_CCM_H
+> +
+> +#include "hw/misc/imx_ccm.h"
+> +
+> +/* CCTL */
+> +#define CCTL_ARM_CLK_DIV_SHIFT (30)
+> +#define CCTL_ARM_CLK_DIV_MASK  (0x3)
+> +#define CCTL_AHB_CLK_DIV_SHIFT (28)
+> +#define CCTL_AHB_CLK_DIV_MASK  (0x3)
+> +#define CCTL_MPLL_BYPASS_SHIFT (22)
+> +#define CCTL_MPLL_BYPASS_MASK  (0x1)
+> +#define CCTL_USB_DIV_SHIFT     (16)
+> +#define CCTL_USB_DIV_MASK      (0x3F)
+> +#define CCTL_ARM_SRC_SHIFT     (13)
+> +#define CCTL_ARM_SRC_MASK      (0x1)
+> +#define CCTL_UPLL_DIS_SHIFT    (23)
+> +#define CCTL_UPLL_DIS_MASK     (0x1)
+> +
+> +#define EXTRACT(value, name) (((value) >> CCTL_##name##_SHIFT) \
+> +                              & CCTL_##name##_MASK)
+> +#define INSERT(value, name) (((value) & CCTL_##name##_MASK) << \
+> +                             CCTL_##name##_SHIFT)
+> +
+> +#define TYPE_IMX25_CCM "imx25.ccm"
+> +#define IMX25_CCM(obj) OBJECT_CHECK(IMX25CCMState, (obj), TYPE_IMX25_CCM)
+> +
+> +typedef struct IMX25CCMState {
+> +    /* <private> */
+> +    IMXCCMState parent_obj;
+> +
+> +    /* <public> */
+> +    MemoryRegion iomem;
+> +
+> +    uint32_t mpctl;
+> +    uint32_t upctl;
+> +    uint32_t cctl;
+> +    uint32_t cgcr[3];
+> +    uint32_t pcdr[4];
+> +    uint32_t rcsr;
+> +    uint32_t crdr;
+> +    uint32_t dcvr[4];
+> +    uint32_t ltr[4];
+> +    uint32_t ltbr[2];
+> +    uint32_t pmcr[3];
+> +    uint32_t mcr;
+> +    uint32_t lpimr[2];
+> +
+> +} IMX25CCMState;
+> +
+> +#endif /* IMX25_CCM_H */
+> --
+> 2.5.0
+>

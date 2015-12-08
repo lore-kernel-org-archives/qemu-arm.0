@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id w203sm22421969wmg.15.2015.12.08.10.32.57
+        by smtp.gmail.com with ESMTPSA id q6sm22555787wmd.8.2015.12.08.10.32.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Tue, 08 Dec 2015 10:32:58 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id A390A3E0651;
+	by zen.linaro.local (Postfix) with ESMTP id CC8EE3E069F;
 	Tue,  8 Dec 2015 18:32:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org,
@@ -18,255 +18,579 @@ Cc: kvm@vger.kernel.org,
 	marc.zyngier@arm.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v10 2/6] target-arm: kvm - implement software breakpoints
-Date: Tue,  8 Dec 2015 18:32:29 +0000
-Message-Id: <1449599553-24713-3-git-send-email-alex.bennee@linaro.org>
+Subject: [PATCH v10 4/6] target-arm: kvm - add support for HW assisted debug
+Date: Tue,  8 Dec 2015 18:32:31 +0000
+Message-Id: <1449599553-24713-5-git-send-email-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.6.3
 In-Reply-To: <1449599553-24713-1-git-send-email-alex.bennee@linaro.org>
 References: <1449599553-24713-1-git-send-email-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OCepUuwiBuxA
+X-TUID: S0b7VA3kuuMI
 
-These don't involve messing around with debug registers, just setting
-the breakpoint instruction in memory. GDB will not use this mechanism if
-it can't access the memory to write the breakpoint.
+This adds basic support for HW assisted debug. The ioctl interface to
+KVM allows us to pass an implementation defined number of break and
+watch point registers. When KVM_GUESTDBG_USE_HW is specified these
+debug registers will be installed in place on the world switch into the
+guest.
 
-All the kernel has to do is ensure the hypervisor traps the breakpoint
-exceptions and returns to userspace.
+The hardware is actually capable of more advanced matching but it is
+unclear if this expressiveness is available via the gdbstub protocol.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
---
-v2
-  - handle debug exit with new hsr exception info
-  - add verbosity to UNIMP message
-v3
-  - sync with kvm_cpu_synchronize_state() before checking PC.
-  - use internals.h defines
-  - use env->pc
-  - use proper format types
-v9
-  - add include for error_report
-  - define a brk_insn constant
-v10
-  - fix up for arm32 compile
-  - move sw_bp_code to kvm32 (stubs)/64 (working)
-  - move kvm_handle_debug to kvm32/64 as kvm_arm_handle_debug
-  - don't enable SW_BP unless the define is there
-  - wrap in have_guest_debug check
 ---
- target-arm/kvm.c     | 39 +++++++++++++++++-----------
- target-arm/kvm32.c   | 18 +++++++++++++
- target-arm/kvm64.c   | 72 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- target-arm/kvm_arm.h |  9 +++++++
- 4 files changed, 123 insertions(+), 15 deletions(-)
+v2
+  - correct setting of PMC/BAS/MASK
+  - improved commentary
+  - added helper function to check watchpoint in range
+  - fix find/deletion of watchpoints
+v3
+  - use internals.h definitions
+v6
+  - KVM_GUESTDBG_USE_HW_BP->KVM_GUESTDBG_USE_HW
+  - renamed some helper functions to avoid confusion
+v9
+  - fix merge conflicts on re-base
+  - rm asm/ptrace.h include
+  - add additional commentry for hw breakpoints
+  - explain gdb's model for HW bkpts
+  - fix up spacing, formatting as per checkpatch
+  - better PAC values
+  - use is_power_of_2
+  - use _arm_ fn naming and add docs
+  - add a CPUWatchpoint structure for reporting
+  - replace manual array manipulation with g_array abstraction
+v10
+  - fix compilation for arm32/split imps between kvm32/64
+  - make find_hw_watchpoint/breakpoint local static functions
+  - cleaned up comment grammar
+  - fixed up missing spaces
+  - removed pointless ?: booleanisation
+  - removed pointless kvm_arm_hw_debug_active wrappers
+  - s/is/if/
+---
+ target-arm/kvm.c     |  26 +---
+ target-arm/kvm32.c   |  29 +++++
+ target-arm/kvm64.c   | 361 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ target-arm/kvm_arm.h |  21 +++
+ 4 files changed, 415 insertions(+), 22 deletions(-)
 
 diff --git a/target-arm/kvm.c b/target-arm/kvm.c
-index 79ef4c6..7f44e22 100644
+index 7f44e22..84974bb 100644
 --- a/target-arm/kvm.c
 +++ b/target-arm/kvm.c
-@@ -17,6 +17,7 @@
- 
- #include "qemu-common.h"
- #include "qemu/timer.h"
-+#include "qemu/error-report.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "kvm_arm.h"
-@@ -516,9 +517,23 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-     return MEMTXATTRS_UNSPECIFIED;
- }
- 
-+
- int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
- {
--    return 0;
-+    int ret = 0;
-+
-+    switch (run->exit_reason) {
-+    case KVM_EXIT_DEBUG:
-+        if (kvm_arm_handle_debug(cs, &run->debug.arch)) {
-+            ret = EXCP_DEBUG;
-+        } /* otherwise return to guest */
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
-+                      __func__, run->exit_reason);
-+        break;
-+    }
-+    return ret;
- }
- 
- bool kvm_arch_stop_on_emulation_error(CPUState *cs)
-@@ -541,16 +556,16 @@ int kvm_arch_on_sigbus(int code, void *addr)
-     return 1;
- }
- 
-+/* The #ifdef protections are until 32bit headers are imported and can
-+ * be removed once both 32 and 64 bit reach feature parity.
-+ */
- void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
- {
--    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+@@ -566,26 +566,12 @@ void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
+         dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+     }
+ #endif
 -}
 -
--int kvm_arch_insert_sw_breakpoint(CPUState *cs,
--                                  struct kvm_sw_breakpoint *bp)
+-int kvm_arch_insert_hw_breakpoint(target_ulong addr,
+-                                  target_ulong len, int type)
 -{
 -    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
 -    return -EINVAL;
-+#ifdef KVM_GUESTDBG_USE_SW_BP
-+    if (kvm_sw_breakpoints_active(cs)) {
-+        dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+-}
+-
+-int kvm_arch_remove_hw_breakpoint(target_ulong addr,
+-                                  target_ulong len, int type)
+-{
+-    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+-    return -EINVAL;
+-}
+-
+-
+-void kvm_arch_remove_all_hw_breakpoints(void)
+-{
+-    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
++#ifdef KVM_GUESTDBG_USE_HW
++    if (kvm_arm_hw_debug_active(cs)) {
++        dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_HW;
++        kvm_arm_copy_hw_debug_data(&dbg->arch);
 +    }
 +#endif
  }
  
- int kvm_arch_insert_hw_breakpoint(target_ulong addr,
-@@ -567,12 +582,6 @@ int kvm_arch_remove_hw_breakpoint(target_ulong addr,
-     return -EINVAL;
- }
- 
--int kvm_arch_remove_sw_breakpoint(CPUState *cs,
--                                  struct kvm_sw_breakpoint *bp)
--{
--    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
--    return -EINVAL;
--}
- 
- void kvm_arch_remove_all_hw_breakpoints(void)
- {
+ void kvm_arch_init_irq_routing(KVMState *s)
 diff --git a/target-arm/kvm32.c b/target-arm/kvm32.c
-index df1e2b0..5ce969f 100644
+index 5ce969f..ff83ce6 100644
 --- a/target-arm/kvm32.c
 +++ b/target-arm/kvm32.c
-@@ -475,3 +475,21 @@ int kvm_arch_get_registers(CPUState *cs)
- 
-     return 0;
+@@ -493,3 +493,32 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
+     qemu_log_mask(LOG_UNIMP, "%s: guest debug not yet implemented\n", __func__);
+     return false;
  }
 +
-+int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++int kvm_arch_insert_hw_breakpoint(target_ulong addr,
++                                  target_ulong len, int type)
 +{
-+    qemu_log_mask(LOG_UNIMP, "%s: guest debug not yet implemented\n", __func__);
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
 +    return -EINVAL;
 +}
 +
-+int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
++int kvm_arch_remove_hw_breakpoint(target_ulong addr,
++                                  target_ulong len, int type)
 +{
-+    qemu_log_mask(LOG_UNIMP, "%s: guest debug not yet implemented\n", __func__);
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
 +    return -EINVAL;
 +}
 +
-+bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
++void kvm_arch_remove_all_hw_breakpoints(void)
 +{
-+    qemu_log_mask(LOG_UNIMP, "%s: guest debug not yet implemented\n", __func__);
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
++}
++
++void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
++}
++
++bool kvm_arm_hw_debug_active(CPUState *cs)
++{
 +    return false;
 +}
 diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-index d087794..3b3929d 100644
+index 5f96cde..771ecdb 100644
 --- a/target-arm/kvm64.c
 +++ b/target-arm/kvm64.c
-@@ -18,6 +18,7 @@
+@@ -2,6 +2,7 @@
+  * ARM implementation of KVM hooks, 64 bit specific code
+  *
+  * Copyright Mian-M. Hamayun 2013, Virtual Open Systems
++ * Copyright Alex Bennée 2014, Linaro
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+@@ -12,13 +13,17 @@
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
++#include <sys/ptrace.h>
+ 
++#include <linux/elf.h>
+ #include <linux/kvm.h>
+ 
  #include "config-host.h"
  #include "qemu-common.h"
  #include "qemu/timer.h"
-+#include "qemu/error-report.h"
+ #include "qemu/error-report.h"
++#include "qemu/host-utils.h"
++#include "exec/gdbstub.h"
  #include "sysemu/sysemu.h"
  #include "sysemu/kvm.h"
  #include "kvm_arm.h"
-@@ -481,3 +482,74 @@ int kvm_arch_get_registers(CPUState *cs)
-     /* TODO: other registers */
-     return ret;
- }
-+
-+/* C6.6.29 BRK instruction */
-+static const uint32_t brk_insn = 0xd4200000;
-+
-+int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
-+{
-+    if (have_guest_debug) {
-+        if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 0) ||
-+            cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1)) {
-+            return -EINVAL;
-+        }
-+        return 0;
-+    } else {
-+        error_report("guest debug not supported on this kernel");
-+        return -EINVAL;
-+    }
-+}
-+
-+int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
-+{
-+    static uint32_t brk;
-+
-+    if (have_guest_debug) {
-+        if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk, 4, 0) ||
-+            brk != brk_insn ||
-+            cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, 4, 1)) {
-+            return -EINVAL;
-+        }
-+        return 0;
-+    } else {
-+        error_report("guest debug not supported on this kernel");
-+        return -EINVAL;
-+    }
-+}
-+
-+/* See v8 ARM ARM D7.2.27 ESR_ELx, Exception Syndrome Register
+@@ -28,20 +33,358 @@
+ 
+ static bool have_guest_debug;
+ 
++/*
++ * Although the ARM implementation of hardware assisted debugging
++ * allows for different breakpoints per-core, the current GDB
++ * interface treats them as a global pool of registers (which seems to
++ * be the case for x86, ppc and s390). As a result we store one copy
++ * of registers which is used for all active cores.
 + *
-+ * To minimise translating between kernel and user-space the kernel
-+ * ABI just provides user-space with the full exception syndrome
-+ * register value to be decoded in QEMU.
++ * Write access is serialised by virtue of the GDB protocol which
++ * updates things. Read access (i.e. when the values are copied to the
++ * vCPU) is also gated by GDB's run control.
++ *
++ * This is not unreasonable as most of the time debugging kernels you
++ * never know which core will eventually execute your function.
 + */
 +
-+bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
++typedef struct {
++    uint64_t bcr;
++    uint64_t bvr;
++} HWBreakpoint;
++
++/* The watchpoint registers can cover more area than the requested
++ * watchpoint so we need to store the additional information
++ * somewhere. We also need to supply a CPUWatchpoint to the GDB stub
++ * when the watchpoint is hit.
++ */
++typedef struct {
++    uint64_t wcr;
++    uint64_t wvr;
++    CPUWatchpoint details;
++} HWWatchpoint;
++
++/* Maximum and current break/watch point counts */
++int max_hw_bps, max_hw_wps;
++GArray *hw_breakpoints, *hw_watchpoints;
++
++#define cur_hw_wps      (hw_watchpoints->len)
++#define cur_hw_bps      (hw_breakpoints->len)
++#define get_hw_bp(i)    (&g_array_index(hw_breakpoints, HWBreakpoint, i))
++#define get_hw_wp(i)    (&g_array_index(hw_watchpoints, HWWatchpoint, i))
++
+ /**
+- * kvm_arm_init_debug()
++ * kvm_arm_init_debug() - check for guest debug capabilities
+  * @cs: CPUState
+  *
+- * Check for guest debug capabilities.
++ * kvm_check_extension returns the number of debug registers we have
++ * or 0 if we have none.
+  *
+  */
+ static void kvm_arm_init_debug(CPUState *cs)
+ {
+     have_guest_debug = kvm_check_extension(cs->kvm_state,
+                                            KVM_CAP_SET_GUEST_DEBUG);
++
++    max_hw_wps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_WPS);
++    hw_watchpoints = g_array_sized_new(true, true,
++                                       sizeof(HWWatchpoint), max_hw_wps);
++
++    max_hw_bps = kvm_check_extension(cs->kvm_state, KVM_CAP_GUEST_DEBUG_HW_BPS);
++    hw_breakpoints = g_array_sized_new(true, true,
++                                       sizeof(HWBreakpoint), max_hw_bps);
+     return;
+ }
+ 
++/**
++ * insert_hw_breakpoint()
++ * @addr: address of breakpoint
++ *
++ * See ARM ARM D2.9.1 for details but here we are only going to create
++ * simple un-linked breakpoints (i.e. we don't chain breakpoints
++ * together to match address and context or vmid). The hardware is
++ * capable of fancier matching but that will require exposing that
++ * fanciness to GDB's interface
++ *
++ * D7.3.2 DBGBCR<n>_EL1, Debug Breakpoint Control Registers
++ *
++ *  31  24 23  20 19   16 15 14  13  12   9 8   5 4    3 2   1  0
++ * +------+------+-------+-----+----+------+-----+------+-----+---+
++ * | RES0 |  BT  |  LBN  | SSC | HMC| RES0 | BAS | RES0 | PMC | E |
++ * +------+------+-------+-----+----+------+-----+------+-----+---+
++ *
++ * BT: Breakpoint type (0 = unlinked address match)
++ * LBN: Linked BP number (0 = unused)
++ * SSC/HMC/PMC: Security, Higher and Priv access control (Table D-12)
++ * BAS: Byte Address Select (RES1 for AArch64)
++ * E: Enable bit
++ */
++static int insert_hw_breakpoint(target_ulong addr)
 +{
-+    int hsr_ec = debug_exit->hsr >> ARM_EL_EC_SHIFT;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
++    HWBreakpoint brk = {
++        .bcr = 0x1,                             /* BCR E=1, enable */
++        .bvr = addr
++    };
 +
-+    /* Ensure PC is synchronised */
-+    kvm_cpu_synchronize_state(cs);
-+
-+    switch (hsr_ec) {
-+    case EC_AA64_BKPT:
-+        if (kvm_find_sw_breakpoint(cs, env->pc)) {
-+            return true;
-+        }
-+        break;
-+    default:
-+        error_report("%s: unhandled debug exit (%"PRIx32", %"PRIx64")\n",
-+                     __func__, debug_exit->hsr, env->pc);
++    if (cur_hw_bps >= max_hw_bps) {
++        return -ENOBUFS;
 +    }
 +
-+    /* If we don't handle this it could be it really is for the
-+       guest to handle */
-+    qemu_log_mask(LOG_UNIMP,
-+                  "%s: re-injecting exception not yet implemented"
-+                  " (0x%"PRIx32", %"PRIx64")\n",
-+                  __func__, hsr_ec, env->pc);
++    brk.bcr = deposit32(brk.bcr, 1, 2, 0x3);   /* PMC = 11 */
++    brk.bcr = deposit32(brk.bcr, 5, 4, 0xf);   /* BAS = RES1 */
++
++    g_array_append_val(hw_breakpoints, brk);
++
++    return 0;
++}
++
++/**
++ * delete_hw_breakpoint()
++ * @pc: address of breakpoint
++ *
++ * Delete a breakpoint and shuffle any above down
++ */
++
++static int delete_hw_breakpoint(target_ulong pc)
++{
++    int i;
++    for (i = 0; i < hw_breakpoints->len; i++) {
++        HWBreakpoint *brk = get_hw_bp(i);
++        if (brk->bvr == pc) {
++            g_array_remove_index(hw_breakpoints, i);
++            return 0;
++        }
++    }
++    return -ENOENT;
++}
++
++/**
++ * insert_hw_watchpoint()
++ * @addr: address of watch point
++ * @len: size of area
++ * @type: type of watch point
++ *
++ * See ARM ARM D2.10. As with the breakpoints we can do some advanced
++ * stuff if we want to. The watch points can be linked with the break
++ * points above to make them context aware. However for simplicity
++ * currently we only deal with simple read/write watch points.
++ *
++ * D7.3.11 DBGWCR<n>_EL1, Debug Watchpoint Control Registers
++ *
++ *  31  29 28   24 23  21  20  19 16 15 14  13   12  5 4   3 2   1  0
++ * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
++ * | RES0 |  MASK | RES0 | WT | LBN | SSC | HMC | BAS | LSC | PAC | E |
++ * +------+-------+------+----+-----+-----+-----+-----+-----+-----+---+
++ *
++ * MASK: num bits addr mask (0=none,01/10=res,11=3 bits (8 bytes))
++ * WT: 0 - unlinked, 1 - linked (not currently used)
++ * LBN: Linked BP number (not currently used)
++ * SSC/HMC/PAC: Security, Higher and Priv access control (Table D2-11)
++ * BAS: Byte Address Select
++ * LSC: Load/Store control (01: load, 10: store, 11: both)
++ * E: Enable
++ *
++ * The bottom 2 bits of the value register are masked. Therefore to
++ * break on any sizes smaller than an unaligned word you need to set
++ * MASK=0, BAS=bit per byte in question. For larger regions (^2) you
++ * need to ensure you mask the address as required and set BAS=0xff
++ */
++
++static int insert_hw_watchpoint(target_ulong addr,
++                                target_ulong len, int type)
++{
++    HWWatchpoint wp = {
++        .wcr = 1, /* E=1, enable */
++        .wvr = addr & (~0x7ULL),
++        .details = { .vaddr = addr, .len = len }
++    };
++
++    if (cur_hw_wps >= max_hw_wps) {
++        return -ENOBUFS;
++    }
++
++    /*
++     * HMC=0 SSC=0 PAC=3 will hit EL0 or EL1, any security state,
++     * valid whether EL3 is implemented or not
++     */
++    wp.wcr = deposit32(wp.wcr, 1, 2, 3);
++
++    switch (type) {
++    case GDB_WATCHPOINT_READ:
++        wp.wcr = deposit32(wp.wcr, 3, 2, 1);
++        wp.details.flags = BP_MEM_READ;
++        break;
++    case GDB_WATCHPOINT_WRITE:
++        wp.wcr = deposit32(wp.wcr, 3, 2, 2);
++        wp.details.flags = BP_MEM_WRITE;
++        break;
++    case GDB_WATCHPOINT_ACCESS:
++        wp.wcr = deposit32(wp.wcr, 3, 2, 3);
++        wp.details.flags = BP_MEM_ACCESS;
++        break;
++    default:
++        g_assert_not_reached();
++        break;
++    }
++    if (len <= 8) {
++        /* we align the address and set the bits in BAS */
++        int off = addr & 0x7;
++        int bas = (1 << len) - 1;
++
++        wp.wcr = deposit32(wp.wcr, 5 + off, 8 - off, bas);
++    } else {
++        /* For ranges above 8 bytes we need to be a power of 2 */
++        if (is_power_of_2(len)) {
++            int bits = ctz64(len);
++
++            wp.wvr &= ~((1 << bits) - 1);
++            wp.wcr = deposit32(wp.wcr, 24, 4, bits);
++            wp.wcr = deposit32(wp.wcr, 5, 8, 0xff);
++        } else {
++            return -ENOBUFS;
++        }
++    }
++
++    g_array_append_val(hw_watchpoints, wp);
++    return 0;
++}
++
++
++static bool check_watchpoint_in_range(int i, target_ulong addr)
++{
++    HWWatchpoint *wp = get_hw_wp(i);
++    uint64_t addr_top, addr_bottom = wp->wvr;
++    int bas = extract32(wp->wcr, 5, 8);
++    int mask = extract32(wp->wcr, 24, 4);
++
++    if (mask) {
++        addr_top = addr_bottom + (1 << mask);
++    } else {
++        /* BAS must be contiguous but can offset against the base
++         * address in DBGWVR */
++        addr_bottom = addr_bottom + ctz32(bas);
++        addr_top = addr_bottom + clo32(bas);
++    }
++
++    if (addr >= addr_bottom && addr <= addr_top) {
++        return true;
++    }
 +
 +    return false;
 +}
++
++/**
++ * delete_hw_watchpoint()
++ * @addr: address of breakpoint
++ *
++ * Delete a breakpoint and shuffle any above down
++ */
++
++static int delete_hw_watchpoint(target_ulong addr,
++                                target_ulong len, int type)
++{
++    int i;
++    for (i = 0; i < cur_hw_wps; i++) {
++        if (check_watchpoint_in_range(i, addr)) {
++            g_array_remove_index(hw_watchpoints, i);
++            return 0;
++        }
++    }
++    return -ENOENT;
++}
++
++
++int kvm_arch_insert_hw_breakpoint(target_ulong addr,
++                                  target_ulong len, int type)
++{
++    switch (type) {
++    case GDB_BREAKPOINT_HW:
++        return insert_hw_breakpoint(addr);
++        break;
++    case GDB_WATCHPOINT_READ:
++    case GDB_WATCHPOINT_WRITE:
++    case GDB_WATCHPOINT_ACCESS:
++        return insert_hw_watchpoint(addr, len, type);
++    default:
++        return -ENOSYS;
++    }
++}
++
++int kvm_arch_remove_hw_breakpoint(target_ulong addr,
++                                  target_ulong len, int type)
++{
++    switch (type) {
++    case GDB_BREAKPOINT_HW:
++        return delete_hw_breakpoint(addr);
++        break;
++    case GDB_WATCHPOINT_READ:
++    case GDB_WATCHPOINT_WRITE:
++    case GDB_WATCHPOINT_ACCESS:
++        return delete_hw_watchpoint(addr, len, type);
++    default:
++        return -ENOSYS;
++    }
++}
++
++
++void kvm_arch_remove_all_hw_breakpoints(void)
++{
++    if (cur_hw_wps > 0) {
++        g_array_remove_range(hw_watchpoints, 0, cur_hw_wps);
++    }
++    if (cur_hw_bps > 0) {
++        g_array_remove_range(hw_breakpoints, 0, cur_hw_bps);
++    }
++}
++
++void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr)
++{
++    int i;
++    memset(ptr, 0, sizeof(struct kvm_guest_debug_arch));
++
++    for (i = 0; i < max_hw_wps; i++) {
++        HWWatchpoint *wp = get_hw_wp(i);
++        ptr->dbg_wcr[i] = wp->wcr;
++        ptr->dbg_wvr[i] = wp->wvr;
++    }
++    for (i = 0; i < max_hw_bps; i++) {
++        HWBreakpoint *bp = get_hw_bp(i);
++        ptr->dbg_bcr[i] = bp->bcr;
++        ptr->dbg_bvr[i] = bp->bvr;
++    }
++}
++
++bool kvm_arm_hw_debug_active(CPUState *cs)
++{
++    return ((cur_hw_wps > 0) || (cur_hw_bps > 0));
++}
++
++static bool find_hw_breakpoint(CPUState *cpu, target_ulong pc)
++{
++    int i;
++
++    for (i = 0; i < cur_hw_bps; i++) {
++        HWBreakpoint *bp = get_hw_bp(i);
++        if (bp->bvr == pc) {
++            return true;
++        }
++    }
++    return false;
++}
++
++static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
++{
++    int i;
++
++    for (i = 0; i < cur_hw_wps; i++) {
++        if (check_watchpoint_in_range(i, addr)) {
++            return &get_hw_wp(i)->details;
++        }
++    }
++    return NULL;
++}
++
++
+ static inline void set_feature(uint64_t *features, int feature)
+ {
+     *features |= 1ULL << feature;
+@@ -546,6 +889,20 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
+             return true;
+         }
+         break;
++    case EC_BREAKPOINT:
++        if (find_hw_breakpoint(cs, env->pc)) {
++            return true;
++        }
++        break;
++    case EC_WATCHPOINT:
++    {
++        CPUWatchpoint *wp = find_hw_watchpoint(cs, debug_exit->far);
++        if (wp) {
++            cs->watchpoint_hit = wp;
++            return true;
++        }
++        break;
++    }
+     default:
+         error_report("%s: unhandled debug exit (%"PRIx32", %"PRIx64")\n",
+                      __func__, debug_exit->hsr, env->pc);
 diff --git a/target-arm/kvm_arm.h b/target-arm/kvm_arm.h
-index b516041..88f5b37 100644
+index 88f5b37..962b3bd 100644
 --- a/target-arm/kvm_arm.h
 +++ b/target-arm/kvm_arm.h
-@@ -215,4 +215,13 @@ static inline const char *gic_class_name(void)
+@@ -224,4 +224,25 @@ const char *gicv3_class_name(void);
   */
- const char *gicv3_class_name(void);
+ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit);
  
 +/**
-+ * kvm_arm_handle_debug:
-+ * @cs: CPUState
-+ * @debug_exit: debug part of the KVM exit structure
++ * kvm_arm_hw_debug_active:
++ * @cs: CPU State
 + *
-+ * Returns: TRUE is the debug exception was handled.
++ * Return: TRUE if any hardware breakpoints in use.
 + */
-+bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit);
++
++bool kvm_arm_hw_debug_active(CPUState *cs);
++
++/**
++ * kvm_arm_copy_hw_debug_data:
++ *
++ * @ptr: kvm_guest_debug_arch structure
++ *
++ * Copy the architecture specific debug registers into the
++ * kvm_guest_debug ioctl structure.
++ */
++struct kvm_guest_debug_arch;
++
++void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
 +
  #endif
 -- 

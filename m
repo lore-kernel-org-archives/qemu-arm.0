@@ -1,53 +1,63 @@
-Received: by 10.182.158.201 with SMTP id ww9csp834718obb;
-        Wed, 9 Dec 2015 11:01:44 -0800 (PST)
-X-Received: by 10.55.82.193 with SMTP id g184mr9576518qkb.65.1449687704399;
-        Wed, 09 Dec 2015 11:01:44 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp40918obb;
+        Wed, 9 Dec 2015 13:01:46 -0800 (PST)
+X-Received: by 10.141.4.4 with SMTP id g4mr1393199qhd.45.1449694906363;
+        Wed, 09 Dec 2015 13:01:46 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 138si10197845qhq.66.2015.12.09.11.01.44
+        by mx.google.com with ESMTPS id z62si10766197qgd.79.2015.12.09.13.01.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Dec 2015 11:01:44 -0800 (PST)
+        Wed, 09 Dec 2015 13:01:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:37435 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
+Received: from localhost ([::1]:37799 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a6jzk-0005l1-6v
-	for alex.bennee@linaro.org; Wed, 09 Dec 2015 14:01:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53851)
+	id 1a6lru-0006yx-45
+	for alex.bennee@linaro.org; Wed, 09 Dec 2015 16:01:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57924)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a6jzi-0005ic-FU
-	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 14:01:43 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a6lrn-0006xj-3H
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 16:01:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a6jzh-0003My-Eu
-	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 14:01:42 -0500
-Received: from mail-bl2on0110.outbound.protection.outlook.com
-	([65.55.169.110]:1376
-	helo=na01-bl2-obe.outbound.protection.outlook.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1a6lrm-0003N7-8N
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 16:01:39 -0500
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:33276)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1a6jzY-0003HY-A3; Wed, 09 Dec 2015 14:01:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=0KjqbvxMQEIbq+0KGIthAR0dS0FnS0YgPRmPU9lv9JY=;
-	b=MKa1ebFUEqO5RG3A95nQV6N9seYQOqgDNZComWZVyOcaRCryKqphDxaye3ALiDIZ/B/G2d4pFjXT7UXWraRCL6qScH2wkHnAAMwmGRBIA1FuQPSr5QxM5Uhsq/MWFfbAinQoQ62L6GZ5TqEEyuPI1pOBy5Trk4VSAKTltiqgqps=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2036.namprd03.prod.outlook.com (10.164.22.26) with Microsoft
-	SMTP Server (TLS) id 15.1.337.19; Wed, 9 Dec 2015 19:01:17 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0337.015; Wed, 9 Dec 2015 19:01:17 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Kevin OConnor <kevin@koconnor.net>
-Thread-Topic: [PATCH 4/8] bcm2835_emmc: add bcm2835 MMC/SD controller
-Thread-Index: AQHRLll1HRRnDohiT0GC4gj9UCGaxJ69cGeAgARdtiCAAH7lAIAAnAgggAAgXgCAAADQcA==
-Date: Wed, 9 Dec 2015 19:01:17 +0000
-Message-ID: <BLUPR0301MB2034EDE912E9F6BED40D12A49EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1a6lrm-0003Kv-1q
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 16:01:38 -0500
+Received: by vkca188 with SMTP id a188so67335377vkc.0
+	for <qemu-arm@nongnu.org>; Wed, 09 Dec 2015 13:01:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=linaro-org.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=bRQ1VbqCklIZLSC/dPZJ9CfM4s6STjRJTJOoiHv6SWU=;
+	b=WQf1PhBlqoFJ1RRdbY2QrYHZ1Est9fLlfH9GlQ2fhlQaFkynlTWt+nKlj/C2dFgfVD
+	g/c9x2hI8bXlz4gMU7jD0a4Heg17Aym7ahM1GkUGvDGMl08TQaJb9vNEKSvIsrHWmL6q
+	NazsA7WYlRqZ+B+l0QXillbRgGwiNbsXKI405THENbJcQyYoonbU9SMcFHI2Vz0OU8Jn
+	l4E35yYmqFEu+fvccBX0X421Hr39zcYWgRbBuuRQCms68+f1pOxmzZISWXYOW0P8iUyw
+	534sheQ92ZW146zaFdcnQXcbzO+vX0zvA8VctpOzGYQqJAhL0wnnAdKKbadPOMd5X4tA
+	IDfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=bRQ1VbqCklIZLSC/dPZJ9CfM4s6STjRJTJOoiHv6SWU=;
+	b=HYj1HYGNxiRZ6VLFMg0gI1KUyVGkH9FKhU/1n6CM+bgDMBq8UzP6SmlaM9Gh/bFuMe
+	Rcfj5l+WbHcew9+80MhkzJgwuksZKqEEcIwcbgdXi3kOyEOAjfll/9N900ZvX2EyrXTa
+	xQ2GR3Aj1+KwE8gT22lEeHjJBVAYJ3T9XBd2A7aFSUigyGjMBYNQ94OJ1y/q35O5DAy+
+	N7PUSNF04hXq+h/QCVgg2bRqQ4v5oZxl0F0CsuDx5NsBizMXLTxKuxDT6XUCDgh2Od/e
+	o0rmDBs4tdyfIcfB7rSq3g3d2SxIfE5gleKYARvEUkpe0BUy+VI0vhjuertEKI4Gj+q8
+	w3QQ==
+X-Gm-Message-State: ALoCoQkcKlFHgfXB4X6zH5UCS/oia0dsgGTBNusRSXKpZQ5qUPRkaFSp4OkaUNqHKfqmehp+dmUtWHxHPXoqMZtPX0GSPODaXzER+Z4Xs9qSsCuFYOxCHIM=
+X-Received: by 10.31.180.145 with SMTP id d139mr6452376vkf.83.1449694897245;
+	Wed, 09 Dec 2015 13:01:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Wed, 9 Dec 2015 13:01:17 -0800 (PST)
+In-Reply-To: <CAPokK=od-urxW-0nkwoxhaip_EqDMnu93v5KF5G58tcrX6G0Xw@mail.gmail.com>
 References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1449208887-9564-4-git-send-email-Andrew.Baumann@microsoft.com>
@@ -56,47 +66,18 @@ References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<CAPokK=poJ66bAJDx18WAtvuMCi-_fA=zBUAZAmzxP9Ke3BAzAw@mail.gmail.com>
 	<BLUPR0301MB203408E90349BF451ED484B79EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
 	<CAPokK=od-urxW-0nkwoxhaip_EqDMnu93v5KF5G58tcrX6G0Xw@mail.gmail.com>
-In-Reply-To: <CAPokK=od-urxW-0nkwoxhaip_EqDMnu93v5KF5G58tcrX6G0Xw@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:c::761]
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2036;
-	5:7gOgODqZcuyOUmhloNJRnX6i3DdtYwCftKjIp1TgGSPpj6bO6bOInWOglIK0sNiG0rGV3I+271yOzbHHgjA5i2hXqXJeaOjQNESXwh4jIXEAivvRHgk1TJFHGr/ySCi8Ck2mqCz0/6rXo+/IGuz3vA==;
-	24:JQBhhitZzyXg9IxgE9lxwDT1sRvbyahp64ZKvl44Nb77txBPc9RVQwEqkcCBGrnL7tWKgmyVToWOhE840pKgBLveaeelhaGi5IKVV6PfJ14=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2036;
-x-microsoft-antispam-prvs: <BLUPR0301MB20361F1060AD3A95EC2CA11E9EE80@BLUPR0301MB2036.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(520078)(8121501046)(5005006)(3002001)(10201501046)(61426038)(61427038);
-	SRVR:BLUPR0301MB2036; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2036; 
-x-forefront-prvs: 0785459C39
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(199003)(189002)(97736004)(76576001)(10400500002)(5008740100001)(189998001)(5001770100001)(92566002)(50986999)(8990500004)(33656002)(102836003)(10290500002)(1096002)(5001960100002)(586003)(2950100001)(2900100001)(77096005)(81156007)(6116002)(11100500001)(19580395003)(122556002)(40100003)(5005710100001)(5004730100002)(87936001)(74316001)(5002640100001)(93886004)(106356001)(86612001)(76176999)(54356999)(86362001)(1220700001)(101416001)(10090500001)(19580405001)(99286002)(106116001)(5003600100002)(105586002)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2036;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Dec 2015 19:01:17.2857 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2036
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 65.55.169.110
-Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 9 Dec 2015 21:01:17 +0000
+Message-ID: <CAFEAcA-=97eWfJ+gfxU+AjKb6h1dNgvam+BgD6VLXKd4+hs2LQ@mail.gmail.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22e
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Stefan Weil <sw@weilnetz.de>,
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Kevin OConnor <kevin@koconnor.net>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-arm] [PATCH 4/8] bcm2835_emmc: add bcm2835 MMC/SD
@@ -114,24 +95,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jce+AcTr2W7Z
+X-TUID: 6Qd4RSIY9Ue4
 
-PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
-Y29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIDkgRGVjZW1iZXIgMjAxNSAxMDo1NQ0KPiA+IFllcywg
-dGhhdCdzIHRoZSBzYW1lIGNoYW5nZSBJIG1hZGUuIElzIGl0IGdvaW5nIHRvIGJlIGFwcGxpZWQ/
-DQo+ID4NCj4gDQo+IEl0IG1pc3NlZCB0aGUgYm9hdCBmb3IgMi41LCBidXQgeW91IGNvdWxkIGhl
-bHAgYnkgcHV0dGluZyBhIHRlc3RlZC1ieQ0KPiBvciByZXZpZXdlZC1ieSB0byB0aGUgcGF0Y2gu
-DQoNCk9rLg0KDQo+ID4gVGhlIGNvbXBsZXRlIGRpZmYgbmVlZGVkIHRvIGJvb3QgV2luZG93cyBh
-cHBlYXJzIGJlbG93LiBUaGUgZmlyc3QgaHVuaw0KPiBhdm9pZHMgcmUtdHJpZ2dlcmluZyB0aGUg
-aW5zZXJ0IGludGVycnVwdCBvbiBjYXJkIHJlc2V0LA0KPiANCj4gSXMgdGhpcyBhIHJ1bnRpbWUg
-cmVzZXQgb3IgYW4gaW5pdGlhbCByZXNldCB0aGF0IGlzIGNhdXNpbmcgeW91IGdyaWVmPw0KPiBZ
-b3UgcGF0Y2ggaXMgYWxzbyBwYXRjaGluZyB0aGUgY29udHJvbGxlciByZXNldCBzbyBpcyBpdCBt
-b3JlIGEgY2FzZQ0KPiBvZiB0aGUgaW50ZXJydXB0IHRyaWdnZXIgb24gY29udHJvbGxlciByZXNl
-dCB0aGF0IGlzIGNhdXNpbmcgeW91DQo+IGlzc3Vlcz8NCg0KSXQncyB0aGUgc29mdHdhcmUtaXNz
-dWVkIGNvbnRyb2xsZXIgcmVzZXQuLi4gYXQgYm9hcmQgcG93ZXIgb24sIHRoZSBpbnNlcnQgaW50
-ZXJydXB0IGJpdCBpcyBzZXQgKGFuZCBVRUZJIGRlcGVuZHMgb24gc2VlaW5nIGl0IHNldCksIGJ1
-dCB3aGVuIHRoZSBXaW5kb3dzIGRyaXZlciBzdGFydHMsIGl0IGlzc3VlcyBhIHJlc2V0IGNvbW1h
-bmQgd2hpY2ggY2xlYXJzIHRoZSBpbnRlcnJ1cHQgc3RhdHVzLiBJdCBhbHNvIGhhcyBhIGJ1ZyB3
-aGljaCBsaXZlbG9ja3MgdGhlIHN5c3RlbSBpZiBhbiBpbnNlcnQgaW50ZXJydXB0IGlzIHNlZW4g
-YWZ0ZXIgdGhhdCByZXNldCAod2hpY2ggbmV2ZXIgaGFwcGVucyBvbiBoYXJkd2FyZSwgb2J2aW91
-c2x5KS4NCg0KQW5kcmV3DQo=
+On 9 December 2015 at 18:54, Peter Crosthwaite
+<crosthwaitepeter@gmail.com> wrote:
+> On Wed, Dec 9, 2015 at 10:17 AM, Andrew Baumann
+> <Andrew.Baumann@microsoft.com> wrote:
+>>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>>> Is that more likely to be an IP connectivity problem (wierd input to
+>>> the card-detect pin in the SoC)?
+>>
+>> That might be it, but in any case I still need to model it somehow.
+>>
+>
+> Ideally, this would be managed on the board level but it is kinda hard
+> the way to code is organised. Currently SDHCI is managing the SD card
+> instantiation due to a lack of QOMification. So for the moment, this
+> would be valid as a boolean property which disables the card detect
+> logic completely. If we get the SD QOMification though, the power,
+> card detect and sd interface proper can then be more finely managed on
+> the board level for all these varying connectivity configurations.
+
+Card detect you should be able to handle on the board level without
+waiting for QOMification -- it's just modelled as a QEMU irq line
+(the vexpress board connects it up to a random register, or you could
+not connect it to anything, etc).
+
+I'm working on the QOMification of sd.c this week, though I'm very
+rusty on how to properly model buses.
+
+thanks
+-- PMM

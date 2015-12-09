@@ -1,155 +1,125 @@
-Received: by 10.223.188.70 with SMTP id a6csp1017739wrh;
-        Wed, 23 Aug 2017 10:52:40 -0700 (PDT)
-X-Received: by 10.55.125.71 with SMTP id y68mr3696069qkc.179.1503510760674;
-        Wed, 23 Aug 2017 10:52:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503510760; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ODO1GtITjC7KW+ZtaI0h4yeF4CU+56EVKDg5C/mb/VnRqqfMv5o8mud8wtGJNTRqjt
-         mcANud9w5g3WMZD7Y7g+keNKurrE/FI6O0GYLyH4KbT/GpBCxqsatsV9v9KIoOHzK9JB
-         7HEcC9yC543wsFGU/RUN6dFAQJXJm1gZftSzX1QVxvqvfBpKQMz/1xpz7be6wRDaCENv
-         ypraOOJ22W5E0F7k+OwVY9ILD7A/kHW0ig1tYhWYxScMK3kskDcacPbbEPbqr+cLO3Kr
-         +Iy2wZEHEdu0ecvosVjqPRV9awNE0D/CeF7cSroZiBQwGeWIimC3wDWXGgfRpDC6TWCp
-         FJkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=8PfwyriEYNa0zGIVRQ6YaRuwPvb+aq0huFvVPvxmpOQ=;
-        b=ukpE4KGVvY8yiPyrnqlMmDM2iA9miRYlnk4lQUHQyfmHYrZeMZF+LesBasKpdmS202
-         iz37FCaYvo60RNxYx55/01qmPxQkdk/rzre/Xpmos4ehQJBG3hB6eb/vbPifphREpzrq
-         9PhWXrgDdTN4YkF56oAbE+oWXXGbHzmcXFviJqSierCqibG571kWnZWJmsjDwYreIRDx
-         okydRNQy8jJdmCfztpt8sF9dnBIEiYfVuFUruqPkPty1OOEHqe/Ri/BtZ4Au6Q47NOua
-         DbkNm9fvr+/Kq1CSGFI5wWP8yXoL+dMH51ZyDuZ0ZaNrNHPuKB97WQBEcHIeLmUDD3md
-         wAMg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=X6eshzMf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 10.182.158.201 with SMTP id ww9csp756794obb;
+        Wed, 9 Dec 2015 08:48:44 -0800 (PST)
+X-Received: by 10.55.40.153 with SMTP id o25mr8594649qko.93.1449679724879;
+        Wed, 09 Dec 2015 08:48:44 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n6si1927010qkn.515.2017.08.23.10.52.40
+        by mx.google.com with ESMTPS id z20si9663380qgz.41.2015.12.09.08.48.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Aug 2017 10:52:40 -0700 (PDT)
+        Wed, 09 Dec 2015 08:48:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=X6eshzMf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45055 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36898 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkZpW-0001Ee-Bd
-	for alex.bennee@linaro.org; Wed, 23 Aug 2017 13:52:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39860)
+	id 1a6hv2-00055Z-LK
+	for alex.bennee@linaro.org; Wed, 09 Dec 2015 11:48:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51836)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dkZol-0000eF-Qq
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 13:51:52 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a6hv0-00055O-AS
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 11:48:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1dkZok-0006g3-Uo
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 13:51:51 -0400
-Received: from mail-wr0-x22b.google.com ([2a00:1450:400c:c0c::22b]:33887)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1dkZok-0006fZ-MV
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 13:51:50 -0400
-Received: by mail-wr0-x22b.google.com with SMTP id p14so2785444wrg.1
-	for <qemu-arm@nongnu.org>; Wed, 23 Aug 2017 10:51:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8PfwyriEYNa0zGIVRQ6YaRuwPvb+aq0huFvVPvxmpOQ=;
-	b=X6eshzMfQ+6AoLwfQKwdaw9oJ+SUIQwDYAENleRpSaOs0fLVzvwOHw1Pa+2p6uNfeJ
-	rj47mEE3mpxI0xIRHnPeuDm/nI6rHrIUEixjil+iL19uTIXPh9RGFdnOOYOVP9GEpnVX
-	mu7NtsuS8qm0244ofmpiNLJiN0wWxjUv804go=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8PfwyriEYNa0zGIVRQ6YaRuwPvb+aq0huFvVPvxmpOQ=;
-	b=nKaa3kZdh4W79iQqc9/FOXMOEVQNAZrr9O0RhPUBvslvva0tBQ2TanldEc+0qRS5SZ
-	1TnzPbduwmDp0FFNUxz2bw1lh2KWfCxliEbb2cNDdFfd1R/HnPphp5GCCn27j9GDtQUW
-	wVgfyu581ZDrIpL4poS4bIeqz/hs5AC7YNPsHrxUQP3u8OKpaR1LWLT0LkglaQEnq1eX
-	3D4OfMnk7DfgN5oKkKQ821bECTXyGFOFWw76IMn6Y/3dWX32x/KhZeqzy5+4yEm53Yik
-	eoYrHkuurbgatNDf5SafVSsBpiFUxYXJgWinxOr7ks377CownBPcRbovSBWqsuYak+a5
-	CzPA==
-X-Gm-Message-State: AHYfb5iswCL5GPQ1rANEq18XoRLEhKnjoCejCvWgNl9SS0uY52/ic327
-	tVC9Xor9sT0pJJnhSHLs3e0Pep/3u20Y
-X-Received: by 10.223.129.135 with SMTP id 7mr1955578wra.11.1503510709451;
-	Wed, 23 Aug 2017 10:51:49 -0700 (PDT)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a6huy-0003hV-Vx
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 11:48:42 -0500
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:32897)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1a6huy-0003hH-Qa
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 11:48:40 -0500
+Received: by wmec201 with SMTP id c201so270150655wme.0
+	for <qemu-arm@nongnu.org>; Wed, 09 Dec 2015 08:48:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=Qg2KN1V7AIduSjDZIKexdiNb6Z9HkVxlVwygWdOwcDk=;
+	b=RrFc15cD/x609tfnRPXGKu/KNPkpzgT0hxCT4nQSoXD5b1/xyowC1y18upMEF9XxIu
+	ArUbFPNwd04U6Z2OHycTJUmnVAcRAguplhFW8YDBjkjgxLB7J2DUsITMY9BtX07YJ8jV
+	RUZQ4zA9sXEo7bpFYwtxuEevOqe4AQYyrlEGedZdBGIT1lMS39OMuelZPzmbC06FzfSM
+	d8DdE9TyPeQFSo1U+ywRtocylx+OdGG4u7wjy5yxyKrYPMC2gpPV62fiYsHgyfN2GpAd
+	o5zluXg3oy9Vy/SX5s3h7CrNbopoSR27Is9TQ0L2UZgISUKiD7aJIeQVMm1cwbBgP1vu
+	Oe0w==
 MIME-Version: 1.0
-Received: by 10.223.134.54 with HTTP; Wed, 23 Aug 2017 10:51:28 -0700 (PDT)
-In-Reply-To: <20170823172118.GQ19998@localhost.localdomain>
-References: <1503416789-32080-1-git-send-email-thuth@redhat.com>
-	<20170823172118.GQ19998@localhost.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 23 Aug 2017 18:51:28 +0100
-Message-ID: <CAFEAcA-DoQtTwCBFq-_JKPRMxcGq8-2QNnEJBu9STxtPWkB0bw@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:400c:c0c::22b
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/allwinner-a10: Mark the allwinner-a10
- device with user_creatable = false
+X-Received: by 10.28.133.4 with SMTP id h4mr11617522wmd.59.1449679720185; Wed,
+	09 Dec 2015 08:48:40 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Wed, 9 Dec 2015 08:48:40 -0800 (PST)
+In-Reply-To: <1449656808-16570-1-git-send-email-rabinv@axis.com>
+References: <1449656808-16570-1-git-send-email-rabinv@axis.com>
+Date: Wed, 9 Dec 2015 08:48:40 -0800
+Message-ID: <CAPokK=rz01FavfiPB9GUNxvRs5g9bx2Q-DnXQuDfi+3jWmLOKQ@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Rabin Vincent <rabin.vincent@axis.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22e
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Michael Davidsaver <mdavidsaver@gmail.com>, qemu-arm@nongnu.org,
+	Rabin Vincent <rabinv@axis.com>
+Subject: Re: [Qemu-arm] [PATCH 1/2] arm_mptimer: add watchdog mode support
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>, Thomas Huth <thuth@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ec4DUo5DenxA
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fR/UlLcivxkv
 
-On 23 August 2017 at 18:21, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> On Tue, Aug 22, 2017 at 05:46:29PM +0200, Thomas Huth wrote:
->> QEMU currently exits unexpectedly when the user accidentially
->> tries to do something like this:
->>
->> $ aarch64-softmmu/qemu-system-aarch64 -S -M integratorcp -nographic
->> QEMU 2.9.93 monitor - type 'help' for more information
->> (qemu) device_add allwinner-a10
->> Unsupported NIC model: smc91c111
->>
->> Exiting just due to a "device_add" should not happen. Looking closer
->> at the the realize and instance_init function of this device also
->> reveals that it is using serial_hds and nd_table directly there, so
->> this device is clearly not creatable by the user and should be marked
->> accordingly.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  hw/arm/allwinner-a10.c    | 2 ++
->>  scripts/device-crash-test | 1 -
->>  2 files changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
->> index f62a9a3..43a3f01 100644
->> --- a/hw/arm/allwinner-a10.c
->> +++ b/hw/arm/allwinner-a10.c
->> @@ -118,6 +118,8 @@ static void aw_a10_class_init(ObjectClass *oc, void *data)
->>      DeviceClass *dc = DEVICE_CLASS(oc);
->>
->>      dc->realize = aw_a10_realize;
->> +    /* Reason: Uses serial_hds in realize and nd_table in instance_init */
->> +    dc->user_creatable = false;
+On Wed, Dec 9, 2015 at 2:26 AM, Rabin Vincent <rabin.vincent@axis.com> wrote:
+> Add support for the watchdog mode of the MPTimer.
 >
-> I assume this patch will be replaced by one changing TYPE_DEVICE
-> to default to user_creatable=false, based on the replies to the
-> hw/misc/auxbus.c patch?
+> Signed-off-by: Rabin Vincent <rabinv@axis.com>
+> ---
+>  hw/timer/arm_mptimer.c         |   49 ++++++++++++++++++++++++++++++++++++----
+>  include/hw/timer/arm_mptimer.h |    4 ++++
+>  2 files changed, 49 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+> index 3e59c2a..2be4551 100644
+> --- a/hw/timer/arm_mptimer.c
+> +++ b/hw/timer/arm_mptimer.c
+> @@ -21,8 +21,11 @@
+>
+>  #include "hw/timer/arm_mptimer.h"
+>  #include "qemu/timer.h"
+> +#include "sysemu/sysemu.h"
+>  #include "qom/cpu.h"
+>
+> +#define TWD_CONTROL_WDOG_MODE   (1 << 3)
+> +
+>  /* This device implements the per-cpu private timer and watchdog block
+>   * which is used in both the ARM11MPCore and Cortex-A9MP.
+>   */
+> @@ -38,7 +41,12 @@ static inline int get_current_cpu(ARMMPTimerState *s)
+>
+>  static inline void timerblock_update_irq(TimerBlock *tb)
+>  {
+> -    qemu_set_irq(tb->irq, tb->status && (tb->control & 4));
+> +    if ((tb->control & TWD_CONTROL_WDOG_MODE) && tb->status) {
+> +        qemu_log_mask(CPU_LOG_RESET, "MPCore Watchdog Reset\n");
+> +        qemu_system_reset_request();
 
-user-creatable and hotplug are different things -- most
-devices are user-creatable, many fewer are hotpluggable.
-So the tradeoff for the default doesn't *necessarily* go
-the same way.
+The actual consequences of a watchdog timeout are a SoC or board level
+thing. The WDT (and MPCore) can only create the signal while the
+instantiator of the SoC has to act on it for system level reset
+consequences. We should match that. There was a similar thread with
+Michael Davidsaver and the ARMv7M reset semantics:
 
-thanks
--- PMM
+https://lists.gnu.org/archive/html/qemu-devel/2015-10/msg02047.html
+
+Regards,
+Peter
+
+> +    } else {
+> +        qemu_set_irq(tb->irq, tb->status && (tb->control & 4));
+> +    }
+>  }
+>

@@ -1,123 +1,153 @@
-Received: by 10.182.158.201 with SMTP id ww9csp826571obb;
-        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
-X-Received: by 10.140.41.234 with SMTP id z97mr8041710qgz.64.1448566732573;
-        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp62574obb;
+        Wed, 9 Dec 2015 13:38:26 -0800 (PST)
+X-Received: by 10.55.77.203 with SMTP id a194mr10655453qkb.85.1449697106620;
+        Wed, 09 Dec 2015 13:38:26 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j141si27612675qhc.86.2015.11.26.11.38.52
+        by mx.google.com with ESMTPS id x66si10920200qka.82.2015.12.09.13.38.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Nov 2015 11:38:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 09 Dec 2015 13:38:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52936 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:37945 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a22NY-0005H1-6o
-	for alex.bennee@linaro.org; Thu, 26 Nov 2015 14:38:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58431)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a6mRO-0002Xj-AR
+	for alex.bennee@linaro.org; Wed, 09 Dec 2015 16:38:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38686)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a22NV-0005Cm-9V
-	for qemu-arm@nongnu.org; Thu, 26 Nov 2015 14:38:50 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a6mQu-00026f-De
+	for qemu-devel@nongnu.org; Wed, 09 Dec 2015 16:37:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a22NU-0006sB-94
-	for qemu-arm@nongnu.org; Thu, 26 Nov 2015 14:38:49 -0500
-Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:38249)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1a6mQp-00056F-Et
+	for qemu-devel@nongnu.org; Wed, 09 Dec 2015 16:37:56 -0500
+Received: from mail-bn1on0112.outbound.protection.outlook.com
+	([157.56.110.112]:33562
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1a22NS-0006rE-7U; Thu, 26 Nov 2015 14:38:46 -0500
-Received: by wmec201 with SMTP id c201so33903392wme.1;
-	Thu, 26 Nov 2015 11:38:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=3UTm3CgyJ2n9VeJkIX5MhF0zsWuNNggfM8zYqywzKWM=;
-	b=kuPtZxrBWWVdFO62xZexXxsOhtabCr8SLGkd8EKkJL+eNu8poyUBowrODjj38AWQUg
-	lo3Muh05bZJ96tvQGJLjj4hzOVjYUmhrj0pvg/T7oV9Cg+XvCLuUJDT62nYFpQMuen77
-	hbtnNEp5VvWe+YWiuTMT5CzvQ7zJgW4vsVmoX6mZJ6FSFvQHs/s4b9hmT5FoNGV8pqXd
-	wEIfUMeKzqzgAAlwVZVHD3/7KDml2ENoyA0AgAHHJcBqIIUdl6gjMUhXn1HpDtPS1lgZ
-	R+S0SjD8n7zVsU4AywHgk8Mr4TBlLf4ySxaGuUXd2wSym9zBGURCByujF1QFl1McPqSl
-	S8Tw==
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1a6mQp-00055z-90; Wed, 09 Dec 2015 16:37:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=ofFxBPCHjt9dGI2dav4vo5mom2bAJa25gwsW7mtZH60=;
+	b=SN9ruJTnnpyZlYKL1jk0XofoBw54jxIZfypPdzp2MBipGXKMbwC8xf2nFASqy4C4caQaVrF91u2O15a1xfRsorevCFH2PapkAHkHlcKxnnCKPs3v0mtUv3Nzl+cnSaRnxqo61Rv70jKNaEXD/wEcU1lLF3Sh7J9i6F8Pa4cMd5A=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
+	SMTP Server (TLS) id 15.1.337.19; Wed, 9 Dec 2015 21:37:49 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0337.015; Wed, 9 Dec 2015 21:37:49 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Peter Crosthwaite
+	<crosthwaitepeter@gmail.com>
+Thread-Topic: [PATCH 4/8] bcm2835_emmc: add bcm2835 MMC/SD controller
+Thread-Index: AQHRLll1HRRnDohiT0GC4gj9UCGaxJ69cGeAgARdtiCAAH7lAIAAnAgggAAgXgCAACNjgIAACUyw
+Date: Wed, 9 Dec 2015 21:37:49 +0000
+Message-ID: <BLUPR0301MB203459BE30BF401008BF6BEB9EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1449208887-9564-4-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAPokK=oskY5fBigEnpBkm-uKWaRW1+KYsmZLQ9HRrmnMPGYp6Q@mail.gmail.com>
+	<BLUPR0301MB2034314DC44EA275D6FC79FA9EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=poJ66bAJDx18WAtvuMCi-_fA=zBUAZAmzxP9Ke3BAzAw@mail.gmail.com>
+	<BLUPR0301MB203408E90349BF451ED484B79EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=od-urxW-0nkwoxhaip_EqDMnu93v5KF5G58tcrX6G0Xw@mail.gmail.com>
+	<CAFEAcA-=97eWfJ+gfxU+AjKb6h1dNgvam+BgD6VLXKd4+hs2LQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-=97eWfJ+gfxU+AjKb6h1dNgvam+BgD6VLXKd4+hs2LQ@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [2001:4898:80e8:e::724]
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
+	5:0R9QUvgjM3P8A5O8y5t2SgtDLOxXVdkoooMGdvVkgxH5Cz2nvY7UaUlwEyi7JlZ02PLnlp23O0IK36tThG4uWU9UVBXTQMjxeLzQnqrIv3rhsVC4XFGXf8VRgT1s9QJeTczILTwf3mfS+LMWrcJYSw==;
+	24:4qN/3z9nulzijF/95S5yO76NlvDI8+KeNqvn4MNgvxN/L495rQco3bm47j5Y4cRzmUbOobGlIq7Tqdt9LZ+VfR10uwWcLfCd1lACjAUFNWs=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
+x-microsoft-antispam-prvs: <BLUPR0301MB203440B35E62F199B9AAF25D9EE80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(520078)(8121501046)(5005006)(10201501046)(3002001)(61426038)(61427038);
+	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; 
+x-forefront-prvs: 0785459C39
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(24454002)(199003)(377454003)(189002)(189998001)(93886004)(19580395003)(77096005)(101416001)(11100500001)(5002640100001)(6116002)(76576001)(33656002)(2900100001)(5008740100001)(19580405001)(5003600100002)(586003)(122556002)(86612001)(40100003)(5005710100001)(105586002)(5004730100002)(1096002)(50986999)(102836003)(86362001)(87936001)(2950100001)(10400500002)(106116001)(99286002)(97736004)(5001770100001)(106356001)(92566002)(81156007)(8990500004)(10290500002)(1220700001)(74316001)(76176999)(10090500001)(54356999)(5001960100002)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Received: by 10.194.114.105 with SMTP id jf9mr49991077wjb.102.1448566725326; 
-	Thu, 26 Nov 2015 11:38:45 -0800 (PST)
-Received: by 10.28.88.11 with HTTP; Thu, 26 Nov 2015 11:38:45 -0800 (PST)
-In-Reply-To: <BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <BLUPR0301MB20343673123489A408C987859E1E0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<CAPokK=q3RDOU8-QhYz9xEHEyqb4-Bxu+Xvp0hDxmgUa-AgQb6g@mail.gmail.com>
-	<BLUPR0301MB20346C0A5ADAA0A130BECB989E1C0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Thu, 26 Nov 2015 11:38:45 -0800
-Message-ID: <CAPokK=p61hGYhB0rMxsuJdfbhB1bgciC-w0Fg=m4Bwa-J2Am9Q@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::233
-Cc: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	=?UTF-8?B?SmFuIFBldHJvdcWh?= <jan.petrous@tieto.com>,
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Dec 2015 21:37:49.4336 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.110.112
+Cc: =?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, Stefan Weil <sw@weilnetz.de>, Peter
+	Crosthwaite <crosthwaite.peter@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Kevin OConnor <kevin@koconnor.net>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] RFC: raspberry pi / pi2 /
-	Windows-on-ARM support
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH 4/8] bcm2835_emmc: add bcm2835 MMC/SD
+	controller
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ne7cbRXvFHtW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yQhU4Ad0X6D4
 
-On Wed, Nov 18, 2015 at 10:16 AM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> Hi Peter,
->
-> Thanks for your feedback!
->
-> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
-> Sent: Tuesday, 17 November 2015 23:51
->> I haven't looked beyond the diffstat yet, but a top level
->> architectural comment, I only see the one file in hw/arm. We are
->> promoting the split of board and SoC now as two separate objects. Each
->> of the patch series linked above demonstrates this. The BCM SoC would
->> be an object in its own right, then the board instantiates the SoC as
->> a composite device.
->
-> I understand the rationale here, but is there much value pursuing this fo=
-r the Pi? As far as I know, the Pi1/2 SOCs (bcm2835 and 2836) are one-off d=
-esigns used only in the Pi. Moreover, the 2836 is basically a copy of the 2=
-835 with the addition of a new block for a multi-core interrupt controller =
-and mailboxes, so trying to split those out into two separate SOC definitio=
-n files would require either lots of duplication, or a tight coupling betwe=
-en the two. Finally, there is basically nothing on the board besides the So=
-C and RAM (just a USB-Ethernet adapter), so the actual board definition fil=
-es would be almost empty. As it is, I've already factored out all the commo=
-n devices within hw/arm/raspi.c -- my feeling is that this is a cleaner way=
- to do it for the Pi.
->
-
-So I am looking at some recent news, and there is the RPi Zero which
-reuses the bcm2835 as a different board. Can't find the schematic yet,
-but from what I can see, this is a raw SoC (no USB ethernet). With
-your SoC/board split we should be able pickup the Zero board quite
-cheaply as follow up work.
-
-Regards,
-Peter
-
->> It is big. Work of this magnitude is generally better managed as
->> multiple series (each of multiple patches). A general approach with
->> new ARM boards is the first series is the bare minimum needed to get a
+PiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWlsdG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0K
+PiBTZW50OiBXZWRuZXNkYXksIDkgRGVjZW1iZXIgMjAxNSAxMzowMQ0KPiBPbiA5IERlY2VtYmVy
+IDIwMTUgYXQgMTg6NTQsIFBldGVyIENyb3N0aHdhaXRlDQo+IDxjcm9zdGh3YWl0ZXBldGVyQGdt
+YWlsLmNvbT4gd3JvdGU6DQo+ID4gT24gV2VkLCBEZWMgOSwgMjAxNSBhdCAxMDoxNyBBTSwgQW5k
+cmV3IEJhdW1hbm4NCj4gPiA8QW5kcmV3LkJhdW1hbm5AbWljcm9zb2Z0LmNvbT4gd3JvdGU6DQo+
+ID4+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21h
+aWwuY29tXQ0KPiA+Pj4gSXMgdGhhdCBtb3JlIGxpa2VseSB0byBiZSBhbiBJUCBjb25uZWN0aXZp
+dHkgcHJvYmxlbSAod2llcmQgaW5wdXQgdG8NCj4gPj4+IHRoZSBjYXJkLWRldGVjdCBwaW4gaW4g
+dGhlIFNvQyk/DQo+ID4+DQo+ID4+IFRoYXQgbWlnaHQgYmUgaXQsIGJ1dCBpbiBhbnkgY2FzZSBJ
+IHN0aWxsIG5lZWQgdG8gbW9kZWwgaXQgc29tZWhvdy4NCj4gPj4NCj4gPg0KPiA+IElkZWFsbHks
+IHRoaXMgd291bGQgYmUgbWFuYWdlZCBvbiB0aGUgYm9hcmQgbGV2ZWwgYnV0IGl0IGlzIGtpbmRh
+IGhhcmQNCj4gPiB0aGUgd2F5IHRvIGNvZGUgaXMgb3JnYW5pc2VkLiBDdXJyZW50bHkgU0RIQ0kg
+aXMgbWFuYWdpbmcgdGhlIFNEIGNhcmQNCj4gPiBpbnN0YW50aWF0aW9uIGR1ZSB0byBhIGxhY2sg
+b2YgUU9NaWZpY2F0aW9uLiBTbyBmb3IgdGhlIG1vbWVudCwgdGhpcw0KPiA+IHdvdWxkIGJlIHZh
+bGlkIGFzIGEgYm9vbGVhbiBwcm9wZXJ0eSB3aGljaCBkaXNhYmxlcyB0aGUgY2FyZCBkZXRlY3QN
+Cj4gPiBsb2dpYyBjb21wbGV0ZWx5LiBJZiB3ZSBnZXQgdGhlIFNEIFFPTWlmaWNhdGlvbiB0aG91
+Z2gsIHRoZSBwb3dlciwNCj4gPiBjYXJkIGRldGVjdCBhbmQgc2QgaW50ZXJmYWNlIHByb3BlciBj
+YW4gdGhlbiBiZSBtb3JlIGZpbmVseSBtYW5hZ2VkIG9uDQo+ID4gdGhlIGJvYXJkIGxldmVsIGZv
+ciBhbGwgdGhlc2UgdmFyeWluZyBjb25uZWN0aXZpdHkgY29uZmlndXJhdGlvbnMuDQo+IA0KPiBD
+YXJkIGRldGVjdCB5b3Ugc2hvdWxkIGJlIGFibGUgdG8gaGFuZGxlIG9uIHRoZSBib2FyZCBsZXZl
+bCB3aXRob3V0DQo+IHdhaXRpbmcgZm9yIFFPTWlmaWNhdGlvbiAtLSBpdCdzIGp1c3QgbW9kZWxs
+ZWQgYXMgYSBRRU1VIGlycSBsaW5lDQo+ICh0aGUgdmV4cHJlc3MgYm9hcmQgY29ubmVjdHMgaXQg
+dXAgdG8gYSByYW5kb20gcmVnaXN0ZXIsIG9yIHlvdSBjb3VsZA0KPiBub3QgY29ubmVjdCBpdCB0
+byBhbnl0aGluZywgZXRjKS4NCg0KRm9yZ2l2ZSBtZSBpZiBJJ20gc2xvdywgYnV0IEkgZG9u4oCZ
+dCBzZWUgaG93IHRoYXQgY291bGQgd29yayBmb3Igc2RoY2kuDQoNClZleHByZXNzIHVzZXMgcGwx
+ODEsIHdoaWNoIGhhcyBHUElPIF9vdXRwdXRzXyBmb3IgY2FyZCBpbnNlcnRlZCBldGMuIHNkaGNp
+IG11bHRpcGxleGVzIHRoZSBjYXJkIGluc2VydGVkIGludGVycnVwdCAod2hpY2ggb3JpZ2luYXRl
+cyBpbiBzZC5jKSBhbG9uZyB3aXRoIG90aGVyIFNEIGV2ZW50cyBsaWtlIGNvbW1hbmQgY29tcGxl
+dGlvbiBpbnRvIGEgc2luZ2xlIGludGVycnVwdCBsaW5lLg0KDQpJZiB0aGVyZSB3YXMgYSB3YXkg
+dG8gaW50ZXJwb3NlIG9uIHRoZSBpcnEgYmV0d2VlbiBzZCBhbmQgc2RoY2ksIEkgdGhpbmsgSSBj
+b3VsZCBkbyB3aGF0IEkgd2FudCwgYnV0IHJpZ2h0IG5vdyB0aGV5IGFyZSBhbGxvY2F0ZWQgYW5k
+IHdpcmVkIHVwIGluIHNkaGNpJ3MgaW5pdCByb3V0aW5lLg0KDQpBbmRyZXcNCg==

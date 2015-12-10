@@ -1,63 +1,65 @@
-Received: by 10.182.158.201 with SMTP id ww9csp508042obb;
-        Thu, 10 Dec 2015 06:17:01 -0800 (PST)
-X-Received: by 10.140.251.212 with SMTP id w203mr7120606qhc.25.1449757021021;
-        Thu, 10 Dec 2015 06:17:01 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp518417obb;
+        Thu, 10 Dec 2015 06:33:04 -0800 (PST)
+X-Received: by 10.140.169.130 with SMTP id p124mr6972208qhp.50.1449757984075;
+        Thu, 10 Dec 2015 06:33:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f16si14963880qgd.120.2015.12.10.06.17.00
+        by mx.google.com with ESMTPS id q64si15027135qha.51.2015.12.10.06.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Dec 2015 06:17:00 -0800 (PST)
+        Thu, 10 Dec 2015 06:33:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41970 helo=lists.gnu.org)
+Received: from localhost ([::1]:42263 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a721k-0008Im-JS
-	for alex.bennee@linaro.org; Thu, 10 Dec 2015 09:17:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56784)
+	id 1a72HH-00054c-HI
+	for alex.bennee@linaro.org; Thu, 10 Dec 2015 09:33:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1a721e-0008IA-3V
-	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 09:16:58 -0500
+	(envelope-from <armbru@redhat.com>) id 1a72HF-00054Q-PF
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 09:33:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1a721Y-0001RA-Ic
-	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 09:16:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57737)
+	(envelope-from <armbru@redhat.com>) id 1a72HB-0006cQ-PV
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 09:33:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56038)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1a721Y-0001R6-Dw; Thu, 10 Dec 2015 09:16:48 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id E6BACA2032;
-	Thu, 10 Dec 2015 14:16:47 +0000 (UTC)
-Received: from [10.3.112.28] (ovpn-112-28.phx2.redhat.com [10.3.112.28])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBAEGb2n027005
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 10 Dec 2015 09:16:41 -0500
-To: Marcel Apfelbaum <marcel@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+	(envelope-from <armbru@redhat.com>)
+	id 1a72HB-0006cK-K8; Thu, 10 Dec 2015 09:32:57 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 194ED3356A2;
+	Thu, 10 Dec 2015 14:32:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-204-39.brq.redhat.com
+	[10.40.204.39])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBAEWsRM008732
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 10 Dec 2015 09:32:56 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 22B0F303F916; Thu, 10 Dec 2015 15:32:54 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Marcel Apfelbaum <marcel@redhat.com>
 References: <1449742760-6310-1-git-send-email-armbru@redhat.com>
 	<566962E3.4000409@gmail.com> <878u52fpn1.fsf@blackfin.pond.sub.org>
 	<56698521.3040707@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56698945.2070709@redhat.com>
-Date: Thu, 10 Dec 2015 15:16:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+Date: Thu, 10 Dec 2015 15:32:54 +0100
+In-Reply-To: <56698521.3040707@redhat.com> (Marcel Apfelbaum's message of
+	"Thu, 10 Dec 2015 15:58:57 +0200")
+Message-ID: <87lh928jc9.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <56698521.3040707@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] Use error_fatal to simplify
- obvious fatal errors
+	obvious fatal errors
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,15 +73,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0vt/O/Mu1o05
+X-TUID: o7YMesi/pC7R
 
+Marcel Apfelbaum <marcel@redhat.com> writes:
 
-
-On 10/12/2015 14:58, Marcel Apfelbaum wrote:
+> On 12/10/2015 02:34 PM, Markus Armbruster wrote:
+>> Marcel Apfelbaum <marcel.apfelbaum@gmail.com> writes:
+>>
+>>> On 12/10/2015 12:19 PM, Markus Armbruster wrote:
+>>>> Done with this admittedly crude Coccinelle semantic patch with manual
+>>>> burial of dead Error * variables squashed in:
+[...]
+>>>
+>>> That's so cool!
+>>
+>> I'm afraid my sledgehammer approach to Coccinelle would make its
+>> inventors wince...
+>>
+>>> Isn't it the time to have our own Coccinelle directory
+>>> with scripts like this?
+>>
+>> Could do that if there's interest.
+>>
+>>>                          And to make them part of make check?
+>>
+>> I'm afraid that's not practical.  spatch solves a difficult problem, and
+>> takes its own sweet time to do it.
+>
+> So it takes a long time to run. We could make it depend on an
+> environment variable,
+> so at least the maintainers will run it :)
+>
 > My point is, now we *could* have a guarantee that if anyone uses the old
 > way, we can catch it in time. It can be easily lost in the review process.
 
-The right way to do that would be in scripts/checkpatch.pl, by catching
-error_report_err followed by exit.
+In my experience, to reduce recurrence of an unwanted code pattern, you
+first need to get rid of the bad examples in the tree.  Without that,
+it's basically futile.
 
-Paolo
+For the ones that keep coming back, further steps may be in order, such
+as making checkpatch complain.
+
+> Anyway, it was only a thought.
+
+It's not without merit.
+
+>>> Is a pity to have them lost into a git comment...

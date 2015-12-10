@@ -1,62 +1,60 @@
-Received: by 10.182.158.201 with SMTP id ww9csp484982obb;
-        Thu, 10 Dec 2015 05:42:33 -0800 (PST)
-X-Received: by 10.140.250.70 with SMTP id v67mr6819790qhc.43.1449754953084;
-        Thu, 10 Dec 2015 05:42:33 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp494744obb;
+        Thu, 10 Dec 2015 05:59:44 -0800 (PST)
+X-Received: by 10.140.29.33 with SMTP id a30mr14758108qga.88.1449755983981;
+        Thu, 10 Dec 2015 05:59:43 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p124si14823723qha.64.2015.12.10.05.42.32
+        by mx.google.com with ESMTPS id 63si14968373qgg.15.2015.12.10.05.59.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Dec 2015 05:42:33 -0800 (PST)
+        Thu, 10 Dec 2015 05:59:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41441 helo=lists.gnu.org)
+Received: from localhost ([::1]:41577 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a71UO-0001R3-Py
-	for alex.bennee@linaro.org; Thu, 10 Dec 2015 08:42:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43976)
+	id 1a71l1-0001d2-Pa
+	for alex.bennee@linaro.org; Thu, 10 Dec 2015 08:59:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49038)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a71Td-0000TK-U6
-	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 08:41:50 -0500
+	(envelope-from <marcel@redhat.com>) id 1a71kb-0001Lw-Ps
+	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 08:59:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a71TZ-0006c6-7t
-	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 08:41:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54311)
+	(envelope-from <marcel@redhat.com>) id 1a71kX-0003aj-2i
+	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 08:59:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60785)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1a71TP-0006Zh-2J; Thu, 10 Dec 2015 08:41:31 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 69937347DBB;
-	Thu, 10 Dec 2015 13:41:30 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-204-39.brq.redhat.com
-	[10.40.204.39])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBADfSZx016857
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 10 Dec 2015 08:41:29 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 628F8303F916; Thu, 10 Dec 2015 14:41:27 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <marcel@redhat.com>)
+	id 1a71kN-0003Z6-70; Thu, 10 Dec 2015 08:59:03 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3530042E5D6;
+	Thu, 10 Dec 2015 13:59:02 +0000 (UTC)
+Received: from [10.36.7.50] (vpn1-7-50.ams2.redhat.com [10.36.7.50])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBADww8K011295; Thu, 10 Dec 2015 08:58:59 -0500
+To: Markus Armbruster <armbru@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 References: <1449742760-6310-1-git-send-email-armbru@redhat.com>
-	<5669589E.4050904@redhat.com> <87egeufptk.fsf@blackfin.pond.sub.org>
-Date: Thu, 10 Dec 2015 14:41:27 +0100
-In-Reply-To: <87egeufptk.fsf@blackfin.pond.sub.org> (Markus Armbruster's
-	message of "Thu, 10 Dec 2015 13:31:03 +0100")
-Message-ID: <87zixia0ag.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	<566962E3.4000409@gmail.com> <878u52fpn1.fsf@blackfin.pond.sub.org>
+From: Marcel Apfelbaum <marcel@redhat.com>
+Message-ID: <56698521.3040707@redhat.com>
+Date: Thu, 10 Dec 2015 15:58:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.1.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+In-Reply-To: <878u52fpn1.fsf@blackfin.pond.sub.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>
 Subject: Re: [Qemu-devel] [PATCH] Use error_fatal to simplify obvious fatal
-	errors
+ errors
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,33 +68,167 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MTdD8JuzANI8
+X-TUID: jWhEVzHGBdSd
 
-Markus Armbruster <armbru@redhat.com> writes:
-
-> Paolo Bonzini <pbonzini@redhat.com> writes:
+On 12/10/2015 02:34 PM, Markus Armbruster wrote:
+> Marcel Apfelbaum <marcel.apfelbaum@gmail.com> writes:
 >
->> On 10/12/2015 11:19, Markus Armbruster wrote:
->>> +    object_property_set_int(OBJECT(cpu), ZYNQ_BOARD_MIDR, "midr",
->>> + &error_fatal);object_property_set_int(OBJECT(cpu),
->>> + MPCORE_PERIPHBASE,
->>> + "reset-cbar",
->>> + &error_fatal);object_property_set_bool(OBJECT(cpu),
->>> + true,
->>> + "realized",
->>> + &error_fatal);
+>> On 12/10/2015 12:19 PM, Markus Armbruster wrote:
+>>> Done with this admittedly crude Coccinelle semantic patch with manual
+>>> burial of dead Error * variables squashed in:
+>>>
+>>>       @@
+>>>       identifier FUN;
+>>>       expression ERR, EC;
+>>>       @@
+>>>       -    FUN(&ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    FUN(&error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression ARG1, ERR, EC;
+>>>       @@
+>>>       -    FUN(ARG1, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    FUN(ARG1, &error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression ARG1, ARG2, ERR, EC;
+>>>       @@
+>>>       -    FUN(ARG1, ARG2, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    FUN(ARG1, ARG2, &error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression ARG1, ARG2, ARG3, ERR, EC;
+>>>       @@
+>>>       -    FUN(ARG1, ARG2, ARG3, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    FUN(ARG1, ARG2, ARG3, &error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression RET, ERR, EC;
+>>>       @@
+>>>       -    RET = FUN(&ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    RET = FUN(&error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression RET, ARG1, ERR, EC;
+>>>       @@
+>>>       -    RET = FUN(ARG1, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    RET = FUN(ARG1, &error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression RET, ARG1, ARG2, ERR, EC;
+>>>       @@
+>>>       -    RET = FUN(ARG1, ARG2, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    RET = FUN(ARG1, ARG2, &error_fatal);
+>>>       @@
+>>>       identifier FUN;
+>>>       expression RET, ARG1, ARG2, ARG3, ERR, EC;
+>>>       @@
+>>>       -    RET = FUN(ARG1, ARG2, ARG3, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    RET = FUN(ARG1, ARG2, ARG3, &error_fatal);
+>>>       @@
+>>>       type T;
+>>>       identifier FUN, RET;
+>>>       expression ERR, EC;
+>>>       @@
+>>>       -    T RET = FUN(&ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    T RET = FUN(&error_fatal);
+>>>       @@
+>>>       type T;
+>>>       identifier FUN, RET;
+>>>       expression ARG1, ERR, EC;
+>>>       @@
+>>>       -    T RET = FUN(ARG1, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    T RET = FUN(ARG1, &error_fatal);
+>>>       @@
+>>>       type T;
+>>>       identifier FUN, RET;
+>>>       expression ARG1, ARG2, ERR, EC;
+>>>       @@
+>>>       -    T RET = FUN(ARG1, ARG2, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    T RET = FUN(ARG1, ARG2, &error_fatal);
+>>>       @@
+>>>       type T;
+>>>       identifier FUN, RET;
+>>>       expression ARG1, ARG2, ARG3, ERR, EC;
+>>>       @@
+>>>       -    T RET = FUN(ARG1, ARG2, ARG3, &ERR);
+>>>       -    if (ERR != NULL) {
+>>>       -        error_report_err(ERR);
+>>>       -        exit(EC);
+>>>       -    }
+>>>       +    T RET = FUN(ARG1, ARG2, ARG3, &error_fatal);
+>>>
 >>
->> Something went wrong here. :)
+>> That's so cool!
 >
-> Once again I demonstrate incompetence at proofreading my own patches %-}
+> I'm afraid my sledgehammer approach to Coccinelle would make its
+> inventors wince...
 >
-> No idea what happened.  I'll fix it.
+>> Isn't it the time to have our own Coccinelle directory
+>> with scripts like this?
+>
+> Could do that if there's interest.
+>
+>>                          And to make them part of make check?
+>
+> I'm afraid that's not practical.  spatch solves a difficult problem, and
+> takes its own sweet time to do it.
 
-Coccinelle bug.  If I append '//' to the relevant line in the semantic
-patch, I get
+So it takes a long time to run. We could make it depend on an environment variable,
+so at least the maintainers will run it :)
 
-+                            &error_fatal);//object_property_set_int(OBJECT(cpu),
+My point is, now we *could* have a guarantee that if anyone uses the old
+way, we can catch it in time. It can be easily lost in the review process.
 
-Oopsie :)
+Anyway, it was only a thought.
+Thanks,
+Marcel
 
-[...]
+
+>
+>> Is a pity to have them lost into a git comment...
+

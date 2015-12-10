@@ -1,52 +1,63 @@
-Received: by 10.182.158.201 with SMTP id ww9csp127281obb;
-        Wed, 9 Dec 2015 15:53:56 -0800 (PST)
-X-Received: by 10.141.6.9 with SMTP id i9mr2572586qhd.68.1449705236437;
-        Wed, 09 Dec 2015 15:53:56 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp175196obb;
+        Wed, 9 Dec 2015 17:51:02 -0800 (PST)
+X-Received: by 10.140.25.145 with SMTP id 17mr12478599qgt.96.1449712262491;
+        Wed, 09 Dec 2015 17:51:02 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r197si11598661qha.7.2015.12.09.15.53.56
+        by mx.google.com with ESMTPS id 85si2111450qha.128.2015.12.09.17.51.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Dec 2015 15:53:56 -0800 (PST)
+        Wed, 09 Dec 2015 17:51:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38351 helo=lists.gnu.org)
+Received: from localhost ([::1]:38894 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a6oYW-0004As-5t
-	for alex.bennee@linaro.org; Wed, 09 Dec 2015 18:53:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42999)
+	id 1a6qNq-0002GW-55
+	for alex.bennee@linaro.org; Wed, 09 Dec 2015 20:51:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1a6oNY-0008UG-QF
-	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 18:42:38 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a6qNo-0002Ej-4I
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 20:51:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1a6oNX-0004o5-DS
-	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 18:42:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60792)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a6qNn-0003w0-7Z
+	for qemu-arm@nongnu.org; Wed, 09 Dec 2015 20:51:00 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:50418)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1a6oNX-0004nf-4t; Wed, 09 Dec 2015 18:42:35 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id BB88E37EE2;
-	Wed,  9 Dec 2015 23:42:34 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tB9Ng8VQ005315; Wed, 9 Dec 2015 18:42:33 -0500
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 10 Dec 2015 00:41:18 +0100
-Message-Id: <1449704528-289297-25-git-send-email-imammedo@redhat.com>
-In-Reply-To: <1449704528-289297-1-git-send-email-imammedo@redhat.com>
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1a6qNg-0003sl-Fi; Wed, 09 Dec 2015 20:50:53 -0500
+Received: from 172.24.1.48 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.1.48])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DAO59781; Thu, 10 Dec 2015 09:50:39 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml434-hub.china.huawei.com
+	(10.82.67.225) with Microsoft SMTP Server id 14.3.235.1;
+	Thu, 10 Dec 2015 09:50:30 +0800
+Message-ID: <5668DA65.5080700@huawei.com>
+Date: Thu, 10 Dec 2015 09:50:29 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Igor Mammedov <imammedo@redhat.com>, <qemu-devel@nongnu.org>
 References: <1449704528-289297-1-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-arm@nongnu.org, zhaoshenglong@huawei.com
-Subject: [Qemu-arm] [PATCH 24/74] acpi: extend aml_interrupt() to support
-	multiple irqs
+	<1449704528-289297-25-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1449704528-289297-25-git-send-email-imammedo@redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.5668DA71.002F, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: b642d418d1f67fdc2909e73594271734
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH 24/74] acpi: extend aml_interrupt() to
+ support multiple irqs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,172 +71,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vr69ofUtTRbq
+X-TUID: 6Cl1bHz3iODS
 
-ASL Interrupt() macro translates to Extended Interrupt Descriptor
-which supports variable number of IRQs. It will be used for
-conversion of ASL code for pc/q35 machines that use it for
-returning several IRQs in _PSR object.
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
-CC: zhaoshenglong@huawei.com
-CC: qemu-arm@nongnu.org
----
- hw/acpi/aml-build.c         | 22 +++++++++++++---------
- hw/arm/virt-acpi-build.c    | 23 ++++++++++++-----------
- include/hw/acpi/aml-build.h |  2 +-
- 3 files changed, 26 insertions(+), 21 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 2ca9207..ee64d12 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -667,23 +667,27 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
- Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
-                    AmlLevelAndEdge level_and_edge,
-                    AmlActiveHighAndLow high_and_low, AmlShared shared,
--                   uint32_t irq)
-+                   uint32_t *irq_list, uint8_t irq_count)
- {
-+    int i;
-     Aml *var = aml_alloc();
-     uint8_t irq_flags = con_and_pro | (level_and_edge << 1)
-                         | (high_and_low << 2) | (shared << 3);
-+    const int header_bytes_in_len = 2;
-+    uint16_t len = header_bytes_in_len + irq_count * sizeof(uint32_t);
-+
-+    assert(irq_count > 0);
- 
-     build_append_byte(var->buf, 0x89); /* Extended irq descriptor */
--    build_append_byte(var->buf, 6); /* Length, bits[7:0] minimum value = 6 */
--    build_append_byte(var->buf, 0); /* Length, bits[15:8] minimum value = 0 */
-+    build_append_byte(var->buf, len & 0xFF); /* Length, bits[7:0] */
-+    build_append_byte(var->buf, len >> 8); /* Length, bits[15:8] */
-     build_append_byte(var->buf, irq_flags); /* Interrupt Vector Information. */
--    build_append_byte(var->buf, 0x01);      /* Interrupt table length = 1 */
-+    build_append_byte(var->buf, irq_count);   /* Interrupt table length */
- 
--    /* Interrupt Number */
--    build_append_byte(var->buf, extract32(irq, 0, 8));  /* bits[7:0] */
--    build_append_byte(var->buf, extract32(irq, 8, 8));  /* bits[15:8] */
--    build_append_byte(var->buf, extract32(irq, 16, 8)); /* bits[23:16] */
--    build_append_byte(var->buf, extract32(irq, 24, 8)); /* bits[31:24] */
-+    /* Interrupt Number List */
-+    for (i = 0; i < irq_count; i++) {
-+        build_append_int_noprefix(var->buf, irq_list[i], 4);
-+    }
-     return var;
- }
- 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 698b5f2..02ba822 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -71,7 +71,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
- }
- 
- static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
--                                           int uart_irq)
-+                                           uint32_t uart_irq)
- {
-     Aml *dev = aml_device("COM0");
-     aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
-@@ -82,7 +82,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-                                        uart_memmap->size, AML_READ_WRITE));
-     aml_append(crs,
-                aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                             AML_EXCLUSIVE, uart_irq));
-+                             AML_EXCLUSIVE, &uart_irq, 1));
-     aml_append(dev, aml_name_decl("_CRS", crs));
- 
-     /* The _ADR entry is used to link this device to the UART described
-@@ -94,7 +94,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
- }
- 
- static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
--                                          int rtc_irq)
-+                                          uint32_t rtc_irq)
- {
-     Aml *dev = aml_device("RTC0");
-     aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0013")));
-@@ -105,7 +105,7 @@ static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
-                                        rtc_memmap->size, AML_READ_WRITE));
-     aml_append(crs,
-                aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                             AML_EXCLUSIVE, rtc_irq));
-+                             AML_EXCLUSIVE, &rtc_irq, 1));
-     aml_append(dev, aml_name_decl("_CRS", crs));
-     aml_append(scope, dev);
- }
-@@ -136,11 +136,11 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
- 
- static void acpi_dsdt_add_virtio(Aml *scope,
-                                  const MemMapEntry *virtio_mmio_memmap,
--                                 int mmio_irq, int num)
-+                                 uint32_t mmio_irq, int num)
- {
-     hwaddr base = virtio_mmio_memmap->base;
-     hwaddr size = virtio_mmio_memmap->size;
--    int irq = mmio_irq;
-+    uint32_t irq = mmio_irq;
-     int i;
- 
-     for (i = 0; i < num; i++) {
-@@ -152,15 +152,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
-         aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
-         aml_append(crs,
-                    aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, irq + i));
-+                                 AML_EXCLUSIVE, &irq, 1));
-         aml_append(dev, aml_name_decl("_CRS", crs));
-         aml_append(scope, dev);
-         base += size;
-     }
- }
- 
--static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
--                              bool use_highmem)
-+static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-+                              uint32_t irq, bool use_highmem)
- {
-     Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
-     int i, bus_no;
-@@ -199,18 +199,19 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
- 
-     /* Create GSI link device */
-     for (i = 0; i < PCI_NUM_PINS; i++) {
-+        uint32_t irqs =  irq + i;
-         Aml *dev_gsi = aml_device("GSI%d", i);
-         aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
-         aml_append(dev_gsi, aml_name_decl("_UID", aml_int(0)));
-         crs = aml_resource_template();
-         aml_append(crs,
-                    aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, irq + i));
-+                                 AML_EXCLUSIVE, &irqs, 1));
-         aml_append(dev_gsi, aml_name_decl("_PRS", crs));
-         crs = aml_resource_template();
-         aml_append(crs,
-                    aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, irq + i));
-+                                 AML_EXCLUSIVE, &irqs, 1));
-         aml_append(dev_gsi, aml_name_decl("_CRS", crs));
-         method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
-         aml_append(dev_gsi, method);
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index ca365c9..a3a058f 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -253,7 +253,7 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
- Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
-                    AmlLevelAndEdge level_and_edge,
-                    AmlActiveHighAndLow high_and_low, AmlShared shared,
--                   uint32_t irq);
-+                   uint32_t *irq_list, uint8_t irq_count);
- Aml *aml_io(AmlIODecode dec, uint16_t min_base, uint16_t max_base,
-             uint8_t aln, uint8_t len);
- Aml *aml_operation_region(const char *name, AmlRegionSpace rs,
+On 2015/12/10 7:41, Igor Mammedov wrote:
+>  static void acpi_dsdt_add_virtio(Aml *scope,
+>                                   const MemMapEntry *virtio_mmio_memmap,
+> -                                 int mmio_irq, int num)
+> +                                 uint32_t mmio_irq, int num)
+>  {
+>      hwaddr base = virtio_mmio_memmap->base;
+>      hwaddr size = virtio_mmio_memmap->size;
+> -    int irq = mmio_irq;
+> +    uint32_t irq = mmio_irq;
+>      int i;
+>  
+>      for (i = 0; i < num; i++) {
+> @@ -152,15 +152,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
+>          aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
+>          aml_append(crs,
+>                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> -                                 AML_EXCLUSIVE, irq + i));
+> +                                 AML_EXCLUSIVE, &irq, 1));
+
+This looks not right. You could move uint32_t irq = mmio_irq; into the
+for loop and make it as uint32_t irq = mmio_irq + i;
+
+Thanks,
 -- 
-1.8.3.1
+Shannon
 

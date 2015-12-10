@@ -1,98 +1,413 @@
-Received: by 10.182.158.201 with SMTP id ww9csp385404obb;
-        Thu, 10 Dec 2015 02:30:49 -0800 (PST)
-X-Received: by 10.140.157.145 with SMTP id d139mr5524106qhd.19.1449743449483;
-        Thu, 10 Dec 2015 02:30:49 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp388232obb;
+        Thu, 10 Dec 2015 02:36:52 -0800 (PST)
+X-Received: by 10.55.82.193 with SMTP id g184mr14184792qkb.65.1449743812897;
+        Thu, 10 Dec 2015 02:36:52 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 92si14154842qku.93.2015.12.10.02.30.49
+        by mx.google.com with ESMTPS id y193si14171285qka.92.2015.12.10.02.36.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Dec 2015 02:30:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 10 Dec 2015 02:36:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40291 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a6yUr-0000p7-6n
-	for alex.bennee@linaro.org; Thu, 10 Dec 2015 05:30:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41399)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a6yai-0002FQ-HF
+	for alex.bennee@linaro.org; Thu, 10 Dec 2015 05:36:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41313)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a6yTm-0007n0-Ur
-	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 05:29:43 -0500
+	(envelope-from <armbru@redhat.com>) id 1a6yTl-0007ld-9n
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 05:29:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a6yTl-0007QQ-VP
-	for qemu-devel@nongnu.org; Thu, 10 Dec 2015 05:29:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43036)
+	(envelope-from <armbru@redhat.com>) id 1a6yTh-0007Mh-95
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 05:29:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38979)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <armbru@redhat.com>)
-	id 1a6yTj-0007Nl-1K; Thu, 10 Dec 2015 05:29:39 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id B126BC0B7A06;
-	Thu, 10 Dec 2015 10:29:38 +0000 (UTC)
+	id 1a6yTh-0007Mb-0P; Thu, 10 Dec 2015 05:29:37 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1477A12BBE;
+	Thu, 10 Dec 2015 10:29:36 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-204-39.brq.redhat.com
 	[10.40.204.39])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBAATZFo006060
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBAATXIL022499
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 10 Dec 2015 05:29:38 -0500
+	verify=NO); Thu, 10 Dec 2015 05:29:35 -0500
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A9CF33002534; Thu, 10 Dec 2015 11:29:32 +0100 (CET)
+	id 607AF303E3C1; Thu, 10 Dec 2015 11:29:32 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 10 Dec 2015 11:29:26 +0100
-Message-Id: <1449743372-17169-7-git-send-email-armbru@redhat.com>
+Date: Thu, 10 Dec 2015 11:29:21 +0100
+Message-Id: <1449743372-17169-2-git-send-email-armbru@redhat.com>
 In-Reply-To: <1449743372-17169-1-git-send-email-armbru@redhat.com>
 References: <1449743372-17169-1-git-send-email-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [Qemu-devel] [PATCH 06/12] hw/arm/virt: Fix property "gic-version"
-	error handling
-X-BeenThere: qemu-devel@nongnu.org
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-arm] [PATCH 01/12] hw: Don't use hw_error() for machine
+	initialization errors
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 22kxjWaCmqvE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sarEeXPkeC1m
 
-virt_set_gic_version() calls exit(1) when passed an invalid property
-value.  Property setters are not supposed to do that.  Screwed up in
-commit b92ad39.  Harmless, because the property belongs to a machine.
-Set an error object instead.
+Printing CPU registers is not helpful during machine initialization.
+Moreover, these are straightforward configuration or "can get
+resources" errors, so dumping core isn't appropriate either.  Replace
+hw_error() by error_report(); exit(1).  Matches how we report these
+errors in other machine initializations.
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <rth@twiddle.net>
 Cc: qemu-arm@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- hw/arm/virt.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/alpha/dp264.c          | 11 ++++++-----
+ hw/arm/highbank.c         |  6 ++++--
+ hw/char/exynos4210_uart.c |  9 ++++++---
+ hw/m68k/an5206.c          |  4 +++-
+ hw/ppc/mac_newworld.c     | 11 ++++++-----
+ hw/ppc/mac_oldworld.c     | 16 +++++++++-------
+ hw/ppc/prep.c             | 10 ++++++----
+ hw/unicore32/puv3.c       | 10 +++++++---
+ 8 files changed, 47 insertions(+), 30 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9c6792c..2a120dd 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1126,9 +1126,8 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-     } else if (!strcmp(value, "host")) {
-         vms->gic_version = 0; /* Will probe later */
-     } else {
--        error_report("Invalid gic-version option value");
--        error_printf("Allowed gic-version values are: 3, 2, host\n");
--        exit(1);
-+        error_setg(errp, "Invalid gic-version value");
-+        error_append_hint(errp, "Valid values are: 3, 2, host\n");
+diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+index 27bdaa1..38b85ba 100644
+--- a/hw/alpha/dp264.c
++++ b/hw/alpha/dp264.c
+@@ -11,6 +11,7 @@
+ #include "hw/loader.h"
+ #include "hw/boards.h"
+ #include "alpha_sys.h"
++#include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/timer/mc146818rtc.h"
+ #include "hw/ide.h"
+@@ -104,14 +105,14 @@ static void clipper_init(MachineState *machine)
+     palcode_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS,
+                                 bios_name ? bios_name : "palcode-clipper");
+     if (palcode_filename == NULL) {
+-        hw_error("no palcode provided\n");
++        error_report("no palcode provided");
+         exit(1);
      }
- }
+     size = load_elf(palcode_filename, cpu_alpha_superpage_to_phys,
+                     NULL, &palcode_entry, &palcode_low, &palcode_high,
+                     0, EM_ALPHA, 0);
+     if (size < 0) {
+-        hw_error("could not load palcode '%s'\n", palcode_filename);
++        error_report("could not load palcode '%s'", palcode_filename);
+         exit(1);
+     }
+     g_free(palcode_filename);
+@@ -131,7 +132,7 @@ static void clipper_init(MachineState *machine)
+                         NULL, &kernel_entry, &kernel_low, &kernel_high,
+                         0, EM_ALPHA, 0);
+         if (size < 0) {
+-            hw_error("could not load kernel '%s'\n", kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+ 
+@@ -148,8 +149,8 @@ static void clipper_init(MachineState *machine)
+ 
+             initrd_size = get_image_size(initrd_filename);
+             if (initrd_size < 0) {
+-                hw_error("could not load initial ram disk '%s'\n",
+-                         initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+                 exit(1);
+             }
+ 
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 85ae69e..1dd5170 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -320,11 +320,13 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+         sysboot_filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
+         if (sysboot_filename != NULL) {
+             if (load_image_targphys(sysboot_filename, 0xfff88000, 0x8000) < 0) {
+-                hw_error("Unable to load %s\n", bios_name);
++                error_report("Unable to load %s", bios_name);
++                exit(1);
+             }
+             g_free(sysboot_filename);
+         } else {
+-           hw_error("Unable to find %s\n", bios_name);
++            error_report("Unable to find %s", bios_name);
++            exit(1);
+         }
+     }
+ 
+diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+index 215f962..2736b37 100644
+--- a/hw/char/exynos4210_uart.c
++++ b/hw/char/exynos4210_uart.c
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include "hw/sysbus.h"
++#include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/char.h"
+ 
+@@ -595,15 +596,17 @@ DeviceState *exynos4210_uart_create(hwaddr addr,
+ 
+     if (!chr) {
+         if (channel >= MAX_SERIAL_PORTS) {
+-            hw_error("Only %d serial ports are supported by QEMU.\n",
+-                     MAX_SERIAL_PORTS);
++            error_report("Only %d serial ports are supported by QEMU",
++                         MAX_SERIAL_PORTS);
++            exit(1);
+         }
+         chr = serial_hds[channel];
+         if (!chr) {
+             snprintf(label, ARRAY_SIZE(label), "%s%d", chr_name, channel);
+             chr = qemu_chr_new(label, "null", NULL);
+             if (!(chr)) {
+-                hw_error("Can't assign serial port to UART%d.\n", channel);
++                error_report("Can't assign serial port to UART%d", channel);
++                exit(1);
+             }
+         }
+     }
+diff --git a/hw/m68k/an5206.c b/hw/m68k/an5206.c
+index c1dea17..8d9ccaa 100644
+--- a/hw/m68k/an5206.c
++++ b/hw/m68k/an5206.c
+@@ -12,6 +12,7 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "exec/address-spaces.h"
++#include "qemu/error-report.h"
+ #include "sysemu/qtest.h"
+ 
+ #define KERNEL_LOAD_ADDR 0x10000
+@@ -39,7 +40,8 @@ static void an5206_init(MachineState *machine)
+     }
+     cpu = cpu_m68k_init(cpu_model);
+     if (!cpu) {
+-        hw_error("Unable to find m68k CPU definition\n");
++        error_report("Unable to find m68k CPU definition");
++        exit(1);
+     }
+     env = &cpu->env;
+ 
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 1b9a573..ca3d6a8 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -62,6 +62,7 @@
+ #include "hw/ide.h"
+ #include "hw/loader.h"
+ #include "elf.h"
++#include "qemu/error-report.h"
+ #include "sysemu/kvm.h"
+ #include "kvm_ppc.h"
+ #include "hw/usb.h"
+@@ -226,7 +227,7 @@ static void ppc_core99_init(MachineState *machine)
+         bios_size = -1;
+     }
+     if (bios_size < 0 || bios_size > BIOS_SIZE) {
+-        hw_error("qemu: could not load PowerPC bios '%s'\n", bios_name);
++        error_report("could not load PowerPC bios '%s'", bios_name);
+         exit(1);
+     }
+ 
+@@ -252,7 +253,7 @@ static void ppc_core99_init(MachineState *machine)
+                                               kernel_base,
+                                               ram_size - kernel_base);
+         if (kernel_size < 0) {
+-            hw_error("qemu: could not load kernel '%s'\n", kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+         /* load initrd */
+@@ -261,8 +262,8 @@ static void ppc_core99_init(MachineState *machine)
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+-                hw_error("qemu: could not load initial ram disk '%s'\n",
+-                         initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+                 exit(1);
+             }
+             cmdline_base = round_page(initrd_base + initrd_size);
+@@ -344,7 +345,7 @@ static void ppc_core99_init(MachineState *machine)
+             break;
+ #endif /* defined(TARGET_PPC64) */
+         default:
+-            hw_error("Bus model not supported on mac99 machine\n");
++            error_report("Bus model not supported on mac99 machine");
+             exit(1);
+         }
+     }
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 21eaf0e..c3f9fe3 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -38,6 +38,7 @@
+ #include "hw/ide.h"
+ #include "hw/loader.h"
+ #include "elf.h"
++#include "qemu/error-report.h"
+ #include "sysemu/kvm.h"
+ #include "kvm_ppc.h"
+ #include "sysemu/block-backend.h"
+@@ -153,7 +154,7 @@ static void ppc_heathrow_init(MachineState *machine)
+         bios_size = -1;
+     }
+     if (bios_size < 0 || bios_size > BIOS_SIZE) {
+-        hw_error("qemu: could not load PowerPC bios '%s'\n", bios_name);
++        error_report("could not load PowerPC bios '%s'", bios_name);
+         exit(1);
+     }
+ 
+@@ -178,8 +179,7 @@ static void ppc_heathrow_init(MachineState *machine)
+                                               kernel_base,
+                                               ram_size - kernel_base);
+         if (kernel_size < 0) {
+-            hw_error("qemu: could not load kernel '%s'\n",
+-                      kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+         /* load initrd */
+@@ -188,8 +188,8 @@ static void ppc_heathrow_init(MachineState *machine)
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+-                hw_error("qemu: could not load initial ram disk '%s'\n",
+-                         initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+                 exit(1);
+             }
+             cmdline_base = round_page(initrd_base + initrd_size);
+@@ -246,7 +246,8 @@ static void ppc_heathrow_init(MachineState *machine)
+                 ((qemu_irq *)env->irq_inputs)[PPC6xx_INPUT_INT];
+             break;
+         default:
+-            hw_error("Bus model not supported on OldWorld Mac machine\n");
++            error_report("Bus model not supported on OldWorld Mac machine");
++            exit(1);
+         }
+     }
+ 
+@@ -259,7 +260,8 @@ static void ppc_heathrow_init(MachineState *machine)
+ 
+     /* init basic PC hardware */
+     if (PPC_INPUT(env) != PPC_FLAGS_INPUT_6xx) {
+-        hw_error("Only 6xx bus is supported on heathrow machine\n");
++        error_report("Only 6xx bus is supported on heathrow machine");
++        exit(1);
+     }
+     pic = heathrow_pic_init(&pic_mem, 1, heathrow_irqs);
+     pci_bus = pci_grackle_init(0xfec00000, pic,
+diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+index 5ad28f7..8f08f07 100644
+--- a/hw/ppc/prep.c
++++ b/hw/ppc/prep.c
+@@ -33,6 +33,7 @@
+ #include "hw/pci/pci_host.h"
+ #include "hw/ppc/ppc.h"
+ #include "hw/boards.h"
++#include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "hw/ide.h"
+ #include "hw/loader.h"
+@@ -532,7 +533,7 @@ static void ppc_prep_init(MachineState *machine)
+         kernel_size = load_image_targphys(kernel_filename, kernel_base,
+                                           ram_size - kernel_base);
+         if (kernel_size < 0) {
+-            hw_error("qemu: could not load kernel '%s'\n", kernel_filename);
++            error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+         /* load initrd */
+@@ -541,8 +542,8 @@ static void ppc_prep_init(MachineState *machine)
+             initrd_size = load_image_targphys(initrd_filename, initrd_base,
+                                               ram_size - initrd_base);
+             if (initrd_size < 0) {
+-                hw_error("qemu: could not load initial ram disk '%s'\n",
+-                          initrd_filename);
++                error_report("could not load initial ram disk '%s'",
++                             initrd_filename);
+             }
+         } else {
+             initrd_base = 0;
+@@ -569,7 +570,8 @@ static void ppc_prep_init(MachineState *machine)
+     }
+ 
+     if (PPC_INPUT(env) != PPC_FLAGS_INPUT_6xx) {
+-        hw_error("Only 6xx bus is supported on PREP machine\n");
++        error_report("Only 6xx bus is supported on PREP machine");
++        exit(1);
+     }
+ 
+     dev = qdev_create(NULL, "raven-pcihost");
+diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
+index 91117b2..1968202 100644
+--- a/hw/unicore32/puv3.c
++++ b/hw/unicore32/puv3.c
+@@ -17,6 +17,7 @@
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "hw/i386/pc.h"
++#include "qemu/error-report.h"
+ #include "sysemu/qtest.h"
+ 
+ #undef DEBUG_PUV3
+@@ -95,7 +96,8 @@ static void puv3_load_kernel(const char *kernel_filename)
+     size = load_image_targphys(kernel_filename, KERNEL_LOAD_ADDR,
+             KERNEL_MAX_SIZE);
+     if (size < 0) {
+-        hw_error("Load kernel error: '%s'\n", kernel_filename);
++        error_report("Load kernel error: '%s'", kernel_filename);
++        exit(1);
+     }
+ 
+     /* cheat curses that we have a graphic console, only under ocd console */
+@@ -112,7 +114,8 @@ static void puv3_init(MachineState *machine)
+     UniCore32CPU *cpu;
+ 
+     if (initrd_filename) {
+-        hw_error("Please use kernel built-in initramdisk.\n");
++        error_report("Please use kernel built-in initramdisk");
++        exit(1);
+     }
+ 
+     if (!cpu_model) {
+@@ -121,7 +124,8 @@ static void puv3_init(MachineState *machine)
+ 
+     cpu = uc32_cpu_init(cpu_model);
+     if (!cpu) {
+-        hw_error("Unable to find CPU definition\n");
++        error_report("Unable to find CPU definition");
++        exit(1);
+     }
+     env = &cpu->env;
  
 -- 
 2.4.3

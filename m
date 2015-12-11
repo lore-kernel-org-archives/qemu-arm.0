@@ -1,155 +1,112 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2235249wre;
-        Mon, 28 May 2018 01:44:56 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKI724CNXVg9jpJ0qHa5gTcu+uBwzn9BKYCVzGk5dOQnSMTdtOwjuvGzUUetgd0+hzd+vL5q
-X-Received: by 2002:ac8:2ec7:: with SMTP id i7-v6mr11131130qta.157.1527497096614;
-        Mon, 28 May 2018 01:44:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527497096; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MaJwon7yWg7ugVQat9cMuRKMMQD7/40RCQkPNo8H8jbpZIAKNKHwQrq91jJd3BmxuR
-         aXCDk9aabgDe2Qxv+Qu0CRel+rZc9nlzsid6//kLz3lI4uIaju7dToIY0wi8LZmIAUPY
-         K7zgiA0B0bMB8TkorZUAB21dRAXm6hf44GY1qnjFM5zjx2t4gJ4A8Og7WRGqpreSMh6v
-         BCqivthrPAv2KmMRw0t8pP7TiAqh1Y4R5M6Cjuih85dkDZQtUUYKkAmhLVkv8eFgIe3V
-         Vsfb9Z9Nox7v42MIEv/P35XYGVmbLw8BnK0WmFbQX9fgBEFWbYWFU4EDfWDFTku4Ye7Y
-         9o1w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=vDPBJYOKouJ6FvIuwznbAPKSM29Wuzvf/K+we8OF2i8=;
-        b=VYyjI4/vlgzwZCD/T1sO+Hmegxa3jbeWdfT32aga8YHEXJQAfAhbs7azfQw22ndsIX
-         6Ex+Aj39Z5ijCkUy5re0F7gLB8QYOFslSLj9fAqzK26avdmE1rb8IVSj8ThL+A+s1btL
-         0iAglBBFyMhaxVqYoxl7W7bFVcuVewrRM4z7PGLwgXem5ZnQJg+6VbbJoUNy0YpENYti
-         XwRjQ104pNsFAxgSkXBERIpM2Oc2VcIOrz+CHjoirNPOG1VCtfTA8J5KXl1i0pLY+H3l
-         E0UV+zDEefJiy6NaNtxeOqGW48tGPjyR313Al3jerRE8fbyS+HgDrLbW4yy3YUSY3W0I
-         93mw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: by 10.182.158.201 with SMTP id ww9csp904511obb;
+        Thu, 10 Dec 2015 19:22:27 -0800 (PST)
+X-Received: by 10.140.133.145 with SMTP id 139mr11884804qhf.0.1449804147464;
+        Thu, 10 Dec 2015 19:22:27 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q18-v6si454692qvm.211.2018.05.28.01.44.56
+        by mx.google.com with ESMTPS id o7si18173718qho.30.2015.12.10.19.22.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 01:44:56 -0700 (PDT)
+        Thu, 10 Dec 2015 19:22:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54846 helo=lists.gnu.org)
+Received: from localhost ([::1]:45605 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNDlw-0008T8-5g
-	for alex.bennee@linaro.org; Mon, 28 May 2018 04:44:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50736)
+	id 1a7EHr-0007cH-4u
+	for alex.bennee@linaro.org; Thu, 10 Dec 2015 22:22:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNDlo-0008T1-9l
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 04:44:49 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a7EHo-0007bF-6B
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 22:22:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNDlk-0003qy-2Y
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 04:44:48 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2102 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1fNDlj-0003pA-Ni; Mon, 28 May 2018 04:44:44 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 4CCC44C3BC396;
-	Mon, 28 May 2018 16:44:26 +0800 (CST)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1a7EHk-0008EA-W6
+	for qemu-arm@nongnu.org; Thu, 10 Dec 2015 22:22:24 -0500
+Received: from szxga02-in.huawei.com ([119.145.14.65]:9814)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1a7EHj-0008DA-T8; Thu, 10 Dec 2015 22:22:20 -0500
+Received: from 172.24.1.48 (EHLO szxeml427-hub.china.huawei.com)
+	([172.24.1.48])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id CXU92709; Fri, 11 Dec 2015 11:22:07 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server
-	id 14.3.382.0; Mon, 28 May 2018 16:44:18 +0800
+	szxeml427-hub.china.huawei.com (10.82.67.182) with Microsoft SMTP
+	Server id 14.3.235.1; Fri, 11 Dec 2015 11:21:53 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>
-Date: Mon, 28 May 2018 16:42:26 +0800
-Message-ID: <1527496946-12036-1-git-send-email-zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <imammedo@redhat.com>, 
+	<mst@redhat.com>, <wei@redhat.com>
+Date: Fri, 11 Dec 2015 11:21:24 +0800
+Message-ID: <1449804086-3464-9-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1449804086-3464-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1449804086-3464-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-arm] [PATCH] ARM: ACPI: Fix use-after-free due to memory
- realloc
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.566A4160.012A, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: db96e890b52b99f23ed965a01ce7c76c
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Cc: peter.huangpeng@huawei.com, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
+	graeme.gregory@linaro.org, shannon.zhao@linaro.org
+Subject: [Qemu-arm] [PATCH v5 08/10] ARM: ACPI: Add _E03 for Power Button
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>, peter.maydell@linaro.org,
-	shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sQzOQAI9Fu66
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BiPIWHwrXoNd
 
-acpi_data_push uses g_array_set_size to resize the memory size. If there
-is no enough contiguous memory, the address will be changed. So previous
-pointer could not be used any more. It must update the pointer and use
-the new one.
+From: Shannon Zhao <shannon.zhao@linaro.org>
+
+Here GPIO pin 3 is used for Power Button, add _E03 in ACPI DSDT table.
 
 Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Tested-by: Wei Huang <wei@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ hw/arm/virt-acpi-build.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 92ceee9..30584ee 100644
+index e5dc2d5..1ffff62 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     AcpiIortItsGroup *its;
-     AcpiIortTable *iort;
-     AcpiIortSmmu3 *smmu;
--    size_t node_size, iort_length, smmu_offset = 0;
-+    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
-     AcpiIortRC *rc;
+@@ -339,6 +339,20 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+     aml_append(crs, aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+                                   AML_EXCLUSIVE, &gpio_irq, 1));
+     aml_append(dev, aml_name_decl("_CRS", crs));
++
++    Aml *aei = aml_resource_template();
++    /* Pin 3 for power button */
++    const uint32_t pin_list[1] = {3};
++    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
++                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
++                                 "GPO0", NULL, 0));
++    aml_append(dev, aml_name_decl("_AEI", aei));
++
++    /* _E03 is handle for power button */
++    Aml *method = aml_method("_E03", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
++                                  aml_int(0x80)));
++    aml_append(dev, method);
+     aml_append(scope, dev);
+ }
  
-     iort = acpi_data_push(table_data, sizeof(*iort));
-@@ -414,6 +414,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     iort_length = sizeof(*iort);
-     iort->node_count = cpu_to_le32(nb_nodes);
-     iort->node_offset = cpu_to_le32(sizeof(*iort));
-+    iort_node_offset = iort->node_offset;
- 
-     /* ITS group node */
-     node_size =  sizeof(*its) + sizeof(uint32_t);
-@@ -429,7 +430,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         int irq =  vms->irqmap[VIRT_SMMU];
- 
-         /* SMMUv3 node */
--        smmu_offset = iort->node_offset + node_size;
-+        smmu_offset = iort_node_offset + node_size;
-         node_size = sizeof(*smmu) + sizeof(*idmap);
-         iort_length += node_size;
-         smmu = acpi_data_push(table_data, node_size);
-@@ -450,7 +451,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         idmap->id_count = cpu_to_le32(0xFFFF);
-         idmap->output_base = 0;
-         /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference = cpu_to_le32(iort->node_offset);
-+        idmap->output_reference = cpu_to_le32(iort_node_offset);
-     }
- 
-     /* Root Complex Node */
-@@ -479,9 +480,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         idmap->output_reference = cpu_to_le32(smmu_offset);
-     } else {
-         /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference = cpu_to_le32(iort->node_offset);
-+        idmap->output_reference = cpu_to_le32(iort_node_offset);
-     }
- 
-+    /*
-+     * Update the pointer address in case table_data->data moved during above
-+     * acpi_data_push operations.
-+     */
-+    iort = (AcpiIortTable *)(table_data->data + iort_start);
-     iort->length = cpu_to_le32(iort_length);
- 
-     build_header(linker, table_data, (void *)(table_data->data + iort_start),
 -- 
 2.0.4
 

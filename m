@@ -1,80 +1,80 @@
-Received: by 10.182.158.201 with SMTP id ww9csp855298obb;
-        Sat, 12 Dec 2015 12:02:13 -0800 (PST)
-X-Received: by 10.140.233.67 with SMTP id e64mr24337220qhc.42.1449950533046;
-        Sat, 12 Dec 2015 12:02:13 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1235924obb;
+        Sun, 13 Dec 2015 07:24:45 -0800 (PST)
+X-Received: by 10.140.224.207 with SMTP id u198mr26887383qhb.67.1450020285954;
+        Sun, 13 Dec 2015 07:24:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p53si26610451qge.106.2015.12.12.12.02.12
+        by mx.google.com with ESMTPS id u67si10509423qgd.34.2015.12.13.07.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 12 Dec 2015 12:02:13 -0800 (PST)
+        Sun, 13 Dec 2015 07:24:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52875 helo=lists.gnu.org)
+Received: from localhost ([::1]:55593 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a7qMu-0005kC-OA
-	for alex.bennee@linaro.org; Sat, 12 Dec 2015 15:02:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47541)
+	id 1a88Vx-0008MT-K9
+	for alex.bennee@linaro.org; Sun, 13 Dec 2015 10:24:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47206)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a7qMr-0005gF-R6
-	for qemu-arm@nongnu.org; Sat, 12 Dec 2015 15:02:10 -0500
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1a88Vu-0008MJ-O6
+	for qemu-arm@nongnu.org; Sun, 13 Dec 2015 10:24:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a7qMr-0003vO-1E
-	for qemu-arm@nongnu.org; Sat, 12 Dec 2015 15:02:09 -0500
-Received: from mail-lf0-x229.google.com ([2a00:1450:4010:c07::229]:35810)
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1a88Vq-0002Cj-QL
+	for qemu-arm@nongnu.org; Sun, 13 Dec 2015 10:24:42 -0500
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:36826)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1a7qMm-0003nR-Jy; Sat, 12 Dec 2015 15:02:04 -0500
-Received: by lfdl133 with SMTP id l133so97679487lfd.2;
-	Sat, 12 Dec 2015 12:02:03 -0800 (PST)
+	(envelope-from <marcel.apfelbaum@gmail.com>)
+	id 1a88Vq-0002Cf-HB; Sun, 13 Dec 2015 10:24:38 -0500
+Received: by mail-wm0-x22e.google.com with SMTP id n186so88212835wmn.1;
+	Sun, 13 Dec 2015 07:24:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
+	h=reply-to:subject:references:to:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=r1QPhePKU/EytXdHOvl/2X442vof8MpKNEiLTWmU17U=;
-	b=imx5QK2Y2HpcLWEq5SpHP+2efXVQA8q09mwDR1gyw4UthD1V9R2t2vR78f6jTovdY/
-	WHIE2cipt0uygohHqCF5J8ohv2UmlJ8sQNVKnW1sSwuAuJbpBpoyY8Ohl7e5P4ZeeAN5
-	HU0wX7JeHMDvyaogky9k6NDsQLLEFPvct5IKjLSTue6m25Cyhj/IbQhLWAMcnQ5hDAyG
-	Xq2/qzyJw3/XWNcMAyFLgRWRJBWeMJJxEOf60NHGnxd0dC2+PyvhhCNUaDmghiOMeAw+
-	A0UNJ2tyuIdMaV1oLxq6/rcjF2h76nd0Ez4/rManf8+2CYmzbnHPwoRvouTkD2lrp1Ac
-	WWUw==
-X-Received: by 10.25.89.193 with SMTP id n184mr5237238lfb.28.1449950523191;
-	Sat, 12 Dec 2015 12:02:03 -0800 (PST)
-Received: from [192.168.0.65] (broadband-46-188-121-155.2com.net.
-	[46.188.121.155])
-	by smtp.gmail.com with ESMTPSA id y15sm2624178lfd.3.2015.12.12.12.02.01
+	bh=ujgEHP3LahCTIR3KyDt+rjbT2a5z0aZw2eal6cP4qjA=;
+	b=ukE6JNdRcEORm3sjUPbBm5dfug4BBKmjx6UmBX4Rxs7dvPl4N+1vC6ONFtwLXJgbtT
+	Wnz7ksyq+aJlJ1283tqvzs1VDDc7lUUy944eTF8fM+anCYlR/tuCdN4ah2wxG3PU3PTT
+	vSeafO3eVufo4N8M1WRBXWVYJ6XOZ6Dy9ZLsV+5MlRhDb19fGtoOXCTo8AMjq73pZ48S
+	MJfhS67HPXDYM5ekr+uy2jyj4TCzUuvm4Y/OJ2qdWdf8s93eifIAF0zjbbMG0U4vDjCN
+	/fIyak8LH0dgr1VdITAj7RZ4tLZC+3K2KPrV4t52oTQL1rVW2FIBH26bUgNeTBZ+DNX5
+	PREg==
+X-Received: by 10.194.209.195 with SMTP id mo3mr32616791wjc.16.1450020277940; 
+	Sun, 13 Dec 2015 07:24:37 -0800 (PST)
+Received: from [192.168.1.115] ([46.120.6.143])
+	by smtp.googlemail.com with ESMTPSA id
+	i84sm12083353wmc.20.2015.12.13.07.24.36
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 12 Dec 2015 12:02:01 -0800 (PST)
-To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
-References: <1449773244-17078-1-git-send-email-serge.fdrv@gmail.com>
-	<566B5E9E.8040108@twiddle.net>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <566C7D38.4040609@gmail.com>
-Date: Sat, 12 Dec 2015 23:02:00 +0300
+	Sun, 13 Dec 2015 07:24:37 -0800 (PST)
+References: <1449704528-289297-1-git-send-email-imammedo@redhat.com>
+	<56699FFB.3090208@gmail.com>
+	<20151210173137.1a292acf@igors-macbook-pro.local>
+To: Igor Mammedov <imammedo@redhat.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-ID: <566D8DB3.6030006@gmail.com>
+Date: Sun, 13 Dec 2015 17:24:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
+	Thunderbird/38.3.0
 MIME-Version: 1.0
-In-Reply-To: <566B5E9E.8040108@twiddle.net>
+In-Reply-To: <20151210173137.1a292acf@igors-macbook-pro.local>
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::229
+X-Received-From: 2a00:1450:400c:c09::22e
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Anthony Green <green@moxielogic.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-*: Get rid of "PC
-	advancement" trick
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/74] pc: acpi: convert DSDT to
+ AML API and drop ASL templates support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
+Reply-To: marcel@redhat.com
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -85,40 +85,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OWhRhdRXwC1W
+X-TUID: bPv7wVzeF/eU
 
-On 12/12/15 02:39, Richard Henderson wrote:
-> On 12/10/2015 10:47 AM, Sergey Fedorov wrote:
->> The "PC advancement" trick was used just after recognizing that a
->> breakpoint exception was going to be generated. This trick has had two
->> points:
->>   1. Guarantee that tb->size isn't zero: there are many places where 
->> it's
->>      expected to be non-zero. In fact, that is even stated in the 
->> comment
->>      for this field.
->>   2. Try to satisfy disassembler's check for instruction length. To this
->>      end, PC advancement was done for estimated instruction length, but
->>      actually, didn't work properly in variable-instruction-length 
->> cases.
->>
->> Substitute this trick with checking for TB size at the end of
->> translation. If we get an empty TB then just set tb->size to 1 and skip
->> disassembling. Setting tb->size to 1 is enough to get correct behaviour,
->> whereas an empty TB doesn't obviously need to be disassembled.
+On 12/10/2015 06:31 PM, Igor Mammedov wrote:
+> On Thu, 10 Dec 2015 17:53:31 +0200
+> Marcel Apfelbaum <marcel.apfelbaum@gmail.com> wrote:
 >
-> This doesn't help when the TB already has instructions, the TB would 
-> ordinarily cross a page boundary, and the breakpoint is at the page 
-> boundary.
+> [...]
+>> Hi Igor,
+>> Please consider splinting this series...
+>>
+>> Maybe ACPI new constructs first, then memhp/cpu, piix/q35. (only a
+>> suggestion) In this you will have some "sane" 20 something patches
+>> series that can be more easily "swallowed".
+> I'd also prefer to do it incrementally but
+> I've tried something like this before, but Michael suggested to
+> avoid optimizations/refactoring and make it so that conversion would
+> pass 'make check' so it would be easy to prove that it hasn't regressed
+> anything and to do it the only way is to convert whole DSDT at once.
+>
+> Nevertheless, the series more or less organized with split in mind,
+> so it's possible first commit AML API patches ('acpi:' prefixed)
+> and then just go in order the blocks as they are in series:
+>
+> memhp/cpuhp/misc devices/piix4/q35/final cleanup
 
-I see your point. But I am wondering why most architectures stop 
-translating on a page boundary whereas i386 and m86k don't. There are 
-some comments which say that's to ensure instruction fetch aborts occur 
-at the right place. Isn't it necessary for all architectures?
+Indeed, the way the series is organized, it can be split-ted/committed
+into the mentioned blocks without breaking make check.
 
-At least for those architectures which do stop translating on a page 
-boundary, I think this patch is applicable. Certainly, it would be 
-better to have a single solution for all architectures.
+However, if Michael is willing to take it "as is" ... :)
+I'll do my best to go over it this week.
+Marcel
 
-Thanks,
-Sergey
+
+>
+>
+>>
+>> Thanks,
+>> Marcel
+>>
+>>>
+>>> CC: "Michael S. Tsirkin" <mst@redhat.com> (supporter:ACPI/SMBIOS)
+>>> CC: Shannon Zhao <zhaoshenglong@huawei.com> (maintainer:ARM ACPI
+>>> Subsystem) CC: Peter Maydell <peter.maydell@linaro.org>
+>>> (maintainer:ARM) CC: Paolo Bonzini <pbonzini@redhat.com>
+>>> (maintainer:X86) CC: Richard Henderson <rth@twiddle.net>
+>>> (maintainer:X86) CC: Eduardo Habkost <ehabkost@redhat.com>
+>>> (maintainer:X86) CC: qemu-arm@nongnu.org (open list:ARM ACPI
+>>> Subsystem)
+>>>
+>>> Igor Mammedov (70):
+>>>     tests: acpi: print ASL diff in verbose mode
+>>>     acpi: add aml_lgreater_equal()
+>>>     acpi: add aml_create_qword_field()
+>>>     acpi: aml: add helper for Opcode Arg2 Arg2 [Dst] AML pattern
+>>>     acpi: extend aml_add() to accept target argument
+>>>     acpi: add aml_decrement() and aml_subtract()
+>>>     acpi: add aml_call0() helper
+>>>     acpi: add aml_to_integer()
+>>>     acpi: extend aml_shiftright() to accept target argument
+>>>     acpi: add aml_alias()
+>>>     acpi: add aml_sleep()
+>>>     acpi: add aml_lor()
+>>>     acpi: add aml_lgreater()
+>>>     acpi: extend aml_field() to support LockRule
+>>>     acpi: add aml_to_hexstring()
+>>>     acpi: add aml_to_buffer()
+>>>     acpi add aml_dma()
+>>>     acpi: extend aml_or() to accept target argument
+>>>     acpi: extend aml_and() to accept target argument
+>>>     acpi: extend aml_interrupt() to support multiple irqs
+>>>     pc: acpi: memhp: prepare context in SSDT for moving memhp DSDT
+>>> code pc: acpi: memhp: move MHPD._STA method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MLCK mutex into SSDT
+>>>     pc: acpi: memhp: move MHPD.MSCN method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MRST method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MPXM method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MOST method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MEJ0 method into SSDT
+>>>     pc: acpi: memhp: move MHPD.MCRS method into SSDT
+>>>     pc: acpi: memhp: move MHPD Device into SSDT
+>>>     pc: acpi: factor out memhp code from build_ssdt() into separate
+>>>       function
+>>>     pc: acpi: memhp: move \_GPE._E03 into SSDT
+>>>     pc: acpi: memhp: drop not needed stringify(MEMORY_foo) usage
+>>>     pc: acpi: drop unused CPU_STATUS_LEN from DSDT
+>>>     pc: acpi: cpuhp: move CPEJ() method to SSDT
+>>>     pc: acpi: cpuhp: move CPMA() method into SSDT
+>>>     pc: acpi: cpuhp: move CPST() method into SSDT
+>>>     pc: acpi: cpuhp: move PRSC() method into SSDT
+>>>     pc: acpi: cpuhp: move \_GPE._E02() into SSDT
+>>>     pc: acpi: factor out cpu hotplug code from build_ssdt() into
+>>> separate function
+>>>     pc: acpi: move HPET from DSDT to SSDT
+>>>     pc: acpi: move DBUG() from DSDT to SSDT
+>>>     pc: acpi: move RTC device from DSDT to SSDT
+>>>     pc: acpi: move KBD device from DSDT to SSDT
+>>>     pc: acpi: move MOU device from DSDT to SSDT
+>>>     pc: acpi: move FDC0 device from DSDT to SSDT
+>>>     pc: acpi: move LPT device from DSDT to SSDT
+>>>     pc: acpi: move COM devices from DSDT to SSDT
+>>>     pc: acpi: move PIIX4 isa-bridge and pm devices into SSDT
+>>>     pc: acpi: move remaining GPE handlers into SSDT
+>>>     pc: acpi: pci: move link devices into SSDT
+>>>     pc: acpi: piix4: move IQCR() into SSDT
+>>>     pc: acpi: piix4: move IQST() into SSDT
+>>>     pc: acpi: piix4: move PCI0._PRT() into SSDT
+>>>     pc: acpi: piix4: move remaining PCI hotplug bits into SSDT
+>>>     pc: acpi: piix4: acpi move PCI0 device to SSDT
+>>>     pc: acpi: q35: move GSI links to SSDT
+>>>     pc: acpi: q35: move link devices to SSDT
+>>>     pc: acpi: q35: move IQCR() into SSDT
+>>>     pc: acpi: q35: move IQST() into SSDT
+>>>     pc: acpi: q35: move ISA bridge into SSDT
+>>>     pc: acpi: q35: move _PRT() into SSDT
+>>>     pc: acpi: q35: move PRTA routing table into SSDT
+>>>     pc: acpi: q35: move PRTP routing table into SSDT
+>>>     pc: acpi: q35: move _PIC() method into SSDT
+>>>     pc: acpi: q35: move PCI0._OSC() method into SSDT
+>>>     pc: acpi: q35: move PCI0 device definition into SSDT
+>>>     pc: acpi: q35: PCST, PCSB opregions and PCIB field into SSDT
+>>>     pc: acpi: switch to AML API composed DSDT
+>>>     pc: acpi: remove unused ASL templates and related blobs/utils
+>>>
+>>> Xiao Guangrong (4):
+>>>     acpi: add aml_derefof
+>>>     acpi: add aml_sizeof
+>>>     acpi: add aml_mutex(), aml_acquire(), aml_release()
+>>>     acpi: support serialized method
+>>>
+>>>    hw/acpi/Makefile.objs               |    4 +-
+>>>    hw/acpi/aml-build.c                 |  294 +-
+>>>    hw/acpi/cpu_hotplug_acpi_table.c    |  124 +
+>>>    hw/acpi/memory_hotplug_acpi_table.c |  249 ++
+>>>    hw/arm/virt-acpi-build.c            |   41 +-
+>>>    hw/i386/Makefile.objs               |   31 +-
+>>>    hw/i386/acpi-build.c                | 1329 ++++--
+>>>    hw/i386/acpi-dsdt-cpu-hotplug.dsl   |   90 -
+>>>    hw/i386/acpi-dsdt-dbug.dsl          |   41 -
+>>>    hw/i386/acpi-dsdt-hpet.dsl          |   48 -
+>>>    hw/i386/acpi-dsdt-isa.dsl           |  117 -
+>>>    hw/i386/acpi-dsdt-mem-hotplug.dsl   |  171 -
+>>>    hw/i386/acpi-dsdt.dsl               |  303 --
+>>>    hw/i386/acpi-dsdt.hex.generated     | 2972 --------------
+>>>    hw/i386/q35-acpi-dsdt.dsl           |  436 --
+>>>    hw/i386/q35-acpi-dsdt.hex.generated | 7610
+>>> -----------------------------------
+>>> hw/timer/hpet.c                     |    2 +-
+>>> include/hw/acpi/aml-build.h         |   66 +-
+>>> include/hw/acpi/cpu_hotplug.h       |   10 +
+>>> include/hw/acpi/memory_hotplug.h    |    9 +
+>>> include/hw/acpi/pc-hotplug.h        |   44 +-
+>>> include/hw/timer/hpet.h             |    1 +
+>>> scripts/acpi_extract.py             |  367 --
+>>> scripts/acpi_extract_preprocess.py  |   51 -
+>>> scripts/update-acpi.sh              |    4 -
+>>> tests/bios-tables-test.c            |    7 + 26 files changed, 1848
+>>> insertions(+), 12573 deletions(-) create mode 100644
+>>> hw/acpi/cpu_hotplug_acpi_table.c create mode 100644
+>>> hw/acpi/memory_hotplug_acpi_table.c delete mode 100644
+>>> hw/i386/acpi-dsdt-cpu-hotplug.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt-dbug.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt-hpet.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt-isa.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt-mem-hotplug.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt.dsl delete mode 100644
+>>> hw/i386/acpi-dsdt.hex.generated delete mode 100644
+>>> hw/i386/q35-acpi-dsdt.dsl delete mode 100644
+>>> hw/i386/q35-acpi-dsdt.hex.generated delete mode 100755
+>>> scripts/acpi_extract.py delete mode 100755
+>>> scripts/acpi_extract_preprocess.py delete mode 100644
+>>> scripts/update-acpi.sh
+>>>
+>>
+>
+

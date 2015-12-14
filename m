@@ -1,191 +1,144 @@
-Received: by 10.182.158.201 with SMTP id ww9csp124177obb;
-        Wed, 25 Nov 2015 10:03:49 -0800 (PST)
-X-Received: by 10.55.18.154 with SMTP id 26mr40169244qks.0.1448474629362;
-        Wed, 25 Nov 2015 10:03:49 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1857636obb;
+        Mon, 14 Dec 2015 08:19:36 -0800 (PST)
+X-Received: by 10.140.32.162 with SMTP id h31mr41175839qgh.93.1450109976059;
+        Mon, 14 Dec 2015 08:19:36 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c130si22002878qkb.35.2015.11.25.10.03.49
+        by mx.google.com with ESMTPS id s59si1410011qge.110.2015.12.14.08.19.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Nov 2015 10:03:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 14 Dec 2015 08:19:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46987 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com
+Received: from localhost ([::1]:60761 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a1eQ1-0001gD-39
-	for alex.bennee@linaro.org; Wed, 25 Nov 2015 13:03:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59676)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a8VqZ-0001Ut-5F
+	for alex.bennee@linaro.org; Mon, 14 Dec 2015 11:19:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a1ePM-00015s-7A
-	for qemu-devel@nongnu.org; Wed, 25 Nov 2015 13:03:09 -0500
+	(envelope-from <rth7680@gmail.com>) id 1a8VqW-0001SQ-Hu
+	for qemu-arm@nongnu.org; Mon, 14 Dec 2015 11:19:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a1ePI-0002mK-VF
-	for qemu-devel@nongnu.org; Wed, 25 Nov 2015 13:03:08 -0500
-Received: from mail-lf0-x22c.google.com ([2a00:1450:4010:c07::22c]:36160)
+	(envelope-from <rth7680@gmail.com>) id 1a8VqV-0000XK-Bs
+	for qemu-arm@nongnu.org; Mon, 14 Dec 2015 11:19:32 -0500
+Received: from mail-io0-x236.google.com ([2607:f8b0:4001:c06::236]:34681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1a1ePI-0002lw-K1; Wed, 25 Nov 2015 13:03:04 -0500
-Received: by lfs39 with SMTP id 39so67497886lfs.3;
-	Wed, 25 Nov 2015 10:03:03 -0800 (PST)
+	(envelope-from <rth7680@gmail.com>)
+	id 1a8VqO-0000W5-1u; Mon, 14 Dec 2015 11:19:24 -0500
+Received: by ioae126 with SMTP id e126so48906704ioa.1;
+	Mon, 14 Dec 2015 08:19:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=aZlIr2B1LzTMon2b02ONMDkNlWIsiF/TXpv3qCSRNgY=;
-	b=jlC/Mk4++7tDHY1ZMUDRR5GjMFGCY3ST4oxIXOfgLCf7ZYB7KUW+98yGYmOxPMWSQD
-	WxA22+cpInBoyRkbFUdzvADegO0yKFkWr1ddk2Md1dGLj7aFKmkH/igURe5ytvxRJKrF
-	854G6wI5DMOnUDVs6nxBogNu4H/soEiW0gB6bFMW+UcgHTWgx7IaAoA2ki051vAaWnKo
-	ZU+arpbRCSS2cJdxpy0TKYPgHDSW/7encw1kN4HkZm+q/50AMsKaRGh+7EbD9SfGuuMl
-	AITsZXjyQjCSd7SzzsUsAdA7npBjKT6QK91CyHPHfa/jjYHFs2ziRIsy3VvXE0h2pAN5
-	6qhQ==
-X-Received: by 10.112.170.167 with SMTP id an7mr15398367lbc.37.1448474583122; 
-	Wed, 25 Nov 2015 10:03:03 -0800 (PST)
-Received: from sfedorov-laptop.smware.local ([213.243.91.10])
-	by smtp.gmail.com with ESMTPSA id
-	us1sm3474744lbc.25.2015.11.25.10.03.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 25 Nov 2015 10:03:01 -0800 (PST)
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 25 Nov 2015 21:02:40 +0300
-Message-Id: <1448474560-22475-1-git-send-email-serge.fdrv@gmail.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:4010:c07::22c
-Cc: Sergey Fedorov <serge.fdrv@gmail.com>, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [Qemu-devel] [PATCH] target-arm: Fix and improve AA32 singlestep
-	translation completion code
-X-BeenThere: qemu-devel@nongnu.org
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=vsYn3gLrk/bkOyDyJTn+5Mzmzb1/gijwHv8MyBBSOEY=;
+	b=vn9DcMt7Eoy+aSvxWjgpZs2uBR/jJjozrf4tpePdJ8LBOWfTnaGQBNNKSEaAbwpPc0
+	eRKXwFruA5AXbAKDnFwF57iVsi9xS8fSaRPxboAEWIb8CdVcgMMMWEmwEdToS7PpIRFZ
+	iKL87mbo3znszYe6wYHTra7qWhsO/iNsdmspBlrLG/vXtLQ3c/PCd4GV8X75tBbXQ8hs
+	nYsJ8TkaRjswQQu17mUgMvnlNw6elVyKPe1ZWpL2TwP9WRvGbl7btgA9x0Nq+Nl9+0mB
+	E9JwT4qIrT7lIl0Okpui1P0OWjlIjlENINYz+BslWhVabuwXEyAmWcZwAXpMGjOuu7GO
+	Ll/w==
+X-Received: by 10.107.9.137 with SMTP id 9mr6787653ioj.112.1450109963473;
+	Mon, 14 Dec 2015 08:19:23 -0800 (PST)
+Received: from bigtime.twiddle.net (200-56-192-86-cable.cybercable.net.mx.
+	[200.56.192.86]) by smtp.googlemail.com with ESMTPSA id
+	or1sm6708144igb.4.2015.12.14.08.19.19
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 14 Dec 2015 08:19:22 -0800 (PST)
+To: Sergey Fedorov <serge.fdrv@gmail.com>, qemu-devel@nongnu.org
+References: <1449773244-17078-1-git-send-email-serge.fdrv@gmail.com>
+	<566B5E9E.8040108@twiddle.net> <566C7D38.4040609@gmail.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <566EEC05.2080702@twiddle.net>
+Date: Mon, 14 Dec 2015 08:19:17 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.4.0
+MIME-Version: 1.0
+In-Reply-To: <566C7D38.4040609@gmail.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4001:c06::236
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Anthony Green <green@moxielogic.com>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-*: Get rid of "PC
+	advancement" trick
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bsA6UgHikU2n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0i2sU2tydL/6
 
-The AArch32 translation completion code for singlestep enabled/active
-case was a way more confusing and too repetitive then it needs to be.
-Probably that was the cause for a bug to be introduced into it at some
-point. The bug was that SWI/HVC/SMC exception would be generated in
-condition-failed instruction code path whereas it shouldn't.
+On 12/12/2015 12:02 PM, Sergey Fedorov wrote:
+> On 12/12/15 02:39, Richard Henderson wrote:
+>> On 12/10/2015 10:47 AM, Sergey Fedorov wrote:
+>>> The "PC advancement" trick was used just after recognizing that a
+>>> breakpoint exception was going to be generated. This trick has had two
+>>> points:
+>>>   1. Guarantee that tb->size isn't zero: there are many places where it's
+>>>      expected to be non-zero. In fact, that is even stated in the comment
+>>>      for this field.
+>>>   2. Try to satisfy disassembler's check for instruction length. To this
+>>>      end, PC advancement was done for estimated instruction length, but
+>>>      actually, didn't work properly in variable-instruction-length cases.
+>>>
+>>> Substitute this trick with checking for TB size at the end of
+>>> translation. If we get an empty TB then just set tb->size to 1 and skip
+>>> disassembling. Setting tb->size to 1 is enough to get correct behaviour,
+>>> whereas an empty TB doesn't obviously need to be disassembled.
+>>
+>> This doesn't help when the TB already has instructions, the TB would
+>> ordinarily cross a page boundary, and the breakpoint is at the page boundary.
+>
+> I see your point. But I am wondering why most architectures stop translating on
+> a page boundary whereas i386 and m86k don't. There are some comments which say
+> that's to ensure instruction fetch aborts occur at the right place. Isn't it
+> necessary for all architectures?
 
-This patch rewrites the code in a way similar to the non-singlestep
-case.
+In order to support targets with variable-sized instructions, like i386, where 
+a single instruction may straddle the page boundary, generic code can handle a 
+TB taking code from two (and only two) pages.
 
-In the condition-passed/unconditional instruction code path we need to:
- - Write the condexec bits back to the CPU state
- - Advance the singlestep state machine and generate a corresponding
-   exception in case of SWI/HVC/SMC
- - Write the PC back to the CPU state if it hasn't already been written
-   and generate an appropriate singlestep exception otherwise
+It's true that some of the way we treat i386 TBs plays a bit fast and loose, in 
+that it's possible to design a code sequence that will report a page access 
+error at the beginning of the TB, rather than another runtime exception which 
+might have been visible if we'd executed the TB.
 
-In the condition-failed instruction code path we need to:
- - Set a TCG label to jump to it if the condition is failed
- - Write the condexec bits back to the CPU state
- - Write the PC back to the CPU state since it hasn't been written in
-   this case
- - Generate an appropriate singlestep exception
+I believe that someone fixed that for arm thumb, but no one has bothered about 
+this for i386, m68k, or s390.  Because it just doesn't happen in practice; one 
+has to go out of one's way to design the errant code sequence.
 
-Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
----
- target-arm/translate.c | 65 ++++++++++++++++++++++++--------------------------
- 1 file changed, 31 insertions(+), 34 deletions(-)
 
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 5d22879..c9eeb09 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -11480,48 +11480,45 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-        instruction was a conditional branch or trap, and the PC has
-        already been written.  */
-     if (unlikely(cs->singlestep_enabled || dc->ss_active)) {
--        /* Make sure the pc is updated, and raise a debug exception.  */
--        if (dc->condjmp) {
--            gen_set_condexec(dc);
--            if (dc->is_jmp == DISAS_SWI) {
--                gen_ss_advance(dc);
--                gen_exception(EXCP_SWI, syn_aa32_svc(dc->svc_imm, dc->thumb),
--                              default_exception_el(dc));
--            } else if (dc->is_jmp == DISAS_HVC) {
--                gen_ss_advance(dc);
--                gen_exception(EXCP_HVC, syn_aa32_hvc(dc->svc_imm), 2);
--            } else if (dc->is_jmp == DISAS_SMC) {
--                gen_ss_advance(dc);
--                gen_exception(EXCP_SMC, syn_aa32_smc(), 3);
--            } else if (dc->ss_active) {
--                gen_step_complete_exception(dc);
--            } else {
--                gen_exception_internal(EXCP_DEBUG);
--            }
--            gen_set_label(dc->condlabel);
--        }
--        if (dc->condjmp || dc->is_jmp == DISAS_NEXT ||
--            dc->is_jmp == DISAS_UPDATE) {
--            gen_set_pc_im(dc, dc->pc);
--            dc->condjmp = 0;
--        }
-+        /* Unconditional and "condition passed" instruction codepath. */
-         gen_set_condexec(dc);
--        if (dc->is_jmp == DISAS_SWI && !dc->condjmp) {
-+        switch (dc->is_jmp) {
-+        case DISAS_SWI:
-             gen_ss_advance(dc);
-             gen_exception(EXCP_SWI, syn_aa32_svc(dc->svc_imm, dc->thumb),
-                           default_exception_el(dc));
--        } else if (dc->is_jmp == DISAS_HVC && !dc->condjmp) {
-+            break;
-+        case DISAS_HVC:
-             gen_ss_advance(dc);
-             gen_exception(EXCP_HVC, syn_aa32_hvc(dc->svc_imm), 2);
--        } else if (dc->is_jmp == DISAS_SMC && !dc->condjmp) {
-+            break;
-+        case DISAS_SMC:
-             gen_ss_advance(dc);
-             gen_exception(EXCP_SMC, syn_aa32_smc(), 3);
--        } else if (dc->ss_active) {
--            gen_step_complete_exception(dc);
--        } else {
--            /* FIXME: Single stepping a WFI insn will not halt
--               the CPU.  */
--            gen_exception_internal(EXCP_DEBUG);
-+            break;
-+        case DISAS_NEXT:
-+        case DISAS_UPDATE:
-+            gen_set_pc_im(dc, dc->pc);
-+            /* fall through */
-+        default:
-+            if (dc->ss_active) {
-+                gen_step_complete_exception(dc);
-+            } else {
-+                /* FIXME: Single stepping a WFI insn will not halt
-+                   the CPU.  */
-+                gen_exception_internal(EXCP_DEBUG);
-+            }
-+        }
-+        if (dc->condjmp) {
-+            /* "Condition failed" instruction codepath. */
-+            gen_set_label(dc->condlabel);
-+            gen_set_condexec(dc);
-+            gen_set_pc_im(dc, dc->pc);
-+            if (dc->ss_active) {
-+                gen_step_complete_exception(dc);
-+            } else {
-+                gen_exception_internal(EXCP_DEBUG);
-+            }
-         }
-     } else {
-         /* While branches must always occur at the end of an IT block,
--- 
-1.9.1
+> At least for those architectures which do stop translating on a page boundary,
+> I think this patch is applicable. Certainly, it would be better to have a
+> single solution for all architectures.
 
+For that, I think it might be interesting to arrange for non-empty TBs to exit 
+prior to recognizing a breakpoint.  So that a breakpoint TB is always just the 
+one operation.  Except for the fact that "generate an exception" has 
+traditionally been a target-specific helper, we could almost make the entire 
+breakpoint generation be done in common code.
+
+I'd think something like a generic "must we end the TB now" predicate would be 
+the proper hook.  It would contain all of the usual stuff: tcg_op_buf_full and 
+checks for singlestep, but then add "is there a breakpoint at the next pc".
+
+
+r~

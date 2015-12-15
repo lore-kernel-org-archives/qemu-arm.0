@@ -1,43 +1,43 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2759025obb;
-        Tue, 15 Dec 2015 14:53:34 -0800 (PST)
-X-Received: by 10.140.175.196 with SMTP id v187mr25762228qhv.75.1450220014254;
-        Tue, 15 Dec 2015 14:53:34 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2759592obb;
+        Tue, 15 Dec 2015 14:54:51 -0800 (PST)
+X-Received: by 10.140.132.72 with SMTP id 69mr47996221qhe.17.1450220091380;
+        Tue, 15 Dec 2015 14:54:51 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s18si3331842qhb.77.2015.12.15.14.53.34
+        by mx.google.com with ESMTPS id u32si3349073qgu.71.2015.12.15.14.54.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Dec 2015 14:53:34 -0800 (PST)
+        Tue, 15 Dec 2015 14:54:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39441 helo=lists.gnu.org)
+Received: from localhost ([::1]:39454 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a8yTN-0007px-W8
-	for alex.bennee@linaro.org; Tue, 15 Dec 2015 17:53:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58072)
+	id 1a8yUd-0001Yk-3w
+	for alex.bennee@linaro.org; Tue, 15 Dec 2015 17:54:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1a8yS2-0005HA-CJ
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:52:11 -0500
+	(envelope-from <drjones@redhat.com>) id 1a8yRp-0004rT-Tu
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1a8yS1-0001gj-2Z
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:52:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41429)
+	(envelope-from <drjones@redhat.com>) id 1a8yRp-0001cu-3L
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53183)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1a8yS0-0001gd-RF; Tue, 15 Dec 2015 17:52:08 -0500
+	id 1a8yRo-0001cn-Ug; Tue, 15 Dec 2015 17:51:57 -0500
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 624948F4E1;
-	Tue, 15 Dec 2015 22:52:08 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 805908E221;
+	Tue, 15 Dec 2015 22:51:56 +0000 (UTC)
 Received: from hawk.localdomain.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBFMpNh8024186; Tue, 15 Dec 2015 17:52:03 -0500
+	id tBFMpNh6024186; Tue, 15 Dec 2015 17:51:51 -0500
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 15 Dec 2015 16:51:16 -0600
-Message-Id: <1450219878-5293-8-git-send-email-drjones@redhat.com>
+Date: Tue, 15 Dec 2015 16:51:14 -0600
+Message-Id: <1450219878-5293-6-git-send-email-drjones@redhat.com>
 In-Reply-To: <1450219878-5293-1-git-send-email-drjones@redhat.com>
 References: <1450219878-5293-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
@@ -46,8 +46,7 @@ X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, eblake@redhat.com,
 	afaerber@suse.de, rth@twiddle.net
-Subject: [Qemu-arm] [PATCH v3 7/9] target-arm: dump-guest-memory: add
-	prfpreg notes for aarch64
+Subject: [Qemu-arm] [PATCH v3 5/9] target-arm: introduce aarch64_compat_sp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,155 +60,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9kYsEqDfy5LR
+X-TUID: L50So9KC8Zr2
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target-arm/arch_dump.c | 79 +++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 71 insertions(+), 8 deletions(-)
+ target-arm/cpu.h | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/target-arm/arch_dump.c b/target-arm/arch_dump.c
-index dc32d98101004..6cbba92f3d014 100644
---- a/target-arm/arch_dump.c
-+++ b/target-arm/arch_dump.c
-@@ -45,13 +45,36 @@ struct aarch64_elf_prstatus {
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 815fef8a30663..9231a9ff3b9c2 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -863,6 +863,51 @@ enum arm_cpu_mode {
+ #define ARM_IWMMXT_wCGR2	10
+ #define ARM_IWMMXT_wCGR3	11
  
- QEMU_BUILD_BUG_ON(sizeof(struct aarch64_elf_prstatus) != 392);
- 
-+/* struct user_fpsimd_state from arch/arm64/include/uapi/asm/ptrace.h
-+ *
-+ * While the vregs member of user_fpsimd_state is of type __uint128_t,
-+ * QEMU uses an array of uint64_t, where the high half of the 128-bit
-+ * value is always in the 2n+1'th index. Thus we also break the 128-
-+ * bit values into two halves in this reproduction of user_fpsimd_state.
-+ */
-+struct aarch64_user_vfp_state {
-+    uint64_t vregs[64];
-+    uint32_t fpsr;
-+    uint32_t fpcr;
-+    char pad[8];
-+} QEMU_PACKED;
++/* AArch64 to AArch32 register mappings */
++#define compat_fp_usr   xregs[11]
++#define compat_sp_usr   xregs[13]
++#define compat_lr_usr   xregs[14]
++#define compat_sp_hyp   xregs[15]
++#define compat_lr_irq   xregs[16]
++#define compat_sp_irq   xregs[17]
++#define compat_lr_svc   xregs[18]
++#define compat_sp_svc   xregs[19]
++#define compat_lr_abt   xregs[20]
++#define compat_sp_abt   xregs[21]
++#define compat_lr_und   xregs[22]
++#define compat_sp_und   xregs[23]
++#define compat_r8_fiq   xregs[24]
++#define compat_r9_fiq   xregs[25]
++#define compat_r10_fiq  xregs[26]
++#define compat_r11_fiq  xregs[27]
++#define compat_r12_fiq  xregs[28]
++#define compat_sp_fiq   xregs[29]
++#define compat_lr_fiq   xregs[30]
 +
-+QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) != 528);
-+
- struct aarch64_note {
-     Elf64_Nhdr hdr;
-     char name[8]; /* align_up(sizeof("CORE"), 4) */
--    struct aarch64_elf_prstatus prstatus;
-+    union {
-+        struct aarch64_elf_prstatus prstatus;
-+        struct aarch64_user_vfp_state vfp;
-+    };
- } QEMU_PACKED;
- 
--QEMU_BUILD_BUG_ON(sizeof(struct aarch64_note) != 412);
-+#define AARCH64_NOTE_HEADER_SIZE offsetof(struct aarch64_note, prstatus)
-+#define AARCH64_PRSTATUS_NOTE_SIZE \
-+            (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus))
-+#define AARCH64_PRFPREG_NOTE_SIZE \
-+            (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_state))
- 
- static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
-                               const char *name, Elf64_Word namesz,
-@@ -66,6 +89,42 @@ static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
-     memcpy(note->name, name, namesz);
- }
- 
-+static int
-+aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f, CPUARMState *env,
-+                            int cpuid, DumpState *s)
++static inline uint64_t aarch64_compat_sp(CPUARMState *env)
 +{
-+    struct aarch64_note note;
-+    int ret, i;
++    uint32_t mode = env->uncached_cpsr & CPSR_M;
 +
-+    aarch64_note_init(&note, s, "CORE", 5, NT_PRFPREG, sizeof(note.vfp));
-+
-+    for (i = 0; i < 64; ++i) {
-+        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
++    switch (mode) {
++    case ARM_CPU_MODE_USR:
++    case ARM_CPU_MODE_SYS:
++        return env->compat_sp_usr;
++    case ARM_CPU_MODE_FIQ:
++        return env->compat_sp_fiq;
++    case ARM_CPU_MODE_IRQ:
++        return env->compat_sp_irq;
++    case ARM_CPU_MODE_SVC:
++        return env->compat_sp_svc;
++    case ARM_CPU_MODE_ABT:
++        return env->compat_sp_abt;
++    case ARM_CPU_MODE_HYP:
++        return env->compat_sp_hyp;
++    case ARM_CPU_MODE_UND:
++        return env->compat_sp_und;
 +    }
-+
-+    if (s->dump_info.d_endian == ELFDATA2MSB) {
-+        /* For AArch4 we must always swap the vfp.regs's 2n and 2n+1
-+         * entries when generating BE notes, because even big endian
-+         * hosts use 2n+1 for the high half.
-+         */
-+        for (i = 0; i < 32; ++i) {
-+            uint64_t tmp = note.vfp.vregs[2*i];
-+            note.vfp.vregs[2*i] = note.vfp.vregs[2*i+1];
-+            note.vfp.vregs[2*i+1] = tmp;
-+        }
-+    }
-+
-+    note.vfp.fpsr = cpu_to_dump32(s, vfp_get_fpsr(env));
-+    note.vfp.fpcr = cpu_to_dump32(s, vfp_get_fpcr(env));
-+
-+    ret = f(&note, AARCH64_PRFPREG_NOTE_SIZE, s);
-+    if (ret < 0) {
-+        return -1;
-+    }
-+
-+    return 0;
++    g_assert_not_reached();
 +}
 +
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, void *opaque)
- {
-@@ -78,6 +137,7 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     aarch64_note_init(&note, s, "CORE", 5, NT_PRSTATUS, sizeof(note.prstatus));
- 
-     note.prstatus.pr_pid = cpu_to_dump32(s, cpuid);
-+    note.prstatus.pr_fpvalid = cpu_to_dump32(s, 1);
- 
-     if (!is_a64(env)) {
-         aarch64_sync_32_to_64(env);
-@@ -95,12 +155,12 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
-     note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate);
- 
--    ret = f(&note, sizeof(note), s);
-+    ret = f(&note, AARCH64_PRSTATUS_NOTE_SIZE, s);
-     if (ret < 0) {
-         return -1;
-     }
- 
--    return 0;
-+    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
- }
- 
- /* struct pt_regs from arch/arm/include/asm/ptrace.h */
-@@ -129,7 +189,9 @@ struct arm_note {
-     struct arm_elf_prstatus prstatus;
- } QEMU_PACKED;
- 
--QEMU_BUILD_BUG_ON(sizeof(struct arm_note) != 168);
-+#define ARM_NOTE_HEADER_SIZE offsetof(struct arm_note, prstatus)
-+#define ARM_PRSTATUS_NOTE_SIZE \
-+            (ARM_NOTE_HEADER_SIZE + sizeof(struct arm_elf_prstatus))
- 
- static void arm_note_init(struct arm_note *note, DumpState *s,
-                           const char *name, Elf32_Word namesz,
-@@ -161,7 +223,7 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-     }
-     note.prstatus.pr_reg.regs[16] = cpu_to_dump32(s, cpsr_read(env));
- 
--    ret = f(&note, sizeof(note), s);
-+    ret = f(&note, ARM_PRSTATUS_NOTE_SIZE, s);
-     if (ret < 0) {
-         return -1;
-     }
-@@ -221,9 +283,10 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
-     size_t note_size;
- 
-     if (class == ELFCLASS64) {
--        note_size = sizeof(struct aarch64_note);
-+        note_size = AARCH64_PRSTATUS_NOTE_SIZE;
-+        note_size += AARCH64_PRFPREG_NOTE_SIZE;
-     } else {
--        note_size = sizeof(struct arm_note);
-+        note_size = ARM_PRSTATUS_NOTE_SIZE;
-     }
- 
-     return note_size * nr_cpus;
+ /* If adding a feature bit which corresponds to a Linux ELF
+  * HWCAP bit, remember to update the feature-bit-to-hwcap
+  * mapping in linux-user/elfload.c:get_elf_hwcap().
 -- 
 2.4.3
 

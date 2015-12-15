@@ -1,78 +1,50 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2697588obb;
-        Tue, 15 Dec 2015 13:02:25 -0800 (PST)
-X-Received: by 10.55.72.70 with SMTP id v67mr39964672qka.47.1450213345326;
-        Tue, 15 Dec 2015 13:02:25 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2758072obb;
+        Tue, 15 Dec 2015 14:51:39 -0800 (PST)
+X-Received: by 10.55.16.205 with SMTP id 74mr57247578qkq.15.1450219899065;
+        Tue, 15 Dec 2015 14:51:39 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f11si2888939qge.19.2015.12.15.13.02.25
+        by mx.google.com with ESMTPS id y66si3317114qhc.73.2015.12.15.14.51.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Dec 2015 13:02:25 -0800 (PST)
+        Tue, 15 Dec 2015 14:51:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39134 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39407 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a8wjp-0001nP-3B
-	for alex.bennee@linaro.org; Tue, 15 Dec 2015 16:02:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37851)
+	id 1a8yRW-0004Di-PO
+	for alex.bennee@linaro.org; Tue, 15 Dec 2015 17:51:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57744)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a8wjm-0001in-7p
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 16:02:23 -0500
+	(envelope-from <drjones@redhat.com>) id 1a8yRS-0004Ci-Ut
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1a8wjl-0002pk-7V
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 16:02:22 -0500
-Received: from mail-lb0-x22d.google.com ([2a00:1450:4010:c04::22d]:35537)
+	(envelope-from <drjones@redhat.com>) id 1a8yRO-0001U8-Ti
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:34 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55233)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1a8wjf-0002oQ-GD; Tue, 15 Dec 2015 16:02:15 -0500
-Received: by mail-lb0-x22d.google.com with SMTP id u9so13746176lbp.2;
-	Tue, 15 Dec 2015 13:02:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=OtSz841GsagjLXxSTNvnsmLEPr5WVpOoBr4BSiSS1vI=;
-	b=htBxDnnUD5+umwV/URf2UKvJ4kb+afISQSnU4O31FM1d9HyhMYWkEC4SOFBY/t7s0K
-	EXSLXJzGprDXVbGP0JRamQqnUfLsuntL/8i1hbSxPPaAzwcUa3O26kV6udU6LqJPR2T3
-	XDSJcyhiUats4hpI/WRRQwo9jGMYmsgCZl+FeMb+OLK/rV+vVqtkkB92zt88koCbnTMO
-	b/Oak6OHJ3M5n8jJaiQr3UxUlTW/ca8IOOlgF+NrBxxczX5T/VQ9wiVFljV+5CQnAu2t
-	XypY6jzL/HeIaXZimI8sMxg43++2Z4b1n+dtw9aAiCkEZ3yQvhLlkTTTV6BgPb8hemRv
-	Ymmw==
-X-Received: by 10.112.219.98 with SMTP id pn2mr16853335lbc.93.1450213333951;
-	Tue, 15 Dec 2015 13:02:13 -0800 (PST)
-Received: from [192.168.0.65] (broadband-46-188-121-155.2com.net.
-	[46.188.121.155])
-	by smtp.gmail.com with ESMTPSA id un3sm461357lbc.28.2015.12.15.13.02.12
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 15 Dec 2015 13:02:12 -0800 (PST)
-To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org
-References: <1449773244-17078-1-git-send-email-serge.fdrv@gmail.com>
-	<566B5E9E.8040108@twiddle.net> <566C7D38.4040609@gmail.com>
-	<566EEC05.2080702@twiddle.net>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56707FD3.20705@gmail.com>
-Date: Wed, 16 Dec 2015 00:02:11 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
-MIME-Version: 1.0
-In-Reply-To: <566EEC05.2080702@twiddle.net>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::22d
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Anthony Green <green@moxielogic.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-*: Get rid of "PC
-	advancement" trick
+	(envelope-from <drjones@redhat.com>)
+	id 1a8yRO-0001Tu-MW; Tue, 15 Dec 2015 17:51:30 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 6B8853812B6;
+	Tue, 15 Dec 2015 22:51:29 +0000 (UTC)
+Received: from hawk.localdomain.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBFMpNh1024186; Tue, 15 Dec 2015 17:51:24 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 15 Dec 2015 16:51:09 -0600
+Message-Id: <1450219878-5293-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, eblake@redhat.com,
+	afaerber@suse.de, rth@twiddle.net
+Subject: [Qemu-arm] [PATCH v3 0/9] target-arm: enable qmp-dump-guest-memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -86,94 +58,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gQeiNETFIObg
+X-TUID: pdPtYFWmvp5h
 
-On 12/14/15 19:19, Richard Henderson wrote:
-> On 12/12/2015 12:02 PM, Sergey Fedorov wrote:
->> On 12/12/15 02:39, Richard Henderson wrote:
->>> On 12/10/2015 10:47 AM, Sergey Fedorov wrote:
->>>> The "PC advancement" trick was used just after recognizing that a
->>>> breakpoint exception was going to be generated. This trick has had two
->>>> points:
->>>>   1. Guarantee that tb->size isn't zero: there are many places 
->>>> where it's
->>>>      expected to be non-zero. In fact, that is even stated in the 
->>>> comment
->>>>      for this field.
->>>>   2. Try to satisfy disassembler's check for instruction length. To 
->>>> this
->>>>      end, PC advancement was done for estimated instruction length, 
->>>> but
->>>>      actually, didn't work properly in variable-instruction-length 
->>>> cases.
->>>>
->>>> Substitute this trick with checking for TB size at the end of
->>>> translation. If we get an empty TB then just set tb->size to 1 and 
->>>> skip
->>>> disassembling. Setting tb->size to 1 is enough to get correct 
->>>> behaviour,
->>>> whereas an empty TB doesn't obviously need to be disassembled.
->>>
->>> This doesn't help when the TB already has instructions, the TB would
->>> ordinarily cross a page boundary, and the breakpoint is at the page 
->>> boundary.
->>
->> I see your point. But I am wondering why most architectures stop 
->> translating on
->> a page boundary whereas i386 and m86k don't. There are some comments 
->> which say
->> that's to ensure instruction fetch aborts occur at the right place. 
->> Isn't it
->> necessary for all architectures?
->
-> In order to support targets with variable-sized instructions, like 
-> i386, where a single instruction may straddle the page boundary, 
-> generic code can handle a TB taking code from two (and only two) pages.
->
-> It's true that some of the way we treat i386 TBs plays a bit fast and 
-> loose, in that it's possible to design a code sequence that will 
-> report a page access error at the beginning of the TB, rather than 
-> another runtime exception which might have been visible if we'd 
-> executed the TB.
->
-> I believe that someone fixed that for arm thumb, but no one has 
-> bothered about this for i386, m68k, or s390.  Because it just doesn't 
-> happen in practice; one has to go out of one's way to design the 
-> errant code sequence.
+This series brings qmp-dump-guest-memory to arm and aarch64
+targets. I've detailed my testing and the results in the
+following table.
 
-As I can see, Peter M. fixed the translation of page-straddling ARM 
-Thumb32 insns in 541ebcd (27 Oct 2015). The fixed code ensures that we 
-stop translating if we encounter a page-straddling insn in addition to 
-stopping at an insn from a next page. Thus we put a page-straddling insn 
-into a separate TB so that the insn fetch exception would report the 
-actual PC value for both pages. Looks like any other arch should do the 
-same, right?
+v3:
+ - more changes thanks to Peter's review comments
+   - fix 32-to-64 shoehorning to work better with EL2/EL3
+   - stole comment from Peter for best-effort at endianness selection
+   - only make ARM VFP notes when the guest has VFP registers
+   - some more patch squashing and code commenting
+   - another r-b added
+ - collapsed a level of indirection, because if we're writing elf64 notes
+   then we'll always call the aarch64 function [drew]
+ - fixed the note type for ARM VFP notes (+ a tiny bit of refactoring) [drew]
+ - set prstatus.pr_fpvalid [drew]
+ - tested on tcg [drew]
 
-But, if we forget about page-straddling instructions for a moment, 
-shouldn't every arch stop translating when crossing a page boundary? If 
-yes then a breakpoint at a page boundary could only translate to an 
-empty TB.
+v2: changes thanks to Peter's review questions
+ - Threw in the FP registers. Can view them with gdb on elf
+   formatted dumps.
+ - Added comments stating where the register structs come from.
+ - Fixed determination of 32 vs. 64-bit and LE vs. BE formats.
+   Added a new config to the test matrix below to test this fix.
+ - Added a couple R-b's
 
->
->
->> At least for those architectures which do stop translating on a page 
->> boundary,
->> I think this patch is applicable. Certainly, it would be better to 
->> have a
->> single solution for all architectures.
->
-> For that, I think it might be interesting to arrange for non-empty TBs 
-> to exit prior to recognizing a breakpoint.  So that a breakpoint TB is 
-> always just the one operation.  Except for the fact that "generate an 
-> exception" has traditionally been a target-specific helper, we could 
-> almost make the entire breakpoint generation be done in common code.
->
-> I'd think something like a generic "must we end the TB now" predicate 
-> would be the proper hook.  It would contain all of the usual stuff: 
-> tcg_op_buf_full and checks for singlestep, but then add "is there a 
-> breakpoint at the next pc".
 
-This could be a next step :)
+arm/aarch64 kvm guest kdump testing (P - PASS, F - FAIL). Testing done
+with a latest mainline crash utility (all new patches needed are now in
+master).
 
-Thanks,
-Sergey
+.-------------------------------------------------------------------------------.
+|				Host	| arm32	| arm64	| arm64 | arm64	| arm64	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|				Guest	| arm32	| arm64	| arm64 | arm64	| arm32	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|			     User binary| arm32	| arm64	| arm32 | arm64	| arm32	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+|				Pagesize| 4K	| 4K	| 4K	| 64K	| 4K	|
+|===============================================================================|
+| kdump in guest			| F[1]	| P[2]	| P[2]	| P[3]	| F[1]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory <filename>[4]	| P	| P	| P	| P	| P	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -z <filename>[5]| F[8]	| P	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -l <filename>[6]| F[8]	| P	| P	| P	| F[8]	|
+|---------------------------------------|-------|-------|-------|-------|-------|
+| qmp-dump-guest-memory -s <filename>[7]| F[8]	| P	| P	| P	| F[8]	|
+.-------------------------------------------------------------------------------.
+
+[1] Kernel v4.4-rc1 crashes with a NULL pointer dereference at virtual
+    address 00000000 in a memcpy (crash_kexec/machine_kexec/fncpy/memcpy).
+    Needs kernel debugging.
+[2] Not sure about mainline, but works with the RHEL kernel,
+    makedumpfile does not yet support arm64 with 4K pages, but using
+    'core_collector cp' in /etc/kdump.conf allows saving an uncompressed
+    elf file.
+[3] Not sure about mainline, but works with the RHEL kernel,
+    uses makedumpfile, thus generates a makedumpfile formatted file
+    using zlib compression.
+[4] No format specified, creates an uncompressed elf formatted file.
+[5] makedumpfile format, with zlib compression
+[6] makedumpfile format, with lzo compression
+[7] makedumpfile format, with snappy compression
+[8] The crash utility doesn't seem to like arm32 dumps in makedumpfile
+    format. Looks like the physical page bitmap is all zeros? Needs
+    qemu and crash debugging.
+
+Additional notes:
+1) QEMU also has scripts/dump-guest-memory.py, which can and should be
+   updated to support multiple architectures, pagesizes, and physbases.
+   This is currently left as future work.
+
+
+Andrew Jones (9):
+  qapi-schema: dump-guest-memory: Improve text
+  dump: qemunotes aren't commonly needed
+  dump: allow target to set the page size
+  dump: allow target to set the physical base
+  target-arm: introduce aarch64_compat_sp
+  target-arm: support QMP dump-guest-memory
+  target-arm: dump-guest-memory: add prfpreg notes for aarch64
+  elf: add arm note types
+  target-arm: dump-guest-memory: add vfp notes for arm
+
+ dump.c                      | 131 ++++++++++-------
+ include/elf.h               |   5 +
+ include/sysemu/dump-arch.h  |   9 +-
+ include/sysemu/dump.h       |  11 +-
+ qapi-schema.json            |   4 +-
+ qom/cpu.c                   |   4 +-
+ target-arm/Makefile.objs    |   3 +-
+ target-arm/arch_dump.c      | 336 ++++++++++++++++++++++++++++++++++++++++++++
+ target-arm/cpu-qom.h        |   5 +
+ target-arm/cpu.c            |   3 +
+ target-arm/cpu.h            |  45 ++++++
+ target-ppc/arch_dump.c      |   6 -
+ target-ppc/cpu-qom.h        |   2 -
+ target-ppc/translate_init.c |   1 -
+ target-s390x/arch_dump.c    |   6 -
+ target-s390x/cpu-qom.h      |   2 -
+ target-s390x/cpu.c          |   1 -
+ 17 files changed, 487 insertions(+), 87 deletions(-)
+ create mode 100644 target-arm/arch_dump.c
+
+-- 
+2.4.3
+

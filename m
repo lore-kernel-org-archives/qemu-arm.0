@@ -1,114 +1,82 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2598826obb;
-        Tue, 15 Dec 2015 10:03:31 -0800 (PST)
-X-Received: by 10.140.27.238 with SMTP id 101mr52554940qgx.4.1450202611754;
-        Tue, 15 Dec 2015 10:03:31 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u66si2115582qki.94.2015.12.15.10.03.31
+Received: by 10.182.158.201 with SMTP id ww9csp2649972obb;
+        Tue, 15 Dec 2015 11:34:33 -0800 (PST)
+X-Received: by 10.31.54.134 with SMTP id d128mr15726997vka.26.1450208073366;
+        Tue, 15 Dec 2015 11:34:33 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x22a.google.com (mail-vk0-x22a.google.com. [2607:f8b0:400c:c05::22a])
+        by mx.google.com with ESMTPS id l186si2484547vke.179.2015.12.15.11.34.33
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Dec 2015 10:03:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 15 Dec 2015 11:34:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22a as permitted sender) client-ip=2607:f8b0:400c:c05::22a;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:38536 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a8twh-0005Ls-EL
-	for alex.bennee@linaro.org; Tue, 15 Dec 2015 13:03:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47920)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a8twc-0005Gq-7e
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 13:03:30 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a8twb-0007zF-17
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 13:03:26 -0500
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:33137)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a8twa-0007z3-SP
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 13:03:24 -0500
-Received: by mail-vk0-x236.google.com with SMTP id a188so10965337vkc.0
-	for <qemu-arm@nongnu.org>; Tue, 15 Dec 2015 10:03:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=4bnfAJuU5SseF5WIonrkafgy6gnBeXpA8e8mVwEDQ7Y=;
-	b=HbvjquP6yPTAvNMf0DVFGf7XWmHBmAtyY7F6rgpc2aswb1VIJbtQ6sUwpnLpuA4Bih
-	BKjNko3F5Who3jEQ/+bdkIjXuluc8buFqXBnBjBSyZuFaKD2uxipXteuGSzUrTiy+on/
-	352yk37P+FVOHSu4YeFKDZf19hip/gmCN5szI=
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22a as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x22a.google.com with SMTP id y187so12457809vka.3
+        for <alex.bennee@linaro.org>; Tue, 15 Dec 2015 11:34:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type:content-transfer-encoding;
+        bh=/FqlHBfbSvjohu21riguD8RR6xWLeWFkpThXRwB2i1s=;
+        b=W5eSCCoapGhwI+1YuCZfX+T82e2UlOL8o2/r68djTElMXXEPV6LGPqLe3U4nnAIbA1
+         wx5lIv2sf+YkOgnjyW5EoEfnnReWBH5Y3HcCsn6nh6DyJCc3QSUN9GA7LuQ1+QpwYTvT
+         N0ygiCDoagNfUuYFbwPBOlegoycvDJtO6/CfE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=4bnfAJuU5SseF5WIonrkafgy6gnBeXpA8e8mVwEDQ7Y=;
-	b=QHBWQsq/ctc0BvqgVjjH1Xkf2tk9IuBYCl1Jj4hM0CRYNswq1nYpWPfclBdFZHyYz0
-	M5m8UmK8oQJ3X5GmAYVLqYdwfolougjWxrJdh7moWyLUiQpkJ7kjAibz6zgEj+pT+E/j
-	gQJK3R3JRFOZec6Mn0dXghgDjm9pgsTva+ykMvviI7akPwfx773apllPQh3tbajglYnb
-	3ycMXdwJfIHzPuGNp6oBEJuhoM1AMjtV+UC6CUULgVfaD3mEMG5pvnZ8E9vlsFs4seKJ
-	ecglj2zZLFM7rQ91q613MnIIrTWlmLM36kIdRx0dgVsXbezEvu6/gqynWBWcBWm7GRdO
-	Xczw==
-X-Gm-Message-State: ALoCoQmfeTDCm3YJ0sEcZJ+9tkD/eD4nhzqJW+EdPyiMQij1iNOoJYWYJK63nY7gz+i5hjRt55XOFZABRCFLp1EaYW9Q1HtBmlCB9NeQgn7SKniGAHq4z6E=
-X-Received: by 10.31.52.211 with SMTP id b202mr30282132vka.82.1450202604408;
-	Tue, 15 Dec 2015 10:03:24 -0800 (PST)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type:content-transfer-encoding;
+        bh=/FqlHBfbSvjohu21riguD8RR6xWLeWFkpThXRwB2i1s=;
+        b=jyIy3o0Dv1WBZj4rU9s4zhhvYIlFsnRzJDQBxVu0qONsLkicSPtOuURF88T3llubiM
+         MoSxlVQhGQekgCRf4F6ZORODtePbBX+5HuPnh9c4rvtKq3HV2gn+dWfAb0a/Zdfb+v41
+         +cCN6u3UVdD6fNAk3WVjnJRrss5WSn3RSAoKEHqlwFPpINuDUGoDMo5yFzUuVZbwHNhj
+         Td2O6v79BfDTzmlUd7uxhPohvgVujjw9XuW5kHpYPVbdR5fH3jSs0Sat6rLBxaF55XzP
+         ncUv6AbXKc9DeeuekGRO1UpijFEN7K68YFM1EzLODpy1YEL0YUswnILsc0FZC2X6ffYN
+         mFnQ==
+X-Gm-Message-State: ALoCoQnbjcSs0B8LzTBBx4gSndeWDkVFIrmqoQd4TQAAv+fEga9gSiYpcbjyR7aGynSi7M6EcKRQl6k72jbucmlTW8RdBU+YWOyvWX7E7ylHXBXoHPh73Ls=
+X-Received: by 10.31.47.197 with SMTP id v188mr30243623vkv.6.1450208073077;
+ Tue, 15 Dec 2015 11:34:33 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Tue, 15 Dec 2015 10:03:05 -0800 (PST)
-In-Reply-To: <1448474560-22475-1-git-send-email-serge.fdrv@gmail.com>
-References: <1448474560-22475-1-git-send-email-serge.fdrv@gmail.com>
+Received: by 10.31.153.15 with HTTP; Tue, 15 Dec 2015 11:34:13 -0800 (PST)
+In-Reply-To: <1449599553-24713-1-git-send-email-alex.bennee@linaro.org>
+References: <1449599553-24713-1-git-send-email-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Dec 2015 18:03:05 +0000
-Message-ID: <CAFEAcA-=+VumX_kH=Jyk5J3jXOW=Fdf61Rv-6Zf5QoxJ6w_6mA@mail.gmail.com>
-To: Sergey Fedorov <serge.fdrv@gmail.com>
+Date: Tue, 15 Dec 2015 19:34:13 +0000
+Message-ID: <CAFEAcA8xQzgz8oSL=WtammyRjckBbyJqvzvQo54TfCj9yovaTQ@mail.gmail.com>
+Subject: Re: [PATCH v10 0/6] QEMU support for KVM Guest Debug on arm64
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Christoffer Dall <christoffer.dall@linaro.org>, Zhichao Huang <zhichao.huang@linaro.org>, 
+	kvm-devel <kvm@vger.kernel.org>, arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	"kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>, Marc Zyngier <marc.zyngier@arm.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] target-arm: Fix and improve AA32 singlestep
- translation completion code
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bmshXOCWerjx
+Content-Transfer-Encoding: quoted-printable
+X-TUID: znFm/fak2rrs
 
-On 25 November 2015 at 18:02, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
-> The AArch32 translation completion code for singlestep enabled/active
-> case was a way more confusing and too repetitive then it needs to be.
-> Probably that was the cause for a bug to be introduced into it at some
-> point. The bug was that SWI/HVC/SMC exception would be generated in
-> condition-failed instruction code path whereas it shouldn't.
+On 8 December 2015 at 18:32, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> Hi,
 >
-> This patch rewrites the code in a way similar to the non-singlestep
-> case.
+> Here is the latest patch set to support debugging of KVM guests on
+> arm64. The main changes are fixing arm32 compiles (mostly with stubs
+> for the upcomming arm32 debug) and the usual bunch of minor tweaks and
+> clarifications following review.
 >
-> In the condition-passed/unconditional instruction code path we need to:
->  - Write the condexec bits back to the CPU state
->  - Advance the singlestep state machine and generate a corresponding
->    exception in case of SWI/HVC/SMC
->  - Write the PC back to the CPU state if it hasn't already been written
->    and generate an appropriate singlestep exception otherwise
+> I've kept the GDB Python based test in tests/guest-debug and cleaned
+> it up so it will work with python2/3 linked GDBs. It still isn't
+> plumbed it in to the "make check" so can be dropped until we have a
+> solution for testing against non-host binaries.
 >
-> In the condition-failed instruction code path we need to:
->  - Set a TCG label to jump to it if the condition is failed
->  - Write the condexec bits back to the CPU state
->  - Write the PC back to the CPU state since it hasn't been written in
->    this case
->  - Generate an appropriate singlestep exception
+> So in summary the changes are:
 >
-> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+>   - Fixed arm32 compile
+>   - Use results of debug capability checks
+>   - Whitespace and comment cleanups
+>   - Py2/3 cleanliness for test script
+>
+> More detailed changelogs are attached to each patch.
 
-This looks much clearer than the code we had, and the parallel
-between the singlestep code and the non-singlestep code is nice.
-
-Applied to target-arm.next, thanks.
+Thanks, applied to target-arm.next. (I fixed a few typos
+in comments and commit messages in a couple of places).
 
 -- PMM

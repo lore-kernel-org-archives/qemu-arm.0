@@ -1,43 +1,43 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2758156obb;
-        Tue, 15 Dec 2015 14:51:49 -0800 (PST)
-X-Received: by 10.140.253.3 with SMTP id y3mr22637854qhc.39.1450219909006;
-        Tue, 15 Dec 2015 14:51:49 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp2758350obb;
+        Tue, 15 Dec 2015 14:52:10 -0800 (PST)
+X-Received: by 10.140.162.214 with SMTP id i205mr48520757qhi.32.1450219930578;
+        Tue, 15 Dec 2015 14:52:10 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z124si3324490qhz.43.2015.12.15.14.51.48
+        by mx.google.com with ESMTPS id p69si3326838qge.103.2015.12.15.14.52.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Dec 2015 14:51:48 -0800 (PST)
+        Tue, 15 Dec 2015 14:52:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39411 helo=lists.gnu.org)
+Received: from localhost ([::1]:39417 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a8yRg-0004Yr-ND
-	for alex.bennee@linaro.org; Tue, 15 Dec 2015 17:51:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57843)
+	id 1a8yS2-0005GT-1i
+	for alex.bennee@linaro.org; Tue, 15 Dec 2015 17:52:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1a8yRd-0004SP-IB
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:46 -0500
+	(envelope-from <drjones@redhat.com>) id 1a8yRx-00058p-Tt
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:52:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1a8yRZ-0001an-Hd
-	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:51:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46976)
+	(envelope-from <drjones@redhat.com>) id 1a8yRv-0001fj-PL
+	for qemu-arm@nongnu.org; Tue, 15 Dec 2015 17:52:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47117)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1a8yRZ-0001aV-AL; Tue, 15 Dec 2015 17:51:41 -0500
+	id 1a8yRv-0001fb-G4; Tue, 15 Dec 2015 17:52:03 -0500
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id D6019345B5C;
-	Tue, 15 Dec 2015 22:51:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0A57F32D3D9;
+	Tue, 15 Dec 2015 22:52:03 +0000 (UTC)
 Received: from hawk.localdomain.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBFMpNh3024186; Tue, 15 Dec 2015 17:51:35 -0500
+	id tBFMpNh7024186; Tue, 15 Dec 2015 17:51:57 -0500
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 15 Dec 2015 16:51:11 -0600
-Message-Id: <1450219878-5293-3-git-send-email-drjones@redhat.com>
+Date: Tue, 15 Dec 2015 16:51:15 -0600
+Message-Id: <1450219878-5293-7-git-send-email-drjones@redhat.com>
 In-Reply-To: <1450219878-5293-1-git-send-email-drjones@redhat.com>
 References: <1450219878-5293-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
@@ -46,7 +46,7 @@ X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, eblake@redhat.com,
 	afaerber@suse.de, rth@twiddle.net
-Subject: [Qemu-arm] [PATCH v3 2/9] dump: qemunotes aren't commonly needed
+Subject: [Qemu-arm] [PATCH v3 6/9] target-arm: support QMP dump-guest-memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,126 +60,304 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 20JHBnTjxQ6J
+X-TUID: JuCxHzyBIhzw
 
-Only one of three architectures implementing qmp-dump-guest-memory write
-qemu notes. And, another architecture (arm/aarch64) is coming, which
-won't use them either. Make the common implementation truly common.
-
-(No functional change.)
+Add the support needed for creating prstatus elf notes. This
+allows us to use QMP dump-guest-memory.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- qom/cpu.c                   | 4 ++--
- target-ppc/arch_dump.c      | 6 ------
- target-ppc/cpu-qom.h        | 2 --
- target-ppc/translate_init.c | 1 -
- target-s390x/arch_dump.c    | 6 ------
- target-s390x/cpu-qom.h      | 2 --
- target-s390x/cpu.c          | 1 -
- 7 files changed, 2 insertions(+), 20 deletions(-)
+ target-arm/Makefile.objs |   3 +-
+ target-arm/arch_dump.c   | 230 +++++++++++++++++++++++++++++++++++++++++++++++
+ target-arm/cpu-qom.h     |   5 ++
+ target-arm/cpu.c         |   3 +
+ 4 files changed, 239 insertions(+), 2 deletions(-)
+ create mode 100644 target-arm/arch_dump.c
 
-diff --git a/qom/cpu.c b/qom/cpu.c
-index fb80d13a3f491..8f537a470f3c4 100644
---- a/qom/cpu.c
-+++ b/qom/cpu.c
-@@ -130,7 +130,7 @@ int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- static int cpu_common_write_elf32_qemunote(WriteCoreDumpFunction f,
-                                            CPUState *cpu, void *opaque)
- {
--    return -1;
+diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
+index 9460b409a5a1c..a80eb39743a78 100644
+--- a/target-arm/Makefile.objs
++++ b/target-arm/Makefile.objs
+@@ -1,5 +1,5 @@
+ obj-y += arm-semi.o
+-obj-$(CONFIG_SOFTMMU) += machine.o
++obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o
+ obj-$(CONFIG_KVM) += kvm.o
+ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
+@@ -7,6 +7,5 @@ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
+ obj-y += translate.o op_helper.o helper.o cpu.o
+ obj-y += neon_helper.o iwmmxt_helper.o
+ obj-y += gdbstub.o
+-obj-$(CONFIG_SOFTMMU) += psci.o
+ obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+ obj-y += crypto_helper.o
+diff --git a/target-arm/arch_dump.c b/target-arm/arch_dump.c
+new file mode 100644
+index 0000000000000..dc32d98101004
+--- /dev/null
++++ b/target-arm/arch_dump.c
+@@ -0,0 +1,230 @@
++/* Support for writing ELF notes for ARM architectures
++ *
++ * Copyright (C) 2015 Red Hat Inc.
++ *
++ * Author: Andrew Jones <drjones@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "cpu.h"
++#include "elf.h"
++#include "sysemu/dump.h"
++
++/* struct user_pt_regs from arch/arm64/include/uapi/asm/ptrace.h */
++struct aarch64_user_regs {
++    uint64_t regs[31];
++    uint64_t sp;
++    uint64_t pc;
++    uint64_t pstate;
++} QEMU_PACKED;
++
++QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_regs) != 272);
++
++/* struct elf_prstatus from include/uapi/linux/elfcore.h */
++struct aarch64_elf_prstatus {
++    char pad1[32]; /* 32 == offsetof(struct elf_prstatus, pr_pid) */
++    uint32_t pr_pid;
++    char pad2[76]; /* 76 == offsetof(struct elf_prstatus, pr_reg) -
++                            offsetof(struct elf_prstatus, pr_ppid) */
++    struct aarch64_user_regs pr_reg;
++    uint32_t pr_fpvalid;
++    char pad3[4];
++} QEMU_PACKED;
++
++QEMU_BUILD_BUG_ON(sizeof(struct aarch64_elf_prstatus) != 392);
++
++struct aarch64_note {
++    Elf64_Nhdr hdr;
++    char name[8]; /* align_up(sizeof("CORE"), 4) */
++    struct aarch64_elf_prstatus prstatus;
++} QEMU_PACKED;
++
++QEMU_BUILD_BUG_ON(sizeof(struct aarch64_note) != 412);
++
++static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
++                              const char *name, Elf64_Word namesz,
++                              Elf64_Word type, Elf64_Word descsz)
++{
++    memset(note, 0, sizeof(*note));
++
++    note->hdr.n_namesz = cpu_to_dump32(s, namesz);
++    note->hdr.n_descsz = cpu_to_dump32(s, descsz);
++    note->hdr.n_type = cpu_to_dump32(s, type);
++
++    memcpy(note->name, name, namesz);
++}
++
++int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
++                             int cpuid, void *opaque)
++{
++    struct aarch64_note note;
++    CPUARMState *env = &ARM_CPU(cs)->env;
++    DumpState *s = opaque;
++    uint64_t pstate, sp;
++    int ret, i;
++
++    aarch64_note_init(&note, s, "CORE", 5, NT_PRSTATUS, sizeof(note.prstatus));
++
++    note.prstatus.pr_pid = cpu_to_dump32(s, cpuid);
++
++    if (!is_a64(env)) {
++        aarch64_sync_32_to_64(env);
++        pstate = cpsr_read(env);
++        sp = aarch64_compat_sp(env);
++    } else {
++        pstate = pstate_read(env);
++        sp = env->xregs[31];
++    }
++
++    for (i = 0; i < 31; ++i) {
++        note.prstatus.pr_reg.regs[i] = cpu_to_dump64(s, env->xregs[i]);
++    }
++    note.prstatus.pr_reg.sp = cpu_to_dump64(s, sp);
++    note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
++    note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate);
++
++    ret = f(&note, sizeof(note), s);
++    if (ret < 0) {
++        return -1;
++    }
++
 +    return 0;
- }
- 
- int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-@@ -159,7 +159,7 @@ int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
- static int cpu_common_write_elf64_qemunote(WriteCoreDumpFunction f,
-                                            CPUState *cpu, void *opaque)
- {
--    return -1;
++}
++
++/* struct pt_regs from arch/arm/include/asm/ptrace.h */
++struct arm_user_regs {
++    uint32_t regs[17];
++    char pad[4];
++} QEMU_PACKED;
++
++QEMU_BUILD_BUG_ON(sizeof(struct arm_user_regs) != 72);
++
++/* struct elf_prstatus from include/uapi/linux/elfcore.h */
++struct arm_elf_prstatus {
++    char pad1[24]; /* 24 == offsetof(struct elf_prstatus, pr_pid) */
++    uint32_t pr_pid;
++    char pad2[44]; /* 44 == offsetof(struct elf_prstatus, pr_reg) -
++                            offsetof(struct elf_prstatus, pr_ppid) */
++    struct arm_user_regs pr_reg;
++    uint32_t pr_fpvalid;
++} QEMU_PACKED arm_elf_prstatus;
++
++QEMU_BUILD_BUG_ON(sizeof(struct arm_elf_prstatus) != 148);
++
++struct arm_note {
++    Elf32_Nhdr hdr;
++    char name[8]; /* align_up(sizeof("CORE"), 4) */
++    struct arm_elf_prstatus prstatus;
++} QEMU_PACKED;
++
++QEMU_BUILD_BUG_ON(sizeof(struct arm_note) != 168);
++
++static void arm_note_init(struct arm_note *note, DumpState *s,
++                          const char *name, Elf32_Word namesz,
++                          Elf32_Word type, Elf32_Word descsz)
++{
++    memset(note, 0, sizeof(*note));
++
++    note->hdr.n_namesz = cpu_to_dump32(s, namesz);
++    note->hdr.n_descsz = cpu_to_dump32(s, descsz);
++    note->hdr.n_type = cpu_to_dump32(s, type);
++
++    memcpy(note->name, name, namesz);
++}
++
++int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
++                             int cpuid, void *opaque)
++{
++    struct arm_note note;
++    CPUARMState *env = &ARM_CPU(cs)->env;
++    DumpState *s = opaque;
++    int ret, i;
++
++    arm_note_init(&note, s, "CORE", 5, NT_PRSTATUS, sizeof(note.prstatus));
++
++    note.prstatus.pr_pid = cpu_to_dump32(s, cpuid);
++
++    for (i = 0; i < 16; ++i) {
++        note.prstatus.pr_reg.regs[i] = cpu_to_dump32(s, env->regs[i]);
++    }
++    note.prstatus.pr_reg.regs[16] = cpu_to_dump32(s, cpsr_read(env));
++
++    ret = f(&note, sizeof(note), s);
++    if (ret < 0) {
++        return -1;
++    }
++
 +    return 0;
- }
++}
++
++int cpu_get_dump_info(ArchDumpInfo *info,
++                      const GuestPhysBlockList *guest_phys_blocks)
++{
++    ARMCPU *cpu = ARM_CPU(first_cpu);
++    CPUARMState *env = &cpu->env;
++    GuestPhysBlock *block;
++    hwaddr lowest_addr = ULLONG_MAX;
++
++    /* Take a best guess at the phys_base. If we get it wrong then crash
++     * will need '--machdep phys_offset=<phys-offset>' added to its command
++     * line, which isn't any worse than assuming we can use zero, but being
++     * wrong. This is the same algorithm the crash utility uses when
++     * attempting to guess as it loads non-dumpfile formatted files.
++     */
++    QTAILQ_FOREACH(block, &guest_phys_blocks->head, next) {
++        if (block->target_start < lowest_addr) {
++            lowest_addr = block->target_start;
++        }
++    }
++
++    if (arm_feature(env, ARM_FEATURE_AARCH64)) {
++        info->d_machine = EM_AARCH64;
++        info->d_class = ELFCLASS64;
++        info->page_size = (1 << 16); /* aarch64 max pagesize */
++        if (lowest_addr != ULLONG_MAX) {
++            info->phys_base = lowest_addr;
++        }
++    } else {
++        info->d_machine = EM_ARM;
++        info->d_class = ELFCLASS32;
++        info->page_size = (1 << 12);
++        if (lowest_addr < UINT_MAX) {
++            info->phys_base = lowest_addr;
++        }
++    }
++
++    /* We assume the relevant endianness is that of EL1; this is right
++     * for kernels, but might give the wrong answer if you're trying to
++     * dump a hypervisor that happens to be running an opposite-endian
++     * kernel.
++     */
++    info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
++                     ? ELFDATA2MSB : ELFDATA2LSB;
++
++    return 0;
++}
++
++ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
++{
++    size_t note_size;
++
++    if (class == ELFCLASS64) {
++        note_size = sizeof(struct aarch64_note);
++    } else {
++        note_size = sizeof(struct arm_note);
++    }
++
++    return note_size * nr_cpus;
++}
+diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
+index 25fb1ce0f3f3d..5bd9b7bb9fa7e 100644
+--- a/target-arm/cpu-qom.h
++++ b/target-arm/cpu-qom.h
+@@ -221,6 +221,11 @@ hwaddr arm_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int arm_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+ int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
  
- int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-diff --git a/target-ppc/arch_dump.c b/target-ppc/arch_dump.c
-index 5acafc68a4e39..816dbc21340d9 100644
---- a/target-ppc/arch_dump.c
-+++ b/target-ppc/arch_dump.c
-@@ -278,9 +278,3 @@ int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     PowerPCCPU *cpu = POWERPC_CPU(cs);
-     return ppc64_write_all_elf64_notes("CORE", f, cpu, cpuid, opaque);
- }
--
--int ppc64_cpu_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                   CPUState *cpu, void *opaque)
--{
--    return 0;
--}
-diff --git a/target-ppc/cpu-qom.h b/target-ppc/cpu-qom.h
-index bc20504b3d55a..7d5e2b36a997c 100644
---- a/target-ppc/cpu-qom.h
-+++ b/target-ppc/cpu-qom.h
-@@ -125,8 +125,6 @@ int ppc_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_read_register_apple(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int reg);
--int ppc64_cpu_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                   CPUState *cpu, void *opaque);
- int ppc64_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                                int cpuid, void *opaque);
- #ifndef CONFIG_USER_ONLY
-diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
-index e88dc7fc7aa38..4ab2d927b01bb 100644
---- a/target-ppc/translate_init.c
-+++ b/target-ppc/translate_init.c
-@@ -9712,7 +9712,6 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
-     cc->vmsd = &vmstate_ppc_cpu;
- #if defined(TARGET_PPC64)
-     cc->write_elf64_note = ppc64_cpu_write_elf64_note;
--    cc->write_elf64_qemunote = ppc64_cpu_write_elf64_qemunote;
- #endif
- #endif
-     cc->cpu_exec_enter = ppc_cpu_exec_enter;
-diff --git a/target-s390x/arch_dump.c b/target-s390x/arch_dump.c
-index dab63eb44f270..549a99b357e3f 100644
---- a/target-s390x/arch_dump.c
-+++ b/target-s390x/arch_dump.c
-@@ -246,9 +246,3 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
++int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
++                             int cpuid, void *opaque);
++int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
++                             int cpuid, void *opaque);
++
+ /* Callback functions for the generic timer's timers. */
+ void arm_gt_ptimer_cb(void *opaque);
+ void arm_gt_vtimer_cb(void *opaque);
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 30739fc0dfa74..db91a3f9eb467 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -1428,6 +1428,9 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
  
-     return (elf_note_size) * nr_cpus;
- }
--
--int s390_cpu_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                  CPUState *cpu, void *opaque)
--{
--    return 0;
--}
-diff --git a/target-s390x/cpu-qom.h b/target-s390x/cpu-qom.h
-index 491c1b8769669..029a44af246cc 100644
---- a/target-s390x/cpu-qom.h
-+++ b/target-s390x/cpu-qom.h
-@@ -91,8 +91,6 @@ void s390_cpu_dump_state(CPUState *cpu, FILE *f, fprintf_function cpu_fprintf,
- int s390_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                               int cpuid, void *opaque);
+     cc->disas_set_info = arm_disas_set_info;
  
--int s390_cpu_write_elf64_qemunote(WriteCoreDumpFunction f,
--                                  CPUState *cpu, void *opaque);
- hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
- int s390_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
-diff --git a/target-s390x/cpu.c b/target-s390x/cpu.c
-index 189a2afc0fe1f..e5a3f65029075 100644
---- a/target-s390x/cpu.c
-+++ b/target-s390x/cpu.c
-@@ -353,7 +353,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     cc->get_phys_page_debug = s390_cpu_get_phys_page_debug;
-     cc->vmsd = &vmstate_s390_cpu;
-     cc->write_elf64_note = s390_cpu_write_elf64_note;
--    cc->write_elf64_qemunote = s390_cpu_write_elf64_qemunote;
-     cc->cpu_exec_interrupt = s390_cpu_exec_interrupt;
-     cc->debug_excp_handler = s390x_cpu_debug_excp_handler;
- #endif
++    cc->write_elf64_note = arm_cpu_write_elf64_note;
++    cc->write_elf32_note = arm_cpu_write_elf32_note;
++
+     /*
+      * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
+      * the object in cpus -> dangling pointer after final
 -- 
 2.4.3
 

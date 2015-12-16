@@ -1,67 +1,78 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2981085obb;
-        Tue, 15 Dec 2015 23:43:25 -0800 (PST)
-X-Received: by 10.140.88.51 with SMTP id s48mr33426691qgd.48.1450251805882;
-        Tue, 15 Dec 2015 23:43:25 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3085205obb;
+        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
+X-Received: by 10.140.106.37 with SMTP id d34mr61294282qgf.77.1450264644654;
+        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j20si5452758qhc.31.2015.12.15.23.43.25
+        by mx.google.com with ESMTPS id a197si6161630qkb.6.2015.12.16.03.17.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Dec 2015 23:43:25 -0800 (PST)
+        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45830 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:46624 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a96k9-0002Oo-D8
-	for alex.bennee@linaro.org; Wed, 16 Dec 2015 02:43:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59371)
+	id 1a9A5E-0001tL-AN
+	for alex.bennee@linaro.org; Wed, 16 Dec 2015 06:17:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a96k7-0002Of-G4
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 02:43:24 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a9A5C-0001t3-IP
+	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1a96k4-0002Ku-9L
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 02:43:23 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57202)
+	(envelope-from <peter.maydell@linaro.org>) id 1a9A5B-0008Tk-Si
+	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:22 -0500
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:32809)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1a96k4-0002Kq-3E; Wed, 16 Dec 2015 02:43:20 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 298268CF5D;
-	Wed, 16 Dec 2015 07:43:19 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-49.phx2.redhat.com
-	[10.3.113.49])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id tBG7hGpX028499
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 16 Dec 2015 02:43:18 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 17DE6303F81B; Wed, 16 Dec 2015 08:43:16 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1a9A5B-0008TX-Ov
+	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:21 -0500
+Received: by mail-vk0-x22d.google.com with SMTP id a188so24259551vkc.0
+	for <qemu-arm@nongnu.org>; Wed, 16 Dec 2015 03:17:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=y27+NPj9iyaaMgT5AshyaIdNeR2JfpVzIaTcbhFw+NQ=;
+	b=gPDtqfv23LOipG/YymGvJTvyCxG8vLgvZ8icCp/Wl9cK5wKlRisjvV0JiMFJnWxarP
+	sKSyDE7qZaFDiiEP+8jWfFlSwM5KCU/kd1cJdqyavkozeA9T9wuG/2RGOuRcoFRdaVLB
+	Cw5KmblSJ0WsfcWQNLcC2kwpJVK5WLf+snZi4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=y27+NPj9iyaaMgT5AshyaIdNeR2JfpVzIaTcbhFw+NQ=;
+	b=Y9Rmc43gywIXUlReEgoEg8uv00UYZn0jbpkFexIeleTGUOABWHM1HikFEOguyVL7Mq
+	j5h2d1Z5p0ji3zc6Az0sJD/LT4eFqyXyoYrOhGsULORDDe8HoDomlUU3xyqLXyGNR/qd
+	F0E8muhBy4l1Gb+5GZO9oM+XqiDltIpZgQ5s92neEdmXJqIzEZMGgHkIT7fOQkk2EZSJ
+	2bDhhr1eMLqQt4y6wMWF6XJeUInbmT1TkzZxYlyxz91KG+H6za0eL1aXlpxVqcDvYkJj
+	3zvDLsdsTLFMb1Z2jmgo0jQ8mexxhM4G0jkfuNlbltT1cMSVSP+oglizo90Xow7f8Yir
+	5UQQ==
+X-Gm-Message-State: ALoCoQld/AZ30XNtoy9+bIBpWHgIVnCeAfLl+FkjNk5iRPfAjJDA9AZWm5vjIxIRqX19RnrwZAzZLPeUfkFkkMhydjrnyrcpe8G6+1qUb+n3qhc9yXrrjFk=
+X-Received: by 10.31.194.21 with SMTP id s21mr31243360vkf.92.1450264641286;
+	Wed, 16 Dec 2015 03:17:21 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Wed, 16 Dec 2015 03:17:01 -0800 (PST)
+In-Reply-To: <87bn9q4z57.fsf@blackfin.pond.sub.org>
 References: <1449764955-10741-1-git-send-email-armbru@redhat.com>
 	<1449764955-10741-2-git-send-email-armbru@redhat.com>
 	<20151214165537.GB3774@thinpad.lan.raisama.net>
 	<87h9jkltn3.fsf@blackfin.pond.sub.org>
 	<CAFEAcA-2JmYmb4mvXb=LPwN=-RzT4nBV91gDAMyJ1wK1q1YcMQ@mail.gmail.com>
-Date: Wed, 16 Dec 2015 08:43:16 +0100
-In-Reply-To: <CAFEAcA-2JmYmb4mvXb=LPwN=-RzT4nBV91gDAMyJ1wK1q1YcMQ@mail.gmail.com>
-	(Peter Maydell's message of "Tue, 15 Dec 2015 18:41:44 +0000")
-Message-ID: <87bn9q4z57.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+	<87bn9q4z57.fsf@blackfin.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 16 Dec 2015 11:17:01 +0000
+Message-ID: <CAFEAcA_YnHnFKoKphK-DgsYd2TKkAC9ySQihCdzx5azbcTM+hw@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22d
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] Use error_fatal to
-	simplify obvious fatal errors
+ simplify obvious fatal errors
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -75,68 +86,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UFn2O1r/SOnA
+X-TUID: RyrWyxieOqId
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On 14 December 2015 at 19:25, Markus Armbruster <armbru@redhat.com> wrote:
->> Eduardo Habkost <ehabkost@redhat.com> writes:
->>
->>> On Thu, Dec 10, 2015 at 05:29:14PM +0100, Markus Armbruster wrote:
->>>> Done with this admittedly crude Coccinelle semantic patch:
->>>>
->>>
->>> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
->>>
->>> You can rewrite the semantic patch as:
-> [...]
->>> Coccinelle seems to have some magic to make "LIST," also match
->>> with an empty list.
->>
->> Same output as my script, except it doesn't mess up zynq_init().  Sold!
+On 16 December 2015 at 07:43, Markus Armbruster <armbru@redhat.com> wrote:
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>> Do you mean by this that you're planning to send a v3, or would you
+>> like me to apply v2 to target-arm.next?
 >
-> Do you mean by this that you're planning to send a v3, or would you
-> like me to apply v2 to target-arm.next?
+> I only changed PATCH 1's commit message since v2 (current version
+> appended).  I plan to include the series in a pull request in my role as
+> error reporting maintainer, but I don't mind "losing" patches to other
+> maintainers on the way.
 
-I only changed PATCH 1's commit message since v2 (current version
-appended).  I plan to include the series in a pull request in my role as
-error reporting maintainer, but I don't mind "losing" patches to other
-maintainers on the way.
+OK, I'm happy to let you take it via your tree.
 
-
-Use error_fatal to simplify obvious fatal errors
-
-Done with this Coccinelle semantic patch:
-
-    @@
-    type T;
-    identifier FUN, RET;
-    expression list ARGS;
-    expression ERR, EC;
-    @@
-    (
-    -    T RET = FUN(ARGS, &ERR);
-    +    T RET = FUN(ARGS, &error_fatal);
-    |
-    -    RET = FUN(ARGS, &ERR);
-    +    RET = FUN(ARGS, &error_fatal);
-    |
-    -    FUN(ARGS, &ERR);
-    +    FUN(ARGS, &error_fatal);
-    )
-    -    if (ERR != NULL) {
-    -        error_report_err(ERR);
-    -        exit(EC);
-    -    }
-
-This is actually a more elegant version of my initial semantic patch
-by courtesy of Eduardo.
-
-It leaves dead Error * variables behind, cleaned up manually.
-
-Cc: qemu-arm@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+thanks
+-- PMM

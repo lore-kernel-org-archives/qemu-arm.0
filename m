@@ -1,71 +1,72 @@
-Received: by 10.182.158.201 with SMTP id ww9csp602559obb;
-        Thu, 17 Dec 2015 11:38:25 -0800 (PST)
-X-Received: by 10.140.250.70 with SMTP id v67mr67204145qhc.43.1450381105158;
-        Thu, 17 Dec 2015 11:38:25 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp602564obb;
+        Thu, 17 Dec 2015 11:38:26 -0800 (PST)
+X-Received: by 10.140.230.8 with SMTP id a8mr67542996qhc.31.1450381106194;
+        Thu, 17 Dec 2015 11:38:26 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x130si12656346qhb.26.2015.12.17.11.38.25
+        by mx.google.com with ESMTPS id g131si12630523qkb.102.2015.12.17.11.38.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Dec 2015 11:38:25 -0800 (PST)
+        Thu, 17 Dec 2015 11:38:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:56643 helo=lists.gnu.org)
+Received: from localhost ([::1]:56646 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9eNc-0000Y7-QT
-	for alex.bennee@linaro.org; Thu, 17 Dec 2015 14:38:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55998)
+	id 1a9eNd-0000aS-TP
+	for alex.bennee@linaro.org; Thu, 17 Dec 2015 14:38:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eHS-00070A-1U
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:32:03 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a9eJK-00021g-NI
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:33:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eHR-0001A4-2L
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:32:01 -0500
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:35435)
+	(envelope-from <peter.maydell@linaro.org>) id 1a9eJJ-0001XP-P3
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:33:58 -0500
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:32841)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9eHP-00017v-Qo
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:32:00 -0500
-Received: by mail-vk0-x232.google.com with SMTP id a189so52673887vkh.2
-	for <qemu-arm@nongnu.org>; Thu, 17 Dec 2015 11:31:59 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1a9eJJ-0001Ww-LA
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 14:33:57 -0500
+Received: by mail-vk0-x234.google.com with SMTP id a188so53320132vkc.0
+	for <qemu-arm@nongnu.org>; Thu, 17 Dec 2015 11:33:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=ruRzBjvC34kpmkwgGCqG5s2V1YfF84/Up92xWZKhnt0=;
-	b=GTVaU1E4hrOp+Nb1U0xQqm+AjdA23AW34BiWQ0Dj4X66c0wGxXUaJF6m3PL9K/alz1
-	VEB5USYc305/ZzwP+VqaIoHoH6KTJwoPnHngrqIJkbncQSu7pUEh9n2r6bPehzvsKaUO
-	Q/GKUSS1nEhuIJi2LDBIYY/cmiT9eiZsRgqhA=
+	bh=qQtINgOUcwgp0CLZCPsgHXdH3097kj0W4DzKQkAIOOU=;
+	b=GD9AfiNlw3vb2Y1rnPWQjkQRmQLJ4YAD7LjBxldoW5OpDyJdEAHOgcFiq66Efq1GpU
+	dJxqa3OuKVZWf2hci2BhIcXqEnOsN/sO9SSiqG3nUG5FbgWJK43FR8Dox4Pydilxaiar
+	ymHKOpJKPytBRynl1nMJoSGOJA0zY6VO72LiE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=ruRzBjvC34kpmkwgGCqG5s2V1YfF84/Up92xWZKhnt0=;
-	b=Dpxy4UJEL7aG4WBO+5S7AYT0so8138OIFCxQ6PVAypzOizLk3x+Jey6hedhlFTBr11
-	SDSnwoWRm3SA2GopjAjKBsX3chR7kO1I3sSvmFCF7No0orlmmQie51Rr3ozS57WeFXOg
-	psGGBZcr8yE2NarUY+4NW3z1yHrEwoPAK1aYOmzkEeVIPdoKvKBmpCfDfapjoW6Tb+47
-	3PJiO1WUiGLhAkBUgus8/pUPl/jUKVhNPJEgvH0dYGSnziwUF5OYsQ99Rh8WcfgcKNZ7
-	7BaGL0zQU2YuaN9L4K6GTUeBYYy/aAyjmewzrpFD06PIHSD/4NI1VI8akUQPoxGAnouz
-	YoyA==
-X-Gm-Message-State: ALoCoQm2lSd55X4eP5jAg3PJby7wi6Iihm5ePMbxDClwl28b6MwH1A5nbOBJXX7ZabTdTMDPEv+Um74f10Co2NJdkNCLYcHaP35JDejGYrrAhjc+btr1HlI=
-X-Received: by 10.31.52.211 with SMTP id b202mr39885721vka.82.1450380719456;
-	Thu, 17 Dec 2015 11:31:59 -0800 (PST)
+	bh=qQtINgOUcwgp0CLZCPsgHXdH3097kj0W4DzKQkAIOOU=;
+	b=j8vv+A/cxlFc81/5FzxHg6vWRJ0nLmpNk3kdG4bhF5GsoH/4pGCU06Mw4x7rpY4nrX
+	F7OMFYUQ8yeTnFruCg0Xx7DO9gep6aXR6EP3VZ+fG5lvCqEbsw9INr+jZaIIEiei7OQp
+	v03J3Gxym6W79/ibiLHPrPv1BJ7MgMCsGHuUv0moYGNq+zpMsG+DB7ihOWq7gmmDTmQs
+	+rvvbAGTVbJI2ws8vJmFkLRZAtEVetX8nQtMNfElyLSAC9fWSbwqO1Serm7Y4T9vKEfL
+	7HPdQbyVmSE2RsSBJtEBcCHFcMae4DjhkO4Mv2LBcDL/dQPmfCwFeT7bOMDMTvMVZ4db
+	WM/Q==
+X-Gm-Message-State: ALoCoQla7HljY+tJYABY+CKkAFAAqbBQ89n59Vuy44JiPedaFfmDtEI9nS9+qKQU6tXtuevYXjhBq7nm9ixv3H/mAhtIc6nguZkeYuoYx+VWlpJOXS85M6c=
+X-Received: by 10.31.0.136 with SMTP id 130mr20915696vka.139.1450380835988;
+	Thu, 17 Dec 2015 11:33:55 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Thu, 17 Dec 2015 11:31:40 -0800 (PST)
-In-Reply-To: <1449101933-24928-14-git-send-email-mdavidsaver@gmail.com>
+Received: by 10.31.153.15 with HTTP; Thu, 17 Dec 2015 11:33:36 -0800 (PST)
+In-Reply-To: <1449101933-24928-15-git-send-email-mdavidsaver@gmail.com>
 References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
-	<1449101933-24928-14-git-send-email-mdavidsaver@gmail.com>
+	<1449101933-24928-15-git-send-email-mdavidsaver@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 17 Dec 2015 19:31:40 +0000
-Message-ID: <CAFEAcA8mryd8zw6mfBc85bpbZKpsFpOC6EEZ+a-J6=9Lc6_vqQ@mail.gmail.com>
+Date: Thu, 17 Dec 2015 19:33:36 +0000
+Message-ID: <CAFEAcA8P_L12bTub+m+7X_Ko6bJz-fQVNE17TvNFLOkrX5Vkfg@mail.gmail.com>
 To: Michael Davidsaver <mdavidsaver@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::232
+X-Received-From: 2607:f8b0:400c:c05::234
 Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v2 13/26] armv7m: implement CCR
+Subject: Re: [Qemu-arm] [PATCH v2 14/26] armv7m: prevent unprivileged write
+	to STIR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,120 +80,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X15P/tYyred9
+X-TUID: QciYSOyESCs7
 
 On 3 December 2015 at 00:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> Implement Configuration and Control register.
-> Handle STACKALIGN and USERSETMPEND bits.
+> Prevent unprivileged from writing to the
 
-The patch doesn't seem to do anything with USERSETMPEND,
-though it does do something with NONBASETHRDENA.
+"unprivileged writes to the"
+
+> Software Triggered Interrupt register
+
+".".
 
 > ---
->  hw/intc/armv7m_nvic.c | 15 +++++++++++----
->  target-arm/cpu.h      |  1 +
->  target-arm/helper.c   |  8 +++-----
->  target-arm/machine.c  |  1 +
->  4 files changed, 16 insertions(+), 9 deletions(-)
+>  hw/intc/armv7m_nvic.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 >
 > diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 7d261ae..0f9ca6a 100644
+> index 0f9ca6a..5731146 100644
 > --- a/hw/intc/armv7m_nvic.c
 > +++ b/hw/intc/armv7m_nvic.c
-> @@ -534,8 +534,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset)
->          /* TODO: Implement SLEEPONEXIT.  */
->          return 0;
->      case 0xd14: /* Configuration Control.  */
-> -        /* TODO: Implement Configuration Control bits.  */
-> -        return 0;
-> +        return cpu->env.v7m.ccr;
->      case 0xd24: /* System Handler Status.  */
->          val = 0;
->          if (s->vectors[ARMV7M_EXCP_MEM].active) val |= (1 << 0);
-> @@ -685,9 +684,17 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+> @@ -727,7 +727,9 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value)
+>                        "NVIC: Aux fault status registers unimplemented\n");
+>          break;
+>      case 0xf00: /* Software Triggered Interrupt Register */
+> -        if ((value & 0x1ff) < NVIC_MAX_IRQ) {
+> +        /* STIR write allowed if privlaged or USERSETMPEND set */
+
+You'll want to use the #define of CCR_USERSETMPEND that you'll
+add to the previous patch. If you do that then the comment is
+no longer really needed as the code itself is fairly straightforward.
+(If you want to keep it then "privileged".)
+
+> +        if ((arm_current_el(&cpu->env) || (cpu->env.v7m.ccr & 2))
+> +            && ((value & 0x1ff) < NVIC_MAX_IRQ)) {
+>              armv7m_nvic_set_pending(s, (value&0x1ff)+16);
 >          }
 >          break;
->      case 0xd10: /* System Control.  */
-> -    case 0xd14: /* Configuration Control.  */
->          /* TODO: Implement control registers.  */
-> -        qemu_log_mask(LOG_UNIMP, "NVIC: SCR and CCR unimplemented\n");
-> +        qemu_log_mask(LOG_UNIMP, "NVIC: SCR unimplemented\n");
-> +        break;
-> +    case 0xd14: /* Configuration Control.  */
-> +        value &= 0x31b;
-> +        if (value & 0x118) {
-> +            qemu_log_mask(LOG_UNIMP, "CCR unimplemented bits"
-> +                                     " BFHFNMIGN, DIV_0_TRP, UNALIGN_TRP");
-> +            value &= ~0x118;
-
-There's not much point in clearing out the bits we don't implement;
-we may as well let them read-as-written.
-
-> +        }
-> +        cpu->env.v7m.ccr = value;
->          break;
->      case 0xd24: /* System Handler Control.  */
->          /* TODO: Real hardware allows you to set/clear the active bits
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index b98ef89..4e1b8cf 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -396,6 +396,7 @@ typedef struct CPUARMState {
->          uint32_t vecbase;
->          uint32_t basepri;
->          uint32_t control;
-> +        uint32_t ccr; /* Configuration and Control */
->          uint32_t cfsr; /* Configurable Fault Status */
->          uint32_t hfsr; /* HardFault Status */
->          uint32_t mmfar; /* MemManage Fault Address */
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index f7e496d..17d1ca0 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -5412,7 +5412,7 @@ static void do_v7m_exception_exit(CPUARMState *env)
->          break;
->      case 0x9: /* Return to Thread mode w/ Main stack */
->      case 0xd: /* Return to Thread mode w/ Process stack */
-> -        if (env->v7m.exception_prio != 0x100) {
-> +        if ((env->v7m.exception_prio != 0x100) && !(env->v7m.ccr & 1)) {
-
-A #define for CCR_NONBASETHRDENA would be nice (and for
-CCR_STKALIGN).
-
->              /* Attempt to return to Thread mode
->               * from nested handler while NONBASETHRDENA not set.
->               */
-> @@ -5582,10 +5582,8 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
->
->      qemu_log_mask(CPU_LOG_INT, "... as %d\n", env->v7m.exception);
->
-> -    /* Align stack pointer.  */
-> -    /* ??? Should only do this if Configuration Control Register
-> -       STACKALIGN bit is set.  */
-> -    if (env->regs[13] & 4) {
-> +    /* Align stack pointer (STACKALIGN)  */
-> +    if ((env->regs[13] & 4) && (env->v7m.ccr & (1<<9))) {
-
-Spaces around operators.
-
->          env->regs[13] -= 4;
->          xpsr |= 0x200;
->      }
-> diff --git a/target-arm/machine.c b/target-arm/machine.c
-> index 14a4882..7aee41e 100644
-> --- a/target-arm/machine.c
-> +++ b/target-arm/machine.c
-> @@ -100,6 +100,7 @@ static const VMStateDescription vmstate_m = {
->          VMSTATE_UINT32(env.v7m.vecbase, ARMCPU),
->          VMSTATE_UINT32(env.v7m.basepri, ARMCPU),
->          VMSTATE_UINT32(env.v7m.control, ARMCPU),
-> +        VMSTATE_UINT32(env.v7m.ccr, ARMCPU),
->          VMSTATE_UINT32(env.v7m.cfsr, ARMCPU),
->          VMSTATE_UINT32(env.v7m.hfsr, ARMCPU),
->          VMSTATE_UINT32(env.v7m.mmfar, ARMCPU),
-
-Changing the vmstate implies that we should be bumping its
-version number.
 
 thanks
 -- PMM

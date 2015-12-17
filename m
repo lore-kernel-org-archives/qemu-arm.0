@@ -1,63 +1,69 @@
-Received: by 10.182.105.169 with SMTP id gn9csp1646698obb;
-        Mon, 2 Nov 2015 20:31:03 -0800 (PST)
-X-Received: by 10.55.212.157 with SMTP id s29mr34079413qks.100.1446525063569;
-        Mon, 02 Nov 2015 20:31:03 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp315769obb;
+        Thu, 17 Dec 2015 03:31:06 -0800 (PST)
+X-Received: by 10.140.80.166 with SMTP id c35mr38851995qgd.20.1450351866797;
+        Thu, 17 Dec 2015 03:31:06 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 22si9557547qhz.5.2015.11.02.20.31.03
+        by mx.google.com with ESMTPS id w193si10918905qhw.84.2015.12.17.03.31.06
         for <alex.bennee@linaro.org>
-        (version=TLSv1 cipher=RC4-SHA bits=128/128);
-        Mon, 02 Nov 2015 20:31:03 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 17 Dec 2015 03:31:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45580 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:52325 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZtTFP-0002Oc-5K
-	for alex.bennee@linaro.org; Mon, 02 Nov 2015 23:31:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55959)
+	id 1a9Wm2-0008Ol-DF
+	for alex.bennee@linaro.org; Thu, 17 Dec 2015 06:31:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZtTFM-0002JJ-Bd
-	for qemu-arm@nongnu.org; Mon, 02 Nov 2015 23:31:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1a9Wlv-0008N1-0Q
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 06:31:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ZtTFL-0000Ga-De
-	for qemu-arm@nongnu.org; Mon, 02 Nov 2015 23:31:00 -0500
-Received: from mail-pa0-x236.google.com ([2607:f8b0:400e:c03::236]:33086)
+	(envelope-from <peter.maydell@linaro.org>) id 1a9Wlp-0006D9-Dk
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 06:30:58 -0500
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:33755)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ZtTFF-0000F8-7Z; Mon, 02 Nov 2015 23:30:53 -0500
-Received: by pabfh17 with SMTP id fh17so6857340pab.0;
-	Mon, 02 Nov 2015 20:30:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=0kluKI4q2+Zc57MOPEhNJ36VL9WedP0gJ+N88UUFf8s=;
-	b=lgFEileLnBDhDTifIp+W76PGs92/QFbtkQ0dJdZ/vteZ9sMGoOlG/DQnhJkrJ7pcjE
-	m6VheJKcHqV7u33AZ1rZNIGPmgZyZy0NUABc+HKiKPE3oIeo9HUSXo1bnxVkWrr2kOpb
-	n0jTVgdwJfcuAn10bc1KLjHn4/8K0fw+RUrvKI1+p5VPIL+sLW60RvnV8BaXvkXQQFdc
-	/4uP/UZyj2jAxtz23tBflVWHkfkAPavXfCm9YCxz/XWyji7PGoX8njqzxgLPnaYzVXbP
-	QxxmekGFeEQtURVe5nYwO/41wk16fsA87pKNWGcmqSwDKrgKxnMpP6DesuJKxlwZy5Nv
-	1XBw==
-X-Received: by 10.66.122.69 with SMTP id lq5mr31126483pab.125.1446525052742;
-	Mon, 02 Nov 2015 20:30:52 -0800 (PST)
-Received: from localhost.localdomain (mobile-166-171-251-070.mycingular.net.
-	[166.171.251.70]) by smtp.gmail.com with ESMTPSA id
-	ey2sm26830137pbd.77.2015.11.02.20.30.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 02 Nov 2015 20:30:51 -0800 (PST)
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  2 Nov 2015 20:30:34 -0800
-Message-Id: <cover.1446428067.git.crosthwaite.peter@gmail.com>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2607:f8b0:400e:c03::236
-Cc: robh@kernel.org, qemu-arm@nongnu.org, linux@roeck-us.net
-Subject: [Qemu-arm] [PATCH for-2.5 v3 0/3] ARM: Highbank: Add monitor support
+	(envelope-from <peter.maydell@linaro.org>) id 1a9Wlp-0006Cq-Ac
+	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 06:30:53 -0500
+Received: by mail-vk0-x234.google.com with SMTP id a188so45055427vkc.0
+	for <qemu-arm@nongnu.org>; Thu, 17 Dec 2015 03:30:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=ITa9C3aCufq7FUUsD7/dwACt1gWJT/W3X0v5BzdaY9g=;
+	b=DXdzp0rAvSLsnNptDTVMB22a497sBsand0q4p+JwtQWSD7+ypPDDgmUszzYoeSJl5R
+	xqMxeyOpneaPVkgb/It4OaRuj137OsgSjKtgeEYbHaK3OdesvbzKoeYFCpL4cdGZlwqj
+	LzgIej7FSEoTst2rIK1yw9VgwFyaYY8qYaIqo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=ITa9C3aCufq7FUUsD7/dwACt1gWJT/W3X0v5BzdaY9g=;
+	b=K0etyiInMhqTgyOVitL+Tv0DCkBHi3AWlKl84BLDs2mwTk3ZxHvUXMdGBL3NJkasj0
+	1gi4QLhckbjkC0RNfL/8RNKibO/rBOs1wJF6Nc9osO9yTsy82m3ZMHNbJtt4jcSOWggz
+	TNYySJit/eYhooQ5cXwUsggZTS9U6H89WXf4hycuoWUcOSXTzrzNMH11hjXgFeWQGRMw
+	evre54d/P3agcpo13dBpbH095h6uK+UjyM89BQiP6Gz7KHxHxwlGDPBa/w/01vRNUCN0
+	JZsJHrzKs8P81N6CJwTvGjnDoPV4+tM8TB5H6j+hSdrYMVFMqB0uVm+C4aUNB/kHqQm7
+	Fmaw==
+X-Gm-Message-State: ALoCoQmeQdGV8fAXM8nKWaQ/CxTYCgAcLSii4AWMDSgR8kJV7IQXYs6q2QtvDnD5pohTxLUpUqK8Y+b1SDed3lQ58xK7x5faGCJK+t+oNVJRcmv0uPVbJjo=
+X-Received: by 10.31.107.138 with SMTP id k10mr17207202vki.27.1450351851815;
+	Thu, 17 Dec 2015 03:30:51 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Thu, 17 Dec 2015 03:30:32 -0800 (PST)
+In-Reply-To: <cover.1449528242.git.jcd@tribudubois.net>
+References: <cover.1449528242.git.jcd@tribudubois.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Dec 2015 11:30:32 +0000
+Message-ID: <CAFEAcA9REvSHt7LRMu-HAjXNJg-OOCWkKSF0m7H7h__5LGj7kA@mail.gmail.com>
+To: Jean-Christophe Dubois <jcd@tribudubois.net>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::234
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v6 0/5] Add an i.MX25 specific CCM driver
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,46 +77,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i3zKvO0xfjiu
+X-TUID: kXmUpbNKesK2
 
-Hi,
+On 7 December 2015 at 22:53, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
+> i.MX25 SOC has a different CCM device than i.MX31.
+>
+> Qemu i.MX25 emulation was built with i.MX31 CCM driver. This allows
+> Linux to work on top of the i.MX25 emultion but this is not correct.
+>
+> Furthermore, other SOC we could emulate like i.MX6 have yet a different
+> implementation of the CCM device.
+>
+> So we split the i.MX31 into a generic base class and a specific i.MX31
+> class.
+>
+> We then add an i.MX25 specific CCM Device and have the i.MX25 SOC use it.
+>
+> Jean-Christophe Dubois (5):
+>   i.MX: Fix i.MX31 default/reset configuration.
+>   i.MX: rename i.MX CCM get_clock() function and CLK ID enum names
+>   i.MX: Split the CCM class into an abstact base class and a concrete
+>     class.
+>   i.MX: Add an i.MX25 specific CCM class/instance.
+>   i.MX: move i.MX31 CCM object to register array.
 
-This adds dummy monitor support to the Highbank board. It is needed by
-the Highbank kernel which expects a monitor to be present.
+At Peter C's suggestion I've applied 1-4 to target-arm.next; 5
+is still awaiting Peter's review.
 
-A feature is added to arm/boot's board_setup feature, that allows the
-board_setup entry point to be entered in secure mode (which is needed
-to configure a monitor).
-
-This feature does not play nice with -cpu override, but cpu override
-is not valid for well-defined ARM SoCs. So defeature -cpu for Highbank.
-
-Regards,
-Peter
-
-See indiv. patches for detailed change logs.
-
-Changed since v2:
-Defeature -cpu for Highbank (new patch)
-Rework board_setup blob implementation (PMM review)
-Conditionalise feature on TCG
-Dropped initial board_setup and Zynq patches (Merged)
-Changed since v1:
-Addressed PMM review.
-Added secure_board_setup flag (P4)
-Added Zynq patch first, then Highbank
-
-
-Peter Crosthwaite (3):
-  arm: boot: Add secure_board_setup flag
-  arm: highbank: Defeature CPU override
-  arm: highbank: Implement PSCI and dummy monitor
-
- hw/arm/boot.c        |  8 ++++-
- hw/arm/highbank.c    | 90 ++++++++++++++++++++++++++++++++++++++--------------
- include/hw/arm/arm.h |  6 ++++
- 3 files changed, 79 insertions(+), 25 deletions(-)
-
--- 
-1.9.1
-
+thanks
+-- PMM

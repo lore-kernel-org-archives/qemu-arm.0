@@ -1,208 +1,237 @@
-Received: by 10.223.188.70 with SMTP id a6csp5078656wrh;
-        Tue, 22 Aug 2017 08:22:26 -0700 (PDT)
-X-Received: by 10.55.92.199 with SMTP id q190mr1571152qkb.127.1503415346232;
-        Tue, 22 Aug 2017 08:22:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503415346; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fHTYUceRQ7dPlNQ+ICpv1KPYpyjHmrh2GkdPXeY7r7UXIC+2X7KpwP7eI7z4MSMgUk
-         aY2vH/9xsDUsUVpq1NeiTnIMChQWgX3e5KfZP8kaaRyHbv8h/dsMtwGBOlsKpMANjFUp
-         7atraJoxYd6u/9/xMjX8AJd4iXYDTUjkvQ6hTPy6svKd4Fv0/HDVIhTGjGl3oEdyBoq9
-         vP4VZFF6UZXVyAboDgRXX0wXPGr1veilM0nVhl8seNSzmOacNT4waFIiSM3TRgZCTx//
-         /HTF68uEbfQs1WI7pTzaTxrt1oziXphVI7AoW0+OXoAQfEMU1FQfbZMd9gVf3Kr8R37A
-         5JsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=NVR8daCllQZEGcqq9pMnjnFCUcSOnndLSUTX08xOwWw=;
-        b=xEGUOLc3Tc6pgMvP8PzrTXMl9sIuT8vF4AzGE5Mj5ZQcP2KmZj2qTyR+QCd3IbJZ7Z
-         nhQlZR8kR2KrBq+mJDsERpUelTIhsJabIuk+rvloU53wysHOhxOGZrptBtfBFuqgZXMr
-         BpjvDIgGeWapgBpIerpLlyWnOmmYZpNFVbCQtYwiOMBSTQka0iRXQdojK7PefbtFPw2V
-         XOTq82hwgeHmtD5detEABLvJxl4EQZsvn+Qfme878lMpj2eauLE24RwX0M/gpYswGNhf
-         8bAXjrmlchlwSY1k6x5AYSy5YG4uXxslkec9TZ5B5Nsm4vHh0Rz5uGqCm/sa8cJyDXqh
-         ANiA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n1si13755363qkc.535.2017.08.22.08.22.25
+Received: by 10.182.158.201 with SMTP id ww9csp257139obb;
+        Thu, 17 Dec 2015 01:27:33 -0800 (PST)
+X-Received: by 10.194.114.1 with SMTP id jc1mr55322252wjb.78.1450344453779;
+        Thu, 17 Dec 2015 01:27:33 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by mx.google.com with ESMTPS id w2si16023712wjf.153.2015.12.17.01.27.33
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Aug 2017 08:22:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 17 Dec 2015 01:27:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53532 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkB0Z-0000e0-Q6
-	for alex.bennee@linaro.org; Tue, 22 Aug 2017 11:22:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53482)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dkAns-0006XU-U5
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 11:09:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1dkAnp-0003FQ-77
-	for qemu-devel@nongnu.org; Tue, 22 Aug 2017 11:09:16 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:36936)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1dkAni-00031e-Lm; Tue, 22 Aug 2017 11:09:06 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1dkAng-0004ho-IY; Tue, 22 Aug 2017 16:09:04 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 22 Aug 2017 16:08:49 +0100
-Message-Id: <1503414539-28762-11-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
-References: <1503414539-28762-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 10/20] nvic: Add NS alias SCS region
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /2CL2zDjTugU
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-wm0-x232.google.com with SMTP id l126so12307967wml.1
+        for <alex.bennee@linaro.org>; Thu, 17 Dec 2015 01:27:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=8P37CjTiuvMgsr0ITubN6nRHHHfRS0ZpzHPIASex+Nk=;
+        b=B9NAOgjuSerwj10IrJrmENneUn0H93OE0GJWbhIFJ6K+VNjRyCRMtNL/LW474G1o7E
+         Z+0ucdO/W2Ys3N5aeTXzPKVhavQtlEqXtVa/Jqj1x19hSuOZMKvx+/Z+SDkO/dFXlj0k
+         bkELoLiaHBIjYksuQS0In2qbUHyrKDu0L6wJw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=8P37CjTiuvMgsr0ITubN6nRHHHfRS0ZpzHPIASex+Nk=;
+        b=GExQSqRjoUqevbvlEedmo2hnq6lW4CeP9TWZd3eKzlWG9hWI17PEFYSx/chWJEclpO
+         69S554m1pY3dcQfFSZJ+YdQQ4DXHRZyS5Gkx9CNeCl7txIBmVX+rd0HdlcqXhyOpooFq
+         TrU3qqAHNeASgYaCsbbh6F7uF0LQLLs9RO3GHitdP11a2FFK4b+2N+RUpJ9Jzz5qPtlv
+         F/ydQvwfSBAlDwjjciUXMXBcnnAl4x46zZfkBaSAj0e4Zn78t7n/WHeH9d1foYoKsRii
+         IIGhaJS5/57z0yv/ifl+qlYkMXEMXR+QHJO57iZlExqLrE9rz7fcdbljzwU+R6hMPSuV
+         qkHw==
+X-Gm-Message-State: ALoCoQmCp6f4li+lFvaO7w5qMT9CJj02zOTM92wOPeQPjRRqS5hb8w+FSNusG52Zu16R1M0C17mQB9OYLt/SwnVq2sXVr8Awaw==
+X-Received: by 10.28.137.138 with SMTP id l132mr2640941wmd.21.1450344453456;
+        Thu, 17 Dec 2015 01:27:33 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.googlemail.com with ESMTPSA id b84sm1434693wmh.15.2015.12.17.01.27.31
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Thu, 17 Dec 2015 01:27:32 -0800 (PST)
+Subject: Re: [Qemu-devel] [RESEND RFC 5/6] hw/arm/sysbus-fdt: helpers for
+ clock node generation
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
+ <1447946528-1533-6-git-send-email-eric.auger@linaro.org>
+ <87wpt4bv9i.fsf@linaro.org>
+Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ alex.williamson@redhat.com, peter.maydell@linaro.org,
+ thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
+ patches@linaro.org, suravee.suthikulpanit@amd.com, pbonzini@redhat.com,
+ christoffer.dall@linaro.org
+From: Eric Auger <eric.auger@linaro.org>
+Message-ID: <56727FDC.1040202@linaro.org>
+Date: Thu, 17 Dec 2015 10:26:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <87wpt4bv9i.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: /mlXydWjUmcf
 
-For v8M the range 0xe002e000..0xe002efff is an alias region which
-for secure accesses behaves like a NonSecure access to the main
-SCS region. (For nonsecure accesses including when the security
-extension is not implemented, it is RAZ/WI.)
+Hi Alex (B),
+On 11/26/2015 05:06 PM, Alex Bennée wrote:
+> 
+> Eric Auger <eric.auger@linaro.org> writes:
+> 
+>> Some passthrough'ed devices depend on clock nodes. Those need to be
+>> generated in the guest device tree. This patch introduces some helpers
+>> to build a clock node from information retrieved from host device tree.
+>>
+>> - inherit_properties copies properties from a host device tree node to
+>>   a guest device tree node
+>> - fdt_build_clock_node builds a guest clock node and checks the host
+>>   fellow clock is a fixed one.
+>>
+>> fdt_build_clock_node will become static as soon as a they get used
+>>
+>> Signed-off-by: Eric Auger <eric.auger@linaro.org>
+>> ---
+>>  hw/arm/sysbus-fdt.c | 110 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 110 insertions(+)
+>>
+>> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+>> index 9d28797..22e5801 100644
+>> --- a/hw/arm/sysbus-fdt.c
+>> +++ b/hw/arm/sysbus-fdt.c
+>> @@ -21,6 +21,7 @@
+>>   *
+>>   */
+>>
+>> +#include <libfdt.h>
+>>  #include "hw/arm/sysbus-fdt.h"
+>>  #include "qemu/error-report.h"
+>>  #include "sysemu/device_tree.h"
+>> @@ -56,6 +57,115 @@ typedef struct NodeCreationPair {
+>>      int (*add_fdt_node_fn)(SysBusDevice *sbdev, void *opaque);
+>>  } NodeCreationPair;
+>>
+>> +/* helpers */
+>> +
+>> +struct HostProperty {
+>> +    const char *name;
+>> +    bool optional;
+>> +};
+>> +
+>> +typedef struct HostProperty HostProperty;
+>> +
+>> +/**
+>> + * inherit_properties
+>> + *
+>> + * copies properties listed in an array from host device tree to
+>> + * guest device tree. If a non optional property is not found, the
+>> + * function exits. Not found optional ones are ignored.
+>> + * props: array of HostProperty to copy
+>> + * nb_props: number of properties in the array
+>> + * host_dt: host device tree blob
+>> + * guest_dt: guest device tree blob
+>> + * node_path: host dt node path where the property is supposed to be
+>> +              found
+>> + * nodename: guest node name the properties should be added to
+>> + *
+>> + */
+>> +static void inherit_properties(HostProperty *props, int nb_props,
+>> +                               void *host_fdt, void *guest_fdt,
+>> +                               char *node_path, char *nodename)
+>> +{
+>> +    int i, prop_len;
+>> +    const void *r;
+>> +
+>> +    for (i = 0; i < nb_props; i++) {
+>> +        r = qemu_fdt_getprop_optional(host_fdt, node_path,
+>> +                             props[i].name,
+>> +                             props[i].optional,
+>> +                             &prop_len);
+> 
+> indentation?
+> 
+>> +        if (r) {
+>> +            qemu_fdt_setprop(guest_fdt, nodename,
+>> +                             props[i].name, r, prop_len);
+>> +        }
+>> +    }
+>> +}
+>> +
+>> +/* clock properties whose values are copied/pasted from host */
+>> +static HostProperty clock_inherited_properties[] = {
+>> +    {"compatible", 0},
+>> +    {"#clock-cells", 0},
+>> +    {"clock-frequency", 1},
+>> +    {"clock-output-names", 1},
+>> +};
+>> +
+>> +/**
+>> + * fdt_build_clock_node
+>> + *
+>> + * Build a guest clock node, used as a dependency from a passthrough'ed
+>> + * device. Most information are retrieved from the host fellow node.
+>> + * Also check the host clock is a fixed one.
+>> + *
+>> + * host_fdt: host device tree blob from which info are retrieved
+>> + * guest_fdt: guest device tree blob where the clock node is added
+>> + * host_phandle: phandle of the clock in host device tree
+>> + * guest_phandle: phandle to assign to the guest node
+>> + */
+>> +int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
+>> +                                uint32_t host_phandle,
+>> +                                uint32_t guest_phandle);
+>> +int fdt_build_clock_node(void *host_fdt, void *guest_fdt,
+>> +                                uint32_t host_phandle,
+>> +                                uint32_t guest_phandle)
+> 
+> I'm seeing double here ;-)
+I am coming back to you wrt this comment. This function will become
+static but in that patch it is not used yet so compilation fails (the
+function starts being used in next path file). That's why I did not use
+the static here. Then the compiler complains the function needs to be
+pre-declared. Hence the declaration here. In next patch that disappears
+and becomes static. Is that acceptable? If I squash this patch in next
+one, this becomes a huge one.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/intc/armv7m_nvic.h |  1 +
- hw/intc/armv7m_nvic.c         | 66 ++++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 66 insertions(+), 1 deletion(-)
+Best Regards
 
-diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
-index 1d145fb..1a4cce7 100644
---- a/include/hw/intc/armv7m_nvic.h
-+++ b/include/hw/intc/armv7m_nvic.h
-@@ -50,6 +50,7 @@ typedef struct NVICState {
-     int exception_prio; /* group prio of the highest prio active exception */
- 
-     MemoryRegion sysregmem;
-+    MemoryRegion sysreg_ns_mem;
-     MemoryRegion container;
- 
-     uint32_t num_irq;
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index babdc3b..2b0b328 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1040,6 +1040,47 @@ static const MemoryRegionOps nvic_sysreg_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
-+static MemTxResult nvic_sysreg_ns_write(void *opaque, hwaddr addr,
-+                                        uint64_t value, unsigned size,
-+                                        MemTxAttrs attrs)
-+{
-+    if (attrs.secure) {
-+        /* S accesses to the alias act like NS accesses to the real region */
-+        attrs.secure = 0;
-+        return nvic_sysreg_write(opaque, addr, value, size, attrs);
-+    } else {
-+        /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-+        if (attrs.user) {
-+            return MEMTX_ERROR;
-+        }
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static MemTxResult nvic_sysreg_ns_read(void *opaque, hwaddr addr,
-+                                       uint64_t *data, unsigned size,
-+                                       MemTxAttrs attrs)
-+{
-+    if (attrs.secure) {
-+        /* S accesses to the alias act like NS accesses to the real region */
-+        attrs.secure = 0;
-+        return nvic_sysreg_read(opaque, addr, data, size, attrs);
-+    } else {
-+        /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-+        if (attrs.user) {
-+            return MEMTX_ERROR;
-+        }
-+        *data = 0;
-+        return MEMTX_OK;
-+    }
-+}
-+
-+static const MemoryRegionOps nvic_sysreg_ns_ops = {
-+    .read_with_attrs = nvic_sysreg_ns_read,
-+    .write_with_attrs = nvic_sysreg_ns_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
- static int nvic_post_load(void *opaque, int version_id)
- {
-     NVICState *s = opaque;
-@@ -1141,6 +1182,7 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-     NVICState *s = NVIC(dev);
-     SysBusDevice *systick_sbd;
-     Error *err = NULL;
-+    int regionlen;
- 
-     s->cpu = ARM_CPU(qemu_get_cpu(0));
-     assert(s->cpu);
-@@ -1173,8 +1215,23 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-      *  0xd00..0xd3c - SCS registers
-      *  0xd40..0xeff - Reserved or Not implemented
-      *  0xf00 - STIR
-+     *
-+     * Some registers within this space are banked between security states.
-+     * In v8M there is a second range 0xe002e000..0xe002efff which is the
-+     * NonSecure alias SCS; secure accesses to this behave like NS accesses
-+     * to the main SCS range, and non-secure accesses (including when
-+     * the security extension is not implemented) are RAZ/WI.
-+     * Note that both the main SCS range and the alias range are defined
-+     * to be exempt from memory attribution (R_BLJT) and so the memory
-+     * transaction attribute always matches the current CPU security
-+     * state (attrs.secure == env->v7m.secure). In the nvic_sysreg_ns_ops
-+     * wrappers we change attrs.secure to indicate the NS access; so
-+     * generally code determining which banked register to use should
-+     * use attrs.secure; code determining actual behaviour of the system
-+     * should use env->v7m.secure.
-      */
--    memory_region_init(&s->container, OBJECT(s), "nvic", 0x1000);
-+    regionlen = arm_feature(&s->cpu->env, ARM_FEATURE_V8) ? 0x21000 : 0x1000;
-+    memory_region_init(&s->container, OBJECT(s), "nvic", regionlen);
-     /* The system register region goes at the bottom of the priority
-      * stack as it covers the whole page.
-      */
-@@ -1185,6 +1242,13 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-                                         sysbus_mmio_get_region(systick_sbd, 0),
-                                         1);
- 
-+    if (arm_feature(&s->cpu->env, ARM_FEATURE_V8)) {
-+        memory_region_init_io(&s->sysreg_ns_mem, OBJECT(s),
-+                              &nvic_sysreg_ns_ops, s,
-+                              "nvic_sysregs_ns", 0x1000);
-+        memory_region_add_subregion(&s->container, 0x20000, &s->sysreg_ns_mem);
-+    }
-+
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container);
- }
- 
--- 
-2.7.4
-
+Eric
+> 
+>> +{
+>> +    char node_path[256];
+>> +    char *nodename;
+>> +    const void *r;
+>> +    int ret, prop_len;
+>> +
+>> +    ret = fdt_node_offset_by_phandle(host_fdt, host_phandle);
+>> +    if (ret <= 0) {
+>> +        error_report("not able to locate clock handle %d in host device tree\n",
+>> +                     host_phandle);
+>> +        goto out;
+>> +    }
+>> +    ret = fdt_get_path(host_fdt, ret, node_path, 256);
+>> +    if (ret < 0) {
+>> +        error_report("not able to retrieve node path for clock handle %d\n",
+>> +                     host_phandle);
+>> +        goto out;
+>> +    }
+>> +
+>> +    r = qemu_fdt_getprop(host_fdt, node_path, "compatible", &prop_len);
+>> +    if (strcmp(r, "fixed-clock")) {
+>> +        error_report("clock handle %d is not a fixed clock\n", host_phandle);
+>> +        ret = -1;
+>> +        goto out;
+>> +    }
+>> +
+>> +    nodename = strrchr(node_path, '/');
+>> +    qemu_fdt_add_subnode(guest_fdt, nodename);
+>> +
+>> +    inherit_properties(clock_inherited_properties,
+>> +                       ARRAY_SIZE(clock_inherited_properties),
+>> +                       host_fdt, guest_fdt,
+>> +                       node_path, nodename);
+>> +
+>> +    qemu_fdt_setprop_cell(guest_fdt, nodename, "phandle", guest_phandle);
+>> +
+>> +out:
+>> +    return ret;
+>> +}
+>> +
+>>  /* Device Specific Code */
+>>
+>>  /**
+> 
+> 
+> --
+> Alex Bennée
+> 

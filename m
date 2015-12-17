@@ -1,108 +1,132 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3300231obb;
-        Wed, 16 Dec 2015 09:04:10 -0800 (PST)
-X-Received: by 10.55.74.141 with SMTP id x135mr20631577qka.20.1450285450274;
-        Wed, 16 Dec 2015 09:04:10 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v64si7264310qhv.68.2015.12.16.09.04.10
+Received: by 10.182.158.201 with SMTP id ww9csp198106obb;
+        Wed, 16 Dec 2015 23:03:38 -0800 (PST)
+X-Received: by 10.28.91.9 with SMTP id p9mr1894710wmb.18.1450335818334;
+        Wed, 16 Dec 2015 23:03:38 -0800 (PST)
+Return-Path: <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
+Received: from socrates.bennee.com (static.88-198-71-155.clients.your-server.de. [88.198.71.155])
+        by mx.google.com with ESMTPS id de6si15261281wjc.21.2015.12.16.23.03.37
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Dec 2015 09:04:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Dec 2015 23:03:38 -0800 (PST)
+Received-SPF: fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) client-ip=88.198.71.155;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com
-Received: from localhost ([::1]:48453 helo=lists.gnu.org)
+       spf=fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) smtp.mailfrom=qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+Received: from lists.gnu.org ([208.118.235.17])
+	by socrates.bennee.com with esmtp (Exim 4.84)
+	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
+	id 1a9SbA-0002Ae-Jz
+	for kernel-hacker@bennee.com; Thu, 17 Dec 2015 08:03:37 +0100
+Received: from localhost ([::1]:51092 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9FUo-0006i5-0G
-	for alex.bennee@linaro.org; Wed, 16 Dec 2015 12:04:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42534)
+	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
+	id 1a9Sb4-0007Ga-ET
+	for kernel-hacker@bennee.com; Thu, 17 Dec 2015 02:03:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45732)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1a9FUg-0006dd-3V
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 12:04:07 -0500
+	(envelope-from <armbru@redhat.com>) id 1a9SaF-0006Xv-B9
+	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 02:02:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1a9FUf-0008QK-8Z
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 12:04:02 -0500
-Received: from mail-qg0-x22f.google.com ([2607:f8b0:400d:c04::22f]:34393)
+	(envelope-from <armbru@redhat.com>) id 1a9SaE-0006vG-BD
+	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 02:02:39 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46036)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1a9FUZ-0008Pa-J7; Wed, 16 Dec 2015 12:03:55 -0500
-Received: by mail-qg0-x22f.google.com with SMTP id 21so39126106qgx.1;
-	Wed, 16 Dec 2015 09:03:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=Z20+rDJcfLsBQcvPYu2z2Vq3zd7hdkPRU/Ud++18CEY=;
-	b=ICLU0u9ia+qxFlA1Q8R8zKRMMlEKFUv1vK+q61JR9HlsRHwwHUlVirFsogQOe2XyR9
-	Ylcf3PxKJg43iHAsLCo2CdjL7ntFF0oOJ93eDlbdhrXJv6DFPkztASIXXigw4OCIJlSB
-	VNdU3Qug0wFc9y+ZPbW/95VEkPh1K4/g+0LbgItcB91c77Tms2NqSkumClY/aM2fiumx
-	AMT4RMsACpBNORe0jIyqdMphNsPP1He5N2CF+7LJivFffZku1P2hdV0SZvORWDmCTjgi
-	AJRRMzIZPY1XU7xnZTeqtLzG7hAeHqQRqeeeriX3r39XzTy3PBD4ZoGHaR0nXKzfRQbI
-	KXdQ==
-X-Received: by 10.140.36.232 with SMTP id p95mr63106022qgp.55.1450285435065;
-	Wed, 16 Dec 2015 09:03:55 -0800 (PST)
-Received: from bigtime.twiddle.net (200-56-192-86-cable.cybercable.net.mx.
-	[200.56.192.86]) by smtp.googlemail.com with ESMTPSA id
-	207sm2899688qhy.47.2015.12.16.09.03.50
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 16 Dec 2015 09:03:54 -0800 (PST)
-To: Sergey Fedorov <serge.fdrv@gmail.com>, qemu-devel@nongnu.org
-References: <1449773244-17078-1-git-send-email-serge.fdrv@gmail.com>
-	<566B5E9E.8040108@twiddle.net> <566C7D38.4040609@gmail.com>
-	<566EEC05.2080702@twiddle.net> <56707FD3.20705@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <56719970.9000106@twiddle.net>
-Date: Wed, 16 Dec 2015 09:03:44 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.4.0
+	(envelope-from <armbru@redhat.com>)
+	id 1a9Sa8-0006uc-VO; Thu, 17 Dec 2015 02:02:33 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 111B08F4F1;
+	Thu, 17 Dec 2015 07:02:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org ([10.3.113.12])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBH72UsQ032050
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 17 Dec 2015 02:02:31 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7F454303F81B; Thu, 17 Dec 2015 08:02:29 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1449743372-17169-1-git-send-email-armbru@redhat.com>
+	<1449743372-17169-7-git-send-email-armbru@redhat.com>
+	<CAFEAcA9-7+2MOh8=c3+RsE8x2kkOwJzLapTAR+CpRtq=RP8SiQ@mail.gmail.com>
+Date: Thu, 17 Dec 2015 08:02:29 +0100
+In-Reply-To: <CAFEAcA9-7+2MOh8=c3+RsE8x2kkOwJzLapTAR+CpRtq=RP8SiQ@mail.gmail.com>
+	(Peter Maydell's message of "Tue, 15 Dec 2015 11:38:47 +0000")
+Message-ID: <8760zx4kxm.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <56707FD3.20705@gmail.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c04::22f
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Anthony Green <green@moxielogic.com>, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-*: Get rid of "PC
-	advancement" trick
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 56j3xBoT0eO+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+Sender: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+X-SA-Exim-Connect-IP: 208.118.235.17
+X-SA-Exim-Mail-From: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on socrates.bennee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,RCVD_IN_MSPIKE_H3,
+	RCVD_IN_MSPIKE_WL,T_HEADER_FROM_DIFFERENT_DOMAINS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
+Subject: Re: [Qemu-devel] [PATCH 06/12] hw/arm/virt: Fix property
+	"gic-version" error handling
+X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
+X-SA-Exim-Scanned: Yes (on socrates.bennee.com)
+X-TUID: TLk6uqGdqHAA
 
-On 12/15/2015 01:02 PM, Sergey Fedorov wrote:
->> For that, I think it might be interesting to arrange for non-empty TBs to
->> exit prior to recognizing a breakpoint.  So that a breakpoint TB is always
->> just the one operation.  Except for the fact that "generate an exception" has
->> traditionally been a target-specific helper, we could almost make the entire
->> breakpoint generation be done in common code.
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> On 10 December 2015 at 10:29, Markus Armbruster <armbru@redhat.com> wrote:
+>> virt_set_gic_version() calls exit(1) when passed an invalid property
+>> value.  Property setters are not supposed to do that.  Screwed up in
+>> commit b92ad39.  Harmless, because the property belongs to a machine.
+>> Set an error object instead.
 >>
->> I'd think something like a generic "must we end the TB now" predicate would
->> be the proper hook.  It would contain all of the usual stuff: tcg_op_buf_full
->> and checks for singlestep, but then add "is there a breakpoint at the next pc".
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: qemu-arm@nongnu.org
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  hw/arm/virt.c | 5 ++---
+>>  1 file changed, 2 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 9c6792c..2a120dd 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -1126,9 +1126,8 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+>>      } else if (!strcmp(value, "host")) {
+>>          vms->gic_version = 0; /* Will probe later */
+>>      } else {
+>> -        error_report("Invalid gic-version option value");
+>> -        error_printf("Allowed gic-version values are: 3, 2, host\n");
+>> -        exit(1);
+>> +        error_setg(errp, "Invalid gic-version value");
+>> +        error_append_hint(errp, "Valid values are: 3, 2, host\n");
+>>      }
 >
-> This could be a next step :)
+> Should hint strings have trailing newlines?
 
-Or perhaps a first step, since the patch you posted doesn't seem to me to be an 
-improvement at all, merely a rearrangement of code.
+Two answers:
 
+1. No, because error_report_err() prints the hint followed by a newline.
 
-r~
+2. Yes, because error_appent_hint() accumulates, and requiring its users
+to know which call will be the final one is an awkward interface.
 
+I'll change error_report_err() and improve the documentation.
+
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Thanks!

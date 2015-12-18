@@ -1,64 +1,63 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2085789obb;
-        Sun, 6 Dec 2015 21:01:27 -0800 (PST)
-X-Received: by 10.140.17.102 with SMTP id 93mr34829573qgc.32.1449464487469;
-        Sun, 06 Dec 2015 21:01:27 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1172993obb;
+        Fri, 18 Dec 2015 08:05:34 -0800 (PST)
+X-Received: by 10.140.106.37 with SMTP id d34mr6158000qgf.77.1450454734192;
+        Fri, 18 Dec 2015 08:05:34 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h95si24184209qge.82.2015.12.06.21.01.27
+        by mx.google.com with ESMTPS id w74si16737391qka.65.2015.12.18.08.05.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Dec 2015 21:01:27 -0800 (PST)
+        Fri, 18 Dec 2015 08:05:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52514 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33228 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a5nvT-0004sh-7T
-	for alex.bennee@linaro.org; Mon, 07 Dec 2015 00:01:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43110)
+	id 1a9xXB-000524-TH
+	for alex.bennee@linaro.org; Fri, 18 Dec 2015 11:05:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5nvR-0004qU-RH
-	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 00:01:26 -0500
+	(envelope-from <drjones@redhat.com>) id 1a9xXA-00051o-77
+	for qemu-arm@nongnu.org; Fri, 18 Dec 2015 11:05:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1a5nvR-0001gA-0U
-	for qemu-arm@nongnu.org; Mon, 07 Dec 2015 00:01:25 -0500
-Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:35619)
+	(envelope-from <drjones@redhat.com>) id 1a9xX7-0001wa-1B
+	for qemu-arm@nongnu.org; Fri, 18 Dec 2015 11:05:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56933)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1a5nvP-0001fj-0w; Mon, 07 Dec 2015 00:01:23 -0500
-Received: by wmuu63 with SMTP id u63so125566400wmu.0;
-	Sun, 06 Dec 2015 21:01:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=2vpIV1RcdcDhdFlWwlH8CY3LlwyWAsnreqZxiiBAR6Q=;
-	b=CFASZIPxeHJOXp5fIuDy60UaZInEzWXSNN/CERLHNIahxGfksqWXXyf4HO0qNdvBjt
-	KCKwFaiGbCAQQ/prkowAQOGfDG2Z2C/i/uxd6nGHyF6W3ULDvE6aVrkIx5F4N9nG7x1G
-	/lFNppMdY8dsxnN2ezEx9e1XicdBBgnzsaUDxPtE59bUq3c1nEg/0bHsl3+gt07b3FGq
-	9RN+GTp29ThIYbWKhEsHuJ5+APfqbm8O77bnAzM4D0vAdSootJihWRYab2UubLzeSP1C
-	j9n5Rhj5Mc3G7ydjFAomdZUU1aDs6gFcCWMejqWSes8XHyLhx4hn9TVdoc5jSN5juUgl
-	LfkQ==
+	(envelope-from <drjones@redhat.com>)
+	id 1a9xX6-0001wW-Qe; Fri, 18 Dec 2015 11:05:28 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 0F85B19F39B;
+	Fri, 18 Dec 2015 16:05:27 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-59.brq.redhat.com [10.40.204.59])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBIG5Ka1009710
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 18 Dec 2015 11:05:23 -0500
+Date: Fri, 18 Dec 2015 10:05:19 -0600
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20151218160519.GA3885@hawk.localdomain>
+References: <1450219878-5293-1-git-send-email-drjones@redhat.com>
+	<1450219878-5293-7-git-send-email-drjones@redhat.com>
+	<CAFEAcA9ENDZfeNFJgJOdv+O+iPXW6Sod-1vBYAj-ViysSiXReQ@mail.gmail.com>
 MIME-Version: 1.0
-X-Received: by 10.28.18.9 with SMTP id 9mr17925015wms.96.1449464482356; Sun,
-	06 Dec 2015 21:01:22 -0800 (PST)
-Received: by 10.28.88.11 with HTTP; Sun, 6 Dec 2015 21:01:22 -0800 (PST)
-In-Reply-To: <edf36adfc0a1a1f4d2994473001549857d7ed192.1449000671.git.jcd@tribudubois.net>
-References: <cover.1449000671.git.jcd@tribudubois.net>
-	<edf36adfc0a1a1f4d2994473001549857d7ed192.1449000671.git.jcd@tribudubois.net>
-Date: Sun, 6 Dec 2015 21:01:22 -0800
-Message-ID: <CAPokK=qmX4vBFS6r7q-GjkOBeQtex1yJQT2UbA=_qfd+cVvcYg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Jean-Christophe Dubois <jcd@tribudubois.net>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::236
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v5 1/4] i.MX: Fix i.MX31 default/reset
-	configuration.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9ENDZfeNFJgJOdv+O+iPXW6Sod-1vBYAj-ViysSiXReQ@mail.gmail.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 6/9] target-arm: support QMP
+ dump-guest-memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,60 +71,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aZsQS/FxOtT6
+X-TUID: xowREI7sxWTR
 
-On Tue, Dec 1, 2015 at 12:25 PM, Jean-Christophe Dubois
-<jcd@tribudubois.net> wrote:
-> Linux on i.MX31/KZM is expecting the CCM to use the CKIH ref clock instead
-> of the CKIL plus the FPM multiplier.
->
-> We change the CCMR reg reset value to match linux expected config.
->
-> This allow the CCM to provide a 39MHz clk (as expected by linux) instead of
-> the actual 50MHz.
->
-> With this change the "sleep 60" command on linux is time accurate with
-> "real world time".
->
-> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
-> ---
->
-> Changes since v1:
->  * Not present
->
-> Changes since v2:
->  * Not present
->
-> Changes since v3:
->  * Not present
->
-> Changes since v4:
->  * Not present
->
->  hw/misc/imx_ccm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
-> index 4cc2bbc..500dda5 100644
-> --- a/hw/misc/imx_ccm.c
-> +++ b/hw/misc/imx_ccm.c
-> @@ -123,7 +123,7 @@ static void imx_ccm_reset(DeviceState *dev)
->  {
->      IMXCCMState *s = IMX_CCM(dev);
->
-> -    s->ccmr = 0x074b0b7b;
-> +    s->ccmr = 0x074b0b7d;
+On Fri, Dec 18, 2015 at 11:59:39AM +0000, Peter Maydell wrote:
+> On 15 December 2015 at 22:51, Andrew Jones <drjones@redhat.com> wrote:
+> > Add the support needed for creating prstatus elf notes. This
+> > allows us to use QMP dump-guest-memory.
+> >
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> 
+> > +int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+> > +                             int cpuid, void *opaque)
+> > +{
+> > +    struct aarch64_note note;
+> > +    CPUARMState *env = &ARM_CPU(cs)->env;
+> > +    DumpState *s = opaque;
+> > +    uint64_t pstate, sp;
+> > +    int ret, i;
+> > +
+> > +    aarch64_note_init(&note, s, "CORE", 5, NT_PRSTATUS, sizeof(note.prstatus));
+> > +
+> > +    note.prstatus.pr_pid = cpu_to_dump32(s, cpuid);
+> > +
+> > +    if (!is_a64(env)) {
+> > +        aarch64_sync_32_to_64(env);
+> > +        pstate = cpsr_read(env);
+> > +        sp = aarch64_compat_sp(env);
+> 
+> I don't understand why we need to do this. If this is an
+> AArch64 dump then we should just treat it as an AArch64
+> dump, and presumably the consumer of the dump knows enough
+> to know what the "hypervisor view" of a CPU that's currently
+> in 32-bit mode is. It has to anyway to be able to figure
+> out where all the other registers are, so why can't it
+> also figure out what mode the CPU is currently in and thus
+> where r13 is in the xregs array?
 
-So a few PDFs later it looks like this is actually user configurable
-via a jumper on the KZM board (JP10). I'm tempted to say that Linux's
-expectations is a good for the default value, so this change looks
-good to me.
+You're probably right that this shouldn't be necessary. But, in order for
+it not to be necessary, I'll need to write another crash patch. Currently,
+if you do a dump-guest-memory on a running guest, i.e. one where the kernel
+has not called panic(), and thus the cpus are actually in 32-bit usermode,
+rather than in the 64-bit cpu-stop IPI handler, then the crash utility
+segfaults if sp == xregs[31]. crash does properly decode the registers
+it digs out of the stack frame on a panic'ed cpu though, and setting sp
+to aarch64_compat_sp here also allows crash to work properly in the non-
+panic'd case.
 
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+So, I could teach crash to do what I'm doing here in qemu instead, but
+there's still one more reason why it may make sense to do it here. That
+reason is that I don't know what else to put in prstatus.pr_reg.sp. Does
+xregs[31] make the most sense? or just zero? prstatus.pr_reg.pc is the
+correct 32-bit userspace pc, prstatus.pr_reg.pstate is the correct cpsr,
+so why not set sp to the correct userspace sp?
 
->      s->pdr0 = 0xff870b48;
->      s->pdr1 = 0x49fcfe7f;
->      s->mpctl = PLL_PD(1) | PLL_MFD(0) | PLL_MFI(6) | PLL_MFN(0);
-> --
-> 2.5.0
->
+Thanks,
+drew
+
+> 
+> > +    } else {
+> > +        pstate = pstate_read(env);
+> > +        sp = env->xregs[31];
+> > +    }
+> 
+> thanks
+> -- PMM
+> 

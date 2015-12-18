@@ -1,227 +1,174 @@
-Received: by 10.223.188.70 with SMTP id a6csp1438141wrh;
-        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
-X-Received: by 10.55.170.195 with SMTP id t186mr6058103qke.201.1503536986309;
-        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503536986; cv=none;
-        d=google.com; s=arc-20160816;
-        b=cak186eOl2fp96399uDq7Z9d9Hh9W6r6HUXRPaOaRUblmQ7QNRJcNosqqt99Pi1Uc2
-         apOwBkk3VM/7Bx9RaPptLpMNHAFTurG8bkZXneJDi18xLB+NxXia9lWNXpdnZMjLWs+o
-         jErMEcMEOy3+dp5HheMTJ6Bqe2alxln/Mou34LGnyTVUpeOGi1IX88qS4vB3VSGAEawk
-         jHsrKxer0HBy54CbC68Y8VYfExuF6AKzFcwQCt+jiCZ1+T43u1NvhgoPULvq/f0BhsmV
-         bO2Z9EBQ/8LRqPYNgKdMhXBR+iq+t3WQkXnLfPme2rb+cmvAELpJDUvyTINoH7xbYa5S
-         pScg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=x0MRMSK5LMp0DP+4By2xWah6Pq/tp8y1V2HbHjHZsOY=;
-        b=U3cZI3Sc3zR72RgffT4ynkoRvMWkvUtWm9JoeiMICWuEJm5+xEeZFPAGi0wwkjBPdx
-         bQ1nJEfVQP3F9hk0WkzfE4E8CoeR0zXICm4s4nSgF35+sDqXW4Y/vcF4j81JsHAfwFIx
-         KLEGHlgb/IiggmLJ/lMBABVo/JKN+X4KqqeqppA1Rn2qAkJDhrUkxUxhIvzinkBDNVbV
-         5JtF+2uuEPKKBGnk5AjvN8se0ZlnI9evU6UbC0cgXhEO0zm14dv/Qbg3wUHwMJU5ilq7
-         YZ4atjE3uiKrv5PS4IvDzYlZFD+vVxvMmizhxBnm52A3eLoHj8euqLgR0PL+p45biXXG
-         ka6Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: by 10.182.158.201 with SMTP id ww9csp1268221obb;
+        Fri, 18 Dec 2015 10:46:39 -0800 (PST)
+X-Received: by 10.141.2.86 with SMTP id e83mr7760447qhd.64.1450464399082;
+        Fri, 18 Dec 2015 10:46:39 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7si2722275qkh.134.2017.08.23.18.09.45
+        by mx.google.com with ESMTPS id a130si17245608qhc.107.2015.12.18.10.46.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Aug 2017 18:09:46 -0700 (PDT)
+        Fri, 18 Dec 2015 10:46:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46250 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:34608 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkgeV-0002qZ-UF
-	for alex.bennee@linaro.org; Wed, 23 Aug 2017 21:09:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39536)
+	id 1aA034-0008Jj-QF
+	for alex.bennee@linaro.org; Fri, 18 Dec 2015 13:46:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSoh-0008A0-4G
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:20 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1aA032-0008Is-IQ
+	for qemu-arm@nongnu.org; Fri, 18 Dec 2015 13:46:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSoc-0007cT-Bl
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:19 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2297)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_ARCFOUR_SHA1:16) (Exim 4.71)
-	(envelope-from <wanghaibin.wang@huawei.com>) id 1dkSob-0007ay-OO
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 06:23:14 -0400
-Received: from 172.30.72.59 (EHLO DGGEMS405-HUB.china.huawei.com)
-	([172.30.72.59])
-	by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-	with ESMTP id DFS41564; Wed, 23 Aug 2017 18:23:02 +0800 (CST)
-Received: from localhost (10.177.27.144) by DGGEMS405-HUB.china.huawei.com
-	(10.3.19.205) with Microsoft SMTP Server id 14.3.301.0; Wed, 23 Aug 2017
-	18:22:55 +0800
-From: wanghaibin <wanghaibin.wang@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <cdall@linaro.org>,
-	<marc.zyngier@arm.com>
-Date: Wed, 23 Aug 2017 18:22:33 +0800
-Message-ID: <1503483753-12384-1-git-send-email-wanghaibin.wang@huawei.com>
-X-Mailer: git-send-email 2.7.2.windows.1
+	(envelope-from <peter.maydell@linaro.org>) id 1aA031-00040W-8n
+	for qemu-arm@nongnu.org; Fri, 18 Dec 2015 13:46:36 -0500
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:32787)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1aA031-0003zl-3u
+	for qemu-arm@nongnu.org; Fri, 18 Dec 2015 13:46:35 -0500
+Received: by mail-vk0-x232.google.com with SMTP id a188so71265706vkc.0
+	for <qemu-arm@nongnu.org>; Fri, 18 Dec 2015 10:46:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=GugcYCOgaSAEXVTA5lrpeECEXaG3y3YYPd76zJcA06k=;
+	b=ABv6DLOG4MhVPXTUch/jT320p25DWNpGsxN7VNDOGeCNSrLJm/5BxlevFv8Okj+rpf
+	gy1zG8l328wScSIbNEYNQWG6oz8EX+fwIDNJorPUVvgGoaB++N4pcUCag7Fn6A2lDv85
+	ihSydjG2Xpz1VQlXeJBzz684GoIY9eMng0C/E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=GugcYCOgaSAEXVTA5lrpeECEXaG3y3YYPd76zJcA06k=;
+	b=mAx4I+wlt7pjqi4IT+bBsZ5tOULBUN2b2FAeaWaFvm0PvR9W4MnByg+q8jNvAclzfI
+	iPPSq63Fdw+Vaj2yQAKW7xakuqodkxYwE8o2/wpL7GlfeoQE3xK/DBdpmdvws1Q5U3G2
+	bTa9dfwTqu/KQVeUMCFrJzh3YHjm0iX3h0qUXk1IwmHV6T50ypcnd4HtKlUC8m27NJ5L
+	RUitNiepAmJ6o6bJg4RPylVZNoq1wFu/5FIImL1Djb9lSyJCrJjx6GEDOGM4EyV0Yl/O
+	EFy3DCwmQ+9icAMYifvUZWhQhowdOwZSiuLHHwOOyIptJ5xIj6tyDc05QAQ7QAg8w+R7
+	YpEA==
+X-Gm-Message-State: ALoCoQlN7yNN8R9hhtViYKUYPxdoMHG4KzoErO9ejawDjZHRI8JZ5/8Ra+Ne5BmrhihRMSUhs8VCaK0vl7keMzO/Ej4xOZ81hNsohqTprQP7kbLq1ICuj9Y=
+X-Received: by 10.31.194.21 with SMTP id s21mr3269566vkf.92.1450464393424;
+	Fri, 18 Dec 2015 10:46:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.27.144]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090204.599D5787.00EB, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2014-11-16 11:51:01, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 58dfff39be03c63925f8a226ad986ecc
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-	[fuzzy]
-X-Received-From: 45.249.212.190
-X-Mailman-Approved-At: Wed, 23 Aug 2017 21:09:13 -0400
-Subject: [Qemu-arm] [RFC PATCH] hw/intc/arm_gic_kvm.c: access the
- implemented APRn
+Received: by 10.31.153.15 with HTTP; Fri, 18 Dec 2015 10:46:14 -0800 (PST)
+In-Reply-To: <20151218180530.GB3885@hawk.localdomain>
+References: <1450219878-5293-1-git-send-email-drjones@redhat.com>
+	<1450219878-5293-7-git-send-email-drjones@redhat.com>
+	<CAFEAcA9ENDZfeNFJgJOdv+O+iPXW6Sod-1vBYAj-ViysSiXReQ@mail.gmail.com>
+	<20151218160519.GA3885@hawk.localdomain>
+	<CAFEAcA9edBn4dqAzi0XfEPyEn04EtgL6zu3PBw-mZp6NCdUUJw@mail.gmail.com>
+	<20151218180530.GB3885@hawk.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 18 Dec 2015 18:46:14 +0000
+Message-ID: <CAFEAcA9qm9p0u0jR4FnrgS7rjxwY7MiXcRckpEC0Dd06-VgPtQ@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::232
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Alexander Graf <agraf@suse.de>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 6/9] target-arm: support QMP
+	dump-guest-memory
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin <wanghaibin.wang@huawei.com>, wu.wubin@huawei.com,
-	zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QqtZE4DuQYNC
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yJ6I9jAJTxEt
 
-Whether the APRn is implemented depends on how many priority
-bits support. Compared with GICv3, There is no way to retrieve
-this information directly from the register, so GICD_IPRIORITYR
-access method is used here according to the SPEC:
-To determine the number of priority bits implemented for SPIs,
-software can write 0xFF to a writable
-GICD_IPRIORITYR<n> priority field and read back the value stored.
+On 18 December 2015 at 18:05, Andrew Jones <drjones@redhat.com> wrote:
+> On Fri, Dec 18, 2015 at 04:31:13PM +0000, Peter Maydell wrote:
+>> On 18 December 2015 at 16:05, Andrew Jones <drjones@redhat.com> wrote:
+>> > On Fri, Dec 18, 2015 at 11:59:39AM +0000, Peter Maydell wrote:
+>> >> I don't understand why we need to do this. If this is an
+>> >> AArch64 dump then we should just treat it as an AArch64
+>> >> dump, and presumably the consumer of the dump knows enough
+>> >> to know what the "hypervisor view" of a CPU that's currently
+>> >> in 32-bit mode is. It has to anyway to be able to figure
+>> >> out where all the other registers are, so why can't it
+>> >> also figure out what mode the CPU is currently in and thus
+>> >> where r13 is in the xregs array?
+>> >
+>> > You're probably right that this shouldn't be necessary. But, in order for
+>> > it not to be necessary, I'll need to write another crash patch. Currently,
+>> > if you do a dump-guest-memory on a running guest, i.e. one where the kernel
+>> > has not called panic(), and thus the cpus are actually in 32-bit usermode,
+>> > rather than in the 64-bit cpu-stop IPI handler, then the crash utility
+>> > segfaults if sp == xregs[31]. crash does properly decode the registers
+>> > it digs out of the stack frame on a panic'ed cpu though, and setting sp
+>> > to aarch64_compat_sp here also allows crash to work properly in the non-
+>> > panic'd case.
+>>
+>> If crash segfaults then that's clearly a bug in crash...
+>> What is it expecting to see in the SP field?
+>
+> A valid stack pointer
 
-Signed-off-by: wanghaibin <wanghaibin.wang@huawei.com>
----
- hw/intc/arm_gic_kvm.c | 56 ++++++++++++++++++++++++++++++++++++++++++---------
- 1 file changed, 47 insertions(+), 9 deletions(-)
+But why? What does it do with it? (In any case a dump of a crashed
+system could have any random rubbish in SP so the tool has to handle
+it being something weird.)
 
-diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-index ae095d0..a2f3139 100644
---- a/hw/intc/arm_gic_kvm.c
-+++ b/hw/intc/arm_gic_kvm.c
-@@ -290,13 +290,30 @@ static void kvm_dist_put(GICState *s, uint32_t offset, int width,
-     }
- }
- 
-+static int kvm_arm_gic_get_pri_bits(GICState *s)
-+{
-+    uint32_t reg = 0xff;
-+
-+    /* 
-+     * To determine the number of priority bits implemented, Just wirte the 0xff to 
-+     * the first SPI(32) GICD_IPRIORITYR priority field and read back the value 
-+     * stored. 
-+     * Note: Assume that implementations support the same number of priority 
-+     * bits for each PE
-+     */
-+    kvm_gicd_access(s, 0x400 + 0x20, 0, &reg, true);
-+    kvm_gicd_access(s, 0x400 + 0x20, 0, &reg, false);
-+
-+    return 8 - ctz32(reg);
-+}
-+
- static void kvm_arm_gic_put(GICState *s)
- {
-     uint32_t reg;
--    int i;
-     int cpu;
-     int num_cpu;
-     int num_irq;
-+    int num_pri_bits;
- 
-     /* Note: We do the restore in a slightly different order than the save
-      * (where the order doesn't matter and is simply ordered according to the
-@@ -326,6 +343,8 @@ static void kvm_arm_gic_put(GICState *s)
-             abort();
-     }
- 
-+    num_pri_bits = kvm_arm_gic_get_pri_bits(s);
-+
-     /* TODO: Consider checking compatibility with the IIDR ? */
- 
-     /* irq_state[n].enabled -> GICD_ISENABLERn */
-@@ -353,7 +372,6 @@ static void kvm_arm_gic_put(GICState *s)
-     kvm_dist_put(s, 0x380, 1, s->num_irq, translate_clear);
-     kvm_dist_put(s, 0x300, 1, s->num_irq, translate_active);
- 
--
-     /* s->priorityX[irq] -> ICD_IPRIORITYRn */
-     kvm_dist_put(s, 0x400, 8, s->num_irq, translate_priority);
- 
-@@ -384,9 +402,18 @@ static void kvm_arm_gic_put(GICState *s)
-         kvm_gicc_access(s, 0x1c, cpu, &reg, true);
- 
-         /* s->apr[n][cpu] -> GICC_APRn */
--        for (i = 0; i < 4; i++) {
--            reg = s->apr[i][cpu];
--            kvm_gicc_access(s, 0xd0 + i * 4, cpu, &reg, true);
-+        switch (num_pri_bits) {
-+        case 7:
-+            reg = s->apr[3][cpu];
-+            kvm_gicc_access(s, 0xd0 + 3 * 4, cpu, &reg, true);
-+            reg = s->apr[2][cpu];
-+            kvm_gicc_access(s, 0xd0 + 2 * 4, cpu, &reg, true);
-+        case 6:
-+            reg = s->apr[1][cpu];
-+            kvm_gicc_access(s, 0xd0 + 1 * 4, cpu, &reg, true);
-+        default:
-+            reg = s->apr[0][cpu];
-+            kvm_gicc_access(s, 0xd0, cpu, &reg, true);
-         }
-     }
- }
-@@ -396,6 +423,7 @@ static void kvm_arm_gic_get(GICState *s)
-     uint32_t reg;
-     int i;
-     int cpu;
-+    int num_pri_bits;
- 
-     /*****************************************************************
-      * Distributor State
-@@ -448,6 +476,7 @@ static void kvm_arm_gic_get(GICState *s)
-     /* GICD_CPENDSGIRn -> s->sgi_pending */
-     kvm_dist_get(s, 0xf10, 8, GIC_NR_SGIS, translate_sgisource);
- 
-+    num_pri_bits = kvm_arm_gic_get_pri_bits(s);
- 
-     /*****************************************************************
-      * CPU Interface(s) State
-@@ -470,10 +499,19 @@ static void kvm_arm_gic_get(GICState *s)
-         kvm_gicc_access(s, 0x1c, cpu, &reg, false);
-         s->abpr[cpu] = (reg & 0x7);
- 
--        /* GICC_APRn -> s->apr[n][cpu] */
--        for (i = 0; i < 4; i++) {
--            kvm_gicc_access(s, 0xd0 + i * 4, cpu, &reg, false);
--            s->apr[i][cpu] = reg;
-+        /* s->apr[n][cpu] -> GICC_APRn */
-+        switch (num_pri_bits) {
-+        case 7:
-+            kvm_gicc_access(s, 0xd0 + 3 * 4, cpu, &reg, false);
-+            s->apr[3][cpu] = reg;
-+            kvm_gicc_access(s, 0xd0 + 2 * 4, cpu, &reg, false);
-+            s->apr[2][cpu] = reg;
-+        case 6:
-+            kvm_gicc_access(s, 0xd0 + 1 * 4, cpu, &reg, false);
-+            s->apr[1][cpu] = reg;
-+        default:
-+            kvm_gicc_access(s, 0xd0, cpu, &reg, false);
-+            s->apr[0][cpu] = reg;
-         }
-     }
- }
--- 
-1.8.3.1
+>> > So, I could teach crash to do what I'm doing here in qemu instead, but
+>> > there's still one more reason why it may make sense to do it here. That
+>> > reason is that I don't know what else to put in prstatus.pr_reg.sp. Does
+>> > xregs[31] make the most sense? or just zero? prstatus.pr_reg.pc is the
+>> > correct 32-bit userspace pc, prstatus.pr_reg.pstate is the correct cpsr,
+>> > so why not set sp to the correct userspace sp?
+>>
+>> Well, what spec are we following here? The most logical view
+>
+> With the shoehorning approach we're following the aarch64 ptrace spec,
+> but putting arm32 registers in it. We then rely on the analysis tools
+> to do the right thing when they see pstate has PSR_MODE32_BIT set, which
+> all cpsr modes do.
 
+Right, so the analysis tool already has to cope with the MODE32 bit
+being set, and it can also figure out where the SP is (and which
+other registers are currently live for 32-bit).
 
+> The ptrace code in the kernel would return a real aarch32 view, i.e.
+> only registers up to r15 and a cpsr. We can't do that here because we've
+> committed to an EM_AARCH64 formatted core, and we only have one type of
+> PRSTATUS note for that core type. Furthermore, we want to be able to
+> return all the registers to handle dumps of 64-bit EL2 with 32-bit EL1s.
+>
+>> to me seems to be to say "you get the view of the system
+>> that you get from a JTAG debugger or a hypervisor", which
+>> is to say you see a 64-bit set of registers and it's the
+>> debugger's job to decide which bits of those might be
+>> interesting to view as 32-bit and what is actually "live"
+>> 32 bit state.
+>
+> It appears that PRSTATUS aware tools don't currently work this way.
+>
+>>
+>> From that point of view there is no valid AArch64 SP register
+>> at this point in execution (xregs[31] for QEMU would be stale
+>> state, so not a good choice I think).
+>
+> I suppose zero or all 1's are the safest choices for "undefined", but
+> being undefined actually gives us freedom to use aarch64_compat_sp as
+> well, which, to me, looks like a safer and more useful value.
+
+It just doesn't really make sense to me to do this one bit of
+work for the debug analysis tools when they already have to know
+that 32-bit modes are special. We seem to end up with a function
+in QEMU whose only purpose is working around a bug in the thing
+consuming the coredump.
+
+thanks
+-- PMM

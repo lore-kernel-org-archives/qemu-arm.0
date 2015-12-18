@@ -1,236 +1,191 @@
-Received: by 10.182.158.201 with SMTP id ww9csp733205obb;
-        Thu, 17 Dec 2015 16:18:56 -0800 (PST)
-X-Received: by 10.140.235.212 with SMTP id g203mr1028476qhc.11.1450397936107;
-        Thu, 17 Dec 2015 16:18:56 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp734309obb;
+        Thu, 17 Dec 2015 16:21:33 -0800 (PST)
+X-Received: by 10.55.76.18 with SMTP id z18mr875822qka.105.1450398093455;
+        Thu, 17 Dec 2015 16:21:33 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m87si13792558qkl.12.2015.12.17.16.18.55
+        by mx.google.com with ESMTPS id u83si13778967qka.53.2015.12.17.16.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Dec 2015 16:18:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 17 Dec 2015 16:21:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com
-Received: from localhost ([::1]:57770 helo=lists.gnu.org)
+Received: from localhost ([::1]:57783 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9il5-0007W8-NT
-	for alex.bennee@linaro.org; Thu, 17 Dec 2015 19:18:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37126)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1a9ind-0000ND-4C
+	for alex.bennee@linaro.org; Thu, 17 Dec 2015 19:21:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1a9il3-0007T9-DO
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 19:18:54 -0500
+	(envelope-from <alistair23@gmail.com>) id 1a9inJ-0008W8-AF
+	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 19:21:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1a9il1-0001Ko-W2
-	for qemu-arm@nongnu.org; Thu, 17 Dec 2015 19:18:53 -0500
-Received: from mail-oi0-x22f.google.com ([2607:f8b0:4003:c06::22f]:36248)
+	(envelope-from <alistair23@gmail.com>) id 1a9inI-0001zp-6o
+	for qemu-devel@nongnu.org; Thu, 17 Dec 2015 19:21:13 -0500
+Received: from mail-oi0-x235.google.com ([2607:f8b0:4003:c06::235]:34865)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alistair23@gmail.com>)
-	id 1a9ikz-0001KS-27; Thu, 17 Dec 2015 19:18:49 -0500
-Received: by mail-oi0-x22f.google.com with SMTP id o62so47045587oif.3;
-	Thu, 17 Dec 2015 16:18:48 -0800 (PST)
+	id 1a9inI-0001zN-0Y; Thu, 17 Dec 2015 19:21:12 -0500
+Received: by mail-oi0-x235.google.com with SMTP id l9so23160286oia.2;
+	Thu, 17 Dec 2015 16:21:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
 	:subject:to:cc:content-type;
-	bh=Eh2CpPysolEhoFb9PglK7qgQ/Pol19eM+bTQtt1vM0c=;
-	b=ANEOO/5o89Ku3wJdIrQQG5gMZWLh2fIsk+DWrR5KrEmRBpI6tnkG+lPw5C7hk2+XyE
-	IfYhywBl6An8rwifslq57JwFPO5FMwrcV6pI9cbmclwaCIqAQIDoSqrZ/pY5b9Bu/82z
-	HDYu1KQB3PD0EUbHd+hN9j+ah/PuDiZLsLSERuKnD1/Y7hgDR9PLN5D9CdPD1U5qVqLk
-	k4DWVg3ztcH02/gX5mCOgpYthA0js4GIn38ZJvoS+5p3W2HIMywzbt8gzOAkRCE/lJ33
-	T00K6SGqlpgcf4OQhxxTOOgAeQebyN/adu1qg7ovOO7nRpcsC73m+qIK1kLig4s6R3a3
-	rE+A==
-X-Received: by 10.202.83.139 with SMTP id h133mr277858oib.127.1450397928446;
-	Thu, 17 Dec 2015 16:18:48 -0800 (PST)
+	bh=3Ueq+L0bCDErLP4boK7ZSR1VjRjiYGwhmEJBPfkchG0=;
+	b=FV5rWVH3X0UmvAsbdHfspOTcrb80dOInXbF9R37Z+DdW8EyvZXvNx0A7HEVrYjjMbI
+	tyTnGi2Y84DUEXhs6+wM/58PJOV0n96Q2tMXp1avamxLAYRzE2NVtJcdIEcwM+UAgbrr
+	7VTUJxgkQmTy+0nDmHLrKEeiisltk6OgNNIUTMer0I11ho83kLbwlVT7/DMVOlmd8mao
+	nM+jslRSqajGhSSgDYx6gM3QmQ2FgiTiB18y9+rFXudZNxizqVWLqjvpAqaj+zt2K/2R
+	3qEI8QR9+BZumvsivhpsaiJFTSxjnSdrktMtCjS6fnIkKAUqE0y76p6de3VEGbrPpw6s
+	KMlQ==
+X-Received: by 10.202.94.4 with SMTP id s4mr326298oib.8.1450398071521; Thu, 17
+	Dec 2015 16:21:11 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.182.49.199 with HTTP; Thu, 17 Dec 2015 16:18:19 -0800 (PST)
-In-Reply-To: <1449851831-4966-7-git-send-email-peter.maydell@linaro.org>
+Received: by 10.182.49.199 with HTTP; Thu, 17 Dec 2015 16:20:42 -0800 (PST)
+In-Reply-To: <CAFEAcA8d8HTGqur_eN5KYJP6-SGNTUUygSTzRxnD+==7M9OUqw@mail.gmail.com>
 References: <1449851831-4966-1-git-send-email-peter.maydell@linaro.org>
-	<1449851831-4966-7-git-send-email-peter.maydell@linaro.org>
+	<1449851831-4966-3-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKOYNfapty-are1iEetrw-1v_Jz_+w69iF5FX9+ZtiDFoA@mail.gmail.com>
+	<CAFEAcA8d8HTGqur_eN5KYJP6-SGNTUUygSTzRxnD+==7M9OUqw@mail.gmail.com>
 From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Thu, 17 Dec 2015 16:18:19 -0800
-X-Google-Sender-Auth: AWVPH89ElPjU-vhRpjC_68rAxAg
-Message-ID: <CAKmqyKN-0YTai2tYbBoJsH9A022hpDcs89jwRsKOr2upgFdwXA@mail.gmail.com>
+Date: Thu, 17 Dec 2015 16:20:42 -0800
+X-Google-Sender-Auth: JQp5O35p9N5tlpHzjLild9i8vu8
+Message-ID: <CAKmqyKNJHzMQLPpNuSbXXXq1ow8tSxmL5t=q-VHPhQf_D6WKqw@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::22f
-Cc: Patch Tracking <patches@linaro.org>,
+X-Received-From: 2607:f8b0:4003:c06::235
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Patch Tracking <patches@linaro.org>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Kevin O'Connor <kevin@koconnor.net>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 06/10] sdhci_sysbus: Create SD
- card device in users, not the device itself
-X-BeenThere: qemu-arm@nongnu.org
+	Markus Armbruster <armbru@redhat.com>, Kevin O'Connor <kevin@koconnor.net>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Subject: Re: [Qemu-devel] [PATCH 02/10] hw/sd/sd.c: QOMify
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r8v9ODkzXj3O
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tP/0ZKuyR4iD
 
-On Fri, Dec 11, 2015 at 8:37 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Move the creation of the SD card device from the sdhci_sysbus
-> device itself into the boards that create these devices.
-> This allows us to remove the cannot_instantiate_with_device_add
-> notation because we no longer call drive_get_next in the device
-> model.
+On Thu, Dec 17, 2015 at 2:11 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 17 December 2015 at 21:45, Alistair Francis
+> <alistair.francis@xilinx.com> wrote:
+>> On Fri, Dec 11, 2015 at 8:37 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> Turn the SD card into a QOM device.
+>>> This conversion only changes the device itself; the various
+>>> functions which are effectively methods on the device are not
+>>> touched at this point.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/xilinx_zynq.c | 17 ++++++++++++++++-
->  hw/arm/xlnx-ep108.c  | 19 +++++++++++++++++++
->  hw/sd/sdhci.c        | 22 ----------------------
->  3 files changed, 35 insertions(+), 23 deletions(-)
+>>> @@ -472,34 +476,26 @@ static const VMStateDescription sd_vmstate = {
+>>>      }
+>>>  };
+>>>
+>>> -/* We do not model the chip select pin, so allow the board to select
+>>> -   whether card should be in SSI or MMC/SD mode.  It is also up to the
+>>> -   board to ensure that ssi transfers only occur when the chip select
+>>> -   is asserted.  */
+>>> +/* Legacy initialization function for use by non-qdevified callers */
+>>>  SDState *sd_init(BlockBackend *blk, bool is_spi)
+>>>  {
+>>> -    SDState *sd;
+>>> +    DeviceState *dev;
+>>> +    Error *err = NULL;
+>>>
+>>> -    if (blk && blk_is_read_only(blk)) {
+>>> -        fprintf(stderr, "sd_init: Cannot use read-only drive\n");
+>>> +    dev = qdev_create(NULL, TYPE_SD);
+>>> +    qdev_prop_set_drive(dev, "drive", blk, &err);
+>>> +    if (err) {
+>>> +        error_report("sd_init failed: %s", error_get_pretty(err));
+>>>          return NULL;
+>>>      }
+>>> -
+>>> -    sd = (SDState *) g_malloc0(sizeof(SDState));
+>>> -    sd->buf = blk_blockalign(blk, 512);
+>>> -    sd->spi = is_spi;
+>>> -    sd->enable = true;
+>>> -    sd->blk = blk;
+>>> -    sd_reset(sd);
+>>> -    if (sd->blk) {
+>>> -        /* Attach dev if not already attached.  (This call ignores an
+>>> -         * error return code if sd->blk is already attached.) */
+>>> -        /* FIXME ignoring blk_attach_dev() failure is dangerously brittle */
+>>> -        blk_attach_dev(sd->blk, sd);
+>>
+>> This functionality is removed with this patch. If the block is not
+>> already attached won't this cause errors?
 >
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 1c1a445..3195055 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -27,6 +27,7 @@
->  #include "hw/misc/zynq-xadc.h"
->  #include "hw/ssi.h"
->  #include "qemu/error-report.h"
-> +#include "hw/sd/sd.h"
+> The block backend is attached when we set the "drive" property
+> (which we do in this function in the new code just above).
+> [the actual call to blk_attach_dev() is in parse_drive() in
+> hw/core/qdev-properties-system.c.]
 >
->  #define NUM_SPI_FLASHES 4
->  #define NUM_QSPI_FLASHES 2
-> @@ -153,8 +154,10 @@ static void zynq_init(MachineState *machine)
->      MemoryRegion *address_space_mem = get_system_memory();
->      MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
->      MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
-> -    DeviceState *dev;
-> +    DeviceState *dev, *carddev;
->      SysBusDevice *busdev;
-> +    DriveInfo *di;
-> +    BlockBackend *blk;
->      qemu_irq pic[64];
->      Error *err = NULL;
->      int n;
-> @@ -260,11 +263,23 @@ static void zynq_init(MachineState *machine)
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0100000);
->      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[56-IRQ_OFFSET]);
+> The blk_set_dev_ops() moves in this patch to sd_realize().
 >
-> +    di = drive_get_next(IF_SD);
-> +    blk = di ? blk_by_legacy_dinfo(di) : NULL;
-> +    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD);
-> +    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
-> +    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
-> +
->      dev = qdev_create(NULL, "generic-sdhci");
->      qdev_init_nofail(dev);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xE0101000);
->      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[79-IRQ_OFFSET]);
->
-> +    di = drive_get_next(IF_SD);
-> +    blk = di ? blk_by_legacy_dinfo(di) : NULL;
-> +    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD);
-> +    qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
-> +    object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
-> +
->      dev = qdev_create(NULL, TYPE_ZYNQ_XADC);
->      qdev_init_nofail(dev);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8007100);
-> diff --git a/hw/arm/xlnx-ep108.c b/hw/arm/xlnx-ep108.c
-> index 85b978f..cb95d32 100644
-> --- a/hw/arm/xlnx-ep108.c
-> +++ b/hw/arm/xlnx-ep108.c
-> @@ -34,6 +34,7 @@ static void xlnx_ep108_init(MachineState *machine)
->  {
->      XlnxEP108 *s = g_new0(XlnxEP108, 1);
->      Error *err = NULL;
-> +    int i;
->
->      object_initialize(&s->soc, sizeof(s->soc), TYPE_XLNX_ZYNQMP);
->      object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
-> @@ -45,6 +46,24 @@ static void xlnx_ep108_init(MachineState *machine)
->          exit(1);
->      }
->
-> +    /* Create and plug in the SD cards */
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-> +        BusState *bus;
-> +        DriveInfo *di = drive_get_next(IF_SD);
-> +        BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
-> +        DeviceState *carddev;
-> +
-> +        bus = qdev_get_child_bus(DEVICE(&s->soc.sdhci[i]), "sd-bus");
+> There is incidentally no longer any case where the block backend
+> could be already attached when we call sd_init(), because the
+> only case there was when it had been attached to the sdhci
+> controller device because of the x-drive property on that device,
+> and we removed the property in the previous patch. It's exactly
+> because setting a drive property does an implicit blk_attach_dev
+> that this code previously had to have special casing for
+> "attach of an already attached blk".
 
-This looks like the same thing I was trying to avoid with my SPI
-patches. We were trying to avoid the machine reaching into the SoC
-when getting the child busses. Instead expose the bus to the SoC so
-the board can just get it straight from there.
-
-> +        if (!bus) {
-> +            error_report("No SD bus found for SD card %d", i);
-> +            exit(1);
-> +        }
-> +        carddev = qdev_create(bus, TYPE_SD);
-> +        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
-> +        object_property_set_bool(OBJECT(carddev), true, "realized",
-> +                                 &error_fatal);
-> +    }
-> +
-
-I also think this should go after the other memory creation, not before.
+Ok, fair enough, just thought I would check. The rest of the logic
+looks good then.
 
 Thanks,
 
 Alistair
 
->      if (machine->ram_size > EP108_MAX_RAM_SIZE) {
->          error_report("WARNING: RAM size " RAM_ADDR_FMT " above max supported, "
->                       "reduced to %llx", machine->ram_size, EP108_MAX_RAM_SIZE);
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 17e08a2..c8e3865 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -1296,26 +1296,6 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error ** errp)
->  {
->      SDHCIState *s = SYSBUS_SDHCI(dev);
->      SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> -    DriveInfo *di;
-> -    BlockBackend *blk;
-> -    DeviceState *carddev;
-> -
-> -    /* Create and plug in the sd card.
-> -     * FIXME: this should be done by the users of this device so we
-> -     * do not use drive_get_next() here.
-> -     */
-> -    di = drive_get_next(IF_SD);
-> -    blk = di ? blk_by_legacy_dinfo(di) : NULL;
-> -
-> -    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD);
-> -    qdev_prop_set_drive(carddev, "drive", blk, errp);
-> -    if (*errp) {
-> -        return;
-> -    }
-> -    object_property_set_bool(OBJECT(carddev), true, "realized", errp);
-> -    if (*errp) {
-> -        return;
-> -    }
 >
->      s->buf_maxsz = sdhci_get_fifolen(s);
->      s->fifo_buffer = g_malloc0(s->buf_maxsz);
-> @@ -1333,8 +1313,6 @@ static void sdhci_sysbus_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &sdhci_vmstate;
->      dc->props = sdhci_sysbus_properties;
->      dc->realize = sdhci_sysbus_realize;
-> -    /* Reason: instance_init() method uses drive_get_next() */
-> -    dc->cannot_instantiate_with_device_add_yet = true;
->  }
+>>> -        blk_set_dev_ops(sd->blk, &sd_block_ops, sd);
+>>> +    qdev_prop_set_bit(dev, "spi", is_spi);
+>>> +    object_property_set_bool(OBJECT(dev), true, "realized", &err);
+>>> +    if (err) {
+>>> +        error_report("sd_init failed: %s", error_get_pretty(err));
+>>> +        return NULL;
+>>>      }
+>>> -    vmstate_register(NULL, -1, &sd_vmstate, sd);
+>>> -    return sd;
+>>> +
+>>> +    return SD(dev);
+>>>  }
+>>>
+>>>  void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert)
+>>> @@ -1765,3 +1761,62 @@ void sd_enable(SDState *sd, bool enable)
+>>>  {
+>>>      sd->enable = enable;
+>>>  }
+>>> +
+>>> +static void sd_instance_init(Object *obj)
+>>> +{
+>>> +    SDState *sd = SD(obj);
+>>> +
+>>> +    sd->enable = true;
+>>> +}
+>>> +
+>>> +static void sd_realize(DeviceState *dev, Error ** errp)
+>>
+>> You have one too many spaces here.
 >
->  static const TypeInfo sdhci_sysbus_info = {
-> --
-> 1.9.1
+> Yep, will fix.
 >
+> thanks
+> -- PMM
 >

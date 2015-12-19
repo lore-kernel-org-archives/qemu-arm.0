@@ -1,139 +1,494 @@
-Received: by 10.223.188.70 with SMTP id a6csp1528698wrh;
-        Wed, 23 Aug 2017 20:03:25 -0700 (PDT)
-X-Received: by 10.55.116.69 with SMTP id p66mr6193082qkc.154.1503543805845;
-        Wed, 23 Aug 2017 20:03:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1503543805; cv=none;
-        d=google.com; s=arc-20160816;
-        b=bkm7HGvKsHn811mX79Z4KwJhCTaVjNwaI5gZ/JZbLSHZkzZ2cnhBDJ/Jr6hraMf8lx
-         sCh1S3f2Jq8BzB7//6Z8Y0V06mSpHHvdB8xHHxlcsDDVO1hfJLDWN8ITASVM08Orawz+
-         R1thkSzYGIreO55Xm8G/C+fnWD6p199M3ZoScm69kn9VwegoDw5ZVdAjYKzbHahilm1u
-         oHseAoctOjOpzdvoQ9UbeHam2nZrmohMVeOJbkbs9lJqdqz+/Jn1Ru97ZA/Gid7YEUq7
-         vdLbFhQuYsgozYxQCO6O4j+usxqs/BY+UtxZv28rETjFZUwJZQms+0ofMPbfZr747F/R
-         oq0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dmarc-filter:arc-authentication-results;
-        bh=3b5Gq3uLFchJ4WvY62N3GxENgLpm9KRk1pOJlu6FflE=;
-        b=owTZG1fzVygJh3rZoP7EHa6Cl9jzfAHFBFD0W7TYPqUXxvEslFcUqqeMeUcj1VydyY
-         mPUoogIh/AHwXhm3i72Dfx6EN/c6Z71a7mzFS7PfW2YjLHzjrNFI/90/DYJt5c+IA9ut
-         d/bnVwmfyyMilHGB2twPbYR2189VA2587XX2hNgNitToJZ3T/++rVbJLGctP9mSRFjC+
-         0oOoKfD94CBquDy3Ejjh0pe0xRioApNMnOdW8KpcCYg8YgfpuzM/0ps1lPANvK85Ku0F
-         Y5MNuVWMGWpeWuCBUZ9UmS537DTDyeIjgF57NKsfQVw8+SUmzUJNvy4gYg1sa2UpCzrh
-         XsGA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1899726obb;
+        Sat, 19 Dec 2015 13:30:42 -0800 (PST)
+X-Received: by 10.140.93.77 with SMTP id c71mr15257653qge.46.1450560642244;
+        Sat, 19 Dec 2015 13:30:42 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 63si2941763qke.529.2017.08.23.20.03.25
+        by mx.google.com with ESMTPS id 185si22789783qht.76.2015.12.19.13.30.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Aug 2017 20:03:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 19 Dec 2015 13:30:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46507 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38760 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dkiQV-0002O1-OY
-	for alex.bennee@linaro.org; Wed, 23 Aug 2017 23:03:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47593)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aAP5N-0004yL-VH
+	for alex.bennee@linaro.org; Sat, 19 Dec 2015 16:30:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkiQM-0002Ng-FK
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 23:03:15 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAP2p-0001MM-BL
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:28:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1dkiQH-0000uH-Kg
-	for qemu-arm@nongnu.org; Wed, 23 Aug 2017 23:03:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48436)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1dkiQH-0000u5-E0; Wed, 23 Aug 2017 23:03:09 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2762C356DA;
-	Thu, 24 Aug 2017 03:03:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mx1.redhat.com 2762C356DA
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	dmarc=none (p=none dis=none) header.from=redhat.com
-Authentication-Results: ext-mx06.extmail.prod.ext.phx2.redhat.com;
-	spf=fail smtp.mailfrom=thuth@redhat.com
-Received: from thh440s.redhat.com (ovpn-116-37.ams2.redhat.com [10.36.116.37])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3AAD689D29;
-	Thu, 24 Aug 2017 03:03:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-block@nongnu.org,
-	John Snow <jsnow@redhat.com>
-Date: Thu, 24 Aug 2017 05:03:03 +0200
-Message-Id: <1503543783-17192-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 24 Aug 2017 03:03:08 +0000 (UTC)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAP2m-00077G-05
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:28:03 -0500
+Received: from mail-pa0-x22d.google.com ([2607:f8b0:400e:c03::22d]:34694)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aAP2l-00077B-Ob; Sat, 19 Dec 2015 16:27:59 -0500
+Received: by mail-pa0-x22d.google.com with SMTP id wq6so78444592pac.1;
+	Sat, 19 Dec 2015 13:27:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:date:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=UZY+QFDAEJ8xS9rhykB/68hJBhpLoTWtlF8B0jPrQK8=;
+	b=r2FFM1yUxD6J4RO9T/iABTJBbqzzyUVoLtyezwE7tdhOG3T557u/sDZg4iDKJeJ7db
+	rz+sZEEO7bH/ZJLQqMIcombcRSHGS2WMAJvQG5ATJPYS9uUHuPiZNL0TqiWqceutjjqm
+	9Y1eCnU+owWs3NSy4ySHYRHfgcQ7PA9Ey65q7L7WMu2uu4f/Sn1n9y83gyBM10nkDYO1
+	H0fZSG5pD9K4sO3DNBRWIDfEpLzfJnfxVQcvxKZa45RRpcEEr7Mz19GHDdh+5b9w6eE6
+	F907A392QwTqkM4cHJH1PbAIWPF843jrVrD25qZPEaZLtGP8PAhUGyBhMb2VKRlgfkg6
+	E2yQ==
+X-Received: by 10.66.185.225 with SMTP id ff1mr5473624pac.97.1450560478976;
+	Sat, 19 Dec 2015 13:27:58 -0800 (PST)
+Received: from pcrost-box (c211-31-14-155.rochd5.qld.optusnet.com.au.
+	[211.31.14.155]) by smtp.gmail.com with ESMTPSA id
+	by2sm30089468pab.20.2015.12.19.13.27.55
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sat, 19 Dec 2015 13:27:57 -0800 (PST)
+From: pcrost <crosthwaitepeter@gmail.com>
+X-Google-Original-From: pcrost <pcrost@pcrost-box>
+Date: Sat, 19 Dec 2015 13:27:51 -0800
+To: Jean-Christophe Dubois <jcd@tribudubois.net>
+Message-ID: <20151219212751.GA4135@pcrost-box>
+References: <cover.1449528242.git.jcd@tribudubois.net>
+	<a38b80a60545b98302dccb09d8be01a9ae2aa828.1449528242.git.jcd@tribudubois.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a38b80a60545b98302dccb09d8be01a9ae2aa828.1449528242.git.jcd@tribudubois.net>
+User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-2.11] hw/ide/microdrive: Mark the dscm1xxxx
- device with user_creatable = false
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Received-From: 2607:f8b0:400e:c03::22d
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	crosthwaite.peter@gmail.com
+Subject: Re: [Qemu-devel] [PATCH v6 5/5] i.MX: move i.MX31 CCM object to
+	register array.
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: euFxrECjLxvT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DvAM8VZVJq0L
 
-QEMU currently aborts with an assertion message when the user is trying
-to remove a dscm1xxxx again:
+On Mon, Dec 07, 2015 at 11:53:42PM +0100, Jean-Christophe Dubois wrote:
+> With this i.MX25 and i.MX31 to have close implementation.
+> 
 
-$ aarch64-softmmu/qemu-system-aarch64 -S -M integratorcp -nographic
-QEMU 2.9.93 monitor - type 'help' for more information
-(qemu) device_add dscm1xxxx,id=xyz
-(qemu) device_del xyz
-**
-ERROR:qemu/qdev-monitor.c:872:qdev_unplug: assertion failed: (hotplug_ctrl)
-Aborted (core dumped)
+"will have closer implementations".
 
-Looks like this device has to be wired up in code and is not meant
-to be hot-pluggable, so let's mark it with user_creatable = false.
+Otherwise,
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/ide/microdrive.c | 3 +++
- 1 file changed, 3 insertions(+)
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 
-diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
-index e3fd30e..17917c0 100644
---- a/hw/ide/microdrive.c
-+++ b/hw/ide/microdrive.c
-@@ -575,12 +575,15 @@ PCMCIACardState *dscm1xxxx_init(DriveInfo *dinfo)
- static void dscm1xxxx_class_init(ObjectClass *oc, void *data)
- {
-     PCMCIACardClass *pcc = PCMCIA_CARD_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     pcc->cis = dscm1xxxx_cis;
-     pcc->cis_len = sizeof(dscm1xxxx_cis);
- 
-     pcc->attach = dscm1xxxx_attach;
-     pcc->detach = dscm1xxxx_detach;
-+    /* Reason: Needs to be wired-up in code, see dscm1xxxx_init() */
-+    dc->user_creatable = false;
- }
- 
- static const TypeInfo dscm1xxxx_type_info = {
--- 
-1.8.3.1
+Peter, do you want to just amend the grammar in the queue?
 
+Regards,
+Peter
+
+> Moreover all i.MX31 CCM registers are now present
+> 
+> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+> ---
+> 
+> Changes since v1:
+>  * Not present
+> 
+> Changes since v2:
+>  * Not present
+> 
+> Changes since v3:
+>  * Not present
+> 
+> Changes since v4:
+>  * Not present
+> 
+> Changes since v5:
+>  * Not present
+> 
+>  hw/misc/imx31_ccm.c         | 188 ++++++++++++++++++++------------------------
+>  include/hw/misc/imx31_ccm.h |  38 +++++++--
+>  2 files changed, 115 insertions(+), 111 deletions(-)
+> 
+> diff --git a/hw/misc/imx31_ccm.c b/hw/misc/imx31_ccm.c
+> index b92d2e0..47d6ead 100644
+> --- a/hw/misc/imx31_ccm.c
+> +++ b/hw/misc/imx31_ccm.c
+> @@ -29,77 +29,73 @@
+>  
+>  static char const *imx31_ccm_reg_name(uint32_t reg)
+>  {
+> +    static char unknown[20];
+> +
+>      switch (reg) {
+> -    case 0:
+> +    case IMX31_CCM_CCMR_REG:
+>          return "CCMR";
+> -    case 1:
+> +    case IMX31_CCM_PDR0_REG:
+>          return "PDR0";
+> -    case 2:
+> +    case IMX31_CCM_PDR1_REG:
+>          return "PDR1";
+> -    case 3:
+> +    case IMX31_CCM_RCSR_REG:
+>          return "RCSR";
+> -    case 4:
+> +    case IMX31_CCM_MPCTL_REG:
+>          return "MPCTL";
+> -    case 5:
+> +    case IMX31_CCM_UPCTL_REG:
+>          return "UPCTL";
+> -    case 6:
+> +    case IMX31_CCM_SPCTL_REG:
+>          return "SPCTL";
+> -    case 7:
+> +    case IMX31_CCM_COSR_REG:
+>          return "COSR";
+> -    case 8:
+> +    case IMX31_CCM_CGR0_REG:
+>          return "CGR0";
+> -    case 9:
+> +    case IMX31_CCM_CGR1_REG:
+>          return "CGR1";
+> -    case 10:
+> +    case IMX31_CCM_CGR2_REG:
+>          return "CGR2";
+> -    case 11:
+> +    case IMX31_CCM_WIMR_REG:
+>          return "WIMR";
+> -    case 12:
+> +    case IMX31_CCM_LDC_REG:
+>          return "LDC";
+> -    case 13:
+> +    case IMX31_CCM_DCVR0_REG:
+>          return "DCVR0";
+> -    case 14:
+> +    case IMX31_CCM_DCVR1_REG:
+>          return "DCVR1";
+> -    case 15:
+> +    case IMX31_CCM_DCVR2_REG:
+>          return "DCVR2";
+> -    case 16:
+> +    case IMX31_CCM_DCVR3_REG:
+>          return "DCVR3";
+> -    case 17:
+> +    case IMX31_CCM_LTR0_REG:
+>          return "LTR0";
+> -    case 18:
+> +    case IMX31_CCM_LTR1_REG:
+>          return "LTR1";
+> -    case 19:
+> +    case IMX31_CCM_LTR2_REG:
+>          return "LTR2";
+> -    case 20:
+> +    case IMX31_CCM_LTR3_REG:
+>          return "LTR3";
+> -    case 21:
+> +    case IMX31_CCM_LTBR0_REG:
+>          return "LTBR0";
+> -    case 22:
+> +    case IMX31_CCM_LTBR1_REG:
+>          return "LTBR1";
+> -    case 23:
+> +    case IMX31_CCM_PMCR0_REG:
+>          return "PMCR0";
+> -    case 24:
+> +    case IMX31_CCM_PMCR1_REG:
+>          return "PMCR1";
+> -    case 25:
+> +    case IMX31_CCM_PDR2_REG:
+>          return "PDR2";
+>      default:
+> -        return "???";
+> +        sprintf(unknown, "[%d ?]", reg);
+> +        return unknown;
+>      }
+>  }
+>  
+>  static const VMStateDescription vmstate_imx31_ccm = {
+>      .name = TYPE_IMX31_CCM,
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>      .fields = (VMStateField[]) {
+> -        VMSTATE_UINT32(ccmr, IMX31CCMState),
+> -        VMSTATE_UINT32(pdr0, IMX31CCMState),
+> -        VMSTATE_UINT32(pdr1, IMX31CCMState),
+> -        VMSTATE_UINT32(mpctl, IMX31CCMState),
+> -        VMSTATE_UINT32(spctl, IMX31CCMState),
+> -        VMSTATE_UINT32_ARRAY(cgr, IMX31CCMState, 3),
+> -        VMSTATE_UINT32(pmcr0, IMX31CCMState),
+> -        VMSTATE_UINT32(pmcr1, IMX31CCMState),
+> +        VMSTATE_UINT32_ARRAY(reg, IMX31CCMState, IMX31_CCM_MAX_REG),
+>          VMSTATE_END_OF_LIST()
+>      },
+>  };
+> @@ -109,10 +105,10 @@ static uint32_t imx31_ccm_get_pll_ref_clk(IMXCCMState *dev)
+>      uint32_t freq = 0;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    if ((s->ccmr & CCMR_PRCS) == 2) {
+> -        if (s->ccmr & CCMR_FPME) {
+> +    if ((s->reg[IMX31_CCM_CCMR_REG] & CCMR_PRCS) == 2) {
+> +        if (s->reg[IMX31_CCM_CCMR_REG] & CCMR_FPME) {
+>              freq = CKIL_FREQ;
+> -            if (s->ccmr & CCMR_FPMF) {
+> +            if (s->reg[IMX31_CCM_CCMR_REG] & CCMR_FPMF) {
+>                  freq *= 1024;
+>              }
+>          } 
+> @@ -130,7 +126,8 @@ static uint32_t imx31_ccm_get_mpll_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    freq = imx_ccm_calc_pll(s->mpctl, imx31_ccm_get_pll_ref_clk(dev));
+> +    freq = imx_ccm_calc_pll(s->reg[IMX31_CCM_MPCTL_REG],
+> +                            imx31_ccm_get_pll_ref_clk(dev));
+>  
+>      DPRINTF("freq = %d\n", freq);
+>  
+> @@ -142,7 +139,8 @@ static uint32_t imx31_ccm_get_mcu_main_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    if ((s->ccmr & CCMR_MDS) || !(s->ccmr & CCMR_MPE)) {
+> +    if ((s->reg[IMX31_CCM_CCMR_REG] & CCMR_MDS) ||
+> +        !(s->reg[IMX31_CCM_CCMR_REG] & CCMR_MPE)) {
+>          freq = imx31_ccm_get_pll_ref_clk(dev);
+>      } else {
+>          freq = imx31_ccm_get_mpll_clk(dev);
+> @@ -158,7 +156,8 @@ static uint32_t imx31_ccm_get_mcu_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    freq = imx31_ccm_get_mcu_main_clk(dev) / (1 + EXTRACT(s->pdr0, MCU));
+> +    freq = imx31_ccm_get_mcu_main_clk(dev)
+> +           / (1 + EXTRACT(s->reg[IMX31_CCM_PDR0_REG], MCU));
+>  
+>      DPRINTF("freq = %d\n", freq);
+>  
+> @@ -170,7 +169,8 @@ static uint32_t imx31_ccm_get_hsp_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    freq = imx31_ccm_get_mcu_main_clk(dev) / (1 + EXTRACT(s->pdr0, HSP));
+> +    freq = imx31_ccm_get_mcu_main_clk(dev)
+> +           / (1 + EXTRACT(s->reg[IMX31_CCM_PDR0_REG], HSP));
+>  
+>      DPRINTF("freq = %d\n", freq);
+>  
+> @@ -182,7 +182,8 @@ static uint32_t imx31_ccm_get_hclk_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    freq = imx31_ccm_get_mcu_main_clk(dev) / (1 + EXTRACT(s->pdr0, MAX));
+> +    freq = imx31_ccm_get_mcu_main_clk(dev)
+> +           / (1 + EXTRACT(s->reg[IMX31_CCM_PDR0_REG], MAX));
+>  
+>      DPRINTF("freq = %d\n", freq);
+>  
+> @@ -194,7 +195,8 @@ static uint32_t imx31_ccm_get_ipg_clk(IMXCCMState *dev)
+>      uint32_t freq;
+>      IMX31CCMState *s = IMX31_CCM(dev);
+>  
+> -    freq = imx31_ccm_get_hclk_clk(dev) / (1 + EXTRACT(s->pdr0, IPG));
+> +    freq = imx31_ccm_get_hclk_clk(dev)
+> +           / (1 + EXTRACT(s->reg[IMX31_CCM_PDR0_REG], IPG));
+>  
+>      DPRINTF("freq = %d\n", freq);
+>  
+> @@ -237,14 +239,24 @@ static void imx31_ccm_reset(DeviceState *dev)
+>  
+>      DPRINTF("()\n");
+>  
+> -    s->ccmr   = 0x074b0b7d;
+> -    s->pdr0   = 0xff870b48;
+> -    s->pdr1   = 0x49fcfe7f;
+> -    s->mpctl  = 0x04001800;
+> -    s->cgr[0] = s->cgr[1] = s->cgr[2] = 0xffffffff;
+> -    s->spctl  = 0x04043001;
+> -    s->pmcr0  = 0x80209828;
+> -    s->pmcr1  = 0x00aa0000;
+> +    memset(s->reg, 0, sizeof(uint32_t) * IMX31_CCM_MAX_REG);
+> +
+> +    s->reg[IMX31_CCM_CCMR_REG]   = 0x074b0b7d;
+> +    s->reg[IMX31_CCM_PDR0_REG]   = 0xff870b48;
+> +    s->reg[IMX31_CCM_PDR1_REG]   = 0x49fcfe7f;
+> +    s->reg[IMX31_CCM_RCSR_REG]   = 0x007f0000;
+> +    s->reg[IMX31_CCM_MPCTL_REG]  = 0x04001800;
+> +    s->reg[IMX31_CCM_UPCTL_REG]  = 0x04051c03;
+> +    s->reg[IMX31_CCM_SPCTL_REG]  = 0x04043001;
+> +    s->reg[IMX31_CCM_COSR_REG]   = 0x00000280;
+> +    s->reg[IMX31_CCM_CGR0_REG]   = 0xffffffff;
+> +    s->reg[IMX31_CCM_CGR1_REG]   = 0xffffffff;
+> +    s->reg[IMX31_CCM_CGR2_REG]   = 0xffffffff;
+> +    s->reg[IMX31_CCM_WIMR_REG]   = 0xffffffff;
+> +    s->reg[IMX31_CCM_LTR1_REG]   = 0x00004040;
+> +    s->reg[IMX31_CCM_PMCR0_REG]  = 0x80209828;
+> +    s->reg[IMX31_CCM_PMCR1_REG]  = 0x00aa0000;
+> +    s->reg[IMX31_CCM_PDR2_REG]   = 0x00000285;
+>  }
+>  
+>  static uint64_t imx31_ccm_read(void *opaque, hwaddr offset, unsigned size)
+> @@ -252,41 +264,11 @@ static uint64_t imx31_ccm_read(void *opaque, hwaddr offset, unsigned size)
+>      uint32 value = 0;
+>      IMX31CCMState *s = (IMX31CCMState *)opaque;
+>  
+> -    switch (offset >> 2) {
+> -    case 0: /* CCMR */
+> -        value = s->ccmr;
+> -        break;
+> -    case 1:
+> -        value = s->pdr0;
+> -        break;
+> -    case 2:
+> -        value = s->pdr1;
+> -        break;
+> -    case 4:
+> -        value = s->mpctl;
+> -        break;
+> -    case 6:
+> -        value = s->spctl;
+> -        break;
+> -    case 8:
+> -        value = s->cgr[0];
+> -        break;
+> -    case 9:
+> -        value = s->cgr[1];
+> -        break;
+> -    case 10:
+> -        value = s->cgr[2];
+> -        break;
+> -    case 18: /* LTR1 */
+> -        value = 0x00004040;
+> -        break;
+> -    case 23:
+> -        value = s->pmcr0;
+> -        break;
+> -    default:
+> +    if ((offset >> 2) < IMX31_CCM_MAX_REG) {
+> +        value = s->reg[offset >> 2];
+> +    } else {
+>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
+>                        HWADDR_PRIx "\n", TYPE_IMX31_CCM, __func__, offset);
+> -        break;
+>      }
+>  
+>      DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx31_ccm_reg_name(offset >> 2),
+> @@ -304,29 +286,29 @@ static void imx31_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+>              (uint32_t)value);
+>  
+>      switch (offset >> 2) {
+> -    case 0:
+> -        s->ccmr = CCMR_FPMF | (value & 0x3b6fdfff);
+> +    case IMX31_CCM_CCMR_REG:
+> +        s->reg[IMX31_CCM_CCMR_REG] = CCMR_FPMF | (value & 0x3b6fdfff);
+>          break;
+> -    case 1:
+> -        s->pdr0 = value & 0xff9f3fff;
+> +    case IMX31_CCM_PDR0_REG:
+> +        s->reg[IMX31_CCM_PDR0_REG] = value & 0xff9f3fff;
+>          break;
+> -    case 2:
+> -        s->pdr1 = value;
+> +    case IMX31_CCM_PDR1_REG:
+> +        s->reg[IMX31_CCM_PDR1_REG] = value;
+>          break;
+> -    case 4:
+> -        s->mpctl = value & 0xbfff3fff;
+> +    case IMX31_CCM_MPCTL_REG:
+> +        s->reg[IMX31_CCM_MPCTL_REG] = value & 0xbfff3fff;
+>          break;
+> -    case 6:
+> -        s->spctl = value & 0xbfff3fff;
+> +    case IMX31_CCM_SPCTL_REG:
+> +        s->reg[IMX31_CCM_SPCTL_REG] = value & 0xbfff3fff;
+>          break;
+> -    case 8:
+> -        s->cgr[0] = value;
+> +    case IMX31_CCM_CGR0_REG:
+> +        s->reg[IMX31_CCM_CGR0_REG] = value;
+>          break;
+> -    case 9:
+> -        s->cgr[1] = value;
+> +    case IMX31_CCM_CGR1_REG:
+> +        s->reg[IMX31_CCM_CGR1_REG] = value;
+>          break;
+> -    case 10:
+> -        s->cgr[2] = value;
+> +    case IMX31_CCM_CGR2_REG:
+> +        s->reg[IMX31_CCM_CGR2_REG] = value;
+>          break;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
+> diff --git a/include/hw/misc/imx31_ccm.h b/include/hw/misc/imx31_ccm.h
+> index fcae36d..c376fad 100644
+> --- a/include/hw/misc/imx31_ccm.h
+> +++ b/include/hw/misc/imx31_ccm.h
+> @@ -13,6 +13,34 @@
+>  
+>  #include "hw/misc/imx_ccm.h"
+>  
+> +#define IMX31_CCM_CCMR_REG  0
+> +#define IMX31_CCM_PDR0_REG  1
+> +#define IMX31_CCM_PDR1_REG  2
+> +#define IMX31_CCM_RCSR_REG  3
+> +#define IMX31_CCM_MPCTL_REG 4
+> +#define IMX31_CCM_UPCTL_REG 5
+> +#define IMX31_CCM_SPCTL_REG 6
+> +#define IMX31_CCM_COSR_REG  7
+> +#define IMX31_CCM_CGR0_REG  8
+> +#define IMX31_CCM_CGR1_REG  9
+> +#define IMX31_CCM_CGR2_REG  10
+> +#define IMX31_CCM_WIMR_REG  11
+> +#define IMX31_CCM_LDC_REG   12
+> +#define IMX31_CCM_DCVR0_REG 13
+> +#define IMX31_CCM_DCVR1_REG 14
+> +#define IMX31_CCM_DCVR2_REG 15
+> +#define IMX31_CCM_DCVR3_REG 16
+> +#define IMX31_CCM_LTR0_REG  17
+> +#define IMX31_CCM_LTR1_REG  18
+> +#define IMX31_CCM_LTR2_REG  19
+> +#define IMX31_CCM_LTR3_REG  20
+> +#define IMX31_CCM_LTBR0_REG 21
+> +#define IMX31_CCM_LTBR1_REG 22
+> +#define IMX31_CCM_PMCR0_REG 23
+> +#define IMX31_CCM_PMCR1_REG 24
+> +#define IMX31_CCM_PDR2_REG  25
+> +#define IMX31_CCM_MAX_REG   26
+> +
+>  /* CCMR */
+>  #define CCMR_FPME    (1<<0)
+>  #define CCMR_MPE     (1<<3)
+> @@ -53,14 +81,8 @@ typedef struct IMX31CCMState {
+>      /* <public> */
+>      MemoryRegion iomem;
+>  
+> -    uint32_t ccmr;
+> -    uint32_t pdr0;
+> -    uint32_t pdr1;
+> -    uint32_t mpctl;
+> -    uint32_t spctl;
+> -    uint32_t cgr[3];
+> -    uint32_t pmcr0;
+> -    uint32_t pmcr1;
+> +    uint32_t reg[IMX31_CCM_MAX_REG];
+> +
+>  } IMX31CCMState;
+>  
+>  #endif /* IMX31_CCM_H */
+> -- 
+> 2.5.0
+> 

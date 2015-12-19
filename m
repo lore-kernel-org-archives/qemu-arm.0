@@ -1,463 +1,387 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1902119obb;
-        Sat, 19 Dec 2015 13:38:53 -0800 (PST)
-X-Received: by 10.55.212.92 with SMTP id l89mr15038236qki.70.1450561133171;
-        Sat, 19 Dec 2015 13:38:53 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp1902551obb;
+        Sat, 19 Dec 2015 13:40:25 -0800 (PST)
+X-Received: by 10.140.233.67 with SMTP id e64mr16015104qhc.42.1450561225018;
+        Sat, 19 Dec 2015 13:40:25 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x130si22835458qhb.26.2015.12.19.13.38.53
+        by mx.google.com with ESMTPS id l74si49942qgl.121.2015.12.19.13.40.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Dec 2015 13:38:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 19 Dec 2015 13:40:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38790 helo=lists.gnu.org)
+Received: from localhost ([::1]:38801 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aAPDI-0000Qp-Pp
-	for alex.bennee@linaro.org; Sat, 19 Dec 2015 16:38:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51889)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aAPEm-0001bS-PQ
+	for alex.bennee@linaro.org; Sat, 19 Dec 2015 16:40:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52060)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPDE-0000Lr-W9
-	for qemu-arm@nongnu.org; Sat, 19 Dec 2015 16:38:51 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPEQ-0001Fi-Tm
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:40:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPDD-0000ys-5n
-	for qemu-arm@nongnu.org; Sat, 19 Dec 2015 16:38:48 -0500
-Received: from mail-pa0-x235.google.com ([2607:f8b0:400e:c03::235]:33154)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPEL-0001BO-J1
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:40:02 -0500
+Received: from mail-pa0-x235.google.com ([2607:f8b0:400e:c03::235]:33221)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aAPD6-0000xs-3h; Sat, 19 Dec 2015 16:38:40 -0500
-Received: by mail-pa0-x235.google.com with SMTP id ur14so78411917pab.0;
-	Sat, 19 Dec 2015 13:38:39 -0800 (PST)
+	id 1aAPEL-0001BJ-B5; Sat, 19 Dec 2015 16:39:57 -0500
+Received: by mail-pa0-x235.google.com with SMTP id ur14so78420356pab.0;
+	Sat, 19 Dec 2015 13:39:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:date:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=k5mAJGNuHV4VvIXJwDYxZEwE7qSFixHLBTzM0qpM2Hs=;
-	b=aNGHqD53EW54kYaK6gsc+cQaiSUyyorFPMJmg3re1IxCa0E/KGDi285BKSj3Br5sgP
-	VX/eibRjJ9rued9HA8ZAKF5uBxr5zt39FEBtq8Qq69vttK8Q8m1Q8YCBBO17oGrgxnlT
-	YK+mBiVukJRCUUU1RpEKMWlWEknmKlzvrVhGtb7FSc7TKq7C85VOemIPcSJi/LPrxKBX
-	oZqgS7DBSp1qngeywBAkDhjNr4JDNETRtCx6XAkYvtx98uqYbhREWaY+P+2NajS4J/oN
-	eIoSTlAf0evd/FciXNZ5D6wHc5tSwfROq91yBFb4nE1BVLPxBoSvgmbVhDod0eeOPkvg
-	cFoQ==
-X-Received: by 10.66.255.10 with SMTP id am10mr15776626pad.79.1450561119471;
-	Sat, 19 Dec 2015 13:38:39 -0800 (PST)
+	bh=OV1BR4+CsRC1K4pYNeqCjylDh4CR32+r7DF/rLkFqfA=;
+	b=vEcfSo1WcfPq2AMvBBL0paKW1mnnaqVhsTU/llxXONCXxFBbwYV2yiYIXgEUhkB8Zt
+	awwY0Xkf+wXFaRD5ct9X9b+dALPrZKaYmOfKN8usex7n+c22+iz3LeQeTIqU70rgsFMw
+	U196X4B0y99M71XHUMVs+RyV/5ny8xQRdTHFy5WPOdRUeTDVr2HP34WwzTLf4tIvdKn9
+	FagLn1q7G9pPX7x6GXg+RnLTt1GAuLo3tlmYO2ZtirYinMURfI2Ze9X5w/PuB+wq/ej0
+	744u2uvVr9sMthlEPx3ruseYTtHuJ31rmuOu21rwszmKo6N/s3sly0vjYOh9J184t3Lk
+	lfeA==
+X-Received: by 10.67.4.42 with SMTP id cb10mr15761192pad.65.1450561196878;
+	Sat, 19 Dec 2015 13:39:56 -0800 (PST)
 Received: from pcrost-box (c211-31-14-155.rochd5.qld.optusnet.com.au.
 	[211.31.14.155]) by smtp.gmail.com with ESMTPSA id
-	o22sm25649137pfi.2.2015.12.19.13.38.34
+	o22sm25651597pfi.2.2015.12.19.13.39.51
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 19 Dec 2015 13:38:38 -0800 (PST)
+	Sat, 19 Dec 2015 13:39:55 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Sat, 19 Dec 2015 13:38:30 -0800
+Date: Sat, 19 Dec 2015 13:39:47 -0800
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20151219213830.GE4164@pcrost-box>
+Message-ID: <20151219213947.GF4164@pcrost-box>
 References: <1449851831-4966-1-git-send-email-peter.maydell@linaro.org>
-	<1449851831-4966-5-git-send-email-peter.maydell@linaro.org>
+	<1449851831-4966-6-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1449851831-4966-5-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1449851831-4966-6-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400e:c03::235
-Cc: Kevin O'Connor <kevin@koconnor.net>, Markus Armbruster <armbru@redhat.com>,
-	patches@linaro.org, qemu-devel@nongnu.org,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH 04/10] hw/sd: Add QOM bus which SD cards plug
-	in to
-X-BeenThere: qemu-arm@nongnu.org
+Cc: Kevin O'Connor <kevin@koconnor.net>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, patches@linaro.org,
+	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 05/10] hw/sd/sdhci.c: Update to use SDBus
+	APIs
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ofvHa3GvVH56
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: zOlyA0oKLk3J
 
-On Fri, Dec 11, 2015 at 04:37:05PM +0000, Peter Maydell wrote:
-> Add a QOM bus for SD cards to plug in to.
+On Fri, Dec 11, 2015 at 04:37:06PM +0000, Peter Maydell wrote:
+> Update the SDHCI code to use the new SDBus APIs.
 > 
-> Note that since sd_enable() is used only by one board and there
-> only as part of a broken implementation, we do not provide it in
-> the SDBus API (but instead add a warning comment about the old
-> function). Whoever converts OMAP and the nseries boards to QOM
-> will need to either implement the card switch properly or move
-> the enable hack into the OMAP MMC controller model.
+> This commit introduces the new command line options required
+> to connect a disk to sdhci-pci:
 > 
-> In the SDBus API, the old-style use of sd_set_cb to register some
-> qemu_irqs for notification of card insertion and write-protect
-> toggling is replaced with methods in the SDBusClass which the
-> card calls on status changes and methods in the SDClass which
-> the controller can call to find out the current status. The
-> query methods will allow us to remove the abuse of the 'register
-> irqs' API by controllers in their reset methods to trigger
-> the card to tell them about the current status again.
+>  -device sdhci-pci -drive id=mydrive,[...] -device sd,drive=mydrive
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/sd/Makefile.objs |   2 +-
->  hw/sd/core.c        | 146 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  hw/sd/sd.c          |  46 +++++++++++++++--
->  include/hw/sd/sd.h  |  60 +++++++++++++++++++++
->  4 files changed, 249 insertions(+), 5 deletions(-)
->  create mode 100644 hw/sd/core.c
+>  hw/sd/sdhci.c         | 95 +++++++++++++++++++++++++++++++++++----------------
+>  include/hw/sd/sdhci.h |  3 +-
+>  2 files changed, 67 insertions(+), 31 deletions(-)
 > 
-> diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-> index f1aed83..31c8330 100644
-> --- a/hw/sd/Makefile.objs
-> +++ b/hw/sd/Makefile.objs
-> @@ -1,6 +1,6 @@
->  common-obj-$(CONFIG_PL181) += pl181.o
->  common-obj-$(CONFIG_SSI_SD) += ssi-sd.o
-> -common-obj-$(CONFIG_SD) += sd.o
-> +common-obj-$(CONFIG_SD) += sd.o core.o
->  common-obj-$(CONFIG_SDHCI) += sdhci.o
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 991c9b5..17e08a2 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -55,6 +55,9 @@
+>          } \
+>      } while (0)
 >  
->  obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
-> diff --git a/hw/sd/core.c b/hw/sd/core.c
-> new file mode 100644
-> index 0000000..584eeb5
-> --- /dev/null
-> +++ b/hw/sd/core.c
-> @@ -0,0 +1,146 @@
-> +/*
-> + * SD card bus interface code.
-> + *
-> + * Copyright (c) 2015 Linaro Limited
-> + *
-> + * Author:
-> + *  Peter Maydell <peter.maydell@linaro.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2 or later, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-> + * more details.
-> + *
-> + * You should have received a copy of the GNU General Public License along with
-> + * this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
+> +#define TYPE_SDHCI_BUS "sdhci-bus"
+> +#define SDHCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/qdev-core.h"
-> +#include "sysemu/block-backend.h"
-> +#include "hw/sd/sd.h"
+>  /* Default SD/MMC host controller features information, which will be
+>   * presented in CAPABILITIES register of generic SD host controller at reset.
+>   * If not stated otherwise:
+> @@ -145,9 +148,9 @@ static void sdhci_raise_insertion_irq(void *opaque)
+>      }
+>  }
+>  
+> -static void sdhci_insert_eject_cb(void *opaque, int irq, int level)
+> +static void sdhci_set_inserted(DeviceState *dev, bool level)
+>  {
+> -    SDHCIState *s = (SDHCIState *)opaque;
+> +    SDHCIState *s = (SDHCIState *)dev;
+>      DPRINT_L1("Card state changed: %s!\n", level ? "insert" : "eject");
+>  
+>      if ((s->norintsts & SDHC_NIS_REMOVE) && level) {
+> @@ -172,9 +175,9 @@ static void sdhci_insert_eject_cb(void *opaque, int irq, int level)
+>      }
+>  }
+>  
+> -static void sdhci_card_readonly_cb(void *opaque, int irq, int level)
+> +static void sdhci_set_readonly(DeviceState *dev, bool level)
+>  {
+> -    SDHCIState *s = (SDHCIState *)opaque;
+> +    SDHCIState *s = (SDHCIState *)dev;
+>  
+>      if (level) {
+>          s->prnsts &= ~SDHC_WRITE_PROTECT;
+> @@ -186,6 +189,8 @@ static void sdhci_card_readonly_cb(void *opaque, int irq, int level)
+>  
+>  static void sdhci_reset(SDHCIState *s)
+>  {
+> +    DeviceState *dev = DEVICE(s);
 > +
-> +static SDState *get_card(SDBus *sdbus)
-> +{
-> +    /* We only ever have one child on the bus so just return it */
-> +    BusChild *kid = QTAILQ_FIRST(&sdbus->qbus.children);
+>      timer_del(s->insert_timer);
+>      timer_del(s->transfer_timer);
+>      /* Set all registers to 0. Capabilities registers are not cleared
+> @@ -193,7 +198,10 @@ static void sdhci_reset(SDHCIState *s)
+>       * initialization */
+>      memset(&s->sdmasysad, 0, (uintptr_t)&s->capareg - (uintptr_t)&s->sdmasysad);
+>  
+> -    sd_set_cb(s->card, s->ro_cb, s->eject_cb);
+> +    /* Reset other state based on current card insertion/readonly status */
+> +    sdhci_set_inserted(dev, sdbus_get_inserted(&s->sdbus));
+> +    sdhci_set_readonly(dev, sdbus_get_readonly(&s->sdbus));
 > +
-> +    if (!kid) {
-> +        return NULL;
-> +    }
-> +    return SD(kid->child);
-> +}
+>      s->data_count = 0;
+>      s->stopped_state = sdhc_not_stopped;
+>  }
+> @@ -211,7 +219,7 @@ static void sdhci_send_command(SDHCIState *s)
+>      request.cmd = s->cmdreg >> 8;
+>      request.arg = s->argument;
+>      DPRINT_L1("sending CMD%u ARG[0x%08x]\n", request.cmd, request.arg);
+> -    rlen = sd_do_command(s->card, &request, response);
+> +    rlen = sdbus_do_command(&s->sdbus, &request, response);
+>  
+>      if (s->cmdreg & SDHC_CMD_RESPONSE) {
+>          if (rlen == 4) {
+> @@ -270,7 +278,7 @@ static void sdhci_end_transfer(SDHCIState *s)
+>          request.cmd = 0x0C;
+>          request.arg = 0;
+>          DPRINT_L1("Automatically issue CMD%d %08x\n", request.cmd, request.arg);
+> -        sd_do_command(s->card, &request, response);
+> +        sdbus_do_command(&s->sdbus, &request, response);
+>          /* Auto CMD12 response goes to the upper Response register */
+>          s->rspreg[3] = (response[0] << 24) | (response[1] << 16) |
+>                  (response[2] << 8) | response[3];
+> @@ -302,7 +310,7 @@ static void sdhci_read_block_from_card(SDHCIState *s)
+>      }
+>  
+>      for (index = 0; index < (s->blksize & 0x0fff); index++) {
+> -        s->fifo_buffer[index] = sd_read_data(s->card);
+> +        s->fifo_buffer[index] = sdbus_read_data(&s->sdbus);
+>      }
+>  
+>      /* New data now available for READ through Buffer Port Register */
+> @@ -395,7 +403,7 @@ static void sdhci_write_block_to_card(SDHCIState *s)
+>      }
+>  
+>      for (index = 0; index < (s->blksize & 0x0fff); index++) {
+> -        sd_write_data(s->card, s->fifo_buffer[index]);
+> +        sdbus_write_data(&s->sdbus, s->fifo_buffer[index]);
+>      }
+>  
+>      /* Next data can be written through BUFFER DATORT register */
+> @@ -477,7 +485,7 @@ static void sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+>          while (s->blkcnt) {
+>              if (s->data_count == 0) {
+>                  for (n = 0; n < block_size; n++) {
+> -                    s->fifo_buffer[n] = sd_read_data(s->card);
+> +                    s->fifo_buffer[n] = sdbus_read_data(&s->sdbus);
+>                  }
+>              }
+>              begin = s->data_count;
+> @@ -518,7 +526,7 @@ static void sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+>              s->sdmasysad += s->data_count - begin;
+>              if (s->data_count == block_size) {
+>                  for (n = 0; n < block_size; n++) {
+> -                    sd_write_data(s->card, s->fifo_buffer[n]);
+> +                    sdbus_write_data(&s->sdbus, s->fifo_buffer[n]);
+>                  }
+>                  s->data_count = 0;
+>                  if (s->trnmod & SDHC_TRNS_BLK_CNT_EN) {
+> @@ -550,7 +558,7 @@ static void sdhci_sdma_transfer_single_block(SDHCIState *s)
+>  
+>      if (s->trnmod & SDHC_TRNS_READ) {
+>          for (n = 0; n < datacnt; n++) {
+> -            s->fifo_buffer[n] = sd_read_data(s->card);
+> +            s->fifo_buffer[n] = sdbus_read_data(&s->sdbus);
+>          }
+>          dma_memory_write(&address_space_memory, s->sdmasysad, s->fifo_buffer,
+>                           datacnt);
+> @@ -558,7 +566,7 @@ static void sdhci_sdma_transfer_single_block(SDHCIState *s)
+>          dma_memory_read(&address_space_memory, s->sdmasysad, s->fifo_buffer,
+>                          datacnt);
+>          for (n = 0; n < datacnt; n++) {
+> -            sd_write_data(s->card, s->fifo_buffer[n]);
+> +            sdbus_write_data(&s->sdbus, s->fifo_buffer[n]);
+>          }
+>      }
+>  
+> @@ -662,7 +670,7 @@ static void sdhci_do_adma(SDHCIState *s)
+>                  while (length) {
+>                      if (s->data_count == 0) {
+>                          for (n = 0; n < block_size; n++) {
+> -                            s->fifo_buffer[n] = sd_read_data(s->card);
+> +                            s->fifo_buffer[n] = sdbus_read_data(&s->sdbus);
+>                          }
+>                      }
+>                      begin = s->data_count;
+> @@ -703,7 +711,7 @@ static void sdhci_do_adma(SDHCIState *s)
+>                      dscr.addr += s->data_count - begin;
+>                      if (s->data_count == block_size) {
+>                          for (n = 0; n < block_size; n++) {
+> -                            sd_write_data(s->card, s->fifo_buffer[n]);
+> +                            sdbus_write_data(&s->sdbus, s->fifo_buffer[n]);
+>                          }
+>                          s->data_count = 0;
+>                          if (s->trnmod & SDHC_TRNS_BLK_CNT_EN) {
+> @@ -817,7 +825,7 @@ static void sdhci_data_transfer(void *opaque)
+>              break;
+>          }
+>      } else {
+> -        if ((s->trnmod & SDHC_TRNS_READ) && sd_data_ready(s->card)) {
+> +        if ((s->trnmod & SDHC_TRNS_READ) && sdbus_data_ready(&s->sdbus)) {
+>              s->prnsts |= SDHC_DOING_READ | SDHC_DATA_INHIBIT |
+>                      SDHC_DAT_LINE_ACTIVE;
+>              sdhci_read_block_from_card(s);
+> @@ -1154,15 +1162,10 @@ static inline unsigned int sdhci_get_fifolen(SDHCIState *s)
+>      }
+>  }
+>  
+> -static void sdhci_initfn(SDHCIState *s, BlockBackend *blk)
+> +static void sdhci_initfn(SDHCIState *s)
+>  {
+> -    s->card = sd_init(blk, false);
+> -    if (s->card == NULL) {
+> -        exit(1);
+> -    }
+> -    s->eject_cb = qemu_allocate_irq(sdhci_insert_eject_cb, s, 0);
+> -    s->ro_cb = qemu_allocate_irq(sdhci_card_readonly_cb, s, 0);
+> -    sd_set_cb(s->card, s->ro_cb, s->eject_cb);
+> +    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
+> +                        TYPE_SDHCI_BUS, DEVICE(s), "sd-bus");
+>  
+>      s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_insertion_irq, s);
+>      s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
+> @@ -1232,7 +1235,7 @@ static void sdhci_pci_realize(PCIDevice *dev, Error **errp)
+>      SDHCIState *s = PCI_SDHCI(dev);
+>      dev->config[PCI_CLASS_PROG] = 0x01; /* Standard Host supported DMA */
+>      dev->config[PCI_INTERRUPT_PIN] = 0x01; /* interrupt pin A */
+> -    sdhci_initfn(s, s->blk);
+> +    sdhci_initfn(s);
+>      s->buf_maxsz = sdhci_get_fifolen(s);
+>      s->fifo_buffer = g_malloc0(s->buf_maxsz);
+>      s->irq = pci_allocate_irq(dev);
+> @@ -1279,11 +1282,8 @@ static Property sdhci_sysbus_properties[] = {
+>  static void sdhci_sysbus_init(Object *obj)
+>  {
+>      SDHCIState *s = SYSBUS_SDHCI(obj);
+> -    DriveInfo *di;
+>  
+> -    /* FIXME use a qdev drive property instead of drive_get_next() */
+> -    di = drive_get_next(IF_SD);
+> -    sdhci_initfn(s, di ? blk_by_legacy_dinfo(di) : NULL);
+> +    sdhci_initfn(s);
+>  }
+>  
+>  static void sdhci_sysbus_finalize(Object *obj)
+> @@ -1296,6 +1296,26 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error ** errp)
+>  {
+>      SDHCIState *s = SYSBUS_SDHCI(dev);
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    DriveInfo *di;
+> +    BlockBackend *blk;
+> +    DeviceState *carddev;
 > +
-> +int sdbus_do_command(SDBus *sdbus, SDRequest *req, uint8_t *response)
-> +{
-> +    SDState *card = get_card(sdbus);
+> +    /* Create and plug in the sd card.
+> +     * FIXME: this should be done by the users of this device so we
+> +     * do not use drive_get_next() here.
+> +     */
+> +    di = drive_get_next(IF_SD);
+> +    blk = di ? blk_by_legacy_dinfo(di) : NULL;
 > +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        return sc->do_command(card, req, response);
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +void sdbus_write_data(SDBus *sdbus, uint8_t value)
-> +{
-> +    SDState *card = get_card(sdbus);
-> +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        sc->write_data(card, value);
-> +    }
-> +}
-> +
-> +uint8_t sdbus_read_data(SDBus *sdbus)
-> +{
-> +    SDState *card = get_card(sdbus);
-> +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        return sc->read_data(card);
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +bool sdbus_data_ready(SDBus *sdbus)
-> +{
-> +    SDState *card = get_card(sdbus);
-> +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        return sc->data_ready(card);
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +bool sdbus_get_inserted(SDBus *sdbus)
-> +{
-> +    SDState *card = get_card(sdbus);
-> +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        return sc->get_inserted(card);
-> +    }
-> +
-> +    return false;
-> +}
+> +    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD);
+> +    qdev_prop_set_drive(carddev, "drive", blk, errp);
+> +    if (*errp) {
 
-This I am not sure about. Realistically, the card has no self
-awareness of its ejection state so it can't be polled for "are
-you there". The card insertion switch is implemented as a
-physical switch on the slot itself and a property of the bus.
-
-The absence on presence of a device should determine this, making me
-think this should return !!card.
-
-Unfortunately, we have the case of the block UI being able to trigger a
-card ejection from underneath the bus level. But since the SD card is already
-using qdev_get_parent_bus() the removal from the bus can be managed at the
-card level.
-
-> +
-> +bool sdbus_get_readonly(SDBus *sdbus)
-> +{
-> +    SDState *card = get_card(sdbus);
-> +
-> +    if (card) {
-> +        SDClass *sc = SD_GET_CLASS(card);
-> +
-> +        return sc->get_readonly(card);
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +void sdbus_set_inserted(SDBus *sdbus, bool inserted)
-> +{
-> +    SDBusClass *sbc = SD_BUS_GET_CLASS(sdbus);
-> +    BusState *qbus = BUS(sdbus);
-> +
-> +    if (sbc->set_inserted) {
-> +        sbc->set_inserted(qbus->parent, inserted);
-> +    }
-> +}
-> +
-
-And following on from the bus removals, would this instead be a hotplug
-handler? qdev_unplug allows for callbacks to be registered for bus unplug
-events which seems to fit. The card would trigger a hot unplug while the
-controller implements a hotplug handler.
+It is generally valid for an errp to be NULL. I think we should use a
+local even if we know the caller will not pass NULL.
 
 Regards,
 Peter
 
-> +void sdbus_set_readonly(SDBus *sdbus, bool readonly)
-> +{
-> +    SDBusClass *sbc = SD_BUS_GET_CLASS(sdbus);
-> +    BusState *qbus = BUS(sdbus);
-> +
-> +    if (sbc->set_readonly) {
-> +        sbc->set_readonly(qbus->parent, readonly);
+> +        return;
 > +    }
-> +}
-> +
-> +    .name = TYPE_SD_BUS,
-> +    .parent = TYPE_BUS,
-> +    .instance_size = sizeof(SDBus),
-> +    .class_size = sizeof(SDBusClass),
-> +};
-> +
-> +static void sd_bus_register_types(void)
-> +{
-> +    type_register_static(&sd_bus_info);
-> +}
-> +
-> +type_init(sd_bus_register_types)
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index b4a5a62..4d17029 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -430,14 +430,41 @@ static void sd_reset(DeviceState *dev)
->      sd->expecting_acmd = false;
->  }
->  
-> +static bool sd_get_inserted(SDState *sd)
-> +{
-> +    return blk_is_inserted(sd->blk);
-> +}
-> +
-> +static bool sd_get_readonly(SDState *sd)
-> +{
-> +    return sd->wp_switch;
-> +}
-> +
->  static void sd_cardchange(void *opaque, bool load)
->  {
->      SDState *sd = opaque;
-> +    DeviceState *dev = DEVICE(sd);
-> +    SDBus *sdbus = SD_BUS(qdev_get_parent_bus(dev));
-> +    bool inserted = sd_get_inserted(sd);
-> +    bool readonly = sd_get_readonly(sd);
->  
-> -    qemu_set_irq(sd->inserted_cb, blk_is_inserted(sd->blk));
-> -    if (blk_is_inserted(sd->blk)) {
-> -        sd_reset(DEVICE(sd));
-> -        qemu_set_irq(sd->readonly_cb, sd->wp_switch);
-> +    if (inserted) {
-> +        sd_reset(dev);
+> +    object_property_set_bool(OBJECT(carddev), true, "realized", errp);
+> +    if (*errp) {
+> +        return;
 > +    }
+>  
+>      s->buf_maxsz = sdhci_get_fifolen(s);
+>      s->fifo_buffer = g_malloc0(s->buf_maxsz);
+> @@ -1303,6 +1323,7 @@ static void sdhci_sysbus_realize(DeviceState *dev, Error ** errp)
+>      memory_region_init_io(&s->iomem, OBJECT(s), &sdhci_mmio_ops, s, "sdhci",
+>              SDHC_REGISTERS_MAP_SIZE);
+>      sysbus_init_mmio(sbd, &s->iomem);
 > +
-> +    /* The IRQ notification is for legacy non-QOM SD controller devices;
-> +     * QOMified controllers use the SDBus APIs.
-> +     */
-> +    if (sdbus) {
-> +        sdbus_set_inserted(sdbus, inserted);
-> +        if (inserted) {
-> +            sdbus_set_readonly(sdbus, readonly);
-> +        }
-> +    } else {
-> +        qemu_set_irq(sd->inserted_cb, inserted);
-> +        if (inserted) {
-> +            qemu_set_irq(sd->readonly_cb, readonly);
-> +        }
->      }
 >  }
 >  
-> @@ -1799,17 +1826,28 @@ static Property sd_properties[] = {
->  static void sd_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +    SDClass *sc = SD_CLASS(klass);
->  
->      dc->realize = sd_realize;
->      dc->props = sd_properties;
->      dc->vmsd = &sd_vmstate;
->      dc->reset = sd_reset;
-> +    dc->bus_type = TYPE_SD_BUS;
-> +
-> +    sc->do_command = sd_do_command;
-> +    sc->write_data = sd_write_data;
-> +    sc->read_data = sd_read_data;
-> +    sc->data_ready = sd_data_ready;
-> +    sc->enable = sd_enable;
-> +    sc->get_inserted = sd_get_inserted;
-> +    sc->get_readonly = sd_get_readonly;
->  }
->  
->  static const TypeInfo sd_info = {
->      .name = TYPE_SD,
->      .parent = TYPE_DEVICE,
->      .instance_size = sizeof(SDState),
-> +    .class_size = sizeof(SDClass),
->      .class_init = sd_class_init,
->      .instance_init = sd_instance_init,
+>  static void sdhci_sysbus_class_init(ObjectClass *klass, void *data)
+> @@ -1325,10 +1346,26 @@ static const TypeInfo sdhci_sysbus_info = {
+>      .class_init = sdhci_sysbus_class_init,
 >  };
-> diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-> index 6997dfc..5e0321d 100644
-> --- a/include/hw/sd/sd.h
-> +++ b/include/hw/sd/sd.h
-> @@ -67,10 +67,49 @@ typedef struct {
->  } SDRequest;
 >  
->  typedef struct SDState SDState;
-> +typedef struct SDBus SDBus;
->  
->  #define TYPE_SD "sd"
->  #define SD(obj) OBJECT_CHECK(SDState, (obj), TYPE_SD)
-> +#define SD_CLASS(klass) OBJECT_CLASS_CHECK(SDClass, (klass), TYPE_SD)
-> +#define SD_GET_CLASS(obj) OBJECT_GET_CLASS(SDClass, (obj), TYPE_SD)
->  
-> +typedef struct {
-> +    /*< private >*/
-> +    DeviceClass parent_class;
-> +    /*< public >*/
+> +static void sdhci_bus_class_init(ObjectClass *klass, void *data)
+> +{
+> +    SDBusClass *sbc = SD_BUS_CLASS(klass);
 > +
-> +    int (*do_command)(SDState *sd, SDRequest *req, uint8_t *response);
-> +    void (*write_data)(SDState *sd, uint8_t value);
-> +    uint8_t (*read_data)(SDState *sd);
-> +    bool (*data_ready)(SDState *sd);
-> +    void (*enable)(SDState *sd, bool enable);
-> +    bool (*get_inserted)(SDState *sd);
-> +    bool (*get_readonly)(SDState *sd);
-> +} SDClass;
+> +    sbc->set_inserted = sdhci_set_inserted;
+> +    sbc->set_readonly = sdhci_set_readonly;
+> +}
 > +
-> +#define TYPE_SD_BUS "sd-bus"
-> +#define SD_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_SD_BUS)
-> +#define SD_BUS_CLASS(klass) OBJECT_CLASS_CHECK(SDBusClass, (klass), TYPE_SD_BUS)
-> +#define SD_BUS_GET_CLASS(obj) OBJECT_GET_CLASS(SDBusClass, (obj), TYPE_SD_BUS)
-> +
-> +struct SDBus {
-> +    BusState qbus;
+> +static const TypeInfo sdhci_bus_info = {
+> +    .name = TYPE_SDHCI_BUS,
+> +    .parent = TYPE_SD_BUS,
+> +    .instance_size = sizeof(SDBus),
+> +    .class_init = sdhci_bus_class_init,
 > +};
 > +
-> +typedef struct {
-> +    /*< private >*/
-> +    BusClass parent_class;
-> +    /*< public >*/
-> +
-> +    /* These methods are called by the SD device to notify the controller
-> +     * when the card insertion or readonly status changes
-> +     */
-> +    void (*set_inserted)(DeviceState *dev, bool inserted);
-> +    void (*set_readonly)(DeviceState *dev, bool readonly);
-> +} SDBusClass;
-> +
-> +/* Legacy functions to be used only by non-qdevified callers */
->  SDState *sd_init(BlockBackend *bs, bool is_spi);
->  int sd_do_command(SDState *sd, SDRequest *req,
->                    uint8_t *response);
-> @@ -78,6 +117,27 @@ void sd_write_data(SDState *sd, uint8_t value);
->  uint8_t sd_read_data(SDState *sd);
->  void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert);
->  bool sd_data_ready(SDState *sd);
-> +/* sd_enable should not be used -- it is only used on the nseries boards,
-> + * where it is part of a broken implementation of the MMC card slot switch
-> + * (there should be two card slots which are multiplexed to a single MMC
-> + * controller, but instead we model it with one card and controller and
-> + * disable the card when the second slot is selected, so it looks like the
-> + * second slot is always empty).
-> + */
->  void sd_enable(SDState *sd, bool enable);
+>  static void sdhci_register_types(void)
+>  {
+>      type_register_static(&sdhci_pci_info);
+>      type_register_static(&sdhci_sysbus_info);
+> +    type_register_static(&sdhci_bus_info);
+>  }
 >  
-> +/* Functions to be used by qdevified callers (working via
-> + * an SDBus rather than directly with SDState)
-> + */
-> +int sdbus_do_command(SDBus *sd, SDRequest *req, uint8_t *response);
-> +void sdbus_write_data(SDBus *sd, uint8_t value);
-> +uint8_t sdbus_read_data(SDBus *sd);
-> +bool sdbus_data_ready(SDBus *sd);
-> +bool sdbus_get_inserted(SDBus *sd);
-> +bool sdbus_get_readonly(SDBus *sd);
-> +
-> +/* Functions to be used by SD devices to report back to qdevified controllers */
-> +void sdbus_set_inserted(SDBus *sd, bool inserted);
-> +void sdbus_set_readonly(SDBus *sd, bool inserted);
-> +
->  #endif	/* __hw_sd_h */
+>  type_init(sdhci_register_types)
+> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+> index e78d938..4816516 100644
+> --- a/include/hw/sd/sdhci.h
+> +++ b/include/hw/sd/sdhci.h
+> @@ -37,9 +37,8 @@ typedef struct SDHCIState {
+>          PCIDevice pcidev;
+>          SysBusDevice busdev;
+>      };
+> -    SDState *card;
+> +    SDBus sdbus;
+>      MemoryRegion iomem;
+> -    BlockBackend *blk;
+>  
+>      QEMUTimer *insert_timer;       /* timer for 'changing' sd card. */
+>      QEMUTimer *transfer_timer;
 > -- 
 > 1.9.1
 > 

@@ -1,75 +1,75 @@
-Received: by 10.182.158.201 with SMTP id ww9csp1903090obb;
-        Sat, 19 Dec 2015 13:42:16 -0800 (PST)
-X-Received: by 10.55.80.194 with SMTP id e185mr14515417qkb.68.1450561336009;
-        Sat, 19 Dec 2015 13:42:16 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp1903478obb;
+        Sat, 19 Dec 2015 13:43:33 -0800 (PST)
+X-Received: by 10.140.144.205 with SMTP id 196mr15783953qhq.38.1450561413497;
+        Sat, 19 Dec 2015 13:43:33 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y188si22815981qhc.72.2015.12.19.13.42.15
+        by mx.google.com with ESMTPS id s105si22894624qgs.72.2015.12.19.13.43.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Dec 2015 13:42:15 -0800 (PST)
+        Sat, 19 Dec 2015 13:43:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38812 helo=lists.gnu.org)
+Received: from localhost ([::1]:38817 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aAPGZ-0003PC-Lg
-	for alex.bennee@linaro.org; Sat, 19 Dec 2015 16:42:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52377)
+	id 1aAPHp-0004KZ-8D
+	for alex.bennee@linaro.org; Sat, 19 Dec 2015 16:43:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPGF-000356-A7
-	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:41:56 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPHU-00042a-CP
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:43:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPGA-0001oo-62
-	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:41:55 -0500
-Received: from mail-pf0-x22c.google.com ([2607:f8b0:400e:c00::22c]:35091)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAPHP-00021g-8g
+	for qemu-devel@nongnu.org; Sat, 19 Dec 2015 16:43:12 -0500
+Received: from mail-pa0-x22b.google.com ([2607:f8b0:400e:c03::22b]:35684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aAPG9-0001ok-UW; Sat, 19 Dec 2015 16:41:50 -0500
-Received: by mail-pf0-x22c.google.com with SMTP id v86so67230086pfa.2;
-	Sat, 19 Dec 2015 13:41:49 -0800 (PST)
+	id 1aAPHP-00021c-0o; Sat, 19 Dec 2015 16:43:07 -0500
+Received: by mail-pa0-x22b.google.com with SMTP id jx14so49748694pad.2;
+	Sat, 19 Dec 2015 13:43:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:date:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=q8OZ3lf116MH3x5Gh6DyTK1vdkkKVEdPUSV1UikoAZ4=;
-	b=t3uEgYRTHkD75gDMiJIlLKcnJ1JkNKowHjA4uWFtwUamzOPtlr1lojgKTjmcpPttvc
-	B0XTuihjMyJDu7nmH71IEMZ6sY6phifToMRj7RrIvCdo1vM+8kN90SvreG7PpVxmQxq2
-	Jiuh/U5EDOADTjzZU9KgqXhHvaEvofqVpcf93Ty0txyEGP7KHMMgAR518s0ayeF37EpD
-	DThN7AatFFKiiJG1buo1iO9TroKlndVmSbWGughgj6SFaCWZM6sZBYyrkYD0pu7CSSzs
-	9tpFwMOEHQTI3yEjQP7T4xSUN1OaFxScAKkU/fItt4Y/AswBexK5f7yLqEY4CWxjmscA
-	c5Xg==
-X-Received: by 10.98.42.75 with SMTP id q72mr16030413pfq.10.1450561309357;
-	Sat, 19 Dec 2015 13:41:49 -0800 (PST)
+	bh=leQEU5nPznGz7iuYp3j4fopw/myWcxaeypKsifJ5Tnk=;
+	b=z5+o117EgwMdWh4qlehaOv4CKY/V3OeYVVzWewxhTB00moKQmUzgD4cSDlzFartWr/
+	rHexSbVGcHO7SIYdMtigPo+gN3o5eJIhmqqVUI6Jz/TNpIj9mDawIpKiaxv8AS5lQvkd
+	fARLCmHxugdj2ZdkksoOExtWZ6X7X4GOw014AKvqgHpJ6y+zOjfu0fl1JOZzz3IKoQSi
+	Vmj14mzNfpvBBfqo7SQlEZ5Ft5El1FPjVHheNg4/zaft/4XGOY8m1vJpFudw9qzSW1QM
+	5lH4zHtFy7otqoMd+8mFkJq7Iv1heFUCAa8J5vzhCBc68leQ2n/J6DA1s1fmDVN6vfQZ
+	YGsg==
+X-Received: by 10.66.237.102 with SMTP id vb6mr15673453pac.133.1450561386369; 
+	Sat, 19 Dec 2015 13:43:06 -0800 (PST)
 Received: from pcrost-box (c211-31-14-155.rochd5.qld.optusnet.com.au.
 	[211.31.14.155]) by smtp.gmail.com with ESMTPSA id
-	q8sm28238125pap.45.2015.12.19.13.41.44
+	q193sm10427010pfq.28.2015.12.19.13.43.01
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 19 Dec 2015 13:41:48 -0800 (PST)
+	Sat, 19 Dec 2015 13:43:05 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Sat, 19 Dec 2015 13:41:40 -0800
+Date: Sat, 19 Dec 2015 13:42:57 -0800
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20151219214140.GH4164@pcrost-box>
+Message-ID: <20151219214257.GI4164@pcrost-box>
 References: <1449851831-4966-1-git-send-email-peter.maydell@linaro.org>
-	<1449851831-4966-8-git-send-email-peter.maydell@linaro.org>
+	<1449851831-4966-9-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1449851831-4966-8-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1449851831-4966-9-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::22c
+X-Received-From: 2607:f8b0:400e:c03::22b
 Cc: Kevin O'Connor <kevin@koconnor.net>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>, patches@linaro.org,
 	qemu-devel@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 07/10] hw/sd/pxa2xx_mmci: convert to
-	SysBusDevice object
+Subject: Re: [Qemu-devel] [PATCH 08/10] hw/sd/pxa2xx_mmci: Update to use new
+	SDBus APIs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -83,148 +83,193 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 29bQT8il6rFb
+X-TUID: nKsmiJIYxlZZ
 
-On Fri, Dec 11, 2015 at 04:37:08PM +0000, Peter Maydell wrote:
-> Convert the pxa2xx_mmci device to be a sysbus device.
-> 
-> In this commit we only change the device itself, and leave
-> the interface to the SD card using the old non-SDBus APIs.
+On Fri, Dec 11, 2015 at 04:37:09PM +0000, Peter Maydell wrote:
+> Now the PXA2xx MMCI device is QOMified itself, we can
+> update it to use the SDBus APIs to talk to the SD card.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/sd/pxa2xx_mmci.c | 73 ++++++++++++++++++++++++++++++++++++++++-------------
->  1 file changed, 55 insertions(+), 18 deletions(-)
+>  hw/sd/pxa2xx_mmci.c | 80 +++++++++++++++++++++++++++++++++++++++++++----------
+>  1 file changed, 66 insertions(+), 14 deletions(-)
 > 
 > diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-> index b217080..b6bb390 100644
+> index b6bb390..a30be2b 100644
 > --- a/hw/sd/pxa2xx_mmci.c
 > +++ b/hw/sd/pxa2xx_mmci.c
-> @@ -11,16 +11,24 @@
->   */
->  
->  #include "hw/hw.h"
-> +#include "hw/sysbus.h"
->  #include "hw/arm/pxa.h"
+> @@ -16,10 +16,14 @@
 >  #include "hw/sd/sd.h"
 >  #include "hw/qdev.h"
-> +#include "hw/qdev-properties.h"
-> +
-> +#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
-> +#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
-> +
-> +typedef struct PXA2xxMMCIState {
-> +    SysBusDevice parent_obj;
+>  #include "hw/qdev-properties.h"
+> +#include "qemu/error-report.h"
 >  
-> -struct PXA2xxMMCIState {
->      MemoryRegion iomem;
+>  #define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+>  #define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
+>  
+> +#define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
+> +#define PXA2XX_MMCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
+> +
+>  typedef struct PXA2xxMMCIState {
+>      SysBusDevice parent_obj;
+>  
+> @@ -27,9 +31,11 @@ typedef struct PXA2xxMMCIState {
 >      qemu_irq irq;
 >      qemu_irq rx_dma;
 >      qemu_irq tx_dma;
+> +    qemu_irq inserted;
+> +    qemu_irq readonly;
 >  
-> +    BlockBackend *blk;
->      SDState *card;
+>      BlockBackend *blk;
+> -    SDState *card;
+> +    SDBus sdbus;
 >  
 >      uint32_t status;
-> @@ -48,7 +56,7 @@ struct PXA2xxMMCIState {
->      int resp_len;
+>      uint32_t clkrt;
+> @@ -129,7 +135,7 @@ static void pxa2xx_mmci_fifo_update(PXA2xxMMCIState *s)
 >  
->      int cmdreq;
-> -};
-> +} PXA2xxMMCIState;
+>      if (s->cmdat & CMDAT_WR_RD) {
+>          while (s->bytesleft && s->tx_len) {
+> -            sd_write_data(s->card, s->tx_fifo[s->tx_start ++]);
+> +            sdbus_write_data(&s->sdbus, s->tx_fifo[s->tx_start++]);
+>              s->tx_start &= 0x1f;
+>              s->tx_len --;
+>              s->bytesleft --;
+> @@ -139,7 +145,7 @@ static void pxa2xx_mmci_fifo_update(PXA2xxMMCIState *s)
+>      } else
+>          while (s->bytesleft && s->rx_len < 32) {
+>              s->rx_fifo[(s->rx_start + (s->rx_len ++)) & 0x1f] =
+> -                sd_read_data(s->card);
+> +                sdbus_read_data(&s->sdbus);
+>              s->bytesleft --;
+>              s->intreq |= INT_RXFIFO_REQ;
+>          }
+> @@ -173,7 +179,7 @@ static void pxa2xx_mmci_wakequeues(PXA2xxMMCIState *s)
+>      request.arg = s->arg;
+>      request.crc = 0;	/* FIXME */
 >  
->  #define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
->  #define MMC_STAT	0x04	/* MMC Status register */
-> @@ -474,31 +482,60 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+> -    rsplen = sd_do_command(s->card, &request, response);
+> +    rsplen = sdbus_do_command(&s->sdbus, &request, response);
+>      s->intreq |= INT_END_CMD;
+>  
+>      memset(s->resp_fifo, 0, sizeof(s->resp_fifo));
+> @@ -482,32 +488,59 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
 >                  BlockBackend *blk, qemu_irq irq,
 >                  qemu_irq rx_dma, qemu_irq tx_dma)
 >  {
-> +    DeviceState *dev;
-> +    SysBusDevice *sbd;
+> -    DeviceState *dev;
+> +    DeviceState *dev, *carddev;
+>      SysBusDevice *sbd;
 >      PXA2xxMMCIState *s;
+> +    Error *err = NULL;
 >  
-> -    s = (PXA2xxMMCIState *) g_malloc0(sizeof(PXA2xxMMCIState));
-> -    s->irq = irq;
-> -    s->rx_dma = rx_dma;
-> -    s->tx_dma = tx_dma;
-> -
-> -    memory_region_init_io(&s->iomem, NULL, &pxa2xx_mmci_ops, s,
-> -                          "pxa2xx-mmci", 0x00100000);
-> -    memory_region_add_subregion(sysmem, base, &s->iomem);
-> -
-> -    /* Instantiate the actual storage */
-> -    s->card = sd_init(blk, false);
-> +    dev = qdev_create(NULL, TYPE_PXA2XX_MMCI);
-> +    s = PXA2XX_MMCI(dev);
-> +    /* Reach into the device and initialize the SD card. This is
-> +     * unclean but will vanish when we update to SDBus APIs.
-> +     */
-> +    s->card = sd_init(s->blk, false);
->      if (s->card == NULL) {
->          exit(1);
->      }
-> -
-> -    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-> -                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-> -
-> +    qdev_init_nofail(dev);
-> +    sbd = SYS_BUS_DEVICE(dev);
-> +    sysbus_mmio_map(sbd, 0, base);
-> +    sysbus_connect_irq(sbd, 0, irq);
-> +    sysbus_connect_irq(sbd, 1, rx_dma);
-> +    sysbus_connect_irq(sbd, 2, tx_dma);
+>      dev = qdev_create(NULL, TYPE_PXA2XX_MMCI);
+>      s = PXA2XX_MMCI(dev);
+> -    /* Reach into the device and initialize the SD card. This is
+> -     * unclean but will vanish when we update to SDBus APIs.
+> -     */
+> -    s->card = sd_init(s->blk, false);
+> -    if (s->card == NULL) {
+> -        exit(1);
+> -    }
+> -    qdev_init_nofail(dev);
+>      sbd = SYS_BUS_DEVICE(dev);
+>      sysbus_mmio_map(sbd, 0, base);
+>      sysbus_connect_irq(sbd, 0, irq);
+>      sysbus_connect_irq(sbd, 1, rx_dma);
+>      sysbus_connect_irq(sbd, 2, tx_dma);
+> +
+> +    /* Create and plug in the sd card */
+> +    carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD);
+> +    qdev_prop_set_drive(carddev, "drive", blk, &err);
+> +    if (err) {
+> +        error_report("failed to init SD card: %s", error_get_pretty(err));
+> +        return NULL;
+> +    }
+> +    object_property_set_bool(OBJECT(carddev), true, "realized", &err);
+> +    if (err) {
+> +        error_report("failed to init SD card: %s", error_get_pretty(err));
+> +        return NULL;
+> +    }
+> +
+>      return s;
+>  }
+>  
+> +static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
+> +{
+> +    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
+> +
+> +    qemu_set_irq(s->inserted, inserted);
+> +}
+> +
+> +static void pxa2xx_mmci_set_readonly(DeviceState *dev, bool readonly)
+> +{
+> +    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
+> +
+> +    qemu_set_irq(s->readonly, readonly);
+> +}
+> +
+>  void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+>                            qemu_irq coverswitch)
+>  {
+> -    sd_set_cb(s->card, readonly, coverswitch);
+> +    DeviceState *dev = DEVICE(s);
+> +
+> +    s->readonly = readonly;
+> +    s->inserted = coverswitch;
+> +
+> +    pxa2xx_mmci_set_inserted(dev, sdbus_get_inserted(&s->sdbus));
+> +    pxa2xx_mmci_set_readonly(dev, sdbus_get_readonly(&s->sdbus));
 
-This looks like heterogenous GPIOs so should be separate named GPIO
-sets. Looking at the machine model, the irq goes to the "pic" but the
-DMA signals go to a different IP. I would leave the IRQ as the one and
-only sysbus IRQ, but implement the two DMAs as named GPIOs.
+Looking at the machine models, _mmci_handlers is only called at
+machine init time. So this should not be needed. devices should be
+triggering an initial call of _set_readonly that reliably propagates
+back up.
 
-Otherwise,
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+If we do need these two lines they should be in the reset handler.
 
 Regards,
 Peter
 
->      return s;
 >  }
 >  
->  void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
-> -                qemu_irq coverswitch)
-> +                          qemu_irq coverswitch)
->  {
->      sd_set_cb(s->card, readonly, coverswitch);
->  }
+>  static void pxa2xx_mmci_instance_init(Object *obj)
+> @@ -524,6 +557,17 @@ static void pxa2xx_mmci_instance_init(Object *obj)
+>  
+>      register_savevm(NULL, "pxa2xx_mmci", 0, 0,
+>                      pxa2xx_mmci_save, pxa2xx_mmci_load, s);
 > +
-> +static void pxa2xx_mmci_instance_init(Object *obj)
-> +{
-> +    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
-> +                          "pxa2xx-mmci", 0x00100000);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->irq);
-> +    sysbus_init_irq(sbd, &s->rx_dma);
-> +    sysbus_init_irq(sbd, &s->tx_dma);
-> +
-> +    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-> +                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
+> +    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
+> +                        TYPE_PXA2XX_MMCI_BUS, DEVICE(obj), "sd-bus");
 > +}
 > +
-> +static const TypeInfo pxa2xx_mmci_info = {
-> +    .name = TYPE_PXA2XX_MMCI,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(PXA2xxMMCIState),
-> +    .instance_init = pxa2xx_mmci_instance_init,
+> +static void pxa2xx_mmci_bus_class_init(ObjectClass *klass, void *data)
+> +{
+> +    SDBusClass *sbc = SD_BUS_CLASS(klass);
+> +
+> +    sbc->set_inserted = pxa2xx_mmci_set_inserted;
+> +    sbc->set_readonly = pxa2xx_mmci_set_readonly;
+>  }
+>  
+>  static const TypeInfo pxa2xx_mmci_info = {
+> @@ -533,9 +577,17 @@ static const TypeInfo pxa2xx_mmci_info = {
+>      .instance_init = pxa2xx_mmci_instance_init,
+>  };
+>  
+> +static const TypeInfo pxa2xx_mmci_bus_info = {
+> +    .name = TYPE_PXA2XX_MMCI_BUS,
+> +    .parent = TYPE_SD_BUS,
+> +    .instance_size = sizeof(SDBus),
+> +    .class_init = pxa2xx_mmci_bus_class_init,
 > +};
 > +
-> +static void pxa2xx_mmci_register_types(void)
-> +{
-> +    type_register_static(&pxa2xx_mmci_info);
-> +}
-> +
-> +type_init(pxa2xx_mmci_register_types)
+>  static void pxa2xx_mmci_register_types(void)
+>  {
+>      type_register_static(&pxa2xx_mmci_info);
+> +    type_register_static(&pxa2xx_mmci_bus_info);
+>  }
+>  
+>  type_init(pxa2xx_mmci_register_types)
 > -- 
 > 1.9.1
 > 

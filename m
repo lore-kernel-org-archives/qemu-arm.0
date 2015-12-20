@@ -1,192 +1,108 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2039541obb;
-        Sat, 19 Dec 2015 21:45:23 -0800 (PST)
-X-Received: by 10.140.93.77 with SMTP id c71mr16913536qge.46.1450590323488;
-        Sat, 19 Dec 2015 21:45:23 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp2039672obb;
+        Sat, 19 Dec 2015 21:46:02 -0800 (PST)
+X-Received: by 10.140.166.10 with SMTP id m10mr16574096qhm.35.1450590362145;
+        Sat, 19 Dec 2015 21:46:02 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 31si24300696qgg.12.2015.12.19.21.45.23
+        by mx.google.com with ESMTPS id g7si24283404qge.9.2015.12.19.21.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Dec 2015 21:45:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 19 Dec 2015 21:46:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39731 helo=lists.gnu.org)
+Received: from localhost ([::1]:39736 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aAWo7-0000w5-3c
-	for alex.bennee@linaro.org; Sun, 20 Dec 2015 00:45:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41279)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aAWoj-0001Wz-Tr
+	for alex.bennee@linaro.org; Sun, 20 Dec 2015 00:46:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAWn8-0007Sl-16
-	for qemu-arm@nongnu.org; Sun, 20 Dec 2015 00:44:23 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAWmq-0006vB-Qu
+	for qemu-devel@nongnu.org; Sun, 20 Dec 2015 00:44:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAWn3-0000eP-1C
-	for qemu-arm@nongnu.org; Sun, 20 Dec 2015 00:44:21 -0500
-Received: from mail-pf0-x22c.google.com ([2607:f8b0:400e:c00::22c]:34920)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aAWmp-0000cE-RU
+	for qemu-devel@nongnu.org; Sun, 20 Dec 2015 00:44:04 -0500
+Received: from mail-pa0-x22a.google.com ([2607:f8b0:400e:c03::22a]:35032)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aAWn0-0000dp-Qa; Sun, 20 Dec 2015 00:44:14 -0500
-Received: by mail-pf0-x22c.google.com with SMTP id v86so70817118pfa.2;
-	Sat, 19 Dec 2015 21:44:14 -0800 (PST)
+	id 1aAWmp-0000c9-Mc; Sun, 20 Dec 2015 00:44:03 -0500
+Received: by mail-pa0-x22a.google.com with SMTP id jx14so53342847pad.2;
+	Sat, 19 Dec 2015 21:44:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:references;
-	bh=+3ILpWmllHXO/T9r9+NUa1pax948bkHIsdlN9TteiRU=;
-	b=yLtCTm2zFd/+DzB3OjHNajD1fjF8NHRIw1ZV4ISZnStJvnH0Ckcp+WEP0LskLEDyhm
-	9p5sypsYroKSSKJw4dBRCXs8TMZrlFxwqKpS0dg8lFsVdch3ogn/Ts7LilWmuOwvZEz1
-	hiaWfEvvZQVAxtWDiI/i+w7QqbinRI6/afeSMA9b/EUVtj9HXePaA74SsnhPxHPeYsfQ
-	Iz3mgL0n57/3qgbVjKXMQpUm+gT0/ouZUFqvkMXiiXGvUE9e+zTgL2oRsEzzqiF3h3Zh
-	fxXf1upQ2WemhscDo6Mxf+D8U6M1ORgl2JCJuEH9FstEj/OjdMBti6/CcahHn0t2jNA9
-	9gow==
-X-Received: by 10.98.16.206 with SMTP id 75mr17447653pfq.23.1450590254296;
-	Sat, 19 Dec 2015 21:44:14 -0800 (PST)
+	bh=D9ZQx/9DZdVn2dgeoF7JEjB+PUVBCPR7Urj1ntFYYfA=;
+	b=fdujuoCVmA8q1pi4wItB3ovBGLAbHUsGFJQM4Av4O3orBGAn4yQVmQVTmbCkiqUFHx
+	Usaq235d4F2ZgayE591tbRl8wrAzcJjgMYb/y6rgGN5VXgydYQ/tDLVgtlD5iUKHq5Hl
+	AKxPub/UubPbxNf/rpnxpEKzMJ2SnVVVHlKKr2aMtENRmgo/s9hCYDOE2XG2SNrnxfEQ
+	Fgion+CIk+4oBVkzEDT/u1z7PEcW3wOhNjwKEm9Q5hspGDlr5EJ+guKHCLp3EYsBN6OQ
+	tRK6KF2+yKqIuU0XYjIXp+Afo2sQvZpfT0se/hCIGSmV2Hbk6Q3XaJ3ggxpR62dEj46a
+	GH4w==
+X-Received: by 10.66.190.98 with SMTP id gp2mr17611182pac.64.1450590243132;
+	Sat, 19 Dec 2015 21:44:03 -0800 (PST)
 Received: from localhost.localdomain
 	(c211-31-14-155.rochd5.qld.optusnet.com.au. [211.31.14.155])
-	by smtp.gmail.com with ESMTPSA id c27sm894550pfd.50.2015.12.19.21.44.10
+	by smtp.gmail.com with ESMTPSA id c27sm894550pfd.50.2015.12.19.21.43.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sat, 19 Dec 2015 21:44:13 -0800 (PST)
+	Sat, 19 Dec 2015 21:44:01 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Sat, 19 Dec 2015 21:43:37 -0800
-Message-Id: <27dea50e71d768db3752dcad34be0f4c4234fd21.1450570397.git.crosthwaite.peter@gmail.com>
+Date: Sat, 19 Dec 2015 21:43:34 -0800
+Message-Id: <1bbbe46632f566b40ed1cb8c751ee9f04db7b496.1450570397.git.crosthwaite.peter@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1450570397.git.crosthwaite.peter@gmail.com>
 References: <cover.1450570397.git.crosthwaite.peter@gmail.com>
 In-Reply-To: <cover.1450570397.git.crosthwaite.peter@gmail.com>
 References: <cover.1450570397.git.crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::22c
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	alistair.francis@xilinx.com
-Subject: [Qemu-arm] [PATCH v6 5/6] xlnx-zynqmp: Connect the SPI devices
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c03::22a
+Cc: peter.maydell@linaro.org, crosthwaite.peter@gmail.com, qemu-arm@nongnu.org,
+	pbonzini@redhat.com, alistair.francis@xilinx.com
+Subject: [Qemu-devel] [PATCH v6 2/6] m25p80.c: Add sst25wf080 SPI flash
+	device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vru5RMHDXgIQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SE0nRhzr/4b5
 
 From: Alistair Francis <alistair.francis@xilinx.com>
 
-Connect the Xilinx SPI devices to the ZynqMP model.
+Add the sst25wf080 SPI flash device.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-[ PC changes
- * Use QOM alias for bus connectivity on SoC level
-]
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
-V6:
- - Use QOM alias for bus connectivity on SoC level
-V5:
- - Use the bus renaming function
-V4:
- - Rename the SPI busses so that they can all be accessed from the SoC
- - Don't set the num-busses property
-V3:
- - Expose the SPI Bus as part of the SoC device
-V2:
- - Don't connect the SPI flash to the SoC
 
- hw/arm/xlnx-zynqmp.c         | 30 ++++++++++++++++++++++++++++++
- include/hw/arm/xlnx-zynqmp.h |  3 +++
- 2 files changed, 33 insertions(+)
+ hw/block/m25p80.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 87553bb..f2e13a4 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -56,6 +56,14 @@ static const int sdhci_intr[XLNX_ZYNQMP_NUM_SDHCI] = {
-     48, 49,
- };
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index efc43dd..7b9f97c 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -163,6 +163,7 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("sst25wf010",  0xbf2502,      0,  64 << 10,   2, ER_4K) },
+     { INFO("sst25wf020",  0xbf2503,      0,  64 << 10,   4, ER_4K) },
+     { INFO("sst25wf040",  0xbf2504,      0,  64 << 10,   8, ER_4K) },
++    { INFO("sst25wf080",  0xbf2505,      0,  64 << 10,  16, ER_4K) },
  
-+static const uint64_t spi_addr[XLNX_ZYNQMP_NUM_SPIS] = {
-+    0xFF040000, 0xFF050000,
-+};
-+
-+static const int spi_intr[XLNX_ZYNQMP_NUM_SPIS] = {
-+    19, 20,
-+};
-+
- typedef struct XlnxZynqMPGICRegion {
-     int region_index;
-     uint32_t address;
-@@ -112,6 +120,12 @@ static void xlnx_zynqmp_init(Object *obj)
-         qdev_set_parent_bus(DEVICE(&s->sdhci[i]),
-                             sysbus_get_default());
-     }
-+
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_SPIS; i++) {
-+        object_initialize(&s->spi[i], sizeof(s->spi[i]),
-+                          TYPE_XILINX_SPIPS);
-+        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
-+    }
- }
- 
- static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-@@ -286,6 +300,22 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci[i]), 0,
-                            gic_spi[sdhci_intr[i]]);
-     }
-+
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_SPIS; i++) {
-+        char bus_name[6];
-+
-+        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-+                           gic_spi[spi_intr[i]]);
-+
-+        /* Alias controller SPI bus to the SoC itself */
-+        snprintf(bus_name, 6, "spi%d", i);
-+        object_property_add_alias(OBJECT(s), bus_name,
-+                                  OBJECT(&s->spi[i]), "spi0",
-+                                  &error_abort);
-+    }
- }
- 
- static Property xlnx_zynqmp_props[] = {
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index d116092..f598a43 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -25,6 +25,7 @@
- #include "hw/ide/pci.h"
- #include "hw/ide/ahci.h"
- #include "hw/sd/sdhci.h"
-+#include "hw/ssi/xilinx_spips.h"
- 
- #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
- #define XLNX_ZYNQMP(obj) OBJECT_CHECK(XlnxZynqMPState, (obj), \
-@@ -35,6 +36,7 @@
- #define XLNX_ZYNQMP_NUM_GEMS 4
- #define XLNX_ZYNQMP_NUM_UARTS 2
- #define XLNX_ZYNQMP_NUM_SDHCI 2
-+#define XLNX_ZYNQMP_NUM_SPIS 2
- 
- #define XLNX_ZYNQMP_NUM_OCM_BANKS 4
- #define XLNX_ZYNQMP_OCM_RAM_0_ADDRESS 0xFFFC0000
-@@ -66,6 +68,7 @@ typedef struct XlnxZynqMPState {
-     CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
-     SysbusAHCIState sata;
-     SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
-+    XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
- 
-     char *boot_cpu;
-     ARMCPU *boot_cpu_ptr;
+     /* ST Microelectronics -- newer production may have feature updates */
+     { INFO("m25p05",      0x202010,      0,  32 << 10,   2, 0) },
 -- 
 1.9.1
 

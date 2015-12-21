@@ -1,66 +1,69 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2751322obb;
-        Mon, 21 Dec 2015 05:12:51 -0800 (PST)
-X-Received: by 10.55.76.11 with SMTP id z11mr24222827qka.83.1450703571465;
-        Mon, 21 Dec 2015 05:12:51 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3082242obb;
+        Mon, 21 Dec 2015 15:33:31 -0800 (PST)
+X-Received: by 10.140.27.139 with SMTP id 11mr24908293qgx.62.1450740811409;
+        Mon, 21 Dec 2015 15:33:31 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e38si29361768qgd.22.2015.12.21.05.12.51
+        by mx.google.com with ESMTPS id n128si21678695qhn.21.2015.12.21.15.33.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Dec 2015 05:12:51 -0800 (PST)
+        Mon, 21 Dec 2015 15:33:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44841 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47797 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aB0Gg-0006r7-PQ
-	for alex.bennee@linaro.org; Mon, 21 Dec 2015 08:12:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34621)
+	id 1aB9xL-0006Kl-1G
+	for alex.bennee@linaro.org; Mon, 21 Dec 2015 18:33:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aB0Ge-0006ny-7j
-	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 08:12:49 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aB9xI-0006Hj-BQ
+	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:33:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aB0Gd-0002mz-7y
-	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 08:12:48 -0500
-Received: from szxga01-in.huawei.com ([58.251.152.64]:7305)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aB9xG-0006Xa-VP
+	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:33:28 -0500
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:35988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1aB0GX-0002kY-98; Mon, 21 Dec 2015 08:12:41 -0500
-Received: from 172.24.1.51 (EHLO szxeml432-hub.china.huawei.com)
-	([172.24.1.51])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DBG72667; Mon, 21 Dec 2015 21:12:21 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml432-hub.china.huawei.com
-	(10.82.67.209) with Microsoft SMTP Server id 14.3.235.1;
-	Mon, 21 Dec 2015 21:12:13 +0800
-Message-ID: <5677FAA8.3050901@huawei.com>
-Date: Mon, 21 Dec 2015 21:12:08 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aB9xE-0006WG-5A; Mon, 21 Dec 2015 18:33:24 -0500
+Received: by mail-wm0-x230.google.com with SMTP id p187so88181785wmp.1;
+	Mon, 21 Dec 2015 15:33:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=2TQWj8haj1rgNLbjzrQrETbrX/iyMGZBS3OvBc1WjSg=;
+	b=pgI+IJkwRql+Xd7RnvLbBNvcKRirIcgTHVKI3XrIehpj49BrHZydKSIhCeth9LSU8T
+	vplBEwvEyDSDl2JkBj7YwZUGmf5gZvWuwV/7Ywz8ZzfPzz4X2Tywzh80yUDo5E0+Qwd/
+	KPRX+hIUmLiOfIuwJtsVw8RuZzlpdMabPmAnpQjLTjBQFCIXGqpUPRpR8+wBA83xIxYZ
+	UuCl6I+g5XU5vuwC5oyAiVe1/D59gKDsdp12qj0cvUn2g+D+uDSua6w3Iwsib3/l9j3L
+	naBpRtTAT7agWUUZ1DHWyQq2UvoGNCFBkN3Tn9lOzLRbM8rjqXZ/3SilHBTauc/Eos1j
+	euxQ==
 MIME-Version: 1.0
-To: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <1449704528-289297-1-git-send-email-imammedo@redhat.com>	<20151219203841.GC25389@redhat.com>
-	<20151221140042.5a74f8c9@nial.brq.redhat.com>
-In-Reply-To: <20151221140042.5a74f8c9@nial.brq.redhat.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.5677FAB7.010F, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: b50aeb3c3901ac66e57642fe677e9474
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
+X-Received: by 10.28.184.136 with SMTP id i130mr4485276wmf.96.1450740803484;
+	Mon, 21 Dec 2015 15:33:23 -0800 (PST)
+Received: by 10.28.88.11 with HTTP; Mon, 21 Dec 2015 15:33:23 -0800 (PST)
+In-Reply-To: <BLUPR0301MB20345C0D49B62FE27C9BB9439EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
+	<BLUPR0301MB20345C0D49B62FE27C9BB9439EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Mon, 21 Dec 2015 15:33:23 -0800
+Message-ID: <CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::230
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	ARM ACPI Subsystem <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/74] pc: acpi: convert DSDT to
- AML API and drop ASL templates support
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -74,71 +77,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JKvVk/07hCKE
+X-TUID: HuEQqVzpKzrR
 
+On Mon, Dec 21, 2015 at 3:15 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Hi Peter,
+>
+> Thanks for the review!
+>
+>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> Sent: Monday, 21 December 2015 14:49
+>> On Thu, Dec 3, 2015 at 10:01 PM, Andrew Baumann
+>> <Andrew.Baumann@microsoft.com> wrote:
+>> > This adds the system mailboxes which are used to communicate with a
+>> > number of GPU peripherals on Pi/Pi2.
+>> >
+>> > Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+>> > ---
+>> >  default-configs/arm-softmmu.mak      |   1 +
+>> >  hw/misc/Makefile.objs                |   1 +
+>> >  hw/misc/bcm2835_sbm.c                | 280 ++++++++++++++++++++
+>>
+>> >  include/hw/arm/bcm2835_arm_control.h | 481
+>> +++++++++++++++++++++++++++++++++++
+>>
+>> Do we need this file as of this patch?
+>
+> Yes, for ARM_MC_IHAVEDATAIRQEN and other related defines.
+>
+> [...]
+>> > +static void bcm2835_sbm_update(BCM2835SbmState *s)
+>>
+>> What does Sbm stand for? If it is acronym is should be all caps in camel=
+ case.
+>
+> I'm not sure -- it comes from Gregory's code; maybe he can comment? Where=
+ this device gets instantiated, there is a comment of
+>
+> /* Semaphores / Doorbells / Mailboxes */
+>
+> ... but only mailboxes are implemented here. I'm guessing maybe it's inte=
+nded as "system mailboxes". I can rename it.
+>
+>
+>> > +{
+>> > +    int set;
+>>
+>> bool.
+>>
+>> > +    int done, n;
+>> > +    uint32_t value;
+>> > +
+>> > +    /* Avoid unwanted recursive calls */
+>> > +    s->mbox_irq_disabled =3D 1;
+>> > +
+>> > +    /* Get pending responses and put them in the vc->arm mbox */
+>> > +    done =3D 0;
+>> > +    while (!done) {
+>> > +        done =3D 1;
+>> > +        if (s->mbox[0].status & ARM_MS_FULL) {
+>> > +            /* vc->arm mbox full, exit */
+>>
+>> break here.
+>>
+>> > +        } else {
+>>
+>> so you can drop the else and get back a level of indent.
+>>
+>> > +            for (n =3D 0; n < MBOX_CHAN_COUNT; n++) {
+>> > +                if (s->available[n]) {
+>> > +                    value =3D ldl_phys(&s->mbox_as, n<<4);
+>> > +                    if (value !=3D MBOX_INVALID_DATA) {
+>> > +                        mbox_push(&s->mbox[0], value);
+>> > +                    } else {
+>> > +                        /* Hmmm... */
+>>
+>> Needs more comment :)
+>
+> Gregory -- help! :)
+>
+> [...]
+>> > +    s->available[irq] =3D level;
+>> > +    if (!s->mbox_irq_disabled) {
+>>
+>> I don't think you need this. IO devices are not thread safe and
+>> core-code knows it. So you don't need to worry about interruption and
+>> re-entry of your IRQ handler.
+>
+> I will have to put a debugger on this to confirm, but I think the issue i=
+s that we are using a private memory region and GPIOs to route mailbox data=
+ and interrupts to the relevant sub peripherals. The ldl_phys invokes anoth=
+er device emulation (such as bcm2835_property.c in this series), which may =
+cause it to signal an interrupt back to us via qemu_set_irq which will recu=
+rsively run our handler. We want that IRQ to be recorded but "squashed".
+>
+> [...]
+>> > +
+>> > +    switch (offset) {
+>> > +    case 0x80:  /* MAIL0_READ */
+>> > +    case 0x84:
+>> > +    case 0x88:
+>> > +    case 0x8c:
+>>
+>> case 0x80..0x8c
+>
+> Woah! Is that standard C?
+>
 
+Yes, its probably one of the more recent language standards though.
+QEMU does use to more modern features liberally.
 
-On 2015/12/21 21:00, Igor Mammedov wrote:
-> On Sat, 19 Dec 2015 22:38:41 +0200
-> "Michael S. Tsirkin" <mst@redhat.com> wrote:
-> 
->> > On Thu, Dec 10, 2015 at 12:40:54AM +0100, Igor Mammedov wrote:
->>> > > Due to huge size, CCing only cover letter instead of individual patches.
->>> > > 
->>> > > Series consist of 2 parts the 1st part prefixed 'acpi:' adds necessary
->>> > > AML API functions and the second part converts DSDT using existing and
->>> > > new AML API.
->>> > > 
->>> > > Series does exact byte by byte conversion and passes ACPI tables
->>> > > 'make check' tests.
->>> > > The conversion first moves common for PIIX4/Q35 parts, getting rid of *.dsl
->>> > > includes and then converts PIIX4 and Q35 parts of DSDT.
->>> > > 
->>> > > Diff-stat looks nice but actual code base is reduced by ~2000LOC
->>> > > while the rest of 10000 removals is dropping precompiled AML
->>> > > templates from tree.
->>> > > 
->>> > > There are some AML parts that could be optimized/simplified and shared
->>> > > between PIIX4/Q35/ARM but doing it will break exact match with original
->>> > > tests, hence it's left out of the scope of this series.
->>> > > 
->>> > > CC: "Michael S. Tsirkin" <mst@redhat.com> (supporter:ACPI/SMBIOS)
->>> > > CC: Shannon Zhao <zhaoshenglong@huawei.com> (maintainer:ARM ACPI Subsystem)
->>> > > CC: Peter Maydell <peter.maydell@linaro.org> (maintainer:ARM)
->>> > > CC: Paolo Bonzini <pbonzini@redhat.com> (maintainer:X86)
->>> > > CC: Richard Henderson <rth@twiddle.net> (maintainer:X86)
->>> > > CC: Eduardo Habkost <ehabkost@redhat.com> (maintainer:X86)
->>> > > CC: qemu-arm@nongnu.org (open list:ARM ACPI Subsystem)
->> > 
->> > I think this is a nice series, and I think we can live with the fact
->> > make check warns in the middle.
->> > 
->> > I sent some comments I'd like to see addressed.
->> > 
->> > Main points
->> > 	- one v2 patch seems garbled
->> > 	- please don't create functions with tons of parameters
->> > 	  which just do if (a) on each of these internally.
->> > 	  instead, move common code into a small function that
->> > 	  can be reused without so many conditionals.
->> > 	- I really dislike local variables starting with a_ for
->> > 	  no good reason.
-> Michael,
-> 
-> Could you apply already reviewed AML API patches 1-24
-> and push it to master early, pls?
-> 
-+1
+> [...]
+>> > --- /dev/null
+>> > +++ b/include/hw/arm/bcm2835_arm_control.h
+>> > @@ -0,0 +1,481 @@
+>> > +/*
+>> > + *  linux/arch/arm/mach-bcm2708/arm_control.h
+> [...]
+>> When you have a regular structure like this, you should collapse it
+>> down using some arithmatic:
+>
+> Notice that this file comes from Linux. I know it's not pretty, but can w=
+e please keep it as-is, for comparison purposes? I'm not sure there's much =
+value in cleaning it up locally...
+>
 
-BTW, Below patches are already in master.
+It looks very autogenerated and seems pretty nasty on the repetition.
 
-[PATCH 15/74] acpi: support serialized method
-[PATCH 24/74] acpi: extend aml_interrupt() to support multiple irqs
+As implementers of the hardware, it is much rarer to need these
+repetitious defs than the software users on the other side. "Do
+something specific with CPU#3's Mbox#5" is going to appear in
+software, but hardware implementers generally don't have a choice to
+implement things specifically and it usually ends up being looped and
+the exploded defs are never used. If there are only a handful of
+genuinely single defs needed, can they be fished out?
 
-> That will help to reduce collisions with other AML
-> patches on list and provide more complete API for others to use.
-> 
+Regards,
+Peter
 
--- 
-Shannon
-
+>> > --- /dev/null
+>> > +++ b/include/hw/misc/bcm2835_sbm.h
+>> > @@ -0,0 +1,37 @@
+>> > +/*
+>> > + * Raspberry Pi emulation (c) 2012 Gregory Estrade
+>> > + * This code is licensed under the GNU GPLv2 and later.
+>> > + */
+>> > +
+>> > +#ifndef BCM2835_SBM_H
+>> > +#define BCM2835_SBM_H
+>> > +
+>> > +#include "hw/sysbus.h"
+>> > +#include "exec/address-spaces.h"
+>> > +#include "hw/arm/bcm2835_mbox.h"
+>> > +
+>> > +#define TYPE_BCM2835_SBM "bcm2835_sbm"
+>> > +#define BCM2835_SBM(obj) \
+>> > +        OBJECT_CHECK(BCM2835SbmState, (obj), TYPE_BCM2835_SBM)
+>> > +
+>> > +typedef struct {
+>> > +    MemoryRegion *mbox_mr;
+>> > +    AddressSpace mbox_as;
+>>
+>> I can't see where these two fields are used. A quick scan shows that
+>> the SbmState's copy is uses for all DMA ops. If these are needed,
+>> mbox_init should pass a pointer to the the SbmState then this saves
+>> the pointer and navigates as needed back to the container structure to
+>> get the AS.
+>
+> You're right. They're uninitialised/unused detritus from a previous refac=
+tor. I'll remove them.
+>
+> Thanks,
+> Andrew

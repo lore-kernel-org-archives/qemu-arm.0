@@ -1,64 +1,97 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3064834obb;
-        Mon, 21 Dec 2015 14:51:17 -0800 (PST)
-X-Received: by 10.140.20.144 with SMTP id 16mr29252524qgj.45.1450738277477;
-        Mon, 21 Dec 2015 14:51:17 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3075581obb;
+        Mon, 21 Dec 2015 15:16:04 -0800 (PST)
+X-Received: by 10.55.76.140 with SMTP id z134mr28731812qka.30.1450739764561;
+        Mon, 21 Dec 2015 15:16:04 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 97si31480360qkt.81.2015.12.21.14.51.17
+        by mx.google.com with ESMTPS id c7si31592272qgf.49.2015.12.21.15.16.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Dec 2015 14:51:17 -0800 (PST)
+        Mon, 21 Dec 2015 15:16:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47704 helo=lists.gnu.org)
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:47756 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aB9IT-0007lq-7b
-	for alex.bennee@linaro.org; Mon, 21 Dec 2015 17:51:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51979)
+	id 1aB9gS-00032O-23
+	for alex.bennee@linaro.org; Mon, 21 Dec 2015 18:16:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56445)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aB9Gd-0005P6-R2
-	for qemu-devel@nongnu.org; Mon, 21 Dec 2015 17:49:27 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aB9fz-0002bc-HM
+	for qemu-devel@nongnu.org; Mon, 21 Dec 2015 18:15:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aB9GZ-0005dc-T2
-	for qemu-devel@nongnu.org; Mon, 21 Dec 2015 17:49:23 -0500
-Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:36427)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aB9fv-0002Lt-7g
+	for qemu-devel@nongnu.org; Mon, 21 Dec 2015 18:15:35 -0500
+Received: from mail-bn1bon0117.outbound.protection.outlook.com
+	([157.56.111.117]:27132
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aB9GZ-0005dV-Fg; Mon, 21 Dec 2015 17:49:19 -0500
-Received: by mail-wm0-x231.google.com with SMTP id p187so87258463wmp.1;
-	Mon, 21 Dec 2015 14:49:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=k0IKtjj11YLZSsDerHPRN7BGCDliYOVh7sj53rWDlIA=;
-	b=P8Dw9sZIHV3e/CgAZSoANKcIalYZgG3BDY+pLm3rNDMfZlDjw5eTcv1ZhMb4hW9rRY
-	UxOzN1JyWIhgDm2o9/PuZZy6WeVV231dZkZi15XKK5LTMoCKwKoYYshpe9s1goleXMOa
-	d6g6nDvbcGJPejZTzvDbre0Buxjsmzyz8N9LyxO+Z1vqJvdotnP+2R8v3q7nkqJ/TdnH
-	sbfv9SO5CrRLeFgb+JCGufHNAG48H1pk/EQt8tYAu7KkFg/i3UJSRSRf6QoVU7EuGfrZ
-	OtfIKkv88ub+8BH9nlb/pc7sn+mGptOi48OpoxmoWD0CIe6RvOhRyHakBCQYF9X94ifX
-	jNGQ==
-MIME-Version: 1.0
-X-Received: by 10.28.65.193 with SMTP id o184mr2935268wma.15.1450738158696;
-	Mon, 21 Dec 2015 14:49:18 -0800 (PST)
-Received: by 10.28.88.11 with HTTP; Mon, 21 Dec 2015 14:49:18 -0800 (PST)
-In-Reply-To: <1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aB9fu-0002Ld-T9
+	for qemu-devel@nongnu.org; Mon, 21 Dec 2015 18:15:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=qIDH03aVKWQjuc9gosucZkykAPHlNU/24eSznJirHdg=;
+	b=DUCqxWHREWNloqKNQ5fdeUpLOL6TOTOqOVOUd+Zz2frwr6j8k35BzMjlUpeWDC6f6Om47kf40xDHYayLzw0JTv1El7GM/X/WO2fmYjCEUPmx4sNW5T5i9qOYVvznRgU14htozJ6CE6HGWGdYNoL2VR1iUBXyCXBkQOrkACkXqZU=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
+	SMTP Server (TLS) id 15.1.361.13; Mon, 21 Dec 2015 23:15:28 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0361.006; Mon, 21 Dec 2015 23:15:28 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Thread-Topic: [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
+Thread-Index: AQHRLllz7K4EEY2RuUSr8mGMJ47UG57WJvIAgAAByCA=
+Date: Mon, 21 Dec 2015 23:15:28 +0000
+Message-ID: <BLUPR0301MB20345C0D49B62FE27C9BB9439EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
-Date: Mon, 21 Dec 2015 14:49:18 -0800
-Message-ID: <CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::231
+	<CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
+In-Reply-To: <CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [2001:4898:80e8:b::724]
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
+	5:oZlJvSqaygkjbYQwaSwUFvBSukvD5KHzQXXbMA+4OjNccIGbLxaFIWm/l0yxODLb676r6cekzGJvKln9hLUP4hhFlxpt6wTHyNkgCs+dyDyUhk6OPpjiCbNwzugHGAMHw9Qiprd5HCFSc2QOGpc/ag==;
+	24:/4RGfw9cF4mzGh9NLnvkVS432oJlaXVlIfd1Ds7LLb0ZfNcWF9ydvKym8BhdjbApi53sb6NELgOKM2tQ9INRi1EalL8EvfzvFbCpnozLrBo=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
+x-microsoft-antispam-prvs: <BLUPR0301MB203462BD52204265692FAAC59EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(520078)(5005006)(8121501046)(10201501046)(3002001)(61426038)(61427038);
+	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; 
+x-forefront-prvs: 079756C6B9
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(189002)(57704003)(164054003)(377454003)(199003)(51914003)(24454002)(86362001)(5005710100001)(99286002)(50986999)(10400500002)(1411001)(92566002)(2900100001)(33656002)(19580395003)(5002640100001)(54356999)(101416001)(74316001)(86612001)(5003600100002)(76176999)(1096002)(110136002)(1220700001)(2950100001)(105586002)(189998001)(40100003)(5008740100001)(586003)(106356001)(5001960100002)(87936001)(102836003)(81156007)(77096005)(11100500001)(10290500002)(8990500004)(10090500001)(76576001)(19580405001)(5004730100002)(106116001)(97736004)(122556002)(6116002)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Dec 2015 23:15:28.7497 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.111.117
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>, Peter
+	Crosthwaite <crosthwaite.peter@gmail.com>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-devel] [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
@@ -75,1012 +108,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rRvdLo/H6aU7
-
-On Thu, Dec 3, 2015 at 10:01 PM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> This adds the system mailboxes which are used to communicate with a
-> number of GPU peripherals on Pi/Pi2.
->
-> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
-> ---
->  default-configs/arm-softmmu.mak      |   1 +
->  hw/misc/Makefile.objs                |   1 +
->  hw/misc/bcm2835_sbm.c                | 280 ++++++++++++++++++++
-
->  include/hw/arm/bcm2835_arm_control.h | 481 +++++++++++++++++++++++++++++++++++
-
-Do we need this file as of this patch?
-
->  include/hw/arm/bcm2835_mbox.h        |  19 ++
->  include/hw/misc/bcm2835_sbm.h        |  37 +++
->  6 files changed, 819 insertions(+)
->  create mode 100644 hw/misc/bcm2835_sbm.c
->  create mode 100644 include/hw/arm/bcm2835_arm_control.h
->  create mode 100644 include/hw/arm/bcm2835_mbox.h
->  create mode 100644 include/hw/misc/bcm2835_sbm.h
->
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index d9b90a5..a9f82a1 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -79,6 +79,7 @@ CONFIG_TUSB6010=y
->  CONFIG_IMX=y
->  CONFIG_MAINSTONE=y
->  CONFIG_NSERIES=y
-> +CONFIG_RASPI=y
->  CONFIG_REALVIEW=y
->  CONFIG_ZAURUS=y
->  CONFIG_ZYNQ=y
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index aeb6b7d..b9379f2 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -34,6 +34,7 @@ obj-$(CONFIG_OMAP) += omap_gpmc.o
->  obj-$(CONFIG_OMAP) += omap_l4.o
->  obj-$(CONFIG_OMAP) += omap_sdrc.o
->  obj-$(CONFIG_OMAP) += omap_tap.o
-> +obj-$(CONFIG_RASPI) += bcm2835_sbm.o
->  obj-$(CONFIG_SLAVIO) += slavio_misc.o
->  obj-$(CONFIG_ZYNQ) += zynq_slcr.o
->  obj-$(CONFIG_ZYNQ) += zynq-xadc.o
-> diff --git a/hw/misc/bcm2835_sbm.c b/hw/misc/bcm2835_sbm.c
-> new file mode 100644
-> index 0000000..a5c9324
-> --- /dev/null
-> +++ b/hw/misc/bcm2835_sbm.c
-> @@ -0,0 +1,280 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#include "hw/misc/bcm2835_sbm.h"
-> +#include "hw/arm/bcm2835_arm_control.h"
-> +
-> +static void mbox_update_status(BCM2835Mbox *mb)
-> +{
-> +    if (mb->count == 0) {
-> +        mb->status |= ARM_MS_EMPTY;
-> +    } else {
-> +        mb->status &= ~ARM_MS_EMPTY;
-> +    }
-> +    if (mb->count == MBOX_SIZE) {
-> +        mb->status |= ARM_MS_FULL;
-> +    } else {
-> +        mb->status &= ~ARM_MS_FULL;
-> +    }
-
-The start-from-scratch approach makes this shorter:
-
-mb->status &= ~(ARM_MS_EMPTY | ARM_MS_FULL);
-if (mb->count == 0) {
-    mb->status |= ARM_MS_EMPTY;
-}
-if (mb->count == MBOX_SIZE) {
-    mb->status |= ARM_MS_FULL;
-}
-
-> +}
-> +
-> +static void mbox_init(BCM2835Mbox *mb)
-
-This looks like a reset function.
-
-> +{
-> +    int n;
-
-Blank line here.
-
-> +    mb->count = 0;
-> +    mb->config = 0;
-> +    for (n = 0; n < MBOX_SIZE; n++) {
-> +        mb->reg[n] = MBOX_INVALID_DATA;
-> +    }
-> +    mbox_update_status(mb);
-> +}
-> +
-> +static uint32_t mbox_pull(BCM2835Mbox *mb, int index)
-> +{
-> +    int n;
-> +    uint32_t val;
-> +
-> +    assert(mb->count > 0);
-> +    assert(index < mb->count);
-> +
-> +    val = mb->reg[index];
-> +    for (n = index + 1; n < mb->count; n++) {
-> +        mb->reg[n - 1] = mb->reg[n];
-> +    }
-> +    mb->count--;
-> +    mb->reg[mb->count] = MBOX_INVALID_DATA;
-> +
-> +    mbox_update_status(mb);
-> +
-> +    return val;
-> +}
-> +
-> +static void mbox_push(BCM2835Mbox *mb, uint32_t val)
-> +{
-> +    assert(mb->count < MBOX_SIZE);
-> +    mb->reg[mb->count++] = val;
-> +    mbox_update_status(mb);
-> +}
-> +
-> +static void bcm2835_sbm_update(BCM2835SbmState *s)
-
-What does Sbm stand for? If it is acronym is should be all caps in camel case.
-
-> +{
-> +    int set;
-
-bool.
-
-> +    int done, n;
-> +    uint32_t value;
-> +
-> +    /* Avoid unwanted recursive calls */
-> +    s->mbox_irq_disabled = 1;
-> +
-> +    /* Get pending responses and put them in the vc->arm mbox */
-> +    done = 0;
-> +    while (!done) {
-> +        done = 1;
-> +        if (s->mbox[0].status & ARM_MS_FULL) {
-> +            /* vc->arm mbox full, exit */
-
-break here.
-
-> +        } else {
-
-so you can drop the else and get back a level of indent.
-
-> +            for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-> +                if (s->available[n]) {
-> +                    value = ldl_phys(&s->mbox_as, n<<4);
-> +                    if (value != MBOX_INVALID_DATA) {
-> +                        mbox_push(&s->mbox[0], value);
-> +                    } else {
-> +                        /* Hmmm... */
-
-Needs more comment :)
-
-> +                    }
-> +                    done = 0;
-> +                    break;
-> +                }
-> +            }
-> +        }
-> +    }
-> +
-> +    /* Try to push pending requests from the arm->vc mbox */
-> +    /* TODO (?) */
-> +
-> +    /* Re-enable calls from the IRQ routine */
-> +    s->mbox_irq_disabled = 0;
-> +
-> +    /* Update ARM IRQ status */
-> +    set = 0;
-> +    if (s->mbox[0].status & ARM_MS_EMPTY) {
-> +        s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQPEND;
-
-This can also be reduced to just if (no else), by always clearing
-ARM_MC_IHAVEDATAIRQPEND. This makes it consistent with the way you
-handle set.
-
-> +    } else {
-> +        s->mbox[0].config |= ARM_MC_IHAVEDATAIRQPEND;
-> +        if (s->mbox[0].config & ARM_MC_IHAVEDATAIRQEN) {
-> +            set = 1;
-> +        }
-> +    }
-> +    qemu_set_irq(s->arm_irq, set);
-> +}
-> +
-> +static void bcm2835_sbm_set_irq(void *opaque, int irq, int level)
-> +{
-> +    BCM2835SbmState *s = (BCM2835SbmState *)opaque;
-
-Blank line. No cast needed.
-
-> +    s->available[irq] = level;
-> +    if (!s->mbox_irq_disabled) {
-
-I don't think you need this. IO devices are not thread safe and
-core-code knows it. So you don't need to worry about interruption and
-re-entry of your IRQ handler.
-
-> +        bcm2835_sbm_update(s);
-> +    }
-> +}
-> +
-> +static uint64_t bcm2835_sbm_read(void *opaque, hwaddr offset,
-> +                           unsigned size)
-> +{
-> +    BCM2835SbmState *s = (BCM2835SbmState *)opaque;
-
-cast.
-
-> +    uint32_t res = 0;
-> +
-> +    offset &= 0xff;
-> +
-> +    switch (offset) {
-> +    case 0x80:  /* MAIL0_READ */
-> +    case 0x84:
-> +    case 0x88:
-> +    case 0x8c:
-
-case 0x80..0x8c
-
-> +        if (s->mbox[0].status & ARM_MS_EMPTY) {
-> +            res = MBOX_INVALID_DATA;
-> +        } else {
-> +            res = mbox_pull(&s->mbox[0], 0);
-> +        }
-> +        break;
-> +    case 0x90:  /* MAIL0_PEEK */
-> +        res = s->mbox[0].reg[0];
-> +        break;
-> +    case 0x94:  /* MAIL0_SENDER */
-> +        break;
-> +    case 0x98:  /* MAIL0_STATUS */
-> +        res = s->mbox[0].status;
-> +        break;
-> +    case 0x9c:  /* MAIL0_CONFIG */
-> +        res = s->mbox[0].config;
-> +        break;
-> +    case 0xb8:  /* MAIL1_STATUS */
-> +        res = s->mbox[1].status;
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +            "bcm2835_sbm_read: Bad offset %x\n", (int)offset);
-> +        return 0;
-> +    }
-> +
-> +    bcm2835_sbm_update(s);
-> +
-> +    return res;
-> +}
-> +
-> +static void bcm2835_sbm_write(void *opaque, hwaddr offset,
-> +                        uint64_t value, unsigned size)
-> +{
-> +    int ch;
-> +
-> +    BCM2835SbmState *s = (BCM2835SbmState *)opaque;
-> +
-> +    offset &= 0xff;
-> +
-> +    switch (offset) {
-> +    case 0x94:  /* MAIL0_SENDER */
-> +        break;
-> +    case 0x9c:  /* MAIL0_CONFIG */
-> +        s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQEN;
-> +        s->mbox[0].config |= value & ARM_MC_IHAVEDATAIRQEN;
-> +        break;
-> +    case 0xa0:
-> +    case 0xa4:
-> +    case 0xa8:
-> +    case 0xac:
-
-case ...
-
-> +        if (s->mbox[1].status & ARM_MS_FULL) {
-> +            /* Guest error */
-
-LOG_GUEST_ERROR.
-
-> +        } else {
-> +            ch = value & 0xf;
-> +            if (ch < MBOX_CHAN_COUNT) {
-> +                if (ldl_phys(&s->mbox_as, (ch<<4) + 4)) {
-
-What is significance of memory offset +4? Can you have some macros for
-this for some hints as to what the functionality is?
-
-> +                    /* Push delayed, push it in the arm->vc mbox */
-> +                    mbox_push(&s->mbox[1], value);
-> +                } else {
-> +                    stl_phys(&s->mbox_as, ch<<4, value);
-> +                }
-> +            } else {
-> +                /* Invalid channel number */
-
-LOG_GUEST_ERROR.
-
-> +            }
-> +        }
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +            "bcm2835_sbm_write: Bad offset %x\n", (int)offset);
-> +        return;
-> +    }
-> +
-> +    bcm2835_sbm_update(s);
-> +}
-> +
-> +static const MemoryRegionOps bcm2835_sbm_ops = {
-> +    .read = bcm2835_sbm_read,
-> +    .write = bcm2835_sbm_write,
-
-Add access restrictions.
-
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +static const VMStateDescription vmstate_bcm2835_sbm = {
-> +    .name = TYPE_BCM2835_SBM,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .minimum_version_id_old = 1,
-> +    .fields      = (VMStateField[]) {
-
-Is the state missing?
-
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
-> +static void bcm2835_sbm_init(Object *obj)
-> +{
-> +    BCM2835SbmState *s = BCM2835_SBM(obj);
-> +    memory_region_init_io(&s->iomem, obj, &bcm2835_sbm_ops, s,
-> +                          TYPE_BCM2835_SBM, 0x400);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-> +    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->arm_irq);
-> +    qdev_init_gpio_in(DEVICE(s), bcm2835_sbm_set_irq, MBOX_CHAN_COUNT);
-> +}
-> +
-> +static void bcm2835_sbm_realize(DeviceState *dev, Error **errp)
-> +{
-> +    int n;
-> +    BCM2835SbmState *s = BCM2835_SBM(dev);
-> +    Object *obj;
-> +    Error *err = NULL;
-> +
-> +    obj = object_property_get_link(OBJECT(dev), "mbox_mr", &err);
-> +    if (err || obj == NULL) {
-> +        error_setg(errp, "bcm2835_sbm: required mbox_mr link not found");
-
-Propagate the original error along with this new mesage. %s with
-error_get_pretty(err) can do this.
-
-> +        return;
-> +    }
-> +
-> +    s->mbox_mr = MEMORY_REGION(obj);
-> +    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-> +
-> +    mbox_init(&s->mbox[0]);
-> +    mbox_init(&s->mbox[1]);
-> +    s->mbox_irq_disabled = 0;
-> +    for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-> +        s->available[n] = 0;
-> +    }
-
-This looks like reset behaviour, and should be moved into dc->reset callback.
-
-> +}
-> +
-> +static void bcm2835_sbm_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = bcm2835_sbm_realize;
-> +    dc->vmsd = &vmstate_bcm2835_sbm;
-> +}
-> +
-> +static TypeInfo bcm2835_sbm_info = {
-> +    .name          = TYPE_BCM2835_SBM,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2835SbmState),
-> +    .class_init    = bcm2835_sbm_class_init,
-> +    .instance_init = bcm2835_sbm_init,
-> +};
-> +
-> +static void bcm2835_sbm_register_types(void)
-> +{
-> +    type_register_static(&bcm2835_sbm_info);
-> +}
-> +
-> +type_init(bcm2835_sbm_register_types)
-> diff --git a/include/hw/arm/bcm2835_arm_control.h b/include/hw/arm/bcm2835_arm_control.h
-> new file mode 100644
-> index 0000000..28acba8
-> --- /dev/null
-> +++ b/include/hw/arm/bcm2835_arm_control.h
-> @@ -0,0 +1,481 @@
-> +/*
-> + *  linux/arch/arm/mach-bcm2708/arm_control.h
-> + *
-> + *  Copyright (C) 2010 Broadcom
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, write to the Free Software
-> + * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-> + */
-> +
-> +#ifndef BCM2708_ARM_CONTROL_H_
-> +#define BCM2708_ARM_CONTROL_H_
-> +
-> +/*
-> + * Definitions and addresses for the ARM CONTROL logic
-> + * This file is manually generated.
-> + */
-> +
-> +#define ARM_BASE  0x7E00B000
-> +
-> +/* Basic configuration */
-> +#define ARM_CONTROL0  HW_REGISTER_RW(ARM_BASE+0x000)
-> +#define ARM_C0_SIZ128M   0x00000000
-> +#define ARM_C0_SIZ256M   0x00000001
-> +#define ARM_C0_SIZ512M   0x00000002
-> +#define ARM_C0_SIZ1G     0x00000003
-> +#define ARM_C0_BRESP0    0x00000000
-> +#define ARM_C0_BRESP1    0x00000004
-> +#define ARM_C0_BRESP2    0x00000008
-> +#define ARM_C0_BOOTHI    0x00000010
-> +#define ARM_C0_UNUSED05  0x00000020 /* free */
-> +#define ARM_C0_FULLPERI  0x00000040
-> +#define ARM_C0_UNUSED78  0x00000180 /* free */
-> +#define ARM_C0_JTAGMASK  0x00000E00
-> +#define ARM_C0_JTAGOFF   0x00000000
-> +#define ARM_C0_JTAGBASH  0x00000800 /* Debug on GPIO off */
-> +#define ARM_C0_JTAGGPIO  0x00000C00 /* Debug on GPIO on */
-> +#define ARM_C0_APROTMSK  0x0000F000
-> +#define ARM_C0_DBG0SYNC  0x00010000 /* VPU0 halt sync */
-> +#define ARM_C0_DBG1SYNC  0x00020000 /* VPU1 halt sync */
-> +#define ARM_C0_SWDBGREQ  0x00040000 /* HW debug request */
-> +#define ARM_C0_PASSHALT  0x00080000 /* ARM halt passed to debugger */
-> +#define ARM_C0_PRIO_PER  0x00F00000 /* per priority mask */
-> +#define ARM_C0_PRIO_L2   0x0F000000
-> +#define ARM_C0_PRIO_UC   0xF0000000
-> +
-> +#define ARM_C0_APROTPASS  0x0000A000 /* Translate 1:1 */
-> +#define ARM_C0_APROTUSER  0x00000000 /* Only user mode */
-> +#define ARM_C0_APROTSYST  0x0000F000 /* Only system mode */
-> +
-> +
-> +#define ARM_CONTROL1  HW_REGISTER_RW(ARM_BASE+0x440)
-> +#define ARM_C1_TIMER     0x00000001 /* re-route timer IRQ  to VC */
-> +#define ARM_C1_MAIL      0x00000002 /* re-route Mail IRQ   to VC */
-> +#define ARM_C1_BELL0     0x00000004 /* re-route Doorbell 0 to VC */
-> +#define ARM_C1_BELL1     0x00000008 /* re-route Doorbell 1 to VC */
-> +#define ARM_C1_PERSON    0x00000100 /* peripherals on */
-> +#define ARM_C1_REQSTOP   0x00000200 /* ASYNC bridge request stop */
-> +
-> +#define ARM_STATUS    HW_REGISTER_RW(ARM_BASE+0x444)
-> +#define ARM_S_ACKSTOP    0x80000000 /* Bridge stopped */
-> +#define ARM_S_READPEND   0x000003FF /* pending reads counter */
-> +#define ARM_S_WRITPEND   0x000FFC00 /* pending writes counter */
-> +
-> +#define ARM_ERRHALT   HW_REGISTER_RW(ARM_BASE+0x448)
-> +#define ARM_EH_PERIBURST  0x00000001 /* Burst write seen on peri bus */
-> +#define ARM_EH_ILLADDRS1  0x00000002 /* Address bits 25-27 error */
-> +#define ARM_EH_ILLADDRS2  0x00000004 /* Address bits 31-28 error */
-> +#define ARM_EH_VPU0HALT   0x00000008 /* VPU0 halted & in debug mode */
-> +#define ARM_EH_VPU1HALT   0x00000010 /* VPU1 halted & in debug mode */
-> +#define ARM_EH_ARMHALT    0x00000020 /* ARM in halted debug mode */
-> +
-> +#define ARM_ID_SECURE HW_REGISTER_RW(ARM_BASE+0x00C)
-> +#define ARM_ID        HW_REGISTER_RW(ARM_BASE+0x44C)
-> +#define ARM_IDVAL        0x364D5241
-> +
-> +/* Translation memory */
-> +#define ARM_TRANSLATE HW_REGISTER_RW(ARM_BASE+0x100)
-> +/* 32 locations: 0x100.. 0x17F */
-> +/* 32 spare means we CAN go to 64 pages.... */
-> +
-> +
-> +/* Interrupts */
-> +#define ARM_IRQ_PEND0 HW_REGISTER_RW(ARM_BASE+0x200)        /* Top IRQ bits */
-> +#define ARM_I0_TIMER    0x00000001 /* timer IRQ */
-> +#define ARM_I0_MAIL     0x00000002 /* Mail IRQ */
-> +#define ARM_I0_BELL0    0x00000004 /* Doorbell 0 */
-> +#define ARM_I0_BELL1    0x00000008 /* Doorbell 1 */
-> +#define ARM_I0_BANK1    0x00000100 /* Bank1 IRQ */
-> +#define ARM_I0_BANK2    0x00000200 /* Bank2 IRQ */
-> +
-> +#define ARM_IRQ_PEND1 HW_REGISTER_RW(ARM_BASE+0x204) /* All bank1 IRQ bits */
-> +/* todo: all I1_interrupt sources */
-> +#define ARM_IRQ_PEND2 HW_REGISTER_RW(ARM_BASE+0x208) /* All bank2 IRQ bits */
-> +/* todo: all I2_interrupt sources */
-> +
-> +#define ARM_IRQ_FAST  HW_REGISTER_RW(ARM_BASE+0x20C) /* FIQ control */
-> +#define ARM_IF_INDEX    0x0000007F     /* FIQ select */
-> +#define ARM_IF_ENABLE   0x00000080     /* FIQ enable */
-> +#define ARM_IF_VCMASK   0x0000003F     /* FIQ = (index from VC source) */
-> +#define ARM_IF_TIMER    0x00000040     /* FIQ = ARM timer */
-> +#define ARM_IF_MAIL     0x00000041     /* FIQ = ARM Mail */
-> +#define ARM_IF_BELL0    0x00000042     /* FIQ = ARM Doorbell 0 */
-> +#define ARM_IF_BELL1    0x00000043     /* FIQ = ARM Doorbell 1 */
-> +#define ARM_IF_VP0HALT  0x00000044     /* FIQ = VPU0 Halt seen */
-> +#define ARM_IF_VP1HALT  0x00000045     /* FIQ = VPU1 Halt seen */
-> +#define ARM_IF_ILLEGAL  0x00000046     /* FIQ = Illegal access seen */
-> +
-> +#define ARM_IRQ_ENBL1 HW_REGISTER_RW(ARM_BASE+0x210) /* Bank1 enable bits */
-> +#define ARM_IRQ_ENBL2 HW_REGISTER_RW(ARM_BASE+0x214) /* Bank2 enable bits */
-> +#define ARM_IRQ_ENBL3 HW_REGISTER_RW(ARM_BASE+0x218) /* ARM irqs enable bits */
-> +#define ARM_IRQ_DIBL1 HW_REGISTER_RW(ARM_BASE+0x21C) /* Bank1 disable bits */
-> +#define ARM_IRQ_DIBL2 HW_REGISTER_RW(ARM_BASE+0x220) /* Bank2 disable bits */
-> +#define ARM_IRQ_DIBL3 HW_REGISTER_RW(ARM_BASE+0x224) /* ARM irqs disable bits */
-> +#define ARM_IE_TIMER    0x00000001     /* Timer IRQ */
-> +#define ARM_IE_MAIL     0x00000002     /* Mail IRQ */
-> +#define ARM_IE_BELL0    0x00000004     /* Doorbell 0 */
-> +#define ARM_IE_BELL1    0x00000008     /* Doorbell 1 */
-> +#define ARM_IE_VP0HALT  0x00000010     /* VPU0 Halt */
-> +#define ARM_IE_VP1HALT  0x00000020     /* VPU1 Halt */
-> +#define ARM_IE_ILLEGAL  0x00000040     /* Illegal access seen */
-> +
-> +/* Timer */
-> +/* For reg. fields see sp804 spec. */
-> +#define ARM_T_LOAD    HW_REGISTER_RW(ARM_BASE+0x400)
-> +#define ARM_T_VALUE   HW_REGISTER_RW(ARM_BASE+0x404)
-> +#define ARM_T_CONTROL HW_REGISTER_RW(ARM_BASE+0x408)
-> +#define ARM_T_IRQCNTL HW_REGISTER_RW(ARM_BASE+0x40C)
-> +#define ARM_T_RAWIRQ  HW_REGISTER_RW(ARM_BASE+0x410)
-> +#define ARM_T_MSKIRQ  HW_REGISTER_RW(ARM_BASE+0x414)
-> +#define ARM_T_RELOAD  HW_REGISTER_RW(ARM_BASE+0x418)
-> +#define ARM_T_PREDIV  HW_REGISTER_RW(ARM_BASE+0x41c)
-> +#define ARM_T_FREECNT HW_REGISTER_RW(ARM_BASE+0x420)
-> +
-> +#define TIMER_CTRL_ONESHOT  (1 << 0)
-> +#define TIMER_CTRL_32BIT    (1 << 1)
-> +#define TIMER_CTRL_DIV1     (0 << 2)
-> +#define TIMER_CTRL_DIV16    (1 << 2)
-> +#define TIMER_CTRL_DIV256   (2 << 2)
-> +#define TIMER_CTRL_IE       (1 << 5)
-> +#define TIMER_CTRL_PERIODIC (1 << 6)
-> +#define TIMER_CTRL_ENABLE   (1 << 7)
-> +#define TIMER_CTRL_DBGHALT  (1 << 8)
-> +#define TIMER_CTRL_ENAFREE  (1 << 9)
-> +#define TIMER_CTRL_FREEDIV_SHIFT 16)
-> +#define TIMER_CTRL_FREEDIV_MASK  0xff
-> +
-> +/* Semaphores, Doorbells, Mailboxes */
-> +#define ARM_SBM_OWN0  (ARM_BASE+0x800)
-> +#define ARM_SBM_OWN1  (ARM_BASE+0x900)
-> +#define ARM_SBM_OWN2  (ARM_BASE+0xA00)
-> +#define ARM_SBM_OWN3  (ARM_BASE+0xB00)
-> +
-> +/* MAILBOXES
-> + * Register flags are common across all
-> + * owner registers. See end of this section
-> + *
-> + * Semaphores, Doorbells, Mailboxes Owner 0
-> + *
-> + */
-> +
-> +#define ARM_0_SEMS       HW_REGISTER_RW(ARM_SBM_OWN0+0x00)
-> +#define ARM_0_SEM0       HW_REGISTER_RW(ARM_SBM_OWN0+0x00)
-> +#define ARM_0_SEM1       HW_REGISTER_RW(ARM_SBM_OWN0+0x04)
-> +#define ARM_0_SEM2       HW_REGISTER_RW(ARM_SBM_OWN0+0x08)
-> +#define ARM_0_SEM3       HW_REGISTER_RW(ARM_SBM_OWN0+0x0C)
-> +#define ARM_0_SEM4       HW_REGISTER_RW(ARM_SBM_OWN0+0x10)
-> +#define ARM_0_SEM5       HW_REGISTER_RW(ARM_SBM_OWN0+0x14)
-> +#define ARM_0_SEM6       HW_REGISTER_RW(ARM_SBM_OWN0+0x18)
-> +#define ARM_0_SEM7       HW_REGISTER_RW(ARM_SBM_OWN0+0x1C)
-
-When you have a regular structure like this, you should collapse it
-down using some arithmatic:
-
-#define ARM_0_SEM(x) HW_REGISTER_RW(ARM_SBM_OWN0 + 0x4 * (x))
-
-> +#define ARM_0_BELL0      HW_REGISTER_RW(ARM_SBM_OWN0+0x40)
-> +#define ARM_0_BELL1      HW_REGISTER_RW(ARM_SBM_OWN0+0x44)
-> +#define ARM_0_BELL2      HW_REGISTER_RW(ARM_SBM_OWN0+0x48)
-> +#define ARM_0_BELL3      HW_REGISTER_RW(ARM_SBM_OWN0+0x4C)
-
-Here as well.
-
-> +/* MAILBOX 0 access in Owner 0 area */
-> +/* Some addresses should ONLY be used by owner 0 */
-> +#define ARM_0_MAIL0_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x80)  /* .. 0x8C (4 locations) */
-> +#define ARM_0_MAIL0_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x80)  /* .. 0x8C (4 locs) Normal read */
-> +#define ARM_0_MAIL0_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x90)  /* none-pop read */
-> +#define ARM_0_MAIL0_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x94)  /* Sender read (only LS 2 bits) */
-> +#define ARM_0_MAIL0_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x98)  /* Status read */
-> +#define ARM_0_MAIL0_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0x9C)  /* Config read/write */
-> +/* MAILBOX 1 access in Owner 0 area */
-> +/* Owner 0 should only WRITE to this mailbox */
-> +#define ARM_0_MAIL1_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xA0)   /* .. 0xAC (4 locations) */
-> +/*#define ARM_0_MAIL1_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xA0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_0_MAIL1_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xB0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_0_MAIL1_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xB4) */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_0_MAIL1_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xB8)   /* Status read */
-> +/*#define ARM_0_MAIL1_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xBC) */ /* DO NOT USE THIS !!!!! */
-> +/* General SEM, BELL, MAIL config/status */
-> +#define ARM_0_SEMCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xE0)  /* semaphore clear/debug register */
-> +#define ARM_0_BELLCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xE4)  /* Doorbells clear/debug register */
-> +#define ARM_0_ALL_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xF8)  /* ALL interrupts */
-> +#define ARM_0_MY_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN0+0xFC)  /* IRQS pending for owner 0 */
-> +
-> +/* Semaphores, Doorbells, Mailboxes Owner 1 */
-> +#define ARM_1_SEMS       HW_REGISTER_RW(ARM_SBM_OWN1+0x00)
-> +#define ARM_1_SEM0       HW_REGISTER_RW(ARM_SBM_OWN1+0x00)
-> +#define ARM_1_SEM1       HW_REGISTER_RW(ARM_SBM_OWN1+0x04)
-> +#define ARM_1_SEM2       HW_REGISTER_RW(ARM_SBM_OWN1+0x08)
-> +#define ARM_1_SEM3       HW_REGISTER_RW(ARM_SBM_OWN1+0x0C)
-> +#define ARM_1_SEM4       HW_REGISTER_RW(ARM_SBM_OWN1+0x10)
-> +#define ARM_1_SEM5       HW_REGISTER_RW(ARM_SBM_OWN1+0x14)
-> +#define ARM_1_SEM6       HW_REGISTER_RW(ARM_SBM_OWN1+0x18)
-> +#define ARM_1_SEM7       HW_REGISTER_RW(ARM_SBM_OWN1+0x1C)
-> +#define ARM_1_BELL0      HW_REGISTER_RW(ARM_SBM_OWN1+0x40)
-> +#define ARM_1_BELL1      HW_REGISTER_RW(ARM_SBM_OWN1+0x44)
-> +#define ARM_1_BELL2      HW_REGISTER_RW(ARM_SBM_OWN1+0x48)
-> +#define ARM_1_BELL3      HW_REGISTER_RW(ARM_SBM_OWN1+0x4C)
-
-You have large repeitition between ARM_0 and ARM_1, should also be
-collapased using Macros args. It is however generally rare to need to
-have the individual defs for each window of a regular structure, as
-the switch case logic that implements the functionality, is also
-usually regular and just uses math on addresses to figure out what to
-index, rather than fully defining the address map.
-
-> +/* MAILBOX 0 access in Owner 0 area */
-> +/* Owner 1 should only WRITE to this mailbox */
-> +#define ARM_1_MAIL0_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x80)  /* .. 0x8C (4 locations) */
-> +/*#define ARM_1_MAIL0_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x80) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_1_MAIL0_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x90) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_1_MAIL0_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x94) */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_1_MAIL0_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x98)  /* Status read */
-> +/*#define ARM_1_MAIL0_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0x9C) */ /* DO NOT USE THIS !!!!! */
-> +/* MAILBOX 1 access in Owner 0 area */
-> +#define ARM_1_MAIL1_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xA0)  /* .. 0xAC (4 locations) */
-> +#define ARM_1_MAIL1_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xA0)  /* .. 0xAC (4 locs) Normal read */
-> +#define ARM_1_MAIL1_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xB0)  /* none-pop read */
-> +#define ARM_1_MAIL1_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xB4)  /* Sender read (only LS 2 bits) */
-> +#define ARM_1_MAIL1_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xB8)  /* Status read */
-> +#define ARM_1_MAIL1_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xBC)
-> +/* General SEM, BELL, MAIL config/status */
-> +#define ARM_1_SEMCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xE0)  /* semaphore clear/debug register */
-> +#define ARM_1_BELLCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xE4)  /* Doorbells clear/debug register */
-> +#define ARM_1_MY_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xFC)  /* IRQS pending for owner 1 */
-> +#define ARM_1_ALL_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN1+0xF8)  /* ALL interrupts */
-> +
-> +/* Semaphores, Doorbells, Mailboxes Owner 2 */
-> +#define ARM_2_SEMS       HW_REGISTER_RW(ARM_SBM_OWN2+0x00)
-> +#define ARM_2_SEM0       HW_REGISTER_RW(ARM_SBM_OWN2+0x00)
-> +#define ARM_2_SEM1       HW_REGISTER_RW(ARM_SBM_OWN2+0x04)
-> +#define ARM_2_SEM2       HW_REGISTER_RW(ARM_SBM_OWN2+0x08)
-> +#define ARM_2_SEM3       HW_REGISTER_RW(ARM_SBM_OWN2+0x0C)
-> +#define ARM_2_SEM4       HW_REGISTER_RW(ARM_SBM_OWN2+0x10)
-> +#define ARM_2_SEM5       HW_REGISTER_RW(ARM_SBM_OWN2+0x14)
-> +#define ARM_2_SEM6       HW_REGISTER_RW(ARM_SBM_OWN2+0x18)
-> +#define ARM_2_SEM7       HW_REGISTER_RW(ARM_SBM_OWN2+0x1C)
-> +#define ARM_2_BELL0      HW_REGISTER_RW(ARM_SBM_OWN2+0x40)
-> +#define ARM_2_BELL1      HW_REGISTER_RW(ARM_SBM_OWN2+0x44)
-> +#define ARM_2_BELL2      HW_REGISTER_RW(ARM_SBM_OWN2+0x48)
-> +#define ARM_2_BELL3      HW_REGISTER_RW(ARM_SBM_OWN2+0x4C)
-> +/* MAILBOX 0 access in Owner 2 area */
-> +/* Owner 2 should only WRITE to this mailbox */
-> +#define ARM_2_MAIL0_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x80)   /* .. 0x8C (4 locations) */
-> +/*#define ARM_2_MAIL0_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x80)  */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_2_MAIL0_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x90)  */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_2_MAIL0_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x94)  */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_2_MAIL0_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x98)   /* Status read */
-> +/*#define ARM_2_MAIL0_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0x9C)  */ /* DO NOT USE THIS !!!!! */
-> +/* MAILBOX 1 access in Owner 2 area */
-> +/* Owner 2 should only WRITE to this mailbox */
-> +#define ARM_2_MAIL1_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xA0)   /* .. 0xAC (4 locations) */
-> +/*#define ARM_2_MAIL1_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xA0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_2_MAIL1_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xB0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_2_MAIL1_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xB4) */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_2_MAIL1_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xB8)   /* Status read */
-> +/*#define ARM_2_MAIL1_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xBC) */ /* DO NOT USE THIS !!!!! */
-> +/* General SEM, BELL, MAIL config/status */
-> +#define ARM_2_SEMCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xE0)  /* semaphore clear/debug register */
-> +#define ARM_2_BELLCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xE4)  /* Doorbells clear/debug register */
-> +#define ARM_2_MY_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xFC)  /* IRQS pending for owner 2 */
-> +#define ARM_2_ALL_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN2+0xF8)  /* ALL interrupts */
-> +
-> +/* Semaphores, Doorbells, Mailboxes Owner 3 */
-> +#define ARM_3_SEMS       HW_REGISTER_RW(ARM_SBM_OWN3+0x00)
-> +#define ARM_3_SEM0       HW_REGISTER_RW(ARM_SBM_OWN3+0x00)
-> +#define ARM_3_SEM1       HW_REGISTER_RW(ARM_SBM_OWN3+0x04)
-> +#define ARM_3_SEM2       HW_REGISTER_RW(ARM_SBM_OWN3+0x08)
-> +#define ARM_3_SEM3       HW_REGISTER_RW(ARM_SBM_OWN3+0x0C)
-> +#define ARM_3_SEM4       HW_REGISTER_RW(ARM_SBM_OWN3+0x10)
-> +#define ARM_3_SEM5       HW_REGISTER_RW(ARM_SBM_OWN3+0x14)
-> +#define ARM_3_SEM6       HW_REGISTER_RW(ARM_SBM_OWN3+0x18)
-> +#define ARM_3_SEM7       HW_REGISTER_RW(ARM_SBM_OWN3+0x1C)
-> +#define ARM_3_BELL0      HW_REGISTER_RW(ARM_SBM_OWN3+0x40)
-> +#define ARM_3_BELL1      HW_REGISTER_RW(ARM_SBM_OWN3+0x44)
-> +#define ARM_3_BELL2      HW_REGISTER_RW(ARM_SBM_OWN3+0x48)
-> +#define ARM_3_BELL3      HW_REGISTER_RW(ARM_SBM_OWN3+0x4C)
-> +/* MAILBOX 0 access in Owner 3 area */
-> +/* Owner 3 should only WRITE to this mailbox */
-> +#define ARM_3_MAIL0_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x80)   /* .. 0x8C (4 locations) */
-> +/*#define ARM_3_MAIL0_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x80)  */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_3_MAIL0_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x90)  */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_3_MAIL0_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x94)  */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_3_MAIL0_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x98)    /* Status read */
-> +/*#define ARM_3_MAIL0_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0x9C)  */ /* DO NOT USE THIS !!!!! */
-> +/* MAILBOX 1 access in Owner 3 area */
-> +/* Owner 3 should only WRITE to this mailbox */
-> +#define ARM_3_MAIL1_WRT \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xA0)   /* .. 0xAC (4 locations) */
-> +/*#define ARM_3_MAIL1_RD \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xA0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_3_MAIL1_POL \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xB0) */ /* DO NOT USE THIS !!!!! */
-> +/*#define ARM_3_MAIL1_SND \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xB4) */ /* DO NOT USE THIS !!!!! */
-> +#define ARM_3_MAIL1_STA \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xB8)   /* Status read */
-> +/*#define ARM_3_MAIL1_CNF \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xBC) */ /* DO NOT USE THIS !!!!! */
-> +/* General SEM, BELL, MAIL config/status */
-> +#define ARM_3_SEMCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xE0)  /* semaphore clear/debug register */
-> +#define ARM_3_BELLCLRDBG \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xE4)  /* Doorbells clear/debug register */
-> +#define ARM_3_MY_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xFC)  /* IRQS pending for owner 3 */
-> +#define ARM_3_ALL_IRQS \
-> +        HW_REGISTER_RW(ARM_SBM_OWN3+0xF8)  /* ALL interrupts */
-> +
-> +/*  Mailbox flags. Valid for all owners */
-> +
-> +/* Mailbox status register (...0x98) */
-> +#define ARM_MS_FULL       0x80000000
-> +#define ARM_MS_EMPTY      0x40000000
-> +#define ARM_MS_LEVEL      0x400000FF /* Max. value depends on mailbox depth */
-> +
-> +/* MAILBOX config/status register (...0x9C) */
-> +/* ANY write to this register clears the error bits! */
-> +#define ARM_MC_IHAVEDATAIRQEN    0x00000001 /* mbox irq enable:  has data */
-> +#define ARM_MC_IHAVESPACEIRQEN   0x00000002 /* mbox irq enable:  has space */
-> +#define ARM_MC_OPPISEMPTYIRQEN   0x00000004 /* mbox irq enable: Opp is empty */
-> +#define ARM_MC_MAIL_CLEAR        0x00000008 /* mbox clear write 1, then  0 */
-> +#define ARM_MC_IHAVEDATAIRQPEND  0x00000010 /* mbox irq pending:  has space */
-> +#define ARM_MC_IHAVESPACEIRQPEND 0x00000020 /* mbox irq pending: Opp is empty */
-> +#define ARM_MC_OPPISEMPTYIRQPEND 0x00000040 /* mbox irq pending */
-> +/* Bit 7 is unused */
-> +#define ARM_MC_ERRNOOWN   0x00000100 /* error : none owner read from mailbox */
-> +#define ARM_MC_ERROVERFLW 0x00000200 /* error : write to fill mailbox */
-> +#define ARM_MC_ERRUNDRFLW 0x00000400 /* error : read from empty mailbox */
-> +
-> +/* Semaphore clear/debug register (...0xE0) */
-> +#define ARM_SD_OWN0      0x00000003  /* Owner of sem 0 */
-> +#define ARM_SD_OWN1      0x0000000C  /* Owner of sem 1 */
-> +#define ARM_SD_OWN2      0x00000030  /* Owner of sem 2 */
-> +#define ARM_SD_OWN3      0x000000C0  /* Owner of sem 3 */
-> +#define ARM_SD_OWN4      0x00000300  /* Owner of sem 4 */
-> +#define ARM_SD_OWN5      0x00000C00  /* Owner of sem 5 */
-> +#define ARM_SD_OWN6      0x00003000  /* Owner of sem 6 */
-> +#define ARM_SD_OWN7      0x0000C000  /* Owner of sem 7 */
-
-Regular structure.
-
-> +#define ARM_SD_SEM0      0x00010000  /* Status of sem 0 */
-> +#define ARM_SD_SEM1      0x00020000  /* Status of sem 1 */
-> +#define ARM_SD_SEM2      0x00040000  /* Status of sem 2 */
-> +#define ARM_SD_SEM3      0x00080000  /* Status of sem 3 */
-> +#define ARM_SD_SEM4      0x00100000  /* Status of sem 4 */
-> +#define ARM_SD_SEM5      0x00200000  /* Status of sem 5 */
-> +#define ARM_SD_SEM6      0x00400000  /* Status of sem 6 */
-> +#define ARM_SD_SEM7      0x00800000  /* Status of sem 7 */
-> +
-
-Regular structure. More below.
-
-> +/* Doorbells clear/debug register (...0xE4) */
-> +#define ARM_BD_OWN0      0x00000003  /* Owner of doorbell 0 */
-> +#define ARM_BD_OWN1      0x0000000C  /* Owner of doorbell 1 */
-> +#define ARM_BD_OWN2      0x00000030  /* Owner of doorbell 2 */
-> +#define ARM_BD_OWN3      0x000000C0  /* Owner of doorbell 3 */
-> +#define ARM_BD_BELL0     0x00000100  /* Status of doorbell 0 */
-> +#define ARM_BD_BELL1     0x00000200  /* Status of doorbell 1 */
-> +#define ARM_BD_BELL2     0x00000400  /* Status of doorbell 2 */
-> +#define ARM_BD_BELL3     0x00000800  /* Status of doorbell 3 */
-> +
-> +/* MY IRQS register (...0xF8) */
-> +#define ARM_MYIRQ_BELL   0x00000001  /* This owner has a doorbell IRQ */
-> +#define ARM_MYIRQ_MAIL   0x00000002  /* This owner has a mailbox  IRQ */
-> +
-> +/* ALL IRQS register (...0xF8) */
-> +#define ARM_AIS_BELL0 0x00000001  /* Doorbell 0 IRQ pending */
-> +#define ARM_AIS_BELL1 0x00000002  /* Doorbell 1 IRQ pending */
-> +#define ARM_AIS_BELL2 0x00000004  /* Doorbell 2 IRQ pending */
-> +#define ARM_AIS_BELL3 0x00000008  /* Doorbell 3 IRQ pending */
-> +#define ARM_AIS0_HAVEDATA 0x00000010  /* MAIL 0 has data IRQ pending */
-> +#define ARM_AIS0_HAVESPAC 0x00000020  /* MAIL 0 has space IRQ pending */
-> +#define ARM_AIS0_OPPEMPTY 0x00000040  /* MAIL 0 opposite is empty IRQ */
-> +#define ARM_AIS1_HAVEDATA 0x00000080  /* MAIL 1 has data IRQ pending */
-> +#define ARM_AIS1_HAVESPAC 0x00000100  /* MAIL 1 has space IRQ pending */
-> +#define ARM_AIS1_OPPEMPTY 0x00000200  /* MAIL 1 opposite is empty IRQ */
-> +/* Note   that bell-0, bell-1 and MAIL0 IRQ go only to the ARM */
-> +/* Whilst that bell-2, bell-3 and MAIL1 IRQ go only to the VC */
-> +/* */
-> +/* ARM JTAG BASH */
-> +/* */
-> +#define AJB_BASE 0x7e2000c0
-> +
-> +#define AJBCONF HW_REGISTER_RW(AJB_BASE+0x00)
-> +#define   AJB_BITS0    0x000000
-> +#define   AJB_BITS4    0x000004
-> +#define   AJB_BITS8    0x000008
-> +#define   AJB_BITS12   0x00000C
-> +#define   AJB_BITS16   0x000010
-> +#define   AJB_BITS20   0x000014
-> +#define   AJB_BITS24   0x000018
-> +#define   AJB_BITS28   0x00001C
-> +#define   AJB_BITS32   0x000020
-> +#define   AJB_BITS34   0x000022
-> +#define   AJB_OUT_MS   0x000040
-> +#define   AJB_OUT_LS   0x000000
-> +#define   AJB_INV_CLK  0x000080
-> +#define   AJB_D0_RISE  0x000100
-> +#define   AJB_D0_FALL  0x000000
-> +#define   AJB_D1_RISE  0x000200
-> +#define   AJB_D1_FALL  0x000000
-> +#define   AJB_IN_RISE  0x000400
-> +#define   AJB_IN_FALL  0x000000
-> +#define   AJB_ENABLE   0x000800
-> +#define   AJB_HOLD0    0x000000
-> +#define   AJB_HOLD1    0x001000
-> +#define   AJB_HOLD2    0x002000
-> +#define   AJB_HOLD3    0x003000
-> +#define   AJB_RESETN   0x004000
-> +#define   AJB_CLKSHFT  16
-> +#define   AJB_BUSY     0x80000000
-> +#define AJBTMS HW_REGISTER_RW(AJB_BASE+0x04)
-> +#define AJBTDI HW_REGISTER_RW(AJB_BASE+0x08)
-> +#define AJBTDO HW_REGISTER_RW(AJB_BASE+0x0c)
-> +
-> +#endif
-> diff --git a/include/hw/arm/bcm2835_mbox.h b/include/hw/arm/bcm2835_mbox.h
-> new file mode 100644
-> index 0000000..78ab814
-> --- /dev/null
-> +++ b/include/hw/arm/bcm2835_mbox.h
-> @@ -0,0 +1,19 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#ifndef BCM2835_MBOX_H
-> +#define BCM2835_MBOX_H
-> +
-> +/* Constants shared with the ARM identifying separate mailbox channels */
-> +#define MBOX_CHAN_POWER    0 /* for use by the power management interface */
-> +#define MBOX_CHAN_FB       1 /* for use by the frame buffer */
-> +#define MBOX_CHAN_VCHIQ    3 /* for use by the VCHIQ interface */
-> +#define MBOX_CHAN_PROPERTY 8 /* for use by the property channel */
-> +#define MBOX_CHAN_COUNT    9
-> +
-> +#define MBOX_SIZE          32
-> +#define MBOX_INVALID_DATA  0x0f
-> +
-> +#endif /* BCM2835_MBOX_H */
-> diff --git a/include/hw/misc/bcm2835_sbm.h b/include/hw/misc/bcm2835_sbm.h
-> new file mode 100644
-> index 0000000..da36fbe
-> --- /dev/null
-> +++ b/include/hw/misc/bcm2835_sbm.h
-> @@ -0,0 +1,37 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#ifndef BCM2835_SBM_H
-> +#define BCM2835_SBM_H
-> +
-> +#include "hw/sysbus.h"
-> +#include "exec/address-spaces.h"
-> +#include "hw/arm/bcm2835_mbox.h"
-> +
-> +#define TYPE_BCM2835_SBM "bcm2835_sbm"
-> +#define BCM2835_SBM(obj) \
-> +        OBJECT_CHECK(BCM2835SbmState, (obj), TYPE_BCM2835_SBM)
-> +
-> +typedef struct {
-> +    MemoryRegion *mbox_mr;
-> +    AddressSpace mbox_as;
-
-I can't see where these two fields are used. A quick scan shows that
-the SbmState's copy is uses for all DMA ops. If these are needed,
-mbox_init should pass a pointer to the the SbmState then this saves
-the pointer and navigates as needed back to the container structure to
-get the AS.
-
-> +    uint32_t reg[MBOX_SIZE];
-> +    int count;
-> +    uint32_t status;
-> +    uint32_t config;
-> +} BCM2835Mbox;
-> +
-> +typedef struct {
-
-/*< private >*/
-
-> +    SysBusDevice busdev;
-
-/*< public >*/
-
-Regards,
-Peter
-
-> +    MemoryRegion *mbox_mr;
-> +    AddressSpace mbox_as;
-> +    MemoryRegion iomem;
-> +    int mbox_irq_disabled;
-> +    qemu_irq arm_irq;
-> +    int available[MBOX_CHAN_COUNT];
-> +    BCM2835Mbox mbox[2];
-> +} BCM2835SbmState;
-> +
-> +#endif
-> --
-> 2.5.3
->
+X-TUID: IGp9Xe4ro0Q/
+
+SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgdGhlIHJldmlldyENCg0KPiBGcm9tOiBQZXRlciBDcm9z
+dGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwuY29tXQ0KPiBTZW50OiBNb25k
+YXksIDIxIERlY2VtYmVyIDIwMTUgMTQ6NDkNCj4gT24gVGh1LCBEZWMgMywgMjAxNSBhdCAxMDow
+MSBQTSwgQW5kcmV3IEJhdW1hbm4NCj4gPEFuZHJldy5CYXVtYW5uQG1pY3Jvc29mdC5jb20+IHdy
+b3RlOg0KPiA+IFRoaXMgYWRkcyB0aGUgc3lzdGVtIG1haWxib3hlcyB3aGljaCBhcmUgdXNlZCB0
+byBjb21tdW5pY2F0ZSB3aXRoIGENCj4gPiBudW1iZXIgb2YgR1BVIHBlcmlwaGVyYWxzIG9uIFBp
+L1BpMi4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IEFuZHJldyBCYXVtYW5uIDxBbmRyZXcuQmF1
+bWFubkBtaWNyb3NvZnQuY29tPg0KPiA+IC0tLQ0KPiA+ICBkZWZhdWx0LWNvbmZpZ3MvYXJtLXNv
+ZnRtbXUubWFrICAgICAgfCAgIDEgKw0KPiA+ICBody9taXNjL01ha2VmaWxlLm9ianMgICAgICAg
+ICAgICAgICAgfCAgIDEgKw0KPiA+ICBody9taXNjL2JjbTI4MzVfc2JtLmMgICAgICAgICAgICAg
+ICAgfCAyODAgKysrKysrKysrKysrKysrKysrKysNCj4gDQo+ID4gIGluY2x1ZGUvaHcvYXJtL2Jj
+bTI4MzVfYXJtX2NvbnRyb2wuaCB8IDQ4MQ0KPiArKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKw0KPiANCj4gRG8gd2UgbmVlZCB0aGlzIGZpbGUgYXMgb2YgdGhpcyBwYXRjaD8NCg0K
+WWVzLCBmb3IgQVJNX01DX0lIQVZFREFUQUlSUUVOIGFuZCBvdGhlciByZWxhdGVkIGRlZmluZXMu
+DQoNClsuLi5dDQo+ID4gK3N0YXRpYyB2b2lkIGJjbTI4MzVfc2JtX3VwZGF0ZShCQ00yODM1U2Jt
+U3RhdGUgKnMpDQo+IA0KPiBXaGF0IGRvZXMgU2JtIHN0YW5kIGZvcj8gSWYgaXQgaXMgYWNyb255
+bSBpcyBzaG91bGQgYmUgYWxsIGNhcHMgaW4gY2FtZWwgY2FzZS4NCg0KSSdtIG5vdCBzdXJlIC0t
+IGl0IGNvbWVzIGZyb20gR3JlZ29yeSdzIGNvZGU7IG1heWJlIGhlIGNhbiBjb21tZW50PyBXaGVy
+ZSB0aGlzIGRldmljZSBnZXRzIGluc3RhbnRpYXRlZCwgdGhlcmUgaXMgYSBjb21tZW50IG9mIA0K
+DQovKiBTZW1hcGhvcmVzIC8gRG9vcmJlbGxzIC8gTWFpbGJveGVzICovDQoNCi4uLiBidXQgb25s
+eSBtYWlsYm94ZXMgYXJlIGltcGxlbWVudGVkIGhlcmUuIEknbSBndWVzc2luZyBtYXliZSBpdCdz
+IGludGVuZGVkIGFzICJzeXN0ZW0gbWFpbGJveGVzIi4gSSBjYW4gcmVuYW1lIGl0Lg0KDQoNCj4g
+PiArew0KPiA+ICsgICAgaW50IHNldDsNCj4gDQo+IGJvb2wuDQo+IA0KPiA+ICsgICAgaW50IGRv
+bmUsIG47DQo+ID4gKyAgICB1aW50MzJfdCB2YWx1ZTsNCj4gPiArDQo+ID4gKyAgICAvKiBBdm9p
+ZCB1bndhbnRlZCByZWN1cnNpdmUgY2FsbHMgKi8NCj4gPiArICAgIHMtPm1ib3hfaXJxX2Rpc2Fi
+bGVkID0gMTsNCj4gPiArDQo+ID4gKyAgICAvKiBHZXQgcGVuZGluZyByZXNwb25zZXMgYW5kIHB1
+dCB0aGVtIGluIHRoZSB2Yy0+YXJtIG1ib3ggKi8NCj4gPiArICAgIGRvbmUgPSAwOw0KPiA+ICsg
+ICAgd2hpbGUgKCFkb25lKSB7DQo+ID4gKyAgICAgICAgZG9uZSA9IDE7DQo+ID4gKyAgICAgICAg
+aWYgKHMtPm1ib3hbMF0uc3RhdHVzICYgQVJNX01TX0ZVTEwpIHsNCj4gPiArICAgICAgICAgICAg
+LyogdmMtPmFybSBtYm94IGZ1bGwsIGV4aXQgKi8NCj4gDQo+IGJyZWFrIGhlcmUuDQo+IA0KPiA+
+ICsgICAgICAgIH0gZWxzZSB7DQo+IA0KPiBzbyB5b3UgY2FuIGRyb3AgdGhlIGVsc2UgYW5kIGdl
+dCBiYWNrIGEgbGV2ZWwgb2YgaW5kZW50Lg0KPiANCj4gPiArICAgICAgICAgICAgZm9yIChuID0g
+MDsgbiA8IE1CT1hfQ0hBTl9DT1VOVDsgbisrKSB7DQo+ID4gKyAgICAgICAgICAgICAgICBpZiAo
+cy0+YXZhaWxhYmxlW25dKSB7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgdmFsdWUgPSBsZGxf
+cGh5cygmcy0+bWJveF9hcywgbjw8NCk7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgaWYgKHZh
+bHVlICE9IE1CT1hfSU5WQUxJRF9EQVRBKSB7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
+IG1ib3hfcHVzaCgmcy0+bWJveFswXSwgdmFsdWUpOw0KPiA+ICsgICAgICAgICAgICAgICAgICAg
+IH0gZWxzZSB7DQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgIC8qIEhtbW0uLi4gKi8NCj4g
+DQo+IE5lZWRzIG1vcmUgY29tbWVudCA6KQ0KDQpHcmVnb3J5IC0tIGhlbHAhIDopDQoNClsuLi5d
+DQo+ID4gKyAgICBzLT5hdmFpbGFibGVbaXJxXSA9IGxldmVsOw0KPiA+ICsgICAgaWYgKCFzLT5t
+Ym94X2lycV9kaXNhYmxlZCkgew0KPiANCj4gSSBkb24ndCB0aGluayB5b3UgbmVlZCB0aGlzLiBJ
+TyBkZXZpY2VzIGFyZSBub3QgdGhyZWFkIHNhZmUgYW5kDQo+IGNvcmUtY29kZSBrbm93cyBpdC4g
+U28geW91IGRvbid0IG5lZWQgdG8gd29ycnkgYWJvdXQgaW50ZXJydXB0aW9uIGFuZA0KPiByZS1l
+bnRyeSBvZiB5b3VyIElSUSBoYW5kbGVyLg0KDQpJIHdpbGwgaGF2ZSB0byBwdXQgYSBkZWJ1Z2dl
+ciBvbiB0aGlzIHRvIGNvbmZpcm0sIGJ1dCBJIHRoaW5rIHRoZSBpc3N1ZSBpcyB0aGF0IHdlIGFy
+ZSB1c2luZyBhIHByaXZhdGUgbWVtb3J5IHJlZ2lvbiBhbmQgR1BJT3MgdG8gcm91dGUgbWFpbGJv
+eCBkYXRhIGFuZCBpbnRlcnJ1cHRzIHRvIHRoZSByZWxldmFudCBzdWIgcGVyaXBoZXJhbHMuIFRo
+ZSBsZGxfcGh5cyBpbnZva2VzIGFub3RoZXIgZGV2aWNlIGVtdWxhdGlvbiAoc3VjaCBhcyBiY20y
+ODM1X3Byb3BlcnR5LmMgaW4gdGhpcyBzZXJpZXMpLCB3aGljaCBtYXkgY2F1c2UgaXQgdG8gc2ln
+bmFsIGFuIGludGVycnVwdCBiYWNrIHRvIHVzIHZpYSBxZW11X3NldF9pcnEgd2hpY2ggd2lsbCBy
+ZWN1cnNpdmVseSBydW4gb3VyIGhhbmRsZXIuIFdlIHdhbnQgdGhhdCBJUlEgdG8gYmUgcmVjb3Jk
+ZWQgYnV0ICJzcXVhc2hlZCIuDQoNClsuLi5dDQo+ID4gKw0KPiA+ICsgICAgc3dpdGNoIChvZmZz
+ZXQpIHsNCj4gPiArICAgIGNhc2UgMHg4MDogIC8qIE1BSUwwX1JFQUQgKi8NCj4gPiArICAgIGNh
+c2UgMHg4NDoNCj4gPiArICAgIGNhc2UgMHg4ODoNCj4gPiArICAgIGNhc2UgMHg4YzoNCj4gDQo+
+IGNhc2UgMHg4MC4uMHg4Yw0KDQpXb2FoISBJcyB0aGF0IHN0YW5kYXJkIEM/DQoNClsuLi5dDQo+
+ID4gLS0tIC9kZXYvbnVsbA0KPiA+ICsrKyBiL2luY2x1ZGUvaHcvYXJtL2JjbTI4MzVfYXJtX2Nv
+bnRyb2wuaA0KPiA+IEBAIC0wLDAgKzEsNDgxIEBADQo+ID4gKy8qDQo+ID4gKyAqICBsaW51eC9h
+cmNoL2FybS9tYWNoLWJjbTI3MDgvYXJtX2NvbnRyb2wuaA0KWy4uLl0NCj4gV2hlbiB5b3UgaGF2
+ZSBhIHJlZ3VsYXIgc3RydWN0dXJlIGxpa2UgdGhpcywgeW91IHNob3VsZCBjb2xsYXBzZSBpdA0K
+PiBkb3duIHVzaW5nIHNvbWUgYXJpdGhtYXRpYzoNCg0KTm90aWNlIHRoYXQgdGhpcyBmaWxlIGNv
+bWVzIGZyb20gTGludXguIEkga25vdyBpdCdzIG5vdCBwcmV0dHksIGJ1dCBjYW4gd2UgcGxlYXNl
+IGtlZXAgaXQgYXMtaXMsIGZvciBjb21wYXJpc29uIHB1cnBvc2VzPyBJJ20gbm90IHN1cmUgdGhl
+cmUncyBtdWNoIHZhbHVlIGluIGNsZWFuaW5nIGl0IHVwIGxvY2FsbHkuLi4NCg0KPiA+IC0tLSAv
+ZGV2L251bGwNCj4gPiArKysgYi9pbmNsdWRlL2h3L21pc2MvYmNtMjgzNV9zYm0uaA0KPiA+IEBA
+IC0wLDAgKzEsMzcgQEANCj4gPiArLyoNCj4gPiArICogUmFzcGJlcnJ5IFBpIGVtdWxhdGlvbiAo
+YykgMjAxMiBHcmVnb3J5IEVzdHJhZGUNCj4gPiArICogVGhpcyBjb2RlIGlzIGxpY2Vuc2VkIHVu
+ZGVyIHRoZSBHTlUgR1BMdjIgYW5kIGxhdGVyLg0KPiA+ICsgKi8NCj4gPiArDQo+ID4gKyNpZm5k
+ZWYgQkNNMjgzNV9TQk1fSA0KPiA+ICsjZGVmaW5lIEJDTTI4MzVfU0JNX0gNCj4gPiArDQo+ID4g
+KyNpbmNsdWRlICJody9zeXNidXMuaCINCj4gPiArI2luY2x1ZGUgImV4ZWMvYWRkcmVzcy1zcGFj
+ZXMuaCINCj4gPiArI2luY2x1ZGUgImh3L2FybS9iY20yODM1X21ib3guaCINCj4gPiArDQo+ID4g
+KyNkZWZpbmUgVFlQRV9CQ00yODM1X1NCTSAiYmNtMjgzNV9zYm0iDQo+ID4gKyNkZWZpbmUgQkNN
+MjgzNV9TQk0ob2JqKSBcDQo+ID4gKyAgICAgICAgT0JKRUNUX0NIRUNLKEJDTTI4MzVTYm1TdGF0
+ZSwgKG9iaiksIFRZUEVfQkNNMjgzNV9TQk0pDQo+ID4gKw0KPiA+ICt0eXBlZGVmIHN0cnVjdCB7
+DQo+ID4gKyAgICBNZW1vcnlSZWdpb24gKm1ib3hfbXI7DQo+ID4gKyAgICBBZGRyZXNzU3BhY2Ug
+bWJveF9hczsNCj4gDQo+IEkgY2FuJ3Qgc2VlIHdoZXJlIHRoZXNlIHR3byBmaWVsZHMgYXJlIHVz
+ZWQuIEEgcXVpY2sgc2NhbiBzaG93cyB0aGF0DQo+IHRoZSBTYm1TdGF0ZSdzIGNvcHkgaXMgdXNl
+cyBmb3IgYWxsIERNQSBvcHMuIElmIHRoZXNlIGFyZSBuZWVkZWQsDQo+IG1ib3hfaW5pdCBzaG91
+bGQgcGFzcyBhIHBvaW50ZXIgdG8gdGhlIHRoZSBTYm1TdGF0ZSB0aGVuIHRoaXMgc2F2ZXMNCj4g
+dGhlIHBvaW50ZXIgYW5kIG5hdmlnYXRlcyBhcyBuZWVkZWQgYmFjayB0byB0aGUgY29udGFpbmVy
+IHN0cnVjdHVyZSB0bw0KPiBnZXQgdGhlIEFTLg0KDQpZb3UncmUgcmlnaHQuIFRoZXkncmUgdW5p
+bml0aWFsaXNlZC91bnVzZWQgZGV0cml0dXMgZnJvbSBhIHByZXZpb3VzIHJlZmFjdG9yLiBJJ2xs
+IHJlbW92ZSB0aGVtLg0KDQpUaGFua3MsDQpBbmRyZXcNCg==

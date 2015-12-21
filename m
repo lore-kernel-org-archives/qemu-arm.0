@@ -1,99 +1,67 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3091215obb;
-        Mon, 21 Dec 2015 15:59:20 -0800 (PST)
-X-Received: by 10.140.23.163 with SMTP id 32mr28965676qgp.60.1450742360393;
-        Mon, 21 Dec 2015 15:59:20 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3462454obb;
+        Tue, 22 Dec 2015 06:32:06 -0800 (PST)
+X-Received: by 10.140.28.66 with SMTP id 60mr32560659qgy.74.1450794726653;
+        Tue, 22 Dec 2015 06:32:06 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 97si31749089qkt.81.2015.12.21.15.59.20
+        by mx.google.com with ESMTPS id o72si18463437qkl.17.2015.12.22.06.32.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Dec 2015 15:59:20 -0800 (PST)
+        Tue, 22 Dec 2015 06:32:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:47866 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aBAMK-0002WA-7J
-	for alex.bennee@linaro.org; Mon, 21 Dec 2015 18:59:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37691)
+	id 1aBNyw-0008RE-1d
+	for alex.bennee@linaro.org; Tue, 22 Dec 2015 09:32:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60968)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aBAMH-0002Ta-UD
-	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:59:18 -0500
+	(envelope-from <gregory.estrade@gmail.com>) id 1aBA01-0007Pc-UL
+	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:36:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aBAMG-0003dS-Ut
-	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:59:17 -0500
-Received: from mail-bn1bon0115.outbound.protection.outlook.com
-	([157.56.111.115]:24032
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <gregory.estrade@gmail.com>) id 1aBA00-0007Cx-4f
+	for qemu-arm@nongnu.org; Mon, 21 Dec 2015 18:36:17 -0500
+Received: from mail-io0-x22d.google.com ([2607:f8b0:4001:c06::22d]:34681)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aBAMB-0003d6-J4; Mon, 21 Dec 2015 18:59:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=1Ih9uNFEPDmtqVZoTsRmcPaMrwF8zZQ/ckqYzV15UnU=;
-	b=c2uDNHDAbq91hizVxIc3Ig/3lAEwSZ4lDURIAQ4MTVmTAM23OevUpj9YRiG7QyVY9O3kVsaeXaP/GqVDusgQo01EdldnvmkgdFCdstFyI7bCxtny7CFiXhEfOpxpTsy+SKEne+qmVO4kVCFRKIcSmD16+PbO90kh//mkNqPau5s=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with Microsoft
-	SMTP Server (TLS) id 15.1.361.13; Mon, 21 Dec 2015 23:59:09 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0361.006; Mon, 21 Dec 2015 23:59:09 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
-Thread-Index: AQHRLllz7K4EEY2RuUSr8mGMJ47UG57WJvIAgAAByCCAAAqKgIAAA7pg
-Date: Mon, 21 Dec 2015 23:59:08 +0000
-Message-ID: <BLUPR0301MB20346F742566A4E726E0135B9EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <gregory.estrade@gmail.com>)
+	id 1aB9zw-0007CN-0w; Mon, 21 Dec 2015 18:36:12 -0500
+Received: by mail-io0-x22d.google.com with SMTP id e126so170499344ioa.1;
+	Mon, 21 Dec 2015 15:36:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=ocZyZhRtlqKVSSrsKh//Nopjbh6xzUb+UfZ+TgmrDdo=;
+	b=l2lG/uos7ePQURPKf7P7EOVjbeuLARmsh62WuMpXksSSV0/7fPwZXMQyQuLp3eIJ2q
+	wXbsxa3z+qdiQvX/QpG14mx2Xk/moYnWudiv35mvsBnRgXYVtpdPn0Q/9ZqdQeNrzf7A
+	nc/8mNblU58fGG3M16yNKMgSNezI2IKBCjsBRraFfi1r/dFS5m1nu8MWs/P83DXi5lNT
+	hGkeHBK/2AyBLO6z+FV2y7i4GpC7F2KCMYpWX3DcwluWy+ZqolBg6jKPZxdODyItZ1V4
+	3rEcLiyMwxy4gl3JKv/+OXQJg4qegsExzUvAg5anGGv6qKIuPkR3kUvwgywD4f1GLigw
+	X0hQ==
+MIME-Version: 1.0
+X-Received: by 10.107.129.91 with SMTP id c88mr19835603iod.12.1450740971468;
+	Mon, 21 Dec 2015 15:36:11 -0800 (PST)
+Received: by 10.79.26.138 with HTTP; Mon, 21 Dec 2015 15:36:11 -0800 (PST)
+In-Reply-To: <CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
 References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
 	<BLUPR0301MB20345C0D49B62FE27C9BB9439EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
 	<CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
-In-Reply-To: <CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:b::724]
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2033;
-	5:1Vs757h/jYz5Yoqyau/0jj1j1lHo6iYyZjEA8oKPgAaFXYZ4qc/xLRaiNTZwnSfWAKycgyHhn7ANQba9brvOPoDc0Ylw/eXwqFPAYTUCNoqI3/CekDkzHyTXiFD346A0w1ISDHpisrsJIqCKK3EVrg==;
-	24:fSrxsF69/VEVGqI5l1Bw0HxSd35bWtR4e70R7YjzjsUihQbK5jPJ/xg5dtGSnvcJkACiV+NMTHfIAamLla3iKIMfjcvUdG5jVmR0MsetrEI=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2033;
-x-microsoft-antispam-prvs: <BLUPR0301MB20339F4D271F4BA4414F16D79EE40@BLUPR0301MB2033.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(520078)(5005006)(8121501046)(10201501046)(3002001)(61426038)(61427038);
-	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2033; 
-x-forefront-prvs: 079756C6B9
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(189002)(377454003)(199003)(24454002)(5002640100001)(5001960100002)(10090500001)(1220700001)(10290500002)(10710500006)(74316001)(77096005)(5004730100002)(76576001)(122556002)(54356999)(102836003)(5005710100001)(5008740100001)(93886004)(11100500001)(101416001)(10400500002)(586003)(6116002)(15975445007)(76176999)(5003600100002)(99286002)(2950100001)(7110500001)(1096002)(189998001)(50986999)(19625735002)(97736004)(33656002)(40100003)(19580405001)(86612001)(86362001)(8990500004)(1411001)(19580395003)(106116001)(106356001)(110136002)(87936001)(105586002)(81156007)(2900100001)(2420400006)(92566002)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Dec 2015 23:59:08.7177 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.111.115
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
+Date: Tue, 22 Dec 2015 00:36:11 +0100
+Message-ID: <CAEJ1hmfW34s8Ct7hY07aCqGmEdb6uFVscRv1TVBswE8wGC3eJg@mail.gmail.com>
+From: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Content-Type: multipart/alternative; boundary=001a113eb46643fd36052770f438
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4001:c06::22d
+X-Mailman-Approved-At: Tue, 22 Dec 2015 09:32:04 -0500
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Subject: Re: [Qemu-arm] [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,44 +77,400 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I7nI1sNtIipb
+X-TUID: 9cvbGAt1whlH
 
-PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
-Y29tXQ0KPiBTZW50OiBNb25kYXksIDIxIERlY2VtYmVyIDIwMTUgMTU6MzMNCj4gT24gTW9uLCBE
-ZWMgMjEsIDIwMTUgYXQgMzoxNSBQTSwgQW5kcmV3IEJhdW1hbm4NCj4gPEFuZHJldy5CYXVtYW5u
-QG1pY3Jvc29mdC5jb20+IHdyb3RlOg0KPiA+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFp
-bHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwuY29tXQ0KPiA+PiBTZW50OiBNb25kYXksIDIxIERl
-Y2VtYmVyIDIwMTUgMTQ6NDkNCj4gPj4gT24gVGh1LCBEZWMgMywgMjAxNSBhdCAxMDowMSBQTSwg
-QW5kcmV3IEJhdW1hbm4NCj4gPj4gPEFuZHJldy5CYXVtYW5uQG1pY3Jvc29mdC5jb20+IHdyb3Rl
-Og0KPiA+PiA+ICsNCj4gPj4gPiArICAgIHN3aXRjaCAob2Zmc2V0KSB7DQo+ID4+ID4gKyAgICBj
-YXNlIDB4ODA6ICAvKiBNQUlMMF9SRUFEICovDQo+ID4+ID4gKyAgICBjYXNlIDB4ODQ6DQo+ID4+
-ID4gKyAgICBjYXNlIDB4ODg6DQo+ID4+ID4gKyAgICBjYXNlIDB4OGM6DQo+ID4+DQo+ID4+IGNh
-c2UgMHg4MC4uMHg4Yw0KPiA+DQo+ID4gV29haCEgSXMgdGhhdCBzdGFuZGFyZCBDPw0KPiA+DQo+
-IA0KPiBZZXMsIGl0cyBwcm9iYWJseSBvbmUgb2YgdGhlIG1vcmUgcmVjZW50IGxhbmd1YWdlIHN0
-YW5kYXJkcyB0aG91Z2guDQo+IFFFTVUgZG9lcyB1c2UgdG8gbW9yZSBtb2Rlcm4gZmVhdHVyZXMg
-bGliZXJhbGx5Lg0KDQpOb3R3aXRoc3RhbmRpbmcgdGhhdCBpdCdzIHdpZGVseSB1c2VkIGluIFFF
-TVUgKGFuZCBhIG5pY2UgZmVhdHVyZSB0b28pLCBhbmQgbm90IHRoYXQgSSBoYXZlIGEgcHJvYmxl
-bSB3aXRoIGFkb3B0aW5nIGl0LCBidXQganVzdCBiZWNhdXNlIEknbSBhIHBlZGFudDogdGhpcyBp
-cyBkZWZpbml0ZWx5IG5vdCBpbiBDOTkgKHBlciBxZW11L0hBQ0tJTkcpLiBJdCBkb2Vzbid0IGFw
-cGVhcnMgaW4gQzExIGVpdGhlciAoYXQgbGVhc3Qgbm90IHRoZSBmaW5hbCBkcmFmdCkuIEl0J3Mg
-YSBnY2MgZXh0ZW5zaW9uOg0KaHR0cDovL2djYy5nbnUub3JnL29ubGluZWRvY3MvZ2NjL0Nhc2Ut
-UmFuZ2VzLmh0bWwNCg0KPiA+IFsuLi5dDQo+ID4+ID4gLS0tIC9kZXYvbnVsbA0KPiA+PiA+ICsr
-KyBiL2luY2x1ZGUvaHcvYXJtL2JjbTI4MzVfYXJtX2NvbnRyb2wuaA0KPiA+PiA+IEBAIC0wLDAg
-KzEsNDgxIEBADQo+ID4+ID4gKy8qDQo+ID4+ID4gKyAqICBsaW51eC9hcmNoL2FybS9tYWNoLWJj
-bTI3MDgvYXJtX2NvbnRyb2wuaA0KPiA+IFsuLi5dDQo+ID4+IFdoZW4geW91IGhhdmUgYSByZWd1
-bGFyIHN0cnVjdHVyZSBsaWtlIHRoaXMsIHlvdSBzaG91bGQgY29sbGFwc2UgaXQNCj4gPj4gZG93
-biB1c2luZyBzb21lIGFyaXRobWF0aWM6DQo+ID4NCj4gPiBOb3RpY2UgdGhhdCB0aGlzIGZpbGUg
-Y29tZXMgZnJvbSBMaW51eC4gSSBrbm93IGl0J3Mgbm90IHByZXR0eSwgYnV0IGNhbiB3ZQ0KPiBw
-bGVhc2Uga2VlcCBpdCBhcy1pcywgZm9yIGNvbXBhcmlzb24gcHVycG9zZXM/IEknbSBub3Qgc3Vy
-ZSB0aGVyZSdzIG11Y2gNCj4gdmFsdWUgaW4gY2xlYW5pbmcgaXQgdXAgbG9jYWxseS4uLg0KPiA+
-DQo+IA0KPiBJdCBsb29rcyB2ZXJ5IGF1dG9nZW5lcmF0ZWQgYW5kIHNlZW1zIHByZXR0eSBuYXN0
-eSBvbiB0aGUgcmVwZXRpdGlvbi4NCj4gDQo+IEFzIGltcGxlbWVudGVycyBvZiB0aGUgaGFyZHdh
-cmUsIGl0IGlzIG11Y2ggcmFyZXIgdG8gbmVlZCB0aGVzZQ0KPiByZXBldGl0aW91cyBkZWZzIHRo
-YW4gdGhlIHNvZnR3YXJlIHVzZXJzIG9uIHRoZSBvdGhlciBzaWRlLiAiRG8NCj4gc29tZXRoaW5n
-IHNwZWNpZmljIHdpdGggQ1BVIzMncyBNYm94IzUiIGlzIGdvaW5nIHRvIGFwcGVhciBpbg0KPiBz
-b2Z0d2FyZSwgYnV0IGhhcmR3YXJlIGltcGxlbWVudGVycyBnZW5lcmFsbHkgZG9uJ3QgaGF2ZSBh
-IGNob2ljZSB0bw0KPiBpbXBsZW1lbnQgdGhpbmdzIHNwZWNpZmljYWxseSBhbmQgaXQgdXN1YWxs
-eSBlbmRzIHVwIGJlaW5nIGxvb3BlZCBhbmQNCj4gdGhlIGV4cGxvZGVkIGRlZnMgYXJlIG5ldmVy
-IHVzZWQuIElmIHRoZXJlIGFyZSBvbmx5IGEgaGFuZGZ1bCBvZg0KPiBnZW51aW5lbHkgc2luZ2xl
-IGRlZnMgbmVlZGVkLCBjYW4gdGhleSBiZSBmaXNoZWQgb3V0Pw0KDQpJIHRoaW5rIHNvLiBJJ2xs
-IGRvIHRoYXQgdGhlbi4NCg0KQW5kcmV3DQo=
+--001a113eb46643fd36052770f438
+Content-Type: text/plain; charset=UTF-8
+
+Indeed, this header is generated from the Broadcom's Linux drivers headers,
+with a Perl script.
+
+On Tue, Dec 22, 2015 at 12:33 AM, Peter Crosthwaite <
+crosthwaitepeter@gmail.com> wrote:
+
+> On Mon, Dec 21, 2015 at 3:15 PM, Andrew Baumann
+> <Andrew.Baumann@microsoft.com> wrote:
+> > Hi Peter,
+> >
+> > Thanks for the review!
+> >
+> >> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+> >> Sent: Monday, 21 December 2015 14:49
+> >> On Thu, Dec 3, 2015 at 10:01 PM, Andrew Baumann
+> >> <Andrew.Baumann@microsoft.com> wrote:
+> >> > This adds the system mailboxes which are used to communicate with a
+> >> > number of GPU peripherals on Pi/Pi2.
+> >> >
+> >> > Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> >> > ---
+> >> >  default-configs/arm-softmmu.mak      |   1 +
+> >> >  hw/misc/Makefile.objs                |   1 +
+> >> >  hw/misc/bcm2835_sbm.c                | 280 ++++++++++++++++++++
+> >>
+> >> >  include/hw/arm/bcm2835_arm_control.h | 481
+> >> +++++++++++++++++++++++++++++++++++
+> >>
+> >> Do we need this file as of this patch?
+> >
+> > Yes, for ARM_MC_IHAVEDATAIRQEN and other related defines.
+> >
+> > [...]
+> >> > +static void bcm2835_sbm_update(BCM2835SbmState *s)
+> >>
+> >> What does Sbm stand for? If it is acronym is should be all caps in
+> camel case.
+> >
+> > I'm not sure -- it comes from Gregory's code; maybe he can comment?
+> Where this device gets instantiated, there is a comment of
+> >
+> > /* Semaphores / Doorbells / Mailboxes */
+> >
+> > ... but only mailboxes are implemented here. I'm guessing maybe it's
+> intended as "system mailboxes". I can rename it.
+> >
+> >
+> >> > +{
+> >> > +    int set;
+> >>
+> >> bool.
+> >>
+> >> > +    int done, n;
+> >> > +    uint32_t value;
+> >> > +
+> >> > +    /* Avoid unwanted recursive calls */
+> >> > +    s->mbox_irq_disabled = 1;
+> >> > +
+> >> > +    /* Get pending responses and put them in the vc->arm mbox */
+> >> > +    done = 0;
+> >> > +    while (!done) {
+> >> > +        done = 1;
+> >> > +        if (s->mbox[0].status & ARM_MS_FULL) {
+> >> > +            /* vc->arm mbox full, exit */
+> >>
+> >> break here.
+> >>
+> >> > +        } else {
+> >>
+> >> so you can drop the else and get back a level of indent.
+> >>
+> >> > +            for (n = 0; n < MBOX_CHAN_COUNT; n++) {
+> >> > +                if (s->available[n]) {
+> >> > +                    value = ldl_phys(&s->mbox_as, n<<4);
+> >> > +                    if (value != MBOX_INVALID_DATA) {
+> >> > +                        mbox_push(&s->mbox[0], value);
+> >> > +                    } else {
+> >> > +                        /* Hmmm... */
+> >>
+> >> Needs more comment :)
+> >
+> > Gregory -- help! :)
+> >
+> > [...]
+> >> > +    s->available[irq] = level;
+> >> > +    if (!s->mbox_irq_disabled) {
+> >>
+> >> I don't think you need this. IO devices are not thread safe and
+> >> core-code knows it. So you don't need to worry about interruption and
+> >> re-entry of your IRQ handler.
+> >
+> > I will have to put a debugger on this to confirm, but I think the issue
+> is that we are using a private memory region and GPIOs to route mailbox
+> data and interrupts to the relevant sub peripherals. The ldl_phys invokes
+> another device emulation (such as bcm2835_property.c in this series), which
+> may cause it to signal an interrupt back to us via qemu_set_irq which will
+> recursively run our handler. We want that IRQ to be recorded but "squashed".
+> >
+> > [...]
+> >> > +
+> >> > +    switch (offset) {
+> >> > +    case 0x80:  /* MAIL0_READ */
+> >> > +    case 0x84:
+> >> > +    case 0x88:
+> >> > +    case 0x8c:
+> >>
+> >> case 0x80..0x8c
+> >
+> > Woah! Is that standard C?
+> >
+>
+> Yes, its probably one of the more recent language standards though.
+> QEMU does use to more modern features liberally.
+>
+> > [...]
+> >> > --- /dev/null
+> >> > +++ b/include/hw/arm/bcm2835_arm_control.h
+> >> > @@ -0,0 +1,481 @@
+> >> > +/*
+> >> > + *  linux/arch/arm/mach-bcm2708/arm_control.h
+> > [...]
+> >> When you have a regular structure like this, you should collapse it
+> >> down using some arithmatic:
+> >
+> > Notice that this file comes from Linux. I know it's not pretty, but can
+> we please keep it as-is, for comparison purposes? I'm not sure there's much
+> value in cleaning it up locally...
+> >
+>
+> It looks very autogenerated and seems pretty nasty on the repetition.
+>
+> As implementers of the hardware, it is much rarer to need these
+> repetitious defs than the software users on the other side. "Do
+> something specific with CPU#3's Mbox#5" is going to appear in
+> software, but hardware implementers generally don't have a choice to
+> implement things specifically and it usually ends up being looped and
+> the exploded defs are never used. If there are only a handful of
+> genuinely single defs needed, can they be fished out?
+>
+> Regards,
+> Peter
+>
+> >> > --- /dev/null
+> >> > +++ b/include/hw/misc/bcm2835_sbm.h
+> >> > @@ -0,0 +1,37 @@
+> >> > +/*
+> >> > + * Raspberry Pi emulation (c) 2012 Gregory Estrade
+> >> > + * This code is licensed under the GNU GPLv2 and later.
+> >> > + */
+> >> > +
+> >> > +#ifndef BCM2835_SBM_H
+> >> > +#define BCM2835_SBM_H
+> >> > +
+> >> > +#include "hw/sysbus.h"
+> >> > +#include "exec/address-spaces.h"
+> >> > +#include "hw/arm/bcm2835_mbox.h"
+> >> > +
+> >> > +#define TYPE_BCM2835_SBM "bcm2835_sbm"
+> >> > +#define BCM2835_SBM(obj) \
+> >> > +        OBJECT_CHECK(BCM2835SbmState, (obj), TYPE_BCM2835_SBM)
+> >> > +
+> >> > +typedef struct {
+> >> > +    MemoryRegion *mbox_mr;
+> >> > +    AddressSpace mbox_as;
+> >>
+> >> I can't see where these two fields are used. A quick scan shows that
+> >> the SbmState's copy is uses for all DMA ops. If these are needed,
+> >> mbox_init should pass a pointer to the the SbmState then this saves
+> >> the pointer and navigates as needed back to the container structure to
+> >> get the AS.
+> >
+> > You're right. They're uninitialised/unused detritus from a previous
+> refactor. I'll remove them.
+> >
+> > Thanks,
+> > Andrew
+>
+
+--001a113eb46643fd36052770f438
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Indeed, this header is generated from the Broadcom&#39;s L=
+inux drivers headers, with a Perl script.=C2=A0</div><div class=3D"gmail_ex=
+tra"><br><div class=3D"gmail_quote">On Tue, Dec 22, 2015 at 12:33 AM, Peter=
+ Crosthwaite <span dir=3D"ltr">&lt;<a href=3D"mailto:crosthwaitepeter@gmail=
+.com" target=3D"_blank">crosthwaitepeter@gmail.com</a>&gt;</span> wrote:<br=
+><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1=
+px #ccc solid;padding-left:1ex">On Mon, Dec 21, 2015 at 3:15 PM, Andrew Bau=
+mann<br>
+<div><div class=3D"h5">&lt;<a href=3D"mailto:Andrew.Baumann@microsoft.com">=
+Andrew.Baumann@microsoft.com</a>&gt; wrote:<br>
+&gt; Hi Peter,<br>
+&gt;<br>
+&gt; Thanks for the review!<br>
+&gt;<br>
+&gt;&gt; From: Peter Crosthwaite [mailto:<a href=3D"mailto:crosthwaitepeter=
+@gmail.com">crosthwaitepeter@gmail.com</a>]<br>
+&gt;&gt; Sent: Monday, 21 December 2015 14:49<br>
+&gt;&gt; On Thu, Dec 3, 2015 at 10:01 PM, Andrew Baumann<br>
+&gt;&gt; &lt;<a href=3D"mailto:Andrew.Baumann@microsoft.com">Andrew.Baumann=
+@microsoft.com</a>&gt; wrote:<br>
+&gt;&gt; &gt; This adds the system mailboxes which are used to communicate =
+with a<br>
+&gt;&gt; &gt; number of GPU peripherals on Pi/Pi2.<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; Signed-off-by: Andrew Baumann &lt;<a href=3D"mailto:Andrew.Ba=
+umann@microsoft.com">Andrew.Baumann@microsoft.com</a>&gt;<br>
+&gt;&gt; &gt; ---<br>
+&gt;&gt; &gt;=C2=A0 default-configs/arm-softmmu.mak=C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 =C2=A01 +<br>
+&gt;&gt; &gt;=C2=A0 hw/misc/Makefile.objs=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
+&gt;&gt; &gt;=C2=A0 hw/misc/bcm2835_sbm.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 | 280 ++++++++++++++++++++<br>
+&gt;&gt;<br>
+&gt;&gt; &gt;=C2=A0 include/hw/arm/bcm2835_arm_control.h | 481<br>
+&gt;&gt; +++++++++++++++++++++++++++++++++++<br>
+&gt;&gt;<br>
+&gt;&gt; Do we need this file as of this patch?<br>
+&gt;<br>
+&gt; Yes, for ARM_MC_IHAVEDATAIRQEN and other related defines.<br>
+&gt;<br>
+&gt; [...]<br>
+&gt;&gt; &gt; +static void bcm2835_sbm_update(BCM2835SbmState *s)<br>
+&gt;&gt;<br>
+&gt;&gt; What does Sbm stand for? If it is acronym is should be all caps in=
+ camel case.<br>
+&gt;<br>
+&gt; I&#39;m not sure -- it comes from Gregory&#39;s code; maybe he can com=
+ment? Where this device gets instantiated, there is a comment of<br>
+&gt;<br>
+&gt; /* Semaphores / Doorbells / Mailboxes */<br>
+&gt;<br>
+&gt; ... but only mailboxes are implemented here. I&#39;m guessing maybe it=
+&#39;s intended as &quot;system mailboxes&quot;. I can rename it.<br>
+&gt;<br>
+&gt;<br>
+&gt;&gt; &gt; +{<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 int set;<br>
+&gt;&gt;<br>
+&gt;&gt; bool.<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 int done, n;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 uint32_t value;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 /* Avoid unwanted recursive calls */<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 s-&gt;mbox_irq_disabled =3D 1;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 /* Get pending responses and put them in the v=
+c-&gt;arm mbox */<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 done =3D 0;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 while (!done) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 done =3D 1;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;mbox[0].status &amp; A=
+RM_MS_FULL) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* vc-&gt;arm mbox=
+ full, exit */<br>
+&gt;&gt;<br>
+&gt;&gt; break here.<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+&gt;&gt;<br>
+&gt;&gt; so you can drop the else and get back a level of indent.<br>
+&gt;&gt;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 for (n =3D 0; n &l=
+t; MBOX_CHAN_COUNT; n++) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (=
+s-&gt;available[n]) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 value =3D ldl_phys(&amp;s-&gt;mbox_as, n&lt;&lt;4);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 if (value !=3D MBOX_INVALID_DATA) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 mbox_push(&amp;s-&gt;mbox[0], value);<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 } else {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 /* Hmmm... */<br>
+&gt;&gt;<br>
+&gt;&gt; Needs more comment :)<br>
+&gt;<br>
+&gt; Gregory -- help! :)<br>
+&gt;<br>
+&gt; [...]<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 s-&gt;available[irq] =3D level;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 if (!s-&gt;mbox_irq_disabled) {<br>
+&gt;&gt;<br>
+&gt;&gt; I don&#39;t think you need this. IO devices are not thread safe an=
+d<br>
+&gt;&gt; core-code knows it. So you don&#39;t need to worry about interrupt=
+ion and<br>
+&gt;&gt; re-entry of your IRQ handler.<br>
+&gt;<br>
+&gt; I will have to put a debugger on this to confirm, but I think the issu=
+e is that we are using a private memory region and GPIOs to route mailbox d=
+ata and interrupts to the relevant sub peripherals. The ldl_phys invokes an=
+other device emulation (such as bcm2835_property.c in this series), which m=
+ay cause it to signal an interrupt back to us via qemu_set_irq which will r=
+ecursively run our handler. We want that IRQ to be recorded but &quot;squas=
+hed&quot;.<br>
+&gt;<br>
+&gt; [...]<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 switch (offset) {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 0x80:=C2=A0 /* MAIL0_READ */<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 0x84:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 0x88:<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 case 0x8c:<br>
+&gt;&gt;<br>
+&gt;&gt; case 0x80..0x8c<br>
+&gt;<br>
+&gt; Woah! Is that standard C?<br>
+&gt;<br>
+<br>
+</div></div>Yes, its probably one of the more recent language standards tho=
+ugh.<br>
+QEMU does use to more modern features liberally.<br>
+<span class=3D""><br>
+&gt; [...]<br>
+&gt;&gt; &gt; --- /dev/null<br>
+&gt;&gt; &gt; +++ b/include/hw/arm/bcm2835_arm_control.h<br>
+&gt;&gt; &gt; @@ -0,0 +1,481 @@<br>
+&gt;&gt; &gt; +/*<br>
+&gt;&gt; &gt; + *=C2=A0 linux/arch/arm/mach-bcm2708/arm_control.h<br>
+&gt; [...]<br>
+&gt;&gt; When you have a regular structure like this, you should collapse i=
+t<br>
+&gt;&gt; down using some arithmatic:<br>
+&gt;<br>
+&gt; Notice that this file comes from Linux. I know it&#39;s not pretty, bu=
+t can we please keep it as-is, for comparison purposes? I&#39;m not sure th=
+ere&#39;s much value in cleaning it up locally...<br>
+&gt;<br>
+<br>
+</span>It looks very autogenerated and seems pretty nasty on the repetition=
+.<br>
+<br>
+As implementers of the hardware, it is much rarer to need these<br>
+repetitious defs than the software users on the other side. &quot;Do<br>
+something specific with CPU#3&#39;s Mbox#5&quot; is going to appear in<br>
+software, but hardware implementers generally don&#39;t have a choice to<br=
+>
+implement things specifically and it usually ends up being looped and<br>
+the exploded defs are never used. If there are only a handful of<br>
+genuinely single defs needed, can they be fished out?<br>
+<br>
+Regards,<br>
+Peter<br>
+<div class=3D"HOEnZb"><div class=3D"h5"><br>
+&gt;&gt; &gt; --- /dev/null<br>
+&gt;&gt; &gt; +++ b/include/hw/misc/bcm2835_sbm.h<br>
+&gt;&gt; &gt; @@ -0,0 +1,37 @@<br>
+&gt;&gt; &gt; +/*<br>
+&gt;&gt; &gt; + * Raspberry Pi emulation (c) 2012 Gregory Estrade<br>
+&gt;&gt; &gt; + * This code is licensed under the GNU GPLv2 and later.<br>
+&gt;&gt; &gt; + */<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#ifndef BCM2835_SBM_H<br>
+&gt;&gt; &gt; +#define BCM2835_SBM_H<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#include &quot;hw/sysbus.h&quot;<br>
+&gt;&gt; &gt; +#include &quot;exec/address-spaces.h&quot;<br>
+&gt;&gt; &gt; +#include &quot;hw/arm/bcm2835_mbox.h&quot;<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +#define TYPE_BCM2835_SBM &quot;bcm2835_sbm&quot;<br>
+&gt;&gt; &gt; +#define BCM2835_SBM(obj) \<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 OBJECT_CHECK(BCM2835SbmState, (o=
+bj), TYPE_BCM2835_SBM)<br>
+&gt;&gt; &gt; +<br>
+&gt;&gt; &gt; +typedef struct {<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 MemoryRegion *mbox_mr;<br>
+&gt;&gt; &gt; +=C2=A0 =C2=A0 AddressSpace mbox_as;<br>
+&gt;&gt;<br>
+&gt;&gt; I can&#39;t see where these two fields are used. A quick scan show=
+s that<br>
+&gt;&gt; the SbmState&#39;s copy is uses for all DMA ops. If these are need=
+ed,<br>
+&gt;&gt; mbox_init should pass a pointer to the the SbmState then this save=
+s<br>
+&gt;&gt; the pointer and navigates as needed back to the container structur=
+e to<br>
+&gt;&gt; get the AS.<br>
+&gt;<br>
+&gt; You&#39;re right. They&#39;re uninitialised/unused detritus from a pre=
+vious refactor. I&#39;ll remove them.<br>
+&gt;<br>
+&gt; Thanks,<br>
+&gt; Andrew<br>
+</div></div></blockquote></div><br></div>
+
+--001a113eb46643fd36052770f438--

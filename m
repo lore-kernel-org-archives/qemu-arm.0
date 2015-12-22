@@ -1,50 +1,51 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3489681obb;
-        Tue, 22 Dec 2015 07:17:47 -0800 (PST)
-X-Received: by 10.55.81.132 with SMTP id f126mr32832581qkb.88.1450797467128;
-        Tue, 22 Dec 2015 07:17:47 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp3500834obb;
+        Tue, 22 Dec 2015 07:37:25 -0800 (PST)
+X-Received: by 10.55.81.3 with SMTP id f3mr33646110qkb.35.1450798645183;
+        Tue, 22 Dec 2015 07:37:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g18si27185364qgd.58.2015.12.22.07.17.47
+        by mx.google.com with ESMTPS id 92si35000944qku.93.2015.12.22.07.37.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Dec 2015 07:17:47 -0800 (PST)
+        Tue, 22 Dec 2015 07:37:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51148 helo=lists.gnu.org)
+Received: from localhost ([::1]:51207 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aBOh8-0005CV-L5
-	for alex.bennee@linaro.org; Tue, 22 Dec 2015 10:17:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57381)
+	id 1aBP08-0000RZ-Sm
+	for alex.bennee@linaro.org; Tue, 22 Dec 2015 10:37:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aBOh1-0005CD-9s
-	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 10:17:44 -0500
+	(envelope-from <imammedo@redhat.com>) id 1aBP02-0000NG-PR
+	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 10:37:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aBOgz-0006ib-Lw
-	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 10:17:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42020)
+	(envelope-from <imammedo@redhat.com>) id 1aBP00-0002xj-1i
+	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 10:37:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39600)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1aBOgz-0006iM-Br; Tue, 22 Dec 2015 10:17:37 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id E39F78E37A;
-	Tue, 22 Dec 2015 15:17:35 +0000 (UTC)
-Received: from redhat.com (vpn1-6-248.ams2.redhat.com [10.36.6.248])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id tBMFHXSS009943; Tue, 22 Dec 2015 10:17:34 -0500
-Date: Tue, 22 Dec 2015 17:17:33 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20151222171313-mutt-send-email-mst@redhat.com>
+	(envelope-from <imammedo@redhat.com>)
+	id 1aBOzz-0002xe-Py; Tue, 22 Dec 2015 10:37:15 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 27FEDC0B7E21;
+	Tue, 22 Dec 2015 15:37:15 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id tBMFbD9w024518; Tue, 22 Dec 2015 10:37:13 -0500
+Date: Tue, 22 Dec 2015 16:37:11 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20151222163711.313eeca6@nial.brq.redhat.com>
+In-Reply-To: <20151222171313-mutt-send-email-mst@redhat.com>
 References: <1449704528-289297-1-git-send-email-imammedo@redhat.com>
 	<1449704528-289297-25-git-send-email-imammedo@redhat.com>
+	<20151222171313-mutt-send-email-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1449704528-289297-25-git-send-email-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, zhaoshenglong@huawei.com
@@ -63,183 +64,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cqJXidfYjpPC
+X-TUID: rK92HOgwALYc
 
-On Thu, Dec 10, 2015 at 12:41:18AM +0100, Igor Mammedov wrote:
-> ASL Interrupt() macro translates to Extended Interrupt Descriptor
-> which supports variable number of IRQs. It will be used for
-> conversion of ASL code for pc/q35 machines that use it for
-> returning several IRQs in _PSR object.
+On Tue, 22 Dec 2015 17:17:33 +0200
+"Michael S. Tsirkin" <mst@redhat.com> wrote:
+
+> On Thu, Dec 10, 2015 at 12:41:18AM +0100, Igor Mammedov wrote:
+> > ASL Interrupt() macro translates to Extended Interrupt Descriptor
+> > which supports variable number of IRQs. It will be used for
+> > conversion of ASL code for pc/q35 machines that use it for
+> > returning several IRQs in _PSR object.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > CC: zhaoshenglong@huawei.com
+> > CC: qemu-arm@nongnu.org
+> > ---
+> >  hw/acpi/aml-build.c         | 22 +++++++++++++---------
+> >  hw/arm/virt-acpi-build.c    | 23 ++++++++++++-----------
+> >  include/hw/acpi/aml-build.h |  2 +-
+> >  3 files changed, 26 insertions(+), 21 deletions(-)
+> > 
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > index 2ca9207..ee64d12 100644
+> > --- a/hw/acpi/aml-build.c
+> > +++ b/hw/acpi/aml-build.c
+> > @@ -667,23 +667,27 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
+> >  Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
+> >                     AmlLevelAndEdge level_and_edge,
+> >                     AmlActiveHighAndLow high_and_low, AmlShared shared,
+> > -                   uint32_t irq)
+> > +                   uint32_t *irq_list, uint8_t irq_count)
 > 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> CC: zhaoshenglong@huawei.com
-> CC: qemu-arm@nongnu.org
-> ---
->  hw/acpi/aml-build.c         | 22 +++++++++++++---------
->  hw/arm/virt-acpi-build.c    | 23 ++++++++++++-----------
->  include/hw/acpi/aml-build.h |  2 +-
->  3 files changed, 26 insertions(+), 21 deletions(-)
+> const uint32_t *irq_list?
+will do it on top as it's in master by now.
+
 > 
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 2ca9207..ee64d12 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -667,23 +667,27 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
->  Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
->                     AmlLevelAndEdge level_and_edge,
->                     AmlActiveHighAndLow high_and_low, AmlShared shared,
-> -                   uint32_t irq)
-> +                   uint32_t *irq_list, uint8_t irq_count)
-
-const uint32_t *irq_list?
-
->  {
-> +    int i;
->      Aml *var = aml_alloc();
->      uint8_t irq_flags = con_and_pro | (level_and_edge << 1)
->                          | (high_and_low << 2) | (shared << 3);
-> +    const int header_bytes_in_len = 2;
-> +    uint16_t len = header_bytes_in_len + irq_count * sizeof(uint32_t);
-> +
-> +    assert(irq_count > 0);
->  
->      build_append_byte(var->buf, 0x89); /* Extended irq descriptor */
-> -    build_append_byte(var->buf, 6); /* Length, bits[7:0] minimum value = 6 */
-> -    build_append_byte(var->buf, 0); /* Length, bits[15:8] minimum value = 0 */
-> +    build_append_byte(var->buf, len & 0xFF); /* Length, bits[7:0] */
-> +    build_append_byte(var->buf, len >> 8); /* Length, bits[15:8] */
-
-build_append_int_noprefix ?
-
-Which really needs a better name btw.
-
-
-
->      build_append_byte(var->buf, irq_flags); /* Interrupt Vector Information. */
-> -    build_append_byte(var->buf, 0x01);      /* Interrupt table length = 1 */
-> +    build_append_byte(var->buf, irq_count);   /* Interrupt table length */
->  
-> -    /* Interrupt Number */
-> -    build_append_byte(var->buf, extract32(irq, 0, 8));  /* bits[7:0] */
-> -    build_append_byte(var->buf, extract32(irq, 8, 8));  /* bits[15:8] */
-> -    build_append_byte(var->buf, extract32(irq, 16, 8)); /* bits[23:16] */
-> -    build_append_byte(var->buf, extract32(irq, 24, 8)); /* bits[31:24] */
-> +    /* Interrupt Number List */
-> +    for (i = 0; i < irq_count; i++) {
-> +        build_append_int_noprefix(var->buf, irq_list[i], 4);
-> +    }
->      return var;
->  }
->  
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 698b5f2..02ba822 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -71,7 +71,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
->  }
->  
->  static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-> -                                           int uart_irq)
-> +                                           uint32_t uart_irq)
->  {
->      Aml *dev = aml_device("COM0");
->      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
-> @@ -82,7 +82,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->                                         uart_memmap->size, AML_READ_WRITE));
->      aml_append(crs,
->                 aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                             AML_EXCLUSIVE, uart_irq));
-> +                             AML_EXCLUSIVE, &uart_irq, 1));
->      aml_append(dev, aml_name_decl("_CRS", crs));
->  
->      /* The _ADR entry is used to link this device to the UART described
-> @@ -94,7 +94,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->  }
->  
->  static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
-> -                                          int rtc_irq)
-> +                                          uint32_t rtc_irq)
->  {
->      Aml *dev = aml_device("RTC0");
->      aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0013")));
-> @@ -105,7 +105,7 @@ static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
->                                         rtc_memmap->size, AML_READ_WRITE));
->      aml_append(crs,
->                 aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                             AML_EXCLUSIVE, rtc_irq));
-> +                             AML_EXCLUSIVE, &rtc_irq, 1));
->      aml_append(dev, aml_name_decl("_CRS", crs));
->      aml_append(scope, dev);
->  }
-> @@ -136,11 +136,11 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
->  
->  static void acpi_dsdt_add_virtio(Aml *scope,
->                                   const MemMapEntry *virtio_mmio_memmap,
-> -                                 int mmio_irq, int num)
-> +                                 uint32_t mmio_irq, int num)
->  {
->      hwaddr base = virtio_mmio_memmap->base;
->      hwaddr size = virtio_mmio_memmap->size;
-> -    int irq = mmio_irq;
-> +    uint32_t irq = mmio_irq;
->      int i;
->  
->      for (i = 0; i < num; i++) {
-> @@ -152,15 +152,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
->          aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
->          aml_append(crs,
->                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                                 AML_EXCLUSIVE, irq + i));
-> +                                 AML_EXCLUSIVE, &irq, 1));
->          aml_append(dev, aml_name_decl("_CRS", crs));
->          aml_append(scope, dev);
->          base += size;
->      }
->  }
->  
-> -static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
-> -                              bool use_highmem)
-> +static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-> +                              uint32_t irq, bool use_highmem)
->  {
->      Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
->      int i, bus_no;
-> @@ -199,18 +199,19 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
->  
->      /* Create GSI link device */
->      for (i = 0; i < PCI_NUM_PINS; i++) {
-> +        uint32_t irqs =  irq + i;
->          Aml *dev_gsi = aml_device("GSI%d", i);
->          aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
->          aml_append(dev_gsi, aml_name_decl("_UID", aml_int(0)));
->          crs = aml_resource_template();
->          aml_append(crs,
->                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                                 AML_EXCLUSIVE, irq + i));
-> +                                 AML_EXCLUSIVE, &irqs, 1));
->          aml_append(dev_gsi, aml_name_decl("_PRS", crs));
->          crs = aml_resource_template();
->          aml_append(crs,
->                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                                 AML_EXCLUSIVE, irq + i));
-> +                                 AML_EXCLUSIVE, &irqs, 1));
->          aml_append(dev_gsi, aml_name_decl("_CRS", crs));
->          method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
->          aml_append(dev_gsi, method);
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index ca365c9..a3a058f 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -253,7 +253,7 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
->  Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
->                     AmlLevelAndEdge level_and_edge,
->                     AmlActiveHighAndLow high_and_low, AmlShared shared,
-> -                   uint32_t irq);
-> +                   uint32_t *irq_list, uint8_t irq_count);
->  Aml *aml_io(AmlIODecode dec, uint16_t min_base, uint16_t max_base,
->              uint8_t aln, uint8_t len);
->  Aml *aml_operation_region(const char *name, AmlRegionSpace rs,
-> -- 
-> 1.8.3.1
+> >  {
+> > +    int i;
+> >      Aml *var = aml_alloc();
+> >      uint8_t irq_flags = con_and_pro | (level_and_edge << 1)
+> >                          | (high_and_low << 2) | (shared << 3);
+> > +    const int header_bytes_in_len = 2;
+> > +    uint16_t len = header_bytes_in_len + irq_count * sizeof(uint32_t);
+> > +
+> > +    assert(irq_count > 0);
+> >  
+> >      build_append_byte(var->buf, 0x89); /* Extended irq descriptor */
+> > -    build_append_byte(var->buf, 6); /* Length, bits[7:0] minimum value = 6 */
+> > -    build_append_byte(var->buf, 0); /* Length, bits[15:8] minimum value = 0 */
+> > +    build_append_byte(var->buf, len & 0xFF); /* Length, bits[7:0] */
+> > +    build_append_byte(var->buf, len >> 8); /* Length, bits[15:8] */
 > 
+> build_append_int_noprefix ?
+it will do job to, though I'd prefer it by byte as it exactly matches
+table description in spec.
+
+> 
+> Which really needs a better name btw.
+I'd like to get rid of long build_append_ prefix but would like to
+keep aml_ one only for ASL constructs.
+How about 'acpi_int(Aml*, val, sz)' replacing both 'build_append_int[_noprefix]()'
+where if sz == 0 do what build_append_int() does.
+
+same name suggestion goes for byte:
+  s/build_append_byte/acpi_byte/
+
+> 
+> 
+> 
+> >      build_append_byte(var->buf, irq_flags); /* Interrupt Vector Information. */
+> > -    build_append_byte(var->buf, 0x01);      /* Interrupt table length = 1 */
+> > +    build_append_byte(var->buf, irq_count);   /* Interrupt table length */
+> >  
+> > -    /* Interrupt Number */
+> > -    build_append_byte(var->buf, extract32(irq, 0, 8));  /* bits[7:0] */
+> > -    build_append_byte(var->buf, extract32(irq, 8, 8));  /* bits[15:8] */
+> > -    build_append_byte(var->buf, extract32(irq, 16, 8)); /* bits[23:16] */
+> > -    build_append_byte(var->buf, extract32(irq, 24, 8)); /* bits[31:24] */
+> > +    /* Interrupt Number List */
+> > +    for (i = 0; i < irq_count; i++) {
+> > +        build_append_int_noprefix(var->buf, irq_list[i], 4);
+> > +    }
+> >      return var;
+> >  }
+> >  
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 698b5f2..02ba822 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -71,7 +71,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+> >  }
+> >  
+> >  static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+> > -                                           int uart_irq)
+> > +                                           uint32_t uart_irq)
+> >  {
+> >      Aml *dev = aml_device("COM0");
+> >      aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0011")));
+> > @@ -82,7 +82,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+> >                                         uart_memmap->size, AML_READ_WRITE));
+> >      aml_append(crs,
+> >                 aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> > -                             AML_EXCLUSIVE, uart_irq));
+> > +                             AML_EXCLUSIVE, &uart_irq, 1));
+> >      aml_append(dev, aml_name_decl("_CRS", crs));
+> >  
+> >      /* The _ADR entry is used to link this device to the UART described
+> > @@ -94,7 +94,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+> >  }
+> >  
+> >  static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
+> > -                                          int rtc_irq)
+> > +                                          uint32_t rtc_irq)
+> >  {
+> >      Aml *dev = aml_device("RTC0");
+> >      aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0013")));
+> > @@ -105,7 +105,7 @@ static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
+> >                                         rtc_memmap->size, AML_READ_WRITE));
+> >      aml_append(crs,
+> >                 aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> > -                             AML_EXCLUSIVE, rtc_irq));
+> > +                             AML_EXCLUSIVE, &rtc_irq, 1));
+> >      aml_append(dev, aml_name_decl("_CRS", crs));
+> >      aml_append(scope, dev);
+> >  }
+> > @@ -136,11 +136,11 @@ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+> >  
+> >  static void acpi_dsdt_add_virtio(Aml *scope,
+> >                                   const MemMapEntry *virtio_mmio_memmap,
+> > -                                 int mmio_irq, int num)
+> > +                                 uint32_t mmio_irq, int num)
+> >  {
+> >      hwaddr base = virtio_mmio_memmap->base;
+> >      hwaddr size = virtio_mmio_memmap->size;
+> > -    int irq = mmio_irq;
+> > +    uint32_t irq = mmio_irq;
+> >      int i;
+> >  
+> >      for (i = 0; i < num; i++) {
+> > @@ -152,15 +152,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
+> >          aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
+> >          aml_append(crs,
+> >                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> > -                                 AML_EXCLUSIVE, irq + i));
+> > +                                 AML_EXCLUSIVE, &irq, 1));
+> >          aml_append(dev, aml_name_decl("_CRS", crs));
+> >          aml_append(scope, dev);
+> >          base += size;
+> >      }
+> >  }
+> >  
+> > -static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
+> > -                              bool use_highmem)
+> > +static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+> > +                              uint32_t irq, bool use_highmem)
+> >  {
+> >      Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
+> >      int i, bus_no;
+> > @@ -199,18 +199,19 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap, int irq,
+> >  
+> >      /* Create GSI link device */
+> >      for (i = 0; i < PCI_NUM_PINS; i++) {
+> > +        uint32_t irqs =  irq + i;
+> >          Aml *dev_gsi = aml_device("GSI%d", i);
+> >          aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
+> >          aml_append(dev_gsi, aml_name_decl("_UID", aml_int(0)));
+> >          crs = aml_resource_template();
+> >          aml_append(crs,
+> >                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> > -                                 AML_EXCLUSIVE, irq + i));
+> > +                                 AML_EXCLUSIVE, &irqs, 1));
+> >          aml_append(dev_gsi, aml_name_decl("_PRS", crs));
+> >          crs = aml_resource_template();
+> >          aml_append(crs,
+> >                     aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> > -                                 AML_EXCLUSIVE, irq + i));
+> > +                                 AML_EXCLUSIVE, &irqs, 1));
+> >          aml_append(dev_gsi, aml_name_decl("_CRS", crs));
+> >          method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
+> >          aml_append(dev_gsi, method);
+> > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> > index ca365c9..a3a058f 100644
+> > --- a/include/hw/acpi/aml-build.h
+> > +++ b/include/hw/acpi/aml-build.h
+> > @@ -253,7 +253,7 @@ Aml *aml_memory32_fixed(uint32_t addr, uint32_t size,
+> >  Aml *aml_interrupt(AmlConsumerAndProducer con_and_pro,
+> >                     AmlLevelAndEdge level_and_edge,
+> >                     AmlActiveHighAndLow high_and_low, AmlShared shared,
+> > -                   uint32_t irq);
+> > +                   uint32_t *irq_list, uint8_t irq_count);
+> >  Aml *aml_io(AmlIODecode dec, uint16_t min_base, uint16_t max_base,
+> >              uint8_t aln, uint8_t len);
+> >  Aml *aml_operation_region(const char *name, AmlRegionSpace rs,
+> > -- 
+> > 1.8.3.1
+> > 
+

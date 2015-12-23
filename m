@@ -1,59 +1,75 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3564686obb;
-        Tue, 22 Dec 2015 09:27:57 -0800 (PST)
-X-Received: by 10.140.42.20 with SMTP id b20mr8703720qga.16.1450805277678;
-        Tue, 22 Dec 2015 09:27:57 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp4297066obb;
+        Wed, 23 Dec 2015 12:33:09 -0800 (PST)
+X-Received: by 10.140.251.131 with SMTP id w125mr43730967qhc.1.1450902789417;
+        Wed, 23 Dec 2015 12:33:09 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p23si17294075qkl.19.2015.12.22.09.27.57
+        by mx.google.com with ESMTPS id e127si41462872qkb.26.2015.12.23.12.33.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Dec 2015 09:27:57 -0800 (PST)
+        Wed, 23 Dec 2015 12:33:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52131 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com
+Received: from localhost ([::1]:57718 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aBQj7-0005qz-9Q
-	for alex.bennee@linaro.org; Tue, 22 Dec 2015 12:27:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34329)
+	id 1aBq5s-0003o5-V3
+	for alex.bennee@linaro.org; Wed, 23 Dec 2015 15:33:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aBQDW-00019h-S2
-	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 11:55:23 -0500
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aBq5r-0003ny-EO
+	for qemu-arm@nongnu.org; Wed, 23 Dec 2015 15:33:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aBQDV-0001N9-Ot
-	for qemu-arm@nongnu.org; Tue, 22 Dec 2015 11:55:18 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45847)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1aBq5n-0004p4-El
+	for qemu-arm@nongnu.org; Wed, 23 Dec 2015 15:33:07 -0500
+Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:33663)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1aBQDV-0001N3-EF; Tue, 22 Dec 2015 11:55:17 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id E965D693D1;
-	Tue, 22 Dec 2015 16:55:16 +0000 (UTC)
-Received: from redhat.com (vpn1-5-205.ams2.redhat.com [10.36.5.205])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id tBMGtEEu012599; Tue, 22 Dec 2015 11:55:14 -0500
-Date: Tue, 22 Dec 2015 18:55:13 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <1450803119-4223-56-git-send-email-mst@redhat.com>
-References: <1450803119-4223-1-git-send-email-mst@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>)
+	id 1aBq5n-0004oy-8r; Wed, 23 Dec 2015 15:33:03 -0500
+Received: by mail-wm0-x234.google.com with SMTP id p187so157907599wmp.0;
+	Wed, 23 Dec 2015 12:33:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=Uh/8fkG4xiVAFHsFAE2kj0N1pKo2xS8TXHzpS1KJ6aw=;
+	b=XH+QshpycLiH1CLlIxaKfRzoKiRr9rTCJeUFMTGbbyaj7fhsbHTMQsMvcAg2g1KCys
+	B5LD1Rg6a1H3PUOL1wnTvU57QVZENEuO0YXeVAZqd6eAxPeuEZ71K/7ShJUEtDZHyK4Q
+	k8igQv+BUqFC7Jbp/5fxB5hU4ODT1TBdP+ZT48jRnydmbFjOHf2kFphk4qVmb63ZqvsM
+	/iBxglEYyWdCXMGuwVvQgnK4LH9d6XhMLUu3aW+vmfHSEmWmFkiVfd0trdRPyP7gkl3k
+	5qGs8TUMhPPRWQGCgetxaCZ/H3hbkQaQSurpNLohHhE7/LlKaHgDqkYCKJuaWO1+9PE7
+	n4eA==
+X-Received: by 10.194.216.100 with SMTP id op4mr21259588wjc.85.1450902782682; 
+	Wed, 23 Dec 2015 12:33:02 -0800 (PST)
+Received: from [192.168.10.150] (94-39-192-53.adsl-ull.clienti.tiscali.it.
+	[94.39.192.53]) by smtp.googlemail.com with ESMTPSA id
+	u62sm30707695wmg.4.2015.12.23.12.33.00
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 23 Dec 2015 12:33:01 -0800 (PST)
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>
+References: <1449187263-4604-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1449208887-9564-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAPokK=rGg5pG_XFL0c6C-i-Mkobzd+D-KgrUE1bdt1RBsD3bGg@mail.gmail.com>
+	<BLUPR0301MB20345C0D49B62FE27C9BB9439EE40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <567B04FA.2030903@redhat.com>
+Date: Wed, 23 Dec 2015 21:32:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1450803119-4223-1-git-send-email-mst@redhat.com>
-X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-arm] [PULL 55/55] acpi: extend aml_and() to accept target
-	argument
+In-Reply-To: <CAPokK=owo1JtwWzDneGm9b+xe708eRDLXDQGgvVm1kkSLMo-hg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::234
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+	=?UTF-8?Q?Gr=c3=a9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH 1/8] bcm2835_sbm: add BCM2835 mailboxes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,95 +83,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SCHvmWsgAjgp
+X-TUID: gjd9xQR4kal3
 
-From: Igor Mammedov <imammedo@redhat.com>
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/acpi/aml-build.h | 2 +-
- hw/acpi/aml-build.c         | 4 ++--
- hw/arm/virt-acpi-build.c    | 2 +-
- hw/i386/acpi-build.c        | 8 +++++---
- 4 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 245c475..ef44d02 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -251,7 +251,7 @@ Aml *aml_to_integer(Aml *arg);
- Aml *aml_to_hexstring(Aml *src, Aml *dst);
- Aml *aml_to_buffer(Aml *src, Aml *dst);
- Aml *aml_store(Aml *val, Aml *target);
--Aml *aml_and(Aml *arg1, Aml *arg2);
-+Aml *aml_and(Aml *arg1, Aml *arg2, Aml *dst);
- Aml *aml_or(Aml *arg1, Aml *arg2, Aml *dst);
- Aml *aml_lor(Aml *arg1, Aml *arg2);
- Aml *aml_shiftleft(Aml *arg1, Aml *count);
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 1f5ed5b..78e1290 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -499,9 +499,9 @@ build_opcode_2arg_dst(uint8_t op, Aml *arg1, Aml *arg2, Aml *dst)
- }
- 
- /* ACPI 1.0b: 16.2.5.4 Type 2 Opcodes Encoding: DefAnd */
--Aml *aml_and(Aml *arg1, Aml *arg2)
-+Aml *aml_and(Aml *arg1, Aml *arg2, Aml *dst)
- {
--    return build_opcode_2arg_dst(0x7B /* AndOp */, arg1, arg2, NULL);
-+    return build_opcode_2arg_dst(0x7B /* AndOp */, arg1, arg2, dst);
- }
- 
- /* ACPI 1.0b: 16.2.5.4 Type 2 Opcodes Encoding: DefOr */
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ff2fb70..0caf5ce 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -274,7 +274,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-         aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-     aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
-     aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
--    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D)),
-+    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
-                                 aml_name("CTRL")));
- 
-     ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 374644f..4cc1440 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -470,7 +470,7 @@ static void build_append_pcihp_notify_entry(Aml *method, int slot)
-     Aml *if_ctx;
-     int32_t devfn = PCI_DEVFN(slot, 0);
- 
--    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot)));
-+    if_ctx = aml_if(aml_and(aml_arg(0), aml_int(0x1U << slot), NULL));
-     aml_append(if_ctx, aml_notify(aml_name("S%.02X", devfn), aml_arg(1)));
-     aml_append(method, if_ctx);
- }
-@@ -670,7 +670,8 @@ static Aml *build_prt(void)
-                    aml_store(aml_shiftright(pin, aml_int(2), NULL), slot));
-         /* lnk_idx = (slot + pin) & 3 */
-         aml_append(while_ctx,
--            aml_store(aml_and(aml_add(pin, slot, NULL), aml_int(3)), lnk_idx));
-+            aml_store(aml_and(aml_add(pin, slot, NULL), aml_int(3), NULL),
-+                      lnk_idx));
- 
-         /* route[2] = "LNK[D|A|B|C]", selection based on pin % 3  */
-         aml_append(while_ctx, initialize_route(route, "LNKD", lnk_idx, 0));
-@@ -685,7 +686,8 @@ static Aml *build_prt(void)
-                       aml_index(route, aml_int(0))));
-         /* route[1] = pin & 3 */
-         aml_append(while_ctx,
--            aml_store(aml_and(pin, aml_int(3)), aml_index(route, aml_int(1))));
-+            aml_store(aml_and(pin, aml_int(3), NULL),
-+                      aml_index(route, aml_int(1))));
-         /* res[pin] = route */
-         aml_append(while_ctx, aml_store(route, aml_index(res, pin)));
-         /* pin++ */
--- 
-MST
+On 22/12/2015 00:33, Peter Crosthwaite wrote:
+>>> >>
+>>> >> case 0x80..0x8c
+>> >
+>> > Woah! Is that standard C?
+>> >
+> Yes, its probably one of the more recent language standards though.
+> QEMU does use to more modern features liberally.
 
+It's actually "case 0x80 ... 0x8c:".
+
+>> Notice that this file comes from Linux. I know it's not pretty, but
+>> can we please keep it as-is, for comparison purposes? I'm not sure
+>> there's much value in cleaning it up locally...
+>
+> It looks very autogenerated and seems pretty nasty on the repetition.
+> 
+> As implementers of the hardware, it is much rarer to need these
+> repetitious defs than the software users on the other side. "Do
+> something specific with CPU#3's Mbox#5" is going to appear in
+> software, but hardware implementers generally don't have a choice to
+> implement things specifically and it usually ends up being looped and
+> the exploded defs are never used. If there are only a handful of
+> genuinely single defs needed, can they be fished out?
+
+I see your point and I'm definitely in favor of rewriting headers from
+scratch when practical, but any cleanup made is a recipe for unwanted
+changes and bugs, especially if the source is full of repetitions.
+
+Paolo

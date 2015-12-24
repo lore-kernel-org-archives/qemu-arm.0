@@ -1,140 +1,444 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3009055wru;
-        Mon, 6 Aug 2018 05:35:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpd1tS/H8AYm3BO4ze2462r72kJ1And5hEKkhHofn8p3OBqfkKZcHnJWiAEWMc4CaVFNTlvr
-X-Received: by 2002:ac8:c86:: with SMTP id n6-v6mr12690128qti.324.1533558915207;
-        Mon, 06 Aug 2018 05:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533558915; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rKYG4gFHtQr6uR5xImtlo9aTKKBPUPqpMKMa0ePMnuwo6iiEMX5MTyMjuHVDOTM04M
-         l7juQkufFP/ZsASk/icQNiBKZ1qJmq4HF+QWy1Oc5xMilQUNqoAOf/irTtR5aMrn8ulZ
-         oMNJ/nLvnkZNeXLwoJYJ9yE7xxIYQKU7rQImxNrgh0WsKLYT2IRnDlunL43DI+rxfLHC
-         5H22A72xh47x69SuMtTXaRAl7FO3FZcPJ7q0Gugaww+14Apb5dlrrWm3YpqVGibZCzsZ
-         W1CmTB0aU5JIaEAotvwTSh4FpdgHqC7juVi90xfBLeq6fLSjK8VPfJKfNnjR2xY+bkxv
-         RmIg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=mhH4dc7LCKszQKswdEh73gWD2Wt1rnnNmYNtHYQkMo0=;
-        b=sH3VBIdN4GMVShddTkSr5hgD6x/xQACdAU/GHCy41OQyScbBT9v+bog4bARgRdFjao
-         oVVwFm2b0XyoVV1ndKh4me5hDAPfPQOQaCg1CrBDpY6Ox7c8IHggegPb45aOX+07JrM0
-         IVTdT7tXn3sQoug2oP2aWg27eAzArnx1FP5rs5F1VUSKwBebXY30AaNh0uc6Hp1c7uiK
-         UJRv9dM+dKZLuLSjMTpnuQ03ZevBp7q6dW6U1SMNbV5Onz2dM9afyw0ZkMitEqINGUkd
-         d7cPl2XYxnG9YMp3eR1UzrpA6DSpHUh3TH1Vwi93BAkwqP3/EaZFhluOclxQLHIp1NQD
-         hIZw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.182.158.201 with SMTP id ww9csp4395773obb;
+        Wed, 23 Dec 2015 16:28:29 -0800 (PST)
+X-Received: by 10.140.81.112 with SMTP id e103mr42973722qgd.99.1450916909422;
+        Wed, 23 Dec 2015 16:28:29 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n68-v6si2316870qkc.163.2018.08.06.05.35.15
+        by mx.google.com with ESMTPS id 78si42277453qhb.120.2015.12.23.16.28.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Aug 2018 05:35:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 23 Dec 2015 16:28:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33888 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:58420 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmejC-00032X-Kb
-	for alex.bennee@linaro.org; Mon, 06 Aug 2018 08:35:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38347)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aBtld-0004cG-2m
+	for alex.bennee@linaro.org; Wed, 23 Dec 2015 19:28:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fmeiy-00031l-Fw
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 08:35:01 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aBtjC-0000EJ-SM
+	for qemu-devel@nongnu.org; Wed, 23 Dec 2015 19:26:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fmeix-0006cU-IG
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 08:35:00 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44086)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fmeix-0006ZZ-At; Mon, 06 Aug 2018 08:34:59 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fmein-0000wP-RU; Mon, 06 Aug 2018 13:34:49 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  6 Aug 2018 13:34:40 +0100
-Message-Id: <20180806123445.1459-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.0 v2 0/5] Arm migration fixes for 3.0
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aBtj6-0004tb-BI
+	for qemu-devel@nongnu.org; Wed, 23 Dec 2015 19:25:58 -0500
+Received: from mail-by2on0146.outbound.protection.outlook.com
+	([207.46.100.146]:4071
+	helo=na01-by2-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aBtj5-0004tT-UB; Wed, 23 Dec 2015 19:25:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=WegtViLN83TQET3ZtWKLYr2iBT06lv99Py+ua9E0/vs=;
+	b=bGQMMmLIVwsZD0/OoHq9t8WscPFwmIzWbKKuOCjJYWwcoASvqoIrgvREyn0oc8xn5oLmbkmPLm6d5uKZcPRhRyhHrIo76KdTI/H3YFfM9Fc2xTT2ArinhNef+JpGpEMkAlsGR3xr39KWd8ROYoAzwoHijk4UgU4VJIoFLc6RTBk=
+Authentication-Results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:4::724)
+	by BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.361.13; Thu, 24 Dec 2015 00:25:49 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: <qemu-devel@nongnu.org>
+Date: Wed, 23 Dec 2015 16:25:27 -0800
+Message-ID: <1450916731-5968-4-git-send-email-Andrew.Baumann@microsoft.com>
+X-Mailer: git-send-email 2.5.1
+In-Reply-To: <1450916731-5968-1-git-send-email-Andrew.Baumann@microsoft.com>
+References: <1450916731-5968-1-git-send-email-Andrew.Baumann@microsoft.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [2001:4898:80e8:4::724]
+X-ClientProxiedBy: BY1PR16CA0031.namprd16.prod.outlook.com (25.162.29.41) To
+	BLUPR0301MB2033.namprd03.prod.outlook.com (25.164.22.23)
+X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
+	2:9GGJho64SXD8GC7VnoDEFbRuv7r2XCEYiE9iwakHos3Iw53mVn/vDLBNtacWK3VIPKGLkvTlONp5+FkVRadtGrKsNG3N7i0Ljva7oiC2nmvZsKARQ+GvaYYAdsRe2MsyYk0nwhF+FnGObrEUVxmPFw==;
+	3:OooqDODQB9kaGFjUKz8nHy7v5UKKXLoSN5/uJzU1zgLwCwZe/73nBR7TMisiFtVdk0m75fPMiiCfvbijvG+BHaIKuHvvQlmLZlxjlE9zaNw7PEKf4Rj/1S7mF4v69z9R;
+	25:fKZ1RbfNzqbPFxeTFixfl6v86RMpvPSkb/JP1wTD+KuxczIuQlRr6GwP5gsYZ0FhydpULpAqQzD9YRxKugot+3tPzdDx145RgicdRqpqdCOUg65rMrWgSoQcj+L1VtQwR6IDgNLGps92sw6eDan9GcLS83EQvlj7pi05gvVW/oPUnCKmTJ1qnnaQPZS64JTsOwXPbtRDthmmZWugkdronQW9l/BFeL3vmT6W6uJyll3QX4gCyj7zmUVq5ThdLVlQdxeyuLPZtkcLASRt+Bh8/3VEybuTyGqC0atFN8Bi/JQ=
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2033;
+X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
+	20:8SRQaWyx7dqQ4qjyEUJ/niwxbHuX84qOEAgp+OFua+PgkjmSJdjgWTdRSdHr7koYgz48XxwYjZD/L66HgutHFXnJQw62VGyjzQ3BBswXVh70OgPEe0zGXC9EhK3Bi4BtJJfwA/CtnR1vO5Zo2ATrH8AedmxBXHHtJEzX6RWMMQVV0j6BzchGNeTpWZh9eyokFAb8DqXXqbTa7ay+1May028dEqPIEbf/JJNFNuaK5hJhY6pdjp0zcSYv8Id5qBZtoX9dzJB0R1LuVh3sRBmwI36kyz/12JRboMP9A3baI0xi8AjlpSNFM7GRghAnAZWiGnPc0I7AnK9Y0mkXuftk3w4i4040XXrGC20vEQ+y8ntzLLOPK6J1IEowswFJdbjuwW+YZmvBZZL4Ysrv+e88R6Az0JS11rWIY3U/arLPauTvp++WjRD6BG0B/Mb62fcNs1XbrGFmYYPxOTdMcSXfPR8EziLWDyz9ldYBcLXPLLaSPljAd68E6InE1mDV+iNE;
+	4:GTnsJQaMbr45XEZtZZXKkAhZSEbJztIjiKYtXj1KbOnRInGGPEeMsnKTPyvvXfgv2vBdHR25AKAYRB7Axz6Z9MmhgsicclqpsgmZ8x4wtUlirXjcQsiNFkX3zS5eY0JBjMF26ppSIHSgh6AtHo5c6i31JI5bUjan/OG/+HsjR3HgEwr0QUZPsH6SGPZCoB0p9gcdAJ43bwjXCH5jfNg8YHXwOoENfY8cYhBU9/qvEGJHFfWvhtuKQAwIwDHusEZynAsfAlG6Qa5us7QS+0ZnFePylljkvhQMKWNS0iJX6pRYsBh9ej7CP57toS4inVH2dtmAxHbcZZu5hntNWzcmV33sUp50RSj3WxziSQhKZp+oFbunmPnQE4/nE/YrGjWx
+X-Microsoft-Antispam-PRVS: <BLUPR0301MB20333E66A4967711F762AA679EE70@BLUPR0301MB2033.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(5005006)(520078)(8121501046)(10201501046)(3002001);
+	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2033; 
+X-Forefront-PRVS: 0800C0C167
+X-Forefront-Antispam-Report: SFV:NSPM;
+	SFS:(10019020)(6009001)(189002)(199003)(19580405001)(42186005)(122386002)(97736004)(586003)(81156007)(1096002)(4001430100002)(19580395003)(92566002)(5008740100001)(40100003)(2950100001)(76176999)(575784001)(101416001)(87976001)(50986999)(48376002)(86612001)(6116002)(5004730100002)(50466002)(5003940100001)(110136002)(105586002)(5005710100001)(10090500001)(47776003)(36756003)(229853001)(189998001)(5001960100002)(2351001)(86362001)(107886002)(50226001)(106356001)(10290500002)(77096005)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
+	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+Received-SPF: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BLUPR0301MB2033;
+	23:XABu5RTFQ/wcw7sJGeqUre8S8gawF8XTpvMFguq?=
+	=?us-ascii?Q?CvBr6w7jXUX533jZIlu1x/wrDSfjmTy0pw7lG/qMpHel4EGruHRd9Phm15Yz?=
+	=?us-ascii?Q?nTZZ4a5zM40hDAj8n0rmdueoAg2q7dIVkaRLGmB/ALeXQxngwJDyxYO2KkMv?=
+	=?us-ascii?Q?htHjLLJQebKGW8tc7OEo9X4nQCr+y2ZMj3nplw8EKxtHvfvx8eyVSkSq0Ccy?=
+	=?us-ascii?Q?0mSEWH5R4k4nQ00UujCDXXMD4q01yoLZeHZKgNb3F961PwZrUlYJIBZpjdOB?=
+	=?us-ascii?Q?hmTyE70AcXHo5dHhkjoC+oL7Lzq6X67MfJf8DB7fRpZsf12zG87j0oD58BDF?=
+	=?us-ascii?Q?THyJGGIFsBa2cTHvreRHgIf1kscP9O6fJ5S9M1PrtwfwbfOp9tLPffFr5KXJ?=
+	=?us-ascii?Q?u/NBzySdAX++jGhhlPAsMgnEhrBDS8H31xUjT+qgBRfA2I6/fbn+rlHBIX4W?=
+	=?us-ascii?Q?r+YoUnZiT4xmhTlIkL87PMCfZYg3StnGCHAnQDi8egt4i24eLhTwQMQ6qu5G?=
+	=?us-ascii?Q?HhGcGSdPycLK+yd98YdV8RfUGrauxKcvopwqdtdkeQYsSb64bmVFIMGXdP1i?=
+	=?us-ascii?Q?qnAC/TLPwR/7hQHSPfU3gklbtnW2abqf8xMVP3cTK3zF+ys5FbZhxHzsrd2s?=
+	=?us-ascii?Q?GYIng9W2YknnqlSFBmfW8Ej1cGcMbOoBBEcIeziSQuMvrYiD9lvpNRgNYb3l?=
+	=?us-ascii?Q?ohHZH1119b4+vGO37VpXKks9N3PgKP/uhuEIAES93/Yl0JDR5comZD69jx51?=
+	=?us-ascii?Q?3RffWLTJm8yRWI3RWN6q7R3gaCVPUHLrWBOciJ8GBl1mfZJLeoLQVyAtLRw1?=
+	=?us-ascii?Q?un1Gup9RZSZoLo4Ur6wPiYjc3Q0JFmWTfRe1Tu1zqBmeEwk+yCzZ4b4wOWIr?=
+	=?us-ascii?Q?H9jStcdypyw5XWM83ZoXafxzd5nTwsOgL+jFivo6x3V6j8UpAcI3ZFiALDgF?=
+	=?us-ascii?Q?JgR1s4qaO1dSzkFucEsyRimiHV7Cly0SNDI8IE7rxGMoVi9Hnrbr50iIKoBP?=
+	=?us-ascii?Q?KkPsN92wUknFC2nayGB8uOgx+2UG7jRB9VbFqaIGo15oMJmrd/tG6YJ99vWQ?=
+	=?us-ascii?Q?nWyO+R4DOTZAsl5c4l1D8XMbwg+/I45NuHlmTlV65G0lwOxE3ed1DFWsnQoC?=
+	=?us-ascii?Q?RgXTfgugO+DuVCc6GpLlKez3tgI65IlKEdZQQwphp3Im/w3Hr6OwbI0gTmPP?=
+	=?us-ascii?Q?aIAkawrWoI62mzfo=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
+	5:UgQcMhnr0/F3EIhzz+03TBtFRyymRKVDxVTvaKIT9srPdEg/TYweWSczr9Es8n8oqH3Tv9SnX1JbaEBL77B3VUxdXv84kFk5iEYkhoiAUi7d7OUjWOom8gGXRUAgqVKlmljoHAA06CpcZxdfeA7uqg==;
+	24:pyd+1u9UNEoc8tdCIL7JH7rniq3bx9tv97M+7fLy5P0MpmADCUCmydbhbUie8gqgGHL7RR3UG6L3rxT9UITRXymDKuY4oQkOrgmRradPdLY=
+SpamDiagnosticOutput: 1:23
+SpamDiagnosticMetadata: NSPM
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2015 00:25:49.2274 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 207.46.100.146
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [Qemu-devel] [PATCH v2 3/7] bcm2835_ic: add bcm2835 interrupt
+	controller
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4RKaIv+Da7bJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FEUdo/W20uaC
 
-This patchset primarily fixes problems with Arm migration
-induced by a bug in the core vmstate handling of subsections:
-currently the migration code incorrectly treats a subsection with
-no .needed function pointer as if it was the subsection list
-terminator -- it is ignored and so is everything after it.
+Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+---
 
-I did an audit of all uses of subsections in QEMU, and found
-that we had four which didn't define a .needed function (assuming
-that this meant "always needed", same as the semantics for
-not providing a .needed function for a toplevel vmsd).
-This patchset fixes them all up by providing a dummy needed
-function.
+Notes:
+    v2 changes:
+     * split inputs to named gpu_irq and arm_irq gpio inputs
+     * use 64-bit gpu_irq and 8-bit arm_irq status rather than 3*32-bit bitfields
+     * added defined names for register offsets
+     * deleted nop realize method
+     * other misc cleanup suggested in review
 
-It also fixes an error in vmstate_gicv3_cpu which was accidentally
-initializing .subsections twice and so ignoring one of the subsections.
+ hw/intc/Makefile.objs        |   1 +
+ hw/intc/bcm2835_ic.c         | 233 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/intc/bcm2835_ic.h |  33 ++++++
+ 3 files changed, 267 insertions(+)
+ create mode 100644 hw/intc/bcm2835_ic.c
+ create mode 100644 include/hw/intc/bcm2835_ic.h
 
-Patches 1..3 are the same as for v1 and have been reviewed.
-Patches 4 and 5 fix a further bug which I discovered during
-testing of 1..3: the GICv3 migration structs had several
-uses of the pre_load and post_load hooks which assumed that the
-hooks were run whether the subsection was present or not. In
-fact the migration code only runs the hooks when the subsection
-is present in the incoming migration stream, and so for correct
-behaviour we need to move the code we were running in the hooks
-up to the parent VMSDs.
-
-I've now tested this by doing a save/load of:
- 2.12.0 QEMU -> new QEMU
- new QEMU -> new QEMU
-
-An on-trunk QEMU prior to these bugfixes won't migrate
-to a QEMU with the bugfixes, but we never released any
-final QEMU version with the bugs in.
-
-thanks
--- PMM
-
-Peter Maydell (5):
-  hw/intc/arm_gicv3_common: Give no-migration-shift-bug subsection a
-    needed function
-  hw/intc/arm_gicv3_common: Combine duplicate .subsections in
-    vmstate_gicv3_cpu
-  target/arm: Add dummy needed functions to M profile vmstate
-    subsections
-  hw/intc/arm_gicv3_common: Move post_load hooks to top-level VMSD
-  hw/intc/arm_gicv3_common: Move gicd shift bug handling to
-    gicv3_post_load
-
- hw/intc/arm_gicv3_common.c | 284 ++++++++++++++++++-------------------
- target/arm/machine.c       |   3 +
- 2 files changed, 145 insertions(+), 142 deletions(-)
-
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index 004b0c2..2ad1204 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -24,6 +24,7 @@ obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+ obj-$(CONFIG_IOAPIC) += ioapic.o
+ obj-$(CONFIG_OMAP) += omap_intc.o
+ obj-$(CONFIG_OPENPIC_KVM) += openpic_kvm.o
++obj-$(CONFIG_RASPI) += bcm2835_ic.o
+ obj-$(CONFIG_SH4) += sh_intc.o
+ obj-$(CONFIG_XICS) += xics.o
+ obj-$(CONFIG_XICS_KVM) += xics_kvm.o
+diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
+new file mode 100644
+index 0000000..9624e8b
+--- /dev/null
++++ b/hw/intc/bcm2835_ic.c
+@@ -0,0 +1,233 @@
++/*
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * This code is licensed under the GNU GPLv2 and later.
++ * Heavily based on pl190.c, copyright terms below:
++ *
++ * Arm PrimeCell PL190 Vector Interrupt Controller
++ *
++ * Copyright (c) 2006 CodeSourcery.
++ * Written by Paul Brook
++ *
++ * This code is licensed under the GPL.
++ */
++
++#include "hw/intc/bcm2835_ic.h"
++
++#define GPU_IRQS 64
++#define ARM_IRQS 8
++
++#define IRQ_PENDING_BASIC       0x00 /* IRQ basic pending */
++#define IRQ_PENDING_1           0x04 /* IRQ pending 1 */
++#define IRQ_PENDING_2           0x08 /* IRQ pending 2 */
++#define FIQ_CONTROL             0x0C /* FIQ register */
++#define IRQ_ENABLE_1            0x10 /* Interrupt enable register 1 */
++#define IRQ_ENABLE_2            0x14 /* Interrupt enable register 2 */
++#define IRQ_ENABLE_BASIC        0x18 /* Base interrupt enable register */
++#define IRQ_DISABLE_1           0x1C /* Interrupt disable register 1 */
++#define IRQ_DISABLE_2           0x20 /* Interrupt disable register 2 */
++#define IRQ_DISABLE_BASIC       0x24 /* Base interrupt disable register */
++
++/* Update interrupts.  */
++static void bcm2835_ic_update(BCM2835ICState *s)
++{
++    bool set = false;
++
++    if (s->fiq_enable) {
++        if (s->fiq_select >= GPU_IRQS) {
++            /* ARM IRQ */
++            set = extract32(s->arm_irq_level, s->fiq_select - GPU_IRQS, 1);
++        } else {
++            set = extract64(s->gpu_irq_level, s->fiq_select, 1);
++        }
++    }
++    qemu_set_irq(s->fiq, set);
++
++    set = (s->gpu_irq_level & s->gpu_irq_enable)
++        || (s->arm_irq_level & s->arm_irq_enable);
++    qemu_set_irq(s->irq, set);
++
++}
++
++static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
++{
++    BCM2835ICState *s = opaque;
++    assert(irq >= 0 && irq < 64);
++    s->gpu_irq_level = deposit64(s->gpu_irq_level, irq, 1, level != 0);
++    bcm2835_ic_update(s);
++}
++
++static void bcm2835_ic_set_arm_irq(void *opaque, int irq, int level)
++{
++    BCM2835ICState *s = opaque;
++    assert(irq >= 0 && irq < 8);
++    s->arm_irq_level = deposit32(s->arm_irq_level, irq, 1, level != 0);
++    bcm2835_ic_update(s);
++}
++
++static const int irq_dups[] = { 7, 9, 10, 18, 19, 53, 54, 55, 56, 57, 62 };
++
++static uint64_t bcm2835_ic_read(void *opaque, hwaddr offset, unsigned size)
++{
++    BCM2835ICState *s = opaque;
++    uint32_t res = 0;
++    uint64_t gpu_pending = s->gpu_irq_level & s->gpu_irq_enable;
++    int i;
++
++    switch (offset) {
++    case IRQ_PENDING_BASIC:
++        /* bits 0-7: ARM irqs */
++        res = s->arm_irq_level & s->arm_irq_enable;
++
++        /* bits 8 & 9: pending registers 1 & 2 */
++        res |= (((uint32_t)gpu_pending) != 0) << 8;
++        res |= ((gpu_pending >> 32) != 0) << 9;
++
++        /* bits 10-20: selected GPU IRQs */
++        for (i = 0; i < ARRAY_SIZE(irq_dups); i++) {
++            res |= extract64(gpu_pending, irq_dups[i], 1) << (i + 10);
++        }
++        break;
++    case IRQ_PENDING_1:  /* IRQ pending 1 */
++        res = gpu_pending;
++        break;
++    case IRQ_PENDING_2:  /* IRQ pending 2 */
++        res = gpu_pending >> 32;
++        break;
++    case FIQ_CONTROL:  /* FIQ register */
++        res = (s->fiq_enable << 7) | s->fiq_select;
++        break;
++    case IRQ_ENABLE_1:  /* Interrupt enable register 1 */
++        res = s->gpu_irq_enable;
++        break;
++    case IRQ_ENABLE_2:  /* Interrupt enable register 2 */
++        res = s->gpu_irq_enable >> 32;
++        break;
++    case IRQ_ENABLE_BASIC:  /* Base interrupt enable register */
++        res = s->arm_irq_enable;
++        break;
++    case IRQ_DISABLE_1:  /* Interrupt disable register 1 */
++        res = ~s->gpu_irq_enable;
++        break;
++    case IRQ_DISABLE_2:  /* Interrupt disable register 2 */
++        res = ~s->gpu_irq_enable >> 32;
++        break;
++    case IRQ_DISABLE_BASIC:  /* Base interrupt disable register */
++        res = ~s->arm_irq_enable;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    return res;
++}
++
++static void bcm2835_ic_write(void *opaque, hwaddr offset, uint64_t val,
++                             unsigned size)
++{
++    BCM2835ICState *s = opaque;
++
++    switch (offset) {
++    case FIQ_CONTROL:
++        s->fiq_select = (val & 0x7f);
++        s->fiq_enable = (val >> 7) & 0x1;
++        break;
++    case IRQ_ENABLE_1:
++        s->gpu_irq_enable |= val;
++        break;
++    case IRQ_ENABLE_2:
++        s->gpu_irq_enable |= val << 32;
++        break;
++    case IRQ_ENABLE_BASIC:
++        s->arm_irq_enable |= val & 0xff;
++        break;
++    case IRQ_DISABLE_1:
++        s->gpu_irq_enable &= ~val;
++        break;
++    case IRQ_DISABLE_2:
++        s->gpu_irq_enable &= ~(val << 32);
++        break;
++    case IRQ_DISABLE_BASIC:
++        s->arm_irq_enable &= ~val & 0xff;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                      __func__, offset);
++        return;
++    }
++    bcm2835_ic_update(s);
++}
++
++static const MemoryRegionOps bcm2835_ic_ops = {
++    .read = bcm2835_ic_read,
++    .write = bcm2835_ic_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void bcm2835_ic_reset(DeviceState *d)
++{
++    BCM2835ICState *s = BCM2835_IC(d);
++
++    s->gpu_irq_enable = 0;
++    s->arm_irq_enable = 0;
++    s->fiq_enable = false;
++    s->fiq_select = 0;
++}
++
++static void bcm2835_ic_init(Object *obj)
++{
++    BCM2835ICState *s = BCM2835_IC(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_ic_ops, s, TYPE_BCM2835_IC,
++                          0x200);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++
++    qdev_init_gpio_in_named(DEVICE(s), bcm2835_ic_set_gpu_irq,
++                            BCM2835_IC_GPU_IRQ, GPU_IRQS);
++    qdev_init_gpio_in_named(DEVICE(s), bcm2835_ic_set_arm_irq,
++                            BCM2835_IC_ARM_IRQ, ARM_IRQS);
++
++    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
++    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->fiq);
++}
++
++static const VMStateDescription vmstate_bcm2835_ic = {
++    .name = TYPE_BCM2835_IC,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT64(gpu_irq_level, BCM2835ICState),
++        VMSTATE_UINT64(gpu_irq_enable, BCM2835ICState),
++        VMSTATE_UINT8(arm_irq_level, BCM2835ICState),
++        VMSTATE_UINT8(arm_irq_enable, BCM2835ICState),
++        VMSTATE_BOOL(fiq_enable, BCM2835ICState),
++        VMSTATE_UINT8(fiq_select, BCM2835ICState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_ic_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_ic_reset;
++    dc->vmsd = &vmstate_bcm2835_ic;
++}
++
++static TypeInfo bcm2835_ic_info = {
++    .name          = TYPE_BCM2835_IC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835ICState),
++    .class_init    = bcm2835_ic_class_init,
++    .instance_init = bcm2835_ic_init,
++};
++
++static void bcm2835_ic_register_types(void)
++{
++    type_register_static(&bcm2835_ic_info);
++}
++
++type_init(bcm2835_ic_register_types)
+diff --git a/include/hw/intc/bcm2835_ic.h b/include/hw/intc/bcm2835_ic.h
+new file mode 100644
+index 0000000..d897f44
+--- /dev/null
++++ b/include/hw/intc/bcm2835_ic.h
+@@ -0,0 +1,33 @@
++/*
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * This code is licensed under the GNU GPLv2 and later.
++ */
++
++#ifndef BCM2835_IC_H
++#define BCM2835_IC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_BCM2835_IC "bcm2835_ic"
++#define BCM2835_IC(obj) OBJECT_CHECK(BCM2835ICState, (obj), TYPE_BCM2835_IC)
++
++#define BCM2835_IC_GPU_IRQ "gpu-irq"
++#define BCM2835_IC_ARM_IRQ "arm-irq"
++
++typedef struct BCM2835ICState {
++    /*< private >*/
++    SysBusDevice busdev;
++    /*< public >*/
++
++    MemoryRegion iomem;
++
++    /* 64 GPU IRQs + 8 ARM IRQs = 72 total (GPU first) */
++    uint64_t gpu_irq_level, gpu_irq_enable;
++    uint8_t arm_irq_level, arm_irq_enable;
++    bool fiq_enable;
++    uint8_t fiq_select;
++    qemu_irq irq;
++    qemu_irq fiq;
++} BCM2835ICState;
++
++#endif
 -- 
-2.17.1
+2.5.3
 

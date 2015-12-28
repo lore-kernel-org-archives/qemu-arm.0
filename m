@@ -1,58 +1,71 @@
-Received: by 10.182.158.201 with SMTP id ww9csp6966529obb;
-        Mon, 28 Dec 2015 12:25:17 -0800 (PST)
-X-Received: by 10.140.151.145 with SMTP id 139mr76898743qhx.95.1451334317740;
-        Mon, 28 Dec 2015 12:25:17 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp6971027obb;
+        Mon, 28 Dec 2015 12:36:18 -0800 (PST)
+X-Received: by 10.140.99.86 with SMTP id p80mr71819229qge.97.1451334977994;
+        Mon, 28 Dec 2015 12:36:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c85si16131975qkh.5.2015.12.28.12.25.17
+        by mx.google.com with ESMTPS id 97si66300080qkt.81.2015.12.28.12.36.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Dec 2015 12:25:17 -0800 (PST)
+        Mon, 28 Dec 2015 12:36:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46124 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:46157 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aDeM1-0007wa-Bs
-	for alex.bennee@linaro.org; Mon, 28 Dec 2015 15:25:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35705)
+	id 1aDeWf-00021b-OL
+	for alex.bennee@linaro.org; Mon, 28 Dec 2015 15:36:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <davisjf@gmail.com>) id 1aDL3c-0002W8-Sa
-	for qemu-arm@nongnu.org; Sun, 27 Dec 2015 18:49:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aDeWd-00021A-4e
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 15:36:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <davisjf@gmail.com>) id 1aDL3b-0007iq-NE
-	for qemu-arm@nongnu.org; Sun, 27 Dec 2015 18:49:00 -0500
-Received: from mail-ig0-x22a.google.com ([2607:f8b0:4001:c05::22a]:34724)
+	(envelope-from <peter.maydell@linaro.org>) id 1aDeWc-0005BL-58
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 15:36:15 -0500
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:36504)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <davisjf@gmail.com>) id 1aDL3b-0007il-JJ
-	for qemu-arm@nongnu.org; Sun, 27 Dec 2015 18:48:59 -0500
-Received: by mail-ig0-x22a.google.com with SMTP id m11so110554075igk.1
-	for <qemu-arm@nongnu.org>; Sun, 27 Dec 2015 15:48:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:date:message-id:subject:from:to:content-type;
-	bh=I7wUNUQhKjoRZPU9qr+Tt2M6zBCPH/rbikuQtT7lmpM=;
-	b=f5mYwpzdoD4y5IszsO6PbazOtKd6ssPHkGRfcYQcSmC3RKuBkH+EIpjO8C3RHa8EAE
-	i8/IfFcoMRoYy/GBnMJ1WI0/geePKXJoQHnn2STW/vQJaKRBkDMYKBAUD8eLPjTni+D3
-	EYamcyNDJ0oR55CAmgDEIn3Fg/VFA3OdI2G/2ReBDKc1N+j09XRfv8lucBfa71qjIDYE
-	ApzrkiBwhP9TPkUkSdEkUCZXl0H4rfWJmyH9OpaDKWOoBYlohyVrwkXlwpJpq7in1wBc
-	mppBhDmS/356dZWlLlNksRWnPSaoQoSfHqdNqIA5TxtdqtjIc274BqL2g6mU+EltA7WY
-	K2nA==
+	(envelope-from <peter.maydell@linaro.org>) id 1aDeWc-0005BB-1T
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 15:36:14 -0500
+Received: by mail-vk0-x22b.google.com with SMTP id f2so144942873vkb.3
+	for <qemu-arm@nongnu.org>; Mon, 28 Dec 2015 12:36:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=CQ2mfg+lbN7fObfstMDboDHn517bQ4IanvN7oE0x4fs=;
+	b=dI8BGIIhHflYxUs9sX8HhEYaC3JTTCbABiUkHW9cCmRlHGGWnIlfj2bBaRa7H98X3N
+	OIi2l+HCGG9t107IKcbd5otUzjHmMWHOFqozZBCEE2FQPAUG7C0c6bQkyE4QedZ+UTGT
+	xpyzqas+ce0NPGXpjgTgQqF9TD5QMH1bx8yFo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=CQ2mfg+lbN7fObfstMDboDHn517bQ4IanvN7oE0x4fs=;
+	b=PgJ69uIs4jQGjLn+UIBNillfpEVYp6oKB9sOrI1GFRsiC6PnFW/j/Rz4rEAzZwvRnJ
+	Tql1kO6EH/AIXSJxfJZZ388JV342yBk0/pusrA4i52maX8rxa0XZxSogWfcNWHxFtH2F
+	sK5LNKcED4hbZGm2X0e+UxxhdeHRw+4F2tnh8rUtjzeCMs6CXf7lIZpsj5hM0DL2gSkH
+	Vx6ElzJlOYBn0sN0lYoe5tpupvozxPav7yab0BNqxgHsvKhbvZh9jIMk68nx9ECzU0N0
+	E14vImIcBg8ZAgnYFHZeWg6R5RKysHMDbZETDRSmXToY63zEAlgifaXFHnfQPd9otUGJ
+	fwtg==
+X-Gm-Message-State: ALoCoQlkKkW2o/v1wd5/eu9O06bWXtmYs+npiJKTaNQWBbKNAkOXUKeFVs0en413xv9GmqkrS8VbfoYvi8/lTJF+FHEEcRoraLdGch4fF/ATvbr/yCOOPvo=
+X-Received: by 10.31.52.147 with SMTP id b141mr29269670vka.82.1451334973431;
+	Mon, 28 Dec 2015 12:36:13 -0800 (PST)
 MIME-Version: 1.0
-X-Received: by 10.50.40.70 with SMTP id v6mr48185903igk.29.1451260138788; Sun,
-	27 Dec 2015 15:48:58 -0800 (PST)
-Received: by 10.36.111.76 with HTTP; Sun, 27 Dec 2015 15:48:58 -0800 (PST)
-Date: Sun, 27 Dec 2015 18:48:58 -0500
-Message-ID: <CAEaoPMgwvktPWr4z-qjy3chyYdkEdEGFg+P0Ood5JdOgED6-tw@mail.gmail.com>
-From: John Davis <davisjf@gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary=089e0112c43c0ca0660527e9d511
+Received: by 10.31.153.15 with HTTP; Mon, 28 Dec 2015 12:35:54 -0800 (PST)
+In-Reply-To: <20151226190759.GA8638@gallifrey>
+References: <20151226190759.GA8638@gallifrey>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Dec 2015 20:35:54 +0000
+Message-ID: <CAFEAcA9JudnGrMGrx-d9tGQYWJ-QA=kjeKjw_-VOjuh5yzzmew@mail.gmail.com>
+To: "Dr. David Alan Gilbert" <dave@treblig.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::22a
-X-Mailman-Approved-At: Mon, 28 Dec 2015 15:25:16 -0500
-Subject: [Qemu-arm] command line args for qemu-test image
+X-Received-From: 2607:f8b0:400c:c05::22b
+Cc: Alistair Francis <alistair23@gmail.com>,
+	Michael Davidsaver <mdavidsaver@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] v7m reset vs rom loading ordering
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -66,48 +79,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MFnNuptfc12p
+X-TUID: V3lGlD45hRDH
 
---089e0112c43c0ca0660527e9d511
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+(You forgot to cc qemu-devel, which meant this message got hung
+up in the "people who haven't posted to qemu-arm yet end up in
+the semi-automatic moderation" machinery, and nobody saw it because
+there was no qemu-devel cc.)
 
-Hello
+On 26 December 2015 at 19:07, Dr. David Alan Gilbert <dave@treblig.org> wrote:
+> Hi,
+>   I'm having problems with the v7m reset code happening before the loading
+> of the ROM code, and hence getting the wrong starting location.
+> I'm using the stm32f205 model (modified to take an m4 and change the
+> sizes of ram/flash for the 401), with a board that's the same as the
+> netduino. It has the stm's internal flash and an alias for that flash at
+> address 0.
 
-I am trying to test my build from source to see if I have a working
-qemu-system-arm build.  I pulled the test image from this page:
-http://wiki.qemu.org/Testing
+> I seem to be ending up on the bottom half of this (because of the alias?)
+> and it ends up loading both 0, even though I can see load_elf has already
+> been called.
 
-It has a readme in the archive which says to use this syntax
-./qemu-system-arm -kernel zImage.integrator -initrd arm_root.img
-but when I run it I do not get a console.  The version of qemu I am using
-requires a -M option and I have  tried some of the available options
-but none work.
+This does AFAICT work for the stellaris boards, though it's all an
+ugly hack for the fact we don't have a nice way to say "this happens
+when the CPU comes out of reset" (and also no nice way for that to
+interact with an attached debugger). I don't think that rom_ptr()
+cares about whether the memory it's going to put the ROM into is an
+alias or not, so that is probably a red herring.
 
---=20
-John F. Davis
-6 Kandes Court
-Durham, NC 27713
-919-888-8358
+> The reset gets called after the realize triggered in the netduino board's
+> init function; but all that happens before the rom_check_and_register_reset
+> is called and gets the ROM data in the right place.
+>
+> In Michael's world he has the extra comment (from 'remove extra cpu_reset'):
+> +    /* Realizing cpu calls cpu_reset(), which must have rom image
+> +     * already mapped to find the correct entry point.
+> +     */
+>
+> so it sounds like the same problem, even in his world.
+> (I've hit this both on head and head with Michael's patches from the
+> start of December applied).
 
-=E7=8B=AC=E6=A0=91=E4=B8=80=E5=B8=9C
+You shouldn't need to care about intermediate resets that happen at
+realize time, because vl.c will do a system reset which should
+include resetting the CPU and this should happen after the ROMs are
+all properly present.
 
---089e0112c43c0ca0660527e9d511
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+> I've bodged around this by adding a call to arm_load_kernel to armv7m_realize
+> so that the arm reset handler is called and then doing a system_reset
+> after I get to the hmp; but obviously that's not the fix.
 
-<div dir=3D"ltr">Hello<div><br></div><div>I am trying to test my build from=
- source to see if I have a working qemu-system-arm build.=C2=A0 I pulled th=
-e test image from this page:</div><div><a href=3D"http://wiki.qemu.org/Test=
-ing">http://wiki.qemu.org/Testing</a></div><div><br></div><div>It has a rea=
-dme in the archive which says to use this syntax</div><div><div>./qemu-syst=
-em-arm -kernel zImage.integrator -initrd arm_root.img</div></div><div>but w=
-hen I run it I do not get a console.=C2=A0 The version of qemu I am using</=
-div><div>requires a -M option and I have =C2=A0tried some of the available =
-options</div><div>but none work.</div><div><div><br></div>-- <br><div class=
-=3D"gmail_signature"><div dir=3D"ltr">John F. Davis<div>6 Kandes Court</div=
-><div>Durham, NC 27713</div><div>919-888-8358</div><div><br>=E7=8B=AC=E6=A0=
-=91=E4=B8=80=E5=B8=9C<br><br><br></div></div></div>
-</div></div>
+Why does the system_reset from hmp work but the one done by vl.c
+after machine creation not?
 
---089e0112c43c0ca0660527e9d511--
+thanks
+-- PMM

@@ -1,69 +1,71 @@
-Received: by 10.182.158.201 with SMTP id ww9csp6503208obb;
-        Sun, 27 Dec 2015 17:59:12 -0800 (PST)
-X-Received: by 10.140.251.215 with SMTP id w206mr68224563qhc.73.1451267952398;
-        Sun, 27 Dec 2015 17:59:12 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp6921295obb;
+        Mon, 28 Dec 2015 10:43:28 -0800 (PST)
+X-Received: by 10.55.74.197 with SMTP id x188mr73294530qka.104.1451328208329;
+        Mon, 28 Dec 2015 10:43:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f48si62536199qgd.70.2015.12.27.17.59.12
+        by mx.google.com with ESMTPS id g70si23263307qkh.92.2015.12.28.10.43.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 27 Dec 2015 17:59:12 -0800 (PST)
+        Mon, 28 Dec 2015 10:43:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43329 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org
+Received: from localhost ([::1]:45838 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aDN5c-0002ho-4r
-	for alex.bennee@linaro.org; Sun, 27 Dec 2015 20:59:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55913)
+	id 1aDclU-0005Sv-2K
+	for alex.bennee@linaro.org; Mon, 28 Dec 2015 13:43:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33233)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1aDN5Z-0002hR-4e
-	for qemu-arm@nongnu.org; Sun, 27 Dec 2015 20:59:10 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aDclR-0005PY-Bd
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 13:43:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1aDN5V-00067c-VO
-	for qemu-arm@nongnu.org; Sun, 27 Dec 2015 20:59:09 -0500
-Received: from mail-qk0-x22e.google.com ([2607:f8b0:400d:c09::22e]:33963)
+	(envelope-from <peter.maydell@linaro.org>) id 1aDclQ-00069i-MX
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 13:43:25 -0500
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:35212)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>)
-	id 1aDN5V-00067Y-Qh; Sun, 27 Dec 2015 20:59:05 -0500
-Received: by mail-qk0-x22e.google.com with SMTP id p187so191087845qkd.1;
-	Sun, 27 Dec 2015 17:59:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=iMCp/oJr31zaNJIYdhAvkR5knsS/dthQ4xmg4fhAq9o=;
-	b=ki/ZCULJxz5SMWD6ifxrGjCWKc0ZxC1Mz3WZurgYE89DL/dR0USZLOZdv+5rCM9T1d
-	2/UymuVAy6ALO3s7Z3EPE/XdwE4MghjwIEp1LkyrkIKWhEPu8nJpGVkiaX2pRdWF1hp9
-	UX7RJD1G5k/TXbrzJLCGTRsab0daoxIKCqnixz0uakTlAkTS1ZqtYxZl1ieZswDgBmA9
-	wzRHlJponk6kmLyLvd+SLmVIsciSlPv9muV2UZiRA6YNAT6YPe0gD0o7rcWMdcsDJo1b
-	JoRZcLZqelp7WJLkRKqTAUPahINd6TZObpOrNfM+d7JssM+KwJjqep8zjwMTduq2Mwj5
-	v8Ig==
-X-Received: by 10.55.221.21 with SMTP id n21mr57751540qki.5.1451267945315;
-	Sun, 27 Dec 2015 17:59:05 -0800 (PST)
-Received: from [10.0.1.200] (ool-182df582.dyn.optonline.net. [24.45.245.130])
-	by smtp.gmail.com with ESMTPSA id
-	y129sm26617859qka.33.2015.12.27.17.59.04
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sun, 27 Dec 2015 17:59:04 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aDclP-00069L-GT
+	for qemu-arm@nongnu.org; Mon, 28 Dec 2015 13:43:24 -0500
+Received: by mail-vk0-x234.google.com with SMTP id k1so55656437vkb.2
+	for <qemu-arm@nongnu.org>; Mon, 28 Dec 2015 10:43:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=mvuEFDXytASszk1JXNQLRpN1KoIS7piKI/nHbaF4quY=;
+	b=SycMuyRUddR4HZW2Eapxfsg+hvF4Y66OS3BUWSFN4QxZGzILdzeKcScE1ZUEZk3I/o
+	s24i5JjFTEGACZpDIlr26mG9RJaS+U14k6p3oeYh2/8iYBqv/0eDuig0yQq5mHGAw9K7
+	oXyPQ5Zq4M0wPgKLwGNhHOl24zDPp3S8d1Kkw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=mvuEFDXytASszk1JXNQLRpN1KoIS7piKI/nHbaF4quY=;
+	b=BRPv8+4vcdmfomJptrLM3bjkzX7oM+j7WeVoPQ6VxC3KUYrgaY7ZR3Jnw5hQmd/dRs
+	/lDF0/+A7JX63IA9+jt7/jQs+hq+dKoOxiWHQqz2/Eh+0WfdqkrePXDlyxEbFqs6IacX
+	KsJoaLXJf9+XWmho/FjMVXnTgd0/GmtAk75Snxky41uXX6jdudq6Rtn5Fw+5Zd+uZJpA
+	22s0Om45FybBW5GyYHmIKlwPDprzZ1hO/Bk5/TIISU7qr8l820EWUIaLcS3jlxGsjUY3
+	vgeZWrFAel1zNFR3oaG6DJhLz0Y4qkXzljPdgP3HIPpynovRJXwXxMjkx5/uadiMOFgC
+	Fhbg==
+X-Gm-Message-State: ALoCoQkP/z1In1h42Nv+9q02IjD7DpTT5u0JZQLTN7p3WWTINUT1U09had5jrH8ZH7eGmEXFX2UySYyUypCD+qFrDMQ9r5+kMB12/3xsEslM37P9sH0pMbo=
+X-Received: by 10.31.52.147 with SMTP id b141mr28976218vka.82.1451328203097;
+	Mon, 28 Dec 2015 10:43:23 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Mon, 28 Dec 2015 10:43:03 -0800 (PST)
+In-Reply-To: <56809768.3070902@gmail.com>
 References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
 	<1449101933-24928-7-git-send-email-mdavidsaver@gmail.com>
 	<CAFEAcA_qbaJjuZQB91dsN11U3pJRBXCJ25i00U1G8gu4OQFCtg@mail.gmail.com>
 	<CAFEAcA8gajKJgAfGn3DZ432+a+KVFDziarpnsG2jRH2e-4pavA@mail.gmail.com>
-From: Michael Davidsaver <mdavidsaver@gmail.com>
-Message-ID: <56809768.3070902@gmail.com>
-Date: Sun, 27 Dec 2015 20:59:04 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8gajKJgAfGn3DZ432+a+KVFDziarpnsG2jRH2e-4pavA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+	<56809768.3070902@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Dec 2015 18:43:03 +0000
+Message-ID: <CAFEAcA8+P49=i=4=9oa=w706_8xf2fixGh1LYhdPE6nTM+MgfQ@mail.gmail.com>
+To: Michael Davidsaver <mdavidsaver@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::22e
+X-Received-From: 2607:f8b0:400c:c05::234
 Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-arm] [PATCH v2 06/26] armv7m: fix I and F flag handling
@@ -80,30 +82,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M1kqZZpx6WS8
+X-TUID: hYvZeu+t/wMG
 
-On 12/17/2015 10:18 AM, Peter Maydell wrote:
-> On 17 December 2015 at 14:39, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 3 December 2015 at 00:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
->>> Despite having the same notation, these bits
->>> have completely different meaning than -AR.
->>>
->>> Use armv7m_excp_running_prio() and the highest
->>> pending exception priority to determine
->>> if the pending exception can interrupt preempt.
->>> ---
->>>  target-arm/cpu.c | 16 ++++++----------
->>>  1 file changed, 6 insertions(+), 10 deletions(-)
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ...except this breaks the build for linux-user:
+On 28 December 2015 at 01:59, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
+> On 12/17/2015 10:18 AM, Peter Maydell wrote:
+>> because the function you're calling here is in armv7m_nvic.c,
+>> which isn't compiled into the linux-user binary.
 >
->   LINK  arm-linux-user/qemu-arm
-> target-arm/cpu.o: In function `arm_v7m_cpu_exec_interrupt':
-> /home/petmay01/linaro/qemu-from-laptop/qemu/target-arm/cpu.c:316:
-> undefined reference to `armv7m_excp_running_prio'
->
-> because the function you're calling here is in armv7m_nvic.c,
-> which isn't compiled into the linux-user binary.
+> Is there any reason to include the armv7m code in linux-user at all?
 
-Is there any reason to include the armv7m code in linux-user at all?
+It's not a useful cpu for actual linux binaries, but
+I believe there is some use of the linux-user target with
+armv7m to test unprivileged bare-metal code, for instance
+the gcc test suite. (This uses semihosting for test case
+output I think.)
 
+thanks
+-- PMM

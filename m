@@ -1,50 +1,50 @@
-Received: by 10.182.158.201 with SMTP id ww9csp8832155obb;
-        Thu, 31 Dec 2015 16:32:36 -0800 (PST)
-X-Received: by 10.140.164.77 with SMTP id k74mr100671352qhk.6.1451608356853;
-        Thu, 31 Dec 2015 16:32:36 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp8832163obb;
+        Thu, 31 Dec 2015 16:32:38 -0800 (PST)
+X-Received: by 10.55.71.82 with SMTP id u79mr96787301qka.55.1451608358446;
+        Thu, 31 Dec 2015 16:32:38 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e184si6457952qkb.28.2015.12.31.16.32.36
+        by mx.google.com with ESMTPS id e13si2943026qka.120.2015.12.31.16.32.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 Dec 2015 16:32:36 -0800 (PST)
+        Thu, 31 Dec 2015 16:32:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:57078 helo=lists.gnu.org)
+Received: from localhost ([::1]:57079 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aEne0-0003oh-Gz
-	for alex.bennee@linaro.org; Thu, 31 Dec 2015 19:32:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50628)
+	id 1aEne1-0003qj-3h
+	for alex.bennee@linaro.org; Thu, 31 Dec 2015 19:32:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aEndL-0002mb-Ng
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aEndL-0002mZ-Mt
 	for qemu-devel@nongnu.org; Thu, 31 Dec 2015 19:31:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aEndH-00063V-0A
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aEndH-00063b-9F
 	for qemu-devel@nongnu.org; Thu, 31 Dec 2015 19:31:55 -0500
 Received: from mail-bl2on0137.outbound.protection.outlook.com
 	([65.55.169.137]:60296
 	helo=na01-bl2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aEndG-00063I-Q2; Thu, 31 Dec 2015 19:31:50 -0500
+	id 1aEndH-00063I-3E; Thu, 31 Dec 2015 19:31:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=eKaRcDyChoXUgJUh5NqzMK6Ztk5ogbKnGzmKX7T3U28=;
-	b=P51QhTORl8a0GbJYATHU39T3dzE8ci/uG4Tl/mID5xmig4OiFnzeUTk1r8g5WR0qlljMLXyWdr7NaY7bqpIqPzV9Bk6RV213t1KeLYumc+pwkEwz5WSQdbr0FqYrZEUk4xnrNZW8/ZFsfZyyf2BizlDSEJoalI3iDBRCwzUiIAw=
+	bh=bBC5Fq1FAyjnGKz3ihQQs5dH/zqE+mzRqNZsavMhMeg=;
+	b=TP5IeV9WmV34/FHC2WCQuEQR3GSpMBvo5MNp5Dj3MiHvT/7AeXyDWe5pvtSogi21dVSgx5iz1bSzrXCwqxq8dw5WwyUAZhL5PBKSi5hcwkLqU+KTlORHUmqyFZ6e4GLknMfxFb/FRxPrFWuP4pnl+GYvsIFNweoHalirIJwhAmo=
 Authentication-Results: spf=none (sender IP is )
 	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
 Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:7::724)
 	by CY1PR0301MB2043.namprd03.prod.outlook.com (10.164.2.25) with
 	Microsoft
-	SMTP Server (TLS) id 15.1.361.13; Fri, 1 Jan 2016 00:31:47 +0000
+	SMTP Server (TLS) id 15.1.361.13; Fri, 1 Jan 2016 00:31:48 +0000
 From: Andrew Baumann <Andrew.Baumann@microsoft.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 31 Dec 2015 16:31:28 -0800
-Message-ID: <1451608294-16432-2-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Thu, 31 Dec 2015 16:31:29 -0800
+Message-ID: <1451608294-16432-3-git-send-email-Andrew.Baumann@microsoft.com>
 X-Mailer: git-send-email 2.5.1
 In-Reply-To: <1451608294-16432-1-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1451608294-16432-1-git-send-email-Andrew.Baumann@microsoft.com>
@@ -54,14 +54,14 @@ X-Originating-IP: [2001:4898:80e8:7::724]
 X-ClientProxiedBy: CO2PR04CA028.namprd04.prod.outlook.com (10.141.240.156) To
 	CY1PR0301MB2043.namprd03.prod.outlook.com (25.164.2.25)
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2043;
-	2:/FClk4PcK7OS9n//NSfWFzM0RUcCZNNfx23WXssUBd3ZVK4BT1a2LkzT6CYtqhpHwL5GRhuwMUgNsL2Hwgt9/Jn825VFuPwrUeT30jQPgEWPwuCZjKoRE6NOj6Vd62KWdJ6bqtkf68nxzsph6v3GVQ==;
-	3:uFQT8WC3VYIoL8lxA45RyG7xnj82cH5LjUmfoZuuaAOb7JTFhYraBpXfsHo9Flus/lf8BZTjMBlHfP9C32eQbnNKCi7AJj3DkL9FqgoTIhWOmYf9KfzZFKL431EFSFdA;
-	25:Ya1Wuzy1HLhc9nufM53xdx0zFK5PYDJc+nlPiKmjJPEHRAWUeGLY28hQCOJ3EcyJWyR1xizb9oR7robVWUPd1wKf7zfdEuEkz2umnpIQnzodi9G/HrGtPRHSUibozKpvjXHExZMk9KuIW886SwpxPn5mHxlsTsmoHE1P71zjVGRPDuYDZYdpZyD+XgGJzliSaYUo+qFGHG3r1/fK4NtMglF32GVrcVG0k2KFrzZDthf7IyjEfwrfaFD7iHTM1LMgHNJwt4uUQWDco810gJZUAsenqoTqyCslfhUVMlAMwoA=
+	2:O62eXRu7dzWVlD95D2Dc/jsfWmMWXD8VAYW9kDEHztNNJhyqlsOxV5yvuOqgrBUqycqEzYDckCv/SCp6LDj9zbRCVasOCoG3UswYCkAzfW2GyKdNtOUwALZhyeyMroDkQo/L0CVcs5DJqxp2lU2Luw==;
+	3:JeJ8N2yT8ILSUZaMghAxkcSOkfzNxs3NblhRlXnOE4TzFHbT295srEOqsSNX54YFrhCNq9plxf08L67WPrP/zcya6UVMobWNlu2DoDuADZxZdw+aiQTf5x0+4/tO8DDA;
+	25:pr9hP33NAbt0MIo0w82gU7VnK3UcuHtmRI1fAJvq8BnR82VDx6yV0yf2ovFrXYU2XugmRF+YgsUOH4+AulS03oDqlU5ZwlaIJe0PH6PRPk/Y0O5PUf+f1kjYEUcynXZOAz16PR4nu0b3g2Yop1D1rTZqlq68xO4NsNg7NFIdUeNJGSmXRX50VmmrV/bsO2EgKzoZi77nyIg5Hkw0SbYzRiPL2xTIpIzbF/K9A6AHSGWaI82Cj74gO8Pqv3q7vBLzfxQbLSFqS/2x+vK91P6sObV8BMulBORBa9vcCfr5drk=
 X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB2043;
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2043;
-	20:6kFy4twdSczGF7TQ84Shj1otbh64+N1osLWXGP0JCaETv2LC1pJGgtIH2JL3xIfN1H0Qen1DpK7SsZucJUFXTDAAs0BQ4hQIWQ469/doYqthpLLaciIB8SSsf7x4HxD6nBPs3ZbuW5C1E+UDapjZaSeLdC+nzzc7CNZCXc8ajyW5leeBstg7+eTpyHZ9tI61n0PIOVnFWCjr4WkalzaCliyHzD5X5hp6/aGFdVKmjF+MP+B1wGI1WSyRuQn7DOIlxHkNj3r/K5S3wNNzVwYT5kxCoALv8SEstUdJaigXoJWLrAyUnKpHKgwjVhUF0dfa4gweLy4R132PrK78XfY8XebRmNdyMB5ZqkRnE05NXoS1PJCElZzujZ7lJmAJLa+QkbCiIiqKahsOjfK4tVll4Jt011HueJO+8PRyp2T12blKhM+5FbRP2qEKBPJFhc05C8wYqplyi1qU7bc4JHkPY0XQloEboJZuq00mBRD4Db88FumdQ46Pl5vEGGPMAEqj;
-	4:DyCtIeDfjRIwAx/b2u7+XT9sj/6vkbPuFBolcqSdGYqcCg+/T0RNUKc4O6FA1GKFPxUmwVrXQlwn0uxXLYzXADZ1b1GLYWGFKVPcsV3Hla8VGbcfr0OAK+77oxh77h4Xcz50dc+5WAiRAjbnxQfov5Y5FE2wC28AOsNwRN/owS2N4hgLnqFDzS8fmB1WyUkbj1ACVxAZQL52p8Dxre4/V6eSSKOWPkJ/a7hNGMGB2kEbOMp7hm/dvxNNGDmCyJPOZ9svjJYEDEVZgzyoOyv74m/YI7S/ju7ey0kN9s1uINESM0pxyKfhVTtYcNdCIL2UD9l37a7HaUFNJghXVbv16GXgZazU34Mo272LY7sKZ6gTedk4k3i5xEbMZa7L5Gwg
-X-Microsoft-Antispam-PRVS: <CY1PR0301MB2043AE25BF5393D9E9427FF49EFF0@CY1PR0301MB2043.namprd03.prod.outlook.com>
+	20:Et3IzA8je3j7pqLUH5rZkSM6pPT0Dm/Hq2fCxSDvJvg3GmaEvvX0Rrksig8/h8BEJiVY0KpZFDLrwcHloGo2Zuf+IoY3mD3I6lvaeLQEhcfAUuu6wliyrXYFB615Cy56q5hVoNzf9cpmBiZjU0IrRxee1LMRZVa89f9qIdfJCy1iLZBy7Of/QY+GfylkEnbpdpru0YC2SJH2H5HQuOFcuvhipRuEcR6XhCIIZm2LoDnhMo8te7fVdDPRdresbuV3yJ+1bWRX0T93Pd6Nc69w1hhcLUn8H3OmzCJvUWvibfovredph/q4zikGWtKCB5W/hodU+PvoWBg0IHSj6hE29sWGTvFnyE4wB4nbCCAq5Bw9oE3IHp0pfWKiTTyOV15M3nvrD8lmTniJZDe8ygv8aKVM0/xPxPrp/xJYKtTx8GNaeS2nSlaY2xSL9zF9cs1i7Km+p1S/Z4+0T0NCJbuBoXd3q6TirrmzA+wfX9NnryXPsoqDBk0qCVpn3YGloda4;
+	4:YFxI5lpmedN/0PO29KMIe2UULbwGXaqUDPjuP96nfEp2w7qATdwMMENEyjCsQxp0uUaqw6n2Vufy4iwn0NCLyRXI4k0Ixke+QN5EYALpThj5Mj6IGBbxbo/9VvPiqPr0QQr/kg+ubFEjZe+/OmCkeciTvJhTuNOZxU2NNoZ17GHM5qsJPobtYEIfOWUXNPe6ig+9JbNx6UepyRcU6G+51tOeU9Tn5FfQnTLJqV3MV/D0e1i06Kfoc2EFOVqKyb8IyjxwF2pzqfel+6sCcFPf0LQk2eS+C/251gB3pp4OBVOgbZWwWjm9+Jb7lYj8I8M5QOs7c5KEl3rlLF8crRPyw0oAwDqqGxDWFO/rtEDL39vyH9gIvkafaRoLZe7F0dPw
+X-Microsoft-Antispam-PRVS: <CY1PR0301MB204383EF5ED6A6022FECFD4A9EFF0@CY1PR0301MB2043.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:;
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(601004)(2401047)(8121501046)(520078)(5005006)(3002001)(10201501046);
@@ -76,35 +76,35 @@ X-Forefront-Antispam-Report: SFV:NSPM;
 Received-SPF: None (protection.outlook.com: microsoft.com does not designate
 	permitted sender hosts)
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR0301MB2043;
-	23:QJCt1LlK2im9ImHEqfaWgtD2mh/eA0s5NRvsZQb?=
-	=?us-ascii?Q?IypqJDuSK0itfpCdo3wBjgJZeVz02K22smHyQFMc8g9VfIbg1dtQQcTTirnJ?=
-	=?us-ascii?Q?rpL6WjmaJYxp/cHaj78wdi6lslrebYA1k64uI9h1cGuSzq2nPFcMIGeAewlb?=
-	=?us-ascii?Q?g+Kmy1X20QblKmTheVjzizZGlR3geUNGv1ir0RBtx1d5X5hA8mvhtAEt2+Xy?=
-	=?us-ascii?Q?NlZ3YaGgsPdW39lV97Is6PseYVarU/JFhMj9SH0uOYAq66U679rngoGbRZTS?=
-	=?us-ascii?Q?Z/LhQNN74nDjK0KwVC7VEY23wU2qkbPmDC8ZzXhn66H03ZG8ZnKptMPZDWlY?=
-	=?us-ascii?Q?DASNiYSP1vsekx+qO3YHVoyhlxFdwzoWphjt+4CWdzku/9RMtWQ1R/LLsKAP?=
-	=?us-ascii?Q?zYLBDl2f8YB9wFUa1SOofowlEhmegssM//A5185XIOvtUUIpjiS+OlOxd5lE?=
-	=?us-ascii?Q?JbmDt6V1jEi/PRVeKdQNmtkmC91hmrZ0IxImnHHuY3vdjdofbXQTyHDa8o7Q?=
-	=?us-ascii?Q?BWwY8k1WF78v1tRGNmE0s4zUsdakya3di/BsMu6OgRRZBjrCc4feY4KgjsOx?=
-	=?us-ascii?Q?5HvaF9iamZSnJvbyTG1mm7+s2J46tbESGTC7SuwAPBV7GOMeZwDHl67u0fZN?=
-	=?us-ascii?Q?ZV5OQMtYttprOee24+b/WeIu2BsWXQJ3H1zzBPj0Dbf/p7RZJion66NtqZWx?=
-	=?us-ascii?Q?Ql5/Ft2UB/6YamFrkj87dTZAqxrs9KNfG2iqdt2IrM855J/+nCwqg7axrDeb?=
-	=?us-ascii?Q?4vrqljYVjt8VPn/FH0092paK5prUfvBs+BaeDEuksMVdQUSFeJC+utK4oG8G?=
-	=?us-ascii?Q?BmSMVI1ceBp77ao4cLNI/TIdB5BYgsnmhCyI02ERw6dYOS2FxGSGxkFTcFV2?=
-	=?us-ascii?Q?Ry6g+C77Zl0zMtEYo1C9Uw/9aLwys28EE45xDU3uGq1p0Hot6KSBL5fgkDXy?=
-	=?us-ascii?Q?vWFSe/2eNCvLbvmCvoiV28SlVPZ+5E35uHZho3tTZgvqFVnaaeVUKgq53Azv?=
-	=?us-ascii?Q?shz4ppmvCiBEb9JvUwv6n7YIbk2Xr31e6EOZmkbWpVOZf/mFD4xnhGRHkklW?=
-	=?us-ascii?Q?V68+FBIrpC8PCeQUaIS7eNSU2ixFFFvIsyQjhMBll1QdlVR5NJuP8C+A6FIv?=
-	=?us-ascii?Q?Wqawpk6rllm7JQbkKwa4i8aKxATmERCSwfFcEx4S5hp8JPZE5mQGQjdYj8og?=
-	=?us-ascii?Q?Qm19TydoaGXs2Drt0s1f0rK3yAZ55TKtT3V+NwSuzQDmm0GIgv28+3m2J6A?=
+	23:lvDrwttQXxOOOHjZXuKgHhL9VKEb/E96zbbVmns?=
+	=?us-ascii?Q?MvEzf/KlddaGMPyLWBhi3KmXj6qPkspor0uD35CD9vuN0O7PznAXGLbG0a3H?=
+	=?us-ascii?Q?lusqhjIl7hXtE4lDP9m9g7+ZWndjRau4/RAMvLdwHtLbIVuVyq/+jXqEIr3k?=
+	=?us-ascii?Q?1mpk5S/k2hx6iE2+kKYXnXOieQ9ij9n7sCnPPSCSD4pG3OyXp58rmaCRzmmV?=
+	=?us-ascii?Q?6+63NLLespXfeWLcUmhNk9Ya8UAZyo3Jn8brbH7dnHGilEXNJoRR41xsqqWn?=
+	=?us-ascii?Q?Y7hD8N7uws6g1P8CRctCxxNPQni1pkqiMGAo1KerGg+/AldrmIeX4/dOb9ak?=
+	=?us-ascii?Q?hv8pST5rn+XxWQ8mX80KMpHx7T1FOnmSkjfk5xoqrbpr/V7XmbpW2qVU2kmC?=
+	=?us-ascii?Q?/2w6/I1vemm4PD6zWO2aHyr+RabeTwSPR1PdmuDei6xR+irdhws6gBvRtfhb?=
+	=?us-ascii?Q?meqVLP9EU9OBQkd0rXBJKfVEbWQN3juQuTjKqRF5mEEGjH+mlxdLKBA9HN6N?=
+	=?us-ascii?Q?NQx8jWIauYZHoFBuSZeY4RUBIh4w6JxQsseIyRK4n56rtILFC50EvF+axVHR?=
+	=?us-ascii?Q?hgTTYVecsb1YPUtH1aqPRSLxxobQfE9vZ+7Kl0JOshlLaBgFFURDKZgAvQqw?=
+	=?us-ascii?Q?jyW+89pqwkzx41hJngTE9U3gDUO+Y34Y2V0LTXXHj/Q5wM7DR46aZnCq0Mi7?=
+	=?us-ascii?Q?lJI9Kqa8V6HWH4+8o43pbYgdAsxs+6Xz31KJnboAr5nYMdniKtXm8EqP1Mk0?=
+	=?us-ascii?Q?rAtt2LXYR2vBidD6keHlpY+ZRBfXsOehvgwDwa9a1J3aDtDUqFRNIw3ccWYh?=
+	=?us-ascii?Q?pOVoMRECeXPP3tEQmFHA3qKwM1MzIgT+EqWKktuGagd/al9h2hz/DWfeD4nt?=
+	=?us-ascii?Q?iOA4hzG5m8ws7YXetIN1+3z1rNn+6qrB9vC9pNSIJghVexeVQDSO7gnaQzh9?=
+	=?us-ascii?Q?0vnHhDcDBvsMDlRBpMaceFmsP/674TuHgNpVsD5nmMQBIeg9zWC5M/q5LaeT?=
+	=?us-ascii?Q?A5M1Kxzg7NNf5wzpmh5sQiOfC7kQR3/urT4QujCaQnrxeHBE5RnCwDR6X6K7?=
+	=?us-ascii?Q?0BTIwfZGlmIwjjob3JzXPyNrq3bI3zZuTW2CDPex88kYKnPwKGJ6Tkco7X9k?=
+	=?us-ascii?Q?PA6QTsaJiZS4rzi35DHLetwMQrT97fvIAH7UgjR35PL+9R2RApS/YmjMDFKb?=
+	=?us-ascii?Q?FC6ttP1d6DWuTkBLMf6YZBW4ljmHpxtAuhgGeVF3mdoGDBrtTCCUU6/M3wA?=
 	=?us-ascii?Q?=3D=3D?=
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2043;
-	5:4rKVSEL1dtUwMbmCAJpifZaEkM3tPclBB7aF1uNsiaA2/T2hD0pFy8OOTnJg0rWfeq214Jdb47/mCjB2ukb0TJaoHrJfCfdtEclpErCG8KW6mKzg8rYHEwkzI+pRDzds6YsgiVXHlgNXtlrlD3Po8Q==;
-	24:7ce8oyvi6jVVmompf7sGeK2J7Gmqvto4spJG/gytuREMjt81EGh9IP9XILopvUxSO6NadHJ1gud0BIWBN1loQDrzj35AyetrILc+Mh9QMsk=
+	5:kGeFUJ2PldI0jDYq1068DBTTJh7yjYk1D9u9AAvAlbsp9RzAPqH2tJv+Zvly/oNKWO3KMrOrnB+5wGEyZgcaRqj7fbxjFNEC99WBr3vccm4cwQB8ayCyJRXiF6okaS+V3f2/YOU/DOiQqPO/Px5osw==;
+	24:e1SbY9ctuy+roh5uchFgKkXHH/SBfK9vD96taxa9/giffufRu3Z0wQkUib0Gt73kb7WNvuq/6TXfpykJCk9MYwKn2LOs452wR1yfsnJ/Xbo=
 SpamDiagnosticOutput: 1:23
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jan 2016 00:31:47.6539 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Jan 2016 00:31:48.9195 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR0301MB2043
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
@@ -115,7 +115,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-devel] [PATCH v3 1/7] bcm2835_mbox: add BCM2835 mailboxes
+Subject: [Qemu-devel] [PATCH v3 2/7] bcm2835_property: add bcm2835 property
+	channel
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -129,241 +130,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0v0PaRdwsnif
+X-TUID: ZGDntcOI96fe
 
-This adds the system mailboxes which are used to communicate with a
-number of GPU peripherals on Pi/Pi2.
+This sits behind the mailbox interface, and implements
+request/response queries for system properties. The
+framebuffer-related properties will be added in a later patch.
 
 Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 ---
+ hw/misc/Makefile.objs              |   1 +
+ hw/misc/bcm2835_property.c         | 277 +++++++++++++++++++++++++++++++++++++
+ include/hw/misc/bcm2835_property.h |  29 ++++
+ 3 files changed, 307 insertions(+)
+ create mode 100644 hw/misc/bcm2835_property.c
+ create mode 100644 include/hw/misc/bcm2835_property.h
 
-Notes:
-    v3:
-     * #define register offsets
-     * rename mbox_init -> mbox_reset
-     * s/_/-/ in property and type names
-     * avoid hw_error
-     * minor style tweaks
-    
-    v2:
-     * renamed bcm2835_sbm to bcm2835_mbox
-     * dropped bcm2835_arm_control.h (needed defs moved to bcm2835_mbox.c)
-     * documented use of private address space through defines in bcm2835_mbox_defs.h
-     * remove unused fields from BCM2835Mbox
-     * s/int/bool/ where appropriate
-     * cleaned up logic in _update and _mbox_update_status for clarity/simplicity
-     * added vmstate
-     * misc cleanup
-
- default-configs/arm-softmmu.mak     |   1 +
- hw/misc/Makefile.objs               |   1 +
- hw/misc/bcm2835_mbox.c              | 333 ++++++++++++++++++++++++++++++++++++
- include/hw/misc/bcm2835_mbox.h      |  37 ++++
- include/hw/misc/bcm2835_mbox_defs.h |  27 +++
- 5 files changed, 399 insertions(+)
- create mode 100644 hw/misc/bcm2835_mbox.c
- create mode 100644 include/hw/misc/bcm2835_mbox.h
- create mode 100644 include/hw/misc/bcm2835_mbox_defs.h
-
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index d9b90a5..a9f82a1 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -79,6 +79,7 @@ CONFIG_TUSB6010=y
- CONFIG_IMX=y
- CONFIG_MAINSTONE=y
- CONFIG_NSERIES=y
-+CONFIG_RASPI=y
- CONFIG_REALVIEW=y
- CONFIG_ZAURUS=y
- CONFIG_ZYNQ=y
 diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index d4765c2..d0ea105 100644
+index d0ea105..ea6cd3c 100644
 --- a/hw/misc/Makefile.objs
 +++ b/hw/misc/Makefile.objs
-@@ -36,6 +36,7 @@ obj-$(CONFIG_OMAP) += omap_gpmc.o
- obj-$(CONFIG_OMAP) += omap_l4.o
+@@ -37,6 +37,7 @@ obj-$(CONFIG_OMAP) += omap_l4.o
  obj-$(CONFIG_OMAP) += omap_sdrc.o
  obj-$(CONFIG_OMAP) += omap_tap.o
-+obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ obj-$(CONFIG_RASPI) += bcm2835_mbox.o
++obj-$(CONFIG_RASPI) += bcm2835_property.o
  obj-$(CONFIG_SLAVIO) += slavio_misc.o
  obj-$(CONFIG_ZYNQ) += zynq_slcr.o
  obj-$(CONFIG_ZYNQ) += zynq-xadc.o
-diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
 new file mode 100644
-index 0000000..167bf59
+index 0000000..2385be4
 --- /dev/null
-+++ b/hw/misc/bcm2835_mbox.c
-@@ -0,0 +1,333 @@
++++ b/hw/misc/bcm2835_property.c
+@@ -0,0 +1,277 @@
 +/*
 + * Raspberry Pi emulation (c) 2012 Gregory Estrade
 + * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * This file models the system mailboxes, which are used for
-+ * communication with low-bandwidth GPU peripherals. Refs:
-+ *   https://github.com/raspberrypi/firmware/wiki/Mailboxes
-+ *   https://github.com/raspberrypi/firmware/wiki/Accessing-mailboxes
 + */
 +
-+#include "hw/misc/bcm2835_mbox.h"
++#include "hw/misc/bcm2835_property.h"
++#include "hw/misc/bcm2835_mbox_defs.h"
 +
-+#define MAIL0_PEEK   0x90
-+#define MAIL0_SENDER 0x94
-+#define MAIL1_STATUS 0xb8
++/* https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface */
 +
-+/* Mailbox status register */
-+#define MAIL0_STATUS 0x98
-+#define ARM_MS_FULL       0x80000000
-+#define ARM_MS_EMPTY      0x40000000
-+#define ARM_MS_LEVEL      0x400000FF /* Max. value depends on mailbox depth */
-+
-+/* MAILBOX config/status register */
-+#define MAIL0_CONFIG 0x9c
-+/* ANY write to this register clears the error bits! */
-+#define ARM_MC_IHAVEDATAIRQEN    0x00000001 /* mbox irq enable:  has data */
-+#define ARM_MC_IHAVESPACEIRQEN   0x00000002 /* mbox irq enable:  has space */
-+#define ARM_MC_OPPISEMPTYIRQEN   0x00000004 /* mbox irq enable: Opp is empty */
-+#define ARM_MC_MAIL_CLEAR        0x00000008 /* mbox clear write 1, then  0 */
-+#define ARM_MC_IHAVEDATAIRQPEND  0x00000010 /* mbox irq pending:  has space */
-+#define ARM_MC_IHAVESPACEIRQPEND 0x00000020 /* mbox irq pending: Opp is empty */
-+#define ARM_MC_OPPISEMPTYIRQPEND 0x00000040 /* mbox irq pending */
-+/* Bit 7 is unused */
-+#define ARM_MC_ERRNOOWN   0x00000100 /* error : none owner read from mailbox */
-+#define ARM_MC_ERROVERFLW 0x00000200 /* error : write to fill mailbox */
-+#define ARM_MC_ERRUNDRFLW 0x00000400 /* error : read from empty mailbox */
-+
-+static void mbox_update_status(BCM2835Mbox *mb)
++static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
 +{
-+    mb->status &= ~(ARM_MS_EMPTY | ARM_MS_FULL);
-+    if (mb->count == 0) {
-+        mb->status |= ARM_MS_EMPTY;
-+    } else if (mb->count == MBOX_SIZE) {
-+        mb->status |= ARM_MS_FULL;
-+    }
-+}
++    uint32_t tag;
++    uint32_t bufsize;
++    uint32_t tot_len;
++    size_t resplen;
++    uint32_t tmp;
 +
-+static void mbox_reset(BCM2835Mbox *mb)
-+{
-+    int n;
++    value &= ~0xf;
 +
-+    mb->count = 0;
-+    mb->config = 0;
-+    for (n = 0; n < MBOX_SIZE; n++) {
-+        mb->reg[n] = MBOX_INVALID_DATA;
-+    }
-+    mbox_update_status(mb);
-+}
++    s->addr = value;
 +
-+static uint32_t mbox_pull(BCM2835Mbox *mb, int index)
-+{
-+    int n;
-+    uint32_t val;
++    tot_len = ldl_phys(&s->dma_as, value);
 +
-+    assert(mb->count > 0);
-+    assert(index < mb->count);
++    /* @(addr + 4) : Buffer response code */
++    value = s->addr + 8;
++    while (value + 8 <= s->addr + tot_len) {
++        tag = ldl_phys(&s->dma_as, value);
++        bufsize = ldl_phys(&s->dma_as, value + 4);
++        /* @(value + 8) : Request/response indicator */
++        resplen = 0;
++        switch (tag) {
++        case 0x00000000: /* End tag */
++            break;
++        case 0x00000001: /* Get firmware revision */
++            stl_phys(&s->dma_as, value + 12, 346337);
++            resplen = 4;
++            break;
 +
-+    val = mb->reg[index];
-+    for (n = index + 1; n < mb->count; n++) {
-+        mb->reg[n - 1] = mb->reg[n];
-+    }
-+    mb->count--;
-+    mb->reg[mb->count] = MBOX_INVALID_DATA;
++        case 0x00010001: /* Get board model */
++            resplen = 4;
++            break;
++        case 0x00010002: /* Get board revision */
++            resplen = 4;
++            break;
++        case 0x00010003: /* Get board MAC address */
++            /* write the first four bytes of the 6-byte MAC */
++            stl_phys(&s->dma_as, value + 12, 0xB827EBD0);
++            /* write the last two bytes, avoid any write past the buffer end */
++            stb_phys(&s->dma_as, value + 16, 0xEE);
++            stb_phys(&s->dma_as, value + 17, 0xDF);
++            resplen = 6;
++            break;
++        case 0x00010004: /* Get board serial */
++            resplen = 8;
++            break;
++        case 0x00010005: /* Get ARM memory */
++            /* base */
++            stl_phys(&s->dma_as, value + 12, 0);
++            /* size */
++            stl_phys(&s->dma_as, value + 16, s->ram_size);
++            resplen = 8;
++            break;
++        case 0x00028001: /* Set power state */
++            /* Assume that whatever device they asked for exists,
++             * and we'll just claim we set it to the desired state */
++            tmp = ldl_phys(&s->dma_as, value + 16);
++            stl_phys(&s->dma_as, value + 16, (tmp & 1));
++            resplen = 8;
++            break;
 +
-+    mbox_update_status(mb);
++        /* Clocks */
 +
-+    return val;
-+}
++        case 0x00030001: /* Get clock state */
++            stl_phys(&s->dma_as, value + 16, 0x1);
++            resplen = 8;
++            break;
 +
-+static void mbox_push(BCM2835Mbox *mb, uint32_t val)
-+{
-+    assert(mb->count < MBOX_SIZE);
-+    mb->reg[mb->count++] = val;
-+    mbox_update_status(mb);
-+}
++        case 0x00038001: /* Set clock state */
++            resplen = 8;
++            break;
 +
-+static void bcm2835_mbox_update(BCM2835MboxState *s)
-+{
-+    uint32_t value;
-+    bool set;
-+    int n;
++        case 0x00030002: /* Get clock rate */
++        case 0x00030004: /* Get max clock rate */
++        case 0x00030007: /* Get min clock rate */
++            switch (ldl_phys(&s->dma_as, value + 12)) {
++            case 1: /* EMMC */
++                stl_phys(&s->dma_as, value + 16, 50000000);
++                break;
++            case 2: /* UART */
++                stl_phys(&s->dma_as, value + 16, 3000000);
++                break;
++            default:
++                stl_phys(&s->dma_as, value + 16, 700000000);
++                break;
++            }
++            resplen = 8;
++            break;
 +
-+    s->mbox_irq_disabled = true;
++        case 0x00038002: /* Set clock rate */
++        case 0x00038004: /* Set max clock rate */
++        case 0x00038007: /* Set min clock rate */
++            resplen = 8;
++            break;
 +
-+    /* Get pending responses and put them in the vc->arm mbox,
-+     * as long as it's not full */
-+    for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-+        while (s->available[n] && !(s->mbox[0].status & ARM_MS_FULL)) {
-+            value = ldl_phys(&s->mbox_as, n << MBOX_AS_CHAN_SHIFT);
-+            assert(value != MBOX_INVALID_DATA); /* Pending interrupt but no data */
-+            mbox_push(&s->mbox[0], value);
++        /* Temperature */
++
++        case 0x00030006: /* Get temperature */
++            stl_phys(&s->dma_as, value + 16, 25000);
++            resplen = 8;
++            break;
++
++        case 0x0003000A: /* Get max temperature */
++            stl_phys(&s->dma_as, value + 16, 99000);
++            resplen = 8;
++            break;
++
++
++        case 0x00060001: /* Get DMA channels */
++            /* channels 2-5 */
++            stl_phys(&s->dma_as, value + 12, 0x003C);
++            resplen = 4;
++            break;
++
++        case 0x00050001: /* Get command line */
++            resplen = 0;
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "bcm2835_property: unhandled tag %08x\n", tag);
++            break;
 +        }
-+    }
 +
-+    /* Try to push pending requests from the arm->vc mbox */
-+    /* TODO (?) */
-+
-+    /* Re-enable calls from the IRQ routine */
-+    s->mbox_irq_disabled = false;
-+
-+    /* Update ARM IRQ status */
-+    set = false;
-+    s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQPEND;
-+    if (!(s->mbox[0].status & ARM_MS_EMPTY)) {
-+        s->mbox[0].config |= ARM_MC_IHAVEDATAIRQPEND;
-+        if (s->mbox[0].config & ARM_MC_IHAVEDATAIRQEN) {
-+            set = true;
++        if (tag == 0) {
++            break;
 +        }
++
++        stl_phys(&s->dma_as, value + 8, (1 << 31) | resplen);
++        value += bufsize + 12;
 +    }
-+    qemu_set_irq(s->arm_irq, set);
++
++    /* Buffer response code */
++    stl_phys(&s->dma_as, s->addr + 4, (1 << 31));
 +}
 +
-+static void bcm2835_mbox_set_irq(void *opaque, int irq, int level)
++static uint64_t bcm2835_property_read(void *opaque, hwaddr offset,
++                                      unsigned size)
 +{
-+    BCM2835MboxState *s = opaque;
-+
-+    s->available[irq] = level;
-+
-+    /* avoid recursively calling bcm2835_mbox_update when the interrupt
-+     * status changes due to the ldl_phys call within that function
-+     */
-+    if (!s->mbox_irq_disabled) {
-+        bcm2835_mbox_update(s);
-+    }
-+}
-+
-+static uint64_t bcm2835_mbox_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    BCM2835MboxState *s = opaque;
++    BCM2835PropertyState *s = opaque;
 +    uint32_t res = 0;
 +
-+    offset &= 0xff;
-+
 +    switch (offset) {
-+    case 0x80 ... 0x8c: /* MAIL0_READ */
-+        if (s->mbox[0].status & ARM_MS_EMPTY) {
-+            res = MBOX_INVALID_DATA;
-+        } else {
-+            res = mbox_pull(&s->mbox[0], 0);
-+        }
++    case MBOX_AS_DATA:
++        res = MBOX_CHAN_PROPERTY | s->addr;
++        s->pending = false;
++        qemu_set_irq(s->mbox_irq, 0);
 +        break;
 +
-+    case MAIL0_PEEK:
-+        res = s->mbox[0].reg[0];
-+        break;
-+
-+    case MAIL0_SENDER:
-+        break;
-+
-+    case MAIL0_STATUS:
-+        res = s->mbox[0].status;
-+        break;
-+
-+    case MAIL0_CONFIG:
-+        res = s->mbox[0].config;
-+        break;
-+
-+    case MAIL1_STATUS:
-+        res = s->mbox[1].status;
++    case MBOX_AS_PENDING:
++        res = s->pending;
 +        break;
 +
 +    default:
@@ -372,49 +332,20 @@ index 0000000..167bf59
 +        return 0;
 +    }
 +
-+    bcm2835_mbox_update(s);
-+
 +    return res;
 +}
 +
-+static void bcm2835_mbox_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
++static void bcm2835_property_write(void *opaque, hwaddr offset,
++                                   uint64_t value, unsigned size)
 +{
-+    BCM2835MboxState *s = opaque;
-+    hwaddr childaddr;
-+    uint8_t ch;
-+
-+    offset &= 0xff;
++    BCM2835PropertyState *s = opaque;
 +
 +    switch (offset) {
-+    case MAIL0_SENDER:
-+        break;
-+
-+    case MAIL0_CONFIG:
-+        s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQEN;
-+        s->mbox[0].config |= value & ARM_MC_IHAVEDATAIRQEN;
-+        break;
-+
-+    case 0xa0 ... 0xac: /* MAIL1_WRITE */
-+        if (s->mbox[1].status & ARM_MS_FULL) {
-+            /* Mailbox full */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: mailbox full\n", __func__);
-+        } else {
-+            ch = value & 0xf;
-+            if (ch < MBOX_CHAN_COUNT) {
-+                childaddr = ch << MBOX_AS_CHAN_SHIFT;
-+                if (ldl_phys(&s->mbox_as, childaddr + MBOX_AS_PENDING)) {
-+                    /* Child busy, push delayed. Push it in the arm->vc mbox */
-+                    mbox_push(&s->mbox[1], value);
-+                } else {
-+                    /* Push it directly to the child device */
-+                    stl_phys(&s->mbox_as, childaddr, value);
-+                }
-+            } else {
-+                /* Invalid channel number */
-+                qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel %u\n",
-+                              __func__, ch);
-+            }
++    case MBOX_AS_DATA:
++        if (!s->pending) {
++            s->pending = true;
++            bcm2835_property_mbox_push(s, value);
++            qemu_set_irq(s->mbox_irq, 1);
 +        }
 +        break;
 +
@@ -424,186 +355,126 @@ index 0000000..167bf59
 +        return;
 +    }
 +
-+    bcm2835_mbox_update(s);
 +}
 +
-+static const MemoryRegionOps bcm2835_mbox_ops = {
-+    .read = bcm2835_mbox_read,
-+    .write = bcm2835_mbox_write,
++static const MemoryRegionOps bcm2835_property_ops = {
++    .read = bcm2835_property_read,
++    .write = bcm2835_property_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid.min_access_size = 4,
 +    .valid.max_access_size = 4,
 +};
 +
-+/* vmstate of a single mailbox */
-+static const VMStateDescription vmstate_bcm2835_mbox_box = {
-+    .name = TYPE_BCM2835_MBOX "_box",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(reg, BCM2835Mbox, MBOX_SIZE),
-+        VMSTATE_UINT32(count, BCM2835Mbox),
-+        VMSTATE_UINT32(status, BCM2835Mbox),
-+        VMSTATE_UINT32(config, BCM2835Mbox),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+/* vmstate of the entire device */
-+static const VMStateDescription vmstate_bcm2835_mbox = {
-+    .name = TYPE_BCM2835_MBOX,
++static const VMStateDescription vmstate_bcm2835_property = {
++    .name = TYPE_BCM2835_PROPERTY,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .minimum_version_id_old = 1,
 +    .fields      = (VMStateField[]) {
-+        VMSTATE_BOOL_ARRAY(available, BCM2835MboxState, MBOX_CHAN_COUNT),
-+        VMSTATE_STRUCT_ARRAY(mbox, BCM2835MboxState, 2, 1,
-+                             vmstate_bcm2835_mbox_box, BCM2835Mbox),
++        VMSTATE_UINT32(addr, BCM2835PropertyState),
++        VMSTATE_BOOL(pending, BCM2835PropertyState),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void bcm2835_mbox_init(Object *obj)
++static void bcm2835_property_init(Object *obj)
 +{
-+    BCM2835MboxState *s = BCM2835_MBOX(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2835_mbox_ops, s,
-+                          TYPE_BCM2835_MBOX, 0x400);
++    BCM2835PropertyState *s = BCM2835_PROPERTY(obj);
++    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_property_ops, s,
++                          TYPE_BCM2835_PROPERTY, 0x10);
 +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->arm_irq);
-+    qdev_init_gpio_in(DEVICE(s), bcm2835_mbox_set_irq, MBOX_CHAN_COUNT);
++    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->mbox_irq);
 +}
 +
-+static void bcm2835_mbox_reset(DeviceState *dev)
++static void bcm2835_property_reset(DeviceState *dev)
 +{
-+    BCM2835MboxState *s = BCM2835_MBOX(dev);
-+    int n;
++    BCM2835PropertyState *s = BCM2835_PROPERTY(dev);
 +
-+    mbox_reset(&s->mbox[0]);
-+    mbox_reset(&s->mbox[1]);
-+    s->mbox_irq_disabled = false;
-+    for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-+        s->available[n] = false;
-+    }
++    s->pending = false;
 +}
 +
-+static void bcm2835_mbox_realize(DeviceState *dev, Error **errp)
++static void bcm2835_property_realize(DeviceState *dev, Error **errp)
 +{
-+    BCM2835MboxState *s = BCM2835_MBOX(dev);
++    BCM2835PropertyState *s = BCM2835_PROPERTY(dev);
 +    Object *obj;
 +    Error *err = NULL;
 +
-+    obj = object_property_get_link(OBJECT(dev), "mbox-mr", &err);
++    obj = object_property_get_link(OBJECT(dev), "dma-mr", &err);
 +    if (obj == NULL) {
-+        error_setg(errp, "%s: required mbox-mr link not found: %s",
++        error_setg(errp, "%s: required dma-mr link not found: %s",
 +                   __func__, error_get_pretty(err));
 +        return;
 +    }
 +
-+    s->mbox_mr = MEMORY_REGION(obj);
-+    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-+    bcm2835_mbox_reset(dev);
++    s->dma_mr = MEMORY_REGION(obj);
++    address_space_init(&s->dma_as, s->dma_mr, NULL);
++
++    bcm2835_property_reset(dev);
 +}
 +
-+static void bcm2835_mbox_class_init(ObjectClass *klass, void *data)
++static Property bcm2835_property_props[] = {
++    DEFINE_PROP_UINT32("ram-size", BCM2835PropertyState, ram_size, 0),
++    DEFINE_PROP_END_OF_LIST()
++};
++
++static void bcm2835_property_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->realize = bcm2835_mbox_realize;
-+    dc->reset = bcm2835_mbox_reset;
-+    dc->vmsd = &vmstate_bcm2835_mbox;
++    dc->props = bcm2835_property_props;
++    dc->realize = bcm2835_property_realize;
++    dc->vmsd = &vmstate_bcm2835_property;
 +}
 +
-+static TypeInfo bcm2835_mbox_info = {
-+    .name          = TYPE_BCM2835_MBOX,
++static TypeInfo bcm2835_property_info = {
++    .name          = TYPE_BCM2835_PROPERTY,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835MboxState),
-+    .class_init    = bcm2835_mbox_class_init,
-+    .instance_init = bcm2835_mbox_init,
++    .instance_size = sizeof(BCM2835PropertyState),
++    .class_init    = bcm2835_property_class_init,
++    .instance_init = bcm2835_property_init,
 +};
 +
-+static void bcm2835_mbox_register_types(void)
++static void bcm2835_property_register_types(void)
 +{
-+    type_register_static(&bcm2835_mbox_info);
++    type_register_static(&bcm2835_property_info);
 +}
 +
-+type_init(bcm2835_mbox_register_types)
-diff --git a/include/hw/misc/bcm2835_mbox.h b/include/hw/misc/bcm2835_mbox.h
++type_init(bcm2835_property_register_types)
+diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
 new file mode 100644
-index 0000000..32ae077
+index 0000000..d7a9856
 --- /dev/null
-+++ b/include/hw/misc/bcm2835_mbox.h
-@@ -0,0 +1,37 @@
++++ b/include/hw/misc/bcm2835_property.h
+@@ -0,0 +1,29 @@
 +/*
 + * Raspberry Pi emulation (c) 2012 Gregory Estrade
 + * This code is licensed under the GNU GPLv2 and later.
 + */
 +
-+#ifndef BCM2835_MBOX_H
-+#define BCM2835_MBOX_H
++#ifndef BCM2835_PROPERTY_H
++#define BCM2835_PROPERTY_H
 +
-+#include "bcm2835_mbox_defs.h"
 +#include "hw/sysbus.h"
 +#include "exec/address-spaces.h"
 +
-+#define TYPE_BCM2835_MBOX "bcm2835-mbox"
-+#define BCM2835_MBOX(obj) \
-+        OBJECT_CHECK(BCM2835MboxState, (obj), TYPE_BCM2835_MBOX)
-+
-+typedef struct {
-+    uint32_t reg[MBOX_SIZE];
-+    uint32_t count;
-+    uint32_t status;
-+    uint32_t config;
-+} BCM2835Mbox;
++#define TYPE_BCM2835_PROPERTY "bcm2835-property"
++#define BCM2835_PROPERTY(obj) \
++        OBJECT_CHECK(BCM2835PropertyState, (obj), TYPE_BCM2835_PROPERTY)
 +
 +typedef struct {
 +    /*< private >*/
 +    SysBusDevice busdev;
 +    /*< public >*/
-+    MemoryRegion *mbox_mr;
-+    AddressSpace mbox_as;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
 +    MemoryRegion iomem;
-+    qemu_irq arm_irq;
-+    bool mbox_irq_disabled;
-+    bool available[MBOX_CHAN_COUNT];
-+    BCM2835Mbox mbox[2];
-+} BCM2835MboxState;
++    qemu_irq mbox_irq;
++    uint32_t ram_size;
++    uint32_t addr;
++    bool pending;
++} BCM2835PropertyState;
 +
 +#endif
-diff --git a/include/hw/misc/bcm2835_mbox_defs.h b/include/hw/misc/bcm2835_mbox_defs.h
-new file mode 100644
-index 0000000..a18e520
---- /dev/null
-+++ b/include/hw/misc/bcm2835_mbox_defs.h
-@@ -0,0 +1,27 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#ifndef BCM2835_MBOX_DEFS_H
-+#define BCM2835_MBOX_DEFS_H
-+
-+/* Constants shared with the ARM identifying separate mailbox channels */
-+#define MBOX_CHAN_POWER    0 /* for use by the power management interface */
-+#define MBOX_CHAN_FB       1 /* for use by the frame buffer */
-+#define MBOX_CHAN_VCHIQ    3 /* for use by the VCHIQ interface */
-+#define MBOX_CHAN_PROPERTY 8 /* for use by the property channel */
-+#define MBOX_CHAN_COUNT    9
-+
-+#define MBOX_SIZE          32
-+#define MBOX_INVALID_DATA  0x0f
-+
-+/* Layout of the private address space used for communication between
-+ * the mbox device emulation, and child devices: each channel occupies
-+ * 16 bytes of address space, but only two registers are presently defined.
-+ */
-+#define MBOX_AS_CHAN_SHIFT 4
-+#define MBOX_AS_DATA       0 /* request / response data (RW at offset 0) */
-+#define MBOX_AS_PENDING    4 /* pending response status (RO at offset 4) */
-+
-+#endif /* BCM2835_MBOX_DEFS_H */
 -- 
 2.5.3
 

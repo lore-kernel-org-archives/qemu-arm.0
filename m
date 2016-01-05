@@ -1,63 +1,69 @@
-Received: by 10.182.158.201 with SMTP id ww9csp10896961obb;
-        Mon, 4 Jan 2016 18:37:38 -0800 (PST)
-X-Received: by 10.55.77.202 with SMTP id a193mr119432830qkb.48.1451961458083;
-        Mon, 04 Jan 2016 18:37:38 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp10897009obb;
+        Mon, 4 Jan 2016 18:37:46 -0800 (PST)
+X-Received: by 10.55.31.95 with SMTP id f92mr83415247qkf.50.1451961466146;
+        Mon, 04 Jan 2016 18:37:46 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s67si1967973qhs.12.2016.01.04.18.37.37
+        by mx.google.com with ESMTPS id b74si47206296qhc.16.2016.01.04.18.37.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Jan 2016 18:37:38 -0800 (PST)
+        Mon, 04 Jan 2016 18:37:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47829 helo=lists.gnu.org)
+Received: from localhost ([::1]:47830 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aGHVB-0003lC-Jt
-	for alex.bennee@linaro.org; Mon, 04 Jan 2016 21:37:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58076)
+	id 1aGHVJ-000437-SO
+	for alex.bennee@linaro.org; Mon, 04 Jan 2016 21:37:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58090)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aGHUe-00036Z-VD
-	for qemu-devel@nongnu.org; Mon, 04 Jan 2016 21:37:06 -0500
+	(envelope-from <digetx@gmail.com>) id 1aGHUg-00037u-J9
+	for qemu-devel@nongnu.org; Mon, 04 Jan 2016 21:37:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aGHUb-000134-Mh
-	for qemu-devel@nongnu.org; Mon, 04 Jan 2016 21:37:04 -0500
-Received: from mail-lb0-x241.google.com ([2a00:1450:4010:c04::241]:34410)
+	(envelope-from <digetx@gmail.com>) id 1aGHUf-00013L-Dq
+	for qemu-devel@nongnu.org; Mon, 04 Jan 2016 21:37:06 -0500
+Received: from mail-lb0-x242.google.com ([2a00:1450:4010:c04::242]:36634)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <digetx@gmail.com>)
-	id 1aGHUb-00012z-EN; Mon, 04 Jan 2016 21:37:01 -0500
-Received: by mail-lb0-x241.google.com with SMTP id jk7so13895348lbc.1;
-	Mon, 04 Jan 2016 18:37:01 -0800 (PST)
+	id 1aGHUf-00013D-2C; Mon, 04 Jan 2016 21:37:05 -0500
+Received: by mail-lb0-x242.google.com with SMTP id ti8so18125789lbb.3;
+	Mon, 04 Jan 2016 18:37:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=MeHHff45RZO++32GnQR2+4XEjh9BKi4hTF+9dUFRbAk=;
-	b=DpWrXCLo4bEZHbWCyKEL8VbIrzFq8KqDGswfW3zCTWdC1lw4syRGyZxP0DP5vFDiTe
-	cA+MVbUNJyq7HGFUgw7f962fUHtUaEJ6/E8G8Jo5j5IhMsdq06sjGJB4p23VcxT1P7gh
-	8xwDqZmSrXXnRnaCO4HoHTLGGN4L8H2tZ3s4U3Ou+bli4T+lcAMdVKYVHjxacGMakcHp
-	mdLtyWUnjlJJLRZGcrZf4g9cJJkVf1ff/BgtCrjpMxrqWUQ48kdCaabnZSP+rSnXYafc
-	KI1sc8pYK/K/7dTwAoM/QyuSghIDjzkrbS2mC8VeWGLpRhQtgDRxQ/D+I1ShRaDXFTAk
-	cAJQ==
-X-Received: by 10.112.181.196 with SMTP id dy4mr15876643lbc.42.1451961420440; 
-	Mon, 04 Jan 2016 18:37:00 -0800 (PST)
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=WGaeWLVWcDsS892isfVmXb2zj1T4/KlYqSdil1vPVDM=;
+	b=RP1QEtnOfK/ycdXlJkpj83+kQ428IHcHPmZzXO+p/DnrNunf1/3Y973SewUUPHZJ7v
+	8X80MQW4zrJK420panHnVvfBsbDK2oD3nBoBx5oR6GB2bukjZ8Q+u63sZxMIBT1G9cYF
+	hcQjfe/ePE8BA1ogTV5tqHj6cmmFdGdTFkqJI5ku634kvYiRtJoLcwHAdcJLr4WqwTo6
+	dh3K/t6nn5izA747re0Uzpn2PPRU5sdi3D4/0VYbB3W2v0ih9/R5rv4VFZRQPg9CecmI
+	9EEhDqnaJ3Xj5n2G0jvD+iRYrEebfXsl/DvhoQLQHkmG9ww1l8JOHPrXBO7cnoDBhMqZ
+	FLSg==
+X-Received: by 10.112.146.67 with SMTP id ta3mr14953179lbb.98.1451961424326;
+	Mon, 04 Jan 2016 18:37:04 -0800 (PST)
 Received: from localhost.localdomain (ppp46-138-151-163.pppoe.spdop.ru.
 	[46.138.151.163]) by smtp.gmail.com with ESMTPSA id
-	d2sm16008201lbc.11.2016.01.04.18.36.59
+	d2sm16008201lbc.11.2016.01.04.18.37.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 04 Jan 2016 18:36:59 -0800 (PST)
+	Mon, 04 Jan 2016 18:37:03 -0800 (PST)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org
-Date: Tue,  5 Jan 2016 05:33:25 +0300
-Message-Id: <cover.1451960508.git.digetx@gmail.com>
+Date: Tue,  5 Jan 2016 05:33:26 +0300
+Message-Id: <32ced3aba243ebfac3f1db6e9f8bc820c2302cfa.1451960508.git.digetx@gmail.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <cover.1451960508.git.digetx@gmail.com>
+References: <cover.1451960508.git.digetx@gmail.com>
+In-Reply-To: <cover.1451960508.git.digetx@gmail.com>
+References: <cover.1451960508.git.digetx@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::241
+X-Received-From: 2a00:1450:4010:c04::242
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Subject: [Qemu-devel] [PATCH v8 0/4] PTimer fixes and ARM MPTimer conversion
+Subject: [Qemu-devel] [PATCH v8 1/4] hw/ptimer: Fix issues caused by the
+	adjusted timer limit value
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,60 +77,158 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7Pm/dmE9M5dH
+X-TUID: JcPEwOZBjZH4
 
-Changelog for ARM MPTimer QEMUTimer to ptimer conversion:
+Multiple issues here related to the timer with a adjusted .limit value:
 
-    V2: Fixed changing periodic timer counter value "on the fly". I added a
-        test to the gist to cover that issue.
+1) ptimer_get_count() returns incorrect counter value for the disabled
+timer after loading the counter with a small value, because adjusted limit
+value is used instead of the original.
 
-    V3: Fixed starting the timer with load = 0 and counter != 0, added tests
-        to the gist for this issue. Changed vmstate version for all VMSD's,
-        since loadvm doesn't check version of nested VMSD.
+For instance:
+    1) ptimer_stop(t)
+    2) ptimer_set_period(t, 1)
+    3) ptimer_set_limit(t, 0, 1)
+    4) ptimer_get_count(t) <-- would return 10000 instead of 0
 
-    V4: Fixed spurious IT bit set for the timer starting in the periodic mode
-        with counter = 0. Test added.
+2) ptimer_get_count() might return incorrect value for the timer running
+with a adjusted limit value.
 
-    V5: Code cleanup, now depends on ptimer_set_limit() fix.
+For instance:
+    1) ptimer_stop(t)
+    2) ptimer_set_period(t, 1)
+    3) ptimer_set_limit(t, 10, 1)
+    4) ptimer_run(t)
+    5) ptimer_get_count(t) <-- might return value > 10
 
-    V6: No code change, added test to check ptimer_get_count() with corrected
-        .limit value.
+3) Neither ptimer_set_period() nor ptimer_set_freq() are adjusting the
+limit value, so it is still possible to make timer timeout value
+arbitrary small.
 
-    V7: No change.
+For instance:
+    1) ptimer_set_period(t, 10000)
+    2) ptimer_set_limit(t, 1, 0)
+    3) ptimer_set_period(t, 1) <-- bypass limit correction
 
-    V8: No change.
+Fix all of the above issues by adjusting timer period instead of the limit.
+Do the adjust for periodic timer only.
 
-ARM MPTimer tests: https://gist.github.com/digetx/dbd46109503b1a91941a
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+---
+ hw/core/ptimer.c | 59 ++++++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 36 insertions(+), 23 deletions(-)
 
-
-Patch for ptimer is introduced since V5 of "ARM MPTimer conversion".
-
-Changelog for the "ptimer fixes" patch:
-
-    V5: Only fixed ptimer_set_limit() for the disabled timer.
-
-    V6: As was pointed by Peter Maydell, there are other issues beyond
-        ptimer_set_limit(), so V6 supposed to cover all those issues.
-
-    V7: Added accidentally removed !use_icount check.
-        Added missed "else" statement.
-
-    V8: Adjust period instead of the limit and do it for periodic timer only
-        (.limit adjusting bug). Added patch/fix for freq/period change and
-        ptimer_get_count() improvement.
-
-Dmitry Osipenko (4):
-  hw/ptimer: Fix issues caused by the adjusted timer limit value
-  hw/ptimer: Perform tick and counter wrap around if timer already
-    expired
-  hw/ptimer: Update .delta on period/freq change
-  arm_mptimer: Convert to use ptimer
-
- hw/core/ptimer.c               |  94 ++++++++++++++++++++++++-----------
- hw/timer/arm_mptimer.c         | 110 ++++++++++++++++++-----------------------
- include/hw/timer/arm_mptimer.h |   4 +-
- 3 files changed, 115 insertions(+), 93 deletions(-)
-
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index edf077c..035af97 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -34,20 +34,39 @@ static void ptimer_trigger(ptimer_state *s)
+ 
+ static void ptimer_reload(ptimer_state *s)
+ {
+-    if (s->delta == 0) {
++    uint32_t period_frac = s->period_frac;
++    uint64_t period = s->period;
++    uint64_t delta = s->delta;
++    uint64_t limit = s->limit;
++
++    if (delta == 0) {
+         ptimer_trigger(s);
+-        s->delta = s->limit;
++        delta = limit;
+     }
+-    if (s->delta == 0 || s->period == 0) {
++    if (delta == 0 || period == 0) {
+         fprintf(stderr, "Timer with period zero, disabling\n");
+         s->enabled = 0;
+         return;
+     }
+ 
++    /*
++     * Artificially limit timeout rate to something
++     * achievable under QEMU.  Otherwise, QEMU spends all
++     * its time generating timer interrupts, and there
++     * is no forward progress.
++     * About ten microseconds is the fastest that really works
++     * on the current generation of host machines.
++     */
++
++    if ((s->enabled == 1) && (limit * period < 10000)) {
++        period = 10000 / limit;
++        period_frac = 0;
++    }
++
+     s->last_event = s->next_event;
+-    s->next_event = s->last_event + s->delta * s->period;
+-    if (s->period_frac) {
+-        s->next_event += ((int64_t)s->period_frac * s->delta) >> 32;
++    s->next_event = s->last_event + delta * period;
++    if (period_frac) {
++        s->next_event += ((int64_t)period_frac * delta) >> 32;
+     }
+     timer_mod(s->timer, s->next_event);
+ }
+@@ -82,6 +101,8 @@ uint64_t ptimer_get_count(ptimer_state *s)
+             uint64_t div;
+             int clz1, clz2;
+             int shift;
++            uint32_t period_frac = s->period_frac;
++            uint64_t period = s->period;
+ 
+             /* We need to divide time by period, where time is stored in
+                rem (64-bit integer) and period is stored in period/period_frac
+@@ -93,8 +114,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
+                backwards.
+             */
+ 
++            if ((s->enabled == 1) && (s->limit * period < 10000)) {
++                period = 10000 / s->limit;
++                period_frac = 0;
++            }
++
+             rem = s->next_event - now;
+-            div = s->period;
++            div = period;
+ 
+             clz1 = clz64(rem);
+             clz2 = clz64(div);
+@@ -103,13 +129,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
+             rem <<= shift;
+             div <<= shift;
+             if (shift >= 32) {
+-                div |= ((uint64_t)s->period_frac << (shift - 32));
++                div |= ((uint64_t)period_frac << (shift - 32));
+             } else {
+                 if (shift != 0)
+-                    div |= (s->period_frac >> (32 - shift));
++                    div |= (period_frac >> (32 - shift));
+                 /* Look at remaining bits of period_frac and round div up if 
+                    necessary.  */
+-                if ((uint32_t)(s->period_frac << shift))
++                if ((uint32_t)(period_frac << shift))
+                     div += 1;
+             }
+             counter = rem / div;
+@@ -181,19 +207,6 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+    count = limit.  */
+ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
+ {
+-    /*
+-     * Artificially limit timeout rate to something
+-     * achievable under QEMU.  Otherwise, QEMU spends all
+-     * its time generating timer interrupts, and there
+-     * is no forward progress.
+-     * About ten microseconds is the fastest that really works
+-     * on the current generation of host machines.
+-     */
+-
+-    if (!use_icount && limit * s->period < 10000 && s->period) {
+-        limit = 10000 / s->period;
+-    }
+-
+     s->limit = limit;
+     if (reload)
+         s->delta = limit;
 -- 
 2.6.4
 

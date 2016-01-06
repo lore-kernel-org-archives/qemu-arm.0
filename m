@@ -1,66 +1,66 @@
-Received: by 10.182.158.201 with SMTP id ww9csp11779722obb;
-        Wed, 6 Jan 2016 05:38:41 -0800 (PST)
-X-Received: by 10.55.71.195 with SMTP id u186mr129598881qka.38.1452087521018;
-        Wed, 06 Jan 2016 05:38:41 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp11790440obb;
+        Wed, 6 Jan 2016 05:59:47 -0800 (PST)
+X-Received: by 10.140.43.199 with SMTP id e65mr128321383qga.102.1452088787494;
+        Wed, 06 Jan 2016 05:59:47 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q15si11634462qkh.128.2016.01.06.05.38.40
+        by mx.google.com with ESMTPS id v140si41273170qka.56.2016.01.06.05.59.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jan 2016 05:38:41 -0800 (PST)
+        Wed, 06 Jan 2016 05:59:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54255 helo=lists.gnu.org)
+Received: from localhost ([::1]:54355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aGoIS-00010A-KF
-	for alex.bennee@linaro.org; Wed, 06 Jan 2016 08:38:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44176)
+	id 1aGoct-0000eH-6U
+	for alex.bennee@linaro.org; Wed, 06 Jan 2016 08:59:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGoHv-0000II-2H
-	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:38:08 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGocO-0000Cf-1a
+	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:59:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGoHt-0005h7-TD
-	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:38:06 -0500
-Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:35261)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGocM-00031r-Rw
+	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:59:15 -0500
+Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38504)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aGoHt-0005gy-KH; Wed, 06 Jan 2016 08:38:05 -0500
-Received: by mail-wm0-x233.google.com with SMTP id f206so59768270wmf.0;
-	Wed, 06 Jan 2016 05:38:05 -0800 (PST)
+	id 1aGocM-00031n-Is; Wed, 06 Jan 2016 08:59:14 -0500
+Received: by mail-wm0-x230.google.com with SMTP id b14so76617940wmb.1;
+	Wed, 06 Jan 2016 05:59:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type:content-transfer-encoding;
-	bh=OhK5xPRJEZB4kxK707/hijuniCykl8NpKWTzHx6wVvE=;
-	b=e27p3HIWa9arkR1FjvbhXHQzNYipYtfpU6sPxBq5CBovmG0bRIWp+AZ54oVyQGoiNp
-	fIbIV3tY9vL6pttBDA8KgMUPAG9+X0D4zwNDtpPwJZucgDpRe1XvDX85D4spKXED2oUw
-	FxNBHV/zRGeGaYwqet6wTtreL2TvrsU0JEg5Ir9Xm4NAu3hK9gVzN3imDQdF/mqZK09f
-	g7k3rZQL+wjxZSF498fY+enM1lbGe8fimwM3huh14aNHhLo1XAXNDPQQl5/YCtLYmyXz
-	CT0hbWmfjl5wslIHaiDyKTpOrzwD4YW2aA0SMk4bT2Vvuf66Fkm3aslG8o1e9UYinWsZ
-	kZoQ==
+	bh=qUncrKLEGqgoJPyEKDyAtGyYTPtiYh0JQxYRAV3NZxI=;
+	b=D2+RRk18gy9ms0kJeic6PRo1bjTGPOyWUY8rGw/iwifdHr/yvHvzSxZPLH+mFpI+k0
+	rNw1BsYdIGTS9hdpHLl67tr3rtxvcloltAbxo0r3Wii+f+n95NpAbr4mnEBMTH3ug46q
+	FgNivtkuGpWFP1xi2uyr2QJtaX3NsLGJ+MxbKLj/nbKwm7EFxSfUuMdVfm2XrNI1yAJ2
+	idGPfccY2F73gwjmOx0EMtJvG3ae59/CrqbgtBeoXEugmxt5REPTUkTE/RV/v0ixsV+5
+	5NNXM+42L7B/LLZXXRP2N6t+T1cFkYF6ozqVi80MrQ8woTwevdAbtfGuYl6QpF9Ey+TL
+	S1Nw==
 MIME-Version: 1.0
-X-Received: by 10.194.204.166 with SMTP id kz6mr108830035wjc.174.1452087484902;
-	Wed, 06 Jan 2016 05:38:04 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Wed, 6 Jan 2016 05:38:04 -0800 (PST)
-In-Reply-To: <568D15DC.2020003@gmail.com>
+X-Received: by 10.194.112.130 with SMTP id iq2mr94690557wjb.102.1452088753964; 
+	Wed, 06 Jan 2016 05:59:13 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Wed, 6 Jan 2016 05:59:13 -0800 (PST)
+In-Reply-To: <568D12A7.3010304@gmail.com>
 References: <cover.1451960508.git.digetx@gmail.com>
-	<32ced3aba243ebfac3f1db6e9f8bc820c2302cfa.1451960508.git.digetx@gmail.com>
-	<20160106121535.GB4227@pcrost-box> <568D15DC.2020003@gmail.com>
-Date: Wed, 6 Jan 2016 05:38:04 -0800
-Message-ID: <CAPokK=qPrjScNfZ9Q3bw3W9SsVmkz6T+=pQV7Fo49oTNoKnY_A@mail.gmail.com>
+	<004073b3af0a56899f9a07e3f6b00167359322e6.1451960508.git.digetx@gmail.com>
+	<20160106121711.GC4227@pcrost-box> <568D12A7.3010304@gmail.com>
+Date: Wed, 6 Jan 2016 05:59:13 -0800
+Message-ID: <CAPokK=pSmKDdZuinYKiHur=b2hV8WFuN5AO+mB_jQByyQLSgGw@mail.gmail.com>
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::233
+X-Received-From: 2a00:1450:400c:c09::230
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v8 1/4] hw/ptimer: Fix issues caused by the
- adjusted timer limit value
+Subject: Re: [Qemu-devel] [PATCH v8 2/4] hw/ptimer: Perform tick and counter
+ wrap around if timer already expired
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -74,177 +74,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FAAfvNqF5R8N
+X-TUID: nGqXvEuDYnSL
 
-On Wed, Jan 6, 2016 at 5:25 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> 06.01.2016 15:15, Peter Crosthwaite =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+On Wed, Jan 6, 2016 at 5:12 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
+> 06.01.2016 15:17, Peter Crosthwaite =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
+>
+>> On Tue, Jan 05, 2016 at 05:33:27AM +0300, Dmitry Osipenko wrote:
+>>>
+>>> ptimer_get_count() might be called while QEMU timer already been expire=
+d.
+>>> In that case ptimer would return counter =3D 0, which might be undesira=
+ble
+>>> in case of polled timer. Do counter wrap around for periodic timer to
+>>> keep
+>>> it distributed.
+>>>
+>>> In addition, there is no reason to keep expired timer tick deferred, so
+>>> just perform the tick from ptimer_get_count().
+>>>
+>>> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+>>> ---
+>>>   hw/core/ptimer.c | 35 +++++++++++++++++++++++++++++------
+>>>   1 file changed, 29 insertions(+), 6 deletions(-)
 >>>
 >>> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
->>> index edf077c..035af97 100644
+>>> index 035af97..96a6c7a 100644
 >>> --- a/hw/core/ptimer.c
 >>> +++ b/hw/core/ptimer.c
->>> @@ -34,20 +34,39 @@ static void ptimer_trigger(ptimer_state *s)
+>>> @@ -85,15 +85,21 @@ static void ptimer_tick(void *opaque)
 >>>
->>>   static void ptimer_reload(ptimer_state *s)
+>>>   uint64_t ptimer_get_count(ptimer_state *s)
 >>>   {
->>> -    if (s->delta =3D=3D 0) {
->>> +    uint32_t period_frac =3D s->period_frac;
->>> +    uint64_t period =3D s->period;
->>> +    uint64_t delta =3D s->delta;
->>> +    uint64_t limit =3D s->limit;
->>> +
+>>> +    int enabled =3D s->enabled;
 >>
 >>
->> Localising these variables is out of scope of the change. I think you ca=
-n
->> just use s->foo and if you want to cleanup, it should be a separate
->> patch.
+>> Variable localisation not needed.
+>>
+>>>       int64_t now;
+>>> +    int64_t next;
+>>>       uint64_t counter;
+>>> +    int expired;
+>>> +    int oneshot;
+>>
+>>
+>> Variable defs can be localised to the if (enabled) (even though now
+>> in original code doesn't do that).
 >>
 >
-> Okay
+> Yeah, I just tried to keep original style here.
 >
->>> +    if (delta =3D=3D 0) {
->>>           ptimer_trigger(s);
->>> -        s->delta =3D s->limit;
->>> +        delta =3D limit;
->>>       }
->>> -    if (s->delta =3D=3D 0 || s->period =3D=3D 0) {
->>> +    if (delta =3D=3D 0 || period =3D=3D 0) {
->>>           fprintf(stderr, "Timer with period zero, disabling\n");
->>>           s->enabled =3D 0;
->>>           return;
->>>       }
 >>>
->>> +    /*
->>> +     * Artificially limit timeout rate to something
->>> +     * achievable under QEMU.  Otherwise, QEMU spends all
->>> +     * its time generating timer interrupts, and there
->>> +     * is no forward progress.
->>> +     * About ten microseconds is the fastest that really works
->>> +     * on the current generation of host machines.
->>> +     */
->>> +
->>> +    if ((s->enabled =3D=3D 1) && (limit * period < 10000)) {
->>> +        period =3D 10000 / limit;
->>> +        period_frac =3D 0;
->>> +    }
->>> +
+>>> -    if (s->enabled) {
+>>> +    if (enabled) {
+>>>           now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>> +        next =3D s->next_event;
+>>> +        expired =3D (now - next >=3D 0);
+>>> +        oneshot =3D (enabled =3D=3D 2);
+>>>           /* Figure out the current counter value.  */
 >>
 >>
->> I think it should be ok to just update s->period and s->period_frac ...
+>> This comment is now out of place.
 >>
 >
-> No, then it would be irreversibly lost. What if'd decide to change the li=
-mit
-> to some large value?
+> Okay, will fix it.
 >
-
-Ok makes sense.
-
 >
->>>       s->last_event =3D s->next_event;
->>> -    s->next_event =3D s->last_event + s->delta * s->period;
->>> -    if (s->period_frac) {
->>> -        s->next_event +=3D ((int64_t)s->period_frac * s->delta) >> 32;
->>> +    s->next_event =3D s->last_event + delta * period;
->>> +    if (period_frac) {
->>> +        s->next_event +=3D ((int64_t)period_frac * delta) >> 32;
->>>       }
->>>       timer_mod(s->timer, s->next_event);
->>>   }
->>> @@ -82,6 +101,8 @@ uint64_t ptimer_get_count(ptimer_state *s)
->>>               uint64_t div;
->>>               int clz1, clz2;
->>>               int shift;
->>> +            uint32_t period_frac =3D s->period_frac;
->>> +            uint64_t period =3D s->period;
->>>
->>>               /* We need to divide time by period, where time is stored
->>> in
->>>                  rem (64-bit integer) and period is stored in
->>> period/period_frac
->>> @@ -93,8 +114,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>>> -        if (now - s->next_event > 0
+>>> -            || s->period =3D=3D 0) {
+>>> -            /* Prevent timer underflowing if it should already have
+>>> +        if (s->period =3D=3D 0 || (expired && oneshot)) {
+>>> +            /* Prevent one-shot timer underflowing if it should alread=
+y
+>>> have
+>>>                  triggered.  */
+>>>               counter =3D 0;
+>>>           } else {
+>>> @@ -114,12 +120,12 @@ uint64_t ptimer_get_count(ptimer_state *s)
 >>>                  backwards.
 >>>               */
 >>>
->>> +            if ((s->enabled =3D=3D 1) && (s->limit * period < 10000)) =
+>>> -            if ((s->enabled =3D=3D 1) && (s->limit * period < 10000)) =
 {
->>> +                period =3D 10000 / s->limit;
->>> +                period_frac =3D 0;
->>> +            }
+>>> +            if (!oneshot && (s->limit * period < 10000)) {
+>>>                   period =3D 10000 / s->limit;
+>>>                   period_frac =3D 0;
+>>>               }
+>>>
+>>> -            rem =3D s->next_event - now;
+>>> +            rem =3D expired ? now - next : next - now;
+>>>               div =3D period;
+>>>
+>>>               clz1 =3D clz64(rem);
+>>> @@ -139,6 +145,23 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>>>                       div +=3D 1;
+>>>               }
+>>>               counter =3D rem / div;
 >>> +
+>>> +            if (expired) {
+>>> +                /* Wrap around periodic counter.  */
+>>> +                counter =3D s->delta =3D s->limit - counter % s->limit=
+;
+>>
+>>
+>> Why do you update the delta here?
+>>
+>
+> Because we would want to schedule next tick based on current wrapped arou=
+nd
+> counter value and not some arbitrary delta.
+>
 
-As this now needs to be kept, another note I had is it should probably
-go before the block comment as the comment relates specifically to the
-math below.
+So looking at ptimer_reload(), the new schedule is done relative to
+the VM clock of the when the tick was expected to hit, not the current
+time. But this new delta is going to be relative to the now time and
+then used to update the next tick which will happen relative to
+next_event. Unless you stop or scale the timer, I don't think you need
+to do delta manipulation?
+
+>> Also can you just get ptimer_reload to do the modulo math for you? If th=
+e
+>> timer is !oneshot and expired, then you call ptimer_reload anyway,
+>> which will update next_event. When the expired test returns false
+>> you can just reliably use the original logic involving now and next.
+>>
+>
+> Yes, that's what I changed in V9. Have you received it?
+>
+> https://lists.nongnu.org/archive/html/qemu-devel/2016-01/msg00272.html
+>
+
+Just had a look.
+
+V9 still has the modulo I think?:
+
++            if (expired && (counter !=3D 0)) {
++                /* Wrap around periodic counter.  */
++                counter =3D s->delta =3D s->limit - counter % s->limit;
++            }
 
 Regards,
 Peter
 
+>>> +            }
+>>> +        }
+>>> +
+>>> +        if (expired) {
+>>> +            if (oneshot) {
 >>
 >>
->> ... and then this (and the local variables) become obsolete. Can
->> get_count()
->> blindly use the period and period_frac as used by ptimer_reload?
->>
->>>               rem =3D s->next_event - now;
->>> -            div =3D s->period;
->>> +            div =3D period;
->>>
->>>               clz1 =3D clz64(rem);
->>>               clz2 =3D clz64(div);
->>> @@ -103,13 +129,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
->>>               rem <<=3D shift;
->>>               div <<=3D shift;
->>>               if (shift >=3D 32) {
->>> -                div |=3D ((uint64_t)s->period_frac << (shift - 32));
->>> +                div |=3D ((uint64_t)period_frac << (shift - 32));
->>>               } else {
->>>                   if (shift !=3D 0)
->>> -                    div |=3D (s->period_frac >> (32 - shift));
->>> +                    div |=3D (period_frac >> (32 - shift));
->>>                   /* Look at remaining bits of period_frac and round di=
-v
->>> up if
->>>                      necessary.  */
->>> -                if ((uint32_t)(s->period_frac << shift))
->>> +                if ((uint32_t)(period_frac << shift))
->>>                       div +=3D 1;
->>>               }
->>>               counter =3D rem / div;
->>> @@ -181,19 +207,6 @@ void ptimer_set_freq(ptimer_state *s, uint32_t fre=
-q)
->>>      count =3D limit.  */
->>>   void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
->>>   {
->>> -    /*
->>> -     * Artificially limit timeout rate to something
->>> -     * achievable under QEMU.  Otherwise, QEMU spends all
->>> -     * its time generating timer interrupts, and there
->>> -     * is no forward progress.
->>> -     * About ten microseconds is the fastest that really works
->>> -     * on the current generation of host machines.
->>> -     */
->>> -
->>> -    if (!use_icount && limit * s->period < 10000 && s->period) {
->>
->>
->> This original rate limiting code is gated on icount, so I think then
->> new way should be the same.
+>> This if-else has a lot of common structure with the one above. I think
+>> they could be merged.
 >>
 >
-> Shoot :) That's second time I'm missing it. Good catch!
+> That's a good suggestion, will do it in V10. Thanks.
 >
 >
 >> Regards,
 >> Peter
 >>
->>> -        limit =3D 10000 / s->period;
->>> -    }
->>> -
->>>       s->limit =3D limit;
->>>       if (reload)
->>>           s->delta =3D limit;
+>>> +                ptimer_tick(s);
+>>> +            } else {
+>>> +                /* Don't use ptimer_tick() for the periodic timer sinc=
+e
+>>> it
+>>> +                 * would reset the delta value.
+>>> +                 */
+>>> +                ptimer_trigger(s);
+>>> +                ptimer_reload(s);
+>>> +            }
+>>>           }
+>>>       } else {
+>>>           counter =3D s->delta;
 >>> --
 >>> 2.6.4
 >>>

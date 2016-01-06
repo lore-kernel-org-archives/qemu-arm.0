@@ -1,156 +1,257 @@
-Received: by 10.223.197.9 with SMTP id q9csp7466227wrf;
-        Thu, 19 Oct 2017 20:10:30 -0700 (PDT)
-X-Received: by 10.237.63.15 with SMTP id p15mr5214802qtf.155.1508469030773;
-        Thu, 19 Oct 2017 20:10:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508469030; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AofHNGuZ2HtyvKbdZpIz+vIGBp2x3PiHBSjpkvfUJhm5JY5jVF2d85UChxw1ot3zQO
-         TbNn7mR9GZFv8zfGwmcY4m49iPv6qG8/UJy8vSn9EI0QmsWwOFWgsnVp8CJhoCts+Ehr
-         Z5DyVdZZI/uJ8BDvyVd79RGQxnQl6Q34aLLu1Ty9nu6ntb1/YRjWFi5MnB53l82bfsae
-         i9jbuaBLiZ8BwzCRBzn1x+wc2B1NYrp6q5eU9HyQ5sMvVEwGgSa7Uy9C04gc4s62698O
-         AzPqLt0HJYQhyB4CtHErQjo9fU822RfpUjdUTeYfx+Ugil9VLhF6szpeIHuI/X62zVtb
-         RfHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=KXOD3BBT5lk8tzh+hXpQ66V9rqR3awIOl4nrVkEsTdM=;
-        b=N5+ghsV7LR9uXG6Ufn6LjouCDeClAOAl6H8iV2pj0IIjoFAipQYCxTNSYJ7uu+ICFL
-         P1t+Np1vooxWsJH3iB550CHcvsSLC1G8Zkr1edD/hd9ixvSaVbJFlWumqFYM8/hnbt/O
-         HPtBtiBd5feyRa/eU9zLpo2/S3xnqKz/GvBvuEVVxR40wk4x15slWLDY5kW6Y7uw0S5V
-         4bkzqjkIHzZVm2EOwhom+I5wJV6jCWFX40HgGqqApGFZKism9bMMEiN2/9/KMH9ELUky
-         gmOmuFkDSruaUDp/4BPlgI0kQU2749/ceE6QHM7g8Ix5Xs/fPcqSL2Faob2AXtSuy//d
-         sUPQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JH5Ih8iC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: by 10.182.158.201 with SMTP id ww9csp11737051obb;
+        Wed, 6 Jan 2016 04:15:58 -0800 (PST)
+X-Received: by 10.55.197.195 with SMTP id k64mr132880063qkl.25.1452082558726;
+        Wed, 06 Jan 2016 04:15:58 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d11si4909994qtb.463.2017.10.19.20.10.30
+        by mx.google.com with ESMTPS id g131si83137330qkb.102.2016.01.06.04.15.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 20:10:30 -0700 (PDT)
+        Wed, 06 Jan 2016 04:15:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JH5Ih8iC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51999 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53875 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1e5Nhc-0008TR-G5
-	for alex.bennee@linaro.org; Thu, 19 Oct 2017 23:10:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55580)
+	id 1aGn0Q-00032g-Bx
+	for alex.bennee@linaro.org; Wed, 06 Jan 2016 07:15:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e5NhR-0008Rc-2c
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 23:10:19 -0400
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGn0N-000303-Qh
+	for qemu-arm@nongnu.org; Wed, 06 Jan 2016 07:15:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e5NhQ-0006Du-7Z
-	for qemu-arm@nongnu.org; Thu, 19 Oct 2017 23:10:17 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:45494)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1e5NhK-00068B-0q; Thu, 19 Oct 2017 23:10:10 -0400
-Received: by mail-qt0-x241.google.com with SMTP id p1so16968564qtg.2;
-	Thu, 19 Oct 2017 20:10:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=KXOD3BBT5lk8tzh+hXpQ66V9rqR3awIOl4nrVkEsTdM=;
-	b=JH5Ih8iCY0Ur23dx/CNqNboIudQLsVsaXI8vn+KqSrqY0x3kfirRrDklghPZcxcUe2
-	c1jnUZRh9K2MORkcO50x/mZW2ayDQe5w8BCOB37ubUUjFZ0/3j37L06o+SkN/1Bpm0pW
-	657hgvfOc1a2skqm3V6s478Wpmi8CkWjEe8085KjAJ80JjRl071lUUw753kiG7UsjVPC
-	gG/520HlMT3JB3Iw3Y/+AZEC/uMe/g1bsPTqBGD8SSvqkCGhIvPkjbZejfiE8FW+7GVb
-	Dai1BoZ5ox7Bl6kGnzK7mYIcEVJiIJb+rb0VHTRcHwcjYwWT45gTC98fD3TSuDcNHXtw
-	8utw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=KXOD3BBT5lk8tzh+hXpQ66V9rqR3awIOl4nrVkEsTdM=;
-	b=sQ9Fq/GCH6mP5RUMjUDrBDgEz6+coGHwpATxxIapzSb8ZG2XDwXrO0IDiM3nSYGf21
-	NGmK1vkB4SIOXvSEhOugPkWOvD0Osd5rNJsdHJsUfDCgOXHjZpKzKsf3gLYn/o4U9JLs
-	1TOGaZUN83+ehkwtoX5/LsLHY9wEMu3CiIxsGGaEzkvtuXoule0geZYdluOZW+Xbd1jZ
-	s5FpCvg/4ecFjrKkuV1GCxKOikSVUvT43khQAI3NreFqUdvbKVNY6bPV+BtOiuEIOyit
-	In73bAdBV5rGHOPPi0Jcn81iyVpKoOQzW9vSoCCTNoQdSt2p/HnVSLtwzOAzHH+EOycY
-	alUQ==
-X-Gm-Message-State: AMCzsaVXVs14GKXXXreDN30HrFGK/G8+saNrxih9dvCnH4qMQ/uJnaid
-	rCp1vRK1Kig/LfFm0OEKRR8=
-X-Google-Smtp-Source: ABhQp+QwGYd1Oe4OGAT74dHvcW9d2G/0oIpvBNeSywPW12WG11RJN9G8fV93Yye57rhiINcBdps5xQ==
-X-Received: by 10.200.47.5 with SMTP id j5mr5420009qta.133.1508469009486;
-	Thu, 19 Oct 2017 20:10:09 -0700 (PDT)
-Received: from [192.168.1.240] ([181.93.89.178])
-	by smtp.gmail.com with ESMTPSA id
-	m28sm10771698qtb.55.2017.10.19.20.10.05
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 19 Oct 2017 20:10:08 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goate?=
-	=?UTF-8?Q?r?= <clg@kaod.org>
-References: <20171019151249.13663-1-clg@kaod.org>
-	<20171019151249.13663-2-clg@kaod.org>
-	<CAFEAcA-6gXF9skgYRTke5-0Ds_SLceAgX-Dz6WyyuiYJSz7afw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <114c397f-7540-15ca-a44d-0b3a4cdcc238@amsat.org>
-Date: Fri, 20 Oct 2017 00:10:02 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGn0M-0002pP-Hb
+	for qemu-arm@nongnu.org; Wed, 06 Jan 2016 07:15:55 -0500
+Received: from mail-pa0-x229.google.com ([2607:f8b0:400e:c03::229]:33087)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aGn0F-0002f1-IA; Wed, 06 Jan 2016 07:15:47 -0500
+Received: by mail-pa0-x229.google.com with SMTP id cy9so232908605pac.0;
+	Wed, 06 Jan 2016 04:15:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:date:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=BXHwzF+bIXgZkBsTS8kC/lRnLfcss59ra6f/nXamoZ0=;
+	b=c0oyBzPTvOkB8mbjzhjZMrrk1SX2ufJtjCf7zCZHxSHnBqC6hEUQp+pqstrzRi7luq
+	C6GKccjarYa/lcFqpDDr9W9fGXEfaxggwZloTlHkzb67p1hPnFG1s9mk6bF+61kZTAs9
+	pkhkSBg8ozJQmFuUlAGSLSCeUAQ5sOtG6a+RGx9Aics+y7v/hNvIiZzd1h04pRnQk7DA
+	+dgLqn5vcri5L9oivCsjaY7Ze9V0jKzs9Q7sOevzu665j8MjdHecM7OkPc6ZgIkw8Pnm
+	AXciD0zUPTNpSXmOF6cGeg0xt834e5hIckMXK94wO2NwwmpZme6yHbcVO3znjQRlqM1o
+	V8ww==
+X-Received: by 10.66.55.72 with SMTP id q8mr141363320pap.136.1452082546782;
+	Wed, 06 Jan 2016 04:15:46 -0800 (PST)
+Received: from pcrost-box (pa49-197-174-152.pa.qld.optusnet.com.au.
+	[49.197.174.152]) by smtp.gmail.com with ESMTPSA id
+	sm8sm140462474pac.43.2016.01.06.04.15.42
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 06 Jan 2016 04:15:45 -0800 (PST)
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Date: Wed, 6 Jan 2016 04:15:35 -0800
+To: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <20160106121535.GB4227@pcrost-box>
+References: <cover.1451960508.git.digetx@gmail.com>
+	<32ced3aba243ebfac3f1db6e9f8bc820c2302cfa.1451960508.git.digetx@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-6gXF9skgYRTke5-0Ds_SLceAgX-Dz6WyyuiYJSz7afw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [PATCH v5 1/8] aspeed: use a ROM memory region to
- catch invalid writes
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <32ced3aba243ebfac3f1db6e9f8bc820c2302cfa.1451960508.git.digetx@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c03::229
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v8 1/4] hw/ptimer: Fix issues caused by the
+ adjusted timer limit value
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3avXxF/Mlqpb
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Vpa+uxpE6PMi
 
-On 10/19/2017 12:44 PM, Peter Maydell wrote:
-> On 19 October 2017 at 16:12, Cédric Le Goater <clg@kaod.org> wrote:
->> Some legacy firmwares access unimplemented addresses on the Aspeed SoC
->> (old U-Boot code using variables in the bss when it shouldn't do).
->> Let's use a ROM memory region to catch the invalid writes and support
->> new boards without using the 'ignore_memory_transaction_failures'
->> flag.
->>
->> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->> ---
->>
->>  Changes since v4 :
->>
->>  - use a ROM memory region
+On Tue, Jan 05, 2016 at 05:33:26AM +0300, Dmitry Osipenko wrote:
+> Multiple issues here related to the timer with a adjusted .limit value:
 > 
-> Probably worth mentioning in the commit message that this
-> is a migration compatibility break for these boards.
+> 1) ptimer_get_count() returns incorrect counter value for the disabled
+> timer after loading the counter with a small value, because adjusted limit
+> value is used instead of the original.
+> 
+> For instance:
+>     1) ptimer_stop(t)
+>     2) ptimer_set_period(t, 1)
+>     3) ptimer_set_limit(t, 0, 1)
+>     4) ptimer_get_count(t) <-- would return 10000 instead of 0
+> 
+> 2) ptimer_get_count() might return incorrect value for the timer running
+> with a adjusted limit value.
+> 
+> For instance:
+>     1) ptimer_stop(t)
+>     2) ptimer_set_period(t, 1)
+>     3) ptimer_set_limit(t, 10, 1)
+>     4) ptimer_run(t)
+>     5) ptimer_get_count(t) <-- might return value > 10
+> 
+> 3) Neither ptimer_set_period() nor ptimer_set_freq() are adjusting the
+> limit value, so it is still possible to make timer timeout value
+> arbitrary small.
+> 
+> For instance:
+>     1) ptimer_set_period(t, 10000)
+>     2) ptimer_set_limit(t, 1, 0)
+>     3) ptimer_set_period(t, 1) <-- bypass limit correction
+> 
+> Fix all of the above issues by adjusting timer period instead of the limit.
+> Do the adjust for periodic timer only.
+> 
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+> ---
+>  hw/core/ptimer.c | 59 ++++++++++++++++++++++++++++++++++----------------------
+>  1 file changed, 36 insertions(+), 23 deletions(-)
+> 
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index edf077c..035af97 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -34,20 +34,39 @@ static void ptimer_trigger(ptimer_state *s)
+>  
+>  static void ptimer_reload(ptimer_state *s)
+>  {
+> -    if (s->delta == 0) {
+> +    uint32_t period_frac = s->period_frac;
+> +    uint64_t period = s->period;
+> +    uint64_t delta = s->delta;
+> +    uint64_t limit = s->limit;
+> +
 
-What about the eeprom_buf from patch 6 "Add EEPROM I2C devices"?
+Localising these variables is out of scope of the change. I think you can
+just use s->foo and if you want to cleanup, it should be a separate
+patch.
 
-My understanding is a migrated board would resume with a zeroized
-eeprom, is this the expected behaviour?
+> +    if (delta == 0) {
+>          ptimer_trigger(s);
+> -        s->delta = s->limit;
+> +        delta = limit;
+>      }
+> -    if (s->delta == 0 || s->period == 0) {
+> +    if (delta == 0 || period == 0) {
+>          fprintf(stderr, "Timer with period zero, disabling\n");
+>          s->enabled = 0;
+>          return;
+>      }
+>  
+> +    /*
+> +     * Artificially limit timeout rate to something
+> +     * achievable under QEMU.  Otherwise, QEMU spends all
+> +     * its time generating timer interrupts, and there
+> +     * is no forward progress.
+> +     * About ten microseconds is the fastest that really works
+> +     * on the current generation of host machines.
+> +     */
+> +
+> +    if ((s->enabled == 1) && (limit * period < 10000)) {
+> +        period = 10000 / limit;
+> +        period_frac = 0;
+> +    }
+> +
+
+I think it should be ok to just update s->period and s->period_frac ...
+
+>      s->last_event = s->next_event;
+> -    s->next_event = s->last_event + s->delta * s->period;
+> -    if (s->period_frac) {
+> -        s->next_event += ((int64_t)s->period_frac * s->delta) >> 32;
+> +    s->next_event = s->last_event + delta * period;
+> +    if (period_frac) {
+> +        s->next_event += ((int64_t)period_frac * delta) >> 32;
+>      }
+>      timer_mod(s->timer, s->next_event);
+>  }
+> @@ -82,6 +101,8 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>              uint64_t div;
+>              int clz1, clz2;
+>              int shift;
+> +            uint32_t period_frac = s->period_frac;
+> +            uint64_t period = s->period;
+>  
+>              /* We need to divide time by period, where time is stored in
+>                 rem (64-bit integer) and period is stored in period/period_frac
+> @@ -93,8 +114,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>                 backwards.
+>              */
+>  
+> +            if ((s->enabled == 1) && (s->limit * period < 10000)) {
+> +                period = 10000 / s->limit;
+> +                period_frac = 0;
+> +            }
+> +
+
+... and then this (and the local variables) become obsolete. Can get_count()
+blindly use the period and period_frac as used by ptimer_reload?
+
+>              rem = s->next_event - now;
+> -            div = s->period;
+> +            div = period;
+>  
+>              clz1 = clz64(rem);
+>              clz2 = clz64(div);
+> @@ -103,13 +129,13 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>              rem <<= shift;
+>              div <<= shift;
+>              if (shift >= 32) {
+> -                div |= ((uint64_t)s->period_frac << (shift - 32));
+> +                div |= ((uint64_t)period_frac << (shift - 32));
+>              } else {
+>                  if (shift != 0)
+> -                    div |= (s->period_frac >> (32 - shift));
+> +                    div |= (period_frac >> (32 - shift));
+>                  /* Look at remaining bits of period_frac and round div up if 
+>                     necessary.  */
+> -                if ((uint32_t)(s->period_frac << shift))
+> +                if ((uint32_t)(period_frac << shift))
+>                      div += 1;
+>              }
+>              counter = rem / div;
+> @@ -181,19 +207,6 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+>     count = limit.  */
+>  void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
+>  {
+> -    /*
+> -     * Artificially limit timeout rate to something
+> -     * achievable under QEMU.  Otherwise, QEMU spends all
+> -     * its time generating timer interrupts, and there
+> -     * is no forward progress.
+> -     * About ten microseconds is the fastest that really works
+> -     * on the current generation of host machines.
+> -     */
+> -
+> -    if (!use_icount && limit * s->period < 10000 && s->period) {
+
+This original rate limiting code is gated on icount, so I think then
+new way should be the same.
 
 Regards,
+Peter
 
-Phil.
+> -        limit = 10000 / s->period;
+> -    }
+> -
+>      s->limit = limit;
+>      if (reload)
+>          s->delta = limit;
+> -- 
+> 2.6.4
+> 

@@ -1,186 +1,151 @@
-Received: by 10.182.158.201 with SMTP id ww9csp451415obb;
-        Thu, 7 Jan 2016 00:50:22 -0800 (PST)
-X-Received: by 10.194.192.198 with SMTP id hi6mr113532365wjc.141.1452156622793;
-        Thu, 07 Jan 2016 00:50:22 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp659276obb;
+        Thu, 7 Jan 2016 07:50:25 -0800 (PST)
+X-Received: by 10.194.116.170 with SMTP id jx10mr112593668wjb.166.1452181823129;
+        Thu, 07 Jan 2016 07:50:23 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
-        by mx.google.com with ESMTPS id i2si62019599wja.89.2016.01.07.00.50.22
+Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
+        by mx.google.com with ESMTPS id r186si20637547wmb.16.2016.01.07.07.50.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Jan 2016 00:50:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
+        Thu, 07 Jan 2016 07:50:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x234.google.com with SMTP id f206so88644875wmf.0
-        for <alex.bennee@linaro.org>; Thu, 07 Jan 2016 00:50:22 -0800 (PST)
+Received: by mail-wm0-x22d.google.com with SMTP id b14so130017054wmb.1
+        for <alex.bennee@linaro.org>; Thu, 07 Jan 2016 07:50:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=ydqgVhJ536YyzWTuYHJWQPTwkgRG3qct+T0sPuPcBm8=;
-        b=gAztjEgAiWGSBTFLHZDRGtXT2LAaEpjX6UC6EvVpRWFJGrqcQy0Ypr04Ia3nySxSaS
-         IhGvDG8Gi2yfczbbAJOgwJjqvozB7NlQPhVZbZdibmAHwNgS/0XAyDGHHNqcA8l4jbbx
-         IBUz/3mMnURtBn1Rgg0nNkMSiKI+UXrNnrnvs=
+        h=from:to:cc:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=+ntWsoWs3/JjY+4sMx+6Wr6dmy+F+wB/euWE+mLsTmM=;
+        b=R160BgmxLNW1tqbW4aAnfa6tZwLrq6mpe1KVLJDHCkUfz0nOBvxiFlj7uUacf51uVj
+         f/6dF9Cm3GFPiSWkVGxD96kNwTEQ2oAUSd6SU+jNMwzqlp+822BM7Rylf3yKRzk019QS
+         DPotBgtGS8/2FiiyVG2/ax4i3AD60NF/ZqqVQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=ydqgVhJ536YyzWTuYHJWQPTwkgRG3qct+T0sPuPcBm8=;
-        b=ljD6RhQGo1d5Xrax1zPz/9gpShDQ4FeuID/UGPlWdb5B3ZNewHKv4dOe6cKHcdCfmM
-         cV/uGWvqjLJ9wNvU9J2ywEtvpG1HBbLZGYtw2jpuxox3IW0pmG1d6LUBMf+ffxEvomOa
-         Z+ZpCTPZAUAqt3qbpd8EG3GzwvCJ3A99l7u7zO3OrBoQXqrD3P+vqrt04aGbT6nYhvGe
-         c81lGCK5wjXTygxi/OwRH70HyOUdIRfVw8lVKJIA5gF6cVXlt0AeaNSbMv8h6Vc9q0m9
-         sJN3ApGuup0T2nKj2TSu0pQ9zwQF1Zvmr/xWgYWtPMvgofzM0jfUeHimbI5zE8jjSW4j
-         4CiA==
-X-Gm-Message-State: ALoCoQmFOQkVtg5s173RBN9DDLzrBz2uaWDHyLWg93vj6MrHXuXeg4HI09/9fKxkb5GOFq8JKQJqcAcXCKUm4+8c1FLeE7+pfg==
-X-Received: by 10.28.45.10 with SMTP id t10mr16111975wmt.12.1452156622487;
-        Thu, 07 Jan 2016 00:50:22 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-type:content-transfer-encoding;
+        bh=+ntWsoWs3/JjY+4sMx+6Wr6dmy+F+wB/euWE+mLsTmM=;
+        b=huE728mmkrQTZpQq4j1XBPCQtQ39vl13nMbXDSwvk5gVhuaBoUbohkmj/w9AkuYZvD
+         RVyMO+DbaOYV9j1yM3zz/DnVQ/2SAP/iZ90CZASOYF9MU5yVIKCkVRAEP3HXUFwl9+xv
+         22BKp7XVXtZKpF5fAaVPVewNKQIrOZ9Cg6l/iehZH8vuBpBoweaVTlLs7+dtm6j0cLDy
+         nbStB7FV/FSagueaCvmIq5nSdL8s/xAXSLF3hIj/pRhMCmAZ+Q3fjywbodLhxkErlwbk
+         Xp5XGCacRINbncUWnKHCSe1h+UtB+4mSsEDidfa1ICS4jiHkn+IgMXMpbLA8RsmcpAk5
+         999A==
+X-Gm-Message-State: ALoCoQkX9wApymBGy62WXyESvouGkRFJODeWwv7EO/JrbVTmHBIVKSgu/nCf6RFDErd127lJGk5giK1+YdeHoToT2+ieDnmEGA==
+X-Received: by 10.194.6.37 with SMTP id x5mr104395207wjx.178.1452181822841;
+        Thu, 07 Jan 2016 07:50:22 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.googlemail.com with ESMTPSA id q4sm100231882wja.6.2016.01.07.00.50.20
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Thu, 07 Jan 2016 00:50:21 -0800 (PST)
-Subject: Re: [PATCH v2 4/7] device_tree: qemu_fdt_getprop converted to use the
- error API
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-References: <1452093205-30167-1-git-send-email-eric.auger@linaro.org>
- <1452093205-30167-5-git-send-email-eric.auger@linaro.org>
- <CAPokK=qiRjZa4SsTHhT-jfv3CxS7uvKJBgJPDjScwp72ASAHsg@mail.gmail.com>
-Cc: eric.auger@st.com,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, thuth@redhat.com,
- Patch Tracking <patches@linaro.org>,
- Christoffer Dall <christoffer.dall@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, b.reynal@virtualopensystems.com,
- suravee.suthikulpanit@amd.com, thomas.lendacky@amd.com
+Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.gmail.com with ESMTPSA id e198sm14267576wmd.0.2016.01.07.07.50.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 07 Jan 2016 07:50:21 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
-Message-ID: <568E26C3.1070602@linaro.org>
-Date: Thu, 7 Jan 2016 09:50:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.4.0
+To: eric.auger@st.com,
+	eric.auger@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	david@gibson.dropbear.id.au,
+	alex.williamson@redhat.com
+Cc: alex.bennee@linaro.org,
+	thuth@redhat.com,
+	crosthwaitepeter@gmail.com,
+	patches@linaro.org,
+	christoffer.dall@linaro.org,
+	pbonzini@redhat.com,
+	b.reynal@virtualopensystems.com,
+	suravee.suthikulpanit@amd.com,
+	thomas.lendacky@amd.com
+Subject: [PATCH v3 0/8] AMD XGBE KVM platform passthrough
+Date: Thu,  7 Jan 2016 15:50:07 +0000
+Message-Id: <1452181815-1948-1-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-In-Reply-To: <CAPokK=qiRjZa4SsTHhT-jfv3CxS7uvKJBgJPDjScwp72ASAHsg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-TUID: je0x5TuPW/Je
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 5/F237+GkSQq
 
-Hi Peter,
-On 01/07/2016 01:20 AM, Peter Crosthwaite wrote:
-> On Wed, Jan 6, 2016 at 7:13 AM, Eric Auger <eric.auger@linaro.org> wrote:
->> Current qemu_fdt_getprop exits if the property is not found. It is
->> sometimes needed to read an optional property, in which case we do
->> not wish to exit but simply returns a null value.
->>
->> This patch converts qemu_fdt_getprop to accept an Error **, and existing
->> users are converted to pass &error_fatal. This preserves the existing
->> behaviour. Then to use the API with your optional semantic a null
->> parameter can be conveyed.
->>
->> Signed-off-by: Eric Auger <eric.auger@linaro.org>
->>
->> ---
->>
->> v1 -> v2:
->> - add a doc comment in the header file
->>
->> RFC -> v1:
->> - get rid of qemu_fdt_getprop_optional and implement Peter's suggestion
->>   that consists in using the error API
->>
->> Signed-off-by: Eric Auger <eric.auger@linaro.org>
->> ---
->>  device_tree.c                | 11 ++++++-----
->>  include/sysemu/device_tree.h | 15 ++++++++++++++-
->>  2 files changed, 20 insertions(+), 6 deletions(-)
->>
->> diff --git a/device_tree.c b/device_tree.c
->> index 8441e01..6ecc9da 100644
->> --- a/device_tree.c
->> +++ b/device_tree.c
->> @@ -321,18 +321,18 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
->>  }
->>
->>  const void *qemu_fdt_getprop(void *fdt, const char *node_path,
->> -                             const char *property, int *lenp)
->> +                             const char *property, int *lenp, Error **errp)
->>  {
->>      int len;
->>      const void *r;
->> +
->>      if (!lenp) {
->>          lenp = &len;
->>      }
->>      r = fdt_getprop(fdt, findnode_nofail(fdt, node_path), property, lenp);
->>      if (!r) {
->> -        error_report("%s: Couldn't get %s/%s: %s", __func__,
->> -                     node_path, property, fdt_strerror(*lenp));
->> -        exit(1);
->> +        error_setg(errp, "%s: Couldn't get %s/%s: %s", __func__,
->> +                  node_path, property, fdt_strerror(*lenp));
->>      }
->>      return r;
->>  }
->> @@ -341,7 +341,8 @@ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
->>                                 const char *property)
->>  {
->>      int len;
->> -    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len);
->> +    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len,
->> +                                         &error_fatal);
-> 
-> The _cell variant is now inconsistent with the regular _getprop. Can
-> we convert them both together and fix the clients to error_fatal?
-> (there are only 4 of them).
+This series allows to set up AMD XGBE passthrough. This was tested on AMD
+Seattle.
 
-Yes sure
+The first upstreamed device supporting KVM platform passthrough was the
+Calxeda Midway XGMAC. Compared to this latter, the XGBE XGMAC exposes a
+much more complex device tree node.
+
+- First There are 2 device tree node formats:
+one where XGBE and PHY are described in separate nodes and another one
+that combines both description in a single node (only supported by 4.2
+onwards kernels). Only the combined description is supported for passthrough,
+meaning the host must be >= 4.2 and must feature a device tree with a combined
+description. The guest will also be exposed with a combined description,
+meaning only >= 4.2 guest are supported. It is not planned to support
+separate node representation since assignment of the PHY is less
+straigtforward.
+
+- the XGMAC/PHY node depends on 2 clock nodes (DMA and PTP).
+The code checks those clocks are fixed to make sure they cannot be
+switched off at some point after the native driver gets unbound.
+
+- there are many property values to populate on guest side. Most of them
+cannot be hardcoded. That series implements host device tree blob extraction
+from the host /proc/device-tree (inspired from dtc implementation)
+and retrieve host property values to populate guest dtb.
+
+- the case where the host uses ACPI is not yet covered since there is
+  no usable ACPI description for this HW yet.
+
+The patches can be found at
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v3
+
+Previous versions can be found at
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v<n>
+
+HISTORY:
+v2 -> v3:
+- added "device_tree: qemu_fdt_getprop_cell converted to use the error API"
+v1 -> v2:
+- take into account Peter's comments:
+  - add CONFIG_LINUX protection
+  - improve error handling and messages
+  - no fixed size buffer anymore
+  - fix read_fstree error handling
+- use /proc/device-tree symlink instead of /sys/firmware/devicetree/base
+- added hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
+- see individual commits for full details
+
+RFC -> v1:
+- no dependency anymore on dtc binary: load_device_tree_from_sysfs is
+  self-contained and implements something similar to dtc read_fstree.
+- take into account Alex' comments
+- remove qemu_fdt_getprop_optional and use error API instead
 
 Best Regards
 
 Eric
-> 
-> This would become the standard error_propagate pattern.
-> 
->>      if (len != 4) {
->>          error_report("%s: %s/%s not 4 bytes long (not a cell?)",
->>                       __func__, node_path, property);
-> 
-> And this would also convert to error_setg.
-> 
-> Regards,
-> Peter
-> 
->> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
->> index 269cb1c..4d7cbb9 100644
->> --- a/include/sysemu/device_tree.h
->> +++ b/include/sysemu/device_tree.h
->> @@ -45,8 +45,21 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
->>  int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
->>                               const char *property,
->>                               const char *target_node_path);
->> +/**
->> + * qemu_fdt_getprop: retrieve the value of a given property
->> + * @fdt: pointer to the device tree blob
->> + * @node_path: node path
->> + * @property: name of the property to find
->> + * @lenp: fdt error if any or length of the property on success
->> + * @errp: handle to an error object
->> + *
->> + * returns a pointer to the property on success and NULL on failure
->> + * in case errp is set to &error_fatal, the function auto-asserts
->> + * on error (legacy behavior)
->> + */
->>  const void *qemu_fdt_getprop(void *fdt, const char *node_path,
->> -                             const char *property, int *lenp);
->> +                             const char *property, int *lenp,
->> +                             Error **errp);
->>  uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
->>                                 const char *property);
->>  uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
->> --
->> 1.9.1
->>
+
+Eric Auger (8):
+  hw/vfio/platform: amd-xgbe device
+  device_tree: introduce load_device_tree_from_sysfs
+  device_tree: introduce qemu_fdt_node_path
+  device_tree: qemu_fdt_getprop converted to use the error API
+  device_tree: qemu_fdt_getprop_cell converted to use the error API
+  hw/arm/sysbus-fdt: helpers for clock node generation
+  hw/arm/sysbus-fdt: enable amd-xgbe dynamic instantiation
+  hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
+
+ device_tree.c                   | 165 ++++++++++++++++++++--
+ hw/arm/boot.c                   |   6 +-
+ hw/arm/sysbus-fdt.c             | 306 ++++++++++++++++++++++++++++++++++++++--
+ hw/arm/vexpress.c               |   6 +-
+ hw/vfio/Makefile.objs           |   1 +
+ hw/vfio/amd-xgbe.c              |  55 ++++++++
+ include/hw/vfio/vfio-amd-xgbe.h |  51 +++++++
+ include/sysemu/device_tree.h    |  48 ++++++-
+ 8 files changed, 612 insertions(+), 26 deletions(-)
+ create mode 100644 hw/vfio/amd-xgbe.c
+ create mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+
+-- 
+1.9.1

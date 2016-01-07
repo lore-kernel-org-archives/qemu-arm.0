@@ -1,45 +1,45 @@
-Received: by 10.182.158.201 with SMTP id ww9csp659367obb;
-        Thu, 7 Jan 2016 07:50:34 -0800 (PST)
-X-Received: by 10.194.9.42 with SMTP id w10mr75704039wja.159.1452181830328;
-        Thu, 07 Jan 2016 07:50:30 -0800 (PST)
+Received: by 10.182.158.201 with SMTP id ww9csp659389obb;
+        Thu, 7 Jan 2016 07:50:37 -0800 (PST)
+X-Received: by 10.194.82.36 with SMTP id f4mr11304326wjy.87.1452181832616;
+        Thu, 07 Jan 2016 07:50:32 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
-        by mx.google.com with ESMTPS id n10si12820729wmd.64.2016.01.07.07.50.30
+Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
+        by mx.google.com with ESMTPS id n5si19525253wma.116.2016.01.07.07.50.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Jan 2016 07:50:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
+        Thu, 07 Jan 2016 07:50:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x232.google.com with SMTP id l65so102299987wmf.1
-        for <alex.bennee@linaro.org>; Thu, 07 Jan 2016 07:50:30 -0800 (PST)
+Received: by mail-wm0-x22d.google.com with SMTP id f206so102500230wmf.0
+        for <alex.bennee@linaro.org>; Thu, 07 Jan 2016 07:50:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=kV6N27qiuswlag2H1s2evzjNV+nHFfWWVrGZ4zJiJ3s=;
-        b=Mu5PdS9fFfDMireLgbSS1zrMoHov9253DoSIJHPMX/2VGocJau62h+Gb0+tPJM7Au0
-         7IpHvg8Dg/PzsatfcvWTTAZ5Fv9KQwVgbngGoQ2/+TxMClGsiEcIzL+GDzpe3EF+vjQt
-         u6guUUTtuP4eQfPxgyxAGVo9J8rjy3lvk+P1k=
+        bh=shZPHsvOQormtinDO9b78KhUZdxB/4UyawV7i+/Evoc=;
+        b=JrPs8DmxjO+/nWJnHScyXAMFgRb9AyHOS06WXXPJH4gplpnzl+5USoPYKxr17egqyJ
+         qtv3JWxeXr55+GghsFuRuv71lTi7kj8hsk54VhdIVj+a3LaGwNkSC2WR1JZW3kjOQTXj
+         B0gHDOk18B6EZwPBTxpdZFIpLraEMYSTvszIg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=kV6N27qiuswlag2H1s2evzjNV+nHFfWWVrGZ4zJiJ3s=;
-        b=eRDmj0r8YrmXdgJG9BqhNXuP2ndXPf5nAKteT+OoUWs5ihp5pv3KLUWEPU06RtWbwa
-         48b6Vozo6anXxJzZwV3yy8VPFiiDsXoSqXdDcuI76t/gMwWDf396tiVhKD3mkIXksNdD
-         iqY9KjQMYObyRzwrkZRJEF7dlCUDDhpiYHVx8Sifc6gpUaA387sVH4Nt424muTzKLXt3
-         uLq85gpyUysLpou6ZvIdsIl2dspzfAT6/edXdFvg2cQZWxuUsJNqBKp8MmsxE1Myx7aI
-         OLBDc+o+Psx9QD6GbB1t8axw/4nPNl4q7mzOfLw206IX5zAeRFrzjzlwGmy4YCL2y96I
-         ++FA==
-X-Gm-Message-State: ALoCoQmSRIS3/X4iXedYVU5q29T15JuMglSIlTidmZK9oLwZI3brnjTXI/6MYkJv47By59buBiXqzCOuL4vy+TSH+upz6SEomQ==
-X-Received: by 10.28.73.135 with SMTP id w129mr18628768wma.55.1452181830002;
-        Thu, 07 Jan 2016 07:50:30 -0800 (PST)
+        bh=shZPHsvOQormtinDO9b78KhUZdxB/4UyawV7i+/Evoc=;
+        b=Yl62G9KvEhd11CPujcvSESPFcD7Wi+qyjQg9QHwLMSd/EZ2S4mSfUtiwISyeNXRveM
+         B3rMfaPa2JtaA5Yqen+9KvELOAxjo9EuoFbI1AjMuzsP7GiF911YFgR8pflSRapxEf71
+         TQAddR6NPxRoCSxDbxh2nQ+hS3zPJE9kNr73BaVJLqLSPo1r/TrPLIXpSr2wXt/QlhxX
+         pkVCR90NF43TSCUiE+urHjljuaH6RxFwRBNgPeZtP2IjUnUppqjfn6kGMrw7+b0hyR6F
+         cEDfcvREmC2+LITrrsqOYjWLvRg27KCAdbAJDXqvUQmeRNZA86Dko/ZfUI7Ks8VrcD77
+         LQhQ==
+X-Gm-Message-State: ALoCoQnBNISlBsuZb9C712ACkhL//oMy+o3CguRJuRAtsflhCnJoH8Rjkvfzh43+/qJIH944SHIMo6VPD6N3b5MyMqaKqoXtSA==
+X-Received: by 10.194.93.102 with SMTP id ct6mr102733058wjb.157.1452181832338;
+        Thu, 07 Jan 2016 07:50:32 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
 Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.gmail.com with ESMTPSA id e198sm14267576wmd.0.2016.01.07.07.50.27
+        by smtp.gmail.com with ESMTPSA id e198sm14267576wmd.0.2016.01.07.07.50.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Jan 2016 07:50:28 -0800 (PST)
+        Thu, 07 Jan 2016 07:50:30 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com,
 	eric.auger@linaro.org,
@@ -57,106 +57,103 @@ Cc: alex.bennee@linaro.org,
 	b.reynal@virtualopensystems.com,
 	suravee.suthikulpanit@amd.com,
 	thomas.lendacky@amd.com
-Subject: [PATCH v3 3/8] device_tree: introduce qemu_fdt_node_path
-Date: Thu,  7 Jan 2016 15:50:10 +0000
-Message-Id: <1452181815-1948-4-git-send-email-eric.auger@linaro.org>
+Subject: [PATCH v3 4/8] device_tree: qemu_fdt_getprop converted to use the error API
+Date: Thu,  7 Jan 2016 15:50:11 +0000
+Message-Id: <1452181815-1948-5-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1452181815-1948-1-git-send-email-eric.auger@linaro.org>
 References: <1452181815-1948-1-git-send-email-eric.auger@linaro.org>
-X-TUID: XzWftV0p3GC+
+X-TUID: rPC1UwFcyJSK
 
-This new helper routine returns the node path of a device
-referred to by its node name and compat string.
+Current qemu_fdt_getprop exits if the property is not found. It is
+sometimes needed to read an optional property, in which case we do
+not wish to exit but simply returns a null value.
+
+This patch converts qemu_fdt_getprop to accept an Error **, and existing
+users are converted to pass &error_fatal. This preserves the existing
+behaviour. Then to use the API with your optional semantic a null
+parameter can be conveyed.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
 
 ---
 
 v1 -> v2:
-- move doc comment in header file
-- do not use a fixed size buffer
-- break on errors in while loop
-- use strcmp instead of strncmp
+- add a doc comment in the header file
 
 RFC -> v1:
-- improve error handling according to Alex' comments
+- get rid of qemu_fdt_getprop_optional and implement Peter's suggestion
+  that consists in using the error API
+
+Signed-off-by: Eric Auger <eric.auger@linaro.org>
 ---
- device_tree.c                | 37 +++++++++++++++++++++++++++++++++++++
- include/sysemu/device_tree.h | 14 ++++++++++++++
- 2 files changed, 51 insertions(+)
+ device_tree.c                | 11 ++++++-----
+ include/sysemu/device_tree.h | 15 ++++++++++++++-
+ 2 files changed, 20 insertions(+), 6 deletions(-)
 
 diff --git a/device_tree.c b/device_tree.c
-index b262c2d..8441e01 100644
+index 8441e01..6ecc9da 100644
 --- a/device_tree.c
 +++ b/device_tree.c
-@@ -231,6 +231,43 @@ static int findnode_nofail(void *fdt, const char *node_path)
-     return offset;
+@@ -321,18 +321,18 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
  }
  
-+int qemu_fdt_node_path(void *fdt, const char *name, char *compat,
-+                       char **node_path)
-+{
-+    int offset, len, ret;
-+    const char *iter_name;
-+    unsigned int path_len = 16;
-+    char *path;
-+
-+    *node_path = NULL;
-+    offset = fdt_node_offset_by_compatible(fdt, -1, compat);
-+
-+    while (offset >= 0) {
-+        iter_name = fdt_get_name(fdt, offset, &len);
-+        if (!iter_name) {
-+            offset = len;
-+            break;
-+        }
-+        if (!strcmp(iter_name, name)) {
-+            goto found;
-+        }
-+        offset = fdt_node_offset_by_compatible(fdt, offset, compat);
-+    }
-+    return offset;
-+
-+found:
-+    path = g_malloc(path_len);
-+    while ((ret = fdt_get_path(fdt, offset, path, path_len))
-+            == -FDT_ERR_NOSPACE) {
-+        path_len += 16;
-+        path = g_realloc(path, path_len);
-+    }
-+    if (!ret) {
-+        *node_path = path;
-+    }
-+    return ret;
-+}
-+
- int qemu_fdt_setprop(void *fdt, const char *node_path,
-                      const char *property, const void *val, int size)
+ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
+-                             const char *property, int *lenp)
++                             const char *property, int *lenp, Error **errp)
  {
+     int len;
+     const void *r;
++
+     if (!lenp) {
+         lenp = &len;
+     }
+     r = fdt_getprop(fdt, findnode_nofail(fdt, node_path), property, lenp);
+     if (!r) {
+-        error_report("%s: Couldn't get %s/%s: %s", __func__,
+-                     node_path, property, fdt_strerror(*lenp));
+-        exit(1);
++        error_setg(errp, "%s: Couldn't get %s/%s: %s", __func__,
++                  node_path, property, fdt_strerror(*lenp));
+     }
+     return r;
+ }
+@@ -341,7 +341,8 @@ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+                                const char *property)
+ {
+     int len;
+-    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len);
++    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len,
++                                         &error_fatal);
+     if (len != 4) {
+         error_report("%s: %s/%s not 4 bytes long (not a cell?)",
+                      __func__, node_path, property);
 diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index fdf25a4..269cb1c 100644
+index 269cb1c..4d7cbb9 100644
 --- a/include/sysemu/device_tree.h
 +++ b/include/sysemu/device_tree.h
-@@ -20,6 +20,20 @@ void *load_device_tree(const char *filename_path, int *sizep);
- void *load_device_tree_from_sysfs(void);
- #endif
- 
+@@ -45,8 +45,21 @@ int qemu_fdt_setprop_string(void *fdt, const char *node_path,
+ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
+                              const char *property,
+                              const char *target_node_path);
 +/**
-+ * qemu_fdt_node_path: return the node path of a device, given its
-+ * node name and its compat string
-+ * @fdt: pointer to the dt blob
-+ * @name: device node name
-+ * @compat: compatibility string of the device
-+ * @node_path: returned node path
++ * qemu_fdt_getprop: retrieve the value of a given property
++ * @fdt: pointer to the device tree blob
++ * @node_path: node path
++ * @property: name of the property to find
++ * @lenp: fdt error if any or length of the property on success
++ * @errp: handle to an error object
 + *
-+ * upon success, the path is output at node_path address
-+ * returns 0 on success, < 0 on failure
++ * returns a pointer to the property on success and NULL on failure
++ * in case errp is set to &error_fatal, the function auto-asserts
++ * on error (legacy behavior)
 + */
-+int qemu_fdt_node_path(void *fdt, const char *name, char *compat,
-+                       char **node_path);
-+
- int qemu_fdt_setprop(void *fdt, const char *node_path,
-                      const char *property, const void *val, int size);
- int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
+ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
+-                             const char *property, int *lenp);
++                             const char *property, int *lenp,
++                             Error **errp);
+ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+                                const char *property);
+ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
 -- 
 1.9.1

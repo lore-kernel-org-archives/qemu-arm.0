@@ -1,46 +1,45 @@
-Received: by 10.25.134.130 with SMTP id i124csp325829lfd;
-        Fri, 8 Jan 2016 01:32:15 -0800 (PST)
-X-Received: by 10.194.134.134 with SMTP id pk6mr2735593wjb.176.1452245535683;
-        Fri, 08 Jan 2016 01:32:15 -0800 (PST)
+Received: by 10.25.134.130 with SMTP id i124csp325849lfd;
+        Fri, 8 Jan 2016 01:32:17 -0800 (PST)
+X-Received: by 10.28.92.17 with SMTP id q17mr21364422wmb.40.1452245537940;
+        Fri, 08 Jan 2016 01:32:17 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
-        by mx.google.com with ESMTPS id fa10si98932312wjd.246.2016.01.08.01.32.15
+Received: from mail-wm0-x234.google.com (mail-wm0-x234.google.com. [2a00:1450:400c:c09::234])
+        by mx.google.com with ESMTPS id y18si79980468wjw.104.2016.01.08.01.32.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Jan 2016 01:32:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
+        Fri, 08 Jan 2016 01:32:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) client-ip=2a00:1450:400c:c09::234;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::234 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x22d.google.com with SMTP id b14so162048550wmb.1
-        for <alex.bennee@linaro.org>; Fri, 08 Jan 2016 01:32:15 -0800 (PST)
+Received: by mail-wm0-x234.google.com with SMTP id f206so128685060wmf.0
+        for <alex.bennee@linaro.org>; Fri, 08 Jan 2016 01:32:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-type:content-transfer-encoding;
-        bh=IPqQUPjhAZbblgBlTf4mvVZS9yP8QLaZQuLHMcD9DVQ=;
-        b=bZIJxUJT2NjUCqOK0q4sZ2KWGkAMvd7iU5DBZ25gVJ0kFV3/G2iQdTY7Jf22XDbCCE
-         ZFaNZrVQykBH4Y5EVbaS6a4i4nU9zfudf0bRimAPU8Z2KbT23lL6Im4CplfV/ut/xbja
-         1OSnltUbawd8hDwMHbzXJDDobVAo5EiovkLL0=
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=Fyo/zUr7Z8b70EQnLIZRqeVkx1MHZR78WEB5QlMVEGk=;
+        b=G2b5KtO+GISeVHAK5Yrrmw3rXhSiSgkgtvFtyI1NsG4tsFb5HMiTdEn2PisA+hsUKt
+         Ey6Hju9VJIbugm3V+TZVBUBjrjtZR9LXmj2xbfJOgNggSUvr2hU/RsDDlwr+80GI/hYh
+         WPzUN1UDKoQr92sUvclzDQ2WE4ARFJdjPyaUc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-type:content-transfer-encoding;
-        bh=IPqQUPjhAZbblgBlTf4mvVZS9yP8QLaZQuLHMcD9DVQ=;
-        b=IDJhbCQiowvD6RbS8OKhZrhOFDKavk92CPrtWhMqrwWArHbdZsBSwTaOIDXTaqVwuo
-         JvM/cVFUg8Q6SQyXVV0TT1ONh4xg3StCe3rRGetYOIyWXK6KVyvP0nnWcTGlgeAyVBqH
-         W0HFWq896wptJDIVSZMcBASM7HsdP4FiHyDSkEuZAEL/F7ynuNs1f+Usti9ByOOFbqdQ
-         nrsUCzl2M4ePXa8oEWsypQA5N+0EX+fuj/HNkAtcW5q7SiGbQ74YXbesA/4+fK4i9/Xl
-         PThuvZMuxFv07vmi6SVqCYIOC0uwdGuoEigYIGKa+T3qYdNBAoDCrL0BnQV9t6YAtWZR
-         Y43Q==
-X-Gm-Message-State: ALoCoQmxWxZyYLCGePV9kYJv5aRwYZI2Nu9jmRLa+sPmHSCYb28o4vdbjRJ1bpSzl70w4/Sg9oulAdj8DQLWTPKoTCIAtyrGwQ==
-X-Received: by 10.28.148.82 with SMTP id w79mr22364903wmd.71.1452245535480;
-        Fri, 08 Jan 2016 01:32:15 -0800 (PST)
+         :references;
+        bh=Fyo/zUr7Z8b70EQnLIZRqeVkx1MHZR78WEB5QlMVEGk=;
+        b=CT3gInUX7hg1LrjJV0YGGcv7L7tLPrtAAzHkKjZK+cU/jPL125PvKe0ODo31ugbCXu
+         6kmrwqV/FoCQqfGXaq6yPBG6XkdeUbqEOUULd2EeS+6At3K9xddaAvzj779iYgjBQCVy
+         MvGy8mnua92kFnrNi5xgtnpvmzs4KFtSQMI4VXi59AwvlOVDAQSdWMXpPzFkmeHWxtF8
+         zfKB0ewj+mK67obH84Q8ueA0UYyJUCUnICzNpUHixnG3zulksqqT8wRBcvRZsny+wVhX
+         0qL93Kn5x5gBZayMFeVJaj8sohSOnJzL3taGIc2n02+VC7UlN/inkqfHlzv4wNWN4m5i
+         KgIA==
+X-Gm-Message-State: ALoCoQlZmS5sMFQZJer0pE35hctcsQhsgUbMXwL6ZhB5FJzJuOfxrX/cWzobhWhY7TABS3zmlAoiI37FLL+tlkexVnmzy5/gPw==
+X-Received: by 10.194.7.100 with SMTP id i4mr110784555wja.76.1452245537737;
+        Fri, 08 Jan 2016 01:32:17 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
 Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.gmail.com with ESMTPSA id av8sm30226968wjc.13.2016.01.08.01.32.13
+        by smtp.gmail.com with ESMTPSA id av8sm30226968wjc.13.2016.01.08.01.32.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 08 Jan 2016 01:32:13 -0800 (PST)
+        Fri, 08 Jan 2016 01:32:16 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com,
 	eric.auger@linaro.org,
@@ -58,162 +57,170 @@ Cc: alex.bennee@linaro.org,
 	b.reynal@virtualopensystems.com,
 	suravee.suthikulpanit@amd.com,
 	thomas.lendacky@amd.com
-Subject: [PATCH v4 1/8] hw/vfio/platform: amd-xgbe device
-Date: Fri,  8 Jan 2016 09:31:58 +0000
-Message-Id: <1452245525-3886-2-git-send-email-eric.auger@linaro.org>
+Subject: [PATCH v4 2/8] device_tree: introduce load_device_tree_from_sysfs
+Date: Fri,  8 Jan 2016 09:31:59 +0000
+Message-Id: <1452245525-3886-3-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1452245525-3886-1-git-send-email-eric.auger@linaro.org>
 References: <1452245525-3886-1-git-send-email-eric.auger@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: wFGvsp3HN17W
+X-TUID: Oq0uLWsGQMFS
 
-This patch introduces the amd-xgbe VFIO platform device. It
-allows the guest to do passthrough on a device exposing an
-"amd,xgbe-seattle-v1a" compat string.
+This function returns the host device tree blob from sysfs
+(/proc/device-tree). It uses a recursive function inspired
+from dtc read_fstree.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
+v1 -> v2:
+- do not implement/expose read_fstree and load_device_tree_from_sysfs
+  if CONFIG_LINUX is not defined (lstat is not implemeted in mingw)
+- correct indentation in read_fstree
+- use /proc/device-tree symlink instead of /sys/firmware/devicetree/base
+  path (kernel.org/doc/Documentation/ABI/testing/sysfs-firmware-ofw)
+- use g_file_get_contents in read_fstree
+- introduce SYSFS_DT_BASEDIR macro and use strlen
+- exit on error in load_device_tree_from_sysfs
+- user error_setg
+
 RFC -> v1:
-- add Alex' R-b
+- remove runtime dependency on dtc binary and introduce read_fstree
 ---
- hw/vfio/Makefile.objs           |  1 +
- hw/vfio/amd-xgbe.c              | 55 +++++++++++++++++++++++++++++++++++++++++
- include/hw/vfio/vfio-amd-xgbe.h | 51 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 107 insertions(+)
- create mode 100644 hw/vfio/amd-xgbe.c
- create mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+ device_tree.c                | 100 +++++++++++++++++++++++++++++++++++++++++++
+ include/sysemu/device_tree.h |   3 ++
+ 2 files changed, 103 insertions(+)
 
-diff --git a/hw/vfio/Makefile.objs b/hw/vfio/Makefile.objs
-index d324863..ceddbb8 100644
---- a/hw/vfio/Makefile.objs
-+++ b/hw/vfio/Makefile.objs
-@@ -3,4 +3,5 @@ obj-$(CONFIG_SOFTMMU) += common.o
- obj-$(CONFIG_PCI) += pci.o pci-quirks.o
- obj-$(CONFIG_SOFTMMU) += platform.o
- obj-$(CONFIG_SOFTMMU) += calxeda-xgmac.o
-+obj-$(CONFIG_SOFTMMU) += amd-xgbe.o
- endif
-diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
-new file mode 100644
-index 0000000..53451eb
---- /dev/null
-+++ b/hw/vfio/amd-xgbe.c
-@@ -0,0 +1,55 @@
-+/*
-+ * AMD XGBE VFIO device
-+ *
-+ * Copyright Linaro Limited, 2015
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@linaro.org>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ */
+diff --git a/device_tree.c b/device_tree.c
+index a9f5f8e..b262c2d 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -17,6 +17,9 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#ifdef CONFIG_LINUX
++#include <dirent.h>
++#endif
+ 
+ #include "qemu-common.h"
+ #include "qemu/error-report.h"
+@@ -117,6 +120,103 @@ fail:
+     return NULL;
+ }
+ 
++#ifdef CONFIG_LINUX
 +
-+#include "hw/vfio/vfio-amd-xgbe.h"
-+
-+static void amd_xgbe_realize(DeviceState *dev, Error **errp)
-+{
-+    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(dev);
-+    VFIOAmdXgbeDeviceClass *k = VFIO_AMD_XGBE_DEVICE_GET_CLASS(dev);
-+
-+    vdev->compat = g_strdup("amd,xgbe-seattle-v1a");
-+
-+    k->parent_realize(dev, errp);
-+}
-+
-+static const VMStateDescription vfio_platform_amd_xgbe_vmstate = {
-+    .name = TYPE_VFIO_AMD_XGBE,
-+    .unmigratable = 1,
-+};
-+
-+static void vfio_amd_xgbe_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    VFIOAmdXgbeDeviceClass *vcxc =
-+        VFIO_AMD_XGBE_DEVICE_CLASS(klass);
-+    vcxc->parent_realize = dc->realize;
-+    dc->realize = amd_xgbe_realize;
-+    dc->desc = "VFIO AMD XGBE";
-+    dc->vmsd = &vfio_platform_amd_xgbe_vmstate;
-+}
-+
-+static const TypeInfo vfio_amd_xgbe_dev_info = {
-+    .name = TYPE_VFIO_AMD_XGBE,
-+    .parent = TYPE_VFIO_PLATFORM,
-+    .instance_size = sizeof(VFIOAmdXgbeDevice),
-+    .class_init = vfio_amd_xgbe_class_init,
-+    .class_size = sizeof(VFIOAmdXgbeDeviceClass),
-+};
-+
-+static void register_amd_xgbe_dev_type(void)
-+{
-+    type_register_static(&vfio_amd_xgbe_dev_info);
-+}
-+
-+type_init(register_amd_xgbe_dev_type)
-diff --git a/include/hw/vfio/vfio-amd-xgbe.h b/include/hw/vfio/vfio-amd-xgbe.h
-new file mode 100644
-index 0000000..9fff65e
---- /dev/null
-+++ b/include/hw/vfio/vfio-amd-xgbe.h
-@@ -0,0 +1,51 @@
-+/*
-+ * VFIO AMD XGBE device
-+ *
-+ * Copyright Linaro Limited, 2015
-+ *
-+ * Authors:
-+ *  Eric Auger <eric.auger@linaro.org>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef HW_VFIO_VFIO_AMD_XGBE_H
-+#define HW_VFIO_VFIO_AMD_XGBE_H
-+
-+#include "hw/vfio/vfio-platform.h"
-+
-+#define TYPE_VFIO_AMD_XGBE "vfio-amd-xgbe"
++#define SYSFS_DT_BASEDIR "/proc/device-tree"
 +
 +/**
-+ * This device exposes:
-+ * - 5 MMIO regions: MAC, PCS, SerDes Rx/Tx regs,
-+     SerDes Integration Registers 1/2 & 2/2
-+ * - 2 level sensitive IRQs and optional DMA channel IRQs
++ * read_fstree: this function is inspired from dtc read_fstree
++ * @fdt: preallocated fdt blob buffer, to be populated
++ * @dirname: directory to scan under SYSFS_DT_BASEDIR
++ * the search is recursive and the tree is searched down to the
++ * leafs (property files).
++ *
++ * the function self-asserts in case of error
 + */
-+struct VFIOAmdXgbeDevice {
-+    VFIOPlatformDevice vdev;
-+};
++static void read_fstree(void *fdt, const char *dirname)
++{
++    DIR *d;
++    struct dirent *de;
++    struct stat st;
++    const char *root_dir = SYSFS_DT_BASEDIR;
++    char *parent_node;
 +
-+typedef struct VFIOAmdXgbeDevice VFIOAmdXgbeDevice;
++    if (strstr(dirname, root_dir) != dirname) {
++        error_report("%s: %s must be searched within %s",
++                     __func__, dirname, root_dir);
++        exit(1);
++    }
++    parent_node = (char *)&dirname[strlen(SYSFS_DT_BASEDIR)];
 +
-+struct VFIOAmdXgbeDeviceClass {
-+    /*< private >*/
-+    VFIOPlatformDeviceClass parent_class;
-+    /*< public >*/
-+    DeviceRealize parent_realize;
-+};
++    d = opendir(dirname);
++    if (!d) {
++        error_setg(&error_fatal, "%s cannot open %s", __func__, dirname);
++    }
 +
-+typedef struct VFIOAmdXgbeDeviceClass VFIOAmdXgbeDeviceClass;
++    while ((de = readdir(d)) != NULL) {
++        char *tmpnam;
 +
-+#define VFIO_AMD_XGBE_DEVICE(obj) \
-+     OBJECT_CHECK(VFIOAmdXgbeDevice, (obj), TYPE_VFIO_AMD_XGBE)
-+#define VFIO_AMD_XGBE_DEVICE_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(VFIOAmdXgbeDeviceClass, (klass), \
-+                        TYPE_VFIO_AMD_XGBE)
-+#define VFIO_AMD_XGBE_DEVICE_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(VFIOAmdXgbeDeviceClass, (obj), \
-+                      TYPE_VFIO_AMD_XGBE)
++        if (!g_strcmp0(de->d_name, ".")
++            || !g_strcmp0(de->d_name, "..")) {
++            continue;
++        }
 +
++        tmpnam = g_strjoin("/", dirname, de->d_name, NULL);
++
++        if (lstat(tmpnam, &st) < 0) {
++            error_setg(&error_fatal, "%s cannot lstat %s", __func__, tmpnam);
++        }
++
++        if (S_ISREG(st.st_mode)) {
++            gchar *val;
++            gsize len;
++
++            if (!g_file_get_contents(tmpnam, &val, &len, NULL)) {
++                error_setg(&error_fatal, "%s not able to extract info from %s",
++                           __func__, tmpnam);
++            }
++
++            if (strlen(parent_node) > 0) {
++                qemu_fdt_setprop(fdt, parent_node,
++                                 de->d_name, val, len);
++            } else {
++                qemu_fdt_setprop(fdt, "/", de->d_name, val, len);
++            }
++            g_free(val);
++        } else if (S_ISDIR(st.st_mode)) {
++            char *node_name;
++
++            node_name = g_strdup_printf("%s/%s",
++                                        parent_node, de->d_name);
++            qemu_fdt_add_subnode(fdt, node_name);
++            g_free(node_name);
++            read_fstree(fdt, tmpnam);
++        }
++
++        g_free(tmpnam);
++    }
++
++    closedir(d);
++}
++
++/* load_device_tree_from_sysfs: extract the dt blob from host sysfs */
++void *load_device_tree_from_sysfs(void)
++{
++    void *host_fdt;
++    int host_fdt_size;
++
++    host_fdt = create_device_tree(&host_fdt_size);
++    read_fstree(host_fdt, SYSFS_DT_BASEDIR);
++    if (fdt_check_header(host_fdt)) {
++        error_setg(&error_fatal,
++                   "%s host device tree extracted into memory is invalid",
++                   __func__);
++    }
++    return host_fdt;
++}
++
++#endif /* CONFIG_LINUX */
++
+ static int findnode_nofail(void *fdt, const char *node_path)
+ {
+     int offset;
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 359e143..fdf25a4 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -16,6 +16,9 @@
+ 
+ void *create_device_tree(int *sizep);
+ void *load_device_tree(const char *filename_path, int *sizep);
++#ifdef CONFIG_LINUX
++void *load_device_tree_from_sysfs(void);
 +#endif
+ 
+ int qemu_fdt_setprop(void *fdt, const char *node_path,
+                      const char *property, const void *val, int size);
 -- 
 1.9.1

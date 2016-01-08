@@ -1,80 +1,109 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2021929obb;
-        Thu, 19 Nov 2015 07:24:47 -0800 (PST)
-X-Received: by 10.129.29.5 with SMTP id d5mr7066783ywd.278.1447946687679;
-        Thu, 19 Nov 2015 07:24:47 -0800 (PST)
+Received: by 10.25.134.130 with SMTP id i124csp618552lfd;
+        Fri, 8 Jan 2016 11:00:07 -0800 (PST)
+X-Received: by 10.55.41.66 with SMTP id p63mr17215051qkh.69.1452279607671;
+        Fri, 08 Jan 2016 11:00:07 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w10si6174165ywd.58.2015.11.19.07.24.47
+        by mx.google.com with ESMTPS id q79si7373751qkl.39.2016.01.08.11.00.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Nov 2015 07:24:47 -0800 (PST)
+        Fri, 08 Jan 2016 11:00:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro-org.20150623.gappssmtp.com
-Received: from localhost ([::1]:42422 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37739 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ZzR4p-0007cy-6k
-	for alex.bennee@linaro.org; Thu, 19 Nov 2015 10:24:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33465)
+	id 1aHcGd-0004mS-B4
+	for alex.bennee@linaro.org; Fri, 08 Jan 2016 14:00:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44987)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2T-0003Kf-8P
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:22 -0500
+	(envelope-from <alistair.francis@xilinx.com>) id 1aHcGF-0004Ug-G4
+	for qemu-devel@nongnu.org; Fri, 08 Jan 2016 13:59:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2S-0000j7-Ev
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:21 -0500
-Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:35096)
+	(envelope-from <alistair.francis@xilinx.com>) id 1aHcGC-0002mc-B6
+	for qemu-devel@nongnu.org; Fri, 08 Jan 2016 13:59:43 -0500
+Received: from mail-sn1nam02on0062.outbound.protection.outlook.com
+	([104.47.36.62]:59642
+	helo=NAM02-SN1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1ZzR2S-0000iw-8h
-	for qemu-devel@nongnu.org; Thu, 19 Nov 2015 10:22:20 -0500
-Received: by wmdw130 with SMTP id w130so244789536wmd.0
-	for <qemu-devel@nongnu.org>; Thu, 19 Nov 2015 07:22:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linaro-org.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=+a67LYZcOkfQOn9nOrqRstA5dW1nBhu4IQU1Pq53ELw=;
-	b=lEJIU0UcPszcZ+nSHIK6KvhBYfGzUWEv+cwxeEKA2vtwbwZWWABGEA5ryZZPH9PTaQ
-	zN2VETXvDXN9EiWdT9FgAiiUJGuxkmCpCd2dBk+0O/ce7rnABGSKHOOazCYPS7bl3JbY
-	vWdD1hEBUBZJaJbvw7nk4BwSluHn12LqrW+85EI7oCnMN+YkHS8ygEiyyswRi7RIUCdR
-	2hzNOAU2GIFIoVDLqdVuTOKwlfkaHD57ubgQjcZUlogaj44eFvvzqPs7VxpZtuT2jDeb
-	sVmbCV5gppSz8TFV8fVLrdFhy4nDE/0vcAlA5h7BUMh37LsaoaNZpr4ViXKc8HI6bQnW
-	8D/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=+a67LYZcOkfQOn9nOrqRstA5dW1nBhu4IQU1Pq53ELw=;
-	b=ROaGKmX/I1JE6J6HhVS6XZz2AwYlLG2r1ZvEj0IROvXQyms+cVjhZqskU5hUSbieD+
-	3x3Tb1Z81lHFLUio/5QqZ0gQu/M/pzZuX2+nfqZ1zXhCymsodpMAvMSFwj+yoIUTtciS
-	XbJZRrgEZY/Y1M9yekQmftZ+V5DTF+8ax/wIafrrVNWnMbMbh12wAAKMHXgqgEO9QKNF
-	AAE3F4r6DhdtCSw8DY7KzU9s3Zcvxgk1drYZbjpFwD8Lc/bQ8yPiDWat+nsunlBBv3Dm
-	G1rX43f5rgxVGBDgjL3ZpRRS3lejxQux0Y0iFN3ChF8pMbQW2dvxvhviZ7DSD10D2nch
-	5hgg==
-X-Gm-Message-State: ALoCoQlo9ZR5NKygYoK4sR2Iy/CrlvAqGnU7Jrigbaw7SoX9kic6eJuK+nhtTPUAmJJ33YLOggrl
-X-Received: by 10.28.184.134 with SMTP id i128mr11909509wmf.12.1447946539743; 
-	Thu, 19 Nov 2015 07:22:19 -0800 (PST)
-Received: from midway01-04-00.lavalab ([81.128.185.50])
-	by smtp.gmail.com with ESMTPSA id
-	vr10sm8367221wjc.38.2015.11.19.07.22.18
-	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 19 Nov 2015 07:22:18 -0800 (PST)
-From: Eric Auger <eric.auger@linaro.org>
-To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, alex.williamson@redhat.com, peter.maydell@linaro.org
-Date: Thu, 19 Nov 2015 15:22:06 +0000
-Message-Id: <1447946528-1533-5-git-send-email-eric.auger@linaro.org>
-X-Mailer: git-send-email 1.8.3.2
-In-Reply-To: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-References: <1447946528-1533-1-git-send-email-eric.auger@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Error: Malformed IPv6 address
-	(bad octet value).
-X-Received-From: 2a00:1450:400c:c09::235
-Cc: thomas.lendacky@amd.com, b.reynal@virtualopensystems.com,
-	patches@linaro.org, suravee.suthikulpanit@amd.com,
-	pbonzini@redhat.com, christoffer.dall@linaro.org
-Subject: [Qemu-devel] [RESEND RFC 4/6] device_tree: introduce
-	qemu_fdt_getprop_optional
+	(envelope-from <alistair.francis@xilinx.com>) id 1aHcGC-0002mW-63
+	for qemu-devel@nongnu.org; Fri, 08 Jan 2016 13:59:40 -0500
+Received: from SN1NAM02FT010.eop-nam02.prod.protection.outlook.com
+	(10.152.72.59) by SN1NAM02HT155.eop-nam02.prod.protection.outlook.com
+	(10.152.72.169) with Microsoft SMTP Server (TLS) id 15.1.355.15;
+	Fri, 8 Jan 2016 18:59:37 +0000
+Authentication-Results: spf=fail (sender IP is 149.199.60.96)
+	smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+	header.d=none; nongnu.org; dmarc=none action=none header.from=xilinx.com;
+Received-SPF: Fail (protection.outlook.com: domain of xilinx.com does not
+	designate 149.199.60.96 as permitted sender)
+	receiver=protection.outlook.com; 
+	client-ip=149.199.60.96; helo=xsj-tvapsmtpgw01;
+Received: from xsj-tvapsmtpgw01 (149.199.60.96) by
+	SN1NAM02FT010.mail.protection.outlook.com (10.152.72.86) with Microsoft
+	SMTP Server (TLS) id 15.1.355.15 via Frontend Transport;
+	Fri, 8 Jan 2016 18:59:36 +0000
+Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:39901
+	helo=xsj-tvapsmtp02.xilinx.com)
+	by xsj-tvapsmtpgw01 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aHcG8-00058a-4N; Fri, 08 Jan 2016 10:59:36 -0800
+Received: from [127.0.0.1] (port=46623 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
+	by xsj-tvapsmtp02.xilinx.com with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aHcG7-0007zm-UZ; Fri, 08 Jan 2016 10:59:35 -0800
+Received: from xsj-tvapsmtp02 (smtptest.xilinx.com [172.16.1.203])
+	by tsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	u08Is6LI012565; Fri, 8 Jan 2016 10:54:06 -0800
+Received: from [172.19.74.182] (port=51730 helo=xsjalistai50.xlnx.xilinx.com)
+	by xsj-tvapsmtp02 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aHcG6-0007zj-U3; Fri, 08 Jan 2016 10:59:34 -0800
+From: Alistair Francis <alistair.francis@xilinx.com>
+To: <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>
+Date: Fri, 8 Jan 2016 10:57:13 -0800
+Message-ID: <861da5c44f261ee3f160607c9d128ce0e9f89e9e.1452277501.git.alistair.francis@xilinx.com>
+X-Mailer: git-send-email 2.5.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-RCIS-Action: ALLOW
+X-TM-AS-MML: disable
+X-TM-AS-Product-Ver: IMSS-7.1.0.1679-8.0.0.1202-22052.005
+X-TM-AS-Result: No--1.188-7.0-31-10
+X-imss-scan-details: No--1.188-7.0-31-10
+X-TMASE-MatchedRID: LtdDkAUA39X4DetQQCtOBfzu9Lw9C7fAPZmbnY2qDInfUZT83lbkECW4
+	gi/wgh1NvQwDKMUFVHQS5thlB89aW79ZdlL8eonaC24oEZ6SpSmb4wHqRpnaDttSQLwFRJi5zkP
+	7zATTNX1l66ZlnvIHHwLV3D3ZnU5xlHKmxxYuk2CAueG3LlBx+iYykE+cFiX6SULSTjypHDwZZO
+	gZztc429VGKsGTt2/S6yORifnpUaoNUYeVfcC2R3iZNoNUzKgUN+XOQZygrvY=
+X-EOPAttributedMessage: 0
+X-Forefront-Antispam-Report: CIP:149.199.60.96; CTRY:US; IPV:NLI; EFV:NLI;
+	SFV:NSPM;
+	SFS:(10009020)(6009001)(2980300002)(1109001)(1110001)(339900001)(199003)(189002)(64026002)(36756003)(92566002)(87936001)(1096002)(586003)(105606002)(1220700001)(4001430100002)(23676002)(77096005)(106466001)(50986999)(85426001)(4001450100002)(33646002)(86362001)(19580395003)(5003600100002)(5001960100002)(5001770100001)(50466002)(81156007)(19580405001)(107886002)(229853001)(189998001)(118296001)(5820100001)(50226001)(71366001)(6806005)(2906002)(5008740100001)(450100001)(4326007)(47776003)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:SN1NAM02HT155; H:xsj-tvapsmtpgw01;
+	FPR:; SPF:Fail; PTR:unknown-60-96.xilinx.com; A:1; MX:1; LANG:en;
+X-MS-Office365-Filtering-Correlation-Id: fef3b925-6502-4974-2b8d-08d3185ddab2
+X-Exchange-Antispam-Report-Test: UriScan:; BCL:0; PCL:0; RULEID:;
+	SRVR:SN1NAM02HT155; UriScan:(192813158149592); 
+X-Microsoft-Antispam-PRVS: <999d9d2894b04d5cb73ab99e7312dc33@SN1NAM02HT155.eop-nam02.prod.protection.outlook.com>
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(8121501046)(13015025)(5005006)(13018025)(13017025)(520078)(10201501046)(3002001);
+	SRVR:SN1NAM02HT155; BCL:0; PCL:0; RULEID:; SRVR:SN1NAM02HT155; 
+X-Forefront-PRVS: 0815F8251E
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jan 2016 18:59:36.4975 (UTC)
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
+	Ip=[149.199.60.96]; Helo=[xsj-tvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1NAM02HT155
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.36.62
+Cc: qemu-arm@nongnu.org, soren.brinkmann@xilinx.com,
+	alistair.francis@xilinx.com
+Subject: [Qemu-devel] [PATCH v1 1/1] arm_gic: Include the GIC ArchRev in the
+	ICPIDR2 register
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,61 +117,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rtAqVRgOE7kT
+X-TUID: qE/QE4cz4Iep
 
-Current qemu_fdt_getprop exits if the property is not found. It is
-sometimes needed to read an optional property, in which case we do
-not wish to exit but simply returns a null value.
+The ARM GIC documentation (page 4-119) describes that bits
+7 to 4 of the ICPIDR2 register should include the GIC architecture
+version. This patche ORs the version into the existing return value.
 
-This is what this new qemu_fdt_getprop_optional function does.
-
-Signed-off-by: Eric Auger <eric.auger@linaro.org>
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Tested-by: S=C3=B6ren Brinkmann <soren.brinkmann@xilinx.com>
 ---
- device_tree.c                | 17 +++++++++++++++++
- include/sysemu/device_tree.h |  2 ++
- 2 files changed, 19 insertions(+)
 
-diff --git a/device_tree.c b/device_tree.c
-index f184e3c..a318683 100644
---- a/device_tree.c
-+++ b/device_tree.c
-@@ -280,6 +280,23 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-     return r;
- }
- 
-+const void *qemu_fdt_getprop_optional(void *fdt, const char *node_path,
-+                             const char *property, bool optional, int *lenp)
-+{
-+    int len;
-+    const void *r;
-+    if (!lenp) {
-+        lenp = &len;
-+    }
-+    r = fdt_getprop(fdt, findnode_nofail(fdt, node_path), property, lenp);
-+    if (!r && !optional) {
-+        error_report("%s: Couldn't get %s/%s: %s", __func__,
-+                     node_path, property, fdt_strerror(*lenp));
-+        exit(1);
-+    }
-+    return r;
-+}
-+
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
-                                const char *property)
- {
-diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index f9e6e6e..10cbe8e 100644
---- a/include/sysemu/device_tree.h
-+++ b/include/sysemu/device_tree.h
-@@ -34,6 +34,8 @@ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
-                              const char *target_node_path);
- const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-                              const char *property, int *lenp);
-+const void *qemu_fdt_getprop_optional(void *fdt, const char *node_path,
-+                             const char *property, bool optional, int *lenp);
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
-                                const char *property);
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
--- 
-1.8.3.2
+ hw/intc/arm_gic.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 13e297d..f47d606 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -688,6 +688,10 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr of=
+fset, MemTxAttrs attrs)
+     } else /* offset >=3D 0xfe0 */ {
+         if (offset & 3) {
+             res =3D 0;
++        } else if (offset =3D=3D 0xfe8 && s->revision !=3D REV_11MPCORE &&
++                                      s->revision !=3D REV_NVIC) {
++            /* ICPIDR2 includes the GICv1 or GICv2 version information */
++            res =3D gic_id[(offset - 0xfe0) >> 2] | (s->revision << 4);
+         } else {
+             res =3D gic_id[(offset - 0xfe0) >> 2];
+         }
+--=20
+2.5.0
 

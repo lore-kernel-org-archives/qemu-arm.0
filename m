@@ -1,64 +1,64 @@
-Received: by 10.25.134.130 with SMTP id i124csp1223737lfd;
-        Sat, 9 Jan 2016 16:44:58 -0800 (PST)
-X-Received: by 10.55.73.68 with SMTP id w65mr30085400qka.68.1452386698493;
-        Sat, 09 Jan 2016 16:44:58 -0800 (PST)
+Received: by 10.25.134.130 with SMTP id i124csp1225232lfd;
+        Sat, 9 Jan 2016 16:50:54 -0800 (PST)
+X-Received: by 10.140.40.37 with SMTP id w34mr81112935qgw.85.1452387053732;
+        Sat, 09 Jan 2016 16:50:53 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i205si95109223qhd.76.2016.01.09.16.44.58
+        by mx.google.com with ESMTPS id d69si18109080qhc.98.2016.01.09.16.50.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Jan 2016 16:44:58 -0800 (PST)
+        Sat, 09 Jan 2016 16:50:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44552 helo=lists.gnu.org)
+Received: from localhost ([::1]:44588 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aI47u-000421-54
-	for alex.bennee@linaro.org; Sat, 09 Jan 2016 19:44:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55348)
+	id 1aI4Dd-0005Di-Df
+	for alex.bennee@linaro.org; Sat, 09 Jan 2016 19:50:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56324)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI47r-0003z4-MS
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:44:56 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI4Db-00059z-4J
+	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:50:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI47q-0004qo-IQ
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:44:55 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:36770)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI4Da-0006VF-BM
+	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:50:51 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:32812)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aI47o-0004mo-6L; Sat, 09 Jan 2016 19:44:52 -0500
-Received: by mail-wm0-x242.google.com with SMTP id l65so21120375wmf.3;
-	Sat, 09 Jan 2016 16:44:52 -0800 (PST)
+	id 1aI4DY-0006V0-HQ; Sat, 09 Jan 2016 19:50:48 -0500
+Received: by mail-wm0-x241.google.com with SMTP id u188so21100910wmu.0;
+	Sat, 09 Jan 2016 16:50:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type;
-	bh=34CRHoavOKjQU8aHKRaEPMZhjrnr3saDUhmmvpE/lWo=;
-	b=MimVOJ32jqyS6c/VTQoay/hp/AXnQ2ZO49j4AJVwE3lWb868mAMdcbLMMRK3w/vo5Q
-	70i3jhARdm8y2SBTaCJRT9ixYU+e1wUx7nUb5KU+UD9JnIFnSaEJkQk2DHMLvOEgpzLP
-	2IrXuU8x696npiW18WTJqisDBimC/ydvIx4/Fv1gdhjT3WVJhd1hu/A2gPR06ZRMca/V
-	C3kCfN6K0pHmaMWxnJvWHdGfzEIW/4EyHf7bK6q7YF+bVUTOoNGwkdVX8/Xeq73xjgsj
-	6mujRvLuAiRae18afeH3OBj4dPkcufID9hlGoO9zYLZHeBzQB4eHpTMDpWfj6DtJNHlh
-	LD6A==
+	bh=vUPDIbAA0+9kr+1I1r2wwSba5/PUUN6FFS3sgYkDW9E=;
+	b=Mz6jL6TbJPDa1dMOatElk1DgHOUZCbG73QHonVA134QG1XJoKiDDyOPipOE1PnTCw+
+	TKZFXmR1/OluFkskrYzngN0PvJRvQ9dnAy11iw8M+aWF7XTtIbmCaMfyL8JY+0AjABzm
+	+F30c6KvJNZF+Ue+E0i5Yusj4FpkWs3iA2o8aUNWlIjfdO2gveJKuuEDZVw7sn2HHCs3
+	OWNnGsKOJP70QIXaBj2j+dbx87x2vqvIY5k0vg49B1+xYi/Zj3YkBdqScI7lGLbJoTx9
+	ZnXA1b7w3EK/X/xHIckk8hzOY72xxerRFrgIOV3J3hN/ESGU1BddPSj+006XKZbpuPGG
+	QLpQ==
 MIME-Version: 1.0
-X-Received: by 10.28.216.134 with SMTP id p128mr5629900wmg.59.1452386691494;
-	Sat, 09 Jan 2016 16:44:51 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Sat, 9 Jan 2016 16:44:51 -0800 (PST)
-In-Reply-To: <9bdf3e1d349c7cfc6d75cc37430fe4f177c20734.1452359845.git.digetx@gmail.com>
+X-Received: by 10.28.64.137 with SMTP id n131mr5713632wma.96.1452387047886;
+	Sat, 09 Jan 2016 16:50:47 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Sat, 9 Jan 2016 16:50:47 -0800 (PST)
+In-Reply-To: <f515e61fa162411d0a75c3d0583780531fe8cc6e.1452359845.git.digetx@gmail.com>
 References: <cover.1452359845.git.digetx@gmail.com>
-	<9bdf3e1d349c7cfc6d75cc37430fe4f177c20734.1452359845.git.digetx@gmail.com>
-Date: Sat, 9 Jan 2016 16:44:51 -0800
-Message-ID: <CAPokK=qC77XBkNpHa1y_Dajd9Hv8+a-wx9iqC1dRumeKgvUvaA@mail.gmail.com>
+	<f515e61fa162411d0a75c3d0583780531fe8cc6e.1452359845.git.digetx@gmail.com>
+Date: Sat, 9 Jan 2016 16:50:47 -0800
+Message-ID: <CAPokK=rLt6Fa=qhV8A-giqTSG0geQ9ae8bobtNopYJS+unNphw@mail.gmail.com>
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
+X-Received-From: 2a00:1450:400c:c09::241
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v10 2/7] hw/ptimer: Perform tick and counter
- wrap around if timer already expired
+Subject: Re: [Qemu-arm] [PATCH v10 4/7] hw/ptimer: Support "on the fly"
+	timer mode switch
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,100 +72,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d768AETa9voR
+X-TUID: MxIMBJg9rENb
 
 On Sat, Jan 9, 2016 at 9:39 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> ptimer_get_count() might be called while QEMU timer already been expired.
-> In that case ptimer would return counter = 0, which might be undesirable
-> in case of polled timer. Do counter wrap around for periodic timer to keep
-> it distributed. In order to achieve more accurate emulation behaviour of
-> certain hardware, don't perform wrap around when in icount mode and return
-> counter = 0 in that case (that doesn't affect polled counter distribution).
+> Allow to switch between periodic <-> oneshot modes while timer is running.
 >
-> In addition, there is no reason to keep expired timer tick deferred, so
-> just perform the tick from ptimer_get_count().
->
+
+"Allow switching"
+
 > Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 > ---
->  hw/core/ptimer.c | 26 +++++++++++++++++++-------
->  1 file changed, 19 insertions(+), 7 deletions(-)
+>  hw/core/ptimer.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 >
 > diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-> index c3d31cb..cf329eb 100644
+> index 0a54212..6960738 100644
 > --- a/hw/core/ptimer.c
 > +++ b/hw/core/ptimer.c
-> @@ -83,14 +83,17 @@ static void ptimer_tick(void *opaque)
+> @@ -167,16 +167,16 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
 >
->  uint64_t ptimer_get_count(ptimer_state *s)
+>  void ptimer_run(ptimer_state *s, int oneshot)
 >  {
-> -    int64_t now;
-> +    int enabled = s->enabled;
-
-You haven't added any additional usages of s->enabled to really
-warrant the new local variable, I think it should just stay as
-s->enabled to avoid churn.
-
->      uint64_t counter;
->
 > -    if (s->enabled) {
-> -        now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> +    if (enabled) {
-> +        int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> +        int64_t next = s->next_event;
-> +        int expired = (now - next >= 0);
+> -        return;
+> -    }
+> -    if (s->period == 0) {
+> +    int was_disabled = !s->enabled;
 
-bool.
+bool
 
-> +        int oneshot = (enabled == 2);
-
-bool.
+blank line here.
 
 Otherwise:
 
 Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 
-> +
->          /* Figure out the current counter value.  */
-> -        if (now - s->next_event > 0
-> -            || s->period == 0) {
-> +        if (s->period == 0 || (expired && (use_icount || oneshot))) {
->              /* Prevent timer underflowing if it should already have
->                 triggered.  */
->              counter = 0;
-> @@ -102,7 +105,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
->              uint32_t period_frac = s->period_frac;
->              uint64_t period = s->period;
+Regards,
+Peter
+
+> +    if (was_disabled && s->period == 0) {
+>          fprintf(stderr, "Timer with period zero, disabling\n");
+>          return;
+>      }
+>      s->enabled = oneshot ? 2 : 1;
+> -    s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> -    ptimer_reload(s);
+> +    if (was_disabled) {
+> +        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> +        ptimer_reload(s);
+> +    }
+>  }
 >
-> -            if ((s->enabled == 1) && !use_icount && (s->delta * period < 10000)) {
-> +            if (!oneshot && !use_icount && (s->delta * period < 10000)) {
->                  period = 10000 / s->delta;
->                  period_frac = 0;
->              }
-> @@ -117,7 +120,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
->                 backwards.
->              */
->
-> -            rem = s->next_event - now;
-> +            rem = expired ? now - next : next - now;
->              div = period;
->
->              clz1 = clz64(rem);
-> @@ -137,6 +140,15 @@ uint64_t ptimer_get_count(ptimer_state *s)
->                      div += 1;
->              }
->              counter = rem / div;
-> +
-> +            if (expired && (counter != 0)) {
-> +                /* Wrap around periodic counter.  */
-> +                counter = s->limit - counter % s->limit;
-> +            }
-> +        }
-> +
-> +        if (expired) {
-> +            ptimer_tick(s);
->          }
->      } else {
->          counter = s->delta;
+>  /* Pause a timer.  Note that this may cause it to "lose" time, even if it
 > --
 > 2.6.4
 >

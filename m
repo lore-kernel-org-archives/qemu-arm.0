@@ -1,64 +1,72 @@
-Received: by 10.25.134.130 with SMTP id i124csp1225232lfd;
-        Sat, 9 Jan 2016 16:50:54 -0800 (PST)
-X-Received: by 10.140.40.37 with SMTP id w34mr81112935qgw.85.1452387053732;
-        Sat, 09 Jan 2016 16:50:53 -0800 (PST)
+Received: by 10.25.134.130 with SMTP id i124csp1470214lfd;
+        Sun, 10 Jan 2016 06:10:28 -0800 (PST)
+X-Received: by 10.55.207.217 with SMTP id v86mr20774266qkl.16.1452435028908;
+        Sun, 10 Jan 2016 06:10:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d69si18109080qhc.98.2016.01.09.16.50.53
+        by mx.google.com with ESMTPS id d9si72435702qgf.7.2016.01.10.06.10.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Jan 2016 16:50:53 -0800 (PST)
+        Sun, 10 Jan 2016 06:10:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44588 helo=lists.gnu.org)
+Received: from localhost ([::1]:47033 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aI4Dd-0005Di-Df
-	for alex.bennee@linaro.org; Sat, 09 Jan 2016 19:50:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56324)
+	id 1aIGhQ-0003nh-BY
+	for alex.bennee@linaro.org; Sun, 10 Jan 2016 09:10:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58773)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI4Db-00059z-4J
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:50:51 -0500
+	(envelope-from <digetx@gmail.com>) id 1aIGhN-0003nZ-LU
+	for qemu-arm@nongnu.org; Sun, 10 Jan 2016 09:10:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aI4Da-0006VF-BM
-	for qemu-arm@nongnu.org; Sat, 09 Jan 2016 19:50:51 -0500
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:32812)
+	(envelope-from <digetx@gmail.com>) id 1aIGhK-0004hT-Cd
+	for qemu-arm@nongnu.org; Sun, 10 Jan 2016 09:10:25 -0500
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:35238)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aI4DY-0006V0-HQ; Sat, 09 Jan 2016 19:50:48 -0500
-Received: by mail-wm0-x241.google.com with SMTP id u188so21100910wmu.0;
-	Sat, 09 Jan 2016 16:50:48 -0800 (PST)
+	(envelope-from <digetx@gmail.com>)
+	id 1aIGhK-0004hB-5E; Sun, 10 Jan 2016 09:10:22 -0500
+Received: by mail-lf0-x244.google.com with SMTP id c134so2700775lfb.2;
+	Sun, 10 Jan 2016 06:10:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=vUPDIbAA0+9kr+1I1r2wwSba5/PUUN6FFS3sgYkDW9E=;
-	b=Mz6jL6TbJPDa1dMOatElk1DgHOUZCbG73QHonVA134QG1XJoKiDDyOPipOE1PnTCw+
-	TKZFXmR1/OluFkskrYzngN0PvJRvQ9dnAy11iw8M+aWF7XTtIbmCaMfyL8JY+0AjABzm
-	+F30c6KvJNZF+Ue+E0i5Yusj4FpkWs3iA2o8aUNWlIjfdO2gveJKuuEDZVw7sn2HHCs3
-	OWNnGsKOJP70QIXaBj2j+dbx87x2vqvIY5k0vg49B1+xYi/Zj3YkBdqScI7lGLbJoTx9
-	ZnXA1b7w3EK/X/xHIckk8hzOY72xxerRFrgIOV3J3hN/ESGU1BddPSj+006XKZbpuPGG
-	QLpQ==
-MIME-Version: 1.0
-X-Received: by 10.28.64.137 with SMTP id n131mr5713632wma.96.1452387047886;
-	Sat, 09 Jan 2016 16:50:47 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Sat, 9 Jan 2016 16:50:47 -0800 (PST)
-In-Reply-To: <f515e61fa162411d0a75c3d0583780531fe8cc6e.1452359845.git.digetx@gmail.com>
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=34Vcy6p8pK0xBWtfZP6r7z+iyuAJg7yQDJxE3vJ2DIs=;
+	b=Ck6IwbK2aOLQCgkeeDzeuUpJ2PX62WXFBSCTkXchh5XPHH8Dx5WJEw868qfQUXbvu5
+	mFHWUTtQNAbYUnN+8RaLjQ5ALPR3V/4lGMBbhOQv0GjD9ib6kC/tQX10pL04VsgODXVv
+	S7pC1JFPBWL3VRr5PYUS35tHWA0YsOppQE9TwVoiJ6NB7pMxhS1fDZCBr6GfgeoOZbG0
+	GQi65xEfbH7u1PqFP7EGxwffQive1aOUgHyv6CjN2sFN7hcO7Oal90XT88yka30Y93m3
+	9NNPOYinUKFcJnDzKYUPmkihnrU26PasQniISqKkH8EtpB/EGVCOEVg+LYiVkHRgJIv6
+	S1jQ==
+X-Received: by 10.25.40.11 with SMTP id o11mr6101292lfo.71.1452435021348;
+	Sun, 10 Jan 2016 06:10:21 -0800 (PST)
+Received: from [192.168.1.145] (ppp46-138-151-163.pppoe.spdop.ru.
+	[46.138.151.163]) by smtp.googlemail.com with ESMTPSA id
+	64sm321767lfx.19.2016.01.10.06.10.20
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sun, 10 Jan 2016 06:10:20 -0800 (PST)
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 References: <cover.1452359845.git.digetx@gmail.com>
-	<f515e61fa162411d0a75c3d0583780531fe8cc6e.1452359845.git.digetx@gmail.com>
-Date: Sat, 9 Jan 2016 16:50:47 -0800
-Message-ID: <CAPokK=rLt6Fa=qhV8A-giqTSG0geQ9ae8bobtNopYJS+unNphw@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	<9bdf3e1d349c7cfc6d75cc37430fe4f177c20734.1452359845.git.digetx@gmail.com>
+	<CAPokK=qC77XBkNpHa1y_Dajd9Hv8+a-wx9iqC1dRumeKgvUvaA@mail.gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <56926634.8090507@gmail.com>
+Date: Sun, 10 Jan 2016 17:09:56 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAPokK=qC77XBkNpHa1y_Dajd9Hv8+a-wx9iqC1dRumeKgvUvaA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
+X-Received-From: 2a00:1450:4010:c07::244
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v10 4/7] hw/ptimer: Support "on the fly"
-	timer mode switch
+Subject: Re: [Qemu-arm] [PATCH v10 2/7] hw/ptimer: Perform tick and counter
+ wrap around if timer already expired
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,58 +80,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MxIMBJg9rENb
+X-TUID: +9kyQUgorfqw
 
-On Sat, Jan 9, 2016 at 9:39 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> Allow to switch between periodic <-> oneshot modes while timer is running.
+10.01.2016 03:44, Peter Crosthwaite пишет:
+> On Sat, Jan 9, 2016 at 9:39 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
+>> ptimer_get_count() might be called while QEMU timer already been expired.
+>> In that case ptimer would return counter = 0, which might be undesirable
+>> in case of polled timer. Do counter wrap around for periodic timer to keep
+>> it distributed. In order to achieve more accurate emulation behaviour of
+>> certain hardware, don't perform wrap around when in icount mode and return
+>> counter = 0 in that case (that doesn't affect polled counter distribution).
+>>
+>> In addition, there is no reason to keep expired timer tick deferred, so
+>> just perform the tick from ptimer_get_count().
+>>
+>> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+>> ---
+>>   hw/core/ptimer.c | 26 +++++++++++++++++++-------
+>>   1 file changed, 19 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+>> index c3d31cb..cf329eb 100644
+>> --- a/hw/core/ptimer.c
+>> +++ b/hw/core/ptimer.c
+>> @@ -83,14 +83,17 @@ static void ptimer_tick(void *opaque)
+>>
+>>   uint64_t ptimer_get_count(ptimer_state *s)
+>>   {
+>> -    int64_t now;
+>> +    int enabled = s->enabled;
+>
+> You haven't added any additional usages of s->enabled to really
+> warrant the new local variable, I think it should just stay as
+> s->enabled to avoid churn.
 >
 
-"Allow switching"
+Compiler doesn't know that ptimer struct is supposed to be thread-safe there and 
+infers memory load instructions rather than use pure cpu registers. Local 
+variable would help to produce somewhat more rational. However, given how 
+optimized and complex modern cpu's, I'm not really sure that it would bring any 
+benefit and agree that it might not worth churning. Thanks for review!
 
-> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
-> ---
->  hw/core/ptimer.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-> index 0a54212..6960738 100644
-> --- a/hw/core/ptimer.c
-> +++ b/hw/core/ptimer.c
-> @@ -167,16 +167,16 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
->
->  void ptimer_run(ptimer_state *s, int oneshot)
->  {
-> -    if (s->enabled) {
-> -        return;
-> -    }
-> -    if (s->period == 0) {
-> +    int was_disabled = !s->enabled;
-
-bool
-
-blank line here.
-
-Otherwise:
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
-Regards,
-Peter
-
-> +    if (was_disabled && s->period == 0) {
->          fprintf(stderr, "Timer with period zero, disabling\n");
->          return;
->      }
->      s->enabled = oneshot ? 2 : 1;
-> -    s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> -    ptimer_reload(s);
-> +    if (was_disabled) {
-> +        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> +        ptimer_reload(s);
-> +    }
->  }
->
->  /* Pause a timer.  Note that this may cause it to "lose" time, even if it
-> --
-> 2.6.4
->
+-- 
+Dmitry

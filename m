@@ -1,162 +1,193 @@
-Received: by 10.182.158.201 with SMTP id ww9csp6920532obb;
-        Mon, 28 Dec 2015 10:41:42 -0800 (PST)
-X-Received: by 10.140.94.20 with SMTP id f20mr48165808qge.95.1451328102115;
-        Mon, 28 Dec 2015 10:41:42 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 9si65880126qky.46.2015.12.28.10.41.42
+Received: by 10.25.134.130 with SMTP id i124csp1951402lfd;
+        Mon, 11 Jan 2016 05:04:50 -0800 (PST)
+X-Received: by 10.31.180.145 with SMTP id d139mr78876460vkf.83.1452517489269;
+        Mon, 11 Jan 2016 05:04:49 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x22f.google.com (mail-vk0-x22f.google.com. [2607:f8b0:400c:c05::22f])
+        by mx.google.com with ESMTPS id l18si63332189vke.96.2016.01.11.05.04.49
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Dec 2015 10:41:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 Jan 2016 05:04:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) client-ip=2607:f8b0:400c:c05::22f;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:45828 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aDcjl-0004QU-Rh
-	for alex.bennee@linaro.org; Mon, 28 Dec 2015 13:41:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32810)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aDcjT-00048s-Kr
-	for qemu-devel@nongnu.org; Mon, 28 Dec 2015 13:41:24 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aDcjS-0005f7-Nh
-	for qemu-devel@nongnu.org; Mon, 28 Dec 2015 13:41:23 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:34877)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aDcjS-0005ez-Jo
-	for qemu-devel@nongnu.org; Mon, 28 Dec 2015 13:41:22 -0500
-Received: by mail-vk0-x233.google.com with SMTP id k1so55635219vkb.2
-	for <qemu-devel@nongnu.org>; Mon, 28 Dec 2015 10:41:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=79HaPxZRNu4FFYl/cwS2kPvWF/7RPf0BbahkV+F4pc8=;
-	b=Wn/lMmOSKD3L1BvkA27N5Ts7HGhRn31U7IDm6whjyEsjPxUufa/tbhluffUWHwBySW
-	296ZyTczv8KFIEWY/sVBiZeELo+F9nHYJ27HkpKYIgPReXSAzt7fCvCctHTnFWUUjwKY
-	e3UqET5hnZgYDoAEJfjAsr5oLAZHkqrUItS7M=
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x22f.google.com with SMTP id k1so223520606vkb.2
+        for <alex.bennee@linaro.org>; Mon, 11 Jan 2016 05:04:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=Z9mnttMTcjfpN9D1nI7rq5purjLGzDht8Wzy+zyrVzQ=;
+        b=jcjowbnktAjURl7OV2EgKdV9MArwHaOQVvpH2J+NhA4SDGHHgL8sgt2eVY4Z2+/jKx
+         pSocguq760JLkMFP7b/h0Kzb14aG9YseSHiDWn+Z1n83PTm0Px4uJwAdzcqry2MzqCLs
+         7xt9ndhwSG0A3V12/DfO5AOQGO5CPCjo7ATkc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=79HaPxZRNu4FFYl/cwS2kPvWF/7RPf0BbahkV+F4pc8=;
-	b=C5tWvbrPe+fhb2PltJs8Fz9q0g8v53gN8PSvzW5N6XBtbHngcEKafCZ+pZnHfEi6Cr
-	4iKbfa6+Nujo4BVCjvXV/QgyKe5t3DfnCNbb93ueFpWXPvVm8HeTM4/wgjEwkxGO6Gfq
-	DT17wGbeNI/SqQQ7kwCW+v0pKzBkTBTjG5ZffV3eC+WkYH6uRT6m6PXNIAvdx/IMfD/y
-	rcYAi9SiFGNB8ZlUHQG1Na7yRoLtCTihTHQsVCcFKPp6dXlb/sH2hScVZaSPI6yD4iW8
-	Iy4YUObQXUH5jBsFOlnKdpGaEMGOplCN/uWyTvrlJOV65p6umZ4sAJ+1+L0GkM3rbbOU
-	fEkg==
-X-Gm-Message-State: ALoCoQmLO7rWWJRZjCvTHs8QT+kQ+9VS4H+/xvf61HqX0fE0cEgAnq014ZdkfWEE5mIXQGKEZB0vtuey/j4lfSDhJxGEZwHY51F42zJmCEChdkRqprbOjho=
-X-Received: by 10.31.52.147 with SMTP id b141mr28971101vka.82.1451328081421;
-	Mon, 28 Dec 2015 10:41:21 -0800 (PST)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=Z9mnttMTcjfpN9D1nI7rq5purjLGzDht8Wzy+zyrVzQ=;
+        b=Tnqh5By4SsSG06UD9oNlpPTTs0tWXmCF14a+q0HwRhz7BW+SoF4mmPdxjcIVa4hqJq
+         tC2/sI0Tsm2vfEeJIN2XNQZ8YN3n2sksvjhtxRuIDdV8yM6N66w/sqmGoXR7MxqR7JYj
+         x67saa9DmxkCkRDD3JJ0kDjjFMnVwXzwinCVd170f5ubGz4SWOxuMv6R2yvcLmCMcRQ3
+         dzBC6rbpd/l68hvDfl4GAipwY/qmA1B8grZnrbqcrnMBHKiVm71sO/1AkyJgnr+SiSGE
+         fGb+2zk7IoXbe0lBiGSW1T8oTjeylXXhwsgrl0iIN5izqDEt3MdlUj9MU7OJrhq+xpt4
+         4KWg==
+X-Gm-Message-State: ALoCoQn0m4jCC04gFxIOSg2qKuR3axS6aI2cSyZ3e+4yxS2iu6niRVAHef1Mz7p2sNCGyNviTCMX669ftMLl7N4NVludxDcEyjS4CTGAGruZEkZPUQh8YZU=
+X-Received: by 10.31.52.147 with SMTP id b141mr80978013vka.82.1452517488871;
+ Mon, 11 Jan 2016 05:04:48 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Mon, 28 Dec 2015 10:41:01 -0800 (PST)
-In-Reply-To: <5680506D.9050402@gmail.com>
-References: <1449101933-24928-1-git-send-email-mdavidsaver@gmail.com>
-	<1449101933-24928-6-git-send-email-mdavidsaver@gmail.com>
-	<CAFEAcA-0Z=rhtvO0o=WoAE4pBQ0Zqrj1n_OtcdW+2FAOd0FH9A@mail.gmail.com>
-	<5680506D.9050402@gmail.com>
+Received: by 10.31.153.15 with HTTP; Mon, 11 Jan 2016 05:04:29 -0800 (PST)
+In-Reply-To: <CAFEAcA_gObmE=dpG-sbB4xDUXWN2Gy5hkruMvhPGFAyueZ034Q@mail.gmail.com>
+References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org> <CAFEAcA_gObmE=dpG-sbB4xDUXWN2Gy5hkruMvhPGFAyueZ034Q@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Dec 2015 18:41:01 +0000
-Message-ID: <CAFEAcA9ot6iV93NesZQkHpSmJ_7rfrQ_NTs2u2pMk5hs0vCoYQ@mail.gmail.com>
-To: Michael Davidsaver <mdavidsaver@gmail.com>
+Date: Mon, 11 Jan 2016 13:04:29 +0000
+Message-ID: <CAFEAcA8=gJRZ_NiYi7db3BJ17AxKH+AUGPqsYL9JGWSP2zAL=g@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 00/19] Add support for multiple address
+ spaces per CPU and use it for ARM TrustZone
+To: QEMU Developers <qemu-devel@nongnu.org>
+Cc: Patch Tracking <patches@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v2 05/26] armv7m: add
-	armv7m_excp_running_prio()
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1837XunYjO4g
+X-TUID: W6fcenob2s0q
 
-On 27 December 2015 at 20:56, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
-> On 12/17/2015 09:36 AM, Peter Maydell wrote:
->> On 3 December 2015 at 00:18, Michael Davidsaver <mdavidsaver@gmail.com> wrote:
->>> Implements v7m exception priority algorithm
->>> using FAULTMASK, PRIMASK, BASEPRI, and the highest
->>> priority active exception.
->>>
->>> The number returned is the current execution priority
->>> which may be in the range [-2,0x7f] when an exception is active
->>> or 0x100 when no exception is active.
->>> ---
->>>  hw/intc/armv7m_nvic.c | 25 +++++++++++++++++++++++++
->>>  target-arm/cpu.h      |  1 +
->>>  2 files changed, 26 insertions(+)
->>>
->>> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
->>> index 6fc167e..0145ca7 100644
->>> --- a/hw/intc/armv7m_nvic.c
->>> +++ b/hw/intc/armv7m_nvic.c
->>> @@ -18,6 +18,8 @@
->>>
->>>  typedef struct {
->>>      GICState gic;
->>> +    uint8_t prigroup;
->>> +
->>>      struct {
->>>          uint32_t control;
->>>          uint32_t reload;
->>> @@ -116,6 +118,29 @@ static void systick_reset(nvic_state *s)
->>>      timer_del(s->systick.timer);
->>>  }
->>>
->>> +/* @returns the active (running) exception priority.
->>> + *    only a higher (numerically lower) priority can preempt.
->>> + */
->>> +int armv7m_excp_running_prio(ARMCPU *cpu)
->>> +{
->>> +    CPUARMState *env = &cpu->env;
->>> +    nvic_state *s = env->nvic;
->>> +    int running;
->>> +
->>> +    if (env->daif & PSTATE_F) { /* FAULTMASK */
->>> +        running = -1;
->>> +    } else if (env->daif & PSTATE_I) { /* PRIMASK */
->>> +        running = 0;
->>> +    } else if (env->v7m.basepri > 0) {
->>> +        /* BASEPRI==1 -> masks [1,255] (not same as PRIMASK==1) */
->>> +        running = env->v7m.basepri >> (s->prigroup+1);
->> This isn't right -- the effect of PRIGROUP is that we mask
->> out the lower (subgroup) bits, but the upper group bits stay
->> where they are rather than shifting down.
->>
->> So you want env->v7m.basepri & ~((1 << (s->prigroup + 1)) - 1);
->>
->> (the same mask you need to get the group priority for
->> an interrupt).
->
-> I don't know about "right", but it is consistent with how the
-> .prio_group field is now handled in the nvic.  So I think the final
-> behavior is as specified.
-
-The v7M ARM ARM is the authoritative source for "what is the
-right behaviour", and the pseudocode is I think fairly clear
-about how BASEPRI affects the running priority. If the current
-NVIC code is handling BASEPRI wrongly that's a bug in the NVIC
-code.
-
-> There is no functional reason that I do this.  I just think it makes the
-> DPRINTF messages easier to interpret.  If you feel strongly I can change
-> this.
-
-You need to get the right value here because otherwise we won't
-be implementing the spec correctly.
+Ping again (though I know Paolo said on IRC he'd put this on
+his list to look at). I have a rebased branch at
+  https://git.linaro.org/people/peter.maydell/qemu-arm.git multi-ases-2
+but the only differences are some minor fixes to conflicts in
+the virt board patches following the GPIO device going into master,
+so I'm not going to resend the patchset unless somebody specifically
+wants me to -- I think the patches on list should be ok for review
+purposes.
 
 thanks
 -- PMM
+
+On 15 December 2015 at 16:26, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Ping for a review request now we're pretty nearly done with 2.5 ?
+>
+> thanks
+> -- PMM
+>
+>
+> On 16 November 2015 at 14:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> This patch series adds support to QEMU's core exec/memory code for
+>> CPUs which have more than one address space, and uses it for
+>> ARM TrustZone. In particular, a TZ CPU will have two physical
+>> address spaces (Secure and Non-secure), and the patchset allows a
+>> board model to create these both separately and connect them to
+>> the CPU, so that we can have devices or memory which are visible
+>> only in the Secure address space. (We already have support for
+>> TZ in the CPU emulation itself, and support for devices like the
+>> GIC which respond differently to Secure and Non-secure accesses,
+>> so this is the last part of the puzzle for 32-bit.)
+>>
+>> The general approach is that we allow a target-* cpu to define
+>> more than one address space at initialization, allocating each
+>> one a small integer "address space index" (asidx). The target CPU
+>> also defines the mapping from memory transaction attributes to
+>> the asidx via a new QOM CPU method asidx_from_attrs. The memory
+>> and cputlb core code then use the asidx to look up memory regions
+>> in the correct AddressSpace (both at TLB fill time and in the
+>> io_read/write stage at runtime).
+>>
+>> Changes since v1:
+>>  * the biggest change is that rather than having the target-cpu
+>>    code pass us an asidx and storing asidxes in the IOTLB, we
+>>    now determine the address space index from the memory transaction
+>>    attributes. This has had effects all through the patchstack.
+>>  * some reshuffling of patch order (among other things, all the
+>>    core patches are now at the front, with the target-arm patches
+>>    next and the virt board last).
+>>  * added missing object_ref(OBJECT(cpu->memory)) when setting the
+>>    default value of cpu->memory
+>>  * don't allow sharing of ASes that weren't created via
+>>    address_space_init_shareable
+>>  * now only allocate cpu_ases array once (target has to set
+>>    cpu->num_ases before first call to cpu_address_space_init())
+>>  * new patch documenting tlb_set_page_with_attrs -- I no longer need
+>>    to add a new argument to this function, but didn't want to throw
+>>    away the doc comment I'd written...
+>>
+>> The 'add secure memory region to virt board' patch is still RFC
+>> because the device tree binding to say "device is secure-only" is
+>> still under discussion on the kernel mailing list; patch 19
+>> is a pure hack, and is here for testing purposes only.
+>>
+>> You can run OP-TEE on QEMU with these patches:
+>> see https://github.com/OP-TEE/optee_os for details of how to
+>> get, build and run it. The 'make run' will use the custom QEMU
+>> version that comes with OP-TEE (do that first to make sure your
+>> OP-TEE has built and works ok). To get it to use a locally built QEMU
+>> with these patches do:
+>>
+>> make run-only QEMU_PATH=/path/to/your/qemu/build/directory QEMU_EXTRA_ARGS='-machine secure=on'
+>>
+>> Notes on a couple of things the patchset doesn't address:
+>>  (1) image/romfile/kernel loading etc will load only into the nonsecure
+>> address space. This would be conceptually simple to implement (you just
+>> need to pass an AS into lots of functions) but since OP-TEE doesn't need
+>> it I felt it could safely be left for later rather than making this
+>> patchset bigger.
+>>
+>>  (2) Using multiple address spaces in one CPU won't work with KVM
+>> (and we assert if you try; nothing at the moment will attempt it).
+>> Using different address spaces in different CPUs in an SMP setup
+>> will also not work with KVM, but we don't assert on that because
+>> I wasn't sure where best to put the assert. (Also, it would be
+>> nice if we could do that, because the modelling for ARM SMP
+>> setups would really be cleaner if we could put the per-CPU
+>> devices and so on in a set of per-CPU ASes.)
+>>
+>> You can find a git branch with this patchset in here:
+>>  https://git.linaro.org/people/peter.maydell/qemu-arm.git multi-ases
+>>
+>> thanks
+>> -- PMM
+>>
+>>
+>> Peter Crosthwaite (2):
+>>   memory: Add address_space_init_shareable()
+>>   qom/cpu: Add MemoryRegion property
+>>
+>> Peter Maydell (17):
+>>   exec.c: Don't set cpu->as until cpu_address_space_init
+>>   exec.c: Allow target CPUs to define multiple AddressSpaces
+>>   exec-all.h: Document tlb_set_page_with_attrs, tlb_set_page
+>>   include/qom/cpu.h: Add new get_phys_page_attrs_debug method
+>>   include/qom/cpu.h: Add new asidx_from_attrs method
+>>   cputlb.c: Use correct address space when looking up
+>>     MemoryRegionSection
+>>   exec.c: Pass MemTxAttrs to iotlb_to_region so it uses the right AS
+>>   exec.c: Add cpu_get_address_space()
+>>   exec.c: Use cpu_get_phys_page_attrs_debug
+>>   exec.c: Use correct AddressSpace in watch_mem_read and watch_mem_write
+>>   target-arm: Add QOM property for Secure memory region
+>>   target-arm: Implement asidx_from_attrs
+>>   target-arm: Implement cpu_get_phys_page_attrs_debug
+>>   target-arm: Support multiple address spaces in page table walks
+>>   hw/arm/virt: Wire up memory region to CPUs explicitly
+>>   [RFC] hw/arm/virt: add secure memory region and UART
+>>   HACK: rearrange the virt memory map to suit OP-TEE
+>>
+>>  cpus.c                  |  13 +++++-
+>>  cputlb.c                |   9 +++--
+>>  exec.c                  | 103 +++++++++++++++++++++++++++++++++++-------------
+>>  hw/arm/virt.c           |  66 +++++++++++++++++++++++++------
+>>  include/exec/exec-all.h |  69 ++++++++++++++++++++++++++++----
+>>  include/exec/memory.h   |  18 +++++++++
+>>  include/hw/arm/virt.h   |   1 +
+>>  include/qom/cpu.h       |  57 ++++++++++++++++++++++++++-
+>>  memory.c                |  27 +++++++++++++
+>>  softmmu_template.h      |   4 +-
+>>  target-arm/cpu-qom.h    |   6 ++-
+>>  target-arm/cpu.c        |  35 +++++++++++++++-
+>>  target-arm/cpu.h        |  23 +++++++++++
+>>  target-arm/helper.c     |  15 ++++---
+>>  target-i386/cpu.c       |   7 +++-
+>>  15 files changed, 389 insertions(+), 64 deletions(-)
+>>
+>> --
+>> 1.9.1

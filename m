@@ -1,65 +1,73 @@
-Received: by 10.25.134.130 with SMTP id i124csp1475070lfd;
-        Sun, 10 Jan 2016 06:21:24 -0800 (PST)
-X-Received: by 10.55.21.163 with SMTP id 35mr25955642qkv.45.1452435683947;
-        Sun, 10 Jan 2016 06:21:23 -0800 (PST)
+Received: by 10.25.134.130 with SMTP id i124csp1822239lfd;
+        Mon, 11 Jan 2016 00:08:07 -0800 (PST)
+X-Received: by 10.55.71.146 with SMTP id u140mr156207738qka.14.1452499687788;
+        Mon, 11 Jan 2016 00:08:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w82si99966161qka.3.2016.01.10.06.21.23
+        by mx.google.com with ESMTPS id c92si63292801qgc.107.2016.01.11.00.08.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 10 Jan 2016 06:21:23 -0800 (PST)
+        Mon, 11 Jan 2016 00:08:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47058 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52298 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aIGrz-0005UZ-IC
-	for alex.bennee@linaro.org; Sun, 10 Jan 2016 09:21:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39106)
+	id 1aIXWJ-0006m8-Af
+	for alex.bennee@linaro.org; Mon, 11 Jan 2016 03:08:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xumeng1901@gmail.com>) id 1aI8fK-00082q-2v
-	for qemu-arm@nongnu.org; Sun, 10 Jan 2016 00:35:46 -0500
+	(envelope-from <p.fedin@samsung.com>) id 1aIXVu-0006Ho-UZ
+	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 03:07:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xumeng1901@gmail.com>) id 1aI8fG-0001CE-QV
-	for qemu-arm@nongnu.org; Sun, 10 Jan 2016 00:35:46 -0500
-Received: from mail-yk0-x235.google.com ([2607:f8b0:4002:c07::235]:33348)
+	(envelope-from <p.fedin@samsung.com>) id 1aIXVq-0000xX-Tq
+	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 03:07:42 -0500
+Received: from mailout2.w1.samsung.com ([210.118.77.12]:59538)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xumeng1901@gmail.com>) id 1aI8fG-0001Bk-M7
-	for qemu-arm@nongnu.org; Sun, 10 Jan 2016 00:35:42 -0500
-Received: by mail-yk0-x235.google.com with SMTP id k129so379631517yke.0
-	for <qemu-arm@nongnu.org>; Sat, 09 Jan 2016 21:35:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:content-type:content-transfer-encoding:subject:message-id:date
-	:to:mime-version;
-	bh=SVD2D3n3VFgFHg9qDG+Ng5i4NrBHBHu5p4Rram77Osc=;
-	b=t2KBPQJuKCd1DOHRSbMjqYJ694cyU5SOG9EkiZJ/qnIdEI5tTAyyGHfhju4DSlwB2z
-	HoLUJ0ACMSMUG+faXEsUxvgj6y1jdzh24q3eFkw2VAAMNwIyv2VvJyNol3exJNVp4DDi
-	K1pDlKweNw3t0mALrtsCLPGSQiAIOe3eAPMIAHS4TJ2i4alCTgBY8zorMqyWrCvfOczq
-	oDUH74CSyW+lLzT+ZBK8CzOhjkPaLwdcRKyPeW86iaiafeJVYKNnsEHDYeRldhODTWOw
-	uI2O6f7aybqBg0g/zv8+n7ZTLYZ4FLgZCNmoaxxHWGcRZks1SYvNFtJz+QsZNb6EO9x5
-	UBWA==
-X-Received: by 10.129.89.6 with SMTP id n6mr86852393ywb.102.1452404142058;
-	Sat, 09 Jan 2016 21:35:42 -0800 (PST)
-Received: from [192.168.0.103] (c-76-17-123-49.hsd1.ga.comcast.net.
-	[76.17.123.49]) by smtp.gmail.com with ESMTPSA id
-	b131sm69755735ywc.50.2016.01.09.21.35.41 for <qemu-arm@nongnu.org>
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 09 Jan 2016 21:35:41 -0800 (PST)
-From: Meng Xu <xumeng1901@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <8536B0ED-6417-4F65-99F7-1D49F950E24B@gmail.com>
-Date: Sun, 10 Jan 2016 00:35:40 -0500
-To: qemu-arm@nongnu.org
-Mime-Version: 1.0 (Mac OS X Mail 8.2 \(2104\))
-X-Mailer: Apple Mail (2.2104)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c07::235
-X-Mailman-Approved-At: Sun, 10 Jan 2016 09:21:22 -0500
-Subject: [Qemu-arm] aarch64 ivshmem issues
+	(envelope-from <p.fedin@samsung.com>) id 1aIXVq-0000we-O1
+	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 03:07:38 -0500
+Received: from eucpsbgm2.samsung.com (unknown [203.254.199.245])
+	by mailout2.w1.samsung.com
+	(Oracle Communications Messaging Server 7.0.5.31.0 64bit (built May 5
+	2014)) with ESMTP id <0O0S003NV3WMUC50@mailout2.w1.samsung.com> for
+	qemu-arm@nongnu.org; Mon, 11 Jan 2016 08:07:34 +0000 (GMT)
+X-AuditID: cbfec7f5-f79b16d000005389-a2-569362c64fe4
+Received: from eusync2.samsung.com ( [203.254.199.212])
+	by eucpsbgm2.samsung.com (EUCPMTA) with SMTP id F9.86.21385.6C263965;
+	Mon, 11 Jan 2016 08:07:34 +0000 (GMT)
+Received: from fedinw7x64 ([106.109.131.169])
+	by eusync2.samsung.com (Oracle Communications Messaging Server
+	7.0.5.31.0 64bit (built May  5 2014))
+	with ESMTPA id <0O0S00HGI3WL3O20@eusync2.samsung.com>; Mon,
+	11 Jan 2016 08:07:34 +0000 (GMT)
+From: Pavel Fedin <p.fedin@samsung.com>
+To: 'Meng Xu' <xumeng1901@gmail.com>, qemu-arm@nongnu.org
+References: <8536B0ED-6417-4F65-99F7-1D49F950E24B@gmail.com>
+In-reply-to: <8536B0ED-6417-4F65-99F7-1D49F950E24B@gmail.com>
+Date: Mon, 11 Jan 2016 11:07:33 +0300
+Message-id: <052c01d14c47$20860ca0$619225e0$@samsung.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=utf-8
+Content-transfer-encoding: quoted-printable
+X-Mailer: Microsoft Outlook 14.0
+Thread-index: AQFtcz45Xjs37VGpf8wWQ7dYjXG0Np+9pi6g
+Content-language: ru
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrNLMWRmVeSWpSXmKPExsVy+t/xK7rHkiaHGUx/IWaxoHshm8W7xY9Y
+	HZg8ds66y+7x5NpmpgCmKC6blNSczLLUIn27BK6MeSfvMxXcYa9Y8X8VewPjBLYuRk4OCQET
+	ifMPv7NC2GISF+6tB4pzcQgJLGWUWHN+OjuE851RYsOyxewgVWwC6hKnv35gAbFFBCwlvi3f
+	yARiCwnYSKzbdxVsKqeArcSLexsZQWxhAT2Jq42fwWpYBFQlXu5ZB1bDC9T7eNEOVghbUOLH
+	5HtAMzk4mIHmT5mSCxJmFtCWePLuAtRxChI7zr5mhFhrJHHs+HVmiBoRiWn/7jFPYBSchWTS
+	LIRJs5BMmoWkYwEjyypG0dTS5ILipPRcI73ixNzi0rx0veT83E2MkCD+uoNx6TGrQ4wCHIxK
+	PLwzdk0KE2JNLCuuzD3EKMHBrCTC28oxOUyINyWxsiq1KD++qDQntfgQozQHi5I478xd70OE
+	BNITS1KzU1MLUotgskwcnFINjBw82krxugpfljJ/m7Ip44y4lfu26oXVH/wNtvXvst0t82PH
+	3987owOdlxR8d5jve9J2i2ShVtvfKzNVjm9eK27+ZKfuepc5l0X5tzkXNrM7hom6X6urPmpz
+	quXR6/QmrYZbC3Z5L+XizTWebnY0+ILka3F+8QeejztUt7GeNP/NLXe77l24lhJLcUaioRZz
+	UXEiACyId4ReAgAA
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 210.118.77.12
+Subject: Re: [Qemu-arm] aarch64 ivshmem issues
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -73,45 +81,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2XCVq0wl5Pp5
+X-TUID: i4BQv0WCy2I5
 
-Hi All,
+ Hello!
 
-I am using the ivshmem device to create shared memory between an x86_64 =
-host and aarch64 guest.
-The guest has ubuntu server 14.04 installed with kernel version 3.13.0. =
-I wrote a kernel driver to
-drive the ivshmem device (as a pci driver) however, the driver was never =
-registered:
+> I am using the ivshmem device to create shared memory between an =
+x86_64 host and aarch64
+> guest. The guest has ubuntu server 14.04 installed with kernel version =
+3.13.0. I wrote a kernel
+> driver to drive the ivshmem device (as a pci driver) however, the =
+driver was never registered:
 
-Can anyone help me point out what is wrong?=20
+ There should be no problem with ivshmem itself on ARM64. Last year we =
+did some tests with it, and it worked fine out of the box.
+ Since you are saying that "the driver was never registered", then, =
+perhaps, something is wrong with your guest kernel config. For the =
+start, check whether PCI subsystem and PCI generic host is enabled. =
+Mainline kernels older than 4.3 do not support generic PCI host =
+controller on ARM64, therefore you have no PCI bus. If your distro has =
+older kernel, it is likely to suffer from this problem. Check 'lspci' =
+output on your guest.
 
-My qemu launch script looks like this:
-qemu-system-aarch64 -machine virt,highmem=3Doff -cpu cortex-a57 -m 1024M =
-\
-	-drive file=3D<path-to-img>,id=3Dhd0,if=3Dnone,format=3Dqcow2 \
-	-device virtio-blk-device,drive=3Dhd0 \
-	-device ivshmem,shm=3Dvshmtest,size=3D16M \
-	-kernel <path-to-kernel> \
-	-initrd <path-to-initrd> \
+Kind regards,
+Pavel Fedin
+Expert Engineer
+Samsung Electronics Research center Russia
 
 
-The skeleton of the kernel driver is like this:
-static struct pci_device_id vshmem_id_table[] =3D {
-	{ 0x1af4, 0x1110, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0 },
-	{ 0 },
-};
-
-static struct pci_driver vshmem_driver =3D {
-	.name 	=3D =E2=80=9Cvshmtest=E2=80=9D,
-	.id_table	=3D vshmem_id_table,
-	.probe	=3D vshmem_probe_device,
-	.remove	=3D vshmem_remove_device,
-};
-
-somewhere in module init:
-	pci_register_driver(&vshmem_driver);
-
-The same driver code works well with x86_64 and ppc64.
-
-Best Regards,=

@@ -1,72 +1,83 @@
-Received: by 10.25.134.130 with SMTP id i124csp1974246lfd;
-        Mon, 11 Jan 2016 05:47:08 -0800 (PST)
-X-Received: by 10.194.6.37 with SMTP id x5mr127711055wjx.178.1452520028934;
-        Mon, 11 Jan 2016 05:47:08 -0800 (PST)
-Return-Path: <paolo.bonzini@gmail.com>
-Received: from mail-wm0-x242.google.com (mail-wm0-x242.google.com. [2a00:1450:400c:c09::242])
-        by mx.google.com with ESMTPS id v9si198836172wje.152.2016.01.11.05.47.08
+Received: by 10.25.134.130 with SMTP id i124csp1992672lfd;
+        Mon, 11 Jan 2016 06:18:43 -0800 (PST)
+X-Received: by 10.31.52.133 with SMTP id b127mr73768207vka.77.1452521923797;
+        Mon, 11 Jan 2016 06:18:43 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x22f.google.com (mail-vk0-x22f.google.com. [2607:f8b0:400c:c05::22f])
+        by mx.google.com with ESMTPS id k202si74038472vke.149.2016.01.11.06.18.43
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Jan 2016 05:47:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of paolo.bonzini@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) client-ip=2a00:1450:400c:c09::242;
+        Mon, 11 Jan 2016 06:18:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) client-ip=2607:f8b0:400c:c05::22f;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of paolo.bonzini@gmail.com designates 2a00:1450:400c:c09::242 as permitted sender) smtp.mailfrom=paolo.bonzini@gmail.com;
-       dkim=pass header.i=@gmail.com
-Received: by mail-wm0-x242.google.com with SMTP id b14so26405139wmb.1;
-        Mon, 11 Jan 2016 05:47:08 -0800 (PST)
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22f as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x22f.google.com with SMTP id a123so194039823vkh.1
+        for <alex.bennee@linaro.org>; Mon, 11 Jan 2016 06:18:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=VFyI1QzZFE00RB4KhyEpQEqcajV8kvNvEmfMVekPspE=;
-        b=k64Zrt2Mtsvcsc9jR2UbuDCso0KpbmRSXufJ/k/Duw7Y7fXLEwt6hgqMQSUP7g/37Y
-         o0DdJq5xnd4C8Y62/C6NYvmZIGbWILIeqHKD/UwQM5UHti+is2Nio12LGIFJ7xvW6+yK
-         s2TRlBT3M0OrpiIT3QJoRagJaleOmKbxsAWI4Fi8931dZZox0m4kkPc30csMru48j5j6
-         YeaCtOqMdEnmMXZoZQzW2M0RvxD8EzfZemvBbikBpQqGZzbDP1IWJO+JoU15/5wGdHu5
-         u+9Y9G7bLhYQu6Ajh3rQxxJEvUHy3yrw24lAcFg+O56Lf8rzxIgboTKHN1j7SrLWOVvR
-         w9fQ==
-X-Received: by 10.194.192.71 with SMTP id he7mr21176608wjc.82.1452520028182;
-        Mon, 11 Jan 2016 05:47:08 -0800 (PST)
-Return-Path: <paolo.bonzini@gmail.com>
-Received: from [192.168.10.150] (94-39-195-126.adsl-ull.clienti.tiscali.it. [94.39.195.126])
-        by smtp.googlemail.com with ESMTPSA id ei9sm12004769wjd.40.2016.01.11.05.47.05
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Mon, 11 Jan 2016 05:47:06 -0800 (PST)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-Subject: Re: [PATCH v2 09/19] exec.c: Use cpu_get_phys_page_attrs_debug
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
- <1447682723-3977-10-git-send-email-peter.maydell@linaro.org>
-Cc: patches@linaro.org, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5693B259.2030106@redhat.com>
-Date: Mon, 11 Jan 2016 14:47:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.4.0
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=mckZmOtvANQe64+T/2B0CwgUrh3x4+RmVZqoPsskO+Q=;
+        b=jvvjdOnP2+qG6IQcLpVnzPADBMi213KF3tgHY2ynDaMzdO+z19Zgs8XVTT06zmHVdq
+         Df11EzF8vwAgnPZN2p92vuhscpk2VrM2EDks2rZbOQPCqsJ48avNpoklruPfj0Ys0E81
+         6iG3baJ3rxbh8+VHzWYBMILXWfc2AEhl/0R3s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=mckZmOtvANQe64+T/2B0CwgUrh3x4+RmVZqoPsskO+Q=;
+        b=cU8K2gfHpuavX9RIyZmuLTMc53CUCZ339dobxlf8T5s+5oBzMeHOwqA0wG1p6PDjQW
+         A+bhdNR67T/W9SfxXGam8GVCaKcsPdhUwbOctfwL5fTfbolN9o73+21WJByP4XuLWS3b
+         nQt/SMISEYRULBVOL6je6MWr22nu4eAQkehIsgjvGRmOnau9gH1Uv5yvz56LF04QfdF/
+         LMwvkUXmSIgf7E56d4RfwC7fSGRaa8GYhG68s+CEatiPTNaGUbFVWYWxPfni9pYoVqLb
+         C4qXUigsMf+KyScHfzqvPgG1nWM65mIpV9a2YsZ8WpDwjaybJBX5TEr34vs4/cyzGbKa
+         9Idw==
+X-Gm-Message-State: ALoCoQle8k9b67lwiyyKRDbLTIUvC8GsDNeKGPufEjoaDMct4muHeKTAuZo/nklaY+79wa4BJiqTFfK2FnJ1EyNEaE49McfX0fn1YH1iAbqHzfkmT0jlLzU=
+X-Received: by 10.31.194.21 with SMTP id s21mr88264334vkf.92.1452521923398;
+ Mon, 11 Jan 2016 06:18:43 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1447682723-3977-10-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: 37OW8EtDVF0q
+Received: by 10.31.153.15 with HTTP; Mon, 11 Jan 2016 06:18:23 -0800 (PST)
+In-Reply-To: <5693B259.2030106@redhat.com>
+References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
+ <1447682723-3977-10-git-send-email-peter.maydell@linaro.org> <5693B259.2030106@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 11 Jan 2016 14:18:23 +0000
+Message-ID: <CAFEAcA_L-QiV5Wbf6SVVnbKU06TC=VZUL-9SBGkOomqvb8QvOA@mail.gmail.com>
+Subject: Re: [PATCH v2 09/19] exec.c: Use cpu_get_phys_page_attrs_debug
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Content-Type: text/plain; charset=UTF-8
+X-TUID: XwBwxqypo/Y8
 
+On 11 January 2016 at 13:47, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+>
+> On 16/11/2015 15:05, Peter Maydell wrote:
+>> -    hwaddr phys = cpu_get_phys_page_debug(cpu, pc);
+>> +    MemTxAttrs attrs = {};
+>> +    hwaddr phys = cpu_get_phys_page_attrs_debug(cpu, pc, &attrs);
+>> +    int asidx = cpu_asidx_from_attrs(cpu, attrs);
+>>      if (phys != -1) {
+>> -        tb_invalidate_phys_addr(cpu->as,
+>> +        tb_invalidate_phys_addr(cpu->cpu_ases[asidx].as,
+>>                                  phys | (pc & ~TARGET_PAGE_MASK));
+>>      }
+>
+> The only question I have is whether it is right to have empty MemTxAttrs
+> here.  Is there any way to use the MemTxAttrs for the "current state" of
+> the CPU, whatever that is (on x86 I have added cpu_get_mem_attrs to
+> target-i386/cpu.h)?
 
+That's what the call to cpu_get_phys_page_attrs_debug() does:
+it fills in the MemTxAttrs :secure and :user fields, and then
+cpu_asidx_from_attrs() uses the returned attributes to pick
+the right address space. (cpu_get_phys_page_attrs_debug()
+only fills in attribute fields it knows about, which is why
+we pass it an empty attrs struct to start with.)
 
-On 16/11/2015 15:05, Peter Maydell wrote:
-> -    hwaddr phys = cpu_get_phys_page_debug(cpu, pc);
-> +    MemTxAttrs attrs = {};
-> +    hwaddr phys = cpu_get_phys_page_attrs_debug(cpu, pc, &attrs);
-> +    int asidx = cpu_asidx_from_attrs(cpu, attrs);
->      if (phys != -1) {
-> -        tb_invalidate_phys_addr(cpu->as,
-> +        tb_invalidate_phys_addr(cpu->cpu_ases[asidx].as,
->                                  phys | (pc & ~TARGET_PAGE_MASK));
->      }
-
-The only question I have is whether it is right to have empty MemTxAttrs
-here.  Is there any way to use the MemTxAttrs for the "current state" of
-the CPU, whatever that is (on x86 I have added cpu_get_mem_attrs to
-target-i386/cpu.h)?
-
-Paolo
+thanks
+-- PMM

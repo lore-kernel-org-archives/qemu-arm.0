@@ -1,98 +1,84 @@
-Received: by 10.25.159.19 with SMTP id i19csp288532lfe;
-        Mon, 11 Jan 2016 20:31:17 -0800 (PST)
-X-Received: by 10.107.155.149 with SMTP id d143mr69599180ioe.118.1452573075100;
-        Mon, 11 Jan 2016 20:31:15 -0800 (PST)
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id w70si5519187iod.187.2016.01.11.20.31.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Jan 2016 20:31:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+Received: by 10.25.159.19 with SMTP id i19csp498632lfe;
+        Tue, 12 Jan 2016 05:10:05 -0800 (PST)
+X-Received: by 10.194.93.102 with SMTP id ct6mr132615916wjb.157.1452604205080;
+        Tue, 12 Jan 2016 05:10:05 -0800 (PST)
+Return-Path: <pm215@archaic.org.uk>
+Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
+        by mx.google.com with ESMTPS id j6si31171240wmj.0.2016.01.12.05.10.04
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 12 Jan 2016 05:10:05 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 6677C1402EC; Tue, 12 Jan 2016 15:31:12 +1100 (AEDT)
-Date: Tue, 12 Jan 2016 15:28:56 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eric Auger <eric.auger@linaro.org>
-Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	peter.maydell@linaro.org, alex.williamson@redhat.com,
-	alex.bennee@linaro.org, thuth@redhat.com,
-	crosthwaitepeter@gmail.com, patches@linaro.org,
-	christoffer.dall@linaro.org, pbonzini@redhat.com,
-	b.reynal@virtualopensystems.com, suravee.suthikulpanit@amd.com,
-	thomas.lendacky@amd.com
-Subject: Re: [PATCH v2 3/7] device_tree: introduce qemu_fdt_node_path
-Message-ID: <20160112042856.GQ22925@voom.redhat.com>
-References: <1452093205-30167-1-git-send-email-eric.auger@linaro.org>
- <1452093205-30167-4-git-send-email-eric.auger@linaro.org>
- <20160111023853.GB22925@voom.redhat.com>
- <56938586.5050503@linaro.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="YttKMwf6abDJOSyE"
-Content-Disposition: inline
-In-Reply-To: <56938586.5050503@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-TUID: hJUkMmRHveNB
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aIyi4-00075D-3h; Tue, 12 Jan 2016 13:10:04 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] disas/libvixl: Suppress gcc 4.6.3 sign-compare warnings
+Date: Tue, 12 Jan 2016 13:10:04 +0000
+Message-Id: <1452604204-27202-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.7.10.4
+X-TUID: +EUKJKsb09GQ
 
+The VIXL code includes some equality comparisons between signed
+and unsigned types. Modern gcc and clang do not complain about
+these, but older versions of gcc such as gcc 4.6.3 do. Since
+libvixl is an upstream library, the simplest approach is to
+suppress the warnings by applying -Wno-sign-compare to the
+relevant files.
 
---YttKMwf6abDJOSyE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+(GCC 4.6 is not quite yet irrelevant for us; it is the gcc
+shipped with Ubuntu Precise, for example, which is an LTS
+release not yet out of its support period.)
 
-On Mon, Jan 11, 2016 at 11:35:50AM +0100, Eric Auger wrote:
-> Hi David,
-> On 01/11/2016 03:38 AM, David Gibson wrote:
-> > On Wed, Jan 06, 2016 at 03:13:21PM +0000, Eric Auger wrote:
-> >> This new helper routine returns the node path of a device
-> >> referred to by its node name and compat string.
-> >=20
-> > What if there are multiple nodes matching the name and compat?
-> The function would return the first one. I can improve the doc comment.
-> Do you think it is a problem stopping at the first one? Is it a real
-> life test case I have to handle here?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I had mistakenly thought these warnings only happened with
+the totally ancient mingw gcc, but it turns out they're a
+bit more widespread. In particular this is causing our
+Travis builds to fail:
+  https://travis-ci.org/qemu/qemu/jobs/101813358
 
-Well, I don't know of a specific system which will have this, but it's
-absolutely possible to get this situation:  e.g. two different PCI
-busses, both of which have their own slot 0 populated with different
-instances of the same device.
+If somebody could review this then I'll apply it to master
+as a buildfix.
+---
+ disas/Makefile.objs         | 5 ++++-
+ disas/libvixl/Makefile.objs | 4 +++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-Whether it's possible for platform devices will depend on the
-platform's specific bus toplogies, but you certainly can't rule it out
-in general.
-
-I could consider adding a new libfdt function like
-fdt_node_offset_by_compatible() that searches by name as well.  It's
-just I'm not sure that matching by name and compatible isn't a sign of
-a poor approach in the caller.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---YttKMwf6abDJOSyE
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWlIEIAAoJEGw4ysog2bOSsj8P/2MoSbHfmx5g4MjQp/fWL84K
-K8zF8thQjJ6K5UcDyQIo7CtjmO7lkXCI/aEltny/j7vbijRlVbRPyiFzyuVrI0Ft
-SbQz0IhXc5aJUQitO1eNn6KRMxM6wk1ji6ID6kENjDn68hbNfqyOhzLes77gVOPG
-cY+1EqvkdQ5dawz0rXDtUR3QEBAvEf990slI9UJiBY8m/ZpQKTEtrwzQ/Zk94MGP
-HxRYCtwow4+wVnnLXq4jekgkXhjykFauW72HIe2NvihKplh2AvF5e7pj2NsVu7yA
-usiY20Nf/QCMonLKz8IaUEm2OuAveDbwn+kDjIPNGVW9b/xgp++oGWGmnetW9IZq
-f+i1DpThHWOvmp+pyZcXD/jUO5kIMH1XjJfPhjScNZD/x0ShCo305WvTuBLmJ7y3
-EvShOvdmGmcd71x0IIqHAMtldJDUxfpUhjlsrMKhV2w6MJ2MTX6FkHw/V0+iXCti
-93ySTgvYuG0iae8TAxuoZffiY0R5GbmJYZTfuM6hM7lEKodtyu6S4VEZdtDXqjO1
-1Be0w/pDqvmZLbbZ7XWfUneQ+Tl6d3Z9KGib4kkCvgEEMQyVDIOa4MU1Vo6hUoJD
-bQTiuVugXhXz4mdo/RFDLL5IuZU5SY7i4ll3xhh4wCfWgbckR51EVPCFJ2jYkrbX
-IUlCvJR+jFkxugWPqpvm
-=u6gS
------END PGP SIGNATURE-----
-
---YttKMwf6abDJOSyE--
+diff --git a/disas/Makefile.objs b/disas/Makefile.objs
+index 8dae4da..abeba84 100644
+--- a/disas/Makefile.objs
++++ b/disas/Makefile.objs
+@@ -4,7 +4,10 @@ common-obj-$(CONFIG_ARM_DIS) += arm.o
+ common-obj-$(CONFIG_ARM_A64_DIS) += arm-a64.o
+ common-obj-$(CONFIG_ARM_A64_DIS) += libvixl/
+ libvixldir = $(SRC_PATH)/disas/libvixl
+-arm-a64.o-cflags := -I$(libvixldir)
++# The -Wno-sign-compare is needed only for gcc 4.6, which complains about
++# some signed-unsigned equality comparisons in libvixl which later gcc
++# versions do not.
++arm-a64.o-cflags := -I$(libvixldir) -Wno-sign-compare
+ common-obj-$(CONFIG_CRIS_DIS) += cris.o
+ common-obj-$(CONFIG_HPPA_DIS) += hppa.o
+ common-obj-$(CONFIG_I386_DIS) += i386.o
+diff --git a/disas/libvixl/Makefile.objs b/disas/libvixl/Makefile.objs
+index e373cf0..d1e801a 100644
+--- a/disas/libvixl/Makefile.objs
++++ b/disas/libvixl/Makefile.objs
+@@ -4,6 +4,8 @@ libvixl_OBJS = vixl/utils.o \
+                vixl/a64/decoder-a64.o \
+                vixl/a64/disasm-a64.o
+ 
+-$(addprefix $(obj)/,$(libvixl_OBJS)): QEMU_CFLAGS := -I$(SRC_PATH)/disas/libvixl $(QEMU_CFLAGS)
++# The -Wno-sign-compare is needed only for gcc 4.6, which complains about
++# some signed-unsigned equality comparisons which later gcc versions do not.
++$(addprefix $(obj)/,$(libvixl_OBJS)): QEMU_CFLAGS := -I$(SRC_PATH)/disas/libvixl -Wno-sign-compare $(QEMU_CFLAGS)
+ 
+ common-obj-$(CONFIG_ARM_A64_DIS) += $(libvixl_OBJS)
+-- 
+1.9.1

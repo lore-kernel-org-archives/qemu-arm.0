@@ -1,72 +1,72 @@
-Received: by 10.25.159.19 with SMTP id i19csp278574lfe;
-        Mon, 11 Jan 2016 19:57:01 -0800 (PST)
-X-Received: by 10.140.219.136 with SMTP id p130mr176693708qhb.80.1452571021086;
-        Mon, 11 Jan 2016 19:57:01 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp278936lfe;
+        Mon, 11 Jan 2016 19:58:09 -0800 (PST)
+X-Received: by 10.140.32.203 with SMTP id h69mr41809511qgh.55.1452571089318;
+        Mon, 11 Jan 2016 19:58:09 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d9si34348672qkb.119.2016.01.11.19.57.00
+        by mx.google.com with ESMTPS id i9si50548115qkh.31.2016.01.11.19.58.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jan 2016 19:57:01 -0800 (PST)
+        Mon, 11 Jan 2016 19:58:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57925 helo=lists.gnu.org)
+Received: from localhost ([::1]:57930 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aIq4q-0006w0-Nv
-	for alex.bennee@linaro.org; Mon, 11 Jan 2016 22:57:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57298)
+	id 1aIq5w-0007vF-Va
+	for alex.bennee@linaro.org; Mon, 11 Jan 2016 22:58:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57466)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq4n-0006sm-HF
-	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 22:56:59 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq5t-0007qg-Gl
+	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 22:58:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq4l-0001L9-Sf
-	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 22:56:57 -0500
-Received: from mail-pa0-x244.google.com ([2607:f8b0:400e:c03::244]:33135)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq5r-0001T3-RV
+	for qemu-arm@nongnu.org; Mon, 11 Jan 2016 22:58:05 -0500
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:33132)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aIq4f-0001JO-NL; Mon, 11 Jan 2016 22:56:49 -0500
-Received: by mail-pa0-x244.google.com with SMTP id pv5so26312119pac.0;
-	Mon, 11 Jan 2016 19:56:49 -0800 (PST)
+	id 1aIq5l-0001SW-V4; Mon, 11 Jan 2016 22:57:58 -0500
+Received: by mail-pf0-x244.google.com with SMTP id e65so4346560pfe.0;
+	Mon, 11 Jan 2016 19:57:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:date:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=11FJsCKyC1vd40S+0REl/FnIq7C0H2xhj2+AahAfIm4=;
-	b=Aj14BN7DL9/yJRjz9xzVZDT0OUlNS4pgeR5zHmfr9rzznwR907r2eNLebhPaiE8/ON
-	VwATajzxRroWSBfQIPiw+QFgnZCy5i9gu3z5MVyQL5bMm3rFAHPMBq8X/EPGJ8jheSDR
-	0b0mjn2VzCO9fp9A1uR8jPV4CwXDggweLqXjw1yc8A8xujWlq3BlqEsPGAZdIPCK61+J
-	esoSal5EE/WW4GsAuUbLR4JHjWVNbwBP/JXloyPwsEOnp5lwvzzUhdBF9qW4uagMNK7A
-	6rI8dKhQzq3iW3B38tE51qT7dGe3F9JQgCNfH7f7Gw65U45d1YIWMI1M0qQsXwlJAYcy
-	ER4A==
-X-Received: by 10.66.252.102 with SMTP id zr6mr100640951pac.66.1452571009152; 
-	Mon, 11 Jan 2016 19:56:49 -0800 (PST)
+	bh=9iacchMy5Oo/SdbvKeU0t7fNnrXlxaUuo6GyxBbCuOU=;
+	b=xggr8PhPvbgGFdy4//cEbS3dDzCEbq1HRRpmIKFV5/TbEIP4MQX8KezvwA+adanJVU
+	AodJlxW+zj00vIynyYHnwO0nlv+aiWYMCu6/AOyuQVIxlkUt+TmNt69U+B1KNg/c0Gdi
+	BsesaXHijr+uNdjoP0MtUQWAhzS2UEdHOtqsTRfb0LuTGnFGBKveD+yCQlgr4cuin4Kt
+	8ieL1MfKnLjvT9ktwaTBuy1Yolr8hbYXiGiBay980RABdnVzSz4JVhhNboIOdzXmsuby
+	GHS1teFGbpdEhi4waQUjIl7s/POFyG6fp625dRBmgn1/aUbiN+Uc9NH/ETRUhujOHBR7
+	bU5w==
+X-Received: by 10.98.64.215 with SMTP id f84mr31350994pfd.113.1452571077344;
+	Mon, 11 Jan 2016 19:57:57 -0800 (PST)
 Received: from pcrost-box (c-73-70-184-119.hsd1.ca.comcast.net.
 	[73.70.184.119]) by smtp.gmail.com with ESMTPSA id
-	m87sm26370988pfi.47.2016.01.11.19.56.47
+	v7sm26391318pfa.77.2016.01.11.19.57.55
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 11 Jan 2016 19:56:48 -0800 (PST)
+	Mon, 11 Jan 2016 19:57:56 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Mon, 11 Jan 2016 19:56:45 -0800
+Date: Mon, 11 Jan 2016 19:57:53 -0800
 To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Message-ID: <20160112035645.GC3308@pcrost-box>
+Message-ID: <20160112035753.GD3308@pcrost-box>
 References: <1451608294-16432-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<1451608294-16432-7-git-send-email-Andrew.Baumann@microsoft.com>
+	<1451608294-16432-8-git-send-email-Andrew.Baumann@microsoft.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1451608294-16432-7-git-send-email-Andrew.Baumann@microsoft.com>
+In-Reply-To: <1451608294-16432-8-git-send-email-Andrew.Baumann@microsoft.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::244
+X-Received-From: 2607:f8b0:400e:c00::244
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?iso-8859-1?Q?Gr=E9gory?= ESTRADE <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v3 6/7] bcm2836: add bcm2836 soc device
+Subject: Re: [Qemu-arm] [PATCH v3 7/7] raspi: add raspberry pi 2 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -80,282 +80,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t8d4A5BUcNSn
+X-TUID: 8xWkIgm4uRoo
 
-On Thu, Dec 31, 2015 at 04:31:33PM -0800, Andrew Baumann wrote:
-> This is the SoC for Raspberry Pi 2.
+On Thu, Dec 31, 2015 at 04:31:34PM -0800, Andrew Baumann wrote:
+> bcm2835/Pi1 requires more peripherals, and will be added in a later
+> patch series.
 > 
 > Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 > ---
-> The use of smp_cpus is dubious here. Ideally it should be passed as a
-> property from the board, but I found that simply initialising (and not
-> later realizing) an ARM cpu had unintended side-effects. Is it ok to
-> defer the object_initialize call to the realize method, when we know
-> how many CPUs are configured?
 > 
->  hw/arm/Makefile.objs     |   2 +-
->  hw/arm/bcm2836.c         | 155 +++++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/bcm2836.h |  33 ++++++++++
->  3 files changed, 189 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/bcm2836.c
->  create mode 100644 include/hw/arm/bcm2836.h
+> Notes:
+>     v3:
+>      * fix board setup to remain Pi1 compatible
+>      * pass ram property
+> 
+>  hw/arm/Makefile.objs |   2 +-
+>  hw/arm/raspi.c       | 180 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 181 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/raspi.c
 > 
 > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 82cc142..f55f8d2 100644
+> index f55f8d2..a711e4d 100644
 > --- a/hw/arm/Makefile.objs
 > +++ b/hw/arm/Makefile.objs
 > @@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
 >  obj-$(CONFIG_DIGIC) += digic.o
 >  obj-y += omap1.o omap2.o strongarm.o
 >  obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> -obj-$(CONFIG_RASPI) += bcm2835_peripherals.o
-> +obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o
+> -obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o
+> +obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
 >  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
 >  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
 >  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
-> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
 > new file mode 100644
-> index 0000000..bec7667
+> index 0000000..b73f544
 > --- /dev/null
-> +++ b/hw/arm/bcm2836.c
-> @@ -0,0 +1,155 @@
+> +++ b/hw/arm/raspi.c
+> @@ -0,0 +1,180 @@
 > +/*
 > + * Raspberry Pi emulation (c) 2012 Gregory Estrade
 > + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
 > + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
+> + * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
 > + * Written by Andrew Baumann
 > + *
 > + * This code is licensed under the GNU GPLv2 and later.
 > + */
 > +
+> +/* Based on versatilepb.c, copyright terms below. */
+> +
+> +/*
+
+No need to break and restart comments.
+
+> + * ARM Versatile Platform/Application Baseboard System emulation.
+> + *
+
+Looks unrelated, I think this has reached total-rewrite status.
+
+> + * Copyright (c) 2005-2007 CodeSourcery.
+> + * Written by Paul Brook
+> + *
+> + * This code is licensed under the GPL.
+> + */
+> +
 > +#include "hw/arm/bcm2836.h"
-> +#include "hw/arm/raspi_platform.h"
-> +#include "hw/sysbus.h"
-> +#include "sysemu/sysemu.h" /* for smp_cpus */
-> +#include "exec/address-spaces.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/boards.h"
+> +#include "hw/loader.h"
+> +#include "hw/arm/arm.h"
+> +#include "sysemu/sysemu.h"
 > +
-> +/* Peripheral base address seen by the CPU */
-> +#define BCM2836_PERI_BASE       0x3F000000
+> +#define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
+> +#define MVBAR_ADDR      0x400 /* secure vectors */
+> +#define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
+> +#define FIRMWARE_ADDR   0x8000 /* Pi loads kernel.img here by default */
 > +
-> +/* "QA7" (Pi2) interrupt controller and mailboxes etc. */
-> +#define BCM2836_CONTROL_BASE    0x40000000
+> +/* Table of Linux board IDs for different Pi versions */
+> +static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
 > +
-> +static void bcm2836_init(Object *obj)
+> +typedef struct RaspiMachineState {
+> +    union {
+> +        Object obj;
+> +        BCM2836State pi2;
+> +    } soc;
+> +    MemoryRegion ram;
+> +} RaspiMachineState;
+> +
+> +static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
 > +{
-> +    BCM2836State *s = BCM2836(obj);
-> +    int n;
+> +    static const uint32_t smpboot[] = {
+> +        0xE1A0E00F, /*    mov     lr, pc */
+> +        0xE3A0FE42, /*    mov     pc, #0x420           ;call BOARDSETUP_ADDR */
+
+Check highbank blobs to see how machine code addresses can be done as
+relocatable. We should try and make these blobs relocatable from the top
+level address definitions where possible.
+
+> +        0xEE100FB0, /*    mrc     p15, 0, r0, c0, c0, 5;get core ID */
+> +        0xE7E10050, /*    ubfx    r0, r0, #0, #2       ;extract LSB */
+> +        0xE59F5014, /*    ldr     r5, =0x400000CC      ;load mbox base */
+> +        0xE320F001, /* 1: yield */
+> +        0xE7953200, /*    ldr     r3, [r5, r0, lsl #4] ;read mbox for our core*/
+> +        0xE3530000, /*    cmp     r3, #0               ;spin while zero */
+> +        0x0AFFFFFB, /*    beq     1b */
+> +        0xE7853200, /*    str     r3, [r5, r0, lsl #4] ;clear mbox */
+> +        0xE12FFF13, /*    bx      r3                   ;jump to target */
+> +        0x400000CC, /* (constant: mailbox 3 read/clear base) */
+> +    };
 > +
-> +    /* TODO: probably shouldn't be using smp_cpus here */
-
-I agree. I have started ignoring smp_cpus completely for new ARM SoCs,
-as if you change the number of CPUs for a SoC, it is not that SoC
-anymore. The virt platform is suitable for CPU scalability, whereas
-with ARM SoCs, cpu # variation is invalid.
-
-> +    assert(smp_cpus <= BCM2836_NCPUS);
-> +    for (n = 0; n < smp_cpus; n++) {
-
-So can we just use BCM2836_NCPUS here as the loop bound? Any
-conditionals out there check the existance of CPUs can be removed or
-promoted to assert() as a BCM2836 must always have 4 CPUs.
-
-> +        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
-> +                          "cortex-a15-" TYPE_ARM_CPU);
-> +        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
-> +                                  &error_abort);
-> +    }
-> +
-> +    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2836_CONTROL);
-> +    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-
-Why "ic"? The TYPE_ and the field name are inconsistent. Is it specifically
-and interrupt controller or is it generic controller? (My scan of the doc
-made me think its a home-grown mpcore). Maybe the field name and string name
-should be "cntl"?
-
-> +    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-> +
-> +    object_initialize(&s->peripherals, sizeof(s->peripherals),
-> +                      TYPE_BCM2835_PERIPHERALS);
-> +    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
-> +                              &error_abort);
-> +    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
+> +    assert(SMPBOOT_ADDR + sizeof(smpboot) <= MVBAR_ADDR);
+> +    rom_add_blob_fixed("raspi_smpboot", smpboot, sizeof(smpboot),
+> +                       info->smp_loader_start);
 > +}
 > +
-> +static void bcm2836_realize(DeviceState *dev, Error **errp)
+> +static void write_board_setup(ARMCPU *cpu, const struct arm_boot_info *info)
+
+This is almost identical to Highbank, I'm guessing you are stubbing monitor
+firmware where you get away with nopping all the SMCs? Maybe we should split
+Highbanks version off to common code, and parameterise the few differences.
+
+write_board_setup_dummy_monitior(ARMCPU *cpu ..., uint32_t scr_flags);
+
+or something like it. Makes sense to be in arm/boot.c .
+
 > +{
-> +    BCM2836State *s = BCM2836(dev);
-> +    Object *obj;
-> +    Error *err = NULL;
-> +    int n;
+> +    static const uint32_t board_setup[] = {
+> +        /* MVBAR_ADDR: secure monitor vectors */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xE1B0F00E, /* movs pc, lr ;SMC exception return */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xEAFFFFFE, /* (spin) */
+> +        0xEAFFFFFE, /* (spin) */
+> +        /* BOARDSETUP_ADDR */
+> +        0xE3A00B01, /* mov     r0, #0x400             ;MVBAR_ADDR */
+> +        0xEE0C0F30, /* mcr     p15, 0, r0, c12, c0, 1 ;set MVBAR */
+> +        0xE3A00031, /* mov     r0, #0x31              ;enable AW, FW, NS */
+> +        0xEE010F11, /* mcr     p15, 0, r0, c1, c1, 0  ;write SCR */
+
+If combining with HB, could you do this as read-modify-write?
+
+> +        0xE1A0100E, /* mov     r1, lr                 ;save LR across SMC */
+> +        0xE1600070, /* smc     #0                     ;monitor call */
+> +        0xE1A0F001, /* mov     pc, r1                 ;return */
+
+I'm looking at the Highbank version which doesn't save lr across the SMC and
+wondering why it doesn't. Is this banked by CPU mode and do you get from
+already-in-monitor-mode? Or simply, that Highbank code may have a bug?
+
+> +    };
 > +
-> +    /* common peripherals from bcm2835 */
-
-Blank line here (otherwise the comment looks like it only applies to up to
-the next line-break whereas this goes further).
-
-> +    obj = object_property_get_link(OBJECT(dev), "ram", &err);
-> +    if (obj == NULL) {
-> +        error_setg(errp, "%s: required ram link not found: %s",
-> +                   __func__, error_get_pretty(err));
-> +        return;
+> +    rom_add_blob_fixed("raspi_boardsetup", board_setup, sizeof(board_setup),
+> +                       MVBAR_ADDR);
+> +}
+> +
+> +static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+> +{
+> +    CPUState *cs = CPU(cpu);
+> +    cpu_set_pc(cs, info->smp_loader_start);
+> +}
+> +
+> +static void setup_boot(MachineState *machine, int version, size_t ram_size)
+> +{
+> +    static struct arm_boot_info binfo;
+> +    int r;
+> +
+> +    binfo.board_id = raspi_boardid[version];
+> +    binfo.ram_size = ram_size;
+> +    binfo.nb_cpus = smp_cpus;
+> +    binfo.board_setup_addr = BOARDSETUP_ADDR;
+> +    binfo.write_board_setup = write_board_setup;
+> +    binfo.secure_board_setup = true;
+> +    binfo.secure_boot = true;
+> +
+> +    /* Pi2 requires SMP setup */
+> +    if (version == 2) {
+> +        binfo.smp_loader_start = SMPBOOT_ADDR;
+> +        binfo.write_secondary_boot = write_smpboot;
+> +        binfo.secondary_cpu_reset_hook = reset_secondary;
 > +    }
 > +
-> +    object_property_add_const_link(OBJECT(&s->peripherals), "ram", obj, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_set_bool(OBJECT(&s->peripherals), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +                            BCM2836_PERI_BASE, 1);
-> +
-> +    /* bcm2836 interrupt controller (and mailboxes, etc.) */
-> +    object_property_set_bool(OBJECT(&s->ic), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ic), 0, BCM2836_CONTROL_BASE);
-> +
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-> +                       qdev_get_gpio_in_named(DEVICE(&s->ic), "gpu_irq", 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-> +                       qdev_get_gpio_in_named(DEVICE(&s->ic), "gpu_fiq", 0));
-> +
-> +    /* TODO: probably shouldn't be using smp_cpus here */
-> +    assert(smp_cpus <= BCM2836_NCPUS);
-> +    for (n = 0; n < smp_cpus; n++) {
-> +        /* Mirror bcm2836, which has clusterid set to 0xf */
-> +        s->cpus[n].mp_affinity = 0xF00 | n;
-> +
+> +    /* If the user specified a "firmware" image (e.g. UEFI), we bypass
+> +       the normal Linux boot process */
 
-This is probably ok for the moment, but the correct solution is to propertyify
-mp_affinity for ARM CPUs and then set via prop as for the reset-cbar below.
+Multi-line comment style should be
 
-There is some stuff in target-arm that sets the higher order affinities based
-on CPU numbers on a fixed wrap-around scheme, but that needs to go away, and
-be push up to the virt machine. Then virt uses the same property setter to
-implement that wrap-around while SoC can get their affinity right.
+/* text
+ * text
+ */
 
-The Highbank machine has the same problem, and SMP linux boot is blocked by
-the same.
-
-> +        /* set periphbase/CBAR value for CPU-local registers */
-> +        object_property_set_int(OBJECT(&s->cpus[n]),
-> +                                BCM2836_PERI_BASE + MCORE_OFFSET,
-> +                                "reset-cbar", &err);
-> +        if (err) {
-> +            error_report_err(err);
+> +    if (machine->firmware) {
+> +        /* load the firmware image (typically kernel.img) */
+> +        r = load_image_targphys(machine->firmware, FIRMWARE_ADDR,
+> +                                ram_size - FIRMWARE_ADDR);
+> +        if (r < 0) {
+> +            error_report("Failed to load firmware from %s", machine->firmware);
 > +            exit(1);
-
-You should just propagate as-above. Original report-and-exit is probably from
-machine-model code where there is no-one to propagate too.
-
 > +        }
 > +
-> +        object_property_set_bool(OBJECT(&s->cpus[n]), true, "realized", &err);
-> +        if (err) {
-> +            error_report_err(err);
+> +        /* set variables so arm_load_kernel does the right thing */
+> +        binfo.entry = FIRMWARE_ADDR;
+> +        binfo.firmware_loaded = true;
+> +    } else {
+> +        /* Just let arm_load_kernel do everything for us... */
+> +        binfo.kernel_filename = machine->kernel_filename;
+> +        binfo.kernel_cmdline = machine->kernel_cmdline;
+> +        binfo.initrd_filename = machine->initrd_filename;
+> +    }
+> +
+> +    arm_load_kernel(ARM_CPU(first_cpu), &binfo);
+> +}
+> +
+> +static void raspi2_init(MachineState *machine)
+> +{
+> +    RaspiMachineState *s = g_new0(RaspiMachineState, 1);
 
-propagate.
+Use of the MachineState name-stem suggest that you are QOM inheriting from
+MachineState but you are not. So the struct just needs a rename to something
+without "MachineState"
+
+> +
+> +    /* Initialise the SOC */
+> +    object_initialize(&s->soc.pi2, sizeof(s->soc.pi2), TYPE_BCM2836);
+> +    object_property_add_child(OBJECT(machine), "soc", &s->soc.obj,
+> +                              &error_abort);
+> +
+> +    /* Allocate and map RAM */
+> +    memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
+> +                                         machine->ram_size);
+> +    memory_region_add_subregion_overlap(get_system_memory(), 0, &s->ram, 0);
+
+I thought the SoC handled this now? Why do you need to add to system_memory?
+
+> +
+> +    /* Setup the SOC */
+> +    object_property_add_const_link(&s->soc.obj, "ram", OBJECT(&s->ram),
+> +                                   &error_abort);
+
+Just cast using OBJECT() rather than having the union.
+
+> +    object_property_set_bool(&s->soc.obj, true, "realized", &error_abort);
+> +
+> +    /* Boot! */
+
+Not really. You just setup the boot for core code to do it later.
+
+> +    setup_boot(machine, 2, machine->ram_size);
+> +}
+> +
+> +static void raspi2_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc = "Raspberry Pi 2";
+> +    mc->init = raspi2_init;
+> +    mc->block_default_type = IF_SD;
+
+> +    mc->no_parallel = 1;
+> +    mc->no_floppy = 1;
+> +    mc->no_cdrom = 1;
+
+Curious, what do these do from a user-visible point of view? Maybe we should
+add them to more ARM boards as they certainly make sense.
 
 Regards,
 Peter
 
-> +            exit(1);
-> +        }
-> +
-> +        /* Connect irq/fiq outputs from the interrupt controller. */
-> +        qdev_connect_gpio_out_named(DEVICE(&s->ic), "irq", n,
-> +                                    qdev_get_gpio_in(DEVICE(&s->cpus[n]),
-> +                                                     ARM_CPU_IRQ));
-> +        qdev_connect_gpio_out_named(DEVICE(&s->ic), "fiq", n,
-> +                                    qdev_get_gpio_in(DEVICE(&s->cpus[n]),
-> +                                                     ARM_CPU_FIQ));
-> +
-> +        /* Connect timers from the CPU to the interrupt controller */
-> +        s->cpus[n].gt_timer_outputs[GTIMER_PHYS]
-> +            = qdev_get_gpio_in_named(DEVICE(&s->ic), "cntpsirq", 0);
-> +        s->cpus[n].gt_timer_outputs[GTIMER_VIRT]
-> +            = qdev_get_gpio_in_named(DEVICE(&s->ic), "cntvirq", 0);
-> +    }
-> +}
-> +
-> +static void bcm2836_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = bcm2836_realize;
-> +
-> +    /*
-> +     * Reason: creates an ARM CPU, thus use after free(), see
-> +     * arm_cpu_class_init()
-> +     */
-> +    dc->cannot_destroy_with_object_finalize_yet = true;
-> +}
-> +
-> +static const TypeInfo bcm2836_type_info = {
-> +    .name = TYPE_BCM2836,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2836State),
-> +    .instance_init = bcm2836_init,
-> +    .class_init = bcm2836_class_init,
+> +    mc->max_cpus = BCM2836_NCPUS;
+> +    /* XXX: Temporary restriction in RAM size from the full 1GB. Since
+> +     * we do not yet support the framebuffer / GPU, we need to limit
+> +     * RAM usable by the OS to sit below the peripherals. */
+> +    mc->default_ram_size = 0x3F000000; /* BCM2836_PERI_BASE */
 > +};
-> +
-> +static void bcm2836_register_types(void)
-> +{
-> +    type_register_static(&bcm2836_type_info);
-> +}
-> +
-> +type_init(bcm2836_register_types)
-> diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-> new file mode 100644
-> index 0000000..a78e919
-> --- /dev/null
-> +++ b/include/hw/arm/bcm2836.h
-> @@ -0,0 +1,33 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-> + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-> + * Written by Andrew Baumann
-> + *
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#ifndef BCM2836_H
-> +#define BCM2836_H
-> +
-> +#include "hw/arm/arm.h"
-> +#include "hw/arm/bcm2835_peripherals.h"
-> +#include "hw/intc/bcm2836_control.h"
-> +
-> +#define TYPE_BCM2836 "bcm2836"
-> +#define BCM2836(obj) OBJECT_CHECK(BCM2836State, (obj), TYPE_BCM2836)
-> +
-> +#define BCM2836_NCPUS 4
-> +
-> +typedef struct BCM2836State {
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +    /*< public >*/
-> +
-> +    ARMCPU cpus[BCM2836_NCPUS];
-> +    BCM2836ControlState ic;
-> +    BCM2835PeripheralState peripherals;
-> +} BCM2836State;
-> +
-> +#endif /* BCM2836_H */
+> +DEFINE_MACHINE("raspi2", raspi2_machine_init)
 > -- 
 > 2.5.3
 > 

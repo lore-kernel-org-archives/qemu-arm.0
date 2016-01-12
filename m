@@ -1,80 +1,103 @@
-Received: by 10.25.134.130 with SMTP id i124csp2018147lfd;
-        Mon, 11 Jan 2016 07:05:15 -0800 (PST)
-X-Received: by 10.31.3.169 with SMTP id f41mr1420081vki.114.1452524715688;
-        Mon, 11 Jan 2016 07:05:15 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22b.google.com (mail-vk0-x22b.google.com. [2607:f8b0:400c:c05::22b])
-        by mx.google.com with ESMTPS id g207si98320706vkg.12.2016.01.11.07.05.15
+Received: by 10.25.159.19 with SMTP id i19csp621938lfe;
+        Tue, 12 Jan 2016 09:02:15 -0800 (PST)
+X-Received: by 10.194.174.73 with SMTP id bq9mr42603321wjc.145.1452618134851;
+        Tue, 12 Jan 2016 09:02:14 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
+        by mx.google.com with ESMTPS id w127si32452392wmg.35.2016.01.12.09.02.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 Jan 2016 07:05:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) client-ip=2607:f8b0:400c:c05::22b;
+        Tue, 12 Jan 2016 09:02:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22b as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-vk0-x22b.google.com with SMTP id i129so87382351vkb.0
-        for <alex.bennee@linaro.org>; Mon, 11 Jan 2016 07:05:15 -0800 (PST)
+Received: by mail-wm0-x232.google.com with SMTP id b14so330845118wmb.1
+        for <alex.bennee@linaro.org>; Tue, 12 Jan 2016 09:02:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=TsYiQbE79sqUWzWbzxsQMk9yUOotdb13I4UomqwrpPI=;
-        b=E/aP2tKDKlWFC2NnLoqtvmox5Z+0PtqM7vQ4oAWMxReqaeC7MEhySstzIE9648U74p
-         2N2BjiT0EB5WQ/PmpbDmRiHZCKyv2TQhOtEACNFni4bV30+mf5nB6k9mLtq9CSvpaqAk
-         M3Fg6R0TO0dSfJBcfoHtSHtXykCNzd8QhfnyY=
+        h=subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=y+qfkkPljpLnm6TGkHhOeO/UncAPPMnkaehpwX+OQ9w=;
+        b=EyKBl3CSLDDoS3yci37Ka1430mZsYPyYG0ioWEqRrYZBmSLNnnT2Nv/xWi0MXpkXyo
+         mdFxpuh9KWpg0LoS9EP6g2A4HbEd9gSn5IpDN8256MqVb2uaqwiIqi31GJw1FHJs8EAe
+         ShIrFK1PgrD1/mJMGsoaJktLuLsIOaYGS5aeU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=TsYiQbE79sqUWzWbzxsQMk9yUOotdb13I4UomqwrpPI=;
-        b=ABf8FG57AqQu4kZdbbirUL0xtHzit0fUjqrEYrX0NLoqTV5PVC0h+TDAGTunjILd4A
-         3hD0HvznsOenbzYPcvKE3bEaW9YRq3UVUnhRNvgr/1M2WQq/zKt7CwArM4/6NtzOCHME
-         28BCtWKmTH5MxOCN+gDP+Cz4UjOexyP9+TQGU4tjsNaBh61SGi2JiwzFp6eGAM3ClBuG
-         lXQUuB8KcJ6mn7wzemXUbfH7QeyWjZ3xGdpi6kTAJyz4sq/fnFdzWpna8XijVTZNWheN
-         FyFD7M0vfXQlzR8KAprMX19GE6IAh+EdhyAPXJVx10Z3E+HB8SKbjJqCBN+frncooBxx
-         f8vA==
-X-Gm-Message-State: ALoCoQnMpl9x8vFCBf34jq7S0ndgEEfe7MN7C7W23Pxuy88xZxhrgwLVs+7VpqQ/MJNFk5lRp+HdYUn9dv99cypqJxVJJVYGycmTsEvH2YF8utT3Cuu60fI=
-X-Received: by 10.31.194.21 with SMTP id s21mr88452989vkf.92.1452524715334;
- Mon, 11 Jan 2016 07:05:15 -0800 (PST)
+        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=y+qfkkPljpLnm6TGkHhOeO/UncAPPMnkaehpwX+OQ9w=;
+        b=P/VrpWnivZQcCjzKja0b/e66SKVMHQVVKilZNxbNsbMbICCsk9pBhaufWNQIuXngJv
+         5KTZ5k5UQGH6ZeVirqRDCMxc1Ddwr6p+2raNzRlOtUqx4f2oHVlp1UlxBB1LSZ6B9h/4
+         NteVL3zrYSspT5h2tNaRf/jKIZWS58vveF0JonzkXkNga/BCIdC1FSrEttgI2b03ynIV
+         i7jFLenb54qHnHRMUjq00xOhA31+h2OsQsFyzR6CofconvLwopPqWd5dk3GnEAGWO52j
+         VKEa2i4yufBeo1sb40tN+IM2Dbduc0boq/QNuU4d5x9O2RCQcXjMBNp/zibma90pxnzx
+         g30g==
+X-Gm-Message-State: ALoCoQkA07ZYy8X3lCa59Uc2YHq6Jqo6zBNaB/Hy+8YFwhzA/riBxtu1FFkk3OaPikT2zMYoVZaqS5rPCQHFRS+4A00Jy7dINA==
+X-Received: by 10.194.209.129 with SMTP id mm1mr107213763wjc.47.1452618134594;
+        Tue, 12 Jan 2016 09:02:14 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.googlemail.com with ESMTPSA id t76sm18442151wmd.13.2016.01.12.09.02.12
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 12 Jan 2016 09:02:13 -0800 (PST)
+Subject: Re: [PATCH v2 3/7] device_tree: introduce qemu_fdt_node_path
+To: David Gibson <david@gibson.dropbear.id.au>
+References: <1452093205-30167-1-git-send-email-eric.auger@linaro.org>
+ <1452093205-30167-4-git-send-email-eric.auger@linaro.org>
+ <20160111023853.GB22925@voom.redhat.com> <56938586.5050503@linaro.org>
+ <20160112042856.GQ22925@voom.redhat.com>
+Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, alex.williamson@redhat.com,
+ alex.bennee@linaro.org, thuth@redhat.com, crosthwaitepeter@gmail.com,
+ patches@linaro.org, christoffer.dall@linaro.org, pbonzini@redhat.com,
+ b.reynal@virtualopensystems.com, suravee.suthikulpanit@amd.com,
+ thomas.lendacky@amd.com
+From: Eric Auger <eric.auger@linaro.org>
+Message-ID: <56953188.3040805@linaro.org>
+Date: Tue, 12 Jan 2016 18:02:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.4.0
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Mon, 11 Jan 2016 07:04:55 -0800 (PST)
-In-Reply-To: <5693C34E.1040204@redhat.com>
-References: <1447682723-3977-1-git-send-email-peter.maydell@linaro.org>
- <1447682723-3977-10-git-send-email-peter.maydell@linaro.org>
- <5693B259.2030106@redhat.com> <CAFEAcA_L-QiV5Wbf6SVVnbKU06TC=VZUL-9SBGkOomqvb8QvOA@mail.gmail.com>
- <5693C34E.1040204@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Jan 2016 15:04:55 +0000
-Message-ID: <CAFEAcA_k5crLRk6w_HwPc+JOjhYWcCGVrgF3aYLwPROMbQBG5w@mail.gmail.com>
-Subject: Re: [PATCH v2 09/19] exec.c: Use cpu_get_phys_page_attrs_debug
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Patch Tracking <patches@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: xnkAsZc7Qcev
+In-Reply-To: <20160112042856.GQ22925@voom.redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-TUID: hvisEvOLiop5
 
-On 11 January 2016 at 14:59, Paolo Bonzini <pbonzini@redhat.com> wrote:
-> On 11/01/2016 15:18, Peter Maydell wrote:
->> That's what the call to cpu_get_phys_page_attrs_debug() does:
->> it fills in the MemTxAttrs :secure and :user fields, and then
->> cpu_asidx_from_attrs() uses the returned attributes to pick
->> the right address space. (cpu_get_phys_page_attrs_debug()
->> only fills in attribute fields it knows about, which is why
->> we pass it an empty attrs struct to start with.)
->
-> Oops, that's not clear from the documentation in patch 4. But if that
-> was the case, shouldn't cpu_get_phys_page_attrs_debug leave *attrs
-> completely alone when using the fallback?
->
-> I think it's clearer if you pass uninitialized MemTxAttrs to
-> cpu_get_phys_page_attrs_debug, assuming you can do it.  I can see why
-> the current semantics make sense for helper.c's get_phys_addr, but I
-> think they are confusing for the topmost function call.
+Hi David,
+On 01/12/2016 05:28 AM, David Gibson wrote:
+> On Mon, Jan 11, 2016 at 11:35:50AM +0100, Eric Auger wrote:
+>> Hi David,
+>> On 01/11/2016 03:38 AM, David Gibson wrote:
+>>> On Wed, Jan 06, 2016 at 03:13:21PM +0000, Eric Auger wrote:
+>>>> This new helper routine returns the node path of a device
+>>>> referred to by its node name and compat string.
+>>>
+>>> What if there are multiple nodes matching the name and compat?
+>> The function would return the first one. I can improve the doc comment.
+>> Do you think it is a problem stopping at the first one? Is it a real
+>> life test case I have to handle here?
+> 
+> Well, I don't know of a specific system which will have this, but it's
+> absolutely possible to get this situation:  e.g. two different PCI
+> busses, both of which have their own slot 0 populated with different
+> instances of the same device.
+> 
+> Whether it's possible for platform devices will depend on the
+> platform's specific bus toplogies, but you certainly can't rule it out
+> in general.
+OK I will handle that case then. I hope I will be able to test it.
+> 
+> I could consider adding a new libfdt function like
+> fdt_node_offset_by_compatible() that searches by name as well.  It's
+> just I'm not sure that matching by name and compatible isn't a sign of
+> a poor approach in the caller.
+well I can't really comment. That looked the most straightforward to me
+given the current libfdt API. But not sure it's worth to invest in a new
+function in libfdt
 
-Yes, I think you're right (and the doc comment I wrote for
-cpu_get_phys_page_attrs_debug agrees ;-)).
+Thanks!
 
-thanks
--- PMM
+Eric
+> 

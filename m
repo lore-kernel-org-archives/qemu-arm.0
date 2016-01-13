@@ -1,208 +1,100 @@
-Received: by 10.25.159.19 with SMTP id i19csp599724lfe;
-        Tue, 12 Jan 2016 08:17:38 -0800 (PST)
-X-Received: by 10.194.119.68 with SMTP id ks4mr138737424wjb.45.1452615457204;
-        Tue, 12 Jan 2016 08:17:37 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x22e.google.com (mail-wm0-x22e.google.com. [2a00:1450:400c:c09::22e])
-        by mx.google.com with ESMTPS id cw5si122742361wjb.57.2016.01.12.08.17.37
+Received: by 10.25.159.19 with SMTP id i19csp1197524lfe;
+        Wed, 13 Jan 2016 07:45:36 -0800 (PST)
+X-Received: by 10.140.88.202 with SMTP id t68mr35765274qgd.86.1452699936832;
+        Wed, 13 Jan 2016 07:45:36 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id c16si1845834qkb.85.2016.01.13.07.45.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Jan 2016 08:17:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) client-ip=2a00:1450:400c:c09::22e;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 13 Jan 2016 07:45:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22e as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
-       dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x22e.google.com with SMTP id b14so328633067wmb.1
-        for <alex.bennee@linaro.org>; Tue, 12 Jan 2016 08:17:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=G+rYYXGMFsihNZ3Bd+Jigv4AchE7PbwTtgYxOGRtI94=;
-        b=ks+wlFcKKhl/zxWte7tVhnv1hxAmRVJLWUbPDxki7sYVhxd2LP2ZRkXv8QMbZkUbav
-         Wp1K5T42JYuFtadDyEa4SiVoOxA+jHnah1Yagzi87hLybdzZffROVLYkOyfs5iSQoU77
-         At84hhZ7t9MFWQRsg8rEsHjyFk1nMBWR6hgMo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=G+rYYXGMFsihNZ3Bd+Jigv4AchE7PbwTtgYxOGRtI94=;
-        b=Epa0SXdT4DdkRrsHPhYLbZ+3KiCx9MbMOImCK68sPifNYVYQ/Q7yYZz9yJBMqoTk7C
-         gbexRl4FD4B+xB43tki8lcUsI4C9cL4h9TINy1INP41LetEyci/HgkiY3r93p+hzEn6O
-         N9XwEbliB7iOCyWK+4kAUhHIbvoNg6Xpm+wZ++WPvKqcRavBs1s8XgdDlDbtfOPgypRh
-         UJBc8xOAVu4x1U8FSYhS0zRDC+zWVsoC6NFObxsu+1u6G6v2adWnj2/M4aiATPdq0IeT
-         eBjGohgXntr7DUkUqfAyWvgpEZXKO5qd9gb+Fu2Pt0OK5N7Xpju5+OixAn4OQYUIHkbz
-         6JSA==
-X-Gm-Message-State: ALoCoQkbc+RaQKoeOusHPFx00QyfDtP0riyWJveOyA5FrU4hS8DA8cH/+puhOz9RSzoxNWdw5H/gDd4KzScu0esAz0jXKm7cNg==
-X-Received: by 10.28.101.131 with SMTP id z125mr19820543wmb.60.1452615456865;
-        Tue, 12 Jan 2016 08:17:36 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.googlemail.com with ESMTPSA id qs1sm64483985wjc.2.2016.01.12.08.17.34
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Tue, 12 Jan 2016 08:17:35 -0800 (PST)
-Subject: Re: [PATCH v4 5/8] device_tree: qemu_fdt_getprop_cell converted to
- use the error API
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-References: <1452245525-3886-1-git-send-email-eric.auger@linaro.org>
- <1452245525-3886-6-git-send-email-eric.auger@linaro.org>
- <20160112035840.GF3308@pcrost-box>
-Cc: eric.auger@st.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, david@gibson.dropbear.id.au,
- alex.williamson@redhat.com, alex.bennee@linaro.org, thuth@redhat.com,
- patches@linaro.org, christoffer.dall@linaro.org, pbonzini@redhat.com,
- b.reynal@virtualopensystems.com, suravee.suthikulpanit@amd.com,
- thomas.lendacky@amd.com
-From: Eric Auger <eric.auger@linaro.org>
-Message-ID: <56952712.8090402@linaro.org>
-Date: Tue, 12 Jan 2016 17:17:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.4.0
-MIME-Version: 1.0
-In-Reply-To: <20160112035840.GF3308@pcrost-box>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: /wV395rttnev
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37684 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aJNc8-0007UF-CK
+	for alex.bennee@linaro.org; Wed, 13 Jan 2016 10:45:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36656)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1aJNaM-00040M-N0
+	for qemu-arm@nongnu.org; Wed, 13 Jan 2016 10:43:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1aJNaL-00015x-Lp
+	for qemu-arm@nongnu.org; Wed, 13 Jan 2016 10:43:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54869)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>)
+	id 1aJNaL-00015R-GC; Wed, 13 Jan 2016 10:43:45 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 157EA36B377;
+	Wed, 13 Jan 2016 15:43:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-28.phx2.redhat.com
+	[10.3.113.28])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0DFhhKE019252
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 13 Jan 2016 10:43:44 -0500
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 158A93043FCE; Wed, 13 Jan 2016 16:43:39 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 Jan 2016 16:43:08 +0100
+Message-Id: <1452699819-26608-11-git-send-email-armbru@redhat.com>
+In-Reply-To: <1452699819-26608-1-git-send-email-armbru@redhat.com>
+References: <1452699819-26608-1-git-send-email-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [Qemu-arm] [PULL 10/41] hw/arm/virt: Fix property "gic-version"
+	error handling
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j9+RnxkyA9tv
 
-Hi Peter,
-On 01/12/2016 04:58 AM, Peter Crosthwaite wrote:
-> On Fri, Jan 08, 2016 at 09:32:02AM +0000, Eric Auger wrote:
->> This patch aligns the prototype with qemu_fdt_getprop. The caller
->> can choose whether the function self-asserts on error (passing
->> &error_fatal as Error ** argument, corresponding to the legacy behavior),
->> or behaves differently such as simply output a message.
->>
->> In this later case the caller can use the new lenp parameter to interpret
->> the error if any.
->>
->> Signed-off-by: Eric Auger <eric.auger@linaro.org>
->>
->> ---
->>
->> v3 : creation
->> ---
->>  device_tree.c                | 21 ++++++++++++++-------
->>  hw/arm/boot.c                |  6 ++++--
->>  hw/arm/vexpress.c            |  6 ++++--
->>  include/sysemu/device_tree.h | 16 +++++++++++++++-
->>  4 files changed, 37 insertions(+), 12 deletions(-)
->>
->> diff --git a/device_tree.c b/device_tree.c
->> index 6ecc9da..0e837bf 100644
->> --- a/device_tree.c
->> +++ b/device_tree.c
->> @@ -338,15 +338,22 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
->>  }
->>  
->>  uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
->> -                               const char *property)
->> +                               const char *property, int *lenp, Error **errp)
->>  {
->>      int len;
->> -    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len,
->> -                                         &error_fatal);
->> -    if (len != 4) {
->> -        error_report("%s: %s/%s not 4 bytes long (not a cell?)",
->> -                     __func__, node_path, property);
->> -        exit(1);
->> +    const uint32_t *p;
->> +
->> +    if (!lenp) {
->> +        lenp = &len;
->> +    }
->> +    p = qemu_fdt_getprop(fdt, node_path, property, lenp, errp);
->> +    if (!p) {
->> +        return 0;
->> +    } else if (*lenp != 4) {
->> +        error_setg(errp, "%s: %s/%s not 4 bytes long (not a cell?)",
->> +                   __func__, node_path, property);
->> +        *lenp = -EINVAL;
->> +        return 0;
->>      }
->>      return be32_to_cpu(*p);
->>  }
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index 75f69bf..541b74c 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -386,8 +386,10 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>          return 0;
->>      }
->>  
->> -    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells");
->> -    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells");
->> +    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
->> +                                   NULL, &error_fatal);
->> +    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
->> +                                   NULL, &error_fatal);
->>      if (acells == 0 || scells == 0) {
->>          fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
->>          goto fail;
->> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
->> index 058abbd..ffe42be 100644
->> --- a/hw/arm/vexpress.c
->> +++ b/hw/arm/vexpress.c
->> @@ -482,8 +482,10 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
->>      uint32_t acells, scells, intc;
->>      const VEDBoardInfo *daughterboard = (const VEDBoardInfo *)info;
->>  
->> -    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells");
->> -    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells");
->> +    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
->> +                                   NULL, &error_fatal);
->> +    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
->> +                                   NULL, &error_fatal);
->>      intc = find_int_controller(fdt);
->>      if (!intc) {
->>          /* Not fatal, we just won't provide virtio. This will
->> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
->> index 4d7cbb9..5aa750b 100644
->> --- a/include/sysemu/device_tree.h
->> +++ b/include/sysemu/device_tree.h
->> @@ -60,8 +60,22 @@ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
->>  const void *qemu_fdt_getprop(void *fdt, const char *node_path,
->>                               const char *property, int *lenp,
->>                               Error **errp);
->> +/**
->> + * qemu_fdt_getprop_cell: retrieve the value of a given 4 byte property
->> + * @fdt: pointer to the device tree blob
->> + * @node_path: node path
->> + * @property: name of the property to find
->> + * @lenp: fdt error if any or -EINVAL if the property size is different from
->> + *        4 bytes, or 4 (expected length of the property) upon success.
->> + * @errp: handle to an error object
->> + *
->> + * returns the property value on success
->> + * in case errp is set to &error_fatal, the function auto-asserts
->> + * on error (legacy behavior)
-> 
-> Avoid re-documenting the semantics of the Error API, as this comment
-> may silently go stale with a patch to the Error API. The function now simply
-> accepts an Error ** and that implies the behaviour of error_fatal. With very
-> few callers there is not much of a legacy to document and it is not a user
-> visible legacy anyway.
-OK I will remove that comment. Thanks for the reviews and R-b's
+virt_set_gic_version() calls exit(1) when passed an invalid property
+value.  Property setters are not supposed to do that.  Screwed up in
+commit b92ad39.  Harmless, because the property belongs to a machine.
+Set an error object instead.
 
-Best Regards
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/virt.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Eric
-> 
-> Otherwise:
-> 
-> Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> 
-> Regards,
-> Peter
-> 
->> + */
->>  uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
->> -                               const char *property);
->> +                               const char *property, int *lenp,
->> +                               Error **errp);
->>  uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
->>  uint32_t qemu_fdt_alloc_phandle(void *fdt);
->>  int qemu_fdt_nop_node(void *fdt, const char *node_path);
->> -- 
->> 1.9.1
->>
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index fd52b76..92dcd02 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1200,9 +1200,8 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+     } else if (!strcmp(value, "host")) {
+         vms->gic_version = 0; /* Will probe later */
+     } else {
+-        error_report("Invalid gic-version option value");
+-        error_printf("Allowed gic-version values are: 3, 2, host\n");
+-        exit(1);
++        error_setg(errp, "Invalid gic-version value");
++        error_append_hint(errp, "Valid values are 3, 2, host.\n");
+     }
+ }
+ 
+-- 
+2.4.3
+

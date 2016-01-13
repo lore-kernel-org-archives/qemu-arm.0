@@ -1,72 +1,57 @@
-Received: by 10.25.159.19 with SMTP id i19csp279359lfe;
-        Mon, 11 Jan 2016 19:59:49 -0800 (PST)
-X-Received: by 10.140.253.3 with SMTP id y3mr177476729qhc.39.1452571189754;
-        Mon, 11 Jan 2016 19:59:49 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1176619lfe;
+        Wed, 13 Jan 2016 07:07:23 -0800 (PST)
+X-Received: by 10.55.26.215 with SMTP id l84mr31382335qkh.101.1452697641854;
+        Wed, 13 Jan 2016 07:07:21 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d190si96886798qhd.71.2016.01.11.19.59.49
+        by mx.google.com with ESMTPS id y124si1741492qka.2.2016.01.13.07.07.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jan 2016 19:59:49 -0800 (PST)
+        Wed, 13 Jan 2016 07:07:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57944 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37553 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aIq7Z-0001up-Ek
-	for alex.bennee@linaro.org; Mon, 11 Jan 2016 22:59:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57749)
+	id 1aJN17-0002jY-BM
+	for alex.bennee@linaro.org; Wed, 13 Jan 2016 10:07:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53934)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq77-0001MD-N3
-	for qemu-devel@nongnu.org; Mon, 11 Jan 2016 22:59:22 -0500
+	(envelope-from <lersek@redhat.com>) id 1aJN0U-0001u6-IQ
+	for qemu-devel@nongnu.org; Wed, 13 Jan 2016 10:06:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aIq73-0001c5-JO
-	for qemu-devel@nongnu.org; Mon, 11 Jan 2016 22:59:21 -0500
-Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:33197)
+	(envelope-from <lersek@redhat.com>) id 1aJN0T-0007H0-GA
+	for qemu-devel@nongnu.org; Wed, 13 Jan 2016 10:06:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43417)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aIq73-0001bw-Ee; Mon, 11 Jan 2016 22:59:17 -0500
-Received: by mail-pa0-x241.google.com with SMTP id pv5so26314028pac.0;
-	Mon, 11 Jan 2016 19:59:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:date:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=6ZYWxBHNkq54epm7YCsANhAn+Qob85M53hU4eLzqLU8=;
-	b=aOVS6l4RgrjafQexovU9yvQkBz1q56/pTw/XVsYKvpbkmP7jC7MgDVmLibtGuOGmZy
-	QS6RFZvB7hND77jmecxEE+01IfP8P0gDy2kbcHHu2t463FhYWS/ucmLoRYyC7gfbsUp8
-	3mlT/B/DK/j0gsy+TFdTiyNSHJ+wL8K2WZfmFVkbYjeEUO0nXMbSV9C+gKYrWQRPJBEM
-	/3sWjhki6pOfxbigbuIkDc8Z3s2X2yXh27SCG4L8QaVBx4H95Y3o+EnGZ5epYZARt68C
-	S302w28YU72FoilVhjfNuXzC1LPsflgxqm9rHVxVly5N3F/ZY+nizk/gQn6Rr5uz2Tn5
-	/hkA==
-X-Received: by 10.66.55.99 with SMTP id r3mr34680530pap.100.1452571156852;
-	Mon, 11 Jan 2016 19:59:16 -0800 (PST)
-Received: from pcrost-box (c-73-70-184-119.hsd1.ca.comcast.net.
-	[73.70.184.119]) by smtp.gmail.com with ESMTPSA id
-	g26sm26410916pfg.35.2016.01.11.19.59.15
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 11 Jan 2016 19:59:16 -0800 (PST)
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Mon, 11 Jan 2016 19:59:13 -0800
-To: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <20160112035913.GH3308@pcrost-box>
-References: <cover.1452359845.git.digetx@gmail.com>
-	<112f8a3527ada5a92ec851b5c6c2d8e5b84d6d0b.1452359845.git.digetx@gmail.com>
+	(envelope-from <lersek@redhat.com>)
+	id 1aJN0O-0007Eg-W0; Wed, 13 Jan 2016 10:06:37 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 2B6CFC60F0;
+	Wed, 13 Jan 2016 15:06:36 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com ([10.3.113.3])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0DF6YJT020087; Wed, 13 Jan 2016 10:06:34 -0500
+To: Shannon Zhao <shannon.zhao@linaro.org>, qemu-arm@nongnu.org
+References: <1452696857-4091-1-git-send-email-shannon.zhao@linaro.org>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <569667F9.4030800@redhat.com>
+Date: Wed, 13 Jan 2016 16:06:33 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <112f8a3527ada5a92ec851b5c6c2d8e5b84d6d0b.1452359845.git.digetx@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::241
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v10 6/7] hw/ptimer: Introduce
-	ptimer_get_limit
+In-Reply-To: <1452696857-4091-1-git-send-email-shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, edk2-devel@ml01.01.org, zhaoshenglong@huawei.com,
+	qemu-devel@nongnu.org, ard.biesheuvel@linaro.org
+Subject: Re: [Qemu-devel] [PATCH v2] ARM: Virt: Don't generate RTC ACPI
+ device when using UEFI
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -80,54 +65,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c4lJvK2mkyBY
+X-TUID: MAuqpe0tVhfa
 
-On Sat, Jan 09, 2016 at 08:39:54PM +0300, Dmitry Osipenko wrote:
-> Currently ptimer users are used to store copy of the limit value, because
-> ptimer doesn't provide facility to retrieve the limit. Let's provide it.
+On 01/13/16 15:54, Shannon Zhao wrote:
+> When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
+> While UEFI can use libfdt to disable the RTC device node in the DTB that
+> it passes to the OS, it cannot modify AML. Therefore, we won't generate
+> the RTC ACPI device at all when using UEFI.
 > 
-> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
-
-Fair call. One less piece of duped state for the VMSDs.
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
-Regards,
-Peter
-
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 > ---
->  hw/core/ptimer.c    | 5 +++++
->  include/hw/ptimer.h | 1 +
->  2 files changed, 6 insertions(+)
+> v2: just totally don't generate the RTC ACPI device when using UEFI
+> ---
+>  hw/arm/virt-acpi-build.c | 19 -------------------
+>  1 file changed, 19 deletions(-)
 > 
-> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-> index 42e44f9..0201d1b 100644
-> --- a/hw/core/ptimer.c
-> +++ b/hw/core/ptimer.c
-> @@ -235,6 +235,11 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
->      }
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 0caf5ce..ac568a3 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -94,23 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+>      aml_append(scope, dev);
 >  }
 >  
-> +uint64_t ptimer_get_limit(ptimer_state *s)
-> +{
-> +    return s->limit;
-> +}
-> +
->  const VMStateDescription vmstate_ptimer = {
->      .name = "ptimer",
->      .version_id = 1,
-> diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-> index 8ebacbb..e397db5 100644
-> --- a/include/hw/ptimer.h
-> +++ b/include/hw/ptimer.h
-> @@ -19,6 +19,7 @@ typedef void (*ptimer_cb)(void *opaque);
->  ptimer_state *ptimer_init(QEMUBH *bh);
->  void ptimer_set_period(ptimer_state *s, int64_t period);
->  void ptimer_set_freq(ptimer_state *s, uint32_t freq);
-> +uint64_t ptimer_get_limit(ptimer_state *s);
->  void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
->  uint64_t ptimer_get_count(ptimer_state *s);
->  void ptimer_set_count(ptimer_state *s, uint64_t count);
-> -- 
-> 2.6.4
+> -static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
+> -                                          uint32_t rtc_irq)
+> -{
+> -    Aml *dev = aml_device("RTC0");
+> -    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0013")));
+> -    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> -
+> -    Aml *crs = aml_resource_template();
+> -    aml_append(crs, aml_memory32_fixed(rtc_memmap->base,
+> -                                       rtc_memmap->size, AML_READ_WRITE));
+> -    aml_append(crs,
+> -               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+> -                             AML_EXCLUSIVE, &rtc_irq, 1));
+> -    aml_append(dev, aml_name_decl("_CRS", crs));
+> -    aml_append(scope, dev);
+> -}
+> -
+>  static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+>  {
+>      Aml *dev, *crs;
+> @@ -575,8 +558,6 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+>      acpi_dsdt_add_cpus(scope, guest_info->smp_cpus);
+>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+> -    acpi_dsdt_add_rtc(scope, &memmap[VIRT_RTC],
+> -                      (irqmap[VIRT_RTC] + ARM_SPI_BASE));
+>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
 > 
+
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>

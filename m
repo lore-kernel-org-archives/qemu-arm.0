@@ -1,10 +1,10 @@
-Received: by 10.25.159.19 with SMTP id i19csp1948810lfe;
-        Thu, 14 Jan 2016 10:34:17 -0800 (PST)
-X-Received: by 10.25.40.11 with SMTP id o11mr1463403lfo.71.1452796454327;
+Received: by 10.25.159.19 with SMTP id i19csp1948868lfe;
+        Thu, 14 Jan 2016 10:34:23 -0800 (PST)
+X-Received: by 10.112.201.3 with SMTP id jw3mr1535961lbc.27.1452796454331;
         Thu, 14 Jan 2016 10:34:14 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id g3si3750687lfd.91.2016.01.14.10.34.14
+        by mx.google.com with ESMTPS id ul9si3747031lbb.110.2016.01.14.10.34.14
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
         Thu, 14 Jan 2016 10:34:14 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
@@ -12,7 +12,7 @@ Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aJmip-0000lz-81; Thu, 14 Jan 2016 18:34:11 +0000
+	id 1aJmip-0000mN-Fw; Thu, 14 Jan 2016 18:34:11 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: patches@linaro.org,
@@ -20,56 +20,135 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/8] target-arm: support mixed 32/64 bit execution beyond EL0
-Date: Thu, 14 Jan 2016 18:34:03 +0000
-Message-Id: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH 6/8] target-arm: Handle exception return from AArch64 to non-EL0 AArch32
+Date: Thu, 14 Jan 2016 18:34:09 +0000
+Message-Id: <1452796451-2946-7-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
-X-TUID: vuGpe2QBrnep
+In-Reply-To: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
+References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
+X-TUID: 4QbuRbwRbxlt
 
-This patch series fixes the code for ARM exception entry and exit
-so that we can support mixed 32/64-bit interprocessing for cases
-beyond the current "EL1 is 64-bit, EL0 might be 32-bit or 64-bit".
-This involves:
- * making arm_el_is_aa64() handle EL2 and EL3 and their associated
-   register-width bits for controlling lower exception levels
- * making the do_interrupt entrypoint determine whether to do a
-   32- or 64-bit exception entry dynamically rather than as a
-   static property of the CPU class
- * handling exception return from AArch64 to AArch32 for all cases, not
-   just where we're returning to EL0
- * fixing the code that picks the AArch64 vector entry point: this
-   depends on the register-width of the EL below the target EL, not
-   on the width of the EL the exception is taken from
+Remove the assumptions that the AArch64 exception return code was
+making about a return to AArch32 always being a return to EL0.
+This includes pulling out the illegal-SPSR checks so we can apply
+them for return to 32 bit as well as return to 64-bit.
 
-The last two patches fix minor bugs noticed along the way.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target-arm/op_helper.c | 80 +++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 59 insertions(+), 21 deletions(-)
 
-PS: I've tested this for various images I have, but I don't actually
-happen to have a setup for a 32-bit EL1 under 64-bit EL3 just yet :-)
-
-These patches are written on top of the multi-ases work, though
-there shouldn't be any dependencies I think beyond the possible
-merely textual.
-
-thanks
--- PMM
-
-Peter Maydell (8):
-  target-arm: Properly support EL2 and EL3 in arm_el_is_aa64()
-  target-arm: Move aarch64_cpu_do_interrupt() to helper.c
-  target-arm: Use a single entry point for AArch64 and AArch32 exceptions
-  target-arm: Pull semihosting handling out to arm_cpu_do_interrupt()
-  target-arm: Fix wrong AArch64 entry offset for EL2/EL3 target
-  target-arm: Handle exception return from AArch64 to non-EL0 AArch32
-  target-arm: Implement remaining illegal return event checks
-  target-arm: ignore ELR_ELx[1] for exception return to 32-bit ARM mode
-
- target-arm/cpu-qom.h    |   2 -
- target-arm/cpu.h        |  33 ++++--
- target-arm/cpu64.c      |   3 -
- target-arm/helper-a64.c | 104 -------------------
- target-arm/helper.c     | 268 +++++++++++++++++++++++++++++++++++++++---------
- target-arm/op_helper.c  |  95 +++++++++++++----
- 6 files changed, 319 insertions(+), 186 deletions(-)
-
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index e42d287..38d46d8 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -640,12 +640,51 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
+     }
+ }
+ 
++static int el_from_spsr(uint32_t spsr)
++{
++    /* Return the exception level that this SPSR is requesting a return to,
++     * or -1 if it is invalid (an illegal return)
++     */
++    if (spsr & PSTATE_nRW) {
++        switch (spsr & CPSR_M) {
++        case ARM_CPU_MODE_USR:
++            return 0;
++        case ARM_CPU_MODE_HYP:
++            return 2;
++        case ARM_CPU_MODE_FIQ:
++        case ARM_CPU_MODE_IRQ:
++        case ARM_CPU_MODE_SVC:
++        case ARM_CPU_MODE_ABT:
++        case ARM_CPU_MODE_UND:
++        case ARM_CPU_MODE_SYS:
++            return 1;
++        case ARM_CPU_MODE_MON:
++            /* Returning to Mon from AArch64 is never possible,
++             * so this is an illegal return.
++             */
++        default:
++            return -1;
++        }
++    } else {
++        if (extract32(spsr, 1, 1)) {
++            /* Return with reserved M[1] bit set */
++            return -1;
++        }
++        if (extract32(spsr, 0, 4) == 1) {
++            /* return to EL0 with M[0] bit set */
++            return -1;
++        }
++        return extract32(spsr, 2, 2);
++    }
++}
++
+ void HELPER(exception_return)(CPUARMState *env)
+ {
+     int cur_el = arm_current_el(env);
+     unsigned int spsr_idx = aarch64_banked_spsr_index(cur_el);
+     uint32_t spsr = env->banked_spsr[spsr_idx];
+     int new_el;
++    bool return_to_aa64 = (spsr & PSTATE_nRW) == 0;
+ 
+     aarch64_save_sp(env, cur_el);
+ 
+@@ -662,35 +701,34 @@ void HELPER(exception_return)(CPUARMState *env)
+         spsr &= ~PSTATE_SS;
+     }
+ 
+-    if (spsr & PSTATE_nRW) {
+-        /* TODO: We currently assume EL1/2/3 are running in AArch64.  */
++    new_el = el_from_spsr(spsr);
++    if (new_el == -1) {
++        goto illegal_return;
++    }
++    if (new_el > cur_el
++        || (new_el == 2 && !arm_feature(env, ARM_FEATURE_EL2))) {
++        /* Disallow return to an EL which is unimplemented or higher
++         * than the current one.
++         */
++        goto illegal_return;
++    }
++
++    if (new_el != 0 && arm_el_is_aa64(env, new_el) != return_to_aa64) {
++        /* Return to an EL which is configured for a different register width */
++        goto illegal_return;
++    }
++
++    if (!return_to_aa64) {
+         env->aarch64 = 0;
+-        new_el = 0;
+-        env->uncached_cpsr = 0x10;
++        env->uncached_cpsr = spsr & CPSR_M;
+         cpsr_write(env, spsr, ~0);
+         if (!arm_singlestep_active(env)) {
+             env->uncached_cpsr &= ~PSTATE_SS;
+         }
+         aarch64_sync_64_to_32(env);
+ 
+-        env->regs[15] = env->elr_el[1] & ~0x1;
++        env->regs[15] = env->elr_el[cur_el] & ~0x1;
+     } else {
+-        new_el = extract32(spsr, 2, 2);
+-        if (new_el > cur_el
+-            || (new_el == 2 && !arm_feature(env, ARM_FEATURE_EL2))) {
+-            /* Disallow return to an EL which is unimplemented or higher
+-             * than the current one.
+-             */
+-            goto illegal_return;
+-        }
+-        if (extract32(spsr, 1, 1)) {
+-            /* Return with reserved M[1] bit set */
+-            goto illegal_return;
+-        }
+-        if (new_el == 0 && (spsr & PSTATE_SP)) {
+-            /* Return to EL0 with M[0] bit set */
+-            goto illegal_return;
+-        }
+         env->aarch64 = 1;
+         pstate_write(env, spsr);
+         if (!arm_singlestep_active(env)) {
 -- 
 1.9.1

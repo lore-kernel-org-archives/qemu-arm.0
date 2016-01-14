@@ -1,18 +1,18 @@
-Received: by 10.25.159.19 with SMTP id i19csp1786308lfe;
-        Thu, 14 Jan 2016 05:53:21 -0800 (PST)
-X-Received: by 10.50.50.9 with SMTP id y9mr5183997ign.46.1452779581991;
-        Thu, 14 Jan 2016 05:53:01 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1786342lfe;
+        Thu, 14 Jan 2016 05:53:26 -0800 (PST)
+X-Received: by 10.195.12.226 with SMTP id et2mr4045118wjd.34.1452779582155;
+        Thu, 14 Jan 2016 05:53:02 -0800 (PST)
 Return-Path: <pm215@archaic.org.uk>
 Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id q17si12886121igr.74.2016.01.14.05.53.00
+        by mx.google.com with ESMTPS id jq5si9782250wjc.74.2016.01.14.05.53.01
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jan 2016 05:53:01 -0800 (PST)
+        Thu, 14 Jan 2016 05:53:02 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aJiKd-0008Ud-Ja; Thu, 14 Jan 2016 13:52:55 +0000
+	id 1aJiKd-0008UB-8k; Thu, 14 Jan 2016 13:52:55 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: patches@linaro.org,
@@ -21,73 +21,70 @@ Cc: patches@linaro.org,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [PATCH v3 10/19] exec.c: Use correct AddressSpace in watch_mem_read and watch_mem_write
-Date: Thu, 14 Jan 2016 13:52:46 +0000
-Message-Id: <1452779575-32582-11-git-send-email-peter.maydell@linaro.org>
+Subject: [PATCH v3 03/19] exec-all.h: Document tlb_set_page_with_attrs, tlb_set_page
+Date: Thu, 14 Jan 2016 13:52:39 +0000
+Message-Id: <1452779575-32582-4-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.7.10.4
 In-Reply-To: <1452779575-32582-1-git-send-email-peter.maydell@linaro.org>
 References: <1452779575-32582-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: m6ql/bjb+8oU
+X-TUID: 0zH0RX52ZEtU
 
-In the watchpoint access routines watch_mem_read and watch_mem_write,
-find the correct AddressSpace to use from current_cpu and the memory
-transaction attributes, rather than always assuming address_space_memory.
+Add documentation comments for tlb_set_page_with_attrs()
+and tlb_set_page().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- exec.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+ include/exec/exec-all.h | 34 +++++++++++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index 590a018..0e4f681 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2056,17 +2056,19 @@ static MemTxResult watch_mem_read(void *opaque, hwaddr addr, uint64_t *pdata,
- {
-     MemTxResult res;
-     uint64_t data;
-+    int asidx = cpu_asidx_from_attrs(current_cpu, attrs);
-+    AddressSpace *as = current_cpu->cpu_ases[asidx].as;
- 
-     check_watchpoint(addr & ~TARGET_PAGE_MASK, size, attrs, BP_MEM_READ);
-     switch (size) {
-     case 1:
--        data = address_space_ldub(&address_space_memory, addr, attrs, &res);
-+        data = address_space_ldub(as, addr, attrs, &res);
-         break;
-     case 2:
--        data = address_space_lduw(&address_space_memory, addr, attrs, &res);
-+        data = address_space_lduw(as, addr, attrs, &res);
-         break;
-     case 4:
--        data = address_space_ldl(&address_space_memory, addr, attrs, &res);
-+        data = address_space_ldl(as, addr, attrs, &res);
-         break;
-     default: abort();
-     }
-@@ -2079,17 +2081,19 @@ static MemTxResult watch_mem_write(void *opaque, hwaddr addr,
-                                    MemTxAttrs attrs)
- {
-     MemTxResult res;
-+    int asidx = cpu_asidx_from_attrs(current_cpu, attrs);
-+    AddressSpace *as = current_cpu->cpu_ases[asidx].as;
- 
-     check_watchpoint(addr & ~TARGET_PAGE_MASK, size, attrs, BP_MEM_WRITE);
-     switch (size) {
-     case 1:
--        address_space_stb(&address_space_memory, addr, val, attrs, &res);
-+        address_space_stb(as, addr, val, attrs, &res);
-         break;
-     case 2:
--        address_space_stw(&address_space_memory, addr, val, attrs, &res);
-+        address_space_stw(as, addr, val, attrs, &res);
-         break;
-     case 4:
--        address_space_stl(&address_space_memory, addr, val, attrs, &res);
-+        address_space_stl(as, addr, val, attrs, &res);
-         break;
-     default: abort();
-     }
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 9be0165..caa78a9 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -144,12 +144,40 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, target_ulong addr, ...);
+  * MMU indexes.
+  */
+ void tlb_flush_by_mmuidx(CPUState *cpu, ...);
+-void tlb_set_page(CPUState *cpu, target_ulong vaddr,
+-                  hwaddr paddr, int prot,
+-                  int mmu_idx, target_ulong size);
++/**
++ * tlb_set_page_with_attrs:
++ * @cpu: CPU to add this TLB entry for
++ * @vaddr: virtual address of page to add entry for
++ * @paddr: physical address of the page
++ * @attrs: memory transaction attributes
++ * @prot: access permissions (PAGE_READ/PAGE_WRITE/PAGE_EXEC bits)
++ * @mmu_idx: MMU index to insert TLB entry for
++ * @size: size of the page in bytes
++ *
++ * Add an entry to this CPU's TLB (a mapping from virtual address
++ * @vaddr to physical address @paddr) with the specified memory
++ * transaction attributes. This is generally called by the target CPU
++ * specific code after it has been called through the tlb_fill()
++ * entry point and performed a successful page table walk to find
++ * the physical address and attributes for the virtual address
++ * which provoked the TLB miss.
++ *
++ * At most one entry for a given virtual address is permitted. Only a
++ * single TARGET_PAGE_SIZE region is mapped; the supplied @size is only
++ * used by tlb_flush_page.
++ */
+ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+                              hwaddr paddr, MemTxAttrs attrs,
+                              int prot, int mmu_idx, target_ulong size);
++/* tlb_set_page:
++ *
++ * This function is equivalent to calling tlb_set_page_with_attrs()
++ * with an @attrs argument of MEMTXATTRS_UNSPECIFIED. It's provided
++ * as a convenience for CPUs which don't use memory transaction attributes.
++ */
++void tlb_set_page(CPUState *cpu, target_ulong vaddr,
++                  hwaddr paddr, int prot,
++                  int mmu_idx, target_ulong size);
+ void tb_invalidate_phys_addr(AddressSpace *as, hwaddr addr);
+ void probe_write(CPUArchState *env, target_ulong addr, int mmu_idx,
+                  uintptr_t retaddr);
 -- 
 1.9.1

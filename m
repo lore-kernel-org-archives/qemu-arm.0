@@ -1,102 +1,83 @@
-Received: by 10.25.159.19 with SMTP id i19csp109360lfe;
-        Thu, 14 Jan 2016 15:05:09 -0800 (PST)
-X-Received: by 10.140.223.148 with SMTP id t142mr9589406qhb.65.1452812709202;
-        Thu, 14 Jan 2016 15:05:09 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp120743lfe;
+        Thu, 14 Jan 2016 15:34:53 -0800 (PST)
+X-Received: by 10.140.167.86 with SMTP id n83mr9595978qhn.41.1452814493047;
+        Thu, 14 Jan 2016 15:34:53 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 107si9797391qgx.12.2016.01.14.15.05.08
+        by mx.google.com with ESMTPS id f128si9912651qkb.32.2016.01.14.15.34.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jan 2016 15:05:09 -0800 (PST)
+        Thu, 14 Jan 2016 15:34:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:44832 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44887 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aJqx2-0004zC-JD
-	for alex.bennee@linaro.org; Thu, 14 Jan 2016 18:05:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33235)
+	id 1aJrPo-0005BU-Kz
+	for alex.bennee@linaro.org; Thu, 14 Jan 2016 18:34:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aJqx0-0004vM-9M
-	for qemu-arm@nongnu.org; Thu, 14 Jan 2016 18:05:07 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aJrPl-00059Z-Vz
+	for qemu-arm@nongnu.org; Thu, 14 Jan 2016 18:34:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aJqwy-0000Mk-SL
-	for qemu-arm@nongnu.org; Thu, 14 Jan 2016 18:05:06 -0500
-Received: from mail-bn1on0133.outbound.protection.outlook.com
-	([157.56.110.133]:54201
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aJrPl-0007vd-5k
+	for qemu-arm@nongnu.org; Thu, 14 Jan 2016 18:34:49 -0500
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:37965)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aJqwr-0000AT-Ni; Thu, 14 Jan 2016 18:04:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=NZDQOeychNQAbDa0i5o8SPvTqxAwmOXBtrrBixTtyUU=;
-	b=Jod0U66/8cFK551dgzXdkaseS32E3yD7KMAbVJO9a+xh9VYVLRi6IkiMSzcSqnwJ84XeaTaUNNC2EMyH0jcp0NKdnmFkooa5Ffeq0Rj/DQUZmb82BQIjj/ISBilnLa/K2eqTp4wbLwbNhWgW/6LhI88u+pFmUKsao+DjeiSCf0Y=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
-	SMTP Server (TLS) id 15.1.365.19; Thu, 14 Jan 2016 23:04:55 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0365.023; Thu, 14 Jan 2016 23:04:55 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [PATCH v3 7/7] raspi: add raspberry pi 2 machine
-Thread-Index: AQHRRCvQrdqc5QRVI0SWrS1zLOHRB573UnuAgAFA88CAABsYgIADB7pA
-Date: Thu, 14 Jan 2016 23:04:55 +0000
-Message-ID: <BLUPR0301MB20344588F72A1870A14A673A9ECC0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aJrPj-0007vN-9r; Thu, 14 Jan 2016 18:34:47 -0500
+Received: by mail-wm0-x233.google.com with SMTP id b14so383147wmb.1;
+	Thu, 14 Jan 2016 15:34:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type:content-transfer-encoding;
+	bh=2qZvZ1lNe4c2ld4HGzE+secumL0ZNEE7iB0yxRLHzYc=;
+	b=QyatfGgr2xiX6YOnGEWXGrpQ8yvesaLsvj75jE2lvtQk3oENEFRvZ/hP2HqN1SJUYR
+	kDbn9N8w9m7MAmFDxnahvBAvHuRE3epd7Y1MvDUZl+qn4sKfv5scxLNPoifjTKlHWUgA
+	J/AcvG8twrZyg1Tm9f+IaBqaFV9Ch+b495rUapHzI2XsiO5I+9CJi10YNKhFFbur3W1P
+	pL9qnSX86vlWRrZUuIsmPnC3WpdQ8DywTY+g7AM6N4Jjy+DA8psF5QR7S3VJLxNdgTtA
+	1OgaVIwKC9pJmjB0dTjbjzgYTNJxNEhiwYqdMxu1jdJC+T7un+XEnYhjjaMK9nIqVyTK
+	Z/vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type
+	:content-transfer-encoding;
+	bh=2qZvZ1lNe4c2ld4HGzE+secumL0ZNEE7iB0yxRLHzYc=;
+	b=EB3B8cXbr9bYNk7LKcGxB2LBCFXkcBjHiycAKVUxWxZByeR+jVIo/01mgmRnyMv2O0
+	pcqf6ILUE/1aqoBg99djw5A3nlcZZr4BxUVaZfwCLbHUyTnCBswHM2igMUa45ZaHZru3
+	Me4qFRTSg8CwK82ycydL6zmaHTTru7Sd5qEJ+UBmZ3km7JDnfa2E3A0l/nkhfMF3d9T5
+	W6yd/V02jofyf3GPV/PIOEQieiGs4/DqGldpr2rrdQWhm18iITwt0a3ReaeA6bZL6y5e
+	oTeYr4s4EdtuHOxlSWVg3+TJL2ZECFXTeQUjLi6UExJJOPyMmpDPUh3ztbO8Sit6Ujtc
+	gWkA==
+X-Gm-Message-State: AG10YOShYc9zr3QwpIUfIS3KtQuGidpqT81LwTQFPPv5WmZp2GnoSJKa/EPZCn5pE022lBFlJLxTY4/uK/sw4w==
+MIME-Version: 1.0
+X-Received: by 10.28.217.83 with SMTP id q80mr24474wmg.15.1452814486530; Thu,
+	14 Jan 2016 15:34:46 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Thu, 14 Jan 2016 15:34:46 -0800 (PST)
+In-Reply-To: <BLUPR0301MB20344588F72A1870A14A673A9ECC0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <1451608294-16432-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1451608294-16432-8-git-send-email-Andrew.Baumann@microsoft.com>
 	<20160112035753.GD3308@pcrost-box>
 	<BLUPR0301MB2034BFDBF9CE361133F26B8E9ECA0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 	<CAPokK=o8x9fRw7K-nfdhSVB=8De9bMi9tZiUq54cevvjNSDP2A@mail.gmail.com>
-In-Reply-To: <CAPokK=o8x9fRw7K-nfdhSVB=8De9bMi9tZiUq54cevvjNSDP2A@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-originating-ip: [2001:4898:80e8:7::494]
-x-ms-office365-filtering-correlation-id: bcd6b101-4452-489f-43f8-08d31d371e42
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
-	5:amX7kgB3dbJZYob5xUfodSg02kBgLs5B0XANS2WvWYsvIuKVxAjI5Ek+eYr3nFqm4n6pfF+LoKjKmy1I66dykNUCF0MwPKU3RyTl4FJDP0eSsJ9fh6wjdU9S0+HGyYUpClVk9T8v9XWnwB5orWRmiw==;
-	24:1icJs07+pHrlJEeZpTEHmrT0zho+NXbdO+41f/pp7mAkO7rudPDn4VySIoc7Op225xS2imc8AiKlGG1ZyJ0sqXWcjG/g+fY/jOfHKwO8OyE=
-x-exchange-antispam-report-test: UriScan:; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; UriScan:; 
-x-microsoft-antispam-prvs: <BLUPR0301MB20347CE62A21947089A80C4E9ECC0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(520078)(5005006)(8121501046)(10201501046)(3002001)(61426038)(61427038);
-	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; 
-x-forefront-prvs: 08213D42D3
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(377454003)(24454002)(164054003)(199003)(189002)(1411001)(87936001)(105586002)(5005710100001)(40100003)(76576001)(97736004)(74316001)(50986999)(99286002)(5002640100001)(106116001)(93886004)(106356001)(189998001)(1096002)(110136002)(1220700001)(19580405001)(8990500004)(122556002)(5001960100002)(4326007)(10290500002)(10400500002)(81156007)(586003)(2906002)(6116002)(19580395003)(102836003)(10090500001)(5004730100002)(54356999)(2900100001)(11100500001)(77096005)(86362001)(2950100001)(86612001)(101416001)(33656002)(5003600100002)(92566002)(76176999)(5008740100001)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jan 2016 23:04:55.4781 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.110.133
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
+	<BLUPR0301MB20344588F72A1870A14A673A9ECC0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Thu, 14 Jan 2016 15:34:46 -0800
+Message-ID: <CAPokK=p44X=0Dymr3BhbKTTf3Gx00tPGJO=B2mCki2TPCh0ZHA@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::233
+Cc: Stefan Weil <sw@weilnetz.de>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>
 Subject: Re: [Qemu-arm] [PATCH v3 7/7] raspi: add raspberry pi 2 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -111,31 +92,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FXVY6sC54/r9
+X-TUID: vr5dtIz0Q+F5
 
-SGkgUGV0ZXIsDQoNCj4gRnJvbTogUGV0ZXIgQ3Jvc3Rod2FpdGUgW21haWx0bzpjcm9zdGh3YWl0
-ZXBldGVyQGdtYWlsLmNvbV0NCj4gU2VudDogVHVlc2RheSwgMTIgSmFudWFyeSAyMDE2IDE2OjQ0
-DQo+IE9uIFR1ZSwgSmFuIDEyLCAyMDE2IGF0IDM6NTMgUE0sIEFuZHJldyBCYXVtYW5uDQo+IDxB
-bmRyZXcuQmF1bWFubkBtaWNyb3NvZnQuY29tPiB3cm90ZToNCj4gPj4gRnJvbTogUGV0ZXIgQ3Jv
-c3Rod2FpdGUgW21haWx0bzpjcm9zdGh3YWl0ZXBldGVyQGdtYWlsLmNvbV0NCj4gPj4gU2VudDog
-TW9uZGF5LCAxMSBKYW51YXJ5IDIwMTYgMTk6NTgNCj4gPj4gPiArICAgIC8qIEFsbG9jYXRlIGFu
-ZCBtYXAgUkFNICovDQo+ID4+ID4gKyAgICBtZW1vcnlfcmVnaW9uX2FsbG9jYXRlX3N5c3RlbV9t
-ZW1vcnkoJnMtPnJhbSwNCj4gPj4gT0JKRUNUKG1hY2hpbmUpLCAicmFtIiwNCj4gPj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYWNoaW5lLT5yYW1fc2l6ZSk7
-DQo+ID4+ID4gKyAgICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb25fb3ZlcmxhcChnZXRfc3lz
-dGVtX21lbW9yeSgpLCAwLA0KPiA+PiAmcy0+cmFtLCAwKTsNCj4gPj4NCj4gPj4gSSB0aG91Z2h0
-IHRoZSBTb0MgaGFuZGxlZCB0aGlzIG5vdz8gV2h5IGRvIHlvdSBuZWVkIHRvIGFkZCB0bw0KPiA+
-PiBzeXN0ZW1fbWVtb3J5Pw0KPiA+DQo+ID4gSWYgSSBkb24ndCBtYXAgaXQgaGVyZSwgaG93IGRv
-IFJBTSBhY2Nlc3NlcyBmcm9tIHRoZSBDUFVzIHdvcms/DQo+ID4NCj4gDQo+IERvIHRoZSBDUFVz
-IG5vdCBoYXZlIHRoZWlyIEFTJ2VzIGNvbm5lY3RlZCB0byB5b3VyIGN1c3RvbSBBU2VzIGJ5IHRo
-ZSBTb0MNCj4gbGF5ZXI/DQo+IA0KPiA+IE9yIGFyZSB5b3Ugc2F5aW5nIHRoYXQgSSBzaG91bGQg
-c3RpbGwgZG8gdGhpcywgYnV0IGRvIGl0IGluIHRoZSBTb0Mgbm90IHRoZQ0KPiBib2FyZCBsZXZl
-bD8NCj4gPg0KPiANCj4gSSB3YXMgaG9waW5nIHdlIGNvdWxkIGdldCBhd2F5IHdpdGggMCB1c2Ug
-b2Ygc3lzdGVtX21lbW9yeS4NCg0KT24gZnVydGhlciBpbnZlc3RpZ2F0aW9uLCBJIGRvbid0IHRo
-aW5rIGl0J3MgcG9zc2libGUgdG8gd2lyZSB1cCBDUFUgQVNlcyBleHBsaWNpdGx5LiBUaGVyZSdz
-IG5vIG9idmlvdXMgcHJvcGVydHkgdG8gc2V0LiBFYWNoIGNwdS0+YXMgaXMgaW5pdGlhbGlzZWQg
-dG8gcG9pbnQgdG8gYWRkcmVzc19zcGFjZV9tZW1vcnkgYXQgdGhlIHRvcCBvZiBjcHVfZXhlY19p
-bml0KCksIGFuZCB0aGVyZSBpcyBubyB3YXkgSSBjb3VsZCBzZWUgdG8gb3ZlcnJpZGUgdGhhdC4N
-Cg0KSSB0aGluayB3aGF0IEkgaGF2ZSBub3cgaXMgcHJldHR5IGNsZWFuLCBidXQgaWYgeW91J2Qg
-cHJlZmVyIHRvIGRvIHRoZSBtYXBwaW5nIGF0IGludG8gdGhlIGdsb2JhbCBBUyBhdCBTb0MgbGV2
-ZWwgdGhhdCdzIGZpbmUgd2l0aCBtZSB0b28uDQoNClRoYW5rcywNCkFuZHJldw0K
+On Thu, Jan 14, 2016 at 3:04 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Hi Peter,
+>
+>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> Sent: Tuesday, 12 January 2016 16:44
+>> On Tue, Jan 12, 2016 at 3:53 PM, Andrew Baumann
+>> <Andrew.Baumann@microsoft.com> wrote:
+>> >> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> >> Sent: Monday, 11 January 2016 19:58
+>> >> > +    /* Allocate and map RAM */
+>> >> > +    memory_region_allocate_system_memory(&s->ram,
+>> >> OBJECT(machine), "ram",
+>> >> > +                                         machine->ram_size);
+>> >> > +    memory_region_add_subregion_overlap(get_system_memory(), 0,
+>> >> &s->ram, 0);
+>> >>
+>> >> I thought the SoC handled this now? Why do you need to add to
+>> >> system_memory?
+>> >
+>> > If I don't map it here, how do RAM accesses from the CPUs work?
+>> >
+>>
+>> Do the CPUs not have their AS'es connected to your custom ASes by the So=
+C
+>> layer?
+>>
+>> > Or are you saying that I should still do this, but do it in the SoC no=
+t the
+>> board level?
+>> >
+>>
+>> I was hoping we could get away with 0 use of system_memory.
+>
+> On further investigation, I don't think it's possible to wire up CPU ASes=
+ explicitly. There's no obvious property to set. Each cpu->as is initialise=
+d to point to address_space_memory at the top of cpu_exec_init(), and there=
+ is no way I could see to override that.
+>
+> I think what I have now is pretty clean, but if you'd prefer to do the ma=
+pping at into the global AS at SoC level that's fine with me too.
+>
+
+If it cant be done yet, what is here is a preferable approach. PMM has
+some work on list for CPU ASes that may be realted, moreso for the
+secure attributes though I think.
+
+Regards,
+Peter
+
+> Thanks,
+> Andrew

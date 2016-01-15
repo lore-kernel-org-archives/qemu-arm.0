@@ -1,264 +1,514 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3445234wru;
-        Mon, 6 Aug 2018 13:18:30 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeg5lj5H58jwLDZghZ5JWFmXGxrLzbrq7v4gA0bpIbaniU8AvWuE5jYpDjYtYEqI8jf33VJ
-X-Received: by 2002:a0c:e984:: with SMTP id z4-v6mr14166518qvn.227.1533586710683;
-        Mon, 06 Aug 2018 13:18:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533586710; cv=none;
-        d=google.com; s=arc-20160816;
-        b=M2f7KQmv+DpIwLRTxVbCizY5liqkhtpkyTjMPLHegPupC3QVIHcwI34PuQ/7+dyC3g
-         +FQ8sj/ScRmYeWJD2El5QQGf7lREshTQgx/wk0VVCmoEsxrAFA52siWxGa+XTQFTfMJv
-         Bt0fu0bPhWybbN9qCkjIB9iRGuQ0Z0d+bO8s28Ud5t57qJ6NxEQP6Nl4/YNU8ftiq6Qv
-         xW4yoclW6ksjWRwozVVyY8GOG74yF6HdomU+VpiHcOzy682CNA2jHqvrVJVks2sf/EfM
-         mQsHMVavhY/8Tzj4wZaMq7HrVQTs5T7zyfLrgs+es8OTtAqcLmDP3ZgHREpImOKxx8Vx
-         WuYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=0Vr3+XD1AJPU49CyWiqusIxD7fYKD0x5Vg3H1fbxpbI=;
-        b=jOj9fGXeOBn8qizO76oVFWpx7ddnFoYeVRBCP1gPoisksW6bZDniYYG0KfpkcjfXyl
-         ipvYArj6tDGAnok7BPlRP2ZsDy0mG+2/HOmuyjHcNZPKLuxrBIyr3b1MCHY+cj2lt4xr
-         stXiOaaoYlbll67JLaPffs1iXJyV7+SCvvWo+tLKqCYhgmwWzRzpgDjPBJ+9+NX8+Scd
-         pQLHNcolMPDqsOou4gEI2Nd2XS80pSYfMpedJP6TbIE12iH1KuvYq9QLiR6eUp/TLSgB
-         nUWHu7Qjck5hK1Fq9iNWq5SScJiZwBo3n01h5UZYGfpdhCQBMdWXNrBJZplMQErqs5ff
-         WHNA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 10.25.159.19 with SMTP id i19csp574117lfe;
+        Fri, 15 Jan 2016 08:39:23 -0800 (PST)
+X-Received: by 10.141.7.9 with SMTP id j9mr15348306qhd.71.1452875963330;
+        Fri, 15 Jan 2016 08:39:23 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z4-v6si3015025qkl.297.2018.08.06.13.18.30
+        by mx.google.com with ESMTPS id j108si14040928qge.77.2016.01.15.08.39.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Aug 2018 13:18:30 -0700 (PDT)
+        Fri, 15 Jan 2016 08:39:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36107 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47970 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmlxV-0000G9-QS
-	for alex.bennee@linaro.org; Mon, 06 Aug 2018 16:18:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58285)
+	id 1aK7PG-0001Vq-MS
+	for alex.bennee@linaro.org; Fri, 15 Jan 2016 11:39:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39902)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fmluP-0006EP-Q5
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 16:15:19 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1aK7PB-0001Kv-1O
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 11:39:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fmluO-0006h4-CF
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 16:15:17 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46960 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fmluO-0006gg-0z; Mon, 06 Aug 2018 16:15:16 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9399A87A70;
-	Mon,  6 Aug 2018 20:15:15 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-58.ams2.redhat.com
-	[10.36.116.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 18001215670D;
-	Mon,  6 Aug 2018 20:15:12 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
-	mst@redhat.com, jean-philippe.brucker@arm.com
-Date: Mon,  6 Aug 2018 22:14:35 +0200
-Message-Id: <1533586484-5737-8-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
-References: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Mon, 06 Aug 2018 20:15:15 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Mon, 06 Aug 2018 20:15:15 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v7 07/16] virtio-iommu: Implement map/unmap
+	(envelope-from <vilanova@ac.upc.edu>) id 1aK7P8-0004gs-98
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 11:39:16 -0500
+Received: from roura.ac.upc.es ([147.83.33.10]:58134)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1aK7Oy-0004cZ-K3; Fri, 15 Jan 2016 11:39:05 -0500
+Received: from gw-2.ac.upc.es (gw-2.ac.upc.es [147.83.30.8])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u0FEwN8Z029620;
+	Fri, 15 Jan 2016 15:58:23 +0100
+Received: from localhost (unknown [84.88.51.85])
+	by gw-2.ac.upc.es (Postfix) with ESMTPSA id 82020766;
+	Fri, 15 Jan 2016 17:37:57 +0100 (CET)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Date: Fri, 15 Jan 2016 17:37:57 +0100
+Message-Id: <145287587676.11400.17221267025488644508.stgit@localhost>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <145287587081.11400.4178335509020334684.stgit@localhost>
+References: <145287587081.11400.4178335509020334684.stgit@localhost>
+User-Agent: StGit/0.17.1-dirty
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	u0FEwN8Z029620
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.83.33.10
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Stefan Hajnoczi <stefanha@gmail.com>, Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Jia Liu <proljc@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Walle <michael@walle.cc>, Leon Alrae <leon.alrae@imgtec.com>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Eric Blake <eblake@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-arm] [PATCH v4 1/9] trace: Add support for vCPU pointers in
+	trace events
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kevin.tian@intel.com, tn@semihalf.com, will.deacon@arm.com,
-	drjones@redhat.com, peterx@redhat.com, linuc.decode@gmail.com,
-	bharat.bhushan@nxp.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ty2mm74mi8cx
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UYFipdDbGMVi
 
-This patch implements virtio_iommu_map/unmap.
+The tracing infrastructure later needs to differentiate between regular
+pointers and pointers to vCPUs.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Also changes all targets to use the new 'TCGv_cpu' type instead of the
+generic 'TCGv_ptr'. As of now, the change is merely cosmetic ('TCGv_cpu'
+translates into 'TCGv_ptr'), but that could change in the future to
+enforce the difference.
 
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
 ---
+ include/qemu/typedefs.h        |    1 +
+ scripts/tracetool/transform.py |    9 ++++++++-
+ target-alpha/translate.c       |    2 +-
+ target-arm/translate.c         |    2 +-
+ target-arm/translate.h         |    2 +-
+ target-cris/translate.c        |    2 +-
+ target-i386/translate.c        |    2 +-
+ target-lm32/translate.c        |    2 +-
+ target-m68k/translate.c        |    2 +-
+ target-microblaze/translate.c  |    2 +-
+ target-mips/translate.c        |    2 +-
+ target-moxie/translate.c       |    2 +-
+ target-openrisc/translate.c    |    2 +-
+ target-ppc/translate.c         |    2 +-
+ target-s390x/translate.c       |    2 +-
+ target-sh4/translate.c         |    2 +-
+ target-sparc/translate.c       |    5 +++--
+ target-tilegx/translate.c      |    2 +-
+ target-tricore/translate.c     |    2 +-
+ target-unicore32/translate.c   |    2 +-
+ target-xtensa/translate.c      |    2 +-
+ tcg/tcg-op.h                   |    2 --
+ tcg/tcg.h                      |    6 ++++++
+ trace/control.h                |    3 ++-
+ 24 files changed, 38 insertions(+), 24 deletions(-)
 
-v5 -> v6:
-- use new v0.6 fields
-- replace error_report by qemu_log_mask
-
-v3 -> v4:
-- implement unmap semantics as specified in v0.4
----
- hw/virtio/trace-events   |  3 ++
- hw/virtio/virtio-iommu.c | 94 ++++++++++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 95 insertions(+), 2 deletions(-)
-
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index f4d6b4b..926c50b 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -63,3 +63,6 @@ virtio_iommu_get_endpoint(uint32_t ep_id) "Alloc endpoint=%d"
- virtio_iommu_put_endpoint(uint32_t ep_id) "Free endpoint=%d"
- virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
- virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
-+virtio_iommu_unmap_left_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap left [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
-+virtio_iommu_unmap_right_interval(uint64_t low, uint64_t high, uint64_t next_low, uint64_t next_high) "Unmap right [0x%"PRIx64",0x%"PRIx64"], new interval=[0x%"PRIx64",0x%"PRIx64"]"
-+virtio_iommu_unmap_inc_interval(uint64_t low, uint64_t high) "Unmap inc [0x%"PRIx64",0x%"PRIx64"]"
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 4cb6e15..f3a6799 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "qemu/iov.h"
- #include "qemu-common.h"
- #include "hw/virtio/virtio.h"
-@@ -58,6 +59,13 @@ typedef struct viommu_interval {
-     uint64_t high;
- } viommu_interval;
- 
-+typedef struct viommu_mapping {
-+    uint64_t virt_addr;
-+    uint64_t phys_addr;
-+    uint64_t size;
-+    uint32_t flags;
-+} viommu_mapping;
-+
- static inline uint16_t virtio_iommu_get_sid(IOMMUDevice *dev)
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 78fe6e8..efbc8a9 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -18,6 +18,7 @@ typedef struct BusState BusState;
+ typedef struct CharDriverState CharDriverState;
+ typedef struct CompatProperty CompatProperty;
+ typedef struct CPUAddressSpace CPUAddressSpace;
++typedef struct CPUState CPUState;
+ typedef struct DeviceListener DeviceListener;
+ typedef struct DeviceState DeviceState;
+ typedef struct DisplayChangeListener DisplayChangeListener;
+diff --git a/scripts/tracetool/transform.py b/scripts/tracetool/transform=
+.py
+index fc5e679..8a43a4e 100644
+--- a/scripts/tracetool/transform.py
++++ b/scripts/tracetool/transform.py
+@@ -6,7 +6,7 @@ Type-transformation rules.
+ """
+=20
+ __author__     =3D "Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>"
+-__copyright__  =3D "Copyright 2012-2014, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
++__copyright__  =3D "Copyright 2012-2016, Llu=C3=ADs Vilanova <vilanova@a=
+c.upc.edu>"
+ __license__    =3D "GPL version 2 or (at your option) any later version"
+=20
+ __maintainer__ =3D "Stefan Hajnoczi"
+@@ -74,6 +74,7 @@ TCG_2_HOST =3D {
+     "TCGv_i32": "uint32_t",
+     "TCGv_i64": "uint64_t",
+     "TCGv_ptr": "void *",
++    "TCGv_cpu": "CPUState *",
+     None: _tcg_2_host,
+     }
+=20
+@@ -98,6 +99,7 @@ HOST_2_TCG =3D {
+     "uint32_t": "TCGv_i32",
+     "uint64_t": "TCGv_i64",
+     "void *"  : "TCGv_ptr",
++    "CPUState *": "TCGv_cpu",
+     None: _host_2_tcg,
+     }
+=20
+@@ -115,6 +117,8 @@ TCG_2_TCG_HELPER_DEF =3D {
+     "TCGv_i32": "uint32_t",
+     "TCGv_i64": "uint64_t",
+     "TCGv_ptr": "void *",
++    "TCGv_cpu": "void *",
++    "CPUState *": "void *",
+     None: _tcg_2_helper_def,
+     }
+=20
+@@ -130,6 +134,7 @@ TCG_2_TCG_HELPER_DECL =3D {
+     "TCGv_ptr": "ptr",
+     "TCGv_i32": "i32",
+     "TCGv_i64": "i64",
++    "TCGv_cpu": "ptr",
+     None: _tcg_2_tcg_helper_decl_error,
+     }
+=20
+@@ -146,6 +151,7 @@ HOST_2_TCG_TMP_NEW =3D {
+     "uint32_t": "tcg_const_i32",
+     "uint64_t": "tcg_const_i64",
+     "void *"  : "tcg_const_ptr",
++    "CPUState *": "tcg_const_ptr",
+     None: _host_2_tcg_tmp_new,
+     }
+=20
+@@ -162,5 +168,6 @@ HOST_2_TCG_TMP_FREE =3D {
+     "uint32_t": "tcg_temp_free_i32",
+     "uint64_t": "tcg_temp_free_i64",
+     "void *"  : "tcg_temp_free_ptr",
++    "CPUState *": "tcg_temp_free_ptr",
+     None: _host_2_tcg_tmp_free,
+     }
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 9909c70..d631f74 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -91,7 +91,7 @@ typedef enum {
+ } ExitStatus;
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_std_ir[31];
+ static TCGv cpu_fir[31];
+ static TCGv cpu_pc;
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index d485e7d..b90b932 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -59,7 +59,7 @@
+ #define IS_USER(s) (s->user)
+ #endif
+=20
+-TCGv_ptr cpu_env;
++TCGv_cpu cpu_env;
+ /* We reuse the same 64-bit temporaries for efficiency.  */
+ static TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
+ static TCGv_i32 cpu_R[16];
+diff --git a/target-arm/translate.h b/target-arm/translate.h
+index 53ef971..6e8eb7d 100644
+--- a/target-arm/translate.h
++++ b/target-arm/translate.h
+@@ -70,7 +70,7 @@ typedef struct DisasCompare {
+ } DisasCompare;
+=20
+ /* Share the TCG temporaries common between 32 and 64 bit modes.  */
+-extern TCGv_ptr cpu_env;
++extern TCGv_cpu cpu_env;
+ extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
+ extern TCGv_i64 cpu_exclusive_addr;
+ extern TCGv_i64 cpu_exclusive_val;
+diff --git a/target-cris/translate.c b/target-cris/translate.c
+index 2429931..5ce5c58 100644
+--- a/target-cris/translate.c
++++ b/target-cris/translate.c
+@@ -58,7 +58,7 @@
+ #define CC_MASK_NZVC 0xf
+ #define CC_MASK_RNZV 0x10e
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_R[16];
+ static TCGv cpu_PR[16];
+ static TCGv cc_x;
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index a3dd167..53a09f8 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -62,7 +62,7 @@
+ //#define MACRO_TEST   1
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_A0;
+ static TCGv cpu_cc_dst, cpu_cc_src, cpu_cc_src2, cpu_cc_srcT;
+ static TCGv_i32 cpu_cc_op;
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index fa5b0b9..a333fc6 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -42,7 +42,7 @@
+=20
+ #define MEM_INDEX 0
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_R[32];
+ static TCGv cpu_pc;
+ static TCGv cpu_ie;
+diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+index 41ae2c6..d68d615 100644
+--- a/target-m68k/translate.c
++++ b/target-m68k/translate.c
+@@ -48,7 +48,7 @@
+ static TCGv_i32 cpu_halted;
+ static TCGv_i32 cpu_exception_index;
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+=20
+ static char cpu_reg_names[3*8*3 + 5*4];
+ static TCGv cpu_dregs[8];
+diff --git a/target-microblaze/translate.c b/target-microblaze/translate.=
+c
+index 9e52011..3e3a49d 100644
+--- a/target-microblaze/translate.c
++++ b/target-microblaze/translate.c
+@@ -44,7 +44,7 @@
+             (((src) >> start) & ((1 << (end - start + 1)) - 1))
+=20
+ static TCGv env_debug;
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_R[32];
+ static TCGv cpu_SR[18];
+ static TCGv env_imm;
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index 5626647..610ed7c 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -1351,7 +1351,7 @@ enum {
+ };
+=20
+ /* global register indices */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_gpr[32], cpu_PC;
+ static TCGv cpu_HI[MIPS_DSP_ACC], cpu_LO[MIPS_DSP_ACC];
+ static TCGv cpu_dspctrl, btarget, bcond;
+diff --git a/target-moxie/translate.c b/target-moxie/translate.c
+index 6dedcb7..ab8f6a7 100644
+--- a/target-moxie/translate.c
++++ b/target-moxie/translate.c
+@@ -59,7 +59,7 @@ enum {
+=20
+ static TCGv cpu_pc;
+ static TCGv cpu_gregs[16];
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cc_a, cc_b;
+=20
+ #include "exec/gen-icount.h"
+diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
+index 606490a..3d29369 100644
+--- a/target-openrisc/translate.c
++++ b/target-openrisc/translate.c
+@@ -52,7 +52,7 @@ typedef struct DisasContext {
+     uint32_t delayed_branch;
+ } DisasContext;
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_sr;
+ static TCGv cpu_R[32];
+ static TCGv cpu_pc;
+diff --git a/target-ppc/translate.c b/target-ppc/translate.c
+index 4be7eaa..204cb3a 100644
+--- a/target-ppc/translate.c
++++ b/target-ppc/translate.c
+@@ -47,7 +47,7 @@
+ /* Code translation helpers                                             =
+     */
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static char cpu_reg_names[10*3 + 22*4 /* GPR */
+     + 10*4 + 22*5 /* SPE GPRh */
+     + 10*4 + 22*5 /* FPR */
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index c79a2cb..262da89 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -36,7 +36,7 @@
+ #include "exec/cpu_ldst.h"
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+=20
+ #include "exec/gen-icount.h"
+ #include "exec/helper-proto.h"
+diff --git a/target-sh4/translate.c b/target-sh4/translate.c
+index 7bc6216..c3a8fbd 100644
+--- a/target-sh4/translate.c
++++ b/target-sh4/translate.c
+@@ -59,7 +59,7 @@ enum {
+ };
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_gregs[24];
+ static TCGv cpu_sr, cpu_sr_m, cpu_sr_q, cpu_sr_t;
+ static TCGv cpu_pc, cpu_ssr, cpu_spc, cpu_gbr;
+diff --git a/target-sparc/translate.c b/target-sparc/translate.c
+index f99ceed..44fdff8 100644
+--- a/target-sparc/translate.c
++++ b/target-sparc/translate.c
+@@ -42,7 +42,8 @@
+                          according to jump_pc[T2] */
+=20
+ /* global register indexes */
+-static TCGv_ptr cpu_env, cpu_regwptr;
++static TCGv_cpu cpu_env;
++static TCGv_ptr cpu_regwptr;
+ static TCGv cpu_cc_src, cpu_cc_src2, cpu_cc_dst;
+ static TCGv_i32 cpu_cc_op;
+ static TCGv_i32 cpu_psr;
+@@ -2294,7 +2295,7 @@ static void gen_fmovq(DisasContext *dc, DisasCompar=
+e *cmp, int rd, int rs)
+ }
+=20
+ #ifndef CONFIG_USER_ONLY
+-static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_ptr =
+cpu_env)
++static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_cpu =
+cpu_env)
  {
-     return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
-@@ -253,10 +261,37 @@ static int virtio_iommu_map(VirtIOIOMMU *s,
-     uint64_t virt_start = le64_to_cpu(req->virt_start);
-     uint64_t virt_end = le64_to_cpu(req->virt_end);
-     uint32_t flags = le32_to_cpu(req->flags);
-+    viommu_domain *domain;
-+    viommu_interval *interval;
-+    viommu_mapping *mapping;
-+
-+    interval = g_malloc0(sizeof(*interval));
-+
-+    interval->low = virt_start;
-+    interval->high = virt_end;
-+
-+    domain = g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
-+    if (!domain) {
-+        return VIRTIO_IOMMU_S_NOENT;
-+    }
-+
-+    mapping = g_tree_lookup(domain->mappings, (gpointer)interval);
-+    if (mapping) {
-+        g_free(interval);
-+        return VIRTIO_IOMMU_S_INVAL;
-+    }
- 
-     trace_virtio_iommu_map(domain_id, virt_start, virt_end, phys_start, flags);
- 
--    return VIRTIO_IOMMU_S_UNSUPP;
-+    mapping = g_malloc0(sizeof(*mapping));
-+    mapping->virt_addr = virt_start;
-+    mapping->phys_addr = phys_start;
-+    mapping->size = virt_end - virt_start + 1;
-+    mapping->flags = flags;
-+
-+    g_tree_insert(domain->mappings, interval, mapping);
-+
-+    return VIRTIO_IOMMU_S_OK;
- }
- 
- static int virtio_iommu_unmap(VirtIOIOMMU *s,
-@@ -265,10 +300,65 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
-     uint32_t domain_id = le32_to_cpu(req->domain);
-     uint64_t virt_start = le64_to_cpu(req->virt_start);
-     uint64_t virt_end = le64_to_cpu(req->virt_end);
-+    uint64_t size = virt_end - virt_start + 1;
-+    viommu_mapping *mapping;
-+    viommu_interval interval;
-+    viommu_domain *domain;
- 
-     trace_virtio_iommu_unmap(domain_id, virt_start, virt_end);
- 
--    return VIRTIO_IOMMU_S_UNSUPP;
-+    domain = g_tree_lookup(s->domains, GUINT_TO_POINTER(domain_id));
-+    if (!domain) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no domain\n", __func__);
-+        return VIRTIO_IOMMU_S_NOENT;
-+    }
-+    interval.low = virt_start;
-+    interval.high = virt_end;
-+
-+    mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
-+
-+    while (mapping) {
-+        viommu_interval current;
-+        uint64_t low  = mapping->virt_addr;
-+        uint64_t high = mapping->virt_addr + mapping->size - 1;
-+
-+        current.low = low;
-+        current.high = high;
-+
-+        if (low == interval.low && size >= mapping->size) {
-+            g_tree_remove(domain->mappings, (gpointer)(&current));
-+            interval.low = high + 1;
-+            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
-+                interval.low, interval.high);
-+        } else if (high == interval.high && size >= mapping->size) {
-+            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
-+                interval.low, interval.high);
-+            g_tree_remove(domain->mappings, (gpointer)(&current));
-+            interval.high = low - 1;
-+        } else if (low > interval.low && high < interval.high) {
-+            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
-+            g_tree_remove(domain->mappings, (gpointer)(&current));
-+        } else {
-+            break;
-+        }
-+        if (interval.low >= interval.high) {
-+            return VIRTIO_IOMMU_S_OK;
-+        } else {
-+            mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
-+        }
-+    }
-+
-+    if (mapping) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
-+                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported\n",
-+                     __func__, interval.low, size,
-+                     mapping->virt_addr, mapping->size);
-+    } else {
-+        return VIRTIO_IOMMU_S_OK;
-+    }
-+
-+    return VIRTIO_IOMMU_S_INVAL;
- }
- 
- #define get_payload_size(req) (\
--- 
-2.5.5
+     TCGv_i32 r_tl =3D tcg_temp_new_i32();
+=20
+diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
+index 354f25a..fb5413a 100644
+--- a/target-tilegx/translate.c
++++ b/target-tilegx/translate.c
+@@ -30,7 +30,7 @@
+=20
+ #define FMT64X                          "%016" PRIx64
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv cpu_pc;
+ static TCGv cpu_regs[TILEGX_R_COUNT];
+=20
+diff --git a/target-tricore/translate.c b/target-tricore/translate.c
+index 135c583..655db75 100644
+--- a/target-tricore/translate.c
++++ b/target-tricore/translate.c
+@@ -45,7 +45,7 @@ static TCGv cpu_PSW_SV;
+ static TCGv cpu_PSW_AV;
+ static TCGv cpu_PSW_SAV;
+ /* CPU env */
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+=20
+ #include "exec/gen-icount.h"
+=20
+diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
+index d2f92f0..29c22f5 100644
+--- a/target-unicore32/translate.c
++++ b/target-unicore32/translate.c
+@@ -51,7 +51,7 @@ typedef struct DisasContext {
+    conditional executions state has been updated.  */
+ #define DISAS_SYSCALL 5
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv_i32 cpu_R[32];
+=20
+ /* FIXME:  These should be removed.  */
+diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
+index fbcec94..ce0f717 100644
+--- a/target-xtensa/translate.c
++++ b/target-xtensa/translate.c
+@@ -73,7 +73,7 @@ typedef struct DisasContext {
+     unsigned cpenable;
+ } DisasContext;
+=20
+-static TCGv_ptr cpu_env;
++static TCGv_cpu cpu_env;
+ static TCGv_i32 cpu_pc;
+ static TCGv_i32 cpu_R[16];
+ static TCGv_i32 cpu_FR[16];
+diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
+index 6966672..8669d0b 100644
+--- a/tcg/tcg-op.h
++++ b/tcg/tcg-op.h
+@@ -756,7 +756,6 @@ static inline void tcg_gen_exit_tb(uintptr_t val)
+ void tcg_gen_goto_tb(unsigned idx);
+=20
+ #if TARGET_LONG_BITS =3D=3D 32
+-#define TCGv TCGv_i32
+ #define TCGv_promise TCGv_promise_i32
+ #define tcg_temp_new() tcg_temp_new_i32()
+ #define tcg_global_reg_new tcg_global_reg_new_i32
+@@ -769,7 +768,6 @@ void tcg_gen_goto_tb(unsigned idx);
+ #define tcg_gen_qemu_ld_tl tcg_gen_qemu_ld_i32
+ #define tcg_gen_qemu_st_tl tcg_gen_qemu_st_i32
+ #else
+-#define TCGv TCGv_i64
+ #define TCGv_promise TCGv_promise_i64
+ #define tcg_temp_new() tcg_temp_new_i64()
+ #define tcg_global_reg_new tcg_global_reg_new_i64
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index 79e83c8..8bed171 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -311,6 +311,12 @@ typedef struct TCGv_ptr_d *TCGv_ptr;
+ typedef struct TCGv_promise_i32_d *TCGv_promise_i32;
+ typedef struct TCGv_promise_i64_d *TCGv_promise_i64;
+ typedef struct TCGv_promise_ptr_d *TCGv_promise_ptr;
++typedef TCGv_ptr TCGv_cpu;
++#if TARGET_LONG_BITS =3D=3D 32
++typedef TCGv_i32 TCGv;
++#else  /* TARGET_LONG_BITS =3D=3D 64 */
++typedef TCGv_i64 TCGv;
++#endif
+=20
+ static inline TCGv_i32 QEMU_ARTIFICIAL MAKE_TCGV_I32(intptr_t i)
+ {
+diff --git a/trace/control.h b/trace/control.h
+index da9bb6b..766fdad 100644
+--- a/trace/control.h
++++ b/trace/control.h
+@@ -1,7 +1,7 @@
+ /*
+  * Interface for configuring and controlling the state of tracing events.
+  *
+- * Copyright (C) 2011-2014 Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
++ * Copyright (C) 2011-2016 Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+  * See the COPYING file in the top-level directory.
+@@ -11,6 +11,7 @@
+ #define TRACE__CONTROL_H
+=20
+ #include "qemu-common.h"
++#include "qemu/typedefs.h"
+ #include "trace/generated-events.h"
+=20
+=20
 

@@ -1,239 +1,123 @@
-Received: by 10.25.159.19 with SMTP id i19csp512605lfe;
-        Fri, 15 Jan 2016 06:54:53 -0800 (PST)
-X-Received: by 10.66.252.136 with SMTP id zs8mr15425932pac.110.1452869693796;
-        Fri, 15 Jan 2016 06:54:53 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp537856lfe;
+        Fri, 15 Jan 2016 07:37:47 -0800 (PST)
+X-Received: by 10.98.69.209 with SMTP id n78mr15436832pfi.81.1452872265415;
+        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by mx.google.com with ESMTPS id z88si17012104pfi.50.2016.01.15.06.54.53
+Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
+        by mx.google.com with ESMTPS id y22si17162303pfi.57.2016.01.15.07.37.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Jan 2016 06:54:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 65so8622833pff.2;
-        Fri, 15 Jan 2016 06:54:53 -0800 (PST)
+Received: by mail-pf0-x241.google.com with SMTP id n128so8649644pfn.3;
+        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-type:content-disposition:in-reply-to:user-agent;
-        bh=BRn6oVkwDHUAPPYlMrQIIiwW+64+rIAU3NRrSd9oE00=;
-        b=jiCzKJSXB9xCn+NsVoZhJN4AVfCq4zNUTcknU5QCKjOgICebnjRaSSLDR8PsWAKbBB
-         ckD5gjf4aW76jXwjUKS1I1L1pdI358WAopplfa/UDlXr7ol8oCd2MgP+dQOf9+xUOIAi
-         /AQg0jq4eosBfHttlfqZHP6iyjzRlDZTB4PEcKMXSdDlMsZpzDRuo6kF27J5BB+n/56r
-         2M45QqECpwL4Gr4sdTNqCvG/GPNsGlT1u2OJC6wmkUlSPk5nEDvwxMZOmmrtVATb521k
-         ufa7h/ag+V44g9vBbxcbRCbcSTV4AFn9GAJif6ZcE+bpKW9PqMyylfbtG+0/CiCsco/c
-         Grww==
+        bh=ynGl3SzSPJv5qHEZSLdj8DrZ6R0ItoRRZeg3xgM5t4k=;
+        b=dGUMI5jgXZ3msqb3Ecp4Pgvi/UqLgb+8jbuQlaUjIhZT14hKepub5dxZuw/mXVnwV3
+         Q198Iizi5bMDRTX8xaNIp+rlNUgCiQ9B70Ysf5Rh0uGx8rjXQplvJHeCnDxIGIVrkxR/
+         P7gHMTbQ7cGjLVdvPF5oJyje43xNg/TcMHPXmcDngZ8lKXPAgBKZYzevz5iu0CwDUyPx
+         ZNhQS9e86+DdNeMqzOsj8LelMp30h9yByy9C0N3uxYg48J3DEozCbwVdxQvW29Ije0jG
+         uSobJ6DNVYt916DIiUgMlIhMkXrDEM26fA+tgWBrXmA3ZvSJFvYxcayP2ALQ9+lrGCmL
+         YHHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-type:content-disposition:in-reply-to
          :user-agent;
-        bh=BRn6oVkwDHUAPPYlMrQIIiwW+64+rIAU3NRrSd9oE00=;
-        b=I4rR4N9AsnejrAl4sG+11lCSiHtTdIs9OCs97lwCXr+V1mffaVZzkBiGqp10XvkHo3
-         Yv8as8UZUXmUV9VTTAY4jOOm0Zr00VvJEn9cEMJU3dKq0U1hykVuizVB67CWf5e0FlUo
-         lcjpv0DfZR2AnEim9Y3eRTw4mSz/eOOo/q0GVW7T6VidIJ59HhJj1tjOEpg4BNOISSEx
-         Jwkx+0n7olH9rHEDXlzycyC4KsR4bDeVWLoZFnaZbfhP9mUFiUqWU5Xm7m1h92eE3wT3
-         SyEk3a9Pk2l0IZGlS6tb2Lu4HXXrZQN6NIkIzYugdAxj1FvLhAuOH6CYJqUdQQQd0Lin
-         tptA==
-X-Gm-Message-State: ALoCoQlUmgoSJciLWDSIT3W69nM8jL1edltxdaJrqgG3xeP0qfyCDs9ZUz4Pwhpr6qEqp5dl+RVHOCg4AA0K96LhA7TLSApZcw==
-X-Received: by 10.98.87.20 with SMTP id l20mr15478761pfb.70.1452869693360;
-        Fri, 15 Jan 2016 06:54:53 -0800 (PST)
+        bh=ynGl3SzSPJv5qHEZSLdj8DrZ6R0ItoRRZeg3xgM5t4k=;
+        b=AmLLsRoZMFp17LILd8vl+jmfGlRqfVxrII7kXsF3AosQLrsK7GWswGNMNws13hC22b
+         POiwXn3VSPXpOSpmRyK1S0gNqhNxljRVQJiKKievGxLpo7ELeM3HhvK1sJJA62DRS/EI
+         NiPiMVH44Jb1FnUUSLjDayS9f8sApqkW568sp8u2oCaL3+i5/JwK0F1VoMfkAJOhUwhS
+         AHoJqDCyD0cvqbGDmgFFTF/a1nxgc5sCbnpfpXFNsGzikKc4eIO6PQBt2ZkBclu8Sn6O
+         NEg8mWMmQrGU8HaNmK+KdERq5Oq3xf6jLwjO0I9Kh9gvVps06m2dFk/dgx2RXXaBIXoX
+         6+Pg==
+X-Gm-Message-State: ALoCoQmKlrea0gsuaIhEjGYdN1VZoie4iYUMqW+Y97sYGvJZ1lmuqvJcenXepeN4vHDluEHmPq4z2hM1PnRxuqBq41sxUVcq2g==
+X-Received: by 10.98.44.66 with SMTP id s63mr15887856pfs.2.1452872265099;
+        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id w22sm16064494pfa.79.2016.01.15.06.54.50
+        by smtp.gmail.com with ESMTPSA id m75sm16327605pfj.38.2016.01.15.07.37.43
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 06:54:52 -0800 (PST)
-Date: Fri, 15 Jan 2016 15:54:43 +0100
+        Fri, 15 Jan 2016 07:37:44 -0800 (PST)
+Date: Fri, 15 Jan 2016 16:37:37 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, patches@linaro.org, qemu-arm@nongnu.org,
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 3/8] target-arm: Use a single entry point for AArch64 and
- AArch32 exceptions
-Message-ID: <20160115145443.GK29396@toto>
+Subject: Re: [PATCH 1/8] target-arm: Properly support EL2 and EL3 in
+ arm_el_is_aa64()
+Message-ID: <20160115153737.GL29396@toto>
 References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-4-git-send-email-peter.maydell@linaro.org>
+ <1452796451-2946-2-git-send-email-peter.maydell@linaro.org>
+ <20160115143836.GI29396@toto>
+ <CAFEAcA_GkZNcXTHLN_rb1Tdi=sUSgxK07abZsOu59Ogbx-uqGQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1452796451-2946-4-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA_GkZNcXTHLN_rb1Tdi=sUSgxK07abZsOu59Ogbx-uqGQ@mail.gmail.com>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: S6vmhChHcAGf
+X-TUID: VeNRIcaSvewX
 
-On Thu, Jan 14, 2016 at 06:34:06PM +0000, Peter Maydell wrote:
-> If EL2 or EL3 is present on an AArch64 CPU, then exceptions can be
-> taken to an exception level which is running AArch32 (if only EL0
-> and EL1 are present then EL1 must be AArch64 and all exceptions are
-> taken to AArch64). To support this we need to have a single
-> implementation of the CPU do_interrupt() method which can handle both
-> 32 and 64 bit exception entry.
+On Fri, Jan 15, 2016 at 02:50:24PM +0000, Peter Maydell wrote:
+> On 15 January 2016 at 14:38, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> > On Thu, Jan 14, 2016 at 06:34:04PM +0000, Peter Maydell wrote:
+> >> Support EL2 and EL3 in arm_el_is_aa64() by implementing the
+> >> logic for checking the SCR_EL3 and HCR_EL2 register-width bits
+> >> as appropriate to determine the register width of lower exception
+> >> levels.
+> >>
+> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> >
+> > Hi Peter,
+> >
+> > On the ZynqMP we've got the Cortex-A53 EL3 RW configurable at reset
+> > time. At some later point we'll likely have to implement that
+> > runtime option...
 > 
-> Pull the common parts of aarch64_cpu_do_interrupt() and
-> arm_cpu_do_interrupt() out into a new function which calls
-> either the AArch32 or AArch64 specific entry code once it has
-> worked out which one is needed.
+> That might be tricky, we fairly well bake in "AARCH64 feature means
+> 64-bit highest EL" at the moment. The KVM code takes the approach
+> of "if it's not going to reset in AArch64 then unset the feature bit".
 > 
-> We temporarily special-case the handling of EXCP_SEMIHOST to
-> avoid an assertion in arm_el_is_aa64(); the next patch will
-> pull all the semihosting handling out to the arm_cpu_do_interrupt()
-> level (since semihosting semantics depend on the register width
-> of the calling code, not on that of any higher EL).
+> Anyway, we'll cross that bridge when we get to it.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Do you have much locally extra that you needed for enabling
+> EL3 in the Cortex-A53? I have an ARM Trusted Firmware + OP-TEE
+> setup now that I'm going to use to work through the missing bits,
+> but if you've already gone through that effort there's no need
+> my duplicating work...
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+I don't have anything immediate for EL3 beyond enabling it and some
+boot thing for a15/aarch32 to allow me to run my tests. I haven't
+really looked at the boot in detail for aa32 so I haven't bothered
+submitting it. This is it:
 
+commit b30c7102624241a67ebb2d3df70e88a4148f68a4
+Author: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Date:   Sun Sep 13 09:52:01 2015 +0200
 
-> ---
->  target-arm/cpu-qom.h |  2 --
->  target-arm/cpu64.c   |  3 ---
->  target-arm/helper.c  | 75 ++++++++++++++++++++++++++++++----------------------
->  3 files changed, 44 insertions(+), 36 deletions(-)
-> 
-> diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-> index bda2af8..eae6cd1 100644
-> --- a/target-arm/cpu-qom.h
-> +++ b/target-arm/cpu-qom.h
-> @@ -249,6 +249,4 @@ int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
->  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  #endif
->  
-> -void aarch64_cpu_do_interrupt(CPUState *cs);
-> -
->  #endif
-> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
-> index 63c8b1c..edb41f7 100644
-> --- a/target-arm/cpu64.c
-> +++ b/target-arm/cpu64.c
-> @@ -290,9 +290,6 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
->  {
->      CPUClass *cc = CPU_CLASS(oc);
->  
-> -#if !defined(CONFIG_USER_ONLY)
-> -    cc->do_interrupt = aarch64_cpu_do_interrupt;
-> -#endif
->      cc->cpu_exec_interrupt = arm_cpu_exec_interrupt;
->      cc->set_pc = aarch64_cpu_set_pc;
->      cc->gdb_read_register = aarch64_cpu_gdb_read_register;
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 519f066..962bb3c 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -5707,8 +5707,7 @@ void aarch64_sync_64_to_32(CPUARMState *env)
->      env->regs[15] = env->pc;
->  }
->  
-> -/* Handle a CPU exception.  */
-> -void arm_cpu_do_interrupt(CPUState *cs)
-> +static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
->  {
->      ARMCPU *cpu = ARM_CPU(cs);
->      CPUARMState *env = &cpu->env;
-> @@ -5718,16 +5717,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
->      uint32_t offset;
->      uint32_t moe;
->  
-> -    assert(!IS_M(env));
-> -
-> -    arm_log_exception(cs->exception_index);
-> -
-> -    if (arm_is_psci_call(cpu, cs->exception_index)) {
-> -        arm_handle_psci_call(cpu);
-> -        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-> -        return;
-> -    }
-> -
->      /* If this is a debug exception we must update the DBGDSCR.MOE bits */
->      switch (env->exception.syndrome >> ARM_EL_EC_SHIFT) {
->      case EC_BREAKPOINT:
-> @@ -5899,11 +5888,10 @@ void arm_cpu_do_interrupt(CPUState *cs)
->      }
->      env->regs[14] = env->regs[15] + offset;
->      env->regs[15] = addr;
-> -    cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
->  }
->  
-> -/* Handle a CPU exception.  */
-> -void aarch64_cpu_do_interrupt(CPUState *cs)
-> +/* Handle exception entry to a target EL which is using AArch64 */
-> +static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
->  {
->      ARMCPU *cpu = ARM_CPU(cs);
->      CPUARMState *env = &cpu->env;
-> @@ -5921,22 +5909,6 @@ void aarch64_cpu_do_interrupt(CPUState *cs)
->          addr += 0x200;
->      }
->  
-> -    arm_log_exception(cs->exception_index);
-> -    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
-> -                  new_el);
-> -    if (qemu_loglevel_mask(CPU_LOG_INT)
-> -        && !excp_is_internal(cs->exception_index)) {
-> -        qemu_log_mask(CPU_LOG_INT, "...with ESR %x/0x%" PRIx32 "\n",
-> -                      env->exception.syndrome >> ARM_EL_EC_SHIFT,
-> -                      env->exception.syndrome);
-> -    }
-> -
-> -    if (arm_is_psci_call(cpu, cs->exception_index)) {
-> -        arm_handle_psci_call(cpu);
-> -        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-> -        return;
-> -    }
-> -
->      switch (cs->exception_index) {
->      case EXCP_PREFETCH_ABORT:
->      case EXCP_DATA_ABORT:
-> @@ -5996,6 +5968,47 @@ void aarch64_cpu_do_interrupt(CPUState *cs)
->  
->      qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
->                    new_el, env->pc, pstate_read(env));
-> +}
-> +
-> +/* Handle a CPU exception for A and R profile CPUs.
-> + * Do any appropriate logging, handle PSCI calls, and then hand off
-> + * to the AArch64-entry or AArch32-entry function depending on the
-> + * target exception level's register width.
-> + */
-> +void arm_cpu_do_interrupt(CPUState *cs)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +    unsigned int new_el = env->exception.target_el;
-> +
-> +    assert(!IS_M(env));
-> +
-> +    arm_log_exception(cs->exception_index);
-> +    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
-> +                  new_el);
-> +    if (qemu_loglevel_mask(CPU_LOG_INT)
-> +        && !excp_is_internal(cs->exception_index)) {
-> +        qemu_log_mask(CPU_LOG_INT, "...with ESR %x/0x%" PRIx32 "\n",
-> +                      env->exception.syndrome >> ARM_EL_EC_SHIFT,
-> +                      env->exception.syndrome);
-> +    }
-> +
-> +    if (arm_is_psci_call(cpu, cs->exception_index)) {
-> +        arm_handle_psci_call(cpu);
-> +        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-> +        return;
-> +    }
-> +
-> +    /* Temporary special case for EXCP_SEMIHOST, which is used only
-> +     * for 64-bit semihosting calls -- as this is an internal exception
-> +     * it has no specified target level and arm_el_is_aa64() would
-> +     * assert because new_el could be 0.
-> +     */
-> +    if (cs->exception_index == EXCP_SEMIHOST || arm_el_is_aa64(env, new_el)) {
-> +        arm_cpu_do_interrupt_aarch64(cs);
-> +    } else {
-> +        arm_cpu_do_interrupt_aarch32(cs);
-> +    }
->  
->      if (!kvm_enabled()) {
->          cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-> -- 
-> 1.9.1
-> 
+    target-arm: Start EL3 capable ARMv7 cores in MON mode
+    
+    Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index f6f5539..485965f 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -164,6 +164,9 @@ static void arm_cpu_reset(CPUState *s)
+ #else
+     /* SVC mode with interrupts disabled.  */
+     env->uncached_cpsr = ARM_CPU_MODE_SVC;
++    if (arm_feature(env, ARM_FEATURE_EL3)) {
++        env->uncached_cpsr = ARM_CPU_MODE_MON;
++    }
+     env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
+     /* On ARMv7-M the CPSR_I is the value of the PRIMASK register, and is
+      * clear at reset. Initial SP and PC are loaded from ROM.

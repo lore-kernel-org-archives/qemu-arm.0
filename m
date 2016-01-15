@@ -1,123 +1,107 @@
-Received: by 10.25.159.19 with SMTP id i19csp537856lfe;
-        Fri, 15 Jan 2016 07:37:47 -0800 (PST)
-X-Received: by 10.98.69.209 with SMTP id n78mr15436832pfi.81.1452872265415;
-        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by mx.google.com with ESMTPS id y22si17162303pfi.57.2016.01.15.07.37.45
+Received: by 10.25.159.19 with SMTP id i19csp543097lfe;
+        Fri, 15 Jan 2016 07:47:37 -0800 (PST)
+X-Received: by 10.31.162.20 with SMTP id l20mr7492630vke.137.1452872857595;
+        Fri, 15 Jan 2016 07:47:37 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x232.google.com (mail-vk0-x232.google.com. [2607:f8b0:400c:c05::232])
+        by mx.google.com with ESMTPS id y2si11394978vky.74.2016.01.15.07.47.37
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 15 Jan 2016 07:47:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::232 as permitted sender) client-ip=2607:f8b0:400c:c05::232;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id n128so8649644pfn.3;
-        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::232 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x232.google.com with SMTP id n1so145985186vkb.3
+        for <alex.bennee@linaro.org>; Fri, 15 Jan 2016 07:47:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=ynGl3SzSPJv5qHEZSLdj8DrZ6R0ItoRRZeg3xgM5t4k=;
-        b=dGUMI5jgXZ3msqb3Ecp4Pgvi/UqLgb+8jbuQlaUjIhZT14hKepub5dxZuw/mXVnwV3
-         Q198Iizi5bMDRTX8xaNIp+rlNUgCiQ9B70Ysf5Rh0uGx8rjXQplvJHeCnDxIGIVrkxR/
-         P7gHMTbQ7cGjLVdvPF5oJyje43xNg/TcMHPXmcDngZ8lKXPAgBKZYzevz5iu0CwDUyPx
-         ZNhQS9e86+DdNeMqzOsj8LelMp30h9yByy9C0N3uxYg48J3DEozCbwVdxQvW29Ije0jG
-         uSobJ6DNVYt916DIiUgMlIhMkXrDEM26fA+tgWBrXmA3ZvSJFvYxcayP2ALQ9+lrGCmL
-         YHHQ==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=sbk5CK66Ht0h20jgYc/hoGyvZWCqFAwCL2PZbWD7X2M=;
+        b=LzG97enzPSZaq6mpPx+vPQwadlqdAjc7H2H5WkCqFDPFmYLE7C7tx/VpZXlrYldYEC
+         3d66jD/V/+9mmG5PAMastlXEO5fHd/o1SytC0yoUS2JXFsDb1TUHPvw8kv1i+YabaC5f
+         97hXfXuf29o73hU6p+Eb/hkZkD6urQks+h+AY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=ynGl3SzSPJv5qHEZSLdj8DrZ6R0ItoRRZeg3xgM5t4k=;
-        b=AmLLsRoZMFp17LILd8vl+jmfGlRqfVxrII7kXsF3AosQLrsK7GWswGNMNws13hC22b
-         POiwXn3VSPXpOSpmRyK1S0gNqhNxljRVQJiKKievGxLpo7ELeM3HhvK1sJJA62DRS/EI
-         NiPiMVH44Jb1FnUUSLjDayS9f8sApqkW568sp8u2oCaL3+i5/JwK0F1VoMfkAJOhUwhS
-         AHoJqDCyD0cvqbGDmgFFTF/a1nxgc5sCbnpfpXFNsGzikKc4eIO6PQBt2ZkBclu8Sn6O
-         NEg8mWMmQrGU8HaNmK+KdERq5Oq3xf6jLwjO0I9Kh9gvVps06m2dFk/dgx2RXXaBIXoX
-         6+Pg==
-X-Gm-Message-State: ALoCoQmKlrea0gsuaIhEjGYdN1VZoie4iYUMqW+Y97sYGvJZ1lmuqvJcenXepeN4vHDluEHmPq4z2hM1PnRxuqBq41sxUVcq2g==
-X-Received: by 10.98.44.66 with SMTP id s63mr15887856pfs.2.1452872265099;
-        Fri, 15 Jan 2016 07:37:45 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id m75sm16327605pfj.38.2016.01.15.07.37.43
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 07:37:44 -0800 (PST)
-Date: Fri, 15 Jan 2016 16:37:37 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 1/8] target-arm: Properly support EL2 and EL3 in
- arm_el_is_aa64()
-Message-ID: <20160115153737.GL29396@toto>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=sbk5CK66Ht0h20jgYc/hoGyvZWCqFAwCL2PZbWD7X2M=;
+        b=bYZqLyhZ1T2gqdgQVNNwPnzBIANzOR12+pZIH4qkjmaeJrzSyIhbsvZKUzSubRQj98
+         Fa4ngGsERxGcd75eT66Yq/kY734107r30f18FUjrBr+eONvKdnrsCxYTh01yQZRIoHPd
+         Fakg3Q7+ZT1XDzAfPlHXBRbGRi0M/nxIOtZPt2fPViDQGVQYW2knmSaTSNQNoZ23OTVw
+         ylI0qKW3pGiqVAHHRu7HpWh58T0dbGGBkKCWViqhRKaApwMXwtuWdBWA1UyosGLEbQts
+         tIricFqqR8wThVZd0aV5R+fSMReRAH97lJ94md+94YvrHyY2FM5C5lu1/EWdZuHgnCP5
+         BDuQ==
+X-Gm-Message-State: ALoCoQlmM8p/QV9ykS5GWCmTaKXc5wI///xWCLbcgPD9F3x/Bz161kb3K/GT72Rd12wVsaUE4dJ6tgTthXeLITkjRRuCrlXcW/Uo6dBoONJc6BNoOSq1+x0=
+X-Received: by 10.31.194.21 with SMTP id s21mr7853255vkf.92.1452872857163;
+ Fri, 15 Jan 2016 07:47:37 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Fri, 15 Jan 2016 07:47:17 -0800 (PST)
+In-Reply-To: <20160115153737.GL29396@toto>
 References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
  <1452796451-2946-2-git-send-email-peter.maydell@linaro.org>
- <20160115143836.GI29396@toto>
- <CAFEAcA_GkZNcXTHLN_rb1Tdi=sUSgxK07abZsOu59Ogbx-uqGQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_GkZNcXTHLN_rb1Tdi=sUSgxK07abZsOu59Ogbx-uqGQ@mail.gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: VeNRIcaSvewX
+ <20160115143836.GI29396@toto> <CAFEAcA_GkZNcXTHLN_rb1Tdi=sUSgxK07abZsOu59Ogbx-uqGQ@mail.gmail.com>
+ <20160115153737.GL29396@toto>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 15 Jan 2016 15:47:17 +0000
+Message-ID: <CAFEAcA-qULPxKo4dwHkW-2xBzY8t=ei3-ny7Py0iigCk6DuunQ@mail.gmail.com>
+Subject: Re: [PATCH 1/8] target-arm: Properly support EL2 and EL3 in arm_el_is_aa64()
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-TUID: eKB46bEBldLW
 
-On Fri, Jan 15, 2016 at 02:50:24PM +0000, Peter Maydell wrote:
-> On 15 January 2016 at 14:38, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> > On Thu, Jan 14, 2016 at 06:34:04PM +0000, Peter Maydell wrote:
-> >> Support EL2 and EL3 in arm_el_is_aa64() by implementing the
-> >> logic for checking the SCR_EL3 and HCR_EL2 register-width bits
-> >> as appropriate to determine the register width of lower exception
-> >> levels.
-> >>
-> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> >
-> > Hi Peter,
-> >
-> > On the ZynqMP we've got the Cortex-A53 EL3 RW configurable at reset
-> > time. At some later point we'll likely have to implement that
-> > runtime option...
-> 
-> That might be tricky, we fairly well bake in "AARCH64 feature means
-> 64-bit highest EL" at the moment. The KVM code takes the approach
-> of "if it's not going to reset in AArch64 then unset the feature bit".
-> 
-> Anyway, we'll cross that bridge when we get to it.
-> 
-> Do you have much locally extra that you needed for enabling
-> EL3 in the Cortex-A53? I have an ARM Trusted Firmware + OP-TEE
-> setup now that I'm going to use to work through the missing bits,
-> but if you've already gone through that effort there's no need
-> my duplicating work...
+On 15 January 2016 at 15:37, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> On Fri, Jan 15, 2016 at 02:50:24PM +0000, Peter Maydell wrote:
+>> Do you have much locally extra that you needed for enabling
+>> EL3 in the Cortex-A53? I have an ARM Trusted Firmware + OP-TEE
+>> setup now that I'm going to use to work through the missing bits,
+>> but if you've already gone through that effort there's no need
+>> my duplicating work...
+>
+> I don't have anything immediate for EL3 beyond enabling it and some
+> boot thing for a15/aarch32 to allow me to run my tests.
 
-I don't have anything immediate for EL3 beyond enabling it and some
-boot thing for a15/aarch32 to allow me to run my tests. I haven't
-really looked at the boot in detail for aa32 so I haven't bothered
-submitting it. This is it:
+Cool. I'm not sure at what point to add the patch that turns
+on the EL3 feature bit, but I guess in the not too distant future :-)
 
-commit b30c7102624241a67ebb2d3df70e88a4148f68a4
-Author: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Date:   Sun Sep 13 09:52:01 2015 +0200
+> I haven't
+> really looked at the boot in detail for aa32 so I haven't bothered
+> submitting it. This is it:
+>
+> commit b30c7102624241a67ebb2d3df70e88a4148f68a4
+> Author: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Date:   Sun Sep 13 09:52:01 2015 +0200
+>
+>     target-arm: Start EL3 capable ARMv7 cores in MON mode
+>
+>     Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+>
+> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+> index f6f5539..485965f 100644
+> --- a/target-arm/cpu.c
+> +++ b/target-arm/cpu.c
+> @@ -164,6 +164,9 @@ static void arm_cpu_reset(CPUState *s)
+>  #else
+>      /* SVC mode with interrupts disabled.  */
+>      env->uncached_cpsr = ARM_CPU_MODE_SVC;
+> +    if (arm_feature(env, ARM_FEATURE_EL3)) {
+> +        env->uncached_cpsr = ARM_CPU_MODE_MON;
+> +    }
+>      env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
+>      /* On ARMv7-M the CPSR_I is the value of the PRIMASK register, and is
+>       * clear at reset. Initial SP and PC are loaded from ROM.
 
-    target-arm: Start EL3 capable ARMv7 cores in MON mode
-    
-    Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+This doesn't look right. A 32-bit CPU with TrustZone boots into
+Secure-SVC, not Mon. This works because in the v7 security model
+Secure-SVC and Mon are at the same privilege level, unlike AArch64
+where EL3 is higher privilege than EL1. If guest code needs to
+get into Mon mode it can do so from S-SVC (eg set MVBAR, make
+sure there's sensible code at that vector entrypoint, execute
+an SMC).
 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index f6f5539..485965f 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -164,6 +164,9 @@ static void arm_cpu_reset(CPUState *s)
- #else
-     /* SVC mode with interrupts disabled.  */
-     env->uncached_cpsr = ARM_CPU_MODE_SVC;
-+    if (arm_feature(env, ARM_FEATURE_EL3)) {
-+        env->uncached_cpsr = ARM_CPU_MODE_MON;
-+    }
-     env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
-     /* On ARMv7-M the CPSR_I is the value of the PRIMASK register, and is
-      * clear at reset. Initial SP and PC are loaded from ROM.
+thanks
+-- PMM

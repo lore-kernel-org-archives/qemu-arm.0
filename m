@@ -1,78 +1,76 @@
-Received: by 10.25.159.19 with SMTP id i19csp367860lfe;
-        Fri, 15 Jan 2016 02:25:17 -0800 (PST)
-X-Received: by 10.140.220.134 with SMTP id q128mr13003787qhb.56.1452853515861;
-        Fri, 15 Jan 2016 02:25:15 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp373427lfe;
+        Fri, 15 Jan 2016 02:38:03 -0800 (PST)
+X-Received: by 10.55.74.141 with SMTP id x135mr11885524qka.20.1452854283853;
+        Fri, 15 Jan 2016 02:38:03 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z23si10706800qka.91.2016.01.15.02.25.15
+        by mx.google.com with ESMTPS id m90si12711114qge.24.2016.01.15.02.38.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 02:25:15 -0800 (PST)
+        Fri, 15 Jan 2016 02:38:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@virtualopensystems-com.20150623.gappssmtp.com
-Received: from localhost ([::1]:46255 helo=lists.gnu.org)
+Received: from localhost ([::1]:46284 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aK1ZD-0001Nm-5f
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 05:25:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39356)
+	id 1aK1lb-0005Xa-DD
+	for alex.bennee@linaro.org; Fri, 15 Jan 2016 05:38:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1ZA-0001K7-05
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:25:13 -0500
+	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1lZ-0005XI-OY
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:38:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1Z7-0004S9-Pf
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:25:11 -0500
-Received: from mail-ig0-x230.google.com ([2607:f8b0:4001:c05::230]:35913)
+	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1lV-0008T0-1F
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:38:01 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:35421)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1Z6-0004R7-Go
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:25:09 -0500
-Received: by mail-ig0-x230.google.com with SMTP id z14so8524887igp.1
-	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 02:25:08 -0800 (PST)
+	(envelope-from <a.rigo@virtualopensystems.com>) id 1aK1lU-0008Sh-Lj
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 05:37:56 -0500
+Received: by mail-wm0-x241.google.com with SMTP id f206so2155128wmf.2
+	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 02:37:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=virtualopensystems-com.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=weYECJvSM586S7hs8T75co863uBhQ6v+PJ2pEEbkkds=;
-	b=gu0+GxUeptCGY7FAQG4vIi8ZsFI4FSqSf8kRixLmV4LFNeetGXHDZy0b/vdXbMrIuV
-	0Y7iLdDIJFcJWU9WJMzBZB1McQlNJazZ6oaepu/KBqUdpmaE+HZQHkpn/1X+Wt9Gs1C7
-	ab2l+R8AeR3TXrk5pOEXBwQuA6dcPLrIrS4/IHO9HBoCSTyHa4LSBBMkUw7eBTtlrJMW
-	kk6g4u/+ZgBj8PyHp+5isd64jXUFdpHF4h+Wcy15cDhInZYC50brpPQkqbTCjFS/mKyM
-	uWmjbxjzeyQFEsemq6J7tGMpBXvN4wHDJeqwvR6bX9vRQ7z7r3qeiEuc2f/e0xf58+UQ
-	5H+w==
+	h=from:to:cc:subject:date:message-id;
+	bh=zeTOywR/cFBFX9YQj8tcUXkH/UQXB5+RSgXReuXmTSo=;
+	b=u7lWJwof7aTWFiIQZI197DCTrkG/cguVrB/qwh5u4DdAZhUVw03oxPoKzj8ASsIdqh
+	E+F2VdFS18KABRS15Z/xH9FBZJyT6S2Li9qsob5DW3TxD0G1AX67kPbyX+tbYAjaGzP2
+	umcO10QXJc84XNAMawW6PNmngKYi4HkriWCQ2JmOr+c6nblIctaRIcp3KAyop09jSCKc
+	X6hDLjdKM0t8oBgE7GDhhjDb9T83m5xTMthS/vWkkA0LAI4SlN+WY0Z7h09kgyIH0+y3
+	BMoFsQc14J9Ch4Pryod2PhgCqDgozGXqUU1OGSX4vwEGPbt30aNHe6VkKYK06mwat0fS
+	WC0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=weYECJvSM586S7hs8T75co863uBhQ6v+PJ2pEEbkkds=;
-	b=HatkaAiPu0EjhSqnCdsBDibfLcCmzCkGlyoZvO/ap9OMvCLVigP70Yv8lQ+PWfsWo0
-	OtbOuSArFRWvg33Jh3ftHc/6jgv3Hkuorr3Ox05lTi6bz0zUDcyhO1t72GZx7JyNSGgA
-	hpya3Jx2y1JwZkcJFet40T+SEFAeVLrs0Wpwg5FMvLoV2Dmsc9GXkMDIaFM6b275TYmm
-	LWl/5TEJdmDMppL25eJDVw1JFQP4ImlFw5XYTJu55zNHIyEP3aH4D3ElfJVAYwAQ6NLN
-	OuJROaLzOvW1gmfzZ0EzAmszRjnCDgzY24+jFHFHq8JaQfuRtBtONIm9W2r3B+PjCMYW
-	mMXQ==
-X-Gm-Message-State: AG10YORX2vLQasUscIkqe/xuPZJLIkwH2qFhSacOZ4UbfHByQjACvzXBDo0Nb4IzvsrlOQeJI7IE4s5sfiO12A==
-MIME-Version: 1.0
-X-Received: by 10.50.142.73 with SMTP id ru9mr2449843igb.49.1452853507993;
-	Fri, 15 Jan 2016 02:25:07 -0800 (PST)
-Received: by 10.64.224.180 with HTTP; Fri, 15 Jan 2016 02:25:07 -0800 (PST)
-X-Originating-IP: [80.15.154.113]
-In-Reply-To: <CAFEAcA9FTxhaf3upvM-d6D14TpqA+Ed_OVJvFWK1Js_j2nTzhQ@mail.gmail.com>
-References: <1452851965-19418-1-git-send-email-a.rigo@virtualopensystems.com>
-	<CAFEAcA9FTxhaf3upvM-d6D14TpqA+Ed_OVJvFWK1Js_j2nTzhQ@mail.gmail.com>
-Date: Fri, 15 Jan 2016 11:25:07 +0100
-Message-ID: <CAH47eN188FvUMUpWNPQgJNJoGV61YLZ8yyR_=AKm_MmHBo1TmA@mail.gmail.com>
-From: alvise rigo <a.rigo@virtualopensystems.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=zeTOywR/cFBFX9YQj8tcUXkH/UQXB5+RSgXReuXmTSo=;
+	b=mdOuXgyKObHOKLhgpEBXuO4HKoVLmTumsRyeadpm1zSuhiRla8b/pOfyLpjSO/0BJZ
+	qMUQQh5fKaXfGjtU8EXSv5t6u6x99PKTSk5oyJ2j+ApCpTxTg/0EAFuus2Kj9A4csLbF
+	yeSLBWxTyvxsfWTaUl1fAvGUIsLBjm9YzBJrgATvj/g1KZZ2LJ+Xn3ECVIXKzSGmuaTB
+	lCPFQRpGWgCL3ygUwQ5BnQ95UqEKIPBdhlqLiwx/QWh9WyyPihj6ZUAo9gx036eiCmKA
+	Y2DTijVpOQfu/0x/vGUO5zWbdK2CeVeiSi6oEjP9bA+HivWAd8nCcJNTa8frHwLTzRoi
+	8eWw==
+X-Gm-Message-State: ALoCoQmp4jvoSENuuCEWNgjLPFTddzCbzk3505ZTLgc3ggYMsj7RxvFa1zDV6ZPoMAbyOp4dWkfaCBQNLlL/JFHAwIme45l1cA==
+X-Received: by 10.194.75.202 with SMTP id e10mr10498939wjw.160.1452854275581; 
+	Fri, 15 Jan 2016 02:37:55 -0800 (PST)
+Received: from localhost.localdomain
+	(LPuteaux-656-1-278-113.w80-15.abo.wanadoo.fr. [80.15.154.113])
+	by smtp.googlemail.com with ESMTPSA id
+	id1sm9999337wjb.19.2016.01.15.02.37.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 15 Jan 2016 02:37:54 -0800 (PST)
+From: Alvise Rigo <a.rigo@virtualopensystems.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 15 Jan 2016 11:37:42 +0100
+Message-Id: <1452854262-19550-1-git-send-email-a.rigo@virtualopensystems.com>
+X-Mailer: git-send-email 2.7.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::230
-Cc: "tech@virtualopensystems.com" <tech@virtualopensystems.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+X-Received-From: 2a00:1450:400c:c09::241
+Cc: Peter Maydell <peter.maydell@linaro.org>, tech@virtualopensystems.com,
+	Alvise Rigo <a.rigo@virtualopensystems.com>,
 	"open list:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] target-arm: fix MMU index in
-	arm_cpu_do_unaligned_access
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v2] target-arm: Use the right MMU
+	index in arm_regime_using_lpae_format
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -86,108 +84,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: M4+8u02aN5v7
+X-TUID: t/SxslO2wOTH
 
-On Fri, Jan 15, 2016 at 11:04 AM, Peter Maydell
-<peter.maydell@linaro.org> wrote:
-> On 15 January 2016 at 09:59, Alvise Rigo <a.rigo@virtualopensystems.com> wrote:
->> arm_regime_using_lpae_format checks whether the LPAE extension is used
->> for stage 1 translation regimes. MMU indexes not exclusively of a stage 1
->> regime won't work with this method.
->>
->> In case of ARMMMUIdx_S12NSE0 or ARMMMUIdx_S12NSE1, offset these values
->> by ARMMMUIdx_S1NSE0 to get the right index indicating a stage 1
->> translation regime.
->>
->> Rename also the function to arm_s1_regime_using_lpae_format and update
->> the comments to reflect the change.
->>
->> Signed-off-by: Alvise Rigo <a.rigo@virtualopensystems.com>
->> ---
->>  target-arm/helper.c    | 8 ++++----
->>  target-arm/internals.h | 5 +++--
->>  target-arm/op_helper.c | 8 ++++++--
->>  3 files changed, 13 insertions(+), 8 deletions(-)
->>
->> diff --git a/target-arm/helper.c b/target-arm/helper.c
->> index 59d5a41..8317ff5 100644
->> --- a/target-arm/helper.c
->> +++ b/target-arm/helper.c
->> @@ -5996,10 +5996,10 @@ static inline bool regime_using_lpae_format(CPUARMState *env,
->>      return false;
->>  }
->>
->> -/* Returns true if the translation regime is using LPAE format page tables.
->> - * Used when raising alignment exceptions, whose FSR changes depending on
->> - * whether the long or short descriptor format is in use. */
->> -bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
->> +/* Returns true if the stage 1 translation regime is using LPAE format page
->> + * tables. Used when raising alignment exceptions, whose FSR changes depending
->> + * on whether the long or short descriptor format is in use. */
->> +bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
->>  {
->>      return regime_using_lpae_format(env, mmu_idx);
->>  }
->> diff --git a/target-arm/internals.h b/target-arm/internals.h
->> index b925aaa..d226bbe 100644
->> --- a/target-arm/internals.h
->> +++ b/target-arm/internals.h
->> @@ -441,8 +441,9 @@ struct ARMMMUFaultInfo {
->>  bool arm_tlb_fill(CPUState *cpu, vaddr address, int rw, int mmu_idx,
->>                    uint32_t *fsr, ARMMMUFaultInfo *fi);
->>
->> -/* Return true if the translation regime is using LPAE format page tables */
->> -bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
->> +/* Return true if the stage 1 translation regime is using LPAE format page
->> + * tables */
->> +bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
->>
->>  /* Raise a data fault alignment exception for the specified virtual address */
->>  void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
->> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
->> index e42d287..ccc505d 100644
->> --- a/target-arm/op_helper.c
->> +++ b/target-arm/op_helper.c
->> @@ -133,7 +133,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
->>  {
->>      ARMCPU *cpu = ARM_CPU(cs);
->>      CPUARMState *env = &cpu->env;
->> -    int target_el;
->> +    int target_el, mmu_idx;
->>      bool same_el;
->>
->>      if (retaddr) {
->> @@ -146,10 +146,14 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
->>
->>      env->exception.vaddress = vaddr;
->>
->> +    mmu_idx = cpu_mmu_index(env, false);
->> +    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
->> +        mmu_idx += ARMMMUIdx_S1NSE0;
->> +    }
->
-> I would let the arm_s1_regime_using_lpae_format() function do this conversion
-> from the S12 index to the S1 index.
+arm_regime_using_lpae_format checks whether the LPAE extension is used
+for stage 1 translation regimes. MMU indexes not exclusively of a stage 1
+regime won't work with this method.
 
-OK, I will send the updated version right away.
+In case of ARMMMUIdx_S12NSE0 or ARMMMUIdx_S12NSE1, offset these values
+by ARMMMUIdx_S1NSE0 to get the right index indicating a stage 1
+translation regime.
 
->
-> Otherwise this looks good to me.
+Rename also the function to arm_s1_regime_using_lpae_format and update
+the comments to reflect the change.
 
-Thank you,
-alvise
+Signed-off-by: Alvise Rigo <a.rigo@virtualopensystems.com>
+---
+ target-arm/helper.c    | 12 ++++++++----
+ target-arm/internals.h |  5 +++--
+ target-arm/op_helper.c |  2 +-
+ 3 files changed, 12 insertions(+), 7 deletions(-)
 
->
->>      /* the DFSR for an alignment fault depends on whether we're using
->>       * the LPAE long descriptor format, or the short descriptor format
->>       */
->> -    if (arm_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
->> +    if (arm_s1_regime_using_lpae_format(env, mmu_idx)) {
->>          env->exception.fsr = 0x21;
->>      } else {
->>          env->exception.fsr = 0x1;
->> --
->> 2.7.0
->
-> thanks
-> -- PMM
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index 59d5a41..faeaaa8 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -5996,11 +5996,15 @@ static inline bool regime_using_lpae_format(CPUARMState *env,
+     return false;
+ }
+ 
+-/* Returns true if the translation regime is using LPAE format page tables.
+- * Used when raising alignment exceptions, whose FSR changes depending on
+- * whether the long or short descriptor format is in use. */
+-bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
++/* Returns true if the stage 1 translation regime is using LPAE format page
++ * tables. Used when raising alignment exceptions, whose FSR changes depending
++ * on whether the long or short descriptor format is in use. */
++bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
++    if (mmu_idx == ARMMMUIdx_S12NSE0 || mmu_idx == ARMMMUIdx_S12NSE1) {
++        mmu_idx += ARMMMUIdx_S1NSE0;
++    }
++
+     return regime_using_lpae_format(env, mmu_idx);
+ }
+ 
+diff --git a/target-arm/internals.h b/target-arm/internals.h
+index b925aaa..d226bbe 100644
+--- a/target-arm/internals.h
++++ b/target-arm/internals.h
+@@ -441,8 +441,9 @@ struct ARMMMUFaultInfo {
+ bool arm_tlb_fill(CPUState *cpu, vaddr address, int rw, int mmu_idx,
+                   uint32_t *fsr, ARMMMUFaultInfo *fi);
+ 
+-/* Return true if the translation regime is using LPAE format page tables */
+-bool arm_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
++/* Return true if the stage 1 translation regime is using LPAE format page
++ * tables */
++bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
+ 
+ /* Raise a data fault alignment exception for the specified virtual address */
+ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index e42d287..951fc5a 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -149,7 +149,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+     /* the DFSR for an alignment fault depends on whether we're using
+      * the LPAE long descriptor format, or the short descriptor format
+      */
+-    if (arm_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
++    if (arm_s1_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
+         env->exception.fsr = 0x21;
+     } else {
+         env->exception.fsr = 0x1;
+-- 
+2.7.0
+

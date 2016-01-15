@@ -1,59 +1,80 @@
-Received: by 10.25.159.19 with SMTP id i19csp332711lfe;
-        Sat, 23 Jan 2016 03:38:45 -0800 (PST)
-X-Received: by 10.141.23.137 with SMTP id z131mr10135064qhd.52.1453549125241;
-        Sat, 23 Jan 2016 03:38:45 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp713118lfe;
+        Fri, 15 Jan 2016 13:33:15 -0800 (PST)
+X-Received: by 10.140.173.132 with SMTP id t126mr17230903qht.96.1452893595527;
+        Fri, 15 Jan 2016 13:33:15 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a128si12641608qhc.128.2016.01.23.03.38.45
+        by mx.google.com with ESMTPS id 134si15310549qhz.5.2016.01.15.13.33.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Jan 2016 03:38:45 -0800 (PST)
+        Fri, 15 Jan 2016 13:33:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56913 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com
+Received: from localhost ([::1]:49001 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aMwWi-000578-Oh
-	for alex.bennee@linaro.org; Sat, 23 Jan 2016 06:38:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35222)
+	id 1aKBzf-0001IU-2T
+	for alex.bennee@linaro.org; Fri, 15 Jan 2016 16:33:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwWg-00052T-HE
-	for qemu-arm@nongnu.org; Sat, 23 Jan 2016 06:38:43 -0500
+	(envelope-from <alistair23@gmail.com>) id 1aKBzc-0001Ff-QD
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 16:33:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwWd-0005ES-Bd
-	for qemu-arm@nongnu.org; Sat, 23 Jan 2016 06:38:42 -0500
-Received: from szxga03-in.huawei.com ([119.145.14.66]:27409)
+	(envelope-from <alistair23@gmail.com>) id 1aKBzb-0007v0-OV
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 16:33:12 -0500
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:33768)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1aMwWc-0005Ao-OF; Sat, 23 Jan 2016 06:38:39 -0500
-Received: from 172.24.1.51 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.1.51])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id BVC88256; Sat, 23 Jan 2016 19:37:06 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
-	Server id 14.3.235.1; Sat, 23 Jan 2016 19:36:58 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Sat, 23 Jan 2016 19:36:41 +0800
-Message-ID: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
+	(envelope-from <alistair23@gmail.com>)
+	id 1aKBzZ-0007ud-Pm; Fri, 15 Jan 2016 16:33:09 -0500
+Received: by mail-oi0-x242.google.com with SMTP id j3so8950964oig.0;
+	Fri, 15 Jan 2016 13:33:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-type;
+	bh=5AHt5AVvxVLB4nf7Wmfkq/E7sK/y2l/eu8tMRDmf6hY=;
+	b=Po9YOVyYOzdpshwaIdGb4hFHt5aWdybXVEh45B8/DLOBdPmiGyMGZFMTCmHBtxoL2R
+	dZFNz7ZbwSTKEtAQcnCh/Ui7VISZJJ4X6jZAYUZQ482IsOi6hac4BqN9cngNIh2kB1u4
+	20qNBrUvW3ZYrErDGmEELlvmdPfZDtnpUyHqrG+ukkW+vzZfEFJZ9CPVv5TDBBH6CvTc
+	2WxRiWzcScVYh+bBCyNvFkiNZ6Q6z4a4dT/vZi8lFQDy14QykegA7HW70MXd0Hi+F2vS
+	IY5OcJNHLgSPCQLkngJmBH56QqZGJhJZZ5rR+NGROLE3JjVJkXmfU7wcZ0QL7lj49sZu
+	WqDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-type;
+	bh=5AHt5AVvxVLB4nf7Wmfkq/E7sK/y2l/eu8tMRDmf6hY=;
+	b=avZS59agm8pSmgZs+THMUZWmmf05rjpzoQNFogUhsNOy9tJWf8V+kWBNjLwMjnuUh1
+	R8ZvxG0MYeuhJ/YgbPJDgzqZVeaHpWGXMCzGEZG5yE+p3DNVR45OSW5UzdIf1idBPcAY
+	ynxzKpZKbwXfmjAypbcIyXbsVqipBZatzjt26U5GbxVh+j8LNoetS+jODKB00EeyaMj7
+	tMdbrddpdWEc4zjI8XN+IVYsifMNuDC3KtOEmCiZPVZsWsmfNGcfsQXtxiLMQyDyEfAs
+	QoGvTOXrrok7Wa0xdbDeeGqd3R0tvO7j6O24xKo95LJ2FY+w+gFxi9qOPbAY+v1U0CLj
+	s2QA==
+X-Gm-Message-State: ALoCoQnBkDHYB30SU7S8wsI5u6MVcZuLUzBXS56MVQovzI0BHPlJQrdkoyPo3fnBQ6897TLCDBLy4F1N2LEnlXPAFcvqWoHnWg==
+X-Received: by 10.202.83.139 with SMTP id h133mr9885463oib.127.1452893589281; 
+	Fri, 15 Jan 2016 13:33:09 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.56A365E4.0054, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 722273842fe28f16263e0757da54dc25
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Cc: hangaohuai@huawei.com, peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
-	shannon.zhao@linaro.org, ganapatrao.kulkarni@caviumnetworks.com,
-	hanjun.guo@linaro.org
-Subject: [Qemu-arm] [PATCH v4 0/5] ARM: Add NUMA support for machine virt
+Received: by 10.182.49.199 with HTTP; Fri, 15 Jan 2016 13:32:39 -0800 (PST)
+In-Reply-To: <CAFEAcA-3==j2LaqTxvy3DC-USWV5UXE-M4vDkkbG5vAmG65GsA@mail.gmail.com>
+References: <cover.1450570397.git.crosthwaite.peter@gmail.com>
+	<27dea50e71d768db3752dcad34be0f4c4234fd21.1450570397.git.crosthwaite.peter@gmail.com>
+	<CAFEAcA8U5CYMSNJCoLo3D787p7v8gr0Ru0fVJwZeN6oW5kxFtg@mail.gmail.com>
+	<CAFEAcA-3==j2LaqTxvy3DC-USWV5UXE-M4vDkkbG5vAmG65GsA@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 15 Jan 2016 13:32:39 -0800
+X-Google-Sender-Auth: wsRbef1UKdCeFnTCBx3VwgXhFI0
+Message-ID: <CAKmqyKM+ZZuhj+uKo3bGS8Poam4w+gsLdC=QJ0bFVKspouCJYA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c06::242
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 5/6] xlnx-zynqmp: Connect the
+	SPI devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,57 +88,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pIESkdznFqDy
+X-TUID: 9zNtwO/l93ao
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+On Fri, Jan 15, 2016 at 7:21 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 7 January 2016 at 15:55, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> On 20 December 2015 at 05:43, Peter Crosthwaite
+>> <crosthwaitepeter@gmail.com> wrote:
+>>> +    for (i = 0; i < XLNX_ZYNQMP_NUM_SPIS; i++) {
+>>> +        char bus_name[6];
+>>> +
+>>> +        object_property_set_bool(OBJECT(&s->spi[i]), true, "realized", &err);
+>>> +
+>>> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi[i]), 0, spi_addr[i]);
+>>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
+>>> +                           gic_spi[spi_intr[i]]);
+>>> +
+>>> +        /* Alias controller SPI bus to the SoC itself */
+>>> +        snprintf(bus_name, 6, "spi%d", i);
+>>
+>> I don't much like these hard coded 6s. This is in init which
+>> isn't a hot path, so the simplest thing is to use g_strdup_printf()
+>> and then g_free() it when we're done.
+>>
+>> Similarly in patch 6.
+>>
+>> Otherwise I like this; I did a quick tweak to my sd card patchset
+>> to use this approach and it seems to at least compile and do
+>> the right thing in info qtree (I don't have a xilinx test image
+>> to do more).
+>>
+>> Haven't looked at the detail of how we're doing this in patch 1 yet.
+>
+> Hi Peter (and/or Alistair) -- do you have time to do a quick respin
+> of this patchset to use g_strdup_printf() in these cases? It would
+> be nice to get this series into the tree, because my sd card rework
+> patchset depends on it...
 
-Add NUMA support for machine virt. Tested successfully running a guest
-Linux kernel with the following patch applied:
+Yep! I'll do it now.
 
-- [PATCH v9 0/6] arm64, numa: Add numa support for arm64 platforms
-https://lwn.net/Articles/672329/
-- [PATCH v2 0/4] ACPI based NUMA support for ARM64
-http://www.spinics.net/lists/linux-acpi/msg61795.html
+Thanks,
 
-Changes since v3:
-* based on new kernel driver and device bindings
-* add ACPI part
+Alistair
 
-Changes since v2:
-* update to use NUMA node property arm,associativity.
-
-Changes since v1:
-Take into account Peter's comments:
-* rename virt_memory_init to arm_generate_memory_dtb
-* move arm_generate_memory_dtb to boot.c and make it a common func
-* use a struct numa_map to generate numa dtb
-
-Example qemu command line:
-qemu-system-aarch64 \
-    -enable-kvm -smp 4\
-    -kernel Image \
-    -m 512 -machine virt,kernel_irqchip=on \
-    -initrd guestfs.cpio.gz \
-    -cpu host -nographic \
-    -numa node,mem=256M,cpus=0-1,nodeid=0 \
-    -numa node,mem=256M,cpus=2-3,nodeid=1 \
-    -append "console=ttyAMA0 root=/dev/ram"
-
-Shannon Zhao (5):
-  ARM: Virt: Add /distance-map node for NUMA
-  ARM: Virt: Set numa-node-id for CPUs
-  ARM: Add numa-node-id for /memory node
-  include/hw/acpi/acpi-defs: Add GICC Affinity Structure
-  hw/arm/virt-acpi-build: Generate SRAT table
-
- hw/arm/boot.c               | 29 ++++++++++++++++++++++-
- hw/arm/virt-acpi-build.c    | 58 +++++++++++++++++++++++++++++++++++++++++++++
- hw/arm/virt.c               | 37 +++++++++++++++++++++++++++++
- hw/i386/acpi-build.c        |  2 +-
- include/hw/acpi/acpi-defs.h | 15 +++++++++++-
- 5 files changed, 138 insertions(+), 3 deletions(-)
-
--- 
-2.0.4
-
-
+>
+> thanks
+> -- PMM
+>

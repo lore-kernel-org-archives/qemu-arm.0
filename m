@@ -1,50 +1,50 @@
-Received: by 10.25.159.19 with SMTP id i19csp769622lfe;
-        Fri, 15 Jan 2016 16:01:57 -0800 (PST)
-X-Received: by 10.55.77.216 with SMTP id a207mr16611033qkb.80.1452902517445;
-        Fri, 15 Jan 2016 16:01:57 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp769709lfe;
+        Fri, 15 Jan 2016 16:02:13 -0800 (PST)
+X-Received: by 10.55.81.70 with SMTP id f67mr16762422qkb.28.1452902532992;
+        Fri, 15 Jan 2016 16:02:12 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g6si16013276qhd.43.2016.01.15.16.01.57
+        by mx.google.com with ESMTPS id a197si16084153qkb.6.2016.01.15.16.02.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 16:01:57 -0800 (PST)
+        Fri, 15 Jan 2016 16:02:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:49442 helo=lists.gnu.org)
+Received: from localhost ([::1]:49445 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aKEJY-0000Gp-QY
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 19:01:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45490)
+	id 1aKEJo-0000nR-HN
+	for alex.bennee@linaro.org; Fri, 15 Jan 2016 19:02:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45571)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aKEH9-0004W7-RS
-	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 18:59:29 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aKEHF-0004cx-4J
+	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 18:59:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aKEH4-00011C-U7
-	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 18:59:27 -0500
-Received: from mail-bl2on0133.outbound.protection.outlook.com
-	([65.55.169.133]:6848
-	helo=na01-bl2-obe.outbound.protection.outlook.com)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aKEH9-00013D-Vv
+	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 18:59:33 -0500
+Received: from mail-bn1bon0133.outbound.protection.outlook.com
+	([157.56.111.133]:28389
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aKEH4-000117-Ny; Fri, 15 Jan 2016 18:59:22 -0500
+	id 1aKEH9-00012t-P6; Fri, 15 Jan 2016 18:59:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=eKaRcDyChoXUgJUh5NqzMK6Ztk5ogbKnGzmKX7T3U28=;
-	b=QimcuAoOwMnJEHaVM9D7tHnKLsRbbHXDgtqrXCU6Elz3qByJ2nanu3y6SpJAeQcsTbPE68KaJN64wIfddmIvcAXuXlThVSiCnNt3JWLOY0anczcoR0Fey/Pi/3I7ZvN8FBTZI0FnuzIPUTfXp+wip2cM5vrmu02HHgFa8KuDbN0=
+	bh=69NfeZIifPfVTzz9xpJRMB0R3vYl+3uld6W5uzh2xQk=;
+	b=To8kOMGiN80fh6DdCL9NGFQaCDovB2BKQbpeqAh+qREvPkot3mKY85x/xfU0mZOhM9Gf2Q2aExnSXHv2fBGSgppwhozIDeSV54hNHeM1bNB/Gqd1w55LQpEEw/ulQRoDXD47vHb9AbL/GiNYg2bGyS113lBel4sEbRD+aTQ9mrw=
 Authentication-Results: spf=none (sender IP is )
 	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
 Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:5::724)
 	by BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with
 	Microsoft
-	SMTP Server (TLS) id 15.1.365.19; Fri, 15 Jan 2016 23:59:20 +0000
+	SMTP Server (TLS) id 15.1.365.19; Fri, 15 Jan 2016 23:59:25 +0000
 From: Andrew Baumann <Andrew.Baumann@microsoft.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri, 15 Jan 2016 15:58:50 -0800
-Message-ID: <1452902337-13844-2-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Fri, 15 Jan 2016 15:58:54 -0800
+Message-ID: <1452902337-13844-6-git-send-email-Andrew.Baumann@microsoft.com>
 X-Mailer: git-send-email 2.5.1
 In-Reply-To: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
@@ -53,63 +53,64 @@ Content-Type: text/plain
 X-Originating-IP: [2001:4898:80e8:5::724]
 X-ClientProxiedBy: BY1PR16CA0020.namprd16.prod.outlook.com (25.162.29.30) To
 	BLUPR0301MB2033.namprd03.prod.outlook.com (25.164.22.23)
-X-MS-Office365-Filtering-Correlation-Id: b6b187b3-6ee5-424f-6293-08d31e07e2e6
+X-MS-Office365-Filtering-Correlation-Id: 7598aaa5-abb0-4c1d-6daa-08d31e07e5f4
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
-	2:a6hOm+evYVEJKDTthX7Q/wYBX6sXIQtIkoP+cxyMKQzJslDDpcmzfbbD8Lq/q8SbtH5UySxr9j+gTk9ZLKmaE8bi6FHUGBFxk09t1sTy0eEE5IMWc85ITBlVp8oL4qBFDQ0Or9iZ33q5GJmSgVgpata5DKaJikkqP7Q+jn25UpwhOkpQL0MtV2noRjhFGE5e;
-	3:pkxH7o49GDIh2cm/7utaU/NyNoUFjgxs065KHakvcUmDdVi04AsnzSLTDRyl3UPVa5rvSfrK91SnWElr4PoenK0OF8OE4wl5sQBHEP+gMXSMcaCK4eRVR6SqH+0TGUwL;
-	25:I0l0TY5cLBm6/aj4B5kQn1cYdf3lv34S7wpA4yydBNunlyRot/hjiiI3zldRRRvtPekwzZo2BEy4OVpVlBsy7ERUbsaQIaBM5CY2DuDTEN0ciCca5Ibqp8dtY2ooT9HHtzpeoFRcTkR/YeN5PTIZI4U5AV+R39DGy0XSPQGlfb+lLcjmfxRIvqjrlhQaEZpkuuTIQ/1B485yNjqmQkzNtsrHctQKk3Y65Lf2aVZ9zk1DVfm9PTdJ1ACINqsgWjnPr9iN7JLBaF3m5YlMEzZRIFD+uJ+6leI64RlpwIe3Cms=
+	2:iFAEPESo8aiFu41U+OWdL3V0MuBh/QqaOwOWIwLekilmtKr9wcY7A3w+l+NwtbaNZYHgOwgumfrvUEBi+9A3QVU+wajiGnlyBtPKkVtmOf5hTP/D/diMpDELxrbo53bPj2i7r/tWI43OJtRr4TNAY4iNUVscrnPzfvBe3n+cgzCf9ho60StoF+kskIo2BMX+;
+	3:42UbwJsOAQfS1IV2j7lTT0eWHno43cogcfglVpmSsKcabfhQRwD83NB/dxmLDRotD6VwzrzPyqVvTYMwlLYQ4CLRNXZ0DCC2rg8Mrr72M8F1uSmUOBcdnu9q3P+96wsY;
+	25:LKg9gmkfEKb+1B+wVyrRpVt7Ve0rOUKn7Sh+lt+VunbeVCIacZWW4husNZ2yF6wwZI6jTnn0ubKa+YBL02R35EgSADxbFHoKsRjFdwLa+XLuqwd9s+v7FeLv6OIcDw3zFaFkXZBOsA7ypVqHdm+ntRMlmOFteasPPAQPoFtTY/bs4jYZ1ubrWyNJ+UGDfn9URb/fidHr7Qm4GgyAR3iSLRX0OyfepMIJL8p29br79BLCAxHyMo0JXb6rpryPZFZGHzqS22itEIJJHrKuVw9BKVdrnVLLqW8JXOOlI8fi4UQ=
 X-Exchange-Antispam-Report-Test: UriScan:; BCL:0; PCL:0; RULEID:;
 	SRVR:BLUPR0301MB2033; UriScan:; 
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
-	20:sywTNCn9wDRmASzW1suPqa+tjhTyTfgtGdQ3+wbXVs3zoLVakROERybb2R76mWUE1LBTwkCara+sG9GhDW1E5k/PL+hroY72lUTEpE8SyGjduWo+xoDpvmZUBd/QoZk+NbIYVD+7tdQp6m79XcOSSjBiOVnaOixckXLC8a5G+jN7OcotazN1QGhoVi7+8UZCVDy01EZUbAKF9/RVk2mcBLZ2Be6RIKScyWvpgkQW2FJHuSgqC/cEeEGT7fiy7YzIIfU28imhqRGFO3xymoz2BT6WZeSEhmf9eHug7J7yBAbqHllSmlColhbpwZMtn8boTBW2IXuea1tdIxLEmDrRnJP01q12gA32lSzLvlUH1eOUGtcOAnSxRtpVYy0S71fjMwxlWrYGri7KAMsfK0GF0YvqS0Ma2kHjC22xqFgXUqgsi84pYYe2ZVbRhBLDKgWRrUUidZwl2HrPhlzWakjYEyjKmRtwz8z0bLkbiI1Y3AdGD72l6wuPIKBndaZM1Xxs;
-	4:R7/nF2ALz0GPRvooAvFSLCvhnENIkXLtq38tX5D3mkN78CtYVVoNz5dHkoTytXc+Dszq0zQD9257koQyWDNTNSzeXfM75uBPB9DQva/Qz5gO6U4E9u7aLJBLcJFMNRIcpckGtdtbWsVufiTbURDIM+J9X6NpOaq2TDdBWYrqWWy0AQl7b8TObAOcMAqkbI5BH2IqKJKPvqjxiGDve2bz/rsSohHdDcs57vjkvt/TWmqNgK6clKjdI53UtmfDjBuv4/o5WzBHAoCq0QiGO5j6Hb0trsR1sKNjAGbdovbuHK7SyEsxzPxUR5FFrH+FnjsbZ6aMccm91SBbN73BoDgGhnnc9zz1BY4oSAqLd8oAuY6WAfRJJqauQhh2MIGSZPPd
-X-Microsoft-Antispam-PRVS: <BLUPR0301MB20332073BD76F0E6018977659ECD0@BLUPR0301MB2033.namprd03.prod.outlook.com>
+	20:zFBKuL01qVVlWEGAlg8P5s0UMNmnvvWJiN4aKaSm/kOFZvRbvhZH3xJQhtuWhrgiGWytAUJv9t+7Q8hjW5fhzM8v8DOSvbVCp3VTDJIWT6nWXGYvTEe18ub+cTMqPk7tJv9XVtTeV302pTRz3in06tyNHM/IHmpVKawK7Ye4nx1r1aOx8gwQjHcErGFzjzy6is/WPpAFimRywaHnWToC3ujo5Y/WIIfNAf+YotYb3rcrs93O+ylmhHnyMYnOGWCwMjuuhIgrkvr9/FB7JT32QPHgJN83gyiQsSSM34/L+ofrEFCsQRf1+WzMS9HoK57TGZJJKXAjuYvVHT2E89uVEb4JqYaTKcJrNOe7yMomYW31HWUfPrm17bi6ZWgBcK3nmj0k6WKrDbkwiHCfmc1EoGn2v1kE0lK+n2Ryf5ZtZxukulknSFs9HxTVWRuwer3Mw9G/EnFgY3l6S4OlceZQQ6j5KpNTJY7RAdox/ufTsK2XhHs8+jXVTRLkTZc5c6x1;
+	4:fL3Se/iRJYVX+jv5F0aGO2GXdJ6w4QDEYy3VlBMg2IoYlyOc3NZVGJg6M0uG6/wkNeRfP19dOb25hhl94/4mMfV9/9tOhxCHqaqMFZoxnvsnkWY34AaaG2FG2YyLCA0DttMLya6i+hPhcJEw6V2f+hMFebncMVyiGHHbYzRMocX1VMfecytYZMm0/PzufxzduKyaEh2yP5cVaS0/i5d5gm3bFjhvJfWNVWn/JClNB70s16nJcZCVDtbJSJAcoYfpfk3jf36XfhweibLIoA5pwwz0H/53+7o7qxjOnFnVoNRRRnYcbLLs0rtNAS7loBkcOD1D6NCG/FjbE2oo1FMERmT9BPdB6nbRfmFD7ehzraIxe7dKOCeUP1TqoceWORi3
+X-Microsoft-Antispam-PRVS: <BLUPR0301MB20333EEC5F33E47D2BF070879ECD0@BLUPR0301MB2033.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(601004)(2401047)(8121501046)(5005006)(520078)(3002001)(10201501046);
 	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
 	SRVR:BLUPR0301MB2033; 
 X-Forefront-PRVS: 08220FA8D6
 X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(6009001)(189002)(199003)(4001430100002)(575784001)(106356001)(15975445007)(86362001)(2351001)(2950100001)(2906002)(586003)(77096005)(189998001)(42186005)(5008740100001)(229853001)(50986999)(1096002)(47776003)(4326007)(6116002)(87976001)(48376002)(76176999)(5004730100002)(92566002)(122386002)(5005710100001)(86612001)(40100003)(101416001)(50466002)(107886002)(50226001)(10090500001)(110136002)(5001960100002)(81156007)(5003940100001)(97736004)(19580395003)(105586002)(36756003)(19580405001)(10290500002)(3826002);
+	SFS:(10019020)(6009001)(189002)(199003)(52044002)(4001430100002)(575784001)(106356001)(15975445007)(86362001)(2351001)(2950100001)(2906002)(586003)(77096005)(189998001)(42186005)(5008740100001)(229853001)(50986999)(1096002)(47776003)(4326007)(6116002)(87976001)(48376002)(76176999)(5004730100002)(92566002)(122386002)(5005710100001)(86612001)(40100003)(101416001)(50466002)(107886002)(50226001)(10090500001)(110136002)(5001960100002)(81156007)(5003940100001)(97736004)(19580395003)(105586002)(36756003)(19580405001)(10290500002)(21314002)(3826002)(309714004);
 	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
 	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
 	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
 Received-SPF: None (protection.outlook.com: microsoft.com does not designate
 	permitted sender hosts)
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BLUPR0301MB2033;
-	23:PD08RIPAAcwlH4tABtHCrq4OCg8TSfvMK1qRpUS?=
-	=?us-ascii?Q?in0dfw9ify5+HMlWa2ZieTo5Fgp2Bp01zjTvQ3Xd+lrskJgDAeQvodthKOew?=
-	=?us-ascii?Q?dJxHGt9UJkW6ujwtgPw6C6WRD3GvJnq/to5dBbSRLFRe+TkUA4/j1FdgMMc2?=
-	=?us-ascii?Q?ipbvZlZG7GzH5nST2XEarEg9OSUM77EI/1GNb2cM7cFYvQPK2gk7BjEOUGtt?=
-	=?us-ascii?Q?w6G8Y4msMGGTXJ12hce4sQcIpDXGeQZ8r3kEJBLp1riBDP/887s1d8iPfUJ/?=
-	=?us-ascii?Q?x2NIxwKs3Byps40TyfJps/175yl+3640rxYo+eexVQMSvdj5L8r8kicDbhZ/?=
-	=?us-ascii?Q?RFAMEjRLMJrPgBuWwFtSWRORedEhHF6YY0Ye3Z4xgWDyCDL/K4sc+jvrpP69?=
-	=?us-ascii?Q?em1G7kUMkn6Op6+9p9GX5UhFTJCQmG44PXtlwgx6gH9Pr+xrJl+EnSQaiPkq?=
-	=?us-ascii?Q?L1Ot+7JMMe1csbzS6rs3IibKRYgaZSExLMF42WBKUNAOvxcfWqLsd3eItmMe?=
-	=?us-ascii?Q?O69fvW7rHJ7hH9MgmxlRkjT2h+ku4sNtW+YXwnEDFd/eQUzr3AbLSt6CReNn?=
-	=?us-ascii?Q?XlGmvkSBQoM2PHzAFsrizzVd8Spv+PJutN85xtLZGJLzjrg/xEv3J19ZvsEP?=
-	=?us-ascii?Q?oy4E4I5YMEG4Z/dNz4S/xFzxixveFE4Y78R0E4jWSI5qRXMlIYnsTdQ5FUn8?=
-	=?us-ascii?Q?NCPqnFKqa8MjRS8xuEC6J5gtD9CNdL92JfELTQimDPlQGex/ImE3fgixKKhk?=
-	=?us-ascii?Q?2I1Ts9lQfXr/sZEz51qB616bQtqbUA9QVMZDufrnk9MacOUhrbdlich4G1Gg?=
-	=?us-ascii?Q?RPrzMLx1WQmUF7b4RThbzqL3JTmFQMJySHGZkHUYJSSKNUQ7XRgHg6UFgsaq?=
-	=?us-ascii?Q?aJZ3lL+opdvvGtlPaBPsIf8uU74e+0//Tr5B7bqk3yNRdkuOHgCX/CLs3XUk?=
-	=?us-ascii?Q?JqiGjX58YsrPxzVjuuhdbE7pH0BFgTRIcIBUcOxDSOIdMrLoERgYKZGPrtfH?=
-	=?us-ascii?Q?nwPQoGwplBppTC8Soh49JH9yB8Jm5sZgjUmOPM87nQDKAy0AtIG0a7RzlhRq?=
-	=?us-ascii?Q?lN8DONV5KBuh7MlebeL6rPYUNmNsX3P0MbsK2HEudKazBwEx6l9cmRlrsPPb?=
-	=?us-ascii?Q?2yk9RP/tLVwg+sRn1NoujtvxNKz/oCekXCpyvf7el9HURaUibNYsiSh+3Y74?=
-	=?us-ascii?Q?eBaeLEC2n1sejOO5zK/k/02NCB7X647J7EKxrjJq4TvJ0mIpUCFmspOCOCby?=
-	=?us-ascii?Q?utpAPi5dbR7gaReJh9BM=3D?=
+	23:ZsYgtcFv3Blekap6dwqCDZN+M6rDfW+SfDNyDgG?=
+	=?us-ascii?Q?9LJcYs2X6NNj+Xups16XDdllg/DRfbWdiketPm1XNhzKGclgbi5UfvDNrlr2?=
+	=?us-ascii?Q?eSevvJckMT/dE2iRADBqY7APfICTJqvZRry8az35WAmko23fpJdFczUhYtFy?=
+	=?us-ascii?Q?deVQDH3Y+3XgKsUdN+Nxj487nbFWFMPkcxftYD9DXpfIi0n6pHn7rsy9gXIf?=
+	=?us-ascii?Q?SOgC8dvPqA0u2POYLY4sKzcCtON4Pr3iKOQCxt42aRO55GY7VB6kqFwYRT4m?=
+	=?us-ascii?Q?DpT79SBG8a6puVpOqPXrR/oDziabos9ydz8J3qOA5eOVZeL7Jru9hdQQagKZ?=
+	=?us-ascii?Q?SBD6ZvqJZt7aV4YgUNypkzB8oP2ptOk5oMd+QdUSdrYvCr6Tt6kQGq3KHtZj?=
+	=?us-ascii?Q?/CnhfKPD71rOnbj1PjgrFmhLWsXr0uJWOKTcECdfXZcnXXtzzhUTPZUpsCoL?=
+	=?us-ascii?Q?m7cJItHKlyP/gAXgiueezLk99PF0MQKlcdn1HbBv+HAafaUh8l0PFsHkRgPg?=
+	=?us-ascii?Q?/+2lKZfwPk+yPGEj+KUmzgXh5bTZoBl6ZKKvz/KbVFwLHE0X9XcUsVECgeof?=
+	=?us-ascii?Q?OeLLrY8OFu/YAf8ZPWvUauoaVRtqVH3o4skr/0l9B9aCyLCmMsLzeYq9a40X?=
+	=?us-ascii?Q?WeXV6S96mvTiv8W+9d5R0tHjpq40yfWT7GBJEyEbNhKBFShlMyOIhosZ8CMT?=
+	=?us-ascii?Q?l1BLxaB9J4bNnX6FJmWnHkzrlrijl2OiLfOq5uB9gtP9dICK+XmV7UY2O/NI?=
+	=?us-ascii?Q?fMrx0u9yeJ3xGRFasgWXvH+J8FylY3ACB/OEeSFiDh25XvHgZSUrUK1ODAn/?=
+	=?us-ascii?Q?ylUG29mdiYf7iCKeew1xt89xuZuvCXU8mq42ttbBnYqKZbG52t9+PcrSrBD0?=
+	=?us-ascii?Q?3tLezaS7mnB0QeV5sF6bMDZh0JZ7RG3ckgcnu/GddFAj9Qs/9vHQ9ec7cirV?=
+	=?us-ascii?Q?w98vqZc53sldUVg4EUrlCIhdD3jC7+A7VUY/CPArdvUqe7NHqVRfdIr26vps?=
+	=?us-ascii?Q?fl0X8SgUCldWYF7263FQ8MqnS3NftxBVbQUSCK16cCGQL8QQN4g+lmts4/tV?=
+	=?us-ascii?Q?FB6b5Q6jYKaJnSzJH2RicNbnxIJJxAkLSjd1GizjxseLDqLWujwkb+cv1nB9?=
+	=?us-ascii?Q?qBjnxKbyBZEPzPWjwkIm+7mtExUIrVSrn9sdAfVWJJ4nRMijnUps6xxUKP/i?=
+	=?us-ascii?Q?u7hcI9IrhJ/RUWsYPrE6gSf7fuAgUstsmTVzE1zIfMQBeMZtxk2VlhBuxcAr?=
+	=?us-ascii?Q?DtJTRm4FlL6ESxCvWD+UIQz2rUAwW9nCK2gZw9FZyBoX43q1VPSAkZ6Fu7gu?=
+	=?us-ascii?Q?ccKsDVgDst5LZquoeIsdGO4o=3D?=
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2033;
-	5:3wCLVLTO8A4lwe1+qicwKXOlTxx7JdjSF4dljjbos5w+AIhnMStIOouF7A1u3Xzxy1xzp+d3C10Uef0Ybq0cvUC7K8r6KLot+/NAdTaR1bUQBUCJX+58ia5lIBbWIsl1P/0NnkEuzlEcp68alh/L+Q==;
-	24:XczVGmnekhsn7k3J1YhnVrF522Qj2jveIkizr8aai/rkuLBafHz0P+I0/6UoE1IOHFnzj/n3NBDSt+a50T1vt4G8tSFiTYWKVRcmaqD188o=
+	5:zs/ODIJhXuLa0416gVbQ+M0+fZYE8btz5/GbCDUdrvvLiCOt1SNLcmcR19/vh3hGKz2cw2ZDpgIWEd/V16ETZhbykxDdxujJYLIB1pJvftEG+gkFvJEw1V90DqNROj7MegbFfA8MzxUVApel7vhQCA==;
+	24:VmC8b69mMKezcqSpWW/kpAn3J+S4MBHxVte2wonn0wuMk1X+J0DvHqzI56YdlkZNuv2pIZHgyCCanVTpSIQVJ45xJ9kkL5C7QUibZ6WPYQw=
 SpamDiagnosticOutput: 1:23
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jan 2016 23:59:20.0350 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jan 2016 23:59:25.1445 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 65.55.169.133
+X-Received-From: 157.56.111.133
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
@@ -117,7 +118,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Rob Herring <robh@kernel.org>
-Subject: [Qemu-devel] [PATCH v4 1/8] bcm2835_mbox: add BCM2835 mailboxes
+Subject: [Qemu-devel] [PATCH v4 5/8] bcm2836_control: add bcm2836 ARM
+	control logic
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -131,481 +133,416 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2BKL7S+yLtER
+X-TUID: 9l9NZf+m9kbh
 
-This adds the system mailboxes which are used to communicate with a
-number of GPU peripherals on Pi/Pi2.
+This module is specific to the bcm2836 (Pi2). It implements the top
+level interrupt controller, and mailboxes used for inter-processor
+synchronisation.
 
 Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 ---
 
 Notes:
-    v3:
-     * #define register offsets
-     * rename mbox_init -> mbox_reset
-     * s/_/-/ in property and type names
-     * avoid hw_error
-     * minor style tweaks
+    v4:
+    * delete unused defs
+    * s/localirqs/timerirqs/
+    * factor out deliver_local() from bcm2836_control_update
+    * use deposit32 in place of bit manipulation in set_local_irq
+    * introduced register offset defs, and reduced comments in read/write handlers
+    * delete commented code
+    * s/_/-/ rename GPIOs
     
-    v2:
-     * renamed bcm2835_sbm to bcm2835_mbox
-     * dropped bcm2835_arm_control.h (needed defs moved to bcm2835_mbox.c)
-     * documented use of private address space through defines in bcm2835_mbox_defs.h
-     * remove unused fields from BCM2835Mbox
-     * s/int/bool/ where appropriate
-     * cleaned up logic in _update and _mbox_update_status for clarity/simplicity
-     * added vmstate
-     * misc cleanup
+    v3:
+     * uint8 localirqs
+     * style tweaks
+     * add MR access size limits
 
- default-configs/arm-softmmu.mak     |   1 +
- hw/misc/Makefile.objs               |   1 +
- hw/misc/bcm2835_mbox.c              | 333 ++++++++++++++++++++++++++++++++++++
- include/hw/misc/bcm2835_mbox.h      |  37 ++++
- include/hw/misc/bcm2835_mbox_defs.h |  27 +++
- 5 files changed, 399 insertions(+)
- create mode 100644 hw/misc/bcm2835_mbox.c
- create mode 100644 include/hw/misc/bcm2835_mbox.h
- create mode 100644 include/hw/misc/bcm2835_mbox_defs.h
+ hw/intc/Makefile.objs             |   2 +-
+ hw/intc/bcm2836_control.c         | 303 ++++++++++++++++++++++++++++++++++++++
+ include/hw/intc/bcm2836_control.h |  51 +++++++
+ 3 files changed, 355 insertions(+), 1 deletion(-)
+ create mode 100644 hw/intc/bcm2836_control.c
+ create mode 100644 include/hw/intc/bcm2836_control.h
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index d9b90a5..a9f82a1 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -79,6 +79,7 @@ CONFIG_TUSB6010=y
- CONFIG_IMX=y
- CONFIG_MAINSTONE=y
- CONFIG_NSERIES=y
-+CONFIG_RASPI=y
- CONFIG_REALVIEW=y
- CONFIG_ZAURUS=y
- CONFIG_ZYNQ=y
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index d4765c2..d0ea105 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -36,6 +36,7 @@ obj-$(CONFIG_OMAP) += omap_gpmc.o
- obj-$(CONFIG_OMAP) += omap_l4.o
- obj-$(CONFIG_OMAP) += omap_sdrc.o
- obj-$(CONFIG_OMAP) += omap_tap.o
-+obj-$(CONFIG_RASPI) += bcm2835_mbox.o
- obj-$(CONFIG_SLAVIO) += slavio_misc.o
- obj-$(CONFIG_ZYNQ) += zynq_slcr.o
- obj-$(CONFIG_ZYNQ) += zynq-xadc.o
-diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index 2ad1204..6a13a39 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -24,7 +24,7 @@ obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+ obj-$(CONFIG_IOAPIC) += ioapic.o
+ obj-$(CONFIG_OMAP) += omap_intc.o
+ obj-$(CONFIG_OPENPIC_KVM) += openpic_kvm.o
+-obj-$(CONFIG_RASPI) += bcm2835_ic.o
++obj-$(CONFIG_RASPI) += bcm2835_ic.o bcm2836_control.o
+ obj-$(CONFIG_SH4) += sh_intc.o
+ obj-$(CONFIG_XICS) += xics.o
+ obj-$(CONFIG_XICS_KVM) += xics_kvm.o
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
 new file mode 100644
-index 0000000..167bf59
+index 0000000..f0b7b0a
 --- /dev/null
-+++ b/hw/misc/bcm2835_mbox.c
-@@ -0,0 +1,333 @@
++++ b/hw/intc/bcm2836_control.c
+@@ -0,0 +1,303 @@
 +/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * Rasperry Pi 2 emulation ARM control logic module.
++ * Copyright (c) 2015, Microsoft
++ * Written by Andrew Baumann
++ *
++ * Based on bcm2835_ic.c (Raspberry Pi emulation) (c) 2012 Gregory Estrade
 + * This code is licensed under the GNU GPLv2 and later.
 + *
-+ * This file models the system mailboxes, which are used for
-+ * communication with low-bandwidth GPU peripherals. Refs:
-+ *   https://github.com/raspberrypi/firmware/wiki/Mailboxes
-+ *   https://github.com/raspberrypi/firmware/wiki/Accessing-mailboxes
++ * At present, only implements interrupt routing, and mailboxes (i.e.,
++ * not local timer, PMU interrupt, or AXI counters).
++ *
++ * Ref:
++ * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/QA7_rev3.4.pdf
 + */
 +
-+#include "hw/misc/bcm2835_mbox.h"
++#include "hw/intc/bcm2836_control.h"
 +
-+#define MAIL0_PEEK   0x90
-+#define MAIL0_SENDER 0x94
-+#define MAIL1_STATUS 0xb8
++#define REG_GPU_ROUTE           0x0c
++#define REG_TIMERCONTROL        0x40
++#define REG_MBOXCONTROL         0x50
++#define REG_IRQSRC              0x60
++#define REG_FIQSRC              0x70
++#define REG_MBOX0_WR            0x80
++#define REG_MBOX0_RDCLR         0xc0
++#define REG_LIMIT              0x100
 +
-+/* Mailbox status register */
-+#define MAIL0_STATUS 0x98
-+#define ARM_MS_FULL       0x80000000
-+#define ARM_MS_EMPTY      0x40000000
-+#define ARM_MS_LEVEL      0x400000FF /* Max. value depends on mailbox depth */
++#define IRQ_BIT(cntrl, num) (((cntrl) & (1 << (num))) != 0)
++#define FIQ_BIT(cntrl, num) (((cntrl) & (1 << ((num) + 4))) != 0)
 +
-+/* MAILBOX config/status register */
-+#define MAIL0_CONFIG 0x9c
-+/* ANY write to this register clears the error bits! */
-+#define ARM_MC_IHAVEDATAIRQEN    0x00000001 /* mbox irq enable:  has data */
-+#define ARM_MC_IHAVESPACEIRQEN   0x00000002 /* mbox irq enable:  has space */
-+#define ARM_MC_OPPISEMPTYIRQEN   0x00000004 /* mbox irq enable: Opp is empty */
-+#define ARM_MC_MAIL_CLEAR        0x00000008 /* mbox clear write 1, then  0 */
-+#define ARM_MC_IHAVEDATAIRQPEND  0x00000010 /* mbox irq pending:  has space */
-+#define ARM_MC_IHAVESPACEIRQPEND 0x00000020 /* mbox irq pending: Opp is empty */
-+#define ARM_MC_OPPISEMPTYIRQPEND 0x00000040 /* mbox irq pending */
-+/* Bit 7 is unused */
-+#define ARM_MC_ERRNOOWN   0x00000100 /* error : none owner read from mailbox */
-+#define ARM_MC_ERROVERFLW 0x00000200 /* error : write to fill mailbox */
-+#define ARM_MC_ERRUNDRFLW 0x00000400 /* error : read from empty mailbox */
++#define IRQ_CNTPSIRQ    0
++#define IRQ_CNTPNSIRQ   1
++#define IRQ_CNTHPIRQ    2
++#define IRQ_CNTVIRQ     3
++#define IRQ_MAILBOX0    4
++#define IRQ_MAILBOX1    5
++#define IRQ_MAILBOX2    6
++#define IRQ_MAILBOX3    7
++#define IRQ_GPU         8
++#define IRQ_PMU         9
++#define IRQ_AXI         10
++#define IRQ_TIMER       11
++#define IRQ_MAX         IRQ_TIMER
 +
-+static void mbox_update_status(BCM2835Mbox *mb)
++static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t irq,
++                          uint32_t controlreg, uint8_t controlidx)
 +{
-+    mb->status &= ~(ARM_MS_EMPTY | ARM_MS_FULL);
-+    if (mb->count == 0) {
-+        mb->status |= ARM_MS_EMPTY;
-+    } else if (mb->count == MBOX_SIZE) {
-+        mb->status |= ARM_MS_FULL;
++    if (FIQ_BIT(controlreg, controlidx)) {
++        /* deliver a FIQ */
++        s->fiqsrc[core] |= (uint32_t)1 << irq;
++    } else if (IRQ_BIT(controlreg, controlidx)) {
++        /* deliver an IRQ */
++        s->irqsrc[core] |= (uint32_t)1 << irq;
++    } else {
++        /* the interrupt is masked */
 +    }
 +}
 +
-+static void mbox_reset(BCM2835Mbox *mb)
++/* Update interrupts.  */
++static void bcm2836_control_update(BCM2836ControlState *s)
 +{
-+    int n;
++    int i, j;
 +
-+    mb->count = 0;
-+    mb->config = 0;
-+    for (n = 0; n < MBOX_SIZE; n++) {
-+        mb->reg[n] = MBOX_INVALID_DATA;
++    /* reset pending IRQs/FIQs */
++    for (i = 0; i < BCM2836_NCORES; i++) {
++        s->irqsrc[i] = s->fiqsrc[i] = 0;
 +    }
-+    mbox_update_status(mb);
-+}
 +
-+static uint32_t mbox_pull(BCM2835Mbox *mb, int index)
-+{
-+    int n;
-+    uint32_t val;
-+
-+    assert(mb->count > 0);
-+    assert(index < mb->count);
-+
-+    val = mb->reg[index];
-+    for (n = index + 1; n < mb->count; n++) {
-+        mb->reg[n - 1] = mb->reg[n];
++    /* apply routing logic, update status regs */
++    if (s->gpu_irq) {
++        assert(s->route_gpu_irq < BCM2836_NCORES);
++        s->irqsrc[s->route_gpu_irq] |= (uint32_t)1 << IRQ_GPU;
 +    }
-+    mb->count--;
-+    mb->reg[mb->count] = MBOX_INVALID_DATA;
 +
-+    mbox_update_status(mb);
++    if (s->gpu_fiq) {
++        assert(s->route_gpu_fiq < BCM2836_NCORES);
++        s->fiqsrc[s->route_gpu_fiq] |= (uint32_t)1 << IRQ_GPU;
++    }
 +
-+    return val;
-+}
++    for (i = 0; i < BCM2836_NCORES; i++) {
++        /* handle local timer interrupts for this core */
++        if (s->timerirqs[i]) {
++            assert(s->timerirqs[i] < (1 << IRQ_MAILBOX0)); /* sanity check */
++            for (j = 0; j < IRQ_MAILBOX0; j++) {
++                if ((s->timerirqs[i] & (1 << j)) != 0) {
++                    /* local interrupt j is set */
++                    deliver_local(s, i, j, s->timercontrol[i], j);
++                }
++            }
++        }
 +
-+static void mbox_push(BCM2835Mbox *mb, uint32_t val)
-+{
-+    assert(mb->count < MBOX_SIZE);
-+    mb->reg[mb->count++] = val;
-+    mbox_update_status(mb);
-+}
-+
-+static void bcm2835_mbox_update(BCM2835MboxState *s)
-+{
-+    uint32_t value;
-+    bool set;
-+    int n;
-+
-+    s->mbox_irq_disabled = true;
-+
-+    /* Get pending responses and put them in the vc->arm mbox,
-+     * as long as it's not full */
-+    for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-+        while (s->available[n] && !(s->mbox[0].status & ARM_MS_FULL)) {
-+            value = ldl_phys(&s->mbox_as, n << MBOX_AS_CHAN_SHIFT);
-+            assert(value != MBOX_INVALID_DATA); /* Pending interrupt but no data */
-+            mbox_push(&s->mbox[0], value);
++        /* handle mailboxes for this core */
++        for (j = 0; j < BCM2836_MBPERCORE; j++) {
++            if (s->mailboxes[i * BCM2836_MBPERCORE + j] != 0) {
++                /* mailbox j is set */
++                deliver_local(s, i, j + IRQ_MAILBOX0, s->mailboxcontrol[i], j);
++            }
 +        }
 +    }
 +
-+    /* Try to push pending requests from the arm->vc mbox */
-+    /* TODO (?) */
-+
-+    /* Re-enable calls from the IRQ routine */
-+    s->mbox_irq_disabled = false;
-+
-+    /* Update ARM IRQ status */
-+    set = false;
-+    s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQPEND;
-+    if (!(s->mbox[0].status & ARM_MS_EMPTY)) {
-+        s->mbox[0].config |= ARM_MC_IHAVEDATAIRQPEND;
-+        if (s->mbox[0].config & ARM_MC_IHAVEDATAIRQEN) {
-+            set = true;
-+        }
-+    }
-+    qemu_set_irq(s->arm_irq, set);
-+}
-+
-+static void bcm2835_mbox_set_irq(void *opaque, int irq, int level)
-+{
-+    BCM2835MboxState *s = opaque;
-+
-+    s->available[irq] = level;
-+
-+    /* avoid recursively calling bcm2835_mbox_update when the interrupt
-+     * status changes due to the ldl_phys call within that function
-+     */
-+    if (!s->mbox_irq_disabled) {
-+        bcm2835_mbox_update(s);
++    /* call set_irq appropriately for each output */
++    for (i = 0; i < BCM2836_NCORES; i++) {
++        qemu_set_irq(s->irq[i], s->irqsrc[i] != 0);
++        qemu_set_irq(s->fiq[i], s->fiqsrc[i] != 0);
 +    }
 +}
 +
-+static uint64_t bcm2835_mbox_read(void *opaque, hwaddr offset, unsigned size)
++static void bcm2836_control_set_local_irq(void *opaque, int core, int local_irq,
++                                          int level)
 +{
-+    BCM2835MboxState *s = opaque;
-+    uint32_t res = 0;
++    BCM2836ControlState *s = opaque;
 +
-+    offset &= 0xff;
++    assert(core >= 0 && core < BCM2836_NCORES);
++    assert(local_irq >= 0 && local_irq <= IRQ_CNTVIRQ);
 +
-+    switch (offset) {
-+    case 0x80 ... 0x8c: /* MAIL0_READ */
-+        if (s->mbox[0].status & ARM_MS_EMPTY) {
-+            res = MBOX_INVALID_DATA;
-+        } else {
-+            res = mbox_pull(&s->mbox[0], 0);
-+        }
-+        break;
++    s->timerirqs[core] = deposit32(s->timerirqs[core], local_irq, 1, !!level);
 +
-+    case MAIL0_PEEK:
-+        res = s->mbox[0].reg[0];
-+        break;
++    bcm2836_control_update(s);
++}
 +
-+    case MAIL0_SENDER:
-+        break;
++/* XXX: the following wrapper functions are a kludgy workaround,
++ * needed because I can't seem to pass useful information in the "irq"
++ * parameter when using named interrupts. Feel free to clean this up!
++ */
 +
-+    case MAIL0_STATUS:
-+        res = s->mbox[0].status;
-+        break;
++static void bcm2836_control_set_local_irq0(void *opaque, int core, int level)
++{
++    bcm2836_control_set_local_irq(opaque, core, 0, level);
++}
 +
-+    case MAIL0_CONFIG:
-+        res = s->mbox[0].config;
-+        break;
++static void bcm2836_control_set_local_irq1(void *opaque, int core, int level)
++{
++    bcm2836_control_set_local_irq(opaque, core, 1, level);
++}
 +
-+    case MAIL1_STATUS:
-+        res = s->mbox[1].status;
-+        break;
++static void bcm2836_control_set_local_irq2(void *opaque, int core, int level)
++{
++    bcm2836_control_set_local_irq(opaque, core, 2, level);
++}
 +
-+    default:
++static void bcm2836_control_set_local_irq3(void *opaque, int core, int level)
++{
++    bcm2836_control_set_local_irq(opaque, core, 3, level);
++}
++
++static void bcm2836_control_set_gpu_irq(void *opaque, int irq, int level)
++{
++    BCM2836ControlState *s = opaque;
++
++    s->gpu_irq = level;
++
++    bcm2836_control_update(s);
++}
++
++static void bcm2836_control_set_gpu_fiq(void *opaque, int irq, int level)
++{
++    BCM2836ControlState *s = opaque;
++
++    s->gpu_fiq = level;
++
++    bcm2836_control_update(s);
++}
++
++static uint64_t bcm2836_control_read(void *opaque, hwaddr offset, unsigned size)
++{
++    BCM2836ControlState *s = opaque;
++
++    if (offset == REG_GPU_ROUTE) {
++        assert(s->route_gpu_fiq < BCM2836_NCORES
++               && s->route_gpu_irq < BCM2836_NCORES);
++        return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
++    } else if (offset >= REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
++        return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
++    } else if (offset >= REG_MBOXCONTROL && offset < REG_IRQSRC) {
++        return s->mailboxcontrol[(offset - REG_MBOXCONTROL) >> 2];
++    } else if (offset >= REG_IRQSRC && offset < REG_FIQSRC) {
++        return s->irqsrc[(offset - REG_IRQSRC) >> 2];
++    } else if (offset >= REG_FIQSRC && offset < REG_MBOX0_WR) {
++        return s->fiqsrc[(offset - REG_FIQSRC) >> 2];
++    } else if (offset >= REG_MBOX0_RDCLR && offset < REG_LIMIT) {
++        return s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2];
++    } else {
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
 +                      __func__, offset);
 +        return 0;
 +    }
-+
-+    bcm2835_mbox_update(s);
-+
-+    return res;
 +}
 +
-+static void bcm2835_mbox_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
++static void bcm2836_control_write(void *opaque, hwaddr offset,
++                                  uint64_t val, unsigned size)
 +{
-+    BCM2835MboxState *s = opaque;
-+    hwaddr childaddr;
-+    uint8_t ch;
++    BCM2836ControlState *s = opaque;
 +
-+    offset &= 0xff;
-+
-+    switch (offset) {
-+    case MAIL0_SENDER:
-+        break;
-+
-+    case MAIL0_CONFIG:
-+        s->mbox[0].config &= ~ARM_MC_IHAVEDATAIRQEN;
-+        s->mbox[0].config |= value & ARM_MC_IHAVEDATAIRQEN;
-+        break;
-+
-+    case 0xa0 ... 0xac: /* MAIL1_WRITE */
-+        if (s->mbox[1].status & ARM_MS_FULL) {
-+            /* Mailbox full */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: mailbox full\n", __func__);
-+        } else {
-+            ch = value & 0xf;
-+            if (ch < MBOX_CHAN_COUNT) {
-+                childaddr = ch << MBOX_AS_CHAN_SHIFT;
-+                if (ldl_phys(&s->mbox_as, childaddr + MBOX_AS_PENDING)) {
-+                    /* Child busy, push delayed. Push it in the arm->vc mbox */
-+                    mbox_push(&s->mbox[1], value);
-+                } else {
-+                    /* Push it directly to the child device */
-+                    stl_phys(&s->mbox_as, childaddr, value);
-+                }
-+            } else {
-+                /* Invalid channel number */
-+                qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel %u\n",
-+                              __func__, ch);
-+            }
-+        }
-+        break;
-+
-+    default:
++    if (offset == REG_GPU_ROUTE) {
++        s->route_gpu_irq = val & 0x3;
++        s->route_gpu_fiq = (val >> 2) & 0x3;
++    } else if (offset >= REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
++        s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] = val & 0xff;
++    } else if (offset >= REG_MBOXCONTROL && offset < REG_IRQSRC) {
++        s->mailboxcontrol[(offset - REG_MBOXCONTROL) >> 2] = val & 0xff;
++    } else if (offset >= REG_MBOX0_WR && offset < REG_MBOX0_RDCLR) {
++        s->mailboxes[(offset - REG_MBOX0_WR) >> 2] |= val;
++    } else if (offset >= REG_MBOX0_RDCLR && offset < REG_LIMIT) {
++        s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2] &= ~val;
++    } else {
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
 +                      __func__, offset);
 +        return;
 +    }
 +
-+    bcm2835_mbox_update(s);
++    bcm2836_control_update(s);
 +}
 +
-+static const MemoryRegionOps bcm2835_mbox_ops = {
-+    .read = bcm2835_mbox_read,
-+    .write = bcm2835_mbox_write,
++static const MemoryRegionOps bcm2836_control_ops = {
++    .read = bcm2836_control_read,
++    .write = bcm2836_control_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid.min_access_size = 4,
 +    .valid.max_access_size = 4,
 +};
 +
-+/* vmstate of a single mailbox */
-+static const VMStateDescription vmstate_bcm2835_mbox_box = {
-+    .name = TYPE_BCM2835_MBOX "_box",
++static void bcm2836_control_reset(DeviceState *d)
++{
++    BCM2836ControlState *s = BCM2836_CONTROL(d);
++    int i;
++
++    s->route_gpu_irq = s->route_gpu_fiq = 0;
++
++    for (i = 0; i < BCM2836_NCORES; i++) {
++        s->timercontrol[i] = 0;
++        s->mailboxcontrol[i] = 0;
++    }
++
++    for (i = 0; i < BCM2836_NCORES * BCM2836_MBPERCORE; i++) {
++        s->mailboxes[i] = 0;
++    }
++}
++
++static void bcm2836_control_init(Object *obj)
++{
++    BCM2836ControlState *s = BCM2836_CONTROL(obj);
++    DeviceState *dev = DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2836_control_ops, s,
++                          TYPE_BCM2836_CONTROL, REG_LIMIT);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++
++    /* inputs from each CPU core */
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq0, "cntpsirq",
++                            BCM2836_NCORES);
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq1, "cntpnsirq",
++                            BCM2836_NCORES);
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq2, "cnthpirq",
++                            BCM2836_NCORES);
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq3, "cntvirq",
++                            BCM2836_NCORES);
++
++    /* IRQ and FIQ inputs from upstream bcm2835 controller */
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_gpu_irq, "gpu-irq", 1);
++    qdev_init_gpio_in_named(dev, bcm2836_control_set_gpu_fiq, "gpu-fiq", 1);
++
++    /* outputs to CPU cores */
++    qdev_init_gpio_out_named(dev, s->irq, "irq", BCM2836_NCORES);
++    qdev_init_gpio_out_named(dev, s->fiq, "fiq", BCM2836_NCORES);
++}
++
++static const VMStateDescription vmstate_bcm2836_control = {
++    .name = TYPE_BCM2836_CONTROL,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(reg, BCM2835Mbox, MBOX_SIZE),
-+        VMSTATE_UINT32(count, BCM2835Mbox),
-+        VMSTATE_UINT32(status, BCM2835Mbox),
-+        VMSTATE_UINT32(config, BCM2835Mbox),
++        VMSTATE_UINT32_ARRAY(mailboxes, BCM2836ControlState,
++                             BCM2836_NCORES * BCM2836_MBPERCORE),
++        VMSTATE_UINT8(route_gpu_irq, BCM2836ControlState),
++        VMSTATE_UINT8(route_gpu_fiq, BCM2836ControlState),
++        VMSTATE_UINT32_ARRAY(timercontrol, BCM2836ControlState, BCM2836_NCORES),
++        VMSTATE_UINT32_ARRAY(mailboxcontrol, BCM2836ControlState,
++                             BCM2836_NCORES),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+/* vmstate of the entire device */
-+static const VMStateDescription vmstate_bcm2835_mbox = {
-+    .name = TYPE_BCM2835_MBOX,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .minimum_version_id_old = 1,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_BOOL_ARRAY(available, BCM2835MboxState, MBOX_CHAN_COUNT),
-+        VMSTATE_STRUCT_ARRAY(mbox, BCM2835MboxState, 2, 1,
-+                             vmstate_bcm2835_mbox_box, BCM2835Mbox),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2835_mbox_init(Object *obj)
-+{
-+    BCM2835MboxState *s = BCM2835_MBOX(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2835_mbox_ops, s,
-+                          TYPE_BCM2835_MBOX, 0x400);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->arm_irq);
-+    qdev_init_gpio_in(DEVICE(s), bcm2835_mbox_set_irq, MBOX_CHAN_COUNT);
-+}
-+
-+static void bcm2835_mbox_reset(DeviceState *dev)
-+{
-+    BCM2835MboxState *s = BCM2835_MBOX(dev);
-+    int n;
-+
-+    mbox_reset(&s->mbox[0]);
-+    mbox_reset(&s->mbox[1]);
-+    s->mbox_irq_disabled = false;
-+    for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-+        s->available[n] = false;
-+    }
-+}
-+
-+static void bcm2835_mbox_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2835MboxState *s = BCM2835_MBOX(dev);
-+    Object *obj;
-+    Error *err = NULL;
-+
-+    obj = object_property_get_link(OBJECT(dev), "mbox-mr", &err);
-+    if (obj == NULL) {
-+        error_setg(errp, "%s: required mbox-mr link not found: %s",
-+                   __func__, error_get_pretty(err));
-+        return;
-+    }
-+
-+    s->mbox_mr = MEMORY_REGION(obj);
-+    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-+    bcm2835_mbox_reset(dev);
-+}
-+
-+static void bcm2835_mbox_class_init(ObjectClass *klass, void *data)
++static void bcm2836_control_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->realize = bcm2835_mbox_realize;
-+    dc->reset = bcm2835_mbox_reset;
-+    dc->vmsd = &vmstate_bcm2835_mbox;
++    dc->reset = bcm2836_control_reset;
++    dc->vmsd = &vmstate_bcm2836_control;
 +}
 +
-+static TypeInfo bcm2835_mbox_info = {
-+    .name          = TYPE_BCM2835_MBOX,
++static TypeInfo bcm2836_control_info = {
++    .name          = TYPE_BCM2836_CONTROL,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835MboxState),
-+    .class_init    = bcm2835_mbox_class_init,
-+    .instance_init = bcm2835_mbox_init,
++    .instance_size = sizeof(BCM2836ControlState),
++    .class_init    = bcm2836_control_class_init,
++    .instance_init = bcm2836_control_init,
 +};
 +
-+static void bcm2835_mbox_register_types(void)
++static void bcm2836_control_register_types(void)
 +{
-+    type_register_static(&bcm2835_mbox_info);
++    type_register_static(&bcm2836_control_info);
 +}
 +
-+type_init(bcm2835_mbox_register_types)
-diff --git a/include/hw/misc/bcm2835_mbox.h b/include/hw/misc/bcm2835_mbox.h
++type_init(bcm2836_control_register_types)
+diff --git a/include/hw/intc/bcm2836_control.h b/include/hw/intc/bcm2836_control.h
 new file mode 100644
-index 0000000..32ae077
+index 0000000..144c42f
 --- /dev/null
-+++ b/include/hw/misc/bcm2835_mbox.h
-@@ -0,0 +1,37 @@
++++ b/include/hw/intc/bcm2836_control.h
+@@ -0,0 +1,51 @@
 +/*
 + * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
++ *
++ * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
++ * Written by Andrew Baumann
++ *
 + * This code is licensed under the GNU GPLv2 and later.
 + */
 +
-+#ifndef BCM2835_MBOX_H
-+#define BCM2835_MBOX_H
++#ifndef BCM2836_CONTROL_H
++#define BCM2836_CONTROL_H
 +
-+#include "bcm2835_mbox_defs.h"
 +#include "hw/sysbus.h"
-+#include "exec/address-spaces.h"
 +
-+#define TYPE_BCM2835_MBOX "bcm2835-mbox"
-+#define BCM2835_MBOX(obj) \
-+        OBJECT_CHECK(BCM2835MboxState, (obj), TYPE_BCM2835_MBOX)
++/* 4 mailboxes per core, for 16 total */
++#define BCM2836_NCORES 4
++#define BCM2836_MBPERCORE 4
 +
-+typedef struct {
-+    uint32_t reg[MBOX_SIZE];
-+    uint32_t count;
-+    uint32_t status;
-+    uint32_t config;
-+} BCM2835Mbox;
++#define TYPE_BCM2836_CONTROL "bcm2836-control"
++#define BCM2836_CONTROL(obj) \
++    OBJECT_CHECK(BCM2836ControlState, (obj), TYPE_BCM2836_CONTROL)
 +
-+typedef struct {
++typedef struct BCM2836ControlState {
 +    /*< private >*/
 +    SysBusDevice busdev;
 +    /*< public >*/
-+    MemoryRegion *mbox_mr;
-+    AddressSpace mbox_as;
 +    MemoryRegion iomem;
-+    qemu_irq arm_irq;
-+    bool mbox_irq_disabled;
-+    bool available[MBOX_CHAN_COUNT];
-+    BCM2835Mbox mbox[2];
-+} BCM2835MboxState;
++
++    /* interrupt status registers (not directly visible to user) */
++    bool gpu_irq, gpu_fiq;
++    uint8_t timerirqs[BCM2836_NCORES];
++
++    /* mailboxes */
++    uint32_t mailboxes[BCM2836_NCORES * BCM2836_MBPERCORE];
++
++    /* interrupt routing/control registers */
++    uint8_t route_gpu_irq, route_gpu_fiq;
++    uint32_t timercontrol[BCM2836_NCORES];
++    uint32_t mailboxcontrol[BCM2836_NCORES];
++
++    /* interrupt source registers, post-routing (visible) */
++    uint32_t irqsrc[BCM2836_NCORES];
++    uint32_t fiqsrc[BCM2836_NCORES];
++
++    /* outputs to CPU cores */
++    qemu_irq irq[BCM2836_NCORES];
++    qemu_irq fiq[BCM2836_NCORES];
++} BCM2836ControlState;
 +
 +#endif
-diff --git a/include/hw/misc/bcm2835_mbox_defs.h b/include/hw/misc/bcm2835_mbox_defs.h
-new file mode 100644
-index 0000000..a18e520
---- /dev/null
-+++ b/include/hw/misc/bcm2835_mbox_defs.h
-@@ -0,0 +1,27 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#ifndef BCM2835_MBOX_DEFS_H
-+#define BCM2835_MBOX_DEFS_H
-+
-+/* Constants shared with the ARM identifying separate mailbox channels */
-+#define MBOX_CHAN_POWER    0 /* for use by the power management interface */
-+#define MBOX_CHAN_FB       1 /* for use by the frame buffer */
-+#define MBOX_CHAN_VCHIQ    3 /* for use by the VCHIQ interface */
-+#define MBOX_CHAN_PROPERTY 8 /* for use by the property channel */
-+#define MBOX_CHAN_COUNT    9
-+
-+#define MBOX_SIZE          32
-+#define MBOX_INVALID_DATA  0x0f
-+
-+/* Layout of the private address space used for communication between
-+ * the mbox device emulation, and child devices: each channel occupies
-+ * 16 bytes of address space, but only two registers are presently defined.
-+ */
-+#define MBOX_AS_CHAN_SHIFT 4
-+#define MBOX_AS_DATA       0 /* request / response data (RW at offset 0) */
-+#define MBOX_AS_PENDING    4 /* pending response status (RO at offset 4) */
-+
-+#endif /* BCM2835_MBOX_DEFS_H */
 -- 
 2.5.3
 

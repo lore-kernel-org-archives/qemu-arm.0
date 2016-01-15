@@ -1,103 +1,145 @@
-Received: by 10.25.159.19 with SMTP id i19csp488345lfe;
-        Fri, 15 Jan 2016 06:11:51 -0800 (PST)
-X-Received: by 10.55.78.198 with SMTP id c189mr13389292qkb.95.1452867111641;
-        Fri, 15 Jan 2016 06:11:51 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp488771lfe;
+        Fri, 15 Jan 2016 06:12:28 -0800 (PST)
+X-Received: by 10.140.92.215 with SMTP id b81mr13912445qge.44.1452867148135;
+        Fri, 15 Jan 2016 06:12:28 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n187si13470567qhc.34.2016.01.15.06.11.51
+        by mx.google.com with ESMTPS id b7si13494164qgb.59.2016.01.15.06.12.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 06:11:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 15 Jan 2016 06:12:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:47080 helo=lists.gnu.org)
+Received: from localhost ([::1]:47087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aK56U-0000gE-L7
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 09:11:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58524)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aK575-0001ZH-Eb
+	for alex.bennee@linaro.org; Fri, 15 Jan 2016 09:12:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK566-0000N6-Os
-	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 09:11:27 -0500
+	(envelope-from <shannon.zhao@linaro.org>) id 1aK56o-0001CR-T5
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:12:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK565-00062E-Mj
-	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 09:11:26 -0500
-Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:34058)
+	(envelope-from <shannon.zhao@linaro.org>) id 1aK56j-00067j-TA
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:12:10 -0500
+Received: from mail-pa0-x230.google.com ([2607:f8b0:400e:c03::230]:34264)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK565-00060u-Hw
-	for qemu-devel@nongnu.org; Fri, 15 Jan 2016 09:11:25 -0500
-Received: by mail-vk0-x231.google.com with SMTP id a123so268963493vkh.1
-	for <qemu-devel@nongnu.org>; Fri, 15 Jan 2016 06:11:25 -0800 (PST)
+	(envelope-from <shannon.zhao@linaro.org>) id 1aK56j-00067b-N2
+	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:12:05 -0500
+Received: by mail-pa0-x230.google.com with SMTP id uo6so380185112pac.1
+	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 06:12:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=VrRmVfRKz/DGK8JL0LvcY5VSUdCmLmQ9aws8ojUe9wE=;
-	b=as8ZRVNdP0KYzoSUkMqW3gxrSUd/WxlmlkxXETU1VucyxW7Nfu6Lf3ItzsgbLMx5gj
-	gwAquY/HLqQaSV3CxNgr0rPwBaZGVg1nUPXhNTOzQZlf6+EuSTdeMjNXKtUINcbGKEvV
-	6VSmcigX61tbUt59q1RUAGS1NADIwcqz2H5aw=
+	h=from:to:cc:subject:date:message-id;
+	bh=HzYSyNbIHIM0LKwPS9UC0ZmtPGSDoxuinA4AemCmvPQ=;
+	b=h8WTCozuTWY68wQZEugIfEclJU9pKe64R+L1OY46I/DyeUX3WsT80uymQ94jNNsTxU
+	NKYXXECxY13+jnvigGVvjsZnongvh30ias31orLE6G/mdrc6jFQoe5yEalLEpZAKmNPN
+	Oqw/P3LKEs6MhyQWJhRYbJxFSdWwcS1GOMTaY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=VrRmVfRKz/DGK8JL0LvcY5VSUdCmLmQ9aws8ojUe9wE=;
-	b=RXkF2KC/kIy+zm0/I0H2Yz72n9Mx/USdF9xCaHCgxx23pha6qv4F95PcNyjj6B7asb
-	CJ415rxGgv4LSYmrrYytfWgeceEPa7G3G9WnMZEMTb/CKiZaaflsZ8qg10o8cIeQjvut
-	hXins9fRD9dXYDYZZjKurb4WU328ACNgLy9fIVKdybkofDkPvpgtunPCZnpdYz0/RJ3W
-	8RrGO1FTPhIVivDJvlotE7usV2cyK2bUAFzjQY5ArFBba/isw2xOe+TH5qT4rtsrsMYx
-	KCXtojjsvpSzH4R5EjUg8nWgHd4cjnDvgDNBX17H4FvvKBc3ciUnDbPxSrSnkH+RzIc+
-	I8Bg==
-X-Gm-Message-State: ALoCoQm0ERBQWfw1YcJZfQ1tgENfmXIqXPLOCxSlyWok4hmaMlIusnFbLxg48LpW6HDegNxccjZDYQhCC7GBqe450bo8Skr8P3FsS+ERpN6N3nCEYNklXWo=
-X-Received: by 10.31.107.138 with SMTP id k10mr7109387vki.27.1452867083966;
-	Fri, 15 Jan 2016 06:11:23 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 15 Jan 2016 06:11:04 -0800 (PST)
-In-Reply-To: <1452854262-19550-1-git-send-email-a.rigo@virtualopensystems.com>
-References: <1452854262-19550-1-git-send-email-a.rigo@virtualopensystems.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jan 2016 14:11:04 +0000
-Message-ID: <CAFEAcA8SYr8SXt-dWOC78PpXNMryp0jWf70YAyaThNxGk8m8kg@mail.gmail.com>
-To: Alvise Rigo <a.rigo@virtualopensystems.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=HzYSyNbIHIM0LKwPS9UC0ZmtPGSDoxuinA4AemCmvPQ=;
+	b=QZLEd4z+POAwtDt8nCPcCSKUeH/twPMXgeMUfCgRrfCgGstd+vqG/iFJ/jEjif2UUu
+	1O/7lOZ6vTvkoRn9urMY7+HM6farEVII2FhcvDUXM1ANBQL/PoNi2/o8Lpkeu4Za2g0Q
+	gjVyCtiijDiR9RxyBXuG83sZqufBmSaMcyd8nIDzpHa7bxT/y85D7fE5+SR8ayxU6F1v
+	/LucqhD6R6G4kRUC4QAmyAKadB/Rrrk1ou6AmDuSdFr2D0fn3IDlzWE5DKuIhB11V6mL
+	R2igaiBqWboCMnQmNO9P3wwSSDFDkQMHo9d97D+Eodxa2jNKDqjeRbTLP+LWahkGN7qV
+	NK+g==
+X-Gm-Message-State: ALoCoQnBa4R06YBgMEf3Okh8a5Jbucea8lqXm7E1omlcxeFTL/74Wqn7pz+fW6onlY3TWlHhKs3/08rOGlD+3uvwyqSUiHIvKw==
+X-Received: by 10.66.237.66 with SMTP id va2mr15282882pac.87.1452867124698;
+	Fri, 15 Jan 2016 06:12:04 -0800 (PST)
+Received: from localhost.localdomain ([39.183.91.190])
+	by smtp.gmail.com with ESMTPSA id
+	v26sm15908392pfi.56.2016.01.15.06.12.00
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 15 Jan 2016 06:12:03 -0800 (PST)
+From: Shannon Zhao <shannon.zhao@linaro.org>
+To: qemu-arm@nongnu.org
+Date: Fri, 15 Jan 2016 22:11:31 +0800
+Message-Id: <1452867091-4023-1-git-send-email-shannon.zhao@linaro.org>
+X-Mailer: git-send-email 2.1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::231
-Cc: "tech@virtualopensystems.com" <tech@virtualopensystems.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v2] target-arm: Use the right MMU index in
-	arm_regime_using_lpae_format
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c03::230
+Cc: peter.maydell@linaro.org, ard.biesheuvel@linaro.org, edk2-devel@ml01.01.org,
+	qemu-devel@nongnu.org, zhaoshenglong@huawei.com, lersek@redhat.com
+Subject: [Qemu-arm] [PATCH v3] ARM: Virt: Don't generate RTC ACPI device
+	when using UEFI
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QD1aOcQfKFXX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 11QbKx3cp0QD
 
-On 15 January 2016 at 10:37, Alvise Rigo <a.rigo@virtualopensystems.com> wrote:
-> arm_regime_using_lpae_format checks whether the LPAE extension is used
-> for stage 1 translation regimes. MMU indexes not exclusively of a stage 1
-> regime won't work with this method.
->
-> In case of ARMMMUIdx_S12NSE0 or ARMMMUIdx_S12NSE1, offset these values
-> by ARMMMUIdx_S1NSE0 to get the right index indicating a stage 1
-> translation regime.
->
-> Rename also the function to arm_s1_regime_using_lpae_format and update
-> the comments to reflect the change.
->
-> Signed-off-by: Alvise Rigo <a.rigo@virtualopensystems.com>
+When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
+While UEFI can use libfdt to disable the RTC device node in the DTB that
+it passes to the OS, it cannot modify AML. Therefore, we won't generate
+the RTC ACPI device at all when using UEFI.
 
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Acked-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+---
+V3: add comments to explain why it doesn't generate RTC ACPI device
+---
+ hw/arm/virt-acpi-build.c | 24 +++++-------------------
+ 1 file changed, 5 insertions(+), 19 deletions(-)
 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 0caf5ce..0d5c635 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -94,23 +94,6 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+     aml_append(scope, dev);
+ }
+ 
+-static void acpi_dsdt_add_rtc(Aml *scope, const MemMapEntry *rtc_memmap,
+-                                          uint32_t rtc_irq)
+-{
+-    Aml *dev = aml_device("RTC0");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0013")));
+-    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+-
+-    Aml *crs = aml_resource_template();
+-    aml_append(crs, aml_memory32_fixed(rtc_memmap->base,
+-                                       rtc_memmap->size, AML_READ_WRITE));
+-    aml_append(crs,
+-               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+-                             AML_EXCLUSIVE, &rtc_irq, 1));
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(scope, dev);
+-}
+-
+ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_memmap)
+ {
+     Aml *dev, *crs;
+@@ -571,12 +554,15 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+     /* Reserve space for header */
+     acpi_data_push(dsdt->buf, sizeof(AcpiTableHeader));
+ 
++    /* When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
++     * While UEFI can use libfdt to disable the RTC device node in the DTB that
++     * it passes to the OS, it cannot modify AML. Therefore, we won't generate
++     * the RTC ACPI device at all when using UEFI.
++     */
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, guest_info->smp_cpus);
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+-    acpi_dsdt_add_rtc(scope, &memmap[VIRT_RTC],
+-                      (irqmap[VIRT_RTC] + ARM_SPI_BASE));
+     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+-- 
+2.1.0
 
-Applied to target-arm.next, thanks.
-
--- PMM

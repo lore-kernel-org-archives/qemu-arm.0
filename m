@@ -1,101 +1,72 @@
-Received: by 10.25.159.19 with SMTP id i19csp742054lfe;
-        Thu, 28 Jan 2016 20:42:15 -0800 (PST)
-X-Received: by 10.140.95.111 with SMTP id h102mr8198066qge.2.1454042534901;
-        Thu, 28 Jan 2016 20:42:14 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1860158lfe;
+        Mon, 18 Jan 2016 03:43:05 -0800 (PST)
+X-Received: by 10.140.42.20 with SMTP id b20mr30411263qga.16.1453117385867;
+        Mon, 18 Jan 2016 03:43:05 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q66si15817448qgd.93.2016.01.28.20.42.14
+        by mx.google.com with ESMTPS id d82si10084568qkj.38.2016.01.18.03.43.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jan 2016 20:42:14 -0800 (PST)
+        Mon, 18 Jan 2016 03:43:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:59707 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:58917 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aP0sw-00061b-EQ
-	for alex.bennee@linaro.org; Thu, 28 Jan 2016 23:42:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34109)
+	id 1aL8DB-0003Do-GC
+	for alex.bennee@linaro.org; Mon, 18 Jan 2016 06:43:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aP0st-0005xt-KA
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 23:42:12 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aL8DA-0003DY-4M
+	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 06:43:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aP0ss-0004MC-N8
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 23:42:11 -0500
-Received: from mail-by2on0117.outbound.protection.outlook.com
-	([207.46.100.117]:16450
-	helo=na01-by2-obe.outbound.protection.outlook.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1aL8D9-0004fQ-7y
+	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 06:43:04 -0500
+Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:33716)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aP0so-0004Lu-1P; Thu, 28 Jan 2016 23:42:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=RtdP5VLM8k7y84Ib91qtSB37xPquu1KwGaFgrsgyMlE=;
-	b=M1whrKgXL8Pp6TPrkleGXrjhwbZhAFhfMgTU//3Hvh45XJci19SNFr6eM2rlW54RGCH+ci9pOkZeYTReFKvqjWXLDmnB/hhxi4pfMQ86V+ufwYlhofjh8brDTJiCSl2j21CiOHoOJDwQCDvqgtlkJ1AmGSOObr/RmRJ+WPSoknY=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
-	SMTP Server (TLS) id 15.1.390.13; Fri, 29 Jan 2016 04:42:01 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0390.016; Fri, 29 Jan 2016 04:42:01 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [PATCH v4 5/8] bcm2836_control: add bcm2836 ARM control logic
-Thread-Index: AQHRT/DEXJISFmMDoUyt4myBgQgPJZ8R/b8AgAAAY+A=
-Date: Fri, 29 Jan 2016 04:42:01 +0000
-Message-ID: <BLUPR0301MB20349F06EDF3669231BD47609EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<1452902337-13844-6-git-send-email-Andrew.Baumann@microsoft.com>
-	<CAPokK=rmcqq4Vzi_JVUYXJ=sAdepTwYmME4BKveQXytMfTqi2w@mail.gmail.com>
-In-Reply-To: <CAPokK=rmcqq4Vzi_JVUYXJ=sAdepTwYmME4BKveQXytMfTqi2w@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: gmail.com; dkim=none (message not signed)
-	header.d=none; gmail.com;
-	dmarc=none action=none header.from=microsoft.com; 
-x-originating-ip: [50.46.154.109]
-x-ms-office365-filtering-correlation-id: ba43b20d-6e7b-4cdb-cfa6-08d3286687ad
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
-	5:iqGhdzbO4Inf0AYJcJ9anB0T5gKzBm2+eC0NWAW+SrV6f7aQXHM1aQ5C0TXVRRD7lMqv9aj0+40qTBHIhWe0u5VM6J21M2mLGlo+jreMvx3gD2EESvFSz/n9wE8V2AVy0H1VaLGvgH8KodJgeT5khA==;
-	24:oS7kyabYObcOpoIBdWN+NT3FP4sOF5ixe0LarfgGCNLn/KAVSTjRvW4+3ESkn6uYBttmuS4C+TOOsQPQQcxMRcAJk/rfe8iOV0GOsAO+WPM=
-x-exchange-antispam-report-test: UriScan:; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; UriScan:; 
-x-microsoft-antispam-prvs: <BLUPR0301MB2034656698AB3440A9F694FD9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(8121501046)(5005006)(10201501046)(3002001)(61426038)(61427038);
-	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; 
-x-forefront-prvs: 083691450C
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(979002)(6009001)(377454003)(24454002)(51914003)(6116002)(11100500001)(40100003)(5008740100001)(5005710100001)(1096002)(3470700001)(5003600100002)(3846002)(102836003)(76576001)(3660700001)(586003)(3280700002)(74316001)(92566002)(122556002)(4326007)(1220700001)(33656002)(2906002)(110136002)(19580405001)(76176999)(8990500004)(19580395003)(54356999)(86612001)(10290500002)(5002640100001)(87936001)(10090500001)(77096005)(5004730100002)(10400500002)(99286002)(86362001)(189998001)(66066001)(106116001)(50986999)(2950100001)(1411001)(5001960100002)(2900100001)(969003)(989001)(999001)(1009001)(1019001);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	MLV:ovrnspm; PTR:InfoNoRecords; LANG:en; 
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <peter.maydell@linaro.org>) id 1aL8D9-0004fF-40
+	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 06:43:03 -0500
+Received: by mail-vk0-x231.google.com with SMTP id i129so191780909vkb.0
+	for <qemu-arm@nongnu.org>; Mon, 18 Jan 2016 03:43:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=J9vBR2XOBoLBaOoyZR775zZ8rspBZvea/oHtL6E7Tak=;
+	b=J/BykqFAZGR+bYe4S8HfgTRgRnigDfuE/MgJj8TicHrtlq5f/OkSCxHBxP+FG56MhI
+	meHrKQbTnKwM3IRqqT9kNGLUNkCXoJOKAAzd+1a9ESjmQLtzM8OCJHaDs9U5zfzFGQ1Y
+	X5FAPSjtAQm+67iTwBe1UMvv0x8jYd+LXI2mw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=J9vBR2XOBoLBaOoyZR775zZ8rspBZvea/oHtL6E7Tak=;
+	b=KR9624thCV8GbqQRSmrCyWpxkO034/kox8Vu1cwdRqoI1IFjZdD873qjXVSnXyDE5u
+	5r4PBA+ls4fd3hRgeGgitZx9kxjF8W0J8YayEnwJAK9Nem4U5kJwmtkdxrHBsVLGsmRB
+	lm7OZMwZen0+MiOP7dyS5o5Wt1BbQtxWRO5XBgNalCRt9bjjlrAAI95jq9iNLSgrnyc/
+	PDNgAypX/HmoVHg4eJcXXj0EzLNnJKhMs5lKHUUxh8m7huDc84QUcNdW2hnkVuYp5gnN
+	amKVJeyxOYlccYQKRd4P7T3U6UYv9kvut7u90R4YanZtzx3Q5nf1K25+LBUebxI3q63P
+	L5ow==
+X-Gm-Message-State: ALoCoQlcr4mTPQvSrTL9/rw8OhdSMqpYd56Z8YWgLrZkuKOYPJtRA8+YUvV7LRt7qYKgcsqF6cHNjfZHyN7UV3rGZr/5hllBaSfgRWG+XN9M0G6Efe2CtGI=
+X-Received: by 10.31.131.203 with SMTP id f194mr17052776vkd.90.1453117382426; 
+	Mon, 18 Jan 2016 03:43:02 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jan 2016 04:42:01.4962 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.117
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Rob Herring <robh@kernel.org>
-Subject: Re: [Qemu-arm] [PATCH v4 5/8] bcm2836_control: add bcm2836 ARM
-	control logic
+Received: by 10.31.153.15 with HTTP; Mon, 18 Jan 2016 03:42:43 -0800 (PST)
+In-Reply-To: <1453101737-11255-1-git-send-email-crosthwaite.peter@gmail.com>
+References: <1453101737-11255-1-git-send-email-crosthwaite.peter@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Jan 2016 11:42:43 +0000
+Message-ID: <CAFEAcA9_2nMEb-z46znkVy02uMgEmyOwa2NnStyRRhSr15FLEw@mail.gmail.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::231
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Subject: Re: [Qemu-arm] [PATCH] misc: zynq-xadc: Fix off-by-one
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -109,42 +80,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZQ6LWmdRAn5o
+X-TUID: Qsc0C1ZMTZbs
 
-SGkgUGV0ZXIsDQoNCj4gRnJvbTogUGV0ZXIgQ3Jvc3Rod2FpdGUgW21haWx0bzpjcm9zdGh3YWl0
-ZXBldGVyQGdtYWlsLmNvbV0NCj4gU2VudDogVGh1cnNkYXksIDI4IEphbnVhcnkgMjAxNiAyMDoz
-OA0KPiANCj4gT24gRnJpLCBKYW4gMTUsIDIwMTYgYXQgMzo1OCBQTSwgQW5kcmV3IEJhdW1hbm4N
-Cj4gPEFuZHJldy5CYXVtYW5uQG1pY3Jvc29mdC5jb20+IHdyb3RlOg0KPiA+IFRoaXMgbW9kdWxl
-IGlzIHNwZWNpZmljIHRvIHRoZSBiY20yODM2IChQaTIpLiBJdCBpbXBsZW1lbnRzIHRoZSB0b3AN
-Cj4gPiBsZXZlbCBpbnRlcnJ1cHQgY29udHJvbGxlciwgYW5kIG1haWxib3hlcyB1c2VkIGZvciBp
-bnRlci1wcm9jZXNzb3INCj4gPiBzeW5jaHJvbmlzYXRpb24uDQpbLi4uXQ0KPiA+ICsgICAgZm9y
-IChpID0gMDsgaSA8IEJDTTI4MzZfTkNPUkVTOyBpKyspIHsNCj4gPiArICAgICAgICAvKiBoYW5k
-bGUgbG9jYWwgdGltZXIgaW50ZXJydXB0cyBmb3IgdGhpcyBjb3JlICovDQo+ID4gKyAgICAgICAg
-aWYgKHMtPnRpbWVyaXJxc1tpXSkgew0KPiA+ICsgICAgICAgICAgICBhc3NlcnQocy0+dGltZXJp
-cnFzW2ldIDwgKDEgPDwgSVJRX01BSUxCT1gwKSk7IC8qIHNhbml0eSBjaGVjayAqLw0KPiA+ICsg
-ICAgICAgICAgICBmb3IgKGogPSAwOyBqIDwgSVJRX01BSUxCT1gwOyBqKyspIHsNCj4gDQo+IEkg
-dGhpbmsgPD0gSVJRX0NOVFZJUlEgaXMgY2xlYW5lciwgYXMgaXQga2VlcHMgIk1BSUxCT1giIG91
-dCBvZiB0aGUgdGltZXINCj4gY29kZS4NCg0KT2suDQoNClsuLi5dDQo+ID4gK3R5cGVkZWYgc3Ry
-dWN0IEJDTTI4MzZDb250cm9sU3RhdGUgew0KPiA+ICsgICAgLyo8IHByaXZhdGUgPiovDQo+ID4g
-KyAgICBTeXNCdXNEZXZpY2UgYnVzZGV2Ow0KPiA+ICsgICAgLyo8IHB1YmxpYyA+Ki8NCj4gPiAr
-ICAgIE1lbW9yeVJlZ2lvbiBpb21lbTsNCj4gPiArDQo+IA0KPiA+ICsgICAgLyogaW50ZXJydXB0
-IHN0YXR1cyByZWdpc3RlcnMgKG5vdCBkaXJlY3RseSB2aXNpYmxlIHRvIHVzZXIpICovDQo+ID4g
-KyAgICBib29sIGdwdV9pcnEsIGdwdV9maXE7DQo+ID4gKyAgICB1aW50OF90IHRpbWVyaXJxc1tC
-Q00yODM2X05DT1JFU107DQo+ID4gKw0KPiANCj4gVGhpcyAuLi4NCj4gDQo+ID4gKyAgICAvKiBt
-YWlsYm94ZXMgKi8NCj4gPiArICAgIHVpbnQzMl90IG1haWxib3hlc1tCQ00yODM2X05DT1JFUyAq
-IEJDTTI4MzZfTUJQRVJDT1JFXTsNCj4gPiArDQo+ID4gKyAgICAvKiBpbnRlcnJ1cHQgcm91dGlu
-Zy9jb250cm9sIHJlZ2lzdGVycyAqLw0KPiA+ICsgICAgdWludDhfdCByb3V0ZV9ncHVfaXJxLCBy
-b3V0ZV9ncHVfZmlxOw0KPiA+ICsgICAgdWludDMyX3QgdGltZXJjb250cm9sW0JDTTI4MzZfTkNP
-UkVTXTsNCj4gPiArICAgIHVpbnQzMl90IG1haWxib3hjb250cm9sW0JDTTI4MzZfTkNPUkVTXTsN
-Cj4gPiArDQo+IA0KPiA+ICsgICAgLyogaW50ZXJydXB0IHNvdXJjZSByZWdpc3RlcnMsIHBvc3Qt
-cm91dGluZyAodmlzaWJsZSkgKi8NCj4gPiArICAgIHVpbnQzMl90IGlycXNyY1tCQ00yODM2X05D
-T1JFU107DQo+ID4gKyAgICB1aW50MzJfdCBmaXFzcmNbQkNNMjgzNl9OQ09SRVNdOw0KPiA+ICsN
-Cj4gDQo+IEFuZCB0aGlzIGFyZSBhYnNlbnQgZnJvbSB0aGUgVk1TRCwgYnV0IGFmdGVyIHNvbWUg
-dGhvdWdodCB0aGV5IGRvbid0DQo+IG5lZWQgdG8gYmUgYXMgdGhleSBhcmUgcHVyZSBmdW5jdGlv
-bnMgb2YgdGhlIGlucHV0IHBpbiBzdGF0ZSB0aGF0IGlzDQo+IGFsd2F5cyByZWZyZXNoYWJsZSBm
-cm9tIG90aGVyIHN0YXRlIG5vPyBJIHdvdWxkIHRoZXNlIHRvZ2V0aGVyIHdpdGggYQ0KPiBicmll
-ZiBjb21tZW50IGFzIHRvIHRoZSBhYm92ZSwgYW5kIGtlZXAgdGhlIG1pZ3JhdGFibGUgc3RhdGUg
-KGdlbnVpbmUNCj4gZGV2aWNlIHN0YXRlKSBhbGwgdG9nZXRoZXIuDQoNClllcywgdGhhdCB3YXMg
-ZXhhY3RseSB0aGUgaW50ZW50aW9uLiBJJ2xsIGNvbW1lbnQvcmV2aXNlIGFzIHlvdSBzdWdnZXN0
-Lg0KDQo+IFJldmlld2VkLWJ5OiBQZXRlciBDcm9zdGh3YWl0ZSA8Y3Jvc3Rod2FpdGUucGV0ZXJA
-Z21haWwuY29tPg0KDQpUaGFua3MgZm9yIHRoZSByZXZpZXcsDQpBbmRyZXcNCg0K
+On 18 January 2016 at 07:22, Peter Crosthwaite
+<crosthwaitepeter@gmail.com> wrote:
+> This bounds check was off-by-one. Fix.
+>
+> Reported-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+> ---
+>  hw/misc/zynq-xadc.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/misc/zynq-xadc.c b/hw/misc/zynq-xadc.c
+> index 1a32595..d160ff2 100644
+> --- a/hw/misc/zynq-xadc.c
+> +++ b/hw/misc/zynq-xadc.c
+> @@ -220,7 +220,7 @@ static void zynq_xadc_write(void *opaque, hwaddr offset, uint64_t val,
+>              break;
+>          }
+>
+> -        if (xadc_reg > ZYNQ_XADC_NUM_ADC_REGS && xadc_cmd != CMD_NOP) {
+> +        if (xadc_reg >= ZYNQ_XADC_NUM_ADC_REGS && xadc_cmd != CMD_NOP) {
+>              qemu_log_mask(LOG_GUEST_ERROR, "read/write op to invalid xadc "
+>                            "reg 0x%x\n", xadc_reg);
+>              break;
+> --
+> 1.9.1
+
+
+
+Applied to target-arm.next, thanks.
+
+-- PMM

@@ -1,64 +1,82 @@
-Received: by 10.182.158.201 with SMTP id ww9csp2588227obb;
-        Tue, 1 Dec 2015 12:25:53 -0800 (PST)
-X-Received: by 10.140.43.135 with SMTP id e7mr84270751qga.11.1449001553387;
-        Tue, 01 Dec 2015 12:25:53 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1755249lfe;
+        Sun, 17 Jan 2016 23:17:07 -0800 (PST)
+X-Received: by 10.140.158.4 with SMTP id e4mr30885241qhe.81.1453101427391;
+        Sun, 17 Jan 2016 23:17:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h35si51838509qkh.108.2015.12.01.12.25.53
+        by mx.google.com with ESMTPS id w206si29523381qhc.124.2016.01.17.23.17.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Dec 2015 12:25:53 -0800 (PST)
+        Sun, 17 Jan 2016 23:17:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54750 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a3rUm-0003aI-OV
-	for alex.bennee@linaro.org; Tue, 01 Dec 2015 15:25:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42171)
+	id 1aL43m-0002Ec-NV
+	for alex.bennee@linaro.org; Mon, 18 Jan 2016 02:17:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42585)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1a3rUi-0003Sh-8s
-	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:50 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL3zw-0003Ji-GE
+	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 02:13:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>) id 1a3rUe-0005d6-LC
-	for qemu-arm@nongnu.org; Tue, 01 Dec 2015 15:25:48 -0500
-Received: from zose-mta05.web4all.fr ([185.49.20.50]:44197)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aL3zt-00075X-4K
+	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 02:13:08 -0500
+Received: from mail-pa0-x22e.google.com ([2607:f8b0:400e:c03::22e]:34564)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcd@tribudubois.net>)
-	id 1a3rUe-0005cz-Bq; Tue, 01 Dec 2015 15:25:44 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by zose-mta05.web4all.fr (Postfix) with ESMTP id E17B343757;
-	Tue,  1 Dec 2015 21:25:43 +0100 (CET)
-Received: from zose-mta05.web4all.fr ([127.0.0.1])
-	by localhost (zose-mta05.web4all.fr [127.0.0.1]) (amavisd-new,
-	port 10032)
-	with ESMTP id 8TD4nvmmv24e; Tue,  1 Dec 2015 21:25:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zose-mta05.web4all.fr (Postfix) with ESMTP id 092E44375C;
-	Tue,  1 Dec 2015 21:25:43 +0100 (CET)
-X-Virus-Scanned: amavisd-new at zose-mta-05.w4a.fr
-Received: from zose-mta05.web4all.fr ([127.0.0.1])
-	by localhost (zose-mta05.web4all.fr [127.0.0.1]) (amavisd-new,
-	port 10026)
-	with ESMTP id yq9YzJviqkHJ; Tue,  1 Dec 2015 21:25:42 +0100 (CET)
-Received: from localhost.localdomain (smm49-1-78-235-240-156.fbx.proxad.net
-	[78.235.240.156])
-	by zose-mta05.web4all.fr (Postfix) with ESMTPSA id 9349143757;
-	Tue,  1 Dec 2015 21:25:42 +0100 (CET)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
-To: qemu-devel@nongnu.org, peter.maydell@linaro.org,
-	crosthwaite.peter@gmail.com, qemu-arm@nongnu.org
-Date: Tue,  1 Dec 2015 21:25:41 +0100
-Message-Id: <892db0a19c91b831f3f1a2ad9487a9b55b866490.1449000671.git.jcd@tribudubois.net>
-X-Mailer: git-send-email 2.5.0
-In-Reply-To: <cover.1449000671.git.jcd@tribudubois.net>
-References: <cover.1449000671.git.jcd@tribudubois.net>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aL3zm-00072v-Fw; Mon, 18 Jan 2016 02:12:58 -0500
+Received: by mail-pa0-x22e.google.com with SMTP id uo6so415134636pac.1;
+	Sun, 17 Jan 2016 23:12:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=e3xM4gLj9VjcRUfj6Mmjzgrk5xnUn7TglEIOel2zrTI=;
+	b=gGmCJhh7Lnrvw+smUCOQGd6N/8KN8snykJvzznWB6jLxyx73ObMatjQ9hZVK57lmbg
+	gEKukUgTTYzFkBh2Pj5KSYUaMBmZ3Yg2VTGs7E1xIXZer9xmcdoA/GlxHRRG6tahAvWt
+	a7fNQQrxEA1aNSEANMuePpKUZt7J8RcRBjfzLVS5X+14mkJZzH1jBvkFPY6aGHLEpkGo
+	RRDBcRmU4WdeJ8w0YYdqEzySMxMFvXflMzu1Jo3fOmy+8iItEft9eqNpj8e2YQZBmxkz
+	pTtc4KINmPkaW0nBdzlusdUyqEJZi606U65PsFtVyhNGAKH1vngStNposlv6e+wL/Fqn
+	elvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:in-reply-to:references;
+	bh=e3xM4gLj9VjcRUfj6Mmjzgrk5xnUn7TglEIOel2zrTI=;
+	b=j9F2cWsEcDJnnYri/vDrC51LL7/GjGghM0qTIwfcbEwbLF0p4NfJwgUKRrd9k/6ODE
+	sWh4/IhnUoQXy8LFMdr8Ljqs9Thlpxg9R/M7IcCf2Z0aFu9MyNvIdEFTA33dr6LIP1Rp
+	WbflaE7tsTQes74E3SUYnAvNBXgwM8+3DOYkhdsFuaoU6/okmh0g2SODmVkFYV8gh7ck
+	sHjxpjDTFQVy0Ld+h0x1mbLB4UXuu4A6tVBW/yAPhkNVWwITsUHPCbZT9bB4uMpVFukr
+	DH14nA1WLpFGNFsE+LhgtrO/ECfZ0gcKKME3Hd++QjUfrjlya2xq7kYT0cRss1OqPKbr
+	STcA==
+X-Gm-Message-State: ALoCoQnnjd57bOxgs/iBIRHfoW48pKanIenpB7YQ/5dgceUqqQyaeCw22dNRwnh8rGcog0PosfxZbc/nf7h9bdDStfRLSCmgiw==
+X-Received: by 10.66.237.102 with SMTP id vb6mr34455225pac.133.1453101177871; 
+	Sun, 17 Jan 2016 23:12:57 -0800 (PST)
+Received: from localhost.localdomain (c-73-70-184-119.hsd1.ca.comcast.net.
+	[73.70.184.119]) by smtp.gmail.com with ESMTPSA id
+	xv2sm31471880pab.10.2016.01.17.23.12.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sun, 17 Jan 2016 23:12:57 -0800 (PST)
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Sun, 17 Jan 2016 23:12:32 -0800
+Message-Id: <5258352497f088c6ef964f2a30ed1c87a7ecad88.1453100525.git.crosthwaite.peter@gmail.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
+References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
+In-Reply-To: <cover.1453100525.git.crosthwaite.peter@gmail.com>
+References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.49.20.50
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
-Subject: [Qemu-arm] [PATCH v5 4/4] i.MX: Add an i.MX25 specific CCM
-	class/instance.
+X-Received-From: 2607:f8b0:400e:c03::22e
+Cc: peter.maydell@linaro.org, alistair.francis@xilinx.com,
+	sridhar_kulk@yahoo.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+	piotr.krol@3mdeb.com
+Subject: [Qemu-arm] [PATCH v1 05/17] target-arm: pass DisasContext to
+	gen_aa32_ld*/st*
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,520 +90,864 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IqwqqDgJ4tcb
+X-TUID: UB+TaNF/NVdE
 
-With this CCM, i.MX25 timer is accurate with "real world time".
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+We'll need the DisasContext in the next patch to retrieve the
+desired endianness, so pass it as a whole to gen_aa32_ld*/st*.
+
+Unfortunately we cannot let those functions call get_mem_index,
+because of user-mode load/store instructions.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+[ PC changes:
+ * Fix long lines
+]
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
-Changes since v1:
- * rework loging to match other i.MX drivers
 
-Changes since v2:
- * We moved to an inheritance QOM scheme
+ target-arm/translate.c | 270 ++++++++++++++++++++++++++-----------------------
+ 1 file changed, 142 insertions(+), 128 deletions(-)
 
-Changes since v3:
- * Rework logging based on comments.
-
-Changes since v4:
- * Improve debug logging.
-
- hw/arm/fsl-imx25.c          |   2 +-
- hw/misc/Makefile.objs       |   1 +
- hw/misc/imx25_ccm.c         | 367 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/fsl-imx25.h  |   4 +-
- include/hw/misc/imx25_ccm.h |  61 ++++++++
- 5 files changed, 432 insertions(+), 3 deletions(-)
- create mode 100644 hw/misc/imx25_ccm.c
- create mode 100644 include/hw/misc/imx25_ccm.h
-
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 9f302ed..36818ee 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -38,7 +38,7 @@ static void fsl_imx25_init(Object *obj)
-     object_initialize(&s->avic, sizeof(s->avic), TYPE_IMX_AVIC);
-     qdev_set_parent_bus(DEVICE(&s->avic), sysbus_get_default());
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index d485e7d..55ecca5 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -924,23 +924,27 @@ static inline void store_reg_from_load(DisasContext *s, int reg, TCGv_i32 var)
+ #if TARGET_LONG_BITS == 32
  
--    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX31_CCM);
-+    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX25_CCM);
-     qdev_set_parent_bus(DEVICE(&s->ccm), sysbus_get_default());
+ #define DO_GEN_LD(SUFF, OPC)                                             \
+-static inline void gen_aa32_ld##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
++static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
++                                     TCGv_i32 addr, int index)           \
+ {                                                                        \
+     tcg_gen_qemu_ld_i32(val, addr, index, (OPC));                        \
+ }
  
-     for (i = 0; i < FSL_IMX25_NUM_UARTS; i++) {
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index c77f3e3..8a235df 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -27,6 +27,7 @@ obj-$(CONFIG_ECCMEMCTL) += eccmemctl.o
- obj-$(CONFIG_EXYNOS4) += exynos4210_pmu.o
- obj-$(CONFIG_IMX) += imx_ccm.o
- obj-$(CONFIG_IMX) += imx31_ccm.o
-+obj-$(CONFIG_IMX) += imx25_ccm.o
- obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
- obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
- obj-$(CONFIG_MAINSTONE) += mst_fpga.o
-diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
-new file mode 100644
-index 0000000..fcba903
---- /dev/null
-+++ b/hw/misc/imx25_ccm.c
-@@ -0,0 +1,367 @@
-+/*
-+ * IMX25 Clock Control Module
-+ *
-+ * Copyright (C) 2012 NICTA
-+ * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * To get the timer frequencies right, we need to emulate at least part of
-+ * the CCM.
-+ */
-+
-+#include "hw/misc/imx25_ccm.h"
-+
-+#ifndef DEBUG_IMX25_CCM
-+#define DEBUG_IMX25_CCM 0
-+#endif
-+
-+#define DPRINTF(fmt, args...) \
-+    do { \
-+        if (DEBUG_IMX25_CCM) { \
-+            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX25_CCM, \
-+                                             __func__, ##args); \
-+        } \
-+    } while (0)
-+
-+static char const *imx25_ccm_reg_name(uint32_t reg)
-+{
-+    static char unknown[20];
-+
-+    switch (reg) {
-+    case 0:
-+        return "mpctl";
-+    case 1:
-+        return "upctl";
-+    case 2:
-+        return "cctl";
-+    case 3:
-+        return "cgcr0";
-+    case 4:
-+        return "cgcr1";
-+    case 5:
-+        return "cgcr2";
-+    case 6:
-+        return "pcdr0";
-+    case 7:
-+        return "pcdr1";
-+    case 8:
-+        return "pcdr2";
-+    case 9:
-+        return "pcdr3";
-+    case 10:
-+        return "rcsr";
-+    case 11:
-+        return "crdr";
-+    case 12:
-+        return "dcvr0";
-+    case 13:
-+        return "dcvr1";
-+    case 14:
-+        return "dcvr2";
-+    case 15:
-+        return "dcvr3";
-+    case 16:
-+        return "ltr0";
-+    case 17:
-+        return "ltr1";
-+    case 18:
-+        return "ltr2";
-+    case 19:
-+        return "ltr3";
-+    case 20:
-+        return "ltbr0";
-+    case 21:
-+        return "ltbr1";
-+    case 22:
-+        return "pmcr0";
-+    case 23:
-+        return "pmcr1";
-+    case 24:
-+        return "pmcr2";
-+    case 25:
-+        return "mcr";
-+    case 26:
-+        return "lpimr0";
-+    case 27:
-+        return "lpimr1";
-+    default:
-+        sprintf(unknown, "[%d ?]", reg);
-+        return unknown;
-+    }
-+}
-+#define CKIH_FREQ 24000000 /* 24MHz crystal input */
-+
-+static const VMStateDescription vmstate_imx25_ccm = {
-+    .name = TYPE_IMX25_CCM,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(mpctl, IMX25CCMState),
-+        VMSTATE_UINT32(upctl, IMX25CCMState),
-+        VMSTATE_UINT32(cctl, IMX25CCMState),
-+        VMSTATE_UINT32_ARRAY(cgcr, IMX25CCMState, 3),
-+        VMSTATE_UINT32_ARRAY(pcdr, IMX25CCMState, 4),
-+        VMSTATE_UINT32(rcsr, IMX25CCMState),
-+        VMSTATE_UINT32(crdr, IMX25CCMState),
-+        VMSTATE_UINT32_ARRAY(dcvr, IMX25CCMState, 4),
-+        VMSTATE_UINT32_ARRAY(ltr, IMX25CCMState, 4),
-+        VMSTATE_UINT32_ARRAY(ltbr, IMX25CCMState, 2),
-+        VMSTATE_UINT32_ARRAY(pmcr, IMX25CCMState, 3),
-+        VMSTATE_UINT32(mcr, IMX25CCMState),
-+        VMSTATE_UINT32_ARRAY(lpimr, IMX25CCMState, 2),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static uint32_t imx25_ccm_get_mpll_clk(IMXCCMState *dev)
-+{
-+    uint32_t freq;
-+    IMX25CCMState *s = IMX25_CCM(dev);
-+
-+    if (EXTRACT(s->cctl, MPLL_BYPASS)) {
-+        freq = CKIH_FREQ;
-+    } else {
-+        freq = imx_ccm_calc_pll(s->mpctl, CKIH_FREQ);
-+    }
-+
-+    DPRINTF("freq = %d\n", freq);
-+
-+    return freq;
-+}
-+
-+static uint32_t imx25_ccm_get_upll_clk(IMXCCMState *dev)
-+{
-+    uint32_t freq = 0;
-+    IMX25CCMState *s = IMX25_CCM(dev);
-+
-+    if (!EXTRACT(s->cctl, UPLL_DIS)) {
-+        freq = imx_ccm_calc_pll(s->upctl, CKIH_FREQ);
-+    }
-+
-+    DPRINTF("freq = %d\n", freq);
-+
-+    return freq;
-+}
-+
-+static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
-+{
-+    uint32_t freq;
-+    IMX25CCMState *s = IMX25_CCM(dev);
-+
-+    freq = imx25_ccm_get_mpll_clk(dev);
-+
-+    if (EXTRACT(s->cctl, ARM_SRC)) {
-+        freq = (freq * 3 / 4);
-+    }
-+
-+    freq = freq / (1 + EXTRACT(s->cctl, ARM_CLK_DIV));
-+
-+    DPRINTF("freq = %d\n", freq);
-+
-+    return freq;
-+}
-+
-+static uint32_t imx25_ccm_get_ahb_clk(IMXCCMState *dev)
-+{
-+    uint32_t freq;
-+    IMX25CCMState *s = IMX25_CCM(dev);
-+
-+    freq = imx25_ccm_get_mcu_clk(dev) / (1 + EXTRACT(s->cctl, AHB_CLK_DIV));
-+
-+    DPRINTF("freq = %d\n", freq);
-+
-+    return freq;
-+}
-+
-+static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
-+{
-+    uint32_t freq;
-+
-+    freq = imx25_ccm_get_ahb_clk(dev) / 2;
-+
-+    DPRINTF("freq = %d\n", freq);
-+
-+    return freq;
-+}
-+
-+static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-+{
-+    uint32_t freq = 0;
-+    DPRINTF("Clock = %d)\n", clock);
-+
-+    switch (clock) {
-+    case NOCLK:
-+        break;
-+    case CLK_MPLL:
-+        freq = imx25_ccm_get_mpll_clk(dev);
-+        break;
-+    case CLK_UPLL:
-+        freq = imx25_ccm_get_upll_clk(dev);
-+        break;
-+    case CLK_MCU:
-+        freq = imx25_ccm_get_mcu_clk(dev);
-+        break;
-+    case CLK_AHB:
-+        freq = imx25_ccm_get_ahb_clk(dev);
-+        break;
-+    case CLK_IPG:
-+        freq = imx25_ccm_get_ipg_clk(dev);
-+        break;
-+    case CLK_32k:
-+        freq = CKIL_FREQ;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: unsupported clock %d\n",
-+                      TYPE_IMX25_CCM, __func__, clock);
-+        break;
-+    }
-+
-+    DPRINTF("Clock = %d) = %d\n", clock, freq);
-+
-+    return freq;
-+}
-+
-+static void imx25_ccm_reset(DeviceState *dev)
-+{
-+    IMX25CCMState *s = IMX25_CCM(dev);
-+
-+    DPRINTF("\n");
-+
-+    s->mpctl   = 0x800b2c01;
-+    s->upctl   = 0x84042800;
-+    /* 
-+     * The value below gives:
-+     * CPU = 133 MHz, AHB = 66,5 MHz, IPG = 33 MHz. 
-+     */
-+    s->cctl    = 0xd0030000;
-+    s->cgcr[0] = 0x028A0100;
-+    s->cgcr[1] = 0x04008100;
-+    s->cgcr[2] = 0x00000438;
-+    s->pcdr[0] = 0x01010101;
-+    s->pcdr[1] = 0x01010101;
-+    s->pcdr[2] = 0x01010101;
-+    s->pcdr[3] = 0x01010101;
-+    s->rcsr    = 0;
-+    s->crdr    = 0;
-+    s->dcvr[0] = 0;
-+    s->dcvr[1] = 0;
-+    s->dcvr[2] = 0;
-+    s->dcvr[3] = 0;
-+    s->ltr[0]  = 0;
-+    s->ltr[1]  = 0;
-+    s->ltr[2]  = 0;
-+    s->ltr[3]  = 0;
-+    s->ltbr[0] = 0;
-+    s->ltbr[1] = 0;
-+    s->pmcr[0] = 0x00A00000;
-+    s->pmcr[1] = 0x0000A030;
-+    s->pmcr[2] = 0x0000A030;
-+    s->mcr     = 0x43000000;
-+    s->lpimr[0] = 0;
-+    s->lpimr[1] = 0;
-+
-+    /*
-+     * default boot will change the reset values to allow:
-+     * CPU = 399 MHz, AHB = 133 MHz, IPG = 66,5 MHz. 
-+     * For some reason, this doesn't work. With the value below, linux
-+     * detects a 88 MHz IPG CLK instead of 66,5 MHz.
-+     */
-+    //s->cctl = 0x20032000;
-+}
-+
-+static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    uint32 value = 0;
-+    IMX25CCMState *s = (IMX25CCMState *)opaque;
-+    uint32_t *reg = &s->mpctl;
-+
-+    if (offset < 0x70) {
-+        value = reg[offset >> 2];
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-+                      HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
-+    }
-+
-+    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
-+            value);
-+
-+    return value;
-+}
-+
-+static void imx25_ccm_write(void *opaque, hwaddr offset, uint64_t value,
-+                            unsigned size)
-+{
-+    IMX25CCMState *s = (IMX25CCMState *)opaque;
-+    uint32_t *reg = &s->mpctl;
-+
-+    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
-+            (uint32_t)value);
-+
-+    if (offset < 0x70) {
-+        /*
-+         * We will do a better implementation later. In particular some bits
-+         * cannot be written to.
-+         */
-+        reg[offset >> 2] = value;
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-+                      HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
-+    }
-+}
-+
-+static const struct MemoryRegionOps imx25_ccm_ops = {
-+    .read = imx25_ccm_read,
-+    .write = imx25_ccm_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        /*
-+         * Our device would not work correctly if the guest was doing
-+         * unaligned access. This might not be a limitation on the real
-+         * device but in practice there is no reason for a guest to access
-+         * this device unaligned.
-+         */
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
-+};
-+
-+static void imx25_ccm_init(Object *obj)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+    SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-+    IMX25CCMState *s = IMX25_CCM(obj);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &imx25_ccm_ops, s,
-+                          TYPE_IMX25_CCM, 0x1000);
-+    sysbus_init_mmio(sd, &s->iomem);
-+}
-+
-+static void imx25_ccm_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    IMXCCMClass *ccm = IMX_CCM_CLASS(klass);
-+
-+    dc->reset = imx25_ccm_reset;
-+    dc->vmsd = &vmstate_imx25_ccm;
-+    dc->desc = "i.MX25 Clock Control Module";
-+
-+    ccm->get_clock_frequency = imx25_ccm_get_clock_frequency;
-+}
-+
-+static const TypeInfo imx25_ccm_info = {
-+    .name          = TYPE_IMX25_CCM,
-+    .parent        = TYPE_IMX_CCM,
-+    .instance_size = sizeof(IMX25CCMState),
-+    .instance_init = imx25_ccm_init,
-+    .class_init    = imx25_ccm_class_init,
-+};
-+
-+static void imx25_ccm_register_types(void)
-+{
-+    type_register_static(&imx25_ccm_info);
-+}
-+
-+type_init(imx25_ccm_register_types)
-diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
-index 5c62fde..d0e8e9d 100644
---- a/include/hw/arm/fsl-imx25.h
-+++ b/include/hw/arm/fsl-imx25.h
-@@ -19,7 +19,7 @@
+ #define DO_GEN_ST(SUFF, OPC)                                             \
+-static inline void gen_aa32_st##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
++static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
++                                     TCGv_i32 addr, int index)           \
+ {                                                                        \
+     tcg_gen_qemu_st_i32(val, addr, index, (OPC));                        \
+ }
  
- #include "hw/arm/arm.h"
- #include "hw/intc/imx_avic.h"
--#include "hw/misc/imx31_ccm.h"
-+#include "hw/misc/imx25_ccm.h"
- #include "hw/char/imx_serial.h"
- #include "hw/timer/imx_gpt.h"
- #include "hw/timer/imx_epit.h"
-@@ -44,7 +44,7 @@ typedef struct FslIMX25State {
-     /*< public >*/
-     ARMCPU         cpu;
-     IMXAVICState   avic;
--    IMX31CCMState  ccm;
-+    IMX25CCMState  ccm;
-     IMXSerialState uart[FSL_IMX25_NUM_UARTS];
-     IMXGPTState    gpt[FSL_IMX25_NUM_GPTS];
-     IMXEPITState   epit[FSL_IMX25_NUM_EPITS];
-diff --git a/include/hw/misc/imx25_ccm.h b/include/hw/misc/imx25_ccm.h
-new file mode 100644
-index 0000000..a2dbcea
---- /dev/null
-+++ b/include/hw/misc/imx25_ccm.h
-@@ -0,0 +1,61 @@
-+/*
-+ * IMX25 Clock Control Module
-+ *
-+ * Copyright (C) 2012 NICTA
-+ * Updated by Jean-Christophe Dubois <jcd@tribudubois.net>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef IMX25_CCM_H
-+#define IMX25_CCM_H
-+
-+#include "hw/misc/imx_ccm.h"
-+
-+/* CCTL */
-+#define CCTL_ARM_CLK_DIV_SHIFT (30)
-+#define CCTL_ARM_CLK_DIV_MASK  (0x3)
-+#define CCTL_AHB_CLK_DIV_SHIFT (28)
-+#define CCTL_AHB_CLK_DIV_MASK  (0x3)
-+#define CCTL_MPLL_BYPASS_SHIFT (22)
-+#define CCTL_MPLL_BYPASS_MASK  (0x1)
-+#define CCTL_USB_DIV_SHIFT     (16)
-+#define CCTL_USB_DIV_MASK      (0x3F)
-+#define CCTL_ARM_SRC_SHIFT     (13)
-+#define CCTL_ARM_SRC_MASK      (0x1)
-+#define CCTL_UPLL_DIS_SHIFT    (23)
-+#define CCTL_UPLL_DIS_MASK     (0x1)
-+
-+#define EXTRACT(value, name) (((value) >> CCTL_##name##_SHIFT) \
-+                              & CCTL_##name##_MASK)
-+#define INSERT(value, name) (((value) & CCTL_##name##_MASK) << \
-+                             CCTL_##name##_SHIFT)
-+
-+#define TYPE_IMX25_CCM "imx25.ccm"
-+#define IMX25_CCM(obj) OBJECT_CHECK(IMX25CCMState, (obj), TYPE_IMX25_CCM)
-+
-+typedef struct IMX25CCMState {
-+    /* <private> */
-+    IMXCCMState parent_obj;
-+
-+    /* <public> */
-+    MemoryRegion iomem;
-+
-+    uint32_t mpctl;
-+    uint32_t upctl;
-+    uint32_t cctl;
-+    uint32_t cgcr[3];
-+    uint32_t pcdr[4];
-+    uint32_t rcsr;
-+    uint32_t crdr;
-+    uint32_t dcvr[4];
-+    uint32_t ltr[4];
-+    uint32_t ltbr[2];
-+    uint32_t pmcr[3];
-+    uint32_t mcr;
-+    uint32_t lpimr[2];
-+
-+} IMX25CCMState;
-+
-+#endif /* IMX25_CCM_H */
+-static inline void gen_aa32_ld64(TCGv_i64 val, TCGv_i32 addr, int index)
++static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
++                                 TCGv_i32 addr, int index)
+ {
+     tcg_gen_qemu_ld_i64(val, addr, index, MO_TEQ);
+ }
+ 
+-static inline void gen_aa32_st64(TCGv_i64 val, TCGv_i32 addr, int index)
++static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
++                                 TCGv_i32 addr, int index)
+ {
+     tcg_gen_qemu_st_i64(val, addr, index, MO_TEQ);
+ }
+@@ -948,7 +952,8 @@ static inline void gen_aa32_st64(TCGv_i64 val, TCGv_i32 addr, int index)
+ #else
+ 
+ #define DO_GEN_LD(SUFF, OPC)                                             \
+-static inline void gen_aa32_ld##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
++static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
++                                     TCGv_i32 addr, int index)           \
+ {                                                                        \
+     TCGv addr64 = tcg_temp_new();                                        \
+     tcg_gen_extu_i32_i64(addr64, addr);                                  \
+@@ -957,7 +962,8 @@ static inline void gen_aa32_ld##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
+ }
+ 
+ #define DO_GEN_ST(SUFF, OPC)                                             \
+-static inline void gen_aa32_st##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
++static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
++                                     TCGv_i32 addr, int index)           \
+ {                                                                        \
+     TCGv addr64 = tcg_temp_new();                                        \
+     tcg_gen_extu_i32_i64(addr64, addr);                                  \
+@@ -965,7 +971,8 @@ static inline void gen_aa32_st##SUFF(TCGv_i32 val, TCGv_i32 addr, int index) \
+     tcg_temp_free(addr64);                                               \
+ }
+ 
+-static inline void gen_aa32_ld64(TCGv_i64 val, TCGv_i32 addr, int index)
++static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
++                                 TCGv_i32 addr, int index)
+ {
+     TCGv addr64 = tcg_temp_new();
+     tcg_gen_extu_i32_i64(addr64, addr);
+@@ -973,7 +980,8 @@ static inline void gen_aa32_ld64(TCGv_i64 val, TCGv_i32 addr, int index)
+     tcg_temp_free(addr64);
+ }
+ 
+-static inline void gen_aa32_st64(TCGv_i64 val, TCGv_i32 addr, int index)
++static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
++                                 TCGv_i32 addr, int index)
+ {
+     TCGv addr64 = tcg_temp_new();
+     tcg_gen_extu_i32_i64(addr64, addr);
+@@ -1288,18 +1296,18 @@ VFP_GEN_FIX(ulto, )
+ static inline void gen_vfp_ld(DisasContext *s, int dp, TCGv_i32 addr)
+ {
+     if (dp) {
+-        gen_aa32_ld64(cpu_F0d, addr, get_mem_index(s));
++        gen_aa32_ld64(s, cpu_F0d, addr, get_mem_index(s));
+     } else {
+-        gen_aa32_ld32u(cpu_F0s, addr, get_mem_index(s));
++        gen_aa32_ld32u(s, cpu_F0s, addr, get_mem_index(s));
+     }
+ }
+ 
+ static inline void gen_vfp_st(DisasContext *s, int dp, TCGv_i32 addr)
+ {
+     if (dp) {
+-        gen_aa32_st64(cpu_F0d, addr, get_mem_index(s));
++        gen_aa32_st64(s, cpu_F0d, addr, get_mem_index(s));
+     } else {
+-        gen_aa32_st32(cpu_F0s, addr, get_mem_index(s));
++        gen_aa32_st32(s, cpu_F0s, addr, get_mem_index(s));
+     }
+ }
+ 
+@@ -1635,24 +1643,24 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         if (insn & ARM_CP_RW_BIT) {
+             if ((insn >> 28) == 0xf) {			/* WLDRW wCx */
+                 tmp = tcg_temp_new_i32();
+-                gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                 iwmmxt_store_creg(wrd, tmp);
+             } else {
+                 i = 1;
+                 if (insn & (1 << 8)) {
+                     if (insn & (1 << 22)) {		/* WLDRD */
+-                        gen_aa32_ld64(cpu_M0, addr, get_mem_index(s));
++                        gen_aa32_ld64(s, cpu_M0, addr, get_mem_index(s));
+                         i = 0;
+                     } else {				/* WLDRW wRd */
+                         tmp = tcg_temp_new_i32();
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     }
+                 } else {
+                     tmp = tcg_temp_new_i32();
+                     if (insn & (1 << 22)) {		/* WLDRH */
+-                        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                     } else {				/* WLDRB */
+-                        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+                     }
+                 }
+                 if (i) {
+@@ -1664,24 +1672,24 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+         } else {
+             if ((insn >> 28) == 0xf) {			/* WSTRW wCx */
+                 tmp = iwmmxt_load_creg(wrd);
+-                gen_aa32_st32(tmp, addr, get_mem_index(s));
++                gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+             } else {
+                 gen_op_iwmmxt_movq_M0_wRn(wrd);
+                 tmp = tcg_temp_new_i32();
+                 if (insn & (1 << 8)) {
+                     if (insn & (1 << 22)) {		/* WSTRD */
+-                        gen_aa32_st64(cpu_M0, addr, get_mem_index(s));
++                        gen_aa32_st64(s, cpu_M0, addr, get_mem_index(s));
+                     } else {				/* WSTRW wRd */
+                         tcg_gen_extrl_i64_i32(tmp, cpu_M0);
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                     }
+                 } else {
+                     if (insn & (1 << 22)) {		/* WSTRH */
+                         tcg_gen_extrl_i64_i32(tmp, cpu_M0);
+-                        gen_aa32_st16(tmp, addr, get_mem_index(s));
++                        gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+                     } else {				/* WSTRB */
+                         tcg_gen_extrl_i64_i32(tmp, cpu_M0);
+-                        gen_aa32_st8(tmp, addr, get_mem_index(s));
++                        gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+                     }
+                 }
+             }
+@@ -2746,15 +2754,15 @@ static TCGv_i32 gen_load_and_replicate(DisasContext *s, TCGv_i32 addr, int size)
+     TCGv_i32 tmp = tcg_temp_new_i32();
+     switch (size) {
+     case 0:
+-        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+         gen_neon_dup_u8(tmp, 0);
+         break;
+     case 1:
+-        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+         gen_neon_dup_low16(tmp);
+         break;
+     case 2:
+-        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+         break;
+     default: /* Avoid compiler warnings.  */
+         abort();
+@@ -4452,11 +4460,11 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+             if (size == 3) {
+                 tmp64 = tcg_temp_new_i64();
+                 if (load) {
+-                    gen_aa32_ld64(tmp64, addr, get_mem_index(s));
++                    gen_aa32_ld64(s, tmp64, addr, get_mem_index(s));
+                     neon_store_reg64(tmp64, rd);
+                 } else {
+                     neon_load_reg64(tmp64, rd);
+-                    gen_aa32_st64(tmp64, addr, get_mem_index(s));
++                    gen_aa32_st64(s, tmp64, addr, get_mem_index(s));
+                 }
+                 tcg_temp_free_i64(tmp64);
+                 tcg_gen_addi_i32(addr, addr, stride);
+@@ -4465,21 +4473,21 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                     if (size == 2) {
+                         if (load) {
+                             tmp = tcg_temp_new_i32();
+-                            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                             neon_store_reg(rd, pass, tmp);
+                         } else {
+                             tmp = neon_load_reg(rd, pass);
+-                            gen_aa32_st32(tmp, addr, get_mem_index(s));
++                            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                             tcg_temp_free_i32(tmp);
+                         }
+                         tcg_gen_addi_i32(addr, addr, stride);
+                     } else if (size == 1) {
+                         if (load) {
+                             tmp = tcg_temp_new_i32();
+-                            gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                             tcg_gen_addi_i32(addr, addr, stride);
+                             tmp2 = tcg_temp_new_i32();
+-                            gen_aa32_ld16u(tmp2, addr, get_mem_index(s));
++                            gen_aa32_ld16u(s, tmp2, addr, get_mem_index(s));
+                             tcg_gen_addi_i32(addr, addr, stride);
+                             tcg_gen_shli_i32(tmp2, tmp2, 16);
+                             tcg_gen_or_i32(tmp, tmp, tmp2);
+@@ -4489,10 +4497,10 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                             tmp = neon_load_reg(rd, pass);
+                             tmp2 = tcg_temp_new_i32();
+                             tcg_gen_shri_i32(tmp2, tmp, 16);
+-                            gen_aa32_st16(tmp, addr, get_mem_index(s));
++                            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+                             tcg_temp_free_i32(tmp);
+                             tcg_gen_addi_i32(addr, addr, stride);
+-                            gen_aa32_st16(tmp2, addr, get_mem_index(s));
++                            gen_aa32_st16(s, tmp2, addr, get_mem_index(s));
+                             tcg_temp_free_i32(tmp2);
+                             tcg_gen_addi_i32(addr, addr, stride);
+                         }
+@@ -4501,7 +4509,7 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                             TCGV_UNUSED_I32(tmp2);
+                             for (n = 0; n < 4; n++) {
+                                 tmp = tcg_temp_new_i32();
+-                                gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                                gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+                                 tcg_gen_addi_i32(addr, addr, stride);
+                                 if (n == 0) {
+                                     tmp2 = tmp;
+@@ -4521,7 +4529,7 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                                 } else {
+                                     tcg_gen_shri_i32(tmp, tmp2, n * 8);
+                                 }
+-                                gen_aa32_st8(tmp, addr, get_mem_index(s));
++                                gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+                                 tcg_temp_free_i32(tmp);
+                                 tcg_gen_addi_i32(addr, addr, stride);
+                             }
+@@ -4645,13 +4653,13 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                     tmp = tcg_temp_new_i32();
+                     switch (size) {
+                     case 0:
+-                        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+                         break;
+                     case 1:
+-                        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                         break;
+                     case 2:
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                         break;
+                     default: /* Avoid compiler warnings.  */
+                         abort();
+@@ -4669,13 +4677,13 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
+                         tcg_gen_shri_i32(tmp, tmp, shift);
+                     switch (size) {
+                     case 0:
+-                        gen_aa32_st8(tmp, addr, get_mem_index(s));
++                        gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+                         break;
+                     case 1:
+-                        gen_aa32_st16(tmp, addr, get_mem_index(s));
++                        gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+                         break;
+                     case 2:
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         break;
+                     }
+                     tcg_temp_free_i32(tmp);
+@@ -7435,14 +7443,14 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+ 
+     switch (size) {
+     case 0:
+-        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+         break;
+     case 1:
+-        gen_aa32_ld16ua(tmp, addr, get_mem_index(s));
++        gen_aa32_ld16ua(s, tmp, addr, get_mem_index(s));
+         break;
+     case 2:
+     case 3:
+-        gen_aa32_ld32ua(tmp, addr, get_mem_index(s));
++        gen_aa32_ld32ua(s, tmp, addr, get_mem_index(s));
+         break;
+     default:
+         abort();
+@@ -7453,7 +7461,7 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+         TCGv_i32 tmp3 = tcg_temp_new_i32();
+ 
+         tcg_gen_addi_i32(tmp2, addr, 4);
+-        gen_aa32_ld32u(tmp3, tmp2, get_mem_index(s));
++        gen_aa32_ld32u(s, tmp3, tmp2, get_mem_index(s));
+         tcg_temp_free_i32(tmp2);
+         tcg_gen_concat_i32_i64(cpu_exclusive_val, tmp, tmp3);
+         store_reg(s, rt2, tmp3);
+@@ -7504,14 +7512,14 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+     tmp = tcg_temp_new_i32();
+     switch (size) {
+     case 0:
+-        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+         break;
+     case 1:
+-        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+         break;
+     case 2:
+     case 3:
+-        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+         break;
+     default:
+         abort();
+@@ -7522,7 +7530,7 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+         TCGv_i32 tmp2 = tcg_temp_new_i32();
+         TCGv_i32 tmp3 = tcg_temp_new_i32();
+         tcg_gen_addi_i32(tmp2, addr, 4);
+-        gen_aa32_ld32u(tmp3, tmp2, get_mem_index(s));
++        gen_aa32_ld32u(s, tmp3, tmp2, get_mem_index(s));
+         tcg_temp_free_i32(tmp2);
+         tcg_gen_concat_i32_i64(val64, tmp, tmp3);
+         tcg_temp_free_i32(tmp3);
+@@ -7537,14 +7545,14 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+     tmp = load_reg(s, rt);
+     switch (size) {
+     case 0:
+-        gen_aa32_st8(tmp, addr, get_mem_index(s));
++        gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+         break;
+     case 1:
+-        gen_aa32_st16(tmp, addr, get_mem_index(s));
++        gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+         break;
+     case 2:
+     case 3:
+-        gen_aa32_st32(tmp, addr, get_mem_index(s));
++        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+         break;
+     default:
+         abort();
+@@ -7553,7 +7561,7 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+     if (size == 3) {
+         tcg_gen_addi_i32(addr, addr, 4);
+         tmp = load_reg(s, rt2);
+-        gen_aa32_st32(tmp, addr, get_mem_index(s));
++        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+         tcg_temp_free_i32(tmp);
+     }
+     tcg_gen_movi_i32(cpu_R[rd], 0);
+@@ -7600,11 +7608,11 @@ static void gen_srs(DisasContext *s,
+     }
+     tcg_gen_addi_i32(addr, addr, offset);
+     tmp = load_reg(s, 14);
+-    gen_aa32_st32(tmp, addr, get_mem_index(s));
++    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+     tcg_temp_free_i32(tmp);
+     tmp = load_cpu_field(spsr);
+     tcg_gen_addi_i32(addr, addr, 4);
+-    gen_aa32_st32(tmp, addr, get_mem_index(s));
++    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+     tcg_temp_free_i32(tmp);
+     if (writeback) {
+         switch (amode) {
+@@ -7765,10 +7773,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 tcg_gen_addi_i32(addr, addr, offset);
+             /* Load PC into tmp and CPSR into tmp2.  */
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+             tcg_gen_addi_i32(addr, addr, 4);
+             tmp2 = tcg_temp_new_i32();
+-            gen_aa32_ld32u(tmp2, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp2, addr, get_mem_index(s));
+             if (insn & (1 << 21)) {
+                 /* Base writeback.  */
+                 switch (i) {
+@@ -8384,13 +8392,16 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                                 tmp = tcg_temp_new_i32();
+                                 switch (op1) {
+                                 case 0: /* lda */
+-                                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                                    gen_aa32_ld32u(s, tmp, addr,
++                                                   get_mem_index(s));
+                                     break;
+                                 case 2: /* ldab */
+-                                    gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                                    gen_aa32_ld8u(s, tmp, addr,
++                                                  get_mem_index(s));
+                                     break;
+                                 case 3: /* ldah */
+-                                    gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                                    gen_aa32_ld16u(s, tmp, addr,
++                                                   get_mem_index(s));
+                                     break;
+                                 default:
+                                     abort();
+@@ -8401,13 +8412,16 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                                 tmp = load_reg(s, rm);
+                                 switch (op1) {
+                                 case 0: /* stl */
+-                                    gen_aa32_st32(tmp, addr, get_mem_index(s));
++                                    gen_aa32_st32(s, tmp, addr,
++                                                  get_mem_index(s));
+                                     break;
+                                 case 2: /* stlb */
+-                                    gen_aa32_st8(tmp, addr, get_mem_index(s));
++                                    gen_aa32_st8(s, tmp, addr,
++                                                 get_mem_index(s));
+                                     break;
+                                 case 3: /* stlh */
+-                                    gen_aa32_st16(tmp, addr, get_mem_index(s));
++                                    gen_aa32_st16(s, tmp, addr,
++                                                  get_mem_index(s));
+                                     break;
+                                 default:
+                                     abort();
+@@ -8462,11 +8476,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                         tmp = load_reg(s, rm);
+                         tmp2 = tcg_temp_new_i32();
+                         if (insn & (1 << 22)) {
+-                            gen_aa32_ld8u(tmp2, addr, get_mem_index(s));
+-                            gen_aa32_st8(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld8u(s, tmp2, addr, get_mem_index(s));
++                            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+                         } else {
+-                            gen_aa32_ld32u(tmp2, addr, get_mem_index(s));
+-                            gen_aa32_st32(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld32u(s, tmp2, addr, get_mem_index(s));
++                            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         }
+                         tcg_temp_free_i32(tmp);
+                         tcg_temp_free_i32(addr);
+@@ -8501,20 +8515,20 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                     if (!load) {
+                         /* store */
+                         tmp = load_reg(s, rd);
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         tcg_temp_free_i32(tmp);
+                         tcg_gen_addi_i32(addr, addr, 4);
+                         tmp = load_reg(s, rd + 1);
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         tcg_temp_free_i32(tmp);
+                     } else {
+                         /* load */
+                         tmp = tcg_temp_new_i32();
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                         store_reg(s, rd, tmp);
+                         tcg_gen_addi_i32(addr, addr, 4);
+                         tmp = tcg_temp_new_i32();
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                         rd++;
+                     }
+                     address_offset = -4;
+@@ -8523,20 +8537,20 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                     tmp = tcg_temp_new_i32();
+                     switch (sh) {
+                     case 1:
+-                        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                         break;
+                     case 2:
+-                        gen_aa32_ld8s(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld8s(s, tmp, addr, get_mem_index(s));
+                         break;
+                     default:
+                     case 3:
+-                        gen_aa32_ld16s(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld16s(s, tmp, addr, get_mem_index(s));
+                         break;
+                     }
+                 } else {
+                     /* store */
+                     tmp = load_reg(s, rd);
+-                    gen_aa32_st16(tmp, addr, get_mem_index(s));
++                    gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+                     tcg_temp_free_i32(tmp);
+                 }
+                 /* Perform base writeback before the loaded value to
+@@ -8889,17 +8903,17 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 /* load */
+                 tmp = tcg_temp_new_i32();
+                 if (insn & (1 << 22)) {
+-                    gen_aa32_ld8u(tmp, tmp2, i);
++                    gen_aa32_ld8u(s, tmp, tmp2, i);
+                 } else {
+-                    gen_aa32_ld32u(tmp, tmp2, i);
++                    gen_aa32_ld32u(s, tmp, tmp2, i);
+                 }
+             } else {
+                 /* store */
+                 tmp = load_reg(s, rd);
+                 if (insn & (1 << 22)) {
+-                    gen_aa32_st8(tmp, tmp2, i);
++                    gen_aa32_st8(s, tmp, tmp2, i);
+                 } else {
+-                    gen_aa32_st32(tmp, tmp2, i);
++                    gen_aa32_st32(s, tmp, tmp2, i);
+                 }
+                 tcg_temp_free_i32(tmp);
+             }
+@@ -8972,7 +8986,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                         if (is_load) {
+                             /* load */
+                             tmp = tcg_temp_new_i32();
+-                            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                             if (user) {
+                                 tmp2 = tcg_const_i32(i);
+                                 gen_helper_set_user_reg(cpu_env, tmp2, tmp);
+@@ -8999,7 +9013,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                             } else {
+                                 tmp = load_reg(s, i);
+                             }
+-                            gen_aa32_st32(tmp, addr, get_mem_index(s));
++                            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                             tcg_temp_free_i32(tmp);
+                         }
+                         j++;
+@@ -9266,20 +9280,20 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                 if (insn & (1 << 20)) {
+                     /* ldrd */
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     store_reg(s, rs, tmp);
+                     tcg_gen_addi_i32(addr, addr, 4);
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     store_reg(s, rd, tmp);
+                 } else {
+                     /* strd */
+                     tmp = load_reg(s, rs);
+-                    gen_aa32_st32(tmp, addr, get_mem_index(s));
++                    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                     tcg_temp_free_i32(tmp);
+                     tcg_gen_addi_i32(addr, addr, 4);
+                     tmp = load_reg(s, rd);
+-                    gen_aa32_st32(tmp, addr, get_mem_index(s));
++                    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                     tcg_temp_free_i32(tmp);
+                 }
+                 if (insn & (1 << 21)) {
+@@ -9317,11 +9331,11 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                     tcg_gen_add_i32(addr, addr, tmp);
+                     tcg_temp_free_i32(tmp);
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                 } else { /* tbb */
+                     tcg_temp_free_i32(tmp);
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+                 }
+                 tcg_temp_free_i32(addr);
+                 tcg_gen_shli_i32(tmp, tmp, 1);
+@@ -9358,13 +9372,13 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                         tmp = tcg_temp_new_i32();
+                         switch (op) {
+                         case 0: /* ldab */
+-                            gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+                             break;
+                         case 1: /* ldah */
+-                            gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+                             break;
+                         case 2: /* lda */
+-                            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                             break;
+                         default:
+                             abort();
+@@ -9374,13 +9388,13 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                         tmp = load_reg(s, rs);
+                         switch (op) {
+                         case 0: /* stlb */
+-                            gen_aa32_st8(tmp, addr, get_mem_index(s));
++                            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+                             break;
+                         case 1: /* stlh */
+-                            gen_aa32_st16(tmp, addr, get_mem_index(s));
++                            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+                             break;
+                         case 2: /* stl */
+-                            gen_aa32_st32(tmp, addr, get_mem_index(s));
++                            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                             break;
+                         default:
+                             abort();
+@@ -9408,10 +9422,10 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                         tcg_gen_addi_i32(addr, addr, -8);
+                     /* Load PC into tmp and CPSR into tmp2.  */
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     tcg_gen_addi_i32(addr, addr, 4);
+                     tmp2 = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp2, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp2, addr, get_mem_index(s));
+                     if (insn & (1 << 21)) {
+                         /* Base writeback.  */
+                         if (insn & (1 << 24)) {
+@@ -9450,7 +9464,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                     if (insn & (1 << 20)) {
+                         /* Load.  */
+                         tmp = tcg_temp_new_i32();
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                         if (i == 15) {
+                             gen_bx(s, tmp);
+                         } else if (i == rn) {
+@@ -9462,7 +9476,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                     } else {
+                         /* Store.  */
+                         tmp = load_reg(s, i);
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         tcg_temp_free_i32(tmp);
+                     }
+                     tcg_gen_addi_i32(addr, addr, 4);
+@@ -10392,19 +10406,19 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+             tmp = tcg_temp_new_i32();
+             switch (op) {
+             case 0:
+-                gen_aa32_ld8u(tmp, addr, memidx);
++                gen_aa32_ld8u(s, tmp, addr, memidx);
+                 break;
+             case 4:
+-                gen_aa32_ld8s(tmp, addr, memidx);
++                gen_aa32_ld8s(s, tmp, addr, memidx);
+                 break;
+             case 1:
+-                gen_aa32_ld16u(tmp, addr, memidx);
++                gen_aa32_ld16u(s, tmp, addr, memidx);
+                 break;
+             case 5:
+-                gen_aa32_ld16s(tmp, addr, memidx);
++                gen_aa32_ld16s(s, tmp, addr, memidx);
+                 break;
+             case 2:
+-                gen_aa32_ld32u(tmp, addr, memidx);
++                gen_aa32_ld32u(s, tmp, addr, memidx);
+                 break;
+             default:
+                 tcg_temp_free_i32(tmp);
+@@ -10421,13 +10435,13 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+             tmp = load_reg(s, rs);
+             switch (op) {
+             case 0:
+-                gen_aa32_st8(tmp, addr, memidx);
++                gen_aa32_st8(s, tmp, addr, memidx);
+                 break;
+             case 1:
+-                gen_aa32_st16(tmp, addr, memidx);
++                gen_aa32_st16(s, tmp, addr, memidx);
+                 break;
+             case 2:
+-                gen_aa32_st32(tmp, addr, memidx);
++                gen_aa32_st32(s, tmp, addr, memidx);
+                 break;
+             default:
+                 tcg_temp_free_i32(tmp);
+@@ -10564,7 +10578,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+             addr = tcg_temp_new_i32();
+             tcg_gen_movi_i32(addr, val);
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+             tcg_temp_free_i32(addr);
+             store_reg(s, rd, tmp);
+             break;
+@@ -10767,28 +10781,28 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+ 
+         switch (op) {
+         case 0: /* str */
+-            gen_aa32_st32(tmp, addr, get_mem_index(s));
++            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+             break;
+         case 1: /* strh */
+-            gen_aa32_st16(tmp, addr, get_mem_index(s));
++            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+             break;
+         case 2: /* strb */
+-            gen_aa32_st8(tmp, addr, get_mem_index(s));
++            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+             break;
+         case 3: /* ldrsb */
+-            gen_aa32_ld8s(tmp, addr, get_mem_index(s));
++            gen_aa32_ld8s(s, tmp, addr, get_mem_index(s));
+             break;
+         case 4: /* ldr */
+-            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+             break;
+         case 5: /* ldrh */
+-            gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+             break;
+         case 6: /* ldrb */
+-            gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+             break;
+         case 7: /* ldrsh */
+-            gen_aa32_ld16s(tmp, addr, get_mem_index(s));
++            gen_aa32_ld16s(s, tmp, addr, get_mem_index(s));
+             break;
+         }
+         if (op >= 3) { /* load */
+@@ -10810,12 +10824,12 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+         if (insn & (1 << 11)) {
+             /* load */
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+             store_reg(s, rd, tmp);
+         } else {
+             /* store */
+             tmp = load_reg(s, rd);
+-            gen_aa32_st32(tmp, addr, get_mem_index(s));
++            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+             tcg_temp_free_i32(tmp);
+         }
+         tcg_temp_free_i32(addr);
+@@ -10832,12 +10846,12 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+         if (insn & (1 << 11)) {
+             /* load */
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld8u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld8u(s, tmp, addr, get_mem_index(s));
+             store_reg(s, rd, tmp);
+         } else {
+             /* store */
+             tmp = load_reg(s, rd);
+-            gen_aa32_st8(tmp, addr, get_mem_index(s));
++            gen_aa32_st8(s, tmp, addr, get_mem_index(s));
+             tcg_temp_free_i32(tmp);
+         }
+         tcg_temp_free_i32(addr);
+@@ -10854,12 +10868,12 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+         if (insn & (1 << 11)) {
+             /* load */
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld16u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld16u(s, tmp, addr, get_mem_index(s));
+             store_reg(s, rd, tmp);
+         } else {
+             /* store */
+             tmp = load_reg(s, rd);
+-            gen_aa32_st16(tmp, addr, get_mem_index(s));
++            gen_aa32_st16(s, tmp, addr, get_mem_index(s));
+             tcg_temp_free_i32(tmp);
+         }
+         tcg_temp_free_i32(addr);
+@@ -10875,12 +10889,12 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+         if (insn & (1 << 11)) {
+             /* load */
+             tmp = tcg_temp_new_i32();
+-            gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+             store_reg(s, rd, tmp);
+         } else {
+             /* store */
+             tmp = load_reg(s, rd);
+-            gen_aa32_st32(tmp, addr, get_mem_index(s));
++            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+             tcg_temp_free_i32(tmp);
+         }
+         tcg_temp_free_i32(addr);
+@@ -10948,12 +10962,12 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                     if (insn & (1 << 11)) {
+                         /* pop */
+                         tmp = tcg_temp_new_i32();
+-                        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                        gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                         store_reg(s, i, tmp);
+                     } else {
+                         /* push */
+                         tmp = load_reg(s, i);
+-                        gen_aa32_st32(tmp, addr, get_mem_index(s));
++                        gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                         tcg_temp_free_i32(tmp);
+                     }
+                     /* advance to the next address.  */
+@@ -10965,13 +10979,13 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                 if (insn & (1 << 11)) {
+                     /* pop pc */
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     /* don't set the pc until the rest of the instruction
+                        has completed */
+                 } else {
+                     /* push lr */
+                     tmp = load_reg(s, 14);
+-                    gen_aa32_st32(tmp, addr, get_mem_index(s));
++                    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                     tcg_temp_free_i32(tmp);
+                 }
+                 tcg_gen_addi_i32(addr, addr, 4);
+@@ -11101,7 +11115,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                 if (insn & (1 << 11)) {
+                     /* load */
+                     tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(tmp, addr, get_mem_index(s));
++                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+                     if (i == rn) {
+                         loaded_var = tmp;
+                     } else {
+@@ -11110,7 +11124,7 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+                 } else {
+                     /* store */
+                     tmp = load_reg(s, i);
+-                    gen_aa32_st32(tmp, addr, get_mem_index(s));
++                    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+                     tcg_temp_free_i32(tmp);
+                 }
+                 /* advance to the next address */
 -- 
-2.5.0
+1.9.1
 

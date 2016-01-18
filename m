@@ -1,94 +1,165 @@
-Received: by 10.25.159.19 with SMTP id i19csp1229596lfe;
-        Mon, 25 Jan 2016 04:58:01 -0800 (PST)
-X-Received: by 10.31.54.12 with SMTP id d12mr10710166vka.34.1453726681587;
-        Mon, 25 Jan 2016 04:58:01 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x22e.google.com (mail-vk0-x22e.google.com. [2607:f8b0:400c:c05::22e])
-        by mx.google.com with ESMTPS id h82si17912962vkf.200.2016.01.25.04.58.01
+Received: by 10.25.159.19 with SMTP id i19csp1973645lfe;
+        Mon, 18 Jan 2016 07:16:49 -0800 (PST)
+X-Received: by 10.28.0.132 with SMTP id 126mr14706746wma.67.1453130209900;
+        Mon, 18 Jan 2016 07:16:49 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
+        by mx.google.com with ESMTPS id r124si25848396wmd.119.2016.01.18.07.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Jan 2016 04:58:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) client-ip=2607:f8b0:400c:c05::22e;
+        Mon, 18 Jan 2016 07:16:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22e as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-vk0-x22e.google.com with SMTP id n1so72987490vkb.3
-        for <alex.bennee@linaro.org>; Mon, 25 Jan 2016 04:58:01 -0800 (PST)
+Received: by mail-wm0-x233.google.com with SMTP id b14so127936633wmb.1
+        for <alex.bennee@linaro.org>; Mon, 18 Jan 2016 07:16:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=EqkrplzXYUSHCHs1sENeVufAzr7Sq+IuxCWD2Vo/TF8=;
-        b=VuEtoKwWy5S8mbIhKmAqfd9fnsOwTyqZtmKtnMOD8aJ8A3ARbi4Fj1CIm7YJlF37Rh
-         mjIkdXdKSyVmxEtGZbKk/zDv9N2rNeP5fvQWX07F7aObLZDYp5EmDLw1hSYAhbKOogeb
-         qCDn2CPSnkkWnvr1J/7Kx/+T9DV246SsUSYC0=
+        h=from:to:cc:subject:date:message-id:mime-version:content-type
+         :content-transfer-encoding;
+        bh=jE00I/4PssS0+A3OF3PlTpkQtvxoquluiGJCCOZjcRo=;
+        b=WPPFvlc6vzKtYVJWU9zNxlycqYZsh+f8zpF3Bxq29026S+pItqouH/a7toM+5kmbPp
+         wBFpSH3h10uFUUzdQ1yLpGs+bLPRvkNeArSO7mxD4Ul+ZndnfM0FULiVZCnSZXZAc38T
+         +shucuO30Hh16mapfS7t7TaGZYb+WA8GAmBpI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type;
-        bh=EqkrplzXYUSHCHs1sENeVufAzr7Sq+IuxCWD2Vo/TF8=;
-        b=ikEB6zb1ibSyAI+kIuSQSHvTmvCcglCjZwkQTtEiSOXLt8Wg54oNHOp62dwYWNVh7I
-         mK5yKh6nU8rLfgBZCwIWMSK8wbvUljO2p7VytIyORKc0X3W7vVXE+A52G/7zUmvvmAyU
-         ygjA5NgX2WCTqHaU2CyL04FqnqpRtdBUOeeyGapsxjvFUw4fUK1Yrca4I9PSdl9Aiv5k
-         Yl5C39ePJKGqLs0xfWuxAyiFyijkY4Mn6ARv45f4NprzcNZ42hxr2KhyFz1xTNz8Redl
-         msJnNfPCtcTYFfMnO07F6IzXzuH3XMfGYFPiBemC4vScWrIIdz1Gqmz4fDwEgh607bLr
-         XXlg==
-X-Gm-Message-State: AG10YOQpYACOcCT7LlzLT4jZL/kaXOawCDlNEig+ZwtqMOJBy1tK2pPavDbcUb3bWhWPL3GMukvz2/wlDQIb6rFeEmc=
-X-Received: by 10.31.131.199 with SMTP id f190mr3660092vkd.90.1453726681322;
- Mon, 25 Jan 2016 04:58:01 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-type:content-transfer-encoding;
+        bh=jE00I/4PssS0+A3OF3PlTpkQtvxoquluiGJCCOZjcRo=;
+        b=UAEJpSbuMuG0hngOfYkCPu9VGSQ9vJn5C0StHnloemDlbtvCjs3tD55HMVM8urZfQC
+         TNP4kMf19+SCe7b+N+xfQDn9f/eYt8DHD87vKz01L2mTDlrl9viLAKVkvo6pPRuMJpN2
+         W261+nAceHI7t87Me+pSL5sRaz/aJ4w5LObGML3EE+ptLn1FL/5iLosQbo/6uI6q9E+Z
+         LacCFsMgXWCJNJkL1KdfqS7BzUAlnnFp5QocHR7abraGVsx1xpELRb4y+c1XP1gpS3vf
+         B/JL6LnZI5z6iGbT9WoBUOxeNYNgGdwgzCsBP6M2mdxIbVbcaM1K5jAcluiBY73wxJ33
+         JpeQ==
+X-Gm-Message-State: AG10YOSnc7tzOyUCZzc6ihzpMImgoDc6PtVwdxfqti+w1NEHLUU6+UMlnrL4Oe+fohGULra4dRs=
+X-Received: by 10.28.64.137 with SMTP id n131mr13206514wma.96.1453130209667;
+        Mon, 18 Jan 2016 07:16:49 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from new-host-9.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.gmail.com with ESMTPSA id o7sm24230067wjf.45.2016.01.18.07.16.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Mon, 18 Jan 2016 07:16:48 -0800 (PST)
+From: Eric Auger <eric.auger@linaro.org>
+To: eric.auger@st.com,
+	eric.auger@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	david@gibson.dropbear.id.au,
+	alex.williamson@redhat.com
+Cc: alex.bennee@linaro.org,
+	thuth@redhat.com,
+	crosthwaitepeter@gmail.com,
+	patches@linaro.org,
+	christoffer.dall@linaro.org,
+	pbonzini@redhat.com,
+	b.reynal@virtualopensystems.com,
+	suravee.suthikulpanit@amd.com,
+	thomas.lendacky@amd.com
+Subject: [PATCH v5 0/8] AMD XGBE KVM platform passthrough
+Date: Mon, 18 Jan 2016 15:16:36 +0000
+Message-Id: <1453130204-655-1-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Mon, 25 Jan 2016 04:57:41 -0800 (PST)
-In-Reply-To: <1453456243-19879-4-git-send-email-edgar.iglesias@gmail.com>
-References: <1453456243-19879-1-git-send-email-edgar.iglesias@gmail.com> <1453456243-19879-4-git-send-email-edgar.iglesias@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Jan 2016 12:57:41 +0000
-Message-ID: <CAFEAcA_XE9vDZ-uu6WezP7-aFr2n8DJPMf3eV2AVCjzy-pYvFg@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] target-arm: Implement the S2 MMU inputsize > pamax check
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Edgar Iglesias <edgar.iglesias@xilinx.com>
 Content-Type: text/plain; charset=UTF-8
-X-TUID: 3V6H5n6D6Xpu
+Content-Transfer-Encoding: 8bit
+X-TUID: LuHu03VoKmvq
 
-On 22 January 2016 at 09:50, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Implement the inputsize > pamax check for Stage 2 translations.
-> We have multiple choices for how to respond to errors and
-> choose to fault.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  target-arm/helper.c | 16 ++++++++++++----
->  1 file changed, 12 insertions(+), 4 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 2a6fa94..8901762 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -6809,7 +6809,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->           */
->          int startlevel = extract32(tcr->raw_tcr, 6, 2);
->          unsigned int pamax = arm_pamax(cpu);
-> -        bool ok;
-> +        bool ok = true;
->
->          if (va_size == 32 || stride == 9) {
->              /* AArch32 or 4KB pages */
-> @@ -6819,9 +6819,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->              level = 3 - startlevel;
->          }
->
-> -        /* Check that the starting level is valid. */
-> -        ok = check_s2_startlevel(cpu, va_size == 64, level,
-> -                                 inputsize, stride, pamax);
-> +        if (va_size == 64 &&
-> +            inputsize > pamax &&
-> +            (arm_el_is_aa64(env, 1) || inputsize > 40)) {
-> +            /* We have multiple choices but choose to fault.  */
+This series allows to set up AMD XGBE passthrough. This was tested on AMD
+Seattle.
 
-Can we say specifically "This is CONSTRAINED UNPREDICTABLE and
-we choose...", please?
+The first upstreamed device supporting KVM platform passthrough was the
+Calxeda Midway XGMAC. Compared to this latter, the XGBE XGMAC exposes a
+much more complex device tree node.
 
-thanks
--- PMM
+- First There are 2 device tree node formats:
+one where XGBE and PHY are described in separate nodes and another one
+that combines both description in a single node (only supported by 4.2
+onwards kernels). Only the combined description is supported for passthrough,
+meaning the host must be >= 4.2 and must feature a device tree with a combined
+description. The guest will also be exposed with a combined description,
+meaning only >= 4.2 guest are supported. It is not planned to support
+separate node representation since assignment of the PHY is less
+straigtforward.
+
+- the XGMAC/PHY node depends on 2 clock nodes (DMA and PTP).
+The code checks those clocks are fixed to make sure they cannot be
+switched off at some point after the native driver gets unbound.
+
+- there are many property values to populate on guest side. Most of them
+cannot be hardcoded. That series implements host device tree blob extraction
+from the host /proc/device-tree (inspired from dtc implementation)
+and retrieve host property values to populate guest dtb.
+
+- the case where the host uses ACPI is not yet covered since there is
+  no usable ACPI description for this HW yet.
+
+The patches can be found at
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v5
+
+Previous versions can be found at
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v<n>
+
+HISTORY:
+
+v4 -> v5:
+- add Peter's R-b on qemu_fdt_getprop patches + remove comment on
+  error_fatal
+- renamed inherit_properties* into copied_properties
+- qemu_fdt_node_path now returns a char **: it supports the case where
+  several nodes match the name/compat
+- add_amd_xgbe_fdt_node now checks a single node is found
+
+v3 -> v4:
+- explicitly return 0 in node creation functions
+
+v2 -> v3:
+- added "device_tree: qemu_fdt_getprop_cell converted to use the error API"
+
+v1 -> v2:
+- take into account Peter's comments:
+  - add CONFIG_LINUX protection
+  - improve error handling and messages
+  - no fixed size buffer anymore
+  - fix read_fstree error handling
+- use /proc/device-tree symlink instead of /sys/firmware/devicetree/base
+- added hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
+- see individual commits for full details
+
+RFC -> v1:
+- no dependency anymore on dtc binary: load_device_tree_from_sysfs is
+  self-contained and implements something similar to dtc read_fstree.
+- take into account Alex' comments
+- remove qemu_fdt_getprop_optional and use error API instead
+
+Best Regards
+
+Eric
+
+
+Eric Auger (8):
+  hw/vfio/platform: amd-xgbe device
+  device_tree: introduce load_device_tree_from_sysfs
+  device_tree: introduce qemu_fdt_node_path
+  device_tree: qemu_fdt_getprop converted to use the error API
+  device_tree: qemu_fdt_getprop_cell converted to use the error API
+  hw/arm/sysbus-fdt: helpers for clock node generation
+  hw/arm/sysbus-fdt: enable amd-xgbe dynamic instantiation
+  hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
+
+ device_tree.c                   | 177 ++++++++++++++++++++--
+ hw/arm/boot.c                   |   6 +-
+ hw/arm/sysbus-fdt.c             | 320 ++++++++++++++++++++++++++++++++++++++--
+ hw/arm/vexpress.c               |   6 +-
+ hw/vfio/Makefile.objs           |   1 +
+ hw/vfio/amd-xgbe.c              |  55 +++++++
+ include/hw/vfio/vfio-amd-xgbe.h |  51 +++++++
+ include/sysemu/device_tree.h    |  44 +++++-
+ 8 files changed, 631 insertions(+), 29 deletions(-)
+ create mode 100644 hw/vfio/amd-xgbe.c
+ create mode 100644 include/hw/vfio/vfio-amd-xgbe.h
+
+-- 
+1.9.1

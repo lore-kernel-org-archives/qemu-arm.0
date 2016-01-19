@@ -1,105 +1,99 @@
-Received: by 10.25.159.19 with SMTP id i19csp2607836lfe;
-        Tue, 19 Jan 2016 08:56:36 -0800 (PST)
-X-Received: by 10.202.173.9 with SMTP id w9mr23079357oie.79.1453222595967;
-        Tue, 19 Jan 2016 08:56:35 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-ob0-x243.google.com (mail-ob0-x243.google.com. [2607:f8b0:4003:c01::243])
-        by mx.google.com with ESMTPS id d7si896263oby.86.2016.01.19.08.56.35
+Received: by 10.25.159.19 with SMTP id i19csp2608666lfe;
+        Tue, 19 Jan 2016 08:58:20 -0800 (PST)
+X-Received: by 10.31.141.10 with SMTP id p10mr21571073vkd.93.1453222699945;
+        Tue, 19 Jan 2016 08:58:19 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x231.google.com (mail-vk0-x231.google.com. [2607:f8b0:400c:c05::231])
+        by mx.google.com with ESMTPS id s131si29882197vke.181.2016.01.19.08.58.19
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Jan 2016 08:56:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::243 as permitted sender) client-ip=2607:f8b0:4003:c01::243;
+        Tue, 19 Jan 2016 08:58:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::231 as permitted sender) client-ip=2607:f8b0:400c:c05::231;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::243 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-ob0-x243.google.com with SMTP id oj9so18692980obc.0;
-        Tue, 19 Jan 2016 08:56:35 -0800 (PST)
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::231 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x231.google.com with SMTP id e64so15509296vkg.0
+        for <alex.bennee@linaro.org>; Tue, 19 Jan 2016 08:58:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=KKGArgyPQlUpF0LNZj5vfnrhZFNknWsWPYOJ7qoprDY=;
-        b=ouG6UTbEn82AVCgF/xXhj//MaC8Vdk2Ahec0c0sxwcbEthyU+B4tTU3Fe4dkpCVggg
-         MqY/toAsv+Fyl/ZCMy+HlpS7dQvRb3a6r9PTR/ZFCPWk26es6CZWkPvki3oJPedfUjEo
-         sG55F3Qpt9jbkgCbkiKhd90uAoj8TguSMQ6peeRL51AkZ4BxCZAaT6DD4cGKdxLH0jET
-         tHHs5hg7O5cd4rdv261euK4vOnCZUWTSbe0fgu1n+E1NyTEG4SXe7vPmUp3X0UFDW77n
-         P0dHRcDImPWLlINbbOagBlgBZvWN3+/ZQ26gEtW0epYvB/evcgO9I304HV6hTWYIr9YZ
-         ivpg==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-type;
+        bh=0jCd9IfyflNbq9WrFDMiSK/E/kS0JSpWVPLUochZVRE=;
+        b=DTbs52NI4TBSeXyCH0w9CMTuhNtuoXJvl6udcg/rlxCl9TWWZD/FArl3m1S9Gm+xcb
+         ZK3duPB3wsltJyZ0DsNKuUNgFnzgq4C25hKQtl1i61PhYuIsr+EALU1/tb6Ta2KDDnEL
+         RVYyADw4MgoDpfP8BkUZoCpVX6oUL/hkAqLZs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-type:content-disposition:in-reply-to
-         :user-agent;
-        bh=KKGArgyPQlUpF0LNZj5vfnrhZFNknWsWPYOJ7qoprDY=;
-        b=IP8zPJ5JsMuqQB33/wyEUBOotzunRLH+4aBmQN2qsaME0xR12shWePmxIW3y0kdKhq
-         2dIQCec5KsvtGuEGyyGBOC01imPUjzyHMSTViotKeEaZZZGTMzKdKTSx9MsOh1e4q+pv
-         56dx9aNf3tsWL36U7KZxjL79E+UtPschIekFznOoTvmWNfVa+Pftgg1Q2gZvThrbQ+93
-         tZ7YkS4eC9mQPadfgTDcpWYy8bQ3vN5AikplL3RJX3MqknI8RnsoBXd7MpvfaQruYbqM
-         uoQZvvH7uecTMKVkvKj3Z33SLG3zSJuAeZk01mQsJX1hCIVwJwTI2Ok1NNkCFxFVt8Bs
-         k4Sg==
-X-Gm-Message-State: ALoCoQl8zKiZ93vXcXXINpu+CKrd35et5JNBIXz0HnmGQlZ/wBiFyxSMGzyW4ohahqZrNgQHSZO+SlLe6kx62ebpDUOcmYLgDw==
-X-Received: by 10.182.28.162 with SMTP id c2mr24136193obh.76.1453222595613;
-        Tue, 19 Jan 2016 08:56:35 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id sd7sm15481593oec.13.2016.01.19.08.56.34
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jan 2016 08:56:35 -0800 (PST)
-Date: Tue, 19 Jan 2016 17:56:31 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, patches@linaro.org, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 8/8] target-arm: ignore ELR_ELx[1] for exception return
- to 32-bit ARM mode
-Message-ID: <20160119165631.GR29396@toto>
-References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-9-git-send-email-peter.maydell@linaro.org>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type;
+        bh=0jCd9IfyflNbq9WrFDMiSK/E/kS0JSpWVPLUochZVRE=;
+        b=Co9HfLDeYz7MG+OHXWCq1f6aZXII5OatrhglWGhZBiAydCYoch3eorxxtoamCGZ+WB
+         w2M28yXTc7zav//3VsXO9vt09f9P+z19tvI7NXtyDCwPUWCMyCGx2TSRMlt54DE0onyz
+         RcI2+wxEgxHi0lb4XisdAckqZmpoalBYHuyzryXOEayKN42ROh9QFhOWpZVfIKRi4cgu
+         9OTic2LErQVbnaoCi24B5fcQvimyrU8+yxjYAvitK1EayrvKoTWZJ1KzLKHZ84yQ3v4F
+         0oZmLl5b437ow1OhkZyqjBEmkWJrKKtPr2veU2lZ2gl0Zqqj5iNRZqzsKuS6VhCbcMZX
+         h6dQ==
+X-Gm-Message-State: ALoCoQlfLGAoQ/cnJZ2bfxv7keucXkFD848LQ/+kiQRikC63lFbuBA5lk6K8iUX7RSDXyQBvXSe1NGwJ/c8jhckllKqFhC93toSUcun0BXdgsgasDa64VGE=
+X-Received: by 10.31.180.145 with SMTP id d139mr18590056vkf.83.1453222699690;
+ Tue, 19 Jan 2016 08:58:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1452796451-2946-9-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: skjAh+nu+V27
+Received: by 10.31.153.15 with HTTP; Tue, 19 Jan 2016 08:58:00 -0800 (PST)
+In-Reply-To: <20160119165331.GQ29396@toto>
+References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
+ <1452796451-2946-8-git-send-email-peter.maydell@linaro.org> <20160119165331.GQ29396@toto>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Jan 2016 16:58:00 +0000
+Message-ID: <CAFEAcA_zdZAGuP_unX+b_3F6gzA4ttM1X+c-zcxOfCYPPArNfw@mail.gmail.com>
+Subject: Re: [PATCH 7/8] target-arm: Implement remaining illegal return event checks
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-TUID: XWS67Fty5qD/
 
-On Thu, Jan 14, 2016 at 06:34:11PM +0000, Peter Maydell wrote:
-> The architecture requires that for an exception return to AArch32 the
-> low bits of ELR_ELx are ignored when the PC is set from them:
->  * if returning to Thumb mode, ignore ELR_ELx[0]
->  * if returning to ARM mode, ignore ELR_ELx[1:0]
-> 
-> We were only squashing bit 0; also squash bit 1 if the SPSR T bit
-> indicates this is a return to ARM code.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 19 January 2016 at 16:53, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> On Thu, Jan 14, 2016 at 06:34:10PM +0000, Peter Maydell wrote:
+>> We already implement almost all the checks for the illegal
+>> return events from AArch64 state described in the ARM ARM section
+>> D1.11.2. Add the two missing ones:
+>>  * return to EL2 when EL3 is implemented and SCR_EL3.NS is 0
+>>  * return to Non-secure EL1 when EL2 is implemented and HCR_EL2.TGE is 1
+>>
+>> (We don't implement external debug, so the case of "debug state exit
+>> from EL0 using AArch64 state to EL0 using AArch32 state" doesn't apply
+>> for QEMU.)
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  target-arm/op_helper.c | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>
+>> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+>> index 38d46d8..5789ccb 100644
+>> --- a/target-arm/op_helper.c
+>> +++ b/target-arm/op_helper.c
+>> @@ -718,6 +718,17 @@ void HELPER(exception_return)(CPUARMState *env)
+>>          goto illegal_return;
+>>      }
+>>
+>> +    if (new_el == 2 && arm_is_secure_below_el3(env)) {
+>> +        /* Return to the non-existent secure-EL2 */
+>> +        goto illegal_return;
+>> +    }
+>> +
+>> +    if (new_el == 1 &&
+>> +        arm_feature(env, ARM_FEATURE_EL2) && (env->cp15.hcr_el2 & HCR_TGE)
+>
+> I'm not sure you need to check for EL2 as hcr_el2.tge cannot be reached/set otherwise.
 
+Mmm. I think we have existing code that takes both approaches here
+but mostly we're going for the "no explicit EL2 feature check".
+I'll take that bit of the condition out (but won't bother resending
+the patchset unless there's something else that needs fixing).
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Anyway:
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-
-
-> ---
->  target-arm/op_helper.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-> index 5789ccb..171d6b8 100644
-> --- a/target-arm/op_helper.c
-> +++ b/target-arm/op_helper.c
-> @@ -738,7 +738,11 @@ void HELPER(exception_return)(CPUARMState *env)
->          }
->          aarch64_sync_64_to_32(env);
->  
-> -        env->regs[15] = env->elr_el[cur_el] & ~0x1;
-> +        if (spsr & CPSR_T) {
-> +            env->regs[15] = env->elr_el[cur_el] & ~0x1;
-> +        } else {
-> +            env->regs[15] = env->elr_el[cur_el] & ~0x3;
-> +        }
->      } else {
->          env->aarch64 = 1;
->          pstate_write(env, spsr);
-> -- 
-> 1.9.1
-> 
+thanks
+-- PMM

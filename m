@@ -1,129 +1,121 @@
-Received: by 10.25.159.19 with SMTP id i19csp1973877lfe;
-        Mon, 18 Jan 2016 07:17:14 -0800 (PST)
-X-Received: by 10.28.148.82 with SMTP id w79mr14268506wmd.71.1453130228621;
-        Mon, 18 Jan 2016 07:17:08 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
-        by mx.google.com with ESMTPS id e4si24820665wjy.109.2016.01.18.07.17.08
-        for <alex.bennee@linaro.org>
+Received: by 10.25.159.19 with SMTP id i19csp2599401lfe;
+        Tue, 19 Jan 2016 08:40:26 -0800 (PST)
+X-Received: by 10.202.55.86 with SMTP id e83mr22901027oia.46.1453221626406;
+        Tue, 19 Jan 2016 08:40:26 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-ob0-x244.google.com (mail-ob0-x244.google.com. [2607:f8b0:4003:c01::244])
+        by mx.google.com with ESMTPS id h6si1085677obr.97.2016.01.19.08.40.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Jan 2016 07:17:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
+        Tue, 19 Jan 2016 08:40:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::244 as permitted sender) client-ip=2607:f8b0:4003:c01::244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
-       dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x235.google.com with SMTP id l65so103558175wmf.1
-        for <alex.bennee@linaro.org>; Mon, 18 Jan 2016 07:17:08 -0800 (PST)
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::244 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x244.google.com with SMTP id x5so10715735obg.1;
+        Tue, 19 Jan 2016 08:40:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=w9i4gntVlpd3EjrhcBJCq1U5vmvCvufW/z/D1o6yY/g=;
-        b=AGlxjRpoH9F4HBpIx+AuqSnVg3+4G1NsQWSx7eh6egTwfJfh9OXB//xwwV2b8aCgN/
-         ZrgX1/7Lg2t1l9ilVFjX4FNStGD85yoo/NV0e7KFBeqUvMG7XDURSh7DLuTlRZB5TQ/5
-         /byImCTP5kZQyVIMkBmCfFHDzSV87aZWZbG/Q=
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=/kc1Jj6pdmNZp7sXhpQVCAvFYqziZxD41Uuc8EkosqU=;
+        b=aJ8Wi6tF1Agh3Y6U0vdKP+yDluSr02JQha7mLa/7uPpecC8kgwmn0QRDAQR7sRcOp1
+         SMbC34PkbGxLkdMbP5OlN5kguKQ2iHmksKgQL4ZNGh4dMM9C8y66CPx4O4RxLl6GUGUY
+         Nc3i92XNgdbh4xAJmRW/fyyXA3oFuH9LHrVZftfnLOp8IAqoAXacmqqMAKK/SIAkoH/7
+         yLexxKDF2/njuuFG2LkmlS9P6i7AD1372d5B2nE7yDJnG3F8cQwDHCryNNj0HDMwv6h3
+         i2GFi2miYUl4NMbeLPG/13g6apBqFTa+PGcByNU4bVCypBI4Nm8K7ZnMey6VzFkIvThG
+         ZvKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=w9i4gntVlpd3EjrhcBJCq1U5vmvCvufW/z/D1o6yY/g=;
-        b=IO9usxhHhR7Gbj1/+vLRk7hOLqTkE+HbuZnU5ZOo9QXoU45GCV97OCnWtWaYMcaHyC
-         lSvwhRF9nxjZsgzqdyDsIBBe+wdM05zv+T/1op/w8ch0qgkij/UawLJW+IaNV5tOiyCL
-         8JopWR1VTpLvKOD+s80AEvMAbBXAGnKx9wBdIefHdRV2YaPIyZHCtmnm+/VbxUip8+g0
-         i3u+SP8/47zTI1GpiRPGkjetWpkftVx+VnZI9nUQsNvZL/LJowG6SJ6SkDtElzc+33xQ
-         yzqE6HfvTA03ai0uH5zwGqCd+WaOE4moddWVPHEzTPh0THQzV3pQJwJahQeM1P8U7vEm
-         XChg==
-X-Gm-Message-State: AG10YOTgCeamZy6QtS69IkcTIJA106yRlbiWVKY/eF0ky9S6jbZkJHppvl+wZoGLQdvsAV0LW+w=
-X-Received: by 10.28.186.87 with SMTP id k84mr13546237wmf.13.1453130228426;
-        Mon, 18 Jan 2016 07:17:08 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from new-host-9.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.gmail.com with ESMTPSA id o7sm24230067wjf.45.2016.01.18.07.17.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 18 Jan 2016 07:17:06 -0800 (PST)
-From: Eric Auger <eric.auger@linaro.org>
-To: eric.auger@st.com,
-	eric.auger@linaro.org,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	david@gibson.dropbear.id.au,
-	alex.williamson@redhat.com
-Cc: alex.bennee@linaro.org,
-	thuth@redhat.com,
-	crosthwaitepeter@gmail.com,
-	patches@linaro.org,
-	christoffer.dall@linaro.org,
-	pbonzini@redhat.com,
-	b.reynal@virtualopensystems.com,
-	suravee.suthikulpanit@amd.com,
-	thomas.lendacky@amd.com
-Subject: [PATCH v5 8/8] hw/arm/sysbus-fdt: remove qemu_fdt_setprop returned value check
-Date: Mon, 18 Jan 2016 15:16:44 +0000
-Message-Id: <1453130204-655-9-git-send-email-eric.auger@linaro.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1453130204-655-1-git-send-email-eric.auger@linaro.org>
-References: <1453130204-655-1-git-send-email-eric.auger@linaro.org>
-X-TUID: PHt0ckcTYpX2
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=/kc1Jj6pdmNZp7sXhpQVCAvFYqziZxD41Uuc8EkosqU=;
+        b=IvEw54vDpCK0xlDYsL+QxkTf7HSN1nm8dY08DS52d+ZwMFZ2c68h2dGDoh0mkEjJDR
+         THXzIxebPwYZKw72zcCUIuQellASvKCpQgUBYBYlq26ZuRWwdzedTHWRn5+vwgFADFoF
+         KgcvNGUjzpHdl8Yud1AwY2vEzN4W1gpEZenCse57R8Vbp7RaMLgOTQN2sblsDq+QaQLY
+         D6UFuLvsR9gbg5Iot9BGATw/5XUDxUTZUqO/FkU7X7nbL25Qk2HbmSUtbZxmAuglhYJQ
+         njApFuMbkMepzSxtrfTxrqoNcVkwJFwGk4nEDjCoBpx1HM/1HWXw3S3SzFklIR5aV6c5
+         IFzQ==
+X-Gm-Message-State: ALoCoQnwwa3+cuZupSFlMQshnutVrOdmQpc1f/6vxenhprJjKFNpkUgOQBdRKdxcPFNfkFaKedWc/nuBrf7UoCLAxJX4ArcIcA==
+X-Received: by 10.60.15.197 with SMTP id z5mr24113198oec.57.1453221626100;
+        Tue, 19 Jan 2016 08:40:26 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id l3sm15589054oeq.0.2016.01.19.08.40.19
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Tue, 19 Jan 2016 08:40:24 -0800 (PST)
+Date: Tue, 19 Jan 2016 17:40:16 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, patches@linaro.org, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH 5/8] target-arm: Fix wrong AArch64 entry offset for
+ EL2/EL3 target
+Message-ID: <20160119164016.GO29396@toto>
+References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
+ <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-TUID: vy6CeUjRlJUy
 
-qemu_fdt_setprop self-asserts in case of error hence no need to check
-the returned value.
+On Thu, Jan 14, 2016 at 06:34:08PM +0000, Peter Maydell wrote:
+> The entry offset when taking an exception to AArch64 from a lower
+> exception level may be 0x400 or 0x600. 0x400 is used if the
+> implemented exception level immediately lower than the target level
+> is using AArch64, and 0x600 if it is using AArch32. We were
+> incorrectly implementing this as checking the exception level
+> that the exception was taken from. (The two can be different if
+> for example we take an exception from EL0 to AArch64 EL3; we should
+> in this case be checking EL2 if EL2 is implemented, and EL1 if
+> EL2 is not implemented.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Eric Auger <eric.auger@linaro.org>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
----
 
-v3 -> v4: fix returned value
----
- hw/arm/sysbus-fdt.c | 19 +++++--------------
- 1 file changed, 5 insertions(+), 14 deletions(-)
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index bf6ec24..d179214 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -216,7 +216,7 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-     PlatformBusDevice *pbus = data->pbus;
-     void *fdt = data->fdt;
-     const char *parent_node = data->pbus_node_name;
--    int compat_str_len, i, ret = -1;
-+    int compat_str_len, i;
-     char *nodename;
-     uint32_t *irq_attr, *reg_attr;
-     uint64_t mmio_base, irq_number;
-@@ -241,12 +241,8 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-         reg_attr[2 * i + 1] = cpu_to_be32(
-                                 memory_region_size(&vdev->regions[i]->mem));
-     }
--    ret = qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
--                           vbasedev->num_regions * 2 * sizeof(uint32_t));
--    if (ret) {
--        error_report("could not set reg property of node %s", nodename);
--        goto fail_reg;
--    }
-+    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
-+                     vbasedev->num_regions * 2 * sizeof(uint32_t));
- 
-     irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-     for (i = 0; i < vbasedev->num_irqs; i++) {
-@@ -256,17 +252,12 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-         irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-         irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-     }
--    ret = qemu_fdt_setprop(fdt, nodename, "interrupts",
-+    qemu_fdt_setprop(fdt, nodename, "interrupts",
-                      irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
--    if (ret) {
--        error_report("could not set interrupts property of node %s",
--                     nodename);
--    }
-     g_free(irq_attr);
--fail_reg:
-     g_free(reg_attr);
-     g_free(nodename);
--    return ret;
-+    return 0;
- }
- 
- 
--- 
-1.9.1
+> ---
+>  target-arm/helper.c | 21 ++++++++++++++++++++-
+>  1 file changed, 20 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index d37c82c..196c111 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -5866,7 +5866,26 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+>      unsigned int new_mode = aarch64_pstate_mode(new_el, true);
+>  
+>      if (arm_current_el(env) < new_el) {
+> -        if (env->aarch64) {
+> +        /* Entry vector offset depends on whether the implemented EL
+> +         * immediately lower than the target level is using AArch32 or AArch64
+> +         */
+> +        bool is_aa64;
+> +
+> +        switch (new_el) {
+> +        case 3:
+> +            is_aa64 = (env->cp15.scr_el3 & SCR_RW) != 0;
+> +            break;
+> +        case 2:
+> +            is_aa64 = (env->cp15.hcr_el2 & HCR_RW) != 0;
+> +            break;
+> +        case 1:
+> +            is_aa64 = is_a64(env);
+> +            break;
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+> +
+> +        if (is_aa64) {
+>              addr += 0x400;
+>          } else {
+>              addr += 0x600;
+> -- 
+> 1.9.1
+> 

@@ -1,137 +1,156 @@
-Received: by 10.25.159.19 with SMTP id i19csp3244415lfe;
-        Wed, 20 Jan 2016 09:23:31 -0800 (PST)
-X-Received: by 10.140.129.203 with SMTP id 194mr49575360qhb.57.1453310611152;
-        Wed, 20 Jan 2016 09:23:31 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp3259202lfe;
+        Wed, 20 Jan 2016 09:54:06 -0800 (PST)
+X-Received: by 10.55.78.198 with SMTP id c189mr47271299qkb.95.1453312446692;
+        Wed, 20 Jan 2016 09:54:06 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v13si44718933qka.57.2016.01.20.09.23.30
+        by mx.google.com with ESMTPS id u144si44850212qka.104.2016.01.20.09.54.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Jan 2016 09:23:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 20 Jan 2016 09:54:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44282 helo=lists.gnu.org)
+Received: from localhost ([::1]:44503 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aLwTi-00069s-KL
-	for alex.bennee@linaro.org; Wed, 20 Jan 2016 12:23:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43566)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aLwxK-00088G-9k
+	for alex.bennee@linaro.org; Wed, 20 Jan 2016 12:54:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51414)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aLwTC-0005ZH-GN
-	for qemu-devel@nongnu.org; Wed, 20 Jan 2016 12:22:59 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aLwxH-00087z-OW
+	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 12:54:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1aLwTB-0003MK-LO
-	for qemu-devel@nongnu.org; Wed, 20 Jan 2016 12:22:58 -0500
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35701)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aLwxD-0002b3-LW
+	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 12:54:03 -0500
+Received: from mail-lf0-x22f.google.com ([2a00:1450:4010:c07::22f]:34890)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1aLwT4-0003LI-8q; Wed, 20 Jan 2016 12:22:50 -0500
-Received: by mail-lf0-x241.google.com with SMTP id c134so878962lfb.2;
-	Wed, 20 Jan 2016 09:22:50 -0800 (PST)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aLwxD-0002ax-D2; Wed, 20 Jan 2016 12:53:59 -0500
+Received: by mail-lf0-x22f.google.com with SMTP id c192so10995728lfe.2;
+	Wed, 20 Jan 2016 09:53:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=bnUuehb/H3n4s6up1dh2cFJ6EjgRvbotiZ66BXnYBzQ=;
-	b=ZTvYJp26YfZ3k7lrB9CSjj1EFxbHB2vEE04iV4WJtnSxyU0yxAZzMrXqrGsq896WTg
-	vG+PeVCgdrQT2bV3C0QATzgB2LZBrxpAZXaS/8ZTs8v1Cv3qJoueFj+LlhxSHvLYWTxd
-	sr5TvTEOxBTI7uK9H8JPV95QmyE8ziZbho+M2yucdkWS/rw/neIgocE5kMrlhfGz+2hO
-	8w6biFfSepZ4/DMibDyWahAYqF2VHNCp+H7UbXIWzOx7U2qtja7SqBmC7GKCv/TStjww
-	5Xx0aXMSiqMhMr1BJGFN3Oa1rc8z0f9JfAVXisF+YnhIiuSI/of0UKHCIWAJH6wGRltr
-	12RQ==
+	bh=bwpu4NaO00BLvPYPO7jaRD8jE/wvOqP7HYQZkh9s2gg=;
+	b=ef/up3pYCiCvoMNaNxaHvpgqo6Cv/blZall52SmHqX2tVlG2SvLs7BM3fkeDLP8O60
+	B4T6+nvzTFjMzcSteadYmtnq4KIS4tSjX2XZkwkW50HY9QRvUWnsYfpGHyxK3MBeCNAF
+	yr0lA7299TLzcOqCulHOAnpFa4vGiS4c0u+U5d5adI/Ronjkyl1YGrNLCHw2VQOTK0ch
+	T/8dv8sC2boytzrS/NwLkW+c3zHe2mCjc1663xLhfjz5DNnNg1rkjXhrxVq2fOD6QChH
+	ZHDQGxEit7K1IDKAZkLiFfftZu05m0qZ4TnoFR5iAj0eFIEp7RB3670zuz4UeIBoLIAe
+	XJog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-type
 	:content-transfer-encoding;
-	bh=bnUuehb/H3n4s6up1dh2cFJ6EjgRvbotiZ66BXnYBzQ=;
-	b=ep3MZxfMc2RIZy2Fm3AMt0E4jL4bMMSn49e/F8DyPn8mzEoXb2pslFI0Qxu0qjepmm
-	evcPQL19v3EPk34cmdLb8kzBi8ZKAavS3gedp7m4MmwjIysVd8Jeg8MNaM00KWClGuRp
-	n0yPeZsW3LsXVS7P+/VzGQ9q8tI0VUHKC87+3X/f6ns7VG5JJBnm0tTREQeNzfaCpcCl
-	iV+nOmtlyvsZZUpMj7fbx2MjvItj5/4zpA07vqUTb/ZmZrZRT/RX60ncoc7Xi0cnky6e
-	oDRbq9jreUTPGmsHEkI3kzG2cCicYXT1qCWtQUfqbTLbnKE3M/plTgxk7/EPaN/01KzX
-	uuJQ==
-X-Gm-Message-State: ALoCoQkhoPpxy8vGFbyIhDw+WYwhhIUC+O8n5zGf5kLs3igLli73XlfZ/jYwaDjmux2Tk0gPBXKDlm99B0SM7l1IxP1xruTsLg==
-X-Received: by 10.25.17.89 with SMTP id g86mr11220257lfi.82.1453310569537;
-	Wed, 20 Jan 2016 09:22:49 -0800 (PST)
-Received: from [192.168.1.145] (ppp46-138-151-163.pppoe.spdop.ru.
-	[46.138.151.163]) by smtp.googlemail.com with ESMTPSA id
-	n185sm4622102lfd.27.2016.01.20.09.22.48
+	bh=bwpu4NaO00BLvPYPO7jaRD8jE/wvOqP7HYQZkh9s2gg=;
+	b=C4LPgx95JY5YttdFB0S3M2Rq6IasFimyRzUFTbV3GnqmdoPAEW+Kq+SO/OmCvv1f4z
+	/ie5xsNtZ5y0OJ/sDfFzqeo6r2XkNqiSq9ocOmfMhM+CO2vbpfndl15Z1iQC6DzC4xcd
+	BCeyi012y8jivAq4Azc9I7IKPDMyyPlElpz5Slud5zkCK1Dtc3rlegmYxIaJ02te9dMY
+	jE0BM3l4r+P6ASeeRAjcTuhGsp/vc0FF5RVpvd9E8lBLGvcG9r76TYEfTzfW1S6j6hyN
+	aWOLb2SA4HJOdq8dXxj8wIL77ePoE2ywBwpGHFWqAZr/dzmEdJFPni7nqZIbO/xdi15m
+	FGPA==
+X-Gm-Message-State: ALoCoQlDUlfR+FFqt6nLG1ghGt0nnzYNvrLuSp+hJQ5o+wiRlnMVBfIlRcRDDT3PhD6SDrDdVhVBxnIasC7R1+GqofBpFdA8Bg==
+X-Received: by 10.25.158.147 with SMTP id h141mr13770320lfe.147.1453312438445; 
+	Wed, 20 Jan 2016 09:53:58 -0800 (PST)
+Received: from [192.168.0.71] (broadband-46-188-121-155.2com.net.
+	[46.188.121.155]) by smtp.googlemail.com with ESMTPSA id
+	c192sm4848019lfb.16.2016.01.20.09.53.56
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 20 Jan 2016 09:22:49 -0800 (PST)
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-References: <cover.1452359845.git.digetx@gmail.com>
-	<9bdf3e1d349c7cfc6d75cc37430fe4f177c20734.1452359845.git.digetx@gmail.com>
-	<CAPokK=qC77XBkNpHa1y_Dajd9Hv8+a-wx9iqC1dRumeKgvUvaA@mail.gmail.com>
-	<569FBDF3.2070405@gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <569FC243.6090507@gmail.com>
-Date: Wed, 20 Jan 2016 20:22:11 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <569FBDF3.2070405@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::241
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Wed, 20 Jan 2016 09:53:56 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v10 2/7] hw/ptimer: Perform tick and
- counter wrap around if timer already expired
-X-BeenThere: qemu-devel@nongnu.org
+References: <1453132414-8127-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA9CaPT11M=Jdw8zy3XMfnUbm=psgRx+qmxYzG_96bg=Bw@mail.gmail.com>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <569FC9B3.2060607@gmail.com>
+Date: Wed, 20 Jan 2016 20:53:55 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9CaPT11M=Jdw8zy3XMfnUbm=psgRx+qmxYzG_96bg=Bw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::22f
+Cc: qemu-arm <qemu-arm@nongnu.org>, Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Implement
+ FPEXC32_EL2 system register
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oqBSvN2nB6uH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: o1WzoV2NN/FY
 
-20.01.2016 20:03, Dmitry Osipenko пишет:
-> Hi Peter,
+On 18.01.2016 19:05, Peter Maydell wrote:
+> Oops, got the qemu-arm email address wrong...
 >
-> 10.01.2016 03:44, Peter Crosthwaite пишет:
->> On Sat, Jan 9, 2016 at 9:39 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> [cut]
->>> In addition, there is no reason to keep expired timer tick deferred, so
->>> just perform the tick from ptimer_get_count().
->>>
-> [cut]
->
-> I noticed an issue here... The problem is that device reset invokes
-> ptimer_stop() that invokes ptimer_get_count() that might cause the tick after
-> reset, i.e. bogus bh would be invoked after QEMU reset. I have reproduced that
-> issue.
->
-> The solution might be to introduce ptimer_reset() that would stop QEMU timer and
-> reset delta/load/period without invoking ptimer_get_count. And of course all
-> devices should be updated to use new ptimer_reset() prior to "Perform tick and
-> counter wrap around if timer already expired" patch, but that's not an issue I
-> suppose. Please let me know if you have any objections, I'm leaning to do it in
-> V11.
->
-> void ptimer_reset(ptimer_state *s)
-> {
->      timer_del(s->timer);
->      s->enabled = 0;
->      s->period_frac = 0;
->      s->period = 0;
->      s->delta = 0;
->      s->limit = 0;
-> }
+> On 18 January 2016 at 15:53, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> The AArch64 FPEXC32_EL2 system register is visible at EL2 and EL3,
+>> and allows those exception levels to read and write the FPEXC
+>> register for a lower exception level that is using AArch32.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
+
+>> ---
+>> ARM Trusted Firmware expects this to exist (as does your average
+>> hypervisor, I expect).
+>>
+>>  target-arm/helper.c | 16 ++++++++++++++++
+>>  1 file changed, 16 insertions(+)
+>>
+>> diff --git a/target-arm/helper.c b/target-arm/helper.c
+>> index 196c111..e8ede3f 100644
+>> --- a/target-arm/helper.c
+>> +++ b/target-arm/helper.c
+>> @@ -2890,6 +2890,17 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>      tlb_flush(CPU(cpu), 1);
+>>  }
+>>
+>> +static CPAccessResult fpexc32_access(CPUARMState *env, const ARMCPRegInfo *ri)
+>> +{
+>> +    if ((env->cp15.cptr_el[2] & CPTR_TFP) && arm_current_el(env) == 2) {
+>> +        return CP_ACCESS_TRAP_EL2;
+>> +    }
+>> +    if (env->cp15.cptr_el[3] & CPTR_TFP) {
+>> +        return CP_ACCESS_TRAP_EL3;
+>> +    }
+>> +    return CP_ACCESS_OK;
+>> +}
+>> +
+>>  static const ARMCPRegInfo v8_cp_reginfo[] = {
+>>      /* Minimal set of EL0-visible registers. This will need to be expanded
+>>       * significantly for system emulation of AArch64 CPUs.
+>> @@ -3150,6 +3161,11 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+>>        .opc0 = 3, .opc1 = 0, .crn = 4, .crm = 2, .opc2 = 0,
+>>        .type = ARM_CP_NO_RAW,
+>>        .access = PL1_RW, .readfn = spsel_read, .writefn = spsel_write },
+>> +    { .name = "FPEXC32_EL2", .state = ARM_CP_STATE_AA64,
+>> +      .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 3, .opc2 = 0,
+>> +      .type = ARM_CP_ALIAS,
+>> +      .fieldoffset = offsetof(CPUARMState, vfp.xregs[ARM_VFP_FPEXC]),
+>> +      .access = PL2_RW, .accessfn = fpexc32_access },
+>>      REGINFO_SENTINEL
+>>  };
+>>
+>> --
+>> 1.9.1
+>>
+> thanks
+> -- PMM
 >
 
-However, ptimer_stop() still would be broken. So maybe it's better to keep tick 
-deferred.
-
--- 
-Dmitry

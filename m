@@ -1,215 +1,172 @@
-Received: by 10.25.159.19 with SMTP id i19csp103197lfe;
-        Mon, 11 Jan 2016 11:59:14 -0800 (PST)
-X-Received: by 10.55.71.143 with SMTP id u137mr165988748qka.1.1452542354495;
-        Mon, 11 Jan 2016 11:59:14 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp3386229lfe;
+        Wed, 20 Jan 2016 14:48:40 -0800 (PST)
+X-Received: by 10.140.235.150 with SMTP id g144mr52244438qhc.11.1453330119995;
+        Wed, 20 Jan 2016 14:48:39 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si38719493qgb.59.2016.01.11.11.59.14
+        by mx.google.com with ESMTPS id 107si46173436qgx.12.2016.01.20.14.48.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jan 2016 11:59:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 20 Jan 2016 14:48:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56646 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:45355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aIicT-0007rj-RH
-	for alex.bennee@linaro.org; Mon, 11 Jan 2016 14:59:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46390)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aM1YN-00086v-Il
+	for alex.bennee@linaro.org; Wed, 20 Jan 2016 17:48:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42773)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1aIiaD-0003TR-3A
-	for qemu-devel@nongnu.org; Mon, 11 Jan 2016 14:56:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aM1YL-00086l-KE
+	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 17:48:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1aIiaB-0002wD-Uj
-	for qemu-devel@nongnu.org; Mon, 11 Jan 2016 14:56:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38422)
+	(envelope-from <peter.maydell@linaro.org>) id 1aM1YK-0001In-Lj
+	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 17:48:37 -0500
+Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:34044)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1aIia9-0002vS-4g; Mon, 11 Jan 2016 14:56:49 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id AA9BFC09FA81;
-	Mon, 11 Jan 2016 19:56:48 +0000 (UTC)
-Received: from hawk.localdomain.com (dhcp-1-158.brq.redhat.com [10.34.1.158])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u0BJuU1n012743; Mon, 11 Jan 2016 14:56:46 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 11 Jan 2016 20:56:23 +0100
-Message-Id: <1452542185-10914-7-git-send-email-drjones@redhat.com>
-In-Reply-To: <1452542185-10914-1-git-send-email-drjones@redhat.com>
-References: <1452542185-10914-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, agraf@suse.de, armbru@redhat.com,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, afaerber@suse.de, rth@twiddle.net
-Subject: [Qemu-devel] [PATCH v4 6/8] target-arm: dump-guest-memory: add
-	prfpreg notes for aarch64
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <peter.maydell@linaro.org>) id 1aM1YK-0001Ia-7C
+	for qemu-arm@nongnu.org; Wed, 20 Jan 2016 17:48:36 -0500
+Received: by mail-vk0-x22f.google.com with SMTP id e185so13564908vkb.1
+	for <qemu-arm@nongnu.org>; Wed, 20 Jan 2016 14:48:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=5WzdidkJo9WJezA/uqHprEKzenEl81q1WHmJ06GyAl0=;
+	b=B0wIFzWOu+/9oSoxgarevx95endeRVYiq84V0v9d4/pbar3Di+KKT3oo3E44hSKpHe
+	NE3SjJhql9PFyNDcIhRknabsO9UcaP0HzSpjTXxLwu+d0YUuST7DsAxMNR9M/ag7bfPA
+	5YhYPsKCel6rqC3+cQUFgtd0ekNadectRoDQc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=5WzdidkJo9WJezA/uqHprEKzenEl81q1WHmJ06GyAl0=;
+	b=Jsjmn3DHuWQTP/FEwgJoIqF/34v0712CWbqaJIwiWNehPLRXXUj9U4flURClXHfor0
+	WUY5DK9uBqCvvfAVQmh9uPL94V99kvHfiGLQRCDFdQbpBZqOOqtAgq+DfAlRzWpeRNbX
+	HT9MHMOHtfgBtWMljiy5A9/ZAccLZCh7Viy+geLkym9nQAQOxweAZMPSQ3UIoe4Gc2Og
+	p8zpALqsCYvy5cCqDbIKfPDQDKJhadGAhC+8HWNXunou2hLf7r62R0PGFuHiBEEksR+g
+	ShD7aQV+zRpTKmQLHlc7Uf3dfQiVOOeMtnoc571HjiBRUyO9djCyp+M02vsrnWltCCxA
+	dftQ==
+X-Gm-Message-State: ALoCoQkRXwnORh+skcZM7vDxhpvaxbuZ61uzPJC8Fy9WhYUYOqaqzg3+epwQeKuve6BwB4phgxODzUzhd0U6HP49ioXYuUYmzyYwDWTCOSSS5r0FKYGBELw=
+X-Received: by 10.31.194.21 with SMTP id s21mr26767067vkf.92.1453330115503;
+	Wed, 20 Jan 2016 14:48:35 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.153.15 with HTTP; Wed, 20 Jan 2016 14:48:12 -0800 (PST)
+In-Reply-To: <118acc7c92ab1eac93ad2dcb25944569f4c6ae59.1453328768.git.alistair.francis@xilinx.com>
+References: <118acc7c92ab1eac93ad2dcb25944569f4c6ae59.1453328768.git.alistair.francis@xilinx.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 20 Jan 2016 22:48:12 +0000
+Message-ID: <CAFEAcA-h=hmiZ+z2vFukaAGqKBX6qVYK4nkFDB62AjkmCgLbAQ@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22f
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Soren Brinkmann <soren.brinkmann@xilinx.com>
+Subject: Re: [Qemu-arm] [PATCH v2 1/1] arm_gic: Update ID registers based on
+	revision
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ef191IpyZPYb
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: e4D78i1J/wpZ
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-arm/arch_dump.c | 79 +++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 71 insertions(+), 8 deletions(-)
+On 20 January 2016 at 22:42, Alistair Francis
+<alistair.francis@xilinx.com> wrote:
+> Update the GIC ID registers (registers above 0xfe0) based on the GIC
+> revision instead of using the sames values for all GIC implementations.
+>
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> Tested-by: S=C3=B6ren Brinkmann <soren.brinkmann@xilinx.com>
+> ---
+> V2:
+>  - Update array indexing to match new values
+>  - Check the maximum value of offset as well
+>
+>  hw/intc/arm_gic.c | 35 ++++++++++++++++++++++++++++++-----
+>  1 file changed, 30 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 13e297d..8eb3a2d 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -31,8 +31,16 @@ do { fprintf(stderr, "arm_gic: " fmt , ## __VA_ARGS__)=
+; } while (0)
+>  #define DPRINTF(fmt, ...) do {} while(0)
+>  #endif
+>
+> -static const uint8_t gic_id[] =3D {
+> -    0x90, 0x13, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1
+> +static const uint8_t gic_id_11mpcore[] =3D {
+> +    0x00, 0x00, 0x00, 0x00, 0x90, 0x13, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0x=
+b1
+> +};
+> +
+> +static const uint8_t gic_id_gicv1[] =3D {
+> +    0x04, 0x00, 0x00, 0x00, 0x90, 0xb3, 0x1b, 0x00, 0x0d, 0xf0, 0x05, 0x=
+b1
+> +};
+> +
+> +static const uint8_t gic_id_gicv2[] =3D {
+> +    0x04, 0x00, 0x00, 0x00, 0x90, 0xb4, 0x2b, 0x00, 0x0d, 0xf0, 0x05, 0x=
+b1
+>  };
+>
+>  static inline int gic_get_current_cpu(GICState *s)
+> @@ -683,13 +691,30 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr=
+ offset, MemTxAttrs attrs)
+>          }
+>
+>          res =3D s->sgi_pending[irq][cpu];
+> -    } else if (offset < 0xfe0) {
+> +    } else if (offset < 0xfd0) {
+>          goto bad_reg;
+> -    } else /* offset >=3D 0xfe0 */ {
+> +    } else /* offset >=3D 0xfd0 */ {
+>          if (offset & 3) {
+>              res =3D 0;
+> +        } else if (offset > 0xfdf) {
+> +            goto bad_reg;
 
-diff --git a/target-arm/arch_dump.c b/target-arm/arch_dump.c
-index f7a4873787d07..d7b63a0d7ee91 100644
---- a/target-arm/arch_dump.c
-+++ b/target-arm/arch_dump.c
-@@ -45,13 +45,36 @@ struct aarch64_elf_prstatus {
- 
- QEMU_BUILD_BUG_ON(sizeof(struct aarch64_elf_prstatus) != 392);
- 
-+/* struct user_fpsimd_state from arch/arm64/include/uapi/asm/ptrace.h
-+ *
-+ * While the vregs member of user_fpsimd_state is of type __uint128_t,
-+ * QEMU uses an array of uint64_t, where the high half of the 128-bit
-+ * value is always in the 2n+1'th index. Thus we also break the 128-
-+ * bit values into two halves in this reproduction of user_fpsimd_state.
-+ */
-+struct aarch64_user_vfp_state {
-+    uint64_t vregs[64];
-+    uint32_t fpsr;
-+    uint32_t fpcr;
-+    char pad[8];
-+} QEMU_PACKED;
-+
-+QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) != 528);
-+
- struct aarch64_note {
-     Elf64_Nhdr hdr;
-     char name[8]; /* align_up(sizeof("CORE"), 4) */
--    struct aarch64_elf_prstatus prstatus;
-+    union {
-+        struct aarch64_elf_prstatus prstatus;
-+        struct aarch64_user_vfp_state vfp;
-+    };
- } QEMU_PACKED;
- 
--QEMU_BUILD_BUG_ON(sizeof(struct aarch64_note) != 412);
-+#define AARCH64_NOTE_HEADER_SIZE offsetof(struct aarch64_note, prstatus)
-+#define AARCH64_PRSTATUS_NOTE_SIZE \
-+            (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus))
-+#define AARCH64_PRFPREG_NOTE_SIZE \
-+            (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_state))
- 
- static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
-                               const char *name, Elf64_Word namesz,
-@@ -66,6 +89,42 @@ static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
-     memcpy(note->name, name, namesz);
- }
- 
-+static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
-+                                       CPUARMState *env, int cpuid,
-+                                       DumpState *s)
-+{
-+    struct aarch64_note note;
-+    int ret, i;
-+
-+    aarch64_note_init(&note, s, "CORE", 5, NT_PRFPREG, sizeof(note.vfp));
-+
-+    for (i = 0; i < 64; ++i) {
-+        note.vfp.vregs[i] = cpu_to_dump64(s, float64_val(env->vfp.regs[i]));
-+    }
-+
-+    if (s->dump_info.d_endian == ELFDATA2MSB) {
-+        /* For AArch64 we must always swap the vfp.regs's 2n and 2n+1
-+         * entries when generating BE notes, because even big endian
-+         * hosts use 2n+1 for the high half.
-+         */
-+        for (i = 0; i < 32; ++i) {
-+            uint64_t tmp = note.vfp.vregs[2*i];
-+            note.vfp.vregs[2*i] = note.vfp.vregs[2*i+1];
-+            note.vfp.vregs[2*i+1] = tmp;
-+        }
-+    }
-+
-+    note.vfp.fpsr = cpu_to_dump32(s, vfp_get_fpsr(env));
-+    note.vfp.fpcr = cpu_to_dump32(s, vfp_get_fpcr(env));
-+
-+    ret = f(&note, AARCH64_PRFPREG_NOTE_SIZE, s);
-+    if (ret < 0) {
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, void *opaque)
- {
-@@ -78,6 +137,7 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     aarch64_note_init(&note, s, "CORE", 5, NT_PRSTATUS, sizeof(note.prstatus));
- 
-     note.prstatus.pr_pid = cpu_to_dump32(s, cpuid);
-+    note.prstatus.pr_fpvalid = cpu_to_dump32(s, 1);
- 
-     if (!is_a64(env)) {
-         aarch64_sync_32_to_64(env);
-@@ -95,12 +155,12 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-     note.prstatus.pr_reg.pc = cpu_to_dump64(s, env->pc);
-     note.prstatus.pr_reg.pstate = cpu_to_dump64(s, pstate);
- 
--    ret = f(&note, sizeof(note), s);
-+    ret = f(&note, AARCH64_PRSTATUS_NOTE_SIZE, s);
-     if (ret < 0) {
-         return -1;
-     }
- 
--    return 0;
-+    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
- }
- 
- /* struct pt_regs from arch/arm/include/asm/ptrace.h */
-@@ -129,7 +189,9 @@ struct arm_note {
-     struct arm_elf_prstatus prstatus;
- } QEMU_PACKED;
- 
--QEMU_BUILD_BUG_ON(sizeof(struct arm_note) != 168);
-+#define ARM_NOTE_HEADER_SIZE offsetof(struct arm_note, prstatus)
-+#define ARM_PRSTATUS_NOTE_SIZE \
-+            (ARM_NOTE_HEADER_SIZE + sizeof(struct arm_elf_prstatus))
- 
- static void arm_note_init(struct arm_note *note, DumpState *s,
-                           const char *name, Elf32_Word namesz,
-@@ -161,7 +223,7 @@ int arm_cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cs,
-     }
-     note.prstatus.pr_reg.regs[16] = cpu_to_dump32(s, cpsr_read(env));
- 
--    ret = f(&note, sizeof(note), s);
-+    ret = f(&note, ARM_PRSTATUS_NOTE_SIZE, s);
-     if (ret < 0) {
-         return -1;
-     }
-@@ -221,9 +283,10 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
-     size_t note_size;
- 
-     if (class == ELFCLASS64) {
--        note_size = sizeof(struct aarch64_note);
-+        note_size = AARCH64_PRSTATUS_NOTE_SIZE;
-+        note_size += AARCH64_PRFPREG_NOTE_SIZE;
-     } else {
--        note_size = sizeof(struct arm_note);
-+        note_size = ARM_PRSTATUS_NOTE_SIZE;
-     }
- 
-     return note_size * nr_cpus;
--- 
-2.4.3
+Where did this condition come from? It will mean all
+the ID regs fe0 and above end up treated as bad registers
+rather than taking the code below to return the ID value.
 
+>          } else {
+> -            res =3D gic_id[(offset - 0xfe0) >> 2];
+> +            switch (s->revision) {
+> +            case REV_11MPCORE:
+> +                res =3D gic_id_11mpcore[(offset - 0xfd0) >> 2];
+> +                break;
+> +            case 1:
+> +                res =3D gic_id_gicv1[(offset - 0xfd0) >> 2];
+> +                break;
+> +            case 2:
+> +                res =3D gic_id_gicv2[(offset - 0xfd0) >> 2];
+> +                break;
+> +            case REV_NVIC:
+> +                /* Shouldn't be able to get here */
+> +                abort();
+> +            default:
+> +                res =3D 0;
+> +            }
+>          }
+>      }
+>      return res;
+> --
+> 2.5.0
+>
+
+thanks
+-- PMM

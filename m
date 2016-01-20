@@ -1,47 +1,129 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f43sm1574283wra.79.2017.09.20.02.36.54
+Received: by 10.25.159.19 with SMTP id i19csp3244669lfe;
+        Wed, 20 Jan 2016 09:24:00 -0800 (PST)
+X-Received: by 10.60.178.70 with SMTP id cw6mr7780174oec.46.1453310640402;
+        Wed, 20 Jan 2016 09:24:00 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-ob0-x242.google.com (mail-ob0-x242.google.com. [2607:f8b0:4003:c01::242])
+        by mx.google.com with ESMTPS id s126si823922oig.56.2016.01.20.09.24.00
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Sep 2017 02:36:54 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id A4F683E010A;
-	Wed, 20 Sep 2017 10:36:56 +0100 (BST)
-References: <20170915150849.23557-1-peter.maydell@linaro.org> <CAKmqyKPEtdXp2Dn2a2FuL-f_WVaRDEaY_3_=h=2kVobFm4z4QA@mail.gmail.com>
-User-agent: mu4e 0.9.19; emacs 25.3.50.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, "qemu-devel\@nongnu.org Developers" <qemu-devel@nongnu.org>, Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Remove out of date ARM ARM section references in A64 decoder
-In-reply-to: <CAKmqyKPEtdXp2Dn2a2FuL-f_WVaRDEaY_3_=h=2kVobFm4z4QA@mail.gmail.com>
-Date: Wed, 20 Sep 2017 10:36:56 +0100
-Message-ID: <87zi9pd83r.fsf@linaro.org>
+        Wed, 20 Jan 2016 09:24:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::242 as permitted sender) client-ip=2607:f8b0:4003:c01::242;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c01::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-ob0-x242.google.com with SMTP id x5so1031917obg.1;
+        Wed, 20 Jan 2016 09:24:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=oZuoWsIftds7e2JaGGU/ogGAEhUWfWNbhWsp0i8CYMA=;
+        b=M7GAF/OYjuYtL7So5DgPlHD6IIEfKnreqGet5tkHGPi/mQfZRUl4wK3hZzeF2h2t2P
+         01jFK/S0qIoh1UXLlgR8XaH3ppg6Ffuy/S5IsBTSlkeWg+IeTSOCypiRrhpb12F0K284
+         WSvdMZ8+j0tVwLCrbAncNRLqP2XoeAmaCqmNN+1lwjhyTwIhuWcYOANck+kaXkBYABnc
+         Rt8sHWSu5QxZxuT3IpXK4Kj2Kv6gfkGsvnwDP/QFwndPCTiLEk/ozr/7pBxxmkSVmK5P
+         PjXjbO9omED1OgF2PO+fYU+1aQcb1omgQ3HWVFtKkvk8WS6mxbVv4PBDYheBCXwjvdhV
+         geiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=oZuoWsIftds7e2JaGGU/ogGAEhUWfWNbhWsp0i8CYMA=;
+        b=VOwdj0gBm8fNclfwyrjWVbdsGjNFBiFKzud/OlPEZeh9T8dpNArmjjzTVIMblsRJCM
+         MEGG40XO72oAVhuXOBlIJEED26G4ck/xLWHcj13Tc/ycGu3vy93xuAuFHcjeFC1mVpfN
+         rHvgc3zVN/jfOJG3FhmM5eyvq7UNaFhryUYCrPUXuJ8OlhZ6yQ1FLa8z5frLfIk7E/tZ
+         U/2EEAlaARex6U2CgpZuybTHyaKuw6jAalNwj59N/Z9ljkwvEyRY7ZeBf8EB9cK5TnHX
+         XP2zHwmWTefj4xNkiKHeUsG1+os02GM/EuncbWkmtWRh+jMH2L3+eK6KgA96bXhQYcYD
+         Kf+Q==
+X-Gm-Message-State: ALoCoQnE1uOAn/Ine31tK17I2r7FVHdL2PWqgOcINp3RZoNScX4k5h/+26TsVnH8CPo3XuxnBk2VDH0GjmmeyOPuRyoGgooSyw==
+X-Received: by 10.182.200.162 with SMTP id jt2mr29799177obc.55.1453310640027;
+        Wed, 20 Jan 2016 09:24:00 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id kp2sm18443094obb.12.2016.01.20.09.23.58
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 20 Jan 2016 09:23:59 -0800 (PST)
+Date: Wed, 20 Jan 2016 18:23:55 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org, peter.maydell@linaro.org
+Cc: alex.bennee@linaro.org, qemu-arm@nongnu.org, edgar.iglesias@xilinx.com
+Subject: Re: [PATCH v1 3/3] target-arm: Implement the S2 MMU inputsize <
+ pamax check
+Message-ID: <20160120172355.GW29396@toto>
+References: <1453297780-12514-1-git-send-email-edgar.iglesias@gmail.com>
+ <1453297780-12514-4-git-send-email-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: bqmVxhIf3tVX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1453297780-12514-4-git-send-email-edgar.iglesias@gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-TUID: NVGpSEUnMP7j
+
+On Wed, Jan 20, 2016 at 02:49:40PM +0100, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> 
+> Implement the inputsize < pamax check for Stage 2 translations.
+> We have multiple choices for how to respond to errors and
+> choose to fault.
+> 
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>  target-arm/helper.c | 15 +++++++++++----
+>  1 file changed, 11 insertions(+), 4 deletions(-)
+> 
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 4abeb4d..e1fa209 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -6808,7 +6808,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>           */
+>          int startlevel = extract32(tcr->raw_tcr, 6, 2);
+>          unsigned int pamax = arm_pamax(cpu);
+> -        bool ok;
+> +        bool ok = true;
+>  
+>          if (va_size == 32 || stride == 9) {
+>              /* AArch32 or 4KB pages */
+> @@ -6818,9 +6818,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>              level = 3 - startlevel;
+>          }
+>  
+> -        /* Check that the starting level is valid. */
+> -        ok = check_s2_startlevel(cpu, va_size == 64, level,
+> -                                 inputsize, stride, pamax);
+> +        if (inputsize > pamax &&
+> +            (arm_el_is_aa64(env, 1) || inputsize > 40)) {
+
+I realized that this check should only be done for AArch64...
+Will fix that for v2.
+
+Something like the following:
+
+        if (arm_el_is_aa64(env, el) &&
+            inputsize > pamax &&
+            (arm_el_is_aa64(env, 1) || inputsize > 40)) {
+            /* We have multiple choices but choose to fault.  */
+            ok = false;
+        }
 
 
-Alistair Francis <alistair23@gmail.com> writes:
+Cheers,
+Edgar
 
-> On Fri, Sep 15, 2017 at 8:08 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> In the A64 decoder, we have a lot of references to section numbers
->> from version A.a of the v8A ARM ARM (DDI0487). This version of the
->> document is now long obsolete (we are currently on revision B.a),
->> and various intervening versions renumbered all the sections.
->>
->> The most recent B.a version of the document doesn't assign
->> section numbers at all to the individual instruction classes
->> in the way that the various A.x versions did. The simplest thing
->> to do is just to delete all the out of date C.x.x references.
->>
-<snip>
->>
->> -/* C3.6.2 TBL/TBX
->> +/* BL/TBX
->
-> I don't know how I noticed this, but it looks like you are missing a T.
 
-Good catch!
-
---
-Alex Bennée
+> +            /* We have multiple choices but choose to fault.  */
+> +            ok = false;
+> +        }
+> +        if (ok) {
+> +            /* Check that the starting level is valid. */
+> +            ok = check_s2_startlevel(cpu, va_size == 64, level,
+> +                                     inputsize, stride, pamax);
+> +        }
+>          if (!ok) {
+>              /* AArch64 reports these as level 0 faults.
+>               * AArch32 reports these as level 1 faults.
+> -- 
+> 1.9.1
+> 

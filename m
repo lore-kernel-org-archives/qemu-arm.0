@@ -1,84 +1,121 @@
-Received: by 10.25.159.19 with SMTP id i19csp62602lfe;
-        Fri, 22 Jan 2016 01:51:03 -0800 (PST)
-X-Received: by 10.202.224.10 with SMTP id x10mr1357102oig.48.1453456263043;
-        Fri, 22 Jan 2016 01:51:03 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp62634lfe;
+        Fri, 22 Jan 2016 01:51:07 -0800 (PST)
+X-Received: by 10.202.55.86 with SMTP id e83mr1491597oia.46.1453456267331;
+        Fri, 22 Jan 2016 01:51:07 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-oi0-x243.google.com (mail-oi0-x243.google.com. [2607:f8b0:4003:c06::243])
-        by mx.google.com with ESMTPS id pv10si5086937obb.80.2016.01.22.01.51.02
+Received: from mail-oi0-x242.google.com (mail-oi0-x242.google.com. [2607:f8b0:4003:c06::242])
+        by mx.google.com with ESMTPS id bp5si5081746obb.49.2016.01.22.01.51.06
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Jan 2016 01:51:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c06::243 as permitted sender) client-ip=2607:f8b0:4003:c06::243;
+        Fri, 22 Jan 2016 01:51:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) client-ip=2607:f8b0:4003:c06::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c06::243 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:4003:c06::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-oi0-x243.google.com with SMTP id e195so3577233oig.2;
-        Fri, 22 Jan 2016 01:51:02 -0800 (PST)
+Received: by mail-oi0-x242.google.com with SMTP id a202so3514146oib.3;
+        Fri, 22 Jan 2016 01:51:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=HB53Xl9ouDUwYO4NCz4d6dPUF8B+1Spmeu4RLpeUZAU=;
-        b=pDZCnPzk8i6VL6cK5EULAl9eisgP5GZ2Rt2NUI5IDxtuVl8ZT6pBJDjUzA3IlBccZ1
-         4hnvpqFxlB58ydVU8wj7qgS3tr/tCX4egLSw+tInf0jpK2u1kCEMqV8RIy1ejoQCm1Ot
-         /9mhDVk1Nm4VoFFIV2RhZk6EqJXKgn/D5jFGPVYs1Xu6Dsn0wfoBQiTRUvH5Mkmkw6Bz
-         N2W+an7LkGoeqGSRcALdaIFIDkHJ2qM2Ssg9vbRKFETDe0ZxhGFF10YCcL/0DYTH4EBu
-         RhVGkzCYh4kVpdhYDl2u85LPEfFDLJfiGW84y3GfjhKxKzKexHovqJB8iYXa7JK1LFCE
-         lxTw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-type:content-transfer-encoding;
+        bh=1REl11RSjNFPLmCelV3StMMHfBl2ELyKWREuny76YIY=;
+        b=IVyvM7d7Vfh7C9GlaI6lYH+cBA9ijtMU2DVAAAWa2MGguo2u30zcuvThXMbn8je0Ml
+         mNAaSZA+yDggLDGOHnAas2+VzgmYRDZViydGhrhGnJfv0NlO/vI+UgtwiAzGg4/RgLql
+         MUH46KclqcJ+VUuUpdJELWivc0WtIvpnS2+jFWGYcFAfeuCswBu2UfeBA59zIyKIzhOE
+         ghyTD0lff4XUT7VVeYWjPyHszBvJPt7x3qkorBpGBwpl23AUMjycNJBuli+xCvrm6mg2
+         XgP2Bdv71e7Zz0EdzNjL/y7bCiNWDCzYkytc7ssl7LeX5efx/+18zQiqilNHmuplhvkq
+         qRLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=HB53Xl9ouDUwYO4NCz4d6dPUF8B+1Spmeu4RLpeUZAU=;
-        b=AIQdeAWZ2qc53Ze6RC5emBCbBM803TKw4lBd1T423Ek5bGthIbTNccxwq00WpW0nYv
-         4smGKrEOajff2TwHTBMtsU8eOljKLaZCvO3SuW7yZjD8ABo9TFOaudTgEs967hK1xkGn
-         R6u3XEthVc1fS3kv9zuPPJnX/Bhn9O/7wFPuqCDcylwmepzu1/wCKgzVx3+acGEcO+3t
-         ANqBAJ0hIrY67CLriHD4tdU7Q8otVn7lJ8vYpm8KLNI3beAJ5X5IKTntu+MhCAvxSUfU
-         mX3UG1oGxprikbkhM7sQVyJg1B1Wso/rxDe3Z2octxK5xThyWXejdNY2b1FxebpX+e/9
-         gL+w==
-X-Gm-Message-State: AG10YORlHaBAemTN7K2LqfouoJxeLaviF35RUjMBvIYbI6uuR0hmwNer6O9/IcrXMynOGw==
-X-Received: by 10.202.73.213 with SMTP id w204mr1584345oia.0.1453456262588;
-        Fri, 22 Jan 2016 01:51:02 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-type:content-transfer-encoding;
+        bh=1REl11RSjNFPLmCelV3StMMHfBl2ELyKWREuny76YIY=;
+        b=i3zIo/0h8Q8H3a53aEioeAsz4idZqoty4qsCmR4qyiN4cyMY4OZjyAw88s1fzt3WZf
+         S+HHNF9McjUHgp1z9+Y2sII955dudlwaAqf3mZJg9LXcSnkxo1R8wRTnloaOrvqMaXfd
+         x4LFYE0NSFc9VZobOWUnm6TNAdNn99Xzgh9V/Sms0aSJdavV27WlJwqGGRYK4U3EZAgp
+         NwbXSjodnlkyRTg8sPqlO9xvGH8Do7by8grm5kyScZI/M5Z/FEVB1WIOaBe0roRGAfmh
+         9ewM/ZhxTwItjQ0GODLVelIias7p+fFsllRvd9OAn0TWTiYZML/sPeJ15m6YvJEkzFPc
+         L8sQ==
+X-Gm-Message-State: AG10YOTMs8RKTLoyVZIKG7DQ96hk+Jvk8wtO0uRNaQSP5a3zX//R7utRNhvKWVcwYudJhQ==
+X-Received: by 10.202.211.80 with SMTP id k77mr1553671oig.98.1453456266919;
+        Fri, 22 Jan 2016 01:51:06 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id e65sm2737769oif.15.2016.01.22.01.51.00
+        by smtp.gmail.com with ESMTPSA id a128sm2747746oig.3.2016.01.22.01.51.05
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jan 2016 01:51:01 -0800 (PST)
+        Fri, 22 Jan 2016 01:51:06 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
 Cc: alex.bennee@linaro.org,
 	qemu-arm@nongnu.org,
 	edgar.iglesias@xilinx.com
-Subject: [PATCH v3 0/3] target-arm: Add a few more S2 MMU input checks
-Date: Fri, 22 Jan 2016 10:50:40 +0100
-Message-Id: <1453456243-19879-1-git-send-email-edgar.iglesias@gmail.com>
+Subject: [PATCH v3 1/3] target-arm: Apply S2 MMU startlevel table size check to AArch64
+Date: Fri, 22 Jan 2016 10:50:41 +0100
+Message-Id: <1453456243-19879-2-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 1.9.1
-X-TUID: OAkI0j0ruj/u
+In-Reply-To: <1453456243-19879-1-git-send-email-edgar.iglesias@gmail.com>
+References: <1453456243-19879-1-git-send-email-edgar.iglesias@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 76TPB9vwDanh
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-This adds the inputsize > pamax check and also fixes the
-startlevel checks to apply to the 64bit translations.
+The S2 starting level table size check applies to both AArch32
+and AArch64. Move it to common code.
 
-Comments welcome!
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ target-arm/helper.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-Cheers,
-Edgar
-
-ChangeLog:
-v2 -> v3:
-* Document pamax arg to check_s2_startlevel
-
-v1 -> v2:
-* inputsize > pmax check only applies to AArch64
-* Fix commit message typo < should be >
-
-Edgar E. Iglesias (3):
-  target-arm: Apply S2 MMU startlevel table size check to AArch64
-  target-arm: Make pamax an argument to check_s2_startlevel
-  target-arm: Implement the S2 MMU inputsize > pamax check
-
- target-arm/helper.c | 39 ++++++++++++++++++++++++---------------
- 1 file changed, 24 insertions(+), 15 deletions(-)
-
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index f956b67..8aedce9 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -6581,11 +6581,19 @@ typedef enum {
+ static bool check_s2_startlevel(ARMCPU *cpu, bool is_aa64, int level,
+                                 int inputsize, int stride)
+ {
++    const int grainsize = stride + 3;
++    int startsizecheck;
++
+     /* Negative levels are never allowed.  */
+     if (level < 0) {
+         return false;
+     }
+ 
++    startsizecheck = inputsize - ((3 - level) * stride + grainsize);
++    if (startsizecheck < 1 || startsizecheck > stride + 4) {
++        return false;
++    }
++
+     if (is_aa64) {
+         unsigned int pamax = arm_pamax(cpu);
+ 
+@@ -6609,20 +6617,12 @@ static bool check_s2_startlevel(ARMCPU *cpu, bool is_aa64, int level,
+             g_assert_not_reached();
+         }
+     } else {
+-        const int grainsize = stride + 3;
+-        int startsizecheck;
+-
+         /* AArch32 only supports 4KB pages. Assert on that.  */
+         assert(stride == 9);
+ 
+         if (level == 0) {
+             return false;
+         }
+-
+-        startsizecheck = inputsize - ((3 - level) * stride + grainsize);
+-        if (startsizecheck < 1 || startsizecheck > stride + 4) {
+-            return false;
+-        }
+     }
+     return true;
+ }
 -- 
 1.9.1

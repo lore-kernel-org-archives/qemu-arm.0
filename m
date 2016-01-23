@@ -1,159 +1,148 @@
-Received: by 10.25.159.19 with SMTP id i19csp1802249lfe;
-        Thu, 14 Jan 2016 06:18:18 -0800 (PST)
-X-Received: by 10.28.175.147 with SMTP id y141mr4918244wme.64.1452781096797;
-        Thu, 14 Jan 2016 06:18:16 -0800 (PST)
-Return-Path: <pm215@archaic.org.uk>
-Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk. [2001:8b0:1d0::1])
-        by mx.google.com with ESMTPS id x3si9884894wjy.213.2016.01.14.06.18.16
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jan 2016 06:18:16 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) client-ip=2001:8b0:1d0::1;
+Received: by 10.25.159.19 with SMTP id i19csp333140lfe;
+        Sat, 23 Jan 2016 03:40:12 -0800 (PST)
+X-Received: by 10.140.19.52 with SMTP id 49mr9585973qgg.65.1453549212320;
+        Sat, 23 Jan 2016 03:40:12 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i6si12666574qgf.122.2016.01.23.03.40.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 23 Jan 2016 03:40:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::1 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aJiKd-0008Uh-LF; Thu, 14 Jan 2016 13:52:55 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [PATCH v3 11/19] memory: Add address_space_init_shareable()
-Date: Thu, 14 Jan 2016 13:52:47 +0000
-Message-Id: <1452779575-32582-12-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1452779575-32582-1-git-send-email-peter.maydell@linaro.org>
-References: <1452779575-32582-1-git-send-email-peter.maydell@linaro.org>
-X-TUID: ldIah2vTlR+A
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56924 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aMwY7-0007qJ-Qt
+	for alex.bennee@linaro.org; Sat, 23 Jan 2016 06:40:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35315)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwX9-0006CB-AJ
+	for qemu-devel@nongnu.org; Sat, 23 Jan 2016 06:39:12 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwX8-0005N2-9Q
+	for qemu-devel@nongnu.org; Sat, 23 Jan 2016 06:39:11 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:19895)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1aMwX3-0005L2-5i; Sat, 23 Jan 2016 06:39:05 -0500
+Received: from 172.24.1.49 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.1.49])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DDP88410; Sat, 23 Jan 2016 19:37:12 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
+	Server id 14.3.235.1; Sat, 23 Jan 2016 19:37:00 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
+Date: Sat, 23 Jan 2016 19:36:44 +0800
+Message-ID: <1453549006-16044-4-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.56A365E8.013A, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 29715f2b481925c4b2ebb8dce0e62ab2
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: hangaohuai@huawei.com, peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	shannon.zhao@linaro.org, ganapatrao.kulkarni@caviumnetworks.com,
+	hanjun.guo@linaro.org
+Subject: [Qemu-devel] [PATCH v4 3/5] ARM: Add numa-node-id for /memory node
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Fx3XPW9pp0AC
 
-From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-This will either create a new AS or return a pointer to an
-already existing equivalent one, if we have already created
-an AS for the specified root memory region.
+When specifying NUMA for ARM machine, generate /memory node according to
+NUMA topology.
 
-The motivation is to reuse address spaces as much as possible.
-It's going to be quite common that bus masters out in device land
-have pointers to the same memory region for their mastering yet
-each will need to create its own address space. Let the memory
-API implement sharing for them.
-
-Aside from the perf optimisations, this should reduce the amount
-of redundant output on info mtree as well.
-
-Thee returned value will be malloced, but the malloc will be
-automatically freed when the AS runs out of refs.
-
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-[PMM: dropped check for NULL root as unused; added doc-comment;
- squashed Peter C's reference-counting patch into this one;
- don't compare name string when deciding if we can share ASes;
- read as->malloced before the unref of as->root to avoid possible
- read-after-free if as->root was the owner of as]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- include/exec/memory.h | 18 ++++++++++++++++++
- memory.c              | 27 +++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+)
+ hw/arm/boot.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 01f1004..c92734a 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -241,6 +241,8 @@ struct AddressSpace {
-     struct rcu_head rcu;
-     char *name;
-     MemoryRegion *root;
-+    int ref_count;
-+    bool malloced;
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 7742dd3..10f3615 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -13,6 +13,7 @@
+ #include "hw/arm/linux-boot-if.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/sysemu.h"
++#include "sysemu/numa.h"
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+@@ -353,6 +354,9 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     void *fdt = NULL;
+     int size, rc;
+     uint32_t acells, scells;
++    char *nodename;
++    unsigned int i;
++    hwaddr mem_base, mem_len;
  
-     /* Accessed via RCU.  */
-     struct FlatView *current_map;
-@@ -1189,6 +1191,22 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
-  */
- void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name);
+     if (binfo->dtb_filename) {
+         char *filename;
+@@ -402,14 +406,37 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+         goto fail;
+     }
  
-+/**
-+ * address_space_init_shareable: return an address space for a memory region,
-+ *                               creating it if it does not already exist
-+ *
-+ * @root: a #MemoryRegion that routes addresses for the address space
-+ * @name: an address space name.  The name is only used for debugging
-+ *        output.
-+ *
-+ * This function will return a pointer to an existing AddressSpace
-+ * which was initialized with the specified MemoryRegion, or it will
-+ * create and initialize one if it does not already exist. The ASes
-+ * are reference-counted, so the memory will be freed automatically
-+ * when the AddressSpace is destroyed via address_space_destroy.
-+ */
-+AddressSpace *address_space_init_shareable(MemoryRegion *root,
-+                                           const char *name);
++    mem_len = (nb_numa_nodes > 0) ? numa_info[0].node_mem : binfo->ram_size;
+     rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+                                       acells, binfo->loader_start,
+-                                      scells, binfo->ram_size);
++                                      scells, mem_len);
+     if (rc < 0) {
+         fprintf(stderr, "couldn't set /memory/reg\n");
+         goto fail;
+     }
  
- /**
-  * address_space_destroy: destroy an address space
-diff --git a/memory.c b/memory.c
-index 93bd8ed..d2d0a92 100644
---- a/memory.c
-+++ b/memory.c
-@@ -2124,7 +2124,9 @@ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
- {
-     memory_region_ref(root);
-     memory_region_transaction_begin();
-+    as->ref_count = 1;
-     as->root = root;
-+    as->malloced = false;
-     as->current_map = g_new(FlatView, 1);
-     flatview_init(as->current_map);
-     as->ioeventfd_nb = 0;
-@@ -2139,6 +2141,7 @@ void address_space_init(AddressSpace *as, MemoryRegion *root, const char *name)
- static void do_address_space_destroy(AddressSpace *as)
- {
-     MemoryListener *listener;
-+    bool do_free = as->malloced;
- 
-     address_space_destroy_dispatch(as);
- 
-@@ -2150,12 +2153,36 @@ static void do_address_space_destroy(AddressSpace *as)
-     g_free(as->name);
-     g_free(as->ioeventfds);
-     memory_region_unref(as->root);
-+    if (do_free) {
-+        g_free(as);
-+    }
-+}
++    if (nb_numa_nodes > 0) {
++        /* create /memory node and set properties for other memory numa nodes */
++        mem_base = binfo->loader_start + mem_len;
++        for (i = 1; i < nb_numa_nodes; i++) {
++            mem_len = numa_info[i].node_mem;
++            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
++            qemu_fdt_add_subnode(fdt, nodename);
++            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
++                                              acells, mem_base,
++                                              scells, mem_len);
++            if (rc < 0) {
++                fprintf(stderr, "couldn't set /memory/reg\n");
++                goto fail;
++            }
 +
-+AddressSpace *address_space_init_shareable(MemoryRegion *root, const char *name)
-+{
-+    AddressSpace *as;
-+
-+    QTAILQ_FOREACH(as, &address_spaces, address_spaces_link) {
-+        if (root == as->root && as->malloced) {
-+            as->ref_count++;
-+            return as;
++            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
++            mem_base += mem_len;
++            g_free(nodename);
 +        }
 +    }
 +
-+    as = g_malloc0(sizeof *as);
-+    address_space_init(as, root, name);
-+    as->malloced = true;
-+    return as;
- }
- 
- void address_space_destroy(AddressSpace *as)
- {
-     MemoryRegion *root = as->root;
- 
-+    as->ref_count--;
-+    if (as->ref_count) {
-+        return;
-+    }
-     /* Flush out anything from MemoryListeners listening in on this */
-     memory_region_transaction_begin();
-     as->root = NULL;
+     if (binfo->kernel_cmdline && *binfo->kernel_cmdline) {
+         rc = qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
+                                      binfo->kernel_cmdline);
 -- 
-1.9.1
+2.0.4
+
+

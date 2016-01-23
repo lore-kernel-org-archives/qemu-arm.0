@@ -1,163 +1,142 @@
-Received: by 10.223.159.74 with SMTP id f10csp5293576wrg;
-        Wed, 13 Dec 2017 08:40:21 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotIPXaxO62EjpgQGGvd+WSK5FyhRSodrnoUhC1APrjgfQhUVM/V3W8jzETDWBsNOk86McRe
-X-Received: by 10.37.192.65 with SMTP id c62mr2352209ybf.75.1513183220962;
-        Wed, 13 Dec 2017 08:40:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513183220; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fZdmS9H0OmVPJSNXC4/4NKxLGEl2xdc2lJttjjgTCbSxyfQmOCbmuqiqquylUBHKEl
-         In0mXC0aI2L9Tj7vWlbc/iB+slnJEwz+6HhIfUiMkaHzhezOO7W/C496zcyRHIq4l4Ip
-         5I7XGg8GeHgJ1WhXGbUj1O6oWZ7Spi2mG/MZpTNV2R7xfQo8/ww53MngzDHrIVrzWeM6
-         uIwWNh4tDXSro5mAe22xzeZeF4fwAp6zLrxqmvpxfSrfg4wL6+j6q4fu6U7aqm/NFkMf
-         cD2g5k7CBp9vE0efj9xeDybRAxgkYSKJHM3x+CdS0iCFTKr84aHQ0WMunH4GYUchBt4K
-         MRnA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=OW4aQypydjxim/V9pfF6PGWdBiv7XGnz+yrR9nCUX7o=;
-        b=nwFNWdk89SN7inAMB0XDdDP7pv8CxQHPyi9lfXSY9f1osUiCdxP5Dx+K1szyBqEaEQ
-         dc/XBOQVazYKbm9PlprgbeP6OGd6T+hUIw6zmcAVXlPSNJAZd2AX9COMpqhOWwhP1Y8m
-         WPLP7XkzJGstznhgnLshvPFCscP0NFewryXXE7PISn0DCSlmm374vylJkAYOs61sQdxs
-         1FPMqjI1fBjefXBAOBSX+8Itwpvr5l6mR+g0QrjeUi5evPruX9MTLW97bQjGO7UJrkAk
-         HIcauMteK9+9Uw1szZjEn5qeuwBm+eQDact2EJQSKAnpy+PdFm/YNWdE6kgvmQeArzxb
-         xM/A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ce79CYig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 10.25.159.19 with SMTP id i19csp332416lfe;
+        Sat, 23 Jan 2016 03:37:43 -0800 (PST)
+X-Received: by 10.140.168.85 with SMTP id o82mr10480312qho.8.1453549063503;
+        Sat, 23 Jan 2016 03:37:43 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z12si415137ybj.57.2017.12.13.08.40.20
+        by mx.google.com with ESMTPS id z93si12666786qgd.106.2016.01.23.03.37.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Dec 2017 08:40:20 -0800 (PST)
+        Sat, 23 Jan 2016 03:37:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ce79CYig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36255 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56902 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ePA4y-0002iA-Dt
-	for alex.bennee@linaro.org; Wed, 13 Dec 2017 11:40:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56457)
+	id 1aMwVi-0002n3-Mh
+	for alex.bennee@linaro.org; Sat, 23 Jan 2016 06:37:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ePA4q-0002i0-Ix
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:40:13 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwVg-0002ms-Jg
+	for qemu-arm@nongnu.org; Sat, 23 Jan 2016 06:37:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ePA4p-0003De-ID
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:40:12 -0500
-Received: from mail-oi0-x234.google.com ([2607:f8b0:4003:c06::234]:46665)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ePA4p-0003Ci-Cp
-	for qemu-arm@nongnu.org; Wed, 13 Dec 2017 11:40:11 -0500
-Received: by mail-oi0-x234.google.com with SMTP id t81so1949716oih.13
-	for <qemu-arm@nongnu.org>; Wed, 13 Dec 2017 08:40:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OW4aQypydjxim/V9pfF6PGWdBiv7XGnz+yrR9nCUX7o=;
-	b=Ce79CYigzv8izMhdSN2WtHZCNGUedmLnoQNsaOh4dH3tckrsKLB2BoE2kFBHTeE7Ta
-	qXIFFGywTpSP8Cr9EoMBExaxWlQM8c5glHJ0Cf+RDWppoKIdTiUISkbpAg+uvon7mFD6
-	V2HiyCMdk6zoAbNCEZwH0W4vXsE1jPPDO+BbQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OW4aQypydjxim/V9pfF6PGWdBiv7XGnz+yrR9nCUX7o=;
-	b=rYSLUjal0e1FUN17KzNVcU/IvOs3mgTcc04TM5SYJmIJos5dAfqsFn9SidLVCBH+ya
-	ewjJS11/qmAY0d8MmMrOnmidbm1cXYjd1mZwPXafNYoDdBzJGOk7mcCDMnSTak41d1oQ
-	7H8T0znOEwuhqMtF1Sh/7tQP3ryEi0lLP/iM7A9VzLdd5pbgwDLXMfwM9evSyR98Pgt5
-	xElfBwh+jkfM7hVYa8XF1rb918/x5P6rWeYkveLbNCGuKWDN3YWrzHwKNTRtakMRxJpW
-	TmuhbiYDD2wUYGrCcemrDhMRFnPbBEKP5ktzUK60dt/+g3TIyvNDKSvyE4N8iNGyy1Zb
-	d1Lw==
-X-Gm-Message-State: AKGB3mJsMOCKrP/UcGagzRc4q76s8FD1Wo8qNr4v1EsJ2yjctgLtO2I0
-	zOfjSA1+rDbi+zaFHZxfhjcTVZwLnIS1wP+I5oYB4DKi
-X-Received: by 10.202.199.134 with SMTP id x128mr2303989oif.63.1513183210535; 
-	Wed, 13 Dec 2017 08:40:10 -0800 (PST)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwVd-0004ue-D3
+	for qemu-arm@nongnu.org; Sat, 23 Jan 2016 06:37:40 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:19741)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1aMwVc-0004su-Gm; Sat, 23 Jan 2016 06:37:37 -0500
+Received: from 172.24.1.49 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.1.49])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DDP88408; Sat, 23 Jan 2016 19:37:11 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
+	Server id 14.3.235.1; Sat, 23 Jan 2016 19:36:59 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
+Date: Sat, 23 Jan 2016 19:36:42 +0800
+Message-ID: <1453549006-16044-2-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-Received: by 10.157.63.74 with HTTP; Wed, 13 Dec 2017 08:39:50 -0800 (PST)
-In-Reply-To: <1501867249-1924-4-git-send-email-peter.maydell@linaro.org>
-References: <1501867249-1924-1-git-send-email-peter.maydell@linaro.org>
-	<1501867249-1924-4-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 13 Dec 2017 16:39:50 +0000
-Message-ID: <CAFEAcA-mOzfHhGt0jXtTVMe4_GGp6bg_SK1R4JBbQxpw2+gokg@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::234
-Subject: Re: [Qemu-arm] [PATCH 3/8] cputlb: Support generating CPU
- exceptions on memory transaction failures
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020205.56A365E8.00B5, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: e4580f9b837dfde59bc4c696bb2fbef1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: hangaohuai@huawei.com, peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	shannon.zhao@linaro.org, ganapatrao.kulkarni@caviumnetworks.com,
+	hanjun.guo@linaro.org
+Subject: [Qemu-arm] [PATCH v4 1/5] ARM: Virt: Add /distance-map node for NUMA
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	"patches@linaro.org" <patches@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m7YbM31UOE+M
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1jc+EalJxUX+
 
-On 4 August 2017 at 18:20, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Call the new cpu_transaction_failed() hook at the places where
-> CPU generated code interacts with the memory system:
->  io_readx()
->  io_writex()
->  get_page_addr_code()
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
+This /distance-map node is used to describe the accessing distance
+between NUMA nodes.
 
->  static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
-> +                      int mmu_idx,
->                        uint64_t val, target_ulong addr,
->                        uintptr_t retaddr, int size)
->  {
-> @@ -783,6 +791,7 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->      hwaddr physaddr = iotlbentry->addr;
->      MemoryRegion *mr = iotlb_to_region(cpu, physaddr, iotlbentry->attrs);
->      bool locked = false;
-> +    MemTxResult r;
->
->      physaddr = (physaddr & TARGET_PAGE_MASK) + addr;
->      if (mr != &io_mem_rom && mr != &io_mem_notdirty && !cpu->can_do_io) {
-> @@ -795,7 +804,12 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->          qemu_mutex_lock_iothread();
->          locked = true;
->      }
-> -    memory_region_dispatch_write(mr, physaddr, val, size, iotlbentry->attrs);
-> +    r = memory_region_dispatch_write(mr, physaddr,
-> +                                     val, size, iotlbentry->attrs);
-> +    if (r != MEMTX_OK) {
-> +        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_STORE,
-> +                               mmu_idx, iotlbentry->attrs, r, retaddr);
-> +    }
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ hw/arm/virt.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-I was looking at a bug that involved stepping through this function,
-and it turns out that the value in the variable "physaddr" here is
-not in fact the physical address of the access. It's just the offset
-into the memory region.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 15658f4..c725e29 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -39,6 +39,7 @@
+ #include "sysemu/device_tree.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/numa.h"
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "exec/address-spaces.h"
+@@ -183,6 +184,9 @@ static VirtBoardInfo *find_machine_info(const char *cpu)
+ 
+ static void create_fdt(VirtBoardInfo *vbi)
+ {
++    unsigned int i, j, number, count;
++    uint64_t *matrix;
++
+     void *fdt = create_device_tree(&vbi->fdt_size);
+ 
+     if (!fdt) {
+@@ -219,6 +223,32 @@ static void create_fdt(VirtBoardInfo *vbi)
+                                 "clk24mhz");
+     qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", vbi->clock_phandle);
+ 
++    if (nb_numa_nodes <= 0) {
++        return;
++    }
++
++    /* Add /distance-map node for NUMA */
++    qemu_fdt_add_subnode(fdt, "/distance-map");
++    qemu_fdt_setprop_string(fdt, "/distance-map", "compatible",
++                            "numa,distance-map-v1");
++
++    number = nb_numa_nodes * nb_numa_nodes * 6;
++    matrix = g_malloc0(number * sizeof(uint64_t));
++    for (i = 0; i < nb_numa_nodes; i++) {
++        for (j = 0; j < nb_numa_nodes; j++) {
++            count = (i * nb_numa_nodes + j) * 6;
++            matrix[count++] = 1;
++            matrix[count++] = i;
++            matrix[count++] = 1;
++            matrix[count++] = j;
++            matrix[count++] = 1;
++            matrix[count++] = (i == j) ? 10 : 20;
++        }
++    }
++    qemu_fdt_setprop_sized_cells_from_array(fdt, "/distance-map",
++                                            "distance-matrix", number / 2,
++                                            matrix);
++    g_free(matrix);
+ }
+ 
+ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
+-- 
+2.0.4
 
-This doesn't matter for Arm or Alpha, which don't actually need the
-physaddr for reporting the exceptions, and those are the only
-current implementations of the transaction_failed hook.
-But we should fix this so it doesn't bite us when we do eventually
-have a cpu that needs the physaddr...
 
-If we have a CPUIOTLBEntry how do we get back to the physaddr for it?
-
-thanks
--- PMM

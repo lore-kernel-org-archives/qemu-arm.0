@@ -1,66 +1,62 @@
-Received: by 10.182.158.201 with SMTP id ww9csp11790440obb;
-        Wed, 6 Jan 2016 05:59:47 -0800 (PST)
-X-Received: by 10.140.43.199 with SMTP id e65mr128321383qga.102.1452088787494;
-        Wed, 06 Jan 2016 05:59:47 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp332694lfe;
+        Sat, 23 Jan 2016 03:38:42 -0800 (PST)
+X-Received: by 10.140.236.68 with SMTP id h65mr10253393qhc.13.1453549122672;
+        Sat, 23 Jan 2016 03:38:42 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v140si41273170qka.56.2016.01.06.05.59.47
+        by mx.google.com with ESMTPS id d201si12669906qhc.40.2016.01.23.03.38.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jan 2016 05:59:47 -0800 (PST)
+        Sat, 23 Jan 2016 03:38:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54355 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56910 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aGoct-0000eH-6U
-	for alex.bennee@linaro.org; Wed, 06 Jan 2016 08:59:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50426)
+	id 1aMwWg-0004ia-6a
+	for alex.bennee@linaro.org; Sat, 23 Jan 2016 06:38:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGocO-0000Cf-1a
-	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:59:17 -0500
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwW9-0003kg-2e
+	for qemu-devel@nongnu.org; Sat, 23 Jan 2016 06:38:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aGocM-00031r-Rw
-	for qemu-devel@nongnu.org; Wed, 06 Jan 2016 08:59:15 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:38504)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aMwW5-000540-Qk
+	for qemu-devel@nongnu.org; Sat, 23 Jan 2016 06:38:09 -0500
+Received: from szxga01-in.huawei.com ([58.251.152.64]:19799)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aGocM-00031n-Is; Wed, 06 Jan 2016 08:59:14 -0500
-Received: by mail-wm0-x230.google.com with SMTP id b14so76617940wmb.1;
-	Wed, 06 Jan 2016 05:59:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type:content-transfer-encoding;
-	bh=qUncrKLEGqgoJPyEKDyAtGyYTPtiYh0JQxYRAV3NZxI=;
-	b=D2+RRk18gy9ms0kJeic6PRo1bjTGPOyWUY8rGw/iwifdHr/yvHvzSxZPLH+mFpI+k0
-	rNw1BsYdIGTS9hdpHLl67tr3rtxvcloltAbxo0r3Wii+f+n95NpAbr4mnEBMTH3ug46q
-	FgNivtkuGpWFP1xi2uyr2QJtaX3NsLGJ+MxbKLj/nbKwm7EFxSfUuMdVfm2XrNI1yAJ2
-	idGPfccY2F73gwjmOx0EMtJvG3ae59/CrqbgtBeoXEugmxt5REPTUkTE/RV/v0ixsV+5
-	5NNXM+42L7B/LLZXXRP2N6t+T1cFkYF6ozqVi80MrQ8woTwevdAbtfGuYl6QpF9Ey+TL
-	S1Nw==
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1aMwW4-00053o-UG; Sat, 23 Jan 2016 06:38:05 -0500
+Received: from 172.24.1.49 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.1.49])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DDP88409; Sat, 23 Jan 2016 19:37:11 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
+	Server id 14.3.235.1; Sat, 23 Jan 2016 19:37:02 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
+Date: Sat, 23 Jan 2016 19:36:46 +0800
+Message-ID: <1453549006-16044-6-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-X-Received: by 10.194.112.130 with SMTP id iq2mr94690557wjb.102.1452088753964; 
-	Wed, 06 Jan 2016 05:59:13 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Wed, 6 Jan 2016 05:59:13 -0800 (PST)
-In-Reply-To: <568D12A7.3010304@gmail.com>
-References: <cover.1451960508.git.digetx@gmail.com>
-	<004073b3af0a56899f9a07e3f6b00167359322e6.1451960508.git.digetx@gmail.com>
-	<20160106121711.GC4227@pcrost-box> <568D12A7.3010304@gmail.com>
-Date: Wed, 6 Jan 2016 05:59:13 -0800
-Message-ID: <CAPokK=pSmKDdZuinYKiHur=b2hV8WFuN5AO+mB_jQByyQLSgGw@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::230
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [PATCH v8 2/4] hw/ptimer: Perform tick and counter
- wrap around if timer already expired
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020203.56A365E8.00B8, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 404c929f34376102021be6bfdc8f3a93
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Cc: hangaohuai@huawei.com, peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	shannon.zhao@linaro.org, Igor Mammedov <imammedo@redhat.com>,
+	ganapatrao.kulkarni@caviumnetworks.com, hanjun.guo@linaro.org
+Subject: [Qemu-devel] [PATCH v4 5/5] hw/arm/virt-acpi-build: Generate SRAT
+	table
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -74,181 +70,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nGqXvEuDYnSL
+X-TUID: HtyOdgUn5pqB
 
-On Wed, Jan 6, 2016 at 5:12 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> 06.01.2016 15:17, Peter Crosthwaite =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
->
->> On Tue, Jan 05, 2016 at 05:33:27AM +0300, Dmitry Osipenko wrote:
->>>
->>> ptimer_get_count() might be called while QEMU timer already been expire=
-d.
->>> In that case ptimer would return counter =3D 0, which might be undesira=
-ble
->>> in case of polled timer. Do counter wrap around for periodic timer to
->>> keep
->>> it distributed.
->>>
->>> In addition, there is no reason to keep expired timer tick deferred, so
->>> just perform the tick from ptimer_get_count().
->>>
->>> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
->>> ---
->>>   hw/core/ptimer.c | 35 +++++++++++++++++++++++++++++------
->>>   1 file changed, 29 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
->>> index 035af97..96a6c7a 100644
->>> --- a/hw/core/ptimer.c
->>> +++ b/hw/core/ptimer.c
->>> @@ -85,15 +85,21 @@ static void ptimer_tick(void *opaque)
->>>
->>>   uint64_t ptimer_get_count(ptimer_state *s)
->>>   {
->>> +    int enabled =3D s->enabled;
->>
->>
->> Variable localisation not needed.
->>
->>>       int64_t now;
->>> +    int64_t next;
->>>       uint64_t counter;
->>> +    int expired;
->>> +    int oneshot;
->>
->>
->> Variable defs can be localised to the if (enabled) (even though now
->> in original code doesn't do that).
->>
->
-> Yeah, I just tried to keep original style here.
->
->>>
->>> -    if (s->enabled) {
->>> +    if (enabled) {
->>>           now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->>> +        next =3D s->next_event;
->>> +        expired =3D (now - next >=3D 0);
->>> +        oneshot =3D (enabled =3D=3D 2);
->>>           /* Figure out the current counter value.  */
->>
->>
->> This comment is now out of place.
->>
->
-> Okay, will fix it.
->
->
->>> -        if (now - s->next_event > 0
->>> -            || s->period =3D=3D 0) {
->>> -            /* Prevent timer underflowing if it should already have
->>> +        if (s->period =3D=3D 0 || (expired && oneshot)) {
->>> +            /* Prevent one-shot timer underflowing if it should alread=
-y
->>> have
->>>                  triggered.  */
->>>               counter =3D 0;
->>>           } else {
->>> @@ -114,12 +120,12 @@ uint64_t ptimer_get_count(ptimer_state *s)
->>>                  backwards.
->>>               */
->>>
->>> -            if ((s->enabled =3D=3D 1) && (s->limit * period < 10000)) =
-{
->>> +            if (!oneshot && (s->limit * period < 10000)) {
->>>                   period =3D 10000 / s->limit;
->>>                   period_frac =3D 0;
->>>               }
->>>
->>> -            rem =3D s->next_event - now;
->>> +            rem =3D expired ? now - next : next - now;
->>>               div =3D period;
->>>
->>>               clz1 =3D clz64(rem);
->>> @@ -139,6 +145,23 @@ uint64_t ptimer_get_count(ptimer_state *s)
->>>                       div +=3D 1;
->>>               }
->>>               counter =3D rem / div;
->>> +
->>> +            if (expired) {
->>> +                /* Wrap around periodic counter.  */
->>> +                counter =3D s->delta =3D s->limit - counter % s->limit=
-;
->>
->>
->> Why do you update the delta here?
->>
->
-> Because we would want to schedule next tick based on current wrapped arou=
-nd
-> counter value and not some arbitrary delta.
->
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-So looking at ptimer_reload(), the new schedule is done relative to
-the VM clock of the when the tick was expected to hit, not the current
-time. But this new delta is going to be relative to the now time and
-then used to update the next tick which will happen relative to
-next_event. Unless you stop or scale the timer, I don't think you need
-to do delta manipulation?
+To support NUMA, it needs to generate SRAT ACPI table.
 
->> Also can you just get ptimer_reload to do the modulo math for you? If th=
-e
->> timer is !oneshot and expired, then you call ptimer_reload anyway,
->> which will update next_event. When the expired test returns false
->> you can just reliably use the original logic involving now and next.
->>
->
-> Yes, that's what I changed in V9. Have you received it?
->
-> https://lists.nongnu.org/archive/html/qemu-devel/2016-01/msg00272.html
->
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+CC: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/arm/virt-acpi-build.c | 58 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
-Just had a look.
-
-V9 still has the modulo I think?:
-
-+            if (expired && (counter !=3D 0)) {
-+                /* Wrap around periodic counter.  */
-+                counter =3D s->delta =3D s->limit - counter % s->limit;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 87fbe7c..8438028 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -42,6 +42,7 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
++#include "sysemu/numa.h"
+ 
+ #define ARM_SPI_BASE 32
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+@@ -412,6 +413,58 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+ }
+ 
+ static void
++build_srat(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
++{
++    AcpiSystemResourceAffinityTable *srat;
++    AcpiSratProcessorGiccAffinity *core;
++    AcpiSratMemoryAffinity *numamem;
++    int i, j, srat_start;
++    uint64_t mem_len, mem_base;
++    uint32_t *cpu_node = g_malloc0(guest_info->smp_cpus * sizeof *cpu_node);
++
++    for (i = 0; i < guest_info->smp_cpus; i++) {
++        for (j = 0; j < nb_numa_nodes; j++) {
++            if (test_bit(i, numa_info[j].node_cpu)) {
++                cpu_node[i] = j;
++                break;
 +            }
++        }
++    }
++
++    srat_start = table_data->len;
++    srat = acpi_data_push(table_data, sizeof *srat);
++    srat->reserved1 = cpu_to_le32(1);
++
++    for (i = 0; i < guest_info->smp_cpus; ++i) {
++        core = acpi_data_push(table_data, sizeof *core);
++        core->type = ACPI_SRAT_PROCESSOR_GICC;
++        core->length = sizeof(*core);
++        core->proximity = cpu_node[i];
++        core->acpi_processor_uid = i;
++        core->flags = cpu_to_le32(1);
++    }
++    g_free(cpu_node);
++
++    mem_base = guest_info->memmap[VIRT_MEM].base;
++    for (i = 0; i < nb_numa_nodes; ++i) {
++        mem_len = numa_info[i].node_mem;
++        numamem = acpi_data_push(table_data, sizeof *numamem);
++        numamem->type = ACPI_SRAT_MEMORY;
++        numamem->length = sizeof(*numamem);
++        memset(numamem->proximity, 0, 4);
++        numamem->proximity[0] = i;
++        numamem->flags = cpu_to_le32(1);
++        numamem->base_addr = cpu_to_le64(mem_base);
++        numamem->range_length = cpu_to_le64(mem_len);
++        mem_base += mem_len;
++    }
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + srat_start), "SRAT",
++                 table_data->len - srat_start, 3, NULL);
++}
++
++static void
+ build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+ {
+     AcpiTableMcfg *mcfg;
+@@ -641,6 +694,11 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, guest_info);
+ 
++    if (nb_numa_nodes > 0) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_srat(tables_blob, tables->linker, guest_info);
++    }
++
+     /* RSDT is pointed to by RSDP */
+     rsdt = tables_blob->len;
+     build_rsdt(tables_blob, tables->linker, table_offsets);
+-- 
+2.0.4
 
-Regards,
-Peter
 
->>> +            }
->>> +        }
->>> +
->>> +        if (expired) {
->>> +            if (oneshot) {
->>
->>
->> This if-else has a lot of common structure with the one above. I think
->> they could be merged.
->>
->
-> That's a good suggestion, will do it in V10. Thanks.
->
->
->> Regards,
->> Peter
->>
->>> +                ptimer_tick(s);
->>> +            } else {
->>> +                /* Don't use ptimer_tick() for the periodic timer sinc=
-e
->>> it
->>> +                 * would reset the delta value.
->>> +                 */
->>> +                ptimer_trigger(s);
->>> +                ptimer_reload(s);
->>> +            }
->>>           }
->>>       } else {
->>>           counter =3D s->delta;
->>> --
->>> 2.6.4
->>>
->
->
-> --
-> Dmitry

@@ -1,150 +1,152 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3454461wru;
-        Mon, 6 Aug 2018 13:30:36 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdkWKz/OlyZ1oKJNfJ65k/DWj91BUE+3/UynoYpfipRUDcgNd7Qpne1dLFOAhCXfzY1vqIB
-X-Received: by 2002:a37:cc44:: with SMTP id r65-v6mr15542458qki.285.1533587436735;
-        Mon, 06 Aug 2018 13:30:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533587436; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MnUtaJtQY4EUVoKxGu9UWaq+2nUdkeHhaCIcL/5dt3ro9BBV++zQr7GO2YB23t+KLc
-         ITRV5a1QSkPyYa4H43tK5EZr6n9QT3IMtJuU3V9KzI0tC10NDsrXvG0FTsNVmZIcRWfL
-         NnOrJt9LfMPcv8mlLKds48dyPj1g+Fh0bpsiRj8ZbDFsiqmIrnKnN9FedBs785bxL59n
-         o+vsQKdRIfOeQD7/LneQMxH1GmDe4XujXGWUE/6NVLgz+aKDiG2uQDNKGo1TA2/hcH31
-         EOLmlEtsERH19EKz4hmR71uNdh5+LhPL7f0lPmhXq03MfedZQOkSrGDQTBkHqwin6VGg
-         Uj2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=ritXlzWKem2i6Ga48UJsmoDXNrnyM7sV+O4sFyqMiyc=;
-        b=hUyELAL4OZIX4TQgktux3wXcYMofzbm/8+RlH9WJiUuGS8kc5XeXJ40RTrrE7Z3abW
-         iV9Jel9VwBR24flTILbNvh2AQs+FD82HGntA7bsgjetA0h8AqxdOIpNVegYG2rux0ZNz
-         C/G87FL+695xXAJGo0zs7Pga6lngbson04diEphza8THtMHFC+4M5juKS58EcxP19Gr6
-         NTx1TFhq2yYPEwCSZBkC64pjUzUZAJvg7C7cP4Oszp4KsZz27W5HS5Af98HQDO8rWZqC
-         lX9rMTEAGvCVnzCVHCTAyd7zV6j452Zs+Z3AQmkt9c7ouyceQqosEWu7cWpsdUxvCpXi
-         tpkg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp2001399lfe;
+        Tue, 26 Jan 2016 11:12:17 -0800 (PST)
+X-Received: by 10.140.227.199 with SMTP id x190mr32013133qhb.46.1453835537924;
+        Tue, 26 Jan 2016 11:12:17 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r10-v6si2470888qvi.112.2018.08.06.13.30.36
+        by mx.google.com with ESMTPS id t9si2743264qhb.67.2016.01.26.11.12.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Aug 2018 13:30:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 26 Jan 2016 11:12:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36181 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:46281 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmm9E-0002oY-5o
-	for alex.bennee@linaro.org; Mon, 06 Aug 2018 16:30:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58819)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aO92H-00026N-Bx
+	for alex.bennee@linaro.org; Tue, 26 Jan 2016 14:12:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fmluv-0006pe-JD
-	for qemu-devel@nongnu.org; Mon, 06 Aug 2018 16:15:50 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aO92F-000244-2Z
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 14:12:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fmluu-0007C5-IC
-	for qemu-devel@nongnu.org; Mon, 06 Aug 2018 16:15:49 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40598 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fmluo-00077x-QS; Mon, 06 Aug 2018 16:15:42 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 629EF40214E2;
-	Mon,  6 Aug 2018 20:15:42 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-58.ams2.redhat.com
-	[10.36.116.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C55DD2166BA0;
-	Mon,  6 Aug 2018 20:15:39 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
-	mst@redhat.com, jean-philippe.brucker@arm.com
-Date: Mon,  6 Aug 2018 22:14:44 +0200
-Message-Id: <1533586484-5737-17-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
-References: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 06 Aug 2018 20:15:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 06 Aug 2018 20:15:42 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [RFC v7 16/16] hw/arm/virt: Allow virtio-iommu
- instantiation
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aO92E-00048I-5p
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 14:12:14 -0500
+Received: from mail-bn1on0116.outbound.protection.outlook.com
+	([157.56.110.116]:4329
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aO928-00047e-LS; Tue, 26 Jan 2016 14:12:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=59sY3YlwzQzCW3qp96BD1i35xqk6mkXtaECs9F3So2M=;
+	b=gPF9VRBQv2f+TQAzbqelajiNpj4qVKLLF19JsHbPiGJpds3/x9279r+TdI0SFiHdazcpjhlR8ugf3Nn9hbQjoRZUiFgwTpAw90umqnB14n0hvNg7nuHgj1eDI5cH4hIkkN0N33zcQzkUyeD+WzlA1zpJDHKNWRbSyx6+C8jMJYg=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
+	SMTP Server (TLS) id 15.1.390.13; Tue, 26 Jan 2016 19:12:07 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0390.013; Tue, 26 Jan 2016 19:12:07 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Thread-Topic: [PATCH v4 4/8] bcm2835_peripherals: add rollup device for
+	bcm2835 peripherals
+Thread-Index: AQHRT/DDSa0Q9/bDa0ydsyPaRKMGkp8NYbWAgAABHxCAAB1GAIAAuMxw
+Date: Tue, 26 Jan 2016 19:12:06 +0000
+Message-ID: <BLUPR0301MB20347E506B5172A98D5377229ED80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1452902337-13844-5-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAPokK=qp6vgfLPD+iai2-quyXD3ODPtNQgZLS1Kfwgn-ZCYMRw@mail.gmail.com>
+	<BLUPR0301MB2034FAE99E63647A00D388E79ED80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=rXwURCOc=-W1v+2=Br2kZ4fDXdPUR6gc=UdyoVisY_Bw@mail.gmail.com>
+In-Reply-To: <CAPokK=rXwURCOc=-W1v+2=Br2kZ4fDXdPUR6gc=UdyoVisY_Bw@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [2001:4898:80e8:d::724]
+x-ms-office365-filtering-correlation-id: 472dd74a-8b18-4624-08e0-08d32684954a
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
+	5:1eg1tNAexBSe6cGuEE+dHnY0TYHYUnqn3oEe7z+OflN9RLawTPMS4/J8AZ+AEwS3daFgbR5fqqee35jurTr0Vyq4K4WSxCV9+o/9IqR3ZjEO0tkRbbc70Yt+eTVESQUtfkSwhC7zofbIPzxv+ZAgXQ==;
+	24:UHOpSiVPffKqwQ/+Xd334qdQzCi1DFyjnAYD/CTkxGRp78zjJMVZPOuWvKgdapH+8P2dJJoEDSFI2j9t4+Cz4dWX3Z5OuSu5UyIzbjP9dT4=
+x-exchange-antispam-report-test: UriScan:; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; UriScan:; 
+x-microsoft-antispam-prvs: <BLUPR0301MB2034DC4405811A0B22061EF69ED80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
+	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; 
+x-forefront-prvs: 08331F819E
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(189002)(377454003)(52314003)(24454002)(199003)(4326007)(10400500002)(1411001)(8990500004)(2906002)(122556002)(19580405001)(87936001)(5005710100001)(10290500002)(86362001)(92566002)(40100003)(93886004)(5004730100002)(97736004)(81156007)(3280700002)(86612001)(110136002)(77096005)(1096002)(1220700001)(76576001)(50986999)(11100500001)(2900100001)(10090500001)(74316001)(54356999)(5001960100002)(2950100001)(101416001)(5008740100001)(33656002)(6116002)(99286002)(189998001)(19580395003)(5003600100002)(105586002)(586003)(106356001)(106116001)(5002640100001)(76176999)(102836003)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2016 19:12:06.7817 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.110.116
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Rob Herring <robh@kernel.org>
+Subject: Re: [Qemu-arm] [PATCH v4 4/8] bcm2835_peripherals: add rollup
+ device for bcm2835 peripherals
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, kevin.tian@intel.com, tn@semihalf.com, will.deacon@arm.com,
-	drjones@redhat.com, peterx@redhat.com, linuc.decode@gmail.com,
-	bharat.bhushan@nxp.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kT+WxIrESfIf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vLW2UzZH0+zS
 
-The virtio-iommu now can be instantiated by adding the virt
-machine option "-M virt,iommu=virtio"
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index dd3cc71..25f7c21 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1679,6 +1679,8 @@ static char *virt_get_iommu(Object *obj, Error **errp)
-         return g_strdup("none");
-     case VIRT_IOMMU_SMMUV3:
-         return g_strdup("smmuv3");
-+    case VIRT_IOMMU_VIRTIO:
-+        return g_strdup("virtio");
-     default:
-         g_assert_not_reached();
-     }
-@@ -1690,11 +1692,13 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
- 
-     if (!strcmp(value, "smmuv3")) {
-         vms->iommu = VIRT_IOMMU_SMMUV3;
-+    } else if (!strcmp(value, "virtio")) {
-+        vms->iommu = VIRT_IOMMU_VIRTIO;
-     } else if (!strcmp(value, "none")) {
-         vms->iommu = VIRT_IOMMU_NONE;
-     } else {
-         error_setg(errp, "Invalid iommu value");
--        error_append_hint(errp, "Valid values are none, smmuv3.\n");
-+        error_append_hint(errp, "Valid values are none, smmuv3, virtio.\n");
-     }
- }
- 
-@@ -1872,7 +1876,7 @@ static void virt_3_0_instance_init(Object *obj)
-     object_property_add_str(obj, "iommu", virt_get_iommu, virt_set_iommu, NULL);
-     object_property_set_description(obj, "iommu",
-                                     "Set the IOMMU type. "
--                                    "Valid values are none and smmuv3",
-+                                    "Valid values are none, smmuv3, virtio",
-                                     NULL);
- 
-     vms->memmap = a15memmap;
--- 
-2.5.5
-
+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
+Y29tXQ0KPiBTZW50OiBUdWVzZGF5LCAyNiBKYW51YXJ5IDIwMTYgMDA6MDMNCj4gDQo+IE9uIE1v
+biwgSmFuIDI1LCAyMDE2IGF0IDEwOjIzIFBNLCBBbmRyZXcgQmF1bWFubg0KPiA8QW5kcmV3LkJh
+dW1hbm5AbWljcm9zb2Z0LmNvbT4gd3JvdGU6DQo+ID4+IEZyb206IFBldGVyIENyb3N0aHdhaXRl
+IFttYWlsdG86Y3Jvc3Rod2FpdGVwZXRlckBnbWFpbC5jb21dDQo+ID4+IFNlbnQ6IE1vbmRheSwg
+MjUgSmFudWFyeSAyMDE2IDIyOjE0DQo+ID4+DQo+ID4+IE9uIEZyaSwgSmFuIDE1LCAyMDE2IGF0
+IDM6NTggUE0sIEFuZHJldyBCYXVtYW5uDQo+ID4+IDxBbmRyZXcuQmF1bWFubkBtaWNyb3NvZnQu
+Y29tPiB3cm90ZToNCj4gPiBbLi4uXQ0KPiA+PiA+ICtzdGF0aWMgdm9pZCBiY20yODM1X3Blcmlw
+aGVyYWxzX2luaXQoT2JqZWN0ICpvYmopDQo+ID4+ID4gK3sNCj4gPj4gPiArICAgIEJDTTI4MzVQ
+ZXJpcGhlcmFsU3RhdGUgKnMgPSBCQ00yODM1X1BFUklQSEVSQUxTKG9iaik7DQo+ID4+ID4gKw0K
+PiA+PiA+ICsgICAgLyogTWVtb3J5IHJlZ2lvbiBmb3IgcGVyaXBoZXJhbCBkZXZpY2VzLCB3aGlj
+aCB3ZSBleHBvcnQgdG8gb3VyDQo+ID4+IHBhcmVudCAqLw0KPiA+PiA+ICsgICAgbWVtb3J5X3Jl
+Z2lvbl9pbml0X2lvKCZzLT5wZXJpX21yLCBvYmosIE5VTEwsIHMsICJiY20yODM1LQ0KPiA+PiBw
+ZXJpcGhlcmFscyIsDQo+ID4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgMHgxMDAwMDAw
+KTsNCj4gPj4NCj4gPj4gU2hvdWxkIHRoaXMganVzdCBiZSBub3JtYWwgbWVtb3J5X3JlZ2lvbl9p
+bml0Pw0KPiA+DQo+ID4gSSB0aGluayBzbyAtLSBpdCdzIGp1c3QgYSBjb250YWluZXIgcmVnaW9u
+LCBhbmQgSSBwcm9iYWJseSBjb3B5IGFuZCBwYXN0ZWQgdGhlDQo+IEFQSSBoZXJlLiBUaGUgdHdv
+IE1SIGluaXQgQVBJcyBzZWVtIGFsbW9zdCBidXQgbm90LXF1aXRlIGlkZW50aWNhbCB3aGVuDQo+
+IE5VTEwgY2FsbGJhY2tzIGFyZSB1c2VkLiBDYW4geW91IGJyaWVmbHkgZXhwbGFpbiB0aGUgZGlm
+ZmVyZW5jZT8NCj4gPg0KPiANCj4gaG1tIEkgZ3Vlc3MgdGhlIGRlZmF1bHRpbmcgdG8gJnVuYXNz
+aWduZWRfbWVtX29wcy4gbWVtb3J5X3JlZ2lvbl9pbml0DQo+IGxvb2tzIHRvIGFzc3VtZSB5b3Ug
+d2lsbCBwb3B1bGF0ZSB0aGUgdXNhYmxlIHN1YnJlZ2lvbnMuIEFyZSB5b3UNCj4gcmVseWluZyBv
+biB1bmFzc2lnbmVkIG9wcz8NCg0KQWN0dWFsbHksIG1lbW9yeV9yZWdpb25faW5pdGZuIGFsc28g
+c2V0cyB0aGUgdW5hc3NpZ25lZF9vcHMsIHNvIHRoZSBvbmx5IGRpZmZlcmVuY2UgYXBwZWFycyB0
+byBiZSBtci0+dGVybWluYXRlcywgd2hpY2ggaXMgc2V0IHRvIHRydWUgZm9yIGluaXRfaW8uIFRo
+aXMgZmxhZyBhZmZlY3RzIHRoZSBiZWhhdmlvdXIgb2YgcmVuZGVyX21lbW9yeV9yZWdpb24oKSwg
+d2hpY2ggdGVybWluYXRlcyBlYXJseSBpZiAhbXItPnRlcm1pbmF0ZXMuIFNvIHRoZSBkaWZmZXJl
+bmNlIGlzIHRoYXQgdGhlIGdhcHMgYmV0d2VlbiB0aGUgc3VicmVnaW9ucyAoaS5lLiwgdGhlIGFj
+dHVhbCBkZXZpY2VzKSB3b3VsZG4ndCBiZSByZW5kZXJlZC4gQnV0IHdoYXQgZGlmZmVyZW5jZSB0
+aGlzIG1ha2VzIGluIHByYWN0aWNlIGlzIHVuY2xlYXIgdG8gbWUuIEl0IGNhbiBvbmx5IG1hdHRl
+ciBpZiB0aGUgQ1BVIGFjY2Vzc2VzIGFuIHVuZGVmaW5lZCAvIHVuaW1wbGVtZW50ZWQgZGV2aWNl
+LCBidXQgZXZlbiB0aGVuIGl0IGxvb2tzIHRvIG1lIGxpa2UgaXQgd291bGQgZW5kIHVwIGF0IHRo
+ZSBzYW1lIHVuYXNzaWduZWQgb3BzIGNvZGUgYW55d2F5LCBzbyBJIHN1c3BlY3QgaXQncyBpcnJl
+bGV2YW50Lg0KDQpJZiBtZW1vcnlfcmVnaW9uX2luaXQgd29ya3MsIEknbGwgZ28gd2l0aCB0aGF0
+Lg0KDQpBbmRyZXcNCg==

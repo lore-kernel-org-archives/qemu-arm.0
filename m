@@ -1,80 +1,103 @@
-Received: by 10.25.159.19 with SMTP id i19csp1642241lfe;
-        Mon, 25 Jan 2016 22:14:33 -0800 (PST)
-X-Received: by 10.140.174.2 with SMTP id u2mr28310853qhu.62.1453788873835;
-        Mon, 25 Jan 2016 22:14:33 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1645098lfe;
+        Mon, 25 Jan 2016 22:23:49 -0800 (PST)
+X-Received: by 10.140.248.198 with SMTP id t189mr27564005qhc.42.1453789429066;
+        Mon, 25 Jan 2016 22:23:49 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 184si28887462qhu.75.2016.01.25.22.14.33
+        by mx.google.com with ESMTPS id h81si28916159qhd.73.2016.01.25.22.23.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Jan 2016 22:14:33 -0800 (PST)
+        Mon, 25 Jan 2016 22:23:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42099 helo=lists.gnu.org)
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:42122 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aNwtc-0007LG-WB
-	for alex.bennee@linaro.org; Tue, 26 Jan 2016 01:14:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44499)
+	id 1aNx2a-0001ri-I6
+	for alex.bennee@linaro.org; Tue, 26 Jan 2016 01:23:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46377)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aNwtZ-0007Fq-4r
-	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 01:14:31 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aNx2Y-0001pR-Hi
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 01:23:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aNwtW-0000S4-Vi
-	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 01:14:28 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:35864)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aNx2X-00021g-LW
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 01:23:46 -0500
+Received: from mail-bn1bon0136.outbound.protection.outlook.com
+	([157.56.111.136]:2880
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aNwtS-0000Rp-AK; Tue, 26 Jan 2016 01:14:22 -0500
-Received: by mail-wm0-x244.google.com with SMTP id l65so15412116wmf.3;
-	Mon, 25 Jan 2016 22:14:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=RR0iY3Fd8rzIr3t/uSUADeLv/Pd8RRpLTO9EnG2ZMxU=;
-	b=yTMgKdqkpiH1PN9zns3zDYtzc+DSckQ2uv2mvRY17WIrR3zq1v9L9YXFhae0hvEnar
-	VJ3KqoCoM2yTXyy4QbRuJvLEsjrcGK0z6DyZQyjkcFAU7HZqpuTMabtzfN8aADMH/hrb
-	LgmYCblJNxweBxpy/UlPcAkbUir12+1aXMx0w1i+ny6RPhGLFaZH8aKRu42Y5Cq1I4a+
-	SlJV3bLmp5/IXkdsvjryJc6a6k0eOktj5oktO50TpTkTQdX8UNu+6cIIR2C/eLqlfpUM
-	DwsYwIFJg7IXHcT4iuW+kFKp2GGQgoUAMzfjDmK6G9qUgJZge1axFfocVZsNT6oreDt7
-	ciFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=RR0iY3Fd8rzIr3t/uSUADeLv/Pd8RRpLTO9EnG2ZMxU=;
-	b=m7gy0zI0qag2zY6a76v/WufUcqJIjTMcqYy13BsWYnBuPlb1q3Ucnp2KbnFCRgDxC8
-	rL9UKWuGE3huOQmFB7ooCK6CTKjdnqMasW+Q0X5XH+wXbQkAz2zlSWVybmvyb0yWb1c7
-	tCmj/FUmL5XrNsDrQdXLRleTyoUY25fQKrDUYMiYhf/B4g6/SFvU4cnTjFSE+NdaMQMs
-	mcbS/XNzMqfPhbC1/kI32yXmTc8pDah1VSAa8aw+rK6czFhfvIE5HciCb5cieZtTTZjU
-	xWMdcNv3q0MqLdUF4SirpN67kQlbB9brELeHWLwd4XkDACa9XE3+aOj4H7CnwNGpDfhq
-	VgLw==
-X-Gm-Message-State: AG10YOQB3VDkHxuN1kCSyS+yeAVeEhWuEqvajCa+sqB68zIxQZELDQ+PmrXE39Tyhe72ElOxuIzqYLfmzRk6Tw==
-MIME-Version: 1.0
-X-Received: by 10.28.216.134 with SMTP id p128mr20696516wmg.59.1453788861653; 
-	Mon, 25 Jan 2016 22:14:21 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Mon, 25 Jan 2016 22:14:21 -0800 (PST)
-In-Reply-To: <1452902337-13844-5-git-send-email-Andrew.Baumann@microsoft.com>
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aNx2T-000217-76; Tue, 26 Jan 2016 01:23:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=WsUDQSUgSqNiQx0/ygPJdfaXzyIdzFtVaABR5pmW1AI=;
+	b=S5ugt5xxuif7pTPzAj2cpzhdEDzAOYDu62sfHgn7ersEaIwNtMr+68cvfIvfYrQyqWD7V1BSPoD0Mz5PN/VRXQ4V3DhHEOmHqw3KiMWXd8MJbyY+EMQE5n6vjTSmkfO1vfYta+V3EVB3zF7rYhD5CVHMTy9KXo8Y9amh9EPtEXQ=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
+	SMTP Server (TLS) id 15.1.390.13; Tue, 26 Jan 2016 06:23:39 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0390.013; Tue, 26 Jan 2016 06:23:39 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Thread-Topic: [PATCH v4 4/8] bcm2835_peripherals: add rollup device for
+	bcm2835 peripherals
+Thread-Index: AQHRT/DDSa0Q9/bDa0ydsyPaRKMGkp8NYbWAgAABHxA=
+Date: Tue, 26 Jan 2016 06:23:39 +0000
+Message-ID: <BLUPR0301MB2034FAE99E63647A00D388E79ED80@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1452902337-13844-5-git-send-email-Andrew.Baumann@microsoft.com>
-Date: Mon, 25 Jan 2016 22:14:21 -0800
-Message-ID: <CAPokK=qp6vgfLPD+iai2-quyXD3ODPtNQgZLS1Kfwgn-ZCYMRw@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
+	<CAPokK=qp6vgfLPD+iai2-quyXD3ODPtNQgZLS1Kfwgn-ZCYMRw@mail.gmail.com>
+In-Reply-To: <CAPokK=qp6vgfLPD+iai2-quyXD3ODPtNQgZLS1Kfwgn-ZCYMRw@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [50.46.154.109]
+x-ms-office365-filtering-correlation-id: b0ff60e6-6087-41ed-4033-08d326193b12
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
+	5:cylDX19MdO17ojjGk6XfSmuPCAt+A32cZ+VX0yXZgljyfTaR6OM9CZZko3U2tgoSOr6d3Eqd8PY5m4ny1Vsmz5h0WBticGVQbgEdpTPTGMviIH6m+XYBvciPOBM2qLd4NFbjuydNT0JRIImLXWfdFQ==;
+	24:ZCFkPbi02GkAKPjZ9Qz5ISYdpyD8aTD/SoYpG8nBxewGhDs1Roxlj6OV7W0qhxNZe50cKVIP5BcT0OAngTvUkGUX55x7zOo2r/0llkBbhRU=
+x-exchange-antispam-report-test: UriScan:; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; UriScan:; 
+x-microsoft-antispam-prvs: <BLUPR0301MB20347A65CA63F1A23D1F81659ED80@BLUPR0301MB2034.namprd03.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(123027)(601004)(2401047)(520078)(8121501046)(5005006)(3002001)(10201501046)(61426038)(61427038);
+	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; 
+x-forefront-prvs: 08331F819E
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(24454002)(164054003)(377454003)(189002)(199003)(54356999)(5001960100002)(74316001)(2950100001)(3846002)(76576001)(1096002)(110136002)(1220700001)(102836003)(77096005)(2900100001)(11100500001)(10090500001)(50986999)(105586002)(106116001)(101416001)(76176999)(5008740100001)(5002640100001)(106356001)(586003)(5003600100002)(6116002)(33656002)(66066001)(99286002)(189998001)(19580395003)(2906002)(5005710100001)(122556002)(19580405001)(87936001)(97736004)(81156007)(10290500002)(10400500002)(4326007)(8990500004)(1411001)(5004730100002)(3280700002)(86612001)(40100003)(86362001)(92566002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	PTR:InfoNoRecords; MX:1; A:1; LANG:en; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+	permitted sender hosts)
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2016 06:23:39.3960 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.111.136
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	Rob Herring <robh@kernel.org>
 Subject: Re: [Qemu-arm] [PATCH v4 4/8] bcm2835_peripherals: add rollup
-	device for bcm2835 peripherals
+ device for bcm2835 peripherals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,456 +111,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dA2FsP161XuH
+X-TUID: HRJLC9F2e4rh
 
-On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> This device maintains all the non-CPU peripherals on bcm2835 (Pi1)
-> which are also present on bcm2836 (Pi2). It also implements the
-> private address spaces used for DMA and mailboxes.
->
-> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
-> ---
->
-> Notes:
->     v3:
->      * clean up raspi_platform.h
->      * s/_/-/ in type/property/child names
->      * use memory_region_init where appropriate rather than memory_region_init_io
->      * pass ram as link property
->
->     v2:
->      * adapted to use common SDHCI emulation
->
->  hw/arm/Makefile.objs                 |   1 +
->  hw/arm/bcm2835_peripherals.c         | 205 +++++++++++++++++++++++++++++++++++
->  include/hw/arm/bcm2835_peripherals.h |  42 +++++++
->  include/hw/arm/raspi_platform.h      | 128 ++++++++++++++++++++++
->  4 files changed, 376 insertions(+)
->  create mode 100644 hw/arm/bcm2835_peripherals.c
->  create mode 100644 include/hw/arm/bcm2835_peripherals.h
->  create mode 100644 include/hw/arm/raspi_platform.h
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 2195b60..82cc142 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -11,6 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
->  obj-$(CONFIG_DIGIC) += digic.o
->  obj-y += omap1.o omap2.o strongarm.o
->  obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> +obj-$(CONFIG_RASPI) += bcm2835_peripherals.o
->  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
->  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> new file mode 100644
-> index 0000000..879a41d
-> --- /dev/null
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -0,0 +1,205 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-> + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-> + * Written by Andrew Baumann
-> + *
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#include "hw/arm/bcm2835_peripherals.h"
-> +#include "hw/misc/bcm2835_mbox_defs.h"
-> +#include "hw/arm/raspi_platform.h"
-> +
-> +/* Peripheral base address on the VC (GPU) system bus */
-> +#define BCM2835_VC_PERI_BASE 0x7e000000
-> +
-> +/* Capabilities for SD controller: no DMA, high-speed, default clocks etc. */
-> +#define BCM2835_SDHC_CAPAREG 0x52034b4
-> +
-> +static void bcm2835_peripherals_init(Object *obj)
-> +{
-> +    BCM2835PeripheralState *s = BCM2835_PERIPHERALS(obj);
-> +
-> +    /* Memory region for peripheral devices, which we export to our parent */
-> +    memory_region_init_io(&s->peri_mr, obj, NULL, s, "bcm2835-peripherals",
-> +                          0x1000000);
-
-Should this just be normal memory_region_init?
-
-> +    object_property_add_child(obj, "peripheral-io", OBJECT(&s->peri_mr), NULL);
-
-This seems like a weird parenting, to have the SoC as child to an
-object it just created. Is the problem you need a parent before others
-can parent to you?
-
-Otherwise,
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
-Regards,
-Peter
-
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_mr);
-> +
-> +    /* Internal memory region for peripheral bus addresses (not exported) */
-> +    memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 << 32);
-> +    object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr), NULL);
-> +
-> +    /* Internal memory region for request/response communication with
-> +     * mailbox-addressable peripherals (not exported)
-> +     */
-> +    memory_region_init(&s->mbox_mr, obj, "bcm2835-mbox",
-> +                       MBOX_CHAN_COUNT << MBOX_AS_CHAN_SHIFT);
-> +
-> +    /* Interrupt Controller */
-> +    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
-> +    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-> +
-> +    /* UART0 */
-> +    s->uart0 = SYS_BUS_DEVICE(object_new("pl011"));
-> +    object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
-> +    qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
-> +
-> +    /* Mailboxes */
-> +    object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
-> +    object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus_get_default());
-> +
-> +    object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
-> +                                   OBJECT(&s->mbox_mr), &error_abort);
-> +
-> +    /* Property channel */
-> +    object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PROPERTY);
-> +    object_property_add_child(obj, "property", OBJECT(&s->property), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
-> +
-> +    object_property_add_const_link(OBJECT(&s->property), "dma-mr",
-> +                                   OBJECT(&s->gpu_bus_mr), &error_abort);
-> +
-> +    /* Extended Mass Media Controller */
-> +    object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
-> +    object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
-> +}
-> +
-> +static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> +{
-> +    BCM2835PeripheralState *s = BCM2835_PERIPHERALS(dev);
-> +    Object *obj;
-> +    MemoryRegion *ram;
-> +    Error *err = NULL;
-> +    uint32_t ram_size;
-> +    int n;
-> +
-> +    obj = object_property_get_link(OBJECT(dev), "ram", &err);
-> +    if (obj == NULL) {
-> +        error_setg(errp, "%s: required ram link not found: %s",
-> +                   __func__, error_get_pretty(err));
-> +        return;
-> +    }
-> +
-> +    ram = MEMORY_REGION(obj);
-> +    ram_size = memory_region_size(ram);
-> +
-> +    /* Map peripherals and RAM into the GPU address space. */
-> +    memory_region_init_alias(&s->peri_mr_alias, OBJECT(s),
-> +                             "bcm2835-peripherals", &s->peri_mr, 0,
-> +                             memory_region_size(&s->peri_mr));
-> +
-> +    memory_region_add_subregion_overlap(&s->gpu_bus_mr, BCM2835_VC_PERI_BASE,
-> +                                        &s->peri_mr_alias, 1);
-> +
-> +    /* RAM is aliased four times (different cache configurations) on the GPU */
-> +    for (n = 0; n < 4; n++) {
-> +        memory_region_init_alias(&s->ram_alias[n], OBJECT(s),
-> +                                 "bcm2835-gpu-ram-alias[*]", ram, 0, ram_size);
-> +        memory_region_add_subregion_overlap(&s->gpu_bus_mr, (hwaddr)n << 30,
-> +                                            &s->ram_alias[n], 0);
-> +    }
-> +
-> +    /* Interrupt Controller */
-> +    object_property_set_bool(OBJECT(&s->ic), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->peri_mr, ARMCTRL_IC_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
-> +    sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
-> +
-> +    /* UART0 */
-> +    object_property_set_bool(OBJECT(s->uart0), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->peri_mr, UART0_OFFSET,
-> +                                sysbus_mmio_get_region(s->uart0, 0));
-> +    sysbus_connect_irq(s->uart0, 0,
-> +        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-> +                               INTERRUPT_UART));
-> +
-> +    /* Mailboxes */
-> +    object_property_set_bool(OBJECT(&s->mboxes), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->peri_mr, ARMCTRL_0_SBM_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mboxes), 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->mboxes), 0,
-> +        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
-> +                               INTERRUPT_ARM_MAILBOX));
-> +
-> +    /* Property channel */
-> +    object_property_set_int(OBJECT(&s->property), ram_size, "ram-size", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_set_bool(OBJECT(&s->property), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->mbox_mr,
-> +                MBOX_CHAN_PROPERTY << MBOX_AS_CHAN_SHIFT,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->property), 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
-> +                      qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
-> +
-> +    /* Extended Mass Media Controller */
-> +    object_property_set_int(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
-> +                            &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    memory_region_add_subregion(&s->peri_mr, EMMC_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sdhci), 0));
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
-> +        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-> +                               INTERRUPT_ARASANSDIO));
-> +}
-> +
-> +static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = bcm2835_peripherals_realize;
-> +}
-> +
-> +static const TypeInfo bcm2835_peripherals_type_info = {
-> +    .name = TYPE_BCM2835_PERIPHERALS,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(BCM2835PeripheralState),
-> +    .instance_init = bcm2835_peripherals_init,
-> +    .class_init = bcm2835_peripherals_class_init,
-> +};
-> +
-> +static void bcm2835_peripherals_register_types(void)
-> +{
-> +    type_register_static(&bcm2835_peripherals_type_info);
-> +}
-> +
-> +type_init(bcm2835_peripherals_register_types)
-> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-> new file mode 100644
-> index 0000000..5d888dc
-> --- /dev/null
-> +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -0,0 +1,42 @@
-> +/*
-> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
-> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-> + *
-> + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-> + * Written by Andrew Baumann
-> + *
-> + * This code is licensed under the GNU GPLv2 and later.
-> + */
-> +
-> +#ifndef BCM2835_PERIPHERALS_H
-> +#define BCM2835_PERIPHERALS_H
-> +
-> +#include "qemu-common.h"
-> +#include "exec/address-spaces.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/intc/bcm2835_ic.h"
-> +#include "hw/misc/bcm2835_property.h"
-> +#include "hw/misc/bcm2835_mbox.h"
-> +#include "hw/sd/sdhci.h"
-> +
-> +#define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
-> +#define BCM2835_PERIPHERALS(obj) \
-> +    OBJECT_CHECK(BCM2835PeripheralState, (obj), TYPE_BCM2835_PERIPHERALS)
-> +
-> +typedef struct BCM2835PeripheralState {
-> +    /*< private >*/
-> +    SysBusDevice parent_obj;
-> +    /*< public >*/
-> +
-> +    MemoryRegion peri_mr, peri_mr_alias, gpu_bus_mr, mbox_mr;
-> +    MemoryRegion ram_alias[4];
-> +    qemu_irq irq, fiq;
-> +
-> +    SysBusDevice *uart0;
-> +    BCM2835ICState ic;
-> +    BCM2835PropertyState property;
-> +    BCM2835MboxState mboxes;
-> +    SDHCIState sdhci;
-> +} BCM2835PeripheralState;
-> +
-> +#endif /* BCM2835_PERIPHERALS_H */
-> diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-> new file mode 100644
-> index 0000000..6467e88
-> --- /dev/null
-> +++ b/include/hw/arm/raspi_platform.h
-> @@ -0,0 +1,128 @@
-> +/*
-> + * bcm2708 aka bcm2835/2836 aka Raspberry Pi/Pi2 SoC platform defines
-> + *
-> + * These definitions are derived from those in Raspbian Linux at
-> + * arch/arm/mach-{bcm2708,bcm2709}/include/mach/platform.h
-> + * where they carry the following notice:
-> + *
-> + * Copyright (C) 2010 Broadcom
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, write to the Free Software
-> + * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-> + */
-> +
-> +#define MCORE_OFFSET            0x0000   /* Fake frame buffer device
-> +                                          * (the multicore sync block) */
-> +#define IC0_OFFSET              0x2000
-> +#define ST_OFFSET               0x3000   /* System Timer */
-> +#define MPHI_OFFSET             0x6000   /* Message-based Parallel Host Intf. */
-> +#define DMA_OFFSET              0x7000   /* DMA controller, channels 0-14 */
-> +#define ARM_OFFSET              0xB000   /* BCM2708 ARM control block */
-> +#define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
-> +#define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
-> +#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 */
-> +#define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
-> +                                                      * Doorbells & Mailboxes */
-> +#define PM_OFFSET               0x100000 /* Power Management, Reset controller
-> +                                          * and Watchdog registers */
-> +#define PCM_CLOCK_OFFSET        0x101098
-> +#define RNG_OFFSET              0x104000
-> +#define GPIO_OFFSET             0x200000
-> +#define UART0_OFFSET            0x201000
-> +#define MMCI0_OFFSET            0x202000
-> +#define I2S_OFFSET              0x203000
-> +#define SPI0_OFFSET             0x204000
-> +#define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
-> +#define UART1_OFFSET            0x215000
-> +#define EMMC_OFFSET             0x300000
-> +#define SMI_OFFSET              0x600000
-> +#define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
-> +#define USB_OFFSET              0x980000 /* DTC_OTG USB controller */
-> +#define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
-> +
-> +/* GPU interrupts */
-> +#define INTERRUPT_TIMER0               0
-> +#define INTERRUPT_TIMER1               1
-> +#define INTERRUPT_TIMER2               2
-> +#define INTERRUPT_TIMER3               3
-> +#define INTERRUPT_CODEC0               4
-> +#define INTERRUPT_CODEC1               5
-> +#define INTERRUPT_CODEC2               6
-> +#define INTERRUPT_JPEG                 7
-> +#define INTERRUPT_ISP                  8
-> +#define INTERRUPT_USB                  9
-> +#define INTERRUPT_3D                   10
-> +#define INTERRUPT_TRANSPOSER           11
-> +#define INTERRUPT_MULTICORESYNC0       12
-> +#define INTERRUPT_MULTICORESYNC1       13
-> +#define INTERRUPT_MULTICORESYNC2       14
-> +#define INTERRUPT_MULTICORESYNC3       15
-> +#define INTERRUPT_DMA0                 16
-> +#define INTERRUPT_DMA1                 17
-> +#define INTERRUPT_DMA2                 18
-> +#define INTERRUPT_DMA3                 19
-> +#define INTERRUPT_DMA4                 20
-> +#define INTERRUPT_DMA5                 21
-> +#define INTERRUPT_DMA6                 22
-> +#define INTERRUPT_DMA7                 23
-> +#define INTERRUPT_DMA8                 24
-> +#define INTERRUPT_DMA9                 25
-> +#define INTERRUPT_DMA10                26
-> +#define INTERRUPT_DMA11                27
-> +#define INTERRUPT_DMA12                28
-> +#define INTERRUPT_AUX                  29
-> +#define INTERRUPT_ARM                  30
-> +#define INTERRUPT_VPUDMA               31
-> +#define INTERRUPT_HOSTPORT             32
-> +#define INTERRUPT_VIDEOSCALER          33
-> +#define INTERRUPT_CCP2TX               34
-> +#define INTERRUPT_SDC                  35
-> +#define INTERRUPT_DSI0                 36
-> +#define INTERRUPT_AVE                  37
-> +#define INTERRUPT_CAM0                 38
-> +#define INTERRUPT_CAM1                 39
-> +#define INTERRUPT_HDMI0                40
-> +#define INTERRUPT_HDMI1                41
-> +#define INTERRUPT_PIXELVALVE1          42
-> +#define INTERRUPT_I2CSPISLV            43
-> +#define INTERRUPT_DSI1                 44
-> +#define INTERRUPT_PWA0                 45
-> +#define INTERRUPT_PWA1                 46
-> +#define INTERRUPT_CPR                  47
-> +#define INTERRUPT_SMI                  48
-> +#define INTERRUPT_GPIO0                49
-> +#define INTERRUPT_GPIO1                50
-> +#define INTERRUPT_GPIO2                51
-> +#define INTERRUPT_GPIO3                52
-> +#define INTERRUPT_I2C                  53
-> +#define INTERRUPT_SPI                  54
-> +#define INTERRUPT_I2SPCM               55
-> +#define INTERRUPT_SDIO                 56
-> +#define INTERRUPT_UART                 57
-> +#define INTERRUPT_SLIMBUS              58
-> +#define INTERRUPT_VEC                  59
-> +#define INTERRUPT_CPG                  60
-> +#define INTERRUPT_RNG                  61
-> +#define INTERRUPT_ARASANSDIO           62
-> +#define INTERRUPT_AVSPMON              63
-> +
-> +/* ARM CPU IRQs use a private number space */
-> +#define INTERRUPT_ARM_TIMER            0
-> +#define INTERRUPT_ARM_MAILBOX          1
-> +#define INTERRUPT_ARM_DOORBELL_0       2
-> +#define INTERRUPT_ARM_DOORBELL_1       3
-> +#define INTERRUPT_VPU0_HALTED          4
-> +#define INTERRUPT_VPU1_HALTED          5
-> +#define INTERRUPT_ILLEGAL_TYPE0        6
-> +#define INTERRUPT_ILLEGAL_TYPE1        7
-> --
-> 2.5.3
->
+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
+Y29tXQ0KPiBTZW50OiBNb25kYXksIDI1IEphbnVhcnkgMjAxNiAyMjoxNA0KPiANCj4gT24gRnJp
+LCBKYW4gMTUsIDIwMTYgYXQgMzo1OCBQTSwgQW5kcmV3IEJhdW1hbm4NCj4gPEFuZHJldy5CYXVt
+YW5uQG1pY3Jvc29mdC5jb20+IHdyb3RlOg0KWy4uLl0NCj4gPiArc3RhdGljIHZvaWQgYmNtMjgz
+NV9wZXJpcGhlcmFsc19pbml0KE9iamVjdCAqb2JqKQ0KPiA+ICt7DQo+ID4gKyAgICBCQ00yODM1
+UGVyaXBoZXJhbFN0YXRlICpzID0gQkNNMjgzNV9QRVJJUEhFUkFMUyhvYmopOw0KPiA+ICsNCj4g
+PiArICAgIC8qIE1lbW9yeSByZWdpb24gZm9yIHBlcmlwaGVyYWwgZGV2aWNlcywgd2hpY2ggd2Ug
+ZXhwb3J0IHRvIG91cg0KPiBwYXJlbnQgKi8NCj4gPiArICAgIG1lbW9yeV9yZWdpb25faW5pdF9p
+bygmcy0+cGVyaV9tciwgb2JqLCBOVUxMLCBzLCAiYmNtMjgzNS0NCj4gcGVyaXBoZXJhbHMiLA0K
+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgIDB4MTAwMDAwMCk7DQo+IA0KPiBTaG91bGQg
+dGhpcyBqdXN0IGJlIG5vcm1hbCBtZW1vcnlfcmVnaW9uX2luaXQ/DQoNCkkgdGhpbmsgc28gLS0g
+aXQncyBqdXN0IGEgY29udGFpbmVyIHJlZ2lvbiwgYW5kIEkgcHJvYmFibHkgY29weSBhbmQgcGFz
+dGVkIHRoZSBBUEkgaGVyZS4gVGhlIHR3byBNUiBpbml0IEFQSXMgc2VlbSBhbG1vc3QgYnV0IG5v
+dC1xdWl0ZSBpZGVudGljYWwgd2hlbiBOVUxMIGNhbGxiYWNrcyBhcmUgdXNlZC4gQ2FuIHlvdSBi
+cmllZmx5IGV4cGxhaW4gdGhlIGRpZmZlcmVuY2U/DQoNCj4gPiArICAgIG9iamVjdF9wcm9wZXJ0
+eV9hZGRfY2hpbGQob2JqLCAicGVyaXBoZXJhbC1pbyIsIE9CSkVDVCgmcy0+cGVyaV9tciksDQo+
+IE5VTEwpOw0KPiANCj4gVGhpcyBzZWVtcyBsaWtlIGEgd2VpcmQgcGFyZW50aW5nLCB0byBoYXZl
+IHRoZSBTb0MgYXMgY2hpbGQgdG8gYW4NCj4gb2JqZWN0IGl0IGp1c3QgY3JlYXRlZC4gSXMgdGhl
+IHByb2JsZW0geW91IG5lZWQgYSBwYXJlbnQgYmVmb3JlIG90aGVycw0KPiBjYW4gcGFyZW50IHRv
+IHlvdT8NCg0KSSdtIGNvbmZ1c2VkIGJ5IHRoaXMgcXVlc3Rpb246IFVubGVzcyBJJ20gbWlzdGFr
+ZW4sIHRoZSBwYXJlbnQgaGVyZSBpcyBCQ00yODM1UGVyaXBoZXJhbFN0YXRlLCB0aGUgY2hpbGQg
+aXMgdGhlIG5ldyBtZW1vcnkgcmVnaW9uIHdlIGp1c3QgY2FsbGVkIGluaXQgb24uDQoNClRoYW5r
+cywNCkFuZHJldw0K

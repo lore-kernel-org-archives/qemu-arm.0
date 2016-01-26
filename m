@@ -1,127 +1,115 @@
-Received: by 10.25.159.19 with SMTP id i19csp1049622lfe;
-        Fri, 29 Jan 2016 08:45:33 -0800 (PST)
-X-Received: by 10.25.154.20 with SMTP id c20mr3082161lfe.79.1454085933303;
-        Fri, 29 Jan 2016 08:45:33 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lb0-x244.google.com (mail-lb0-x244.google.com. [2a00:1450:4010:c04::244])
-        by mx.google.com with ESMTPS id jn4si8504577lbc.203.2016.01.29.08.45.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Jan 2016 08:45:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c04::244 as permitted sender) client-ip=2a00:1450:4010:c04::244;
+Received: by 10.25.159.19 with SMTP id i19csp1776007lfe;
+        Tue, 26 Jan 2016 04:05:47 -0800 (PST)
+X-Received: by 10.55.71.76 with SMTP id u73mr28085840qka.6.1453809947214;
+        Tue, 26 Jan 2016 04:05:47 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 139si1055265qht.123.2016.01.26.04.05.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 26 Jan 2016 04:05:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c04::244 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x244.google.com with SMTP id zr1so557735lbb.3;
-        Fri, 29 Jan 2016 08:45:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=aDJf7NdECQVEG+6vinxmyq9pJsHKWLlkLcJVwOR43J4=;
-        b=xWN7mcYsb2OGv7L1DdfEnmEMlOyFV5zOxeRsYPQYMpMsvcNYpSxW7ihaaBVjWeIAAE
-         03+K1a8nkdv5A9JBwmFvzb7M3owfjQ0Gf1NapvueGzqPrTWsGopLkf7Zyx8cQQIZGYlj
-         VbR4sJgVGBHktSKEUl8cMb4CPbCXaLuP7MLXCf0XGH7m8Avuy5UaSyEvN6AbhhupwHvM
-         5C08VcgldljT1ZpkOIeEt+z2nikEVM+AgXlYVJ4xArQlRNe9J3uBHCKq44+KhanxdSE1
-         j3KDJk5/pM5YMK2o/HkbWrBX9NRRyU6kVUDgBy4x/HVxpM0K+I72nDCJyc0sfGHu7go8
-         0SlQ==
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43326 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aO2NW-0001ev-Oy
+	for alex.bennee@linaro.org; Tue, 26 Jan 2016 07:05:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35082)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ruslan.bilovol@gmail.com>) id 1aO2N6-0001Kk-73
+	for qemu-devel@nongnu.org; Tue, 26 Jan 2016 07:05:24 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ruslan.bilovol@gmail.com>) id 1aO2N5-0008SM-34
+	for qemu-devel@nongnu.org; Tue, 26 Jan 2016 07:05:20 -0500
+Received: from mail-ig0-x232.google.com ([2607:f8b0:4001:c05::232]:35715)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ruslan.bilovol@gmail.com>)
+	id 1aO2N4-0008SC-U0; Tue, 26 Jan 2016 07:05:19 -0500
+Received: by mail-ig0-x232.google.com with SMTP id t15so57068220igr.0;
+	Tue, 26 Jan 2016 04:05:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=aAyDfYi1yFNcGirV2+/5TG5nrcXCCepCmBk6Wan9uk0=;
+	b=H6D9+iS0nx8HeAa3SK3ejL+gSVDyyI49yZiFaPZL15t9YAppA1MIY6KDtHLcluIbto
+	Uvoy8E2n8i87WqwuCTMvdoXrhSW4/Yq9vPpYGUswzmZ5sk5v2cpI0zFVdQlM27Qj0qeT
+	apahcPa4GG+87AS/OmCPAue51qH8qbl0vmPrePxx37H5e1STY7Rn9OyhDM9MzHlMTK4g
+	Hkjh21ud3h8knsDEkQ6FY306C9shJflTzzBMeuyPa3Apl0lLmsiWNzaCMTGTZuSB9jds
+	FhMl3OkwTG/XLg5GY5+BfQR0zqx7CNJfJ7cWOXcnjf3zbUIAS8WL6ygx/rjexNJac3Q2
+	RScQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=aDJf7NdECQVEG+6vinxmyq9pJsHKWLlkLcJVwOR43J4=;
-        b=PQ1ZjaOnfZzjwjl70FUrOEwKlIzJcM0JikzudmVjS16jlgC0cguDz/NLXc9wElkxbe
-         KaSEscN8cMQlxH4EZgeN2YeQ1cfFoAiLROWQLGMFUrPoUUto9wrCkpqYudWsmU5DFCPr
-         qkubzo586iuahxP469DMhHn0lTBmPyMtDpP3YD74rgWgZdh3JYwyO7oA5IStdQqA1OgT
-         uZWPCwbQD3Bk1nWpTgHjYQRHg3uemGiDEislCiwdDGPpZpD4pqG/0y4lGtArHFiGPOqs
-         so5Ti1hivYHdhB80dDRnZ/jcouoc7ynwW9Ze9AynTO5Ij9YtRPtZIQnmcMNtMcTBWHjA
-         9SRg==
-X-Gm-Message-State: AG10YOQ6A1BJpUpGCAZO7LejiXLKWp/UqHqePB5aMlZSmymdOhnpBlkU6i4R9tyBJiJEwA==
-X-Received: by 10.112.135.131 with SMTP id ps3mr3666019lbb.68.1454085932995;
-        Fri, 29 Jan 2016 08:45:32 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from [10.30.10.50] ([213.243.91.10])
-        by smtp.googlemail.com with ESMTPSA id ne8sm2211947lbc.21.2016.01.29.08.45.31
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 29 Jan 2016 08:45:31 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH 1/8] target-arm: Properly support EL2 and EL3
- in arm_el_is_aa64()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-2-git-send-email-peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, patches@linaro.org
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56AB972A.5010007@gmail.com>
-Date: Fri, 29 Jan 2016 19:45:30 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.1
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=aAyDfYi1yFNcGirV2+/5TG5nrcXCCepCmBk6Wan9uk0=;
+	b=A0jjcjII2MFZsXFqtcsc5yRRFy65efyWJgWQjlIQeMvSLksUIVwSJjkOzNvOzwYXK2
+	QQRK+K2irt/ESceXlupOUGeyqbspuJ4JMRmrV7EGNZi7QYBd48CxNA2Eow9OVrZcnZhr
+	kzgeriz/wfNdlGUWNi9r3O0+rPdaV3bZTVXr2UwNmwcx6h8UknF24FO/1M5VCVrgfLgA
+	dFm6uCJ7cer5WqT1Nq5/ircKb9m2wFH8kWvqMZ2DwRRn6Se0tMIhe1kUDwhSl1EpCuA9
+	efx26vfF/35v2rop7efJ9ejo7fnzYt3+HPq94D2OpQCZrhs1NHtlLKdYMiLB2+Qgd6GF
+	mhKw==
+X-Gm-Message-State: AG10YOQOSEBc4lSu0oZvxk4Y4ekUh3lX3X7kLOUxqDGAPpz9mqIr7r8hCe99QQxZ26RmFUiUs4cUVayQpXOS0g==
 MIME-Version: 1.0
-In-Reply-To: <1452796451-2946-2-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: 0hbpyzWpbyve
+X-Received: by 10.50.111.111 with SMTP id ih15mr23439403igb.78.1453809918354; 
+	Tue, 26 Jan 2016 04:05:18 -0800 (PST)
+Received: by 10.107.130.228 with HTTP; Tue, 26 Jan 2016 04:05:18 -0800 (PST)
+In-Reply-To: <CAFEAcA-Qm+vgjPt3eGfGdzZ-JMUoZ0-2dMiR+q1JRVzosbdRrw@mail.gmail.com>
+References: <CAB=otbRNpbTr3TK1RQrcaPWSr_SjhXwpDEcD+1LsYX6YmFReGw@mail.gmail.com>
+	<CAB=otbRXOcFOkiom5NdkZjD14q8EJ+URqaac1O6UmJv2AOdCyQ@mail.gmail.com>
+	<CAFEAcA-Qm+vgjPt3eGfGdzZ-JMUoZ0-2dMiR+q1JRVzosbdRrw@mail.gmail.com>
+Date: Tue, 26 Jan 2016 14:05:18 +0200
+Message-ID: <CAB=otbQD8NXV3DLzcrcQjQWFSQCf1U6ZA3orPr+yM_1B_+gh2Q@mail.gmail.com>
+From: Ruslan Bilovol <ruslan.bilovol@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>, 
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4001:c05::232
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [Qemu-arm] Does QEMU support AArch64 Big Endian
+ emulation on x86-64 host?
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uL1zXE49kXN2
 
-On 14.01.2016 21:34, Peter Maydell wrote:
-> Support EL2 and EL3 in arm_el_is_aa64() by implementing the
-> logic for checking the SCR_EL3 and HCR_EL2 register-width bits
-> as appropriate to determine the register width of lower exception
-> levels.
-
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
-
+On Mon, Jan 25, 2016 at 6:07 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 25 January 2016 at 13:51, Ruslan Bilovol <ruslan.bilovol@gmail.com> wrote:
+>>> I'm trying to run AArch64 Big Endian image under QEMU that I built for
+>>> my x86-64 Ubuntu host from latest master branch and when I'm running
+>>> kernel I'm getting next error:
+>>>  > qemu: fatal: Trying to execute code outside RAM or ROM at 0x500208000080ffff
+>>>
+>>> Similar image built as Little Endian runs fine with same QEMU tool
+>>> (qemu-system-aarch64)
+>>>
+>>> So I'm wondering is it possible to run QEMU AArch64 Big Endian
+>>> emulation on x86-64 host?
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target-arm/cpu.h | 33 ++++++++++++++++++++++++---------
->  1 file changed, 24 insertions(+), 9 deletions(-)
+> It is not currently supported, no. However there are some patches
+> on the list[*] to add this support, so I expect a future QEMU version
+> will do this.
 >
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 5f81342..b8b3364 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -969,18 +969,33 @@ static inline bool arm_is_secure(CPUARMState *env)
->  /* Return true if the specified exception level is running in AArch64 state. */
->  static inline bool arm_el_is_aa64(CPUARMState *env, int el)
->  {
-> -    /* We don't currently support EL2, and this isn't valid for EL0
-> -     * (if we're in EL0, is_a64() is what you want, and if we're not in EL0
-> -     * then the state of EL0 isn't well defined.)
-> +    /* This isn't valid for EL0 (if we're in EL0, is_a64() is what you want,
-> +     * and if we're not in EL0 then the state of EL0 isn't well defined.)
->       */
-> -    assert(el == 1 || el == 3);
-> +    assert(el >= 1 && el <= 3);
-> +    bool aa64 = arm_feature(env, ARM_FEATURE_AARCH64);
->  
-> -    /* AArch64-capable CPUs always run with EL1 in AArch64 mode. This
-> -     * is a QEMU-imposed simplification which we may wish to change later.
-> -     * If we in future support EL2 and/or EL3, then the state of lower
-> -     * exception levels is controlled by the HCR.RW and SCR.RW bits.
-> +    /* The highest exception level is always at the maximum supported
-> +     * register width, and then lower levels have a register width controlled
-> +     * by bits in the SCR or HCR registers.
->       */
-> -    return arm_feature(env, ARM_FEATURE_AARCH64);
-> +    if (el == 3) {
-> +        return aa64;
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_EL3)) {
-> +        aa64 = aa64 && (env->cp15.scr_el3 & SCR_RW);
-> +    }
-> +
-> +    if (el == 2) {
-> +        return aa64;
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_EL2) && !arm_is_secure_below_el3(env)) {
-> +        aa64 = aa64 && (env->cp15.hcr_el2 & HCR_RW);
-> +    }
-> +
-> +    return aa64;
->  }
->  
->  /* Function for determing whether guest cp register reads and writes should
+> [*] https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03025.html
+
+Thank you four quick answer.
+I tried to apply this patch series to latest qemu master branch, but it
+fails to apply in misc places. Peter Crosthwaite, could you please say
+which commit ID is it based on?
+
+Thanks,
+Ruslan Bilovol

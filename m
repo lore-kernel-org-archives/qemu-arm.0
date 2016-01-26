@@ -1,121 +1,144 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3009509wru;
-        Mon, 6 Aug 2018 05:35:44 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcjeaK0D1U19L2qFw4WAoD4DbP18hEtHNR4cpdxYIfaMQavi53HqitTuKQHzq8wPLB0yr2b
-X-Received: by 2002:ae9:e817:: with SMTP id a23-v6mr13079632qkg.213.1533558944341;
-        Mon, 06 Aug 2018 05:35:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533558944; cv=none;
-        d=google.com; s=arc-20160816;
-        b=F+QZqrHzXaaxq83np9cIrPXOv1sVLtY/haVXSFF4cbQr1nTA99irQ5uIm7O7noMx+Q
-         y4CsO/RHpHa17hIQPUtsRJn00qnv3Yo7vBUDIt84jKktWFyIKVWot8U8rE+79NZo3NVW
-         Op7NovfigDsK+bmQ7tYv7y0kXBtufhtEbV6o3FzDRL79pWFgw/wDZinT5fCF9Yuknn14
-         4ehBXRYsEYj8D5umE2WGdHgecaMUWkqbpd9v4BopsJgS5EZlFkUFKOdkZTyk2dT53ELj
-         d+8GVd2TtnUw1eaWv4uhEGu4DU120Kc5toqtp1vO39lKObNuyH+/unh912wouUjEOPYt
-         GAfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=1TUeGhaXZ4Xx2mfKfbBO3ST86mCdnN3fUujZpxcLomU=;
-        b=Y52scT7yYZQOQajguZtgDUSzYo/oUgbZ9BuLnqwojruNHpfd1U5IkqfNrj/WTdRMh5
-         WBuxN/j8EIkcN7rszcooWMmR8h1+kJPWxfgZX1SHsstUUJGIWG4mNf/8J6bY7jflMHee
-         0ym7p2AE9MvfkWvQL2Ch3FuY86nfhuZTjX1QkyzsH//osSkXxv39NzyVZw0ot94rFQgo
-         WxRuUiB9/EDi9P0P+oIAI/3Ptv6xbqcxZfmE5r9HWoGQzoLbxJtpYq5G+8437wS2C9BR
-         sBoZGa3RddANBdMYddMfEVn0Eba8Vf/jfHad/aKTod3wD4z4cZEg+4unyPzumjIXN65b
-         eJ1A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 10.25.159.19 with SMTP id i19csp2035584lfe;
+        Tue, 26 Jan 2016 12:30:45 -0800 (PST)
+X-Received: by 10.55.78.70 with SMTP id c67mr30373836qkb.37.1453840245635;
+        Tue, 26 Jan 2016 12:30:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y32-v6si6487385qvy.98.2018.08.06.05.35.44
+        by mx.google.com with ESMTPS id n69si584122qki.30.2016.01.26.12.30.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Aug 2018 05:35:44 -0700 (PDT)
+        Tue, 26 Jan 2016 12:30:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33899 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46569 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmejf-0003VQ-RE
-	for alex.bennee@linaro.org; Mon, 06 Aug 2018 08:35:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38409)
+	id 1aOAGC-00081P-U6
+	for alex.bennee@linaro.org; Tue, 26 Jan 2016 15:30:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fmej2-00033I-5P
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 08:35:04 -0400
+	(envelope-from <digetx@gmail.com>) id 1aOAGA-00080h-BV
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 15:30:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fmej1-0006fe-Ab
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 08:35:04 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44086)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fmej1-0006ZZ-2w; Mon, 06 Aug 2018 08:35:03 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fmeip-0000wy-N6; Mon, 06 Aug 2018 13:34:51 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  6 Aug 2018 13:34:42 +0100
-Message-Id: <20180806123445.1459-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180806123445.1459-1-peter.maydell@linaro.org>
-References: <20180806123445.1459-1-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.0 v2 2/5] hw/intc/arm_gicv3_common: Combine
- duplicate .subsections in vmstate_gicv3_cpu
+	(envelope-from <digetx@gmail.com>) id 1aOAG3-0006zW-TW
+	for qemu-arm@nongnu.org; Tue, 26 Jan 2016 15:30:42 -0500
+Received: from mail-lb0-x241.google.com ([2a00:1450:4010:c04::241]:34498)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <digetx@gmail.com>)
+	id 1aOAG3-0006yu-Ld; Tue, 26 Jan 2016 15:30:35 -0500
+Received: by mail-lb0-x241.google.com with SMTP id oe3so8790402lbb.1;
+	Tue, 26 Jan 2016 12:30:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=ni63d75F2Ub6HNrZrTB/aLBTlF9SzRi0ANACgs4RVoM=;
+	b=eEMopkw40C4N67RAe5jD/qvTqxKgdzq4s0XECDnRi6v4Jd9qi/9rsSb1cSeSfSsJFZ
+	JkAa3CRZgjV2f4jKjmUow5SrF/y7aUkq7TZMCGKH1n5ojXsIaCvvDdKvqiPT70WtntfL
+	PTZZgPNOqPXfkhWP+OjlELpI0UrIW/SrdGZL+3cQOSaK48Q/hABL1rc5Om/8BhAOqj+Z
+	hyVbfxU5yvgGtjGdOcQjzSkxfmNjKRpcTtf307aZZLxP/rukOjthzN8nGeUGncNfkfaA
+	LLudkGDxK9mCpvofNIfN/NleuJl00AslFffKMNCBrwySiQuMHDc7z0FT7nsYlcOF8Ke+
+	4bdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=ni63d75F2Ub6HNrZrTB/aLBTlF9SzRi0ANACgs4RVoM=;
+	b=LXOK+3Bg4f4etSKzSYr+pX77r7u4iP22tE/xqVpGl6fSKBRq7qgfZS3rOhDdUOyH2U
+	7MsMrpullZdtEA/W1EupZlbHLfnsij1VJS/AHz1dsWFrp8dqwfhZ1hWbmUKl1PZvLOHQ
+	P3diuAoo6XGRll6IHrjusGJrBZvKzTWV0tU1eAH45liy+TYokVEUcJn/ohHvcihZlNlj
+	CeFzIz8kp+UN8/X4ZymXOI9FbPSrIR0vDfXyp7M5FjjCLrjkjOzK9MqQmTxYYxfHtcSt
+	45rfPDgGwov8WvmQMo0mu6e8LlVEeZYW3DDlc+KjtszAmd/CQehCDkGBtpPzhCxtNcUR
+	E7ag==
+X-Gm-Message-State: AG10YOROZ8U1NJMeetjYhAWybwVrfIlKluH1utU0wDPHDER2kB5lUxhB4kSBHAoxLEhltQ==
+X-Received: by 10.112.12.2 with SMTP id u2mr9369514lbb.145.1453840234368;
+	Tue, 26 Jan 2016 12:30:34 -0800 (PST)
+Received: from [192.168.1.145] (ppp46-138-151-163.pppoe.spdop.ru.
+	[46.138.151.163]) by smtp.googlemail.com with ESMTPSA id
+	y63sm400592lfd.10.2016.01.26.12.30.31
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 26 Jan 2016 12:30:33 -0800 (PST)
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+References: <cover.1453402860.git.digetx@gmail.com>
+	<7b18c0c2ca44c938a198f56094327ab695f09f9b.1453402860.git.digetx@gmail.com>
+	<CAPokK=rc9z+VA42t-yMYndo=+ZSXKgL03TJoffZS+dgzY7WGgg@mail.gmail.com>
+	<56A4E6E9.2010103@gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <56A7D737.8090401@gmail.com>
+Date: Tue, 26 Jan 2016 23:29:43 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.0
+MIME-Version: 1.0
+In-Reply-To: <56A4E6E9.2010103@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::241
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v11 7/7] arm_mptimer: Convert to use ptimer
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <zhaoshenglong@huawei.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UbU21oYMuJ2l
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wJATYafCNx2N
 
-Commit 6692aac411199064 accidentally introduced a second initialization
-of the .subsections field of vmstate_gicv3_cpu, instead of adding
-the new subsection to the existing list. The effect of this was
-probably that migration of GICv3 with virtualization enabled was
-broken (or alternatively that migration of ICC_SRE_EL1 was broken,
-depending on which of the two initializers the compiler used).
-Combine the two into a single list.
+24.01.2016 17:59, Dmitry Osipenko пишет:
+> Hello Peter,
+>
+> 24.01.2016 08:25, Peter Crosthwaite пишет:
+>
+> [snip]
+>
+>>> +        timerblock_run(tb->timer, control, (value != 0) && (control & 1));
+>>>           break;
+>>>       case 8: /* Control.  */
+>>> -        old = tb->control;
+>>> -        tb->control = value;
+>>> -        if (value & 1) {
+>>> -            if ((old & 1) && (tb->count != 0)) {
+>>> -                /* Do nothing if timer is ticking right now.  */
+>>> -                break;
+>>> +        if ((value & 1) && (control & 3) != (value & 3)) {
+>>> +            uint64_t count = (value & 0xff00) ? 1 :
+>>> ptimer_get_count(tb->timer);
+>>> +            if ((count == 0) && (value & 2)) {
+>>> +                timerblock_set_count(tb->timer, value, &count);
+>>
+>> This looks like a weird corner-case, what does it do exactly? I can't
+>> follow it so it needs a comment :)
+>>
+>
+> It does the following:
+>
+> mode     | prescaler | reload if counter == 0 | tick immediately if counter == 0
+> --------------------------------------------------------------------------------
+> oneshot         == 0               0                         0
+> oneshot      != 0               0                         1
+> periodic     == 0               1                         0
+> periodic     != 0               0                         1
+>
+> If writing control register with prescaler = 0, then for one-shot timer with
+> counter == 0 or periodic timer with load = counter == 0 this is NOP. Will add a
+> comment.
+>
+> Thanks for review!
+>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
----
-Not strictly a 2.12 regression.
----
- hw/intc/arm_gicv3_common.c | 3 ---
- 1 file changed, 3 deletions(-)
+Just realized that I missed timer re-run on prescaler change. So it was a good 
+question! =)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index e58bc8b8105..e1a8999cf5b 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -134,9 +134,6 @@ static const VMStateDescription vmstate_gicv3_cpu = {
-     },
-     .subsections = (const VMStateDescription * []) {
-         &vmstate_gicv3_cpu_virt,
--        NULL
--    },
--    .subsections = (const VMStateDescription * []) {
-         &vmstate_gicv3_cpu_sre_el1,
-         NULL
-     }
 -- 
-2.17.1
-
+Dmitry

@@ -1,203 +1,148 @@
-Received: by 10.182.158.201 with SMTP id ww9csp254268obb;
-        Thu, 3 Dec 2015 14:48:15 -0800 (PST)
-X-Received: by 10.55.77.203 with SMTP id a194mr14327962qkb.85.1449182895175;
-        Thu, 03 Dec 2015 14:48:15 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp2423640lfe;
+        Wed, 27 Jan 2016 05:52:09 -0800 (PST)
+X-Received: by 10.140.239.79 with SMTP id k76mr7857195qhc.87.1453902729829;
+        Wed, 27 Jan 2016 05:52:09 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v28si589943qkl.123.2015.12.03.14.48.15
+        by mx.google.com with ESMTPS id d138si6036736qhd.108.2016.01.27.05.52.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Dec 2015 14:48:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Jan 2016 05:52:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37756 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:50624 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a4cfe-0004lW-S3
-	for alex.bennee@linaro.org; Thu, 03 Dec 2015 17:48:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38341)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aOQW1-0002hf-D0
+	for alex.bennee@linaro.org; Wed, 27 Jan 2016 08:52:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1a4cfB-00049i-KY
-	for qemu-devel@nongnu.org; Thu, 03 Dec 2015 17:47:46 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVy-0002gF-9C
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1a4cfA-00029E-IA
-	for qemu-devel@nongnu.org; Thu, 03 Dec 2015 17:47:45 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:59043)
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVt-00026X-Tx
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:06 -0500
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:36384)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1a4cfA-000293-B4; Thu, 03 Dec 2015 17:47:44 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.80)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1a4cIq-0005mk-E6; Thu, 03 Dec 2015 22:24:40 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Thu,  3 Dec 2015 22:24:38 +0000
-Message-Id: <1449181480-22209-2-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.7.10.4
-In-Reply-To: <1449181480-22209-1-git-send-email-peter.maydell@linaro.org>
-References: <1449181480-22209-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2001:8b0:1d0::1
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>, qemu-arm@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, patches@linaro.org
-Subject: [Qemu-devel] [PATCH v2 1/3] hw/sd/pxa2xx_mmci: convert to
-	SysBusDevice object
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVt-000265-Nr
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:01 -0500
+Received: by mail-wm0-x22f.google.com with SMTP id l65so145787416wmf.1
+	for <qemu-arm@nongnu.org>; Wed, 27 Jan 2016 05:52:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=KjTaU4NM11HNLCMA4lsu9lzxtUeVWnwJYW8+UILFCpU=;
+	b=KqHW4xQkIrf1EP2Ig2nmQHN+uIDUvsL6wuKZ3BaYW8PQqyvv0DMjnTYJIw9621gcCf
+	pLjrkrIHvPPXLEd++RMAZe7RMj5Vh7xXYT2XS0clETyUKQJUS77BWzLtzQ12N3zxeVtH
+	SC29lhjlscVcUoLrluhWSWXsFDY6MA8ZRP9to=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=KjTaU4NM11HNLCMA4lsu9lzxtUeVWnwJYW8+UILFCpU=;
+	b=VEKsefIovVS5V50nweLvBePVwV+5cYsbnvhR7dflOs2wbOpjr3YhQ/gRi8bTgx64td
+	fMZTNTakqtAJOkEc/ATqTqxyI9wXARcewYumK56AVK8zAJGHSTpZViqQ2bpA3v8dxRFM
+	QyyZ5t7UCMDFI6S1NR92hKtlzqgB9sJRNEBKNuDuAk0Fb0DCOeiLu2vAIlL1u9QhFkch
+	3um0z9F5X61+z6a5WLnjVJXrG6HgDD9Ag7y0PFqzz4e916mrtuPojBrLH+l6nvabAkir
+	gG4IpHU/ytr3XTV1Xo29wRrUEHHM2PsWdKEdwKxFVHd5Kg9KGM4TdYz7m2T8QFgxs5R8
+	RodA==
+X-Gm-Message-State: AG10YOQ2ekjMupWEHN9bZC9F5nn+INxXZDzjNB421EvoZ1JRkGJw7QA+5yvVNoXK1eMIHh2n
+X-Received: by 10.194.19.101 with SMTP id d5mr15862020wje.72.1453902719774;
+	Wed, 27 Jan 2016 05:51:59 -0800 (PST)
+Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
+	[80.11.198.90])
+	by smtp.gmail.com with ESMTPSA id t9sm6345866wjf.33.2016.01.27.05.51.57
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 27 Jan 2016 05:51:58 -0800 (PST)
+From: Eric Auger <eric.auger@linaro.org>
+To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
+	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
+	agraf@suse.de
+Date: Wed, 27 Jan 2016 13:51:48 +0000
+Message-Id: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::22f
+Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
+	christoffer.dall@linaro.org
+Subject: [Qemu-arm] [RFC 0/7] KVM PCI/MSI passthrough with mach-virt
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7CcqMmX5akfn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9JNiMnyCKBeI
 
-Convert the pxa2xx_mmci device to be a sysbus device.
+This series enables KVM PCI/MSI passthrough with mach-virt.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/sd/pxa2xx_mmci.c | 89 +++++++++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 72 insertions(+), 17 deletions(-)
+A new memory region type is introduced (reserved iova). On
+vfio_listener_region_add this IOVA region is registered to the kernel with
+VFIO_IOMMU_MAP_DMA (using the new VFIO_DMA_MAP_FLAG_MSI_RESERVED_IOVA flag).
 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index b217080..39ca309 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -11,16 +11,24 @@
-  */
- 
- #include "hw/hw.h"
-+#include "hw/sysbus.h"
- #include "hw/arm/pxa.h"
- #include "hw/sd/sd.h"
- #include "hw/qdev.h"
-+#include "hw/qdev-properties.h"
-+
-+#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
-+#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
-+
-+typedef struct PXA2xxMMCIState {
-+    SysBusDevice parent_obj;
- 
--struct PXA2xxMMCIState {
-     MemoryRegion iomem;
-     qemu_irq irq;
-     qemu_irq rx_dma;
-     qemu_irq tx_dma;
- 
-+    BlockBackend *blk;
-     SDState *card;
- 
-     uint32_t status;
-@@ -48,7 +56,7 @@ struct PXA2xxMMCIState {
-     int resp_len;
- 
-     int cmdreq;
--};
-+} PXA2xxMMCIState;
- 
- #define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
- #define MMC_STAT	0x04	/* MMC Status register */
-@@ -474,31 +482,78 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-                 BlockBackend *blk, qemu_irq irq,
-                 qemu_irq rx_dma, qemu_irq tx_dma)
- {
--    PXA2xxMMCIState *s;
-+    DeviceState *dev;
-+    SysBusDevice *sbd;
-+
-+    dev = qdev_create(NULL, TYPE_PXA2XX_MMCI);
-+    qdev_prop_set_drive_nofail(dev, "drive", blk);
-+    qdev_init_nofail(dev);
-+    sbd = SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(sbd, 0, base);
-+    sysbus_connect_irq(sbd, 0, irq);
-+    sysbus_connect_irq(sbd, 1, rx_dma);
-+    sysbus_connect_irq(sbd, 2, tx_dma);
-+    return PXA2XX_MMCI(dev);
-+}
- 
--    s = (PXA2xxMMCIState *) g_malloc0(sizeof(PXA2xxMMCIState));
--    s->irq = irq;
--    s->rx_dma = rx_dma;
--    s->tx_dma = tx_dma;
-+void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
-+                qemu_irq coverswitch)
-+{
-+    sd_set_cb(s->card, readonly, coverswitch);
-+}
-+
-+static void pxa2xx_mmci_instance_init(Object *obj)
-+{
-+    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
--    memory_region_init_io(&s->iomem, NULL, &pxa2xx_mmci_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
-                           "pxa2xx-mmci", 0x00100000);
--    memory_region_add_subregion(sysmem, base, &s->iomem);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+    sysbus_init_irq(sbd, &s->rx_dma);
-+    sysbus_init_irq(sbd, &s->tx_dma);
-+
-+    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-+                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-+}
-+
-+static void pxa2xx_mmci_realize(DeviceState *dev, Error **errp)
-+{
-+    PXA2xxMMCIState *s = PXA2XX_MMCI(dev);
- 
-     /* Instantiate the actual storage */
--    s->card = sd_init(blk, false);
-+    s->card = sd_init(s->blk, false);
-     if (s->card == NULL) {
--        exit(1);
-+        error_setg(errp, "Could not initialize SD card with specified drive");
-+        return;
-     }
-+}
- 
--    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
--                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-+static Property pxa2xx_mmci_properties[] = {
-+    DEFINE_PROP_DRIVE("drive", PXA2xxMMCIState, blk),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
- 
--    return s;
-+static void pxa2xx_mmci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = pxa2xx_mmci_realize;
-+    dc->props = pxa2xx_mmci_properties;
- }
- 
--void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
--                qemu_irq coverswitch)
-+static const TypeInfo pxa2xx_mmci_info = {
-+    .name = TYPE_PXA2XX_MMCI,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(PXA2xxMMCIState),
-+    .class_init = pxa2xx_mmci_class_init,
-+    .instance_init = pxa2xx_mmci_instance_init,
-+};
-+
-+static void pxa2xx_mmci_register_types(void)
- {
--    sd_set_cb(s->card, readonly, coverswitch);
-+    type_register_static(&pxa2xx_mmci_info);
- }
-+
-+type_init(pxa2xx_mmci_register_types)
+The host VFIO PCI driver then can use this IOVA window to map some host
+physical addresses, accessed by passthrough'ed PCI devices, through the IOMMU.
+The first goal is to map host MSI controller frames (GICv2M, GITS_TRANSLATER).
+
+mach-virt currently instantiates a 16x64kB reserved IOVA window. This
+provisions for future usage. Most probably this exceeds MSI binding needs.
+
+The series includes Pranav/Tushar' series:
+QEMU, [v2 0/2] Generic PCIe host bridge INTx determination for INTx routing
+((https://lists.nongnu.org/archive/html/qemu-devel/2015-04/msg04361.html))
+
+Those patches are not mandated for PCI/MSI passthrough to work but without
+those, the following warning is observed and can puzzle the end-user:
+"qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)"
+
+If prefered, this series can be maintained separately. I just put them here
+for consistency.
+
+Best Regards
+
+Eric
+
+Dependencies:
+The series depends on kernel series: "[PATCH 00/10] KVM PCIe/MSI passthrough on
+ARM/ARM64", (https://lkml.org/lkml/2016/1/26/371)
+
+Git:
+QEMU:
+https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-pci-passthrough-rfc
+
+Kernel:
+https://git.linaro.org/people/eric.auger/linux.git/shortlog/refs/heads/v4.5-rc1-pcie-passthrough-v1
+
+Testing:
+- on ARM64 AMD Overdrive HW with one e1000e PCIe card.
+
+Eric Auger (7):
+  linux-headers: partial update for VFIO reserved IOVA registration
+  Add a function to determine interrupt number for INTx routing
+  Generic PCIe host bridge INTx determination for INTx routing
+  hw: vfio: common: introduce vfio_register_reserved_iova
+  memory: add reserved_iova region type
+  hw: arm: virt: register reserved IOVA region
+  hw: vfio: common: adapt vfio_listeners for reserved_iova region
+
+ hw/arm/virt.c              | 14 ++++++++++
+ hw/pci-host/gpex.c         | 12 ++++++++
+ hw/vfio/common.c           | 68 ++++++++++++++++++++++++++++++++++++----------
+ include/exec/memory.h      | 29 ++++++++++++++++++++
+ include/hw/arm/virt.h      |  1 +
+ include/hw/pci-host/gpex.h |  1 +
+ linux-headers/linux/vfio.h | 15 ++++++++--
+ memory.c                   | 11 ++++++++
+ 8 files changed, 134 insertions(+), 17 deletions(-)
+
 -- 
 1.9.1
 

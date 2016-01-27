@@ -1,81 +1,74 @@
-Received: by 10.25.159.19 with SMTP id i19csp1193394lfe;
-        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
-X-Received: by 10.55.53.208 with SMTP id c199mr13962545qka.109.1454106166762;
-        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp60119lfe;
+        Wed, 27 Jan 2016 15:43:54 -0800 (PST)
+X-Received: by 10.140.81.80 with SMTP id e74mr38842572qgd.27.1453938233995;
+        Wed, 27 Jan 2016 15:43:53 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t67si17293085qkl.123.2016.01.29.14.22.46
+        by mx.google.com with ESMTPS id w19si8468494qhw.97.2016.01.27.15.43.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
+        Wed, 27 Jan 2016 15:43:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36698 helo=lists.gnu.org)
+Received: from localhost ([::1]:53071 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPHRG-0006Eo-7O
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:22:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59089)
+	id 1aOZkf-0004fz-GG
+	for alex.bennee@linaro.org; Wed, 27 Jan 2016 18:43:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHRD-0006C3-DY
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:22:44 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aOZkF-0003mZ-C8
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 18:43:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHRC-0004O2-L3
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:22:43 -0500
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33115)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aOZkE-0006SQ-KI
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 18:43:27 -0500
+Received: from mail-pa0-x242.google.com ([2607:f8b0:400e:c03::242]:35514)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aPHRA-0004NZ-M9; Fri, 29 Jan 2016 17:22:40 -0500
-Received: by mail-wm0-x241.google.com with SMTP id r129so12288468wmr.0;
-	Fri, 29 Jan 2016 14:22:40 -0800 (PST)
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1aOZk9-0006Qm-H7; Wed, 27 Jan 2016 18:43:21 -0500
+Received: by mail-pa0-x242.google.com with SMTP id gi1so1049821pac.2;
+	Wed, 27 Jan 2016 15:43:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=E2+OlZmuDmBUl2zCh3SbveqqCFw6GqAPyJu7Z2pDvnI=;
-	b=LR3Rl5eFWjFoWLFrVqZ5FtHnYxRw0sa9ULP49mTyqDCBwU3BT24ssF7hTaTp92qNsb
-	V0mPJTCuUA6JKe53C/y5WwFSeyHUxHpjJ/J15yYIVzoCOzaNJK2i/1ogCkNNVlxdDjBA
-	cVCayRBT7smDd2OgtlgwEYXN3orIHE/adDlKwYZPZA8HZFN0M/OZJNj0XP0HaEt1dZpS
-	e6tiRfyzN8Xb7A0O4nurB0iy2BrsxT1/C+0ii5Zpie8Qixn9MhbMqeYWM6S4jxYqexn0
-	v+6Mbb+a+hnHqffgBsQh5lJXnfDcScudj+L1qv51wHd4H4P//StaT9jVXSKNXod8TtmJ
-	+h/Q==
+	h=from:to:cc:subject:date:message-id;
+	bh=SKmDNrd21hHw8BLRIuXoi94RonCe8a/CqaOcNxZxZL8=;
+	b=w0m0sLD0fZ2oOB8uQS2LjytYZAxV/FKgOtWH0G5gc0+Sue1o5yyKoVkr6Yitj7udwL
+	2OONG3JmINBTvvAXMz96FIl/6TgQ+ehiBZ0TvKHgbBgMnfGBHKClQrm9w735As8Vysgw
+	J8jyTTLkVCObmDPpRySKAZ69NXd/c5oUSOe48FVuH5KRbJzjvH0qlSntKNDtts+KUCUN
+	l/TwMIW5rgz2wWlaPUlkAzYSUykbo9FhmKh7J/9ob1LqbZyBsddIaBb9uGowDXsRfeq+
+	i+SW0PVsatZBQAhpbGyKbjj+4SEEOXrDdnh4tYRohhFJL4AoPcCrcvbsb8sShRMuOE3d
+	HRCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=E2+OlZmuDmBUl2zCh3SbveqqCFw6GqAPyJu7Z2pDvnI=;
-	b=S1P2Eo6JLfQm7pBjdC2zDg7/uHq//q/aixd1xrEjYL3N96VQq5R2pmUsneLZP+AMxH
-	GHZzZJMmNISY9gKqCw4hKrh4kw5Iy0f5NZteXdc7k5sr+h7BjGR9wgy3xya5d5Af/ZGo
-	FdVabbCZBY1OxNOYckcU8N1X5WFWB806hgq9BC781z8SfyylYf6IE1z37//I68A8lsnQ
-	ppLEokokjCOY9ms8yp/ftHyEatauWGTMWAmCQ/CLZuIJESiuKfY8Zvk2iocHBuAD3r8R
-	VniUHIZhP2+KdoIhEmTMPVwTSJ6xPI5F8hOU39EctWZBzHYgizcF9kydPI7CCDfWjWaS
-	4Clg==
-X-Gm-Message-State: AG10YOSajuCFm1BdNoHMGiBTO2RNIneyP+2niOIRE43PqQ5vP69/pOjyBwWe9YIqVAb24KcvSYbaETLTtAAaXA==
-MIME-Version: 1.0
-X-Received: by 10.194.22.132 with SMTP id d4mr11181476wjf.174.1454106159969;
-	Fri, 29 Jan 2016 14:22:39 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Fri, 29 Jan 2016 14:22:39 -0800 (PST)
-In-Reply-To: <BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
-	<CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
-	<BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Fri, 29 Jan 2016 14:22:39 -0800
-Message-ID: <CAPokK=pLw9OVv3_FHedk12byTu0gjGFy80UT1T1TUFTewi5kpg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=SKmDNrd21hHw8BLRIuXoi94RonCe8a/CqaOcNxZxZL8=;
+	b=JH9RL9h+7JIpVMC9ADnY1CvQ/WXIkUJhdgA0myeDZYX2Drr91A/UzumsUpK/3ApuW1
+	yq/KXmfwilvrQY5cxDrAN4Tv+9Jff0k2C7xRG0HnviYqSCqGubzs0Duj7jH1GuRUTqM+
+	6AycSEoW2YHUzGAdgGIf9jwn+aac4V67l/cjf6ZMOJJ2yDnDB5jPTW+L8mJLd6D47IPN
+	8r/r01LrHNnZdiNzZI78L+H7nBpkfpEw0+KyFlQWEIHvOdo7Ojqch65+e+avq66va30L
+	lAebFM3eySniHkHpZUBoIm23A876gSB7aYbRsIkKwPTczOosTLswVZBQ5yEZIsIulX9d
+	Rhbg==
+X-Gm-Message-State: AG10YOTpygaqZ3qJhiGVmBoEpptwsJStYt8nOqAbC8ePq6MA7FVFCgI7c26jW5SQmeA4oA==
+X-Received: by 10.66.163.196 with SMTP id yk4mr46975217pab.115.1453938200632; 
+	Wed, 27 Jan 2016 15:43:20 -0800 (PST)
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
+	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
+	a62sm11480794pfj.40.2016.01.27.15.43.19
+	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
+	Wed, 27 Jan 2016 15:43:19 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Date: Thu, 28 Jan 2016 00:42:50 +0100
+Message-Id: <1453938171-13665-1-git-send-email-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::241
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Rob Herring <robh@kernel.org>
-Subject: Re: [Qemu-arm] [PATCH v4 8/8] raspi: add raspberry pi 2 machine
+X-Received-From: 2607:f8b0:400e:c03::242
+Cc: edgar.iglesias@xilinx.com, qemu-arm@nongnu.org
+Subject: [Qemu-arm] [RFC 0/1] arm: Setup EL1 and EL2 in AArch64 mode for
+	64bit Linux boots
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -89,38 +82,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s754J79Qxs2Q
+X-TUID: fIfmloIiOv4h
 
-On Fri, Jan 29, 2016 at 1:50 PM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> Hi Peter,
->
-> Thanks for all the reviews. I should have a respun version on the list shortly. There's one minor change to this last patch:
->
->> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
->> Sent: Thursday, 28 January 2016 23:31
->> > On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
->  [...]
->> > +typedef struct RaspiState {
->>
->> A quick google search, I see the camel case form for rpi is usually
->> "RasPi". Should we follow?
->
-> Ok.
->
->> > +    union {
->>
->> union not needed.
->
-> I know it's not needed now, but it will be as soon as we add pi1, which I hope to address in the next patch series. It will make that diff cleaner if we keep this here now, so I'm going to leave it as-is. I hope that's ok with you.
->
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-It sounds like you are implementing an inheritance outside QOM. I'm
-not sure about this, can we just drop the union and figure it out on
-the next series?
+Hi,
 
-Regards,
-Peter
+I've seen some regressions in my test runs lately when enabling
+EL2 and EL3. It turns out we are not setting RW when booting 64bit
+Linux kernels.
 
-> Thanks,
-> Andrew
+In the long run, I'm not sure if this does the right thing, for
+example we might need to revisit if we ever want to support direct
+loading of 32bit kernels on an AArch64 core.
+Anyway, this fixes my testruns for now.
+
+Cheers,
+Edgar
+
+Edgar E. Iglesias (1):
+  hw/arm: Setup EL1 and EL2 in AArch64 mode for 64bit Linux boots
+
+ hw/arm/boot.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+-- 
+1.9.1
+

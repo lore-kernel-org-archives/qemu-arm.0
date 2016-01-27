@@ -1,182 +1,153 @@
-Received: by 10.25.159.19 with SMTP id i19csp2423814lfe;
-        Wed, 27 Jan 2016 05:52:32 -0800 (PST)
-X-Received: by 10.140.170.212 with SMTP id q203mr36325259qhq.32.1453902752129;
-        Wed, 27 Jan 2016 05:52:32 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp2423928lfe;
+        Wed, 27 Jan 2016 05:52:47 -0800 (PST)
+X-Received: by 10.55.78.70 with SMTP id c67mr34936180qkb.37.1453902766975;
+        Wed, 27 Jan 2016 05:52:46 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l88si6664903qgf.84.2016.01.27.05.52.31
+        by mx.google.com with ESMTPS id p190si6092548qha.63.2016.01.27.05.52.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jan 2016 05:52:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Jan 2016 05:52:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:50631 helo=lists.gnu.org)
+Received: from localhost ([::1]:50634 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aOQWN-0003P6-KA
-	for alex.bennee@linaro.org; Wed, 27 Jan 2016 08:52:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38587)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aOQWc-0003Vj-GJ
+	for alex.bennee@linaro.org; Wed, 27 Jan 2016 08:52:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOQWK-0003IO-1B
-	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:29 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVy-0002gG-9m
+	for qemu-devel@nongnu.org; Wed, 27 Jan 2016 08:52:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOQWF-0002Ch-1i
-	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:27 -0500
-Received: from mail-wm0-x231.google.com ([2a00:1450:400c:c09::231]:38732)
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVv-00028X-PT
+	for qemu-devel@nongnu.org; Wed, 27 Jan 2016 08:52:06 -0500
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:33129)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOQWE-0002CV-NZ
-	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:22 -0500
-Received: by mail-wm0-x231.google.com with SMTP id p63so27409499wmp.1
-	for <qemu-arm@nongnu.org>; Wed, 27 Jan 2016 05:52:22 -0800 (PST)
+	(envelope-from <eric.auger@linaro.org>) id 1aOQVv-00028F-IZ
+	for qemu-devel@nongnu.org; Wed, 27 Jan 2016 08:52:03 -0500
+Received: by mail-wm0-x229.google.com with SMTP id l66so3565358wml.0
+	for <qemu-devel@nongnu.org>; Wed, 27 Jan 2016 05:52:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=K9vXJ9fdBJF07Zx8bt3DW9yP494yTmhYatMxMqzAGx4=;
-	b=YJvk+Tx+a1m2WtcANMfFMFxNfvYF42n7SN9me7YjeQnY42JZLaFl+tKbPi4VwibE0F
-	UYt0vLdFtznEG9AXDtiCWn+F1AqhQUUODWWZnu2PA3pvYBvRYrJd5llxhkfEw7w2R/1o
-	lGdahGrQF+Dwwnugm5fTnr9/0bsuBt7VAnZaQ=
+	bh=SQiVRgyRE5YBEufwQNdwJMCFDkzRgeA46exBv8mBUE8=;
+	b=UkuMJg24R0HE5QcaN3zzJ2aKxVBgWx7M+RTtslh1IHaaYn8pFdgZpFR3pGAy+4AGfN
+	Vu7RbaqXAijkmfr4X33SMtQApEI0pMzW7jTJRWBEx6XWsjFgdQ+XJHFiQLS2UChZxtHL
+	qOGIoMeTR2zZRRFV2HjEeZ48j1ETyln6BetA0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=K9vXJ9fdBJF07Zx8bt3DW9yP494yTmhYatMxMqzAGx4=;
-	b=Lo0DV47w45kIBlCEsOvyt0NhIn9vqrcDjEqtL/7YAAdJbcLQxzn21Cmv0ObKy51oag
-	wCZLgwmrygqFUOBTrsHFj8++iDzMYiwnbLVWcupxE/bwFRPlICypCO4wb+ZECPuOjo92
-	/R1X5xsEYv7wkohX6KPMzQPpuJ1FsElbUX0eNJs8ZJibTuDR4z40yx+03Orb4hhA/HTs
-	7aM9FgVsXlprzJjLFpPSdiH48BgqR0QccQmAVM/BAGlahyr5uBwMtKyKIliNE9ui7dWD
-	ynV4V20yJqKAwsKX1wXeg8XizDluiSr0XY7BzO2Mj4JoNV87RApZSmPNblsYOue6fT2C
-	FBgA==
-X-Gm-Message-State: AG10YOSCdbuB+RpGzBmD6ly444aZ/70g2kLMYeHrP5Kk2OciG8YgfWtqFhJbRfO28f1lF9BB
-X-Received: by 10.28.50.193 with SMTP id y184mr31490025wmy.103.1453902741988; 
-	Wed, 27 Jan 2016 05:52:21 -0800 (PST)
+	bh=SQiVRgyRE5YBEufwQNdwJMCFDkzRgeA46exBv8mBUE8=;
+	b=TsT67E8zG8f5G/Nj15Z/VfqFgCc1VcLQRqD3DHWvbWJDug4ffq0uFS73kkVBEg6Eeg
+	EDOjZ32keRrm/7VKllOJIibL2zXb7fA6Wpc7i2DmZz/BD1I5+0OTQtle9yQzXx36WAmV
+	BFmvm2y3JnyLVetcCbWcikeCtC+wUOD3wHzXl5d3zWQdvHrOQLsiP3c8ATKbHEB40kFw
+	hCQ+zE73mLSgCNZQ9h1lvVj305wGmHtL3fauXzBV7L+cIC9ZWHF3FwxTe2m5llqdgAqN
+	Mc5S8a13aEuZ//I3z0eTNcQrc5FsVwWpvMLeZpt/js2YdRyy8cgVuFolDunH3YGgPtK0
+	aH+g==
+X-Gm-Message-State: AG10YOTkoRolmPWX29k/ntQacN5h4y6KJCK3y6fhWTSf0/p1XtOfrp6yup5zKpf041w5ihMY
+X-Received: by 10.28.3.131 with SMTP id 125mr32356043wmd.14.1453902722807;
+	Wed, 27 Jan 2016 05:52:02 -0800 (PST)
 Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
 	[80.11.198.90])
-	by smtp.gmail.com with ESMTPSA id t9sm6345866wjf.33.2016.01.27.05.52.19
+	by smtp.gmail.com with ESMTPSA id t9sm6345866wjf.33.2016.01.27.05.51.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 27 Jan 2016 05:52:20 -0800 (PST)
+	Wed, 27 Jan 2016 05:52:01 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
 	agraf@suse.de
-Date: Wed, 27 Jan 2016 13:51:55 +0000
-Message-Id: <1453902715-25304-8-git-send-email-eric.auger@linaro.org>
+Date: Wed, 27 Jan 2016 13:51:49 +0000
+Message-Id: <1453902715-25304-2-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
 References: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::231
+X-Received-From: 2a00:1450:400c:c09::229
 Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
 	christoffer.dall@linaro.org
-Subject: [Qemu-arm] [RFC 7/7] hw: vfio: common: adapt vfio_listeners for
-	reserved_iova region
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC 1/7] linux-headers: partial update for VFIO
+	reserved IOVA registration
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YWyMHiNKGVvw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9tIGP3etdEm6
 
-In case of reserved iova region, let's declare this region to the
-kernel so that it can use it for IOVA/PA bindings.
+This is a partial update aiming at enhancing the VFIO user API
+according to not yet upstreamed kernel developments available at:
+
+https://git.linaro.org/people/eric.auger/linux.git/shortlog/refs/heads/v4.5-rc1-pcie-passthrough-v1
+
+See https://lkml.org/lkml/2016/1/26/371 for more details.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
 ---
- hw/vfio/common.c | 46 ++++++++++++++++++++++++++++------------------
- 1 file changed, 28 insertions(+), 18 deletions(-)
+ linux-headers/linux/vfio.h | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 247c87b..ee957ba 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -217,10 +217,8 @@ static int vfio_dma_unmap(VFIOContainer *container,
-  *
-  * unregistration is handled using vfio_dma_unmap
+diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
+index aa276bc..ac6032e 100644
+--- a/linux-headers/linux/vfio.h
++++ b/linux-headers/linux/vfio.h
+@@ -8,8 +8,8 @@
+  * it under the terms of the GNU General Public License version 2 as
+  * published by the Free Software Foundation.
   */
--int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
--                                ram_addr_t size);
--int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
--                                ram_addr_t size)
-+static int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
-+                                       ram_addr_t size)
- {
-     struct vfio_iommu_type1_dma_map map = {
-         .argsz = sizeof(map),
-@@ -271,6 +269,7 @@ static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
- static bool vfio_listener_skipped_section(MemoryRegionSection *section)
- {
-     return (!memory_region_is_ram(section->mr) &&
-+            !memory_region_is_reserved_iova(section->mr) &&
-             !memory_region_is_iommu(section->mr)) ||
-            /*
-             * Sizing an enabled 64-bit BAR can cause spurious mappings to
-@@ -354,7 +353,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
-     hwaddr iova, end;
-     Int128 llend;
-     void *vaddr;
--    int ret;
-+    int ret = -1;
+-#ifndef VFIO_H
+-#define VFIO_H
++#ifndef _UAPIVFIO_H
++#define _UAPIVFIO_H
  
-     if (vfio_listener_skipped_section(section)) {
-         trace_vfio_listener_region_add_skip(
-@@ -418,24 +417,35 @@ static void vfio_listener_region_add(MemoryListener *listener,
-         return;
-     }
+ #include <linux/types.h>
+ #include <linux/ioctl.h>
+@@ -393,6 +393,7 @@ struct vfio_iommu_type1_info {
+ 	__u32	argsz;
+ 	__u32	flags;
+ #define VFIO_IOMMU_INFO_PGSIZES (1 << 0)	/* supported page sizes info */
++#define VFIO_IOMMU_INFO_REQUIRE_MSI_MAP (1 << 1)/* MSI must be mapped */
+ 	__u64	iova_pgsizes;		/* Bitmap of supported page sizes */
+ };
  
--    /* Here we assume that memory_region_is_ram(section->mr)==true */
-+    /* Here we assume that the memory region is ram or reserved iova */
+@@ -403,12 +404,20 @@ struct vfio_iommu_type1_info {
+  *
+  * Map process virtual addresses to IO virtual addresses using the
+  * provided struct vfio_dma_map. Caller sets argsz. READ &/ WRITE required.
++ *
++ * In case MSI_RESERVED_IOVA is set, the API only aims at registering an IOVA
++ * region which will be used on some platforms to map the host MSI frame.
++ * in that specific case, vaddr is ignored. The requirement for provisioning
++ * such IOVA range can be checked by calling VFIO_IOMMU_GET_INFO with the
++ * VFIO_IOMMU_INFO_REQUIRE_MSI_MAP attribute.
+  */
+ struct vfio_iommu_type1_dma_map {
+ 	__u32	argsz;
+ 	__u32	flags;
+ #define VFIO_DMA_MAP_FLAG_READ (1 << 0)		/* readable from device */
+ #define VFIO_DMA_MAP_FLAG_WRITE (1 << 1)	/* writable from device */
++/* reserved iova for MSI vectors*/
++#define VFIO_DMA_MAP_FLAG_MSI_RESERVED_IOVA (1 << 2)
+ 	__u64	vaddr;				/* Process virtual address */
+ 	__u64	iova;				/* IO virtual address */
+ 	__u64	size;				/* Size of mapping (bytes) */
+@@ -591,4 +600,4 @@ struct vfio_iommu_spapr_tce_remove {
  
--    vaddr = memory_region_get_ram_ptr(section->mr) +
--            section->offset_within_region +
--            (iova - section->offset_within_address_space);
-+    if (memory_region_is_ram(section->mr)) {
-+        vaddr = memory_region_get_ram_ptr(section->mr) +
-+                section->offset_within_region +
-+                (iova - section->offset_within_address_space);
+ /* ***************************************************************** */
  
--    trace_vfio_listener_region_add_ram(iova, end - 1, vaddr);
-+        trace_vfio_listener_region_add_ram(iova, end - 1, vaddr);
- 
--    ret = vfio_dma_map(container, iova, end - iova, vaddr, section->readonly);
--    if (ret) {
--        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
--                     "0x%"HWADDR_PRIx", %p) = %d (%m)",
--                     container, iova, end - iova, vaddr, ret);
--        goto fail;
-+        ret = vfio_dma_map(container, iova, end - iova, vaddr,
-+                           section->readonly);
-+        if (ret) {
-+            error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
-+                         "0x%"HWADDR_PRIx", %p) = %d (%m)",
-+                         container, iova, end - iova, vaddr, ret);
-+            goto fail;
-+        }
-+        return;
-+    } else if (memory_region_is_reserved_iova(section->mr)) {
-+        ret = vfio_register_reserved_iova(container, iova, end - iova);
-+        if (ret) {
-+            error_report("vfio_register_reserved_iova(%p, 0x%"HWADDR_PRIx", "
-+                         "0x%"HWADDR_PRIx") = %d (%m)",
-+                         container, iova, end - iova, ret);
-+            goto fail;
-+        }
-+        return;
-     }
- 
--    return;
--
- fail:
-     /*
-      * On the initfn path, store the first error in the container so we
+-#endif /* VFIO_H */
++#endif /* _UAPIVFIO_H */
 -- 
 1.9.1
 

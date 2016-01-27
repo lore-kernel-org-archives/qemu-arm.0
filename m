@@ -1,80 +1,76 @@
-Received: by 10.25.159.19 with SMTP id i19csp2150110lfe;
-        Mon, 18 Jan 2016 13:53:08 -0800 (PST)
-X-Received: by 10.55.21.163 with SMTP id 35mr35096120qkv.45.1453153988050;
-        Mon, 18 Jan 2016 13:53:08 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp2423671lfe;
+        Wed, 27 Jan 2016 05:52:13 -0800 (PST)
+X-Received: by 10.55.27.193 with SMTP id m62mr7839223qkh.59.1453902733497;
+        Wed, 27 Jan 2016 05:52:13 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a126si33174028qkb.100.2016.01.18.13.53.07
+        by mx.google.com with ESMTPS id h35si6676755qgd.61.2016.01.27.05.52.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Jan 2016 13:53:08 -0800 (PST)
+        Wed, 27 Jan 2016 05:52:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com
-Received: from localhost ([::1]:33850 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:50626 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aLHjX-00054h-Ka
-	for alex.bennee@linaro.org; Mon, 18 Jan 2016 16:53:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40358)
+	id 1aOQW4-0002of-Po
+	for alex.bennee@linaro.org; Wed, 27 Jan 2016 08:52:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38463)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aLHjV-00051u-Ak
-	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 16:53:06 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aOQW2-0002jg-63
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aLHjU-0006xJ-CL
-	for qemu-arm@nongnu.org; Mon, 18 Jan 2016 16:53:05 -0500
-Received: from mail-ob0-x242.google.com ([2607:f8b0:4003:c01::242]:35621)
+	(envelope-from <eric.auger@linaro.org>) id 1aOQW1-00029s-DN
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:10 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:33184)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1aLHjS-0006w5-17; Mon, 18 Jan 2016 16:53:02 -0500
-Received: by mail-ob0-x242.google.com with SMTP id tr5so40154264obc.2;
-	Mon, 18 Jan 2016 13:53:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-type;
-	bh=4NXcM6MA/5nZhwfQny/STp/abUIWqxwobBh13h3/c10=;
-	b=ypMrUiG0eMCbuNsL2CzZclc8ZjN3Bkq2REzidlmPzX1F7jKqN0VLVUVKyKNbr+UoBZ
-	Nl/5CdhZzh2z1LRHQaZCjMVm2agFDb87yNEXyCqkDcGwq7ncRx9SW3FeWabWvA9sDvLm
-	SJQy4K2wGs4Tok1LtTgBH6Z19pO8hPvVq/UT6Nd591QLdmWrUnu5SEfbLQf4x/d7b163
-	S5gV2n4A1rjQd1xA+zai/zizBt2g/HYx1nhUncYyvoP8cdB8wj2mfmKtAiZcJjO1jdvk
-	JHY02Yf4xv1Qr6FrlIt+H8CidHa5Aodl5mja3AZ2BUMkCt9JUWDqWFqdV1adKUgL3stE
-	q9YQ==
+	(envelope-from <eric.auger@linaro.org>) id 1aOQW1-00029i-17
+	for qemu-arm@nongnu.org; Wed, 27 Jan 2016 08:52:09 -0500
+Received: by mail-wm0-x22d.google.com with SMTP id l66so3569060wml.0
+	for <qemu-arm@nongnu.org>; Wed, 27 Jan 2016 05:52:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=kEW56HVBFvuQTMjsJ+gLpiZFhLSeIYnrHPa0qOfsN0A=;
+	b=iXmNgbQ5yFdNG+vOTGbqstYetFISWSpgrXF1IzRPDHnLdxlwhhLgwWihkpYPv+Atin
+	ql++UHGfURp6OyByFQaR7Mvkva2qm9xB7JS+obZ7o49MdHYdYAKJ5HKx+iC65NI2j95O
+	RBvj0VSLgwLL7ARIjm8LaakOPpY9BhKYk3LOc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-type;
-	bh=4NXcM6MA/5nZhwfQny/STp/abUIWqxwobBh13h3/c10=;
-	b=dEBheT9scGRgehONhYAOp+kCAsbIPIU0fTlCBLHAZ8K2VXB71d6UQCv+O0iX65yw/o
-	4NYyveMoN4TkJlrw18ENSJ8Fhj1A2DR0HXDMyXrzv5Fv67bIfSZ6ixViqyoI6z1YLMR4
-	aLLaj8n8Q3WVlxgbZ+9zLJc8e1+Bx0pNiu837f0/dIONRyDvw2god8eRKG80Y3K05RLk
-	zQHNocRUcH/G31VTEovMPgHfO1Jk/cKa9ebsqZuak500f9Lw+ibECVqe9iYcemx02ATH
-	O0Yv4NY57hsaQC5TYXrtn/WJx9Vzkz8/nKLCLvAxrwFJPgSSCOhDHblawkwirEy59mYH
-	hfJg==
-X-Gm-Message-State: AG10YORqdmoAnaEkMyxT8xkdt9Loai3gMVpL7zBeC3+Zp8EAUpK4Px8vmfh+TtFgSE9+sG1vwv61p6mXDI3gPA==
-X-Received: by 10.182.91.38 with SMTP id cb6mr1044881obb.27.1453153981363;
-	Mon, 18 Jan 2016 13:53:01 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.182.49.199 with HTTP; Mon, 18 Jan 2016 13:52:31 -0800 (PST)
-In-Reply-To: <2d20fa6a88faf2b99719ac90c9205e280e632634.1453100525.git.crosthwaite.peter@gmail.com>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-	<2d20fa6a88faf2b99719ac90c9205e280e632634.1453100525.git.crosthwaite.peter@gmail.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 18 Jan 2016 13:52:31 -0800
-X-Google-Sender-Auth: XHqzVLy9_fsyEiaDRT9-1EQaz1I
-Message-ID: <CAKmqyKNyEH+A=q0-ntESnK1eVO3in9tQR4PSTgfbrhnKTgmHdw@mail.gmail.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=kEW56HVBFvuQTMjsJ+gLpiZFhLSeIYnrHPa0qOfsN0A=;
+	b=dGlUeLI6AXMyE/WtgLUsqWG/79UZkUlKKNuviqsLMoJ5gkiLTh/vOlL+sKeifWFguC
+	q7WSJQdchwAnlWWDNkuxhzsORj6mLcQXWklE9b0u9ztGUN4D4IZaxw2/+ksdi/VKe0fM
+	vAdZgO6vzL1qWgIVpT4tL+mZ3nKMbsEk8X/MPtRwExfYCE+wcGCiVhFVknj8bEuIrcsW
+	kHu4pWToS3/JoX1lhfHO5Gw+M8pMv12YKEz6GTtvX1mrSBCSDlyJGIXzQUGtYKMdHADK
+	/D+cEknNguRnZtsc4YI85cUfhHLnUzmHsX5Fzn+2/RvG//3zw2/82m2LJJmdsbYp9KiM
+	97gQ==
+X-Gm-Message-State: AG10YORzm+HM2RmzFMVYYEsjxKV8IDJ50KrGZN6PKQHw8gafhVvTm88pY9KHPdYVnltBspcy
+X-Received: by 10.194.71.77 with SMTP id s13mr34491063wju.175.1453902728240;
+	Wed, 27 Jan 2016 05:52:08 -0800 (PST)
+Received: from new-host-8.home (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
+	[80.11.198.90])
+	by smtp.gmail.com with ESMTPSA id t9sm6345866wjf.33.2016.01.27.05.52.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 27 Jan 2016 05:52:07 -0800 (PST)
+From: Eric Auger <eric.auger@linaro.org>
+To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
+	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
+	agraf@suse.de
+Date: Wed, 27 Jan 2016 13:51:51 +0000
+Message-Id: <1453902715-25304-4-git-send-email-eric.auger@linaro.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
+References: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c01::242
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	sridhar_kulk@yahoo.com, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, piotr.krol@3mdeb.com
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 08/17] target-arm: cpu: Move
- cpu_is_big_endian to header
+X-Received-From: 2a00:1450:400c:c09::22d
+Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
+	christoffer.dall@linaro.org
+Subject: [Qemu-arm] [RFC 3/7] Generic PCIe host bridge INTx determination
+	for INTx routing
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,109 +84,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: me9bAY0XCRwq
+X-TUID: 6oyNOaBUNx9T
 
-On Sun, Jan 17, 2016 at 11:12 PM, Peter Crosthwaite
-<crosthwaitepeter@gmail.com> wrote:
-> From: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->
-> There is a CPU data endianness test that is used to drive the
-> virtio_big_endian test.
->
-> Move this up to the header so it can be more generally used for endian
-> tests. The KVM specific cpu_syncronize_state call is left behind in the
-> virtio specific function.
->
-> Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+This patch stores information about assigned legacy interrupt numbers in
+GPEX host structure.
+This is used during GPEX INTx number determination from a pin during
+INTx routing.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Signed-off-by: Pranavkumar Sawargaonkar <address@hidden>
+Signed-off-by: Tushar Jagad <address@hidden>
+---
+ hw/arm/virt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Also, I'm not too sure what the appropriate action is here, but this
-is still signed off by your Xilinx address.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 15658f4..3839c68 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -826,6 +826,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+     char *nodename;
+     int i;
+     PCIHostState *pci;
++    GPEXHost *s;
+ 
+     dev = qdev_create(NULL, TYPE_GPEX_HOST);
+     qdev_init_nofail(dev);
+@@ -861,8 +862,11 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+     /* Map IO port space */
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
+ 
++    s = GPEX_HOST(dev);
++
+     for (i = 0; i < GPEX_NUM_IRQS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
++        s->irq_num[i] = irq + i;
+     }
+ 
+     pci = PCI_HOST_BRIDGE(dev);
+-- 
+1.9.1
 
-Thanks,
-
-Alistair
-
-> ---
->
->  target-arm/cpu.c | 19 +++----------------
->  target-arm/cpu.h | 19 +++++++++++++++++++
->  2 files changed, 22 insertions(+), 16 deletions(-)
->
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index 35a1f12..d3b73bf 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -368,26 +368,13 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->  #endif
->  }
->
-> -static bool arm_cpu_is_big_endian(CPUState *cs)
-> +static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
->  {
->      ARMCPU *cpu = ARM_CPU(cs);
->      CPUARMState *env = &cpu->env;
-> -    int cur_el;
->
->      cpu_synchronize_state(cs);
-> -
-> -    /* In 32bit guest endianness is determined by looking at CPSR's E bit */
-> -    if (!is_a64(env)) {
-> -        return (env->uncached_cpsr & CPSR_E) ? 1 : 0;
-> -    }
-> -
-> -    cur_el = arm_current_el(env);
-> -
-> -    if (cur_el == 0) {
-> -        return (env->cp15.sctlr_el[1] & SCTLR_E0E) != 0;
-> -    }
-> -
-> -    return (env->cp15.sctlr_el[cur_el] & SCTLR_EE) != 0;
-> +    return arm_cpu_is_big_endian(env);
->  }
->
->  #endif
-> @@ -1420,7 +1407,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
->      cc->do_unaligned_access = arm_cpu_do_unaligned_access;
->      cc->get_phys_page_debug = arm_cpu_get_phys_page_debug;
->      cc->vmsd = &vmstate_arm_cpu;
-> -    cc->virtio_is_big_endian = arm_cpu_is_big_endian;
-> +    cc->virtio_is_big_endian = arm_cpu_virtio_is_big_endian;
->  #endif
->      cc->gdb_num_core_regs = 26;
->      cc->gdb_core_xml_file = "arm-core.xml";
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index f83070a..54675c7 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -1795,6 +1795,25 @@ static inline bool arm_singlestep_active(CPUARMState *env)
->          && arm_generate_debug_exceptions(env);
->  }
->
-> +/* Return true if the processor is in big-endian mode. */
-> +static bool arm_cpu_is_big_endian(CPUARMState *env)
-> +{
-> +    int cur_el;
-> +
-> +    /* In 32bit endianness is determined by looking at CPSR's E bit */
-> +    if (!is_a64(env)) {
-> +        return (env->uncached_cpsr & CPSR_E) ? 1 : 0;
-> +    }
-> +
-> +    cur_el = arm_current_el(env);
-> +
-> +    if (cur_el == 0) {
-> +        return (env->cp15.sctlr_el[1] & SCTLR_E0E) != 0;
-> +    }
-> +
-> +    return (env->cp15.sctlr_el[cur_el] & SCTLR_EE) != 0;
-> +}
-> +
->  #include "exec/cpu-all.h"
->
->  /* Bit usage in the TB flags field: bit 31 indicates whether we are
-> --
-> 1.9.1
->
->

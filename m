@@ -1,103 +1,90 @@
-Received: by 10.25.159.19 with SMTP id i19csp1331278lfe;
-        Mon, 25 Jan 2016 08:07:50 -0800 (PST)
-X-Received: by 10.55.71.143 with SMTP id u137mr22103826qka.1.1453738069120;
-        Mon, 25 Jan 2016 08:07:49 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x130si25012320qka.101.2016.01.25.08.07.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Jan 2016 08:07:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.159.19 with SMTP id i19csp29785lfe;
+        Wed, 27 Jan 2016 14:16:40 -0800 (PST)
+X-Received: by 10.66.124.200 with SMTP id mk8mr46307144pab.43.1453933000700;
+        Wed, 27 Jan 2016 14:16:40 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by mx.google.com with ESMTPS id rx5si12015025pab.151.2016.01.27.14.16.40
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Jan 2016 14:16:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:39448 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aNjgC-0002CW-J8
-	for alex.bennee@linaro.org; Mon, 25 Jan 2016 11:07:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47462)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aNjg9-0002BY-D0
-	for qemu-arm@nongnu.org; Mon, 25 Jan 2016 11:07:46 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aNjg8-0003Fk-IK
-	for qemu-arm@nongnu.org; Mon, 25 Jan 2016 11:07:45 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:35529)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aNjg8-0003FX-EB
-	for qemu-arm@nongnu.org; Mon, 25 Jan 2016 11:07:44 -0500
-Received: by mail-vk0-x233.google.com with SMTP id k1so76170790vkb.2
-	for <qemu-arm@nongnu.org>; Mon, 25 Jan 2016 08:07:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=VDMFI4rkJJQRXrteq/pHkreHjA4ivVMoYODvYTUFwhU=;
-	b=XxuE7GUuQFx2BvWb8IjshJ/iT1SDY5b31G1jU5C592RYzSQvtUsXPPUnjvK/ANRWoT
-	heOuL57KFLmLJDyKNgv0sFLiNNNBgDzUMW+JwXEDLcvyA12VU/gBcOhRUzm0lGOIJhmx
-	VEgV8fKBsxH+2X4Z4sEj5f/3EbCSxhPN39kBE=
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id x125so1032411pfb.0;
+        Wed, 27 Jan 2016 14:16:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=IvXA7xV5M6sKYH/PjToWVWseNcbqA77Ac8bkx6byajA=;
+        b=rl1PbTmKuIfCQWSLy0Kxs/JwBh7bGU9XuMQxxMFCF7JsJxqa8WlRILwBWaRpjZImzm
+         Ema+tKCE1e2fHsa4cI4lq0VF8T2/cSDAD5Z0KINAb6K8v3sSCHH2UyijK0UHMiTlYIP8
+         8dPprigSDKBbmtUrs9dyPkfoibIbvuxR6X22zGyZiT1bi+UwgCHZJ4+rmMm+6aylhl9N
+         6BX07qXIKujStU5lhWUSKPDALGLdsiN757kxi5YRP5gyyIKkKxpnXebAn1Yf8f659wf1
+         jyZZN14kuBjOdT/hKvBa/8TieGCKb4+gHNh5a3/EazBs9D/e98/Nq17Y9cUYwVMN5N2s
+         8VNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=VDMFI4rkJJQRXrteq/pHkreHjA4ivVMoYODvYTUFwhU=;
-	b=l/bpawWP509Itp2azdvDY91qesls63gSDmt2robfBgHEp6dbEzT8GOxsIczpMBKKjF
-	cfaTT/gOBjU138iUVQQ9QBGiyXDDq+n/O775AZ8HLyuU4gzNHy54TpglkDJpYJN3Nday
-	zP3036erl8RsHvl7YwEDBKDch16GZJEosLcA7d8l6zaNIdOX20hWxhPI7RXiret8YwUL
-	l8na7BpDp5FQJ5cyOHRfsLwrw/EOaJE6E0n+KqT2ZKDPxsarFtVWGy4EcG0m9icY2nx5
-	4u5FgiME6f/gSbrXWZRDcLd90ZOfPYayO1Nmv+sWOVGE/0tTQyMr8rEkT+C+S0gNOPwI
-	6Kvw==
-X-Gm-Message-State: AG10YOQ1k02bY8e/ZXa4YO3uQHHh6kUHW20EotHC3U9anrgwDnkYK/tf+OJq9CGIEKRhZWuRcZL1XGg7fjgRrP9r
-X-Received: by 10.31.180.145 with SMTP id d139mr9806419vkf.83.1453738063407;
-	Mon, 25 Jan 2016 08:07:43 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Mon, 25 Jan 2016 08:07:24 -0800 (PST)
-In-Reply-To: <CAB=otbRXOcFOkiom5NdkZjD14q8EJ+URqaac1O6UmJv2AOdCyQ@mail.gmail.com>
-References: <CAB=otbRNpbTr3TK1RQrcaPWSr_SjhXwpDEcD+1LsYX6YmFReGw@mail.gmail.com>
-	<CAB=otbRXOcFOkiom5NdkZjD14q8EJ+URqaac1O6UmJv2AOdCyQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Jan 2016 16:07:24 +0000
-Message-ID: <CAFEAcA-Qm+vgjPt3eGfGdzZ-JMUoZ0-2dMiR+q1JRVzosbdRrw@mail.gmail.com>
-To: Ruslan Bilovol <ruslan.bilovol@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] Does QEMU support AArch64 Big Endian emulation on
- x86-64 host?
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8JbAdL8Fqlfn
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=IvXA7xV5M6sKYH/PjToWVWseNcbqA77Ac8bkx6byajA=;
+        b=cGGOKvp8DAbrBNeLd9Rf7YZrSKYqoTHZqWtTXZxw8BM+89wFeN3HZawCjbcujvXLeO
+         cWpPFZ/5QveecDLcqazDgap+5r2nIxS59LqMijBHvbWB3X6oy7V4t0IEOt0zsG9hMaSY
+         tPY6tj0cq4grg17vt0JXGJ91j124iCyClsNSDcNfLKrrMpYqebodH9MdkXy3Yn8fazk6
+         91KvDVzPI2YbV6M8IsHUO2IYSPYTwEpcYkLuIkBTV+aOkNBYtKeAnaCtAxaupnph9OUo
+         oSOFP7RTo8ZBd2QTu71tlx0F1aSFuUajBssxwyIdXLvl64VqkftoSeOUCmhGcZR25Y0C
+         ZUeA==
+X-Gm-Message-State: AG10YOStx9IRIg0LDAfCNAgSjKGIyixwCoMpbtW4w8EltdqESNV1OfOZf2gIHh6QHCUFKQ==
+X-Received: by 10.98.14.81 with SMTP id w78mr46383825pfi.26.1453933000269;
+        Wed, 27 Jan 2016 14:16:40 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id by2sm11306965pab.6.2016.01.27.14.16.38
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Wed, 27 Jan 2016 14:16:39 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: alex.bennee@linaro.org,
+	qemu-arm@nongnu.org,
+	edgar.iglesias@xilinx.com
+Subject: [PATCH v4 0/3] target-arm: Add a few more S2 MMU input checks
+Date: Wed, 27 Jan 2016 23:16:07 +0100
+Message-Id: <1453932970-14576-1-git-send-email-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-TUID: rGZtF05AW+Jm
 
-On 25 January 2016 at 13:51, Ruslan Bilovol <ruslan.bilovol@gmail.com> wrote:
->> I'm trying to run AArch64 Big Endian image under QEMU that I built for
->> my x86-64 Ubuntu host from latest master branch and when I'm running
->> kernel I'm getting next error:
->>  > qemu: fatal: Trying to execute code outside RAM or ROM at 0x500208000080ffff
->>
->> Similar image built as Little Endian runs fine with same QEMU tool
->> (qemu-system-aarch64)
->>
->> So I'm wondering is it possible to run QEMU AArch64 Big Endian
->> emulation on x86-64 host?
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-It is not currently supported, no. However there are some patches
-on the list[*] to add this support, so I expect a future QEMU version
-will do this.
+This adds the inputsize > pamax check and also fixes the
+startlevel checks to apply to the 64bit translations.
 
-[*] https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03025.html
+Comments welcome!
 
-thanks
--- PMM
+Cheers,
+Edgar
+
+ChangeLog:
+
+v3 -> v4:
+* Changed comment regarding our choice to fault
+* Rename check_s2_startlevel to check_s2_mmu_setup
+* Move inputsize check to check_s2_mmu_setup
+
+v2 -> v3:
+* Document pamax arg to check_s2_startlevel
+
+v1 -> v2:
+* inputsize > pmax check only applies to AArch64
+* Fix commit message typo < should be >
+
+Edgar E. Iglesias (3):
+  target-arm: Apply S2 MMU startlevel table size check to AArch64
+  target-arm: Rename check_s2_startlevel to check_s2_mmu_setup
+  target-arm: Implement the S2 MMU inputsize > pamax check
+
+ target-arm/helper.c | 36 ++++++++++++++++++++++--------------
+ 1 file changed, 22 insertions(+), 14 deletions(-)
+
+-- 
+1.9.1

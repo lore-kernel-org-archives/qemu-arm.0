@@ -1,82 +1,77 @@
-Received: by 10.25.159.19 with SMTP id i19csp267415lfe;
-        Thu, 28 Jan 2016 01:39:28 -0800 (PST)
-X-Received: by 10.140.22.210 with SMTP id 76mr2235863qgn.70.1453973968473;
-        Thu, 28 Jan 2016 01:39:28 -0800 (PST)
+Received: by 10.55.129.195 with SMTP id c186csp295885qkd;
+        Thu, 28 Jan 2016 02:11:07 -0800 (PST)
+X-Received: by 10.140.107.182 with SMTP id h51mr2320909qgf.53.1453975867342;
+        Thu, 28 Jan 2016 02:11:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w82si8847603qka.3.2016.01.28.01.39.28
+        by mx.google.com with ESMTPS id b68si3319602qkj.65.2016.01.28.02.11.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jan 2016 01:39:28 -0800 (PST)
+        Thu, 28 Jan 2016 02:11:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:54902 helo=lists.gnu.org)
+Received: from localhost ([::1]:55020 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aOj32-00085v-0W
-	for alex.bennee@linaro.org; Thu, 28 Jan 2016 04:39:28 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:46099)
+	id 1aOjXe-0004aY-VS
+	for alex.bennee@linaro.org; Thu, 28 Jan 2016 05:11:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40444)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOj2z-00083F-9T
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 04:39:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aOjXZ-0004Zw-2o
+	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 05:11:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOj2v-0008JW-1Q
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 04:39:25 -0500
-Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:38052)
+	(envelope-from <peter.maydell@linaro.org>) id 1aOjXY-0000Gh-4N
+	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 05:11:01 -0500
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:35000)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aOj2u-0008IO-QU
-	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 04:39:20 -0500
-Received: by mail-wm0-x229.google.com with SMTP id p63so15984962wmp.1
-	for <qemu-arm@nongnu.org>; Thu, 28 Jan 2016 01:39:19 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aOjXY-0000GQ-0Y
+	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 05:11:00 -0500
+Received: by mail-vk0-x232.google.com with SMTP id e6so20866506vkh.2
+	for <qemu-arm@nongnu.org>; Thu, 28 Jan 2016 02:11:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=OnMa8JnHnw3punhsFOQWa7DN3pXwYo9rqYxNf9mjEHY=;
-	b=XQ4fG0hm/gdSvflAFSD3YiQ3x2dMnrXWNlTQS6X5A/kpiCgiDQIg4V1BEKI5yAzEjm
-	2L8A7tzZv52wLYWuVhoK8vMpoYwAYu4AZxVZGi6tcuF6UUGbTPOWloLQ4fPkikU4pa/S
-	WQZrDB3e61qyCkyuJtXSYOp6t/1lyF85Sv/VE=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=1We1RfMCy1lHQm4kJCNGfUfmgM0Ovo3TCJgv4F8rOyk=;
+	b=HoTJLp+LLD7E1KMGzUoZ+JrHsse8CSGhXfYzyQ+m+QdJPspxjAFU8Ay8xPy2rew8OH
+	WAQG7KlX/4i0Op+6u1cDq2Egy9gOFRgyppiYM5PoeCNjNiBeVPjU6QgSk2f5N3SHY0mn
+	zzn59+zxujSiU5EMjxCbzYUcJ+mWObEHF+foA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=OnMa8JnHnw3punhsFOQWa7DN3pXwYo9rqYxNf9mjEHY=;
-	b=MU69BQNHjXyPWKByn2ddYSqD3KsgkMVrl5u/tmwaxih1suxaEdRdmlGhFiwP/6fr1K
-	hSDu9FmTQPjJi2Kr6SHyx5fh3Kur9ttoqQjh+DljPqS1QuxRRtYbiTgNQ4MJTbltp2Ak
-	myXhghnOcaIHXnvj6zpuEDrUAzVGVPlYmB5ihQkXZvEYlvF56NxCP95KoxmEM9GHKpkq
-	WyswksBBcJlbIOlPSiUW0Py/2q5met/ST+//0peAssRRwt27AKlDcvWAXZVn7Ql+0MjG
-	6+KOkplcXwohP5cXpJVsJxKz3CMxGJYh7jAlMFEoy2H8/jXzbcq7heMt9vFFMku1ZSRq
-	NaSA==
-X-Gm-Message-State: AG10YOQcn4fZ/ykKrvcjkxuomqlSdScyZObdb29WbxDW7JQpm35q7A5CjB3CPaFGunvOgEj6
-X-Received: by 10.28.73.135 with SMTP id w129mr2145265wma.55.1453973958932;
-	Thu, 28 Jan 2016 01:39:18 -0800 (PST)
-Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
-	[80.11.198.90]) by smtp.googlemail.com with ESMTPSA id
-	l67sm1969885wmf.11.2016.01.28.01.39.16
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 28 Jan 2016 01:39:17 -0800 (PST)
-To: Pavel Fedin <p.fedin@samsung.com>, eric.auger@st.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	alex.williamson@redhat.com, pranav.sawargaonkar@gmail.com,
-	pbonzini@redhat.com, agraf@suse.de
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=1We1RfMCy1lHQm4kJCNGfUfmgM0Ovo3TCJgv4F8rOyk=;
+	b=QWwdnZWaHz6p34ijT+WNEeFG9xl0A0MxsUbS0H5wbyxA+U4GYFYoxIDTs95eNANOng
+	+peDRgJho1/8ZI1SRoGXpoRQYDCtK9qy0HX5/8+ni4pSXe6a32vovShBkMquIxN+MIzU
+	TUZo+45/k4Lesq05DcSyzVLgpgkXkvMj4hgh+T45zjD5alaiJYa26TWx8H2XRvWH7fiw
+	0FAVKZh7ep+5sYZhBFOMhacWYGWIoznMO8H6AIknme486xAJSgCTfcGbdXjH3LN4jng9
+	z6Du6tBUH/E/yHRfFAYj54WOsxOJtOo8YHM+K2jZeiszVeeifwsG4XYtW0RuwmH+p+Ah
+	R++w==
+X-Gm-Message-State: AG10YOQCqUdsK2640VyVdapc4mwL+3TWZJd3ZH3yqf9Vlp8K6sGFOKaQ7MJkPzFQ7Kuj2/aPC6PaRNv7sRIomuJd
+X-Received: by 10.31.194.130 with SMTP id s124mr1463480vkf.92.1453975859706;
+	Thu, 28 Jan 2016 02:10:59 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Thu, 28 Jan 2016 02:10:40 -0800 (PST)
+In-Reply-To: <1453902715-25304-7-git-send-email-eric.auger@linaro.org>
 References: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
 	<1453902715-25304-7-git-send-email-eric.auger@linaro.org>
-	<00a901d1599a$eba575a0$c2f060e0$@samsung.com>
-From: Eric Auger <eric.auger@linaro.org>
-Message-ID: <56A9E1B4.2000608@linaro.org>
-Date: Thu, 28 Jan 2016 10:39:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
-MIME-Version: 1.0
-In-Reply-To: <00a901d1599a$eba575a0$c2f060e0$@samsung.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Jan 2016 10:10:40 +0000
+Message-ID: <CAFEAcA9_wR=0+Mbq-7CiQAUSphRrLB70c4MeoDawpMUzbPHLQg@mail.gmail.com>
+To: Eric Auger <eric.auger@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::229
-Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
-	christoffer.dall@linaro.org
+X-Received-From: 2607:f8b0:400c:c05::232
+Cc: eric.auger@st.com, pranav.sawargaonkar@gmail.com,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>,
+	Bharat Bhushan <Bharat.Bhushan@freescale.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>
 Subject: Re: [Qemu-arm] [RFC 6/7] hw: arm: virt: register reserved IOVA
 	region
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,46 +87,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fGf9qsThpCYc
+X-TUID: gLoDrutby2iV
 
-Hi Pavel,
-On 01/28/2016 08:10 AM, Pavel Fedin wrote:
->  Hello!
-> 
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 3839c68..7eaf8be 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -125,6 +125,7 @@ static const MemMapEntry a15memmap[] = {
->>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
->>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
->>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
->> +    [VIRT_RESERVED] =           { 0x0be00000, 0x00100000 },
-> 
->  Looks like with this approach we would need to add this to all machine models which make use of PCI. But is it a good idea?
-Yes that's correct. On the other hand not all platforms do need that
-feature.
- As far
-> as i understand, the only requirement for this region is not to clash with guest RAM addresses. So, can we instead have some code,
-> which automatically finds some place, based on the size?
-Maybe we could use the IOVA region already reserved for platform bus
-which is currently sparsely used (by vfio platform devices).
- For now we hardcode the size to 0x00100000, but in future we could query
-> the host for the size, because it's still host's MSI controller.
-Yes I agree, this is something we currently miss. I need to study how we
-can go through all domains/groups and get the max number of MSI frames
-used by any.
+On 27 January 2016 at 13:51, Eric Auger <eric.auger@linaro.org> wrote:
+> Registers a 16x64kB reserved iova region. Currently this iova
+> region is used by the kernel to map host MSI controller frames
+> (GICv2m, GITS_TRANSLATER).
 
-Thanks for the follow-up!
+Do you mean the host kernel or the guest kernel? The host
+kernel should be keeping its paws out of the guest's
+address space, and the guest kernel can manage the memory
+and the address space any way it likes, I would have thought.
+It's not clear to me what this is for.
 
-Regards
+> Signed-off-by: Eric Auger <eric.auger@linaro.org>
+> ---
+>  hw/arm/virt.c         | 10 ++++++++++
+>  include/hw/arm/virt.h |  1 +
+>  2 files changed, 11 insertions(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3839c68..7eaf8be 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -125,6 +125,7 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> +    [VIRT_RESERVED] =           { 0x0be00000, 0x00100000 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
 
-Eric
-> 
-> Kind regards,
-> Pavel Fedin
-> Senior Engineer
-> Samsung Electronics Research center Russia
-> 
-> 
+You've put the new entry between the VIRT_MMIO line and the comment that
+is associated with it.
 
+thanks
+-- PMM

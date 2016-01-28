@@ -1,116 +1,116 @@
-Received: by 10.25.159.19 with SMTP id i19csp60179lfe;
-        Wed, 27 Jan 2016 15:44:03 -0800 (PST)
-X-Received: by 10.55.79.134 with SMTP id d128mr38745851qkb.73.1453938243046;
-        Wed, 27 Jan 2016 15:44:03 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp206023lfe;
+        Wed, 27 Jan 2016 23:10:24 -0800 (PST)
+X-Received: by 10.140.32.97 with SMTP id g88mr1672472qgg.40.1453965024335;
+        Wed, 27 Jan 2016 23:10:24 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z66si9081369qgd.22.2016.01.27.15.44.02
+        by mx.google.com with ESMTPS id 36si10832996qgk.10.2016.01.27.23.10.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jan 2016 15:44:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Jan 2016 23:10:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53072 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54312 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aOZko-0004jw-L1
-	for alex.bennee@linaro.org; Wed, 27 Jan 2016 18:44:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37682)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aOgik-0002Fm-He
+	for alex.bennee@linaro.org; Thu, 28 Jan 2016 02:10:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39090)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aOZkG-0003oF-FZ
-	for qemu-devel@nongnu.org; Wed, 27 Jan 2016 18:43:29 -0500
+	(envelope-from <p.fedin@samsung.com>) id 1aOgih-0002Fc-Ob
+	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 02:10:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aOZkF-0006Sn-K7
-	for qemu-devel@nongnu.org; Wed, 27 Jan 2016 18:43:28 -0500
-Received: from mail-pa0-x244.google.com ([2607:f8b0:400e:c03::244]:36604)
+	(envelope-from <p.fedin@samsung.com>) id 1aOgic-0000bA-56
+	for qemu-arm@nongnu.org; Thu, 28 Jan 2016 02:10:19 -0500
+Received: from mailout4.w1.samsung.com ([210.118.77.14]:48652)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1aOZkF-0006Sa-D5; Wed, 27 Jan 2016 18:43:27 -0500
-Received: by mail-pa0-x244.google.com with SMTP id a20so1046654pag.3;
-	Wed, 27 Jan 2016 15:43:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=uaKZiIAsZFXLvpgE1q7dUucx9LE6+IxA7M/UqwGahFA=;
-	b=aBRTlH0gEcV/hnAdWL9oaQIbLV0crFfF+QjlIxSXX+NbhSyR8yMmHPmjf4bZeVsYs2
-	HvAkP4lmLRaPcwcYpZRp6tAeSFBjkzjg4wmbCId/DFJuu5qDemagyRwy3YdcjDRIAx/G
-	haduXAU3pIuCSc+8KFRvpwSuV06xZxcwEpw6PYWeQ1BVH9QxplZc+EPtbxVmh5fIaZW8
-	bKoAcPjfr+tUgF8LYt3wHZk24+EiNQQ7yokJABL/L+gW/x0Awb5wVkqR1IyOCJkL1/a5
-	4YQgSrJmOaS8vVkuPzFgQ0FWtFy66hVAYTWpXAv5EGSOpT2tpEHEY+xk40Or2sfrcqEM
-	OvGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=uaKZiIAsZFXLvpgE1q7dUucx9LE6+IxA7M/UqwGahFA=;
-	b=dJEQrUj8UddmFk6B8sIPEem9xYZRbU7nOpf2Xt07vCAOZ0CqKhoymOGY7obzoz2nhN
-	2BQegr8+Ubl5FQRd36Jy+zU48XiVY9DB6p8ixhJv6m0+GzexWhz1ZrKddqT/M0Y3fFvD
-	LKVmwG/MjpbDpwVFc6EMjBKa8bG8BiH9ank9P9oKOECfV07FK2gpdoBdUkYC6JmOj4Bz
-	rGlc53bDbYfj5up5OEOpC6UCcfFzBsFuAlVzLNi56eeHX20BnY6HR0O86TVzCLvzxnOh
-	YUpDcNmUFTtWa5Lu5gk0l1QOnI91c8VtPBdoxpEsZ9ArKKmNkK9Al9GM2qmenB3KcscX
-	tlIQ==
-X-Gm-Message-State: AG10YOR95cOpEq2Shxs5B/UrCGmiZ2fxcP+RuTGeglJRLvW/812LKJZYdhYu8Q9P3Pltug==
-X-Received: by 10.66.90.166 with SMTP id bx6mr47110547pab.75.1453938206701;
-	Wed, 27 Jan 2016 15:43:26 -0800 (PST)
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
-	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
-	s65sm1943243pfi.12.2016.01.27.15.43.23
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Wed, 27 Jan 2016 15:43:26 -0800 (PST)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Date: Thu, 28 Jan 2016 00:42:51 +0100
-Message-Id: <1453938171-13665-2-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1453938171-13665-1-git-send-email-edgar.iglesias@gmail.com>
-References: <1453938171-13665-1-git-send-email-edgar.iglesias@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::244
-Cc: edgar.iglesias@xilinx.com, qemu-arm@nongnu.org
-Subject: [Qemu-devel] [RFC 1/1] hw/arm: Setup EL1 and EL2 in AArch64 mode
-	for 64bit Linux boots
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <p.fedin@samsung.com>)
+	id 1aOgib-0000aT-Uy; Thu, 28 Jan 2016 02:10:14 -0500
+Received: from eucpsbgm1.samsung.com (unknown [203.254.199.244])
+	by mailout4.w1.samsung.com
+	(Oracle Communications Messaging Server 7.0.5.31.0 64bit (built May 5
+	2014)) with ESMTP id <0O1N00BF4IKWZMA0@mailout4.w1.samsung.com>; Thu,
+	28 Jan 2016 07:10:08 +0000 (GMT)
+X-AuditID: cbfec7f4-f79026d00000418a-0b-56a9bed047ad
+Received: from eusync4.samsung.com ( [203.254.199.214])
+	by eucpsbgm1.samsung.com (EUCPMTA) with SMTP id F8.9F.16778.0DEB9A65;
+	Thu, 28 Jan 2016 07:10:08 +0000 (GMT)
+Received: from fedinw7x64 ([106.109.131.169])
+	by eusync4.samsung.com (Oracle Communications Messaging Server
+	7.0.5.31.0 64bit (built May  5 2014))
+	with ESMTPA id <0O1N007C7IKVIK20@eusync4.samsung.com>; Thu,
+	28 Jan 2016 07:10:08 +0000 (GMT)
+From: Pavel Fedin <p.fedin@samsung.com>
+To: 'Eric Auger' <eric.auger@linaro.org>, eric.auger@st.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	alex.williamson@redhat.com, pranav.sawargaonkar@gmail.com,
+	pbonzini@redhat.com, agraf@suse.de
+References: <1453902715-25304-1-git-send-email-eric.auger@linaro.org>
+	<1453902715-25304-7-git-send-email-eric.auger@linaro.org>
+In-reply-to: <1453902715-25304-7-git-send-email-eric.auger@linaro.org>
+Date: Thu, 28 Jan 2016 10:10:06 +0300
+Message-id: <00a901d1599a$eba575a0$c2f060e0$@samsung.com>
+MIME-version: 1.0
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7bit
+X-Mailer: Microsoft Outlook 14.0
+Thread-index: AQJIwth0Uwm4fytvz77fNuFLp70Z2gHR86CJnhMfveA=
+Content-language: ru
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrJIsWRmVeSWpSXmKPExsVy+t/xa7oX9q0MM/h8Ws7ixJV/jBbf/vew
+	WRz/8ZXN4sVrIHf+ljOsFlc3n2Wy2L/tH6vFnDMPWCyezpnNYrGgeyFQXe8OFouJPxYwOvB4
+	tF76y+bx73A/k8fOWXfZPe5c28Pm8eTaZiaP9/uusnk8/bGX2WPz6eoAjigum5TUnMyy1CJ9
+	uwSujKerWQu+sVfc3rSKuYGxka2LkZNDQsBE4vXeKywQtpjEhXvrgeJcHEICSxkl3s28zQrh
+	fGeUWHrtFRNIFZuAusTprx9YQBIiAs8YJU5tfMgKkmAWiJOY13mGCaKjkVFiwbfzYB2cAm4S
+	xz/dBLOFBZwl5mzvBdvHIqAqcbNlAVicV8BS4vGylewQtqDEj8n3WCCGakms33mcCcKWl9i8
+	5i0zxK0KEjvOvmYEsUUErCTebZzMCFEjIjHt3z3mCYxCs5CMmoVk1Cwko2YhaVnAyLKKUTS1
+	NLmgOCk911CvODG3uDQvXS85P3cTIyQCv+xgXHzM6hCjAAejEg8vQ9TKMCHWxLLiytxDjBIc
+	zEoivIrVQCHelMTKqtSi/Pii0pzU4kOM0hwsSuK8c3e9DxESSE8sSc1OTS1ILYLJMnFwSjUw
+	Tsy90Tol7AfbngtRG5185th1uEzj6Z7kstxAYrPLmuLqi+6XT3M2/+WoP+cnt0ykcLmK6PzS
+	p+5fD+rWXnT8LJqz55n/1ibbc/IuL9iTffV9nip0bSm8/Nxp2Zwn/WHvrI5XqmwQ+cbS/czt
+	m9zZVPOPFa+Ppz8+VhRR6ypcfnfn1IB68Q3nlFiKMxINtZiLihMBRVLs4LwCAAA=
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 210.118.77.14
+Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
+	christoffer.dall@linaro.org
+Subject: Re: [Qemu-arm] [RFC 6/7] hw: arm: virt: register reserved IOVA
+	region
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9xkN8Jov+wLL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: esTIYfEKORdH
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+ Hello!
 
-When booting Linux on AArch64 enabled cores, setup EL1 and
-EL2 to use AArch64.
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3839c68..7eaf8be 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -125,6 +125,7 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> +    [VIRT_RESERVED] =           { 0x0be00000, 0x00100000 },
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/boot.c | 2 ++
- 1 file changed, 2 insertions(+)
+ Looks like with this approach we would need to add this to all machine models which make use of PCI. But is it a good idea? As far
+as i understand, the only requirement for this region is not to clash with guest RAM addresses. So, can we instead have some code,
+which automatically finds some place, based on the size? For now we hardcode the size to 0x00100000, but in future we could query
+the host for the size, because it's still host's MSI controller.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 7742dd3..d05a998 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -488,7 +488,9 @@ static void do_cpu_reset(void *opaque)
-                  * adjust.
-                  */
-                 if (env->aarch64) {
-+                    env->cp15.scr_el3 |= SCR_RW;
-                     if (arm_feature(env, ARM_FEATURE_EL2)) {
-+                        env->cp15.hcr_el2 |= HCR_RW;
-                         env->pstate = PSTATE_MODE_EL2h;
-                     } else {
-                         env->pstate = PSTATE_MODE_EL1h;
--- 
-1.9.1
+Kind regards,
+Pavel Fedin
+Senior Engineer
+Samsung Electronics Research center Russia
+
 

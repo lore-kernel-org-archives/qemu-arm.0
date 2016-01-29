@@ -1,135 +1,201 @@
-Received: by 10.25.159.19 with SMTP id i19csp1049878lfe;
-        Fri, 29 Jan 2016 08:46:04 -0800 (PST)
-X-Received: by 10.112.161.201 with SMTP id xu9mr3660069lbb.35.1454085964233;
-        Fri, 29 Jan 2016 08:46:04 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lf0-x242.google.com (mail-lf0-x242.google.com. [2a00:1450:4010:c07::242])
-        by mx.google.com with ESMTPS id iy6si8513956lbc.138.2016.01.29.08.46.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Jan 2016 08:46:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) client-ip=2a00:1450:4010:c07::242;
+Received: by 10.25.159.19 with SMTP id i19csp1050106lfe;
+        Fri, 29 Jan 2016 08:46:35 -0800 (PST)
+X-Received: by 10.55.53.208 with SMTP id c199mr11978211qka.109.1454085994809;
+        Fri, 29 Jan 2016 08:46:34 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o63si17885197qho.8.2016.01.29.08.46.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 29 Jan 2016 08:46:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::242 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x242.google.com with SMTP id e36so682103lfi.0;
-        Fri, 29 Jan 2016 08:46:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=Yq29aLq2/MjVV/XmCd0Oqg9TqudE9tX1n2pTSFSU+5o=;
-        b=G4+ojNEX0hMzR6zWSb/qfxrd26vve0JTOvZskrJVW9xOvwyR8pnhpliQOBQuiUY6yQ
-         FbmpV5/66MAvC8nBeRydj4UdVU34jgwyCbsG5vGHMZuaTADJIjCE0iEuFH5TbalO7MVt
-         MEPBK37U36iYJ2ShrvZzvgitsuNaWMuyTJHPXJquhtkEPWEIfXrOnNEDNKaGOdEfzmva
-         zXd3oXaWhMNlE4ICPNUBfIEe+a/SDcmbocB/gKcBu0nwRXjYB8pTVWrl/QdI85DLE3vf
-         h9SnOR419NWKz0zzYC/BJidQW40h2lW+MgVPzrSPKOZI+C3xwzJ4jH2vDBoZQztqk/24
-         /aLQ==
+Received: from localhost ([::1]:35231 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPCBu-0007k1-Bl
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:46:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34965)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPCBo-0007br-GR
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:46:33 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPCBj-00013O-7j
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:46:28 -0500
+Received: from mail-lb0-x244.google.com ([2a00:1450:4010:c04::244]:35608)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aPCBi-00013K-Qd; Fri, 29 Jan 2016 11:46:23 -0500
+Received: by mail-lb0-x244.google.com with SMTP id dx9so3568491lbc.2;
+	Fri, 29 Jan 2016 08:46:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=ffE9lhbJR8vcfq20I1bqtKfOCAXZhyUKBsfG6yq2gMY=;
+	b=nDVxgD0EyNLrySJI2T1GFoYDIIVaPiqsLjbgndG4s3oEn7+TorRdUhWUueX0g3+H32
+	YZU9X78CH7++878qBrVlirBP9HmvAcvciUXZqfULZSp/OcCYC24PFrP1PaDP0ZgFGeF/
+	f6E/xG5sT205goqoSl1Tz1MyzF5fcsspfI3Btoonfi2/7vHcSDMPbLt8Luz1O+T7I/3g
+	rvlCDinj4nFgbKAq56MEm/xQInprozPJjYjWA5ThkP2v/3Qm7bu9vpeyg91PMVBrYB9k
+	pb5jqhcy+RVYG6ZDBwotM0c6CkF3tgfmMXLuwswKWvmWw8Hs1EesayYhDSbe14AcmIVC
+	5YIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=Yq29aLq2/MjVV/XmCd0Oqg9TqudE9tX1n2pTSFSU+5o=;
-        b=fPcQSPDE5RNESikfV/ry7ZDB2E9GgvHFtxNCNc5KLgBcrh437as21oTYiQnuwJeYoy
-         ld+muxVcIMvDeCrhvsb1cjqYbUiUW+/hdwLSwsPlF+e63+i3+JFjQfUZcl7KfCAN6jQd
-         ZeTmCIWt8nyTnQqEM6pFlvDZOeBdRZaIIMtXZxTJI8EthmfAHH087PxSnB548ofNyBrq
-         gzZg4rO3W6NR2VMPoKWUFCH95y7UDQZy7rcmAgtefcBtYCj8gGJKPdc1JTurQc425fUA
-         NVKkLgQVvGqM39Rx3GAuRnnemZs4gY9TRnffrJ1zk8zbwomzLtFHZufkia9LLhHslWAp
-         vd6A==
-X-Gm-Message-State: AG10YOQtk/3q1JzZdVASd5HVmGdcJD9WTCQSBsCULBCW6I3glx2Mczxfcj5LmiRPVYnlAg==
-X-Received: by 10.25.213.3 with SMTP id m3mr3678788lfg.125.1454085963882;
-        Fri, 29 Jan 2016 08:46:03 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=ffE9lhbJR8vcfq20I1bqtKfOCAXZhyUKBsfG6yq2gMY=;
+	b=hnSEU9g6J89jCiACLytmCSZtCZv+amGRWiJGYyZC63Ogx7c27iEajk81XXsRXkHfIh
+	f1v2nMwjkdJSF5JYh40qEIZVD4uCiwqiIyVASI8ttIxyHdpbbxzL1KmqUYIZngli3/OW
+	Clv8OBztl3kLQjl1XHXR2aIAgdhcRhoet47kYjoYEXmphzKEwsE5EHhmRe06IaTiAocl
+	dREryZzEX3ty8AChBrmQR7rRTh/8zdKHKirU+FcRZaL2Ry+OBYKT4SE5pG0wbxKVKR4q
+	yekALpH7jfyDPw56/gpmscsjR2rqu0/oE4s66o3P/TNNpuuSHEhM3+RtHzTtAJEXCHtO
+	MoYg==
+X-Gm-Message-State: AG10YOTmh1+63cHzhnDsnng4Ij3W3ADM6jGyH8JCmgK7yQ7k+mJv1Z8EUbtTgKmJuamx8w==
+X-Received: by 10.112.172.233 with SMTP id bf9mr3655506lbc.121.1454085982036; 
+	Fri, 29 Jan 2016 08:46:22 -0800 (PST)
 Received: from [10.30.10.50] ([213.243.91.10])
-        by smtp.googlemail.com with ESMTPSA id f186sm2135206lfd.26.2016.01.29.08.46.02
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 29 Jan 2016 08:46:03 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH 2/8] target-arm: Move
- aarch64_cpu_do_interrupt() to helper.c
+	by smtp.googlemail.com with ESMTPSA id
+	m21sm2186399lfe.29.2016.01.29.08.46.20
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 29 Jan 2016 08:46:20 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-3-git-send-email-peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, patches@linaro.org
+	<1452796451-2946-4-git-send-email-peter.maydell@linaro.org>
 From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56AB9749.2090301@gmail.com>
-Date: Fri, 29 Jan 2016 19:46:01 +0300
+Message-ID: <56AB975B.50001@gmail.com>
+Date: Fri, 29 Jan 2016 19:46:19 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.1
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1452796451-2946-3-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1452796451-2946-4-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-TUID: nnZfTWaIrk1J
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::244
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 3/8] target-arm: Use a single entry point for
+ AArch64 and AArch32 exceptions
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jT3TMDPiFUVl
 
 On 14.01.2016 21:34, Peter Maydell wrote:
-> Move the aarch64_cpu_do_interrupt() function to helper.c. We want
-> to be able to call this from code that isn't AArch64-only, and
-> the move allows us to avoid awkward #ifdeffery at the callsite.
+> If EL2 or EL3 is present on an AArch64 CPU, then exceptions can be
+> taken to an exception level which is running AArch32 (if only EL0
+> and EL1 are present then EL1 must be AArch64 and all exceptions are
+> taken to AArch64). To support this we need to have a single
+> implementation of the CPU do_interrupt() method which can handle both
+> 32 and 64 bit exception entry.
+>
+> Pull the common parts of aarch64_cpu_do_interrupt() and
+> arm_cpu_do_interrupt() out into a new function which calls
+> either the AArch32 or AArch64 specific entry code once it has
+> worked out which one is needed.
+>
+> We temporarily special-case the handling of EXCP_SEMIHOST to
+> avoid an assertion in arm_el_is_aa64(); the next patch will
+> pull all the semihosting handling out to the arm_cpu_do_interrupt()
+> level (since semihosting semantics depend on the register width
+> of the calling code, not on that of any higher EL).
 
 Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target-arm/cpu-qom.h    |   2 +-
->  target-arm/helper-a64.c | 104 ------------------------------------------------
->  target-arm/helper.c     | 100 ++++++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 101 insertions(+), 105 deletions(-)
+>  target-arm/cpu-qom.h |  2 --
+>  target-arm/cpu64.c   |  3 ---
+>  target-arm/helper.c  | 75 ++++++++++++++++++++++++++++++----------------------
+>  3 files changed, 44 insertions(+), 36 deletions(-)
 >
 > diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-> index e4d4270..bda2af8 100644
+> index bda2af8..eae6cd1 100644
 > --- a/target-arm/cpu-qom.h
 > +++ b/target-arm/cpu-qom.h
-> @@ -247,8 +247,8 @@ void arm_gt_stimer_cb(void *opaque);
->  #ifdef TARGET_AARCH64
->  int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
+> @@ -249,6 +249,4 @@ int aarch64_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
 >  int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +#endif
->  
->  void aarch64_cpu_do_interrupt(CPUState *cs);
-> -#endif
->  
 >  #endif
-> diff --git a/target-arm/helper-a64.c b/target-arm/helper-a64.c
-> index fc3ccdf..a322e7b 100644
-> --- a/target-arm/helper-a64.c
-> +++ b/target-arm/helper-a64.c
-> @@ -25,7 +25,6 @@
->  #include "qemu/bitops.h"
->  #include "internals.h"
->  #include "qemu/crc32c.h"
-> -#include "sysemu/kvm.h"
->  #include <zlib.h> /* For crc32 */
 >  
->  /* C2.4.7 Multiply and divide */
-> @@ -443,106 +442,3 @@ uint64_t HELPER(crc32c_64)(uint64_t acc, uint64_t val, uint32_t bytes)
->      /* Linux crc32c converts the output to one's complement.  */
->      return crc32c(acc, buf, bytes) ^ 0xffffffff;
->  }
+> -void aarch64_cpu_do_interrupt(CPUState *cs);
 > -
+>  #endif
+> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+> index 63c8b1c..edb41f7 100644
+> --- a/target-arm/cpu64.c
+> +++ b/target-arm/cpu64.c
+> @@ -290,9 +290,6 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
+>  {
+>      CPUClass *cc = CPU_CLASS(oc);
+>  
 > -#if !defined(CONFIG_USER_ONLY)
-> -
+> -    cc->do_interrupt = aarch64_cpu_do_interrupt;
+> -#endif
+>      cc->cpu_exec_interrupt = arm_cpu_exec_interrupt;
+>      cc->set_pc = aarch64_cpu_set_pc;
+>      cc->gdb_read_register = aarch64_cpu_gdb_read_register;
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 519f066..962bb3c 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -5707,8 +5707,7 @@ void aarch64_sync_64_to_32(CPUARMState *env)
+>      env->regs[15] = env->pc;
+>  }
+>  
 > -/* Handle a CPU exception.  */
-> -void aarch64_cpu_do_interrupt(CPUState *cs)
-> -{
-> -    ARMCPU *cpu = ARM_CPU(cs);
-> -    CPUARMState *env = &cpu->env;
-> -    unsigned int new_el = env->exception.target_el;
-> -    target_ulong addr = env->cp15.vbar_el[new_el];
-> -    unsigned int new_mode = aarch64_pstate_mode(new_el, true);
+> -void arm_cpu_do_interrupt(CPUState *cs)
+> +static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+>  {
+>      ARMCPU *cpu = ARM_CPU(cs);
+>      CPUARMState *env = &cpu->env;
+> @@ -5718,16 +5717,6 @@ void arm_cpu_do_interrupt(CPUState *cs)
+>      uint32_t offset;
+>      uint32_t moe;
+>  
+> -    assert(!IS_M(env));
 > -
-> -    if (arm_current_el(env) < new_el) {
-> -        if (env->aarch64) {
-> -            addr += 0x400;
-> -        } else {
-> -            addr += 0x600;
-> -        }
-> -    } else if (pstate_read(env) & PSTATE_SP) {
-> -        addr += 0x200;
+> -    arm_log_exception(cs->exception_index);
+> -
+> -    if (arm_is_psci_call(cpu, cs->exception_index)) {
+> -        arm_handle_psci_call(cpu);
+> -        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+> -        return;
 > -    }
 > -
+>      /* If this is a debug exception we must update the DBGDSCR.MOE bits */
+>      switch (env->exception.syndrome >> ARM_EL_EC_SHIFT) {
+>      case EC_BREAKPOINT:
+> @@ -5899,11 +5888,10 @@ void arm_cpu_do_interrupt(CPUState *cs)
+>      }
+>      env->regs[14] = env->regs[15] + offset;
+>      env->regs[15] = addr;
+> -    cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
+>  }
+>  
+> -/* Handle a CPU exception.  */
+> -void aarch64_cpu_do_interrupt(CPUState *cs)
+> +/* Handle exception entry to a target EL which is using AArch64 */
+> +static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+>  {
+>      ARMCPU *cpu = ARM_CPU(cs);
+>      CPUARMState *env = &cpu->env;
+> @@ -5921,22 +5909,6 @@ void aarch64_cpu_do_interrupt(CPUState *cs)
+>          addr += 0x200;
+>      }
+>  
 > -    arm_log_exception(cs->exception_index);
 > -    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
 > -                  new_el);
@@ -146,105 +212,27 @@ Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 > -        return;
 > -    }
 > -
-> -    switch (cs->exception_index) {
-> -    case EXCP_PREFETCH_ABORT:
-> -    case EXCP_DATA_ABORT:
-> -        env->cp15.far_el[new_el] = env->exception.vaddress;
-> -        qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
-> -                      env->cp15.far_el[new_el]);
-> -        /* fall through */
-> -    case EXCP_BKPT:
-> -    case EXCP_UDEF:
-> -    case EXCP_SWI:
-> -    case EXCP_HVC:
-> -    case EXCP_HYP_TRAP:
-> -    case EXCP_SMC:
-> -        env->cp15.esr_el[new_el] = env->exception.syndrome;
-> -        break;
-> -    case EXCP_IRQ:
-> -    case EXCP_VIRQ:
-> -        addr += 0x80;
-> -        break;
-> -    case EXCP_FIQ:
-> -    case EXCP_VFIQ:
-> -        addr += 0x100;
-> -        break;
-> -    case EXCP_SEMIHOST:
-> -        qemu_log_mask(CPU_LOG_INT,
-> -                      "...handling as semihosting call 0x%" PRIx64 "\n",
-> -                      env->xregs[0]);
-> -        env->xregs[0] = do_arm_semihosting(env);
-> -        return;
-> -    default:
-> -        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-> -    }
-> -
-> -    if (is_a64(env)) {
-> -        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = pstate_read(env);
-> -        aarch64_save_sp(env, arm_current_el(env));
-> -        env->elr_el[new_el] = env->pc;
-> -    } else {
-> -        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = cpsr_read(env);
-> -        if (!env->thumb) {
-> -            env->cp15.esr_el[new_el] |= 1 << 25;
-> -        }
-> -        env->elr_el[new_el] = env->regs[15];
-> -
-> -        aarch64_sync_32_to_64(env);
-> -
-> -        env->condexec_bits = 0;
-> -    }
-> -    qemu_log_mask(CPU_LOG_INT, "...with ELR 0x%" PRIx64 "\n",
-> -                  env->elr_el[new_el]);
-> -
-> -    pstate_write(env, PSTATE_DAIF | new_mode);
-> -    env->aarch64 = 1;
-> -    aarch64_restore_sp(env, new_el);
-> -
-> -    env->pc = addr;
-> -
-> -    qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
-> -                  new_el, env->pc, pstate_read(env));
-> -
-> -    if (!kvm_enabled()) {
-> -        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-> -    }
-> -}
-> -#endif
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index a06bfaf..519f066 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -11,6 +11,7 @@
->  #include "arm_ldst.h"
->  #include <zlib.h> /* For crc32 */
->  #include "exec/semihost.h"
-> +#include "sysemu/kvm.h"
+>      switch (cs->exception_index) {
+>      case EXCP_PREFETCH_ABORT:
+>      case EXCP_DATA_ABORT:
+> @@ -5996,6 +5968,47 @@ void aarch64_cpu_do_interrupt(CPUState *cs)
 >  
->  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
->  
-> @@ -5901,6 +5902,105 @@ void arm_cpu_do_interrupt(CPUState *cs)
->      cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
->  }
->  
-> +/* Handle a CPU exception.  */
-> +void aarch64_cpu_do_interrupt(CPUState *cs)
+>      qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
+>                    new_el, env->pc, pstate_read(env));
+> +}
+> +
+> +/* Handle a CPU exception for A and R profile CPUs.
+> + * Do any appropriate logging, handle PSCI calls, and then hand off
+> + * to the AArch64-entry or AArch32-entry function depending on the
+> + * target exception level's register width.
+> + */
+> +void arm_cpu_do_interrupt(CPUState *cs)
 > +{
 > +    ARMCPU *cpu = ARM_CPU(cs);
 > +    CPUARMState *env = &cpu->env;
 > +    unsigned int new_el = env->exception.target_el;
-> +    target_ulong addr = env->cp15.vbar_el[new_el];
-> +    unsigned int new_mode = aarch64_pstate_mode(new_el, true);
 > +
-> +    if (arm_current_el(env) < new_el) {
-> +        if (env->aarch64) {
-> +            addr += 0x400;
-> +        } else {
-> +            addr += 0x600;
-> +        }
-> +    } else if (pstate_read(env) & PSTATE_SP) {
-> +        addr += 0x200;
-> +    }
+> +    assert(!IS_M(env));
 > +
 > +    arm_log_exception(cs->exception_index);
 > +    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
@@ -262,70 +250,17 @@ Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 > +        return;
 > +    }
 > +
-> +    switch (cs->exception_index) {
-> +    case EXCP_PREFETCH_ABORT:
-> +    case EXCP_DATA_ABORT:
-> +        env->cp15.far_el[new_el] = env->exception.vaddress;
-> +        qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
-> +                      env->cp15.far_el[new_el]);
-> +        /* fall through */
-> +    case EXCP_BKPT:
-> +    case EXCP_UDEF:
-> +    case EXCP_SWI:
-> +    case EXCP_HVC:
-> +    case EXCP_HYP_TRAP:
-> +    case EXCP_SMC:
-> +        env->cp15.esr_el[new_el] = env->exception.syndrome;
-> +        break;
-> +    case EXCP_IRQ:
-> +    case EXCP_VIRQ:
-> +        addr += 0x80;
-> +        break;
-> +    case EXCP_FIQ:
-> +    case EXCP_VFIQ:
-> +        addr += 0x100;
-> +        break;
-> +    case EXCP_SEMIHOST:
-> +        qemu_log_mask(CPU_LOG_INT,
-> +                      "...handling as semihosting call 0x%" PRIx64 "\n",
-> +                      env->xregs[0]);
-> +        env->xregs[0] = do_arm_semihosting(env);
-> +        return;
-> +    default:
-> +        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-> +    }
-> +
-> +    if (is_a64(env)) {
-> +        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = pstate_read(env);
-> +        aarch64_save_sp(env, arm_current_el(env));
-> +        env->elr_el[new_el] = env->pc;
+> +    /* Temporary special case for EXCP_SEMIHOST, which is used only
+> +     * for 64-bit semihosting calls -- as this is an internal exception
+> +     * it has no specified target level and arm_el_is_aa64() would
+> +     * assert because new_el could be 0.
+> +     */
+> +    if (cs->exception_index == EXCP_SEMIHOST || arm_el_is_aa64(env, new_el)) {
+> +        arm_cpu_do_interrupt_aarch64(cs);
 > +    } else {
-> +        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = cpsr_read(env);
-> +        if (!env->thumb) {
-> +            env->cp15.esr_el[new_el] |= 1 << 25;
-> +        }
-> +        env->elr_el[new_el] = env->regs[15];
-> +
-> +        aarch64_sync_32_to_64(env);
-> +
-> +        env->condexec_bits = 0;
+> +        arm_cpu_do_interrupt_aarch32(cs);
 > +    }
-> +    qemu_log_mask(CPU_LOG_INT, "...with ELR 0x%" PRIx64 "\n",
-> +                  env->elr_el[new_el]);
-> +
-> +    pstate_write(env, PSTATE_DAIF | new_mode);
-> +    env->aarch64 = 1;
-> +    aarch64_restore_sp(env, new_el);
-> +
-> +    env->pc = addr;
-> +
-> +    qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
-> +                  new_el, env->pc, pstate_read(env));
-> +
-> +    if (!kvm_enabled()) {
-> +        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-> +    }
-> +}
 >  
->  /* Return the exception level which controls this address translation regime */
->  static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+>      if (!kvm_enabled()) {
+>          cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
+

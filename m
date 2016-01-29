@@ -1,51 +1,51 @@
-Received: by 10.25.159.19 with SMTP id i19csp1203690lfe;
-        Fri, 29 Jan 2016 14:54:12 -0800 (PST)
-X-Received: by 10.55.78.75 with SMTP id c72mr13806348qkb.97.1454108050639;
-        Fri, 29 Jan 2016 14:54:10 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp1204180lfe;
+        Fri, 29 Jan 2016 14:55:50 -0800 (PST)
+X-Received: by 10.140.38.47 with SMTP id s44mr13768222qgs.22.1454108150484;
+        Fri, 29 Jan 2016 14:55:50 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v10si19930926qge.63.2016.01.29.14.54.10
+        by mx.google.com with ESMTPS id v11si17416554qka.89.2016.01.29.14.55.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 14:54:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Jan 2016 14:55:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:36814 helo=lists.gnu.org)
+Received: from localhost ([::1]:36833 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPHve-0005yz-57
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:54:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45095)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPHxG-0007sR-3A
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:55:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45059)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHsq-0000ce-PR
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:51:19 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHsp-0000Z1-4G
+	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:51:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHso-0003VD-Mm
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:51:16 -0500
-Received: from mail-by2on0102.outbound.protection.outlook.com
-	([207.46.100.102]:41329
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHsm-0003Th-My
+	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:51:15 -0500
+Received: from mail-by2on0117.outbound.protection.outlook.com
+	([207.46.100.117]:38976
 	helo=na01-by2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aPHsj-0003Pv-6g; Fri, 29 Jan 2016 17:51:09 -0500
+	id 1aPHsm-0003Rx-1Q; Fri, 29 Jan 2016 17:51:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=BqyR/++/q5K3DRbP4DMUyJu0r8qkuz3luxhDyfrK3vY=;
-	b=dVxXh4QIAMSWP9wMzqSeNsvlAm4ILHtp8ZuMaGkfYAeZPdU4OXwsmId0Bu4mFYiHXnRzqZEBQbW3ZokeNZMs/bwX/EvapD7vSik3ILPL4S7W6JNS0f2gL0SxHY0g4eAu9gJkJeqAHNbawl5zFJSTJmLX3xTBeC/4d2ixXvx+tIQ=
+	bh=VLnyrXd/Q1+xl+yQbROM2QU8LtHzqliJz9m3MLvYb1Y=;
+	b=YodfLeWR5T5buFwnSzORCYPNrFiJlsYxTyW7iXzN6XXHqgiEmwuNqj9vN1pV48feCyVS5BsbHAiWzeAHou1Kiyy9FJOrLzMnqCfPrt+vu3WkHPWf42splzGpJhpqGCx9mvN9FT6C9grugwoJOhNfhuZbdVDHhxRioXsINHIMUUw=
 Authentication-Results: nongnu.org; dkim=none (message not signed)
 	header.d=none; nongnu.org;
 	dmarc=none action=none header.from=microsoft.com; 
 Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:c::724)
 	by BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with
 	Microsoft
-	SMTP Server (TLS) id 15.1.390.13; Fri, 29 Jan 2016 22:51:06 +0000
+	SMTP Server (TLS) id 15.1.390.13; Fri, 29 Jan 2016 22:51:08 +0000
 From: Andrew Baumann <Andrew.Baumann@microsoft.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri, 29 Jan 2016 14:50:41 -0800
-Message-ID: <1454107844-15704-6-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Fri, 29 Jan 2016 14:50:43 -0800
+Message-ID: <1454107844-15704-8-git-send-email-Andrew.Baumann@microsoft.com>
 X-Mailer: git-send-email 2.5.1
 In-Reply-To: <1454107844-15704-1-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1454107844-15704-1-git-send-email-Andrew.Baumann@microsoft.com>
@@ -54,16 +54,16 @@ Content-Type: text/plain
 X-Originating-IP: [2001:4898:80e8:c::724]
 X-ClientProxiedBy: CY1PR17CA0008.namprd17.prod.outlook.com (25.163.68.18) To
 	BLUPR0301MB2034.namprd03.prod.outlook.com (25.164.22.24)
-X-MS-Office365-Filtering-Correlation-Id: 8d1db1c5-1383-4b28-92d5-08d328feac94
+X-MS-Office365-Filtering-Correlation-Id: d763c9ed-e949-4553-e691-08d328feae29
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2034;
-	2:4hj4NFcSvtoXE5hRWW+OAy8vrRucDDuZraO8tcskj1Z6UwgegrTepDRriOFDLVHHjIs50Nuhs1htgaDvFr64Mtd/EnmGFWNc/HX83y1MfZ03qI7ZNsNqxyf/DLlNSMA/9tXLcIqtIZgFmI+ZMjBUIEY+/EUggfOTXCtj3lD56FSgeBs+vhDQAuXP+BfpEKup;
-	3:RVUu2mIB2wyJrQkrtbreyQV+C0BUoUiGgeM5iST1l9l3OhRmlwVZL2prbpLbRaBiizkMChCf25clOU32hHto1C4lY2zmy2YV17hzG8jWJBnjYjCnngdG7HScW7CTXZhu;
-	25:5XMURayFi6Y8dqCv88v8rgu1Hab5TqT7Ynzi8pIijVGN8YTSp+ZWmhJTk91vwYtFwNf0tDkBL5vQf49IjoB3Jp/s1NLSFIe1t/sFM1CZQgUWA6Sn2N+reK18xAE8W3pdEmWU/kps5b7PNCh8v6mtaVwBNXgPV1gKXviSequ2Gt1VIVSYBQUOdBd16nuh6noNlaWSgyAGLOTQa89AFG/MwkNQmGkG4O7KNnSU+NaO5Gw1xyzY5PwU9fqKkwA0+q4uD/Ct8VeDgpZRzHTs9ygxPWN/532cgC32DppVh8x/9PQ=
+	2:R44LIygYSMC3QySz2bsWX8wp55M5g3KgtcxZZtznfCLZAkoqy96MJt3No1HVuqBBR8jw0ZQhdZsQZpFNTAiWqxAOM0f19UtuAdjOxaWndepxLSdipboOTngXsIyLmgi851DtWTaSNUaCoceXcgQUw7bYxdkEN8rpChHb7qyCS9KhbUW4TnAVJFi/1x1MZUx2;
+	3:Rqx3drSXcAOWU88J+rOAzh2wiTjD1MU8bFfplI8BSvg1uXA3BCafhYfrEP0QOYNGA5bj3SH66vxDftJcatuubqSMMdr2+DzVARCknCKdmj9zwo/We8P1y5mJU4QjEOA/;
+	25:zenDKHnsvDv2vAGdBi4D8DwW4zcrFsgfWj3reA0rj3MSba2/1uXPprDbBrPvpPR6eH5n2K+FBRXGxbg00tVl3zu5YQBNdwhkSbdgxaTTy15B8m/8bPZCCEVya96MmJtznqANGxb4V9q0y2GpdxGVKJ2nvMKP60t3WAoc+BX0j18Rk3N/nQTObrES081pUDA5Yokll6AG6fu9aXyOlXNfhD6TIgZ/pb15P8A6KCYHmoGW0KOCgt6qjcsBow8rOoUA+ZM1sUWgHK0h0uXSVmAAkMvxHUs7xD7VqLUhExDa02s=
 X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2034;
-	20:rUzPl0hYWGaThJEfw21UMeZrZitpHV8j0IKERkdvpudNdBjJgpzWKbUfYRoLj7ehnjbFBInI2hojM+4QukW6sGhIkCEHotCZ5CJ902/x4fhxltwZuwmTkosxZIlih+PZHH6UyRx/sQbz4Yv3DaNC8ZNEYiq8tvFLUzF9TijsWHOS39+jrujOU8dzj5Up5ZZdyDfNOrUQ4YjqdPiFee1FRGfST1fzOrnxAr2B6ZqVJx64OQPniJlvR5ey0ZYyjQLjfgFcaZx1yvf9ZbV7lmLOU2Sy4TvwQah57XjKDBjDCV2Aiek5LrMWnJOkhjurPWq0JTfIsZWO3Z0dbkQJFLzO5dCQiGiH9MjszuHAkb2YmFwfpa1ulcy85Pn8y0iDCDzJQk0p+yWrFDdGZtjR30OQu6esfhSIZLMRsTJgx7Fv1fZz69QvaakDYjrdchPG2r+SF2fpZv4mcfVdJYnZsdpz357+PRXTu8BQpGBxpZ0eE5YqEY5q2AhXsagGiBnThj50;
-	4:s3WF1b0BeytHgqWmw/8eici17qoOCBEoUly8uYqAWfUH9OLVkrHQGGzDXXS1/2dzGhEBdsNEpi+oBqDty1Ljqwbk5+CDBIAc+ol2bFJYn9XL0a88dQDTEif8lzLfDLwUxyQV9vTJwr8E3/TRAaZCartRuvnlhTR8uHwrxTNIokYVfsXu22/mZGCf9MR1ubadb889aqoXQnerP5zjPI9O5YNiEjWs9EgtI8fXxt5ko1hRZ/t34vmIgBwyR1f5NoyzcioMHoCEZ5p3/zVpoHtAfvhpce4DpEkZZR8vVhEJs4uPoA0nl3NpAxRkcJK8G8qBGZzkxiTBJl//ZY7l90N6yzTEo6V5Y/Fkj6FrWNs1sxGgjgt86TiHSUdTaZ+Nn/xJ
-X-Microsoft-Antispam-PRVS: <BLUPR0301MB2034551CAA90D6726FD20CF79EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	20:Z3AhhDgsdL6xw96yT8R7Www7R83QOyDSqrJmiZGIctAbL0jSsVijr1DZn0mQVplG/3tuTM4za1zV5a9tC3MlOAQFHaPPht37Ae/2zdK518L7fZiBHptEhysZcMVMRx8UAwstSPa7AWqmb3EJJJuY6EilUCv8r6BiBijbEuJG/UDYfdeBakY4NxdtkzT693zGlb8r7nwTvPH/zCKNVss8hFpI4/N+2120rw4EocwQtkpNZETUJRNKWPR41OofCXJ4C2iuGR7AFDyBZK0LhZ0uy4Dpo/VqSX4crUTSZvXmjQMlHcfXjxVEr38CraLL2oDaZOBBiexZf+HIpoR7u9FozcWZk95lfVG2vqk7h7cJm8u58Znq4gOh36gpdtNQBvqblB2af6uX5zFttVT9YBA7A2nNvuqCQTdgK1dqYLnJG79NkxS2JH5RaEjb7HCE0fjGk+U9qmc9JHDcDQtfFCUQZjvlm8ytd+1lOTU9h0JqkR35DNlpA/E4wnz3HjvAkNF6;
+	4:55vY6HBinTURuPAyJBSRSZxX9LuJpGc+i/+YH7yYzmaaF/+m1sTtkhQ7DJplZTiSPT5Jd2ee/qoZ1DxMPtZH4amg7MAZ8duAHLw4U4R3bI0cJQ4FWkVqM8NscC0C/LTtSDlZmJ9iW9snQ8zEONwcILwtgVZ4HLM45UYXU+SxYvvLqo6Y3lMb67sTOJQLb8kiuKlvQxc7WcTC77t/ScpIlyKF+hYahSt+rp21E9iEF1KFBCkWrOetFDmoRa/pvoDFX4FJGutSUyGQ89dFbikn8wgdm7G7vZFYjQp7NLy08RlmKm8wzhHvoA3diGRRACSWRUzc0pAOlspJXIG124ZATP53PGU19qfGBXZ1KhcDVAGuzX4UzVvkQwQdNHRNJ2LF
+X-Microsoft-Antispam-PRVS: <BLUPR0301MB2034DD11003CD022C2185ACC9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:;
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046);
@@ -71,477 +71,215 @@ X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	SRVR:BLUPR0301MB2034; 
 X-Forefront-PRVS: 083691450C
 X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(6009001)(52044002)(229853001)(2950100001)(1096002)(6116002)(15975445007)(3470700001)(122386002)(107886002)(5003940100001)(110136002)(5001960100002)(40100003)(48376002)(47776003)(86612001)(575784001)(86362001)(50986999)(4001430100002)(189998001)(76176999)(586003)(92566002)(10290500002)(5008740100001)(87976001)(4326007)(50226001)(2351001)(10090500001)(50466002)(36756003)(5005710100001)(5004730100002)(77096005)(19580405001)(2906002)(19580395003)(42186005)(21314002)(3826002)(309714004);
+	SFS:(10019020)(6009001)(229853001)(2950100001)(1096002)(6116002)(3470700001)(122386002)(107886002)(5003940100001)(110136002)(5001960100002)(40100003)(48376002)(47776003)(86612001)(575784001)(86362001)(50986999)(4001430100002)(189998001)(76176999)(586003)(92566002)(10290500002)(5008740100001)(87976001)(4326007)(50226001)(2351001)(10090500001)(50466002)(36756003)(5005710100001)(5004730100002)(77096005)(19580405001)(2906002)(19580395003)(42186005)(3826002);
 	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
 	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
 	MLV:sfv; LANG:en; 
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BLUPR0301MB2034;
-	23:iWXHtBacgfGU8jo6/5XR0VWDbdftHgUaDmQQZYz?=
-	=?us-ascii?Q?3/k0Vd9baaidI+w4ub+y7XYVHUbRSHqslGziIH939NjLFE5m8Af6N1tB5WuB?=
-	=?us-ascii?Q?ztdg2rT+8yuSfthyP/oBnv1El5NpHVPDWYVlPpAxyQ5sTm1N6108W9VhL+le?=
-	=?us-ascii?Q?nai17I2NF0FmskAzQQ7VMBFAZl+QlNKNPvpaWmsWZgnQrXMe3RVc0Ja0i2Sb?=
-	=?us-ascii?Q?5UX+vcmVY1kiejeHP3nIDMbBxAgKx8dpO2r0WQ5gB19IB1jJNqc3Hn2QmtCf?=
-	=?us-ascii?Q?8icC62fHV02Nu/PWM4p+pZPazSIt+Y8hW+99lA5yLINzaLP0lXp0+mYRnCHd?=
-	=?us-ascii?Q?hOLrGlvG03f0Mibk8izcY/04s6Zs65iDMA1ndAAY5pc3+jnhflmYh+aexD4j?=
-	=?us-ascii?Q?WzHMLViIyq62lGDHg+3tLWuW5jq5IoUO3bhF1jhiUb8nwWlj7P98o5BYdyYo?=
-	=?us-ascii?Q?Nfd/JAS4lXIN8XZ/W0iScOtuThuCEFLGGjSHgfOPjkFfl6D5fM4xNV/unPZO?=
-	=?us-ascii?Q?oAv7IPTGICx55QOnKAIVyyE7ylvv3yT8QhosNQK/dT47/kvelZTU4mScpDdv?=
-	=?us-ascii?Q?OwjlemcYpLbwdxgohG5PZkkrB4nI8YrxZr7ic/fo+XHqXSqC6u1giSQfX6Ru?=
-	=?us-ascii?Q?LoXl7iukRPSyhvTl8G5fJIsFSbvPydUHiXUCz3elNZfn3DXtYuzrO/g9BlBB?=
-	=?us-ascii?Q?hHc0J/9b1zwz1dXNT2AfmByOcLsZZkbHniADVRYMIO5G0Kp+IbO8zDxKpKvs?=
-	=?us-ascii?Q?zzbvLjTMg4TF7h5wqioGkcPP/qmCRezkThiUyWJwEQzd9C2zYVP7UlmywdGJ?=
-	=?us-ascii?Q?7PTA+Grvilt6fuaLz9aj8gjpLnilLaSQ0j36fna6eudVTlFhYvzas9cnUg1O?=
-	=?us-ascii?Q?24AMYGGYhCWjxjdVqY1tilY38hJ+c+0LRyK878crE6iC/UUT887qukAOuKAk?=
-	=?us-ascii?Q?9tfzyIbFCiJ2Nv3Rtwj7lqJCsAySwFcuIHisiGGik55vmEr121zVxFYEsBW9?=
-	=?us-ascii?Q?vmZPgUL+n4LuRHIZSk6iT+WFXq9HhsfxMBQHriZzWhYiwEud0rfMEfkPpROK?=
-	=?us-ascii?Q?bPc0uUx2iZ8570/LHS/3zFvuJLazM9O3LvNBKWQkVIbzbJDU9W4au/mGQ9kS?=
-	=?us-ascii?Q?2X5aYwI08ySJWVAYG8eduZjV8nIhka3GW6bSxj9e8fwvxuHBJ3tuxZ31MNjZ?=
-	=?us-ascii?Q?MSpt6YCr8kUIgvtkrnSR2LbrMPB6ioUd4+yGq?=
+	23:XH9Od0n3hrPM3UD3HNp8xLuOvgRIFF1RQ27jnd0?=
+	=?us-ascii?Q?4lMdGQBhKwDhO9j0/cHelONZhvozJeR9JpERJWGRsEdf5mk+FVHs6UEAwbJe?=
+	=?us-ascii?Q?I4ueHzRVxQdbqqYRmiFFGSFWDVoZXv75kUHvjEEuSFWqIJ7+K+k1N1IILODV?=
+	=?us-ascii?Q?ET0Ng7JQwxeXSRkzZaRXLTfgaiQDLc4M4yS8XQ6a4YkvAU2B9DNOpZtWbk2n?=
+	=?us-ascii?Q?xb77XOALB2Zp+y0LJStaF+1osl3ZuO/0vzkL4I6PaZ3PZ37AEgz5/9W8oRmO?=
+	=?us-ascii?Q?TMdWqWi8TUQel2bpEzNbzAu1tSe1DzaGwtwdixRM/qeNaBOeLXy6LljdcM81?=
+	=?us-ascii?Q?3CGGuLOH4wsG0xr/xMgrupiwMm7dNsRNxrWZliyD43+Nhc9MwTsXrjtzlNhE?=
+	=?us-ascii?Q?hf4yUNYPkxYCbkYXU6I9PO2DEjWhViqPiMp9ZoDj1px8rNmLQcMp7mW0CCFs?=
+	=?us-ascii?Q?1ouTrDEqoTYIG2LgC1v4w5NTdE1WN6zDGK4XovHRt4A1vYxwGF8v0B4euHEM?=
+	=?us-ascii?Q?slZWLMyzsASdFcJIePCfsXFNVLqcifJbPMwO3nju5eRxkLoK3lOOq6GQru0t?=
+	=?us-ascii?Q?NerdiAKD5ZG3W6FgrCxridemjWlHYJ7vAykgT0uA7HPQ5+VQe8RZ13HuRgkC?=
+	=?us-ascii?Q?oU/mFUDL1cNi66qbaSAO+umTbjcr+JA5T3gv6aOGeZUb9w1jp/uBuf0CKglV?=
+	=?us-ascii?Q?ew0H/oOQj+TKggIkYb6gfWyWbhEkHZYX2x6r9glwoz/43hEQ9VIApKXrzJqQ?=
+	=?us-ascii?Q?dclcjvgmVZwkyomjkP3i3Yb/UtHKNashLinpcTZf13YFtejNW+TCmEuuPFSC?=
+	=?us-ascii?Q?gz64LvO+ZvTBpU53p0TrYQyBjfA5nr8ZYMKmoZY+DGSFr+w1BHcp0CD8Ionp?=
+	=?us-ascii?Q?8Gu/49XCzbwGCQdqIm5r/BOArLYqndL4xdvGRhxFPEsBAWcT4rjSReMR/1tg?=
+	=?us-ascii?Q?ozjyG7GxD7UnTokDuDZGaYUkFA9sNtFqnwb23TTXt+tWaCA3Qx9o30QUnb9t?=
+	=?us-ascii?Q?v3Pcf9Map/9dgMimN8OGTfBjWLmy+EL88Jrae0nxEE2RtIMWEURLikTgrg5o?=
+	=?us-ascii?Q?yrWiAP4Vz6IH5SzjTtSQYdfRX5u84ibjtO6H1/y9ca6Bd0mA/ZA=3D=3D?=
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2034;
-	5:lPOfW+uxMWk+XJ5ckApzQZ7br7uEBE8E6ysgSNB0er9Q11pOH9z4gS2XUV+dJlzz5ogSxoD4wVpqX5E0E11oJH3uQK4PkWMDYsLFa0c6Ezu3HTdOP2ZbycwrqzUQPk1JHpimBxmBfPfHr0m5jUlVEA==;
-	24:tJTUVWQb7M1Yi1zLHSzUZtibK7isel3THbk6ytLlExCft+TsNeDP7GYkc7IsRbI1eMwLf/3+rgxAsmUJdT2IXqm0JXM5PMoHrBNVtPBwaGM=
+	5:pv1g4AgRRGeN9D0Rd6stPMVnppnrV/kbxF4DlfNPMu9+56RxfvfNRli0PAfmHVSJ2mUGo6/h5uSw88EcWPBSuj3H3P1KZhVnLeiPCzzJkm+csieqkSeMIhCo0wqNwbc2+TKd8Zpm0jrhNG4MgflO6Q==;
+	24:rqoQIIGGiespVRY09xj1TiqObvQqd7S8LdbP1BZjgQDW42aCxLEB6ylr41p6+cyw4zukGTxszPCxPOEMMLAKoS09CQco0r0Etp071MAHdk4=
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jan 2016 22:51:06.2843 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jan 2016 22:51:08.9563 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.102
+X-Received-From: 207.46.100.117
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Rob Herring <robh@kernel.org>
-Subject: [Qemu-arm] [PATCH v5 5/8] bcm2836_control: add bcm2836 ARM control
-	logic
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v5 7/8] arm/boot: move highbank secure board
+	setup code to common routine
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t4VnfnVr1LWU
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8Lo58a3ONYIq
 
-This module is specific to the bcm2836 (Pi2). It implements the top
-level interrupt controller, and mailboxes used for inter-processor
-synchronisation.
+The new version is slightly different, to support Rasbperry Pi (in
+particular, Pi1's arm11 core which doesn't support v7 instructions
+such as MOVW).
 
+Tested-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 ---
 
 Notes:
     v5:
-    * <= IRQ_CNTVIRQ rather than < IRQ_MAILBOX0 for clarity
-    * refactor state struct to keep derived state separate from migrated state
-    
-    v4:
-    * delete unused defs
-    * s/localirqs/timerirqs/
-    * factor out deliver_local() from bcm2836_control_update
-    * use deposit32 in place of bit manipulation in set_local_irq
-    * introduced register offset defs, and reduced comments in read/write handlers
-    * delete commented code
-    * s/_/-/ rename GPIOs
-    
-    v3:
-     * uint8 localirqs
-     * style tweaks
-     * add MR access size limits
+     * style/formatting changes only
 
- hw/intc/Makefile.objs             |   2 +-
- hw/intc/bcm2836_control.c         | 303 ++++++++++++++++++++++++++++++++++++++
- include/hw/intc/bcm2836_control.h |  51 +++++++
- 3 files changed, 355 insertions(+), 1 deletion(-)
- create mode 100644 hw/intc/bcm2836_control.c
- create mode 100644 include/hw/intc/bcm2836_control.h
+ hw/arm/boot.c        | 51 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/highbank.c    | 37 ++-----------------------------------
+ include/hw/arm/arm.h |  5 +++++
+ 3 files changed, 58 insertions(+), 35 deletions(-)
 
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 2ad1204..6a13a39 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -24,7 +24,7 @@ obj-$(CONFIG_GRLIB) += grlib_irqmp.o
- obj-$(CONFIG_IOAPIC) += ioapic.o
- obj-$(CONFIG_OMAP) += omap_intc.o
- obj-$(CONFIG_OPENPIC_KVM) += openpic_kvm.o
--obj-$(CONFIG_RASPI) += bcm2835_ic.o
-+obj-$(CONFIG_RASPI) += bcm2835_ic.o bcm2836_control.o
- obj-$(CONFIG_SH4) += sh_intc.o
- obj-$(CONFIG_XICS) += xics.o
- obj-$(CONFIG_XICS_KVM) += xics_kvm.o
-diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
-new file mode 100644
-index 0000000..ad622aa
---- /dev/null
-+++ b/hw/intc/bcm2836_control.c
-@@ -0,0 +1,303 @@
-+/*
-+ * Rasperry Pi 2 emulation ARM control logic module.
-+ * Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * Based on bcm2835_ic.c (Raspberry Pi emulation) (c) 2012 Gregory Estrade
-+ * This code is licensed under the GNU GPLv2 and later.
-+ *
-+ * At present, only implements interrupt routing, and mailboxes (i.e.,
-+ * not local timer, PMU interrupt, or AXI counters).
-+ *
-+ * Ref:
-+ * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/QA7_rev3.4.pdf
-+ */
-+
-+#include "hw/intc/bcm2836_control.h"
-+
-+#define REG_GPU_ROUTE           0x0c
-+#define REG_TIMERCONTROL        0x40
-+#define REG_MBOXCONTROL         0x50
-+#define REG_IRQSRC              0x60
-+#define REG_FIQSRC              0x70
-+#define REG_MBOX0_WR            0x80
-+#define REG_MBOX0_RDCLR         0xc0
-+#define REG_LIMIT              0x100
-+
-+#define IRQ_BIT(cntrl, num) (((cntrl) & (1 << (num))) != 0)
-+#define FIQ_BIT(cntrl, num) (((cntrl) & (1 << ((num) + 4))) != 0)
-+
-+#define IRQ_CNTPSIRQ    0
-+#define IRQ_CNTPNSIRQ   1
-+#define IRQ_CNTHPIRQ    2
-+#define IRQ_CNTVIRQ     3
-+#define IRQ_MAILBOX0    4
-+#define IRQ_MAILBOX1    5
-+#define IRQ_MAILBOX2    6
-+#define IRQ_MAILBOX3    7
-+#define IRQ_GPU         8
-+#define IRQ_PMU         9
-+#define IRQ_AXI         10
-+#define IRQ_TIMER       11
-+#define IRQ_MAX         IRQ_TIMER
-+
-+static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t irq,
-+                          uint32_t controlreg, uint8_t controlidx)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 7742dd3..5c662fb 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -178,6 +178,57 @@ static void default_write_secondary(ARMCPU *cpu,
+                      smpboot, fixupcontext);
+ }
+ 
++void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
++                                            const struct arm_boot_info *info,
++                                            hwaddr mvbar_addr)
 +{
-+    if (FIQ_BIT(controlreg, controlidx)) {
-+        /* deliver a FIQ */
-+        s->fiqsrc[core] |= (uint32_t)1 << irq;
-+    } else if (IRQ_BIT(controlreg, controlidx)) {
-+        /* deliver an IRQ */
-+        s->irqsrc[core] |= (uint32_t)1 << irq;
-+    } else {
-+        /* the interrupt is masked */
++    int n;
++    uint32_t mvbar_blob[] = {
++        /* mvbar_addr: secure monitor vectors
++         * Default unimplemented and unused vectors to spin. Makes it
++         * easier to debug (as opposed to the CPU running away).
++         */
++        0xeafffffe, /* (spin) */
++        0xeafffffe, /* (spin) */
++        0xe1b0f00e, /* movs pc, lr ;SMC exception return */
++        0xeafffffe, /* (spin) */
++        0xeafffffe, /* (spin) */
++        0xeafffffe, /* (spin) */
++        0xeafffffe, /* (spin) */
++        0xeafffffe, /* (spin) */
++    };
++    uint32_t board_setup_blob[] = {
++        /* board setup addr */
++        0xe3a00e00 + (mvbar_addr >> 4), /* mov r0, #mvbar_addr */
++        0xee0c0f30, /* mcr     p15, 0, r0, c12, c0, 1 ;set MVBAR */
++        0xee110f11, /* mrc     p15, 0, r0, c1 , c1, 0 ;read SCR */
++        0xe3800031, /* orr     r0, #0x31              ;enable AW, FW, NS */
++        0xee010f11, /* mcr     p15, 0, r0, c1, c1, 0  ;write SCR */
++        0xe1a0100e, /* mov     r1, lr                 ;save LR across SMC */
++        0xe1600070, /* smc     #0                     ;call monitor to flush SCR */
++        0xe1a0f001, /* mov     pc, r1                 ;return */
++    };
++
++    /* check that mvbar_addr is correctly aligned and relocatable (using MOV) */
++    assert((mvbar_addr & 0x1f) == 0 && (mvbar_addr >> 4) < 0x100);
++
++    /* check that these blobs don't overlap */
++    assert((mvbar_addr + sizeof(mvbar_blob) <= info->board_setup_addr)
++          || (info->board_setup_addr + sizeof(board_setup_blob) <= mvbar_addr));
++
++    for (n = 0; n < ARRAY_SIZE(mvbar_blob); n++) {
++        mvbar_blob[n] = tswap32(mvbar_blob[n]);
 +    }
-+}
++    rom_add_blob_fixed("board-setup-mvbar", mvbar_blob, sizeof(mvbar_blob),
++                       mvbar_addr);
 +
-+/* Update interrupts.  */
-+static void bcm2836_control_update(BCM2836ControlState *s)
-+{
-+    int i, j;
-+
-+    /* reset pending IRQs/FIQs */
-+    for (i = 0; i < BCM2836_NCORES; i++) {
-+        s->irqsrc[i] = s->fiqsrc[i] = 0;
++    for (n = 0; n < ARRAY_SIZE(board_setup_blob); n++) {
++        board_setup_blob[n] = tswap32(board_setup_blob[n]);
 +    }
-+
-+    /* apply routing logic, update status regs */
-+    if (s->gpu_irq) {
-+        assert(s->route_gpu_irq < BCM2836_NCORES);
-+        s->irqsrc[s->route_gpu_irq] |= (uint32_t)1 << IRQ_GPU;
-+    }
-+
-+    if (s->gpu_fiq) {
-+        assert(s->route_gpu_fiq < BCM2836_NCORES);
-+        s->fiqsrc[s->route_gpu_fiq] |= (uint32_t)1 << IRQ_GPU;
-+    }
-+
-+    for (i = 0; i < BCM2836_NCORES; i++) {
-+        /* handle local timer interrupts for this core */
-+        if (s->timerirqs[i]) {
-+            assert(s->timerirqs[i] < (1 << (IRQ_CNTVIRQ + 1))); /* sane mask? */
-+            for (j = 0; j <= IRQ_CNTVIRQ; j++) {
-+                if ((s->timerirqs[i] & (1 << j)) != 0) {
-+                    /* local interrupt j is set */
-+                    deliver_local(s, i, j, s->timercontrol[i], j);
-+                }
-+            }
-+        }
-+
-+        /* handle mailboxes for this core */
-+        for (j = 0; j < BCM2836_MBPERCORE; j++) {
-+            if (s->mailboxes[i * BCM2836_MBPERCORE + j] != 0) {
-+                /* mailbox j is set */
-+                deliver_local(s, i, j + IRQ_MAILBOX0, s->mailboxcontrol[i], j);
-+            }
-+        }
-+    }
-+
-+    /* call set_irq appropriately for each output */
-+    for (i = 0; i < BCM2836_NCORES; i++) {
-+        qemu_set_irq(s->irq[i], s->irqsrc[i] != 0);
-+        qemu_set_irq(s->fiq[i], s->fiqsrc[i] != 0);
-+    }
++    rom_add_blob_fixed("board-setup", board_setup_blob,
++                       sizeof(board_setup_blob), info->board_setup_addr);
 +}
 +
-+static void bcm2836_control_set_local_irq(void *opaque, int core, int local_irq,
-+                                          int level)
-+{
-+    BCM2836ControlState *s = opaque;
+ static void default_reset_secondary(ARMCPU *cpu,
+                                     const struct arm_boot_info *info)
+ {
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 620b526..e25cf5e 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -35,49 +35,16 @@
+ #define MPCORE_PERIPHBASE       0xfff10000
+ 
+ #define MVBAR_ADDR              0x200
++#define BOARD_SETUP_ADDR        (MVBAR_ADDR + 8 * sizeof(uint32_t))
+ 
+ #define NIRQ_GIC                160
+ 
+ /* Board init.  */
+ 
+-/* MVBAR_ADDR is limited by precision of movw */
+-
+-QEMU_BUILD_BUG_ON(MVBAR_ADDR >= (1 << 16));
+-
+-#define ARMV7_IMM16(x) (extract32((x),  0, 12) | \
+-                        extract32((x), 12,  4) << 16)
+-
+ static void hb_write_board_setup(ARMCPU *cpu,
+                                  const struct arm_boot_info *info)
+ {
+-    int n;
+-    uint32_t board_setup_blob[] = {
+-        /* MVBAR_ADDR */
+-        /* Default unimplemented and unused vectors to spin. Makes it
+-         * easier to debug (as opposed to the CPU running away).
+-         */
+-        0xeafffffe, /* notused1: b notused */
+-        0xeafffffe, /* notused2: b notused */
+-        0xe1b0f00e, /* smc: movs pc, lr - exception return */
+-        0xeafffffe, /* prefetch_abort: b prefetch_abort */
+-        0xeafffffe, /* data_abort: b data_abort */
+-        0xeafffffe, /* notused3: b notused3 */
+-        0xeafffffe, /* irq: b irq */
+-        0xeafffffe, /* fiq: b fiq */
+-#define BOARD_SETUP_ADDR (MVBAR_ADDR + 8 * sizeof(uint32_t))
+-        0xe3000000 + ARMV7_IMM16(MVBAR_ADDR), /* movw r0, MVBAR_ADDR */
+-        0xee0c0f30, /* mcr p15, 0, r0, c12, c0, 1 - set MVBAR */
+-        0xee110f11, /* mrc p15, 0, r0, c1 , c1, 0 - get SCR */
+-        0xe3810001, /* orr r0, #1 - set NS */
+-        0xee010f11, /* mcr p15, 0, r0, c1 , c1, 0 - set SCR */
+-        0xe1600070, /* smc - go to monitor mode to flush NS change */
+-        0xe12fff1e, /* bx lr - return to caller */
+-    };
+-    for (n = 0; n < ARRAY_SIZE(board_setup_blob); n++) {
+-        board_setup_blob[n] = tswap32(board_setup_blob[n]);
+-    }
+-    rom_add_blob_fixed("board-setup", board_setup_blob,
+-                       sizeof(board_setup_blob), MVBAR_ADDR);
++    arm_write_secure_board_setup_dummy_smc(cpu, info, MVBAR_ADDR);
+ }
+ 
+ static void hb_write_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index c26b0e3..52ecf4a 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -122,6 +122,11 @@ struct arm_boot_info {
+  */
+ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info);
+ 
++/* Write a secure board setup routine with a dummy handler for SMCs */
++void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
++                                            const struct arm_boot_info *info,
++                                            hwaddr mvbar_addr);
 +
-+    assert(core >= 0 && core < BCM2836_NCORES);
-+    assert(local_irq >= 0 && local_irq <= IRQ_CNTVIRQ);
-+
-+    s->timerirqs[core] = deposit32(s->timerirqs[core], local_irq, 1, !!level);
-+
-+    bcm2836_control_update(s);
-+}
-+
-+/* XXX: the following wrapper functions are a kludgy workaround,
-+ * needed because I can't seem to pass useful information in the "irq"
-+ * parameter when using named interrupts. Feel free to clean this up!
-+ */
-+
-+static void bcm2836_control_set_local_irq0(void *opaque, int core, int level)
-+{
-+    bcm2836_control_set_local_irq(opaque, core, 0, level);
-+}
-+
-+static void bcm2836_control_set_local_irq1(void *opaque, int core, int level)
-+{
-+    bcm2836_control_set_local_irq(opaque, core, 1, level);
-+}
-+
-+static void bcm2836_control_set_local_irq2(void *opaque, int core, int level)
-+{
-+    bcm2836_control_set_local_irq(opaque, core, 2, level);
-+}
-+
-+static void bcm2836_control_set_local_irq3(void *opaque, int core, int level)
-+{
-+    bcm2836_control_set_local_irq(opaque, core, 3, level);
-+}
-+
-+static void bcm2836_control_set_gpu_irq(void *opaque, int irq, int level)
-+{
-+    BCM2836ControlState *s = opaque;
-+
-+    s->gpu_irq = level;
-+
-+    bcm2836_control_update(s);
-+}
-+
-+static void bcm2836_control_set_gpu_fiq(void *opaque, int irq, int level)
-+{
-+    BCM2836ControlState *s = opaque;
-+
-+    s->gpu_fiq = level;
-+
-+    bcm2836_control_update(s);
-+}
-+
-+static uint64_t bcm2836_control_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    BCM2836ControlState *s = opaque;
-+
-+    if (offset == REG_GPU_ROUTE) {
-+        assert(s->route_gpu_fiq < BCM2836_NCORES
-+               && s->route_gpu_irq < BCM2836_NCORES);
-+        return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
-+    } else if (offset >= REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-+        return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
-+    } else if (offset >= REG_MBOXCONTROL && offset < REG_IRQSRC) {
-+        return s->mailboxcontrol[(offset - REG_MBOXCONTROL) >> 2];
-+    } else if (offset >= REG_IRQSRC && offset < REG_FIQSRC) {
-+        return s->irqsrc[(offset - REG_IRQSRC) >> 2];
-+    } else if (offset >= REG_FIQSRC && offset < REG_MBOX0_WR) {
-+        return s->fiqsrc[(offset - REG_FIQSRC) >> 2];
-+    } else if (offset >= REG_MBOX0_RDCLR && offset < REG_LIMIT) {
-+        return s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2];
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+}
-+
-+static void bcm2836_control_write(void *opaque, hwaddr offset,
-+                                  uint64_t val, unsigned size)
-+{
-+    BCM2836ControlState *s = opaque;
-+
-+    if (offset == REG_GPU_ROUTE) {
-+        s->route_gpu_irq = val & 0x3;
-+        s->route_gpu_fiq = (val >> 2) & 0x3;
-+    } else if (offset >= REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-+        s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] = val & 0xff;
-+    } else if (offset >= REG_MBOXCONTROL && offset < REG_IRQSRC) {
-+        s->mailboxcontrol[(offset - REG_MBOXCONTROL) >> 2] = val & 0xff;
-+    } else if (offset >= REG_MBOX0_WR && offset < REG_MBOX0_RDCLR) {
-+        s->mailboxes[(offset - REG_MBOX0_WR) >> 2] |= val;
-+    } else if (offset >= REG_MBOX0_RDCLR && offset < REG_LIMIT) {
-+        s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2] &= ~val;
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-+                      __func__, offset);
-+        return;
-+    }
-+
-+    bcm2836_control_update(s);
-+}
-+
-+static const MemoryRegionOps bcm2836_control_ops = {
-+    .read = bcm2836_control_read,
-+    .write = bcm2836_control_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void bcm2836_control_reset(DeviceState *d)
-+{
-+    BCM2836ControlState *s = BCM2836_CONTROL(d);
-+    int i;
-+
-+    s->route_gpu_irq = s->route_gpu_fiq = 0;
-+
-+    for (i = 0; i < BCM2836_NCORES; i++) {
-+        s->timercontrol[i] = 0;
-+        s->mailboxcontrol[i] = 0;
-+    }
-+
-+    for (i = 0; i < BCM2836_NCORES * BCM2836_MBPERCORE; i++) {
-+        s->mailboxes[i] = 0;
-+    }
-+}
-+
-+static void bcm2836_control_init(Object *obj)
-+{
-+    BCM2836ControlState *s = BCM2836_CONTROL(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &bcm2836_control_ops, s,
-+                          TYPE_BCM2836_CONTROL, REG_LIMIT);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
-+
-+    /* inputs from each CPU core */
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq0, "cntpsirq",
-+                            BCM2836_NCORES);
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq1, "cntpnsirq",
-+                            BCM2836_NCORES);
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq2, "cnthpirq",
-+                            BCM2836_NCORES);
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_local_irq3, "cntvirq",
-+                            BCM2836_NCORES);
-+
-+    /* IRQ and FIQ inputs from upstream bcm2835 controller */
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_gpu_irq, "gpu-irq", 1);
-+    qdev_init_gpio_in_named(dev, bcm2836_control_set_gpu_fiq, "gpu-fiq", 1);
-+
-+    /* outputs to CPU cores */
-+    qdev_init_gpio_out_named(dev, s->irq, "irq", BCM2836_NCORES);
-+    qdev_init_gpio_out_named(dev, s->fiq, "fiq", BCM2836_NCORES);
-+}
-+
-+static const VMStateDescription vmstate_bcm2836_control = {
-+    .name = TYPE_BCM2836_CONTROL,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(mailboxes, BCM2836ControlState,
-+                             BCM2836_NCORES * BCM2836_MBPERCORE),
-+        VMSTATE_UINT8(route_gpu_irq, BCM2836ControlState),
-+        VMSTATE_UINT8(route_gpu_fiq, BCM2836ControlState),
-+        VMSTATE_UINT32_ARRAY(timercontrol, BCM2836ControlState, BCM2836_NCORES),
-+        VMSTATE_UINT32_ARRAY(mailboxcontrol, BCM2836ControlState,
-+                             BCM2836_NCORES),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void bcm2836_control_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = bcm2836_control_reset;
-+    dc->vmsd = &vmstate_bcm2836_control;
-+}
-+
-+static TypeInfo bcm2836_control_info = {
-+    .name          = TYPE_BCM2836_CONTROL,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2836ControlState),
-+    .class_init    = bcm2836_control_class_init,
-+    .instance_init = bcm2836_control_init,
-+};
-+
-+static void bcm2836_control_register_types(void)
-+{
-+    type_register_static(&bcm2836_control_info);
-+}
-+
-+type_init(bcm2836_control_register_types)
-diff --git a/include/hw/intc/bcm2836_control.h b/include/hw/intc/bcm2836_control.h
-new file mode 100644
-index 0000000..613f3c4
---- /dev/null
-+++ b/include/hw/intc/bcm2836_control.h
-@@ -0,0 +1,51 @@
-+/*
-+ * Raspberry Pi emulation (c) 2012 Gregory Estrade
-+ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
-+ *
-+ * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ *
-+ * This code is licensed under the GNU GPLv2 and later.
-+ */
-+
-+#ifndef BCM2836_CONTROL_H
-+#define BCM2836_CONTROL_H
-+
-+#include "hw/sysbus.h"
-+
-+/* 4 mailboxes per core, for 16 total */
-+#define BCM2836_NCORES 4
-+#define BCM2836_MBPERCORE 4
-+
-+#define TYPE_BCM2836_CONTROL "bcm2836-control"
-+#define BCM2836_CONTROL(obj) \
-+    OBJECT_CHECK(BCM2836ControlState, (obj), TYPE_BCM2836_CONTROL)
-+
-+typedef struct BCM2836ControlState {
-+    /*< private >*/
-+    SysBusDevice busdev;
-+    /*< public >*/
-+    MemoryRegion iomem;
-+
-+    /* mailbox state */
-+    uint32_t mailboxes[BCM2836_NCORES * BCM2836_MBPERCORE];
-+
-+    /* interrupt routing/control registers */
-+    uint8_t route_gpu_irq, route_gpu_fiq;
-+    uint32_t timercontrol[BCM2836_NCORES];
-+    uint32_t mailboxcontrol[BCM2836_NCORES];
-+
-+    /* interrupt status regs (derived from input pins; not visible to user) */
-+    bool gpu_irq, gpu_fiq;
-+    uint8_t timerirqs[BCM2836_NCORES];
-+
-+    /* interrupt source registers, post-routing (also input-derived; visible) */
-+    uint32_t irqsrc[BCM2836_NCORES];
-+    uint32_t fiqsrc[BCM2836_NCORES];
-+
-+    /* outputs to CPU cores */
-+    qemu_irq irq[BCM2836_NCORES];
-+    qemu_irq fiq[BCM2836_NCORES];
-+} BCM2836ControlState;
-+
-+#endif
+ /* Multiplication factor to convert from system clock ticks to qemu timer
+    ticks.  */
+ extern int system_clock_scale;
 -- 
 2.5.3
 

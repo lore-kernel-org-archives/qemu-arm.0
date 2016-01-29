@@ -1,77 +1,77 @@
-Received: by 10.25.159.19 with SMTP id i19csp1053535lfe;
-        Fri, 29 Jan 2016 08:54:10 -0800 (PST)
-X-Received: by 10.140.164.141 with SMTP id k135mr8441556qhk.37.1454086450480;
-        Fri, 29 Jan 2016 08:54:10 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1053597lfe;
+        Fri, 29 Jan 2016 08:54:18 -0800 (PST)
+X-Received: by 10.55.80.131 with SMTP id e125mr11905547qkb.62.1454086458711;
+        Fri, 29 Jan 2016 08:54:18 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 89si18516844qgt.32.2016.01.29.08.54.10
+        by mx.google.com with ESMTPS id o33si18504080qge.42.2016.01.29.08.54.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 08:54:10 -0800 (PST)
+        Fri, 29 Jan 2016 08:54:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:35294 helo=lists.gnu.org)
+Received: from localhost ([::1]:35296 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPCJG-0001pG-1D
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:54:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36669)
+	id 1aPCJO-00023N-0X
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:54:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36782)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJC-0001j7-7N
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:06 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJL-0001zO-M0
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJB-0003x8-DJ
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:06 -0500
-Received: from mail-wm0-x22b.google.com ([2a00:1450:400c:c09::22b]:35218)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJK-00040U-Ha
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:15 -0500
+Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:34798)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJB-0003wn-71
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:05 -0500
-Received: by mail-wm0-x22b.google.com with SMTP id r129so76809721wmr.0
-	for <qemu-arm@nongnu.org>; Fri, 29 Jan 2016 08:54:05 -0800 (PST)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJJ-00040D-PY
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:14 -0500
+Received: by mail-wm0-x22e.google.com with SMTP id 128so60848043wmz.1
+	for <qemu-arm@nongnu.org>; Fri, 29 Jan 2016 08:54:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=kEW56HVBFvuQTMjsJ+gLpiZFhLSeIYnrHPa0qOfsN0A=;
-	b=ONp3u6Bjrjg2J9AwxVh/qdPq0FZy17LqZg3WtQQF9tZmtxEYyrHCpPdcxdySUVN3EJ
-	v2DhLg6IxWRs8x/mYlpi+RWJzebSf42EIjcQylkvOVwNBLfE1DbDaJkhUuD1DidE55Cc
-	u0U8U7dsAKqA5/xdQO/Aql9YRZ+HJISZtz4Lg=
+	bh=cUaClOHOsI/mnYVCntu90jCxKDVL9nn7DHGtYXXK/KY=;
+	b=gKsSVT0YIlfkXaJGzrZvCkUVRtNkZxCiOWP02iSRqtC3WlVJSWUQXuyylhCPXEGxSy
+	YGanPRoYGivFFGNpHMZ4joiZl17whp6SMhr2zV4TrlA/GUZi8gpt/PGvbwpiBHLlWJRG
+	TIGIwB5N8l4Fz3e5RkSfxH0IXRU0eYLhnmhto=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=kEW56HVBFvuQTMjsJ+gLpiZFhLSeIYnrHPa0qOfsN0A=;
-	b=nOMZO5Vtgi/scDNBOsxEB6QsGkShE3pbgNzTskxXw7fwWAndMU+Iu9/aAu4wqnsHKp
-	RaYPV6P/ZUwlFxm7dpxEgSPlkhI6e4+vs9MCIWkj9EwqUNcg8wxo6Vgwcl5R4isRMmW9
-	I77vARb7UVf4xSsNWuhNmnMneIZX36UpSUJieqGwcopuHZo3PePJyRIqUjd2KzR3HjNW
-	b8K56JWBf99g1AQUTpHR3AWjvXhajQON4mqCnP57jPQh+FnErKhPjN+niVDuK7knk37o
-	l/tnzJd/RkZFiZ9tjVyi17rvxD09erxFxi4alYX6AzF7NRXDuUpU9pn245VUlpDwiRi1
-	y8xQ==
-X-Gm-Message-State: AG10YOTwDl0zASvnJqAHapqgupBWOjgCpcehCGcwfTrwD9W959N7GMRwkZCvdkkHwpgxImPb
-X-Received: by 10.28.158.194 with SMTP id h185mr10805113wme.48.1454086444549; 
-	Fri, 29 Jan 2016 08:54:04 -0800 (PST)
+	bh=cUaClOHOsI/mnYVCntu90jCxKDVL9nn7DHGtYXXK/KY=;
+	b=czCVJ0rzFEUIbl72OfRT9pkTdTTqwXZ8omMRPYcCqMd8XeTV+FfQVSakVFvozOi22p
+	RSDYI3BT/gHN/5avkj5X/GKK1xrDLrVDJYG6giKJlzR+cexOT1w99E0T/tWjtdfK757M
+	DVUbzYW6LmiaZA3CgUfJtBrtV8Wf2aWkcTjde7oOlSeIonFiuLjMVZi1ReDMyw0jYRUz
+	D7wmiCXOjgjAQeCh+o1wFPUecyHaR41+EaxHPrUQZySSaaaOkGL7nvh8bQV5L7uGgzO8
+	gwQolsHS+Qxjie6FVqz0QP+NaGhhprNa2s4IPi91GLwYjMPN6QZL7vBLKpn+W4J9MaTK
+	WbPg==
+X-Gm-Message-State: AG10YORlCuWdyO3+7lEK1Uz07ZmKVfqoeAa8LPpPcleESsAFweLqitPKG1hAiNPg9bCq8pn2
+X-Received: by 10.194.21.135 with SMTP id v7mr9823113wje.131.1454086453091;
+	Fri, 29 Jan 2016 08:54:13 -0800 (PST)
 Received: from new-host-12.home
 	(LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
 	by smtp.gmail.com with ESMTPSA id
-	ei9sm16415530wjd.40.2016.01.29.08.54.02
+	ei9sm16415530wjd.40.2016.01.29.08.54.10
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 29 Jan 2016 08:54:03 -0800 (PST)
+	Fri, 29 Jan 2016 08:54:11 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
 	agraf@suse.de
-Date: Fri, 29 Jan 2016 16:53:44 +0000
-Message-Id: <1454086429-4373-4-git-send-email-eric.auger@linaro.org>
+Date: Fri, 29 Jan 2016 16:53:47 +0000
+Message-Id: <1454086429-4373-7-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22b
+X-Received-From: 2a00:1450:400c:c09::22e
 Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
 	christoffer.dall@linaro.org
-Subject: [Qemu-arm] [RFC v2 3/8] Generic PCIe host bridge INTx determination
-	for INTx routing
+Subject: [Qemu-arm] [RFC v2 6/8] hw: platform-bus: enable to map any memory
+	region onto the platform-bus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -85,43 +85,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +55xMadS9e0t
+X-TUID: sfxUWJ2adxXF
 
-This patch stores information about assigned legacy interrupt numbers in
-GPEX host structure.
-This is used during GPEX INTx number determination from a pin during
-INTx routing.
+The platform bus currently is used to map dynamically instantiable
+platform device MMIO regions. The platform bus also can be seen as a
+pool of free guest physical addresses. We would like to use that pool
+to allocate a contiguous reserved IOVA region usable for MSI message
+address IOMMU mapping.
 
-Signed-off-by: Pranavkumar Sawargaonkar <address@hidden>
-Signed-off-by: Tushar Jagad <address@hidden>
+This patch introduces platform_bus_map_region which enables to map any
+memory region onto the platform bus.
+
+Signed-off-by: Eric Auger <eric.auger@linaro.org>
 ---
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/core/platform-bus.c    | 26 ++++++++++++++++----------
+ include/hw/platform-bus.h |  7 +++++++
+ 2 files changed, 23 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 15658f4..3839c68 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -826,6 +826,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-     char *nodename;
-     int i;
-     PCIHostState *pci;
-+    GPEXHost *s;
+diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
+index aa55d01..7d0f5e0 100644
+--- a/hw/core/platform-bus.c
++++ b/hw/core/platform-bus.c
+@@ -128,16 +128,14 @@ static void platform_bus_map_irq(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+     sysbus_connect_irq(sbdev, n, pbus->irqs[irqn]);
+ }
  
-     dev = qdev_create(NULL, TYPE_GPEX_HOST);
-     qdev_init_nofail(dev);
-@@ -861,8 +862,11 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-     /* Map IO port space */
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
+-static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+-                                  int n)
++void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr)
+ {
+-    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
+-    uint64_t size = memory_region_size(sbdev_mr);
++    uint64_t size = memory_region_size(mr);
+     uint64_t alignment = (1ULL << (63 - clz64(size + size - 1)));
+     uint64_t off;
+     bool found_region = false;
  
-+    s = GPEX_HOST(dev);
-+
-     for (i = 0; i < GPEX_NUM_IRQS; i++) {
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-+        s->irq_num[i] = irq + i;
+-    if (memory_region_is_mapped(sbdev_mr)) {
++    if (memory_region_is_mapped(mr)) {
+         /* Region is already mapped, nothing to do */
+         return;
+     }
+@@ -154,13 +152,21 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
      }
  
-     pci = PCI_HOST_BRIDGE(dev);
+     if (!found_region) {
+-        error_report("Platform Bus: Can not fit MMIO region of size %"PRIx64,
+-                     size);
+-        exit(1);
++        error_setg(&error_fatal,
++                   "Platform Bus: Can not fit region %s of size %"PRIx64,
++                   mr->name, size);
+     }
+ 
+-    /* Map the device's region into our Platform Bus MMIO space */
+-    memory_region_add_subregion(&pbus->mmio, off, sbdev_mr);
++    /* Map the region into our Platform Bus MMIO space */
++    memory_region_add_subregion(&pbus->mmio, off, mr);
++}
++
++static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
++                                  int n)
++{
++    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
++
++    platform_bus_map_region(pbus, sbdev_mr);
+ }
+ 
+ /*
+diff --git a/include/hw/platform-bus.h b/include/hw/platform-bus.h
+index bd42b83..ee19674 100644
+--- a/include/hw/platform-bus.h
++++ b/include/hw/platform-bus.h
+@@ -54,4 +54,11 @@ int platform_bus_get_irqn(PlatformBusDevice *platform_bus, SysBusDevice *sbdev,
+ hwaddr platform_bus_get_mmio_addr(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+                                   int n);
+ 
++/**
++ * platform_bus_map_region: map a region into the platform bus
++ * @pbus: platform bus handle
++ * @mr: memory region handle
++ */
++void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr);
++
+ #endif /* !HW_PLATFORM_BUS_H */
 -- 
 1.9.1
 

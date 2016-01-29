@@ -1,237 +1,116 @@
-Received: by 10.25.159.19 with SMTP id i19csp1050262lfe;
-        Fri, 29 Jan 2016 08:46:57 -0800 (PST)
-X-Received: by 10.25.206.143 with SMTP id e137mr3708762lfg.97.1454086017764;
-        Fri, 29 Jan 2016 08:46:57 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1050412lfe;
+        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
+X-Received: by 10.112.166.100 with SMTP id zf4mr3668213lbb.58.1454086036939;
+        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
 Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lb0-x242.google.com (mail-lb0-x242.google.com. [2a00:1450:4010:c04::242])
-        by mx.google.com with ESMTPS id jm10si8526686lbc.26.2016.01.29.08.46.55
+Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
+        by mx.google.com with ESMTPS id r15si8525813lfr.132.2016.01.29.08.47.16
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Jan 2016 08:46:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c04::242 as permitted sender) client-ip=2a00:1450:4010:c04::242;
+        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c04::242 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
+       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lb0-x242.google.com with SMTP id bc4so3591973lbc.0;
-        Fri, 29 Jan 2016 08:46:55 -0800 (PST)
+Received: by mail-lf0-x244.google.com with SMTP id n70so4087460lfn.1;
+        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=dOIBop/N0k5vfqGfLx7q5svRCYxpnHXY6CMmE1+zxBE=;
-        b=pZBIqn2Ly01DcKudsjGj/hTM95NyvKyqw2JY9Eybw86YZBY8qiGP8C7BvMx4GPGYsO
-         MVNzoCjChkVHwiyI0oX3U1/UNRSrP/KPjGkQbKld1kk659nD6zk+80UEFC+dn4RaIO7Q
-         QZdOPDnKrIqTx2KHBHjkkX/PaYG9vJJn6oerJX8qSdQxfXuHSzIjMz+pCPL7RLw/KCeJ
-         swcxpKWTMv3t1sLGjBDTFFnA1lLbAw4ksRYqPT1YLKWuuOF7K756Rtdvl1bh/caQrKEz
-         A8lb64FVhBrU1ND/Rtr0iOxb5y/t/FMnZ35Ze/F9gsPagTfsHkdxgq3BJ3h2TvoGPVvp
-         +Yvw==
+        bh=fyFXa3CZf8wcUBQSo9whFdyiFqujaQSh4d45q2AiT6M=;
+        b=m+TGfmo/zcN5gtyXjL9rkQd6Df/hsDs1cgcEQte9u6epuoRi7QEMU6fgdUY/40OR97
+         RA0YgclrQiPmjZTxUr8VZcy/0w86DZhxQh63Rlw4O6vcBIIZiwY2YGNK0UiadvC+Bv/d
+         B/QN4siaSr1YGOXir3zoiXfP9FIjeIXS6rn2IZj3Sf14//6A0qa808gs4SSRRkeXHYWq
+         BfZ46tC1SbDtUbRISttU4O1FMnaB/CN0AU19xB4dOzlsHI2EhH67PRLwPbiIJu41qQTH
+         55g18hu5ICGuUcgUA6R/W9c2Vwj/LDO9vcn2Pml1BixfwpeIaXz7EEpL57Uij1jl8HSP
+         0nwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:subject:to:references:cc:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-type
          :content-transfer-encoding;
-        bh=dOIBop/N0k5vfqGfLx7q5svRCYxpnHXY6CMmE1+zxBE=;
-        b=DBk+1doqut9Mh8m6ZR0sr0KbZigH+qkGIJl3p9tt14nwZtGQJHYlwLQbgOt4OCJVwf
-         AIeA5JwfEy00K1tyxftzVZVU/Xi/yIDOIK2KZM98V6wciXxz2On6A/wlC9lUtLHrmjfY
-         jaqahaWOCaPnZ8dzWd4NrFq2Vn5yuuwWztUPk3lQO/sI5T8EkoH8XHEpmvCOI0c6CGPR
-         Qr3lgq1c7eRN6zPYMzfaNowRkMY4287RUnVCoUqPt1AvOVwZCjSWyAEJKCAQuPnMyHWs
-         zfFQLS58sM5ke6/Tb6eE51yaW82YKcG7kfBZvInvusNCk+fsTLpPysVuvMBahF1MIHIc
-         otJA==
-X-Gm-Message-State: AG10YOQVZDi2j4XmVi/fXC7YZm09ilv6yIxZnSR8pM5ku6KnPT0qmWdaUZBwlW6fztiglQ==
-X-Received: by 10.112.135.39 with SMTP id pp7mr2987138lbb.43.1454086015864;
-        Fri, 29 Jan 2016 08:46:55 -0800 (PST)
+        bh=fyFXa3CZf8wcUBQSo9whFdyiFqujaQSh4d45q2AiT6M=;
+        b=h4wgpK+YpGnOZQbs4b0W9cA/RL9X8H3i60cjCKwg7Gr2utrT/7qiE/38nIbBhjV/LV
+         deHKFOjPMQeWJsAGKyBz2Hh3SjqxZntTaB0atUkoBb4PcyE+0ax7+S+dZc7lwVOapxWV
+         YahSNMVjQg4id4rrNZhGcOdS/eMJw7dGJIWuGDgVthLqD4HO5pB/8apmD/KVZF4SAbAo
+         1hTpYwi2nwAeaMAG4R3Ad+oZBDOLAp+pSv8I2lz6Q1H8LSPiMafQoWYQHgJ9Zfe2X9bw
+         zzYfdBEbWABgrzXflxIayBylYE0tLhFKHUMp+K9OT94KW/27LOad1Pc2DTMCfKUmFXRB
+         8UWg==
+X-Gm-Message-State: AG10YOQglvOON8C6yKupOsTKvTMtFU4yQ8AKEfnxwAf81omdbCX8aEQFw7BHgP4ri0it9A==
+X-Received: by 10.25.160.1 with SMTP id j1mr3855047lfe.35.1454086036649;
+        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
 Return-Path: <serge.fdrv@gmail.com>
 Received: from [10.30.10.50] ([213.243.91.10])
-        by smtp.googlemail.com with ESMTPSA id kv3sm2190625lbc.39.2016.01.29.08.46.54
+        by smtp.googlemail.com with ESMTPSA id dm7sm717484lbc.32.2016.01.29.08.47.15
         (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 29 Jan 2016 08:46:55 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH 4/8] target-arm: Pull semihosting handling
- out to arm_cpu_do_interrupt()
+        Fri, 29 Jan 2016 08:47:15 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH 5/8] target-arm: Fix wrong AArch64 entry
+ offset for EL2/EL3 target
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-5-git-send-email-peter.maydell@linaro.org>
+ <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, patches@linaro.org
 From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56AB977E.6040300@gmail.com>
-Date: Fri, 29 Jan 2016 19:46:54 +0300
+Message-ID: <56AB9792.8080302@gmail.com>
+Date: Fri, 29 Jan 2016 19:47:14 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
  Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1452796451-2946-5-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-TUID: Iw+grPmMkxoz
+X-TUID: /lJQ5nDm5xtN
 
 On 14.01.2016 21:34, Peter Maydell wrote:
-> Handling of semihosting calls should depend on the register width
-> of the calling code, not on that of any higher exception level,
-> so we need to identify and handle semihosting calls before we
-> decide whether to deliver the exception as an entry to AArch32
-> or AArch64. (EXCP_SEMIHOST is also an "internal exception" so
-> it has no target exception level in the first place.)
->
-> This will allow AArch32 EL1 code to use semihosting calls when
-> running under an AArch64 EL3.
+> The entry offset when taking an exception to AArch64 from a lower
+> exception level may be 0x400 or 0x600. 0x400 is used if the
+> implemented exception level immediately lower than the target level
+> is using AArch64, and 0x600 if it is using AArch32. We were
+> incorrectly implementing this as checking the exception level
+> that the exception was taken from. (The two can be different if
+> for example we take an exception from EL0 to AArch64 EL3; we should
+> in this case be checking EL2 if EL2 is implemented, and EL1 if
+> EL2 is not implemented.)
 
 Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target-arm/helper.c | 120 +++++++++++++++++++++++++++++++++++-----------------
->  1 file changed, 81 insertions(+), 39 deletions(-)
+>  target-arm/helper.c | 21 ++++++++++++++++++++-
+>  1 file changed, 20 insertions(+), 1 deletion(-)
 >
 > diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 962bb3c..d37c82c 100644
+> index d37c82c..196c111 100644
 > --- a/target-arm/helper.c
 > +++ b/target-arm/helper.c
-> @@ -5754,27 +5754,6 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
->              offset = 4;
->          break;
->      case EXCP_SWI:
-> -        if (semihosting_enabled()) {
-> -            /* Check for semihosting interrupt.  */
-> -            if (env->thumb) {
-> -                mask = arm_lduw_code(env, env->regs[15] - 2, env->bswap_code)
-> -                    & 0xff;
-> -            } else {
-> -                mask = arm_ldl_code(env, env->regs[15] - 4, env->bswap_code)
-> -                    & 0xffffff;
-> -            }
-> -            /* Only intercept calls from privileged modes, to provide some
-> -               semblance of security.  */
-> -            if (((mask == 0x123456 && !env->thumb)
-> -                    || (mask == 0xab && env->thumb))
-> -                  && (env->uncached_cpsr & CPSR_M) != ARM_CPU_MODE_USR) {
-> -                qemu_log_mask(CPU_LOG_INT,
-> -                              "...handling as semihosting call 0x%x\n",
-> -                              env->regs[0]);
-> -                env->regs[0] = do_arm_semihosting(env);
-> -                return;
-> -            }
-> -        }
->          new_mode = ARM_CPU_MODE_SVC;
->          addr = 0x08;
->          mask = CPSR_I;
-> @@ -5782,19 +5761,6 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
->          offset = 0;
->          break;
->      case EXCP_BKPT:
-> -        /* See if this is a semihosting syscall.  */
-> -        if (env->thumb && semihosting_enabled()) {
-> -            mask = arm_lduw_code(env, env->regs[15], env->bswap_code) & 0xff;
-> -            if (mask == 0xab
-> -                  && (env->uncached_cpsr & CPSR_M) != ARM_CPU_MODE_USR) {
-> -                env->regs[15] += 2;
-> -                qemu_log_mask(CPU_LOG_INT,
-> -                              "...handling as semihosting call 0x%x\n",
-> -                              env->regs[0]);
-> -                env->regs[0] = do_arm_semihosting(env);
-> -                return;
-> -            }
-> -        }
->          env->exception.fsr = 2;
->          /* Fall through to prefetch abort.  */
->      case EXCP_PREFETCH_ABORT:
-> @@ -5970,6 +5936,78 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
->                    new_el, env->pc, pstate_read(env));
->  }
+> @@ -5866,7 +5866,26 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+>      unsigned int new_mode = aarch64_pstate_mode(new_el, true);
 >  
-> +static inline bool check_for_semihosting(CPUState *cs)
-> +{
-> +    /* Check whether this exception is a semihosting call; if so
-> +     * then handle it and return true; otherwise return false.
-> +     */
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    if (is_a64(env)) {
-> +        if (cs->exception_index == EXCP_SEMIHOST) {
-> +            /* This is always the 64-bit semihosting exception.
-> +             * The "is this usermode" and "is semihosting enabled"
-> +             * checks have been done at translate time.
-> +             */
-> +            qemu_log_mask(CPU_LOG_INT,
-> +                          "...handling as semihosting call 0x%" PRIx64 "\n",
-> +                          env->xregs[0]);
-> +            env->xregs[0] = do_arm_semihosting(env);
-> +            return true;
-> +        }
-> +        return false;
-> +    } else {
-> +        uint32_t imm;
-> +
-> +        /* Only intercept calls from privileged modes, to provide some
-> +         * semblance of security.
+>      if (arm_current_el(env) < new_el) {
+> -        if (env->aarch64) {
+> +        /* Entry vector offset depends on whether the implemented EL
+> +         * immediately lower than the target level is using AArch32 or AArch64
 > +         */
-> +        if (!semihosting_enabled() ||
-> +            ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_USR)) {
-> +            return false;
-> +        }
+> +        bool is_aa64;
 > +
-> +        switch (cs->exception_index) {
-> +        case EXCP_SWI:
-> +            /* Check for semihosting interrupt.  */
-> +            if (env->thumb) {
-> +                imm = arm_lduw_code(env, env->regs[15] - 2, env->bswap_code)
-> +                    & 0xff;
-> +                if (imm == 0xab) {
-> +                    break;
-> +                }
-> +            } else {
-> +                imm = arm_ldl_code(env, env->regs[15] - 4, env->bswap_code)
-> +                    & 0xffffff;
-> +                if (imm == 0x123456) {
-> +                    break;
-> +                }
-> +            }
-> +            return false;
-> +        case EXCP_BKPT:
-> +            /* See if this is a semihosting syscall.  */
-> +            if (env->thumb) {
-> +                imm = arm_lduw_code(env, env->regs[15], env->bswap_code)
-> +                    & 0xff;
-> +                if (imm == 0xab) {
-> +                    env->regs[15] += 2;
-> +                    break;
-> +                }
-> +            }
-> +            return false;
+> +        switch (new_el) {
+> +        case 3:
+> +            is_aa64 = (env->cp15.scr_el3 & SCR_RW) != 0;
+> +            break;
+> +        case 2:
+> +            is_aa64 = (env->cp15.hcr_el2 & HCR_RW) != 0;
+> +            break;
+> +        case 1:
+> +            is_aa64 = is_a64(env);
+> +            break;
 > +        default:
-> +            return false;
+> +            g_assert_not_reached();
 > +        }
 > +
-> +        qemu_log_mask(CPU_LOG_INT,
-> +                      "...handling as semihosting call 0x%x\n",
-> +                      env->regs[0]);
-> +        env->regs[0] = do_arm_semihosting(env);
-> +        return true;
-> +    }
-> +}
-> +
->  /* Handle a CPU exception for A and R profile CPUs.
->   * Do any appropriate logging, handle PSCI calls, and then hand off
->   * to the AArch64-entry or AArch32-entry function depending on the
-> @@ -5999,12 +6037,16 @@ void arm_cpu_do_interrupt(CPUState *cs)
->          return;
->      }
->  
-> -    /* Temporary special case for EXCP_SEMIHOST, which is used only
-> -     * for 64-bit semihosting calls -- as this is an internal exception
-> -     * it has no specified target level and arm_el_is_aa64() would
-> -     * assert because new_el could be 0.
-> +    /* Semihosting semantics depend on the register width of the
-> +     * code that caused the exception, not the target exception level,
-> +     * so must be handled here.
->       */
-> -    if (cs->exception_index == EXCP_SEMIHOST || arm_el_is_aa64(env, new_el)) {
-> +    if (check_for_semihosting(cs)) {
-> +        return;
-> +    }
-> +
-> +    assert(!excp_is_internal(cs->exception_index));
-> +    if (arm_el_is_aa64(env, new_el)) {
->          arm_cpu_do_interrupt_aarch64(cs);
->      } else {
->          arm_cpu_do_interrupt_aarch32(cs);
+> +        if (is_aa64) {
+>              addr += 0x400;
+>          } else {
+>              addr += 0x600;

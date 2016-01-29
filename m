@@ -1,56 +1,75 @@
-Received: by 10.25.159.19 with SMTP id i19csp1044919lfe;
-        Fri, 29 Jan 2016 08:35:27 -0800 (PST)
-X-Received: by 10.140.255.8 with SMTP id a8mr12717139qhd.20.1454085327100;
-        Fri, 29 Jan 2016 08:35:27 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1120439lfe;
+        Fri, 29 Jan 2016 11:17:50 -0800 (PST)
+X-Received: by 10.55.73.68 with SMTP id w65mr12659309qka.68.1454095070187;
+        Fri, 29 Jan 2016 11:17:50 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 107si18440949qgx.12.2016.01.29.08.35.26
+        by mx.google.com with ESMTPS id y200si18480256qhy.25.2016.01.29.11.17.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 08:35:27 -0800 (PST)
+        Fri, 29 Jan 2016 11:17:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35178 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36249 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPC18-0002t2-LO
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:35:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60331)
+	id 1aPEYH-0002aQ-Lo
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 14:17:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49089)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1aPC16-0002sw-F0
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:35:25 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPEYF-0002XK-Fw
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 14:17:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1aPC13-0007Fz-5x
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:35:24 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37904)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPEYE-0004rq-Is
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 14:17:47 -0500
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:33754)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1aPC12-0007Fv-Uf; Fri, 29 Jan 2016 11:35:21 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id EC56AA852;
-	Fri, 29 Jan 2016 16:35:19 +0000 (UTC)
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u0TGZHgd002886; Fri, 29 Jan 2016 11:35:17 -0500
-Date: Fri, 29 Jan 2016 17:35:16 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shannon Zhao <shannon.zhao@linaro.org>
-Message-ID: <20160129173516.1427b50e@nial.brq.redhat.com>
-In-Reply-To: <56AB7E54.4000608@linaro.org>
-References: <1454077485-242598-1-git-send-email-imammedo@redhat.com>
-	<56AB7E54.4000608@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, zhaoshenglong@huawei.com
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] arm: virt-acpi: each MADT.GICC
- entry as enabled unconditionally
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aPEY9-0004nF-B1; Fri, 29 Jan 2016 14:17:41 -0500
+Received: by mail-lf0-x244.google.com with SMTP id e36so886923lfi.0;
+	Fri, 29 Jan 2016 11:17:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=iAxWY4XsPoJLymqciUnsOibsSsQDl6PwAghMkTLJtpY=;
+	b=B/mmVz7ax8HbJ+XZjfiAM2OXyl7KFZt6rqbJ+oDQLFxHIowcEzZ1OM46zkwBw7w67X
+	JsSQtnsRzTrutRJ93lSl/kY/+d8u7KYZ9ZDS/jxBz41/PV74yxX+Cis0JXnHAby27Tgb
+	Oz/hLGKeoM9BtaAdzzoAeHITdRX8YIlpi9geHmWcKAmWyYqecHcAPfjW27iKsxy+r3Oj
+	o2kTEgBB8eIQl/kMFZSX/hyUerR2ac1MXyr3SxZC2/ZRvYu0fJvFP2LTY8M56RmSG3N9
+	trw6NjrwRWEQDpbtP4enZ1JSwjuEObX8abGyOxloUR4cQGMeBgWnHcPqBcshvx95o2gM
+	Jrkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=iAxWY4XsPoJLymqciUnsOibsSsQDl6PwAghMkTLJtpY=;
+	b=LCjaIKWua/KE46XsX9vKwCQCA0/fOTPr4FIfQ48WcBtJd19xt3WOm8wjUFrsiFYe9+
+	jSBS/6WR9ws13YgZ9nptMvriVZGpVbv0cv/cQPqDKNPAkq8CNx8WRz2OTmUhrbyy9Xut
+	5kPmw0waXrGmwYUC9o832Lot67RjWTU12/j9zoarfxjjjuig9JfPYQK9sh8LwtXSWD9k
+	/CIMma/RrMimcWZtTXLusitRuUToQSCj+/CyOwdNrOzku8OdD2PpvOZ/HnASqcaS8ipj
+	5PUcGyz2/WgXaNr1qb/EE/g2Wc0wLCWIsK3P6vGDbtE3AxMrqZNBaWJ1naB6RaXqBCFA
+	rjAw==
+X-Gm-Message-State: AG10YOSRguBqYBtuUWED5n1GTlNdqBk/F0ZgyCy44+xHRM28t/32Bfl4W8s2iVkM17ARtg==
+X-Received: by 10.25.167.208 with SMTP id q199mr3199927lfe.140.1454095060343; 
+	Fri, 29 Jan 2016 11:17:40 -0800 (PST)
+Received: from sfedorov-laptop.smware.local ([213.243.91.10])
+	by smtp.gmail.com with ESMTPSA id
+	i192sm2270550lfb.14.2016.01.29.11.17.38
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 29 Jan 2016 11:17:38 -0800 (PST)
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 29 Jan 2016 22:17:30 +0300
+Message-Id: <1454095052-17149-1-git-send-email-serge.fdrv@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::244
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-arm] [PATCH v2 0/2] Architectural watchpoint check
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -64,104 +83,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F5UaUp7t5qur
+X-TUID: x3COBqJmU8NL
 
-On Fri, 29 Jan 2016 22:59:32 +0800
-Shannon Zhao <shannon.zhao@linaro.org> wrote:
+This series is intended to fix ARM watchpoint emulation misbehavior.
+QEMU hangs when QEMU watchpoint fires but it does not pass additional
+architectural checks in ARM CPU debug exception handler. For details,
+please see individual patches. The most relevant parts of the original
+discussion about ARM breakpoint and watchpoint emulation misbehavior can be
+found at:
+https://lists.gnu.org/archive/html/qemu-devel/2015-08/msg02715.html
+https://lists.gnu.org/archive/html/qemu-devel/2015-09/msg00527.html
 
-> On 2016/1/29 22:24, Igor Mammedov wrote:
-> > in current impl. condition
-> >
-> > build_madt() {
-> >    ...
-> >    if (test_bit(i, cpuinfo->found_cpus))
-> >
-> > is always true since loop handles only present CPUs
-> > in range [0..smp_cpus).
-> > But to fill usless cpuinfo->found_cpus we do unnecessary
-> > scan over QOM tree to find the same CPUs.
-> > So mark GICC as present always and drop not needed
-> > code that fills cpuinfo->found_cpus.
-> >
-> > Signed-off-by: Igor Mammedov<imammedo@redhat.com>
-> > ---
-> > It's just simple cleanup but I'm trying to generalize
-> > a bit CPU related ACPI tables and as part of it get rid
-> > of found_cpus bitmap and if possible cpu_index usage
-> > in ACPI parts of code.
-> > ---
-> >   hw/arm/virt-acpi-build.c | 26 +++-----------------------
-> >   1 file changed, 3 insertions(+), 23 deletions(-)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 87fbe7c..3ed39fc 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -46,20 +46,6 @@
-> >   #define ARM_SPI_BASE 32
-> >   #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-> >
-> > -typedef struct VirtAcpiCpuInfo {
-> > -    DECLARE_BITMAP(found_cpus, VIRT_ACPI_CPU_ID_LIMIT);
-> > -} VirtAcpiCpuInfo;
-> > -
-> > -static void virt_acpi_get_cpu_info(VirtAcpiCpuInfo *cpuinfo)
-> > -{
-> > -    CPUState *cpu;
-> > -
-> > -    memset(cpuinfo->found_cpus, 0, sizeof cpuinfo->found_cpus);
-> > -    CPU_FOREACH(cpu) {
-> > -        set_bit(cpu->cpu_index, cpuinfo->found_cpus);
-> > -    }
-> > -}
-> > -
-> >   static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
-> >   {
-> >       uint16_t i;
-> > @@ -458,8 +444,7 @@ build_gtdt(GArray *table_data, GArray *linker)
-> >
-> >   /* MADT */
-> >   static void
-> > -build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
-> > -           VirtAcpiCpuInfo *cpuinfo)
-> > +build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-> >   {
-> >       int madt_start = table_data->len;
-> >       const MemMapEntry *memmap = guest_info->memmap;
-> > @@ -489,9 +474,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
-> >           gicc->cpu_interface_number = i;
-> >           gicc->arm_mpidr = armcpu->mp_affinity;
-> >           gicc->uid = i;
-> > -        if (test_bit(i, cpuinfo->found_cpus)) {
-> > -            gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
-> > -        }
-> > +        gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
-> >       }  
-> Ah, yes, it uses smp_cpus not max_cpus. But we still needs to support 
-> max_cpus usage even though it doesn't support vcpu hotplug currently. So
-> we may need to introduce guest_info->max_cpus and use it here.
+Changes in v2:
+ * Check moved before setting cpu->watchpoint_hit
+ * Pointer to watchpoint being checked passed to debug_check_watchpoint()
+   callback
+ * Comment for debug_check_watchpoint() callback improved
 
-We should support max_cpus but only when hotplug is supported.
-Problem with hotplug is that currently it's assumed that
-cpu_index is in range [0..max_cpus) and that works for now but
-with a large number of CPUs that won't scale, that's a problem
-we are facing now in x86.
-I'm trying to re-factor CPU related ACPI parts to use CPU id
-used in hardware (APIC ID for x86) and while it make it reusable
-for ARM as well where as such ID we could use 'mpidr'.
+Sergey Fedorov (2):
+  cpu: Add callback to check architectural watchpoint match
+  target-arm: Implement checking of fired watchpoint
 
-So this clean up beside of removing not needed code also
-reduces ACPI dependency on cpu_index.
+ exec.c                 |  5 +++++
+ include/qom/cpu.h      |  3 +++
+ qom/cpu.c              |  9 +++++++++
+ target-arm/cpu.c       |  1 +
+ target-arm/internals.h |  3 +++
+ target-arm/op_helper.c | 35 +++++++++++++++++++++--------------
+ 6 files changed, 42 insertions(+), 14 deletions(-)
 
-> And below check in virt.c is not right while it should compare the 
-> global max_cpus with the max_cpus GIC supports.
-> 
->      if (smp_cpus > max_cpus) {
->          error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
->                       "supported by machine 'mach-virt' (%d)",
->                       smp_cpus, max_cpus);
->          exit(1);
->      }
-> 
-> Thanks,
+-- 
+1.9.1
 

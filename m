@@ -1,166 +1,168 @@
-Received: by 10.25.159.19 with SMTP id i19csp1199672lfe;
-        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
-X-Received: by 10.140.42.139 with SMTP id c11mr13942874qga.5.1454107282398;
-        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp1200621lfe;
+        Fri, 29 Jan 2016 14:44:23 -0800 (PST)
+X-Received: by 10.55.18.36 with SMTP id c36mr13610827qkh.54.1454107463809;
+        Fri, 29 Jan 2016 14:44:23 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i84si19284588qhc.45.2016.01.29.14.41.22
+        by mx.google.com with ESMTPS id g131si17353350qkb.102.2016.01.29.14.44.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Jan 2016 14:44:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36750 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:36762 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPHjF-000584-Tk
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:41:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39845)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPHmB-0007LK-AY
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:44:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHit-0004ni-5C
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:41:00 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHlt-0006sC-F3
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:44:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHir-0005me-UN
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:40:59 -0500
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36066)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPHls-0007Hc-5g
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:44:05 -0500
+Received: from mail-bn1bbn0108.outbound.protection.outlook.com
+	([157.56.111.108]:62174
+	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aPHir-0005mM-Jk; Fri, 29 Jan 2016 17:40:57 -0500
-Received: by mail-wm0-x243.google.com with SMTP id 128so10144800wmz.3;
-	Fri, 29 Jan 2016 14:40:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=4uBPWjLuwNA4Sv0vVa0p79dg1psz0dfUFMLLrb7d4+4=;
-	b=CDaxZKDQLW7nUG8TWb9zEWE3kQErEhFwLB4rJfpH0ANoRbjKxeHfSkbbKPmDJHqG1k
-	l69pXomBBAmU0saZ6ThMnJ2jfch7ABlmQnQmWd5gjwgT64jq0ZLeTGDOpH8Fu6Bvz79S
-	SvUW7Df/aOZpMH6rTPQoryppQA9AyrIKU6wu7URt2/Jv4s6wNmOZORzrj2Bn61QorHyE
-	myaAQH0eAuIvefYqtM3e6BhHNiCRRP1FBbJvYOAVNBvYWUxrce5WRMTzU8oU160bcVjs
-	AOF4pQYTXS7YpUITZZKqeZ83mAZbMbvg/rQ1LpUspjDnUP5JLdN+iSm5zuB8t9FE0xe+
-	NAYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=4uBPWjLuwNA4Sv0vVa0p79dg1psz0dfUFMLLrb7d4+4=;
-	b=SAjUSFlezL5zcYWOAe4mlIu0U1C9ezTM63MEdQJPD2hwwVK6FOplUhsxrspwWm8Pam
-	0qRCkthEt4Ng3tQPQN5QxfqVSyC8qFE2VBLPkhAI5kCVN9NVrZWd5Ajm0mblZBalLW4j
-	J5HKg+CVdpCVjoA5YbG6PIjSRLqdSiF6vS4VRijFoB4awNgWix/eyKgc0hP2g1SyhFdP
-	iYjzF3bhFzK6PS5JFugotOhKtzulQ2r63lz1ev7EMQO8grLUUtXEFOihtL7rMa5IiKbW
-	nNtdnYSK4RyG7gcnnkgDgkTATWh06okD+mjgXq6dIKruqteVfqpj3hCvzn/5fvFYvXN5
-	PVPg==
-X-Gm-Message-State: AG10YOQZc2Jz0IehzxKji7ogZs4l2jQBsrGoGCTU9rrv1ypjLyHnsPDLfNnAc/7rtWhYFqQN8ESflfOYNj7BOQ==
-MIME-Version: 1.0
-X-Received: by 10.28.217.83 with SMTP id q80mr10968373wmg.15.1454107256800;
-	Fri, 29 Jan 2016 14:40:56 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Fri, 29 Jan 2016 14:40:56 -0800 (PST)
-In-Reply-To: <BLUPR0301MB2034C0FA82D60BAF82916E779EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aPHln-0007Ey-H9; Fri, 29 Jan 2016 17:43:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=DedBBm2HW93/micu2rj9KBe1WDILkobs8n6vx4dVg8o=;
+	b=GaM4/UQYqPDGvH3XqaTX59Tp1eUPioNXmQpdHzp8CGn7eGmeW8s0cE8O4nur/1mqyG5NAqCPTD+AlMD0bcYYGItEY089z7UUNxkvwGu0zGtzFqSUz28iPIloAd0JufwoCRCRr0TD8uvi35L3I9k1ibIj/5kqAU24ZboCPGHSkC8=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2036.namprd03.prod.outlook.com (10.164.22.26) with Microsoft
+	SMTP Server (TLS) id 15.1.390.13; Fri, 29 Jan 2016 22:43:57 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0390.017; Fri, 29 Jan 2016 22:43:57 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	=?utf-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber@suse.de>
+Thread-Topic: [PATCH v4 8/8] raspi: add raspberry pi 2 machine
+Thread-Index: AQHRT/DG10Xdqk9Vq0G0qXu0O32qRp8SLiwAgADtG8CAAAv3gIAAAGJQgAAEugCAAABoMA==
+Date: Fri, 29 Jan 2016 22:43:56 +0000
+Message-ID: <BLUPR0301MB203455098ADBFD2229A6E32C9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
 	<CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
 	<BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 	<CAPokK=pLw9OVv3_FHedk12byTu0gjGFy80UT1T1TUFTewi5kpg@mail.gmail.com>
 	<BLUPR0301MB2034C0FA82D60BAF82916E779EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Fri, 29 Jan 2016 14:40:56 -0800
-Message-ID: <CAPokK=qsgcxVkuU9yRTDV+NXkyqQpUT8mMhZmk_QN4yE_PEg=w@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
+	<CAPokK=qsgcxVkuU9yRTDV+NXkyqQpUT8mMhZmk_QN4yE_PEg=w@mail.gmail.com>
+In-Reply-To: <CAPokK=qsgcxVkuU9yRTDV+NXkyqQpUT8mMhZmk_QN4yE_PEg=w@mail.gmail.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: gmail.com; dkim=none (message not signed)
+	header.d=none; gmail.com;
+	dmarc=none action=none header.from=microsoft.com; 
+x-originating-ip: [2001:4898:80e8:2::2e3]
+x-ms-office365-filtering-correlation-id: e9a9225f-361d-4370-a3cf-08d328fdac96
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2036;
+	5:9ZFCNDEn5RbE5J+dU2SINxbUi63jPnDZWicacgqj4dBRd69fzd8cEmkQhoMLdpiFn6Q33A+1S4ypNOPYGb0K93WIo2kr38jas4iugsqYe3aRz0k2ejGknotAcyN+21o6i+yWfEdI20S6TGvVUm1JAQ==;
+	24:bI+6t47zb02vEjwSDiz00jDLRXEy1e4iKuJi8KKbJBFCGwqicAgKBd66CQFIVTFkhuobNftSlPup3sW3QjcnJabOyu15HVHI+3vIc77CnLw=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2036;
+x-microsoft-antispam-prvs: <BLUPR0301MB20367D6D9612D916F35EAAA99EDB0@BLUPR0301MB2036.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
+	SRVR:BLUPR0301MB2036; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2036; 
+x-forefront-prvs: 083691450C
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(377454003)(24454002)(33656002)(4326007)(87936001)(74316001)(5008740100001)(5002640100001)(3660700001)(10290500002)(92566002)(19580395003)(77096005)(2906002)(19580405001)(10400500002)(11100500001)(10090500001)(5004730100002)(8990500004)(5005710100001)(106116001)(122556002)(3470700001)(40100003)(5001960100002)(3280700002)(2950100001)(1096002)(1220700001)(99286002)(102836003)(6116002)(5003600100002)(76576001)(93886004)(5001770100001)(586003)(2900100001)(86612001)(189998001)(86362001)(54356999)(76176999)(50986999)(15975445007)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2036;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	MLV:sfv; LANG:en; 
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jan 2016 22:43:56.9574 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2036
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 157.56.111.108
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	Rob Herring <robh@kernel.org>
-Subject: Re: [Qemu-devel] [PATCH v4 8/8] raspi: add raspberry pi 2 machine
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v4 8/8] raspi: add raspberry pi 2 machine
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nxbOSXYY8QbS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: L3kEVyrYbhur
 
-On Fri, Jan 29, 2016 at 2:28 PM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
->> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
->> Sent: Friday, 29 January 2016 14:23
->>
->> On Fri, Jan 29, 2016 at 1:50 PM, Andrew Baumann
->> <Andrew.Baumann@microsoft.com> wrote:
->> > Hi Peter,
->> >
->> > Thanks for all the reviews. I should have a respun version on the list shortly.
->> There's one minor change to this last patch:
->> >
->> >> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
->> >> Sent: Thursday, 28 January 2016 23:31
->> >> > On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann
->> <Andrew.Baumann@microsoft.com> wrote:
->> >  [...]
->> >> > +typedef struct RaspiState {
->> >>
->> >> A quick google search, I see the camel case form for rpi is usually
->> >> "RasPi". Should we follow?
->> >
->> > Ok.
->> >
->> >> > +    union {
->> >>
->> >> union not needed.
->> >
->> > I know it's not needed now, but it will be as soon as we add pi1, which I
->> hope to address in the next patch series. It will make that diff cleaner if we
->> keep this here now, so I'm going to leave it as-is. I hope that's ok with you.
->> >
->>
->> It sounds like you are implementing an inheritance outside QOM. I'm
->> not sure about this, can we just drop the union and figure it out on
->> the next series?
->
-> It's nothing nearly that clever/complicated. See https://github.com/0xabu/qemu/blob/raspi/hw/arm/raspi.c#L116
->
->     switch (version) {
->     case 1:
->         object_initialize(&s->soc.pi1, sizeof(s->soc.pi1), TYPE_BCM2835);
->         break;
->     case 2:
->         object_initialize(&s->soc.pi2, sizeof(s->soc.pi2), TYPE_BCM2836);
->         break;
->     }
->
-> And then later, we always refer simply to OBJECT(&s->soc). I suppose I could use a generic Object pointer instead, and allocate the soc-specific type elsewhere, but it seemed simpler with the union.
->
-
-But this is effectively an upcast to an abstract type, here:
-
-+
-+    /* Setup the SOC */
-+    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
-+                                   &error_abort);
-+    object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
-+                            &error_abort);
-
-Where that concrete type musts implement "ram" and "enabled-cpus". So
-I am unsure of having a split implementation of "ram", "enabled-cpus"
-etc from one SoC to the other as you are using a QOM property name as
-an abstract interface definition.
-
-Regards,
-Peter
-
-> Andrew
+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwu
+Y29tXQ0KPiBTZW50OiBGcmlkYXksIDI5IEphbnVhcnkgMjAxNiAxNDo0MQ0KPiANCj4gT24gRnJp
+LCBKYW4gMjksIDIwMTYgYXQgMjoyOCBQTSwgQW5kcmV3IEJhdW1hbm4NCj4gPEFuZHJldy5CYXVt
+YW5uQG1pY3Jvc29mdC5jb20+IHdyb3RlOg0KPiA+PiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBb
+bWFpbHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwuY29tXQ0KPiA+PiBTZW50OiBGcmlkYXksIDI5
+IEphbnVhcnkgMjAxNiAxNDoyMw0KPiA+Pg0KPiA+PiBPbiBGcmksIEphbiAyOSwgMjAxNiBhdCAx
+OjUwIFBNLCBBbmRyZXcgQmF1bWFubg0KPiA+PiA8QW5kcmV3LkJhdW1hbm5AbWljcm9zb2Z0LmNv
+bT4gd3JvdGU6DQo+ID4+ID4gSGkgUGV0ZXIsDQo+ID4+ID4NCj4gPj4gPiBUaGFua3MgZm9yIGFs
+bCB0aGUgcmV2aWV3cy4gSSBzaG91bGQgaGF2ZSBhIHJlc3B1biB2ZXJzaW9uIG9uIHRoZSBsaXN0
+DQo+IHNob3J0bHkuDQo+ID4+IFRoZXJlJ3Mgb25lIG1pbm9yIGNoYW5nZSB0byB0aGlzIGxhc3Qg
+cGF0Y2g6DQo+ID4+ID4NCj4gPj4gPj4gRnJvbTogUGV0ZXIgQ3Jvc3Rod2FpdGUgW21haWx0bzpj
+cm9zdGh3YWl0ZXBldGVyQGdtYWlsLmNvbV0NCj4gPj4gPj4gU2VudDogVGh1cnNkYXksIDI4IEph
+bnVhcnkgMjAxNiAyMzozMQ0KPiA+PiA+PiA+IE9uIEZyaSwgSmFuIDE1LCAyMDE2IGF0IDM6NTgg
+UE0sIEFuZHJldyBCYXVtYW5uDQo+ID4+IDxBbmRyZXcuQmF1bWFubkBtaWNyb3NvZnQuY29tPiB3
+cm90ZToNCj4gPj4gPiAgWy4uLl0NCj4gPj4gPj4gPiArdHlwZWRlZiBzdHJ1Y3QgUmFzcGlTdGF0
+ZSB7DQo+ID4+ID4+DQo+ID4+ID4+IEEgcXVpY2sgZ29vZ2xlIHNlYXJjaCwgSSBzZWUgdGhlIGNh
+bWVsIGNhc2UgZm9ybSBmb3IgcnBpIGlzIHVzdWFsbHkNCj4gPj4gPj4gIlJhc1BpIi4gU2hvdWxk
+IHdlIGZvbGxvdz8NCj4gPj4gPg0KPiA+PiA+IE9rLg0KPiA+PiA+DQo+ID4+ID4+ID4gKyAgICB1
+bmlvbiB7DQo+ID4+ID4+DQo+ID4+ID4+IHVuaW9uIG5vdCBuZWVkZWQuDQo+ID4+ID4NCj4gPj4g
+PiBJIGtub3cgaXQncyBub3QgbmVlZGVkIG5vdywgYnV0IGl0IHdpbGwgYmUgYXMgc29vbiBhcyB3
+ZSBhZGQgcGkxLCB3aGljaCBJDQo+ID4+IGhvcGUgdG8gYWRkcmVzcyBpbiB0aGUgbmV4dCBwYXRj
+aCBzZXJpZXMuIEl0IHdpbGwgbWFrZSB0aGF0IGRpZmYgY2xlYW5lciBpZg0KPiB3ZQ0KPiA+PiBr
+ZWVwIHRoaXMgaGVyZSBub3csIHNvIEknbSBnb2luZyB0byBsZWF2ZSBpdCBhcy1pcy4gSSBob3Bl
+IHRoYXQncyBvayB3aXRoIHlvdS4NCj4gPj4gPg0KPiA+Pg0KPiA+PiBJdCBzb3VuZHMgbGlrZSB5
+b3UgYXJlIGltcGxlbWVudGluZyBhbiBpbmhlcml0YW5jZSBvdXRzaWRlIFFPTS4gSSdtDQo+ID4+
+IG5vdCBzdXJlIGFib3V0IHRoaXMsIGNhbiB3ZSBqdXN0IGRyb3AgdGhlIHVuaW9uIGFuZCBmaWd1
+cmUgaXQgb3V0IG9uDQo+ID4+IHRoZSBuZXh0IHNlcmllcz8NCj4gPg0KPiA+IEl0J3Mgbm90aGlu
+ZyBuZWFybHkgdGhhdCBjbGV2ZXIvY29tcGxpY2F0ZWQuIFNlZQ0KPiBodHRwczovL2dpdGh1Yi5j
+b20vMHhhYnUvcWVtdS9ibG9iL3Jhc3BpL2h3L2FybS9yYXNwaS5jI0wxMTYNCj4gPg0KPiA+ICAg
+ICBzd2l0Y2ggKHZlcnNpb24pIHsNCj4gPiAgICAgY2FzZSAxOg0KPiA+ICAgICAgICAgb2JqZWN0
+X2luaXRpYWxpemUoJnMtPnNvYy5waTEsIHNpemVvZihzLT5zb2MucGkxKSwgVFlQRV9CQ00yODM1
+KTsNCj4gPiAgICAgICAgIGJyZWFrOw0KPiA+ICAgICBjYXNlIDI6DQo+ID4gICAgICAgICBvYmpl
+Y3RfaW5pdGlhbGl6ZSgmcy0+c29jLnBpMiwgc2l6ZW9mKHMtPnNvYy5waTIpLCBUWVBFX0JDTTI4
+MzYpOw0KPiA+ICAgICAgICAgYnJlYWs7DQo+ID4gICAgIH0NCj4gPg0KPiA+IEFuZCB0aGVuIGxh
+dGVyLCB3ZSBhbHdheXMgcmVmZXIgc2ltcGx5IHRvIE9CSkVDVCgmcy0+c29jKS4gSSBzdXBwb3Nl
+IEkNCj4gY291bGQgdXNlIGEgZ2VuZXJpYyBPYmplY3QgcG9pbnRlciBpbnN0ZWFkLCBhbmQgYWxs
+b2NhdGUgdGhlIHNvYy1zcGVjaWZpYyB0eXBlDQo+IGVsc2V3aGVyZSwgYnV0IGl0IHNlZW1lZCBz
+aW1wbGVyIHdpdGggdGhlIHVuaW9uLg0KPiA+DQo+IA0KPiBCdXQgdGhpcyBpcyBlZmZlY3RpdmVs
+eSBhbiB1cGNhc3QgdG8gYW4gYWJzdHJhY3QgdHlwZSwgaGVyZToNCj4gDQo+ICsNCj4gKyAgICAv
+KiBTZXR1cCB0aGUgU09DICovDQo+ICsgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9jb25zdF9saW5r
+KE9CSkVDVCgmcy0+c29jKSwgInJhbSIsIE9CSkVDVCgmcy0NCj4gPnJhbSksDQo+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICZlcnJvcl9hYm9ydCk7DQo+ICsgICAgb2JqZWN0
+X3Byb3BlcnR5X3NldF9pbnQoT0JKRUNUKCZzLT5zb2MpLCBzbXBfY3B1cywgImVuYWJsZWQtY3B1
+cyIsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmVycm9yX2Fib3J0KTsNCj4gDQo+
+IFdoZXJlIHRoYXQgY29uY3JldGUgdHlwZSBtdXN0cyBpbXBsZW1lbnQgInJhbSIgYW5kICJlbmFi
+bGVkLWNwdXMiLiBTbw0KPiBJIGFtIHVuc3VyZSBvZiBoYXZpbmcgYSBzcGxpdCBpbXBsZW1lbnRh
+dGlvbiBvZiAicmFtIiwgImVuYWJsZWQtY3B1cyINCj4gZXRjIGZyb20gb25lIFNvQyB0byB0aGUg
+b3RoZXIgYXMgeW91IGFyZSB1c2luZyBhIFFPTSBwcm9wZXJ0eSBuYW1lIGFzDQo+IGFuIGFic3Ry
+YWN0IGludGVyZmFjZSBkZWZpbml0aW9uLg0KDQpPaywgZmFpciBlbm91Z2guIEluZGVlZCwgImVu
+YWJsZWQtY3B1cyIgaXMgYWN0dWFsbHkgYSBidWcgdGhlcmUgZm9yIHBpMS4gSSdsbCBkcm9wIHRo
+ZSB1bmlvbiBmb3Igbm93LCBhbmQgcmV3b3JrIGl0IGZvciBwaTEuDQoNCkFuZHJldw0K

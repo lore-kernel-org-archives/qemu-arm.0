@@ -1,159 +1,159 @@
-Received: by 10.223.188.70 with SMTP id a6csp996379wrh;
-        Wed, 30 Aug 2017 07:47:26 -0700 (PDT)
-X-Received: by 10.237.63.189 with SMTP id s58mr2643677qth.84.1504104445940;
-        Wed, 30 Aug 2017 07:47:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1504104445; cv=none;
-        d=google.com; s=arc-20160816;
-        b=upUyn57MmfsV5LS7N7d6rANkTKstyOh/9TOPtwQo0ksijNkCqATjmD5hz5Yl/1WbBY
-         Q4wcglJz4qLgwOcGpvYSi83TBvGizjvHquzDQWDEDjuw6a0wfRmgKB4YfpA8yAyZ4Sbx
-         QGjxap3O2Mg1rR3FIoExIR/nzT5HDNtC7uU2uqLSqmmZib94VTFqZ1jIzOKyS6LQKyov
-         j0Ts8c+FuD5ysEq+7utXH1YHO5nonETTpu2Pk5hZ8cZm/AwZkVsFtUd45f58jJBhEqIC
-         pkxZXXJmz1lSYT38DuGrV5GG5xb5VJ25uIb16gzGlUkTXzf3wCQkvtnQ4zq+4VaYM4AQ
-         eOyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=hA/ke2mx4cc+kJjjRICjPgxunFfp01dcoUEQZKg9UsI=;
-        b=TZ7kY4JA/eiaZWqdRuNWR4gKIKtwakQPTcBaWODRJ7gtp3GqVHU1VOgBVL9z1o3PN7
-         L4UDYnuHm3RXA0r/+qwxI0NwRIfVYl91JEFomjXgLKntYG/DCjqcuIf6s6Uj4x/I/Mmj
-         zDrD/PxXJdj7YRtJlgUfptA9Oq6bjz3xPzyPwk3ObSeArBAhmf1gx+llTE9o1I/xtrTy
-         GbKyT29faS6/BBy842tvsyFHCxdD1RNEnDej+Vqw51o/phDmAH/PJHGzoxvSfijL8WMf
-         YYTRHBwrahLUf83C9rWdbZfoaef0roP3MdDUueaCMjeUsiLCJbO8IVpm1CtkseSzid7v
-         tcMg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rb+gg0a0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: by 10.25.159.19 with SMTP id i19csp782967lfe;
+        Thu, 28 Jan 2016 22:56:25 -0800 (PST)
+X-Received: by 10.140.92.147 with SMTP id b19mr8464154qge.104.1454050585070;
+        Thu, 28 Jan 2016 22:56:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 34si5273273qtn.542.2017.08.30.07.47.25
+        by mx.google.com with ESMTPS id e67si13769634qkb.67.2016.01.28.22.56.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Aug 2017 07:47:25 -0700 (PDT)
+        Thu, 28 Jan 2016 22:56:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rb+gg0a0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50973 helo=lists.gnu.org)
+Received: from localhost ([::1]:60335 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dn4H5-0007HH-Lr
-	for alex.bennee@linaro.org; Wed, 30 Aug 2017 10:47:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49918)
+	id 1aP2yk-0005Sr-Rs
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 01:56:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dn4H1-0007Fo-2D
-	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 10:47:19 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aP2yi-0005Sj-64
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 01:56:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dn4Gy-0008T6-EW
-	for qemu-arm@nongnu.org; Wed, 30 Aug 2017 10:47:19 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:36358)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1dn4Gy-0008Sn-AC; Wed, 30 Aug 2017 10:47:16 -0400
-Received: by mail-qt0-x242.google.com with SMTP id e2so5303442qta.3;
-	Wed, 30 Aug 2017 07:47:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=hA/ke2mx4cc+kJjjRICjPgxunFfp01dcoUEQZKg9UsI=;
-	b=rb+gg0a0Ul8V+wqIwWWokmzRuvztzH7sL/kqNr1yu/sLG8seF5NqM8yn24C8ebeWct
-	tJe1NUTTd9ZkPYvCla7+fIrN1N4kf4OUwo40iNmCnk54Dr8em1/Ekr5Sp6DXLsinDdEl
-	I1giz7BHrYfAVJaEHJZw9OrEDEMC1yIG51Xjc54rnW/2MpnluEw9h8LYH/+dlVsi+FsS
-	Ew/7r8EG/ehH65Z2l36y0Lo5ki/R7XGVXnm7t8+rZJtOHPgmfdNq4PLfSw7nUDWjPxkw
-	U5HOc2Cy2G0asqdSGqZLTkTe5qj7rVdQKQXo2wyYvaYZiBaWaB3+32qY6dAxULmzgpnu
-	zWBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=hA/ke2mx4cc+kJjjRICjPgxunFfp01dcoUEQZKg9UsI=;
-	b=WonQlFn/Gv+sLi3NCLQKnjOaRqDC94jYzn1w6fZECAEMojgO6/yLeTauMWBfh2oHhC
-	OKtxsgw5bv1+u/jOTJgvdyImB5LJAy20Ij4meyePM+XXYoeHP+Zr0Ee8uYcPeakaD6uM
-	Pm8Uh+2utkjEJ9u9RegwTUkq3T6hvwn0xM+r0ajs62M5enKXLZXPZ+ELMRKJnoywTYGR
-	E914ygRinSoSs+X3ATI0iuC4lY/ySMTjOqaeyNXnPTN9D5y/EGkzTeX5eakZEpxF5Skm
-	CsP2gG3WK4Yyd7C5l4LAyvn1ATG/v7nFSQnE4NW6FpPqzbjiMJfRFJJ9dx8YcV/r5FMH
-	2QfA==
-X-Gm-Message-State: AHYfb5i4V1StAAsbsbsD1U24EUQkProtWFxsfmqdtOY+uIniN0RMYF15
-	3K2hUYbb6Ly4Og==
-X-Received: by 10.200.41.15 with SMTP id y15mr2285918qty.82.1504104435609;
-	Wed, 30 Aug 2017 07:47:15 -0700 (PDT)
-Received: from [192.168.43.33] ([170.51.34.109])
-	by smtp.gmail.com with ESMTPSA id
-	e30sm3693963qtg.54.2017.08.30.07.47.12
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Aug 2017 07:47:14 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1503938283-12404-1-git-send-email-sundeep.lkml@gmail.com>
-	<1503938283-12404-5-git-send-email-sundeep.lkml@gmail.com>
-	<10da5552-c90a-21e6-43ac-829932f64930@amsat.org>
-	<CAFEAcA9W=YqbeYKuAxvfNyjfCWGyAXuPdxwFrpLmoezLJ4pm-A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <40ca8d07-75e5-e0b3-021e-5abaffd16b78@amsat.org>
-Date: Wed, 30 Aug 2017 11:47:07 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <zhaoshenglong@huawei.com>) id 1aP2ye-0003bx-4Z
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 01:56:20 -0500
+Received: from szxga03-in.huawei.com ([119.145.14.66]:11704)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1aP2yd-0003bk-Hw; Fri, 29 Jan 2016 01:56:16 -0500
+Received: from 172.24.1.48 (EHLO SZXEML424-HUB.china.huawei.com)
+	([172.24.1.48])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id BVJ91705; Fri, 29 Jan 2016 14:52:49 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by SZXEML424-HUB.china.huawei.com
+	(10.82.67.153) with Microsoft SMTP Server id 14.3.235.1;
+	Fri, 29 Jan 2016 14:52:38 +0800
+Message-ID: <56AB0C33.8050400@huawei.com>
+Date: Fri, 29 Jan 2016 14:52:35 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9W=YqbeYKuAxvfNyjfCWGyAXuPdxwFrpLmoezLJ4pm-A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [Qemu devel v7 PATCH 4/5] msf2: Add Smartfusion2 SoC
+To: Ashok Kumar <ashoks@broadcom.com>
+References: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+	<20160129063219.GA26772@ashoks@broadcom.com>
+In-Reply-To: <20160129063219.GA26772@ashoks@broadcom.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020206.56AB0C44.00A4, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 268bc9459a142e7e304fa59cf52eed48
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, peter.huangpeng@huawei.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	shannon.zhao@linaro.org, ganapatrao.kulkarni@caviumnetworks.com,
+	hanjun.guo@linaro.org
+Subject: Re: [Qemu-arm] [PATCH v4 0/5] ARM: Add NUMA support for machine virt
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cXmLc882I9zt
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qtXjwWZLhMCE
 
-On 08/30/2017 09:26 AM, Peter Maydell wrote:
-> On 30 August 2017 at 03:45, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> I think they might be issues if you start QEMU without -serial and then use
->> a firmware polling for an uart, the device won't be mapped and the memory
->> accesses are mostly ignored.
->>
->> I'd rather use:
->>
->>      for (i = 0; i < MSF2_NUM_UARTS && i < MAX_SERIAL_PORTS; i++) {
->>          static const char *serial[] = {"serial0", "serial1"};
->>
->>          if (!serial_hds[i]) {
->>              serial_hds[i] = qemu_chr_new(serial[i], "null");
->>
->>          }
->>
->>> +            serial_mm_init(get_system_memory(), uart_addr[i], 2,
->>> +                           qdev_get_gpio_in(armv7m, uart_irq[i]),
->>> +                           115200, serial_hds[i], DEVICE_NATIVE_ENDIAN);
->>> +        }
->>> +    }
+
+
+On 2016/1/29 14:32, Ashok Kumar wrote:
+> Hi, 
 > 
-> It would be better to fix serial_mm_init() to handle having
-> a NULL chardev pointer, because we already have a lot of
-> SoC code that just passes it serial_hds[] regardless.
+> On Sat, Jan 23, 2016 at 07:36:41PM +0800, Shannon Zhao wrote:
+>> > From: Shannon Zhao <shannon.zhao@linaro.org>
+>> > 
+>> > Add NUMA support for machine virt. Tested successfully running a guest
+>> > Linux kernel with the following patch applied:
+>> > 
+>> > - [PATCH v9 0/6] arm64, numa: Add numa support for arm64 platforms
+>> > https://lwn.net/Articles/672329/
+>> > - [PATCH v2 0/4] ACPI based NUMA support for ARM64
+>> > http://www.spinics.net/lists/linux-acpi/msg61795.html
+>> > 
+>> > Changes since v3:
+>> > * based on new kernel driver and device bindings
+>> > * add ACPI part
+>> > 
+>> > Changes since v2:
+>> > * update to use NUMA node property arm,associativity.
+>> > 
+>> > Changes since v1:
+>> > Take into account Peter's comments:
+>> > * rename virt_memory_init to arm_generate_memory_dtb
+>> > * move arm_generate_memory_dtb to boot.c and make it a common func
+>> > * use a struct numa_map to generate numa dtb
+>> > 
+>> > Example qemu command line:
+>> > qemu-system-aarch64 \
+>> >     -enable-kvm -smp 4\
+>> >     -kernel Image \
+>> >     -m 512 -machine virt,kernel_irqchip=on \
+>> >     -initrd guestfs.cpio.gz \
+>> >     -cpu host -nographic \
+>> >     -numa node,mem=256M,cpus=0-1,nodeid=0 \
+>> >     -numa node,mem=256M,cpus=2-3,nodeid=1 \
+>> >     -append "console=ttyAMA0 root=/dev/ram"
+>> > 
+>> > Shannon Zhao (5):
+>> >   ARM: Virt: Add /distance-map node for NUMA
+>> >   ARM: Virt: Set numa-node-id for CPUs
+>> >   ARM: Add numa-node-id for /memory node
+>> >   include/hw/acpi/acpi-defs: Add GICC Affinity Structure
+>> >   hw/arm/virt-acpi-build: Generate SRAT table
+>> > 
+>> >  hw/arm/boot.c               | 29 ++++++++++++++++++++++-
+>> >  hw/arm/virt-acpi-build.c    | 58 +++++++++++++++++++++++++++++++++++++++++++++
+>> >  hw/arm/virt.c               | 37 +++++++++++++++++++++++++++++
+>> >  hw/i386/acpi-build.c        |  2 +-
+>> >  include/hw/acpi/acpi-defs.h | 15 +++++++++++-
+>> >  5 files changed, 138 insertions(+), 3 deletions(-)
+>> > 
+>> > -- 
+>> > 2.0.4
+>> > 
+> Don't we need to populate the NUMA node in the Affinity byte of MPIDR?
+> Linux uses the Affinity information in MPIDR to build topology which
+> might go wrong for the guest in this case. 
+> Maybe a non Linux OS might be impacted more?
+> 
+Ah, yes. It needs to update the MPIDR. But currently QEMU uses the value
+from KVM when using KVM. It needs to call kvm_set_one_reg to set the
+MPIDR and I'm not sure if this will affect KVM by looking at following
+comments:
+    /*
+     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
+     * Currently KVM has its own idea about MPIDR assignment, so we
+     * override our defaults with what we get from KVM.
+     */
 
-clever :)
+Peter, do you have any suggestion?
 
-> I'd leave this code as it is and we can fix serial_mm_init
-> separately (somebody pointed out this issue for a xilinx
-> board recently).
+> distance-map compatible string has been changed from
+> "numa,distance-map-v1" to "numa-distance-map-v1"
+Will update this.
 
-Sure.
+Thanks,
+-- 
+Shannon
+

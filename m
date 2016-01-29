@@ -1,186 +1,183 @@
-Received: by 10.25.159.19 with SMTP id i19csp1054671lfe;
-        Fri, 29 Jan 2016 08:56:49 -0800 (PST)
-X-Received: by 10.55.19.129 with SMTP id 1mr11988727qkt.51.1454086609224;
-        Fri, 29 Jan 2016 08:56:49 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp1055117lfe;
+        Fri, 29 Jan 2016 08:57:48 -0800 (PST)
+X-Received: by 10.140.220.134 with SMTP id q128mr12815059qhb.56.1454086668625;
+        Fri, 29 Jan 2016 08:57:48 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 33si18497325qgj.71.2016.01.29.08.56.48
+        by mx.google.com with ESMTPS id a26si16045196qka.5.2016.01.29.08.57.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 08:56:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Jan 2016 08:57:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:35324 helo=lists.gnu.org)
+Received: from localhost ([::1]:35337 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPCLo-00064t-Pl
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:56:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36805)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPCMl-00089a-UA
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:57:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36836)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJO-00024p-Br
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:19 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJQ-00029g-SM
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJN-00041m-9n
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:18 -0500
-Received: from mail-wm0-x22e.google.com ([2a00:1450:400c:c09::22e]:38714)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJP-00042J-Tp
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:20 -0500
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:33828)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJM-00041b-V6
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:17 -0500
-Received: by mail-wm0-x22e.google.com with SMTP id p63so76304085wmp.1
-	for <qemu-devel@nongnu.org>; Fri, 29 Jan 2016 08:54:16 -0800 (PST)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJP-00042A-Jk
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:19 -0500
+Received: by mail-wm0-x235.google.com with SMTP id 128so60851825wmz.1
+	for <qemu-arm@nongnu.org>; Fri, 29 Jan 2016 08:54:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=AXubFGUVabL39KLr3EcjOlEf8wn+v19zBBtKa9vPuac=;
-	b=kvo5fOYJAIF28ysdDdkRRASoc2xrtnk/Tmvcy5G2G0bbGqHDsNrbs5YNQnW3VL6FrJ
-	+mLazCmIVnDZrRv7qzA1exq1ros7wHEYpevuAcxXPlkinT7wWxyIyE68GeBwbXt4Gnqx
-	zvLvGFRHXCz586U/Srqdj02hgRntTr3J3EFco=
+	bh=K9vXJ9fdBJF07Zx8bt3DW9yP494yTmhYatMxMqzAGx4=;
+	b=bfd5HoEFRJ2m0wStI7PiDbH4Qdrx3X2UHRagB3rP45fCfd+CurLLyv+dG3k7421ajn
+	oCsWf9CqfWsSjj9gJ9HKt0kQkmBSbJbS7G2VGBEY2JvvUmSeG4GUb/OjqA7rOk98hohw
+	qoNotDN5w2XrskaZuQXvYOTcJef0UzmAs02Xo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=AXubFGUVabL39KLr3EcjOlEf8wn+v19zBBtKa9vPuac=;
-	b=FXYXgokDIjugGeipl7WaL7xIFsXB5EAAOFra8zB46HrnktD03m+cY7jY6oHyihjlfN
-	qDXNNXeGlOz9j6wNyvQWvrCp4nBzYDyKkxXl3z4uL4r7OihTxpBqbtorqkIbSl0HE4Jp
-	zretofD1nchwixAIbPJxOK6/To/CZX0bAt/1tULLCFT36AvQjYVS+M0F9U80fSQy2aSS
-	Td3dXZettMPY9xLyp+ZX3kqOroXE98JPHAjotzoVbkYp3931JypbjsGZWHvjSEDjAdl0
-	EUkFjIxiLox4FTZ6o1oBr3Rw2mTQx/b/mDLPf1nBxAqCKeFgTH1OPCIrjGBfLsNLPnvk
-	nxmA==
-X-Gm-Message-State: AG10YOQU7jAcs0DXg6fLQW+NyAq1YszGUmHrtxik90wwvuff9u4uODQbEw6CkKF1IYlWV/Lh
-X-Received: by 10.194.172.97 with SMTP id bb1mr11038576wjc.173.1454086456313; 
-	Fri, 29 Jan 2016 08:54:16 -0800 (PST)
+	bh=K9vXJ9fdBJF07Zx8bt3DW9yP494yTmhYatMxMqzAGx4=;
+	b=lxe1O4O14WQ9lSJmVpPgV5z+tZ/8a7LkLoEiymuuVoxL4h53nWwvRBMRPGkCH5up0g
+	mqryfyco4JZ8kt8Po9Awe1soeC3mHXi0U+fGhABMLYgvxafyMevpJhUA+YafcK9+E0bB
+	TJd1Ixo0Cx21XYGU9PZGDI+t9nukyaP9ZcwT3K3d+K207DNQnU3bDfEPea+4KRJ/m9V1
+	knFDLu/8BtHnfXrTzeloxUlLwkRZKJvftnIX2y5/VtYeHOF/h6Wjjg0yrQa70xJaAi8B
+	8QvYaAjBdxlPDNot7kqkxYmTMHFULv/FFloJGfFdnF0ETNbmNoZLop+0/wj+dHrItxc8
+	h6hQ==
+X-Gm-Message-State: AG10YOTQ+l9s46RBSP5vqew/xvy/X0MwRQsMUWgxFwnom4HHFDWcQV0DOXjm3Zo92yMf8LWB
+X-Received: by 10.28.5.213 with SMTP id 204mr9694489wmf.20.1454086458925;
+	Fri, 29 Jan 2016 08:54:18 -0800 (PST)
 Received: from new-host-12.home
 	(LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
 	by smtp.gmail.com with ESMTPSA id
-	ei9sm16415530wjd.40.2016.01.29.08.54.13
+	ei9sm16415530wjd.40.2016.01.29.08.54.16
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 29 Jan 2016 08:54:14 -0800 (PST)
+	Fri, 29 Jan 2016 08:54:17 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
 	agraf@suse.de
-Date: Fri, 29 Jan 2016 16:53:48 +0000
-Message-Id: <1454086429-4373-8-git-send-email-eric.auger@linaro.org>
+Date: Fri, 29 Jan 2016 16:53:49 +0000
+Message-Id: <1454086429-4373-9-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22e
+X-Received-From: 2a00:1450:400c:c09::235
 Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
 	christoffer.dall@linaro.org
-Subject: [Qemu-devel] [RFC v2 7/8] hw: arm: virt: register reserved IOVA
-	region
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v2 8/8] hw: vfio: common: adapt vfio_listeners for
+	reserved_iova region
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q966kNLAwAEm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w+nSyHwQ2S/R
 
-Registers a 16x64kB reserved iova region. Currently this iova
-region is used by the host kernel to map host MSI controller frames
-(GICv2m, GITS_TRANSLATER). The host kernel needs this iova window
-since it cannot program the PCIe device with MSI frame physical
-address (as opposed to x86) since the MSI write transactions go
-through the IOMMU.
-
-The reserved region is mapped on the platform bus.
+In case of reserved iova region, let's declare this region to the
+kernel so that it can use it for IOVA/PA bindings.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
-
 ---
+ hw/vfio/common.c | 46 ++++++++++++++++++++++++++++------------------
+ 1 file changed, 28 insertions(+), 18 deletions(-)
 
-RFC v1 -> RFC v2:
-- use the platform bus to map the reserved iova region
----
- hw/arm/virt.c | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3839c68..4b2a891 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -805,7 +805,7 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
- }
- 
- static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
--                        bool use_highmem)
-+                        bool use_highmem, MemoryRegion **reserved_reg)
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 247c87b..ee957ba 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -217,10 +217,8 @@ static int vfio_dma_unmap(VFIOContainer *container,
+  *
+  * unregistration is handled using vfio_dma_unmap
+  */
+-int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
+-                                ram_addr_t size);
+-int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
+-                                ram_addr_t size)
++static int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
++                                       ram_addr_t size)
  {
-     hwaddr base_mmio = vbi->memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio = vbi->memmap[VIRT_PCIE_MMIO].size;
-@@ -920,10 +920,16 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-     qemu_fdt_setprop_cell(vbi->fdt, nodename, "#interrupt-cells", 1);
-     create_pcie_irq_map(vbi, vbi->gic_phandle, irq, nodename);
- 
-+    /* initialize the reserved iova region for MSI binding (16 x 64kb) */
-+    *reserved_reg = g_new0(MemoryRegion, 1);
-+    memory_region_init_reserved_iova(*reserved_reg, OBJECT(dev),
-+                                     "reserved-iova",
-+                                     0x100000, &error_fatal);
-+
-     g_free(nodename);
- }
- 
--static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
-+static PlatformBusDevice *create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
+     struct vfio_iommu_type1_dma_map map = {
+         .argsz = sizeof(map),
+@@ -271,6 +269,7 @@ static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
+ static bool vfio_listener_skipped_section(MemoryRegionSection *section)
  {
-     DeviceState *dev;
-     SysBusDevice *s;
-@@ -962,6 +968,7 @@ static void create_platform_bus(VirtBoardInfo *vbi, qemu_irq *pic)
-     memory_region_add_subregion(sysmem,
-                                 platform_bus_params.platform_bus_base,
-                                 sysbus_mmio_get_region(s, 0));
-+    return PLATFORM_BUS_DEVICE(dev);
- }
+     return (!memory_region_is_ram(section->mr) &&
++            !memory_region_is_reserved_iova(section->mr) &&
+             !memory_region_is_iommu(section->mr)) ||
+            /*
+             * Sizing an enabled 64-bit BAR can cause spurious mappings to
+@@ -354,7 +353,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+     hwaddr iova, end;
+     Int128 llend;
+     void *vaddr;
+-    int ret;
++    int ret = -1;
  
- static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-@@ -1015,7 +1022,7 @@ static void machvirt_init(MachineState *machine)
-     VirtMachineState *vms = VIRT_MACHINE(machine);
-     qemu_irq pic[NUM_IRQS];
-     MemoryRegion *sysmem = get_system_memory();
--    MemoryRegion *secure_sysmem = NULL;
-+    MemoryRegion *secure_sysmem = NULL, *reserved_reg;
-     int gic_version = vms->gic_version;
-     int n, max_cpus;
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
-@@ -1024,6 +1031,7 @@ static void machvirt_init(MachineState *machine)
-     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
-     VirtGuestInfo *guest_info = &guest_info_state->info;
-     char **cpustr;
-+    PlatformBusDevice *pbus;
+     if (vfio_listener_skipped_section(section)) {
+         trace_vfio_listener_region_add_skip(
+@@ -418,24 +417,35 @@ static void vfio_listener_region_add(MemoryListener *listener,
+         return;
+     }
  
-     if (!cpu_model) {
-         cpu_model = "cortex-a15";
-@@ -1161,7 +1169,7 @@ static void machvirt_init(MachineState *machine)
+-    /* Here we assume that memory_region_is_ram(section->mr)==true */
++    /* Here we assume that the memory region is ram or reserved iova */
  
-     create_rtc(vbi, pic);
+-    vaddr = memory_region_get_ram_ptr(section->mr) +
+-            section->offset_within_region +
+-            (iova - section->offset_within_address_space);
++    if (memory_region_is_ram(section->mr)) {
++        vaddr = memory_region_get_ram_ptr(section->mr) +
++                section->offset_within_region +
++                (iova - section->offset_within_address_space);
  
--    create_pcie(vbi, pic, vms->highmem);
-+    create_pcie(vbi, pic, vms->highmem, &reserved_reg);
+-    trace_vfio_listener_region_add_ram(iova, end - 1, vaddr);
++        trace_vfio_listener_region_add_ram(iova, end - 1, vaddr);
  
-     create_gpio(vbi, pic);
+-    ret = vfio_dma_map(container, iova, end - iova, vaddr, section->readonly);
+-    if (ret) {
+-        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                     "0x%"HWADDR_PRIx", %p) = %d (%m)",
+-                     container, iova, end - iova, vaddr, ret);
+-        goto fail;
++        ret = vfio_dma_map(container, iova, end - iova, vaddr,
++                           section->readonly);
++        if (ret) {
++            error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx", %p) = %d (%m)",
++                         container, iova, end - iova, vaddr, ret);
++            goto fail;
++        }
++        return;
++    } else if (memory_region_is_reserved_iova(section->mr)) {
++        ret = vfio_register_reserved_iova(container, iova, end - iova);
++        if (ret) {
++            error_report("vfio_register_reserved_iova(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx") = %d (%m)",
++                         container, iova, end - iova, ret);
++            goto fail;
++        }
++        return;
+     }
  
-@@ -1200,7 +1208,8 @@ static void machvirt_init(MachineState *machine)
-      * another notifier is registered which adds platform bus nodes.
-      * Notifiers are executed in registration reverse order.
-      */
--    create_platform_bus(vbi, pic);
-+    pbus = create_platform_bus(vbi, pic);
-+    platform_bus_map_region(pbus, reserved_reg);
- }
- 
- static bool virt_get_secure(Object *obj, Error **errp)
+-    return;
+-
+ fail:
+     /*
+      * On the initfn path, store the first error in the container so we
 -- 
 1.9.1
 

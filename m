@@ -1,95 +1,76 @@
-Received: by 10.25.159.19 with SMTP id i19csp1181813lfe;
-        Fri, 29 Jan 2016 13:50:41 -0800 (PST)
-X-Received: by 10.141.2.68 with SMTP id e65mr14541587qhd.64.1454104241846;
-        Fri, 29 Jan 2016 13:50:41 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1193394lfe;
+        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
+X-Received: by 10.55.53.208 with SMTP id c199mr13962545qka.109.1454106166762;
+        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m7si15893863qhc.107.2016.01.29.13.50.41
+        by mx.google.com with ESMTPS id t67si17293085qkl.123.2016.01.29.14.22.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 13:50:41 -0800 (PST)
+        Fri, 29 Jan 2016 14:22:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:36605 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36698 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPGwD-00061l-Eu
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 16:50:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44148)
+	id 1aPHRG-0006Eo-7O
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:22:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59089)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPGwB-0005zk-DI
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 16:50:40 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHRD-0006C3-DY
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:22:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aPGwA-00040q-GN
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 16:50:39 -0500
-Received: from mail-by2on0140.outbound.protection.outlook.com
-	([207.46.100.140]:16146
-	helo=na01-by2-obe.outbound.protection.outlook.com)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHRC-0004O2-L3
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 17:22:43 -0500
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:33115)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aPGw5-0003xz-5D; Fri, 29 Jan 2016 16:50:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=jL+7hPBCMhppBvM3wtD7uYicOBhimDTkRjsjMdfV59s=;
-	b=CW57WoIVw86ZE9jlpZn6945xN/MU0Xf0rVhl5ykhY/aOFalXrgdIh0uojCTYbZdhanPeUWhsqmn0dKOhvBIwo0F6tzaITyGaAXWumKIy0LGCbqQeHbyJ+sadzvG4YSQPIDYk6M2Kq4N5ITHc2DRDJ2c0OGuYDAnGYWgNd0AVdPg=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2036.namprd03.prod.outlook.com (10.164.22.26) with Microsoft
-	SMTP Server (TLS) id 15.1.390.13; Fri, 29 Jan 2016 21:50:29 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0390.017; Fri, 29 Jan 2016 21:50:29 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Thread-Topic: [PATCH v4 8/8] raspi: add raspberry pi 2 machine
-Thread-Index: AQHRT/DG10Xdqk9Vq0G0qXu0O32qRp8SLiwAgADtG8A=
-Date: Fri, 29 Jan 2016 21:50:28 +0000
-Message-ID: <BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aPHRA-0004NZ-M9; Fri, 29 Jan 2016 17:22:40 -0500
+Received: by mail-wm0-x241.google.com with SMTP id r129so12288468wmr.0;
+	Fri, 29 Jan 2016 14:22:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=E2+OlZmuDmBUl2zCh3SbveqqCFw6GqAPyJu7Z2pDvnI=;
+	b=LR3Rl5eFWjFoWLFrVqZ5FtHnYxRw0sa9ULP49mTyqDCBwU3BT24ssF7hTaTp92qNsb
+	V0mPJTCuUA6JKe53C/y5WwFSeyHUxHpjJ/J15yYIVzoCOzaNJK2i/1ogCkNNVlxdDjBA
+	cVCayRBT7smDd2OgtlgwEYXN3orIHE/adDlKwYZPZA8HZFN0M/OZJNj0XP0HaEt1dZpS
+	e6tiRfyzN8Xb7A0O4nurB0iy2BrsxT1/C+0ii5Zpie8Qixn9MhbMqeYWM6S4jxYqexn0
+	v+6Mbb+a+hnHqffgBsQh5lJXnfDcScudj+L1qv51wHd4H4P//StaT9jVXSKNXod8TtmJ
+	+h/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=E2+OlZmuDmBUl2zCh3SbveqqCFw6GqAPyJu7Z2pDvnI=;
+	b=S1P2Eo6JLfQm7pBjdC2zDg7/uHq//q/aixd1xrEjYL3N96VQq5R2pmUsneLZP+AMxH
+	GHZzZJMmNISY9gKqCw4hKrh4kw5Iy0f5NZteXdc7k5sr+h7BjGR9wgy3xya5d5Af/ZGo
+	FdVabbCZBY1OxNOYckcU8N1X5WFWB806hgq9BC781z8SfyylYf6IE1z37//I68A8lsnQ
+	ppLEokokjCOY9ms8yp/ftHyEatauWGTMWAmCQ/CLZuIJESiuKfY8Zvk2iocHBuAD3r8R
+	VniUHIZhP2+KdoIhEmTMPVwTSJ6xPI5F8hOU39EctWZBzHYgizcF9kydPI7CCDfWjWaS
+	4Clg==
+X-Gm-Message-State: AG10YOSajuCFm1BdNoHMGiBTO2RNIneyP+2niOIRE43PqQ5vP69/pOjyBwWe9YIqVAb24KcvSYbaETLTtAAaXA==
+MIME-Version: 1.0
+X-Received: by 10.194.22.132 with SMTP id d4mr11181476wjf.174.1454106159969;
+	Fri, 29 Jan 2016 14:22:39 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Fri, 29 Jan 2016 14:22:39 -0800 (PST)
+In-Reply-To: <BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
 	<1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
 	<CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
-In-Reply-To: <CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: gmail.com; dkim=none (message not signed)
-	header.d=none; gmail.com;
-	dmarc=none action=none header.from=microsoft.com; 
-x-originating-ip: [2001:4898:80e8:2::2e3]
-x-ms-office365-filtering-correlation-id: 582a1f11-3695-4239-0475-08d328f63486
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2036;
-	5:cgoLUX/fDto4efrox6W2X88kIAEzZw2viKH0dqj8lP5ZS4ljeI1xiYCIGfC5aDGROAgLQLje04He3hcK0sx43be4Mc0n6O/btvECFdoHoT5CDh8zQuuhBayrNWTVwET0enoWYPXrn8c75wVshtCxSQ==;
-	24:NJaP7zkFzj19ag766Y70L49eZB8UEKu69yzhcIPsyKAjEjfeCN8lalOdosEzhdvDa/gFFzCMMIJiChRY4ATg5XH3ejK7iScCbBHbIU30BA4=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2036;
-x-microsoft-antispam-prvs: <BLUPR0301MB2036990E4D85D6FA7943E6309EDB0@BLUPR0301MB2036.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
-	SRVR:BLUPR0301MB2036; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2036; 
-x-forefront-prvs: 083691450C
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(164054003)(377454003)(24454002)(33656002)(4326007)(87936001)(74316001)(5008740100001)(5002640100001)(3660700001)(10290500002)(92566002)(19580395003)(77096005)(2906002)(19580405001)(10400500002)(11100500001)(10090500001)(5004730100002)(8990500004)(5005710100001)(106116001)(122556002)(3470700001)(110136002)(40100003)(1411001)(5001960100002)(3280700002)(2950100001)(1096002)(1220700001)(99286002)(102836003)(6116002)(76576001)(5003600100002)(586003)(2900100001)(86612001)(189998001)(86362001)(54356999)(76176999)(50986999)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2036;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	MLV:sfv; LANG:en; 
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jan 2016 21:50:28.2322 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2036
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.140
+	<BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Fri, 29 Jan 2016 14:22:39 -0800
+Message-ID: <CAPokK=pLw9OVv3_FHedk12byTu0gjGFy80UT1T1TUFTewi5kpg@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::241
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -108,19 +89,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E9UurwbHM+Qz
+X-TUID: s754J79Qxs2Q
 
-SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgYWxsIHRoZSByZXZpZXdzLiBJIHNob3VsZCBoYXZlIGEg
-cmVzcHVuIHZlcnNpb24gb24gdGhlIGxpc3Qgc2hvcnRseS4gVGhlcmUncyBvbmUgbWlub3IgY2hh
-bmdlIHRvIHRoaXMgbGFzdCBwYXRjaDoNCg0KPiBGcm9tOiBQZXRlciBDcm9zdGh3YWl0ZSBbbWFp
-bHRvOmNyb3N0aHdhaXRlcGV0ZXJAZ21haWwuY29tXQ0KPiBTZW50OiBUaHVyc2RheSwgMjggSmFu
-dWFyeSAyMDE2IDIzOjMxDQo+ID4gT24gRnJpLCBKYW4gMTUsIDIwMTYgYXQgMzo1OCBQTSwgQW5k
-cmV3IEJhdW1hbm4gPEFuZHJldy5CYXVtYW5uQG1pY3Jvc29mdC5jb20+IHdyb3RlOg0KIFsuLi5d
-DQo+ID4gK3R5cGVkZWYgc3RydWN0IFJhc3BpU3RhdGUgew0KPiANCj4gQSBxdWljayBnb29nbGUg
-c2VhcmNoLCBJIHNlZSB0aGUgY2FtZWwgY2FzZSBmb3JtIGZvciBycGkgaXMgdXN1YWxseQ0KPiAi
-UmFzUGkiLiBTaG91bGQgd2UgZm9sbG93Pw0KDQpPay4NCg0KPiA+ICsgICAgdW5pb24gew0KPiAN
-Cj4gdW5pb24gbm90IG5lZWRlZC4NCg0KSSBrbm93IGl0J3Mgbm90IG5lZWRlZCBub3csIGJ1dCBp
-dCB3aWxsIGJlIGFzIHNvb24gYXMgd2UgYWRkIHBpMSwgd2hpY2ggSSBob3BlIHRvIGFkZHJlc3Mg
-aW4gdGhlIG5leHQgcGF0Y2ggc2VyaWVzLiBJdCB3aWxsIG1ha2UgdGhhdCBkaWZmIGNsZWFuZXIg
-aWYgd2Uga2VlcCB0aGlzIGhlcmUgbm93LCBzbyBJJ20gZ29pbmcgdG8gbGVhdmUgaXQgYXMtaXMu
-IEkgaG9wZSB0aGF0J3Mgb2sgd2l0aCB5b3UuDQoNClRoYW5rcywNCkFuZHJldw0K
+On Fri, Jan 29, 2016 at 1:50 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Hi Peter,
+>
+> Thanks for all the reviews. I should have a respun version on the list shortly. There's one minor change to this last patch:
+>
+>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> Sent: Thursday, 28 January 2016 23:31
+>> > On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
+>  [...]
+>> > +typedef struct RaspiState {
+>>
+>> A quick google search, I see the camel case form for rpi is usually
+>> "RasPi". Should we follow?
+>
+> Ok.
+>
+>> > +    union {
+>>
+>> union not needed.
+>
+> I know it's not needed now, but it will be as soon as we add pi1, which I hope to address in the next patch series. It will make that diff cleaner if we keep this here now, so I'm going to leave it as-is. I hope that's ok with you.
+>
+
+It sounds like you are implementing an inheritance outside QOM. I'm
+not sure about this, can we just drop the union and figure it out on
+the next series?
+
+Regards,
+Peter
+
+> Thanks,
+> Andrew

@@ -1,116 +1,222 @@
-Received: by 10.25.159.19 with SMTP id i19csp1050412lfe;
-        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
-X-Received: by 10.112.166.100 with SMTP id zf4mr3668213lbb.58.1454086036939;
-        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lf0-x244.google.com (mail-lf0-x244.google.com. [2a00:1450:4010:c07::244])
-        by mx.google.com with ESMTPS id r15si8525813lfr.132.2016.01.29.08.47.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) client-ip=2a00:1450:4010:c07::244;
+Received: by 10.25.159.19 with SMTP id i19csp1050606lfe;
+        Fri, 29 Jan 2016 08:47:46 -0800 (PST)
+X-Received: by 10.55.79.69 with SMTP id d66mr11838343qkb.76.1454086066661;
+        Fri, 29 Jan 2016 08:47:46 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id y124si15586563qka.2.2016.01.29.08.47.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 29 Jan 2016 08:47:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::244 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x244.google.com with SMTP id n70so4087460lfn.1;
-        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-type:content-transfer-encoding;
-        bh=fyFXa3CZf8wcUBQSo9whFdyiFqujaQSh4d45q2AiT6M=;
-        b=m+TGfmo/zcN5gtyXjL9rkQd6Df/hsDs1cgcEQte9u6epuoRi7QEMU6fgdUY/40OR97
-         RA0YgclrQiPmjZTxUr8VZcy/0w86DZhxQh63Rlw4O6vcBIIZiwY2YGNK0UiadvC+Bv/d
-         B/QN4siaSr1YGOXir3zoiXfP9FIjeIXS6rn2IZj3Sf14//6A0qa808gs4SSRRkeXHYWq
-         BfZ46tC1SbDtUbRISttU4O1FMnaB/CN0AU19xB4dOzlsHI2EhH67PRLwPbiIJu41qQTH
-         55g18hu5ICGuUcgUA6R/W9c2Vwj/LDO9vcn2Pml1BixfwpeIaXz7EEpL57Uij1jl8HSP
-         0nwg==
+Received: from localhost ([::1]:35241 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPCD4-0001cY-3c
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:47:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35341)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPCD1-0001XX-5f
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:47:44 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPCCw-0001Rq-0Z
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:47:43 -0500
+Received: from mail-lb0-x244.google.com ([2a00:1450:4010:c04::244]:35649)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aPCCv-0001R9-JQ; Fri, 29 Jan 2016 11:47:37 -0500
+Received: by mail-lb0-x244.google.com with SMTP id dx9so3570027lbc.2;
+	Fri, 29 Jan 2016 08:47:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=0MFVNCmf8XKQ1zolq+E389T0i4YCDknOezkbKYapIgw=;
+	b=si7L3z9gzOdQF3IzAPTB7prl4pXi89K/N4E0x58iah2np+OJjV1D7IB+IngaM1tDBl
+	W/euaB5tE4f7R7VDwl0MF2vI5bLK+4V4iHUKvrM2vSBkwIhuwgrgM4p8iS1AVcDa/Ggo
+	e+0cgd16mS/R855EcfPMMZoXxFBzjeUFsETTi+So2pTsxWgVeR3p+ajC/5W5XRat3R+E
+	5Z7RlCMU9mVSt56J7FGnSJODlZ847BtpPl+BBxD2Z1bG4+95CXMWq35G6o0LiKwVmaWy
+	mv1OUl4ZSE+Ta9jrPVSHDXZYN34thhshhToVv1XSbzGwfP+/EQr8EQrvsBukNG2Vps2D
+	TwbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-type
-         :content-transfer-encoding;
-        bh=fyFXa3CZf8wcUBQSo9whFdyiFqujaQSh4d45q2AiT6M=;
-        b=h4wgpK+YpGnOZQbs4b0W9cA/RL9X8H3i60cjCKwg7Gr2utrT/7qiE/38nIbBhjV/LV
-         deHKFOjPMQeWJsAGKyBz2Hh3SjqxZntTaB0atUkoBb4PcyE+0ax7+S+dZc7lwVOapxWV
-         YahSNMVjQg4id4rrNZhGcOdS/eMJw7dGJIWuGDgVthLqD4HO5pB/8apmD/KVZF4SAbAo
-         1hTpYwi2nwAeaMAG4R3Ad+oZBDOLAp+pSv8I2lz6Q1H8LSPiMafQoWYQHgJ9Zfe2X9bw
-         zzYfdBEbWABgrzXflxIayBylYE0tLhFKHUMp+K9OT94KW/27LOad1Pc2DTMCfKUmFXRB
-         8UWg==
-X-Gm-Message-State: AG10YOQglvOON8C6yKupOsTKvTMtFU4yQ8AKEfnxwAf81omdbCX8aEQFw7BHgP4ri0it9A==
-X-Received: by 10.25.160.1 with SMTP id j1mr3855047lfe.35.1454086036649;
-        Fri, 29 Jan 2016 08:47:16 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=0MFVNCmf8XKQ1zolq+E389T0i4YCDknOezkbKYapIgw=;
+	b=l6dlQP4YchDnui7D1vCZdlfELqEVI0zq8rI/ZQaqNhLiFFwDMA+S8AQKMZaxWo2KDC
+	vVz3/a8HcPMqbxyLazg8ifC4BNM88kPVM1xLo3dkbYQ333+3iFb5f/gOSTPmoVPyWYay
+	g17EnI1UyM7SWCP1EKTPwjcsK6B2GvAnNgx9kg5STu+qwlMvUoXfywJOyTnbn5YEEVIE
+	rc5UQe5kNVmAZkacmjazUd+WjA+UQmg5uk0E3lHfD8Wq91OE7I3iK0C956k8qSJTb/bN
+	mftgZESKXa43ne4UUmMEVtGjxUmtvuZYGfTN0QVDS4ibk5+9i/IL+knP7Pqmu+YtSRw9
+	qDXQ==
+X-Gm-Message-State: AG10YOSHS41SUpcmmFcYz6jBxXAOK1F++mg4JuIiyytNT7E61akeYu9NLVTMn0c9jA/jCg==
+X-Received: by 10.112.16.168 with SMTP id h8mr3616714lbd.90.1454086056836;
+	Fri, 29 Jan 2016 08:47:36 -0800 (PST)
 Received: from [10.30.10.50] ([213.243.91.10])
-        by smtp.googlemail.com with ESMTPSA id dm7sm717484lbc.32.2016.01.29.08.47.15
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 29 Jan 2016 08:47:15 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH 5/8] target-arm: Fix wrong AArch64 entry
- offset for EL2/EL3 target
+	by smtp.googlemail.com with ESMTPSA id
+	rx3sm2178722lbb.35.2016.01.29.08.47.35
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 29 Jan 2016 08:47:36 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1452796451-2946-1-git-send-email-peter.maydell@linaro.org>
- <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, patches@linaro.org
+	<1452796451-2946-7-git-send-email-peter.maydell@linaro.org>
 From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56AB9792.8080302@gmail.com>
-Date: Fri, 29 Jan 2016 19:47:14 +0300
+Message-ID: <56AB97A6.5060508@gmail.com>
+Date: Fri, 29 Jan 2016 19:47:34 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.1
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1452796451-2946-6-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1452796451-2946-7-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-TUID: /lJQ5nDm5xtN
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::244
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 6/8] target-arm: Handle exception return from
+ AArch64 to non-EL0 AArch32
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +nrwHW20FeYz
 
 On 14.01.2016 21:34, Peter Maydell wrote:
-> The entry offset when taking an exception to AArch64 from a lower
-> exception level may be 0x400 or 0x600. 0x400 is used if the
-> implemented exception level immediately lower than the target level
-> is using AArch64, and 0x600 if it is using AArch32. We were
-> incorrectly implementing this as checking the exception level
-> that the exception was taken from. (The two can be different if
-> for example we take an exception from EL0 to AArch64 EL3; we should
-> in this case be checking EL2 if EL2 is implemented, and EL1 if
-> EL2 is not implemented.)
+> Remove the assumptions that the AArch64 exception return code was
+> making about a return to AArch32 always being a return to EL0.
+> This includes pulling out the illegal-SPSR checks so we can apply
+> them for return to 32 bit as well as return to 64-bit.
 
 Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target-arm/helper.c | 21 ++++++++++++++++++++-
->  1 file changed, 20 insertions(+), 1 deletion(-)
+>  target-arm/op_helper.c | 80 +++++++++++++++++++++++++++++++++++++-------------
+>  1 file changed, 59 insertions(+), 21 deletions(-)
 >
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index d37c82c..196c111 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -5866,7 +5866,26 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
->      unsigned int new_mode = aarch64_pstate_mode(new_el, true);
+> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+> index e42d287..38d46d8 100644
+> --- a/target-arm/op_helper.c
+> +++ b/target-arm/op_helper.c
+> @@ -640,12 +640,51 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
+>      }
+>  }
 >  
->      if (arm_current_el(env) < new_el) {
-> -        if (env->aarch64) {
-> +        /* Entry vector offset depends on whether the implemented EL
-> +         * immediately lower than the target level is using AArch32 or AArch64
-> +         */
-> +        bool is_aa64;
-> +
-> +        switch (new_el) {
-> +        case 3:
-> +            is_aa64 = (env->cp15.scr_el3 & SCR_RW) != 0;
-> +            break;
-> +        case 2:
-> +            is_aa64 = (env->cp15.hcr_el2 & HCR_RW) != 0;
-> +            break;
-> +        case 1:
-> +            is_aa64 = is_a64(env);
-> +            break;
+> +static int el_from_spsr(uint32_t spsr)
+> +{
+> +    /* Return the exception level that this SPSR is requesting a return to,
+> +     * or -1 if it is invalid (an illegal return)
+> +     */
+> +    if (spsr & PSTATE_nRW) {
+> +        switch (spsr & CPSR_M) {
+> +        case ARM_CPU_MODE_USR:
+> +            return 0;
+> +        case ARM_CPU_MODE_HYP:
+> +            return 2;
+> +        case ARM_CPU_MODE_FIQ:
+> +        case ARM_CPU_MODE_IRQ:
+> +        case ARM_CPU_MODE_SVC:
+> +        case ARM_CPU_MODE_ABT:
+> +        case ARM_CPU_MODE_UND:
+> +        case ARM_CPU_MODE_SYS:
+> +            return 1;
+> +        case ARM_CPU_MODE_MON:
+> +            /* Returning to Mon from AArch64 is never possible,
+> +             * so this is an illegal return.
+> +             */
 > +        default:
-> +            g_assert_not_reached();
+> +            return -1;
 > +        }
+> +    } else {
+> +        if (extract32(spsr, 1, 1)) {
+> +            /* Return with reserved M[1] bit set */
+> +            return -1;
+> +        }
+> +        if (extract32(spsr, 0, 4) == 1) {
+> +            /* return to EL0 with M[0] bit set */
+> +            return -1;
+> +        }
+> +        return extract32(spsr, 2, 2);
+> +    }
+> +}
 > +
-> +        if (is_aa64) {
->              addr += 0x400;
->          } else {
->              addr += 0x600;
+>  void HELPER(exception_return)(CPUARMState *env)
+>  {
+>      int cur_el = arm_current_el(env);
+>      unsigned int spsr_idx = aarch64_banked_spsr_index(cur_el);
+>      uint32_t spsr = env->banked_spsr[spsr_idx];
+>      int new_el;
+> +    bool return_to_aa64 = (spsr & PSTATE_nRW) == 0;
+>  
+>      aarch64_save_sp(env, cur_el);
+>  
+> @@ -662,35 +701,34 @@ void HELPER(exception_return)(CPUARMState *env)
+>          spsr &= ~PSTATE_SS;
+>      }
+>  
+> -    if (spsr & PSTATE_nRW) {
+> -        /* TODO: We currently assume EL1/2/3 are running in AArch64.  */
+> +    new_el = el_from_spsr(spsr);
+> +    if (new_el == -1) {
+> +        goto illegal_return;
+> +    }
+> +    if (new_el > cur_el
+> +        || (new_el == 2 && !arm_feature(env, ARM_FEATURE_EL2))) {
+> +        /* Disallow return to an EL which is unimplemented or higher
+> +         * than the current one.
+> +         */
+> +        goto illegal_return;
+> +    }
+> +
+> +    if (new_el != 0 && arm_el_is_aa64(env, new_el) != return_to_aa64) {
+> +        /* Return to an EL which is configured for a different register width */
+> +        goto illegal_return;
+> +    }
+> +
+> +    if (!return_to_aa64) {
+>          env->aarch64 = 0;
+> -        new_el = 0;
+> -        env->uncached_cpsr = 0x10;
+> +        env->uncached_cpsr = spsr & CPSR_M;
+>          cpsr_write(env, spsr, ~0);
+>          if (!arm_singlestep_active(env)) {
+>              env->uncached_cpsr &= ~PSTATE_SS;
+>          }
+>          aarch64_sync_64_to_32(env);
+>  
+> -        env->regs[15] = env->elr_el[1] & ~0x1;
+> +        env->regs[15] = env->elr_el[cur_el] & ~0x1;
+>      } else {
+> -        new_el = extract32(spsr, 2, 2);
+> -        if (new_el > cur_el
+> -            || (new_el == 2 && !arm_feature(env, ARM_FEATURE_EL2))) {
+> -            /* Disallow return to an EL which is unimplemented or higher
+> -             * than the current one.
+> -             */
+> -            goto illegal_return;
+> -        }
+> -        if (extract32(spsr, 1, 1)) {
+> -            /* Return with reserved M[1] bit set */
+> -            goto illegal_return;
+> -        }
+> -        if (new_el == 0 && (spsr & PSTATE_SP)) {
+> -            /* Return to EL0 with M[0] bit set */
+> -            goto illegal_return;
+> -        }
+>          env->aarch64 = 1;
+>          pstate_write(env, spsr);
+>          if (!arm_singlestep_active(env)) {
+

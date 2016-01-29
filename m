@@ -1,80 +1,79 @@
-Received: by 10.25.159.19 with SMTP id i19csp788521lfe;
-        Thu, 28 Jan 2016 23:11:52 -0800 (PST)
-X-Received: by 10.140.22.210 with SMTP id 76mr8719235qgn.70.1454051512556;
-        Thu, 28 Jan 2016 23:11:52 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp795494lfe;
+        Thu, 28 Jan 2016 23:31:25 -0800 (PST)
+X-Received: by 10.140.98.100 with SMTP id n91mr8933250qge.56.1454052685008;
+        Thu, 28 Jan 2016 23:31:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a123si15713968qha.3.2016.01.28.23.11.52
+        by mx.google.com with ESMTPS id e195si15778503qhc.85.2016.01.28.23.31.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jan 2016 23:11:52 -0800 (PST)
+        Thu, 28 Jan 2016 23:31:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60381 helo=lists.gnu.org)
+Received: from localhost ([::1]:60429 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aP3Dk-0001DO-1H
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 02:11:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36469)
+	id 1aP3We-0001fk-Cv
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 02:31:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40152)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP3Dh-0001AI-IL
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 02:11:51 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP3Wb-0001cZ-HQ
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 02:31:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP3Dg-0008Eq-2x
-	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 02:11:49 -0500
-Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:38054)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aP3WW-00027x-PW
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 02:31:21 -0500
+Received: from mail-wm0-x22f.google.com ([2a00:1450:400c:c09::22f]:33594)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aP3Dc-0008ET-Is; Fri, 29 Jan 2016 02:11:44 -0500
-Received: by mail-wm0-x233.google.com with SMTP id p63so55290941wmp.1;
-	Thu, 28 Jan 2016 23:11:44 -0800 (PST)
+	id 1aP3WT-00027I-Cj; Fri, 29 Jan 2016 02:31:13 -0500
+Received: by mail-wm0-x22f.google.com with SMTP id l66so55445817wml.0;
+	Thu, 28 Jan 2016 23:31:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
 	:cc:content-type;
-	bh=98xLjoOHLXZpR5ziznShQjgOR/pgEjTeyMNW3OMEgUI=;
-	b=s9SwFrHV0KnO9KkKrZDBpwdLtICL7JHaadIV7zK/l2LtmZZSDudtDFufdOEZNrJY+u
-	ezXly9Vhmhi2eWlGQRAPXn6wJFs2QlGhyr+XIjR+Y190fZUCVChJrsu32sEL0OZXJA9f
-	R/hfLF/YVTi1gylye2dw7PBAnOFHJZCHtZg0ieLKel0lNKrRzZCgFVkkOuvusVUrBNHT
-	6duKDOvgQVUoZmSENKtf9hFqeUqBlbAk5lEFQu3jspKVxbZLIkcUkOeV59coy9nR7gas
-	V6i6tM/fwFwc2TpQ7W9IjaVr04DN/p1MsyplZqVNX0e21nkiXfuFGwBVExci9nTdzGRN
-	tWgA==
+	bh=rrTETZjK/dshdGCvrxBlA4xTTPRcPKj0aduhXOmRbdQ=;
+	b=ubtKJd8TYt3/xKbPvNEM9T5xkEIY3WGzk96DR/JqbBhAx0fidHgsMEFFRLaa5pDUTR
+	innNzpaGpsG0+1p4Eq7ESo2uD5tpV4KNQT/v52hyWCKKki4VRvhu20B//0CsOtoYpNAf
+	Hk0IYuWzJUKKzA/aDqlzjK8Hq3wg4hNlp3Es0wLmSv5/Vc0ewdSIXYobslMfk52NS3lT
+	97lliPRBLDBqJpia234MS0v8qrCnCv7tY3bQd6hboM153z2fgof0iD0vpJPZkexwg4pi
+	06wowId41YqPZgbPOsEHr1+04Olke1vJ0JFovTFcaIfc7c0ARTdaCmDFCgRHWyc+2JkO
+	RsFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:date
 	:message-id:subject:from:to:cc:content-type;
-	bh=98xLjoOHLXZpR5ziznShQjgOR/pgEjTeyMNW3OMEgUI=;
-	b=mWyaM7WxsgwW9F0GZFfbMfTS8QNM1tfC3LST5RMV9w/9r8Ch2qbnFexNKSqydG8jNH
-	RwNbDL2JNHRwJIDAS57MLQBKJ2urZ2t9V0+JuOGNQUFtkcQuPsQBiBuQ+hmI8sLp50i5
-	2e3PD2RU4bXmzZKaSSpI2ehPkqQ7Wz9yrI+P88luTBd+8LqEpFOxr9BPK71JwYJJc91W
-	8Pc4xuvfbfCsnszPRmi6+7eei3K43KxMHhHIZtCbCLCDcJJpVWFqF+EDW6bqIcrQ4iwl
-	hveXAMvenyA3ZsQycD17tPI7q7Od7OEP2LgkNibRbXpxJBIwMd47y3GOM3mEDJFDaklX
-	QHDQ==
-X-Gm-Message-State: AG10YOS5fzDZMjrPI2fJwGX2M+5PxK6Jjjvr4MdZKDG1v9tDp9ODkVwEzYmPv2shmtVxT9I8yTponkO/gvnTEA==
+	bh=rrTETZjK/dshdGCvrxBlA4xTTPRcPKj0aduhXOmRbdQ=;
+	b=j9DWnu4LnZ9g+NhK+2RKE0ahN9Sv7Kb4AeZpu4hQBNnWmXedddmPndZvJp9bzMYkds
+	f7TFUGo+jKXr9fWChSnZOJWAtOvBzKA6+1nqPyyyePAb1l7RDc/CzkHSom8tm7nRKaLl
+	91xohKqW5egef843nDHwbsk5z4R2UBFW+YTDCBh4WOb3nF6+x/Yu5E7LRBxMC+tiQ/oE
+	cYgM+YA8i3NZitQNL7BUO7F+rkNj9IQ426LzpnXSd04w9soiWi6s60tQbZjaswX8jnZk
+	jF5CehYrJMWl60QSReuivu6X+UQwdbJaJeVw9lF0rlAQAKRgYFH8rDAthGotyn+3KQC2
+	ckOA==
+X-Gm-Message-State: AG10YOSAusZmqz8twmap3aosN1J7WZZ86xQz8cl58ljeXXLxMrQNVqGPywYfwwbY/vLSz6ikOzAmOR/kQyoejw==
 MIME-Version: 1.0
-X-Received: by 10.28.184.137 with SMTP id i131mr6804363wmf.96.1454051503739;
-	Thu, 28 Jan 2016 23:11:43 -0800 (PST)
-Received: by 10.28.91.143 with HTTP; Thu, 28 Jan 2016 23:11:43 -0800 (PST)
-In-Reply-To: <1452902337-13844-8-git-send-email-Andrew.Baumann@microsoft.com>
+X-Received: by 10.194.22.132 with SMTP id d4mr7160506wjf.174.1454052672612;
+	Thu, 28 Jan 2016 23:31:12 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Thu, 28 Jan 2016 23:31:12 -0800 (PST)
+In-Reply-To: <1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<1452902337-13844-8-git-send-email-Andrew.Baumann@microsoft.com>
-Date: Thu, 28 Jan 2016 23:11:43 -0800
-Message-ID: <CAPokK=pNpqm4Rr41qHc3ae5j+wfbQROeJsMuSV9hhfiub5QJNQ@mail.gmail.com>
+	<1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Thu, 28 Jan 2016 23:31:12 -0800
+Message-ID: <CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Andrew Baumann <Andrew.Baumann@microsoft.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::233
+X-Received-From: 2a00:1450:400c:c09::22f
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	Rob Herring <robh@kernel.org>
-Subject: Re: [Qemu-arm] [PATCH v4 7/8] arm/boot: move highbank secure board
- setup code to common routine
+Subject: Re: [Qemu-arm] [PATCH v4 8/8] raspi: add raspberry pi 2 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,223 +87,252 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Tc+qOlv/8MXa
+X-TUID: FISBgg7CSE9n
 
 On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann
 <Andrew.Baumann@microsoft.com> wrote:
-> The new version is slightly different, to support Rasbperry Pi (in
-> particular, Pi1's arm11 core which doesn't support v7 instructions
-> such as MOVW).
->
 > Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 > ---
 >
 > Notes:
->     This has not yet been tested on Highbank! Peter C -- please help :)
+>     Pi1 requires more peripherals, and will be added in a later patch
+>     series.
 >
-
-qemu-system-arm -kernel
-/home/pcrost/poky/build/tmp/deploy/images/qemuarm/zImage -dtb
-/home/pcrost/poky/build/tmp/deploy/images/qemuarm/zImage-highbank.dtb
--device ide-drive,drive=sata,bus=ide.0 -M highbank --no-reboot -drive
-file=/home/pcrost/poky/build/tmp/deploy/images/qemuarm/core-image-minimal-qemuarm-20160114031411.rootfs.ext4,if=none,id=sata,format=raw
--no-reboot -nographic -m 128 -serial mon:stdio -serial null --append
-"console=tty console=ttyAMA0,115200 ip=dhcp mem=128M highres=off
-root=/dev/sda rw rootfstype=ext4 console=ttyS0"
-[    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 4.2.1 (pcrost@pcrost-box) (gcc version
-5.2.0 (GCC) ) #1 SMP Wed Jan 13 19:43:13 PST 2016
-[    0.000000] CPU: ARMv7 Processor [410fc090] revision 0 (ARMv7), cr=10c5387d
-[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT
-nonaliasing instruction cache
-[    0.000000] Machine model: Calxeda Highbank
-[    0.000000] cma: Failed to reserve 64 MiB
-[    0.000000] Memory policy: Data cache writeback
-[    0.000000] DT missing boot CPU MPIDR[23:0], fall back to default
-cpu_logical_map
-[    0.000000] psci: probing for conduit method from DT.
-[    0.000000] psci: Using PSCI v0.1 Function IDs from DT
-[    0.000000] CPU: All CPU(s) started in SVC mode.
-...
-[    4.263064] random: dd urandom read with 84 bits of entropy available
-[    7.103537] random: nonblocking pool is initialized
-[    9.286935] uart-pl011 fff36000.serial: no DMA platform data
-
-Poky (Yocto Project Reference Distro) 2.0 qemuarm /dev/ttyAMA0
-
-qemuarm login: root
-root@qemuarm:~# uname -a
-Linux qemuarm 4.2.1 #1 SMP Wed Jan 13 19:43:13 PST 2016 armv7l GNU/Linux
-root@qemuarm:~#
-
-Tested-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
->     Honestly, I fear that the overhead of maintaining support for two very
->     different platforms (including Pi1) may outweigh the value of unifying
->     these blobs.
+>     v4:
+>     * drop header comment from versatile
+>     * made smpboot and board setup blobs relocatable (within limits:
+>       we can't use ARMv7 MOVW for Pi1, so it's messier than highbank)
+>     * move board setup blob to common code
+>     * modify SCR using read-or-write
+>     * s/RaspiMachineState/RaspiState/
+>     * style tweaks
 >
-
-Having a look at the new code it is more robust than the original in
-its own right with the separation of the blobs.
-
->  hw/arm/boot.c        | 53 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/highbank.c    | 37 ++----------------------------------
->  include/hw/arm/arm.h |  5 +++++
->  3 files changed, 60 insertions(+), 35 deletions(-)
+>     v3:
+>      * fix board setup to remain Pi1 compatible
+>      * pass ram property
 >
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 75f69bf..bc1ea4d 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -178,6 +178,59 @@ static void default_write_secondary(ARMCPU *cpu,
->                       smpboot, fixupcontext);
->  }
+>  hw/arm/Makefile.objs |   2 +-
+>  hw/arm/raspi.c       | 156 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 157 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/raspi.c
 >
-> +void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-> +                                            const struct arm_boot_info *info,
-> +                                            hwaddr mvbar_addr)
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index f55f8d2..a711e4d 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -11,7 +11,7 @@ obj-y += armv7m.o exynos4210.o pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+>  obj-$(CONFIG_DIGIC) += digic.o
+>  obj-y += omap1.o omap2.o strongarm.o
+>  obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+> -obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o
+> +obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+>  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+>  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
+>  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> new file mode 100644
+> index 0000000..2110725
+> --- /dev/null
+> +++ b/hw/arm/raspi.c
+> @@ -0,0 +1,156 @@
+> +/*
+> + * Raspberry Pi emulation (c) 2012 Gregory Estrade
+> + * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
+> + *
+> + * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
+> + * Written by Andrew Baumann
+> + *
+> + * This code is licensed under the GNU GPLv2 and later.
+> + */
+> +
+> +#include "hw/arm/bcm2836.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/boards.h"
+> +#include "hw/loader.h"
+> +#include "hw/arm/arm.h"
+> +#include "sysemu/sysemu.h"
+> +
+> +#define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
+> +#define MVBAR_ADDR      0x400 /* secure vectors */
+> +#define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
+> +#define FIRMWARE_ADDR   0x8000 /* Pi loads kernel.img here by default */
+> +
+> +/* Table of Linux board IDs for different Pi versions */
+> +static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
+> +
+> +typedef struct RaspiState {
+
+A quick google search, I see the camel case form for rpi is usually
+"RasPi". Should we follow?
+
+> +    union {
+
+union not needed.
+
+> +        BCM2836State pi2;
+> +    } soc;
+> +    MemoryRegion ram;
+> +} RaspiState;
+> +
+> +static void write_smpboot(ARMCPU *cpu, const struct arm_boot_info *info)
 > +{
-> +    int n;
-> +    uint32_t mvbar_blob[] = {
-> +        /* mvbar_addr: secure monitor vectors
-> +         * Default unimplemented and unused vectors to spin. Makes it
-> +         * easier to debug (as opposed to the CPU running away).
-> +         */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xE1B0F00E, /* movs pc, lr ;SMC exception return */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xEAFFFFFE, /* (spin) */
-> +        0xEAFFFFFE, /* (spin) */
+> +    static const uint32_t smpboot[] = {
+> +        0xE1A0E00F, /*    mov     lr, pc */
+> +        0xE3A0FE00 + (BOARDSETUP_ADDR >> 4), /* mov pc, BOARDSETUP_ADDR */
+> +        0xEE100FB0, /*    mrc     p15, 0, r0, c0, c0, 5;get core ID */
+> +        0xE7E10050, /*    ubfx    r0, r0, #0, #2       ;extract LSB */
+> +        0xE59F5014, /*    ldr     r5, =0x400000CC      ;load mbox base */
+> +        0xE320F001, /* 1: yield */
+> +        0xE7953200, /*    ldr     r3, [r5, r0, lsl #4] ;read mbox for our core*/
+> +        0xE3530000, /*    cmp     r3, #0               ;spin while zero */
+> +        0x0AFFFFFB, /*    beq     1b */
+> +        0xE7853200, /*    str     r3, [r5, r0, lsl #4] ;clear mbox */
+> +        0xE12FFF13, /*    bx      r3                   ;jump to target */
+> +        0x400000CC, /* (constant: mailbox 3 read/clear base) */
 
-The code currently in arm_boot uses lower case for hex constants so we
-should preserve convention.
+lower case hex for consistency with other blobbing boards (exynos,
+zynq, arm_boot).
 
 > +    };
-> +    uint32_t board_setup_blob[] = {
-> +        /* board setup addr */
-> +        0xE3A00E00 + (mvbar_addr >> 4), /* mov r0, #mvbar_addr */
-> +        0xEE0C0F30, /* mcr     p15, 0, r0, c12, c0, 1 ;set MVBAR */
-> +        0xEE110F11, /* mrc     p15, 0, r0, c1 , c1, 0 ;read SCR */
-> +        0xE3800031, /* orr     r0, #0x31              ;enable AW, FW, NS */
-> +        0xEE010F11, /* mcr     p15, 0, r0, c1, c1, 0  ;write SCR */
-> +        0xE1A0100E, /* mov     r1, lr                 ;save LR across SMC */
-> +        0xE1600070, /* smc     #0                     ;call monitor to flush SCR */
-> +        0xE1A0F001, /* mov     pc, r1                 ;return */
-> +    };
 > +
-> +    /* check that mvbar_addr is correctly aligned and relocatable (using MOV) */
-> +    assert((mvbar_addr & 0x1f) == 0 && (mvbar_addr >> 4) < 0x100);
+
+> +    /* check that we don't overrun board setup vectors */
+> +    assert(SMPBOOT_ADDR + sizeof(smpboot) <= MVBAR_ADDR);
+> +    /* check that board setup address is correctly relocated */
+> +    assert((BOARDSETUP_ADDR & 0xf) == 0 && (BOARDSETUP_ADDR >> 4) < 0x100);
+
+QEMU_BUILD_BUG_ON (both asserts should be convertible)
+
 > +
-> +    /* check that these blobs don't overlap */
-> +    assert((mvbar_addr + sizeof(mvbar_blob) <= info->board_setup_addr)
-> +          || (info->board_setup_addr + sizeof(board_setup_blob) <= mvbar_addr));
-> +
-> +    for (n = 0; n < ARRAY_SIZE(mvbar_blob); n++) {
-> +        mvbar_blob[n] = tswap32(mvbar_blob[n]);
-> +    }
-> +    rom_add_blob_fixed("board-setup-mvbar", mvbar_blob, sizeof(mvbar_blob),
-> +                       mvbar_addr);
-> +
-> +    for (n = 0; n < ARRAY_SIZE(board_setup_blob); n++) {
-> +        board_setup_blob[n] = tswap32(board_setup_blob[n]);
-> +    }
-> +    rom_add_blob_fixed("board-setup", board_setup_blob,
-> +                       sizeof(board_setup_blob), info->board_setup_addr);
+> +    rom_add_blob_fixed("raspi_smpboot", smpboot, sizeof(smpboot),
+> +                       info->smp_loader_start);
 > +}
 > +
-> +
-> +
-
-2 extra blanks not needed.
-
->  static void default_reset_secondary(ARMCPU *cpu,
->                                      const struct arm_boot_info *info)
->  {
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index cb9926e..e5105fb 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -34,49 +34,16 @@
->  #define MPCORE_PERIPHBASE       0xfff10000
->
->  #define MVBAR_ADDR              0x200
-> +#define BOARD_SETUP_ADDR        (MVBAR_ADDR + 8 * sizeof(uint32_t))
->
->  #define NIRQ_GIC                160
->
->  /* Board init.  */
->
-> -/* MVBAR_ADDR is limited by precision of movw */
-> -
-> -QEMU_BUILD_BUG_ON(MVBAR_ADDR >= (1 << 16));
-> -
-> -#define ARMV7_IMM16(x) (extract32((x),  0, 12) | \
-> -                        extract32((x), 12,  4) << 16)
-> -
->  static void hb_write_board_setup(ARMCPU *cpu,
->                                   const struct arm_boot_info *info)
->  {
-> -    int n;
-> -    uint32_t board_setup_blob[] = {
-> -        /* MVBAR_ADDR */
-> -        /* Default unimplemented and unused vectors to spin. Makes it
-> -         * easier to debug (as opposed to the CPU running away).
-> -         */
-> -        0xeafffffe, /* notused1: b notused */
-> -        0xeafffffe, /* notused2: b notused */
-> -        0xe1b0f00e, /* smc: movs pc, lr - exception return */
-> -        0xeafffffe, /* prefetch_abort: b prefetch_abort */
-> -        0xeafffffe, /* data_abort: b data_abort */
-> -        0xeafffffe, /* notused3: b notused3 */
-> -        0xeafffffe, /* irq: b irq */
-> -        0xeafffffe, /* fiq: b fiq */
-> -#define BOARD_SETUP_ADDR (MVBAR_ADDR + 8 * sizeof(uint32_t))
-> -        0xe3000000 + ARMV7_IMM16(MVBAR_ADDR), /* movw r0, MVBAR_ADDR */
-> -        0xee0c0f30, /* mcr p15, 0, r0, c12, c0, 1 - set MVBAR */
-> -        0xee110f11, /* mrc p15, 0, r0, c1 , c1, 0 - get SCR */
-> -        0xe3810001, /* orr r0, #1 - set NS */
-> -        0xee010f11, /* mcr p15, 0, r0, c1 , c1, 0 - set SCR */
-> -        0xe1600070, /* smc - go to monitor mode to flush NS change */
-> -        0xe12fff1e, /* bx lr - return to caller */
-> -    };
-> -    for (n = 0; n < ARRAY_SIZE(board_setup_blob); n++) {
-> -        board_setup_blob[n] = tswap32(board_setup_blob[n]);
-> -    }
-> -    rom_add_blob_fixed("board-setup", board_setup_blob,
-> -                       sizeof(board_setup_blob), MVBAR_ADDR);
+> +static void write_board_setup(ARMCPU *cpu, const struct arm_boot_info *info)
+> +{
 > +    arm_write_secure_board_setup_dummy_smc(cpu, info, MVBAR_ADDR);
->  }
->
->  static void hb_write_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index c26b0e3..75bfe26 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -126,4 +126,9 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info);
->     ticks.  */
->  extern int system_clock_scale;
->
+> +}
+> +
+> +static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+> +{
+> +    CPUState *cs = CPU(cpu);
+> +    cpu_set_pc(cs, info->smp_loader_start);
+> +}
+> +
+> +static void setup_boot(MachineState *machine, int version, size_t ram_size)
+> +{
+> +    static struct arm_boot_info binfo;
+> +    int r;
+> +
+> +    binfo.board_id = raspi_boardid[version];
+> +    binfo.ram_size = ram_size;
+> +    binfo.nb_cpus = smp_cpus;
+> +    binfo.board_setup_addr = BOARDSETUP_ADDR;
+> +    binfo.write_board_setup = write_board_setup;
+> +    binfo.secure_board_setup = true;
+> +    binfo.secure_boot = true;
+> +
+> +    /* Pi2 requires SMP setup */
+> +    if (version == 2) {
+> +        binfo.smp_loader_start = SMPBOOT_ADDR;
+> +        binfo.write_secondary_boot = write_smpboot;
+> +        binfo.secondary_cpu_reset_hook = reset_secondary;
+> +    }
+> +
+> +    /* If the user specified a "firmware" image (e.g. UEFI), we bypass
+> +     * the normal Linux boot process
+> +     */
+> +    if (machine->firmware) {
 
-system_clock_scale doesn't have much to do with boot but splits two
-boot-related defs, so I would insert you new def after
-arm_load_kernel.
+Others on the qemu-arm list follow UEFI support better than I so Peter
+or someone else should take a look at this section I think.
 
-otherwise:
+> +        /* load the firmware image (typically kernel.img) */
+> +        r = load_image_targphys(machine->firmware, FIRMWARE_ADDR,
+> +                                ram_size - FIRMWARE_ADDR);
+> +        if (r < 0) {
+> +            error_report("Failed to load firmware from %s", machine->firmware);
+> +            exit(1);
+> +        }
+> +
+> +        /* set variables so arm_load_kernel does the right thing */
+
+This comment doesn't add too much. I think it can be dropped
+(everything in a binfo is to make arm_load_kernel DTRT).
+
+> +        binfo.entry = FIRMWARE_ADDR;
+> +        binfo.firmware_loaded = true;
+> +    } else {
+> +        /* Just let arm_load_kernel do everything for us... */
+> +        binfo.kernel_filename = machine->kernel_filename;
+> +        binfo.kernel_cmdline = machine->kernel_cmdline;
+> +        binfo.initrd_filename = machine->initrd_filename;
+> +    }
+> +
+> +    arm_load_kernel(ARM_CPU(first_cpu), &binfo);
+> +}
+> +
+> +static void raspi2_init(MachineState *machine)
+> +{
+> +    RaspiState *s = g_new0(RaspiState, 1);
+> +
+> +    /* Initialise the SOC */
+
+Drop comment.
+
+> +    object_initialize(&s->soc.pi2, sizeof(s->soc.pi2), TYPE_BCM2836);
+> +    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> +                              &error_abort);
+> +
+> +    /* Allocate and map RAM */
+> +    memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
+> +                                         machine->ram_size);
+
+/* FIXME: Remove when we have custom CPU address space support */
+
+> +    memory_region_add_subregion_overlap(get_system_memory(), 0, &s->ram, 0);
+> +
+> +    /* Setup the SOC */
+> +    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
+> +                                   &error_abort);
+> +    object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
+> +                            &error_abort);
+> +    object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
+> +
+> +    /* Prepare to boot */
+
+Comment still doesn't add much so should drop.
+
+Otherwise:
 
 Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+
+Thanks for your continued persistence and sorry about the recent
+delays through review process.
 
 Regards,
 Peter
 
-> +/* Write a secure board setup routine with a dummy handler for SMCs */
-> +void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-> +                                            const struct arm_boot_info *info,
-> +                                            hwaddr mvbar_addr);
+> +    setup_boot(machine, 2, machine->ram_size);
+> +}
 > +
->  #endif /* !ARM_MISC_H */
+> +static void raspi2_machine_init(MachineClass *mc)
+> +{
+> +    mc->desc = "Raspberry Pi 2";
+> +    mc->init = raspi2_init;
+> +    mc->block_default_type = IF_SD;
+> +    mc->no_parallel = 1;
+> +    mc->no_floppy = 1;
+> +    mc->no_cdrom = 1;
+> +    mc->max_cpus = BCM2836_NCPUS;
+> +
+> +    /* XXX: Temporary restriction in RAM size from the full 1GB. Since
+> +     * we do not yet support the framebuffer / GPU, we need to limit
+> +     * RAM usable by the OS to sit below the peripherals.
+> +     */
+> +    mc->default_ram_size = 0x3F000000; /* BCM2836_PERI_BASE */
+> +};
+> +DEFINE_MACHINE("raspi2", raspi2_machine_init)
 > --
 > 2.5.3
 >

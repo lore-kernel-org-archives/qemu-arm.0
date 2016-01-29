@@ -1,79 +1,51 @@
-Received: by 10.25.159.19 with SMTP id i19csp2292925lfe;
-        Mon, 1 Feb 2016 03:26:07 -0800 (PST)
-X-Received: by 10.55.73.85 with SMTP id w82mr27967579qka.52.1454325967495;
-        Mon, 01 Feb 2016 03:26:07 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp977437lfe;
+        Fri, 29 Jan 2016 06:25:00 -0800 (PST)
+X-Received: by 10.140.81.211 with SMTP id f77mr10770547qgd.11.1454077500012;
+        Fri, 29 Jan 2016 06:25:00 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w21si29190927qka.42.2016.02.01.03.26.07
+        by mx.google.com with ESMTPS id y9si17271989qhb.79.2016.01.29.06.24.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 01 Feb 2016 03:26:07 -0800 (PST)
+        Fri, 29 Jan 2016 06:24:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51864 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34536 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aQCcQ-0002Mc-Vu
-	for alex.bennee@linaro.org; Mon, 01 Feb 2016 06:26:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44401)
+	id 1aP9yt-0007Ry-7Q
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 09:24:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53492)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ruslan.bilovol@gmail.com>) id 1aQCcO-0002Jf-Ic
-	for qemu-arm@nongnu.org; Mon, 01 Feb 2016 06:26:05 -0500
+	(envelope-from <imammedo@redhat.com>) id 1aP9yo-0007MA-45
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 09:24:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ruslan.bilovol@gmail.com>) id 1aQCcN-0002oL-Cy
-	for qemu-arm@nongnu.org; Mon, 01 Feb 2016 06:26:04 -0500
-Received: from mail-ig0-x22b.google.com ([2607:f8b0:4001:c05::22b]:38585)
+	(envelope-from <imammedo@redhat.com>) id 1aP9yj-00038F-14
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 09:24:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58221)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ruslan.bilovol@gmail.com>)
-	id 1aQCcH-0002mc-Vx; Mon, 01 Feb 2016 06:25:58 -0500
-Received: by mail-ig0-x22b.google.com with SMTP id mw1so30673116igb.1;
-	Mon, 01 Feb 2016 03:25:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-type;
-	bh=zS9nNWWX9NhazdbTonGyB2vtbts3w8VD3MTmO0uU9C8=;
-	b=v5pJbkkmWZXTlOZ3Y9SSg7Ejz1ubhrxmwj+r6iKxqL7GW1XJVL4Woe+O3zDIwgM1iM
-	mMmlzDJkGe7YhPPIolcsBYJmXYl79bovfDN80oi8kUZ04+f09GkiIzU2oB/rFoAtPcr+
-	N7q0LWHKUEYf6FQZXpeQr0akmvAWYSN5gf/tU2I9kSDhAMt0KAMaVOMKcR+X0NvuYU26
-	ZCvv9q+Cv+jw4rHia3NVenaEQPQ+8KR9kVq9q5quLkYgLFJg2Rr1s620AMGwICtBRjx9
-	B4jOFIlGRectqJpgNxM9mUjwaL2gKZuEbN0h9KzThT3SM44rDDsmV1p8iBnxrKOceh8l
-	nTJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=zS9nNWWX9NhazdbTonGyB2vtbts3w8VD3MTmO0uU9C8=;
-	b=QLGuX1FUBukYJSuaVBd5vY+3zJzdhM4TOVq/s89HuT6iCmjKImE2TxeeP9nZ4gGiYG
-	KMiZ5mv3N8t2wedrJPauCp4TPxXf6r1h+0b61cXZG5A1oZSvz6Re5f60KA7IHWH2aG7M
-	UVsCQc51XkNB3Pj2VPCTUMXYLSX48m8jE/SK3kqy5Z7kbWW899kRE6Krx9zeKf8MPn4h
-	Y4JDrJf0Q9sfQ5qbofFDZ4AvE1//xEGYSA+HU7pry6zNUpZAnSk4TJZrkGJmWa8mpgQu
-	9jSsa+EiB2hbOeU39vVe4qiZ6EcaZ4FfotNX3qR7jzALQoX5Mb8zhb48Vef4idBMZIDl
-	WlFg==
-X-Gm-Message-State: AG10YOS/AWH7rZ09YEHECasWHB2rUWBSR8KJVEJkOnA1HZx6KjV6ndSoSZQEgXdXm5ExQeIC2B2OIz7WUNLVyA==
-MIME-Version: 1.0
-X-Received: by 10.50.33.20 with SMTP id n20mr10383739igi.17.1454325956245;
-	Mon, 01 Feb 2016 03:25:56 -0800 (PST)
-Received: by 10.107.158.195 with HTTP; Mon, 1 Feb 2016 03:25:56 -0800 (PST)
-In-Reply-To: <CAPokK=pSaPuBYMdhJGk742Ty1KXB5A0a4NW8ctq=3iAtJtthPQ@mail.gmail.com>
-References: <CAB=otbRNpbTr3TK1RQrcaPWSr_SjhXwpDEcD+1LsYX6YmFReGw@mail.gmail.com>
-	<CAB=otbRXOcFOkiom5NdkZjD14q8EJ+URqaac1O6UmJv2AOdCyQ@mail.gmail.com>
-	<CAFEAcA-Qm+vgjPt3eGfGdzZ-JMUoZ0-2dMiR+q1JRVzosbdRrw@mail.gmail.com>
-	<CAB=otbQD8NXV3DLzcrcQjQWFSQCf1U6ZA3orPr+yM_1B_+gh2Q@mail.gmail.com>
-	<CAPokK=pSaPuBYMdhJGk742Ty1KXB5A0a4NW8ctq=3iAtJtthPQ@mail.gmail.com>
-Date: Mon, 1 Feb 2016 13:25:56 +0200
-Message-ID: <CAB=otbQgZUcrnsAVFkepGEKBbO7EDh0yjC+6+AkoYsfQz69G2A@mail.gmail.com>
-From: Ruslan Bilovol <ruslan.bilovol@gmail.com>
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::22b
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] Does QEMU support AArch64 Big Endian emulation on
- x86-64 host?
+	(envelope-from <imammedo@redhat.com>)
+	id 1aP9yi-00038B-SR; Fri, 29 Jan 2016 09:24:48 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 38DB0C057EC9;
+	Fri, 29 Jan 2016 14:24:48 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u0TEOkxA015673; Fri, 29 Jan 2016 09:24:46 -0500
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 29 Jan 2016 15:24:45 +0100
+Message-Id: <1454077485-242598-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
+	qemu-arm@nongnu.org, zhaoshenglong@huawei.com
+Subject: [Qemu-arm] [PATCH] arm: virt-acpi: each MADT.GICC entry as enabled
+	unconditionally
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -87,50 +59,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QyUK/GyYyqu6
+X-TUID: R+rvvQQq/1+F
 
-On Wed, Jan 27, 2016 at 7:39 PM, Peter Crosthwaite
-<crosthwaitepeter@gmail.com> wrote:
-> On Tue, Jan 26, 2016 at 4:05 AM, Ruslan Bilovol
-> <ruslan.bilovol@gmail.com> wrote:
->> On Mon, Jan 25, 2016 at 6:07 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 25 January 2016 at 13:51, Ruslan Bilovol <ruslan.bilovol@gmail.com> wrote:
->>>>> I'm trying to run AArch64 Big Endian image under QEMU that I built for
->>>>> my x86-64 Ubuntu host from latest master branch and when I'm running
->>>>> kernel I'm getting next error:
->>>>>  > qemu: fatal: Trying to execute code outside RAM or ROM at 0x500208000080ffff
->>>>>
->>>>> Similar image built as Little Endian runs fine with same QEMU tool
->>>>> (qemu-system-aarch64)
->>>>>
->>>>> So I'm wondering is it possible to run QEMU AArch64 Big Endian
->>>>> emulation on x86-64 host?
->>>
->>> It is not currently supported, no. However there are some patches
->>> on the list[*] to add this support, so I expect a future QEMU version
->>> will do this.
->>>
->>> [*] https://lists.gnu.org/archive/html/qemu-devel/2016-01/msg03025.html
->>
->> Thank you four quick answer.
->> I tried to apply this patch series to latest qemu master branch, but it
->> fails to apply in misc places. Peter Crosthwaite, could you please say
->> which commit ID is it based on?
->>
->
-> I pushed the branch just now to here:
->
-> https://github.com/pcrost/qemu/tree/arm-be.next
+in current impl. condition
 
-Thanks Peter.
+build_madt() {
+  ...
+  if (test_bit(i, cpuinfo->found_cpus))
 
-I've built qemu on this branch and tried to run it with my
-AArch64 Big Endian binaries but still get same error:
-"qemu: fatal: Trying to execute code outside RAM or
-ROM at 0x00007fe60d8e0a30"
+is always true since loop handles only present CPUs
+in range [0..smp_cpus).
+But to fill usless cpuinfo->found_cpus we do unnecessary
+scan over QOM tree to find the same CPUs.
+So mark GICC as present always and drop not needed
+code that fills cpuinfo->found_cpus.
 
-So it looks like (unfortunately) these patches do not enable
-AArch64 BE support
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+It's just simple cleanup but I'm trying to generalize
+a bit CPU related ACPI tables and as part of it get rid
+of found_cpus bitmap and if possible cpu_index usage
+in ACPI parts of code.
+---
+ hw/arm/virt-acpi-build.c | 26 +++-----------------------
+ 1 file changed, 3 insertions(+), 23 deletions(-)
 
-Best regards,
-Ruslan
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 87fbe7c..3ed39fc 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -46,20 +46,6 @@
+ #define ARM_SPI_BASE 32
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+ 
+-typedef struct VirtAcpiCpuInfo {
+-    DECLARE_BITMAP(found_cpus, VIRT_ACPI_CPU_ID_LIMIT);
+-} VirtAcpiCpuInfo;
+-
+-static void virt_acpi_get_cpu_info(VirtAcpiCpuInfo *cpuinfo)
+-{
+-    CPUState *cpu;
+-
+-    memset(cpuinfo->found_cpus, 0, sizeof cpuinfo->found_cpus);
+-    CPU_FOREACH(cpu) {
+-        set_bit(cpu->cpu_index, cpuinfo->found_cpus);
+-    }
+-}
+-
+ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+ {
+     uint16_t i;
+@@ -458,8 +444,7 @@ build_gtdt(GArray *table_data, GArray *linker)
+ 
+ /* MADT */
+ static void
+-build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
+-           VirtAcpiCpuInfo *cpuinfo)
++build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+ {
+     int madt_start = table_data->len;
+     const MemMapEntry *memmap = guest_info->memmap;
+@@ -489,9 +474,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
+         gicc->cpu_interface_number = i;
+         gicc->arm_mpidr = armcpu->mp_affinity;
+         gicc->uid = i;
+-        if (test_bit(i, cpuinfo->found_cpus)) {
+-            gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+-        }
++        gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+     }
+ 
+     if (guest_info->gic_version == 3) {
+@@ -599,11 +582,8 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
+ {
+     GArray *table_offsets;
+     unsigned dsdt, rsdt;
+-    VirtAcpiCpuInfo cpuinfo;
+     GArray *tables_blob = tables->table_data;
+ 
+-    virt_acpi_get_cpu_info(&cpuinfo);
+-
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+ 
+@@ -630,7 +610,7 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
+     build_fadt(tables_blob, tables->linker, dsdt);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_madt(tables_blob, tables->linker, guest_info, &cpuinfo);
++    build_madt(tables_blob, tables->linker, guest_info);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker);
+-- 
+1.8.3.1
+

@@ -1,70 +1,85 @@
-Received: by 10.25.159.19 with SMTP id i19csp804589lfe;
-        Thu, 28 Jan 2016 23:59:22 -0800 (PST)
-X-Received: by 10.202.104.159 with SMTP id o31mr5383035oik.126.1454054362208;
-        Thu, 28 Jan 2016 23:59:22 -0800 (PST)
-Return-Path: <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
-Received: from socrates.bennee.com (static.88-198-71-155.clients.your-server.de. [88.198.71.155])
-        by mx.google.com with ESMTPS id s187si13341556oib.10.2016.01.28.23.59.21
+Received: by 10.25.159.19 with SMTP id i19csp1199672lfe;
+        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
+X-Received: by 10.140.42.139 with SMTP id c11mr13942874qga.5.1454107282398;
+        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id i84si19284588qhc.45.2016.01.29.14.41.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Jan 2016 23:59:22 -0800 (PST)
-Received-SPF: fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) client-ip=88.198.71.155;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 29 Jan 2016 14:41:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) smtp.mailfrom=qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-Message-ID: <56ab1bda.c45eca0a.875d1.ffffae59SMTPIN_ADDED_BROKEN@mx.google.com>
-X-Google-Original-Message-ID: <20160129063219.GA26772@ashoks@broadcom.com>
-Received: from lists.gnu.org ([208.118.235.17])
-	by socrates.bennee.com with esmtp (Exim 4.84)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1aP2cO-0007Zl-Lb
-	for kernel-hacker@bennee.com; Fri, 29 Jan 2016 07:33:17 +0100
-Received: from localhost ([::1]:60188 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36750 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1aP2cJ-0004Bs-8V
-	for kernel-hacker@bennee.com; Fri, 29 Jan 2016 01:33:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56814)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPHjF-000584-Tk
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 17:41:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ashoks@broadcom.com>) id 1aP2bl-0003c9-3w
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 01:32:37 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHit-0004ni-5C
+	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:41:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ashoks@broadcom.com>) id 1aP2bj-000701-UQ
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 01:32:37 -0500
-Received: from mail-gw1-out.broadcom.com ([216.31.210.62]:27327)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aPHir-0005me-UN
+	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 17:40:59 -0500
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36066)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ashoks@broadcom.com>)
-	id 1aP2bf-0006xB-De; Fri, 29 Jan 2016 01:32:31 -0500
-X-IronPort-AV: E=Sophos;i="5.22,362,1449561600"; d="scan'208";a="86751517"
-Received: from irvexchcas06.broadcom.com (HELO
-	IRVEXCHCAS06.corp.ad.broadcom.com) ([10.9.208.53])
-	by mail-gw1-out.broadcom.com with ESMTP; 29 Jan 2016 01:19:43 -0800
-Received: from IRVEXCHSMTP1.corp.ad.broadcom.com (10.9.207.51) by
-	IRVEXCHCAS06.corp.ad.broadcom.com (10.9.208.53) with Microsoft SMTP
-	Server (TLS) id 14.3.235.1; Thu, 28 Jan 2016 22:32:27 -0800
-Received: from mail-sj1-12.sj.broadcom.com (10.10.10.20) by
-	IRVEXCHSMTP1.corp.ad.broadcom.com (10.9.207.51) with Microsoft SMTP
-	Server id 14.3.235.1; Thu, 28 Jan 2016 22:32:27 -0800
-Received: from xl-sj1-03.broadcom.com (xl-sj1-03.sj.broadcom.com
-	[10.17.18.52])	by mail-sj1-12.sj.broadcom.com (Postfix) with ESMTP id
-	954E527A82;	Thu, 28 Jan 2016 22:32:27 -0800 (PST)
-Received: by xl-sj1-03.broadcom.com (Postfix, from userid 31394)	id
-	87E9C1C8205C; Thu, 28 Jan 2016 22:32:27 -0800 (PST)
-Date: Thu, 28 Jan 2016 22:32:27 -0800
-From: Ashok Kumar <ashoks@broadcom.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-References: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aPHir-0005mM-Jk; Fri, 29 Jan 2016 17:40:57 -0500
+Received: by mail-wm0-x243.google.com with SMTP id 128so10144800wmz.3;
+	Fri, 29 Jan 2016 14:40:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc:content-type;
+	bh=4uBPWjLuwNA4Sv0vVa0p79dg1psz0dfUFMLLrb7d4+4=;
+	b=CDaxZKDQLW7nUG8TWb9zEWE3kQErEhFwLB4rJfpH0ANoRbjKxeHfSkbbKPmDJHqG1k
+	l69pXomBBAmU0saZ6ThMnJ2jfch7ABlmQnQmWd5gjwgT64jq0ZLeTGDOpH8Fu6Bvz79S
+	SvUW7Df/aOZpMH6rTPQoryppQA9AyrIKU6wu7URt2/Jv4s6wNmOZORzrj2Bn61QorHyE
+	myaAQH0eAuIvefYqtM3e6BhHNiCRRP1FBbJvYOAVNBvYWUxrce5WRMTzU8oU160bcVjs
+	AOF4pQYTXS7YpUITZZKqeZ83mAZbMbvg/rQ1LpUspjDnUP5JLdN+iSm5zuB8t9FE0xe+
+	NAYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc:content-type;
+	bh=4uBPWjLuwNA4Sv0vVa0p79dg1psz0dfUFMLLrb7d4+4=;
+	b=SAjUSFlezL5zcYWOAe4mlIu0U1C9ezTM63MEdQJPD2hwwVK6FOplUhsxrspwWm8Pam
+	0qRCkthEt4Ng3tQPQN5QxfqVSyC8qFE2VBLPkhAI5kCVN9NVrZWd5Ajm0mblZBalLW4j
+	J5HKg+CVdpCVjoA5YbG6PIjSRLqdSiF6vS4VRijFoB4awNgWix/eyKgc0hP2g1SyhFdP
+	iYjzF3bhFzK6PS5JFugotOhKtzulQ2r63lz1ev7EMQO8grLUUtXEFOihtL7rMa5IiKbW
+	nNtdnYSK4RyG7gcnnkgDgkTATWh06okD+mjgXq6dIKruqteVfqpj3hCvzn/5fvFYvXN5
+	PVPg==
+X-Gm-Message-State: AG10YOQZc2Jz0IehzxKji7ogZs4l2jQBsrGoGCTU9rrv1ypjLyHnsPDLfNnAc/7rtWhYFqQN8ESflfOYNj7BOQ==
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <1453549006-16044-1-git-send-email-zhaoshenglong@huawei.com>
-User-Agent: Mutt/1.4.2.2i
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 216.31.210.62
-Cc: peter.maydell@linaro.org, hangaohuai@huawei.com, peter.huangpeng@huawei.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	shannon.zhao@linaro.org, ganapatrao.kulkarni@caviumnetworks.com,
-	hanjun.guo@linaro.org
+X-Received: by 10.28.217.83 with SMTP id q80mr10968373wmg.15.1454107256800;
+	Fri, 29 Jan 2016 14:40:56 -0800 (PST)
+Received: by 10.28.91.143 with HTTP; Fri, 29 Jan 2016 14:40:56 -0800 (PST)
+In-Reply-To: <BLUPR0301MB2034C0FA82D60BAF82916E779EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <1452902337-13844-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1452902337-13844-9-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAPokK=ory3pnNPsBgde12BqGGW_L3QOG0OVdtLNJomK0QhxxYQ@mail.gmail.com>
+	<BLUPR0301MB2034170EF1FBCB3856E044FB9EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<CAPokK=pLw9OVv3_FHedk12byTu0gjGFy80UT1T1TUFTewi5kpg@mail.gmail.com>
+	<BLUPR0301MB2034C0FA82D60BAF82916E779EDB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Fri, 29 Jan 2016 14:40:56 -0800
+Message-ID: <CAPokK=qsgcxVkuU9yRTDV+NXkyqQpUT8mMhZmk_QN4yE_PEg=w@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::243
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Rob Herring <robh@kernel.org>
+Subject: Re: [Qemu-devel] [PATCH v4 8/8] raspi: add raspberry pi 2 machine
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -76,83 +91,76 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-Sender: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-X-SA-Exim-Connect-IP: 208.118.235.17
-X-SA-Exim-Mail-From: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on socrates.bennee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-0.9 required=5.0 tests=BAYES_00,MSGID_MULTIPLE_AT,
-	RCVD_IN_MSPIKE_H3,RCVD_IN_MSPIKE_WL,T_HEADER_FROM_DIFFERENT_DOMAINS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
-Subject: Re: [Qemu-devel] [PATCH v4 0/5] ARM: Add NUMA support for machine
-	virt
-X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
-X-SA-Exim-Scanned: Yes (on socrates.bennee.com)
-X-TUID: 9jwUapREIHwC
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nxbOSXYY8QbS
 
-Hi, 
+On Fri, Jan 29, 2016 at 2:28 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> Sent: Friday, 29 January 2016 14:23
+>>
+>> On Fri, Jan 29, 2016 at 1:50 PM, Andrew Baumann
+>> <Andrew.Baumann@microsoft.com> wrote:
+>> > Hi Peter,
+>> >
+>> > Thanks for all the reviews. I should have a respun version on the list shortly.
+>> There's one minor change to this last patch:
+>> >
+>> >> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> >> Sent: Thursday, 28 January 2016 23:31
+>> >> > On Fri, Jan 15, 2016 at 3:58 PM, Andrew Baumann
+>> <Andrew.Baumann@microsoft.com> wrote:
+>> >  [...]
+>> >> > +typedef struct RaspiState {
+>> >>
+>> >> A quick google search, I see the camel case form for rpi is usually
+>> >> "RasPi". Should we follow?
+>> >
+>> > Ok.
+>> >
+>> >> > +    union {
+>> >>
+>> >> union not needed.
+>> >
+>> > I know it's not needed now, but it will be as soon as we add pi1, which I
+>> hope to address in the next patch series. It will make that diff cleaner if we
+>> keep this here now, so I'm going to leave it as-is. I hope that's ok with you.
+>> >
+>>
+>> It sounds like you are implementing an inheritance outside QOM. I'm
+>> not sure about this, can we just drop the union and figure it out on
+>> the next series?
+>
+> It's nothing nearly that clever/complicated. See https://github.com/0xabu/qemu/blob/raspi/hw/arm/raspi.c#L116
+>
+>     switch (version) {
+>     case 1:
+>         object_initialize(&s->soc.pi1, sizeof(s->soc.pi1), TYPE_BCM2835);
+>         break;
+>     case 2:
+>         object_initialize(&s->soc.pi2, sizeof(s->soc.pi2), TYPE_BCM2836);
+>         break;
+>     }
+>
+> And then later, we always refer simply to OBJECT(&s->soc). I suppose I could use a generic Object pointer instead, and allocate the soc-specific type elsewhere, but it seemed simpler with the union.
+>
 
-On Sat, Jan 23, 2016 at 07:36:41PM +0800, Shannon Zhao wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
-> 
-> Add NUMA support for machine virt. Tested successfully running a guest
-> Linux kernel with the following patch applied:
-> 
-> - [PATCH v9 0/6] arm64, numa: Add numa support for arm64 platforms
-> https://lwn.net/Articles/672329/
-> - [PATCH v2 0/4] ACPI based NUMA support for ARM64
-> http://www.spinics.net/lists/linux-acpi/msg61795.html
-> 
-> Changes since v3:
-> * based on new kernel driver and device bindings
-> * add ACPI part
-> 
-> Changes since v2:
-> * update to use NUMA node property arm,associativity.
-> 
-> Changes since v1:
-> Take into account Peter's comments:
-> * rename virt_memory_init to arm_generate_memory_dtb
-> * move arm_generate_memory_dtb to boot.c and make it a common func
-> * use a struct numa_map to generate numa dtb
-> 
-> Example qemu command line:
-> qemu-system-aarch64 \
->     -enable-kvm -smp 4\
->     -kernel Image \
->     -m 512 -machine virt,kernel_irqchip=on \
->     -initrd guestfs.cpio.gz \
->     -cpu host -nographic \
->     -numa node,mem=256M,cpus=0-1,nodeid=0 \
->     -numa node,mem=256M,cpus=2-3,nodeid=1 \
->     -append "console=ttyAMA0 root=/dev/ram"
-> 
-> Shannon Zhao (5):
->   ARM: Virt: Add /distance-map node for NUMA
->   ARM: Virt: Set numa-node-id for CPUs
->   ARM: Add numa-node-id for /memory node
->   include/hw/acpi/acpi-defs: Add GICC Affinity Structure
->   hw/arm/virt-acpi-build: Generate SRAT table
-> 
->  hw/arm/boot.c               | 29 ++++++++++++++++++++++-
->  hw/arm/virt-acpi-build.c    | 58 +++++++++++++++++++++++++++++++++++++++++++++
->  hw/arm/virt.c               | 37 +++++++++++++++++++++++++++++
->  hw/i386/acpi-build.c        |  2 +-
->  include/hw/acpi/acpi-defs.h | 15 +++++++++++-
->  5 files changed, 138 insertions(+), 3 deletions(-)
-> 
-> -- 
-> 2.0.4
-> 
+But this is effectively an upcast to an abstract type, here:
 
-Don't we need to populate the NUMA node in the Affinity byte of MPIDR?
-Linux uses the Affinity information in MPIDR to build topology which
-might go wrong for the guest in this case. 
-Maybe a non Linux OS might be impacted more?
++
++    /* Setup the SOC */
++    object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
++                                   &error_abort);
++    object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
++                            &error_abort);
 
-distance-map compatible string has been changed from
-"numa,distance-map-v1" to "numa-distance-map-v1"
+Where that concrete type musts implement "ram" and "enabled-cpus". So
+I am unsure of having a split implementation of "ram", "enabled-cpus"
+etc from one SoC to the other as you are using a QOM property name as
+an abstract interface definition.
 
-Thanks,
-Ashok
+Regards,
+Peter
+
+> Andrew

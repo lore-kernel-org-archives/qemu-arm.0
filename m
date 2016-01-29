@@ -1,148 +1,179 @@
-Received: by 10.25.159.19 with SMTP id i19csp1053928lfe;
-        Fri, 29 Jan 2016 08:55:06 -0800 (PST)
-X-Received: by 10.55.79.134 with SMTP id d128mr11782066qkb.73.1454086506446;
-        Fri, 29 Jan 2016 08:55:06 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp1054302lfe;
+        Fri, 29 Jan 2016 08:55:58 -0800 (PST)
+X-Received: by 10.55.73.69 with SMTP id w66mr11827818qka.39.1454086558788;
+        Fri, 29 Jan 2016 08:55:58 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v67si18503957qgv.34.2016.01.29.08.55.06
+        by mx.google.com with ESMTPS id c41si18500745qge.64.2016.01.29.08.55.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jan 2016 08:55:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Jan 2016 08:55:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:35300 helo=lists.gnu.org)
+Received: from localhost ([::1]:35311 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPCK9-00034Q-TU
-	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:55:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36712)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aPCL0-0004yh-1n
+	for alex.bennee@linaro.org; Fri, 29 Jan 2016 11:55:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJF-0001oV-2D
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:14 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJK-0001xB-He
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJE-0003yZ-6B
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:08 -0500
-Received: from mail-wm0-x22c.google.com ([2a00:1450:400c:c09::22c]:34743)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJH-0003zy-4U
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:14 -0500
+Received: from mail-wm0-x236.google.com ([2a00:1450:400c:c09::236]:38660)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@linaro.org>) id 1aPCJD-0003yG-WB
-	for qemu-devel@nongnu.org; Fri, 29 Jan 2016 11:54:08 -0500
-Received: by mail-wm0-x22c.google.com with SMTP id 128so60844338wmz.1
-	for <qemu-devel@nongnu.org>; Fri, 29 Jan 2016 08:54:07 -0800 (PST)
+	(envelope-from <eric.auger@linaro.org>) id 1aPCJG-0003zg-QA
+	for qemu-arm@nongnu.org; Fri, 29 Jan 2016 11:54:11 -0500
+Received: by mail-wm0-x236.google.com with SMTP id p63so76300355wmp.1
+	for <qemu-arm@nongnu.org>; Fri, 29 Jan 2016 08:54:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=m/sUPWwI+V6iWVZQmd7TY0OLyRNcL7ZsnZzsKZVuYhc=;
-	b=WIiXRs06xWi9/JqaA44efiaoSZKeuW5+8da30Ib4pCRUKznbdXfrJn97PcLAohQi0B
-	QQ3h+F245BY+n7sZqEIRrKIBGMyMSz1nIlWFQr9eiyevl8lp7Y44912toGZEl51+mx1g
-	PJxK9c4hwayAQ+FRZJwTNHBkb0rtpd8UJq6kg=
+	bh=OWv/2//g5AYghjzg3bRGTTFY1I/sd5ewy4o6R2cO2CM=;
+	b=S48kcVPIiUSIZz3l33cC+ygjqRoybRtHZYbkGLgwiyxWg8B2gfuE8l8114ZFZxRT1x
+	jdqfsoY70n6hckqg4FuXV2ZWIM0fzJNZFxsQ8yQWdG4IZApTJGIW03PeFypNHT55EK9T
+	e/YWdBKdX2q8CvCbtXspw8snQWDpNuD7KcOG8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=m/sUPWwI+V6iWVZQmd7TY0OLyRNcL7ZsnZzsKZVuYhc=;
-	b=FVNhY1UUSADXIk9HFSLOtkHA6NsYYAHz5Bhyd1I8dHqKeMoGhMdkxA5v2YHsEIxIOP
-	cX7kXyh7ib/HIu34Ng0VA1KJyu3scMcygSHsjK2qrIhQaX5SnhOwP+qz/TxOkz+VCh9Y
-	KoGGVouXELHa9V/ZbJvULZn8vRHE04J4Ewb28aNR9kyOp+smGS7rB2Q3PNKcvOcvbMCC
-	9PINcRVCWPTj9R39/Odl8NeSGRj8rkYaiiKtrGT3x2Tq7ohwt2c4QZHhcqCH7FYc458R
-	+CdE5UdUE87WEiC57ewIOa/TZWyATDQyFx9FHEIntoPbVf6bCsdjsaN0QxLtMDYcc7lv
-	b2XA==
-X-Gm-Message-State: AG10YOQhCOcagBt7pjdKe6EKaLL1bV0PRolVW9W3Gq6N39lE/mgAKXSZnbD4QYOm4c8t+y2I
-X-Received: by 10.194.21.135 with SMTP id v7mr9822638wje.131.1454086447339;
-	Fri, 29 Jan 2016 08:54:07 -0800 (PST)
+	bh=OWv/2//g5AYghjzg3bRGTTFY1I/sd5ewy4o6R2cO2CM=;
+	b=SDbkKw7TYZ0tRYKNDdrOTA1ZhW4WuibEvKCiXY8Y5XKDGGPM8xjg1MlhhKP3dZLGRN
+	VIGu73zcp/RpQLNdCOEadt6jQsqraURuT5r64FW6hvKPxOsfPYZyEiQ8F9Qxy5ScD3jK
+	h8FPFkGEH3NR4yMcZ6J+4feD27lGSyblfC9bP/R472fbnU9H+7TxpqQY0jeeNzxqekKP
+	qTm9hnZmqNi93ZjLCcOCgkS70VU01PRClHIlLGFpLlENEpKLnULmuDtvouIZ282Uj5nl
+	0aLfwfItw7BXIgvBG7keTzbq8rx5P0b1wU2jKY/36XF48dUF6BMgT1JEroGk2u8yoL/a
+	Q5KQ==
+X-Gm-Message-State: AG10YOSlsS2bZxJhQWhXiBJ2qHLtS8noLn4GAbEAjpgx2rb4kZyGZxvRxAR7UMJ7r5ggOiJw
+X-Received: by 10.194.22.101 with SMTP id c5mr11036477wjf.151.1454086450170;
+	Fri, 29 Jan 2016 08:54:10 -0800 (PST)
 Received: from new-host-12.home
 	(LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
 	by smtp.gmail.com with ESMTPSA id
-	ei9sm16415530wjd.40.2016.01.29.08.54.04
+	ei9sm16415530wjd.40.2016.01.29.08.54.07
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 29 Jan 2016 08:54:05 -0800 (PST)
+	Fri, 29 Jan 2016 08:54:08 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com, eric.auger@linaro.org, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com, p.fedin@samsung.com, pbonzini@redhat.com,
 	agraf@suse.de
-Date: Fri, 29 Jan 2016 16:53:45 +0000
-Message-Id: <1454086429-4373-5-git-send-email-eric.auger@linaro.org>
+Date: Fri, 29 Jan 2016 16:53:46 +0000
+Message-Id: <1454086429-4373-6-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22c
+X-Received-From: 2a00:1450:400c:c09::236
 Cc: Bharat.Bhushan@freescale.com, suravee.suthikulpanit@amd.com,
 	christoffer.dall@linaro.org
-Subject: [Qemu-devel] [RFC v2 4/8] hw: vfio: common: introduce
-	vfio_register_reserved_iova
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v2 5/8] memory: add reserved_iova region type
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NEI3t4Owq41q
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5rw4/sYQfQmO
 
-vfio_register_reserved_iova allows to register the reserved IOVA region,
-typically for MSI frame binding purpose. The kernel allows registering
-a single reserved IOVA region.
+Introduce a new reserved_iova region type. This type of iova region
+is bound to be used by the kernel to map some host physical addresses.
 
-Unregistration is handled through legacy vfio_dma_unmap.
-
-The function will become static in subsequent patches. However, since
-there is no user yet, the compiler argues; the function is currently
-not static and a dummy declaration needs to be added.
+A new initializer, memory_region_init_reserved_iova is introduced, as
+well as a test function, memory_region_is_reserved_iova.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
 ---
- hw/vfio/common.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ include/exec/memory.h | 29 +++++++++++++++++++++++++++++
+ memory.c              | 11 +++++++++++
+ 2 files changed, 40 insertions(+)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 6797208..247c87b 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -208,6 +208,36 @@ static int vfio_dma_unmap(VFIOContainer *container,
-     return 0;
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index c92734a..616cb86 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -165,6 +165,7 @@ struct MemoryRegion {
+     /* The following fields should fit in a cache line */
+     bool romd_mode;
+     bool ram;
++    bool reserved_iova;
+     bool subpage;
+     bool readonly; /* For RAM regions */
+     bool rom_device;
+@@ -359,6 +360,21 @@ void memory_region_init_ram(MemoryRegion *mr,
+                             Error **errp);
+ 
+ /**
++ * memory_region_init_reserved_iova:  Initialize reserved iova memory region
++ *
++ * @mr: the #MemoryRegion to be initialized.
++ * @owner: the object that tracks the region's reference count
++ * @name: the name of the region.
++ * @size: size of the region.
++ * @errp: pointer to Error*, to store an error if it happens.
++ */
++void memory_region_init_reserved_iova(MemoryRegion *mr,
++                                      struct Object *owner,
++                                      const char *name,
++                                      uint64_t size,
++                                      Error **errp);
++
++/**
+  * memory_region_init_resizeable_ram:  Initialize memory region with resizeable
+  *                                     RAM.  Accesses into the region will
+  *                                     modify memory directly.  Only an initial
+@@ -531,6 +547,19 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
  }
  
-+/**
-+ * vfio_register_reserved_iova: registers the iova reserved region
+ /**
++ * memory_region_is_reserved_iova: check whether a memory region corresponds to
++   reserved iova
 + *
-+ * @container: container handle
-+ * @iova: base iova of the reserved region
-+ * @size: reserved region size
++ * Returns %true is a memory region is reserved iova
 + *
-+ * unregistration is handled using vfio_dma_unmap
++ * @mr: the memory region being queried
 + */
-+int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
-+                                ram_addr_t size);
-+int vfio_register_reserved_iova(VFIOContainer *container, hwaddr iova,
-+                                ram_addr_t size)
++static inline bool memory_region_is_reserved_iova(MemoryRegion *mr)
 +{
-+    struct vfio_iommu_type1_dma_map map = {
-+        .argsz = sizeof(map),
-+        .flags = VFIO_DMA_MAP_FLAG_MSI_RESERVED_IOVA,
-+        .iova = iova,
-+        .size = size,
-+    };
-+
-+    if (ioctl(container->fd, VFIO_IOMMU_MAP_DMA, &map) == 0) {
-+        return 0;
-+    }
-+
-+    error_report("VFIO_MAP_DMA/MSI_RESERVED_IOVA: %d", -errno);
-+    return -errno;
-+
++    return mr->reserved_iova;
 +}
 +
- static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
-                         ram_addr_t size, void *vaddr, bool readonly)
- {
++/**
+  * memory_region_is_skip_dump: check whether a memory region should not be
+  *                             dumped
+  *
+diff --git a/memory.c b/memory.c
+index d2d0a92..d9ff1b7 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1231,6 +1231,17 @@ void memory_region_init_ram(MemoryRegion *mr,
+     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;
+ }
+ 
++void memory_region_init_reserved_iova(MemoryRegion *mr,
++                                      Object *owner,
++                                      const char *name,
++                                      uint64_t size,
++                                      Error **errp)
++{
++    memory_region_init(mr, owner, name, size);
++    mr->reserved_iova = true;
++    mr->terminates = true;
++}
++
+ void memory_region_init_resizeable_ram(MemoryRegion *mr,
+                                        Object *owner,
+                                        const char *name,
 -- 
 1.9.1
 

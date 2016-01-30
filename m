@@ -1,255 +1,164 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3920767wru;
-        Tue, 7 Aug 2018 01:03:42 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfthnA/3SuTtWIzMRD8ronf30wSgwDft0LAXihHxGaAiI3deyfOfqSrGFaoxzINACpeN4ry
-X-Received: by 2002:ac8:3531:: with SMTP id y46-v6mr17046458qtb.92.1533629021993;
-        Tue, 07 Aug 2018 01:03:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533629021; cv=none;
-        d=google.com; s=arc-20160816;
-        b=TO6osIwpJi2Nbs0Vdtj9CXSqPH5jKbXzCEbqOQ/vujnLLdMzRRDfdvNeDMeCl2OWPi
-         IQyleHGSpkixTk+LIIn4+tG2sxoWyuf6lWCxiNPts/ovbOMik1TaDKextD8jqfhiLvUK
-         cVdJ2f24nMCMA1PLunhtj++JcIZd1EQ4QyKnvpOR1abEk/xTQenNXZl5tojSUq5j05MV
-         vnWyisVuuHWBzyxomPCbwm8CMjoRDuBfqHaj0pH/vQuhS6+ri2dNb8mapcg2dy1UNqQq
-         ld/RG7FLpqv3mEtHvCdZkrLQCi9fHS6aGOJSU5uY0LC0f3Lmp6UWH8dOZAf7oCXAyBsr
-         Ys8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=LVUzio99dOgvDQkTMW0Kz3gBweM4FRQz7uPSMwwQ3js=;
-        b=q/KeRlpxqHFV3cCSfAOKPbTr5hbY6rBTOZ41aiPsEp+vX/D2uCMaH7eckjiZs9AraA
-         WxWDBBHcFynhIbXizJsCSRAhrCGtysn8Pk6PzDvOD9NbNeWxy4OBjlk7FdAC2o3gM+e3
-         ArnsKZPKChTYfxmsIkNskiD4bnxfrn7XTIOZcpjseiGMEHXNf2Iy7IJWuG1k9F2HmKuf
-         XPh56Z7y3i3EIkTJBf3DMfxCwEyjfbd4K1tgTdIO9ZpoIroTUhJp9qLaFVBB8pAhmjUL
-         iy/5iIPA6lPm1vJK6uCj26mWH7FTEroLi+Fk2zUhD6juhwcmOxHs+m13R2rmBzLsqd4X
-         xPrg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CaSHPtwt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 10.25.159.19 with SMTP id i19csp1542062lfe;
+        Sat, 30 Jan 2016 08:49:43 -0800 (PST)
+X-Received: by 10.140.164.141 with SMTP id k135mr15356577qhk.37.1454172583042;
+        Sat, 30 Jan 2016 08:49:43 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a1-v6si577752qvj.236.2018.08.07.01.03.41
+        by mx.google.com with ESMTPS id r10si22403498qhc.128.2016.01.30.08.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Aug 2018 01:03:41 -0700 (PDT)
+        Sat, 30 Jan 2016 08:49:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CaSHPtwt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37833 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39128 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmwxx-0006ag-FO
-	for alex.bennee@linaro.org; Tue, 07 Aug 2018 04:03:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60805)
+	id 1aPYiU-0005zL-JZ
+	for alex.bennee@linaro.org; Sat, 30 Jan 2016 11:49:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fmwtH-0002wy-5C
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 03:58:52 -0400
+	(envelope-from <digetx@gmail.com>) id 1aPYgi-0002Wp-NQ
+	for qemu-arm@nongnu.org; Sat, 30 Jan 2016 11:47:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fmwtG-0005eE-0e
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 03:58:51 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e]:36318)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fmwtF-0005dP-OS; Tue, 07 Aug 2018 03:58:49 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id b11-v6so8178244pfo.3;
-	Tue, 07 Aug 2018 00:58:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=LVUzio99dOgvDQkTMW0Kz3gBweM4FRQz7uPSMwwQ3js=;
-	b=CaSHPtwtaGGEAp0BSGGPBJaX2m1kZzKnJcv2pUDVcX7bT5Ax/YkclkU881jmW1hwrV
-	jig3Jg0DOkR5YxYiAmA8Cl3tomiBCVLhEEdM/WLIzzjcCelJ/yDGdrCylSDTP6+dSAu7
-	L4bOkdm/SNfUoMzBVoAHxX6gFDsHunSSHDne4w8psO3SKuj5oaglc+rIvFeQj3veyuQw
-	5722slHCV+d7oJIJQ4Wj6zk48Mlk0ZunvXGaK+1yO1prDFjUJNphETCZyLu9BtPV5DVI
-	r9VLcPq5e9PAEpFT1+/ecdPBd5Y4Pe+2FLYpHQPPuoTwEzNFNstpJfFQ7dxB+uCRHCl7
-	RQ+g==
+	(envelope-from <digetx@gmail.com>) id 1aPYgh-0002Dv-QC
+	for qemu-arm@nongnu.org; Sat, 30 Jan 2016 11:47:52 -0500
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:35981)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <digetx@gmail.com>)
+	id 1aPYgf-0002D3-N3; Sat, 30 Jan 2016 11:47:49 -0500
+Received: by mail-lf0-x242.google.com with SMTP id t141so5187259lfd.3;
+	Sat, 30 Jan 2016 08:47:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=4OxWyW7VSoNMuoZEeqGTVN21Yv8SeYOoh4+3nFRklZg=;
+	b=01r3FWs6qLkYAjtowaAzslGT0wdl+Q3TiupzRmluqw0XJ0/95sqLa4Hhix8Q1Wr2vC
+	OVMa/M/czPoSomtALOKgV34zci9J8GTkOYgp8POCjldh8gyRM/cC41c0YmUOfFlhAOOP
+	fL6323pYsDVPyb14M1jbMxsUs6svb9u91l+7oTwqOEVNIh5dDIgXuDimY2Pb6PyF7GGX
+	n5JrhzBBYCqDztb+S4bAja6WUFN/PyJrNiuC6Lzg2HLUlGnV0sKSwMiZSAG8lWfAolvu
+	Lj8wO3XE9uiqZ1A0ldJ68gGB14apAsaIjkh2J/3q4ZCk8gGkS4jKn5BFMvkst5jiwjcO
+	5tjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=LVUzio99dOgvDQkTMW0Kz3gBweM4FRQz7uPSMwwQ3js=;
-	b=AqFqOytGKLrIEHE0++sip++MLGog2BeV0woc1qLprU7qihdDPAoK2FP3vQO1fAUBiG
-	I1iOET9xPYRWWoTdO5N/ZIEplLg9DjkYg7P7hGuh+TwMseNVnzIKj0JmYxMwvKOEJtyW
-	MwseiZYL9Ts1Zs61xWF3Ld+64fNBDrn5SLpGWaobKLn2XKnuc1i+p3zuiL2ojNcRqgUH
-	vkXvcNY85QhkK47ozwCtNMDgL+wy1j3nwIDRxBgXA7870KLx3gNlkpUkFPBgr4U/1VXd
-	X3Jt6Pfdi4U5+NDH6xaFcHFBeFEJZTwgguoL/h1uMar2IrNJIP+ATb+YeAAn7D1w+vqi
-	fUwA==
-X-Gm-Message-State: AOUpUlE33qwocp8tXTEgHtH+NQ4oZpDVhb68suz3I+N28NmOXghAfVIh
-	PmkEj3ZC06rKK4iMmJEKLHw=
-X-Received: by 2002:a63:e255:: with SMTP id
-	y21-v6mr17549346pgj.160.1533628728684; 
-	Tue, 07 Aug 2018 00:58:48 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id
-	16-v6sm1550863pfo.164.2018.08.07.00.58.44
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 07 Aug 2018 00:58:47 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Tue, 07 Aug 2018 17:28:41 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Tue,  7 Aug 2018 17:27:56 +0930
-Message-Id: <20180807075757.7242-7-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180807075757.7242-1-joel@jms.id.au>
-References: <20180807075757.7242-1-joel@jms.id.au>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::42e
-Subject: [Qemu-arm] [PATCH 6/7] aspeed: add a max_ram_size property to the
- memory controller
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:in-reply-to:references;
+	bh=4OxWyW7VSoNMuoZEeqGTVN21Yv8SeYOoh4+3nFRklZg=;
+	b=H9K6HAAcOmn0/52XaXEL6+QHQuZun0snR4/ZD+fp4sIaHLUxCLHCAUhb4XnljW1ASG
+	lAxpuLBRrTR5WW88ticNTmhG8MiBH9Xnbf/kI5SkUXyrlxeLhjJJBg9/Ujh3niLrH1x+
+	s/LlNS9RT1S0gPqQsRhQ5WZYI+NqxfGdowLmxwaaFHV+RlYq0jL2h6fr65yKJudcA9hd
+	rOczqzDk2JqUaE0y+GCri+TvU/AMYM5Bv+mFrhI13TB4houEZ8VGh5r2aCg2g7yhx4sP
+	x6YNOXVwEDtfuRybCSLxUVdZ6lwNAM3YCioTUy357RMTMAotEJ27SL5pvT2CwEntHXzK
+	Y1iA==
+X-Gm-Message-State: AG10YOT7cMyy9rR3jSMozPR0ItV0761ZyoMNppYk1YR7P7bQWOV+FHsymzvokKSk3vkbog==
+X-Received: by 10.25.84.7 with SMTP id i7mr4236174lfb.44.1454172468944;
+	Sat, 30 Jan 2016 08:47:48 -0800 (PST)
+Received: from localhost.localdomain (ppp46-138-151-163.pppoe.spdop.ru.
+	[46.138.151.163]) by smtp.gmail.com with ESMTPSA id
+	b135sm2834417lfe.28.2016.01.30.08.47.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sat, 30 Jan 2016 08:47:48 -0800 (PST)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org
+Date: Sat, 30 Jan 2016 19:43:11 +0300
+Message-Id: <0fc4f003c91dfbaa10aebc88e3a62607192700c2.1454169735.git.digetx@gmail.com>
+X-Mailer: git-send-email 2.7.0
+In-Reply-To: <cover.1454169735.git.digetx@gmail.com>
+References: <cover.1454169735.git.digetx@gmail.com>
+In-Reply-To: <cover.1454169735.git.digetx@gmail.com>
+References: <cover.1454169735.git.digetx@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::242
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Subject: [Qemu-arm] [PATCH v12 2/9] hw/ptimer: Perform counter wrap around
+	if timer already expired
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.14
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /3wFjOIZK5II
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XcbkA2GYidbk
 
-From: Cédric Le Goater <clg@kaod.org>
+ptimer_get_count() might be called while QEMU timer already been expired.
+In that case ptimer would return counter = 0, which might be undesirable
+in case of polled timer. Do counter wrap around for periodic timer to keep
+it distributed. In order to achieve more accurate emulation behaviour of
+certain hardware, don't perform wrap around when in icount mode and return
+counter = 0 in that case (that doesn't affect polled counter distribution).
 
-This will be used to construct a memory region beyond the RAM region
-to let firmwares scan the address space with load/store to guess how
-much RAM the SoC has.
-
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
- hw/arm/aspeed.c               | 31 +++++++++++++++++++++++++++++++
- hw/arm/aspeed_soc.c           |  2 ++
- hw/misc/aspeed_sdmc.c         |  3 +++
- include/hw/misc/aspeed_sdmc.h |  1 +
- 4 files changed, 37 insertions(+)
+ hw/core/ptimer.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bb9d33848d3f..e078269266bc 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -31,6 +31,7 @@ static struct arm_boot_info aspeed_board_binfo = {
- typedef struct AspeedBoardState {
-     AspeedSoCState soc;
-     MemoryRegion ram;
-+    MemoryRegion max_ram;
- } AspeedBoardState;
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index 5edcd71..d4452d3 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -83,14 +83,16 @@ static void ptimer_tick(void *opaque)
  
- typedef struct AspeedBoardConfig {
-@@ -127,6 +128,27 @@ static const AspeedBoardConfig aspeed_boards[] = {
-     },
- };
+ uint64_t ptimer_get_count(ptimer_state *s)
+ {
+-    int64_t now;
+     uint64_t counter;
  
-+/*
-+ * The max ram region is for firmwares that scan the address space
-+ * with load/store to guess how much RAM the SoC has.
-+ */
-+static uint64_t max_ram_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    return 0;
-+}
+     if (s->enabled) {
+-        now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        int64_t next = s->next_event;
++        bool expired = (now - next >= 0);
++        bool oneshot = (s->enabled == 2);
 +
-+static void max_ram_write(void *opaque, hwaddr offset, uint64_t value,
-+                           unsigned size)
-+{
-+    /* Disacard writes */
-+}
+         /* Figure out the current counter value.  */
+-        if (now - s->next_event > 0
+-            || s->period == 0) {
++        if (s->period == 0 || (expired && (oneshot || use_icount))) {
+             /* Prevent timer underflowing if it should already have
+                triggered.  */
+             counter = 0;
+@@ -102,7 +104,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+             uint32_t period_frac = s->period_frac;
+             uint64_t period = s->period;
+ 
+-            if ((s->enabled == 1) && !use_icount && (s->delta * period < 10000)) {
++            if (!oneshot && (s->delta * period < 10000) && !use_icount) {
+                 period = 10000 / s->delta;
+                 period_frac = 0;
+             }
+@@ -117,7 +119,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+                backwards.
+             */
+ 
+-            rem = s->next_event - now;
++            rem = expired ? now - next : next - now;
+             div = period;
+ 
+             clz1 = clz64(rem);
+@@ -137,6 +139,11 @@ uint64_t ptimer_get_count(ptimer_state *s)
+                     div += 1;
+             }
+             counter = rem / div;
 +
-+static const MemoryRegionOps max_ram_ops = {
-+    .read = max_ram_read,
-+    .write = max_ram_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
- #define FIRMWARE_ADDR 0x0
- 
- static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
-@@ -187,6 +209,7 @@ static void aspeed_board_init(MachineState *machine,
-     AspeedBoardState *bmc;
-     AspeedSoCClass *sc;
-     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
-+    ram_addr_t max_ram_size;
- 
-     bmc = g_new0(AspeedBoardState, 1);
-     object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
-@@ -226,6 +249,14 @@ static void aspeed_board_init(MachineState *machine,
-     object_property_add_const_link(OBJECT(&bmc->soc), "ram", OBJECT(&bmc->ram),
-                                    &error_abort);
- 
-+    max_ram_size = object_property_get_uint(OBJECT(&bmc->soc), "max-ram-size",
-+                                            &error_abort);
-+    memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
-+                          "max_ram", max_ram_size  - ram_size);
-+    memory_region_add_subregion(get_system_memory(),
-+                                sc->info->sdram_base + ram_size,
-+                                &bmc->max_ram);
-+
-     aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_abort);
-     aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error_abort);
- 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index e68911af0f90..a27233d4876b 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -155,6 +155,8 @@ static void aspeed_soc_init(Object *obj)
-                          sc->info->silicon_rev);
-     object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
-                               "ram-size", &error_abort);
-+    object_property_add_alias(obj, "max-ram-size", OBJECT(&s->sdmc),
-+                              "max-ram-size", &error_abort);
- 
-     for (i = 0; i < sc->info->wdts_num; i++) {
-         object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 89de3138aff0..eec77f243508 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -242,12 +242,14 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
-     case AST2400_A0_SILICON_REV:
-     case AST2400_A1_SILICON_REV:
-         s->ram_bits = ast2400_rambits(s);
-+        s->max_ram_size = 512 << 20;
-         s->fixed_conf = ASPEED_SDMC_VGA_COMPAT |
-             ASPEED_SDMC_DRAM_SIZE(s->ram_bits);
-         break;
-     case AST2500_A0_SILICON_REV:
-     case AST2500_A1_SILICON_REV:
-         s->ram_bits = ast2500_rambits(s);
-+        s->max_ram_size = 1024 << 20;
-         s->fixed_conf = ASPEED_SDMC_HW_VERSION(1) |
-             ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
-             ASPEED_SDMC_CACHE_INITIAL_DONE |
-@@ -275,6 +277,7 @@ static const VMStateDescription vmstate_aspeed_sdmc = {
- static Property aspeed_sdmc_properties[] = {
-     DEFINE_PROP_UINT32("silicon-rev", AspeedSDMCState, silicon_rev, 0),
-     DEFINE_PROP_UINT64("ram-size", AspeedSDMCState, ram_size, 0),
-+    DEFINE_PROP_UINT64("max-ram-size", AspeedSDMCState, max_ram_size, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
-index e079c66a7d73..b3c926acae90 100644
---- a/include/hw/misc/aspeed_sdmc.h
-+++ b/include/hw/misc/aspeed_sdmc.h
-@@ -27,6 +27,7 @@ typedef struct AspeedSDMCState {
-     uint32_t silicon_rev;
-     uint32_t ram_bits;
-     uint64_t ram_size;
-+    uint64_t max_ram_size;
-     uint32_t fixed_conf;
- 
- } AspeedSDMCState;
++            if (expired && counter != 0) {
++                /* Wrap around periodic counter.  */
++                counter = s->limit - (counter - 1) % s->limit;
++            }
+         }
+     } else {
+         counter = s->delta;
 -- 
-2.17.1
+2.7.0
 

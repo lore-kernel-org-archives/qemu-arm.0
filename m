@@ -1,80 +1,80 @@
-Received: by 10.25.159.19 with SMTP id i19csp1938043lfe;
-        Sun, 31 Jan 2016 08:16:09 -0800 (PST)
-X-Received: by 10.55.21.28 with SMTP id f28mr23546772qkh.57.1454256969427;
-        Sun, 31 Jan 2016 08:16:09 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1938057lfe;
+        Sun, 31 Jan 2016 08:16:12 -0800 (PST)
+X-Received: by 10.140.100.229 with SMTP id s92mr22726632qge.19.1454256971969;
+        Sun, 31 Jan 2016 08:16:11 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 17si27051032qhx.101.2016.01.31.08.16.09
+        by mx.google.com with ESMTPS id e4si24082273qkj.9.2016.01.31.08.16.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 31 Jan 2016 08:16:09 -0800 (PST)
+        Sun, 31 Jan 2016 08:16:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42256 helo=lists.gnu.org)
+Received: from localhost ([::1]:42257 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPufY-0004Kr-OZ
-	for alex.bennee@linaro.org; Sun, 31 Jan 2016 11:16:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59165)
+	id 1aPufb-0004Qa-2H
+	for alex.bennee@linaro.org; Sun, 31 Jan 2016 11:16:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59184)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aPufV-0004GY-Kj
-	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:06 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPufX-0004J3-7R
+	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aPufU-0000sy-K7
-	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:05 -0500
-Received: from mail-lb0-x243.google.com ([2a00:1450:4010:c04::243]:35921)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aPufW-0000tI-5D
+	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:07 -0500
+Received: from mail-lb0-x241.google.com ([2a00:1450:4010:c04::241]:35922)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aPufR-0000sI-Vw; Sun, 31 Jan 2016 11:16:02 -0500
-Received: by mail-lb0-x243.google.com with SMTP id zr1so2157178lbb.3;
-	Sun, 31 Jan 2016 08:16:01 -0800 (PST)
+	id 1aPufT-0000sQ-Fo; Sun, 31 Jan 2016 11:16:03 -0500
+Received: by mail-lb0-x241.google.com with SMTP id zr1so2157192lbb.3;
+	Sun, 31 Jan 2016 08:16:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=Sbh3mmp93QNJ1rh6yHZ3+Qld1vYhG8I1oq4LrFX1pKo=;
-	b=Vv+F8+SGMONb3l99zfOyWWXf/FlXh+ysuf2fzln5QrIGAJm6dj/vz+LX9bzFOBT/aQ
-	XF7SNsgWjElolb1glM96JwqoqRpewekYlPyvsuqQaXpYoVW1LquUZp60hdNGsXt4QwAx
-	zgO4DUQHe4uJSZ2+kJHNCyfFT6+t1bKX1dtzMSjsZnunGNHubbKCY1g1cfHtnaR7mS92
-	2/owu/aZzPe32fRm7V3M9Z4VDH64CHVSH1ByUD5N/vYZgV2MIFN9rK2BTCJewQEbKBK0
-	6ujQPuOYE2pyfy0VebsZK2Bx41EgINeBR4WuqHC8KNuDNvEk0UFJzA1r2HO3s1DFH2Bn
-	ZrXA==
+	bh=5xhHKURr+yGDDqw/GKV/MU9MPK1sVT0K07okLp0vjoU=;
+	b=Q6Wuw83hmHckgxw3h9+e3SpybheqcXdoRjs59NxAuIHPNjIZ58ZlEKw3t36sr0JwIe
+	2KMmumCpm0qipqhA1W+kr/1cg2dWeX8ULfw+CnHyryDBPNnjueeCvrEkfYZujP1Pu5OA
+	uZy0QDkQ9eCNDnsrKGoghhRiQ0t4fvIy9IofZ7NLdSTHh0E1Di2J53Py8Fi5jaZMPb8K
+	pQfp0XT9/GXMtI35ddej9UQ8yajvmzjY5f9GikrJRAC6X5SufJeAZelI/1jpB0e9QWPL
+	AC81sW9JeWuTEy8Net9/gDLUYIbWxmjH3/VehoBoox33VUJ0RVxgiJJM7yah6miTFN5a
+	D9ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=Sbh3mmp93QNJ1rh6yHZ3+Qld1vYhG8I1oq4LrFX1pKo=;
-	b=Djje6nYSPqtB/eGmiaDRg4DAPzY+otn673YN93KQHEGKnfrQB9hPUE3owtVUeAEMeq
-	p9m3IyQvS/Cp/xaI+FfHazoorDiLXN9pOn79FRoRkPvMdB1ZcJYIwk6uhLQtcWHqQdEc
-	nh1F4HT4uujvMZyrHSVLSvmYWPzjILWm7BDoRMl37jmhFoRNw9wGemT3+vFxlnUW5/w+
-	HTsrNPNZQ/wSl1Jal4NlPVp9uWitI0urymsVNslGC+F0ohDWQE5WBaRsI7UKQEXrpV/2
-	oNGcurlQuHIbhV8CXy3i2tCfhGvH1xr+H+61FBbQkFm92pk2cu6iJGl5sO2c0aLCQaRc
-	eIdA==
-X-Gm-Message-State: AG10YOQoM2iEeKdy8HyfGrZXQGyQd5NQykeTh8orrpanCB6UuT6oWFL2E+0OD2MDVgCPnQ==
-X-Received: by 10.112.162.231 with SMTP id yd7mr6776339lbb.40.1454256961286;
-	Sun, 31 Jan 2016 08:16:01 -0800 (PST)
+	bh=5xhHKURr+yGDDqw/GKV/MU9MPK1sVT0K07okLp0vjoU=;
+	b=L3wBpnQNH2huH3a+fuEqh/XsQxFXHUkjZYLXAFARR+vvQr0HotcIHY7mzbEO+BmJqx
+	P1uAByvF0NUamuKlkh+jQffsgqqBtJpSGSE73pnpBGGANsAboelupyl/NUcp6YTdD6ZD
+	2PUannMPZM9W6GvqkD86u/lHCQtYGTqhDmmupD25oKpFfA2K/H8qi+qWfCmqtjNVaCf+
+	BE2Fyab2SEocVIAjL7fn/fDTEYioI3TZl97SYLu6faIvL23perv0tfL58iZaupe8eQfb
+	0ZTZogMBQB4PAIly+q/ArPQep5hjyFwfJblyIOwMBEgH7yTSiSvXfgFKpcwMz0aBZu0B
+	8ndQ==
+X-Gm-Message-State: AG10YOQuvmUf6am1DYxZrFsFY1E5pVRjhaHVYpkj54sc316eGFX5f6pO+CchGNaKp6PmFA==
+X-Received: by 10.112.158.9 with SMTP id wq9mr6790095lbb.93.1454256962792;
+	Sun, 31 Jan 2016 08:16:02 -0800 (PST)
 Received: from sfedorov-laptop.Dlink (broadband-46-188-121-154.2com.net.
 	[46.188.121.154]) by smtp.gmail.com with ESMTPSA id
-	zu7sm3418454lbb.36.2016.01.31.08.15.59
+	zu7sm3418454lbb.36.2016.01.31.08.16.01
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 31 Jan 2016 08:15:59 -0800 (PST)
+	Sun, 31 Jan 2016 08:16:01 -0800 (PST)
 From: Sergey Fedorov <serge.fdrv@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Sun, 31 Jan 2016 19:15:47 +0300
-Message-Id: <1454256948-10485-2-git-send-email-serge.fdrv@gmail.com>
+Date: Sun, 31 Jan 2016 19:15:48 +0300
+Message-Id: <1454256948-10485-3-git-send-email-serge.fdrv@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1454256948-10485-1-git-send-email-serge.fdrv@gmail.com>
 References: <1454256948-10485-1-git-send-email-serge.fdrv@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::243
+X-Received-From: 2a00:1450:4010:c04::241
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-arm] [PATCH v3 1/2] cpu: Add callback to check architectural
-	watchpoint match
+Subject: [Qemu-arm] [PATCH v3 2/2] target-arm: Implement checking of fired
+	watchpoint
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,102 +88,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Kc2wb9t4LqPl
+X-TUID: Slz4nQ0a2LWi
 
-When QEMU watchpoint matches, that is not definitely an architectural
-watchpoint match yet. If it is a stop-before-access watchpoint then that
-is hardly possible to ignore it after throwing a TCG exception.
-
-A special callback is introduced to check for architectural watchpoint
-match before raising a TCG exception.
+ARM stops before access to a location covered by watchpoint. Also, QEMU
+watchpoint fire is not necessarily an architectural watchpoint match.
+Unfortunately, that is hardly possible to ignore a fired watchpoint in
+debug exception handler. So move watchpoint check from debug exception
+handler to the dedicated watchpoint checking callback.
 
 Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- exec.c            | 6 ++++++
- include/qom/cpu.h | 4 ++++
- qom/cpu.c         | 9 +++++++++
- 3 files changed, 19 insertions(+)
+ target-arm/cpu.c       |  1 +
+ target-arm/internals.h |  3 +++
+ target-arm/op_helper.c | 35 +++++++++++++++++++++--------------
+ 3 files changed, 25 insertions(+), 14 deletions(-)
 
-diff --git a/exec.c b/exec.c
-index 9e076bc..14e7c76 100644
---- a/exec.c
-+++ b/exec.c
-@@ -2024,6 +2024,7 @@ static const MemoryRegionOps notdirty_mem_ops = {
- static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
- {
-     CPUState *cpu = current_cpu;
-+    CPUClass *cc = CPU_GET_CLASS(cpu);
-     CPUArchState *env = cpu->env_ptr;
-     target_ulong pc, cs_base;
-     target_ulong vaddr;
-@@ -2049,6 +2050,11 @@ static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
-             wp->hitaddr = vaddr;
-             wp->hitattrs = attrs;
-             if (!cpu->watchpoint_hit) {
-+                if (wp->flags & BP_CPU &&
-+                    !cc->debug_check_watchpoint(cpu, wp)) {
-+                    wp->flags &= ~BP_WATCHPOINT_HIT;
-+                    continue;
-+                }
-                 cpu->watchpoint_hit = wp;
-                 tb_check_watchpoint(cpu);
-                 if (wp->flags & BP_STOP_BEFORE_ACCESS) {
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 035179c..984bc8d 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -64,6 +64,7 @@ typedef uint64_t vaddr;
- #define CPU_GET_CLASS(obj) OBJECT_GET_CLASS(CPUClass, (obj), TYPE_CPU)
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 0e582c4..21ec18e 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -1474,6 +1474,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->gdb_arch_name = arm_gdb_arch_name;
+     cc->gdb_stop_before_watchpoint = true;
+     cc->debug_excp_handler = arm_debug_excp_handler;
++    cc->debug_check_watchpoint = arm_debug_check_watchpoint;
  
- typedef struct CPUState CPUState;
-+typedef struct CPUWatchpoint CPUWatchpoint;
+     cc->disas_set_info = arm_disas_set_info;
  
- typedef void (*CPUUnassignedAccess)(CPUState *cpu, hwaddr addr,
-                                     bool is_write, bool is_exec, int opaque,
-@@ -106,6 +107,8 @@ struct TranslationBlock;
-  *       a memory access with the specified memory transaction attributes.
-  * @gdb_read_register: Callback for letting GDB read a register.
-  * @gdb_write_register: Callback for letting GDB write a register.
-+ * @debug_check_watchpoint: Callback: return true if the architectural
-+ *       watchpoint whose address has matched should really fire.
-  * @debug_excp_handler: Callback for handling debug exceptions.
-  * @write_elf64_note: Callback for writing a CPU-specific ELF note to a
-  * 64-bit VM coredump.
-@@ -165,6 +168,7 @@ typedef struct CPUClass {
-     int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
-     int (*gdb_read_register)(CPUState *cpu, uint8_t *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-+    bool (*debug_check_watchpoint)(CPUState *cpu, CPUWatchpoint *wp);
-     void (*debug_excp_handler)(CPUState *cpu);
+diff --git a/target-arm/internals.h b/target-arm/internals.h
+index d226bbe..16d9487 100644
+--- a/target-arm/internals.h
++++ b/target-arm/internals.h
+@@ -409,6 +409,9 @@ void hw_breakpoint_update(ARMCPU *cpu, int n);
+  */
+ void hw_breakpoint_update_all(ARMCPU *cpu);
  
-     int (*write_elf64_note)(WriteCoreDumpFunction f, CPUState *cpu,
-diff --git a/qom/cpu.c b/qom/cpu.c
-index 8f537a4..5a6a47e 100644
---- a/qom/cpu.c
-+++ b/qom/cpu.c
-@@ -188,6 +188,14 @@ static int cpu_common_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)
-     return 0;
++/* Callback function for checking if a watchpoint should trigger. */
++bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp);
++
+ /* Callback function for when a watchpoint or breakpoint triggers. */
+ void arm_debug_excp_handler(CPUState *cs);
+ 
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index a5ee65f..4adf9cc 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -975,6 +975,16 @@ void HELPER(check_breakpoints)(CPUARMState *env)
+     }
  }
  
-+static bool cpu_common_debug_check_watchpoint(CPUState *cpu, CPUWatchpoint *wp)
++bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
 +{
-+    /* If no extra check is required, QEMU watchpoint match can be considered
-+     * as an architectural match.
++    /* Called by core code when a CPU watchpoint fires; need to check if this
++     * is also an architectural watchpoint match.
 +     */
-+    return true;
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    return check_watchpoints(cpu);
 +}
 +
- bool target_words_bigendian(void);
- static bool cpu_common_virtio_is_big_endian(CPUState *cpu)
+ void arm_debug_excp_handler(CPUState *cs)
  {
-@@ -352,6 +360,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->gdb_write_register = cpu_common_gdb_write_register;
-     k->virtio_is_big_endian = cpu_common_virtio_is_big_endian;
-     k->debug_excp_handler = cpu_common_noop;
-+    k->debug_check_watchpoint = cpu_common_debug_check_watchpoint;
-     k->cpu_exec_enter = cpu_common_noop;
-     k->cpu_exec_exit = cpu_common_noop;
-     k->cpu_exec_interrupt = cpu_common_exec_interrupt;
+     /* Called by core code when a watchpoint or breakpoint fires;
+@@ -986,23 +996,20 @@ void arm_debug_excp_handler(CPUState *cs)
+ 
+     if (wp_hit) {
+         if (wp_hit->flags & BP_CPU) {
++            bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
++            bool same_el = arm_debug_target_el(env) == arm_current_el(env);
++
+             cs->watchpoint_hit = NULL;
+-            if (check_watchpoints(cpu)) {
+-                bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
+-                bool same_el = arm_debug_target_el(env) == arm_current_el(env);
+-
+-                if (extended_addresses_enabled(env)) {
+-                    env->exception.fsr = (1 << 9) | 0x22;
+-                } else {
+-                    env->exception.fsr = 0x2;
+-                }
+-                env->exception.vaddress = wp_hit->hitaddr;
+-                raise_exception(env, EXCP_DATA_ABORT,
+-                                syn_watchpoint(same_el, 0, wnr),
+-                                arm_debug_target_el(env));
++
++            if (extended_addresses_enabled(env)) {
++                env->exception.fsr = (1 << 9) | 0x22;
+             } else {
+-                cpu_resume_from_signal(cs, NULL);
++                env->exception.fsr = 0x2;
+             }
++            env->exception.vaddress = wp_hit->hitaddr;
++            raise_exception(env, EXCP_DATA_ABORT,
++                    syn_watchpoint(same_el, 0, wnr),
++                    arm_debug_target_el(env));
+         }
+     } else {
+         uint64_t pc = is_a64(env) ? env->pc : env->regs[15];
 -- 
 1.9.1
 

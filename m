@@ -1,191 +1,276 @@
-Received: by 10.25.159.19 with SMTP id i19csp1938057lfe;
-        Sun, 31 Jan 2016 08:16:12 -0800 (PST)
-X-Received: by 10.140.100.229 with SMTP id s92mr22726632qge.19.1454256971969;
-        Sun, 31 Jan 2016 08:16:11 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e4si24082273qkj.9.2016.01.31.08.16.11
+Received: by 10.25.159.19 with SMTP id i19csp48016lfe;
+        Mon, 1 Feb 2016 05:12:07 -0800 (PST)
+X-Received: by 10.194.173.65 with SMTP id bi1mr22286230wjc.110.1454332327858;
+        Mon, 01 Feb 2016 05:12:07 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
+        by mx.google.com with ESMTPS id j13si14887288wmd.85.2016.02.01.05.12.07
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 31 Jan 2016 08:16:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Feb 2016 05:12:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42257 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aPufb-0004Qa-2H
-	for alex.bennee@linaro.org; Sun, 31 Jan 2016 11:16:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59184)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aPufX-0004J3-7R
-	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:08 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aPufW-0000tI-5D
-	for qemu-arm@nongnu.org; Sun, 31 Jan 2016 11:16:07 -0500
-Received: from mail-lb0-x241.google.com ([2a00:1450:4010:c04::241]:35922)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aPufT-0000sQ-Fo; Sun, 31 Jan 2016 11:16:03 -0500
-Received: by mail-lb0-x241.google.com with SMTP id zr1so2157192lbb.3;
-	Sun, 31 Jan 2016 08:16:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=5xhHKURr+yGDDqw/GKV/MU9MPK1sVT0K07okLp0vjoU=;
-	b=Q6Wuw83hmHckgxw3h9+e3SpybheqcXdoRjs59NxAuIHPNjIZ58ZlEKw3t36sr0JwIe
-	2KMmumCpm0qipqhA1W+kr/1cg2dWeX8ULfw+CnHyryDBPNnjueeCvrEkfYZujP1Pu5OA
-	uZy0QDkQ9eCNDnsrKGoghhRiQ0t4fvIy9IofZ7NLdSTHh0E1Di2J53Py8Fi5jaZMPb8K
-	pQfp0XT9/GXMtI35ddej9UQ8yajvmzjY5f9GikrJRAC6X5SufJeAZelI/1jpB0e9QWPL
-	AC81sW9JeWuTEy8Net9/gDLUYIbWxmjH3/VehoBoox33VUJ0RVxgiJJM7yah6miTFN5a
-	D9ZQ==
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-wm0-x22d.google.com with SMTP id l66so70498838wml.0
+        for <alex.bennee@linaro.org>; Mon, 01 Feb 2016 05:12:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=vH1S3O300hqkusj1IrdjJPxDgyKR4MvbMuhpwelixxs=;
+        b=Gv/wWsHB36kKZ0j2iM25fqSo5vyN2qvNGYTwLNhlsAFkNEY8NcfXhFU+8kaXoxnCsk
+         cVfZii4DsveJSoKo4LxsnHnfwaVkrkW9yN2LRDFrHP93YWgA6Ct2Oc9GYYBDs4Uj6OE2
+         lf0WkzHo5aQHFsCWTofEx2qMXuB7qUOvnlyrQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=5xhHKURr+yGDDqw/GKV/MU9MPK1sVT0K07okLp0vjoU=;
-	b=L3wBpnQNH2huH3a+fuEqh/XsQxFXHUkjZYLXAFARR+vvQr0HotcIHY7mzbEO+BmJqx
-	P1uAByvF0NUamuKlkh+jQffsgqqBtJpSGSE73pnpBGGANsAboelupyl/NUcp6YTdD6ZD
-	2PUannMPZM9W6GvqkD86u/lHCQtYGTqhDmmupD25oKpFfA2K/H8qi+qWfCmqtjNVaCf+
-	BE2Fyab2SEocVIAjL7fn/fDTEYioI3TZl97SYLu6faIvL23perv0tfL58iZaupe8eQfb
-	0ZTZogMBQB4PAIly+q/ArPQep5hjyFwfJblyIOwMBEgH7yTSiSvXfgFKpcwMz0aBZu0B
-	8ndQ==
-X-Gm-Message-State: AG10YOQuvmUf6am1DYxZrFsFY1E5pVRjhaHVYpkj54sc316eGFX5f6pO+CchGNaKp6PmFA==
-X-Received: by 10.112.158.9 with SMTP id wq9mr6790095lbb.93.1454256962792;
-	Sun, 31 Jan 2016 08:16:02 -0800 (PST)
-Received: from sfedorov-laptop.Dlink (broadband-46-188-121-154.2com.net.
-	[46.188.121.154]) by smtp.gmail.com with ESMTPSA id
-	zu7sm3418454lbb.36.2016.01.31.08.16.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 31 Jan 2016 08:16:01 -0800 (PST)
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Sun, 31 Jan 2016 19:15:48 +0300
-Message-Id: <1454256948-10485-3-git-send-email-serge.fdrv@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1454256948-10485-1-git-send-email-serge.fdrv@gmail.com>
-References: <1454256948-10485-1-git-send-email-serge.fdrv@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::241
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-arm] [PATCH v3 2/2] target-arm: Implement checking of fired
-	watchpoint
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Slz4nQ0a2LWi
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=vH1S3O300hqkusj1IrdjJPxDgyKR4MvbMuhpwelixxs=;
+        b=J0QpDDyTtUVfbHH7c70E/2NKTPX2GAg0MHcH0C3L3ZeNPb0p3ysDSZEj49d3ZA7kTJ
+         U5MeekWPI+wnE2g9m3+ojDTkjdVH1Mvid22qlKCAFamDTFNTRSjEuA2PxQsjgAyVhJxr
+         qKc81NV1LSLfO0wNBVZ4+8dbO3U9hbBkR7jqWpSMYZSuVOfwyIXE4s/4sGqaWgynvESg
+         1ooP+vawIIfhb4jcWqO1wWTKFYtkHdF4oubq5vwCgIYvJdTBSNo6hRQK63JR5eEIk6OP
+         VS+c3+pXTqN/WznH5G9bpFkSXGtvILIjN02sphs00SjYguRA5HMGJ8ze1zxQTSE0+xb3
+         I4Zw==
+X-Gm-Message-State: AG10YOSgnMAcJAr4/YlkeCopbb3HSvqoTdyOwS/3Oi8zdSqxw/khqtITVLLFZqKswu52mFhZMZA=
+X-Received: by 10.194.85.161 with SMTP id i1mr25782951wjz.95.1454332327583;
+        Mon, 01 Feb 2016 05:12:07 -0800 (PST)
+Return-Path: <eric.auger@linaro.org>
+Received: from [192.168.2.12] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
+        by smtp.googlemail.com with ESMTPSA id 73sm11477003wmm.7.2016.02.01.05.12.04
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Mon, 01 Feb 2016 05:12:06 -0800 (PST)
+Subject: Re: [PATCH v5 2/8] device_tree: introduce load_device_tree_from_sysfs
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1453130204-655-1-git-send-email-eric.auger@linaro.org>
+ <1453130204-655-3-git-send-email-eric.auger@linaro.org>
+ <CAFEAcA-9+muP4TjQnLk2XPAZsf=wRzsLSQbGuQhqrTxZpsz2xQ@mail.gmail.com>
+Cc: eric.auger@st.com, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, David Gibson <david@gibson.dropbear.id.au>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+ Patch Tracking <patches@linaro.org>,
+ Christoffer Dall <christoffer.dall@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Baptiste Reynal <b.reynal@virtualopensystems.com>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ thomas.lendacky@amd.com
+From: Eric Auger <eric.auger@linaro.org>
+Message-ID: <56AF5991.9030301@linaro.org>
+Date: Mon, 1 Feb 2016 14:11:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.5.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-9+muP4TjQnLk2XPAZsf=wRzsLSQbGuQhqrTxZpsz2xQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-TUID: g24zwOUUXG4D
 
-ARM stops before access to a location covered by watchpoint. Also, QEMU
-watchpoint fire is not necessarily an architectural watchpoint match.
-Unfortunately, that is hardly possible to ignore a fired watchpoint in
-debug exception handler. So move watchpoint check from debug exception
-handler to the dedicated watchpoint checking callback.
+Hi Peter,
+On 01/25/2016 03:13 PM, Peter Maydell wrote:
+> On 18 January 2016 at 15:16, Eric Auger <eric.auger@linaro.org> wrote:
+>> This function returns the host device tree blob from sysfs
+>> (/proc/device-tree). It uses a recursive function inspired
+>> from dtc read_fstree.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@linaro.org>
+>>
+>> ---
+>> v1 -> v2:
+>> - do not implement/expose read_fstree and load_device_tree_from_sysfs
+>>   if CONFIG_LINUX is not defined (lstat is not implemeted in mingw)
+>> - correct indentation in read_fstree
+>> - use /proc/device-tree symlink instead of /sys/firmware/devicetree/base
+>>   path (kernel.org/doc/Documentation/ABI/testing/sysfs-firmware-ofw)
+>> - use g_file_get_contents in read_fstree
+>> - introduce SYSFS_DT_BASEDIR macro and use strlen
+>> - exit on error in load_device_tree_from_sysfs
+>> - user error_setg
+>>
+>> RFC -> v1:
+>> - remove runtime dependency on dtc binary and introduce read_fstree
+>> ---
+>>  device_tree.c                | 100 +++++++++++++++++++++++++++++++++++++++++++
+>>  include/sysemu/device_tree.h |   3 ++
+>>  2 files changed, 103 insertions(+)
+>>
+>> diff --git a/device_tree.c b/device_tree.c
+>> index a9f5f8e..b262c2d 100644
+>> --- a/device_tree.c
+>> +++ b/device_tree.c
+>> @@ -17,6 +17,9 @@
+>>  #include <fcntl.h>
+>>  #include <unistd.h>
+>>  #include <stdlib.h>
+>> +#ifdef CONFIG_LINUX
+>> +#include <dirent.h>
+>> +#endif
+>>
+>>  #include "qemu-common.h"
+>>  #include "qemu/error-report.h"
+>> @@ -117,6 +120,103 @@ fail:
+>>      return NULL;
+>>  }
+>>
+>> +#ifdef CONFIG_LINUX
+>> +
+>> +#define SYSFS_DT_BASEDIR "/proc/device-tree"
+>> +
+>> +/**
+>> + * read_fstree: this function is inspired from dtc read_fstree
+>> + * @fdt: preallocated fdt blob buffer, to be populated
+>> + * @dirname: directory to scan under SYSFS_DT_BASEDIR
+>> + * the search is recursive and the tree is searched down to the
+>> + * leafs (property files).
+> 
+> "leaves"
+OK
+> 
+>> + *
+>> + * the function self-asserts in case of error
+> 
+> "asserts"
+OK
+> 
+>> + */
+>> +static void read_fstree(void *fdt, const char *dirname)
+>> +{
+>> +    DIR *d;
+>> +    struct dirent *de;
+>> +    struct stat st;
+>> +    const char *root_dir = SYSFS_DT_BASEDIR;
+>> +    char *parent_node;
+>> +
+>> +    if (strstr(dirname, root_dir) != dirname) {
+>> +        error_report("%s: %s must be searched within %s",
+>> +                     __func__, dirname, root_dir);
+>> +        exit(1);
+> 
+> Why does this one error_report and exit but other errors below use
+> error_setg?
+replaced with error_setg(&error_fatal, ...)
+> 
+>> +    }
+>> +    parent_node = (char *)&dirname[strlen(SYSFS_DT_BASEDIR)];
+> 
+> What causes us to need this cast to char* ?
+I changed parent_node to a const char * instead of char*
+> 
+>> +
+>> +    d = opendir(dirname);
+>> +    if (!d) {
+>> +        error_setg(&error_fatal, "%s cannot open %s", __func__, dirname);
+> 
+> You need to return here (and similarly to bail out properly
+> in the other error paths below).
+> 
+>> +    }
+>> +
+>> +    while ((de = readdir(d)) != NULL) {
+>> +        char *tmpnam;
+>> +
+>> +        if (!g_strcmp0(de->d_name, ".")
+>> +            || !g_strcmp0(de->d_name, "..")) {
+>> +            continue;
+>> +        }
+>> +
+>> +        tmpnam = g_strjoin("/", dirname, de->d_name, NULL);
+>> +
+>> +        if (lstat(tmpnam, &st) < 0) {
+>> +            error_setg(&error_fatal, "%s cannot lstat %s", __func__, tmpnam);
+>> +        }
+>> +
+>> +        if (S_ISREG(st.st_mode)) {
+>> +            gchar *val;
+>> +            gsize len;
+>> +
+>> +            if (!g_file_get_contents(tmpnam, &val, &len, NULL)) {
+>> +                error_setg(&error_fatal, "%s not able to extract info from %s",
+>> +                           __func__, tmpnam);
+>> +            }
+>> +
+>> +            if (strlen(parent_node) > 0) {
+>> +                qemu_fdt_setprop(fdt, parent_node,
+>> +                                 de->d_name, val, len);
+>> +            } else {
+>> +                qemu_fdt_setprop(fdt, "/", de->d_name, val, len);
+>> +            }
+>> +            g_free(val);
+>> +        } else if (S_ISDIR(st.st_mode)) {
+>> +            char *node_name;
+>> +
+>> +            node_name = g_strdup_printf("%s/%s",
+>> +                                        parent_node, de->d_name);
+> 
+> I don't mind whether we use g_strjoin("/",...) or g_strdup_printf("%s/%s", ...)
+> to glue together strings with a '/' between them, but can we not use
+> both methods in the same function, please?
+ok
+> 
+>> +            qemu_fdt_add_subnode(fdt, node_name);
+>> +            g_free(node_name);
+>> +            read_fstree(fdt, tmpnam);
+>> +        }
+>> +
+>> +        g_free(tmpnam);
+>> +    }
+>> +
+>> +    closedir(d);
+>> +}
+>> +
+>> +/* load_device_tree_from_sysfs: extract the dt blob from host sysfs */
+>> +void *load_device_tree_from_sysfs(void)
+>> +{
+>> +    void *host_fdt;
+>> +    int host_fdt_size;
+>> +
+>> +    host_fdt = create_device_tree(&host_fdt_size);
+>> +    read_fstree(host_fdt, SYSFS_DT_BASEDIR);
+>> +    if (fdt_check_header(host_fdt)) {
+>> +        error_setg(&error_fatal,
+>> +                   "%s host device tree extracted into memory is invalid",
+>> +                   __func__);
+> 
+> Should we free the created device tree and return NULL here?
+> 
+>> +    }
+>> +    return host_fdt;
+>> +}
+>> +
+>> +#endif /* CONFIG_LINUX */
+>> +
+>>  static int findnode_nofail(void *fdt, const char *node_path)
+>>  {
+>>      int offset;
+>> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+>> index 359e143..fdf25a4 100644
+>> --- a/include/sysemu/device_tree.h
+>> +++ b/include/sysemu/device_tree.h
+>> @@ -16,6 +16,9 @@
+>>
+>>  void *create_device_tree(int *sizep);
+>>  void *load_device_tree(const char *filename_path, int *sizep);
+>> +#ifdef CONFIG_LINUX
+>> +void *load_device_tree_from_sysfs(void);
+> 
+> Can we have a doc comment for a new global function, please?
+sure
 
-Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target-arm/cpu.c       |  1 +
- target-arm/internals.h |  3 +++
- target-arm/op_helper.c | 35 +++++++++++++++++++++--------------
- 3 files changed, 25 insertions(+), 14 deletions(-)
+Thanks
 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 0e582c4..21ec18e 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -1474,6 +1474,7 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_arch_name = arm_gdb_arch_name;
-     cc->gdb_stop_before_watchpoint = true;
-     cc->debug_excp_handler = arm_debug_excp_handler;
-+    cc->debug_check_watchpoint = arm_debug_check_watchpoint;
- 
-     cc->disas_set_info = arm_disas_set_info;
- 
-diff --git a/target-arm/internals.h b/target-arm/internals.h
-index d226bbe..16d9487 100644
---- a/target-arm/internals.h
-+++ b/target-arm/internals.h
-@@ -409,6 +409,9 @@ void hw_breakpoint_update(ARMCPU *cpu, int n);
-  */
- void hw_breakpoint_update_all(ARMCPU *cpu);
- 
-+/* Callback function for checking if a watchpoint should trigger. */
-+bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp);
-+
- /* Callback function for when a watchpoint or breakpoint triggers. */
- void arm_debug_excp_handler(CPUState *cs);
- 
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index a5ee65f..4adf9cc 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -975,6 +975,16 @@ void HELPER(check_breakpoints)(CPUARMState *env)
-     }
- }
- 
-+bool arm_debug_check_watchpoint(CPUState *cs, CPUWatchpoint *wp)
-+{
-+    /* Called by core code when a CPU watchpoint fires; need to check if this
-+     * is also an architectural watchpoint match.
-+     */
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    return check_watchpoints(cpu);
-+}
-+
- void arm_debug_excp_handler(CPUState *cs)
- {
-     /* Called by core code when a watchpoint or breakpoint fires;
-@@ -986,23 +996,20 @@ void arm_debug_excp_handler(CPUState *cs)
- 
-     if (wp_hit) {
-         if (wp_hit->flags & BP_CPU) {
-+            bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
-+            bool same_el = arm_debug_target_el(env) == arm_current_el(env);
-+
-             cs->watchpoint_hit = NULL;
--            if (check_watchpoints(cpu)) {
--                bool wnr = (wp_hit->flags & BP_WATCHPOINT_HIT_WRITE) != 0;
--                bool same_el = arm_debug_target_el(env) == arm_current_el(env);
--
--                if (extended_addresses_enabled(env)) {
--                    env->exception.fsr = (1 << 9) | 0x22;
--                } else {
--                    env->exception.fsr = 0x2;
--                }
--                env->exception.vaddress = wp_hit->hitaddr;
--                raise_exception(env, EXCP_DATA_ABORT,
--                                syn_watchpoint(same_el, 0, wnr),
--                                arm_debug_target_el(env));
-+
-+            if (extended_addresses_enabled(env)) {
-+                env->exception.fsr = (1 << 9) | 0x22;
-             } else {
--                cpu_resume_from_signal(cs, NULL);
-+                env->exception.fsr = 0x2;
-             }
-+            env->exception.vaddress = wp_hit->hitaddr;
-+            raise_exception(env, EXCP_DATA_ABORT,
-+                    syn_watchpoint(same_el, 0, wnr),
-+                    arm_debug_target_el(env));
-         }
-     } else {
-         uint64_t pc = is_a64(env) ? env->pc : env->regs[15];
--- 
-1.9.1
-
+Eric
+> 
+>> +#endif
+>>
+>>  int qemu_fdt_setprop(void *fdt, const char *node_path,
+>>                       const char *property, const void *val, int size);
+>> --
+>> 1.9.1
+> 
+> thanks
+> -- PMM
+> 

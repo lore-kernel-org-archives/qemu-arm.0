@@ -1,71 +1,45 @@
-Received: by 10.25.159.19 with SMTP id i19csp759970lfe;
-        Tue, 2 Feb 2016 09:01:28 -0800 (PST)
-X-Received: by 10.55.41.91 with SMTP id p88mr35866315qkh.86.1454432488619;
-        Tue, 02 Feb 2016 09:01:28 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp799463lfe;
+        Tue, 2 Feb 2016 10:21:17 -0800 (PST)
+X-Received: by 10.140.223.9 with SMTP id t9mr18215349qhb.65.1454437277524;
+        Tue, 02 Feb 2016 10:21:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w187si1781759qhw.32.2016.02.02.09.01.28
+        by mx.google.com with ESMTPS id p59si2045790qge.124.2016.02.02.10.21.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Feb 2016 09:01:28 -0800 (PST)
+        Tue, 02 Feb 2016 10:21:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:58250 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58907 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aQeKW-0006Qx-6O
-	for alex.bennee@linaro.org; Tue, 02 Feb 2016 12:01:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38691)
+	id 1aQfZk-00049E-Tz
+	for alex.bennee@linaro.org; Tue, 02 Feb 2016 13:21:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aQeKT-0006Mc-QD
-	for qemu-arm@nongnu.org; Tue, 02 Feb 2016 12:01:26 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aQfZO-0003VX-9I
+	for qemu-arm@nongnu.org; Tue, 02 Feb 2016 13:20:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aQeKT-00006D-0L
-	for qemu-arm@nongnu.org; Tue, 02 Feb 2016 12:01:25 -0500
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:35585)
+	(envelope-from <pm215@archaic.org.uk>) id 1aQfZN-0002wR-6I
+	for qemu-arm@nongnu.org; Tue, 02 Feb 2016 13:20:54 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57168)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aQeKR-00005l-QE
-	for qemu-arm@nongnu.org; Tue, 02 Feb 2016 12:01:24 -0500
-Received: by mail-vk0-x229.google.com with SMTP id e6so101473296vkh.2
-	for <qemu-arm@nongnu.org>; Tue, 02 Feb 2016 09:01:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=YXAtobllIv8TudjWS3PDy+TmmdymyaFWWdU3MInX13c=;
-	b=Glth5nczL9/n206akeUfx1MYLTLh0pgNwUu46mNsG6LDzdoS+SnEIL0fMwRkeFhhVd
-	L08oWqXSTfDo/Q1tO4aCaH5ZmJX4ERYYPCD+Cwro8w5JNVNLvT4ThfOBVYPgBSGBjtpp
-	o7JB6UvKDgjn4kJoGF/MSlKYxaP/tg55KkuM0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=YXAtobllIv8TudjWS3PDy+TmmdymyaFWWdU3MInX13c=;
-	b=bnxUwgRJnnd3bq6tze182faEB/gfdk55r35JlvqtDbSEZLOn6Q5X8Buxmx3FTjN8Gw
-	KDNI/fk8cB73uBBJ3/oTr8qglOgHAY31g8jSYY1fl3jfe8NXhVBZGVMMPxs8q1K2971Z
-	znpk3VkqhCrM4jPjPRHHmDtlOkP8+aoOo5G+CS/SDhqfUWnelGU36ZiBhpzO/Vr8W8F0
-	kPa8S1bITIy6d3HUz1om6eRHQlALn62wfSNpIUCPR8yC6b1wLNWosZ79OhpS2uu9NlIC
-	n6EUIDeGYa+OBxFOjcLZptvMszy4FSjwHvGpvTgrHT+XqW3oAM3h2Wd4MP9bEuHHC8Ko
-	XZ0Q==
-X-Gm-Message-State: AG10YOSq3SUuVDdcTSpbo0ZFrEeXUJ892foI6BCKlwT9zww5T2sEh82o3hCaUAwYnDXuQ2PW8oTZmKtm3LAuAgck
-X-Received: by 10.31.180.85 with SMTP id d82mr18534166vkf.83.1454432483306;
-	Tue, 02 Feb 2016 09:01:23 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 2 Feb 2016 09:01:03 -0800 (PST)
-In-Reply-To: <56AA6A8C.6030906@tribudubois.net>
-References: <1453844678-26279-1-git-send-email-jcd@tribudubois.net>
-	<CAFEAcA_xk8ChTA0YppK=mbTZptiL8AGy8RDKQTBS-L0SDaKRXA@mail.gmail.com>
-	<56AA6A8C.6030906@tribudubois.net>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aQfZL-0002tV-5H; Tue, 02 Feb 2016 13:20:51 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aQfZC-0002g6-PY; Tue, 02 Feb 2016 18:20:42 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2016 17:01:03 +0000
-Message-ID: <CAFEAcA-_Bo1UPfjzOZKT6SJ_xb+rMcPPHJ+GAFuDxAObWX-PJQ@mail.gmail.com>
-To: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-devel@nongnu.org
+Date: Tue,  2 Feb 2016 18:20:42 +0000
+Message-Id: <1454437242-10262-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH 0/6] Add i.MX6 (Single/Dual/Quad) support
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: [Qemu-arm] [PATCH] target-arm: Don't report presence of EL2 if it
+	doesn't exist
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,39 +53,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tIY88NR8OGjJ
+X-TUID: wouKw8QCVAot
 
-On 28 January 2016 at 19:22, Jean-Christophe DUBOIS <jcd@tribudubois.net> wrote:
-> Sabrelite uses uart2 for console but on qemu, this is uart1 that is wired to
-> the default stdout. Consequently, I changed stdout-path in "chosen" to
-> uart1.
+We already modify the processor feature bits to not report EL3
+support to the guest if EL3 isn't enabled for the CPU we're emulating.
+Add similar support for not reporting EL2 unless it is enabled.
+This is necessary because real world guest code running at EL3
+(trusted firmware or bootloaders) will query the ID registers to
+determine whether it should start a guest Linux kernel in EL2 or EL3.
 
-This I find a bit awkward: we'd like to get eventually to the point
-where you can run the stock device tree unedited. The other items
-on your list are just "we don't emulate something yet", so the path
-forward is to (eventually) emulate the missing things. But it's not
-clear to me what we need to do to be able to stop editing stdout-path
-in the future.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+When full EL2 arrives and we have the CPU property for it then
+this will expand a bit to look like the 'if (!cpu->has_el3)'
+condition just above it.
 
-Perhaps the answer is just to use QEMU command line arguments to make
-stdout be the uart2 rather than uart1?
+ target-arm/cpu.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-> For now i.MX6 SOC code does not emulate SPI controller. During the boot
-> Linux was getting stuck trying to access a SPI device that is supposed to be
-> there. Therefore I disabled the SPI controller in the device tree.
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 6c34476..0cc075d 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -650,6 +650,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu->id_aa64pfr0 &= ~0xf000;
+     }
+ 
++    if (!arm_feature(env, ARM_FEATURE_EL2)) {
++        /* Disable the hypervisor feature bits in the processor feature
++         * registers if we don't have EL2. These are id_pfr1[15:12] and
++         * id_aa64pfr0_el1[11:8].
++         */
++        cpu->id_aa64pfr0 &= ~0xf00;
++        cpu->id_pfr1 &= ~0xf000;
++    }
++
+     if (!cpu->has_mpu) {
+         unset_feature(env, ARM_FEATURE_MPU);
+     }
+-- 
+1.9.1
 
-This is OK for now, though I guess it means the SPI controller is
-worth emulating to at least some extent.
-
-> The sabrelite is supposed to have a bunch of push buttons (home, power,
-> back, vol up, vol down) wired to various GPIOs. I guess these buttons might
-> have pull up or pull down resistors on the real hardware but obviously on
-> qemu we have no such things. As a results the GPIOs were triggering a lot of
-> interrupts for nothing. So I commented out the GPIO sections were the
-> buttons were defined.
-
-This is OK for now, though it would be nice to wire all the GPIOs to 0 or
-something if that helps avoid the problem without editing the DT.
-
-thanks
---- PMM

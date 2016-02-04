@@ -1,132 +1,317 @@
-Received: by 10.25.159.19 with SMTP id i19csp621613lfe;
-        Thu, 4 Feb 2016 10:51:15 -0800 (PST)
-X-Received: by 10.55.82.2 with SMTP id g2mr11146761qkb.53.1454611875418;
-        Thu, 04 Feb 2016 10:51:15 -0800 (PST)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id v16si11816638qhb.56.2016.02.04.10.51.15;
-        Thu, 04 Feb 2016 10:51:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.159.19 with SMTP id i19csp705490lfe;
+        Thu, 4 Feb 2016 14:03:44 -0800 (PST)
+X-Received: by 10.140.16.225 with SMTP id 88mr12533395qgb.96.1454623424398;
+        Thu, 04 Feb 2016 14:03:44 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id c8si12708472qkb.35.2016.02.04.14.03.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 04 Feb 2016 14:03:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DFC7148535;
-	Thu,  4 Feb 2016 13:45:44 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.201
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=unavailable
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dnhqW-+BqkxV; Thu,  4 Feb 2016 13:45:43 -0500 (EST)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id A44174965E;
-	Thu,  4 Feb 2016 13:45:43 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 025DC48529
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Feb 2016 13:45:42 -0500 (EST)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b3ICkhWNL882 for <kvmarm@lists.cs.columbia.edu>;
- Thu,  4 Feb 2016 13:45:40 -0500 (EST)
-Received: from foss.arm.com (foss.arm.com [217.140.101.70])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9392D419D1
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Feb 2016 13:45:39 -0500 (EST)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4C30E3A1;
- Thu,  4 Feb 2016 10:50:24 -0800 (PST)
-Received: from [10.1.209.129] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
- 4EC273F25F; Thu,  4 Feb 2016 10:51:08 -0800 (PST)
-Subject: Re: MPIDR Aff0 question
-To: Andrew Jones <drjones@redhat.com>, andre.przywara@arm.com
-References: <20160204183801.GF3890@hawk.localdomain>
-From: Marc Zyngier <marc.zyngier@arm.com>
-X-Enigmail-Draft-Status: N1110
-Organization: ARM Ltd
-Message-ID: <56B39D9A.7000008@arm.com>
-Date: Thu, 4 Feb 2016 18:51:06 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Icedove/38.5.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44356 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aRS07-00032I-Pj
+	for alex.bennee@linaro.org; Thu, 04 Feb 2016 17:03:43 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45244)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1aRRqM-0000En-WE
+	for qemu-arm@nongnu.org; Thu, 04 Feb 2016 16:53:42 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1aRRqJ-0005eP-4R
+	for qemu-arm@nongnu.org; Thu, 04 Feb 2016 16:53:38 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58706)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mst@redhat.com>)
+	id 1aRRqI-0005e1-QW; Thu, 04 Feb 2016 16:53:35 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 41122A85;
+	Thu,  4 Feb 2016 21:53:34 +0000 (UTC)
+Received: from redhat.com (vpn1-4-163.ams2.redhat.com [10.36.4.163])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u14LrStv015911; Thu, 4 Feb 2016 16:53:29 -0500
+Date: Thu, 4 Feb 2016 23:53:27 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <1454612376-7072-39-git-send-email-mst@redhat.com>
+References: <1454612376-7072-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20160204183801.GF3890@hawk.localdomain>
-Cc: qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1454612376-7072-1-git-send-email-mst@redhat.com>
+X-Mutt-Fcc: =sent
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Xiao Guangrong <guangrong.xiao@linux.intel.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Aleksei Kovura <alex3kov@zoho.com>,
+	Steven Newbury <steve@snewbury.org.uk>, Michael Tokarev <mjt@tls.msk.ru>,
+	"Richard W . M . Jones" <rjones@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Shannon Zhao <shannon.zhao@linaro.org>, qemu-arm@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Subject: [Qemu-arm] [PULL 38/49] acpi: take oem_id in build_header(),
+	optionally
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: noydD+uik5o3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NruEpyD+G6Pz
 
-Hi Drew,
+From: Laszlo Ersek <lersek@redhat.com>
 
-On 04/02/16 18:38, Andrew Jones wrote:
-> 
-> Hi Marc and Andre,
-> 
-> I completely understand why reset_mpidr() limits Aff0 to 16, thanks
-> to Andre's nice comment about ICC_SGIxR. Now, here's my question;
-> it seems that the Cortex-A{53,57,72} manuals want to further limit
-> Aff0 to 4, going so far as to say bits 7:2 are RES0. I'm looking
-> at userspace dictating the MPIDR for KVM. QEMU tries to model the
-> A57 right now, so to be true to the manual, Aff0 should only address
-> four PEs, but that would generate a higher trap cost for SGI broadcasts
-> when using KVM. Sigh... what to do?
+This patch is the continuation of commit 8870ca0e94f2 ("acpi: support
+specified oem table id for build_header"). It will allow us to control the
+OEM ID field too in the SDT header.
 
-There are two things to consider:
+Cc: "Michael S. Tsirkin" <mst@redhat.com> (supporter:ACPI/SMBIOS)
+Cc: Igor Mammedov <imammedo@redhat.com> (supporter:ACPI/SMBIOS)
+Cc: Xiao Guangrong <guangrong.xiao@linux.intel.com> (maintainer:NVDIMM)
+Cc: Shannon Zhao <zhaoshenglong@huawei.com> (maintainer:ARM ACPI Subsystem)
+Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:X86)
+Cc: Richard W.M. Jones <rjones@redhat.com>
+Cc: Aleksei Kovura <alex3kov@zoho.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Steven Newbury <steve@snewbury.org.uk>
+RHBZ: https://bugzilla.redhat.com/show_bug.cgi?id=1248758
+LP: https://bugs.launchpad.net/qemu/+bug/1533848
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+---
+ include/hw/acpi/aml-build.h |  2 +-
+ hw/acpi/aml-build.c         | 11 ++++++++---
+ hw/acpi/nvdimm.c            |  4 ++--
+ hw/arm/virt-acpi-build.c    | 12 ++++++------
+ hw/i386/acpi-build.c        | 18 +++++++++---------
+ 5 files changed, 26 insertions(+), 21 deletions(-)
 
-- The GICv3 architecture is perfectly happy to address 16 CPUs at Aff0.
-- ARM cores are designed to be grouped in clusters of at most 4, but
-other implementations may have very different layouts.
-
-If you want to model something matches reality, then you have to follow
-what Cortex-A cores do, assuming you are exposing Cortex-A cores. But
-absolutely nothing forces you to (after all, we're not exposing the
-intricacies of L2 caches, which is the actual reason why we have
-clusters of 4 cores).
-
-> Additionally I'm looking at adding support to represent more complex
-> topologies in the guest MPIDR (sockets/cores/threads). I see Linux
-> currently expects Aff2:socket, Aff1:core, Aff0:thread when threads
-> are in use, and Aff1:socket, Aff0:core, when they're not. Assuming
-> there are never more than 4 threads to a core makes the first
-> expectation fine, but the second one would easily blow the 2 Aff0
-> bits alloted, and maybe even a 4 Aff0 bit allotment.
-> 
-> So my current thinking is that always using Aff2:socket, Aff1:cluster,
-> Aff0:core (no threads allowed) would be nice for KVM, and allowing up
-> to 16 cores to be addressed in Aff0. As it seems there's no standard
-> for MPIDR, then that could be the KVM guest "standard".
-> 
-> TCG note: I suppose threads could be allowed there, using
-> Aff2:socket, Aff1:core, Aff0:thread (no more than 4 threads)
-
-I'm not sure why you'd want to map a given topology to a guest (other
-than to give the illusion of a particular system). The affinity register
-does not define any of this (as you noticed). And what would Aff3 be in
-your design? Shelve? Rack? ;-)
-
-What would the benefit of defining a "socket"?
-
-Thanks,
-
-	M.
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 6d6f705..c460bdd 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -357,7 +357,7 @@ Aml *aml_sizeof(Aml *arg);
+ void
+ build_header(GArray *linker, GArray *table_data,
+              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+-             const char *oem_table_id);
++             const char *oem_id, const char *oem_table_id);
+ void *acpi_data_push(GArray *table_data, unsigned size);
+ unsigned acpi_data_len(GArray *table);
+ void acpi_add_table(GArray *table_offsets, GArray *table_data);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 21d2ea0..e4b6c0c 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1426,12 +1426,17 @@ Aml *aml_alias(const char *source_object, const char *alias_object)
+ void
+ build_header(GArray *linker, GArray *table_data,
+              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+-             const char *oem_table_id)
++             const char *oem_id, const char *oem_table_id)
+ {
+     memcpy(&h->signature, sig, 4);
+     h->length = cpu_to_le32(len);
+     h->revision = rev;
+-    memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);
++
++    if (oem_id) {
++        strncpy((char *)h->oem_id, oem_id, sizeof h->oem_id);
++    } else {
++        memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);
++    }
+ 
+     if (oem_table_id) {
+         strncpy((char *)h->oem_table_id, oem_table_id, sizeof(h->oem_table_id));
+@@ -1506,5 +1511,5 @@ build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets)
+                                        sizeof(uint32_t));
+     }
+     build_header(linker, table_data,
+-                 (void *)rsdt, "RSDT", rsdt_len, 1, NULL);
++                 (void *)rsdt, "RSDT", rsdt_len, 1, NULL, NULL);
+ }
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index 7ee7e16..49ee68e 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -366,7 +366,7 @@ static void nvdimm_build_nfit(GSList *device_list, GArray *table_offsets,
+ 
+     build_header(linker, table_data,
+                  (void *)(table_data->data + header), "NFIT",
+-                 sizeof(NvdimmNfitHeader) + structures->len, 1, NULL);
++                 sizeof(NvdimmNfitHeader) + structures->len, 1, NULL, NULL);
+     g_array_free(structures, true);
+ }
+ 
+@@ -471,7 +471,7 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
+     g_array_append_vals(table_data, ssdt->buf->data, ssdt->buf->len);
+     build_header(linker, table_data,
+         (void *)(table_data->data + table_data->len - ssdt->buf->len),
+-        "SSDT", ssdt->buf->len, 1, "NVDIMM");
++        "SSDT", ssdt->buf->len, 1, NULL, "NVDIMM");
+     free_aml_allocator();
+ }
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 87fbe7c..8017b12 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -408,7 +408,7 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+     spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
+ 
+     build_header(linker, table_data, (void *)spcr, "SPCR", sizeof(*spcr), 2,
+-                 NULL);
++                 NULL, NULL);
+ }
+ 
+ static void
+@@ -427,7 +427,7 @@ build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+     mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
+                                           / PCIE_MMCFG_SIZE_MIN) - 1;
+ 
+-    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL);
++    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+ }
+ 
+ /* GTDT */
+@@ -453,7 +453,7 @@ build_gtdt(GArray *table_data, GArray *linker)
+ 
+     build_header(linker, table_data,
+                  (void *)(table_data->data + gtdt_start), "GTDT",
+-                 table_data->len - gtdt_start, 2, NULL);
++                 table_data->len - gtdt_start, 2, NULL, NULL);
+ }
+ 
+ /* MADT */
+@@ -515,7 +515,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
+ 
+     build_header(linker, table_data,
+                  (void *)(table_data->data + madt_start), "APIC",
+-                 table_data->len - madt_start, 3, NULL);
++                 table_data->len - madt_start, 3, NULL, NULL);
+ }
+ 
+ /* FADT */
+@@ -540,7 +540,7 @@ build_fadt(GArray *table_data, GArray *linker, unsigned dsdt)
+                                    sizeof fadt->dsdt);
+ 
+     build_header(linker, table_data,
+-                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL);
++                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
+ }
+ 
+ /* DSDT */
+@@ -579,7 +579,7 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+     g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+     build_header(linker, table_data,
+         (void *)(table_data->data + table_data->len - dsdt->buf->len),
+-        "DSDT", dsdt->buf->len, 2, NULL);
++        "DSDT", dsdt->buf->len, 2, NULL, NULL);
+     free_aml_allocator();
+ }
+ 
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 35582a7..061a9cb 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -357,7 +357,7 @@ build_fadt(GArray *table_data, GArray *linker, AcpiPmInfo *pm,
+     fadt_setup(fadt, pm);
+ 
+     build_header(linker, table_data,
+-                 (void *)fadt, "FACP", sizeof(*fadt), 1, NULL);
++                 (void *)fadt, "FACP", sizeof(*fadt), 1, NULL, NULL);
+ }
+ 
+ static void
+@@ -427,7 +427,7 @@ build_madt(GArray *table_data, GArray *linker, AcpiCpuInfo *cpu)
+ 
+     build_header(linker, table_data,
+                  (void *)(table_data->data + madt_start), "APIC",
+-                 table_data->len - madt_start, 1, NULL);
++                 table_data->len - madt_start, 1, NULL, NULL);
+ }
+ 
+ /* Assign BSEL property to all buses.  In the future, this can be changed
+@@ -2286,7 +2286,7 @@ build_dsdt(GArray *table_data, GArray *linker,
+     g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+     build_header(linker, table_data,
+         (void *)(table_data->data + table_data->len - dsdt->buf->len),
+-        "DSDT", dsdt->buf->len, 1, NULL);
++        "DSDT", dsdt->buf->len, 1, NULL, NULL);
+     free_aml_allocator();
+ }
+ 
+@@ -2302,7 +2302,7 @@ build_hpet(GArray *table_data, GArray *linker)
+     hpet->timer_block_id = cpu_to_le32(0x8086a201);
+     hpet->addr.address = cpu_to_le64(HPET_BASE);
+     build_header(linker, table_data,
+-                 (void *)hpet, "HPET", sizeof(*hpet), 1, NULL);
++                 (void *)hpet, "HPET", sizeof(*hpet), 1, NULL, NULL);
+ }
+ 
+ static void
+@@ -2325,7 +2325,7 @@ build_tpm_tcpa(GArray *table_data, GArray *linker, GArray *tcpalog)
+                                    sizeof(tcpa->log_area_start_address));
+ 
+     build_header(linker, table_data,
+-                 (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL);
++                 (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
+ 
+     acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+ }
+@@ -2342,7 +2342,7 @@ build_tpm2(GArray *table_data, GArray *linker)
+     tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+ 
+     build_header(linker, table_data,
+-                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL);
++                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
+ }
+ 
+ typedef enum {
+@@ -2456,7 +2456,7 @@ build_srat(GArray *table_data, GArray *linker)
+     build_header(linker, table_data,
+                  (void *)(table_data->data + srat_start),
+                  "SRAT",
+-                 table_data->len - srat_start, 1, NULL);
++                 table_data->len - srat_start, 1, NULL, NULL);
+ }
+ 
+ static void
+@@ -2485,7 +2485,7 @@ build_mcfg_q35(GArray *table_data, GArray *linker, AcpiMcfgInfo *info)
+     } else {
+         sig = "MCFG";
+     }
+-    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL);
++    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
+ }
+ 
+ static void
+@@ -2509,7 +2509,7 @@ build_dmar_q35(GArray *table_data, GArray *linker)
+     drhd->address = cpu_to_le64(Q35_HOST_BRIDGE_IOMMU_ADDR);
+ 
+     build_header(linker, table_data, (void *)(table_data->data + dmar_start),
+-                 "DMAR", table_data->len - dmar_start, 1, NULL);
++                 "DMAR", table_data->len - dmar_start, 1, NULL, NULL);
+ }
+ 
+ static GArray *
 -- 
-Jazz is not dead. It just smells funny...
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+MST
+

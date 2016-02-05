@@ -1,107 +1,99 @@
-Received: by 10.25.159.19 with SMTP id i19csp978974lfe;
-        Fri, 5 Feb 2016 03:10:45 -0800 (PST)
-X-Received: by 10.140.175.134 with SMTP id v128mr16307757qhv.61.1454670645152;
-        Fri, 05 Feb 2016 03:10:45 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c8si15355633qkb.35.2016.02.05.03.10.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 Feb 2016 03:10:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:47583 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aReHk-0007jp-CH
-	for alex.bennee@linaro.org; Fri, 05 Feb 2016 06:10:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46997)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aReGh-0006Z6-31
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 06:09:40 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aReGd-0005y3-4F
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 06:09:39 -0500
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:34261)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aReGc-0005xv-Uj
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 06:09:35 -0500
-Received: by mail-vk0-x22e.google.com with SMTP id e185so54298147vkb.1
-	for <qemu-arm@nongnu.org>; Fri, 05 Feb 2016 03:09:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=NnJbrkB1gAbPofknPiB6Rf2uRv1MrrX7C7YArQkalWU=;
-	b=aOvE4dSf1bvTLgHikeJf4ecGQ877/e+kz6hrqXWd9dWQFqc4CY1zZ4sjupXD3xJT9E
-	8yYZwaqN4QFrd8s7b1WCnlNlj1Rt6YKpp8ieWOBo98Twb56Mn6wicKUQvCZYvZHlUrcM
-	JvWtL0or8W4EBRN9HL9/14cLhEMpgHuC6qpzQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=NnJbrkB1gAbPofknPiB6Rf2uRv1MrrX7C7YArQkalWU=;
-	b=b6YojhWCZwmpND/XrdqHBwR3wwmkO6Z82Wq7XxzOnOlGKOZGeh8Sgmq/f4sIgErSIO
-	2RuRP8o+YNs57/tRS1mn4sQS7bZDophql01f9W8otHI1G4mmSUTdUxHKxAJZlXqJUDlU
-	gxxJRZ98uJ9vtLnPEx0srJKyKrxf/nZgy46zaeHHwgEQfWM7XpTrc8sy+6bY9aHQh9Jl
-	6O35zbXP5riEjE28LDOvEXm/w3FIkzgJYfdddVguIMOqnvMw3b6+6C8jEGw8uDc/Oblq
-	LVj7MW1eNfV41gaWGyCYLQxUJlcGkEEjqGHM/2/EzzgYm6ugnCFA/lvz/hQhVjx8kTkw
-	VWfA==
-X-Gm-Message-State: AG10YOR0O/4K/mWYOi9FfZ9/CDW5p27jZg/cStPa0dmQSWvRqtG0neTNH1Dydm2Q4b+eaAVBUF4gqZ9UxxMELlgU
-X-Received: by 10.31.180.85 with SMTP id d82mr8011157vkf.83.1454670574434;
-	Fri, 05 Feb 2016 03:09:34 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id ka4sm15439105wjc.47.2016.02.05.03.13.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Feb 2016 03:13:42 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id D64DC3E025C;
+	Fri,  5 Feb 2016 11:13:41 +0000 (GMT)
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org> <1454506721-11843-3-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.17; emacs 25.0.90.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-devel] [PATCH 2/7] target-arm: Implement MDCR_EL3 and SDCR
+In-reply-to: <1454506721-11843-3-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 05 Feb 2016 11:13:41 +0000
+Message-ID: <87powbo1ei.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Fri, 5 Feb 2016 03:09:15 -0800 (PST)
-In-Reply-To: <CAFEAcA9P7OBcL4sAnLLoppUo8q40yEeyAt_5M_MYnNgJAxB7RA@mail.gmail.com>
-References: <CAHyh4xiVysLUreprtNnKMOLf0VUH2bTsF4thPwbkeFOfpDXFCw@mail.gmail.com>
-	<CAFEAcA9P7OBcL4sAnLLoppUo8q40yEeyAt_5M_MYnNgJAxB7RA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Feb 2016 11:09:15 +0000
-Message-ID: <CAFEAcA_zOvab002hN6OCUQgg_W2v-XzLdKipQO72nZRwBuTZGg@mail.gmail.com>
-To: Jintack Lim <jintack@cs.columbia.edu>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christofferdall@gmail.com>
-Subject: Re: [Qemu-arm] Adding sp804 timer to the virtboard
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gKNInXIfyOoS
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: zqpK7ll1uzGy
 
-On 5 February 2016 at 10:52, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 3 February 2016 at 20:57, Jintack Lim <jintack@cs.columbia.edu> wrote:
->> About the clock property, should I also add the original clock providers
->> such as sp810 and in turn 32k, 1M and smb clocks?
->> Or canI just use apb-pclk, which is an existing clock provider in the
->> virtboard, for all three clocks?
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> Implement the MDCR_EL3 register (which is SDCR for AArch32).
+> For the moment we implement it as reads-as-written.
 >
-> For a virtual machine the clocks are all irrelevant anyway, I think
-> (we don't actually have any kind of 24MHz clock) -- we just provide
-> them because the kernel insists that the dtb says something about
-> clocks. So I would start by just borrowing the apb-pclk and seeing
-> if that works.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target-arm/cpu.h    |  1 +
+>  target-arm/helper.c | 24 ++++++++++++++++++++++++
+>  2 files changed, 25 insertions(+)
+>
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 52284e9..cf2df50 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -382,6 +382,7 @@ typedef struct CPUARMState {
+>          uint64_t mdscr_el1;
+>          uint64_t oslsr_el1; /* OS Lock Status */
+>          uint64_t mdcr_el2;
+> +        uint64_t mdcr_el3;
+>          /* If the counter is enabled, this stores the last time the counter
+>           * was reset. Otherwise it stores the counter value
+>           */
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index b631b83..8b96b80 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -364,6 +364,23 @@ static CPAccessResult access_el3_aa32ns_aa64any(CPUARMState *env,
+>      return CP_ACCESS_OK;
+>  }
+>
+> +/* Some secure-only AArch32 registers trap to EL3 if used from
+> + * Secure EL1 (but are just ordinary UNDEF in other non-EL3 contexts).
+> + * We assume that the .access field is set to PL1_RW.
+> + */
+> +static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+> +                                            const ARMCPRegInfo *ri)
+> +{
 
-Having said that I looked at the code a bit more closely and I think
-it's not quite right. By default the sp804 device will have a 1MHz
-clock. So you should probably arrange to tell the kernel that via
-the device tree, or it will think the clock is running at a different
-speed from what it really is. (Or you could set the freq0 and freq1
-qdev properties on the device to make it clock at the rate your dt
-says it clocks at, but 24MHz would probably mean a lot of overhead
-with timer firing.)
+I wonder if we should assert the fact we are in AArch32 here in case the
+wrong access function gets added to a AArch64 register?
 
-thanks
--- PMM
+> +    if (arm_current_el(env) == 3) {
+> +        return CP_ACCESS_OK;
+> +    }
+> +    if (arm_is_secure_below_el3(env)) {
+> +        return CP_ACCESS_TRAP_EL3;
+> +    }
+> +    /* This will be EL1 NS and EL2 NS, which just UNDEF */
+> +    return CP_ACCESS_TRAP_UNCATEGORIZED;
+> +}
+> +
+>  static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>  {
+>      ARMCPU *cpu = arm_env_get_cpu(env);
+> @@ -3532,6 +3549,13 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+>        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
+>        .access = PL3_RW, .fieldoffset = offsetoflow32(CPUARMState, cp15.scr_el3),
+>        .writefn = scr_write },
+> +    { .name = "MDCR_EL3", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 3, .opc2 = 1,
+> +      .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el3) },
+> +    { .name = "SDCR", .type = ARM_CP_ALIAS,
+> +      .cp = 15, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 1,
+> +      .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
+> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
+
+Does anything ensure the fields are reset to 0 on a warm reset?
+
+>      { .name = "SDER32_EL3", .state = ARM_CP_STATE_AA64,
+>        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 1,
+>        .access = PL3_RW, .resetvalue = 0,
+
+
+--
+Alex Bennée

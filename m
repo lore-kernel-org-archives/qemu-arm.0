@@ -1,83 +1,90 @@
-Received: by 10.25.159.19 with SMTP id i19csp1079693lfe;
-        Fri, 5 Feb 2016 06:29:41 -0800 (PST)
-X-Received: by 10.31.141.2 with SMTP id p2mr9801765vkd.37.1454682581335;
-        Fri, 05 Feb 2016 06:29:41 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x231.google.com (mail-vk0-x231.google.com. [2607:f8b0:400c:c05::231])
-        by mx.google.com with ESMTPS id 69si14689279vkf.196.2016.02.05.06.29.41
+Received: by 10.25.159.19 with SMTP id i19csp1083918lfe;
+        Fri, 5 Feb 2016 06:38:02 -0800 (PST)
+X-Received: by 10.140.150.66 with SMTP id 63mr17435415qhw.91.1454683081863;
+        Fri, 05 Feb 2016 06:38:01 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w198si16082664qkw.58.2016.02.05.06.38.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Feb 2016 06:29:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::231 as permitted sender) client-ip=2607:f8b0:400c:c05::231;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 05 Feb 2016 06:38:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::231 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dkim=pass header.i=@linaro.org
-Received: by mail-vk0-x231.google.com with SMTP id e6so57223423vkh.2
-        for <alex.bennee@linaro.org>; Fri, 05 Feb 2016 06:29:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type:content-transfer-encoding;
-        bh=UQiDHPUDJhVwpWzH9m56xAolpjiotuTai/6WBv8oiys=;
-        b=Pp4sRRff6rp1142sxt9MEOaHKl/F4MMkUjHyz7QM8oix4iEBfZUlrKf9tObN9D1MPl
-         PMLb9seoNKnftvaymAB8bNoGruo2HgDGsZDPpsTEBMgFAUSEzhY2pVBFJt9kQL4gc4Ww
-         hOSAZDDIRcYq5piBrIzARXygatGg2mUmKFqI4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-type:content-transfer-encoding;
-        bh=UQiDHPUDJhVwpWzH9m56xAolpjiotuTai/6WBv8oiys=;
-        b=h/mhJI+wLAd90VDqQfQBZLW8lhiJmp118KdrgHNz0PtVSEvCBF5rITfX6FqZWzFv1R
-         M+cZKnaW4FzosSqyre3qQbEQV1ItUCadf0MzIUeyJb3toYXWR1u/IM4jUC1dlT+M/gTi
-         AIcxsh10cTWmq1ZVM2tRN+oIz6uKIMZb7TSTWCZu4eiKO1f5bxpyccxockh3P1RLPnFc
-         wfqANl7B1KPMJkHXXqQOXvbZbECBGFwndo996lkJ4gpQd100KrVIdFnZ2wGA3uwtoGwM
-         QIaoCunhBHapPyafYL0L/0UjzPqmibmqPlBVwwlI2US8JRShiOlQu8FkHz8AizvnGlTV
-         2zQg==
-X-Gm-Message-State: AG10YORs4qWE5FP+7cm2TQfkpRgA9MKITltcMsqT2jZhe2coTOcNgtZzBnKWtf6sXG+ROH3ZbmuZ6XOf6xA4G5ak1bo=
-X-Received: by 10.31.52.147 with SMTP id b141mr9898338vka.82.1454682580976;
- Fri, 05 Feb 2016 06:29:40 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Fri, 5 Feb 2016 06:29:21 -0800 (PST)
-In-Reply-To: <87io23nsqe.fsf@linaro.org>
-References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org>
- <1454506721-11843-6-git-send-email-peter.maydell@linaro.org> <87io23nsqe.fsf@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48680 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aRhWL-0002CA-AQ
+	for alex.bennee@linaro.org; Fri, 05 Feb 2016 09:38:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40268)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1aRhWI-00027x-Fv
+	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 09:37:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1aRhWH-00066K-JC
+	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 09:37:58 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57194)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aRhWF-00062e-Nr; Fri, 05 Feb 2016 09:37:55 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aRhW7-0004Ad-Mz; Fri, 05 Feb 2016 14:37:47 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Feb 2016 14:29:21 +0000
-Message-ID: <CAFEAcA_RJs_DaBa2YqP3z+-ykMntPULEWAYO8LnQz8Qzs+dyXA@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 5/7] target-arm: Add isread parameter to CPAccessFns
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Patch Tracking <patches@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: gsZhiSW5h+hs
+To: qemu-devel@nongnu.org
+Date: Fri,  5 Feb 2016 14:37:44 +0000
+Message-Id: <1454683067-16001-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::1
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: [Qemu-arm] [PATCH 0/3] target-arm: Fix IL in syndromes for FP and
+	copro traps
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vXDABliEPk8G
 
-On 5 February 2016 at 14:20, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> -typedef CPAccessResult CPAccessFn(CPUARMState *env, const ARMCPRegInfo =
-*opaque);
->> +typedef CPAccessResult CPAccessFn(CPUARMState *env,
->> +                                  const ARMCPRegInfo *opaque,
->> +                                  bool isread);
->
-> I guess my only comment here is we've extended the call for every access
-> check with another parameter (and associated TCG activity) for something
-> only one handler currently cares about.
->
-> Is there an argument for an rwaccessfn() that we use for just those
-> registers that care about the detail? I know system registers are hardly
-> a fast path priority but I'm concerned about knock on effects on
-> performance. Have you done any measurements?
+This series corrects a bug I noticed while reading the code.
 
-I haven't measured, no, but since there are only 3 arguments the
-third argument is going to be in a register on any host architecture
-we care about, which means the overhead is just going to be a single
-"load constant 0 or 1 into register before the call". I think that's
-going to be lost in the noise compared to actually having to make
-the function call at all, the work the function call does, and then
-the second function call later to do the read or write.
+In syndrome register values, the IL bit indicates the instruction
+length, and is 1 for 4-byte instructions and 0 for 2-byte
+instructions.  All A64 and A32 instructions are 4-byte, but Thumb
+instructions may be either 2 or 4 bytes long.  Unfortunately we named
+the parameter to the syn_* functions for constructing syndromes
+"is_thumb", which falsely implies that it should be set for all Thumb
+instructions, rather than only the 16-bit ones.
 
-thanks
--- PMM
+Fix the parameter names to a less confusing "is_16bit", and
+correct the places where we should be passing in 'false' rather
+than 's->thumb' for syndrome construction, which are the
+coprocessor, VFP and Neon instruction traps (all these are always
+32-bit for Thumb).
+
+The calls to syn_aa32_svc() and syn_aa32_bkpt() correctly still
+use s->thumb, because for SVC and BKPT the Thumb encoding is 16
+bits but the ARM encoding is 32 bits.
+
+
+Peter Maydell (3):
+  target-arm: Correct misleading 'is_thumb' syn_* parameter names
+  target-arm: Fix IL bit reported for Thumb coprocessor traps
+  target-arm: Fix IL bit reported for Thumb VFP and Neon traps
+
+ target-arm/internals.h | 28 ++++++++++++++--------------
+ target-arm/translate.c | 14 +++++++-------
+ 2 files changed, 21 insertions(+), 21 deletions(-)
+
+-- 
+1.9.1
+

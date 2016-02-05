@@ -1,325 +1,50 @@
-Received: by 10.25.159.19 with SMTP id i19csp714475lfe;
-        Thu, 4 Feb 2016 14:25:37 -0800 (PST)
-X-Received: by 10.140.93.65 with SMTP id c59mr3396044qge.101.1454624737490;
-        Thu, 04 Feb 2016 14:25:37 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u21si1649588qki.75.2016.02.04.14.25.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 Feb 2016 14:25:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44570 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aRSLH-0001B0-Qp
-	for alex.bennee@linaro.org; Thu, 04 Feb 2016 17:25:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52644)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aRSLD-00019t-Hs
-	for qemu-arm@nongnu.org; Thu, 04 Feb 2016 17:25:33 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aRSL9-0004jH-Ni
-	for qemu-arm@nongnu.org; Thu, 04 Feb 2016 17:25:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44382)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1aRSL9-0004jB-Dh; Thu, 04 Feb 2016 17:25:27 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id C73603CA161;
-	Thu,  4 Feb 2016 22:25:25 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-145.phx2.redhat.com
-	[10.3.113.145])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u14MPLTM016178; Thu, 4 Feb 2016 17:25:22 -0500
-To: "Michael S. Tsirkin" <mst@redhat.com>
-References: <1454612376-7072-1-git-send-email-mst@redhat.com>
-	<1454612376-7072-39-git-send-email-mst@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56B3CFD1.9020208@redhat.com>
-Date: Thu, 4 Feb 2016 23:25:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id gb9sm15080579wjb.26.2016.02.05.01.52.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Feb 2016 01:52:17 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id CB87C3E025C;
+	Fri,  5 Feb 2016 09:52:16 +0000 (GMT)
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org> <1454506721-11843-2-git-send-email-peter.maydell@linaro.org>
+User-agent: mu4e 0.9.17; emacs 25.0.90.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 1/7] target-arm: Fix typo in comment in arm_is_secure_below_el3()
+In-reply-to: <1454506721-11843-2-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 05 Feb 2016 09:52:16 +0000
+Message-ID: <87r3gro567.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1454612376-7072-39-git-send-email-mst@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Xiao Guangrong <guangrong.xiao@linux.intel.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Aleksei Kovura <alex3kov@zoho.com>,
-	Steven Newbury <steve@snewbury.org.uk>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
-	"Richard W . M . Jones" <rjones@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Shannon Zhao <shannon.zhao@linaro.org>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [PULL 38/49] acpi: take oem_id in build_header(),
-	optionally
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NvG0KKGI+his
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: KLheJ0Hbsg92
 
-Thank you for picking up my patches, and for rebasing them to the SSDT
-removal (Igor's "[PULL 02/49] pc: acpi: merge SSDT into DSDT").
 
-Laszlo
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-On 02/04/16 22:53, Michael S. Tsirkin wrote:
-> From: Laszlo Ersek <lersek@redhat.com>
-> 
-> This patch is the continuation of commit 8870ca0e94f2 ("acpi: support
-> specified oem table id for build_header"). It will allow us to control the
-> OEM ID field too in the SDT header.
-> 
-> Cc: "Michael S. Tsirkin" <mst@redhat.com> (supporter:ACPI/SMBIOS)
-> Cc: Igor Mammedov <imammedo@redhat.com> (supporter:ACPI/SMBIOS)
-> Cc: Xiao Guangrong <guangrong.xiao@linux.intel.com> (maintainer:NVDIMM)
-> Cc: Shannon Zhao <zhaoshenglong@huawei.com> (maintainer:ARM ACPI Subsystem)
-> Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:X86)
-> Cc: Richard W.M. Jones <rjones@redhat.com>
-> Cc: Aleksei Kovura <alex3kov@zoho.com>
-> Cc: Michael Tokarev <mjt@tls.msk.ru>
-> Cc: Steven Newbury <steve@snewbury.org.uk>
-> RHBZ: https://bugzilla.redhat.com/show_bug.cgi?id=1248758
-> LP: https://bugs.launchpad.net/qemu/+bug/1533848
-> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+> Fix a typo where "EL2" was written but "EL3" intended.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/hw/acpi/aml-build.h |  2 +-
->  hw/acpi/aml-build.c         | 11 ++++++++---
->  hw/acpi/nvdimm.c            |  4 ++--
->  hw/arm/virt-acpi-build.c    | 12 ++++++------
->  hw/i386/acpi-build.c        | 18 +++++++++---------
->  5 files changed, 26 insertions(+), 21 deletions(-)
-> 
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index 6d6f705..c460bdd 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -357,7 +357,7 @@ Aml *aml_sizeof(Aml *arg);
->  void
->  build_header(GArray *linker, GArray *table_data,
->               AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
-> -             const char *oem_table_id);
-> +             const char *oem_id, const char *oem_table_id);
->  void *acpi_data_push(GArray *table_data, unsigned size);
->  unsigned acpi_data_len(GArray *table);
->  void acpi_add_table(GArray *table_offsets, GArray *table_data);
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 21d2ea0..e4b6c0c 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -1426,12 +1426,17 @@ Aml *aml_alias(const char *source_object, const char *alias_object)
->  void
->  build_header(GArray *linker, GArray *table_data,
->               AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
-> -             const char *oem_table_id)
-> +             const char *oem_id, const char *oem_table_id)
->  {
->      memcpy(&h->signature, sig, 4);
->      h->length = cpu_to_le32(len);
->      h->revision = rev;
-> -    memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);
-> +
-> +    if (oem_id) {
-> +        strncpy((char *)h->oem_id, oem_id, sizeof h->oem_id);
-> +    } else {
-> +        memcpy(h->oem_id, ACPI_BUILD_APPNAME6, 6);
-> +    }
->  
->      if (oem_table_id) {
->          strncpy((char *)h->oem_table_id, oem_table_id, sizeof(h->oem_table_id));
-> @@ -1506,5 +1511,5 @@ build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets)
->                                         sizeof(uint32_t));
->      }
->      build_header(linker, table_data,
-> -                 (void *)rsdt, "RSDT", rsdt_len, 1, NULL);
-> +                 (void *)rsdt, "RSDT", rsdt_len, 1, NULL, NULL);
->  }
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index 7ee7e16..49ee68e 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -366,7 +366,7 @@ static void nvdimm_build_nfit(GSList *device_list, GArray *table_offsets,
->  
->      build_header(linker, table_data,
->                   (void *)(table_data->data + header), "NFIT",
-> -                 sizeof(NvdimmNfitHeader) + structures->len, 1, NULL);
-> +                 sizeof(NvdimmNfitHeader) + structures->len, 1, NULL, NULL);
->      g_array_free(structures, true);
->  }
->  
-> @@ -471,7 +471,7 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
->      g_array_append_vals(table_data, ssdt->buf->data, ssdt->buf->len);
->      build_header(linker, table_data,
->          (void *)(table_data->data + table_data->len - ssdt->buf->len),
-> -        "SSDT", ssdt->buf->len, 1, "NVDIMM");
-> +        "SSDT", ssdt->buf->len, 1, NULL, "NVDIMM");
->      free_aml_allocator();
->  }
->  
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 87fbe7c..8017b12 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -408,7 +408,7 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
->      spcr->pci_vendor_id = 0xffff;  /* PCI Vendor ID: not a PCI device */
->  
->      build_header(linker, table_data, (void *)spcr, "SPCR", sizeof(*spcr), 2,
-> -                 NULL);
-> +                 NULL, NULL);
->  }
->  
->  static void
-> @@ -427,7 +427,7 @@ build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
->      mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
->                                            / PCIE_MMCFG_SIZE_MIN) - 1;
->  
-> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL);
-> +    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
->  }
->  
->  /* GTDT */
-> @@ -453,7 +453,7 @@ build_gtdt(GArray *table_data, GArray *linker)
->  
->      build_header(linker, table_data,
->                   (void *)(table_data->data + gtdt_start), "GTDT",
-> -                 table_data->len - gtdt_start, 2, NULL);
-> +                 table_data->len - gtdt_start, 2, NULL, NULL);
->  }
->  
->  /* MADT */
-> @@ -515,7 +515,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info,
->  
->      build_header(linker, table_data,
->                   (void *)(table_data->data + madt_start), "APIC",
-> -                 table_data->len - madt_start, 3, NULL);
-> +                 table_data->len - madt_start, 3, NULL, NULL);
->  }
->  
->  /* FADT */
-> @@ -540,7 +540,7 @@ build_fadt(GArray *table_data, GArray *linker, unsigned dsdt)
->                                     sizeof fadt->dsdt);
->  
->      build_header(linker, table_data,
-> -                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL);
-> +                 (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
->  }
->  
->  /* DSDT */
-> @@ -579,7 +579,7 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
->      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
->      build_header(linker, table_data,
->          (void *)(table_data->data + table_data->len - dsdt->buf->len),
-> -        "DSDT", dsdt->buf->len, 2, NULL);
-> +        "DSDT", dsdt->buf->len, 2, NULL, NULL);
->      free_aml_allocator();
->  }
->  
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 35582a7..061a9cb 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -357,7 +357,7 @@ build_fadt(GArray *table_data, GArray *linker, AcpiPmInfo *pm,
->      fadt_setup(fadt, pm);
->  
->      build_header(linker, table_data,
-> -                 (void *)fadt, "FACP", sizeof(*fadt), 1, NULL);
-> +                 (void *)fadt, "FACP", sizeof(*fadt), 1, NULL, NULL);
->  }
->  
->  static void
-> @@ -427,7 +427,7 @@ build_madt(GArray *table_data, GArray *linker, AcpiCpuInfo *cpu)
->  
->      build_header(linker, table_data,
->                   (void *)(table_data->data + madt_start), "APIC",
-> -                 table_data->len - madt_start, 1, NULL);
-> +                 table_data->len - madt_start, 1, NULL, NULL);
->  }
->  
->  /* Assign BSEL property to all buses.  In the future, this can be changed
-> @@ -2286,7 +2286,7 @@ build_dsdt(GArray *table_data, GArray *linker,
->      g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
->      build_header(linker, table_data,
->          (void *)(table_data->data + table_data->len - dsdt->buf->len),
-> -        "DSDT", dsdt->buf->len, 1, NULL);
-> +        "DSDT", dsdt->buf->len, 1, NULL, NULL);
->      free_aml_allocator();
->  }
->  
-> @@ -2302,7 +2302,7 @@ build_hpet(GArray *table_data, GArray *linker)
->      hpet->timer_block_id = cpu_to_le32(0x8086a201);
->      hpet->addr.address = cpu_to_le64(HPET_BASE);
->      build_header(linker, table_data,
-> -                 (void *)hpet, "HPET", sizeof(*hpet), 1, NULL);
-> +                 (void *)hpet, "HPET", sizeof(*hpet), 1, NULL, NULL);
->  }
->  
->  static void
-> @@ -2325,7 +2325,7 @@ build_tpm_tcpa(GArray *table_data, GArray *linker, GArray *tcpalog)
->                                     sizeof(tcpa->log_area_start_address));
->  
->      build_header(linker, table_data,
-> -                 (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL);
-> +                 (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
->  
->      acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
->  }
-> @@ -2342,7 +2342,7 @@ build_tpm2(GArray *table_data, GArray *linker)
->      tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
->  
->      build_header(linker, table_data,
-> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL);
-> +                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
->  }
->  
->  typedef enum {
-> @@ -2456,7 +2456,7 @@ build_srat(GArray *table_data, GArray *linker)
->      build_header(linker, table_data,
->                   (void *)(table_data->data + srat_start),
->                   "SRAT",
-> -                 table_data->len - srat_start, 1, NULL);
-> +                 table_data->len - srat_start, 1, NULL, NULL);
->  }
->  
->  static void
-> @@ -2485,7 +2485,7 @@ build_mcfg_q35(GArray *table_data, GArray *linker, AcpiMcfgInfo *info)
+>  target-arm/cpu.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index b8b3364..52284e9 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -931,7 +931,7 @@ static inline bool arm_is_secure_below_el3(CPUARMState *env)
+>      if (arm_feature(env, ARM_FEATURE_EL3)) {
+>          return !(env->cp15.scr_el3 & SCR_NS);
 >      } else {
->          sig = "MCFG";
->      }
-> -    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL);
-> +    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
->  }
->  
->  static void
-> @@ -2509,7 +2509,7 @@ build_dmar_q35(GArray *table_data, GArray *linker)
->      drhd->address = cpu_to_le64(Q35_HOST_BRIDGE_IOMMU_ADDR);
->  
->      build_header(linker, table_data, (void *)(table_data->data + dmar_start),
-> -                 "DMAR", table_data->len - dmar_start, 1, NULL);
-> +                 "DMAR", table_data->len - dmar_start, 1, NULL, NULL);
->  }
->  
->  static GArray *
-> 
+> -        /* If EL2 is not supported then the secure state is implementation
+> +        /* If EL3 is not supported then the secure state is implementation
+>           * defined, in which case QEMU defaults to non-secure.
+>           */
+>          return false;
 
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+--
+Alex Bennée

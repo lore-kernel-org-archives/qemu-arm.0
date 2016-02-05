@@ -1,62 +1,120 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id v78sm9132522wmv.23.2016.02.05.05.43.56
+        by smtp.gmail.com with ESMTPSA id v191sm17452662wme.1.2016.02.05.06.09.04
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Feb 2016 05:43:56 -0800 (PST)
+        Fri, 05 Feb 2016 06:09:04 -0800 (PST)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 45C2D3E025C;
-	Fri,  5 Feb 2016 13:43:55 +0000 (GMT)
-References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org> <1454506721-11843-4-git-send-email-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id A75443E025C;
+	Fri,  5 Feb 2016 14:09:03 +0000 (GMT)
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org> <1454506721-11843-5-git-send-email-peter.maydell@linaro.org>
 User-agent: mu4e 0.9.17; emacs 25.0.90.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 3/7] target-arm: Use access_trap_aa32s_el1() for SCR and MVBAR
-In-reply-to: <1454506721-11843-4-git-send-email-peter.maydell@linaro.org>
-Date: Fri, 05 Feb 2016 13:43:55 +0000
-Message-ID: <87lh6znug4.fsf@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-devel] [PATCH 4/7] target-arm: Update arm_generate_debug_exceptions() to handle EL2/EL3
+In-reply-to: <1454506721-11843-5-git-send-email-peter.maydell@linaro.org>
+Date: Fri, 05 Feb 2016 14:09:03 +0000
+Message-ID: <87k2mjnta8.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: KVBoOR28k35c
+X-TUID: LHZm5pxbVZXF
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> The registers MVBAR and SCR should have the behaviour of trapping to
-> EL3 if accessed from Secure EL1, but we were incorrectly implementing
-> them to UNDEF (which would trap to EL1).  Fix this by using the new
-> access_trap_aa32s_el1() access function.
+> The arm_generate_debug_exceptions() function as originally implemented
+> assumes no EL2 or EL3. Since we now have much more of an implementation
+> of those now, fix this assumption.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target-arm/helper.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  target-arm/cpu.h | 48 +++++++++++++++++++++++++++++++++++++++++++-----
+>  1 file changed, 43 insertions(+), 5 deletions(-)
 >
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 8b96b80..d85b04f 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -3547,7 +3547,8 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->        .resetvalue = 0, .writefn = scr_write },
->      { .name = "SCR",  .type = ARM_CP_ALIAS,
->        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
-> -      .access = PL3_RW, .fieldoffset = offsetoflow32(CPUARMState, cp15.scr_el3),
-> +      .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
-> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.scr_el3),
->        .writefn = scr_write },
->      { .name = "MDCR_EL3", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 3, .opc2 = 1,
-> @@ -3569,7 +3570,8 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->        .access = PL3_W | PL1_R, .resetvalue = 0,
->        .fieldoffset = offsetof(CPUARMState, cp15.nsacr) },
->      { .name = "MVBAR", .cp = 15, .opc1 = 0, .crn = 12, .crm = 0, .opc2 = 1,
-> -      .access = PL3_RW, .writefn = vbar_write, .resetvalue = 0,
-> +      .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
-> +      .writefn = vbar_write, .resetvalue = 0,
->        .fieldoffset = offsetof(CPUARMState, cp15.mvbar) },
->      { .name = "SCTLR_EL3", .state = ARM_CP_STATE_AA64,
->        .type = ARM_CP_ALIAS, /* reset handled by AArch32 view */
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index cf2df50..0fb79d0 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -1742,9 +1742,7 @@ typedef enum ARMASIdx {
+>      ARMASIdx_S = 1,
+>  } ARMASIdx;
+>
+> -/* Return the Exception Level targeted by debug exceptions;
+> - * currently always EL1 since we don't implement EL2 or EL3.
+> - */
+> +/* Return the Exception Level targeted by debug exceptions. */
+>  static inline int arm_debug_target_el(CPUARMState *env)
+>  {
+>      bool secure = arm_is_secure(env);
+> @@ -1767,6 +1765,14 @@ static inline int arm_debug_target_el(CPUARMState *env)
+>
+>  static inline bool aa64_generate_debug_exceptions(CPUARMState *env)
+>  {
+> +    if (arm_is_secure(env)) {
+> +        /* MDCR_EL3.SDD disables debug events from Secure state */
+
+Is it worth commenting that BRK still works?
+
+> +        if (extract32(env->cp15.mdcr_el3,ctct 16, 1) != 0
+
+The != 0 is superfluous here.
+
+> +            || arm_current_el(env) == 3) {
+> +            return false;
+> +        }
+> +    }
+> +
+>      if (arm_current_el(env) == arm_debug_target_el(env)) {
+>          if ((extract32(env->cp15.mdscr_el1, 13, 1) == 0)
+>              || (env->daif & PSTATE_D)) {
+> @@ -1778,10 +1784,42 @@ static inline bool aa64_generate_debug_exceptions(CPUARMState *env)
+>
+>  static inline bool aa32_generate_debug_exceptions(CPUARMState *env)
+>  {
+> -    if (arm_current_el(env) == 0 && arm_el_is_aa64(env, 1)) {
+> +    int el = arm_current_el(env);
+> +
+> +    if (el == 0 && arm_el_is_aa64(env, 1)) {
+>          return aa64_generate_debug_exceptions(env);
+>      }
+> -    return arm_current_el(env) != 2;
+> +
+> +    if (arm_is_secure(env)) {
+> +        int spd;
+> +
+> +        if (el == 0 && (env->cp15.sder & 1)) {
+> +            /* SDER.SUIDEN means debug exceptions from Secure EL0
+> +             * are always enabled. Otherwise they are controlled by
+> +             * SDCR.SPD like those from other Secure ELs.
+> +             */
+> +            return true;
+> +        }
+> +
+> +        spd = extract32(env->cp15.mdcr_el3, 14, 2);
+> +        switch (spd) {
+> +        case 1:
+> +            /* SPD == 0b01 is reserved, but behaves as 0b00. */
+> +        case 0:
+> +            /* For 0b00 we return true if external secure invasive debug
+> +             * is enabled. On real hardware this is controlled by external
+> +             * signals to the core. QEMU always permits debug, and behaves
+> +             * as if DBGEN, SPIDEN, NIDEN and SPNIDEN are all tied high.
+> +             */
+> +            return true;
+> +        case 2:
+> +            return false;
+> +        case 3:
+> +            return true;
+> +        }
+> +    }
+> +
+> +    return el != 2;
+>  }
+>
+>  /* Return true if debugging exceptions are currently enabled.
+
+Otherwise:
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 

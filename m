@@ -1,82 +1,82 @@
-Received: by 10.25.159.19 with SMTP id i19csp520410lfe;
-        Sat, 6 Feb 2016 08:49:13 -0800 (PST)
-X-Received: by 10.140.28.133 with SMTP id 5mr17221375qgz.79.1454777353731;
-        Sat, 06 Feb 2016 08:49:13 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp520891lfe;
+        Sat, 6 Feb 2016 08:50:37 -0800 (PST)
+X-Received: by 10.55.82.2 with SMTP id g2mr24057443qkb.53.1454777437794;
+        Sat, 06 Feb 2016 08:50:37 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n73si21827794qhc.34.2016.02.06.08.49.13
+        by mx.google.com with ESMTPS id b9si21848459qgb.116.2016.02.06.08.50.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 06 Feb 2016 08:49:13 -0800 (PST)
+        Sat, 06 Feb 2016 08:50:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55013 helo=lists.gnu.org)
+Received: from localhost ([::1]:55025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aS62r-0003Nd-A6
-	for alex.bennee@linaro.org; Sat, 06 Feb 2016 11:49:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48150)
+	id 1aS64D-0004VR-9f
+	for alex.bennee@linaro.org; Sat, 06 Feb 2016 11:50:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aS62o-0003K1-CK
-	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 11:49:11 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aS64A-0004R3-Lg
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 11:50:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aS62n-0008GE-5v
-	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 11:49:10 -0500
-Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:33419)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aS649-0000R1-Ek
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 11:50:34 -0500
+Received: from mail-pa0-x241.google.com ([2607:f8b0:400e:c03::241]:35844)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1aS62i-0008Fp-AK; Sat, 06 Feb 2016 11:49:04 -0500
-Received: by mail-pa0-x241.google.com with SMTP id pv5so3813254pac.0;
-	Sat, 06 Feb 2016 08:49:04 -0800 (PST)
+	id 1aS645-0000Os-0h; Sat, 06 Feb 2016 11:50:29 -0500
+Received: by mail-pa0-x241.google.com with SMTP id sv5so678618pab.3;
+	Sat, 06 Feb 2016 08:50:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=x58GWLwV9B2Yo4KVkARci234zUlOg1dFq1f6C0jwsCc=;
-	b=izLWskihmaAcVv+veInKxdBgy4xpBtipmmQuesiIi/f0jR3YJ0EsNuhnWBiQnZC9tT
-	OUO19H2G3dOxu680Y7bEH5uq2OspfKKt2K8GE4NC9EjZUaGrotyxuY8F9u2POw1eaa/H
-	lROqOr16TxMNYHoVBVfBMo2XAPmdqMngKpNddafkgRJ76db11naAbBYRLjqH82xWeGqr
-	8qhZyfOMpBU19AhucHTzGfw1//XLjZVVrWXBPlrPGThOwxtqmPaP63FkzKXxDv54EdIU
-	TG50Uwf1GNp1MFqdtP0QCPbMi4oj5f+et1ty7SH785uXH8n0Kkpk4UGU6fgHLlzcnAU9
-	yIGA==
+	bh=VwDk3glQ3xRXRfOzWfYYN7IsIoGBwsoyJXPhfhywubo=;
+	b=k5UrMu4pp8xQB6YJjuYlln6SKVbY2b6wbcW0uleppARVJt2fx6uXazs/iF2D8XIJSK
+	6hdSt5LzY1hsH9BZjjjC8HmBBuDJOQPLtWKkKGmTiEEY6pPdq9AgkKYFJVzt4wzPolu4
+	oaIN+pcQCMj+8mZg1Ucenv1Qn0KtQrAtBt0dG8fVACTaCrTUBu74vllc7Su/jW8hySDJ
+	kCnEck0q600t/aElwMUNCTrJRTEUHXsXIqgudMpYEmFc1qcC6q85crloNnTPHkIEt15p
+	obT3zVZP/yzPOtLfM5W9N4FjIjxXWKqTANnA7gRTrJQFSPBzBv8sbQBzG4ELVYPvpO9N
+	z4nA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-type:content-disposition:in-reply-to
 	:user-agent;
-	bh=x58GWLwV9B2Yo4KVkARci234zUlOg1dFq1f6C0jwsCc=;
-	b=Owh/8YcCpM5OisFILj4wDtAuWTc60rFJiKPGa3ZvcuIkyDjE/5saZ0j+62DGXpdu70
-	P9CVtGQUvOsL6B7WIea/cOaOE+YU3859FHnN5z2Cc766UjsfQAxKJM/VCipBjZIEOzf3
-	Z40xMF+eXSvKoiAtgGLuG+5NCJQ0kJ1IiO1MNLYWSjO9EFArc9AMOC057g4ZCHJtZfzU
-	7qaUfjCTqhPQoGGTFJthWrT18EC+UgWqkj4NXDxF/3AqmKFCpFEo06u9DBuiTO/fTq2J
-	CdbbdLLLmPRrZoRGRQEpUdo2ojtVjYtIoKMEhHXAOHDA8u8aRLS13UnSddTEzV6wWqf0
-	GFYw==
-X-Gm-Message-State: AG10YOR1Dt2Jvu2Aof2FEnoVNqGlg0wIaUoxWPkrGvjaylhNlTMTX5iQ3czjkArJhMKBYA==
-X-Received: by 10.66.230.201 with SMTP id ta9mr29154857pac.52.1454777343368;
-	Sat, 06 Feb 2016 08:49:03 -0800 (PST)
+	bh=VwDk3glQ3xRXRfOzWfYYN7IsIoGBwsoyJXPhfhywubo=;
+	b=ZM3u6h5a7b1aSzL6+VG7chvurbwHSElmu7osn9mJs99aW3FWAlbU7NRA82ITY/6cEA
+	hzsrZSwiYhIuImyCU4Wvbq3sSNqjdRXOODctqSNFlwSh4eQ0NtiytQYnwzkNXhXvRD4R
+	MP68QOTaI/NkEpTax/CfkHUpZNWal8ftvfY4qURAgw2EwukUeGuivgWNYLG6PhKmI1/j
+	fkGJPgWwbCyJNacvPbuS3rcDfA7PCNy9FNSnT2ubHOd1GCv3bZw6RvVj8osaoT9T1Moj
+	C/FI5RbZRbb0epzSrpWCQL5+IcuCShZyUEbPAkEz2goAa+kciEmq/17jNkSb6SAHofyt
+	i+NA==
+X-Gm-Message-State: AG10YOStxcBqIY9ukSfKXHC+YCH6m5hVC7Yx0v5DNMbDDv8arD9h4zCjIZnRamlds5tbqA==
+X-Received: by 10.66.191.195 with SMTP id ha3mr29250775pac.58.1454777428329;
+	Sat, 06 Feb 2016 08:50:28 -0800 (PST)
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
 	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
-	cq4sm32365456pad.28.2016.02.06.08.49.01
+	d8sm32429827pas.14.2016.02.06.08.50.26
 	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Sat, 06 Feb 2016 08:49:02 -0800 (PST)
-Date: Sat, 6 Feb 2016 17:42:24 +0100
+	Sat, 06 Feb 2016 08:50:27 -0800 (PST)
+Date: Sat, 6 Feb 2016 17:43:50 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160206164224.GG3913@toto>
+Message-ID: <20160206164350.GH3913@toto>
 References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org>
-	<1454506721-11843-7-git-send-email-peter.maydell@linaro.org>
+	<1454506721-11843-8-git-send-email-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1454506721-11843-7-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1454506721-11843-8-git-send-email-peter.maydell@linaro.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400e:c03::241
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 6/7] target-arm: Implement NSACR trapping
-	behaviour
+Subject: Re: [Qemu-arm] [PATCH 7/7] target-arm: Enable EL3 for Cortex-A53
+	and Cortex-A57
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -90,119 +90,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dr+XjK327m0J
+X-TUID: 6Lfknh8c2thy
 
-On Wed, Feb 03, 2016 at 01:38:40PM +0000, Peter Maydell wrote:
-> Implement some corner cases of the behaviour of the NSACR
-> register on ARMv8:
->  * if EL3 is AArch64 then accessing the NSACR from Secure EL1
->    with AArch32 should trap to EL3
->  * if EL3 is not present or is AArch64 then reads from NS EL1 and
->    NS EL2 return constant 0xc00
-> 
-> It would in theory be possible to implement all these with
-> a single reginfo definition, but for clarity we use three
-> separate definitions for the three cases and install the
-> right one based on the CPU feature flags.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Wed, Feb 03, 2016 at 01:38:41PM +0000, Peter Maydell wrote:
+> Enable EL3 support for our Cortex-A53 and Cortex-A57 CPU models.
+> We have enough implemented now to be able to run real world code
+> at least to some extent (I can boot ARM Trusted Firmware to the
+> point where it pulls in OP-TEE and then falls over because it
+> doesn't have a UEFI image it can chain to).
 
-AFAICT it looks OK
+Cool! Finally! :-)
 
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
-> ---
->  target-arm/helper.c | 62 +++++++++++++++++++++++++++++++++++++++++++++++++----
->  1 file changed, 58 insertions(+), 4 deletions(-)
 > 
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 8bc3ea3..34dc144 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -3562,6 +3562,25 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
->      REGINFO_SENTINEL
->  };
->  
-> +static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                                   bool isread)
-> +{
-> +    /* The NSACR is RW at EL3, and RO for NS EL1 and NS EL2.
-> +     * At Secure EL1 it traps to EL3.
-> +     */
-> +    if (arm_current_el(env) == 3) {
-> +        return CP_ACCESS_OK;
-> +    }
-> +    if (arm_is_secure_below_el3(env)) {
-> +        return CP_ACCESS_TRAP_EL3;
-> +    }
-> +    /* Accesses from EL1 NS and EL2 NS are UNDEF for write but allow reads. */
-> +    if (isread) {
-> +        return CP_ACCESS_OK;
-> +    }
-> +    return CP_ACCESS_TRAP_UNCATEGORIZED;
-> +}
-> +
->  static const ARMCPRegInfo el3_cp_reginfo[] = {
->      { .name = "SCR_EL3", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
-> @@ -3587,10 +3606,6 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 1,
->        .access = PL3_RW, .resetvalue = 0,
->        .fieldoffset = offsetoflow32(CPUARMState, cp15.sder) },
-> -      /* TODO: Implement NSACR trapping of secure EL1 accesses to EL3 */
-> -    { .name = "NSACR", .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 2,
-> -      .access = PL3_W | PL1_R, .resetvalue = 0,
-> -      .fieldoffset = offsetof(CPUARMState, cp15.nsacr) },
->      { .name = "MVBAR", .cp = 15, .opc1 = 0, .crn = 12, .crm = 0, .opc2 = 1,
->        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
->        .writefn = vbar_write, .resetvalue = 0,
-> @@ -4361,6 +4376,45 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->          };
->          define_one_arm_cp_reg(cpu, &rvbar);
->      }
-> +    /* The behaviour of NSACR is sufficiently various that we don't
-> +     * try to describe it in a single reginfo:
-> +     *  if EL3 is 64 bit, then trap to EL3 from S EL1,
-> +     *     reads as constant 0xc00 from NS EL1 and NS EL2
-> +     *  if EL3 is 32 bit, then RW at EL3, RO at NS EL1 and NS EL2
-> +     *  if v7 without EL3, register doesn't exist
-> +     *  if v8 without EL3, reads as constant 0xc00 from NS EL1 and NS EL2
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_EL3)) {
-> +        if (arm_feature(env, ARM_FEATURE_AARCH64)) {
-> +            ARMCPRegInfo nsacr = {
-> +                .name = "NSACR", .type = ARM_CP_CONST,
-> +                .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 2,
-> +                .access = PL1_RW, .accessfn = nsacr_access,
-> +                .resetvalue = 0xc00
-> +            };
-> +            define_one_arm_cp_reg(cpu, &nsacr);
-> +        } else {
-> +            ARMCPRegInfo nsacr = {
-> +                .name = "NSACR",
-> +                .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 2,
-> +                .access = PL3_RW | PL1_R,
-> +                .resetvalue = 0,
-> +                .fieldoffset = offsetof(CPUARMState, cp15.nsacr)
-> +            };
-> +            define_one_arm_cp_reg(cpu, &nsacr);
-> +        }
-> +    } else {
-> +        if (arm_feature(env, ARM_FEATURE_V8)) {
-> +            ARMCPRegInfo nsacr = {
-> +                .name = "NSACR", .type = ARM_CP_CONST,
-> +                .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 2,
-> +                .access = PL1_R,
-> +                .resetvalue = 0xc00
-> +            };
-> +            define_one_arm_cp_reg(cpu, &nsacr);
-> +        }
-> +    }
-> +
->      if (arm_feature(env, ARM_FEATURE_MPU)) {
->          if (arm_feature(env, ARM_FEATURE_V6)) {
->              /* PMSAv6 not implemented */
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target-arm/cpu64.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+> index cc177bb..073677b5 100644
+> --- a/target-arm/cpu64.c
+> +++ b/target-arm/cpu64.c
+> @@ -109,6 +109,7 @@ static void aarch64_a57_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+>      set_feature(&cpu->env, ARM_FEATURE_CRC);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+>      cpu->midr = 0x411fd070;
+>      cpu->revidr = 0x00000000;
+> @@ -161,6 +162,7 @@ static void aarch64_a53_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+>      set_feature(&cpu->env, ARM_FEATURE_CRC);
+> +    set_feature(&cpu->env, ARM_FEATURE_EL3);
+>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+>      cpu->midr = 0x410fd034;
+>      cpu->revidr = 0x00000000;
 > -- 
 > 1.9.1
 > 

@@ -1,91 +1,82 @@
-Received: by 10.25.159.19 with SMTP id i19csp44288lfe;
-        Fri, 5 Feb 2016 09:04:59 -0800 (PST)
-X-Received: by 10.55.25.169 with SMTP id 41mr18135694qkz.15.1454691898852;
-        Fri, 05 Feb 2016 09:04:58 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp409498lfe;
+        Sat, 6 Feb 2016 03:55:52 -0800 (PST)
+X-Received: by 10.140.163.6 with SMTP id j6mr24192645qhj.36.1454759752367;
+        Sat, 06 Feb 2016 03:55:52 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f106si15715810qge.29.2016.02.05.09.04.58
+        by mx.google.com with ESMTPS id e204si939789qhc.130.2016.02.06.03.55.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 Feb 2016 09:04:58 -0800 (PST)
+        Sat, 06 Feb 2016 03:55:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49527 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53182 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aRjoY-000658-Bi
-	for alex.bennee@linaro.org; Fri, 05 Feb 2016 12:04:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50929)
+	id 1aS1Sx-0000wr-VZ
+	for alex.bennee@linaro.org; Sat, 06 Feb 2016 06:55:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38224)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jl4312@columbia.edu>) id 1aRjoH-0005mc-Sy
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 12:04:43 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aS1Sv-0000u1-PF
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 06:55:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jl4312@columbia.edu>) id 1aRjoC-0001mB-Nc
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 12:04:41 -0500
-Received: from millet.cc.columbia.edu ([128.59.72.250]:34611)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1aS1Su-0001np-UU
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 06:55:49 -0500
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:35063)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jl4312@columbia.edu>) id 1aRjoC-0001kb-Jj
-	for qemu-arm@nongnu.org; Fri, 05 Feb 2016 12:04:36 -0500
-Received: from hazelnut (hazelnut.cc.columbia.edu [128.59.213.250])
-	by millet.cc.columbia.edu (8.13.8/8.13.8) with ESMTP id u15H2jo7009764
-	for <qemu-arm@nongnu.org>; Fri, 5 Feb 2016 12:04:30 -0500
-Received: from hazelnut (localhost.localdomain [127.0.0.1])
-	by hazelnut (Postfix) with ESMTP id E758480
-	for <qemu-arm@nongnu.org>; Fri,  5 Feb 2016 12:04:30 -0500 (EST)
-Received: from paneer.cc.columbia.edu (paneer.cc.columbia.edu [128.59.29.4])
-	by hazelnut (Postfix) with ESMTP id D0BFC7E
-	for <qemu-arm@nongnu.org>; Fri,  5 Feb 2016 12:04:30 -0500 (EST)
-Received: from mail-io0-f174.google.com (mail-io0-f174.google.com
-	[209.85.223.174])
-	by paneer.cc.columbia.edu (8.14.4/8.14.3) with ESMTP id u15H4Uqv006269
-	(version=TLSv1/SSLv3 cipher=RC4-SHA bits=128 verify=NOT)
-	for <qemu-arm@nongnu.org>; Fri, 5 Feb 2016 12:04:30 -0500 (EST)
-Received: by mail-io0-f174.google.com with SMTP id 9so135589482iom.1
-	for <qemu-arm@nongnu.org>; Fri, 05 Feb 2016 09:04:30 -0800 (PST)
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1aS1Sp-0001nJ-PO; Sat, 06 Feb 2016 06:55:43 -0500
+Received: by mail-pf0-x243.google.com with SMTP id 66so6446873pfe.2;
+	Sat, 06 Feb 2016 03:55:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:content-disposition:in-reply-to:user-agent;
+	bh=yGgC99SU7H6z7xyv14nwcdATI8x1nRej67eYzKiGti4=;
+	b=supOre7T8j7ldXXWtfAZ4EF4ecND7h5ftHF3KA2HGlcFMlygsQcH+tu5NDIBFHhwYm
+	YLQDdd05PoEptEaE8ExPnbtf7T68U2hYK9D+qJTU9b0mLuo/S0d5GOj9qlvMbhSaquqT
+	BU8bi3H1WYmuRC4MvqnFBCekqO5L/O3obPxOcg5zvctfLHS72jgBvbsLpS5x7EgmX5MB
+	3TfBuCdNennhtuMR3pFaC9xf10NCY0fPZ+XKQWvMQs0hIYhzuhr1cC9VlvoQ+GG/k9Dt
+	ijo8JYpLCcvz9AehjSMF/W9gQu2LvPONbWG7DdTGEcoZh8usG9c90+unx5wVOBL4Dp8J
+	1R/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-type;
-	bh=xSdqxOa1+BFxHaNwTV6zsoP5iLIfVqN/1W4taAHAKd0=;
-	b=QFuxu2ifMm870/FyEnkIDinriGQfFcktysgdElNPpyBubMcE9jmRbCwfT3x+n6kRFY
-	35arrlKPlMJroGnLcpSn5cVVG9OFxirA203YCfZHpx5w/x3icLaYgf8NM6U9JHq0lDZL
-	Con7J4RkKDs7nkBVrW2m1/BFogBkX+P1bX5jYeEEHoeGFaj68xZ5MPb4hHhxcyVgn0Rf
-	Xz+fikbiZQx7mDk2o4syM6BoxvDc9TTk4z/dl4HXoLN3KybzhXngUKG5oboEV5frpmtr
-	4hdmCtV3RRfQ+j8DLqaaYPnoueBDGjlKZpn8fAvZqANc5GSwAG0QzbhkuwADoc8Q6Nwv
-	iHqw==
-X-Gm-Message-State: AG10YORRVQvGYa9YWcAqGgYg8zp2jWe5gUsPCCgFhQ8TzjjQKqLqRDBvN2iJXUl63gqhPRciQVZkNJLxF+9uzKp9wmMMRG/h3qhGmvI/+omzsSA+egVvjh1Qgf6KTXB6XtHp5/M=
-X-Received: by 10.107.16.17 with SMTP id y17mr18731626ioi.119.1454691870167;
-	Fri, 05 Feb 2016 09:04:30 -0800 (PST)
-X-Received: by 10.107.16.17 with SMTP id y17mr18731595ioi.119.1454691869905;
-	Fri, 05 Feb 2016 09:04:29 -0800 (PST)
-Received: from mail-ig0-f169.google.com (mail-ig0-f169.google.com.
-	[209.85.213.169]) by smtp.gmail.com with ESMTPSA id
-	m4sm10879100igv.10.2016.02.05.09.04.28 for <qemu-arm@nongnu.org>
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 05 Feb 2016 09:04:28 -0800 (PST)
-Received: by mail-ig0-f169.google.com with SMTP id mw1so17888979igb.1
-	for <qemu-arm@nongnu.org>; Fri, 05 Feb 2016 09:04:28 -0800 (PST)
-MIME-Version: 1.0
-X-Received: by 10.50.78.234 with SMTP id e10mr15799980igx.7.1454691868152;
-	Fri, 05 Feb 2016 09:04:28 -0800 (PST)
-Received: by 10.50.239.2 with HTTP; Fri, 5 Feb 2016 09:04:28 -0800 (PST)
-In-Reply-To: <CAFEAcA9P7OBcL4sAnLLoppUo8q40yEeyAt_5M_MYnNgJAxB7RA@mail.gmail.com>
-References: <CAHyh4xiVysLUreprtNnKMOLf0VUH2bTsF4thPwbkeFOfpDXFCw@mail.gmail.com>
-	<CAFEAcA9P7OBcL4sAnLLoppUo8q40yEeyAt_5M_MYnNgJAxB7RA@mail.gmail.com>
-Date: Fri, 5 Feb 2016 12:04:28 -0500
-X-Gmail-Original-Message-ID: <CAHyh4xhsVft40MXZa2vc4Osx0LyY2bs35UX3gf51vzcYSh_aSA@mail.gmail.com>
-Message-ID: <CAHyh4xhsVft40MXZa2vc4Osx0LyY2bs35UX3gf51vzcYSh_aSA@mail.gmail.com>
-From: Jintack Lim <jintack@cs.columbia.edu>
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-type:content-disposition:in-reply-to
+	:user-agent;
+	bh=yGgC99SU7H6z7xyv14nwcdATI8x1nRej67eYzKiGti4=;
+	b=eyP4FFAXJLdTm6iNGJZjxyH3bXMJRCJVGcs04+gIGc3oPe598SoDMkpJauNZPLita9
+	mYOwSt6sAbKtJ9c+0x/f3hp+4jn30b3ipagORqAYYuj13turguu3A/2gm6s0zLmN46hp
+	gMYZ67JcWy7uXvVvEXUa+JQbhBZTCHrArA68aEke3nFLj6F3IRXV2ILyZQBPst5hm9Hp
+	hypZkjCXfjd+QgIgrw1u23rFo78laNnfMjZdIRWdt5LS4rLPGtDrOYzVfKNYZMr9lr9H
+	+USwzk9iWid86+dD50XSlKZfVzfoUxpf7TsUDC0vP3siYhqy+2iQveOA7stnVDPD34Bw
+	UQNA==
+X-Gm-Message-State: AG10YOSCUbXXcza+IkQWzGj/bQTmKL59nGpto51262TsJltigvxeM8iiiIIJj1SrV+6j8Q==
+X-Received: by 10.98.12.133 with SMTP id 5mr27317493pfm.20.1454759742341;
+	Sat, 06 Feb 2016 03:55:42 -0800 (PST)
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
+	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
+	f12sm30829397pfd.87.2016.02.06.03.55.40
+	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
+	Sat, 06 Feb 2016 03:55:41 -0800 (PST)
+Date: Sat, 6 Feb 2016 12:49:46 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary=089e013c65e00f1cdd052b08d89b
-X-No-Spam-Score: Local
-X-Scanned-By: MIMEDefang 2.68 on 128.59.29.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 128.59.72.250
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Christoffer Dall <christofferdall@gmail.com>
-Subject: Re: [Qemu-arm] Adding sp804 timer to the virtboard
+Message-ID: <20160206114946.GA3913@toto>
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org>
+	<1454506721-11843-2-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1454506721-11843-2-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c00::243
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 1/7] target-arm: Fix typo in comment in
+ arm_is_secure_below_el3()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -99,134 +90,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L/N2juZN8YOF
+X-TUID: E3sBWKvxmGBi
 
---089e013c65e00f1cdd052b08d89b
-Content-Type: text/plain; charset=UTF-8
+On Wed, Feb 03, 2016 at 01:38:35PM +0000, Peter Maydell wrote:
+> Fix a typo where "EL2" was written but "EL3" intended.
 
-Hi Peter,
-
-On Fri, Feb 5, 2016 at 5:52 AM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 3 February 2016 at 20:57, Jintack Lim <jintack@cs.columbia.edu> wrote:
-> > I'd like to replace an arm arch timer with sp804 timer in the virtboard.
-> > What would be the easiest way to do that?
->
-> (I'm assuming this is all just for local testing purposes, rather than
-> with any intention of upstreaming a patch to add an sp804.)
->
-
-That's right.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
->
-> Do you need to actually remove the arch timers, or just provide
-> the sp804 as well?
->
-
-I just need to provide sp804, don't need to remove the arch timer.
-
-
->
-> (You can't remove the architected timers easily from emulated,
-> or at all if you're using KVM, but you can straightforwardly
-> comment out the bits of code in virt.c that advertise them in the dtb.)
->
-> > I'm thinking to add sp804 node to DT as follows which is from
-> > arch/arm/boot/dts/vexpress-v2m.dtsi.
-> > v2m_timer01: timer@11000 {
-> >         compatible = "arm,sp804", "arm,primecell";
-> >         reg = <0x11000 0x1000>;
-> >         interrupts = <2>;
-> >         clocks = <&v2m_sysctl 0>, <&v2m_sysctl 1>, <&smbclk>;
-> >         clock-names = "timclken1", "timclken2", "apb_pclk";
-> > };
-> >
-> > The values of reg and interrupts will be replaced properly.
-> > About the clock property, should I also add the original clock providers
-> > such as sp810 and in turn 32k, 1M and smb clocks?
-> > Or canI just use apb-pclk, which is an existing clock provider in the
-> > virtboard, for all three clocks?
->
-> For a virtual machine the clocks are all irrelevant anyway, I think
-> (we don't actually have any kind of 24MHz clock) -- we just provide
-> them because the kernel insists that the dtb says something about
-> clocks. So I would start by just borrowing the apb-pclk and seeing
-> if that works.
->
-> thanks
-> -- PMM
->
->
-
---089e013c65e00f1cdd052b08d89b
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Peter,<br><div class=3D"gmail_extra"><br><div class=3D"=
-gmail_quote">On Fri, Feb 5, 2016 at 5:52 AM, Peter Maydell <span dir=3D"ltr=
-">&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.m=
-aydell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-color=
-:rgb(204,204,204);border-left-style:solid;padding-left:1ex"><span class=3D"=
-">On 3 February 2016 at 20:57, Jintack Lim &lt;<a href=3D"mailto:jintack@cs=
-.columbia.edu">jintack@cs.columbia.edu</a>&gt; wrote:<br>
-&gt; I&#39;d like to replace an arm arch timer with sp804 timer in the virt=
-board.<br>
-&gt; What would be the easiest way to do that?<br>
-<br>
-</span>(I&#39;m assuming this is all just for local testing purposes, rathe=
-r than<br>
-with any intention of upstreaming a patch to add an sp804.)<br></blockquote=
-><div><br></div><div>That&#39;s right.</div><div>=C2=A0</div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px=
-;border-left-color:rgb(204,204,204);border-left-style:solid;padding-left:1e=
-x">
-<br>
-Do you need to actually remove the arch timers, or just provide<br>
-the sp804 as well?<br></blockquote><div><br></div><div>I just need to provi=
-de sp804, don&#39;t need to remove the arch timer.<br></div><div>=C2=A0</di=
-v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
-r-left-width:1px;border-left-color:rgb(204,204,204);border-left-style:solid=
-;padding-left:1ex">
-<br>
-(You can&#39;t remove the architected timers easily from emulated,<br>
-or at all if you&#39;re using KVM, but you can straightforwardly<br>
-comment out the bits of code in virt.c that advertise them in the dtb.)<br>
-<span class=3D""><br>
-&gt; I&#39;m thinking to add sp804 node to DT as follows which is from<br>
-&gt; arch/arm/boot/dts/vexpress-v2m.dtsi.<br>
-&gt; v2m_timer01: timer@11000 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0compatible =3D &quot;arm,sp804&quot;,=
- &quot;arm,primecell&quot;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0reg =3D &lt;0x11000 0x1000&gt;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0interrupts =3D &lt;2&gt;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0clocks =3D &lt;&amp;v2m_sysctl 0&gt;,=
- &lt;&amp;v2m_sysctl 1&gt;, &lt;&amp;smbclk&gt;;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0clock-names =3D &quot;timclken1&quot;=
-, &quot;timclken2&quot;, &quot;apb_pclk&quot;;<br>
-&gt; };<br>
-&gt;<br>
-&gt; The values of reg and interrupts will be replaced properly.<br>
-&gt; About the clock property, should I also add the original clock provide=
-rs<br>
-&gt; such as sp810 and in turn 32k, 1M and smb clocks?<br>
-&gt; Or canI just use apb-pclk, which is an existing clock provider in the<=
-br>
-&gt; virtboard, for all three clocks?<br>
-<br>
-</span>For a virtual machine the clocks are all irrelevant anyway, I think<=
-br>
-(we don&#39;t actually have any kind of 24MHz clock) -- we just provide<br>
-them because the kernel insists that the dtb says something about<br>
-clocks. So I would start by just borrowing the apb-pclk and seeing<br>
-if that works.<br>
-<br>
-thanks<br>
--- PMM<br>
-<br>
-</blockquote></div><br></div></div>
-
---089e013c65e00f1cdd052b08d89b--
-
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target-arm/cpu.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index b8b3364..52284e9 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -931,7 +931,7 @@ static inline bool arm_is_secure_below_el3(CPUARMState *env)
+>      if (arm_feature(env, ARM_FEATURE_EL3)) {
+>          return !(env->cp15.scr_el3 & SCR_NS);
+>      } else {
+> -        /* If EL2 is not supported then the secure state is implementation
+> +        /* If EL3 is not supported then the secure state is implementation
+>           * defined, in which case QEMU defaults to non-secure.
+>           */
+>          return false;
+> -- 
+> 1.9.1
+> 

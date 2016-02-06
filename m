@@ -1,83 +1,83 @@
-Received: by 10.25.159.19 with SMTP id i19csp554457lfe;
-        Sat, 6 Feb 2016 10:26:28 -0800 (PST)
-X-Received: by 10.140.27.202 with SMTP id 68mr24236085qgx.4.1454783188740;
-        Sat, 06 Feb 2016 10:26:28 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp559614lfe;
+        Sat, 6 Feb 2016 10:43:08 -0800 (PST)
+X-Received: by 10.141.2.68 with SMTP id e65mr26199237qhd.64.1454784188357;
+        Sat, 06 Feb 2016 10:43:08 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x143si22256039qka.122.2016.02.06.10.26.28
+        by mx.google.com with ESMTPS id w138si22304985qhb.76.2016.02.06.10.43.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 06 Feb 2016 10:26:28 -0800 (PST)
+        Sat, 06 Feb 2016 10:43:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55734 helo=lists.gnu.org)
+Received: from localhost ([::1]:55820 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aS7Yx-0004ZV-Mq
-	for alex.bennee@linaro.org; Sat, 06 Feb 2016 13:26:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44432)
+	id 1aS7p5-0000pR-PN
+	for alex.bennee@linaro.org; Sat, 06 Feb 2016 13:43:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aS7YY-000401-NQ
-	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 13:26:03 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aS7p3-0000pB-PJ
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 13:43:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aS7YV-0008Cx-Hu
-	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 13:26:02 -0500
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34648)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aS7oy-0003tb-JK
+	for qemu-arm@nongnu.org; Sat, 06 Feb 2016 13:43:05 -0500
+Received: from mail-lb0-x244.google.com ([2a00:1450:4010:c04::244]:33528)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aS7YV-0008Ct-3n; Sat, 06 Feb 2016 13:25:59 -0500
-Received: by mail-lf0-x244.google.com with SMTP id 78so3933307lfy.1;
-	Sat, 06 Feb 2016 10:25:58 -0800 (PST)
+	id 1aS7oy-0003tW-6Y; Sat, 06 Feb 2016 13:43:00 -0500
+Received: by mail-lb0-x244.google.com with SMTP id bc4so3434530lbc.0;
+	Sat, 06 Feb 2016 10:43:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:subject:to:references:cc:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=XkY8DhrmUCYr1Is29tUGyVAHGR+EX8wvD5C2N+89Ets=;
-	b=KsZTMNhIJsJYU7p7u3QiLhluP1heA7ysCb8kXjiMqTWRasfSf47LGeHqx7IyATVIn5
-	zCYz88FV9cSEUkXgjMaJN3gF1sghaXOCCvdP4JcAMSW8FqRhz8E6AXlz7q0Zf+DvVhVy
-	Q3QhKDnuxYIdzgNJvyzsh2tuE3iQQBXIW1USlR8m5OPDP0ZtJAX+HFT7ejl9fBsAFDyu
-	CkBu/X3F8AtOWhghKJnrn/CKOhMczMTihwz0TcgNuim8FhTkFw+pvWRj/w1HEbZnpwXA
-	sSJya5br5d42BbNTSlPpntNG2UhywWpA/S1cYDtRr41vstErgrP+S1ZqQ5Q5BYVfmMAH
-	5gwg==
+	bh=IvnXvA+HYfOcMTZTTBtAegR0dozU5raFCgmwLIC0MuM=;
+	b=atPOv1g8CDpuPEz1OWtixNE2/eeJDPMqs6oFqLBNt7qiEZBlrntAw4V4rR9eHleFhF
+	BqKjC+kQmUGyW542C0tm0nhXOBsTHJNBqruTnmPQN8J7VCQQUuYTG3Y6YFJgpW0nK9IC
+	rfwpEjWp3MOB63LvbZL85NpwT+Wgm7UPf+VkKvCDNxY7NXPB2aiGlO4vGHUBno1gjoXH
+	l37+zDOoMpsT40CzX92gFzHCpjdGjs7Za7akoIReWnoRPjfPIIn3hzT5AsbEjTSNUQTA
+	koQPzNZbE8mKsmmTTzpGlg7IqImAx56xB1Cn2IFS1G0HYXVyElRd3XeRR2um0BYH34I+
+	J8aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:subject:to:references:cc:message-id:date
 	:user-agent:mime-version:in-reply-to:content-type
 	:content-transfer-encoding;
-	bh=XkY8DhrmUCYr1Is29tUGyVAHGR+EX8wvD5C2N+89Ets=;
-	b=DizsMq+2c/zM5xJwkh+Pw0ZJKoTmpps7o26LPPJTGLX0Ky7KUfQNfNyAhgCqPyZdcR
-	BYISnz7EadEGzKvUhSB6iqmZg0fek4gSbpnSGM3wDcmgqotgYJNYHjScuSmJkxpNHXX/
-	ifsNyNYz36w1zogjpMoK+siaNJYhw7OUzra2WDs5nWvoxmFkRnRA8u2eKl2q5Ik1ulEd
-	Iv38byu+dkjiTG8RWwRTcPHgK4AmNDv6hpcek2+iMFu6+OTJYbnaW9k/MfWUSxFe42A6
-	RZyz4bkJR6wCiinYEcyoUwFvAphzvQyX2+al3TUkLR5nRNAFJWSEOcX9lGPfIPG0pmEb
-	BiBg==
-X-Gm-Message-State: AG10YOTkfHx7LmbaqXK5XQQekNo6jLX9GgPdASWZXtC007anj1F62MCp2hWVdroWhoSsxw==
-X-Received: by 10.25.134.137 with SMTP id i131mr8242745lfd.94.1454783158340;
-	Sat, 06 Feb 2016 10:25:58 -0800 (PST)
+	bh=IvnXvA+HYfOcMTZTTBtAegR0dozU5raFCgmwLIC0MuM=;
+	b=TmZD7BesV2IWwwm764KZYYsZSXOE/FDJiOGKUHkUyGlFIGvThHUMyeuSYKykhgTGJ3
+	byfjmS5P+WYu+XwzofLKYLstOMu57NVDYZAK5qA0j6+eoJn+f5DdenR+Cystr5YFbwjM
+	CE6dfHbQnqXE2gyYIB9zYzAnp8gfXnsDwu9ty1zaCRTbs56BeBIqlK4mCbNpNWE6kZvS
+	uLL427PxoKXs7xCawQvBqlOau4ILlTvF3WVhdACFG9btIXi7PVQk6v/BNDF6UeJEKvWn
+	GufrEvzzkb5OiF7Aajo070Rclk0u9IMKBx8wGySPyjjf4rUE+/+y1o/wOWT79XDpdCvF
+	X9JA==
+X-Gm-Message-State: AG10YOTZfXTq1LEhapkn3jYGDn6LN7riO3zrO0xl9KLmdUZrJX2E/mFua79P+INiFpMy/w==
+X-Received: by 10.112.202.70 with SMTP id kg6mr8504404lbc.2.1454784179181;
+	Sat, 06 Feb 2016 10:42:59 -0800 (PST)
 Received: from [192.168.0.71] (broadband-46-188-121-154.2com.net.
 	[46.188.121.154]) by smtp.googlemail.com with ESMTPSA id
-	ne8sm2948353lbc.21.2016.02.06.10.25.57
+	n96sm2924578lfi.45.2016.02.06.10.42.57
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Sat, 06 Feb 2016 10:25:57 -0800 (PST)
+	Sat, 06 Feb 2016 10:42:57 -0800 (PST)
 From: Sergey Fedorov <serge.fdrv@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1454683067-16001-1-git-send-email-peter.maydell@linaro.org>
-	<1454683067-16001-4-git-send-email-peter.maydell@linaro.org>
-Message-ID: <56B63AB4.4020705@gmail.com>
-Date: Sat, 6 Feb 2016 21:25:56 +0300
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org>
+	<1454506721-11843-3-git-send-email-peter.maydell@linaro.org>
+Message-ID: <56B63EB1.8080905@gmail.com>
+Date: Sat, 6 Feb 2016 21:42:57 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1454683067-16001-4-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1454506721-11843-3-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::244
+X-Received-From: 2a00:1450:4010:c04::244
 Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] target-arm: Fix IL bit
- reported for Thumb VFP and Neon traps
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/7] target-arm: Implement
+	MDCR_EL3 and SDCR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,51 +91,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GRJyrPv67U5o
+X-TUID: tuaubwXW4RxD
 
-On 05.02.2016 17:37, Peter Maydell wrote:
-> All Thumb Neon and VFP instructions are 32 bits, so the IL
-> bit in the syndrome register should be set. Pass false to the
-> syn_* function's is_16bit argument rather than s->thumb
-> so we report the correct IL bit.
+On 03.02.2016 16:38, Peter Maydell wrote:
+> Implement the MDCR_EL3 register (which is SDCR for AArch32).
+> For the moment we implement it as reads-as-written.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
-
 > ---
->  target-arm/translate.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  target-arm/cpu.h    |  1 +
+>  target-arm/helper.c | 24 ++++++++++++++++++++++++
+>  2 files changed, 25 insertions(+)
 >
-> diff --git a/target-arm/translate.c b/target-arm/translate.c
-> index 10792e8..fa8e22c 100644
-> --- a/target-arm/translate.c
-> +++ b/target-arm/translate.c
-> @@ -3077,7 +3077,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
->       */
->      if (s->fp_excp_el) {
->          gen_exception_insn(s, 4, EXCP_UDEF,
-> -                           syn_fp_access_trap(1, 0xe, s->thumb), s->fp_excp_el);
-> +                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
->          return 0;
->      }
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 52284e9..cf2df50 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -382,6 +382,7 @@ typedef struct CPUARMState {
+>          uint64_t mdscr_el1;
+>          uint64_t oslsr_el1; /* OS Lock Status */
+>          uint64_t mdcr_el2;
+> +        uint64_t mdcr_el3;
+>          /* If the counter is enabled, this stores the last time the counter
+>           * was reset. Otherwise it stores the counter value
+>           */
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index b631b83..8b96b80 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -364,6 +364,23 @@ static CPAccessResult access_el3_aa32ns_aa64any(CPUARMState *env,
+>      return CP_ACCESS_OK;
+>  }
 >  
-> @@ -4399,7 +4399,7 @@ static int disas_neon_ls_insn(DisasContext *s, uint32_t insn)
->       */
->      if (s->fp_excp_el) {
->          gen_exception_insn(s, 4, EXCP_UDEF,
-> -                           syn_fp_access_trap(1, 0xe, s->thumb), s->fp_excp_el);
-> +                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
->          return 0;
->      }
->  
-> @@ -5137,7 +5137,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
->       */
->      if (s->fp_excp_el) {
->          gen_exception_insn(s, 4, EXCP_UDEF,
-> -                           syn_fp_access_trap(1, 0xe, s->thumb), s->fp_excp_el);
-> +                           syn_fp_access_trap(1, 0xe, false), s->fp_excp_el);
->          return 0;
->      }
->  
+> +/* Some secure-only AArch32 registers trap to EL3 if used from
+> + * Secure EL1 (but are just ordinary UNDEF in other non-EL3 contexts).
+> + * We assume that the .access field is set to PL1_RW.
+> + */
+
+Maybe we should also make a note that there is no secure EL1 if EL3 is
+using AArch32 as it is done for ats_access()?
+
+Kind regards,
+Sergey
+
+> +static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+> +                                            const ARMCPRegInfo *ri)
+> +{
+> +    if (arm_current_el(env) == 3) {
+> +        return CP_ACCESS_OK;
+> +    }
+> +    if (arm_is_secure_below_el3(env)) {
+> +        return CP_ACCESS_TRAP_EL3;
+> +    }
+> +    /* This will be EL1 NS and EL2 NS, which just UNDEF */
+> +    return CP_ACCESS_TRAP_UNCATEGORIZED;
+> +}
+> +
+>  static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+>  {
+>      ARMCPU *cpu = arm_env_get_cpu(env);
+> @@ -3532,6 +3549,13 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+>        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
+>        .access = PL3_RW, .fieldoffset = offsetoflow32(CPUARMState, cp15.scr_el3),
+>        .writefn = scr_write },
+> +    { .name = "MDCR_EL3", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 3, .opc2 = 1,
+> +      .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.mdcr_el3) },
+> +    { .name = "SDCR", .type = ARM_CP_ALIAS,
+> +      .cp = 15, .opc1 = 0, .crn = 1, .crm = 3, .opc2 = 1,
+> +      .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
+> +      .fieldoffset = offsetoflow32(CPUARMState, cp15.mdcr_el3) },
+>      { .name = "SDER32_EL3", .state = ARM_CP_STATE_AA64,
+>        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 1,
+>        .access = PL3_RW, .resetvalue = 0,
 

@@ -1,82 +1,75 @@
-Received: by 10.25.159.19 with SMTP id i19csp1400844lfe;
-        Mon, 8 Feb 2016 07:40:31 -0800 (PST)
-X-Received: by 10.140.19.132 with SMTP id 4mr3838948qgh.56.1454946031607;
-        Mon, 08 Feb 2016 07:40:31 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1401744lfe;
+        Mon, 8 Feb 2016 07:42:32 -0800 (PST)
+X-Received: by 10.55.52.211 with SMTP id b202mr35254380qka.27.1454946152282;
+        Mon, 08 Feb 2016 07:42:32 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u21si19797635qki.75.2016.02.08.07.40.31
+        by mx.google.com with ESMTPS id p45si11913042qgd.18.2016.02.08.07.42.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Feb 2016 07:40:31 -0800 (PST)
+        Mon, 08 Feb 2016 07:42:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45883 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:45896 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aSnvS-0007ir-DK
-	for alex.bennee@linaro.org; Mon, 08 Feb 2016 10:40:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47280)
+	id 1aSnxP-0000PP-Pe
+	for alex.bennee@linaro.org; Mon, 08 Feb 2016 10:42:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aSnvP-0007g2-Ks
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:40:28 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aSnxN-0000Ou-EO
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:42:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aSnvM-0001Pm-CI
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:40:27 -0500
-Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:34732)
+	(envelope-from <peter.maydell@linaro.org>) id 1aSnxM-0001t8-Gh
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:42:29 -0500
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:35011)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aSnvM-0001Pc-3w; Mon, 08 Feb 2016 10:40:24 -0500
-Received: by mail-lf0-x242.google.com with SMTP id 78so5281110lfy.1;
-	Mon, 08 Feb 2016 07:40:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=NsSba7l3ir0ho/1pbRIv7gk6nbVWobhzvryOoykwdIQ=;
-	b=kDevmDkUHhTxBtykSNhsYFnT/zEJ42bHCAr5i2DIInee8jSRCCm77x2gUs50VuCufA
-	6Z1oxlnu1igYO3nD2DNnzEAUQpcB7RbeABOn9Zsl7MGoCo4UVcps3rxBTNFiPR7DYWhv
-	4mYYGy950XrheU27mT/JIJwo+q+rlnF18L5P79wAqz4KJH115O9LUq+N2zBSr8vk/euG
-	8AxLtjkMg1n2pYhZiSdhKs16M+ClLwBtNrhj4eVFSMdiWHM9BJFaalr2aQvqUDOkGOLt
-	o0Z7BLr0Nv1TqsMfFvFtO1CECu5fjS/LQMc0QRRDYArnU6pk1eNWhgUHzOXABX2QWCZF
-	gBAg==
+	(envelope-from <peter.maydell@linaro.org>) id 1aSnxM-0001sy-89
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:42:28 -0500
+Received: by mail-vk0-x233.google.com with SMTP id e6so97440377vkh.2
+	for <qemu-arm@nongnu.org>; Mon, 08 Feb 2016 07:42:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=5JrSKzpAWGPWgc7h1WivWKMYTWeYc5hrfhE0QSWEjGA=;
+	b=D8yKKoZzqIQVRsME03nuyUQyeUNKFnPXL9hNL2yAw8PaQyFYc8D2T9PNvTgz49gzHG
+	as7GFeiabrip37G8g9wjK+B0q4ZsWEFCT9C212M94IOuCOhm7uMJWfnb7aSCchGQzNSD
+	G7znHhTYbwgQzT//j/Cm+BvcLNndfEsuvFbi0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=NsSba7l3ir0ho/1pbRIv7gk6nbVWobhzvryOoykwdIQ=;
-	b=Iegw7PHOEZ9hFhLqtLpjbqZCnw1ZGupKZeOlPg6z6yTTHt/bQ4Y/2LE3Oot9w8avxv
-	PM8/0w9+Qj+LMZ82s0jLWZFKRia23VfgoKUDIes7G4z7IdYFFt+Gv78FRa2gAGJMbih6
-	JrfMfA9lNdcG7UHqiMcYln/j69GGOOgGSl+wsUzwjKeFTqbH8n3WeSlor7IXj+UtukW3
-	YPv6gzmIy6LdG0xZKv2sWVZp2MgOVwMp+IyPn7rNWt6nD9dmqXS7qUkKZG1vxNPysrGD
-	7l30GJ0Po9x92dQsCS0p33rGKR+v0H3jV0+kcFWu0b++Q0zxKn2SSo8d47ROMAR9P9n/
-	qZRw==
-X-Gm-Message-State: AG10YOTlXmQPyB+NAsJ/pLlnsapCdCh6jBcu6tgNcINYkntQ/gf++y/rjc+SREsd1dH/Hg==
-X-Received: by 10.25.16.30 with SMTP id f30mr12656928lfi.126.1454946023333;
-	Mon, 08 Feb 2016 07:40:23 -0800 (PST)
-Received: from [10.30.10.50] ([213.243.91.10])
-	by smtp.googlemail.com with ESMTPSA id
-	l8sm4150951lfe.24.2016.02.08.07.40.21
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 08 Feb 2016 07:40:22 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1454690704-16233-1-git-send-email-peter.maydell@linaro.org>
-	<1454690704-16233-3-git-send-email-peter.maydell@linaro.org>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56B8B6E5.1060809@gmail.com>
-Date: Mon, 8 Feb 2016 18:40:21 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=5JrSKzpAWGPWgc7h1WivWKMYTWeYc5hrfhE0QSWEjGA=;
+	b=JRjFHEgV0ciAsgVsvz+r9yDvuIQZuV+oUBNf47NfcGwEUMIYzttyEhf6xqlxDnqxE3
+	NcqWn5zi6wZWGgjaT1h+OaGGHa4rRKJr5iwbklDg8cjb/UvQzYuXEbYjLFjk4HfZUpg9
+	S/6sxeeSOTsoMAZ3XLc+uWAxqBcUeFvv5mwD60T3w2FbK6BEESD13v5tCFxz4kw/8Nra
+	Dim5i11pWcwi1O9tQxxc00whbYetau2S43nfxZ0RpuvFQ53YocQscnUklh6ZT31rNMzB
+	DjBirLzP4vo1FvbzaQxND/xeq7lmLBeIj0o1XxCV7hNMCLQ4p+oO7wHE5rDsOvcrh62D
+	RH1A==
+X-Gm-Message-State: AG10YOSGMak2qg2DZ0K1gRUXkzCLwQBc3FLbPqJqu2QRK8yzupl2vVFPgMWbiE5cFDIHB4vZq+jvztm8trzN7jJQ
+X-Received: by 10.31.47.207 with SMTP id v198mr20627584vkv.6.1454946147150;
+	Mon, 08 Feb 2016 07:42:27 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1454690704-16233-3-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Received: by 10.31.56.216 with HTTP; Mon, 8 Feb 2016 07:42:07 -0800 (PST)
+In-Reply-To: <CAFEAcA9MXhTT2aqEvaDx4ksOMuDU15Z4Wp_4ht+dT3XufPSrbw@mail.gmail.com>
+References: <1454256948-10485-1-git-send-email-serge.fdrv@gmail.com>
+	<1454256948-10485-2-git-send-email-serge.fdrv@gmail.com>
+	<CAFEAcA9MXhTT2aqEvaDx4ksOMuDU15Z4Wp_4ht+dT3XufPSrbw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Feb 2016 15:42:07 +0000
+Message-ID: <CAFEAcA_gTqN6NWZwngezWp0HrMU_4tA9523q2UH9wBXjeNsyew@mail.gmail.com>
+To: Sergey Fedorov <serge.fdrv@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::242
-Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 2/6] target-arm: Fix handling of SCR.SMD
+X-Received-From: 2607:f8b0:400c:c05::233
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [PATCH v3 1/2] cpu: Add callback to check
+ architectural watchpoint match
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -90,48 +83,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S9cwtjNoi7RF
+X-TUID: Fx9yOfIqAamK
 
-On 05.02.2016 19:45, Peter Maydell wrote:
-> We weren't quite implementing the handling of SCR.SMD correctly.
-> The condition governing whether the SMD bit should apply only
-> for NS state is "is EL3 is AArch32", not "is the current EL AArch32".
-> Fix the condition, and clarify the comment both to reflect this and
-> to expand slightly on what's going on for the v7-no-Virtualization case.
+Andreas -- can I nudge you to say your preferences on whether
+QOM CPU methods should have wrapper functions, please?
+I think this patchset is otherwise ready to apply.
+
+thanks
+-- PMM
+
+On 2 February 2016 at 12:23, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 31 January 2016 at 16:15, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+>> When QEMU watchpoint matches, that is not definitely an architectural
+>> watchpoint match yet. If it is a stop-before-access watchpoint then that
+>> is hardly possible to ignore it after throwing a TCG exception.
+>>
+>> A special callback is introduced to check for architectural watchpoint
+>> match before raising a TCG exception.
+>>
+>> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
-
-> ---
-> The bit about forcing SMD to zero confused me, anyway, since I
-> expected it to mean "in this function", not elsewhere...
-> ---
->  target-arm/op_helper.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
+> This looks OK to me, but there's one QOM CPU style question
+> I'd like Andreas's view on.
 >
-> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-> index 313c0f8..4fedae5 100644
-> --- a/target-arm/op_helper.c
-> +++ b/target-arm/op_helper.c
-> @@ -614,12 +614,14 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
->      int cur_el = arm_current_el(env);
->      bool secure = arm_is_secure(env);
->      bool smd = env->cp15.scr_el3 & SCR_SMD;
-> -    /* On ARMv8 AArch32, SMD only applies to NS state.
-> -     * On ARMv7 SMD only applies to NS state and only if EL2 is available.
-> -     * For ARMv7 non EL2, we force SMD to zero so we don't need to re-check
-> -     * the EL2 condition here.
-> +    /* On ARMv8 with EL3 AArch64, SMD applies to both S and NS state.
-> +     * On ARMv8 with EL3 AArch32, or ARMv7 with the Virtualization
-> +     *  extensions, SMD only applies to NS state.
-> +     * On ARMv7 without the Virtualization extensions, the SMD bit
-> +     * doesn't exist, but we forbid the guest to set it to 1 in scr_write(),
-> +     * so we need not special case this here.
->       */
-> -    bool undef = is_a64(env) ? smd : (!secure && smd);
-> +    bool undef = arm_feature(env, ARM_FEATURE_AARCH64) ? smd : smd && !secure;
->  
->      if (arm_is_psci_call(cpu, EXCP_SMC)) {
->          /* If PSCI is enabled and this looks like a valid PSCI call then
-
+>> @@ -2024,6 +2024,7 @@ static const MemoryRegionOps notdirty_mem_ops = {
+>>  static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
+>>  {
+>>      CPUState *cpu = current_cpu;
+>> +    CPUClass *cc = CPU_GET_CLASS(cpu);
+>>      CPUArchState *env = cpu->env_ptr;
+>>      target_ulong pc, cs_base;
+>>      target_ulong vaddr;
+>> @@ -2049,6 +2050,11 @@ static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
+>>              wp->hitaddr = vaddr;
+>>              wp->hitattrs = attrs;
+>>              if (!cpu->watchpoint_hit) {
+>> +                if (wp->flags & BP_CPU &&
+>> +                    !cc->debug_check_watchpoint(cpu, wp)) {
+>
+> At least some of the QOM CPU methods have wrapper functions
+> (eg cpu_set_pc(), cpu_unaligned_access()) that just bundle up
+> the CPU_GET_CLASS and method invocation). Should new methods
+> like the debug_check_watchpoint() introduced by this patch have
+> that kind of wrapper function, or is it optional?
+>
+> (There also seems to be a mix of "implement default/common
+> behaviour in a common method implementation" vs "implement
+> it in the wrapper function if the method pointer is NULL".
+> I think the former, as done in this patch, is probably nicer
+> but again would defer to Andreas.)
+>
+> thanks
+> -- PMM

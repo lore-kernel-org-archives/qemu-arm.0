@@ -1,106 +1,164 @@
-Received: by 10.25.159.19 with SMTP id i19csp1324667lfe;
-        Mon, 8 Feb 2016 05:18:32 -0800 (PST)
-X-Received: by 10.140.93.87 with SMTP id c81mr34975677qge.46.1454937512194;
-        Mon, 08 Feb 2016 05:18:32 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp1394364lfe;
+        Mon, 8 Feb 2016 07:27:53 -0800 (PST)
+X-Received: by 10.55.197.6 with SMTP id p6mr28553901qki.75.1454945273500;
+        Mon, 08 Feb 2016 07:27:53 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d10si30401502qgf.109.2016.02.08.05.18.32
+        by mx.google.com with ESMTPS id l74si30880331qgl.121.2016.02.08.07.27.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Feb 2016 05:18:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 08 Feb 2016 07:27:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:44643 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45733 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aSli3-0001KG-Mo
-	for alex.bennee@linaro.org; Mon, 08 Feb 2016 08:18:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36034)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aSnjF-0000fX-0f
+	for alex.bennee@linaro.org; Mon, 08 Feb 2016 10:27:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aSlhX-0000qR-1V
-	for qemu-devel@nongnu.org; Mon, 08 Feb 2016 08:17:59 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aSnh1-0005SE-2h
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:25:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aSlhW-00067i-9C
-	for qemu-devel@nongnu.org; Mon, 08 Feb 2016 08:17:58 -0500
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:34373)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aSngw-0006Ie-Qv
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 10:25:34 -0500
+Received: from mail-lb0-x242.google.com ([2a00:1450:4010:c04::242]:36241)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aSlhW-00067X-47
-	for qemu-devel@nongnu.org; Mon, 08 Feb 2016 08:17:58 -0500
-Received: by mail-vk0-x235.google.com with SMTP id e185so94612936vkb.1
-	for <qemu-devel@nongnu.org>; Mon, 08 Feb 2016 05:17:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=T7ZIC7ltKKEjM8S80IjbcdsmLzZD0TU7UE11AsnptW0=;
-	b=hMB7ws4kZtmDnGC7KdwDldVA//J9cOnWXZOaUXPgOI5UwHsmQT+vh9jmWVgR5FrzDy
-	ARxLx7E2Nr52dJv6rGxUdl/2DITFVVHLTry5/yHJPQqCM0/NNKbigODUUDL5UuxpvyDD
-	h/DjMezKo0HhCHAmx6H6d6C+kNfhTVFWB4QCY=
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aSngw-0006IC-Ao; Mon, 08 Feb 2016 10:25:30 -0500
+Received: by mail-lb0-x242.google.com with SMTP id zr1so4579886lbb.3;
+	Mon, 08 Feb 2016 07:25:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=ICZqAwV/cAF5sNDGmeBF30tUPlp3oe7Bo38VRa95awI=;
+	b=Ic1agOk+O0rh7bjVdiVAGW52VEBHVo2aCnYS+royEkZdKrSXdinc+aScX/WzVS76YD
+	p6SD7DfRuC0kRDkb/ZAiq8RjjI+5i4KTELBMxU6JPYeRY/mJFDRrM7Vmydb9anzj7mu4
+	HnLVUTZaLNDnZoMMZEstcPv5IxpA8mwjYaRfCMCXbuM60UXdbQB4OO6r3zlWLpXhMVhT
+	oI1maVxUQYzS4iQAG2ZX7kXakLkOLwzqcsYIscQAey4ali9o9QiL01PKcodbW8tA0sZn
+	HoQSWgddA+LtiBT4JqZ4PIxYzNOvl3HfONSJCzyZbmjvF3GHzyCbrMPtzBy1n4DQBfG0
+	QlEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=T7ZIC7ltKKEjM8S80IjbcdsmLzZD0TU7UE11AsnptW0=;
-	b=JdNOxYB/HWntZ/UHYnhMAxgNbGJ9mANbu8fnuBUIPLb4ot7cuiIKWqPpq3SNNBf4U1
-	M12aUplC4ne0pEht4MNDPqHDKczlEMea9Im83HeSTE/nFmSOgIAD+Wt9c7DWymdPKOjQ
-	ZIvXlDr1si51xL8CGUQuJoyd0HEH0wQVKWP0KRXmzby70AJk1TGpvfW2Yj8Ln/Wpqv/B
-	FXwT/gdBSKCYzeJ5IJ2oJF/L9TkI0pQAHGROV4b+LulCOHLWm9TAmGQqFj1oqlEb/TEw
-	p2gbGi6k18Sxc2HufEmyqv/7hVz9drsKr8W86eKHVTI+47YS/zLell6XJkVVst5EHIhV
-	LtqQ==
-X-Gm-Message-State: AG10YOTIY99Yd2nF+FvJmzREEqdiXgnesf4oNNaCN0RVdL2ybrwtaekpF3hpHy2HxGa0Ytw8sio4JwhQkY4urU5I
-X-Received: by 10.31.141.2 with SMTP id p2mr20359658vkd.37.1454937477476; Mon,
-	08 Feb 2016 05:17:57 -0800 (PST)
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=ICZqAwV/cAF5sNDGmeBF30tUPlp3oe7Bo38VRa95awI=;
+	b=N8/bTVu8gO7GXddPrBWTgG8s57F7DLoCvX9Lxno9SEezLQZPeNOKvQq908EtbpWA88
+	o0YaWXO4/4RPmAfR5zdBWmmse+e99VkVjQxEyNS+2I9xbFR8EKcR0Ner2OWlF5E2v+/S
+	eX+mZg/aYXwjdN+G8RJfCIU8t6L07oO/v1EnPS7JA+A37MZcvdQBdiG61pELEwQdRTQM
+	SA6t0j9qvMlzrgxdpeCd0YWD5g3xg4SZNuOtVTiaeH/K9PWkSkv6+O7EPxhSRJOaL/PR
+	8/uDZ6DcQ9G6MzNIY0a+UO1RN9KU1GfXEU9YJbKZzAGcqq0hSYknRsZ++LerE6AAQMVI
+	DgiQ==
+X-Gm-Message-State: AG10YOTODmwXt6/FUe9lFfvCukY6+157VgcZvmLc3JFkk3Gn3Ls0+7dlebnNmCTirQjWhg==
+X-Received: by 10.112.13.8 with SMTP id d8mr11518459lbc.110.1454945129120;
+	Mon, 08 Feb 2016 07:25:29 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	rx3sm3938037lbb.35.2016.02.08.07.25.27
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 08 Feb 2016 07:25:27 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1454690704-16233-1-git-send-email-peter.maydell@linaro.org>
+	<1454690704-16233-2-git-send-email-peter.maydell@linaro.org>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56B8B366.1040203@gmail.com>
+Date: Mon, 8 Feb 2016 18:25:26 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Mon, 8 Feb 2016 05:17:38 -0800 (PST)
-In-Reply-To: <1454683067-16001-1-git-send-email-peter.maydell@linaro.org>
-References: <1454683067-16001-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Feb 2016 13:17:38 +0000
-Message-ID: <CAFEAcA9RBtFw75=UF3tSS8uK-EF7OuhSDVfNdhuHOx-8KiPdyg@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1454690704-16233-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Cc: qemu-arm <qemu-arm@nongnu.org>, Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 0/3] target-arm: Fix IL in
- syndromes for FP and copro traps
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c04::242
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/6] target-arm: correct CNTFRQ
+	access rights
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dEpPBhYd2B+u
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XX+Q/aIcgVpg
 
-On 5 February 2016 at 14:37, Peter Maydell <peter.maydell@linaro.org> wrote:
-> This series corrects a bug I noticed while reading the code.
+On 05.02.2016 19:44, Peter Maydell wrote:
+> Correct some corner cases we were getting wrong for
+> CNTFRQ access rights:
+>  * should UNDEF from 32-bit Secure EL1
+>  * only writable from the highest implemented exception level,
+>    which might not be EL1 now
 >
-> In syndrome register values, the IL bit indicates the instruction
-> length, and is 1 for 4-byte instructions and 0 for 2-byte
-> instructions.  All A64 and A32 instructions are 4-byte, but Thumb
-> instructions may be either 2 or 4 bytes long.  Unfortunately we named
-> the parameter to the syn_* functions for constructing syndromes
-> "is_thumb", which falsely implies that it should be set for all Thumb
-> instructions, rather than only the 16-bit ones.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target-arm/helper.c | 31 ++++++++++++++++++++++++++++---
+>  1 file changed, 28 insertions(+), 3 deletions(-)
 >
-> Fix the parameter names to a less confusing "is_16bit", and
-> correct the places where we should be passing in 'false' rather
-> than 's->thumb' for syndrome construction, which are the
-> coprocessor, VFP and Neon instruction traps (all these are always
-> 32-bit for Thumb).
->
-> The calls to syn_aa32_svc() and syn_aa32_bkpt() correctly still
-> use s->thumb, because for SVC and BKPT the Thumb encoding is 16
-> bits but the ARM encoding is 32 bits.
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 7a8881a..082701a 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -1217,9 +1217,34 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
+>  static CPAccessResult gt_cntfrq_access(CPUARMState *env, const ARMCPRegInfo *ri,
+>                                         bool isread)
+>  {
+> -    /* CNTFRQ: not visible from PL0 if both PL0PCTEN and PL0VCTEN are zero */
+> -    if (arm_current_el(env) == 0 && !extract32(env->cp15.c14_cntkctl, 0, 2)) {
+> -        return CP_ACCESS_TRAP;
+> +    /* CNTFRQ: not visible from PL0 if both PL0PCTEN and PL0VCTEN are zero.
+> +     * Writable only at the highest implemented exception level.
+> +     */
+> +    switch (arm_current_el(env)) {
+> +    case 0:
+> +        if (!extract32(env->cp15.c14_cntkctl, 0, 2)) {
+> +            return CP_ACCESS_TRAP;
+> +        }
+> +        /* EL0 reads are forbidden by the .access fields */
 
-Applied to target-arm.next, thanks.
+s/reads/writes/ ?
 
--- PMM
+> +        break;
+> +    case 1:
+> +        if (!isread && (arm_feature(env, ARM_FEATURE_EL2)
+> +                        || arm_feature(env, ARM_FEATURE_EL3))) {
+> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
+> +        }
+> +        if (!isread && ri->state == ARM_CP_STATE_AA32 &&
+> +            arm_is_secure_below_el3(env)) {
+> +            /* Accesses from 32-bit Secure EL1 UNDEF (*not* trap to EL3!) */
+> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
+> +        }
+> +        break;
+> +    case 2:
+> +        if (!isread && arm_feature(env, ARM_FEATURE_EL3)) {
+> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
+> +        }
+> +        break;
+> +    case 3:
+> +        break;
+>      }
+>      return CP_ACCESS_OK;
+>  }
+
+Maybe calculating "the highest implemented exception level" could
+simplify reading of the code a bit? E.g.:
+
+    int highest_el = arm_feature(env, ARM_FEATURE_EL3) ? 3 :
+                     arm_feature(env, ARM_FEATURE_EL2) ? 2 : 1;
+
+We would probably want to have a dedicated static inline function for
+this similar to HighestEL() from ARMv8 ARM pseudocode.
+
+Kind regards,
+Sergey

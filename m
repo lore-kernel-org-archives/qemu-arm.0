@@ -1,95 +1,73 @@
-Received: by 10.25.159.19 with SMTP id i19csp1036213lfe;
-        Sun, 7 Feb 2016 14:38:09 -0800 (PST)
-X-Received: by 10.140.108.181 with SMTP id j50mr29245707qgf.104.1454884689356;
-        Sun, 07 Feb 2016 14:38:09 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1320961lfe;
+        Mon, 8 Feb 2016 05:11:43 -0800 (PST)
+X-Received: by 10.141.23.207 with SMTP id z198mr7813706qhd.52.1454937103340;
+        Mon, 08 Feb 2016 05:11:43 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q18si6559154qkh.45.2016.02.07.14.38.09
+        by mx.google.com with ESMTPS id d2si30408641qkb.17.2016.02.08.05.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 07 Feb 2016 14:38:09 -0800 (PST)
+        Mon, 08 Feb 2016 05:11:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:38838 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:44582 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aSXy4-0006tz-Q3
-	for alex.bennee@linaro.org; Sun, 07 Feb 2016 17:38:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49247)
+	id 1aSlbS-0004hI-Ox
+	for alex.bennee@linaro.org; Mon, 08 Feb 2016 08:11:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aSXy2-0006tj-7H
-	for qemu-arm@nongnu.org; Sun, 07 Feb 2016 17:38:07 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aSlbQ-0004h5-Dr
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 08:11:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aSXxy-0003ia-34
-	for qemu-arm@nongnu.org; Sun, 07 Feb 2016 17:38:06 -0500
-Received: from mail-bn1bon0138.outbound.protection.outlook.com
-	([157.56.111.138]:26806
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1aSlbK-0004Rl-OY
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 08:11:40 -0500
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:33589)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aSXxx-0003hr-RW
-	for qemu-arm@nongnu.org; Sun, 07 Feb 2016 17:38:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=RpcSB0w/oekpFtZbX75RZ0uNtE6x4at1BbtgeSUuT5s=;
-	b=ATBq9/JjB+4LWe2JUmlC0//U9tYOgu3JFhRWwTyFjE8mJEa82BP4RPMuKhGu8rEABnDnzOVxenBHKCTSGuJRfjPVKemdGuOiFK4kBK7qHg+oLhx4aNLi/Dr2eG9Ahd0UEKpadFK9Zz/lc1ZyeEJqs1rwfrux5tgl04GU4erqwjo=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
-	SMTP Server (TLS) id 15.1.403.16; Sun, 7 Feb 2016 22:37:59 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0403.016; Sun, 7 Feb 2016 22:37:59 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Stephen Warren <swarren@wwwdotorg.org>, Peter Maydell
-	<peter.maydell@linaro.org>
-Thread-Topic: [PATCH] bcm2835_property: implement "get board revision" query
-Thread-Index: AQHRYWW7p5/4i8b4T0OgZ6bFlnQrc58hK8Iw
-Date: Sun, 7 Feb 2016 22:37:59 +0000
-Message-ID: <BLUPR0301MB20343F80372F1202A8EF2D3A9ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1454821757-27964-1-git-send-email-swarren@wwwdotorg.org>
-In-Reply-To: <1454821757-27964-1-git-send-email-swarren@wwwdotorg.org>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: wwwdotorg.org; dkim=none (message not signed)
-	header.d=none;wwwdotorg.org; dmarc=none action=none
-	header.from=microsoft.com;
-x-originating-ip: [129.94.8.223]
-x-ms-office365-filtering-correlation-id: 9aae450a-c83a-4ef3-e131-08d3300f551c
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
-	5:HkaU/qUXyWo6Sqj2iruCmf7H9/GuqfObBbrNE6S715rlt0BYyLsxODpuo09585nXPpS2JPRJtPg2g3k8cSl0/r1bZwkoh7S35yYFXzr2NuWR8z0XkszY4iQGBNNNZT+fZDVrtrGyDPmk/pVqHBEYJg==;
-	24:pi0c316iC/6er0rb1jx1O9/GHO7uFn521S65AeHM9cgGkXe792AHx3zsN6hG/IrLNUTAjwD11WtzDJfUfgrJgc4siBxKSUznK+vAt5SZMVI=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
-x-microsoft-antispam-prvs: <BLUPR0301MB2034B4398DCDA48E93A185649ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(8121501046)(5005006)(3002001)(10201501046)(61426038)(61427038);
-	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; 
-x-forefront-prvs: 08457955C4
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(51414003)(164054003)(377454003)(33656002)(11100500001)(1096002)(1220700001)(66066001)(2906002)(3846002)(586003)(102836003)(5003600100002)(10090500001)(3660700001)(3280700002)(76576001)(5002640100001)(8990500004)(10290500002)(87936001)(4326007)(74316001)(189998001)(40100003)(86612001)(5001770100001)(19580395003)(54356999)(76176999)(50986999)(19580405001)(5008740100001)(5001960100002)(122556002)(5004730100002)(92566002)(106116001)(15975445007)(77096005)(5005710100001)(10400500002)(2950100001)(86362001);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	MLV:sfv; LANG:en; 
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <peter.maydell@linaro.org>) id 1aSlbK-0004Rg-Ir
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 08:11:34 -0500
+Received: by mail-vk0-x232.google.com with SMTP id k196so27960012vka.0
+	for <qemu-arm@nongnu.org>; Mon, 08 Feb 2016 05:11:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=wQ0/PgP7JcKHR082v14SdytUAQyYyhF8bdaqvGH8gsk=;
+	b=cDA2Sxqpggkpc9eRxFkT/PfZ7XptCSbKT+uCdcilrLme1lRJJr1rwyvv8WqlazGXcl
+	gx5wz39gCt3Q1EWYnQmN3PndN0y//z8Eam2zO5VTs9MM/YVzgQ741PjnUyioX/bKKH+K
+	oGECwlGXv6K/E30h7iMVYTJSaIlq42pbAHtsE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=wQ0/PgP7JcKHR082v14SdytUAQyYyhF8bdaqvGH8gsk=;
+	b=he57jy5YOEL3EwHtYc6BQhbYgveM1TK00m6pcz9ad9IPCYvPDIqjpwpX5lKV/kC2m9
+	hYi1sOyoZdI6D+YrgvrFM3yMCwictYHXLfkWBMX56989wc/DiUzZARCU22TBpHI+jBTq
+	NUnraEhfgTBR7tjND4IAoDBilzJufIRM/ceflAZaeKNCMTAaof85XOQO432a8ddbGPFp
+	JL2+WW/jJ3xFeEzCReYO/N2umUDmf4ka/m9oR/DGDxbLhL8DfVznw2QDp1bxyuegRcXY
+	J/pvkwkiDLYwb2VnL0MEf6JBtU9twybA9s4slVtQAJW2JvGXnQBU9+UgHqH+L9ktZ1Qp
+	LLLg==
+X-Gm-Message-State: AG10YOQwF/ylN5oRBruXktTZFo5sjAI8BEjwUMTkZLdXuVYvHxW/nVird9/UQ5IijioWYhewqLOEjIiU+V8oqEho
+X-Received: by 10.31.141.2 with SMTP id p2mr20332624vkd.37.1454937094073; Mon,
+	08 Feb 2016 05:11:34 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Feb 2016 22:37:59.8095 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.111.138
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: implement "get board
-	revision" query
+Received: by 10.31.56.216 with HTTP; Mon, 8 Feb 2016 05:11:14 -0800 (PST)
+In-Reply-To: <56B63EB1.8080905@gmail.com>
+References: <1454506721-11843-1-git-send-email-peter.maydell@linaro.org>
+	<1454506721-11843-3-git-send-email-peter.maydell@linaro.org>
+	<56B63EB1.8080905@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Feb 2016 13:11:14 +0000
+Message-ID: <CAFEAcA8uVSku-8Y=bg+x+6LCzinVLAs_Fe=wq3A7LsnmqexOVQ@mail.gmail.com>
+To: Sergey Fedorov <serge.fdrv@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::232
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/7] target-arm: Implement
+	MDCR_EL3 and SDCR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -103,50 +81,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: f4M4uQZqUT5B
+X-TUID: rxC/2kfDEbAV
 
-Hi Stephen,
+On 6 February 2016 at 18:42, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+> On 03.02.2016 16:38, Peter Maydell wrote:
+>> --- a/target-arm/helper.c
+>> +++ b/target-arm/helper.c
+>> @@ -364,6 +364,23 @@ static CPAccessResult access_el3_aa32ns_aa64any(CPUARMState *env,
+>>      return CP_ACCESS_OK;
+>>  }
+>>
+>> +/* Some secure-only AArch32 registers trap to EL3 if used from
+>> + * Secure EL1 (but are just ordinary UNDEF in other non-EL3 contexts).
+>> + * We assume that the .access field is set to PL1_RW.
+>> + */
+>
+> Maybe we should also make a note that there is no secure EL1 if EL3 is
+> using AArch32 as it is done for ats_access()?
 
-Thanks for the patch!
+I added a line to the comment:
+ * Note that an access from Secure EL1 can only happen if EL3 is AArch64.
 
-> From: Stephen Warren [mailto:swarren@wwwdotorg.org]
-> Sent: Sunday, 7 February 2016 4:09 PM
->=20
-> Return a valid value from the BCM2835 property mailbox query "get board
-> revision". This query is used by U-Boot. Implementing it fixes the first
-> obvious difference between qemu and real HW.
->=20
-> The value returned is currently hard-coded to match the RPi2 I own. Other
-> values are legal, e.g. different board manufacturer field values are like=
-ly to
-> exist in the wild. When support for other RPi models is added, the value =
-can
-> be made dynamic.
->=20
-> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
-> Signed-off-by: Stephen Warren <swarren@wwwdotorg.org>
-> ---
-> This looks like the only non-video-related mailbox request used by U-Boot
-> that wasn't implemented by qemu.
->=20
-> The only other feature required for U-Boot to get to its command prompt i=
-s
-> the BCM2835 timer.
->=20
-> Andrew, I assume you're actively working on mainlining all the features i=
-n
-> your github branch? I look forward to U-Boot working on qemu:-)
-
-That's right, although I probably won't get the next round of patches out u=
-ntil late Feb. However, my goal in that series is to merge support for Pi1,=
- so:
-
-* Do you know where we can find the appropriate values for Pi1 boards?
-* Can you please propagate the board-rev property through bcm2835_periphera=
-ls and bcm2836 so that the appropriate value is being set in the board defi=
-nition file (raspi.c)? This should be as simple as a few calls to object_pr=
-operty_add_alias(), e.g.:
-https://github.com/0xabu/qemu/blob/raspi/hw/arm/bcm2836.c#L42
-
-Thanks,
-Andrew
+thanks
+-- PMM

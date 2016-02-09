@@ -1,85 +1,63 @@
-Received: by 10.25.159.19 with SMTP id i19csp1654988lfe;
-        Mon, 8 Feb 2016 18:08:27 -0800 (PST)
-X-Received: by 10.140.167.86 with SMTP id n83mr39920125qhn.41.1454983707592;
-        Mon, 08 Feb 2016 18:08:27 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1696444lfe;
+        Mon, 8 Feb 2016 20:28:17 -0800 (PST)
+X-Received: by 10.140.219.208 with SMTP id p199mr41004307qhb.80.1454992097037;
+        Mon, 08 Feb 2016 20:28:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j11si23465111qgj.90.2016.02.08.18.08.27
+        by mx.google.com with ESMTPS id 92si22868308qgz.58.2016.02.08.20.28.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Feb 2016 18:08:27 -0800 (PST)
+        Mon, 08 Feb 2016 20:28:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@koconnor-net.20150623.gappssmtp.com
-Received: from localhost ([::1]:50837 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51677 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aSxj9-0005VA-3f
-	for alex.bennee@linaro.org; Mon, 08 Feb 2016 21:08:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48191)
+	id 1aSzuS-0000BX-EY
+	for alex.bennee@linaro.org; Mon, 08 Feb 2016 23:28:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45649)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aSxj6-0005UW-R0
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 21:08:25 -0500
+	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuP-0000BI-S8
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aSxj3-0008PI-NJ
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 21:08:24 -0500
-Received: from mail-qg0-x243.google.com ([2607:f8b0:400d:c04::243]:33438)
+	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuM-000539-M3
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:13 -0500
+Received: from avon.wwwdotorg.org ([70.85.31.133]:60764)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aSxj2-0008Os-Gb
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 21:08:21 -0500
-Received: by mail-qg0-x243.google.com with SMTP id y89so4773377qge.0
-	for <qemu-arm@nongnu.org>; Mon, 08 Feb 2016 18:08:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=koconnor-net.20150623.gappssmtp.com; s=20150623;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=0vT27FIhgK0j6BGMjJRQYCeOt1knMCVUe+eEhwwba/Q=;
-	b=dox1OwylCG8F6Ew1A7NtKpAPDGZAa4vY3Go4JdPbiQ3wZx6E2zhTjKYIjBnQaC5q1a
-	luMo+etdS1h19Ao+9USCPq6Qvmi1GBhxazV76j5cr086Mr6MCo+GdZAvsRMGBaI6S8Tz
-	0fIZlvgrYwcLEWU7AupE6EmbXisUPmTcyGNXfrIxhnggW4/cig14AC2J6BhGrIycIl7M
-	mNr5GoFI+fYbdzVRIaDikWwmydu34eyeZoorcoq1IwDqmS2opCaz8Ri0U8X72eLtZr39
-	IDq5fsbL3X8ODSZoQMhhiK8tpSVCW311cYRqTB58OF6Uqig+LkxnY1FbMpG5hnI0x5jQ
-	o6IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=0vT27FIhgK0j6BGMjJRQYCeOt1knMCVUe+eEhwwba/Q=;
-	b=MwRCssa/TUeiWN5CckglapwFVkjnPLT/KEqslEFdWGz8ol37H/9SIpu8ZylgcA3PKe
-	vkG++pG0oVxmv+9/L81bU5OKjUYkb65HXSDGqMJhccuKZC1BiS9DndFheHO2wcFdx7wn
-	ENktMRvZ3NkfmVay17c/rVgJ2yk4ZRlzfeOdiKgMR3XsGYOd/0cVpQfDEIxYLUBS1ZjD
-	EVAk89nL07u+PS/FpXD/GE3J7VtJ6Xfec7rtBh6X6hvISzk6cZRmPsOGksGj2mDcl0XX
-	ajepPduXW04ldaAxoGGkHV4GTaWQHXwTyhEe+c6uMVJeqm90DamhdZz7juUQLNLpwF68
-	jWaA==
-X-Gm-Message-State: AG10YOT9NVQA6VdOEXttQHPcWAZDgE1lkhQqNKuhX1GGpXEuH2h8lUYbRviPsEZv5+xA0Q==
-X-Received: by 10.140.176.19 with SMTP id w19mr40601125qhw.59.1454983699978;
-	Mon, 08 Feb 2016 18:08:19 -0800 (PST)
-Received: from localhost
-	(209-122-232-221.c3-0.avec-ubr1.nyr-avec.ny.cable.rcn.com.
-	[209.122.232.221])
-	by smtp.gmail.com with ESMTPSA id 66sm14946714qhp.4.2016.02.08.18.08.18
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Feb 2016 18:08:19 -0800 (PST)
-Date: Mon, 8 Feb 2016 21:08:18 -0500
-From: Kevin O'Connor <kevin@koconnor.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160209020818.GA11662@morn.lan>
-References: <1453479402-14870-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuM-000531-HH
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:10 -0500
+Received: from severn.wwwdotorg.org (unknown [192.168.65.5])
+	(using TLSv1 with cipher ADH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by avon.wwwdotorg.org (Postfix) with ESMTPS id CBFDE64A5;
+	Mon,  8 Feb 2016 21:28:08 -0700 (MST)
+Received: from dart.wwwdotorg.org (localhost [127.0.0.1])
+	(using TLSv1 with cipher DHE-RSA-AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	by severn.wwwdotorg.org (Postfix) with ESMTPSA id 45DA8E40CA;
+	Mon,  8 Feb 2016 21:28:08 -0700 (MST)
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+References: <1454821757-27964-1-git-send-email-swarren@wwwdotorg.org>
+	<BLUPR0301MB20343F80372F1202A8EF2D3A9ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+From: Stephen Warren <swarren@wwwdotorg.org>
+X-Enigmail-Draft-Status: N1110
+Message-ID: <56B96AD7.1040002@wwwdotorg.org>
+Date: Mon, 8 Feb 2016 21:28:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1453479402-14870-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <BLUPR0301MB20343F80372F1202A8EF2D3A9ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Content-Type: text/plain; charset=windows-1252
+X-Virus-Scanned: clamav-milter 0.98.6 at avon.wwwdotorg.org
+X-Virus-Status: Clean
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c04::243
-Cc: qemu-devel@nongnu.org, patches@linaro.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v2 00/10] hw/sd: QOMify sd.c (and pxa2xx_mmci)
+X-Received-From: 70.85.31.133
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: implement "get board
+	revision" query
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -93,26 +71,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VMASrR2KND4y
+X-TUID: J+JuZL629zEu
 
-On Fri, Jan 22, 2016 at 04:16:32PM +0000, Peter Maydell wrote:
-> This series attempts to QOMify sd.c (the actual SD card model),
-> including a proper QOM bus between the controller and the card.
-> 
-> This series removes the experimental x-drive property on sdhci-pci;
-> the syntax for using that device changes:
-> 
-> instead of using the x-drive property:
-> 
->   -device sdhci-pci,x-drive=mydrive -drive id=mydrive,[...]
-> 
-> we create a specific sd device (which is autoplugged into the
-> sdhci-pci device's "sd-bus" bus if you don't manually connect them):
-> 
->   -device sdhci-pci -drive id=mydrive,[...] -device sd-card,drive=mydrive
-> 
+On 02/07/2016 03:37 PM, Andrew Baumann wrote:
+> Hi Stephen,
+>=20
+> Thanks for the patch!
+>=20
+>> From: Stephen Warren [mailto:swarren@wwwdotorg.org]
+>> Sent: Sunday, 7 February 2016 4:09 PM
+>>
+>> Return a valid value from the BCM2835 property mailbox query "get boar=
+d
+>> revision". This query is used by U-Boot. Implementing it fixes the fir=
+st
+>> obvious difference between qemu and real HW.
+...
+> * Do you know where we can find the appropriate values for Pi1 boards?
 
-FWIW, the series looks fine to me.
+Sure. There are two encoding schemes. For most boards, the revision
+number is a simple integer that indicates the board type. A list can be
+found at:
 
-Thanks,
--Kevin
+> https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/maste=
+r/README.md#prior-to-raspberry-pi-2
+
+(There's also a bit that indicates the Pi has been over-volted in there,
+so you need to mask off 0x1000000 or just use the LS byte when
+extracting the revision.)
+
+The RPi2 and RPi0 introduce a more complex multi-field encoding scheme
+described at:
+
+> https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/maste=
+r/README.md#raspberry-pi-2--model-zero
+
+You can find how U-Boot interprets the revision fields at:
+
+> https://github.com/swarren/u-boot/blob/rpi_dev/board/raspberrypi/rpi/rp=
+i.c#L335
+
+Also see the various xx_models[] arrays, and some more links at:
+
+> https://github.com/swarren/u-boot/blob/rpi_dev/board/raspberrypi/rpi/rp=
+i.c#L77
+

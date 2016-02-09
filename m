@@ -1,62 +1,56 @@
-Received: by 10.25.159.19 with SMTP id i19csp1696444lfe;
-        Mon, 8 Feb 2016 20:28:17 -0800 (PST)
-X-Received: by 10.140.219.208 with SMTP id p199mr41004307qhb.80.1454992097037;
-        Mon, 08 Feb 2016 20:28:17 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp1704781lfe;
+        Mon, 8 Feb 2016 20:58:45 -0800 (PST)
+X-Received: by 10.140.18.172 with SMTP id 41mr38517019qgf.7.1454993925332;
+        Mon, 08 Feb 2016 20:58:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 92si22868308qgz.58.2016.02.08.20.28.16
+        by mx.google.com with ESMTPS id a7si34066044qkb.126.2016.02.08.20.58.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Feb 2016 20:28:17 -0800 (PST)
+        Mon, 08 Feb 2016 20:58:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51677 helo=lists.gnu.org)
+Received: from localhost ([::1]:51847 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aSzuS-0000BX-EY
-	for alex.bennee@linaro.org; Mon, 08 Feb 2016 23:28:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45649)
+	id 1aT0Nw-0004fd-N3
+	for alex.bennee@linaro.org; Mon, 08 Feb 2016 23:58:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuP-0000BI-S8
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:14 -0500
+	(envelope-from <swarren@wwwdotorg.org>) id 1aT0Nt-0004eY-SV
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:58:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuM-000539-M3
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:13 -0500
-Received: from avon.wwwdotorg.org ([70.85.31.133]:60764)
+	(envelope-from <swarren@wwwdotorg.org>) id 1aT0Nq-0002tQ-Mh
+	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:58:41 -0500
+Received: from avon.wwwdotorg.org ([70.85.31.133]:55113)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <swarren@wwwdotorg.org>) id 1aSzuM-000531-HH
-	for qemu-arm@nongnu.org; Mon, 08 Feb 2016 23:28:10 -0500
+	(envelope-from <swarren@wwwdotorg.org>)
+	id 1aT0Nq-0002tC-G1; Mon, 08 Feb 2016 23:58:38 -0500
 Received: from severn.wwwdotorg.org (unknown [192.168.65.5])
 	(using TLSv1 with cipher ADH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by avon.wwwdotorg.org (Postfix) with ESMTPS id CBFDE64A5;
-	Mon,  8 Feb 2016 21:28:08 -0700 (MST)
+	by avon.wwwdotorg.org (Postfix) with ESMTPS id 4573664A5;
+	Mon,  8 Feb 2016 21:58:37 -0700 (MST)
 Received: from dart.wwwdotorg.org (localhost [127.0.0.1])
-	(using TLSv1 with cipher DHE-RSA-AES128-SHA (128/128 bits))
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
 	(No client certificate requested)
-	by severn.wwwdotorg.org (Postfix) with ESMTPSA id 45DA8E40CA;
-	Mon,  8 Feb 2016 21:28:08 -0700 (MST)
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-References: <1454821757-27964-1-git-send-email-swarren@wwwdotorg.org>
-	<BLUPR0301MB20343F80372F1202A8EF2D3A9ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	by severn.wwwdotorg.org (Postfix) with ESMTPSA id DF25DE40CA;
+	Mon,  8 Feb 2016 21:58:36 -0700 (MST)
 From: Stephen Warren <swarren@wwwdotorg.org>
-X-Enigmail-Draft-Status: N1110
-Message-ID: <56B96AD7.1040002@wwwdotorg.org>
-Date: Mon, 8 Feb 2016 21:28:07 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
-MIME-Version: 1.0
-In-Reply-To: <BLUPR0301MB20343F80372F1202A8EF2D3A9ED40@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Content-Type: text/plain; charset=windows-1252
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon,  8 Feb 2016 21:58:30 -0700
+Message-Id: <1454993910-24077-1-git-send-email-swarren@wwwdotorg.org>
+X-Mailer: git-send-email 1.9.1
+X-NVConfidentiality: public
 X-Virus-Scanned: clamav-milter 0.98.6 at avon.wwwdotorg.org
 X-Virus-Status: Clean
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 70.85.31.133
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: implement "get board
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Stephen Warren <swarren@wwwdotorg.org>
+Subject: [Qemu-arm] [PATCH V2] bcm2835_property: implement "get board
 	revision" query
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -71,48 +65,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J+JuZL629zEu
+X-TUID: Rt1dCGxFa6zX
 
-On 02/07/2016 03:37 PM, Andrew Baumann wrote:
-> Hi Stephen,
->=20
-> Thanks for the patch!
->=20
->> From: Stephen Warren [mailto:swarren@wwwdotorg.org]
->> Sent: Sunday, 7 February 2016 4:09 PM
->>
->> Return a valid value from the BCM2835 property mailbox query "get boar=
-d
->> revision". This query is used by U-Boot. Implementing it fixes the fir=
-st
->> obvious difference between qemu and real HW.
-...
-> * Do you know where we can find the appropriate values for Pi1 boards?
+Return a valid value from the BCM2835 property mailbox query "get board
+revision". This query is used by U-Boot. Implementing it fixes the first
+obvious difference between qemu and real HW.
 
-Sure. There are two encoding schemes. For most boards, the revision
-number is a simple integer that indicates the board type. A list can be
-found at:
+The value returned is currently hard-coded to match the RPi2 I own. Other
+values are legal, e.g. different board manufacturer field values are
+likely to exist in the wild.
 
-> https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/maste=
-r/README.md#prior-to-raspberry-pi-2
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Signed-off-by: Stephen Warren <swarren@wwwdotorg.org>
+---
+V2: Set the property in raspi.c, and pass it through to the property mbox
+code via property aliases.
 
-(There's also a bit that indicates the Pi has been over-volted in there,
-so you need to mask off 0x1000000 or just use the LS byte when
-extracting the revision.)
+ hw/arm/bcm2835_peripherals.c       | 2 ++
+ hw/arm/bcm2836.c                   | 2 ++
+ hw/arm/raspi.c                     | 2 ++
+ hw/misc/bcm2835_property.c         | 4 ++--
+ include/hw/misc/bcm2835_property.h | 1 +
+ 5 files changed, 9 insertions(+), 2 deletions(-)
 
-The RPi2 and RPi0 introduce a more complex multi-field encoding scheme
-described at:
-
-> https://github.com/AndrewFromMelbourne/raspberry_pi_revision/blob/maste=
-r/README.md#raspberry-pi-2--model-zero
-
-You can find how U-Boot interprets the revision fields at:
-
-> https://github.com/swarren/u-boot/blob/rpi_dev/board/raspberrypi/rpi/rp=
-i.c#L335
-
-Also see the various xx_models[] arrays, and some more links at:
-
-> https://github.com/swarren/u-boot/blob/rpi_dev/board/raspberrypi/rpi/rp=
-i.c#L77
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 18b72ecb696c..e4fb48b8035c 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -58,6 +58,8 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* Property channel */
+     object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PROPERTY);
+     object_property_add_child(obj, "property", OBJECT(&s->property), NULL);
++    object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
++                              "board-rev", &error_abort);
+     qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 69c7438317c4..8a4d13c7d973 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -39,6 +39,8 @@ static void bcm2836_init(Object *obj)
+                       TYPE_BCM2835_PERIPHERALS);
+     object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
+                               &error_abort);
++    object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
++                              "board-rev", &error_abort);
+     qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
+ }
+ 
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 0c9427c40ec4..7d3d21ab3244 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -128,6 +128,8 @@ static void raspi2_init(MachineState *machine)
+                                    &error_abort);
+     object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
+                             &error_abort);
++    object_property_set_int(OBJECT(&s->soc), 0xa21041, "board-rev",
++                            &error_abort);
+     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
+ 
+     setup_boot(machine, 2, machine->ram_size);
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index e42b43e72d56..45bd6c18ce90 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -43,8 +43,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 4;
+             break;
+         case 0x00010002: /* Get board revision */
+-            qemu_log_mask(LOG_UNIMP,
+-                          "bcm2835_property: %x get board revision NYI\n", tag);
++            stl_phys(&s->dma_as, value + 12, s->board_rev);
+             resplen = 4;
+             break;
+         case 0x00010003: /* Get board MAC address */
+@@ -258,6 +257,7 @@ static void bcm2835_property_realize(DeviceState *dev, Error **errp)
+ }
+ 
+ static Property bcm2835_property_props[] = {
++    DEFINE_PROP_UINT32("board-rev", BCM2835PropertyState, board_rev, 0),
+     DEFINE_PROP_UINT32("ram-size", BCM2835PropertyState, ram_size, 0),
+     DEFINE_PROP_END_OF_LIST()
+ };
+diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
+index fcf5f3decafc..df889eaa08b5 100644
+--- a/include/hw/misc/bcm2835_property.h
++++ b/include/hw/misc/bcm2835_property.h
+@@ -23,6 +23,7 @@ typedef struct {
+     MemoryRegion iomem;
+     qemu_irq mbox_irq;
+     MACAddr macaddr;
++    uint32_t board_rev;
+     uint32_t ram_size;
+     uint32_t addr;
+     bool pending;
+-- 
+1.9.1
 

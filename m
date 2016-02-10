@@ -1,353 +1,97 @@
-Received: by 10.25.159.19 with SMTP id i19csp2128152lfe;
-        Tue, 9 Feb 2016 13:15:04 -0800 (PST)
-X-Received: by 10.28.63.85 with SMTP id m82mr7531431wma.55.1455052504378;
-        Tue, 09 Feb 2016 13:15:04 -0800 (PST)
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id lp7si51525909wjb.73.2016.02.09.13.15.04;
-        Tue, 09 Feb 2016 13:15:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+Received: by 10.25.159.19 with SMTP id i19csp2248300lfe;
+        Tue, 9 Feb 2016 19:25:16 -0800 (PST)
+X-Received: by 10.140.95.119 with SMTP id h110mr45992389qge.105.1455074716284;
+        Tue, 09 Feb 2016 19:25:16 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by mx.google.com with ESMTPS id b110si1546363qgf.45.2016.02.09.19.25.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 09 Feb 2016 19:25:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from gw-2.ac.upc.es (gw-2.ac.upc.es [147.83.30.8])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u19LEf1J002147;
-	Tue, 9 Feb 2016 22:14:41 +0100
-Received: from localhost (unknown [84.88.51.85])
-	by gw-2.ac.upc.es (Postfix) with ESMTPSA id 79064826;
-	Tue,  9 Feb 2016 22:14:41 +0100 (CET)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>, Eric Blake <eblake@redhat.com>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Leon Alrae <leon.alrae@imgtec.com>,
-        Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
-        Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-        Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
-        qemu-arm@nongnu.org (open list:ARM),
-        qemu-ppc@nongnu.org (open list:PowerPC)
-Subject: [PATCH v6 3/4] tcg: Add type for vCPU pointers
-Date: Tue,  9 Feb 2016 22:14:41 +0100
-Message-Id: <145505248083.4785.7066950318146523490.stgit@localhost>
-X-Mailer: git-send-email 2.7.0
-In-Reply-To: <145505246212.4785.2237668256809452874.stgit@localhost>
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qk0-x242.google.com with SMTP id s5so242516qkd.2;
+        Tue, 09 Feb 2016 19:25:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-type:content-transfer-encoding;
+        bh=ko8btDRkGA105J3XxCL8sqRFjPIKaFhPE5feWnVvyqw=;
+        b=GV5rVdpXdNVyyRjFfaIamWrHdcidTxjw8tgcQEs6aQdFISyKnU7biZncx7MvuBdnzH
+         Mv3DsbOfxTssHKYU9umv0HkrSfHZIdKzXAKvJvTr9my6tggEJngX/i7InMQoq+7aMNRR
+         dZssSsVtfcMTk1Blz+m0GEwI4kgK4zCPXG9mR6EYmXQfjpw+3X4DMYoTSyAMGfXJ3MhI
+         0IjmjpOxvWm8n35y7NEyH5pegep4QnjaWpGOu9ykdi5Q8VJrwaI51m00r7X/kuG/ZS0x
+         1cm+QnHb7cgMsOIhtk+kCIk2MjYUyXepYQL9YNufxMYX60TL4U8YT4sRUjnpaQxTDRnU
+         ImyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=ko8btDRkGA105J3XxCL8sqRFjPIKaFhPE5feWnVvyqw=;
+        b=MRGVo+f2exxEh2KBDpXwR8/plmfMKtAu1EQUuJ2x0zxiiJDoH+6ONKGcNl0OVUmhqg
+         dvfCyxwPSn6oWDzwS+85bLSFsQh+0qfKcXz1fZe4VadtMEvUuQu6sNt6quG3xx7edWUb
+         kEC1+H92Eh9P81dj37//2GmbGelMsBQ7sL9ibN9ZF9hEUteQmJbni+bSQnd8WwtyQ3b4
+         abRPrGpU20qb2jwK9B1R1uz28HWUtZaSOHLgP1zNE0FI/W0Eq/K/YEGyFdCmJz9zAKeR
+         jz5s7ezNsHugvtd248dAg5zBVgxWdc2RReyQRaksh3BjknFM3c1OQZ4rJuVa0uyCCWoz
+         9tbw==
+X-Gm-Message-State: AG10YORd8G/sNtRpSWN4i9QSYeO2BUI8lRTdbxhSFGnT75bvaKpv/gEeE2QpntNJbDeqzg==
+X-Received: by 10.55.75.77 with SMTP id y74mr45265929qka.19.1455074715934;
+        Tue, 09 Feb 2016 19:25:15 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net ([172.56.7.187])
+        by smtp.googlemail.com with ESMTPSA id r21sm496775qkl.21.2016.02.09.19.24.59
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Tue, 09 Feb 2016 19:25:15 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v6 3/4] tcg: Add type for vCPU pointers
+To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+ qemu-devel@nongnu.org
 References: <145505246212.4785.2237668256809452874.stgit@localhost>
-User-Agent: StGit/0.17.1-dirty
+ <145505248083.4785.7066950318146523490.stgit@localhost>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Eduardo Habkost <ehabkost@redhat.com>,
+ Stefan Hajnoczi <stefanha@gmail.com>, Anthony Green <green@moxielogic.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Jia Liu
+ <proljc@gmail.com>, Alexander Graf <agraf@suse.de>,
+ Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Michael Walle <michael@walle.cc>, Leon Alrae <leon.alrae@imgtec.com>,
+ "open list:PowerPC" <qemu-ppc@nongnu.org>,
+ "open list:ARM" <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <56BAAD86.3010007@twiddle.net>
+Date: Wed, 10 Feb 2016 14:24:54 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <145505248083.4785.7066950318146523490.stgit@localhost>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: vtURB5taSm5k
+X-TUID: QflU3SOsQ1fj
 
-Adds the 'TCGv_env' type for pointers to 'CPUArchState' objects. The
-tracing infrastructure later needs to differentiate between regular
-pointers and pointers to vCPUs.
+On 02/10/2016 08:14 AM, Lluís Vilanova wrote:
+> Adds the 'TCGv_env' type for pointers to 'CPUArchState' objects. The
+> tracing infrastructure later needs to differentiate between regular
+> pointers and pointers to vCPUs.
+>
+> Also changes all targets to use the new 'TCGv_cpu' type instead of the
+> generic 'TCGv_ptr'. As of now, the change is merely cosmetic ('TCGv_env'
+> translates into 'TCGv_ptr'), but that could change in the future to
+> enforce the difference.
 
-Also changes all targets to use the new 'TCGv_cpu' type instead of the
-generic 'TCGv_ptr'. As of now, the change is merely cosmetic ('TCGv_env'
-translates into 'TCGv_ptr'), but that could change in the future to
-enforce the difference.
+I suppose.
 
-Note that a 'TCGv_cpu' type (for 'CPUState') is not added, since all
-helpers currently receive the architecture-specific
-pointer ('CPUArchState').
+We won't be able distinguish TCGv_env from TCGv_ptr until env can be 
+auto-converted to ptr.  Which I can't imagine happening without switching to C++.
 
-Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
----
- target-alpha/translate.c      |    2 +-
- target-arm/translate.c        |    2 +-
- target-arm/translate.h        |    2 +-
- target-cris/translate.c       |    2 +-
- target-i386/translate.c       |    2 +-
- target-lm32/translate.c       |    2 +-
- target-m68k/translate.c       |    2 +-
- target-microblaze/translate.c |    2 +-
- target-mips/translate.c       |    2 +-
- target-moxie/translate.c      |    2 +-
- target-openrisc/translate.c   |    2 +-
- target-ppc/translate.c        |    2 +-
- target-s390x/translate.c      |    2 +-
- target-sh4/translate.c        |    2 +-
- target-sparc/translate.c      |    5 +++--
- target-tilegx/translate.c     |    2 +-
- target-tricore/translate.c    |    2 +-
- target-unicore32/translate.c  |    2 +-
- target-xtensa/translate.c     |    2 +-
- tcg/tcg.h                     |    1 +
- 20 files changed, 22 insertions(+), 20 deletions(-)
+I see your motivation in 4/4, so I guess this is fine.
 
-diff --git a/target-alpha/translate.c b/target-alpha/translate.c
-index 7b798b0..5b86992 100644
---- a/target-alpha/translate.c
-+++ b/target-alpha/translate.c
-@@ -93,7 +93,7 @@ typedef enum {
- } ExitStatus;
- 
- /* global register indexes */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_std_ir[31];
- static TCGv cpu_fir[31];
- static TCGv cpu_pc;
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index f6a38bc..d2367ab 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -56,7 +56,7 @@
- #define IS_USER(s) (s->user)
- #endif
- 
--TCGv_ptr cpu_env;
-+TCGv_env cpu_env;
- /* We reuse the same 64-bit temporaries for efficiency.  */
- static TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
- static TCGv_i32 cpu_R[16];
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 53ef971..82e3f6b 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -70,7 +70,7 @@ typedef struct DisasCompare {
- } DisasCompare;
- 
- /* Share the TCG temporaries common between 32 and 64 bit modes.  */
--extern TCGv_ptr cpu_env;
-+extern TCGv_env cpu_env;
- extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
- extern TCGv_i64 cpu_exclusive_addr;
- extern TCGv_i64 cpu_exclusive_val;
-diff --git a/target-cris/translate.c b/target-cris/translate.c
-index 2a283e0..a73176c 100644
---- a/target-cris/translate.c
-+++ b/target-cris/translate.c
-@@ -60,7 +60,7 @@
- #define CC_MASK_NZVC 0xf
- #define CC_MASK_RNZV 0x10e
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_R[16];
- static TCGv cpu_PR[16];
- static TCGv cc_x;
-diff --git a/target-i386/translate.c b/target-i386/translate.c
-index f7ceadd..8fe167b 100644
---- a/target-i386/translate.c
-+++ b/target-i386/translate.c
-@@ -59,7 +59,7 @@
- //#define MACRO_TEST   1
- 
- /* global register indexes */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_A0;
- static TCGv cpu_cc_dst, cpu_cc_src, cpu_cc_src2, cpu_cc_srcT;
- static TCGv_i32 cpu_cc_op;
-diff --git a/target-lm32/translate.c b/target-lm32/translate.c
-index 3877993..256a51f 100644
---- a/target-lm32/translate.c
-+++ b/target-lm32/translate.c
-@@ -44,7 +44,7 @@
- 
- #define MEM_INDEX 0
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_R[32];
- static TCGv cpu_pc;
- static TCGv cpu_ie;
-diff --git a/target-m68k/translate.c b/target-m68k/translate.c
-index 085cb6a..7560c3a 100644
---- a/target-m68k/translate.c
-+++ b/target-m68k/translate.c
-@@ -50,7 +50,7 @@
- static TCGv_i32 cpu_halted;
- static TCGv_i32 cpu_exception_index;
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- 
- static char cpu_reg_names[3*8*3 + 5*4];
- static TCGv cpu_dregs[8];
-diff --git a/target-microblaze/translate.c b/target-microblaze/translate.c
-index 296c4d7..f944965 100644
---- a/target-microblaze/translate.c
-+++ b/target-microblaze/translate.c
-@@ -46,7 +46,7 @@
-             (((src) >> start) & ((1 << (end - start + 1)) - 1))
- 
- static TCGv env_debug;
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_R[32];
- static TCGv cpu_SR[18];
- static TCGv env_imm;
-diff --git a/target-mips/translate.c b/target-mips/translate.c
-index 658926d..3706176 100644
---- a/target-mips/translate.c
-+++ b/target-mips/translate.c
-@@ -1353,7 +1353,7 @@ enum {
- };
- 
- /* global register indices */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_gpr[32], cpu_PC;
- static TCGv cpu_HI[MIPS_DSP_ACC], cpu_LO[MIPS_DSP_ACC];
- static TCGv cpu_dspctrl, btarget, bcond;
-diff --git a/target-moxie/translate.c b/target-moxie/translate.c
-index bc860a5..a437e2a 100644
---- a/target-moxie/translate.c
-+++ b/target-moxie/translate.c
-@@ -56,7 +56,7 @@ enum {
- 
- static TCGv cpu_pc;
- static TCGv cpu_gregs[16];
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cc_a, cc_b;
- 
- #include "exec/gen-icount.h"
-diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
-index d25324e..5d0ab44 100644
---- a/target-openrisc/translate.c
-+++ b/target-openrisc/translate.c
-@@ -53,7 +53,7 @@ typedef struct DisasContext {
-     uint32_t delayed_branch;
- } DisasContext;
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_sr;
- static TCGv cpu_R[32];
- static TCGv cpu_pc;
-diff --git a/target-ppc/translate.c b/target-ppc/translate.c
-index ffef754..6b9792a 100644
---- a/target-ppc/translate.c
-+++ b/target-ppc/translate.c
-@@ -49,7 +49,7 @@
- /* Code translation helpers                                                  */
- 
- /* global register indexes */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static char cpu_reg_names[10*3 + 22*4 /* GPR */
-     + 10*4 + 22*5 /* SPE GPRh */
-     + 10*4 + 22*5 /* FPR */
-diff --git a/target-s390x/translate.c b/target-s390x/translate.c
-index 82e1165..c871ef2 100644
---- a/target-s390x/translate.c
-+++ b/target-s390x/translate.c
-@@ -37,7 +37,7 @@
- #include "exec/cpu_ldst.h"
- 
- /* global register indexes */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- 
- #include "exec/gen-icount.h"
- #include "exec/helper-proto.h"
-diff --git a/target-sh4/translate.c b/target-sh4/translate.c
-index e35d175..7c18968 100644
---- a/target-sh4/translate.c
-+++ b/target-sh4/translate.c
-@@ -61,7 +61,7 @@ enum {
- };
- 
- /* global register indexes */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_gregs[24];
- static TCGv cpu_sr, cpu_sr_m, cpu_sr_q, cpu_sr_t;
- static TCGv cpu_pc, cpu_ssr, cpu_spc, cpu_gbr;
-diff --git a/target-sparc/translate.c b/target-sparc/translate.c
-index 536c4b5..407b54a 100644
---- a/target-sparc/translate.c
-+++ b/target-sparc/translate.c
-@@ -39,7 +39,8 @@
-                          according to jump_pc[T2] */
- 
- /* global register indexes */
--static TCGv_ptr cpu_env, cpu_regwptr;
-+static TCGv_env cpu_env;
-+static TCGv_ptr cpu_regwptr;
- static TCGv cpu_cc_src, cpu_cc_src2, cpu_cc_dst;
- static TCGv_i32 cpu_cc_op;
- static TCGv_i32 cpu_psr;
-@@ -2291,7 +2292,7 @@ static void gen_fmovq(DisasContext *dc, DisasCompare *cmp, int rd, int rs)
- }
- 
- #ifndef CONFIG_USER_ONLY
--static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_ptr cpu_env)
-+static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_cpu cpu_env)
- {
-     TCGv_i32 r_tl = tcg_temp_new_i32();
- 
-diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
-index 7073aba..03918eb 100644
---- a/target-tilegx/translate.c
-+++ b/target-tilegx/translate.c
-@@ -32,7 +32,7 @@
- 
- #define FMT64X                          "%016" PRIx64
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv cpu_pc;
- static TCGv cpu_regs[TILEGX_R_COUNT];
- 
-diff --git a/target-tricore/translate.c b/target-tricore/translate.c
-index a70fdf7..91ed08f 100644
---- a/target-tricore/translate.c
-+++ b/target-tricore/translate.c
-@@ -47,7 +47,7 @@ static TCGv cpu_PSW_SV;
- static TCGv cpu_PSW_AV;
- static TCGv cpu_PSW_SAV;
- /* CPU env */
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- 
- #include "exec/gen-icount.h"
- 
-diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
-index 1dd086d..39af3af 100644
---- a/target-unicore32/translate.c
-+++ b/target-unicore32/translate.c
-@@ -48,7 +48,7 @@ typedef struct DisasContext {
-    conditional executions state has been updated.  */
- #define DISAS_SYSCALL 5
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv_i32 cpu_R[32];
- 
- /* FIXME:  These should be removed.  */
-diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
-index fd03603..9894488 100644
---- a/target-xtensa/translate.c
-+++ b/target-xtensa/translate.c
-@@ -74,7 +74,7 @@ typedef struct DisasContext {
-     unsigned cpenable;
- } DisasContext;
- 
--static TCGv_ptr cpu_env;
-+static TCGv_env cpu_env;
- static TCGv_i32 cpu_pc;
- static TCGv_i32 cpu_R[16];
- static TCGv_i32 cpu_FR[16];
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 83da5fb..697f01d 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -308,6 +308,7 @@ typedef tcg_target_ulong TCGArg;
- typedef struct TCGv_i32_d *TCGv_i32;
- typedef struct TCGv_i64_d *TCGv_i64;
- typedef struct TCGv_ptr_d *TCGv_ptr;
-+typedef TCGv_ptr TCGv_env;
- 
- static inline TCGv_i32 QEMU_ARTIFICIAL MAKE_TCGV_I32(intptr_t i)
- {
+Acked-by: Richard Henderson <rth@twiddle.net>
+
+
+r~

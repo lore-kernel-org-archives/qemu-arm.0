@@ -1,111 +1,131 @@
-Received: by 10.25.159.19 with SMTP id i19csp2051663lfe;
-        Tue, 9 Feb 2016 10:11:25 -0800 (PST)
-X-Received: by 10.140.194.4 with SMTP id p4mr46175448qha.30.1455041484993;
-        Tue, 09 Feb 2016 10:11:24 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.19 with SMTP id i19csp2703331lfe;
+        Wed, 10 Feb 2016 12:42:39 -0800 (PST)
+X-Received: by 10.140.131.17 with SMTP id 17mr54585422qhd.12.1455136959330;
+        Wed, 10 Feb 2016 12:42:39 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h8si36868689qgh.33.2016.02.09.10.11.24
+        by mx.google.com with ESMTPS id 16si5427806qhn.71.2016.02.10.12.42.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Feb 2016 10:11:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 10 Feb 2016 12:42:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:59162 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42940 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aTCl2-0003qh-ET
-	for alex.bennee@linaro.org; Tue, 09 Feb 2016 13:11:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41994)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aTbaw-0008Fw-TX
+	for alex.bennee@linaro.org; Wed, 10 Feb 2016 15:42:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58299)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aTCkz-0003pQ-Uu
-	for qemu-arm@nongnu.org; Tue, 09 Feb 2016 13:11:22 -0500
+	(envelope-from <somlo@cmu.edu>) id 1aTbaA-0007AL-O5
+	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 15:41:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aTCky-00088I-Vs
-	for qemu-arm@nongnu.org; Tue, 09 Feb 2016 13:11:21 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:33143)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aTCky-00088B-Ov
-	for qemu-arm@nongnu.org; Tue, 09 Feb 2016 13:11:20 -0500
-Received: by mail-vk0-x233.google.com with SMTP id k196so56049350vka.0
-	for <qemu-arm@nongnu.org>; Tue, 09 Feb 2016 10:11:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=0Neeow3IQGto6+AEyErXVPB3gxi1gg9A8e3oT5eItaw=;
-	b=PGP84W5PU/6oapZxwuTYWflxMROrlNuUWugJ463QjSeqSB44Qqu88redVcylUdAIvY
-	XDeZKHCPU1Ko/+DkWXyzYU5DjS5rEzVfhdLJqjB3dYysHYEC0Y5hKzMOnHg04VHi2vLa
-	2pXbgbDnpxMpeh/mwNExuVJMoYnfqHtblCMMo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=0Neeow3IQGto6+AEyErXVPB3gxi1gg9A8e3oT5eItaw=;
-	b=j1WuuJ86lKJuv+Wejg4ZpYhnk8VDyBLuTbOngAazPku6/ItDsr79OeLUud5WGRFDu0
-	A8TgncDCU02o7z4KIE6DNESs6GfaAPKF581wQXTkJbsl/EZtzklK4ocHIQOPYnEb+t/9
-	A3Q7PMzbofKjXIEetazCK70VGiuxdPoBK19XPX+FikuJaWNsBYLAEv8cm/zNS+RIb33o
-	ze2tZtdquZOHbQoyHbyGc0IUnzPpgr0SHh23h9QahFaeTRX2aJGUrt7z9qS0cfDiyG+c
-	qMYzIgdOykZLpAkVwY/NztMn+tYMCPgUuXeCmGYu96sQZGXJwHEeSW/4hcARQeQoS/gy
-	lI6w==
-X-Gm-Message-State: AG10YOReK8eQb1bK9r7f0vIBxpaJYGY2If+Pg8yFnbbOMFsC1olgMNoOn334u9t/3P2BoNqztVXAjzMDtiZsJZmi
-X-Received: by 10.31.47.207 with SMTP id v198mr26269648vkv.6.1455041480319;
-	Tue, 09 Feb 2016 10:11:20 -0800 (PST)
+	(envelope-from <somlo@cmu.edu>) id 1aTba9-0008Nq-KK
+	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 15:41:50 -0500
+Received: from relay-05.andrew.cmu.edu ([128.2.157.12]:39547
+	helo=relay.andrew.cmu.edu) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <somlo@cmu.edu>)
+	id 1aTba5-0008Js-Bt; Wed, 10 Feb 2016 15:41:45 -0500
+Received: from HEDWIG.ini.cmu.edu (HEDWIG.INI.CMU.EDU [128.2.16.51])
+	by relay.andrew.cmu.edu (8.14.7/8.14.7) with ESMTP id u1AKfeYC004670;
+	Wed, 10 Feb 2016 15:41:40 -0500
+From: "Gabriel L. Somlo" <somlo@cmu.edu>
+To: qemu-devel@nongnu.org
+Date: Wed, 10 Feb 2016 15:41:37 -0500
+Message-Id: <1455136900-22334-3-git-send-email-somlo@cmu.edu>
+X-Mailer: git-send-email 2.4.3
+In-Reply-To: <1455136900-22334-1-git-send-email-somlo@cmu.edu>
+References: <1455136900-22334-1-git-send-email-somlo@cmu.edu>
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 9 Feb 2016 10:11:00 -0800 (PST)
-In-Reply-To: <BLUPR0301MB2034738A097725F02E582A2A9ED60@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1454993910-24077-1-git-send-email-swarren@wwwdotorg.org>
-	<BLUPR0301MB2034738A097725F02E582A2A9ED60@BLUPR0301MB2034.namprd03.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Feb 2016 18:11:00 +0000
-Message-ID: <CAFEAcA81Pmi0a6saiy_Ff-ozmw4AJ6SBmW6JYR-DS86ERV004Q@mail.gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Stephen Warren <swarren@wwwdotorg.org>
-Subject: Re: [Qemu-arm] [PATCH V2] bcm2835_property: implement "get board
-	revision" query
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.74 on 128.2.157.12
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by relay.andrew.cmu.edu id
+	u1AKfeYC004670
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 128.2.157.12
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+	matt@codeblueprint.co.uk, stefanha@gmail.com,
+	ard.biesheuvel@linaro.org, leif.lindholm@linaro.org,
+	luto@amacapital.net, qemu-arm@nongnu.org, kraxel@redhat.com,
+	pbonzini@redhat.com, imammedo@redhat.com, lersek@redhat.com,
+	rth@twiddle.net
+Subject: [Qemu-devel] [PATCH v7 2/5] pc: fw_cfg: move ioport base constant
+	to pc.h
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2KsnfEJaBSi9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d2zEFsYxFluD
 
-On 9 February 2016 at 05:41, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
->> From: Stephen Warren [mailto:swarren@wwwdotorg.org]
->> Sent: Tuesday, 9 February 2016 3:59 PM
->>
->> Return a valid value from the BCM2835 property mailbox query "get board
->> revision". This query is used by U-Boot. Implementing it fixes the first
->> obvious difference between qemu and real HW.
->>
->> The value returned is currently hard-coded to match the RPi2 I own. Other
->> values are legal, e.g. different board manufacturer field values are likely to
->> exist in the wild.
->>
->> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
->> Signed-off-by: Stephen Warren <swarren@wwwdotorg.org>
->> ---
->> V2: Set the property in raspi.c, and pass it through to the property mbox
->> code via property aliases.
->
-> Reviewed-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Move BIOS_CFG_IOPORT define from pc.c to pc.h, and rename
+it to FW_CFG_IO_BASE.
 
+Cc: Marc Mar=C3=AD <markmb@redhat.com>
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Marc Mar=C3=AD <markmb@redhat.com>
+---
+ hw/i386/pc.c         | 5 ++---
+ include/hw/i386/pc.h | 2 ++
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 0aeefd2..56ec6cd 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -78,7 +78,6 @@
+ #define DPRINTF(fmt, ...)
+ #endif
+=20
+-#define BIOS_CFG_IOPORT 0x510
+ #define FW_CFG_ACPI_TABLES (FW_CFG_ARCH_LOCAL + 0)
+ #define FW_CFG_SMBIOS_ENTRIES (FW_CFG_ARCH_LOCAL + 1)
+ #define FW_CFG_IRQ0_OVERRIDE (FW_CFG_ARCH_LOCAL + 2)
+@@ -756,7 +755,7 @@ static FWCfgState *bochs_bios_init(AddressSpace *as)
+     int i, j;
+     unsigned int apic_id_limit =3D pc_apic_id_limit(max_cpus);
+=20
+-    fw_cfg =3D fw_cfg_init_io_dma(BIOS_CFG_IOPORT, BIOS_CFG_IOPORT + 4, =
+as);
++    fw_cfg =3D fw_cfg_init_io_dma(FW_CFG_IO_BASE, FW_CFG_IO_BASE + 4, as=
+);
+=20
+     /* FW_CFG_MAX_CPUS is a bit confusing/problematic on x86:
+      *
+@@ -1258,7 +1257,7 @@ void xen_load_linux(PCMachineState *pcms)
+=20
+     assert(MACHINE(pcms)->kernel_filename !=3D NULL);
+=20
+-    fw_cfg =3D fw_cfg_init_io(BIOS_CFG_IOPORT);
++    fw_cfg =3D fw_cfg_init_io(FW_CFG_IO_BASE);
+     rom_set_fw(fw_cfg);
+=20
+     load_linux(pcms, fw_cfg);
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 8b3546e..79ffe5b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -266,6 +266,8 @@ void ioapic_init_gsi(GSIState *gsi_state, const char =
+*parent_name);
+=20
+ ISADevice *pc_find_fdc0(void);
+=20
++#define FW_CFG_IO_BASE     0x510
++
+ /* acpi_piix.c */
+=20
+ I2CBus *piix4_pm_init(PCIBus *bus, int devfn, uint32_t smb_io_base,
+--=20
+2.4.3
 
-Applied to target-arm.next, thanks.
-
--- PMM

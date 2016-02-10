@@ -1,79 +1,55 @@
-Received: by 10.25.159.19 with SMTP id i19csp2625579lfe;
-        Wed, 10 Feb 2016 09:56:08 -0800 (PST)
-X-Received: by 10.55.25.71 with SMTP id k68mr17818825qkh.4.1455126968488;
-        Wed, 10 Feb 2016 09:56:08 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp2703374lfe;
+        Wed, 10 Feb 2016 12:42:46 -0800 (PST)
+X-Received: by 10.140.94.46 with SMTP id f43mr50821545qge.95.1455136964615;
+        Wed, 10 Feb 2016 12:42:44 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si4764794qgb.59.2016.02.10.09.56.08
+        by mx.google.com with ESMTPS id a140si5445686qhc.57.2016.02.10.12.42.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Feb 2016 09:56:08 -0800 (PST)
+        Wed, 10 Feb 2016 12:42:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41557 helo=lists.gnu.org)
+Received: from localhost ([::1]:42943 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aTYzo-0008Po-1W
-	for alex.bennee@linaro.org; Wed, 10 Feb 2016 12:56:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50073)
+	id 1aTbb2-0008Qf-5n
+	for alex.bennee@linaro.org; Wed, 10 Feb 2016 15:42:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58320)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <somlo@cmu.edu>) id 1aTYzQ-000885-6a
-	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 12:55:45 -0500
+	(envelope-from <somlo@cmu.edu>) id 1aTbaB-0007Ag-Ct
+	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 15:41:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <somlo@cmu.edu>) id 1aTYzO-0000S6-JG
-	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 12:55:44 -0500
-Received: from smtp.andrew.cmu.edu ([128.2.105.203]:54574)
-	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <somlo@cmu.edu>) id 1aTbaA-0008OS-4h
+	for qemu-devel@nongnu.org; Wed, 10 Feb 2016 15:41:51 -0500
+Received: from relay-05.andrew.cmu.edu ([128.2.157.12]:39545
+	helo=relay.andrew.cmu.edu) by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <somlo@cmu.edu>)
-	id 1aTYzI-0000On-Tn; Wed, 10 Feb 2016 12:55:37 -0500
-Received: from HEDWIG.INI.CMU.EDU (HEDWIG.INI.CMU.EDU [128.2.16.51])
-	(user=somlo mech=LOGIN (0 bits))
-	by smtp.andrew.cmu.edu (8.14.8/8.14.8) with ESMTP id u1AHtRD6018240
-	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NOT);
-	Wed, 10 Feb 2016 12:55:29 -0500
-Date: Wed, 10 Feb 2016 12:55:27 -0500
+	id 1aTba4-0008Jl-6s; Wed, 10 Feb 2016 15:41:44 -0500
+Received: from HEDWIG.ini.cmu.edu (HEDWIG.INI.CMU.EDU [128.2.16.51])
+	by relay.andrew.cmu.edu (8.14.7/8.14.7) with ESMTP id u1AKfeYA004670;
+	Wed, 10 Feb 2016 15:41:40 -0500
 From: "Gabriel L. Somlo" <somlo@cmu.edu>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, lersek@redhat.com,
-	mst@redhat.com, imammedo@redhat.com, peter.maydell@linaro.org,
-	leif.lindholm@linaro.org, ard.biesheuvel@linaro.org,
-	pbonzini@redhat.com, kraxel@redhat.com, ehabkost@redhat.com,
-	luto@amacapital.net, stefanha@gmail.com, matt@codeblueprint.co.uk,
-	rth@twiddle.net
-Message-ID: <20160210175527.GH16357@HEDWIG.INI.CMU.EDU>
-References: <1453950057-13176-1-git-send-email-somlo@cmu.edu>
-	<20160210161657.GG16357@HEDWIG.INI.CMU.EDU>
+To: qemu-devel@nongnu.org
+Date: Wed, 10 Feb 2016 15:41:35 -0500
+Message-Id: <1455136900-22334-1-git-send-email-somlo@cmu.edu>
+X-Mailer: git-send-email 2.4.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20160210161657.GG16357@HEDWIG.INI.CMU.EDU>
-X-Clacks-Overhead: GNU Terry Pratchett
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-PMX-Version: 6.0.3.2322014, Antispam-Engine: 2.7.2.2107409,
-	Antispam-Data: 2016.2.10.174216
-X-SMTP-Spam-Clean: 8% ( MULTIPLE_RCPTS 0.1, HTML_00_01 0.05, HTML_00_10 0.05,
-	BODY_SIZE_4000_4999 0, BODY_SIZE_5000_LESS 0,
-	BODY_SIZE_7000_LESS 0, DATE_TZ_NA 0, FROM_EDU_TLD 0,
-	NO_URI_HTTPS 0, REFERENCES 0, __ANY_URI 0,
-	__BOUNCE_CHALLENGE_SUBJ 0, __BOUNCE_NDR_SUBJ_EXEMPT 0, __CD 0,
-	__CP_MEDIA_BODY 0, __CP_URI_IN_BODY 0, __CT 0, __CTE 0,
-	__CT_TEXT_PLAIN 0, __FORWARDED_MSG 0, __HAS_FROM 0,
-	__HAS_MSGID 0, __IN_REP_TO 0, __MIME_TEXT_ONLY 0,
-	__MIME_VERSION 0, __MULTIPLE_RCPTS_TO_X5 0,
-	__MULTIPLE_URI_TEXT 0, __PHISH_SPEAR_STRUCTURE_1 0,
-	__REFERENCES 0, __SANE_MSGID 0, __SUBJ_ALPHA_END 0,
-	__SUBJ_ALPHA_NEGATE 0, __TO_MALFORMED_2 0, __TO_NO_NAME 0,
-	__URI_IN_BODY 0, __URI_NO_MAILTO 0, __URI_NO_WWW 0, __URI_NS ,
-	__USER_AGENT 0)
-X-SMTP-Spam-Score: 8%
-X-Scanned-By: MIMEDefang 2.74 on 128.2.105.203
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.74 on 128.2.157.12
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by smtp.andrew.cmu.edu id
-	u1AHtRD6018240
+X-MIME-Autoconverted: from 8bit to quoted-printable by relay.andrew.cmu.edu id
+	u1AKfeYA004670
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
-X-Received-From: 128.2.105.203
-Subject: Re: [Qemu-devel] [PATCH v6 0/5] add ACPI node for fw_cfg on pc and
-	arm
+X-Received-From: 128.2.157.12
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+	matt@codeblueprint.co.uk, stefanha@gmail.com,
+	ard.biesheuvel@linaro.org, leif.lindholm@linaro.org,
+	luto@amacapital.net, qemu-arm@nongnu.org, kraxel@redhat.com,
+	pbonzini@redhat.com, imammedo@redhat.com, lersek@redhat.com,
+	rth@twiddle.net
+Subject: [Qemu-devel] [PATCH v7 0/5] add ACPI node for fw_cfg on pc and arm
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -87,135 +63,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qOl1uFh+GPrE
+X-TUID: VwQaR9YzWMej
 
-On Wed, Feb 10, 2016 at 11:16:57AM -0500, Gabriel L. Somlo wrote:
-> Ping.
->=20
-> Now that the kernel side seems to have been accepted (Thanks again
-> Laszlo and Matt for all the help and advice!!!), is there anything
-> left to clean up before this series could be applied to QEMU ?
+Generate an ACPI DSDT node for fw_cfg on pc and arm guests.
 
-Actually, I take that back. I need to rebase the i386 patch (3/5) to
-handle PcGuestInfo changes (commits fb306ff and f264d36); but right
-now I'm bisecting, trying to figure out why after a giant git pull my
-video suddenly stopped working ...
-
-I'll be back soon with v7, stay tuned.
+New since v6:
+	- rebased to fit on top of fb306ff and f264d36, which moved things
+	  around in pc's acpi-build.c (only patch 3/5 affected);
+	- kernel-side fw_cfg sysfs driver accepted into upstream linux
 
 Thanks,
---Gabriel
+ --Gabriel
 
->=20
-> gmane.org quick links:
-> 1/5: http://article.gmane.org/gmane.comp.emulators.qemu/389896/raw
-> 2/5: http://article.gmane.org/gmane.comp.emulators.qemu/389894/raw
-> 3/5: http://article.gmane.org/gmane.comp.emulators.qemu/389895/raw
-> 4/5: http://article.gmane.org/gmane.comp.emulators.qemu/389900/raw
-> 5/5: http://article.gmane.org/gmane.comp.emulators.qemu/389898/raw
->=20
-> On Wed, Jan 27, 2016 at 10:00:52PM -0500, Gabriel L. Somlo wrote:
-> > New since v5:
-> >=20
-> > 	- rebased on top of latest QEMU git master
-> >=20
-> > Thanks,
-> >   --Gabriel
-> >=20
-> > >New since v4:
-> > >
-> > >	- rebased on top of Marc's DMA series
-> > >	- drop machine compat dependency for insertion into x86/ssdt
-> > >	  (patch 3/5), following agreement between Igor and Eduardo
-> > >	- [mm]io register range now covers DMA register as well, if
-> > >	  available.
-> > >	- s/bios/firmware in doc file updates
-> > >
-> > >>New since v3:
-> > >>
-> > >>	- rebased to work on top of 87e896ab (introducing pc-*-25 classes)=
-,
-> > >>	  inserting fw_cfg acpi node only for machines >=3D 2.5.
-> > >>
-> > >>	- reintroduce _STA with value 0x0B (bit 2 for u/i visibility turne=
-d
-> > >>	  off to avoid Windows complaining -- thanks Igor for catching tha=
-t!)
-> > >>
-> > >>If there's any other feedback besides questions regarding the
-> > >>appropriateness of "QEMU0002" as the value of _HID, please don't he=
-sitate!
-> > >>
-> > >>>New since v2:
-> > >>>
-> > >>>	- pc/i386 node in ssdt only on machine types *newer* than 2.4
-> > >>>	  (as suggested by Eduardo)
-> > >>>
-> > >>>I appreciate any further comments and reviews. Hopefully we can ma=
-ke
-> > >>>this palatable for upstream, modulo the lingering concerns about w=
-hether
-> > >>>"QEMU0002" is ok to use as the value of _HID, which I'll hopefully=
- get
-> > >>>sorted out with the kernel crew...
-> > >>>
-> > >>>>New since v1:
-> > >>>>
-> > >>>>	- expose control register size (suggested by Marc Mar=ED)
-> > >>>>
-> > >>>>	- leaving out _UID and _STA fields (thanks Shannon & Igor)
-> > >>>>
-> > >>>>	- using "QEMU0002" as the value of _HID (thanks Michael)
-> > >>>>
-> > >>>>	- added documentation blurb to docs/specs/fw_cfg.txt
-> > >>>>	  (mainly to record usage of the "QEMU0002" string with fw_cfg).
-> > >>>>
-> > >>>>> This series adds a fw_cfg device node to the SSDT (on pc), or t=
-o the
-> > >>>>> DSDT (on arm).
-> > >>>>>
-> > >>>>> 	- Patch 1/3 moves (and renames) the BIOS_CFG_IOPORT (0x510)
-> > >>>>> 	  define from pc.c to pc.h, so that it could be used from
-> > >>>>> 	  acpi-build.c in patch 2/3.
-> > >>>>>=20
-> > >>>>> 	- Patch 2/3 adds a fw_cfg node to the pc SSDT.
-> > >>>>>=20
-> > >>>>> 	- Patch 3/3 adds a fw_cfg node to the arm DSDT.
-> > >>>>>
-> > >>>>> I made up some names - "FWCF" for the node name, and "FWCF0001"
-> > >>>>> for _HID; no idea whether that's appropriate, or how else I sho=
-uld
-> > >>>>> figure out what to use instead...
-> > >>>>>
-> > >>>>> Also, using scope "\\_SB", based on where fw_cfg shows up in th=
-e
-> > >>>>> output of "info qtree". Again, if that's wrong, please point me=
- in
-> > >>>>> the right direction.
-> > >>>>>
-> > >>>>> Re. 3/3 (also mentioned after the commit blurb in the patch its=
-elf),
-> > >>>>> I noticed none of the other DSDT entries contain a _STA field, =
-wondering
-> > >>>>> why it would (not) make sense to include that, same as on the P=
-C.
-> >=20
-> > Gabriel L. Somlo (5):
-> >   fw_cfg: expose control register size in fw_cfg.h
-> >   pc: fw_cfg: move ioport base constant to pc.h
-> >   acpi: pc: add fw_cfg device node to ssdt
-> >   acpi: arm: add fw_cfg device node to dsdt
-> >   fw_cfg: document ACPI device node information
-> >=20
-> >  docs/specs/fw_cfg.txt     |  9 +++++++++
-> >  hw/arm/virt-acpi-build.c  | 15 +++++++++++++++
-> >  hw/i386/acpi-build.c      | 29 +++++++++++++++++++++++++++++
-> >  hw/i386/pc.c              |  5 ++---
-> >  hw/nvram/fw_cfg.c         |  4 +++-
-> >  include/hw/i386/pc.h      |  2 ++
-> >  include/hw/nvram/fw_cfg.h |  3 +++
-> >  7 files changed, 63 insertions(+), 4 deletions(-)
-> >=20
-> > --=20
-> > 2.4.3
-> >=20
+>New since v5:
+>
+>	- rebased on top of latest QEMU git master
+>
+>>New since v4:
+>>
+>>	- rebased on top of Marc's DMA series
+>>	- drop machine compat dependency for insertion into x86/ssdt
+>>	  (patch 3/5), following agreement between Igor and Eduardo
+>>	- [mm]io register range now covers DMA register as well, if
+>>	  available.
+>>	- s/bios/firmware in doc file updates
+>>
+>>>New since v3:
+>>>
+>>>	- rebased to work on top of 87e896ab (introducing pc-*-25 classes),
+>>>	  inserting fw_cfg acpi node only for machines >=3D 2.5.
+>>>
+>>>	- reintroduce _STA with value 0x0B (bit 2 for u/i visibility turned
+>>>	  off to avoid Windows complaining -- thanks Igor for catching that!)
+>>>
+>>>If there's any other feedback besides questions regarding the
+>>>appropriateness of "QEMU0002" as the value of _HID, please don't hesit=
+ate!
+>>>
+>>>>New since v2:
+>>>>
+>>>>	- pc/i386 node in ssdt only on machine types *newer* than 2.4
+>>>>	  (as suggested by Eduardo)
+>>>>
+>>>>I appreciate any further comments and reviews. Hopefully we can make
+>>>>this palatable for upstream, modulo the lingering concerns about whet=
+her
+>>>>"QEMU0002" is ok to use as the value of _HID, which I'll hopefully ge=
+t
+>>>>sorted out with the kernel crew...
+>>>>
+>>>>>New since v1:
+>>>>>
+>>>>>	- expose control register size (suggested by Marc Mar=C3=AD)
+>>>>>
+>>>>>	- leaving out _UID and _STA fields (thanks Shannon & Igor)
+>>>>>
+>>>>>	- using "QEMU0002" as the value of _HID (thanks Michael)
+>>>>>
+>>>>>	- added documentation blurb to docs/specs/fw_cfg.txt
+>>>>>	  (mainly to record usage of the "QEMU0002" string with fw_cfg).
+>>>>>
+>>>>>> This series adds a fw_cfg device node to the SSDT (on pc), or to t=
+he
+>>>>>> DSDT (on arm).
+>>>>>>
+>>>>>> 	- Patch 1/3 moves (and renames) the BIOS_CFG_IOPORT (0x510)
+>>>>>> 	  define from pc.c to pc.h, so that it could be used from
+>>>>>> 	  acpi-build.c in patch 2/3.
+>>>>>>=20
+>>>>>> 	- Patch 2/3 adds a fw_cfg node to the pc SSDT.
+>>>>>>=20
+>>>>>> 	- Patch 3/3 adds a fw_cfg node to the arm DSDT.
+>>>>>>
+>>>>>> I made up some names - "FWCF" for the node name, and "FWCF0001"
+>>>>>> for _HID; no idea whether that's appropriate, or how else I should
+>>>>>> figure out what to use instead...
+>>>>>>
+>>>>>> Also, using scope "\\_SB", based on where fw_cfg shows up in the
+>>>>>> output of "info qtree". Again, if that's wrong, please point me in
+>>>>>> the right direction.
+>>>>>>
+>>>>>> Re. 3/3 (also mentioned after the commit blurb in the patch itself=
+),
+>>>>>> I noticed none of the other DSDT entries contain a _STA field, won=
+dering
+>>>>>> why it would (not) make sense to include that, same as on the PC.
+
+Gabriel L. Somlo (5):
+  fw_cfg: expose control register size in fw_cfg.h
+  pc: fw_cfg: move ioport base constant to pc.h
+  acpi: pc: add fw_cfg device node to ssdt
+  acpi: arm: add fw_cfg device node to dsdt
+  fw_cfg: document ACPI device node information
+
+ docs/specs/fw_cfg.txt     |  9 +++++++++
+ hw/arm/virt-acpi-build.c  | 15 +++++++++++++++
+ hw/i386/acpi-build.c      | 29 +++++++++++++++++++++++++++++
+ hw/i386/pc.c              |  5 ++---
+ hw/nvram/fw_cfg.c         |  4 +++-
+ include/hw/i386/pc.h      |  2 ++
+ include/hw/nvram/fw_cfg.h |  3 +++
+ 7 files changed, 63 insertions(+), 4 deletions(-)
+
+--=20
+2.4.3
+

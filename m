@@ -1,47 +1,48 @@
-Received: by 10.25.159.19 with SMTP id i19csp857682lfe;
-        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
-X-Received: by 10.98.86.145 with SMTP id h17mr2589470pfj.9.1455287792382;
-        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp857719lfe;
+        Fri, 12 Feb 2016 06:36:36 -0800 (PST)
+X-Received: by 10.98.65.206 with SMTP id g75mr2598776pfd.94.1455287796687;
+        Fri, 12 Feb 2016 06:36:36 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
-        by mx.google.com with ESMTPS id a78si20386512pfj.116.2016.02.12.06.36.32
+Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
+        by mx.google.com with ESMTPS id q66si20386069pfi.84.2016.02.12.06.36.36
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
+        Fri, 12 Feb 2016 06:36:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x242.google.com with SMTP id 71so4065080pfv.1;
-        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+Received: by mail-pa0-x244.google.com with SMTP id fl4so3883752pad.2;
+        Fri, 12 Feb 2016 06:36:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=KenvIwYWiYpYTOWcCr0fJLwxOVqDrG+7Q3i33Fipl9Q=;
-        b=MCJYm3oGEoTc4/V+FCdzsOPmeQOOEcI/RL0gTofepff3tGBqAuYtW/HjJYXI449uc4
-         Afe3PuJ6BDJydlmgq6lu2bm6/LiuNlh1zwx2Suk1bC0rvWzveHa6AUcDW2dPVx15Drdb
-         6X1OPjHtldW2rO62+Hx89owBtKdAyNmyhtWMD5RlNI/flnV7reZpHkMewRCH6PoTrGD3
-         SCQBl//l++H80obl+mv8FfWlhgJyZthG9By7L/PEjp9ftOdtEWGD1b6zJw/sG/FU0TBE
-         HYFsI7f6Jx7mlWFrXdWSfzSCFsrSmwlUaGHhOyvpG4FEq0IBVKx02/v5Tfsew/9c80Mi
-         kckg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=uO1vFpCmSaI684YhiGNJjpdZ/4Q/5ONSG927kCLVAzs=;
+        b=NeTWsIbI0iWFulfrmH+rEzKt+P1jHHEh6g9z8IhDMF8uyffelPryKo9KBsGixny9dV
+         zd8/Qgr9GRNMvpzfXkgF7mdhB2QWPksn48NR4DbtkZgKdC080jgBQjO2u99XaFZQCBEc
+         UCU+qCxYczBMfeq19nAdP/6aRhONveBGiU1Wn0eLFF/ccWdL/pNVdXoFtYYzxi3j+eJ1
+         w7W7lspPFKd7519wQ+Be+cKusi1Y0SF+VgjBbxWMYd15UW8qkw+FRuaj+zFpA1hTFjtO
+         nF4r7ATqam4IJJXDsz+z9jHF2Akn6UBIIyO8LsSELRCGNKDoKeWGHn/SdK+CxjbJA79T
+         XjaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=KenvIwYWiYpYTOWcCr0fJLwxOVqDrG+7Q3i33Fipl9Q=;
-        b=i6GgS3smChRUP4CxOC8wXXg6zauiGFuh1yejm9hA/YwKQQsC8yKTuT/h9jkAf2ptit
-         1OQjVr+idU9KQEfUArQuku5nuWSLb0xarmJhKD57zZz0Q/QpoyGmvma9ac2O6s533sFv
-         OjmAmXyh1CfubUHUgsoTlxoMh4vFbcm25LzhdsZaHKKVYB66AxnsaDiab2Jo+si61TXX
-         kRJlABSrR2XPKXsseynsbyEpYljAtanANhtK3vEzkD9Szd5f75ShtWi4mptoJB7GOv18
-         rA3s+VxHtSaFuZSHSOs215SJv407VoHc8bgiPwOx9M3gw4UOIOTio7Rysr6DRZ0OObpe
-         PN8Q==
-X-Gm-Message-State: AG10YOTLVumPBqJGXBqNjGyyD8pKPW1Ms6rW8BTAU4Kgc7YCmnHKGOskKkdkU/8ouqlCYQ==
-X-Received: by 10.98.93.2 with SMTP id r2mr2642710pfb.64.1455287792081;
-        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=uO1vFpCmSaI684YhiGNJjpdZ/4Q/5ONSG927kCLVAzs=;
+        b=DaMdQHwHYSjLzkBdaQqoyAmhnw2ox16M6v6cd8RN2lFLzKgFTR248TYYZP63TtvqIu
+         ct3GAJyC52zgi1tLulYtSOf8oYn0xrxhtATWEZc2bv18i0P72/Jm/nbCvIgVoPou1Vcn
+         Wx2wyYr6MPIkeGQyXvznnkzhecTN76H48qu+fK9J/hPTI9RCwJwGhARaL+rQXym8+V2+
+         L2Ep6Chyz3BUoNkG1vxSTQDLAethgtbCW6oP3nkk7dXoFigpcRf3a+8Efom3oOGzrBcn
+         jlZCRgctxQ25V5kGAWQV0UR3DIV7h8RT95w/pd4CzsJr/2JwquKw62Oy83JFYXTiglkE
+         Q/2g==
+X-Gm-Message-State: AG10YORogP7fISDhDsXiugdz/d2D9WuyV1l8tTVMCb2q850+Sq7WI7YNbKqxtI0y9Q2f/w==
+X-Received: by 10.67.4.225 with SMTP id ch1mr2482764pad.77.1455287796344;
+        Fri, 12 Feb 2016 06:36:36 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id h65sm19993768pfh.43.2016.02.12.06.36.30
+        by smtp.gmail.com with ESMTPSA id h89sm19991198pfj.52.2016.02.12.06.36.34
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:36:31 -0800 (PST)
+        Fri, 12 Feb 2016 06:36:35 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
@@ -50,51 +51,42 @@ Cc: alex.bennee@linaro.org,
 	rth@twiddle.net,
 	qemu-arm@nongnu.org,
 	edgar.iglesias@xilinx.com
-Subject: [PATCH v1 0/9] arm: Steps towards EL2 support round 6
-Date: Fri, 12 Feb 2016 15:33:53 +0100
-Message-Id: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 1/9] tcg: Add tcg_set_insn_param
+Date: Fri, 12 Feb 2016 15:33:54 +0100
+Message-Id: <1455287642-28166-2-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 1.9.1
-X-TUID: woYad/18zDbR
+In-Reply-To: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
+References: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
+X-TUID: 3coZza7NQK0R
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Hi,
+Add tcg_set_insn_param as a mechanism to modify an insn
+parameter after emiting the insn. This is useful for icount
+and also for embedding fault information for a specific insn.
 
-Another round of patches towards EL2 support. This one adds partial
-Instruction Syndrome generation for Data Aborts while running in AArch64.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ tcg/tcg.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-I don't feel very confident with the way I collect the regsize info used
-to fill out the SF field. Feedback on that would be great.
-
-Once we sort out the details on how this should be implemented we can
-fill out the parts needed for AArch32. Possibly in a future version of
-this same series.
-
-Comments welcome!
-
-Best regards,
-Edgar
-
-Edgar E. Iglesias (9):
-  tcg: Add tcg_set_insn_param
-  gen-icount: Use tcg_set_insn_param
-  target-arm: Add the thumb/IL flag to syn_data_abort
-  target-arm: Add more fields to the data abort syndrome generator
-  target-arm/translate-a64.c: Use extract32 in disas_ldst_reg_imm9
-  target-arm/translate-a64.c: Unify some of the ldst_reg decoding
-  target-arm: Add the ARMInsnSyndrome type
-  target-arm: A64: Create Instruction Syndromes for Data Aborts
-  target-arm: Use isyn.swstep.ex to hold the is_ldex state
-
- include/exec/gen-icount.h  |  16 +++----
- target-arm/cpu.h           |  27 ++++++++++-
- target-arm/internals.h     |  20 ++++++--
- target-arm/op_helper.c     |  40 +++++++++++++++-
- target-arm/translate-a64.c | 114 +++++++++++++++++++++++++++++++++++----------
- target-arm/translate.c     |  11 +++--
- target-arm/translate.h     |  65 ++++++++++++++++++++++++--
- tcg/tcg.h                  |   6 +++
- 8 files changed, 252 insertions(+), 47 deletions(-)
-
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index 83da5fb..00dd124 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -585,6 +585,12 @@ struct TCGContext {
+ 
+ extern TCGContext tcg_ctx;
+ 
++static inline void tcg_set_insn_param(int op_idx, int arg, TCGArg v)
++{
++    int op_argi = tcg_ctx.gen_op_buf[op_idx].args;
++    tcg_ctx.gen_opparam_buf[op_argi + arg] = v;
++}
++
+ /* The number of opcodes emitted so far.  */
+ static inline int tcg_op_buf_count(void)
+ {
 -- 
 1.9.1

@@ -1,48 +1,48 @@
-Received: by 10.25.159.19 with SMTP id i19csp857950lfe;
-        Fri, 12 Feb 2016 06:37:04 -0800 (PST)
-X-Received: by 10.67.6.10 with SMTP id cq10mr2597865pad.120.1455287824327;
-        Fri, 12 Feb 2016 06:37:04 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp857998lfe;
+        Fri, 12 Feb 2016 06:37:09 -0800 (PST)
+X-Received: by 10.98.42.85 with SMTP id q82mr2603927pfq.18.1455287829159;
+        Fri, 12 Feb 2016 06:37:09 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pa0-x244.google.com (mail-pa0-x244.google.com. [2607:f8b0:400e:c03::244])
-        by mx.google.com with ESMTPS id 89si20405823pfr.21.2016.02.12.06.37.04
+Received: from mail-pa0-x241.google.com (mail-pa0-x241.google.com. [2607:f8b0:400e:c03::241])
+        by mx.google.com with ESMTPS id rm10si20370055pab.25.2016.02.12.06.37.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:37:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) client-ip=2607:f8b0:400e:c03::244;
+        Fri, 12 Feb 2016 06:37:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) client-ip=2607:f8b0:400e:c03::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::244 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c03::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pa0-x244.google.com with SMTP id gc2so140567pab.3;
-        Fri, 12 Feb 2016 06:37:04 -0800 (PST)
+Received: by mail-pa0-x241.google.com with SMTP id gc2so140652pab.3;
+        Fri, 12 Feb 2016 06:37:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=gt6zuhY8go46uhbD6TiaaU4q+HV5eQo4Df2V8hqEju4=;
-        b=O0d3kU1pNL9K6Tllk8dIcw9dl6GRIU/mKYoFNXvbnaOPJArM4AVrVuF2mGNboud/Ii
-         eGFWGJj/OfMHZVBArx9eFmWE+dDPxVX5JRQKTt7uvZcm0y1so2mc/xsoJ6aUwNlm12//
-         /VG+qgwPKgP1Tdw8DRBjhC+PLkLiw52K9zB9MED/+qh2965Sy4DPYaTcTKOoy1au2MSZ
-         bS0v2br6wABaN3AZtwMJkYja0HJxRSy/1HdT/fY68Pn9jSJYrMwz7auT3knx86uoG1x8
-         lLtWirkJtbLlNXs/ATU7JiTzqLx6Vum8DpvruTAgphqFxdtLrSRg3J3zixhbRZk1ryL4
-         /3dw==
+        bh=rsUn9JtrBMmHmiigbnm2PVvfRiC6pT6XaJm2ZPirKXg=;
+        b=Rg6/am/EV3br1QHOiihEey7hIrd11eitfwb50yL5Hl2YJDrzFhttODuD6HdtTqiezh
+         u50b1GjpFGEnHOQGi7UwrduvFNOh/6qv+MnC4alM/OSinEzsTXvjdh0YDxmavy/UXcQr
+         FXUWORtY+dkASHfGLNHaHTuSwdOuzyyWvWhHctpHEs5EGMzwFfVlnZyO8Iu+Qk0I38xv
+         WZ1Qulcg/Jl4CoS/yYUyOzWMcR5kvYdnM3wyWwbOD2OIbaorE5aYwquEmUKoJs7p73oT
+         52X8j7VSdD9AUHFsOyVTdi1+YA97WXjNEj+KHxvYa+hutyIRmO2b5fCG33jzlAoW0u6g
+         2wog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=gt6zuhY8go46uhbD6TiaaU4q+HV5eQo4Df2V8hqEju4=;
-        b=gMLuN3vpgxO8r6YMsfHBUTsSulifQkWzBLpoIc2tneyHYBo0CJCbdlax2bza+oO6kb
-         f9lfgAbtSmRoZdVxeHmXEmq8QHWxfVIQR/3YWCcPyTf0RI+Axvn60hzkUR+B+6uqp1hy
-         2qfwysjGRFDptFVb9rAtaP54Jx5uG42VRRW8figm+oXav74iK5yNgiJqqz1a2BOzbMmt
-         yHAUan/7S+AKHkRFPXNoJn8j3n9H8CYZ1BIXNof5FQuLdMmNaFw1bwOm0oAzLv3J5Y+z
-         fFzpN+RJ64u3aDl8+v/SZ2AGqFPHds0qiNlqHk6hDn5wTbfjB7QRCjRN5sZGFlE7F1VV
-         Fw9g==
-X-Gm-Message-State: AG10YOSinsCthbnootA7LNvhtFCt+fvFD8dHVREc/mIHX8MNU4ZOb0h7+9idKkpEnglA7A==
-X-Received: by 10.66.250.199 with SMTP id ze7mr2527936pac.103.1455287823977;
-        Fri, 12 Feb 2016 06:37:03 -0800 (PST)
+        bh=rsUn9JtrBMmHmiigbnm2PVvfRiC6pT6XaJm2ZPirKXg=;
+        b=Mlvcgr+v3JWmEmqb5BFNn/4N4nlDSnoIkJ8Rp+W+V+Gf2ePahO2wnM5EvMfa+hHj0G
+         +IcWEgbz08lsX8CzvimYnWAH95fTXCoABMQ/xunOx0lefi6BJ1ZkkaEXZNszujfYgaLU
+         BmPwaIE72BZxk4kcdmLlIpXak3pTgAv6Riho7tfVPe0Wr2I76eUnrvsQxRAekCa6aO7/
+         +qWeXn/DwCkHL+8atnjTHhVlp+QGxp7fl/O91mkVSItrUzDYZRDiWKRVymZV0uWHbtzl
+         ARJlx+TkWA+YtmgVF+FKjTZN7FRzUXM87AJenod3pBiubnSnpmfgaEQGXmPoQf2DYcGl
+         FiOg==
+X-Gm-Message-State: AG10YOTEIbl3QAAs1MDuoTpa/of9ho4YYAd94GxhrXK2ZBTr4D3SgPyed8XUS4ikufemBw==
+X-Received: by 10.66.145.68 with SMTP id ss4mr2520630pab.79.1455287828822;
+        Fri, 12 Feb 2016 06:37:08 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id f12sm19976759pfd.87.2016.02.12.06.37.02
+        by smtp.gmail.com with ESMTPSA id ey2sm20052601pab.2.2016.02.12.06.37.07
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:37:03 -0800 (PST)
+        Fri, 12 Feb 2016 06:37:08 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
@@ -51,126 +51,290 @@ Cc: alex.bennee@linaro.org,
 	rth@twiddle.net,
 	qemu-arm@nongnu.org,
 	edgar.iglesias@xilinx.com
-Subject: [PATCH v1 7/9] target-arm: Add the ARMInsnSyndrome type
-Date: Fri, 12 Feb 2016 15:34:00 +0100
-Message-Id: <1455287642-28166-8-git-send-email-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 8/9] target-arm: A64: Create Instruction Syndromes for Data Aborts
+Date: Fri, 12 Feb 2016 15:34:01 +0100
+Message-Id: <1455287642-28166-9-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
 References: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: RskU3ruXh7ic
+X-TUID: nbXfqVg0WhU6
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Add the ARMInsnSyndrome type including helper functions to
-encode and decode it into an u32. This is in preparation for
-Instruction Syndrome generation for Data Aborts.
+Add support for generating the instruction syndrome for Data Aborts.
+These syndromes are used by hypervisors for example to trap and emulate
+memory accesses.
 
-No functional change.
+We save the decoded data out-of-band with the TBs at translation time.
+When exceptions hit, the extra data attached to the TB is used to
+recreate the state needed to encode instruction syndromes.
+This avoids the need to emit moves with every load/store.
 
+Based on a suggestion from Peter Maydell.
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- target-arm/cpu.h       | 22 +++++++++++++++++++
- target-arm/translate.h | 57 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 79 insertions(+)
+ target-arm/cpu.h           |  5 +++-
+ target-arm/op_helper.c     | 34 +++++++++++++++++++++++--
+ target-arm/translate-a64.c | 63 +++++++++++++++++++++++++++++++++++++++++++++-
+ target-arm/translate.c     |  5 +++-
+ target-arm/translate.h     |  3 +++
+ 5 files changed, 105 insertions(+), 5 deletions(-)
 
 diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 5137632..a00a121 100644
+index a00a121..fecc48f 100644
 --- a/target-arm/cpu.h
 +++ b/target-arm/cpu.h
-@@ -123,6 +123,28 @@ typedef struct {
-     uint32_t base_mask;
- } TCR;
+@@ -95,7 +95,7 @@
+ struct arm_boot_info;
  
-+/* Holds the state needed to create an instruction syndrome.  */
-+typedef struct ARMInsnSyndrome {
-+    /* Data Abort section.  */
-+    struct {
-+        bool valid;
-+        unsigned int sas;
-+        bool sse;
-+        unsigned int srt;
-+        bool sf;
-+        bool ar;
-+    } dabt;
+ #define NB_MMU_MODES 7
+-#define TARGET_INSN_START_EXTRA_WORDS 1
++#define TARGET_INSN_START_EXTRA_WORDS 2
+ 
+ /* We currently assume float and double are IEEE single and double
+    precision respectively.
+@@ -196,6 +196,9 @@ typedef struct CPUARMState {
+     uint32_t condexec_bits; /* IT bits.  cpsr[15:10,26:25].  */
+     uint64_t daif; /* exception masks, in the bits they are in PSTATE */
+ 
++    /* IS state from decoded instructions. Only valid after Data aborts.  */
++    ARMInsnSyndrome isyn;
 +
-+    /* SWStep section.  */
-+    struct {
-+        /* True if the insn just emitted was a load-exclusive instruction
-+         * (necessary for syndrome information for single step exceptions),
-+         * ie A64 LDX*, LDAX*, A32/T32 LDREX*, LDAEX*.
+     uint64_t elr_el[4]; /* AArch64 exception link regs  */
+     uint64_t sp_el[4]; /* AArch64 banked stack pointers */
+ 
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index 9bf635f..b195848 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -115,8 +115,23 @@ void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int mmu_idx,
+             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
+             exc = EXCP_PREFETCH_ABORT;
+         } else {
++            if (target_el != 2 || fi.s1ptw) {
++                /* ISV is only set for data aborts routed to EL2 and
++                 * never for S1PTWalks faulting on Stage 2.
++                 *
++                 * See ARMv8 specs:
++                 * ISS encoding for an exception from a Data Abort, the
++                 * ISV field.
++                 */
++                env->isyn.dabt.valid = 0;
++            }
+             syn = syn_data_abort(same_el,
+-                                 0, 0, 0, 0, 0, 0,
++                                 env->isyn.dabt.valid,
++                                 env->isyn.dabt.sas,
++                                 env->isyn.dabt.sse,
++                                 env->isyn.dabt.srt,
++                                 env->isyn.dabt.sf,
++                                 env->isyn.dabt.ar,
+                                  0, 0, fi.s1ptw, is_write == 1, syn,
+                                  env->thumb);
+             if (is_write == 1 && arm_feature(env, ARM_FEATURE_V6)) {
+@@ -163,9 +178,24 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+         env->exception.fsr |= (1 << 11);
+     }
+ 
++    if (target_el != 2) {
++        /* ISV is only set for data aborts routed to EL2 and
++         * never for S1PTWalks faulting on Stage 2.
++         *
++         * See ARMv8 specs:
++         * ISS encoding for an exception from a Data Abort, the
++         * ISV field.
 +         */
-+        bool ex;
-+    } swstep;
-+} ARMInsnSyndrome;
++        env->isyn.dabt.valid = 0;
++    }
+     raise_exception(env, EXCP_DATA_ABORT,
+                     syn_data_abort(same_el,
+-                                   0, 0, 0, 0, 0, 0,
++                                   env->isyn.dabt.valid,
++                                   env->isyn.dabt.sas,
++                                   env->isyn.dabt.sse,
++                                   env->isyn.dabt.srt,
++                                   env->isyn.dabt.sf,
++                                   env->isyn.dabt.ar,
+                                    0, 0, 0, is_write == 1, 0x21,
+                                    env->thumb),
+                     target_el);
+diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+index 9e26d5e..2f17cba 100644
+--- a/target-arm/translate-a64.c
++++ b/target-arm/translate-a64.c
+@@ -1803,6 +1803,24 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+ }
+ #endif
+ 
++static void disas_ldr_update_isyn_sse_sf(DisasContext *s, int size,
++                                        bool is_signed, int opc)
++{
++    int opc0 = extract32(opc, 0, 1);
++    int regsize;
 +
- typedef struct CPUARMState {
-     /* Regs for current mode.  */
-     uint32_t regs[16];
++    s->isyn.dabt.sse = is_signed;
++    /* Update the Sixty-Four bit (SF) registersize. This logic is derived
++     * from the ARMv8 specs for LDR (Shared decode for all encodings).
++     */
++    if (is_signed) {
++        regsize = opc0 ? 32 : 64;
++    } else {
++        regsize = size == 3 ? 64 : 32;
++    }
++    s->isyn.dabt.sf = regsize == 64;
++}
++
+ /* C3.3.6 Load/store exclusive
+  *
+  *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
+@@ -1859,6 +1877,12 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+         } else {
+             do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
+         }
++
++        /* Generate ISV for non-exclusive accesses including LASR.  */
++        s->isyn.dabt.valid = true;
++        s->isyn.dabt.sse = false;
++        s->isyn.dabt.sf = size == 3 ? 64 : 32;
++        s->isyn.dabt.ar = is_lasr;
+     }
+ }
+ 
+@@ -1901,6 +1925,11 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+         }
+         size = 2 + extract32(opc, 0, 1);
+         is_signed = extract32(opc, 1, 1);
++
++        /* Enable ISV generation.  */
++        s->isyn.dabt.valid = true;
++        s->isyn.dabt.sse = is_signed;
++        s->isyn.dabt.sf = size == 3 ? 64 : 32;
+     }
+ 
+     tcg_rt = cpu_reg(s, rt);
+@@ -2119,6 +2148,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+         is_store = (opc == 0);
+         is_signed = extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
++        disas_ldr_update_isyn_sse_sf(s, size, is_signed, opc);
+     }
+ 
+     switch (idx) {
+@@ -2238,6 +2268,7 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+         is_store = (opc == 0);
+         is_signed = extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
++        disas_ldr_update_isyn_sse_sf(s, size, is_signed, opc);
+     }
+ 
+     if (rn == 31) {
+@@ -2321,6 +2352,7 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+         is_store = (opc == 0);
+         is_signed = extract32(opc, 1, 1);
+         is_extended = (size < 3) && extract32(opc, 0, 1);
++        disas_ldr_update_isyn_sse_sf(s, size, is_signed, opc);
+     }
+ 
+     if (rn == 31) {
+@@ -2354,6 +2386,11 @@ static void disas_ldst_reg(DisasContext *s, uint32_t insn)
+     bool is_vector = extract32(insn, 26, 1);
+     int size = extract32(insn, 30, 2);
+ 
++    /* Vectored load/stores do not include an Insn Syndrome.  */
++    s->isyn.dabt.valid = !is_vector;
++    s->isyn.dabt.sas = size;
++    s->isyn.dabt.srt = rt;
++
+     switch (extract32(insn, 24, 2)) {
+     case 0:
+         if (extract32(insn, 21, 1) == 1 && extract32(insn, 10, 2) == 2) {
+@@ -2660,6 +2697,21 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+ /* C3.3 Loads and stores */
+ static void disas_ldst(DisasContext *s, uint32_t insn)
+ {
++    uint32_t isyn32;
++
++    /* Insn Syndrome in AArch64 is only valid for:
++     * Load/Stores of a single GPR (e.g not vector regs).
++     * Including register 31.
++     * Including Acquire/Release.
++     * Excluding Exclusive accesses.
++     * Excluding accesses with writeback.
++     *
++     * We clear the insn syndrome state here (invalidating it).
++     * The various sub decoders will then fill out information
++     * as they decode it.
++     */
++    memset(&s->isyn, 0, sizeof s->isyn);
++
+     switch (extract32(insn, 24, 6)) {
+     case 0x08: /* Load/store exclusive */
+         disas_ldst_excl(s, insn);
+@@ -2685,6 +2737,14 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
+         unallocated_encoding(s);
+         break;
+     }
++
++    /* The saved insn syndrome state in insn_start is already zero (invalid).
++     * We only update it if we have a valid insn syndrome to save.
++     */
++    if (s->isyn.dabt.valid) {
++        isyn32 = arm_encode_dabt_isyn_u32(&s->isyn);
++        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
++    }
+ }
+ 
+ /* C3.4.6 PC-rel. addressing
+@@ -11087,7 +11147,8 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+     tcg_clear_temp_count();
+ 
+     do {
+-        tcg_gen_insn_start(dc->pc, 0);
++        dc->insn_start_idx = tcg_op_buf_count();
++        tcg_gen_insn_start(dc->pc, 0, 0);
+         num_insns++;
+ 
+         if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index cf3dc33..0d53e7d 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -11349,7 +11349,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+       }
+     do {
+         tcg_gen_insn_start(dc->pc,
+-                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1));
++                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
++                           0);
+         num_insns++;
+ 
+ #ifdef CONFIG_USER_ONLY
+@@ -11665,8 +11666,10 @@ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
+     if (is_a64(env)) {
+         env->pc = data[0];
+         env->condexec_bits = 0;
++        arm_decode_dabt_isyn_u32(&env->isyn, data[2]);
+     } else {
+         env->regs[15] = data[0];
+         env->condexec_bits = data[1];
++        arm_decode_dabt_isyn_u32(&env->isyn, data[2]);
+     }
+ }
 diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 53ef971..a94e17e 100644
+index a94e17e..2130a84 100644
 --- a/target-arm/translate.h
 +++ b/target-arm/translate.h
-@@ -151,4 +151,61 @@ void arm_free_cc(DisasCompare *cmp);
- void arm_jump_cc(DisasCompare *cmp, TCGLabel *label);
- void arm_gen_test_cc(int cc, TCGLabel *label);
- 
-+
-+/* The following describes the packing and unpacking of the Data Abort
-+ * section of an ARMInsnSyndrome from/into an u32.
-+ */
-+
-+/* Field widths.  */
-+#define ISYN_WIDTH_valid 1
-+#define ISYN_WIDTH_sas 2
-+#define ISYN_WIDTH_sse 1
-+#define ISYN_WIDTH_srt 5
-+#define ISYN_WIDTH_sf  1
-+#define ISYN_WIDTH_ar  1
-+
-+/* We use 64bit deposit to allow for overflow checking.  */
-+#define ISYN_SHIFT_IN(val, isyn, field)                      \
-+    {                                                        \
-+        unsigned int width = xglue(ISYN_WIDTH_, field);      \
-+        val <<= width;                                       \
-+        val = deposit64(val, 0, width, (isyn).field);        \
-+    } while (0)
-+
-+#define ISYN_SHIFT_OUT(val, isyn, field)                     \
-+    {                                                        \
-+        unsigned int width = xglue(ISYN_WIDTH_, field);      \
-+        (isyn).field = extract32(val, 0, width);             \
-+        val >>= width;                                       \
-+    } while (0)
-+
-+static inline uint32_t arm_encode_dabt_isyn_u32(ARMInsnSyndrome *isyn)
-+{
-+    uint64_t v = 0;
-+    uint32_t v32;
-+
-+    ISYN_SHIFT_IN(v, isyn->dabt, valid);
-+    ISYN_SHIFT_IN(v, isyn->dabt, sas);
-+    ISYN_SHIFT_IN(v, isyn->dabt, sse);
-+    ISYN_SHIFT_IN(v, isyn->dabt, srt);
-+    ISYN_SHIFT_IN(v, isyn->dabt, sf);
-+    ISYN_SHIFT_IN(v, isyn->dabt, ar);
-+    /* Check for overflows.  */
-+    v32 = v;
-+    assert(v32 == v);
-+    return v32;
-+}
-+
-+static inline void arm_decode_dabt_isyn_u32(ARMInsnSyndrome *isyn, uint32_t v)
-+{
-+    /* The fields must be shifted out in reverse order.  */
-+    ISYN_SHIFT_OUT(v, isyn->dabt, ar);
-+    ISYN_SHIFT_OUT(v, isyn->dabt, sf);
-+    ISYN_SHIFT_OUT(v, isyn->dabt, srt);
-+    ISYN_SHIFT_OUT(v, isyn->dabt, sse);
-+    ISYN_SHIFT_OUT(v, isyn->dabt, sas);
-+    ISYN_SHIFT_OUT(v, isyn->dabt, valid);
-+    assert(v == 0);
-+}
-+
- #endif /* TARGET_ARM_TRANSLATE_H */
+@@ -58,6 +58,9 @@ typedef struct DisasContext {
+     bool ss_same_el;
+     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+     int c15_cpar;
++    ARMInsnSyndrome isyn;
++    /* TCG op index of the current insn_start.  */
++    int insn_start_idx;
+ #define TMP_A64_MAX 16
+     int tmp_a64_count;
+     TCGv_i64 tmp_a64[TMP_A64_MAX];
 -- 
 1.9.1

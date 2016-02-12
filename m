@@ -1,115 +1,100 @@
-Received: by 10.25.159.19 with SMTP id i19csp2487614lfe;
-        Wed, 10 Feb 2016 05:38:23 -0800 (PST)
-X-Received: by 10.194.134.233 with SMTP id pn9mr39432054wjb.77.1455111503213;
-        Wed, 10 Feb 2016 05:38:23 -0800 (PST)
-Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id pg2si4660574wjb.128.2016.02.10.05.38.22;
-        Wed, 10 Feb 2016 05:38:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
+Received: by 10.25.159.19 with SMTP id i19csp857682lfe;
+        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+X-Received: by 10.98.86.145 with SMTP id h17mr2589470pfj.9.1455287792382;
+        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-pf0-x242.google.com (mail-pf0-x242.google.com. [2607:f8b0:400e:c00::242])
+        by mx.google.com with ESMTPS id a78si20386512pfj.116.2016.02.12.06.36.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) client-ip=2607:f8b0:400e:c00::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u1ADc0jw000488;
-	Wed, 10 Feb 2016 14:38:00 +0100
-Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 76EFB70D;
-	Wed, 10 Feb 2016 14:38:00 +0100 (CET)
-From: =?utf-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
-To: Richard Henderson <rth@twiddle.net>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-        Stefan Hajnoczi <stefanha@gmail.com>,
-        Anthony
- Green <green@moxielogic.com>,
-        Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,
-        Alexander Graf <agraf@suse.de>,
-        Bastian
- Koppelmann <kbastian@mail.uni-paderborn.de>,
-        Blue Swirl
- <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
-        Michael Walle
- <michael@walle.cc>,
-        "open list\:ARM" <qemu-arm@nongnu.org>,
-        "open
- list\:PowerPC" <qemu-ppc@nongnu.org>,
-        "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Guan
- Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
-        Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v6 3/4] tcg: Add type for vCPU pointers
-References: <145505246212.4785.2237668256809452874.stgit@localhost>
-	<145505248083.4785.7066950318146523490.stgit@localhost>
-	<56BAAD86.3010007@twiddle.net> <87d1s4emfn.fsf@fimbulvetr.bsc.es>
-Mail-Followup-To: Richard Henderson <rth@twiddle.net>,
- qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, Eduardo Habkost
-	<ehabkost@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Stefan
-	Hajnoczi <stefanha@gmail.com>, Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Alexander Graf
-	<agraf@suse.de>, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, "open list\:ARM"
-	<qemu-arm@nongnu.org>, "open list\:PowerPC" <qemu-ppc@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae
-	<leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>, Jia
-	Liu <proljc@gmail.com>
-Date: Wed, 10 Feb 2016 14:38:00 +0100
-In-Reply-To: <87d1s4emfn.fsf@fimbulvetr.bsc.es> (=?utf-8?Q?=22Llu=C3=ADs?=
- Vilanova"'s message of
-	"Wed, 10 Feb 2016 14:15:24 +0100")
-Message-ID: <877ficeldz.fsf@fimbulvetr.bsc.es>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 5FSptajPPOZ6
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::242 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x242.google.com with SMTP id 71so4065080pfv.1;
+        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=KenvIwYWiYpYTOWcCr0fJLwxOVqDrG+7Q3i33Fipl9Q=;
+        b=MCJYm3oGEoTc4/V+FCdzsOPmeQOOEcI/RL0gTofepff3tGBqAuYtW/HjJYXI449uc4
+         Afe3PuJ6BDJydlmgq6lu2bm6/LiuNlh1zwx2Suk1bC0rvWzveHa6AUcDW2dPVx15Drdb
+         6X1OPjHtldW2rO62+Hx89owBtKdAyNmyhtWMD5RlNI/flnV7reZpHkMewRCH6PoTrGD3
+         SCQBl//l++H80obl+mv8FfWlhgJyZthG9By7L/PEjp9ftOdtEWGD1b6zJw/sG/FU0TBE
+         HYFsI7f6Jx7mlWFrXdWSfzSCFsrSmwlUaGHhOyvpG4FEq0IBVKx02/v5Tfsew/9c80Mi
+         kckg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=KenvIwYWiYpYTOWcCr0fJLwxOVqDrG+7Q3i33Fipl9Q=;
+        b=i6GgS3smChRUP4CxOC8wXXg6zauiGFuh1yejm9hA/YwKQQsC8yKTuT/h9jkAf2ptit
+         1OQjVr+idU9KQEfUArQuku5nuWSLb0xarmJhKD57zZz0Q/QpoyGmvma9ac2O6s533sFv
+         OjmAmXyh1CfubUHUgsoTlxoMh4vFbcm25LzhdsZaHKKVYB66AxnsaDiab2Jo+si61TXX
+         kRJlABSrR2XPKXsseynsbyEpYljAtanANhtK3vEzkD9Szd5f75ShtWi4mptoJB7GOv18
+         rA3s+VxHtSaFuZSHSOs215SJv407VoHc8bgiPwOx9M3gw4UOIOTio7Rysr6DRZ0OObpe
+         PN8Q==
+X-Gm-Message-State: AG10YOTLVumPBqJGXBqNjGyyD8pKPW1Ms6rW8BTAU4Kgc7YCmnHKGOskKkdkU/8ouqlCYQ==
+X-Received: by 10.98.93.2 with SMTP id r2mr2642710pfb.64.1455287792081;
+        Fri, 12 Feb 2016 06:36:32 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id h65sm19993768pfh.43.2016.02.12.06.36.30
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 06:36:31 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: alex.bennee@linaro.org,
+	serge.fdrv@gmail.com,
+	rth@twiddle.net,
+	qemu-arm@nongnu.org,
+	edgar.iglesias@xilinx.com
+Subject: [PATCH v1 0/9] arm: Steps towards EL2 support round 6
+Date: Fri, 12 Feb 2016 15:33:53 +0100
+Message-Id: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 1.9.1
+X-TUID: woYad/18zDbR
 
-Llu=C3=ADs Vilanova writes:
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-> Richard Henderson writes:
->> On 02/10/2016 08:14 AM, Llu=C3=ADs Vilanova wrote:
->>> Adds the 'TCGv_env' type for pointers to 'CPUArchState' objects. The
->>> tracing infrastructure later needs to differentiate between regular
->>> pointers and pointers to vCPUs.
->>>=20
->>> Also changes all targets to use the new 'TCGv_cpu' type instead of the
->>> generic 'TCGv_ptr'. As of now, the change is merely cosmetic ('TCGv_env'
->>> translates into 'TCGv_ptr'), but that could change in the future to
->>> enforce the difference.
+Hi,
 
->> I suppose.
+Another round of patches towards EL2 support. This one adds partial
+Instruction Syndrome generation for Data Aborts while running in AArch64.
 
->> We won't be able distinguish TCGv_env from TCGv_ptr until env can be
->> auto-converted to ptr.  Which I can't imagine happening without switchin=
-g to
->> C++.
+I don't feel very confident with the way I collect the regsize info used
+to fill out the SF field. Feedback on that would be great.
 
-> It's difficult to differenciate between TCGv_ptr and TCGv_env in "tcg/tcg=
--op.h"
-> unless an explicit operation is added to perform casts or to get a TCGv_p=
-tr from
-> a TCGv_env+offset (e.g., add a tcg_gen_env_ld8u_i32 built on top of
-> tcg_gen_ld8u_i32). That is, unless QEMU switches to C++.
+Once we sort out the details on how this should be implemented we can
+fill out the parts needed for AArch32. Possibly in a future version of
+this same series.
 
-> But types could be easily enforced in helper declarations, which can inte=
-rnally
-> cast to the pointer type.
-[...]
+Comments welcome!
 
+Best regards,
+Edgar
 
-BTW, type overload can also be achieved in C using GCC's
-__builtin_types_compatible_p and __builtin_choose_expr intrinsics:
+Edgar E. Iglesias (9):
+  tcg: Add tcg_set_insn_param
+  gen-icount: Use tcg_set_insn_param
+  target-arm: Add the thumb/IL flag to syn_data_abort
+  target-arm: Add more fields to the data abort syndrome generator
+  target-arm/translate-a64.c: Use extract32 in disas_ldst_reg_imm9
+  target-arm/translate-a64.c: Unify some of the ldst_reg decoding
+  target-arm: Add the ARMInsnSyndrome type
+  target-arm: A64: Create Instruction Syndromes for Data Aborts
+  target-arm: Use isyn.swstep.ex to hold the is_ldex state
 
-  http://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+ include/exec/gen-icount.h  |  16 +++----
+ target-arm/cpu.h           |  27 ++++++++++-
+ target-arm/internals.h     |  20 ++++++--
+ target-arm/op_helper.c     |  40 +++++++++++++++-
+ target-arm/translate-a64.c | 114 +++++++++++++++++++++++++++++++++++----------
+ target-arm/translate.c     |  11 +++--
+ target-arm/translate.h     |  65 ++++++++++++++++++++++++--
+ tcg/tcg.h                  |   6 +++
+ 8 files changed, 252 insertions(+), 47 deletions(-)
 
-
-Cheers,
-  Lluis
+-- 
+1.9.1

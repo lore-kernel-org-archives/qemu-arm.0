@@ -1,48 +1,48 @@
-Received: by 10.25.159.19 with SMTP id i19csp857754lfe;
-        Fri, 12 Feb 2016 06:36:41 -0800 (PST)
-X-Received: by 10.98.40.200 with SMTP id o191mr2593625pfo.83.1455287801256;
-        Fri, 12 Feb 2016 06:36:41 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp857800lfe;
+        Fri, 12 Feb 2016 06:36:46 -0800 (PST)
+X-Received: by 10.66.122.97 with SMTP id lr1mr2604685pab.80.1455287805968;
+        Fri, 12 Feb 2016 06:36:45 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by mx.google.com with ESMTPS id bf9si20357010pac.163.2016.02.12.06.36.41
+Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
+        by mx.google.com with ESMTPS id ki7si20393269pab.9.2016.02.12.06.36.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:36:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        Fri, 12 Feb 2016 06:36:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dkim=pass header.i=@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id e127so4059789pfe.3;
-        Fri, 12 Feb 2016 06:36:41 -0800 (PST)
+Received: by mail-pf0-x244.google.com with SMTP id w128so3476117pfb.2;
+        Fri, 12 Feb 2016 06:36:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=9zHW8MdnBap+PWGIIZRvMIc3FR2lIZ7K0NVWqwaDLNg=;
-        b=TGRKBg0n9luRafbj/tDQZ1aELREVGp8P/29q7b0CGPIB3h3B+gz1qckCfNoNLPV+YT
-         imx7PrO2KPJn4Knyw341QGQmNaJ4Eds5yt8ugOkNyYnVZgSn+aXo1gecKnCnTAhuyj53
-         AC5wPGsCLM4KM2MEJtIk81PNXpVMaw9MlGtLlT28P9H3N8pt13zInFTaA6aVInI8FEsx
-         mFjCWNAkSPiVUUoDFvDJZfckL/Spuc3oDpL46753OMGaIc/02dSQzAoOzG0XWDDtgYF1
-         OaFrnfoswHJ0eqnqu8+L7QvrLwTn/Ps0zzRnRUY9oiGdUydJOBG9BsqCBzssftL3m522
-         kuWA==
+        bh=W3ytM1oaUpT6mnFZl4OL/XDOIEQKXu7uhdgoI4/sR3A=;
+        b=kVVsp/K+vX82qzT8+FMznhveUujk57buhFMEGLh79N4Ay9Gcw2Xe0IDoX0DhxEZVP6
+         2ggV1s3j6dcaZ45xzyOCuGPixj/fEWtXwBf0ozaJKRxw6352uIHigyMBqyC1LE+Hg3eN
+         wwGlelfcP03HIRd0nEJCPitmZ6Xp5BTVaJJTjKVfXsT3VxjTGhXXVzHnTL2vgTGwPGYS
+         OKJUs/PbvZOI6yid+ZPagsDVc6J0X1eJ38Zjy8ri4RM4C9bjGNQ94imP9tFpLo+ekYiv
+         cLcPpD044hczCCsj/TX8uqnC1q5DrCpFNwFnQlF4RWOLWsVU+ROl80d3GeCshsXDcnT+
+         Kt7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=9zHW8MdnBap+PWGIIZRvMIc3FR2lIZ7K0NVWqwaDLNg=;
-        b=KFawJqMVR4SBNBYP4tedAHGh8rMYZ+zKxxu1Y6DSL5f0T1dZ7lgl55GqVfuuPdjZYd
-         YiOTW974IWGL3ujo1ZZhGOIrIQ7rezLz4MrmQeiegUPwMcq35b2wLTdBzoWiV50GRhn5
-         qfWV/A0wF/672w0M3jReZ0iu/6KeaPDw8tsHpHdoCbRyYBVEpw2hDmeIJIIcQ44fXc1h
-         BTbLPHBtl53lOBXiVbr6Vem8Fns1iKBsqfgGbohK5+Khs7v1/q+gMCrlnhPGm7hHTayJ
-         CXg6YdXid8zUcYi5nBbM1K4oo3wEBlcr8vzbOnoY5Ca7ZyyZiiPC8926n57idoF2S1o+
-         hIFg==
-X-Gm-Message-State: AG10YOS38vRvRHNvf4Riwsmy+bdFS3Y61B/EnxQi7roVNdvi7L6tSkX9oxq6Js4DgZICNQ==
-X-Received: by 10.98.40.5 with SMTP id o5mr2651791pfo.76.1455287800928;
-        Fri, 12 Feb 2016 06:36:40 -0800 (PST)
+        bh=W3ytM1oaUpT6mnFZl4OL/XDOIEQKXu7uhdgoI4/sR3A=;
+        b=AHjZIRVvg7cA/aYg6FUfO3GN78+xE98UjJpMOuH3MwoOmPX6qgGvA5X4FRntMieAVJ
+         qclybFjeU2l6Ltrh+JxrB/esGioJA+Ec3gnnh3d4CHvra0rxcgpCZG/CCgmxLCsHWDVv
+         piZYelW7zC2zp5ST5JHMWSoh4Qro/NZbV3AokND83lgPqCSnx7YqPsL9ChiWNNihbQGQ
+         hgeLrDlw4ZZ/YV05DSUus0RlhZgxk4wpWfqpTD8rOXHtipsbiC9EfqQRAMYZS6aqQt/G
+         TFaYkXmW8nUxYq6gy/4/zxSDXkuem3kL9CuSRnVCujQgDGdGaw4LSjR0/+ZzgOVbbZyE
+         d5Rg==
+X-Gm-Message-State: AG10YOQHq4cn7TYV3atDCHtXjSiffW8YfzMu8V2whVhsrJCP0kpDi8Wf4/VFVZFUujNipQ==
+X-Received: by 10.98.33.77 with SMTP id h74mr2522751pfh.157.1455287805625;
+        Fri, 12 Feb 2016 06:36:45 -0800 (PST)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id 82sm19965622pfn.89.2016.02.12.06.36.39
+        by smtp.gmail.com with ESMTPSA id 19sm19976587pfb.64.2016.02.12.06.36.44
         (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:36:40 -0800 (PST)
+        Fri, 12 Feb 2016 06:36:45 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
@@ -51,73 +51,62 @@ Cc: alex.bennee@linaro.org,
 	rth@twiddle.net,
 	qemu-arm@nongnu.org,
 	edgar.iglesias@xilinx.com
-Subject: [PATCH v1 2/9] gen-icount: Use tcg_set_insn_param
-Date: Fri, 12 Feb 2016 15:33:55 +0100
-Message-Id: <1455287642-28166-3-git-send-email-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 3/9] target-arm: Add the thumb/IL flag to syn_data_abort
+Date: Fri, 12 Feb 2016 15:33:56 +0100
+Message-Id: <1455287642-28166-4-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
 References: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: jJAkesiuORhF
+X-TUID: sS8Er6hmvs1H
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Use tcg_set_insn_param() instead of directly accessing internal
-tcg data structures to update an insn param.
-
-Reviewed-by: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- include/exec/gen-icount.h | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ target-arm/internals.h | 4 +++-
+ target-arm/op_helper.c | 6 ++++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/gen-icount.h b/include/exec/gen-icount.h
-index 05d89d3..a011324 100644
---- a/include/exec/gen-icount.h
-+++ b/include/exec/gen-icount.h
-@@ -5,14 +5,13 @@
+diff --git a/target-arm/internals.h b/target-arm/internals.h
+index 70bec4a..b1c483b 100644
+--- a/target-arm/internals.h
++++ b/target-arm/internals.h
+@@ -360,9 +360,11 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+ }
  
- /* Helpers for instruction counting code generation.  */
- 
--static TCGArg *icount_arg;
-+static int icount_start_insn_idx;
- static TCGLabel *icount_label;
- static TCGLabel *exitreq_label;
- 
- static inline void gen_tb_start(TranslationBlock *tb)
+ static inline uint32_t syn_data_abort(int same_el, int ea, int cm, int s1ptw,
+-                                      int wnr, int fsc)
++                                      int wnr, int fsc,
++                                      bool is_thumb)
  {
-     TCGv_i32 count, flag, imm;
--    int i;
+     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
++        | (is_thumb ? 0 : ARM_EL_IL)
+         | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
+ }
  
-     exitreq_label = gen_new_label();
-     flag = tcg_temp_new_i32();
-@@ -31,13 +30,12 @@ static inline void gen_tb_start(TranslationBlock *tb)
-                    -ENV_OFFSET + offsetof(CPUState, icount_decr.u32));
- 
-     imm = tcg_temp_new_i32();
-+    /* We emit a movi with a dummy immediate argument. Keep the insn index
-+     * of the movi so that we later (when we know the actual insn count)
-+     * can update the immediate argument with the actual insn count.  */
-+    icount_start_insn_idx = tcg_op_buf_count();
-     tcg_gen_movi_i32(imm, 0xdeadbeef);
- 
--    /* This is a horrid hack to allow fixing up the value later.  */
--    i = tcg_ctx.gen_last_op_idx;
--    i = tcg_ctx.gen_op_buf[i].args;
--    icount_arg = &tcg_ctx.gen_opparam_buf[i + 1];
--
-     tcg_gen_sub_i32(count, count, imm);
-     tcg_temp_free_i32(imm);
- 
-@@ -53,7 +51,9 @@ static void gen_tb_end(TranslationBlock *tb, int num_insns)
-     tcg_gen_exit_tb((uintptr_t)tb + TB_EXIT_REQUESTED);
- 
-     if (tb->cflags & CF_USE_ICOUNT) {
--        *icount_arg = num_insns;
-+        /* Update the num_insn immediate parameter now that we know
-+         * the actual insn count.  */
-+        tcg_set_insn_param(icount_start_insn_idx, 1, num_insns);
-         gen_set_label(icount_label);
-         tcg_gen_exit_tb((uintptr_t)tb + TB_EXIT_ICOUNT_EXPIRED);
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index bd48549..4e629e1 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -115,7 +115,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int mmu_idx,
+             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
+             exc = EXCP_PREFETCH_ABORT;
+         } else {
+-            syn = syn_data_abort(same_el, 0, 0, fi.s1ptw, is_write == 1, syn);
++            syn = syn_data_abort(same_el, 0, 0, fi.s1ptw, is_write == 1, syn,
++                                 env->thumb);
+             if (is_write == 1 && arm_feature(env, ARM_FEATURE_V6)) {
+                 fsr |= (1 << 11);
+             }
+@@ -161,7 +162,8 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
      }
+ 
+     raise_exception(env, EXCP_DATA_ABORT,
+-                    syn_data_abort(same_el, 0, 0, 0, is_write == 1, 0x21),
++                    syn_data_abort(same_el, 0, 0, 0, is_write == 1, 0x21,
++                                   env->thumb),
+                     target_el);
+ }
+ 
 -- 
 1.9.1

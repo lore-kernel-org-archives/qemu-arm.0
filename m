@@ -1,81 +1,83 @@
-Received: by 10.25.159.19 with SMTP id i19csp697074lfe;
-        Fri, 12 Feb 2016 01:16:44 -0800 (PST)
-X-Received: by 10.140.96.245 with SMTP id k108mr493529qge.31.1455268603904;
-        Fri, 12 Feb 2016 01:16:43 -0800 (PST)
+Received: by 10.25.159.19 with SMTP id i19csp703979lfe;
+        Fri, 12 Feb 2016 01:34:57 -0800 (PST)
+X-Received: by 10.140.106.165 with SMTP id e34mr563603qgf.23.1455269697326;
+        Fri, 12 Feb 2016 01:34:57 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k69si9248986qkl.18.2016.02.12.01.16.43
+        by mx.google.com with ESMTPS id g17si14911813qge.21.2016.02.12.01.34.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 01:16:43 -0800 (PST)
+        Fri, 12 Feb 2016 01:34:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58876 helo=lists.gnu.org)
+Received: from localhost ([::1]:59164 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aU9qF-0006Bf-Ca
-	for alex.bennee@linaro.org; Fri, 12 Feb 2016 04:16:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51928)
+	id 1aUA7s-0002RD-IP
+	for alex.bennee@linaro.org; Fri, 12 Feb 2016 04:34:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58633)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aU9qD-00069j-GZ
-	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 04:16:42 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aUA7q-0002Qo-20
+	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 04:34:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aU9qC-0005v4-Kl
-	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 04:16:41 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:33799)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aUA7l-0001at-32
+	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 04:34:53 -0500
+Received: from mail-lb0-x242.google.com ([2a00:1450:4010:c04::242]:35685)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1aU9q5-0005uH-9Q; Fri, 12 Feb 2016 04:16:33 -0500
-Received: by mail-pf0-x241.google.com with SMTP id 71so3738556pfv.1;
-	Fri, 12 Feb 2016 01:16:31 -0800 (PST)
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aUA7k-0001aO-M6; Fri, 12 Feb 2016 04:34:49 -0500
+Received: by mail-lb0-x242.google.com with SMTP id dx9so3334692lbc.2;
+	Fri, 12 Feb 2016 01:34:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=FN3/sq8qUF0MXzh0chC10Ka2YVTyMb1TXZ+BVIJNRJA=;
-	b=hahH1BMTtjmTdJju1mxlMqZPsVZhg0SbXKhYSDuYx7UJrHXla5fKewQA8/cQ7FhVwN
-	cJowsBwe6NdbV8ygPLGU6a+w/VKdYPAPUP8PQ8e7yKkHgjEjLnN8KyCr6T43ufg2Mcbd
-	JbAjkMScoxMZXeeTyQKBSxglDzgD+JeRZ1QRBpw+d00wxlqGKFPcyGVjojTW1PlcpaP6
-	FuscrBHs83pKG1vBdsVtJv8HGkisEUGZwyKbRYvpMRqyN2JJ6luoDVeUJDC5iKdDsWaj
-	wtKeTDEnlQOLaqITQj3RIfWBGNmcdlfam+T9BAiurzwRpDgTRgRqA01ugZC8uwF+8l7i
-	wM0w==
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=Ws/KLMmxq7Tel+9iTIvGMUvJZsH3OTNP76mNr1PhWlk=;
+	b=L4n6h9j98p2gy3EeRaRtXYixRlufzgXO/xzvPTKLLQ/+ThBN4faIdhy1YYxthuzfxd
+	N3cnpjLndV9LW5OnxgqOS/pNz1cO7tJnTqKz07FNQpJdGvGVjh5eXCnGTLWcQLUINND/
+	6RgDnvOArvAyu+zhV+amtTxtjSWluCrv5DdZ264ObgbsZ5dp/vgaUplRM8f5ejVVI8Xl
+	qWbRCxcPx1LmFaOCX4LnRkgPrBuk1FbjeidemQOON6IHcH/0lUnGthamdhT9n5RR/zF7
+	80cjgpqHGfUXL+rjIujyWM5vheizeGH0YT6qByEXMJRSdcFQ8K/rr1Wv1Bt9oLylB6FM
+	myPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=FN3/sq8qUF0MXzh0chC10Ka2YVTyMb1TXZ+BVIJNRJA=;
-	b=ZDuA3pe1wZLLMlssmUcbsi2DWuuwIWTRXVxXeP4e9VBbUa6gdRAErQszttCp5DLyJt
-	Eb+jDUKpSrXPas7WZDsq+8bSSuRBw6L59b6Tbh6cVoiy/3VyRptWqi9TKqsdmt13zHoy
-	Ckw/o8UJGw3dQfROL4CbSmcsvD4cldDcdN6jVXCSxIX5qfps1i/86oclxQN3Wi9ZAwry
-	SA/xFF3qktQ+AyJON6/fRvzFxn6eDq4SZ97yFNobRVwRXJl2Rka5cVTX3qzVyv+os3Mq
-	v18BuDo7x023w9isxQKZWn32cryAh0sJStHqcKSU7NJVyEM4HulaUclxVFnVj0Kl8Xtr
-	uU+A==
-X-Gm-Message-State: AG10YOSUACPlzxfpojoEWe/H195fnVwQTTkc85ilyGOGrA8vq90J8vh4nwC+UNcymXkLQA==
-X-Received: by 10.98.72.133 with SMTP id q5mr616027pfi.166.1455268591085;
-	Fri, 12 Feb 2016 01:16:31 -0800 (PST)
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com.
-	[52.8.89.49]) by smtp.gmail.com with ESMTPSA id
-	s21sm17803312pfi.29.2016.02.12.01.16.29
-	(version=TLS1_2 cipher=AES128-SHA bits=128/128);
-	Fri, 12 Feb 2016 01:16:30 -0800 (PST)
-Date: Fri, 12 Feb 2016 10:13:52 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160212091352.GB31433@toto>
-References: <1455206609-28009-1-git-send-email-peter.maydell@linaro.org>
-	<1455206609-28009-3-git-send-email-peter.maydell@linaro.org>
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=Ws/KLMmxq7Tel+9iTIvGMUvJZsH3OTNP76mNr1PhWlk=;
+	b=NFd8g141mwIltT1IFthWE5RxKaFV5fgWTyeiGmhLXHsI8jJguudIiKRwol+53v6QFo
+	RSXpjvyYkItI0d7qri/DibeAi8qhAzOn6SUW7HlfBJxhTwxmZ5j61zII5Xp3D5WFZd5Z
+	vOFIWb9hjoCB2/ow3hRdKQMio9Yb0a5TXcuTOpreRikipemJ4MFqrk7zxHRp1YC/MLTz
+	7vtG2oIX+BeRpMU0uIyTedjX+sI2PXUyujN1yVR6Nv8WWfyJkyi03NjZqlNFxItvwa7O
+	iQeFNJLLET6Ddd7PEeTQir5oTnFbBMh1QtOjVyXIaz2Zfp3IptUuGqVwfd0aczl93uLQ
+	NdJw==
+X-Gm-Message-State: AG10YOQQFfX9ptwgEPX9fIAv9wMsHuOWJETRTysgj4J34wSEbJOop3QQHm/wQJ3pTpDHeg==
+X-Received: by 10.112.147.41 with SMTP id th9mr238385lbb.74.1455269687747;
+	Fri, 12 Feb 2016 01:34:47 -0800 (PST)
+Received: from [192.168.0.71] (broadband-46-188-121-154.2com.net.
+	[46.188.121.154]) by smtp.googlemail.com with ESMTPSA id
+	g74sm1793622lfi.1.2016.02.12.01.34.46
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Fri, 12 Feb 2016 01:34:46 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1455217909-28317-1-git-send-email-peter.maydell@linaro.org>
+	<1455217909-28317-5-git-send-email-peter.maydell@linaro.org>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56BDA736.3070008@gmail.com>
+Date: Fri, 12 Feb 2016 12:34:46 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1455206609-28009-3-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <1455217909-28317-5-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH v2 2/6] target-arm: Fix handling of SCR.SMD
+X-Received-From: 2a00:1450:4010:c04::242
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 4/4] target-arm: UNDEF in the UNPREDICTABLE
+ SRS-from-System case
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -89,53 +91,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JKi/yFed+AMI
+X-TUID: 2g6WAQFlnEll
 
-On Thu, Feb 11, 2016 at 04:03:25PM +0000, Peter Maydell wrote:
-> We weren't quite implementing the handling of SCR.SMD correctly.
-> The condition governing whether the SMD bit should apply only
-> for NS state is "is EL3 is AArch32", not "is the current EL AArch32".
-> Fix the condition, and clarify the comment both to reflect this and
-> to expand slightly on what's going on for the v7-no-Virtualization case.
-> 
+On 11.02.2016 22:11, Peter Maydell wrote:
+> Make get_r13_banked() raise an exception at runtime for the
+> corner case of SRS from System mode, so that we can UNDEF it;
+> this brings us in to line with the ARM ARM's set of permitted
+> CONSTRAINED UNPREDICTABLE choices.
+>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+It's a bit misleading that the name "get_r13_banked" says nothing about
+SRS instruction but raises an SRS-specific exception. Though, it's only
+used for SRS and there seems to be no other candidate to use it; so
 
-
+Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > ---
-> The bit about forcing SMD to zero confused me, anyway, since I
-> expected it to mean "in this function", not elsewhere...
-> ---
->  target-arm/op_helper.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
-> 
+>  target-arm/op_helper.c | 8 ++++++++
+>  target-arm/translate.c | 9 +++++----
+>  2 files changed, 13 insertions(+), 4 deletions(-)
+>
 > diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-> index bd48549..4c0980e 100644
+> index 05f97a7..8183108 100644
 > --- a/target-arm/op_helper.c
 > +++ b/target-arm/op_helper.c
-> @@ -614,12 +614,14 @@ void HELPER(pre_smc)(CPUARMState *env, uint32_t syndrome)
->      int cur_el = arm_current_el(env);
->      bool secure = arm_is_secure(env);
->      bool smd = env->cp15.scr_el3 & SCR_SMD;
-> -    /* On ARMv8 AArch32, SMD only applies to NS state.
-> -     * On ARMv7 SMD only applies to NS state and only if EL2 is available.
-> -     * For ARMv7 non EL2, we force SMD to zero so we don't need to re-check
-> -     * the EL2 condition here.
-> +    /* On ARMv8 with EL3 AArch64, SMD applies to both S and NS state.
-> +     * On ARMv8 with EL3 AArch32, or ARMv7 with the Virtualization
-> +     *  extensions, SMD only applies to NS state.
-> +     * On ARMv7 without the Virtualization extensions, the SMD bit
-> +     * doesn't exist, but we forbid the guest to set it to 1 in scr_write(),
-> +     * so we need not special case this here.
+> @@ -474,6 +474,14 @@ uint32_t HELPER(get_r13_banked)(CPUARMState *env, uint32_t mode)
+>  #if defined(CONFIG_USER_ONLY)
+>      g_assert_not_reached();
+>  #endif
+> +    if ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_SYS) {
+> +        /* SRS instruction is UNPREDICTABLE from System mode; we UNDEF.
+> +         * Other UNPREDICTABLE and UNDEF cases were caught at translate time.
+> +         */
+> +        raise_exception(env, EXCP_UDEF, syn_uncategorized(),
+> +                        exception_target_el(env));
+> +    }
+> +
+>      if ((env->uncached_cpsr & CPSR_M) == mode) {
+>          return env->regs[13];
+>      } else {
+> diff --git a/target-arm/translate.c b/target-arm/translate.c
+> index 7bceb05..e69145d 100644
+> --- a/target-arm/translate.c
+> +++ b/target-arm/translate.c
+> @@ -7590,10 +7590,7 @@ static void gen_srs(DisasContext *s,
+>       * -- not a valid mode number
+>       * -- a mode that's at a higher exception level
+>       * -- Monitor, if we are Non-secure
+> -     * For the UNPREDICTABLE cases we choose to UNDEF, except that for
+> -     * "current mode is System" we will write a garbage SPSR.
+> -     * (This is because we don't have access to our current mode here
+> -     * and would have to do a runtime check to UNDEF for System.)
+> +     * For the UNPREDICTABLE cases we choose to UNDEF.
 >       */
-> -    bool undef = is_a64(env) ? smd : (!secure && smd);
-> +    bool undef = arm_feature(env, ARM_FEATURE_AARCH64) ? smd : smd && !secure;
+>      if (s->current_el == 1 && !s->ns) {
+>          gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(), 3);
+> @@ -7639,6 +7636,9 @@ static void gen_srs(DisasContext *s,
 >  
->      if (arm_is_psci_call(cpu, EXCP_SMC)) {
->          /* If PSCI is enabled and this looks like a valid PSCI call then
-> -- 
-> 1.9.1
-> 
+>      addr = tcg_temp_new_i32();
+>      tmp = tcg_const_i32(mode);
+> +    /* get_r13_banked() will raise an exception if called from System mode */
+> +    gen_set_condexec(s);
+> +    gen_set_pc_im(s, s->pc - 4);
+>      gen_helper_get_r13_banked(addr, cpu_env, tmp);
+>      tcg_temp_free_i32(tmp);
+>      switch (amode) {
+> @@ -7688,6 +7688,7 @@ static void gen_srs(DisasContext *s,
+>          tcg_temp_free_i32(tmp);
+>      }
+>      tcg_temp_free_i32(addr);
+> +    s->is_jmp = DISAS_UPDATE;
+>  }
+>  
+>  static void disas_arm_insn(DisasContext *s, unsigned int insn)
+

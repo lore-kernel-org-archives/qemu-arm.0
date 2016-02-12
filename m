@@ -1,155 +1,195 @@
-Received: by 10.25.159.19 with SMTP id i19csp858037lfe;
-        Fri, 12 Feb 2016 06:37:13 -0800 (PST)
-X-Received: by 10.66.151.177 with SMTP id ur17mr2560044pab.68.1455287833639;
-        Fri, 12 Feb 2016 06:37:13 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by mx.google.com with ESMTPS id f2si20378656pas.32.2016.02.12.06.37.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Feb 2016 06:37:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+Received: by 10.25.159.19 with SMTP id i19csp862763lfe;
+        Fri, 12 Feb 2016 06:46:19 -0800 (PST)
+X-Received: by 10.140.104.50 with SMTP id z47mr2340647qge.68.1455288379308;
+        Fri, 12 Feb 2016 06:46:19 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t65si8957278qhc.2.2016.02.12.06.46.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 12 Feb 2016 06:46:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id 71so4065872pfv.1;
-        Fri, 12 Feb 2016 06:37:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=gU+yQTn56mnRlZm+IMNbBuBH+2/mqBKaEXs7+7o9Sx8=;
-        b=z80ReV7yc5tHSO/x2MdVNFu2OhE/esPMlaLjbeueiDaroZzkG/WVYhPwZGLJrYGV3G
-         2GoRslXTpVU14k9WhHuDqVKIDmqvo95FTsjTVhIy7/hfLytAm9EzAv7ciCBTuRaDKH1F
-         pEeBcjG+MSn8tm0kAMAezlI/5Tkc3op/+bwZTSMYXBO5x8IYSqq1am4+YsmwNebLLW/2
-         PB8FZNGzhyPlitQKxmPksTnPoL4fU5roRrB98vwgJxX1hN5UUP4L6Z4kMs055CGx+WEn
-         eIef4sxWgAnMbtmwmDcBq4SxriTEhzpeU0/nQ+txlorkj/TgFxZdhh2LULp9P94YJHJV
-         M3hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=gU+yQTn56mnRlZm+IMNbBuBH+2/mqBKaEXs7+7o9Sx8=;
-        b=jOn88kMRAUL8drQMeYl0COUkQilHr2dntBSYE6edy1BzDPS2XHdVJFEfFA7nUAqsga
-         dnymadrWexB05tcqf2wU1KWX5V+d5tOF7hCq65fDUdQWiBLCjxx2BCNHUKwsP3NgJVfg
-         ZkMVsJeAcveu/aGImi6knQyGv/rYjEF3URzQ6KBwPOBuM/HBtqkThaovDiLw817N6U8D
-         zkjNKnKxFHLjqFFQvOIlXrY9c2Dq4xhol0VkdzXDiXKddO79k333NJXaYiHpy65ID8Kb
-         6+EqgXnRzKn5HIXFhhViu2cSmMUu7ECQoBI+M1iCuUPzmBzBLU6k1vKr4DHAPPCdAs1D
-         T03w==
-X-Gm-Message-State: AG10YORF+IzCCLXM7h5E+/0q5Fyjk0FzuHt/joS6Nk3JKZKPI0dyqteQ8FZEVaI3ab9kdQ==
-X-Received: by 10.98.15.145 with SMTP id 17mr2553324pfp.19.1455287833308;
-        Fri, 12 Feb 2016 06:37:13 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id m16sm19976134pfi.75.2016.02.12.06.37.11
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 06:37:12 -0800 (PST)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	qemu-arm@nongnu.org,
-	edgar.iglesias@xilinx.com
-Subject: [PATCH v1 9/9] target-arm: Use isyn.swstep.ex to hold the is_ldex state
-Date: Fri, 12 Feb 2016 15:34:02 +0100
-Message-Id: <1455287642-28166-10-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
-References: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: o31lUVi+1UWx
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33250 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aUEzC-00046s-R0
+	for alex.bennee@linaro.org; Fri, 12 Feb 2016 09:46:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38240)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1aUEz9-00041M-IZ
+	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 09:46:16 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1aUEz8-0004r0-AV
+	for qemu-arm@nongnu.org; Fri, 12 Feb 2016 09:46:15 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57320)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aUEz5-0004jw-1b; Fri, 12 Feb 2016 09:46:11 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aUEyv-0007qQ-Hn; Fri, 12 Feb 2016 14:46:01 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri, 12 Feb 2016 14:45:59 +0000
+Message-Id: <1455288361-30117-3-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
+References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::1
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [Qemu-arm] [PATCH 2/4] loader: Add load_image_mr() to load ROM
+	image to a MemoryRegion
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4LK4WLVCBVzL
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Add a new function load_image_mr(), which behaves like
+load_image_targphys() except that it loads the ROM image to
+a specified MemoryRegion rather than to a specified physical
+address. This is useful when a ROM blob needs to be loaded
+to a particular flash or ROM device but the address of that
+device in the machine's address space is not known. (For
+instance, ROMs in devices, or ROMs which might exist in
+a different address space to the system address space.)
 
-Switch to using isyn.swstep.ex to hold the is_ldex state for
-SWStep syndrome generation.
-
-No functional change.
-
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target-arm/translate-a64.c | 6 +++---
- target-arm/translate.c     | 6 +++---
- target-arm/translate.h     | 5 -----
- 3 files changed, 6 insertions(+), 11 deletions(-)
+ hw/core/loader.c    | 35 +++++++++++++++++++++++++++++++----
+ include/hw/loader.h | 18 ++++++++++++++++--
+ 2 files changed, 47 insertions(+), 6 deletions(-)
 
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index 2f17cba..1d7fbcb 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -260,7 +260,7 @@ static void gen_step_complete_exception(DisasContext *s)
-      * of the exception, and our syndrome information is always correct.
-      */
-     gen_ss_advance(s);
--    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
-+    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->isyn.swstep.ex),
-                   default_exception_el(s));
-     s->is_jmp = DISAS_EXC;
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 3a57415..260b3d6 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -147,6 +147,28 @@ int load_image_targphys(const char *filename,
+     return size;
  }
-@@ -1865,7 +1865,7 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
  
-     if (is_excl) {
-         if (!is_store) {
--            s->is_ldex = true;
-+            s->isyn.swstep.ex = true;
-             gen_load_exclusive(s, rt, rt2, tcg_addr, size, is_pair);
-         } else {
-             gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, is_pair);
-@@ -11127,7 +11127,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-      */
-     dc->ss_active = ARM_TBFLAG_SS_ACTIVE(tb->flags);
-     dc->pstate_ss = ARM_TBFLAG_PSTATE_SS(tb->flags);
--    dc->is_ldex = false;
-+    dc->isyn.swstep.ex = false;
-     dc->ss_same_el = (arm_debug_target_el(env) == dc->current_el);
- 
-     init_tmp_a64_array(dc);
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 0d53e7d..605d21b 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -250,7 +250,7 @@ static void gen_step_complete_exception(DisasContext *s)
-      * of the exception, and our syndrome information is always correct.
-      */
-     gen_ss_advance(s);
--    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
-+    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->isyn.swstep.ex),
-                   default_exception_el(s));
-     s->is_jmp = DISAS_EXC;
- }
-@@ -7431,7 +7431,7 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
++int load_image_mr(const char *filename, MemoryRegion *mr)
++{
++    int size;
++
++    if (!memory_access_is_direct(mr, false)) {
++        /* Can only load an image into RAM or ROM */
++        return -1;
++    }
++
++    size = get_image_size(filename);
++
++    if (size > memory_region_size(mr)) {
++        return -1;
++    }
++    if (size > 0) {
++        if (rom_add_file_mr(filename, mr, -1) < 0) {
++            return -1;
++        }
++    }
++    return size;
++}
++
+ void pstrcpy_targphys(const char *name, hwaddr dest, int buf_size,
+                       const char *source)
  {
-     TCGv_i32 tmp = tcg_temp_new_i32();
+@@ -751,7 +773,7 @@ static void *rom_set_mr(Rom *rom, Object *owner, const char *name)
  
--    s->is_ldex = true;
-+    s->isyn.swstep.ex = true;
+ int rom_add_file(const char *file, const char *fw_dir,
+                  hwaddr addr, int32_t bootindex,
+-                 bool option_rom)
++                 bool option_rom, MemoryRegion *mr)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+     Rom *rom;
+@@ -818,7 +840,12 @@ int rom_add_file(const char *file, const char *fw_dir,
  
-     switch (size) {
-     case 0:
-@@ -11284,7 +11284,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-      */
-     dc->ss_active = ARM_TBFLAG_SS_ACTIVE(tb->flags);
-     dc->pstate_ss = ARM_TBFLAG_PSTATE_SS(tb->flags);
--    dc->is_ldex = false;
-+    dc->isyn.swstep.ex = false;
-     dc->ss_same_el = false; /* Can't be true since EL_d must be AArch64 */
+         fw_cfg_add_file(fw_cfg, fw_file_name, data, rom->romsize);
+     } else {
+-        snprintf(devpath, sizeof(devpath), "/rom@" TARGET_FMT_plx, addr);
++        if (mr) {
++            rom->mr = mr;
++            snprintf(devpath, sizeof(devpath), "/rom@%s", file);
++        } else {
++            snprintf(devpath, sizeof(devpath), "/rom@" TARGET_FMT_plx, addr);
++        }
+     }
  
-     cpu_F0s = tcg_temp_new_i32();
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 2130a84..d500342 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -49,11 +49,6 @@ typedef struct DisasContext {
-      */
-     bool ss_active;
-     bool pstate_ss;
--    /* True if the insn just emitted was a load-exclusive instruction
--     * (necessary for syndrome information for single step exceptions),
--     * ie A64 LDX*, LDAX*, A32/T32 LDREX*, LDAEX*.
--     */
--    bool is_ldex;
-     /* True if a single-step exception will be taken to the current EL */
-     bool ss_same_el;
-     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+     add_boot_device_path(bootindex, NULL, devpath);
+@@ -892,12 +919,12 @@ int rom_add_elf_program(const char *name, void *data, size_t datasize,
+ 
+ int rom_add_vga(const char *file)
+ {
+-    return rom_add_file(file, "vgaroms", 0, -1, true);
++    return rom_add_file(file, "vgaroms", 0, -1, true, NULL);
+ }
+ 
+ int rom_add_option(const char *file, int32_t bootindex)
+ {
+-    return rom_add_file(file, "genroms", 0, bootindex, true);
++    return rom_add_file(file, "genroms", 0, bootindex, true, NULL);
+ }
+ 
+ static void rom_reset(void *unused)
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index f7b43ab..09c3764 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -16,6 +16,18 @@ int load_image(const char *filename, uint8_t *addr); /* deprecated */
+ ssize_t load_image_size(const char *filename, void *addr, size_t size);
+ int load_image_targphys(const char *filename, hwaddr,
+                         uint64_t max_sz);
++/**
++ * load_image_mr: load an image into a memory region
++ * @filename: Path to the image file
++ * @mr: Memory Region to load into
++ *
++ * Load the specified file into the memory region.
++ * The file loaded is registered as a ROM, so its contents will be
++ * reinstated whenever the system is reset.
++ * If the file is larger than the memory region's size the call will fail.
++ * Returns -1 on failure, or the size of the file.
++ */
++int load_image_mr(const char *filename, MemoryRegion *mr);
+ 
+ /* This is the limit on the maximum uncompressed image size that
+  * load_image_gzipped_buffer() and load_image_gzipped() will read. It prevents
+@@ -67,7 +79,7 @@ extern bool rom_file_has_mr;
+ 
+ int rom_add_file(const char *file, const char *fw_dir,
+                  hwaddr addr, int32_t bootindex,
+-                 bool option_rom);
++                 bool option_rom, MemoryRegion *mr);
+ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+                            size_t max_len, hwaddr addr,
+                            const char *fw_file_name,
+@@ -82,9 +94,11 @@ void *rom_ptr(hwaddr addr);
+ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ 
+ #define rom_add_file_fixed(_f, _a, _i)          \
+-    rom_add_file(_f, NULL, _a, _i, false)
++    rom_add_file(_f, NULL, _a, _i, false, NULL)
+ #define rom_add_blob_fixed(_f, _b, _l, _a)      \
+     rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL)
++#define rom_add_file_mr(_f, _mr, _i)            \
++    rom_add_file(_f, NULL, 0, _i, false, mr)
+ 
+ #define PC_ROM_MIN_VGA     0xc0000
+ #define PC_ROM_MIN_OPTION  0xc8000
 -- 
 1.9.1
+

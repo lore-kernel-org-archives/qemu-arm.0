@@ -1,49 +1,64 @@
-Received: by 10.25.208.211 with SMTP id h202csp852522lfg;
-        Mon, 15 Feb 2016 09:30:43 -0800 (PST)
-X-Received: by 10.140.43.37 with SMTP id d34mr21513945qga.51.1455557443689;
-        Mon, 15 Feb 2016 09:30:43 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1239609lfg;
+        Tue, 16 Feb 2016 03:12:43 -0800 (PST)
+X-Received: by 10.55.74.14 with SMTP id x14mr26657664qka.70.1455621163059;
+        Tue, 16 Feb 2016 03:12:43 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d70si35187270qhd.60.2016.02.15.09.30.43
+        by mx.google.com with ESMTPS id 69si39970875qhp.41.2016.02.16.03.12.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Feb 2016 09:30:43 -0800 (PST)
+        Tue, 16 Feb 2016 03:12:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34612 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@163.com
+Received: from localhost ([::1]:44336 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVMyx-00059E-64
-	for alex.bennee@linaro.org; Mon, 15 Feb 2016 12:30:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57300)
+	id 1aVdYg-0007wr-Fx
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:12:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37067)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aVMrf-0000db-Kl
-	for qemu-devel@nongnu.org; Mon, 15 Feb 2016 12:23:12 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXq-0006o6-Sr
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aVMre-0007rE-BR
-	for qemu-devel@nongnu.org; Mon, 15 Feb 2016 12:23:11 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57358)
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXn-0006lq-2d
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:50 -0500
+Received: from m12-13.163.com ([220.181.12.13]:48219)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aVMrd-0007mW-QI; Mon, 15 Feb 2016 12:23:10 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aVMrR-0000xV-TH; Mon, 15 Feb 2016 17:22:57 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <zxq_yx_007@163.com>)
+	id 1aVdXm-0006k9-Ac; Tue, 16 Feb 2016 06:11:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id; bh=L5U1HRXCghktxGxcs3
+	0ch/c24PM/AmMDhEd13jutnvM=; b=JqFm8qcrU3s6Wn9x+9PBJX697NRnXb2OM6
+	g1u2Q4UbL3zT57BmxtAaFJfw1y8tRkxmEqwaWnQiqItlKRAZGjc1kFYJlq9gWqSG
+	9ignOW2nWQsmeW0ChkrtlOa/lkltzgREKfrxR6BAKIRVbD+G8y8rSNYd+eAH8PNt
+	PgsILOEM0=
+Received: from localhost.localdomain (unknown [118.187.28.42])
+	by smtp9 (Coremail) with SMTP id DcCowACHx6HMA8NWPNreBQ--.31323S4;
+	Tue, 16 Feb 2016 19:11:16 +0800 (CST)
+From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 15 Feb 2016 17:22:49 +0000
-Message-Id: <1455556977-3644-4-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 16 Feb 2016 19:09:34 +0800
+Message-Id: <1455620981-13868-3-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
-References: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::1
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Sergey Fedorov <serge.fdrv@gmail.com>, qemu-arm@nongnu.org,
-	patches@linaro.org
-Subject: [Qemu-devel] [PATCH 03/11] target-arm: Raw CPSR writes should skip
-	checks and bank switching
+In-Reply-To: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
+References: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: DcCowACHx6HMA8NWPNreBQ--.31323S4
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtrWDuw4fKFykKw48GrW5GFg_yoWDXFc_Wa
+	y8uF17Wr4kJrnxWay5Aa1Yyw12yr1jqr48A3WUGFWfuF18AF98Zwn7WFs29Fy8urZrZFy2
+	qrW8Jry3C3WfGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjDPE3UUUUU==
+X-Originating-IP: [118.187.28.42]
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEBQRxlUL6veMCAAAsU
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 220.181.12.13
+Cc: peter.maydell@linaro.org, e.voevodin@samsung.com,
+	xiaoqiang zhao <zxq_yx_007@163.com>,
+	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
+	qemu-arm@nongnu.org, edgar.iglesias@gmail.com,
+	gxt@mprc.pku.edu.cn, afaerber@suse.de
+Subject: [Qemu-devel] [PATCH v3 02/16] hw/timer: QOM'ify arm_timer (pass 2)
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -57,92 +72,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: peA4Q4kqhfuh
+X-TUID: srOQnlvFheDO
 
-Raw CPSR writes should skip the architectural checks for whether
-we're allowed to set the A or F bits and should also not do
-the switching of register banks if the mode changes. Handle
-this inside cpsr_write(), which allows us to drop the "manually
-set the mode bits to avoid the bank switch" code from all the
-callsites which are using CPSRWriteRaw.
+assign DeviceClass::vmsd instead of using vmstate_register function
 
-This fixes a bug in 32-bit KVM handling where we had forgotten
-the "manually set the mode bits" part and could thus potentially
-trash the register state if the mode from the last exit to userspace
-differed from the mode on this exit.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- target-arm/helper.c    | 5 +++--
- target-arm/kvm64.c     | 1 -
- target-arm/machine.c   | 2 --
- target-arm/op_helper.c | 5 ++++-
- 4 files changed, 7 insertions(+), 6 deletions(-)
+ hw/timer/arm_timer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 828822b..d1919bb 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -5234,7 +5234,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
-      * In a V8 implementation, it is permitted for privileged software to
-      * change the CPSR A/F bits regardless of the SCR.AW/FW bits.
-      */
--    if (!arm_feature(env, ARM_FEATURE_V8) &&
-+    if (write_type != CPSRWriteRaw && !arm_feature(env, ARM_FEATURE_V8) &&
-         arm_feature(env, ARM_FEATURE_EL3) &&
-         !arm_feature(env, ARM_FEATURE_EL2) &&
-         !arm_is_secure(env)) {
-@@ -5281,7 +5281,8 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
-     env->daif &= ~(CPSR_AIF & mask);
-     env->daif |= val & CPSR_AIF & mask;
- 
--    if ((env->uncached_cpsr ^ val) & mask & CPSR_M) {
-+    if (write_type != CPSRWriteRaw &&
-+        ((env->uncached_cpsr ^ val) & mask & CPSR_M)) {
-         if (bad_mode_switch(env, val & CPSR_M)) {
-             /* Attempt to switch to an invalid mode: this is UNPREDICTABLE.
-              * We choose to ignore the attempt and leave the CPSR M field
-diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-index 08c2c81..e8527bf 100644
---- a/target-arm/kvm64.c
-+++ b/target-arm/kvm64.c
-@@ -722,7 +722,6 @@ int kvm_arch_get_registers(CPUState *cs)
-     if (is_a64(env)) {
-         pstate_write(env, val);
-     } else {
--        env->uncached_cpsr = val & CPSR_M;
-         cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
-     }
- 
-diff --git a/target-arm/machine.c b/target-arm/machine.c
-index 0fc7df0..03a73d9 100644
---- a/target-arm/machine.c
-+++ b/target-arm/machine.c
-@@ -173,8 +173,6 @@ static int get_cpsr(QEMUFile *f, void *opaque, size_t size)
-         return 0;
-     }
- 
--    /* Avoid mode switch when restoring CPSR */
--    env->uncached_cpsr = val & CPSR_M;
-     cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
-     return 0;
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index 5bd2d75..f1ede5f 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -296,7 +296,6 @@ static void sp804_realize(DeviceState *dev, Error **errp)
+     s->timer[1] = arm_timer_init(s->freq1);
+     s->timer[0]->irq = qemu_allocate_irq(sp804_set_irq, s, 0);
+     s->timer[1]->irq = qemu_allocate_irq(sp804_set_irq, s, 1);
+-    vmstate_register(dev, -1, &vmstate_sp804, s);
  }
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index 543d33a..4881e34 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -779,7 +779,10 @@ void HELPER(exception_return)(CPUARMState *env)
  
-     if (!return_to_aa64) {
-         env->aarch64 = 0;
--        env->uncached_cpsr = spsr & CPSR_M;
-+        /* We do a raw CPSR write because aarch64_sync_64_to_32()
-+         * will sort the register banks out for us, and we've already
-+         * caught all the bad-mode cases in el_from_spsr().
-+         */
-         cpsr_write(env, spsr, ~0, CPSRWriteRaw);
-         if (!arm_singlestep_active(env)) {
-             env->uncached_cpsr &= ~PSTATE_SS;
+ /* Integrator/CP timer module.  */
+@@ -390,6 +389,7 @@ static void sp804_class_init(ObjectClass *klass, void *data)
+ 
+     k->realize = sp804_realize;
+     k->props = sp804_properties;
++    k->vmsd = &vmstate_sp804;
+ }
+ 
+ static const TypeInfo sp804_info = {
 -- 
-1.9.1
+2.1.4
+
 

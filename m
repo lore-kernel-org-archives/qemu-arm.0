@@ -1,79 +1,47 @@
-Received: by 10.25.208.211 with SMTP id h202csp1453471lfg;
-        Tue, 16 Feb 2016 10:21:53 -0800 (PST)
-X-Received: by 10.140.102.232 with SMTP id w95mr24569318qge.21.1455646913524;
-        Tue, 16 Feb 2016 10:21:53 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1454100lfg;
+        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
+X-Received: by 10.55.215.131 with SMTP id t3mr13477998qkt.97.1455646993416;
+        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x4si41821105qkx.21.2016.02.16.10.21.53
+        by mx.google.com with ESMTPS id g131si41746438qkb.102.2016.02.16.10.23.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 10:21:53 -0800 (PST)
+        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:49326 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49371 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVkG1-0005Qt-00
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:21:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47009)
+	id 1aVkHI-0007Dv-Rm
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:23:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVk99-00020J-Fy
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:14:48 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aVkHG-0007B2-OI
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVk98-0007CJ-HH
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:14:47 -0500
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34597)
+	(envelope-from <pm215@archaic.org.uk>) id 1aVkHF-0000qm-Mv
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:10 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57413)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVk98-0007Bw-Dk
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:14:46 -0500
-Received: by mail-vk0-x230.google.com with SMTP id e185so140842235vkb.1
-	for <qemu-arm@nongnu.org>; Tue, 16 Feb 2016 10:14:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=4fCrHA+T/raPTgU6hErGnSVZ6ELLCgjPbTwjA41jKnw=;
-	b=iK6awEr/z51Oqx+in4XMvzq4RdCXKLHzGWXYEiM+PHdVpPtjMJrEYbX/aVxNLubkHO
-	iCTwec17QOZApv0obxmUT+iqGu9ddmREuPujf8RqhUZ+Smz/BRxnhCZdgbK9gDjPtk0u
-	YDdUkUYNKjZdp7m7/o/zNgnxhjqMVX/otn0LU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=4fCrHA+T/raPTgU6hErGnSVZ6ELLCgjPbTwjA41jKnw=;
-	b=IgC4AVwb7RFcghhbd2FEHQMwDCBWYSzryNKL6prw5ABQoIHntWwwwob7EJtRjCibAt
-	nG22R64jDf5StapkWVi5pnCudEz6ocqD0KdUF3sqvF0h2FR6b1D8yWx59MYEcBulyEkT
-	tT8i2Ws8ltQiR4jpfRkZn3PLUY8zMRHMURSQhivMddIY5/niNOb9uEQEE7Jpnha35p73
-	v83n8/4brIb8VJCLUmKNGQtYpPOPmE7U9JQrYWROlKD1DNWIN8EB+jUVLsT/2vU3reTI
-	UFcR3spkQ4lJRPv9xiUpqvV6sN5lPPaMZsLYypebZfAWaf6mM1PBzfDQyYKxmcc55siV
-	XtmQ==
-X-Gm-Message-State: AG10YOSlOHTFUrBZVoJ3gCq5ssZN3PdwSCON5aSCAIXg8BAsFc+jSAzKChlarde/hnmcytkoMwa8ar81DqbeMvOs
-X-Received: by 10.31.1.6 with SMTP id 6mr17301030vkb.139.1455646484866; Tue,
-	16 Feb 2016 10:14:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 16 Feb 2016 10:14:25 -0800 (PST)
-In-Reply-To: <1454086429-4373-4-git-send-email-eric.auger@linaro.org>
-References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
-	<1454086429-4373-4-git-send-email-eric.auger@linaro.org>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aVkHA-0000pz-Bt; Tue, 16 Feb 2016 13:23:04 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aVk4P-0003SV-FL; Tue, 16 Feb 2016 18:09:53 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Feb 2016 18:14:25 +0000
-Message-ID: <CAFEAcA_ZQu7Lecf4UTG+br9yfVr64m_51CtHqGry0K-DnQO+ZA@mail.gmail.com>
-To: Eric Auger <eric.auger@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-devel@nongnu.org
+Date: Tue, 16 Feb 2016 18:09:49 +0000
+Message-Id: <1455646193-13238-8-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
+References: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Alexander Graf <agraf@suse.de>,
-	Bharat Bhushan <Bharat.Bhushan@freescale.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Subject: Re: [Qemu-arm] [RFC v2 3/8] Generic PCIe host bridge INTx
-	determination for INTx routing
+X-Received-From: 2001:8b0:1d0::1
+Cc: Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
+Subject: [Qemu-arm] [PATCH v3 07/10] hw/sd/pxa2xx_mmci: convert to
+	SysBusDevice object
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -87,47 +55,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZC0HYWmgZdwb
+X-TUID: iwljWxMPvCiw
 
-On 29 January 2016 at 16:53, Eric Auger <eric.auger@linaro.org> wrote:
-> This patch stores information about assigned legacy interrupt numbers in
-> GPEX host structure.
-> This is used during GPEX INTx number determination from a pin during
-> INTx routing.
->
-> Signed-off-by: Pranavkumar Sawargaonkar <address@hidden>
-> Signed-off-by: Tushar Jagad <address@hidden>
-> ---
->  hw/arm/virt.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 15658f4..3839c68 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -826,6 +826,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
->      char *nodename;
->      int i;
->      PCIHostState *pci;
-> +    GPEXHost *s;
->
->      dev = qdev_create(NULL, TYPE_GPEX_HOST);
->      qdev_init_nofail(dev);
-> @@ -861,8 +862,11 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
->      /* Map IO port space */
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
->
-> +    s = GPEX_HOST(dev);
-> +
->      for (i = 0; i < GPEX_NUM_IRQS; i++) {
->          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        s->irq_num[i] = irq + i;
->      }
+Convert the pxa2xx_mmci device to be a sysbus device.
 
-I don't think that the board code should be prodding stuff in the GPEXHost
-struct like this -- device structs are supposed to be private to the
-device implementation. If you need the information in the device then
-you need to come up with a better API for this.
+In this commit we only change the device itself, and leave
+the interface to the SD card using the old non-SDBus APIs.
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+---
+ hw/sd/pxa2xx_mmci.c | 74 ++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 56 insertions(+), 18 deletions(-)
+
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 81da7b7..cadbba3 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -12,16 +12,24 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/hw.h"
++#include "hw/sysbus.h"
+ #include "hw/arm/pxa.h"
+ #include "hw/sd/sd.h"
+ #include "hw/qdev.h"
++#include "hw/qdev-properties.h"
++
++#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
++#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
++
++typedef struct PXA2xxMMCIState {
++    SysBusDevice parent_obj;
+ 
+-struct PXA2xxMMCIState {
+     MemoryRegion iomem;
+     qemu_irq irq;
+     qemu_irq rx_dma;
+     qemu_irq tx_dma;
+ 
++    BlockBackend *blk;
+     SDState *card;
+ 
+     uint32_t status;
+@@ -49,7 +57,7 @@ struct PXA2xxMMCIState {
+     int resp_len;
+ 
+     int cmdreq;
+-};
++} PXA2xxMMCIState;
+ 
+ #define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
+ #define MMC_STAT	0x04	/* MMC Status register */
+@@ -475,31 +483,61 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+                 BlockBackend *blk, qemu_irq irq,
+                 qemu_irq rx_dma, qemu_irq tx_dma)
+ {
++    DeviceState *dev;
++    SysBusDevice *sbd;
+     PXA2xxMMCIState *s;
+ 
+-    s = (PXA2xxMMCIState *) g_malloc0(sizeof(PXA2xxMMCIState));
+-    s->irq = irq;
+-    s->rx_dma = rx_dma;
+-    s->tx_dma = tx_dma;
+-
+-    memory_region_init_io(&s->iomem, NULL, &pxa2xx_mmci_ops, s,
+-                          "pxa2xx-mmci", 0x00100000);
+-    memory_region_add_subregion(sysmem, base, &s->iomem);
+-
+-    /* Instantiate the actual storage */
+-    s->card = sd_init(blk, false);
++    dev = qdev_create(NULL, TYPE_PXA2XX_MMCI);
++    s = PXA2XX_MMCI(dev);
++    /* Reach into the device and initialize the SD card. This is
++     * unclean but will vanish when we update to SDBus APIs.
++     */
++    s->card = sd_init(s->blk, false);
+     if (s->card == NULL) {
+         exit(1);
+     }
+-
+-    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
+-                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
+-
++    qdev_init_nofail(dev);
++    sbd = SYS_BUS_DEVICE(dev);
++    sysbus_mmio_map(sbd, 0, base);
++    sysbus_connect_irq(sbd, 0, irq);
++    qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
++    qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
+     return s;
+ }
+ 
+ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+-                qemu_irq coverswitch)
++                          qemu_irq coverswitch)
+ {
+     sd_set_cb(s->card, readonly, coverswitch);
+ }
++
++static void pxa2xx_mmci_instance_init(Object *obj)
++{
++    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    DeviceState *dev = DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
++                          "pxa2xx-mmci", 0x00100000);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++    qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
++    qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
++
++    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
++                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
++}
++
++static const TypeInfo pxa2xx_mmci_info = {
++    .name = TYPE_PXA2XX_MMCI,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(PXA2xxMMCIState),
++    .instance_init = pxa2xx_mmci_instance_init,
++};
++
++static void pxa2xx_mmci_register_types(void)
++{
++    type_register_static(&pxa2xx_mmci_info);
++}
++
++type_init(pxa2xx_mmci_register_types)
+-- 
+1.9.1
+

@@ -1,90 +1,435 @@
-Received: by 10.25.159.19 with SMTP id i19csp1091638lfe;
-        Fri, 12 Feb 2016 14:55:01 -0800 (PST)
-X-Received: by 10.55.31.3 with SMTP id f3mr5258536qkf.100.1455317701335;
-        Fri, 12 Feb 2016 14:55:01 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1271657lfg;
+        Tue, 16 Feb 2016 04:20:17 -0800 (PST)
+X-Received: by 10.140.19.132 with SMTP id 4mr26887986qgh.56.1455625203888;
+        Tue, 16 Feb 2016 04:20:03 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p6si18150658qgd.81.2016.02.12.14.55.01
+        by mx.google.com with ESMTPS id d193si40347043qka.54.2016.02.16.04.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Feb 2016 14:55:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 16 Feb 2016 04:20:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37030 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail (test mode) header.i=@aj.id.au
+Received: from localhost ([::1]:45030 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aUMc9-0001Eh-0S
-	for alex.bennee@linaro.org; Fri, 12 Feb 2016 17:55:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43106)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aVebr-0004wy-7T
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 07:20:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42513)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1aUMbl-0000vQ-UU
-	for qemu-devel@nongnu.org; Fri, 12 Feb 2016 17:54:38 -0500
+	(envelope-from <andrew@aj.id.au>) id 1aVduS-0002Az-Ld
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 06:35:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1aUMbl-0008Gi-0A
-	for qemu-devel@nongnu.org; Fri, 12 Feb 2016 17:54:37 -0500
-Received: from s16892447.onlinehome-server.info ([82.165.15.123]:52728)
+	(envelope-from <andrew@aj.id.au>) id 1aVduQ-0004H3-HE
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 06:35:12 -0500
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:40269
+	helo=homiemail-a20.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1aUMbg-0008Cn-E0; Fri, 12 Feb 2016 17:54:32 -0500
-Received: from host217-42-178-8.range217-42.btcentralplus.com ([217.42.178.8]
-	helo=[192.168.1.65]) by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1aUMba-0001Lx-Ae; Fri, 12 Feb 2016 22:54:27 +0000
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-ID: <56BE629B.3090403@ilande.co.uk>
-Date: Fri, 12 Feb 2016 22:54:19 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 217.42.178.8
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 0/4] virt: provide secure-only RAM and
- first flash
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <andrew@aj.id.au>)
+	id 1aVduQ-0004Gr-5S; Tue, 16 Feb 2016 06:35:10 -0500
+Received: from homiemail-a20.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTP id A9A647EC080;
+	Tue, 16 Feb 2016 03:35:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
+	:subject:date:message-id:in-reply-to:references; s=aj.id.au; bh=
+	llhgXN4zSNFWFC555D2MRQpsOoI=; b=U/NkHrdGWqm6BrDQpZ0eWfZvhMHq8jlW
+	Cwb9tLolWV4SZgocpEbwJtBF0JgZc/yfKN8vdMxUMU0JCYdgBU/Lu+T8KWHe9EEH
+	8uFJkUWmoe15EGxZBa/Vx+OOHqxs9Bd/5lNWF66Zk/6z7JsPm5xelm6woTCt6y3j
+	znVH3mP0slI=
+Received: from keelia.au.ibm.com (ppp203-122-213-247.static.internode.on.net
+	[203.122.213.247])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTPSA id 9C3AB7EC060; 
+	Tue, 16 Feb 2016 03:35:08 -0800 (PST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-devel@nongnu.org
+Date: Tue, 16 Feb 2016 22:04:56 +1030
+Message-Id: <1455622497-25966-3-git-send-email-andrew@aj.id.au>
+X-Mailer: git-send-email 2.5.0
+In-Reply-To: <1455622497-25966-1-git-send-email-andrew@aj.id.au>
+References: <1455622497-25966-1-git-send-email-andrew@aj.id.au>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 69.163.253.7
+X-Mailman-Approved-At: Tue, 16 Feb 2016 07:19:56 -0500
+Cc: openbmc@lists.ozlabs.org, qemu-arm@nongnu.org
+Subject: [Qemu-arm] [PATCH v2 2/3] hw/intc: Add (new) ASPEED AST2400 AVIC
+	device model
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3cqsNDQMZrqh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: J/oEyM9RnEYZ
 
-On 12/02/16 14:45, Peter Maydell wrote:
+Implement a minimal ASPEED AVIC device model, enough to boot a Linux
+kernel configured with aspeed_defconfig. The VIC implements the 'new'
+register set and expects this to be reflected in the device tree.
 
-> NOTE: to get the -bios option to correctly load to the secure-only
-> flash I had to implement a new function in loader.c. load_image_mr()
-> is just like load_image_targphys() except that it requests loading
-> to a MemoryRegion rather than a physaddr. I think we can also use this
-> to clean up the Sparc cg3 and tcx display devices, which currently take
-> a qdev property which is "the address I'm going to be mapped at"
-> purely so they can use load_image_targphys() to load their ROMs.
+The implementation is a little awkward as the hardware uses 32bit
+registers to manage 51 IRQs, and makes use of low and high registers for
+each conceptual register. The model's implementation uses 64bit data
+types to store the register values but must cope with access offset values
+in multiples of 4 passed to the callbacks. As such the read() and
+write() implementations process the provided offset to understand
+whether the access is requesting the lower or upper 32bits of the 64bit
+quantity.
 
-Yes! This was something I remember having to explicitly work around when
-adding the FCode ROMs to these devices as I couldn't otherwise see how
-to load the binary directly into the appropriate MemoryRegion.
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+ hw/intc/Makefile.objs        |   1 +
+ hw/intc/aspeed_vic.c         | 256 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/intc/aspeed_vic.h |  40 +++++++
+ trace-events                 |   9 ++
+ 4 files changed, 306 insertions(+)
+ create mode 100644 hw/intc/aspeed_vic.c
+ create mode 100644 include/hw/intc/aspeed_vic.h
 
-
-ATB,
-
-Mark.
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index 6a13a39..0e47f0f 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -31,3 +31,4 @@ obj-$(CONFIG_XICS_KVM) += xics_kvm.o
+ obj-$(CONFIG_ALLWINNER_A10_PIC) += allwinner-a10-pic.o
+ obj-$(CONFIG_S390_FLIC) += s390_flic.o
+ obj-$(CONFIG_S390_FLIC_KVM) += s390_flic_kvm.o
++obj-$(CONFIG_ASPEED_SOC) += aspeed_vic.o
+diff --git a/hw/intc/aspeed_vic.c b/hw/intc/aspeed_vic.c
+new file mode 100644
+index 0000000..c000936
+--- /dev/null
++++ b/hw/intc/aspeed_vic.c
+@@ -0,0 +1,256 @@
++/*
++ * ASPEED Interrupt Controller (New)
++ *
++ * Andrew Jeffery <andrew@aj.id.au>
++ *
++ * Copyright 2015, 2016 IBM Corp.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ *
++ * Based off of the i.MX31 Vectored Interrupt Controller
++ *
++ * Note that this device model does not implement the legacy register space.
++ * The assumption is that the device base address is exposed such that all
++ * offsets are calculated relative to the address of the first "new" register.
++ */
++#include <inttypes.h>
++#include "hw/intc/aspeed_vic.h"
++#include "trace.h"
++
++#define AVIC_L_MASK 0xFFFFFFFF
++#define AVIC_H_MASK 0x00007FFF
++#define AVIC_INT_EVENT_W_MASK (UINT64_C(0x78000) << 32)
++
++static void aspeed_vic_update(AspeedVICState *s)
++{
++    int i;
++    uint64_t new = (s->edge_status & s->int_enable);
++    uint64_t flags;
++
++    flags = new & s->int_select;
++    qemu_set_irq(s->fiq, !!flags);
++    trace_aspeed_vic_update_fiq(!!flags);
++
++    flags = new & ~s->int_select;
++    if (!flags) {
++        qemu_set_irq(s->irq, !!flags);
++        trace_aspeed_vic_update_all_fiq();
++        return;
++    }
++
++    for (i = 0; i < ASPEED_VIC_NR_IRQS; i++) {
++        if (flags & (UINT64_C(1) << i)) {
++            qemu_set_irq(s->irq, 1);
++            trace_aspeed_vic_update_i(i);
++            return;
++        }
++    }
++
++    qemu_set_irq(s->irq, 0);
++    trace_aspeed_vic_update_none();
++}
++
++static void aspeed_vic_set_irq(void *opaque, int irq, int level)
++{
++    AspeedVICState *s = (AspeedVICState *)opaque;
++    if (irq > ASPEED_VIC_NR_IRQS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Out-of-range interrupt number: %d\n",
++                      irq);
++        return;
++    }
++
++    if (level) {
++        s->edge_status |= (UINT64_C(1) << irq);
++    } else {
++        s->edge_status &= ~(UINT64_C(1) << irq);
++    }
++
++    trace_aspeed_vic_set_irq(irq, level);
++    aspeed_vic_update(s);
++}
++
++static uint64_t aspeed_vic_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t val;
++    const bool high = !!(offset & 0x4);
++    const hwaddr n_offset = (offset & ~0x4);
++    AspeedVICState *s = (AspeedVICState *)opaque;
++
++    switch (n_offset) {
++    case 0x0: /* IRQ Status */
++        val = s->edge_status & ~s->int_select & s->int_enable;
++        break;
++    case 0x08: /* FIQ Status */
++        val = s->edge_status & s->int_select & s->int_enable;
++        break;
++    case 0x10: /* Raw Interrupt Status */
++        val = s->edge_status;
++        break;
++    case 0x18: /* Interrupt Selection */
++        val = s->int_select;
++        break;
++    case 0x20: /* Interrupt Enable */
++        val = s->int_enable;
++        break;
++    case 0x30: /* Software Interrupt */
++        val = s->int_trigger;
++        break;
++    case 0x40: /* Interrupt Sensitivity */
++        val = s->int_sense;
++        break;
++    case 0x48: /* Interrupt Both Edge Trigger Control */
++        val = s->int_dual_edge;
++        break;
++    case 0x50: /* Interrupt Event */
++        val = s->int_event;
++        break;
++    case 0x60: /* Edge Triggered Interrupt Status */
++        val = s->edge_status;
++        break;
++        /* Illegal */
++    case 0x28: /* Interrupt Enable Clear */
++    case 0x38: /* Software Interrupt Clear */
++    case 0x58: /* Edge Triggered Interrupt Clear */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "Read of write-only register with offset 0x%" HWADDR_PRIx "\n",
++                offset);
++        val = 0;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx "\n",
++                TYPE_ASPEED_VIC, __func__, offset);
++        val = 0;
++        break;
++    }
++    if (high) {
++        val >>= 32;
++        val &= AVIC_H_MASK;
++    }
++    trace_aspeed_vic_read(offset, size, val);
++    return val;
++}
++
++static void aspeed_vic_write(void *opaque, hwaddr offset, uint64_t data,
++                             unsigned size)
++{
++    const bool high = !!(offset & 0x4);
++    const hwaddr n_offset = (offset & ~0x4);
++    AspeedVICState *s = (AspeedVICState *)opaque;
++
++    trace_aspeed_vic_write(offset, size, data);
++
++    if (high) {
++        data &= AVIC_H_MASK;
++        data <<= 32;
++    } else {
++        data &= AVIC_L_MASK;
++    }
++
++    switch (n_offset) {
++    case 0x18: /* Interrupt Selection */
++        if (high) {
++            s->int_select &= AVIC_L_MASK;
++        } else {
++            s->int_select &= ((UINT64_C(0) | AVIC_H_MASK) << 32);
++        }
++        s->int_select |= data;
++        break;
++    case 0x20: /* Interrupt Enable */
++        s->int_enable |= data;
++        break;
++    case 0x28: /* Interrupt Enable Clear */
++        s->int_enable &= ~data;
++        break;
++    case 0x30: /* Software Interrupt */
++        s->int_trigger |= data;
++        break;
++    case 0x38: /* Software Interrupt Clear */
++        s->int_trigger &= ~data;
++        break;
++    case 0x50: /* Interrupt Event */
++        s->int_event &= ~AVIC_INT_EVENT_W_MASK;
++        s->int_event |= (data & AVIC_INT_EVENT_W_MASK);
++        break;
++    case 0x58: /* Edge Triggered Interrupt Clear */
++        s->edge_status &= ~data;
++        break;
++    case 0x00: /* IRQ Status */
++    case 0x08: /* FIQ Status */
++    case 0x10: /* Raw Interrupt Status */
++    case 0x40: /* Interrupt Sensitivity */
++    case 0x48: /* Interrupt Both Edge Trigger Control */
++    case 0x60: /* Edge Triggered Interrupt Status */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "Write of read-only register with offset 0x%" HWADDR_PRIx "\n",
++                offset);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "[%s]%s: Bad register at offset 0x%" HWADDR_PRIx "\n",
++                TYPE_ASPEED_VIC, __func__, offset);
++        break;
++    }
++    aspeed_vic_update(s);
++}
++
++static const MemoryRegionOps aspeed_vic_ops = {
++    .read = aspeed_vic_read,
++    .write = aspeed_vic_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++    .valid.unaligned = false,
++};
++
++static void aspeed_vic_reset(DeviceState *dev)
++{
++    AspeedVICState *s = ASPEED_VIC(dev);
++
++    s->int_select = 0;
++    s->int_enable = 0;
++    s->int_trigger = 0;
++    s->int_sense = (UINT64_C(0x1F07) << 32) | 0xFFF8FFFF;
++    s->int_dual_edge = (UINT64_C(0xF8) << 32) | 0x00070000;
++    s->int_event = (UINT64_C(0x5F07) << 32) | 0xFFF8FFFF;
++    s->edge_status = 0;
++}
++
++static void aspeed_vic_realize(DeviceState *dev, Error **errp)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedVICState *s = ASPEED_VIC(dev);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_vic_ops, s,
++                          TYPE_ASPEED_VIC, 0x20000);
++
++    sysbus_init_mmio(sbd, &s->iomem);
++
++    qdev_init_gpio_in(dev, aspeed_vic_set_irq, ASPEED_VIC_NR_IRQS);
++    sysbus_init_irq(sbd, &s->irq);
++    sysbus_init_irq(sbd, &s->fiq);
++}
++
++static void aspeed_vic_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->realize = aspeed_vic_realize;
++    dc->reset = aspeed_vic_reset;
++    dc->desc = "ASPEED Interrupt Controller (New)";
++}
++
++static const TypeInfo aspeed_vic_info = {
++    .name = TYPE_ASPEED_VIC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedVICState),
++    .class_init = aspeed_vic_class_init,
++};
++
++static void aspeed_vic_register_types(void)
++{
++    type_register_static(&aspeed_vic_info);
++}
++
++type_init(aspeed_vic_register_types);
+diff --git a/include/hw/intc/aspeed_vic.h b/include/hw/intc/aspeed_vic.h
+new file mode 100644
+index 0000000..43b2ec6
+--- /dev/null
++++ b/include/hw/intc/aspeed_vic.h
+@@ -0,0 +1,40 @@
++/*
++ * ASPEED Interrupt Controller (New)
++ *
++ * Andrew Jeffery <andrew@aj.id.au>
++ *
++ * Copyright 2015 IBM Corp.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ *
++ * Need to add SVIC and CVIC support
++ */
++#ifndef ASPEED_VIC_H
++#define ASPEED_VIC_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ASPEED_VIC "aspeed.vic"
++#define ASPEED_VIC(obj) OBJECT_CHECK(AspeedVICState, (obj), TYPE_ASPEED_VIC)
++
++#define ASPEED_VIC_NR_IRQS 51
++
++typedef struct AspeedVICState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++    uint64_t int_select;
++    uint64_t int_enable;
++    uint64_t int_trigger;
++    uint64_t int_sense;
++    uint64_t int_dual_edge;
++    uint64_t int_event;
++    uint64_t edge_status;
++    qemu_irq irq;
++    qemu_irq fiq;
++} AspeedVICState;
++
++#endif /* ASPEED_VIC_H */
+diff --git a/trace-events b/trace-events
+index 5325a23..5718bdf 100644
+--- a/trace-events
++++ b/trace-events
+@@ -1899,3 +1899,12 @@ aspeed_timer_ctrl_op_overflow_interrupt(uint8_t i, bool enable) "Overflow interr
+ aspeed_timer_set_ctrl2(uint32_t value) "CTRL2 set to 0x%" PRIx32
+ aspeed_timer_set_value(int timer, int reg, uint32_t value) "Write to register %d of timer %d: 0x%" PRIx32
+ aspeed_timer_read(uint64_t offset, unsigned size, uint64_t value) "Read at 0x%" PRIx64 ": of size %u 0x%" PRIx64
++
++# hw/intc/aspeed_vic.c
++aspeed_vic_set_irq(int irq, int level) "Enabling IRQ %d: %d"
++aspeed_vic_update_fiq(int flags) "Raising FIQ %d"
++aspeed_vic_update_all_fiq(void) "All IRQs marked as fast"
++aspeed_vic_update_i(int irq) "Raising IRQ %d"
++aspeed_vic_update_none(void) "Lowering IRQs"
++aspeed_vic_read(uint64_t offset, unsigned size, uint32_t value) "Read at 0x%" PRIx64 " of size %u: 0x% " PRIx64
++aspeed_vic_write(uint64_t offset, unsigned size, uint32_t data) "Write at 0x% " PRIx64 " of size %u: %0x" PRIx64
+-- 
+2.5.0
 

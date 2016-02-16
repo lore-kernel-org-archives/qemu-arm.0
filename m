@@ -1,64 +1,64 @@
-Received: by 10.25.208.211 with SMTP id h202csp1241703lfg;
+Received: by 10.25.208.211 with SMTP id h202csp1241717lfg;
+        Tue, 16 Feb 2016 03:17:07 -0800 (PST)
+X-Received: by 10.55.72.70 with SMTP id v67mr26159542qka.47.1455621426945;
         Tue, 16 Feb 2016 03:17:06 -0800 (PST)
-X-Received: by 10.140.241.72 with SMTP id m69mr28056262qhc.33.1455621425946;
-        Tue, 16 Feb 2016 03:17:05 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x69si39977777qha.127.2016.02.16.03.17.05
+        by mx.google.com with ESMTPS id m19si24266221qki.19.2016.02.16.03.17.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 03:17:05 -0800 (PST)
+        Tue, 16 Feb 2016 03:17:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:44389 helo=lists.gnu.org)
+Received: from localhost ([::1]:44390 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVdcv-00072t-CK
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:17:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37282)
+	id 1aVdcw-000759-8C
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:17:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdY0-00075i-SA
-	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:12:01 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdY1-00076F-2L
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:12:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdXv-0006qP-1Q
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXu-0006qH-V7
 	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:12:00 -0500
-Received: from m12-12.163.com ([220.181.12.12]:35703)
+Received: from m12-13.163.com ([220.181.12.13]:48218)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aVdXu-0006om-J1; Tue, 16 Feb 2016 06:11:54 -0500
+	id 1aVdXu-0006oN-6a; Tue, 16 Feb 2016 06:11:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=n3h2kpZrqaH3tCd1Ws
-	3FHOF8flVT79P1oGqo6SoGxfs=; b=W8ZfZvgW7Qc9gmhJzIz3Ys20u5gCF4aZsH
-	o1k7pxAm1zAxw44+kNSf8cA/rr5zWo9DkvvYF9fVcCaC33U1nB5HFYDq+HAf5pJY
-	KYVToLA3v3oB0Qv0BhN//ztzp7Z32HjSR8djxEE1u1HGFtMszK24+QPahPAI60oW
-	Iyy18tteY=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=N63LTJsMMqKQ7BTN0S
+	a6EkM+ARVSdj/QepzsfUsRjcw=; b=h87BlHsMTGwvLHWP5flLIwowunlZ8HGhmA
+	pYkOZ/mG44euQh8zOEiw3LLNbbDtGclc5D7ei/eYW8nVz21sQMwt0x8GtryNqOIp
+	Fas2DBxlzzf24jTsycgCOza3YRbPLj304N+E1qckEhXh2e5k+xNTt2P7B63EHpgU
+	yd7T3Y5ZE=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp8 (Coremail) with SMTP id DMCowABXn_PgA8NWODCxBQ--.25459S5;
-	Tue, 16 Feb 2016 19:11:33 +0800 (CST)
+	by smtp9 (Coremail) with SMTP id DcCowACHx6HMA8NWPNreBQ--.31323S10;
+	Tue, 16 Feb 2016 19:11:17 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 16 Feb 2016 19:10:24 +0800
-Message-Id: <1455621027-13927-4-git-send-email-zxq_yx_007@163.com>
+Date: Tue, 16 Feb 2016 19:09:40 +0800
+Message-Id: <1455620981-13868-9-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1455621027-13927-1-git-send-email-zxq_yx_007@163.com>
-References: <1455621027-13927-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DMCowABXn_PgA8NWODCxBQ--.25459S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Cw1fCF1rJFWkXr48JrWrZrb_yoW8WrWkpa
-	sxZF4I9F4DArsxJw47JwsrJF1rJan7Ca48WrykWwnYy342kryDJFs7GFWS9FW5JFZY9F1Y
-	y3s5trW8Ja4UXw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Ua0PhUUUUU=
+In-Reply-To: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
+References: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: DcCowACHx6HMA8NWPNreBQ--.31323S10
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Cr4kKw1kJw17Zw13Gr1UAwb_yoW8uF1Dpa
+	yxCF17Gr48JrsrXr4fJFn7GF98Jr1kAr1kGryxJwsavFyIkr1rtF4vy3yayFW2kFWv9FW3
+	ArWrXFyrZw45G3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U09a9UUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEgYRxlZXwGucQQAAs0
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOxURxlXlR13m0wAAsm
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.12
+X-Received-From: 220.181.12.13
 Cc: peter.maydell@linaro.org, e.voevodin@samsung.com,
 	xiaoqiang zhao <zxq_yx_007@163.com>,
 	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
 	qemu-arm@nongnu.org, edgar.iglesias@gmail.com,
 	gxt@mprc.pku.edu.cn, afaerber@suse.de
-Subject: [Qemu-devel] [PATCH v3 13/16] hw/timer: QOM'ify puv3_ost
+Subject: [Qemu-devel] [PATCH v3 08/16] hw/timer: QOM'ify lm32_timer
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,62 +72,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TSO2rWuafyae
+X-TUID: lkm2uSDTPMQw
 
-assign puv3_ost_init to puv3_ost_info.instance_init
-and drop the SysBusDeviceClass::init
+* split the old SysBus init function into an instance_init
+  and a Device realize function
+* use DeviceClass::realize instead of SysBusDeviceClass::init
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- hw/timer/puv3_ost.c | 18 +++++-------------
- 1 file changed, 5 insertions(+), 13 deletions(-)
+ hw/timer/lm32_timer.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/hw/timer/puv3_ost.c b/hw/timer/puv3_ost.c
-index 93650b7..72c87ba 100644
---- a/hw/timer/puv3_ost.c
-+++ b/hw/timer/puv3_ost.c
-@@ -113,9 +113,10 @@ static void puv3_ost_tick(void *opaque)
-     }
+diff --git a/hw/timer/lm32_timer.c b/hw/timer/lm32_timer.c
+index 3198355..e45a65b 100644
+--- a/hw/timer/lm32_timer.c
++++ b/hw/timer/lm32_timer.c
+@@ -176,21 +176,26 @@ static void timer_reset(DeviceState *d)
+     ptimer_stop(s->ptimer);
  }
  
--static int puv3_ost_init(SysBusDevice *dev)
-+static void puv3_ost_init(Object *obj)
+-static int lm32_timer_init(SysBusDevice *dev)
++static void lm32_timer_init(Object *obj)
  {
--    PUV3OSTState *s = PUV3_OST(dev);
-+    PUV3OSTState *s = PUV3_OST(obj);
+-    LM32TimerState *s = LM32_TIMER(dev);
++    LM32TimerState *s = LM32_TIMER(obj);
 +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
  
-     s->reg_OIER = 0;
-     s->reg_OSSR = 0;
-@@ -128,25 +129,16 @@ static int puv3_ost_init(SysBusDevice *dev)
-     s->ptimer = ptimer_init(s->bh);
-     ptimer_set_freq(s->ptimer, 50 * 1000 * 1000);
+     sysbus_init_irq(dev, &s->irq);
  
--    memory_region_init_io(&s->iomem, OBJECT(s), &puv3_ost_ops, s, "puv3_ost",
-+    memory_region_init_io(&s->iomem, obj, &puv3_ost_ops, s, "puv3_ost",
-             PUV3_REGS_OFFSET);
+     s->bh = qemu_bh_new(timer_hit, s);
+     s->ptimer = ptimer_init(s->bh);
+-    ptimer_set_freq(s->ptimer, s->freq_hz);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &timer_ops, s,
++    memory_region_init_io(&s->iomem, obj, &timer_ops, s,
+                           "timer", R_MAX * 4);
      sysbus_init_mmio(dev, &s->iomem);
--
++}
+ 
 -    return 0;
--}
--
--static void puv3_ost_class_init(ObjectClass *klass, void *data)
--{
--    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(klass);
--
--    sdc->init = puv3_ost_init;
++static void lm32_timer_realize(DeviceState *dev, Error **errp)
++{
++    LM32TimerState *s = LM32_TIMER(dev);
++
++    ptimer_set_freq(s->ptimer, s->freq_hz);
  }
  
- static const TypeInfo puv3_ost_info = {
-     .name = TYPE_PUV3_OST,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(PUV3OSTState),
--    .class_init = puv3_ost_class_init,
-+    .instance_init = puv3_ost_init,
+ static const VMStateDescription vmstate_lm32_timer = {
+@@ -213,9 +218,8 @@ static Property lm32_timer_properties[] = {
+ static void lm32_timer_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
+ 
+-    k->init = lm32_timer_init;
++    dc->realize = lm32_timer_realize;
+     dc->reset = timer_reset;
+     dc->vmsd = &vmstate_lm32_timer;
+     dc->props = lm32_timer_properties;
+@@ -225,6 +229,7 @@ static const TypeInfo lm32_timer_info = {
+     .name          = TYPE_LM32_TIMER,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(LM32TimerState),
++    .instance_init = lm32_timer_init,
+     .class_init    = lm32_timer_class_init,
  };
  
- static void puv3_ost_register_type(void)
 -- 
 2.1.4
 

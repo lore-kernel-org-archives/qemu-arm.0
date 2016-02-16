@@ -1,56 +1,56 @@
-Received: by 10.25.208.211 with SMTP id h202csp1240550lfg;
-        Tue, 16 Feb 2016 03:14:47 -0800 (PST)
-X-Received: by 10.55.20.12 with SMTP id e12mr23386524qkh.41.1455621283942;
-        Tue, 16 Feb 2016 03:14:43 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1240577lfg;
+        Tue, 16 Feb 2016 03:14:50 -0800 (PST)
+X-Received: by 10.140.253.2 with SMTP id y2mr27993700qhc.89.1455621288446;
+        Tue, 16 Feb 2016 03:14:48 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m12si40109591qkl.83.2016.02.16.03.14.43
+        by mx.google.com with ESMTPS id p133si40015965qhp.53.2016.02.16.03.14.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 03:14:43 -0800 (PST)
+        Tue, 16 Feb 2016 03:14:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:44362 helo=lists.gnu.org)
+Received: from localhost ([::1]:44363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVdad-0003Be-1d
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:14:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37068)
+	id 1aVdah-0003Kh-Sd
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:14:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdXq-0006o7-Rz
-	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:51 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXz-00072T-B8
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:12:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdXn-0006mV-TI
-	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:50 -0500
-Received: from m12-13.163.com ([220.181.12.13]:48216)
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXv-0006qY-6n
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:59 -0500
+Received: from m12-13.163.com ([220.181.12.13]:48617)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aVdXm-0006k8-FA; Tue, 16 Feb 2016 06:11:47 -0500
+	id 1aVdXu-0006pH-FX; Tue, 16 Feb 2016 06:11:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=pSASUmQdan9d1a3mj4
-	SfVJotdT5TDeBdbrg8N8VAbEM=; b=KnoF64dfXq6AzOogIWAGRQ76HsJki18F5A
-	A6w/yHUJR44fSTUhfuIXoKuxM3HhkqbhQz6YwpgKQ+C8LLj4WyGzZi4vunqhGtQj
-	xAaXxIK0n/mWHcp+mgNoHyd2o6U5paZEAJVmeKVyY1FK/LmjO8xxr1STZ8i+v/MZ
-	b9PBOE1Rw=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=yRuwDppIEWSibHboQ5
+	irX19Nrd+9q5s0cU6eDXX57Ic=; b=O/OfQ7rAwKe92dtNkrdZfOpxXmLA/2Uvc0
+	RlYRLYVtga5IXvvNaPvD2PeitwAiHu8TChO1OPa/UKv6KB1SJ0ny+j98qIqsxCpe
+	7bZPvaocTeHoBX4mZOnQDHJ9U3g+rkpUg0TgSemJFTRInNqfD5PFo9UDQoQDqSKv
+	+MWihKZ+c=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp9 (Coremail) with SMTP id DcCowACHx6HMA8NWPNreBQ--.31323S5;
+	by smtp9 (Coremail) with SMTP id DcCowACHx6HMA8NWPNreBQ--.31323S6;
 	Tue, 16 Feb 2016 19:11:16 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 16 Feb 2016 19:09:35 +0800
-Message-Id: <1455620981-13868-4-git-send-email-zxq_yx_007@163.com>
+Date: Tue, 16 Feb 2016 19:09:36 +0800
+Message-Id: <1455620981-13868-5-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
 References: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DcCowACHx6HMA8NWPNreBQ--.31323S5
-X-Coremail-Antispam: 1Uf129KBjvJXoW7AF45ArWxJw4UWr13Kw45ZFb_yoW8CryDpa
-	97GFsrGr4vqFs8ArZ7KFn7WF98JF97CryfKw18Jws2yw1fAFWDXFn5A3y7KFW7JFZ5uFW3
-	ZrWFyr13Aa1jyw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UaNtsUUUUU=
+X-CM-TRANSID: DcCowACHx6HMA8NWPNreBQ--.31323S6
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Ar4xtF1rWF1rAry5JF4kCrg_yoW8CrWkpF
+	ZruF1xA3yfJrZ7AF4IyFnrW3WDC3Z5Crs2qrZ3CrykAw12gr9Fy3WkJFW7Aa18JrZ5AF15
+	AFy8Jr15CF4UG3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U0hFxUUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEBQRxlWBTsbjcwAAsf
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbB0hURxlUL9fb6RQAAsy
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 220.181.12.13
 Cc: peter.maydell@linaro.org, e.voevodin@samsung.com,
@@ -58,7 +58,7 @@ Cc: peter.maydell@linaro.org, e.voevodin@samsung.com,
 	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
 	qemu-arm@nongnu.org, edgar.iglesias@gmail.com,
 	gxt@mprc.pku.edu.cn, afaerber@suse.de
-Subject: [Qemu-devel] [PATCH v3 03/16] hw/timer: QOM'ify etraxfs_timer
+Subject: [Qemu-devel] [PATCH v3 04/16] hw/timer: QOM'ify exynos4210_mct
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,61 +72,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zI5ORO2SG+U2
+X-TUID: u1fdV0RN7VVq
 
-assign etraxfs_timer_init to etraxfs_timer_info.instance_init
+assign exynos4210_mct_init to exynos4210_mct_info.instance_init
 and drop the SysBusDeviceClass::init
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- hw/timer/etraxfs_timer.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ hw/timer/exynos4210_mct.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/hw/timer/etraxfs_timer.c b/hw/timer/etraxfs_timer.c
-index 36d8f46..4f115c7 100644
---- a/hw/timer/etraxfs_timer.c
-+++ b/hw/timer/etraxfs_timer.c
-@@ -315,9 +315,10 @@ static void etraxfs_timer_reset(void *opaque)
-     qemu_irq_lower(t->irq);
- }
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 73e547c..ae69345 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1422,10 +1422,11 @@ static const MemoryRegionOps exynos4210_mct_ops = {
+ };
  
--static int etraxfs_timer_init(SysBusDevice *dev)
-+static void etraxfs_timer_init(Object *obj)
+ /* MCT init */
+-static int exynos4210_mct_init(SysBusDevice *dev)
++static void exynos4210_mct_init(Object *obj)
  {
--    ETRAXTimerState *t = ETRAX_TIMER(dev);
-+    ETRAXTimerState *t = ETRAX_TIMER(obj);
+     int i;
+-    Exynos4210MCTState *s = EXYNOS4210_MCT(dev);
++    Exynos4210MCTState *s = EXYNOS4210_MCT(obj);
 +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+     QEMUBH *bh[2];
  
-     t->bh_t0 = qemu_bh_new(timer0_hit, t);
-     t->bh_t1 = qemu_bh_new(timer1_hit, t);
-@@ -329,24 +330,23 @@ static int etraxfs_timer_init(SysBusDevice *dev)
-     sysbus_init_irq(dev, &t->irq);
-     sysbus_init_irq(dev, &t->nmi);
+     /* Global timer */
+@@ -1450,19 +1451,15 @@ static int exynos4210_mct_init(SysBusDevice *dev)
+         sysbus_init_irq(dev, &s->l_timer[i].irq);
+     }
  
--    memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t,
-+    memory_region_init_io(&t->mmio, obj, &timer_ops, t,
-                           "etraxfs-timer", 0x5c);
-     sysbus_init_mmio(dev, &t->mmio);
--    qemu_register_reset(etraxfs_timer_reset, t);
+-    memory_region_init_io(&s->iomem, OBJECT(s), &exynos4210_mct_ops, s,
++    memory_region_init_io(&s->iomem, obj, &exynos4210_mct_ops, s,
+                           "exynos4210-mct", MCT_SFR_SIZE);
+     sysbus_init_mmio(dev, &s->iomem);
+-
 -    return 0;
  }
  
- static void etraxfs_timer_class_init(ObjectClass *klass, void *data)
+ static void exynos4210_mct_class_init(ObjectClass *klass, void *data)
  {
--    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
  
--    sdc->init = etraxfs_timer_init;
-+    dc->reset = etraxfs_timer_reset;
+-    k->init = exynos4210_mct_init;
+     dc->reset = exynos4210_mct_reset;
+     dc->vmsd = &vmstate_exynos4210_mct_state;
  }
- 
- static const TypeInfo etraxfs_timer_info = {
-     .name          = TYPE_ETRAX_FS_TIMER,
+@@ -1471,6 +1468,7 @@ static const TypeInfo exynos4210_mct_info = {
+     .name          = TYPE_EXYNOS4210_MCT,
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(ETRAXTimerState),
-+    .instance_init = etraxfs_timer_init,
-     .class_init    = etraxfs_timer_class_init,
+     .instance_size = sizeof(Exynos4210MCTState),
++    .instance_init = exynos4210_mct_init,
+     .class_init    = exynos4210_mct_class_init,
  };
  
 -- 

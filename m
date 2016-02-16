@@ -1,47 +1,79 @@
-Received: by 10.25.208.211 with SMTP id h202csp1454100lfg;
-        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
-X-Received: by 10.55.215.131 with SMTP id t3mr13477998qkt.97.1455646993416;
-        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1455924lfg;
+        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
+X-Received: by 10.140.19.132 with SMTP id 4mr29236217qgh.56.1455647248105;
+        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g131si41746438qkb.102.2016.02.16.10.23.13
+        by mx.google.com with ESMTPS id u63si41810757qkl.103.2016.02.16.10.27.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 10:23:13 -0800 (PST)
+        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49371 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:49452 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVkHI-0007Dv-Rm
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:23:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49270)
+	id 1aVkLP-0003nc-I9
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:27:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aVkHG-0007B2-OI
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:11 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkFz-0005PX-Gc
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aVkHF-0000qm-Mv
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:10 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57413)
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkFy-0000Ry-K4
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:51 -0500
+Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:32881)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aVkHA-0000pz-Bt; Tue, 16 Feb 2016 13:23:04 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aVk4P-0003SV-FL; Tue, 16 Feb 2016 18:09:53 +0000
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkFy-0000Rr-D8
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:50 -0500
+Received: by mail-vk0-x22c.google.com with SMTP id k196so141738753vka.0
+	for <qemu-arm@nongnu.org>; Tue, 16 Feb 2016 10:21:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=DpRqdeOKOefzK0mu8Z9G6KiHiaCI8u2+MCHRmmP6LrI=;
+	b=G2lvtJ8EsPVUMvpOTuGwnUhUVXCj8ZCuVzq5/XLFK6Sl1PQQwE2wL45Z2wrQtLnOLl
+	rCjFgua0uG7+mTppiC6DW94v6Y9fLWbstzEUAMcCN7LYDa90up11i3/lTquurgKDuHKo
+	qglMcHhlHLiZdUZJ4CFV+BiWeQv8OreDB2FqM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=DpRqdeOKOefzK0mu8Z9G6KiHiaCI8u2+MCHRmmP6LrI=;
+	b=TI8I/fbrscAbOQf1tDFpr7QMVttV2tdWX3ZgJ85aBi21mrJ0jVdMnUWuu8hWH48IaE
+	zp6tW5aE9YPPG9tAHb8imD3m6Ib/vlxRUxl4ilkl4lr7D95X4RL1W7uZg8VZI+LvoY8A
+	+9KPjmHR1KayO0keXY1YB8eK3RsRS7Z3swBoz2TL0x0yy+n8aZR5IAZwoKT8Uj9tcQLT
+	JRWogu3c4dKLORiy1jgnM4zvvK6yIsKU8pb7mPq4IixNyY7iIdRObo42Ncnv+jr9GfTF
+	UfOGntBg1qoUSmU47x0MpBCn1foD6S3jkIc8X78U1k2nprpfKiq210IllfWr+DvZjIMF
+	NYwQ==
+X-Gm-Message-State: AG10YOSjtZbPZyrBbD2ajjDmFtVUCTJqau15ePursUlCgzYJF91BY/5QFYFVvTDxTtGC1SYsLTrS6aUG5ydGuybu
+X-Received: by 10.31.194.130 with SMTP id s124mr18828725vkf.92.1455646909667; 
+	Tue, 16 Feb 2016 10:21:49 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Tue, 16 Feb 2016 10:21:30 -0800 (PST)
+In-Reply-To: <1454086429-4373-8-git-send-email-eric.auger@linaro.org>
+References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
+	<1454086429-4373-8-git-send-email-eric.auger@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 16 Feb 2016 18:09:49 +0000
-Message-Id: <1455646193-13238-8-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
-References: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 16 Feb 2016 18:21:30 +0000
+Message-ID: <CAFEAcA87ZXSHDE4v5udfWGH15xGGAFNQGBCzm2TcnFEP0LLutg@mail.gmail.com>
+To: Eric Auger <eric.auger@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::1
-Cc: Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
-Subject: [Qemu-arm] [PATCH v3 07/10] hw/sd/pxa2xx_mmci: convert to
-	SysBusDevice object
+X-Received-From: 2607:f8b0:400c:c05::22c
+Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>,
+	Bharat Bhushan <Bharat.Bhushan@freescale.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Subject: Re: [Qemu-arm] [RFC v2 7/8] hw: arm: virt: register reserved IOVA
+	region
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -55,136 +87,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iwljWxMPvCiw
+X-TUID: BAqXQXdKpfNx
 
-Convert the pxa2xx_mmci device to be a sysbus device.
+On 29 January 2016 at 16:53, Eric Auger <eric.auger@linaro.org> wrote:
+> Registers a 16x64kB reserved iova region. Currently this iova
+> region is used by the host kernel to map host MSI controller frames
+> (GICv2m, GITS_TRANSLATER). The host kernel needs this iova window
+> since it cannot program the PCIe device with MSI frame physical
+> address (as opposed to x86) since the MSI write transactions go
+> through the IOMMU.
+>
+> The reserved region is mapped on the platform bus.
 
-In this commit we only change the device itself, and leave
-the interface to the SD card using the old non-SDBus APIs.
+I guess that keeps it neatly out of the way of everybody else :-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
----
- hw/sd/pxa2xx_mmci.c | 74 ++++++++++++++++++++++++++++++++++++++++-------------
- 1 file changed, 56 insertions(+), 18 deletions(-)
+> Signed-off-by: Eric Auger <eric.auger@linaro.org>
+>
+> ---
+>
+> RFC v1 -> RFC v2:
+> - use the platform bus to map the reserved iova region
+> ---
+>  hw/arm/virt.c | 19 ++++++++++++++-----
+>  1 file changed, 14 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3839c68..4b2a891 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -805,7 +805,7 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
+>  }
+>
+>  static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+> -                        bool use_highmem)
+> +                        bool use_highmem, MemoryRegion **reserved_reg)
+>  {
+>      hwaddr base_mmio = vbi->memmap[VIRT_PCIE_MMIO].base;
+>      hwaddr size_mmio = vbi->memmap[VIRT_PCIE_MMIO].size;
+> @@ -920,10 +920,16 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+>      qemu_fdt_setprop_cell(vbi->fdt, nodename, "#interrupt-cells", 1);
+>      create_pcie_irq_map(vbi, vbi->gic_phandle, irq, nodename);
+>
+> +    /* initialize the reserved iova region for MSI binding (16 x 64kb) */
+> +    *reserved_reg = g_new0(MemoryRegion, 1);
+> +    memory_region_init_reserved_iova(*reserved_reg, OBJECT(dev),
+> +                                     "reserved-iova",
+> +                                     0x100000, &error_fatal);
 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 81da7b7..cadbba3 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -12,16 +12,24 @@
- 
- #include "qemu/osdep.h"
- #include "hw/hw.h"
-+#include "hw/sysbus.h"
- #include "hw/arm/pxa.h"
- #include "hw/sd/sd.h"
- #include "hw/qdev.h"
-+#include "hw/qdev-properties.h"
-+
-+#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
-+#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
-+
-+typedef struct PXA2xxMMCIState {
-+    SysBusDevice parent_obj;
- 
--struct PXA2xxMMCIState {
-     MemoryRegion iomem;
-     qemu_irq irq;
-     qemu_irq rx_dma;
-     qemu_irq tx_dma;
- 
-+    BlockBackend *blk;
-     SDState *card;
- 
-     uint32_t status;
-@@ -49,7 +57,7 @@ struct PXA2xxMMCIState {
-     int resp_len;
- 
-     int cmdreq;
--};
-+} PXA2xxMMCIState;
- 
- #define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
- #define MMC_STAT	0x04	/* MMC Status register */
-@@ -475,31 +483,61 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-                 BlockBackend *blk, qemu_irq irq,
-                 qemu_irq rx_dma, qemu_irq tx_dma)
- {
-+    DeviceState *dev;
-+    SysBusDevice *sbd;
-     PXA2xxMMCIState *s;
- 
--    s = (PXA2xxMMCIState *) g_malloc0(sizeof(PXA2xxMMCIState));
--    s->irq = irq;
--    s->rx_dma = rx_dma;
--    s->tx_dma = tx_dma;
--
--    memory_region_init_io(&s->iomem, NULL, &pxa2xx_mmci_ops, s,
--                          "pxa2xx-mmci", 0x00100000);
--    memory_region_add_subregion(sysmem, base, &s->iomem);
--
--    /* Instantiate the actual storage */
--    s->card = sd_init(blk, false);
-+    dev = qdev_create(NULL, TYPE_PXA2XX_MMCI);
-+    s = PXA2XX_MMCI(dev);
-+    /* Reach into the device and initialize the SD card. This is
-+     * unclean but will vanish when we update to SDBus APIs.
-+     */
-+    s->card = sd_init(s->blk, false);
-     if (s->card == NULL) {
-         exit(1);
-     }
--
--    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
--                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
--
-+    qdev_init_nofail(dev);
-+    sbd = SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(sbd, 0, base);
-+    sysbus_connect_irq(sbd, 0, irq);
-+    qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
-+    qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
-     return s;
- }
- 
- void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
--                qemu_irq coverswitch)
-+                          qemu_irq coverswitch)
- {
-     sd_set_cb(s->card, readonly, coverswitch);
- }
-+
-+static void pxa2xx_mmci_instance_init(Object *obj)
-+{
-+    PXA2xxMMCIState *s = PXA2XX_MMCI(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &pxa2xx_mmci_ops, s,
-+                          "pxa2xx-mmci", 0x00100000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+    qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
-+    qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
-+
-+    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
-+                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
-+}
-+
-+static const TypeInfo pxa2xx_mmci_info = {
-+    .name = TYPE_PXA2XX_MMCI,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(PXA2xxMMCIState),
-+    .instance_init = pxa2xx_mmci_instance_init,
-+};
-+
-+static void pxa2xx_mmci_register_types(void)
-+{
-+    type_register_static(&pxa2xx_mmci_info);
-+}
-+
-+type_init(pxa2xx_mmci_register_types)
--- 
-1.9.1
+So the only reason this is here is because we need to have a pointer to
+the PCIe controller DeviceState, right? I think it would be better to
+make create_pcie() return the DeviceState* instead of NULL. Then you
+can either (a) pass the pcie controller pointer into create_platform_bus()
+and have that create and map the reserved iova region, or (b) have a
+separate function to create the reserved iova region. In any case I
+think it fits more naturally with the rest of the platform bus code
+rather than in the PCIe controller creation function.
 
+thanks
+-- PMM

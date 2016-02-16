@@ -1,185 +1,277 @@
-Received: by 10.25.208.211 with SMTP id h202csp1452026lfg;
-        Tue, 16 Feb 2016 10:18:47 -0800 (PST)
-X-Received: by 10.140.249.6 with SMTP id u6mr31078248qhc.83.1455646717899;
-        Tue, 16 Feb 2016 10:18:37 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1452615lfg;
+        Tue, 16 Feb 2016 10:20:04 -0800 (PST)
+X-Received: by 10.140.161.9 with SMTP id h9mr30572485qhh.82.1455646804115;
+        Tue, 16 Feb 2016 10:20:04 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 107si41763785qgo.100.2016.02.16.10.18.37
+        by mx.google.com with ESMTPS id w11si41772025qka.110.2016.02.16.10.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 10:18:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 16 Feb 2016 10:20:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:49247 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49262 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVkCr-0008V2-7k
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:18:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47505)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aVkEF-0002FZ-Fh
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:20:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkBA-0005S4-8X
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:16:53 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aVk4a-000275-4w
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 13:10:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkB9-0007t2-7s
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:16:52 -0500
-Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:36142)
+	(envelope-from <pm215@archaic.org.uk>) id 1aVk4Y-0005uh-9R
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 13:10:03 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:57405)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkB9-0007sv-2a
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:16:51 -0500
-Received: by mail-vk0-x22b.google.com with SMTP id c3so140837305vkb.3
-	for <qemu-arm@nongnu.org>; Tue, 16 Feb 2016 10:16:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=EYbg0pEdYb2Ctm/IiwjLx2p+i8Scbtq9mnGoFdS+CfY=;
-	b=RNxhjEA1IPYLGK0tRvo7nFTIN+/JAhbhKHKu/r6et9o+kP6wOfgFnnCxkV4htGRi71
-	uIQNWj8z0TanRYh9mdv8zxy+nfi4YlEtJq86EbIMJqhqdn9NujZjzV19kSPb0IaB+7vI
-	VTakuRI5HCFqCu5qv4ZC+YjCgDYttikvLIctI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=EYbg0pEdYb2Ctm/IiwjLx2p+i8Scbtq9mnGoFdS+CfY=;
-	b=RM2zxKh6HKf22gbugnRCgkn1D66v3vKoOWhFKxu2PETX3W87mS6FS5Th55RxxL2yAE
-	l4SK2bXpL1jVNm82r6YsgLhTcAa/lZTOJLAhmWCCzvYp3DvzsL8afuJtLrAHY5WCq+pH
-	F9KAPcJ8nbX1uqQqINk64aIMtORSCfH0iDU2l2oroz+UVWxJyFc606TU3AaQn1PtXy9z
-	9BYMoc2EJ2gq3OWo7o3UVfWxBE0QBXztVXyvxgdTkpfXPHfVQjPepof2l5sGtk5/CLtl
-	j01MIfvKNg+AAZxa8WV0YksraQcvkppEr9cGF5B6ZepqNfLyxTAZfLcvoDwX59x1bgXz
-	aJnw==
-X-Gm-Message-State: AG10YORopCXvyh9U/xIRPSfDrgleY/9ppACOVAtgJHG0ruKlwLz/7tAJx7f6S9Q+xNrpuS29U6O7ujgAZGbQFjNN
-X-Received: by 10.31.141.2 with SMTP id p2mr19124947vkd.37.1455646610753; Tue,
-	16 Feb 2016 10:16:50 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 16 Feb 2016 10:16:31 -0800 (PST)
-In-Reply-To: <1454086429-4373-7-git-send-email-eric.auger@linaro.org>
-References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
-	<1454086429-4373-7-git-send-email-eric.auger@linaro.org>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aVk4Y-0005sC-1k; Tue, 16 Feb 2016 13:10:02 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aVk4P-0003Sd-JW; Tue, 16 Feb 2016 18:09:53 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Feb 2016 18:16:31 +0000
-Message-ID: <CAFEAcA8mEAu9WjS2MtR2cs5CgiGR+mdc3JdkhmN4eHULvveJYw@mail.gmail.com>
-To: Eric Auger <eric.auger@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-devel@nongnu.org
+Date: Tue, 16 Feb 2016 18:09:51 +0000
+Message-Id: <1455646193-13238-10-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
+References: <1455646193-13238-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22b
-Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Alexander Graf <agraf@suse.de>,
-	Bharat Bhushan <Bharat.Bhushan@freescale.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Subject: Re: [Qemu-arm] [RFC v2 6/8] hw: platform-bus: enable to map any
- memory region onto the platform-bus
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2001:8b0:1d0::1
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Subject: [Qemu-devel] [PATCH v3 09/10] hw/sd/pxa2xx_mmci: Convert to
+	VMStateDescription
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C4Om/6EV3Wv9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: G+tzOE826Rk2
 
-On 29 January 2016 at 16:53, Eric Auger <eric.auger@linaro.org> wrote:
-> The platform bus currently is used to map dynamically instantiable
-> platform device MMIO regions. The platform bus also can be seen as a
-> pool of free guest physical addresses. We would like to use that pool
-> to allocate a contiguous reserved IOVA region usable for MSI message
-> address IOMMU mapping.
->
-> This patch introduces platform_bus_map_region which enables to map any
-> memory region onto the platform bus.
->
-> Signed-off-by: Eric Auger <eric.auger@linaro.org>
-> ---
->  hw/core/platform-bus.c    | 26 ++++++++++++++++----------
->  include/hw/platform-bus.h |  7 +++++++
->  2 files changed, 23 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
-> index aa55d01..7d0f5e0 100644
-> --- a/hw/core/platform-bus.c
-> +++ b/hw/core/platform-bus.c
-> @@ -128,16 +128,14 @@ static void platform_bus_map_irq(PlatformBusDevice *pbus, SysBusDevice *sbdev,
->      sysbus_connect_irq(sbdev, n, pbus->irqs[irqn]);
->  }
->
-> -static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-> -                                  int n)
-> +void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr)
->  {
-> -    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
-> -    uint64_t size = memory_region_size(sbdev_mr);
-> +    uint64_t size = memory_region_size(mr);
->      uint64_t alignment = (1ULL << (63 - clz64(size + size - 1)));
->      uint64_t off;
->      bool found_region = false;
->
-> -    if (memory_region_is_mapped(sbdev_mr)) {
-> +    if (memory_region_is_mapped(mr)) {
->          /* Region is already mapped, nothing to do */
->          return;
->      }
-> @@ -154,13 +152,21 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
->      }
->
->      if (!found_region) {
-> -        error_report("Platform Bus: Can not fit MMIO region of size %"PRIx64,
-> -                     size);
-> -        exit(1);
-> +        error_setg(&error_fatal,
-> +                   "Platform Bus: Can not fit region %s of size %"PRIx64,
-> +                   mr->name, size);
->      }
->
-> -    /* Map the device's region into our Platform Bus MMIO space */
-> -    memory_region_add_subregion(&pbus->mmio, off, sbdev_mr);
-> +    /* Map the region into our Platform Bus MMIO space */
-> +    memory_region_add_subregion(&pbus->mmio, off, mr);
-> +}
-> +
-> +static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-> +                                  int n)
-> +{
-> +    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
-> +
-> +    platform_bus_map_region(pbus, sbdev_mr);
->  }
->
->  /*
-> diff --git a/include/hw/platform-bus.h b/include/hw/platform-bus.h
-> index bd42b83..ee19674 100644
-> --- a/include/hw/platform-bus.h
-> +++ b/include/hw/platform-bus.h
-> @@ -54,4 +54,11 @@ int platform_bus_get_irqn(PlatformBusDevice *platform_bus, SysBusDevice *sbdev,
->  hwaddr platform_bus_get_mmio_addr(PlatformBusDevice *pbus, SysBusDevice *sbdev,
->                                    int n);
->
-> +/**
-> + * platform_bus_map_region: map a region into the platform bus
+Convert the pxa2xx_mmci device from manual save/load
+functions to a VMStateDescription structure.
 
-s/region/MemoryRegion/
+This is a migration compatibility break.
 
-> + * @pbus: platform bus handle
-> + * @mr: memory region handle
-> + */
-> +void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr);
-> +
->  #endif /* !HW_PLATFORM_BUS_H */
-> --
-> 1.9.1
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+---
+ hw/sd/pxa2xx_mmci.c | 156 +++++++++++++++++++++-------------------------------
+ 1 file changed, 64 insertions(+), 92 deletions(-)
 
-otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 75986ea..d9f5202 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -44,27 +44,72 @@ typedef struct PXA2xxMMCIState {
+     uint32_t cmdat;
+     uint32_t resp_tout;
+     uint32_t read_tout;
+-    int blklen;
+-    int numblk;
++    int32_t blklen;
++    int32_t numblk;
+     uint32_t intmask;
+     uint32_t intreq;
+-    int cmd;
++    int32_t cmd;
+     uint32_t arg;
+ 
+-    int active;
+-    int bytesleft;
++    int32_t active;
++    int32_t bytesleft;
+     uint8_t tx_fifo[64];
+-    int tx_start;
+-    int tx_len;
++    uint32_t tx_start;
++    uint32_t tx_len;
+     uint8_t rx_fifo[32];
+-    int rx_start;
+-    int rx_len;
++    uint32_t rx_start;
++    uint32_t rx_len;
+     uint16_t resp_fifo[9];
+-    int resp_len;
++    uint32_t resp_len;
+ 
+-    int cmdreq;
++    int32_t cmdreq;
+ } PXA2xxMMCIState;
+ 
++static bool pxa2xx_mmci_vmstate_validate(void *opaque, int version_id)
++{
++    PXA2xxMMCIState *s = opaque;
++
++    return s->tx_start < ARRAY_SIZE(s->tx_fifo)
++        && s->rx_start < ARRAY_SIZE(s->rx_fifo)
++        && s->tx_len <= ARRAY_SIZE(s->tx_fifo)
++        && s->rx_len <= ARRAY_SIZE(s->rx_fifo)
++        && s->resp_len <= ARRAY_SIZE(s->resp_fifo);
++}
++
++
++static const VMStateDescription vmstate_pxa2xx_mmci = {
++    .name = "pxa2xx-mmci",
++    .version_id = 2,
++    .minimum_version_id = 2,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(status, PXA2xxMMCIState),
++        VMSTATE_UINT32(clkrt, PXA2xxMMCIState),
++        VMSTATE_UINT32(spi, PXA2xxMMCIState),
++        VMSTATE_UINT32(cmdat, PXA2xxMMCIState),
++        VMSTATE_UINT32(resp_tout, PXA2xxMMCIState),
++        VMSTATE_UINT32(read_tout, PXA2xxMMCIState),
++        VMSTATE_INT32(blklen, PXA2xxMMCIState),
++        VMSTATE_INT32(numblk, PXA2xxMMCIState),
++        VMSTATE_UINT32(intmask, PXA2xxMMCIState),
++        VMSTATE_UINT32(intreq, PXA2xxMMCIState),
++        VMSTATE_INT32(cmd, PXA2xxMMCIState),
++        VMSTATE_UINT32(arg, PXA2xxMMCIState),
++        VMSTATE_INT32(cmdreq, PXA2xxMMCIState),
++        VMSTATE_INT32(active, PXA2xxMMCIState),
++        VMSTATE_INT32(bytesleft, PXA2xxMMCIState),
++        VMSTATE_UINT32(tx_start, PXA2xxMMCIState),
++        VMSTATE_UINT32(tx_len, PXA2xxMMCIState),
++        VMSTATE_UINT32(rx_start, PXA2xxMMCIState),
++        VMSTATE_UINT32(rx_len, PXA2xxMMCIState),
++        VMSTATE_UINT32(resp_len, PXA2xxMMCIState),
++        VMSTATE_VALIDATE("fifo size incorrect", pxa2xx_mmci_vmstate_validate),
++        VMSTATE_UINT8_ARRAY(tx_fifo, PXA2xxMMCIState, 64),
++        VMSTATE_UINT8_ARRAY(rx_fifo, PXA2xxMMCIState, 32),
++        VMSTATE_UINT16_ARRAY(resp_fifo, PXA2xxMMCIState, 9),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ #define MMC_STRPCL	0x00	/* MMC Clock Start/Stop register */
+ #define MMC_STAT	0x04	/* MMC Status register */
+ #define MMC_CLKRT	0x08	/* MMC Clock Rate register */
+@@ -406,84 +451,6 @@ static const MemoryRegionOps pxa2xx_mmci_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-static void pxa2xx_mmci_save(QEMUFile *f, void *opaque)
+-{
+-    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+-    int i;
+-
+-    qemu_put_be32s(f, &s->status);
+-    qemu_put_be32s(f, &s->clkrt);
+-    qemu_put_be32s(f, &s->spi);
+-    qemu_put_be32s(f, &s->cmdat);
+-    qemu_put_be32s(f, &s->resp_tout);
+-    qemu_put_be32s(f, &s->read_tout);
+-    qemu_put_be32(f, s->blklen);
+-    qemu_put_be32(f, s->numblk);
+-    qemu_put_be32s(f, &s->intmask);
+-    qemu_put_be32s(f, &s->intreq);
+-    qemu_put_be32(f, s->cmd);
+-    qemu_put_be32s(f, &s->arg);
+-    qemu_put_be32(f, s->cmdreq);
+-    qemu_put_be32(f, s->active);
+-    qemu_put_be32(f, s->bytesleft);
+-
+-    qemu_put_byte(f, s->tx_len);
+-    for (i = 0; i < s->tx_len; i ++)
+-        qemu_put_byte(f, s->tx_fifo[(s->tx_start + i) & 63]);
+-
+-    qemu_put_byte(f, s->rx_len);
+-    for (i = 0; i < s->rx_len; i ++)
+-        qemu_put_byte(f, s->rx_fifo[(s->rx_start + i) & 31]);
+-
+-    qemu_put_byte(f, s->resp_len);
+-    for (i = s->resp_len; i < 9; i ++)
+-        qemu_put_be16s(f, &s->resp_fifo[i]);
+-}
+-
+-static int pxa2xx_mmci_load(QEMUFile *f, void *opaque, int version_id)
+-{
+-    PXA2xxMMCIState *s = (PXA2xxMMCIState *) opaque;
+-    int i;
+-
+-    qemu_get_be32s(f, &s->status);
+-    qemu_get_be32s(f, &s->clkrt);
+-    qemu_get_be32s(f, &s->spi);
+-    qemu_get_be32s(f, &s->cmdat);
+-    qemu_get_be32s(f, &s->resp_tout);
+-    qemu_get_be32s(f, &s->read_tout);
+-    s->blklen = qemu_get_be32(f);
+-    s->numblk = qemu_get_be32(f);
+-    qemu_get_be32s(f, &s->intmask);
+-    qemu_get_be32s(f, &s->intreq);
+-    s->cmd = qemu_get_be32(f);
+-    qemu_get_be32s(f, &s->arg);
+-    s->cmdreq = qemu_get_be32(f);
+-    s->active = qemu_get_be32(f);
+-    s->bytesleft = qemu_get_be32(f);
+-
+-    s->tx_len = qemu_get_byte(f);
+-    s->tx_start = 0;
+-    if (s->tx_len >= sizeof(s->tx_fifo) || s->tx_len < 0)
+-        return -EINVAL;
+-    for (i = 0; i < s->tx_len; i ++)
+-        s->tx_fifo[i] = qemu_get_byte(f);
+-
+-    s->rx_len = qemu_get_byte(f);
+-    s->rx_start = 0;
+-    if (s->rx_len >= sizeof(s->rx_fifo) || s->rx_len < 0)
+-        return -EINVAL;
+-    for (i = 0; i < s->rx_len; i ++)
+-        s->rx_fifo[i] = qemu_get_byte(f);
+-
+-    s->resp_len = qemu_get_byte(f);
+-    if (s->resp_len > 9 || s->resp_len < 0)
+-        return -EINVAL;
+-    for (i = s->resp_len; i < 9; i ++)
+-         qemu_get_be16s(f, &s->resp_fifo[i]);
+-
+-    return 0;
+-}
+-
+ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+                 hwaddr base,
+                 BlockBackend *blk, qemu_irq irq,
+@@ -557,13 +524,17 @@ static void pxa2xx_mmci_instance_init(Object *obj)
+     qdev_init_gpio_out_named(dev, &s->rx_dma, "rx-dma", 1);
+     qdev_init_gpio_out_named(dev, &s->tx_dma, "tx-dma", 1);
+ 
+-    register_savevm(NULL, "pxa2xx_mmci", 0, 0,
+-                    pxa2xx_mmci_save, pxa2xx_mmci_load, s);
+-
+     qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
+                         TYPE_PXA2XX_MMCI_BUS, DEVICE(obj), "sd-bus");
+ }
+ 
++static void pxa2xx_mmci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_pxa2xx_mmci;
++}
++
+ static void pxa2xx_mmci_bus_class_init(ObjectClass *klass, void *data)
+ {
+     SDBusClass *sbc = SD_BUS_CLASS(klass);
+@@ -577,6 +548,7 @@ static const TypeInfo pxa2xx_mmci_info = {
+     .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(PXA2xxMMCIState),
+     .instance_init = pxa2xx_mmci_instance_init,
++    .class_init = pxa2xx_mmci_class_init,
+ };
+ 
+ static const TypeInfo pxa2xx_mmci_bus_info = {
+-- 
+1.9.1
 
-thanks
--- PMM

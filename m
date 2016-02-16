@@ -1,68 +1,67 @@
-Received: by 10.25.208.211 with SMTP id h202csp1455924lfg;
-        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
-X-Received: by 10.140.19.132 with SMTP id 4mr29236217qgh.56.1455647248105;
-        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1456292lfg;
+        Tue, 16 Feb 2016 10:28:18 -0800 (PST)
+X-Received: by 10.140.18.172 with SMTP id 41mr28767766qgf.7.1455647298795;
+        Tue, 16 Feb 2016 10:28:18 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u63si41810757qkl.103.2016.02.16.10.27.27
+        by mx.google.com with ESMTPS id c8si41801317qkb.35.2016.02.16.10.28.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 10:27:28 -0800 (PST)
+        Tue, 16 Feb 2016 10:28:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:49452 helo=lists.gnu.org)
+Received: from localhost ([::1]:49464 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVkLP-0003nc-I9
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:27:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48651)
+	id 1aVkME-0004lk-5E
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 13:28:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkFz-0005PX-Gc
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:52 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkHo-0007y4-Th
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkFy-0000Ry-K4
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:51 -0500
-Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:32881)
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkHn-0000uR-UJ
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:44 -0500
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:33689)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aVkFy-0000Rr-D8
-	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:21:50 -0500
-Received: by mail-vk0-x22c.google.com with SMTP id k196so141738753vka.0
-	for <qemu-arm@nongnu.org>; Tue, 16 Feb 2016 10:21:50 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aVkHn-0000uG-Q4
+	for qemu-arm@nongnu.org; Tue, 16 Feb 2016 13:23:43 -0500
+Received: by mail-vk0-x235.google.com with SMTP id k196so141788937vka.0
+	for <qemu-arm@nongnu.org>; Tue, 16 Feb 2016 10:23:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=DpRqdeOKOefzK0mu8Z9G6KiHiaCI8u2+MCHRmmP6LrI=;
-	b=G2lvtJ8EsPVUMvpOTuGwnUhUVXCj8ZCuVzq5/XLFK6Sl1PQQwE2wL45Z2wrQtLnOLl
-	rCjFgua0uG7+mTppiC6DW94v6Y9fLWbstzEUAMcCN7LYDa90up11i3/lTquurgKDuHKo
-	qglMcHhlHLiZdUZJ4CFV+BiWeQv8OreDB2FqM=
+	bh=CkGgjiqbKzxsm8RMqel/WjlRTJOlyneCEQZN/dFam/o=;
+	b=FuTInPXdg9sRYtRQ6qe6M9veVDW3BbCiZcftz7Baktg93GjYSspW3jFx1thOkZVOdg
+	qDiSnmhkH7Pe6o7zixndYLuhka0IyuEjs0cm85vwzxG9FvLQ591tCiC0oIxxVIcusr4b
+	FZxa/5b2sbMfEEeKO1iAWeRrE5Fdjdv0ubhTw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=DpRqdeOKOefzK0mu8Z9G6KiHiaCI8u2+MCHRmmP6LrI=;
-	b=TI8I/fbrscAbOQf1tDFpr7QMVttV2tdWX3ZgJ85aBi21mrJ0jVdMnUWuu8hWH48IaE
-	zp6tW5aE9YPPG9tAHb8imD3m6Ib/vlxRUxl4ilkl4lr7D95X4RL1W7uZg8VZI+LvoY8A
-	+9KPjmHR1KayO0keXY1YB8eK3RsRS7Z3swBoz2TL0x0yy+n8aZR5IAZwoKT8Uj9tcQLT
-	JRWogu3c4dKLORiy1jgnM4zvvK6yIsKU8pb7mPq4IixNyY7iIdRObo42Ncnv+jr9GfTF
-	UfOGntBg1qoUSmU47x0MpBCn1foD6S3jkIc8X78U1k2nprpfKiq210IllfWr+DvZjIMF
-	NYwQ==
-X-Gm-Message-State: AG10YOSjtZbPZyrBbD2ajjDmFtVUCTJqau15ePursUlCgzYJF91BY/5QFYFVvTDxTtGC1SYsLTrS6aUG5ydGuybu
-X-Received: by 10.31.194.130 with SMTP id s124mr18828725vkf.92.1455646909667; 
-	Tue, 16 Feb 2016 10:21:49 -0800 (PST)
+	bh=CkGgjiqbKzxsm8RMqel/WjlRTJOlyneCEQZN/dFam/o=;
+	b=THqQwLHrAwqEW613fWJKnIs6jcDvWyo9SDkSi+dxkAz4f8ejYA18yOipuacHeHUV0u
+	fH8UuHuYHTFy4mjICM/RreYTDBzCISPA23ZHdNgd+ZnNcSflTYK9ZNB5TDuy2BtrsHLr
+	+tw6zf2nNsCrpKKBysnsr8u6pgPWdqS4zkN/l64a5rR1+6EHMSn/fHc06wAbt+tgVGT1
+	qoFyvyDDgw2BRfg5qPaX86icF7fyk0P9FLahw8DaqPg1GkBq8ETU4Sy5KMqCSy61Wx/u
+	ll8Pu16O8o28TcxItUO4Mhxy0Gq6vfr5pqA+k3RpxpMSQusW47O3DnS+GSG+C3HWlg4d
+	v0UA==
+X-Gm-Message-State: AG10YORnzipiu9/VMRFqHTo6bB3tH31UwmpxVm3//MXi+9cyW8X01/pNkY15iHtj5ZCVMse9hDJFbWf5r2rCCjk3
+X-Received: by 10.31.180.85 with SMTP id d82mr16792954vkf.83.1455647023431;
+	Tue, 16 Feb 2016 10:23:43 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 16 Feb 2016 10:21:30 -0800 (PST)
-In-Reply-To: <1454086429-4373-8-git-send-email-eric.auger@linaro.org>
+Received: by 10.31.56.216 with HTTP; Tue, 16 Feb 2016 10:23:24 -0800 (PST)
+In-Reply-To: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
 References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
-	<1454086429-4373-8-git-send-email-eric.auger@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Feb 2016 18:21:30 +0000
-Message-ID: <CAFEAcA87ZXSHDE4v5udfWGH15xGGAFNQGBCzm2TcnFEP0LLutg@mail.gmail.com>
+Date: Tue, 16 Feb 2016 18:23:24 +0000
+Message-ID: <CAFEAcA-3Nw_Hca6Ub7pKCYDSVHesArQ=hkrnuxR-Ve8OHG8QKg@mail.gmail.com>
 To: Eric Auger <eric.auger@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22c
+X-Received-From: 2607:f8b0:400c:c05::235
 Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
 	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	Alexander Graf <agraf@suse.de>,
@@ -72,8 +71,7 @@ Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
 	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
-Subject: Re: [Qemu-arm] [RFC v2 7/8] hw: arm: virt: register reserved IOVA
-	region
+Subject: Re: [Qemu-arm] [RFC v2 0/8] KVM PCI/MSI passthrough with mach-virt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -87,61 +85,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BAqXQXdKpfNx
+X-TUID: H7rbkhpBKnQL
 
 On 29 January 2016 at 16:53, Eric Auger <eric.auger@linaro.org> wrote:
-> Registers a 16x64kB reserved iova region. Currently this iova
-> region is used by the host kernel to map host MSI controller frames
-> (GICv2m, GITS_TRANSLATER). The host kernel needs this iova window
-> since it cannot program the PCIe device with MSI frame physical
-> address (as opposed to x86) since the MSI write transactions go
-> through the IOMMU.
+> This series enables KVM PCI/MSI passthrough with mach-virt.
 >
-> The reserved region is mapped on the platform bus.
+> A new memory region type is introduced (reserved iova). On
+> vfio_listener_region_add this IOVA region is registered to the kernel with
+> VFIO_IOMMU_MAP_DMA (using the new VFIO_DMA_MAP_FLAG_MSI_RESERVED_IOVA flag).
+>
+> The host VFIO PCI driver then can use this IOVA window to map some host
+> physical addresses, accessed by passthrough'ed PCI devices, through the IOMMU.
+> The first goal is to map host MSI controller frames (GICv2M, GITS_TRANSLATER).
+>
+> mach-virt currently instantiates a 16x64kB reserved IOVA window. This
+> provisions for future usage. Most probably this exceeds MSI binding needs.
+> To avoid wasting guest PA, we now map the reserved region onto the
+> platform bus MMIO.
+>
+> The series includes Pranav/Tushar' series:
+> QEMU, [v2 0/2] Generic PCIe host bridge INTx determination for INTx routing
+> ((https://lists.nongnu.org/archive/html/qemu-devel/2015-04/msg04361.html))
+>
+> Those patches are not mandated for PCI/MSI passthrough to work but without
+> those, the following warning is observed and can puzzle the end-user:
+> "qemu-system-aarch64: PCI: Bug - unimplemented PCI INTx routing (gpex-pcihost)"
 
-I guess that keeps it neatly out of the way of everybody else :-)
-
-> Signed-off-by: Eric Auger <eric.auger@linaro.org>
->
-> ---
->
-> RFC v1 -> RFC v2:
-> - use the platform bus to map the reserved iova region
-> ---
->  hw/arm/virt.c | 19 ++++++++++++++-----
->  1 file changed, 14 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3839c68..4b2a891 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -805,7 +805,7 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
->  }
->
->  static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-> -                        bool use_highmem)
-> +                        bool use_highmem, MemoryRegion **reserved_reg)
->  {
->      hwaddr base_mmio = vbi->memmap[VIRT_PCIE_MMIO].base;
->      hwaddr size_mmio = vbi->memmap[VIRT_PCIE_MMIO].size;
-> @@ -920,10 +920,16 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
->      qemu_fdt_setprop_cell(vbi->fdt, nodename, "#interrupt-cells", 1);
->      create_pcie_irq_map(vbi, vbi->gic_phandle, irq, nodename);
->
-> +    /* initialize the reserved iova region for MSI binding (16 x 64kb) */
-> +    *reserved_reg = g_new0(MemoryRegion, 1);
-> +    memory_region_init_reserved_iova(*reserved_reg, OBJECT(dev),
-> +                                     "reserved-iova",
-> +                                     0x100000, &error_fatal);
-
-So the only reason this is here is because we need to have a pointer to
-the PCIe controller DeviceState, right? I think it would be better to
-make create_pcie() return the DeviceState* instead of NULL. Then you
-can either (a) pass the pcie controller pointer into create_platform_bus()
-and have that create and map the reserved iova region, or (b) have a
-separate function to create the reserved iova region. In any case I
-think it fits more naturally with the rest of the platform bus code
-rather than in the PCIe controller creation function.
+I've replied with comments about the parts I care about; I'm leaving
+the rest of the review to others (VFIO related, etc).
 
 thanks
 -- PMM

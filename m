@@ -1,64 +1,62 @@
-Received: by 10.25.208.211 with SMTP id h202csp1241591lfg;
-        Tue, 16 Feb 2016 03:16:52 -0800 (PST)
-X-Received: by 10.55.56.134 with SMTP id f128mr26228301qka.92.1455621412048;
-        Tue, 16 Feb 2016 03:16:52 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1241656lfg;
+        Tue, 16 Feb 2016 03:16:59 -0800 (PST)
+X-Received: by 10.140.25.161 with SMTP id 30mr13163367qgt.73.1455621419876;
+        Tue, 16 Feb 2016 03:16:59 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 69si40144262qgg.2.2016.02.16.03.16.51
+        by mx.google.com with ESMTPS id c191si40106035qka.29.2016.02.16.03.16.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Feb 2016 03:16:52 -0800 (PST)
+        Tue, 16 Feb 2016 03:16:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:44387 helo=lists.gnu.org)
+Received: from localhost ([::1]:44388 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aVdch-0006dR-Ad
-	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:16:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37255)
+	id 1aVdcp-0006rm-8s
+	for alex.bennee@linaro.org; Tue, 16 Feb 2016 06:16:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdXy-00070h-Bb
-	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:12:01 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXq-0006o5-SH
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aVdXu-0006q7-9l
-	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:58 -0500
-Received: from m12-12.163.com ([220.181.12.12]:35957)
+	(envelope-from <zxq_yx_007@163.com>) id 1aVdXn-0006m9-PS
+	for qemu-devel@nongnu.org; Tue, 16 Feb 2016 06:11:50 -0500
+Received: from m12-13.163.com ([220.181.12.13]:48303)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aVdXt-0006pC-V1; Tue, 16 Feb 2016 06:11:54 -0500
+	id 1aVdXm-0006l4-05; Tue, 16 Feb 2016 06:11:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=hybcemMKZJUSibcMPe
-	K+sEs/4DqHIWS6QV6WMv2Uw5c=; b=jQrQshQCjumWFGOBgl2kbkQki6QE1VF8zC
-	6wWMl3hgkknh1m7FFU8a57TqY7Be45nCMdEXV612GIWcd1KRRKEUVYcOEHYFwFZq
-	XxNKX1VwwMfjt0UZvjj6kdCPd1YfugUODQ3383L3FxC6/KdldotP/V/jhDINIbkU
-	A4dx7+7e4=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=pBW8K62/XgX/rCpb3b
+	peT3bOGmnCj1hpSlJuujjRNM4=; b=lDOYj5SC7oWwy1M3WNzZU9y8NiJwFEXNuN
+	H+8yoMI6BB9vw/w9jmfxlQ3iEZ9JgalgOYNwirB20iVqpbzA0FNDuBmVtUDUC19S
+	S25PhmbEAMOBvgTg4vVvda88vm46P+s/DqNpvtdK1pm8T8hQdfcn9FNPduFGmZvQ
+	t3ljm1RDE=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp8 (Coremail) with SMTP id DMCowABXn_PgA8NWODCxBQ--.25459S4;
-	Tue, 16 Feb 2016 19:11:33 +0800 (CST)
+	by smtp9 (Coremail) with SMTP id DcCowACHx6HMA8NWPNreBQ--.31323S2;
+	Tue, 16 Feb 2016 19:11:16 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 16 Feb 2016 19:10:23 +0800
-Message-Id: <1455621027-13927-3-git-send-email-zxq_yx_007@163.com>
+Date: Tue, 16 Feb 2016 19:09:32 +0800
+Message-Id: <1455620981-13868-1-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1455621027-13927-1-git-send-email-zxq_yx_007@163.com>
-References: <1455621027-13927-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DMCowABXn_PgA8NWODCxBQ--.25459S4
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Kr43XFWfJr4DKFy7Jw1xuFg_yoW8AF43pF
-	ZruF1qvF48Jrs5Z3yxKF1DWF1DGws7Ca4rGrn2y3WSk3W3Kr1rJF1kA3yayFW7trWruF45
-	Zry8JrWUAa18Jw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UVxRhUUUUU=
+X-CM-TRANSID: DcCowACHx6HMA8NWPNreBQ--.31323S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw17WF1xJrWUZw1Dur13CFg_yoW8CFyUpr
+	4fCF43Zr48A3y3Xw43CrsFqr15JF18JFy5Wwnxt34rAwnIyF15JF1UXF4rJFW7JFykZF13
+	ZFyrtr15Gr15XrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRGg4DUUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiTAYRxlSINZloDgAAsL
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOxQRxlXlR13mzwAAs7
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.12
+X-Received-From: 220.181.12.13
 Cc: peter.maydell@linaro.org, e.voevodin@samsung.com,
 	xiaoqiang zhao <zxq_yx_007@163.com>,
 	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
 	qemu-arm@nongnu.org, edgar.iglesias@gmail.com,
 	gxt@mprc.pku.edu.cn, afaerber@suse.de
-Subject: [Qemu-devel] [PATCH v3 12/16] hw/timer: QOM'ify pl031
+Subject: [Qemu-devel] [PATCH v3 00/16] QOM'ify hw/timer/*
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,64 +70,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JrSQ/t2c/4T/
+X-TUID: 3wQxvmLFEj0Y
 
-assign pl031_init to pl031_info.instance_init and drop the
-SysBusDeviceClass::init
+This patch series QOM'ify timer code under hw/timer directory.
+Main idea is to split the initfn's work, some to TypeInfo.instance_init
+and some is placed in DeviceClass::realize.
+Drop the use of SysBusDeviceClass::init if possible.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/timer/pl031.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+changes in v3: 
+* remove unnecessary OBJECT cast
+* refine some commit message
+* use DeviceClass::vmsd instead of vmstate_register to register
+  the VMState if possible
 
-diff --git a/hw/timer/pl031.c b/hw/timer/pl031.c
-index d99d18c..3ccb2cb 100644
---- a/hw/timer/pl031.c
-+++ b/hw/timer/pl031.c
-@@ -192,12 +192,13 @@ static const MemoryRegionOps pl031_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int pl031_init(SysBusDevice *dev)
-+static void pl031_init(Object *obj)
- {
--    PL031State *s = PL031(dev);
-+    PL031State *s = PL031(obj);
-+    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
-     struct tm tm;
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &pl031_ops, s, "pl031", 0x1000);
-+    memory_region_init_io(&s->iomem, obj, &pl031_ops, s, "pl031", 0x1000);
-     sysbus_init_mmio(dev, &s->iomem);
- 
-     sysbus_init_irq(dev, &s->irq);
-@@ -206,7 +207,6 @@ static int pl031_init(SysBusDevice *dev)
-         qemu_clock_get_ns(rtc_clock) / get_ticks_per_sec();
- 
-     s->timer = timer_new_ns(rtc_clock, pl031_interrupt, s);
--    return 0;
- }
- 
- static void pl031_pre_save(void *opaque)
-@@ -249,9 +249,7 @@ static const VMStateDescription vmstate_pl031 = {
- static void pl031_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = pl031_init;
-     dc->vmsd = &vmstate_pl031;
- }
- 
-@@ -259,6 +257,7 @@ static const TypeInfo pl031_info = {
-     .name          = TYPE_PL031,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(PL031State),
-+    .instance_init = pl031_init,
-     .class_init    = pl031_class_init,
- };
- 
+changes in v2: 
+fix a stupid typo (timmer->timer)
+
+xiaoqiang zhao (16):
+  hw/timer: QOM'ify arm_timer (pass 1)
+  hw/timer: QOM'ify arm_timer (pass 2)
+  hw/timer: QOM'ify etraxfs_timer
+  hw/timer: QOM'ify exynos4210_mct
+  hw/timer: QOM'ify exynos4210_pwm
+  hw/timer: QOM'ify exynos4210_rtc
+  hw/timer: QOM'ify grlib_gptimer
+  hw/timer: QOM'ify lm32_timer
+  hw/timer: QOM'ify m48txx_sysbus (pass 1)
+  hw/timer: QOM'ify m48txx_sysbus (pass 2)
+  hw/timer: QOM'ify milkymist_sysctl
+  hw/timer: QOM'ify pl031
+  hw/timer: QOM'ify puv3_ost
+  hw/timer: QOM'ify pxa2xx_timer
+  hw/timer: QOM'ify slavio_timer
+  hw/timer: QOM'ify tusb6010
+
+ hw/timer/arm_timer.c        | 42 ++++++++++++++++++++----------------------
+ hw/timer/etraxfs_timer.c    | 14 +++++++-------
+ hw/timer/exynos4210_mct.c   | 12 +++++-------
+ hw/timer/exynos4210_pwm.c   | 12 +++++-------
+ hw/timer/exynos4210_rtc.c   | 12 +++++-------
+ hw/timer/grlib_gptimer.c    | 30 ++++++++++++++++++------------
+ hw/timer/lm32_timer.c       | 19 ++++++++++++-------
+ hw/timer/m48t59.c           | 39 ++++++++++++++++++++-------------------
+ hw/timer/milkymist-sysctl.c | 21 +++++++++++++--------
+ hw/timer/pl031.c            | 11 +++++------
+ hw/timer/puv3_ost.c         | 18 +++++-------------
+ hw/timer/pxa2xx_timer.c     | 36 +++++++++++++++++++++---------------
+ hw/timer/slavio_timer.c     | 12 +++++-------
+ hw/timer/tusb6010.c         | 13 ++++++-------
+ 14 files changed, 147 insertions(+), 144 deletions(-)
+
 -- 
 2.1.4
 

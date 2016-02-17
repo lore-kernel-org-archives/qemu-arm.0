@@ -1,20 +1,20 @@
-Received: by 10.25.208.211 with SMTP id h202csp264765lfg;
-        Wed, 17 Feb 2016 13:21:26 -0800 (PST)
-X-Received: by 10.28.14.4 with SMTP id 4mr6171020wmo.100.1455744086165;
-        Wed, 17 Feb 2016 13:21:26 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp269690lfg;
+        Wed, 17 Feb 2016 13:35:27 -0800 (PST)
+X-Received: by 10.28.186.11 with SMTP id k11mr5582307wmf.79.1455744927259;
+        Wed, 17 Feb 2016 13:35:27 -0800 (PST)
 Return-Path: <vilanova@ac.upc.edu>
-Received: from roura.ac.upc.es (roura.ac.upc.edu. [147.83.33.10])
-        by mx.google.com with ESMTP id k6si43470451wmg.24.2016.02.17.13.21.25;
-        Wed, 17 Feb 2016 13:21:26 -0800 (PST)
+Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
+        by mx.google.com with ESMTP id ip7si4765581wjb.98.2016.02.17.13.35.26;
+        Wed, 17 Feb 2016 13:35:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
 Received: from gw-2.ac.upc.es (gw-2.ac.upc.es [147.83.30.8])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u1HLKvOQ007054;
-	Wed, 17 Feb 2016 22:20:57 +0100
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u1HLZ0UJ007529;
+	Wed, 17 Feb 2016 22:35:00 +0100
 Received: from localhost (unknown [84.88.51.85])
-	by gw-2.ac.upc.es (Postfix) with ESMTPSA id 9513B902;
-	Wed, 17 Feb 2016 22:20:57 +0100 (CET)
+	by gw-2.ac.upc.es (Postfix) with ESMTPSA id 6AF14902;
+	Wed, 17 Feb 2016 22:35:00 +0100 (CET)
 From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -33,17 +33,17 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
         Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
         qemu-arm@nongnu.org (open list:ARM),
         qemu-ppc@nongnu.org (open list:PowerPC)
-Subject: [PATCHv73/4] tcg: Add type for vCPU pointers
-Date: Wed, 17 Feb 2016 22:20:57 +0100
-Message-Id: <145574405679.3171.7388399483069215387.stgit@localhost>
+Subject: [PATCH v7 3/4] tcg: Add type for vCPU pointers
+Date: Wed, 17 Feb 2016 22:35:00 +0100
+Message-Id: <145574489991.6637.18171202198669010731.stgit@localhost>
 X-Mailer: git-send-email 2.7.0
-In-Reply-To: <145574403964.3171.7174641938727952404.stgit@localhost>
-References: <145574403964.3171.7174641938727952404.stgit@localhost>
+In-Reply-To: <145574488321.6637.3923094874117473534.stgit@localhost>
+References: <145574488321.6637.3923094874117473534.stgit@localhost>
 User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: YDrVtfKIP+mf
+X-TUID: eA26TTF3DOKP
 
 Adds the 'TCGv_env' type for pointers to 'CPUArchState' objects. The
 tracing infrastructure later needs to differentiate between regular

@@ -1,83 +1,88 @@
-Received: by 10.25.208.211 with SMTP id h202csp737225lfg;
-        Thu, 18 Feb 2016 09:46:44 -0800 (PST)
-X-Received: by 10.140.93.166 with SMTP id d35mr10211917qge.29.1455817604342;
-        Thu, 18 Feb 2016 09:46:44 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp750825lfg;
+        Thu, 18 Feb 2016 10:16:16 -0800 (PST)
+X-Received: by 10.31.0.215 with SMTP id 206mr7605295vka.22.1455819376043;
+        Thu, 18 Feb 2016 10:16:16 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 79si9037148qhp.80.2016.02.18.09.46.44
+        by mx.google.com with ESMTPS id s131si5853799vke.181.2016.02.18.10.16.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 09:46:44 -0800 (PST)
+        Thu, 18 Feb 2016 10:16:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43779 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:44096 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWSf5-0004OJ-Rr
-	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:46:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36848)
+	id 1aWT7f-000121-EB
+	for alex.bennee@linaro.org; Thu, 18 Feb 2016 13:16:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55633)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSd4-0000bv-Rx
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:44:40 -0500
+	(envelope-from <eric.auger@linaro.org>) id 1aWT7c-00011D-2o
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 13:16:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSd1-00023F-Jz
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:44:38 -0500
-Received: from mail-lf0-x22a.google.com ([2a00:1450:4010:c07::22a]:35606)
+	(envelope-from <eric.auger@linaro.org>) id 1aWT7Y-0002F8-Ss
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 13:16:12 -0500
+Received: from mail-wm0-x233.google.com ([2a00:1450:400c:c09::233]:37993)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aWSd1-00022u-CH; Thu, 18 Feb 2016 12:44:35 -0500
-Received: by mail-lf0-x22a.google.com with SMTP id l143so37797603lfe.2;
-	Thu, 18 Feb 2016 09:44:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	(envelope-from <eric.auger@linaro.org>) id 1aWT7Y-0002EW-L8
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 13:16:08 -0500
+Received: by mail-wm0-x233.google.com with SMTP id a4so37815061wme.1
+	for <qemu-arm@nongnu.org>; Thu, 18 Feb 2016 10:16:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=42E60irDMxo8PPQ9CanoTJCoHPqBqSPzs3V5FURvoUY=;
-	b=m4uByL7VZ4iHwDO/BTJwwc41um5NCe/JCrqkf8iuhml77cCiv4TGpK7rp9XmTb4J4V
-	+1fvtAn0/worsWv4IgMwNk0okJXijLJQewlmd7dMYZlYwiSi4Sd+iKWAWc0jOZ3cabsY
-	FmrBdQixAj9/ZKfKE0uTwBHRnTyHlx60Y6lOhW6ZdkBDNhdru0QM2RHRjBLXYeC6vnfO
-	ElhrnWjKSFE/wZt6ZsMVxjyqeyrn+F6Nng3hjSKVDl5FEQuuNufmc+cLmlayuszbPaj7
-	gZXTKq7ReyyQ2LIyAIepJUygVv1G8O7U8alzSDVMvYOnlKEcxgJZbTaDnyyCxgGgzCgh
-	O5lQ==
+	bh=DoKd6SFOyQ1rfnOGeO3ZUwYp0CfZNTMhGngmqLdzvTU=;
+	b=SOA+Ne3mU24XzJf2kpGHV1yI5W5tTGsHzNFFq9z+LzmY+hj5hLKn8CXLGAJ9DFXFmK
+	oU4pXXmWiqKjbQJUE8lTCGUlJG+iljlTcaEdgO/q6wl9hQ7Kb/lObYJ5mVR6rjnVgs4s
+	ZwiCbNhKGPgHBtfoGMFxpBAinqKp5DLBVjZLQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-type
 	:content-transfer-encoding;
-	bh=42E60irDMxo8PPQ9CanoTJCoHPqBqSPzs3V5FURvoUY=;
-	b=c1U7xpGCvEFp8NJLyzKm1Ej0cPPg1mHR7WoYSHL4LO7fp3zRLzl3767pbhloAIimlk
-	YAVeT80LrmEN0kfleHkkbKoX/GjD+JOjWWHYsrujhoF7xPu3Z8IqOQ+i27i7vzrqny53
-	9M7cd9LKuToqhoT0nUuYOINUoYZXyk6iMux2VYa7dBrLiQwBNiE68B4Pn8uIBE5kmNr1
-	tPSJ4crOsXMhKScF4ntL0Pfb+sr2W0xVIa9oSETKraYAWF8kv7h7gEeuq7WrI/33d90U
-	Io1VeCZcE1MopZZU9sagr0z3fqsLEsnN22YYhr+OW3cxGIT1iHk9bFyN66wjW/++9LIw
-	JdBg==
-X-Gm-Message-State: AG10YOQQvCTfPP+eezPUAQT2AI5YQxeZAsNkbw8LpkWFGtMnbpuVyDuwrIEbdBQV+bNgAQ==
-X-Received: by 10.25.1.65 with SMTP id 62mr3712318lfb.89.1455817474588;
-	Thu, 18 Feb 2016 09:44:34 -0800 (PST)
-Received: from [10.30.10.50] ([213.243.91.10])
-	by smtp.googlemail.com with ESMTPSA id
-	88sm1057993lfr.44.2016.02.18.09.44.33
+	bh=DoKd6SFOyQ1rfnOGeO3ZUwYp0CfZNTMhGngmqLdzvTU=;
+	b=lguH8Gb7c9hVAzXoVFqsK5yV9BeUAwAFrRafB5PXuKa5G0Pl+PmEi8c/3F8v6DKgU/
+	0r7sPGvNToDPR5KU3rvHmjB29g2gyEtsSI13r0yPmifl0atQyT3YIXMoD6gEcbESED5D
+	IDJu3MA+pTALNFScMAWMpAdiOas9hDZ/VAaa/3PKBZA2LlXq7wZzji+9aoFbAv39CHd5
+	7C/3OIID2D2dycMLbfbnlVv4IBm+UYjoo30pkseDJgpaRY0elC+PDBDqpWFsHWLcG36B
+	W2uT/e5cwahrlWv161UogvKCAZuuNm6F1EKP+R3vyg/Xa/DMtSqB4DEd9TuTZoaK9e38
+	8C8Q==
+X-Gm-Message-State: AG10YOTrfecYvF6UincCGG90JUvNg8eJ0rfArKCx17XKyCDNbPBXXc/+HuXhyLA1hTrcEZxx
+X-Received: by 10.28.12.80 with SMTP id 77mr4774340wmm.19.1455819368006;
+	Thu, 18 Feb 2016 10:16:08 -0800 (PST)
+Received: from [192.168.2.25] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr.
+	[80.11.198.90]) by smtp.googlemail.com with ESMTPSA id
+	74sm4139027wmn.17.2016.02.18.10.16.05
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 18 Feb 2016 09:44:33 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
-	<1455556977-3644-12-git-send-email-peter.maydell@linaro.org>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56C60300.5000405@gmail.com>
-Date: Thu, 18 Feb 2016 20:44:32 +0300
+	Thu, 18 Feb 2016 10:16:06 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1454086429-4373-1-git-send-email-eric.auger@linaro.org>
+	<1454086429-4373-4-git-send-email-eric.auger@linaro.org>
+	<CAFEAcA_ZQu7Lecf4UTG+br9yfVr64m_51CtHqGry0K-DnQO+ZA@mail.gmail.com>
+From: Eric Auger <eric.auger@linaro.org>
+Message-ID: <56C60A49.3000800@linaro.org>
+Date: Thu, 18 Feb 2016 19:15:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1455556977-3644-12-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <CAFEAcA_ZQu7Lecf4UTG+br9yfVr64m_51CtHqGry0K-DnQO+ZA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::22a
-Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 11/11] target-arm: Make Monitor->NS PL1 mode
- changes illegal if HCR.TGE is 1
+X-Received-From: 2a00:1450:400c:c09::233
+Cc: eric.auger@st.com, Pranav Sawargaonkar <pranav.sawargaonkar@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>,
+	Bharat Bhushan <Bharat.Bhushan@freescale.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Subject: Re: [Qemu-arm] [RFC v2 3/8] Generic PCIe host bridge INTx
+ determination for INTx routing
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,51 +96,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 03aobRJqBHes
+X-TUID: bHP/kBlYtEQ8
 
-On 15.02.2016 20:22, Peter Maydell wrote:
-> If HCR.TGE is 1 then mode changes via CPS and MSR from Monitor to
-> NonSecure PL1 modes are illegal mode changes. Implement this check
-> in bad_mode_switch().
->
-> (We don't currently implement HCR.TGE, but this is the only missing
-> check from the v8 ARM ARM G1.9.3 and so it's worth adding now; the
-> rest of the HCR.TGE checks can be added later as necessary.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi Peter,
+On 02/16/2016 07:14 PM, Peter Maydell wrote:
+> On 29 January 2016 at 16:53, Eric Auger <eric.auger@linaro.org> wrote:
+>> This patch stores information about assigned legacy interrupt numbers in
+>> GPEX host structure.
+>> This is used during GPEX INTx number determination from a pin during
+>> INTx routing.
+>>
+>> Signed-off-by: Pranavkumar Sawargaonkar <address@hidden>
+>> Signed-off-by: Tushar Jagad <address@hidden>
+>> ---
+>>  hw/arm/virt.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 15658f4..3839c68 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -826,6 +826,7 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+>>      char *nodename;
+>>      int i;
+>>      PCIHostState *pci;
+>> +    GPEXHost *s;
+>>
+>>      dev = qdev_create(NULL, TYPE_GPEX_HOST);
+>>      qdev_init_nofail(dev);
+>> @@ -861,8 +862,11 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
+>>      /* Map IO port space */
+>>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
+>>
+>> +    s = GPEX_HOST(dev);
+>> +
+>>      for (i = 0; i < GPEX_NUM_IRQS; i++) {
+>>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
+>> +        s->irq_num[i] = irq + i;
+>>      }
+> 
+> I don't think that the board code should be prodding stuff in the GPEXHost
+> struct like this -- device structs are supposed to be private to the
+> device implementation. If you need the information in the device then
+> you need to come up with a better API for this.
 
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Sure, Thanks
 
-> ---
->  target-arm/helper.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index e1af9d5..93a0b63 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -5182,6 +5182,7 @@ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
->  
->      switch (mode) {
->      case ARM_CPU_MODE_USR:
-> +        return 0;
->      case ARM_CPU_MODE_SYS:
->      case ARM_CPU_MODE_SVC:
->      case ARM_CPU_MODE_ABT:
-> @@ -5191,6 +5192,15 @@ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
->          /* Note that we don't implement the IMPDEF NSACR.RFR which in v7
->           * allows FIQ mode to be Secure-only. (In v8 this doesn't exist.)
->           */
-> +        /* If HCR.TGE is set then changes from Monitor to NS PL1 via MSR
-> +         * and CPS are treated as illegal mode changes.
-> +         */
-> +        if (write_type == CPSRWriteByInstr &&
-> +            (env->cp15.hcr_el2 & HCR_TGE) &&
-> +            (env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_MON &&
-> +            !arm_is_secure_below_el3(env)) {
-> +            return 1;
-> +        }
->          return 0;
->      case ARM_CPU_MODE_HYP:
->          return !arm_feature(env, ARM_FEATURE_EL2)
+Eric
+> 
+> thanks
+> -- PMM
+> 
 

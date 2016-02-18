@@ -1,50 +1,83 @@
-Received: by 10.25.208.211 with SMTP id h202csp712704lfg;
-        Thu, 18 Feb 2016 08:56:29 -0800 (PST)
-X-Received: by 10.140.85.19 with SMTP id m19mr9984356qgd.106.1455814589574;
-        Thu, 18 Feb 2016 08:56:29 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp735226lfg;
+        Thu, 18 Feb 2016 09:42:05 -0800 (PST)
+X-Received: by 10.55.81.87 with SMTP id f84mr10330207qkb.10.1455817325066;
+        Thu, 18 Feb 2016 09:42:05 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i109si53777342qgf.26.2016.02.18.08.56.29
+        by mx.google.com with ESMTPS id 83si9024291qhz.40.2016.02.18.09.42.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 08:56:29 -0800 (PST)
+        Thu, 18 Feb 2016 09:42:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43113 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43708 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWRsT-0001Q8-4X
-	for alex.bennee@linaro.org; Thu, 18 Feb 2016 11:56:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35563)
+	id 1aWSaa-0004CZ-Ja
+	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:42:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35545)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aWRsP-0001MJ-QK
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 11:56:27 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSaX-0004CI-5C
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aWRsM-0001VM-Ia
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 11:56:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39216)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSaS-0000tW-6H
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:01 -0500
+Received: from mail-lf0-x230.google.com ([2a00:1450:4010:c07::230]:36085)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aWRsM-0001UY-5d; Thu, 18 Feb 2016 11:56:22 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 9FCE7C0005D6;
-	Thu, 18 Feb 2016 16:56:21 +0000 (UTC)
-Received: from apm-mustang-ev3-33.khw.lab.eng.bos.redhat.com
-	(apm-mustang-ev3-33.khw.lab.eng.bos.redhat.com [10.16.184.127])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1IGuK47000760; Thu, 18 Feb 2016 11:56:21 -0500
-From: Wei Huang <wei@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 18 Feb 2016 11:56:20 -0500
-Message-Id: <1455814580-17699-1-git-send-email-wei@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: [Qemu-arm] [PATCH 1/1] ARM: PL061: Checking register r/w accesses
-	to reserved area
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aWSaR-0000sr-Pe; Thu, 18 Feb 2016 12:41:56 -0500
+Received: by mail-lf0-x230.google.com with SMTP id 78so37631766lfy.3;
+	Thu, 18 Feb 2016 09:41:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-type:content-transfer-encoding;
+	bh=u+5kjdVYrMRxF0kI6VgoSHTxw2FA7kfuBLMS+s6CCbg=;
+	b=YbiLTwICibr5B3qbcQ62gyTVTKvXlANJnqVBHcJvytcXLcpw3RDI+jQ3mUTjzrUbAF
+	XEiW9I/BR5x145QeYP6pJ9yMlBamai/n1UylIlBX0d/PWbd8N26fbxRxxsOGLFuYpTDo
+	cL/zEzNoSD+Bc5NngLdFVIEMUOtl3GXlNNl4vVWC8HfbZOBCw9VBE2EeiGJBfwWb94VV
+	K0AQCmlzcngsyYvqcsNMUYpYr616zV+Dbva1ua39sUkY/uudTZeJzi964JEGZ71/fDtP
+	vvd9+5ume+7gNBi5MNqBcAgsOCjmFDYyxpk6+RbngekzcBJ0agLmt4uG4GlHXhPIp+Tb
+	rDww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-type
+	:content-transfer-encoding;
+	bh=u+5kjdVYrMRxF0kI6VgoSHTxw2FA7kfuBLMS+s6CCbg=;
+	b=W6DmSyaGLPxeh5IQF1f2kdJHZBJoSpSUMTC1ciLRAW3szH0v2LymPu3kWNfiqzS/5l
+	K2hwXlib0F/2nSwbV00T+Pj74fVPXC1c+8KnpYy9hFoBATAVukuu6zechkarNCJe2X4c
+	0wSpyhj3NUycCH2sivEgmiwnMU1ei4KO/u+67LFs9Fd6Gn+grYYg/+dIh4yRpNDRV/eR
+	YLnWXwoaE/DOsD2nlqCG+q4V+2RMvRMaL9/lKw5hmyeXqAd1nnt9i6hbg7qyCDpC2Eov
+	FLZ2ovNPhnAoQEi8KhEBMdyvvtGOpQkFqh3A00QE7Y/6ewef3kOhsxaVTkV+2qKJqJAR
+	hSww==
+X-Gm-Message-State: AG10YOQl9gQs77LigZ7vEcQh8+UtdzMonTSUXhpR5PeEFoza6Pcwgi+HcRE889Rm0eCkBQ==
+X-Received: by 10.25.155.72 with SMTP id d69mr3146013lfe.134.1455817314612;
+	Thu, 18 Feb 2016 09:41:54 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	b5sm1083280lbc.14.2016.02.18.09.41.52
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 18 Feb 2016 09:41:53 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
+	<1455556977-3644-2-git-send-email-peter.maydell@linaro.org>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56C6025F.4060005@gmail.com>
+Date: Thu, 18 Feb 2016 20:41:51 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
+MIME-Version: 1.0
+In-Reply-To: <1455556977-3644-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::230
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 01/11] target-arm: Give CPSR setting on
+ 32-bit exception return its own helper
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -58,108 +91,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 75LHA4Ucg035
+X-TUID: Kh8H+bx4FUkN
 
-pl061.c emulates two GPIO devices, ARM PL061 and TI Stellaris, which
-share the same read/write functions (pl061_read and pl061_write).
-However PL061 and Stellaris have different GPIO register definitions
-and pl061_read()/pl061_write() doesn't check it. This patch enforces
-checking on offset, preventing R/W into the reserved memory area.
+On 15.02.2016 20:22, Peter Maydell wrote:
+> The rules for setting the CPSR on a 32-bit exception return are
+> subtly different from those for setting the CPSR via an instruction
+> like MSR or CPS. (In particular, in Hyp mode changing the mode bits
+> is not valid via MSR or CPS.) Split the exception-return case into
+> its own helper for setting CPSR, so we can eventually handle them
+> differently in the helper function.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Wei Huang <wei@redhat.com>
----
- hw/gpio/pl061.c | 30 ++++++++++++++++++++++--------
- 1 file changed, 22 insertions(+), 8 deletions(-)
+Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
-diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-index e5a696e..013bd03 100644
---- a/hw/gpio/pl061.c
-+++ b/hw/gpio/pl061.c
-@@ -61,6 +61,7 @@ typedef struct PL061State {
-     qemu_irq irq;
-     qemu_irq out[8];
-     const unsigned char *id;
-+    uint32_t rsvd_start; /* reserved area: [rsvd_start, 0xfcc] */
- } PL061State;
- 
- static const VMStateDescription vmstate_pl061 = {
-@@ -154,12 +155,15 @@ static uint64_t pl061_read(void *opaque, hwaddr offset,
- {
-     PL061State *s = (PL061State *)opaque;
- 
--    if (offset >= 0xfd0 && offset < 0x1000) {
--        return s->id[(offset - 0xfd0) >> 2];
--    }
-     if (offset < 0x400) {
-         return s->data & (offset >> 2);
-     }
-+    if (offset >= s->rsvd_start && offset <= 0xfcc) {
-+        goto err_out;
-+    }
-+    if (offset >= 0xfd0 && offset < 0x1000) {
-+        return s->id[(offset - 0xfd0) >> 2];
-+    }
-     switch (offset) {
-     case 0x400: /* Direction */
-         return s->dir;
-@@ -200,10 +204,12 @@ static uint64_t pl061_read(void *opaque, hwaddr offset,
-     case 0x528: /* Analog mode select */
-         return s->amsel;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "pl061_read: Bad offset %x\n", (int)offset);
--        return 0;
-+        break;
-     }
-+err_out:
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "pl061_read: Bad offset %x\n", (int)offset);
-+    return 0;
- }
- 
- static void pl061_write(void *opaque, hwaddr offset,
-@@ -218,6 +224,9 @@ static void pl061_write(void *opaque, hwaddr offset,
-         pl061_update(s);
-         return;
-     }
-+    if (offset >= s->rsvd_start) {
-+        goto err_out;
-+    }
-     switch (offset) {
-     case 0x400: /* Direction */
-         s->dir = value & 0xff;
-@@ -276,10 +285,13 @@ static void pl061_write(void *opaque, hwaddr offset,
-         s->amsel = value & 0xff;
-         break;
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "pl061_write: Bad offset %x\n", (int)offset);
-+        goto err_out;
-     }
-     pl061_update(s);
-+    return;
-+err_out:
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "pl061_write: Bad offset %x\n", (int)offset);
- }
- 
- static void pl061_reset(PL061State *s)
-@@ -327,6 +339,7 @@ static void pl061_luminary_init(Object *obj)
-     PL061State *s = PL061(obj);
- 
-     s->id = pl061_id_luminary;
-+    s->rsvd_start = 0x52c;
- }
- 
- static void pl061_init(Object *obj)
-@@ -334,6 +347,7 @@ static void pl061_init(Object *obj)
-     PL061State *s = PL061(obj);
- 
-     s->id = pl061_id;
-+    s->rsvd_start = 0x424;
- }
- 
- static void pl061_class_init(ObjectClass *klass, void *data)
--- 
-1.8.3.1
+> ---
+>  target-arm/helper.h    | 1 +
+>  target-arm/op_helper.c | 6 ++++++
+>  target-arm/translate.c | 6 +++---
+>  3 files changed, 10 insertions(+), 3 deletions(-)
+>
+> diff --git a/target-arm/helper.h b/target-arm/helper.h
+> index c98e9ce..ea13202 100644
+> --- a/target-arm/helper.h
+> +++ b/target-arm/helper.h
+> @@ -57,6 +57,7 @@ DEF_HELPER_2(pre_smc, void, env, i32)
+>  DEF_HELPER_1(check_breakpoints, void, env)
+>  
+>  DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+> +DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+>  DEF_HELPER_1(cpsr_read, i32, env)
+>  
+>  DEF_HELPER_3(v7m_msr, void, env, i32, i32)
+> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+> index 538887c..e3ddd5a 100644
+> --- a/target-arm/op_helper.c
+> +++ b/target-arm/op_helper.c
+> @@ -425,6 +425,12 @@ void HELPER(cpsr_write)(CPUARMState *env, uint32_t val, uint32_t mask)
+>      cpsr_write(env, val, mask);
+>  }
+>  
+> +/* Write the CPSR for a 32-bit exception return */
+> +void HELPER(cpsr_write_eret)(CPUARMState *env, uint32_t val)
+> +{
+> +    cpsr_write(env, val, CPSR_ERET_MASK);
+> +}
+> +
+>  /* Access to user mode registers from privileged modes.  */
+>  uint32_t HELPER(get_user_reg)(CPUARMState *env, uint32_t regno)
+>  {
+> diff --git a/target-arm/translate.c b/target-arm/translate.c
+> index e69145d..413f7de 100644
+> --- a/target-arm/translate.c
+> +++ b/target-arm/translate.c
+> @@ -4094,7 +4094,7 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+>      TCGv_i32 tmp;
+>      store_reg(s, 15, pc);
+>      tmp = load_cpu_field(spsr);
+> -    gen_set_cpsr(tmp, CPSR_ERET_MASK);
+> +    gen_helper_cpsr_write_eret(cpu_env, tmp);
+>      tcg_temp_free_i32(tmp);
+>      s->is_jmp = DISAS_JUMP;
+>  }
+> @@ -4102,7 +4102,7 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+>  /* Generate a v6 exception return.  Marks both values as dead.  */
+>  static void gen_rfe(DisasContext *s, TCGv_i32 pc, TCGv_i32 cpsr)
+>  {
+> -    gen_set_cpsr(cpsr, CPSR_ERET_MASK);
+> +    gen_helper_cpsr_write_eret(cpu_env, cpsr);
+>      tcg_temp_free_i32(cpsr);
+>      store_reg(s, 15, pc);
+>      s->is_jmp = DISAS_JUMP;
+> @@ -9094,7 +9094,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                  if (exc_return) {
+>                      /* Restore CPSR from SPSR.  */
+>                      tmp = load_cpu_field(spsr);
+> -                    gen_set_cpsr(tmp, CPSR_ERET_MASK);
+> +                    gen_helper_cpsr_write_eret(cpu_env, tmp);
+>                      tcg_temp_free_i32(tmp);
+>                      s->is_jmp = DISAS_JUMP;
+>                  }
 

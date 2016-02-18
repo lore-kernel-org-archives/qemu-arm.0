@@ -1,83 +1,83 @@
-Received: by 10.25.208.211 with SMTP id h202csp735368lfg;
-        Thu, 18 Feb 2016 09:42:23 -0800 (PST)
-X-Received: by 10.140.175.136 with SMTP id v130mr5830207qhv.74.1455817342924;
-        Thu, 18 Feb 2016 09:42:22 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp735788lfg;
+        Thu, 18 Feb 2016 09:43:27 -0800 (PST)
+X-Received: by 10.140.195.203 with SMTP id q194mr11026452qha.45.1455817407111;
+        Thu, 18 Feb 2016 09:43:27 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l6si982441qge.28.2016.02.18.09.42.22
+        by mx.google.com with ESMTPS id s95si53977111qgs.25.2016.02.18.09.43.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 09:42:22 -0800 (PST)
+        Thu, 18 Feb 2016 09:43:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43712 helo=lists.gnu.org)
+Received: from localhost ([::1]:43723 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWSas-0004X0-Cz
-	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:42:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35730)
+	id 1aWSbu-0006ew-HO
+	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:43:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35853)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSap-0004Rq-0C
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:21 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSb4-0004v8-Ln
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSaj-000165-Lf
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:18 -0500
-Received: from mail-lb0-x236.google.com ([2a00:1450:4010:c04::236]:32862)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSb3-0001Ez-2K
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:42:34 -0500
+Received: from mail-lb0-x22c.google.com ([2a00:1450:4010:c04::22c]:32943)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aWSaj-00015b-7Y; Thu, 18 Feb 2016 12:42:13 -0500
-Received: by mail-lb0-x236.google.com with SMTP id x4so33376977lbm.0;
-	Thu, 18 Feb 2016 09:42:13 -0800 (PST)
+	id 1aWSb2-0001Es-LB; Thu, 18 Feb 2016 12:42:32 -0500
+Received: by mail-lb0-x22c.google.com with SMTP id x4so33381777lbm.0;
+	Thu, 18 Feb 2016 09:42:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=SjaIW9uYyNX/cROHdTK6kJFOiS52Rfl/l4+MyM3C6hs=;
-	b=C/uOoq3JBhuaEnfSR9y6Qj5yuO2WCLqJ9mG4mDgVMfCnERoJmPhZzHKICaGiGKE9x3
-	D0uYwXBJHiBdrh4E2QGNZQ1lEN28er5pXgLrrDLV69uxQjZqHLcU5Of9yyiCODNwPdvW
-	X1P9sEH/WCR/6E/gTzYzwOtfrP3umqJJL/EoI773hfrwkjKT00E78kRHuo/UwdE8EQzw
-	faIRVF2vs8lzvSQvcDhbWjiyPHreX83GjoIcwJXYOmnN9pzJv3hronkjokbMUgD7vWx4
-	YFZyPBfX4HraGVvUOlYoBTcsUiWRudpureGrl5/ZvjtFHxsuKvKI1Q1Y4NWRB0UAq/B5
-	iLuA==
+	bh=ee46UTVp/tduZdMuY548s8r34ugM6BKc1EvbqeWVqoU=;
+	b=VvVAaS7crVuppLyBsgGaCtcOJO80FCIMsjwZe1q/UX6p3Y80X+TC7GYSmtDO8W5r3u
+	La+F6NNHrA1wtVpkYycb6CBDDvYGVdnTfLKT7zKpCi8rcb6xGAkiv5Xe13FxvNw690/i
+	BMohPLxYYDyYFWHE4QpqPPXHz92+QWnBjX7ARmy/1Nma6dPyaWoM0HV+fn63KQ6v1IG/
+	6/A+4le9Z3MeQQRkLyZALJsAeYyB4qEUL733EHGMKoFxurtaWYhk1QtU38UkqEDUEyto
+	8gJTzoHG2zBXLzSYc7NqPcD61tZ0I94JpLLIMhLPzkSZwuGVQwrJsjhLbCzMbVIabndq
+	MLyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-type
 	:content-transfer-encoding;
-	bh=SjaIW9uYyNX/cROHdTK6kJFOiS52Rfl/l4+MyM3C6hs=;
-	b=Sl7j2B8F0oMqU8+K8B3Gr1+i5nn0I8SeVj14udBEW+b772XIzvSeAzN/l+CC4gv9ZC
-	M7VaP0xOdJq/Y1xPh3zY8Cay7CAC2JxtBLdO6MPoLGdxJCu2+NMfa/cfnErucXOk/Oo2
-	+NL6ICDP/0j1FSSlRq1ebKoWnl6PqY9Rjk5DeuFZh6zFzqz2ZDTBdz/igGXEFCevAOJj
-	t0vgcqRxgMDk3hH8Mw7jy5V28parTFLxB3/tCH37SVNNcdQc/Fs6R7HhUQ4upo7GQ+Do
-	43kTEwZHZdpg57Z7f9Ph7coOyOZOZlQD2hCIzYet/d9BD4BVlemyGzD7iEfWCs8I0T8J
-	XK3Q==
-X-Gm-Message-State: AG10YOQ1neyq2+Yc/Kxk+3OGRD9R7+OFbcQlGT7lXMzJ10L0325vPEcPAhbj0olRarbhYA==
-X-Received: by 10.112.30.144 with SMTP id s16mr3705626lbh.112.1455817332425;
-	Thu, 18 Feb 2016 09:42:12 -0800 (PST)
+	bh=ee46UTVp/tduZdMuY548s8r34ugM6BKc1EvbqeWVqoU=;
+	b=IsIJ28VA0fMCRy6uFH8JLAUR+l9eAEx2L103P5sxEuMk/cqASRYBVIDm+7n03oU3NT
+	P22el11wkxeGnSKVeVt3DjA8xm4HLCoHZQgxhT099qtY3GkQ4a9837MsbuyfYYTCV9rN
+	TYOAAl+fui5Cck9cByjjeKiHTbDUvorLDs6JA/GlrTCXjq7yUW2JwyM8tl6OeFg7EnHi
+	oiUdcseYLks1WEZjmcCUosV3OJDjgZ7vhmbfYz8CfcAU9JLSlFB8QQMEuKICcrY7Q209
+	CaOcj4o9K7lMz9IvVdfXclR2qj35QZghB5rXsz+9jyH1B9zK4vSrOmyymfFSDFcnmTEN
+	mQNg==
+X-Gm-Message-State: AG10YOS12MS/soMC/4JaA2Q0PSTZHIHdcqWJrVZv4s97L3zEfGY778XaPi1b99UY6EpJ1w==
+X-Received: by 10.112.140.169 with SMTP id rh9mr3257863lbb.69.1455817351819;
+	Thu, 18 Feb 2016 09:42:31 -0800 (PST)
 Received: from [10.30.10.50] ([213.243.91.10])
 	by smtp.googlemail.com with ESMTPSA id
-	aa9sm1066142lbc.16.2016.02.18.09.42.11
+	rp10sm1089209lbb.13.2016.02.18.09.42.30
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 18 Feb 2016 09:42:11 -0800 (PST)
+	Thu, 18 Feb 2016 09:42:30 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
-	<1455556977-3644-3-git-send-email-peter.maydell@linaro.org>
+	<1455556977-3644-4-git-send-email-peter.maydell@linaro.org>
 From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56C60272.4020500@gmail.com>
-Date: Thu, 18 Feb 2016 20:42:10 +0300
+Message-ID: <56C60285.2080007@gmail.com>
+Date: Thu, 18 Feb 2016 20:42:29 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1455556977-3644-3-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1455556977-3644-4-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::236
+X-Received-From: 2a00:1450:4010:c04::22c
 Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 02/11] target-arm: Add write_type argument to
-	cpsr_write()
+Subject: Re: [Qemu-arm] [PATCH 03/11] target-arm: Raw CPSR writes should
+ skip checks and bank switching
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,213 +91,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Nvr643UreCQo
+X-TUID: Qlco7lX3G+Iz
 
 On 15.02.2016 20:22, Peter Maydell wrote:
-> Add an argument to cpsr_write() to indicate what kind of CPSR
-> write is being requested, since the exact behaviour should
-> differ for the different cases.
+> Raw CPSR writes should skip the architectural checks for whether
+> we're allowed to set the A or F bits and should also not do
+> the switching of register banks if the mode changes. Handle
+> this inside cpsr_write(), which allows us to drop the "manually
+> set the mode bits to avoid the bank switch" code from all the
+> callsites which are using CPSRWriteRaw.
+>
+> This fixes a bug in 32-bit KVM handling where we had forgotten
+> the "manually set the mode bits" part and could thus potentially
+> trash the register state if the mode from the last exit to userspace
+> differed from the mode on this exit.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > ---
->  linux-user/arm/nwfpe/fpa11.h |  2 +-
->  linux-user/main.c            |  6 +++---
->  linux-user/signal.c          |  4 ++--
->  target-arm/cpu.h             | 13 +++++++++++--
->  target-arm/gdbstub.c         |  2 +-
->  target-arm/helper.c          |  3 ++-
->  target-arm/kvm32.c           |  2 +-
->  target-arm/kvm64.c           |  2 +-
->  target-arm/machine.c         |  2 +-
->  target-arm/op_helper.c       |  6 +++---
->  10 files changed, 26 insertions(+), 16 deletions(-)
+>  target-arm/helper.c    | 5 +++--
+>  target-arm/kvm64.c     | 1 -
+>  target-arm/machine.c   | 2 --
+>  target-arm/op_helper.c | 5 ++++-
+>  4 files changed, 7 insertions(+), 6 deletions(-)
 >
-> diff --git a/linux-user/arm/nwfpe/fpa11.h b/linux-user/arm/nwfpe/fpa11.h
-> index bb9ac65..faa6b00 100644
-> --- a/linux-user/arm/nwfpe/fpa11.h
-> +++ b/linux-user/arm/nwfpe/fpa11.h
-> @@ -108,7 +108,7 @@ static inline void writeRegister(unsigned int x, unsigned int y)
->  
->  static inline void writeConditionCodes(unsigned int x)
->  {
-> -        cpsr_write(user_registers,x,CPSR_NZCV);
-> +    cpsr_write(user_registers, x, CPSR_NZCV, CPSRWriteByInstr);
->  }
->  
->  #define ARM_REG_PC 15
-> diff --git a/linux-user/main.c b/linux-user/main.c
-> index e719a2d..1269470 100644
-> --- a/linux-user/main.c
-> +++ b/linux-user/main.c
-> @@ -513,7 +513,7 @@ static void arm_kernel_cmpxchg64_helper(CPUARMState *env)
->          env->regs[0] = -1;
->          cpsr &= ~CPSR_C;
->      }
-> -    cpsr_write(env, cpsr, CPSR_C);
-> +    cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
->      end_exclusive();
->      return;
->  
-> @@ -562,7 +562,7 @@ do_kernel_trap(CPUARMState *env)
->              env->regs[0] = -1;
->              cpsr &= ~CPSR_C;
->          }
-> -        cpsr_write(env, cpsr, CPSR_C);
-> +        cpsr_write(env, cpsr, CPSR_C, CPSRWriteByInstr);
->          end_exclusive();
->          break;
->      case 0xffff0fe0: /* __kernel_get_tls */
-> @@ -4446,7 +4446,7 @@ int main(int argc, char **argv, char **envp)
->  #elif defined(TARGET_ARM)
->      {
->          int i;
-> -        cpsr_write(env, regs->uregs[16], 0xffffffff);
-> +        cpsr_write(env, regs->uregs[16], 0xffffffff, CPSRWriteByInstr);
->          for(i = 0; i < 16; i++) {
->              env->regs[i] = regs->uregs[i];
->          }
-> diff --git a/linux-user/signal.c b/linux-user/signal.c
-> index 327c032..82f81c7 100644
-> --- a/linux-user/signal.c
-> +++ b/linux-user/signal.c
-> @@ -1611,7 +1611,7 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
->  	env->regs[13] = frame_addr;
->  	env->regs[14] = retcode;
->  	env->regs[15] = handler & (thumb ? ~1 : ~3);
-> -	cpsr_write(env, cpsr, 0xffffffff);
-> +        cpsr_write(env, cpsr, 0xffffffff, CPSRWriteByInstr);
->  }
->  
->  static abi_ulong *setup_sigframe_v2_vfp(abi_ulong *regspace, CPUARMState *env)
-> @@ -1843,7 +1843,7 @@ restore_sigcontext(CPUARMState *env, struct target_sigcontext *sc)
->      __get_user(env->regs[15], &sc->arm_pc);
->  #ifdef TARGET_CONFIG_CPU_32
->      __get_user(cpsr, &sc->arm_cpsr);
-> -        cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC);
-> +    cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
->  #endif
->  
->  	err |= !valid_user_regs(env);
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 1623821..e72e33b 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -719,8 +719,17 @@ static inline void pstate_write(CPUARMState *env, uint32_t val)
->  
->  /* Return the current CPSR value.  */
->  uint32_t cpsr_read(CPUARMState *env);
-> -/* Set the CPSR.  Note that some bits of mask must be all-set or all-clear.  */
-> -void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask);
-> +
-> +typedef enum CPSRWriteType {
-> +    CPSRWriteByInstr = 0,         /* from guest MSR or CPS */
-> +    CPSRWriteExceptionReturn = 1, /* from guest exception return insn */
-> +    CPSRWriteRaw = 2,             /* trust values, do not switch reg banks */
-> +    CPSRWriteByGDBStub = 3,       /* from the GDB stub */
-> +} CPSRWriteType;
-> +
-> +/* Set the CPSR.  Note that some bits of mask must be all-set or all-clear.*/
-> +void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
-> +                CPSRWriteType write_type);
->  
->  /* Return the current xPSR value.  */
->  static inline uint32_t xpsr_read(CPUARMState *env)
-> diff --git a/target-arm/gdbstub.c b/target-arm/gdbstub.c
-> index 08b91a4..3ba9aad 100644
-> --- a/target-arm/gdbstub.c
-> +++ b/target-arm/gdbstub.c
-> @@ -94,7 +94,7 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
->          return 4;
->      case 25:
->          /* CPSR */
-> -        cpsr_write(env, tmp, 0xffffffff);
-> +        cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
->          return 4;
->      }
->      /* Unknown register.  */
 > diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index a420a2a..828822b 100644
+> index 828822b..d1919bb 100644
 > --- a/target-arm/helper.c
 > +++ b/target-arm/helper.c
-> @@ -5199,7 +5199,8 @@ uint32_t cpsr_read(CPUARMState *env)
->          | (env->GE << 16) | (env->daif & CPSR_AIF);
->  }
+> @@ -5234,7 +5234,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+>       * In a V8 implementation, it is permitted for privileged software to
+>       * change the CPSR A/F bits regardless of the SCR.AW/FW bits.
+>       */
+> -    if (!arm_feature(env, ARM_FEATURE_V8) &&
+> +    if (write_type != CPSRWriteRaw && !arm_feature(env, ARM_FEATURE_V8) &&
+>          arm_feature(env, ARM_FEATURE_EL3) &&
+>          !arm_feature(env, ARM_FEATURE_EL2) &&
+>          !arm_is_secure(env)) {
+> @@ -5281,7 +5281,8 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+>      env->daif &= ~(CPSR_AIF & mask);
+>      env->daif |= val & CPSR_AIF & mask;
 >  
-> -void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
-> +void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
-> +                CPSRWriteType write_type)
->  {
->      uint32_t changed_daif;
->  
-> diff --git a/target-arm/kvm32.c b/target-arm/kvm32.c
-> index ea01932..d44a7f9 100644
-> --- a/target-arm/kvm32.c
-> +++ b/target-arm/kvm32.c
-> @@ -428,7 +428,7 @@ int kvm_arch_get_registers(CPUState *cs)
->      if (ret) {
->          return ret;
->      }
-> -    cpsr_write(env, cpsr, 0xffffffff);
-> +    cpsr_write(env, cpsr, 0xffffffff, CPSRWriteRaw);
->  
->      /* Make sure the current mode regs are properly set */
->      mode = env->uncached_cpsr & CPSR_M;
+> -    if ((env->uncached_cpsr ^ val) & mask & CPSR_M) {
+> +    if (write_type != CPSRWriteRaw &&
+> +        ((env->uncached_cpsr ^ val) & mask & CPSR_M)) {
+>          if (bad_mode_switch(env, val & CPSR_M)) {
+>              /* Attempt to switch to an invalid mode: this is UNPREDICTABLE.
+>               * We choose to ignore the attempt and leave the CPSR M field
 > diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-> index 0f1b4d6..08c2c81 100644
+> index 08c2c81..e8527bf 100644
 > --- a/target-arm/kvm64.c
 > +++ b/target-arm/kvm64.c
-> @@ -723,7 +723,7 @@ int kvm_arch_get_registers(CPUState *cs)
+> @@ -722,7 +722,6 @@ int kvm_arch_get_registers(CPUState *cs)
+>      if (is_a64(env)) {
 >          pstate_write(env, val);
 >      } else {
->          env->uncached_cpsr = val & CPSR_M;
-> -        cpsr_write(env, val, 0xffffffff);
-> +        cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
+> -        env->uncached_cpsr = val & CPSR_M;
+>          cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
 >      }
 >  
->      /* KVM puts SP_EL0 in regs.sp and SP_EL1 in regs.sp_el1. On the
 > diff --git a/target-arm/machine.c b/target-arm/machine.c
-> index ed1925a..0fc7df0 100644
+> index 0fc7df0..03a73d9 100644
 > --- a/target-arm/machine.c
 > +++ b/target-arm/machine.c
-> @@ -175,7 +175,7 @@ static int get_cpsr(QEMUFile *f, void *opaque, size_t size)
+> @@ -173,8 +173,6 @@ static int get_cpsr(QEMUFile *f, void *opaque, size_t size)
+>          return 0;
+>      }
 >  
->      /* Avoid mode switch when restoring CPSR */
->      env->uncached_cpsr = val & CPSR_M;
-> -    cpsr_write(env, val, 0xffffffff);
-> +    cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
+> -    /* Avoid mode switch when restoring CPSR */
+> -    env->uncached_cpsr = val & CPSR_M;
+>      cpsr_write(env, val, 0xffffffff, CPSRWriteRaw);
 >      return 0;
 >  }
->  
 > diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-> index e3ddd5a..543d33a 100644
+> index 543d33a..4881e34 100644
 > --- a/target-arm/op_helper.c
 > +++ b/target-arm/op_helper.c
-> @@ -422,13 +422,13 @@ uint32_t HELPER(cpsr_read)(CPUARMState *env)
+> @@ -779,7 +779,10 @@ void HELPER(exception_return)(CPUARMState *env)
 >  
->  void HELPER(cpsr_write)(CPUARMState *env, uint32_t val, uint32_t mask)
->  {
-> -    cpsr_write(env, val, mask);
-> +    cpsr_write(env, val, mask, CPSRWriteByInstr);
->  }
->  
->  /* Write the CPSR for a 32-bit exception return */
->  void HELPER(cpsr_write_eret)(CPUARMState *env, uint32_t val)
->  {
-> -    cpsr_write(env, val, CPSR_ERET_MASK);
-> +    cpsr_write(env, val, CPSR_ERET_MASK, CPSRWriteExceptionReturn);
->  }
->  
->  /* Access to user mode registers from privileged modes.  */
-> @@ -780,7 +780,7 @@ void HELPER(exception_return)(CPUARMState *env)
 >      if (!return_to_aa64) {
 >          env->aarch64 = 0;
->          env->uncached_cpsr = spsr & CPSR_M;
-> -        cpsr_write(env, spsr, ~0);
-> +        cpsr_write(env, spsr, ~0, CPSRWriteRaw);
+> -        env->uncached_cpsr = spsr & CPSR_M;
+> +        /* We do a raw CPSR write because aarch64_sync_64_to_32()
+> +         * will sort the register banks out for us, and we've already
+> +         * caught all the bad-mode cases in el_from_spsr().
+> +         */
+>          cpsr_write(env, spsr, ~0, CPSRWriteRaw);
 >          if (!arm_singlestep_active(env)) {
 >              env->uncached_cpsr &= ~PSTATE_SS;
->          }
 

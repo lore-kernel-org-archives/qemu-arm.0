@@ -1,83 +1,83 @@
-Received: by 10.25.208.211 with SMTP id h202csp736287lfg;
-        Thu, 18 Feb 2016 09:44:40 -0800 (PST)
-X-Received: by 10.55.22.211 with SMTP id 80mr10256103qkw.63.1455817480873;
-        Thu, 18 Feb 2016 09:44:40 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp736324lfg;
+        Thu, 18 Feb 2016 09:44:45 -0800 (PST)
+X-Received: by 10.140.202.212 with SMTP id x203mr11183136qha.19.1455817485334;
+        Thu, 18 Feb 2016 09:44:45 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w206si9019360qhc.124.2016.02.18.09.44.40
+        by mx.google.com with ESMTPS id w82si9078591qka.3.2016.02.18.09.44.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Feb 2016 09:44:40 -0800 (PST)
+        Thu, 18 Feb 2016 09:44:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43739 helo=lists.gnu.org)
+Received: from localhost ([::1]:43742 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWSd6-0000dl-CJ
-	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:44:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35974)
+	id 1aWSdA-0000la-QP
+	for alex.bennee@linaro.org; Thu, 18 Feb 2016 12:44:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36231)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSbd-000642-Ab
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:43:10 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSc6-00072f-An
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:43:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWSba-0001Io-32
-	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:43:09 -0500
-Received: from mail-lf0-x231.google.com ([2a00:1450:4010:c07::231]:35172)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aWSc2-0001WJ-J6
+	for qemu-arm@nongnu.org; Thu, 18 Feb 2016 12:43:37 -0500
+Received: from mail-lf0-x22d.google.com ([2a00:1450:4010:c07::22d]:34378)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aWSbZ-0001Ie-RD; Thu, 18 Feb 2016 12:43:06 -0500
-Received: by mail-lf0-x231.google.com with SMTP id l143so37770240lfe.2;
-	Thu, 18 Feb 2016 09:43:05 -0800 (PST)
+	id 1aWSc2-0001W0-AW; Thu, 18 Feb 2016 12:43:34 -0500
+Received: by mail-lf0-x22d.google.com with SMTP id j78so37735304lfb.1;
+	Thu, 18 Feb 2016 09:43:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=++a+itmG5JQpScJvxdLHah6VFc3WOwOr4HX5ZeDxoBA=;
-	b=GABVaOqKBNC5VzymXTLYZmimHpyYv3FfNGiRpkzlaZ/3vpbuV9WPsT+PpOK74lWdVd
-	gO+Hmj3lCWLF2x3umIrQ4aSSCpegiD9+dphEcv3vALrK+F2Tpct9pO3kccQNtTgL8d8w
-	8lHSEdOmS8Yx2OujSs/U4sTkot9ITPYVhpRTjnXsNTUJIX8fnO/hAthzylvdGCUrFSUU
-	zFbQz5VG//1bJM2x5qcQ0PBIDRqtgyyWc64pEq1woWGTAf/XTxfBYAWdBCILF//CLm02
-	H5CJFloOW9Uhk3OSughpiJc8N/pAQCpXL3pV9P6GjqnQ30nZJs0Qzcs4JutGdUGPFMt4
-	6DGw==
+	bh=YWPWCm+2fr7odBcfeBtzM9Ysv3mc+lkty8KGO41HRi4=;
+	b=cd3V8SxmtyeSnWz1CdgFkeh5my+V4Bz465rEdI3mnEP5xzHxcCdl3Sui9KuhZeORfK
+	KnIqXvYBQsYZNmaRAqF2Icr6pdtEAUl/bomJLJJM4MWDJFlsBDVVfkAZH3dmGpHPcGlc
+	Rmo6RHDDHs73R6U5u4GDt4TM3TmJ70Dk2B3BBRP3PHCP6dneZMd/AurW9U+RUYrymQ7B
+	AmbQwvoooCI5KiVCEniWNP8MK8RxR12lElTvUw2jJToz7On31M5/nNDYJciTyzGFHW3G
+	YOvBlYDplwAj7fK3wcZoPz0Ec9HVaCk/UBAINhw1maST6adIM0SASKy2sqC6VDt0SAyL
+	jF0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-type
 	:content-transfer-encoding;
-	bh=++a+itmG5JQpScJvxdLHah6VFc3WOwOr4HX5ZeDxoBA=;
-	b=JJho7rLe4lynQqxH7Ll3vD5popaLF4oxuj18p2y71eSuKzPjLZJlGhQa0SIMiy7Ngd
-	3DNbbVBRXVMd6M49DUcRa5JJE1Wx9T6S3CC6kohfA6kgVsh1QBCoCu5NR+Ato3HZvMyf
-	FgBHr9/zxqPWaz2VqUSq7bD3Seilkr3YeAfECos2OA8hm3p5qoycGvQFjZBdHNRH0RrO
-	X94poTra3iyBfBUYlWnfIjuQXWlh78DwQ5UeLGUQ3w/jyuCfDFFqelntVEh0U7FF4Cjv
-	LhTVr/gVElDyogF9riHjSdN0etI9BlOgV7gl+PJ8GbduAI8uqYPhtJEg5MoffJXTMcqJ
-	iJYA==
-X-Gm-Message-State: AG10YOTGQaxpNinRdBR50W5cS7JKS0Ln6IoYXKZWdCXq5cdiZCneTvIqTCUVD60SEZVDKw==
-X-Received: by 10.25.154.14 with SMTP id c14mr3874600lfe.35.1455817385022;
-	Thu, 18 Feb 2016 09:43:05 -0800 (PST)
+	bh=YWPWCm+2fr7odBcfeBtzM9Ysv3mc+lkty8KGO41HRi4=;
+	b=YzKoZSDy5PqHBQatzAd58V2IB0wX8amspexK4EoqPgeh6A+Agq3aixeN1Y6ZL1sjjT
+	mPBfHVVqjxCHxL06Fv3R+jfDe6xuaJ4yn9aFOGt35hdcPQV9AY/NEz4EEPrOczduhW7v
+	YYC8qKH0w8XQmA2tOUCflv6VRhESSBG7JyDJPcAJyzTP9fczJNoFLIUCx/23IAyGi/g+
+	yk4+1DWTcrDOWKlMBas8xW4rUT2574xY1o/KKwLvuNsZ/OPLSgfdH1wPxJdIOw1YS6Q1
+	TINVkcZfPvjo1jGCAmTz93HAFNPQb54Yjj8kp+5e0y9J0rm4pWze0bSji0lU+pDU+wq4
+	ardA==
+X-Gm-Message-State: AG10YOS24ZpZYCIH1+7mSUVTyRVhb1yH0WviNIgrU1F3Gf7xEuL269Vc7mgdXaSNIfeUFw==
+X-Received: by 10.25.81.195 with SMTP id f186mr3807715lfb.69.1455817413548;
+	Thu, 18 Feb 2016 09:43:33 -0800 (PST)
 Received: from [10.30.10.50] ([213.243.91.10])
 	by smtp.googlemail.com with ESMTPSA id
-	m8sm1065750lfe.32.2016.02.18.09.43.03
+	rk1sm1090868lbb.0.2016.02.18.09.43.32
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 18 Feb 2016 09:43:03 -0800 (PST)
+	Thu, 18 Feb 2016 09:43:32 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 References: <1455556977-3644-1-git-send-email-peter.maydell@linaro.org>
-	<1455556977-3644-6-git-send-email-peter.maydell@linaro.org>
+	<1455556977-3644-8-git-send-email-peter.maydell@linaro.org>
 From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56C602A6.6070009@gmail.com>
-Date: Thu, 18 Feb 2016 20:43:02 +0300
+Message-ID: <56C602C3.2080808@gmail.com>
+Date: Thu, 18 Feb 2016 20:43:31 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <1455556977-3644-6-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1455556977-3644-8-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::231
+X-Received-From: 2a00:1450:4010:c07::22d
 Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH 05/11] target-arm: In cpsr_write() ignore
- mode switches from User mode
+Subject: Re: [Qemu-arm] [PATCH 07/11] target-arm: Add Hyp mode checks to
+ bad_mode_switch()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,35 +91,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NM+N+RN/nY8O
+X-TUID: FxoiJy0Buehy
 
 On 15.02.2016 20:22, Peter Maydell wrote:
-> The only case where we can attempt a cpsr_write() mode switch from
-> User is from the gdbstub; all other cases are handled in the
-> calling code (notably translate.c). Architecturally attempts to
-> alter the mode bits from user mode are simply ignored (and not
-> treated as a bad mode switch, which in v8 sets CPSR.IL). Make
-> mode switches from User ignored in cpsr_write() as well, for
-> consistency.
+> We don't actually support Hyp mode yet, but add the correct
+> checks for it to the bad_mode_switch() function for completeness.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
 
 > ---
->  target-arm/helper.c | 1 +
->  1 file changed, 1 insertion(+)
+>  target-arm/helper.c | 3 +++
+>  1 file changed, 3 insertions(+)
 >
 > diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index d1919bb..9998a25 100644
+> index 37b5439..4074b97 100644
 > --- a/target-arm/helper.c
 > +++ b/target-arm/helper.c
-> @@ -5282,6 +5282,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
->      env->daif |= val & CPSR_AIF & mask;
->  
->      if (write_type != CPSRWriteRaw &&
-> +        (env->uncached_cpsr & CPSR_M) != CPSR_USER &&
->          ((env->uncached_cpsr ^ val) & mask & CPSR_M)) {
->          if (bad_mode_switch(env, val & CPSR_M)) {
->              /* Attempt to switch to an invalid mode: this is UNPREDICTABLE.
+> @@ -5184,6 +5184,9 @@ static int bad_mode_switch(CPUARMState *env, int mode)
+>           * allows FIQ mode to be Secure-only. (In v8 this doesn't exist.)
+>           */
+>          return 0;
+> +    case ARM_CPU_MODE_HYP:
+> +        return !arm_feature(env, ARM_FEATURE_EL2)
+> +            || arm_current_el(env) < 2 || arm_is_secure(env);
+>      case ARM_CPU_MODE_MON:
+>          return !arm_is_secure(env);
+>      default:
 

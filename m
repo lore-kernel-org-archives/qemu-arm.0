@@ -1,45 +1,45 @@
-Received: by 10.25.208.211 with SMTP id h202csp1150172lfg;
+Received: by 10.25.208.211 with SMTP id h202csp1150194lfg;
+        Fri, 19 Feb 2016 05:17:30 -0800 (PST)
+X-Received: by 10.194.83.42 with SMTP id n10mr13603892wjy.20.1455887846921;
         Fri, 19 Feb 2016 05:17:26 -0800 (PST)
-X-Received: by 10.28.2.68 with SMTP id 65mr8770157wmc.85.1455887845073;
-        Fri, 19 Feb 2016 05:17:25 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x236.google.com (mail-wm0-x236.google.com. [2a00:1450:400c:c09::236])
-        by mx.google.com with ESMTPS id 202si12684824wmy.77.2016.02.19.05.17.24
+Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
+        by mx.google.com with ESMTPS id t8si12712603wmd.71.2016.02.19.05.17.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 05:17:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) client-ip=2a00:1450:400c:c09::236;
+        Fri, 19 Feb 2016 05:17:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::236 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x236.google.com with SMTP id b205so67784502wmb.1
-        for <alex.bennee@linaro.org>; Fri, 19 Feb 2016 05:17:24 -0800 (PST)
+Received: by mail-wm0-x22b.google.com with SMTP id b205so67785689wmb.1
+        for <alex.bennee@linaro.org>; Fri, 19 Feb 2016 05:17:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=9JcvusmsSYmq2iVVrVRlwyEMNqlP92VK7fOHUPeayJM=;
-        b=EZplH5zgF28sMHailHScdBIiyk9OHukgTwYclc8DC9UqziyxAWWFtVAejy5o6br9jB
-         O0U1uQ1tkzb+ikaUyMv1OUIg7sCGYZCWc4lmqkGbU2XZ98bFghFn+hyHcNruFRKCNXSR
-         /HU0cVbK5VVDYFIUcMB0OnhEDIGII/DWndjqc=
+        bh=nCGpWMO+RxaZWDcx6az1WPZV9jeCREeWD6RuFVE9+ug=;
+        b=LERkxQm8TZvbtFxLbhX5FtoVf2pSTSKJHcyV94zZNLGJKShc4opsJvWyxnnZUvpMl4
+         y0S8zIERwdU66P///BdKH/qN8UAmhDKbWLIk3HNNXauzpPysGptFKLZZALtdbiyBCS32
+         67A8arTKskWUSQGwFuRCpYzGxxIUa+0MDN0Fo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=9JcvusmsSYmq2iVVrVRlwyEMNqlP92VK7fOHUPeayJM=;
-        b=P/Xf7fpU4VA7+4kvEPiDQaqPVE2Kt6RTJQC0xHK6mnvQUBAUP/ASwvEGsmaOKkbKHm
-         zBvYgW0tWBrofsRTE+31+ZG8QYxw423pUJZ6P6EufxjZRjgGzBayt/bqmm7qQ9MpzlPH
-         QuruawmBnKuaSjS8AWVWw0DmAkzL+0wXygFO3VABifqaLkJgTmagDTUrl/m+Q+rGO8qZ
-         40h5OklQuiW82YIf0cajdTyg15vGxDFLFMu554vcx/sWyiwxk+gLAUQMl/TpLC3PzUDw
-         GRfnVOVmrjnrBSoK8OFjHrKKBkTCU7qN1yjgIU3XtspTaGQ6saJ1icsWdwKTwOSI2BNd
-         u8sA==
-X-Gm-Message-State: AG10YOQyEAupvDPoqEIqsdK7RwPVWayGr+ttcGiRHk6yOthEw+N3mi8ZH0ggIo4lopg+PeKV8BE=
-X-Received: by 10.28.127.150 with SMTP id a144mr8631947wmd.25.1455887844790;
-        Fri, 19 Feb 2016 05:17:24 -0800 (PST)
+        bh=nCGpWMO+RxaZWDcx6az1WPZV9jeCREeWD6RuFVE9+ug=;
+        b=d5Zm0FSt4XtsXEerPjcaZpA6M7egWgInNb40UH8gq0fQuDPdt03RNMmT3L5M2Ch0UG
+         KM4yZx0363YnHh/hNoJ6IuqnnfDLlElKaTfdGBA2XiTM+KvrkmG3RZ4OzEqOAlgto2Q7
+         ocUNHeRLExLQF5pWWidcZSZK5t8RxKnVuIgn4cdxKEcorHymWYRC6G7AP0GgzdVPgJWt
+         w+KQBxlUp1OQ1U0zD3+f3DZhiEHYzFZVoaIORLhrkvuqrRw//buyf4NfR/gnJlwlDG1B
+         xsQkO3B4JvrAdCmw2pw0HbSOdXNRfklbPBLit7L21WbPc4wjTD+KsTyaiHbnAYH/wrjp
+         Jrug==
+X-Gm-Message-State: AG10YORmVCQVlPlx1Z2eA+Y3JGZ2QrAB3388YF9QS6PF9i4vyJithV5TT1oJw5R1jPhIewefyzU=
+X-Received: by 10.28.45.71 with SMTP id t68mr9872630wmt.46.1455887846719;
+        Fri, 19 Feb 2016 05:17:26 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
 Received: from midway01-04-00.lavalab ([81.128.185.50])
-        by smtp.gmail.com with ESMTPSA id bg1sm11229846wjc.27.2016.02.19.05.17.22
+        by smtp.gmail.com with ESMTPSA id bg1sm11229846wjc.27.2016.02.19.05.17.24
         (version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 05:17:22 -0800 (PST)
+        Fri, 19 Feb 2016 05:17:25 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com,
 	eric.auger@linaro.org,
@@ -57,187 +57,142 @@ Cc: christoffer.dall@linaro.org,
 	pbonzini@redhat.com,
 	b.reynal@virtualopensystems.com,
 	thomas.lendacky@amd.com
-Subject: [PATCH v8 2/8] device_tree: introduce load_device_tree_from_sysfs
-Date: Fri, 19 Feb 2016 13:17:07 +0000
-Message-Id: <1455887833-7306-3-git-send-email-eric.auger@linaro.org>
+Subject: [PATCH v8 3/8] device_tree: introduce qemu_fdt_node_path
+Date: Fri, 19 Feb 2016 13:17:08 +0000
+Message-Id: <1455887833-7306-4-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.8.3.2
 In-Reply-To: <1455887833-7306-1-git-send-email-eric.auger@linaro.org>
 References: <1455887833-7306-1-git-send-email-eric.auger@linaro.org>
-X-TUID: vNkG3d/E8z4H
+X-TUID: oT4UT9kfB7r8
 
-This function returns the host device tree blob from sysfs
-(/proc/device-tree). It uses a recursive function inspired
-from dtc read_fstree.
+This new helper routine returns a NULL terminated array of
+node paths matching a node name and a compat string.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
+v7 -> v8:
+- don't use g_slist_free_full anymore (glib 2.28)
+
 v6 -> v7:
-- rebase on d38ea87ac54af64ef611de434d07c12dc0399216:
-  "all: Clean up includes"
 - add Peter's R-b
 
 v5 -> v6:
-- fix some spelling mistakes
-- error_report + exit replaced by error_setg
-- const char *parent_node;
-- use g_strdup_printf instead of g_strjoin
-- add a doc comment for load_device_tree_from_sysfs
+- in case of error, free the resources and return NULL
+- update the doc comment
+
+v4 -> v5:
+- support the case where several nodes exist, ie.
+  return an array of node paths. Also add Error **
+  parameter
+
 v1 -> v2:
-- do not implement/expose read_fstree and load_device_tree_from_sysfs
-  if CONFIG_LINUX is not defined (lstat is not implemeted in mingw)
-- correct indentation in read_fstree
-- use /proc/device-tree symlink instead of /sys/firmware/devicetree/base
-  path (kernel.org/doc/Documentation/ABI/testing/sysfs-firmware-ofw)
-- use g_file_get_contents in read_fstree
-- introduce SYSFS_DT_BASEDIR macro and use strlen
-- exit on error in load_device_tree_from_sysfs
-- user error_setg
+- move doc comment in header file
+- do not use a fixed size buffer
+- break on errors in while loop
+- use strcmp instead of strncmp
 
 RFC -> v1:
-- remove runtime dependency on dtc binary and introduce read_fstree
+- improve error handling according to Alex' comments
 ---
- device_tree.c                | 100 +++++++++++++++++++++++++++++++++++++++++++
- include/sysemu/device_tree.h |   8 ++++
- 2 files changed, 108 insertions(+)
+ device_tree.c                | 54 ++++++++++++++++++++++++++++++++++++++++++++
+ include/sysemu/device_tree.h | 18 +++++++++++++++
+ 2 files changed, 72 insertions(+)
 
 diff --git a/device_tree.c b/device_tree.c
-index b1ad836..9e77c69 100644
+index 9e77c69..b29a433 100644
 --- a/device_tree.c
 +++ b/device_tree.c
-@@ -13,6 +13,10 @@
- 
- #include "qemu/osdep.h"
- 
-+#ifdef CONFIG_LINUX
-+#include <dirent.h>
-+#endif
-+
- #include "qemu-common.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
-@@ -112,6 +116,102 @@ fail:
-     return NULL;
+@@ -226,6 +226,60 @@ static int findnode_nofail(void *fdt, const char *node_path)
+     return offset;
  }
  
-+#ifdef CONFIG_LINUX
-+
-+#define SYSFS_DT_BASEDIR "/proc/device-tree"
-+
-+/**
-+ * read_fstree: this function is inspired from dtc read_fstree
-+ * @fdt: preallocated fdt blob buffer, to be populated
-+ * @dirname: directory to scan under SYSFS_DT_BASEDIR
-+ * the search is recursive and the tree is searched down to the
-+ * leaves (property files).
-+ *
-+ * the function asserts in case of error
-+ */
-+static void read_fstree(void *fdt, const char *dirname)
++char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
++                          Error **errp)
 +{
-+    DIR *d;
-+    struct dirent *de;
-+    struct stat st;
-+    const char *root_dir = SYSFS_DT_BASEDIR;
-+    const char *parent_node;
++    int offset, len, ret;
++    const char *iter_name;
++    unsigned int path_len = 16, n = 0;
++    GSList *path_list = NULL, *iter;
++    char **path_array;
 +
-+    if (strstr(dirname, root_dir) != dirname) {
-+        error_setg(&error_fatal, "%s: %s must be searched within %s",
-+                   __func__, dirname, root_dir);
-+    }
-+    parent_node = &dirname[strlen(SYSFS_DT_BASEDIR)];
++    offset = fdt_node_offset_by_compatible(fdt, -1, compat);
 +
-+    d = opendir(dirname);
-+    if (!d) {
-+        error_setg(&error_fatal, "%s cannot open %s", __func__, dirname);
-+    }
-+
-+    while ((de = readdir(d)) != NULL) {
-+        char *tmpnam;
-+
-+        if (!g_strcmp0(de->d_name, ".")
-+            || !g_strcmp0(de->d_name, "..")) {
-+            continue;
++    while (offset >= 0) {
++        iter_name = fdt_get_name(fdt, offset, &len);
++        if (!iter_name) {
++            offset = len;
++            break;
 +        }
++        if (!strcmp(iter_name, name)) {
++            char *path;
 +
-+        tmpnam = g_strdup_printf("%s/%s", dirname, de->d_name);
-+
-+        if (lstat(tmpnam, &st) < 0) {
-+            error_setg(&error_fatal, "%s cannot lstat %s", __func__, tmpnam);
-+        }
-+
-+        if (S_ISREG(st.st_mode)) {
-+            gchar *val;
-+            gsize len;
-+
-+            if (!g_file_get_contents(tmpnam, &val, &len, NULL)) {
-+                error_setg(&error_fatal, "%s not able to extract info from %s",
-+                           __func__, tmpnam);
++            path = g_malloc(path_len);
++            while ((ret = fdt_get_path(fdt, offset, path, path_len))
++                  == -FDT_ERR_NOSPACE) {
++                path_len += 16;
++                path = g_realloc(path, path_len);
 +            }
-+
-+            if (strlen(parent_node) > 0) {
-+                qemu_fdt_setprop(fdt, parent_node,
-+                                 de->d_name, val, len);
-+            } else {
-+                qemu_fdt_setprop(fdt, "/", de->d_name, val, len);
-+            }
-+            g_free(val);
-+        } else if (S_ISDIR(st.st_mode)) {
-+            char *node_name;
-+
-+            node_name = g_strdup_printf("%s/%s",
-+                                        parent_node, de->d_name);
-+            qemu_fdt_add_subnode(fdt, node_name);
-+            g_free(node_name);
-+            read_fstree(fdt, tmpnam);
++            path_list = g_slist_prepend(path_list, path);
++            n++;
 +        }
-+
-+        g_free(tmpnam);
++        offset = fdt_node_offset_by_compatible(fdt, offset, compat);
 +    }
 +
-+    closedir(d);
++    if (offset < 0 && offset != -FDT_ERR_NOTFOUND) {
++        error_setg(errp, "%s: abort parsing dt for %s/%s: %s",
++                   __func__, name, compat, fdt_strerror(offset));
++        for (iter = path_list; iter; iter = iter->next) {
++            g_free(iter->data);
++        }
++        g_slist_free(path_list);
++        return NULL;
++    }
++
++    path_array = g_new(char *, n + 1);
++    path_array[n--] = NULL;
++
++    for (iter = path_list; iter; iter = iter->next) {
++        path_array[n--] = iter->data;
++    }
++
++    g_slist_free(path_list);
++
++    return path_array;
 +}
 +
-+/* load_device_tree_from_sysfs: extract the dt blob from host sysfs */
-+void *load_device_tree_from_sysfs(void)
-+{
-+    void *host_fdt;
-+    int host_fdt_size;
-+
-+    host_fdt = create_device_tree(&host_fdt_size);
-+    read_fstree(host_fdt, SYSFS_DT_BASEDIR);
-+    if (fdt_check_header(host_fdt)) {
-+        error_setg(&error_fatal,
-+                   "%s host device tree extracted into memory is invalid",
-+                   __func__);
-+    }
-+    return host_fdt;
-+}
-+
-+#endif /* CONFIG_LINUX */
-+
- static int findnode_nofail(void *fdt, const char *node_path)
+ int qemu_fdt_setprop(void *fdt, const char *node_path,
+                      const char *property, const void *val, int size)
  {
-     int offset;
 diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index 359e143..62093ba 100644
+index 62093ba..552df21 100644
 --- a/include/sysemu/device_tree.h
 +++ b/include/sysemu/device_tree.h
-@@ -16,6 +16,14 @@
+@@ -25,6 +25,24 @@ void *load_device_tree(const char *filename_path, int *sizep);
+ void *load_device_tree_from_sysfs(void);
+ #endif
  
- void *create_device_tree(int *sizep);
- void *load_device_tree(const char *filename_path, int *sizep);
-+#ifdef CONFIG_LINUX
 +/**
-+ * load_device_tree_from_sysfs: reads the device tree information in the
-+ * /proc/device-tree directory and return the corresponding binary blob
-+ * buffer pointer. Asserts in case of error.
++ * qemu_fdt_node_path: return the paths of nodes matching a given
++ * name and compat string
++ * @fdt: pointer to the dt blob
++ * @name: node name
++ * @compat: compatibility string
++ * @errp: handle to an error object
++ *
++ * returns a newly allocated NULL-terminated array of node paths.
++ * Use g_strfreev() to free it. If one or more nodes were found, the
++ * array contains the path of each node and the last element equals to
++ * NULL. If there is no error but no matching node was found, the
++ * returned array contains a single element equal to NULL. If an error
++ * was encountered when parsing the blob, the function returns NULL
 + */
-+void *load_device_tree_from_sysfs(void);
-+#endif
- 
++char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
++                          Error **errp);
++
  int qemu_fdt_setprop(void *fdt, const char *node_path,
                       const char *property, const void *val, int size);
+ int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
 -- 
 1.8.3.2

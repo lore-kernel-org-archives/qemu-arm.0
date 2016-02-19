@@ -1,284 +1,176 @@
-Received: by 10.25.208.211 with SMTP id h202csp1176093lfg;
-        Fri, 19 Feb 2016 06:08:26 -0800 (PST)
-X-Received: by 10.37.17.202 with SMTP id 193mr6105228ybr.100.1455890906791;
-        Fri, 19 Feb 2016 06:08:26 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1241914lfg;
+        Fri, 19 Feb 2016 08:22:16 -0800 (PST)
+X-Received: by 10.55.80.86 with SMTP id e83mr16695760qkb.91.1455898935923;
+        Fri, 19 Feb 2016 08:22:15 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z126si6602538ywf.69.2016.02.19.06.08.11
+        by mx.google.com with ESMTPS id k73si14995666qkh.65.2016.02.19.08.22.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 06:08:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 19 Feb 2016 08:22:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52652 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWlj9-0002dX-Ev
-	for alex.bennee@linaro.org; Fri, 19 Feb 2016 09:08:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37361)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aWnot-0001wt-BQ
+	for alex.bennee@linaro.org; Fri, 19 Feb 2016 11:22:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47920)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aWlik-0002Ho-Sw
-	for qemu-devel@nongnu.org; Fri, 19 Feb 2016 09:07:48 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aWnol-0001jy-4Q
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:22:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aWlij-0002Z4-9e
-	for qemu-devel@nongnu.org; Fri, 19 Feb 2016 09:07:46 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:38466)
+	(envelope-from <pm215@archaic.org.uk>) id 1aWnoj-00076T-V0
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:22:07 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:38477)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aWlii-0002Yz-TJ; Fri, 19 Feb 2016 09:07:45 -0500
+	id 1aWnog-00074c-Fo; Fri, 19 Feb 2016 11:22:02 -0500
 Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aWlih-0002vF-0t; Fri, 19 Feb 2016 14:07:43 +0000
+	id 1aWnof-00031z-36; Fri, 19 Feb 2016 16:22:01 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri, 19 Feb 2016 14:07:43 +0000
-Message-Id: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.1.4
+Date: Fri, 19 Feb 2016 16:21:59 +0000
+Message-Id: <1455898919-13868-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::1
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, qemu-arm@nongnu.org,
-	qemu-stable@nongnu.org, patches@linaro.org
-Subject: [Qemu-devel] [PATCH] target-arm: Make reserved ranges in ID_AA64*
-	spaces RAZ, not UNDEF
-X-BeenThere: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: [Qemu-arm] [PATCH] hw/arm/virt: Assume EL3 boot rom will handle
+	PSCI if one is provided
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d+6fKk9QtdZ1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tMsIRfCWm/6q
 
-The v8 ARM ARM defines that unused spaces in the ID_AA64* system
-register ranges are Reserved and must RAZ, rather than being UNDEF.
-Implement this.
+If the user passes us an EL3 boot rom, then it is going to want to
+implement the PSCI interface itself. In this case, disable QEMU's
+internal PSCI implementation so it does not get in the way, and
+instead start all CPUs in an SMP configuration at once (the boot
+rom will catch them all and pen up the secondaries until needed).
+The boot rom code is also responsible for editing the device tree
+to include any necessary information about its own PSCI implementation
+before eventually passing it to a NonSecure guest.
 
-In particular, ARM v8.2 adds a new feature register ID_AA64MMFR2,
-and newer versions of the Linux kernel will attempt to read this,
-which causes them not to boot up on versions of QEMU missing this fix.
+(This "start all CPUs at once" approach is what both ARM Trusted
+Firmware and UEFI expect, since it is what the ARM Foundation Model
+does; the other approach would be to provide some emulated hardware
+for "start the secondaries" but this is simplest.)
 
-Since the encoding .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6
-is actually defined in ARMv8 (as ID_MMFR4), we give it an entry in
-the ARMCPU struct so CPUs can override it, though since none do
-this too will just RAZ.
+This is a compatibility break, but I don't believe that anybody
+was using a secure boot ROM with an SMP configuration. Such a setup
+would be somewhat broken since there was nothing preventing nonsecure
+guest code from calling the QEMU PSCI function to start up a secondary
+core in a way that completely bypassed the secure world.
 
-Cc: qemu-stable@nongnu.org
-Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-The patch which touches ID_AA64MMFR2 is currently in linux-next...
+This is slightly RFC-ish because I don't actually have any secure boot
+rom code that will cope with SMP right now. But I think that since this
+is a compat break we're better off putting it into 2.6 than not.
 
- target-arm/cpu-qom.h |   1 +
- target-arm/helper.c  | 128 ++++++++++++++++++++++++++++++++++++++++++++++++---
- 2 files changed, 122 insertions(+), 7 deletions(-)
+ hw/arm/virt.c | 33 ++++++++++++++++++++++++++-------
+ 1 file changed, 26 insertions(+), 7 deletions(-)
 
-diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-index 1cc4502..1061c08 100644
---- a/target-arm/cpu-qom.h
-+++ b/target-arm/cpu-qom.h
-@@ -155,6 +155,7 @@ typedef struct ARMCPU {
-     uint32_t id_mmfr1;
-     uint32_t id_mmfr2;
-     uint32_t id_mmfr3;
-+    uint32_t id_mmfr4;
-     uint32_t id_isar0;
-     uint32_t id_isar1;
-     uint32_t id_isar2;
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 5a0447b..4deea0f 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -4280,12 +4280,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 5,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_isar5 },
--            /* 6..7 are as yet unallocated and must RAZ */
--            { .name = "ID_ISAR6", .cp = 15, .crn = 0, .crm = 2,
--              .opc1 = 0, .opc2 = 6, .access = PL1_R, .type = ARM_CP_CONST,
--              .resetvalue = 0 },
--            { .name = "ID_ISAR7", .cp = 15, .crn = 0, .crm = 2,
--              .opc1 = 0, .opc2 = 7, .access = PL1_R, .type = ARM_CP_CONST,
-+            { .name = "ID_MMFR4", .state = ARM_CP_STATE_BOTH,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = cpu->id_mmfr4 },
-+            /* 7 is as yet unallocated and must RAZ */
-+            { .name = "ID_ISAR7_RESERVED", .state = ARM_CP_STATE_BOTH,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = 0 },
-             REGINFO_SENTINEL
-         };
-@@ -4339,7 +4341,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, not_v7_cp_reginfo);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4499e2c..0f01902 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -73,6 +73,7 @@ typedef struct VirtBoardInfo {
+     uint32_t clock_phandle;
+     uint32_t gic_phandle;
+     uint32_t v2m_phandle;
++    bool using_psci;
+ } VirtBoardInfo;
+ 
+ typedef struct {
+@@ -231,6 +232,10 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
+     void *fdt = vbi->fdt;
+     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
+ 
++    if (!vbi->using_psci) {
++        return;
++    }
++
+     qemu_fdt_add_subnode(fdt, "/psci");
+     if (armcpu->psci_version == 2) {
+         const char comp[] = "arm,psci-0.2\0arm,psci";
+@@ -342,7 +347,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
+         qemu_fdt_setprop_string(vbi->fdt, nodename, "compatible",
+                                     armcpu->dtb_compatible);
+ 
+-        if (vbi->smp_cpus > 1) {
++        if (vbi->using_psci && vbi->smp_cpus > 1) {
+             qemu_fdt_setprop_string(vbi->fdt, nodename,
+                                         "enable-method", "psci");
+         }
+@@ -1081,6 +1086,7 @@ static void machvirt_init(MachineState *machine)
+     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
+     VirtGuestInfo *guest_info = &guest_info_state->info;
+     char **cpustr;
++    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+ 
+     if (!cpu_model) {
+         cpu_model = "cortex-a15";
+@@ -1146,6 +1152,16 @@ static void machvirt_init(MachineState *machine)
+         memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+                            UINT64_MAX);
+         memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
++
++        if (firmware_loaded) {
++            /* If we have an EL3 boot ROM then the assumption is that it will
++             * implement PSCI itself, so disable QEMU's internal implementation
++             * so it doesn't get in the way. Instead of starting secondary
++             * CPUs in PSCI powerdown state we will start them all running and
++             * let the boot ROM sort them out.
++             */
++            vbi->using_psci = false;
++        }
      }
-     if (arm_feature(env, ARM_FEATURE_V8)) {
--        /* AArch64 ID registers, which all have impdef reset values */
-+        /* AArch64 ID registers, which all have impdef reset values.
-+         * Note that within the ID register ranges the unused slots
-+         * must all RAZ, not UNDEF; future architecture versions may
-+         * define new registers here.
-+         */
-         ARMCPRegInfo v8_idregs[] = {
-             { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
-@@ -4349,6 +4355,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_aa64pfr1},
-+            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64PFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 4,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64PFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 5,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64PFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64PFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -4362,6 +4392,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_aa64dfr1 },
-+            { .name = "ID_AA64DFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 2,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64DFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 3,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "ID_AA64AFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 4,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -4370,6 +4408,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 5,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_aa64afr1 },
-+            { .name = "ID_AA64AFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64AFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "ID_AA64ISAR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -4378,6 +4424,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_aa64isar1 },
-+            { .name = "ID_AA64ISAR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64ISAR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 3,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64ISAR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 4,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64ISAR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 5,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64ISAR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64ISAR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "ID_AA64MMFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -4386,6 +4456,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 1,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->id_aa64mmfr1 },
-+            { .name = "ID_AA64MMFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 2,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64MMFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 3,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64MMFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 4,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64MMFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 5,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64MMFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "ID_AA64MMFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "MVFR0_EL1", .state = ARM_CP_STATE_AA64,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
-@@ -4398,6 +4492,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .resetvalue = cpu->mvfr2 },
-+            { .name = "MVFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 3,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "MVFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 4,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "MVFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 5,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "MVFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 6,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-+            { .name = "MVFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 7,
-+              .access = PL1_R, .type = ARM_CP_CONST,
-+              .resetvalue = 0 },
-             { .name = "PMCEID0", .state = ARM_CP_STATE_AA32,
-               .cp = 15, .opc1 = 0, .crn = 9, .crm = 12, .opc2 = 6,
-               .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
+ 
+     create_fdt(vbi);
+@@ -1175,12 +1191,15 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, false, "has_el3", NULL);
+         }
+ 
+-        object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC, "psci-conduit",
+-                                NULL);
++        if (vbi->using_psci) {
++            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
++                                    "psci-conduit", NULL);
+ 
+-        /* Secondary CPUs start in PSCI powered-down state */
+-        if (n > 0) {
+-            object_property_set_bool(cpuobj, true, "start-powered-off", NULL);
++            /* Secondary CPUs start in PSCI powered-down state */
++            if (n > 0) {
++                object_property_set_bool(cpuobj, true,
++                                         "start-powered-off", NULL);
++            }
+         }
+ 
+         if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+@@ -1249,7 +1268,7 @@ static void machvirt_init(MachineState *machine)
+     vbi->bootinfo.board_id = -1;
+     vbi->bootinfo.loader_start = vbi->memmap[VIRT_MEM].base;
+     vbi->bootinfo.get_dtb = machvirt_dtb;
+-    vbi->bootinfo.firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
++    vbi->bootinfo.firmware_loaded = firmware_loaded;
+     arm_load_kernel(ARM_CPU(first_cpu), &vbi->bootinfo);
+ 
+     /*
 -- 
 1.9.1
 

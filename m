@@ -1,45 +1,45 @@
-Received: by 10.25.208.211 with SMTP id h202csp1150254lfg;
-        Fri, 19 Feb 2016 05:17:36 -0800 (PST)
-X-Received: by 10.28.64.198 with SMTP id n189mr8788580wma.85.1455887851050;
-        Fri, 19 Feb 2016 05:17:31 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1150284lfg;
+        Fri, 19 Feb 2016 05:17:40 -0800 (PST)
+X-Received: by 10.28.57.68 with SMTP id g65mr9666002wma.56.1455887853474;
+        Fri, 19 Feb 2016 05:17:33 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x22d.google.com (mail-wm0-x22d.google.com. [2a00:1450:400c:c09::22d])
-        by mx.google.com with ESMTPS id s16si17794939wjq.193.2016.02.19.05.17.30
+Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
+        by mx.google.com with ESMTPS id d3si17853163wja.39.2016.02.19.05.17.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 05:17:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) client-ip=2a00:1450:400c:c09::22d;
+        Fri, 19 Feb 2016 05:17:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::22d as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
+       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
        dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x22d.google.com with SMTP id c200so75168725wme.0
-        for <alex.bennee@linaro.org>; Fri, 19 Feb 2016 05:17:30 -0800 (PST)
+Received: by mail-wm0-x230.google.com with SMTP id g62so75704542wme.1
+        for <alex.bennee@linaro.org>; Fri, 19 Feb 2016 05:17:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=pXzNrC2sbKi30eO0A9FJZMSVT+FnA2xNQVmBZhMn8vU=;
-        b=Ij/EYRcyG7RW+elGtWiNKHmp7W22oE9txrlisqKw4l2nIA7i/v7E+eRtqXTiSBnN61
-         BjcZfxjiDYki63MGcv537eaxmbWlmFmthjYVEXA6R3lAHLDbX/EslFDXBANBvF+FbJHG
-         FfHyxxLIEPINb/OW3Bw0CPXDBmZlBBua0p7WE=
+        bh=8sJvUm4R5Cl12SbCEQyTDnySf3Bx2FLPV8JM909X9+A=;
+        b=GZvlKaabvi63AOlOeVQam7Ld/deR0ZzVe/8rn0hEqHZxdKewz+Sr8NGFBZlFYHcfuo
+         5bs5b7BP5TclpoVqC/sknr21zMBWU8PFKk0GOJ8bDoOIwpA0MNVb7mFYA3o5oglchxL8
+         TQcTdDs2WiVIcESmUmzU2o86Ne1Dksrw8tSy8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=pXzNrC2sbKi30eO0A9FJZMSVT+FnA2xNQVmBZhMn8vU=;
-        b=atvENJum7ICcnc6pV890Xcep93W7Zge1b7ZNzjpxYW2hdzKMET46PKzLNjZQgt9uAZ
-         aVq8jW0F0bcjXMBzKuMlSdem7h99L1i2FOgsVswoP3MfYyeYYWIQ8VxawMgv4PbgPTPA
-         g/trStVpBZ+Yei8iBYtU/Fbgos8B/UQvHilF/pni6+YdBaCPHTPbIJaR3Ll28HWjNv0B
-         bH/js2uiyiApdyH5QP8okDzkqzU8aA7REtGmc8il3IlprS+3xiwzvEmaXKM8IIccoPBG
-         4+SuuzI5ztEpGpD1FA0XNUIVJ2A+RrtlkfnG/uIkWRZwpEo86Z/Yte8z5BWGZ0bk/Ads
-         fNDA==
-X-Gm-Message-State: AG10YOTbReSoYlJrN04nwedwxx7DEaNXGeJyOWSZQtvEqPqO8okrn96aSLi6LReh2IfD1L4T+gk=
-X-Received: by 10.194.78.37 with SMTP id y5mr13074654wjw.78.1455887850860;
-        Fri, 19 Feb 2016 05:17:30 -0800 (PST)
+        bh=8sJvUm4R5Cl12SbCEQyTDnySf3Bx2FLPV8JM909X9+A=;
+        b=jymB8OM+UsxowCp+0dV20tRsr2j5hr+/lVD7XOp/pGVrJf1WC9AdZozY3nO8jvDqWj
+         bkcjQOfiI4r8J9HZYZBmfqP31POJ0s0GsZUavtZNR9PuzfjFHOYLTyXt1LPlaFQq9X8i
+         AY8rOq//EZ2PU1lopYQ2fedgVMXOCfp4yNVdnkv4BQumH56YBPWvRfp1W2pGOZ9z+B/s
+         Uzexs5kvEMZbW584MXcl+q8QxTf24pOR6nK3g6GA/MtJuHjjyOUi3Q8zsf5OyoOjTuzy
+         cI6A61R/nV+R8POI5GRW7sZ+Wxl6EDzzVAHI06Y2mNTlBc62jsvpL4na6SJuNwIDnLtT
+         KVHw==
+X-Gm-Message-State: AG10YOR3R7cWNvETqEUeXnDf+NgU6EefFdCD0B+l336H672TLEQ7ewVmIpCUzhPy4h2OUpqH3kA=
+X-Received: by 10.194.84.2 with SMTP id u2mr10051575wjy.61.1455887853271;
+        Fri, 19 Feb 2016 05:17:33 -0800 (PST)
 Return-Path: <eric.auger@linaro.org>
 Received: from midway01-04-00.lavalab ([81.128.185.50])
-        by smtp.gmail.com with ESMTPSA id bg1sm11229846wjc.27.2016.02.19.05.17.28
+        by smtp.gmail.com with ESMTPSA id bg1sm11229846wjc.27.2016.02.19.05.17.30
         (version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 05:17:29 -0800 (PST)
+        Fri, 19 Feb 2016 05:17:31 -0800 (PST)
 From: Eric Auger <eric.auger@linaro.org>
 To: eric.auger@st.com,
 	eric.auger@linaro.org,
@@ -57,131 +57,189 @@ Cc: christoffer.dall@linaro.org,
 	pbonzini@redhat.com,
 	b.reynal@virtualopensystems.com,
 	thomas.lendacky@amd.com
-Subject: [PATCH v8 5/8] device_tree: qemu_fdt_getprop_cell converted to use the error API
-Date: Fri, 19 Feb 2016 13:17:10 +0000
-Message-Id: <1455887833-7306-6-git-send-email-eric.auger@linaro.org>
+Subject: [PATCH v8 6/8] hw/arm/sysbus-fdt: helpers for clock node generation
+Date: Fri, 19 Feb 2016 13:17:11 +0000
+Message-Id: <1455887833-7306-7-git-send-email-eric.auger@linaro.org>
 X-Mailer: git-send-email 1.8.3.2
 In-Reply-To: <1455887833-7306-1-git-send-email-eric.auger@linaro.org>
 References: <1455887833-7306-1-git-send-email-eric.auger@linaro.org>
-X-TUID: PQ1Au8GRgL96
+X-TUID: wFKK2jRGfXTk
 
-This patch aligns the prototype with qemu_fdt_getprop. The caller
-can choose whether the function self-asserts on error (passing
-&error_fatal as Error ** argument, corresponding to the legacy behavior),
-or behaves differently such as simply output a message.
+Some passthrough'ed devices depend on clock nodes. Those need to be
+generated in the guest device tree. This patch introduces some helpers
+to build a clock node from information retrieved in the host device tree.
 
-In this later case the caller can use the new lenp parameter to interpret
-the error if any.
+- copy_properties_from_host copies properties from a host device tree
+  node to a guest device tree node
+- fdt_build_clock_node builds a guest clock node and checks the host
+  fellow clock is a fixed one.
+
+fdt_build_clock_node will become static as soon as it gets used. A
+dummy pre-declaration is needed for compilation of this patch.
 
 Signed-off-by: Eric Auger <eric.auger@linaro.org>
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
+v5 -> v6:
+- replace self-asserts
+- add Peter's R-b
+
 v4 -> v5:
-- Add Peter's R-b
-- remove comment about error_fatal
+- renamed inherit_properties
 
-v3 : creation
+v1 -> v2:
+- inherit properties now outputs an error message in case
+  qemu_fdt_getprop fails for an existing optional property
+- no hardcoded fixed buffer length
+- fdt_build_clock_node becomes void and auto-asserts on error
+- use boolean values when defining the clock properties
+
+RFC -> v1:
+- use the new proto of qemu_fdt_getprop
+- remove newline in error_report
+- fix some style issues
 ---
- device_tree.c                | 21 ++++++++++++++-------
- hw/arm/boot.c                |  6 ++++--
- hw/arm/vexpress.c            |  6 ++++--
- include/sysemu/device_tree.h | 14 +++++++++++++-
- 4 files changed, 35 insertions(+), 12 deletions(-)
+ hw/arm/sysbus-fdt.c | 120 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 120 insertions(+)
 
-diff --git a/device_tree.c b/device_tree.c
-index 3d41c44..6204af8 100644
---- a/device_tree.c
-+++ b/device_tree.c
-@@ -350,15 +350,22 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
- }
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index 68a3de5..8575cfe 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -22,6 +22,7 @@
+  */
  
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property)
-+                               const char *property, int *lenp, Error **errp)
- {
-     int len;
--    const uint32_t *p = qemu_fdt_getprop(fdt, node_path, property, &len,
--                                         &error_fatal);
--    if (len != 4) {
--        error_report("%s: %s/%s not 4 bytes long (not a cell?)",
--                     __func__, node_path, property);
--        exit(1);
-+    const uint32_t *p;
+ #include "qemu/osdep.h"
++#include <libfdt.h>
+ #include "hw/arm/sysbus-fdt.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/device_tree.h"
+@@ -57,6 +58,125 @@ typedef struct NodeCreationPair {
+     int (*add_fdt_node_fn)(SysBusDevice *sbdev, void *opaque);
+ } NodeCreationPair;
+ 
++/* helpers */
 +
-+    if (!lenp) {
-+        lenp = &len;
-+    }
-+    p = qemu_fdt_getprop(fdt, node_path, property, lenp, errp);
-+    if (!p) {
-+        return 0;
-+    } else if (*lenp != 4) {
-+        error_setg(errp, "%s: %s/%s not 4 bytes long (not a cell?)",
-+                   __func__, node_path, property);
-+        *lenp = -EINVAL;
-+        return 0;
-     }
-     return be32_to_cpu(*p);
- }
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index cce8c7c..0a56d34c 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -437,8 +437,10 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         return 0;
-     }
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells");
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells");
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
-+                                   NULL, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-+                                   NULL, &error_fatal);
-     if (acells == 0 || scells == 0) {
-         fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-         goto fail;
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index 3154aea..726c4e0 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -478,8 +478,10 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
-     uint32_t acells, scells, intc;
-     const VEDBoardInfo *daughterboard = (const VEDBoardInfo *)info;
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells");
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells");
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
-+                                   NULL, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
-+                                   NULL, &error_fatal);
-     intc = find_int_controller(fdt);
-     if (!intc) {
-         /* Not fatal, we just won't provide virtio. This will
-diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
-index 48bf3b5..705650a 100644
---- a/include/sysemu/device_tree.h
-+++ b/include/sysemu/device_tree.h
-@@ -67,8 +67,20 @@ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
- const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-                              const char *property, int *lenp,
-                              Error **errp);
++typedef struct HostProperty {
++    const char *name;
++    bool optional;
++} HostProperty;
++
 +/**
-+ * qemu_fdt_getprop_cell: retrieve the value of a given 4 byte property
-+ * @fdt: pointer to the device tree blob
-+ * @node_path: node path
-+ * @property: name of the property to find
-+ * @lenp: fdt error if any or -EINVAL if the property size is different from
-+ *        4 bytes, or 4 (expected length of the property) upon success.
-+ * @errp: handle to an error object
++ * copy_properties_from_host
 + *
-+ * returns the property value on success
++ * copies properties listed in an array from host device tree to
++ * guest device tree. If a non optional property is not found, the
++ * function asserts. An optional property is ignored if not found
++ * in the host device tree.
++ * @props: array of HostProperty to copy
++ * @nb_props: number of properties in the array
++ * @host_dt: host device tree blob
++ * @guest_dt: guest device tree blob
++ * @node_path: host dt node path where the property is supposed to be
++              found
++ * @nodename: guest node name the properties should be added to
 + */
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property);
-+                               const char *property, int *lenp,
-+                               Error **errp);
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
- uint32_t qemu_fdt_alloc_phandle(void *fdt);
- int qemu_fdt_nop_node(void *fdt, const char *node_path);
++static void copy_properties_from_host(HostProperty *props, int nb_props,
++                                      void *host_fdt, void *guest_fdt,
++                                      char *node_path, char *nodename)
++{
++    int i, prop_len;
++    const void *r;
++    Error *err = NULL;
++
++    for (i = 0; i < nb_props; i++) {
++        r = qemu_fdt_getprop(host_fdt, node_path,
++                             props[i].name,
++                             &prop_len,
++                             props[i].optional ? &err : &error_fatal);
++        if (r) {
++            qemu_fdt_setprop(guest_fdt, nodename,
++                             props[i].name, r, prop_len);
++        } else {
++            if (prop_len != -FDT_ERR_NOTFOUND) {
++                /* optional property not returned although property exists */
++                error_report_err(err);
++            } else {
++                error_free(err);
++            }
++        }
++    }
++}
++
++/* clock properties whose values are copied/pasted from host */
++static HostProperty clock_copied_properties[] = {
++    {"compatible", false},
++    {"#clock-cells", false},
++    {"clock-frequency", true},
++    {"clock-output-names", true},
++};
++
++/**
++ * fdt_build_clock_node
++ *
++ * Build a guest clock node, used as a dependency from a passthrough'ed
++ * device. Most information are retrieved from the host clock node.
++ * Also check the host clock is a fixed one.
++ *
++ * @host_fdt: host device tree blob from which info are retrieved
++ * @guest_fdt: guest device tree blob where the clock node is added
++ * @host_phandle: phandle of the clock in host device tree
++ * @guest_phandle: phandle to assign to the guest node
++ */
++void fdt_build_clock_node(void *host_fdt, void *guest_fdt,
++                         uint32_t host_phandle,
++                         uint32_t guest_phandle);
++void fdt_build_clock_node(void *host_fdt, void *guest_fdt,
++                         uint32_t host_phandle,
++                         uint32_t guest_phandle)
++{
++    char *node_path = NULL;
++    char *nodename;
++    const void *r;
++    int ret, node_offset, prop_len, path_len = 16;
++
++    node_offset = fdt_node_offset_by_phandle(host_fdt, host_phandle);
++    if (node_offset <= 0) {
++        error_setg(&error_fatal,
++                   "not able to locate clock handle %d in host device tree",
++                   host_phandle);
++    }
++    node_path = g_malloc(path_len);
++    while ((ret = fdt_get_path(host_fdt, node_offset, node_path, path_len))
++            == -FDT_ERR_NOSPACE) {
++        path_len += 16;
++        node_path = g_realloc(node_path, path_len);
++    }
++    if (ret < 0) {
++        error_setg(&error_fatal,
++                   "not able to retrieve node path for clock handle %d",
++                   host_phandle);
++    }
++
++    r = qemu_fdt_getprop(host_fdt, node_path, "compatible", &prop_len,
++                         &error_fatal);
++    if (strcmp(r, "fixed-clock")) {
++        error_setg(&error_fatal,
++                   "clock handle %d is not a fixed clock", host_phandle);
++    }
++
++    nodename = strrchr(node_path, '/');
++    qemu_fdt_add_subnode(guest_fdt, nodename);
++
++    copy_properties_from_host(clock_copied_properties,
++                              ARRAY_SIZE(clock_copied_properties),
++                              host_fdt, guest_fdt,
++                              node_path, nodename);
++
++    qemu_fdt_setprop_cell(guest_fdt, nodename, "phandle", guest_phandle);
++
++    g_free(node_path);
++}
++
+ /* Device Specific Code */
+ 
+ /**
 -- 
 1.8.3.2

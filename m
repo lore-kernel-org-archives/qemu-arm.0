@@ -1,71 +1,45 @@
-Received: by 10.25.208.211 with SMTP id h202csp1109549lfg;
-        Fri, 19 Feb 2016 03:51:13 -0800 (PST)
-X-Received: by 10.140.95.76 with SMTP id h70mr7888545qge.105.1455882673136;
-        Fri, 19 Feb 2016 03:51:13 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1115652lfg;
+        Fri, 19 Feb 2016 04:03:38 -0800 (PST)
+X-Received: by 10.55.72.67 with SMTP id v64mr2446641qka.101.1455883418897;
+        Fri, 19 Feb 2016 04:03:38 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d21si13942277qkb.86.2016.02.19.03.51.12
+        by mx.google.com with ESMTPS id x69si13948365qha.127.2016.02.19.04.03.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 03:51:13 -0800 (PST)
+        Fri, 19 Feb 2016 04:03:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@163.com
-Received: from localhost ([::1]:51312 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51397 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWjaa-0003jl-N7
-	for alex.bennee@linaro.org; Fri, 19 Feb 2016 06:51:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58145)
+	id 1aWjmc-0003vt-Cy
+	for alex.bennee@linaro.org; Fri, 19 Feb 2016 07:03:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aWjaT-0003V7-Q2
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 06:51:10 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aWjma-0003u5-Ap
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 07:03:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aWjaP-0001Ex-WA
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 06:51:05 -0500
-Received: from m12-14.163.com ([220.181.12.14]:58981)
+	(envelope-from <pm215@archaic.org.uk>) id 1aWjmZ-0004M5-DU
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 07:03:36 -0500
+Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:38462)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1aWjaH-00018D-L1; Fri, 19 Feb 2016 06:50:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Mime-Version:Subject:From:Date:Message-Id; bh=auBXy
-	PRnjqEDJRLcxjQqYtX6LqmSh0TgA6v0YhLIVXM=; b=g6YHYL2Q9gdqAznReaD4u
-	Ug2Qef7pFTnGR1UKayLTG7XErKG2OPzNIe+L/Ju1JitwLvsqOMhrsyYj5/NCbkne
-	cc9kXhnxjjL4b6FZDeGfdzUKtM/7+EjmQ8/J44oBKk60dv07gT4cP1evR+f98Qh4
-	DTntu6nIue/oPu3V5J6Pho=
-Received: from [10.32.192.133] (unknown [223.104.3.203])
-	by smtp10 (Coremail) with SMTP id DsCowABXXjYwAcdWH77VBg--.64303S2;
-	Fri, 19 Feb 2016 19:49:05 +0800 (CST)
-Content-Type: text/plain;
-	charset=gb2312
-Mime-Version: 1.0 (1.0)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-X-Mailer: iPhone Mail (13D15)
-In-Reply-To: <CAFEAcA8JOM_qVG0_T_GvhCmyjHR5fWBRh9hUn1Oi9j=mKpw92g@mail.gmail.com>
-Date: Fri, 19 Feb 2016 19:49:04 +0800
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <99FDC702-8A44-44F6-AEF9-54E1FCDC8CAD@163.com>
-References: <1455621027-13927-1-git-send-email-zxq_yx_007@163.com>
-	<1455621027-13927-7-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA98eqLbA863L-t3y7wFFO8eiXgZZvaSge0e6cUTu8S0-A@mail.gmail.com>
-	<56C6F63A.9060907@163.com>
-	<CAFEAcA8JOM_qVG0_T_GvhCmyjHR5fWBRh9hUn1Oi9j=mKpw92g@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-CM-TRANSID: DsCowABXXjYwAcdWH77VBg--.64303S2
-X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
-	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUbyCGUUUUU
-X-Originating-IP: [223.104.3.203]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEBMUxlUL6y59VwAAsg
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.14
-Cc: Evgeny Voevodin <e.voevodin@samsung.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	=?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-arm] [PATCH v3 16/16] hw/timer: QOM'ify tusb6010
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aWjmX-0004LX-71; Fri, 19 Feb 2016 07:03:33 -0500
+Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aWjmO-0002ra-Qp; Fri, 19 Feb 2016 12:03:24 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Fri, 19 Feb 2016 12:03:24 +0000
+Message-Id: <1455883404-10976-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::1
+Cc: xiaoqiang zhao <zxq_yx_007@163.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, patches@linaro.org
+Subject: [Qemu-arm] [PATCH] tusb6010: move from hw/timer to hw/usb
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,20 +53,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Do5WZteN8gmZ
+X-TUID: bYp72s+pZzD/
 
+The TUSB6010 is a USB controller (as the name suggests). Move it from
+hw/timer (where it was accidentally filed in 2013 when we moved
+everything out of hw/) to hw/usb.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/timer/Makefile.objs       | 1 -
+ hw/usb/Makefile.objs         | 2 ++
+ hw/{timer => usb}/tusb6010.c | 0
+ 3 files changed, 2 insertions(+), 1 deletion(-)
+ rename hw/{timer => usb}/tusb6010.c (100%)
 
-> =D4=DA 2016=C4=EA2=D4=C219=C8=D5=A3=AC19:37=A3=ACPeter Maydell <peter.mayd=
-ell@linaro.org> =D0=B4=B5=C0=A3=BA
->=20
-> Mmm, I thought this might be related to the MUSB code.
-> I think this device cannot be converted properly to current
-> QOM standards until the MUSB code which it relies on has
-> been converted first.
-
-Reasonable !
-
-
-
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 133bd0d..5cfea6e 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -25,7 +25,6 @@ obj-$(CONFIG_OMAP) += omap_gptimer.o
+ obj-$(CONFIG_OMAP) += omap_synctimer.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+ obj-$(CONFIG_SH4) += sh_timer.o
+-obj-$(CONFIG_TUSB6010) += tusb6010.o
+ obj-$(CONFIG_DIGIC) += digic-timer.o
+ 
+ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
+index 8f00fbd..2717027 100644
+--- a/hw/usb/Makefile.objs
++++ b/hw/usb/Makefile.objs
+@@ -10,6 +10,8 @@ common-obj-$(CONFIG_USB_EHCI_SYSBUS) += hcd-ehci-sysbus.o
+ common-obj-$(CONFIG_USB_XHCI) += hcd-xhci.o
+ common-obj-$(CONFIG_USB_MUSB) += hcd-musb.o
+ 
++obj-$(CONFIG_TUSB6010) += tusb6010.o
++
+ # emulated usb devices
+ common-obj-$(CONFIG_USB) += dev-hub.o
+ common-obj-$(CONFIG_USB) += dev-hid.o
+diff --git a/hw/timer/tusb6010.c b/hw/usb/tusb6010.c
+similarity index 100%
+rename from hw/timer/tusb6010.c
+rename to hw/usb/tusb6010.c
+-- 
+1.9.1
 

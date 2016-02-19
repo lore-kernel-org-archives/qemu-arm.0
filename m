@@ -1,83 +1,77 @@
-Received: by 10.25.208.211 with SMTP id h202csp1252281lfg;
-        Fri, 19 Feb 2016 08:42:55 -0800 (PST)
-X-Received: by 10.140.86.85 with SMTP id o79mr16839638qgd.3.1455900175371;
-        Fri, 19 Feb 2016 08:42:55 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1259893lfg;
+        Fri, 19 Feb 2016 08:59:17 -0800 (PST)
+X-Received: by 10.140.31.5 with SMTP id e5mr16967899qge.2.1455901157463;
+        Fri, 19 Feb 2016 08:59:17 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si4151456qgb.59.2016.02.19.08.42.55
+        by mx.google.com with ESMTPS id n73si15109170qhc.34.2016.02.19.08.59.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 08:42:55 -0800 (PST)
+        Fri, 19 Feb 2016 08:59:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53659 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53817 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWo8s-0007Sr-Ug
-	for alex.bennee@linaro.org; Fri, 19 Feb 2016 11:42:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54611)
+	id 1aWoOj-0000Yj-0W
+	for alex.bennee@linaro.org; Fri, 19 Feb 2016 11:59:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWo8q-0007Sl-M6
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:42:53 -0500
+	(envelope-from <somlo@cmu.edu>) id 1aWoOg-0000YY-Do
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:59:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aWo8n-0005to-CC
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:42:52 -0500
-Received: from mail-lf0-x230.google.com ([2a00:1450:4010:c07::230]:36609)
+	(envelope-from <somlo@cmu.edu>) id 1aWoOd-0005Sa-Lt
+	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:59:14 -0500
+Received: from smtp.andrew.cmu.edu ([128.2.105.203]:37684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aWo8m-0005tR-UH; Fri, 19 Feb 2016 11:42:49 -0500
-Received: by mail-lf0-x230.google.com with SMTP id 78so57514668lfy.3;
-	Fri, 19 Feb 2016 08:42:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-type:content-transfer-encoding;
-	bh=zGPES+BqleqhW4Q1A5H/BzAxKWzOENSpboso5ZeVixw=;
-	b=JTBexm/uZEwds4iodOHFuNu7T2ZVhpebPET5OcTnqsy5SqBOQv3tch+b6hZpcpQXgz
-	U+4Eso6r89BmoHFaiqctoJbDSZ6i0ezD72XM/6LY8D7rinFotwB0kMPCPn4PLlmzV8Gr
-	rFTpJr34mz3pMRjcbLyVaIZ5jJWE6SaBqAXXHwxPL8bk5nWV4YNG3MALr0CzYFNF5atD
-	kaat3J1Nf3R9oe/Ao8rD6LAdZzdlBWUGOyKrpG2mU/dusPeejFX3gikOpavTWV/aed3v
-	Tsj18mH1GBj6kmwE0Hw/9gjNX9SSYvZBHda+5j53Znj36zJjsxVJnXuXqXodxYgTc5A5
-	vTaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-type
-	:content-transfer-encoding;
-	bh=zGPES+BqleqhW4Q1A5H/BzAxKWzOENSpboso5ZeVixw=;
-	b=chVrSNRZYjXYzsjHGdGuheAjQxWVRYGo/D0lSo0Q90f8+VYQ/bF1f7or3vBU8e/r7G
-	8aebLz7BiKuDWxmY6X7UaAffxhXVbR90dA7Bqj2a3mNSYb3JYUQu03Ggz+2gTGOmihjY
-	16eCke8qk8mIlq9ZYj/kiubpt7KhIauieCv3JRYaR55UrHzfE9GAuwf3Jw3uMl9NrhMI
-	lfGqnLUVLhpGhI2E3wrCPSs48B2uly86LN+sVvBSrLQqudryZxX90IgoqyHwMPcF2LNB
-	4cMPuDmeemU7e4EGXWhp82Nw6u3ENpoolwQCfOSPtsEl/L9Rw5DP4vq1Ozwj9uRefWf6
-	eCDQ==
-X-Gm-Message-State: AG10YOQRO0dCJdJ9Bd0Hvh3mdVhlj8wzPwZnlKy5q4LcxaAYiSJFeELiQj/aKfHQoA5oPg==
-X-Received: by 10.25.86.198 with SMTP id k189mr4688368lfb.90.1455900168014;
-	Fri, 19 Feb 2016 08:42:48 -0800 (PST)
-Received: from [10.30.10.50] ([213.243.91.10])
-	by smtp.googlemail.com with ESMTPSA id
-	b5sm1640931lbc.14.2016.02.19.08.42.46
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 19 Feb 2016 08:42:46 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-References: <1455892784-11328-1-git-send-email-peter.maydell@linaro.org>
-	<1455892784-11328-3-git-send-email-peter.maydell@linaro.org>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56C74605.9090305@gmail.com>
-Date: Fri, 19 Feb 2016 19:42:45 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
+	(envelope-from <somlo@cmu.edu>)
+	id 1aWoOd-0005SK-GM; Fri, 19 Feb 2016 11:59:11 -0500
+Received: from HEDWIG.INI.CMU.EDU (HEDWIG.INI.CMU.EDU [128.2.16.51])
+	(user=somlo mech=LOGIN (0 bits))
+	by smtp.andrew.cmu.edu (8.14.8/8.14.8) with ESMTP id u1JGx2q8016631
+	(version=TLSv1/SSLv3 cipher=AES128-SHA bits=128 verify=NOT);
+	Fri, 19 Feb 2016 11:59:03 -0500
+Date: Fri, 19 Feb 2016 11:59:02 -0500
+From: "Gabriel L. Somlo" <somlo@cmu.edu>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20160219165902.GY16357@HEDWIG.INI.CMU.EDU>
+References: <1455228365-13666-1-git-send-email-somlo@cmu.edu>
+	<1455228365-13666-4-git-send-email-somlo@cmu.edu>
+	<20160219144953.03aff7eb@nial.brq.redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1455892784-11328-3-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::230
-Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] target-arm: Implement MDCR_EL3.TPM
- and MDCR_EL2.TPM traps
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20160219144953.03aff7eb@nial.brq.redhat.com>
+X-Clacks-Overhead: GNU Terry Pratchett
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-PMX-Version: 6.0.3.2322014, Antispam-Engine: 2.7.2.2107409,
+	Antispam-Data: 2016.2.19.165117
+X-SMTP-Spam-Clean: 8% ( MULTIPLE_RCPTS 0.1, HTML_00_01 0.05, HTML_00_10 0.05,
+	BODY_SIZE_5000_5999 0, BODY_SIZE_7000_LESS 0, DATE_TZ_NA 0,
+	FROM_EDU_TLD 0, NO_URI_HTTPS 0, REFERENCES 0, __ANY_URI 0,
+	__BOUNCE_CHALLENGE_SUBJ 0, __BOUNCE_NDR_SUBJ_EXEMPT 0, __CD 0,
+	__CT 0, __CTE 0, __CT_TEXT_PLAIN 0, __FORWARDED_MSG 0,
+	__HAS_FROM 0, __HAS_MSGID 0, __IN_REP_TO 0, __MIME_TEXT_ONLY 0,
+	__MIME_VERSION 0, __MULTIPLE_RCPTS_CC_X2 0,
+	__PHISH_SPEAR_STRUCTURE_1 0, __REFERENCES 0, __SANE_MSGID 0,
+	__SUBJ_ALPHA_END 0, __SUBJ_ALPHA_NEGATE 0, __TO_MALFORMED_2 0,
+	__URI_NO_PATH 0, __URI_NO_WWW 0, __URI_NS , __USER_AGENT 0)
+X-SMTP-Spam-Score: 8%
+X-Scanned-By: MIMEDefang 2.74 on 128.2.105.203
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by smtp.andrew.cmu.edu id
+	u1JGx2q8016631
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x
+X-Received-From: 128.2.105.203
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+	matt@codeblueprint.co.uk, stefanha@gmail.com,
+	ard.biesheuvel@linaro.org, qemu-devel@nongnu.org,
+	leif.lindholm@linaro.org, luto@amacapital.net,
+	qemu-arm@nongnu.org, kraxel@redhat.com, pbonzini@redhat.com,
+	lersek@redhat.com, rth@twiddle.net
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v8 3/5] acpi: pc: add fw_cfg
+ device node to dsdt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,111 +85,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A2by5QkPD+Mf
+X-TUID: a1yWgatTZBXz
 
-On 19.02.2016 17:39, Peter Maydell wrote:
-> Implement the performance monitor register traps controlled
-> by MDCR_EL3.TPM and MDCR_EL2.TPM. Most of the performance
-> registers already have an access function to deal with the
-> user-enable bit, and the TPM checks can be added there. We
-> also need a new access function which only implements the
-> TPM checks for use by the few not-EL0-accessible registers
-> and by PMUSERENR_EL0 (which is always EL0-readable).
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Fri, Feb 19, 2016 at 02:49:53PM +0100, Igor Mammedov wrote:
+> On Thu, 11 Feb 2016 17:06:03 -0500
+> "Gabriel L. Somlo" <somlo@cmu.edu> wrote:
+>=20
+> > Add a fw_cfg device node to the ACPI DSDT. While the guest-side
+> > firmware can't utilize this information (since it has to access
+> > the hard-coded fw_cfg device to extract ACPI tables to begin with),
+> > having fw_cfg listed in ACPI will help the guest kernel keep a more
+> > accurate inventory of in-use IO port regions.
+> >=20
+> > Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+> > Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+> > Reviewed-by: Marc Mar=ED <markmb@redhat.com>
+> > ---
+> >  hw/i386/acpi-build.c | 29 +++++++++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> >=20
+> > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> > index 4554eb8..4762fd2 100644
+> > --- a/hw/i386/acpi-build.c
+> > +++ b/hw/i386/acpi-build.c
+> > @@ -2190,6 +2190,35 @@ build_dsdt(GArray *table_data, GArray *linker,
+> >      aml_append(scope, aml_name_decl("_S5", pkg));
+> >      aml_append(dsdt, scope);
+> > =20
+> > +    /* create fw_cfg node, unconditionally */
+> > +    {
+> > +        /* when using port i/o, the 8-bit data register *always* ove=
+rlaps
+> > +         * with half of the 16-bit control register. Hence, the tota=
+l size
+> > +         * of the i/o region used is FW_CFG_CTL_SIZE; when using DMA=
+, the
+> > +         * DMA control register is located at FW_CFG_DMA_IO_BASE + 4=
+ */
+> > +        uint8_t io_size =3D object_property_get_bool(OBJECT(pcms->fw=
+_cfg),
+> > +                                                   "dma_enabled", NU=
+LL) ?
+> > +                          ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_=
+addr_t) :
+> > +                          FW_CFG_CTL_SIZE;
+> > +
+> > +        scope =3D aml_scope("\\_SB");
+> > +        dev =3D aml_device("FWCF");
+> > +
+> > +        aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")=
+));
+> From my tests with different Windows versions, it doesn't prevent
+> WS2003 and WS2008 from showing a prompt for unknown device that asks fo=
+r a driver.
 
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
+I installed windows 2008 server r2 64bit, on both pc and q35 machines,
+and still only saw the "unknown device" in the Device Manager after
+forcing _STA to 0xF (instead of 0xB).
 
-> ---
->  target-arm/helper.c | 43 ++++++++++++++++++++++++++++++++++++-------
->  1 file changed, 36 insertions(+), 7 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index e9b89e6..ef3f1ce 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -439,6 +439,24 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
->      return CP_ACCESS_OK;
->  }
->  
-> +/* Check for traps to performance monitor registers, which are controlled
-> + * by MDCR_EL2.TPM for EL2 and MDCR_EL3.TPM for EL3.
-> + */
-> +static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                                 bool isread)
-> +{
-> +    int el = arm_current_el(env);
-> +
-> +    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
-> +        && !arm_is_secure_below_el3(env)) {
-> +        return CP_ACCESS_TRAP_EL2;
-> +    }
-> +    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-> +        return CP_ACCESS_TRAP_EL3;
-> +    }
-> +    return CP_ACCESS_OK;
-> +}
-> +
->  static void dacr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
->  {
->      ARMCPU *cpu = arm_env_get_cpu(env);
-> @@ -774,11 +792,22 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
->                                     bool isread)
->  {
->      /* Performance monitor registers user accessibility is controlled
-> -     * by PMUSERENR.
-> +     * by PMUSERENR. MDCR_EL2.TPM and MDCR_EL3.TPM allow configurable
-> +     * trapping to EL2 or EL3 for other accesses.
->       */
-> -    if (arm_current_el(env) == 0 && !env->cp15.c9_pmuserenr) {
-> +    int el = arm_current_el(env);
-> +
-> +    if (el == 0 && !env->cp15.c9_pmuserenr) {
->          return CP_ACCESS_TRAP;
->      }
-> +    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
-> +        && !arm_is_secure_below_el3(env)) {
-> +        return CP_ACCESS_TRAP_EL2;
-> +    }
-> +    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
-> +        return CP_ACCESS_TRAP_EL3;
-> +    }
-> +
->      return CP_ACCESS_OK;
->  }
->  
-> @@ -1101,28 +1130,28 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
->        .access = PL0_RW, .type = ARM_CP_CONST, .resetvalue = 0,
->        .accessfn = pmreg_access },
->      { .name = "PMUSERENR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 0,
-> -      .access = PL0_R | PL1_RW,
-> +      .access = PL0_R | PL1_RW, .accessfn = access_tpm,
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmuserenr),
->        .resetvalue = 0,
->        .writefn = pmuserenr_write, .raw_writefn = raw_write },
->      { .name = "PMUSERENR_EL0", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 14, .opc2 = 0,
-> -      .access = PL0_R | PL1_RW, .type = ARM_CP_ALIAS,
-> +      .access = PL0_R | PL1_RW, .accessfn = access_tpm, .type = ARM_CP_ALIAS,
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pmuserenr),
->        .resetvalue = 0,
->        .writefn = pmuserenr_write, .raw_writefn = raw_write },
->      { .name = "PMINTENSET", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 1,
-> -      .access = PL1_RW,
-> +      .access = PL1_RW, .accessfn = access_tpm,
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
->        .resetvalue = 0,
->        .writefn = pmintenset_write, .raw_writefn = raw_write },
->      { .name = "PMINTENCLR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 2,
-> -      .access = PL1_RW, .type = ARM_CP_ALIAS,
-> +      .access = PL1_RW, .accessfn = access_tpm, .type = ARM_CP_ALIAS,
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
->        .writefn = pmintenclr_write, },
->      { .name = "PMINTENCLR_EL1", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 2,
-> -      .access = PL1_RW, .type = ARM_CP_ALIAS,
-> +      .access = PL1_RW, .accessfn = access_tpm, .type = ARM_CP_ALIAS,
->        .fieldoffset = offsetof(CPUARMState, cp15.c9_pminten),
->        .writefn = pmintenclr_write },
->      { .name = "VBAR", .state = ARM_CP_STATE_BOTH,
+> One however could shut it up by allowing OS look for a driver
+> which is not found and then tell  not to ask for it anymore.
 
+It's entirely possible that "after a while" something would pop up and
+ask for a driver anyway. I did try to "humor it" by allowing it to
+search for a driver, and it failed, and the device was still showing
+up as unknown (remember, this is with _STA set to 0xF, which I did
+only to force it to show up :)
+
+I never waited around long enough for it to prompt me, so that may be
+the difference between our tests...
+
+>=20
+> So existing users will have to perform this action once
+> they have migrated to newer QEMU regardless of machine version.
+>=20
+> > +
+> > +        /* device present, functioning, decoding, not shown in UI */
+> > +        aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+> > +
+> > +        crs =3D aml_resource_template();
+> > +        aml_append(crs,
+> > +            aml_io(AML_DECODE16, FW_CFG_IO_BASE, FW_CFG_IO_BASE, 0x0=
+1, io_size)
+> > +        );
+> that creates \_SB.FWCF._CRS=20
+> +            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource=
+ Settings
+> +            {
+> +                IO (Decode16,
+> +                    0x0510,             // Range Minimum
+> +                    0x0510,             // Range Maximum
+> +                    0x01,               // Alignment
+> +                    0x0C,               // Length
+> +                    )
+> +            })
+>=20
+> which collides with \_SB.PCI0._CRS
+>             WordIO (ResourceProducer, MinFixed, MaxFixed, PosDecode, En=
+tireRange,
+>                 0x0000,             // Granularity
+>                 0x0000,             // Range Minimum
+>                 0x0CF7,             // Range Maximum
+>                 0x0000,             // Translation Offset
+>                 0x0CF8,
+>=20
+> that shouldn't happen, and solution for this is to put
+> FWCF device descriptor in \_SB.PCI0 scope so FWCF would consume
+> from PCI0 IO range.
+>=20
+> That won't help Windows to notice a conflict, if there is any,
+> as there aren't any drivers for QEMU0002 device but at least
+> when Windows gets a driver it won't crash due above conflict.
+
+OK, so the difference between "\_SB" and "\_SB.PCI0" is that, with
+_STA forced to 0xF, the "resources" tab of the "unknown device" no
+longer shows conflicts on the IO range of 510-518.
+
+With that being said, I still hope most people won't ever make it this
+far (with _STA set to 0xB). But in case they ever do, yes, placing
+FWCF in \_SB.PCI0 should take care of it -- thanks for showing me that!
+
+V9 (coming up soon) should reflect that change.
+
+Thanks much,
+--Gabriel
+
+>=20
+> > +        aml_append(dev, aml_name_decl("_CRS", crs));
+> > +
+> > +        aml_append(scope, dev);
+> > +        aml_append(dsdt, scope);
+> > +    }
+> > +
+> >      if (misc->applesmc_io_base) {
+> >          scope =3D aml_scope("\\_SB.PCI0.ISA");
+> >          dev =3D aml_device("SMC");
+>=20

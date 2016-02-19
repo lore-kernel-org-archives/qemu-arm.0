@@ -1,176 +1,107 @@
-Received: by 10.25.208.211 with SMTP id h202csp1241914lfg;
-        Fri, 19 Feb 2016 08:22:16 -0800 (PST)
-X-Received: by 10.55.80.86 with SMTP id e83mr16695760qkb.91.1455898935923;
-        Fri, 19 Feb 2016 08:22:15 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k73si14995666qkh.65.2016.02.19.08.22.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 08:22:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.211 with SMTP id h202csp31063lfg;
+        Fri, 19 Feb 2016 12:04:58 -0800 (PST)
+X-Received: by 10.98.69.78 with SMTP id s75mr20951243pfa.102.1455912298062;
+        Fri, 19 Feb 2016 12:04:58 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
+        by mx.google.com with ESMTPS id x12si18353533pfa.98.2016.02.19.12.04.57
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 19 Feb 2016 12:04:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53507 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWnot-0001wt-BQ
-	for alex.bennee@linaro.org; Fri, 19 Feb 2016 11:22:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47920)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aWnol-0001jy-4Q
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:22:13 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aWnoj-00076T-V0
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 11:22:07 -0500
-Received: from mnementh.archaic.org.uk ([2001:8b0:1d0::1]:38477)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aWnog-00074c-Fo; Fri, 19 Feb 2016 11:22:02 -0500
-Received: from pm215 by mnementh.archaic.org.uk with local (Exim 4.84)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aWnof-00031z-36; Fri, 19 Feb 2016 16:22:01 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 19 Feb 2016 16:21:59 +0000
-Message-Id: <1455898919-13868-1-git-send-email-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x22a.google.com with SMTP id x65so56425615pfb.1;
+        Fri, 19 Feb 2016 12:04:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=USmM0WRcUGgN+bACXKXSOFOm5RHlnj6c2NKXE5nc/78=;
+        b=NDFugZTKV6rcmnb6plM28GTABz+LAjvpj6dJBmuci8cEF31xZ/A9MU2nNb1cZ3uY9z
+         yt1FBrI273nCIZxULn58bXQB+xgfz1NP9cXA5es5tWxt6Qde6cTH1htTsHjM6ko5lZTE
+         Gbk5UiNhnjqYR4YEuT+dF4OaRf/5eeKmLOwsL8x1ffRnNU9pmKaascMAfP7/0/nnBXZR
+         3TruUXXRdo9LV5XyejSD5BSX0LKEECY2QRIBB7jxpRxkWvXKkNVfXqR51SnXg5LwcFh/
+         jNlrjt9oWSpyDhvrnEjy4LNbDrmMHGHCI+0Wb4sleBx4T3zQxLos60yJT+AgIhzEiCLD
+         9zuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=USmM0WRcUGgN+bACXKXSOFOm5RHlnj6c2NKXE5nc/78=;
+        b=GFWA2sp37f/rd0HVxpkSdgSxueGqw/6t5nz3tYcjdw/URik3qXkJVS7KzADu1nALFh
+         RMohiO19XKyBsSiM5lyNgnyg5chVN01G0yCg0hrKNWn7cFa4q7MqybL6zNiNBn2QicjC
+         hOyTqplzOnNQGQu0PFyZeY/l4ygQRrSEfR1Lyx1j/HI4Not+IZLHnQW30zrx7xRT1VP4
+         bgkbV+U8bVVdRsGGUEvtksnyD5UmjtG9r7qjOs20tgfCzH8GNuDdEkGip6KgQg7l1QjD
+         SvnGCy/uGIsD8RD4E48CNbIhEcKKOWHNS830DDUdX/Lut9IV3+K7dCjZjBNH/Muc8DCj
+         0PBg==
+X-Gm-Message-State: AG10YOQbEnd3+J9AEmGoZKGzUUUu5oWLkguAaSf7QnNawmpoGZ/DFGoN2loKSInD2cGaUQ==
+X-Received: by 10.98.17.92 with SMTP id z89mr20748755pfi.16.1455912297554;
+        Fri, 19 Feb 2016 12:04:57 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id s23sm19659111pfi.12.2016.02.19.12.04.55
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 19 Feb 2016 12:04:56 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: alex.bennee@linaro.org,
+	serge.fdrv@gmail.com,
+	rth@twiddle.net,
+	qemu-arm@nongnu.org,
+	edgar.iglesias@xilinx.com
+Subject: [PATCH v2 0/8] arm: Steps towards EL2 support round 6
+Date: Fri, 19 Feb 2016 21:04:44 +0100
+Message-Id: <1455912292-23807-1-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::1
-Cc: qemu-arm@nongnu.org, patches@linaro.org
-Subject: [Qemu-arm] [PATCH] hw/arm/virt: Assume EL3 boot rom will handle
-	PSCI if one is provided
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tMsIRfCWm/6q
+X-TUID: 6qFHUmATil/v
 
-If the user passes us an EL3 boot rom, then it is going to want to
-implement the PSCI interface itself. In this case, disable QEMU's
-internal PSCI implementation so it does not get in the way, and
-instead start all CPUs in an SMP configuration at once (the boot
-rom will catch them all and pen up the secondaries until needed).
-The boot rom code is also responsible for editing the device tree
-to include any necessary information about its own PSCI implementation
-before eventually passing it to a NonSecure guest.
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-(This "start all CPUs at once" approach is what both ARM Trusted
-Firmware and UEFI expect, since it is what the ARM Foundation Model
-does; the other approach would be to provide some emulated hardware
-for "start the secondaries" but this is simplest.)
+Hi,
 
-This is a compatibility break, but I don't believe that anybody
-was using a secure boot ROM with an SMP configuration. Such a setup
-would be somewhat broken since there was nothing preventing nonsecure
-guest code from calling the QEMU PSCI function to start up a secondary
-core in a way that completely bypassed the secure world.
+Another round of patches towards EL2 support. This one adds partial
+Instruction Syndrome generation for Data Aborts while running in AArch64.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is slightly RFC-ish because I don't actually have any secure boot
-rom code that will cope with SMP right now. But I think that since this
-is a compat break we're better off putting it into 2.6 than not.
+I don't feel very confident with the way I collect the regsize info used
+to fill out the SF field. Feedback on that would be great.
 
- hw/arm/virt.c | 33 ++++++++++++++++++++++++++-------
- 1 file changed, 26 insertions(+), 7 deletions(-)
+Once we sort out the details on how this should be implemented we can
+fill out the parts needed for AArch32. Possibly in a future version of
+this same series.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4499e2c..0f01902 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -73,6 +73,7 @@ typedef struct VirtBoardInfo {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t v2m_phandle;
-+    bool using_psci;
- } VirtBoardInfo;
- 
- typedef struct {
-@@ -231,6 +232,10 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
-     void *fdt = vbi->fdt;
-     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
- 
-+    if (!vbi->using_psci) {
-+        return;
-+    }
-+
-     qemu_fdt_add_subnode(fdt, "/psci");
-     if (armcpu->psci_version == 2) {
-         const char comp[] = "arm,psci-0.2\0arm,psci";
-@@ -342,7 +347,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
-         qemu_fdt_setprop_string(vbi->fdt, nodename, "compatible",
-                                     armcpu->dtb_compatible);
- 
--        if (vbi->smp_cpus > 1) {
-+        if (vbi->using_psci && vbi->smp_cpus > 1) {
-             qemu_fdt_setprop_string(vbi->fdt, nodename,
-                                         "enable-method", "psci");
-         }
-@@ -1081,6 +1086,7 @@ static void machvirt_init(MachineState *machine)
-     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
-     VirtGuestInfo *guest_info = &guest_info_state->info;
-     char **cpustr;
-+    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
- 
-     if (!cpu_model) {
-         cpu_model = "cortex-a15";
-@@ -1146,6 +1152,16 @@ static void machvirt_init(MachineState *machine)
-         memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-                            UINT64_MAX);
-         memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-+
-+        if (firmware_loaded) {
-+            /* If we have an EL3 boot ROM then the assumption is that it will
-+             * implement PSCI itself, so disable QEMU's internal implementation
-+             * so it doesn't get in the way. Instead of starting secondary
-+             * CPUs in PSCI powerdown state we will start them all running and
-+             * let the boot ROM sort them out.
-+             */
-+            vbi->using_psci = false;
-+        }
-     }
- 
-     create_fdt(vbi);
-@@ -1175,12 +1191,15 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, false, "has_el3", NULL);
-         }
- 
--        object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC, "psci-conduit",
--                                NULL);
-+        if (vbi->using_psci) {
-+            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
-+                                    "psci-conduit", NULL);
- 
--        /* Secondary CPUs start in PSCI powered-down state */
--        if (n > 0) {
--            object_property_set_bool(cpuobj, true, "start-powered-off", NULL);
-+            /* Secondary CPUs start in PSCI powered-down state */
-+            if (n > 0) {
-+                object_property_set_bool(cpuobj, true,
-+                                         "start-powered-off", NULL);
-+            }
-         }
- 
-         if (object_property_find(cpuobj, "reset-cbar", NULL)) {
-@@ -1249,7 +1268,7 @@ static void machvirt_init(MachineState *machine)
-     vbi->bootinfo.board_id = -1;
-     vbi->bootinfo.loader_start = vbi->memmap[VIRT_MEM].base;
-     vbi->bootinfo.get_dtb = machvirt_dtb;
--    vbi->bootinfo.firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-+    vbi->bootinfo.firmware_loaded = firmware_loaded;
-     arm_load_kernel(ARM_CPU(first_cpu), &vbi->bootinfo);
- 
-     /*
+Comments welcome!
+
+Best regards,
+Edgar
+
+ChangeLog:
+
+v1 -> v2:
+* Reworked the syndrome generation code to reuse syn_data_abort for
+  the encoding.
+* Reworded a bunch of comments.
+* Fixed thumb vs 16bit IL field issue.
+
+Edgar E. Iglesias (8):
+  tcg: Add tcg_set_insn_param
+  gen-icount: Use tcg_set_insn_param
+  target-arm: Add the IL flag to syn_data_abort
+  target-arm: Add more fields to the data abort syndrome generator
+  target-arm/translate-a64.c: Use extract32 in disas_ldst_reg_imm9
+  target-arm/translate-a64.c: Unify some of the ldst_reg decoding
+  target-arm: A64: Create Instruction Syndromes for Data Aborts
+  target-arm: Use isyn.swstep.ex to hold the is_ldex state
+
+ include/exec/gen-icount.h  |  16 +++---
+ target-arm/cpu.h           |   2 +-
+ target-arm/internals.h     |  24 +++++++--
+ target-arm/op_helper.c     |  41 +++++++++++++--
+ target-arm/translate-a64.c | 123 ++++++++++++++++++++++++++++++++++++---------
+ target-arm/translate.c     |  11 ++--
+ target-arm/translate.h     |  27 ++++++++--
+ tcg/tcg.h                  |   6 +++
+ 8 files changed, 201 insertions(+), 49 deletions(-)
+
 -- 
 1.9.1
-

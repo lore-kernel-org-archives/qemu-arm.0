@@ -1,127 +1,119 @@
-Received: by 10.25.208.211 with SMTP id h202csp742691lfg;
-        Thu, 18 Feb 2016 09:59:53 -0800 (PST)
-X-Received: by 10.194.62.201 with SMTP id a9mr10501644wjs.130.1455818393836;
-        Thu, 18 Feb 2016 09:59:53 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from mail-wm0-x233.google.com (mail-wm0-x233.google.com. [2a00:1450:400c:c09::233])
-        by mx.google.com with ESMTPS id i10si6826343wmc.50.2016.02.18.09.59.53
-        for <alex.bennee@linaro.org>
+Received: by 10.25.208.211 with SMTP id h202csp1147735lfg;
+        Fri, 19 Feb 2016 05:12:31 -0800 (PST)
+X-Received: by 10.66.252.100 with SMTP id zr4mr17581932pac.111.1455887551228;
+        Fri, 19 Feb 2016 05:12:31 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-pf0-x230.google.com (mail-pf0-x230.google.com. [2607:f8b0:400e:c00::230])
+        by mx.google.com with ESMTPS id b19si16534679pfd.242.2016.02.19.05.12.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Feb 2016 09:59:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::233 as permitted sender) client-ip=2a00:1450:400c:c09::233;
+        Fri, 19 Feb 2016 05:12:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) client-ip=2607:f8b0:400e:c00::230;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@linaro.org designates 2a00:1450:400c:c09::233 as permitted sender) smtp.mailfrom=eric.auger@linaro.org;
-       dkim=pass header.i=@linaro.org
-Received: by mail-wm0-x233.google.com with SMTP id g62so36669318wme.0
-        for <alex.bennee@linaro.org>; Thu, 18 Feb 2016 09:59:53 -0800 (PST)
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::230 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-pf0-x230.google.com with SMTP id e127so51118054pfe.3;
+        Fri, 19 Feb 2016 05:12:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=9+dkL8Hr0iQjopUQ9k+9K3QxNN7NdRPNrdQ6wtTX5U8=;
-        b=gxYQslh8pon3PaVJ6+OFd01sV3JMlyUYF08RwtBJb7OSbS0kGWnOyd4e/PnCgju36S
-         Z2Dcu1Pvrwdzk9OGVYrZKCUVTm5eiVnF61w3HCn6tbbkbdhpkiFvnnT8qTrNKDIMduFN
-         EmqxZrt9yIJwbONXicIcf6N0MQGDty4PDEaD4=
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-type:content-disposition:in-reply-to:user-agent;
+        bh=YGzgjjmNphdZjGAx8AJ9nqbXUaxjPejfrje9UM46B1g=;
+        b=Nmr0TET+liItBe7dmt1amaAIa/w5yHW/efxAvcTLQPCgZkPxJaNgTuFQ0plN58z/nN
+         Ebvxiw/tO+3egqyqmuThHNgvYFQ2Fu1J2AIUqTEAYWI5z1Vx9JJk/HtR8epaj5ccRE40
+         MowOTxq7ukmdo/YZdt2famguS3XGEdhC/7Ver9sHZre8n4XIHqblWEck1C6v0tDt3thq
+         xTrvURcmz60MNhRTJ0riMqatItjgz6zrDKvfSXIZNPY1/vbse72gGjqoWLHC0SkgiG6s
+         btV3v1y/A9Z8kCOPx4InPyehjZPrZQNz78biPHUHmLrgIDA3konEQkDLIKRf30sxkJzp
+         zQ1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=9+dkL8Hr0iQjopUQ9k+9K3QxNN7NdRPNrdQ6wtTX5U8=;
-        b=eMGh6ngD/Yn1wjKlIsL29O8oMR4d9Ymf6FNlZN1ij09XC+LU20O5DTN8jscHly2ilu
-         Mgyq4KeCAAjspapwtyiiXDYwzuBbmHlQG4kQ+2N6QzqS1hq/bhLgJFPwvUu+w4J8UGHD
-         uznzI77Nm85nay07PiXZYz5VCqe1SmGXf6EP1NNQzATLxmLuWRuiDFKn5KvaUmA3bLvt
-         V+OC+Vm06BXK8y+1g6L8rS2OG62F6p2nyDS7Rrsg6XWvKgl4CuKRlCOtejD+1dEd+ED/
-         WJ/2zQTvCdRz8yAqAxwWniv68LgoP0Mm/3Oh25qmDDgCxTxcf+aBMOtGLMq5xPjXH1T7
-         wnmw==
-X-Gm-Message-State: AG10YOSc5CeZ8/bEULualowQf3IKUL/uoA7SaVqyciDjZxWGN97WO+vrWbmOdneATg1PpE6eYls=
-X-Received: by 10.28.109.141 with SMTP id b13mr4445646wmi.25.1455818393562;
-        Thu, 18 Feb 2016 09:59:53 -0800 (PST)
-Return-Path: <eric.auger@linaro.org>
-Received: from [192.168.2.25] (LMontsouris-657-1-37-90.w80-11.abo.wanadoo.fr. [80.11.198.90])
-        by smtp.googlemail.com with ESMTPSA id t3sm7665187wjz.11.2016.02.18.09.59.51
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Thu, 18 Feb 2016 09:59:51 -0800 (PST)
-Subject: Re: [PATCH v6 0/8] AMD XGBE KVM platform passthrough
-To: Alex Williamson <alex.williamson@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <1454334712-12360-1-git-send-email-eric.auger@linaro.org>
- <CAFEAcA9UM_XQsd9nnZMnP3nxPwjf6PvW5KB5GdeJK+a29T0f2A@mail.gmail.com>
- <20160217125939.6df646dc@t450s.home>
-Cc: eric.auger@st.com, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, David Gibson <david@gibson.dropbear.id.au>,
- Christoffer Dall <christoffer.dall@linaro.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Peter Crosthwaite <crosthwaitepeter@gmail.com>,
- Patch Tracking <patches@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Baptiste Reynal <b.reynal@virtualopensystems.com>, thomas.lendacky@amd.com
-From: Eric Auger <eric.auger@linaro.org>
-Message-ID: <56C6067A.2020900@linaro.org>
-Date: Thu, 18 Feb 2016 18:59:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.1
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-type:content-disposition:in-reply-to
+         :user-agent;
+        bh=YGzgjjmNphdZjGAx8AJ9nqbXUaxjPejfrje9UM46B1g=;
+        b=YYoWxGDUtuQds86SQKyZhQ63EcAYk8JPFaHttDXK6xUZdfabIsuOl28iXTsno/e2/s
+         uttVwAE0VnyyOR9726PcLbcGjU5NjJ0zYAGsN16Z5l4RlhIQr5hdH7LmHcLVrpuJ62Q+
+         mhBVXzqV1q7NwIniuZ6e52Or1Z0dg+esJF9LzoDfkTZ2Bs2RcBqqhsulWfquTtuu8O8V
+         rhbCj+HQnSlS/PnFdTXAP4HiasyozkRyGSPkIaPpMIEItFSvvTMRin272puVbwkl+Vht
+         zGc0a4znlXwdRwSk8qSXGMkrd2t7+kTuHhBijDFwBEqtYjHi7tly3rEUQjGUJswJoWZn
+         LS+A==
+X-Gm-Message-State: AG10YOR7Zj12KPegTgEHrfGiWvJKLCok3eBN0CfTmbmlGpxTlCjKefeOfCz4sQY9fcgB5A==
+X-Received: by 10.98.1.85 with SMTP id 82mr18236802pfb.10.1455887550902;
+        Fri, 19 Feb 2016 05:12:30 -0800 (PST)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
+        by smtp.gmail.com with ESMTPSA id k65sm17891359pfb.30.2016.02.19.05.12.29
+        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
+        Fri, 19 Feb 2016 05:12:30 -0800 (PST)
+Date: Fri, 19 Feb 2016 14:12:27 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Sergey Fedorov <serge.fdrv@gmail.com>,
+	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+	Edgar Iglesias <edgar.iglesias@xilinx.com>
+Subject: Re: [PATCH v1 8/9] target-arm: A64: Create Instruction Syndromes for
+ Data Aborts
+Message-ID: <20160219131227.GB25623@toto>
+References: <1455287642-28166-1-git-send-email-edgar.iglesias@gmail.com>
+ <1455287642-28166-9-git-send-email-edgar.iglesias@gmail.com>
+ <CAFEAcA8VfyWn8t4jBAH3_ph1W7=FhPMr0Z+TEk9SXtv5Adv23g@mail.gmail.com>
+ <20160218095654.GD4403@toto>
+ <CAFEAcA99-ypB=cMvL8aQwwStbFquv5zUE0xfgKnkwGVaUvdkog@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20160217125939.6df646dc@t450s.home>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: 0jJ4Sv7C4Hdu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA99-ypB=cMvL8aQwwStbFquv5zUE0xfgKnkwGVaUvdkog@mail.gmail.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-TUID: f2nd8Q0YJIMk
 
-Hi,
-On 02/17/2016 08:59 PM, Alex Williamson wrote:
-> On Tue, 16 Feb 2016 18:40:47 +0000
-> Peter Maydell <peter.maydell@linaro.org> wrote:
+On Thu, Feb 18, 2016 at 11:42:17AM +0000, Peter Maydell wrote:
+> On 18 February 2016 at 09:56, Edgar E. Iglesias
+> <edgar.iglesias@gmail.com> wrote:
+> > On Tue, Feb 16, 2016 at 07:13:32PM +0000, Peter Maydell wrote:
+> >> I think this patch also would be simpler if the encoded info
+> >> put in with the TBs was just the syndrome register, rather
+> >> than some other encoding.
+> >
+> > My first try was to only pass the bits needed for the iss
+> > (i.e not the full data abort syndrome). We don't have all
+> > the info needed at translation time to create the full
+> > syndrome (e.g stage2 trap? stage2 trap while stage1 PTW, etc).
+> >
+> > But we could maybe create as much of the data abort syndrome
+> > as possible at translation time and then have the exception
+> > handling code add the missing bits. We can then pass the
+> > preliminary syndrome from translation time to exception time
+> > in the std syndrome format. I can have a look and see what I
+> > can do if that makes more sense.
 > 
->> On 1 February 2016 at 13:51, Eric Auger <eric.auger@linaro.org> wrote:
->>> This series allows to set up AMD XGBE passthrough. This was tested on AMD
->>> Seattle.
->>>
->>> The first upstreamed device supporting KVM platform passthrough was the
->>> Calxeda Midway XGMAC. Compared to this latter, the XGBE XGMAC exposes a
->>> much more complex device tree node.
->>>
->>> - First There are 2 device tree node formats:
->>> one where XGBE and PHY are described in separate nodes and another one
->>> that combines both description in a single node (only supported by 4.2
->>> onwards kernels). Only the combined description is supported for passthrough,
->>> meaning the host must be >= 4.2 and must feature a device tree with a combined
->>> description. The guest will also be exposed with a combined description,
->>> meaning only >= 4.2 guest are supported. It is not planned to support
->>> separate node representation since assignment of the PHY is less
->>> straigtforward.
->>>
->>> - the XGMAC/PHY node depends on 2 clock nodes (DMA and PTP).
->>> The code checks those clocks are fixed to make sure they cannot be
->>> switched off at some point after the native driver gets unbound.
->>>
->>> - there are many property values to populate on guest side. Most of them
->>> cannot be hardcoded. That series implements host device tree blob extraction
->>> from the host /proc/device-tree (inspired from dtc implementation)
->>> and retrieve host property values to populate guest dtb.
->>>
->>> - the case where the host uses ACPI is not yet covered since there is
->>>   no usable ACPI description for this HW yet.
->>>
->>> The patches can be found at
->>> https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v6
->>>
->>> Previous versions can be found at
->>> https://git.linaro.org/people/eric.auger/qemu.git/shortlog/refs/heads/v2.5.0-xgbe-v<n>  
->>
->> I think you have review on everything in this series now, but I'm assuming
->> this is going to go via the vfio tree (or at any rate not via target-arm).
->> Let me know if that's wrong.
+> Yep, that was basically what I had in mind.
 > 
-> The little bit of vfio here looks ok to me too.  Eric, this doesn't
-> apply cleanly, could you please rebase and incorporate all the acks and
-> reviews and I'll send a pull request with it?  Thanks,
+> Am I right in thinking that at translate time we capture:
+>  IL ISV SAS SSE SRT SF AR
+> and then at exception time we determine:
+>  EC FnV EA CM S1PTW WnR DFSC
+> ?
 
-Thanks Peter for the last R-b's. Alex, I rebased and sent v7. Once
-pulled I will update the qemu wiki.
+Yes. It gets a little messy due to the need to the clearing
+of ISV (and related fields) and thus setting IL, if the abort
+does not target EL2 but it's not too bad.
 
-Thanks
+> 
+> In that case I think you could reasonably have the info stored
+> with the TBs be "template syndrome >> 14" (since bits [13:0] are
+> all info determined at exception-time). The only reason for doing
+> this is that the encoded data is stored as sleb128 deltas between
+> lines so keeping the values numerically smaller should make them
+> take up a bit less space. (I have no idea how significant the
+> space saving would be.)
+> 
+> You should then be able to just have restore_state_to_opc()
+> write straight to env->exception.syndrome rather than needing
+> a new field in the cpu state.
 
-Eric
-> 
-> Alex
-> 
+Sounds good!
+
+Thanks!
+Edgar

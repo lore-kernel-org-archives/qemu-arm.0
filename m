@@ -1,184 +1,129 @@
-Received: by 10.25.208.211 with SMTP id h202csp31269lfg;
-        Fri, 19 Feb 2016 12:05:26 -0800 (PST)
-X-Received: by 10.98.71.15 with SMTP id u15mr20758093pfa.161.1455912326588;
-        Fri, 19 Feb 2016 12:05:26 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-pf0-x22a.google.com (mail-pf0-x22a.google.com. [2607:f8b0:400e:c00::22a])
-        by mx.google.com with ESMTPS id v69si18355658pfa.186.2016.02.19.12.05.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 19 Feb 2016 12:05:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) client-ip=2607:f8b0:400e:c00::22a;
+Received: by 10.25.208.211 with SMTP id h202csp291743lfg;
+        Sat, 20 Feb 2016 03:29:22 -0800 (PST)
+X-Received: by 10.140.98.116 with SMTP id n107mr23273816qge.9.1455967762409;
+        Sat, 20 Feb 2016 03:29:22 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id h75si19063638qhc.86.2016.02.20.03.29.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 20 Feb 2016 03:29:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2607:f8b0:400e:c00::22a as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22a.google.com with SMTP id x65so56431546pfb.1;
-        Fri, 19 Feb 2016 12:05:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=HLZgjS3qRCpcUWinxUWyDiyOlIJbXywh2wkNvniZtDM=;
-        b=RsJXxg/iZGbYiF8EPbFzBjiPYAvTlHipKbNJGicWC6FRi+nRfiEpeGl29/AQPpcI0O
-         jMlPaev51OfyHaUUVO3G8zhbmlYLS3DajD51z+LxAWxfTDMVpbmLxFrMVhKHcJMUxvK+
-         s0AO+VZqBorr9UvF27BG76KQxNKqM3bEQxsRCbdACiJxkAsy/RcCHA9f/ylRSpLUmOvc
-         Y4PQ9+3opm8DIfbu5x3ra8X+fnpgwNI9Uyts8SZ2O4gGdP7jmSWr7gdHZgeQzax+rh0n
-         BLVsmKB4eZa1ccVJuUP3ZVEP5VHbFfp20GRFqVQeEChpCyZ0tXHillLAlYP+EPaLZNSk
-         fEjQ==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:60186 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aX5iz-0003Ui-Tq
+	for alex.bennee@linaro.org; Sat, 20 Feb 2016 06:29:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49791)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5ix-0003T4-Oc
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:29:20 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5iw-00070W-TQ
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:29:19 -0500
+Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:34601)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5iw-0006zl-Np
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:29:18 -0500
+Received: by mail-vk0-x231.google.com with SMTP id e185so95599828vkb.1
+	for <qemu-arm@nongnu.org>; Sat, 20 Feb 2016 03:29:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=Q42xnUYIz8qBlCK3hDsXH6eMnB8BdUHRzrsifoka+wg=;
+	b=DH5yHse/Cwah/PVjoQaLASQCDKkTLMTJqWQ9GPDc91Gs0dFrtiIVCA1sb25nGaGtgW
+	aTD7nm3V+mS2n0uDM0398Rcv4A4jSy8u0+XfE87Y5y3XMVr1yE825QpmE56mHPEASAx5
+	tfb+KYA0ipPLPd1BHEyEPeXVea0A3j8NBaDGg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=HLZgjS3qRCpcUWinxUWyDiyOlIJbXywh2wkNvniZtDM=;
-        b=PG1WOO++nJ/C/E5EONXYDq0JV4ruszISqxhMfX2ZdvS1zlUvD0tUX5QhoE+7gW/LVx
-         fsVxL/K1yjbejH/YgtE7wU6cGF4Sqp8aCt0nigYgQfuruSFw3j+LflLea3qiGFfxHcGf
-         v6q5EMm2+x9AQGzQznG6Z9/2/KlLBHvXtX5I2lQT4kN02GfAL17s9++3XlktVYrAGn94
-         AG2O4+ASCbDh6BRsj12UkPgLQlPB+cyjy3MBGnP2W7doJBB0okv/kcHrLXbW8P6EvasU
-         uzRenQAUn2J2uSYTuhZoorQo4IQjBdAttRafKV3kNQtSYiZTj0SdUTqeR3zU+Jm2OkuX
-         8kAw==
-X-Gm-Message-State: AG10YOSI8JlebTSJwYHggF8RVKu8wcz5D2dk+Z3GuND5t/qDMt1XyLF3IZVfpUcRGpWzGw==
-X-Received: by 10.98.16.198 with SMTP id 67mr20721157pfq.21.1455912326248;
-        Fri, 19 Feb 2016 12:05:26 -0800 (PST)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (ec2-52-8-89-49.us-west-1.compute.amazonaws.com. [52.8.89.49])
-        by smtp.gmail.com with ESMTPSA id xv2sm19844864pab.10.2016.02.19.12.05.24
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 12:05:25 -0800 (PST)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	qemu-arm@nongnu.org,
-	edgar.iglesias@xilinx.com
-Subject: [PATCH v2 6/8] target-arm/translate-a64.c: Unify some of the ldst_reg decoding
-Date: Fri, 19 Feb 2016 21:04:50 +0100
-Message-Id: <1455912292-23807-7-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1455912292-23807-1-git-send-email-edgar.iglesias@gmail.com>
-References: <1455912292-23807-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: fLa7572ByXt+
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=Q42xnUYIz8qBlCK3hDsXH6eMnB8BdUHRzrsifoka+wg=;
+	b=lWK0KSSdmy89JnG/9MUXoKMITY+aIbGp4y0mao+x1CSUnnbrv3qLJm7xbhHfLEyihL
+	c3RWT4BfgU93oLEuKIwfdwe7evxcRg3hxq7gs+lApUfLn4YRMLKmKUYfCmgxCOYQi+8g
+	ZS58HoOLWi9UW/tkqz+XArI9C7lnduldas9sLlH94J27aMe6DFN+V2Z4LNzpw6Tvxknc
+	wlaY5jqG3ZFjEDz7k2Q9pAG++dCh3DpCFZ8jK7I1d+H/3dUSmyH/tS7MZsHNCHu9x9HD
+	bNfQRQhUZfVEPqbJwCDoK8L6vUV10jCtaglSuaiE5dYtI69qQjiM5VF49IO/SdgFSzWh
+	sQYA==
+X-Gm-Message-State: AG10YOSAq/LTRDLq/4wGi1I6fBX5TTq1CmApzwDZ7KHdmqZWBkUZlNAQ3D8Zn1kYN5mjDZj4rvc/cMz9yyhMmgx6
+X-Received: by 10.31.107.194 with SMTP id k63mr13474541vki.27.1455967756926;
+	Sat, 20 Feb 2016 03:29:16 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Sat, 20 Feb 2016 03:28:57 -0800 (PST)
+In-Reply-To: <CAKmqyKNy79b8_k2wOO_v0DgXc3OCwhcHv7zVkcEPe_Fft6-Gpw@mail.gmail.com>
+References: <1455892784-11328-1-git-send-email-peter.maydell@linaro.org>
+	<1455892784-11328-3-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKNy79b8_k2wOO_v0DgXc3OCwhcHv7zVkcEPe_Fft6-Gpw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 20 Feb 2016 11:28:57 +0000
+Message-ID: <CAFEAcA8_oJZU_mHBbmSk0XvJPaevAri6A-UwBkMHCBh2op9h+A@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::231
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] target-arm: Implement
+ MDCR_EL3.TPM and MDCR_EL2.TPM traps
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qPq09Wya1TRz
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 19 February 2016 at 19:38, Alistair Francis <alistair23@gmail.com> wrote:
+> On Fri, Feb 19, 2016 at 6:39 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> +/* Check for traps to performance monitor registers, which are controlled
+>> + * by MDCR_EL2.TPM for EL2 and MDCR_EL3.TPM for EL3.
+>> + */
+>> +static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
+>> +                                 bool isread)
+>> +{
+>> +    int el = arm_current_el(env);
+>> +
+>> +    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+>> +        && !arm_is_secure_below_el3(env)) {
+>> +        return CP_ACCESS_TRAP_EL2;
+>> +    }
+>> +    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+>> +        return CP_ACCESS_TRAP_EL3;
+>> +    }
+>
+> Hey Peter,
+>
+> Why not use else if?
 
-The various load/store variants under disas_ldst_reg can all reuse the
-same decoding for opc, size, rt and is_vector.
+I generally tend not to use else-if ladders if the thing
+in the conditional returns unconditionally, just as a
+personal style preference. "if () { X } else if () { Y } Z"
+implies a possible control flow path of "take the if
+branch so run X, then skip Y, and continue after to run Z",
+and if X returns unconditionally that can't happen.
+It also matches up with the usual approach of
+   if (something) {
+       early return;
+   }
+   main body of function;
 
-This patch unifies the decoding in preparation for generating
-instruction syndromes for data aborts.
-This will allow us to reduce the number of places to hook in updates
-to the load/store state needed to generate the insn syndromes.
+which you wouldn't want to write as
+   if (something) {
+      early return;
+   } else {
+      main body;
+   }
 
-No functional change.
-
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- target-arm/translate-a64.c | 41 +++++++++++++++++++++++------------------
- 1 file changed, 23 insertions(+), 18 deletions(-)
-
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index bf31f8a..9e26d5e 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -2075,19 +2075,19 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-  * size: 00 -> 8 bit, 01 -> 16 bit, 10 -> 32 bit, 11 -> 64bit
-  * opc: 00 -> store, 01 -> loadu, 10 -> loads 64, 11 -> loads 32
-  */
--static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-+                                int opc,
-+                                int size,
-+                                int rt,
-+                                bool is_vector)
- {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     int imm9 = sextract32(insn, 12, 9);
--    int opc = extract32(insn, 22, 2);
--    int size = extract32(insn, 30, 2);
-     int idx = extract32(insn, 10, 2);
-     bool is_signed = false;
-     bool is_store = false;
-     bool is_extended = false;
-     bool is_unpriv = (idx == 2);
--    bool is_vector = extract32(insn, 26, 1);
-     bool post_index;
-     bool writeback;
- 
-@@ -2194,19 +2194,19 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn)
-  * Rn: address register or SP for base
-  * Rm: offset register or ZR for offset
-  */
--static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
-+                                   int opc,
-+                                   int size,
-+                                   int rt,
-+                                   bool is_vector)
- {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     int shift = extract32(insn, 12, 1);
-     int rm = extract32(insn, 16, 5);
--    int opc = extract32(insn, 22, 2);
-     int opt = extract32(insn, 13, 3);
--    int size = extract32(insn, 30, 2);
-     bool is_signed = false;
-     bool is_store = false;
-     bool is_extended = false;
--    bool is_vector = extract32(insn, 26, 1);
- 
-     TCGv_i64 tcg_rm;
-     TCGv_i64 tcg_addr;
-@@ -2283,14 +2283,14 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn)
-  * Rn: base address register (inc SP)
-  * Rt: target register
-  */
--static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-+                                        int opc,
-+                                        int size,
-+                                        int rt,
-+                                        bool is_vector)
- {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     unsigned int imm12 = extract32(insn, 10, 12);
--    bool is_vector = extract32(insn, 26, 1);
--    int size = extract32(insn, 30, 2);
--    int opc = extract32(insn, 22, 2);
-     unsigned int offset;
- 
-     TCGv_i64 tcg_addr;
-@@ -2349,20 +2349,25 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn)
- /* Load/store register (all forms) */
- static void disas_ldst_reg(DisasContext *s, uint32_t insn)
- {
-+    int rt = extract32(insn, 0, 5);
-+    int opc = extract32(insn, 22, 2);
-+    bool is_vector = extract32(insn, 26, 1);
-+    int size = extract32(insn, 30, 2);
-+
-     switch (extract32(insn, 24, 2)) {
-     case 0:
-         if (extract32(insn, 21, 1) == 1 && extract32(insn, 10, 2) == 2) {
--            disas_ldst_reg_roffset(s, insn);
-+            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
-         } else {
-             /* Load/store register (unscaled immediate)
-              * Load/store immediate pre/post-indexed
-              * Load/store register unprivileged
-              */
--            disas_ldst_reg_imm9(s, insn);
-+            disas_ldst_reg_imm9(s, insn, opc, size, rt, is_vector);
-         }
-         break;
-     case 1:
--        disas_ldst_reg_unsigned_imm(s, insn);
-+        disas_ldst_reg_unsigned_imm(s, insn, opc, size, rt, is_vector);
-         break;
-     default:
-         unallocated_encoding(s);
--- 
-1.9.1
+thanks
+-- PMM

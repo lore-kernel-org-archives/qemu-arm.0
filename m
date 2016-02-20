@@ -1,58 +1,73 @@
-Received: by 10.25.208.211 with SMTP id h202csp69846lfg;
-        Fri, 19 Feb 2016 13:58:29 -0800 (PST)
-X-Received: by 10.140.240.87 with SMTP id l84mr20321200qhc.69.1455919109309;
-        Fri, 19 Feb 2016 13:58:29 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp292668lfg;
+        Sat, 20 Feb 2016 03:32:19 -0800 (PST)
+X-Received: by 10.55.198.129 with SMTP id s1mr22251971qkl.18.1455967938838;
+        Sat, 20 Feb 2016 03:32:18 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x4si16254560qka.74.2016.02.19.13.58.29
+        by mx.google.com with ESMTPS id r4si19162402qki.12.2016.02.20.03.32.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Feb 2016 13:58:29 -0800 (PST)
+        Sat, 20 Feb 2016 03:32:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55634 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:60207 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aWt4G-00017T-PE
-	for alex.bennee@linaro.org; Fri, 19 Feb 2016 16:58:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60255)
+	id 1aX5lq-0005mh-Bg
+	for alex.bennee@linaro.org; Sat, 20 Feb 2016 06:32:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50177)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aWt4D-00016j-IX
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 16:58:26 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5lo-0005mA-DF
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:32:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1aWt4A-00016z-8l
-	for qemu-arm@nongnu.org; Fri, 19 Feb 2016 16:58:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57273)
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5ln-00083p-J0
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:32:16 -0500
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:33872)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1aWt4A-00016h-0f; Fri, 19 Feb 2016 16:58:22 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 3789C3104;
-	Fri, 19 Feb 2016 21:58:21 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com ([10.3.113.10])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1JLwJHu016304; Fri, 19 Feb 2016 16:58:19 -0500
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aX5ln-00083b-EY
+	for qemu-arm@nongnu.org; Sat, 20 Feb 2016 06:32:15 -0500
+Received: by mail-vk0-x234.google.com with SMTP id e185so95630635vkb.1
+	for <qemu-arm@nongnu.org>; Sat, 20 Feb 2016 03:32:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=oLPKpnutouMOX5cSD6UxTG44cjYIyPOc/hCZdU5t7bE=;
+	b=TpAztf6MU3oFMhgaJzFgk1OnLooLbQZrIo0Itha+oo0EOVATJ2Y+RbbN6LY7BmJd+E
+	BdwsfCyOebxAo2nPzpyUk0oHmUkwwp9AxVF3su/b0oVZXR6C5UVlAz+kHfldTP3vnCGK
+	Yd6aDvso6TGr4xNstyNnLfgRxBSUo+KgF9l1I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=oLPKpnutouMOX5cSD6UxTG44cjYIyPOc/hCZdU5t7bE=;
+	b=OWcN6SzSGi0lJWytykQ9ML+8nm5Pg8e9gUfg+mbZ7Wkx0wBeDk2TykPXCsae2Q08yL
+	9uTXuhoR+U8SchsNpDNVp3k3Kd0wZsc3cYE2IMi1wHOUcgKMCaTaQVc0iIBj2cGLYCWl
+	N19Eg8LQpy1mzW7XFuJQ/1ln5sqrkJEavNppDZxhhC+UGM3Os55lCt7HjHhymp5QnsLa
+	nblFYG4/H5gXaRXEhSK04Ey7PssD43IS9PIywGUAIMPWPMEoeWMuLTmuQc9TfunprN+T
+	jTk+G2ztntFxLvZ/7ZLU17/4cCrfvLLYijGrX9qJfLJlVl5yTk9qsZyVfcrXFUFdxkBP
+	2Dnw==
+X-Gm-Message-State: AG10YOT6ivFLkHnNCWIG+2moXzYTB2q4IPivUz/sjDo9ILmIuWgAj4Ui1eIprMbw8hx0PC1G2yMN2IrfLTh1Y29R
+X-Received: by 10.31.180.85 with SMTP id d82mr12967090vkf.83.1455967935059;
+	Sat, 20 Feb 2016 03:32:15 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Sat, 20 Feb 2016 03:31:55 -0800 (PST)
+In-Reply-To: <56C78FFA.1090609@redhat.com>
 References: <1455898919-13868-1-git-send-email-peter.maydell@linaro.org>
 	<56C78330.7050107@redhat.com>
 	<CAKv+Gu-D=s895j7Phyx7AfFejcC1+gAZu1WK7oNkGN9p=UxSTQ@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56C78FFA.1090609@redhat.com>
-Date: Fri, 19 Feb 2016 22:58:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
-MIME-Version: 1.0
-In-Reply-To: <CAKv+Gu-D=s895j7Phyx7AfFejcC1+gAZu1WK7oNkGN9p=UxSTQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
+	<56C78FFA.1090609@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 20 Feb 2016 11:31:55 +0000
+Message-ID: <CAFEAcA-nzx2JwaC64NfBm2bpWURxezwmZoC+HOXmhrBzWptZqw@mail.gmail.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::234
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: Assume EL3 boot
  rom will handle PSCI if one is provided
 X-BeenThere: qemu-arm@nongnu.org
@@ -68,154 +83,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i4CwF0Fv6YQd
+X-TUID: 3s59aRVFCai2
 
-On 02/19/16 22:41, Ard Biesheuvel wrote:
-> On 19 February 2016 at 22:03, Laszlo Ersek <lersek@redhat.com> wrote:
->> Ard, any opinion on this?
->>
-> 
-> I agree with Peter. Note that this is strictly about emulation, under
-> KVM we always run at EL1 or below and PSCI calls are handled by the
-> host kernel, not QEMU
-
-Great, that's all I wanted to hear -- out of scope for me. :)
-
-Actually, I have now read the patch even, and I have the following comments:
-
-- As long as "using_psci" is true, the behavior doesn't change. Great.
-
-- The only place where using_psci *changes* to false is reachable only
-with (vms->secure && firmware_loaded). That's what wasn't immediately
-obvious from the patch -- when vms->secure is true (-machine secure=on),
-it's out of scope for me. :)
-
-- However, I think I might have noticed a bug -- or rather missed
-something trivial --, namely, where is "using_psci" *initially* set to
-true? The "machines" static array is not touched.
-
-Thanks!
-Laszlo
-
-> 
-> 
->> On 02/19/16 17:21, Peter Maydell wrote:
->>> If the user passes us an EL3 boot rom, then it is going to want to
->>> implement the PSCI interface itself. In this case, disable QEMU's
->>> internal PSCI implementation so it does not get in the way, and
->>> instead start all CPUs in an SMP configuration at once (the boot
->>> rom will catch them all and pen up the secondaries until needed).
->>> The boot rom code is also responsible for editing the device tree
->>> to include any necessary information about its own PSCI implementation
->>> before eventually passing it to a NonSecure guest.
->>>
->>> (This "start all CPUs at once" approach is what both ARM Trusted
->>> Firmware and UEFI expect, since it is what the ARM Foundation Model
->>> does; the other approach would be to provide some emulated hardware
->>> for "start the secondaries" but this is simplest.)
->>>
->>> This is a compatibility break, but I don't believe that anybody
->>> was using a secure boot ROM with an SMP configuration. Such a setup
->>> would be somewhat broken since there was nothing preventing nonsecure
->>> guest code from calling the QEMU PSCI function to start up a secondary
->>> core in a way that completely bypassed the secure world.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>> This is slightly RFC-ish because I don't actually have any secure boot
->>> rom code that will cope with SMP right now. But I think that since this
->>> is a compat break we're better off putting it into 2.6 than not.
->>>
->>>  hw/arm/virt.c | 33 ++++++++++++++++++++++++++-------
->>>  1 file changed, 26 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 4499e2c..0f01902 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -73,6 +73,7 @@ typedef struct VirtBoardInfo {
->>>      uint32_t clock_phandle;
->>>      uint32_t gic_phandle;
->>>      uint32_t v2m_phandle;
->>> +    bool using_psci;
->>>  } VirtBoardInfo;
->>>
->>>  typedef struct {
->>> @@ -231,6 +232,10 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
->>>      void *fdt = vbi->fdt;
->>>      ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
->>>
->>> +    if (!vbi->using_psci) {
->>> +        return;
->>> +    }
->>> +
->>>      qemu_fdt_add_subnode(fdt, "/psci");
->>>      if (armcpu->psci_version == 2) {
->>>          const char comp[] = "arm,psci-0.2\0arm,psci";
->>> @@ -342,7 +347,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
->>>          qemu_fdt_setprop_string(vbi->fdt, nodename, "compatible",
->>>                                      armcpu->dtb_compatible);
->>>
->>> -        if (vbi->smp_cpus > 1) {
->>> +        if (vbi->using_psci && vbi->smp_cpus > 1) {
->>>              qemu_fdt_setprop_string(vbi->fdt, nodename,
->>>                                          "enable-method", "psci");
->>>          }
->>> @@ -1081,6 +1086,7 @@ static void machvirt_init(MachineState *machine)
->>>      VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
->>>      VirtGuestInfo *guest_info = &guest_info_state->info;
->>>      char **cpustr;
->>> +    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>>
->>>      if (!cpu_model) {
->>>          cpu_model = "cortex-a15";
->>> @@ -1146,6 +1152,16 @@ static void machvirt_init(MachineState *machine)
->>>          memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
->>>                             UINT64_MAX);
->>>          memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
->>> +
->>> +        if (firmware_loaded) {
->>> +            /* If we have an EL3 boot ROM then the assumption is that it will
->>> +             * implement PSCI itself, so disable QEMU's internal implementation
->>> +             * so it doesn't get in the way. Instead of starting secondary
->>> +             * CPUs in PSCI powerdown state we will start them all running and
->>> +             * let the boot ROM sort them out.
->>> +             */
->>> +            vbi->using_psci = false;
->>> +        }
->>>      }
->>>
->>>      create_fdt(vbi);
->>> @@ -1175,12 +1191,15 @@ static void machvirt_init(MachineState *machine)
->>>              object_property_set_bool(cpuobj, false, "has_el3", NULL);
->>>          }
->>>
->>> -        object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC, "psci-conduit",
->>> -                                NULL);
->>> +        if (vbi->using_psci) {
->>> +            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
->>> +                                    "psci-conduit", NULL);
->>>
->>> -        /* Secondary CPUs start in PSCI powered-down state */
->>> -        if (n > 0) {
->>> -            object_property_set_bool(cpuobj, true, "start-powered-off", NULL);
->>> +            /* Secondary CPUs start in PSCI powered-down state */
->>> +            if (n > 0) {
->>> +                object_property_set_bool(cpuobj, true,
->>> +                                         "start-powered-off", NULL);
->>> +            }
->>>          }
->>>
->>>          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
->>> @@ -1249,7 +1268,7 @@ static void machvirt_init(MachineState *machine)
->>>      vbi->bootinfo.board_id = -1;
->>>      vbi->bootinfo.loader_start = vbi->memmap[VIRT_MEM].base;
->>>      vbi->bootinfo.get_dtb = machvirt_dtb;
->>> -    vbi->bootinfo.firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>> +    vbi->bootinfo.firmware_loaded = firmware_loaded;
->>>      arm_load_kernel(ARM_CPU(first_cpu), &vbi->bootinfo);
->>>
->>>      /*
+On 19 February 2016 at 21:58, Laszlo Ersek <lersek@redhat.com> wrote:
+> On 02/19/16 22:41, Ard Biesheuvel wrote:
+>> On 19 February 2016 at 22:03, Laszlo Ersek <lersek@redhat.com> wrote:
+>>> Ard, any opinion on this?
 >>>
 >>
+>> I agree with Peter. Note that this is strictly about emulation, under
+>> KVM we always run at EL1 or below and PSCI calls are handled by the
+>> host kernel, not QEMU
+>
+> Great, that's all I wanted to hear -- out of scope for me. :)
+>
+> Actually, I have now read the patch even, and I have the following comments:
+>
+> - As long as "using_psci" is true, the behavior doesn't change. Great.
+>
+> - The only place where using_psci *changes* to false is reachable only
+> with (vms->secure && firmware_loaded). That's what wasn't immediately
+> obvious from the patch -- when vms->secure is true (-machine secure=on),
+> it's out of scope for me. :)
+>
+> - However, I think I might have noticed a bug -- or rather missed
+> something trivial --, namely, where is "using_psci" *initially* set to
+> true? The "machines" static array is not touched.
 
+Derp. I changed at the last minute from having using_psci be a
+local bool in the machvirt_init() function to putting it in the
+vbi struct, and forgot that when I deleted the "bool using_psci = true;"
+I needed to add something to init vbi->using_psci to true.
+
+thanks
+-- PMM

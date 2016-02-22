@@ -1,77 +1,62 @@
-Received: by 10.25.208.211 with SMTP id h202csp1320331lfg;
-        Mon, 22 Feb 2016 10:08:53 -0800 (PST)
-X-Received: by 10.140.25.161 with SMTP id 30mr35885592qgt.73.1456164533059;
-        Mon, 22 Feb 2016 10:08:53 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1349048lfg;
+        Mon, 22 Feb 2016 11:16:03 -0800 (PST)
+X-Received: by 10.55.209.148 with SMTP id o20mr19467005qkl.5.1456168563845;
+        Mon, 22 Feb 2016 11:16:03 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 128si30412431qhw.119.2016.02.22.10.08.52
+        by mx.google.com with ESMTPS id v65si30637473qhb.128.2016.02.22.11.16.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 10:08:53 -0800 (PST)
+        Mon, 22 Feb 2016 11:16:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51025 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aXuuf-0006R1-MV
-	for alex.bennee@linaro.org; Mon, 22 Feb 2016 13:08:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50832)
+	id 1aXvxh-0000fo-QQ
+	for alex.bennee@linaro.org; Mon, 22 Feb 2016 14:16:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48073)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aXuuN-0005tx-Nc
-	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 13:08:32 -0500
+	(envelope-from <mst@redhat.com>) id 1aXvx5-0008EC-7f
+	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 14:15:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1aXuuM-0004Li-UO
-	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 13:08:31 -0500
-Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:34298)
+	(envelope-from <mst@redhat.com>) id 1aXvx2-0007Fw-1u
+	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 14:15:23 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54794)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1aXuuM-0004LX-Ar; Mon, 22 Feb 2016 13:08:30 -0500
-Received: by mail-oi0-x229.google.com with SMTP id m82so60595151oif.1;
-	Mon, 22 Feb 2016 10:08:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=vZTKe/vsImiJgtG01mvZom+1aw10lmRD91MP+EhqHiM=;
-	b=DAPROhCY2fbvu6CPOcx4JofxXkOdOENBJIx1aUEd+943BIA4GD9YVt3g9oO1+wnWrP
-	p0VBAs0HyHQUdcN3I7i2Oq3YLK0nt32slyeb+JkegwwtXJilQtk3HA5iTWmZ2qorO9E3
-	fFaK/rshSl0k49yayssrPt2WWkwuqn+ADX2p8oalOq0d8/nLiDIoCYOPI3NaHlmPmotz
-	uRAB3dq2LgxYkRzD34KcXZdid9L6gZoHWUZpOqYjMKkZXS2FcCcyjlOSPQ7k32WuDdGU
-	JDbI+jJDoFJSE5oaGfceRvgJ7NVJcnJyFW6/aI/rDu//hFXRZhcQ6qoDm9lOmg643dta
-	LBVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=vZTKe/vsImiJgtG01mvZom+1aw10lmRD91MP+EhqHiM=;
-	b=MDH3FBj4J7QIth93GIll9P07vgWeiPGh03dM6KxEb0KE4N0qYijuXoGQwE4skrxb9z
-	KONykSFiQlScG88g6M+v5UppWsIX57uC1kJLWTQzTwxerxGSqiBVFoGkRMeVTE8Dw53L
-	+7OqxVlarh/yZLXdLPDOpqRs2Wux6bFMfL5t6SO5aUYcrEkUroNPjh4Y3gGDuuuwaS1D
-	CQlNWc5CvsCUeZMRnjYI95Z39qxnmJM1hloMTGoFdjHJpb+l1njVvdEMGnfWbMTSANzV
-	es8wYj1oLsAPvxWgsdCkQJYNj4Pxuis7zHpiXyWq0AQqOfjH3I+aowsajYVnJ2GaiaO0
-	ZF3g==
-X-Gm-Message-State: AG10YOTjqF0D5lv83spzC97udqrMcSQGNv4jbhJED+53vTAbxO2MryfarEl1AsHOTfb9rQEaqROGNf6lL5+dYA==
-X-Received: by 10.202.63.86 with SMTP id m83mr23342136oia.76.1456164509738;
-	Mon, 22 Feb 2016 10:08:29 -0800 (PST)
+	(envelope-from <mst@redhat.com>)
+	id 1aXvx1-0007Fp-S2; Mon, 22 Feb 2016 14:15:19 -0500
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id A253663141;
+	Mon, 22 Feb 2016 19:15:18 +0000 (UTC)
+Received: from redhat.com (vpn1-6-31.ams2.redhat.com [10.36.6.31])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u1MJFE5r017254; Mon, 22 Feb 2016 14:15:15 -0500
+Date: Mon, 22 Feb 2016 21:15:13 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: "Kevin O'Connor" <kevin@koconnor.net>
+Message-ID: <20160222211352-mutt-send-email-mst@redhat.com>
+References: <1456144729-17196-1-git-send-email-mst@redhat.com>
+	<20160222144749.GA6977@morn.lan>
 MIME-Version: 1.0
-Received: by 10.182.49.199 with HTTP; Mon, 22 Feb 2016 10:08:00 -0800 (PST)
-In-Reply-To: <1455892784-11328-2-git-send-email-peter.maydell@linaro.org>
-References: <1455892784-11328-1-git-send-email-peter.maydell@linaro.org>
-	<1455892784-11328-2-git-send-email-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 22 Feb 2016 10:08:00 -0800
-Message-ID: <CAKmqyKN6=Oajgahi22eHU=zyoQqquj+bQ9-n8qGL2zVG91TB0w@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160222144749.GA6977@morn.lan>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 22 Feb 2016 19:15:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::229
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Patch Tracking <patches@linaro.org>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] target-arm: Fix handling
- of SDCR for 32-bit code
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Subject: Re: [Qemu-arm] [PATCH RFC] fw-cfg: support writeable blobs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -85,29 +70,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xboCAMC6ePBS
+X-TUID: A0W/bxYFLSFF
 
-On Fri, Feb 19, 2016 at 6:39 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> Fix two issues with our implementation of the SDCR:
->  * it is only present from ARMv8 onwards
->  * it does not contain several of the trap bits present in its 64-bit
->    counterpart the MDCR_EL3
->
-> Put the register description in the right place so that it does not
-> get enabled for ARMv7 and earlier, and give it a write function so that
-> we can mask out the bits which should not be allowed to have an effect
-> if EL3 is 32-bit.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Mon, Feb 22, 2016 at 09:47:49AM -0500, Kevin O'Connor wrote:
+> On Mon, Feb 22, 2016 at 02:41:38PM +0200, Michael S. Tsirkin wrote:
+> > Useful to send guest data back to QEMU.
+> > The write interface is restricted to DMA.
+> > 
+> > Suggested-by: Kevin O'Connor <kevin@koconnor.net>
+> > Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> > ---
+> > 
+> >  hw/lm32/lm32_hwsetup.h    |  2 +-
+> >  include/hw/loader.h       |  4 ++--
+> >  include/hw/nvram/fw_cfg.h |  3 ++-
+> >  hw/arm/virt-acpi-build.c  |  2 +-
+> >  hw/core/loader.c          | 19 ++++++++++++-------
+> >  hw/i386/acpi-build.c      |  4 ++--
+> >  hw/nvram/fw_cfg.c         | 36 ++++++++++++++++++++++++++++--------
+> >  7 files changed, 48 insertions(+), 22 deletions(-)
+> > 
+> > diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
+> > index 838754d..805b445 100644
+> > --- a/hw/lm32/lm32_hwsetup.h
+> > +++ b/hw/lm32/lm32_hwsetup.h
+> > @@ -74,7 +74,7 @@ static inline void hwsetup_create_rom(HWSetup *hw,
+> >          hwaddr base)
+> >  {
+> >      rom_add_blob("hwsetup", hw->data, TARGET_PAGE_SIZE,
+> > -                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL);
+> > +                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, true);
+> >  }
+> 
+> Instead of supporting "writable blobs", I wonder if it would be
+> simpler for both firmware and qemu to implement an "ioctl" like
+> interface.  That is, just directly invoke a new fw_cfg callback from
+> fw_cfg_dma_transfer() with the data obtained via dma_memory_read().  I
+> think that may be more flexible because then the QEMU code doesn't
+> have to check for changes to a blob - it would instead be immediately
+> invoked upon a change.
+> 
+> -Kevin
 
-Acked-by: Alistair Francis <alistair.francis@xilinx.com>
+So far, I didn't see any need to invoke callbacks.
+All users seem happy with simply using data
+written by guest.
 
-Thanks,
+OTOH if there's no blob to write, users need to add code
+to migrate it manually, blobs are migrated automatically.
 
-Alistair
-
-> ---
->  target-arm/cpu.h    |  4 ++++
->  target-arm/helper.c | 23 +++++++++++++++--------
->  2 files changed, 19 insertions(+), 8 deletions(-)
->
+-- 
+MST

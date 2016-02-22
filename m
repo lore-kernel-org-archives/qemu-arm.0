@@ -1,61 +1,63 @@
-Received: by 10.25.208.211 with SMTP id h202csp970670lfg;
-        Sun, 21 Feb 2016 19:20:13 -0800 (PST)
-X-Received: by 10.55.73.74 with SMTP id w71mr32179679qka.60.1456111212448;
-        Sun, 21 Feb 2016 19:20:12 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp970701lfg;
+        Sun, 21 Feb 2016 19:20:20 -0800 (PST)
+X-Received: by 10.140.240.87 with SMTP id l84mr33574336qhc.69.1456111220381;
+        Sun, 21 Feb 2016 19:20:20 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w187si27512201qhw.32.2016.02.21.19.20.12
+        by mx.google.com with ESMTPS id d89si6978176qga.124.2016.02.21.19.20.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Feb 2016 19:20:12 -0800 (PST)
+        Sun, 21 Feb 2016 19:20:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:46493 helo=lists.gnu.org)
+Received: from localhost ([::1]:46496 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aXh2h-0006B7-K3
-	for alex.bennee@linaro.org; Sun, 21 Feb 2016 22:20:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41473)
+	id 1aXh2p-0006Pu-Ic
+	for alex.bennee@linaro.org; Sun, 21 Feb 2016 22:20:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aXh0X-00028F-J1
-	for qemu-devel@nongnu.org; Sun, 21 Feb 2016 22:17:58 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aXh0f-0002Of-KD
+	for qemu-devel@nongnu.org; Sun, 21 Feb 2016 22:18:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aXh0W-0007im-Fl
-	for qemu-devel@nongnu.org; Sun, 21 Feb 2016 22:17:57 -0500
-Received: from m12-16.163.com ([220.181.12.16]:58505)
+	(envelope-from <zxq_yx_007@163.com>) id 1aXh0b-0007ju-Ia
+	for qemu-devel@nongnu.org; Sun, 21 Feb 2016 22:18:05 -0500
+Received: from m12-16.163.com ([220.181.12.16]:59030)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aXh0V-0007hE-OG; Sun, 21 Feb 2016 22:17:56 -0500
+	id 1aXh0a-0007jM-Q3; Sun, 21 Feb 2016 22:18:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=dfbyBZDn2VdBAlnPSq
-	PKbyBgoeYZ/9fsbJdyw20Y1S4=; b=B2n+bw+qEqTNWMJZcZAYkoQ9JZISjstTuU
-	bYIxz5jBBsmo6+H7W+GqEg0eS7UPzKQppo/TQ2QTp2Jn0MUFM/qWinlWoYMNbBsN
-	xHuTOdeOnYeplwiR7pi2+6cU/l4lKXyZyZ3pPD7sqeOlBvdtM0WNBgokht/i2P+L
-	jAgz7dEtI=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=9Q6MdIcGCFRSq0iIu3
+	ZsGnbvfJNDd74XNfSTDrpUdzs=; b=keR52QNyOLrOnlnDazVi2bvtFUe6orCpuW
+	FXNwiL9z2LCg/F148zdQRUpUvN6YSxe82bS/suh4O8FRpm9/e5mjtE/JsXA0cYzh
+	dLTfTNEjFzhgH3eY1KI4v73rHiuWWZsOryRb73YZmKlZb5at1McJKVuYPrhtfk48
+	5A+Ui20zY=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp12 (Coremail) with SMTP id EMCowEB5zUeWfcpW0G6hAA--.38100S2;
+	by smtp12 (Coremail) with SMTP id EMCowEB5zUeWfcpW0G6hAA--.38100S10;
 	Mon, 22 Feb 2016 11:16:45 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 22 Feb 2016 11:15:24 +0800
-Message-Id: <1456110933-5457-1-git-send-email-zxq_yx_007@163.com>
+Date: Mon, 22 Feb 2016 11:15:32 +0800
+Message-Id: <1456110933-5457-9-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-X-CM-TRANSID: EMCowEB5zUeWfcpW0G6hAA--.38100S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw17WF1xJrW7uw4kAFWUJwb_yoW8CrWDpr
-	WfCF4fZF48A3y3Ww43CFsFqr15JF18JrW5GrnxK34rZrnIyF13tF1UWF4rJFW7JFykuF43
-	ZF95tr15Gw1YvrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSMKtUUUUU=
+In-Reply-To: <1456110933-5457-1-git-send-email-zxq_yx_007@163.com>
+References: <1456110933-5457-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: EMCowEB5zUeWfcpW0G6hAA--.38100S10
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WF18KF45GFyfZw47WrWUtwb_yoW8ur18pF
+	WxWF9rArnFyr4Dtw4xJF1DGFW8XFn7CF45Cw4ktwsrAFn7W3WDJ3WUJrZ7tFWxJFWv9Fy3
+	A3yrWr13Zr45Jw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jkOzsUUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEB0XxlUL61WOsAAAsC
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEh4XxlZXwMnXNwAAs1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 220.181.12.16
 Cc: peter.maydell@linaro.org, gxt@mprc.pku.edu.cn, i.mitsyanko@gmail.com,
 	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
 	qemu-arm@nongnu.org, edgar.iglesias@gmail.com,
 	m.kozlov@samsung.com, afaerber@suse.de
-Subject: [Qemu-devel] [PATCH v4 0/9] QOM'ify hw/timer/*
+Subject: [Qemu-devel] [PATCH v4 8/9] hw/timer: QOM'ify slavio_timer
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,59 +71,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qNibAA0X9kJm
+X-TUID: oP8ILOKK8U/X
 
-This patch series QOM'ify timer code under hw/timer directory.
-Main idea is to split the initfn's work, some to TypeInfo.instance_init
-and some is placed in DeviceClass::realize.
-Drop the use of SysBusDeviceClass::init if possible.
+rename slavio_timer_init1 to slavio_timer_init and assign
+it to slavio_timer_info.instance_init, then we drop the
+SysBusDeviceClass::init
 
-Some patches in v3:
-      hw/timer: QOM'ify arm_timer (pass 1)
-      hw/timer: QOM'ify arm_timer (pass 2)
-      hw/timer: QOM'ify exynos4210_mct
-      hw/timer: QOM'ify exynos4210_pwm
-      hw/timer: QOM'ify exynos4210_rtc
-      hw/timer: QOM'ify pl031
-      hw/timer: QOM'ify pxa2xx_timer
-have been taken by Peter Maydell <peter.maydell@linaro.org>, others
-still need some comments from the relevant maintainers.
+Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
+---
+ hw/timer/slavio_timer.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-changes in v4: 
-* correct some misused "Reviewed-by" tags
-* fix 'make check' fail case in the "/arm/device/introspect/concrete"
-  test in tusb6010.c 
-
-changes in v3: 
-* remove unnecessary OBJECT cast
-* refine some commit message
-* use DeviceClass::vmsd instead of vmstate_register to register
-  the VMState if possible
-
-changes in v2: 
-fix a stupid typo (timmer->timer)
-
-xiaoqiang zhao (9):
-  hw/timer: QOM'ify etraxfs_timer
-  hw/timer: QOM'ify grlib_gptimer
-  hw/timer: QOM'ify lm32_timer
-  hw/timer: QOM'ify m48txx_sysbus (pass 1)
-  hw/timer: QOM'ify m48txx_sysbus (pass 2)
-  hw/timer: QOM'ify milkymist_sysctl
-  hw/timer: QOM'ify puv3_ost
-  hw/timer: QOM'ify slavio_timer
-  hw/timer: QOM'ify tusb6010
-
- hw/timer/etraxfs_timer.c    | 14 +++++++-------
- hw/timer/grlib_gptimer.c    | 30 ++++++++++++++++++------------
- hw/timer/lm32_timer.c       | 19 ++++++++++++-------
- hw/timer/m48t59.c           | 39 ++++++++++++++++++++-------------------
- hw/timer/milkymist-sysctl.c | 21 +++++++++++++--------
- hw/timer/puv3_ost.c         | 18 +++++-------------
- hw/timer/slavio_timer.c     | 12 +++++-------
- hw/timer/tusb6010.c         | 23 ++++++++++++++++-------
- 8 files changed, 96 insertions(+), 80 deletions(-)
-
+diff --git a/hw/timer/slavio_timer.c b/hw/timer/slavio_timer.c
+index fb3e08b..b2c9364 100644
+--- a/hw/timer/slavio_timer.c
++++ b/hw/timer/slavio_timer.c
+@@ -373,9 +373,10 @@ static void slavio_timer_reset(DeviceState *d)
+     s->cputimer_mode = 0;
+ }
+ 
+-static int slavio_timer_init1(SysBusDevice *dev)
++static void slavio_timer_init(Object *obj)
+ {
+-    SLAVIO_TIMERState *s = SLAVIO_TIMER(dev);
++    SLAVIO_TIMERState *s = SLAVIO_TIMER(obj);
++    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+     QEMUBH *bh;
+     unsigned int i;
+     TimerContext *tc;
+@@ -394,14 +395,12 @@ static int slavio_timer_init1(SysBusDevice *dev)
+ 
+         size = i == 0 ? SYS_TIMER_SIZE : CPU_TIMER_SIZE;
+         snprintf(timer_name, sizeof(timer_name), "timer-%i", i);
+-        memory_region_init_io(&tc->iomem, OBJECT(s), &slavio_timer_mem_ops, tc,
++        memory_region_init_io(&tc->iomem, obj, &slavio_timer_mem_ops, tc,
+                               timer_name, size);
+         sysbus_init_mmio(dev, &tc->iomem);
+ 
+         sysbus_init_irq(dev, &s->cputimer[i].irq);
+     }
+-
+-    return 0;
+ }
+ 
+ static Property slavio_timer_properties[] = {
+@@ -412,9 +411,7 @@ static Property slavio_timer_properties[] = {
+ static void slavio_timer_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
+ 
+-    k->init = slavio_timer_init1;
+     dc->reset = slavio_timer_reset;
+     dc->vmsd = &vmstate_slavio_timer;
+     dc->props = slavio_timer_properties;
+@@ -424,6 +421,7 @@ static const TypeInfo slavio_timer_info = {
+     .name          = TYPE_SLAVIO_TIMER,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(SLAVIO_TIMERState),
++    .instance_init = slavio_timer_init,
+     .class_init    = slavio_timer_class_init,
+ };
+ 
 -- 
 2.1.4
 

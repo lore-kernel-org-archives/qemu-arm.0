@@ -1,86 +1,79 @@
-Received: by 10.25.208.211 with SMTP id h202csp1221315lfg;
-        Mon, 22 Feb 2016 06:47:58 -0800 (PST)
-X-Received: by 10.55.79.17 with SMTP id d17mr34519378qkb.56.1456152478335;
-        Mon, 22 Feb 2016 06:47:58 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1319464lfg;
+        Mon, 22 Feb 2016 10:07:04 -0800 (PST)
+X-Received: by 10.140.134.144 with SMTP id 138mr38485195qhg.63.1456164424602;
+        Mon, 22 Feb 2016 10:07:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 53si11323103qgt.99.2016.02.22.06.47.58
+        by mx.google.com with ESMTPS id y9si30406946qhb.39.2016.02.22.10.07.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Feb 2016 06:47:58 -0800 (PST)
+        Mon, 22 Feb 2016 10:07:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@koconnor-net.20150623.gappssmtp.com
-Received: from localhost ([::1]:49490 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51010 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aXrmH-0007Pj-Kk
-	for alex.bennee@linaro.org; Mon, 22 Feb 2016 09:47:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50752)
+	id 1aXust-0003mN-M6
+	for alex.bennee@linaro.org; Mon, 22 Feb 2016 13:06:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aXrmF-0007Oy-AD
-	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 09:47:56 -0500
+	(envelope-from <alistair23@gmail.com>) id 1aXusr-0003kd-6T
+	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 13:06:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aXrmD-0001er-3C
-	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 09:47:55 -0500
-Received: from mail-qg0-x234.google.com ([2607:f8b0:400d:c04::234]:32895)
+	(envelope-from <alistair23@gmail.com>) id 1aXusq-0003y9-9I
+	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 13:06:57 -0500
+Received: from mail-ob0-x22a.google.com ([2607:f8b0:4003:c01::22a]:33787)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin@koconnor.net>) id 1aXrmB-0001eg-Pr
-	for qemu-arm@nongnu.org; Mon, 22 Feb 2016 09:47:53 -0500
-Received: by mail-qg0-x234.google.com with SMTP id b35so112057767qge.0
-	for <qemu-arm@nongnu.org>; Mon, 22 Feb 2016 06:47:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=koconnor-net.20150623.gappssmtp.com; s=20150623;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:content-disposition:in-reply-to:user-agent;
-	bh=R/cdChiPUhjTLEX1+G0aOS3hxfHuNs8tHp/jxKLsjvs=;
-	b=UqIcKhrrpWpkz0x42dd2kjZkq/MBCn47sOAc55XulMqrMnw3S4/AbSJ/MR1q/nqyOG
-	P9SosNiK+M1JLX3HfWP6npjxRD1CaPsUPOyYdpBGsHOCEbgbybvv9Jsh1x8MzmFe9d1Q
-	b2hFiQOhFyRg5nDIzWzyGN2KKB40T2G67Yf6VIKvL2WaeL8gCtetGrBliqwlu9YCodas
-	JTlVRqo7ekurMEL6pxuC7COLdhuFfagzcJ9DZv/Vpi0pvISWNwq/7yJToDehBA4cx1wB
-	Hkxi+ngeDR2oDoNneiD9iSxexMB7delbM3rx0wd+Uop8YsKWHHvWWDhNjAZQI1NULD/+
-	kdUg==
+	(envelope-from <alistair23@gmail.com>)
+	id 1aXusm-0003wr-4T; Mon, 22 Feb 2016 13:06:56 -0500
+Received: by mail-ob0-x22a.google.com with SMTP id jq7so172652820obb.0;
+	Mon, 22 Feb 2016 10:06:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=E51JjFcGu1/c3GBkZewlyDhG93pTImraAAR6+/aHNKs=;
+	b=Ob2/DqiIuT/bae6uQnt/hRAyJVSUhZENBYTcMLEpPgun2Z852wHtXzJG7mN4nHAR6L
+	ijL4kzha3foeTnFmKhIr0OPZtemYmZ+NxlEb5R8lDoZcUucTb8F7bZb9XS6IDPTgXcqn
+	gaA3bCr/mh1AO62+KcIf5Xtx7G0NcI+CqHjAr5XFCP6oCoCKmkSV+LfYHCOxQIjS+K0a
+	TrNDyC/awWWEuKsIfDEG78OlUJuYAGRwhNHAcsxrRsjnO/0zPh/QuBzj+nsvY7zcWvho
+	Plip6MtIuumwjKkk+FcY5gYAcoERMT7n01u6bIqzNTAqxnwAFZUNzDEeqaQy0f6gucHo
+	TtDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-type:content-disposition:in-reply-to
-	:user-agent;
-	bh=R/cdChiPUhjTLEX1+G0aOS3hxfHuNs8tHp/jxKLsjvs=;
-	b=Lq2qo0AMGD7pSZQqheuMwGNPJ/RG9gYJ1MJX1+l7Grnh450AZLHOkMQn9AUFNeFH05
-	BWFhZFKjkJEY6zFU19ysQoVY9tYnuwHpUycrYKK2o5y0jQKPTK1W18Xo1C/aiTh8fxDw
-	fPNOKsaMEtwMr9EdWXnOFJQn41XlxtN4BuMeSqZQqoZX6ijKIY3dU4Npy0Wd9laNix8f
-	kQRVJzwLOp6UFYtrp/W2II1rjs/9rt54KEy1pxTUQ5QTi9ahQnW3prwy+AHx39NTmsq7
-	+4SFe82tVyXm7qGXas7X4CXADYv/WJjA5Gz1JLbosvQN9kl0UYb8VtCZfXbipqV8vHYf
-	nRmg==
-X-Gm-Message-State: AG10YOQ7L97NgtEnIpQlzBWzv2Hr8uU+1O4h01bDZz6mi45arlBoPbPwEhCDIL1EcBDQSA==
-X-Received: by 10.140.93.87 with SMTP id c81mr35461684qge.46.1456152471058;
-	Mon, 22 Feb 2016 06:47:51 -0800 (PST)
-Received: from localhost
-	(209-122-232-221.c3-0.avec-ubr1.nyr-avec.ny.cable.rcn.com.
-	[209.122.232.221]) by smtp.gmail.com with ESMTPSA id
-	z124sm10288870qhz.46.2016.02.22.06.47.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 22 Feb 2016 06:47:50 -0800 (PST)
-Date: Mon, 22 Feb 2016 09:47:49 -0500
-From: Kevin O'Connor <kevin@koconnor.net>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20160222144749.GA6977@morn.lan>
-References: <1456144729-17196-1-git-send-email-mst@redhat.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=E51JjFcGu1/c3GBkZewlyDhG93pTImraAAR6+/aHNKs=;
+	b=FUEFUnh3CiMnSCUixZ7c5493AtBfqmHYahN0E/LoRou5qAAF6SCnk0IZpZFpiup5Zy
+	R2Abu83Yq4QsljhlKU1YeB3PMFtVuc6LSz/OckcA1nYkr2zGmrMsomCttrjTBO66sGAo
+	qcsrkhgOf9k8Pe4m8Nge60b1d0n4XyyTlDw8S1XG31evbIousDCv9oM14JZrKAMvFRM7
+	C9gbfL1YkNn8V6ehKh4bK8VFwsZHWrBQB4T/LogYY1h+VUjSolxkYxi1ZDT07HWFMVnY
+	tBMMfVbt/I5qrrkZZRpCpr0MMdqPqAQNd76NhuuSQaUD1RPo96GVYahuH874VTWNQ83r
+	JRKw==
+X-Gm-Message-State: AG10YOTT4ZGnjD9dvFIjkX69SSiWh2R4h+ndmnXVRHs7M3HzdeGyS0V3RbQ+wx9swFd3p5UnZYRGit1JLodLoA==
+X-Received: by 10.182.61.38 with SMTP id m6mr24757018obr.32.1456164410628;
+	Mon, 22 Feb 2016 10:06:50 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1456144729-17196-1-git-send-email-mst@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Received: by 10.182.49.199 with HTTP; Mon, 22 Feb 2016 10:06:21 -0800 (PST)
+In-Reply-To: <CAFEAcA8_oJZU_mHBbmSk0XvJPaevAri6A-UwBkMHCBh2op9h+A@mail.gmail.com>
+References: <1455892784-11328-1-git-send-email-peter.maydell@linaro.org>
+	<1455892784-11328-3-git-send-email-peter.maydell@linaro.org>
+	<CAKmqyKNy79b8_k2wOO_v0DgXc3OCwhcHv7zVkcEPe_Fft6-Gpw@mail.gmail.com>
+	<CAFEAcA8_oJZU_mHBbmSk0XvJPaevAri6A-UwBkMHCBh2op9h+A@mail.gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 22 Feb 2016 10:06:21 -0800
+Message-ID: <CAKmqyKPBjqDX+nZ79k1z5zr0AXx5jV2eJCGbqVosPaymZgGFrw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c04::234
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>, qemu-devel@nongnu.org,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [PATCH RFC] fw-cfg: support writeable blobs
+X-Received-From: 2607:f8b0:4003:c01::22a
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] target-arm: Implement
+ MDCR_EL3.TPM and MDCR_EL2.TPM traps
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -94,43 +87,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8PzjVN8yX1UI
+X-TUID: 0RywJ9KUPQ0w
 
-On Mon, Feb 22, 2016 at 02:41:38PM +0200, Michael S. Tsirkin wrote:
-> Useful to send guest data back to QEMU.
-> The write interface is restricted to DMA.
-> 
-> Suggested-by: Kevin O'Connor <kevin@koconnor.net>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
-> 
->  hw/lm32/lm32_hwsetup.h    |  2 +-
->  include/hw/loader.h       |  4 ++--
->  include/hw/nvram/fw_cfg.h |  3 ++-
->  hw/arm/virt-acpi-build.c  |  2 +-
->  hw/core/loader.c          | 19 ++++++++++++-------
->  hw/i386/acpi-build.c      |  4 ++--
->  hw/nvram/fw_cfg.c         | 36 ++++++++++++++++++++++++++++--------
->  7 files changed, 48 insertions(+), 22 deletions(-)
-> 
-> diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
-> index 838754d..805b445 100644
-> --- a/hw/lm32/lm32_hwsetup.h
-> +++ b/hw/lm32/lm32_hwsetup.h
-> @@ -74,7 +74,7 @@ static inline void hwsetup_create_rom(HWSetup *hw,
->          hwaddr base)
->  {
->      rom_add_blob("hwsetup", hw->data, TARGET_PAGE_SIZE,
-> -                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL);
-> +                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, true);
->  }
+On Sat, Feb 20, 2016 at 3:28 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 19 February 2016 at 19:38, Alistair Francis <alistair23@gmail.com> wrote:
+>> On Fri, Feb 19, 2016 at 6:39 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>> +/* Check for traps to performance monitor registers, which are controlled
+>>> + * by MDCR_EL2.TPM for EL2 and MDCR_EL3.TPM for EL3.
+>>> + */
+>>> +static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
+>>> +                                 bool isread)
+>>> +{
+>>> +    int el = arm_current_el(env);
+>>> +
+>>> +    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+>>> +        && !arm_is_secure_below_el3(env)) {
+>>> +        return CP_ACCESS_TRAP_EL2;
+>>> +    }
+>>> +    if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+>>> +        return CP_ACCESS_TRAP_EL3;
+>>> +    }
+>>
+>> Hey Peter,
+>>
+>> Why not use else if?
+>
+> I generally tend not to use else-if ladders if the thing
+> in the conditional returns unconditionally, just as a
+> personal style preference. "if () { X } else if () { Y } Z"
+> implies a possible control flow path of "take the if
+> branch so run X, then skip Y, and continue after to run Z",
+> and if X returns unconditionally that can't happen.
+> It also matches up with the usual approach of
+>    if (something) {
+>        early return;
+>    }
+>    main body of function;
+>
+> which you wouldn't want to write as
+>    if (something) {
+>       early return;
+>    } else {
+>       main body;
+>    }
 
-Instead of supporting "writable blobs", I wonder if it would be
-simpler for both firmware and qemu to implement an "ioctl" like
-interface.  That is, just directly invoke a new fw_cfg callback from
-fw_cfg_dma_transfer() with the data obtained via dma_memory_read().  I
-think that may be more flexible because then the QEMU code doesn't
-have to check for changes to a blob - it would instead be immediately
-invoked upon a change.
+Fair point. I always thought of it the other way around. If you can't
+go into the other branches then it should be if () { return } else if
+() { return } to make it more explict.
 
--Kevin
+It doesn't matter though.
+
+Acked-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Thanks,
+
+Alistair
+
+>
+> thanks
+> -- PMM

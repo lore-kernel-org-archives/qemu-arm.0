@@ -1,107 +1,183 @@
-Received: by 10.25.208.211 with SMTP id h202csp1872572lfg;
-        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
-X-Received: by 10.140.42.39 with SMTP id b36mr42951854qga.4.1456252960738;
-        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1875851lfg;
+        Tue, 23 Feb 2016 10:51:21 -0800 (PST)
+X-Received: by 10.140.241.5 with SMTP id m5mr28555771qhc.98.1456253481460;
+        Tue, 23 Feb 2016 10:51:21 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m22si8161814qki.19.2016.02.23.10.42.40
+        by mx.google.com with ESMTPS id u4si35121242qka.50.2016.02.23.10.51.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 23 Feb 2016 10:51:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:59316 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYHuy-0003Nv-5G
-	for alex.bennee@linaro.org; Tue, 23 Feb 2016 13:42:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39864)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aYI3M-0006v4-PI
+	for alex.bennee@linaro.org; Tue, 23 Feb 2016 13:51:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYHuv-0003Ng-Pl
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:38 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aYI2a-00067X-FP
+	for qemu-devel@nongnu.org; Tue, 23 Feb 2016 13:50:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYHuu-0003uF-T8
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:37 -0500
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:35950)
+	(envelope-from <pm215@archaic.org.uk>) id 1aYI2Z-0005kL-9n
+	for qemu-devel@nongnu.org; Tue, 23 Feb 2016 13:50:32 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:55948)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYHuu-0003uB-Ai
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:36 -0500
-Received: by mail-vk0-x230.google.com with SMTP id c3so170040716vkb.3
-	for <qemu-arm@nongnu.org>; Tue, 23 Feb 2016 10:42:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=YjO0fcmKmWnHpFnCMkHtbnncyUZSkWuvuyeoFFyhLRQ=;
-	b=QT9W+okiuL/NVqnOYczZ8ztiygtpHU+g/Ggns68QZgSg5aZInEorkZht9C8lcVvTXJ
-	J8sc6yHi0idYV/oeNV0YmUPCAJpeAMfBoYUPYlupBGXmK6X1HbuyxB+9qfpSwtJ12Bfm
-	l6Ue5QHukCTx1FQpTHGpJ/D9Ys+HPwU3E8HRQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=YjO0fcmKmWnHpFnCMkHtbnncyUZSkWuvuyeoFFyhLRQ=;
-	b=Uk+kHYvJrkx8m38i9naXHjowN+sQQPeHe5CzSfStmqylgY9R8jg+nb7n4WGGXPT/ww
-	JbOKb0y0LNSZhJ9X1iM/6RgSJom9eQJKsvleUfjfMKGu3k+ytQ+Ar4V+yCpol2LzhIat
-	uT5OFqxj0XSkHBxMsvzMxHwXPUT/cGSK9YYxz1LY9kUQ3iesergYdipSEMtUktxxdbPh
-	ERsztGTkAiyA7icvU1xbSBRmYrZdKDxWVmZiU7Rf1Vm1WwJqlHdLw/SVr3tRTrJViWp+
-	MyZMLmGwn0zZ94hgNnhUEuhGI09B7LjzJPfLVLYIpVDKEt906Mdp4TiQrTeowf88vLOd
-	QV3A==
-X-Gm-Message-State: AG10YORfHubukYMyRGOttmSCNVIe1CN25LL0wkM/AQ4/CwQsrnUdS9sgdRQd8JGIVIrkozMyd8G3md4idQPMaYhf
-X-Received: by 10.31.52.147 with SMTP id b141mr29402685vka.82.1456252955443;
-	Tue, 23 Feb 2016 10:42:35 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Tue, 23 Feb 2016 10:42:16 -0800 (PST)
-In-Reply-To: <56CCA649.8090906@redhat.com>
-References: <1456175198-25210-1-git-send-email-wei@redhat.com>
-	<CAFEAcA8vyVL6jyMTGCap9Bu=eyqR2OUN5LzH5Sjo965Fn4PmHA@mail.gmail.com>
-	<56CCA649.8090906@redhat.com>
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aYI2Z-0005k2-27; Tue, 23 Feb 2016 13:50:31 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1aYI2U-0001xX-S4; Tue, 23 Feb 2016 18:50:26 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Feb 2016 18:42:16 +0000
-Message-ID: <CAFEAcA-gXuVJjJS8T87ru9YE+5VrJ25eXoqkwxsd21OK6__Upw@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Feb 2016 18:50:25 +0000
+Message-Id: <1456253425-13541-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrea Bolognani <abologna@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH RFC 0/2] Versioning ARM virt machine types
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Cc: Shlomo Pongratz <shlomopongratz@gmail.com>, qemu-arm@nongnu.org,
+	patches@linaro.org
+Subject: [Qemu-devel] [PATCH] hw/intc/arm_gic.c: Implement GICv2 GICC_DIR
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MsvhpcKmNRSa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 959lx1SrOree
 
-On 23 February 2016 at 18:34, Wei Huang <wei@redhat.com> wrote:
-> On 02/22/2016 04:14 PM, Peter Maydell wrote:
->> My view here is the same as it has been in the past regarding
->> adding versioned machine types for 'virt': are you (in this case
->> Redhat) willing to stand behind it, in the sense of taking on
->> the maintenance burden of adding new machine versions, reviewing
->> new code contributions for issues that require changes to make sure
->> that the old versions stay looking like the old machine, testing
->> that old versions look right, testing cross version migration,
->> and so on?
->
-> I understand your concerns. Currently our in-house tree already carries
-> versioned ARM machine types, which mirror both QEMU 2.4 and QEMU 2.5.
-> Thus someone (including myself) from Red Hat shouldn't have any problem
-> of maintaining/testing it because we are already doing it downstream.
-> x86 and ppc have a similar situation.
+The GICv2 introduces a new CPU interface register GICC_DIR, which
+allows an OS to split the "priority drop" and "deactivate interrupt"
+parts of interrupt completion. Implement this register.
+(Note that the register is at offset 0x1000 in the CPU interface,
+which means it is on a different 4K page from all the other registers.)
 
-Thanks for the clarification -- if you as a distro are already
-supporting versioned machine types downstream that's a strong
-argument for adding it upstream.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+We've been missing this for ages, but since Linux defaults to not
+using it it hasn't mattered. However Linux will use GICC_DIR if
+it is started in Hyp mode, so this is needed for proper EL2 support.
+Luckily since I did the groundwork for this by implementing active
+priorities properly last year, this is now straightforward.
 
--- PMM
+Tested with a hacked Linux kernel that disables the "return false if
+no hyp mode" check in gic_check_eoimode(). OTOH that hacked kernel will
+boot OK on the broken QEMU too because it's hard to tell the difference
+between correct behaviour and "EOI does prio-drop+deactivate regardless
+of EOIMode, and DIR is writes-ignored".
+
+
+ hw/cpu/a15mpcore.c       |  2 +-
+ hw/intc/arm_gic.c        | 46 +++++++++++++++++++++++++++++++++++++++++++++-
+ hw/intc/arm_gic_common.c |  2 +-
+ 3 files changed, 47 insertions(+), 3 deletions(-)
+
+diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+index e9063ad..a221b8f 100644
+--- a/hw/cpu/a15mpcore.c
++++ b/hw/cpu/a15mpcore.c
+@@ -109,7 +109,7 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
+     /* Memory map (addresses are offsets from PERIPHBASE):
+      *  0x0000-0x0fff -- reserved
+      *  0x1000-0x1fff -- GIC Distributor
+-     *  0x2000-0x2fff -- GIC CPU interface
++     *  0x2000-0x3fff -- GIC CPU interface
+      *  0x4000-0x4fff -- GIC virtual interface control (not modelled)
+      *  0x5000-0x5fff -- GIC virtual interface control (not modelled)
+      *  0x6000-0x7fff -- GIC virtual CPU interface (not modelled)
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 60ab9b8..5536b37 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -500,6 +500,42 @@ static uint8_t gic_get_running_priority(GICState *s, int cpu, MemTxAttrs attrs)
+     }
+ }
+ 
++/* Return true if we should split priority drop and interrupt deactivation,
++ * ie whether the relevant EOIMode bit is set.
++ */
++static bool gic_eoi_split(GICState *s, int cpu, MemTxAttrs attrs)
++{
++    if (s->revision != 2) {
++        /* Before GICv2 prio-drop and deactivate are not separable */
++        return false;
++    }
++    if (s->security_extn && !attrs.secure) {
++        return s->cpu_ctlr[cpu] & GICC_CTLR_EOIMODE_NS;
++    }
++    return s->cpu_ctlr[cpu] & GICC_CTLR_EOIMODE;
++}
++
++static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
++{
++    int cm = 1 << cpu;
++    int group = gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
++
++    if (!gic_eoi_split(s, cpu, attrs)) {
++        /* This is UNPREDICTABLE; we choose to ignore it */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_deactivate_irq: GICC_DIR write when EOIMode clear");
++        return;
++    }
++
++    if (s->security_extn && !attrs.secure && !group) {
++        DPRINTF("Non-secure DI for Group0 interrupt %d ignored\n", irq);
++        return;
++    }
++
++    GIC_CLEAR_ACTIVE(irq, cm);
++    gic_update(s);
++}
++
+ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+ {
+     int cm = 1 << cpu;
+@@ -544,7 +580,11 @@ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+      */
+ 
+     gic_drop_prio(s, cpu, group);
+-    GIC_CLEAR_ACTIVE(irq, cm);
++
++    /* In GICv2 the guest can choose to split priority-drop and deactivate */
++    if (!gic_eoi_split(s, cpu, attrs)) {
++        GIC_CLEAR_ACTIVE(irq, cm);
++    }
+     gic_update(s);
+ }
+ 
+@@ -1210,6 +1250,10 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+         s->nsapr[regno][cpu] = value;
+         break;
+     }
++    case 0x1000:
++        /* GICC_DIR */
++        gic_deactivate_irq(s, cpu, value & 0x3ff, attrs);
++        break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "gic_cpu_write: Bad offset %x\n", (int)offset);
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index ac8cf42..707d00d 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -121,7 +121,7 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+          * neither it can use KVM.
+          */
+         memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
+-                              s, "gic_cpu", s->revision == 2 ? 0x1000 : 0x100);
++                              s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
+         sysbus_init_mmio(sbd, &s->cpuiomem[0]);
+     }
+ }
+-- 
+1.9.1
+

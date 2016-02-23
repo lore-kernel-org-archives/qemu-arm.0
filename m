@@ -1,59 +1,69 @@
-Received: by 10.25.208.211 with SMTP id h202csp1869547lfg;
-        Tue, 23 Feb 2016 10:35:05 -0800 (PST)
-X-Received: by 10.140.105.198 with SMTP id c64mr43630527qgf.94.1456252505036;
-        Tue, 23 Feb 2016 10:35:05 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1872572lfg;
+        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
+X-Received: by 10.140.42.39 with SMTP id b36mr42951854qga.4.1456252960738;
+        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h8si24137858qgh.33.2016.02.23.10.35.04
+        by mx.google.com with ESMTPS id m22si8161814qki.19.2016.02.23.10.42.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 10:35:05 -0800 (PST)
+        Tue, 23 Feb 2016 10:42:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59239 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:59316 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYHnc-0003eX-9E
-	for alex.bennee@linaro.org; Tue, 23 Feb 2016 13:35:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37909)
+	id 1aYHuy-0003Nv-5G
+	for alex.bennee@linaro.org; Tue, 23 Feb 2016 13:42:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39864)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aYHnZ-0003Zk-8z
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:35:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aYHuv-0003Ng-Pl
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1aYHnV-0001Wa-CR
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:35:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43016)
+	(envelope-from <peter.maydell@linaro.org>) id 1aYHuu-0003uF-T8
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:37 -0500
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:35950)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1aYHnP-0001Ui-Qa; Tue, 23 Feb 2016 13:34:57 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 492B46436A;
-	Tue, 23 Feb 2016 18:34:51 +0000 (UTC)
-Received: from [10.10.57.6] (vpn-57-6.rdu2.redhat.com [10.10.57.6])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1NIYn05010477
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 23 Feb 2016 13:34:50 -0500
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1aYHuu-0003uB-Ai
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 13:42:36 -0500
+Received: by mail-vk0-x230.google.com with SMTP id c3so170040716vkb.3
+	for <qemu-arm@nongnu.org>; Tue, 23 Feb 2016 10:42:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type;
+	bh=YjO0fcmKmWnHpFnCMkHtbnncyUZSkWuvuyeoFFyhLRQ=;
+	b=QT9W+okiuL/NVqnOYczZ8ztiygtpHU+g/Ggns68QZgSg5aZInEorkZht9C8lcVvTXJ
+	J8sc6yHi0idYV/oeNV0YmUPCAJpeAMfBoYUPYlupBGXmK6X1HbuyxB+9qfpSwtJ12Bfm
+	l6Ue5QHukCTx1FQpTHGpJ/D9Ys+HPwU3E8HRQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type;
+	bh=YjO0fcmKmWnHpFnCMkHtbnncyUZSkWuvuyeoFFyhLRQ=;
+	b=Uk+kHYvJrkx8m38i9naXHjowN+sQQPeHe5CzSfStmqylgY9R8jg+nb7n4WGGXPT/ww
+	JbOKb0y0LNSZhJ9X1iM/6RgSJom9eQJKsvleUfjfMKGu3k+ytQ+Ar4V+yCpol2LzhIat
+	uT5OFqxj0XSkHBxMsvzMxHwXPUT/cGSK9YYxz1LY9kUQ3iesergYdipSEMtUktxxdbPh
+	ERsztGTkAiyA7icvU1xbSBRmYrZdKDxWVmZiU7Rf1Vm1WwJqlHdLw/SVr3tRTrJViWp+
+	MyZMLmGwn0zZ94hgNnhUEuhGI09B7LjzJPfLVLYIpVDKEt906Mdp4TiQrTeowf88vLOd
+	QV3A==
+X-Gm-Message-State: AG10YORfHubukYMyRGOttmSCNVIe1CN25LL0wkM/AQ4/CwQsrnUdS9sgdRQd8JGIVIrkozMyd8G3md4idQPMaYhf
+X-Received: by 10.31.52.147 with SMTP id b141mr29402685vka.82.1456252955443;
+	Tue, 23 Feb 2016 10:42:35 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Tue, 23 Feb 2016 10:42:16 -0800 (PST)
+In-Reply-To: <56CCA649.8090906@redhat.com>
 References: <1456175198-25210-1-git-send-email-wei@redhat.com>
 	<CAFEAcA8vyVL6jyMTGCap9Bu=eyqR2OUN5LzH5Sjo965Fn4PmHA@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <56CCA649.8090906@redhat.com>
-Date: Tue, 23 Feb 2016 12:34:49 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8vyVL6jyMTGCap9Bu=eyqR2OUN5LzH5Sjo965Fn4PmHA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 23 Feb 2016 18:34:51 +0000 (UTC)
+	<56CCA649.8090906@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Feb 2016 18:42:16 +0000
+Message-ID: <CAFEAcA-gXuVJjJS8T87ru9YE+5VrJ25eXoqkwxsd21OK6__Upw@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 2607:f8b0:400c:c05::230
 Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Andrea Bolognani <abologna@redhat.com>
@@ -71,53 +81,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3eGmxkk+6RQ8
+X-TUID: MsvhpcKmNRSa
 
+On 23 February 2016 at 18:34, Wei Huang <wei@redhat.com> wrote:
+> On 02/22/2016 04:14 PM, Peter Maydell wrote:
+>> My view here is the same as it has been in the past regarding
+>> adding versioned machine types for 'virt': are you (in this case
+>> Redhat) willing to stand behind it, in the sense of taking on
+>> the maintenance burden of adding new machine versions, reviewing
+>> new code contributions for issues that require changes to make sure
+>> that the old versions stay looking like the old machine, testing
+>> that old versions look right, testing cross version migration,
+>> and so on?
+>
+> I understand your concerns. Currently our in-house tree already carries
+> versioned ARM machine types, which mirror both QEMU 2.4 and QEMU 2.5.
+> Thus someone (including myself) from Red Hat shouldn't have any problem
+> of maintaining/testing it because we are already doing it downstream.
+> x86 and ppc have a similar situation.
 
+Thanks for the clarification -- if you as a distro are already
+supporting versioned machine types downstream that's a strong
+argument for adding it upstream.
 
-On 02/22/2016 04:14 PM, Peter Maydell wrote:
-> On 22 February 2016 at 21:06, Wei Huang <wei@redhat.com> wrote:
->> We start to see more features been added to ARM virtual machine models.
->> For the purpose of backward compatibility (e.g. migration), it is time
->> to consider versioning machine types for ARM VMs. As a beginning step, this
->> patchset defines an abstract machine type for ARM VMs. The current
->> "virt" machine is re-written based on this new machine type accordingly.
->> These patches have been verified by booting existing VMs.
->>
->> Note that I am seeking inputs from the community by putting RFC in the
->> subject line. Please let me know your opinions. I will send out V1
->> afterwards.
-> 
-> My view here is the same as it has been in the past regarding
-> adding versioned machine types for 'virt': are you (in this case
-> Redhat) willing to stand behind it, in the sense of taking on
-> the maintenance burden of adding new machine versions, reviewing
-> new code contributions for issues that require changes to make sure
-> that the old versions stay looking like the old machine, testing
-> that old versions look right, testing cross version migration,
-> and so on?
-
-I understand your concerns. Currently our in-house tree already carries
-versioned ARM machine types, which mirror both QEMU 2.4 and QEMU 2.5.
-Thus someone (including myself) from Red Hat shouldn't have any problem
-of maintaining/testing it because we are already doing it downstream.
-x86 and ppc have a similar situation.
-
-> 
-> We need versioned machine types at *some* point; my intent here
-> is to provide sufficient pushback to ensure that we don't give
-> ourselves the maintenance headache until we truly need it...
-> 
-
-mach-virt based products are coming soon, so versioning is just around
-the corner. The advantage of introducing it upstream early is that the
-upper layers in the stack have a chance to integrate, and the QEMU
-downstreams don't need to diverge in how they add versioning support
-themselves. This benefits not only Red Hat but also other companies.
-
-Thanks,
--Wei
-
-> thanks
-> -- PMM
-> 
+-- PMM

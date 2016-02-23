@@ -1,63 +1,80 @@
-Received: by 10.25.208.211 with SMTP id h202csp1607595lfg;
-        Tue, 23 Feb 2016 00:52:04 -0800 (PST)
-X-Received: by 10.140.242.16 with SMTP id n16mr43045549qhc.2.1456217524786;
-        Tue, 23 Feb 2016 00:52:04 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1612614lfg;
+        Tue, 23 Feb 2016 01:05:04 -0800 (PST)
+X-Received: by 10.55.80.68 with SMTP id e65mr40368838qkb.46.1456218304832;
+        Tue, 23 Feb 2016 01:05:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t81si32986908qht.15.2016.02.23.00.52.04
+        by mx.google.com with ESMTPS id u144si33074979qka.104.2016.02.23.01.05.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Feb 2016 00:52:04 -0800 (PST)
+        Tue, 23 Feb 2016 01:05:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54992 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:55077 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aY8hP-00041f-CB
-	for alex.bennee@linaro.org; Tue, 23 Feb 2016 03:52:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44081)
+	id 1aY8u0-0005LX-9n
+	for alex.bennee@linaro.org; Tue, 23 Feb 2016 04:05:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1aY8hN-000419-HL
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 03:52:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aY8tx-0005Hx-6t
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 04:05:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1aY8hI-0000qi-Ik
-	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 03:52:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35496)
+	(envelope-from <peter.maydell@linaro.org>) id 1aY8tr-0004Kk-7F
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 04:05:01 -0500
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:35323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1aY8hI-0000q6-EI; Tue, 23 Feb 2016 03:51:56 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 30331C00230B;
-	Tue, 23 Feb 2016 08:51:55 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-29.ams2.redhat.com
-	[10.36.116.29])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1N8prIn023565; Tue, 23 Feb 2016 03:51:54 -0500
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id 2F93A818F2; Tue, 23 Feb 2016 09:51:53 +0100 (CET)
-Message-ID: <1456217512.29896.78.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Date: Tue, 23 Feb 2016 09:51:52 +0100
-In-Reply-To: <20160222133015.6eece98e@nial.brq.redhat.com>
-References: <1455906029-25565-1-git-send-email-somlo@cmu.edu>
-	<20160222133015.6eece98e@nial.brq.redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+	(envelope-from <peter.maydell@linaro.org>) id 1aY8tq-0004Jm-Pl
+	for qemu-arm@nongnu.org; Tue, 23 Feb 2016 04:04:55 -0500
+Received: by mail-vk0-x236.google.com with SMTP id e6so155034890vkh.2
+	for <qemu-arm@nongnu.org>; Tue, 23 Feb 2016 01:04:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-type:content-transfer-encoding;
+	bh=+L+axBvGfvo89tzI+MqI36msSbvHPB/7Wp4TxC1TA6c=;
+	b=TjbTRzWeMkMY9Cgf7c6HjMOCbM6ApKfqKEfrxuxtQ5uPsm8upKlqO44wvrCSAtN5Pv
+	xuiOPE4Ist94t6PtaJ7Ap3ZDwGtQfwdY2k1BO4xSh43NAh0wuATqHvqVRiYdPj0/DlgR
+	al/isLoMP6w/bzZ/h6C2DKJc3rVmPYY+d2Whc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-type:content-transfer-encoding;
+	bh=+L+axBvGfvo89tzI+MqI36msSbvHPB/7Wp4TxC1TA6c=;
+	b=DRmySLJ+naDsVjFFltw+Pdnf/HphRIQ4p34y+mSb4WT+/ytCO73ls5Xq/OK2JqU62G
+	Y5NswVeltG+LduAGLtsSP+3bieyH7fE2SoY7pWkpZFmozx5Ck+s4Z+OuChdzdTjbUPET
+	kHNmDjlgGMWklJ/nPYCu0U4ihcjevZragOxnj3jfrpUL7z7xzd5xFzyh4FLSACqaeQXN
+	ideYDQY57ORDSggThccwCCkW78hVAXzc9Vi5ZQ3b0OLPCI9Py6LkZNq3nmxDDkPI6OQH
+	S6SQnmHGi/WKyuajvH0qsmHwg+0+Y+C/3xShnBRqTl+abj62A/pejzitzeVrcn3xOF00
+	KaTg==
+X-Gm-Message-State: AG10YOQbz3zlMPpFaJ3Im1nI3qUWRudIhTLezrUFe81PsDSYuI9K4ma7vgKlsy577MlpfLSWQTpA5BD5R46P+wJq
+X-Received: by 10.31.141.2 with SMTP id p2mr27708450vkd.37.1456218294193; Tue,
+	23 Feb 2016 01:04:54 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Tue, 23 Feb 2016 01:04:34 -0800 (PST)
+In-Reply-To: <56CBEA1C.4060900@163.com>
+References: <1456132310-4826-1-git-send-email-zxq_yx_007@163.com>
+	<CAFEAcA-sDDj=kKmQnru0nfrjuHSjD8KDzO-PWGd0ia3GMZrEdg@mail.gmail.com>
+	<56CAE2DB.3080702@163.com>
+	<CAFEAcA-nbrRN7ecP9G4O-bj=K-NtKoOQXpxGygKMPgxpgxQvBA@mail.gmail.com>
+	<56CBEA1C.4060900@163.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 23 Feb 2016 09:04:34 +0000
+Message-ID: <CAFEAcA86KRN5eS4p6frpP5XnxUE69nXB3aQ6=W3zKE+j1RV8nA@mail.gmail.com>
+To: hitmoon <zxq_yx_007@163.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
-	matt@codeblueprint.co.uk, stefanha@gmail.com,
-	"Gabriel L. Somlo" <somlo@cmu.edu>, ard.biesheuvel@linaro.org,
-	qemu-devel@nongnu.org, leif.lindholm@linaro.org,
-	luto@amacapital.net, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	lersek@redhat.com, rth@twiddle.net
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 0/5] add ACPI node for fw_cfg
- on pc and arm
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::236
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-arm] [PATCH v4 5/9] hw/timer: QOM'ify m48txx_sysbus (pass
+	2)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,22 +88,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wPau5yzyIIU5
+X-TUID: ximcs8CF+ydQ
 
-On Mo, 2016-02-22 at 13:30 +0100, Igor Mammedov wrote:
-> On Fri, 19 Feb 2016 13:20:24 -0500
-> "Gabriel L. Somlo" <somlo@cmu.edu> wrote:
->=20
-> Gerd,
->=20
-> if you are going to apply it, you'll need to update
-> expected tables for acpi test (rebuild-expected-aml.sh)
-> as a commit on top of this series.
+On 23 February 2016 at 05:11, hitmoon <zxq_yx_007@163.com> wrote:
+>
+> =E5=9C=A8 2016=E5=B9=B402=E6=9C=8822=E6=97=A5 19:03, Peter Maydell =E5=86=
+=99=E9=81=93:
+>> You'd basically need to have extra VMState structures for the
+>> devices themselves which just said "inside this M48txxISAState
+>> is an M48t59State", and "inside this M48txxSysBusState is a
+>> M48t59State" and referred to the existing vmstate for the
+>> M48t59State.
 
-Sure?
+> I add a new  structure for m48t59_isa as follows:
+>
+> static const VMStateDescription vmstate_m48t59_isa =3D {
+>     .name =3D "m48t59-isa",
+>     .version_id =3D 1,
+>     .minimum_version_id =3D 1,
+>     .fields =3D (VMStateField[]) {
+>         VMSTATE_UINT8(state.lock, M48txxISAState),
+>         VMSTATE_UINT16(state.addr, M48txxISAState),
+>         VMSTATE_VBUFFER_UINT32(state.buffer, M48txxISAState, 0, NULL, 0,
+> state.size),
+>         VMSTATE_END_OF_LIST()
+>     }
+> };
+>
+> is this correct?
 
-Applied the series, ran "make check", no errors.
+No. I said you needed to have a vmstate struct that said
+"inside this M48txxISAState is a M48t59State", and your
+suggested struct is not doing that.
 
-cheers,
-  Gerd
-
+thanks
+-- PMM

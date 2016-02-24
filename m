@@ -1,143 +1,137 @@
-Received: by 10.25.208.211 with SMTP id h202csp2398265lfg;
-        Wed, 24 Feb 2016 10:28:19 -0800 (PST)
-X-Received: by 10.140.27.174 with SMTP id 43mr49947767qgx.67.1456338499131;
-        Wed, 24 Feb 2016 10:28:19 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp2408242lfg;
+        Wed, 24 Feb 2016 10:51:47 -0800 (PST)
+X-Received: by 10.55.75.144 with SMTP id y138mr51018294qka.96.1456339907007;
+        Wed, 24 Feb 2016 10:51:47 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f20si3872205qhe.122.2016.02.24.10.28.18
+        by mx.google.com with ESMTPS id r131si3977960qhb.111.2016.02.24.10.51.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Feb 2016 10:28:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 24 Feb 2016 10:51:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37622 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:37714 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYeAc-0005LS-MR
-	for alex.bennee@linaro.org; Wed, 24 Feb 2016 13:28:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aYeXJ-0007Yt-Bf
+	for alex.bennee@linaro.org; Wed, 24 Feb 2016 13:51:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33638)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1aYeAH-00053V-Ac
-	for qemu-devel@nongnu.org; Wed, 24 Feb 2016 13:27:58 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aYeXH-0007Yl-0P
+	for qemu-arm@nongnu.org; Wed, 24 Feb 2016 13:51:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1aYeAG-00025w-33
-	for qemu-devel@nongnu.org; Wed, 24 Feb 2016 13:27:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54237)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aYeXD-0008Mg-Pd
+	for qemu-arm@nongnu.org; Wed, 24 Feb 2016 13:51:42 -0500
+Received: from mail-bl2on0138.outbound.protection.outlook.com
+	([65.55.169.138]:6944
+	helo=na01-bl2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>)
-	id 1aYeAB-000259-0Z; Wed, 24 Feb 2016 13:27:51 -0500
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 7A644C057867;
-	Wed, 24 Feb 2016 18:27:50 +0000 (UTC)
-Received: from scv.usersys.redhat.com (vpn-58-102.rdu2.redhat.com
-	[10.10.58.102])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u1OIRmhQ015842; Wed, 24 Feb 2016 13:27:49 -0500
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aYeXD-0008MQ-H2; Wed, 24 Feb 2016 13:51:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=kkZ8OYci1vPVvRdxobCxSPcgrRFd66qPUBcG48j7rkY=;
+	b=k0akMfqVPZs/eW+Fk4zqfaTaLqy19J5w3iU9gs/72Jl6utl3tnq4590Yo4I78ZdmRZvzzMnmvMEA/u8BUO5AHCsl1cPmJaTaufL2JFs5G4cFTDZSTyj5ZY//sfu1eKzW8VhgwKyk+DArNtSXP2rc85h/6lQh815kftDs7XNUNG8=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
+	SMTP Server (TLS) id 15.1.409.15; Wed, 24 Feb 2016 18:51:37 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0409.024; Wed, 24 Feb 2016 18:51:37 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	Mats Malmberg <mats.malmberg@tritech.se>
+Thread-Topic: [Qemu-devel] [Qemu-arm] help on how to emulate rasbperry pi 2
+Thread-Index: AQHRbyuhTtcp6DFdR0aZb1Ld0rYnj587fCNggAAHpQCAAAYYoA==
+Date: Wed, 24 Feb 2016 18:51:37 +0000
+Message-ID: <BLUPR0301MB2034F3C40B01A1A3536A837C9EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
 References: <605392182193B84A99A143D9DA347B52FB8AA7@post>
 	<CAFEAcA9xvDiHAc6Tu-PLbjd=RruX1c+vpfZg+ZvtH5t3DSyUOw@mail.gmail.com>
 	<BLUPR0301MB2034905DFE5B0135A1BE897A9EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
-From: John Snow <jsnow@redhat.com>
-Message-ID: <56CDF624.6050104@redhat.com>
-Date: Wed, 24 Feb 2016 13:27:48 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	<56CDF624.6050104@redhat.com>
+In-Reply-To: <56CDF624.6050104@redhat.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: redhat.com; dkim=none (message not signed)
+	header.d=none; redhat.com;
+	dmarc=none action=none header.from=microsoft.com; 
+x-originating-ip: [2001:4898:80e8:a::77f]
+x-ms-office365-filtering-correlation-id: 55d1aff5-29a8-49fd-8554-08d33d4b8689
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
+	5:mdvMdl19WBdq1mZeG2XwsgLnEMShSwHjeURnQZJiY9azv3GRFJfhQVhZtB1uhZ2sCfTW2I9n/WUJaxQKEcetmZQr14+Nn8czAvLZeJYLIWgDRfWsSNsV5ZHmoDEURhAPdHmcmZ0/BFUTmEYxcy9TNA==;
+	24:ap9mANImWb3MxzPG+dtEGILdxW7S99PHiv98Xnk1QEAPT4nI9DUL0M/Vc1UL6/EXW1nzyUsSO7lHWkIK4Fn28Hg3g2qPooEwUkCHHU7mSHY=
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
+x-microsoft-antispam-prvs: <BLUPR0301MB2034A650684E495400637B519EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
+	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2034; 
+x-forefront-prvs: 08626BE3A5
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(24454002)(377454003)(53754006)(479174004)(92566002)(74316001)(15975445007)(6116002)(3660700001)(40100003)(99286002)(3280700002)(19580395003)(77096005)(5001770100001)(19580405001)(8990500004)(10090500001)(10400500002)(2900100001)(2950100001)(33656002)(5005710100001)(122556002)(10290500002)(11100500001)(1096002)(54356999)(76176999)(189998001)(106116001)(5001960100002)(87936001)(50986999)(102836003)(4326007)(1220700001)(2906002)(5008740100001)(5004730100002)(586003)(5003600100002)(76576001)(93886004)(86362001)(5002640100001);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	MLV:sfv; LANG:en; 
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <BLUPR0301MB2034905DFE5B0135A1BE897A9EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2016 18:51:37.6341 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 65.55.169.138
 Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [Qemu-arm] help on how to emulate rasbperry pi 2
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel]  help on how to emulate rasbperry pi 2
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tHArIZZaxhbx
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: obFt+ZD7wGLU
 
-
-
-On 02/24/2016 01:04 PM, Andrew Baumann wrote:
->> From: Peter Maydell [mailto:peter.maydell@linaro.org]
->> Sent: Wednesday, 24 February 2016 9:49 AM
->>
->> On 24 February 2016 at 15:40, Mats Malmberg <mats.malmberg@tritech.se>
->> wrote:
->>>
->>> Hello all!
->>>
->>> TL;DR : Is the raspi2 machine ready to use? If yes, how do I use it with
->>> ordinary rpi distros? If not, what is the best way to emulate raspberry
->>> pi 2 via Qemu?
->>
->> Hi; I've cc'd the main qemu-devel list and Andrew Baumann who contributed
->> the rpi2 support. I know there are still some missing pieces to be
->> added later but I forget the details.
-> 
-> There are still a number of missing pieces (including display and USB) which I hope to submit soon, but you should be able to boot Linux with a serial console. Brief instructions are at the end of this page: https://github.com/0xabu/qemu/wiki
-> 
-> BTW, instead of -hda you need to pass -sd for the image file.
-> 
-> Cheers,
-> Andrew
-> 
-
-Is it worth changing the default interface for the "raspi2" board to be
-SD so that "-hda xxxxx" mounts an SD card?
-
-Or do we support using that for an imagined S/ATA interface? (BCM2836
-doesn't have SATA, right?)
-
->>
->>> Host 'uname -a' output:
->>> Linux user-Precision-M4700 3.19.0-49-generic #55~14.04.1-Ubuntu SMP Fri
->> Jan 22 11:24:31 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
->>>
->>> Qemu version (via apt-get) 2.5.50
->>>
->>>
->>>
->>> I have been trying lately to get an emulation going with the raspi2 machine.
->> I admit that this is my first encounter with trying to use qemu, so perhaps
->> some of my attempts have been naive in their approach. Still, I've spent a lot
->> of time googling guides, qemu user documentation, blog posts, git
->> repositories etc, but with no success. Now I'm all out of ideas...
->>>
->>> I've tried more ways than suitable to describe here, but in short I typically:
->>> 1. take a official linux distro for raspberry pi (alpine, raspbian-jessie, Hypriot
->> etc) (all of them verified to work on actual target)
->>> 2. find a (what I think is) a compatible kernel, either by copying from
->> distro's rootfs boot/ directory or by building a qemu kernel from source
->> (https://github.com/dhruvvyas90/qemu-rpi-kernel)
->>> 3. try and start the emulation with
->>> qemu-system-arm -kernel kernel_file -M raspi2 -hda linux_image_file.img
->>>
->>> at this point, the terminal says "VNC server running on '127.0.0.1;5900'
->>> 4. using vinagre client i connect to the given address, but it only gives me a
->> compat_monitor0 console
->>>
->>> Thus I wonder, is the raspi2 machine a feature that is ready to use?
->>> If so, where do I fail in my attempts? If not, what is a recommended
->> alternative?
->>>
->>> Any help or pointers on how to be able to emulate my target (raspberry pi
->> 2) would be very appreciated.
->>
->> thanks
->> -- PMM
+PiBGcm9tOiBKb2huIFNub3cgW21haWx0bzpqc25vd0ByZWRoYXQuY29tXQ0KPiBTZW50OiBXZWRu
+ZXNkYXksIDI0IEZlYnJ1YXJ5IDIwMTYgMTA6MjggQU0NCj4gT24gMDIvMjQvMjAxNiAwMTowNCBQ
+TSwgQW5kcmV3IEJhdW1hbm4gd3JvdGU6DQo+ID4+IEZyb206IFBldGVyIE1heWRlbGwgW21haWx0
+bzpwZXRlci5tYXlkZWxsQGxpbmFyby5vcmddDQo+ID4+IFNlbnQ6IFdlZG5lc2RheSwgMjQgRmVi
+cnVhcnkgMjAxNiA5OjQ5IEFNDQo+ID4+DQo+ID4+IE9uIDI0IEZlYnJ1YXJ5IDIwMTYgYXQgMTU6
+NDAsIE1hdHMgTWFsbWJlcmcNCj4gPG1hdHMubWFsbWJlcmdAdHJpdGVjaC5zZT4NCj4gPj4gd3Jv
+dGU6DQo+ID4+Pg0KPiA+Pj4gSGVsbG8gYWxsIQ0KPiA+Pj4NCj4gPj4+IFRMO0RSIDogSXMgdGhl
+IHJhc3BpMiBtYWNoaW5lIHJlYWR5IHRvIHVzZT8gSWYgeWVzLCBob3cgZG8gSSB1c2UgaXQgd2l0
+aA0KPiA+Pj4gb3JkaW5hcnkgcnBpIGRpc3Ryb3M/IElmIG5vdCwgd2hhdCBpcyB0aGUgYmVzdCB3
+YXkgdG8gZW11bGF0ZSByYXNwYmVycnkNCj4gPj4+IHBpIDIgdmlhIFFlbXU/DQo+ID4+DQo+ID4+
+IEhpOyBJJ3ZlIGNjJ2QgdGhlIG1haW4gcWVtdS1kZXZlbCBsaXN0IGFuZCBBbmRyZXcgQmF1bWFu
+biB3aG8NCj4gY29udHJpYnV0ZWQNCj4gPj4gdGhlIHJwaTIgc3VwcG9ydC4gSSBrbm93IHRoZXJl
+IGFyZSBzdGlsbCBzb21lIG1pc3NpbmcgcGllY2VzIHRvIGJlDQo+ID4+IGFkZGVkIGxhdGVyIGJ1
+dCBJIGZvcmdldCB0aGUgZGV0YWlscy4NCj4gPg0KPiA+IFRoZXJlIGFyZSBzdGlsbCBhIG51bWJl
+ciBvZiBtaXNzaW5nIHBpZWNlcyAoaW5jbHVkaW5nIGRpc3BsYXkgYW5kIFVTQikgd2hpY2gNCj4g
+SSBob3BlIHRvIHN1Ym1pdCBzb29uLCBidXQgeW91IHNob3VsZCBiZSBhYmxlIHRvIGJvb3QgTGlu
+dXggd2l0aCBhIHNlcmlhbA0KPiBjb25zb2xlLiBCcmllZiBpbnN0cnVjdGlvbnMgYXJlIGF0IHRo
+ZSBlbmQgb2YgdGhpcyBwYWdlOg0KPiBodHRwczovL2dpdGh1Yi5jb20vMHhhYnUvcWVtdS93aWtp
+DQo+ID4NCj4gPiBCVFcsIGluc3RlYWQgb2YgLWhkYSB5b3UgbmVlZCB0byBwYXNzIC1zZCBmb3Ig
+dGhlIGltYWdlIGZpbGUuDQo+ID4NCj4gPiBDaGVlcnMsDQo+ID4gQW5kcmV3DQo+ID4NCj4gDQo+
+IElzIGl0IHdvcnRoIGNoYW5naW5nIHRoZSBkZWZhdWx0IGludGVyZmFjZSBmb3IgdGhlICJyYXNw
+aTIiIGJvYXJkIHRvIGJlDQo+IFNEIHNvIHRoYXQgIi1oZGEgeHh4eHgiIG1vdW50cyBhbiBTRCBj
+YXJkPw0KPiANCj4gT3IgZG8gd2Ugc3VwcG9ydCB1c2luZyB0aGF0IGZvciBhbiBpbWFnaW5lZCBT
+L0FUQSBpbnRlcmZhY2U/IChCQ00yODM2DQo+IGRvZXNuJ3QgaGF2ZSBTQVRBLCByaWdodD8pDQoN
+Ck9oLCBpbiBmYWN0IEkgYW0gYWxyZWFkeSBzZXR0aW5nIHRoYXQsIHNvIHBlcmhhcHMgLWhkYSBk
+b2VzIGFscmVhZHkgd29yay4gTWF0cycgcHJvYmxlbSBpcyBtb3N0IGxpa2VseSBqdXN0IHRoYXQg
+aGUncyBub3Qgc2VlaW5nL2VuYWJsaW5nIHRoZSBzZXJpYWwgY29uc29sZS4NCg0KQW5kcmV3DQo=

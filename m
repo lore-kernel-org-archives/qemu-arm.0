@@ -1,71 +1,70 @@
-Received: by 10.25.208.211 with SMTP id h202csp2793343lfg;
-        Thu, 25 Feb 2016 04:59:23 -0800 (PST)
-X-Received: by 10.140.234.11 with SMTP id f11mr9944447qhc.51.1456405163785;
-        Thu, 25 Feb 2016 04:59:23 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2804565lfg;
+        Thu, 25 Feb 2016 05:18:48 -0800 (PST)
+X-Received: by 10.55.22.162 with SMTP id 34mr40566435qkw.63.1456406327979;
+        Thu, 25 Feb 2016 05:18:47 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w82si7913381qhw.108.2016.02.25.04.59.23
+        by mx.google.com with ESMTPS id g72si8007909qkh.55.2016.02.25.05.18.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 04:59:23 -0800 (PST)
+        Thu, 25 Feb 2016 05:18:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:42953 helo=lists.gnu.org)
+Received: from localhost ([::1]:43268 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYvVr-00030y-BQ
-	for alex.bennee@linaro.org; Thu, 25 Feb 2016 07:59:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58268)
+	id 1aYvod-0003Ik-Bp
+	for alex.bennee@linaro.org; Thu, 25 Feb 2016 08:18:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36272)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvVo-00030O-So
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 07:59:21 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aYvoa-0003IU-UW
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvVo-00087G-5w
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 07:59:20 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:32974)
+	(envelope-from <peter.maydell@linaro.org>) id 1aYvoW-0005Ne-VM
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:44 -0500
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:34394)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvVo-00086z-2Z
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 07:59:20 -0500
-Received: by mail-vk0-x233.google.com with SMTP id k196so46864887vka.0
-	for <qemu-arm@nongnu.org>; Thu, 25 Feb 2016 04:59:19 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aYvoV-0005Mu-O1
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:40 -0500
+Received: by mail-vk0-x233.google.com with SMTP id e185so46827272vkb.1
+	for <qemu-arm@nongnu.org>; Thu, 25 Feb 2016 05:18:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=ZecNscYYqrfXsY8d3MCVKzq2qyi3uk+r/YwwpmST2bM=;
-	b=FRphLEOij00VYZnCb8DA4rQCqzzrjDmPzZyF1fsVEtoB3S+5zX2sj96B0wWw0OnTUp
-	p8bPOWw+ywKOH6V3i2LQguSPiSbkwbSL5s+L5af3OHCDMp69UTwXntwVTGD571BZjSD4
-	NTxlBSm17+s5dtCKgWnaMCgtksEKjmJ0CBPVY=
+	bh=eEeaWXpoeV9D6z+LCRbaDjXtbgOxSgsgJrqc4+K6vIo=;
+	b=Ah2UVjDoBbo/c34Iqy/Dn3IkvCzf3vVi5If/GMNkzIeqsT9d2WnDWN65AZB/9rBQCH
+	0UW1NeNu0ykKP+BWNotjBPycSs1WAjI4oC+wNxxLAnn1swW2OFgc0V5t24zKqMav1Ikf
+	p4u944vr68/3C+dsEEQCQuRY65HUC4LG1Xqc4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=ZecNscYYqrfXsY8d3MCVKzq2qyi3uk+r/YwwpmST2bM=;
-	b=gRFlSYpbZ4pzwNXvzwW8Euo/dre5WQl+8sFrw0166ORdj91rElTAJxPCu6Nhy9VE3s
-	qdP98uYN+ik30Nh9FZxmCflHoqLxo/peXnZynYfFiUdL7RcmxgdeG574/C4ClXPvIWf/
-	sD/jt3ETZ7lGIoq9XsTIRxQVenTQoz3MaY+odFzFiwzXi6P6488QK0JCfUJ8vqKUhYgl
-	NEjajel+y68Do0ts2v4cOQkK8VjJ1b+PBPfput3NEqgcOHVavWYc3i/bozYHJ+3YTJ8N
-	+VYuliFWxcP/pLxg9B2QWDA7kNNbZbebp9qaPsym5F6l2Gvq+v+Xl+2XY8ctScqllO5B
-	0IAw==
-X-Gm-Message-State: AG10YOSBSmylAxbt7Q7/Jrjda/eZX8iJXTx3e/aDB4OBb7/idbnP5O8CxkPqXaZmBg2KoUEScxwNM7b1SCfPn685
-X-Received: by 10.31.107.194 with SMTP id k63mr32794541vki.27.1456405159613;
-	Thu, 25 Feb 2016 04:59:19 -0800 (PST)
+	bh=eEeaWXpoeV9D6z+LCRbaDjXtbgOxSgsgJrqc4+K6vIo=;
+	b=eAPAUC5JYKZnuZxElUwAnOIjeKzeO8wuGZ3DBEQcFa8eqK/gfH6qU6eCDd31ub/zP5
+	5SOmnqwgI3VVXcpCf7oY5xBBAZS+o+YURo2N6IEKXfEl1WZ6BOsMJ7u/bm+s+iU1ivIQ
+	yY8ZTMm9EcHL5eV5njwJHa2V+uTx7y5FfnMorINFZEFU+vc3/70j/kbTsQ6BXco0lYHF
+	FN5PNlbatxs/gAB/mc9g+siXTnqtRd2qMf7KgDt0dNNsKisT9PVUaA+BUIzLNuUrhg1W
+	75kKR3h6L/bKRK18FkjSEVMjCkfQtw5c4LcnA50rIcYi8xlitSPqAAWZmkPjH0WkEvAh
+	yggQ==
+X-Gm-Message-State: AG10YOTuzG1Wx/c8MZ0f8enICyH+RlM3xqZZJNiRvaKs+NcvFBiy7vHYPF4Y/UoHAe/IihRSw1MRKTsGqI66MekB
+X-Received: by 10.31.47.207 with SMTP id v198mr37211253vkv.6.1456406319330;
+	Thu, 25 Feb 2016 05:18:39 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 04:59:00 -0800 (PST)
-In-Reply-To: <1455814580-17699-1-git-send-email-wei@redhat.com>
-References: <1455814580-17699-1-git-send-email-wei@redhat.com>
+Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 05:18:19 -0800 (PST)
+In-Reply-To: <1456351128-5560-1-git-send-email-Andrew.Baumann@microsoft.com>
+References: <1456351128-5560-1-git-send-email-Andrew.Baumann@microsoft.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Feb 2016 12:59:00 +0000
-Message-ID: <CAFEAcA__Y0mxn8BBSrw4zhvRbQjoeSpicOxUiKOGXYrmvbtobQ@mail.gmail.com>
-To: Wei Huang <wei@redhat.com>
+Date: Thu, 25 Feb 2016 13:18:19 +0000
+Message-ID: <CAFEAcA8=DsoGbq0Z1HKtcNcYztODeGti9ejoN1i2ioXQwCJfEw@mail.gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400c:c05::233
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH 1/1] ARM: PL061: Checking register r/w
- accesses to reserved area
+Cc: Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH] raspi: fix SD card with recent sdhci changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,19 +78,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ap5AFHdjVlEZ
+X-TUID: t53BNSb21wib
 
-On 18 February 2016 at 16:56, Wei Huang <wei@redhat.com> wrote:
-> pl061.c emulates two GPIO devices, ARM PL061 and TI Stellaris, which
-> share the same read/write functions (pl061_read and pl061_write).
-> However PL061 and Stellaris have different GPIO register definitions
-> and pl061_read()/pl061_write() doesn't check it. This patch enforces
-> checking on offset, preventing R/W into the reserved memory area.
+On 24 February 2016 at 21:58, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+> Recent changes to sdhci broke SD on raspi. This change mirrors
+> the logic to create the SD card device at the board level.
 >
-> Signed-off-by: Wei Huang <wei@redhat.com>
+> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 > ---
->  hw/gpio/pl061.c | 30 ++++++++++++++++++++++--------
->  1 file changed, 22 insertions(+), 8 deletions(-)
+> The relevant change to other boards was:
+> https://github.com/qemu/qemu/commit/eb4f566bbbe195b2475e8fa5d9ed29ca56a18b02
 
 Applied to target-arm.next, thanks.
 

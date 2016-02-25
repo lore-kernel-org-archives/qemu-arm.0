@@ -1,70 +1,75 @@
-Received: by 10.25.208.211 with SMTP id h202csp2804565lfg;
-        Thu, 25 Feb 2016 05:18:48 -0800 (PST)
-X-Received: by 10.55.22.162 with SMTP id 34mr40566435qkw.63.1456406327979;
-        Thu, 25 Feb 2016 05:18:47 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2853382lfg;
+        Thu, 25 Feb 2016 06:56:30 -0800 (PST)
+X-Received: by 10.140.42.39 with SMTP id b36mr55863560qga.4.1456412190682;
+        Thu, 25 Feb 2016 06:56:30 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g72si8007909qkh.55.2016.02.25.05.18.47
+        by mx.google.com with ESMTPS id m22si8370899qki.19.2016.02.25.06.56.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 05:18:47 -0800 (PST)
+        Thu, 25 Feb 2016 06:56:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:43268 helo=lists.gnu.org)
+Received: from localhost ([::1]:43763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYvod-0003Ik-Bp
-	for alex.bennee@linaro.org; Thu, 25 Feb 2016 08:18:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36272)
+	id 1aYxLC-0004kJ-96
+	for alex.bennee@linaro.org; Thu, 25 Feb 2016 09:56:30 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34831)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvoa-0003IU-UW
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:45 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aYxL9-0004jn-TT
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 09:56:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvoW-0005Ne-VM
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:44 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:34394)
+	(envelope-from <peter.maydell@linaro.org>) id 1aYxL9-0006BD-4C
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 09:56:27 -0500
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:33099)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYvoV-0005Mu-O1
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 08:18:40 -0500
-Received: by mail-vk0-x233.google.com with SMTP id e185so46827272vkb.1
-	for <qemu-arm@nongnu.org>; Thu, 25 Feb 2016 05:18:39 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aYxL8-0006Aw-W3
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 09:56:27 -0500
+Received: by mail-vk0-x22e.google.com with SMTP id k196so50030079vka.0
+	for <qemu-arm@nongnu.org>; Thu, 25 Feb 2016 06:56:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-type;
-	bh=eEeaWXpoeV9D6z+LCRbaDjXtbgOxSgsgJrqc4+K6vIo=;
-	b=Ah2UVjDoBbo/c34Iqy/Dn3IkvCzf3vVi5If/GMNkzIeqsT9d2WnDWN65AZB/9rBQCH
-	0UW1NeNu0ykKP+BWNotjBPycSs1WAjI4oC+wNxxLAnn1swW2OFgc0V5t24zKqMav1Ikf
-	p4u944vr68/3C+dsEEQCQuRY65HUC4LG1Xqc4=
+	bh=TfinFLuAgB2EFN9OPzCicgmdgwVaYRQAMKhdRRo8Wfc=;
+	b=DSzEVimUj4CA4MsTSJvUAf0vBatPDYNrtXEm+yizh9N9Rki9g2rEJVSykBeSkurg7m
+	9kjl3cYo4WJGvAIqcgnwJZ+pCxNZ+GTxQqLqJO3UWZZWITm4THMNE1BnFCpVyjPoa1H/
+	2F+0Rq9fc7icIZ/NuWh9aY1/FJJhTSM5gP+B0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-type;
-	bh=eEeaWXpoeV9D6z+LCRbaDjXtbgOxSgsgJrqc4+K6vIo=;
-	b=eAPAUC5JYKZnuZxElUwAnOIjeKzeO8wuGZ3DBEQcFa8eqK/gfH6qU6eCDd31ub/zP5
-	5SOmnqwgI3VVXcpCf7oY5xBBAZS+o+YURo2N6IEKXfEl1WZ6BOsMJ7u/bm+s+iU1ivIQ
-	yY8ZTMm9EcHL5eV5njwJHa2V+uTx7y5FfnMorINFZEFU+vc3/70j/kbTsQ6BXco0lYHF
-	FN5PNlbatxs/gAB/mc9g+siXTnqtRd2qMf7KgDt0dNNsKisT9PVUaA+BUIzLNuUrhg1W
-	75kKR3h6L/bKRK18FkjSEVMjCkfQtw5c4LcnA50rIcYi8xlitSPqAAWZmkPjH0WkEvAh
-	yggQ==
-X-Gm-Message-State: AG10YOTuzG1Wx/c8MZ0f8enICyH+RlM3xqZZJNiRvaKs+NcvFBiy7vHYPF4Y/UoHAe/IihRSw1MRKTsGqI66MekB
-X-Received: by 10.31.47.207 with SMTP id v198mr37211253vkv.6.1456406319330;
-	Thu, 25 Feb 2016 05:18:39 -0800 (PST)
+	bh=TfinFLuAgB2EFN9OPzCicgmdgwVaYRQAMKhdRRo8Wfc=;
+	b=RFmC+ZvqIWvb42Q84SBqQVoevHhXVOUNiGWEOz3eV/dgdzfPWliRvc7/rssC+gpBYN
+	g0Hmj97JQn4eMM2b67y2wgo4w9KyqqZcdZAftEJZKUF2jPHHxZAxYLyJzlefC4Akrxq6
+	aKUOuHWfOI29QeOH8JYZEk7l7+Nv72s3NoYiI60ZSceUBFULdCq/jAS1OAAXzBaQq6t5
+	Ue0FlHNyYIC5niZp0mXRkxGeumr4oy/2sPzm8G1a8g/yapzzJ4/3hYc4vCbs3luh1Htn
+	GxWcHUeHxNspk+pyZ0oWcHzV/Tch4zGFV/vlcZd4GoCT41gK8qByhi7Ul9u02BgE3x8j
+	YcBA==
+X-Gm-Message-State: AG10YOQ1V0K9oW5Fn76YwVCHjpEXnS8t+mDyE4UlPYHkOv5vGzlbhoG6XqBNJAy0BeNR43zRF4xyLEImHyM2zrSr
+X-Received: by 10.31.1.6 with SMTP id 6mr32612371vkb.139.1456412186512; Thu,
+	25 Feb 2016 06:56:26 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 05:18:19 -0800 (PST)
-In-Reply-To: <1456351128-5560-1-git-send-email-Andrew.Baumann@microsoft.com>
-References: <1456351128-5560-1-git-send-email-Andrew.Baumann@microsoft.com>
+Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 06:56:07 -0800 (PST)
+In-Reply-To: <1456399324-24259-1-git-send-email-thuth@redhat.com>
+References: <1456399324-24259-1-git-send-email-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Feb 2016 13:18:19 +0000
-Message-ID: <CAFEAcA8=DsoGbq0Z1HKtcNcYztODeGti9ejoN1i2ioXQwCJfEw@mail.gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Date: Thu, 25 Feb 2016 14:56:07 +0000
+Message-ID: <CAFEAcA-J8yHkZ-N46UbtDiXX-uyM-mutNmqM26tfbUKOWzZkTQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Cc: Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] raspi: fix SD card with recent sdhci changes
+X-Received-From: 2607:f8b0:400c:c05::22e
+Cc: Evgeny Voevodin <e.voevodin@samsung.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	Dmitry Solodkiy <d.solodkiy@samsung.com>,
+	Maksim Kozlov <m.kozlov@samsung.com>, Andrew Zaborowski <balrogg@gmail.com>
+Subject: Re: [Qemu-arm] [PATCH] MAINTAINERS: Add some missing ARM related
+	header files
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -78,17 +83,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t53BNSb21wib
+X-TUID: gWT2GUwVGdFX
 
-On 24 February 2016 at 21:58, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> Recent changes to sdhci broke SD on raspi. This change mirrors
-> the logic to create the SD card device at the board level.
+On 25 February 2016 at 11:22, Thomas Huth <thuth@redhat.com> wrote:
+> Some header files in the include/hw/arm/ directory can be assigned
+> to entries in the MAINTAINERS file.
 >
-> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
-> The relevant change to other boards was:
-> https://github.com/qemu/qemu/commit/eb4f566bbbe195b2475e8fa5d9ed29ca56a18b02
+>  MAINTAINERS | 4 ++++
+>  1 file changed, 4 insertions(+)
+
+
+
 
 Applied to target-arm.next, thanks.
 

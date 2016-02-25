@@ -1,62 +1,60 @@
-Received: by 10.25.208.211 with SMTP id h202csp2730290lfg;
-        Thu, 25 Feb 2016 02:34:35 -0800 (PST)
-X-Received: by 10.140.101.70 with SMTP id t64mr54436906qge.61.1456396475193;
-        Thu, 25 Feb 2016 02:34:35 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2730484lfg;
+        Thu, 25 Feb 2016 02:35:08 -0800 (PST)
+X-Received: by 10.140.94.46 with SMTP id f43mr54411207qge.95.1456396508200;
+        Thu, 25 Feb 2016 02:35:08 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w132si7494481qka.53.2016.02.25.02.34.35
+        by mx.google.com with ESMTPS id z18si7481352qhz.46.2016.02.25.02.35.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 02:34:35 -0800 (PST)
+        Thu, 25 Feb 2016 02:35:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:41962 helo=lists.gnu.org)
+Received: from localhost ([::1]:41975 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYtFi-0001Bx-LY
-	for alex.bennee@linaro.org; Thu, 25 Feb 2016 05:34:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43644)
+	id 1aYtGF-0002Co-N2
+	for alex.bennee@linaro.org; Thu, 25 Feb 2016 05:35:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43763)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aYtE1-0006V0-AV
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 05:32:54 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1aYtEN-0007Dv-1x
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 05:33:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aYtDv-0001Xy-94
-	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 05:32:49 -0500
-Received: from m12-14.163.com ([220.181.12.14]:53008)
+	(envelope-from <zxq_yx_007@163.com>) id 1aYtEI-0001kC-IQ
+	for qemu-arm@nongnu.org; Thu, 25 Feb 2016 05:33:10 -0500
+Received: from m12-14.163.com ([220.181.12.14]:54884)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aYtDn-0001Mu-5p; Thu, 25 Feb 2016 05:32:35 -0500
+	id 1aYtEG-0001ik-5S; Thu, 25 Feb 2016 05:33:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=zqmVIOeIGZVDm0zKyF
-	H1qfUAnxee1f8e8GiVMPFYgx8=; b=i3ETFtssnjnHOHKZNvF1K9MaozykS1atNq
-	qZRq/j7+tPJ5sPO61RvyTaolgdrXQP5MaW0h/vHAsb6y50XcY93G5Z+4R24KSC+f
-	5tfK1yGjjoLjQw1F+CLuBslXSgH3qqBwlmy3XQhyQQOKdXE59gbzrgWZMkyMXLi7
-	w/GaXCNH8=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=cTFC2VX50xx2nOrrBj
+	5qYGqMPBqJ6pEJziL2/q6+MDU=; b=RElgSH+oqVeyjbbKKZBJDEx6lmUA/lbKis
+	zAgEN00U53ORiJ9spjok4l+VVXTUvU/UHLJFKcJ/G2kGHCwKL9GSM1Ilf1vNhnvI
+	eCTb7lGUG94y6HlRKj0FR96aGY5yYDr+OCrCDXhW7Dl4lwM9fLmHKHu5+SBcjwpZ
+	jCcMpxoRQ=
 Received: from localhost.localdomain (unknown [101.254.142.162])
-	by smtp10 (Coremail) with SMTP id DsCowAB3JtoL2M5WrXOWCA--.37006S10;
+	by smtp10 (Coremail) with SMTP id DsCowAB3JtoL2M5WrXOWCA--.37006S2;
 	Thu, 25 Feb 2016 18:31:51 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 25 Feb 2016 18:30:36 +0800
-Message-Id: <1456396236-2759-9-git-send-email-zxq_yx_007@163.com>
+Date: Thu, 25 Feb 2016 18:30:28 +0800
+Message-Id: <1456396236-2759-1-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1456396236-2759-1-git-send-email-zxq_yx_007@163.com>
-References: <1456396236-2759-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DsCowAB3JtoL2M5WrXOWCA--.37006S10
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZw1kJrWxGw18Ww47GFyDWrg_yoW5Xr47pa
-	1fXFn2y3W5XF4xX3yxJFnrJFZxJwn7Gr48GrnrJrWI9ws7Jr98KFyxArZrtFsFyrWSva13
-	JrZ5Kw15CFyUKr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jOTmhUUUUU=
+X-CM-TRANSID: DsCowAB3JtoL2M5WrXOWCA--.37006S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Zw17WF1xJr4kWFyUXrWDJwb_yoW8Ww4xpr
+	WfCF43Zr48Aw43Ww43CFsFqry5JF1kJryrWwnrt34rZrnIyF15JF1UXF4rJFW7JFZ7ZF43
+	ZFyrtr15Gw1Yvr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j8o7NUUUUU=
 X-Originating-IP: [101.254.142.162]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEBkaxlWBT2U2LwAAsy
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEBgaxlWBT2U2GwAAsH
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 220.181.12.14
 Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com,
 	mark.cave-ayland@ilande.co.uk, michael@walle.cc,
 	qemu-arm@nongnu.org, gxt@mprc.pku.edu.cn, afaerber@suse.de
-Subject: [Qemu-arm] [PATCH v5 8/8] hw/timer: QOM'ify grlib_gptimer
+Subject: [Qemu-arm] [PATCH v5 0/8] QOM'ify hw/timer/*
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,92 +68,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mDCd8V2aYu6g
+X-TUID: ddNFUi3Kj4EA
 
-* split the old SysBus init function into an instance_init
-  and a Device realize function
-* use DeviceClass::realize instead of SysBusDeviceClass::init
+This patch series QOM'ify timer code under hw/timer directory.
+Main idea is to split the initfn's work, some to TypeInfo.instance_init
+and some is placed in DeviceClass::realize.
+Drop the use of SysBusDeviceClass::init if possible.
 
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/timer/grlib_gptimer.c | 32 +++++++++++++++++++-------------
- 1 file changed, 19 insertions(+), 13 deletions(-)
+Patch 3,4 (m48t59) has been tested in a sparc vm with debian linux guest
+and savevm/loadvm looks fine.
 
-diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-index dd000f5..95d5b0d 100644
---- a/hw/timer/grlib_gptimer.c
-+++ b/hw/timer/grlib_gptimer.c
-@@ -348,16 +348,29 @@ static void grlib_gptimer_reset(DeviceState *d)
-     }
- }
- 
--static int grlib_gptimer_init(SysBusDevice *dev)
-+static void grlib_gptimer_init(Object *obj)
- {
--    GPTimerUnit  *unit = GRLIB_GPTIMER(dev);
--    unsigned int  i;
-+    GPTimerUnit  *unit = GRLIB_GPTIMER(obj);
-+    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
- 
-     assert(unit->nr_timers > 0);
-     assert(unit->nr_timers <= GPTIMER_MAX_TIMERS);
- 
-     unit->timers = g_malloc0(sizeof unit->timers[0] * unit->nr_timers);
- 
-+    memory_region_init_io(&unit->iomem, obj, &grlib_gptimer_ops,
-+                          unit, "gptimer",
-+                          UNIT_REG_SIZE + GPTIMER_REG_SIZE * unit->nr_timers);
-+
-+    sysbus_init_mmio(dev, &unit->iomem);
-+}
-+
-+static void grlib_gptimer_realize(DeviceState *dev, Error **errp)
-+{
-+    GPTimerUnit  *unit = GRLIB_GPTIMER(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    unsigned int  i;
-+
-     for (i = 0; i < unit->nr_timers; i++) {
-         GPTimer *timer = &unit->timers[i];
- 
-@@ -367,17 +380,10 @@ static int grlib_gptimer_init(SysBusDevice *dev)
-         timer->id     = i;
- 
-         /* One IRQ line for each timer */
--        sysbus_init_irq(dev, &timer->irq);
-+        sysbus_init_irq(sbd, &timer->irq);
- 
-         ptimer_set_freq(timer->ptimer, unit->freq_hz);
-     }
--
--    memory_region_init_io(&unit->iomem, OBJECT(unit), &grlib_gptimer_ops,
--                          unit, "gptimer",
--                          UNIT_REG_SIZE + GPTIMER_REG_SIZE * unit->nr_timers);
--
--    sysbus_init_mmio(dev, &unit->iomem);
--    return 0;
- }
- 
- static Property grlib_gptimer_properties[] = {
-@@ -390,9 +396,8 @@ static Property grlib_gptimer_properties[] = {
- static void grlib_gptimer_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = grlib_gptimer_init;
-+    dc->realize = grlib_gptimer_realize;
-     dc->reset = grlib_gptimer_reset;
-     dc->props = grlib_gptimer_properties;
- }
-@@ -401,6 +406,7 @@ static const TypeInfo grlib_gptimer_info = {
-     .name          = TYPE_GRLIB_GPTIMER,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(GPTimerUnit),
-+    .instance_init = grlib_gptimer_init,
-     .class_init    = grlib_gptimer_class_init,
- };
- 
+Comments from the relevant maintainers are needed!
+
+changes in v5:
+* drop patch 'hw/timer: QOM'ify tusb6010'
+* fix minor errors in grlib_gptimer.c
+* correct the usage of vmstate for M48txxISAState and M48txxSysBusState
+
+
+changes in v4: 
+* correct some misused "Reviewed-by" tags
+* fix 'make check' fail case in the "/arm/device/introspect/concrete"
+  test in tusb6010.c 
+
+changes in v3: 
+* remove unnecessary OBJECT cast
+* refine some commit message
+* use DeviceClass::vmsd instead of vmstate_register to register
+  the VMState if possible
+
+changes in v2: 
+fix a stupid typo (timmer->timer)
+
+
+xiaoqiang zhao (8):
+  hw/timer: QOM'ify etraxfs_timer
+  hw/timer: QOM'ify lm32_timer
+  hw/timer: QOM'ify m48txx_sysbus (pass 1)
+  hw/timer: QOM'ify m48txx_sysbus (pass 2)
+  hw/timer: QOM'ify milkymist_sysctl
+  hw/timer: QOM'ify puv3_ost
+  hw/timer: QOM'ify slavio_timer
+  hw/timer: QOM'ify grlib_gptimer
+
+ hw/timer/etraxfs_timer.c    | 14 +++++------
+ hw/timer/grlib_gptimer.c    | 32 ++++++++++++++----------
+ hw/timer/lm32_timer.c       | 19 +++++++++------
+ hw/timer/m48t59.c           | 59 ++++++++++++++++++++++++++++++---------------
+ hw/timer/milkymist-sysctl.c | 21 ++++++++++------
+ hw/timer/puv3_ost.c         | 18 ++++----------
+ hw/timer/slavio_timer.c     | 12 ++++-----
+ 7 files changed, 101 insertions(+), 74 deletions(-)
+
 -- 
 2.1.4
 

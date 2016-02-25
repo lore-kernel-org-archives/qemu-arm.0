@@ -1,317 +1,181 @@
-Received: by 10.25.208.211 with SMTP id h202csp2911062lfg;
-        Thu, 25 Feb 2016 08:49:36 -0800 (PST)
-X-Received: by 10.140.135.84 with SMTP id 81mr55811432qhh.26.1456418976009;
-        Thu, 25 Feb 2016 08:49:36 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k93si8779445qgf.62.2016.02.25.08.49.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 08:49:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.211 with SMTP id h202csp2912406lfg;
+        Thu, 25 Feb 2016 08:52:17 -0800 (PST)
+X-Received: by 10.140.92.111 with SMTP id a102mr57126818qge.92.1456419137222;
+        Thu, 25 Feb 2016 08:52:17 -0800 (PST)
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id u185si8751350qhu.83.2016.02.25.08.52.16;
+        Thu, 25 Feb 2016 08:52:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:44470 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYz6d-00015a-I6
-	for alex.bennee@linaro.org; Thu, 25 Feb 2016 11:49:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39977)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYz61-0000Ma-NO
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:48:58 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYz60-0003W2-Nh
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:48:57 -0500
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:34379)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYz60-0003V4-IG
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:48:56 -0500
-Received: by mail-vk0-x22a.google.com with SMTP id e185so52937222vkb.1
-	for <qemu-devel@nongnu.org>; Thu, 25 Feb 2016 08:48:56 -0800 (PST)
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 93EB14968B;
+	Thu, 25 Feb 2016 11:45:27 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.209
+X-Spam-Level: 
+X-Spam-Status: No, score=0.209 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_LOW=-0.7,
+	T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id u0lR9Bs45Doo; Thu, 25 Feb 2016 11:45:26 -0500 (EST)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 9225A495BD;
+	Thu, 25 Feb 2016 11:45:26 -0500 (EST)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 930D54852E
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 25 Feb 2016 11:45:25 -0500 (EST)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id D-kCFZJRGVcU for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 25 Feb 2016 11:45:23 -0500 (EST)
+Received: from mail-vk0-f49.google.com (mail-vk0-f49.google.com
+ [209.85.213.49])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 43DDB413E1
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 25 Feb 2016 11:45:23 -0500 (EST)
+Received: by mail-vk0-f49.google.com with SMTP id e185so53033817vkb.1
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 25 Feb 2016 08:52:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=3YTYlJ3lW991u+L+bsDzve+3+iwUZPyLw6i5WS5omQU=;
-	b=bXFWg3yKs49EEcIENIK6U4uUpcf9Amc5QLZ1qR4u8BzKFm9fTk5ECy71GjacaQYSZd
-	ov6nGCVovHmsm2cB++XNPzHg+NddcAU+qSOiAsaHP+5MWmFcJoROkWQPJArPwILxAI/i
-	AulrpBo285fPy4urGjbdlbS/lYJqJeqbyM7gM=
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc:content-type;
+ bh=riYcUXyo99i+bn3JeChfq1g5KIieM/1AqNOOD1lBe1k=;
+ b=jdYgKk0Y49qg4wbzuliaA2qwdhnt63jOqDlq9U+suZRhzk8aOnAUzfOScMfLBHqRyo
+ CUQeRfnBmT70a5la8yYeQKpT9ZYW8+Kvdj5En+uQ4dGIizE7bf1E4Z6UfHCnzDGuWCe7
+ 7lOgijfJ7u1C+hDLLW8L64UXdrFX/vA1E+v2M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=3YTYlJ3lW991u+L+bsDzve+3+iwUZPyLw6i5WS5omQU=;
-	b=kexTZcArKj+bPevAQn4asMiZ0cDfqCmyluC8LvRpigd2mLQxUksiiMHsUkh4fcZGqX
-	dVTRT2+Znwax7iE7ThvbxJXuY4U7okRjWEM0M/dJNYe5SX2eqAMcJoErh0YeEvuAfSt+
-	3IUZ40WONZHoImrjwjACN6nlN6LSKjodTKJ1taPSN9YltKDgbe+VNqDL/LE/rW6Ga/lP
-	axWmO/SXsaK3o9YT2CPalJZLMXh2O+Zxw/ZeQO7oM2QK8PDqRa1j6ADbPVpOM7gkT6ec
-	2zvwz6zRis9qxVHfj+tdvxHVRnAj8qPTp5ZWdhNvwAaQ7r10Ezpubj7rTFTgRbXA6Vaa
-	DM5w==
-X-Gm-Message-State: AG10YOQaLweRO564fFcT40v0sCVvrKvoFUzfI7devEfhNG8sOF1jQVliv9UEnii9YHvwRHbuqbdBM/SgPHLcA99m
-X-Received: by 10.31.194.130 with SMTP id s124mr36873711vkf.92.1456418936107; 
-	Thu, 25 Feb 2016 08:48:56 -0800 (PST)
+ d=1e100.net; s=20130820;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc:content-type;
+ bh=riYcUXyo99i+bn3JeChfq1g5KIieM/1AqNOOD1lBe1k=;
+ b=IUhDlDqaMjHgjNNW3MzlkeNprcK9lMlmnX8jrvW0tFnrkLyKlOqJQDPvOlmzOZjVUt
+ aE86J8CT7a/qLLQckTB8Edo9tO87LA6xHtgISb9w5d7ou9Pj8KGbIhRX3hXmKe/BLPzF
+ a90agC5owGtA5WzElTKlNmt+KmQhxbU/gcMpJY8/gXJrAmUZcP1+8W7iUAMb8rlc2SCl
+ RAtR92N4Skc8bnaDbsvcpJBnUUp+4Fk+j+oZZ/KYOWfO7ePDinVmF5bOPKhV69Xm4GWS
+ E8Px4EAcGVz6VU+xexA1ldB/E1iJ4+Dj6/bBV0GvUS34PXmC/mjXktwmGS1g8gZRbyiu
+ 4rgg==
+X-Gm-Message-State: AG10YOTZcOXMzp2tPlTZhdZgP9oJirrln4+T0j41SNMwMHFm0DeXzMd8UbdFrwPrrfkY5d8UqJ9oD+Ycql49iAqe
+X-Received: by 10.31.52.147 with SMTP id b141mr37627988vka.82.1456419131154;
+ Thu, 25 Feb 2016 08:52:11 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 08:48:36 -0800 (PST)
-In-Reply-To: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org>
-References: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org>
+Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 08:51:51 -0800 (PST)
+In-Reply-To: <1456402182-11651-1-git-send-email-peter.maydell@linaro.org>
+References: <1456402182-11651-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Feb 2016 16:48:36 +0000
-Message-ID: <CAFEAcA-cPurz=fkovcc7Fw8tkvwKunb7E4efWr-8XQ_47+mGsQ@mail.gmail.com>
+Date: Thu, 25 Feb 2016 16:51:51 +0000
+Message-ID: <CAFEAcA9d6u=2GLo5UEXGPzb=9bZNnk-CgEOt=235giCdPTW_pw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] virt: Lift the maximum RAM limit from 30GB
+ to 255GB
 To: QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>,
-	Patch Tracking <patches@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH] target-arm: Make reserved ranges in
- ID_AA64* spaces RAZ, not UNDEF
-X-BeenThere: qemu-devel@nongnu.org
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
+ "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
+ Patch Tracking <patches@linaro.org>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BmiPxJ+7WmoE
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: qy6RCin5CfFA
 
-Ping? (less than a week, I know, but given it unbreaks linux-next
-I figure it would be nicer to get it into master sooner rather
-than later...)
+[Typoed the kvmarm list address; sorry... -- PMM]
 
-thanks
--- PMM
-
-On 19 February 2016 at 14:07, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The v8 ARM ARM defines that unused spaces in the ID_AA64* system
-> register ranges are Reserved and must RAZ, rather than being UNDEF.
-> Implement this.
+On 25 February 2016 at 12:09, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The virt board restricts guests to only 30GB of RAM. This is a
+> hangover from the vexpress-a15 board, and there's inherent reason
+> for it. 30GB is smaller than you might reasonably want to provision
+> a VM for on a beefy server machine. Raise the limit to 255GB.
 >
-> In particular, ARM v8.2 adds a new feature register ID_AA64MMFR2,
-> and newer versions of the Linux kernel will attempt to read this,
-> which causes them not to boot up on versions of QEMU missing this fix.
+> We choose 255GB because the available space we currently have
+> below the 1TB boundary is up to the 512GB mark, but we don't
+> want to paint ourselves into a corner by assigning it all to
+> RAM. So we make half of it available for RAM, with the 256GB..512GB
+> range available for future non-RAM expansion purposes.
 >
-> Since the encoding .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6
-> is actually defined in ARMv8 (as ID_MMFR4), we give it an entry in
-> the ARMCPU struct so CPUs can override it, though since none do
-> this too will just RAZ.
+> If we need to provide more RAM to VMs in the future then we need to:
+>  * allocate a second bank of RAM starting at 2TB and working up
+>  * fix the DT and ACPI table generation code in QEMU to correctly
+>    report two split lumps of RAM to the guest
+>  * fix KVM in the host kernel to allow guests with >40 bit address spaces
 >
-> Cc: qemu-stable@nongnu.org
-> Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+> The last of these is obviously the trickiest, but it seems
+> reasonable to assume that anybody configuring a VM with a quarter
+> of a terabyte of RAM will be doing it on a host with more than a
+> terabyte of physical address space.
+>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> The patch which touches ID_AA64MMFR2 is currently in linux-next...
+> CC'ing kvm-arm as a heads-up that my proposal here is to make
+> the kernel devs do the heavy lifting for supporting >255GB.
+> Discussion welcome on whether I have the tradeoffs here right.
+> ---
+>  hw/arm/virt.c | 21 +++++++++++++++++++--
+>  1 file changed, 19 insertions(+), 2 deletions(-)
 >
->  target-arm/cpu-qom.h |   1 +
->  target-arm/helper.c  | 128 ++++++++++++++++++++++++++++++++++++++++++++++++---
->  2 files changed, 122 insertions(+), 7 deletions(-)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 44bbbea..7a56b46 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -95,6 +95,23 @@ typedef struct {
+>  #define VIRT_MACHINE_CLASS(klass) \
+>      OBJECT_CLASS_CHECK(VirtMachineClass, klass, TYPE_VIRT_MACHINE)
 >
-> diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-> index 1cc4502..1061c08 100644
-> --- a/target-arm/cpu-qom.h
-> +++ b/target-arm/cpu-qom.h
-> @@ -155,6 +155,7 @@ typedef struct ARMCPU {
->      uint32_t id_mmfr1;
->      uint32_t id_mmfr2;
->      uint32_t id_mmfr3;
-> +    uint32_t id_mmfr4;
->      uint32_t id_isar0;
->      uint32_t id_isar1;
->      uint32_t id_isar2;
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 5a0447b..4deea0f 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -4280,12 +4280,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 5,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_isar5 },
-> -            /* 6..7 are as yet unallocated and must RAZ */
-> -            { .name = "ID_ISAR6", .cp = 15, .crn = 0, .crm = 2,
-> -              .opc1 = 0, .opc2 = 6, .access = PL1_R, .type = ARM_CP_CONST,
-> -              .resetvalue = 0 },
-> -            { .name = "ID_ISAR7", .cp = 15, .crn = 0, .crm = 2,
-> -              .opc1 = 0, .opc2 = 7, .access = PL1_R, .type = ARM_CP_CONST,
-> +            { .name = "ID_MMFR4", .state = ARM_CP_STATE_BOTH,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = cpu->id_mmfr4 },
-> +            /* 7 is as yet unallocated and must RAZ */
-> +            { .name = "ID_ISAR7_RESERVED", .state = ARM_CP_STATE_BOTH,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = 0 },
->              REGINFO_SENTINEL
->          };
-> @@ -4339,7 +4341,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->          define_arm_cp_regs(cpu, not_v7_cp_reginfo);
+> +/* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
+> + * RAM can go up to the 256GB mark, leaving 256GB of the physical
+> + * address space unallocated and free for future use between 256G and 512G.
+> + * If we need to provide more RAM to VMs in the future then we need to:
+> + *  * allocate a second bank of RAM starting at 2TB and working up
+> + *  * fix the DT and ACPI table generation code in QEMU to correctly
+> + *    report two split lumps of RAM to the guest
+> + *  * fix KVM in the host kernel to allow guests with >40 bit address spaces
+> + * (We don't want to fill all the way up to 512GB with RAM because
+> + * we might want it for non-RAM purposes later. Conversely it seems
+> + * reasonable to assume that anybody configuring a VM with a quarter
+> + * of a terabyte of RAM will be doing it on a host with more than a
+> + * terabyte of physical address space.)
+> + */
+> +#define RAMLIMIT_GB 255
+> +#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
+> +
+>  /* Addresses and sizes of our components.
+>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+>   * 128MB..256MB is used for miscellaneous device I/O.
+> @@ -130,7 +147,7 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
+>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+> -    [VIRT_MEM] =                { 0x40000000, 30ULL * 1024 * 1024 * 1024 },
+> +    [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
+>      /* Second PCIe window, 512GB wide at the 512GB boundary */
+>      [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
+>  };
+> @@ -1066,7 +1083,7 @@ static void machvirt_init(MachineState *machine)
+>      vbi->smp_cpus = smp_cpus;
+>
+>      if (machine->ram_size > vbi->memmap[VIRT_MEM].size) {
+> -        error_report("mach-virt: cannot model more than 30GB RAM");
+> +        error_report("mach-virt: cannot model more than %dGB RAM", RAMLIMIT_GB);
+>          exit(1);
 >      }
->      if (arm_feature(env, ARM_FEATURE_V8)) {
-> -        /* AArch64 ID registers, which all have impdef reset values */
-> +        /* AArch64 ID registers, which all have impdef reset values.
-> +         * Note that within the ID register ranges the unused slots
-> +         * must all RAZ, not UNDEF; future architecture versions may
-> +         * define new registers here.
-> +         */
->          ARMCPRegInfo v8_idregs[] = {
->              { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
-> @@ -4349,6 +4355,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64pfr1},
-> +            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4362,6 +4392,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64dfr1 },
-> +            { .name = "ID_AA64DFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64DFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64AFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 4,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4370,6 +4408,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 5,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64afr1 },
-> +            { .name = "ID_AA64AFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64AFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64ISAR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4378,6 +4424,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64isar1 },
-> +            { .name = "ID_AA64ISAR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64MMFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4386,6 +4456,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64mmfr1 },
-> +            { .name = "ID_AA64MMFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "MVFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4398,6 +4492,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->mvfr2 },
-> +            { .name = "MVFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "PMCEID0", .state = ARM_CP_STATE_AA32,
->                .cp = 15, .opc1 = 0, .crn = 9, .crm = 12, .opc2 = 6,
->                .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
+>
 > --
 > 1.9.1
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,285 +1,354 @@
-Received: by 10.25.208.211 with SMTP id h202csp2904945lfg;
-        Thu, 25 Feb 2016 08:37:05 -0800 (PST)
-X-Received: by 10.140.217.209 with SMTP id n200mr33822668qhb.101.1456418224992;
-        Thu, 25 Feb 2016 08:37:04 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c4si8690493qhc.104.2016.02.25.08.37.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Feb 2016 08:37:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.211 with SMTP id h202csp2908138lfg;
+        Thu, 25 Feb 2016 08:43:47 -0800 (PST)
+X-Received: by 10.28.126.65 with SMTP id z62mr4794432wmc.3.1456418627540;
+        Thu, 25 Feb 2016 08:43:47 -0800 (PST)
+Return-Path: <vilanova@ac.upc.edu>
+Received: from roura.ac.upc.es (roura.ac.upc.es. [147.83.33.10])
+        by mx.google.com with ESMTP id km9si10692278wjb.149.2016.02.25.08.43.47;
+        Thu, 25 Feb 2016 08:43:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) client-ip=147.83.33.10;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:44366 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aYyuW-0003D3-HG
-	for alex.bennee@linaro.org; Thu, 25 Feb 2016 11:37:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35592)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYyu6-0002p0-P0
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:36:39 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYyu5-0008S2-IG
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:36:38 -0500
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:33274)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aYyu5-0008Rx-2f
-	for qemu-devel@nongnu.org; Thu, 25 Feb 2016 11:36:37 -0500
-Received: by mail-vk0-x235.google.com with SMTP id k196so53106713vka.0
-	for <qemu-devel@nongnu.org>; Thu, 25 Feb 2016 08:36:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=10/d4y6YCOZbIZFbSHjBuAcMVk10v8l6utUg/o3StPU=;
-	b=izgl6sm+bPYuUT+6ptOUY2rA+cVnsP+Uim1cChFcQNFTb3hmZmYxqyT0h23xYjh/kS
-	OU7gYGLGuHKGpr02SvJlOmjCi8dxfa1w55IGxDj4oGBV0g0tyzNv9jBtVIRMECyUV6gW
-	nBu9TlrsHCbgEFjYF5iqj4wTifGy+ibshopQc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=10/d4y6YCOZbIZFbSHjBuAcMVk10v8l6utUg/o3StPU=;
-	b=iMwj31nCagXigWHDxG4p7WxgMG3JItYunJ9DQvBtUccdWFQsgqPrmm9erVbsJJiNU/
-	i4kpL3JBuS4kQ9nTUw1zXF4aJd8D613YaMJzfLQhlO/EOVYsizrb9bS+gwNu8mrQYU0H
-	4ujNEIaMtK9o8cDXMGeKCmz2REujxePGFZ6m8bH/k7VJCyOmcEhDRaV+340LNp454RwM
-	rxapwhsjyTHsnKByvMAAq2Y8T+pi7aZSb2JbvRGOrZW9LNnD2xAODHKDUVWR9uHzOivu
-	XgdzEIreLpFm/wKt+pfMEEfRkqPitlLr2BP7h2yZp8vQW5Z0IzsV+cIep89V317Sr/py
-	ivuw==
-X-Gm-Message-State: AG10YOScbrWPHYUL57eCeTwWYve37fVLnEAXMMtx+hjuzXCyN7cnNBmiTc+Blv/oN3sARyneKRUaHWZfQx6hFDOk
-X-Received: by 10.31.141.2 with SMTP id p2mr38139374vkd.37.1456418196657; Thu,
-	25 Feb 2016 08:36:36 -0800 (PST)
+       spf=pass (google.com: domain of vilanova@ac.upc.edu designates 147.83.33.10 as permitted sender) smtp.mailfrom=vilanova@ac.upc.edu
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u1PGhG1D002322;
+	Thu, 25 Feb 2016 17:43:16 +0100
+Received: from localhost (unknown [84.88.51.85])
+	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 353D51F3;
+	Thu, 25 Feb 2016 17:43:16 +0100 (CET)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Eric Blake <eblake@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+        Stefan Hajnoczi <stefanha@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Leon Alrae <leon.alrae@imgtec.com>,
+        Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
+        Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
+        qemu-arm@nongnu.org (open list:ARM),
+        qemu-ppc@nongnu.org (open list:PowerPC)
+Subject: [PATCH v9 3/7] tcg: Add type for vCPU pointers
+Date: Thu, 25 Feb 2016 17:43:15 +0100
+Message-Id: <145641859552.30295.7821536833590725201.stgit@localhost>
+X-Mailer: git-send-email 2.7.0
+In-Reply-To: <145641857632.30295.407142116443473458.stgit@localhost>
+References: <145641857632.30295.407142116443473458.stgit@localhost>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 25 Feb 2016 08:36:17 -0800 (PST)
-In-Reply-To: <1455622497-25966-4-git-send-email-andrew@aj.id.au>
-References: <1455622497-25966-1-git-send-email-andrew@aj.id.au>
-	<1455622497-25966-4-git-send-email-andrew@aj.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Feb 2016 16:36:17 +0000
-Message-ID: <CAFEAcA9dpV72335ZijOAviKsRg5KMWQQ3QVc8_fuvQHfuT_Tbg@mail.gmail.com>
-To: Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Cc: openbmc@lists.ozlabs.org, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v2 3/3] hw/arm: Add ASPEED
-	AST2400 machine type
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SSCcYXPK512O
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: jgqecuIvSgXG
 
-On 16 February 2016 at 11:34, Andrew Jeffery <andrew@aj.id.au> wrote:
-> Adds the AST2400 machine type with ASPEED AVIC and timer models. The
-> new machine type is functional enough to boot Linux to userspace.
->
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Adds the 'TCGv_env' type for pointers to 'CPUArchState' objects. The
+tracing infrastructure later needs to differentiate between regular
+pointers and pointers to vCPUs.
 
-This seems to be missing an "SoC object" level of modelling between the
-devices and the board code. Have a look at the Xilinx, raspi, etc board
-models for examples.
+Also changes all targets to use the new 'TCGv_env' type instead of the
+generic 'TCGv_ptr'. As of now, the change is merely cosmetic ('TCGv_env'
+translates into 'TCGv_ptr'), but that could change in the future to
+enforce the difference.
 
-> ---
->  hw/arm/Makefile.objs |   1 +
->  hw/arm/ast2400.c     | 139 +++++++++++++++++++++++++++++++++++++++++++++++++++
->  trace-events         |   4 ++
->  3 files changed, 144 insertions(+)
->  create mode 100644 hw/arm/ast2400.c
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index a711e4d..f333b7f 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
->  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
-> +obj-$(CONFIG_ASPEED_SOC) += ast2400.o
-> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
-> new file mode 100644
-> index 0000000..e3cd496
-> --- /dev/null
-> +++ b/hw/arm/ast2400.c
-> @@ -0,0 +1,139 @@
-> +/*
-> + * ASPEED AST2400
-> + *
-> + * Jeremy Kerr <jk@ozlabs.org>
-> + * Andrew Jeffery <andrew@aj.id.au>
-> + *
-> + * Copyright 2015, 2016 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + *
-> + * Based off of the i.MX31 Vectored Interrupt Controller
+Note that a 'TCGv_env' type (for 'CPUState') is not added, since all
+helpers currently receive the architecture-specific
+pointer ('CPUArchState').
 
-Really? :-)
+Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+Acked-by: Richard Henderson <rth@twiddle.net>
+---
+ target-alpha/translate.c      |    2 +-
+ target-arm/translate.c        |    2 +-
+ target-arm/translate.h        |    2 +-
+ target-cris/translate.c       |    2 +-
+ target-i386/translate.c       |    2 +-
+ target-lm32/translate.c       |    2 +-
+ target-m68k/translate.c       |    2 +-
+ target-microblaze/translate.c |    2 +-
+ target-mips/translate.c       |    2 +-
+ target-moxie/translate.c      |    2 +-
+ target-openrisc/translate.c   |    2 +-
+ target-ppc/translate.c        |    2 +-
+ target-s390x/translate.c      |    2 +-
+ target-sh4/translate.c        |    2 +-
+ target-sparc/translate.c      |    5 +++--
+ target-tilegx/translate.c     |    2 +-
+ target-tricore/translate.c    |    2 +-
+ target-unicore32/translate.c  |    2 +-
+ target-xtensa/translate.c     |    2 +-
+ tcg/tcg.h                     |    1 +
+ 20 files changed, 22 insertions(+), 20 deletions(-)
 
-> + *
-> + * Note that this device model does not implement the legacy register space.
-> + * The assumption is that the device base address is exposed such that all
-> + * offsets are calculated relative to the address of the first "new" register.
-
-This looks like copy-n-paste error too.
-
-> + */
-> +
-
-#include "qemu/osdep.h".
-
-> +#include "exec/address-spaces.h"
-> +#include "hw/arm/arm.h"
-> +#include "hw/boards.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/intc/aspeed_vic.h"
-> +#include "hw/timer/aspeed_timer.h"
-> +#include "trace.h"
-> +
-> +#define ASPEED_SDRAM_BASE 0x40000000
-> +#define ASPEED_IOMEM_BASE 0x1e600000
-> +#define ASPEED_IOMEM_SIZE 0x00200000
-> +#define ASPEED_TIMER_BASE 0x1E782000
-> +#define ASPEED_VIC_BASE 0x1E6C0080
-> +
-> +static struct arm_boot_info ast2400_binfo = {
-> +    .loader_start = ASPEED_SDRAM_BASE,
-> +    .board_id = 0,
-> +};
-> +
-> +/*
-> + * IO handler: simply catch any reads/writes to IO addresses that aren't
-> + * handled by a device mapping.
-> + */
-> +static uint64_t ast2400_io_read(void *p, hwaddr offset, unsigned size)
-> +{
-> +    trace_ast2400_io_read(offset, size);
-
-This is just to diagnose "missing device implementation", right?
-Shouldn't we be using a LOG_UNIMP instead?
-
-> +    return 0;
-> +}
-> +
-> +static void ast2400_io_write(void *opaque, hwaddr offset, uint64_t value,
-> +                unsigned size)
-> +{
-> +    trace_ast2400_io_write(offset, value, size);
-> +}
-> +
-> +static const MemoryRegionOps ast2400_io_ops = {
-> +    .read = ast2400_io_read,
-> +    .write = ast2400_io_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-> +};
-> +
-> +typedef struct AspeedState {
-> +    ARMCPU *cpu;
-> +    MemoryRegion *address_space;
-> +    MemoryRegion *ram;
-> +    ram_addr_t ram_size;
-> +    MemoryRegion *iomem;
-> +    AspeedVICState avic;
-> +    AspeedTimerState timer;
-> +} AspeedState;
-> +
-> +static void ast2400_init(MachineState *machine)
-> +{
-> +    AspeedState ast2400;
-> +    DeviceState *dev;
-> +    qemu_irq pic[ASPEED_VIC_NR_IRQS] = {0};
-> +    int i;
-> +
-> +    if (!machine->cpu_model) {
-> +        machine->cpu_model = "arm926";
-
-What we do now is not let the user override the cpu model at all;
-presumably this SoC only ever has an ARM926 and it doesn't make
-any sense to have some frankenstein "this SoC but with a different
-CPU in it" config.
-
-> +    }
-> +
-> +    ast2400.cpu = cpu_arm_init(machine->cpu_model);
-> +    if (!ast2400.cpu) {
-> +        fprintf(stderr, "Unable to find CPU definition\n");
-
-Prefer error_report() to plain fprintf.
-
-> +        exit(1);
-> +    }
-> +
-> +    ast2400.address_space = get_system_memory();
-> +    ram_size = machine->ram_size;
-> +
-> +    /* System RAM */
-> +    ast2400.ram = g_new(MemoryRegion, 1);
-> +    memory_region_allocate_system_memory(ast2400.ram, NULL, "ast2400.ram",
-> +            ram_size);
-> +    memory_region_add_subregion(ast2400.address_space, ASPEED_SDRAM_BASE,
-> +            ast2400.ram);
-> +
-> +    /* IO space */
-> +    ast2400.iomem = g_new(MemoryRegion, 1);
-> +    memory_region_init_io(ast2400.iomem, NULL, &ast2400_io_ops, NULL,
-> +            "ast2400.io", ASPEED_IOMEM_SIZE);
-> +    memory_region_add_subregion(ast2400.address_space, ASPEED_IOMEM_BASE,
-> +            ast2400.iomem);
-> +
-> +    /* AVIC */
-> +    dev = sysbus_create_varargs(TYPE_ASPEED_VIC, ASPEED_VIC_BASE,
-> +                    qdev_get_gpio_in(DEVICE(ast2400.cpu), ARM_CPU_IRQ),
-> +                    qdev_get_gpio_in(DEVICE(ast2400.cpu), ARM_CPU_FIQ),
-> +                    NULL);
-> +
-> +    for (i = 0; i < ASPEED_VIC_NR_IRQS; i++) {
-> +        pic[i] = qdev_get_gpio_in(dev, i);
-> +    }
-> +
-> +    /* Timer */
-> +    sysbus_create_varargs(TYPE_ASPEED_TIMER, ASPEED_TIMER_BASE, pic[16],
-> +            pic[17], pic[18], pic[35], pic[36], pic[37], pic[38], pic[39],
-> +            NULL);
-> +
-> +    /* UART - attach an 8250 to the IO space as our UART5 */
-> +    if (serial_hds[0]) {
-> +            serial_mm_init(ast2400.iomem, 0x184000, 2, pic[10], 38400,
-> +                    serial_hds[0], DEVICE_NATIVE_ENDIAN);
-> +    }
-
-Most of this should live in the SoC object rather than the board model.
-
-> +
-> +    ast2400_binfo.kernel_filename = machine->kernel_filename;
-> +    ast2400_binfo.initrd_filename = machine->initrd_filename;
-> +    ast2400_binfo.kernel_cmdline = machine->kernel_cmdline;
-> +    ast2400_binfo.ram_size = ram_size;
-> +    arm_load_kernel(ast2400.cpu, &ast2400_binfo);
-> +}
-> +
-> +static void ast2400_machine_init(MachineClass *mc)
-> +{
-> +    mc->desc = "ASpeed ast2400 BMC (ARM926EJ-S)";
-> +    mc->init = ast2400_init;
-> +}
-
-Should we be setting more of the MachineClass fields here?
-(eg block_default_type, no_parallel, no_floppy, no_cdrom, max_cpus,
-default_ram_size ?)
-
-thanks
--- PMM
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 7b798b0..5b86992 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -93,7 +93,7 @@ typedef enum {
+ } ExitStatus;
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_std_ir[31];
+ static TCGv cpu_fir[31];
+ static TCGv cpu_pc;
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index e69145d..7757dcb 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -56,7 +56,7 @@
+ #define IS_USER(s) (s->user)
+ #endif
+ 
+-TCGv_ptr cpu_env;
++TCGv_env cpu_env;
+ /* We reuse the same 64-bit temporaries for efficiency.  */
+ static TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
+ static TCGv_i32 cpu_R[16];
+diff --git a/target-arm/translate.h b/target-arm/translate.h
+index 53ef971..82e3f6b 100644
+--- a/target-arm/translate.h
++++ b/target-arm/translate.h
+@@ -70,7 +70,7 @@ typedef struct DisasCompare {
+ } DisasCompare;
+ 
+ /* Share the TCG temporaries common between 32 and 64 bit modes.  */
+-extern TCGv_ptr cpu_env;
++extern TCGv_env cpu_env;
+ extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
+ extern TCGv_i64 cpu_exclusive_addr;
+ extern TCGv_i64 cpu_exclusive_val;
+diff --git a/target-cris/translate.c b/target-cris/translate.c
+index 2a283e0..a73176c 100644
+--- a/target-cris/translate.c
++++ b/target-cris/translate.c
+@@ -60,7 +60,7 @@
+ #define CC_MASK_NZVC 0xf
+ #define CC_MASK_RNZV 0x10e
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_R[16];
+ static TCGv cpu_PR[16];
+ static TCGv cc_x;
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 9171929..53dee79 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -65,7 +65,7 @@
+ //#define MACRO_TEST   1
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_A0;
+ static TCGv cpu_cc_dst, cpu_cc_src, cpu_cc_src2, cpu_cc_srcT;
+ static TCGv_i32 cpu_cc_op;
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index 3877993..256a51f 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -44,7 +44,7 @@
+ 
+ #define MEM_INDEX 0
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_R[32];
+ static TCGv cpu_pc;
+ static TCGv cpu_ie;
+diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+index 085cb6a..7560c3a 100644
+--- a/target-m68k/translate.c
++++ b/target-m68k/translate.c
+@@ -50,7 +50,7 @@
+ static TCGv_i32 cpu_halted;
+ static TCGv_i32 cpu_exception_index;
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ 
+ static char cpu_reg_names[3*8*3 + 5*4];
+ static TCGv cpu_dregs[8];
+diff --git a/target-microblaze/translate.c b/target-microblaze/translate.c
+index 296c4d7..f944965 100644
+--- a/target-microblaze/translate.c
++++ b/target-microblaze/translate.c
+@@ -46,7 +46,7 @@
+             (((src) >> start) & ((1 << (end - start + 1)) - 1))
+ 
+ static TCGv env_debug;
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_R[32];
+ static TCGv cpu_SR[18];
+ static TCGv env_imm;
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index 658926d..3706176 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -1353,7 +1353,7 @@ enum {
+ };
+ 
+ /* global register indices */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_gpr[32], cpu_PC;
+ static TCGv cpu_HI[MIPS_DSP_ACC], cpu_LO[MIPS_DSP_ACC];
+ static TCGv cpu_dspctrl, btarget, bcond;
+diff --git a/target-moxie/translate.c b/target-moxie/translate.c
+index bc860a5..a437e2a 100644
+--- a/target-moxie/translate.c
++++ b/target-moxie/translate.c
+@@ -56,7 +56,7 @@ enum {
+ 
+ static TCGv cpu_pc;
+ static TCGv cpu_gregs[16];
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cc_a, cc_b;
+ 
+ #include "exec/gen-icount.h"
+diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
+index d25324e..5d0ab44 100644
+--- a/target-openrisc/translate.c
++++ b/target-openrisc/translate.c
+@@ -53,7 +53,7 @@ typedef struct DisasContext {
+     uint32_t delayed_branch;
+ } DisasContext;
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_sr;
+ static TCGv cpu_R[32];
+ static TCGv cpu_pc;
+diff --git a/target-ppc/translate.c b/target-ppc/translate.c
+index ecc85f0..e402ff9 100644
+--- a/target-ppc/translate.c
++++ b/target-ppc/translate.c
+@@ -49,7 +49,7 @@
+ /* Code translation helpers                                                  */
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static char cpu_reg_names[10*3 + 22*4 /* GPR */
+     + 10*4 + 22*5 /* SPE GPRh */
+     + 10*4 + 22*5 /* FPR */
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index 82e1165..c871ef2 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -37,7 +37,7 @@
+ #include "exec/cpu_ldst.h"
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ 
+ #include "exec/gen-icount.h"
+ #include "exec/helper-proto.h"
+diff --git a/target-sh4/translate.c b/target-sh4/translate.c
+index e35d175..7c18968 100644
+--- a/target-sh4/translate.c
++++ b/target-sh4/translate.c
+@@ -61,7 +61,7 @@ enum {
+ };
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_gregs[24];
+ static TCGv cpu_sr, cpu_sr_m, cpu_sr_q, cpu_sr_t;
+ static TCGv cpu_pc, cpu_ssr, cpu_spc, cpu_gbr;
+diff --git a/target-sparc/translate.c b/target-sparc/translate.c
+index 00d61ee..58572c3 100644
+--- a/target-sparc/translate.c
++++ b/target-sparc/translate.c
+@@ -39,7 +39,8 @@
+                          according to jump_pc[T2] */
+ 
+ /* global register indexes */
+-static TCGv_ptr cpu_env, cpu_regwptr;
++static TCGv_env cpu_env;
++static TCGv_ptr cpu_regwptr;
+ static TCGv cpu_cc_src, cpu_cc_src2, cpu_cc_dst;
+ static TCGv_i32 cpu_cc_op;
+ static TCGv_i32 cpu_psr;
+@@ -2291,7 +2292,7 @@ static void gen_fmovq(DisasContext *dc, DisasCompare *cmp, int rd, int rs)
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+-static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_ptr cpu_env)
++static inline void gen_load_trap_state_at_tl(TCGv_ptr r_tsptr, TCGv_env cpu_env)
+ {
+     TCGv_i32 r_tl = tcg_temp_new_i32();
+ 
+diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
+index 7073aba..03918eb 100644
+--- a/target-tilegx/translate.c
++++ b/target-tilegx/translate.c
+@@ -32,7 +32,7 @@
+ 
+ #define FMT64X                          "%016" PRIx64
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv cpu_pc;
+ static TCGv cpu_regs[TILEGX_R_COUNT];
+ 
+diff --git a/target-tricore/translate.c b/target-tricore/translate.c
+index 6d7f553..d13e5c8 100644
+--- a/target-tricore/translate.c
++++ b/target-tricore/translate.c
+@@ -47,7 +47,7 @@ static TCGv cpu_PSW_SV;
+ static TCGv cpu_PSW_AV;
+ static TCGv cpu_PSW_SAV;
+ /* CPU env */
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ 
+ #include "exec/gen-icount.h"
+ 
+diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
+index 1dd086d..39af3af 100644
+--- a/target-unicore32/translate.c
++++ b/target-unicore32/translate.c
+@@ -48,7 +48,7 @@ typedef struct DisasContext {
+    conditional executions state has been updated.  */
+ #define DISAS_SYSCALL 5
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv_i32 cpu_R[32];
+ 
+ /* FIXME:  These should be removed.  */
+diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
+index fd03603..9894488 100644
+--- a/target-xtensa/translate.c
++++ b/target-xtensa/translate.c
+@@ -74,7 +74,7 @@ typedef struct DisasContext {
+     unsigned cpenable;
+ } DisasContext;
+ 
+-static TCGv_ptr cpu_env;
++static TCGv_env cpu_env;
+ static TCGv_i32 cpu_pc;
+ static TCGv_i32 cpu_R[16];
+ static TCGv_i32 cpu_FR[16];
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index c45329a..e7983be 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -308,6 +308,7 @@ typedef tcg_target_ulong TCGArg;
+ typedef struct TCGv_i32_d *TCGv_i32;
+ typedef struct TCGv_i64_d *TCGv_i64;
+ typedef struct TCGv_ptr_d *TCGv_ptr;
++typedef TCGv_ptr TCGv_env;
+ 
+ static inline TCGv_i32 QEMU_ARTIFICIAL MAKE_TCGV_I32(intptr_t i)
+ {

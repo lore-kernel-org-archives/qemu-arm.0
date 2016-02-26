@@ -1,262 +1,65 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t3sm12778648wjz.11.2016.02.26.06.49.34
+Received: by 10.25.208.211 with SMTP id h202csp3405828lfg;
+        Fri, 26 Feb 2016 07:08:26 -0800 (PST)
+X-Received: by 10.31.180.213 with SMTP id d204mr1322571vkf.80.1456499306563;
+        Fri, 26 Feb 2016 07:08:26 -0800 (PST)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-vk0-x22c.google.com (mail-vk0-x22c.google.com. [2607:f8b0:400c:c05::22c])
+        by mx.google.com with ESMTPS id 14si8800817vkj.201.2016.02.26.07.08.26
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 06:49:34 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 0DA313E01B4;
-	Fri, 26 Feb 2016 14:49:34 +0000 (GMT)
-References: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org>
-User-agent: mu4e 0.9.17; emacs 25.0.91.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>, qemu-arm@nongnu.org, qemu-stable@nongnu.org, patches@linaro.org
-Subject: Re: [Qemu-devel] [PATCH] target-arm: Make reserved ranges in ID_AA64* spaces RAZ, not UNDEF
-In-reply-to: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org>
-Date: Fri, 26 Feb 2016 14:49:33 +0000
-Message-ID: <87oab37chu.fsf@linaro.org>
+        Fri, 26 Feb 2016 07:08:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22c as permitted sender) client-ip=2607:f8b0:400c:c05::22c;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org
+Received: by mail-vk0-x22c.google.com with SMTP id e6so79489521vkh.2
+        for <alex.bennee@linaro.org>; Fri, 26 Feb 2016 07:08:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=IehBv+VIXnorsvyfTIzAxbflyggsOJuurzpSTnVDquA=;
+        b=NBVVryjCd9Sif9LGeJkdPjlBNndEtnBsqoqRbnJEntT4AyvC4JH+tqwxX9l5EteNba
+         x+vEVg+NtwpA63B9FWzhPVPnErEG7QzYFCgzi+BUbiTlNPuOaDd7r+30ZyhOWq6gQfmA
+         sIsd1+h8+8nSh0MEGeP87VIhlSSzu7rRltsTU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=IehBv+VIXnorsvyfTIzAxbflyggsOJuurzpSTnVDquA=;
+        b=aCmoojZrG4xADLAqIcvcCa6pzrU/getzAsUVOA3vvNAOdYlHZpg0MXWwV46ugIIlmH
+         pg69ek+JpqYeT3gzyv5OYhghKb87HtdqJobyidnwmpAiJH8lZ/+xzLBGh0JQTBBla/sb
+         l2jA2rEi98Fmh1BfmPkXaskPyeSoenEGBQNpXEe0scwxs/VqDQGuAz5XGE4mcMrkZa8R
+         Km9QWQN7f2ohGpst7ttWBUdbVSBZt4SZ4xz3gw4Fi/COxfF4T2IdTGtBjP65udKavdNP
+         04leoEG7u9PFkWpVbCtYpfyNjVOMo+DCV7Znd468XyY2d4SAk4OeSkPLHTsfnIHZOHa0
+         bIhw==
+X-Gm-Message-State: AD7BkJItqY58ZSDmeU4jbhqd4hqMjYPE+R32Lhq9XGKyCLbme6TKoULu77qjbdzFb3qGOjsgq9/tWwOM+1SpifQVfy0=
+X-Received: by 10.31.141.2 with SMTP id p2mr1532997vkd.37.1456499306253; Fri,
+ 26 Feb 2016 07:08:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: mByVBGuU9pnr
+Received: by 10.31.56.216 with HTTP; Fri, 26 Feb 2016 07:08:06 -0800 (PST)
+In-Reply-To: <87oab37chu.fsf@linaro.org>
+References: <1455890863-11203-1-git-send-email-peter.maydell@linaro.org> <87oab37chu.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Feb 2016 15:08:06 +0000
+Message-ID: <CAFEAcA_dHpaNUTR+cCBAEb3BvG6POPyr_Z-eD03Sx4gNwD9VZg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] target-arm: Make reserved ranges in ID_AA64*
+ spaces RAZ, not UNDEF
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>, 
+	Patch Tracking <patches@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: zKePt6e3yf5f
 
+On 26 February 2016 at 14:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> I see ARM where sneaky getting a non-public register usage into the
+> kernel patch ;-)
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+It's normal for new kernel and gcc support patches to appear before
+the new ARM ARM version makes its way out of the door.
 
-> The v8 ARM ARM defines that unused spaces in the ID_AA64* system
-> register ranges are Reserved and must RAZ, rather than being UNDEF.
-> Implement this.
->
-> In particular, ARM v8.2 adds a new feature register ID_AA64MMFR2,
-> and newer versions of the Linux kernel will attempt to read this,
-> which causes them not to boot up on versions of QEMU missing this fix.
-
-I see ARM where sneaky getting a non-public register usage into the
-kernel patch ;-)
-
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-
-(by tested I mean it didn't boot next-20160226 before this patch and now it
-does)
-
->
-> Since the encoding .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6
-> is actually defined in ARMv8 (as ID_MMFR4), we give it an entry in
-> the ARMCPU struct so CPUs can override it, though since none do
-> this too will just RAZ.
->
-> Cc: qemu-stable@nongnu.org
-> Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> The patch which touches ID_AA64MMFR2 is currently in linux-next...
->
->  target-arm/cpu-qom.h |   1 +
->  target-arm/helper.c  | 128 ++++++++++++++++++++++++++++++++++++++++++++++++---
->  2 files changed, 122 insertions(+), 7 deletions(-)
->
-> diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-> index 1cc4502..1061c08 100644
-> --- a/target-arm/cpu-qom.h
-> +++ b/target-arm/cpu-qom.h
-> @@ -155,6 +155,7 @@ typedef struct ARMCPU {
->      uint32_t id_mmfr1;
->      uint32_t id_mmfr2;
->      uint32_t id_mmfr3;
-> +    uint32_t id_mmfr4;
->      uint32_t id_isar0;
->      uint32_t id_isar1;
->      uint32_t id_isar2;
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 5a0447b..4deea0f 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -4280,12 +4280,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 5,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_isar5 },
-> -            /* 6..7 are as yet unallocated and must RAZ */
-> -            { .name = "ID_ISAR6", .cp = 15, .crn = 0, .crm = 2,
-> -              .opc1 = 0, .opc2 = 6, .access = PL1_R, .type = ARM_CP_CONST,
-> -              .resetvalue = 0 },
-> -            { .name = "ID_ISAR7", .cp = 15, .crn = 0, .crm = 2,
-> -              .opc1 = 0, .opc2 = 7, .access = PL1_R, .type = ARM_CP_CONST,
-> +            { .name = "ID_MMFR4", .state = ARM_CP_STATE_BOTH,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = cpu->id_mmfr4 },
-> +            /* 7 is as yet unallocated and must RAZ */
-> +            { .name = "ID_ISAR7_RESERVED", .state = ARM_CP_STATE_BOTH,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 2, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = 0 },
->              REGINFO_SENTINEL
->          };
-> @@ -4339,7 +4341,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->          define_arm_cp_regs(cpu, not_v7_cp_reginfo);
->      }
->      if (arm_feature(env, ARM_FEATURE_V8)) {
-> -        /* AArch64 ID registers, which all have impdef reset values */
-> +        /* AArch64 ID registers, which all have impdef reset values.
-> +         * Note that within the ID register ranges the unused slots
-> +         * must all RAZ, not UNDEF; future architecture versions may
-> +         * define new registers here.
-> +         */
->          ARMCPRegInfo v8_idregs[] = {
->              { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
-> @@ -4349,6 +4355,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64pfr1},
-> +            { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64PFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4362,6 +4392,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64dfr1 },
-> +            { .name = "ID_AA64DFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64DFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64AFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 4,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4370,6 +4408,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 5,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64afr1 },
-> +            { .name = "ID_AA64AFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64AFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64ISAR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4378,6 +4424,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64isar1 },
-> +            { .name = "ID_AA64ISAR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64ISAR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "ID_AA64MMFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4386,6 +4456,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 1,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->id_aa64mmfr1 },
-> +            { .name = "ID_AA64MMFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 2,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "ID_AA64MMFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "MVFR0_EL1", .state = ARM_CP_STATE_AA64,
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 0,
->                .access = PL1_R, .type = ARM_CP_CONST,
-> @@ -4398,6 +4492,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->                .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 2,
->                .access = PL1_R, .type = ARM_CP_CONST,
->                .resetvalue = cpu->mvfr2 },
-> +            { .name = "MVFR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 3,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 4,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR5_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 5,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR6_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 6,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
-> +            { .name = "MVFR7_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
-> +              .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 3, .opc2 = 7,
-> +              .access = PL1_R, .type = ARM_CP_CONST,
-> +              .resetvalue = 0 },
->              { .name = "PMCEID0", .state = ARM_CP_STATE_AA32,
->                .cp = 15, .opc1 = 0, .crn = 9, .crm = 12, .opc2 = 6,
->                .access = PL0_R, .accessfn = pmreg_access, .type = ARM_CP_CONST,
-
-
---
-Alex Bennée
+thanks
+-- PMM

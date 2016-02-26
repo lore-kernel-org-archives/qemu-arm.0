@@ -1,193 +1,244 @@
-Received: by 10.25.208.211 with SMTP id h202csp3479624lfg;
-        Fri, 26 Feb 2016 09:47:48 -0800 (PST)
-X-Received: by 10.141.28.149 with SMTP id f143mr3778172qhe.66.1456508868904;
-        Fri, 26 Feb 2016 09:47:48 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp3481503lfg;
+        Fri, 26 Feb 2016 09:52:52 -0800 (PST)
+X-Received: by 10.55.79.17 with SMTP id d17mr3570226qkb.56.1456509172806;
+        Fri, 26 Feb 2016 09:52:52 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c6si14108054qgf.98.2016.02.26.09.47.48
+        by mx.google.com with ESMTPS id z11si2079438qhz.102.2016.02.26.09.52.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Feb 2016 09:47:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 26 Feb 2016 09:52:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:51417 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51437 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aZMUW-0006Al-F1
-	for alex.bennee@linaro.org; Fri, 26 Feb 2016 12:47:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33764)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aZMZQ-0007z8-9d
+	for alex.bennee@linaro.org; Fri, 26 Feb 2016 12:52:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36528)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aZMU8-0005tD-Pb
-	for qemu-devel@nongnu.org; Fri, 26 Feb 2016 12:47:25 -0500
+	(envelope-from <jsnow@redhat.com>) id 1aZMZM-0007yz-HK
+	for qemu-arm@nongnu.org; Fri, 26 Feb 2016 12:52:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aZMU5-0005yQ-Fd
-	for qemu-devel@nongnu.org; Fri, 26 Feb 2016 12:47:24 -0500
-Received: from mail-bn1bon0111.outbound.protection.outlook.com
-	([157.56.111.111]:29616
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <jsnow@redhat.com>) id 1aZMZJ-00016J-9h
+	for qemu-arm@nongnu.org; Fri, 26 Feb 2016 12:52:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33512)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aZMU5-0005yK-6U
-	for qemu-devel@nongnu.org; Fri, 26 Feb 2016 12:47:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=zTbTd1PX12ojSnSw9Z2XaqGgbBXomhT+KRHSKFzp6WU=;
-	b=JqEGh8TQxBoG8M/4dUPOpMxBFqdEbHgW/g5yE7cb2XCdFlPO9RRuSbfHq8OvM4vZPhXnFt5dOIn0F2TUpM7UudzOMinOfS2Ssdi7WfmBZaKBlpvjnpMvCf5UEo7rzJy6obt7KR/R1e5QGQR/+h35jup53LsFwq6OESdrmOWpss4=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2033.namprd03.prod.outlook.com (10.164.22.23) with Microsoft
-	SMTP Server (TLS) id 15.1.415.20; Fri, 26 Feb 2016 17:47:19 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0409.024; Fri, 26 Feb 2016 17:47:19 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Maydell <peter.maydell@linaro.org>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [PATCH 2/2] sdhci: Implement DeviceClass reset
-Thread-Index: AQHRcJj6RB/NvOrXA06y7QWL2OFsl58+mWHg
-Date: Fri, 26 Feb 2016 17:47:19 +0000
-Message-ID: <BLUPR0301MB203462756BB2601B05695E1F9EA70@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1456493044-10025-1-git-send-email-peter.maydell@linaro.org>
-	<1456493044-10025-3-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1456493044-10025-3-git-send-email-peter.maydell@linaro.org>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: linaro.org; dkim=none (message not signed)
-	header.d=none; linaro.org;
-	dmarc=none action=none header.from=microsoft.com; 
-x-originating-ip: [2001:4898:80e8:a::724]
-x-ms-office365-filtering-correlation-id: 7d65adee-e612-4b65-1071-08d33ed4dfc1
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2033;
-	5:uAKyClL+XKCFOzFgWO/W18VPAAOmQ7ChZspN9skxqAkmDDFxBcLwBYRJSYriZe33T47CUkqabaEEFSdxLBgugWrHOoEaCw/byIYJWDec/b70RU+qGw6/Ey7rwoDOGOYQkDqVgrIAsxAo3JukeDLO5A==;
-	24:5iTph09opaP98Ywyi64NYBLb7UDSltQjhK9dMrWCP0pUaTnJ6vTLu1l4xtervJAwvh+2dKCkqGNbISoymFP555HVLoFixGCRVcUMDV8r6rk=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2033;
-x-microsoft-antispam-prvs: <BLUPR0301MB2033B11201003A21D92F948B9EA70@BLUPR0301MB2033.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
-	SRVR:BLUPR0301MB2033; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2033; 
-x-forefront-prvs: 0864A36BBF
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(377454003)(2501003)(3660700001)(74316001)(40100003)(3280700002)(92566002)(2906002)(122556002)(99286002)(4326007)(10400500002)(2900100001)(106116001)(5005710100001)(2950100001)(87936001)(77096005)(586003)(5002640100001)(19580395003)(19580405001)(1220700001)(5003600100002)(5008740100001)(5001960100002)(10290500002)(5004730100002)(1096002)(33656002)(189998001)(11100500001)(5001770100001)(102836003)(6116002)(86362001)(8990500004)(76576001)(10090500001)(54356999)(76176999)(50986999)(7059030)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2033;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	MLV:sfv; LANG:en; 
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <jsnow@redhat.com>)
+	id 1aZMZI-00015t-TN; Fri, 26 Feb 2016 12:52:45 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F74C1837;
+	Fri, 26 Feb 2016 17:52:44 +0000 (UTC)
+Received: from scv.usersys.redhat.com (dhcp-17-171.bos.redhat.com
+	[10.18.17.171])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u1QHqhQD027105; Fri, 26 Feb 2016 12:52:43 -0500
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Mats Malmberg <mats.malmberg@tritech.se>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <605392182193B84A99A143D9DA347B52FB8AA7@post>
+	<CAFEAcA9xvDiHAc6Tu-PLbjd=RruX1c+vpfZg+ZvtH5t3DSyUOw@mail.gmail.com>
+	<BLUPR0301MB2034905DFE5B0135A1BE897A9EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<56CDF624.6050104@redhat.com>
+	<BLUPR0301MB2034F3C40B01A1A3536A837C9EA50@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<605392182193B84A99A143D9DA347B52FB8B57@post>
+	<56D087AD.3040001@redhat.com>
+	<BLUPR0301MB20345BC8FEA7B3A86AB1926B9EA70@BLUPR0301MB2034.namprd03.prod.outlook.com>
+From: John Snow <jsnow@redhat.com>
+Message-ID: <56D090EB.3000908@redhat.com>
+Date: Fri, 26 Feb 2016 12:52:43 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Feb 2016 17:47:19.4051 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2033
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.111.111
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	"patches@linaro.org" <patches@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH 2/2] sdhci: Implement DeviceClass reset
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <BLUPR0301MB20345BC8FEA7B3A86AB1926B9EA70@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [Qemu-devel]  help on how to emulate rasbperry pi 2
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sde+s+mEBij2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dlmYBsAAUmZT
 
-> From: Peter Maydell [mailto:peter.maydell@linaro.org]
-> Sent: Friday, 26 February 2016 5:24 AM
->=20
-> The sdhci device was missing a DeviceClass reset method;
-> implement it. Poweron reset looks the same as reset commanded
-> by the guest via the device registers, apart from modelling of
-> the rpi 'pending insert interrupt on powerup' quirk.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/sd/sdhci.c | 21 +++++++++++++++++----
->  1 file changed, 17 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index e087c17..d28b587 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -207,6 +207,21 @@ static void sdhci_reset(SDHCIState *s)
->      s->pending_insert_state =3D false;
->  }
->=20
-> +static void sdhci_poweron_reset(DeviceState *dev)
-> +{
-> +    /* QOM (ie power-on) reset. This is identical to reset
-> +     * commanded via device register apart from handling of the
-> +     * 'pending insert on powerup' quirk.
-> +     */
-> +    SDHCIState *s =3D (SDHCIState *)dev;
-> +
-> +    sdhci_reset(s);
-> +
-> +    if (s->pending_insert_quirk) {
-> +        s->pending_insert_state =3D true;
-> +    }
-> +}
-> +
->  static void sdhci_data_transfer(void *opaque);
->=20
->  static void sdhci_send_command(SDHCIState *s)
-> @@ -1290,6 +1305,7 @@ static void sdhci_pci_class_init(ObjectClass *klass=
-,
-> void *data)
->      set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->      dc->vmsd =3D &sdhci_vmstate;
->      dc->props =3D sdhci_pci_properties;
-> +    dc->reset =3D sdhci_poweron_reset;
->  }
->=20
->  static const TypeInfo sdhci_pci_info =3D {
-> @@ -1332,10 +1348,6 @@ static void sdhci_sysbus_realize(DeviceState *dev,
-> Error ** errp)
->      memory_region_init_io(&s->iomem, OBJECT(s), &sdhci_mmio_ops, s,
-> "sdhci",
->              SDHC_REGISTERS_MAP_SIZE);
->      sysbus_init_mmio(sbd, &s->iomem);
-> -
-> -    if (s->pending_insert_quirk) {
-> -        s->pending_insert_state =3D true;
-> -    }
->  }
->=20
->  static void sdhci_sysbus_class_init(ObjectClass *klass, void *data)
-> @@ -1345,6 +1357,7 @@ static void sdhci_sysbus_class_init(ObjectClass
-> *klass, void *data)
->      dc->vmsd =3D &sdhci_vmstate;
->      dc->props =3D sdhci_sysbus_properties;
->      dc->realize =3D sdhci_sysbus_realize;
-> +    dc->reset =3D sdhci_poweron_reset;
->  }
->=20
->  static const TypeInfo sdhci_sysbus_info =3D {
 
-Not tested, but the handling of the Pi quirk looks good to me, and it's tri=
-vial.
 
-Reviewed-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+On 02/26/2016 12:23 PM, Andrew Baumann wrote:
+>> From: John Snow [mailto:jsnow@redhat.com]
+>> Sent: Friday, 26 February 2016 9:13 AM
+>>
+>> On 02/26/2016 04:30 AM, Mats Malmberg wrote:
+>>> Hello, thank you for your quick response!
+>>>
+>>> It helped me to get a little bit further, but unfortunately the problem
+>> persists.
+>>> I now get some output from the kernel startup, but I think that it is unable
+>> to find the provided sd-card image.
+>>>
+>>> Here's what I've tried (the most successful setup):
+>>> 1. download and deflate jessie/jessie-lite image (I tried both distros)
+>>> 2. mount the boot partition and copy the following files to host:
+>> kernel7.img, kernel.img and bcm2709-rpi-2-b.dtb
+>>> 3. mount the rootfs partition. Open the file /etc/ld.so.preload and
+>> comment out the line /usr/lib/arm-linux-gnueabihf/libarmmem.so (which is
+>> the only line present in the file.)
+>>> 4. execute the command
+>>> qemu-system-arm -M raspi2  -kernel kernel7.img -sd 2016-02-09-raspbian-
+>> jessie.img -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200
+>> dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2" -dtb bcm2709-rpi-2-b.dtb -
+>> serial stdio
+>>>
+>>> the resulting terminal printout :
+>>>
+>>> WARNING: Image format was not specified for '2016-02-09-raspbian-
+>> jessie.img' and probing guessed raw.
+>>>          Automatically detecting the format is dangerous for raw images, write
+>> operations on block 0 will be restricted.
+>>>          Specify the 'raw' format explicitly to remove the restrictions.
+>>> Warning: Orphaned drive without device: id=sd0,file=2016-02-09-raspbian-
+>> jessie.img,if=sd,bus=0,unit=0
+>>> VNC server running on '127.0.0.1;5900'
+>>> Uncompressing Linux... done, booting the kernel.
+>>> ...
+>>> lots of kernel output
+>>> ...
+>>> [    6.306894] sdhci-pltfm: SDHCI platform and OF driver helper
+>>> [    6.335521] ledtrig-cpu: registered to indicate activity on CPUs
+>>> [    6.338465] hidraw: raw HID events driver (C) Jiri Kosina
+>>> [    6.341004] usbcore: registered new interface driver usbhid
+>>> [    6.341768] usbhid: USB HID core driver
+>>> [    6.346873] Initializing XFRM netlink socket
+>>> [    6.348012] NET: Registered protocol family 17
+>>> [    6.350974] Key type dns_resolver registered
+>>> [    6.352810] Registering SWP/SWPB emulation handler
+>>> [    6.360245] registered taskstats version 1
+>>> [    6.374999] vc-sm: Videocore shared memory driver
+>>> [    6.397370] uart-pl011 3f201000.uart: no DMA platform data
+>>> [    6.428165] VFS: Cannot open root device "mmcblk0p2" or unknown-
+>> block(0,0): error -6
+>>> [    6.429208] Please append a correct "root=" boot option; here are the
+>> available partitions:
+>>> [    6.430848] 0100            4096 ram0  (driver?)
+>>> [    6.431718] 0101            4096 ram1  (driver?)
+>>> [    6.432348] 0102            4096 ram2  (driver?)
+>>> [    6.433101] 0103            4096 ram3  (driver?)
+>>> [    6.434627] 0104            4096 ram4  (driver?)
+>>> [    6.435317] 0105            4096 ram5  (driver?)
+>>> [    6.435995] 0106            4096 ram6  (driver?)
+>>> [    6.436749] 0107            4096 ram7  (driver?)
+>>> [    6.437507] 0108            4096 ram8  (driver?)
+>>> [    6.438159] 0109            4096 ram9  (driver?)
+>>> [    6.438853] 010a            4096 ram10  (driver?)
+>>> [    6.439562] 010b            4096 ram11  (driver?)
+>>> [    6.440193] 010c            4096 ram12  (driver?)
+>>> [    6.440815] 010d            4096 ram13  (driver?)
+>>> [    6.441439] 010e            4096 ram14  (driver?)
+>>> [    6.442065] 010f            4096 ram15  (driver?)
+>>> [    6.443003] Kernel panic - not syncing: VFS: Unable to mount root fs on
+>> unknown-block(0,0)
+>>> [    6.444949] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.1.17-v7+ #838
+>>> [    6.445837] Hardware name: BCM2709
+>>> [    6.448200] [<800180c0>] (unwind_backtrace) from [<80013b88>]
+>> (show_stack+0x20/0x24)
+>>> [    6.449477] [<80013b88>] (show_stack) from [<80555028>]
+>> (dump_stack+0x80/0x98)
+>>> [    6.450490] [<80555028>] (dump_stack) from [<80551540>]
+>> (panic+0xa4/0x204)
+>>> [    6.451641] [<80551540>] (panic) from [<80777384>]
+>> (mount_block_root+0x1a8/0x260)
+>>> [    6.452802] [<80777384>] (mount_block_root) from [<80777614>]
+>> (mount_root+0xec/0x110)
+>>> [    6.453878] [<80777614>] (mount_root) from [<807777a0>]
+>> (prepare_namespace+0x168/0x1c8)
+>>> [    6.454982] [<807777a0>] (prepare_namespace) from [<80776f90>]
+>> (kernel_init_freeable+0x270/0x2bc)
+>>> [    6.456243] [<80776f90>] (kernel_init_freeable) from [<80550968>]
+>> (kernel_init+0x18/0xfc)
+>>> [    6.457378] [<80550968>] (kernel_init) from [<8000f858>]
+>> (ret_from_fork+0x14/0x3c)
+>>> [    6.459706] ---[ end Kernel panic - not syncing: VFS: Unable to mount root
+>> fs on unknown-block(0,0)
+>>>
+>>> I know that in some of my previous attempts (before I contacted you
+>> guys), I was able to get similar result. At that time an mmcblk device was
+>> listed among the available partitions, but the kernel was unable to mount it.
+>>>
+>>> I'm having problem to identify the cause (since as I mentioned earlier this is
+>> not really my domain).
+>>> I've also tried (without any positive results)
+>>> - mark the boot partition as bootable with fdisk (does not seem to make
+>> any difference)
+>>> - use kernel.img instead of kernel7.img (does not provide any kernel
+>> printout, but still says that it has an orphaned drive and hangs indefinetly
+>> after saying VNC server running)
+>>> - create a image with 'qemu-img create raw jessie.img 4G' and use dd to
+>> copy original image into jessie.img file, and the provide qemu with
+>> format=raw.
+>>> - make the above qemu-system-arm invocation with -hda 2016-02-09-
+>> raspbian-jessie.img instead of -sd
+>>> - make the above qemu-system-arm invocation with -drive file=2016-02-
+>> 09-raspbian-jessie.img,format=raw,if=sd instead of -sd
+>>>
+>>>
+>>> Do you have any suggestions on how to proceed with my troubleshooting?
+>>> Are you able to explain what seems to be the problem (and possible
+>> cause)?
+>>>
+>>> Thank you for your help, really appreciated!
+>>>
+>>> Best regards
+>>> Mats
+>>>
+>>
+>> Andrew, you might want to update the examples on that wiki: it looks
+>> like with recent changes that "-sd" was temporarily insufficient for
+>> getting a proper instance running.
+>>
+>> Maybe you should also add some examples that use the -drive/-device
+>> combo that we canonically support in addition to the sugared -sd/-hda.
+>>
+>> Mats: for now, try grabbing the latest qemu master, it fixed a bug with
+>> -sd. :)
+> 
+> Yes, John's right, please try now and this bug should be fixed.
+> 
+> There was a regression in qemu-master for about a week, fixed by:
+> https://lists.nongnu.org/archive/html/qemu-devel/2016-02/msg05733.html
+> 
+> John, AFAIK there was no way to have working SD without this patch (the code to hook up the block device didn't exist), so I don't think there's much point updating the wiki.
+> 
+> Cheers,
+> Andrew
+> 
 
-BTW, now that you've done this, we could unify sdhci_pci_properties and sdh=
-ci_sysbus_properties. Let me know if you'd like a patch for that.
+`-drive if=none,id=sd0,file=etc.img,format=raw
+ -device sd-card,drive=sd0,bus=sd-bus`
 
-Cheers,
-Andrew
+doesn't work?
+
+The code to "hook up the block device" was added to the board init, but
+that's for if=SD devices as added by -sd. the -drive/-device combo
+should work anyway, because you are explicitly hooking it up via -device.
+
+I guess the QOMification of SD is new, but usually we recommend/prefer
+scripts and clients to use the explicit drive/device syntax above
+instead of the -sd or -hda syntactic sugar. Real actual people can still
+use -sd/-hd -- but they're prone to breakage as you've seen.
+
+--js
+

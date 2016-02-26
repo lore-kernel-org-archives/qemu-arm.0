@@ -1,116 +1,87 @@
-Received: by 10.25.208.211 with SMTP id h202csp11229lfg;
-        Fri, 26 Feb 2016 12:08:34 -0800 (PST)
-X-Received: by 10.112.134.202 with SMTP id pm10mr1285332lbb.36.1456517314526;
-        Fri, 26 Feb 2016 12:08:34 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lf0-x241.google.com (mail-lf0-x241.google.com. [2a00:1450:4010:c07::241])
-        by mx.google.com with ESMTPS id 63si6823639lfz.13.2016.02.26.12.08.34
+Received: by 10.25.208.211 with SMTP id h202csp16027lfg;
+        Fri, 26 Feb 2016 12:20:49 -0800 (PST)
+X-Received: by 10.55.76.213 with SMTP id z204mr4478091qka.58.1456518049405;
+        Fri, 26 Feb 2016 12:20:49 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qk0-x242.google.com (mail-qk0-x242.google.com. [2607:f8b0:400d:c09::242])
+        by mx.google.com with ESMTPS id d34si14753022qkh.0.2016.02.26.12.20.49
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Feb 2016 12:08:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) client-ip=2a00:1450:4010:c07::241;
+        Fri, 26 Feb 2016 12:20:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) client-ip=2607:f8b0:400d:c09::242;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::241 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
-       dkim=pass header.i=@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x241.google.com with SMTP id i75so1042691lfb.1;
-        Fri, 26 Feb 2016 12:08:34 -0800 (PST)
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::242 as permitted sender) smtp.mailfrom=rth7680@gmail.com;
+       dkim=pass header.i=@gmail.com
+Received: by mail-qk0-x242.google.com with SMTP id e124so3158875qkc.3;
+        Fri, 26 Feb 2016 12:20:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-transfer-encoding;
-        bh=90bTyzKoY4YGYeJKNOFeegk+QvzFP51vbKSrbOnAxU4=;
-        b=FsyRvXgD035ogNz8qwpVjH4Iv1JjR/LaYW5aZwn9Z2oSlCQOP0d0fLaB3DrhyILyUK
-         ZKZi39wZm4EqGQPaxqE2cj02+BczhyPmCobYpE7YxIf0l6ic7ZMWHk/gpfdh0wuqDHTn
-         NPr9IHosXpeRG5r94736vT2O2keeunlRffHpQwk5+M6RLlQoZcEkFwDzM2YM7e6vTk5p
-         Gq7U3yeHuk8Gda4/CHK+qldWI7D5wGRUfzf02XGvKbDTFwP1YsfC6Hcr82t+wBc9hezd
-         iS6Z8pK54ojcmAgRCnZXOHdUSlyK4oOZI33d9Qd+ueVIiNFSi9+KHg0wv36pvkGNaxLc
-         7sJQ==
+        bh=J9SFI/FiS5WOEor0q2fKAPV+uajsy2dVbUdpOwjxjaw=;
+        b=sZUAxTxOEb36o+srxCw+wl4Z264q0LFGg1co7NkspPkkD+8MN7NUh2IRtXjjiB8CXa
+         K6dgzQykEF67YiPsWVhNhCS8qTM3thkc/StEYh9GoqhmOwKGz5+T0JSB/+rNm1pWg0Ct
+         MbcRy06RZBOGr2qr9Fl2qCqUk5Og4uh1EoNPcGbimJdkyCo2jN2BhEzhPkEgGF9hUS90
+         K1Imc0Kbx03b1VPPrOJpZUlPeH0jcs0a1Ifm7X/WhsP+2Zea2CDKpk6VddxGYMfwPMOB
+         0gTKRv6WQFMNM3JXhq/8s8KwxDDAUZEVbGhEf0AFq/QTRr3aKNJ9M+I3UatW5ZgndY05
+         KNSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=90bTyzKoY4YGYeJKNOFeegk+QvzFP51vbKSrbOnAxU4=;
-        b=Jm+NrxGrWv4wp7h+WsN5MPqO/V9gIWnPvBbVf6BEw1hpVIy51OCfmON6TEjSbh4liO
-         HMinCPth1AxQn21aMkfOX79WpTIF7UYCiwIpO7StiStmfqcWvTplPvr8AiIt4WrFhfpR
-         /d/u6llKwJHNLNRACRh60NHqLu9l+mw+JfqtI2yt0ocXxfx30v5T6SYMuRZd21L8HTyk
-         IuRYRnQvu0EcbfTZrJ2gFfK8ZnHhetMAkWUvYlFX5k2ooua9Jemzpf/8UBXt78JsAPd4
-         hY7JC7B6BbN4NJ7HedCMyUf0nbNlF31w4nCVILNdqr6RJKg5YUjn3YuRbPx/NPoKkl2P
-         Y/wA==
-X-Gm-Message-State: AD7BkJKG10F1IsbwRZVbaTXnJ6bd+y3AsOsQxGLlNkqBlY1Fr31NmOmIM+MqYcu8NAFUJA==
-X-Received: by 10.25.141.130 with SMTP id p124mr1369079lfd.42.1456517314194;
-        Fri, 26 Feb 2016 12:08:34 -0800 (PST)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from [192.168.0.65] (broadband-46-188-121-154.2com.net. [46.188.121.154])
-        by smtp.gmail.com with ESMTPSA id f196sm2058955lfb.49.2016.02.26.12.08.32
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=J9SFI/FiS5WOEor0q2fKAPV+uajsy2dVbUdpOwjxjaw=;
+        b=Uo0JLpJwfL1qrXV4GOfC6X7CAoVCTxNKKPdvJho9DnH6usrOS3cvP86sEQP6OR91dD
+         CWGbYsXW+ARcCBc3hFtTeEMyAWLzHgjezVtKQJTLCPtPqXgBL+OUhPi3NxQXhlpJrsMo
+         1M65ELMRd6D9Ico/IkhqjmPv3NsJ3pLVinvX+2X15NcGixoF+AEjAAfmxLcawf3a5r17
+         50JUO5+Ixi/0slA7Ns6ef+R2tS1y3l3si3dppnKkFFchknRB+tcgpot6tZ64fnJUltUp
+         LgVEm8WelucLmFxovcfmr7/gd4qRlxq6aYLqMv8UAuwnmw1S5myk/TzNJ92Zzz8GTDVQ
+         JGDw==
+X-Gm-Message-State: AD7BkJKiEQ9RMlxK6Ot8ZgdnJvsCuUrB7SgFpSMeoav3mf6j0cVeTphXOvyMyBEriLfgJw==
+X-Received: by 10.55.55.138 with SMTP id e132mr4452172qka.11.1456518049099;
+        Fri, 26 Feb 2016 12:20:49 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from anchor.twiddle.net (50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+        by smtp.googlemail.com with ESMTPSA id a66sm5986931qkb.20.2016.02.26.12.20.47
         (version=TLSv1/SSLv3 cipher=OTHER);
-        Fri, 26 Feb 2016 12:08:33 -0800 (PST)
-Subject: Re: [PATCH v2 4/8] target-arm: Add more fields to the data abort
- syndrome generator
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <1455912292-23807-1-git-send-email-edgar.iglesias@gmail.com>
- <1455912292-23807-5-git-send-email-edgar.iglesias@gmail.com>
- <CAFEAcA9c7OAF1Lqw1=xd3n+ipuYvo_9AW42wW0JwXM+L4e8iww@mail.gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56D0B0BF.1040804@gmail.com>
-Date: Fri, 26 Feb 2016 23:08:31 +0300
+        Fri, 26 Feb 2016 12:20:48 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH v7 7/9] target-arm: dfilter support for in_asm
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+References: <1456156787-17509-1-git-send-email-alex.bennee@linaro.org>
+ <1456156787-17509-8-git-send-email-alex.bennee@linaro.org>
+Cc: crosthwaitepeter@gmail.com, aurelien@aurel32.net, pbonzini@redhat.com,
+ dgilbert@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM" <qemu-arm@nongnu.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <56D0B39E.6020708@twiddle.net>
+Date: Fri, 26 Feb 2016 12:20:46 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.5.1
+ Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9c7OAF1Lqw1=xd3n+ipuYvo_9AW42wW0JwXM+L4e8iww@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: MDpQwJfGoeD/
+In-Reply-To: <1456156787-17509-8-git-send-email-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: ljEh2RfNVaJS
 
-On 25.02.2016 20:41, Peter Maydell wrote:
-> On 19 February 2016 at 20:04, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
->> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->>
->> Add the following flags to the data abort syndrome generator:
->> * isv - Instruction syndrome valid
->> * sas - Syndrome access size
->> * sse - Syndrome sign extend
->> * srt - Syndrome register transfer
->> * sf  - Sixty-Four bit register width
->> * ar  - Acquire/Release
->>
->> These flags are not yet used, so this patch has no functional change.
->>
->> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->> ---
->>   target-arm/internals.h | 20 ++++++++++++++++++--
->>   target-arm/op_helper.c |  8 ++++++--
->>   2 files changed, 24 insertions(+), 4 deletions(-)
->>
->> diff --git a/target-arm/internals.h b/target-arm/internals.h
->> index 34e2688..4e9d9f5 100644
->> --- a/target-arm/internals.h
->> +++ b/target-arm/internals.h
->> @@ -383,13 +383,29 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
->>           | (ea << 9) | (s1ptw << 7) | fsc;
->>   }
->>
->> -static inline uint32_t syn_data_abort(int same_el, int ea, int cm, int s1ptw,
->> +static inline uint32_t syn_data_abort(int same_el, int isv,
->> +                                      int sas, int sse, int srt,
->> +                                      int sf, int ar,
->> +                                      int ea, int cm, int s1ptw,
->>                                         int wnr, int fsc,
->>                                         bool is_16bit)
-> Everywhere we call this (both now and once the full patchset has
-> been applied) isv is a constant (either 0 or 1). I think it might
-> be cleaner to define both a syn_data_abort_with_isv() and a
-> syn_data_abort_no_isv(). Then the no_isv version doesn't need all
-> the arguments that are zeroes.
+On 02/22/2016 07:59 AM, Alex Bennée wrote:
+> Each individual architecture needs to use the qemu_log_in_addr_range()
+> feature for enabling in_asm output as it is part of the frontend.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+> 
+> ---
+> v5
+>   - no longer wrapping tcg_gen_insn_start (was tcg_gen_debug)
+>   - reword to handle only in_asm
+>   - added r-b tag
+> ---
+>  target-arm/translate-a64.c | 3 ++-
+>  target-arm/translate.c     | 3 ++-
+>  2 files changed, 4 insertions(+), 2 deletions(-)
 
-Alternatively, we could define a function similar to 
-LSInstructionSyndrome from ARMv8 ARM pseudocode, but which will pack the 
-instruction syndrome from its components into a value of ISS<24:14>.
 
-Best regards,
-Sergey
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+
+
+r~

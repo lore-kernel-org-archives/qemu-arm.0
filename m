@@ -1,45 +1,81 @@
-Received: by 10.25.208.211 with SMTP id h202csp1179600lfg;
-        Mon, 29 Feb 2016 08:19:30 -0800 (PST)
-X-Received: by 10.140.109.98 with SMTP id k89mr20146339qgf.69.1456762770211;
-        Mon, 29 Feb 2016 08:19:30 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1181927lfg;
+        Mon, 29 Feb 2016 08:24:41 -0800 (PST)
+X-Received: by 10.55.71.143 with SMTP id u137mr20361016qka.1.1456763081471;
+        Mon, 29 Feb 2016 08:24:41 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m5si26446186qge.49.2016.02.29.08.19.29
+        by mx.google.com with ESMTPS id o31si16010426qko.59.2016.02.29.08.24.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Feb 2016 08:19:30 -0800 (PST)
+        Mon, 29 Feb 2016 08:24:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37528 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37556 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aaQXh-0006Dt-C7
-	for alex.bennee@linaro.org; Mon, 29 Feb 2016 11:19:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47911)
+	id 1aaQci-0007t7-RP
+	for alex.bennee@linaro.org; Mon, 29 Feb 2016 11:24:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49058)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aaQXZ-00066G-PH
-	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 11:19:26 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1aaQcb-0007sm-R6
+	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 11:24:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aaQXS-00039Y-UR
-	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 11:19:21 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56029)
+	(envelope-from <serge.fdrv@gmail.com>) id 1aaQcY-0004IX-IF
+	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 11:24:33 -0500
+Received: from mail-lf0-x22e.google.com ([2a00:1450:4010:c07::22e]:35201)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aaQXK-00037P-9Q; Mon, 29 Feb 2016 11:19:06 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aaQXC-0005LZ-5G; Mon, 29 Feb 2016 16:18:58 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon, 29 Feb 2016 16:18:54 +0000
-Message-Id: <1456762734-23939-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.9.1
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1aaQcY-0004Hn-6Y; Mon, 29 Feb 2016 11:24:30 -0500
+Received: by mail-lf0-x22e.google.com with SMTP id j186so20581603lfg.2;
+	Mon, 29 Feb 2016 08:24:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=vumYmAEH9uCnaxvbkxM1W+eqvnFHKM+32iJLMf0IlQE=;
+	b=qvAAYWL9My453UDd8hLLyidGOL+RjrSAi1Xrj6FX/TRRPitv7f1oySnw7Zmpi1K9vr
+	htCa6mdAy4GRxMv4YGSaGqoZrn4Tidb0DrUGmVHG6Uoa6gKJA59c9NtUw3g+Izn8f79F
+	glq+V5uUib2mRmbh85T1ui6ZhS+Mrv8OeGj1Dw20eIp9+WXD2gVQU7oBqger4ugxYH7T
+	9FFA+0o0fuoq2Z31+BuiklkAc4MdUGrvTd9/JiSRkOx5lDddOzrwmxkoqnBdV6tzAdCm
+	uuOYHeJuc7P3oVFkfwQaY8Q53/F45TYSHf9xIzBwkmiUkWiicBCVgEfxom1hpePG5fAu
+	JW4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=vumYmAEH9uCnaxvbkxM1W+eqvnFHKM+32iJLMf0IlQE=;
+	b=GX4jxCj0M2e65mRdl8dpCcnWIRz5YYcoGqrP3M0Pw4hhmMH3trg/xiiH5hZJwHy22H
+	ilztAdG20cgbWWmb1I+cfO/WrCCsOvqPNC8HF3x1DX1/FaH+l9HrtgRAlhlf//9XQJFx
+	4ZZ/rQXZe4VdA4UewfqDAUNLYwR6PT6Owtxkp4LpxJEl8HB0VsHLzAH+vNnWzN3ZMeWa
+	+QYVaLr0cCqbrWWfao7U4Lk+OPoaFyD6A1vbztixYa5Chy8KEYXJNTFaxSs2OwyGGREV
+	Q991RDzpYdWIRiIQpaBHWOBGHcvKFDnnj8tSQkIHDw3gMIkw1jiMep0ileanCm9SnZEs
+	VN9g==
+X-Gm-Message-State: AD7BkJIlGqji/fnft2VVvj34k+rTcnHq8pEFJkxPRUG96jSARClZ/LhxSIk4KL8yoRCSxw==
+X-Received: by 10.25.205.201 with SMTP id d192mr5919024lfg.76.1456763068576;
+	Mon, 29 Feb 2016 08:24:28 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	y184sm4183762lfd.16.2016.02.29.08.24.27
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 29 Feb 2016 08:24:27 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <1456762734-23939-1-git-send-email-peter.maydell@linaro.org>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56D470B9.3090609@gmail.com>
+Date: Mon, 29 Feb 2016 19:24:25 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
+MIME-Version: 1.0
+In-Reply-To: <1456762734-23939-1-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
+X-Received-From: 2a00:1450:4010:c07::22e
 Cc: qemu-arm@nongnu.org
-Subject: [Qemu-arm] [PATCH] target-arm: Implement MRS (banked) and MSR
-	(banked) instructions
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Implement MRS (banked) and MSR
+ (banked) instructions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -53,460 +89,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 55snPolkQ0YS
+X-TUID: PPrpRXBkfz0A
 
-Starting with the ARMv7 Virtualization Extensions, the A32 and T32
-instruction sets provide instructions "MSR (banked)" and "MRS
-(banked)" which can be used to access registers for a mode other
-than the current one:
- * R<m>_<mode>
- * ELR_hyp
- * SPSR_<mode>
+On 29.02.2016 19:18, Peter Maydell wrote:
+> Starting with the ARMv7 Virtualization Extensions, the A32 and T32
+> instruction sets provide instructions "MSR (banked)" and "MRS
+> (banked)" which can be used to access registers for a mode other
+> than the current one:
+>  * R<m>_<mode>
+>  * ELR_hyp
+>  * SPSR_<mode>
+>
+> Implement the missing instructions.
 
-Implement the missing instructions.
+Likely, there is no disassembling support in QEMU for these instructions
+as well. Are you going to add it?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-We don't support EL2 yet, but you can get at these on a v8 CPU in
-32-bit EL1 if EL3 is enabled. Obviously there's not going to be much
-32-bit EL1 code out there that uses the insns though, as it wouldn't
-work on v7 if it did...
+Best regards,
+Sergey
 
- target-arm/helper.h    |   3 +
- target-arm/op_helper.c | 120 ++++++++++++++++++++++++
- target-arm/translate.c | 246 ++++++++++++++++++++++++++++++++++++++++++++++++-
- 3 files changed, 366 insertions(+), 3 deletions(-)
-
-diff --git a/target-arm/helper.h b/target-arm/helper.h
-index ea13202..de3c644 100644
---- a/target-arm/helper.h
-+++ b/target-arm/helper.h
-@@ -76,6 +76,9 @@ DEF_HELPER_1(exception_return, void, env)
- DEF_HELPER_2(get_r13_banked, i32, env, i32)
- DEF_HELPER_3(set_r13_banked, void, env, i32, i32)
- 
-+DEF_HELPER_3(mrs_banked, i32, env, i32, i32)
-+DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
-+
- DEF_HELPER_2(get_user_reg, i32, env, i32)
- DEF_HELPER_3(set_user_reg, void, env, i32, i32)
- 
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index 4881e34..a2afdd8 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -489,6 +489,126 @@ uint32_t HELPER(get_r13_banked)(CPUARMState *env, uint32_t mode)
-     }
- }
- 
-+static void msr_mrs_banked_exc_checks(CPUARMState *env, uint32_t tgtmode,
-+                                      uint32_t regno)
-+{
-+    /* Raise an exception if the requested access is one of the UNPREDICTABLE
-+     * cases; otherwise return. This broadly corresponds to the pseudocode
-+     * BankedRegisterAccessValid() and SPSRAccessValid(),
-+     * except that we have already handled some cases at translate time.
-+     */
-+    int curmode = env->uncached_cpsr & CPSR_M;
-+
-+    if (curmode == tgtmode) {
-+        goto undef;
-+    }
-+
-+    if (tgtmode == ARM_CPU_MODE_USR) {
-+        switch (regno) {
-+        case 8 ... 12:
-+            if (curmode != ARM_CPU_MODE_FIQ) {
-+                goto undef;
-+            }
-+            break;
-+        case 13:
-+            if (curmode == ARM_CPU_MODE_SYS) {
-+                goto undef;
-+            }
-+            break;
-+        case 14:
-+            if (curmode == ARM_CPU_MODE_HYP || curmode == ARM_CPU_MODE_SYS) {
-+                goto undef;
-+            }
-+            break;
-+        default:
-+            break;
-+        }
-+    }
-+
-+    if (tgtmode == ARM_CPU_MODE_HYP) {
-+        switch (regno) {
-+        case 17: /* ELR_Hyp */
-+            if (curmode != ARM_CPU_MODE_HYP && curmode != ARM_CPU_MODE_MON) {
-+                goto undef;
-+            }
-+            break;
-+        default:
-+            if (curmode != ARM_CPU_MODE_MON) {
-+                goto undef;
-+            }
-+            break;
-+        }
-+    }
-+
-+    return;
-+
-+undef:
-+    raise_exception(env, EXCP_UDEF, syn_uncategorized(),
-+                    exception_target_el(env));
-+}
-+
-+void HELPER(msr_banked)(CPUARMState *env, uint32_t value, uint32_t tgtmode,
-+                        uint32_t regno)
-+{
-+    msr_mrs_banked_exc_checks(env, tgtmode, regno);
-+
-+    switch (regno) {
-+    case 16: /* SPSRs */
-+        env->banked_spsr[bank_number(tgtmode)] = value;
-+        break;
-+    case 17: /* ELR_Hyp */
-+        env->elr_el[2] = value;
-+        break;
-+    case 13:
-+        env->banked_r13[bank_number(tgtmode)] = value;
-+        break;
-+    case 14:
-+        env->banked_r14[bank_number(tgtmode)] = value;
-+        break;
-+    case 8 ... 12:
-+        switch (tgtmode) {
-+        case ARM_CPU_MODE_USR:
-+            env->usr_regs[regno - 8] = value;
-+            break;
-+        case ARM_CPU_MODE_FIQ:
-+            env->fiq_regs[regno - 8] = value;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+uint32_t HELPER(mrs_banked)(CPUARMState *env, uint32_t tgtmode, uint32_t regno)
-+{
-+    msr_mrs_banked_exc_checks(env, tgtmode, regno);
-+
-+    switch (regno) {
-+    case 16: /* SPSRs */
-+        return env->banked_spsr[bank_number(tgtmode)];
-+    case 17: /* ELR_Hyp */
-+        return env->elr_el[2];
-+    case 13:
-+        return env->banked_r13[bank_number(tgtmode)];
-+    case 14:
-+        return env->banked_r14[bank_number(tgtmode)];
-+    case 8 ... 12:
-+        switch (tgtmode) {
-+        case ARM_CPU_MODE_USR:
-+            return env->usr_regs[regno - 8];
-+        case ARM_CPU_MODE_FIQ:
-+            return env->fiq_regs[regno - 8];
-+        default:
-+            g_assert_not_reached();
-+        }
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- void HELPER(access_check_cp_reg)(CPUARMState *env, void *rip, uint32_t syndrome,
-                                  uint32_t isread)
- {
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 413f7de..a8dd490 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -4088,6 +4088,195 @@ static int gen_set_psr_im(DisasContext *s, uint32_t mask, int spsr, uint32_t val
-     return gen_set_psr(s, mask, spsr, tmp);
- }
- 
-+static bool msr_banked_access_decode(DisasContext *s, int r, int sysm, int rn,
-+                                     int *tgtmode, int *regno)
-+{
-+    /* Decode the r and sysm fields of MSR/MRS banked accesses into
-+     * the target mode and register number, and identify the various
-+     * unpredictable cases.
-+     * MSR (banked) and MRS (banked) are CONSTRAINED UNPREDICTABLE if:
-+     *  + executed in user mode
-+     *  + using R15 as the src/dest register
-+     *  + accessing an unimplemented register
-+     *  + accessing a register that's inaccessible at current PL/security state*
-+     *  + accessing a register that you could access with a different insn
-+     * We choose to UNDEF in all these cases.
-+     * Since we don't know which of the various AArch32 modes we are in
-+     * we have to defer some checks to runtime.
-+     * Accesses to Monitor mode registers from Secure EL1 (which implies
-+     * that EL3 is AArch64) must trap to EL3.
-+     *
-+     * If the access checks fail this function will emit code to take
-+     * an exception and return false. Otherwise it will return true,
-+     * and set *tgtmode and *regno appropriately.
-+     */
-+    int exc_target = default_exception_el(s);
-+
-+    /* These instructions are present only in ARMv8, or in ARMv7 with the
-+     * Virtualization Extensions.
-+     */
-+    if (!arm_dc_feature(s, ARM_FEATURE_V8) &&
-+        !arm_dc_feature(s, ARM_FEATURE_EL2)) {
-+        goto undef;
-+    }
-+
-+    if (IS_USER(s) || rn == 15) {
-+        goto undef;
-+    }
-+
-+    /* The table in the v8 ARM ARM section F5.2.3 describes the encoding
-+     * of registers into (r, sysm).
-+     */
-+    if (r) {
-+        /* SPSRs for other modes */
-+        switch (sysm) {
-+        case 0xe: /* SPSR_fiq */
-+            *tgtmode = ARM_CPU_MODE_FIQ;
-+            break;
-+        case 0x10: /* SPSR_irq */
-+            *tgtmode = ARM_CPU_MODE_IRQ;
-+            break;
-+        case 0x12: /* SPSR_svc */
-+            *tgtmode = ARM_CPU_MODE_SVC;
-+            break;
-+        case 0x14: /* SPSR_abt */
-+            *tgtmode = ARM_CPU_MODE_ABT;
-+            break;
-+        case 0x16: /* SPSR_und */
-+            *tgtmode = ARM_CPU_MODE_UND;
-+            break;
-+        case 0x1c: /* SPSR_mon */
-+            *tgtmode = ARM_CPU_MODE_MON;
-+            break;
-+        case 0x1e: /* SPSR_hyp */
-+            *tgtmode = ARM_CPU_MODE_HYP;
-+            break;
-+        default: /* unallocated */
-+            goto undef;
-+        }
-+        /* We arbitrarily assign SPSR a register number of 16. */
-+        *regno = 16;
-+    } else {
-+        /* general purpose registers for other modes */
-+        switch (sysm) {
-+        case 0x0 ... 0x6:   /* 0b00xxx : r8_usr ... r14_usr */
-+            *tgtmode = ARM_CPU_MODE_USR;
-+            *regno = sysm + 8;
-+            break;
-+        case 0x8 ... 0xe:   /* 0b01xxx : r8_fiq ... r14_fiq */
-+            *tgtmode = ARM_CPU_MODE_FIQ;
-+            *regno = sysm;
-+            break;
-+        case 0x10 ... 0x11: /* 0b1000x : r14_irq, r13_irq */
-+            *tgtmode = ARM_CPU_MODE_IRQ;
-+            *regno = sysm & 1 ? 13 : 14;
-+            break;
-+        case 0x12 ... 0x13: /* 0b1001x : r14_svc, r13_svc */
-+            *tgtmode = ARM_CPU_MODE_SVC;
-+            *regno = sysm & 1 ? 13 : 14;
-+            break;
-+        case 0x14 ... 0x15: /* 0b1010x : r14_abt, r13_abt */
-+            *tgtmode = ARM_CPU_MODE_ABT;
-+            *regno = sysm & 1 ? 13 : 14;
-+            break;
-+        case 0x16 ... 0x17: /* 0b1011x : r14_und, r13_und */
-+            *tgtmode = ARM_CPU_MODE_UND;
-+            *regno = sysm & 1 ? 13 : 14;
-+            break;
-+        case 0x1c ... 0x1d: /* 0b1110x : r14_mon, r13_mon */
-+            *tgtmode = ARM_CPU_MODE_MON;
-+            *regno = sysm & 1 ? 13 : 14;
-+            break;
-+        case 0x1e ... 0x1f: /* 0b1111x : elr_hyp, r13_hyp */
-+            *tgtmode = ARM_CPU_MODE_HYP;
-+            /* Arbitrarily pick 17 for ELR_Hyp (which is not a banked LR!) */
-+            *regno = sysm & 1 ? 13 : 17;
-+            break;
-+        default: /* unallocated */
-+            goto undef;
-+        }
-+    }
-+
-+    /* Catch the 'accessing inaccessible register' cases we can detect
-+     * at translate time.
-+     */
-+    switch (*tgtmode) {
-+    case ARM_CPU_MODE_MON:
-+        if (!arm_dc_feature(s, ARM_FEATURE_EL3) || s->ns) {
-+            goto undef;
-+        }
-+        if (s->current_el == 1) {
-+            /* If we're in Secure EL1 (which implies that EL3 is AArch64)
-+             * then accesses to Mon registers trap to EL3
-+             */
-+            exc_target = 3;
-+            goto undef;
-+        }
-+        break;
-+    case ARM_CPU_MODE_HYP:
-+        /* Note that we can forbid accesses from EL2 here because they
-+         * must be from Hyp mode itself
-+         */
-+        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 3) {
-+            goto undef;
-+        }
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return true;
-+
-+undef:
-+    /* If we get here then some access check did not pass */
-+    gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(), exc_target);
-+    return false;
-+}
-+
-+static void gen_msr_banked(DisasContext *s, int r, int sysm, int rn)
-+{
-+    TCGv_i32 tcg_reg, tcg_tgtmode, tcg_regno;
-+    int tgtmode, regno;
-+
-+    if (!msr_banked_access_decode(s, r, sysm, rn, &tgtmode, &regno)) {
-+        return;
-+    }
-+
-+    /* Sync state because msr_banked() can raise exceptions */
-+    gen_set_condexec(s);
-+    gen_set_pc_im(s, s->pc - 4);
-+    tcg_reg = load_reg(s, rn);
-+    tcg_tgtmode = tcg_const_i32(tgtmode);
-+    tcg_regno = tcg_const_i32(regno);
-+    gen_helper_msr_banked(cpu_env, tcg_reg, tcg_tgtmode, tcg_regno);
-+    tcg_temp_free_i32(tcg_tgtmode);
-+    tcg_temp_free_i32(tcg_regno);
-+    tcg_temp_free_i32(tcg_reg);
-+    s->is_jmp = DISAS_UPDATE;
-+}
-+
-+static void gen_mrs_banked(DisasContext *s, int r, int sysm, int rn)
-+{
-+    TCGv_i32 tcg_reg, tcg_tgtmode, tcg_regno;
-+    int tgtmode, regno;
-+
-+    if (!msr_banked_access_decode(s, r, sysm, rn, &tgtmode, &regno)) {
-+        return;
-+    }
-+
-+    /* Sync state because mrs_banked() can raise exceptions */
-+    gen_set_condexec(s);
-+    gen_set_pc_im(s, s->pc - 4);
-+    tcg_reg = tcg_temp_new_i32();
-+    tcg_tgtmode = tcg_const_i32(tgtmode);
-+    tcg_regno = tcg_const_i32(regno);
-+    gen_helper_mrs_banked(tcg_reg, cpu_env, tcg_tgtmode, tcg_regno);
-+    tcg_temp_free_i32(tcg_tgtmode);
-+    tcg_temp_free_i32(tcg_regno);
-+    store_reg(s, rn, tcg_reg);
-+    s->is_jmp = DISAS_UPDATE;
-+}
-+
- /* Generate an old-style exception return. Marks pc as dead. */
- static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
- {
-@@ -7950,7 +8139,26 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         sh = (insn >> 4) & 0xf;
-         rm = insn & 0xf;
-         switch (sh) {
--        case 0x0: /* move program status register */
-+        case 0x0: /* MSR, MRS */
-+            if (insn & (1 << 9)) {
-+                /* MSR (banked) and MRS (banked) */
-+                int sysm = extract32(insn, 16, 4) |
-+                    (extract32(insn, 8, 1) << 4);
-+                int r = extract32(insn, 22, 1);
-+
-+                if (op1 & 1) {
-+                    /* MSR (banked) */
-+                    gen_msr_banked(s, r, sysm, rm);
-+                } else {
-+                    /* MRS (banked) */
-+                    int rd = extract32(insn, 12, 4);
-+
-+                    gen_mrs_banked(s, r, sysm, rd);
-+                }
-+                break;
-+            }
-+
-+            /* MSR, MRS (for PSRs) */
-             if (op1 & 1) {
-                 /* PSR = reg */
-                 tmp = load_reg(s, rm);
-@@ -10055,6 +10263,18 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
-                         if (arm_dc_feature(s, ARM_FEATURE_M)) {
-                             goto illegal_op;
-                         }
-+
-+                        if (extract32(insn, 5, 1)) {
-+                            /* MSR (banked) */
-+                            int sysm = extract32(insn, 8, 4) |
-+                                (extract32(insn, 4, 1) << 4);
-+                            int r = op & 1;
-+
-+                            gen_msr_banked(s, r, sysm, rm);
-+                            break;
-+                        }
-+
-+                        /* MSR (for PSRs) */
-                         tmp = load_reg(s, rn);
-                         if (gen_set_psr(s,
-                               msr_mask(s, (insn >> 8) & 0xf, op == 1),
-@@ -10127,7 +10347,17 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
-                         tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
-                         gen_exception_return(s, tmp);
-                         break;
--                    case 6: /* mrs cpsr.  */
-+                    case 6: /* MRS */
-+                        if (extract32(insn, 5, 1)) {
-+                            /* MRS (banked) */
-+                            int sysm = extract32(insn, 16, 4) |
-+                                (extract32(insn, 4, 1) << 4);
-+
-+                            gen_mrs_banked(s, 0, sysm, rd);
-+                            break;
-+                        }
-+
-+                        /* mrs cpsr */
-                         tmp = tcg_temp_new_i32();
-                         if (arm_dc_feature(s, ARM_FEATURE_M)) {
-                             addr = tcg_const_i32(insn & 0xff);
-@@ -10138,7 +10368,17 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
-                         }
-                         store_reg(s, rd, tmp);
-                         break;
--                    case 7: /* mrs spsr.  */
-+                    case 7: /* MRS */
-+                        if (extract32(insn, 5, 1)) {
-+                            /* MRS (banked) */
-+                            int sysm = extract32(insn, 16, 4) |
-+                                (extract32(insn, 4, 1) << 4);
-+
-+                            gen_mrs_banked(s, 1, sysm, rd);
-+                            break;
-+                        }
-+
-+                        /* mrs spsr.  */
-                         /* Not accessible in user mode.  */
-                         if (IS_USER(s) || arm_dc_feature(s, ARM_FEATURE_M)) {
-                             goto illegal_op;
--- 
-1.9.1
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> We don't support EL2 yet, but you can get at these on a v8 CPU in
+> 32-bit EL1 if EL3 is enabled. Obviously there's not going to be much
+> 32-bit EL1 code out there that uses the insns though, as it wouldn't
+> work on v7 if it did...
 

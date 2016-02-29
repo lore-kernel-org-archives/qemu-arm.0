@@ -1,554 +1,695 @@
-Received: by 10.25.208.211 with SMTP id h202csp1302780lfg;
-        Mon, 29 Feb 2016 13:23:00 -0800 (PST)
-X-Received: by 10.140.157.214 with SMTP id d205mr23558387qhd.3.1456780979987;
-        Mon, 29 Feb 2016 13:22:59 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1337323lfg;
+        Mon, 29 Feb 2016 15:12:21 -0800 (PST)
+X-Received: by 10.140.104.242 with SMTP id a105mr23060948qgf.1.1456787541652;
+        Mon, 29 Feb 2016 15:12:21 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w189si1273174qka.47.2016.02.29.13.22.59
+        by mx.google.com with ESMTPS id c4si27960541qhc.104.2016.02.29.15.12.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Feb 2016 13:22:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 29 Feb 2016 15:12:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39218 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@microsoft.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:39590 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aaVHP-0005t5-C9
-	for alex.bennee@linaro.org; Mon, 29 Feb 2016 16:22:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43286)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aaWzF-0007GF-0W
+	for alex.bennee@linaro.org; Mon, 29 Feb 2016 18:12:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42681)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aaVHK-0005p2-TU
-	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 16:22:58 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aaWym-0006mv-0g
+	for qemu-devel@nongnu.org; Mon, 29 Feb 2016 18:11:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1aaVHI-000177-Nq
-	for qemu-arm@nongnu.org; Mon, 29 Feb 2016 16:22:54 -0500
-Received: from mail-wm0-x230.google.com ([2a00:1450:400c:c09::230]:37414)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aaWyg-00043O-Vd
+	for qemu-devel@nongnu.org; Mon, 29 Feb 2016 18:11:51 -0500
+Received: from mail-by2on0129.outbound.protection.outlook.com
+	([207.46.100.129]:47128
+	helo=na01-by2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1aaVH9-00016E-7l; Mon, 29 Feb 2016 16:22:43 -0500
-Received: by mail-wm0-x230.google.com with SMTP id p65so7625994wmp.0;
-	Mon, 29 Feb 2016 13:22:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=TUPToUjOkjVXVtP1STmyt/nwHAPACcVNm+5dRLRTpwk=;
-	b=G+9y2zrW/raXU4cl8QYLfBPWh10FGivmAUNun5Gu30CAGjFQn/2+PNHI+OUY+fQjiz
-	JtUpTbzGWB5m2QdB/UXZU8OINfO492kWPJ7iBOZahzurOgw5hlpBqGz58xO+jHW3C2gB
-	ktyBDvS10hSCoXBrFmQLiuuYhF/rywglocBCYYpXHHZbgQWEJBfYgRhDNuBOk70gGEaT
-	hAaok6AUVZfRF2FHtTPvZHMBQcDyjp55MZDGthUudL/mmXpVsE/EuT3CJEjJZsx3AMh3
-	A8eO8Kv+C55LotEgfpAcd2zzr3VQI5eiOx91t9QvI19TAdR5CmgqfZzDqMMXCKKNqfm3
-	U/MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=TUPToUjOkjVXVtP1STmyt/nwHAPACcVNm+5dRLRTpwk=;
-	b=akaOUCBbVmURIhPCGzdO+CG/uReBqdqg6jD/tCWOkc7vkXosIowNSH/2rkGeref/LM
-	DAIHb2yffFd2hn/66c6mYLNnpBU7+JhyRiEQxiowt4LYOJ2sGgGfM4jOoH61teUzGf2N
-	vZ/j5Y4O06A6ehNm5U0UTtZwjj39LvLiQNciLVdh7MgfTkNu9LqLztIP0BHk5Fgmlowg
-	8AQkC7mxt/MNJzEUCJT4qPmi6lcp0Cv+wbboJpbzj86D2dUQ1Gf1KevFsUMMBwtbrkBF
-	zcg1RLX7zbdyA4hwhmpWJoHgdazU4xqAR2IlQUVSk4S7CkYBQTw8ykTm7TVYzalB08M2
-	lA6g==
-X-Gm-Message-State: AD7BkJJi4IR18rdsjuothh+igu2nGlWpdOjNyeRlDY372EF0qF7K7mQKN828iDDRnNKzPg==
-X-Received: by 10.28.20.145 with SMTP id 139mr88999wmu.76.1456780961591;
-	Mon, 29 Feb 2016 13:22:41 -0800 (PST)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id
-	ka4sm27696998wjc.47.2016.02.29.13.22.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 Feb 2016 13:22:40 -0800 (PST)
-Date: Mon, 29 Feb 2016 22:22:39 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160229212239.GF16305@toto>
-References: <1456762734-23939-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1aaWyg-00043H-Eg; Mon, 29 Feb 2016 18:11:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=+sgZzIB4LZETfo2Rz3FkqjaudcgQeb16rZF/pTwZZCo=;
+	b=NMwLEuM21Yb7alU4ZeaUt/x5P3WpkhGhFY/gsFPbNiB2y7Q0tvMgaFy39DpUGxUMAGwWjCdibwCzWJ5BvU99R2M7Q/bLb8mbRxYhEe6h2awJwH75rwzW4//RPRWDfsPY6juRQ1Q6Nym2xLEBWR/KP/eSZl4RBwXg68MXuacEZGI=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+	header.d=none; nongnu.org;
+	dmarc=none action=none header.from=microsoft.com; 
+Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:d::724)
+	by CY1PR0301MB2041.namprd03.prod.outlook.com (10.164.2.23) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.415.20; Mon, 29 Feb 2016 23:11:43 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: <qemu-devel@nongnu.org>
+Date: Mon, 29 Feb 2016 15:11:30 -0800
+Message-ID: <1456787490-17112-1-git-send-email-Andrew.Baumann@microsoft.com>
+X-Mailer: git-send-email 2.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1456762734-23939-1-git-send-email-peter.maydell@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::230
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH] target-arm: Implement MRS (banked) and MSR
- (banked) instructions
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [2001:4898:80e8:d::724]
+X-ClientProxiedBy: CO2PR05CA037.namprd05.prod.outlook.com (10.141.241.165) To
+	CY1PR0301MB2041.namprd03.prod.outlook.com (25.164.2.23)
+X-MS-Office365-Filtering-Correlation-Id: c3663254-448c-4183-dd42-08d3415db087
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2041;
+	2:/dTRqGOG2LFOUM8TRjJEHzlUWQyaJ7DOSXKY/hlIhuk9Z+5SzYceKb3eoCkFINtol3LW5czV9VG2anpjs+WLJVy8NaqyukfKP0Zzs9VWEHr46vXv32u5WMsJSGMkKgVc4f3DsLF1JR/neDxRqX0yiLYMfB1PdjEFHtlHxaRmsAWJ12NHyXa/UjCs+ssdPk2Y;
+	3:sTtFLS8OdAVH7I7p3Pq2TbeALn/seHy6MF4TTVktQwprOfQZ/8kdh3prxzBIot47FTUsKkBC3kOY3k+byqoAPrF3fYq/45dnrAwRIrXh0iof921eBMP70XDv663jFj4o;
+	25:vyrfUki0O7iGypXhpenTjCw8Xl1XTN3J/VcFgK/TxPFVd8DLfjUWQ2gd32eQEgIG2IWrndIuVs1HcLWMmeTxa+foljWrLKydplRucotUdnRrNkKZ0KuG+jIfOtXUwRqVL3WEnrjWKj7o30BZwNnebEwW0vkDVfG9ofxKHsQEZEXOu/zThyqwhrG4PYjN7C0dq9KspdMqtKk6o1u5gIKdAm1lKG0kJJ2tpGa/NoxSvB6TTFweQcE2hn46Msnam8wtEjWTCPWpc6tcf7Hom4g6idrjWAtZkou8csfobk0rZfi46IFISa8kj/Xc0XMP8da+JELpm8zlrdDaOaln9lkwVg==
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB2041;
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2041;
+	20:35RacSCRioURuQR2fKoaRaUxvOJJ20omR0YR/k2ZIDEwszyAODi9W9CBpZ3xRX2Mbm8T6fHMTcP9lPzOkPMM804xD1WOPj1zffDfOk/gveGjMuYQzBYi0lBzpHyYIRkxOnJzSNsA57b7WKs0ktZLikmiqVLCIB4xaL0e5Bl+p58NvOkpk2e+5wCXW2jIDFHMWlmVYZ81vuyqXh/HMWwi330qS1ROJfoOGQncTuKVeJHD0tiHEVKLYBNzb4NnWB1zrZMQ5FlOmVR6u7ldI8RTfMrzwZ+nprUTRbpb24N4PwTXR3yoF1y1U2K49ABbTwM+iKHj+SqNMjTqFGRe2zOr9J5aSR/O/InXigPym1IQpdeYiFCEC7B2To4zGF/qhwmyaBUKz/RQuUg7HHlrQWv3ZPqKtltF+xDtD58zTX+g7wrVfDVMrppLIRekm6NDWR0lP71Ufl7zIYce680Qf8QQHFaLdyjGdgFYEXwuvGYHk6pdkXksDx09eeASoLxpjDoj;
+	4:4mcQry3/+xYr7lrMnl/41AZ6tLMaJmf4oP+RW3XgJe/zcjdb/CWnPsINFXaK2vymbG0nFkU5RPNykD3kUtsdb2n7ouUUV+pLzwYV27bxO+eXtYu5/K+HvNUt6A+hPfcJ9vSn9zatD9Bk4R5V26Yos082OBaNs8ygzk2kjbc/qoB8jgas4pk9rwjZRvTi3F5xeD8HOaHjXeOIqSvLVPBQVE4PQn+j8H+MP2f7yGemdn5gs/kKR7yc9J+fMufxLAiPUlb8dYcI0NJHcZYzQhz+sY4SSXl/ehYt9UcLitM1bNqfag5Tbv1kQIauVX+5NZtRucf8KufWJ2k2A9auR/TGgxqowa3llFiZ1rpUm4djys+HB7heFlyz367mAdio/0Hf
+X-Microsoft-Antispam-PRVS: <CY1PR0301MB2041403E4192106C8727B5B49EBA0@CY1PR0301MB2041.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(8121501046)(5005006)(10201501046)(3002001);
+	SRVR:CY1PR0301MB2041; BCL:0; PCL:0; RULEID:;
+	SRVR:CY1PR0301MB2041; 
+X-Forefront-PRVS: 0867F4F1AA
+X-Forefront-Antispam-Report: SFV:NSPM;
+	SFS:(10019020)(4630300001)(6009001)(164054003)(36756003)(10090500001)(42186005)(15975445007)(189998001)(2351001)(229853001)(19580395003)(86612001)(2906002)(5001960100003)(575784001)(40100003)(86362001)(5003940100001)(81156008)(122386002)(87976001)(48376002)(10290500002)(5004730100002)(5008740100001)(4326007)(1096002)(107886002)(110136002)(5005710100001)(77096005)(586003)(6116002)(4001430100002)(50986999)(50226001)(50466002)(92566002)(3826002)(473944003);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:CY1PR0301MB2041;
+	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
+	MLV:sfv; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR0301MB2041;
+	23:iZf98xQ1ps4yvF+OziUjKmBIYfI5dAGmAhirUCD?=
+	=?us-ascii?Q?LDCvRqGol0hAo6659XrIGVtF6c2QsfGMeRUaZk1j6p8/EZMbvG+dBvCzAH5h?=
+	=?us-ascii?Q?uULFEnhjb/Ig2horoYUDPzozukF/T4a3S0dyo65MJ1262XgtMuDRezoBPZVX?=
+	=?us-ascii?Q?wrzj7k/wyU5BMLoCFkxYsykL6fLMlPLRycZrxuXeBddRt0f0pa9Gxies9Qf3?=
+	=?us-ascii?Q?8Dwsqa9s7pcI/aJLEG+aWZi4PUQsvKWATd9ijjpaVSxSy9gOgwMgR8EQPeuW?=
+	=?us-ascii?Q?MWCdu5nv3RHTU/YzFa/Wtsd5Wi93jJIUjm/5ouNbIP7+CNXbpB3rj3OJO2Rg?=
+	=?us-ascii?Q?eQxS4NNcwYOjK6M/tgzauNb9IKTKBNH9QXDAwv6qFDudKMK5qCrYcJXUeYAJ?=
+	=?us-ascii?Q?g4PWDuNKPD6vrMdGEJBbhxHTMtWKG0jvQIt/Y94NgM3obBUCwXhvEPtQpaFR?=
+	=?us-ascii?Q?hbEJxv59hjX2ha8e6cGNPPprV4zB/EiYdNrfYlHd9+O/jmuaTKmOSvm1VwAT?=
+	=?us-ascii?Q?BOG4P9n7ZdinhTT3sJNC4elA3ULHF27kaITDYtNbbdO8A8op+zmRB0e7SsVw?=
+	=?us-ascii?Q?CM0GPpGGaYQGjyc3nGXVXrzGb13TLilHYPfWT6Zu+ZS+KmUs7mpCtmwdyAb0?=
+	=?us-ascii?Q?6cQ0QU24Uz2cXMmOb52nL//ItLzCCryuJsGpkglAhBDz6Ps968t5bn57gGgq?=
+	=?us-ascii?Q?YtsFBPgdr1QPlEJ4dDXpm7i1ItXxccu8+UddZGvP+GjyxQ/qyzynKbpCjqRB?=
+	=?us-ascii?Q?rxLMzqpVUnnw9n4Phvn4xxsAdb6skwGmvr7ocmL349JztazrKVKHSZ4SwcOs?=
+	=?us-ascii?Q?ozSzqIrXOaEszQxfQgDPamBIDCzjzqM8y8J/omc+opUKbeCNK1wchiRQDgda?=
+	=?us-ascii?Q?84u4oaGvlPWTjiEh+TgJPenonNvfVJnvUgcbxuUgJofdfsP+rQEiFLhTpizW?=
+	=?us-ascii?Q?FcunFwVyxfewutrgJ8nreLoC8Ivn0jjvI3HjuO1CquevhaPkLaZgnZ+kOVMv?=
+	=?us-ascii?Q?BVj5AJ9sV9stvdpu3mjxtATh8fKJA3YLBARfu/aMPnFVWfgya59v12Y0S1N9?=
+	=?us-ascii?Q?sxH1404oGDxK5x0DRS2MbtUbeYJH7EKjrydsxU/vWDPYeesmdQg=3D=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2041;
+	5:S3DeLZyzDA1Tsi+xmORDSGkZlYSGAJWSgSq86R5Fbip6Gt0NYWnurFJQM2xk+rr374vZTCeE/BhRMdi6WwJf+Cl80A0de3wAGnydEkQGpOz2y2RLKz7OcptkpePRTh4OWRVtLkBmusL1lbZAxzc9ZA==;
+	24:ARpTSMIUBJo7YpCuDIwVkbCu1AYBVrbx1xB2c6HqSNtRNdvFasFHGQVj//WiQliVfXGY1ESmtMOB8NysS2UIsvz+L1E8eQRwBQoAQk1JnQg=
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Feb 2016 23:11:43.5886 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR0301MB2041
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 207.46.100.129
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [Qemu-devel] [PATCH RFC] bcm2835_dma: add emulation of Raspberry Pi
+	DMA controller
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rtiBMDbWvfIm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hdm0zSFjPvcv
 
-On Mon, Feb 29, 2016 at 04:18:54PM +0000, Peter Maydell wrote:
-> Starting with the ARMv7 Virtualization Extensions, the A32 and T32
-> instruction sets provide instructions "MSR (banked)" and "MRS
-> (banked)" which can be used to access registers for a mode other
-> than the current one:
->  * R<m>_<mode>
->  * ELR_hyp
->  * SPSR_<mode>
-> 
-> Implement the missing instructions.
+Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+---
+This patch applies on top of the previous series for Windows and
+framebuffer support:
+  https://lists.gnu.org/archive/html/qemu-devel/2016-02/msg06387.html
 
-Wow, these insns were a bit messy to follow... Anyway, AFAIK this looks OK:
+After preparing that, I was disappointed to discover that Raspbian
+won't boot cleanly without the DMA controller. In the hope of beating
+the freeze deadline (it's still February 29 here :-) I'm sending this
+for review.
 
-Acked-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+After applying this patch, it is possible to boot Raspbian to the GUI
+using a command such as:
 
+  qemu-system-arm -M raspi2 -kernel raspbian-boot/kernel7.img -sd
+  2015-09-24-raspbian-jessie.img -append "rw earlyprintk loglevel=8
+  console=ttyAMA0 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootwait"
+  -dtb raspbian-boot/bcm2709-rpi-2-b.dtb -serial stdio
 
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> We don't support EL2 yet, but you can get at these on a v8 CPU in
-> 32-bit EL1 if EL3 is enabled. Obviously there's not going to be much
-> 32-bit EL1 code out there that uses the insns though, as it wouldn't
-> work on v7 if it did...
-> 
->  target-arm/helper.h    |   3 +
->  target-arm/op_helper.c | 120 ++++++++++++++++++++++++
->  target-arm/translate.c | 246 ++++++++++++++++++++++++++++++++++++++++++++++++-
->  3 files changed, 366 insertions(+), 3 deletions(-)
-> 
-> diff --git a/target-arm/helper.h b/target-arm/helper.h
-> index ea13202..de3c644 100644
-> --- a/target-arm/helper.h
-> +++ b/target-arm/helper.h
-> @@ -76,6 +76,9 @@ DEF_HELPER_1(exception_return, void, env)
->  DEF_HELPER_2(get_r13_banked, i32, env, i32)
->  DEF_HELPER_3(set_r13_banked, void, env, i32, i32)
->  
-> +DEF_HELPER_3(mrs_banked, i32, env, i32, i32)
-> +DEF_HELPER_4(msr_banked, void, env, i32, i32, i32)
-> +
->  DEF_HELPER_2(get_user_reg, i32, env, i32)
->  DEF_HELPER_3(set_user_reg, void, env, i32, i32)
->  
-> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-> index 4881e34..a2afdd8 100644
-> --- a/target-arm/op_helper.c
-> +++ b/target-arm/op_helper.c
-> @@ -489,6 +489,126 @@ uint32_t HELPER(get_r13_banked)(CPUARMState *env, uint32_t mode)
->      }
->  }
->  
-> +static void msr_mrs_banked_exc_checks(CPUARMState *env, uint32_t tgtmode,
-> +                                      uint32_t regno)
-> +{
-> +    /* Raise an exception if the requested access is one of the UNPREDICTABLE
-> +     * cases; otherwise return. This broadly corresponds to the pseudocode
-> +     * BankedRegisterAccessValid() and SPSRAccessValid(),
-> +     * except that we have already handled some cases at translate time.
-> +     */
-> +    int curmode = env->uncached_cpsr & CPSR_M;
-> +
-> +    if (curmode == tgtmode) {
-> +        goto undef;
-> +    }
-> +
-> +    if (tgtmode == ARM_CPU_MODE_USR) {
-> +        switch (regno) {
-> +        case 8 ... 12:
-> +            if (curmode != ARM_CPU_MODE_FIQ) {
-> +                goto undef;
-> +            }
-> +            break;
-> +        case 13:
-> +            if (curmode == ARM_CPU_MODE_SYS) {
-> +                goto undef;
-> +            }
-> +            break;
-> +        case 14:
-> +            if (curmode == ARM_CPU_MODE_HYP || curmode == ARM_CPU_MODE_SYS) {
-> +                goto undef;
-> +            }
-> +            break;
-> +        default:
-> +            break;
-> +        }
-> +    }
-> +
-> +    if (tgtmode == ARM_CPU_MODE_HYP) {
-> +        switch (regno) {
-> +        case 17: /* ELR_Hyp */
-> +            if (curmode != ARM_CPU_MODE_HYP && curmode != ARM_CPU_MODE_MON) {
-> +                goto undef;
-> +            }
-> +            break;
-> +        default:
-> +            if (curmode != ARM_CPU_MODE_MON) {
-> +                goto undef;
-> +            }
-> +            break;
-> +        }
-> +    }
-> +
-> +    return;
-> +
-> +undef:
-> +    raise_exception(env, EXCP_UDEF, syn_uncategorized(),
-> +                    exception_target_el(env));
-> +}
-> +
-> +void HELPER(msr_banked)(CPUARMState *env, uint32_t value, uint32_t tgtmode,
-> +                        uint32_t regno)
-> +{
-> +    msr_mrs_banked_exc_checks(env, tgtmode, regno);
-> +
-> +    switch (regno) {
-> +    case 16: /* SPSRs */
-> +        env->banked_spsr[bank_number(tgtmode)] = value;
-> +        break;
-> +    case 17: /* ELR_Hyp */
-> +        env->elr_el[2] = value;
-> +        break;
-> +    case 13:
-> +        env->banked_r13[bank_number(tgtmode)] = value;
-> +        break;
-> +    case 14:
-> +        env->banked_r14[bank_number(tgtmode)] = value;
-> +        break;
-> +    case 8 ... 12:
-> +        switch (tgtmode) {
-> +        case ARM_CPU_MODE_USR:
-> +            env->usr_regs[regno - 8] = value;
-> +            break;
-> +        case ARM_CPU_MODE_FIQ:
-> +            env->fiq_regs[regno - 8] = value;
-> +            break;
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
-> +uint32_t HELPER(mrs_banked)(CPUARMState *env, uint32_t tgtmode, uint32_t regno)
-> +{
-> +    msr_mrs_banked_exc_checks(env, tgtmode, regno);
-> +
-> +    switch (regno) {
-> +    case 16: /* SPSRs */
-> +        return env->banked_spsr[bank_number(tgtmode)];
-> +    case 17: /* ELR_Hyp */
-> +        return env->elr_el[2];
-> +    case 13:
-> +        return env->banked_r13[bank_number(tgtmode)];
-> +    case 14:
-> +        return env->banked_r14[bank_number(tgtmode)];
-> +    case 8 ... 12:
-> +        switch (tgtmode) {
-> +        case ARM_CPU_MODE_USR:
-> +            return env->usr_regs[regno - 8];
-> +        case ARM_CPU_MODE_FIQ:
-> +            return env->fiq_regs[regno - 8];
-> +        default:
-> +            g_assert_not_reached();
-> +        }
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
->  void HELPER(access_check_cp_reg)(CPUARMState *env, void *rip, uint32_t syndrome,
->                                   uint32_t isread)
->  {
-> diff --git a/target-arm/translate.c b/target-arm/translate.c
-> index 413f7de..a8dd490 100644
-> --- a/target-arm/translate.c
-> +++ b/target-arm/translate.c
-> @@ -4088,6 +4088,195 @@ static int gen_set_psr_im(DisasContext *s, uint32_t mask, int spsr, uint32_t val
->      return gen_set_psr(s, mask, spsr, tmp);
->  }
->  
-> +static bool msr_banked_access_decode(DisasContext *s, int r, int sysm, int rn,
-> +                                     int *tgtmode, int *regno)
-> +{
-> +    /* Decode the r and sysm fields of MSR/MRS banked accesses into
-> +     * the target mode and register number, and identify the various
-> +     * unpredictable cases.
-> +     * MSR (banked) and MRS (banked) are CONSTRAINED UNPREDICTABLE if:
-> +     *  + executed in user mode
-> +     *  + using R15 as the src/dest register
-> +     *  + accessing an unimplemented register
-> +     *  + accessing a register that's inaccessible at current PL/security state*
-> +     *  + accessing a register that you could access with a different insn
-> +     * We choose to UNDEF in all these cases.
-> +     * Since we don't know which of the various AArch32 modes we are in
-> +     * we have to defer some checks to runtime.
-> +     * Accesses to Monitor mode registers from Secure EL1 (which implies
-> +     * that EL3 is AArch64) must trap to EL3.
-> +     *
-> +     * If the access checks fail this function will emit code to take
-> +     * an exception and return false. Otherwise it will return true,
-> +     * and set *tgtmode and *regno appropriately.
-> +     */
-> +    int exc_target = default_exception_el(s);
-> +
-> +    /* These instructions are present only in ARMv8, or in ARMv7 with the
-> +     * Virtualization Extensions.
-> +     */
-> +    if (!arm_dc_feature(s, ARM_FEATURE_V8) &&
-> +        !arm_dc_feature(s, ARM_FEATURE_EL2)) {
-> +        goto undef;
-> +    }
-> +
-> +    if (IS_USER(s) || rn == 15) {
-> +        goto undef;
-> +    }
-> +
-> +    /* The table in the v8 ARM ARM section F5.2.3 describes the encoding
-> +     * of registers into (r, sysm).
-> +     */
-> +    if (r) {
-> +        /* SPSRs for other modes */
-> +        switch (sysm) {
-> +        case 0xe: /* SPSR_fiq */
-> +            *tgtmode = ARM_CPU_MODE_FIQ;
-> +            break;
-> +        case 0x10: /* SPSR_irq */
-> +            *tgtmode = ARM_CPU_MODE_IRQ;
-> +            break;
-> +        case 0x12: /* SPSR_svc */
-> +            *tgtmode = ARM_CPU_MODE_SVC;
-> +            break;
-> +        case 0x14: /* SPSR_abt */
-> +            *tgtmode = ARM_CPU_MODE_ABT;
-> +            break;
-> +        case 0x16: /* SPSR_und */
-> +            *tgtmode = ARM_CPU_MODE_UND;
-> +            break;
-> +        case 0x1c: /* SPSR_mon */
-> +            *tgtmode = ARM_CPU_MODE_MON;
-> +            break;
-> +        case 0x1e: /* SPSR_hyp */
-> +            *tgtmode = ARM_CPU_MODE_HYP;
-> +            break;
-> +        default: /* unallocated */
-> +            goto undef;
-> +        }
-> +        /* We arbitrarily assign SPSR a register number of 16. */
-> +        *regno = 16;
-> +    } else {
-> +        /* general purpose registers for other modes */
-> +        switch (sysm) {
-> +        case 0x0 ... 0x6:   /* 0b00xxx : r8_usr ... r14_usr */
-> +            *tgtmode = ARM_CPU_MODE_USR;
-> +            *regno = sysm + 8;
-> +            break;
-> +        case 0x8 ... 0xe:   /* 0b01xxx : r8_fiq ... r14_fiq */
-> +            *tgtmode = ARM_CPU_MODE_FIQ;
-> +            *regno = sysm;
-> +            break;
-> +        case 0x10 ... 0x11: /* 0b1000x : r14_irq, r13_irq */
-> +            *tgtmode = ARM_CPU_MODE_IRQ;
-> +            *regno = sysm & 1 ? 13 : 14;
-> +            break;
-> +        case 0x12 ... 0x13: /* 0b1001x : r14_svc, r13_svc */
-> +            *tgtmode = ARM_CPU_MODE_SVC;
-> +            *regno = sysm & 1 ? 13 : 14;
-> +            break;
-> +        case 0x14 ... 0x15: /* 0b1010x : r14_abt, r13_abt */
-> +            *tgtmode = ARM_CPU_MODE_ABT;
-> +            *regno = sysm & 1 ? 13 : 14;
-> +            break;
-> +        case 0x16 ... 0x17: /* 0b1011x : r14_und, r13_und */
-> +            *tgtmode = ARM_CPU_MODE_UND;
-> +            *regno = sysm & 1 ? 13 : 14;
-> +            break;
-> +        case 0x1c ... 0x1d: /* 0b1110x : r14_mon, r13_mon */
-> +            *tgtmode = ARM_CPU_MODE_MON;
-> +            *regno = sysm & 1 ? 13 : 14;
-> +            break;
-> +        case 0x1e ... 0x1f: /* 0b1111x : elr_hyp, r13_hyp */
-> +            *tgtmode = ARM_CPU_MODE_HYP;
-> +            /* Arbitrarily pick 17 for ELR_Hyp (which is not a banked LR!) */
-> +            *regno = sysm & 1 ? 13 : 17;
-> +            break;
-> +        default: /* unallocated */
-> +            goto undef;
-> +        }
-> +    }
-> +
-> +    /* Catch the 'accessing inaccessible register' cases we can detect
-> +     * at translate time.
-> +     */
-> +    switch (*tgtmode) {
-> +    case ARM_CPU_MODE_MON:
-> +        if (!arm_dc_feature(s, ARM_FEATURE_EL3) || s->ns) {
-> +            goto undef;
-> +        }
-> +        if (s->current_el == 1) {
-> +            /* If we're in Secure EL1 (which implies that EL3 is AArch64)
-> +             * then accesses to Mon registers trap to EL3
-> +             */
-> +            exc_target = 3;
-> +            goto undef;
-> +        }
-> +        break;
-> +    case ARM_CPU_MODE_HYP:
-> +        /* Note that we can forbid accesses from EL2 here because they
-> +         * must be from Hyp mode itself
-> +         */
-> +        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 3) {
-> +            goto undef;
-> +        }
-> +        break;
-> +    default:
-> +        break;
-> +    }
-> +
-> +    return true;
-> +
-> +undef:
-> +    /* If we get here then some access check did not pass */
-> +    gen_exception_insn(s, 4, EXCP_UDEF, syn_uncategorized(), exc_target);
-> +    return false;
-> +}
-> +
-> +static void gen_msr_banked(DisasContext *s, int r, int sysm, int rn)
-> +{
-> +    TCGv_i32 tcg_reg, tcg_tgtmode, tcg_regno;
-> +    int tgtmode, regno;
-> +
-> +    if (!msr_banked_access_decode(s, r, sysm, rn, &tgtmode, &regno)) {
-> +        return;
-> +    }
-> +
-> +    /* Sync state because msr_banked() can raise exceptions */
-> +    gen_set_condexec(s);
-> +    gen_set_pc_im(s, s->pc - 4);
-> +    tcg_reg = load_reg(s, rn);
-> +    tcg_tgtmode = tcg_const_i32(tgtmode);
-> +    tcg_regno = tcg_const_i32(regno);
-> +    gen_helper_msr_banked(cpu_env, tcg_reg, tcg_tgtmode, tcg_regno);
-> +    tcg_temp_free_i32(tcg_tgtmode);
-> +    tcg_temp_free_i32(tcg_regno);
-> +    tcg_temp_free_i32(tcg_reg);
-> +    s->is_jmp = DISAS_UPDATE;
-> +}
-> +
-> +static void gen_mrs_banked(DisasContext *s, int r, int sysm, int rn)
-> +{
-> +    TCGv_i32 tcg_reg, tcg_tgtmode, tcg_regno;
-> +    int tgtmode, regno;
-> +
-> +    if (!msr_banked_access_decode(s, r, sysm, rn, &tgtmode, &regno)) {
-> +        return;
-> +    }
-> +
-> +    /* Sync state because mrs_banked() can raise exceptions */
-> +    gen_set_condexec(s);
-> +    gen_set_pc_im(s, s->pc - 4);
-> +    tcg_reg = tcg_temp_new_i32();
-> +    tcg_tgtmode = tcg_const_i32(tgtmode);
-> +    tcg_regno = tcg_const_i32(regno);
-> +    gen_helper_mrs_banked(tcg_reg, cpu_env, tcg_tgtmode, tcg_regno);
-> +    tcg_temp_free_i32(tcg_tgtmode);
-> +    tcg_temp_free_i32(tcg_regno);
-> +    store_reg(s, rn, tcg_reg);
-> +    s->is_jmp = DISAS_UPDATE;
-> +}
-> +
->  /* Generate an old-style exception return. Marks pc as dead. */
->  static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
->  {
-> @@ -7950,7 +8139,26 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->          sh = (insn >> 4) & 0xf;
->          rm = insn & 0xf;
->          switch (sh) {
-> -        case 0x0: /* move program status register */
-> +        case 0x0: /* MSR, MRS */
-> +            if (insn & (1 << 9)) {
-> +                /* MSR (banked) and MRS (banked) */
-> +                int sysm = extract32(insn, 16, 4) |
-> +                    (extract32(insn, 8, 1) << 4);
-> +                int r = extract32(insn, 22, 1);
-> +
-> +                if (op1 & 1) {
-> +                    /* MSR (banked) */
-> +                    gen_msr_banked(s, r, sysm, rm);
-> +                } else {
-> +                    /* MRS (banked) */
-> +                    int rd = extract32(insn, 12, 4);
-> +
-> +                    gen_mrs_banked(s, r, sysm, rd);
-> +                }
-> +                break;
-> +            }
-> +
-> +            /* MSR, MRS (for PSRs) */
->              if (op1 & 1) {
->                  /* PSR = reg */
->                  tmp = load_reg(s, rm);
-> @@ -10055,6 +10263,18 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                          if (arm_dc_feature(s, ARM_FEATURE_M)) {
->                              goto illegal_op;
->                          }
-> +
-> +                        if (extract32(insn, 5, 1)) {
-> +                            /* MSR (banked) */
-> +                            int sysm = extract32(insn, 8, 4) |
-> +                                (extract32(insn, 4, 1) << 4);
-> +                            int r = op & 1;
-> +
-> +                            gen_msr_banked(s, r, sysm, rm);
-> +                            break;
-> +                        }
-> +
-> +                        /* MSR (for PSRs) */
->                          tmp = load_reg(s, rn);
->                          if (gen_set_psr(s,
->                                msr_mask(s, (insn >> 8) & 0xf, op == 1),
-> @@ -10127,7 +10347,17 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                          tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
->                          gen_exception_return(s, tmp);
->                          break;
-> -                    case 6: /* mrs cpsr.  */
-> +                    case 6: /* MRS */
-> +                        if (extract32(insn, 5, 1)) {
-> +                            /* MRS (banked) */
-> +                            int sysm = extract32(insn, 16, 4) |
-> +                                (extract32(insn, 4, 1) << 4);
-> +
-> +                            gen_mrs_banked(s, 0, sysm, rd);
-> +                            break;
-> +                        }
-> +
-> +                        /* mrs cpsr */
->                          tmp = tcg_temp_new_i32();
->                          if (arm_dc_feature(s, ARM_FEATURE_M)) {
->                              addr = tcg_const_i32(insn & 0xff);
-> @@ -10138,7 +10368,17 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                          }
->                          store_reg(s, rd, tmp);
->                          break;
-> -                    case 7: /* mrs spsr.  */
-> +                    case 7: /* MRS */
-> +                        if (extract32(insn, 5, 1)) {
-> +                            /* MRS (banked) */
-> +                            int sysm = extract32(insn, 16, 4) |
-> +                                (extract32(insn, 4, 1) << 4);
-> +
-> +                            gen_mrs_banked(s, 1, sysm, rd);
-> +                            break;
-> +                        }
-> +
-> +                        /* mrs spsr.  */
->                          /* Not accessible in user mode.  */
->                          if (IS_USER(s) || arm_dc_feature(s, ARM_FEATURE_M)) {
->                              goto illegal_op;
-> -- 
-> 1.9.1
-> 
+As before, this derives from the original (out of tree) work of
+Gregory Estrade, Stefan Weil and others to support Raspberry Pi
+1. This patch in particulary is Gregory's code, which I have cleaned
+up for submission.
+
+Thanks,
+Andrew
+
+ hw/arm/bcm2835_peripherals.c         |  26 +++
+ hw/dma/Makefile.objs                 |   1 +
+ hw/dma/bcm2835_dma.c                 | 397 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |   2 +
+ include/hw/dma/bcm2835_dma.h         |  47 +++++
+ 5 files changed, 473 insertions(+)
+ create mode 100644 hw/dma/bcm2835_dma.c
+ create mode 100644 include/hw/dma/bcm2835_dma.h
+
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index c2b812a..fdd346e 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -87,6 +87,14 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
+     object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
+     qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
++
++    /* DMA Channels */
++    object_initialize(&s->dma, sizeof(s->dma), TYPE_BCM2835_DMA);
++    object_property_add_child(obj, "dma", OBJECT(&s->dma), NULL);
++    qdev_set_parent_bus(DEVICE(&s->dma), sysbus_get_default());
++
++    object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
++                                   OBJECT(&s->gpu_bus_mr), &error_abort);
+ }
+ 
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+@@ -246,6 +254,24 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    /* DMA Channels */
++    object_property_set_bool(OBJECT(&s->dma), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, DMA_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dma), 0));
++    memory_region_add_subregion(&s->peri_mr, DMA15_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dma), 1));
++
++    for (n = 0; n <= 12; n++) {
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), n,
++                           qdev_get_gpio_in_named(DEVICE(&s->ic),
++                                                  BCM2835_IC_GPU_IRQ,
++                                                  INTERRUPT_DMA0 + n));
++    }
+ }
+ 
+ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/dma/Makefile.objs b/hw/dma/Makefile.objs
+index 0e65ed0..a1abbcf 100644
+--- a/hw/dma/Makefile.objs
++++ b/hw/dma/Makefile.objs
+@@ -11,3 +11,4 @@ common-obj-$(CONFIG_SUN4M) += sun4m_iommu.o
+ 
+ obj-$(CONFIG_OMAP) += omap_dma.o soc_dma.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx_dma.o
++obj-$(CONFIG_RASPI) += bcm2835_dma.o
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+new file mode 100644
+index 0000000..1b3cdcf
+--- /dev/null
++++ b/hw/dma/bcm2835_dma.c
+@@ -0,0 +1,397 @@
++/*
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * This code is licensed under the GNU GPLv2 and later.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/dma/bcm2835_dma.h"
++
++/* DMA CS Control and Status bits */
++#define BCM2708_DMA_ACTIVE      (1 << 0)
++#define BCM2708_DMA_END         (1 << 1) /* GE */
++#define BCM2708_DMA_INT         (1 << 2)
++#define BCM2708_DMA_ISPAUSED    (1 << 4)  /* Pause requested or not active */
++#define BCM2708_DMA_ISHELD      (1 << 5)  /* Is held by DREQ flow control */
++#define BCM2708_DMA_ERR         (1 << 8)
++#define BCM2708_DMA_ABORT       (1 << 30) /* stop current CB, go to next, WO */
++#define BCM2708_DMA_RESET       (1 << 31) /* WO, self clearing */
++
++/* DMA control block "info" field bits */
++#define BCM2708_DMA_INT_EN      (1 << 0)
++#define BCM2708_DMA_TDMODE      (1 << 1)
++#define BCM2708_DMA_WAIT_RESP   (1 << 3)
++#define BCM2708_DMA_D_INC       (1 << 4)
++#define BCM2708_DMA_D_WIDTH     (1 << 5)
++#define BCM2708_DMA_D_DREQ      (1 << 6)
++#define BCM2708_DMA_D_IGNORE    (1 << 7)
++#define BCM2708_DMA_S_INC       (1 << 8)
++#define BCM2708_DMA_S_WIDTH     (1 << 9)
++#define BCM2708_DMA_S_DREQ      (1 << 10)
++#define BCM2708_DMA_S_IGNORE    (1 << 11)
++
++/* Register offsets */
++#define BCM2708_DMA_CS          0x00 /* Control and Status */
++#define BCM2708_DMA_ADDR        0x04 /* Control block address */
++/* the current control block appears in the following registers - read only */
++#define BCM2708_DMA_INFO        0x08
++#define BCM2708_DMA_SOURCE_AD   0x0c
++#define BCM2708_DMA_DEST_AD     0x10
++#define BCM2708_DMA_TXFR_LEN    0x14
++#define BCM2708_DMA_STRIDE      0x18
++#define BCM2708_DMA_NEXTCB      0x1C
++#define BCM2708_DMA_DEBUG       0x20
++
++#define BCM2708_DMA_INT_STATUS  0xfe0 /* Interrupt status of each channel */
++#define BCM2708_DMA_ENABLE      0xff0 /* Global enable bits for each channel */
++
++#define BCM2708_DMA_CS_RW_MASK  0x30ff0001 /* All RW bits in DMA_CS */
++
++static void bcm2835_dma_update(BCM2835DMAState *s, unsigned c)
++{
++    BCM2835DMAChan *ch = &s->chan[c];
++    uint32_t data, xlen, ylen;
++    int16_t dst_stride, src_stride;
++
++    if (!(s->enable & (1 << c))) {
++        return;
++    }
++
++    while ((s->enable & (1 << c)) && (ch->conblk_ad != 0)) {
++        /* CB fetch */
++        ch->ti = ldl_phys(&s->dma_as, ch->conblk_ad);
++        ch->source_ad = ldl_phys(&s->dma_as, ch->conblk_ad + 4);
++        ch->dest_ad = ldl_phys(&s->dma_as, ch->conblk_ad + 8);
++        ch->txfr_len = ldl_phys(&s->dma_as, ch->conblk_ad + 12);
++        ch->stride = ldl_phys(&s->dma_as, ch->conblk_ad + 16);
++        ch->nextconbk = ldl_phys(&s->dma_as, ch->conblk_ad + 20);
++
++        if (ch->ti & BCM2708_DMA_TDMODE) {
++            /* 2D transfer mode */
++            ylen = (ch->txfr_len >> 16) & 0x3fff;
++            xlen = ch->txfr_len & 0xffff;
++            dst_stride = ch->stride >> 16;
++            src_stride = ch->stride & 0xffff;
++        } else {
++            ylen = 1;
++            xlen = ch->txfr_len;
++            dst_stride = 0;
++            src_stride = 0;
++        }
++
++        while (ylen != 0) {
++            /* Normal transfer mode */
++            while (xlen != 0) {
++                if (ch->ti & BCM2708_DMA_S_IGNORE) {
++                    /* Ignore reads */
++                    data = 0;
++                } else {
++                    data = ldl_phys(&s->dma_as, ch->source_ad);
++                }
++                if (ch->ti & BCM2708_DMA_S_INC) {
++                    ch->source_ad += 4;
++                }
++
++                if (ch->ti & BCM2708_DMA_D_IGNORE) {
++                    /* Ignore writes */
++                } else {
++                    stl_phys(&s->dma_as, ch->dest_ad, data);
++                }
++                if (ch->ti & BCM2708_DMA_D_INC) {
++                    ch->dest_ad += 4;
++                }
++
++                /* update remaining transfer length */
++                xlen -= 4;
++                if (ch->ti & BCM2708_DMA_TDMODE) {
++                    ch->txfr_len = (ylen << 16) | xlen;
++                } else {
++                    ch->txfr_len = xlen;
++                }
++            }
++
++            if (--ylen != 0) {
++                ch->source_ad += src_stride;
++                ch->dest_ad += dst_stride;
++            }
++        }
++        ch->cs |= BCM2708_DMA_END;
++        if (ch->ti & BCM2708_DMA_INT_EN) {
++            ch->cs |= BCM2708_DMA_INT;
++            s->int_status |= (1 << c);
++            qemu_set_irq(ch->irq, 1);
++        }
++
++        /* Process next CB */
++        ch->conblk_ad = ch->nextconbk;
++    }
++    ch->cs &= ~BCM2708_DMA_ACTIVE;
++}
++
++static uint64_t bcm2835_dma_read(BCM2835DMAState *s, hwaddr offset,
++                                 unsigned size, unsigned c)
++{
++    BCM2835DMAChan *ch = &s->chan[c];
++    uint32_t res = 0;
++
++    assert(size == 4);
++    assert(c < BCM2835_DMA_NCHANS);
++
++    switch (offset) {
++    case BCM2708_DMA_CS:
++        res = ch->cs;
++        break;
++    case BCM2708_DMA_ADDR:
++        res = ch->conblk_ad;
++        break;
++    case BCM2708_DMA_INFO:
++        res = ch->ti;
++        break;
++    case BCM2708_DMA_SOURCE_AD:
++        res = ch->source_ad;
++        break;
++    case BCM2708_DMA_DEST_AD:
++        res = ch->dest_ad;
++        break;
++    case BCM2708_DMA_TXFR_LEN:
++        res = ch->txfr_len;
++        break;
++    case BCM2708_DMA_STRIDE:
++        res = ch->stride;
++        break;
++    case BCM2708_DMA_NEXTCB:
++        res = ch->nextconbk;
++        break;
++    case BCM2708_DMA_DEBUG:
++        res = ch->debug;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                      __func__, offset);
++        break;
++    }
++    return res;
++}
++
++static void bcm2835_dma_write(BCM2835DMAState *s, hwaddr offset,
++                              uint64_t value, unsigned size, unsigned c)
++{
++    BCM2835DMAChan *ch = &s->chan[c];
++    uint32_t oldcs;
++
++    assert(size == 4);
++    assert(c < BCM2835_DMA_NCHANS);
++
++    switch (offset) {
++    case BCM2708_DMA_CS:
++        oldcs = ch->cs;
++        if (value & BCM2708_DMA_RESET) {
++            ch->cs |= BCM2708_DMA_RESET;
++        }
++        if (value & BCM2708_DMA_ABORT) {
++            ch->cs |= BCM2708_DMA_ABORT;
++        }
++        if (value & BCM2708_DMA_END) {
++            ch->cs &= ~BCM2708_DMA_END;
++        }
++        if (value & BCM2708_DMA_INT) {
++            ch->cs &= ~BCM2708_DMA_INT;
++            s->int_status &= ~(1 << c);
++            qemu_set_irq(ch->irq, 0);
++        }
++        ch->cs &= ~BCM2708_DMA_CS_RW_MASK;
++        ch->cs |= (value & BCM2708_DMA_CS_RW_MASK);
++        if (!(oldcs & BCM2708_DMA_ACTIVE) && (ch->cs & BCM2708_DMA_ACTIVE)) {
++            bcm2835_dma_update(s, c);
++        }
++        break;
++    case BCM2708_DMA_ADDR:
++        ch->conblk_ad = value;
++        break;
++    case BCM2708_DMA_DEBUG:
++        ch->debug = value;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                      __func__, offset);
++        break;
++    }
++}
++
++static uint64_t bcm2835_dma0_read(void *opaque, hwaddr offset, unsigned size)
++{
++    BCM2835DMAState *s = opaque;
++
++    if (offset < 0xf00) {
++        return bcm2835_dma_read(s, (offset & 0xff), size, (offset >> 8) & 0xf);
++    } else {
++        switch (offset) {
++        case BCM2708_DMA_INT_STATUS:
++            return s->int_status;
++        case BCM2708_DMA_ENABLE:
++            return s->enable;
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                          __func__, offset);
++            return 0;
++        }
++    }
++}
++
++static uint64_t bcm2835_dma15_read(void *opaque, hwaddr offset, unsigned size)
++{
++    return bcm2835_dma_read(opaque, (offset & 0xff), size, 15);
++}
++
++static void bcm2835_dma0_write(void *opaque, hwaddr offset, uint64_t value,
++                               unsigned size)
++{
++    BCM2835DMAState *s = opaque;
++
++    if (offset < 0xf00) {
++        bcm2835_dma_write(s, (offset & 0xff), value, size, (offset >> 8) & 0xf);
++    } else {
++        switch (offset) {
++        case BCM2708_DMA_INT_STATUS:
++            break;
++        case BCM2708_DMA_ENABLE:
++            s->enable = (value & 0xffff);
++            break;
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
++                          __func__, offset);
++        }
++    }
++
++}
++
++static void bcm2835_dma15_write(void *opaque, hwaddr offset, uint64_t value,
++                                unsigned size)
++{
++    bcm2835_dma_write(opaque, (offset & 0xff), value, size, 15);
++}
++
++static const MemoryRegionOps bcm2835_dma0_ops = {
++    .read = bcm2835_dma0_read,
++    .write = bcm2835_dma0_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static const MemoryRegionOps bcm2835_dma15_ops = {
++    .read = bcm2835_dma15_read,
++    .write = bcm2835_dma15_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static const VMStateDescription vmstate_bcm2835_dma_chan = {
++    .name = TYPE_BCM2835_DMA "-chan",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(cs, BCM2835DMAChan),
++        VMSTATE_UINT32(conblk_ad, BCM2835DMAChan),
++        VMSTATE_UINT32(ti, BCM2835DMAChan),
++        VMSTATE_UINT32(source_ad, BCM2835DMAChan),
++        VMSTATE_UINT32(dest_ad, BCM2835DMAChan),
++        VMSTATE_UINT32(txfr_len, BCM2835DMAChan),
++        VMSTATE_UINT32(stride, BCM2835DMAChan),
++        VMSTATE_UINT32(nextconbk, BCM2835DMAChan),
++        VMSTATE_UINT32(debug, BCM2835DMAChan),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_bcm2835_dma = {
++    .name = TYPE_BCM2835_DMA,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_STRUCT_ARRAY(chan, BCM2835DMAState, BCM2835_DMA_NCHANS, 1,
++                             vmstate_bcm2835_dma_chan, BCM2835DMAChan),
++        VMSTATE_UINT32(int_status, BCM2835DMAState),
++        VMSTATE_UINT32(enable, BCM2835DMAState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_dma_init(Object *obj)
++{
++    BCM2835DMAState *s = BCM2835_DMA(obj);
++    int n;
++
++    /* DMA channels 0-14 occupy a contiguous block of IO memory, along
++     * with the global enable and interrupt status bits. Channel 15
++     * has the same register map, but is mapped at a discontiguous
++     * address in a separate IO block.
++     */
++    memory_region_init_io(&s->iomem0, OBJECT(s), &bcm2835_dma0_ops, s,
++                          TYPE_BCM2835_DMA, 0x1000);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem0);
++
++    memory_region_init_io(&s->iomem15, OBJECT(s), &bcm2835_dma15_ops, s,
++                          TYPE_BCM2835_DMA "-chan15", 0x100);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem15);
++
++    for (n = 0; n < 16; n++) {
++        sysbus_init_irq(SYS_BUS_DEVICE(s), &s->chan[n].irq);
++    }
++}
++
++static void bcm2835_dma_reset(DeviceState *dev)
++{
++    BCM2835DMAState *s = BCM2835_DMA(dev);
++    int n;
++
++    s->enable = 0xffff;
++    s->int_status = 0;
++    for (n = 0; n < BCM2835_DMA_NCHANS; n++) {
++        s->chan[n].cs = 0;
++        s->chan[n].conblk_ad = 0;
++    }
++}
++
++static void bcm2835_dma_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835DMAState *s = BCM2835_DMA(dev);
++    Error *err = NULL;
++    Object *obj;
++
++    obj = object_property_get_link(OBJECT(dev), "dma-mr", &err);
++    if (obj == NULL) {
++        error_setg(errp, "%s: required dma-mr link not found: %s",
++                   __func__, error_get_pretty(err));
++        return;
++    }
++
++    s->dma_mr = MEMORY_REGION(obj);
++    address_space_init(&s->dma_as, s->dma_mr, NULL);
++
++    bcm2835_dma_reset(dev);
++}
++
++static void bcm2835_dma_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = bcm2835_dma_realize;
++    dc->reset = bcm2835_dma_reset;
++    dc->vmsd = &vmstate_bcm2835_dma;
++}
++
++static TypeInfo bcm2835_dma_info = {
++    .name          = TYPE_BCM2835_DMA,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835DMAState),
++    .class_init    = bcm2835_dma_class_init,
++    .instance_init = bcm2835_dma_init,
++};
++
++static void bcm2835_dma_register_types(void)
++{
++    type_register_static(&bcm2835_dma_info);
++}
++
++type_init(bcm2835_dma_register_types)
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index e19d360..e12ae37 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -16,6 +16,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/char/bcm2835_aux.h"
+ #include "hw/display/bcm2835_fb.h"
++#include "hw/dma/bcm2835_dma.h"
+ #include "hw/intc/bcm2835_ic.h"
+ #include "hw/misc/bcm2835_property.h"
+ #include "hw/misc/bcm2835_mbox.h"
+@@ -37,6 +38,7 @@ typedef struct BCM2835PeripheralState {
+     SysBusDevice *uart0;
+     BCM2835AuxState aux;
+     BCM2835FBState fb;
++    BCM2835DMAState dma;
+     BCM2835ICState ic;
+     BCM2835PropertyState property;
+     BCM2835MboxState mboxes;
+diff --git a/include/hw/dma/bcm2835_dma.h b/include/hw/dma/bcm2835_dma.h
+new file mode 100644
+index 0000000..75312e2
+--- /dev/null
++++ b/include/hw/dma/bcm2835_dma.h
+@@ -0,0 +1,47 @@
++/*
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * This code is licensed under the GNU GPLv2 and later.
++ */
++
++#ifndef BCM2835_DMA_H
++#define BCM2835_DMA_H
++
++#include "qemu-common.h"
++#include "exec/address-spaces.h"
++#include "hw/sysbus.h"
++
++typedef struct {
++    uint32_t cs;
++    uint32_t conblk_ad;
++    uint32_t ti;
++    uint32_t source_ad;
++    uint32_t dest_ad;
++    uint32_t txfr_len;
++    uint32_t stride;
++    uint32_t nextconbk;
++    uint32_t debug;
++
++    qemu_irq irq;
++} BCM2835DMAChan;
++
++#define TYPE_BCM2835_DMA "bcm2835-dma"
++#define BCM2835_DMA(obj) \
++        OBJECT_CHECK(BCM2835DMAState, (obj), TYPE_BCM2835_DMA)
++
++#define BCM2835_DMA_NCHANS 16
++
++typedef struct {
++    /*< private >*/
++    SysBusDevice busdev;
++    /*< public >*/
++
++    MemoryRegion iomem0, iomem15;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
++
++    BCM2835DMAChan chan[BCM2835_DMA_NCHANS];
++    uint32_t int_status;
++    uint32_t enable;
++} BCM2835DMAState;
++
++#endif
+-- 
+2.5.3
+

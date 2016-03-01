@@ -1,80 +1,72 @@
-Received: by 10.25.208.211 with SMTP id h202csp1777817lfg;
-        Tue, 1 Mar 2016 10:43:52 -0800 (PST)
-X-Received: by 10.140.128.21 with SMTP id 21mr30348739qha.36.1456857832501;
-        Tue, 01 Mar 2016 10:43:52 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1785373lfg;
+        Tue, 1 Mar 2016 11:03:35 -0800 (PST)
+X-Received: by 10.140.93.65 with SMTP id c59mr28123632qge.101.1456859015660;
+        Tue, 01 Mar 2016 11:03:35 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v65si20239466qka.89.2016.03.01.10.43.52
+        by mx.google.com with ESMTPS id r71si32101755qha.48.2016.03.01.11.03.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 10:43:52 -0800 (PST)
+        Tue, 01 Mar 2016 11:03:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51718 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:51796 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aapGy-00049t-0b
-	for alex.bennee@linaro.org; Tue, 01 Mar 2016 13:43:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45439)
+	id 1aapa3-00026K-6C
+	for alex.bennee@linaro.org; Tue, 01 Mar 2016 14:03:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54340)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aapGv-00049g-Sk
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:43:50 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aapZq-0001oz-KY
+	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 14:03:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aapGu-0001bj-RO
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:43:49 -0500
-Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38348)
+	(envelope-from <peter.maydell@linaro.org>) id 1aapZp-0000FH-0e
+	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 14:03:22 -0500
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35458)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aapGu-0001bQ-KM; Tue, 01 Mar 2016 13:43:48 -0500
-Received: by mail-wm0-x22d.google.com with SMTP id l68so46461403wml.1;
-	Tue, 01 Mar 2016 10:43:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=CPMRcd3l+13I3exYsDe/JlLY/wJUYwN19MrfVsdT5Fs=;
-	b=ALNlgTWdPkjEqCPGLN/+nLK+kANJn9thufjby0gloARTPD9hSoqXRQyzLjGmY10i7p
-	EDb5y0dYTAmhv/OQP+QobRgIbRtaAKzljwSuTDgFdvqOXeVOdGHmh+tQsr+OzV6mALaj
-	IQuasAXqq+IHX6BGbKZYCOt5sazUJw4EEd3/14FnRskrDbwkg7yFNtSsH3sibow/ffWm
-	0wWslVkh7ujlZ1nQ9BHfyDlqMojlbMsAoQvtybV3POqJEW/6QSEcqIKj/6yA5uY/ESv9
-	SkMOKHwiMgwntLCJbazj45bZqjUQYhOpxrvY46PiGwGoiF0/oAlr//5Maqpt98gPq7gC
-	b5Nw==
+	(envelope-from <peter.maydell@linaro.org>) id 1aapZo-0000FB-ID
+	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 14:03:20 -0500
+Received: by mail-vk0-x235.google.com with SMTP id e6so177670012vkh.2
+	for <qemu-arm@nongnu.org>; Tue, 01 Mar 2016 11:03:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=VKtdE5xv0b0KxY7OnSFMatPmumjcbpdhkQes9FJJLYw=;
+	b=BpK12FHAzsjSzjkKPtjsD7K7gRAQlgDsdmg7QKZf+PSzLiVE98+UhTblFuIsAi3c6h
+	QLt8MNumbz6XL1ORP/IQkmPv7J8/zsU17MbBBf+o24twCoZRU6f4bkOJcJxhwvoFd8qa
+	Nx2QXikchuLVV2v9i1ZdexG902kF49grw0i/I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=CPMRcd3l+13I3exYsDe/JlLY/wJUYwN19MrfVsdT5Fs=;
-	b=harULdgDestpcvggwopX81fA9pTwldj46R68ibT6/M3QSP0LuQKHBe4wr3HGFVEj1k
-	8Qd77XRS5ygAq6ZTc3CxHMOo5x26IROtoUO82lM/dBQ8quHqIOO7hqVRI8t3OKbcxaEj
-	4+K227+HLF9zqrBT3QpeECKwKUoyLCEra1s8ZUAzV9Fm+ALVl5IR4y7Y088QwV+uwc5M
-	2M29ajFVW0wwXD1qIVzTD3+k3o7aKbbhw4Loc6DdtZ630yvVCV1lhw7mCRq5pedJmm56
-	mfNe+gvSDHGonTz5lbUSZ6/0k/hxmWo02XnL4Mu9q017OaSi4QGIiAsUIMFrgR/SuqS0
-	gV4A==
-X-Gm-Message-State: AD7BkJKUlOW+7fLalv/PiKjb5sLN3cKDkYBv9b7pNrSKglLt4mjBLKTe9uNYHArF4ScsIGJghsu03qM91Lk41w==
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=VKtdE5xv0b0KxY7OnSFMatPmumjcbpdhkQes9FJJLYw=;
+	b=ZMjcy6OWiDZxrJktuYkfnv/PM+P8Z51rafaVzQoIeImhowH9zrSi/Vk4/5sKysLf/V
+	sy4yPOJ/AIvN5G5cEkSTWqoJ44vt0bAkA95PqC6xu02YHROJXIZtStK4/3N5kwabqE/6
+	Knc/OqiDK6ZqiEeqJiSU5U4ks8Ik3W0r7gbsiTHegZZyrXkDHpqnzaAHKhUMrs38BY8k
+	G8FyOhoSmYcmXfo4P6n0WRGrqFo2R3oaLYIJbCcDQL5t1qdCbL8XFvVNzQ2MyFcfbc/v
+	YcHZbA8uedRUefhao9bfvS405uy6dwlsZ/T8JDxm6gWhdbcdGWNg3n+UkgaxvZxOiU8/
+	rZdQ==
+X-Gm-Message-State: AD7BkJL2xG119v4QBAojEuAexEowxyxGiXPNR/dCdtYETEd5a4RHg2smWEeJFHu0uYjVKrcus8hBDh2Y5sYPnQlv
+X-Received: by 10.31.180.85 with SMTP id d82mr14310792vkf.83.1456859000097;
+	Tue, 01 Mar 2016 11:03:20 -0800 (PST)
 MIME-Version: 1.0
-X-Received: by 10.28.146.209 with SMTP id u200mr463216wmd.59.1456857827905;
-	Tue, 01 Mar 2016 10:43:47 -0800 (PST)
-Received: by 10.28.157.197 with HTTP; Tue, 1 Mar 2016 10:43:47 -0800 (PST)
-In-Reply-To: <56D52825.1010107@weilnetz.de>
-References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
-	<56D52825.1010107@weilnetz.de>
-Date: Tue, 1 Mar 2016 10:43:47 -0800
-Message-ID: <CAPokK=oGzBuvSKw7PFiwwzL0m_=bu7haNYqsyL_WV6PP6UfCyQ@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
+Received: by 10.31.56.216 with HTTP; Tue, 1 Mar 2016 11:03:00 -0800 (PST)
+In-Reply-To: <1456532174-17432-3-git-send-email-Andrew.Baumann@microsoft.com>
+References: <1456532174-17432-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<1456532174-17432-3-git-send-email-Andrew.Baumann@microsoft.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 1 Mar 2016 19:03:00 +0000
+Message-ID: <CAFEAcA_BhNXfKfcCXZ0O6K=BbL2kOoprPddcYq2eHeujaaQ02A@mail.gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22d
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	sridhar kulkarni <sridhar_kulk@yahoo.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Piotr_Kr=C3=B3l?= <piotr.krol@3mdeb.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 00/17] ARM big-endian and
-	setend support
+X-Received-From: 2607:f8b0:400c:c05::235
+Cc: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH 2/4] bcm2835_aux: add emulation of BCM2835
+	AUX (aka UART1) block
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,48 +80,293 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FV1KAjlR7mQ5
+X-TUID: 4A9gW2bys/y6
 
-On Mon, Feb 29, 2016 at 9:27 PM, Stefan Weil <sw@weilnetz.de> wrote:
-> Am 18.01.2016 um 08:12 schrieb Peter Crosthwaite:
->> Hi All,
->>
->> This patch series adds system-mode big-endian support for ARM. It also
->> implements the setend instruction, and loading of BE binaries even in
->> LE emulation mode.
->>
->> Based on Paolo's original work. I have moved all the BE32 related work
->> to the back of the series. Multiple parties are interested in the BE8
->> work just on its own, so that could potentially be merged w/o BE32.
->> PMM requested BE32 be at least thought out architecturally, so this
->> series sees BE32 functionality through.
->>
->> I have tested all of LE. BE8 and BE32 in both linux-user mode (for
->> regressions) and system mode (BE8 and BE32 are new here).
->> My test application is here, the README gives some example command
->> lines you can run:
->>
->> https://github.com/pcrost/arm-be-test
->>
->> Regards,
->> Peter
->
-> It would be nice to get at least the emulation for 'setend' into the
-> next version, because it is needed for the Raspberry Pi emulation.
+On 27 February 2016 at 00:16, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+
+This bit of the commit message is a good place to list the
+"not yet implemented" parts of the device.
+
+> Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> ---
+> +/*
+> + * BCM2835 (Raspberry Pi / Pi 2) Aux block (mini UART and SPI).
+> + * Copyright (c) 2015, Microsoft
+> + * Written by Andrew Baumann
+> + * Based on pl011.c, copyright terms below:
+> + *
+> + * Arm PrimeCell PL011 UART
+> + *
+> + * Copyright (c) 2006 CodeSourcery.
+> + * Written by Paul Brook
+> + *
+> + * This code is licensed under the GPL.
+> + */
 >
 
-BTW if you can link me binaries and a failing command line for the
-failing rPI work I can test it, I am currently doing my own standalone
-tests (of linux user as well).
+I'm looking at the documentation at
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf
+for my review...
 
-Regards,
-Peter
+You should say in a comment that only the UART parts are
+currently implemented.
 
-> Peter C., are you planning a new pull request? Maybe the number
-> of commits needed can be reduced by adding the already reviewed
-> ones to QEMU.
->
-> Regards,
-> Stefan
->
->
+> +#include "qemu/osdep.h"
+> +#include "hw/char/bcm2835_aux.h"
+> +
+> +#define AUX_ENABLES     0x4
+> +#define AUX_MU_IO_REG   0x40
+> +#define AUX_MU_IER_REG  0x44
+> +#define AUX_MU_IIR_REG  0x48
+> +#define AUX_MU_LSR_REG  0x54
+> +#define AUX_MU_STAT_REG 0x64
+> +
+> +static void bcm2835_aux_update(BCM2835AuxState *s)
+> +{
+> +    bool status = (s->rx_int_enable && s->read_count != 0) || s->tx_int_enable;
+> +    qemu_set_irq(s->irq, status);
+
+Could use a comment somewhere to the effect that since we model the
+tx fifo as instantly-draining the 'tx fifo register empty' interrupt
+is always asserted.
+
+> +}
+> +
+> +static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    BCM2835AuxState *s = opaque;
+> +    uint32_t c, res;
+> +
+> +    switch (offset) {
+
+No AUX_IRQ implementation? (You need the current interrupt
+status anyway for one of the other register bits.)
+
+> +    case AUX_ENABLES:
+> +        return 1; /* mini UART enabled */
+> +
+> +    case AUX_MU_IO_REG:
+> +        c = s->read_fifo[s->read_pos];
+
+The datasheet says this is a byte UART but you've implemented
+the read_fifo and c as 32-bit.
+
+> +        if (s->read_count > 0) {
+> +            s->read_count--;
+> +            if (++s->read_pos == 8) {
+> +                s->read_pos = 0;
+> +            }
+> +        }
+> +        if (s->chr) {
+> +            qemu_chr_accept_input(s->chr);
+> +        }
+> +        bcm2835_aux_update(s);
+
+This doesn't implement the "if line control DLAB bit is set, then read/write
+the LS 8 bits of the baudrate register" behaviour described in the datasheet.
+
+> +        return c;
+> +
+> +    case AUX_MU_IER_REG:
+> +        res = 0;
+> +        if (s->rx_int_enable) {
+> +            res |= 0x2;
+> +        }
+> +        if (s->tx_int_enable) {
+> +            res |= 0x1;
+> +        }
+
+I suspect you'll find the code is clearer generally if you model this
+register with a uint8_t ier in the state structure rather than two bools
+(for instance "is interrupt asserted" is generally "enables | status".)
+
+Doesn't implement "DLAB bit set means access MS 8 bits of the baudrate
+register".
+
+> +        return res;
+> +
+> +    case AUX_MU_IIR_REG:
+> +        res = 0xc0;
+> +        if (s->tx_int_enable) {
+> +            res |= 0x1;
+> +        } else if (s->rx_int_enable && s->read_count != 0) {
+> +            res |= 0x2;
+> +        }
+
+This is kind of repeating the logic in bcm2835_aux_update(), would
+be nice to factor it out.
+
+The data sheet says that the bit allocation here is different:
+bit 0 is zero when an interrupt is pending, and bits 1 and 2 are
+the read and write information.
+
+The data sheet also says that 0b11 for bits [2:1] is not possible, though
+it doesn't say why. It's not clear what the hardware reads as if
+the transmit holding register is empty *and* the receiver has a
+valid byte...
+
+> +        return res;
+> +
+> +    case AUX_MU_LSR_REG:
+> +        res = 0x60; /* tx idle, empty */
+> +        if (s->read_count != 0) {
+> +            res |= 0x1;
+> +        }
+> +        return res;
+> +
+> +    case AUX_MU_STAT_REG:
+> +        res = 0x302; /* space in the output buffer, empty tx fifo */
+
+Shouldn't we set the "transmitter idle" bit too?
+
+> +        if (s->read_count > 0) {
+> +            res |= 0x1; /* data in input buffer */
+> +            assert(s->read_count < 8);
+> +            res |= ((uint32_t)s->read_count) << 16; /* rx fifo fill level */
+> +        }
+> +        return res;
+> +
+
+No AUX_MU_LCR_REG ? No AUX_MU_MCR_REG ? No AUX_MU_MSR_REG ?
+AUX_MU_SCRATCH ? AUX_MU_CNTL_REG ? AUX_MU_BAUD ?
+
+At least implementing them to log unimplemented would be nice.
+
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+> +                      __func__, offset);
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
+> +                              unsigned size)
+> +{
+> +    BCM2835AuxState *s = opaque;
+> +    unsigned char ch;
+> +
+> +    switch (offset) {
+> +    case AUX_ENABLES:
+> +        if (value != 1) {
+> +            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI "
+> +                          "or disable UART\n", __func__);
+> +        }
+> +        break;
+> +
+> +    case AUX_MU_IO_REG:
+> +        ch = value;
+> +        if (s->chr) {
+> +            qemu_chr_fe_write(s->chr, &ch, 1);
+> +        }
+> +        break;
+> +
+> +    case AUX_MU_IER_REG:
+> +        s->rx_int_enable = (value & 0x2) != 0;
+> +        s->tx_int_enable = (value & 0x1) != 0;
+> +        break;
+> +
+> +    case AUX_MU_IIR_REG:
+> +        if (value & 0x1) {
+> +            s->read_count = 0;
+> +        }
+
+Datasheet says bit 0 is read only, bit 1 clears the rx fifo.
+
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+> +                      __func__, offset);
+> +    }
+> +
+> +    bcm2835_aux_update(s);
+> +}
+> +
+> +static int bcm2835_aux_can_receive(void *opaque)
+> +{
+> +    BCM2835AuxState *s = opaque;
+> +
+> +    return s->read_count < 8;
+> +}
+> +
+> +static void bcm2835_aux_put_fifo(void *opaque, uint32_t value)
+> +{
+> +    BCM2835AuxState *s = opaque;
+> +    int slot;
+> +
+> +    slot = s->read_pos + s->read_count;
+> +    if (slot >= 8) {
+> +        slot -= 8;
+> +    }
+> +    s->read_fifo[slot] = value;
+> +    s->read_count++;
+> +    if (s->read_count == 8) {
+> +        /* buffer full */
+> +    }
+> +    bcm2835_aux_update(s);
+> +}
+> +
+> +static void bcm2835_aux_receive(void *opaque, const uint8_t *buf, int size)
+> +{
+> +    bcm2835_aux_put_fifo(opaque, *buf);
+> +}
+> +
+> +static void bcm2835_aux_event(void *opaque, int event)
+> +{
+> +    if (event == CHR_EVENT_BREAK) {
+> +        bcm2835_aux_put_fifo(opaque, 0x400);
+> +    }
+
+Data sheet says the UART does not have break detection.
+
+> +}
+> +
+> +static const MemoryRegionOps bcm2835_aux_ops = {
+> +    .read = bcm2835_aux_read,
+> +    .write = bcm2835_aux_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .valid.min_access_size = 4,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static const VMStateDescription vmstate_bcm2835_aux = {
+> +    .name = TYPE_BCM2835_AUX,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(read_fifo, BCM2835AuxState, 8),
+> +        VMSTATE_UINT8(read_pos, BCM2835AuxState),
+> +        VMSTATE_UINT8(read_count, BCM2835AuxState),
+> +        VMSTATE_BOOL(rx_int_enable, BCM2835AuxState),
+> +        VMSTATE_BOOL(tx_int_enable, BCM2835AuxState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void bcm2835_aux_init(Object *obj)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +    BCM2835AuxState *s = BCM2835_AUX(obj);
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_aux_ops, s,
+> +                          TYPE_BCM2835_AUX, 0x100);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +    sysbus_init_irq(sbd, &s->irq);
+> +}
+> +
+> +static void bcm2835_aux_realize(DeviceState *dev, Error **errp)
+> +{
+> +    BCM2835AuxState *s = BCM2835_AUX(dev);
+> +    /* FIXME use a qdev chardev prop instead of qemu_char_get_next_serial() */
+
+Good idea :-)  imx_serial.c has an example, you use
+DEFINE_PROP_CHR and then wire it up in the board construction with
+qdev_prop_set_chr(). (You probably want to create an alias property on
+the SoC object as we now do for spi etc; see the xilinx soc for
+an example.)
+
+> +    s->chr = qemu_char_get_next_serial();
+
+thanks
+-- PMM

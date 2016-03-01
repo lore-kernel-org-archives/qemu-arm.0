@@ -1,103 +1,92 @@
-Received: by 10.25.208.211 with SMTP id h202csp1721615lfg;
-        Tue, 1 Mar 2016 08:37:34 -0800 (PST)
-X-Received: by 10.140.99.72 with SMTP id p66mr27443869qge.16.1456850254041;
-        Tue, 01 Mar 2016 08:37:34 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1725301lfg;
+        Tue, 1 Mar 2016 08:45:56 -0800 (PST)
+X-Received: by 10.55.82.195 with SMTP id g186mr27167552qkb.47.1456850755928;
+        Tue, 01 Mar 2016 08:45:55 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k93si31555494qgf.62.2016.03.01.08.37.33
+        by mx.google.com with ESMTPS id t39si31614020qgd.0.2016.03.01.08.45.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 08:37:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 01 Mar 2016 08:45:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50873 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:50915 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aanIj-00043d-I7
-	for alex.bennee@linaro.org; Tue, 01 Mar 2016 11:37:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55545)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aanQp-0000Dw-GH
+	for alex.bennee@linaro.org; Tue, 01 Mar 2016 11:45:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58409)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aanIb-0003u2-TW
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 11:37:31 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aanQF-00084n-Ii
+	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 11:45:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aanIa-0001R4-Uu
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 11:37:25 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56051)
+	(envelope-from <peter.maydell@linaro.org>) id 1aanQE-00047b-QI
+	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 11:45:19 -0500
+Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:36319)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aanIY-0001Qd-Jj; Tue, 01 Mar 2016 11:37:22 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1aanIX-0005pJ-2o; Tue, 01 Mar 2016 16:37:21 +0000
+	(envelope-from <peter.maydell@linaro.org>) id 1aanQD-00046H-Kf
+	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 11:45:18 -0500
+Received: by mail-vk0-x22a.google.com with SMTP id c3so173503834vkb.3
+	for <qemu-devel@nongnu.org>; Tue, 01 Mar 2016 08:45:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=roVM9yZfySUlUzgrImf9GrHgfq4JEvmgUUGMOTkoXo0=;
+	b=FQO8ya8zWhoVj/iMQf5lugI1J7WXxP/jNDuocdw3GzaNi13Bvs1oq2DdmYWzb/jqq5
+	xkDLiLsivJIiFlNZvtI02CuuwxYhyshFBMc0IYRcP4SCgC885awEI9gNsmilhsH5SV/G
+	1vQLyizlMjPfINysB4SzBxainatmW3d1v/wS0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=roVM9yZfySUlUzgrImf9GrHgfq4JEvmgUUGMOTkoXo0=;
+	b=KJ7H3QAbxRAJj8J/MxfaHsdK4/5t4muYQAzyzCDOv+t4Tb1ZXN4BCHZ70TmKTjykWs
+	XsYbSphYHFNZNU8GrxNWruPGD0BhkJ28DDafuuXWb8K+7HR/llg2Q0Q9DtOb1do5E8pr
+	vSGcSSGQh647MeS9FiUv/bw8T1vaPplCm3UF53spZpRQOJMNNefdSUXmf0hdnSLNfqYg
+	aPXhcGEs8Kh/5hmPxr3zXwk2jnEJvMDaCoSYaQrAoJufEzWmN9sOlkccBbEmW1tJapiQ
+	wZJKZCXcDum5ZRBTeAuCkHmIJwLiWhZumOH1njy4C+nd4FmYG8RDS7iANmJ3j/xOeIP5
+	zcAA==
+X-Gm-Message-State: AD7BkJK788YosjY+SDwUVUmG7PBNcOkxaimItj/lcecZS3a/Pad6m3VioG1IPnKzo2VHoR+0SZ1SSrtv8w8UdQuR
+X-Received: by 10.31.1.6 with SMTP id 6mr13975903vkb.139.1456850717190; Tue,
+	01 Mar 2016 08:45:17 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Tue, 1 Mar 2016 08:44:57 -0800 (PST)
+In-Reply-To: <1456849517-26240-1-git-send-email-peter.maydell@linaro.org>
+References: <1456849517-26240-1-git-send-email-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue,  1 Mar 2016 16:37:20 +0000
-Message-Id: <1456850240-21096-1-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.9.1
+Date: Tue, 1 Mar 2016 16:44:57 +0000
+Message-ID: <CAFEAcA_iVjMwXGy7GO+fJwD4=LvMJEsaisOOXbY=XmSc-3oLPw@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm@nongnu.org, patches@linaro.org
-Subject: [Qemu-arm] [RFC] linux-user: Use SIGRTMAX-1 for guest SIGRTMIN+1 to
-	avoid conflict with host libc
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22a
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] linux-user: x86_64: Don't use
+	16-bit UIDs
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j1us8kwfyXmk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HdrS7Dtfrzza
 
-We already have a hack whereby we flip the guest's SIGRTMAX and SIGRTMIN
-signals, to avoid a collision between guest use of SIGRTMIN and the host
-libc use of it for SIGCANCEL. However newer glibc also uses SIGRTMIN+1
-for internal purposes (as SIGSETXID). Reverse SIGRTMIN+1 and SIGRTMAX-1
-so the guest can successfully use SIGRTMIN+1.
+On 1 March 2016 at 16:25, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The 64-bit x86 syscall ABI uses 32-bit UIDs; only define
+> USE_UID16 for 32-bit x86.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-This didn't cause any immediately observed issues in guests because glibc
-does not check the return value when it registers a SIGSETXID handler(!).
-However it meant that if a guest program with more than one thread issued
-a setuid() syscall it would hang.
+Obviously I only cc'd qemu-arm on this (and the other UID patches)
+because my brain was on autopilot...
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is sent as an RFC because although I think it is the right thing
-it is potentially enabling a bunch of glibc code that we weren't
-even going to attempt to run before. Probably this just means a
-different style of deadlock if you attempt setuid() calls in a
-multithreaded process, though...
-
-Does anybody actually have an idea about how the "manual signal
-delivery multiplexed over a single host signal" would work?
-
- linux-user/signal.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 962111c..487cc5f 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -75,8 +75,12 @@ static uint8_t host_to_target_signal_table[_NSIG] = {
-     /* Nasty hack: Reverse SIGRTMIN and SIGRTMAX to avoid overlap with
-        host libpthread signals.  This assumes no one actually uses SIGRTMAX :-/
-        To fix this properly we need to do manual signal delivery multiplexed
--       over a single host signal.  */
-+       over a single host signal.
-+       Similarly we reverse SIGRTMIN + 1 and SIGRTMAX - 1, because
-+       host glibc uses SIGRTMIN+1 for SIGSETXID. */
-     [__SIGRTMIN] = __SIGRTMAX,
-+    [__SIGRTMIN + 1] = __SIGRTMAX - 1,
-+    [__SIGRTMAX - 1] = __SIGRTMIN + 1,
-     [__SIGRTMAX] = __SIGRTMIN,
- };
- static uint8_t target_to_host_signal_table[_NSIG];
--- 
-1.9.1
-
+-- PMM

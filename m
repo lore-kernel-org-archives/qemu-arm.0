@@ -1,46 +1,44 @@
-Received: by 10.25.208.211 with SMTP id h202csp1753324lfg;
-        Tue, 1 Mar 2016 09:45:12 -0800 (PST)
-X-Received: by 10.140.107.182 with SMTP id h51mr27752250qgf.53.1456854312445;
-        Tue, 01 Mar 2016 09:45:12 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1753783lfg;
+        Tue, 1 Mar 2016 09:46:16 -0800 (PST)
+X-Received: by 10.140.98.232 with SMTP id o95mr28010306qge.43.1456854376036;
+        Tue, 01 Mar 2016 09:46:16 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 18si31762921qhf.16.2016.03.01.09.45.12
+        by mx.google.com with ESMTPS id b130si31761264qhc.18.2016.03.01.09.46.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 09:45:12 -0800 (PST)
+        Tue, 01 Mar 2016 09:46:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51388 helo=lists.gnu.org)
+Received: from localhost ([::1]:51407 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aaoMC-0006RZ-0H
-	for alex.bennee@linaro.org; Tue, 01 Mar 2016 12:45:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53617)
+	id 1aaoND-0007tg-M0
+	for alex.bennee@linaro.org; Tue, 01 Mar 2016 12:46:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aaoJO-0005m9-1A
-	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 12:44:51 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1aaoL6-00061J-M2
+	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 12:45:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1aaoGt-0006UQ-R3
-	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 12:42:17 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56055)
+	(envelope-from <pm215@archaic.org.uk>) id 1aaoK2-0007wa-I6
+	for qemu-devel@nongnu.org; Tue, 01 Mar 2016 12:44:04 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56060)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aaoGt-0006U5-Hy; Tue, 01 Mar 2016 12:39:43 -0500
+	id 1aaoK2-0007wQ-8J; Tue, 01 Mar 2016 12:42:58 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1aaoGp-0005qZ-RE; Tue, 01 Mar 2016 17:39:39 +0000
+	id 1aaoK1-0005r9-Bi; Tue, 01 Mar 2016 17:42:57 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Tue,  1 Mar 2016 17:39:36 +0000
-Message-Id: <1456853976-7592-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue,  1 Mar 2016 17:42:56 +0000
+Message-Id: <1456854176-7813-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, qemu-arm@nongnu.org,
-	Laszlo Ersek <lersek@redhat.com>, patches@linaro.org
-Subject: [Qemu-devel] [PATCH v2] hw/arm/virt: Assume EL3 boot rom will
-	handle PSCI if one is provided
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: [Qemu-devel] [PATCH v2] hw/intc/arm_gic.c: Implement GICv2 GICC_DIR
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -54,122 +52,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JpB6QsXOzLQM
+X-TUID: BXCDEpKzwBlf
 
-If the user passes us an EL3 boot rom, then it is going to want to
-implement the PSCI interface itself. In this case, disable QEMU's
-internal PSCI implementation so it does not get in the way, and
-instead start all CPUs in an SMP configuration at once (the boot
-rom will catch them all and pen up the secondaries until needed).
-The boot rom code is also responsible for editing the device tree
-to include any necessary information about its own PSCI implementation
-before eventually passing it to a NonSecure guest.
-
-(This "start all CPUs at once" approach is what both ARM Trusted
-Firmware and UEFI expect, since it is what the ARM Foundation Model
-does; the other approach would be to provide some emulated hardware
-for "start the secondaries" but this is simplest.)
-
-This is a compatibility break, but I don't believe that anybody
-was using a secure boot ROM with an SMP configuration. Such a setup
-would be somewhat broken since there was nothing preventing nonsecure
-guest code from calling the QEMU PSCI function to start up a secondary
-core in a way that completely bypassed the secure world.
+The GICv2 introduces a new CPU interface register GICC_DIR, which
+allows an OS to split the "priority drop" and "deactivate interrupt"
+parts of interrupt completion. Implement this register.
+(Note that the register is at offset 0x1000 in the CPU interface,
+which means it is on a different 4K page from all the other registers.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v1->v2 changes:
- * rearranged so we initialise vbi->using_psci properly
+changes v1->v2: remove unnecessary gic_update() call
 
- hw/arm/virt.c | 32 +++++++++++++++++++++++++-------
- 1 file changed, 25 insertions(+), 7 deletions(-)
+ hw/cpu/a15mpcore.c       |  2 +-
+ hw/intc/arm_gic.c        | 45 ++++++++++++++++++++++++++++++++++++++++++++-
+ hw/intc/arm_gic_common.c |  2 +-
+ 3 files changed, 46 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4499e2c..9d07b6d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -73,6 +73,7 @@ typedef struct VirtBoardInfo {
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
-     uint32_t v2m_phandle;
-+    bool using_psci;
- } VirtBoardInfo;
+diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+index e9063ad..a221b8f 100644
+--- a/hw/cpu/a15mpcore.c
++++ b/hw/cpu/a15mpcore.c
+@@ -109,7 +109,7 @@ static void a15mp_priv_realize(DeviceState *dev, Error **errp)
+     /* Memory map (addresses are offsets from PERIPHBASE):
+      *  0x0000-0x0fff -- reserved
+      *  0x1000-0x1fff -- GIC Distributor
+-     *  0x2000-0x2fff -- GIC CPU interface
++     *  0x2000-0x3fff -- GIC CPU interface
+      *  0x4000-0x4fff -- GIC virtual interface control (not modelled)
+      *  0x5000-0x5fff -- GIC virtual interface control (not modelled)
+      *  0x6000-0x7fff -- GIC virtual CPU interface (not modelled)
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 60ab9b8..0834c2f 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -500,6 +500,41 @@ static uint8_t gic_get_running_priority(GICState *s, int cpu, MemTxAttrs attrs)
+     }
+ }
  
- typedef struct {
-@@ -231,6 +232,10 @@ static void fdt_add_psci_node(const VirtBoardInfo *vbi)
-     void *fdt = vbi->fdt;
-     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
- 
-+    if (!vbi->using_psci) {
++/* Return true if we should split priority drop and interrupt deactivation,
++ * ie whether the relevant EOIMode bit is set.
++ */
++static bool gic_eoi_split(GICState *s, int cpu, MemTxAttrs attrs)
++{
++    if (s->revision != 2) {
++        /* Before GICv2 prio-drop and deactivate are not separable */
++        return false;
++    }
++    if (s->security_extn && !attrs.secure) {
++        return s->cpu_ctlr[cpu] & GICC_CTLR_EOIMODE_NS;
++    }
++    return s->cpu_ctlr[cpu] & GICC_CTLR_EOIMODE;
++}
++
++static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
++{
++    int cm = 1 << cpu;
++    int group = gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
++
++    if (!gic_eoi_split(s, cpu, attrs)) {
++        /* This is UNPREDICTABLE; we choose to ignore it */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_deactivate_irq: GICC_DIR write when EOIMode clear");
 +        return;
 +    }
 +
-     qemu_fdt_add_subnode(fdt, "/psci");
-     if (armcpu->psci_version == 2) {
-         const char comp[] = "arm,psci-0.2\0arm,psci";
-@@ -342,7 +347,7 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
-         qemu_fdt_setprop_string(vbi->fdt, nodename, "compatible",
-                                     armcpu->dtb_compatible);
- 
--        if (vbi->smp_cpus > 1) {
-+        if (vbi->using_psci && vbi->smp_cpus > 1) {
-             qemu_fdt_setprop_string(vbi->fdt, nodename,
-                                         "enable-method", "psci");
-         }
-@@ -1081,6 +1086,7 @@ static void machvirt_init(MachineState *machine)
-     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
-     VirtGuestInfo *guest_info = &guest_info_state->info;
-     char **cpustr;
-+    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
- 
-     if (!cpu_model) {
-         cpu_model = "cortex-a15";
-@@ -1108,6 +1114,15 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
-+    /* If we have an EL3 boot ROM then the assumption is that it will
-+     * implement PSCI itself, so disable QEMU's internal implementation
-+     * so it doesn't get in the way. Instead of starting secondary
-+     * CPUs in PSCI powerdown state we will start them all running and
-+     * let the boot ROM sort them out.
-+     * The usual case is that we do use QEMU's PSCI implementation.
-+     */
-+    vbi->using_psci = !(vms->secure && firmware_loaded);
++    if (s->security_extn && !attrs.secure && !group) {
++        DPRINTF("Non-secure DI for Group0 interrupt %d ignored\n", irq);
++        return;
++    }
 +
-     /* The maximum number of CPUs depends on the GIC version, or on how
-      * many redistributors we can fit into the memory map.
++    GIC_CLEAR_ACTIVE(irq, cm);
++}
++
+ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+ {
+     int cm = 1 << cpu;
+@@ -544,7 +579,11 @@ void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
       */
-@@ -1175,12 +1190,15 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, false, "has_el3", NULL);
-         }
  
--        object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC, "psci-conduit",
--                                NULL);
-+        if (vbi->using_psci) {
-+            object_property_set_int(cpuobj, QEMU_PSCI_CONDUIT_HVC,
-+                                    "psci-conduit", NULL);
+     gic_drop_prio(s, cpu, group);
+-    GIC_CLEAR_ACTIVE(irq, cm);
++
++    /* In GICv2 the guest can choose to split priority-drop and deactivate */
++    if (!gic_eoi_split(s, cpu, attrs)) {
++        GIC_CLEAR_ACTIVE(irq, cm);
++    }
+     gic_update(s);
+ }
  
--        /* Secondary CPUs start in PSCI powered-down state */
--        if (n > 0) {
--            object_property_set_bool(cpuobj, true, "start-powered-off", NULL);
-+            /* Secondary CPUs start in PSCI powered-down state */
-+            if (n > 0) {
-+                object_property_set_bool(cpuobj, true,
-+                                         "start-powered-off", NULL);
-+            }
-         }
- 
-         if (object_property_find(cpuobj, "reset-cbar", NULL)) {
-@@ -1249,7 +1267,7 @@ static void machvirt_init(MachineState *machine)
-     vbi->bootinfo.board_id = -1;
-     vbi->bootinfo.loader_start = vbi->memmap[VIRT_MEM].base;
-     vbi->bootinfo.get_dtb = machvirt_dtb;
--    vbi->bootinfo.firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-+    vbi->bootinfo.firmware_loaded = firmware_loaded;
-     arm_load_kernel(ARM_CPU(first_cpu), &vbi->bootinfo);
- 
-     /*
+@@ -1210,6 +1249,10 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+         s->nsapr[regno][cpu] = value;
+         break;
+     }
++    case 0x1000:
++        /* GICC_DIR */
++        gic_deactivate_irq(s, cpu, value & 0x3ff, attrs);
++        break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "gic_cpu_write: Bad offset %x\n", (int)offset);
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index ac8cf42..707d00d 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -121,7 +121,7 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+          * neither it can use KVM.
+          */
+         memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
+-                              s, "gic_cpu", s->revision == 2 ? 0x1000 : 0x100);
++                              s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
+         sysbus_init_mmio(sbd, &s->cpuiomem[0]);
+     }
+ }
 -- 
 1.9.1
 

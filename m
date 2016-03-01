@@ -1,77 +1,77 @@
-Received: by 10.25.208.211 with SMTP id h202csp1770734lfg;
-        Tue, 1 Mar 2016 10:27:02 -0800 (PST)
-X-Received: by 10.141.2.11 with SMTP id e11mr1235177qhd.69.1456856822026;
-        Tue, 01 Mar 2016 10:27:02 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1777817lfg;
+        Tue, 1 Mar 2016 10:43:52 -0800 (PST)
+X-Received: by 10.140.128.21 with SMTP id 21mr30348739qha.36.1456857832501;
+        Tue, 01 Mar 2016 10:43:52 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u68si2466231qgd.75.2016.03.01.10.27.01
+        by mx.google.com with ESMTPS id v65si20239466qka.89.2016.03.01.10.43.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 10:27:01 -0800 (PST)
+        Tue, 01 Mar 2016 10:43:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51641 helo=lists.gnu.org)
+Received: from localhost ([::1]:51718 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aap0f-00050t-FD
-	for alex.bennee@linaro.org; Tue, 01 Mar 2016 13:27:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40101)
+	id 1aapGy-00049t-0b
+	for alex.bennee@linaro.org; Tue, 01 Mar 2016 13:43:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45439)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aap0d-0004yx-MQ
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:27:00 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aapGv-00049g-Sk
+	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:43:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1aap0c-0004vp-TC
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:26:59 -0500
-Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:36082)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aapGu-0001bj-RO
+	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 13:43:49 -0500
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38348)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1aap0c-0004vR-MW; Tue, 01 Mar 2016 13:26:58 -0500
-Received: by mail-wm0-x22a.google.com with SMTP id n186so50729638wmn.1;
-	Tue, 01 Mar 2016 10:26:58 -0800 (PST)
+	id 1aapGu-0001bQ-KM; Tue, 01 Mar 2016 13:43:48 -0500
+Received: by mail-wm0-x22d.google.com with SMTP id l68so46461403wml.1;
+	Tue, 01 Mar 2016 10:43:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=PpqDzrk41jRh6W9g9f6HvpoHn6UB8gTGzFv9vwQliKA=;
-	b=1I4y1hF5Cgii2E5f07KMSORELTew9HMsZpyi3Q9tDlZj98AQ/pwa/vjTCmmShkkhjC
-	6F5E/m7SvR0oliJL+PeLRd+kRg0dyFPCNb2hFe9VT6wUPxOwkQ0zFvcSWuGhmIa8etaT
-	ddiXVHdAElVoVPzuJ+YKCnOpgCdD1c20sLTDiYW9HK+9Q+6Ljz1/t9Zxr+urWWoFcYUm
-	DCTANpgHLt0rhBn5Ly8VE4jSwXCPhS/vtyS5U7F6+C4/04lvcZ6VUkeqicZb9xFRVJs+
-	mhX1qM4l8IzZc3Hs4o75jD9MheOAGewKtgoKm5MFu1yx7ZYcOBUuNb7RRPKkRZ8o82/X
-	jV2Q==
+	:cc; bh=CPMRcd3l+13I3exYsDe/JlLY/wJUYwN19MrfVsdT5Fs=;
+	b=ALNlgTWdPkjEqCPGLN/+nLK+kANJn9thufjby0gloARTPD9hSoqXRQyzLjGmY10i7p
+	EDb5y0dYTAmhv/OQP+QobRgIbRtaAKzljwSuTDgFdvqOXeVOdGHmh+tQsr+OzV6mALaj
+	IQuasAXqq+IHX6BGbKZYCOt5sazUJw4EEd3/14FnRskrDbwkg7yFNtSsH3sibow/ffWm
+	0wWslVkh7ujlZ1nQ9BHfyDlqMojlbMsAoQvtybV3POqJEW/6QSEcqIKj/6yA5uY/ESv9
+	SkMOKHwiMgwntLCJbazj45bZqjUQYhOpxrvY46PiGwGoiF0/oAlr//5Maqpt98gPq7gC
+	b5Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:date
 	:message-id:subject:from:to:cc;
-	bh=PpqDzrk41jRh6W9g9f6HvpoHn6UB8gTGzFv9vwQliKA=;
-	b=mfnPoW6QawvCa0/Qo5Paly6wPKkgRXEOacugW8oKTDip+voruxXeHJvycvRhxOaIdm
-	ifi1j4rifmADaFJIUe/N3gtceKqh6AFu5BRQ9Ft7+LaVaD964b2aDU2nZH+wSKDjoyAr
-	Rlz5RWF+gW3XjBZKNtBs31rRlWr+Y78Iky9ObdKWMFmTMkWtitUNEwHcDCvD1xJvd0zc
-	5ju315+q+qBS4V1lnakmEDdPDcypxnQK+Y32Ms4OaXc0W8BuJWoBbdu3+1gpC17uOECF
-	87xZxKs1oFERfFemu6E1SGFOHKCuYI2Xg0HiQQkHrXpn3cG4lf3Q3+fMiZUI17JnDfUY
-	ovoA==
-X-Gm-Message-State: AD7BkJILqUd4RjxaEydrUmq3nzP3hqJacJACP86jw8tGn9vdbaC4Wi214X1Al4b9Ql49kkZj0jfyesE5g7/e2g==
+	bh=CPMRcd3l+13I3exYsDe/JlLY/wJUYwN19MrfVsdT5Fs=;
+	b=harULdgDestpcvggwopX81fA9pTwldj46R68ibT6/M3QSP0LuQKHBe4wr3HGFVEj1k
+	8Qd77XRS5ygAq6ZTc3CxHMOo5x26IROtoUO82lM/dBQ8quHqIOO7hqVRI8t3OKbcxaEj
+	4+K227+HLF9zqrBT3QpeECKwKUoyLCEra1s8ZUAzV9Fm+ALVl5IR4y7Y088QwV+uwc5M
+	2M29ajFVW0wwXD1qIVzTD3+k3o7aKbbhw4Loc6DdtZ630yvVCV1lhw7mCRq5pedJmm56
+	mfNe+gvSDHGonTz5lbUSZ6/0k/hxmWo02XnL4Mu9q017OaSi4QGIiAsUIMFrgR/SuqS0
+	gV4A==
+X-Gm-Message-State: AD7BkJKUlOW+7fLalv/PiKjb5sLN3cKDkYBv9b7pNrSKglLt4mjBLKTe9uNYHArF4ScsIGJghsu03qM91Lk41w==
 MIME-Version: 1.0
-X-Received: by 10.28.51.74 with SMTP id z71mr427868wmz.15.1456856817662; Tue,
-	01 Mar 2016 10:26:57 -0800 (PST)
-Received: by 10.28.157.197 with HTTP; Tue, 1 Mar 2016 10:26:57 -0800 (PST)
+X-Received: by 10.28.146.209 with SMTP id u200mr463216wmd.59.1456857827905;
+	Tue, 01 Mar 2016 10:43:47 -0800 (PST)
+Received: by 10.28.157.197 with HTTP; Tue, 1 Mar 2016 10:43:47 -0800 (PST)
 In-Reply-To: <56D52825.1010107@weilnetz.de>
 References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
 	<56D52825.1010107@weilnetz.de>
-Date: Tue, 1 Mar 2016 10:26:57 -0800
-Message-ID: <CAPokK=pf5NkR9=gvhBpExNCPF+DRf4xUUBupgtJWTH0OYDTpgg@mail.gmail.com>
+Date: Tue, 1 Mar 2016 10:43:47 -0800
+Message-ID: <CAPokK=oGzBuvSKw7PFiwwzL0m_=bu7haNYqsyL_WV6PP6UfCyQ@mail.gmail.com>
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Stefan Weil <sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::22a
+X-Received-From: 2a00:1450:400c:c09::22d
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	sridhar kulkarni <sridhar_kulk@yahoo.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Dmitry Osipenko <digetx@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?Q?Piotr_Kr=C3=B3l?= <piotr.krol@3mdeb.com>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 00/17] ARM big-endian and
 	setend support
@@ -88,7 +88,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /5KZIkSrHHDA
+X-TUID: FV1KAjlR7mQ5
 
 On Mon, Feb 29, 2016 at 9:27 PM, Stefan Weil <sw@weilnetz.de> wrote:
 > Am 18.01.2016 um 08:12 schrieb Peter Crosthwaite:
@@ -117,19 +117,18 @@ On Mon, Feb 29, 2016 at 9:27 PM, Stefan Weil <sw@weilnetz.de> wrote:
 > It would be nice to get at least the emulation for 'setend' into the
 > next version, because it is needed for the Raspberry Pi emulation.
 >
-> Peter C., are you planning a new pull request? Maybe the number
-> of commits needed can be reduced by adding the already reviewed
-> ones to QEMU.
->
 
-I have the respun branch based on Peter's comments tested as working.
-I automated my tests so the last thing to do is bisect-ability test it
-(test every commit for regressions) before I post it. I am stretched
-and still have a series to review at the front of my todo list though.
+BTW if you can link me binaries and a failing command line for the
+failing rPI work I can test it, I am currently doing my own standalone
+tests (of linux user as well).
 
 Regards,
 Peter
 
+> Peter C., are you planning a new pull request? Maybe the number
+> of commits needed can be reduced by adding the already reviewed
+> ones to QEMU.
+>
 > Regards,
 > Stefan
 >

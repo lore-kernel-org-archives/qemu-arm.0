@@ -1,75 +1,82 @@
-Received: by 10.25.208.211 with SMTP id h202csp2008208lfg;
-        Tue, 1 Mar 2016 22:56:52 -0800 (PST)
-X-Received: by 10.55.78.198 with SMTP id c189mr31713285qkb.95.1456901812769;
-        Tue, 01 Mar 2016 22:56:52 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2008217lfg;
+        Tue, 1 Mar 2016 22:56:54 -0800 (PST)
+X-Received: by 10.55.74.9 with SMTP id x9mr31711253qka.81.1456901814805;
+        Tue, 01 Mar 2016 22:56:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h68si34827046qgd.37.2016.03.01.22.56.52
+        by mx.google.com with ESMTPS id x198si5697257qka.46.2016.03.01.22.56.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 22:56:52 -0800 (PST)
+        Tue, 01 Mar 2016 22:56:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54419 helo=lists.gnu.org)
+Received: from localhost ([::1]:54421 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ab0iK-0005tg-4r
-	for alex.bennee@linaro.org; Wed, 02 Mar 2016 01:56:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55947)
+	id 1ab0iL-0005xS-QH
+	for alex.bennee@linaro.org; Wed, 02 Mar 2016 01:56:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55959)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0iH-0005oU-0R
-	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 01:56:50 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0iI-0005pu-27
+	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 01:56:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0iF-0003Mn-PT
-	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 01:56:48 -0500
-Received: from mail-pa0-x22e.google.com ([2607:f8b0:400e:c03::22e]:33829)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0iG-0003OS-UO
+	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 01:56:50 -0500
+Received: from mail-pf0-x22f.google.com ([2607:f8b0:400e:c00::22f]:35960)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ab0iA-0003Lu-VK; Wed, 02 Mar 2016 01:56:43 -0500
-Received: by mail-pa0-x22e.google.com with SMTP id fy10so127182954pac.1;
-	Tue, 01 Mar 2016 22:56:42 -0800 (PST)
+	id 1ab0iE-0003MF-0I; Wed, 02 Mar 2016 01:56:46 -0500
+Received: by mail-pf0-x22f.google.com with SMTP id l6so30957789pfl.3;
+	Tue, 01 Mar 2016 22:56:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=awNjDRB8h7F2S7weLRARS0JhJpBtXK3SXEhpK0K/ypM=;
-	b=zs0JZCwrATfMB5I/x6Abyz0B7GbQPsYSr3Xerb+OGT0JzGt7qQQw+WZdshsvgPBrbW
-	Coc+KPrrF4HO2AVMMnWuEE5kzlF64K1D47s1PkEFQhxdX6htta8ToIfqdIKEjByslU96
-	20xnS87Qemp8NhJsBZ5/mVS7Qlj8cwFHRSebfUikV/MgjXyiRouAwkYSILSN4CkkULut
-	sSNZgte0DRrxq12R1gxmnVgd58UN1HJsAPxVT2KgdmKhRASDSTFEg3KizTi/7AiPII5o
-	l+Bf8tCUcUlT4FoNlWuyNzTiAi75fLisnHwReFb0YrTvJ5QxmlQqJkuM0Vicxs8CyNpv
-	kc7Q==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:in-reply-to:references;
+	bh=YyCb94aZegngs1te3SBHRNSSlzt2NtDnWp77jL5uZtU=;
+	b=arR6pf6vkRPixEoIBuF8mQO3G3v741jGTNdM5ng6rZp9yojeFw0MEN1el2lmzV7nm1
+	/x/rHbba8E/y7GHMkWRArAz4KjQPdEmgh5AjGe71JrlZMG0LONXv6aAo5GEvfuWTorJB
+	HH+md7BpBh41Ot+dgPcaAVlEPysqh37GNs/uaTsWJ5POrYUKiCsUf+eDRdxeHL4L9d0V
+	dEvfYBV6IyU/OincNc4/88RxmZCf3jrdYBRWClNZecpcjYeNZGduZQVx1LXhFruWx0Lx
+	SDFn7WHGRndUo96NlG0OQ30bLuE9Ec6sKsMWWaQMC/2nWsORA+2PEyMYBse+dU7sXpdQ
+	f4UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=awNjDRB8h7F2S7weLRARS0JhJpBtXK3SXEhpK0K/ypM=;
-	b=G7irMQHmDmwwvzsm/yJJaGNV5V/Q8DFPaB0kS+QNzIwktpaXySA3OFATXvFRTiN46a
-	c9HZF4MuD8t/tOZ2qVdQFLRD8zmnV6YA8ynBF78rP5RCSRKlFE11eT7brm+/hcfoCbZ3
-	8RtHmjEd8MAW2sjqn+1UyqS1gecL9EyvOjWskQF6vyGITq5AKuYtj+mVDZ3gcffcBEjk
-	QgGgFWD36EVbTvOI052Mt3VLl6SZA4RJnivT+0sYcTB63wzZYRAEEWo42h+fWriQAy40
-	nfMaPShC1R7MBSjSkPOJb89ADt/Idi/6kMtyLSejoKBP7/BpNagCYd2nowtg5GAu9l0Q
-	D3cw==
-X-Gm-Message-State: AD7BkJIVBj7lBEN4DZYrFhRtsmz72FFRJhmVywN8GfxLJkKkvp90zBnP4EuK2MnZRIKIwA==
-X-Received: by 10.66.157.161 with SMTP id wn1mr36408730pab.146.1456901802154; 
-	Tue, 01 Mar 2016 22:56:42 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:in-reply-to:references;
+	bh=YyCb94aZegngs1te3SBHRNSSlzt2NtDnWp77jL5uZtU=;
+	b=Rll7jSyxbLhbFoNpd0xoXdJWGALeJQoDt0e/5snVdrGTwyjt3uyfcn+IM4iFvOhGUL
+	JRWtWgDqwT5DCWghP3f+4+F/5gPGxic7KW53dlL+IgM5fVnGuv+72mW1FbJrcDUz0SXt
+	aZNPMKY/fNTaxunXcW128v0/bEn+B6AT0VU44BVZRjqbMGf3kQQsd6xjlLLAiawiYWQX
+	d7UfRgHRP1SSGlZXiMhmUsw/mnD7Ton9zbxumjy6t5k+zhUo6w4jaLJRJ+vRVTQsq5Al
+	gGVpO0N0S/5DF+f60xOOPMpm98QpbwFh9wDlPYAQO36iDfJqrv5NKmg9fN+ap6jZ5jG9
+	ceCw==
+X-Gm-Message-State: AD7BkJJQoRZ+PCc8XJnetoBtmDEfYgL4qCyovnZEMT3TZmQPV6lY8LGbYWQFSoNUCskInA==
+X-Received: by 10.98.14.149 with SMTP id 21mr36288895pfo.79.1456901805237;
+	Tue, 01 Mar 2016 22:56:45 -0800 (PST)
 Received: from localhost.localdomain (mobile-166-137-179-103.mycingular.net.
 	[166.137.179.103]) by smtp.gmail.com with ESMTPSA id
-	19sm50069248pfb.64.2016.03.01.22.56.34
+	19sm50069248pfb.64.2016.03.01.22.56.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 01 Mar 2016 22:56:41 -0800 (PST)
+	Tue, 01 Mar 2016 22:56:44 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  1 Mar 2016 22:56:04 -0800
-Message-Id: <cover.1456901522.git.crosthwaite.peter@gmail.com>
+Date: Tue,  1 Mar 2016 22:56:05 -0800
+Message-Id: <27181ed7f7bbc03289dd5f82ef5865651fd454e1.1456901522.git.crosthwaite.peter@gmail.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <cover.1456901522.git.crosthwaite.peter@gmail.com>
+References: <cover.1456901522.git.crosthwaite.peter@gmail.com>
+In-Reply-To: <cover.1456901522.git.crosthwaite.peter@gmail.com>
+References: <cover.1456901522.git.crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::22e
+X-Received-From: 2607:f8b0:400e:c00::22f
 Cc: peter.maydell@linaro.org, sw@weilnetz.de, Andrew.Baumann@microsoft.com,
 	alistair.francis@xilinx.com, sridhar_kulk@yahoo.com,
 	qemu-arm@nongnu.org, pbonzini@redhat.com, piotr.krol@3mdeb.com
-Subject: [Qemu-arm] [PATCH v2 00/18]  ARM big-endian and setend support
+Subject: [Qemu-arm] [PATCH v2 01/18] linux-user: arm: fix coding style for
+	some linux-user signal functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -83,101 +90,165 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vcVXrmve2OFw
+X-TUID: YlhHU3mnHJVu
 
-Hi All,
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-This patch series adds system-mode big-endian support for ARM. It also
-implements the setend instruction, and loading of BE binaries even in
-LE emulation mode.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+---
+TEST result: 0 (log@ logs/qemu-armeb-BE32-)
+TEST result: 0 (log@ logs/qemu-armeb-BE8-)
+TEST result: 0 (log@ logs/qemu-arm-LE-)
+TEST result: 0 (log@ logs/qemu-system-arm-LE-)
 
-Based on Paolo's original work.
+ linux-user/signal.c | 110 ++++++++++++++++++++++++++--------------------------
+ 1 file changed, 56 insertions(+), 54 deletions(-)
 
-I have tested all of LE, BE8 and BE32 in both linux-user mode (for
-regressions) and system mode (BE8 and BE32 are new here).
-My test application is here, the README gives some example command
-lines you can run:
-
-https://github.com/pcrost/arm-be-test
-
-Regards,
-Peter
-
-Changed since v1:
-Addressed PMM review
-Added doc comments to new/changed loader.h APIs
-
-
-Paolo Bonzini (8):
-  linux-user: arm: fix coding style for some linux-user signal functions
-  linux-user: arm: pass env to get_user_code_*
-  target-arm: implement SCTLR.B, drop bswap_code
-  linux-user: arm: handle CPSR.E correctly in strex emulation
-  target-arm: pass DisasContext to gen_aa32_ld*/st*
-  target-arm: introduce disas flag for endianness
-  target-arm: implement setend
-  target-arm: implement BE32 mode in system emulation
-
-Peter Crosthwaite (10):
-  target-arm: cpu: Move cpu_is_big_endian to header
-  arm: cpu: handle BE32 user-mode as BE
-  linux-user: arm: set CPSR.E/SCTLR.E0E correctly for BE mode
-  target-arm: implement SCTLR.EE
-  target-arm: a64: Add endianness support
-  target-arm: introduce tbflag for endianness
-  loader: add API to load elf header
-  loader: load_elf(): Add doc comment
-  loader: Add data swap option to load-elf
-  arm: boot: Support big-endian elfs
-
- hw/alpha/dp264.c               |   4 +-
- hw/arm/armv7m.c                |   2 +-
- hw/arm/boot.c                  |  93 +++++++++-
- hw/core/loader.c               |  64 ++++++-
- hw/cris/boot.c                 |   2 +-
- hw/i386/multiboot.c            |   3 +-
- hw/lm32/lm32_boards.c          |   4 +-
- hw/lm32/milkymist.c            |   2 +-
- hw/m68k/an5206.c               |   2 +-
- hw/m68k/dummy_m68k.c           |   2 +-
- hw/m68k/mcf5208.c              |   2 +-
- hw/microblaze/boot.c           |   4 +-
- hw/mips/mips_fulong2e.c        |   2 +-
- hw/mips/mips_malta.c           |   2 +-
- hw/mips/mips_mipssim.c         |   2 +-
- hw/mips/mips_r4k.c             |   2 +-
- hw/moxie/moxiesim.c            |   3 +-
- hw/openrisc/openrisc_sim.c     |   3 +-
- hw/pci-host/prep.c             |   2 +-
- hw/ppc/e500.c                  |   2 +-
- hw/ppc/mac_newworld.c          |   5 +-
- hw/ppc/mac_oldworld.c          |   5 +-
- hw/ppc/ppc440_bamboo.c         |   3 +-
- hw/ppc/spapr.c                 |   6 +-
- hw/ppc/virtex_ml507.c          |   3 +-
- hw/s390x/ipl.c                 |   4 +-
- hw/sparc/leon3.c               |   2 +-
- hw/sparc/sun4m.c               |   4 +-
- hw/sparc64/sun4u.c             |   4 +-
- hw/tricore/tricore_testboard.c |   2 +-
- hw/xtensa/sim.c                |   4 +-
- hw/xtensa/xtfpga.c             |   2 +-
- include/hw/arm/arm.h           |   9 +
- include/hw/elf_ops.h           |  22 ++-
- include/hw/loader.h            |  41 ++++-
- linux-user/main.c              |  77 ++++++--
- linux-user/signal.c            | 110 +++++------
- target-arm/arm_ldst.h          |   8 +-
- target-arm/cpu.c               |  21 +--
- target-arm/cpu.h               |  98 +++++++++-
- target-arm/helper.c            |  31 +++-
- target-arm/helper.h            |   1 +
- target-arm/op_helper.c         |   5 +
- target-arm/translate-a64.c     |  56 +++---
- target-arm/translate.c         | 405 ++++++++++++++++++++++++-----------------
- target-arm/translate.h         |   3 +-
- 46 files changed, 783 insertions(+), 350 deletions(-)
-
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 962111c..96e86c0 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -1536,82 +1536,84 @@ static void
+ setup_sigcontext(struct target_sigcontext *sc, /*struct _fpstate *fpstate,*/
+                  CPUARMState *env, abi_ulong mask)
+ {
+-	__put_user(env->regs[0], &sc->arm_r0);
+-	__put_user(env->regs[1], &sc->arm_r1);
+-	__put_user(env->regs[2], &sc->arm_r2);
+-	__put_user(env->regs[3], &sc->arm_r3);
+-	__put_user(env->regs[4], &sc->arm_r4);
+-	__put_user(env->regs[5], &sc->arm_r5);
+-	__put_user(env->regs[6], &sc->arm_r6);
+-	__put_user(env->regs[7], &sc->arm_r7);
+-	__put_user(env->regs[8], &sc->arm_r8);
+-	__put_user(env->regs[9], &sc->arm_r9);
+-	__put_user(env->regs[10], &sc->arm_r10);
+-	__put_user(env->regs[11], &sc->arm_fp);
+-	__put_user(env->regs[12], &sc->arm_ip);
+-	__put_user(env->regs[13], &sc->arm_sp);
+-	__put_user(env->regs[14], &sc->arm_lr);
+-	__put_user(env->regs[15], &sc->arm_pc);
++    __put_user(env->regs[0], &sc->arm_r0);
++    __put_user(env->regs[1], &sc->arm_r1);
++    __put_user(env->regs[2], &sc->arm_r2);
++    __put_user(env->regs[3], &sc->arm_r3);
++    __put_user(env->regs[4], &sc->arm_r4);
++    __put_user(env->regs[5], &sc->arm_r5);
++    __put_user(env->regs[6], &sc->arm_r6);
++    __put_user(env->regs[7], &sc->arm_r7);
++    __put_user(env->regs[8], &sc->arm_r8);
++    __put_user(env->regs[9], &sc->arm_r9);
++    __put_user(env->regs[10], &sc->arm_r10);
++    __put_user(env->regs[11], &sc->arm_fp);
++    __put_user(env->regs[12], &sc->arm_ip);
++    __put_user(env->regs[13], &sc->arm_sp);
++    __put_user(env->regs[14], &sc->arm_lr);
++    __put_user(env->regs[15], &sc->arm_pc);
+ #ifdef TARGET_CONFIG_CPU_32
+-	__put_user(cpsr_read(env), &sc->arm_cpsr);
++    __put_user(cpsr_read(env), &sc->arm_cpsr);
+ #endif
+ 
+-	__put_user(/* current->thread.trap_no */ 0, &sc->trap_no);
+-	__put_user(/* current->thread.error_code */ 0, &sc->error_code);
+-	__put_user(/* current->thread.address */ 0, &sc->fault_address);
+-	__put_user(mask, &sc->oldmask);
++    __put_user(/* current->thread.trap_no */ 0, &sc->trap_no);
++    __put_user(/* current->thread.error_code */ 0, &sc->error_code);
++    __put_user(/* current->thread.address */ 0, &sc->fault_address);
++    __put_user(mask, &sc->oldmask);
+ }
+ 
+ static inline abi_ulong
+ get_sigframe(struct target_sigaction *ka, CPUARMState *regs, int framesize)
+ {
+-	unsigned long sp = regs->regs[13];
++    unsigned long sp = regs->regs[13];
+ 
+-	/*
+-	 * This is the X/Open sanctioned signal stack switching.
+-	 */
+-	if ((ka->sa_flags & TARGET_SA_ONSTACK) && !sas_ss_flags(sp))
+-            sp = target_sigaltstack_used.ss_sp + target_sigaltstack_used.ss_size;
+-	/*
+-	 * ATPCS B01 mandates 8-byte alignment
+-	 */
+-	return (sp - framesize) & ~7;
++    /*
++     * This is the X/Open sanctioned signal stack switching.
++     */
++    if ((ka->sa_flags & TARGET_SA_ONSTACK) && !sas_ss_flags(sp)) {
++        sp = target_sigaltstack_used.ss_sp + target_sigaltstack_used.ss_size;
++    }
++    /*
++     * ATPCS B01 mandates 8-byte alignment
++     */
++    return (sp - framesize) & ~7;
+ }
+ 
+ static void
+ setup_return(CPUARMState *env, struct target_sigaction *ka,
+ 	     abi_ulong *rc, abi_ulong frame_addr, int usig, abi_ulong rc_addr)
+ {
+-	abi_ulong handler = ka->_sa_handler;
+-	abi_ulong retcode;
+-	int thumb = handler & 1;
+-	uint32_t cpsr = cpsr_read(env);
++    abi_ulong handler = ka->_sa_handler;
++    abi_ulong retcode;
++    int thumb = handler & 1;
++    uint32_t cpsr = cpsr_read(env);
+ 
+-	cpsr &= ~CPSR_IT;
+-	if (thumb) {
+-		cpsr |= CPSR_T;
+-	} else {
+-		cpsr &= ~CPSR_T;
+-	}
++    cpsr &= ~CPSR_IT;
++    if (thumb) {
++        cpsr |= CPSR_T;
++    } else {
++        cpsr &= ~CPSR_T;
++    }
+ 
+-	if (ka->sa_flags & TARGET_SA_RESTORER) {
+-		retcode = ka->sa_restorer;
+-	} else {
+-		unsigned int idx = thumb;
++    if (ka->sa_flags & TARGET_SA_RESTORER) {
++        retcode = ka->sa_restorer;
++    } else {
++        unsigned int idx = thumb;
+ 
+-		if (ka->sa_flags & TARGET_SA_SIGINFO)
+-			idx += 2;
++        if (ka->sa_flags & TARGET_SA_SIGINFO) {
++            idx += 2;
++        }
+ 
+         __put_user(retcodes[idx], rc);
+ 
+-		retcode = rc_addr + thumb;
+-	}
++        retcode = rc_addr + thumb;
++    }
+ 
+-	env->regs[0] = usig;
+-	env->regs[13] = frame_addr;
+-	env->regs[14] = retcode;
+-	env->regs[15] = handler & (thumb ? ~1 : ~3);
+-        cpsr_write(env, cpsr, CPSR_IT | CPSR_T, CPSRWriteByInstr);
++    env->regs[0] = usig;
++    env->regs[13] = frame_addr;
++    env->regs[14] = retcode;
++    env->regs[15] = handler & (thumb ? ~1 : ~3);
++    cpsr_write(env, cpsr, CPSR_IT | CPSR_T, CPSRWriteByInstr);
+ }
+ 
+ static abi_ulong *setup_sigframe_v2_vfp(abi_ulong *regspace, CPUARMState *env)
 -- 
 1.9.1
 

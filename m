@@ -1,83 +1,82 @@
-Received: by 10.25.208.211 with SMTP id h202csp2010599lfg;
-        Tue, 1 Mar 2016 23:03:30 -0800 (PST)
-X-Received: by 10.140.230.207 with SMTP id a198mr33691711qhc.94.1456902210114;
-        Tue, 01 Mar 2016 23:03:30 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2010648lfg;
+        Tue, 1 Mar 2016 23:03:37 -0800 (PST)
+X-Received: by 10.55.78.84 with SMTP id c81mr31680721qkb.85.1456902217890;
+        Tue, 01 Mar 2016 23:03:37 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u5si34749929qhu.25.2016.03.01.23.03.29
+        by mx.google.com with ESMTPS id 18si2178264qho.50.2016.03.01.23.03.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 23:03:30 -0800 (PST)
+        Tue, 01 Mar 2016 23:03:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54498 helo=lists.gnu.org)
+Received: from localhost ([::1]:54499 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ab0oj-00019W-Kx
-	for alex.bennee@linaro.org; Wed, 02 Mar 2016 02:03:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56205)
+	id 1ab0or-0001NJ-8f
+	for alex.bennee@linaro.org; Wed, 02 Mar 2016 02:03:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56474)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0if-0006hp-W0
-	for qemu-devel@nongnu.org; Wed, 02 Mar 2016 01:57:15 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0j1-0007Q7-GU
+	for qemu-devel@nongnu.org; Wed, 02 Mar 2016 01:57:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0ie-0003X4-7F
-	for qemu-devel@nongnu.org; Wed, 02 Mar 2016 01:57:13 -0500
-Received: from mail-pa0-x235.google.com ([2607:f8b0:400e:c03::235]:35835)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1ab0j0-0003er-BP
+	for qemu-devel@nongnu.org; Wed, 02 Mar 2016 01:57:35 -0500
+Received: from mail-pa0-x231.google.com ([2607:f8b0:400e:c03::231]:36785)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ab0id-0003Wx-TK; Wed, 02 Mar 2016 01:57:12 -0500
-Received: by mail-pa0-x235.google.com with SMTP id bj10so58532382pad.2;
-	Tue, 01 Mar 2016 22:57:11 -0800 (PST)
+	id 1ab0j0-0003ea-1S; Wed, 02 Mar 2016 01:57:34 -0500
+Received: by mail-pa0-x231.google.com with SMTP id a9so5824908pat.3;
+	Tue, 01 Mar 2016 22:57:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:references;
-	bh=dcFKLNP3ZKcKVWg5eI/C7URKYdwmEK/Wz/mokyLF3+w=;
-	b=pHLuiJ4R9hBrZAZob6CqEEi6cAHfdKcM8ZEhXd7stsOrn6PCGvPXKILJUtb0sEILPG
-	jObm0Qzz0iLf9z4VGUF791icoe6lvwduymMAUt8OCXwNQ6oBPth0iCalFxEArFZ9fc+F
-	NuxDOiUIgz2VBAondyoU8Q31pRe2ANr0BG2nH/GM1OaxCRsJ1ZsFo1v1jVmpdHHa+1Lc
-	glkeJc4ZHmILKi1cUMZxkKGdhJR66aU5HcZLaD0AS0Tk5497sT+b8khPhHPeaYBOE6AQ
-	Ja0gR8f1ccnmz4QUYhcxnsydd26UAIB8hm5WusJggI+7s8p6TcsyvpNRSpTT8eYB2jd1
-	mymQ==
+	bh=+a8RDYYI0c6+1AsQRSG7A/0N1OK86iNS5HjVNaU+Mu4=;
+	b=dFBLQ6Siyx3K0uwlVzX8ybS+kKd1gChCJmDLHGa5vnaoDbJ8+cLZ2xR6h3aS6uVRul
+	O087M99c2LDw5jlJHq4bf2uakcxxd6wsWakWXPs5HZGuudBKT/rL16lpj8BKaCHyVqV7
+	gLjMK5YcHEqzzeHY2Kl+VQoq1shDMFCz/NUY1Ad6odkZ9T2VGDYWK6CyynbwAUtVpNYO
+	OQL0vtWAyZbrhbkhGzRDa5sfV4Dp9P7P+luh8J1djiqH1sKfJi6YrIFPn4K5dlcAX/8f
+	RQhiqlMgyafP5wy4o3gZCXaInkZkwyuoDXUhmHlYgt9raK3Qg7H4f2o6sETJnHFfo3aB
+	WtwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:in-reply-to:references;
-	bh=dcFKLNP3ZKcKVWg5eI/C7URKYdwmEK/Wz/mokyLF3+w=;
-	b=buctxZz+9XjXsjZ5DI9ikiBIcLa80ucWSgl4MCi5bptN/pr9C6LKQ9MsbkbkTozOs+
-	KOQrL+yCiW094XzWajb1suNu8zqAPzPkrjQFEEif+dpHuAKbG/2HAB9whFUcYfbGoe+m
-	VwgVMJ5XLtqV6adET/JrKWNMtOUIMC+ii5zgzBz17HqjQ8ZmhmxFMrMGR10hoEils4Xl
-	UAaTRd4zVgPXLEYoVKgEmvuUzUwkeZl1wL8BWq7AF8x9I7SgAuo7l/TucQYY0GVe6mvl
-	gdgY46Z3Z9S1AK55WS+/PSRlMPMtWw4E6GDpFl6J6vowV0AQeTErPl0VIWjJzgNa+AHg
-	a7zQ==
-X-Gm-Message-State: AD7BkJKKtSpvowLwmn42ZPMUz1QnZXO64eKpUb6v8UzerLUQkYU5Pjvms1j2nZBeXlimKw==
-X-Received: by 10.67.5.68 with SMTP id ck4mr35805603pad.3.1456901831130;
-	Tue, 01 Mar 2016 22:57:11 -0800 (PST)
+	bh=+a8RDYYI0c6+1AsQRSG7A/0N1OK86iNS5HjVNaU+Mu4=;
+	b=ETepHpA6DLJWB/eCrBgJzSzbVBOyx6H/+jaa2vkTla5GyFzvoJ2i4Tq9L2xp+LCWkK
+	0Rv0Ii7s4Wi3GRRThdDYQugVkovKN634xn2OzcSRlH4WNu6Vae8Q/1WeQngS4VonQHw/
+	jO4MLCCMpC8k4seaNGgTYQKIYQMT82cz59qht4KXsWE+xe0pAUa9CtJJvzsG92v9qPXb
+	4xLz7q2oYpt5XXCQhszKB9/kd2KjlnSvP/+NGDegP0MNtexE4Uhmc7uJ8p94YnuLwnsy
+	jMlmj06PKBa/dtPLdKPTn72dieDaXmKLHoR+LEh2ZdNmi/xRsD0WC+1I1FKVSxmp+0F1
+	cvuw==
+X-Gm-Message-State: AD7BkJLAYwe/qgmt3pUv6Kauj3CjgR6j5e2fTxiGwQUIbCcnt+0Snih4rARuqm6aU+d5uA==
+X-Received: by 10.66.158.232 with SMTP id wx8mr36960451pab.159.1456901853228; 
+	Tue, 01 Mar 2016 22:57:33 -0800 (PST)
 Received: from localhost.localdomain (mobile-166-137-179-103.mycingular.net.
 	[166.137.179.103]) by smtp.gmail.com with ESMTPSA id
-	19sm50069248pfb.64.2016.03.01.22.57.07
+	19sm50069248pfb.64.2016.03.01.22.57.29
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 01 Mar 2016 22:57:10 -0800 (PST)
+	Tue, 01 Mar 2016 22:57:32 -0800 (PST)
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 X-Google-Original-From: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  1 Mar 2016 22:56:14 -0800
-Message-Id: <8b3527bf36a913d570b5f1b6ced84563dc823f4d.1456901522.git.crosthwaite.peter@gmail.com>
+Date: Tue,  1 Mar 2016 22:56:22 -0800
+Message-Id: <de1440818b347c6d445313aa18440ca3b8b7676e.1456901522.git.crosthwaite.peter@gmail.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <cover.1456901522.git.crosthwaite.peter@gmail.com>
 References: <cover.1456901522.git.crosthwaite.peter@gmail.com>
 In-Reply-To: <cover.1456901522.git.crosthwaite.peter@gmail.com>
 References: <cover.1456901522.git.crosthwaite.peter@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c03::235
-Cc: peter.maydell@linaro.org, Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+X-Received-From: 2607:f8b0:400e:c03::231
+Cc: peter.maydell@linaro.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	sw@weilnetz.de, Andrew.Baumann@microsoft.com,
 	alistair.francis@xilinx.com, sridhar_kulk@yahoo.com,
 	qemu-arm@nongnu.org, pbonzini@redhat.com, piotr.krol@3mdeb.com
-Subject: [Qemu-devel] [PATCH v2 10/18] target-arm: introduce disas flag for
-	endianness
+Subject: [Qemu-devel] [PATCH v2 18/18] arm: boot: Support big-endian elfs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,171 +90,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p5Fb4+35H6x4
+X-TUID: eYffu2IsSMJS
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+Support ARM big-endian ELF files in system-mode emulation. When loading
+an elf, determine the endianness mode expected by the elf, and set the
+relevant CPU state accordingly.
 
-Introduce a disas flag for setting the CPU data endianness. This allows
-control of the endianness from the CPU state rather than hard-coding it
-to TARGET_WORDS_BIGENDIAN.
+With this, big-endian modes are now fully supported via system-mode LE,
+so there is no need to restrict the elf loading to the TARGET
+endianness so the ifdeffery on TARGET_WORDS_BIGENDIAN goes away.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-[ PC changes:
-  * Split off as new patch from original:
-        "target-arm: introduce tbflag for CPSR.E"
-  * Wrote commit message from scratch
-]
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Signed-off-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
 ---
 Changed since v1:
-rename mo_endianness to be_data
+Factor out elf manipulation logic into static helper (PMM review)
 
- target-arm/translate-a64.c |  1 +
- target-arm/translate.c     | 39 ++++++++++++++++++++++++---------------
- target-arm/translate.h     |  1 +
- 3 files changed, 26 insertions(+), 15 deletions(-)
+ hw/arm/boot.c        | 93 ++++++++++++++++++++++++++++++++++++++++++++++------
+ include/hw/arm/arm.h |  9 +++++
+ 2 files changed, 92 insertions(+), 10 deletions(-)
 
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index f6dd44b..88b95ab 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -11032,6 +11032,7 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-                                !arm_el_is_aa64(env, 3);
-     dc->thumb = 0;
-     dc->sctlr_b = 0;
-+    dc->be_data = MO_TE;
-     dc->condexec_mask = 0;
-     dc->condexec_cond = 0;
-     dc->mmu_idx = ARM_TBFLAG_MMUIDX(tb->flags);
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 2028908..88f24cb 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -924,26 +924,30 @@ static inline void store_reg_from_load(DisasContext *s, int reg, TCGv_i32 var)
- static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
-                                      TCGv_i32 addr, int index)           \
- {                                                                        \
--    tcg_gen_qemu_ld_i32(val, addr, index, (OPC));                        \
-+    TCGMemOp opc = (OPC) | s->be_data;                                   \
-+    tcg_gen_qemu_ld_i32(val, addr, index, opc);                          \
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 17400be..13aad42 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -518,9 +518,34 @@ static void do_cpu_reset(void *opaque)
+     cpu_reset(cs);
+     if (info) {
+         if (!info->is_linux) {
++            int i;
+             /* Jump to the entry point.  */
+             uint64_t entry = info->entry;
+ 
++            switch (info->endianness) {
++            case ARM_ENDIANNESS_LE:
++                env->cp15.sctlr_el[1] &= ~SCTLR_E0E;
++                for (i = 1; i < 4; ++i) {
++                    env->cp15.sctlr_el[i] &= ~SCTLR_EE;
++                }
++                env->uncached_cpsr &= ~CPSR_E;
++                break;
++            case ARM_ENDIANNESS_BE8:
++                env->cp15.sctlr_el[1] |= SCTLR_E0E;
++                for (i = 1; i < 4; ++i) {
++                    env->cp15.sctlr_el[i] |= SCTLR_EE;
++                }
++                env->uncached_cpsr |= CPSR_E;
++                break;
++            case ARM_ENDIANNESS_BE32:
++                env->cp15.sctlr_el[1] |= SCTLR_B;
++                break;
++            case ARM_ENDIANNESS_UNKNOWN:
++                break; /* Board's decision */
++            default:
++                g_assert_not_reached();
++            }
++
+             if (!env->aarch64) {
+                 env->thumb = info->entry & 1;
+                 entry &= 0xfffffffe;
+@@ -638,6 +663,62 @@ static int do_arm_linux_init(Object *obj, void *opaque)
+     return 0;
  }
  
- #define DO_GEN_ST(SUFF, OPC)                                             \
- static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
-                                      TCGv_i32 addr, int index)           \
- {                                                                        \
--    tcg_gen_qemu_st_i32(val, addr, index, (OPC));                        \
-+    TCGMemOp opc = (OPC) | s->be_data;                                   \
-+    tcg_gen_qemu_st_i32(val, addr, index, opc);                          \
- }
- 
- static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
-                                  TCGv_i32 addr, int index)
++static uint64_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
++                             uint64_t *lowaddr, uint64_t *highaddr,
++                             int elf_machine)
++{
++    bool elf_is64;
++    union {
++        Elf32_Ehdr h32;
++        Elf64_Ehdr h64;
++    } elf_header;
++    int data_swab = 0;
++    bool big_endian;
++    uint64_t ret = -1;
++    Error *err = NULL;
++
++
++    load_elf_hdr(info->kernel_filename, &elf_header, &elf_is64, &err);
++    if (err) {
++        return ret;
++    }
++
++    if (elf_is64) {
++        big_endian = elf_header.h64.e_ident[EI_DATA] == ELFDATA2MSB;
++        info->endianness = big_endian ? ARM_ENDIANNESS_BE8
++                                      : ARM_ENDIANNESS_LE;
++    } else {
++        big_endian = elf_header.h32.e_ident[EI_DATA] == ELFDATA2MSB;
++        if (big_endian) {
++            if (bswap32(elf_header.h32.e_flags) & EF_ARM_BE8) {
++                info->endianness = ARM_ENDIANNESS_BE8;
++            } else {
++                info->endianness = ARM_ENDIANNESS_BE32;
++                /* In BE32, the CPU has a different view of the per-byte
++                 * address map than the rest of the system. BE32 elfs are
++                 * organised such that they can be programmed through the
++                 * CPUs per-word byte-reversed view of the world. QEMU
++                 * however loads elfs independently of the CPU. So tell
++                 * the elf loader to byte reverse the data for us.
++                 */
++                data_swab = 2;
++            }
++        } else {
++            info->endianness = ARM_ENDIANNESS_LE;
++        }
++    }
++
++    ret = load_elf(info->kernel_filename, NULL, NULL,
++                   pentry, lowaddr, highaddr, big_endian, elf_machine,
++                   1, data_swab);
++    if (ret <= 0) {
++        /* The header loaded but the image didn't */
++        exit(1);
++    }
++
++    return ret;
++}
++
+ static void arm_load_kernel_notify(Notifier *notifier, void *data)
  {
--    tcg_gen_qemu_ld_i64(val, addr, index, MO_TEQ);
-+    TCGMemOp opc = MO_Q | s->be_data;
-+    tcg_gen_qemu_ld_i64(val, addr, index, opc);
- }
+     CPUState *cs;
+@@ -647,7 +728,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+     uint64_t elf_entry, elf_low_addr, elf_high_addr;
+     int elf_machine;
+     hwaddr entry, kernel_load_offset;
+-    int big_endian;
+     static const ARMInsnFixup *primary_loader;
+     ArmLoadKernelNotifier *n = DO_UPCAST(ArmLoadKernelNotifier,
+                                          notifier, notifier);
+@@ -733,12 +813,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+     if (info->nb_cpus == 0)
+         info->nb_cpus = 1;
  
- static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
-                                  TCGv_i32 addr, int index)
- {
--    tcg_gen_qemu_st_i64(val, addr, index, MO_TEQ);
-+    TCGMemOp opc = MO_Q | s->be_data;
-+    tcg_gen_qemu_st_i64(val, addr, index, opc);
- }
+-#ifdef TARGET_WORDS_BIGENDIAN
+-    big_endian = 1;
+-#else
+-    big_endian = 0;
+-#endif
+-
+     /* We want to put the initrd far enough into RAM that when the
+      * kernel is uncompressed it will not clobber the initrd. However
+      * on boards without much RAM we must ensure that we still leave
+@@ -753,9 +827,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+         MIN(info->ram_size / 2, 128 * 1024 * 1024);
  
- #else
-@@ -952,9 +956,10 @@ static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
- static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
-                                      TCGv_i32 addr, int index)           \
- {                                                                        \
-+    TCGMemOp opc = (OPC) | s->be_data;                                   \
-     TCGv addr64 = tcg_temp_new();                                        \
-     tcg_gen_extu_i32_i64(addr64, addr);                                  \
--    tcg_gen_qemu_ld_i32(val, addr64, index, OPC);                        \
-+    tcg_gen_qemu_ld_i32(val, addr64, index, opc);                        \
-     tcg_temp_free(addr64);                                               \
- }
+     /* Assume that raw images are linux kernels, and ELF images are not.  */
+-    kernel_size = load_elf(info->kernel_filename, NULL, NULL, &elf_entry,
+-                           &elf_low_addr, &elf_high_addr, big_endian,
+-                           elf_machine, 1, 0);
++    kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
++                               &elf_high_addr, elf_machine);
+     if (kernel_size > 0 && have_dtb(info)) {
+         /* If there is still some room left at the base of RAM, try and put
+          * the DTB there like we do for images loaded with -bios or -pflash.
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index 52ecf4a..b2517f9 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -16,6 +16,13 @@
+ #include "qemu/notify.h"
+ #include "cpu.h"
  
-@@ -962,27 +967,30 @@ static inline void gen_aa32_ld##SUFF(DisasContext *s, TCGv_i32 val,      \
- static inline void gen_aa32_st##SUFF(DisasContext *s, TCGv_i32 val,      \
-                                      TCGv_i32 addr, int index)           \
- {                                                                        \
-+    TCGMemOp opc = (OPC) | s->be_data;                                   \
-     TCGv addr64 = tcg_temp_new();                                        \
-     tcg_gen_extu_i32_i64(addr64, addr);                                  \
--    tcg_gen_qemu_st_i32(val, addr64, index, OPC);                        \
-+    tcg_gen_qemu_st_i32(val, addr64, index, opc);                        \
-     tcg_temp_free(addr64);                                               \
- }
++typedef enum {
++    ARM_ENDIANNESS_UNKNOWN = 0,
++    ARM_ENDIANNESS_LE,
++    ARM_ENDIANNESS_BE8,
++    ARM_ENDIANNESS_BE32,
++} arm_endianness;
++
+ /* armv7m.c */
+ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
+                       const char *kernel_filename, const char *cpu_model);
+@@ -103,6 +110,8 @@ struct arm_boot_info {
+      * changing to non-secure state if implementing a non-secure boot
+      */
+     bool secure_board_setup;
++
++    arm_endianness endianness;
+ };
  
- static inline void gen_aa32_ld64(DisasContext *s, TCGv_i64 val,
-                                  TCGv_i32 addr, int index)
- {
-+    TCGMemOp opc = MO_Q | s->be_data;
-     TCGv addr64 = tcg_temp_new();
-     tcg_gen_extu_i32_i64(addr64, addr);
--    tcg_gen_qemu_ld_i64(val, addr64, index, MO_TEQ);
-+    tcg_gen_qemu_ld_i64(val, addr64, index, opc);
-     tcg_temp_free(addr64);
- }
- 
- static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
-                                  TCGv_i32 addr, int index)
- {
-+    TCGMemOp opc = MO_Q | s->be_data;
-     TCGv addr64 = tcg_temp_new();
-     tcg_gen_extu_i32_i64(addr64, addr);
--    tcg_gen_qemu_st_i64(val, addr64, index, MO_TEQ);
-+    tcg_gen_qemu_st_i64(val, addr64, index, opc);
-     tcg_temp_free(addr64);
- }
- 
-@@ -990,15 +998,15 @@ static inline void gen_aa32_st64(DisasContext *s, TCGv_i64 val,
- 
- DO_GEN_LD(8s, MO_SB)
- DO_GEN_LD(8u, MO_UB)
--DO_GEN_LD(16s, MO_TESW)
--DO_GEN_LD(16u, MO_TEUW)
--DO_GEN_LD(32u, MO_TEUL)
-+DO_GEN_LD(16s, MO_SW)
-+DO_GEN_LD(16u, MO_UW)
-+DO_GEN_LD(32u, MO_UL)
- /* 'a' variants include an alignment check */
--DO_GEN_LD(16ua, MO_TEUW | MO_ALIGN)
--DO_GEN_LD(32ua, MO_TEUL | MO_ALIGN)
-+DO_GEN_LD(16ua, MO_UW | MO_ALIGN)
-+DO_GEN_LD(32ua, MO_UL | MO_ALIGN)
- DO_GEN_ST(8, MO_UB)
--DO_GEN_ST(16, MO_TEUW)
--DO_GEN_ST(32, MO_TEUL)
-+DO_GEN_ST(16, MO_UW)
-+DO_GEN_ST(32, MO_UL)
- 
- static inline void gen_set_pc_im(DisasContext *s, target_ulong val)
- {
-@@ -11322,6 +11330,7 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-                                !arm_el_is_aa64(env, 3);
-     dc->thumb = ARM_TBFLAG_THUMB(tb->flags);
-     dc->sctlr_b = ARM_TBFLAG_SCTLR_B(tb->flags);
-+    dc->be_data = MO_TE;
-     dc->condexec_mask = (ARM_TBFLAG_CONDEXEC(tb->flags) & 0xf) << 1;
-     dc->condexec_cond = ARM_TBFLAG_CONDEXEC(tb->flags) >> 4;
-     dc->mmu_idx = ARM_TBFLAG_MMUIDX(tb->flags);
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 0bdc68c..36bc996 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -17,6 +17,7 @@ typedef struct DisasContext {
-     int singlestep_enabled;
-     int thumb;
-     int sctlr_b;
-+    TCGMemOp be_data;
- #if !defined(CONFIG_USER_ONLY)
-     int user;
- #endif
+ /**
 -- 
 1.9.1
 

@@ -1,110 +1,81 @@
-Received: by 10.25.208.211 with SMTP id h202csp1905321lfg;
-        Tue, 1 Mar 2016 16:58:02 -0800 (PST)
-X-Received: by 10.55.74.14 with SMTP id x14mr30491721qka.70.1456880282301;
-        Tue, 01 Mar 2016 16:58:02 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1982751lfg;
+        Tue, 1 Mar 2016 21:31:15 -0800 (PST)
+X-Received: by 10.141.2.11 with SMTP id e11mr4347685qhd.69.1456896675227;
+        Tue, 01 Mar 2016 21:31:15 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z20si33721802qge.41.2016.03.01.16.58.02
+        by mx.google.com with ESMTPS id f125si3560762qkb.95.2016.03.01.21.31.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 01 Mar 2016 16:58:02 -0800 (PST)
+        Tue, 01 Mar 2016 21:31:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@microsoft.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:53391 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54194 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aav73-0000hI-Pm
-	for alex.bennee@linaro.org; Tue, 01 Mar 2016 19:58:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48230)
+	id 1aazNS-0000p2-KO
+	for alex.bennee@linaro.org; Wed, 02 Mar 2016 00:31:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aav70-0000dF-Io
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 19:57:59 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aazNQ-0000ol-0l
+	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 00:31:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1aav6z-0000KA-8u
-	for qemu-arm@nongnu.org; Tue, 01 Mar 2016 19:57:58 -0500
-Received: from mail-bn1on0141.outbound.protection.outlook.com
-	([157.56.110.141]:19682
-	helo=na01-bn1-obe.outbound.protection.outlook.com)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1aazNO-000864-Hx
+	for qemu-arm@nongnu.org; Wed, 02 Mar 2016 00:31:11 -0500
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:35768)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1aav6t-0000GY-Cw; Tue, 01 Mar 2016 19:57:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=R6oQekRZ3AC8ib2L6g4y1hUObVaLu88ArC3klBkL20A=;
-	b=HII7zLXs5x1mx7hQDLsNLw3Bk5NIWhdgUrz7qIsv+Xvujg5z5BjWyyKwQj7dL1jNldzW42kdKOGT4SyqxNEccXO3VC/ihucq86CblBOv/b35SSaZYZ5q2o4cfRryoPjmeQOgK5qyruu/Qi41vdtRVHVKinhlV1L2Xu20C+nyUnI=
-Authentication-Results: nongnu.org; dkim=none (message not signed)
-	header.d=none; nongnu.org;
-	dmarc=none action=none header.from=microsoft.com; 
-Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:6::724)
-	by CY1PR0301MB2044.namprd03.prod.outlook.com (10.164.2.26) with
-	Microsoft
-	SMTP Server (TLS) id 15.1.427.16; Wed, 2 Mar 2016 00:57:48 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 1 Mar 2016 16:57:13 -0800
-Message-ID: <1456880233-22568-1-git-send-email-Andrew.Baumann@microsoft.com>
-X-Mailer: git-send-email 2.5.1
+	(envelope-from <crosthwaitepeter@gmail.com>)
+	id 1aazNO-00085z-7N; Wed, 02 Mar 2016 00:31:10 -0500
+Received: by mail-wm0-x235.google.com with SMTP id l68so68091120wml.0;
+	Tue, 01 Mar 2016 21:31:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc; bh=7hnY9/HDgp95ubLPU4vrK6VVPyzB05BY3q9u154Ts5o=;
+	b=0KdiVUboiZgHjB+vFxB/5FsBm4S5W3pxts4+dlVTaV/u7aP7wMaJLh+jDOKpfvw7VL
+	2/2bmjTLPvBVNnFvlKRdLgKEFcTVdb3V2fo/2VoBMjN1P+0lvAGk1zAGE11wGB7Rs32Y
+	LTwCiwXbG2Hl2ysK8W1NShrzSuqxzXC/iGMnxXFVr7zHfEmT9bifSL/Wa1jyToVNyr0s
+	QCl9AbPvRjT/2z4EldE8vJHMeMDVddpyI3y5sJkcsxFrP/xcNETN5KXjgX5FnXwcgkcZ
+	sdt+fNLT6gIJz7C1gXhU8X4U4/PuFd7m7wXaYigvpDZGD9nUvQ24/etaRXwdK3Mu3e6/
+	MlVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc;
+	bh=7hnY9/HDgp95ubLPU4vrK6VVPyzB05BY3q9u154Ts5o=;
+	b=E15QuOs3JrdJCzLnsYBOzpEvMU2Wwycj2L1fAauCx/bUVmtVgmaU8d5OZMIw/K4M5u
+	TKAeBq/QHVF/fLKanfQwoFJIP795tp/3jO0/q0Rbr6R89Z/lBy9YorTs8Js/fiLFOAhn
+	BYyNyU4WpqNuseavNqVmzEhm9Q0g+JHkd1F4y63Tn0Wy7OIWBaBPFXzBw8q6I3fIs5Y8
+	1uF7/72fDbp6WgNlcYt3jXBYgIr2PNZC5dabcAXSB6TFyklnVFFPq+0DBZ6R5K6MZiBe
+	IjJ0zHiE+bGPVXAXHRjWQpHrvR85y2CYbvuMjWWBWS8h7/UhlmKZEMSsciY+GKnTHLQ7
+	k9AQ==
+X-Gm-Message-State: AD7BkJLjF++/PPEJCFCaHID4iyHDU9KcyDDq0qFRMLjVCYi07lcZOtttZ1QUxJDZZ2CBJVWymuEOjOiFWAZugg==
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [2001:4898:80e8:6::724]
-X-ClientProxiedBy: CO1PR06CA061.namprd06.prod.outlook.com (10.242.160.51) To
-	CY1PR0301MB2044.namprd03.prod.outlook.com (25.164.2.26)
-X-MS-Office365-Filtering-Correlation-Id: 8681166d-4127-4253-e8c0-08d34235ace6
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2044;
-	2:bjPIQkQuZv2GQCE6fBMd1DE/6ib4f6jXLBIoc4MIi2bjoEw5RyVnv6hv1ansX3KUB6n1ArArcxaarVpOYRhi/bnR1SCtJXdj3imlQF7DvLCTb0J1P+aDKC5xxm7zdCqpWn0JQoO6D2pG0a4wpHpwll4uEjHhW3vTm9bC66NxLOWsiz7Vyz8beYxW7vAwHbFI;
-	3:d0Sw4sWe8KWGu7JsCfprCSAXdQwOUv6XxyAuvk4BKzIFCF7O9khMee+ICzB/LP/UE2k1/j2ZpFCkn8qzaHN7lIJqzwLDp5qjjY0KmuA1Y1GeU1SFF3wFnVfL9DNwxf3I;
-	25:r3Q29PdORZFuvW19+S0m+91sdjNFjv7/ZGsnqy3r2EjDwpQ8QFkvd9YEdo69bnU7VbbQTr4uKGt/SKSM6uaYUTEO5iVhZ4hDbqSL9spMlHsYN+4pM8pIpwORNJy2KX5MhIqXL+oOxJ/8XTRW/o59WisKvo1AickHDFWBWyjSw+2Qp9UpN53RYJkrQU1FHykcY8H6hbbsHCXY21mkH6KNDbg7LD6XIvLQ0u9ENF0WGztMBDtHBV+uO9W8yHIkUyKV4J6jfQco9QeS+oaNhTY68yxmA/mKyvNWH6WjhjEFJvJfBJKHdc4N9cgb1kV6Snd4iYoieyVx7CBWQuaGgRCqgw==
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB2044;
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2044;
-	20:uaqfa6VMxfxn7yA1fA3D9+PznSEu/MBAw7wtPZSSSGRz7WvDh7n/+VEHii7pNY0YM3IzuUfvbHOaNdWRzavDpwv53ZkvjNXbT0Hvrj44scWEfRgyhbTzFOvaaUWHMceNdNAfMn50Y+uAg+wq6ixequzBqc66764ar7PRxcLZI5i5gnewE5EXwVl4ASDRBrLfRTLJDNWckkQXo0hP2UrQReRSXtCVyGO6wjf1iSggv5vTAuJXt8B/JyV6OV9t5LMYsFaxM+Gmah+kDCsQUxKKUBZNG/sv9t1SP5zlI3WcTEfUQUgo23AQI3y/B8tnoL8y61MAkGTStbtaZaujlIn+44mlyfpjDAypdsQGSqA4m9sR2zauLLU4wlUvwwgI8mZ2GVsh31dz/bKy90C0errK8caauwWQ4kweO+yMfld4EV3A1HkHF//gIHLj4Dlh+deAWeq/J6edXETmly9oRlIg5+vGTdnFusCd4qAppmDJ42ZPkwG1Hl7Mg1DdQZen135Y;
-	4:wDirO5rsNtdRHnMS2jMB05SFemO5IpCLRFOZyR3zv1xvK4vplQQMJ6sDGlElXt5yTU4JSjTlrDOOnjqkQ2YNV+ppDjmIaqnF1L4cj9gwvZ3MBNimccmQbHbnnFw8wGZnOvZ8xudQtxRqyk1p70xvG11GNfHPJpztlcRzawCY5cBpMsoxlotBcu+X2S79ftbxYcyIxMv9NcQJhp67tg2oGt69TRLmapoUeis0cXHQduew1IxLWCTo0ZvwtnYWi6ED3F6Q9T057GfdvrXoOMg32nXo4coGJ1OoRCPZV3/p4uXX4+AUCvmAvVYhg18bZBbwVBgU6MhR2NbUJr8EjbVZUR5HwLFnNjay3tqBQGsZQ0V+weJP9B6Jf9nOVsopfKz2
-X-Microsoft-Antispam-PRVS: <CY1PR0301MB2044A1B095D85E86EA3738009EBC0@CY1PR0301MB2044.namprd03.prod.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:;
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046);
-	SRVR:CY1PR0301MB2044; BCL:0; PCL:0; RULEID:;
-	SRVR:CY1PR0301MB2044; 
-X-Forefront-PRVS: 086943A159
-X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(4630300001)(6009001)(10290500002)(586003)(50226001)(36756003)(6116002)(4001430100002)(110136002)(10090500001)(5005710100001)(50466002)(1096002)(87976001)(189998001)(81156009)(5001960100004)(40100003)(86362001)(122386002)(48376002)(5004730100002)(77096005)(229853001)(2351001)(4326007)(42186005)(107886002)(50986999)(47776003)(5008740100001)(19580395003)(2906002)(5003940100001)(92566002)(19580405001)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:CY1PR0301MB2044;
-	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
-	MLV:sfv; LANG:en; 
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR0301MB2044;
-	23:hlXb/etj4AIiizGHf6+k14G6kLpb+f2zy7C61fj?=
-	=?us-ascii?Q?FXmq5YmIuMPdavLyBJ5nLibU9+QWVkGb+T76tG16qgje1Pln32mXb9AiMyY/?=
-	=?us-ascii?Q?wsEIxYs+EHUUVqsoJhF0v6xIr+D7AuHmmyoxN2ymYQGLdoMdfMI/EbqBMIdp?=
-	=?us-ascii?Q?5jhJkc8xv8zFvta3IlW7G3XvTm9ra11EULsJ3+lyLjCQy2p1BCAO71BsOXXr?=
-	=?us-ascii?Q?FV/1SuiBSAdbNiegOug/0LyqM0ABPRUfnYaOCddeOhhLSZjv+a7HZ8KFRGp5?=
-	=?us-ascii?Q?2PmtxuA7PWBC85Yh8VZUdvbPODWNTpXB4rQ4v2YIktheLzWwKcu5itK+WBYi?=
-	=?us-ascii?Q?c6treytKfeNpLM6VbM0o5ZKVFtTj41sMSgc/YZ80yqtp8RFqCV4rhu/m9XzP?=
-	=?us-ascii?Q?qDrQzjVjVtC30NA1u4/ipwa6uAeX1OiPJGBu8A0CVy1i9WGQCAk2iLef2i1B?=
-	=?us-ascii?Q?Xt00Br047cdDxgptNxPQpjdjmDtiDq+Q5eBTrzjPEIg5SqthoQ28I3o7hGYv?=
-	=?us-ascii?Q?10vpg9L/P5PdZFuOmMIlf0/AifCfvMqyv2S42jZPAGVHjJwlH6fTFkGGzNWA?=
-	=?us-ascii?Q?dT/ZkCbFRF+G2fq3ghrD25buyVyBW6uNWdJPUY5Ot1lFd0vt9VH9T/g8g03F?=
-	=?us-ascii?Q?ESMD5/XlskdFH/Gllo6PhEDPEz8hB3Uu+cc7HcbMW0QI9S1rKWRBiqPdoiJq?=
-	=?us-ascii?Q?APXvIgP0dTMmFllSHzTp6WiBWXnA7IGtx9wMY72wbUbjHMwiyMHuLhC4uS78?=
-	=?us-ascii?Q?KpjiyI/aZeV4bAnDAbCwai9vgVJLoBx0+gurZaaBr0nYfj7NJnGiQJIFV/go?=
-	=?us-ascii?Q?LYfrkCmzu6QvN3EjOuj2uYD4bPMsSOoiM7urTpmwke+wUXc1oHaiZZEUJc8/?=
-	=?us-ascii?Q?a0SjMJ9AmR07i9xUS9jqaM5TmRZu8s+zrMIpkWKLB0rTCmUNWGqBjGu3buhb?=
-	=?us-ascii?Q?qV6P8v33IWNcIoAH97oqPo4wc8nZM3RjG2LH51rXxNsQTMMLgER2l3/wYtRb?=
-	=?us-ascii?Q?rf5znWO9W5aNeSXT0WDEb1xRi5rL2zfAOlyh1L9E3PAB/Gg=3D=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2044;
-	5:s+LQ48mZfU+PDj0sXUENxcY3ofgTN1NaFstu/ULupQyxCqQcWhpy3wFSWjS7VVe5DQqYuXX9oXsd7YVHduRLC1+0/FO1I7Z19qA5JbuPanvPWQ9nQ5+NaVkZNSA2u8sK0S1JRgRz0fFfL3EpZAGobw==;
-	24:qP12m5HJPMrkKVvVMYYkt/NX/BvboJAiLGsghjItqVkituXBpEz1HTTmxOTh+xgLtwgsptBnL8a4Zxad8BAph3xEUdxjwJlaDVRBZ+VDwk0=
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Mar 2016 00:57:48.8385 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR0301MB2044
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 157.56.110.141
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>
-Subject: [Qemu-arm] [PATCH] bcm2835_mbox/property: replace ldl_phys/stl_phys
-	with endian-specific accesses
+X-Received: by 10.28.184.137 with SMTP id i131mr2320720wmf.96.1456896669113;
+	Tue, 01 Mar 2016 21:31:09 -0800 (PST)
+Received: by 10.28.157.197 with HTTP; Tue, 1 Mar 2016 21:31:09 -0800 (PST)
+In-Reply-To: <BLUPR0301MB20341204399663BD594BA50C9EBB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <cover.1453100525.git.crosthwaite.peter@gmail.com>
+	<56D52825.1010107@weilnetz.de>
+	<CAPokK=oGzBuvSKw7PFiwwzL0m_=bu7haNYqsyL_WV6PP6UfCyQ@mail.gmail.com>
+	<BLUPR0301MB20341204399663BD594BA50C9EBB0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Tue, 1 Mar 2016 21:31:09 -0800
+Message-ID: <CAPokK=pYRuJ6z9TJ-j8Vfadp_GxchhukZzEDGM_z9En-A-0QSQ@mail.gmail.com>
+From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::235
+Cc: Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	sridhar kulkarni <sridhar_kulk@yahoo.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Piotr_Kr=C3=B3l?= <piotr.krol@3mdeb.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 00/17] ARM big-endian and
+	setend support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -118,176 +89,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A34sBAIEPE9h
+X-TUID: ErpAN3//OfQ1
 
-PMM pointed out that ldl_phys and stl_phys are dependent on the CPU's
-endianness, whereas device model code should be independent of
-it. This changes the relevant Raspberry Pi devices to explicitly call
-the little-endian variants.
+On Tue, Mar 1, 2016 at 1:34 PM, Andrew Baumann
+<Andrew.Baumann@microsoft.com> wrote:
+>> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
+>> Sent: Tuesday, 1 March 2016 10:44 AM
+>>
+>> On Mon, Feb 29, 2016 at 9:27 PM, Stefan Weil <sw@weilnetz.de> wrote:
+>> > Am 18.01.2016 um 08:12 schrieb Peter Crosthwaite:
+>> >> Hi All,
+>> >>
+>> >> This patch series adds system-mode big-endian support for ARM. It also
+>> >> implements the setend instruction, and loading of BE binaries even in
+>> >> LE emulation mode.
+>> >>
+>> >> Based on Paolo's original work. I have moved all the BE32 related work
+>> >> to the back of the series. Multiple parties are interested in the BE8
+>> >> work just on its own, so that could potentially be merged w/o BE32.
+>> >> PMM requested BE32 be at least thought out architecturally, so this
+>> >> series sees BE32 functionality through.
+>> >>
+>> >> I have tested all of LE. BE8 and BE32 in both linux-user mode (for
+>> >> regressions) and system mode (BE8 and BE32 are new here).
+>> >> My test application is here, the README gives some example command
+>> >> lines you can run:
+>> >>
+>> >> https://github.com/pcrost/arm-be-test
+>> >>
+>> >> Regards,
+>> >> Peter
+>> >
+>> > It would be nice to get at least the emulation for 'setend' into the
+>> > next version, because it is needed for the Raspberry Pi emulation.
+>> >
+>>
+>> BTW if you can link me binaries and a failing command line for the
+>> failing rPI work I can test it, I am currently doing my own standalone
+>> tests (of linux user as well).
+>
+> Download and unzip:
+> https://downloads.raspberrypi.org/raspbian_lite_latest
+>
+> Then, mount the boot partition, and grab a copy of kernel7.img. You should now be able to boot on a current qemu with:
+>
+> qemu-system-arm -M raspi2 -kernel kernel7.img -sd 2016-02-26-raspbian-jessie-lite.img -append "rw earlyprintk loglevel=8 console=ttyAMA0 root=/dev/mmcblk0p2 rootwait" -serial stdio -d unimp
+>
+> At present, this fails with:
+>
+> [   10.535232] VFS: Mounted root (ext4 filesystem) on device 179:2.
+> [   10.729685] devtmpfs: mounted
+> [   10.805125] Freeing unused kernel memory: 416K (80776000 - 807de000)
+> [   17.317286] random: systemd urandom read with 6 bits of entropy available
+> arm: unimplemented setend
+> [   17.366656] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000004
+> [   17.366656]
+> [   17.384625] CPU: 0 PID: 1 Comm: systemd Not tainted 4.1.7-v7+ #817
+> [   17.395562] Hardware name: BCM2709
+> [   17.404738] [<80018440>] (unwind_backtrace) from [<80013e0c>] (show_stack+0x20/0x24)
+> [   17.419042] [<80013e0c>] (show_stack) from [<80558548>] (dump_stack+0x98/0xe0)
+> [   17.432237] [<80558548>] (dump_stack) from [<8055473c>] (panic+0xa4/0x204)
+> [   17.444761] [<8055473c>] (panic) from [<8002937c>] (do_exit+0xa0c/0xa64)
+> [   17.452507] [<8002937c>] (do_exit) from [<80029470>] (do_group_exit+0x50/0xcc)
+> [   17.462827] [<80029470>] (do_group_exit) from [<80033ed4>] (get_signal+0x2b0/0x6e0)
+> [   17.474429] [<80033ed4>] (get_signal) from [<80013194>] (do_signal+0x98/0x3ac)
+> [   17.482176] [<80013194>] (do_signal) from [<80013690>] (do_work_pending+0xb8/0xc8)
+> [   17.490129] [<80013690>] (do_work_pending) from [<8000f9e4>] (work_pending+0xc/0x20)
+> [   17.501020] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000004
+> [   17.501020]
+>
 
-Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
----
-bcm2835_property will probably have a trivial conflict with my current
-patch series (which to add framebuffer-related properties).
+Reproduced. With my patch series I am now getting further:
 
- hw/misc/bcm2835_mbox.c     |  6 +++---
- hw/misc/bcm2835_property.c | 38 +++++++++++++++++++-------------------
- 2 files changed, 22 insertions(+), 22 deletions(-)
+[    5.570600] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    5.628967] devtmpfs: mounted
+[    5.667292] Freeing unused kernel memory: 448K (8078a000 - 807fa000)
+[    7.829100] random: systemd urandom read with 2 bits of entropy available
+[    7.902604] systemd[1]: systemd 215 running in system mode. (+PAM
++AUDIT +SELINUX +IMA +SYSVINIT +LIBCRYPTSETUP +GCRYPT +ACL +XZ
+-SECCOMP -APPARMOR)
+[    7.913866] systemd[1]: Detected architecture 'arm'.
 
-diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
-index 500baba..106585a 100644
---- a/hw/misc/bcm2835_mbox.c
-+++ b/hw/misc/bcm2835_mbox.c
-@@ -98,7 +98,7 @@ static void bcm2835_mbox_update(BCM2835MboxState *s)
-      */
-     for (n = 0; n < MBOX_CHAN_COUNT; n++) {
-         while (s->available[n] && !(s->mbox[0].status & ARM_MS_FULL)) {
--            value = ldl_phys(&s->mbox_as, n << MBOX_AS_CHAN_SHIFT);
-+            value = ldl_le_phys(&s->mbox_as, n << MBOX_AS_CHAN_SHIFT);
-             assert(value != MBOX_INVALID_DATA); /* Pending interrupt but no data */
-             mbox_push(&s->mbox[0], value);
-         }
-@@ -207,12 +207,12 @@ static void bcm2835_mbox_write(void *opaque, hwaddr offset,
-             ch = value & 0xf;
-             if (ch < MBOX_CHAN_COUNT) {
-                 childaddr = ch << MBOX_AS_CHAN_SHIFT;
--                if (ldl_phys(&s->mbox_as, childaddr + MBOX_AS_PENDING)) {
-+                if (ldl_le_phys(&s->mbox_as, childaddr + MBOX_AS_PENDING)) {
-                     /* Child busy, push delayed. Push it in the arm->vc mbox */
-                     mbox_push(&s->mbox[1], value);
-                 } else {
-                     /* Push it directly to the child device */
--                    stl_phys(&s->mbox_as, childaddr, value);
-+                    stl_le_phys(&s->mbox_as, childaddr, value);
-                 }
-             } else {
-                 /* Invalid channel number */
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 581922a..41fbbe3 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -22,20 +22,20 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
- 
-     s->addr = value;
- 
--    tot_len = ldl_phys(&s->dma_as, value);
-+    tot_len = ldl_le_phys(&s->dma_as, value);
- 
-     /* @(addr + 4) : Buffer response code */
-     value = s->addr + 8;
-     while (value + 8 <= s->addr + tot_len) {
--        tag = ldl_phys(&s->dma_as, value);
--        bufsize = ldl_phys(&s->dma_as, value + 4);
-+        tag = ldl_le_phys(&s->dma_as, value);
-+        bufsize = ldl_le_phys(&s->dma_as, value + 4);
-         /* @(value + 8) : Request/response indicator */
-         resplen = 0;
-         switch (tag) {
-         case 0x00000000: /* End tag */
-             break;
-         case 0x00000001: /* Get firmware revision */
--            stl_phys(&s->dma_as, value + 12, 346337);
-+            stl_le_phys(&s->dma_as, value + 12, 346337);
-             resplen = 4;
-             break;
-         case 0x00010001: /* Get board model */
-@@ -44,7 +44,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 4;
-             break;
-         case 0x00010002: /* Get board revision */
--            stl_phys(&s->dma_as, value + 12, s->board_rev);
-+            stl_le_phys(&s->dma_as, value + 12, s->board_rev);
-             resplen = 4;
-             break;
-         case 0x00010003: /* Get board MAC address */
-@@ -58,24 +58,24 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             break;
-         case 0x00010005: /* Get ARM memory */
-             /* base */
--            stl_phys(&s->dma_as, value + 12, 0);
-+            stl_le_phys(&s->dma_as, value + 12, 0);
-             /* size */
--            stl_phys(&s->dma_as, value + 16, s->ram_size);
-+            stl_le_phys(&s->dma_as, value + 16, s->ram_size);
-             resplen = 8;
-             break;
-         case 0x00028001: /* Set power state */
-             /* Assume that whatever device they asked for exists,
-              * and we'll just claim we set it to the desired state
-              */
--            tmp = ldl_phys(&s->dma_as, value + 16);
--            stl_phys(&s->dma_as, value + 16, (tmp & 1));
-+            tmp = ldl_le_phys(&s->dma_as, value + 16);
-+            stl_le_phys(&s->dma_as, value + 16, (tmp & 1));
-             resplen = 8;
-             break;
- 
-         /* Clocks */
- 
-         case 0x00030001: /* Get clock state */
--            stl_phys(&s->dma_as, value + 16, 0x1);
-+            stl_le_phys(&s->dma_as, value + 16, 0x1);
-             resplen = 8;
-             break;
- 
-@@ -88,15 +88,15 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         case 0x00030002: /* Get clock rate */
-         case 0x00030004: /* Get max clock rate */
-         case 0x00030007: /* Get min clock rate */
--            switch (ldl_phys(&s->dma_as, value + 12)) {
-+            switch (ldl_le_phys(&s->dma_as, value + 12)) {
-             case 1: /* EMMC */
--                stl_phys(&s->dma_as, value + 16, 50000000);
-+                stl_le_phys(&s->dma_as, value + 16, 50000000);
-                 break;
-             case 2: /* UART */
--                stl_phys(&s->dma_as, value + 16, 3000000);
-+                stl_le_phys(&s->dma_as, value + 16, 3000000);
-                 break;
-             default:
--                stl_phys(&s->dma_as, value + 16, 700000000);
-+                stl_le_phys(&s->dma_as, value + 16, 700000000);
-                 break;
-             }
-             resplen = 8;
-@@ -113,19 +113,19 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         /* Temperature */
- 
-         case 0x00030006: /* Get temperature */
--            stl_phys(&s->dma_as, value + 16, 25000);
-+            stl_le_phys(&s->dma_as, value + 16, 25000);
-             resplen = 8;
-             break;
- 
-         case 0x0003000A: /* Get max temperature */
--            stl_phys(&s->dma_as, value + 16, 99000);
-+            stl_le_phys(&s->dma_as, value + 16, 99000);
-             resplen = 8;
-             break;
- 
- 
-         case 0x00060001: /* Get DMA channels */
-             /* channels 2-5 */
--            stl_phys(&s->dma_as, value + 12, 0x003C);
-+            stl_le_phys(&s->dma_as, value + 12, 0x003C);
-             resplen = 4;
-             break;
- 
-@@ -143,12 +143,12 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             break;
-         }
- 
--        stl_phys(&s->dma_as, value + 8, (1 << 31) | resplen);
-+        stl_le_phys(&s->dma_as, value + 8, (1 << 31) | resplen);
-         value += bufsize + 12;
-     }
- 
-     /* Buffer response code */
--    stl_phys(&s->dma_as, s->addr + 4, (1 << 31));
-+    stl_le_phys(&s->dma_as, s->addr + 4, (1 << 31));
- }
- 
- static uint64_t bcm2835_property_read(void *opaque, hwaddr offset,
--- 
-2.5.3
+Welcome to Raspbian GNU/Linux 8 (jessie)!
 
+[    8.625874] NET: Registered protocol family 10
+[    8.645330] systemd[1]: Inserted module 'ipv6'
+[    8.671989] systemd[1]: Set hostname to <raspberrypi>.
+[   12.670915] systemd[1]: Cannot add dependency job for unit
+display-manager.service, ignoring: Unit display-manager.service failed
+to load: No such file or directory.
+[   12.720439] systemd[1]: Starting Forward Password Requests to Wall
+Directory Watch.
+[   12.731310] systemd[1]: Started Forward Password Requests to Wall
+Directory Watch.
+[   12.734406] systemd[1]: Expecting device dev-ttyAMA0.device...
+         Expecting device dev-ttyAMA0.device...
+
+...
+
+[  OK  ] Started Permit User Sessions.
+[  OK  ] Started Login Service.
+[  OK  ] Started System Logging Service.
+[  OK  ] Started LSB: Apply config from /boot/os_config.json.
+[  OK  ] Started dhcpcd on all interfaces.
+[  OK  ] Reached target Network.
+         Starting /etc/rc.local Compatibility...
+[  OK  ] Reached target Network is Online.
+         Starting LSB: Start NTP daemon...
+[  OK  ] Started /etc/rc.local Compatibility.
+         Starting Wait for Plymouth Boot Screen to Quit...
+         Starting Terminate Plymouth Boot Screen...
+[  OK  ] Started Wait for Plymouth Boot Screen to Quit.
+         Starting Getty on tty1...
+[  OK  ] Started Getty on tty1.
+         Starting Serial Getty on ttyAMA0...
+[  OK  ] Started Serial Getty on ttyAMA0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started Terminate Plymouth Boot Screen.
+
+Raspbian GNU/Linux 8 raspberrypi ttyAMA0
+
+raspberrypi login: pi
+Password:
+Linux raspberrypi 4.1.18-v7+ #846 SMP Thu Feb 25 14:22:53 GMT 2016 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+pi@raspberrypi:~$ cat /proc/cpuinfo
+processor    : 0
+model name    : ARMv7 Processor rev 1 (v7l)
+BogoMIPS    : 38.40
+Features    : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva
+idivt vfpd32 lpae evtstrm
+CPU implementer    : 0x41
+CPU architecture: 7
+CPU variant    : 0x2
+CPU part    : 0xc0f
+CPU revision    : 1
+
+Hardware    : BCM2709
+Revision    : 0000
+Serial        : 0000000000000000
+pi@raspberrypi:~$ uname -a
+Linux raspberrypi 4.1.18-v7+ #846 SMP Thu Feb 25 14:22:53 GMT 2016
+armv7l GNU/Linux
+
+Regards,
+Peter
+
+> Cheers,
+> Andrew

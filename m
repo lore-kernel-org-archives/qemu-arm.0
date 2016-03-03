@@ -1,59 +1,46 @@
-Received: by 10.25.208.211 with SMTP id h202csp2650454lfg;
-        Thu, 3 Mar 2016 03:56:11 -0800 (PST)
-X-Received: by 10.140.160.214 with SMTP id g205mr2474194qhg.88.1457006170848;
-        Thu, 03 Mar 2016 03:56:10 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2659109lfg;
+        Thu, 3 Mar 2016 04:11:38 -0800 (PST)
+X-Received: by 10.141.2.11 with SMTP id e11mr2572497qhd.69.1457007098612;
+        Thu, 03 Mar 2016 04:11:38 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t90si40758179qgd.103.2016.03.03.03.56.10
+        by mx.google.com with ESMTPS id f185si15162883qkb.71.2016.03.03.04.11.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 03:56:10 -0800 (PST)
+        Thu, 03 Mar 2016 04:11:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34167 helo=lists.gnu.org)
+Received: from localhost ([::1]:34459 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abRrW-0000ey-99
-	for alex.bennee@linaro.org; Thu, 03 Mar 2016 06:56:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54951)
+	id 1abS6U-0002Ok-1c
+	for alex.bennee@linaro.org; Thu, 03 Mar 2016 07:11:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60609)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1abRrP-0000dB-2e
-	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 06:56:09 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1abS6R-0002NZ-FM
+	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 07:11:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1abRrJ-0000z2-Vp
-	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 06:56:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35773)
+	(envelope-from <pm215@archaic.org.uk>) id 1abS6M-000638-So
+	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 07:11:35 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56074)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1abRrJ-0000yi-Om; Thu, 03 Mar 2016 06:55:57 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 60D34C00F231;
-	Thu,  3 Mar 2016 11:55:56 +0000 (UTC)
-Received: from hawk.localdomain (dhcp-1-251.brq.redhat.com [10.34.1.251])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u23BtpYx028078
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 3 Mar 2016 06:55:54 -0500
-Date: Thu, 3 Mar 2016 12:55:51 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Xu <peterx@redhat.com>
-Message-ID: <20160303115551.oaswd6litrm2tz3v@hawk.localdomain>
-References: <1456993272-32292-1-git-send-email-peterx@redhat.com>
-	<1456993272-32292-3-git-send-email-peterx@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1456993272-32292-3-git-send-email-peterx@redhat.com>
-User-Agent: Mutt/1.5.23.1 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, mdroth@linux.vnet.ibm.com, armbru@redhat.com,
-	abologna@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/3] arm: qmp: add
- query-gic-capability interface
+	(envelope-from <pm215@archaic.org.uk>) id 1abS6M-0005xL-Ll
+	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 07:11:30 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1abS6D-0000ev-KG; Thu, 03 Mar 2016 12:11:21 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nonngnu.org
+Date: Thu,  3 Mar 2016 12:11:18 +0000
+Message-Id: <1457007078-31387-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2001:8b0:1d0::2
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm@nongnu.org,
+	Christopher Covington <cov@codeaurora.org>, patches@linaro.org
+Subject: [Qemu-arm] [PATCH] linux-user: arm: Remove ARM_cpsr and similar
+	#defines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,127 +54,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5aVmhUtV9ZTR
+X-TUID: 06TVkresOh3m
 
-On Thu, Mar 03, 2016 at 04:21:11PM +0800, Peter Xu wrote:
-> This implement the command "query-gic-capability" but not implemnet
-> it. The command is ARM-only. Return of the command is a list of
-> GICCapability struct that describes all GIC versions that current
-> QEMU and system support.
-> 
-> Signed-off-by: Peter Xu <peterx@redhat.com>
-> ---
->  monitor.c            |  8 ++++++++
->  qapi-schema.json     | 11 +++++++++++
->  qmp-commands.hx      | 26 ++++++++++++++++++++++++++
->  scripts/qapi.py      |  1 +
->  target-arm/machine.c |  7 +++++++
->  5 files changed, 53 insertions(+)
-> 
-> diff --git a/monitor.c b/monitor.c
-> index 73eac17..3b34feb 100644
-> --- a/monitor.c
-> +++ b/monitor.c
-> @@ -4241,3 +4241,11 @@ void qmp_dump_skeys(const char *filename, Error **errp)
->      error_setg(errp, QERR_FEATURE_DISABLED, "dump-skeys");
->  }
->  #endif
-> +
-> +#ifndef TARGET_ARM
-> +GICCapabilityList *qmp_query_gic_capability(Error **errp)
-> +{
-> +    error_setg(errp, QERR_FEATURE_DISABLED, "query-gic-capability");
-> +    return NULL;
-> +}
-> +#endif
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 0b2de6c..f42c8f7 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -4157,3 +4157,14 @@
->    'data': { 'version': 'int',
->              'emulated': 'bool',
->              'kernel': 'bool' } }
-> +
-> +##
-> +# @query-gic-capability:
-> +#
-> +# Return a list of supported GIC version capabilities.
-> +#
-> +# Returns: a list of GICCapability.
-> +#
-> +# Since: 2.6
-> +##
-> +{ 'command': 'query-gic-capability', 'returns': ['GICCapability'] }
-> diff --git a/qmp-commands.hx b/qmp-commands.hx
-> index 13f158d..5e843f2 100644
-> --- a/qmp-commands.hx
-> +++ b/qmp-commands.hx
-> @@ -4852,3 +4852,29 @@ Example:
->                   {"type": 0, "out-pport": 0, "pport": 0, "vlan-id": 3840,
->                    "pop-vlan": 1, "id": 251658240}
->     ]}
-> +
-> +EQMP
-> +
-> +#if defined TARGET_ARM
-> +    {
-> +        .name       = "query-gic-capability",
-> +        .args_type  = "",
-> +        .mhandler.cmd_new = qmp_marshal_query_gic_capability,
-> +    },
-> +#endif
-> +
-> +SQMP
-> +query-gic-capability
-> +---------------
-> +
-> +Return a list of supported ARM GIC versions and their capabilities.
-> +
-> +Arguments: None
-> +
-> +Example:
-> +
-> +-> { "execute": "query-gic-capability" }
-> +<- { "return": [{ "version": 2, "emulated": true, "kernel": false },
-> +                { "version": 3, "emulated": false, "kernel": true } ] }
-> +
-> +EQMP
-> diff --git a/scripts/qapi.py b/scripts/qapi.py
-> index 8497777..9dc8f73 100644
-> --- a/scripts/qapi.py
-> +++ b/scripts/qapi.py
-> @@ -46,6 +46,7 @@ returns_whitelist = [
->      'query-tpm-models',
->      'query-tpm-types',
->      'ringbuf-read',
-> +    'query-gic-capability',
->  
->      # From QGA:
->      'guest-file-open',
-> diff --git a/target-arm/machine.c b/target-arm/machine.c
-> index 03a73d9..b3fa64c 100644
-> --- a/target-arm/machine.c
-> +++ b/target-arm/machine.c
-> @@ -345,3 +345,10 @@ const char *gicv3_class_name(void)
->  
->      exit(1);
->  }
-> +
-> +GICCapabilityList *qmp_query_gic_capability(Error **errp);
+The #defines of ARM_cpsr and friends in linux-user/arm/target-syscall.h
+can clash with versions in the system headers if building on an
+ARM or AArch64 build (though this seems to be dependent on the version
+of the system headers). The QEMU defines are not very useful (it's
+not clear that they're intended for use with the target_pt_regs struct
+rather than (say) the CPUARMState structure) and we only use them in one
+function in elfload.c anyway. So just remove the #defines and directly
+access regs->uregs[].
 
-I don't know anything about QMP, so just offering a superficial
-review comment. Is the prototype necessary here? It seems redundant,
-considering the function is defined right below.
+Reported-by: Christopher Covington <cov@codeaurora.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Christopher, can you check that this resolves your compile issues, please?
 
-drew
+NB that I have not touched the similar code in bsd-user/elfload.c because
+that's clearly dead code, since there's no bsd-user/arm support anyway.
 
-> +
-> +GICCapabilityList *qmp_query_gic_capability(Error **errp)
-> +{
-> +    return NULL;
-> +}
-> -- 
-> 2.4.3
-> 
-> 
+ linux-user/arm/target_syscall.h | 20 +-------------------
+ linux-user/elfload.c            | 19 ++++++++++---------
+ 2 files changed, 11 insertions(+), 28 deletions(-)
+
+diff --git a/linux-user/arm/target_syscall.h b/linux-user/arm/target_syscall.h
+index ea863db..11077b7 100644
+--- a/linux-user/arm/target_syscall.h
++++ b/linux-user/arm/target_syscall.h
+@@ -4,29 +4,11 @@
+ /* this struct defines the way the registers are stored on the
+    stack during a system call. */
+ 
++/* uregs[0..15] are r0 to r15; uregs[16] is CPSR; uregs[17] is ORIG_r0 */
+ struct target_pt_regs {
+     abi_long uregs[18];
+ };
+ 
+-#define ARM_cpsr	uregs[16]
+-#define ARM_pc		uregs[15]
+-#define ARM_lr		uregs[14]
+-#define ARM_sp		uregs[13]
+-#define ARM_ip		uregs[12]
+-#define ARM_fp		uregs[11]
+-#define ARM_r10		uregs[10]
+-#define ARM_r9		uregs[9]
+-#define ARM_r8		uregs[8]
+-#define ARM_r7		uregs[7]
+-#define ARM_r6		uregs[6]
+-#define ARM_r5		uregs[5]
+-#define ARM_r4		uregs[4]
+-#define ARM_r3		uregs[3]
+-#define ARM_r2		uregs[2]
+-#define ARM_r1		uregs[1]
+-#define ARM_r0		uregs[0]
+-#define ARM_ORIG_r0	uregs[17]
+-
+ #define ARM_SYSCALL_BASE	0x900000
+ #define ARM_THUMB_SYSCALL	0
+ 
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 19dc7f5..ad014da 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -273,19 +273,20 @@ static inline void init_thread(struct target_pt_regs *regs,
+     abi_long stack = infop->start_stack;
+     memset(regs, 0, sizeof(*regs));
+ 
+-    regs->ARM_cpsr = 0x10;
+-    if (infop->entry & 1)
+-        regs->ARM_cpsr |= CPSR_T;
+-    regs->ARM_pc = infop->entry & 0xfffffffe;
+-    regs->ARM_sp = infop->start_stack;
++    regs->uregs[16] = ARM_CPU_MODE_USR;
++    if (infop->entry & 1) {
++        regs->uregs[16] |= CPSR_T;
++    }
++    regs->uregs[15] = infop->entry & 0xfffffffe;
++    regs->uregs[13] = infop->start_stack;
+     /* FIXME - what to for failure of get_user()? */
+-    get_user_ual(regs->ARM_r2, stack + 8); /* envp */
+-    get_user_ual(regs->ARM_r1, stack + 4); /* envp */
++    get_user_ual(regs->uregs[2], stack + 8); /* envp */
++    get_user_ual(regs->uregs[1], stack + 4); /* envp */
+     /* XXX: it seems that r0 is zeroed after ! */
+-    regs->ARM_r0 = 0;
++    regs->uregs[0] = 0;
+     /* For uClinux PIC binaries.  */
+     /* XXX: Linux does this only on ARM with no MMU (do we care ?) */
+-    regs->ARM_r10 = infop->start_data;
++    regs->uregs[10] = infop->start_data;
+ }
+ 
+ #define ELF_NREG    18
+-- 
+1.9.1
+

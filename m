@@ -1,119 +1,138 @@
-Received: by 10.25.208.211 with SMTP id h202csp2782592lfg;
-        Thu, 3 Mar 2016 08:23:08 -0800 (PST)
-X-Received: by 10.140.101.147 with SMTP id u19mr4258200qge.71.1457022186668;
-        Thu, 03 Mar 2016 08:23:06 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp2789033lfg;
+        Thu, 3 Mar 2016 08:37:34 -0800 (PST)
+X-Received: by 10.140.20.104 with SMTP id 95mr4203459qgi.40.1457023054879;
+        Thu, 03 Mar 2016 08:37:34 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w82si5019663qka.3.2016.03.03.08.23.06
+        by mx.google.com with ESMTPS id f80si41650959qkh.107.2016.03.03.08.37.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 08:23:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 03 Mar 2016 08:37:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:36049 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=pass header.i=@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36123 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abW1p-0004IU-Hf
-	for alex.bennee@linaro.org; Thu, 03 Mar 2016 11:23:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40763)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1abWFq-0003kg-DP
+	for alex.bennee@linaro.org; Thu, 03 Mar 2016 11:37:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abW0w-000343-FJ
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 11:22:15 -0500
+	(envelope-from <serge.fdrv@gmail.com>) id 1abWFj-0003e5-H8
+	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 11:37:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abW0v-0006ID-GF
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 11:22:10 -0500
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:34750)
+	(envelope-from <serge.fdrv@gmail.com>) id 1abWFi-0001xj-J8
+	for qemu-arm@nongnu.org; Thu, 03 Mar 2016 11:37:27 -0500
+Received: from mail-lb0-x231.google.com ([2a00:1450:4010:c04::231]:33883)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abW0v-0006I7-4B
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 11:22:09 -0500
-Received: by mail-vk0-x236.google.com with SMTP id e185so26557887vkb.1
-	for <qemu-devel@nongnu.org>; Thu, 03 Mar 2016 08:22:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Y1RzKMZT1MCQuzsp2n3kSp+/LaJQXxfHn5t0trZRqKQ=;
-	b=YUqyDaafxQ7u3XQlQG5OBRobyP2VC7RDucqNkQEM+4zxw08Mstp2sHlYperffJrFX9
-	xvnf4nu7QIYJwv1KkXosWeUEn9KQN504ND76OzfDQaXL5VgRJBWzc+1ozs1dsg4bnJuG
-	pK4wIUNUsSr6c5ccIuDCfBZh5FR7B8Fa9QZsw=
+	(envelope-from <serge.fdrv@gmail.com>)
+	id 1abWFe-0001vC-5z; Thu, 03 Mar 2016 11:37:22 -0500
+Received: by mail-lb0-x231.google.com with SMTP id cf7so13846940lbb.1;
+	Thu, 03 Mar 2016 08:37:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=DgRp/zNZfBqFLA/8FvCjB7FQV3JV5m1bOvcvPERJVwQ=;
+	b=Gf71ugbWlfDBIPhGKmVQzPAoro+ywWpQZyy92T/ZIwSvQjBnyaS1AOVNIkIX5PBDUJ
+	WTqwKWCIWUkLoFgUsLRBYB0t45jR7PSr9rH8uANhzLVeKyrIZL3QWJ89xxkPwSeF/+bf
+	EefO0/KDRsGbnYX1Spe0fXYbgmBaINhBux23a9loLktK1htP0AZDrd9HW7wRckpBW+at
+	5TNt6IMZwQvKKzqM0JZtZT3MkRj67fepBwNI9Q7tzJK6yVfsRh40LL3PU+Xd/biqimNz
+	al9/1vM3k6dXwMCefH+OW/w9XQ1R3Rw9gd74lHDSBYFfEHlZ1Bs+3xy4EMn88+0TOmnR
+	s8YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Y1RzKMZT1MCQuzsp2n3kSp+/LaJQXxfHn5t0trZRqKQ=;
-	b=k9K/Fhi8A8Z8jYCbpJQeER2qDuM3yCCGqvNgYszvg+rKMRv+EZ9/vcPAIbUPRsM4rC
-	KCFv66y1UmDe7KoumKgjaGNzBNPcgkqdDoVn5gUZQA27o44mSqO8rM6UokXLqu6Jq2CJ
-	iJ4XICsvc3qsRb09fQE3rGkJQ6q8Q0G4ItyrqFf1+kWt47U/2MKJXQK71d68WT0yrUTQ
-	qfrjT7LeZBuE40VWwvV9GOOTTvrH2Fvd1X3yWf86JHtMhQTKgQAxp3ZeB6xS1gy+iNgE
-	VyVp0n/fCG6bDVMR/LV/i/EWvP9f5qCXC5G5LVsWT0s/J6Yh7RbLT2paaY0JUiRsFNhj
-	RJ8w==
-X-Gm-Message-State: AD7BkJKpMRSX4leYYmEiACNhL4NqBLEYKEC+lPovmzKl3g4qGlKG7BmDekxAW/m7hckZO7xmgUPdPUkSDME9WqCU
-X-Received: by 10.31.47.207 with SMTP id v198mr2536855vkv.6.1457022128527;
-	Thu, 03 Mar 2016 08:22:08 -0800 (PST)
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=DgRp/zNZfBqFLA/8FvCjB7FQV3JV5m1bOvcvPERJVwQ=;
+	b=LC/wk6YmgkEL2Dv00k7OsYo5xdKRVcjA8EUB0dZwl3AOgw//F8cmWmBJ8LJPCLUMg4
+	rPzUh5iI58P4/lGsGQH19F4xub09bEZHA8aqFx6AVi8BT3kw6SyMLN23iwEa/dkeLXg6
+	ZAjyNgxeRPMOEWhTKzy4xO9MKPNIMMNOHhXclWPwPyEx6n4J71j77IrnwKUhhn2bNLhp
+	kzoD5LFGLMBbkgpDLbj5q9z+nlTzxa07pdp/x6KaDrx92OhJ/ZTf7uPdm8I/n4IfFsMj
+	WxD/Rrm8gAFxSsqAeoe5ceunodc8K0Q2nulODptjNe0E0Ri1Yb6VuvamgUx3AoZPooh2
+	bxZQ==
+X-Gm-Message-State: AD7BkJIwFVxt4cVqdaBgphpI8XTW0+QWtd0uR91rJLUFyJ2opMrX/5HfNSG+WidTYQlY9A==
+X-Received: by 10.25.138.5 with SMTP id m5mr1333784lfd.28.1457023041215;
+	Thu, 03 Mar 2016 08:37:21 -0800 (PST)
+Received: from [10.30.10.50] ([213.243.91.10])
+	by smtp.googlemail.com with ESMTPSA id
+	j75sm4931293lfb.9.2016.03.03.08.37.18
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Thu, 03 Mar 2016 08:37:19 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1456941872-8791-1-git-send-email-afarallax@yandex.ru>
+	<56D73CB6.7040702@gmail.com>
+	<CAFEAcA9gPrmcn3TNUueei1f5V0QMr-Nox9JHEE23EsQxbEO9qQ@mail.gmail.com>
+	<56D84EB5.30808@gmail.com>
+	<CAFEAcA9Sp5282BfXFK8W9x8N0HJCbmxZBNL7Cxof7cYRsp8FgA@mail.gmail.com>
+From: Sergey Fedorov <serge.fdrv@gmail.com>
+Message-ID: <56D8683D.1080004@gmail.com>
+Date: Thu, 3 Mar 2016 19:37:17 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.5.1
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Thu, 3 Mar 2016 08:21:49 -0800 (PST)
-In-Reply-To: <1457021768.3574.58.camel@redhat.com>
-References: <1456787490-17112-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<CAFEAcA8G92yYdFAa6P0fdK1KLULAD6rxNc=ENG5=Qp8Lxf8g2w@mail.gmail.com>
-	<1457021768.3574.58.camel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Mar 2016 16:21:49 +0000
-Message-ID: <CAFEAcA83d79ta+-40_M_mXYs9E=eSQMH9jL7kw-UpPLxK-8Kyw@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA9Sp5282BfXFK8W9x8N0HJCbmxZBNL7Cxof7cYRsp8FgA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>,
-	=?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH RFC] bcm2835_dma: add emulation of
- Raspberry Pi DMA controller
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c04::231
+Cc: Sergey Sorokin <afarallax@yandex.ru>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Fix translation
+ level on early translation faults
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XnPqkWYTcPgi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZwIb/Fbx/J8x
 
-On 3 March 2016 at 16:16, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> usb emulation has this problem too.
+On 03.03.2016 17:55, Peter Maydell wrote:
+> On 3 March 2016 at 14:48, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+>> On 03.03.2016 16:49, Peter Maydell wrote:
+>>> On 2 March 2016 at 19:19, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+>>>> On 02.03.2016 21:04, Sergey Sorokin wrote:
+>>>>> Qemu reports translation fault on 1st level instead of 0th level in case of
+>>>>> AArch64 address translation if the translation table walk is disabled or
+>>>>> the address is in the gap between the two regions.
+>>>> It's probably not a very clear description in the commit message. IIUC,
+>>>> level 0 fault is reported in case of any fault from TTBR in AArch64 state.
+>>> Yes (though you mean "under an AArch64 translation regime"). Conversely, the
+>>> only fault reported at level 0 under an AArch32 translation regime is
+>>> the AddressSize fault (for bad addresses in TTBR0/1), which we don't
+>>> currently implement.
+>>>
+>>> There's also a code path later in the function that does
+>>>     level = va_size == 64 ? 0 : 1;
+>>>
+>>> but I'm not sure it's worth rearranging that code to avoid the
+>>> duplication of "what level do we report this kind of fault at?".
+>> Right, but actually I think this patch is going to fix the two "goto
+>> do_fault" cases which can happen before this "level = va_size == 64 ? 0
+>> : 1", namely the EDP check and the check for virtual address which is in
+>> the gap between TTBR0 and TTBR1 regions.
+> Yes, this patch is definitely fixing a bug; I'm just mentioning that other
+> code path because it seems to be the result of previously fixing the bug
+> for a particular special case...
 >
-> uhci queue heads can go in circles.  The emulation code keeps a linked
-> list of active queue heads, which is (among other bookkeeping things)
-> used to detect when we run in circles.  It's a legal thing to do for a
-> guest btw, so you can see that happening in practice.
 >
-> until recently ehci could be tricked into running in loops too, by
-> creating a circular chain of IDTs.  Which is not legal according to
-> specs, so this went unnoticed for a while.  But a malicious guest can do
-> it nevertheless.  That one was fixed by stopping IDT processing in case
-> no data was transfered.  This is possible because the ehci controller
-> writes back the status to the IDT, so we can figure there is nothing to
-> do (because we already processed that IDT) without additional
-> bookkeeping, by simply checking the status.
->
-> From a brief look at the patch it seems you can not use the later for
-> the bcm2835 dma controller, I can't spot a place where the some status
-> is written back to the dma contol block ...
 
-I guess a more general approach to the problem would be to have
-a (hopefully easy) way to say "if this has been going on for too
-long then arrange to defer continued processing of it til later,
-and for now resume the guest". That's too big a can of worms for
-this patch, though. (And for something that's only used in TCG
-emulation we care much less about malicious guests than for devices
-that can be used with KVM.)
+Ah, right, I think I understand you :) So we'd better remove these lines:
 
-thanks
--- PMM
+            /* AArch64 reports these as level 0 faults.
+             * AArch32 reports these as level 1 faults.
+             */
+            level = va_size == 64 ? 0 : 1;
+            fault_type = translation_fault;
+
+Kind regards,
+Sergey

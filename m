@@ -1,10 +1,10 @@
-Received: by 10.25.208.211 with SMTP id h202csp13236lfg;
-        Thu, 3 Mar 2016 10:26:08 -0800 (PST)
-X-Received: by 10.140.249.6 with SMTP id u6mr5252553qhc.83.1457029568535;
+Received: by 10.25.208.211 with SMTP id h202csp13243lfg;
+        Thu, 3 Mar 2016 10:26:09 -0800 (PST)
+X-Received: by 10.55.49.11 with SMTP id x11mr4875685qkx.86.1457029568729;
         Thu, 03 Mar 2016 10:26:08 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h22si19037792qge.80.2016.03.03.10.26.08
+        by mx.google.com with ESMTPS id w13si15724797qka.41.2016.03.03.10.26.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Thu, 03 Mar 2016 10:26:08 -0800 (PST)
@@ -13,39 +13,39 @@ Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:36714 helo=lists.gnu.org)
+Received: from localhost ([::1]:36715 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abXwt-0005IK-PR
-	for alex.bennee@linaro.org; Thu, 03 Mar 2016 13:26:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43498)
+	id 1abXwu-0005J9-23
+	for alex.bennee@linaro.org; Thu, 03 Mar 2016 13:26:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvl-0003pm-QO
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:25:02 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvn-0003qR-Db
+	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:25:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvh-0007Z6-Lc
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:24:57 -0500
-Received: from mail-by2on0131.outbound.protection.outlook.com
-	([207.46.100.131]:35372
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvi-0007ZO-TD
+	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:24:59 -0500
+Received: from mail-by2on0112.outbound.protection.outlook.com
+	([207.46.100.112]:25293
 	helo=na01-by2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1abXvh-0007YX-Bf; Thu, 03 Mar 2016 13:24:53 -0500
+	id 1abXvi-0007ZJ-F3; Thu, 03 Mar 2016 13:24:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=Una7TBM/lOxBBFnfgrvGRwqXLTpLr5AupaVel817VNE=;
-	b=jrNFV+36w+i66V8+HD36gImvXtO2vSby2Cnxe/GNWplR7PAbagubOnwunCD5exDS67wK7z+qyEsjLtVY9X8v8kfvBpZLHx/HK+QlD2dCBY7XW4BYRNvro8szTiv2x0xA/TEg5Wx3zh4cQJ7jGOjk/TxkEfdKJMuoJ/bQIIPdkfA=
+	bh=Qoy/xVnKtf9zkao+4tIp+c2dWRmc4/xfahtsancTm0o=;
+	b=iGcTEDF3iS/i1i6V6Ir9iM6UqjT8kfC5qdiiQUcBU2aM51kxf0WLxYXhfS/tDCdpNZvlouvukWwNZ5H6bHDM7LF1YaglEEVTBbnNaU/FJq/8pKT2C/2tMpEkKteZR7Aog6ZGz+yfHyI8fZ25gxpqa7czi9wZMVk/RlwNU5H9Ogw=
 Authentication-Results: nongnu.org; dkim=none (message not signed)
 	header.d=none; nongnu.org;
 	dmarc=none action=none header.from=microsoft.com; 
 Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:5::724)
 	by CY1PR0301MB2042.namprd03.prod.outlook.com (10.164.2.24) with
 	Microsoft
-	SMTP Server (TLS) id 15.1.427.16; Thu, 3 Mar 2016 18:24:51 +0000
+	SMTP Server (TLS) id 15.1.427.16; Thu, 3 Mar 2016 18:24:52 +0000
 From: Andrew Baumann <Andrew.Baumann@microsoft.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 3 Mar 2016 10:24:36 -0800
-Message-ID: <1457029479-11312-3-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Thu, 3 Mar 2016 10:24:37 -0800
+Message-ID: <1457029479-11312-4-git-send-email-Andrew.Baumann@microsoft.com>
 X-Mailer: git-send-email 2.5.1
 In-Reply-To: <1457029479-11312-1-git-send-email-Andrew.Baumann@microsoft.com>
 References: <1457029479-11312-1-git-send-email-Andrew.Baumann@microsoft.com>
@@ -54,16 +54,16 @@ Content-Type: text/plain
 X-Originating-IP: [2001:4898:80e8:5::724]
 X-ClientProxiedBy: CO2PR20CA0017.namprd20.prod.outlook.com (25.163.96.27) To
 	CY1PR0301MB2042.namprd03.prod.outlook.com (25.164.2.24)
-X-MS-Office365-Filtering-Correlation-Id: 680e503d-38a6-4ad3-fe58-08d343911c84
+X-MS-Office365-Filtering-Correlation-Id: 84f80ae0-06dc-4333-9891-08d343911cdf
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
-	2:EDZZe44mpHPlka0AiSGcSZULoE1vgQrmAxoGtheWjhpydFIbjL4Zno2RDXIPC1i9/Zm3uNXD2Xyv7LrBzGpTW855o18+R3kH1QZLua0MFT99rPfUPfhsu1c6yZImABF3VWyaVZy51PAZHGDv/jNXe/yJjdl/hHb3hwPjpjmhI3zNCcW+th6mO11vKkD8+CSM;
-	3:DJ46S3SDeM6UV7RYGFzRasJkZRwU8OCpJCNxo3pSmc1HrExBOq+RcJxJV9/PErByycuuTSVxbly93dr4jwIVRX3t6qN1wCEeN46JLBOZrYggK01nZSY3rhvHCIRoQtQI;
-	25:CnoItTHRlnpkxhra/ZzWaEVAfmivx99sK4u7OgZdGXTeInQLXQAkXY4is/X0Hy5XlsfPFrc6Bt6V9IAxjsi2z6bOtXZZFur5t5HUzqlGgcwgjgrzmy5lyChWS7gXLH+S1G4tru9Gbsu3Zfwezn6VjcKuBQz8/wo2P2pXwqpz4z+mlUvjDr/RoMKRr1vR47CbL44zB8vbVyVMWp6EUEwG0a132fkUtVkKGZklRRvkcVZLuFqxieT+hgQvQsZRsW/wIBT5cm/8INCRzzv1cBR42r+5gcdJQ1W+T+k2LFpidcDP3qTYWDOlgezhcyySS3f+IxzhcI7tnq7UUc9nIO58CZgf8kyWA2N8TiUUIzJ5oag=
+	2:vJB3oV5iCLSjdVBWXc/26gfR6QzM0lbPom149eBNY0NqscFIWGba5v2fVI+SNi+4e39aTY12l6eNRcNLp6mm1qKGLG+iHrozHF1zifnnXcYmOob4bnnRQJ4jgUuQyGzIfO4m+2rPHoe8/bGMyC/1TANnDQfSxGZxIGJE+uBQ0737LZGF5J70Wk3WaXlrKD0K;
+	3:EdmXM7YLvIOp4Z2jn+FM50sdyRy5lW6bbv6sF41GgP7/tTaHMKxoEHC7T8oYASowZxNHmAx+biEdIWQCjF54Zor0l9Q4jUrXDQ0IKA+kzTeMI6BLrz0Kar0tRlJuwKzb;
+	25:vgTjO9c208AJpHcsTLEaYnf02rJ+PcS1aJYbox9Ur6rYa4VJoIu7QSFsgykXTdlJYUhk3DCv86hrtopxqE38sqPGW00IdcO6VovolQjRf5IdkP7SuljOSUJWGY/+8SP0XQFv7UxzhrUSC2y+ItPxKdrFGQ92R/QAF+tfyPaqG+4yAeinVv0w7sMTnaETkr5e00LRimSAvK/T8EIHQDHIKePE73Q4xhQnWHhcOb17pnKwnLb41YVH3fDQGMfV0SsR2NKa2CdS3FrRNs9AIHzJmCj/hNIf4hkq+JOLlyGavxIVftqDskXYJAhVSc12CLQAoa0fGpG8IqtE2wdZ2tov2g==
 X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB2042;
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
-	20:0oW/zZitiaHO/mTZrCUIwmZK4gqEPXZsljlwnCwMtXHiE9II+5wMY+wxt6ehtYY8L1W2LrK+WHvcrrx8tdQEdE6I5+DG59G1nxRnmKT4i3bdPXn81p3B0yWiu2ZTaq3EpsYSn3zZSBhaKn3qHug+sKBi8vThxN9B3MMoxy4SwGh1i0062hwuSw5Y4+5Qld8w5Jynn65B05FfSLJ5K31G/RGJAdpZ8sdp3y+TuIJgS5sEdG91GkhBfJRPQL5ysoLM4cwgxobyfFrCSF/sPLoJzlF3lQ/FI4u+SOJ5bBzsakItdsB+p1O27WG+ZUQYzQEWEO4Tr5lXc8PDZqz3z3efWKkC0MEmYLkfT7yuVD23oMm2F5RbNO3REbzrbB7RTAEiveNLLe5fjgxDHInyPBWOz/bQL611ubsI+OLgeQYQwFkwfLgLybIcA60Gau4CUNG1qXNRgMF8Wp5phqR9WnGADlUFqxy2cU02Lav+zxOJRYTH6cFWTjK7benOxKeQpVWt;
-	4:zBb4+pk/oVRXgSKltT3zl+udcrtaDIMh0I6FjjYaYpMWGlKcmYIQ/cfZIv83ZG76VAd4LPfRiXNaBUO3gG0h2Vxq1Pmg08nx7jMroX8i1eVBUQWBjnHndxXD/NqRyN3egAnfd74TXXqG3IEtwq1n9V3f8F2qbWJWVVoAJEXpMg0pEsHiqsXrNY7Iq7rd38m5wZjc7bs1snMuYJLChUXrxCh8l865yA4GYNZsgL57dVgqLTNr0Yz+HNA9RUkNhiI1o8xZLc4pHNf9DFA1BZVHX1IwnJWmDlyB0FVJv17MhEhL/xkErea5+gcoS8636uUwzwT5dP1/QRgDpgB28EeqBa6N/vZ5JTWeFJCJ2UMH8azCAU53AvBclVbPSY47UkU9
-X-Microsoft-Antispam-PRVS: <CY1PR0301MB20421BB281B09A63536557C79EBD0@CY1PR0301MB2042.namprd03.prod.outlook.com>
+	20:OgESNxplzy6QZTLB1R6uSOqeIBz/cOtSjcxs2ss12KGIWnHOrnGtTSwsf1023VW67ZLaH1ix0wTciU4Hp4y/IlGblAI1nnej3XSc87QQbQY8YFFA/856ek7T4SEvcCcFFURT57ETeEBfimbHvoqlcV48mPCvASU5bslXHEErwlHelrLXFfRqac8pkRxq0Snx1QEShFFYgHfX8jEqX6J9yZA3Q+HY4qjt1Uo+TMfjCHinqTOZnsLVRz8hArSD3TLE/ByZHagjYA3EyVLqhuIWKYsyUjpXJbqFEQLnsjkCjnNDni2d3wPDdTY8d7vVj+9e4UglkU6PYBT/2GAfswsfaFkff6HqzOqlI/zaxoqSKaIpK1IZJDF0wKk7KytvqZ9qzHVk4bIlwkyFHGEcv+4ojDbOwHFlpL+asFr0obTfkXNhbI5oAG7wQfpbL6vcmIMIqPcHaG+UuiEC0XOuhKpZ3h7iba0k0ee+fT7oJU+5RYGNtwCxEUfXeF8VTdrpJbFC;
+	4:kJwTwQKDCK60phU2BDeZtOdLv3FlbCcckJKYUwHX4CqTQav+Nm4/Jgv66p56ZV0vSxY2uGBTbN0vpNvF8qgb1jANkd+tkk/nCyTy95fWqRisQXgiu6ju3NYmbXdu+QkQ2RJ/xyCsz2ZShv78LRU989bGMCaawsZOMs7ivv0FMm31lBn0w5r5tdT5gG2CeL5tD+JuxQtHWlWAonf4sCmIuuH7v6xCCyzVwNNxHaaLVthmnLfjywo4Z1IQN+NI8VgvDLRm5AjNX1inkFD38NtN39tjY7rapfQam8LLF0BTO/bELtrV2ThIK2HnJEXGDDYeBN5sJ1jZKYV6EBaZRT6j/5/DUZdHlI+2RzyJLcKAgc03bUwGIe+H8+vKv4wk4tTR
+X-Microsoft-Antispam-PRVS: <CY1PR0301MB20429F9933A892D0CCBAB9F69EBD0@CY1PR0301MB2042.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:;
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046);
@@ -71,48 +71,48 @@ X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	SRVR:CY1PR0301MB2042; 
 X-Forefront-PRVS: 0870212862
 X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(4630300001)(6009001)(2351001)(50986999)(4326007)(76176999)(1096002)(2906002)(5005710100001)(87976001)(10290500002)(40100003)(36756003)(4001430100002)(6116002)(47776003)(586003)(122386002)(42186005)(92566002)(86612001)(19580395003)(77096005)(10090500001)(575784001)(5003940100001)(86362001)(19580405001)(189998001)(2950100001)(50226001)(229853001)(48376002)(5008740100001)(110136002)(50466002)(5004730100002)(107886002)(81166005)(21314002)(3826002);
+	SFS:(10019020)(4630300001)(6009001)(2351001)(50986999)(4326007)(76176999)(1096002)(2906002)(5005710100001)(87976001)(10290500002)(40100003)(36756003)(4001430100002)(6116002)(47776003)(586003)(122386002)(42186005)(92566002)(86612001)(19580395003)(77096005)(10090500001)(575784001)(5003940100001)(86362001)(19580405001)(189998001)(15975445007)(2950100001)(50226001)(229853001)(48376002)(5008740100001)(110136002)(50466002)(5004730100002)(107886002)(81166005)(2004002)(3826002);
 	DIR:OUT; SFP:1102; SCL:1; SRVR:CY1PR0301MB2042;
 	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
 	MLV:sfv; LANG:en; 
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR0301MB2042;
-	23:OCmNOt5FFa9gBIY/Bs60ju/sROYx6rOW8g+wfX4?=
-	=?us-ascii?Q?ONHjCalttFLQR60Zqr7BBxBASiiQ+NNPa0lAA/kvJobdKo5t9yOihX3S3By8?=
-	=?us-ascii?Q?2eCJsbbxDRXJW96PhoTcMNuvTGygXpF1h3Zz8Zt6QXEMqOOgsSdNca0Mrw2U?=
-	=?us-ascii?Q?+zbsxcNDaoCprW4PgWxrpXH0oUkzeINUJyNHUjXYw4UWVYRbNwbMzRmMWAhG?=
-	=?us-ascii?Q?M1uDrEJK7GkChcZfRXx3myJma96PfZqgsp/Lsp9Za7ZVUVv1Sa8BbtYZXLy4?=
-	=?us-ascii?Q?BAcvifd1V4puNrvtc6nj6yyDw1CjXzqM90fYh2QBSb19K1nZYWxmuq3FRWWJ?=
-	=?us-ascii?Q?g5EoLfpsdMce0oyinR2hx0VE7bC29uxTlgPEcmgV2zOpYXtpqsk9BosCsndq?=
-	=?us-ascii?Q?2ZYrtOrVHgZgYcmJx+2VeFTZnq2zq01IKD31C+zAilj4BQAGtm9ckxPIdUrr?=
-	=?us-ascii?Q?NoBcJSUEQqzheYxj6NsyNILnMV1EZu67LtDo4gfJmNWKCjD61W/5V9atyKon?=
-	=?us-ascii?Q?1qOaM1D0tl5bflROackOQ8KxUN1mztVUK55dIqD/ePDeCZP+v03D99Qu4j1s?=
-	=?us-ascii?Q?jfJaZHu404Dtj9W+d0BoNICPN6pxm/M35laDTVxlaDIzfpEmeC++YgZxVeQO?=
-	=?us-ascii?Q?EAavbJYqQ1vbXI+3wnObSGaTvSCUiChsNqgiH73F2e6slnX68Y3Pt3Eolxtz?=
-	=?us-ascii?Q?1lO6AbyA+vX6hQsfgm3iVuPlT+WOs8MbgvfdNanN3ttyCa1Pne1Gtk2RIKAE?=
-	=?us-ascii?Q?VBQ2FnXqjtaId48N+6LdYkZ9LMV0zmId5CZvrr6Trmrg0oz1dG+qdiw/UJjC?=
-	=?us-ascii?Q?PUmLoDoqKsiWYz+guPfgoSzwQKheiPvTNUvD0cW1grqJ0U6Saa3sonWkYkdy?=
-	=?us-ascii?Q?mfVk4HL2N5I5/zrMRq12BLL8LnEWK0utRvuKh2OoKMa+m8sNwinJ64YTk2Ts?=
-	=?us-ascii?Q?7I2IqzZZqJmOjQcAM/fa5l4NPWQvfl/yHX0qCpvoppyt1bI1VAFh4bECjwiy?=
-	=?us-ascii?Q?zsXv9m7mVryO6i+IN5nEZX30JlYXVWBA9H+5hEVuTNUrl7/80o1+K6EzTrve?=
-	=?us-ascii?Q?g3VxUt1sLH9BCvo6AhN6oy+wzd36yDJulaInl5QkGj0Wme8KkNiKqyABsD+Z?=
-	=?us-ascii?Q?QHoaNFNj9hBI=3D?=
+	23:599Jp2A7Q2EJn/dlZJgrLsb2TPifArIwSStTEBX?=
+	=?us-ascii?Q?EPgkL3m7rFAO+hgW05hjJywpqAlZkbTVLd2vzKcpZcYEnrreGYfGRp3EriPV?=
+	=?us-ascii?Q?mGLwvcTsOa6Cy3Z+ikgiU8Mym5O4miPkzoFBg8iv5pnYmGSnCNwQ4E3zL2m7?=
+	=?us-ascii?Q?E5284j1xT6NGI98a5W1PBXmhueVuoqsWdPWV8aD3aj7Wd5Uqz1ncMNy6f9gp?=
+	=?us-ascii?Q?srTdxK190KKpKfkyoOoH4DvE0Qe+N6Pm9E01N9GooSHbUkZELMHBJvWdSbEF?=
+	=?us-ascii?Q?Tk3tsDxoyB08FPKRPvTVb/bbB0JKA8mlN1JLmRevU8ddyozpLhBzACd35AXd?=
+	=?us-ascii?Q?ua8D52kdWkiTQ313BwZ9J8cIv4wlIbKBzNjo5hDpGOWzXSY7UacGockVaL7Y?=
+	=?us-ascii?Q?RDBEPxu5XfhCErxUBqGsEp3kX/enNixpJcg0E4SQMSjRLcI4dW6mKXToAnan?=
+	=?us-ascii?Q?7sRzBRgpKEr4YqS4rXbgA70eBQOalmlhAk+k5I8BNko4acIS3FNGK3mfYRBp?=
+	=?us-ascii?Q?1VxAjxCEe32D04y99/2xeh1VjojMCKUG7EP6MV0rm/qOwafCIULSyGX7wzaS?=
+	=?us-ascii?Q?thq2WxBfIEZ5QD1UmM9Dq9RIt81/HQ8u6WyeahY5Vz0bH3AeiLNfhS/YFL1u?=
+	=?us-ascii?Q?/81V23FjhCE1hNE8br6WovmdRLvCmiDDsSRKhtCTtHJST3PjicXb7xWczs/e?=
+	=?us-ascii?Q?xgVjhCrSaRTrhYsj7hihL1mCDSFfY1xIICM/HRZA3i6izpT+RuEnL2fv87ka?=
+	=?us-ascii?Q?BEtG/GVAbwRfCUOfY8HpMhM+fLxPGn2QmR1h4fnA1ILngDowETs7FfbV2WNh?=
+	=?us-ascii?Q?c/mTDd7ZFYUKBPqDhzGNUOUKzA47voFUI+VN7NnifxSoiMAqZy9Z7ZAS4gdb?=
+	=?us-ascii?Q?Kkuz/75oJ4ycIgvB+uMbEhEILiPa52/pswjMomIcGAJ2G3+G5ALfm0hwz06r?=
+	=?us-ascii?Q?+AprfrAQ8bqBhsOLYKVMi6gV81yoqfzm9PBAOk4iNT/3eDd72TeFXxiF0Pqv?=
+	=?us-ascii?Q?vFQvSzTLhTj2jBTfzgz2DBOgG/pqdcGRqCtjnwJLAhN21zXo9ovIYGqBu1T6?=
+	=?us-ascii?Q?tXPuTv3N4+GEoiXLx82JveikXK2H+QK4KBSA1T+KKGeZVDTwXtdqO69PqA4S?=
+	=?us-ascii?Q?DMypYpuCEJ9jnukazQLd2v2T8BRheSuww?=
 X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
-	5:7Gvrk/cqhFjVg+7ECsID7Zos3G5HDgexOuJW5m9lVSOWJz04OLLOHGvm6+s/1s9ciRpcmW/4K1cjL1J4KZXoLaG+V96G7lXPIqQwUV0DdTZIex4o2i6cnIiNXYmD9Ij8zDeKJj2FyJXsyECUKEdqfQ==;
-	24:tMROYt9MJeZEgwd+2kqF8QgJeFhO9LcZbDNAicGp7FOTJCgUxQc18LqYXsEZNmNt+aBlLnTg0dY97cUqOVW9GdDMaaFf8fRDtXNApPj/SsQ=
+	5:MxT1CPB4fdVdc6KCYGP5wsPeO0E56Wmb10NZMx4Z/Q9A0IQ0Fa0DjdarYxjnwCRvaJokWAgDteYmOfav/XApXXSH22AqwMjK+7UVqcBZE4lcA2d+Nn61+f6vpoUB0171nV0tdqyBSVdEeB88SJ0a5A==;
+	24:63LsR7cEbYh/LeqZQ+FMsO9BZSNPRyzTXi4yeIioVuSXXfU8QmeLnZ7Ig8LvFU8EBRwqIoT5SUCsZFfBQxe1gGjhUVttL0dvN4oMVbD6yyA=
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2016 18:24:51.3887 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2016 18:24:52.0137 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR0301MB2042
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.131
+X-Received-From: 207.46.100.112
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
 	Stefan Weil <sw@weilnetz.de>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-devel] [PATCH v2 2/5] bcm2835_aux: add emulation of BCM2835
-	AUX (aka UART1) block
+Subject: [Qemu-devel] [PATCH v2 3/5] bcm2835_fb: add framebuffer device for
+	Raspberry Pi
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -126,494 +126,643 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RaWmlpJiL3sN
+X-TUID: ZOdwslUkKa61
 
-At present only the core UART functions (data path for tx/rx) are
-implemented, which is enough for UEFI to boot. The following
-features/registers are unimplemented:
-  * Line/modem control
-  * Scratch register
-  * Extra control
-  * Baudrate
-  * SPI interfaces
+The framebuffer occupies the upper portion of memory (64MiB by
+default), but it can only be controlled/configured via a system
+mailbox or property channel (to be added by a subsequent patch).
 
 Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 ---
 
 Notes:
     v2:
-     * document unimplemented features, log unimplemented register accesses
-     * model read path as 8-bit
-     * drop incorrect event (break detection) functionality
-     * implement AUX_IRQ register
-     * model interrupt enables as a uint8 rather than 2 bools
-     * corrected bugs in implementation of IIR bits 0-2
-     * use chardev prop rather than qemu_char_get_next_serial(); the
-       soc-level (bcm2835_peripherals) handling is still a little messy
-       however, because uart0 is a pl011 device which still calls
-       qemu_char_get_next_serial()
+     * avoid ldl_phys
+     * move code to increase default pi2 memory size back to the final patch
 
- hw/arm/bcm2835_peripherals.c         |  29 ++++
- hw/char/Makefile.objs                |   1 +
- hw/char/bcm2835_aux.c                | 316 +++++++++++++++++++++++++++++++++++
+ hw/arm/bcm2835_peripherals.c         |  38 +++-
+ hw/arm/bcm2836.c                     |   2 +
+ hw/arm/raspi.c                       |   5 +-
+ hw/display/Makefile.objs             |   1 +
+ hw/display/bcm2835_fb.c              | 424 +++++++++++++++++++++++++++++++++++
  include/hw/arm/bcm2835_peripherals.h |   2 +
- include/hw/char/bcm2835_aux.h        |  33 ++++
- 5 files changed, 381 insertions(+)
- create mode 100644 hw/char/bcm2835_aux.c
- create mode 100644 include/hw/char/bcm2835_aux.h
+ include/hw/display/bcm2835_fb.h      |  47 ++++
+ 7 files changed, 517 insertions(+), 2 deletions(-)
+ create mode 100644 hw/display/bcm2835_fb.c
+ create mode 100644 include/hw/display/bcm2835_fb.h
 
 diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 6ce9cd1..375e341 100644
+index 375e341..552611a 100644
 --- a/hw/arm/bcm2835_peripherals.c
 +++ b/hw/arm/bcm2835_peripherals.c
-@@ -12,6 +12,8 @@
- #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/misc/bcm2835_mbox_defs.h"
- #include "hw/arm/raspi_platform.h"
-+#include "sysemu/char.h"
-+#include "sysemu/sysemu.h" /* for serial_hds */
+@@ -63,6 +63,16 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
+                                    OBJECT(&s->mbox_mr), &error_abort);
  
- /* Peripheral base address on the VC (GPU) system bus */
- #define BCM2835_VC_PERI_BASE 0x7e000000
-@@ -48,6 +50,11 @@ static void bcm2835_peripherals_init(Object *obj)
-     object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
-     qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
- 
-+    /* AUX / UART1 */
-+    object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
-+    object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
-+    qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
++    /* Framebuffer */
++    object_initialize(&s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
++    object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
++    object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-size",
++                              &error_abort);
++    qdev_set_parent_bus(DEVICE(&s->fb), sysbus_get_default());
 +
-     /* Mailboxes */
-     object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
-     object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
-@@ -79,6 +86,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
++    object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
++                                   OBJECT(&s->gpu_bus_mr), &error_abort);
++
+     /* Property channel */
+     object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PROPERTY);
+     object_property_add_child(obj, "property", OBJECT(&s->property), NULL);
+@@ -85,7 +95,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     Object *obj;
      MemoryRegion *ram;
      Error *err = NULL;
-     uint32_t ram_size;
-+    CharDriverState *chr;
+-    uint32_t ram_size;
++    uint32_t ram_size, vcram_size;
+     CharDriverState *chr;
      int n;
  
-     obj = object_property_get_link(OBJECT(dev), "ram", &err);
-@@ -131,6 +139,27 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-                                INTERRUPT_UART));
+@@ -173,6 +183,32 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
+                                INTERRUPT_ARM_MAILBOX));
  
-+    /* AUX / UART1 */
-+    /* XXX: pl011 (uart0) uses qemu_char_get_next_serial(), so at this point it
-+     * should have claimed the first serial device (if one exists) */
-+    chr = serial_hds[1];
-+    if (chr == NULL) {
-+        chr = qemu_chr_new("bcm2835.uart1", "null", NULL);
-+    }
-+    qdev_prop_set_chr(DEVICE(&s->aux), "chardev", chr);
-+
-+    object_property_set_bool(OBJECT(&s->aux), true, "realized", &err);
++    /* Framebuffer */
++    vcram_size = (uint32_t)object_property_get_int(OBJECT(s), "vcram-size",
++                                                   &err);
 +    if (err) {
 +        error_propagate(errp, err);
 +        return;
 +    }
 +
-+    memory_region_add_subregion(&s->peri_mr, UART1_OFFSET,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->aux), 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->aux), 0,
-+        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-+                               INTERRUPT_AUX));
++    object_property_set_int(OBJECT(&s->fb), ram_size - vcram_size,
++                            "vcram-base", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
 +
-     /* Mailboxes */
-     object_property_set_bool(OBJECT(&s->mboxes), true, "realized", &err);
++    object_property_set_bool(OBJECT(&s->fb), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->mbox_mr, MBOX_CHAN_FB << MBOX_AS_CHAN_SHIFT,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->fb), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->fb), 0,
++                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_FB));
++
+     /* Property channel */
+     object_property_set_int(OBJECT(&s->property), ram_size, "ram-size", &err);
      if (err) {
-diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
-index 5931cc8..69a553c 100644
---- a/hw/char/Makefile.objs
-+++ b/hw/char/Makefile.objs
-@@ -16,6 +16,7 @@ obj-$(CONFIG_SH4) += sh_serial.o
- obj-$(CONFIG_PSERIES) += spapr_vty.o
- obj-$(CONFIG_DIGIC) += digic-uart.o
- obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
-+obj-$(CONFIG_RASPI) += bcm2835_aux.o
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 0321439..89a6b35 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -42,6 +42,8 @@ static void bcm2836_init(Object *obj)
+                               &error_abort);
+     object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
+                               "board-rev", &error_abort);
++    object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
++                              "vcram-size", &error_abort);
+     qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
+ }
  
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_ser.o
- common-obj-$(CONFIG_ISA_DEBUG) += debugcon.o
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 6582279..5498209 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -113,6 +113,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+ static void raspi2_init(MachineState *machine)
+ {
+     RasPiState *s = g_new0(RasPiState, 1);
++    uint32_t vcram_size;
+     DriveInfo *di;
+     BlockBackend *blk;
+     BusState *bus;
+@@ -149,7 +150,9 @@ static void raspi2_init(MachineState *machine)
+     qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+     object_property_set_bool(OBJECT(carddev), true, "realized", &error_fatal);
+ 
+-    setup_boot(machine, 2, machine->ram_size);
++    vcram_size = object_property_get_int(OBJECT(&s->soc), "vcram-size",
++                                         &error_abort);
++    setup_boot(machine, 2, machine->ram_size - vcram_size);
+ }
+ 
+ static void raspi2_machine_init(MachineClass *mc)
+diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
+index f0cf431..d99780e 100644
+--- a/hw/display/Makefile.objs
++++ b/hw/display/Makefile.objs
+@@ -27,6 +27,7 @@ endif
+ obj-$(CONFIG_OMAP) += omap_dss.o
+ obj-$(CONFIG_OMAP) += omap_lcdc.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx_lcd.o
++obj-$(CONFIG_RASPI) += bcm2835_fb.o
+ obj-$(CONFIG_SM501) += sm501.o
+ obj-$(CONFIG_TCX) += tcx.o
+ obj-$(CONFIG_CG3) += cg3.o
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
 new file mode 100644
-index 0000000..0394d11
+index 0000000..779b56f
 --- /dev/null
-+++ b/hw/char/bcm2835_aux.c
-@@ -0,0 +1,316 @@
++++ b/hw/display/bcm2835_fb.c
+@@ -0,0 +1,424 @@
 +/*
-+ * BCM2835 (Raspberry Pi / Pi 2) Aux block (mini UART and SPI).
-+ * Copyright (c) 2015, Microsoft
-+ * Written by Andrew Baumann
-+ * Based on pl011.c, copyright terms below:
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * Refactoring for Pi2 Copyright (c) 2015, Microsoft. Written by Andrew Baumann.
++ * This code is licensed under the GNU GPLv2 and later.
 + *
-+ * Arm PrimeCell PL011 UART
++ * Heavily based on milkymist-vgafb.c, copyright terms below:
++ *  QEMU model of the Milkymist VGA framebuffer.
 + *
-+ * Copyright (c) 2006 CodeSourcery.
-+ * Written by Paul Brook
++ *  Copyright (c) 2010-2012 Michael Walle <michael@walle.cc>
 + *
-+ * This code is licensed under the GPL.
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
 + *
-+ * At present only the core UART functions (data path for tx/rx) are
-+ * implemented. The following features/registers are unimplemented:
-+ *  - Line/modem control
-+ *  - Scratch register
-+ *  - Extra control
-+ *  - Baudrate
-+ *  - SPI interfaces
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ *
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/char/bcm2835_aux.h"
++#include "hw/display/bcm2835_fb.h"
++#include "hw/display/framebuffer.h"
++#include "ui/pixel_ops.h"
++#include "hw/misc/bcm2835_mbox_defs.h"
 +
-+#define AUX_IRQ         0x0
-+#define AUX_ENABLES     0x4
-+#define AUX_MU_IO_REG   0x40
-+#define AUX_MU_IER_REG  0x44
-+#define AUX_MU_IIR_REG  0x48
-+#define AUX_MU_LCR_REG  0x4c
-+#define AUX_MU_MCR_REG  0x50
-+#define AUX_MU_LSR_REG  0x54
-+#define AUX_MU_MSR_REG  0x58
-+#define AUX_MU_SCRATCH  0x5c
-+#define AUX_MU_CNTL_REG 0x60
-+#define AUX_MU_STAT_REG 0x64
-+#define AUX_MU_BAUD_REG 0x68
++#define DEFAULT_VCRAM_SIZE 0x4000000
++#define BCM2835_FB_OFFSET  0x00100000
 +
-+/* bits in IER/IIR registers */
-+#define TX_INT  0x1
-+#define RX_INT  0x2
-+
-+static void bcm2835_aux_update(BCM2835AuxState *s)
++static void fb_invalidate_display(void *opaque)
 +{
-+    /* signal an interrupt if either:
-+     * 1. rx interrupt is enabled and we have a non-empty rx fifo, or
-+     * 2. the tx interrupt is enabled (since we instantly drain the tx fifo)
-+     */
-+    s->iir = 0;
-+    if ((s->ier & RX_INT) && s->read_count != 0) {
-+        s->iir |= RX_INT;
-+    }
-+    if (s->ier & TX_INT) {
-+        s->iir |= TX_INT;
-+    }
-+    qemu_set_irq(s->irq, s->iir != 0);
++    BCM2835FBState *s = BCM2835_FB(opaque);
++
++    s->invalidate = true;
 +}
 +
-+static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
++static void draw_line_src16(void *opaque, uint8_t *dst, const uint8_t *src,
++                            int width, int deststep)
 +{
-+    BCM2835AuxState *s = opaque;
-+    uint32_t c, res;
++    BCM2835FBState *s = opaque;
++    uint16_t rgb565;
++    uint32_t rgb888;
++    uint8_t r, g, b;
++    DisplaySurface *surface = qemu_console_surface(s->con);
++    int bpp = surface_bits_per_pixel(surface);
++
++    while (width--) {
++        switch (s->bpp) {
++        case 8:
++            /* lookup palette starting at video ram base
++             * TODO: cache translation, rather than doing this each time!
++             */
++            rgb888 = ldl_le_phys(&s->dma_as, s->vcram_base + (*src << 2));
++            r = (rgb888 >> 0) & 0xff;
++            g = (rgb888 >> 8) & 0xff;
++            b = (rgb888 >> 16) & 0xff;
++            src++;
++            break;
++        case 16:
++            rgb565 = lduw_le_p(src);
++            r = ((rgb565 >> 11) & 0x1f) << 3;
++            g = ((rgb565 >>  5) & 0x3f) << 2;
++            b = ((rgb565 >>  0) & 0x1f) << 3;
++            src += 2;
++            break;
++        case 24:
++            rgb888 = ldl_le_p(src);
++            r = (rgb888 >> 0) & 0xff;
++            g = (rgb888 >> 8) & 0xff;
++            b = (rgb888 >> 16) & 0xff;
++            src += 3;
++            break;
++        case 32:
++            rgb888 = ldl_le_p(src);
++            r = (rgb888 >> 0) & 0xff;
++            g = (rgb888 >> 8) & 0xff;
++            b = (rgb888 >> 16) & 0xff;
++            src += 4;
++            break;
++        default:
++            r = 0;
++            g = 0;
++            b = 0;
++            break;
++        }
++
++        if (s->pixo == 0) {
++            /* swap to BGR pixel format */
++            uint8_t tmp = r;
++            r = b;
++            b = tmp;
++        }
++
++        switch (bpp) {
++        case 8:
++            *dst++ = rgb_to_pixel8(r, g, b);
++            break;
++        case 15:
++            *(uint16_t *)dst = rgb_to_pixel15(r, g, b);
++            dst += 2;
++            break;
++        case 16:
++            *(uint16_t *)dst = rgb_to_pixel16(r, g, b);
++            dst += 2;
++            break;
++        case 24:
++            rgb888 = rgb_to_pixel24(r, g, b);
++            *dst++ = rgb888 & 0xff;
++            *dst++ = (rgb888 >> 8) & 0xff;
++            *dst++ = (rgb888 >> 16) & 0xff;
++            break;
++        case 32:
++            *(uint32_t *)dst = rgb_to_pixel32(r, g, b);
++            dst += 4;
++            break;
++        default:
++            return;
++        }
++    }
++}
++
++static void fb_update_display(void *opaque)
++{
++    BCM2835FBState *s = opaque;
++    DisplaySurface *surface = qemu_console_surface(s->con);
++    int first = 0;
++    int last = 0;
++    int src_width = 0;
++    int dest_width = 0;
++
++    if (s->lock || !s->xres) {
++        return;
++    }
++
++    src_width = s->xres * (s->bpp >> 3);
++    dest_width = s->xres;
++
++    switch (surface_bits_per_pixel(surface)) {
++    case 0:
++        return;
++    case 8:
++        break;
++    case 15:
++        dest_width *= 2;
++        break;
++    case 16:
++        dest_width *= 2;
++        break;
++    case 24:
++        dest_width *= 3;
++        break;
++    case 32:
++        dest_width *= 4;
++        break;
++    default:
++        hw_error("bcm2835_fb: bad color depth\n");
++        break;
++    }
++
++    if (s->invalidate) {
++        framebuffer_update_memory_section(&s->fbsection, s->dma_mr, s->base,
++                                          s->yres, src_width);
++    }
++
++    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
++                               src_width, dest_width, 0, s->invalidate,
++                               draw_line_src16, s, &first, &last);
++
++    if (first >= 0) {
++        dpy_gfx_update(s->con, 0, first, s->xres, last - first + 1);
++    }
++
++    s->invalidate = false;
++}
++
++static void bcm2835_fb_mbox_push(BCM2835FBState *s, uint32_t value)
++{
++    value &= ~0xf;
++
++    s->lock = true;
++
++    s->xres = ldl_le_phys(&s->dma_as, value);
++    s->yres = ldl_le_phys(&s->dma_as, value + 4);
++    s->xres_virtual = ldl_le_phys(&s->dma_as, value + 8);
++    s->yres_virtual = ldl_le_phys(&s->dma_as, value + 12);
++    s->bpp = ldl_le_phys(&s->dma_as, value + 20);
++    s->xoffset = ldl_le_phys(&s->dma_as, value + 24);
++    s->yoffset = ldl_le_phys(&s->dma_as, value + 28);
++
++    s->base = s->vcram_base | (value & 0xc0000000);
++    s->base += BCM2835_FB_OFFSET;
++
++    /* TODO - Manage properly virtual resolution */
++
++    s->pitch = s->xres * (s->bpp >> 3);
++    s->size = s->yres * s->pitch;
++
++    stl_le_phys(&s->dma_as, value + 16, s->pitch);
++    stl_le_phys(&s->dma_as, value + 32, s->base);
++    stl_le_phys(&s->dma_as, value + 36, s->size);
++
++    s->invalidate = true;
++    qemu_console_resize(s->con, s->xres, s->yres);
++    s->lock = false;
++}
++
++void bcm2835_fb_reconfigure(BCM2835FBState *s, uint32_t *xres, uint32_t *yres,
++                            uint32_t *xoffset, uint32_t *yoffset, uint32_t *bpp,
++                            uint32_t *pixo, uint32_t *alpha)
++{
++    s->lock = true;
++
++    /* TODO: input validation! */
++    if (xres) {
++        s->xres = *xres;
++    }
++    if (yres) {
++        s->yres = *yres;
++    }
++    if (xoffset) {
++        s->xoffset = *xoffset;
++    }
++    if (yoffset) {
++        s->yoffset = *yoffset;
++    }
++    if (bpp) {
++        s->bpp = *bpp;
++    }
++    if (pixo) {
++        s->pixo = *pixo;
++    }
++    if (alpha) {
++        s->alpha = *alpha;
++    }
++
++    /* TODO - Manage properly virtual resolution */
++
++    s->pitch = s->xres * (s->bpp >> 3);
++    s->size = s->yres * s->pitch;
++
++    s->invalidate = true;
++    qemu_console_resize(s->con, s->xres, s->yres);
++    s->lock = false;
++}
++
++static uint64_t bcm2835_fb_read(void *opaque, hwaddr offset, unsigned size)
++{
++    BCM2835FBState *s = opaque;
++    uint32_t res = 0;
 +
 +    switch (offset) {
-+    case AUX_IRQ:
-+        return s->iir != 0;
++    case MBOX_AS_DATA:
++        res = MBOX_CHAN_FB;
++        s->pending = false;
++        qemu_set_irq(s->mbox_irq, 0);
++        break;
 +
-+    case AUX_ENABLES:
-+        return 1; /* mini UART permanently enabled */
-+
-+    case AUX_MU_IO_REG:
-+        /* "DLAB bit set means access baudrate register" is NYI */
-+        c = s->read_fifo[s->read_pos];
-+        if (s->read_count > 0) {
-+            s->read_count--;
-+            if (++s->read_pos == BCM2835_AUX_RX_FIFO_LEN) {
-+                s->read_pos = 0;
-+            }
-+        }
-+        if (s->chr) {
-+            qemu_chr_accept_input(s->chr);
-+        }
-+        bcm2835_aux_update(s);
-+        return c;
-+
-+    case AUX_MU_IER_REG:
-+        /* "DLAB bit set means access baudrate register" is NYI */
-+        return 0xc0 | s->ier; /* FIFO enables always read 1 */
-+
-+    case AUX_MU_IIR_REG:
-+        res = 0xc0; /* FIFO enables */
-+        /* The spec is unclear on what happens when both tx and rx
-+         * interrupts are active, besides that this cannot occur. At
-+         * present, we choose to prioritise the rx interrupt, since
-+         * the tx fifo is always empty. */
-+        if (s->read_count != 0) {
-+            res |= 0x4;
-+        } else {
-+            res |= 0x2;
-+        }
-+        if (s->iir == 0) {
-+            res |= 0x1;
-+        }
-+        return res;
-+
-+    case AUX_MU_LCR_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
-+        return 0;
-+
-+    case AUX_MU_MCR_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
-+        return 0;
-+
-+    case AUX_MU_LSR_REG:
-+        res = 0x60; /* tx idle, empty */
-+        if (s->read_count != 0) {
-+            res |= 0x1;
-+        }
-+        return res;
-+
-+    case AUX_MU_MSR_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MSR_REG unsupported\n", __func__);
-+        return 0;
-+
-+    case AUX_MU_SCRATCH:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
-+        return 0;
-+
-+    case AUX_MU_CNTL_REG:
-+        return 0x3; /* tx, rx enabled */
-+
-+    case AUX_MU_STAT_REG:
-+        res = 0x30e; /* space in the output buffer, empty tx fifo, idle tx/rx */
-+        if (s->read_count > 0) {
-+            res |= 0x1; /* data in input buffer */
-+            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
-+            res |= ((uint32_t)s->read_count) << 16; /* rx fifo fill level */
-+        }
-+        return res;
-+
-+    case AUX_MU_BAUD_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
-+        return 0;
++    case MBOX_AS_PENDING:
++        res = s->pending;
++        break;
 +
 +    default:
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
 +                      __func__, offset);
 +        return 0;
 +    }
++
++    return res;
 +}
 +
-+static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
-+                              unsigned size)
++static void bcm2835_fb_write(void *opaque, hwaddr offset, uint64_t value,
++                             unsigned size)
 +{
-+    BCM2835AuxState *s = opaque;
-+    unsigned char ch;
++    BCM2835FBState *s = opaque;
 +
 +    switch (offset) {
-+    case AUX_ENABLES:
-+        if (value != 1) {
-+            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI "
-+                          "or disable UART\n", __func__);
-+        }
-+        break;
-+
-+    case AUX_MU_IO_REG:
-+        /* "DLAB bit set means access baudrate register" is NYI */
-+        ch = value;
-+        if (s->chr) {
-+            qemu_chr_fe_write(s->chr, &ch, 1);
-+        }
-+        break;
-+
-+    case AUX_MU_IER_REG:
-+        /* "DLAB bit set means access baudrate register" is NYI */
-+        s->ier = value & (TX_INT | RX_INT);
-+        bcm2835_aux_update(s);
-+        break;
-+
-+    case AUX_MU_IIR_REG:
-+        if (value & 0x2) {
-+            s->read_count = 0;
-+        }
-+        break;
-+
-+    case AUX_MU_LCR_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
-+        break;
-+
-+    case AUX_MU_MCR_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
-+        break;
-+
-+    case AUX_MU_SCRATCH:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
-+        break;
-+
-+    case AUX_MU_CNTL_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_CNTL_REG unsupported\n", __func__);
-+        break;
-+
-+    case AUX_MU_BAUD_REG:
-+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
++    case MBOX_AS_DATA:
++        /* bcm2835_mbox should check our pending status before pushing */
++        assert(!s->pending);
++        s->pending = true;
++        bcm2835_fb_mbox_push(s, value);
++        qemu_set_irq(s->mbox_irq, 1);
 +        break;
 +
 +    default:
 +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
 +                      __func__, offset);
++        return;
 +    }
-+
-+    bcm2835_aux_update(s);
 +}
 +
-+static int bcm2835_aux_can_receive(void *opaque)
-+{
-+    BCM2835AuxState *s = opaque;
-+
-+    return s->read_count < BCM2835_AUX_RX_FIFO_LEN;
-+}
-+
-+static void bcm2835_aux_put_fifo(void *opaque, uint8_t value)
-+{
-+    BCM2835AuxState *s = opaque;
-+    int slot;
-+
-+    slot = s->read_pos + s->read_count;
-+    if (slot >= BCM2835_AUX_RX_FIFO_LEN) {
-+        slot -= BCM2835_AUX_RX_FIFO_LEN;
-+    }
-+    s->read_fifo[slot] = value;
-+    s->read_count++;
-+    if (s->read_count == BCM2835_AUX_RX_FIFO_LEN) {
-+        /* buffer full */
-+    }
-+    bcm2835_aux_update(s);
-+}
-+
-+static void bcm2835_aux_receive(void *opaque, const uint8_t *buf, int size)
-+{
-+    bcm2835_aux_put_fifo(opaque, *buf);
-+}
-+
-+static const MemoryRegionOps bcm2835_aux_ops = {
-+    .read = bcm2835_aux_read,
-+    .write = bcm2835_aux_write,
++static const MemoryRegionOps bcm2835_fb_ops = {
++    .read = bcm2835_fb_read,
++    .write = bcm2835_fb_write,
 +    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid.min_access_size = 4,
 +    .valid.max_access_size = 4,
 +};
 +
-+static const VMStateDescription vmstate_bcm2835_aux = {
-+    .name = TYPE_BCM2835_AUX,
++static const VMStateDescription vmstate_bcm2835_fb = {
++    .name = TYPE_BCM2835_FB,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(read_fifo, BCM2835AuxState,
-+                            BCM2835_AUX_RX_FIFO_LEN),
-+        VMSTATE_UINT8(read_pos, BCM2835AuxState),
-+        VMSTATE_UINT8(read_count, BCM2835AuxState),
-+        VMSTATE_UINT8(ier, BCM2835AuxState),
-+        VMSTATE_UINT8(iir, BCM2835AuxState),
++        VMSTATE_BOOL(lock, BCM2835FBState),
++        VMSTATE_BOOL(invalidate, BCM2835FBState),
++        VMSTATE_BOOL(pending, BCM2835FBState),
++        VMSTATE_UINT32(xres, BCM2835FBState),
++        VMSTATE_UINT32(yres, BCM2835FBState),
++        VMSTATE_UINT32(xres_virtual, BCM2835FBState),
++        VMSTATE_UINT32(yres_virtual, BCM2835FBState),
++        VMSTATE_UINT32(xoffset, BCM2835FBState),
++        VMSTATE_UINT32(yoffset, BCM2835FBState),
++        VMSTATE_UINT32(bpp, BCM2835FBState),
++        VMSTATE_UINT32(base, BCM2835FBState),
++        VMSTATE_UINT32(pitch, BCM2835FBState),
++        VMSTATE_UINT32(size, BCM2835FBState),
++        VMSTATE_UINT32(pixo, BCM2835FBState),
++        VMSTATE_UINT32(alpha, BCM2835FBState),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void bcm2835_aux_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    BCM2835AuxState *s = BCM2835_AUX(obj);
++static const GraphicHwOps vgafb_ops = {
++    .invalidate  = fb_invalidate_display,
++    .gfx_update  = fb_update_display,
++};
 +
-+    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_aux_ops, s,
-+                          TYPE_BCM2835_AUX, 0x100);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
++static void bcm2835_fb_init(Object *obj)
++{
++    BCM2835FBState *s = BCM2835_FB(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_fb_ops, s, TYPE_BCM2835_FB,
++                          0x10);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(s), &s->mbox_irq);
 +}
 +
-+static void bcm2835_aux_realize(DeviceState *dev, Error **errp)
++static void bcm2835_fb_reset(DeviceState *dev)
 +{
-+    BCM2835AuxState *s = BCM2835_AUX(dev);
++    BCM2835FBState *s = BCM2835_FB(dev);
 +
-+    if (s->chr) {
-+        qemu_chr_add_handlers(s->chr, bcm2835_aux_can_receive,
-+                              bcm2835_aux_receive, NULL, s);
++    s->pending = false;
++
++    s->xres_virtual = s->xres;
++    s->yres_virtual = s->yres;
++    s->xoffset = 0;
++    s->yoffset = 0;
++    s->base = s->vcram_base + BCM2835_FB_OFFSET;
++    s->pitch = s->xres * (s->bpp >> 3);
++    s->size = s->yres * s->pitch;
++
++    s->invalidate = true;
++    s->lock = false;
++}
++
++static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
++{
++    BCM2835FBState *s = BCM2835_FB(dev);
++    Error *err = NULL;
++    Object *obj;
++
++    if (s->vcram_base == 0) {
++        error_setg(errp, "%s: required vcram-base property not set", __func__);
++        return;
 +    }
++
++    obj = object_property_get_link(OBJECT(dev), "dma-mr", &err);
++    if (obj == NULL) {
++        error_setg(errp, "%s: required dma-mr link not found: %s",
++                   __func__, error_get_pretty(err));
++        return;
++    }
++
++    s->dma_mr = MEMORY_REGION(obj);
++    address_space_init(&s->dma_as, s->dma_mr, NULL);
++
++    bcm2835_fb_reset(dev);
++
++    s->con = graphic_console_init(dev, 0, &vgafb_ops, s);
++    qemu_console_resize(s->con, s->xres, s->yres);
 +}
 +
-+static Property bcm2835_aux_props[] = {
-+    DEFINE_PROP_CHR("chardev", BCM2835AuxState, chr),
-+    DEFINE_PROP_END_OF_LIST(),
++static Property bcm2835_fb_props[] = {
++    DEFINE_PROP_UINT32("vcram-base", BCM2835FBState, vcram_base, 0),/*required*/
++    DEFINE_PROP_UINT32("vcram-size", BCM2835FBState, vcram_size,
++                       DEFAULT_VCRAM_SIZE),
++    DEFINE_PROP_UINT32("xres", BCM2835FBState, xres, 640),
++    DEFINE_PROP_UINT32("yres", BCM2835FBState, yres, 480),
++    DEFINE_PROP_UINT32("bpp", BCM2835FBState, bpp, 16),
++    DEFINE_PROP_UINT32("pixo", BCM2835FBState, pixo, 1), /* 1=RGB, 0=BGR */
++    DEFINE_PROP_UINT32("alpha", BCM2835FBState, alpha, 2), /* alpha ignored */
++    DEFINE_PROP_END_OF_LIST()
 +};
 +
-+static void bcm2835_aux_class_init(ObjectClass *oc, void *data)
++static void bcm2835_fb_class_init(ObjectClass *klass, void *data)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->realize = bcm2835_aux_realize;
-+    dc->vmsd = &vmstate_bcm2835_aux;
-+    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-+    dc->props = bcm2835_aux_props;
++    dc->props = bcm2835_fb_props;
++    dc->realize = bcm2835_fb_realize;
++    dc->reset = bcm2835_fb_reset;
++    dc->vmsd = &vmstate_bcm2835_fb;
 +}
 +
-+static const TypeInfo bcm2835_aux_info = {
-+    .name          = TYPE_BCM2835_AUX,
++static TypeInfo bcm2835_fb_info = {
++    .name          = TYPE_BCM2835_FB,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835AuxState),
-+    .instance_init = bcm2835_aux_init,
-+    .class_init    = bcm2835_aux_class_init,
++    .instance_size = sizeof(BCM2835FBState),
++    .class_init    = bcm2835_fb_class_init,
++    .instance_init = bcm2835_fb_init,
 +};
 +
-+static void bcm2835_aux_register_types(void)
++static void bcm2835_fb_register_types(void)
 +{
-+    type_register_static(&bcm2835_aux_info);
++    type_register_static(&bcm2835_fb_info);
 +}
 +
-+type_init(bcm2835_aux_register_types)
++type_init(bcm2835_fb_register_types)
 diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 5d888dc..889adf5 100644
+index 889adf5..e19d360 100644
 --- a/include/hw/arm/bcm2835_peripherals.h
 +++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -14,6 +14,7 @@
- #include "qemu-common.h"
+@@ -15,6 +15,7 @@
  #include "exec/address-spaces.h"
  #include "hw/sysbus.h"
-+#include "hw/char/bcm2835_aux.h"
+ #include "hw/char/bcm2835_aux.h"
++#include "hw/display/bcm2835_fb.h"
  #include "hw/intc/bcm2835_ic.h"
  #include "hw/misc/bcm2835_property.h"
  #include "hw/misc/bcm2835_mbox.h"
-@@ -33,6 +34,7 @@ typedef struct BCM2835PeripheralState {
-     qemu_irq irq, fiq;
+@@ -35,6 +36,7 @@ typedef struct BCM2835PeripheralState {
  
      SysBusDevice *uart0;
-+    BCM2835AuxState aux;
+     BCM2835AuxState aux;
++    BCM2835FBState fb;
      BCM2835ICState ic;
      BCM2835PropertyState property;
      BCM2835MboxState mboxes;
-diff --git a/include/hw/char/bcm2835_aux.h b/include/hw/char/bcm2835_aux.h
+diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_fb.h
 new file mode 100644
-index 0000000..42f0ee7
+index 0000000..9a12d7a
 --- /dev/null
-+++ b/include/hw/char/bcm2835_aux.h
-@@ -0,0 +1,33 @@
++++ b/include/hw/display/bcm2835_fb.h
+@@ -0,0 +1,47 @@
 +/*
++ * Raspberry Pi emulation (c) 2012 Gregory Estrade
++ * Upstreaming code cleanup [including bcm2835_*] (c) 2013 Jan Petrous
++ *
 + * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
 + * Written by Andrew Baumann
 + *
 + * This code is licensed under the GNU GPLv2 and later.
 + */
 +
-+#ifndef BCM2835_AUX_H
-+#define BCM2835_AUX_H
++#ifndef BCM2835_FB_H
++#define BCM2835_FB_H
 +
 +#include "hw/sysbus.h"
-+#include "sysemu/char.h"
++#include "exec/address-spaces.h"
++#include "ui/console.h"
 +
-+#define TYPE_BCM2835_AUX "bcm2835-aux"
-+#define BCM2835_AUX(obj) OBJECT_CHECK(BCM2835AuxState, (obj), TYPE_BCM2835_AUX)
-+
-+#define BCM2835_AUX_RX_FIFO_LEN 8
++#define TYPE_BCM2835_FB "bcm2835-fb"
++#define BCM2835_FB(obj) OBJECT_CHECK(BCM2835FBState, (obj), TYPE_BCM2835_FB)
 +
 +typedef struct {
 +    /*< private >*/
-+    SysBusDevice parent_obj;
++    SysBusDevice busdev;
 +    /*< public >*/
 +
++    uint32_t vcram_base, vcram_size;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
 +    MemoryRegion iomem;
-+    CharDriverState *chr;
-+    qemu_irq irq;
++    MemoryRegionSection fbsection;
++    QemuConsole *con;
++    qemu_irq mbox_irq;
 +
-+    uint8_t read_fifo[BCM2835_AUX_RX_FIFO_LEN];
-+    uint8_t read_pos, read_count;
-+    uint8_t ier, iir;
-+} BCM2835AuxState;
++    bool lock, invalidate, pending;
++    uint32_t xres, yres;
++    uint32_t xres_virtual, yres_virtual;
++    uint32_t xoffset, yoffset;
++    uint32_t bpp;
++    uint32_t base, pitch, size;
++    uint32_t pixo, alpha;
++} BCM2835FBState;
++
++void bcm2835_fb_reconfigure(BCM2835FBState *s, uint32_t *xres, uint32_t *yres,
++                            uint32_t *xoffset, uint32_t *yoffset, uint32_t *bpp,
++                            uint32_t *pixo, uint32_t *alpha);
 +
 +#endif
 -- 

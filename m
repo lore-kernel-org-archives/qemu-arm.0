@@ -1,102 +1,117 @@
-Received: by 10.25.208.211 with SMTP id h202csp2803869lfg;
-        Thu, 3 Mar 2016 09:10:05 -0800 (PST)
-X-Received: by 10.140.170.70 with SMTP id q67mr4830895qhq.8.1457025005233;
-        Thu, 03 Mar 2016 09:10:05 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp13091lfg;
+        Thu, 3 Mar 2016 10:25:48 -0800 (PST)
+X-Received: by 10.55.74.141 with SMTP id x135mr4881901qka.20.1457029548050;
+        Thu, 03 Mar 2016 10:25:48 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o31si31319895qko.59.2016.03.03.09.10.05
+        by mx.google.com with ESMTPS id z69si6216923qgd.9.2016.03.03.10.25.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Mar 2016 09:10:05 -0800 (PST)
+        Thu, 03 Mar 2016 10:25:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:36472 helo=lists.gnu.org)
+Received: from localhost ([::1]:36712 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abWlI-00008m-MB
-	for alex.bennee@linaro.org; Thu, 03 Mar 2016 12:10:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54957)
+	id 1abXwZ-0004oL-Ef
+	for alex.bennee@linaro.org; Thu, 03 Mar 2016 13:25:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43497)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abWks-0008Ht-Vm
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 12:09:40 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvl-0003pl-Q5
+	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:24:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abWkp-0004CI-Mz
-	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 12:09:38 -0500
-Received: from mail-by2on0122.outbound.protection.outlook.com
-	([207.46.100.122]:56730
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1abXvh-0007Yz-5v
+	for qemu-devel@nongnu.org; Thu, 03 Mar 2016 13:24:57 -0500
+Received: from mail-by2on0131.outbound.protection.outlook.com
+	([207.46.100.131]:35372
 	helo=na01-by2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1abWkp-0004Bq-88; Thu, 03 Mar 2016 12:09:35 -0500
+	id 1abXvg-0007YX-Vj; Thu, 03 Mar 2016 13:24:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=cuBYN8pCUvAsHInqkHjwsQ26Af1yGe/vUd2qKwlSbQ0=;
-	b=N0ipyfKiAJ+KChByKd3W1NJdkp1PpQn7i0TxkHdwPrLSWnW77nAp4ltTOWX7GKOCg5wOx5/jkqZYRO6sus+f+u/ryWRh+3oDytICy9N3xRTD+I6jeJCJZFaaMZMm3jyMpaCu13w1tQpn6y3ukUcYornGLkIGioF+wEFNbBqkGfQ=
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) with Microsoft
-	SMTP Server (TLS) id 15.1.415.20; Thu, 3 Mar 2016 17:09:33 +0000
-Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
-	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
-	15.01.0415.024; Thu, 3 Mar 2016 17:09:33 +0000
-From: Andrew Baumann <Andrew.Baumann@microsoft.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH RFC] bcm2835_dma: add emulation of Raspberry
-	Pi DMA controller
-Thread-Index: AQHRc0aO1xiIlEBZ/kyHYTgkrbyXRJ9HylWAgAAfGgCAAAGXgIAAC7Hw
-Date: Thu, 3 Mar 2016 17:09:33 +0000
-Message-ID: <BLUPR0301MB203489910518E01A55BB8C8E9EBD0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-References: <1456787490-17112-1-git-send-email-Andrew.Baumann@microsoft.com>
-	<CAFEAcA8G92yYdFAa6P0fdK1KLULAD6rxNc=ENG5=Qp8Lxf8g2w@mail.gmail.com>
-	<1457021768.3574.58.camel@redhat.com>
-	<CAFEAcA83d79ta+-40_M_mXYs9E=eSQMH9jL7kw-UpPLxK-8Kyw@mail.gmail.com>
-In-Reply-To: <CAFEAcA83d79ta+-40_M_mXYs9E=eSQMH9jL7kw-UpPLxK-8Kyw@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: linaro.org; dkim=none (message not signed)
-	header.d=none; linaro.org;
+	bh=MbzuKiQ4iYNIK8y+NseEQ95K4eLx98a3eQZ7FtRHBr8=;
+	b=CaxK95JyctUhaWxEN/R6aEq3a9gvseiQE0k3+K11n3Ed3kZZWnKEegPW3hJNV5/F3bMkgdoqezEEn0afLBlmqW/1hvmyMZXTgFbFTZjprYENFwWC5LXIOZ7hOR6kiFtPQctTU+DNF5zJ2sJpfPszWUpDBS3ju0TNc9VkAb8CXQI=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+	header.d=none; nongnu.org;
 	dmarc=none action=none header.from=microsoft.com; 
-x-originating-ip: [2001:4898:80e8:4::724]
-x-ms-office365-filtering-correlation-id: 285e6582-a8fb-4e42-369a-08d343869769
-x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2034;
-	5:PJMxokry5IwuvcAOkerfxWGosC56LQjanPw/uBr7OdGAzpVcXy4TInlKzsq+AzQUWP/BuBDOsJ/ZIw2SpMco5WRdPrKbeZQ47X1KZ5YPsqtTkqoFzQl6E91YaLMXX8KDbOlZxQ6bP5hxyTx3q3sWXw==;
-	24:WWk9//sgwVLaM3yI+FjWz7El/yXoLbjFvtMZZaRx7B1vBqTRs668A6Oc0cV7LfDMMdnziPH7wY2V4TqnZ/27EBSrMmWfmZ1Hdqp6JQzAPng=
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2034;
-x-microsoft-antispam-prvs: <BLUPR0301MB2034DF5C7F6B907DF3327AEA9EBD0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:;
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(61425038)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(61426038)(61427038);
-	SRVR:BLUPR0301MB2034; BCL:0; PCL:0; RULEID:;
-	SRVR:BLUPR0301MB2034; 
-x-forefront-prvs: 0870212862
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(377454003)(51914003)(24454002)(2906002)(586003)(50986999)(5008740100001)(5005710100001)(1220700001)(102836003)(86612001)(5003600100002)(10290500002)(1096002)(6116002)(11100500001)(10400500002)(76176999)(5002640100001)(54356999)(40100003)(189998001)(5001770100001)(33656002)(10090500001)(4326007)(76576001)(86362001)(74316001)(3280700002)(77096005)(92566002)(2950100001)(19580405001)(8990500004)(122556002)(5004730100002)(99286002)(3660700001)(2900100001)(19580395003)(106116001)(81166005)(3826002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2034;
-	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
-	MLV:sfv; LANG:en; 
-spamdiagnosticoutput: 1:23
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8:5::724)
+	by CY1PR0301MB2042.namprd03.prod.outlook.com (10.164.2.24) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.427.16; Thu, 3 Mar 2016 18:24:50 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: <qemu-devel@nongnu.org>
+Date: Thu, 3 Mar 2016 10:24:35 -0800
+Message-ID: <1457029479-11312-2-git-send-email-Andrew.Baumann@microsoft.com>
+X-Mailer: git-send-email 2.5.1
+In-Reply-To: <1457029479-11312-1-git-send-email-Andrew.Baumann@microsoft.com>
+References: <1457029479-11312-1-git-send-email-Andrew.Baumann@microsoft.com>
 MIME-Version: 1.0
+Content-Type: text/plain
+X-Originating-IP: [2001:4898:80e8:5::724]
+X-ClientProxiedBy: CO2PR20CA0017.namprd20.prod.outlook.com (25.163.96.27) To
+	CY1PR0301MB2042.namprd03.prod.outlook.com (25.164.2.24)
+X-MS-Office365-Filtering-Correlation-Id: a4767377-7f98-4fb9-653a-08d343911c0b
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
+	2:MaPTr+WxQK/b7E2IjeiixuVumHL9sqK1Rr3WXxsaDPtQZUL5BexLh9Gt5IHw5yutIiJCcGjPpws1qQpdu01tWoXYwvx1RT1ozKVOIW1q3RrRUHE9eJAeUjRwRhZadLItOx72m6lJ26SmmYwPppeJbFPFVrZdo5M7FToM2NMXz8a8j92A2VSEjVNKQUbmIXMR;
+	3:+VYZvlGSezKRAmjGnFKLM6+cgkOFMakWlnuL5MWpeQth3NvcEBkOUxCLGyBdcJ+pRkAH2utQj4k2FxgAljsh7LmRICmUjNgEHU0HRczHnYGPpss56lnC1A76C9929VgQ;
+	25:BKCp4Zctr5CErQXt9sEgMYWgOyha31upmzqz6WPeZOr5rd+gWdRM05+Snkjwy5rr4TlBrWPFRLxAqFSUdZZqC2IGOZlMKBnxQbQQJsuJjp3Guy4KsUuuOVKYbPA617m/ikRPy1yp+gN2GRi/lmiCu2/2uued5iQyZ6B9y6gcebfjvYiZnSBPsiW+8lEeTvrKrjl7stYCMiSUzrZ6UAeAzG8ssLlQ+b88wFAT8fMH1LoHGF7o78mypL+Dkp5yn+c5NLGxBBt6C4Aw4dHwM6MkJL6xAXBASD1GPaE+XL3PoJPPtBlh1LIpJkNNmguONeA24cswG2iSeJnW0UrHY3YRdQ==
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1PR0301MB2042;
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
+	20:lReD+yCfNKT2GZdbIDQT1K6qIXyRx/EWAibSWMKnxytCsouAK/BTJaN1b9w3+aigSP0e/MCLhohGTyA9JwDDab7agx/3ywr7KV//4ymbjHJDHEfGTPGv6B8mTYJ5HcW6YtcyaPvOenJ4+ZZg/nAn/7/pX0V4O5fI88VMFtv3BJnREdij2XohZQvjrYWfwZIIUI2M0kYafeqpWkXIn4wpZVoZbARN+IuFOrlTM0Z3JD9Oa2jI6hBUWzc2Zh+hT7aIM3yf+8k78ojibf2DnXeArCbP8ZxdOFe/aL6IyXFgvmcTxRcpP47Tf+LggMrNM4GZjJ+obhfIgqkMjixXvgv+uh8dlXe0ZvQi5DyAnm/8qOB4FEncQQF7xY+CFZnSH4c31er05xGbtbRJ6gPI0K7y7ZQ+NSEaiEuFaEff0zZzBqV4/q8y/xwioLBXcsEDzIE02G1XNdBgxZ/YRZkl/AupvnXA2p6oRmJwEcJmpc0CJIR+hGEfOj+SR1y2xjwPNoKb;
+	4:qO6+8plqKxGZwZHihWfzj9+XTyltsWz5vAAqnfttTEglyT3r5k2NP0HPOt+shAJHwACA6zUyMF9a34XfYnFtUIfjJfwv+a1AtqVNPEDCwfF1nWWGUA+/utLCOGrFCr1nKwf/2rRWr3ZAD3Tq9LfAhYzjNXjR5+hd36Bxbrg9DZaxf82hgJgZzamESTCJmL1VlydzK/xG8U0s6v2Nu1+kmapoFuo9Iu+bjSGSGOjUGwKs1uRoUoYsnanlHQwXgcA90AjMYHrAL6x9L0J65Y8+PSXw429iwTZcMwTtM96emb/moxJPLNcb5bvT0yqmlWuurPM3sdSIVzQCp/wDHvq4ZTkiBU6JP+Vkak8FvT3nDGdRg7sUF8nm1+Q5NU4nRpUJ
+X-Microsoft-Antispam-PRVS: <CY1PR0301MB2042166EF50CA2554CE541839EBD0@CY1PR0301MB2042.namprd03.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046);
+	SRVR:CY1PR0301MB2042; BCL:0; PCL:0; RULEID:;
+	SRVR:CY1PR0301MB2042; 
+X-Forefront-PRVS: 0870212862
+X-Forefront-Antispam-Report: SFV:NSPM;
+	SFS:(10019020)(4630300001)(6009001)(2351001)(50986999)(4326007)(76176999)(1096002)(2906002)(5005710100001)(87976001)(10290500002)(40100003)(36756003)(4001430100002)(6116002)(47776003)(586003)(122386002)(42186005)(92566002)(86612001)(19580395003)(77096005)(10090500001)(5003940100001)(86362001)(19580405001)(189998001)(2950100001)(50226001)(229853001)(48376002)(5008740100001)(110136002)(50466002)(5004730100002)(107886002)(81166005)(15760500001)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:CY1PR0301MB2042;
+	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
+	MLV:sfv; LANG:en; 
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1PR0301MB2042;
+	23:9p+3evTMYODD4tD/vMLqzjSJZXvU7cnjFnm8W8e?=
+	=?us-ascii?Q?laTq3wgbYTl2rJjZlOAbm0YnXNtJb5x7JmE95acT+n0LeMTenhiEZhwDbMMp?=
+	=?us-ascii?Q?r5Lwq1bEoMb7bYe445TydhrMJKYtoLH2TgoQdVdUC6LPAUmE+yyC1Nt9vAje?=
+	=?us-ascii?Q?LlhFJ2J1Lhi1yGO0FKW5qj541M/5TXyPwn06gZ7rD7+jDP+XRqrGUp+PS8OD?=
+	=?us-ascii?Q?dN7xaLcUI6W70zMbBTfsLt6gZcxtXVS1tvpG/eX3L4rnt27TlPwISNcIOmBt?=
+	=?us-ascii?Q?t/66AVTxR49NigaNUUWqtxuXtIQGspGp1m6ldsfE+1nuAOx0SWWnjv0dRgv2?=
+	=?us-ascii?Q?KT+aQeIgdHuDx63TpDBCZxGg+EKuX0sBSOlx6Pn0XdK72Ixm/TqAjrifYTpR?=
+	=?us-ascii?Q?yrRsPFQeeeKeVpcRjxi0vTtWihQis55TrSqnygiQMVM2um+3YvJ+jl0YGij0?=
+	=?us-ascii?Q?Gixqh3GZkJ+Q4eoW6CFVg/O/ABJHilwnmgslNniJ7AVQY3hQ4omTJOEvaDuZ?=
+	=?us-ascii?Q?o9aiTiuXoWJ5Q8rvg/JM20tkBvIi12YHsUep3l/NpPvGWnPVbHNQ762WiokM?=
+	=?us-ascii?Q?/LPRhY8C6L2ssqC+0B+3bn/6RyrkkvdzSmmvf5Q2/RYr5YN/LxFMfJ38eVWa?=
+	=?us-ascii?Q?E/jO+F6mKpAjAoa9YIEmhySxJe8Jeo16/vK7TZxHhXLc9JnaaoDlZeE6BT4E?=
+	=?us-ascii?Q?CutWDUWgeeH435nkm03c3ZG2Z6j2xJDMp2/SPtvB53WP2UupnF279qsrCGb5?=
+	=?us-ascii?Q?EVl+77QVJarzjksSt+iw6unCL/UGGFDD1DGNnbbsVj1spHDeaEac3ZVwtxV2?=
+	=?us-ascii?Q?nkyb5zMWwdgdblmIw9QhkLelkBarwElss4eaRTEO02LYBG5OCpoAsFGlud79?=
+	=?us-ascii?Q?qoxTddazTHwkuE/SinzVm00rV3LgoAwY+Lez3Uujz8nGPoS/gXf/Vw+BoVTA?=
+	=?us-ascii?Q?Rki4MYpgTZgBiuikU6WkZikzQ2SDajbZDiDVrbHzX2sV/aKfWRT33L4nknQ2?=
+	=?us-ascii?Q?FB0zSG38HYq+eDghKnmr7P5/TRsXp8g9Kub6L1UsytMYYu0nOzingobTfDwM?=
+	=?us-ascii?Q?w34BnBMIsRSHLTt9Jn1W1YgM+LwsU/KVqM9mmjYhfVHanIYr95Q=3D=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; CY1PR0301MB2042;
+	5:8sluv2qazTl81plQYrWx71h3qRPFxGMdEYEhpqxe8EzMUvUDC3jDYAMDFdAl/AJFIKtiMlv6iX+++rC6miZ9d30VrOSrbqrbT7sAJq19pGirmVU9iJccoNpLOYoruOO33Una8sSwldie75YwsrjTDA==;
+	24:BiWvVk3DzKKCNDp33M97BMg8Tvdhk/TRJIWKJ45ar4YT2F4BBn3npyOvw4wDPBkS2Uktmi4dgsQ+dHQ9FgsYHYBCPUjnib1FL6vPg++Nm2U=
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Mar 2016 17:09:33.2274 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2034
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2016 18:24:50.6387 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1PR0301MB2042
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.122
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>, Stefan
-	Weil <sw@weilnetz.de>,
-	=?utf-8?B?R3LDqWdvcnkgRVNUUkFERQ==?= <gregory.estrade@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH RFC] bcm2835_dma: add emulation of
- Raspberry Pi DMA controller
+X-Received-From: 207.46.100.131
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Gr=C3=A9gory=20ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [Qemu-devel] [PATCH v2 1/5] bcm2835_peripherals: enable sdhci
+	pending-insert quirk for raspberry pi
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -110,46 +125,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xCHtYE408F5A
+X-TUID: wMGuHFly+hUv
 
-PiBGcm9tOiBQZXRlciBNYXlkZWxsIFttYWlsdG86cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnXQ0K
-PiBTZW50OiBUaHVyc2RheSwgMyBNYXJjaCAyMDE2IDg6MjIgQU0NCj4gDQo+IE9uIDMgTWFyY2gg
-MjAxNiBhdCAxNjoxNiwgR2VyZCBIb2ZmbWFubiA8a3JheGVsQHJlZGhhdC5jb20+IHdyb3RlOg0K
-PiA+IHVzYiBlbXVsYXRpb24gaGFzIHRoaXMgcHJvYmxlbSB0b28uDQo+ID4NCj4gPiB1aGNpIHF1
-ZXVlIGhlYWRzIGNhbiBnbyBpbiBjaXJjbGVzLiAgVGhlIGVtdWxhdGlvbiBjb2RlIGtlZXBzIGEg
-bGlua2VkDQo+ID4gbGlzdCBvZiBhY3RpdmUgcXVldWUgaGVhZHMsIHdoaWNoIGlzIChhbW9uZyBv
-dGhlciBib29ra2VlcGluZyB0aGluZ3MpDQo+ID4gdXNlZCB0byBkZXRlY3Qgd2hlbiB3ZSBydW4g
-aW4gY2lyY2xlcy4gIEl0J3MgYSBsZWdhbCB0aGluZyB0byBkbyBmb3IgYQ0KPiA+IGd1ZXN0IGJ0
-dywgc28geW91IGNhbiBzZWUgdGhhdCBoYXBwZW5pbmcgaW4gcHJhY3RpY2UuDQo+ID4NCj4gPiB1
-bnRpbCByZWNlbnRseSBlaGNpIGNvdWxkIGJlIHRyaWNrZWQgaW50byBydW5uaW5nIGluIGxvb3Bz
-IHRvbywgYnkNCj4gPiBjcmVhdGluZyBhIGNpcmN1bGFyIGNoYWluIG9mIElEVHMuICBXaGljaCBp
-cyBub3QgbGVnYWwgYWNjb3JkaW5nIHRvDQo+ID4gc3BlY3MsIHNvIHRoaXMgd2VudCB1bm5vdGlj
-ZWQgZm9yIGEgd2hpbGUuICBCdXQgYSBtYWxpY2lvdXMgZ3Vlc3QgY2FuIGRvDQo+ID4gaXQgbmV2
-ZXJ0aGVsZXNzLiAgVGhhdCBvbmUgd2FzIGZpeGVkIGJ5IHN0b3BwaW5nIElEVCBwcm9jZXNzaW5n
-IGluIGNhc2UNCj4gPiBubyBkYXRhIHdhcyB0cmFuc2ZlcmVkLiAgVGhpcyBpcyBwb3NzaWJsZSBi
-ZWNhdXNlIHRoZSBlaGNpIGNvbnRyb2xsZXINCj4gPiB3cml0ZXMgYmFjayB0aGUgc3RhdHVzIHRv
-IHRoZSBJRFQsIHNvIHdlIGNhbiBmaWd1cmUgdGhlcmUgaXMgbm90aGluZyB0bw0KPiA+IGRvIChi
-ZWNhdXNlIHdlIGFscmVhZHkgcHJvY2Vzc2VkIHRoYXQgSURUKSB3aXRob3V0IGFkZGl0aW9uYWwN
-Cj4gPiBib29ra2VlcGluZywgYnkgc2ltcGx5IGNoZWNraW5nIHRoZSBzdGF0dXMuDQo+ID4NCj4g
-PiBGcm9tIGEgYnJpZWYgbG9vayBhdCB0aGUgcGF0Y2ggaXQgc2VlbXMgeW91IGNhbiBub3QgdXNl
-IHRoZSBsYXRlciBmb3INCj4gPiB0aGUgYmNtMjgzNSBkbWEgY29udHJvbGxlciwgSSBjYW4ndCBz
-cG90IGEgcGxhY2Ugd2hlcmUgdGhlIHNvbWUgc3RhdHVzDQo+ID4gaXMgd3JpdHRlbiBiYWNrIHRv
-IHRoZSBkbWEgY29udG9sIGJsb2NrIC4uLg0KPiANCj4gSSBndWVzcyBhIG1vcmUgZ2VuZXJhbCBh
-cHByb2FjaCB0byB0aGUgcHJvYmxlbSB3b3VsZCBiZSB0byBoYXZlDQo+IGEgKGhvcGVmdWxseSBl
-YXN5KSB3YXkgdG8gc2F5ICJpZiB0aGlzIGhhcyBiZWVuIGdvaW5nIG9uIGZvciB0b28NCj4gbG9u
-ZyB0aGVuIGFycmFuZ2UgdG8gZGVmZXIgY29udGludWVkIHByb2Nlc3Npbmcgb2YgaXQgdGlsIGxh
-dGVyLA0KPiBhbmQgZm9yIG5vdyByZXN1bWUgdGhlIGd1ZXN0Ii4gVGhhdCdzIHRvbyBiaWcgYSBj
-YW4gb2Ygd29ybXMgZm9yDQo+IHRoaXMgcGF0Y2gsIHRob3VnaC4gKEFuZCBmb3Igc29tZXRoaW5n
-IHRoYXQncyBvbmx5IHVzZWQgaW4gVENHDQo+IGVtdWxhdGlvbiB3ZSBjYXJlIG11Y2ggbGVzcyBh
-Ym91dCBtYWxpY2lvdXMgZ3Vlc3RzIHRoYW4gZm9yIGRldmljZXMNCj4gdGhhdCBjYW4gYmUgdXNl
-ZCB3aXRoIEtWTS4pDQoNCkl0IHNlZW1zIGxpa2UgdGhlIHVsdGltYXRlIHNvbHV0aW9uIGhlcmUg
-aXMgdG8gbW9kZWwgdGhlIGNvbmN1cnJlbmN5IG9mIERNQS4gUnVuIGVhY2ggRE1BIGVuZ2luZSBh
-cyBpdHMgb3duIHRocmVhZCwgaW5jbHVkaW5nIG1vZGVsbGluZyB0aGUgYWJpbGl0eSB0byBwYXVz
-ZS9hYm9ydCB0cmFuc2ZlcnMsIGFuZCBwcm92aWRlIHNvbWUgc3VpdGFibGUgc2NoZWR1bGluZy9y
-ZXNvdXJjZSBhcmJpdHJhdGlvbiBtZWNoYW5pc20sIGFuZCB0aGVuIHlvdSBkb27igJl0IG5lZWQg
-dG8gd29ycnkgYWJvdXQgd2hldGhlciBhIGd1ZXN0IGNhbiB0aWUgdXAgb25lIG9mIHRob3NlIHRo
-cmVhZHMgaW4gYSBsb29wLCBiZWNhdXNlIGl0IGNhbid0IGh1cnQgYW55b25lIGVsc2UuIE9mIGNv
-dXJzZSwgdGhpcyBpcyBtdWNoIG1vcmUgY29tcGxleCB0byBpbXBsZW1lbnQuDQoNCkJ1dCBpbiB0
-aGlzIHBhcnRpY3VsYXIgY2FzZSwgSSBfcmVhbGx5XyBob3BlIHRoYXQgd2UgZG9uJ3QgaGF2ZSB0
-byB3b3JyeSBhYm91dCB2aXJ0dWFsIHJhc3BiZXJyeSBwaSdzIGluIG11bHRpLXRlbmFudCBob3N0
-aW5nISA6KQ0KDQpUaGFua3MgZm9yIHRoZSBmZWVkYmFjaywNCkFuZHJldw0K
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+---
+ hw/arm/bcm2835_peripherals.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 6d66fa0..6ce9cd1 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -171,6 +171,13 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
++                             &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
+     object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+-- 
+2.5.3
+

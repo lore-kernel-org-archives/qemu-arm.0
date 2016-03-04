@@ -1,105 +1,77 @@
-Received: by 10.25.208.211 with SMTP id h202csp5767lfg;
-        Fri, 4 Mar 2016 03:14:52 -0800 (PST)
-X-Received: by 10.140.230.18 with SMTP id a18mr9745054qhc.3.1457090092055;
-        Fri, 04 Mar 2016 03:14:52 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y124si3210296qka.2.2016.03.04.03.14.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 03:14:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=pass header.i=@linaro.org
-Received: from localhost ([::1]:40327 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abnh5-0004l7-Fj
-	for alex.bennee@linaro.org; Fri, 04 Mar 2016 06:14:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34635)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abnh2-0004ja-9Q
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 06:14:49 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abnh1-000322-80
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 06:14:48 -0500
-Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:35147)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1abnh0-00031b-11
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 06:14:47 -0500
-Received: by mail-vk0-x231.google.com with SMTP id e6so50409180vkh.2
-	for <qemu-arm@nongnu.org>; Fri, 04 Mar 2016 03:14:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=kMLm69i+ktvj4EMCy6mtJ60szgw4TakqJJ9BLXr0fHc=;
-	b=X6oLIua2q3ZoWJrlEOrYRrbz7dQy235HlafFfb+j5ZrKR/dYVjXurnvwER0hFVHT+p
-	912AoxaVkA+QUJGyfJPdLPPcMt9BV/LGveVagO/KZ/Zbc4TDrcxfVFV0y0Ta3JUUEFF/
-	ft4TFLGSNbYdnqCwx5iEp694s7f1gVgGJk0k0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=kMLm69i+ktvj4EMCy6mtJ60szgw4TakqJJ9BLXr0fHc=;
-	b=cgiAX4Cbpd5ynjJn5OhPnQAoQZWei3jyaHjJULf6Um/OJcRL0QVwOI0VGOpn3Pf6Qr
-	PObBwimwe1ZaWuTBsq1Bo7l5Sd8OAC9zmcbgnKbIUZEIDpb+WAiwIMizCrl4UcBRvugI
-	WIxhLPks6ujSv1O+YQ9UW0HYHWMVdE8Ajh1LTmo4xfu+b+TCxUlg4TRZ/z/IGNZlO5oM
-	UI1y2ZFAgBYpgVOguI2pwTCESlJ4sZA7l6z9Rj5llxLAq1DSKMQi5hzCrQ48I0ulhmx2
-	hXnWNELWPD/6DeApFgCPSyL7nEELZtPUvzuRzQ0LF3sjkv1iJ8+JzRcthQjAJ21NMmcO
-	rQPA==
-X-Gm-Message-State: AD7BkJKtN+ZUxj/r6Ve/JrB3VAFKpLR0Y9tu9ZWoDAC4aPLKDCYHl8Np3n3xvPgS5crvlsmTtVCQsR/nECnukRok
-X-Received: by 10.31.8.210 with SMTP id 201mr5896334vki.90.1457090085582; Fri,
-	04 Mar 2016 03:14:45 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id e127sm2766091wma.20.2016.03.04.03.18.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 Mar 2016 03:18:20 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id BC8BF3E027E;
+	Fri,  4 Mar 2016 11:18:13 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: rth@twiddle.net,
+	crosthwaitepeter@gmail.com,
+	aurelien@aurel32.net,
+	pbonzini@redhat.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PATCH v8 7/9] target-arm: dfilter support for in_asm
+Date: Fri,  4 Mar 2016 11:18:05 +0000
+Message-Id: <1457090287-8021-8-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.7.2
+In-Reply-To: <1457090287-8021-1-git-send-email-alex.bennee@linaro.org>
+References: <1457090287-8021-1-git-send-email-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 10.31.56.216 with HTTP; Fri, 4 Mar 2016 03:14:26 -0800 (PST)
-In-Reply-To: <20160222224251.GA11654@beta.comsecuris.com>
-References: <20160222224251.GA11654@beta.comsecuris.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 4 Mar 2016 11:14:26 +0000
-Message-ID: <CAFEAcA-pPdUSggMA1zUm+jU2_VkGYpr2wOBKU890w0FSdEszbw@mail.gmail.com>
-To: Ralf-Philipp Weinmann <ralf+devel@comsecuris.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::231
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH] Fix bug: SRS instructions would trap to EL3
- in Secure EL1 even if specified mode was not monitor mode. [RESUBMIT DUE TO
- MISSING SIGN-OFF]
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UUnLGZsKLBXV
+Content-Transfer-Encoding: 8bit
+X-TUID: 0HXz9TGq3kgB
 
-On 22 February 2016 at 22:42, Ralf-Philipp Weinmann
-<ralf+devel@comsecuris.com> wrote:
-> According to the ARMv8 Architecture reference manual [F6.1.203], ALL
-> of the following conditions need to be met for SRS to trap to EL3:
-> * It is executed at Secure PL1.
-> * The specified mode is monitor mode.
-> * EL3 is using AArch64.
->
-> Signed-off-by: Ralf-Philipp Weinmann <ralf+devel@comsecuris.com>
+Each individual architecture needs to use the qemu_log_in_addr_range()
+feature for enabling in_asm output as it is part of the frontend.
 
-Thanks, nice catch. Did you find this by code inspection or
-by some sort of test program or real guest code?
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+Reviewed-by: Richard Henderson  <rth@twiddle.net>
 
->      /* SRS is:
-> -     * - trapped to EL3 if EL3 is AArch64 and we are at Secure EL1
-> +     * - trapped to EL3 if EL3 is AArch64 and we are at Secure EL1 and
-> +     *   mode is monitor mode
+---
+v5
+  - no longer wrapping tcg_gen_insn_start (was tcg_gen_debug)
+  - reword to handle only in_asm
+  - added r-b tag
+v8
+  - added r-b tag
+---
+ target-arm/translate-a64.c | 3 ++-
+ target-arm/translate.c     | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-I tweaked this to say "specified mode is monitor mode" just to be
-slightly clearer that we're not testing the mode we're currently in.
-I have applied it to target-arm.next; thanks!
-
--- PMM
+diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+index 7f65aea..e65263c 100644
+--- a/target-arm/translate-a64.c
++++ b/target-arm/translate-a64.c
+@@ -11213,7 +11213,8 @@ done_generating:
+     gen_tb_end(tb, num_insns);
+ 
+ #ifdef DEBUG_DISAS
+-    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM)) {
++    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
++        qemu_log_in_addr_range(pc_start)) {
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+         log_target_disas(cs, pc_start, dc->pc - pc_start,
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index c29c47f..fc4e73e 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -11640,7 +11640,8 @@ done_generating:
+     gen_tb_end(tb, num_insns);
+ 
+ #ifdef DEBUG_DISAS
+-    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM)) {
++    if (qemu_loglevel_mask(CPU_LOG_TB_IN_ASM) &&
++        qemu_log_in_addr_range(pc_start)) {
+         qemu_log("----------------\n");
+         qemu_log("IN: %s\n", lookup_symbol(pc_start));
+         log_target_disas(cs, pc_start, dc->pc - pc_start,
+-- 
+2.7.2

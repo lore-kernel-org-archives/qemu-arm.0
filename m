@@ -1,63 +1,76 @@
-Received: by 10.25.208.211 with SMTP id h202csp393204lfg;
-        Fri, 4 Mar 2016 20:30:17 -0800 (PST)
-X-Received: by 10.140.25.206 with SMTP id 72mr14807227qgt.49.1457152210099;
-        Fri, 04 Mar 2016 20:30:10 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp488397lfg;
+        Sat, 5 Mar 2016 02:09:06 -0800 (PST)
+X-Received: by 10.140.102.104 with SMTP id v95mr15790555qge.48.1457172546147;
+        Sat, 05 Mar 2016 02:09:06 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si6577686qgb.59.2016.03.04.20.30.09
+        by mx.google.com with ESMTPS id w63si7400141qgw.87.2016.03.05.02.09.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 20:30:10 -0800 (PST)
+        Sat, 05 Mar 2016 02:09:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:44662 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=ge.com
+Received: from localhost ([::1]:45579 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ac3qz-0008Ee-Hk
-	for alex.bennee@linaro.org; Fri, 04 Mar 2016 23:30:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38833)
+	id 1ac98z-0006xi-JB
+	for alex.bennee@linaro.org; Sat, 05 Mar 2016 05:09:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40465)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ac3qv-00088A-1j
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:06 -0500
+	(envelope-from <juan.carlos.sanchez@ge.com>) id 1abwiV-0001DH-OO
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 15:52:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ac3qt-00080Q-HV
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:04 -0500
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:33936
-	helo=homiemail-a12.g.dreamhost.com)
+	(envelope-from <juan.carlos.sanchez@ge.com>) id 1abwiU-0001jc-Ty
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 15:52:55 -0500
+Received: from mx0a-00176a03.pphosted.com ([67.231.149.52]:40775)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1ac3qt-00080H-9R; Fri, 04 Mar 2016 23:30:03 -0500
-Received: from homiemail-a12.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTP id CC8DA1030063; 
-	Fri,  4 Mar 2016 20:30:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
-	:subject:date:message-id:in-reply-to:references; s=aj.id.au; bh=
-	q4SPezDH8P27Hkzhlvfhjx/v6uc=; b=lr8BF+jRZmgcvEEZ9xPd5QTvSXOHunrH
-	O4c0qKoAdH4OSJTMIqSX6lIpC0jrnqRPDMU5S6q8/cVLnKu1yJ3ay+tLbZjgJrY7
-	5l3FJUufQGsFTXhEefmSOvyJ0l9elE8DM7xB3/Vx93Dmd3tk4gHgUk61AxmvZK57
-	7q7fbM8SHZw=
-Received: from keelia.au.ibm.com (ppp203-122-213-247.static.internode.on.net
-	[203.122.213.247])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTPSA id 350A91030062;
-	Fri,  4 Mar 2016 20:30:00 -0800 (PST)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat,  5 Mar 2016 14:59:37 +1030
-Message-Id: <1457152177-19550-4-git-send-email-andrew@aj.id.au>
-X-Mailer: git-send-email 2.5.0
-In-Reply-To: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
-References: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 69.163.253.7
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Subject: [Qemu-arm] [PATCH v3 3/3] hw/arm: Add ASPEED AST2400 machine model
+	(envelope-from <juan.carlos.sanchez@ge.com>)
+	id 1abwiQ-0001im-O1; Fri, 04 Mar 2016 15:52:50 -0500
+Received: from pps.filterd (m0048274.ppops.net [127.0.0.1])
+	by m0048274.ppops.net-00176a03. (8.15.0.59/8.15.0.59) with SMTP id
+	u24Kqhf4033127; Fri, 4 Mar 2016 15:52:46 -0500
+Received: from cinmlip10.e2k.ad.ge.com (n165-156-000-000.static.ge.com
+	[165.156.4.1] (may be forged))
+	by m0048274.ppops.net-00176a03. with ESMTP id 21ffcdr3un-12
+	(version=TLSv1/SSLv3 cipher=RC4-SHA bits=128 verify=NOT);
+	Fri, 04 Mar 2016 15:52:46 -0500
+Received: from unknown (HELO ALPMBHT04.e2k.ad.ge.com) ([3.159.19.197])
+	by cinmlip10.e2k.ad.ge.com with ESMTP/TLS/AES128-SHA;
+	04 Mar 2016 15:52:38 -0500
+Received: from ALPMBAPA04.e2k.ad.ge.com (3.159.19.32) by
+	ALPMBHT04.e2k.ad.ge.com (3.159.19.197) with Microsoft SMTP Server (TLS)
+	id 14.3.266.1; Fri, 4 Mar 2016 15:52:37 -0500
+Received: from ALPMBAPA12.e2k.ad.ge.com ([169.254.5.12]) by
+	ALPMBAPA04.e2k.ad.ge.com ([169.254.4.119]) with mapi id 14.03.0266.001;
+	Fri, 4 Mar 2016 15:52:37 -0500
+From: "Sanchez, Juan Carlos (GE Aviation)" <juan.carlos.sanchez@ge.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Thread-Topic: Hi good afternoon, some small support
+Thread-Index: AdF2V8dm1QoHYP/xQ8SaH+Vm3B6hKw==
+Date: Fri, 4 Mar 2016 20:52:37 +0000
+Message-ID: <709659D8C88A4047B113A8F68771E8EA46B91006@ALPMBAPA12.e2k.ad.ge.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [3.159.19.216]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-03-04_07:, , signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+	suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1601100000
+	definitions=main-1603040362
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 67.231.149.52
+X-Mailman-Approved-At: Sat, 05 Mar 2016 05:09:04 -0500
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: [Qemu-arm] Hi good afternoon, some small support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,253 +84,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bd2z1bvvGemj
+X-TUID: znogXbO9M/5+
 
-Adds an AST2400 ARM machine[1], based around an AST2400 SOC containing an
-ARM926 processor, ASPEED VIC and timer devices, and a 8250 UART. The new
-machine type is functional enough to boot an aspeed_defconfig Linux
-kernel to userspace.
+Hi,
+ 	I am trying to execute an image created by ARM in QEMU using windows OS, =
+could you give me guide to example the command line?=20
 
-[1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
+The command line in Unix work well, but I don't understood all the options.=
+ This the reason that I looking for some help
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
-Since v2:
-  * Implement a SOC model to move code out from the machine definition
-  * Rework the machine to better use QOM
-  * Include qemu/osdep.h
-  * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
+/home/nhcu02t/yocto_i686/prebuild/sysroots/i686-pokysdk-linux/usr/bin/qemu-=
+system-arm -kernel zImage-qemuarm.bin -net nic,model=3Dvirtio -net tap,vlan=
+=3D0,ifname=3Dtap0,script=3Dno,downscript=3Dno -M versatilepb -drive file=
+=3D/home/nhcu02t/yocto_org_built/images/qemuarm/core-image-minimal-qemuarm.=
+ext4,if=3Dvirtio,format=3Draw -no-reboot -show-cursor -usb -usbdevice wacom=
+-tablet -no-reboot -m 128 -serial mon:vc -serial null --append "root=3D/dev=
+/vda rw console=3DttyAMA0,115200 console=3Dtty ip=3D192.168.7.2::192.168.7.=
+1:255.255.255.0 mem=3D128M highres=3Doff rootfstype=3Dext4 "
 
-Since v1:
 
- hw/arm/Makefile.objs |   1 +
- hw/arm/ast2400.c     | 208 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 209 insertions(+)
- create mode 100644 hw/arm/ast2400.c
+I accept any help that you provide me.
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index a711e4d..f333b7f 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
- obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
- obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
- obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
-+obj-$(CONFIG_ASPEED_SOC) += ast2400.o
-diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
-new file mode 100644
-index 0000000..74aca49
---- /dev/null
-+++ b/hw/arm/ast2400.c
-@@ -0,0 +1,208 @@
-+/*
-+ * ASPEED AST2400
-+ *
-+ * Andrew Jeffery <andrew@aj.id.au>
-+ * Jeremy Kerr <jk@ozlabs.org>
-+ *
-+ * Copyright 2016 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "exec/address-spaces.h"
-+#include "hw/arm/arm.h"
-+#include "hw/boards.h"
-+#include "hw/char/serial.h"
-+#include "hw/sysbus.h"
-+#include "hw/intc/aspeed_vic.h"
-+#include "hw/timer/aspeed_timer.h"
-+#include "target-arm/cpu.h"
-+#include "trace.h"
-+
-+#define AST2400_UART_5_BASE      0x00184000
-+#define AST2400_IOMEM_SIZE       0x00200000
-+#define AST2400_IOMEM_BASE       0x1E600000
-+#define AST2400_VIC_BASE         0x1E6C0000
-+#define AST2400_TIMER_BASE       0x1E782000
-+#define AST2400_SDRAM_BASE       0x40000000
-+
-+static const int uart_irqs[] = { 9, 32, 33, 34, 10 };
-+static const int timer_irqs[] = { 16, 17, 18, 35, 36, 37, 38, 39, };
-+
-+static struct arm_boot_info ast2400_binfo = {
-+    .loader_start = AST2400_SDRAM_BASE,
-+    .board_id = 0,
-+    .nb_cpus = 1,
-+};
-+
-+/*
-+ * IO handlers: simply catch any reads/writes to IO addresses that aren't
-+ * handled by a device mapping.
-+ */
-+
-+static uint64_t ast2400_soc_io_read(void *p, hwaddr offset, unsigned size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
-+                  __func__, offset, size);
-+    return 0;
-+}
-+
-+static void ast2400_soc_io_write(void *opaque, hwaddr offset, uint64_t value,
-+                unsigned size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
-+                  __func__, offset, value, size);
-+}
-+
-+static const MemoryRegionOps ast2400_soc_io_ops = {
-+    .read = ast2400_soc_io_read,
-+    .write = ast2400_soc_io_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
-+
-+typedef struct AST2400SOCState {
-+    /*< private >*/
-+    DeviceState parent;
-+
-+    /*< public >*/
-+    ARMCPU *cpu;
-+    MemoryRegion iomem;
-+    AspeedVICState vic;
-+    AspeedTimerCtrlState timerctrl;
-+} AST2400SOCState;
-+
-+#define TYPE_AST2400_SOC "ast2400-soc"
-+#define AST2400_SOC(obj) OBJECT_CHECK(AST2400SOCState, (obj), TYPE_AST2400_SOC)
-+
-+static void ast2400_soc_init(Object *obj)
-+{
-+    AST2400SOCState *s = AST2400_SOC(obj);
-+
-+    s->cpu = cpu_arm_init("arm926");
-+
-+    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
-+    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
-+    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
-+
-+    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
-+    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), NULL);
-+    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
-+}
-+
-+static void ast2400_soc_realize(DeviceState *dev, Error **errp)
-+{
-+    int i;
-+    AST2400SOCState *s = AST2400_SOC(dev);
-+    Error *err = NULL;
-+
-+    /* IO space */
-+    memory_region_init_io(&s->iomem, NULL, &ast2400_soc_io_ops, NULL,
-+            "ast2400.io", AST2400_IOMEM_SIZE);
-+    memory_region_add_subregion(get_system_memory(), AST2400_IOMEM_BASE,
-+            &s->iomem);
-+
-+    /* VIC */
-+    object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, AST2400_VIC_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
-+                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
-+                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_FIQ));
-+
-+    /* Timer */
-+    object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, AST2400_TIMER_BASE);
-+    for (i = 0; i < ARRAY_SIZE(timer_irqs); i++) {
-+        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-+    }
-+
-+    /* UART - attach an 8250 to the IO space as our UART5 */
-+    if (serial_hds[0]) {
-+        qemu_irq uart5 = qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4]);
-+        serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
-+                uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN);
-+    }
-+}
-+
-+static void ast2400_soc_class_init(ObjectClass *oc, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = ast2400_soc_realize;
-+
-+    /*
-+     * Reason: creates an ARM CPU, thus use after free(), see
-+     * arm_cpu_class_init()
-+     */
-+    dc->cannot_destroy_with_object_finalize_yet = true;
-+}
-+
-+static const TypeInfo ast2400_soc_type_info = {
-+    .name = TYPE_AST2400_SOC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AST2400SOCState),
-+    .instance_init = ast2400_soc_init,
-+    .class_init = ast2400_soc_class_init,
-+};
-+
-+static void ast2400_soc_register_types(void)
-+{
-+    type_register_static(&ast2400_soc_type_info);
-+}
-+
-+type_init(ast2400_soc_register_types)
-+
-+typedef struct AST2400State {
-+    AST2400SOCState soc;
-+    MemoryRegion ram;
-+} AST2400State;
-+
-+static void ast2400_init(MachineState *machine)
-+{
-+    AST2400State *ast2400;
-+
-+    ast2400 = g_new0(AST2400State, 1);
-+    object_initialize(&ast2400->soc, (sizeof(ast2400->soc)), TYPE_AST2400_SOC);
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(&ast2400->soc),
-+                              &error_abort);
-+
-+    memory_region_allocate_system_memory(&ast2400->ram, NULL, "ram",
-+                                         ram_size);
-+    memory_region_add_subregion(get_system_memory(), AST2400_SDRAM_BASE,
-+                                &ast2400->ram);
-+    object_property_add_const_link(OBJECT(&ast2400->soc), "ram",
-+                                   OBJECT(&ast2400->ram), &error_abort);
-+    object_property_set_bool(OBJECT(&ast2400->soc), true, "realized",
-+                             &error_abort);
-+
-+    ast2400_binfo.kernel_filename = machine->kernel_filename;
-+    ast2400_binfo.initrd_filename = machine->initrd_filename;
-+    ast2400_binfo.kernel_cmdline = machine->kernel_cmdline;
-+    ast2400_binfo.ram_size = ram_size;
-+    arm_load_kernel(ARM_CPU(first_cpu), &ast2400_binfo);
-+}
-+
-+static void ast2400_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "ASPEED AST2400 BMC (ARM926EJ-S)";
-+    mc->init = ast2400_init;
-+    mc->max_cpus = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_parallel = 1;
-+}
-+
-+DEFINE_MACHINE("ast2400", ast2400_machine_init);
--- 
-2.5.0
+Juan Carlos Sanchez
 

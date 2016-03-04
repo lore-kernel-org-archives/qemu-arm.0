@@ -1,52 +1,58 @@
-Received: by 10.25.208.211 with SMTP id h202csp114182lfg;
-        Fri, 4 Mar 2016 07:04:10 -0800 (PST)
-X-Received: by 10.140.98.163 with SMTP id o32mr6737692qge.46.1457103850124;
-        Fri, 04 Mar 2016 07:04:10 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp122824lfg;
+        Fri, 4 Mar 2016 07:19:07 -0800 (PST)
+X-Received: by 10.140.105.198 with SMTP id c64mr10822057qgf.94.1457104747364;
+        Fri, 04 Mar 2016 07:19:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u188si3941752qka.72.2016.03.04.07.04.09
+        by mx.google.com with ESMTPS id a14si3988223qgf.96.2016.03.04.07.19.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 07:04:09 -0800 (PST)
+        Fri, 04 Mar 2016 07:19:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:41622 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:41688 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1abrGz-0002xh-GP
-	for alex.bennee@linaro.org; Fri, 04 Mar 2016 10:04:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50233)
+	id 1abrVR-0000jV-NB
+	for alex.bennee@linaro.org; Fri, 04 Mar 2016 10:19:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1abrGy-0002wk-1j
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 10:04:08 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1abrVL-0000b2-U0
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 10:19:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1abrGu-0002SY-OF
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 10:04:07 -0500
-Received: from forward9m.cmail.yandex.net ([5.255.216.202]:47958)
+	(envelope-from <peter.maydell@linaro.org>) id 1abrVI-0005lo-31
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 10:18:59 -0500
+Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:33449)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1abrGu-0002OO-Ei; Fri, 04 Mar 2016 10:04:04 -0500
-Received: from web18m.yandex.ru (web18m.yandex.ru [37.140.138.109])
-	by forward9m.cmail.yandex.net (Yandex) with ESMTP id 4A60021E14;
-	Fri,  4 Mar 2016 18:04:00 +0300 (MSK)
-Received: from web18m.yandex.ru (localhost [127.0.0.1])
-	by web18m.yandex.ru (Yandex) with ESMTP id EB19A1560047;
-	Fri,  4 Mar 2016 18:03:58 +0300 (MSK)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1457103839; bh=TkI+he4kzkAUo8iiwA9aRHBsTNPBqOzjmCpw47v1E4U=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=o2siYwgxGI43g/95PAdxWxmdRNZ6Zju+XqXElm57op4oAsyYOTDVKHt4dS99tcSLk
-	NnoLUSXj8Dr3FLCyeoYqkv5ISnRFoYqTstGgDQKt/MmT7yJL6CvlXOfoa/LcFq/ttu
-	DmDzN/fXf1Nq46iC/5AM3X9bKx1/owj+OTnDMLc0=
-Received: by web18m.yandex.ru with HTTP;
-	Fri, 04 Mar 2016 18:03:58 +0300
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Sergey Fedorov <serge.fdrv@gmail.com>
-In-Reply-To: <CAFEAcA9dPg9Zs4LMzjb738nsVQXPicQSLU5yHXgG0wffD0M=Gg@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1abrVH-0005l2-VM
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 10:18:56 -0500
+Received: by mail-vk0-x22f.google.com with SMTP id k1so40266907vkb.0
+	for <qemu-arm@nongnu.org>; Fri, 04 Mar 2016 07:18:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=B2EFZIoEtSIP6Y6i04SfyuA4qQNjaM2oxNgNfx4lf3M=;
+	b=YXbnrV/os7AX/qxBbJuUgob8oglrBWTXG7w6v1jDz2jCRdSZtZj1+dg3i8yACrA7Sh
+	BG/c+MtDd6J+xVvtOYc+hZMJIDBBcILi7E36x/NNj2zHI/YbIi8kyJ99E90zin2+2ffJ
+	9I3SeJDB6kKR/QBlI8Idv7IVpPwUg04JrIjFQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=B2EFZIoEtSIP6Y6i04SfyuA4qQNjaM2oxNgNfx4lf3M=;
+	b=TgOElkHfQM7KfGEa/MNuqLzSSI2Xsp4CvRVkUiOwtTasYiUKlgU30hRNvVcZSK5G2F
+	Wu4e9ZOSs2K5QhSj5OTel1xBIq0iCmsS+MuOEFZ9IXgBjky3HBOK/Z2NIqLF007QAbc7
+	mw76pk9/1ST7Yl71F4OR7Fg6rqUSj6TH5Y68K8W8Z3g4WXaGv7Bfoo9DwmqM0hyn0bg7
+	VgOAl5Fw7Kf0jw56WvcdkT+4B2P/ZJgt8EM+l2p2angEnw3QxyNqgYb6hkVxGGDtHTGa
+	Dd1Xu0Ubu2Y3AZdweTNvz7CZj9Zt5ynO2orS7XDuadsq/Z4BFZ9c3lU7L8PiDrtgPQUF
+	8//Q==
+X-Gm-Message-State: AD7BkJJH+dZX6rDF58m9keNKViHtCRHkLB+K5H1xKjEGNuTfMs+x+goBfIgTqKOwsycytVo8YzO4ozYzIWDaal70
+X-Received: by 10.31.1.6 with SMTP id 6mr5550121vkb.139.1457104734327; Fri, 04
+	Mar 2016 07:18:54 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.56.216 with HTTP; Fri, 4 Mar 2016 07:18:34 -0800 (PST)
+In-Reply-To: <5345871457103838@web18m.yandex.ru>
 References: <1456941872-8791-1-git-send-email-afarallax@yandex.ru>
 	<56D73CB6.7040702@gmail.com>
 	<CAFEAcA9gPrmcn3TNUueei1f5V0QMr-Nox9JHEE23EsQxbEO9qQ@mail.gmail.com>
@@ -54,18 +60,17 @@ References: <1456941872-8791-1-git-send-email-afarallax@yandex.ru>
 	<CAFEAcA9Sp5282BfXFK8W9x8N0HJCbmxZBNL7Cxof7cYRsp8FgA@mail.gmail.com>
 	<56D8683D.1080004@gmail.com>
 	<CAFEAcA9dPg9Zs4LMzjb738nsVQXPicQSLU5yHXgG0wffD0M=Gg@mail.gmail.com>
-MIME-Version: 1.0
-Message-Id: <5345871457103838@web18m.yandex.ru>
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Fri, 04 Mar 2016 18:03:58 +0300
-Content-Type: text/plain; charset=koi8-r
-Content-Transfer-Encoding: quoted-printable
+	<5345871457103838@web18m.yandex.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Mar 2016 15:18:34 +0000
+Message-ID: <CAFEAcA9fNYKAAB=khTDtumrgHLHKD-J2TUR0s_oMEmsQ2qM42w@mail.gmail.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 5.255.216.202
+X-Received-From: 2607:f8b0:400c:c05::22f
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Fix translation
-	level on early translation faults
+ level on early translation faults
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,39 +84,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IRttXZ6OzU2O
+X-TUID: 1dDe6Bi/DF5V
 
+On 4 March 2016 at 15:03, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> Do we really need to rearrange the code?
+> In pseudo-code the level is set explicitly as well, in case of a fault.
 
+That's why when I originally brought the point up I said
+"but I'm not sure it's worth rearranging that code"...
+If you want to neaten things up so that we pick the initial
+level for faults (0 or 1 depending on va_size) in one place,
+then you need to rearrange the code. If you don't want to
+rearrange that bit of code you can leave it all as it is, but
+you don't get the neat "only one place makes this decision"
+structure. You could argue either way and I don't much mind
+which we do.
 
-03.03.2016, 19:54, "Peter Maydell" <peter.maydell@linaro.org>:
-> =9AOn 3 March 2016 at 16:37, Sergey Fedorov <serge.fdrv@gmail.com> wrot=
-e:
->> =9A=9AOn 03.03.2016 17:55, Peter Maydell wrote:
->>> =9A=9AYes, this patch is definitely fixing a bug; I'm just mentioning=
- that other
->>> =9A=9Acode path because it seems to be the result of previously fixin=
-g the bug
->>> =9A=9Afor a particular special case...
->>
->> =9A=9AAh, right, I think I understand you :) So we'd better remove the=
-se lines:
->>
->> =9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A/* AArch64 reports these as =
-level 0 faults.
->> =9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A* AArch32 reports these a=
-s level 1 faults.
->> =9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A*/
->> =9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9Alevel =3D va_size =3D=3D 64 =
-? 0 : 1;
->> =9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9A=9Afault_type =3D translation_f=
-ault;
->
-> =9AThose lines come after some code which has set level to something
-> =9Aelse, so you'd need to rearrange that code a bit so it didn't
-> =9Aset level before it had determined that there wasn't a fault.
->
-> =9Athanks
-> =9A-- PMM
+(Incidentally the pseudocode is not always a good guide
+for the structure of code; sometimes it makes clear choices,
+but sometimes it makes confusing choices.)
 
-Do we really need to rearrange the code?
-In pseudo-code the level is set explicitly as well, in case of a fault.
+thanks
+-- PMM

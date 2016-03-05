@@ -1,66 +1,64 @@
-Received: by 10.25.208.211 with SMTP id h202csp146056lfg;
-        Fri, 4 Mar 2016 08:05:15 -0800 (PST)
-X-Received: by 10.140.164.71 with SMTP id k68mr109293qhk.97.1457107515770;
-        Fri, 04 Mar 2016 08:05:15 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp393154lfg;
+        Fri, 4 Mar 2016 20:30:07 -0800 (PST)
+X-Received: by 10.140.176.7 with SMTP id w7mr15523524qhw.59.1457152207845;
+        Fri, 04 Mar 2016 20:30:07 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f80si4140841qhc.105.2016.03.04.08.05.15
+        by mx.google.com with ESMTPS id d90si6552877qge.118.2016.03.04.20.30.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 08:05:15 -0800 (PST)
+        Fri, 04 Mar 2016 20:30:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@yandex.ru;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:41999 helo=lists.gnu.org)
+       dkim=fail (test mode) header.i=@aj.id.au
+Received: from localhost ([::1]:44656 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1absE7-00089E-9w
-	for alex.bennee@linaro.org; Fri, 04 Mar 2016 11:05:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43344)
+	id 1ac3qw-00088N-AW
+	for alex.bennee@linaro.org; Fri, 04 Mar 2016 23:30:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38819)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1absE2-00086i-45
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 11:05:14 -0500
+	(envelope-from <andrew@aj.id.au>) id 1ac3qu-000883-1J
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1absDy-0003Pn-OL
-	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 11:05:09 -0500
-Received: from forward6h.cmail.yandex.net ([87.250.230.217]:50928)
+	(envelope-from <andrew@aj.id.au>) id 1ac3qs-0007yk-HG
+	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:03 -0500
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:33925
+	helo=homiemail-a12.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1absDy-0003P7-8Y; Fri, 04 Mar 2016 11:05:06 -0500
-Received: from smtp3h.mail.yandex.net (smtp3h.mail.yandex.net
-	[IPv6:2a02:6b8:0:f05::117])
-	by forward6h.cmail.yandex.net (Yandex) with ESMTP id 9402E21449;
-	Fri,  4 Mar 2016 19:05:01 +0300 (MSK)
-Received: from smtp3h.mail.yandex.net (localhost [127.0.0.1])
-	by smtp3h.mail.yandex.net (Yandex) with ESMTP id 863A71B40414;
-	Fri,  4 Mar 2016 19:05:00 +0300 (MSK)
-Received: by smtp3h.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
-	tnwJBjHsTJ-4xW49twc; Fri, 04 Mar 2016 19:04:59 +0300
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
-	(Client certificate not present)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1457107500; bh=hg9GSfXwrUkXQEHMlSrORy1HhSp6Putjksj9+jVTVp8=;
-	h=From:To:Cc:Subject:Date:Message-Id:X-Mailer;
-	b=Hg5KQ5AGEo3mbxG877Yywk9Yl3/QyZ07hzG2H9aKQjzSXnIiMsntoR4xfV9mYRmiT
-	eq33ZH8Z7b5oZTZ3W0FJCoN++/jvtugdz9EAfl4J95RkyHfKt4aK+4bfp+XL4mVgJI
-	s1deI6AML3o1WECw4wKqvlc2yqZWY7QlicljZrJk=
-Authentication-Results: smtp3h.mail.yandex.net; dkim=pass header.i=@yandex.ru
-X-Yandex-ForeignMX: US
-X-Yandex-Suid-Status: 1 0,1 0,1 0,1 37377968
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: qemu-devel@nongnu.org
-Date: Fri,  4 Mar 2016 19:04:33 +0300
-Message-Id: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
-X-Mailer: git-send-email 1.9.3
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 87.250.230.217
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Sergey Sorokin <afarallax@yandex.ru>
-Subject: [Qemu-arm] [PATCH] target-arm: Fix descriptor address masking in
-	ARM address translation
+	(envelope-from <andrew@aj.id.au>)
+	id 1ac3qq-0007xi-Ey; Fri, 04 Mar 2016 23:30:02 -0500
+Received: from homiemail-a12.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTP id 253361030063; 
+	Fri,  4 Mar 2016 20:29:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
+	:subject:date:message-id:mime-version:content-type:
+	content-transfer-encoding; s=aj.id.au; bh=Z50ey2kDOMpm8+L4v0eXYt
+	etN3E=; b=QBcEJDxiuSx37TyTSCEGVBt5hoR1cCZfWSPzeLy2OvbpQyOICL0QgG
+	AnmfLnS6nXXSXHrrEX2y5aAm1PXj+TExHaoKbTKE8AsxvHwnftJ87VeL7ZhRe1/4
+	rA+upkNtRj59/e9tr9bcPB3boMk/n3RRIczkMu82GG0DfvJ1fGLxs=
+Received: from keelia.au.ibm.com (ppp203-122-213-247.static.internode.on.net
+	[203.122.213.247])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTPSA id A303E1030062;
+	Fri,  4 Mar 2016 20:29:54 -0800 (PST)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat,  5 Mar 2016 14:59:34 +1030
+Message-Id: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
+X-Mailer: git-send-email 2.5.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 69.163.253.7
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v3 0/3] Add ASPEED AST2400 machine model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -74,90 +72,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lKNbHlC2iClQ
+X-TUID: yPU4yCHIZpg8
 
-There is a bug in ARM address translation regime with a long-descriptor
-format. On the descriptor reading its address is formed from an index
-which is a part of the input address. And on the first iteration this index
-is incorrectly masked with 'grainsize' mask. But it can be wider according
-to pseudo-code.
-On the other hand on the iterations other than first the descriptor address
-is formed from the previous level descriptor by masking with 'descaddrmask'
-value. It always clears just 12 lower bits, but it must clear 'grainsize'
-lower bits instead according to pseudo-code.
-The patch fixes both cases.
+This patch series models enough of the ASPEED AST2400 ARM9 SoC[0] to boot=
+ an
+aspeed_defconfig Linux kernel[1]. Specifically, the series implements the=
+ timer
+and VIC devices and integrates them into a new ast2400 machine through a
+AST2400SOC model. The device model patches only partially implement the
+hardware features of the timer and VIC, again mostly just enough to boot =
+Linux.
 
-Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
----
- target-arm/helper.c | 29 ++++++++++-------------------
- 1 file changed, 10 insertions(+), 19 deletions(-)
+Unfortunately the datasheet describing the devices is not generally avail=
+able,
+but I'll try to add comments to any unclear areas.
 
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index dec8e8b..b5f289c 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -7243,7 +7243,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-     uint32_t tg;
-     uint64_t ttbr;
-     int ttbr_select;
--    hwaddr descaddr, descmask;
-+    hwaddr descaddr, indexmask, indexmask_grainsize;
-     uint32_t tableattrs;
-     target_ulong page_size;
-     uint32_t attrs;
-@@ -7431,28 +7431,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         }
-     }
- 
--    /* Clear the vaddr bits which aren't part of the within-region address,
--     * so that we don't have to special case things when calculating the
--     * first descriptor address.
--     */
--    if (va_size != inputsize) {
--        address &= (1ULL << inputsize) - 1;
--    }
--
--    descmask = (1ULL << (stride + 3)) - 1;
-+    indexmask_grainsize = (1ULL << (stride + 3)) - 1;
-+    indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
- 
-     /* Now we can extract the actual base address from the TTBR */
-     descaddr = extract64(ttbr, 0, 48);
--    descaddr &= ~((1ULL << (inputsize - (stride * (4 - level)))) - 1);
-+    descaddr &= ~indexmask;
- 
--    /* The address field in the descriptor goes up to bit 39 for ARMv7
--     * but up to bit 47 for ARMv8.
-+    /* The address field in the descriptor goes up to bit 39 for AArch32
-+     * but up to bit 47 for AArch64.
-      */
--    if (arm_feature(env, ARM_FEATURE_V8)) {
--        descaddrmask = 0xfffffffff000ULL;
--    } else {
--        descaddrmask = 0xfffffff000ULL;
--    }
-+    descaddrmask = ((1ull << (va_size == 64 ? 48 : 40)) - 1) &
-+                   ~indexmask_grainsize;
- 
-     /* Secure accesses start with the page table in secure memory and
-      * can be downgraded to non-secure at any step. Non-secure accesses
-@@ -7464,7 +7454,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         uint64_t descriptor;
-         bool nstable;
- 
--        descaddr |= (address >> (stride * (4 - level))) & descmask;
-+        descaddr |= (address >> (stride * (4 - level))) & indexmask;
-         descaddr &= ~7ULL;
-         nstable = extract32(tableattrs, 4, 1);
-         descriptor = arm_ldq_ptw(cs, descaddr, !nstable, mmu_idx, fsr, fi);
-@@ -7487,6 +7477,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-              */
-             tableattrs |= extract64(descriptor, 59, 5);
-             level++;
-+            indexmask = indexmask_grainsize;
-             continue;
-         }
-         /* Block entry at level 1 or 2, or page entry at level 3.
--- 
-1.9.3
+The addition of the AST2400 to QEMU is motivated by use of the SoC as a B=
+MC in
+OpenPOWER[2][3] machines and the ongoing development of OpenBMC[4]. The
+presence of a machine model for the AST2400 will help with development an=
+d
+testing of the OpenBMC stack.
+
+Cheers,
+
+Andrew
+
+[0] http://www.aspeedtech.com/products.php?fPath=3D20&rId=3D376
+[1] git fetch git@github.com:openbmc/linux.git dev-4.3
+[2] http://openpowerfoundation.org/
+[3] https://github.com/open-power/
+[4] https://github.com/openbmc/openbmc
+
+Changes since v2:
+
+  This re-roll is a reasonable rework of the patches in the series, which=
+ may
+  make it difficult to compare v1 to v2.
+
+  Addressed reviews/comments from:
+  * Peter Maydell
+  * Alexey Kardashevskiy
+  * Joel Stanley
+
+Changes since v1:
+
+  Addressed reviews/comments from:
+  * C=C3=A9dric Le Goater
+
+Andrew Jeffery (3):
+  hw/timer: Add ASPEED timer device model
+  hw/intc: Add (new) ASPEED VIC device model
+  hw/arm: Add ASPEED AST2400 machine model
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/ast2400.c                | 208 ++++++++++++++++++
+ hw/intc/Makefile.objs           |   1 +
+ hw/intc/aspeed_vic.c            | 335 +++++++++++++++++++++++++++++
+ hw/timer/Makefile.objs          |   1 +
+ hw/timer/aspeed_timer.c         | 452 ++++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/intc/aspeed_vic.h    |  48 +++++
+ include/hw/timer/aspeed_timer.h |  59 ++++++
+ trace-events                    |  16 ++
+ 10 files changed, 1122 insertions(+)
+ create mode 100644 hw/arm/ast2400.c
+ create mode 100644 hw/intc/aspeed_vic.c
+ create mode 100644 hw/timer/aspeed_timer.c
+ create mode 100644 include/hw/intc/aspeed_vic.h
+ create mode 100644 include/hw/timer/aspeed_timer.h
+
+--=20
+2.5.0
 

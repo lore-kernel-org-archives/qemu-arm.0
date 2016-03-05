@@ -1,54 +1,54 @@
-Received: by 10.25.208.211 with SMTP id h202csp393170lfg;
-        Fri, 4 Mar 2016 20:30:11 -0800 (PST)
-X-Received: by 10.140.196.85 with SMTP id r82mr15145945qha.60.1457152209727;
-        Fri, 04 Mar 2016 20:30:09 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp393204lfg;
+        Fri, 4 Mar 2016 20:30:17 -0800 (PST)
+X-Received: by 10.140.25.206 with SMTP id 72mr14807227qgt.49.1457152210099;
+        Fri, 04 Mar 2016 20:30:10 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s12si6543348qkl.118.2016.03.04.20.30.09
+        by mx.google.com with ESMTPS id b7si6577686qgb.59.2016.03.04.20.30.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Mar 2016 20:30:09 -0800 (PST)
+        Fri, 04 Mar 2016 20:30:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:44661 helo=lists.gnu.org)
+Received: from localhost ([::1]:44662 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ac3qz-0008DE-0A
+	id 1ac3qz-0008Ee-Hk
 	for alex.bennee@linaro.org; Fri, 04 Mar 2016 23:30:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38821)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38833)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ac3qu-000885-1s
+	(envelope-from <andrew@aj.id.au>) id 1ac3qv-00088A-1j
 	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ac3qq-0007xn-MJ
+	(envelope-from <andrew@aj.id.au>) id 1ac3qt-00080Q-HV
 	for qemu-arm@nongnu.org; Fri, 04 Mar 2016 23:30:04 -0500
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:33926
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:33936
 	helo=homiemail-a12.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andrew@aj.id.au>)
-	id 1ac3qq-0007xh-6g; Fri, 04 Mar 2016 23:30:00 -0500
+	id 1ac3qt-00080H-9R; Fri, 04 Mar 2016 23:30:03 -0500
 Received: from homiemail-a12.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTP id 7EE7D103006A; 
-	Fri,  4 Mar 2016 20:29:58 -0800 (PST)
+	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTP id CC8DA1030063; 
+	Fri,  4 Mar 2016 20:30:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
 	:subject:date:message-id:in-reply-to:references; s=aj.id.au; bh=
-	Sn/gh5+KGopdrmV/kSU6rdJJGa8=; b=rFh5vNkwOaKjmeJzx3ZS7d2/4BDAYb+l
-	8hg2IrtIwjKqEV0C/V/RzdRgVtVyADpJ4W/6iTTXt0VON5aJg11hcDuq7bsGaT/Q
-	SE5elBYR7itoppu+T9r2+yx/MhO/Oxia28OOvaPOi5//T2S81W4Z39rh3sF+/TZQ
-	ZlxfL60QJak=
+	q4SPezDH8P27Hkzhlvfhjx/v6uc=; b=lr8BF+jRZmgcvEEZ9xPd5QTvSXOHunrH
+	O4c0qKoAdH4OSJTMIqSX6lIpC0jrnqRPDMU5S6q8/cVLnKu1yJ3ay+tLbZjgJrY7
+	5l3FJUufQGsFTXhEefmSOvyJ0l9elE8DM7xB3/Vx93Dmd3tk4gHgUk61AxmvZK57
+	7q7fbM8SHZw=
 Received: from keelia.au.ibm.com (ppp203-122-213-247.static.internode.on.net
 	[203.122.213.247])
 	(using TLSv1 with cipher AES128-SHA (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTPSA id 9458F1030062;
-	Fri,  4 Mar 2016 20:29:56 -0800 (PST)
+	by homiemail-a12.g.dreamhost.com (Postfix) with ESMTPSA id 350A91030062;
+	Fri,  4 Mar 2016 20:30:00 -0800 (PST)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat,  5 Mar 2016 14:59:35 +1030
-Message-Id: <1457152177-19550-2-git-send-email-andrew@aj.id.au>
+Date: Sat,  5 Mar 2016 14:59:37 +1030
+Message-Id: <1457152177-19550-4-git-send-email-andrew@aj.id.au>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
 References: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
@@ -57,7 +57,7 @@ X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 X-Received-From: 69.163.253.7
 Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm@nongnu.org,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Subject: [Qemu-arm] [PATCH v3 1/3] hw/timer: Add ASPEED timer device model
+Subject: [Qemu-arm] [PATCH v3 3/3] hw/arm: Add ASPEED AST2400 machine model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -71,597 +71,253 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E4fupz3aaNoF
+X-TUID: bd2z1bvvGemj
 
-Implement basic AST2400 timer functionality: Up to 8 timers can
-independently be configured, enabled, reset and disabled. A couple of
-hardware features are not implemented, namely clock value matching and
-pulse generation, but the implementation is enough to boot the Linux
-kernel configured with aspeed_defconfig.
+Adds an AST2400 ARM machine[1], based around an AST2400 SOC containing an
+ARM926 processor, ASPEED VIC and timer devices, and a 8250 UART. The new
+machine type is functional enough to boot an aspeed_defconfig Linux
+kernel to userspace.
+
+[1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 ---
 Since v2:
-  * Improve handling of timer configuration with respect to enabled state
-  * Remove redundant enabled member from AspeedTimer
-  * Implement VMStateDescriptions
-  * Fix interrupt behaviour (edge triggered, both edges)
-  * Fix various issues with trace-event declarations
+  * Implement a SOC model to move code out from the machine definition
+  * Rework the machine to better use QOM
   * Include qemu/osdep.h
+  * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
 
 Since v1:
-  * Refactor initialisation of and respect requested clock rates (APB/External)
-  * Simplify some index calculations
-  * Use tracing infrastructure instead of internal DPRINTF
-  * Enforce access size constraints and alignment in MemoryRegionOps
 
- default-configs/arm-softmmu.mak |   1 +
- hw/timer/Makefile.objs          |   1 +
- hw/timer/aspeed_timer.c         | 452 ++++++++++++++++++++++++++++++++++++++++
- include/hw/timer/aspeed_timer.h |  59 ++++++
- trace-events                    |   9 +
- 5 files changed, 522 insertions(+)
- create mode 100644 hw/timer/aspeed_timer.c
- create mode 100644 include/hw/timer/aspeed_timer.h
+ hw/arm/Makefile.objs |   1 +
+ hw/arm/ast2400.c     | 208 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 209 insertions(+)
+ create mode 100644 hw/arm/ast2400.c
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index a9f82a1..2bcd236 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -110,3 +110,4 @@ CONFIG_IOH3420=y
- CONFIG_I82801B11=y
- CONFIG_ACPI=y
- CONFIG_SMBIOS=y
-+CONFIG_ASPEED_SOC=y
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 5cfea6e..003c14f 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -32,3 +32,4 @@ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
- 
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
-+common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index a711e4d..f333b7f 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
+ obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+ obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
++obj-$(CONFIG_ASPEED_SOC) += ast2400.o
+diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
 new file mode 100644
-index 0000000..f1d232c
+index 0000000..74aca49
 --- /dev/null
-+++ b/hw/timer/aspeed_timer.c
-@@ -0,0 +1,452 @@
++++ b/hw/arm/ast2400.c
+@@ -0,0 +1,208 @@
 +/*
-+ * ASPEED AST2400 Timer
++ * ASPEED AST2400
 + *
 + * Andrew Jeffery <andrew@aj.id.au>
++ * Jeremy Kerr <jk@ozlabs.org>
 + *
-+ * Copyright (C) 2016 IBM Corp.
++ * Copyright 2016 IBM Corp.
 + *
 + * This code is licensed under the GPL version 2 or later.  See
 + * the COPYING file in the top-level directory.
 + */
 +
 +#include "qemu/osdep.h"
-+#include "hw/ptimer.h"
++#include "exec/address-spaces.h"
++#include "hw/arm/arm.h"
++#include "hw/boards.h"
++#include "hw/char/serial.h"
 +#include "hw/sysbus.h"
++#include "hw/intc/aspeed_vic.h"
 +#include "hw/timer/aspeed_timer.h"
-+#include "qemu-common.h"
-+#include "qemu/bitops.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/timer.h"
++#include "target-arm/cpu.h"
 +#include "trace.h"
 +
-+#define TIMER_NR_REGS 4
++#define AST2400_UART_5_BASE      0x00184000
++#define AST2400_IOMEM_SIZE       0x00200000
++#define AST2400_IOMEM_BASE       0x1E600000
++#define AST2400_VIC_BASE         0x1E6C0000
++#define AST2400_TIMER_BASE       0x1E782000
++#define AST2400_SDRAM_BASE       0x40000000
 +
-+#define TIMER_CTRL_BITS 4
-+#define TIMER_CTRL_MASK ((1 << TIMER_CTRL_BITS) - 1)
++static const int uart_irqs[] = { 9, 32, 33, 34, 10 };
++static const int timer_irqs[] = { 16, 17, 18, 35, 36, 37, 38, 39, };
 +
-+#define TIMER_CLOCK_USE_EXT true
-+#define TIMER_CLOCK_EXT_HZ 1000000
-+#define TIMER_CLOCK_USE_APB false
-+#define TIMER_CLOCK_APB_HZ 24000000
-+
-+#define TIMER_REG_STATUS 0
-+#define TIMER_REG_RELOAD 1
-+#define TIMER_REG_MATCH_FIRST 2
-+#define TIMER_REG_MATCH_SECOND 3
-+
-+#define TIMER_FIRST_CAP_PULSE 4
-+
-+enum timer_ctrl_op {
-+    op_enable = 0,
-+    op_external_clock,
-+    op_overflow_interrupt,
-+    op_pulse_enable
++static struct arm_boot_info ast2400_binfo = {
++    .loader_start = AST2400_SDRAM_BASE,
++    .board_id = 0,
++    .nb_cpus = 1,
 +};
 +
-+/**
-+ * Avoid mutual references between AspeedTimerCtrlState and AspeedTimer
-+ * structs, as it's a waste of memory and it makes implementing
-+ * VMStateDescription a little clunky. The ptimer BH callback needs to know
-+ * whether a specific AspeedTimer is enabled, but this information is held in
-+ * AspeedTimerCtrlState. So, provide a helper to hoist ourselves from an
-+ * arbitrary AspeedTimer to AspeedTimerCtrlState.
-+ */
-+static inline struct AspeedTimerCtrlState *timer_to_ctrl(AspeedTimer *t)
-+{
-+    AspeedTimer (*timers)[] = (void *)t - (t->id * sizeof(*t));
-+    return container_of(timers, AspeedTimerCtrlState, timers);
-+}
-+
-+static inline bool timer_ctrl_status(AspeedTimer *t, enum timer_ctrl_op op)
-+{
-+    return !!(timer_to_ctrl(t)->ctrl & BIT(t->id * TIMER_CTRL_BITS + op));
-+}
-+
-+static inline bool timer_enabled(AspeedTimer *t)
-+{
-+    return timer_ctrl_status(t, op_enable);
-+}
-+
-+static inline bool timer_overflow_interrupt(AspeedTimer *t)
-+{
-+    return timer_ctrl_status(t, op_overflow_interrupt);
-+}
-+
-+static inline bool timer_can_pulse(AspeedTimer *t)
-+{
-+    return t->id >= TIMER_FIRST_CAP_PULSE;
-+}
-+
-+static void aspeed_timer_expire(void *opaque)
-+{
-+    AspeedTimer *t = opaque;
-+
-+    /* Only support interrupts on match values of zero for the moment - this is
-+     * sufficient to boot an aspeed_defconfig Linux kernel. Non-zero match
-+     * values need some further consideration given the current ptimer API.
-+     * Maybe run multiple ptimers?
-+     */
-+    bool match = !(t->match[0] && t->match[1]);
-+    bool interrupt = timer_overflow_interrupt(t) || match;
-+    if (timer_enabled(t) && interrupt) {
-+        t->level = !t->level;
-+        qemu_set_irq(t->irq, t->level);
-+    }
-+}
-+
-+static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
-+{
-+    uint64_t value;
-+
-+    switch (reg) {
-+    case TIMER_REG_STATUS:
-+        value = ptimer_get_count(t->timer);
-+        break;
-+    case TIMER_REG_RELOAD:
-+        value = t->reload;
-+        break;
-+    case TIMER_REG_MATCH_FIRST:
-+    case TIMER_REG_MATCH_SECOND:
-+        value = t->match[reg - 2];
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: Programming error: unexpected reg: %d\n",
-+                      __func__, reg);
-+        value = 0;
-+        break;
-+    }
-+    return value;
-+}
-+
-+static uint64_t aspeed_timer_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedTimerCtrlState *s = opaque;
-+    const int reg = (offset & 0xf) / 4;
-+    uint64_t value;
-+
-+    switch (offset) {
-+    case 0x30: /* Control Register */
-+        value = s->ctrl;
-+        break;
-+    case 0x34: /* Control Register 2 */
-+        value = s->ctrl2;
-+        break;
-+    case 0x00 ... 0x2c: /* Timers 1 - 4 */
-+        value = aspeed_timer_get_value(&s->timers[(offset >> 4)], reg);
-+        break;
-+    case 0x40 ... 0x8c: /* Timers 5 - 8 */
-+        value = aspeed_timer_get_value(&s->timers[(offset >> 4) - 1], reg);
-+        break;
-+    /* Illegal */
-+    case 0x38:
-+    case 0x3C:
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
-+                __func__, offset);
-+        value = 0;
-+        break;
-+    }
-+    trace_aspeed_timer_read(offset, size, value);
-+    return value;
-+}
-+
-+static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
-+                                   uint32_t value)
-+{
-+    AspeedTimer *t;
-+
-+    g_assert(timer >= 0 && timer < ASPEED_TIMER_NR_TIMERS);
-+    trace_aspeed_timer_set_value(timer, reg, value);
-+    t = &s->timers[timer];
-+    switch (reg) {
-+    case TIMER_REG_STATUS:
-+        if (timer_enabled(t)) {
-+            ptimer_set_count(t->timer, value);
-+        }
-+        break;
-+    case TIMER_REG_RELOAD:
-+        t->reload = value;
-+        ptimer_set_limit(t->timer, value, 1);
-+        break;
-+    case TIMER_REG_MATCH_FIRST:
-+    case TIMER_REG_MATCH_SECOND:
-+        if (value) {
-+            /* Non-zero match values are unsupported. As such an interrupt will
-+             * always be triggered when the timer reaches zero even if the
-+             * overflow interrupt control bit is clear.
-+             */
-+            qemu_log_mask(LOG_UNIMP, "%s: Match value unsupported by device: "
-+                    "0x%" PRIx32 "\n", __func__, value);
-+        } else {
-+            t->match[reg - 2] = value;
-+        }
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: Programming error: unexpected reg: %d\n",
-+                      __func__, reg);
-+        break;
-+    }
-+}
-+
-+/* Control register operations are broken out into helpers that can be
-+ * explictly called on aspeed_timer_reset(), but also from
-+ * aspeed_timer_ctrl_op().
-+ */
-+
-+static void aspeed_timer_ctrl_enable(AspeedTimer *t, bool enable)
-+{
-+    trace_aspeed_timer_ctrl_enable(t->id, enable);
-+    if (enable) {
-+        ptimer_run(t->timer, 0);
-+    } else {
-+        ptimer_stop(t->timer);
-+        ptimer_set_limit(t->timer, t->reload, 1);
-+    }
-+}
-+
-+static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool enable)
-+{
-+    trace_aspeed_timer_ctrl_external_clock(t->id, enable);
-+    if (enable) {
-+        ptimer_set_freq(t->timer, TIMER_CLOCK_EXT_HZ);
-+    } else {
-+        ptimer_set_freq(t->timer, TIMER_CLOCK_APB_HZ);
-+    }
-+}
-+
-+static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool enable)
-+{
-+    trace_aspeed_timer_ctrl_overflow_interrupt(t->id, enable);
-+}
-+
-+static void aspeed_timer_ctrl_pulse_enable(AspeedTimer *t, bool enable)
-+{
-+    if (timer_can_pulse(t)) {
-+        trace_aspeed_timer_ctrl_pulse_enable(t->id, enable);
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: Timer does not support pulse mode\n", __func__);
-+    }
-+}
-+
-+/**
-+ * Given the actions are fixed in number and completely described in helper
-+ * functions, dispatch with a lookup table rather than manage control flow with
-+ * a switch statement.
-+ */
-+static void (*const ctrl_ops[])(AspeedTimer *, bool) = {
-+    [op_enable] = aspeed_timer_ctrl_enable,
-+    [op_external_clock] = aspeed_timer_ctrl_external_clock,
-+    [op_overflow_interrupt] = aspeed_timer_ctrl_overflow_interrupt,
-+    [op_pulse_enable] = aspeed_timer_ctrl_pulse_enable,
-+};
-+
-+/**
-+ * Conditionally affect changes chosen by a timer's control bit.
-+ *
-+ * The aspeed_timer_ctrl_op() interface is convenient for the
-+ * aspeed_timer_set_ctrl() function as the "no change" early exit can be
-+ * calculated for all operations, which cleans up the caller code. However the
-+ * interface isn't convenient for the reset function where we want to enter a
-+ * specific state without artificially constructing old and new values that
-+ * will fall through the change guard (and motivates extracting the actions
-+ * out to helper functions).
-+ *
-+ * @t: The timer to manipulate
-+ * @op: The type of operation to be performed
-+ * @old: The old state of the timer's control bits
-+ * @new: The incoming state for the timer's control bits
-+ */
-+static void aspeed_timer_ctrl_op(AspeedTimer *t, enum timer_ctrl_op op,
-+                                 uint8_t old, uint8_t new)
-+{
-+    const uint8_t mask = BIT(op);
-+    const bool enable = !!(new & mask);
-+    const bool changed = ((old ^ new) & mask);
-+    if (!changed) {
-+        return;
-+    }
-+    ctrl_ops[op](t, enable);
-+}
-+
-+static void aspeed_timer_set_ctrl(AspeedTimerCtrlState *s, uint32_t reg)
-+{
-+    int i;
-+    int shift;
-+    uint8_t t_old, t_new;
-+    AspeedTimer *t;
-+    const uint8_t enable_mask = BIT(op_enable);
-+
-+    /* Handle a dependency between the 'enable' and remaining three
-+     * configuration bits - i.e. if more than one bit in the control set has
-+     * changed, including the 'enable' bit, then we want either disable the
-+     * timer and perform configuration, or perform configuration and then
-+     * enable the timer
-+     */
-+    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
-+        t = &s->timers[i];
-+        shift = (i * TIMER_CTRL_BITS);
-+        t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
-+        t_new = (reg >> shift) & TIMER_CTRL_MASK;
-+
-+        /* If we are disabling, do so first */
-+        if ((t_old & enable_mask) && !(t_new & enable_mask)) {
-+            aspeed_timer_ctrl_enable(t, false);
-+        }
-+        aspeed_timer_ctrl_op(t, op_external_clock, t_old, t_new);
-+        aspeed_timer_ctrl_op(t, op_overflow_interrupt, t_old, t_new);
-+        aspeed_timer_ctrl_op(t, op_pulse_enable, t_old, t_new);
-+        /* If we are enabling, do so last */
-+        if (!(t_old & enable_mask) && (t_new & enable_mask)) {
-+            aspeed_timer_ctrl_enable(t, true);
-+        }
-+    }
-+    s->ctrl = reg;
-+}
-+
-+static void aspeed_timer_set_ctrl2(AspeedTimerCtrlState *s, uint32_t value)
-+{
-+    trace_aspeed_timer_set_ctrl2(value);
-+}
-+
-+static void aspeed_timer_write(void *opaque, hwaddr offset, uint64_t value,
-+                               unsigned size)
-+{
-+    const uint32_t tv = (uint32_t)(value & 0xFFFFFFFF);
-+    const int reg = (offset & 0xf) / 4;
-+    AspeedTimerCtrlState *s = opaque;
-+
-+    switch (offset) {
-+    /* Control Registers */
-+    case 0x30:
-+        aspeed_timer_set_ctrl(s, tv);
-+        break;
-+    case 0x34:
-+        aspeed_timer_set_ctrl2(s, tv);
-+        break;
-+    /* Timer Registers */
-+    case 0x00 ... 0x2c:
-+        aspeed_timer_set_value(s, (offset >> TIMER_NR_REGS), reg, tv);
-+        break;
-+    case 0x40 ... 0x8c:
-+        aspeed_timer_set_value(s, (offset >> TIMER_NR_REGS) - 1, reg, tv);
-+        break;
-+    /* Illegal */
-+    case 0x38:
-+    case 0x3C:
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
-+                __func__, offset);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_timer_ops = {
-+    .read = aspeed_timer_read,
-+    .write = aspeed_timer_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+    .valid.unaligned = false,
-+};
-+
-+static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
-+{
-+    QEMUBH *bh;
-+    AspeedTimer *t = &s->timers[id];
-+
-+    t->id = id;
-+    bh = qemu_bh_new(aspeed_timer_expire, t);
-+    assert(bh);
-+    t->timer = ptimer_init(bh);
-+    assert(t->timer);
-+}
-+
-+static void aspeed_timer_realize(DeviceState *dev, Error **errp)
-+{
-+    int i;
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedTimerCtrlState *s = ASPEED_TIMER(dev);
-+
-+    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
-+        aspeed_init_one_timer(s, i);
-+        sysbus_init_irq(sbd, &s->timers[i].irq);
-+    }
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_timer_ops, s,
-+                          TYPE_ASPEED_TIMER, 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_timer_reset(DeviceState *dev)
-+{
-+    int i;
-+    AspeedTimerCtrlState *s = ASPEED_TIMER(dev);
-+
-+    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
-+        AspeedTimer *t = &s->timers[i];
-+        /* Explictly call helpers to avoid any conditional behaviour through
-+         * aspeed_timer_set_ctrl().
-+         */
-+        aspeed_timer_ctrl_enable(t, false);
-+        aspeed_timer_ctrl_external_clock(t, TIMER_CLOCK_USE_APB);
-+        aspeed_timer_ctrl_overflow_interrupt(t, false);
-+        aspeed_timer_ctrl_pulse_enable(t, false);
-+        t->level = 0;
-+        t->reload = 0;
-+        t->match[0] = 0;
-+        t->match[1] = 0;
-+    }
-+    s->ctrl = 0;
-+    s->ctrl2 = 0;
-+}
-+
-+static const VMStateDescription vmstate_aspeed_timer = {
-+    .name = "aspeed.timer",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(id, AspeedTimer),
-+        VMSTATE_INT32(level, AspeedTimer),
-+        VMSTATE_PTIMER(timer, AspeedTimer),
-+        VMSTATE_UINT32(reload, AspeedTimer),
-+        VMSTATE_UINT32_ARRAY(match, AspeedTimer, 2),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const VMStateDescription vmstate_aspeed_timer_state = {
-+    .name = "aspeed.timerctrl",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(ctrl, AspeedTimerCtrlState),
-+        VMSTATE_UINT32(ctrl2, AspeedTimerCtrlState),
-+        VMSTATE_STRUCT_ARRAY(timers, AspeedTimerCtrlState,
-+                             ASPEED_TIMER_NR_TIMERS, 1, vmstate_aspeed_timer,
-+                             AspeedTimer)
-+    }
-+};
-+
-+static void timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_timer_realize;
-+    dc->reset = aspeed_timer_reset;
-+    dc->desc = "ASPEED Timer";
-+    dc->vmsd = &vmstate_aspeed_timer_state;
-+}
-+
-+static const TypeInfo aspeed_timer_info = {
-+    .name = TYPE_ASPEED_TIMER,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedTimerCtrlState),
-+    .class_init = timer_class_init,
-+};
-+
-+static void aspeed_timer_register_types(void)
-+{
-+    type_register_static(&aspeed_timer_info);
-+}
-+
-+type_init(aspeed_timer_register_types)
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-new file mode 100644
-index 0000000..44dc2f8
---- /dev/null
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -0,0 +1,59 @@
 +/*
-+ *  ASPEED AST2400 Timer
-+ *
-+ *  Andrew Jeffery <andrew@aj.id.au>
-+ *
-+ *  Copyright (C) 2016 IBM Corp.
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation; either version 2 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  This program is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License along
-+ *  with this program; if not, write to the Free Software Foundation, Inc.,
-+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ * IO handlers: simply catch any reads/writes to IO addresses that aren't
++ * handled by a device mapping.
 + */
-+#ifndef ASPEED_TIMER_H
-+#define ASPEED_TIMER_H
 +
-+#include "hw/ptimer.h"
++static uint64_t ast2400_soc_io_read(void *p, hwaddr offset, unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
++                  __func__, offset, size);
++    return 0;
++}
 +
-+#define ASPEED_TIMER(obj) \
-+    OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
-+#define TYPE_ASPEED_TIMER "aspeed.timer"
-+#define ASPEED_TIMER_NR_TIMERS 8
++static void ast2400_soc_io_write(void *opaque, hwaddr offset, uint64_t value,
++                unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
++                  __func__, offset, value, size);
++}
 +
-+typedef struct AspeedTimer {
-+    qemu_irq irq;
++static const MemoryRegionOps ast2400_soc_io_ops = {
++    .read = ast2400_soc_io_read,
++    .write = ast2400_soc_io_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
 +
-+    uint8_t id;
-+
-+    /**
-+     * Track the line level as the ASPEED timers implement edge triggered
-+     * interrupts, signalling with both the rising and falling edge.
-+     */
-+    int32_t level;
-+    ptimer_state *timer;
-+    uint32_t reload;
-+    uint32_t match[2];
-+} AspeedTimer;
-+
-+typedef struct AspeedTimerCtrlState {
++typedef struct AST2400SOCState {
 +    /*< private >*/
-+    SysBusDevice parent;
++    DeviceState parent;
 +
 +    /*< public >*/
++    ARMCPU *cpu;
 +    MemoryRegion iomem;
++    AspeedVICState vic;
++    AspeedTimerCtrlState timerctrl;
++} AST2400SOCState;
 +
-+    uint32_t ctrl;
-+    uint32_t ctrl2;
-+    AspeedTimer timers[ASPEED_TIMER_NR_TIMERS];
-+} AspeedTimerCtrlState;
++#define TYPE_AST2400_SOC "ast2400-soc"
++#define AST2400_SOC(obj) OBJECT_CHECK(AST2400SOCState, (obj), TYPE_AST2400_SOC)
 +
-+#endif /* ASPEED_TIMER_H */
-diff --git a/trace-events b/trace-events
-index 6fba6cc..856425d 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1886,3 +1886,12 @@ qio_channel_command_new_pid(void *ioc, int writefd, int readfd, int pid) "Comman
- qio_channel_command_new_spawn(void *ioc, const char *binary, int flags) "Command new spawn ioc=%p binary=%s flags=%d"
- qio_channel_command_abort(void *ioc, int pid) "Command abort ioc=%p pid=%d"
- qio_channel_command_wait(void *ioc, int pid, int ret, int status) "Command abort ioc=%p pid=%d ret=%d status=%d"
++static void ast2400_soc_init(Object *obj)
++{
++    AST2400SOCState *s = AST2400_SOC(obj);
 +
-+# hw/timer/aspeed_timer.c
-+aspeed_timer_ctrl_enable(uint8_t i, bool enable) "Timer %" PRIu8 ": %d"
-+aspeed_timer_ctrl_external_clock(uint8_t i, bool enable) "Timer %" PRIu8 ": %d"
-+aspeed_timer_ctrl_overflow_interrupt(uint8_t i, bool enable) "Timer %" PRIu8 ": %d"
-+aspeed_timer_ctrl_pulse_enable(uint8_t i, bool enable) "Timer %" PRIu8 ": %d"
-+aspeed_timer_set_ctrl2(uint32_t value) "Value: 0x%" PRIx32
-+aspeed_timer_set_value(int timer, int reg, uint32_t value) "Timer %d register %d: 0x%" PRIx32
-+aspeed_timer_read(uint64_t offset, unsigned size, uint64_t value) "From 0x%" PRIx64 ": of size %u: 0x%" PRIx64
++    s->cpu = cpu_arm_init("arm926");
++
++    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
++    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
++    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
++
++    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
++    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), NULL);
++    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
++}
++
++static void ast2400_soc_realize(DeviceState *dev, Error **errp)
++{
++    int i;
++    AST2400SOCState *s = AST2400_SOC(dev);
++    Error *err = NULL;
++
++    /* IO space */
++    memory_region_init_io(&s->iomem, NULL, &ast2400_soc_io_ops, NULL,
++            "ast2400.io", AST2400_IOMEM_SIZE);
++    memory_region_add_subregion(get_system_memory(), AST2400_IOMEM_BASE,
++            &s->iomem);
++
++    /* VIC */
++    object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, AST2400_VIC_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
++                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
++                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_FIQ));
++
++    /* Timer */
++    object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, AST2400_TIMER_BASE);
++    for (i = 0; i < ARRAY_SIZE(timer_irqs); i++) {
++        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
++    }
++
++    /* UART - attach an 8250 to the IO space as our UART5 */
++    if (serial_hds[0]) {
++        qemu_irq uart5 = qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4]);
++        serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
++                uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN);
++    }
++}
++
++static void ast2400_soc_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = ast2400_soc_realize;
++
++    /*
++     * Reason: creates an ARM CPU, thus use after free(), see
++     * arm_cpu_class_init()
++     */
++    dc->cannot_destroy_with_object_finalize_yet = true;
++}
++
++static const TypeInfo ast2400_soc_type_info = {
++    .name = TYPE_AST2400_SOC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AST2400SOCState),
++    .instance_init = ast2400_soc_init,
++    .class_init = ast2400_soc_class_init,
++};
++
++static void ast2400_soc_register_types(void)
++{
++    type_register_static(&ast2400_soc_type_info);
++}
++
++type_init(ast2400_soc_register_types)
++
++typedef struct AST2400State {
++    AST2400SOCState soc;
++    MemoryRegion ram;
++} AST2400State;
++
++static void ast2400_init(MachineState *machine)
++{
++    AST2400State *ast2400;
++
++    ast2400 = g_new0(AST2400State, 1);
++    object_initialize(&ast2400->soc, (sizeof(ast2400->soc)), TYPE_AST2400_SOC);
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(&ast2400->soc),
++                              &error_abort);
++
++    memory_region_allocate_system_memory(&ast2400->ram, NULL, "ram",
++                                         ram_size);
++    memory_region_add_subregion(get_system_memory(), AST2400_SDRAM_BASE,
++                                &ast2400->ram);
++    object_property_add_const_link(OBJECT(&ast2400->soc), "ram",
++                                   OBJECT(&ast2400->ram), &error_abort);
++    object_property_set_bool(OBJECT(&ast2400->soc), true, "realized",
++                             &error_abort);
++
++    ast2400_binfo.kernel_filename = machine->kernel_filename;
++    ast2400_binfo.initrd_filename = machine->initrd_filename;
++    ast2400_binfo.kernel_cmdline = machine->kernel_cmdline;
++    ast2400_binfo.ram_size = ram_size;
++    arm_load_kernel(ARM_CPU(first_cpu), &ast2400_binfo);
++}
++
++static void ast2400_machine_init(MachineClass *mc)
++{
++    mc->desc = "ASPEED AST2400 BMC (ARM926EJ-S)";
++    mc->init = ast2400_init;
++    mc->max_cpus = 1;
++    mc->no_sdcard = 1;
++    mc->no_floppy = 1;
++    mc->no_cdrom = 1;
++    mc->no_sdcard = 1;
++    mc->no_parallel = 1;
++}
++
++DEFINE_MACHINE("ast2400", ast2400_machine_init);
 -- 
 2.5.0
 

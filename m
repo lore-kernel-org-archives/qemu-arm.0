@@ -1,307 +1,169 @@
-Received: by 10.25.208.211 with SMTP id h202csp1238041lfg;
-        Sun, 6 Mar 2016 23:12:30 -0800 (PST)
-X-Received: by 10.140.154.198 with SMTP id a189mr26900321qha.44.1457334750175;
-        Sun, 06 Mar 2016 23:12:30 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1238277lfg;
+        Sun, 6 Mar 2016 23:13:11 -0800 (PST)
+X-Received: by 10.140.252.197 with SMTP id x188mr27956140qhc.81.1457334783615;
+        Sun, 06 Mar 2016 23:13:03 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c18si15695498qkb.8.2016.03.06.23.12.29
+        by mx.google.com with ESMTPS id y206si15675508qka.77.2016.03.06.23.13.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Mar 2016 23:12:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 06 Mar 2016 23:13:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@163.com
-Received: from localhost ([::1]:54042 helo=lists.gnu.org)
+Received: from localhost ([::1]:54054 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1acpLB-0002M2-J9
-	for alex.bennee@linaro.org; Mon, 07 Mar 2016 02:12:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56676)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1acpLj-00034c-2y
+	for alex.bennee@linaro.org; Mon, 07 Mar 2016 02:13:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56852)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1acpGe-00034J-4Z
-	for qemu-devel@nongnu.org; Mon, 07 Mar 2016 02:07:49 -0500
+	(envelope-from <zxq_yx_007@163.com>) id 1acpGx-0003gG-6l
+	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 02:08:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1acpGc-0004GB-6F
-	for qemu-devel@nongnu.org; Mon, 07 Mar 2016 02:07:48 -0500
-Received: from m12-15.163.com ([220.181.12.15]:47935)
+	(envelope-from <zxq_yx_007@163.com>) id 1acpGw-0004M2-1m
+	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 02:08:07 -0500
+Received: from m12-15.163.com ([220.181.12.15]:50064)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1acpGb-0004Ao-2C; Mon, 07 Mar 2016 02:07:46 -0500
+	id 1acpGq-0004Ja-Po; Mon, 07 Mar 2016 02:08:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=CD0tvGNe1FkiY84dp+
-	97n4jfLbrLUJ1be4QM7nC8y4Q=; b=kvJi7yXHuDDN5WPPAXC70vXpzbt4CwVo0z
-	QKiEQco51dr1zQguWlAOyVlQdDfc7VWV42ILvA4QlUs2e5lF1aA09G8tnsN31hcS
-	qhxNrd/GANP+jJRb6ZV2hid0nx0NIEzMkVirM6qRtLM4mL/OUJASe77opvRzWhJn
-	tIh3mMkgs=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=mO/uwxqs5Jj9LZMTVM
+	9g80qRu5AJUTrxdnwEvOng4mc=; b=C2IU9Y5EQDrpmFGdE/GiJHY1BVWf+WfXCe
+	H1wzqJYTgyHaauFUT/m2k724ia6PozcLXnGYCk0TlwLqMOT4LGpHJMIrE6XpFJY3
+	NBul4T8Y3hVJGFetaVyYJtskjd4za7cwYmPYujYNKnTUt3GUDHw2emAqntzDde/U
+	hW5FDsxcE=
 Received: from localhost.localdomain (unknown [101.254.142.162])
-	by smtp11 (Coremail) with SMTP id D8CowED5XEaRKN1WjMdtAA--.46751S10;
-	Mon, 07 Mar 2016 15:07:09 +0800 (CST)
+	by smtp11 (Coremail) with SMTP id D8CowED5XEaRKN1WjMdtAA--.46751S8;
+	Mon, 07 Mar 2016 15:07:08 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  7 Mar 2016 15:05:49 +0800
-Message-Id: <1457334350-5675-9-git-send-email-zxq_yx_007@163.com>
+Date: Mon,  7 Mar 2016 15:05:47 +0800
+Message-Id: <1457334350-5675-7-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
 References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: D8CowED5XEaRKN1WjMdtAA--.46751S10
-X-Coremail-Antispam: 1Uf129KBjvJXoW3GrWkAr1UZr48Aw48ZFWrZrb_yoW3ZFy3pF
-	yxZ3WDWr48JFsxXr1ftryDWF18twn7Krn7tFn2yrn2kw4293yYvFWvya9IkFyUt3y8C3Z0
-	yrWrWr97Gan8Gw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+X-CM-TRANSID: D8CowED5XEaRKN1WjMdtAA--.46751S8
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGr48Xw4DuF17ZFy7Aw48Crg_yoW5Zr1UpF
+	Z7ZFs7CrWjqF4DXr4ftFsxuF4UAwn3CFyxKrnrWr9ak3srCryUXFsIyayayFWDJaykAF15
+	Xr48Wa48G3W8Jw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
 	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jxucNUUUUU=
 X-Originating-IP: [101.254.142.162]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEB4lxlUL7FywHwAAss
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbB0h0lxlUL91wjdgAAsM
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 220.181.12.15
-Cc: robh@kernel.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [Qemu-devel] [PATCH 8/9] hw/arm: QOM'ify strongarm.c
-X-BeenThere: qemu-devel@nongnu.org
+Cc: robh@kernel.org, qemu-arm@nongnu.org, balrogg@gmail.com,
+	peter.maydell@linaro.org
+Subject: [Qemu-arm] [PATCH 6/9] hw/arm: QOM'ify spitz.c
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cNzIrQI+Ac3K
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5uuoD5t3/Ru1
 
 Drop the use of old SysBus init function and use instance_init
 
 Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- hw/arm/strongarm.c | 66 +++++++++++++++++++++++-------------------------------
- 1 file changed, 28 insertions(+), 38 deletions(-)
+ hw/arm/spitz.c | 23 +++++++++--------------
+ 1 file changed, 9 insertions(+), 14 deletions(-)
 
-diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-index 3b17a21..78f58c6 100644
---- a/hw/arm/strongarm.c
-+++ b/hw/arm/strongarm.c
-@@ -177,19 +177,18 @@ static const MemoryRegionOps strongarm_pic_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int strongarm_pic_initfn(SysBusDevice *sbd)
-+static void strongarm_pic_initfn(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    StrongARMPICState *s = STRONGARM_PIC(dev);
-+    DeviceState *dev = DEVICE(obj);
-+    StrongARMPICState *s = STRONGARM_PIC(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     qdev_init_gpio_in(dev, strongarm_pic_set_irq, SA_PIC_SRCS);
--    memory_region_init_io(&s->iomem, OBJECT(s), &strongarm_pic_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &strongarm_pic_ops, s,
-                           "pic", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
-     sysbus_init_irq(sbd, &s->fiq);
--
--    return 0;
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 607cb58..670acc5 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -163,9 +163,10 @@ static void sl_flash_register(PXA2xxState *cpu, int size)
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, FLASH_BASE);
  }
  
- static int strongarm_pic_post_load(void *opaque, int version_id)
-@@ -215,9 +214,7 @@ static VMStateDescription vmstate_strongarm_pic_regs = {
- static void strongarm_pic_class_init(ObjectClass *klass, void *data)
+-static int sl_nand_init(SysBusDevice *dev)
++static void sl_nand_init(Object *obj)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = strongarm_pic_initfn;
-     dc->desc = "StrongARM PIC";
-     dc->vmsd = &vmstate_strongarm_pic_regs;
- }
-@@ -226,6 +223,7 @@ static const TypeInfo strongarm_pic_info = {
-     .name          = TYPE_STRONGARM_PIC,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(StrongARMPICState),
-+    .instance_init = strongarm_pic_initfn,
-     .class_init    = strongarm_pic_class_init,
- };
- 
-@@ -379,9 +377,10 @@ static const MemoryRegionOps strongarm_rtc_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int strongarm_rtc_init(SysBusDevice *dev)
-+static void strongarm_rtc_init(Object *obj)
- {
--    StrongARMRTCState *s = STRONGARM_RTC(dev);
-+    StrongARMRTCState *s = STRONGARM_RTC(obj);
+-    SLNANDState *s = SL_NAND(dev);
++    SLNANDState *s = SL_NAND(obj);
 +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
-     struct tm tm;
+     DriveInfo *nand;
  
-     s->rttr = 0x0;
-@@ -398,11 +397,9 @@ static int strongarm_rtc_init(SysBusDevice *dev)
-     sysbus_init_irq(dev, &s->rtc_irq);
-     sysbus_init_irq(dev, &s->rtc_hz_irq);
+     s->ctl = 0;
+@@ -174,10 +175,8 @@ static int sl_nand_init(SysBusDevice *dev)
+     s->nand = nand_init(nand ? blk_by_legacy_dinfo(nand) : NULL,
+                         s->manf_id, s->chip_id);
  
--    memory_region_init_io(&s->iomem, OBJECT(s), &strongarm_rtc_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &strongarm_rtc_ops, s,
-                           "rtc", 0x10000);
+-    memory_region_init_io(&s->iomem, OBJECT(s), &sl_ops, s, "sl", 0x40);
++    memory_region_init_io(&s->iomem, obj, &sl_ops, s, "sl", 0x40);
      sysbus_init_mmio(dev, &s->iomem);
 -
 -    return 0;
  }
  
- static void strongarm_rtc_pre_save(void *opaque)
-@@ -441,9 +438,7 @@ static const VMStateDescription vmstate_strongarm_rtc_regs = {
- static void strongarm_rtc_sysbus_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = strongarm_rtc_init;
-     dc->desc = "StrongARM RTC Controller";
-     dc->vmsd = &vmstate_strongarm_rtc_regs;
- }
-@@ -452,6 +447,7 @@ static const TypeInfo strongarm_rtc_sysbus_info = {
-     .name          = TYPE_STRONGARM_RTC,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(StrongARMRTCState),
-+    .instance_init = strongarm_rtc_init,
-     .class_init    = strongarm_rtc_sysbus_class_init,
- };
- 
-@@ -644,16 +640,17 @@ static DeviceState *strongarm_gpio_init(hwaddr base,
-     return dev;
+ /* Spitz Keyboard */
+@@ -500,10 +499,10 @@ static void spitz_keyboard_register(PXA2xxState *cpu)
+     qemu_add_kbd_event_handler(spitz_keyboard_handler, s);
  }
  
--static int strongarm_gpio_initfn(SysBusDevice *sbd)
-+static void strongarm_gpio_initfn(Object *obj)
+-static int spitz_keyboard_init(SysBusDevice *sbd)
++static void spitz_keyboard_init(Object *obj)
  {
 -    DeviceState *dev = DEVICE(sbd);
--    StrongARMGPIOInfo *s = STRONGARM_GPIO(dev);
+-    SpitzKeyboardState *s = SPITZ_KEYBOARD(dev);
 +    DeviceState *dev = DEVICE(obj);
-+    StrongARMGPIOInfo *s = STRONGARM_GPIO(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-     int i;
++    SpitzKeyboardState *s = SPITZ_KEYBOARD(obj);
+     int i, j;
  
-     qdev_init_gpio_in(dev, strongarm_gpio_set, 28);
-     qdev_init_gpio_out(dev, s->handler, 28);
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &strongarm_gpio_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &strongarm_gpio_ops, s,
-                           "gpio", 0x1000);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
-@@ -661,8 +658,6 @@ static int strongarm_gpio_initfn(SysBusDevice *sbd)
-         sysbus_init_irq(sbd, &s->irqs[i]);
-     }
-     sysbus_init_irq(sbd, &s->irqX);
+     for (i = 0; i < 0x80; i ++)
+@@ -518,8 +517,6 @@ static int spitz_keyboard_init(SysBusDevice *sbd)
+     s->kbdtimer = timer_new_ns(QEMU_CLOCK_VIRTUAL, spitz_keyboard_tick, s);
+     qdev_init_gpio_in(dev, spitz_keyboard_strobe, SPITZ_KEY_STROBE_NUM);
+     qdev_init_gpio_out(dev, s->sense, SPITZ_KEY_SENSE_NUM);
 -
 -    return 0;
  }
  
- static const VMStateDescription vmstate_strongarm_gpio_regs = {
-@@ -685,9 +680,7 @@ static const VMStateDescription vmstate_strongarm_gpio_regs = {
- static void strongarm_gpio_class_init(ObjectClass *klass, void *data)
+ /* LCD backlight controller */
+@@ -1064,9 +1061,7 @@ static Property sl_nand_properties[] = {
+ static void sl_nand_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 -    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
  
--    k->init = strongarm_gpio_initfn;
-     dc->desc = "StrongARM GPIO controller";
-     dc->vmsd = &vmstate_strongarm_gpio_regs;
- }
-@@ -696,6 +689,7 @@ static const TypeInfo strongarm_gpio_info = {
-     .name          = TYPE_STRONGARM_GPIO,
+-    k->init = sl_nand_init;
+     dc->vmsd = &vmstate_sl_nand_info;
+     dc->props = sl_nand_properties;
+     /* Reason: init() method uses drive_get() */
+@@ -1077,6 +1072,7 @@ static const TypeInfo sl_nand_info = {
+     .name          = TYPE_SL_NAND,
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(StrongARMGPIOInfo),
-+    .instance_init = strongarm_gpio_initfn,
-     .class_init    = strongarm_gpio_class_init,
+     .instance_size = sizeof(SLNANDState),
++    .instance_init = sl_nand_init,
+     .class_init    = sl_nand_class_init,
  };
  
-@@ -822,20 +816,19 @@ static const MemoryRegionOps strongarm_ppc_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int strongarm_ppc_init(SysBusDevice *sbd)
-+static void strongarm_ppc_init(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    StrongARMPPCInfo *s = STRONGARM_PPC(dev);
-+    DeviceState *dev = DEVICE(obj);
-+    StrongARMPPCInfo *s = STRONGARM_PPC(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     qdev_init_gpio_in(dev, strongarm_ppc_set, 22);
-     qdev_init_gpio_out(dev, s->handler, 22);
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &strongarm_ppc_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &strongarm_ppc_ops, s,
-                           "ppc", 0x1000);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
--
--    return 0;
- }
- 
- static const VMStateDescription vmstate_strongarm_ppc_regs = {
-@@ -857,9 +850,7 @@ static const VMStateDescription vmstate_strongarm_ppc_regs = {
- static void strongarm_ppc_class_init(ObjectClass *klass, void *data)
+@@ -1096,9 +1092,7 @@ static VMStateDescription vmstate_spitz_kbd = {
+ static void spitz_keyboard_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 -    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
  
--    k->init = strongarm_ppc_init;
-     dc->desc = "StrongARM PPC controller";
-     dc->vmsd = &vmstate_strongarm_ppc_regs;
- }
-@@ -868,6 +859,7 @@ static const TypeInfo strongarm_ppc_info = {
-     .name          = TYPE_STRONGARM_PPC,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(StrongARMPPCInfo),
-+    .instance_init = strongarm_ppc_init,
-     .class_init    = strongarm_ppc_class_init,
- };
- 
-@@ -1229,11 +1221,12 @@ static const MemoryRegionOps strongarm_uart_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int strongarm_uart_init(SysBusDevice *dev)
-+static void strongarm_uart_init(Object *obj)
- {
--    StrongARMUARTState *s = STRONGARM_UART(dev);
-+    StrongARMUARTState *s = STRONGARM_UART(obj);
-+    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &strongarm_uart_ops, s,
-+    memory_region_init_io(&s->iomem, obj, &strongarm_uart_ops, s,
-                           "uart", 0x10000);
-     sysbus_init_mmio(dev, &s->iomem);
-     sysbus_init_irq(dev, &s->irq);
-@@ -1248,8 +1241,6 @@ static int strongarm_uart_init(SysBusDevice *dev)
-                         strongarm_uart_event,
-                         s);
-     }
--
--    return 0;
+-    k->init = spitz_keyboard_init;
+     dc->vmsd = &vmstate_spitz_kbd;
  }
  
- static void strongarm_uart_reset(DeviceState *dev)
-@@ -1319,9 +1310,7 @@ static Property strongarm_uart_properties[] = {
- static void strongarm_uart_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = strongarm_uart_init;
-     dc->desc = "StrongARM UART controller";
-     dc->reset = strongarm_uart_reset;
-     dc->vmsd = &vmstate_strongarm_uart_regs;
-@@ -1332,6 +1321,7 @@ static const TypeInfo strongarm_uart_info = {
-     .name          = TYPE_STRONGARM_UART,
+@@ -1106,6 +1100,7 @@ static const TypeInfo spitz_keyboard_info = {
+     .name          = TYPE_SPITZ_KEYBOARD,
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(StrongARMUARTState),
-+    .instance_init = strongarm_uart_init,
-     .class_init    = strongarm_uart_class_init,
+     .instance_size = sizeof(SpitzKeyboardState),
++    .instance_init = spitz_keyboard_init,
+     .class_init    = spitz_keyboard_class_init,
  };
  
 -- 

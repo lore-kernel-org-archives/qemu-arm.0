@@ -1,85 +1,51 @@
-Received: by 10.25.208.211 with SMTP id h202csp1296111lfg;
-        Mon, 7 Mar 2016 01:57:35 -0800 (PST)
-X-Received: by 10.140.143.134 with SMTP id 128mr29297333qhp.25.1457344655434;
-        Mon, 07 Mar 2016 01:57:35 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1439908lfg;
+        Mon, 7 Mar 2016 07:19:25 -0800 (PST)
+X-Received: by 10.140.131.6 with SMTP id 6mr29348315qhd.67.1457363965498;
+        Mon, 07 Mar 2016 07:19:25 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q66si16117591qgd.93.2016.03.07.01.57.35
+        by mx.google.com with ESMTPS id l74si17193439qgl.121.2016.03.07.07.19.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Mar 2016 01:57:35 -0800 (PST)
+        Mon, 07 Mar 2016 07:19:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54744 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1acrux-0000U2-0V
-	for alex.bennee@linaro.org; Mon, 07 Mar 2016 04:57:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35893)
+	id 1acwwP-0004pS-0i
+	for alex.bennee@linaro.org; Mon, 07 Mar 2016 10:19:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1acruu-0000SZ-UD
-	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 04:57:33 -0500
+	(envelope-from <imammedo@redhat.com>) id 1acwwJ-0004oN-BY
+	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 10:19:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1acruu-0000lm-0X
-	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 04:57:32 -0500
-Received: from mail-lb0-x22a.google.com ([2a00:1450:4010:c04::22a]:36553)
+	(envelope-from <imammedo@redhat.com>) id 1acwwE-00057V-HY
+	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 10:19:19 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41868)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1acrup-0000lA-Hj; Mon, 07 Mar 2016 04:57:27 -0500
-Received: by mail-lb0-x22a.google.com with SMTP id x1so123981305lbj.3;
-	Mon, 07 Mar 2016 01:57:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=oF58OD1FwzovJsRdZ5njADfGMviwU76G/rxkoiojJnc=;
-	b=QSlAmVz7kJ30S0Zic/rBAri/gUA5aDtZyfsizs8bfyq8+4jn6PH8BR72vwN5s4c24U
-	aZShZn2Wek1ZIMcbmz4XbMLLy7pDewGX/UcABqWmrBxql3zAifkwphVp57PkzDYmoJEq
-	xU1PSa9bSA/6DDDCJI/uEHmjD+v5/nRD08pzhswxqfBTO8SkDQcFAWM905uOVkq+OVIH
-	ysfiH+1QA+Y/nuNZPAMmq5txqZxxk/HDGVwxJ3G7T6J3+89J6CzpH8qu0I9oXB1fEm2M
-	VAn7VS9ycaYEDAdDrecrvkvmC+6eo+0f/784uf9HyIbixDYBBcNvZKpV1HV0l1DvEVMT
-	HWTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=oF58OD1FwzovJsRdZ5njADfGMviwU76G/rxkoiojJnc=;
-	b=D1fHFLhQSTjiRNDwQjVZVJ/kqlsixrbBlth7cZRz+nnzxPvxM8+s3ON5761kWdnZOX
-	j3cBzrX6IDm/VhExOKrZgHhl4vU8fG2eJQZXIhlbSfUdog9h8DgyRUrxikY66urVrTc5
-	YaNsk7bi2RVbPFdmGSVK4xnHkt0xf4JdC63ULtZlU0nRxsWJbXyGWRL1/DdEsKH+Jtf5
-	/dMjxYegbicmd+bMAPiYlwAnpnAb3ouN7jHfihqcezC+UdUEGJ8t3ttTA1/I6jidCan6
-	dP8Di+lnc3IwfKiBP/nShQsocR/cCwwZbqdPty3o5IPvb4yF6ei07I74sYTGYM9KQWpB
-	7w0Q==
-X-Gm-Message-State: AD7BkJIservFPrGi1EHQJ/vjxx+UtzDT/DKBMROkC/SrOwz6sNnPrxSI/Qz5405DA4OxsQ==
-X-Received: by 10.25.168.138 with SMTP id r132mr5598823lfe.77.1457344646536;
-	Mon, 07 Mar 2016 01:57:26 -0800 (PST)
-Received: from [172.31.81.134] (h195-91-255-43.ln.rinet.ru. [195.91.255.43])
-	by smtp.gmail.com with ESMTPSA id
-	l129sm2685132lfl.18.2016.03.07.01.57.25
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 07 Mar 2016 01:57:25 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20160222222554.GA11598@beta.comsecuris.com>
-	<56DC7F23.8030104@gmail.com>
-	<CAFEAcA-h9MfC0xc9jc=nXSnX+AnCZngkdvJd=9nuSN1ndM6d2w@mail.gmail.com>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56DD5084.1010201@gmail.com>
-Date: Mon, 7 Mar 2016 12:57:24 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-h9MfC0xc9jc=nXSnX+AnCZngkdvJd=9nuSN1ndM6d2w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::22a
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Ralf-Philipp Weinmann <ralf+devel@comsecuris.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] Fix bug: SRS instructions would
- trap to EL3 in Secure EL1 even if specified mode was not monitor mode.
+	(envelope-from <imammedo@redhat.com>)
+	id 1acwwE-00057F-CZ; Mon, 07 Mar 2016 10:19:14 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 0FBEB4C0B8;
+	Mon,  7 Mar 2016 15:19:14 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u27FJBIt013702; Mon, 7 Mar 2016 10:19:12 -0500
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  7 Mar 2016 16:19:02 +0100
+Message-Id: <1457363948-71300-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 209.132.183.28
+Cc: peter.maydell@linaro.org, guangrong.xiao@linux.intel.com,
+	ehabkost@redhat.com, mst@redhat.com, qemu-arm@nongnu.org,
+	zhaoshenglong@huawei.com, pbonzini@redhat.com
+Subject: [Qemu-arm] [PATCH 0/6] acpi: simplify bios_linker API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -93,26 +59,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zSZew7FtvqWP
+X-TUID: G7RSaJn7Dv7P
 
-On 07.03.2016 00:14, Peter Maydell wrote:
-> On 7 March 2016 at 02:04, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
->> On 23.02.2016 01:25, Ralf-Philipp Weinmann wrote:
->>> According to the ARMv8 Architecture reference manual [F6.1.203], ALL
->>> of the following conditions need to be met for SRS to trap to EL3:
->>> * It is executed at Secure PL1.
->>> * The specified mode is monitor mode.
->>> * EL3 is using AArch64.
->>
->> The code changes in the patch looks good for me. But anyway, you should:
->>   (1) tweak the commit message title according to the requirements [1] and
->>   (2) add your "Singed-off-by:" line [2]
-> Ralf-Philipp sent a second version of this email which did
-> have the signed-off-by line, so this patch is already in
-> master (as commit ba63cf47a9304113); I did tweak the
-> commit message as I applied it.
+Simplify bios_linker API by adding filei name + blob tracking
+so user would have to suppily less arguments which
+reduces chances of mistake by using wrong blob pointer
+with not related file.
+And also refactor API to take file offsets, as it's what
+actually API were doing only internally, instead of
+using host pointers. I hope ti makes it easier for API user
+to use API without need to look at implementation on
+QEMU/SeaBIOS. 
 
-Really, not sure how I missed that :)
+Igor Mammedov (6):
+  acpi: convert linker from GArray to BOISLinker structure
+  acpi: simplify bios_linker API by removing redundant 'table' argument
+  acpi: cleanup bios_linker_loader_cleanup()
+  tpm: apci: cleanup TCPA table initialization
+  acpi: make bios_linker_loader_add_pointer() API offset based
+  acpi: make bios_linker_loader_add_checksum() API offset based
 
-Regards,
-Sergey
+ hw/acpi/aml-build.c                  |  33 +++----
+ hw/acpi/bios-linker-loader.c         | 179 +++++++++++++++++++++--------------
+ hw/acpi/nvdimm.c                     |   6 +-
+ hw/arm/virt-acpi-build.c             |  51 +++++-----
+ hw/i386/acpi-build.c                 |  89 +++++++++--------
+ include/hw/acpi/aml-build.h          |   7 +-
+ include/hw/acpi/bios-linker-loader.h |  28 +++---
+ include/hw/mem/nvdimm.h              |   3 +-
+ 8 files changed, 222 insertions(+), 174 deletions(-)
+
+-- 
+1.8.3.1
+

@@ -1,68 +1,60 @@
-Received: by 10.25.208.211 with SMTP id h202csp1679713lfg;
-        Mon, 7 Mar 2016 17:52:11 -0800 (PST)
-X-Received: by 10.140.235.137 with SMTP id g131mr34680201qhc.43.1457401931161;
-        Mon, 07 Mar 2016 17:52:11 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1868937lfg;
+        Tue, 8 Mar 2016 03:19:18 -0800 (PST)
+X-Received: by 10.140.217.202 with SMTP id n193mr5525625qhb.101.1457435958630;
+        Tue, 08 Mar 2016 03:19:18 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k22si601675qhk.83.2016.03.07.17.52.10
+        by mx.google.com with ESMTPS id e203si2481218qhd.107.2016.03.08.03.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Mar 2016 17:52:11 -0800 (PST)
+        Tue, 08 Mar 2016 03:19:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@163.com
-Received: from localhost ([::1]:59573 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33797 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ad6ok-0005Yf-Kc
-	for alex.bennee@linaro.org; Mon, 07 Mar 2016 20:52:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54091)
+	id 1adFfZ-0000HU-Vi
+	for alex.bennee@linaro.org; Tue, 08 Mar 2016 06:19:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51393)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ad6oi-0005YS-Go
-	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 20:52:09 -0500
+	(envelope-from <kraxel@redhat.com>) id 1adFfS-00005f-Gi
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 06:19:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ad6of-0004h1-Au
-	for qemu-arm@nongnu.org; Mon, 07 Mar 2016 20:52:08 -0500
-Received: from m12-17.163.com ([220.181.12.17]:60269)
+	(envelope-from <kraxel@redhat.com>) id 1adFfP-0001B8-QA
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 06:19:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60812)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1ad6oe-0004ft-Kx; Mon, 07 Mar 2016 20:52:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Subject:From:Message-ID:Date:MIME-Version; bh=BIwFo
-	5kEXDx4eYKxeTjGNrIYAwkofOwzoU18OzkClfE=; b=olJhE+wRthPLCQ227rvn1
-	TPubTWnicjeHddbmQrsYZwPh1yPzFEkLd+I1qU0BiM3D//EfukWdT77QR7vEgvV0
-	lfFdhwfsnhqdwHxtypnZmqfNXld6opj4xszN5UVXxxpoJJRrXmYTRQxz1Zyd3jH2
-	Dg19KDQelk4iPQR9xLt7tE=
-Received: from [192.168.31.184] (unknown [118.187.28.42])
-	by smtp13 (Coremail) with SMTP id EcCowAAXddIgMN5WC+pWAQ--.7106S2;
-	Tue, 08 Mar 2016 09:51:29 +0800 (CST)
-To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
-References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
-	<1457334350-5675-3-git-send-email-zxq_yx_007@163.com>
-	<CAPokK=rjX4k9JXnJH8Fv1-0rEaV4JRADv5xGDh8TY8Mf6upoAA@mail.gmail.com>
-From: hitmoon <zxq_yx_007@163.com>
-Message-ID: <56DE2FDC.3020807@163.com>
-Date: Tue, 8 Mar 2016 09:50:20 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <kraxel@redhat.com>)
+	id 1adFfP-0001B1-L8; Tue, 08 Mar 2016 06:19:07 -0500
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 528E38E010;
+	Tue,  8 Mar 2016 11:19:07 +0000 (UTC)
+Received: from nilsson.home.kraxel.org (ovpn-116-59.ams2.redhat.com
+	[10.36.116.59])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u28BJ585021045; Tue, 8 Mar 2016 06:19:06 -0500
+Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
+	id B417082758; Tue,  8 Mar 2016 12:19:04 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  8 Mar 2016 12:18:59 +0100
+Message-Id: <1457435941-17578-5-git-send-email-kraxel@redhat.com>
+In-Reply-To: <1457435941-17578-1-git-send-email-kraxel@redhat.com>
+References: <1457435941-17578-1-git-send-email-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAPokK=rjX4k9JXnJH8Fv1-0rEaV4JRADv5xGDh8TY8Mf6upoAA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: EcCowAAXddIgMN5WC+pWAQ--.7106S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7AF4xGF4fXw43Jw4UXF4xWFg_yoW8Zw1xp3
-	s7uFs0kF45tF4kXF42qF9YvFWjva1Ikr1xWr4kA3WSyasFkryDCF1UGryfCrWq9r48AF1r
-	tr48t3Z7XF4fCw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jQsqXUUUUU=
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiFgAmxlWBPf8LKgAAsB
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.17
-Cc: Rob Herring <robh@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/9] hw/arm: QOM'ify highbank.c
+X-Received-From: 209.132.183.28
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, "Gabriel L. Somlo" <somlo@cmu.edu>,
+	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Shannon Zhao <zhaoshenglong@huawei.com>,
+	Igor Mammedov <imammedo@redhat.com>
+Subject: [Qemu-arm] [PULL 4/6] acpi: arm: add fw_cfg device node to dsdt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -76,71 +68,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RxFAct9zeOPo
+X-TUID: GEvhNJNWayzC
 
+From: "Gabriel L. Somlo" <somlo@cmu.edu>
 
+Add a fw_cfg device node to the ACPI DSDT. This is mostly
+informational, as the authoritative fw_cfg MMIO region(s)
+are listed in the Device Tree. However, since we are building
+ACPI tables, we might as well be thorough while at it...
 
-在 2016年03月08日 01:40, Peter Crosthwaite 写道:
-> On Sun, Mar 6, 2016 at 11:05 PM, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
->> Drop the use of old SysBus init function and use instance_init
->>
->> Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
-> Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
->
-> (just this one as I have done some highbank work recently - I cant do
-> the whole series).
->
-> Regards,
-> Peter
->
->> ---
->>   hw/arm/highbank.c | 12 +++++-------
->>   1 file changed, 5 insertions(+), 7 deletions(-)
->>
->> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
->> index e25cf5e..8f38dff 100644
->> --- a/hw/arm/highbank.c
->> +++ b/hw/arm/highbank.c
->> @@ -167,23 +167,20 @@ static void highbank_regs_reset(DeviceState *dev)
->>       s->regs[0x43] = 0x05F40121;
->>   }
->>
->> -static int highbank_regs_init(SysBusDevice *dev)
->> +static void highbank_regs_init(Object *obj)
->>   {
->> -    HighbankRegsState *s = HIGHBANK_REGISTERS(dev);
->> +    HighbankRegsState *s = HIGHBANK_REGISTERS(obj);
->> +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
->>
->> -    memory_region_init_io(&s->iomem, OBJECT(s), &hb_mem_ops, s->regs,
->> +    memory_region_init_io(&s->iomem, obj, &hb_mem_ops, s->regs,
->>                             "highbank_regs", 0x1000);
->>       sysbus_init_mmio(dev, &s->iomem);
->> -
->> -    return 0;
->>   }
->>
->>   static void highbank_regs_class_init(ObjectClass *klass, void *data)
->>   {
->> -    SysBusDeviceClass *sbc = SYS_BUS_DEVICE_CLASS(klass);
->>       DeviceClass *dc = DEVICE_CLASS(klass);
->>
->> -    sbc->init = highbank_regs_init;
->>       dc->desc = "Calxeda Highbank registers";
->>       dc->vmsd = &vmstate_highbank_regs;
->>       dc->reset = highbank_regs_reset;
->> @@ -193,6 +190,7 @@ static const TypeInfo highbank_regs_info = {
->>       .name          = TYPE_HIGHBANK_REGISTERS,
->>       .parent        = TYPE_SYS_BUS_DEVICE,
->>       .instance_size = sizeof(HighbankRegsState),
->> +    .instance_init = highbank_regs_init,
->>       .class_init    = highbank_regs_class_init,
->>   };
->>
->> --
->> 2.1.4
->>
->>
->>
-Thanks for your reply, Peter !
+Signed-off-by: Gabriel Somlo <somlo@cmu.edu>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Tested-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Marc Mar=C3=AD <markmb@redhat.com>
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-id: 1455906029-25565-5-git-send-email-somlo@cmu.edu
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/arm/virt-acpi-build.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b8b3ece..6a86b2c 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -81,6 +81,20 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMa=
+pEntry *uart_memmap,
+     aml_append(scope, dev);
+ }
+=20
++static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_m=
+emmap)
++{
++    Aml *dev =3D aml_device("FWCF");
++    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    /* device present, functioning, decoding, not shown in UI */
++    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
++
++    Aml *crs =3D aml_resource_template();
++    aml_append(crs, aml_memory32_fixed(fw_cfg_memmap->base,
++                                       fw_cfg_memmap->size, AML_READ_WRI=
+TE));
++    aml_append(dev, aml_name_decl("_CRS", crs));
++    aml_append(scope, dev);
++}
++
+ static void acpi_dsdt_add_flash(Aml *scope, const MemMapEntry *flash_mem=
+map)
+ {
+     Aml *dev, *crs;
+@@ -549,6 +563,7 @@ build_dsdt(GArray *table_data, GArray *linker, VirtGu=
+estInfo *guest_info)
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
++    acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANS=
+PORTS);
+     acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
+--=20
+1.8.3.1
 

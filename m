@@ -1,42 +1,58 @@
-Received: by 10.25.208.211 with SMTP id h202csp1920009lfg;
-        Tue, 8 Mar 2016 05:07:00 -0800 (PST)
-X-Received: by 10.140.101.5 with SMTP id t5mr35832442qge.24.1457442420464;
-        Tue, 08 Mar 2016 05:07:00 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1940225lfg;
+        Tue, 8 Mar 2016 05:46:39 -0800 (PST)
+X-Received: by 10.141.6.136 with SMTP id i130mr37452720qhd.21.1457444799434;
+        Tue, 08 Mar 2016 05:46:39 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e127si2891689qkb.26.2016.03.08.05.07.00
+        by mx.google.com with ESMTPS id f125si2997029qkb.95.2016.03.08.05.46.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 05:07:00 -0800 (PST)
+        Tue, 08 Mar 2016 05:46:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34496 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:34684 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adHLn-0002uc-QM
-	for alex.bennee@linaro.org; Tue, 08 Mar 2016 08:06:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44696)
+	id 1adHyA-0003ic-RD
+	for alex.bennee@linaro.org; Tue, 08 Mar 2016 08:46:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1adHLg-0002uN-7y
-	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 08:06:58 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1adHy3-0003c6-2X
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 08:46:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1adHLc-0001hd-30
-	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 08:06:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51624)
+	(envelope-from <peter.maydell@linaro.org>) id 1adHy2-0002O6-7K
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 08:46:31 -0500
+Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:36308)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1adHLb-0001fO-UK; Tue, 08 Mar 2016 08:06:48 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 18FEBC0A15F9;
-	Tue,  8 Mar 2016 13:06:44 +0000 (UTC)
-Received: from [10.36.112.26] (ovpn-112-26.ams2.redhat.com [10.36.112.26])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u28D6eMT009812
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 8 Mar 2016 08:06:42 -0500
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1adHy2-0002N8-2e
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 08:46:30 -0500
+Received: by mail-vk0-x22a.google.com with SMTP id c3so16593528vkb.3
+	for <qemu-arm@nongnu.org>; Tue, 08 Mar 2016 05:46:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=siBrARxFV32Tbae6lvqQWstpbqsLsHOjpL2Wz46COxY=;
+	b=kuJ69eaXmY5ZY+hLvlOZKfuyM+QlRTo/wIWZCw75vv9Qd89WAkgDD6KjEXQq4Fah6p
+	scq/I7UU5GQXCAnU3Fzmvix2zd9ll+1nilRti3f5c4r0QhP5iVjQlJq1wXdVxxlR+4l/
+	8ivCWXRtqaDliVIAxLo0vBXQzcLWTiC7KhP8Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=siBrARxFV32Tbae6lvqQWstpbqsLsHOjpL2Wz46COxY=;
+	b=BE7T0CJdUcaVP98lPL2UCTmVO+y34mAI7uen52bshjOGA6yFLHq8/y5gSU0kM3LwHX
+	h87und7XFSjin3PCXyUE9Cy+oRYyFcfiVZiMgQKdgYEJGg1k8nAIFt8eFGx2G1xgNnPh
+	GXNplnW3+c9YRnX7CVa4T/DEbL1wbr4UQPmANW6DCQ/kPs6jwU1ZPE1+QQ4WyDUEF9Kd
+	zraY9tW+mDVF1fJDC7NkOj7BzsQH9hgwGm60kNp05UFiBAxih0HxN1kfm21L361mEDbJ
+	WumXMnUxG03ELEoAgAdMGH5QHBzGVLovfQ/tJN65jCD5kNmq4QtitNKdUTO8J7iiCSFK
+	Lrog==
+X-Gm-Message-State: AD7BkJJD3tizLAE/PTipmCdaZFPYsQ4bBMWURg9/KA7nl2nATGclG7OYUF/Jp4tWXU2Z56DbuZAhi+qE5zTovzDs
+X-Received: by 10.31.8.210 with SMTP id 201mr26394227vki.90.1457444789232;
+	Tue, 08 Mar 2016 05:46:29 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Tue, 8 Mar 2016 05:46:09 -0800 (PST)
+In-Reply-To: <56DECE5F.6000207@redhat.com>
 References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
 	<56DD9C58.7050306@redhat.com>
 	<CAFEAcA8C2VzkD=87W5Jn7X523cFZLZL6onxjKDoOcZsCPMQxZw@mail.gmail.com>
@@ -47,22 +63,18 @@ References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
 	<CAKv+Gu-joM8MqtM=G_F7NLZEwpxLBMPeqimDwZv7yivTjYBFVQ@mail.gmail.com>
 	<56DEC860.1060707@redhat.com>
 	<CAKv+Gu91CH9WURYaLFtP7HHEm7Z18FMk19HXEWaj1=LBqM6mCQ@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56DECE5F.6000207@redhat.com>
-Date: Tue, 8 Mar 2016 14:06:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
-MIME-Version: 1.0
-In-Reply-To: <CAKv+Gu91CH9WURYaLFtP7HHEm7Z18FMk19HXEWaj1=LBqM6mCQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	<56DECE5F.6000207@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Mar 2016 20:46:09 +0700
+Message-ID: <CAFEAcA_sN+Rs=o5d6HnhFgpw+1pxg7oJmfBiygeca6JeCu7xEA@mail.gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22a
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Subject: Re: [Qemu-arm] [PATCH 0/4] virt: provide secure-only RAM and first
 	flash
 X-BeenThere: qemu-arm@nongnu.org
@@ -78,33 +90,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LYETzqgmV6Ze
+X-TUID: S4RRW8o/i3Je
 
-On 08/03/2016 13:50, Ard Biesheuvel wrote:
-> Note that, for KVM, it is unlikely that we will ever support all of
-> this inside the guest. It makes *much* more sense to lock down the
-> emulated flash, and implement the UEFI Runtime Services using a thin
-> layer in UEFI that hooks up to interfaces exposed to the guest by
-> QEMU.
+On 8 March 2016 at 20:06, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>  I cannot think of a good reason for hardware not to let you virtualize
+> hypervisor or secure mode
 
-Well, it makes a bit less sense if the SMM code is already there for you
-to use. :)  More seriously, implementing secure boot on x86 KVM was
-"just" a matter of reading the architecture manual and chipset
-datasheets, and implementing what they said.  Likewise, the firmware
-work can reuse a large part of the work done for bare-metal hardware.
-Laszlo would kill me for saying this, :) but in terms of sheer SLOC his
-platform enablement patches were dwarfed by the SMM code that Intel
-contributed.  The SMM code in turn is _exactly_ the same on bare-metal
-and virt.
+Regardless of whether you can think of a good reason or not,
+it doesn't let you do it...
 
-Designing good PV interfaces is hard, designing secure PV interfaces is
-harder; reading a spec is easy.  To me, the only reason to do it in PV
-interfaces is that the hardware doesn't allow virtualization of EL3.
-
-If the hardware makes you jump through extra hoops, sometimes it's
-necessary, sometimes it's not.  If it's not, rationalizing it is bad.  I
-cannot think of a good reason for hardware not to let you virtualize
-hypervisor or secure mode, or to force the hypervisor to use two-level
-page translation.
-
-Paolo
+thanks
+-- PMM

@@ -1,74 +1,75 @@
-Received: by 10.25.208.211 with SMTP id h202csp2154511lfg;
-        Tue, 8 Mar 2016 13:03:24 -0800 (PST)
-X-Received: by 10.55.80.68 with SMTP id e65mr38867028qkb.46.1457471004108;
-        Tue, 08 Mar 2016 13:03:24 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2157044lfg;
+        Tue, 8 Mar 2016 13:08:54 -0800 (PST)
+X-Received: by 10.55.75.203 with SMTP id y194mr39373285qka.2.1457471334739;
+        Tue, 08 Mar 2016 13:08:54 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 68si4851205qkv.24.2016.03.08.13.03.23
+Received: from lists.gnu.org ([2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o10si4830068qhb.108.2016.03.08.13.08.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 13:03:24 -0800 (PST)
+        Tue, 08 Mar 2016 13:08:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@gmail.com;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37343 helo=lists.gnu.org)
+Received: from localhost ([::1]:37390 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adOmp-0001eK-Jf
-	for alex.bennee@linaro.org; Tue, 08 Mar 2016 16:03:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44499)
+	id 1adOsA-0004bl-2y
+	for alex.bennee@linaro.org; Tue, 08 Mar 2016 16:08:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1adOmm-0001e8-M1
-	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 16:03:22 -0500
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1adOs7-0004bf-U7
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 16:08:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1adOmk-0007q7-Sm
-	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 16:03:20 -0500
-Received: from mail-wm0-x234.google.com ([2a00:1450:400c:c09::234]:37665)
+	(envelope-from <crosthwaitepeter@gmail.com>) id 1adOs6-00028G-RP
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 16:08:51 -0500
+Received: from mail-wm0-x229.google.com ([2a00:1450:400c:c09::229]:36595)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1adOmk-0007pS-IO; Tue, 08 Mar 2016 16:03:18 -0500
-Received: by mail-wm0-x234.google.com with SMTP id p65so44738195wmp.0;
-	Tue, 08 Mar 2016 13:03:18 -0800 (PST)
+	id 1adOs6-00025n-Kn; Tue, 08 Mar 2016 16:08:50 -0500
+Received: by mail-wm0-x229.google.com with SMTP id n186so150482961wmn.1;
+	Tue, 08 Mar 2016 13:08:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=d7wUHuCMOGICcHBgYVr+t3HczIwG0Qo4IQVhZYHHsqs=;
-	b=uUivDFle3IQPMMb3gI+Hu7UMVxpaLIVlzv9l8Nt5ISAlrSYGhrZUcfXppxYcaHDWnv
-	CmZteZU+8NUbUj1yuTlLJbWBFdo2yE02CGj+Q1mxN2bTrCndx5nqaR1IXnJYEGJH9382
-	8YncsXTA5M4LuJkgpmCDP0mgac07NSJ/537P6yR1z6bxkYO04pH9LAgHfRJ1H20JWomk
-	bLu9Uzofq0hM9i6sAnMO54aSxirLWEZ1ZaQCu68NX2RK9vdPZQZDzVHimnFd5OXrMVw6
-	lKjsjwdfQwQxJVwr0dNHWBJHcFPHJAv1xDkAq90PBUy2dWqAtEIK16o/fO2J+fJ/CuSb
-	/Z6g==
+	:cc; bh=Xav485N0d5y36UjzmMZFbRf2fn3b7QQK8KaelPllU6U=;
+	b=Cn2B3wrApUPWLl+XdHbrYfqwJWDS5ZuCkzTHo5/0FLg2OJIUHaP8CqGIyMYhEmrgQ7
+	CQD4BWNg0MJbDDq5g0DKxEqWqq3en7JfIp3dhb4A/ehxd8lteQHsrxHga7pIwhIDwBoh
+	IW7vavSo7nRWkaAxtq0jzSn54Pchhi2UOAx2cGnNpIKnLQvzEAMagmwMX0DzSTBrWX5T
+	zlYo8f243co5pa5QmO8CtkZu/hpd6fy8wlq3o4YeOC7kochc9bSHCTPcfBjBU5KH+zBn
+	ahwujM0lw3LNE7WnDF+pmhn/I37mx5Kd6t444QcRNodV3SxeYhVXmkOpG3hWtv1Q9jP+
+	Nivw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:date
 	:message-id:subject:from:to:cc;
-	bh=d7wUHuCMOGICcHBgYVr+t3HczIwG0Qo4IQVhZYHHsqs=;
-	b=TCrk/JjwHRSMSDkXX4u06N9/WBTYPg7xHFmjjcM7gCImwBAYsXciZvFjh6Ew7s7lGm
-	0169dc4yUaNmrw++BABzlyMqr4CFeJKHqGcpsxZbTf0FXEKR2qIFeAw1Pd3ELc6eKc3H
-	iXUHXfngSjXSuE/KjwCxNpFNXJZvSLGNp/Mct9J5W10PNZfF5+HL1dWP9xOPn+rQmUy5
-	6l0FS/1mxmzTLKOooLKiwbUxDSbR5cUkHmJLAaQjCCN5O1neaIsuI8iM+orv9xr1ZaXq
-	vM0dlvRtNzCUDJnI+n++1+D1HSjph/85GPTVvTZ8R6KvWUfiVnHoJ/8ToKhZRCjDOsJf
-	IWNQ==
-X-Gm-Message-State: AD7BkJJYDYfte6OaFUABbJTaxEqDzgEGMb74S5b/TOY9xnSODBLIPC70QplffC5l3UC/EBtCZxwlWpGiy1uV+Q==
+	bh=Xav485N0d5y36UjzmMZFbRf2fn3b7QQK8KaelPllU6U=;
+	b=HCAit4aHC9Tjk9jkgqQzrqm1m0GNTS5AY7UUMIGZD6OjsURYtpPY/9WxUFEdM0UvI4
+	GTmXUzGE8X8uvqZf02Zg0mYITG8A209c2n9vAXxgkhifXjNzC3UrQVVM0f+PF/d3PYci
+	GfnuRcTNJPSVhz/QtWugchHM7NzYcyh6kUVf/0noDBvTo+mEGfP6A2NfiZs/YuoRPqVg
+	E3mnNQPoiFsKyc1lqHVOs5kfdBHHEJ2/H55mGCnncR9QqZy6iP8tBsoaBoIrW4nt5TsV
+	M6KJMkaKybfF2+3OKAW6PFzM+JGjP93GMSQhvhWjrnlMp/9UDevQxrisUKkQVtFD5DwV
+	GiFQ==
+X-Gm-Message-State: AD7BkJL2fLlZL/db+Osd/vXC22SVPYNcA3qiHWx/Dr7UvekHblD0MJYLe/Mqkim+eYcKCmMQh30mz42g045b3w==
 MIME-Version: 1.0
-X-Received: by 10.28.146.209 with SMTP id u200mr20437604wmd.59.1457470997343; 
-	Tue, 08 Mar 2016 13:03:17 -0800 (PST)
-Received: by 10.28.157.21 with HTTP; Tue, 8 Mar 2016 13:03:17 -0800 (PST)
-In-Reply-To: <8050a7dd5370480f4ce06fe5a8ece18a76975283.1454169735.git.digetx@gmail.com>
+X-Received: by 10.28.146.209 with SMTP id u200mr20455637wmd.59.1457471329442; 
+	Tue, 08 Mar 2016 13:08:49 -0800 (PST)
+Received: by 10.28.157.21 with HTTP; Tue, 8 Mar 2016 13:08:49 -0800 (PST)
+In-Reply-To: <0eb543c0917bac416a18fc9daf97f5ba4e61ce1f.1454169735.git.digetx@gmail.com>
 References: <cover.1454169735.git.digetx@gmail.com>
-	<8050a7dd5370480f4ce06fe5a8ece18a76975283.1454169735.git.digetx@gmail.com>
-Date: Tue, 8 Mar 2016 13:03:17 -0800
-Message-ID: <CAPokK=oPJUfH-qs6=n=boBbqQ5807oa9jUbiNxGDV-9ieMgXxQ@mail.gmail.com>
+	<0eb543c0917bac416a18fc9daf97f5ba4e61ce1f.1454169735.git.digetx@gmail.com>
+Date: Tue, 8 Mar 2016 13:08:49 -0800
+Message-ID: <CAPokK=reD-sN1525osBbcxjFDzyJKvaoEf69C7wb6oHco4N=Lw@mail.gmail.com>
 From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::234
+X-Received-From: 2a00:1450:400c:c09::229
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v12 9/9] arm_mptimer: Convert to use ptimer
+Subject: Re: [Qemu-arm] [PATCH v12 8/9] hw/ptimer: Perform delayed tick
+ instead of immediate if delta = 0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -82,278 +83,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uWsWDSLbZL77
+X-TUID: N1kyWp12E0Ug
 
 On Sat, Jan 30, 2016 at 8:43 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
-> Current ARM MPTimer implementation uses QEMUTimer for the actual timer,
-> this implementation isn't complete and mostly tries to duplicate of what
-> generic ptimer is already doing fine.
+> It might be necessary by some emulated HW to perform the tick after one
+> period if delta = 0. Given that it is much less churny to implement immediate
+> tick by the ptimer user itself, let's make ptimer do the delayed tick.
 >
-> Conversion to ptimer brings the following benefits and fixes:
->         - Simple timer pausing implementation
->         - Fixes counter value preservation after stopping the timer
->         - Correctly handles prescaler != 0 / counter = 0 / load = 0 cases
->         - Code simplification and reduction
->
-> Bump VMSD to version 3, since VMState is changed and is not compatible
-> with the previous implementation.
->
+
+Isn't this related to previous patch? It is kind of a rounding problem
+that will vary from timer to timer. Some timers may interpret the
+"tick" as the wrap-around back to the load value (even if that is 0)
+while others interpret the tick as the transition to zero (makes more
+sense for a one-shot). It's hard to set a universal policy here.
+
+But is this a non-issue when we consider that event latency (usually
+interrupt latency) is undefined anyway?
+
+Regards,
+Peter
+
 > Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
-
-Im a little rusty on some of the corner cases that have come out of
-your test suite, but the general idea is solid, and it adds those
-missing features that got the whole discussion started.
-
-Reviewed-by: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-
 > ---
->  hw/timer/arm_mptimer.c         | 133 +++++++++++++++++++++--------------------
->  include/hw/timer/arm_mptimer.h |   5 +-
->  2 files changed, 70 insertions(+), 68 deletions(-)
+>  hw/core/ptimer.c | 34 +++++++++++++++-------------------
+>  1 file changed, 15 insertions(+), 19 deletions(-)
 >
-> diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-> index 5dfab66..f002458 100644
-> --- a/hw/timer/arm_mptimer.c
-> +++ b/hw/timer/arm_mptimer.c
-> @@ -19,8 +19,9 @@
->   * with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
->
-> +#include "hw/ptimer.h"
->  #include "hw/timer/arm_mptimer.h"
-> -#include "qemu/timer.h"
-> +#include "qemu/main-loop.h"
->  #include "qom/cpu.h"
->
->  /* This device implements the per-cpu private timer and watchdog block
-> @@ -42,55 +43,54 @@ static inline void timerblock_update_irq(TimerBlock *tb)
->  }
->
->  /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
-> -static inline uint32_t timerblock_scale(TimerBlock *tb)
-> +static inline uint32_t timerblock_scale(uint32_t control)
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index b2044fb..bcd090c 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -36,19 +36,7 @@ static void ptimer_reload(ptimer_state *s)
 >  {
-> -    return (((tb->control >> 8) & 0xff) + 1) * 10;
-> +    return (((control >> 8) & 0xff) + 1) * 10;
->  }
->
-> -static void timerblock_reload(TimerBlock *tb, int restart)
-> +static inline void timerblock_set_count(struct ptimer_state *timer,
-> +                                        uint32_t control, uint64_t *count)
->  {
-> -    if (tb->count == 0) {
-> -        return;
-> +    /* PTimer would immediately trigger interrupt for periodic timer
-> +     * when counter set to 0, MPtimer under certain condition only.
-> +     */
-> +    if ((control & 3) == 3 && (control & 0xff00) == 0 && *count == 0) {
-> +        *count = ptimer_get_limit(timer);
->      }
-> -    if (restart) {
-> -        tb->tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> +    ptimer_set_count(timer, *count);
-> +}
-> +
-> +static inline void timerblock_run(struct ptimer_state *timer,
-> +                                  uint32_t control, uint32_t load)
-> +{
-> +    if ((control & 1) && ((control & 0xff00) || load != 0)) {
-> +        ptimer_run(timer, !(control & 2));
->      }
-> -    tb->tick += (int64_t)tb->count * timerblock_scale(tb);
-> -    timer_mod(tb->timer, tb->tick);
->  }
->
->  static void timerblock_tick(void *opaque)
->  {
->      TimerBlock *tb = (TimerBlock *)opaque;
->      tb->status = 1;
-> -    if (tb->control & 2) {
-> -        tb->count = tb->load;
-> -        timerblock_reload(tb, 0);
-> -    } else {
-> -        tb->count = 0;
+>      uint32_t period_frac = s->period_frac;
+>      uint64_t period = s->period;
+> -
+> -    if (s->delta == 0) {
+> -        ptimer_trigger(s);
 > -    }
->      timerblock_update_irq(tb);
-> +    /* Periodic timer with load = 0 and prescaler != 0 would re-trigger
-> +     * IRQ after one period, otherwise it either stops or wraps around.
-> +     */
-> +    if ((tb->control & 2) && (tb->control & 0xff00) &&
-> +            ptimer_get_limit(tb->timer) == 0) {
-> +        ptimer_run(tb->timer, 0);
-> +    }
->  }
+> -
+> -    if (s->delta == 0 && s->enabled == 1) {
+> -        s->delta = s->limit;
+> -    }
+> -
+> -    if (s->delta == 0) {
+> -        ptimer_stop(s);
+> -        return;
+> -    }
+> +    uint64_t delta = MAX(1, s->delta);
 >
->  static uint64_t timerblock_read(void *opaque, hwaddr addr,
->                                  unsigned size)
->  {
->      TimerBlock *tb = (TimerBlock *)opaque;
-> -    int64_t val;
->      switch (addr) {
->      case 0: /* Load */
-> -        return tb->load;
-> +        return ptimer_get_limit(tb->timer);
->      case 4: /* Counter.  */
-> -        if (((tb->control & 1) == 0) || (tb->count == 0)) {
-> -            return 0;
-> -        }
-> -        /* Slow and ugly, but hopefully won't happen too often.  */
-> -        val = tb->tick - qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> -        val /= timerblock_scale(tb);
-> -        if (val < 0) {
-> -            val = 0;
-> -        }
-> -        return val;
-> +        return ptimer_get_count(tb->timer);
->      case 8: /* Control.  */
->          return tb->control;
->      case 12: /* Interrupt status.  */
-> @@ -104,37 +104,45 @@ static void timerblock_write(void *opaque, hwaddr addr,
->                               uint64_t value, unsigned size)
->  {
->      TimerBlock *tb = (TimerBlock *)opaque;
-> -    int64_t old;
-> +    uint32_t control = tb->control;
->      switch (addr) {
->      case 0: /* Load */
-> -        tb->load = value;
-> -        /* Fall through.  */
-> -    case 4: /* Counter.  */
-> -        if ((tb->control & 1) && tb->count) {
-> -            /* Cancel the previous timer.  */
-> -            timer_del(tb->timer);
-> +        /* Setting load to 0 stops the timer without doing the tick if
-> +         * prescaler = 0.
-> +         */
-> +        if ((control & 1) && (control & 0xff00) == 0 && value == 0) {
-> +            ptimer_stop(tb->timer);
->          }
-> -        tb->count = value;
-> -        if (tb->control & 1) {
-> -            timerblock_reload(tb, 1);
-> +        ptimer_set_limit(tb->timer, value, 1);
-> +        timerblock_run(tb->timer, control, value);
-> +        break;
-> +    case 4: /* Counter.  */
-> +        /* Setting counter to 0 stops the one-shot timer, or periodic with
-> +         * load == 0, without doing the tick if prescaler = 0.
-> +         */
-> +        if ((control & 1) && (control & 0xff00) == 0 && value == 0 &&
-> +                (!(control & 2) || ptimer_get_limit(tb->timer) == 0)) {
-> +            ptimer_stop(tb->timer);
->          }
-> +        timerblock_set_count(tb->timer, control, &value);
-> +        timerblock_run(tb->timer, control, value);
->          break;
->      case 8: /* Control.  */
-> -        old = tb->control;
-> -        tb->control = value;
-> +        if ((control & 1) && !(value & 1)) {
-> +            ptimer_stop(tb->timer);
-> +        }
-> +        if ((control & 0xff00) != (value & 0xff00)) {
-> +            ptimer_set_period(tb->timer, timerblock_scale(value));
-> +        }
->          if (value & 1) {
-> -            if ((old & 1) && (tb->count != 0)) {
-> -                /* Do nothing if timer is ticking right now.  */
-> -                break;
-> +            uint64_t count = ptimer_get_count(tb->timer);
-> +            /* Re-load periodic timer counter if needed.  */
-> +            if ((value & 2) && count == 0) {
-> +                timerblock_set_count(tb->timer, value, &count);
->              }
-> -            if (tb->control & 2) {
-> -                tb->count = tb->load;
-> -            }
-> -            timerblock_reload(tb, 1);
-> -        } else if (old & 1) {
-> -            /* Shutdown the timer.  */
-> -            timer_del(tb->timer);
-> +            timerblock_run(tb->timer, value, count);
->          }
-> +        tb->control = value;
->          break;
->      case 12: /* Interrupt status.  */
->          tb->status &= ~value;
-> @@ -184,13 +192,12 @@ static const MemoryRegionOps timerblock_ops = {
->
->  static void timerblock_reset(TimerBlock *tb)
->  {
-> -    tb->count = 0;
-> -    tb->load = 0;
->      tb->control = 0;
->      tb->status = 0;
-> -    tb->tick = 0;
->      if (tb->timer) {
-> -        timer_del(tb->timer);
-> +        ptimer_stop(tb->timer);
-> +        ptimer_set_limit(tb->timer, 0, 1);
-> +        ptimer_set_period(tb->timer, timerblock_scale(0));
->      }
->  }
->
-> @@ -236,7 +243,8 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
+>      /*
+>       * Artificially limit timeout rate to something
+> @@ -59,15 +47,15 @@ static void ptimer_reload(ptimer_state *s)
+>       * on the current generation of host machines.
 >       */
->      for (i = 0; i < s->num_cpu; i++) {
->          TimerBlock *tb = &s->timerblock[i];
-> -        tb->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, timerblock_tick, tb);
-> +        QEMUBH *bh = qemu_bh_new(timerblock_tick, tb);
-> +        tb->timer = ptimer_init(bh);
->          sysbus_init_irq(sbd, &tb->irq);
->          memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
->                                "arm_mptimer_timerblock", 0x20);
-> @@ -246,26 +254,23 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
 >
->  static const VMStateDescription vmstate_timerblock = {
->      .name = "arm_mptimer_timerblock",
-> -    .version_id = 2,
-> -    .minimum_version_id = 2,
-> +    .version_id = 3,
-> +    .minimum_version_id = 3,
->      .fields = (VMStateField[]) {
-> -        VMSTATE_UINT32(count, TimerBlock),
-> -        VMSTATE_UINT32(load, TimerBlock),
->          VMSTATE_UINT32(control, TimerBlock),
->          VMSTATE_UINT32(status, TimerBlock),
-> -        VMSTATE_INT64(tick, TimerBlock),
-> -        VMSTATE_TIMER_PTR(timer, TimerBlock),
-> +        VMSTATE_PTIMER(timer, TimerBlock),
->          VMSTATE_END_OF_LIST()
+> -    if (s->enabled == 1 && (s->delta * period < 10000) && !use_icount) {
+> -        period = 10000 / s->delta;
+> +    if (s->enabled == 1 && (delta * period < 10000) && !use_icount) {
+> +        period = 10000 / delta;
+>          period_frac = 0;
 >      }
->  };
 >
->  static const VMStateDescription vmstate_arm_mptimer = {
->      .name = "arm_mptimer",
-> -    .version_id = 2,
-> -    .minimum_version_id = 2,
-> +    .version_id = 3,
-> +    .minimum_version_id = 3,
->      .fields = (VMStateField[]) {
->          VMSTATE_STRUCT_VARRAY_UINT32(timerblock, ARMMPTimerState, num_cpu,
-> -                                     2, vmstate_timerblock, TimerBlock),
-> +                                     3, vmstate_timerblock, TimerBlock),
->          VMSTATE_END_OF_LIST()
+>      s->last_event = s->next_event;
+> -    s->next_event = s->last_event + s->delta * period;
+> +    s->next_event = s->last_event + delta * period;
+>      if (period_frac) {
+> -        s->next_event += ((int64_t)period_frac * s->delta) >> 32;
+> +        s->next_event += ((int64_t)period_frac * delta) >> 32;
 >      }
->  };
-> diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-> index b34cba0..c46d8d2 100644
-> --- a/include/hw/timer/arm_mptimer.h
-> +++ b/include/hw/timer/arm_mptimer.h
-> @@ -27,12 +27,9 @@
+>      timer_mod(s->timer, s->next_event);
+>  }
+> @@ -75,8 +63,16 @@ static void ptimer_reload(ptimer_state *s)
+>  static void ptimer_tick(void *opaque)
+>  {
+>      ptimer_state *s = (ptimer_state *)opaque;
+> -    s->delta = 0;
+> -    ptimer_reload(s);
+> +
+> +    s->delta = (s->enabled == 1) ? s->limit : 0;
+> +
+> +    if (s->delta == 0) {
+> +        s->enabled = 0;
+> +    } else {
+> +        ptimer_reload(s);
+> +    }
+> +
+> +    ptimer_trigger(s);
+>  }
 >
->  /* State of a single timer or watchdog block */
->  typedef struct {
-> -    uint32_t count;
-> -    uint32_t load;
->      uint32_t control;
->      uint32_t status;
-> -    int64_t tick;
-> -    QEMUTimer *timer;
-> +    struct ptimer_state *timer;
->      qemu_irq irq;
->      MemoryRegion iomem;
->  } TimerBlock;
+>  uint64_t ptimer_get_count(ptimer_state *s)
 > --
 > 2.7.0
 >

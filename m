@@ -1,68 +1,69 @@
-Received: by 10.25.208.211 with SMTP id h202csp2131915lfg;
-        Tue, 8 Mar 2016 12:06:50 -0800 (PST)
-X-Received: by 10.55.221.18 with SMTP id n18mr38437568qki.50.1457467610823;
-        Tue, 08 Mar 2016 12:06:50 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2131928lfg;
+        Tue, 8 Mar 2016 12:06:52 -0800 (PST)
+X-Received: by 10.55.192.154 with SMTP id v26mr24976543qkv.36.1457467612009;
+        Tue, 08 Mar 2016 12:06:52 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c52si4637855qgc.5.2016.03.08.12.06.50
+        by mx.google.com with ESMTPS id 96si4597488qkw.52.2016.03.08.12.06.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Mar 2016 12:06:50 -0800 (PST)
+        Tue, 08 Mar 2016 12:06:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=neutral (body hash did not verify) header.i=@microsoft.com;
+       dkim=fail header.i=@microsoft.com;
        dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
-Received: from localhost ([::1]:36992 helo=lists.gnu.org)
+Received: from localhost ([::1]:36993 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adNu6-0005AC-40
-	for alex.bennee@linaro.org; Tue, 08 Mar 2016 15:06:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52697)
+	id 1adNu7-0005Bj-D2
+	for alex.bennee@linaro.org; Tue, 08 Mar 2016 15:06:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52701)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1adNt7-0003oN-95
-	for qemu-devel@nongnu.org; Tue, 08 Mar 2016 15:05:50 -0500
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1adNt7-0003ol-D6
+	for qemu-devel@nongnu.org; Tue, 08 Mar 2016 15:05:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1adNt2-0004G1-DQ
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1adNt2-0004G7-HM
 	for qemu-devel@nongnu.org; Tue, 08 Mar 2016 15:05:49 -0500
 Received: from mail-bn1bon0131.outbound.protection.outlook.com
 	([157.56.111.131]:1638
 	helo=na01-bn1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1adNt2-0004Ez-26; Tue, 08 Mar 2016 15:05:44 -0500
+	id 1adNt2-0004Ez-EK; Tue, 08 Mar 2016 15:05:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
 	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=tGTPlEJbjq7JUgdwm3yvXcNC2D0IOhmnhrvkTytisOM=;
-	b=aRwqacEBtmokNk2K6O08sS4URZgI6qwjxFmWMHhb8xXy5YJFDqr+bMCoQeVHYT9TAh3XJE3n8wQBR+DW0Oknijgdrlc4jB0thfY2MyJdRgSmgH+INFlIIHEQYsJNEt6CplGx2XTjwJDHETTb8LmFkmp3bzK1Ues0kcVoBoAQCgs=
+	bh=0NDp1xNE10gm3XgWdqpbr7ySVY8sPS7Dr78hfwPvn7M=;
+	b=gpF1xXBOD97j1bEn9cZ7Jpf2gEiyFbyc4694AqTtq8N6N5iSpDOmM1eEv/ST1NfIphbQzUE9f73eRGjgk78CSQY55nQ6KynGxiYSsuoJVpugtoKkl8WAABdG1sjLv0t0tj8qN0jlquGteG8K7/zjEvy5Hz+wCasyscvBxPtWtZE=
 Authentication-Results: nongnu.org; dkim=none (message not signed)
 	header.d=none; nongnu.org;
 	dmarc=none action=none header.from=microsoft.com; 
 Received: from baumann-desk.redmond.corp.microsoft.com (2001:4898:80e8::5f2)
 	by BLUPR0301MB2036.namprd03.prod.outlook.com (10.164.22.26) with
 	Microsoft
-	SMTP Server (TLS) id 15.1.427.16; Tue, 8 Mar 2016 20:05:40 +0000
+	SMTP Server (TLS) id 15.1.427.16; Tue, 8 Mar 2016 20:05:42 +0000
 From: Andrew Baumann <Andrew.Baumann@microsoft.com>
 To: <qemu-devel@nongnu.org>
-Date: Tue, 8 Mar 2016 12:05:21 -0800
-Message-ID: <1457467526-8840-1-git-send-email-Andrew.Baumann@microsoft.com>
+Date: Tue, 8 Mar 2016 12:05:22 -0800
+Message-ID: <1457467526-8840-2-git-send-email-Andrew.Baumann@microsoft.com>
 X-Mailer: git-send-email 2.7.0
+In-Reply-To: <1457467526-8840-1-git-send-email-Andrew.Baumann@microsoft.com>
+References: <1457467526-8840-1-git-send-email-Andrew.Baumann@microsoft.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-Originating-IP: [2001:4898:80e8::5f2]
 X-ClientProxiedBy: BY1PR10CA0031.namprd10.prod.outlook.com (25.160.197.41) To
 	BLUPR0301MB2036.namprd03.prod.outlook.com (25.164.22.26)
-X-MS-Office365-Filtering-Correlation-Id: 816d2314-2402-485d-1047-08d3478d06ba
+X-MS-Office365-Filtering-Correlation-Id: 00111637-2696-4f9c-17ba-08d3478d077b
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2036;
-	2:Oci37t3P8KC85jbkp/X5zeZ04b28Ld/tts91QYoaG9HrqliwBRiYK2Jt9fI/kxbWvFFORLAHQOJHRMlcszrMLLqLtoU+2yzQj6JCoq84fO+v2f41fpXVo5c0m19y10fg8emTZOpRnGMlzP+lfCQOx44ytiQRTfyjD7jmvK5Gwi9/wrWiEuSKIy3RrqJedjmW;
-	3:clDEJHBIQ/ubw1DRCGUHsnksuEFOc3vWo9HsYe4JFrezHrDJC2UzssOFAAiwiWq4m/GqqCexj9Jb5N6Q6rLL7B8jEyMel5P3URhoENyYeVoP2uwjWpr8Rq5/1nE1Mqg7;
-	25:qsZG0UqUBQGjURLGsjRYYxJLYMtH6CS5+0RYM6oCwG7fd8R1Jo9F40Vf8ZCtGKuEHhuojx4uLst3cSY1MPpShFTYuykTsk2GbyBi35VKXal/n4PQD9u1dA8PdOeVUJUlm36x//Sp3kZsAQSK6QxQ2g+Ix/3TMxS2i/HNAdtV/A7g9TpV07maqbvLdoJelrc9o7J/JOvHbsQnYHxkPbZZnF31STnbNUBdgvsYOYt/p0MOenD141/CST34NQrD+KD6YkOFcOjEw4tNcSGBB2F3X49b2mVQ/w1Ikgxk6yyISk2Pw8o3J5L2AFlYEqOT+erVZld/m3yaZbiXxC+maOzC3g==
+	2:jl0zdIMMuylMy2Pqadk8x9Cr+5TOFZIPE65tJSVFyaiTuO9i26MMKqws8RJxncyCphQ8VbDwf9P4syHtxXXvdpOTUd/g8Q3NmHleveSgtABzvs8dAPBcENsXwl1RXrM0J9QOC6KNEE2cNtEK+mcbyf9WyIwKNIZG6rl7aLCehIGNm7JnonTyN8cXFDp7gO6a;
+	3:e+1MbbwUxcxTSGxYOH77YKPjvru77WLb7L8DqDGgrPzJDA7TLU3iViL1hXXcM+JpanI5AmrcY1ug2wbJgtZviPlaQlhsRRtoC9UHHS4Lhbwzncr3Ro6HzE7cQnOW6mFB;
+	25:npFBINL6j6Nn1XbsN1VYq9mOvaTTAkVCVxzvIY7b2HdNDiEfso++8psIGrRSMx7rXfrDJ2bO5PUHOyo+pbmw42gyOwyq6zPbTAQVvaYYASRXINeSBD4gNXIup/qcgw4YNi7394jl5smpP5QjardftbhOH4buGAySquVwrte26Ah2QsHvDJilyEDljbCXzD7FRGUJ8deXw9/PshuLcyzyVksj/UC/zg59JMlaTZeV/+SA3rMcV0072phSg1GcGNhYyYPcJp+7YxIsIO6dmQKanAYirA+t1Yo9Y25DOHk+W1tg2N3A5MWrjhuWOQVrHlsV4/DtvJQJBJbSG9G0yDeEgg==
 X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2036;
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2036;
-	20:G/9p3GgFg1WFkytsbIEks6bDz/OWKlUlsHBl/mK80dizikpPR0j2AQqyeQdhXX1KY74XwOeJrd3G8gu9Hg/pdvKG7Ilq+NCS40RQ6MW3qtzbnH/kRKvBd0owct6pD/2YkC1uw1vDzpSMYI9zhfdhMiY7epNI1nqlitiqb4DOrTqVKSfBkWEKQ8sPWy21TfZS/puhjMYiIr1VY0XvYeSrQpjRVobRUruX0RFMqAVMxuTq+yGJnAuLmY1RnUA2F3EWCy+LdimacIY2rQ1h1pyS8OEq34HY/wyrMXW98wDLhK3LkJvse4j75uCj4hOSgb/1qf0xG7sp6xqc0rxMKYJZMzbidWqJ1xzpPuYGV0lr5YYl8mmec/a7iTC7WiKR7CIye4lW4bN9kQewNalkdjKURfXyo5ZLJpUnevRtn7i40UHBePqFQsFSkaruvjlJ3yohFW9mDu7EJ3TEneTML8jbx3C+0C+7yjCrHvdPV/uOFeBYdHWNnoYz3RA4OYJKhPV/;
-	4:9U7hWwS2ojslMV+nACH8Rrms+A0CUIpiworTEhyU1VCugLbpbB1rUMLHPw++vyH92gclcM1yE0/d17BSwp2gUb1TbCTc0wUBJC3ZCbWCtvg7mUERSLLAcDGI0bNoLaQcWqf9rVhqepjX8nvnNNNn5b+1a+qY7SKu7n2mOimLXu44s9m6tY02tMoFhwwfwzSzt+LAljS2dtrYKVkihoUGxDmM1UbOlM6kSATi0tySJs9fn8sejZLMGGZ/UHFWcjZn05JtjeTln6s4jTag/SqETuoFNywPRomaIZ7lfyBDywo3PzhslGru3Eo/rJwjAjdDhvqPwXpa2a86WEzw8ZXiXKk+azEsGYIHvbNeSmCXJTBNwtjgwosne4leQyIu9agZ
-X-Microsoft-Antispam-PRVS: <BLUPR0301MB2036ACCF1AB55C5BBCE54A849EB20@BLUPR0301MB2036.namprd03.prod.outlook.com>
+	20:10MSmceIxxTXd9z4M1fRGBH2bodwPRSGAQ2iRjLU2I1w6CGuLKzJg6WazL0vMa/xuFnPDCUZliKt5AFPr5+VSF3DtQWfdK/HMVFGW9db7q2o1Fmeyd7zqoXnbSsh7JvqAs6cWD4Nk2H9s6Kr9Goiz4V71uK0+7LSKdcPs1M5DrARpsrVuqD2d/RvDMEEBGF4nghBWs6QMkDbkfa4maOzmXo3KhrPIr6ODAVtUBWljomFOkSVWocWmIFqsr+zoHRteuFSbvjH7nob659mlSc+mOiLGW4bVdZqBGfkcHWxLxgL2VU5W2ENFx+HRNIzWx9hUYX6NwKaNI5rcPtiCUQ/WWwWD7yvWwPWy2IKRC8icCRQl9+3cORuDA9fEXtb14XILAD7oqoDaI1MVwIcH5nsOq0jIunoPmo7P9jMJAiIWzL0Hk0msTZUGfwkuDABZGE6iig+en9hmyJOKwJz3t3RCWzxDrh+tXx8MeBrsj+XXXHOEYL5/G7sS9JPWcZXCti6;
+	4:pSsELSk9dd/JBac/CkIlxT/KG5U1a3MrdOBTff5r/IYrhxcH9LExu0gC9LNd/iOUPJKZkhUioUND/q5EPwhkbooDGdsod5vrYAQQnQVGdJ2Abl4FRFlw7vuZX/KYWgM1g3r6fCHNyuIx5GFvP787DNQ0Jj3znFhFsIsGwWTf+5QuFVFfINymvqC1CYLLKIjhQ6jN/c901yYKOLa/WvevDCBZzpyQmrR/t66FxZedRTa9We5Y4Ei2jyxodPhI/cPNOm16usiZeN9P7p/UUWsoY//Gn7XFwRb+BWAKc7cWq+30eODltFq5k9fzlzMBBpbigjs82DAiXg4Bg08H+xf4iYnV+ic9hJg5WlcDXe7Kj5/W8iI1P6Gj+g++ag4i867/
+X-Microsoft-Antispam-PRVS: <BLUPR0301MB203656A0C6D30313117CCDB19EB20@BLUPR0301MB2036.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:;
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	RULEID:(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046);
@@ -70,36 +71,36 @@ X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
 	SRVR:BLUPR0301MB2036; 
 X-Forefront-PRVS: 08756AC3C8
 X-Forefront-Antispam-Report: SFV:NSPM;
-	SFS:(10019020)(4630300001)(6009001)(55674003)(10290500002)(47776003)(5005710100001)(86362001)(575784001)(189998001)(86612001)(36756003)(10090500001)(19580395003)(42186005)(2906002)(6116002)(23676002)(586003)(2870700001)(5008740100001)(4001430100002)(50986999)(5820100001)(92566002)(50466002)(77096005)(2351001)(229853001)(15975445007)(110136002)(107886002)(5004730100002)(81166005)(1096002)(4326007)(50226001);
+	SFS:(10019020)(4630300001)(6009001)(10290500002)(47776003)(5005710100001)(2950100001)(86362001)(189998001)(86612001)(5003940100001)(36756003)(10090500001)(19580395003)(42186005)(2906002)(6116002)(586003)(5008740100001)(4001430100002)(50986999)(76176999)(48376002)(92566002)(50466002)(77096005)(2351001)(229853001)(19580405001)(110136002)(107886002)(5004730100002)(81166005)(1096002)(4326007)(50226001)(15760500001);
 	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2036;
 	H:baumann-desk.redmond.corp.microsoft.com; FPR:; SPF:None;
 	MLV:sfv; LANG:en; 
 X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BLUPR0301MB2036;
-	23:L/0eDg9Zyp9avFfa4mpTsIFUUfX1w1NFOMsb0KV?=
-	=?us-ascii?Q?MBYBYyxwbRAkSXygPo/JJ7UFJ8K2UW/KTJgAAkPCTo246Df1fEsgULop2nCM?=
-	=?us-ascii?Q?90/q3Jrig1XcZpR1pc6/oKkeBiovMRfZ9w278nVSp8hmQyLzW4W7M6M4T52c?=
-	=?us-ascii?Q?VdqC+OmPRgu1ElCTDp0+0s6qBAyAUPWTZVk32LAxfgW3+Pw2k2b4K9pFWHgE?=
-	=?us-ascii?Q?4aNV8f4jqVwa6Vei/MfoX/z3S7XtgID53YWrGLKh1dXt6oDhhs/jyUTDPaMP?=
-	=?us-ascii?Q?/aGa03CmioqRjkZatZ5te/L+zvNTmeyLXTk4LcuwaQYD4pu0v5mm7sCb7nCF?=
-	=?us-ascii?Q?zPzSG8CMs4kHQjT/SUGmAyDjKAzUguKZym4nNJ6DD6kRFfi2nHrvme+QU1Ws?=
-	=?us-ascii?Q?/gPjkRDVcJVwzwBiYMTwlb8CUumVqvf5iLw9txn4GRpRvU2+ePPWfnKmUgnl?=
-	=?us-ascii?Q?UWlM6wIncSPzr/EMr2TOcD0dXbj2+8gxK5zib3a6hLOEXJ+eX2v06kzjIAKI?=
-	=?us-ascii?Q?BDRHXYe5Iropg93fLUF3CZuZebyfZJUbYdE3NHdRti8k6adNS/3eqpd4ajsZ?=
-	=?us-ascii?Q?RCyqWm8o8ada9E/Y0s5CAWhOV3Rwbiq04NYtE28CqgRe9W/tFhxCRFFlxKXL?=
-	=?us-ascii?Q?lRXpf7CZKKxLc7Ai1jB0sBoYQETxZgymOks08WqRMaf2F5kdKzDUCtrrvW7a?=
-	=?us-ascii?Q?DPjUZG29PUgPCF4b91q19w+U6PZ05huAC51VX+yglXvNUDw4ZxTottDJXvLk?=
-	=?us-ascii?Q?OS98xY7eSS4+7eYkW0HOh7eFgN7k4vFrMVJ4lHAzdlTRD3lBLMyv6dVsTZ0N?=
-	=?us-ascii?Q?Bc4G2fN28G4zb/M2sGDfLl1godZn+rDZkrVhN8gYj9LXIdhsoonV1yXmm51z?=
-	=?us-ascii?Q?CdFxSV6vM8oqaCHqdkuq3QlUxG+G+ivn3j1htsOhheysn7cVM1m8SHUblFBN?=
-	=?us-ascii?Q?xIRbRCQAzvreGTCNp843cxqi2iWsu9qi5g9cSqh9Z7t/oc7gewd7fIES8zkv?=
-	=?us-ascii?Q?XGKVBjvTZRQswSKnef+waiYok?=
+	23:qHiSqj+7pgl5WC243n/piNixDdSASqjdcmrEm5G?=
+	=?us-ascii?Q?vK3lyuju2I5hNpFFYeRQ2S1ulmjEYHi5fyQ8rpVK//xKumilRxLIXbRmSgy0?=
+	=?us-ascii?Q?5Gq6IWKxqYQ+ahZJKFo602D42AuTrS4xt0cbt4UBFa2MYe+OWxd/EB2i86Zi?=
+	=?us-ascii?Q?1ZOqQy+4Sxu9aKp2TI7zYxtiJs6z67TZg8+iqp+3l8QurSJlD1bCXUw5WeIe?=
+	=?us-ascii?Q?thS65FoiRq2ekdgQcsP/LoHhpC69ieLAqPsvKSB3E6k5L1Ih5eACoBfxg7TB?=
+	=?us-ascii?Q?cef5E+5Q19arZZbluiFe7Y6XUR8Dmpcxr6D4wt1/mRQp+SOanFlZ4zrymGu7?=
+	=?us-ascii?Q?pnvtwB7OLGzMmCIzl0GoLhLhDnsWJC16ClMrqybkmvVfT7M1q1ieJNV+3Xd0?=
+	=?us-ascii?Q?jACX5XiMr0U8yW24LqK8e5n025jixoDYL8NxeR45hKrKKt9fo4JMLRDar573?=
+	=?us-ascii?Q?6GaBVZo7cLu8pLgykzT/wd+eYGMXitv2wcRHskAvknag1HOyX23u9mf6Ef1Z?=
+	=?us-ascii?Q?d9ZOUOMrpithf5diWauar4oeyn+ks5HxTsI6Mye7alxUqvpeoq+Xw/5u37O/?=
+	=?us-ascii?Q?uADgUXSN64L0+0DrT8fA5YvK4mBCUwBycAnWgpcZORkOSMxjyiny1vwuRq+m?=
+	=?us-ascii?Q?D+QOtSu5Ve2DrNpOFNDVsuIBC5V5QfjDbQO6sT/n3JzkT/+lkyx9t05WEOyZ?=
+	=?us-ascii?Q?frxbXkwvzOB7HLpNEhaHpRGbbixshxRyjAkF25o/Hwenx7urQw1EoeP+ENel?=
+	=?us-ascii?Q?4YKgUA75DxOoUvjjvKugbeicqtDhP56nEEVbaQdEWRU+f3QdA3xOLzd9yjMF?=
+	=?us-ascii?Q?S9SQ+wmuoUpNAA39kKGz7qXtPksEwM3B1k1FYE4nWmEGAu4/3v1QDZj5XBhY?=
+	=?us-ascii?Q?L5ypCNrmAMb3p0ywgXI6rnhzFcqqUuTMaMiXnBmX0LPDRB0EJuJYnH8SmPtK?=
+	=?us-ascii?Q?OHEG4/p7AZTgxVucF1EUyzvSF5I2g6qCxKr4bok3vrihA3eMip+HCGFLyg9m?=
+	=?us-ascii?Q?cQ0p/aD9gXeqvgJnkoV42MEu6?=
 X-Microsoft-Exchange-Diagnostics: 1; BLUPR0301MB2036;
-	5:U11VNIIuBS3mpQ0FhMAU4FVSKw0vxQb6Swwa8d4eo7LIHqMo/fotP4sNOli/lISmZaMHAFyHfkIK/MZz+qO7FbgZ8jx35TgT2QckQW7gjPHHvqyI8BEdCjlv6FTjqIdaTD/vMpfU5jfoH+fx3mDDPQ==;
-	24:dkkA1CnQLs5u0iEUqekdZjEqKN8oZe2p6vahBAX0nnTxUHYfJf7fDxO8v0HQLEaKILLnFbUCit3MafK3ktYFDSMVhWuOkRjxv2dN1+JbRRk=
+	5:AI6DeYauHl5WmuSUqxqaeiTTtt+YSLloITXgROIBcHH0JQl3aMo8+qg5aKeYqHy5W1IGD+pOX5RwwV3uPz5s15SMAZVSm8FnxdxGmiS+et0NeSSXtmj/r6Inajgl8zDGZMsgrg+2MWT0eCBGNbJT0Q==;
+	24:4HpF2Y9h+kjj014SdSNISMdvh3svtfy5u9wOKhZg+ATmIDIFbTyJuKDBY52k9Pi+M+glbXKa5PZy6xvmV5bv1Nbon1DRFBhlPKwvVcjBxr4=
 SpamDiagnosticOutput: 1:23
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Mar 2016 20:05:40.9192 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Mar 2016 20:05:42.1872 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2036
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
@@ -110,8 +111,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [Qemu-devel] [PATCH v3 0/5] Raspberry Pi framebuffer,
-	DMA and Windows support
+Subject: [Qemu-devel] [PATCH v3 1/5] bcm2835_peripherals: enable sdhci
+	pending-insert quirk for raspberry pi
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -125,76 +126,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ofnMvdaURvpU
+X-TUID: 71jcfY1mZ5yU
 
-This patch series adds support for the AUX (second UART), framebuffer
-and DMA controller on Raspberry Pi 2, and enables booting Windows on
-this device. As with the previous series, it is heavily based on the
-original (out of tree) work of Gregory Estrade, Stefan Weil and others
-to support Raspberry Pi 1.
+Signed-off-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/bcm2835_peripherals.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-After this series, it is possible to boot Windows by following the
-instructions at https://github.com/0xabu/qemu/wiki. You also boot
-Raspbian to the GUI using a command such as:
-
-  qemu-system-arm -M raspi2 -kernel raspbian-boot/kernel7.img -sd
-  2015-09-24-raspbian-jessie.img -append "rw earlyprintk loglevel=3D8
-  console=3DttyAMA0 dwc_otg.lpm_enable=3D0 root=3D/dev/mmcblk0p2 rootwait"
-  -dtb raspbian-boot/bcm2709-rpi-2-b.dtb -serial stdio
-
-I plan to add USB, and remaining timers / system devices in
-future patch series, along with support for pi1 (bcm2835). In the
-meantime, the complete code is available at https://github.com/0xabu/qemu
-
-v2:
- * added DMA controller
- * revised per PMM's review feedback
- * rebased on top of the patch for fixing ldl_phys/stl_phys in raspi
-   devices, presently in target-arm.next
-
-v3:
- * tweaked instantiation of uart1 char device
- * identified Gregory as primary author of framebuffer and DMA emulation
-
-Cheers,
-Andrew
-
-Andrew Baumann (2):
-  bcm2835_peripherals: enable sdhci pending-insert quirk for raspberry
-    pi
-  bcm2835_aux: add emulation of BCM2835 AUX (aka UART1) block
-
-Gr=C3=A9gory ESTRADE (3):
-  bcm2835_fb: add framebuffer device for Raspberry Pi
-  bcm2835_property: implement framebuffer control/configuration
-    properties
-  bcm2835_dma: add emulation of Raspberry Pi DMA controller
-
- hw/arm/bcm2835_peripherals.c         | 103 ++++++++-
- hw/arm/bcm2836.c                     |   2 +
- hw/arm/raspi.c                       |  12 +-
- hw/char/Makefile.objs                |   1 +
- hw/char/bcm2835_aux.c                | 316 ++++++++++++++++++++++++++
- hw/display/Makefile.objs             |   1 +
- hw/display/bcm2835_fb.c              | 424 +++++++++++++++++++++++++++++++=
-++++
- hw/dma/Makefile.objs                 |   1 +
- hw/dma/bcm2835_dma.c                 | 408 +++++++++++++++++++++++++++++++=
-++
- hw/misc/bcm2835_property.c           | 139 +++++++++++-
- include/hw/arm/bcm2835_peripherals.h |   6 +
- include/hw/char/bcm2835_aux.h        |  33 +++
- include/hw/display/bcm2835_fb.h      |  47 ++++
- include/hw/dma/bcm2835_dma.h         |  47 ++++
- include/hw/misc/bcm2835_property.h   |   5 +-
- 15 files changed, 1532 insertions(+), 13 deletions(-)
- create mode 100644 hw/char/bcm2835_aux.c
- create mode 100644 hw/display/bcm2835_fb.c
- create mode 100644 hw/dma/bcm2835_dma.c
- create mode 100644 include/hw/char/bcm2835_aux.h
- create mode 100644 include/hw/display/bcm2835_fb.h
- create mode 100644 include/hw/dma/bcm2835_dma.h
-
---=20
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 6d66fa0..6ce9cd1 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -171,6 +171,13 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
++                             &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
+     object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+-- 
 2.7.0
 

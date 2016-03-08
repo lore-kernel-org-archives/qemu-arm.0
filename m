@@ -1,190 +1,218 @@
-Received: by 10.25.208.211 with SMTP id h202csp1783250lfg;
-        Mon, 7 Mar 2016 23:37:53 -0800 (PST)
-X-Received: by 10.140.162.213 with SMTP id i204mr20394568qhi.85.1457422673194;
-        Mon, 07 Mar 2016 23:37:53 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp2109193lfg;
+        Tue, 8 Mar 2016 11:11:45 -0800 (PST)
+X-Received: by 10.140.225.6 with SMTP id v6mr40707164qhb.0.1457464303813;
+        Tue, 08 Mar 2016 11:11:43 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 69si1827464qgj.71.2016.03.07.23.37.52
+        by mx.google.com with ESMTPS id j7si4348528qgf.83.2016.03.08.11.11.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Mar 2016 23:37:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 08 Mar 2016 11:11:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60956 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36750 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adCDI-0007Ld-Mn
-	for alex.bennee@linaro.org; Tue, 08 Mar 2016 02:37:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58726)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1adN2k-00083R-SI
+	for alex.bennee@linaro.org; Tue, 08 Mar 2016 14:11:42 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1adCCh-0006TB-1f
-	for qemu-devel@nongnu.org; Tue, 08 Mar 2016 02:37:15 -0500
+	(envelope-from <digetx@gmail.com>) id 1adN2f-00082T-5z
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 14:11:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1adCCd-0005WM-1I
-	for qemu-devel@nongnu.org; Tue, 08 Mar 2016 02:37:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35013)
+	(envelope-from <digetx@gmail.com>) id 1adN2a-0006SP-TV
+	for qemu-arm@nongnu.org; Tue, 08 Mar 2016 14:11:37 -0500
+Received: from mail-lb0-x241.google.com ([2a00:1450:4010:c04::241]:33667)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>)
-	id 1adCCX-0005Vg-KS; Tue, 08 Mar 2016 02:37:05 -0500
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 424C4C0005D0;
-	Tue,  8 Mar 2016 07:37:05 +0000 (UTC)
-Received: from pxdev.xzpeter.org.com (vpn1-5-232.pek2.redhat.com [10.72.5.232])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u287aSmI024053; Tue, 8 Mar 2016 02:36:57 -0500
-From: Peter Xu <peterx@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  8 Mar 2016 15:36:22 +0800
-Message-Id: <1457422582-28799-4-git-send-email-peterx@redhat.com>
-In-Reply-To: <1457422582-28799-1-git-send-email-peterx@redhat.com>
-References: <1457422582-28799-1-git-send-email-peterx@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: wei@redhat.com, peter.maydell@linaro.org, drjones@redhat.com,
-	mdroth@linux.vnet.ibm.com, armbru@redhat.com, peterx@redhat.com,
-	abologna@redhat.com, qemu-arm@nongnu.org
-Subject: [Qemu-devel] [PATCH v4 3/3] arm: implement query-gic-capabilities
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <digetx@gmail.com>)
+	id 1adN2a-0006Rs-GQ; Tue, 08 Mar 2016 14:11:32 -0500
+Received: by mail-lb0-x241.google.com with SMTP id bc4so2699546lbc.0;
+	Tue, 08 Mar 2016 11:11:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=k1FEljxNtIgcPwpw08pqvsuRjOn2RaFp6blxuqMF6bw=;
+	b=txbzdols29epU5av0VyAkWqatM1z6/Wl6uNrz+l3M3/eJjeIHAcvnVRfUqLCvmfM3V
+	WrCJWfYA13GMhIj4adaf5SYvcDXNFOi+KHb984QCg+he+0MkogdW3voXoMb4YrADwouA
+	gdN7buPxmAwrK5WmNDhVCTAL5heOu9pYiSVjsM+5c5OoeWiEij+JLg94i4I7LmiCfXES
+	9eJ3yHCpz3neWZ3984jfrFD6RcDanEnegA2OurywuyXYlIHrtBtq/l//7+LcNPFUu9AP
+	fXfHlkUHniSx+e0A/T+fVZJs8/DSX4QPQsIR6JmwK3zHBMPManAKIxeYj8p+I7g0km09
+	bPHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=k1FEljxNtIgcPwpw08pqvsuRjOn2RaFp6blxuqMF6bw=;
+	b=hYoaBIyBf9KnUCjB5Zgb0uFaaCQ98E88971RdMF033Nmthd//I1aqeWYBiFzM3e3Lq
+	iJFfUyT7uzMfaZeQe4FsWzrEjT09NKS61syS+QGlcCAX7NtpM99XePqoYDBl9f46lKYR
+	E7GRU8Zbz7ElI+87mvv/9+Cs2KETZtqZtxl3/b1KZw/j0RizAo6ffJHUXEE41JjuRqDw
+	Ssm+8dDNZ11FZKVooY7eDfb+/mrpZ2U5OL4WBM3eEk+rbXjjmFYx+zDhl0vnktNDLqYA
+	meqgvk2ZAAU71yGgQJ8VYCLFLoJHWe45ohWWi6Ue4iw0qM03cQvUjVCfvRfWN0dqdUX+
+	vIUg==
+X-Gm-Message-State: AD7BkJIRrcgfRRRTTpLs8kNNT2/ENRxcsLkB/i7R5JKeMoa+GU7S9NW2RqtLcw5XNHIgYA==
+X-Received: by 10.25.81.148 with SMTP id f142mr8552444lfb.95.1457464291478;
+	Tue, 08 Mar 2016 11:11:31 -0800 (PST)
+Received: from [192.168.1.145] (ppp46-138-151-163.pppoe.spdop.ru.
+	[46.138.151.163]) by smtp.googlemail.com with ESMTPSA id
+	ze8sm705528lbb.45.2016.03.08.11.11.30
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 08 Mar 2016 11:11:30 -0800 (PST)
+To: Peter Crosthwaite <crosthwaitepeter@gmail.com>
+References: <cover.1454169735.git.digetx@gmail.com>
+	<77d17ad13f7b20deb433ca7a7b3d7cf40429665e.1454169735.git.digetx@gmail.com>
+	<56B0C90B.7000300@gmail.com>
+	<CAPokK=qDSsbvdPtqL42EiEOE-R0RguGegMj-Pj9j7ktEP_zD2A@mail.gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <56DF23E1.9080901@gmail.com>
+Date: Tue, 8 Mar 2016 22:11:29 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAPokK=qDSsbvdPtqL42EiEOE-R0RguGegMj-Pj9j7ktEP_zD2A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::241
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v12 7/9] hw/ptimer: Fix counter - 1 returned
+ by ptimer_get_count for the active timer
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T4rjrn3oL9e1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vi9MmAuyjYfp
 
-For emulated GIC capabilities, currently only gicv2 is supported. We
-need to add gicv3 in when emulated gicv3 ready. For KVM accelerated ARM
-VM, we detect the capability bits using ioctls.
+08.03.2016 06:43, Peter Crosthwaite пишет:
+> On Tue, Feb 2, 2016 at 7:19 AM, Dmitry Osipenko <digetx@gmail.com> wrote:
+>> 30.01.2016 19:43, Dmitry Osipenko пишет:
+>>>
+>>> Due to rounding down performed by ptimer_get_count, it returns counter - 1
+>>> for
+>>> the active timer. That's incorrect because counter should decrement only
+>>> after
+>>> period been expired, not before. I.e. if running timer has been loaded
+>>> with
+>>> value X, then timer counter should stay with X until period expired and
+>>> decrement after. Fix this by adding 1 to the counter value for the active
+>>> and
+>>> unexpired timer.
+>>>
+>>> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+>>> ---
+>>>    hw/core/ptimer.c | 2 +-
+>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+>>> index 62f8cb1..b2044fb 100644
+>>> --- a/hw/core/ptimer.c
+>>> +++ b/hw/core/ptimer.c
+>>> @@ -136,7 +136,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>>>                    if ((uint32_t)(period_frac << shift))
+>>>                        div += 1;
+>>>                }
+>>> -            counter = rem / div;
+>>> +            counter = rem / div + (expired ? 0 : 1);
+>>>
+>>>                if (expired && counter != 0) {
+>>>                    /* Wrap around periodic counter.  */
+>>>
+>>
+>> Noticed one nit here:
+>>
+>> There is possibility to return timer counter = limit + 1, if the following
+>> ptimer calls execute in less than 1ns.
+>>
+>>          ptimer_run(t, 1);
+>>          // counter = 91, if set() count executed in less than 1ns
+>>          ptimer_set_count(t, 90);
+>>          counter = ptimer_get_count(t);
+>>
+>> Likely, it would be impossible to trigger that issue on a real current
+>> machine.
+>> But the fix is trivial, I'll incorporate it in V13 if it looks fine:
+>>
+>> ---
+>> @@ -76,20 +76,20 @@ static void ptimer_tick(void *opaque)
+>>   {
+>>       ptimer_state *s = (ptimer_state *)opaque;
+>>       s->delta = 0;
+>>       ptimer_reload(s);
+>>   }
+>>
+>>   uint64_t ptimer_get_count(ptimer_state *s)
+>>   {
+>> +    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>>       uint64_t counter;
+>>
+>> -    if (s->enabled && s->delta != 0) {
+>> -        int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>> +    if (s->enabled && s->delta != 0 && now != s->last_event) {
+>>           int64_t next = s->next_event;
+>>           bool expired = (now - next >= 0);
+>>           bool oneshot = (s->enabled == 2);
+>>
+>>           /* Figure out the current counter value.  */
+>>           if (expired && (oneshot || use_icount)) {
+>>               /* Prevent timer underflowing if it should already have
+>>                  triggered.  */
+>> @@ -131,17 +131,17 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>>               } else {
+>>                   if (shift != 0)
+>>                       div |= (period_frac >> (32 - shift));
+>>                   /* Look at remaining bits of period_frac and round div up
+>> if
+>>                      necessary.  */
+>>                   if ((uint32_t)(period_frac << shift))
+>>                       div += 1;
+>>               }
+>> -            counter = rem / div;
+>> +            counter = rem / div + (expired ? 0 : 1);
+>>
+>
+> Sorry about the long delays. Im wondering what this has to do with
+> expiration though? the commit message suggests you want to change the
+> rounding scheme, so can that be done directly with DIV_ROUND_UP?
+>
+> Regards,
+> Peter
+>
+>>               if (expired && counter != 0) {
+>>                   /* Wrap around periodic counter.  */
+>>                   counter = s->limit - (counter - 1) % s->limit;
+>>               }
+>>           }
+>>       } else {
+>>           counter = s->delta;
+>>
+>>
+>> --
+>> Dmitry
 
-When probing the KVM capabilities, we cannot leverage existing helper
-functions like kvm_create_device() since QEMU might be using TCG while
-probing (actually this is the case for libvirt probing). So, one
-temporary VM is created to do the probing.
+Hi Peter,
 
-Signed-off-by: Peter Xu <peterx@redhat.com>
----
- target-arm/machine.c | 94 +++++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 93 insertions(+), 1 deletion(-)
+The expiration check is needed because timer should stay with 0 for a one period 
+before doing wrap around. Using DIV_ROUND_UP directly, timer would wrap around 
+immediately once now > next (i.e. after 1 ns) regardless of the period value, 
+and DIV_ROUND_UP can't be used because it would cause integer overflow of (n) + 
+(d) due to the left shifting of the "rem" and "div".
 
-diff --git a/target-arm/machine.c b/target-arm/machine.c
-index 813909e..8f52f74 100644
---- a/target-arm/machine.c
-+++ b/target-arm/machine.c
-@@ -1,3 +1,5 @@
-+#include <linux/kvm.h>
-+#include <sys/ioctl.h>
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/boards.h"
-@@ -347,7 +349,97 @@ const char *gicv3_class_name(void)
-     exit(1);
- }
- 
-+static GICCapability *gic_cap_new(int version)
-+{
-+    GICCapability *cap = g_new0(GICCapability, 1);
-+    cap->version = version;
-+    /* by default, support none */
-+    cap->emulated = false;
-+    cap->kernel = false;
-+    return cap;
-+}
-+
-+static GICCapabilityList *gic_cap_list_add(GICCapabilityList *head,
-+                                           GICCapability *cap)
-+{
-+    GICCapabilityList *item = g_new0(GICCapabilityList, 1);
-+    item->value = cap;
-+    item->next = head;
-+    return item;
-+}
-+
-+#ifdef CONFIG_KVM
-+/* Test whether KVM support specific device. */
-+static inline int kvm_support_device(int vmfd, uint64_t type)
-+{
-+    struct kvm_create_device create_dev = {
-+        .type = type,
-+        .fd = -1,
-+        .flags = KVM_CREATE_DEVICE_TEST,
-+    };
-+    return ioctl(vmfd, KVM_CREATE_DEVICE, &create_dev);
-+}
-+#endif
-+
- GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
- {
--    return NULL;
-+    GICCapabilityList *head = NULL;
-+    GICCapability *v2 = gic_cap_new(2), *v3 = gic_cap_new(3);
-+
-+    v2->emulated = true;
-+    /* FIXME: we'd change to true after we get emulated GICv3. */
-+    v3->emulated = false;
-+
-+#ifdef CONFIG_KVM
-+    {
-+        int kvm_fd = -1;
-+        int vmfd = -1;
-+        /*
-+         * HACK: here we create one temporary VM, do the probing,
-+         * then release it properly.
-+         */
-+        kvm_fd = qemu_open("/dev/kvm", O_RDWR);
-+        if (kvm_fd == -1) {
-+            /* KVM may not enabled on host, which is fine. */
-+            goto out;
-+        }
-+
-+        do {
-+            /* For ARM, VM type could only be zero now. */
-+            vmfd = ioctl(kvm_fd, KVM_CREATE_VM, 0);
-+        } while (vmfd == -EINTR);
-+
-+        if (vmfd < 0) {
-+            goto kvm_fd_close;
-+        }
-+
-+        if (ioctl(kvm_fd, KVM_CHECK_EXTENSION,
-+                  KVM_CAP_DEVICE_CTRL) <= 0) {
-+            /* older version of KVM possibly */
-+            goto kvm_vmfd_close;
-+        }
-+
-+        /* Test KVM GICv2 */
-+        if (kvm_support_device(vmfd, KVM_DEV_TYPE_ARM_VGIC_V2) >= 0) {
-+            v2->kernel = true;
-+        }
-+
-+        /* Test KVM GICv3 */
-+        if (kvm_support_device(vmfd, KVM_DEV_TYPE_ARM_VGIC_V3) >= 0) {
-+            v3->kernel = true;
-+        }
-+
-+kvm_vmfd_close:
-+        close(vmfd);
-+kvm_fd_close:
-+        close(kvm_fd);
-+out:
-+        ;
-+    }
-+#endif
-+
-+    head = gic_cap_list_add(head, v2);
-+    head = gic_cap_list_add(head, v3);
-+
-+    return head;
- }
+#define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
+
+
+No worries, I can wait as much as needed :)
+
 -- 
-2.4.3
-
+Dmitry

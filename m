@@ -1,41 +1,42 @@
-Received: by 10.25.208.211 with SMTP id h202csp2516248lfg;
-        Wed, 9 Mar 2016 06:06:21 -0800 (PST)
-X-Received: by 10.55.192.154 with SMTP id v26mr29927432qkv.36.1457532381086;
-        Wed, 09 Mar 2016 06:06:21 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp2516963lfg;
+        Wed, 9 Mar 2016 06:07:34 -0800 (PST)
+X-Received: by 10.55.75.144 with SMTP id y138mr43501381qka.96.1457532452509;
+        Wed, 09 Mar 2016 06:07:32 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v10si8069092qge.63.2016.03.09.06.06.20
+        by mx.google.com with ESMTPS id z7si8076022qhb.22.2016.03.09.06.07.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Mar 2016 06:06:21 -0800 (PST)
+        Wed, 09 Mar 2016 06:07:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41747 helo=lists.gnu.org)
+Received: from localhost ([::1]:41752 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adekm-0002YR-Ie
-	for alex.bennee@linaro.org; Wed, 09 Mar 2016 09:06:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59402)
+	id 1adelv-0003WX-Vl
+	for alex.bennee@linaro.org; Wed, 09 Mar 2016 09:07:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59633)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1adekh-0002WZ-6Y
-	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:06:19 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1adelu-0003WR-Jo
+	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:07:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1adekb-0003sj-45
-	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:06:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56319)
+	(envelope-from <pbonzini@redhat.com>) id 1adelt-00049I-Hr
+	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:07:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40152)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1adeka-0003se-TY; Wed, 09 Mar 2016 09:06:09 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id 5592D30248F;
-	Wed,  9 Mar 2016 14:06:08 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-29.phx2.redhat.com
-	[10.3.113.29])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u29E66kH011161; Wed, 9 Mar 2016 09:06:06 -0500
-To: Paolo Bonzini <pbonzini@redhat.com>,
+	(envelope-from <pbonzini@redhat.com>)
+	id 1adelt-00048w-CW; Wed, 09 Mar 2016 09:07:29 -0500
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1AE89AA0B0;
+	Wed,  9 Mar 2016 14:07:29 +0000 (UTC)
+Received: from [10.36.112.60] (ovpn-112-60.ams2.redhat.com [10.36.112.60])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u29E7PAU006079
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 9 Mar 2016 09:07:26 -0500
+To: Laszlo Ersek <lersek@redhat.com>,
 	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
 	<56DD9C58.7050306@redhat.com>
@@ -47,17 +48,17 @@ References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
 	<CAKv+Gu-joM8MqtM=G_F7NLZEwpxLBMPeqimDwZv7yivTjYBFVQ@mail.gmail.com>
 	<56DEC860.1060707@redhat.com>
 	<CAKv+Gu91CH9WURYaLFtP7HHEm7Z18FMk19HXEWaj1=LBqM6mCQ@mail.gmail.com>
-	<56DECE5F.6000207@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56E02DCD.5060008@redhat.com>
-Date: Wed, 9 Mar 2016 15:06:05 +0100
+	<56DECE5F.6000207@redhat.com> <56E02DCD.5060008@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <56E02E1C.2090207@redhat.com>
+Date: Wed, 9 Mar 2016 15:07:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <56DECE5F.6000207@redhat.com>
+In-Reply-To: <56E02DCD.5060008@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
@@ -79,55 +80,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rU0pJnrS0/Bv
+X-TUID: kZeOYwAkZD6I
 
-On 03/08/16 14:06, Paolo Bonzini wrote:
-> On 08/03/2016 13:50, Ard Biesheuvel wrote:
->> Note that, for KVM, it is unlikely that we will ever support all of
->> this inside the guest. It makes *much* more sense to lock down the
->> emulated flash, and implement the UEFI Runtime Services using a thin
->> layer in UEFI that hooks up to interfaces exposed to the guest by
->> QEMU.
-> 
-> Well, it makes a bit less sense if the SMM code is already there for you
-> to use. :)  More seriously, implementing secure boot on x86 KVM was
-> "just" a matter of reading the architecture manual and chipset
-> datasheets, and implementing what they said.  Likewise, the firmware
-> work can reuse a large part of the work done for bare-metal hardware.
-> Laszlo would kill me for saying this, :) but in terms of sheer SLOC his
-> platform enablement patches were dwarfed by the SMM code that Intel
-> contributed.  The SMM code in turn is _exactly_ the same on bare-metal
-> and virt.
 
-Your statement about the SLOC proportions is correct. And, while I could
-try to depict (again) the challenges that regardless surfaced in the
-platform enablement, this is not the right forum, so I'll save it. :)
 
-However: despite reusing the core SMM code identically in the guest,
-there is at least one stark behavioral difference: in QEMU the SMI is
-raised only on the processor that triggers it. This exercises paths in
-the core SMM code where processors have to count down timeouts and bring
-each other in, and these busy loops are very visible to an interactive
-user in certain circumstances.
+On 09/03/2016 15:06, Laszlo Ersek wrote:
+> However: despite reusing the core SMM code identically in the guest,
+> there is at least one stark behavioral difference: in QEMU the SMI is
+> raised only on the processor that triggers it. This exercises paths in
+> the core SMM code where processors have to count down timeouts and bring
+> each other in, and these busy loops are very visible to an interactive
+> user in certain circumstances.
 
-For example, Windows installers seem to be absolutely crazy about
-massaging UEFI variables -- the rotating animation rather crawls than
-rotates for a minute. I traced KVM just the other day while the
-installer was in this phase, and 2 VCPUs together produced about 30-50
-"(entering|leaving) SMM" messages per second.
+Right, and that's unfortunately something that's hard to change because
+SeaBIOS relies on it. :((
 
-Laszlo
-
-> Designing good PV interfaces is hard, designing secure PV interfaces is
-> harder; reading a spec is easy.  To me, the only reason to do it in PV
-> interfaces is that the hardware doesn't allow virtualization of EL3.
-> 
-> If the hardware makes you jump through extra hoops, sometimes it's
-> necessary, sometimes it's not.  If it's not, rationalizing it is bad.  I
-> cannot think of a good reason for hardware not to let you virtualize
-> hypervisor or secure mode, or to force the hypervisor to use two-level
-> page translation.
-> 
-> Paolo
-> 
-
+Paolo

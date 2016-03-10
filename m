@@ -1,72 +1,73 @@
-Received: by 10.25.208.211 with SMTP id h202csp2524670lfg;
-        Wed, 9 Mar 2016 06:21:23 -0800 (PST)
-X-Received: by 10.140.41.164 with SMTP id z33mr42517042qgz.78.1457533282969;
-        Wed, 09 Mar 2016 06:21:22 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp318289lfg;
+        Thu, 10 Mar 2016 01:04:04 -0800 (PST)
+X-Received: by 10.55.72.130 with SMTP id v124mr2579936qka.13.1457600644216;
+        Thu, 10 Mar 2016 01:04:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i6si8088048qhi.95.2016.03.09.06.21.22
+        by mx.google.com with ESMTPS id d189si2711129qhd.94.2016.03.10.01.04.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Mar 2016 06:21:22 -0800 (PST)
+        Thu, 10 Mar 2016 01:04:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41818 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:47072 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1adezK-0008M7-Fe
-	for alex.bennee@linaro.org; Wed, 09 Mar 2016 09:21:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34423)
+	id 1adwVn-00069h-OO
+	for alex.bennee@linaro.org; Thu, 10 Mar 2016 04:04:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1adezD-0008Lj-57
-	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:21:20 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1adwVl-00067x-HS
+	for qemu-arm@nongnu.org; Thu, 10 Mar 2016 04:04:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1adez8-00089U-2e
-	for qemu-arm@nongnu.org; Wed, 09 Mar 2016 09:21:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53202)
+	(envelope-from <peter.maydell@linaro.org>) id 1adwVk-0001Zp-70
+	for qemu-arm@nongnu.org; Thu, 10 Mar 2016 04:04:01 -0500
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:34243)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>)
-	id 1adez7-00089Q-TN; Wed, 09 Mar 2016 09:21:10 -0500
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 72AD6AA46E;
-	Wed,  9 Mar 2016 14:21:09 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-29.phx2.redhat.com
-	[10.3.113.29])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u29EL7Jb018823; Wed, 9 Mar 2016 09:21:07 -0500
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <1455288361-30117-1-git-send-email-peter.maydell@linaro.org>
-	<56DD9C58.7050306@redhat.com>
-	<CAFEAcA8C2VzkD=87W5Jn7X523cFZLZL6onxjKDoOcZsCPMQxZw@mail.gmail.com>
-	<56DEBF6A.6070809@redhat.com>
-	<CAKv+Gu9LzTTzdw5CSCDfpCyjSgB2h6+KawTTJQXSqJ7mhV_YdQ@mail.gmail.com>
-	<CAKv+Gu8OgSK5+X71GLrvWLkcGcQ9=MuwOuFAsQroQTa3bWbHNA@mail.gmail.com>
-	<56DEC234.70907@redhat.com>
-	<CAKv+Gu-joM8MqtM=G_F7NLZEwpxLBMPeqimDwZv7yivTjYBFVQ@mail.gmail.com>
-	<56DEC860.1060707@redhat.com>
-	<CAKv+Gu91CH9WURYaLFtP7HHEm7Z18FMk19HXEWaj1=LBqM6mCQ@mail.gmail.com>
-	<56DECE5F.6000207@redhat.com> <56E02DCD.5060008@redhat.com>
-	<56E02E1C.2090207@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <56E03152.9060003@redhat.com>
-Date: Wed, 9 Mar 2016 15:21:06 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	(envelope-from <peter.maydell@linaro.org>) id 1adwVj-0001Zj-V0
+	for qemu-arm@nongnu.org; Thu, 10 Mar 2016 04:04:00 -0500
+Received: by mail-vk0-x232.google.com with SMTP id e185so87829570vkb.1
+	for <qemu-arm@nongnu.org>; Thu, 10 Mar 2016 01:03:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=cLPEq++Oiuc+ryMFWfetoMCayy9W+bdCAITaMqBt44Q=;
+	b=CUwnh7PgLxp0cXedO+vtj9bsSDCVC2nwYAfAPcDopxUpRYHAxiJ6vsg5o7HzE7zNPm
+	FcFLktCgy0S21mUFrHTNanHCr2wW77SE16lKChWCWIo9LeIjwzPDx9yvr23fOmj73B5N
+	jhRtrNKgw/WNwfNnA93LmMKBVIrgtv5Fb6KEk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=cLPEq++Oiuc+ryMFWfetoMCayy9W+bdCAITaMqBt44Q=;
+	b=Hg3D3qyq/5FhqCLltEyURp+/k+g6QIhYMVAy+Lf3gGe3dzSq65PcIourz1SuO1+T6N
+	ngOargJO9Y7rDDvgRojJG+umvx/Gt9c+BELnugM9HXC4tlE6BEEKwwkKwNydX7npWhUI
+	O2VpXFDXZhBCtebOvayp2UdR246Zz7lNwJqBLLnR0jla30vpWXpS6OVv23o3ycFxC33M
+	Ncy0U2UHaLj8LfWezNfmxy/M12vzejusMVoVKxAd3H3FFAS7gL66jwQWXNbTpQTmPWz9
+	Lg9L3eK2BOHfgQ/AL4680lTUHyoHmEPzyRquGMr+M0C9M+IuQxaMETaLrcTuoBeCAdac
+	gyHQ==
+X-Gm-Message-State: AD7BkJJnwIkg9G2uPlisg3Tfzr34OP1NknyM9yml4gbqT22bmZgBP2gQPXK0cOSSg/8zQvoL7JNLrpgQyDDRkCNn
+X-Received: by 10.31.52.147 with SMTP id b141mr2511123vka.82.1457600639413;
+	Thu, 10 Mar 2016 01:03:59 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <56E02E1C.2090207@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/4] virt: provide secure-only
- RAM and first flash
+Received: by 10.31.216.1 with HTTP; Thu, 10 Mar 2016 01:03:39 -0800 (PST)
+In-Reply-To: <20160223190905.65sroj2tysb22hbz@hawk.localdomain>
+References: <1456175198-25210-1-git-send-email-wei@redhat.com>
+	<CAFEAcA8vyVL6jyMTGCap9Bu=eyqR2OUN5LzH5Sjo965Fn4PmHA@mail.gmail.com>
+	<56CCA649.8090906@redhat.com>
+	<CAFEAcA-gXuVJjJS8T87ru9YE+5VrJ25eXoqkwxsd21OK6__Upw@mail.gmail.com>
+	<20160223190905.65sroj2tysb22hbz@hawk.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 Mar 2016 16:03:39 +0700
+Message-ID: <CAFEAcA-qAakhVCxH4=i9nMs=XFHLgP4usUF4JdzVFNGYm_iNew@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::232
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Andrea Bolognani <abologna@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH RFC 0/2] Versioning ARM virt machine types
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -80,27 +81,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hRy1FEmgSw42
+X-TUID: mYsNew9CpYom
 
-On 03/09/16 15:07, Paolo Bonzini wrote:
-> 
-> 
-> On 09/03/2016 15:06, Laszlo Ersek wrote:
->> However: despite reusing the core SMM code identically in the guest,
->> there is at least one stark behavioral difference: in QEMU the SMI is
->> raised only on the processor that triggers it. This exercises paths in
->> the core SMM code where processors have to count down timeouts and bring
->> each other in, and these busy loops are very visible to an interactive
->> user in certain circumstances.
-> 
-> Right, and that's unfortunately something that's hard to change because
-> SeaBIOS relies on it. :((
+On 24 February 2016 at 02:09, Andrew Jones <drjones@redhat.com> wrote:
+> I believe our downstream versioning has driven some changes to libvirt
+> already, so I think it's a good time to bring the how to best version
+> mach-virt discussions to all the respective upstreams, despite it
+> currently, at least for us, being used only on pre-releases though.
 
-I recall (and am still thankful for) the relevant patch receiving the
-due attention and investigation on the list, so I'm not bitter about it
-or anything.
+So, to sum up from a conversation today:
 
-Just a bit worried about users asking about the animation :)
+ * We should add versioning to 'virt' now
+ * We should do it by having the QEMU 2.6 release have a "virt-2.6"
+   which is the same as "virt" for this upstream release
+ * Then from 2.6 forward we start creating "virt-2.7", etc machines
+   and making sure we have properties etc so that "virt-2.6" remains
+   the same config as the 2.6 release's virt board.
+ * RedHat are doing this for downstream anyway so will take on the
+   task of monitoring changes to the virt board and submitting the
+   relevant patches to property-ify things. (Better still, if you
+   make comments during code review you can get patch submitters to
+   do the work for you ;-). I will attempt to spot this kind of thing
+   when I review patches to the virt board but I will probably miss
+   things especially at first.)
 
-Laszlo
+Practically:
+ * Wei, you need to respin this patchset, because as it stands it
+   creates a "virt-2.5", and it should be "virt-2.6". If you do that
+   then I think it's generally OK to go in.
+ * My only other review comment is that patch 1 sets mc->is_default
+   which gives qemu-system-aarch64 a default board. We deliberately
+   don't have a default machine type for ARM, so please don't do that.
+   (We can have that discussion if you like but it's a separate issue
+   so best not tangled up with this patchset.)
 
+thanks
+-- PMM

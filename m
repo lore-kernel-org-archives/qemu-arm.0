@@ -1,71 +1,71 @@
-Received: by 10.25.208.211 with SMTP id h202csp896497lfg;
-        Fri, 11 Mar 2016 01:03:34 -0800 (PST)
-X-Received: by 10.55.221.200 with SMTP id u69mr10075892qku.0.1457687014186;
-        Fri, 11 Mar 2016 01:03:34 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp899228lfg;
+        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
+X-Received: by 10.141.5.130 with SMTP id h124mr10673241qhd.89.1457687404529;
+        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a12si7749310qha.52.2016.03.11.01.03.33
+        by mx.google.com with ESMTPS id k65si7778423qgf.53.2016.03.11.01.10.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 01:03:34 -0800 (PST)
+        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:53490 helo=lists.gnu.org)
+Received: from localhost ([::1]:53515 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aeIyr-00086R-O6
-	for alex.bennee@linaro.org; Fri, 11 Mar 2016 04:03:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34077)
+	id 1aeJ59-0002Yr-Vg
+	for alex.bennee@linaro.org; Fri, 11 Mar 2016 04:10:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35357)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeIyo-00086E-5U
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:03:31 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aeJ56-0002XW-9u
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:10:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeIyn-0007v5-69
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:03:30 -0500
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:33745)
+	(envelope-from <peter.maydell@linaro.org>) id 1aeJ54-0000PM-Tq
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:10:00 -0500
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:32888)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeIym-0007ux-TE
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:03:29 -0500
-Received: by mail-vk0-x233.google.com with SMTP id k1so127047503vkb.0
-	for <qemu-arm@nongnu.org>; Fri, 11 Mar 2016 01:03:28 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1aeJ54-0000PG-L6
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:09:58 -0500
+Received: by mail-vk0-x22e.google.com with SMTP id k1so127210355vkb.0
+	for <qemu-arm@nongnu.org>; Fri, 11 Mar 2016 01:09:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=LY7CG+U9y1Uf/FHUChgS9F0HvPnYyoKXsPghD+oyjDw=;
-	b=IG6mhn3r7rw5Ry5YjO9HUzWDX5YfgC1KyQvGfcwEGnVvkUZcgtxmnJ6+flNmCVL+5Z
-	T7YzphJE3bcwtbUKVVnjPjUVzrg8o/5f9QV1UpEygt6Tn//jho9T3yeu8JU6474YLBPV
-	BrIgB/Di7noMnKNK/HiaGrJ9xdOKC7sHREXcQ=
+	:cc; bh=ukdSRVp2N5Nb4ERg7vi0jSHc0a1XE9lWFqLZ/L4Z3fY=;
+	b=MmgvwRtxFdwz9jSh3bMOpOtXY+TojlYybSyQjb/NTWvJxv73YZ9tjMUSzAS+hb1eRd
+	WeeBXfHcdC9FKR7kDMRGtHvPSlkgDwKfcA3rA1UJiMEw/+cRhMDxz2u+SphhwP12pkPT
+	Z7yMA6jzYXgTBPs2STXc2ha4+TNQzYHu+a4yY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=LY7CG+U9y1Uf/FHUChgS9F0HvPnYyoKXsPghD+oyjDw=;
-	b=KzhBO48c8Okfm2DKJ/RLLzbbi3zY+BDOT6dL68RRPAwcCk069U1Qgcfd6Pd3UdiOC7
-	r4nRZ86H01IYnPdyu0cRYDC2j7T3KuaPF+Rcl7QjT3MOTlF/D9oL9pZcye46NneREv32
-	FfOOM/D1HPukZHDCNtBatf39w8+GmE95HONQqtezlIwNyeNJL8nnZRezsAq9E8Cg9lcw
-	gBXpjaZpKfhU6R35Fger3WLafGYH7EvPVBmKxn+h9LQQlYUsUwTZghjKP6MGkPn8VbQO
-	+lj8lHdn6Tv9VKxkkYpRTfgrfw4f8Z8IXC5cWsTXes7R1i2wbVxZ76u2wzZEbxT6A5/f
-	sduA==
-X-Gm-Message-State: AD7BkJJPpCDj+Um9uekv1Zu/cdyh1OZJyZZYnPrWRCoG1Gq0tnmEnqRjRR9rk1r8E1opoPpsWVDETvWhY6wI1bsw
-X-Received: by 10.31.8.210 with SMTP id 201mr8553015vki.90.1457687008179; Fri,
-	11 Mar 2016 01:03:28 -0800 (PST)
+	bh=ukdSRVp2N5Nb4ERg7vi0jSHc0a1XE9lWFqLZ/L4Z3fY=;
+	b=fi9iNUx3Fvl1UPu2DEa9XIV3rwCxUrrOoKKbxC98E88KgVGniU8n0PXH48CfOQUXHJ
+	LRNCmJYzIl6hRUtfYVRjhRRnSjKTErM2rrjHdNuZ1cyRXSHCfVQXSilJlTSAhHeGs2wZ
+	HnrELpE1HQ/86AxVThiru1bYsq17Qc0l1qzQJ6RveBsuEBWvZr3CeYAFLtB73nvEtKzW
+	Yr/Y9MTaaAsX49GTAaQaSNvhrWMwq6O2ED/IEe79foEl/dOm6sNnsE8Ajg28X6zLe8t5
+	AWJAzh5V682RHJibvaf4uDvaijDLl+Io3h6xWzv6n3nQTI414R5+MsGoN+oYZxk1wsGc
+	qDoQ==
+X-Gm-Message-State: AD7BkJIWfHO6c7F1KQ6cAEXDJ/CxAN6dEmgxyJTnup8sGOajLGgnpXTu7u7rBZ4ggwPD0tLtgNaYqoydU5ydBPfB
+X-Received: by 10.31.52.147 with SMTP id b141mr8639960vka.82.1457687398161;
+	Fri, 11 Mar 2016 01:09:58 -0800 (PST)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Fri, 11 Mar 2016 01:03:08 -0800 (PST)
-In-Reply-To: <1457152177-19550-3-git-send-email-andrew@aj.id.au>
+Received: by 10.31.216.1 with HTTP; Fri, 11 Mar 2016 01:09:38 -0800 (PST)
+In-Reply-To: <1457152177-19550-4-git-send-email-andrew@aj.id.au>
 References: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
-	<1457152177-19550-3-git-send-email-andrew@aj.id.au>
+	<1457152177-19550-4-git-send-email-andrew@aj.id.au>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Mar 2016 16:03:08 +0700
-Message-ID: <CAFEAcA-sdB7cb=APLcFYKtDyfGjsk-3zYZq_=-9bRQ+s1JscEQ@mail.gmail.com>
+Date: Fri, 11 Mar 2016 16:09:38 +0700
+Message-ID: <CAFEAcA9Jt6PhUU0T4vV6zU_8HOPGBVr+uzA-EZJzXW70Q4-k4g@mail.gmail.com>
 To: Andrew Jeffery <andrew@aj.id.au>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
+X-Received-From: 2607:f8b0:400c:c05::22e
 Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm <qemu-arm@nongnu.org>,
 	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v3 2/3] hw/intc: Add (new) ASPEED VIC device
+Subject: Re: [Qemu-arm] [PATCH v3 3/3] hw/arm: Add ASPEED AST2400 machine
 	model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -80,106 +80,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sRFEjDdIAzwm
+X-TUID: 0oxKD/sq/8UB
 
 On 5 March 2016 at 11:29, Andrew Jeffery <andrew@aj.id.au> wrote:
-> Implement a basic ASPEED VIC device model, enough to boot a Linux kernel
-> configured with aspeed_defconfig. The model implements the 'new'
-> (revised) register set and while the hardware exposes both the new and
-> legacy register sets, accesses to the legacy register set will not
-> be serviced (though the access will be logged).
+> Adds an AST2400 ARM machine[1], based around an AST2400 SOC containing an
+> ARM926 processor, ASPEED VIC and timer devices, and a 8250 UART. The new
+> machine type is functional enough to boot an aspeed_defconfig Linux
+> kernel to userspace.
+>
+> [1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
 >
 > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> ---
+> Since v2:
+>   * Implement a SOC model to move code out from the machine definition
+>   * Rework the machine to better use QOM
+>   * Include qemu/osdep.h
+>   * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
+>
+> Since v1:
+>
+>  hw/arm/Makefile.objs |   1 +
+>  hw/arm/ast2400.c     | 208 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 209 insertions(+)
+>  create mode 100644 hw/arm/ast2400.c
+>
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index a711e4d..f333b7f 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+>  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
+>  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+>  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+> +obj-$(CONFIG_ASPEED_SOC) += ast2400.o
+> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
+> new file mode 100644
+> index 0000000..74aca49
+> --- /dev/null
+> +++ b/hw/arm/ast2400.c
+> @@ -0,0 +1,208 @@
+> +/*
+> + * ASPEED AST2400
+> + *
+> + * Andrew Jeffery <andrew@aj.id.au>
+> + * Jeremy Kerr <jk@ozlabs.org>
+> + *
+> + * Copyright 2016 IBM Corp.
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "exec/address-spaces.h"
+> +#include "hw/arm/arm.h"
+> +#include "hw/boards.h"
+> +#include "hw/char/serial.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/intc/aspeed_vic.h"
+> +#include "hw/timer/aspeed_timer.h"
+> +#include "target-arm/cpu.h"
+> +#include "trace.h"
+> +
+> +#define AST2400_UART_5_BASE      0x00184000
+> +#define AST2400_IOMEM_SIZE       0x00200000
+> +#define AST2400_IOMEM_BASE       0x1E600000
+> +#define AST2400_VIC_BASE         0x1E6C0000
+> +#define AST2400_TIMER_BASE       0x1E782000
+> +#define AST2400_SDRAM_BASE       0x40000000
 
-> +static void aspeed_vic_write(void *opaque, hwaddr offset, uint64_t data,
-> +                             unsigned size)
+> +
+> +static void ast2400_soc_realize(DeviceState *dev, Error **errp)
 > +{
-> +    const bool high = !!(offset & 0x4);
-> +    hwaddr n_offset = (offset & ~0x4);
-> +    AspeedVICState *s = (AspeedVICState *)opaque;
+> +    int i;
+> +    AST2400SOCState *s = AST2400_SOC(dev);
+> +    Error *err = NULL;
 > +
-> +    if (offset < AVIC_NEW_BASE_OFFSET) {
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Ignoring write to legacy registers at 0x%"
-> +                      HWADDR_PRIx "[%u] <- 0x%" PRIx64 "\n", __func__, offset,
-> +                      size, data);
-> +        return;
-> +    }
-> +
-> +    n_offset -= AVIC_NEW_BASE_OFFSET;
-> +    trace_aspeed_vic_write(offset, size, data);
-> +
-> +    /* Given we have members using separate enable/clear registers, deposit64()
-> +     * isn't quite the tool for the job. Instead, relocate the incoming bits to
-> +     * the required bit offset based on the provided access address
-> +     */
-> +    if (high) {
-> +        data &= AVIC_H_MASK;
-> +        data <<= 32;
-> +    } else {
-> +        data &= AVIC_L_MASK;
-> +    }
-> +
-> +    switch (n_offset) {
-> +    case 0x18: /* Interrupt Selection */
-> +        /* Register has deposit64() semantics - overwrite requested 32 bits */
-> +        if (high) {
-> +            s->select &= AVIC_L_MASK;
-> +        } else {
-> +            s->select &= ((uint64_t) AVIC_H_MASK) << 32;
-> +        }
-> +        s->select |= data;
-> +        break;
-> +    case 0x20: /* Interrupt Enable */
-> +        s->enable |= data;
-> +        break;
-> +    case 0x28: /* Interrupt Enable Clear */
-> +        s->enable &= ~data;
-> +        break;
-> +    case 0x30: /* Software Interrupt */
-> +        qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
-> +                "IRQs requested: 0x%016" PRIx64 "\n", __func__, data);
-> +        break;
-> +    case 0x38: /* Software Interrupt Clear */
-> +        qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
-> +                "IRQs to be cleared: 0x%016" PRIx64 "\n", __func__, data);
-> +        break;
-> +    case 0x50: /* Interrupt Event */
-> +        /* Register has deposit64() semantics - overwrite the top four valid
-> +         * IRQ bits, as only the top four IRQs (GPIOs) can change their event
-> +         * type */
-> +        g_assert(high);
+> +    /* IO space */
+> +    memory_region_init_io(&s->iomem, NULL, &ast2400_soc_io_ops, NULL,
+> +            "ast2400.io", AST2400_IOMEM_SIZE);
+> +    memory_region_add_subregion(get_system_memory(), AST2400_IOMEM_BASE,
+> +            &s->iomem);
 
-Don't assert on conditions that can be triggered by a guest.
+You need to add this memory region with a priority set so it is
+lower priority than the VIC etc memory regions which it overlaps
+(use memory_region_add_subregion_overlap()).
 
-> +        s->event &= ~AVIC_EVENT_W_MASK;
-> +        s->event |= (data & AVIC_EVENT_W_MASK);
-> +        break;
-> +    case 0x58: /* Edge Triggered Interrupt Clear */
-> +        s->raw &= ~(data & ~s->sense);
-> +        break;
-> +    case 0x00: /* IRQ Status */
-> +    case 0x08: /* FIQ Status */
-> +    case 0x10: /* Raw Interrupt Status */
-> +    case 0x40: /* Interrupt Sensitivity */
-> +    case 0x48: /* Interrupt Both Edge Trigger Control */
-> +    case 0x60: /* Edge Triggered Interrupt Status */
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Write of read-only register with offset 0x%"
-> +                      HWADDR_PRIx "\n", __func__, offset);
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: Bad register at offset 0x%" HWADDR_PRIx "\n",
-> +                      __func__, offset);
-> +        break;
-> +    }
-> +    aspeed_vic_update(s);
+> +static void ast2400_soc_register_types(void)
+> +{
+> +    type_register_static(&ast2400_soc_type_info);
 > +}
+> +
+> +type_init(ast2400_soc_register_types)
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Your SoC device should be in its own source file, not sharing
+one with the board file.
+
+Otherwise I think this looks OK.
 
 thanks
 -- PMM

@@ -1,110 +1,122 @@
-Received: by 10.25.208.211 with SMTP id h202csp561378lfg;
-        Thu, 10 Mar 2016 09:28:57 -0800 (PST)
-X-Received: by 10.98.15.145 with SMTP id 17mr6545601pfp.19.1457630937842;
-        Thu, 10 Mar 2016 09:28:57 -0800 (PST)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u74si7262217pfi.144.2016.03.10.09.28.57;
-        Thu, 10 Mar 2016 09:28:57 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.25.208.211 with SMTP id h202csp977136lfg;
+        Fri, 11 Mar 2016 04:12:46 -0800 (PST)
+X-Received: by 10.140.195.203 with SMTP id q194mr735297qha.45.1457698366429;
+        Fri, 11 Mar 2016 04:12:46 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o40si8291676qge.54.2016.03.11.04.12.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 11 Mar 2016 04:12:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-	id S1752574AbcCJR24 (ORCPT <rfc822;tyler.baker@linaro.org>
-	+ 7 others); Thu, 10 Mar 2016 12:28:56 -0500
-Received: from mail-wm0-f44.google.com ([74.125.82.44]:34430 "EHLO
-	mail-wm0-f44.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-	with ESMTP id S1752137AbcCJR2y (ORCPT <rfc822;kvm@vger.kernel.org>);
-	Thu, 10 Mar 2016 12:28:54 -0500
-Received: by mail-wm0-f44.google.com with SMTP id p65so38034801wmp.1
-        for <kvm@vger.kernel.org>; Thu, 10 Mar 2016 09:28:54 -0800 (PST)
-DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=UGVo08zp4cmmX9L9coxpM34m4HSe+AkIA1tOhuSaVm8=;
-        b=GFVXSvbohY59uRLjT7mX9+Fo95pPisHiHV1a8k8K7h+VYFFAAevr5ZSzCYCl4/BILJ
-         56dvTWV+HxSgSbbtbm8uqEC76HtQm0Gs3CR49Z7EtdGpXU47hvhdjddZcTLm9EbxwxX6
-         j/JIlPum0wXshBsaGGd/PRdUDA62fhUv2OdmXIzQGs4T4agfZpRLGlmhQ7W/qUKNK1Cp
-         Ibsly9a8INXoFE94HuL5LExOZt3qs3yVUWl7GS6lqxISlvwphj5O+5ysmbJqgV615rvu
-         ErrGQeaFJ2RWehdytKo85Wey8nNcAJCZdLSelL4nF9TLC2DMgNebwDuI6Yiwe0caGIgj
-         Sw6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=UGVo08zp4cmmX9L9coxpM34m4HSe+AkIA1tOhuSaVm8=;
-        b=MwzQAbEp8hfPx25MOdLw8VHFuCfAguRRZWToC4CjFrh+3TqXN6rNiPcCgjEGN71M2H
-         DlJAVv9dIoD/c0A6sn5BkXBJUHtr3cQKhoLeHdLy29dOp49y6B8780GVugIdqN7Dga8d
-         Xwc6p9J40KQCcqMS6ajgmuPGpA2ms16eSP0ttGlw1ozDuQ4pKK9f+bpucUgaO93EdaL2
-         GnjiHMMP9lo86loPy9Y+uDndPZkqkM8FYt3mze6eAFXImAn9JLqGDxTqxIzyvFTloa6u
-         L5DNYB+ixPB6bBLDLU1Mh0dKS93xyvkyPixwQvigdvH9Ismav8AbxAsKvcpgg7oi8Ck4
-         YD5w==
-X-Gm-Message-State: AD7BkJKn3YMuE4+i69jWIB9ZY/CN02xqwsOpK9gdLErZMpPqY4BgqmYtFitMFFHKuS93hQ==
-X-Received: by 10.28.137.139 with SMTP id l133mr5644307wmd.1.1457630933374;
-        Thu, 10 Mar 2016 09:28:53 -0800 (PST)
-Received: from [192.168.10.150] (94-39-161-17.adsl-ull.clienti.tiscali.it. [94.39.161.17])
-        by smtp.googlemail.com with ESMTPSA id lz5sm4520559wjb.5.2016.03.10.09.28.51
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Thu, 10 Mar 2016 09:28:52 -0800 (PST)
-Subject: Re: [PATCH] Replaced get_ticks_per_sec calls with
- NANOSECONDS_PER_SECOND
-To:	rutuja shah <rutu.shah.26@gmail.com>, qemu-devel@nongnu.org
-References: <CAFE_T+SrAELFxgmuNPMt_FR9LwBNoNUwy-gVifuHNdrsWbhM-g@mail.gmail.com>
-Cc:	samuel.thibault@ens-lyon.org,
-	Stefan Hajnoczi <stefanha@redhat.com>, kwolf@redhat.com,
-	crosthwaite.peter@gmail.com, rth@twiddle.net, mst@redhat.com,
-	imammedo@redhat.com, peter.maydell@linaro.org, balrogg@gmail.com,
-	jsnow@redhat.com, alistair.francis@xilinx.com, agraf@suse.de,
-	jasowang@redhat.com, blauwirbel@gmail.co,
-	mark.cave-ayland@ilande.co.uk, kraxel@redhat.com,
-	cornelia.huck@de.ibm.com, borntraeger@de.ibm.com,
-	lcapitulino@redhat.com, armbru@redhat.com, qemu-block@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, kvm@vger.kernel.org
-From:	Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <56E1AED3.8080508@redhat.com>
-Date:	Thu, 10 Mar 2016 18:28:51 +0100
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54442 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aeLvx-00029f-Ta
+	for alex.bennee@linaro.org; Fri, 11 Mar 2016 07:12:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59954)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <borntraeger@de.ibm.com>) id 1aeLvv-00028Z-5A
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 07:12:43 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <borntraeger@de.ibm.com>) id 1aeLvr-0001Id-KG
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 07:12:43 -0500
+Received: from e06smtp14.uk.ibm.com ([195.75.94.110]:49529)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <borntraeger@de.ibm.com>) id 1aeLvr-0001Hi-9u
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 07:12:39 -0500
+Received: from localhost
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <borntraeger@de.ibm.com>;
+	Fri, 11 Mar 2016 12:12:37 -0000
+Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
+	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 11 Mar 2016 12:12:33 -0000
+X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
+X-IBM-MailFrom: borntraeger@de.ibm.com
+X-IBM-RcptTo: qemu-arm@nongnu.org; qemu-block@nongnu.org; qemu-devel@nongnu.org;
+	qemu-ppc@nongnu.org
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id 579C317D805A; 
+	Fri, 11 Mar 2016 12:13:02 +0000 (GMT)
+Received: from d06av03.portsmouth.uk.ibm.com (d06av03.portsmouth.uk.ibm.com
+	[9.149.37.213])
+	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u2BCCXBr6357306; Fri, 11 Mar 2016 12:12:33 GMT
+Received: from d06av03.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av03.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u2BCCUjo021670; Fri, 11 Mar 2016 05:12:32 -0700
+Received: from oc1450873852.ibm.com (sig-9-83-187-232.evts.uk.ibm.com
+	[9.83.187.232])
+	by d06av03.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u2BCCQbL021523; Fri, 11 Mar 2016 05:12:26 -0700
+To: Paolo Bonzini <pbonzini@redhat.com>, rutu.shah.26@gmail.com,
+	qemu-devel@nongnu.org
+References: <1457638209-14218-1-git-send-email-rutu.shah.26@gmail.com>
+	<56E2AFA1.5010201@de.ibm.com> <56E2B4EA.4050305@redhat.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Message-ID: <56E2B629.7080405@de.ibm.com>
+Date: Fri, 11 Mar 2016 13:12:25 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.6.0
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFE_T+SrAELFxgmuNPMt_FR9LwBNoNUwy-gVifuHNdrsWbhM-g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <56E2B4EA.4050305@redhat.com>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Sender:	kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List:	kvm@vger.kernel.org
-X-TUID: NCTX9x4/fBwh
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16031112-0017-0000-0000-000007926DFD
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.110
+Cc: peter.maydell@linaro.org, kvm@vger.kernel.org, mst@redhat.com,
+	jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+	lcapitulino@redhat.com, kraxel@redhat.com, qemu-block@nongnu.org,
+	agraf@suse.de, samuel.thibault@ens-lyon.org, balrogg@gmail.com,
+	alistair.francis@xilinx.com, qemu-arm@nongnu.org,
+	stefanha@redhat.com, cornelia.huck@de.ibm.com, jsnow@redhat.com,
+	rth@twiddle.net, kwolf@redhat.com, armbru@redhat.com,
+	blauwirbel@gmail.co, qemu-ppc@nongnu.org, imammedo@redhat.com
+Subject: Re: [Qemu-arm] [PATCH] Replacing (and removing) get_ticks_per_sec()
+ function with NANOSECONDS_PER_SECOND Signed-off-by: Rutuja Shah
+ <rutu.shah.26@gmail.com>
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UyL5TuJt9YmD
 
-
-
-On 10/03/2016 18:22, rutuja shah wrote:
-> Hi,
-> As there are no callers to get_ticks_per_sec() function, definition of
-> this function could be removed completely?
-
-Yes, please.
-
-> diff --git a/backends/baum.c b/backends/baum.c
-> index c11320e..20b49f2 100644
-> --- a/backends/baum.c
-> +++ b/backends/baum.c
-> @@ -336,7 +336,7 @@ static int baum_eat_packet(BaumDriverState *baum,
-> const uint8_t *buf, int len)
+On 03/11/2016 01:07 PM, Paolo Bonzini wrote:
 > 
->          /* Allow 100ms to complete the DisplayData packet */
->          timer_mod(baum->cellCount_timer,
-> qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-> -                       get_ticks_per_sec() / 10);
-> +                       NANOSECONDS_PER_SECOND / 10);
+> 
+> On 11/03/2016 12:44, Christian Borntraeger wrote:
+>>> -    s->tick_offset_vmstate = s->tick_offset + delta / get_ticks_per_sec();
+>>>> +    s->tick_offset_vmstate = s->tick_offset + delta / NANOSECONDS_PER_SECOND;
+>> [...]
+>>
+>> While technically correct, I do not like these changes. The interfaces expect "ticks",
+>> and the fact that this happens to be a nanosecond does not help regarding 
+>> readability.
+> 
+> Actually, I think usage of "tick" in this file is just for historical
+> reasons.
 
-There is a problem with your patch, probably because you're using gmail;
-lines are wrapped (for example the timer_mod line shows as two lines).
 
-You can use the smtp.gmail.com server and git-send-email to avoid this
-issue.
+So in essence the patch is ok and we should try to get rid of the "tick" word in future
+patches?
 
-Thanks,
+Christian
 
-Paolo

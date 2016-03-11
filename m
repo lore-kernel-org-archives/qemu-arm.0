@@ -1,59 +1,65 @@
-Received: by 10.25.208.211 with SMTP id h202csp1084876lfg;
-        Fri, 11 Mar 2016 07:28:20 -0800 (PST)
-X-Received: by 10.140.102.85 with SMTP id v79mr12649725qge.39.1457710100059;
-        Fri, 11 Mar 2016 07:28:20 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1280959lfg;
+        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
+X-Received: by 10.140.89.103 with SMTP id u94mr15291526qgd.3.1457739911910;
+        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s49si8967953qge.41.2016.03.11.07.28.19
+        by mx.google.com with ESMTPS id 110si10883793qgy.36.2016.03.11.15.45.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 07:28:20 -0800 (PST)
+        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55733 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@yandex.ru;
+       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
+Received: from localhost ([::1]:58280 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aeOzD-0001Zw-HT
-	for alex.bennee@linaro.org; Fri, 11 Mar 2016 10:28:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52430)
+	id 1aeWk3-0005xz-GA
+	for alex.bennee@linaro.org; Fri, 11 Mar 2016 18:45:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40112)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aeOiM-0004QS-Ls
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 10:10:56 -0500
+	(envelope-from <afarallax@yandex.ru>) id 1aeWk0-0005vF-Mw
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 18:45:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1aeOiJ-0000ef-5q
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 10:10:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45611)
+	(envelope-from <afarallax@yandex.ru>) id 1aeWjx-0001NH-7w
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 18:45:08 -0500
+Received: from forward18h.cmail.yandex.net ([87.250.230.160]:37855)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1aeOiI-0000eS-Pm; Fri, 11 Mar 2016 10:10:51 -0500
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id 51E8D1F579;
-	Fri, 11 Mar 2016 15:10:50 +0000 (UTC)
-Received: from redhat.com (vpn1-4-242.ams2.redhat.com [10.36.4.242])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id u2BFAkWg029497; Fri, 11 Mar 2016 10:10:47 -0500
-Date: Fri, 11 Mar 2016 17:10:46 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <1457708548-14093-54-git-send-email-mst@redhat.com>
-References: <1457708548-14093-1-git-send-email-mst@redhat.com>
+	(envelope-from <afarallax@yandex.ru>)
+	id 1aeWjw-0001Mn-Q0; Fri, 11 Mar 2016 18:45:05 -0500
+Received: from web28h.yandex.ru (web28h.yandex.ru [IPv6:2a02:6b8:0:f05::38])
+	by forward18h.cmail.yandex.net (Yandex) with ESMTP id 9B0592202C;
+	Sat, 12 Mar 2016 02:45:01 +0300 (MSK)
+Received: from web28h.yandex.ru (localhost [127.0.0.1])
+	by web28h.yandex.ru (Yandex) with ESMTP id E017822179F;
+	Sat, 12 Mar 2016 02:45:00 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1457739901; bh=iR4lUhJKsUcSJ0tPTqEEjxy0JhGPzQr1wgtsua+IjsI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=jnHeHvxyNGuuWfeWk59xUZrAnXWGxznqTbRj6QQZn9rFgOA7kfWC1dT4j9ZOiWFOK
+	gOsmDL5Hx6JVfKrgKGZHsPrAG4KCYbXh+SKmtvtVcD+rRPfvDAfcgKezIphBeZxpkZ
+	NKSiNQqYSd1HzERm+zXc12oT6Z8GE8Qd0w6Yn520=
+Received: by web28h.yandex.ru with HTTP;
+	Sat, 12 Mar 2016 02:44:59 +0300
+From: Sergey Sorokin <afarallax@yandex.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
+References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
+	<CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1457708548-14093-1-git-send-email-mst@redhat.com>
-X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Subject: [Qemu-arm] [PULL 53/53] fw-cfg: support writeable blobs
+Message-Id: <1022901457739899@web28h.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Sat, 12 Mar 2016 02:44:59 +0300
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 87.250.230.160
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Fix descriptor address masking
+	in ARM address translation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -67,316 +73,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ehFd4MTcuKNz
+X-TUID: pavGJwyV7S8v
 
-Useful to send guest data back to QEMU.
+11.03.2016, 11:41, "Peter Maydell" <peter.maydell@linaro.org>:
+>On 4 March 2016 at 23:04, Sergey Sorokin <afarallax@yandex.ru> wrote:
+>> There is a bug in ARM address translation regime with a long-descriptor
+>> format. On the descriptor reading its address is formed from an index
+>> which is a part of the input address. And on the first iteration this index
+>> is incorrectly masked with 'grainsize' mask. But it can be wider according
+>> to pseudo-code.
+>> On the other hand on the iterations other than first the descriptor address
+>> is formed from the previous level descriptor by masking with 'descaddrmask'
+>> value. It always clears just 12 lower bits, but it must clear 'grainsize'
+>> lower bits instead according to pseudo-code.
+>> The patch fixes both cases.
+>
+>This is pretty confusing to understand -- it might help if you
+>could give an example.
 
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- hw/lm32/lm32_hwsetup.h    |  2 +-
- include/hw/loader.h       |  4 ++--
- include/hw/nvram/fw_cfg.h |  3 ++-
- hw/arm/virt-acpi-build.c  |  2 +-
- hw/core/loader.c          | 19 ++++++++++++-------
- hw/i386/acpi-build.c      |  4 ++--
- hw/nvram/fw_cfg.c         | 36 ++++++++++++++++++++++++++++--------
- 7 files changed, 48 insertions(+), 22 deletions(-)
+According to documentation (ARMv8 ARM DDI 0487A.i J1.1.5:
+aarch64/translation/walk/AArch64.TranslationTableWalk):
 
-diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
-index 838754d..805b445 100644
---- a/hw/lm32/lm32_hwsetup.h
-+++ b/hw/lm32/lm32_hwsetup.h
-@@ -74,7 +74,7 @@ static inline void hwsetup_create_rom(HWSetup *hw,
-         hwaddr base)
- {
-     rom_add_blob("hwsetup", hw->data, TARGET_PAGE_SIZE,
--                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL);
-+                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, true);
- }
- 
- static inline void hwsetup_add_u8(HWSetup *hw, uint8_t u)
-diff --git a/include/hw/loader.h b/include/hw/loader.h
-index 0ba7808..7493a21 100644
---- a/include/hw/loader.h
-+++ b/include/hw/loader.h
-@@ -123,7 +123,7 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
-                            size_t max_len, hwaddr addr,
-                            const char *fw_file_name,
-                            FWCfgReadCallback fw_callback,
--                           void *callback_opaque);
-+                           void *callback_opaque, bool read_only);
- int rom_add_elf_program(const char *name, void *data, size_t datasize,
-                         size_t romsize, hwaddr addr);
- int rom_check_and_register_reset(void);
-@@ -135,7 +135,7 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
- #define rom_add_file_fixed(_f, _a, _i)          \
-     rom_add_file(_f, NULL, _a, _i, false, NULL)
- #define rom_add_blob_fixed(_f, _b, _l, _a)      \
--    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL)
-+    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, true)
- #define rom_add_file_mr(_f, _mr, _i)            \
-     rom_add_file(_f, NULL, 0, _i, false, mr)
- 
-diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-index 4315f4e..81de60e 100644
---- a/include/hw/nvram/fw_cfg.h
-+++ b/include/hw/nvram/fw_cfg.h
-@@ -174,6 +174,7 @@ void fw_cfg_add_file(FWCfgState *s, const char *filename, void *data,
-  * @callback_opaque: argument to be passed into callback function
-  * @data: pointer to start of item data
-  * @len: size of item data
-+ * @read_only: is file read only
-  *
-  * Add a new NAMED fw_cfg item as a raw "blob" of the given size. The data
-  * referenced by the starting pointer is only linked, NOT copied, into the
-@@ -189,7 +190,7 @@ void fw_cfg_add_file(FWCfgState *s, const char *filename, void *data,
-  */
- void fw_cfg_add_file_callback(FWCfgState *s, const char *filename,
-                               FWCfgReadCallback callback, void *callback_opaque,
--                              void *data, size_t len);
-+                              void *data, size_t len, bool read_only);
- 
- /**
-  * fw_cfg_modify_file:
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6a86b2c..366017d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -694,7 +694,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-                                        uint64_t max_size)
- {
-     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
--                        name, virt_acpi_build_update, build_state);
-+                        name, virt_acpi_build_update, build_state, true);
- }
- 
- static const VMStateDescription vmstate_virt_acpi_build = {
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 8e8031c..6c2b166 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -811,7 +811,7 @@ static void fw_cfg_resized(const char *id, uint64_t length, void *host)
-     }
- }
- 
--static void *rom_set_mr(Rom *rom, Object *owner, const char *name)
-+static void *rom_set_mr(Rom *rom, Object *owner, const char *name, bool ro)
- {
-     void *data;
- 
-@@ -820,7 +820,7 @@ static void *rom_set_mr(Rom *rom, Object *owner, const char *name)
-                                       rom->datasize, rom->romsize,
-                                       fw_cfg_resized,
-                                       &error_fatal);
--    memory_region_set_readonly(rom->mr, true);
-+    memory_region_set_readonly(rom->mr, ro);
-     vmstate_register_ram_global(rom->mr);
- 
-     data = memory_region_get_ram_ptr(rom->mr);
-@@ -891,7 +891,7 @@ int rom_add_file(const char *file, const char *fw_dir,
-         snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
- 
-         if ((!option_rom || mc->option_rom_has_mr) && mc->rom_file_has_mr) {
--            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
-+            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath, true);
-         } else {
-             data = rom->data;
-         }
-@@ -921,7 +921,8 @@ err:
- 
- MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
-                    size_t max_len, hwaddr addr, const char *fw_file_name,
--                   FWCfgReadCallback fw_callback, void *callback_opaque)
-+                   FWCfgReadCallback fw_callback, void *callback_opaque,
-+                   bool read_only)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-     Rom *rom;
-@@ -939,10 +940,14 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
-         char devpath[100];
-         void *data;
- 
--        snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
-+        if (read_only) {
-+            snprintf(devpath, sizeof(devpath), "/rom@%s", fw_file_name);
-+        } else {
-+            snprintf(devpath, sizeof(devpath), "/ram@%s", fw_file_name);
-+        }
- 
-         if (mc->rom_file_has_mr) {
--            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
-+            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath, read_only);
-             mr = rom->mr;
-         } else {
-             data = rom->data;
-@@ -950,7 +955,7 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
- 
-         fw_cfg_add_file_callback(fw_cfg, fw_file_name,
-                                  fw_callback, callback_opaque,
--                                 data, rom->datasize);
-+                                 data, rom->datasize, read_only);
-     }
-     return mr;
- }
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 0a5acb3..bc0abee 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2859,7 +2859,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-                                        uint64_t max_size)
- {
-     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
--                        name, acpi_build_update, build_state);
-+                        name, acpi_build_update, build_state, true);
- }
- 
- static const VMStateDescription vmstate_acpi_build = {
-@@ -2924,7 +2924,7 @@ void acpi_setup(void)
-         build_state->rsdp = g_memdup(tables.rsdp->data, rsdp_size);
-         fw_cfg_add_file_callback(pcms->fw_cfg, ACPI_BUILD_RSDP_FILE,
-                                  acpi_build_update, build_state,
--                                 build_state->rsdp, rsdp_size);
-+                                 build_state->rsdp, rsdp_size, true);
-         build_state->rsdp_mr = NULL;
-     } else {
-         build_state->rsdp = NULL;
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 7866248..4d0de9f 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -52,11 +52,13 @@
- #define FW_CFG_DMA_CTL_READ    0x02
- #define FW_CFG_DMA_CTL_SKIP    0x04
- #define FW_CFG_DMA_CTL_SELECT  0x08
-+#define FW_CFG_DMA_CTL_WRITE   0x10
- 
- #define FW_CFG_DMA_SIGNATURE 0x51454d5520434647ULL /* "QEMU CFG" */
- 
- typedef struct FWCfgEntry {
-     uint32_t len;
-+    bool allow_write;
-     uint8_t *data;
-     void *callback_opaque;
-     FWCfgReadCallback read_callback;
-@@ -321,7 +323,7 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
-     FWCfgDmaAccess dma;
-     int arch;
-     FWCfgEntry *e;
--    int read;
-+    int read = 0, write = 0;
-     dma_addr_t dma_addr;
- 
-     /* Reset the address before the next access */
-@@ -348,8 +350,13 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
- 
-     if (dma.control & FW_CFG_DMA_CTL_READ) {
-         read = 1;
-+        write = 0;
-+    } else if (dma.control & FW_CFG_DMA_CTL_WRITE) {
-+        read = 0;
-+        write = 1;
-     } else if (dma.control & FW_CFG_DMA_CTL_SKIP) {
-         read = 0;
-+        write = 0;
-     } else {
-         dma.length = 0;
-     }
-@@ -369,7 +376,9 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
-                     dma.control |= FW_CFG_DMA_CTL_ERROR;
-                 }
-             }
--
-+            if (write) {
-+                dma.control |= FW_CFG_DMA_CTL_ERROR;
-+            }
-         } else {
-             if (dma.length <= (e->len - s->cur_offset)) {
-                 len = dma.length;
-@@ -386,6 +395,13 @@ static void fw_cfg_dma_transfer(FWCfgState *s)
-                     dma.control |= FW_CFG_DMA_CTL_ERROR;
-                 }
-             }
-+            if (write) {
-+                if (!e->allow_write ||
-+                    dma_memory_read(s->dma_as, dma.address,
-+                                    &e->data[s->cur_offset], len)) {
-+                    dma.control |= FW_CFG_DMA_CTL_ERROR;
-+                }
-+            }
- 
-             s->cur_offset += len;
-         }
-@@ -581,7 +597,8 @@ static const VMStateDescription vmstate_fw_cfg = {
- static void fw_cfg_add_bytes_read_callback(FWCfgState *s, uint16_t key,
-                                            FWCfgReadCallback callback,
-                                            void *callback_opaque,
--                                           void *data, size_t len)
-+                                           void *data, size_t len,
-+                                           bool read_only)
- {
-     int arch = !!(key & FW_CFG_ARCH_LOCAL);
- 
-@@ -594,6 +611,7 @@ static void fw_cfg_add_bytes_read_callback(FWCfgState *s, uint16_t key,
-     s->entries[arch][key].len = (uint32_t)len;
-     s->entries[arch][key].read_callback = callback;
-     s->entries[arch][key].callback_opaque = callback_opaque;
-+    s->entries[arch][key].allow_write = !read_only;
- }
- 
- static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
-@@ -611,13 +629,14 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
-     s->entries[arch][key].data = data;
-     s->entries[arch][key].len = len;
-     s->entries[arch][key].callback_opaque = NULL;
-+    s->entries[arch][key].allow_write = false;
- 
-     return ptr;
- }
- 
- void fw_cfg_add_bytes(FWCfgState *s, uint16_t key, void *data, size_t len)
- {
--    fw_cfg_add_bytes_read_callback(s, key, NULL, NULL, data, len);
-+    fw_cfg_add_bytes_read_callback(s, key, NULL, NULL, data, len, true);
- }
- 
- void fw_cfg_add_string(FWCfgState *s, uint16_t key, const char *value)
-@@ -666,7 +685,7 @@ void fw_cfg_add_i64(FWCfgState *s, uint16_t key, uint64_t value)
- 
- void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
-                               FWCfgReadCallback callback, void *callback_opaque,
--                              void *data, size_t len)
-+                              void *data, size_t len, bool read_only)
- {
-     int i, index;
-     size_t dsize;
-@@ -691,7 +710,8 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
-     }
- 
-     fw_cfg_add_bytes_read_callback(s, FW_CFG_FILE_FIRST + index,
--                                   callback, callback_opaque, data, len);
-+                                   callback, callback_opaque, data, len,
-+                                   read_only);
- 
-     s->files->f[index].size   = cpu_to_be32(len);
-     s->files->f[index].select = cpu_to_be16(FW_CFG_FILE_FIRST + index);
-@@ -703,7 +723,7 @@ void fw_cfg_add_file_callback(FWCfgState *s,  const char *filename,
- void fw_cfg_add_file(FWCfgState *s,  const char *filename,
-                      void *data, size_t len)
- {
--    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len);
-+    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len, true);
- }
- 
- void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
-@@ -726,7 +746,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
-         }
-     }
-     /* add new one */
--    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len);
-+    fw_cfg_add_file_callback(s, filename, NULL, NULL, data, len, true);
-     return NULL;
- }
- 
--- 
-MST
+bits(48) index = ZeroExtend(inputaddr<addrselecttop:addrselectbottom>:'000');
+descaddr.paddress.physicaladdress = baseaddress OR index;
 
+For a first iteration of the descriptor reading:
+
+addrselecttop = inputsize - 1;
+addrselectbottom = (3-level)*stride + grainsize;
+
+Let's assume grainsize == 12 (so stride == 9), level == 1, inputsize == 43.
+Then index is
+inputaddr<42:30>:'000';
+
+But currently QEMU incorrecly masks an input address with descmask value:
+
+descmask = (1ULL << (stride + 3)) - 1;
+...
+descaddr |= (address >> (stride * (4 - level))) & descmask;
+descaddr &= ~7ULL;
+
+Then the index in my example in QEMU is:
+address<38:30>:'000';
+
+And my patch fixes this bug.
+
+>
+>Is this something that only causes problems for the "concatenated
+>translation tables at the initial level" case (which is only
+>possible for S2 tables) ?
+>
+>> Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
+>> ---
+>>  target-arm/helper.c | 29 ++++++++++-------------------
+>>  1 file changed, 10 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/target-arm/helper.c b/target-arm/helper.c
+>> index dec8e8b..b5f289c 100644
+>> --- a/target-arm/helper.c
+>> +++ b/target-arm/helper.c
+>> @@ -7243,7 +7243,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>>      uint32_t tg;
+>>      uint64_t ttbr;
+>>      int ttbr_select;
+>> -    hwaddr descaddr, descmask;
+>> +    hwaddr descaddr, indexmask, indexmask_grainsize;
+>>      uint32_t tableattrs;
+>>      target_ulong page_size;
+>>      uint32_t attrs;
+>> @@ -7431,28 +7431,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>>          }
+>>      }
+>>
+>> -    /* Clear the vaddr bits which aren't part of the within-region address,
+>> -     * so that we don't have to special case things when calculating the
+>> -     * first descriptor address.
+>> -     */
+>> -    if (va_size != inputsize) {
+>> -        address &= (1ULL << inputsize) - 1;
+>> -    }
+>> -
+>> -    descmask = (1ULL << (stride + 3)) - 1;
+>> +    indexmask_grainsize = (1ULL << (stride + 3)) - 1;
+>> +    indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
+>>
+>>      /* Now we can extract the actual base address from the TTBR */
+>>      descaddr = extract64(ttbr, 0, 48);
+>> -    descaddr &= ~((1ULL << (inputsize - (stride * (4 - level)))) - 1);
+>> +    descaddr &= ~indexmask;
+>>
+>> -    /* The address field in the descriptor goes up to bit 39 for ARMv7
+>> -     * but up to bit 47 for ARMv8.
+>> +    /* The address field in the descriptor goes up to bit 39 for AArch32
+>> +     * but up to bit 47 for AArch64.
+>>       */
+>
+>This is not correct -- the descriptor field widths are as the comment
+>states before your patch:
+> * up to bit 39 for ARMv7
+> * up to bit 47 for ARMv8 (whether AArch32 or AArch64)
+>
+>See the v8 ARM ARM AArch32.TranslationTableWalkLD pseudocode and in
+>particular note the width which it uses for AddressSizeFault checks.
+
+I see in ARMv8 ARM DDI 0487A.i J1.2.4
+aarch32/translation/walk/AArch32.TranslationTableWalkLD:
+
+Before 'repeat' cycle:
+baseaddress = baseregister<39:baselowerbound>:Zeros(baselowerbound);
+
+Inside the cycle:
+baseaddress = desc<39:grainsize>:Zeros(grainsize);
+
+We use 'descaddrmask' in QEMU to get this 'baseaddress' from a descriptor.
+So my patch is correct and fixes the bug.
+
+>
+>> -    if (arm_feature(env, ARM_FEATURE_V8)) {
+>> -        descaddrmask = 0xfffffffff000ULL;
+>> -    } else {
+>> -        descaddrmask = 0xfffffff000ULL;
+>> -    }
+>> +    descaddrmask = ((1ull << (va_size == 64 ? 48 : 40)) - 1) &
+>> +                   ~indexmask_grainsize;
+>
+>...so this part of the patch is wrong.
+>
+>>
+>>      /* Secure accesses start with the page table in secure memory and
+>>       * can be downgraded to non-secure at any step. Non-secure accesses
+>> @@ -7464,7 +7454,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>>          uint64_t descriptor;
+>>          bool nstable;
+>>
+>> -        descaddr |= (address >> (stride * (4 - level))) & descmask;
+>> +        descaddr |= (address >> (stride * (4 - level))) & indexmask;
+>>          descaddr &= ~7ULL;
+>>          nstable = extract32(tableattrs, 4, 1);
+>>          descriptor = arm_ldq_ptw(cs, descaddr, !nstable, mmu_idx, fsr, fi);
+>> @@ -7487,6 +7477,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>>               */
+>>              tableattrs |= extract64(descriptor, 59, 5);
+>>              level++;
+>> +            indexmask = indexmask_grainsize;
+>>              continue;
+>>          }
+>>          /* Block entry at level 1 or 2, or page entry at level 3.
+>> --
+>> 1.9.3
+>>
+>
+>thanks
+>-- PMM

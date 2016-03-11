@@ -1,183 +1,93 @@
-Received: by 10.25.208.211 with SMTP id h202csp899228lfg;
-        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
-X-Received: by 10.141.5.130 with SMTP id h124mr10673241qhd.89.1457687404529;
-        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k65si7778423qgf.53.2016.03.11.01.10.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 01:10:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.211 with SMTP id h202csp942833lfg;
+        Fri, 11 Mar 2016 03:01:55 -0800 (PST)
+X-Received: by 10.50.150.3 with SMTP id ue3mr264903igb.95.1457694114788;
+        Fri, 11 Mar 2016 03:01:54 -0800 (PST)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 78si687918pft.93.2016.03.11.03.01.54;
+        Fri, 11 Mar 2016 03:01:54 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:53515 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aeJ59-0002Yr-Vg
-	for alex.bennee@linaro.org; Fri, 11 Mar 2016 04:10:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35357)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeJ56-0002XW-9u
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:10:01 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeJ54-0000PM-Tq
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:10:00 -0500
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:32888)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aeJ54-0000PG-L6
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 04:09:58 -0500
-Received: by mail-vk0-x22e.google.com with SMTP id k1so127210355vkb.0
-	for <qemu-arm@nongnu.org>; Fri, 11 Mar 2016 01:09:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ukdSRVp2N5Nb4ERg7vi0jSHc0a1XE9lWFqLZ/L4Z3fY=;
-	b=MmgvwRtxFdwz9jSh3bMOpOtXY+TojlYybSyQjb/NTWvJxv73YZ9tjMUSzAS+hb1eRd
-	WeeBXfHcdC9FKR7kDMRGtHvPSlkgDwKfcA3rA1UJiMEw/+cRhMDxz2u+SphhwP12pkPT
-	Z7yMA6jzYXgTBPs2STXc2ha4+TNQzYHu+a4yY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ukdSRVp2N5Nb4ERg7vi0jSHc0a1XE9lWFqLZ/L4Z3fY=;
-	b=fi9iNUx3Fvl1UPu2DEa9XIV3rwCxUrrOoKKbxC98E88KgVGniU8n0PXH48CfOQUXHJ
-	LRNCmJYzIl6hRUtfYVRjhRRnSjKTErM2rrjHdNuZ1cyRXSHCfVQXSilJlTSAhHeGs2wZ
-	HnrELpE1HQ/86AxVThiru1bYsq17Qc0l1qzQJ6RveBsuEBWvZr3CeYAFLtB73nvEtKzW
-	Yr/Y9MTaaAsX49GTAaQaSNvhrWMwq6O2ED/IEe79foEl/dOm6sNnsE8Ajg28X6zLe8t5
-	AWJAzh5V682RHJibvaf4uDvaijDLl+Io3h6xWzv6n3nQTI414R5+MsGoN+oYZxk1wsGc
-	qDoQ==
-X-Gm-Message-State: AD7BkJIWfHO6c7F1KQ6cAEXDJ/CxAN6dEmgxyJTnup8sGOajLGgnpXTu7u7rBZ4ggwPD0tLtgNaYqoydU5ydBPfB
-X-Received: by 10.31.52.147 with SMTP id b141mr8639960vka.82.1457687398161;
-	Fri, 11 Mar 2016 01:09:58 -0800 (PST)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+	id S1751675AbcCKLBx (ORCPT <rfc822;tyler.baker@linaro.org>
+	+ 7 others); Fri, 11 Mar 2016 06:01:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51710 "EHLO mx1.redhat.com"
+	rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+	id S1751658AbcCKLBv (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Fri, 11 Mar 2016 06:01:51 -0500
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B381A2886;
+	Fri, 11 Mar 2016 11:01:50 +0000 (UTC)
+Received: from localhost (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u2BB1lAB019166;
+	Fri, 11 Mar 2016 06:01:48 -0500
+Date:	Fri, 11 Mar 2016 11:01:47 +0000
+From:	Stefan Hajnoczi <stefanha@redhat.com>
+To:	rutu.shah.26@gmail.com
+Cc:	qemu-devel@nongnu.org, kraxel@redhat.com,
+	samuel.thibault@ens-lyon.org, kwolf@redhat.com,
+	pbonzini@redhat.com, crosthwaite.peter@gmail.com, rth@twiddle.net,
+	mst@redhat.com, imammedo@redhat.com, peter.maydell@linaro.org,
+	balrogg@gmail.com, jsnow@redhat.com, alistair.francis@xilinx.com,
+	agraf@suse.de, jasowang@redhat.com, blauwirbel@gmail.co,
+	mark.cave-ayland@ilande.co.uk, cornelia.huck@de.ibm.com,
+	borntraeger@de.ibm.com, lcapitulino@redhat.com, armbru@redhat.com,
+	qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	kvm@vger.kernel.org
+Subject: Re: [PATCH] Replacing (and removing) get_ticks_per_sec() function
+ with NANOSECONDS_PER_SECOND Signed-off-by: Rutuja Shah
+ <rutu.shah.26@gmail.com>
+Message-ID: <20160311110147.GE6523@stefanha-x1.localdomain>
+References: <1457638209-14218-1-git-send-email-rutu.shah.26@gmail.com>
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Fri, 11 Mar 2016 01:09:38 -0800 (PST)
-In-Reply-To: <1457152177-19550-4-git-send-email-andrew@aj.id.au>
-References: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
-	<1457152177-19550-4-git-send-email-andrew@aj.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 11 Mar 2016 16:09:38 +0700
-Message-ID: <CAFEAcA9Jt6PhUU0T4vV6zU_8HOPGBVr+uzA-EZJzXW70Q4-k4g@mail.gmail.com>
-To: Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v3 3/3] hw/arm: Add ASPEED AST2400 machine
-	model
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0oxKD/sq/8UB
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="CGDBiGfvSTbxKZlW"
+Content-Disposition: inline
+In-Reply-To: <1457638209-14218-1-git-send-email-rutu.shah.26@gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Sender:	kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List:	kvm@vger.kernel.org
+X-TUID: cO76q8VzywR6
 
-On 5 March 2016 at 11:29, Andrew Jeffery <andrew@aj.id.au> wrote:
-> Adds an AST2400 ARM machine[1], based around an AST2400 SOC containing an
-> ARM926 processor, ASPEED VIC and timer devices, and a 8250 UART. The new
-> machine type is functional enough to boot an aspeed_defconfig Linux
-> kernel to userspace.
->
-> [1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
->
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> ---
-> Since v2:
->   * Implement a SOC model to move code out from the machine definition
->   * Rework the machine to better use QOM
->   * Include qemu/osdep.h
->   * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
->
-> Since v1:
->
->  hw/arm/Makefile.objs |   1 +
->  hw/arm/ast2400.c     | 208 +++++++++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 209 insertions(+)
->  create mode 100644 hw/arm/ast2400.c
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index a711e4d..f333b7f 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
->  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
-> +obj-$(CONFIG_ASPEED_SOC) += ast2400.o
-> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
-> new file mode 100644
-> index 0000000..74aca49
-> --- /dev/null
-> +++ b/hw/arm/ast2400.c
-> @@ -0,0 +1,208 @@
-> +/*
-> + * ASPEED AST2400
-> + *
-> + * Andrew Jeffery <andrew@aj.id.au>
-> + * Jeremy Kerr <jk@ozlabs.org>
-> + *
-> + * Copyright 2016 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "exec/address-spaces.h"
-> +#include "hw/arm/arm.h"
-> +#include "hw/boards.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/intc/aspeed_vic.h"
-> +#include "hw/timer/aspeed_timer.h"
-> +#include "target-arm/cpu.h"
-> +#include "trace.h"
-> +
-> +#define AST2400_UART_5_BASE      0x00184000
-> +#define AST2400_IOMEM_SIZE       0x00200000
-> +#define AST2400_IOMEM_BASE       0x1E600000
-> +#define AST2400_VIC_BASE         0x1E6C0000
-> +#define AST2400_TIMER_BASE       0x1E782000
-> +#define AST2400_SDRAM_BASE       0x40000000
 
-> +
-> +static void ast2400_soc_realize(DeviceState *dev, Error **errp)
-> +{
-> +    int i;
-> +    AST2400SOCState *s = AST2400_SOC(dev);
-> +    Error *err = NULL;
-> +
-> +    /* IO space */
-> +    memory_region_init_io(&s->iomem, NULL, &ast2400_soc_io_ops, NULL,
-> +            "ast2400.io", AST2400_IOMEM_SIZE);
-> +    memory_region_add_subregion(get_system_memory(), AST2400_IOMEM_BASE,
-> +            &s->iomem);
+--CGDBiGfvSTbxKZlW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-You need to add this memory region with a priority set so it is
-lower priority than the VIC etc memory regions which it overlaps
-(use memory_region_add_subregion_overlap()).
+On Fri, Mar 11, 2016 at 01:00:09AM +0530, rutu.shah.26@gmail.com wrote:
+> From: Rutuja Shah <rutu.shah.26@gmail.com>
 
-> +static void ast2400_soc_register_types(void)
-> +{
-> +    type_register_static(&ast2400_soc_type_info);
-> +}
-> +
-> +type_init(ast2400_soc_register_types)
+Hi Rutuja,
+In addition to the commit message/description issue that Eric raised,
+please use scripts/checkpatch.pl to check if your changes cause lines to
+exceed 80 characters.
 
-Your SoC device should be in its own source file, not sharing
-one with the board file.
+QEMU coding style is 80 characters per line max.  Patches should not
+introduce new violations in existing code that follows the coding style.
 
-Otherwise I think this looks OK.
+It might be simplest to address all 80 character line warnings from
+checkpatch.pl, even if the existing code already exceeded 80 characters.
 
-thanks
--- PMM
+Thanks,
+Stefan
+
+--CGDBiGfvSTbxKZlW
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJW4qWbAAoJEJykq7OBq3PIKGoIAK+RxOz8vJ9y4UJOFWIRCZQP
+pCdtBN5bb4wVxo6uv2rTwINmrCoHfmI+9OzwAO0FEXlgSgkYxx6vw3YMKccEKbTX
+Vcg8u0M62zuBrdZ3bV72CF78nCdrMwlKKZ+/OXhDqzSa80MzXasUocYV5gUnyUsc
+Rnevy9DysFVMji0a9bmEADikqFOyDp+EGeSMkWgVs3JbkhFTgVgQOzeBETqhrm46
+ICNAmHC1eebYcBp43w/FvZhzw8Pje77gI5vcal45kXzmzmGzFkSbIoqBtc6JlQTx
+YvsBz7Rx9inqhLDygMK21NuW54DMPH1mq/l4yb4Mbd+qDC0zIk1fwK3W7/IX/g8=
+=1Xcg
+-----END PGP SIGNATURE-----
+
+--CGDBiGfvSTbxKZlW--

@@ -1,70 +1,69 @@
-Received: by 10.25.208.211 with SMTP id h202csp1337731lfg;
-        Fri, 11 Mar 2016 19:07:01 -0800 (PST)
-X-Received: by 10.140.140.196 with SMTP id 187mr16542749qhm.29.1457752021006;
-        Fri, 11 Mar 2016 19:07:01 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1342186lfg;
+        Fri, 11 Mar 2016 19:24:39 -0800 (PST)
+X-Received: by 10.140.91.106 with SMTP id y97mr16226195qgd.20.1457753079722;
+        Fri, 11 Mar 2016 19:24:39 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s104si11551669qgd.51.2016.03.11.19.07.00
+        by mx.google.com with ESMTPS id 18si2602520qho.50.2016.03.11.19.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 19:07:00 -0800 (PST)
+        Fri, 11 Mar 2016 19:24:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:58729 helo=lists.gnu.org)
+Received: from localhost ([::1]:58770 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aeZtM-0005M5-AF
-	for alex.bennee@linaro.org; Fri, 11 Mar 2016 22:07:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39278)
+	id 1aeaAR-000207-8Q
+	for alex.bennee@linaro.org; Fri, 11 Mar 2016 22:24:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40777)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1aeZtJ-0005Lm-RA
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 22:06:58 -0500
+	(envelope-from <andrew@aj.id.au>) id 1aeaAO-0001zn-D6
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 22:24:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1aeZtE-0006er-Qz
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 22:06:57 -0500
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:41533
-	helo=homiemail-a17.g.dreamhost.com)
+	(envelope-from <andrew@aj.id.au>) id 1aeaAK-0001ax-CJ
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 22:24:36 -0500
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:40487
+	helo=homiemail-a19.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andrew@aj.id.au>)
-	id 1aeZtE-0006en-Fh; Fri, 11 Mar 2016 22:06:52 -0500
-Received: from homiemail-a17.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a17.g.dreamhost.com (Postfix) with ESMTP id 7EA322B206A;
-	Fri, 11 Mar 2016 19:06:49 -0800 (PST)
+	id 1aeaAK-0001aY-1K; Fri, 11 Mar 2016 22:24:32 -0500
+Received: from homiemail-a19.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTP id 4D92B604069;
+	Fri, 11 Mar 2016 19:24:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
 	:subject:from:reply-to:to:cc:date:in-reply-to:references
-	:content-type:mime-version; s=aj.id.au; bh=Bhw4hNdlRzkTvJQW/Fed6
-	BIFHn4=; b=cZnj6jIhJjm076980lkN77JSpDvoX3MPAx+0jgcQp9mjdRFIt2Oaf
-	bEvvgD4Cy0OmwrnSurnbpEUF0ltNkcSrY7aGAd0fIkSs8Ka90L5ycLXJirb9nsHX
-	9b1iYNicFypsHF4C6HGZps7F+0TLPWMNlTZva0SC28OnTUNX/zRHsM=
+	:content-type:mime-version; s=aj.id.au; bh=jdg8Qu2cty9a0vY4C22RW
+	u4R78U=; b=XQ//cYQKz7W6cPJU/uEVIqpjXpPAMKgqzfcOWjCFmDskSv+6yt29Z
+	S20bttRdsKMXBg9lEW/Kortgk/MNRPCGwyJbYoE2e6qKNX99Tp5od9GnPl1L9SIW
+	xiSyOJyoeVHCgswnS92zUy7lHgt+t30TpsENfAveLLKQCIO2TJjyY8=
 Received: from keelia (ppp203-122-213-247.static.internode.on.net
 	[203.122.213.247])
 	(using TLSv1 with cipher AES128-SHA (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a17.g.dreamhost.com (Postfix) with ESMTPSA id E028C2B2065; 
-	Fri, 11 Mar 2016 19:06:47 -0800 (PST)
-Message-ID: <1457751999.29435.14.camel@aj.id.au>
+	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTPSA id AE927604061; 
+	Fri, 11 Mar 2016 19:24:29 -0800 (PST)
+Message-ID: <1457753065.29435.16.camel@aj.id.au>
 From: Andrew Jeffery <andrew@aj.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 12 Mar 2016 13:36:39 +1030
-In-Reply-To: <CAFEAcA9PWRYEfTD5TfHJ5aqPgw53Oe145P9B6yDGKGJuSrP_Cg@mail.gmail.com>
+Date: Sat, 12 Mar 2016 13:54:25 +1030
+In-Reply-To: <CAFEAcA-sdB7cb=APLcFYKtDyfGjsk-3zYZq_=-9bRQ+s1JscEQ@mail.gmail.com>
 References: <1457152177-19550-1-git-send-email-andrew@aj.id.au>
-	<1457152177-19550-2-git-send-email-andrew@aj.id.au>
-	<CAFEAcA9PWRYEfTD5TfHJ5aqPgw53Oe145P9B6yDGKGJuSrP_Cg@mail.gmail.com>
+	<1457152177-19550-3-git-send-email-andrew@aj.id.au>
+	<CAFEAcA-sdB7cb=APLcFYKtDyfGjsk-3zYZq_=-9bRQ+s1JscEQ@mail.gmail.com>
 Organization: IBM OzLabs
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-3iaig4q8yeB/WKXMrPO5"
+	protocol="application/pgp-signature"; boundary="=-n53AUrpFhnOoxvliNoQz"
 X-Mailer: Evolution 3.16.5-1ubuntu3.1 
 Mime-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 69.163.253.7
 Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm <qemu-arm@nongnu.org>,
 	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v3 1/3] hw/timer: Add ASPEED timer device
+Subject: Re: [Qemu-arm] [PATCH v3 2/3] hw/intc: Add (new) ASPEED VIC device
 	model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
@@ -80,97 +79,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uZdkURHuWKDG
+X-TUID: 0IUirM5GvTlV
 
 
---=-3iaig4q8yeB/WKXMrPO5
+--=-n53AUrpFhnOoxvliNoQz
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, 2016-03-11 at 15:56 +0700, Peter Maydell wrote:
+On Fri, 2016-03-11 at 16:03 +0700, Peter Maydell wrote:
 > On 5 March 2016 at 11:29, Andrew Jeffery <andrew@aj.id.au> wrote:
-> > Implement basic AST2400 timer functionality: Up to 8 timers can
-> > independently be configured, enabled, reset and disabled. A couple of
-> > hardware features are not implemented, namely clock value matching and
-> > pulse generation, but the implementation is enough to boot the Linux
-> > kernel configured with aspeed_defconfig.
+> > Implement a basic ASPEED VIC device model, enough to boot a Linux kerne=
+l
+> > configured with aspeed_defconfig. The model implements the 'new'
+> > (revised) register set and while the hardware exposes both the new and
+> > legacy register sets, accesses to the legacy register set will not
+> > be serviced (though the access will be logged).
 > >=20
 > > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> > ---
-> > +/**
-> > + * Avoid mutual references between AspeedTimerCtrlState and AspeedTime=
-r
-> > + * structs, as it's a waste of memory and it makes implementing
-> > + * VMStateDescription a little clunky.
 >=20
-> Not sure what you have in mind with the reference to VMStateDescription
-> here. The vmstate struct only has to list the fields which contain
-> actual volatile state -- things like backreference pointers to other
-> structs aren't volatile state so don't appear.
-
-Good point, looks like I was over-thinking things. I'll remove the part
-referencing VMStateDescription.
-
->=20
-> > The ptimer BH callback needs to know
-> > + * whether a specific AspeedTimer is enabled, but this information is =
-held in
-> > + * AspeedTimerCtrlState. So, provide a helper to hoist ourselves from =
-an
-> > + * arbitrary AspeedTimer to AspeedTimerCtrlState.
-> > + */
-> > +static inline struct AspeedTimerCtrlState *timer_to_ctrl(AspeedTimer *=
-t)
+> > +static void aspeed_vic_write(void *opaque, hwaddr offset, uint64_t dat=
+a,
+> > +                             unsigned size)
 > > +{
-> > +    AspeedTimer (*timers)[] =3D (void *)t - (t->id * sizeof(*t));
-> > +    return container_of(timers, AspeedTimerCtrlState, timers);
-> > +}
->=20
-> > +static void aspeed_timer_expire(void *opaque)
-> > +{
-> > +    AspeedTimer *t =3D opaque;
+> > +    const bool high =3D !!(offset & 0x4);
+> > +    hwaddr n_offset =3D (offset & ~0x4);
+> > +    AspeedVICState *s =3D (AspeedVICState *)opaque;
 > > +
-> > +    /* Only support interrupts on match values of zero for the moment =
-- this is
-> > +     * sufficient to boot an aspeed_defconfig Linux kernel. Non-zero m=
-atch
-> > +     * values need some further consideration given the current ptimer=
- API.
-> > +     * Maybe run multiple ptimers?
-> > +     */
->=20
-> See hw/timer/a9gtimer.c for an example of a timer with a comparator
-> that can fire when the timer hits an arbitrary comparator value
-> (it doesn't use ptimers but the principle is the same -- you set
-> the timer to fire at the next interesting event, and then in the
-> timer-fired handler you reset the timer to fire whenever the next
-> event after that is, if any.) In any case this is probably ok for now.
-
-Thanks for the pointer. I'll leave that change to a future patch given
-it looks like this is converging on being acceptable, though I'll
-expand the comment to cover a9gtimer.
-
->=20
-> > +    bool match =3D !(t->match[0] && t->match[1]);
-> > +    bool interrupt =3D timer_overflow_interrupt(t) || match;
-> > +    if (timer_enabled(t) && interrupt) {
-> > +        t->level =3D !t->level;
-> > +        qemu_set_irq(t->irq, t->level);
+> > +    if (offset < AVIC_NEW_BASE_OFFSET) {
+> > +        qemu_log_mask(LOG_UNIMP,
+> > +                      "%s: Ignoring write to legacy registers at 0x%"
+> > +                      HWADDR_PRIx "[%u] <- 0x%" PRIx64 "\n", __func__,=
+ offset,
+> > +                      size, data);
+> > +        return;
 > > +    }
-> > +}
 > > +
+> > +    n_offset -=3D AVIC_NEW_BASE_OFFSET;
+> > +    trace_aspeed_vic_write(offset, size, data);
+> > +
+> > +    /* Given we have members using separate enable/clear registers, de=
+posit64()
+> > +     * isn't quite the tool for the job. Instead, relocate the incomin=
+g bits to
+> > +     * the required bit offset based on the provided access address
+> > +     */
+> > +    if (high) {
+> > +        data &=3D AVIC_H_MASK;
+> > +        data <<=3D 32;
+> > +    } else {
+> > +        data &=3D AVIC_L_MASK;
+> > +    }
+> > +
+> > +    switch (n_offset) {
+> > +    case 0x18: /* Interrupt Selection */
+> > +        /* Register has deposit64() semantics - overwrite requested 32=
+ bits */
+> > +        if (high) {
+> > +            s->select &=3D AVIC_L_MASK;
+> > +        } else {
+> > +            s->select &=3D ((uint64_t) AVIC_H_MASK) << 32;
+> > +        }
+> > +        s->select |=3D data;
+> > +        break;
+> > +    case 0x20: /* Interrupt Enable */
+> > +        s->enable |=3D data;
+> > +        break;
+> > +    case 0x28: /* Interrupt Enable Clear */
+> > +        s->enable &=3D ~data;
+> > +        break;
+> > +    case 0x30: /* Software Interrupt */
+> > +        qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable.=
+ "
+> > +                "IRQs requested: 0x%016" PRIx64 "\n", __func__, data);
+> > +        break;
+> > +    case 0x38: /* Software Interrupt Clear */
+> > +        qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable.=
+ "
+> > +                "IRQs to be cleared: 0x%016" PRIx64 "\n", __func__, da=
+ta);
+> > +        break;
+> > +    case 0x50: /* Interrupt Event */
+> > +        /* Register has deposit64() semantics - overwrite the top four=
+ valid
+> > +         * IRQ bits, as only the top four IRQs (GPIOs) can change thei=
+r event
+> > +         * type */
+> > +        g_assert(high);
+>=20
+> Don't assert on conditions that can be triggered by a guest.
+
+Good point, I'll change it to qemu_log_mask(LOG_GUEST_ERROR, ...)
+
+>=20
+> > +        s->event &=3D ~AVIC_EVENT_W_MASK;
+> > +        s->event |=3D (data & AVIC_EVENT_W_MASK);
+> > +        break;
+> > +    case 0x58: /* Edge Triggered Interrupt Clear */
+> > +        s->raw &=3D ~(data & ~s->sense);
+> > +        break;
+> > +    case 0x00: /* IRQ Status */
+> > +    case 0x08: /* FIQ Status */
+> > +    case 0x10: /* Raw Interrupt Status */
+> > +    case 0x40: /* Interrupt Sensitivity */
+> > +    case 0x48: /* Interrupt Both Edge Trigger Control */
+> > +    case 0x60: /* Edge Triggered Interrupt Status */
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: Write of read-only register with offset 0x%=
+"
+> > +                      HWADDR_PRIx "\n", __func__, offset);
+> > +        break;
+> > +
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: Bad register at offset 0x%" HWADDR_PRIx "\n=
+",
+> > +                      __func__, offset);
+> > +        break;
+> > +    }
+> > +    aspeed_vic_update(s);
+> > +}
 >=20
 > Otherwise
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Thanks!
+Thanks,
 
 Andrew
-
 >=20
 > thanks
 > -- PMM
---=-3iaig4q8yeB/WKXMrPO5
+--=-n53AUrpFhnOoxvliNoQz
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
@@ -178,20 +216,20 @@ Content-Transfer-Encoding: 7bit
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAABCgAGBQJW44e/AAoJEJ0dnzgO5LT5pTkP/33uM4LVn5ep6VFeq/8Xa05W
-UM5yYDca6VGe2lZHiUYpUg9/j0f2FB8Sel7xg6ymdcWpiYvWXAWkxVTLgmDn794o
-oyHyUCGcrf7uD5QJwtQQJNBr7rrmJnUTxAZYR2+xFe5bLRbzllMgrh5gV7eBeYnQ
-LyqA5yO7cR0wOoQAMkwFyi45JFKjiqaVKE+TW9zkQ/c3aDnnccJ6eDMGRrxILenU
-AKSqTi0PSwTvkuu4fNZ0ObRuDcH6X+i7uwUfmk8eDZLoA1G26lZUe74OW0zGdt4p
-X4hKuKjs0QxKr4jSUrNwBCoDRQcSseOsltyUPbf9BohBAbBeCvpauC1EbAEyevLy
-JCVIKDS0Wfj8kebEfUviTJoQ/D7ooSbwFx0gkigzVw4iuQ5hsdykB1iw4vxgXQVP
-A3O+8ykSgUv7rrehp6/W4kWnnBaHL1Oc4moBtDzWILEPa1xtN3sAKpD2Tdn9Y+6m
-JxXtecJdk09eOkN+PwBSdy+IYIkNG7oXY42nDvK4KvComezJG60wbOdpDrWZE5hM
-Km+BxyHtN9VaXbY8sfV5vilDnT1u7FjIUyA5pSvWRpIdz9mbaAPfiyTo/O8rZl9j
-sGmSgAL52q5JIn+eeoAd/WnLFyqxXCDLQ3Uv2/K2QgZkqQzH/JOQimwFT7JYDsZx
-c4bSAB3/z60eT4Tdvm/Z
-=uCeF
+iQIcBAABCgAGBQJW44vpAAoJEJ0dnzgO5LT5xmcP/0DVz/YhVcUOT3TSHrOPE/eP
+98gLb8DxJ3iZm80hRRVkk6Xu6bw2GlpCKXW4mpL2hy+3ZQDDw+UAy7atbHJ+QCeb
+TgOhulOfVS/VcctsDIqTdMaA9vohsijRHgpomcCaw6NDQfAkK4FRqKagZAvSlOsh
+ICs1ULfZClIrAxlSoYhoy+vc402w9qXtsvdrWVu+nbRBagKILDzQl+mYsnmdjdeW
+3LzXXvw8E5mmVBy1LGBgF8QBX5rEMkyO9yCsWufzqpsWCIGlfPei70M330Bes9S5
+pbFILW+7hGz6SgFfJfblv1b3O26zomSoerwNDZXZMWiMElIJU5RRdjfaAMoJ++DW
+LhZU9JOGd5j8GqjyPQsHWngrl5AIhrgAMCBgIe3PstCESMdzPEZKHvv4IIunrQVk
+mheRiehlzf7YuQy9vJWkxSSqRQCll3Md02P2flrtTdlJodlZSD8p7Y4PnkYn58Ek
+navjeTYlzp5WDHQxn5HintcUc03ktHNo6jm/wGazJhgreb1v0xKNyuwLJSEb1Whc
+G83mqYonIKst0eFbFlQYJ0Rl18SPJBaUCau2GhKrKv75+Cqg2MsKCMSPO7trGfys
+BHH0ZWcDV/RFlWkDJMALGb3Dw5zY8iu/zsq8XEVKKn20uyXa/E2Zk+mSakcPb5XZ
+YTc4vs7xa3D3fMwm7kFS
+=GxxF
 -----END PGP SIGNATURE-----
 
---=-3iaig4q8yeB/WKXMrPO5--
+--=-n53AUrpFhnOoxvliNoQz--
 

@@ -1,62 +1,68 @@
-Received: by 10.25.208.211 with SMTP id h202csp1280959lfg;
-        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
-X-Received: by 10.140.89.103 with SMTP id u94mr15291526qgd.3.1457739911910;
-        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
+Received: by 10.25.208.211 with SMTP id h202csp1290962lfg;
+        Fri, 11 Mar 2016 16:18:56 -0800 (PST)
+X-Received: by 10.140.157.7 with SMTP id d7mr16414831qhd.17.1457741936338;
+        Fri, 11 Mar 2016 16:18:56 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 110si10883793qgy.36.2016.03.11.15.45.11
+        by mx.google.com with ESMTPS id f68si10972155qge.89.2016.03.11.16.18.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Mar 2016 15:45:11 -0800 (PST)
+        Fri, 11 Mar 2016 16:18:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@yandex.ru;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:58280 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:58351 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aeWk3-0005xz-GA
-	for alex.bennee@linaro.org; Fri, 11 Mar 2016 18:45:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40112)
+	id 1aeXGh-00069P-RC
+	for alex.bennee@linaro.org; Fri, 11 Mar 2016 19:18:55 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44507)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1aeWk0-0005vF-Mw
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 18:45:09 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1aeXGe-00069A-SA
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 19:18:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1aeWjx-0001NH-7w
-	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 18:45:08 -0500
-Received: from forward18h.cmail.yandex.net ([87.250.230.160]:37855)
+	(envelope-from <peter.maydell@linaro.org>) id 1aeXGd-0001HX-Gg
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 19:18:52 -0500
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:36655)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1aeWjw-0001Mn-Q0; Fri, 11 Mar 2016 18:45:05 -0500
-Received: from web28h.yandex.ru (web28h.yandex.ru [IPv6:2a02:6b8:0:f05::38])
-	by forward18h.cmail.yandex.net (Yandex) with ESMTP id 9B0592202C;
-	Sat, 12 Mar 2016 02:45:01 +0300 (MSK)
-Received: from web28h.yandex.ru (localhost [127.0.0.1])
-	by web28h.yandex.ru (Yandex) with ESMTP id E017822179F;
-	Sat, 12 Mar 2016 02:45:00 +0300 (MSK)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1457739901; bh=iR4lUhJKsUcSJ0tPTqEEjxy0JhGPzQr1wgtsua+IjsI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=jnHeHvxyNGuuWfeWk59xUZrAnXWGxznqTbRj6QQZn9rFgOA7kfWC1dT4j9ZOiWFOK
-	gOsmDL5Hx6JVfKrgKGZHsPrAG4KCYbXh+SKmtvtVcD+rRPfvDAfcgKezIphBeZxpkZ
-	NKSiNQqYSd1HzERm+zXc12oT6Z8GE8Qd0w6Yn520=
-Received: by web28h.yandex.ru with HTTP;
-	Sat, 12 Mar 2016 02:44:59 +0300
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1aeXGd-0001HQ-Am
+	for qemu-arm@nongnu.org; Fri, 11 Mar 2016 19:18:51 -0500
+Received: by mail-vk0-x233.google.com with SMTP id c3so153195052vkb.3
+	for <qemu-arm@nongnu.org>; Fri, 11 Mar 2016 16:18:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=BMqtG0KLH6mz9eUJCXd3AOoLRcpYmWyLuhjjct0Z758=;
+	b=gUTFQ8ETQDxgVw/Bo3mofkzTtBaDodhPIWFxJqOyI57B/cAo5t0RTbW177KT4CzF4E
+	SDbtTl5JpwNab84StVdQtDSbkCp8FzBQBL+fHwq+JWmZFgvRKcFBn0ZAwH3dvgplJsHu
+	3vo8jJbUXUsfKqK0xQ8cH9+uQRSFIZQkaVzUU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=BMqtG0KLH6mz9eUJCXd3AOoLRcpYmWyLuhjjct0Z758=;
+	b=LSSa6YUkXP2nhdYrHIKIO9j26Fmm1LCH5Xo6yqChnD42blogFPwIQkH5Zv7vlWbYI0
+	ChKLTFZyVsYrleKk77cU0AcSVQjLFHPM8F8LL2IsH8nMEPpdci0w7VLqv4JMHmR1LGJ+
+	eBcqZBWePQsbJ/+Ce7f141oKyXqWTGJHEVH/s0eFPuerLNbhN3A+N5goZC2K5cUzQjho
+	u5j1C4QqxotBStifwbhKppg9VooelS+ZeD2fKB/oHCZBM4p3i6ySWD5ZNLYAa8LZ5RSm
+	glI0Go6avnrifQktuJkguYTqR5Xz90LTOPMfpkMJIOVEIV+UqaANZRXp9JAAFwg5FBek
+	IqPA==
+X-Gm-Message-State: AD7BkJLQ/9ngQaMeV6gpiJ00R+o5EW3ns9bl7plrMmzGFvJZDTK1iEfOL0/kOCHiWAX+IKCxIQOxtinZn77Zzz3D
+X-Received: by 10.31.8.17 with SMTP id 17mr11304398vki.139.1457741930678; Fri,
+	11 Mar 2016 16:18:50 -0800 (PST)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Fri, 11 Mar 2016 16:18:30 -0800 (PST)
+In-Reply-To: <1022901457739899@web28h.yandex.ru>
 References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
 	<CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
-MIME-Version: 1.0
-Message-Id: <1022901457739899@web28h.yandex.ru>
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Sat, 12 Mar 2016 02:44:59 +0300
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain
+	<1022901457739899@web28h.yandex.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 12 Mar 2016 07:18:30 +0700
+Message-ID: <CAFEAcA_+MD=Cf26wZ_C9AH_NbRm_Lim492ugWUx3WqEzNrN8eQ@mail.gmail.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 87.250.230.160
+X-Received-From: 2607:f8b0:400c:c05::233
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [Qemu-arm] [PATCH] target-arm: Fix descriptor address masking
 	in ARM address translation
@@ -73,155 +79,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pavGJwyV7S8v
+X-TUID: j0m3a3pjJqRM
 
-11.03.2016, 11:41, "Peter Maydell" <peter.maydell@linaro.org>:
->On 4 March 2016 at 23:04, Sergey Sorokin <afarallax@yandex.ru> wrote:
->> There is a bug in ARM address translation regime with a long-descriptor
->> format. On the descriptor reading its address is formed from an index
->> which is a part of the input address. And on the first iteration this index
->> is incorrectly masked with 'grainsize' mask. But it can be wider according
->> to pseudo-code.
->> On the other hand on the iterations other than first the descriptor address
->> is formed from the previous level descriptor by masking with 'descaddrmask'
->> value. It always clears just 12 lower bits, but it must clear 'grainsize'
->> lower bits instead according to pseudo-code.
->> The patch fixes both cases.
->
->This is pretty confusing to understand -- it might help if you
->could give an example.
-
-According to documentation (ARMv8 ARM DDI 0487A.i J1.1.5:
-aarch64/translation/walk/AArch64.TranslationTableWalk):
-
-bits(48) index = ZeroExtend(inputaddr<addrselecttop:addrselectbottom>:'000');
-descaddr.paddress.physicaladdress = baseaddress OR index;
-
-For a first iteration of the descriptor reading:
-
-addrselecttop = inputsize - 1;
-addrselectbottom = (3-level)*stride + grainsize;
-
-Let's assume grainsize == 12 (so stride == 9), level == 1, inputsize == 43.
-Then index is
-inputaddr<42:30>:'000';
-
-But currently QEMU incorrecly masks an input address with descmask value:
-
-descmask = (1ULL << (stride + 3)) - 1;
-...
-descaddr |= (address >> (stride * (4 - level))) & descmask;
-descaddr &= ~7ULL;
-
-Then the index in my example in QEMU is:
-address<38:30>:'000';
-
-And my patch fixes this bug.
-
->
->Is this something that only causes problems for the "concatenated
->translation tables at the initial level" case (which is only
->possible for S2 tables) ?
->
->> Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
->> ---
->>  target-arm/helper.c | 29 ++++++++++-------------------
->>  1 file changed, 10 insertions(+), 19 deletions(-)
+On 12 March 2016 at 06:44, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> 11.03.2016, 11:41, "Peter Maydell" <peter.maydell@linaro.org>:
+>>On 4 March 2016 at 23:04, Sergey Sorokin <afarallax@yandex.ru> wrote:
+>>> There is a bug in ARM address translation regime with a long-descriptor
+>>> format. On the descriptor reading its address is formed from an index
+>>> which is a part of the input address. And on the first iteration this index
+>>> is incorrectly masked with 'grainsize' mask. But it can be wider according
+>>> to pseudo-code.
+>>> On the other hand on the iterations other than first the descriptor address
+>>> is formed from the previous level descriptor by masking with 'descaddrmask'
+>>> value. It always clears just 12 lower bits, but it must clear 'grainsize'
+>>> lower bits instead according to pseudo-code.
+>>> The patch fixes both cases.
 >>
->> diff --git a/target-arm/helper.c b/target-arm/helper.c
->> index dec8e8b..b5f289c 100644
->> --- a/target-arm/helper.c
->> +++ b/target-arm/helper.c
->> @@ -7243,7 +7243,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->>      uint32_t tg;
->>      uint64_t ttbr;
->>      int ttbr_select;
->> -    hwaddr descaddr, descmask;
->> +    hwaddr descaddr, indexmask, indexmask_grainsize;
->>      uint32_t tableattrs;
->>      target_ulong page_size;
->>      uint32_t attrs;
->> @@ -7431,28 +7431,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->>          }
->>      }
->>
->> -    /* Clear the vaddr bits which aren't part of the within-region address,
->> -     * so that we don't have to special case things when calculating the
->> -     * first descriptor address.
->> -     */
->> -    if (va_size != inputsize) {
->> -        address &= (1ULL << inputsize) - 1;
->> -    }
->> -
->> -    descmask = (1ULL << (stride + 3)) - 1;
->> +    indexmask_grainsize = (1ULL << (stride + 3)) - 1;
->> +    indexmask = (1ULL << (inputsize - (stride * (4 - level)))) - 1;
->>
->>      /* Now we can extract the actual base address from the TTBR */
->>      descaddr = extract64(ttbr, 0, 48);
->> -    descaddr &= ~((1ULL << (inputsize - (stride * (4 - level)))) - 1);
->> +    descaddr &= ~indexmask;
->>
->> -    /* The address field in the descriptor goes up to bit 39 for ARMv7
->> -     * but up to bit 47 for ARMv8.
->> +    /* The address field in the descriptor goes up to bit 39 for AArch32
->> +     * but up to bit 47 for AArch64.
->>       */
+>>This is pretty confusing to understand -- it might help if you
+>>could give an example.
 >
->This is not correct -- the descriptor field widths are as the comment
->states before your patch:
-> * up to bit 39 for ARMv7
-> * up to bit 47 for ARMv8 (whether AArch32 or AArch64)
+> According to documentation (ARMv8 ARM DDI 0487A.i J1.1.5:
+> aarch64/translation/walk/AArch64.TranslationTableWalk):
 >
->See the v8 ARM ARM AArch32.TranslationTableWalkLD pseudocode and in
->particular note the width which it uses for AddressSizeFault checks.
+> bits(48) index = ZeroExtend(inputaddr<addrselecttop:addrselectbottom>:'000');
+> descaddr.paddress.physicaladdress = baseaddress OR index;
+>
+> For a first iteration of the descriptor reading:
+>
+> addrselecttop = inputsize - 1;
+> addrselectbottom = (3-level)*stride + grainsize;
+>
+> Let's assume grainsize == 12 (so stride == 9), level == 1, inputsize == 43.
+> Then index is
+> inputaddr<42:30>:'000';
 
-I see in ARMv8 ARM DDI 0487A.i J1.2.4
-aarch32/translation/walk/AArch32.TranslationTableWalkLD:
+...which is more than 9 bits, so when does this happen?
+I think this can only happen for the Stage-2 only
+concatenated translation-tables case...
 
-Before 'repeat' cycle:
-baseaddress = baseregister<39:baselowerbound>:Zeros(baselowerbound);
+(I agree we have a bug here, I'm just trying to work out when it
+can trigger; if it's only possible for S2 page tables then it's
+not a visible bug yet because no CPUs have EL2 support enabled.)
 
-Inside the cycle:
-baseaddress = desc<39:grainsize>:Zeros(grainsize);
-
-We use 'descaddrmask' in QEMU to get this 'baseaddress' from a descriptor.
-So my patch is correct and fixes the bug.
-
->
->> -    if (arm_feature(env, ARM_FEATURE_V8)) {
->> -        descaddrmask = 0xfffffffff000ULL;
->> -    } else {
->> -        descaddrmask = 0xfffffff000ULL;
->> -    }
->> +    descaddrmask = ((1ull << (va_size == 64 ? 48 : 40)) - 1) &
->> +                   ~indexmask_grainsize;
->
->...so this part of the patch is wrong.
->
+>>> -    /* The address field in the descriptor goes up to bit 39 for ARMv7
+>>> -     * but up to bit 47 for ARMv8.
+>>> +    /* The address field in the descriptor goes up to bit 39 for AArch32
+>>> +     * but up to bit 47 for AArch64.
+>>>       */
 >>
->>      /* Secure accesses start with the page table in secure memory and
->>       * can be downgraded to non-secure at any step. Non-secure accesses
->> @@ -7464,7 +7454,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->>          uint64_t descriptor;
->>          bool nstable;
+>>This is not correct -- the descriptor field widths are as the comment
+>>states before your patch:
+>> * up to bit 39 for ARMv7
+>> * up to bit 47 for ARMv8 (whether AArch32 or AArch64)
 >>
->> -        descaddr |= (address >> (stride * (4 - level))) & descmask;
->> +        descaddr |= (address >> (stride * (4 - level))) & indexmask;
->>          descaddr &= ~7ULL;
->>          nstable = extract32(tableattrs, 4, 1);
->>          descriptor = arm_ldq_ptw(cs, descaddr, !nstable, mmu_idx, fsr, fi);
->> @@ -7487,6 +7477,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->>               */
->>              tableattrs |= extract64(descriptor, 59, 5);
->>              level++;
->> +            indexmask = indexmask_grainsize;
->>              continue;
->>          }
->>          /* Block entry at level 1 or 2, or page entry at level 3.
->> --
->> 1.9.3
->>
+>>See the v8 ARM ARM AArch32.TranslationTableWalkLD pseudocode and in
+>>particular note the width which it uses for AddressSizeFault checks.
 >
->thanks
->-- PMM
+> I see in ARMv8 ARM DDI 0487A.i J1.2.4
+> aarch32/translation/walk/AArch32.TranslationTableWalkLD:
+>
+> Before 'repeat' cycle:
+> baseaddress = baseregister<39:baselowerbound>:Zeros(baselowerbound);
+>
+> Inside the cycle:
+> baseaddress = desc<39:grainsize>:Zeros(grainsize);
+
+Yes, but this happens only after we have done the check:
+
+  if !IsZero(desc<47:40>) then
+     [take the AddressSize fault]
+
+which tells us that the descriptor field really is up to bit 48.
+We just haven't yet implemented the check in QEMU which will
+generate the AddressSize fault if the top bits are nonzero.
+(In contrast, in ARMv7 there really are only 40 bits there.)
+
+If you want to implement the AddressSize checks that's fine,
+but otherwise please leave this bit of the code alone.
+
+thanks
+-- PMM

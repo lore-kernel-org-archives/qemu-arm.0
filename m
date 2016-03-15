@@ -1,74 +1,74 @@
-Received: by 10.25.208.211 with SMTP id h202csp859624lfg;
-        Tue, 15 Mar 2016 16:09:52 -0700 (PDT)
-X-Received: by 10.140.25.161 with SMTP id 30mr878703qgt.73.1458083392776;
-        Tue, 15 Mar 2016 16:09:52 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp914687lfg;
+        Tue, 15 Mar 2016 19:09:52 -0700 (PDT)
+X-Received: by 10.55.71.76 with SMTP id u73mr1796103qka.6.1458094191997;
+        Tue, 15 Mar 2016 19:09:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g3si166692qkb.15.2016.03.15.16.09.52
+        by mx.google.com with ESMTPS id c68si1149093qge.29.2016.03.15.19.09.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 16:09:52 -0700 (PDT)
+        Tue, 15 Mar 2016 19:09:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:52013 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:52614 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1afy64-0004AB-81
-	for alex.bennee@linaro.org; Tue, 15 Mar 2016 19:09:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36639)
+	id 1ag0uF-0000i4-ED
+	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:09:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44519)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1afy61-00049r-Ev
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 19:09:50 -0400
+	(envelope-from <thomas.hanson@linaro.org>) id 1afvZU-0003qs-2O
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 16:28:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1afy5y-0005Sn-8L
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 19:09:49 -0400
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:50293
-	helo=homiemail-a100.g.dreamhost.com)
+	(envelope-from <thomas.hanson@linaro.org>) id 1afvZS-0005Or-Sv
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 16:28:04 -0400
+Received: from mail-ob0-x232.google.com ([2607:f8b0:4003:c01::232]:32842)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1afy5y-0005Sf-0C; Tue, 15 Mar 2016 19:09:46 -0400
-Received: from homiemail-a100.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a100.g.dreamhost.com (Postfix) with ESMTP id 7ACC531A073; 
-	Tue, 15 Mar 2016 16:09:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
-	:subject:from:reply-to:to:cc:date:in-reply-to:references
-	:content-type:mime-version; s=aj.id.au; bh=fbl0Zsb+JsmTThspaRJCP
-	keeH/0=; b=iwBaTN97Op4IM+cYLcRS3i7BDt9zXKMR2lHq0WbqcMqcreGLswJsn
-	xq2rVfMYCOFVGDrHg+Ngr5aufCALu+igZM4LQSg+y+ktIzThlpgBAFj/VywpACVC
-	Fz4mdH99cQ3Ivh1TgDAHJKh0KLGuEGMyi0n7TRPEGP29954Amtw/Vo=
-Received: from keelia (unknown [203.0.153.9])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a100.g.dreamhost.com (Postfix) with ESMTPSA id D8DB631A070;
-	Tue, 15 Mar 2016 16:09:42 -0700 (PDT)
-Message-ID: <1458083378.29435.38.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Jeremy Kerr
-	<jk@ozlabs.org>, Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Mar 2016 09:39:38 +1030
-In-Reply-To: <56E7E31B.20703@kaod.org>
-References: <1457928832-31026-1-git-send-email-andrew@aj.id.au>
-	<56E790E2.7040006@ozlabs.org> <1458018080.29435.20.camel@aj.id.au>
-	<56E7E31B.20703@kaod.org>
-Organization: IBM OzLabs
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-qLURuG+dcgsAnKkSHi0E"
-X-Mailer: Evolution 3.16.5-1ubuntu3.1 
-Mime-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 69.163.253.7
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v4 0/4] Add ASPEED AST2400 SoC and OpenPower
-	BMC machine
+	(envelope-from <thomas.hanson@linaro.org>) id 1afvZS-0005Ol-N2
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 16:28:02 -0400
+Received: by mail-ob0-x232.google.com with SMTP id fz5so30113440obc.0
+	for <qemu-arm@nongnu.org>; Tue, 15 Mar 2016 13:28:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc; bh=H2/lU8CL0Jjd5pW55MOzbZnagQfSVLOPESZPF14ypn4=;
+	b=hq4+F/6mI59dT0w7SXGJEN1mOdNaG+M2BBcizp/6kzMzRGzTar7LN/cCIF8WLeeYXR
+	fGZbrFW7srun4EGjUuega2Ek3w8FrstJU3ZF3ug2C9FAjuI5uCKlj1jB81D4VBmOlq4c
+	tIfnFE3TxRXddds12DfcQ7Q3aUpw55HydLLG4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc;
+	bh=H2/lU8CL0Jjd5pW55MOzbZnagQfSVLOPESZPF14ypn4=;
+	b=fVb3/vOZO4kOKFhea3vZXNrLIaKEbHbN0de99UPFEICOTzMeeYQZCI246nH6A44vTn
+	1TYxrm7BL/cmrkUN179cv+tXXoUQFF3boq2pith3/alftQI8qUM3l6W4wPBixrtecD56
+	8OVUT1ApxPVL3PJabQ9SQ1eu27wKULHgsK6uwgH4t6zn9VpOeK7h/Wa7gYu+240kWNPH
+	ueqNcB21SOCZPwmZD9qAgJUDcB4DmmFYHS5G9QwzjHTxhl1rN8FJALqCt090VZsDGlEH
+	OeW7xYFQOjJRYkdcPOmNaFzuzjWMAIfn2a8mRHQ+9GBp4pd8cnxzsa74SoAjQACX4RMC
+	8+EQ==
+X-Gm-Message-State: AD7BkJJKQv9ugUoY19DdhzNlp7d384dlWTKsJLS7hn4SWlQ+HGcm2ZI3rsaqXoEJi1GuWlXOWKTs3cXvaoFpHAKR
+MIME-Version: 1.0
+X-Received: by 10.60.50.98 with SMTP id b2mr5605oeo.38.1458073682206; Tue, 15
+	Mar 2016 13:28:02 -0700 (PDT)
+Received: by 10.157.6.36 with HTTP; Tue, 15 Mar 2016 13:28:02 -0700 (PDT)
+In-Reply-To: <1458061009-7733-1-git-send-email-peter.maydell@linaro.org>
+References: <1458061009-7733-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 15 Mar 2016 14:28:02 -0600
+Message-ID: <CAA8zJ3AxgAAKzHr_sALQQ1VT5fTHRNrxot4--VREtZ2-6kK92w@mail.gmail.com>
+From: Thomas Hanson <thomas.hanson@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c01::232
+X-Mailman-Approved-At: Tue, 15 Mar 2016 22:09:50 -0400
+Cc: patches@linaro.org, hitmoon <zxq_yx_007@163.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Subject: Re: [Qemu-arm] [PATCH] sd: Fix "info qtree" on boards with SD cards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-Reply-To: andrew@aj.id.au
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
@@ -79,88 +79,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0Asv5dA0rLLV
+X-TUID: cu53cwe16eCz
 
+The patch looks good.
 
---=-qLURuG+dcgsAnKkSHi0E
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Would it also be good to update bus_add_child() so that it NULL-checks
+its "bus" parameter before dereferencing it?
 
-On Tue, 2016-03-15 at 11:25 +0100, C=C3=A9dric Le Goater wrote:
-> On 03/15/2016 06:01 AM, Andrew Jeffery wrote:
-> > On Tue, 2016-03-15 at 12:34 +0800, Jeremy Kerr wrote:
-> > > Hi Andrew,
-> > >=20
-> > > > This patch series models enough of the ASPEED AST2400 ARM9 SoC[0] t=
-o
-> > > > boot an aspeed_defconfig Linux kernel[1][2]. Specifically, the seri=
-es
-> > > > implements the ASPEED timer and VIC devices, integrates them into a=
-n
-> > > > AST2400 SoC and exposes it all through a new opbmc2400 machine. The
-> > > > device model patches only partially implement the hardware features=
- of
-> > > > the timer and VIC, again mostly just enough to boot Linux.
-> > >=20
-> > > Awesome! Nice to have these patches escaping the lab :)
-> > >=20
-> > > In terms of naming suggestions: I think this depends on what we're
-> > > looking to emulate here. I see two options:
-> > >=20
-> > > The qemu platform becomes a "reference" for OpenPOWER bmc hardware, b=
-ut
-> > > doesn't necessarily align with an actual machine. In that case,
-> > > something generic like opbmc- would make sense.
-> > >=20
-> > > On the other hand, if we'd like to create qemu platforms that represe=
-nt
-> > > actual machines (eg, the OpenPOWER "palmetto" machine), then
-> > > -bmc would seem more appropriate. In this case, the machine
-> > > name would be palmetto-bmc. No need to include the SoC name in that, =
-as
-> > > it's defined by the hardware implementation.
-> > >=20
-> > > I think the latter option may be more generally useful.
-> >=20
-> > Okay, agreed, I'll rework the change to use palmetto-bmc for the
-> > machine name. Thanks for the feedback.
->=20
-> Yes. palmetto-bmc is good choice. Palmetto is a reference machine
-> for OpenPOWER.=20
->=20
-> May be change also :
->=20
-> +    mc->desc =3D "OpenPOWER AST2400 BMC (ARM926EJ-S)";
->=20
-> to reflect that choice.
+-Tom
 
-Will do!
-
-Thanks,
-
-Andrew
---=-qLURuG+dcgsAnKkSHi0E
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAABCgAGBQJW6JYyAAoJEJ0dnzgO5LT52jUP/j0AdlifQILay2t/FyCy/PVQ
-CcX8Ks5ecLVUMMZ3tLwYDZX/VMbQSkT38O9yDllAxhMlIqPNI8N5FrWTZUg/BAk1
-umlTNKBo6t9OKZjKB+otk96OUQquG/WzlljISFhXtx6pWmUkxNMm0kWKcwjumBcr
-xnEBv2V0D1gs56AKIvfDTOp0BFRnMDaeDo1z5BxSyDGMSDHbzT7fAb2Lxnvi4PhE
-lsMd858KOm1cL+EdXOlsG7ozhbrf3n6nn5efA+JQyGDXQGSpCNjUod+R87CxTzxb
-Vg4mBkRsHB7hRDtX/adlQghe//eoFvYTHKj2JYEQOdsAIJTvAX41J2soRMqDqe/u
-BxGBUaKfsiDNYG45uUfsvtdvevy0pYroJzycdTHeTezx+Ewv8PNHkb4cLcKJx4Rd
-Y1G2rluechKNLfu9JjN9tT2jf4ycmm13W2W0TLIQQ2X+5Sk1iBeN8Osbyhfmhcb1
-xHI44IMzaoyIg0sxrPiH8XmtZMUhRL61cE9mQXLwefxv5Urt65o9pyhwkQodvheN
-Y9ICYu2PdJg5H9jyguE2h1SacJqzAbAcvj9SDuh2DlRHW3dcCW4raPLIptZrWA6r
-5Hrd0hUGwjIyDBgLzaQcBrfChWu/4Srd76Zz8P6Mc6qVIix8qoX/+XgdO8I0YAsp
-kiFyV2gPaN/XiXUagSB6
-=A9jg
------END PGP SIGNATURE-----
-
---=-qLURuG+dcgsAnKkSHi0E--
-
+On 15 March 2016 at 10:56, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The SD card object is not a SysBusDevice, so don't create it with
+> qdev_create() if we're not assigning it to a specific bus; use
+> object_new() instead.
+>
+> This was causing 'info qtree' to segfault on boards with SD cards,
+> because qdev_create(NULL, TYPE_FOO) puts the created object on the
+> system bus, and then we may try to run functions like sysbus_dev_print()
+> on it, which fail when casting the object to SysBusDevice.
+>
+> (This is the same mistake that we made with the NAND device
+> and fixed in commit 6749695eaaf346c1.)
+>
+> Reported-by: hitmoon <zxq_yx_007@163.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I assume that using qdev_create() for non-SysBus devices is
+> OK if we are passing in a specific bus pointer, because we do
+> this already for various things including PCI devices. The
+> various "properly QOMified" uses of TYPE_SD_CARD do that; only
+> this sd_init() function for the legacy uses doesn't.
+> ---
+>  hw/sd/sd.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index 00c320d..1568057 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -563,17 +563,19 @@ static const VMStateDescription sd_vmstate = {
+>  /* Legacy initialization function for use by non-qdevified callers */
+>  SDState *sd_init(BlockBackend *blk, bool is_spi)
+>  {
+> +    Object *obj;
+>      DeviceState *dev;
+>      Error *err = NULL;
+>
+> -    dev = qdev_create(NULL, TYPE_SD_CARD);
+> +    obj = object_new(TYPE_SD_CARD);
+> +    dev = DEVICE(obj);
+>      qdev_prop_set_drive(dev, "drive", blk, &err);
+>      if (err) {
+>          error_report("sd_init failed: %s", error_get_pretty(err));
+>          return NULL;
+>      }
+>      qdev_prop_set_bit(dev, "spi", is_spi);
+> -    object_property_set_bool(OBJECT(dev), true, "realized", &err);
+> +    object_property_set_bool(obj, true, "realized", &err);
+>      if (err) {
+>          error_report("sd_init failed: %s", error_get_pretty(err));
+>          return NULL;
+> --
+> 1.9.1
+>
+>

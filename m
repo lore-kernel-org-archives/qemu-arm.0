@@ -1,198 +1,188 @@
-Received: by 10.25.208.211 with SMTP id h202csp2182821lfg;
-        Sun, 13 Mar 2016 21:14:25 -0700 (PDT)
-X-Received: by 10.55.197.76 with SMTP id p73mr27579933qki.75.1457928859971;
-        Sun, 13 Mar 2016 21:14:19 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p62si19893877qhp.103.2016.03.13.21.14.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 13 Mar 2016 21:14:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.211 with SMTP id h202csp490087lfg;
+        Tue, 15 Mar 2016 03:08:27 -0700 (PDT)
+X-Received: by 10.66.66.198 with SMTP id h6mr44312975pat.112.1458036507452;
+        Tue, 15 Mar 2016 03:08:27 -0700 (PDT)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id h7si4716092pat.9.2016.03.15.03.08.27;
+        Tue, 15 Mar 2016 03:08:27 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:38931 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1afJtb-0002I2-9J
-	for alex.bennee@linaro.org; Mon, 14 Mar 2016 00:14:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44175)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1afJtX-0002CW-0i
-	for qemu-arm@nongnu.org; Mon, 14 Mar 2016 00:14:16 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1afJtV-0000W3-Cp
-	for qemu-arm@nongnu.org; Mon, 14 Mar 2016 00:14:14 -0400
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:35519
-	helo=homiemail-a17.g.dreamhost.com)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1afJtV-0000Vu-3J; Mon, 14 Mar 2016 00:14:13 -0400
-Received: from homiemail-a17.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a17.g.dreamhost.com (Postfix) with ESMTP id AC7612B206A;
-	Sun, 13 Mar 2016 21:14:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
-	:subject:date:message-id:in-reply-to:references; s=aj.id.au; bh=
-	qix8eGimlGhlaADc4GHUIxVOjI8=; b=YsAA4iPTu0CgaYBv9Hh/f0PYBOS5un+B
-	rObAGws5L5EvgTV/neiSHsY2+qiNnNkb2gE4bxqp7gtj7qCKY/qz3XnRSl4qhR6K
-	/ZJIrVn3D4YH+41FA1oiZPRKJxqlNMeg6ykZx0h7GJ8n6oy7Ab+phtoLO6/l/IXx
-	JDVWhJ7C5y8=
-Received: from keelia.au.ibm.com (ppp203-122-213-247.static.internode.on.net
-	[203.122.213.247])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a17.g.dreamhost.com (Postfix) with ESMTPSA id 0D7262B2065; 
-	Sun, 13 Mar 2016 21:14:10 -0700 (PDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Mar 2016 14:43:52 +1030
-Message-Id: <1457928832-31026-5-git-send-email-andrew@aj.id.au>
-X-Mailer: git-send-email 2.5.0
-In-Reply-To: <1457928832-31026-1-git-send-email-andrew@aj.id.au>
-References: <1457928832-31026-1-git-send-email-andrew@aj.id.au>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 69.163.253.7
-Cc: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Jeremy Kerr <jk@ozlabs.org>
-Subject: [Qemu-arm] [PATCH v4 4/4] hw/arm: Add opbmc2400,
-	an AST2400 OpenPOWER BMC machine
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nyGPDQLNNDV4
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+	id S965154AbcCOKIZ (ORCPT <rfc822;tyler.baker@linaro.org>
+	+ 7 others); Tue, 15 Mar 2016 06:08:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47800 "EHLO mx1.redhat.com"
+	rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+	id S964916AbcCOKIX (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Tue, 15 Mar 2016 06:08:23 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 70834F9E86;
+	Tue, 15 Mar 2016 10:08:17 +0000 (UTC)
+Received: from [10.36.112.35] (ovpn-112-35.ams2.redhat.com [10.36.112.35])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u2FA88T7009056;
+	Tue, 15 Mar 2016 06:08:09 -0400
+Subject: Re: [Qemu-ppc] [PATCH] Replacing (and removing) get_ticks_per_sec()
+ function with NANOSECONDS_PER_SECOND Signed-off-by: Rutuja Shah
+ <rutu.shah.26@gmail.com>
+To:	rutu.shah.26@gmail.com, qemu-devel@nongnu.org
+References: <1457638209-14218-1-git-send-email-rutu.shah.26@gmail.com>
+Cc:	peter.maydell@linaro.org, kvm@vger.kernel.org, mst@redhat.com,
+	jasowang@redhat.com, lcapitulino@redhat.com, kraxel@redhat.com,
+	qemu-block@nongnu.org, borntraeger@de.ibm.com,
+	samuel.thibault@ens-lyon.org, balrogg@gmail.com,
+	alistair.francis@xilinx.com, qemu-arm@nongnu.org,
+	stefanha@redhat.com, pbonzini@redhat.com, cornelia.huck@de.ibm.com,
+	jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+	crosthwaite.peter@gmail.com, armbru@redhat.com,
+	blauwirbel@gmail.co, qemu-ppc@nongnu.org, imammedo@redhat.com
+From:	Laurent Vivier <lvivier@redhat.com>
+Message-ID: <56E7DF08.2050400@redhat.com>
+Date:	Tue, 15 Mar 2016 11:08:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.6.0
+MIME-Version: 1.0
+In-Reply-To: <1457638209-14218-1-git-send-email-rutu.shah.26@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Tue, 15 Mar 2016 10:08:17 +0000 (UTC)
+Sender:	kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List:	kvm@vger.kernel.org
+X-TUID: hVCFDmcdDBBJ
 
-The new machine, opbmc2400, is a thin layer over the AST2400
-ARM926-based SoC[1]. Between the minimal machine and the current SoC
-implementation there is enough functionality to boot an aspeed_defconfig
-Linux kernel to userspace.
 
-The machine name is a pragmatic choice, as there doesn't appear to be a
-common, formal name for the hardware configuration that isn't generic
-(e.g. 'BMC' or 'AST2400').
 
-[1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
+On 10/03/2016 20:30, rutu.shah.26@gmail.com wrote:
+> From: Rutuja Shah <rutu.shah.26@gmail.com>
+> 
+> ---
+>  audio/audio.c             |  2 +-
+>  audio/noaudio.c           |  4 ++--
+>  audio/spiceaudio.c        |  2 +-
+>  audio/wavaudio.c          |  2 +-
+>  backends/baum.c           |  2 +-
+>  block/qed.c               |  2 +-
+>  cpus.c                    |  6 +++---
+>  hw/acpi/core.c            |  4 ++--
+>  hw/arm/omap1.c            | 14 +++++++-------
+>  hw/arm/spitz.c            |  2 +-
+>  hw/arm/stellaris.c        |  2 +-
+>  hw/arm/strongarm.c        |  2 +-
+>  hw/audio/adlib.c          |  2 +-
+>  hw/audio/sb16.c           |  4 ++--
+>  hw/block/fdc.c            |  2 +-
+>  hw/block/pflash_cfi02.c   |  4 ++--
+>  hw/bt/hci-csr.c           |  4 ++--
+>  hw/char/cadence_uart.c    |  4 ++--
+>  hw/char/serial.c          |  6 +++---
+>  hw/display/vga.c          |  6 +++---
+>  hw/dma/rc4030.c           |  2 +-
+>  hw/ide/core.c             |  2 +-
+>  hw/input/hid.c            |  2 +-
+>  hw/input/tsc2005.c        |  2 +-
+>  hw/input/tsc210x.c        |  2 +-
+>  hw/intc/i8259.c           |  2 +-
+>  hw/misc/arm_sysctl.c      |  2 +-
+>  hw/misc/macio/cuda.c      | 16 ++++++++--------
+>  hw/misc/macio/macio.c     |  2 +-
+>  hw/net/dp8393x.c          |  2 +-
+>  hw/ppc/ppc.c              | 18 +++++++++---------
+>  hw/ppc/ppc405_uc.c        |  4 ++--
+>  hw/ppc/ppc_booke.c        |  2 +-
+>  hw/sd/sdhci-internal.h    |  2 +-
+>  hw/sparc64/sun4u.c        |  4 ++--
+>  hw/timer/i8254.c          |  4 ++--
+>  hw/timer/i8254_common.c   |  6 +++---
+>  hw/timer/mc146818rtc.c    |  6 +++---
+>  hw/timer/omap_gptimer.c   |  2 +-
+>  hw/timer/omap_synctimer.c |  2 +-
+>  hw/timer/pl031.c          | 10 +++++-----
+>  hw/timer/pxa2xx_timer.c   | 14 +++++++-------
+>  hw/usb/hcd-ehci.c         |  4 ++--
+>  hw/usb/hcd-musb.c         |  2 +-
+>  hw/usb/hcd-ohci.c         | 10 +++++-----
+>  hw/usb/hcd-uhci.c         |  6 +++---
+>  hw/usb/tusb6010.c         |  4 ++--
+>  hw/watchdog/wdt_diag288.c |  2 +-
+>  hw/watchdog/wdt_ib700.c   |  2 +-
+>  include/hw/acpi/acpi.h    |  2 +-
+>  include/qemu/timer.h      |  9 ++-------
+>  monitor.c                 |  4 ++--
+>  target-ppc/kvm.c          |  4 ++--
+>  53 files changed, 114 insertions(+), 119 deletions(-)
+> 
+> diff --git a/audio/audio.c b/audio/audio.c
+> index e841532..8c2c495 100644
+> --- a/audio/audio.c
+> +++ b/audio/audio.c
+> @@ -1870,7 +1870,7 @@ static void audio_init (void)
+>          conf.period.ticks = 1;
+>      } else {
+>          conf.period.ticks =
+> -            muldiv64 (1, get_ticks_per_sec (), conf.period.hertz);
+> +            muldiv64 (1, NANOSECONDS_PER_SECOND, conf.period.hertz);
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
-Since v3:
+This can be replaced by:
 
-  * Split the machine from the SoC implementation
+	conf.period.ticks = NANOSECONDS_PER_SECOND / conf.period.hertz;
 
-I've gone the route of inventing a machine name as it seemed there are very few
-cases of appending _soc to the chip name or beginning a machine name with mach_
-as an outlet for a lack of creativity. It seems only fair to leave the 'ast2400'
-namespace to the SoC itself, as it's unlikely that the OpenPOWER BMC is the
-SoC's only consumer. I feel that 'opbmc2400' is a reasonable choice; it's not
-overly long, and appending the SoC's marketing number leaves the door open to
-future OpenPOWER BMC machines with e.g. the AST2500 series SoC.
+>      }
+>  
+>      e = qemu_add_vm_change_state_handler (audio_vm_change_state_handler, s);
+...
+> diff --git a/hw/usb/hcd-musb.c b/hw/usb/hcd-musb.c
+> index cd23197..27d9d0b 100644
+> --- a/hw/usb/hcd-musb.c
+> +++ b/hw/usb/hcd-musb.c
+> @@ -564,7 +564,7 @@ static void musb_schedule_cb(USBPort *port, USBPacket *packey)
+>          ep->intv_timer[dir] = timer_new_ns(QEMU_CLOCK_VIRTUAL, musb_cb_tick, ep);
+>  
+>      timer_mod(ep->intv_timer[dir], qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> -                   muldiv64(timeout, get_ticks_per_sec(), 8000));
+> +                   muldiv64(timeout, NANOSECONDS_PER_SECOND, 8000));
 
-Since v2:
-  * Implement a SOC model to move code out from the machine definition
-  * Rework the machine to better use QOM
-  * Include qemu/osdep.h
-  * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
+Can be replaced by: "timeout * 125000"
 
- hw/arm/Makefile.objs |  2 +-
- hw/arm/opbmc2400.c   | 66 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 67 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/opbmc2400.c
+(I don't think the value of  NANOSECONDS_PER_SECOND will change in the
+future ;) ).
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index f333b7f..7b80460 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -16,4 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
- obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
- obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
- obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
--obj-$(CONFIG_ASPEED_SOC) += ast2400.o
-+obj-$(CONFIG_ASPEED_SOC) += ast2400.o opbmc2400.o
-diff --git a/hw/arm/opbmc2400.c b/hw/arm/opbmc2400.c
-new file mode 100644
-index 0000000..a428364
---- /dev/null
-+++ b/hw/arm/opbmc2400.c
-@@ -0,0 +1,66 @@
-+/*
-+ * OpenPOWER BMC with AST2400 SoC
-+ *
-+ * Andrew Jeffery <andrew@aj.id.au>
-+ *
-+ * Copyright 2016 IBM Corp.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "exec/address-spaces.h"
-+#include "hw/arm/arm.h"
-+#include "hw/arm/ast2400.h"
-+#include "hw/boards.h"
-+
-+static struct arm_boot_info opbmc2400_binfo = {
-+    .loader_start = AST2400_SDRAM_BASE,
-+    .board_id = 0,
-+    .nb_cpus = 1,
-+};
-+
-+typedef struct OPBMC2400State {
-+    AST2400State soc;
-+    MemoryRegion ram;
-+} OPBMC2400State;
-+
-+static void opbmc2400_init(MachineState *machine)
-+{
-+    OPBMC2400State *opbmc2400;
-+
-+    opbmc2400 = g_new0(OPBMC2400State, 1);
-+    object_initialize(&opbmc2400->soc, (sizeof(opbmc2400->soc)), TYPE_AST2400);
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(&opbmc2400->soc),
-+                              &error_abort);
-+
-+    memory_region_allocate_system_memory(&opbmc2400->ram, NULL, "ram",
-+                                         ram_size);
-+    memory_region_add_subregion(get_system_memory(), AST2400_SDRAM_BASE,
-+                                &opbmc2400->ram);
-+    object_property_add_const_link(OBJECT(&opbmc2400->soc), "ram",
-+                                   OBJECT(&opbmc2400->ram), &error_abort);
-+    object_property_set_bool(OBJECT(&opbmc2400->soc), true, "realized",
-+                             &error_abort);
-+
-+    opbmc2400_binfo.kernel_filename = machine->kernel_filename;
-+    opbmc2400_binfo.initrd_filename = machine->initrd_filename;
-+    opbmc2400_binfo.kernel_cmdline = machine->kernel_cmdline;
-+    opbmc2400_binfo.ram_size = ram_size;
-+    arm_load_kernel(ARM_CPU(first_cpu), &opbmc2400_binfo);
-+}
-+
-+static void opbmc2400_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "OpenPOWER AST2400 BMC (ARM926EJ-S)";
-+    mc->init = opbmc2400_init;
-+    mc->max_cpus = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_parallel = 1;
-+}
-+
-+DEFINE_MACHINE("opbmc2400", opbmc2400_machine_init);
--- 
-2.5.0
+>  }
+>  
+>  static int musb_timeout(int ttype, int speed, int val)
+> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+> index 17ed461..a9bf805 100644
+> --- a/hw/usb/hcd-ohci.c
+> +++ b/hw/usb/hcd-ohci.c
+> @@ -1849,12 +1849,12 @@ static void usb_ohci_init(OHCIState *ohci, DeviceState *dev,
+>  
+>      if (usb_frame_time == 0) {
+>  #ifdef OHCI_TIME_WARP
+> -        usb_frame_time = get_ticks_per_sec();
+> -        usb_bit_time = muldiv64(1, get_ticks_per_sec(), USB_HZ/1000);
+> +        usb_frame_time = NANOSECONDS_PER_SECOND;
+> +        usb_bit_time = muldiv64(1, NANOSECONDS_PER_SECOND, USB_HZ/1000);
 
+Can be replaced by:
+
+    usb_bit_time = NANOSECONDS_PER_SECOND / (USB_HZ / 1000);
+
+>  #else
+> -        usb_frame_time = muldiv64(1, get_ticks_per_sec(), 1000);
+> -        if (get_ticks_per_sec() >= USB_HZ) {
+> -            usb_bit_time = muldiv64(1, get_ticks_per_sec(), USB_HZ);
+> +        usb_frame_time = muldiv64(1, NANOSECONDS_PER_SECOND, 1000);
+
+    usb_frame_time = NANOSECONDS_PER_SECOND / 1000;
+
+> +        if (NANOSECONDS_PER_SECOND >= USB_HZ) {
+> +            usb_bit_time = muldiv64(1, NANOSECONDS_PER_SECOND, USB_HZ);
+
+    usb_bit_time = NANOSECONDS_PER_SECOND / USB_HZ;
+
+>          } else {
+>              usb_bit_time = 1;
+>          }
+...

@@ -1,64 +1,66 @@
-Received: by 10.25.208.211 with SMTP id h202csp1138493lfg;
-        Wed, 16 Mar 2016 05:07:36 -0700 (PDT)
-X-Received: by 10.55.18.168 with SMTP id 40mr4354189qks.99.1458130056494;
-        Wed, 16 Mar 2016 05:07:36 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp1185396lfg;
+        Wed, 16 Mar 2016 06:22:14 -0700 (PDT)
+X-Received: by 10.140.248.135 with SMTP id t129mr5312414qhc.53.1458134534601;
+        Wed, 16 Mar 2016 06:22:14 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j11si2997203qgj.90.2016.03.16.05.07.36
+        by mx.google.com with ESMTPS id 138si3246847qhr.60.2016.03.16.06.22.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Mar 2016 05:07:36 -0700 (PDT)
+        Wed, 16 Mar 2016 06:22:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@163.com
-Received: from localhost ([::1]:55858 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:56294 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agAEh-0000R1-U7
-	for alex.bennee@linaro.org; Wed, 16 Mar 2016 08:07:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39733)
+	id 1agBOw-0001s9-0x
+	for alex.bennee@linaro.org; Wed, 16 Mar 2016 09:22:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1agAEf-0000OJ-4F
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 08:07:33 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ag9g7-0003IF-Hg
+	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 07:31:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1agAEZ-00053y-FU
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 08:07:33 -0400
-Received: from m12-12.163.com ([220.181.12.12]:54206)
+	(envelope-from <peter.maydell@linaro.org>) id 1ag9g6-0008Am-M2
+	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 07:31:51 -0400
+Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:34806)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1agAEY-00052l-PY; Wed, 16 Mar 2016 08:07:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Mime-Version:Subject:From:Date:Message-Id; bh=o3wTy
-	n7nEqgrelWvemzDNHN61OUumhiTYdjmA84Vufw=; b=lsTh/w1xxyQNjxirIOo6e
-	UOMxYv6Ebx8UPGNBMFsdpvyqXlhnCRvh4qBR5/ni0MZnWZjeuhYkx1z7SgH6GGxf
-	HFP2iMEKbw26V9saXuzp0cSgI566kVVJcxRAmXNCgzjw0DAVl1xfc16pSujkUZzR
-	/OC3HzakQjTkroN95puCaw=
-Received: from [192.168.199.233] (unknown [114.111.167.199])
-	by smtp8 (Coremail) with SMTP id DMCowABHyzxVTOlWAL6qAg--.25101S2;
-	Wed, 16 Mar 2016 20:06:47 +0800 (CST)
-Content-Type: text/plain;
-	charset=gb2312
-Mime-Version: 1.0 (1.0)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-X-Mailer: iPhone Mail (13D15)
-In-Reply-To: <CAFEAcA-P25AkJLBLst04J=BxTVvbfuQQAiE8nVS=w7oMXdtX8A@mail.gmail.com>
-Date: Wed, 16 Mar 2016 20:06:46 +0800
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <B4692CD6-B6AF-4FFA-A612-C13556103FA8@163.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1ag9g6-0008AP-Hs
+	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 07:31:50 -0400
+Received: by mail-vk0-x22a.google.com with SMTP id e185so57522968vkb.1
+	for <qemu-arm@nongnu.org>; Wed, 16 Mar 2016 04:31:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=RP3uyXey1MFlC1mpwHPPRvbZbcVDDDX1BY+GIa3+psA=;
+	b=Y9oCYgwa35qTlfDfzjzC04VKHD0PCw6gfVtkh4kJotfaGu9snUkSIroYpXX0sx9L3Y
+	Em02ob7+JEC1aRvnCcUDGgw2dmqGNUkrWBb8M7RXybvVquFH2vZ2OhdYsbhuvHkfBw+o
+	JWlbYVsrlHJDvPXjSmsOnc3jExgMDCY2Pa8vw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=RP3uyXey1MFlC1mpwHPPRvbZbcVDDDX1BY+GIa3+psA=;
+	b=VYggDRELmpMrHhT2Hq0g2uV6Bg99CSpXAc0lnV3zZfl6M9/2ADcpOAGuSAT40EOxeo
+	Fw176i/nn7oiqvE57Qva4obVudMszp/s1HD8ruRf84j5PlVisL/Vy/RkrBHhhaSZ31QC
+	eaDsVdxlsbCoIrX7XFefNpbwLFpHv0hRbFtP/H1ANIrS3VTPyYluXBTvwheB2wlg1hP0
+	DaIbTijUoYGm2tPgyXOOwI5msQr6+kpufMg0eYRG/MglJCo8oSLdpWsyffEjkqIcpgLl
+	oge1scKaCkmpxbmij7xmlVLjQoNC8BYvB1QkmxZxiiJUFtEuKYIw/iPXq5ehLj5wX4uA
+	sr4Q==
+X-Gm-Message-State: AD7BkJKzlZp9jYl5QN1T0jsbmtit8NWoT3sFY3Wowsohw23kZyhiDo7NEWZibvMkQEKsm5ew5lOFYr1tcr1t7flJ
+X-Received: by 10.31.180.85 with SMTP id d82mr3194152vkf.83.1458127909068;
+	Wed, 16 Mar 2016 04:31:49 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Wed, 16 Mar 2016 04:31:29 -0700 (PDT)
+In-Reply-To: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
 References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA98BiQipq4PL=_9fBeOa01ESzyp7U4ghN0gZuxAyAqwoA@mail.gmail.com>
-	<CAFEAcA-P25AkJLBLst04J=BxTVvbfuQQAiE8nVS=w7oMXdtX8A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-CM-TRANSID: DMCowABHyzxVTOlWAL6qAg--.25101S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrtr4Utw4UJw1fGF17GFWkXrb_yoWxCwcEgF
-	yv9rn7Kw4qyws7Ga1ayFs8Zr43ta97JrWrXr1Fv3yfXryavryDXrWrXr1avr13urZY9FZx
-	Zr1xtw43trWSqjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUnUku7UUUUU==
-X-Originating-IP: [114.111.167.199]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEBguxlWBUOET9wAAsh
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.12
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 16 Mar 2016 11:31:29 +0000
+Message-ID: <CAFEAcA98BiQipq4PL=_9fBeOa01ESzyp7U4ghN0gZuxAyAqwoA@mail.gmail.com>
+To: xiaoqiang zhao <zxq_yx_007@163.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22a
 Cc: Rob Herring <robh@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Andrew Zaborowski <balrogg@gmail.com>,
 	QEMU Developers <qemu-devel@nongnu.org>
@@ -76,29 +78,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l5wdAg4RcZIr
+X-TUID: yTHTLd61wiKy
 
+On 7 March 2016 at 07:05, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
+> This patch set trying to QOM'ify code under hw/arm directory.
+> As previous patches to hw/timer/*, we use instance_init instead of
+> the SysBus's init function.
+>
+>
+> xiaoqiang zhao (9):
+>   hw/arm: QOM'ify armv7m.c
+>   hw/arm: QOM'ify highbank.c
+>   hw/arm: QOM'ify integratorcp.c
+>   hw/arm: QOM'ify pxa2xx.c
+>   hw/arm: QOM'ify pxa2xx_pic.c
+>   hw/arm: QOM'ify spitz.c
+>   hw/arm: QOM'ify stellaris.c
+>   hw/arm: QOM'ify strongarm.c
+>   hw/arm: QOM'ify versatilepb.c
 
+A general note -- since these aren't bug fixes and we're in soft
+freeze now, I don't think we should put them in until 2.6 is out.
+I'll review the patches in a second, though.
 
-> =D4=DA 2016=C4=EA3=D4=C216=C8=D5=A3=AC20:00=A3=ACPeter Maydell <peter.mayd=
-ell@linaro.org> =D0=B4=B5=C0=A3=BA
->=20
->> On 16 March 2016 at 11:31, Peter Maydell <peter.maydell@linaro.org> wrote=
-:
->> A general note -- since these aren't bug fixes and we're in soft
->> freeze now, I don't think we should put them in until 2.6 is out.
->> I'll review the patches in a second, though.
->=20
-> Well, the patches all look good -- ping me after 2.6 is out to
-> apply them to target-arm.next then.
->=20
-> Where I've noted possible further cleanups, that's intended as
-> an "if you like writing cleanup patches" thing -- you don't need
-> to try to do them as part of this patch series.
->=20
-> thanks
-> -- PMM
-
-Okay.  Happy to contribute!=20
-Thanks!=
-
+thanks
+-- PMM

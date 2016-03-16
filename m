@@ -1,71 +1,66 @@
-Received: by 10.25.208.211 with SMTP id h202csp920432lfg;
-        Tue, 15 Mar 2016 19:28:27 -0700 (PDT)
-X-Received: by 10.140.232.15 with SMTP id d15mr1893678qhc.87.1458095307051;
-        Tue, 15 Mar 2016 19:28:27 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp925774lfg;
+        Tue, 15 Mar 2016 19:45:38 -0700 (PDT)
+X-Received: by 10.140.129.79 with SMTP id 76mr2007797qhb.28.1458096338747;
+        Tue, 15 Mar 2016 19:45:38 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y94si100969qgd.108.2016.03.15.19.28.26
+        by mx.google.com with ESMTPS id z69si1283077qgd.9.2016.03.15.19.45.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 19:28:27 -0700 (PDT)
+        Tue, 15 Mar 2016 19:45:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@163.com
-Received: from localhost ([::1]:52664 helo=lists.gnu.org)
+       dkim=fail (test mode) header.i=@aj.id.au
+Received: from localhost ([::1]:52726 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ag1CE-0001pv-K1
-	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:28:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49176)
+	id 1ag1Ss-0007T9-CU
+	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:45:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59367)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ag1CB-0001pl-R8
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:28:24 -0400
+	(envelope-from <andrew@aj.id.au>) id 1ag1So-0007T2-Mc
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:45:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ag1C8-0003Ei-7O
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:28:23 -0400
-Received: from m12-13.163.com ([220.181.12.13]:57754)
+	(envelope-from <andrew@aj.id.au>) id 1ag1Sj-0005oh-VC
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:45:34 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:50061
+	helo=homiemail-a20.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1ag1C7-0003CY-5U; Tue, 15 Mar 2016 22:28:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Subject:From:Message-ID:Date:MIME-Version; bh=tOR9x
-	hWBccglC6BO3xS9ca0Pzr2sOOmDGMp2BU947kA=; b=E9eqWxi4HLTcz3i8oXL2l
-	d2Arj5xt13VpLKqSb08N94inB2VvKCFW8oidO513PuflLKOe9AWxHwjjIwjlg48p
-	8CLYbkMyecJZy5L22Yqq/Ze2lfX5t5S/RiWf+cPxkYyyk/1tFFx+sKO+GUoGJW7r
-	OI3FM+1cTKIHcAyDC7tyXs=
-Received: from [192.168.31.184] (unknown [118.187.28.42])
-	by smtp9 (Coremail) with SMTP id DcCowADXBFKZxOhWzVjRAA--.15133S2;
-	Wed, 16 Mar 2016 10:27:38 +0800 (CST)
+	(envelope-from <andrew@aj.id.au>)
+	id 1ag1Sj-0005oC-Kv; Tue, 15 Mar 2016 22:45:29 -0400
+Received: from homiemail-a20.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTP id 9E4AA7EC063;
+	Tue, 15 Mar 2016 19:45:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
+	:subject:date:message-id:mime-version:content-type:
+	content-transfer-encoding; s=aj.id.au; bh=of0fAeR5lTehgrkRkuhdFG
+	nA7Oc=; b=WtQ8wlu+YFQ3IKdgCMS+n+Di30ycggT7MB2ifqkGZzpr/IGSzKACnI
+	dANmCyZAUf7jHCHfbhZESeR2szV8hDdfnSQu9D5Z4ukhDohbS3BtHH8x/8+5Y2fQ
+	pIqgvHuqK9UVvj70xMrhdItLsYmlRR6w2CrXUUNuc6lFfxx8KL+04=
+Received: from keelia.au.ibm.com (unknown [203.0.153.9])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTPSA id D17D17EC061; 
+	Tue, 15 Mar 2016 19:45:26 -0700 (PDT)
+From: Andrew Jeffery <andrew@aj.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1456396236-2759-1-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA_-+gK88n0UvcZi4nQPyNhjS26CSY-Xd5nv=L6jUovTkg@mail.gmail.com>
-	<56D7DA5E.6020402@163.com>
-From: hitmoon <zxq_yx_007@163.com>
-Message-ID: <56E8C44D.1000103@163.com>
-Date: Wed, 16 Mar 2016 10:26:21 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+Date: Wed, 16 Mar 2016 13:15:13 +1030
+Message-Id: <1458096317-25223-1-git-send-email-andrew@aj.id.au>
+X-Mailer: git-send-email 2.5.0
 MIME-Version: 1.0
-In-Reply-To: <56D7DA5E.6020402@163.com>
-Content-Type: multipart/alternative;
-	boundary="------------050909080304040309090505"
-X-CM-TRANSID: DcCowADXBFKZxOhWzVjRAA--.15133S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW5KF18uFWUGF47Kw47XF1UJrb_yoWxXrc_Wr
-	WruFyfGws7Ww4xKa1I9r4fAr15JFyjqFW8JF12qF4xX34rJrs8A395Kry7A3yrGF43CFZx
-	AFy5XrWkK3srJjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUnOB_UUUUUU==
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEhsuxlZXwnsJdAAAsk
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.13
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Subject: Re: [Qemu-arm] [PATCH v5 0/8] QOM'ify hw/timer/*
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 69.163.253.7
+Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
+	OpenBMC Maillist <openbmc@lists.ozlabs.org>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Dmitry Osipenko <digetx@gmail.com>, Jeremy Kerr <jk@ozlabs.org>
+Subject: [Qemu-arm] [PATCH v5 0/4] Add ASPEED AST2400 SoC and Palmetto BMC
+	machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -79,63 +74,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U4geS/nay5Dp
+X-TUID: YRlb2z7ZGMEF
 
-This is a multi-part message in MIME format.
---------------050909080304040309090505
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+This patch series models enough of the ASPEED AST2400 ARM9 SoC[0] to boot=
+ an
+aspeed_defconfig Linux kernel[1][2]. Specifically, the series implements =
+the
+ASPEED timer and VIC devices, integrates them into an AST2400 SoC and exp=
+oses
+it all through a new palmetto-bmc machine. The device model patches only
+partially implement the hardware features of the timer and VIC, again mos=
+tly
+just enough to boot Linux.
 
+Unfortunately the datasheet describing the devices is not generally avail=
+able,
+but I'll try to add comments to any unclear areas.
 
+The addition of the AST2400 to QEMU is motivated by use of the SoC as a B=
+MC in
+OpenPOWER[2][3] machines and the ongoing development of OpenBMC[4]. The
+presence of a machine model utilising the AST2400 will help with developm=
+ent
+and testing of the OpenBMC stack.
 
-在 2016年03月03日 14:31, hitmoon 写道:
-> On 25 February 2016 at 10:30, xiaoqiang zhao<zxq_yx_007@163.com>  wrote:
->> This patch series QOM'ify timer code under hw/timer directory.
->> Main idea is to split the initfn's work, some to TypeInfo.instance_init
->> and some is placed in DeviceClass::realize.
->> Drop the use of SysBusDeviceClass::init if possible.
->>
->> Patch 3,4 (m48t59) has been tested in a sparc vm with debian linux guest
->> and savevm/loadvm looks fine.
->> Comments from the relevant maintainers are needed!
-> ping ...
-> http://lists.nongnu.org/archive/html/qemu-devel/2016-02/msg05859.html
-ping! Any comment guys ?
+Cheers,
 
---------------050909080304040309090505
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Andrew
 
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  </head>
-  <body bgcolor="#FFFFFF" text="#000000">
-    <br>
-    <br>
-    <div class="moz-cite-prefix">在 2016年03月03日 14:31, hitmoon 写道:<br>
-    </div>
-    <blockquote cite="mid:56D7DA5E.6020402@163.com" type="cite">
-      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-      <pre wrap="">On 25 February 2016 at 10:30, xiaoqiang zhao <a moz-do-not-send="true" class="moz-txt-link-rfc2396E" href="mailto:zxq_yx_007@163.com">&lt;zxq_yx_007@163.com&gt;</a> wrote:
-</pre>
-      <blockquote type="cite">
-        <pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">This patch series QOM'ify timer code under hw/timer directory.
-Main idea is to split the initfn's work, some to TypeInfo.instance_init
-and some is placed in DeviceClass::realize.
-Drop the use of SysBusDeviceClass::init if possible.
+[0] http://www.aspeedtech.com/products.php?fPath=3D20&rId=3D376
+[1] https://github.com/openbmc/linux/tree/dev-4.3
+[2] git fetch git@github.com:openbmc/linux.git dev-4.3
+[3] http://openpowerfoundation.org/
+[4] https://github.com/open-power/
+[5] https://github.com/openbmc/openbmc
 
-Patch 3,4 (m48t59) has been tested in a sparc vm with debian linux guest
-and savevm/loadvm looks fine. <pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;">Comments from the relevant maintainers are needed!</pre></pre>
-      </blockquote>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-      ping ... <br>
-      <a moz-do-not-send="true" class="moz-txt-link-freetext"
-href="http://lists.nongnu.org/archive/html/qemu-devel/2016-02/msg05859.html">http://lists.nongnu.org/archive/html/qemu-devel/2016-02/msg05859.html</a><br>
-    </blockquote>
-    ping! Any comment guys ?<br>
-  </body>
-</html>
+Changes since v4:
 
---------------050909080304040309090505--
+  * Switch approach to modelling a specific machine type (palmetto-bmc)
+    rather than something generic that may have no corresponding hardware
+    implementation
+  * Address review comments from Jeremy Kerr, C=C3=A9dric Le Goater, Dmit=
+ry Osipenko
+
+Changes since v3:
+
+  Address comments from Peter Maydell, splitting the machine model from
+  hw/arm/ast2400.c into hw/arm/opbmc2400.c amongst other minor cleanups t=
+o the
+  timer and VIC.
+
+Changes since v2:
+
+  This re-roll is a reasonable rework of the patches in the series, which=
+ may
+  make it difficult to compare v1 to v2.
+
+  Addressed reviews/comments from:
+  * Peter Maydell
+  * Alexey Kardashevskiy
+  * Joel Stanley
+
+Changes since v1:
+
+  Addressed reviews/comments from:
+  * C=C3=A9dric Le Goater
+
+Andrew Jeffery (4):
+  hw/timer: Add ASPEED timer device model
+  hw/intc: Add (new) ASPEED VIC device model
+  hw/arm: Add ASPEED AST2400 SoC model
+  hw/arm: Add palmetto-bmc machine
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/ast2400.c                | 137 ++++++++++++
+ hw/arm/palmetto-bmc.c           |  65 ++++++
+ hw/intc/Makefile.objs           |   1 +
+ hw/intc/aspeed_vic.c            | 339 ++++++++++++++++++++++++++++++
+ hw/timer/Makefile.objs          |   1 +
+ hw/timer/aspeed_timer.c         | 449 ++++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/arm/ast2400.h        |  35 ++++
+ include/hw/intc/aspeed_vic.h    |  48 +++++
+ include/hw/timer/aspeed_timer.h |  59 ++++++
+ trace-events                    |  16 ++
+ 12 files changed, 1152 insertions(+)
+ create mode 100644 hw/arm/ast2400.c
+ create mode 100644 hw/arm/palmetto-bmc.c
+ create mode 100644 hw/intc/aspeed_vic.c
+ create mode 100644 hw/timer/aspeed_timer.c
+ create mode 100644 include/hw/arm/ast2400.h
+ create mode 100644 include/hw/intc/aspeed_vic.h
+ create mode 100644 include/hw/timer/aspeed_timer.h
+
+--=20
+2.5.0
 

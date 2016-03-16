@@ -1,116 +1,99 @@
-Received: by 10.25.208.211 with SMTP id h202csp1094987lfg;
-        Wed, 16 Mar 2016 03:42:38 -0700 (PDT)
-X-Received: by 10.140.104.34 with SMTP id z31mr4025402qge.90.1458124957955;
-        Wed, 16 Mar 2016 03:42:37 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp1108259lfg;
+        Wed, 16 Mar 2016 04:10:01 -0700 (PDT)
+X-Received: by 10.140.102.232 with SMTP id w95mr4127267qge.21.1458126601859;
+        Wed, 16 Mar 2016 04:10:01 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g48si2762605qgd.15.2016.03.16.03.42.37
+        by mx.google.com with ESMTPS id a12si2820199qha.52.2016.03.16.04.10.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Mar 2016 03:42:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 16 Mar 2016 04:10:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54698 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:55129 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ag8uT-0004yC-Cr
-	for alex.bennee@linaro.org; Wed, 16 Mar 2016 06:42:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32912)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ag9Kz-0001TA-8y
+	for alex.bennee@linaro.org; Wed, 16 Mar 2016 07:10:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38432)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1ag8uQ-0004w0-7w
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 06:42:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ag93U-0002vw-Pd
+	for qemu-devel@nongnu.org; Wed, 16 Mar 2016 06:51:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1ag8uM-0008MJ-Tq
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 06:42:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55057)
+	(envelope-from <peter.maydell@linaro.org>) id 1ag93T-0004Rf-UE
+	for qemu-devel@nongnu.org; Wed, 16 Mar 2016 06:51:56 -0400
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:36598)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>)
-	id 1ag8uM-0008M8-Oj; Wed, 16 Mar 2016 06:42:30 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 06B8A64D13;
-	Wed, 16 Mar 2016 10:42:30 +0000 (UTC)
-Received: from dhcp129-59.brq.redhat.com (dhcp129-59.brq.redhat.com
-	[10.34.129.59])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2GAgQ49019046
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 16 Mar 2016 06:42:27 -0400
-Message-ID: <1458124946.8641.27.camel@redhat.com>
-From: Andrea Bolognani <abologna@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Peter Xu <peterx@redhat.com>
-Date: Wed, 16 Mar 2016 11:42:26 +0100
-In-Reply-To: <CAFEAcA9QnbcUZyY_=Moi3P+wS27d4Q16e62jKOvNMhO2L72S-Q@mail.gmail.com>
-References: <1457422582-28799-1-git-send-email-peterx@redhat.com>
-	<CAFEAcA9QnbcUZyY_=Moi3P+wS27d4Q16e62jKOvNMhO2L72S-Q@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 16 Mar 2016 10:42:30 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <peter.maydell@linaro.org>) id 1ag93T-0004RY-HZ
+	for qemu-devel@nongnu.org; Wed, 16 Mar 2016 06:51:55 -0400
+Received: by mail-vk0-x233.google.com with SMTP id c3so56349169vkb.3
+	for <qemu-devel@nongnu.org>; Wed, 16 Mar 2016 03:51:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=x6DgwU6eRskWnlgBt7QnjMziRLSrXAi2qOgM2MD7wFw=;
+	b=BvinxoHEtQEt5j9k2TuhiM4Il13JJqfMn6Lp8tK1lcaSRP8T9ipGUe2dIkOMCtr9FV
+	QFA1051/B6kQMNYzI2ggoVOSpV9c6ez8m6LWWqtzHSze3khDIUmbTcR0fY5L+7wQfp2D
+	4L2AW3pYTTnqS44vlNOEG9buiIYJneidpEkgQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=x6DgwU6eRskWnlgBt7QnjMziRLSrXAi2qOgM2MD7wFw=;
+	b=KKeVhbIy1k5u+ftxJksF3e33cf9WI2oV/AgN6xEWTFSXnQfvatKE4jR64rVcLdC4HB
+	3ihmR4U1HZHRwIBJMyLCQFjX+22LLTDu4re/puhFG+NDHf7FdGYpJtIglOjdKXgzdYU7
+	HeGocv0WROXbdOxwqgk1Q2ARzP5NVzxxqrirjk/pr00luwEjEtuf23I3Cl4PWxH6m/is
+	FfI7N98hoM7loBLpC4VyUY0p2LgCAhfF1uWZM4Z7KbPsJ4IsV7rsHoheC91IIDVLiVNV
+	o+ghL4RC2fjA5pV7jFSyom5EGMDIGvkHxuA90zq1BgL2wUdvnCIfdhM1am1x3eLpUgeV
+	JXtg==
+X-Gm-Message-State: AD7BkJLR54yr+XFwe7JjAfynhD5S11P0yZ83RgHWS7FkC/msF/2KCl/4+qYqUPdA0FAN/P6NUadFMLYEBuY4vUXF
+X-Received: by 10.31.52.147 with SMTP id b141mr3474192vka.82.1458125515086;
+	Wed, 16 Mar 2016 03:51:55 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Wed, 16 Mar 2016 03:51:35 -0700 (PDT)
+In-Reply-To: <1457717778-17727-1-git-send-email-wei@redhat.com>
+References: <1457717778-17727-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 16 Mar 2016 10:51:35 +0000
+Message-ID: <CAFEAcA_pxSkKOHKZACf6E7mSRXzoWuCV2h7NYM-x7L9hDWC4vA@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Cc: Andrew Jones <drjones@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Eric Blake <eblake@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v4 0/3] ARM: add query-gic-capabilities SMP
-	command
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::233
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, wei@redaht.com,
+	Andrea Bolognani <abologna@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH V1 0/2] Versioning ARM virt machine types
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C9MGA2i57Bvh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uDFXL9kvRCat
 
-On Wed, 2016-03-16 at 10:32 +0000, Peter Maydell wrote:
-> On 8 March 2016 at 07:36, Peter Xu <peterx@redhat.com> wrote:
-> >=C2=A0
-> > v4 changes:
-> > - all: rename query-gic-capability to query-gic-capabilities [Andrea]
-> > - patch 3: rename helper function to kvm_support_device, make it
-> >=C2=A0=C2=A0=C2=A0inline and lighter. [Drew]
-> >=C2=A0
-> > v3 changes:
-> > - patch 2: remove func declaration, add qmp header [Drew]
-> > - patch 3: being able to detect KVM GIC capabilities even without
-> >=C2=A0=C2=A0=C2=A0kvm enabled [Andrea]: this is a little bit hacky, ne=
-ed some more
-> >=C2=A0=C2=A0=C2=A0review on this.
-> >=C2=A0
-> > v2 changes:
-> > - result layout change: use array and dict for the capability bits
-> >=C2=A0=C2=A0=C2=A0rather than a single array of strings [Andrea/Markus=
-]
-> > - spelling out what GIC is in doc [Eric]
-> >=C2=A0
-> > This patch is to add ARM-specific command "query-gic-capability".
-> >=C2=A0
-> > The new command can report which kind of GIC device the host/QEMU
-> > support. The returned result is in the form of array.
->=C2=A0
-> Hi. I've made some code review comments on the specifics of the
-> implementation, but really what I'd like to see is:
->=C2=A0=C2=A0* an ack from the libvirt folks that this API meets their
->=C2=A0=C2=A0=C2=A0=C2=A0requirements
+On 11 March 2016 at 17:36, Wei Huang <wei@redhat.com> wrote:
+> We start to see more features been added to ARM virtual machine models.
+> For the purpose of backward compatibility (e.g. migration), it is time
+> to consider versioning machine types for ARM VMs. As a beginning step, this
+> patchset defines an abstract machine type for ARM VMs. The current
+> "virt" machine is re-written based on this new abstract type accordingly.
+> These patches have been verified by booting existing VMs.
+>
+> RFC->V1:
+>  * Rename the machine type to "virt-2.6", matching the imminent QEMU version
+>  * Remove mc->is_default (Peter's comment)
 
-I have a working implementation of the libvirt part, but I need
-to polish it up before it can be posted on the list; then other
-libvirt folks will be able to provide feedback.
 
-Cheers.
 
---=C2=A0
-Andrea Bolognani
-Software Engineer - Virtualization Team
+Applied to target-arm.next, thanks.
+
+-- PMM

@@ -1,62 +1,63 @@
-Received: by 10.25.208.211 with SMTP id h202csp648840lfg;
-        Tue, 15 Mar 2016 08:08:54 -0700 (PDT)
-X-Received: by 10.141.4.135 with SMTP id g129mr41635284qhd.31.1458054534741;
-        Tue, 15 Mar 2016 08:08:54 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp922734lfg;
+        Tue, 15 Mar 2016 19:35:52 -0700 (PDT)
+X-Received: by 10.141.5.137 with SMTP id h131mr1881616qhd.47.1458095752690;
+        Tue, 15 Mar 2016 19:35:52 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j32si26780922qga.91.2016.03.15.08.08.54
+        by mx.google.com with ESMTPS id a12si1220844qha.52.2016.03.15.19.35.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 08:08:54 -0700 (PDT)
+        Tue, 15 Mar 2016 19:35:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48923 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=neutral (body hash did not verify) header.i=@163.com
+Received: from localhost ([::1]:52694 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1afqab-0005Fw-VP
-	for alex.bennee@linaro.org; Tue, 15 Mar 2016 11:08:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57882)
+	id 1ag1JQ-0003qT-7Y
+	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:35:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1afqTL-0007lW-OZ
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 11:01:29 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1ag1JN-0003pR-5m
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:35:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1afqTH-0006ZJ-Lt
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 11:01:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42781)
+	(envelope-from <zxq_yx_007@163.com>) id 1ag1JJ-0007fV-Ua
+	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:35:49 -0400
+Received: from m13-6.163.com ([220.181.13.6]:47418)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1afqTH-0006Yr-Cc; Tue, 15 Mar 2016 11:01:19 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id AC6357EBB2;
-	Tue, 15 Mar 2016 15:01:18 +0000 (UTC)
-Received: from redhat.com (vpn1-6-68.ams2.redhat.com [10.36.6.68])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id u2FF1Ce6032628; Tue, 15 Mar 2016 11:01:13 -0400
-Date: Tue, 15 Mar 2016 17:01:12 +0200
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <1458053975-2410-18-git-send-email-mst@redhat.com>
-References: <1458053975-2410-1-git-send-email-mst@redhat.com>
+	(envelope-from <zxq_yx_007@163.com>)
+	id 1ag1JJ-0007al-BB; Tue, 15 Mar 2016 22:35:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=FzGUS
+	3v7LCsXQS6wkkN6wcK5CgCLKlFh5L9b7wtYILA=; b=M+xZpPEsB1aYnynIBG/B2
+	97K88WKcJu6CWPw8HtH6UUgwLXAPJ9pqnKmxgXNMvsT0sCz77JUwkAlt27He0ily
+	ywJqP/xEvYp3faiAmpEz97e+pzLNJzRYDTVJZ3zB40Wz12AgxfhNagUH8yC5EdPt
+	+SGyNJXNvy1OfaT77wIY94=
+Received: from zxq_yx_007$163.com ( [118.187.28.42] ) by ajax-webmail-wmsvr6
+	(Coremail) ; Wed, 16 Mar 2016 10:34:35 +0800 (CST)
+X-Originating-IP: [118.187.28.42]
+Date: Wed, 16 Mar 2016 10:34:35 +0800 (CST)
+From: zxq_yx_007  <zxq_yx_007@163.com>
+To: "xiaoqiang zhao" <zxq_yx_007@163.com>
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version SP_ntes V3.5 build
+	20160223(81157.8522) Copyright (c) 2002-2016 www.mailtech.cn 163com
+In-Reply-To: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
+References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=GBK
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1458053975-2410-1-git-send-email-mst@redhat.com>
-X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Message-ID: <6328ec5c.4c11.1537d4659a4.Coremail.zxq_yx_007@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: BsGowAB3f6s8xuhWQkBdAA--.8378W
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiMxouxlXlfG5qKAABsg
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Peter Maydell <peter.maydell@linaro.org>, xen-devel@lists.xensource.com,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Stefano Stabellini <stefano.stabellini@eu.citrix.com>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Cornelia Huck <cornelia.huck@de.ibm.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>
-Subject: [Qemu-arm] [PULL v2 17/51] msi_supported -> msi_nonbroken
+X-Received-From: 220.181.13.6
+Cc: robh@kernel.org, qemu-arm@nongnu.org, balrogg@gmail.com,
+	qemu-devel@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [Qemu-arm] [PATCH 0/9] some QOM'ify work under hw/arm
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,230 +71,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jkjuYX5rW/Je
+X-TUID: t8fB9Q7yPgTO
 
-Rename controller flag to make it clearer what it means.
-Add some documentation as well.
-
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/pci/msi.h           |  2 +-
- hw/i386/kvm/apic.c             |  2 +-
- hw/i386/xen/xen_apic.c         |  2 +-
- hw/intc/apic.c                 |  2 +-
- hw/intc/arm_gicv2m.c           |  2 +-
- hw/intc/openpic.c              |  2 +-
- hw/intc/openpic_kvm.c          |  2 +-
- hw/pci-bridge/pci_bridge_dev.c |  2 +-
- hw/pci/msi.c                   | 19 ++++++++++++++++---
- hw/pci/msix.c                  |  2 +-
- hw/ppc/spapr.c                 |  4 ++--
- hw/ppc/spapr_pci.c             |  2 +-
- hw/s390x/s390-pci-bus.c        |  2 +-
- 13 files changed, 29 insertions(+), 16 deletions(-)
-
-diff --git a/include/hw/pci/msi.h b/include/hw/pci/msi.h
-index 50e452b..8124908 100644
---- a/include/hw/pci/msi.h
-+++ b/include/hw/pci/msi.h
-@@ -29,7 +29,7 @@ struct MSIMessage {
-     uint32_t data;
- };
- 
--extern bool msi_supported;
-+extern bool msi_nonbroken;
- 
- void msi_set_message(PCIDevice *dev, MSIMessage msg);
- MSIMessage msi_get_message(PCIDevice *dev, unsigned int vector);
-diff --git a/hw/i386/kvm/apic.c b/hw/i386/kvm/apic.c
-index 694d398..3c7c8fa 100644
---- a/hw/i386/kvm/apic.c
-+++ b/hw/i386/kvm/apic.c
-@@ -186,7 +186,7 @@ static void kvm_apic_realize(DeviceState *dev, Error **errp)
-                           APIC_SPACE_SIZE);
- 
-     if (kvm_has_gsi_routing()) {
--        msi_supported = true;
-+        msi_nonbroken = true;
-     }
- }
- 
-diff --git a/hw/i386/xen/xen_apic.c b/hw/i386/xen/xen_apic.c
-index 2b8d709..21d68ee 100644
---- a/hw/i386/xen/xen_apic.c
-+++ b/hw/i386/xen/xen_apic.c
-@@ -44,7 +44,7 @@ static void xen_apic_realize(DeviceState *dev, Error **errp)
-     s->vapic_control = 0;
-     memory_region_init_io(&s->io_memory, OBJECT(s), &xen_apic_io_ops, s,
-                           "xen-apic-msi", APIC_SPACE_SIZE);
--    msi_supported = true;
-+    msi_nonbroken = true;
- }
- 
- static void xen_apic_set_base(APICCommonState *s, uint64_t val)
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index a299462..28c2ea5 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -874,7 +874,7 @@ static void apic_realize(DeviceState *dev, Error **errp)
-     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, apic_timer, s);
-     local_apics[s->idx] = s;
- 
--    msi_supported = true;
-+    msi_nonbroken = true;
- }
- 
- static void apic_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/intc/arm_gicv2m.c b/hw/intc/arm_gicv2m.c
-index 70c0b97..ebd368b 100644
---- a/hw/intc/arm_gicv2m.c
-+++ b/hw/intc/arm_gicv2m.c
-@@ -148,7 +148,7 @@ static void gicv2m_realize(DeviceState *dev, Error **errp)
-         sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->spi[i]);
-     }
- 
--    msi_supported = true;
-+    msi_nonbroken = true;
-     kvm_gsi_direct_mapping = true;
-     kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
- }
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 903888c..7685250 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -1375,7 +1375,7 @@ static void fsl_common_init(OpenPICState *opp)
- 
-     opp->irq_msi = 224;
- 
--    msi_supported = true;
-+    msi_nonbroken = true;
-     for (i = 0; i < opp->fsl->max_ext; i++) {
-         opp->src[i].level = false;
-     }
-diff --git a/hw/intc/openpic_kvm.c b/hw/intc/openpic_kvm.c
-index 4dcdb61..778af4a 100644
---- a/hw/intc/openpic_kvm.c
-+++ b/hw/intc/openpic_kvm.c
-@@ -239,7 +239,7 @@ static void kvm_openpic_realize(DeviceState *dev, Error **errp)
-     memory_listener_register(&opp->mem_listener, &address_space_memory);
- 
-     /* indicate pic capabilities */
--    msi_supported = true;
-+    msi_nonbroken = true;
-     kvm_kernel_irqchip = true;
-     kvm_async_interrupts_allowed = true;
- 
-diff --git a/hw/pci-bridge/pci_bridge_dev.c b/hw/pci-bridge/pci_bridge_dev.c
-index 100bb5e..862a2366 100644
---- a/hw/pci-bridge/pci_bridge_dev.c
-+++ b/hw/pci-bridge/pci_bridge_dev.c
-@@ -72,7 +72,7 @@ static int pci_bridge_dev_initfn(PCIDevice *dev)
-         goto slotid_error;
-     }
-     if ((bridge_dev->flags & (1 << PCI_BRIDGE_DEV_F_MSI_REQ)) &&
--        msi_supported) {
-+        msi_nonbroken) {
-         err = msi_init(dev, 0, 1, true, true);
-         if (err < 0) {
-             goto msi_error;
-diff --git a/hw/pci/msi.c b/hw/pci/msi.c
-index 85f21b8..e0e64c2 100644
---- a/hw/pci/msi.c
-+++ b/hw/pci/msi.c
-@@ -34,8 +34,21 @@
- 
- #define PCI_MSI_VECTORS_MAX     32
- 
--/* Flag for interrupt controller to declare MSI/MSI-X support */
--bool msi_supported;
-+/*
-+ * Flag for interrupt controllers to declare broken MSI/MSI-X support.
-+ * values: false - broken; true - non-broken.
-+ *
-+ * Setting this flag to false will remove MSI/MSI-X capability from all devices.
-+ *
-+ * It is preferrable for controllers to set this to true (non-broken) even if
-+ * they do not actually support MSI/MSI-X: guests normally probe the controller
-+ * type and do not attempt to enable MSI/MSI-X with interrupt controllers not
-+ * supporting such, so removing the capability is not required, and
-+ * it seems cleaner to have a given device look the same for all boards.
-+ *
-+ * TODO: some existing controllers violate the above rule. Identify and fix them.
-+ */
-+bool msi_nonbroken;
- 
- /* If we get rid of cap allocator, we won't need this. */
- static inline uint8_t msi_cap_sizeof(uint16_t flags)
-@@ -160,7 +173,7 @@ int msi_init(struct PCIDevice *dev, uint8_t offset,
-     uint8_t cap_size;
-     int config_offset;
- 
--    if (!msi_supported) {
-+    if (!msi_nonbroken) {
-         return -ENOTSUP;
-     }
- 
-diff --git a/hw/pci/msix.c b/hw/pci/msix.c
-index 537fdba..b75f0e9 100644
---- a/hw/pci/msix.c
-+++ b/hw/pci/msix.c
-@@ -249,7 +249,7 @@ int msix_init(struct PCIDevice *dev, unsigned short nentries,
-     uint8_t *config;
- 
-     /* Nothing to do if MSI is not supported by interrupt controller */
--    if (!msi_supported) {
-+    if (!msi_nonbroken) {
-         return -ENOTSUP;
-     }
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 64c4acc..298171a 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -439,7 +439,7 @@ static void *spapr_create_fdt_skel(hwaddr initrd_base,
-     _FDT((fdt_property_cell(fdt, "rtas-event-scan-rate",
-                             RTAS_EVENT_SCAN_RATE)));
- 
--    if (msi_supported) {
-+    if (msi_nonbroken) {
-         _FDT((fdt_property(fdt, "ibm,change-msix-capable", NULL, 0)));
-     }
- 
-@@ -1743,7 +1743,7 @@ static void ppc_spapr_init(MachineState *machine)
-     bool kernel_le = false;
-     char *filename;
- 
--    msi_supported = true;
-+    msi_nonbroken = true;
- 
-     QLIST_INIT(&spapr->phbs);
- 
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index e8edad3..3fc7895 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -1790,7 +1790,7 @@ void spapr_pci_rtas_init(void)
-                         rtas_ibm_read_pci_config);
-     spapr_rtas_register(RTAS_IBM_WRITE_PCI_CONFIG, "ibm,write-pci-config",
-                         rtas_ibm_write_pci_config);
--    if (msi_supported) {
-+    if (msi_nonbroken) {
-         spapr_rtas_register(RTAS_IBM_QUERY_INTERRUPT_SOURCE_NUMBER,
-                             "ibm,query-interrupt-source-number",
-                             rtas_ibm_query_interrupt_source_number);
-diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-index dba0202..f5f679f 100644
---- a/hw/s390x/s390-pci-bus.c
-+++ b/hw/s390x/s390-pci-bus.c
-@@ -597,7 +597,7 @@ static void s390_pcihost_class_init(ObjectClass *klass, void *data)
-     k->init = s390_pcihost_init;
-     hc->plug = s390_pcihost_hot_plug;
-     hc->unplug = s390_pcihost_hot_unplug;
--    msi_supported = true;
-+    msi_nonbroken = true;
- }
- 
- static const TypeInfo s390_pcihost_info = {
--- 
-MST
-
+CkF0IDIwMTYtMDMtMDcgMTU6MDU6NDEsICJ4aWFvcWlhbmcgemhhbyIgPHp4cV95eF8wMDdAMTYz
+LmNvbT4gd3JvdGU6Cj5UaGlzIHBhdGNoIHNldCB0cnlpbmcgdG8gUU9NJ2lmeSBjb2RlIHVuZGVy
+IGh3L2FybSBkaXJlY3RvcnkuCj5BcyBwcmV2aW91cyBwYXRjaGVzIHRvIGh3L3RpbWVyLyosIHdl
+IHVzZSBpbnN0YW5jZV9pbml0IGluc3RlYWQgb2YKPnRoZSBTeXNCdXMncyBpbml0IGZ1bmN0aW9u
+LiAKPgo+Cj54aWFvcWlhbmcgemhhbyAoOSk6Cj4gIGh3L2FybTogUU9NJ2lmeSBhcm12N20uYwo+
+ICBody9hcm06IFFPTSdpZnkgaGlnaGJhbmsuYwo+ICBody9hcm06IFFPTSdpZnkgaW50ZWdyYXRv
+cmNwLmMKPiAgaHcvYXJtOiBRT00naWZ5IHB4YTJ4eC5jCj4gIGh3L2FybTogUU9NJ2lmeSBweGEy
+eHhfcGljLmMKPiAgaHcvYXJtOiBRT00naWZ5IHNwaXR6LmMKPiAgaHcvYXJtOiBRT00naWZ5IHN0
+ZWxsYXJpcy5jCj4gIGh3L2FybTogUU9NJ2lmeSBzdHJvbmdhcm0uYwo+ICBody9hcm06IFFPTSdp
+ZnkgdmVyc2F0aWxlcGIuYwo+Cj4gaHcvYXJtL2FybXY3bS5jICAgICAgIHwgMTEgKysrKy0tLS0t
+Cj4gaHcvYXJtL2hpZ2hiYW5rLmMgICAgIHwgMTIgKysrKy0tLS0tLQo+IGh3L2FybS9pbnRlZ3Jh
+dG9yY3AuYyB8IDMyICsrKysrKysrKystLS0tLS0tLS0tLS0tLS0KPiBody9hcm0vcHhhMnh4LmMg
+ICAgICAgfCAyNiArKysrKysrKystLS0tLS0tLS0tLQo+IGh3L2FybS9weGEyeHhfcGljLmMgICB8
+ICA3IC0tLS0tLQo+IGh3L2FybS9zcGl0ei5jICAgICAgICB8IDIzICsrKysrKystLS0tLS0tLS0t
+LQo+IGh3L2FybS9zdGVsbGFyaXMuYyAgICB8IDQ4ICsrKysrKysrKysrKysrKysrKy0tLS0tLS0t
+LS0tLS0tLS0tLS0KPiBody9hcm0vc3Ryb25nYXJtLmMgICAgfCA2NiArKysrKysrKysrKysrKysr
+KysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiBody9hcm0vdmVyc2F0aWxlcGIu
+YyAgfCAxMyArKysrKy0tLS0tCj4gOSBmaWxlcyBjaGFuZ2VkLCAxMDAgaW5zZXJ0aW9ucygrKSwg
+MTM4IGRlbGV0aW9ucygtKQo+Cj4tLSAKPjIuMS40Cgo+CnBpbmcgIQ==

@@ -1,53 +1,53 @@
-Received: by 10.25.208.211 with SMTP id h202csp925827lfg;
-        Tue, 15 Mar 2016 19:45:46 -0700 (PDT)
-X-Received: by 10.140.201.130 with SMTP id w124mr1948874qha.57.1458096346745;
-        Tue, 15 Mar 2016 19:45:46 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp926046lfg;
+        Tue, 15 Mar 2016 19:46:29 -0700 (PDT)
+X-Received: by 10.140.100.246 with SMTP id s109mr1843890qge.35.1458096388981;
+        Tue, 15 Mar 2016 19:46:28 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v82si1241173qkv.63.2016.03.15.19.45.46
+        by mx.google.com with ESMTPS id e13si1214744qka.120.2016.03.15.19.46.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Mar 2016 19:45:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 15 Mar 2016 19:46:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail (test mode) header.i=@aj.id.au
-Received: from localhost ([::1]:52731 helo=lists.gnu.org)
+Received: from localhost ([::1]:52735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ag1T0-0007YV-BP
-	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:45:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59462)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ag1Tg-0008UN-HD
+	for alex.bennee@linaro.org; Tue, 15 Mar 2016 22:46:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ag1St-0007Ul-LG
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:45:40 -0400
+	(envelope-from <andrew@aj.id.au>) id 1ag1Sz-0007Yo-4u
+	for qemu-devel@nongnu.org; Tue, 15 Mar 2016 22:45:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1ag1Ss-0005uQ-8o
-	for qemu-arm@nongnu.org; Tue, 15 Mar 2016 22:45:39 -0400
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:50101
+	(envelope-from <andrew@aj.id.au>) id 1ag1Su-0005wA-63
+	for qemu-devel@nongnu.org; Tue, 15 Mar 2016 22:45:45 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:50092
 	helo=homiemail-a20.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andrew@aj.id.au>)
-	id 1ag1Sr-0005tw-Ul; Tue, 15 Mar 2016 22:45:38 -0400
+	id 1ag1Sp-0005sK-PS; Tue, 15 Mar 2016 22:45:36 -0400
 Received: from homiemail-a20.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTP id 638657EC063;
-	Tue, 15 Mar 2016 19:45:37 -0700 (PDT)
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTP id 451467EC063;
+	Tue, 15 Mar 2016 19:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
 	:subject:date:message-id:in-reply-to:references; s=aj.id.au; bh=
-	TcxHVOmtE3Yh+CMLWERTP/2DJSo=; b=sUji9PbYe7Q0Xx1zSvKlqKvQx0vDvSis
-	4DPH/ECirg69nEFHg6/h0IW6G5Wb3RnuysEJnL55Z1/Ta2UsaVClgZkTqqj/aZoP
-	dxf5+dclV68HiPOGxx7AkRva6PpoiHYcfyeOBI9hFFrDYREP8V5dnRyH6A/lDjav
-	RqyMrHgsBpc=
+	8cp6EadR9IvRDpt1drVfsk5FRIQ=; b=jIu3GIV0vMlgScEFpumjUG3QsxvWOvEe
+	CBzRaCE8lA8SXbbmECzWB5X6I8fl7nmO6R3Akd75lSoVdVfb8wMPrtzUijLZ714p
+	IBuzD/bkgtwJNqqpvEFTd1KanxdNOCkuHdiWH9mFKtWYpVpN3cCDp5EpdWw+h/2Q
+	Kbh2LoQLbK0=
 Received: from keelia.au.ibm.com (unknown [203.0.153.9])
 	(using TLSv1 with cipher AES128-SHA (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTPSA id A1F4D7EC061; 
-	Tue, 15 Mar 2016 19:45:35 -0700 (PDT)
+	by homiemail-a20.g.dreamhost.com (Postfix) with ESMTPSA id 7EEE67EC061; 
+	Tue, 15 Mar 2016 19:45:33 -0700 (PDT)
 From: Andrew Jeffery <andrew@aj.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Mar 2016 13:15:17 +1030
-Message-Id: <1458096317-25223-5-git-send-email-andrew@aj.id.au>
+Date: Wed, 16 Mar 2016 13:15:16 +1030
+Message-Id: <1458096317-25223-4-git-send-email-andrew@aj.id.au>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1458096317-25223-1-git-send-email-andrew@aj.id.au>
 References: <1458096317-25223-1-git-send-email-andrew@aj.id.au>
@@ -58,38 +58,33 @@ Cc: Alexey Kardashevskiy <aik@ozlabs.ru>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Dmitry Osipenko <digetx@gmail.com>, Jeremy Kerr <jk@ozlabs.org>
-Subject: [Qemu-arm] [PATCH v5 4/4] hw/arm: Add palmetto-bmc machine
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v5 3/4] hw/arm: Add ASPEED AST2400 SoC model
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DPjsU4kEOx8s
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tpM2x1/D9M0A
 
-The new machine is a thin layer over the AST2400 ARM926-based SoC[1].
-Between the minimal machine and the current SoC implementation there is
-enough functionality to boot an aspeed_defconfig Linux kernel to
-userspace. Nothing yet is specific to the Palmetto's BMC (other than
-using an AST2400 SoC), but creating specific machine types is preferable
-to a generic machine that doesn't match any particular hardware.
+While the ASPEED AST2400 SoC[1] has a broad range of capabilities this
+implementation is minimal, comprising an ARM926 processor, ASPEED VIC
+and timer devices, and a 8250 UART.
 
 [1] http://www.aspeedtech.com/products.php?fPath=20&rId=376
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 ---
-Since v4:
-  * Rename to hw/arm/palmetto-bmc.c, update functions, structs and strings
-
 Since v3:
-  * Split the machine from the SoC implementation
+
+  * Split the SoC from the machine implementation
 
 Since v2:
   * Implement a SOC model to move code out from the machine definition
@@ -97,31 +92,33 @@ Since v2:
   * Include qemu/osdep.h
   * Revert back to qemu_log_mask(LOG_UNIMP, ...) in IO handlers
 
- hw/arm/Makefile.objs  |  2 +-
- hw/arm/palmetto-bmc.c | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 66 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/palmetto-bmc.c
+ hw/arm/Makefile.objs     |   1 +
+ hw/arm/ast2400.c         | 137 +++++++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/ast2400.h |  35 ++++++++++++
+ 3 files changed, 173 insertions(+)
+ create mode 100644 hw/arm/ast2400.c
+ create mode 100644 include/hw/arm/ast2400.h
 
 diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index f333b7f..954c9fe 100644
+index a711e4d..f333b7f 100644
 --- a/hw/arm/Makefile.objs
 +++ b/hw/arm/Makefile.objs
-@@ -16,4 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+@@ -16,3 +16,4 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
  obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp.o xlnx-ep108.o
  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
--obj-$(CONFIG_ASPEED_SOC) += ast2400.o
-+obj-$(CONFIG_ASPEED_SOC) += ast2400.o palmetto-bmc.o
-diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
++obj-$(CONFIG_ASPEED_SOC) += ast2400.o
+diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
 new file mode 100644
-index 0000000..55d7419
+index 0000000..daa5518
 --- /dev/null
-+++ b/hw/arm/palmetto-bmc.c
-@@ -0,0 +1,65 @@
++++ b/hw/arm/ast2400.c
+@@ -0,0 +1,137 @@
 +/*
-+ * OpenPOWER Palmetto BMC
++ * AST2400 SoC
 + *
 + * Andrew Jeffery <andrew@aj.id.au>
++ * Jeremy Kerr <jk@ozlabs.org>
 + *
 + * Copyright 2016 IBM Corp.
 + *
@@ -131,58 +128,170 @@ index 0000000..55d7419
 +
 +#include "qemu/osdep.h"
 +#include "exec/address-spaces.h"
-+#include "hw/arm/arm.h"
 +#include "hw/arm/ast2400.h"
-+#include "hw/boards.h"
++#include "hw/char/serial.h"
 +
-+static struct arm_boot_info palmetto_bmc_binfo = {
-+    .loader_start = AST2400_SDRAM_BASE,
-+    .board_id = 0,
-+    .nb_cpus = 1,
++#define AST2400_UART_5_BASE      0x00184000
++#define AST2400_IOMEM_SIZE       0x00200000
++#define AST2400_IOMEM_BASE       0x1E600000
++#define AST2400_VIC_BASE         0x1E6C0000
++#define AST2400_TIMER_BASE       0x1E782000
++
++static const int uart_irqs[] = { 9, 32, 33, 34, 10 };
++static const int timer_irqs[] = { 16, 17, 18, 35, 36, 37, 38, 39, };
++
++/*
++ * IO handlers: simply catch any reads/writes to IO addresses that aren't
++ * handled by a device mapping.
++ */
++
++static uint64_t ast2400_io_read(void *p, hwaddr offset, unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
++                  __func__, offset, size);
++    return 0;
++}
++
++static void ast2400_io_write(void *opaque, hwaddr offset, uint64_t value,
++                unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
++                  __func__, offset, value, size);
++}
++
++static const MemoryRegionOps ast2400_io_ops = {
++    .read = ast2400_io_read,
++    .write = ast2400_io_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
 +};
 +
-+typedef struct PalmettoBMCState {
-+    AST2400State soc;
-+    MemoryRegion ram;
-+} PalmettoBMCState;
-+
-+static void palmetto_bmc_init(MachineState *machine)
++static void ast2400_init(Object *obj)
 +{
-+    PalmettoBMCState *bmc;
++    AST2400State *s = AST2400(obj);
 +
-+    bmc = g_new0(PalmettoBMCState, 1);
-+    object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_AST2400);
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
-+                              &error_abort);
++    s->cpu = cpu_arm_init("arm926");
 +
-+    memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_size);
-+    memory_region_add_subregion(get_system_memory(), AST2400_SDRAM_BASE,
-+                                &bmc->ram);
-+    object_property_add_const_link(OBJECT(&bmc->soc), "ram", OBJECT(&bmc->ram),
-+                                   &error_abort);
-+    object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
-+                             &error_abort);
++    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
++    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
++    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
 +
-+    palmetto_bmc_binfo.kernel_filename = machine->kernel_filename;
-+    palmetto_bmc_binfo.initrd_filename = machine->initrd_filename;
-+    palmetto_bmc_binfo.kernel_cmdline = machine->kernel_cmdline;
-+    palmetto_bmc_binfo.ram_size = ram_size;
-+    arm_load_kernel(ARM_CPU(first_cpu), &palmetto_bmc_binfo);
++    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
++    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), NULL);
++    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
 +}
 +
-+static void palmetto_bmc_machine_init(MachineClass *mc)
++static void ast2400_realize(DeviceState *dev, Error **errp)
 +{
-+    mc->desc = "OpenPOWER Palmetto BMC";
-+    mc->init = palmetto_bmc_init;
-+    mc->max_cpus = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_sdcard = 1;
-+    mc->no_parallel = 1;
++    int i;
++    AST2400State *s = AST2400(dev);
++    Error *err = NULL;
++
++    /* IO space */
++    memory_region_init_io(&s->iomem, NULL, &ast2400_io_ops, NULL,
++            "ast2400.io", AST2400_IOMEM_SIZE);
++    memory_region_add_subregion_overlap(get_system_memory(), AST2400_IOMEM_BASE,
++            &s->iomem, -1);
++
++    /* VIC */
++    object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, AST2400_VIC_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
++                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
++                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_FIQ));
++
++    /* Timer */
++    object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, AST2400_TIMER_BASE);
++    for (i = 0; i < ARRAY_SIZE(timer_irqs); i++) {
++        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
++    }
++
++    /* UART - attach an 8250 to the IO space as our UART5 */
++    if (serial_hds[0]) {
++        qemu_irq uart5 = qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4]);
++        serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
++                       uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN);
++    }
 +}
 +
-+DEFINE_MACHINE("palmetto-bmc", palmetto_bmc_machine_init);
++static void ast2400_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++
++    dc->realize = ast2400_realize;
++
++    /*
++     * Reason: creates an ARM CPU, thus use after free(), see
++     * arm_cpu_class_init()
++     */
++    dc->cannot_destroy_with_object_finalize_yet = true;
++}
++
++static const TypeInfo ast2400_type_info = {
++    .name = TYPE_AST2400,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AST2400State),
++    .instance_init = ast2400_init,
++    .class_init = ast2400_class_init,
++};
++
++static void ast2400_register_types(void)
++{
++    type_register_static(&ast2400_type_info);
++}
++
++type_init(ast2400_register_types)
+diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
+new file mode 100644
+index 0000000..f16a1ed
+--- /dev/null
++++ b/include/hw/arm/ast2400.h
+@@ -0,0 +1,35 @@
++/*
++ * ASPEED AST2400 SoC
++ *
++ * Andrew Jeffery <andrew@aj.id.au>
++ *
++ * Copyright 2016 IBM Corp.
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#ifndef AST2400_H
++#define AST2400_H
++
++#include "hw/arm/arm.h"
++#include "hw/intc/aspeed_vic.h"
++#include "hw/timer/aspeed_timer.h"
++
++typedef struct AST2400State {
++    /*< private >*/
++    DeviceState parent;
++
++    /*< public >*/
++    ARMCPU *cpu;
++    MemoryRegion iomem;
++    AspeedVICState vic;
++    AspeedTimerCtrlState timerctrl;
++} AST2400State;
++
++#define TYPE_AST2400 "ast2400"
++#define AST2400(obj) OBJECT_CHECK(AST2400State, (obj), TYPE_AST2400)
++
++#define AST2400_SDRAM_BASE       0x40000000
++
++#endif /* AST2400_H */
 -- 
 2.5.0
 

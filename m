@@ -1,62 +1,73 @@
-Received: by 10.25.208.211 with SMTP id h202csp207477lfg;
-        Wed, 16 Mar 2016 21:09:50 -0700 (PDT)
-X-Received: by 10.140.146.143 with SMTP id 137mr11831407qhs.15.1458187790760;
-        Wed, 16 Mar 2016 21:09:50 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp298550lfg;
+        Thu, 17 Mar 2016 01:48:58 -0700 (PDT)
+X-Received: by 10.140.43.229 with SMTP id e92mr12324810qga.98.1458204538434;
+        Thu, 17 Mar 2016 01:48:58 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w19si5873778qhb.30.2016.03.16.21.09.50
+        by mx.google.com with ESMTPS id d197si6583203qhc.123.2016.03.17.01.48.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Mar 2016 21:09:50 -0700 (PDT)
+        Thu, 17 Mar 2016 01:48:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60561 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org
+Received: from localhost ([::1]:33446 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agPFu-0007Xx-7q
-	for alex.bennee@linaro.org; Thu, 17 Mar 2016 00:09:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58950)
+	id 1agTc2-00039K-2P
+	for alex.bennee@linaro.org; Thu, 17 Mar 2016 04:48:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1agPFr-0007Xk-RH
-	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 00:09:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1agTbw-00035O-A7
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 04:48:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1agPFn-0007dv-QZ
-	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 00:09:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53684)
+	(envelope-from <peter.maydell@linaro.org>) id 1agTbv-0006U4-GZ
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 04:48:52 -0400
+Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:35485)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>)
-	id 1agPFn-0007dE-Kx; Thu, 17 Mar 2016 00:09:43 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 094E5C049E19;
-	Thu, 17 Mar 2016 04:09:42 +0000 (UTC)
-Received: from pxdev.xzpeter.org (vpn1-6-212.pek2.redhat.com [10.72.6.212])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2H49ZqY027717
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 17 Mar 2016 00:09:38 -0400
-Date: Thu, 17 Mar 2016 12:09:35 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160317040935.GE23495@pxdev.xzpeter.org>
-References: <1457422582-28799-1-git-send-email-peterx@redhat.com>
-	<1457422582-28799-3-git-send-email-peterx@redhat.com>
-	<CAFEAcA9jCwLnG5QKTG9Hd+r8tVYSN6A8dwWp2JMPV1rMUAAjLQ@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1agTbv-0006Sk-Bv
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 04:48:51 -0400
+Received: by mail-vk0-x229.google.com with SMTP id e6so93485486vkh.2
+	for <qemu-arm@nongnu.org>; Thu, 17 Mar 2016 01:48:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=F0uyhJ1Zw+hrnl9WCHPrrTfvbzKzkWDpvww1Ip8PzzM=;
+	b=QUbjmqkQKw4/V9+rw2mZnkTl/NUILi0l5YPz9qjs8q8P8kvY8Y+y/KjaPO0DLQB+IV
+	ynIXJ3nocyHKf3UoDr/gG2BSNgNlhqDxoJiUwk78EBhdXMz5kn6KcpyBsfcZcrNr9zIS
+	nZ1YpRyBRv5JbK4XCecM66Sg0PjOhfPZO35eQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=F0uyhJ1Zw+hrnl9WCHPrrTfvbzKzkWDpvww1Ip8PzzM=;
+	b=jNOGOdXh03OgXfXm515TcBjF+Cty5JJQWj/0+5P9i2bWlwPObgW+pivuUJkkCOreve
+	2W4LV/WUOKJ6cDd/IM6vvLflfLktaY3ZfZX+aRMCGnnyIwkVMfqORrcM3+XdG9kQ0Wrr
+	CTklAHdXZScHmo/e+6wGsGkz/OFV/4i4QYAzGCPpLlgr6FLNKSgDhOcjMY+0l2ztNKBu
+	bS9lFT+h+CwA1zgdGweNHM7nM6STyuM6CZ+3X3PkK6pqfIMU+EfdCeLJFASsNKFoFWW0
+	eLEmTQkGXuhybFSJczu31nhJFOdSLXaT/Q3VnaHZRaJabmRcWP4tevKrgrvYZeg4f9ZS
+	5i5w==
+X-Gm-Message-State: AD7BkJItF4e/oOlHBHOVC3YwcMaXlrBpBzQqeTj/O/5XFtoaSvPcak8GrRz6yNvgrSiLfoy8Vnc2IJRt23MJRtf0
+X-Received: by 10.31.3.193 with SMTP id f62mr9280411vki.27.1458204529729; Thu,
+	17 Mar 2016 01:48:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9jCwLnG5QKTG9Hd+r8tVYSN6A8dwWp2JMPV1rMUAAjLQ@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Andrew Jones <drjones@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrea Bolognani <abologna@redhat.com>, Eric Blake <eblake@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v4 2/3] arm: qmp: add query-gic-capabilities
-	interface
+Received: by 10.31.216.1 with HTTP; Thu, 17 Mar 2016 01:48:30 -0700 (PDT)
+In-Reply-To: <BLUPR0301MB2034B9E6F037E31B3AC6E3619E8A0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+References: <1457467526-8840-1-git-send-email-Andrew.Baumann@microsoft.com>
+	<CAFEAcA_6NvDW4LYHTmcuH3j07zQds6gH=J2FC4zV9JDg13JWwA@mail.gmail.com>
+	<BLUPR0301MB2034B9E6F037E31B3AC6E3619E8A0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Mar 2016 08:48:30 +0000
+Message-ID: <CAFEAcA-sUK0YjH0VzNJv=ovkj6HkAYyCWUFwuSP_BqFfdNYH3Q@mail.gmail.com>
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::229
+Cc: =?UTF-8?Q?Gr=C3=A9gory_ESTRADE?= <gregory.estrade@gmail.com>,
+	Stefan Weil <sw@weilnetz.de>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH v3 0/5] Raspberry Pi framebuffer,
+	DMA and Windows support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -70,40 +81,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cJtHsdLHog27
+X-TUID: FQB/OIDeBIM0
 
-On Wed, Mar 16, 2016 at 10:24:39AM +0000, Peter Maydell wrote:
-> On 8 March 2016 at 07:36, Peter Xu <peterx@redhat.com> wrote:
-> > diff --git a/target-arm/machine.c b/target-arm/machine.c
-> > index 03a73d9..813909e 100644
-> > --- a/target-arm/machine.c
-> > +++ b/target-arm/machine.c
-> > @@ -5,6 +5,7 @@
-> >  #include "sysemu/kvm.h"
-> >  #include "kvm_arm.h"
-> >  #include "internals.h"
-> > +#include "qmp-commands.h"
-> >
-> >  static bool vfp_needed(void *opaque)
-> >  {
-> > @@ -345,3 +346,8 @@ const char *gicv3_class_name(void)
-> >
-> >      exit(1);
-> >  }
-> > +
-> > +GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
-> > +{
-> > +    return NULL;
-> > +}
-> 
-> Why is this here? machine.c is for migration code.
+On 16 March 2016 at 23:01, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
+> However, I don't seem to be able to repro this. What exactly were
+> you booting?
 
-Hi, Peter,
+This was the Ubuntu kernel from the 2015-04-06-ubuntu-trusty.zip
+which is linked to from https://wiki.ubuntu.com/ARM/RaspberryPi
 
-Thanks for the review comments. Do you have any suggestion on which
-file should I add this in (or create a new one)? I failed to figure
-it out myself. :(
-
-TIA.
-
--- peterx
+thanks
+-- PMM

@@ -1,60 +1,81 @@
-Received: by 10.25.208.211 with SMTP id h202csp441564lfg;
-        Thu, 17 Mar 2016 06:27:25 -0700 (PDT)
-X-Received: by 10.140.104.242 with SMTP id a105mr14311848qgf.1.1458221245861;
-        Thu, 17 Mar 2016 06:27:25 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp468658lfg;
+        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
+X-Received: by 10.55.31.82 with SMTP id f79mr14474734qkf.42.1458224182604;
+        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y20si7813140qka.117.2016.03.17.06.27.25
+        by mx.google.com with ESMTPS id t79si885149qkt.80.2016.03.17.07.16.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Mar 2016 06:27:25 -0700 (PDT)
+        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34874 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@gmail.com;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35257 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agXxV-0005kw-B6
-	for alex.bennee@linaro.org; Thu, 17 Mar 2016 09:27:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46486)
+	id 1agYis-0003o0-0f
+	for alex.bennee@linaro.org; Thu, 17 Mar 2016 10:16:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36262)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1agXwh-0004fK-Un
-	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 09:26:41 -0400
+	(envelope-from <stefanha@gmail.com>) id 1agYiP-0003QW-Kn
+	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 10:15:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1agXwg-0000H6-Lk
-	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 09:26:35 -0400
-Received: from szxga02-in.huawei.com ([119.145.14.65]:8646)
+	(envelope-from <stefanha@gmail.com>) id 1agYiL-00020D-Lh
+	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 10:15:53 -0400
+Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:37889)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1agXwX-0000AS-Nk; Thu, 17 Mar 2016 09:26:26 -0400
-Received: from 172.24.1.49 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.1.49])
-	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DDR74278; Thu, 17 Mar 2016 21:26:06 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml428-hub.china.huawei.com (10.82.67.183) with Microsoft SMTP
-	Server id 14.3.235.1; Thu, 17 Mar 2016 21:25:55 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>, <wei@redhat.com>
-Date: Thu, 17 Mar 2016 21:25:39 +0800
-Message-ID: <1458221140-15232-2-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1458221140-15232-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1458221140-15232-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1agYiL-000209-Ef; Thu, 17 Mar 2016 10:15:49 -0400
+Received: by mail-wm0-x235.google.com with SMTP id l68so119240097wml.1;
+	Thu, 17 Mar 2016 07:15:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=jkkEFTGZRo/6QYqgRQ85yjVsxiDYAmiVfCEE+ru9H78=;
+	b=Z+vs8J5lsrEQ1irOEhKtnV62ek8w8e1ccDomNM10yCjcAhn64Cq54qNpOxb5ofIt8l
+	F2UP8HerqDriNRsGSACYC1+MOAfET1AiqXQgHuLRGDySw+ReDDuTItn/tPCzk2mIG6At
+	dzS8lKDLJ12l5elrsA69a3QSSOOH3llibTDnrG3fmtHpbiF05H7mMiJ2k5EUtDNoSNzY
+	96e3L/Hw7fwl5FgaiV6+E415voisT1RGCg4rEtsB5FbR4ivm8dL1L0xct1nUbdApry2O
+	4n+ExtXFgmukGiRBQo4/ROGOgNaRMImQ2an0CgQLK76rA+QjjfSjl+aIkgkap8T0YaiD
+	udBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=jkkEFTGZRo/6QYqgRQ85yjVsxiDYAmiVfCEE+ru9H78=;
+	b=GDn1Rv+sw3lAIQNS3MvJkvaqVSB6Xn4zsBSkpMxWvxeqMaP68HdynYPtyuxJUNuMhw
+	hxZr46XZfePGTnoASfKDFkt+9Cs1QZPTJPh15cmQ3iBeJB7MP1e8+nisC/jamdSZFogl
+	W2eGFrK3GdsiaKb83mOnPIY1c1zUY3Zp4kXuK6vBzWDcZc5LrUtjTXypq/y/RP5LXMpk
+	UAtKpcvymTLzpDQLPQt5/r4/GcF4fSzpPOcyo/CiTGUY/Ju9XZSigMHH796LuL7IQoAT
+	5tn58FOIqDY0uMGRBqHlmCQmUofq1egg6fmEf+7ZvZ7+8OrCLyTo+2hoDHeGqNeAdAur
+	+JVg==
+X-Gm-Message-State: AD7BkJIZXW58IjgtNQlDIOMH9hTWM/AF6ejyQburwkK6uoNsWedRXbDugAOC7vSkeW8sKA==
+X-Received: by 10.28.215.79 with SMTP id o76mr37193416wmg.95.1458224148690;
+	Thu, 17 Mar 2016 07:15:48 -0700 (PDT)
+Received: from localhost (host109-156-68-66.range109-156.btcentralplus.com.
+	[109.156.68.66])
+	by smtp.gmail.com with ESMTPSA id gt7sm7901086wjc.1.2016.03.17.07.15.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 17 Mar 2016 07:15:47 -0700 (PDT)
+Date: Thu, 17 Mar 2016 14:15:46 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: "Sanchez, Juan Carlos (GE Aviation)" <juan.carlos.sanchez@ge.com>
+Message-ID: <20160317141546.GK14062@stefanha-x1.localdomain>
+References: <709659D8C88A4047B113A8F68771E8EA46B91006@ALPMBAPA12.e2k.ad.ge.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.56EAB06E.0209, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 38bd23b0a45ff1b67603fcd50e665a87
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.65
-Cc: peter.huangpeng@huawei.com, zhaoshenglong@huawei.com, qemu-devel@nongnu.org,
-	shannon.zhao@linaro.org
-Subject: [Qemu-devel] [PATCH 1/2] hw/gpio: Add the emulation of gpio_key
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="3MHXEHrrXKLGx71o"
+Content-Disposition: inline
+In-Reply-To: <709659D8C88A4047B113A8F68771E8EA46B91006@ALPMBAPA12.e2k.ad.ge.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c09::235
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] Hi good afternoon, some small support
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -68,148 +89,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pcI0/qmbALTy
-
-From: Shannon Zhao <shannon.zhao@linaro.org>
-
-This will be used by ARM virt machine as a power button.
-
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- default-configs/arm-softmmu.mak |   1 +
- hw/gpio/Makefile.objs           |   1 +
- hw/gpio/gpio_key.c              | 100 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 102 insertions(+)
- create mode 100644 hw/gpio/gpio_key.c
-
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 2bcd236..c63cdd0 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -111,3 +111,4 @@ CONFIG_I82801B11=y
- CONFIG_ACPI=y
- CONFIG_SMBIOS=y
- CONFIG_ASPEED_SOC=y
-+CONFIG_GPIO_KEY=y
-diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
-index 52233f7..a43c7cf 100644
---- a/hw/gpio/Makefile.objs
-+++ b/hw/gpio/Makefile.objs
-@@ -3,6 +3,7 @@ common-obj-$(CONFIG_PL061) += pl061.o
- common-obj-$(CONFIG_PUV3) += puv3_gpio.o
- common-obj-$(CONFIG_ZAURUS) += zaurus.o
- common-obj-$(CONFIG_E500) += mpc8xxx.o
-+common-obj-$(CONFIG_GPIO_KEY) += gpio_key.o
- 
- obj-$(CONFIG_OMAP) += omap_gpio.o
- obj-$(CONFIG_IMX) += imx_gpio.o
-diff --git a/hw/gpio/gpio_key.c b/hw/gpio/gpio_key.c
-new file mode 100644
-index 0000000..41639fa
---- /dev/null
-+++ b/hw/gpio/gpio_key.c
-@@ -0,0 +1,100 @@
-+/*
-+ * GPIO key
-+ *
-+ * Copyright (c) 2016 Linaro Limited
-+ *
-+ * Author: Shannon Zhao <shannon.zhao@linaro.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sysbus.h"
-+
-+#define TYPE_GPIOKEY "gpio_key"
-+#define GPIOKEY(obj) OBJECT_CHECK(GPIOKEYState, (obj), TYPE_GPIOKEY)
-+#define GPIO_KEY_LATENCY 100 /* 100ms */
-+
-+typedef struct GPIOKEYState {
-+    SysBusDevice parent_obj;
-+
-+    QEMUTimer *timer;
-+    qemu_irq irq;
-+} GPIOKEYState;
-+
-+static const VMStateDescription vmstate_gpio_key = {
-+    .name = "gpio_key",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_TIMER_PTR(timer, GPIOKEYState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void gpio_key_reset(DeviceState *dev)
-+{
-+    GPIOKEYState *s = GPIOKEY(dev);
-+
-+    timer_del(s->timer);
-+}
-+
-+static void gpio_key_timer_expired(void *opaque)
-+{
-+    GPIOKEYState *s = (GPIOKEYState *)opaque;
-+
-+    qemu_set_irq(s->irq, 0);
-+    timer_del(s->timer);
-+}
-+
-+static void gpio_key_set_irq(void *opaque, int irq, int level)
-+{
-+    GPIOKEYState *s = (GPIOKEYState *)opaque;
-+
-+    qemu_set_irq(s->irq, 1);
-+    timer_mod(s->timer,
-+              qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) + GPIO_KEY_LATENCY);
-+}
-+
-+static void gpio_key_realize(DeviceState *dev, Error **errp)
-+{
-+    GPIOKEYState *s = GPIOKEY(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+    qdev_init_gpio_in(dev, gpio_key_set_irq, 1);
-+    s->timer = timer_new_ms(QEMU_CLOCK_VIRTUAL, gpio_key_timer_expired, s);
-+}
-+
-+static void gpio_key_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = gpio_key_realize;
-+    dc->vmsd = &vmstate_gpio_key;
-+    dc->reset = &gpio_key_reset;
-+}
-+
-+static const TypeInfo gpio_key_info = {
-+    .name          = TYPE_GPIOKEY,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(GPIOKEYState),
-+    .class_init    = gpio_key_class_init,
-+};
-+
-+static void gpio_key_register_types(void)
-+{
-+    type_register_static(&gpio_key_info);
-+}
-+
-+type_init(gpio_key_register_types)
--- 
-2.0.4
+X-TUID: HJijIN+aoeWy
 
 
+--3MHXEHrrXKLGx71o
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Mar 04, 2016 at 08:52:37PM +0000, Sanchez, Juan Carlos (GE Aviation=
+) wrote:
+>  	I am trying to execute an image created by ARM in QEMU using windows OS=
+, could you give me guide to example the command line?=20
+>=20
+> The command line in Unix work well, but I don't understood all the option=
+s. This the reason that I looking for some help
+>=20
+> /home/nhcu02t/yocto_i686/prebuild/sysroots/i686-pokysdk-linux/usr/bin/qem=
+u-system-arm -kernel zImage-qemuarm.bin -net nic,model=3Dvirtio -net tap,vl=
+an=3D0,ifname=3Dtap0,script=3Dno,downscript=3Dno -M versatilepb -drive file=
+=3D/home/nhcu02t/yocto_org_built/images/qemuarm/core-image-minimal-qemuarm.=
+ext4,if=3Dvirtio,format=3Draw -no-reboot -show-cursor -usb -usbdevice wacom=
+-tablet -no-reboot -m 128 -serial mon:vc -serial null --append "root=3D/dev=
+/vda rw console=3DttyAMA0,115200 console=3Dtty ip=3D192.168.7.2::192.168.7.=
+1:255.255.255.0 mem=3D128M highres=3Doff rootfstype=3Dext4 "
+>=20
+>=20
+> I accept any help that you provide me.
+
+Did you look at the documentation?
+
+This should help you understand most of the options:
+http://qemu.weilnetz.de/qemu-doc.html
+
+If you have specific questions, feel free to ask.
+
+Stefan
+
+--3MHXEHrrXKLGx71o
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJW6rwSAAoJEJykq7OBq3PIVEsIAKXxaTuOopQAb4LFSlqYNc9T
+sJPTjU+9Q975o5kRK7+GpvuvmQB0qjAhZA54ZGiFDYl4P+wqUFaaEY1KLPAWXrup
+A6iX5I8h9OS4bJYY0qHV46REuBGVAncZv/YAQ0284PZddzD6Vb5R5I8JyJYw+mET
+Sk88onYiHgnw/dMpEICDgBsPbnS/fdosKEgJQXQtFuxOU+S28HFpqv2rrIHWdOjV
+VisHwnqRcxCRQCkkuYa8eBDyYAv845vpp/o2a+A09iKoxWfKwG5diZGTO0lg3hgs
+sZSOraZC+ZLLUGIGlXTuTimWpgIpzsGMhJHq6DFEmwhnkF4f9Rzz5uVI9W4U6Y8=
+=jEul
+-----END PGP SIGNATURE-----
+
+--3MHXEHrrXKLGx71o--

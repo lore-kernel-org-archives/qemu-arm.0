@@ -1,144 +1,121 @@
-Received: by 10.25.208.211 with SMTP id h202csp468658lfg;
-        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
-X-Received: by 10.55.31.82 with SMTP id f79mr14474734qkf.42.1458224182604;
-        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp504551lfg;
+        Thu, 17 Mar 2016 08:21:46 -0700 (PDT)
+X-Received: by 10.140.40.138 with SMTP id x10mr14924648qgx.2.1458228106831;
+        Thu, 17 Mar 2016 08:21:46 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t79si885149qkt.80.2016.03.17.07.16.22
+        by mx.google.com with ESMTPS id a29si8218368qkj.13.2016.03.17.08.21.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Mar 2016 07:16:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 17 Mar 2016 08:21:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@gmail.com;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35257 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
+       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
+Received: from localhost ([::1]:35875 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agYis-0003o0-0f
-	for alex.bennee@linaro.org; Thu, 17 Mar 2016 10:16:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36262)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1agZkA-0002sO-Ai
+	for alex.bennee@linaro.org; Thu, 17 Mar 2016 11:21:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1agYiP-0003QW-Kn
-	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 10:15:57 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1agZk7-0002pJ-FD
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 11:21:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1agYiL-00020D-Lh
-	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 10:15:53 -0400
-Received: from mail-wm0-x235.google.com ([2a00:1450:400c:c09::235]:37889)
+	(envelope-from <afarallax@yandex.ru>) id 1agZk4-0007pC-4r
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 11:21:43 -0400
+Received: from forward12j.cmail.yandex.net ([5.255.227.176]:33333)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>)
-	id 1agYiL-000209-Ef; Thu, 17 Mar 2016 10:15:49 -0400
-Received: by mail-wm0-x235.google.com with SMTP id l68so119240097wml.1;
-	Thu, 17 Mar 2016 07:15:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=jkkEFTGZRo/6QYqgRQ85yjVsxiDYAmiVfCEE+ru9H78=;
-	b=Z+vs8J5lsrEQ1irOEhKtnV62ek8w8e1ccDomNM10yCjcAhn64Cq54qNpOxb5ofIt8l
-	F2UP8HerqDriNRsGSACYC1+MOAfET1AiqXQgHuLRGDySw+ReDDuTItn/tPCzk2mIG6At
-	dzS8lKDLJ12l5elrsA69a3QSSOOH3llibTDnrG3fmtHpbiF05H7mMiJ2k5EUtDNoSNzY
-	96e3L/Hw7fwl5FgaiV6+E415voisT1RGCg4rEtsB5FbR4ivm8dL1L0xct1nUbdApry2O
-	4n+ExtXFgmukGiRBQo4/ROGOgNaRMImQ2an0CgQLK76rA+QjjfSjl+aIkgkap8T0YaiD
-	udBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=jkkEFTGZRo/6QYqgRQ85yjVsxiDYAmiVfCEE+ru9H78=;
-	b=GDn1Rv+sw3lAIQNS3MvJkvaqVSB6Xn4zsBSkpMxWvxeqMaP68HdynYPtyuxJUNuMhw
-	hxZr46XZfePGTnoASfKDFkt+9Cs1QZPTJPh15cmQ3iBeJB7MP1e8+nisC/jamdSZFogl
-	W2eGFrK3GdsiaKb83mOnPIY1c1zUY3Zp4kXuK6vBzWDcZc5LrUtjTXypq/y/RP5LXMpk
-	UAtKpcvymTLzpDQLPQt5/r4/GcF4fSzpPOcyo/CiTGUY/Ju9XZSigMHH796LuL7IQoAT
-	5tn58FOIqDY0uMGRBqHlmCQmUofq1egg6fmEf+7ZvZ7+8OrCLyTo+2hoDHeGqNeAdAur
-	+JVg==
-X-Gm-Message-State: AD7BkJIZXW58IjgtNQlDIOMH9hTWM/AF6ejyQburwkK6uoNsWedRXbDugAOC7vSkeW8sKA==
-X-Received: by 10.28.215.79 with SMTP id o76mr37193416wmg.95.1458224148690;
-	Thu, 17 Mar 2016 07:15:48 -0700 (PDT)
-Received: from localhost (host109-156-68-66.range109-156.btcentralplus.com.
-	[109.156.68.66])
-	by smtp.gmail.com with ESMTPSA id gt7sm7901086wjc.1.2016.03.17.07.15.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 17 Mar 2016 07:15:47 -0700 (PDT)
-Date: Thu, 17 Mar 2016 14:15:46 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: "Sanchez, Juan Carlos (GE Aviation)" <juan.carlos.sanchez@ge.com>
-Message-ID: <20160317141546.GK14062@stefanha-x1.localdomain>
-References: <709659D8C88A4047B113A8F68771E8EA46B91006@ALPMBAPA12.e2k.ad.ge.com>
+	(envelope-from <afarallax@yandex.ru>)
+	id 1agZk3-0007nu-Qa; Thu, 17 Mar 2016 11:21:40 -0400
+Received: from web26j.yandex.ru (web26j.yandex.ru [5.45.198.67])
+	by forward12j.cmail.yandex.net (Yandex) with ESMTP id 0729421127;
+	Thu, 17 Mar 2016 18:21:35 +0300 (MSK)
+Received: from web26j.yandex.ru (localhost [127.0.0.1])
+	by web26j.yandex.ru (Yandex) with ESMTP id CB203558166D;
+	Thu, 17 Mar 2016 18:21:34 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1458228095; bh=ReJJFQKEZxns5PeisalfeArWvC3SFR4crFRpNzGxIJI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=RrpVbC8NFX1Z6UZZsb30B2x9xa9VFT7mZeo1i8YBrYn+fk7YyXn/+bR6wjFMuh+kS
+	zEe/o4/eQQXKTS+vmw/OmygXK/O6dYTvRGfC1RXFgVX9wryHfqDRjMOhxynOUQmvsO
+	Rw+CpOR/ILq/POJNxJXjobvRx4bOqo/z0U3srYn8=
+Received: by web26j.yandex.ru with HTTP;
+	Thu, 17 Mar 2016 18:21:34 +0300
+From: Sergey Sorokin <afarallax@yandex.ru>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA_s+YmPJSwmWYc4coMXzdRHhB3bsHew_AfRunD1pWhB_Q@mail.gmail.com>
+References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
+	<CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
+	<1022901457739899@web28h.yandex.ru>
+	<CAFEAcA_+MD=Cf26wZ_C9AH_NbRm_Lim492ugWUx3WqEzNrN8eQ@mail.gmail.com>
+	<4542001457893724@web22h.yandex.ru>
+	<CAFEAcA_s+YmPJSwmWYc4coMXzdRHhB3bsHew_AfRunD1pWhB_Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="3MHXEHrrXKLGx71o"
-Content-Disposition: inline
-In-Reply-To: <709659D8C88A4047B113A8F68771E8EA46B91006@ALPMBAPA12.e2k.ad.ge.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Message-Id: <628941458228094@web26j.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Thu, 17 Mar 2016 18:21:34 +0300
+Content-Type: text/plain; charset=koi8-r
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::235
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-devel] Hi good afternoon, some small support
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 5.255.227.176
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Fix descriptor address masking
+	in ARM address translation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HJijIN+aoeWy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OR7ELCmoHqBK
 
+17.03.2016, 14:40, "Peter Maydell" <peter.maydell@linaro.org>:
+> On 13 March 2016 at 18:28, Sergey Sorokin <afarallax@yandex.ru> wrote:
+>>> If you want to implement the AddressSize checks that's fine,
+>>> but otherwise please leave this bit of the code alone.
+>>
+>> =9AYou said me that my code is not correct, I have proved that it conf=
+orms
+>> =9Ato the documentation.
+>> =9AIt's a bit obfuscating when the doc explicitly says to take bits up=
+ to 39
+>> =9Afrom the descriptor, but in QEMU we take bits up to 47 relying on t=
+he check in
+>> =9Aanother part of the code, even if both ways are correct.
+>
+> The way the code in QEMU is structured is that we extract the
+> descriptor field in one go and then will operate on it
+> (checking for need to AddressSize fault, etc) as a second
+> action. The field descriptors themselves are the sizes I said.
 
---3MHXEHrrXKLGx71o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Well, may be it's enough just to change this comment as you intend:
 
-On Fri, Mar 04, 2016 at 08:52:37PM +0000, Sanchez, Juan Carlos (GE Aviation=
-) wrote:
->  	I am trying to execute an image created by ARM in QEMU using windows OS=
-, could you give me guide to example the command line?=20
->=20
-> The command line in Unix work well, but I don't understood all the option=
-s. This the reason that I looking for some help
->=20
-> /home/nhcu02t/yocto_i686/prebuild/sysroots/i686-pokysdk-linux/usr/bin/qem=
-u-system-arm -kernel zImage-qemuarm.bin -net nic,model=3Dvirtio -net tap,vl=
-an=3D0,ifname=3Dtap0,script=3Dno,downscript=3Dno -M versatilepb -drive file=
-=3D/home/nhcu02t/yocto_org_built/images/qemuarm/core-image-minimal-qemuarm.=
-ext4,if=3Dvirtio,format=3Draw -no-reboot -show-cursor -usb -usbdevice wacom=
--tablet -no-reboot -m 128 -serial mon:vc -serial null --append "root=3D/dev=
-/vda rw console=3DttyAMA0,115200 console=3Dtty ip=3D192.168.7.2::192.168.7.=
-1:255.255.255.0 mem=3D128M highres=3Doff rootfstype=3Dext4 "
->=20
->=20
-> I accept any help that you provide me.
+>> -    /* The address field in the descriptor goes up to bit 39 for ARMv=
+7
+>> -     * but up to bit 47 for ARMv8.
+>> +    /* The address field in the descriptor goes up to bit 39 for AArc=
+h32
+>> +     * but up to bit 47 for AArch64.
+>>       */
+>
+>This is not correct -- the descriptor field widths are as the comment
+>states before your patch:
+> * up to bit 39 for ARMv7
+> * up to bit 47 for ARMv8 (whether AArch32 or AArch64)
 
-Did you look at the documentation?
-
-This should help you understand most of the options:
-http://qemu.weilnetz.de/qemu-doc.html
-
-If you have specific questions, feel free to ask.
-
-Stefan
-
---3MHXEHrrXKLGx71o
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQEcBAEBAgAGBQJW6rwSAAoJEJykq7OBq3PIVEsIAKXxaTuOopQAb4LFSlqYNc9T
-sJPTjU+9Q975o5kRK7+GpvuvmQB0qjAhZA54ZGiFDYl4P+wqUFaaEY1KLPAWXrup
-A6iX5I8h9OS4bJYY0qHV46REuBGVAncZv/YAQ0284PZddzD6Vb5R5I8JyJYw+mET
-Sk88onYiHgnw/dMpEICDgBsPbnS/fdosKEgJQXQtFuxOU+S28HFpqv2rrIHWdOjV
-VisHwnqRcxCRQCkkuYa8eBDyYAv845vpp/o2a+A09iKoxWfKwG5diZGTO0lg3hgs
-sZSOraZC+ZLLUGIGlXTuTimWpgIpzsGMhJHq6DFEmwhnkF4f9Rzz5uVI9W4U6Y8=
-=jEul
------END PGP SIGNATURE-----
-
---3MHXEHrrXKLGx71o--
+I could describe there, that the descriptor field is up to bit 47 for ARM=
+v8,
+but we use the descaddrmask up to bit 39 for AArch32,
+because we don't need other bits in that case to construct next descripto=
+r address,
+as it is described in the doc.

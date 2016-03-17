@@ -1,109 +1,131 @@
-Received: by 10.25.208.211 with SMTP id h202csp1240493lfg;
-        Wed, 16 Mar 2016 08:02:17 -0700 (PDT)
-X-Received: by 10.55.73.199 with SMTP id w190mr5796238qka.77.1458140533478;
-        Wed, 16 Mar 2016 08:02:13 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp378378lfg;
+        Thu, 17 Mar 2016 04:41:06 -0700 (PDT)
+X-Received: by 10.55.76.213 with SMTP id z204mr13211645qka.58.1458214866476;
+        Thu, 17 Mar 2016 04:41:06 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z69si3619768qgd.9.2016.03.16.08.02.13
+        by mx.google.com with ESMTPS id d34si7577528qkh.0.2016.03.17.04.41.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Mar 2016 08:02:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 17 Mar 2016 04:41:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:56867 helo=lists.gnu.org)
+Received: from localhost ([::1]:34212 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agCxh-0002nt-26
-	for alex.bennee@linaro.org; Wed, 16 Mar 2016 11:02:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53228)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1agWIc-0006Nr-11
+	for alex.bennee@linaro.org; Thu, 17 Mar 2016 07:41:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47313)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1agCxZ-0002dR-Vm
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 11:02:11 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1agWI6-0005us-Hk
+	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 07:40:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1agCxV-0001nI-Vr
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 11:02:05 -0400
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:33361)
+	(envelope-from <peter.maydell@linaro.org>) id 1agWI5-0006t4-6S
+	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 07:40:34 -0400
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:36511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1agCxV-0001mu-Si
-	for qemu-arm@nongnu.org; Wed, 16 Mar 2016 11:02:01 -0400
-Received: by mail-vk0-x232.google.com with SMTP id k1so65203222vkb.0
-	for <qemu-arm@nongnu.org>; Wed, 16 Mar 2016 08:02:01 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1agWI5-0006sw-0P
+	for qemu-devel@nongnu.org; Thu, 17 Mar 2016 07:40:33 -0400
+Received: by mail-vk0-x232.google.com with SMTP id q138so6394179vkb.3
+	for <qemu-devel@nongnu.org>; Thu, 17 Mar 2016 04:40:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=FPKvzY2/vezmeNFoWIVIZEqD90zAAR0DQQydr4NuRHo=;
-	b=Ta8IFM5tt8D7ymmx0+ZgnHxtHeAYL/5XhTme1Sm1701Wr3hBbXIkNGj9MqmWdwoVg8
-	dX+jGBZAwCP0RVHart13sGiF2ApS2t7Qj0egBrhSnUprP2uCvxrMhRXWhQyOs9r4QITU
-	ph+vdTsfXHMHFu5b5eHexntms+G4WIiSVQ2zY=
+	:cc; bh=DZaP6pKAxOdP18Il/Lp4MJZjXzpA4C4xERftWfhi1uY=;
+	b=aCu9u7G+od1XwD8mwRQ2aLdZ8Z7GuVcgHT+7JiqnCEGQLCZlEv0QRJfFdy3dgIYf7s
+	nlhcEo+rT72BayS4XWiTWc5zoSid0ALGSabNo5SpcPoWRzDvDMqOkeUqSbRqVZqv0LkZ
+	OXQL2E/TXNCtbSNMlxHsXVXKIqLlD/cYblDsE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=FPKvzY2/vezmeNFoWIVIZEqD90zAAR0DQQydr4NuRHo=;
-	b=ACMNpC4Xk4KWVDnp0BQ6Hvdhk3ZItua4OKsf2kIu7T7uh5lloqJh4vglCLZ2wPYyjx
-	knS2VHLm0Dp6SgIK+iylmcHPpO5iLfInjkSPmyl88E+q9S6iJbXCqPuRZ2KFxYm3oUhq
-	x+HjHO1bkcPyM/6mwwcmViVuVNG2OL2PbcgEr38BxxIzcjXhR6F0UN+fEjMB/r/OmgB/
-	6LaisQTl4mzuXHJlOrd/3trezI/m95OdIDs3Z0FAbH9ETBpCFy7KJpmntZ22+HfMQsr5
-	yFs/RXAdZNcMzE3zfZzmck07extJcaF0hXnDnp4oDWfViWUKGMay+DjfUhvqq8av8SNf
-	z+RQ==
-X-Gm-Message-State: AD7BkJIMk9E9elEGR0VC3BDiMAKOScv6xyeLeB12tCjttj/kPjXRq4phvFvpqeuoICt9yYka6Yrpu0V8OTGRE2PI
-X-Received: by 10.31.52.147 with SMTP id b141mr4993408vka.82.1458140521439;
-	Wed, 16 Mar 2016 08:02:01 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=DZaP6pKAxOdP18Il/Lp4MJZjXzpA4C4xERftWfhi1uY=;
+	b=GQbX6dPTvPUzEh7u3d8o3YtjnLuhIJV9rxxnoP78kntKo8RhHobF4rAwtFHoUApQRV
+	uchElRnUFLu9zGfJf0LMU9DKzaeh19zmD757mLR9+iywimDRuxdLYe5iG0QymRr0FSk1
+	9OgR59e2Ehvq8fBazzWKOMGHjwNYbshZ+f0haZfem1fXMW8ZjvDR0Y59X4ymU1B5QO/X
+	WiRDVOdwnI7Pc+olHbDKcD6uDtNZVJiJnnvWrT7nBZLed4SS3xoMufn+cdjRbJ83tq89
+	OwgeZuLmbVPhE7V5KxdhYYmv6t3s0nQAjXNkdIM3F5mUZH0Avx9CTwkU3ijHZHOYXHbn
+	6ODQ==
+X-Gm-Message-State: AD7BkJKwh4ja3D6Kpr3HgYneC3laaQOC7N4MzO+FxOxdXHNCAhRVJhZKXnS7iBFxlCBXdvQZoRye9wqmVB9gVHhE
+X-Received: by 10.31.47.207 with SMTP id v198mr11035408vkv.6.1458214832322;
+	Thu, 17 Mar 2016 04:40:32 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Wed, 16 Mar 2016 08:01:41 -0700 (PDT)
-In-Reply-To: <145625173293.12025.6340664976132573147.stgit@localhost>
-References: <145625172744.12025.2350972792125742783.stgit@localhost>
-	<145625173293.12025.6340664976132573147.stgit@localhost>
+Received: by 10.31.216.1 with HTTP; Thu, 17 Mar 2016 04:40:12 -0700 (PDT)
+In-Reply-To: <4542001457893724@web22h.yandex.ru>
+References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
+	<CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
+	<1022901457739899@web28h.yandex.ru>
+	<CAFEAcA_+MD=Cf26wZ_C9AH_NbRm_Lim492ugWUx3WqEzNrN8eQ@mail.gmail.com>
+	<4542001457893724@web22h.yandex.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Mar 2016 15:01:41 +0000
-Message-ID: <CAFEAcA_DGgn8cQ9neJ1BYg-r3rH3ybgqpyEwNy0u5YA4DJX=xw@mail.gmail.com>
-To: =?UTF-8?Q?Llu=C3=ADs_Vilanova?= <vilanova@ac.upc.edu>
+Date: Thu, 17 Mar 2016 11:40:12 +0000
+Message-ID: <CAFEAcA_s+YmPJSwmWYc4coMXzdRHhB3bsHew_AfRunD1pWhB_Q@mail.gmail.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2607:f8b0:400c:c05::232
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>, Eduardo Habkost <ehabkost@redhat.com>,
-	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
-	Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, "open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [PATCH 1/5] exec: [tcg] Track which vCPU is
- performing translation and execution
-X-BeenThere: qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH] target-arm: Fix descriptor address masking
+	in ARM address translation
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 83ar9bODfZmS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pxws09U9kVME
 
-On 23 February 2016 at 18:22, Llu=C3=ADs Vilanova <vilanova@ac.upc.edu> wro=
-te:
-> Information is tracked inside the TCGContext structure, and later used
-> by tracing events with the 'tcg' and 'vcpu' properties.
+On 13 March 2016 at 18:28, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> 12.03.2016, 03:18, "Peter Maydell" <peter.maydell@linaro.org>:
+>>(I agree we have a bug here, I'm just trying to work out when it
+>>can trigger; if it's only possible for S2 page tables then it's
+>>not a visible bug yet because no CPUs have EL2 support enabled.)
 >
-> The 'cpu' field is used to check tracing of translation-time
-> events ("*_trans"). The 'tcg_env' field is used to pass it to
-> execution-time events ("*_exec").
->
-> Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+> I can not anwer you to this question. The bug was found by our internal
+> corporate test suite with EL2 enabled.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+OK, sounds like it is the stage-2 only stuff. Thanks for
+helping to flush out the bugs.
+
+>>If you want to implement the AddressSize checks that's fine,
+>>but otherwise please leave this bit of the code alone.
+>
+> You said me that my code is not correct, I have proved that it conforms
+> to the documentation.
+> It's a bit obfuscating when the doc explicitly says to take bits up to 39
+> from the descriptor, but in QEMU we take bits up to 47 relying on the check in
+> another part of the code, even if both ways are correct.
+
+The way the code in QEMU is structured is that we extract the
+descriptor field in one go and then will operate on it
+(checking for need to AddressSize fault, etc) as a second
+action. The field descriptors themselves are the sizes I said.
+
+> Nevertheless there is another bug in descaddrmask in QEMU.
+> From ARM ARM:
+> baseaddress = desc<39:grainsize>:Zeros(grainsize);
+>
+> But currently QEMU does:
+> descaddrmask = 0xfffffffff000ULL;
+>
+> It assumes that grainsize is always 12, but it can be greater
+> in AArch64 translation regime.
+
+Yes, we get that wrong at the moment and should fix it.
+
+> The patch fixes the bug,
+> and completely conforms to the doc, doesn't it?
+
+It doesn't structure the code the way I would prefer it to
+be structured though.
 
 thanks
 -- PMM

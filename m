@@ -1,43 +1,43 @@
-Received: by 10.25.208.211 with SMTP id h202csp792872lfg;
-        Thu, 17 Mar 2016 20:28:07 -0700 (PDT)
-X-Received: by 10.140.98.163 with SMTP id o32mr19438227qge.46.1458271686938;
-        Thu, 17 Mar 2016 20:28:06 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp793251lfg;
+        Thu, 17 Mar 2016 20:29:32 -0700 (PDT)
+X-Received: by 10.140.102.232 with SMTP id w95mr18852121qge.21.1458271772337;
+        Thu, 17 Mar 2016 20:29:32 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 76si10570601qhi.39.2016.03.17.20.28.06
+        by mx.google.com with ESMTPS id j60si10601712qge.40.2016.03.17.20.29.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 17 Mar 2016 20:28:06 -0700 (PDT)
+        Thu, 17 Mar 2016 20:29:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41276 helo=lists.gnu.org)
+Received: from localhost ([::1]:41292 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1agl54-0006GY-Df
-	for alex.bennee@linaro.org; Thu, 17 Mar 2016 23:28:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43303)
+	id 1agl6R-0000yO-Q6
+	for alex.bennee@linaro.org; Thu, 17 Mar 2016 23:29:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1agl4z-00067U-5P
-	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 23:28:04 -0400
+	(envelope-from <peterx@redhat.com>) id 1agl4v-000602-Ei
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 23:27:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1agl4y-0000vV-9p
-	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 23:28:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41235)
+	(envelope-from <peterx@redhat.com>) id 1agl4u-0000uB-Aa
+	for qemu-arm@nongnu.org; Thu, 17 Mar 2016 23:27:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41218)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <peterx@redhat.com>)
-	id 1agl4y-0000vD-5D; Thu, 17 Mar 2016 23:28:00 -0400
+	id 1agl4u-0000u6-53; Thu, 17 Mar 2016 23:27:56 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	by mx1.redhat.com (Postfix) with ESMTPS id CD30A141D;
-	Fri, 18 Mar 2016 03:27:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C9EB17F6B2;
+	Fri, 18 Mar 2016 03:27:55 +0000 (UTC)
 Received: from pxdev.xzpeter.org.com (vpn1-7-63.pek2.redhat.com [10.72.7.63])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u2I3Rce5023061; Thu, 17 Mar 2016 23:27:56 -0400
+	ESMTP id u2I3Rce4023061; Thu, 17 Mar 2016 23:27:51 -0400
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 18 Mar 2016 11:27:33 +0800
-Message-Id: <1458271654-23706-5-git-send-email-peterx@redhat.com>
+Date: Fri, 18 Mar 2016 11:27:32 +0800
+Message-Id: <1458271654-23706-4-git-send-email-peterx@redhat.com>
 In-Reply-To: <1458271654-23706-1-git-send-email-peterx@redhat.com>
 References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
@@ -46,8 +46,8 @@ X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
 	armbru@redhat.com, peterx@redhat.com, abologna@redhat.com,
 	qemu-arm@nongnu.org, eblake@redhat.com
-Subject: [Qemu-arm] [PATCH v5 4/5] kvm: add kvm_support_device() helper
-	function
+Subject: [Qemu-arm] [PATCH v5 3/5] arm: enhance
+	kvm_arm_create_scratch_host_vcpu
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -61,63 +61,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jfWWxm+eNgbA
+X-TUID: OV5K0HI8oahk
 
-This can be used when probing whether KVM support specific device. Here,
-a raw vmfd is used.
+Some more lines to make sure we allow NULL for 1st/3rd parameter.
 
 Signed-off-by: Peter Xu <peterx@redhat.com>
 ---
- include/sysemu/kvm.h |  9 +++++++++
- kvm-all.c            | 15 +++++++++++++++
- 2 files changed, 24 insertions(+)
+ target-arm/kvm.c     | 10 +++++++++-
+ target-arm/kvm_arm.h |  6 ++++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 6695fa7..8738fa1 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -306,6 +306,15 @@ void kvm_device_access(int fd, int group, uint64_t attr,
-  */
- int kvm_create_device(KVMState *s, uint64_t type, bool test);
+diff --git a/target-arm/kvm.c b/target-arm/kvm.c
+index 969ab0b..0a7f9a6 100644
+--- a/target-arm/kvm.c
++++ b/target-arm/kvm.c
+@@ -62,13 +62,17 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+         goto err;
+     }
  
-+/**
-+ * kvm_support_device - probe whether KVM support specific device
-+ *
-+ * @vmfd: The fd handler for VM
-+ * @type: type of device
-+ *
-+ * @return: true if supported, otherwise false.
-+ */
-+bool kvm_support_device(int vmfd, uint64_t type);
- 
- /* Arch specific hooks */
- 
-diff --git a/kvm-all.c b/kvm-all.c
-index 44c0464..77deccc 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -2339,6 +2339,21 @@ int kvm_create_device(KVMState *s, uint64_t type, bool test)
-     return test ? 0 : create_dev.fd;
- }
- 
-+bool kvm_support_device(int vmfd, uint64_t type)
-+{
-+    struct kvm_create_device create_dev = {
-+        .type = type,
-+        .fd = -1,
-+        .flags = KVM_CREATE_DEVICE_TEST,
-+    };
-+
-+    if (ioctl(vmfd, KVM_CHECK_EXTENSION, KVM_CAP_DEVICE_CTRL) <= 0) {
-+        return false;
++    if (!init) {
++        goto finish;
 +    }
 +
-+    return (ioctl(vmfd, KVM_CREATE_DEVICE, &create_dev) >= 0);
-+}
-+
- int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source)
- {
-     struct kvm_one_reg reg;
+     ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, init);
+     if (ret >= 0) {
+         ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
+         if (ret < 0) {
+             goto err;
+         }
+-    } else {
++    } else if (cpus_to_try) {
+         /* Old kernel which doesn't know about the
+          * PREFERRED_TARGET ioctl: we know it will only support
+          * creating one kind of guest CPU which is its preferred
+@@ -85,8 +89,12 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
+         if (ret < 0) {
+             goto err;
+         }
++    } else {
++        /* Not providing cpus_to_try, do nothing. */
++        ;
+     }
+ 
++finish:
+     fdarray[0] = kvmfd;
+     fdarray[1] = vmfd;
+     fdarray[2] = cpufd;
+diff --git a/target-arm/kvm_arm.h b/target-arm/kvm_arm.h
+index 07f0c72..6bcfe6c 100644
+--- a/target-arm/kvm_arm.h
++++ b/target-arm/kvm_arm.h
+@@ -124,9 +124,11 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu);
+  * kvm_arm_create_scratch_host_vcpu:
+  * @cpus_to_try: array of QEMU_KVM_ARM_TARGET_* values (terminated with
+  * QEMU_KVM_ARM_TARGET_NONE) to try as fallback if the kernel does not
+- * know the PREFERRED_TARGET ioctl
++ * know the PREFERRED_TARGET ioctl. If NULL is provided, will try
++ * nothing.
+  * @fdarray: filled in with kvmfd, vmfd, cpufd file descriptors in that order
+- * @init: filled in with the necessary values for creating a host vcpu
++ * @init: filled in with the necessary values for creating a host
++ * vcpu. If NULL is provided, will not init the vCPU.
+  *
+  * Create a scratch vcpu in its own VM of the type preferred by the host
+  * kernel (as would be used for '-cpu host'), for purposes of probing it
 -- 
 2.4.3
 

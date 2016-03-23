@@ -1,65 +1,66 @@
-Received: by 10.25.208.211 with SMTP id h202csp72460lfg;
-        Wed, 23 Mar 2016 07:25:22 -0700 (PDT)
-X-Received: by 10.140.18.114 with SMTP id 105mr3869225qge.41.1458743122706;
-        Wed, 23 Mar 2016 07:25:22 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp75559lfg;
+        Wed, 23 Mar 2016 07:31:29 -0700 (PDT)
+X-Received: by 10.55.20.37 with SMTP id e37mr3995922qkh.8.1458743489526;
+        Wed, 23 Mar 2016 07:31:29 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m69si2334477qkl.67.2016.03.23.07.25.22
+        by mx.google.com with ESMTPS id u24si2330614qku.113.2016.03.23.07.31.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Mar 2016 07:25:22 -0700 (PDT)
+        Wed, 23 Mar 2016 07:31:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44260 helo=lists.gnu.org)
+Received: from localhost ([::1]:44287 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aijis-0007QP-7R
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 10:25:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54351)
+	id 1aijon-0002hL-2U
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 10:31:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55764)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aijip-0007QD-PN
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 10:25:20 -0400
+	(envelope-from <eblake@redhat.com>) id 1aijog-0002g5-2N
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 10:31:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aijim-0000VC-VG
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 10:25:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35945)
+	(envelope-from <eblake@redhat.com>) id 1aijob-0002ND-Rv
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 10:31:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42556)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>)
-	id 1aijim-0000V0-Pq; Wed, 23 Mar 2016 10:25:16 -0400
+	(envelope-from <eblake@redhat.com>)
+	id 1aijob-0002N9-MU; Wed, 23 Mar 2016 10:31:17 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id 6ED5D821C3;
-	Wed, 23 Mar 2016 14:25:14 +0000 (UTC)
-Received: from pxdev.xzpeter.org (vpn1-7-25.pek2.redhat.com [10.72.7.25])
+	by mx1.redhat.com (Postfix) with ESMTPS id E6D2B804E4;
+	Wed, 23 Mar 2016 14:31:16 +0000 (UTC)
+Received: from [10.3.113.112] (ovpn-113-112.phx2.redhat.com [10.3.113.112])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2NEP1DT003743
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 23 Mar 2016 10:25:07 -0400
-Date: Wed, 23 Mar 2016 22:25:00 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20160323142500.GU28183@pxdev.xzpeter.org>
+	id u2NEVGpP010732; Wed, 23 Mar 2016 10:31:16 -0400
+To: Markus Armbruster <armbru@redhat.com>, Peter Xu <peterx@redhat.com>
 References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
-	<1458271654-23706-2-git-send-email-peterx@redhat.com>
-	<87zitqjrhj.fsf@blackfin.pond.sub.org>
-	<87vb4eicdu.fsf@blackfin.pond.sub.org>
-	<20160323025819.GD28183@pxdev.xzpeter.org>
-	<87shzhbktm.fsf@blackfin.pond.sub.org>
-	<20160323114830.GR28183@pxdev.xzpeter.org>
-	<8737rh8jvj.fsf@blackfin.pond.sub.org>
+	<1458271654-23706-3-git-send-email-peterx@redhat.com>
+	<874mbyl64i.fsf@blackfin.pond.sub.org>
+	<20160323041429.GG28183@pxdev.xzpeter.org>
+	<87egb1bjxe.fsf@blackfin.pond.sub.org>
+	<20160323120449.GT28183@pxdev.xzpeter.org>
+	<87wpot47bo.fsf@blackfin.pond.sub.org>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <56F2A8B3.1000701@redhat.com>
+Date: Wed, 23 Mar 2016 08:31:15 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <8737rh8jvj.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <87wpot47bo.fsf@blackfin.pond.sub.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="HG2BwXCC7eN16CpEwb8JQSIoUGge43u8E"
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
-	qemu-devel@nongnu.org, abologna@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/5] arm: qmp: add
-	GICCapability struct
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
+	mdroth@linux.vnet.ibm.com, abologna@redhat.com, qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/5] arm: qmp: add
+ query-gic-capabilities interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -73,42 +74,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PL7osnC7FOl/
+X-TUID: 5SYc4jyuVjg+
 
-On Wed, Mar 23, 2016 at 01:21:52PM +0100, Markus Armbruster wrote:
-> Can you tell me what a management application is supposed to do with the
-> information returned by query-gic-capabilities?  Not just in general
-> terms, like "using this information, libvirt can warn the user during
-> configuration of guests when specified GIC device type is not supported,
-> but specifics.  Something like "-frobnicate mutter=mumble won't work
-> unless query-gic-capabilities reports emulated version 2 is supported"
-> for every piece of configuration that should be vetted against
-> query-gic-capabilities.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--HG2BwXCC7eN16CpEwb8JQSIoUGge43u8E
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-I suppose that won't be a very big problem since possibly only
-libvirt will use it... I agree that it's better to explain it more
-clearly though. How about adding these lines into patch 1 commit
-message:
+On 03/23/2016 08:06 AM, Markus Armbruster wrote:
 
-"""
-For example, if we got the query result:
+>>> query-gic-capabilities looks like it fundamentally returns a list of
+>>> capabilities.  Returning ['GICCapability'] is just fine then.
+>>
+>> I have posted v6 just as Eric has suggested. At least one advantage
+>> is that it is easier to be extended (if needed) in the future, also
+>> to follow the more-generic format to use dicts rather than
+>> arrays. If you would not mind, I'll keep the dict interface there.
+>=20
+> Returning such a list of a structured type is a well-established
+> convention by now --- qmp-introspect.c shows 28 commands doing it, most=
 
-{"return": {"capabilities":
-  [ {"emulated": false, "version": 3, "kernel": true},
-    {"emulated": true, "version": 2, "kernel": false} ] } }
+> of them named query-FOO.  I'd rather not start a different convention
+> now, just because we got temporarily confused about our own rules.  So,=
 
-Then it means that we support emulated GIC version 2 using:
+> unless there's something about query-gic-capabilities that makes it mor=
+e
+> likely to need extension outside its list element type, let's stick to
+> returning the list.
+>=20
+> Eric?
 
-  qemu-system-aarch64 -M virt,gic-version=2 ...
+Makes sense to me, and perhaps my own fault for getting confused by not
+even trying to delete just the whitelist line and seeing what would
+happen.  Having a consistent style of query-* returning an array type is
+reasonable to continue.
 
-or kvm-accelerated GIC version 3 using:
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
 
-  qemu-system-aarch64 -enable-kvm -M virt,gic-version=3 ...
 
-If we specify other explicit GIC version rather than the above, QEMU
-will not be able to boot.
-"""
+--HG2BwXCC7eN16CpEwb8JQSIoUGge43u8E
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-Thanks.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
 
--- peterx
+iQEcBAEBCAAGBQJW8qizAAoJEKeha0olJ0NqsekIAKsdmC4VM8UgGzCZu48Xemnh
+CWjIRVLcbnTxtTN9Fe+VOePfHeTxtMCqjlfm1HmgIwBc16ns66HKCBHXgqFQllSi
+X7L0r1K8uotPlbgFlIOgdsk4BptBoIexggIvzAelG9KBFbuvojskJV8T6IPpEP74
+xXfjMDIZ5t4AbqV01IInQOwKOREkte0pWQBYWmdK5dcTRkqvrskrpdnHE4EJdxML
+Fxcy1n/t2hBNJ31gEIvoF/OASHBrmv8wN800DjPbmDpobLaat9W3B/bDcyRoAnML
+mNYLEIwO7usy55j2DEM2bniRfJFUwXFuHlugS3jqUrriWVMRNtEXDl5TVNCzIvQ=
+=FWD2
+-----END PGP SIGNATURE-----
+
+--HG2BwXCC7eN16CpEwb8JQSIoUGge43u8E--

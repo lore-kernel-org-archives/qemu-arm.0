@@ -1,61 +1,52 @@
-Received: by 10.25.208.211 with SMTP id h202csp2237094lfg;
-        Tue, 22 Mar 2016 21:07:43 -0700 (PDT)
-X-Received: by 10.140.107.182 with SMTP id h51mr646229qgf.53.1458706063108;
-        Tue, 22 Mar 2016 21:07:43 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp2263596lfg;
+        Tue, 22 Mar 2016 22:32:55 -0700 (PDT)
+X-Received: by 10.141.7.68 with SMTP id j65mr977449qhd.29.1458711175627;
+        Tue, 22 Mar 2016 22:32:55 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f189si587654qhc.12.2016.03.22.21.07.42
+        by mx.google.com with ESMTPS id j69si833333qga.6.2016.03.22.22.32.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Mar 2016 21:07:43 -0700 (PDT)
+        Tue, 22 Mar 2016 22:32:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40847 helo=lists.gnu.org)
+Received: from localhost ([::1]:41027 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aia58-0005mJ-Gj
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 00:07:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55074)
+	id 1aibPb-00035U-6Z
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 01:32:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39510)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aia55-0005lf-HM
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 00:07:40 -0400
+	(envelope-from <peterx@redhat.com>) id 1aibPY-00035B-Ka
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 01:32:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aia52-0003aP-8u
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 00:07:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42717)
+	(envelope-from <peterx@redhat.com>) id 1aibPV-0001CD-50
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 01:32:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41154)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <peterx@redhat.com>)
-	id 1aia52-0003aD-3E; Wed, 23 Mar 2016 00:07:36 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	by mx1.redhat.com (Postfix) with ESMTPS id A664580E6A;
-	Wed, 23 Mar 2016 04:07:35 +0000 (UTC)
-Received: from pxdev.xzpeter.org (dhcp-14-238.nay.redhat.com [10.66.14.238])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2N47Ntr032652
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 23 Mar 2016 00:07:27 -0400
-Date: Wed, 23 Mar 2016 12:07:22 +0800
+	id 1aibPU-0001C7-Vj; Wed, 23 Mar 2016 01:32:49 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	by mx1.redhat.com (Postfix) with ESMTPS id 860807F0B3;
+	Wed, 23 Mar 2016 05:32:48 +0000 (UTC)
+Received: from pxdev.xzpeter.org.com (dhcp-14-238.nay.redhat.com
+	[10.66.14.238])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2N5WeSE011002; Wed, 23 Mar 2016 01:32:41 -0400
 From: Peter Xu <peterx@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20160323040722.GF28183@pxdev.xzpeter.org>
-References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
-	<1458271654-23706-3-git-send-email-peterx@redhat.com>
-	<56F19222.2050003@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <56F19222.2050003@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+To: qemu-devel@nongnu.org
+Date: Wed, 23 Mar 2016 13:32:29 +0800
+Message-Id: <1458711153-15988-1-git-send-email-peterx@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, drjones@redhat.com, armbru@redhat.com,
-	mdroth@linux.vnet.ibm.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, abologna@redhat.com
-Subject: Re: [Qemu-arm] [PATCH v5 2/5] arm: qmp: add query-gic-capabilities
-	interface
+Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
+	libvir-list@redhat.com, armbru@redhat.com, peterx@redhat.com,
+	abologna@redhat.com, qemu-arm@nongnu.org, eblake@redhat.com
+Subject: [Qemu-arm] [PATCH v6 0/4] ARM: add query-gic-capabilities SMP
+	command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,72 +60,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 44ESyxkAI2vK
+X-TUID: P8Zr59GcDSyd
 
-On Tue, Mar 22, 2016 at 12:42:42PM -0600, Eric Blake wrote:
-> On 03/17/2016 09:27 PM, Peter Xu wrote:
-> > This patch adds the command "query-gic-capabilities" but not implemnet
-> 
-> s/not implemnet/does not implement/
+v6 changes:
+- patch 1 (squashed into patch 2)
+  - explain more about the following in commit message: why we need
+    this command, and what does the entries mean [Markus]
+  - explain what GIC is [Eric]
+  - squash this patch into patch 2 [Eric]
+- patch 2 (new patch 1)
+  - fix "does not implement" english error [Eric]
+  - remove useless headers in target-arm/monitor.c [Markus]
+  - remove this command from whitelist [Markus, Eric]
+  - return dict rather than array, with single key points to the
+    original array results [Markus, Eric]
+- patch 5 (new patch 4)
+  - tiny change in implementation to suite the new interface.
 
-Yep, again. Thanks.
+v5 changes:
+- patch 2: moved to target-arm/monitor.c (from target-arm/machine.c)
+           [Peter]
+- patch 3: splitted into three patches: [all from Peter's comments]
+  - patch 3 (new): leverage kvm_arm_create_scratch_host_vcpu(), tiny
+    enhancement of old one to suite our need
+  - patch 4: introduce kvm_support_device() in kvm-all.c
+  - patch 5: do the implementation.
 
-> 
-> > it. The command is ARM-only. Return of the command is a list of
-> > GICCapability struct that describes all GIC versions that current QEMU
-> > and system support.
-> > 
-> > Signed-off-by: Peter Xu <peterx@redhat.com>
-> > ---
-> 
-> > +++ b/qapi-schema.json
-> > @@ -4156,3 +4156,14 @@
-> >    'data': { 'version': 'int',
-> >              'emulated': 'bool',
-> >              'kernel': 'bool' } }
-> > +
-> > +##
-> > +# @query-gic-capabilities:
-> > +#
-> > +# Return a list of supported GIC version capabilities.
-> > +#
-> > +# Returns: a list of GICCapability.
-> > +#
-> > +# Since: 2.6
-> > +##
-> > +{ 'command': 'query-gic-capabilities', 'returns': ['GICCapability'] }
-> 
-> On the surface, this seems okay.  As mentioned before, I would have
-> squashed 1 and 2 into a single patch.  The GICCapability type is
-> extensible, and introspection is sufficient at seeing what the type is
-> currently capable of exposing.
-> 
-> On the other hand...
-> 
-> > +++ b/scripts/qapi.py
-> > @@ -46,6 +46,7 @@ returns_whitelist = [
-> >      'query-tpm-models',
-> >      'query-tpm-types',
-> >      'ringbuf-read',
-> > +    'query-gic-capability',
-> 
-> ...it required a whitelist, because you are violating the usual
-> convention of returning a dict.  If you DO need the whitelist, your
-> addition should have been kept sorted.  But you don't need it, if you
-> would modify your QAPI to return a dict:
-> 
-> { 'struct': 'GICCapabilitiesReturn',
->   'data': { 'capabilities': ['GICCapability'] } }
-> { 'command': 'query-gic-capabilities',
->   'returns': 'GICCapabilitiesReturn' }
-> 
-> Yes, the dict has only a single key, and that key points to the same
-> list; but now you have future extensibility: in the future, we could
-> return any future global data as a sibling to the array, without having
-> to modify every element of the array to repeat redundant information.
+v4 changes:
+- all: rename query-gic-capability to query-gic-capabilities [Andrea]
+- patch 3: rename helper function to kvm_support_device, make it
+  inline and lighter. [Drew]
 
-Yes, I think this is better solution. Will adopt this in next version.
+v3 changes:
+- patch 2: remove func declaration, add qmp header [Drew]
+- patch 3: being able to detect KVM GIC capabilities even without
+  kvm enabled [Andrea]: this is a little bit hacky, need some more
+  review on this.
 
-Thanks for the comments!
+v2 changes:
+- result layout change: use array and dict for the capability bits
+  rather than a single array of strings [Andrea/Markus]
+- spelling out what GIC is in doc [Eric]
 
--- peterx
+This patch is to add ARM-specific command "query-gic-capability".
+
+The new command can report which kind of GIC device the host/QEMU
+support. The returned result is in the form of array.
+
+Sample command and output:
+
+{"execute": "query-gic-capability"}
+{"return": [{"emulated": false, "version": 3, "kernel": false},
+            {"emulated": true, "version": 2, "kernel": true}]}
+
+Testing:
+
+Smoke tests on both x86 (emulated) and another moonshot ARM server.
+
+Peter Xu (4):
+  arm: qmp: add query-gic-capabilities interface
+  arm: enhance kvm_arm_create_scratch_host_vcpu
+  kvm: add kvm_support_device() helper function
+  arm: implement query-gic-capabilities
+
+ include/sysemu/kvm.h     |  9 +++++
+ kvm-all.c                | 15 +++++++++
+ monitor.c                |  8 +++++
+ qapi-schema.json         | 50 ++++++++++++++++++++++++++++
+ qmp-commands.hx          | 28 ++++++++++++++++
+ target-arm/Makefile.objs |  2 +-
+ target-arm/kvm.c         | 10 +++++-
+ target-arm/kvm_arm.h     |  6 ++--
+ target-arm/monitor.c     | 86 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 9 files changed, 210 insertions(+), 4 deletions(-)
+ create mode 100644 target-arm/monitor.c
+
+-- 
+2.4.3
+

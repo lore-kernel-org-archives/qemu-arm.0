@@ -1,61 +1,68 @@
-Received: by 10.25.208.211 with SMTP id h202csp2355528lfg;
-        Wed, 23 Mar 2016 02:17:24 -0700 (PDT)
-X-Received: by 10.55.33.78 with SMTP id h75mr1898856qkh.54.1458724644405;
-        Wed, 23 Mar 2016 02:17:24 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp2373786lfg;
+        Wed, 23 Mar 2016 02:54:24 -0700 (PDT)
+X-Received: by 10.55.78.84 with SMTP id c81mr2057296qkb.85.1458726864495;
+        Wed, 23 Mar 2016 02:54:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m7si1432275qhm.4.2016.03.23.02.17.24
+        by mx.google.com with ESMTPS id v186si1523549qhc.17.2016.03.23.02.54.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Mar 2016 02:17:24 -0700 (PDT)
+        Wed, 23 Mar 2016 02:54:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42065 helo=lists.gnu.org)
+Received: from localhost ([::1]:42233 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aieup-000252-TC
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 05:17:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50326)
+	id 1aifUe-00031i-3x
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 05:54:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aieun-00024q-Hc
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:17:22 -0400
+	(envelope-from <armbru@redhat.com>) id 1aifUa-00031O-Sc
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:54:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aieui-0007ax-J9
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:17:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37232)
+	(envelope-from <armbru@redhat.com>) id 1aifUZ-0006xy-St
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:54:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53530)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>)
-	id 1aieui-0007ar-Dh; Wed, 23 Mar 2016 05:17:16 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	by mx1.redhat.com (Postfix) with ESMTPS id F3133C00F215;
-	Wed, 23 Mar 2016 09:17:15 +0000 (UTC)
-Received: from pxdev.xzpeter.org (dhcp-14-238.nay.redhat.com [10.66.14.238])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2N9H2CR017842
+	(envelope-from <armbru@redhat.com>)
+	id 1aifUZ-0006xr-L3; Wed, 23 Mar 2016 05:54:19 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	by mx1.redhat.com (Postfix) with ESMTPS id 36E0AD7E60;
+	Wed, 23 Mar 2016 09:54:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-21.ams2.redhat.com
+	[10.36.116.21])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2N9sHe7007790
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 23 Mar 2016 05:17:08 -0400
-Date: Wed, 23 Mar 2016 17:17:01 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Andrea Bolognani <abologna@redhat.com>
-Message-ID: <20160323091701.GP28183@pxdev.xzpeter.org>
-References: <1458711153-15988-1-git-send-email-peterx@redhat.com>
-	<1458723243.3546.32.camel@redhat.com>
+	verify=NO); Wed, 23 Mar 2016 05:54:18 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A1BDF303F90D; Wed, 23 Mar 2016 10:54:16 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Xu <peterx@redhat.com>
+References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
+	<1458271654-23706-3-git-send-email-peterx@redhat.com>
+	<56F19222.2050003@redhat.com>
+	<20160323040722.GF28183@pxdev.xzpeter.org>
+Date: Wed, 23 Mar 2016 10:54:16 +0100
+In-Reply-To: <20160323040722.GF28183@pxdev.xzpeter.org> (Peter Xu's message of
+	"Wed, 23 Mar 2016 12:07:22 +0800")
+Message-ID: <878u19bjuf.fsf@blackfin.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1458723243.3546.32.camel@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 23 Mar 2016 09:54:19 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, drjones@redhat.com, libvir-list@redhat.com,
-	armbru@redhat.com, mdroth@linux.vnet.ibm.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, eblake@redhat.com
-Subject: Re: [Qemu-arm] [PATCH v6 0/4] ARM: add query-gic-capabilities SMP
-	command
+Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, abologna@redhat.com,
+	Eric Blake <eblake@redhat.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/5] arm: qmp: add
+	query-gic-capabilities interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,39 +76,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xA0iz/iBVMZS
+X-TUID: E5BCnfoP1mOW
 
-On Wed, Mar 23, 2016 at 09:54:03AM +0100, Andrea Bolognani wrote:
-> On Wed, 2016-03-23 at 13:32 +0800, Peter Xu wrote:
-> > v6 changes:
-> > - patch 1 (squashed into patch 2)
-> > =C2=A0 - explain more about the following in commit message: why we n=
-eed
-> > =C2=A0=C2=A0=C2=A0=C2=A0this command, and what does the entries mean =
-[Markus]
-> > =C2=A0 - explain what GIC is [Eric]
-> > =C2=A0 - squash this patch into patch 2 [Eric]
-> > - patch 2 (new patch 1)
-> > =C2=A0 - fix "does not implement" english error [Eric]
-> > =C2=A0 - remove useless headers in target-arm/monitor.c [Markus]
-> > =C2=A0 - remove this command from whitelist [Markus, Eric]
-> > =C2=A0 - return dict rather than array, with single key points to the
-> > =C2=A0=C2=A0=C2=A0=C2=A0original array results [Markus, Eric]
-> > - patch 5 (new patch 4)
-> > =C2=A0 - tiny change in implementation to suite the new interface.
->=20
-> Tested again on two different aarch64 hosts, one with GIC
-> v3 support and the other one with GIC v2 only; seems to be
-> working just fine.
->=20
-> Now on to tweak my RFC libvirt patches to cope with the
-> interface change :)
+Peter Xu <peterx@redhat.com> writes:
 
-Andrea,=20
+> On Tue, Mar 22, 2016 at 12:42:42PM -0600, Eric Blake wrote:
+>> On 03/17/2016 09:27 PM, Peter Xu wrote:
+>> > This patch adds the command "query-gic-capabilities" but not implemnet
+>> 
+>> s/not implemnet/does not implement/
+>
+> Yep, again. Thanks.
+>
+>> 
+>> > it. The command is ARM-only. Return of the command is a list of
+>> > GICCapability struct that describes all GIC versions that current QEMU
+>> > and system support.
+>> > 
+>> > Signed-off-by: Peter Xu <peterx@redhat.com>
+>> > ---
+>> 
+>> > +++ b/qapi-schema.json
+>> > @@ -4156,3 +4156,14 @@
+>> >    'data': { 'version': 'int',
+>> >              'emulated': 'bool',
+>> >              'kernel': 'bool' } }
+>> > +
+>> > +##
+>> > +# @query-gic-capabilities:
+>> > +#
+>> > +# Return a list of supported GIC version capabilities.
+>> > +#
+>> > +# Returns: a list of GICCapability.
+>> > +#
+>> > +# Since: 2.6
+>> > +##
+>> > +{ 'command': 'query-gic-capabilities', 'returns': ['GICCapability'] }
+>> 
+>> On the surface, this seems okay.  As mentioned before, I would have
+>> squashed 1 and 2 into a single patch.  The GICCapability type is
+>> extensible, and introspection is sufficient at seeing what the type is
+>> currently capable of exposing.
+>> 
+>> On the other hand...
+>> 
+>> > +++ b/scripts/qapi.py
+>> > @@ -46,6 +46,7 @@ returns_whitelist = [
+>> >      'query-tpm-models',
+>> >      'query-tpm-types',
+>> >      'ringbuf-read',
+>> > +    'query-gic-capability',
+>> 
+>> ...it required a whitelist, because you are violating the usual
 
-Thank you very much for your quick follow-ups (merely every
-time). :-)
+It doesn't :)
 
-Hope that the interface (at least) could suffice this time.
+>> convention of returning a dict.  If you DO need the whitelist, your
+>> addition should have been kept sorted.  But you don't need it, if you
+>> would modify your QAPI to return a dict:
+>> 
+>> { 'struct': 'GICCapabilitiesReturn',
+>>   'data': { 'capabilities': ['GICCapability'] } }
+>> { 'command': 'query-gic-capabilities',
+>>   'returns': 'GICCapabilitiesReturn' }
+>> 
+>> Yes, the dict has only a single key, and that key points to the same
+>> list; but now you have future extensibility: in the future, we could
+>> return any future global data as a sibling to the array, without having
+>> to modify every element of the array to repeat redundant information.
+>
+> Yes, I think this is better solution. Will adopt this in next version.
 
--- peterx
+As explained in my other message, do this only if query-gic-capabilities
+truly needs it.  There's plenty of precedence for returning a list of a
+structured type.
+
+> Thanks for the comments!
+>
+> -- peterx

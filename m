@@ -1,64 +1,63 @@
-Received: by 10.25.208.211 with SMTP id h202csp2373016lfg;
-        Wed, 23 Mar 2016 02:52:38 -0700 (PDT)
-X-Received: by 10.55.79.17 with SMTP id d17mr2060427qkb.56.1458726758662;
-        Wed, 23 Mar 2016 02:52:38 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp2428069lfg;
+        Wed, 23 Mar 2016 04:48:57 -0700 (PDT)
+X-Received: by 10.140.100.246 with SMTP id s109mr2724158qge.35.1458733737626;
+        Wed, 23 Mar 2016 04:48:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d90si1482065qge.118.2016.03.23.02.52.38
+        by mx.google.com with ESMTPS id u24si1813295qku.113.2016.03.23.04.48.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Mar 2016 02:52:38 -0700 (PDT)
+        Wed, 23 Mar 2016 04:48:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42226 helo=lists.gnu.org)
+Received: from localhost ([::1]:43411 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aifSw-0001cu-8p
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 05:52:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58299)
+	id 1aihHV-0005r7-7p
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 07:48:57 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:35945)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aifSt-0001b5-Vh
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:52:36 -0400
+	(envelope-from <peterx@redhat.com>) id 1aihHR-0005qm-Pm
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 07:48:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1aifSq-0006Gh-MZ
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 05:52:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53213)
+	(envelope-from <peterx@redhat.com>) id 1aihHM-0008Ep-Px
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 07:48:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56397)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>)
-	id 1aifSq-0006GW-Gv; Wed, 23 Mar 2016 05:52:32 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id D21B6C0467EC;
-	Wed, 23 Mar 2016 09:52:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-21.ams2.redhat.com
-	[10.36.116.21])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2N9qUvS006705
+	(envelope-from <peterx@redhat.com>)
+	id 1aihHM-0008Ei-Kg; Wed, 23 Mar 2016 07:48:48 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	by mx1.redhat.com (Postfix) with ESMTPS id 1F5581E4D;
+	Wed, 23 Mar 2016 11:48:48 +0000 (UTC)
+Received: from pxdev.xzpeter.org (vpn1-7-25.pek2.redhat.com [10.72.7.25])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u2NBmV0U019301
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 23 Mar 2016 05:52:31 -0400
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 97657303F90D; Wed, 23 Mar 2016 10:52:29 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Xu <peterx@redhat.com>
+	verify=NO); Wed, 23 Mar 2016 07:48:36 -0400
+Date: Wed, 23 Mar 2016 19:48:30 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20160323114830.GR28183@pxdev.xzpeter.org>
 References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
-	<1458271654-23706-3-git-send-email-peterx@redhat.com>
-	<874mbyl64i.fsf@blackfin.pond.sub.org>
-	<20160323041429.GG28183@pxdev.xzpeter.org>
-Date: Wed, 23 Mar 2016 10:52:29 +0100
-In-Reply-To: <20160323041429.GG28183@pxdev.xzpeter.org> (Peter Xu's message of
-	"Wed, 23 Mar 2016 12:14:29 +0800")
-Message-ID: <87egb1bjxe.fsf@blackfin.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	<1458271654-23706-2-git-send-email-peterx@redhat.com>
+	<87zitqjrhj.fsf@blackfin.pond.sub.org>
+	<87vb4eicdu.fsf@blackfin.pond.sub.org>
+	<20160323025819.GD28183@pxdev.xzpeter.org>
+	<87shzhbktm.fsf@blackfin.pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <87shzhbktm.fsf@blackfin.pond.sub.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
 	mdroth@linux.vnet.ibm.com, abologna@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/5] arm: qmp: add
-	query-gic-capabilities interface
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/5] arm: qmp: add
+	GICCapability struct
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -72,58 +71,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sdH7ZpWKys+7
+X-TUID: 7jagcySpP/EF
 
-Peter Xu <peterx@redhat.com> writes:
+On Wed, Mar 23, 2016 at 10:33:09AM +0100, Markus Armbruster wrote:
+> Peter Xu <peterx@redhat.com> writes:
+> 
+> > On Tue, Mar 22, 2016 at 07:41:17PM +0100, Markus Armbruster wrote:
+> >> Markus Armbruster <armbru@redhat.com> writes:
+> >> >> +##
+> >> >> +# @GICCapability:
+> >> >> +#
+> >> >> +# This struct describes capability for a specific GIC version. These
+> >> >> +# bits are not only decided by QEMU/KVM software version, but also
+> >> >> +# decided by the hardware that the program is running upon.
+> >> >> +#
+> >> >> +# @version:  version of GIC to be described.
+> >> >> +#
+> >> >> +# @emulated: whether current QEMU/hardware supports emulated GIC
+> >> >> +#            device in user space.
+> >> >> +#
+> >> >> +# @kernel:   whether current QEMU/hardware supports hardware
+> >> >> +#            accelerated GIC device in kernel.
+> >> >> +#
+> >> >> +# Since: 2.6
+> >> >> +##
+> >> >> +{ 'struct': 'GICCapability',
+> >> >> +  'data': { 'version': 'int',
+> >> >> +            'emulated': 'bool',
+> >> >> +            'kernel': 'bool' } }
 
-> On Tue, Mar 22, 2016 at 07:28:13PM +0100, Markus Armbruster wrote:
->> Peter Xu <peterx@redhat.com> writes:
->> > diff --git a/scripts/qapi.py b/scripts/qapi.py
->> > index 6b2aa6e..716474e 100644
->> > --- a/scripts/qapi.py
->> > +++ b/scripts/qapi.py
->> > @@ -46,6 +46,7 @@ returns_whitelist = [
->>    # Whitelist of commands allowed to return a non-dictionary
->>    returns_whitelist = [
->>        'human-monitor-command',
->>        'qom-get',
->>        'query-migrate-cache-size',
->> >      'query-tpm-models',
->> >      'query-tpm-types',
->> >      'ringbuf-read',
->> > +    'query-gic-capability',
->> >  
->> >      # From QGA:
->> >      'guest-file-open',
->> 
->> The whitelist exists to except existing commands from design rules on
->> return types.  New commands don't get to violate the rules without a
->> really, really compelling reason.
->> 
->> Do you actually need this?
+[*] Marking here...
 
-I've since tested it and double-checked the code: you don't need this.
+> So GICCapability essentially tells its users whether certain
+> configurations have a chance to work.
+> 
+> I think what's missing in your patch is the connection from
+> GICCapability to the actual configuration options.  As is, you just have
+> to know what options the presence of each possible GICCapability value
+> unlocks.  It needs to be documented instead.
 
->> If yes, why should your command be permitted to violate the design
->> rules?
->
-> This might not be required. Agree with you and Eric. Will use a hash
-> instead with single key.
+What I understand is that, above [*] should have explained what does
+each entry mean. E.g., as mentioned in the qapi-schema, there are
+explainations about "version", "emulated" and "kernel" key words. If
+we go deeper into e.g., "emulated" key word, we will got:
 
-The rule against returning non-dictionaries exists to avoid interfaces
-that cannot evolve.  With a dictionary, you can evolve by adding
-members.
+"whether current QEMU/hardware supports emulated GIC device in user
+ space."
 
-The rule does *not* forbid returning lists of dictionaries.  When a
-command fundamentally returns a list of things, being able to evolve the
-things suffices.
+So this boolean will tell just as it is explained.
 
-query-gic-capabilities looks like it fundamentally returns a list of
-capabilities.  Returning ['GICCapability'] is just fine then.
+Maybe I failed to get the point of your review comment... :( Would
+you please give an example on how should I better express this
+relationship?
 
-Only if query-gic-capabilities doesn't have this list nature should you
-complicate its return value by wrapping it in another object type.
+(btw, I have updated the commit message in v6 for current patch, to
+tell more about why we need this, and why we decided to add this ad
+hoc command. I'd be glad if we can continue the discussion based on
+that one.  Thanks!)
 
-In either case, drop the change to returns_whitelist.
-
-[...]
+-- peterx

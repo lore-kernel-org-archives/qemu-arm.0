@@ -1,43 +1,45 @@
-Received: by 10.25.208.211 with SMTP id h202csp368573lfg;
-        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
-X-Received: by 10.140.176.206 with SMTP id w197mr8156490qhw.76.1458788162115;
-        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp368586lfg;
+        Wed, 23 Mar 2016 19:56:03 -0700 (PDT)
+X-Received: by 10.55.73.68 with SMTP id w65mr7613098qka.68.1458788163757;
+        Wed, 23 Mar 2016 19:56:03 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n197si4804072qhc.23.2016.03.23.19.56.01
+        by mx.google.com with ESMTPS id f132si4821905qkb.7.2016.03.23.19.56.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
+        Wed, 23 Mar 2016 19:56:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47229 helo=lists.gnu.org)
+Received: from localhost ([::1]:47230 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aivRI-0001Ef-Kb
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 22:56:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41643)
+	id 1aivRL-0001G0-DB
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 22:56:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41683)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aivRG-0001EO-3H
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:55:58 -0400
+	(envelope-from <peterx@redhat.com>) id 1aivRJ-0001Fb-7H
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:56:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aivRC-0000tH-UN
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:55:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36849)
+	(envelope-from <peterx@redhat.com>) id 1aivRH-0000tw-Ov
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:56:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58511)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <peterx@redhat.com>)
-	id 1aivRC-0000t9-Mu; Wed, 23 Mar 2016 22:55:54 -0400
+	id 1aivRH-0000tg-HM; Wed, 23 Mar 2016 22:55:59 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 4EB714621D;
-	Thu, 24 Mar 2016 02:55:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0376580E42;
+	Thu, 24 Mar 2016 02:55:59 +0000 (UTC)
 Received: from pxdev.xzpeter.org.com (vpn1-7-35.pek2.redhat.com [10.72.7.35])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u2O2tlUH013405; Wed, 23 Mar 2016 22:55:48 -0400
+	ESMTP id u2O2tlUI013405; Wed, 23 Mar 2016 22:55:53 -0400
 From: Peter Xu <peterx@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 24 Mar 2016 10:55:38 +0800
-Message-Id: <1458788142-17509-1-git-send-email-peterx@redhat.com>
+Date: Thu, 24 Mar 2016 10:55:39 +0800
+Message-Id: <1458788142-17509-2-git-send-email-peterx@redhat.com>
+In-Reply-To: <1458788142-17509-1-git-send-email-peterx@redhat.com>
+References: <1458788142-17509-1-git-send-email-peterx@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
@@ -45,8 +47,8 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
 	libvir-list@redhat.com, armbru@redhat.com, peterx@redhat.com,
 	abologna@redhat.com, qemu-arm@nongnu.org, eblake@redhat.com,
 	christoffer.dall@linaro.org
-Subject: [Qemu-arm] [PATCH v7 0/4] ARM: add query-gic-capabilities QMP
-	command
+Subject: [Qemu-arm] [PATCH v7 1/4] arm: qmp: add query-gic-capabilities
+	interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -60,95 +62,197 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6KmmZYz1vW4I
+X-TUID: PiPGYaUk0pVw
 
-v7 changes:
-- patch 1
-  - add more to commit log, about how to use the results [Markus]
-  - change interface from dict back to array [Markus, Eric]
-- patch 2
-  - kvm_arm_create_scratch_host_vcpu should raise error when init
-    non-zero, but failed to find a good CPU model [Sergey]
-- patch 3
-  - rename function to kvm_device_supported [Sergey]
-- patch 4
-  - comment line from "FIXME" to "TODO" [Sergey]
-  - make kvm-related part another function [Sergey]
-  - change result to array to follow patch 1's change
+This patch add "query-gic-capabilities" but does not implemnet it. The
+command is ARM-only. The command will return a list of GICCapability
+struct that describes all GIC versions that current QEMU and system
+support.
 
-v6 changes:
-- patch 1 (squashed into patch 2)
-  - explain more about the following in commit message: why we need
-    this command, and what does the entries mean [Markus]
-  - explain what GIC is [Eric]
-  - squash this patch into patch 2 [Eric]
-- patch 2 (new patch 1)
-  - fix "does not implement" english error [Eric]
-  - remove useless headers in target-arm/monitor.c [Markus]
-  - remove this command from whitelist [Markus, Eric]
-  - return dict rather than array, with single key points to the
-    original array results [Markus, Eric]
-- patch 5 (new patch 4)
-  - tiny change in implementation to suite the new interface.
+Libvirt is possibly the first consumer of this new command.
 
-v5 changes:
-- patch 2: moved to target-arm/monitor.c (from target-arm/machine.c)
-           [Peter]
-- patch 3: splitted into three patches: [all from Peter's comments]
-  - patch 3 (new): leverage kvm_arm_create_scratch_host_vcpu(), tiny
-    enhancement of old one to suite our need
-  - patch 4: introduce kvm_support_device() in kvm-all.c
-  - patch 5: do the implementation.
+Before this patch, user will successfully configure all kinds of GIC
+devices for ARM guests, no matter whether current QEMU/kernel support
+it. If the specified GIC version/type is not supported, user will got an
+ambiguous "QEMU boot failure" when trying to start the VM. This is not
+user-friendly.
 
-v4 changes:
-- all: rename query-gic-capability to query-gic-capabilities [Andrea]
-- patch 3: rename helper function to kvm_support_device, make it
-  inline and lighter. [Drew]
+With this patch, libvirt should be able to query which type (and which
+version) of GIC device that we support. Use this information, libvirt
+can warn the user during configuration of guests when specified GIC
+device type is not supported. Or better, we can just list those versions
+that we support, and filter out those not-supported ones.
 
-v3 changes:
-- patch 2: remove func declaration, add qmp header [Drew]
-- patch 3: being able to detect KVM GIC capabilities even without
-  kvm enabled [Andrea]: this is a little bit hacky, need some more
-  review on this.
+For example, if we got the query result:
 
-v2 changes:
-- result layout change: use array and dict for the capability bits
-  rather than a single array of strings [Andrea/Markus]
-- spelling out what GIC is in doc [Eric]
+{"return": [{"emulated": false, "version": 3, "kernel": true},
+            {"emulated": true, "version": 2, "kernel": false}]}
 
-This patch is to add ARM-specific command "query-gic-capability".
+Then it means that we support emulated GIC version 2 using:
 
-The new command can report which kind of GIC device the host/QEMU
-support. The returned result is in the form of array.
+  qemu-system-aarch64 -M virt,accel=tcg,gic-version=2 ...
 
-Sample command and output:
+or kvm-accelerated GIC version 3 using:
 
-{"execute": "query-gic-capability"}
-{"return": [{"emulated": false, "version": 3, "kernel": false},
-            {"emulated": true, "version": 2, "kernel": true}]}
+  qemu-system-aarch64 -M virt,accel=kvm,gic-version=3 ...
 
-Testing:
+If we specify other explicit GIC version rather than the above, QEMU
+will not be able to boot.
 
-Smoke tests on both x86 (emulated) and another moonshot ARM server.
+Besides, the community is working on a more generic way to query these
+kind of information. However, due to the eagerness of this command, we
+decided to first implement this ad-hoc one, then when the generic method
+is ready, we can move on to that one smoothly.
 
-Peter Xu (4):
-  arm: qmp: add query-gic-capabilities interface
-  arm: enhance kvm_arm_create_scratch_host_vcpu
-  kvm: add kvm_device_supported() helper function
-  arm: implement query-gic-capabilities
-
- include/sysemu/kvm.h     |  9 ++++++
- kvm-all.c                | 15 +++++++++
- monitor.c                |  8 +++++
- qapi-schema.json         | 36 +++++++++++++++++++++
- qmp-commands.hx          | 27 ++++++++++++++++
+Signed-off-by: Peter Xu <peterx@redhat.com>
+---
+ monitor.c                |  8 ++++++++
+ qapi-schema.json         | 36 ++++++++++++++++++++++++++++++++++++
+ qmp-commands.hx          | 27 +++++++++++++++++++++++++++
  target-arm/Makefile.objs |  2 +-
- target-arm/kvm.c         | 14 +++++++-
- target-arm/kvm_arm.h     |  6 ++--
- target-arm/monitor.c     | 84 ++++++++++++++++++++++++++++++++++++++++++++++++
- 9 files changed, 197 insertions(+), 4 deletions(-)
+ target-arm/monitor.c     | 28 ++++++++++++++++++++++++++++
+ 5 files changed, 100 insertions(+), 1 deletion(-)
  create mode 100644 target-arm/monitor.c
 
+diff --git a/monitor.c b/monitor.c
+index 4c02f0f..5f2be8b 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -4258,3 +4258,11 @@ void qmp_dump_skeys(const char *filename, Error **errp)
+     error_setg(errp, QERR_FEATURE_DISABLED, "dump-skeys");
+ }
+ #endif
++
++#ifndef TARGET_ARM
++GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
++{
++    error_setg(errp, QERR_FEATURE_DISABLED, "query-gic-capabilities");
++    return NULL;
++}
++#endif
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 88f9b81..19921d5 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -4126,3 +4126,39 @@
+ ##
+ { 'enum': 'ReplayMode',
+   'data': [ 'none', 'record', 'play' ] }
++
++##
++# @GICCapability:
++#
++# The struct describes capability for a specific GIC (Generic
++# Interrupt Controller) version. These bits are not only decided by
++# QEMU/KVM software version, but also decided by the hardware that
++# the program is running upon.
++#
++# @version:  version of GIC to be described. Currently, only 2 and 3
++#            are supported.
++#
++# @emulated: whether current QEMU/hardware supports emulated GIC
++#            device in user space.
++#
++# @kernel:   whether current QEMU/hardware supports hardware
++#            accelerated GIC device in kernel.
++#
++# Since: 2.6
++##
++{ 'struct': 'GICCapability',
++  'data': { 'version': 'int',
++            'emulated': 'bool',
++            'kernel': 'bool' } }
++
++##
++# @query-gic-capabilities:
++#
++# This command is ARM-only. It will return a list of GICCapability
++# objects that describe its capability bits.
++#
++# Returns: a list of GICCapability objects.
++#
++# Since: 2.6
++##
++{ 'command': 'query-gic-capabilities', 'returns': ['GICCapability'] }
+diff --git a/qmp-commands.hx b/qmp-commands.hx
+index 9e05365..de896a5 100644
+--- a/qmp-commands.hx
++++ b/qmp-commands.hx
+@@ -4853,3 +4853,30 @@ Example:
+                  {"type": 0, "out-pport": 0, "pport": 0, "vlan-id": 3840,
+                   "pop-vlan": 1, "id": 251658240}
+    ]}
++
++EQMP
++
++#if defined TARGET_ARM
++    {
++        .name       = "query-gic-capabilities",
++        .args_type  = "",
++        .mhandler.cmd_new = qmp_marshal_query_gic_capabilities,
++    },
++#endif
++
++SQMP
++query-gic-capabilities
++---------------
++
++Return a list of GICCapability objects, describing supported GIC
++(Generic Interrupt Controller) versions.
++
++Arguments: None
++
++Example:
++
++-> { "execute": "query-gic-capabilities" }
++<- { "return": [{ "version": 2, "emulated": true, "kernel": false },
++                { "version": 3, "emulated": false, "kernel": true } ] }
++
++EQMP
+diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
+index a80eb39..334074c 100644
+--- a/target-arm/Makefile.objs
++++ b/target-arm/Makefile.objs
+@@ -8,4 +8,4 @@ obj-y += translate.o op_helper.o helper.o cpu.o
+ obj-y += neon_helper.o iwmmxt_helper.o
+ obj-y += gdbstub.o
+ obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+-obj-y += crypto_helper.o
++obj-y += crypto_helper.o monitor.o
+diff --git a/target-arm/monitor.c b/target-arm/monitor.c
+new file mode 100644
+index 0000000..4c9bef3
+--- /dev/null
++++ b/target-arm/monitor.c
+@@ -0,0 +1,28 @@
++/*
++ * QEMU monitor.c for ARM.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++#include "qemu/osdep.h"
++#include "qmp-commands.h"
++
++GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
++{
++    return NULL;
++}
 -- 
 2.4.3
 

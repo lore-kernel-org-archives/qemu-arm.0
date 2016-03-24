@@ -1,70 +1,52 @@
-Received: by 10.25.208.211 with SMTP id h202csp359061lfg;
-        Wed, 23 Mar 2016 19:27:19 -0700 (PDT)
-X-Received: by 10.55.72.196 with SMTP id v187mr7592964qka.97.1458786439144;
-        Wed, 23 Mar 2016 19:27:19 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp368573lfg;
+        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
+X-Received: by 10.140.176.206 with SMTP id w197mr8156490qhw.76.1458788162115;
+        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z11si4699991qhz.102.2016.03.23.19.27.18
+        by mx.google.com with ESMTPS id n197si4804072qhc.23.2016.03.23.19.56.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Mar 2016 19:27:19 -0700 (PDT)
+        Wed, 23 Mar 2016 19:56:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47152 helo=lists.gnu.org)
+Received: from localhost ([::1]:47229 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aiuzV-0003tI-K3
-	for alex.bennee@linaro.org; Wed, 23 Mar 2016 22:27:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34569)
+	id 1aivRI-0001Ef-Kb
+	for alex.bennee@linaro.org; Wed, 23 Mar 2016 22:56:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aiuzT-0003t7-M3
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:27:16 -0400
+	(envelope-from <peterx@redhat.com>) id 1aivRG-0001EO-3H
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:55:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1aiuzQ-0002Cn-Fw
-	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:27:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39626)
+	(envelope-from <peterx@redhat.com>) id 1aivRC-0000tH-UN
+	for qemu-arm@nongnu.org; Wed, 23 Mar 2016 22:55:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36849)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <peterx@redhat.com>)
-	id 1aiuzQ-0002Ce-AY; Wed, 23 Mar 2016 22:27:12 -0400
+	id 1aivRC-0000t9-Mu; Wed, 23 Mar 2016 22:55:54 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	by mx1.redhat.com (Postfix) with ESMTPS id 9DAC1D7E8C;
-	Thu, 24 Mar 2016 02:27:11 +0000 (UTC)
-Received: from pxdev.xzpeter.org (vpn1-7-35.pek2.redhat.com [10.72.7.35])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2O2R6hi001144
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 23 Mar 2016 22:27:08 -0400
-Date: Thu, 24 Mar 2016 10:27:05 +0800
+	by mx1.redhat.com (Postfix) with ESMTPS id 4EB714621D;
+	Thu, 24 Mar 2016 02:55:53 +0000 (UTC)
+Received: from pxdev.xzpeter.org.com (vpn1-7-35.pek2.redhat.com [10.72.7.35])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u2O2tlUH013405; Wed, 23 Mar 2016 22:55:48 -0400
 From: Peter Xu <peterx@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20160324022705.GZ28183@pxdev.xzpeter.org>
-References: <1458271654-23706-1-git-send-email-peterx@redhat.com>
-	<1458271654-23706-2-git-send-email-peterx@redhat.com>
-	<87zitqjrhj.fsf@blackfin.pond.sub.org>
-	<87vb4eicdu.fsf@blackfin.pond.sub.org>
-	<20160323025819.GD28183@pxdev.xzpeter.org>
-	<87shzhbktm.fsf@blackfin.pond.sub.org>
-	<20160323114830.GR28183@pxdev.xzpeter.org>
-	<8737rh8jvj.fsf@blackfin.pond.sub.org>
-	<20160323142500.GU28183@pxdev.xzpeter.org>
-	<87r3f12ph6.fsf@blackfin.pond.sub.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <87r3f12ph6.fsf@blackfin.pond.sub.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Mar 2016 10:55:38 +0800
+Message-Id: <1458788142-17509-1-git-send-email-peterx@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 24 Mar 2016 02:27:11 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
-	mdroth@linux.vnet.ibm.com, abologna@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/5] arm: qmp: add
-	GICCapability struct
+Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
+	libvir-list@redhat.com, armbru@redhat.com, peterx@redhat.com,
+	abologna@redhat.com, qemu-arm@nongnu.org, eblake@redhat.com,
+	christoffer.dall@linaro.org
+Subject: [Qemu-arm] [PATCH v7 0/4] ARM: add query-gic-capabilities QMP
+	command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -78,49 +60,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ep12wt5TLeZO
+X-TUID: 6KmmZYz1vW4I
 
-On Wed, Mar 23, 2016 at 04:17:25PM +0100, Markus Armbruster wrote:
-> Peter Xu <peterx@redhat.com> writes:
-> 
-> > On Wed, Mar 23, 2016 at 01:21:52PM +0100, Markus Armbruster wrote:
-> >> Can you tell me what a management application is supposed to do with the
-> >> information returned by query-gic-capabilities?  Not just in general
-> >> terms, like "using this information, libvirt can warn the user during
-> >> configuration of guests when specified GIC device type is not supported,
-> >> but specifics.  Something like "-frobnicate mutter=mumble won't work
-> >> unless query-gic-capabilities reports emulated version 2 is supported"
-> >> for every piece of configuration that should be vetted against
-> >> query-gic-capabilities.
-> >
-> > I suppose that won't be a very big problem since possibly only
-> > libvirt will use it... I agree that it's better to explain it more
-> > clearly though. How about adding these lines into patch 1 commit
-> > message:
-> >
-> > """
-> > For example, if we got the query result:
-> >
-> > {"return": {"capabilities":
-> >   [ {"emulated": false, "version": 3, "kernel": true},
-> >     {"emulated": true, "version": 2, "kernel": false} ] } }
-> >
-> > Then it means that we support emulated GIC version 2 using:
-> >
-> >   qemu-system-aarch64 -M virt,gic-version=2 ...
-> >
-> > or kvm-accelerated GIC version 3 using:
-> >
-> >   qemu-system-aarch64 -enable-kvm -M virt,gic-version=3 ...
-> 
-> I'd say "qemu-system-aarch64 -M virt,accel=kvm,gic=version=3"
-> 
-> > If we specify other explicit GIC version rather than the above, QEMU
-> > will not be able to boot.
-> > """
-> 
-> Works for me.
+v7 changes:
+- patch 1
+  - add more to commit log, about how to use the results [Markus]
+  - change interface from dict back to array [Markus, Eric]
+- patch 2
+  - kvm_arm_create_scratch_host_vcpu should raise error when init
+    non-zero, but failed to find a good CPU model [Sergey]
+- patch 3
+  - rename function to kvm_device_supported [Sergey]
+- patch 4
+  - comment line from "FIXME" to "TODO" [Sergey]
+  - make kvm-related part another function [Sergey]
+  - change result to array to follow patch 1's change
 
-Thanks, will include this in v7.
+v6 changes:
+- patch 1 (squashed into patch 2)
+  - explain more about the following in commit message: why we need
+    this command, and what does the entries mean [Markus]
+  - explain what GIC is [Eric]
+  - squash this patch into patch 2 [Eric]
+- patch 2 (new patch 1)
+  - fix "does not implement" english error [Eric]
+  - remove useless headers in target-arm/monitor.c [Markus]
+  - remove this command from whitelist [Markus, Eric]
+  - return dict rather than array, with single key points to the
+    original array results [Markus, Eric]
+- patch 5 (new patch 4)
+  - tiny change in implementation to suite the new interface.
 
--- peterx
+v5 changes:
+- patch 2: moved to target-arm/monitor.c (from target-arm/machine.c)
+           [Peter]
+- patch 3: splitted into three patches: [all from Peter's comments]
+  - patch 3 (new): leverage kvm_arm_create_scratch_host_vcpu(), tiny
+    enhancement of old one to suite our need
+  - patch 4: introduce kvm_support_device() in kvm-all.c
+  - patch 5: do the implementation.
+
+v4 changes:
+- all: rename query-gic-capability to query-gic-capabilities [Andrea]
+- patch 3: rename helper function to kvm_support_device, make it
+  inline and lighter. [Drew]
+
+v3 changes:
+- patch 2: remove func declaration, add qmp header [Drew]
+- patch 3: being able to detect KVM GIC capabilities even without
+  kvm enabled [Andrea]: this is a little bit hacky, need some more
+  review on this.
+
+v2 changes:
+- result layout change: use array and dict for the capability bits
+  rather than a single array of strings [Andrea/Markus]
+- spelling out what GIC is in doc [Eric]
+
+This patch is to add ARM-specific command "query-gic-capability".
+
+The new command can report which kind of GIC device the host/QEMU
+support. The returned result is in the form of array.
+
+Sample command and output:
+
+{"execute": "query-gic-capability"}
+{"return": [{"emulated": false, "version": 3, "kernel": false},
+            {"emulated": true, "version": 2, "kernel": true}]}
+
+Testing:
+
+Smoke tests on both x86 (emulated) and another moonshot ARM server.
+
+Peter Xu (4):
+  arm: qmp: add query-gic-capabilities interface
+  arm: enhance kvm_arm_create_scratch_host_vcpu
+  kvm: add kvm_device_supported() helper function
+  arm: implement query-gic-capabilities
+
+ include/sysemu/kvm.h     |  9 ++++++
+ kvm-all.c                | 15 +++++++++
+ monitor.c                |  8 +++++
+ qapi-schema.json         | 36 +++++++++++++++++++++
+ qmp-commands.hx          | 27 ++++++++++++++++
+ target-arm/Makefile.objs |  2 +-
+ target-arm/kvm.c         | 14 +++++++-
+ target-arm/kvm_arm.h     |  6 ++--
+ target-arm/monitor.c     | 84 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 9 files changed, 197 insertions(+), 4 deletions(-)
+ create mode 100644 target-arm/monitor.c
+
+-- 
+2.4.3
+

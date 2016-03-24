@@ -1,183 +1,124 @@
-Received: by 10.25.208.211 with SMTP id h202csp502088lfg;
-        Thu, 24 Mar 2016 02:17:04 -0700 (PDT)
-X-Received: by 10.55.80.131 with SMTP id e125mr8985113qkb.62.1458811023828;
-        Thu, 24 Mar 2016 02:17:03 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp533929lfg;
+        Thu, 24 Mar 2016 03:32:52 -0700 (PDT)
+X-Received: by 10.140.169.4 with SMTP id p4mr9752818qhp.71.1458815572323;
+        Thu, 24 Mar 2016 03:32:52 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u19si5781945qka.36.2016.03.24.02.17.03
+        by mx.google.com with ESMTPS id s20si5960143qki.93.2016.03.24.03.32.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 Mar 2016 02:17:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 24 Mar 2016 03:32:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48769 helo=lists.gnu.org)
+       dkim=fail header.i=@163.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49043 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aj1O3-0008Vx-66
-	for alex.bennee@linaro.org; Thu, 24 Mar 2016 05:17:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33026)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aj2ZP-0000V0-Pc
+	for alex.bennee@linaro.org; Thu, 24 Mar 2016 06:32:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aj1O0-0008Vo-M2
-	for qemu-arm@nongnu.org; Thu, 24 Mar 2016 05:17:01 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1aj2Yh-0007ww-Pz
+	for qemu-devel@nongnu.org; Thu, 24 Mar 2016 06:32:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>) id 1aj1Nv-0004jp-M6
-	for qemu-arm@nongnu.org; Thu, 24 Mar 2016 05:17:00 -0400
-Received: from mail-lb0-x235.google.com ([2a00:1450:4010:c04::235]:33819)
+	(envelope-from <zxq_yx_007@163.com>) id 1aj2Yc-0005bu-MK
+	for qemu-devel@nongnu.org; Thu, 24 Mar 2016 06:32:07 -0400
+Received: from m12-16.163.com ([220.181.12.16]:34288)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <serge.fdrv@gmail.com>)
-	id 1aj1Nv-0004jf-DF; Thu, 24 Mar 2016 05:16:55 -0400
-Received: by mail-lb0-x235.google.com with SMTP id k12so26294436lbb.1;
-	Thu, 24 Mar 2016 02:16:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=iAncjgr1EQQFI2Zy+MQgMMDSLLoQXStIhO+CgVHrCBo=;
-	b=r64Dhv8OCcWoiAkhwYzic0peHFMO3rLOxag0ZUwXOs7cU4hng0YvFNbL8MR6viSiPP
-	FL5Lnm1p7sxdw6YO0gsXKcQGvfIsC6XXLDh/wNIGN/7t8JWFc/sQyc2s4K1ISLVUh4fm
-	I96ZLx0PfjPOhSb6fERdaTKhqmTp73wwCBWqeW7t5snEnuYfZS9oLSmSw3Ux43uDZbdV
-	XJkgNirFAgE1UbZzUUo6UGYYlNYLDFiMTJWApBcDsHwBaUBU0QAEAxpZ42qOrUJm3spW
-	G1beQGMCWxQ2reX7t29aKK0r2gmyCX0+WEOLAmStfAOEBHTz+lw4GglAf1c7Fe7hCAWE
-	nCLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=iAncjgr1EQQFI2Zy+MQgMMDSLLoQXStIhO+CgVHrCBo=;
-	b=FwcsfGH4WRL4oMuuXJSC040gxlMIkM18oxZW8a9SHFiFXSXjkb6JVDC9dl5g0UyUj3
-	bosvHPmNjsIYPLNo4BtB03MqQCHhSZS7VypvX6oMF/cVYcVb02C881jE3VyX6RhR3pwl
-	8722titBtv3Ed1DArh2iZQwvSK7yFHGE+Gbit+V7PEpYdLvAY94wCkzqp7M5MpomI+GI
-	18dxW9wUCMimoUb5SwtFwDuSmFtFVGkvMAwnWzfKgTLyTmPil2dqOoZyZyD31wNff/tc
-	D3SK/wfhKL8QziS4Bi2fO8e3csQaGLQqng3Y61zzuXSCvzikIaoaWYUcVyFNu16XPP9d
-	8lBQ==
-X-Gm-Message-State: AD7BkJL93IlBegba+j/tylZxSKvvOqPC8wJejTPD2Uhm+N5FfD2hOxXhCE1GRM66xSJ1iQ==
-X-Received: by 10.112.235.5 with SMTP id ui5mr3048687lbc.111.1458811014598;
-	Thu, 24 Mar 2016 02:16:54 -0700 (PDT)
-Received: from [192.168.0.56] ([195.91.132.170])
-	by smtp.gmail.com with ESMTPSA id
-	k137sm1077010lfg.16.2016.03.24.02.16.53
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 24 Mar 2016 02:16:53 -0700 (PDT)
-To: Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org
-References: <1458788142-17509-1-git-send-email-peterx@redhat.com>
-	<1458788142-17509-5-git-send-email-peterx@redhat.com>
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <56F3B084.2050604@gmail.com>
-Date: Thu, 24 Mar 2016 12:16:52 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
-MIME-Version: 1.0
-In-Reply-To: <1458788142-17509-5-git-send-email-peterx@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c04::235
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mdroth@linux.vnet.ibm.com,
-	libvir-list@redhat.com, armbru@redhat.com, abologna@redhat.com,
-	qemu-arm@nongnu.org, eblake@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-arm] [PATCH v7 4/4] arm: implement query-gic-capabilities
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <zxq_yx_007@163.com>)
+	id 1aj2Yb-0005W5-O2; Thu, 24 Mar 2016 06:32:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id; bh=+/YR34tmpMZA7lAYbX
+	oFAeOTch4Z36ZKrV2KLVJ+BnQ=; b=k8g+MWNycvbVBMqrJy7jM7Un8grbBlTDlx
+	w6Wrh8od2MGYIP4M1SvFCA5qzFuSGQj6F1/zE+E/w/ewN0gpkN9DByh4+9O/8unT
+	3GMo8Uq9v79yPFlUAc2irm8gbYRKQzy/tt6OzlJRAdg+2fu4R9b96u9pq9nq1isj
+	HekTnwUZ0=
+Received: from localhost.localdomain (unknown [101.254.142.162])
+	by smtp12 (Coremail) with SMTP id EMCowEDpR1DcwfNWAMmNAA--.623S5;
+	Thu, 24 Mar 2016 18:31:03 +0800 (CST)
+From: xiaoqiang zhao <zxq_yx_007@163.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 24 Mar 2016 18:29:28 +0800
+Message-Id: <1458815374-22279-4-git-send-email-zxq_yx_007@163.com>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1458815374-22279-1-git-send-email-zxq_yx_007@163.com>
+References: <1458815374-22279-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: EMCowEDpR1DcwfNWAMmNAA--.623S5
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uw45Jw1UZw1rAFy5WrWrAFb_yoW8XrW7pr
+	n3AF48Cw45tFs5JrWftF4DW3WkJ3Z2kF1xGrsrGwna9w43GryDKF1UAw45uay5KFW0yF13
+	Xa4xG3yxAr1jvw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j-a93UUUUU=
+X-Originating-IP: [101.254.142.162]
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEgc2xlZXwzSq9AAAsN
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 220.181.12.16
+Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, michael@walle.cc,
+	qemu-arm@nongnu.org, hirofumi@mail.parknet.co.jp
+Subject: [Qemu-devel] [PATCH 3/6] hw/display/jazz_led.c
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QMvOrv8tC6gt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8SjMJ6TRVRz0
 
-On 24/03/16 05:55, Peter Xu wrote:
-> For emulated GIC capabilities, currently only gicv2 is supported. We
-> need to add gicv3 in when emulated gicv3 ready. For KVM accelerated ARM
-> VM, we detect the capability bits by creating a scratch VM.
->
-> Signed-off-by: Peter Xu <peterx@redhat.com>
+---
+ hw/display/jazz_led.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-Acked-by: Sergey Fedorov <serge.fdrv@gmail.com>
+diff --git a/hw/display/jazz_led.c b/hw/display/jazz_led.c
+index 09dcdb4..e0a079a 100644
+--- a/hw/display/jazz_led.c
++++ b/hw/display/jazz_led.c
+@@ -267,16 +267,15 @@ static const GraphicHwOps jazz_led_ops = {
+     .text_update = jazz_led_text_update,
+ };
+ 
+-static int jazz_led_init(SysBusDevice *dev)
++static void jazz_led_init(Object *obj)
+ {
+-    LedState *s = JAZZ_LED(dev);
++    LedState *s = JAZZ_LED(obj);
++    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &led_ops, s, "led", 1);
++    memory_region_init_io(&s->iomem, obj, &led_ops, s, "led", 1);
+     sysbus_init_mmio(dev, &s->iomem);
+ 
+     s->con = graphic_console_init(DEVICE(dev), 0, &jazz_led_ops, s);
+-
+-    return 0;
+ }
+ 
+ static void jazz_led_reset(DeviceState *d)
+@@ -291,9 +290,7 @@ static void jazz_led_reset(DeviceState *d)
+ static void jazz_led_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
+ 
+-    k->init = jazz_led_init;
+     dc->desc = "Jazz LED display",
+     dc->vmsd = &vmstate_jazz_led;
+     dc->reset = jazz_led_reset;
+@@ -303,6 +300,7 @@ static const TypeInfo jazz_led_info = {
+     .name          = TYPE_JAZZ_LED,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(LedState),
++    .instance_init = jazz_led_init,
+     .class_init    = jazz_led_class_init,
+ };
+ 
+-- 
+2.1.4
 
-Kind regards,
-Sergey
-
-
-> ---
->  target-arm/monitor.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 57 insertions(+), 1 deletion(-)
->
-> diff --git a/target-arm/monitor.c b/target-arm/monitor.c
-> index 4c9bef3..1ee59a2 100644
-> --- a/target-arm/monitor.c
-> +++ b/target-arm/monitor.c
-> @@ -21,8 +21,64 @@
->   */
->  #include "qemu/osdep.h"
->  #include "qmp-commands.h"
-> +#include "hw/boards.h"
-> +#include "kvm_arm.h"
-> +
-> +static GICCapability *gic_cap_new(int version)
-> +{
-> +    GICCapability *cap = g_new0(GICCapability, 1);
-> +    cap->version = version;
-> +    /* by default, support none */
-> +    cap->emulated = false;
-> +    cap->kernel = false;
-> +    return cap;
-> +}
-> +
-> +static GICCapabilityList *gic_cap_list_add(GICCapabilityList *head,
-> +                                           GICCapability *cap)
-> +{
-> +    GICCapabilityList *item = g_new0(GICCapabilityList, 1);
-> +    item->value = cap;
-> +    item->next = head;
-> +    return item;
-> +}
-> +
-> +static inline void gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
-> +{
-> +#ifdef CONFIG_KVM
-> +    int fdarray[3];
-> +
-> +    if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
-> +        return;
-> +    }
-> +
-> +    /* Test KVM GICv2 */
-> +    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V2)) {
-> +        v2->kernel = true;
-> +    }
-> +
-> +    /* Test KVM GICv3 */
-> +    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V3)) {
-> +        v3->kernel = true;
-> +    }
-> +
-> +    kvm_arm_destroy_scratch_host_vcpu(fdarray);
-> +#endif
-> +}
->  
->  GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
->  {
-> -    return NULL;
-> +    GICCapabilityList *head = NULL;
-> +    GICCapability *v2 = gic_cap_new(2), *v3 = gic_cap_new(3);
-> +
-> +    v2->emulated = true;
-> +    /* TODO: we'd change to true after we get emulated GICv3. */
-> +    v3->emulated = false;
-> +
-> +    gic_cap_kvm_probe(v2, v3);
-> +
-> +    head = gic_cap_list_add(head, v2);
-> +    head = gic_cap_list_add(head, v3);
-> +
-> +    return head;
->  }
 

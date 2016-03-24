@@ -1,71 +1,90 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id up6sm7868459wjc.6.2016.03.24.08.23.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 Mar 2016 08:23:12 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id D3D593E018D;
-	Thu, 24 Mar 2016 15:23:11 +0000 (GMT)
-References: <1458815961-31979-1-git-send-email-sergey.fedorov@linaro.org> <1458815961-31979-2-git-send-email-sergey.fedorov@linaro.org> <87poukq9fk.fsf@linaro.org> <56F3F377.4070809@gmail.com> <87mvpnrkby.fsf@linaro.org> <56F4039A.5050907@redhat.com>
-User-agent: mu4e 0.9.17; emacs 25.0.92.7
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Sergey Fedorov <serge.fdrv@gmail.com>, sergey.fedorov@linaro.org, qemu-devel@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Claudio Fontana <claudio.fontana@huawei.com>, Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, "Vassili Karpov \(malc\)" <av1474@comtv.ru>, Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>, Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 1/8] tcg: Clean up direct block chaining data fields
-In-reply-to: <56F4039A.5050907@redhat.com>
-Date: Thu, 24 Mar 2016 15:23:11 +0000
-Message-ID: <87io0brjc0.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: RQolaCnI8JnQ
+Received: by 10.25.208.211 with SMTP id h202csp759567lfg;
+        Thu, 24 Mar 2016 09:39:37 -0700 (PDT)
+X-Received: by 10.55.27.234 with SMTP id m103mr11938558qkh.109.1458837577367;
+        Thu, 24 Mar 2016 09:39:37 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 76si7157338qhk.72.2016.03.24.09.39.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 24 Mar 2016 09:39:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51789 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aj8IK-0000ta-UP
+	for alex.bennee@linaro.org; Thu, 24 Mar 2016 12:39:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60570)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sw@weilnetz.de>) id 1aj8Hz-0000aa-Ki
+	for qemu-devel@nongnu.org; Thu, 24 Mar 2016 12:39:16 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sw@weilnetz.de>) id 1aj8Hy-0001Sk-Kn
+	for qemu-devel@nongnu.org; Thu, 24 Mar 2016 12:39:15 -0400
+Received: from qemu.weilnetz.de ([2a03:4000:2:362::1]:41576)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sw@weilnetz.de>)
+	id 1aj8Hy-0001SB-EG; Thu, 24 Mar 2016 12:39:14 -0400
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id EE7B217F69A; Thu, 24 Mar 2016 17:39:09 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Date: Thu, 24 Mar 2016 17:39:08 +0100
+Message-Id: <1458837548-10413-1-git-send-email-sw@weilnetz.de>
+X-Mailer: git-send-email 2.1.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a03:4000:2:362::1
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Subject: [Qemu-devel] [PATCH] pxa2xx: Fix warnings from cgcc
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dMd1B0wbzl+w
 
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+This patch is rather old, but it still can be applied.
+It avoids duplicate definitions for some array indices
+(which are allowed by gcc, but cgcc complains).
 
-> On 24/03/2016 16:01, Alex Bennée wrote:
->>>> >> OK I found that tricky to follow. Where does the value of the pointer
->>>> >> come from that sets these bottom bits? The TB jumping to this TB sets it?
->>
->> Where I get confused it what is the point of jmp_list_first? If these
->> are two circular lists do we care which the first in the list is? The
->> exit condition when coming out of searching seems when ntb with index =
->> orig tb with index.
->
-> Say you have a list for blocks that jump to TB. The next pointer is in
-> jmp_list_next[0] for blocks whose first jump is to TB. It is in
-> jmp_list_next[1] for blocks whose second jump is to TB.
->
-> However, because it is a circular list, you also need TB itself to be a
-> part of the list. For TB, the next pointer is in jmp_list_first.
->
-> Because TB probably doesn't jump to itself, the first link of the list
-> of blocks that jumps to TB is not in jmp_list_next[].  Thus QEMU places
-> it in tb->jmp_list_first.
->
-> Say you have three tbs.  TB1's first jump and TB2's second jump lead to
-> TB0.  Then the list starting at tb0->jmp_list_first goes like this:
->
->     tb0->jmp_list_first = tb1 | 0;
->       .--------------------'    |
->      |                 .--------'
->     tb1->jmp_list_next[0] = tb2 | 1;
->       .--------------------'      |
->       |                 .---------'
->     tb2->jmp_list_next[1] = tb0 | 2;
->
-> There is also a case where a TB jumps to itself; it then appears twice
-> in the list with different values in the low bits, such as this:
->
->     tb->jmp_list_first = tb | 0;
->      .--------------------'   |
->      |                .-------'
->     tb->jmp_list_next[0] = tb | 2;
->
-> Other blocks jumping to TB would appear in the same list, too, either
-> before or after the tb|0 link.
+ hw/arm/pxa2xx_pic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Right I follow now. Extra ascii art always helps ;-)
+diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
+index 8a39b1c..a8a68e8 100644
+--- a/hw/arm/pxa2xx_pic.c
++++ b/hw/arm/pxa2xx_pic.c
+@@ -204,7 +204,6 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
+ 
+ /* Interrupt Controller Coprocessor Space Register Mapping */
+ static const int pxa2xx_cp_reg_map[0x10] = {
+-    [0x0 ... 0xf] = -1,
+     [0x0] = ICIP,
+     [0x1] = ICMR,
+     [0x2] = ICLR,
+@@ -216,6 +215,7 @@ static const int pxa2xx_cp_reg_map[0x10] = {
+     [0x8] = ICLR2,
+     [0x9] = ICFP2,
+     [0xa] = ICPR2,
++    [0xb ... 0xf] = -1,
+ };
+ 
+ static uint64_t pxa2xx_pic_cp_read(CPUARMState *env, const ARMCPRegInfo *ri)
+-- 
+2.1.4
 
---
-Alex Bennée

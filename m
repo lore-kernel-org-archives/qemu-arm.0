@@ -1,83 +1,88 @@
-Received: by 10.25.208.211 with SMTP id h202csp1442470lfg;
-        Mon, 28 Mar 2016 06:22:16 -0700 (PDT)
-X-Received: by 10.140.144.132 with SMTP id 126mr37253036qhq.102.1459171336637;
-        Mon, 28 Mar 2016 06:22:16 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp1664770lfg;
+        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
+X-Received: by 10.141.2.11 with SMTP id e11mr41019163qhd.69.1459200990390;
+        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g60si4000579qge.120.2016.03.28.06.22.16
+        by mx.google.com with ESMTPS id v39si1513027qge.105.2016.03.28.14.36.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Mar 2016 06:22:16 -0700 (PDT)
+        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40961 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42992 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1akX7Y-0001Xi-5j
-	for alex.bennee@linaro.org; Mon, 28 Mar 2016 09:22:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47757)
+	id 1akepp-0002tP-Ul
+	for alex.bennee@linaro.org; Mon, 28 Mar 2016 17:36:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36830)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1akX7W-0001Ws-9x
-	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 09:22:15 -0400
+	(envelope-from <rth7680@gmail.com>) id 1akepn-0002qB-HF
+	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 17:36:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1akX7P-0007dP-Pq
-	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 09:22:14 -0400
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:33138)
+	(envelope-from <rth7680@gmail.com>) id 1akepm-0000ql-Gu
+	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 17:36:27 -0400
+Received: from mail-io0-x243.google.com ([2607:f8b0:4001:c06::243]:36320)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1akX7P-0007cK-Gt; Mon, 28 Mar 2016 09:22:07 -0400
-Received: by mail-lf0-x243.google.com with SMTP id s192so3264358lfs.0;
-	Mon, 28 Mar 2016 06:22:07 -0700 (PDT)
+	(envelope-from <rth7680@gmail.com>)
+	id 1akepi-0000oR-3Q; Mon, 28 Mar 2016 17:36:22 -0400
+Received: by mail-io0-x243.google.com with SMTP id e3so10265441ioa.3;
+	Mon, 28 Mar 2016 14:36:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=fvErUHG70JHhO8Y6u5VTNfOZtApOS+s6JGuOimLDwnU=;
-	b=IYJxCnzgkWkaHHD+17KLKNcUD1dm4gWvgMQ3DW6/dsr3gCMdLCf3WkTb4F52sjzyfZ
-	rXiQdKvkvFRIw+CAHirCYlA96wObOn7hIEaytbacURTqIwthvay6eeMUtN6YOHeL2KIP
-	Haf41/F/tuaip6nIh5b8GkcnN9qVRaJxihBu71bQI+F1Mlf4SZ80LL+/PE0nqQY7UXj9
-	pDUNCGoLxPuBSmcqcTrPODZyK3AwEnOT6tohjQEv5ZQYjGtGO8xisbLhRzLnTnNhvJ0c
-	ZRtrmQxlch6Z5hm961BjZBapj/bcjhP46YTqONwzkE1wdVWr8Pfsnp1yxs+RY4LG71G9
-	UArw==
+	bh=5iRoTJ7m1uvRKCgtWtSOCPsNWR13CDRTWRkWfEQtcME=;
+	b=BUbQph2SE2UyRI2YZTcBJ3MJYORuu2OkYSRz1UwrSMN+zgA6G+BbOvuv11vuHlp2dQ
+	YdP9SUNrZp+i32y0YCOGyEEh0paoIJGrXk5J6dX5X5Bfsg8lmvLEGFhxsxgHGqMnf9Mm
+	ouP9jRlhnTlzVEuJa2tuD8jY68eihxdHiU2L6RRDxYURII2ANOdJAxmwGEQFDA/ctmt7
+	Yi1nOcCYtVo0x67/Osn6Z6cMgKO0egTKh52Gfun2LtpL/pdIeJHyE25RPdp7X+4z1rR5
+	I1qyqTTsISmBdyd6ND0BrkzGCkt5TBBhFeQOPdxls5HqwhWcVIXeHBtuMzjrpGYSQR//
+	hAqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=fvErUHG70JHhO8Y6u5VTNfOZtApOS+s6JGuOimLDwnU=;
-	b=TkwfW+XVeWfg+XMMMc88nP1lZ+XjcZPrHBGOWJ4SfrPlqyC2IXv/wDnElZpxsq3M4a
-	qdHD+4eGzkxb+v6X4WUIwRG5bxFKiB2Xvj7DAU3ocAkO69Xx5+SkVse8omXWrvPeFGT0
-	oWZMxhevF5PeAn8wCJdipiVZ5QBYWJa4RR8PnX4BnKZyVbPwL/U3yGyeACTvwH9v4DFh
-	rfCNd/K4q8H7F9Ut1NVqbd1EuRpmsVW0tHPgtGLY1BepaX7qaB2lRM+Yy50VpQRlqDUy
-	N9y6aWxm10SRvaGk3J+dVOdsk3EQJBbqMYqNZPqJTd3cFinOWIcbfLUqsiKRTB5sfn9+
-	Q0Tw==
-X-Gm-Message-State: AD7BkJKig4xDvYBalZ7WJwVKwCRn5hWP1mK5sVLhWg/dcoHjIb/eSCWjav8JOsIjnW5tWA==
-X-Received: by 10.25.211.75 with SMTP id k72mr10071187lfg.45.1459171326106;
-	Mon, 28 Mar 2016 06:22:06 -0700 (PDT)
-Received: from [192.168.1.145] (ppp91-77-168-72.pppoe.mtu-net.ru.
-	[91.77.168.72]) by smtp.googlemail.com with ESMTPSA id
-	s193sm4656944lfe.29.2016.03.28.06.22.05
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=5iRoTJ7m1uvRKCgtWtSOCPsNWR13CDRTWRkWfEQtcME=;
+	b=k5s+hY2mRMkq2l7tt0erebLv40Fl/64ezH19TR4/A4DGhZjFQq8ldf7OwBVGbc+FR1
+	nBOnwRVyB2oArnEwH7mF3BFWjtwGA45+yLoqDXIOB3h6I2rNKJ/DAaU6lwihj9EB2R16
+	eKi99w5ACJEzOYPvoG33MZZ/SsZXMrdxC2LZipNAAn9mZ/eXQVgFeQoBBKIKOHox8SPa
+	wo/ZkgKFXSC6zOWxUhiJJj84UOwQBiIq61Gm78L1nOuvNvgE8MFsQB2AoKz9s0CI3FcG
+	ODcjJ1bIwwa79L3mu0C03fQvO+RHoZ9jdd2ZSlV/RIXPqzTUyk+F+eVuLgQCbbuFA2Vr
+	k9zw==
+X-Gm-Message-State: AD7BkJJiXq3pVpm+/raglPso9/jcbnV/tYu1onlDJOrytIlHkILKQN2zNLmf0OsYuKHeHg==
+X-Received: by 10.107.39.139 with SMTP id n133mr28857013ion.57.1459200981316; 
+	Mon, 28 Mar 2016 14:36:21 -0700 (PDT)
+Received: from bigtime.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by smtp.googlemail.com with ESMTPSA id
+	pi4sm4843351igb.2.2016.03.28.14.36.19
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 28 Mar 2016 06:22:05 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <cover.1454169735.git.digetx@gmail.com>
-	<CAFEAcA8ozt0SdmfgzKVSr+2Y7ou2u29g=Y35u-jmi5O8ZgH7qg@mail.gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <56F92FFC.4020805@gmail.com>
-Date: Mon, 28 Mar 2016 16:22:04 +0300
+	Mon, 28 Mar 2016 14:36:20 -0700 (PDT)
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>, qemu-devel@nongnu.org
+References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
+	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <56F9A3D1.2050402@twiddle.net>
+Date: Mon, 28 Mar 2016 14:36:17 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.0
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8ozt0SdmfgzKVSr+2Y7ou2u29g=Y35u-jmi5O8ZgH7qg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] [PATCH v12 0/9] PTimer fixes/features and ARM
-	MPTimer conversion
+X-Received-From: 2607:f8b0:4001:c06::243
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
+	kbastian@mail.uni-paderborn.de, mark.cave-ayland@ilande.co.uk,
+	agraf@suse.de, petar.jovanovic@imgtec.com, blauwirbel@gmail.com,
+	jcmvbkbc@gmail.com, miodrag.dinic@imgtec.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	gxt@mprc.pku.edu.cn, leon.alrae@imgtec.com, afaerber@suse.de,
+	aurelien@aurel32.net, proljc@gmail.com
+Subject: Re: [Qemu-arm] [PATCH 1/2] softfloat: Enable run-time-configurable
+ meaning of signaling NaN bit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,35 +96,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: y35fEmXXv3Mx
+X-TUID: B0tKT86oVHgS
 
-Hello Peter,
+On 03/25/2016 05:50 AM, Aleksandar Markovic wrote:
+> +float16 float16_default_nan(float_status *status) {
 
-16.03.2016 17:36, Peter Maydell пишет:
-> On 30 January 2016 at 16:43, Dmitry Osipenko <digetx@gmail.com> wrote:
->> Changelog for ARM MPTimer QEMUTimer to ptimer conversion:
->
-> So, where are we with this series? It looked from the mailing list
-> threads as if there were still a few things Peter C hadn't got
-> closure on, but we're rapidly running out of time before hard
-> freeze :-(  I'd really rather not have to push it out by yet
-> another release, especially since it got posted back in January..
->
-> thanks
-> -- PMM
->
+{ on the next line.
 
-It still pending for the review and the due date is tomorrow, maybe you would 
-want to pick some of the PTimer patches for 2.6.
+> +        return const_float64(LIT64( 0xFFF8000000000000 ));
 
-PTimer fixes ready for submission:
-[PATCH v12 1/9] hw/ptimer: Fix issues caused by the adjusted timer limit value
-[PATCH v12 2/9] hw/ptimer: Perform counter wrap around if timer already expired
-[PATCH v12 3/9] hw/ptimer: Update .delta on period/freq change
+Let's please fix the horrible formatting in this file as we touch the lines, 
+please.
 
-The rest of the patches are either prerequisites for the ARM MPtimer conversion 
-or pending for the review, we will work them out once Peter Crosthwaite would 
-get some spare time.
+> -#define floatx80_default_nan_high 0x7FFF
+> -#define floatx80_default_nan_low  LIT64(0xBFFFFFFFFFFFFFFF)
+> -#else
+> -#define floatx80_default_nan_high 0xFFFF
+> -#define floatx80_default_nan_low  LIT64( 0xC000000000000000 )
+> -#endif
+> +uint16_t floatx80_default_nan_high(float_status *status) {
+> +uint64_t floatx80_default_nan_low(float_status *status) {
 
--- 
-Dmitry
+Why do you need two separate functions for this?
+
+> +floatx80 floatx80_default_nan(float_status *status) {
+
+Seems to me this one is good enough, and indeed preferable.
+
+> -#define float128_default_nan_high LIT64(0x7FFF7FFFFFFFFFFF)
+> -#define float128_default_nan_low  LIT64(0xFFFFFFFFFFFFFFFF)
+...
+> +float128 float128_default_nan(float_status *status) {
+
+Likewise.
+
+
+> diff --git a/target-alpha/cpu.c b/target-alpha/cpu.c
+> index 2eab060..1714387 100644
+> --- a/target-alpha/cpu.c
+> +++ b/target-alpha/cpu.c
+> @@ -277,6 +277,8 @@ static void alpha_cpu_initfn(Object *obj)
+>   #endif
+>       env->lock_addr = -1;
+>       env->fen = 1;
+> +
+> +    set_snan_bit_is_one(0, &env->fp_status);
+
+We've just done a memset of (most of) the entire cpu struct.  We don't need to 
+re-initialize this field to zero here.  Same with most of the other cpus.
+
+
+r~

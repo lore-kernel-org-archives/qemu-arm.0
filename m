@@ -1,149 +1,197 @@
-Received: by 10.25.208.211 with SMTP id h202csp1664770lfg;
-        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
-X-Received: by 10.141.2.11 with SMTP id e11mr41019163qhd.69.1459200990390;
-        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp2022794lfg;
+        Tue, 29 Mar 2016 05:52:38 -0700 (PDT)
+X-Received: by 10.55.78.84 with SMTP id c81mr2394524qkb.85.1459255958315;
+        Tue, 29 Mar 2016 05:52:38 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v39si1513027qge.105.2016.03.28.14.36.30
+        by mx.google.com with ESMTPS id b93si25482597qgf.85.2016.03.29.05.52.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Mar 2016 14:36:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 Mar 2016 05:52:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42992 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46614 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1akepp-0002tP-Ul
-	for alex.bennee@linaro.org; Mon, 28 Mar 2016 17:36:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36830)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1akt8P-0006CT-UK
+	for alex.bennee@linaro.org; Tue, 29 Mar 2016 08:52:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45017)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1akepn-0002qB-HF
-	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 17:36:28 -0400
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1akt6b-0003cv-92
+	for qemu-devel@nongnu.org; Tue, 29 Mar 2016 08:50:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1akepm-0000ql-Gu
-	for qemu-arm@nongnu.org; Mon, 28 Mar 2016 17:36:27 -0400
-Received: from mail-io0-x243.google.com ([2607:f8b0:4001:c06::243]:36320)
+	(envelope-from <kbastian@mail.uni-paderborn.de>) id 1akt6Z-0003tz-RS
+	for qemu-devel@nongnu.org; Tue, 29 Mar 2016 08:50:45 -0400
+Received: from mail.uni-paderborn.de ([131.234.142.9]:33032)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1akepi-0000oR-3Q; Mon, 28 Mar 2016 17:36:22 -0400
-Received: by mail-io0-x243.google.com with SMTP id e3so10265441ioa.3;
-	Mon, 28 Mar 2016 14:36:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=5iRoTJ7m1uvRKCgtWtSOCPsNWR13CDRTWRkWfEQtcME=;
-	b=BUbQph2SE2UyRI2YZTcBJ3MJYORuu2OkYSRz1UwrSMN+zgA6G+BbOvuv11vuHlp2dQ
-	YdP9SUNrZp+i32y0YCOGyEEh0paoIJGrXk5J6dX5X5Bfsg8lmvLEGFhxsxgHGqMnf9Mm
-	ouP9jRlhnTlzVEuJa2tuD8jY68eihxdHiU2L6RRDxYURII2ANOdJAxmwGEQFDA/ctmt7
-	Yi1nOcCYtVo0x67/Osn6Z6cMgKO0egTKh52Gfun2LtpL/pdIeJHyE25RPdp7X+4z1rR5
-	I1qyqTTsISmBdyd6ND0BrkzGCkt5TBBhFeQOPdxls5HqwhWcVIXeHBtuMzjrpGYSQR//
-	hAqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=5iRoTJ7m1uvRKCgtWtSOCPsNWR13CDRTWRkWfEQtcME=;
-	b=k5s+hY2mRMkq2l7tt0erebLv40Fl/64ezH19TR4/A4DGhZjFQq8ldf7OwBVGbc+FR1
-	nBOnwRVyB2oArnEwH7mF3BFWjtwGA45+yLoqDXIOB3h6I2rNKJ/DAaU6lwihj9EB2R16
-	eKi99w5ACJEzOYPvoG33MZZ/SsZXMrdxC2LZipNAAn9mZ/eXQVgFeQoBBKIKOHox8SPa
-	wo/ZkgKFXSC6zOWxUhiJJj84UOwQBiIq61Gm78L1nOuvNvgE8MFsQB2AoKz9s0CI3FcG
-	ODcjJ1bIwwa79L3mu0C03fQvO+RHoZ9jdd2ZSlV/RIXPqzTUyk+F+eVuLgQCbbuFA2Vr
-	k9zw==
-X-Gm-Message-State: AD7BkJJiXq3pVpm+/raglPso9/jcbnV/tYu1onlDJOrytIlHkILKQN2zNLmf0OsYuKHeHg==
-X-Received: by 10.107.39.139 with SMTP id n133mr28857013ion.57.1459200981316; 
-	Mon, 28 Mar 2016 14:36:21 -0700 (PDT)
-Received: from bigtime.twiddle.net
-	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
-	by smtp.googlemail.com with ESMTPSA id
-	pi4sm4843351igb.2.2016.03.28.14.36.19
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Mon, 28 Mar 2016 14:36:20 -0700 (PDT)
+	(envelope-from <kbastian@mail.uni-paderborn.de>)
+	id 1akt6F-0003pg-Vk; Tue, 29 Mar 2016 08:50:24 -0400
 To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>, qemu-devel@nongnu.org
 References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
 	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <56F9A3D1.2050402@twiddle.net>
-Date: Mon, 28 Mar 2016 14:36:17 -0700
+From: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Message-ID: <56FA79F9.60606@mail.uni-paderborn.de>
+Date: Tue, 29 Mar 2016 14:50:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.6.0
 MIME-Version: 1.0
 In-Reply-To: <1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c06::243
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
-	kbastian@mail.uni-paderborn.de, mark.cave-ayland@ilande.co.uk,
-	agraf@suse.de, petar.jovanovic@imgtec.com, blauwirbel@gmail.com,
+X-IMT-Spam-Score: 0.0 ()
+X-PMX-Version: 6.3.0.2556906, Antispam-Engine: 2.7.2.2107409,
+	Antispam-Data: 2016.3.29.124216
+X-IMT-Authenticated-Sender: kbastian@UNI-PADERBORN.DE
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 131.234.142.9
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, proljc@gmail.com,
+	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
+	petar.jovanovic@imgtec.com, blauwirbel@gmail.com,
 	jcmvbkbc@gmail.com, miodrag.dinic@imgtec.com,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	edgar.iglesias@gmail.com, pbonzini@redhat.com,
 	gxt@mprc.pku.edu.cn, leon.alrae@imgtec.com, afaerber@suse.de,
-	aurelien@aurel32.net, proljc@gmail.com
-Subject: Re: [Qemu-arm] [PATCH 1/2] softfloat: Enable run-time-configurable
- meaning of signaling NaN bit
-X-BeenThere: qemu-arm@nongnu.org
+	aurelien@aurel32.net, rth@twiddle.net
+Subject: Re: [Qemu-devel] [PATCH 1/2] softfloat: Enable
+ run-time-configurable meaning of signaling NaN bit
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B0tKT86oVHgS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pCppXga9LK4e
 
-On 03/25/2016 05:50 AM, Aleksandar Markovic wrote:
-> +float16 float16_default_nan(float_status *status) {
+On 03/25/2016 01:50 PM, Aleksandar Markovic wrote:
+> From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
+> 
+> This patch enables SoftFloat library to be configured at run-time in
+> relation to the meaning of signaling NaN bit.
+> 
+> Background:
+> 
+> In floating-point calculations, there is a need for denoting undefined or
+> unrepresentable values. This is achieved by defining certain floating-point
+> numerical values to be NaNs (which stands for "not a number"). For additional
+> reasons, virtually all modern floating-point unit implementations use two
+> kinds of NaNs: quiet and signaling. The binary representations of these two
+> kinds of NaNs, as a rule, differ only in one bit (it is traditionally,
+> the first bit of mantissa).
+> 
+> Up to 2008, standards for floating-point did not specify all details about
+> binary representation of NaNs. More specifically, the meaning of the bit
+> that is used for distinguishing between signaling and quiet NaNs was not
+> strictly prescribed. (IEEE 754-2008 was the first floating-point standard
+> that defined that meaning clearly, see [1], p. 35) As a result, different
+> platforms took different approaches, and this presented certain challenge
+> in emulators like QEMU.
+> 
+> Mips architecture represent the most complex case among QEMU-supported
+> architectures regarding signaling NaN bit. Up to Release 6 of Mips
+> architecture, "1" in signaling NaN bit denoted signaling NaN, which is
+> opposite to IEEE 754-2008 standard. From Release 6 on, Mips architecture
+> adopted IEEE standard prescription, and "0" denotes signaling NaN. On top of
+> that, Mips architecture for SIMD (also known as MSA, or vector instructions)
+> also specifies signaling bit in accordance to IEEE standard. MSA unit can be
+> implemented with both pre-Release 6 and Release 6 main processor units.
+> 
+> QEMU uses SoftFloat library to implement various floating-point-related
+> instructions on all platforms. The current implementation allows for defining
+> meaning of signaling NaN bit during build time, and is implemented via
+> preprocessor macro called SNAN_BIT_IS_ONE.
+> 
+> The change in this patch enables SoftFloat library to be configured in
+> run-time. This configuration is meant to occur during CPU initialization,
+> when it is definitely known what desired behavior for particular CPU
+> (or any additional FPUs) is.
+> 
+> The change is implemented so that it is consistent with existing
+> implementation of similar cases. This means that structure float_status is
+> used for passing the information about desired signaling NaN bit during each
+> invocation of SoftFloat functions. The additional field in float_status is
+> called snan_bit_is_one, which supersedes macro SNAN_BIT_IS_ONE.
+> 
+> Further break down of changes:
+> 
+>   (for the sake of brevity, a placeholder XXX is used below and it might
+>   mean float16, float32, float64, floatx80, or float128)
+> 
+>   1) Added field snan_bit_is_one to the structure float_status,
+>      and the correspondent setter function set_snan_bit_is_one().
+> 
+>   2) SoftFloat library constants XXX_default_nan converted to functions
+>      XXX_default_nan(float_status*). This is necessary since they are
+>      dependant on signaling bit meaning.
+> 
+>   3) Added a float_status* argument to SoftFloat library functions
+>      XXX_is_quiet_nan(XXX a_), XXX_is_signaling_nan(XXX a_),
+>      XXX_maybe_silence_nan(XXX a_).
+> 
+>   4) Updated code in all architectures to reflect changes in SoftFloat
+>      library. This change is twofolds: it includes modification of SoftFloat
+>      library functions invocations, and addition of invocations of function
+>      set_snan_bit_is_one() during CPU initialization, with arguments that
+>      are appropriate for each architecture.
+> 
+> IMPORTANT:
+> 
+> This change is not meant to create any change in emulator behavior or
+> functionality on any platform. It just provides the means for SoftFloat
+> library to be used in a more flexible way - in other words, it will just
+> prepare SoftFloat library for usage related to Mips platform and its
+> specifics regarding signaling bit meaning, which is done in the next patch.
+> 
+> [1] "IEEE Standard for Floating-Point Arithmetic",
+>     IEEE Computer Society, August 29, 2008.
+>     (http://www.csee.umbc.edu/~tsimo1/CMSC455/IEEE-754-2008.pdf)
+> 
+> Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
+> ---
+>  fpu/softfloat-specialize.h    | 546 +++++++++++++++++++++---------------------
+>  fpu/softfloat.c               | 170 +++++++------
+>  include/fpu/softfloat.h       |  49 ++--
+>  target-alpha/cpu.c            |   2 +
+>  target-arm/cpu.c              |   2 +
+>  target-arm/helper-a64.c       |  14 +-
+>  target-arm/helper.c           |  40 ++--
+>  target-i386/cpu.c             |   4 +
+>  target-m68k/cpu.c             |   2 +
+>  target-m68k/helper.c          |   6 +-
+>  target-microblaze/cpu.c       |   2 +
+>  target-microblaze/op_helper.c |   6 +-
+>  target-mips/helper.h          |   4 +-
+>  target-mips/msa_helper.c      |  96 ++++----
+>  target-mips/op_helper.c       |  13 +-
+>  target-mips/translate.c       |   4 +-
+>  target-mips/translate_init.c  |   6 +-
+>  target-openrisc/cpu.c         |   2 +
+>  target-ppc/fpu_helper.c       | 120 +++++-----
+>  target-ppc/translate_init.c   |   2 +
+>  target-s390x/cpu.c            |   1 +
+>  target-s390x/fpu_helper.c     |  28 ++-
+>  target-s390x/helper.h         |   6 +-
+>  target-s390x/translate.c      |   6 +-
+>  target-sh4/cpu.c              |   1 +
+>  target-sparc/cpu.c            |   1 +
+>  target-tricore/helper.c       |   1 +
+>  target-unicore32/cpu.c        |   1 +
+>  target-xtensa/cpu.c           |   3 +
+>  29 files changed, 608 insertions(+), 530 deletions(-)
+> 
 
-{ on the next line.
+For the TriCore part you can have a
 
-> +        return const_float64(LIT64( 0xFFF8000000000000 ));
+Tested-by: Bastian Koppelmann<kbastian@mail.uni-paderborn.de>
 
-Let's please fix the horrible formatting in this file as we touch the lines, 
-please.
+Cheers,
+Bastian
 
-> -#define floatx80_default_nan_high 0x7FFF
-> -#define floatx80_default_nan_low  LIT64(0xBFFFFFFFFFFFFFFF)
-> -#else
-> -#define floatx80_default_nan_high 0xFFFF
-> -#define floatx80_default_nan_low  LIT64( 0xC000000000000000 )
-> -#endif
-> +uint16_t floatx80_default_nan_high(float_status *status) {
-> +uint64_t floatx80_default_nan_low(float_status *status) {
-
-Why do you need two separate functions for this?
-
-> +floatx80 floatx80_default_nan(float_status *status) {
-
-Seems to me this one is good enough, and indeed preferable.
-
-> -#define float128_default_nan_high LIT64(0x7FFF7FFFFFFFFFFF)
-> -#define float128_default_nan_low  LIT64(0xFFFFFFFFFFFFFFFF)
-...
-> +float128 float128_default_nan(float_status *status) {
-
-Likewise.
-
-
-> diff --git a/target-alpha/cpu.c b/target-alpha/cpu.c
-> index 2eab060..1714387 100644
-> --- a/target-alpha/cpu.c
-> +++ b/target-alpha/cpu.c
-> @@ -277,6 +277,8 @@ static void alpha_cpu_initfn(Object *obj)
->   #endif
->       env->lock_addr = -1;
->       env->fen = 1;
-> +
-> +    set_snan_bit_is_one(0, &env->fp_status);
-
-We've just done a memset of (most of) the entire cpu struct.  We don't need to 
-re-initialize this field to zero here.  Same with most of the other cpus.
-
-
-r~

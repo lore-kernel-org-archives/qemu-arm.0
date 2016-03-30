@@ -1,54 +1,57 @@
-Received: by 10.25.208.211 with SMTP id h202csp2603930lfg;
-        Wed, 30 Mar 2016 05:32:32 -0700 (PDT)
-X-Received: by 10.55.203.18 with SMTP id d18mr9511301qkj.25.1459341151990;
-        Wed, 30 Mar 2016 05:32:31 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp2617774lfg;
+        Wed, 30 Mar 2016 06:00:50 -0700 (PDT)
+X-Received: by 10.140.106.11 with SMTP id d11mr9472572qgf.80.1459342850256;
+        Wed, 30 Mar 2016 06:00:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z17si3432749qka.125.2016.03.30.05.32.31
+        by mx.google.com with ESMTPS id a77si3613117qkb.23.2016.03.30.06.00.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Mar 2016 05:32:31 -0700 (PDT)
+        Wed, 30 Mar 2016 06:00:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53877 helo=lists.gnu.org)
+Received: from localhost ([::1]:54052 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1alFIV-00017h-Eo
-	for alex.bennee@linaro.org; Wed, 30 Mar 2016 08:32:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37865)
+	id 1alFjt-0003jL-SD
+	for alex.bennee@linaro.org; Wed, 30 Mar 2016 09:00:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1alFIS-00015G-HE
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 08:32:29 -0400
+	(envelope-from <lvivier@redhat.com>) id 1alFjo-0003il-HC
+	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 09:00:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1alFIO-0003ab-HZ
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 08:32:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55768)
+	(envelope-from <lvivier@redhat.com>) id 1alFjj-00033U-Gw
+	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 09:00:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53709)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>)
-	id 1alFIO-0003aS-Ci; Wed, 30 Mar 2016 08:32:24 -0400
+	(envelope-from <lvivier@redhat.com>)
+	id 1alFjj-00033M-9G; Wed, 30 Mar 2016 09:00:39 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id 1B9D864466;
-	Wed, 30 Mar 2016 12:32:23 +0000 (UTC)
-Received: from thh440s.str.redhat.com. (dhcp-192-192.str.redhat.com
-	[10.33.192.192])
+	by mx1.redhat.com (Postfix) with ESMTPS id C65B3C942C;
+	Wed, 30 Mar 2016 13:00:37 +0000 (UTC)
+Received: from [10.36.112.32] (ovpn-112-32.ams2.redhat.com [10.36.112.32])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2UCWLfF006523; Wed, 30 Mar 2016 08:32:21 -0400
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-arm@nongnu.org
-Date: Wed, 30 Mar 2016 14:32:20 +0200
-Message-Id: <1459341140-16892-1-git-send-email-thuth@redhat.com>
+	id u2UD0XSg028931; Wed, 30 Mar 2016 09:00:35 -0400
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org
+References: <1459341140-16892-1-git-send-email-thuth@redhat.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <56FBCDF1.3070909@redhat.com>
+Date: Wed, 30 Mar 2016 15:00:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.7.1
+MIME-Version: 1.0
+In-Reply-To: <1459341140-16892-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 30 Mar 2016 12:32:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 209.132.183.28
 Cc: peter.maydell@linaro.org, e.voevodin@samsung.com, i.mitsyanko@gmail.com,
 	qemu-devel@nongnu.org, d.solodkiy@samsung.com, m.kozlov@samsung.com
-Subject: [Qemu-arm] [PATCH] MAINTAINERS: Delete invalid maintainer entries
-	of the Exynos section
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] MAINTAINERS: Delete invalid
+ maintainer entries of the Exynos section
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -62,32 +65,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qVv226w7aEEJ
+X-TUID: F6GJulPoM7hz
 
-Mails to these e-mail addresses are rejected by the mail server
-of Samsung with "User unknown" messages, so it seems like these
-Exynos maintainers are no longer available.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index afbe845..12eb3fd 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -357,10 +357,7 @@ F: include/hw/timer/a9gtimer.h
- F: include/hw/timer/arm_mptimer.h
- 
- Exynos
--M: Evgeny Voevodin <e.voevodin@samsung.com>
--M: Maksim Kozlov <m.kozlov@samsung.com>
- M: Igor Mitsyanko <i.mitsyanko@gmail.com>
--M: Dmitry Solodkiy <d.solodkiy@samsung.com>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/*/exynos*
--- 
-1.8.3.1
+On 30/03/2016 14:32, Thomas Huth wrote:
+> Mails to these e-mail addresses are rejected by the mail server
+> of Samsung with "User unknown" messages, so it seems like these
+> Exynos maintainers are no longer available.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 3 ---
+>  1 file changed, 3 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index afbe845..12eb3fd 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -357,10 +357,7 @@ F: include/hw/timer/a9gtimer.h
+>  F: include/hw/timer/arm_mptimer.h
+>  
+>  Exynos
+> -M: Evgeny Voevodin <e.voevodin@samsung.com>
+> -M: Maksim Kozlov <m.kozlov@samsung.com>
+>  M: Igor Mitsyanko <i.mitsyanko@gmail.com>
+> -M: Dmitry Solodkiy <d.solodkiy@samsung.com>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/*/exynos*
+> 
 
+As you have removed all the maintainers, perhaps S: can be changed to
+"Orphan"?
+
+Laurent

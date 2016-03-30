@@ -1,61 +1,75 @@
-Received: by 10.25.208.211 with SMTP id h202csp2564902lfg;
-        Wed, 30 Mar 2016 04:20:35 -0700 (PDT)
-X-Received: by 10.140.160.214 with SMTP id g205mr9323721qhg.88.1459336835594;
-        Wed, 30 Mar 2016 04:20:35 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp2677128lfg;
+        Wed, 30 Mar 2016 07:53:33 -0700 (PDT)
+X-Received: by 10.140.32.245 with SMTP id h108mr10226207qgh.50.1459349613208;
+        Wed, 30 Mar 2016 07:53:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 20si3279869qgo.0.2016.03.30.04.20.35
+        by mx.google.com with ESMTPS id a197si4038919qkb.6.2016.03.30.07.53.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Mar 2016 04:20:35 -0700 (PDT)
+        Wed, 30 Mar 2016 07:53:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53183 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54547 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1alEAt-00024p-1u
-	for alex.bennee@linaro.org; Wed, 30 Mar 2016 07:20:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37387)
+	id 1alHUy-00024V-Qa
+	for alex.bennee@linaro.org; Wed, 30 Mar 2016 10:53:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1alEAo-00023f-GX
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 07:20:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1alHUv-000216-QB
+	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 10:53:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1alEAl-0005ao-Aj
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 07:20:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45213)
+	(envelope-from <peter.maydell@linaro.org>) id 1alHUu-0003mI-T2
+	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 10:53:29 -0400
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:36451)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>)
-	id 1alEAk-0005aa-VD; Wed, 30 Mar 2016 07:20:27 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	by mx1.redhat.com (Postfix) with ESMTPS id E1DD950F4A;
-	Wed, 30 Mar 2016 11:20:25 +0000 (UTC)
-Received: from dhcp129-180.brq.redhat.com (dhcp129-180.brq.redhat.com
-	[10.34.129.180])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u2UBKMI9021354
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 30 Mar 2016 07:20:23 -0400
-Message-ID: <1459336821.4699.13.camel@redhat.com>
-From: Andrea Bolognani <abologna@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Peter Xu <peterx@redhat.com>
-Date: Wed, 30 Mar 2016 13:20:21 +0200
-In-Reply-To: <CAFEAcA-Y=nXpaNmOUNPzsFBhSZES9SD2k+u3XhVhzABOr9qGrw@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1alHUu-0003m4-Ma
+	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 10:53:28 -0400
+Received: by mail-vk0-x235.google.com with SMTP id z68so64160415vkg.3
+	for <qemu-arm@nongnu.org>; Wed, 30 Mar 2016 07:53:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=cyFEUITNHKNYbn7DV9MxlVYHEn/QevH2G0YOYsAQ4C0=;
+	b=TsRoE9JK4czOxB8CQrpsFkijlGCSJvMdUBbeDwPeA8CszjUciE8WxicQved60yRNqG
+	FfJfcw/qRk5WpQn2w9qfg8aYgoX92UD/bz5aRtDQxOvMwN3jfBkEpnLc+EwEPolPG6YL
+	okFf6JmygZv1jXUEAgo0bUc7HNZro4xlVvvDE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=cyFEUITNHKNYbn7DV9MxlVYHEn/QevH2G0YOYsAQ4C0=;
+	b=EOXAv5l3DY6N5HwMzP5IFShDSdORGMZ34RlJT6V2ubbsPj5akU9pw782xUiAMyvuYg
+	Veh6YBRsnh7Wh88ZiDU0wjcwN3uIKjmD1wkaRrbkqjAWfFbMtTKSubZWxdTgEKohuwuF
+	M5ouwVj4yoLzXnR3NLEzzWFOCcfj6ecdDBTWLEH0kyOWcjZtR92AGuvuD5nGEziN2o79
+	syY6YNSCyWCWFJYKe9kfu1hmbpTfmjl49rsyKLez2LIQtlb2Be4ncq5QRWsNRzgkZnmh
+	XRgFshSEbuaSJQvSyocWCGrpPrhq7qR2CSipSxjuxg67IZlLE4xytKWVw2XfkhEWsufF
+	iKbw==
+X-Gm-Message-State: AD7BkJLW0XGSv1FjZGeMVLNp6MpMoiLdWKODR6F6CfAeEfzb/MJJoRBppRZeQKaeZO/EobsWEnBpsTWxD+KVo+1c
+X-Received: by 10.176.65.102 with SMTP id j93mr5395784uad.26.1459349608196;
+	Wed, 30 Mar 2016 07:53:28 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Wed, 30 Mar 2016 07:53:08 -0700 (PDT)
+In-Reply-To: <1458788142-17509-1-git-send-email-peterx@redhat.com>
 References: <1458788142-17509-1-git-send-email-peterx@redhat.com>
-	<CAFEAcA-Y=nXpaNmOUNPzsFBhSZES9SD2k+u3XhVhzABOr9qGrw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 209.132.183.28
-Cc: Andrew Jones <drjones@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Libvirt <libvir-list@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 30 Mar 2016 15:53:08 +0100
+Message-ID: <CAFEAcA_YL8g4EvRNKF1rs9D30dGCxV=RBv0q-EbFQkVNGT3R0Q@mail.gmail.com>
+To: Peter Xu <peterx@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::235
+Cc: Andrew Jones <drjones@redhat.com>, Libvirt <libvir-list@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Andrea Bolognani <abologna@redhat.com>, Eric Blake <eblake@redhat.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 0/4] ARM: add
- query-gic-capabilities QMP command
+Subject: Re: [Qemu-arm] [PATCH v7 0/4] ARM: add query-gic-capabilities QMP
+	command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -69,40 +83,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a9DgML1J+aUN
+X-TUID: 2r9HxYxQu/ij
 
-On Tue, 2016-03-29 at 21:10 +0100, Peter Maydell wrote:
-> On 24 March 2016 at 02:55, Peter Xu <peterx@redhat.com> wrote:
-> >=20
-> > This patch is to add ARM-specific command "query-gic-capability".
-> >=20
-> > The new command can report which kind of GIC device the host/QEMU
-> > support. The returned result is in the form of array.
-> >=20
-> > Sample command and output:
-> >=20
-> > {"execute": "query-gic-capability"}
-> > {"return": [{"emulated": false, "version": 3, "kernel": false},
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0{"emulated": true, "version": 2, "kernel": true}]}
->=20
-> I really strongly want this in 2.6 but we are very very nearly
-> out of time. Eric or Markus, could I trouble one of you to
-> provide an ack for this series for the QMP protocol aspects
-> sometime before end of Wednesday, please?
->=20
-> I also don't think I've seen an indication from the libvirt
-> folks that this is definitely the API they want; did I miss it?
+On 24 March 2016 at 02:55, Peter Xu <peterx@redhat.com> wrote:
+> v7 changes:
+> - patch 1
+>   - add more to commit log, about how to use the results [Markus]
+>   - change interface from dict back to array [Markus, Eric]
+> - patch 2
+>   - kvm_arm_create_scratch_host_vcpu should raise error when init
+>     non-zero, but failed to find a good CPU model [Sergey]
+> - patch 3
+>   - rename function to kvm_device_supported [Sergey]
+> - patch 4
+>   - comment line from "FIXME" to "TODO" [Sergey]
+>   - make kvm-related part another function [Sergey]
+>   - change result to array to follow patch 1's change
 
-Yes, this works nicely for libvirt; in fact, I've already
-posted an RFC implementation[1] to the list last week.
+Applied this version to target-arm.next, thanks.
 
-Cheers.
-
-
-[1]=C2=A0https://www.redhat.com/archives/libvir-list/2016-March/msg00956.=
-html
---=20
-Andrea Bolognani
-Software Engineer - Virtualization Team
-
+-- PMM

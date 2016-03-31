@@ -1,49 +1,49 @@
-Received: by 10.25.208.211 with SMTP id h202csp2806932lfg;
-        Wed, 30 Mar 2016 12:28:49 -0700 (PDT)
-X-Received: by 10.140.28.135 with SMTP id 7mr12191817qgz.72.1459366129116;
-        Wed, 30 Mar 2016 12:28:49 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp110891lfg;
+        Thu, 31 Mar 2016 04:55:39 -0700 (PDT)
+X-Received: by 10.55.203.18 with SMTP id d18mr16056409qkj.25.1459425339639;
+        Thu, 31 Mar 2016 04:55:39 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j60si5125388qge.40.2016.03.30.12.28.48
+        by mx.google.com with ESMTPS id 110si7456379qgy.36.2016.03.31.04.55.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Mar 2016 12:28:49 -0700 (PDT)
+        Thu, 31 Mar 2016 04:55:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56448 helo=lists.gnu.org)
+Received: from localhost ([::1]:59755 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1alLnL-0001mg-IK
-	for alex.bennee@linaro.org; Wed, 30 Mar 2016 15:28:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34973)
+	id 1albCN-0002GC-7p
+	for alex.bennee@linaro.org; Thu, 31 Mar 2016 07:55:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40169)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1alLnI-0001mX-Kj
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 15:28:45 -0400
+	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1albCJ-0002G0-8V
+	for qemu-arm@nongnu.org; Thu, 31 Mar 2016 07:55:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1alLnE-0002EI-KE
-	for qemu-arm@nongnu.org; Wed, 30 Mar 2016 15:28:44 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:40464)
+	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1albCF-0004vR-Fz
+	for qemu-arm@nongnu.org; Thu, 31 Mar 2016 07:55:35 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:63667)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <Aleksandar.Markovic@imgtec.com>)
-	id 1alLnE-0002Dv-Dj; Wed, 30 Mar 2016 15:28:40 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Websense Email Security Gateway with ESMTPS id 42F346F1B06C5;
-	Wed, 30 Mar 2016 20:28:34 +0100 (IST)
-Received: from BADAG01.ba.imgtec.org (10.20.40.113) by HHMAIL01.hh.imgtec.org
-	(10.100.10.19) with Microsoft SMTP Server (TLS) id 14.3.266.1;
-	Wed, 30 Mar 2016 20:28:37 +0100
+	id 1albCF-0004vD-3w; Thu, 31 Mar 2016 07:55:31 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Websense Email Security Gateway with ESMTPS id 84FE0CBC92CD6;
+	Thu, 31 Mar 2016 12:55:26 +0100 (IST)
+Received: from BADAG01.ba.imgtec.org (10.20.40.113) by hhmail02.hh.imgtec.org
+	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.266.1;
+	Thu, 31 Mar 2016 12:55:28 +0100
 Received: from BADAG02.ba.imgtec.org ([fe80::612d:e977:c603:32d6]) by
 	BADAG01.ba.imgtec.org ([fe80::8c38:df2b:fd93:33d3%14]) with mapi id
-	14.03.0266.001; Wed, 30 Mar 2016 12:28:34 -0700
+	14.03.0266.001; Thu, 31 Mar 2016 04:55:24 -0700
 From: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
 To: Richard Henderson <rth@twiddle.net>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>
 Thread-Topic: [Qemu-devel] [PATCH 2/2] target-mips: Implement IEEE 754-2008
 	functionality for R6 and MSA instructions
-Thread-Index: AQHRiTvTzBGilZDISEuL18EoVZP4UJ9yYJJf
-Date: Wed, 30 Mar 2016 19:28:33 +0000
-Message-ID: <EF5FA6C3467F85449672C3E735957B859168E22F@BADAG02.ba.imgtec.org>
+Thread-Index: AQHRiTvTzBGilZDISEuL18EoVZP4UJ9zYRp1
+Date: Thu, 31 Mar 2016 11:55:23 +0000
+Message-ID: <EF5FA6C3467F85449672C3E735957B859168E429@BADAG02.ba.imgtec.org>
 References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
 	<1458910214-12239-3-git-send-email-aleksandar.markovic@rt-rk.com>,
 	<56F9A6F5.2050504@twiddle.net>
@@ -89,12 +89,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a1s79Zrt4yfH
+X-TUID: BdmkY4S9OX7I
 
-I really appreciate your guidance and help. I will respond shortly with a p=
-roposal that will address all issues that you brought up. Thanks again for =
-your support and time.
+Hi, Richard, what would you think about this approach:
 
+Functionality of <ABS|NEG>.<S|D> and <CVT|FLOOR|CEIL|TRUNC|ROUND>.<L|W>.<S|=
+D>
+instructions is dependent on flags ABS2008 and NAN2008 in FCR31. There are
+MIPS architectures (for example mips32r5) that allow implementations
+with different values of these flags. So, in order to detect the desired
+behavior in translate-time, insn_flags field can't be used - and, therefore=
+,
+it makes sense to add two new members to the MIPS's DisasContext:
+
+typedef struct DisasContext {
+    . . .
+    bool nan2008;
+    bool abs2008;
+} DisasContext;
+
+Their initialization could be in gen_intermediate_code_internal():
+
+    ctx.nan2008 =3D (env->active_fpu.fcr31 >> FCR31_NAN2008) & 1;
+    ctx.abs2008 =3D (env->active_fpu.fcr31 >> FCR31_ABS2008) & 1;
+
+Now, ABS.D (and all <ABS|NEG>.<S|D>) handling might look like this:
+
+    case OPC_ABS_D:
+        check_cp1_registers(ctx, fs | fd);
+        {
+            TCGv_i64 fp0 =3D tcg_temp_new_i64();
+
+            gen_load_fpr64(ctx, fp0, fs);
+            if (ctx->abs2008) {
+                tcg_gen_andi_i64(fp0, fp0, 0x7fffffffffffffffULL);
+            } else {
+                gen_helper_float_abs_d(fp0, fp0);
+            }
+            gen_store_fpr64(ctx, fp0, fd);
+            tcg_temp_free_i64(fp0);
+        }
+        opn =3D "abs.d";
+        break;
+
+Here, 2008-style ABS.D is implemented inline, without a helper, and
+gen_helper_float_abs_d() is an old pre-2008 helper that would be intact
+(the same as it is currently) with this change.
+
+On the other hand, CVT.L.D (and all <CVT|FLOOR|CEIL|TRUNC|ROUND>.<L|W>.<S|D=
+>)
+handling would take this form:
+
+    case OPC_CVT_L_D:
+        check_cp1_64bitmode(ctx);
+        {
+            TCGv_i64 fp0 =3D tcg_temp_new_i64();
+
+            gen_load_fpr64(ctx, fp0, fs);
+            if (ctx->nan2008) {
+                gen_helper_float_cvt_2008_l_d(fp0, cpu_env, fp0);
+            } else {
+                gen_helper_float_cvt_l_d(fp0, cpu_env, fp0);
+            }
+            gen_store_fpr64(ctx, fp0, fd);
+            tcg_temp_free_i64(fp0);
+        }
+        opn =3D "cvt.l.d";
+        break;
+
+Function helper_float_cvt_2008_l_d() is a new, only-2008-style helper for
+CVT.L.D and would look like this:
+
+uint64_t helper_float_cvt_2008_l_d(CPUMIPSState *env, uint64_t fdt0)
+{
+    uint64_t dt2;
+
+    dt2 =3D float64_to_int64(fdt0, &env->active_fpu.fp_status);
+    if (get_float_exception_flags(&env->active_fpu.fp_status)
+            & (float_flag_invalid | float_flag_overflow)) {
+        dt2 =3D DBL_TO_INT64_OVERFLOW(fdt0)
+    }
+    update_fcr31(env, GETPC());
+    return dt2;
+}
+
+(macro DBL_TO_INT64_OVERFLOW(x) would be defined this way:
+
+#define DBL_TO_INT64_OVERFLOW(x)                                           =
+  \
+    float64_is_any_nan(x) ? 0 : (float64_is_neg(x) ? INT64_MIN : INT64_MAX)=
+;
+
+to avoid awkward repeating "if" statements in multiple headers)
+
+gen_helper_float_cvt_l_d() and all old style helpers for instructions
+<CVT|FLOOR|CEIL|TRUNC|ROUND>.<L|W>.<S|D> would remain the same.
+
+Please let me know about your opinion. I greatly appreciate your kind
+consideration of this matter. I am looking forward to hearing from you.
+
+Yours,
 Aleksandar
 ________________________________________
 From: qemu-devel-bounces+aleksandar.markovic=3Dimgtec.com@nongnu.org [qemu-=
@@ -168,4 +262,3 @@ ne.
 
 
 r~
-

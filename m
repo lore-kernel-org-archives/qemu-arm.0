@@ -1,83 +1,60 @@
-Received: by 10.25.208.211 with SMTP id h202csp699519lfg;
-        Sun, 3 Apr 2016 07:26:06 -0700 (PDT)
-X-Received: by 10.140.23.18 with SMTP id 18mr18370396qgo.91.1459693566148;
-        Sun, 03 Apr 2016 07:26:06 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp712369lfg;
+        Sun, 3 Apr 2016 08:05:54 -0700 (PDT)
+X-Received: by 10.140.250.4 with SMTP id v4mr8042321qhc.9.1459695953886;
+        Sun, 03 Apr 2016 08:05:53 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c52si19087128qgc.5.2016.04.03.07.26.05
+        by mx.google.com with ESMTPS id d185si19085657qhd.101.2016.04.03.08.05.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 03 Apr 2016 07:26:06 -0700 (PDT)
+        Sun, 03 Apr 2016 08:05:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53681 helo=lists.gnu.org)
+Received: from localhost ([::1]:53824 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1amiyb-0006Q2-Js
-	for alex.bennee@linaro.org; Sun, 03 Apr 2016 10:26:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57552)
+	id 1amjb7-00005z-C5
+	for alex.bennee@linaro.org; Sun, 03 Apr 2016 11:05:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38070)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1amiyZ-0006Pv-Bl
-	for qemu-arm@nongnu.org; Sun, 03 Apr 2016 10:26:04 -0400
+	(envelope-from <Aleksandar.Markovic@rt-rk.com>) id 1amjb3-00005a-CL
+	for qemu-arm@nongnu.org; Sun, 03 Apr 2016 11:05:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1amiyV-0002Gb-Qi
-	for qemu-arm@nongnu.org; Sun, 03 Apr 2016 10:26:03 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:49890)
+	(envelope-from <Aleksandar.Markovic@rt-rk.com>) id 1amjb0-0003Mp-2Y
+	for qemu-arm@nongnu.org; Sun, 03 Apr 2016 11:05:49 -0400
+Received: from mx2.rt-rk.com ([89.216.37.149]:40921 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>)
-	id 1amiyV-0002GU-K3; Sun, 03 Apr 2016 10:25:59 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Websense Email Security Gateway with ESMTPS id 85F8DB11660E8;
-	Sun,  3 Apr 2016 15:25:52 +0100 (IST)
-Received: from BADAG01.ba.imgtec.org (10.20.40.113) by HHMAIL01.hh.imgtec.org
-	(10.100.10.19) with Microsoft SMTP Server (TLS) id 14.3.266.1;
-	Sun, 3 Apr 2016 15:25:55 +0100
-Received: from BADAG02.ba.imgtec.org ([fe80::612d:e977:c603:32d6]) by
-	BADAG01.ba.imgtec.org ([fe80::8c38:df2b:fd93:33d3%14]) with mapi id
-	14.03.0266.001; Sun, 3 Apr 2016 07:25:51 -0700
-From: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
-To: Leon Alrae <Leon.Alrae@imgtec.com>, Aleksandar Markovic
-	<aleksandar.markovic@rt-rk.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH 1/2] softfloat: Enable
-	run-time-configurable meaning of signaling NaN bit
-Thread-Index: AQHRjElBu+6IZC4KAkGtt5VE/8JBCp94TMAY
-Date: Sun, 3 Apr 2016 14:25:50 +0000
-Message-ID: <EF5FA6C3467F85449672C3E735957B859168F4EA@BADAG02.ba.imgtec.org>
-References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
-	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>,
-	<56FEC5D1.8020908@imgtec.com>
-In-Reply-To: <56FEC5D1.8020908@imgtec.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [82.117.201.26]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <Aleksandar.Markovic@rt-rk.com>)
+	id 1amjaz-0003LB-Ng; Sun, 03 Apr 2016 11:05:45 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by mail.rt-rk.com (Postfix) with ESMTP id D83801A1164;
+	Sun,  3 Apr 2016 17:05:19 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at rt-rk.com
+Received: by mail.rt-rk.com (Postfix, from userid 492)
+	id 3D7841A118C; Sun,  3 Apr 2016 17:05:18 +0200 (CEST)
+User-Agent: SOGoMail 2.2.5
+X-Forward: 127.0.0.1
 MIME-Version: 1.0
+from: "Aleksandar Markovic" <Aleksandar.Markovic@rt-rk.com>
+message-id: <78c-57013100-1-639ee000@97078574>
+to: "Leon Alrae" <leon.alrae@imgtec.com>
+content-type: multipart/alternative;
+	boundary="----=_=-_OpenGroupware_org_NGMime-1932-1459695918.227686-0------"
+date: Sun, 03 Apr 2016 17:05:18 +0200
+in-reply-to: <56FEC6F0.9000803@imgtec.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"ehabkost@redhat.com" <ehabkost@redhat.com>,
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"rth@twiddle.net" <rth@twiddle.net>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"agraf@suse.de" <agraf@suse.de>, Petar
-	Jovanovic <Petar.Jovanovic@imgtec.com>,
-	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
-	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>, Miodrag
-	Dinic <Miodrag.Dinic@imgtec.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	"afaerber@suse.de" <afaerber@suse.de>,
-	"aurelien@aurel32.net" <aurelien@aurel32.net>,
-	"proljc@gmail.com" <proljc@gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] softfloat: Enable
- run-time-configurable meaning of signaling NaN bit
+X-Received-From: 89.216.37.149
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, proljc@gmail.com,
+	mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
+	kbastian@mail.uni-paderborn.de, agraf@suse.de,
+	blauwirbel@gmail.com, jcmvbkbc@gmail.com,
+	miodrag.dinic@imgtec.com, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, petar.jovanovic@imgtec.com,
+	pbonzini@redhat.com, gxt@mprc.pku.edu.cn, afaerber@suse.de,
+	aurelien@aurel32.net, rth@twiddle.net
+Subject: Re: [Qemu-arm] [PATCH 2/2] target-mips: Implement IEEE 754-2008
+	functionality for R6 and MSA instructions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -91,73 +68,219 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5oRzQ0GzO2G7
+X-TUID: fWEg6OO9AP1E
 
-I truly appreciate your guidance and bringing this matter to my attention.=
-=0A=
-=0A=
-It just seems to me that, in similar case, 16-bit default NaN value should =
-be 0x7E00. This value is needed for MSA operations. ("MIPS Architecture for=
- Programmers Volume IV-j: The MIPS32=AE SIMD Architecture Module", Revision=
- 1.12, (february 3, 2016), page 52, table 3.7 "Default NaN Encodings")=0A=
-=0A=
-I plan to include all three corrections in the next version of this patch s=
-et. Please, let me know if you think that I should not.=0A=
-=0A=
-Yours,=0A=
-Aleksandar=0A=
-=0A=
-=0A=
-=0A=
-________________________________________=0A=
-From: qemu-devel-bounces+aleksandar.markovic=3Dimgtec.com@nongnu.org [qemu-=
-devel-bounces+aleksandar.markovic=3Dimgtec.com@nongnu.org] on behalf of Leo=
-n Alrae=0A=
-Sent: Friday, April 01, 2016 12:02 PM=0A=
-To: Aleksandar Markovic; qemu-devel@nongnu.org=0A=
-Cc: peter.maydell@linaro.org; ehabkost@redhat.com; proljc@gmail.com; mark.c=
-ave-ayland@ilande.co.uk; agraf@suse.de; kbastian@mail.uni-paderborn.de; Pet=
-ar Jovanovic; blauwirbel@gmail.com; jcmvbkbc@gmail.com; Miodrag Dinic; qemu=
--arm@nongnu.org; qemu-ppc@nongnu.org; edgar.iglesias@gmail.com; pbonzini@re=
-dhat.com; gxt@mprc.pku.edu.cn; afaerber@suse.de; aurelien@aurel32.net; rth@=
-twiddle.net=0A=
-Subject: Re: [Qemu-devel] [PATCH 1/2] softfloat: Enable run-time-configurab=
-le meaning of signaling NaN bit=0A=
-=0A=
-On 25/03/16 12:50, Aleksandar Markovic wrote:=0A=
->  /*----------------------------------------------------------------------=
-------=0A=
->  | The pattern for a default generated single-precision NaN.=0A=
->  *-----------------------------------------------------------------------=
------*/=0A=
-> +float32 float32_default_nan(float_status *status) {=0A=
->  #if defined(TARGET_SPARC)=0A=
-> -const float32 float32_default_nan =3D const_float32(0x7FFFFFFF);=0A=
-> +    return const_float32(0x7FFFFFFF);=0A=
->  #elif defined(TARGET_PPC) || defined(TARGET_ARM) || defined(TARGET_ALPHA=
-) || \=0A=
->        defined(TARGET_XTENSA) || defined(TARGET_S390X) || defined(TARGET_=
-TRICORE)=0A=
-> -const float32 float32_default_nan =3D const_float32(0x7FC00000);=0A=
-> -#elif SNAN_BIT_IS_ONE=0A=
-> -const float32 float32_default_nan =3D const_float32(0x7FBFFFFF);=0A=
-> +    return const_float32(0x7FC00000);=0A=
->  #else=0A=
-> -const float32 float32_default_nan =3D const_float32(0xFFC00000);=0A=
-> +    if (status->snan_bit_is_one)=0A=
-> +        return const_float32(0x7FBFFFFF);=0A=
-> +    else=0A=
-> +        return const_float32(0xFFC00000);=0A=
-=0A=
-Here for MIPS (when FCR31.NAN2008 is set) we should generate 0x7FC00000=0A=
-for single-precision. Reference:=0A=
-"MIPS Architecture For Programmers, Volume I-A: Introduction to the=0A=
-MIPS64 Architecture", Imagination Technologies LTD., Document Number:=0A=
-MD00083, Revision 6.01, August 20, 2014, Table 6.3 "Value Supplied When=0A=
-a New Quiet NaN Is Created", p. 84=0A=
-=0A=
-Also, for double-precision we should generate 0x7FF8000000000000.=0A=
-=0A=
-Thanks,=0A=
-Leon=0A=
-=0A=
+------=_=-_OpenGroupware_org_NGMime-1932-1459695918.227686-0------
+content-type: text/plain; charset=utf-8
+content-length: 5105
+content-transfer-encoding: quoted-printable
+
+
+Hello, Leon, thank you very much for the kind feedback. Let me clarify =
+my take on the involved issues.
+
+1) Class operations
+
+I am going to correct the code as you hinted.
+
+The reason I wanted separate handling of MSA class operation is code an=
+d module decoupling. Handling of MSA instructions (in file msa=5Fhelper=
+.c) and regular instructions (in file op=5Fhelper.c) have many overlapi=
+ng areas - however, my understanding is that the designer of MSA module=
+ wanted it to be as independant on code in other files/modulas as possi=
+ble. Handling class operation is on of the rare instances where code in=
+ msa=5Fhelper.c relies on the code in op=5Fhelper.c., and it made sense=
+ to me that this dependence should be removed, for the sake of consiste=
+ncy within MSA module - even if the functionalitied are virtually ident=
+ical. That said, I will anyway listen to your advice, since you most pr=
+obably see more than myself regarding this, and I am going to revert to=
+ a single handling of class operations, for both MSA and regular versio=
+ns.
+
+2) Flush subnormals
+
+My impression is that his set of features should be treated and impleme=
+nted separately, at some later point in time.
+
+Although the implementation seems not to be too complex (defining FCR31=
+=5FFS, invoking appropriately=C2=A0set=5Fflush=5Fto=5Fzero() and=C2=A0s=
+et=5Fflush=5Finputs=5Fto=5Fzero() on CPU init, plus special exception h=
+andling, like it is already done for MSA equivalents), it looks to me t=
+hat it would have added a lot of risk into a patch series that is alrea=
+dy touching a lot of sensitive areas, and therefore introducing a lot o=
+f risks. Once this patch series is hopefully intergrated, flush subnorm=
+als will be much easier to integrate, since it will be mips-only issue.=
+ Therefore, if you agree, I will leave it for the future. I will defini=
+tely mention it in commit messages though (as a limitaion), for future =
+reference.
+
+Thanks again for your consideration of this matter.
+
+Sincerely yours,
+Aleksandar
+
+
+-------- Original Message --------
+Subject: Re: [PATCH 2/2] target-mips: Implement IEEE 754-2008 functiona=
+lity for R6 and MSA instructions
+Date: Friday, April 1, 2016 21:07 CEST
+From: Leon Alrae <leon.alrae@imgtec.com>
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,<qemu-devel@non=
+gnu.org>
+CC: <qemu-arm@nongnu.org>, <qemu-ppc@nongnu.org>, <aurelien@aurel32.net=
+>,<peter.maydell@linaro.org>, <rth@twiddle.net>, <afaerber@suse.de>,<pb=
+onzini@redhat.com>, <ehabkost@redhat.com>, <edgar.iglesias@gmail.com>,<=
+proljc@gmail.com>, <agraf@suse.de>, <blauwirbel@gmail.com>,<mark.cave-a=
+yland@ilande.co.uk>, <gxt@mprc.pku.edu.cn>,<petar.jovanovic@imgtec.com>=
+, <miodrag.dinic@imgtec.com>,<jcmvbkbc@gmail.com>, <kbastian@mail.uni-p=
+aderborn.de>
+References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-r=
+k.com><1458910214-12239-3-git-send-email-aleksandar.markovic@rt-rk.com>=
+
+
+
+=C2=A0On 25/03/16 12:50, Aleksandar Markovic wrote:
+> +#define MSA=5FCLASS=5FSIGNALING=5FNAN 0x001
+> +#define MSA=5FCLASS=5FQUIET=5FNAN 0x002
+> +#define MSA=5FCLASS=5FNEGATIVE=5FINFINITY 0x004
+> +#define MSA=5FCLASS=5FNEGATIVE=5FNORMAL 0x008
+> +#define MSA=5FCLASS=5FNEGATIVE=5FSUBNORMAL 0x010
+> +#define MSA=5FCLASS=5FNEGATIVE=5FZERO 0x020
+> +#define MSA=5FCLASS=5FPOSITIVE=5FINFINITY 0x040
+> +#define MSA=5FCLASS=5FPOSITIVE=5FNORMAL 0x080
+> +#define MSA=5FCLASS=5FPOSITIVE=5FSUBNORMAL 0x100
+> +#define MSA=5FCLASS=5FPOSITIVE=5FZERO 0x200
+> +
+> +#define MSA=5FCLASS(name, bits) \
+> +uint ## bits ## =5Ft helper=5Fmsa=5F ## name (CPUMIPSState *env, \
+> + uint ## bits ## =5Ft arg) \
+> +{ \
+> + if (float ## bits ## =5Fis=5Fsignaling=5Fnan(arg, \
+> + &env->active=5Ftc.msa=5Ffp=5Fstatus)) { \
+> + return MSA=5FCLASS=5FSIGNALING=5FNAN; \
+> + } else if (float ## bits ## =5Fis=5Fquiet=5Fnan(arg, \
+> + &env->active=5Ftc.msa=5Ffp=5Fstatus)) { \
+> + return MSA=5FCLASS=5FQUIET=5FNAN; \
+> + } else if (float ## bits ## =5Fis=5Fneg(arg)) { \
+> + if (float ## bits ## =5Fis=5Finfinity(arg)) { \
+> + return MSA=5FCLASS=5FNEGATIVE=5FINFINITY; \
+> + } else if (float ## bits ## =5Fis=5Fzero(arg)) { \
+> + return MSA=5FCLASS=5FNEGATIVE=5FZERO; \
+> + } else if (float ## bits ## =5Fis=5Fzero=5For=5Fdenormal(arg)) { \
+> + return MSA=5FCLASS=5FNEGATIVE=5FSUBNORMAL; \
+> + } else { \
+> + return MSA=5FCLASS=5FNEGATIVE=5FNORMAL; \
+> + } \
+> + } else { \
+> + if (float ## bits ## =5Fis=5Finfinity(arg)) { \
+> + return MSA=5FCLASS=5FPOSITIVE=5FINFINITY; \
+> + } else if (float ## bits ## =5Fis=5Fzero(arg)) { \
+> + return MSA=5FCLASS=5FPOSITIVE=5FZERO; \
+> + } else if (float ## bits ## =5Fis=5Fzero=5For=5Fdenormal(arg)) { \
+> + return MSA=5FCLASS=5FPOSITIVE=5FSUBNORMAL; \
+> + } else { \
+> + return MSA=5FCLASS=5FPOSITIVE=5FNORMAL; \
+> + } \
+> + } \
+> +}
+
+Duplicating the class operation is unnecessary. We can just have common=
+
+function for FPU and MSA which takes additional float=5Fstatus argument=
+.
+
+Also I noticed that this patch series doesn't provide Flush Subnormals
+(the FCSR.FS bit), but probably this functionality can come later...
+
+Leon
+
+
+=C2=A0
+------=_=-_OpenGroupware_org_NGMime-1932-1459695918.227686-0------
+content-type: text/html; charset=utf-8
+content-length: 6028
+content-transfer-encoding: quoted-printable
+
+<html>Hello, Leon, thank you very much for the kind feedback. Let me cl=
+arify my take on the involved issues.<br /><br />1) Class operations<br=
+ /><br />I am going to correct the code as you hinted.<br /><br />The r=
+eason I wanted separate handling of MSA class operation is code and mod=
+ule decoupling. Handling of MSA instructions (in file msa=5Fhelper.c) a=
+nd regular instructions (in file op=5Fhelper.c) have many overlaping ar=
+eas - however, my understanding is that the designer of MSA module want=
+ed it to be as independant on code in other files/modulas as possible. =
+Handling class operation is on of the rare instances where code in msa=5F=
+helper.c relies on the code in op=5Fhelper.c., and it made sense to me =
+that this dependence should be removed, for the sake of consistency wit=
+hin MSA module - even if the functionalitied are virtually identical. T=
+hat said, I will anyway listen to your advice, since you most probably =
+see more than myself regarding this, and I am going to revert to a sing=
+le handling of class operations, for both MSA and regular versions.<br =
+/><br />2) Flush subnormals<br /><br />My impression is that his set of=
+ features should be treated and implemented separately, at some later p=
+oint in time.<br /><br />Although the implementation seems not to be to=
+o complex (defining FCR31=5FFS, invoking appropriately&nbsp;set=5Fflush=
+=5Fto=5Fzero() and&nbsp;set=5Fflush=5Finputs=5Fto=5Fzero() on CPU init,=
+ plus special exception handling, like it is already done for MSA equiv=
+alents), it looks to me that it would have added a lot of risk into a p=
+atch series that is already touching a lot of sensitive areas, and ther=
+efore introducing a lot of risks. Once this patch series is hopefully i=
+ntergrated, flush subnormals will be much easier to integrate, since it=
+ will be mips-only issue. Therefore, if you agree, I will leave it for =
+the future. I will definitely mention it in commit messages though (as =
+a limitaion), for future reference.<br /><br />Thanks again for your co=
+nsideration of this matter.<br /><br />Sincerely yours,<br />Aleksandar=
+<br /><br /><br />-------- Original Message --------<br />Subject: Re: =
+[PATCH 2/2] target-mips: Implement IEEE 754-2008 functionality for R6 a=
+nd MSA instructions<br />Date: Friday, April 1, 2016 21:07 CEST<br />Fr=
+om: Leon Alrae &lt;leon.alrae@imgtec.com&gt;<br />To: Aleksandar Markov=
+ic &lt;aleksandar.markovic@rt-rk.com&gt;,&lt;qemu-devel@nongnu.org&gt;<=
+br />CC: &lt;qemu-arm@nongnu.org&gt;, &lt;qemu-ppc@nongnu.org&gt;, &lt;=
+aurelien@aurel32.net&gt;,&lt;peter.maydell@linaro.org&gt;, &lt;rth@twid=
+dle.net&gt;, &lt;afaerber@suse.de&gt;,&lt;pbonzini@redhat.com&gt;, &lt;=
+ehabkost@redhat.com&gt;, &lt;edgar.iglesias@gmail.com&gt;,&lt;proljc@gm=
+ail.com&gt;, &lt;agraf@suse.de&gt;, &lt;blauwirbel@gmail.com&gt;,&lt;ma=
+rk.cave-ayland@ilande.co.uk&gt;, &lt;gxt@mprc.pku.edu.cn&gt;,&lt;petar.=
+jovanovic@imgtec.com&gt;, &lt;miodrag.dinic@imgtec.com&gt;,&lt;jcmvbkbc=
+@gmail.com&gt;, &lt;kbastian@mail.uni-paderborn.de&gt;<br />References:=
+ &lt;1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com&gt=
+;&lt;1458910214-12239-3-git-send-email-aleksandar.markovic@rt-rk.com&gt=
+;<br /><br /><br />&nbsp;<blockquote type=3D"cite" cite=3D"56FEC6F0.900=
+0803@imgtec.com">On 25/03/16 12:50, Aleksandar Markovic wrote:<br />&gt=
+; +#define MSA=5FCLASS=5FSIGNALING=5FNAN 0x001<br />&gt; +#define MSA=5F=
+CLASS=5FQUIET=5FNAN 0x002<br />&gt; +#define MSA=5FCLASS=5FNEGATIVE=5FI=
+NFINITY 0x004<br />&gt; +#define MSA=5FCLASS=5FNEGATIVE=5FNORMAL 0x008<=
+br />&gt; +#define MSA=5FCLASS=5FNEGATIVE=5FSUBNORMAL 0x010<br />&gt; +=
+#define MSA=5FCLASS=5FNEGATIVE=5FZERO 0x020<br />&gt; +#define MSA=5FCL=
+ASS=5FPOSITIVE=5FINFINITY 0x040<br />&gt; +#define MSA=5FCLASS=5FPOSITI=
+VE=5FNORMAL 0x080<br />&gt; +#define MSA=5FCLASS=5FPOSITIVE=5FSUBNORMAL=
+ 0x100<br />&gt; +#define MSA=5FCLASS=5FPOSITIVE=5FZERO 0x200<br />&gt;=
+ +<br />&gt; +#define MSA=5FCLASS(name, bits) \<br />&gt; +uint ## bits=
+ ## =5Ft helper=5Fmsa=5F ## name (CPUMIPSState *env, \<br />&gt; + uint=
+ ## bits ## =5Ft arg) \<br />&gt; +{ \<br />&gt; + if (float ## bits ##=
+ =5Fis=5Fsignaling=5Fnan(arg, \<br />&gt; + &amp;env-&gt;active=5Ftc.ms=
+a=5Ffp=5Fstatus)) { \<br />&gt; + return MSA=5FCLASS=5FSIGNALING=5FNAN;=
+ \<br />&gt; + } else if (float ## bits ## =5Fis=5Fquiet=5Fnan(arg, \<b=
+r />&gt; + &amp;env-&gt;active=5Ftc.msa=5Ffp=5Fstatus)) { \<br />&gt; +=
+ return MSA=5FCLASS=5FQUIET=5FNAN; \<br />&gt; + } else if (float ## bi=
+ts ## =5Fis=5Fneg(arg)) { \<br />&gt; + if (float ## bits ## =5Fis=5Fin=
+finity(arg)) { \<br />&gt; + return MSA=5FCLASS=5FNEGATIVE=5FINFINITY; =
+\<br />&gt; + } else if (float ## bits ## =5Fis=5Fzero(arg)) { \<br />&=
+gt; + return MSA=5FCLASS=5FNEGATIVE=5FZERO; \<br />&gt; + } else if (fl=
+oat ## bits ## =5Fis=5Fzero=5For=5Fdenormal(arg)) { \<br />&gt; + retur=
+n MSA=5FCLASS=5FNEGATIVE=5FSUBNORMAL; \<br />&gt; + } else { \<br />&gt=
+; + return MSA=5FCLASS=5FNEGATIVE=5FNORMAL; \<br />&gt; + } \<br />&gt;=
+ + } else { \<br />&gt; + if (float ## bits ## =5Fis=5Finfinity(arg)) {=
+ \<br />&gt; + return MSA=5FCLASS=5FPOSITIVE=5FINFINITY; \<br />&gt; + =
+} else if (float ## bits ## =5Fis=5Fzero(arg)) { \<br />&gt; + return M=
+SA=5FCLASS=5FPOSITIVE=5FZERO; \<br />&gt; + } else if (float ## bits ##=
+ =5Fis=5Fzero=5For=5Fdenormal(arg)) { \<br />&gt; + return MSA=5FCLASS=5F=
+POSITIVE=5FSUBNORMAL; \<br />&gt; + } else { \<br />&gt; + return MSA=5F=
+CLASS=5FPOSITIVE=5FNORMAL; \<br />&gt; + } \<br />&gt; + } \<br />&gt; =
++}<br /><br />Duplicating the class operation is unnecessary. We can ju=
+st have common<br />function for FPU and MSA which takes additional flo=
+at=5Fstatus argument.<br /><br />Also I noticed that this patch series =
+doesn&#39;t provide Flush Subnormals<br />(the FCSR.FS bit), but probab=
+ly this functionality can come later...<br /><br />Leon</blockquote><br=
+ /><br /><br />&nbsp;</html>
+------=_=-_OpenGroupware_org_NGMime-1932-1459695918.227686-0--------

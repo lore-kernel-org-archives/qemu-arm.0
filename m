@@ -1,62 +1,72 @@
-Received: by 10.25.208.211 with SMTP id h202csp31157lfg;
-        Mon, 4 Apr 2016 12:37:35 -0700 (PDT)
-X-Received: by 10.55.212.132 with SMTP id s4mr35966364qks.78.1459798654956;
-        Mon, 04 Apr 2016 12:37:34 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp31784lfg;
+        Mon, 4 Apr 2016 12:39:19 -0700 (PDT)
+X-Received: by 10.140.228.68 with SMTP id y65mr25588558qhb.78.1459798758951;
+        Mon, 04 Apr 2016 12:39:18 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e60si23366138qga.128.2016.04.04.12.37.34
+        by mx.google.com with ESMTPS id t90si23385956qgd.103.2016.04.04.12.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Apr 2016 12:37:34 -0700 (PDT)
+        Mon, 04 Apr 2016 12:39:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60739 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1anAJa-0003AA-Ca
-	for alex.bennee@linaro.org; Mon, 04 Apr 2016 15:37:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48267)
+	id 1anALG-0005bf-FI
+	for alex.bennee@linaro.org; Mon, 04 Apr 2016 15:39:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1anAJX-0003A3-PL
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:37:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1anALC-0005Ya-U3
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:39:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1anAJT-0006Kb-Qn
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:37:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42504)
+	(envelope-from <peter.maydell@linaro.org>) id 1anALC-0006eb-1y
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:39:14 -0400
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:35568)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1anAJT-0006KU-LF; Mon, 04 Apr 2016 15:37:27 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E3BCC627F5;
-	Mon,  4 Apr 2016 19:37:25 +0000 (UTC)
-Received: from localhost (vpn1-5-40.gru2.redhat.com [10.97.5.40])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u34JbN8g013132; Mon, 4 Apr 2016 15:37:24 -0400
-Date: Mon, 4 Apr 2016 16:37:23 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160404193723.GD22665@thinpad.lan.raisama.net>
+	(envelope-from <peter.maydell@linaro.org>) id 1anALB-0006eO-St
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:39:13 -0400
+Received: by mail-vk0-x234.google.com with SMTP id e6so193942584vkh.2
+	for <qemu-arm@nongnu.org>; Mon, 04 Apr 2016 12:39:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=7X+C1QBZkhTnV07K30exfdX/y3N6IIKDsIb7YeeaJXk=;
+	b=AxpTpyetpjoGpV2bsOkWkUnathVtMfsy7MdN2a1aTl2tRxKJIs5T/ztG+iMBn7RJ2N
+	t7UH3G/lYEgqtmkbYzjrPO3LRcP7qDVloT6YYRaVNgone7A31eQ3PjuLV3MccyI5SM8Z
+	KBeN6+b7w23rGESJAKm9VsrvaOJlEd7SP31jY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=7X+C1QBZkhTnV07K30exfdX/y3N6IIKDsIb7YeeaJXk=;
+	b=VTZU0Cj3f5K9XIpSf0xQrLhak00x6AFKSIRi1bWR7A05T4VdpkuoG/ICSRB6tgd9SM
+	eWNMBt+Kdbn69A8CtlxZRu6Js8bGqvJ/tdg/z2TiouuEdEv2jytLBjm5yuUjwkegsh/Y
+	dbxrmt0lWULKdMBlt8b0K/6ythVnRNOL0lMN59RjpwNTR7G3Rd+bXi2aBYHHB2DIS1l4
+	+CuHa3igQr7oOj0oAJ9GSnyaxhPy2tJ/MdSBC9QjAmjiC8MuQ6ykYsOsbqRQ/f7jSJfv
+	y+R42I8n8/0Xpo/b4g1ZVGW80yE29r9ojamvub8IvmJltPOquAh2We0m09byZOTGD/bW
+	8Tmw==
+X-Gm-Message-State: AD7BkJLTgpJevlLA9WCYeHzK6LAH6LWa5nmPotBXGXWRI9JNDc2FyOgFdm4PMFjBVqjQshaH8/6+/L1QE6HmKWmX
+X-Received: by 10.31.52.147 with SMTP id b141mr8150519vka.82.1459798753478;
+	Mon, 04 Apr 2016 12:39:13 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Mon, 4 Apr 2016 12:38:54 -0700 (PDT)
+In-Reply-To: <20160404193723.GD22665@thinpad.lan.raisama.net>
 References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
 	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
 	<56F9A3D1.2050402@twiddle.net>
 	<EF5FA6C3467F85449672C3E735957B859168FB0A@BADAG02.ba.imgtec.org>
 	<CAFEAcA_Rp+8hGC6sos3H3t2A8UDgLUf3KvrM3-C3zZAFCc_WEA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_Rp+8hGC6sos3H3t2A8UDgLUf3KvrM3-C3zZAFCc_WEA@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 04 Apr 2016 19:37:27 +0000 (UTC)
+	<20160404193723.GD22665@thinpad.lan.raisama.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Apr 2016 20:38:54 +0100
+Message-ID: <CAFEAcA9axhkDC0tDT1ujNZUpHbCnMqSxaL-KTD2=TV=XOyEbuw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 2607:f8b0:400c:c05::234
 Cc: "proljc@gmail.com" <proljc@gmail.com>,
 	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
 	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
@@ -89,22 +99,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jFe9EDU9eKSH
+X-TUID: nn6fOU4l6A/k
 
-On Mon, Apr 04, 2016 at 02:31:47PM +0100, Peter Maydell wrote:
-> On 4 April 2016 at 14:21, Aleksandar Markovic
-> <Aleksandar.Markovic@imgtec.com> wrote:
-> > B. arm - explicitely sets other fields of float_status,
-> >       explicit invocation of set_snan_bit_is_one(0) added
-> 
-> We zero the float_status structs on reset, because they are earlier
-> in the CPUARMState structure than the 'features' field (and so the
-> memset() in arm_cpu_reset() will clear them). So you don't
-> need to explicitly zero a field like this. I expect the other
-> architectures are the same.
+On 4 April 2016 at 20:37, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> On Mon, Apr 04, 2016 at 02:31:47PM +0100, Peter Maydell wrote:
+>> On 4 April 2016 at 14:21, Aleksandar Markovic
+>> <Aleksandar.Markovic@imgtec.com> wrote:
+>> > B. arm - explicitely sets other fields of float_status,
+>> >       explicit invocation of set_snan_bit_is_one(0) added
+>>
+>> We zero the float_status structs on reset, because they are earlier
+>> in the CPUARMState structure than the 'features' field (and so the
+>> memset() in arm_cpu_reset() will clear them). So you don't
+>> need to explicitly zero a field like this. I expect the other
+>> architectures are the same.
+>
+> Even if it is not zeroed on reset, it is zeroed on object_new().
+> Isn't that enough?
 
-Even if it is not zeroed on reset, it is zeroed on object_new().
-Isn't that enough?
+It must be zeroed on reset, otherwise we won't get the right
+behaviour if you reset the CPU after running it for a bit.
+object_new() zeroing is not sufficient.
 
--- 
-Eduardo
+thanks
+-- PMM

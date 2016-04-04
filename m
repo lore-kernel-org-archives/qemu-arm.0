@@ -1,81 +1,79 @@
-Received: by 10.25.208.211 with SMTP id h202csp1134181lfg;
-        Mon, 4 Apr 2016 06:21:32 -0700 (PDT)
-X-Received: by 10.55.79.5 with SMTP id d5mr33515399qkb.30.1459776092655;
-        Mon, 04 Apr 2016 06:21:32 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp1160800lfg;
+        Mon, 4 Apr 2016 07:14:13 -0700 (PDT)
+X-Received: by 10.140.140.16 with SMTP id 16mr23030178qhm.60.1459779253027;
+        Mon, 04 Apr 2016 07:14:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z78si22238586qkz.49.2016.04.04.06.21.32
+        by mx.google.com with ESMTPS id e7si22417984qga.19.2016.04.04.07.14.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Apr 2016 06:21:32 -0700 (PDT)
+        Mon, 04 Apr 2016 07:14:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58592 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58885 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1an4Rg-0000p1-4t
-	for alex.bennee@linaro.org; Mon, 04 Apr 2016 09:21:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53100)
+	id 1an5Ge-0002My-Dx
+	for alex.bennee@linaro.org; Mon, 04 Apr 2016 10:14:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1an4RX-0000oO-MH
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 09:21:29 -0400
+	(envelope-from <sergey.fedorov@linaro.org>) id 1an5GX-0002LQ-0o
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 10:14:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1an4RR-0003BL-Ft
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 09:21:23 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:32176)
+	(envelope-from <sergey.fedorov@linaro.org>) id 1an5GS-0006QH-0Y
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 10:14:04 -0400
+Received: from mail-lb0-x235.google.com ([2a00:1450:4010:c04::235]:33456)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>)
-	id 1an4RR-0003BF-6G; Mon, 04 Apr 2016 09:21:17 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Websense Email Security Gateway with ESMTPS id 13DDE49AD461B;
-	Mon,  4 Apr 2016 14:21:13 +0100 (IST)
-Received: from BADAG01.ba.imgtec.org (10.20.40.113) by HHMAIL01.hh.imgtec.org
-	(10.100.10.19) with Microsoft SMTP Server (TLS) id 14.3.266.1;
-	Mon, 4 Apr 2016 14:21:15 +0100
-Received: from BADAG02.ba.imgtec.org ([fe80::612d:e977:c603:32d6]) by
-	BADAG01.ba.imgtec.org ([fe80::8c38:df2b:fd93:33d3%14]) with mapi id
-	14.03.0266.001; Mon, 4 Apr 2016 06:21:11 -0700
-From: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
-To: Richard Henderson <rth@twiddle.net>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH 1/2] softfloat: Enable
-	run-time-configurable meaning of signaling NaN bit
-Thread-Index: AQHRiTn1NbDGT6IVBEOe7v6ZuxAy1J950y3G
-Date: Mon, 4 Apr 2016 13:21:10 +0000
-Message-ID: <EF5FA6C3467F85449672C3E735957B859168FB0A@BADAG02.ba.imgtec.org>
-References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
-	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>,
-	<56F9A3D1.2050402@twiddle.net>
-In-Reply-To: <56F9A3D1.2050402@twiddle.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [82.117.201.26]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <sergey.fedorov@linaro.org>) id 1an5GR-0006Pc-JQ
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 10:13:59 -0400
+Received: by mail-lb0-x235.google.com with SMTP id u8so163088153lbk.0
+	for <qemu-arm@nongnu.org>; Mon, 04 Apr 2016 07:13:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=MIifCr57XXBJE3JTcnVXoZsbVEhI2MOQbT8EZCioUdA=;
+	b=IuoM3zVwDjNhfzcW+Hz39VRn/Pm+3tYN3Xvwd9gROIGiwjG1dgHa42VYsllE7Geo3+
+	O1J9JA8yEcd4dfbaoOwgG8TPyExivQb4cGsoX56YBQrr0lZSb7vvy0OTf+m+21fnnIje
+	cTI+cq855+G0qu7tp1c3LuhnJSztm4gQNIYis=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=MIifCr57XXBJE3JTcnVXoZsbVEhI2MOQbT8EZCioUdA=;
+	b=J2fDrGZ0k8N7n17fTBtjw8X1yE6cRqnn33JnpmEVcnqsY4mDQDv8PBmINdVk4/qWbh
+	8OVwbSBIHnswaaA/iVoCReZKmYm0h+EAC3mRFIdpkvhpi5s3/iE3FCQWEAJjWUI15bAd
+	gmh6UAC0zHMlIaCeg1wiEYFjPCTcprDo56E8org937jZOQgUEIvE22ofJz2puBOhKVUz
+	9DYyA6JLHgU76VxTqXMwYvJaMOOuI8oor81Sy4HpjWFZXVgewV0jub2cXzXyl3k/vcoM
+	wt2C08ibsKpfhQNgv9s+IzkgYBxrxUbaeUL53Oop2ffCMUBwKPM2FhVIOjqh9URq9zP5
+	T2qg==
+X-Gm-Message-State: AD7BkJK2/usXWV/Je6zXdjNhbleSC1OAX3QGGInxAszLfrW97aJVt+vVXB4He+NxvQMt8WHh
+X-Received: by 10.112.13.8 with SMTP id d8mr8309334lbc.110.1459779238553;
+	Mon, 04 Apr 2016 07:13:58 -0700 (PDT)
+Received: from [192.168.0.46] ([195.91.132.170])
+	by smtp.gmail.com with ESMTPSA id
+	m35sm3001089lfi.25.2016.04.04.07.13.57
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 04 Apr 2016 07:13:57 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1459435778-5526-1-git-send-email-peter.maydell@linaro.org>
+	<1459435778-5526-2-git-send-email-peter.maydell@linaro.org>
+From: Sergey Fedorov <sergey.fedorov@linaro.org>
+Message-ID: <570276A5.1070505@linaro.org>
+Date: Mon, 4 Apr 2016 17:13:57 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"ehabkost@redhat.com" <ehabkost@redhat.com>,
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"agraf@suse.de" <agraf@suse.de>, Petar
-	Jovanovic <Petar.Jovanovic@imgtec.com>,
-	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
-	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>, Miodrag
-	Dinic <Miodrag.Dinic@imgtec.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>, Leon
-	Alrae <Leon.Alrae@imgtec.com>, "afaerber@suse.de" <afaerber@suse.de>,
-	"aurelien@aurel32.net" <aurelien@aurel32.net>,
-	"proljc@gmail.com" <proljc@gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] softfloat: Enable
- run-time-configurable meaning of signaling NaN bit
+In-Reply-To: <1459435778-5526-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::235
+Subject: Re: [Qemu-arm] [PATCH 1/4] target-arm: Correctly reset SCTLR_EL3
+	for 64-bit CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -89,139 +87,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: B6ayXIYm2n8X
+X-TUID: C7mDBECdsdmx
 
-Hello, Richard.
+On 31/03/16 17:49, Peter Maydell wrote:
+> The regdef for SCTRL_EL3 was incorrectly marked as being an
+> ARM_CP_ALIAS, with the remark that this was because the 32-bit
+> definition would take care of reset and migration. However the
+> intention for banked registers as documented in the comment in
+> add_cpreg_to_hashtable() is:
+>
+>  * 2) If ARMv8 is enabled then we can count on a 64-bit version
+>  *    taking care of the secure bank.  This requires that separate
+>  *    32 and 64-bit definitions are provided.
+>
+> and so it marks the 32-bit secure banked version as an alias.
+> This results in the sctlr_s/sctlr_el[3] field never being reset
+> or migrated for a 64-bit CPU with EL3 enabled.
+>
+> Fix this by removing the ARM_CP_ALIAS annotation from SCTLR_EL3.
+> Since this means it now needs a real reset value, move the regdef
+> into the same place that we define the 32-bit SCTLR.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-I truly appreciate your guidance, it is of tremendous help to me.
+Reviewed-by: Sergey Fedorov <sergey.fedorov@linaro.org>
 
-I plan to address all issues you brought up in this mail in the V2 of my pa=
-tch series.
-
-All is clear to me, except some subtleties regarding initialization of plat=
-forms.
-More specifically, for setting snan bit, I adopted this principle.
-
-1. If target platform doesn't use SoftFloatLibrary, nothing is added.
-      (cris, lm32, moxie)
-2. Else, if target platform's signalling bit meaning is "1 is signalling",
-   explicit invocation of set_snan_bit_is_one(1) is added.
-      (mips, sh4, unicore32)
-         (for mips this will change in the second patch of this series,
-         but this very patch leaves mips features as they currently are.)
-3. Else, if target platform explicitely sets other fields of its
-   float_status structure(s), explicit invocation of
-   set_snan_bit_is_one(0) is added.
-      (arm, ppc, s390x, tricore)
-4. Else, if target platform doesn't exlpcitely sets its structure CPUXXXSta=
-te,
-   explicit invocation of set_snan_bit_is_one(0) is added.
-      (alpha, xtensa)
-5. For remaining cases, nothing is added. (Those cases explicitely set
-   their CPUXXXState to 0, and implicitly perform set_snan_bit_is_one(0).)
-      (i386, m68k, microblaze, openrisc, sparc)
-
-By platforms, this looks like following:
-
-A. alpha - structure CPUAlphaState not explicitely set to 0s,
-      explicit invocation of set_snan_bit_is_one(0) added
-B. arm - explicitely sets other fields of float_status,
-      explicit invocation of set_snan_bit_is_one(0) added
-C. cris - does not use SoftFloat library, nothing added
-D. i386 - structure CPUX86State explicitely set to 0s,
-      nothing added (implicit set_snan_bit_is_one(0))
-E. lm32 - does not use SoftFloat library, nothing added
-F. m68k - structure CPUM68KState explicitely set to 0s,
-      nothing added (implicit set_snan_bit_is_one(0))
-G. microblaze - structure CPUMBState explicitely set to 0s,
-      nothing added (implicit set_snan_bit_is_one(0))
-H. mips - must explicitely invoke set_snan_bit_is_one(1)
-I. moxie - does not use SoftFloat library, nothing added
-J. openrisc - structure CPUOpenRISCState explicitely set to 0s,
-      nothing added (implicit set_snan_bit_is_one(0))
-K. ppc - explicitely sets other fields of float_status,
-      explicit invocation of set_snan_bit_is_one(0) added
-L. s390x - explicitely sets other fields of float_status,
-      explicit invocation of set_snan_bit_is_one(0) added
-M. sh4 - must explicitely invoke set_snan_bit_is_one(1)
-N. sparc - structure CPUSPARCState explicitely set to 0s,
-      nothing added (implicit set_snan_bit_is_one(0))
-O. tricore - explicitely sets other fields of float_status,
-      explicit invocation of set_snan_bit_is_one(0) added
-P. unicore32 - must explicitely invoke set_snan_bit_is_one(1)
-Q. xtensa - structure CPUXtensaState not explicitely set to 0s,
-      explicit invocation of set_snan_bit_is_one(0) added
-
-Does such approach look OK to you?
-
-Feightfully yours,
-Aleksandar
-
-
-
-________________________________________
-From: qemu-devel-bounces+aleksandar.markovic=3Dimgtec.com@nongnu.org [qemu-=
-devel-bounces+aleksandar.markovic=3Dimgtec.com@nongnu.org] on behalf of Ric=
-hard Henderson [rth@twiddle.net]
-Sent: Monday, March 28, 2016 2:36 PM
-To: Aleksandar Markovic; qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org; ehabkost@redhat.com; kbastian@mail.uni-paderb=
-orn.de; mark.cave-ayland@ilande.co.uk; agraf@suse.de; Petar Jovanovic; blau=
-wirbel@gmail.com; jcmvbkbc@gmail.com; Miodrag Dinic; qemu-arm@nongnu.org; q=
-emu-ppc@nongnu.org; edgar.iglesias@gmail.com; pbonzini@redhat.com; gxt@mprc=
-.pku.edu.cn; Leon Alrae; afaerber@suse.de; aurelien@aurel32.net; proljc@gma=
-il.com
-Subject: Re: [Qemu-devel] [PATCH 1/2] softfloat: Enable run-time-configurab=
-le meaning of signaling NaN bit
-
-On 03/25/2016 05:50 AM, Aleksandar Markovic wrote:
-> +float16 float16_default_nan(float_status *status) {
-
-{ on the next line.
-
-> +        return const_float64(LIT64( 0xFFF8000000000000 ));
-
-Let's please fix the horrible formatting in this file as we touch the lines=
-,
-please.
-
-> -#define floatx80_default_nan_high 0x7FFF
-> -#define floatx80_default_nan_low  LIT64(0xBFFFFFFFFFFFFFFF)
-> -#else
-> -#define floatx80_default_nan_high 0xFFFF
-> -#define floatx80_default_nan_low  LIT64( 0xC000000000000000 )
-> -#endif
-> +uint16_t floatx80_default_nan_high(float_status *status) {
-> +uint64_t floatx80_default_nan_low(float_status *status) {
-
-Why do you need two separate functions for this?
-
-> +floatx80 floatx80_default_nan(float_status *status) {
-
-Seems to me this one is good enough, and indeed preferable.
-
-> -#define float128_default_nan_high LIT64(0x7FFF7FFFFFFFFFFF)
-> -#define float128_default_nan_low  LIT64(0xFFFFFFFFFFFFFFFF)
-...
-> +float128 float128_default_nan(float_status *status) {
-
-Likewise.
-
-
-> diff --git a/target-alpha/cpu.c b/target-alpha/cpu.c
-> index 2eab060..1714387 100644
-> --- a/target-alpha/cpu.c
-> +++ b/target-alpha/cpu.c
-> @@ -277,6 +277,8 @@ static void alpha_cpu_initfn(Object *obj)
->   #endif
->       env->lock_addr =3D -1;
->       env->fen =3D 1;
+> ---
+>  target-arm/helper.c | 23 +++++++++++++----------
+>  1 file changed, 13 insertions(+), 10 deletions(-)
+>
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 19d5d52..e583e6a 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -3744,11 +3744,6 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+>        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
+>        .writefn = vbar_write, .resetvalue = 0,
+>        .fieldoffset = offsetof(CPUARMState, cp15.mvbar) },
+> -    { .name = "SCTLR_EL3", .state = ARM_CP_STATE_AA64,
+> -      .type = ARM_CP_ALIAS, /* reset handled by AArch32 view */
+> -      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 0, .opc2 = 0,
+> -      .access = PL3_RW, .raw_writefn = raw_write, .writefn = sctlr_write,
+> -      .fieldoffset = offsetof(CPUARMState, cp15.sctlr_el[3]) },
+>      { .name = "TTBR0_EL3", .state = ARM_CP_STATE_AA64,
+>        .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 0, .opc2 = 0,
+>        .access = PL3_RW, .writefn = vmsa_ttbr_write, .resetvalue = 0,
+> @@ -4641,12 +4636,20 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>      }
+>      if (arm_feature(env, ARM_FEATURE_EL3)) {
+>          define_arm_cp_regs(cpu, el3_cp_reginfo);
+> -        ARMCPRegInfo rvbar = {
+> -            .name = "RVBAR_EL3", .state = ARM_CP_STATE_AA64,
+> -            .opc0 = 3, .opc1 = 6, .crn = 12, .crm = 0, .opc2 = 1,
+> -            .type = ARM_CP_CONST, .access = PL3_R, .resetvalue = cpu->rvbar
+> +        ARMCPRegInfo el3_regs[] = {
+> +            { .name = "RVBAR_EL3", .state = ARM_CP_STATE_AA64,
+> +              .opc0 = 3, .opc1 = 6, .crn = 12, .crm = 0, .opc2 = 1,
+> +              .type = ARM_CP_CONST, .access = PL3_R, .resetvalue = cpu->rvbar },
+> +            { .name = "SCTLR_EL3", .state = ARM_CP_STATE_AA64,
+> +              .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 0, .opc2 = 0,
+> +              .access = PL3_RW,
+> +              .raw_writefn = raw_write, .writefn = sctlr_write,
+> +              .fieldoffset = offsetof(CPUARMState, cp15.sctlr_el[3]),
+> +              .resetvalue = cpu->reset_sctlr },
+> +            REGINFO_SENTINEL
+>          };
+> -        define_one_arm_cp_reg(cpu, &rvbar);
 > +
-> +    set_snan_bit_is_one(0, &env->fp_status);
+> +        define_arm_cp_regs(cpu, el3_regs);
+>      }
+>      /* The behaviour of NSACR is sufficiently various that we don't
+>       * try to describe it in a single reginfo:
 
-We've just done a memset of (most of) the entire cpu struct.  We don't need=
- to
-re-initialize this field to zero here.  Same with most of the other cpus.
-
-
-r~

@@ -1,74 +1,79 @@
-Received: by 10.25.208.211 with SMTP id h202csp1220609lfg;
-        Mon, 4 Apr 2016 09:10:52 -0700 (PDT)
-X-Received: by 10.55.41.16 with SMTP id p16mr17197392qkh.86.1459786252213;
-        Mon, 04 Apr 2016 09:10:52 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp31157lfg;
+        Mon, 4 Apr 2016 12:37:35 -0700 (PDT)
+X-Received: by 10.55.212.132 with SMTP id s4mr35966364qks.78.1459798654956;
+        Mon, 04 Apr 2016 12:37:34 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d2si22812258qkb.17.2016.04.04.09.10.52
+        by mx.google.com with ESMTPS id e60si23366138qga.128.2016.04.04.12.37.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Apr 2016 09:10:52 -0700 (PDT)
+        Mon, 04 Apr 2016 12:37:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59740 helo=lists.gnu.org)
+Received: from localhost ([::1]:60739 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1an75X-0001ph-K8
-	for alex.bennee@linaro.org; Mon, 04 Apr 2016 12:10:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41509)
+	id 1anAJa-0003AA-Ca
+	for alex.bennee@linaro.org; Mon, 04 Apr 2016 15:37:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48267)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1an75P-0001oC-KR
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:10:49 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1anAJX-0003A3-PL
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:37:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1an75K-0002qF-7s
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:10:43 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:2332)
+	(envelope-from <ehabkost@redhat.com>) id 1anAJT-0006Kb-Qn
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 15:37:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42504)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>)
-	id 1an75K-0002q0-1h; Mon, 04 Apr 2016 12:10:38 -0400
-Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
-	by Websense Email Security Gateway with ESMTPS id CA79447DDE52B;
-	Mon,  4 Apr 2016 17:10:33 +0100 (IST)
-Received: from [192.168.169.37] (192.168.169.37) by hhmail02.hh.imgtec.org
-	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.266.1;
-	Mon, 4 Apr 2016 17:10:36 +0100
-To: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>, Aleksandar Markovic
-	<aleksandar.markovic@rt-rk.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>
+	(envelope-from <ehabkost@redhat.com>)
+	id 1anAJT-0006KU-LF; Mon, 04 Apr 2016 15:37:27 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E3BCC627F5;
+	Mon,  4 Apr 2016 19:37:25 +0000 (UTC)
+Received: from localhost (vpn1-5-40.gru2.redhat.com [10.97.5.40])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u34JbN8g013132; Mon, 4 Apr 2016 15:37:24 -0400
+Date: Mon, 4 Apr 2016 16:37:23 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160404193723.GD22665@thinpad.lan.raisama.net>
 References: <1458910214-12239-1-git-send-email-aleksandar.markovic@rt-rk.com>
 	<1458910214-12239-2-git-send-email-aleksandar.markovic@rt-rk.com>
-	<56FEC5D1.8020908@imgtec.com>
-	<EF5FA6C3467F85449672C3E735957B859168F4EA@BADAG02.ba.imgtec.org>
-From: Leon Alrae <leon.alrae@imgtec.com>
-Message-ID: <570291F0.1010108@imgtec.com>
-Date: Mon, 4 Apr 2016 17:10:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	<56F9A3D1.2050402@twiddle.net>
+	<EF5FA6C3467F85449672C3E735957B859168FB0A@BADAG02.ba.imgtec.org>
+	<CAFEAcA_Rp+8hGC6sos3H3t2A8UDgLUf3KvrM3-C3zZAFCc_WEA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <EF5FA6C3467F85449672C3E735957B859168F4EA@BADAG02.ba.imgtec.org>
-Content-Type: text/plain; charset="windows-1252"
-X-Originating-IP: [192.168.169.37]
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"ehabkost@redhat.com" <ehabkost@redhat.com>,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_Rp+8hGC6sos3H3t2A8UDgLUf3KvrM3-C3zZAFCc_WEA@mail.gmail.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 04 Apr 2016 19:37:27 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Cc: "proljc@gmail.com" <proljc@gmail.com>,
 	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"rth@twiddle.net" <rth@twiddle.net>,
 	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"agraf@suse.de" <agraf@suse.de>,
-	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
 	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
 	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
-	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
+	Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
 	"pbonzini@redhat.com" <pbonzini@redhat.com>,
+	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
 	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	"afaerber@suse.de" <afaerber@suse.de>,
+	Leon Alrae <Leon.Alrae@imgtec.com>, "afaerber@suse.de" <afaerber@suse.de>,
 	"aurelien@aurel32.net" <aurelien@aurel32.net>,
-	"proljc@gmail.com" <proljc@gmail.com>
+	Richard Henderson <rth@twiddle.net>
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] softfloat: Enable
  run-time-configurable meaning of signaling NaN bit
 X-BeenThere: qemu-arm@nongnu.org
@@ -84,28 +89,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EOGYe1iUun0I
+X-TUID: jFe9EDU9eKSH
 
-On 03/04/16 15:25, Aleksandar Markovic wrote:
-> It just seems to me that, in similar case, 16-bit default NaN value sho=
-uld be 0x7E00. This value is needed for MSA operations. ("MIPS Architectu=
-re for Programmers Volume IV-j: The MIPS32=AE SIMD Architecture Module", =
-Revision 1.12, (february 3, 2016), page 52, table 3.7 "Default NaN Encodi=
-ngs")
->=20
-> I plan to include all three corrections in the next version of this pat=
-ch set. Please, let me know if you think that I should not.
+On Mon, Apr 04, 2016 at 02:31:47PM +0100, Peter Maydell wrote:
+> On 4 April 2016 at 14:21, Aleksandar Markovic
+> <Aleksandar.Markovic@imgtec.com> wrote:
+> > B. arm - explicitely sets other fields of float_status,
+> >       explicit invocation of set_snan_bit_is_one(0) added
+> 
+> We zero the float_status structs on reset, because they are earlier
+> in the CPUARMState structure than the 'features' field (and so the
+> memset() in arm_cpu_reset() will clear them). So you don't
+> need to explicitly zero a field like this. I expect the other
+> architectures are the same.
 
-Great, thanks.
+Even if it is not zeroed on reset, it is zeroed on object_new().
+Isn't that enough?
 
-Also, the pickNaNMulAdd() for MIPS requires updating to match "3.5.3 NaN
-Propagation" from the same MSA doc:
-"When two or three operands are NaN, the payload of the resulting NaN is
-identical to the payload of one of the input NaNs selected from left to
-right as described by the instruction format".
-This indicates the "c, a, b" order instead of "a, b, c" which is
-currently implemented.
-
-Regards,
-Leon
-
+-- 
+Eduardo

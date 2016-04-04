@@ -1,70 +1,73 @@
-Received: by 10.25.208.211 with SMTP id h202csp1237326lfg;
-        Mon, 4 Apr 2016 09:46:40 -0700 (PDT)
-X-Received: by 10.141.0.8 with SMTP id b8mr14092767qhd.104.1459788400465;
-        Mon, 04 Apr 2016 09:46:40 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp3984lfg;
+        Mon, 4 Apr 2016 11:31:27 -0700 (PDT)
+X-Received: by 10.140.22.139 with SMTP id 11mr13515460qgn.34.1459794687470;
+        Mon, 04 Apr 2016 11:31:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b53si22906598qga.33.2016.04.04.09.46.40
+        by mx.google.com with ESMTPS id e66si23168897qgf.125.2016.04.04.11.31.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Apr 2016 09:46:40 -0700 (PDT)
+        Mon, 04 Apr 2016 11:31:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59975 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60478 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1an7eC-0002il-12
-	for alex.bennee@linaro.org; Mon, 04 Apr 2016 12:46:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52066)
+	id 1an9Hb-0006r0-12
+	for alex.bennee@linaro.org; Mon, 04 Apr 2016 14:31:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50959)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an7cQ-000834-Iq
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:44:51 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1an7YC-0000y8-O8
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:40:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an7cP-00035m-Mw
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:44:50 -0400
-Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:35965)
+	(envelope-from <vijay.kilari@gmail.com>) id 1an7YB-0001uJ-NE
+	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:40:28 -0400
+Received: from mail-ob0-x22e.google.com ([2607:f8b0:4003:c01::22e]:35650)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1an7cO-00035D-GF
-	for qemu-arm@nongnu.org; Mon, 04 Apr 2016 12:44:49 -0400
-Received: by mail-vk0-x22b.google.com with SMTP id c4so62017668vkb.3
-	for <qemu-arm@nongnu.org>; Mon, 04 Apr 2016 09:44:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=IoxTClhdVKa6tBxIJu0UHBT4hOUZxmXowMnM90GHIuE=;
-	b=JGcwq3IJybKpyqz09KSqwgRMr9mqhhR1Z29GPhwm6AgdmOeEgmqbzJfJ1Ja1MQyWJF
-	z4fxOgzOaeujOCwecp4spzZrSf8QLbj6PUd6+NwXjaYKK4vQ1+HQ2tyQXZIdN4amiBbF
-	CTNDJfKS9Llgh0m+4VEALau0nbNGYdHeKFV7A=
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1an7YB-0001uF-HB; Mon, 04 Apr 2016 12:40:27 -0400
+Received: by mail-ob0-x22e.google.com with SMTP id fp4so100752891obb.2;
+	Mon, 04 Apr 2016 09:40:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc; bh=qymnaJBNrP9GIoAIMT9tJ89N7vkrR9JVqwzBUENmqJw=;
+	b=Sd4EbgV1UmtgEkB2EQ4hpJzCv6vYdKIWsEWBv++xOCBgfHxOo0SRUNCzMLOyCpUVOC
+	VXenWNDenRy81MWT6iOaWi1GmjCj2B+8q6KfA548xQppvypUu1A5TmgFrVXQs/j3bBRY
+	ViBPGu1SiVF+nxbdBXcuLbVGKLTbsxzbbt9jiDrFFW7QanhT0glK+nEIuarFvgfwwH/8
+	JhkFighdaJ+Dyg3crkYK2qYXLuIBdjCmh42YU/8Ok7jQJCxNDE/CnyTPMQISFDK0A+5P
+	iABSjphQoir8gg2zWgvMCjKaNr2WJLCey1rltI52YiNeOGkcR9TML3neYykARVZzF4fX
+	bPqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=IoxTClhdVKa6tBxIJu0UHBT4hOUZxmXowMnM90GHIuE=;
-	b=OSvWRktVG4BiKjGr7juO7dswJihDKRGmSF6B5UhqEsQoU5hSlaNvWBRadPk+1bydis
-	Pe0ejW6jLAKwCL9UDPjZKfvs+e/m8bN5YMyZJ0UdaO72C4cliRtn1Tp0QTv3e4wgOCso
-	+lC11C5+KYqP2PSPY2PROtXZTlXOdDUjrEclaeKsdciTXKljuGpB4Oxavjf3pMlAWRn8
-	0GozcfZcjbhGcxI1BVyL/JhRvPxbThiAI0KilrpomfFn1yuQmtSRROW8o4GfJVqFgPWl
-	3mienRzLxanKZjITrO86/u7HXw36g2oS6Jggbn/B4FXVE0yuBZm0Ec1x5xw74NIc/OVx
-	oovw==
-X-Gm-Message-State: AD7BkJIh5htj/1ABLmLoHNDJ7NMWVJpTt8Kv76kapN4qSYO29R15Vr+rMpBjHK4QLPpRzycA9CkRDPZ5k/D0+fPG
-X-Received: by 10.159.38.3 with SMTP id 3mr4786539uag.107.1459788288006; Mon,
-	04 Apr 2016 09:44:48 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc;
+	bh=qymnaJBNrP9GIoAIMT9tJ89N7vkrR9JVqwzBUENmqJw=;
+	b=Y6xlXrbffJ0zKV+V1XESqjvtHTN0+eHZcH9GHVu0NtTaT+EtIu5pf1B7bDqdBSCZiu
+	lFU/PeaFE+EMhOnFqyMSWN2fn9yX3k2teByUaCuM3xvNcxiAuFuGdC+c1ju+j6KsmL4n
+	G1kZ62Uwo2K1vd550dFvHhkkpF67aNlDks2JFMjJDFL/ta0RVPU+fToq6hi5FVfrKiqH
+	J4x8wQCm8UPS1HkcBQyFdwIk3MKxrbZodVRShrEVLMei2bg7+U7cxAyezaSh3xnhqRGS
+	yePc99aYHyDeMr9E76+ksDqvQBa1bqvJzUGfPPdivs7BsWTX2rH5bv7QNocVmCqXlrWR
+	ENow==
+X-Gm-Message-State: AD7BkJLanFcxIuWyEn6SQRxnWqSiDGP9T+uFZP5nbml4iPF8o2Z4rS4hIp7Tok9t05Zq8c4kovpyQ7uni4R3Yw==
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 4 Apr 2016 09:44:28 -0700 (PDT)
-In-Reply-To: <CALicx6u3yCdFSUuLyQgt7yP08RSwXP=k0w3WKmeTRfn7jS6vRA@mail.gmail.com>
+X-Received: by 10.182.60.198 with SMTP id j6mr3243770obr.12.1459788026787;
+	Mon, 04 Apr 2016 09:40:26 -0700 (PDT)
+Received: by 10.157.29.134 with HTTP; Mon, 4 Apr 2016 09:40:26 -0700 (PDT)
+In-Reply-To: <CAFEAcA_RDSe=exvgo-yF57bQDk2=sx3kLnvKiKkXHPJHCTGE+w@mail.gmail.com>
 References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
 	<1459777195-7907-2-git-send-email-vijayak@caviumnetworks.com>
 	<CAFEAcA_RDSe=exvgo-yF57bQDk2=sx3kLnvKiKkXHPJHCTGE+w@mail.gmail.com>
-	<CALicx6u3yCdFSUuLyQgt7yP08RSwXP=k0w3WKmeTRfn7jS6vRA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Apr 2016 17:44:28 +0100
-Message-ID: <CAFEAcA8sCNFY7dF2MSZcELgEfJg9MhNERFAY2ZJrou=e1zKM5w@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Mon, 4 Apr 2016 22:10:26 +0530
+Message-ID: <CALicx6u3yCdFSUuLyQgt7yP08RSwXP=k0w3WKmeTRfn7jS6vRA@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22b
+X-Received-From: 2607:f8b0:4003:c01::22e
+X-Mailman-Approved-At: Mon, 04 Apr 2016 14:31:25 -0400
 Cc: Vijaya Kumar K <vijayak@caviumnetworks.com>,
 	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
@@ -84,24 +87,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xR7Rc6NXfYGT
+X-TUID: 56mLjlpR1u4h
 
-On 4 April 2016 at 17:40, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Mon, Apr 4, 2016 at 7:14 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> I agree that this would definitely improve performance (both for
->> migration and for emulated guests), but I'm afraid this breaks
->> running 32-bit ARMv5 and ARMv7M guests with this QEMU binary,
->> so we can't do this. If we want to allow the minimum page size to
->> be bigger than 1K for AArch64 CPUs then we need to make it a
->> runtime settable thing rather than compile-time (which is not
->> an entirely trivial thing).
+On Mon, Apr 4, 2016 at 7:14 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 4 April 2016 at 14:39,  <vijayak@caviumnetworks.com> wrote:
+>> From: Vijay <vijayak@cavium.com>
+>>
+>> Set target page size to minimum 4K for aarch64.
+>> This helps to reduce live migration downtime significantly.
+>>
+>> Signed-off-by: Vijaya Kumar K <vijayak@caviumnetworks.com>
+>> ---
+>>  target-arm/cpu.h |    7 +++++++
+>>  1 file changed, 7 insertions(+)
+>>
+>> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+>> index 066ff67..2e4b48f 100644
+>> --- a/target-arm/cpu.h
+>> +++ b/target-arm/cpu.h
+>> @@ -1562,11 +1562,18 @@ bool write_cpustate_to_list(ARMCPU *cpu);
+>>  #if defined(CONFIG_USER_ONLY)
+>>  #define TARGET_PAGE_BITS 12
+>>  #else
+>> +/*
+>> + * Aarch64 support minimum 4K page size
+>> + */
+>> +#if defined(TARGET_AARCH64)
+>> +#define TARGET_PAGE_BITS 12
 >
-> Do you mean to say that based on -cpu type qemu option
-> choose the page size at runtime?
+> I agree that this would definitely improve performance (both for
+> migration and for emulated guests), but I'm afraid this breaks
+> running 32-bit ARMv5 and ARMv7M guests with this QEMU binary,
+> so we can't do this. If we want to allow the minimum page size to
+> be bigger than 1K for AArch64 CPUs then we need to make it a
+> runtime settable thing rather than compile-time (which is not
+> an entirely trivial thing).
 
-If you want to avoid defining TARGET_PAGE_SIZE to the
-lowest-common-denominator 1K, then yes, you'd need to
-choose it at runtime. That could be painful to implement.
+Do you mean to say that based on -cpu type qemu option
+choose the page size at runtime?
 
-thanks
--- PMM
+>
+>> +#else
+>>  /* The ARM MMU allows 1k pages.  */
+>>  /* ??? Linux doesn't actually use these, and they're deprecated in recent
+>>     architecture revisions.  Maybe a configure option to disable them.  */
+>>  #define TARGET_PAGE_BITS 10
+>>  #endif
+>> +#endif
+>>
+>>  #if defined(TARGET_AARCH64)
+>>  #  define TARGET_PHYS_ADDR_SPACE_BITS 48
+>
+> thanks
+> -- PMM

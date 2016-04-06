@@ -1,80 +1,76 @@
-Received: by 10.25.208.211 with SMTP id h202csp1036125lfg;
-        Wed, 6 Apr 2016 08:02:11 -0700 (PDT)
-X-Received: by 10.140.98.163 with SMTP id o32mr24947280qge.46.1459954931799;
-        Wed, 06 Apr 2016 08:02:11 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp67714lfg;
+        Wed, 6 Apr 2016 10:50:58 -0700 (PDT)
+X-Received: by 10.55.24.208 with SMTP id 77mr50443723qky.45.1459965058009;
+        Wed, 06 Apr 2016 10:50:58 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f185si2346797qkb.71.2016.04.06.08.02.11
+        by mx.google.com with ESMTPS id c197si2910486qkb.66.2016.04.06.10.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Apr 2016 08:02:11 -0700 (PDT)
+        Wed, 06 Apr 2016 10:50:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43660 helo=lists.gnu.org)
+       dkim=fail header.i=@braap.org;
+       dkim=fail header.i=@messagingengine.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44747 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1anoyB-0007I5-C0
-	for alex.bennee@linaro.org; Wed, 06 Apr 2016 11:02:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55943)
+	id 1anrbV-0004a4-Gu
+	for alex.bennee@linaro.org; Wed, 06 Apr 2016 13:50:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1anoxV-0006H6-42
-	for qemu-devel@nongnu.org; Wed, 06 Apr 2016 11:01:29 -0400
+	(envelope-from <cota@braap.org>) id 1anrb6-0004DK-QI
+	for qemu-devel@nongnu.org; Wed, 06 Apr 2016 13:50:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1anoxP-0006cO-Ch
-	for qemu-devel@nongnu.org; Wed, 06 Apr 2016 11:01:29 -0400
-Received: from mail-oi0-x231.google.com ([2607:f8b0:4003:c06::231]:32787)
+	(envelope-from <cota@braap.org>) id 1anrb3-0004FK-8k
+	for qemu-devel@nongnu.org; Wed, 06 Apr 2016 13:50:32 -0400
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:50651)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1anoxE-0006ZF-88; Wed, 06 Apr 2016 11:01:12 -0400
-Received: by mail-oi0-x231.google.com with SMTP id w85so61690225oiw.0;
-	Wed, 06 Apr 2016 08:01:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=rFrm0ghpqU8Fj1n2dte7jJ5x5ydw2L34BKtjJXTodkA=;
-	b=f/rEB4U35GGgAcLv8awvJO/FwaUQr0ZwiAQHSEu4JTCScx95jrqg7dEXi0ouqa+eDM
-	CkdjDmxeJG6P+iN+YDDDoVnR9MV4eaPGwPS3xM/3/l/3OxGzbaFN1oTnWjcUGnHyZFk5
-	Hb4Bj5x6rS5MZwz71sUozERrmqKIpKX5YGT2F6WFEo/rtHuV1iY311VbqQyXvJps46r9
-	W190Tt7AsshddcZ0UPpzHoHNFCIr8DjK7IwjUJkyvTzhVCoXAlwaXMCkS+MXay4bAUEA
-	ErrvFaaqZbb+z3WneIA/YoIWpKkAwYyuOU3fJ1CPPpHONcB8jVwNwBZs1+vSH78XVnh3
-	z8VQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=rFrm0ghpqU8Fj1n2dte7jJ5x5ydw2L34BKtjJXTodkA=;
-	b=C9DvKKLjDtGX9Y/me3YX2aOMEPkPnra1JnSg7fQ+EdP9Hwa5ejuKErHdCk/hJdhWsF
-	72JBXWS3WUbakpCirvIzhIUxLWjy9eXgpwXFTXGiA22r4oq14nbZBWIZHWokUAcDwfu8
-	cxkdbWtOlWdsRYnd3Yebyt987B6pF72R2svSXoslru/wnayp3kmXQLv28ihumbNp/ZTE
-	NBsrEhR3ESSZi/WVGqmBRplBzJ/sVayyQ+Rig2PLbC2kvRtXUQspVvR36uEzlimE4t1j
-	EAJ5OeuYLDGSU+nSdvwK0KQAn2Y8E/7CLQYJXKpQAVVoGp1rgL8d5aQT6xyU1l/Spfap
-	jA+A==
-X-Gm-Message-State: AD7BkJKIo/wwGDhLvTASJ/W+zow/fnAP92KRzAeZTW/Z5PmBvaVLauAlEBBigVeWZHjXSTs1R+ObqLGueBq3AA==
-MIME-Version: 1.0
-X-Received: by 10.202.204.130 with SMTP id c124mr11499054oig.112.1459954871107;
-	Wed, 06 Apr 2016 08:01:11 -0700 (PDT)
-Received: by 10.157.29.134 with HTTP; Wed, 6 Apr 2016 08:01:11 -0700 (PDT)
-In-Reply-To: <CAFEAcA8sCNFY7dF2MSZcELgEfJg9MhNERFAY2ZJrou=e1zKM5w@mail.gmail.com>
-References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
-	<1459777195-7907-2-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA_RDSe=exvgo-yF57bQDk2=sx3kLnvKiKkXHPJHCTGE+w@mail.gmail.com>
-	<CALicx6u3yCdFSUuLyQgt7yP08RSwXP=k0w3WKmeTRfn7jS6vRA@mail.gmail.com>
-	<CAFEAcA8sCNFY7dF2MSZcELgEfJg9MhNERFAY2ZJrou=e1zKM5w@mail.gmail.com>
-Date: Wed, 6 Apr 2016 20:31:11 +0530
-Message-ID: <CALicx6u_YinmXd4xCZKsRVtWcnSUHqoe_7Tc1TOG7ai3cg_rYQ@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
+	(envelope-from <cota@braap.org>) id 1anrb2-0004FB-Ro
+	for qemu-devel@nongnu.org; Wed, 06 Apr 2016 13:50:29 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.nyi.internal (Postfix) with ESMTP id 6C64A2133A
+	for <qemu-devel@nongnu.org>; Wed,  6 Apr 2016 13:50:28 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+	by compute3.internal (MEProxy); Wed, 06 Apr 2016 13:50:28 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=pJfnq
+	8s1qd4tNfiWpbOItOTeweE=; b=DWGbfVfI+JDbk58hipUPkASAHWBaH7rEZIVPQ
+	uQVeDM+PB/bpnmDcgFh3/DFLOD/gyFwah6WEQJ3KyiWQ+yoWwBrK1EBeSmt0gzt0
+	BqD3jy3vnmCucK6+KYVJ1c+9E1aMtQga9m6i537+frR5Yd3kDM+U6HqupPYav4uL
+	dGSdKA=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-sasl-enc
+	:x-sasl-enc; s=smtpout; bh=pJfnq8s1qd4tNfiWpbOItOTeweE=; b=Q2nt3
+	LrACKwbq00TxWh11Zt1ZZn8qO4u5zx7fW98rsnec9oF4qa9M7MZyeSO/vIcxDqs0
+	OtPOyUj7Rj9TljvF6lZZXnVLV+mS4F5IFeAlgceHAy/mrIiEfdqvB+hZAqQ5CgcE
+	zBtlx4vn+PAdCEs9p7e/PvuIfSBWT2oolPePkM=
+X-Sasl-enc: bzKLuo98eZ3VxembWLsF7bJwmTgX0tuS9gLhQySw46VA 1459965028
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 3026D680265;
+	Wed,  6 Apr 2016 13:50:28 -0400 (EDT)
+Date: Wed, 6 Apr 2016 13:50:28 -0400
+From: "Emilio G. Cota" <cota@braap.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Message-ID: <20160406175027.GA23359@flamenco>
+References: <1458221140-15232-1-git-send-email-zhaoshenglong@huawei.com>
+	<CAFEAcA_7ww3PBQ5Mf=ax69B2i6zOx4-pDaiEUVerGG5iru-pJg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_7ww3PBQ5Mf=ax69B2i6zOx4-pDaiEUVerGG5iru-pJg@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::231
-Cc: Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijay <vijayak@cavium.com>
-Subject: Re: [Qemu-devel] [RFC PATCH v1 1/2] target-arm: Update page size
-	for aarch64
+X-Received-From: 66.111.4.29
+Cc: Wei Huang <wei@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Subject: Re: [Qemu-devel] [PATCH 0/2] Add gpio_key and use it for ARM virt
+	power button
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -88,30 +84,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0SBsQCVGmA61
+X-TUID: 6QsFZ7psN1lq
 
-On Mon, Apr 4, 2016 at 10:14 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 4 April 2016 at 17:40, Vijay Kilari <vijay.kilari@gmail.com> wrote:
->> On Mon, Apr 4, 2016 at 7:14 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> I agree that this would definitely improve performance (both for
->>> migration and for emulated guests), but I'm afraid this breaks
->>> running 32-bit ARMv5 and ARMv7M guests with this QEMU binary,
->>> so we can't do this. If we want to allow the minimum page size to
->>> be bigger than 1K for AArch64 CPUs then we need to make it a
->>> runtime settable thing rather than compile-time (which is not
->>> an entirely trivial thing).
->>
->> Do you mean to say that based on -cpu type qemu option
->> choose the page size at runtime?
->
-> If you want to avoid defining TARGET_PAGE_SIZE to the
-> lowest-common-denominator 1K, then yes, you'd need to
-> choose it at runtime. That could be painful to implement.
+On Wed, Mar 23, 2016 at 16:12:46 +0000, Peter Maydell wrote:
+> On 17 March 2016 at 13:25, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+> > From: Shannon Zhao <shannon.zhao@linaro.org>
+> >
+> > There is a problem for power button that it will not work if an early
+> > system_powerdown request happens before guest gpio driver loads.
+> >
+> > Here we add the emulation of gpio_key and use it for ARM virt power
+> > button.
+> 
+> I tweaked the type names to be 'gpio-key' rather than 'gpio_key',
+> and added a comment to briefly describe what the device does:
+> 
+> + * Emulate a (human) keypress -- when the key is triggered by
+> + * setting the incoming gpio line, the outbound irq line is
+> + * raised for 100ms before being dropped again.
+> 
+> Applied to target-arm.next, thanks.
 
-Had a look at it. Needs some changes in common code as well.
-I will send this as a separate patch series and drop this patch
-from this series.
+I might be doing something wrong, but aarch64-softmmu @ master only works for me
+after reverting 94f02c5ea94 "ARM: Virt: Use gpio_key for power button". Bisect log
+appended.
 
->
-> thanks
-> -- PMM
+This is what I get when booting aarch64 as per [1]:
+$ aarch64-softmmu/qemu-system-aarch64 -machine virt -cpu cortex-a57 -machine type=virt \
+ -nographic -smp 1 -m 2048 -kernel img/aarch64/aarch64-linux-3.15rc2-buildroot.img  \
+--append "console=ttyAMA0"
+
+qemu-system-aarch64: Unknown device 'gpio-key' for default sysbus
+Aborted (core dumped)
+
+Thanks,
+
+		Emilio
+
+[1] http://www.bennee.com/~alex/blog/2014/05/09/running-linux-in-qemus-aarch64-system-emulation-mode/
+
+git bisect start
+# good: [4829e0378dfb91d55af9dfd741bd09e8f2c4f91a] Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2016-03-18' into staging
+git bisect good 4829e0378dfb91d55af9dfd741bd09e8f2c4f91a
+# bad: [7acbff99c6c285b3070bf0e768d56f511e2bf346] Update version for v2.6.0-rc1 release
+git bisect bad 7acbff99c6c285b3070bf0e768d56f511e2bf346
+# good: [9fd3c5d556b21e0020d98d4695c84a655aa056f0] tests/test-filter-redirector: Add unit test for filter-redirector
+git bisect good 9fd3c5d556b21e0020d98d4695c84a655aa056f0
+# bad: [e8710c2293c0f4652090b1434603715f2d9a410f] block: m25p80: Removed unused variable
+git bisect bad e8710c2293c0f4652090b1434603715f2d9a410f
+# good: [5481531154cf08ed53623a0184f7677a9b98d083] raw: Support BDRV_REQ_FUA
+git bisect good 5481531154cf08ed53623a0184f7677a9b98d083
+# good: [c98d3d79ee387ea6e8fb091299f8562b20022f10] target-mips: use CP0_CHECK for gen_m{f|t}hc0
+git bisect good c98d3d79ee387ea6e8fb091299f8562b20022f10
+# good: [f4e732a0a773c4e44c2c183a5d63cd850ffb57d1] iotests: Test qemu-img convert -S 0 behavior
+git bisect good f4e732a0a773c4e44c2c183a5d63cd850ffb57d1
+# good: [69bc7f5029db5ea55359f7905e9829777ae5a34f] Merge remote-tracking branch 'remotes/berrange/tags/pull-qcrypto-2016-03-30-1' into staging
+git bisect good 69bc7f5029db5ea55359f7905e9829777ae5a34f
+# good: [489ef4c810033e63af570c8a430af8b9858bfa5f] Merge remote-tracking branch 'remotes/lalrae/tags/mips-20160329-2' into staging
+git bisect good 489ef4c810033e63af570c8a430af8b9858bfa5f
+# bad: [94f02c5ea9430be935088b2574f72f2dcf902997] ARM: Virt: Use gpio_key for power button
+git bisect bad 94f02c5ea9430be935088b2574f72f2dcf902997
+# good: [e5a8152c9bfd3d40c37711ba5b704f277cbc0c54] hw/gpio: Add the emulation of gpio_key
+git bisect good e5a8152c9bfd3d40c37711ba5b704f277cbc0c54
+# first bad commit: [94f02c5ea9430be935088b2574f72f2dcf902997] ARM: Virt: Use gpio_key for power button
+

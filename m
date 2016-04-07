@@ -1,66 +1,71 @@
-Received: by 10.25.208.211 with SMTP id h202csp215740lfg;
-        Wed, 6 Apr 2016 17:46:41 -0700 (PDT)
-X-Received: by 10.140.43.10 with SMTP id d10mr298346qga.38.1459990001625;
-        Wed, 06 Apr 2016 17:46:41 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.211 with SMTP id h202csp333685lfg;
+        Thu, 7 Apr 2016 00:05:11 -0700 (PDT)
+X-Received: by 10.140.28.117 with SMTP id 108mr1589379qgy.40.1460012711166;
+        Thu, 07 Apr 2016 00:05:11 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d126si4067353qkb.84.2016.04.06.17.46.41
+        by mx.google.com with ESMTPS id t18si4917532qgd.30.2016.04.07.00.05.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Apr 2016 17:46:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 07 Apr 2016 00:05:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46548 helo=lists.gnu.org)
+       dkim=fail header.i=@livius-net.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47974 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1any5o-0000c6-49
-	for alex.bennee@linaro.org; Wed, 06 Apr 2016 20:46:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56284)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ao406-0005Ga-54
+	for alex.bennee@linaro.org; Thu, 07 Apr 2016 03:05:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44695)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1any5l-0000c0-Bj
-	for qemu-arm@nongnu.org; Wed, 06 Apr 2016 20:46:38 -0400
+	(envelope-from <ilg@livius.net>) id 1ao3zk-0004xL-HP
+	for qemu-devel@nongnu.org; Thu, 07 Apr 2016 03:04:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>) id 1any5g-0001Sw-O9
-	for qemu-arm@nongnu.org; Wed, 06 Apr 2016 20:46:37 -0400
-Received: from mail-qg0-x236.google.com ([2607:f8b0:400d:c04::236]:34175)
+	(envelope-from <ilg@livius.net>) id 1ao3zg-0000oI-Gn
+	for qemu-devel@nongnu.org; Thu, 07 Apr 2016 03:04:48 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:34268)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mdavidsaver@gmail.com>)
-	id 1any5g-0001S3-J7; Wed, 06 Apr 2016 20:46:32 -0400
-Received: by mail-qg0-x236.google.com with SMTP id c6so50787476qga.1;
-	Wed, 06 Apr 2016 17:46:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TAqcSNBTkRqGoWiH7Gj2VotqZr1k5PvWH5z3cL8r0jw=;
-	b=j4WnBwmucr3q5mSxQnxSHvFx94Q/zW8gM2sd6mxAhS9PokdcN7l8HIHp3yoLPsoD8b
-	5DDuYuPmdRLq6I06H9Ze7tUNgex93AhASDNR4etUfkHQ0h746s2ujy2VOINV5nLOtG1i
-	+qdWmeqTHeYV3qgPxQ9t+gwIGaZeMAaN0vIuHwhlD0TQ0BYEHw8P5UAtig/yDhSlJaTe
-	2qtR5x/x/fhJ5pivRlacZEfPT7U8Zz2/yDGvDxJ1A7zfCqor/zM0oB2Xc3Yj9w5sdwdt
-	1fY4eiGdFya5N1u0X6R9Ag3sm9aVGnKx2kagswPyKYaqW+dO9Qo6Nk99ZgSf3z69+G84
-	uLdA==
+	(envelope-from <ilg@livius.net>) id 1ao3zg-0000ny-AV
+	for qemu-devel@nongnu.org; Thu, 07 Apr 2016 03:04:44 -0400
+Received: by mail-wm0-x242.google.com with SMTP id n3so18895224wmn.1
+	for <qemu-devel@nongnu.org>; Thu, 07 Apr 2016 00:04:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=livius-net.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=stDanXOINebDykmFY+OUjFrVNZpEZEq5m1Fp1uWnCig=;
+	b=irzAqzRTwKTn5f9KV7Ib+cOkwSjXBlIqozQqOrhl9BTuHcq/7CdHtbYgpakmwh+Vb9
+	+ufTC+3d6uyjkESU+M1QikyNJkfrBiDRKAsWB+BqtFliVvLl2agaYf8JuU7cRflGWydD
+	Kzm3xQwaITDAUZX9ZGslyiOAMXL8oVwxFzlOlliJgT48wMHRBOR0GHrxnwx1pu9BkMzg
+	0TAMiMsfxf5fTCAE9bekfC5HXidztSFo0+EWz+sR2MdBQ0rhOuklyTVMcjc3xgOPWOki
+	mVF5OdKJ7iH/QYbpIqHbiRHH1WpdFp8Fi59WAtmaFQqFU3MhwFwr4EM/nYAcUTlKlQXZ
+	FLhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TAqcSNBTkRqGoWiH7Gj2VotqZr1k5PvWH5z3cL8r0jw=;
-	b=AARVBb/F1jJflytW84mGYsO1pQe0sPMNzUG3N/xbrkDH2Q1+lCifB/5XJHOETfK9ry
-	3zYlL/jee085CKAlhpgdJHyqX26HTpmW8haPey4JuyyQof1JCzL9rI85TRu1WXUKh8L/
-	cS9UoFuDCb8uQAZeBivebHYR2YnAPdURFj/izDDFPzIEg0+TmuiocMW7H0ct9AuhAq8X
-	29ZtWomsX5hojfAmsWtShtOthFtWTjkRnVqHhmwJjo4aj8BBCwtrVJLUtUg9V9ii4uWR
-	YK2UjReqFFHwK4Y4pln3ymqDIQ3T61Aar0Jw8KKweHRHeT9ps2hhF+0XbxXS4mlaiPlI
-	j6zg==
-X-Gm-Message-State: AD7BkJLN7pFvhBUiVvrBI/wnWan8DcZIcCDEE75lAnvQLNGtgUsRTqvwbsDTU7OJ6IL0FA==
-X-Received: by 10.140.219.134 with SMTP id p128mr293764qhb.80.1459989991793;
-	Wed, 06 Apr 2016 17:46:31 -0700 (PDT)
-Received: from [10.142.1.2] (ool-182df582.dyn.optonline.net. [24.45.245.130])
-	by smtp.gmail.com with ESMTPSA id
-	n48sm2379073qgd.38.2016.04.06.17.46.30
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Wed, 06 Apr 2016 17:46:31 -0700 (PDT)
-To: Liviu Ionescu <ilg@livius.net>
+	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=stDanXOINebDykmFY+OUjFrVNZpEZEq5m1Fp1uWnCig=;
+	b=IpaHtK5cw6S0BRr+4aWmXj7KNYtAzKHJL4zHMTayYNH2Qm9/QxYX8fZqPaS5Z0lB4O
+	rSjIkIM3UMjz5FNL1YgD/prlULbpfY/MZAOvXvp0Szr+L1ZWo61WU4P8tmMrIFVkkgsU
+	KyfLdAtKX25FahlekJUQXTTZaBgiOfdzwAPcdeIY7dqRN+IzeaBL00fCXHaeDs/sTP7V
+	CuAby1lB50tfqd63lt5zvuxol5kQ9Ts87mji0D6/357WS+b13EpHJan26QgBjABjO6RC
+	59lRYDsWm1Lj5s6b+ksEYo3pgb9bqc6od49PwsKu0hxX1E3U4/2B+30ZoYgJbp7pKyih
+	S9Uw==
+X-Gm-Message-State: AD7BkJKFOsGEXOyx3QoITM9TJ/Vdfq3LU6ogd8igYNJSE1kVCUxkjSK+G7lssfar0bFI8w==
+X-Received: by 10.194.71.226 with SMTP id y2mr1573114wju.127.1460012682681;
+	Thu, 07 Apr 2016 00:04:42 -0700 (PDT)
+Received: from [172.16.62.12] ([109.99.239.84])
+	by smtp.gmail.com with ESMTPSA id a73sm6012835wme.2.2016.04.07.00.04.41
+	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 07 Apr 2016 00:04:41 -0700 (PDT)
+Content-Type: text/plain; charset=windows-1252
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+From: Liviu Ionescu <ilg@livius.net>
+In-Reply-To: <5705ADE6.3070502@gmail.com>
+Date: Thu, 7 Apr 2016 10:04:39 +0300
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <180818FF-6753-48F5-8BE8-CA72AA2B811A@livius.net>
 References: <4472FF70-5E47-41AA-893C-01CF82C8BA2D@livius.net>
 	<CAFEAcA-PM5GCL0RNhPm9bsMZm_ya7vdES0SG=ozwCKY2dCQWjg@mail.gmail.com>
 	<F9E27184-2608-41F7-ABDE-FB02DB46A593@livius.net>
@@ -68,58 +73,94 @@ References: <4472FF70-5E47-41AA-893C-01CF82C8BA2D@livius.net>
 	<49544542-7BDE-4C03-843C-7852D345CF46@livius.net>
 	<CAFEAcA8m5z_HZHLKx0985nFVwK1tHoQYH6b9kmCP0X8hK5R-RA@mail.gmail.com>
 	<D2CD166F-5E77-4BA1-B468-64296F379D05@livius.net>
-From: Michael Davidsaver <mdavidsaver@gmail.com>
-Message-ID: <5705ADE6.3070502@gmail.com>
-Date: Wed, 6 Apr 2016 20:46:30 -0400
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:38.0) Gecko/20100101
-	Icedove/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <D2CD166F-5E77-4BA1-B468-64296F379D05@livius.net>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+	<5705ADE6.3070502@gmail.com>
+To: Michael Davidsaver <mdavidsaver@gmail.com>
+X-Mailer: Apple Mail (2.3124)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c04::236
+X-Received-From: 2a00:1450:400c:c09::242
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [Qemu-arm] Any progress with the Cortex-M4 emulation?
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] Any progress with the Cortex-M4 emulation?
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: R38Kw5JOAc4m
-
-On 04/06/2016 06:23 PM, Liviu Ionescu wrote:
-> 
->> On 07 Apr 2016, at 01:04, Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> ... Somebody needs to do the necessary work to fix the
->> code review issues. ...
-> 
-> in this case I'll probably wait for this process to be completed and reevaluate the situation by then.
-
-Liviu,
-
-I haven't had time to complete a revision of my patch set so far this year.  I've been busy with other work (good for me, bad for qemu), and don't see this situation changing for an least the next two months.  It sounds like you have time and inclination to do part of what I've started.  I hope my having done half of a too big job won't keep you from finishing part of it.
-
-If you decide to work on this problem, please don't hesitate to appropriate, or ignore, what I've done so far.
-
-For what it's worth, I did start another revision back in February.  It does include the change Peter requested to the storage of priorities wrt. prigroup, but doesn't break up the big "rewrite NVIC" patch.
-
-https://github.com/mdavidsaver/qemu/tree/fixirq2
-
-Separately, I have a set of target test programs which I can run both with qemu and a real board.  They mostly agree.  Aside from test8.c (MPU) they might be of interest.
-
-https://github.com/mdavidsaver/baremetal/tree/qemutest
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7/UbJFQECu3S
 
 
+> On 07 Apr 2016, at 03:46, Michael Davidsaver <mdavidsaver@gmail.com> =
+wrote:
+>=20
+> ...  don't hesitate to appropriate, or ignore, what I've done so far. =
+...
+> https://github.com/mdavidsaver/qemu/tree/fixirq2
 
-Michael
+from what I see here, the nvic is still one big monolithic device.
+
+as I said before, I like modular things, and, even if this might be a =
+little slower, I'd split nvic:
+
+"the current plan is to create a new object (probably called SCS - =
+System Control Space), that will cover the 0xE000E000-0xE000EFFF area =
+and inside it to map SysTick, NVIC, SCB, MPU, Debug and FPU as separate =
+objects."
+
+another difference is that I have a very elaborated infrastructure to =
+manage registers, and I'd like to use it for the system registers too.
+
+fyi, a simple device is:
+
+	=
+https://github.com/gnuarmeclipse/qemu/blob/gnuarmeclipse-dev/hw/gpio/stm32=
+-gpio.c
+
+a more complicated device (in terms of tables, otherwise the additional =
+actions are minimal) is the=20
+
+	=
+https://github.com/gnuarmeclipse/qemu/blob/gnuarmeclipse-dev/hw/misc/stm32=
+-rcc.c
+
+
+this table-driven way of implementing peripherals is specific to GNU ARM =
+Eclipse QEMU and I plan to further improve it, with an automated tool to =
+generate the tables.
+
+Peter expressed concerns that this infrastructure will clash very badly =
+with your work. actually it shouldn't, because it is completely =
+separated, there are 3 objects =
+(Peripheral/Peripheral-Register/Register-Bitfield).
+
+in general none of the changes I did in GNU ARM Eclipse clash with =
+existing code, because I use separate objects, from separate "cortex-m*" =
+mcus, to separate peripherals and separate boards.
+
+unfortunately nobody else expressed any interest in this new =
+infrastructure, so it is available only in GNU ARM Eclipse QEMU.
+
+> Separately, I have a set of target test programs which I can run both =
+with qemu and a real board.  They mostly agree.  Aside from test8.c =
+(MPU) they might be of interest.
+>=20
+> https://github.com/mdavidsaver/baremetal/tree/qemutest
+
+ok, good to know.
+
+however projects generated by GNU ARM Eclipse use a distinct trace =
+infrastructure, I'll probably create a separate test inspired by your =
+code.
+
+
+regards,
+
+Liviu
+

@@ -1,71 +1,69 @@
-Received: by 10.25.208.211 with SMTP id h202csp327077lfg;
-        Wed, 6 Apr 2016 23:47:38 -0700 (PDT)
-X-Received: by 10.140.177.87 with SMTP id x84mr1589952qhx.39.1460011658043;
-        Wed, 06 Apr 2016 23:47:38 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp385845lfg;
+        Thu, 7 Apr 2016 02:14:16 -0700 (PDT)
+X-Received: by 10.140.22.212 with SMTP id 78mr2169237qgn.77.1460020456101;
+        Thu, 07 Apr 2016 02:14:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y20si4836295qka.117.2016.04.06.23.47.37
+        by mx.google.com with ESMTPS id m69si5202556qge.48.2016.04.07.02.14.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Apr 2016 23:47:38 -0700 (PDT)
+        Thu, 07 Apr 2016 02:14:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
+       dkim=pass header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47931 helo=lists.gnu.org)
+       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48473 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ao3j7-0008Rn-1M
-	for alex.bennee@linaro.org; Thu, 07 Apr 2016 02:47:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42136)
+	id 1ao610-0002QB-VT
+	for alex.bennee@linaro.org; Thu, 07 Apr 2016 05:14:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44595)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dharmikthakkar16@gmail.com>) id 1ao3j4-0008Rh-72
-	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 02:47:35 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ao60x-0002MA-Fq
+	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 05:14:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dharmikthakkar16@gmail.com>) id 1ao3j3-0006HL-1s
-	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 02:47:34 -0400
-Received: from mail-vk0-x241.google.com ([2607:f8b0:400c:c05::241]:36827)
+	(envelope-from <peter.maydell@linaro.org>) id 1ao60w-00072K-Hv
+	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 05:14:11 -0400
+Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:32775)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dharmikthakkar16@gmail.com>) id 1ao3j2-0006GI-O8
-	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 02:47:32 -0400
-Received: by mail-vk0-x241.google.com with SMTP id x190so10607246vka.3
-	for <qemu-arm@nongnu.org>; Wed, 06 Apr 2016 23:47:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=QxR9kOe+jJ9txx09MvYlElnM8P+++vHWf+rYbxs4rAI=;
-	b=MNmH59VE9HdvSN0kpctuzIymq5b24wqfXQrw7yCmnpbVPy0VIk/Wf+KjPHWrRZJes2
-	puqdzu1asRwiGBta+GuaWvLXN3FU/SYPf5kHjc6os6NN9Z5J6zVsZS35DqSAGqRyChrN
-	dlXtbc6xjOnUO+N+EpdLHmGk4giMuhCfZ8oBOIW0+7Ida5Ejhnp3UDe1keM2AJrfWvuW
-	2rMZzg5Xb5t/ogkL8ysoULi0VNAHsgmobpaVnFH1H9KjDw93tq5iv9bWi3TsEOZbVcfY
-	/n8yD0QCsFMdHlAgYKV1MuJZFaLOr9AbH0+2ZjqB4xebjaDvly4lmROwPnUIkBW9YeFP
-	qvjw==
+	(envelope-from <peter.maydell@linaro.org>) id 1ao60w-00072G-BE
+	for qemu-arm@nongnu.org; Thu, 07 Apr 2016 05:14:10 -0400
+Received: by mail-vk0-x231.google.com with SMTP id k1so91215326vkb.0
+	for <qemu-arm@nongnu.org>; Thu, 07 Apr 2016 02:14:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Qqnx1tXKbTZOFjZirQ7OBWDEXdbu6rcJTnyXdoqDDtc=;
+	b=G0a7TDC1wuC9Nnntl0CC86Wn/Iu6gfzgF+M4IdeX3wzFYv9FeV3DjG2k2A9o9WbQrm
+	CJn7skgriEA0onSI1N8CrLy0wSZBy6B3uxPLanq2JnChRnjLp4RK8PwOcpN3LWgM8oXh
+	XemcJmlYyyMEkMbTS56DO/S2fPxzUWO3brYOw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=QxR9kOe+jJ9txx09MvYlElnM8P+++vHWf+rYbxs4rAI=;
-	b=OsOmBIh4aU+61JRVX6o3vbzS6blphSJPw5uRWkPA1sOukFoPbYMgfR/y4bu1Q5I1Fd
-	/7uu5BliZ4o2OHVnQ3bVTPVt+O2MBV7+/ByS9ZlLsL7iI3VCSZ9xDcORS4/+N2a9zpwJ
-	1Xtl7q1oAWG8qtgNsvqc8qEC/RdPxz7IZKV4YKSMqJsy3G+vnALRHnkzunhGPOYS/Tk1
-	I40AgWQVVyCJ4GVZ156ptScRnwFqXK1r+/YsZLMuLG1KUsjtXN1EDOe+3n8NfCJiPUkz
-	rBcC+5y2M4ET9tVsyl0I712+CSsMLE6l3Hhv4vpsa8BfuBYcbRQFv+r8gUAXWdQXFRVy
-	cc0A==
-X-Gm-Message-State: AD7BkJJObrhwS9qHO1iBeN8Iaejg5GObDjgHTY25YLG088djm49xnf+4+tkr27eluOzv1/jPMc5dhBB6i755Lg==
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Qqnx1tXKbTZOFjZirQ7OBWDEXdbu6rcJTnyXdoqDDtc=;
+	b=YMDvGR8K/gXCMzOeqfquwu+8dOgvS9hhncXr6OYF/q4ChogHcCdUWX6DsC6oyXvWXa
+	z+dQ5zsoENlMYUSIZxxeaZu42ycCU6Wb7wNMwt3mObQAkhiPKUbO3Qi0xErBGNl2XOva
+	if7lGNwTgXOJn8C/xYXTchoB42auhK51OA5frgilHrRpW/aq4Vg62kSTTNFWtXT7zigC
+	acwXBs82mTNxY7nY7++J3x33BdkPL902Z2jmG8jNIHawrWNbSC3IMHoycyeir5lAiDq/
+	Heo5TopFSq/LXJVsRzePbg/m6AYws9T/7AlahZFoqoRKvdS/1XD0QVzUqeT8Qv1is+d1
+	L5XA==
+X-Gm-Message-State: AD7BkJJr3clx79+qpRNJpnYwP1ywQwYN1DwexQASQ9kDYnn53dz86IgGw3VZgwYl1C5/vZLDLB7cgP5QxhlRNVpM
+X-Received: by 10.31.52.147 with SMTP id b141mr871456vka.82.1460020449607;
+	Thu, 07 Apr 2016 02:14:09 -0700 (PDT)
 MIME-Version: 1.0
-X-Received: by 10.176.2.56 with SMTP id 53mr597511uas.101.1460011651378; Wed,
-	06 Apr 2016 23:47:31 -0700 (PDT)
-Received: by 10.103.13.7 with HTTP; Wed, 6 Apr 2016 23:47:31 -0700 (PDT)
-In-Reply-To: <CAFEAcA8A=Q5yYHKWe5VFdV-n67RdSOnLXgcQM3MocfeNxRxwmQ@mail.gmail.com>
+Received: by 10.31.216.1 with HTTP; Thu, 7 Apr 2016 02:13:50 -0700 (PDT)
+In-Reply-To: <CAOw6FignpsMNGhNA5uQw-C1J2WTYbvAAAR_7kw-4sOoMUDcp-g@mail.gmail.com>
 References: <CAOw6FiiPvuAx8=+DOptEFcnk4otm7M=eVxNB0VXfTihfQf1KzA@mail.gmail.com>
 	<CAFEAcA8A=Q5yYHKWe5VFdV-n67RdSOnLXgcQM3MocfeNxRxwmQ@mail.gmail.com>
-Date: Thu, 7 Apr 2016 12:17:31 +0530
-Message-ID: <CAOw6FignpsMNGhNA5uQw-C1J2WTYbvAAAR_7kw-4sOoMUDcp-g@mail.gmail.com>
-From: dharmik thakkar <dharmikthakkar16@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary=001a113d1986d93548052fdf7318
+	<CAOw6FignpsMNGhNA5uQw-C1J2WTYbvAAAR_7kw-4sOoMUDcp-g@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Apr 2016 10:13:50 +0100
+Message-ID: <CAFEAcA8G764R2aKM+i23aS73YUhap6XP0pwbS_vg5Q7iY92K2g@mail.gmail.com>
+To: dharmik thakkar <dharmikthakkar16@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::241
+X-Received-From: 2607:f8b0:400c:c05::231
 Cc: qemu-arm <qemu-arm@nongnu.org>
 Subject: Re: [Qemu-arm] Unable to run QEMU with ubuntu ARM image on mac.
 X-BeenThere: qemu-arm@nongnu.org
@@ -81,128 +79,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dPnyRdJikOlo
+X-TUID: +yjUdzAsW2Jz
 
---001a113d1986d93548052fdf7318
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-Hi Peter,
-I am trying to run arm based kernel using qemu on mac. I have build the
-kernel image using linux 4.4.6 for arm architecture. I am using the below
-command but I don't see kernel booting. While building the kernel i used
-the defconfig for arm which was versatile_defconfig.
-
-Try 1:
-
-*qemu-img create -f qcow2 linuxarm.qcow2 10G*
-*qemu-system-arm -hda linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd
-initrd.img-4.4.6 -m 1024 -M versatilepb*
-
-A black blank screen appears without displaying anything.
-
-Try 2:
-
-
-*qemu-img create -f qcow2 linuxarm.qcow2 10G*
-*qemu-system-arm -hda linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd
-initrd.img-4.4.6 -m 1024 -M versatilepb -cdrom 2015-04-06-ubuntu-trusty.zip
--boot d*
-
-A black blank screen appears without displaying anything.
-
-Point out if I am missing something in the process.
-
-Regards
-Dharmik
-
-On Mon, Apr 4, 2016 at 7:05 PM, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 4 April 2016 at 06:30, dharmik thakkar <dharmikthakkar16@gmail.com>
-> wrote:
-> > I am trying to run ubuntu for arm using qemu. I have tried using
-> different
-> > images for ubuntu but have ended up with same error =E2=80=98Trying to =
-execute
-> code
-> > outside RAM or ROM at 0x08000000=E2=80=99.
-> >
-> > Below are the steps I have followed to run ubuntu on qemu -
-> >
-> >
-> > 1. qemu-img create -f qcow2 linuxarm.qcow2 10G.
-> >
-> > 2. qemu-system-arm -hda linuxarm.qcow2 -cdrom
-> > ~/Downloads/2015-04-06-ubuntu-trusty.zip -boot d -m 512 -M virt
+On 7 April 2016 at 07:47, dharmik thakkar <dharmikthakkar16@gmail.com> wrote:
+> Hi Peter,
+> I am trying to run arm based kernel using qemu on mac. I have build the
+> kernel image using linux 4.4.6 for arm architecture. I am using the below
+> command but I don't see kernel booting. While building the kernel i used the
+> defconfig for arm which was versatile_defconfig.
 >
-> This command line does not specify either:
->    (a) a kernel to boot via -kernel
-> or (b) a BIOS image to boot via -bios (like UEFI)
+> Try 1:
+> qemu-img create -f qcow2 linuxarm.qcow2 10G
+> qemu-system-arm -hda linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd
+> initrd.img-4.4.6 -m 1024 -M versatilepb
 >
-> So the emulator starts trying to execute instructions starting at
-> address zero, which are all NOPs until it reaches the end of the
-> emulated flash memory at 0x800000. Then it gives you this error.
+> A black blank screen appears without displaying anything.
 >
-> You should change your command line one way or the other.
+> Try 2:
 >
-> thanks
-> -- PMM
->
+> qemu-img create -f qcow2 linuxarm.qcow2 10G
+> qemu-system-arm -hda linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd
+> initrd.img-4.4.6 -m 1024 -M versatilepb -cdrom 2015-04-06-ubuntu-trusty.zip
+> -boot d
 
---001a113d1986d93548052fdf7318
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+versatilepb can't support more than 256 MB of guest RAM -- trying
+to specify more is going to cause problems.
 
-<div dir=3D"ltr">Hi Peter,<div>I am trying to run arm based kernel using qe=
-mu on mac. I have build the kernel image using linux 4.4.6 for arm architec=
-ture. I am using the below command but I don&#39;t see kernel booting. Whil=
-e building the kernel i used the defconfig for arm which was versatile_defc=
-onfig.=C2=A0</div><div><br></div><div>Try 1:=C2=A0</div><div><b>qemu-img cr=
-eate -f qcow2 linuxarm.qcow2 10G<br></b></div><div><b>qemu-system-arm -hda =
-linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd initrd.img-4.4.6 -m 1024 -M ve=
-rsatilepb</b><br></div><div><br></div><div>A black blank screen appears wit=
-hout displaying anything.</div><div><br></div><div>Try 2:=C2=A0</div><div><=
-br></div><div><b>qemu-img create -f qcow2 linuxarm.qcow2 10G<br></b></div><=
-div><b>qemu-system-arm -hda linuxarm.qcow2 -kernel vmlinuz-4.4.6 -initrd in=
-itrd.img-4.4.6 -m 1024 -M versatilepb -cdrom 2015-04-06-ubuntu-trusty.zip -=
-boot d</b><br></div><div><b><br></b></div><div>A black blank screen appears=
- without displaying anything.<b><br></b></div><div><br></div><div>Point out=
- if I am missing something in the process.</div><div><br></div><div>Regards=
-</div><div>Dharmik</div></div><div class=3D"gmail_extra"><br><div class=3D"=
-gmail_quote">On Mon, Apr 4, 2016 at 7:05 PM, Peter Maydell <span dir=3D"ltr=
-">&lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.m=
-aydell@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote=
-" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><=
-span class=3D"">On 4 April 2016 at 06:30, dharmik thakkar &lt;<a href=3D"ma=
-ilto:dharmikthakkar16@gmail.com">dharmikthakkar16@gmail.com</a>&gt; wrote:<=
-br>
-&gt; I am trying to run ubuntu for arm using qemu. I have tried using diffe=
-rent<br>
-&gt; images for ubuntu but have ended up with same error =E2=80=98Trying to=
- execute code<br>
-&gt; outside RAM or ROM at 0x08000000=E2=80=99.<br>
-&gt;<br>
-&gt; Below are the steps I have followed to run ubuntu on qemu -<br>
-&gt;<br>
-&gt;<br>
-&gt; 1. qemu-img create -f qcow2 linuxarm.qcow2 10G.<br>
-&gt;<br>
-&gt; 2. qemu-system-arm -hda linuxarm.qcow2 -cdrom<br>
-&gt; ~/Downloads/2015-04-06-ubuntu-trusty.zip -boot d -m 512 -M virt<br>
-<br>
-</span>This command line does not specify either:<br>
-=C2=A0 =C2=A0(a) a kernel to boot via -kernel<br>
-or (b) a BIOS image to boot via -bios (like UEFI)<br>
-<br>
-So the emulator starts trying to execute instructions starting at<br>
-address zero, which are all NOPs until it reaches the end of the<br>
-emulated flash memory at 0x800000. Then it gives you this error.<br>
-<br>
-You should change your command line one way or the other.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br></div>
+> A black blank screen appears without displaying anything.
 
---001a113d1986d93548052fdf7318--
+Check whether there's anything on the guest serial output (I think
+you can get this via the View menu; or use -serial stdio to send
+it to the terminal window).
+
+Other than that, "nothing happens on guest boot" usually means
+QEMU is emulating OK but the guest kernel has crashed or failed
+to init, in much the same way that it can on real hardware.
+Enable any earlyprintk/earlycon options, that sometimes lets the
+kernel print out an error before stopping.
+
+For Mac hosts, it's also worth checking that the same command
+line/image/etc also fail on a Linux host -- occasionally the
+Mac port has issues Linux doesn't, because it gets much less use,
+development and testing. (I don't think that's the problem here,
+but if you have a Linux box it's easy to rule out.)
+
+thanks
+-- PMM

@@ -1,106 +1,531 @@
-Received: by 10.25.208.211 with SMTP id h202csp584493lfg;
-        Thu, 7 Apr 2016 08:55:20 -0700 (PDT)
-X-Received: by 10.25.142.137 with SMTP id q131mr1446580lfd.10.1460044506932;
-        Thu, 07 Apr 2016 08:55:06 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from mail-lb0-x233.google.com (mail-lb0-x233.google.com. [2a00:1450:4010:c04::233])
-        by mx.google.com with ESMTPS id ba10si4476696lbc.84.2016.04.07.08.55.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Apr 2016 08:55:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c04::233 as permitted sender) client-ip=2a00:1450:4010:c04::233;
+Received: by 10.25.208.211 with SMTP id h202csp626443lfg;
+        Thu, 7 Apr 2016 10:19:41 -0700 (PDT)
+X-Received: by 10.28.4.195 with SMTP id 186mr30198999wme.45.1460049581212;
+        Thu, 07 Apr 2016 10:19:41 -0700 (PDT)
+Return-Path: <mttcg-owner@listserver.greensocs.com>
+Received: from greensocs.com (greensocs.com. [193.104.36.180])
+        by mx.google.com with ESMTP id yn6si9472140wjc.37.2016.04.07.10.19.40;
+        Thu, 07 Apr 2016 10:19:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) client-ip=193.104.36.180;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c04::233 as permitted sender) smtp.mailfrom=sergey.fedorov@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-lb0-x233.google.com with SMTP id os9so8525518lbb.2
-        for <alex.bennee@linaro.org>; Thu, 07 Apr 2016 08:55:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=v0rCcQDDjsSRyDe1Rc/IdlqxcSxVrWKrC9sl3btWlio=;
-        b=XIHfjwzNeTrmIySDZtLRWLB3OLUGJ6yyLnZzXIAkCnofZusLm+IPKTB/gVmIZOtfWK
-         BMT4Kp57cH98c/UyQc6vxsUi8ndkaQ55STuNuJkz/IvPbCvBNFAcTIKhpHN0qRT5DLer
-         8smyvy1FlLD82AciYcM+/7Kf/RSBz1O5YP8Y4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=v0rCcQDDjsSRyDe1Rc/IdlqxcSxVrWKrC9sl3btWlio=;
-        b=F049/drGtTg8NzhrtoLWw+k3z5m/fDg+YayIPSewydV8d1UM7qWHa0z2ywJvd3M716
-         vwyjK1UDVpvz9EDiTlMBoTt66gF/yj3yMGUS5DWFK+ww6exk7eYtyl9URYdXjq8njdhs
-         TbnavIvEcN9HQ8Bv+isDZkaUx+EypBt8Jpw9ErluHs3LZRQVDzdwfkxGhGsszbBfmBK9
-         PuefuvyQmNxOW/h86aVJgf85oQvlRtH88a3J9+rG19o3ZgdbAaassKKnNGCxu5UvAAN0
-         QS3XSxaLcW9zMmayI16EmzXVFgkKukZpwTofCJ4lrJmKbFsCRSVSX7Rvg41E3PQaNO1I
-         Q8MA==
-X-Gm-Message-State: AD7BkJJ51rdYz/DMsFxs/N08NnevEyeW8L9jw85DVrCJzx8Jcd1ECtRnrCUNMG6p7qNgn5YKr2A=
-X-Received: by 10.112.137.41 with SMTP id qf9mr1706922lbb.140.1460044506768;
-        Thu, 07 Apr 2016 08:55:06 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from localhost.localdomain ([195.91.132.170])
-        by smtp.gmail.com with ESMTPSA id p195sm1316255lfd.11.2016.04.07.08.55.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 07 Apr 2016 08:55:06 -0700 (PDT)
-From: Sergey Fedorov <sergey.fedorov@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Sergey Fedorov <serge.fdrv@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+       dkim=pass header.i=@braap.org;
+       dkim=pass header.i=@messagingengine.com;
+       spf=pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) smtp.mailfrom=mttcg-owner@listserver.greensocs.com
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id BCBC2BB7A80;
+	Thu,  7 Apr 2016 19:19:40 +0200 (CEST)
+Authentication-Results: greensocs.com;
+	dkim=pass (1024-bit key) header.d=braap.org header.i=@braap.org header.b=iOAL3vMz;
+	dkim=pass (1024-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b=RVA3Pn9V
+X-Virus-Scanned: amavisd-new at greensocs.com
+X-Spam-Flag: NO
+X-Spam-Score: -2.718
+X-Spam-Level:
+X-Spam-Status: No, score=-2.718 tagged_above=-999 required=6.2
+	tests=[BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+	DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+	HK_RANDOM_ENVFROM=0.001, RCVD_IN_DNSWL_LOW=-0.7,
+	RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01]
+	autolearn=unavailable autolearn_force=no
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=braap.org header.b=iOAL3vMz;
+	dkim=pass (1024-bit key) header.d=messagingengine.com
+	header.b=RVA3Pn9V
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id a2Auz7bv5h_D; Thu,  7 Apr 2016 19:19:34 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 123)
+	id F159FBB7A74; Thu,  7 Apr 2016 19:19:33 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 54F7EBB7A75
+	for <mttcg@listserver.greensocs.com>; Thu,  7 Apr 2016 19:19:31 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at greensocs.com
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JtO6NxdbVdnt for <mttcg@listserver.greensocs.com>;
+	Thu,  7 Apr 2016 19:19:28 +0200 (CEST)
+Received: from out5-smtp.messagingengine.com (out5-smtp.messagingengine.com [66.111.4.29])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by greensocs.com (Postfix) with ESMTPS id 6EEC2BB7A74
+	for <mttcg@greensocs.com>; Thu,  7 Apr 2016 19:19:24 +0200 (CEST)
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.nyi.internal (Postfix) with ESMTP id 0179720D47
+	for <mttcg@greensocs.com>; Thu,  7 Apr 2016 13:19:23 -0400 (EDT)
+Received: from frontend2 ([10.202.2.161])
+  by compute3.internal (MEProxy); Thu, 07 Apr 2016 13:19:24 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=braap.org; h=cc
+	:date:from:message-id:subject:to:x-sasl-enc:x-sasl-enc; s=
+	mesmtp; bh=0vDP6k0HFCS6uRfTToiJTTZLA+g=; b=iOAL3vMz/uXGQf8baYhHO
+	nmMWmin+R/P9eveA07lldM96yFNSJtsWce+IMfNHp2HVLTr539aDjXhZexxAI2wx
+	o1kz+7Tom79C/qGHZdo2XsnRoVXaol+rqIqL2dNpbHAyw3TDONEJhtxprkefMjm6
+	g23rRScGyfU0qvDUubtMbE=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-sasl-enc:x-sasl-enc; s=smtpout; bh=0vDP6k0HFCS6uRfTToiJTTZLA+
+	g=; b=RVA3Pn9VcyzspOwhKEEgxkxZthR/0MkUi/AtmjdLPWLrElaLXJxOiJNp9t
+	FjbLRbXKJ7G0EitHoB1rcrx5ezvATKDkfxMY9QOseQtXRpwjW1Rxsg5PKizW/GBC
+	pBokAazvGzf6BO2lP6hRZPre4wQ23j7oF2YQuEijCKgNLis6M=
+X-Sasl-enc: xR9PP04uSzZEGBkkn+iBKb6NtXzc/mqD94IRtYv/9foA 1460049563
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 42BDB680219;
+	Thu,  7 Apr 2016 13:19:23 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	Richard Henderson <rth@twiddle.net>,
-	Sergey Fedorov <sergey.fedorov@linaro.org>,
-	Claudio Fontana <claudio.fontana@huawei.com>,
-	qemu-arm@nongnu.org
-Subject: [PATCH 08/11] tcg/aarch64: Make direct jump patching thread-safe
-Date: Thu,  7 Apr 2016 18:53:50 +0300
-Message-Id: <1460044433-19282-9-git-send-email-sergey.fedorov@linaro.org>
-X-Mailer: git-send-email 2.8.1
-In-Reply-To: <1460044433-19282-1-git-send-email-sergey.fedorov@linaro.org>
-References: <1460044433-19282-1-git-send-email-sergey.fedorov@linaro.org>
-X-TUID: MXOJgdmfV5l9
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Michael Walle <michael@walle.cc>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Leon Alrae <leon.alrae@imgtec.com>,
+	Anthony Green <green@moxielogic.com>,
+	Jia Liu <proljc@gmail.com>,
+	Alexander Graf <agraf@suse.de>,
+	Blue Swirl <blauwirbel@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,
+	Laurent Desnogues <laurent.desnogues@gmail.com>,
+	MTTCG Devel <mttcg@greensocs.com>
+Subject: [PATCH] tb: consistently use uint32_t for tb->flags
+Date: Thu,  7 Apr 2016 13:19:22 -0400
+Message-Id: <1460049562-23517-1-git-send-email-cota@braap.org>
+X-Mailer: git-send-email 2.5.0
+Reply-To: "Emilio G. Cota" <cota@braap.org>
+X-Loop: mttcg@listserver.greensocs.com
+X-Sequence: 116
+Errors-to: mttcg-owner@listserver.greensocs.com
+Precedence: list
+Precedence: bulk
+Sender: mttcg-request@listserver.greensocs.com
+X-no-archive: yes
+List-Id: <mttcg.listserver.greensocs.com>
+List-Help: <mailto:sympa@listserver.greensocs.com?subject=help>
+List-Subscribe: <mailto:sympa@listserver.greensocs.com?subject=subscribe%20mttcg>
+List-Unsubscribe: <mailto:sympa@listserver.greensocs.com?subject=unsubscribe%20mttcg>
+List-Post: <mailto:mttcg@listserver.greensocs.com>
+List-Owner: <mailto:mttcg-request@listserver.greensocs.com>
+List-Archive: <http://listserver.greensocs.com/wws/arc/mttcg>
+X-TUID: VFqmBclF0RpZ
 
-From: Sergey Fedorov <serge.fdrv@gmail.com>
+We are inconsistent with the type of tb->flags: usage varies loosely
+between int and uint64_t. Settle to uint32_t everywhere, which is
+superior to both: at least one target (aarch64) uses the most significant
+bit in the u32, and uint64_t is wasteful.
 
-Ensure direct jump patching in AArch64 is atomic by using
-atomic_read()/atomic_set() for code patching.
+Compile-tested for all targets.
 
-Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
+Suggested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+Suggested-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- tcg/aarch64/tcg-target.inc.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ cpu-exec.c              |  6 +++---
+ exec.c                  |  2 +-
+ hw/i386/kvmvapic.c      |  2 +-
+ include/exec/exec-all.h |  5 +++--
+ target-alpha/cpu.h      |  2 +-
+ target-arm/cpu.h        |  2 +-
+ target-cris/cpu.h       |  2 +-
+ target-i386/cpu.h       |  2 +-
+ target-i386/translate.c |  2 +-
+ target-lm32/cpu.h       |  2 +-
+ target-m68k/cpu.h       |  2 +-
+ target-microblaze/cpu.h |  2 +-
+ target-mips/cpu.h       |  2 +-
+ target-moxie/cpu.h      |  2 +-
+ target-openrisc/cpu.h   |  2 +-
+ target-ppc/cpu.h        |  2 +-
+ target-s390x/cpu.h      |  2 +-
+ target-sh4/cpu.h        |  2 +-
+ target-sparc/cpu.h      |  2 +-
+ target-tilegx/cpu.h     |  2 +-
+ target-tricore/cpu.h    |  2 +-
+ target-unicore32/cpu.h  |  2 +-
+ target-xtensa/cpu.h     |  2 +-
+ translate-all.c         | 10 +++++-----
+ 24 files changed, 32 insertions(+), 31 deletions(-)
 
-diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
-index 0ed10a974121..15fdebec921f 100644
---- a/tcg/aarch64/tcg-target.inc.c
-+++ b/tcg/aarch64/tcg-target.inc.c
-@@ -73,6 +73,18 @@ static inline void reloc_pc26(tcg_insn_unit *code_ptr, tcg_insn_unit *target)
-     *code_ptr = deposit32(*code_ptr, 0, 26, offset);
- }
- 
-+static inline void reloc_pc26_atomic(tcg_insn_unit *code_ptr,
-+                                     tcg_insn_unit *target)
-+{
-+    ptrdiff_t offset = target - code_ptr;
-+    tcg_insn_unit insn;
-+    assert(offset == sextract64(offset, 0, 26));
-+    /* read instruction, mask away previous PC_REL26 parameter contents,
-+       set the proper offset, then write back the instruction. */
-+    insn = atomic_read(code_ptr);
-+    atomic_set(code_ptr, deposit32(insn, 0, 26, offset));
-+}
-+
- static inline void reloc_pc19(tcg_insn_unit *code_ptr, tcg_insn_unit *target)
+diff --git a/cpu-exec.c b/cpu-exec.c
+index bbfcbfb..debc65c 100644
+--- a/cpu-exec.c
++++ b/cpu-exec.c
+@@ -220,7 +220,7 @@ static void cpu_exec_nocache(CPUState *cpu, int max_cycles,
+ static TranslationBlock *tb_find_physical(CPUState *cpu,
+                                           target_ulong pc,
+                                           target_ulong cs_base,
+-                                          uint64_t flags)
++                                          uint32_t flags)
  {
-     ptrdiff_t offset = target - code_ptr;
-@@ -835,7 +847,7 @@ void aarch64_tb_set_jmp_target(uintptr_t jmp_addr, uintptr_t addr)
-     tcg_insn_unit *code_ptr = (tcg_insn_unit *)jmp_addr;
-     tcg_insn_unit *target = (tcg_insn_unit *)addr;
+     CPUArchState *env = (CPUArchState *)cpu->env_ptr;
+     TranslationBlock *tb, **ptb1;
+@@ -271,7 +271,7 @@ static TranslationBlock *tb_find_physical(CPUState *cpu,
+ static TranslationBlock *tb_find_slow(CPUState *cpu,
+                                       target_ulong pc,
+                                       target_ulong cs_base,
+-                                      uint64_t flags)
++                                      uint32_t flags)
+ {
+     TranslationBlock *tb;
  
--    reloc_pc26(code_ptr, target);
-+    reloc_pc26_atomic(code_ptr, target);
-     flush_icache_range(jmp_addr, jmp_addr + 4);
+@@ -314,7 +314,7 @@ static inline TranslationBlock *tb_find_fast(CPUState *cpu)
+     CPUArchState *env = (CPUArchState *)cpu->env_ptr;
+     TranslationBlock *tb;
+     target_ulong cs_base, pc;
+-    int flags;
++    uint32_t flags;
+ 
+     /* we record a subset of the CPU state. It will
+        always be the same before a given translated block
+diff --git a/exec.c b/exec.c
+index f46e596..bf3ab36 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2083,7 +2083,7 @@ static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
+     target_ulong pc, cs_base;
+     target_ulong vaddr;
+     CPUWatchpoint *wp;
+-    int cpu_flags;
++    uint32_t cpu_flags;
+ 
+     if (cpu->watchpoint_hit) {
+         /* We re-entered the check after replacing the TB. Now raise
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index c69f374..4bb695d 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -397,7 +397,7 @@ static void patch_instruction(VAPICROMState *s, X86CPU *cpu, target_ulong ip)
+     uint32_t imm32;
+     target_ulong current_pc = 0;
+     target_ulong current_cs_base = 0;
+-    int current_flags = 0;
++    uint32_t current_flags = 0;
+ 
+     if (smp_cpus == 1) {
+         handlers = &s->rom_state.up;
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 7362095..c75fb3a 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -76,7 +76,8 @@ bool cpu_restore_state(CPUState *cpu, uintptr_t searched_pc);
+ void QEMU_NORETURN cpu_resume_from_signal(CPUState *cpu, void *puc);
+ void QEMU_NORETURN cpu_io_recompile(CPUState *cpu, uintptr_t retaddr);
+ TranslationBlock *tb_gen_code(CPUState *cpu,
+-                              target_ulong pc, target_ulong cs_base, int flags,
++                              target_ulong pc, target_ulong cs_base,
++                              uint32_t flags,
+                               int cflags);
+ void cpu_exec_init(CPUState *cpu, Error **errp);
+ void QEMU_NORETURN cpu_loop_exit(CPUState *cpu);
+@@ -235,7 +236,7 @@ static inline void tlb_flush_by_mmuidx(CPUState *cpu, ...)
+ struct TranslationBlock {
+     target_ulong pc;   /* simulated PC corresponding to this block (EIP + CS base) */
+     target_ulong cs_base; /* CS base for this block */
+-    uint64_t flags; /* flags defining in which context the code was generated */
++    uint32_t flags; /* flags defining in which context the code was generated */
+     uint16_t size;      /* size of target code for this block (1 <=
+                            size <= TARGET_PAGE_SIZE) */
+     uint16_t icount;
+diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
+index 420f2a5..b25d7d0 100644
+--- a/target-alpha/cpu.h
++++ b/target-alpha/cpu.h
+@@ -465,7 +465,7 @@ enum {
+ };
+ 
+ static inline void cpu_get_tb_cpu_state(CPUAlphaState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *pflags)
++                                        target_ulong *cs_base, uint32_t *pflags)
+ {
+     int flags = 0;
+ 
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 066ff67..9deef86 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -2117,7 +2117,7 @@ static inline bool arm_cpu_bswap_data(CPUARMState *env)
+ #endif
+ 
+ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     if (is_a64(env)) {
+         *pc = env->pc;
+diff --git a/target-cris/cpu.h b/target-cris/cpu.h
+index 415cf91..a492fc6 100644
+--- a/target-cris/cpu.h
++++ b/target-cris/cpu.h
+@@ -249,7 +249,7 @@ int cris_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
+ #include "exec/cpu-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPUCRISState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-i386/cpu.h b/target-i386/cpu.h
+index 732eb6d..444fda9 100644
+--- a/target-i386/cpu.h
++++ b/target-i386/cpu.h
+@@ -1269,7 +1269,7 @@ void tcg_x86_init(void);
+ #include "exec/exec-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPUX86State *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *cs_base = env->segs[R_CS].base;
+     *pc = *cs_base + env->eip;
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 1a1214d..3a32f65 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -8178,7 +8178,7 @@ void gen_intermediate_code(CPUX86State *env, TranslationBlock *tb)
+     CPUState *cs = CPU(cpu);
+     DisasContext dc1, *dc = &dc1;
+     target_ulong pc_ptr;
+-    uint64_t flags;
++    uint32_t flags;
+     target_ulong pc_start;
+     target_ulong cs_base;
+     int num_insns;
+diff --git a/target-lm32/cpu.h b/target-lm32/cpu.h
+index f220fc0..6a0d297 100644
+--- a/target-lm32/cpu.h
++++ b/target-lm32/cpu.h
+@@ -226,7 +226,7 @@ int lm32_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
+ #include "exec/cpu-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPULM32State *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-m68k/cpu.h b/target-m68k/cpu.h
+index 48b4c87..d2f467c 100644
+--- a/target-m68k/cpu.h
++++ b/target-m68k/cpu.h
+@@ -230,7 +230,7 @@ int m68k_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
+ #include "exec/cpu-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
+index 2f7335e..bf74e2c 100644
+--- a/target-microblaze/cpu.h
++++ b/target-microblaze/cpu.h
+@@ -322,7 +322,7 @@ int mb_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
+ #include "exec/cpu-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->sregs[SR_PC];
+     *cs_base = 0;
+diff --git a/target-mips/cpu.h b/target-mips/cpu.h
+index 866924d..53e8262 100644
+--- a/target-mips/cpu.h
++++ b/target-mips/cpu.h
+@@ -839,7 +839,7 @@ static inline void restore_pamask(CPUMIPSState *env)
  }
  
+ static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->active_tc.PC;
+     *cs_base = 0;
+diff --git a/target-moxie/cpu.h b/target-moxie/cpu.h
+index 4ee2077..1b46e52 100644
+--- a/target-moxie/cpu.h
++++ b/target-moxie/cpu.h
+@@ -132,7 +132,7 @@ static inline int cpu_mmu_index(CPUMoxieState *env, bool ifetch)
+ #include "exec/exec-all.h"
+ 
+ static inline void cpu_get_tb_cpu_state(CPUMoxieState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
+index 4b63f25..ed818af 100644
+--- a/target-openrisc/cpu.h
++++ b/target-openrisc/cpu.h
+@@ -392,7 +392,7 @@ int cpu_openrisc_get_phys_data(OpenRISCCPU *cpu,
+ 
+ static inline void cpu_get_tb_cpu_state(CPUOpenRISCState *env,
+                                         target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
+index 676081e..8269085 100644
+--- a/target-ppc/cpu.h
++++ b/target-ppc/cpu.h
+@@ -2293,7 +2293,7 @@ static inline void cpu_write_xer(CPUPPCState *env, target_ulong xer)
+ }
+ 
+ static inline void cpu_get_tb_cpu_state(CPUPPCState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->nip;
+     *cs_base = 0;
+diff --git a/target-s390x/cpu.h b/target-s390x/cpu.h
+index 6d97c08..07f76ad 100644
+--- a/target-s390x/cpu.h
++++ b/target-s390x/cpu.h
+@@ -338,7 +338,7 @@ static inline uint64_t cpu_mmu_idx_to_asc(int mmu_idx)
+ }
+ 
+ static inline void cpu_get_tb_cpu_state(CPUS390XState* env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->psw.addr;
+     *cs_base = 0;
+diff --git a/target-sh4/cpu.h b/target-sh4/cpu.h
+index 3b23e96..10c0191 100644
+--- a/target-sh4/cpu.h
++++ b/target-sh4/cpu.h
+@@ -347,7 +347,7 @@ static inline void cpu_write_sr(CPUSH4State *env, target_ulong sr)
+ }
+ 
+ static inline void cpu_get_tb_cpu_state(CPUSH4State *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
+index dc46122..59ec7ca 100644
+--- a/target-sparc/cpu.h
++++ b/target-sparc/cpu.h
+@@ -688,7 +688,7 @@ trap_state* cpu_tsptr(CPUSPARCState* env);
+ #define TB_FLAG_AM_ENABLED (1 << 5)
+ 
+ static inline void cpu_get_tb_cpu_state(CPUSPARCState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = env->npc;
+diff --git a/target-tilegx/cpu.h b/target-tilegx/cpu.h
+index 022cad1..c9dda12 100644
+--- a/target-tilegx/cpu.h
++++ b/target-tilegx/cpu.h
+@@ -169,7 +169,7 @@ TileGXCPU *cpu_tilegx_init(const char *cpu_model);
+ #define cpu_signal_handler cpu_tilegx_signal_handler
+ 
+ static inline void cpu_get_tb_cpu_state(CPUTLGState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->pc;
+     *cs_base = 0;
+diff --git a/target-tricore/cpu.h b/target-tricore/cpu.h
+index 90045a9..eaebdd2 100644
+--- a/target-tricore/cpu.h
++++ b/target-tricore/cpu.h
+@@ -377,7 +377,7 @@ void tricore_tcg_init(void);
+ int cpu_tricore_signal_handler(int host_signum, void *pinfo, void *puc);
+ 
+ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->PC;
+     *cs_base = 0;
+diff --git a/target-unicore32/cpu.h b/target-unicore32/cpu.h
+index 9c1fbf9..e64cb7e 100644
+--- a/target-unicore32/cpu.h
++++ b/target-unicore32/cpu.h
+@@ -144,7 +144,7 @@ UniCore32CPU *uc32_cpu_init(const char *cpu_model);
+ #define cpu_init(cpu_model) CPU(uc32_cpu_init(cpu_model))
+ 
+ static inline void cpu_get_tb_cpu_state(CPUUniCore32State *env, target_ulong *pc,
+-                                        target_ulong *cs_base, int *flags)
++                                        target_ulong *cs_base, uint32_t *flags)
+ {
+     *pc = env->regs[31];
+     *cs_base = 0;
+diff --git a/target-xtensa/cpu.h b/target-xtensa/cpu.h
+index d0bd9da..7bfc9c8 100644
+--- a/target-xtensa/cpu.h
++++ b/target-xtensa/cpu.h
+@@ -507,7 +507,7 @@ static inline int cpu_mmu_index(CPUXtensaState *env, bool ifetch)
+ #define XTENSA_TBFLAG_WINDOW_SHIFT 15
+ 
+ static inline void cpu_get_tb_cpu_state(CPUXtensaState *env, target_ulong *pc,
+-        target_ulong *cs_base, int *flags)
++        target_ulong *cs_base, uint32_t *flags)
+ {
+     CPUState *cs = CPU(xtensa_env_get_cpu(env));
+ 
+diff --git a/translate-all.c b/translate-all.c
+index b4df1ec..3236035 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1050,7 +1050,7 @@ static void build_page_bitmap(PageDesc *p)
+ /* Called with mmap_lock held for user mode emulation.  */
+ TranslationBlock *tb_gen_code(CPUState *cpu,
+                               target_ulong pc, target_ulong cs_base,
+-                              int flags, int cflags)
++                              uint32_t flags, int cflags)
+ {
+     CPUArchState *env = cpu->env_ptr;
+     TranslationBlock *tb;
+@@ -1204,7 +1204,7 @@ void tb_invalidate_phys_page_range(tb_page_addr_t start, tb_page_addr_t end,
+     int current_tb_modified = 0;
+     target_ulong current_pc = 0;
+     target_ulong current_cs_base = 0;
+-    int current_flags = 0;
++    uint32_t current_flags = 0;
+ #endif /* TARGET_HAS_PRECISE_SMC */
+ 
+     p = page_find(start >> TARGET_PAGE_BITS);
+@@ -1349,7 +1349,7 @@ static void tb_invalidate_phys_page(tb_page_addr_t addr,
+     int current_tb_modified = 0;
+     target_ulong current_pc = 0;
+     target_ulong current_cs_base = 0;
+-    int current_flags = 0;
++    uint32_t current_flags = 0;
+ #endif
+ 
+     addr &= TARGET_PAGE_MASK;
+@@ -1573,7 +1573,7 @@ void tb_check_watchpoint(CPUState *cpu)
+         CPUArchState *env = cpu->env_ptr;
+         target_ulong pc, cs_base;
+         tb_page_addr_t addr;
+-        int flags;
++        uint32_t flags;
+ 
+         cpu_get_tb_cpu_state(env, &pc, &cs_base, &flags);
+         addr = get_page_addr_code(env, pc);
+@@ -1592,7 +1592,7 @@ void cpu_io_recompile(CPUState *cpu, uintptr_t retaddr)
+     TranslationBlock *tb;
+     uint32_t n, cflags;
+     target_ulong pc, cs_base;
+-    uint64_t flags;
++    uint32_t flags;
+ 
+     tb = tb_find_pc(retaddr);
+     if (!tb) {
 -- 
-2.8.1
+2.5.0

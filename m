@@ -1,74 +1,82 @@
-Received: by 10.25.208.211 with SMTP id h202csp6296lfg;
-        Fri, 8 Apr 2016 02:44:03 -0700 (PDT)
-X-Received: by 10.55.27.199 with SMTP id m68mr9866629qkh.109.1460108643270;
-        Fri, 08 Apr 2016 02:44:03 -0700 (PDT)
+Received: by 10.25.208.211 with SMTP id h202csp750812lfg;
+        Sat, 9 Apr 2016 15:45:55 -0700 (PDT)
+X-Received: by 10.140.106.199 with SMTP id e65mr10496189qgf.73.1460241955550;
+        Sat, 09 Apr 2016 15:45:55 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id v18si9132490qhb.128.2016.04.08.02.44.03
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f68si15001425qge.89.2016.04.09.15.45.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Apr 2016 02:44:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Sat, 09 Apr 2016 15:45:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55197 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33219 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aoSxO-000707-Un
-	for alex.bennee@linaro.org; Fri, 08 Apr 2016 05:44:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58932)
+	id 1ap1db-0004Ec-5V
+	for alex.bennee@linaro.org; Sat, 09 Apr 2016 18:45:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51880)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aoSxM-0006xP-Cp
-	for qemu-arm@nongnu.org; Fri, 08 Apr 2016 05:44:01 -0400
+	(envelope-from <rth7680@gmail.com>) id 1ap1dY-00049j-Gh
+	for qemu-arm@nongnu.org; Sat, 09 Apr 2016 18:45:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aoSxL-0005nI-Bg
-	for qemu-arm@nongnu.org; Fri, 08 Apr 2016 05:44:00 -0400
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:34613)
+	(envelope-from <rth7680@gmail.com>) id 1ap1dX-0000bf-OQ
+	for qemu-arm@nongnu.org; Sat, 09 Apr 2016 18:45:52 -0400
+Received: from mail-pa0-x242.google.com ([2607:f8b0:400e:c03::242]:34452)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aoSxH-0005md-FX
-	for qemu-arm@nongnu.org; Fri, 08 Apr 2016 05:43:59 -0400
-Received: by mail-vk0-x22e.google.com with SMTP id e185so131675242vkb.1
-	for <qemu-arm@nongnu.org>; Fri, 08 Apr 2016 02:43:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=i5dJ7rv4FqmWX8I3cMaFC353wV6oM7FUTsLqDOW6lRo=;
-	b=O4IjRst9L7Vs7q3GRSnZjrwFZDJjT6Inwxk5GchYic73v1Cy8lhfLVOUJhwIYHjJuz
-	xbRkSNrvedU1+y3Ezq26HOF5FjDb3mMojljsE7bct3otpCNU1JgOTxEp2a3xChf06zOO
-	xf5XGpk6LPiFnvUaz6IJzBLwDs0Psw9aBGQxY=
+	(envelope-from <rth7680@gmail.com>)
+	id 1ap1dT-0000bA-FL; Sat, 09 Apr 2016 18:45:47 -0400
+Received: by mail-pa0-x242.google.com with SMTP id hb4so11517635pac.1;
+	Sat, 09 Apr 2016 15:45:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=mbQBMdHPZtd+bMvj0CoZPgTcPYdaZ95xJC9pZHBgrKI=;
+	b=Smi/0/s0Xh78oYppWN17p3pYW6V+yzexCDYWN4CCYDUm6XqMtNYDK6T3K0KkMACt+l
+	fl0lx4E8rBmEBJ4bcUD5BqRU/969109pGX6CCnjnmT2GSBWV3z/flfb6yaCBmR2bT2f9
+	OTDEZOO0zof7UFVmLzmQ3NylBR+T6lqETRQtkW7e5vfpLoksxjccYtSqRGcrkUaC82jb
+	5eYCxXt6Q+DbIIjWk+VIfjqkZWUWoFWB1TW8CQHT5NiJA0uQ8dMyYqNaFi30JH73GQOg
+	d2arhEsCRGj4FSQ3Yuum78urR+UjFg+SPZeS/g7dFXqTwBcg2lHW/yMv1CZz5VFIuLQK
+	EzpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=i5dJ7rv4FqmWX8I3cMaFC353wV6oM7FUTsLqDOW6lRo=;
-	b=mLXLMss0no50YASFgDWB7hmFMmQax0qprUyEt1euObdg2nIBOT1xM+UDjGpR6OGtu5
-	k5RaFj9sIaLmZhf+JPGH7hT2XxXl+B8Wpj/SqcWmv/dFKZl3yvGO4VyD6D1fqtiSRt9+
-	Zb8kknsJ2qU8JvACaWL4Ab0ds/IC+05MNau3T/2D4kv1JpyVAzBYiTLI5O6moRGV92We
-	DkYqlVEmIIZCv9m1zMP3CLAdCOtk6XuVXBCfCBRn+Fjsdh4aVWPGQRnu1zibCNQzn8zJ
-	sFPbItNtQ0O9FEZPIczz+h/DmWERz55/IxlPrFSw/L/zpZIQXRhiefxl54doKTF9cunS
-	qmHQ==
-X-Gm-Message-State: AD7BkJKallv7CnFAJ6A1w0CtaTpU0eT+Y0t5bz/WiiKyop8a+u8O8FEDC/thDvB3y0HRc3pQGsp9PYtJa2CsXTSM
-X-Received: by 10.176.7.97 with SMTP id h88mr3606552uah.125.1460108633806;
-	Fri, 08 Apr 2016 02:43:53 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Fri, 8 Apr 2016 02:43:34 -0700 (PDT)
-In-Reply-To: <CALicx6ubAgfGJhGX5wRTeHfmj_RHX__hkJxAnBA8v=e8n=HgZg@mail.gmail.com>
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=mbQBMdHPZtd+bMvj0CoZPgTcPYdaZ95xJC9pZHBgrKI=;
+	b=nNUJ+yV680+2hcKYclyUJJL3DdI1aI1fHd4GrgelwhXMz2vdXx49GFUbazv3bm2gAw
+	Oxmw+BoRGcqQfsM5sXeKHO2/x4oOZu75kP81IWFL4rH7h+qBC4sg57+si4wP+Zvvx2HB
+	7640LMUC4BPizEjZepNhOmsqbnJa4ehcVSqhssV4v8xK5eKNGpTVP+2SJt6Dx4m/+m2+
+	BdpAMxeFjZ5KAR1O6PPH9zs+iIeRwRXB3s+H0leYrQyPGnTxmshIWD4JbzRdB1+KE7py
+	ejapGIfxuDnFoZfb92YEehU4+G+8p5UnqExL52lwbn0yH4bkAOI6NidV6sYQ2jAjRRSa
+	7CQg==
+X-Gm-Message-State: AD7BkJJU5xhcdwnYKvTcZawSZsR6L2JT0Oy4b3ygMbEhJM80cm23wGFkHt3GJsMtU2pEHQ==
+X-Received: by 10.66.222.41 with SMTP id qj9mr22511266pac.136.1460241946209;
+	Sat, 09 Apr 2016 15:45:46 -0700 (PDT)
+Received: from bigtime.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by smtp.googlemail.com with ESMTPSA id
+	b82sm26959270pfd.89.2016.04.09.15.45.45
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Sat, 09 Apr 2016 15:45:45 -0700 (PDT)
+To: vijayak@caviumnetworks.com, qemu-arm@nongnu.org,
+	peter.maydell@linaro.org, pbonzini@redhat.com
 References: <1460023087-31509-1-git-send-email-vijayak@caviumnetworks.com>
-	<1460023087-31509-3-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA_0ssT32oNrgTHChKsAJNkjUfCHFGg2vPtk8-AWsRjVqw@mail.gmail.com>
-	<CALicx6tM6__TWjVPLdNzMMpoyQYHZOnArFwz4E+QyyxN7TLruQ@mail.gmail.com>
-	<CAFEAcA8T-90NFw_fMWRZ7JuQ4UpxRGfwsbHLi9cigsiD=zXupA@mail.gmail.com>
-	<CALicx6ubAgfGJhGX5wRTeHfmj_RHX__hkJxAnBA8v=e8n=HgZg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Apr 2016 10:43:34 +0100
-Message-ID: <CAFEAcA8pboFpZynTny60JRQYL0S1+HH6KoBy+de6iHOGOGBFCg@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	<1460023087-31509-2-git-send-email-vijayak@caviumnetworks.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <57098617.1020308@twiddle.net>
+Date: Sat, 9 Apr 2016 15:45:43 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.7.1
+MIME-Version: 1.0
+In-Reply-To: <1460023087-31509-2-git-send-email-vijayak@caviumnetworks.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Subject: Re: [Qemu-arm] [RFC PATCH v2 2/3] utils: Add cpuinfo helper to
- fetch /proc/cpuinfo
+X-Received-From: 2607:f8b0:400e:c03::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH v2 1/3] target-arm: Use Neon
+ for zero checking
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,30 +88,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	suresh knv <knv.suresh2009@gmail.com>,
-	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Suresh <ksuresh@caviumnetworks.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: vijay.kilari@gmail.com, Prasun.Kapoor@caviumnetworks.com,
+	knv.suresh2009@gmail.com, qemu-devel@nongnu.org,
+	Suresh <ksuresh@caviumnetworks.com>, Vijay <vijayak@cavium.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /AEF28nkedNv
+X-TUID: 8u4gRWonyKOv
 
-On 8 April 2016 at 07:21, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Thu, Apr 7, 2016 at 5:15 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> I'm told there are kernel patches in progress to get this sort
->> of information in a maintainable way to userspace, which are
->> currently somewhat stalled due to lack of anybody who wants to
->> consume it. If you have a use case then you should probably
->> flag it up with the kernel devs.
->
-> Can you please give references to those patches/discussion?
+On 04/07/2016 02:58 AM, vijayak@caviumnetworks.com wrote:
+> +#elif defined __aarch64__
+> +#include "arm_neon.h"
 
-I'm told the most recent thread is https://lkml.org/lkml/2015/10/5/517
-(and that most of the patches in that series have gone in, except
-for the last 4 or 5 which implement the ABI).
+A better test is __NEON__, which asserts that neon is available at compile time 
+(which will be true basically always for aarch64), and then you don't need a 
+runime test for neon.
 
-thanks
--- PMM
+You also get support for armv7 with neon.
+
+> +#define NEON_VECTYPE               uint64x2_t
+> +#define NEON_LOAD_N_ORR(v1, v2)    (vld1q_u64(&v1) | vld1q_u64(&v2))
+> +#define NEON_ORR(v1, v2)           ((v1) | (v2))
+> +#define NEON_NOT_EQ_ZERO(v1) \
+> +        ((vgetq_lane_u64(v1, 0) != 0) || (vgetq_lane_u64(v1, 1) != 0))
+
+FWIW, I think that vmaxvq_u32 would be a better reduction for aarch64. 
+Extracting the individual lanes isn't as efficient as one would like.
+
+For armv7, folding via vget_lane_u64(vget_high_u64(v1) | vget_low_u64(v1), 0) 
+is probably best.
+
+
+r~

@@ -1,60 +1,55 @@
-Received: by 10.25.208.211 with SMTP id h202csp2163674lfg;
-        Tue, 12 Apr 2016 11:46:07 -0700 (PDT)
-X-Received: by 10.140.98.163 with SMTP id o32mr6013865qge.46.1460486767691;
-        Tue, 12 Apr 2016 11:46:07 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp357086lfg;
+        Wed, 13 Apr 2016 05:11:35 -0700 (PDT)
+X-Received: by 10.140.204.214 with SMTP id z205mr1499458qha.99.1460549495578;
+        Wed, 13 Apr 2016 05:11:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g126si25465938qkb.106.2016.04.12.11.46.07
+        by mx.google.com with ESMTPS id 97si17826225qkw.54.2016.04.13.05.11.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Apr 2016 11:46:07 -0700 (PDT)
+        Wed, 13 Apr 2016 05:11:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55324 helo=lists.gnu.org)
+Received: from localhost ([::1]:42503 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aq3KB-0007i4-96
-	for alex.bennee@linaro.org; Tue, 12 Apr 2016 14:46:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48640)
+	id 1aqJdu-000118-VE
+	for alex.bennee@linaro.org; Wed, 13 Apr 2016 08:11:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1aq3K7-0007dS-TO
-	for qemu-arm@nongnu.org; Tue, 12 Apr 2016 14:46:04 -0400
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1aqJds-0000us-OO
+	for qemu-arm@nongnu.org; Wed, 13 Apr 2016 08:11:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1aq3K1-0003OB-Pz
-	for qemu-arm@nongnu.org; Tue, 12 Apr 2016 14:46:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45341)
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1aqJdp-00070w-G1
+	for qemu-arm@nongnu.org; Wed, 13 Apr 2016 08:11:32 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:22468)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1aq3K1-0003O6-KD; Tue, 12 Apr 2016 14:45:57 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CF07E63154;
-	Tue, 12 Apr 2016 18:45:54 +0000 (UTC)
-Received: from localhost (vpn1-5-159.gru2.redhat.com [10.97.5.159])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u3CIjpSK026414; Tue, 12 Apr 2016 14:45:52 -0400
-Date: Tue, 12 Apr 2016 15:45:51 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
-Message-ID: <20160412184551.GC26803@thinpad.lan.raisama.net>
+	(envelope-from <Leon.Alrae@imgtec.com>)
+	id 1aqJdp-00070F-9V; Wed, 13 Apr 2016 08:11:29 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Websense Email with ESMTPS id 1AEAD4516D124;
+	Wed, 13 Apr 2016 13:11:20 +0100 (IST)
+Received: from [192.168.169.37] (192.168.169.37) by hhmail02.hh.imgtec.org
+	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.266.1;
+	Wed, 13 Apr 2016 13:11:23 +0100
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
+	<qemu-devel@nongnu.org>
 References: <1460465891-6142-1-git-send-email-aleksandar.markovic@rt-rk.com>
 	<1460465891-6142-2-git-send-email-aleksandar.markovic@rt-rk.com>
+From: Leon Alrae <leon.alrae@imgtec.com>
+Message-ID: <570E3755.4060608@imgtec.com>
+Date: Wed, 13 Apr 2016 13:11:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <1460465891-6142-2-git-send-email-aleksandar.markovic@rt-rk.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 12 Apr 2016 18:45:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 1/9] softfloat: Implement
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [192.168.169.37]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-arm] [PATCH v4 1/9] softfloat: Implement
  run-time-configurable meaning of signaling NaN bit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -69,57 +64,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
-	qemu-devel@nongnu.org, blauwirbel@gmail.com, jcmvbkbc@gmail.com,
-	aleksandar.markovic@imgtec.com, maciej.rozycki@imgtec.com,
-	qemu-ppc@nongnu.org, petar.jovanovic@imgtec.com,
-	qemu-arm@nongnu.org, pbonzini@redhat.com,
-	miodrag.dinic@imgtec.com, gxt@mprc.pku.edu.cn,
-	leon.alrae@imgtec.com, afaerber@suse.de, aurelien@aurel32.net,
-	rth@twiddle.net
+	maciej.rozycki@imgtec.com, petar.jovanovic@imgtec.com,
+	blauwirbel@gmail.com, jcmvbkbc@gmail.com,
+	aleksandar.markovic@imgtec.com, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, miodrag.dinic@imgtec.com,
+	pbonzini@redhat.com, gxt@mprc.pku.edu.cn, afaerber@suse.de,
+	aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8qcjlXBTNE79
+X-TUID: QPKjIZTGR1nn
 
-On Tue, Apr 12, 2016 at 02:58:03PM +0200, Aleksandar Markovic wrote:
-[...]
->   4) Updated code for all platforms to reflect changes in SoftFloat library.
->      This change is twofolds: it includes modifications of SoftFloat library
->      functions invocations, and an addition of invocation of function
->      set_snan_bit_is_one() during CPU initialization, with arguments that
->      are appropriate for each particular platform.
-> 
->      In order to be at the same time accurate in relation to floating point
->      arithmetics and consistent with a particular platform code, following
->      principle is adopted related to invocations of new function
->      set_snan_bit_is_one():
-> 
->      1. If a target platform doesn't use SoftFloat library, nothing is added.
->             (cris, lm32, moxie)
->      2. Else, if a target platform's signaling bit meaning is "1 is
->         signaling", explicit invocation of set_snan_bit_is_one(1) is added.
->             (mips, sh4, unicore32)
->               (for mips this will change in the second patch of this
->               series, but this very patch leaves mips features as
->               they currently are.)
->      3. Else, if a target platform explicitly sets other fields of its
->         float_status structure(s), explicit invocation of
->         set_snan_bit_is_one(0) is added.
->             (ppc, s390x, tricore)
->      4. Else, if a target platform doesn't explicitly set its structure
->         CPUXXXState, explicit invocation of set_snan_bit_is_one(0) is added.
->             (alpha, xtensa)
+On 12/04/16 13:58, Aleksandar Markovic wrote:
+> @@ -322,14 +327,14 @@ int float32_is_quiet_nan( float32 a_ )
+>  | NaN; otherwise returns 0.
+>  *----------------------------------------------------------------------------*/
+>  
+> -int float32_is_signaling_nan( float32 a_ )
+> +int float32_is_signaling_nan( float32 a_, float_status *status )
+>  {
+>      uint32_t a = float32_val(a_);
+> -#if SNAN_BIT_IS_ONE
+> -    return ((uint32_t)(a << 1) >= 0xff800000);
+> -#else
+> -    return ( ( ( a>>22 ) & 0x1FF ) == 0x1FE ) && ( a & 0x003FFFFF );
+> -#endif
+> +    if (status->snan_bit_is_one) {
+> +        return ((uint32_t)(a << 1) >= 0xff800000);
+> +    } else {
+> +        return ( ( ( a>>22 ) & 0x1FF ) == 0x1FE ) && ( a & 0x003FFFFF );
+> +    }
 
-The CPU struct is zeroed by object_new() when the CPU object is
-created, so the field is already set to 0 by default on all
-architectures. You shouldn't need set_snan_bit_is_one(0) calls on
-CPU initialization on any architecture.
+Please correct the style while touching the lines.
 
+Thanks,
+Leon
 
->      5. For remaining cases, nothing is added. (Those cases explicitly set
->         their CPUXXXState/float_status structures to 0, and thus implicitly
->         perform set_snan_bit_is_one(0).)
->             (arm, i386, m68k, microblaze, openrisc, sparc)
-> 
-
--- 
-Eduardo

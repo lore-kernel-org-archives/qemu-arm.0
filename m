@@ -1,117 +1,163 @@
-Received: by 10.25.208.211 with SMTP id h202csp1350161lfg;
-        Mon, 11 Apr 2016 03:41:17 -0700 (PDT)
-X-Received: by 10.140.16.133 with SMTP id 5mr27178015qgb.50.1460371276990;
-        Mon, 11 Apr 2016 03:41:16 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp289489lfg;
+        Wed, 13 Apr 2016 02:54:43 -0700 (PDT)
+X-Received: by 10.140.168.85 with SMTP id o82mr10140047qho.16.1460541283609;
+        Wed, 13 Apr 2016 02:54:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h189si431543qhd.2.2016.04.11.03.41.16
+        by mx.google.com with ESMTPS id y105si4207503qge.70.2016.04.13.02.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Apr 2016 03:41:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 13 Apr 2016 02:54:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52252 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:40312 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1apZHQ-0002xF-Jz
-	for alex.bennee@linaro.org; Mon, 11 Apr 2016 06:41:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40863)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aqHVT-00009u-6Y
+	for alex.bennee@linaro.org; Wed, 13 Apr 2016 05:54:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1apZGq-0001ZY-Nk
-	for qemu-devel@nongnu.org; Mon, 11 Apr 2016 06:40:41 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1aqHVP-00006T-KD
+	for qemu-arm@nongnu.org; Wed, 13 Apr 2016 05:54:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1apZGp-0000DL-P1
-	for qemu-devel@nongnu.org; Mon, 11 Apr 2016 06:40:40 -0400
-Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:34458)
+	(envelope-from <vijay.kilari@gmail.com>) id 1aqHVO-0004as-L1
+	for qemu-arm@nongnu.org; Wed, 13 Apr 2016 05:54:39 -0400
+Received: from mail-oi0-x22c.google.com ([2607:f8b0:4003:c06::22c]:33315)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1apZGp-0000DC-CR
-	for qemu-devel@nongnu.org; Mon, 11 Apr 2016 06:40:39 -0400
-Received: by mail-vk0-x231.google.com with SMTP id e185so206566476vkb.1
-	for <qemu-devel@nongnu.org>; Mon, 11 Apr 2016 03:40:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=pf6cE/u5siHNgLfx+ZTQW8SFIX4m3awt/0xqcyjLb5E=;
-	b=Aem3ph9b50G/lY4A3tzb5SuNXxDDyEzG/8HCWkNMNUsjik6NHzuAI2dS6gUFu3xVgo
-	eAAIUioIXnnYTm0t6R5UZO0EmBAPpN2fjcor71oU0F8am/fK4nZ0WgD0n+YmHc4/0FyZ
-	oyZQTiZJ01ZX7nECwz1ED0lUXf48oBXI74sXI=
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1aqHVO-0004aP-GY; Wed, 13 Apr 2016 05:54:38 -0400
+Received: by mail-oi0-x22c.google.com with SMTP id w85so57028330oiw.0;
+	Wed, 13 Apr 2016 02:54:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+	:cc; bh=juUHTpxsrf26XwmZeC/m0RflqS/T0LUwgBgnwjj7iA8=;
+	b=B87HfTPiWGJhm/tCHnRs5dvGa5o+/G3DrUaZvSjpVCLcdbqybyvAoDHKekI7n8TOCL
+	mCS8AUhmYB1kA4SM2QRnr+Vc7L17vCZ726LPGncMFeQzoP8JP/v3MGXyj239jaTHAxhv
+	0yGmrFWmOUxyAXv4qgR3O7wzVOokgVyxYUqKyQU8YN57MXw3t7a40Hq6OvTE1lvq2K1K
+	ELh+1FuFWLYxTroIUCEkKDc6gFmTf50bztOik2UEJbd1bd+yRjcVoEO0IE8UPU1U93On
+	H7wxhkKhR1xzDn0AUrB8qMBtJNBoDIahuI+wRJc8reYTLrHUJ6cK5JVx8xwpq3JWkOGj
+	Qlvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=pf6cE/u5siHNgLfx+ZTQW8SFIX4m3awt/0xqcyjLb5E=;
-	b=U3qOe4uixgbUVuSNbVl79ACiWUZpCTSqy1SdP86LAsIbWTwSL9IDSJ4+aLWn4klC2n
-	E5NSlZZsso/bGs9f+w99U/yQZ7tZV/mHxkMd9nIUzay2C5oLWqdSDCiwE/acQK3OtaTC
-	QXCw0p++MuzwmJ/bfcit85i0+zqDJPXsSAYQyf+ALrewBYlis9EHURI9S4bHRXv9kVJV
-	Un/ckgqQ5ydDHLpl3eNrTuMXk4xbnrnqakMo/Was0XB22eu0G+KgH1gFRlYlTO7R5IXj
-	dFnvnz3dKTM5apb+kwUyFOYPnjz50keAp7stPH/Fl3845UmQ8Q9imywbeg1bwxpi3RmZ
-	Y0Sg==
-X-Gm-Message-State: AD7BkJIYkwDc3xgcMAwVMDuYnocWtzqy4wM1U1q6blRsaCddlgboe85MifmCMjihT6m+/geWF38VpUSE6DImMZkH
-X-Received: by 10.31.8.17 with SMTP id 17mr9678248vki.139.1460371238727; Mon,
-	11 Apr 2016 03:40:38 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:date
+	:message-id:subject:from:to:cc;
+	bh=juUHTpxsrf26XwmZeC/m0RflqS/T0LUwgBgnwjj7iA8=;
+	b=dm1wshDYdHHLNm+szhBingf93AwHX4f7w76H26n4Y1dolzkxeuNun8ZXMWfnhpfCWt
+	B3zri0ye43DcRTvq+yBqQYSNB4WZSAolynb0QihRSEwDb4k9w1saIsQJ6CP3z0duLvKz
+	uCU9WO/3T2T4hQ4rO6/gUnnzwNDb6rfq6azLYk5YHsJ2NwTHb2ow0c7uf4FJcwvNKtHp
+	E0Nsx0DQP7AhBbwxCY0vlbbol669kWgvr7HnHNBggGSU0A70p1HntoKRB8LHMb6IL46G
+	gYY0Qf0KTq5tJ7q3l/0npNPfv1vGCqYImmhpoXh4mOYaVKvNItqQ9taaxXHWSKXi47ru
+	uAuA==
+X-Gm-Message-State: AOPr4FV/+Z2Srr9d9VIp5IxR7tERUXi8u92Iegzpm1d23l1yYQL1NmQkx1BJWvevjIIM3o/Ug40oEC3s/oSIOQ==
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 11 Apr 2016 03:40:19 -0700 (PDT)
-In-Reply-To: <57098617.1020308@twiddle.net>
+X-Received: by 10.202.79.194 with SMTP id d185mr3771984oib.69.1460541277667;
+	Wed, 13 Apr 2016 02:54:37 -0700 (PDT)
+Received: by 10.157.54.2 with HTTP; Wed, 13 Apr 2016 02:54:37 -0700 (PDT)
+In-Reply-To: <570B7048.5010501@arm.com>
 References: <1460023087-31509-1-git-send-email-vijayak@caviumnetworks.com>
-	<1460023087-31509-2-git-send-email-vijayak@caviumnetworks.com>
-	<57098617.1020308@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Apr 2016 11:40:19 +0100
-Message-ID: <CAFEAcA8Rm9Ntu-bmAEMOcKBs6db8biez-mThw8iDP9szD1L4xQ@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
+	<1460023087-31509-3-git-send-email-vijayak@caviumnetworks.com>
+	<CAFEAcA_0ssT32oNrgTHChKsAJNkjUfCHFGg2vPtk8-AWsRjVqw@mail.gmail.com>
+	<CALicx6tM6__TWjVPLdNzMMpoyQYHZOnArFwz4E+QyyxN7TLruQ@mail.gmail.com>
+	<CAFEAcA8T-90NFw_fMWRZ7JuQ4UpxRGfwsbHLi9cigsiD=zXupA@mail.gmail.com>
+	<CALicx6ubAgfGJhGX5wRTeHfmj_RHX__hkJxAnBA8v=e8n=HgZg@mail.gmail.com>
+	<CAFEAcA8pboFpZynTny60JRQYL0S1+HH6KoBy+de6iHOGOGBFCg@mail.gmail.com>
+	<CALicx6vnEGxXA3yyzBg8VSHNns5kqvhFfVT23w_Hx7LLSkEq3w@mail.gmail.com>
+	<570B7048.5010501@arm.com>
+Date: Wed, 13 Apr 2016 15:24:37 +0530
+Message-ID: <CALicx6u-LOA2gAc2f33a=VY0duHhtiHSZ=2+269daeE3YZ1xiA@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+To: Suzuki K Poulose <Suzuki.Poulose@arm.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::231
-Subject: Re: [Qemu-devel] [RFC PATCH v2 1/3] target-arm: Use Neon for zero
- checking
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::22c
+Subject: Re: [Qemu-arm] [RFC PATCH v2 2/3] utils: Add cpuinfo helper to
+ fetch /proc/cpuinfo
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Vijay Kilari <vijay.kilari@gmail.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Vijaya Kumar K <vijayak@caviumnetworks.com>,
 	suresh knv <knv.suresh2009@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	Will Deacon <Will.Deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Vijay <vijayak@cavium.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Catalin Marinas <Catalin.Marinas@arm.com>,
 	Suresh <ksuresh@caviumnetworks.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MrEVq3NYiMRg
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OoZUTJWOIkgD
 
-On 9 April 2016 at 23:45, Richard Henderson <rth@twiddle.net> wrote:
-> On 04/07/2016 02:58 AM, vijayak@caviumnetworks.com wrote:
+On Mon, Apr 11, 2016 at 3:07 PM, Suzuki K Poulose
+<Suzuki.Poulose@arm.com> wrote:
+> On 11/04/16 07:52, Vijay Kilari wrote:
 >>
->> +#elif defined __aarch64__
->> +#include "arm_neon.h"
+>> Adding Suzuki Poulose.
+>>
+>> Hi Suzuki,
+>>
+>> On Fri, Apr 8, 2016 at 3:13 PM, Peter Maydell <peter.maydell@linaro.org>
+>> wrote:
+>>>
+>>> On 8 April 2016 at 07:21, Vijay Kilari <vijay.kilari@gmail.com> wrote:
+>>>>
+>>>> On Thu, Apr 7, 2016 at 5:15 PM, Peter Maydell <peter.maydell@linaro.org>
+>>>> wrote:
+>>>>>
+>>>>> I'm told there are kernel patches in progress to get this sort
+>>>>> of information in a maintainable way to userspace, which are
+>>>>> currently somewhat stalled due to lack of anybody who wants to
+>>>>> consume it. If you have a use case then you should probably
+>>>>> flag it up with the kernel devs
+
+Hi Peter,
+
+   Looks like getting Suzuki's patches merged might take some time.
+I propose to use /proc/cpuinfo for now and later I can move to using
+Suzuki's way.
+
+
+>>>>
+>>>>
+>>>> Can you please give references to those patches/discussion?
+>>>
+>>>
+>>> I'm told the most recent thread is https://lkml.org/lkml/2015/10/5/517
+>>> (and that most of the patches in that series have gone in, except
+>>> for the last 4 or 5 which implement the ABI).
+>>
+>>
+>> Can you please throw some light on what is the status of ABI to
+>> read cpu information in user space.
+>> I wanted to know cpu implementer, part number in QEMU utils
+>> to add prefetches to speed up live migration for Thunderx platform.
+>>
 >
+> As for the patch series, except for that last 5 patches (which actually
+> implements
+> the ABI), the infrastructure patches have been merged in v4.4.
 >
-> A better test is __NEON__, which asserts that neon is available at compile
-> time (which will be true basically always for aarch64), and then you don't
-> need a runime test for neon.
+> We are awaiting feedback from possible consumers like toolchain (gcc,
+> glibc).
+> If you think this will be suitable for you, thats good to know. There is
+> documentation available in the last patch in the above series. Could you
+> please
+> try the series (on v4.4, which would be easier, by simply picking up the
+> last
+> 5 patches) and let us know if that works for you ?
 
-You don't need a runtime test for neon on aarch64 anyway, because
-it will always be present.
+Hi Suzuki,
 
-> You also get support for armv7 with neon.
-
-But if you do care about armv7 then you do need a runtime test,
-because the defacto standard compile options are for armhf which
-has FP but doesn't assume Neon.
-
-Personally I think we should not worry about armv7 here, because
-it's not actually a likely virtualization server platform, and
-we shouldn't include code in QEMU we're not even compile testing.
-So I think __aarch64__ here is fine.
-
-thanks
--- PMM
+ The last 5 patches are not compiling on v4.4. Looks like your patch
+series is not merged completely. Can you please
+rebase your patches and let me know.

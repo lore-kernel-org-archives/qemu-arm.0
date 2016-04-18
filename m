@@ -1,51 +1,54 @@
-Received: by 10.25.208.194 with SMTP id h185csp1434858lfg;
+Received: by 10.25.208.194 with SMTP id h185csp1434878lfg;
+        Mon, 18 Apr 2016 09:04:29 -0700 (PDT)
+X-Received: by 10.140.221.9 with SMTP id r9mr46051578qhb.77.1460995466234;
         Mon, 18 Apr 2016 09:04:26 -0700 (PDT)
-X-Received: by 10.140.218.82 with SMTP id o79mr34763674qhb.33.1460995462067;
-        Mon, 18 Apr 2016 09:04:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v91si24956399qgv.74.2016.04.18.09.04.21
+        by mx.google.com with ESMTPS id f98si47733831qge.25.2016.04.18.09.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Apr 2016 09:04:22 -0700 (PDT)
+        Mon, 18 Apr 2016 09:04:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40344 helo=lists.gnu.org)
+Received: from localhost ([::1]:40347 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1asBev-0005eg-4P
-	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56580)
+	id 1asBez-0005nU-Na
+	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56584)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBeo-0005Xk-RL
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBeo-0005Xr-Sy
 	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBem-0005Y3-PL
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBen-0005YX-Qq
 	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:14 -0400
-Received: from mx2.rt-rk.com ([89.216.37.149]:54502 helo=mail.rt-rk.com)
+Received: from mx2.rt-rk.com ([89.216.37.149]:54393 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <aleksandar.markovic@rt-rk.com>)
-	id 1asBem-0005Xm-En; Mon, 18 Apr 2016 12:04:12 -0400
+	id 1asBen-0005U3-Kk; Mon, 18 Apr 2016 12:04:13 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with ESMTP id 580341A48DA;
-	Mon, 18 Apr 2016 18:03:47 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTP id 7630B1A463B;
+	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at rt-rk.com
 Received: from rtrkw197-lin.domain.local (rtrkw197-lin.domain.local
 	[10.10.13.82])
-	by mail.rt-rk.com (Postfix) with ESMTPSA id 2A12C1A4600;
-	Mon, 18 Apr 2016 18:03:47 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTPSA id 3EDEA1A4600;
+	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
 From: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Apr 2016 18:03:41 +0200
-Message-Id: <1460995422-14373-9-git-send-email-aleksandar.markovic@rt-rk.com>
+Date: Mon, 18 Apr 2016 18:03:35 +0200
+Message-Id: <1460995422-14373-3-git-send-email-aleksandar.markovic@rt-rk.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
 References: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 89.216.37.149
-Subject: [Qemu-arm] [PATCH v5 8/9] target-mips: Clean up position and order
- of helpers for CVT.<L|W>.<S|D>
+Subject: [Qemu-arm] [PATCH v5 2/9] softfloat: For Mips only,
+ correct default NaN values
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,110 +70,70 @@ Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	afaerber@suse.de, aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PNfZd+UMV7uS
+X-TUID: KZ76ElnchOgH
 
 From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-This patch makes position and order of helpers for CVT.<L|W>.<S|D>
-within file target-mips/op_helper.c consistent with position and order
-of helpers for <CEIL|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>.
+Only for Mips platform, and only for cases when snan_bit_is_one is 0,
+correct default NaN values (in their 16-, 32-, and 64-bit flavors).
+
+For more info, see [1], page 84, Table 6.3 "Value Supplied When a New
+Quiet NaN Is Created", and [2], page 52, Table 3.7 "Default NaN
+Encodings".
+
+[1] "MIPS=C2=AE Architecture For Programmers Volume II-A:
+    The MIPS64=C2=AE Instruction Set Reference Manual",
+    Imagination Technologies LTD, Revision 6.04, November 13, 2015
+
+[2] "MIPS Architecture for Programmers Volume IV-j:
+    The MIPS32=C2=AE SIMD Architecture Module",
+    Imagination Technologies LTD, Revision 1.12, February 3, 2016
 
 Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 ---
- target-mips/op_helper.c | 60 ++++++++++++++++++++++++-------------------------
- 1 file changed, 30 insertions(+), 30 deletions(-)
+ fpu/softfloat-specialize.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-index 7fecde7..203975e 100644
---- a/target-mips/op_helper.c
-+++ b/target-mips/op_helper.c
-@@ -2684,32 +2684,6 @@ uint64_t helper_float_cvtd_l(CPUMIPSState *env, uint64_t dt0)
-     return fdt2;
+diff --git a/fpu/softfloat-specialize.h b/fpu/softfloat-specialize.h
+index e03a529..093218f 100644
+--- a/fpu/softfloat-specialize.h
++++ b/fpu/softfloat-specialize.h
+@@ -97,7 +97,11 @@ float16 float16_default_nan(float_status *status)
+     if (status->snan_bit_is_one) {
+         return const_float16(0x7DFF);
+     } else {
++#if defined(TARGET_MIPS)
++        return const_float16(0x7E00);
++#else
+         return const_float16(0xFE00);
++#endif
+     }
+ #endif
  }
- 
--uint64_t helper_float_cvt_l_d(CPUMIPSState *env, uint64_t fdt0)
--{
--    uint64_t dt2;
--
--    dt2 = float64_to_int64(fdt0, &env->active_fpu.fp_status);
--    if (get_float_exception_flags(&env->active_fpu.fp_status)
--        & (float_flag_invalid | float_flag_overflow)) {
--        dt2 = FP_TO_INT64_OVERFLOW;
--    }
--    update_fcr31(env, GETPC());
--    return dt2;
--}
--
--uint64_t helper_float_cvt_l_s(CPUMIPSState *env, uint32_t fst0)
--{
--    uint64_t dt2;
--
--    dt2 = float32_to_int64(fst0, &env->active_fpu.fp_status);
--    if (get_float_exception_flags(&env->active_fpu.fp_status)
--        & (float_flag_invalid | float_flag_overflow)) {
--        dt2 = FP_TO_INT64_OVERFLOW;
--    }
--    update_fcr31(env, GETPC());
--    return dt2;
--}
--
- uint64_t helper_float_cvtps_pw(CPUMIPSState *env, uint64_t dt0)
- {
-     uint32_t fst2;
-@@ -2792,11 +2766,37 @@ uint32_t helper_float_cvts_pu(CPUMIPSState *env, uint32_t wth0)
-     return wt2;
+@@ -116,7 +120,11 @@ float32 float32_default_nan(float_status *status)
+     if (status->snan_bit_is_one) {
+         return const_float32(0x7FBFFFFF);
+     } else {
++#if defined(TARGET_MIPS)
++        return const_float32(0x7FC00000);
++#else
+         return const_float32(0xFFC00000);
++#endif
+     }
+ #endif
  }
- 
--uint32_t helper_float_cvt_w_s(CPUMIPSState *env, uint32_t fst0)
-+uint64_t helper_float_cvt_l_d(CPUMIPSState *env, uint64_t fdt0)
-+{
-+    uint64_t dt2;
-+
-+    dt2 = float64_to_int64(fdt0, &env->active_fpu.fp_status);
-+    if (get_float_exception_flags(&env->active_fpu.fp_status)
-+        & (float_flag_invalid | float_flag_overflow)) {
-+        dt2 = FP_TO_INT64_OVERFLOW;
-+    }
-+    update_fcr31(env, GETPC());
-+    return dt2;
-+}
-+
-+uint64_t helper_float_cvt_l_s(CPUMIPSState *env, uint32_t fst0)
-+{
-+    uint64_t dt2;
-+
-+    dt2 = float32_to_int64(fst0, &env->active_fpu.fp_status);
-+    if (get_float_exception_flags(&env->active_fpu.fp_status)
-+        & (float_flag_invalid | float_flag_overflow)) {
-+        dt2 = FP_TO_INT64_OVERFLOW;
-+    }
-+    update_fcr31(env, GETPC());
-+    return dt2;
-+}
-+
-+uint32_t helper_float_cvt_w_d(CPUMIPSState *env, uint64_t fdt0)
- {
-     uint32_t wt2;
- 
--    wt2 = float32_to_int32(fst0, &env->active_fpu.fp_status);
-+    wt2 = float64_to_int32(fdt0, &env->active_fpu.fp_status);
-     if (get_float_exception_flags(&env->active_fpu.fp_status)
-         & (float_flag_invalid | float_flag_overflow)) {
-         wt2 = FP_TO_INT32_OVERFLOW;
-@@ -2805,11 +2805,11 @@ uint32_t helper_float_cvt_w_s(CPUMIPSState *env, uint32_t fst0)
-     return wt2;
+@@ -135,7 +143,11 @@ float64 float64_default_nan(float_status *status)
+     if (status->snan_bit_is_one) {
+         return const_float64(LIT64(0x7FF7FFFFFFFFFFFF));
+     } else {
++#if defined(TARGET_MIPS)
++        return const_float64(LIT64(0x7FF8000000000000));
++#else
+         return const_float64(LIT64(0xFFF8000000000000));
++#endif
+     }
+ #endif
  }
- 
--uint32_t helper_float_cvt_w_d(CPUMIPSState *env, uint64_t fdt0)
-+uint32_t helper_float_cvt_w_s(CPUMIPSState *env, uint32_t fst0)
- {
-     uint32_t wt2;
- 
--    wt2 = float64_to_int32(fdt0, &env->active_fpu.fp_status);
-+    wt2 = float32_to_int32(fst0, &env->active_fpu.fp_status);
-     if (get_float_exception_flags(&env->active_fpu.fp_status)
-         & (float_flag_invalid | float_flag_overflow)) {
-         wt2 = FP_TO_INT32_OVERFLOW;
--- 
+--=20
 1.9.1
 

@@ -1,51 +1,54 @@
-Received: by 10.25.208.194 with SMTP id h185csp1434780lfg;
-        Mon, 18 Apr 2016 09:04:19 -0700 (PDT)
-X-Received: by 10.55.197.203 with SMTP id k72mr37524307qkl.15.1460995459041;
-        Mon, 18 Apr 2016 09:04:19 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp1434809lfg;
+        Mon, 18 Apr 2016 09:04:21 -0700 (PDT)
+X-Received: by 10.141.5.9 with SMTP id h9mr42639036qhd.78.1460995460008;
+        Mon, 18 Apr 2016 09:04:20 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b18si19233062qka.112.2016.04.18.09.04.18
+        by mx.google.com with ESMTPS id a198si427881qkb.68.2016.04.18.09.04.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Apr 2016 09:04:19 -0700 (PDT)
+        Mon, 18 Apr 2016 09:04:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40342 helo=lists.gnu.org)
+Received: from localhost ([::1]:40343 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1asBes-0005d9-Cz
-	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56579)
+	id 1asBet-0005ef-H6
+	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56574)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBeo-0005Xj-Qu
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBeo-0005XX-PZ
 	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBem-0005XU-1D
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBem-0005Xd-5b
 	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:14 -0400
-Received: from mx2.rt-rk.com ([89.216.37.149]:54421 helo=mail.rt-rk.com)
+Received: from mx2.rt-rk.com ([89.216.37.149]:54500 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <aleksandar.markovic@rt-rk.com>)
-	id 1asBel-0005UJ-Nk; Mon, 18 Apr 2016 12:04:11 -0400
+	id 1asBel-0005XK-SR; Mon, 18 Apr 2016 12:04:12 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with ESMTP id C93CA1A467A;
-	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTP id 1AE391A48CD;
+	Mon, 18 Apr 2016 18:03:47 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at rt-rk.com
 Received: from rtrkw197-lin.domain.local (rtrkw197-lin.domain.local
 	[10.10.13.82])
-	by mail.rt-rk.com (Postfix) with ESMTPSA id 901861A4600;
+	by mail.rt-rk.com (Postfix) with ESMTPSA id E03A91A4600;
 	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
 From: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Apr 2016 18:03:37 +0200
-Message-Id: <1460995422-14373-5-git-send-email-aleksandar.markovic@rt-rk.com>
+Date: Mon, 18 Apr 2016 18:03:39 +0200
+Message-Id: <1460995422-14373-7-git-send-email-aleksandar.markovic@rt-rk.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
 References: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 89.216.37.149
-Subject: [Qemu-arm] [PATCH v5 4/9] target-mips: Amend processor definitions
- in relation to FCR31
+Subject: [Qemu-arm] [PATCH v5 6/9] target-mips: Add abs2008 flavor of
+ <ABS|NEG>.<S|D>
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,131 +70,109 @@ Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	afaerber@suse.de, aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GOGztB/yjZCh
+X-TUID: IwhuQXVNxO9U
 
 From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-Amend definitions of some Mips processors related to FCR31
-(float status control register). Most significantly, FCR31 of
-processors mips32r6-generic, mips64r6-generic, and P5600 will
-be set so that its FCR31_ABS2008 and FCR31_NAN2008 bits are set
-to 1.
+Updated handling of instuctions <ABS|NEG>.<S|D>. Note that legacy
+(pre-abs2008) ABS and NEG instructions are arithmetic (and, therefore,
+any NaN operand causes signaling invalid operation), while abs2008
+ones are non-arithmetic, always and only changing the sign bit, even
+for NaN-like operands. Details on these instructions are documented
+in [1] p. 35 and 359.
 
+Implementation-wise, abs2008 versions are implemented without helpers,
+for simplicity and performance sake.
+
+[1] "MIPS=C2=AE Architecture For Programmers Volume II-A:
+    The MIPS64=C2=AE Instruction Set Reference Manual",
+    Imagination Technologies LTD, Revision 6.04, November 13, 2015
+
+Reviewed-by: Leon Alrae <leon.alrae@imgtec.com>
+Signed-off-by: Thomas Schwinge <thomas@codesourcery.com>
+Signed-off-by: Maciej W. Rozycki <macro@codesourcery.com>
 Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 ---
- target-mips/translate_init.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
+ target-mips/translate.c | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
 
-diff --git a/target-mips/translate_init.c b/target-mips/translate_init.c
-index e81a831..1094baa 100644
---- a/target-mips/translate_init.c
-+++ b/target-mips/translate_init.c
-@@ -273,6 +273,7 @@ static const mips_def_t mips_defs[] =
-         .CP0_Status_rw_bitmask = 0x3678FF1F,
-         .CP1_fcr0 = (1 << FCR0_F64) | (1 << FCR0_L) | (1 << FCR0_W) |
-                     (1 << FCR0_D) | (1 << FCR0_S) | (0x93 << FCR0_PRID),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 32,
-         .PABITS = 32,
-         .insn_flags = CPU_MIPS32R2 | ASE_MIPS16,
-@@ -303,6 +304,7 @@ static const mips_def_t mips_defs[] =
-                     (0xff << CP0TCSt_TASID),
-         .CP1_fcr0 = (1 << FCR0_F64) | (1 << FCR0_L) | (1 << FCR0_W) |
-                     (1 << FCR0_D) | (1 << FCR0_S) | (0x95 << FCR0_PRID),
-+        .CP1_fcr31 = 0,
-         .CP0_SRSCtl = (0xf << CP0SRSCtl_HSS),
-         .CP0_SRSConf0_rw_bitmask = 0x3fffffff,
-         .CP0_SRSConf0 = (1U << CP0SRSC0_M) | (0x3fe << CP0SRSC0_SRS3) |
-@@ -343,6 +345,7 @@ static const mips_def_t mips_defs[] =
-         .CP0_Status_rw_bitmask = 0x3778FF1F,
-         .CP1_fcr0 = (1 << FCR0_F64) | (1 << FCR0_L) | (1 << FCR0_W) |
-                     (1 << FCR0_D) | (1 << FCR0_S) | (0x93 << FCR0_PRID),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 32,
-         .PABITS = 32,
-         .insn_flags = CPU_MIPS32R2 | ASE_MIPS16 | ASE_DSP | ASE_DSPR2,
-@@ -434,7 +437,7 @@ static const mips_def_t mips_defs[] =
-     },
-     {
-         /* A generic CPU supporting MIPS32 Release 6 ISA.
--           FIXME: Support IEEE 754-2008 FP.
-+           FIXME: Complete support for IEEE 754-2008 FP.
-                   Eventually this should be replaced by a real CPU model. */
-         .name = "mips32r6-generic",
-         .CP0_PRid = 0x00010000,
-@@ -485,6 +488,7 @@ static const mips_def_t mips_defs[] =
-         .CP0_Status_rw_bitmask = 0x3678FFFF,
-         /* The R4000 has a full 64bit FPU but doesn't use the fcr0 bits. */
-         .CP1_fcr0 = (0x5 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 40,
-         .PABITS = 36,
-         .insn_flags = CPU_MIPS3,
-@@ -503,6 +507,7 @@ static const mips_def_t mips_defs[] =
-         .CP0_Status_rw_bitmask = 0x3678FFFF,
-         /* The VR5432 has a full 64bit FPU but doesn't use the fcr0 bits. */
-         .CP1_fcr0 = (0x54 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 40,
-         .PABITS = 32,
-         .insn_flags = CPU_VR54XX,
-@@ -548,6 +553,7 @@ static const mips_def_t mips_defs[] =
-         /* The 5Kf has F64 / L / W but doesn't use the fcr0 bits. */
-         .CP1_fcr0 = (1 << FCR0_D) | (1 << FCR0_S) |
-                     (0x81 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 42,
-         .PABITS = 36,
-         .insn_flags = CPU_MIPS64,
-@@ -575,6 +581,7 @@ static const mips_def_t mips_defs[] =
-         .CP1_fcr0 = (1 << FCR0_3D) | (1 << FCR0_PS) |
-                     (1 << FCR0_D) | (1 << FCR0_S) |
-                     (0x82 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 40,
-         .PABITS = 36,
-         .insn_flags = CPU_MIPS64 | ASE_MIPS3D,
-@@ -601,6 +608,7 @@ static const mips_def_t mips_defs[] =
-         .CP1_fcr0 = (1 << FCR0_F64) | (1 << FCR0_3D) | (1 << FCR0_PS) |
-                     (1 << FCR0_L) | (1 << FCR0_W) | (1 << FCR0_D) |
-                     (1 << FCR0_S) | (0x00 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 42,
-         .PABITS = 36,
-         .insn_flags = CPU_MIPS64R2 | ASE_MIPS3D,
-@@ -653,7 +661,7 @@ static const mips_def_t mips_defs[] =
-     },
-     {
-         /* A generic CPU supporting MIPS64 Release 6 ISA.
--           FIXME: Support IEEE 754-2008 FP.
-+           FIXME: Complete support for IEEE 754-2008 FP.
-                   Eventually this should be replaced by a real CPU model. */
-         .name = "MIPS64R6-generic",
-         .CP0_PRid = 0x00010000,
-@@ -704,6 +712,7 @@ static const mips_def_t mips_defs[] =
-         .CCRes = 2,
-         .CP0_Status_rw_bitmask = 0x35D0FFFF,
-         .CP1_fcr0 = (0x5 << FCR0_PRID) | (0x1 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 40,
-         .PABITS = 40,
-         .insn_flags = CPU_LOONGSON2E,
-@@ -722,6 +731,7 @@ static const mips_def_t mips_defs[] =
-         .CCRes = 2,
-         .CP0_Status_rw_bitmask = 0xF5D0FF1F,   /* Bits 7:5 not writable.  */
-         .CP1_fcr0 = (0x5 << FCR0_PRID) | (0x1 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 40,
-         .PABITS = 40,
-         .insn_flags = CPU_LOONGSON2F,
-@@ -749,6 +759,7 @@ static const mips_def_t mips_defs[] =
-         .CP1_fcr0 = (1 << FCR0_F64) | (1 << FCR0_3D) | (1 << FCR0_PS) |
-                     (1 << FCR0_L) | (1 << FCR0_W) | (1 << FCR0_D) |
-                     (1 << FCR0_S) | (0x00 << FCR0_PRID) | (0x0 << FCR0_REV),
-+        .CP1_fcr31 = 0,
-         .SEGBITS = 42,
-         .PABITS = 36,
-         .insn_flags = CPU_MIPS64R2 | ASE_DSP | ASE_DSPR2,
--- 
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index 2cdd2bd..3b6b3b5 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -1434,6 +1434,7 @@ typedef struct DisasContext {
+     bool vp;
+     bool cmgcr;
+     bool mrp;
++    bool abs2008;
+ } DisasContext;
+=20
+ enum {
+@@ -8879,7 +8880,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
+pcode op1,
+             TCGv_i32 fp0 =3D tcg_temp_new_i32();
+=20
+             gen_load_fpr32(ctx, fp0, fs);
+-            gen_helper_float_abs_s(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_andi_i32(fp0, fp0, 0x7fffffffUL);
++            } else {
++                gen_helper_float_abs_s(fp0, fp0);
++            }
+             gen_store_fpr32(ctx, fp0, fd);
+             tcg_temp_free_i32(fp0);
+         }
+@@ -8898,7 +8903,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
+pcode op1,
+             TCGv_i32 fp0 =3D tcg_temp_new_i32();
+=20
+             gen_load_fpr32(ctx, fp0, fs);
+-            gen_helper_float_chs_s(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_xori_i32(fp0, fp0, 1UL << 31);
++            } else {
++                gen_helper_float_chs_s(fp0, fp0);
++            }
+             gen_store_fpr32(ctx, fp0, fd);
+             tcg_temp_free_i32(fp0);
+         }
+@@ -9369,7 +9378,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
+pcode op1,
+             TCGv_i64 fp0 =3D tcg_temp_new_i64();
+=20
+             gen_load_fpr64(ctx, fp0, fs);
+-            gen_helper_float_abs_d(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_andi_i64(fp0, fp0, 0x7fffffffffffffffULL);
++            } else {
++                gen_helper_float_abs_d(fp0, fp0);
++            }
+             gen_store_fpr64(ctx, fp0, fd);
+             tcg_temp_free_i64(fp0);
+         }
+@@ -9390,7 +9403,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
+pcode op1,
+             TCGv_i64 fp0 =3D tcg_temp_new_i64();
+=20
+             gen_load_fpr64(ctx, fp0, fs);
+-            gen_helper_float_chs_d(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_xori_i64(fp0, fp0, 1ULL << 63);
++            } else {
++                gen_helper_float_chs_d(fp0, fp0);
++            }
+             gen_store_fpr64(ctx, fp0, fd);
+             tcg_temp_free_i64(fp0);
+         }
+@@ -19775,6 +19792,7 @@ void gen_intermediate_code(CPUMIPSState *env, str=
+uct TranslationBlock *tb)
+              (env->insn_flags & (INSN_LOONGSON2E | INSN_LOONGSON2F));
+     ctx.vp =3D (env->CP0_Config5 >> CP0C5_VP) & 1;
+     ctx.mrp =3D (env->CP0_Config5 >> CP0C5_MRP) & 1;
++    ctx.abs2008 =3D (env->active_fpu.fcr31 >> FCR31_ABS2008) & 1;
+     restore_cpu_state(env, &ctx);
+ #ifdef CONFIG_USER_ONLY
+         ctx.mem_idx =3D MIPS_HFLAG_UM;
+--=20
 1.9.1
 

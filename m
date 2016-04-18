@@ -1,54 +1,52 @@
-Received: by 10.25.208.194 with SMTP id h185csp1434809lfg;
+Received: by 10.25.208.194 with SMTP id h185csp1434830lfg;
+        Mon, 18 Apr 2016 09:04:24 -0700 (PDT)
+X-Received: by 10.140.33.229 with SMTP id j92mr43533231qgj.20.1460995461046;
         Mon, 18 Apr 2016 09:04:21 -0700 (PDT)
-X-Received: by 10.141.5.9 with SMTP id h9mr42639036qhd.78.1460995460008;
-        Mon, 18 Apr 2016 09:04:20 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a198si427881qkb.68.2016.04.18.09.04.19
+        by mx.google.com with ESMTPS id r127si20280978qkc.8.2016.04.18.09.04.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Apr 2016 09:04:20 -0700 (PDT)
+        Mon, 18 Apr 2016 09:04:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40343 helo=lists.gnu.org)
+Received: from localhost ([::1]:40345 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1asBet-0005ef-H6
-	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56574)
+	id 1asBeu-0005gL-7R
+	for alex.bennee@linaro.org; Mon, 18 Apr 2016 12:04:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBeo-0005XX-PZ
-	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:16 -0400
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBep-0005ZU-Vn
+	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBem-0005Xd-5b
-	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:14 -0400
-Received: from mx2.rt-rk.com ([89.216.37.149]:54500 helo=mail.rt-rk.com)
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1asBel-0005XE-Ey
+	for qemu-arm@nongnu.org; Mon, 18 Apr 2016 12:04:15 -0400
+Received: from mx2.rt-rk.com ([89.216.37.149]:54367 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <aleksandar.markovic@rt-rk.com>)
-	id 1asBel-0005XK-SR; Mon, 18 Apr 2016 12:04:12 -0400
+	id 1asBel-0005U1-5e; Mon, 18 Apr 2016 12:04:11 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with ESMTP id 1AE391A48CD;
-	Mon, 18 Apr 2016 18:03:47 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTP id 291D81A464B;
+	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at rt-rk.com
 Received: from rtrkw197-lin.domain.local (rtrkw197-lin.domain.local
 	[10.10.13.82])
-	by mail.rt-rk.com (Postfix) with ESMTPSA id E03A91A4600;
-	Mon, 18 Apr 2016 18:03:46 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTPSA id E3AFA1A4600;
+	Mon, 18 Apr 2016 18:03:45 +0200 (CEST)
 From: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 18 Apr 2016 18:03:39 +0200
-Message-Id: <1460995422-14373-7-git-send-email-aleksandar.markovic@rt-rk.com>
+Date: Mon, 18 Apr 2016 18:03:33 +0200
+Message-Id: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
-References: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 89.216.37.149
-Subject: [Qemu-arm] [PATCH v5 6/9] target-mips: Add abs2008 flavor of
- <ABS|NEG>.<S|D>
+Subject: [Qemu-arm] [PATCH v5 0/9] target-mips: Initiate IEEE 754-2008
+ support for Mips
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,109 +68,131 @@ Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	afaerber@suse.de, aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IwhuQXVNxO9U
+X-TUID: 3BnBITnQsbCg
 
 From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-Updated handling of instuctions <ABS|NEG>.<S|D>. Note that legacy
-(pre-abs2008) ABS and NEG instructions are arithmetic (and, therefore,
-any NaN operand causes signaling invalid operation), while abs2008
-ones are non-arithmetic, always and only changing the sign bit, even
-for NaN-like operands. Details on these instructions are documented
-in [1] p. 35 and 359.
+v5 - platform initialization code revisited one more time;
+   - handling of CLASS.<S|D> and their MSA counterparts revisited;
+   - better orgranization of patches (squashing, splitting);
+   - corrected handling of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>;
+   - code cleanup item in genfarith() - order of cases;
+   - scripts/checkpatch.pl executed and errors addressed.
 
-Implementation-wise, abs2008 versions are implemented without helpers,
-for simplicity and performance sake.
+v4 - Added code cleanup items:
+       a. Capitalization of hex constants in softfloat-specialize.h;
+       b. White spaces in softfloat-specialize.h;
+       c. Order of Mips helpers for CVT.<L|W>.<S|D>.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01962.=
+html)
 
-[1] "MIPS=C2=AE Architecture For Programmers Volume II-A:
-    The MIPS64=C2=AE Instruction Set Reference Manual",
-    Imagination Technologies LTD, Revision 6.04, November 13, 2015
+v3 - Patch series reorganized into 6 patches instead of 2.
+   - Commit messages improved.
+   - Except commit messages, net result of applying v3 and v2 is the same=
+.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01870.=
+html)
 
-Reviewed-by: Leon Alrae <leon.alrae@imgtec.com>
-Signed-off-by: Thomas Schwinge <thomas@codesourcery.com>
-Signed-off-by: Maciej W. Rozycki <macro@codesourcery.com>
-Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
----
- target-mips/translate.c | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+v2 - Relevant CPU initialization code changes revisited for all platforms=
+.
+   - In connection with <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D> and
+     <ABS|NEG>.<S|D> Mips instructions handling, decision on whether
+     pre-nan2008/pre-abs2008 or nan2008/abs2008 handling will apply
+     moved from run-time to translate-time.
+   - For Mips only, in nan2008 cases only, default NaN values fixed.
+   - For Mips only, in nan2008 cases only, order in pickNaNMulAdd() fixed=
+.
+   - Code cleanup issues:
+       a. Constants <floatx80|float128>_default_nan_<low|high> removed;
+       b. Suffix <l|w>_<s|d> replaced with _<l|w>_<s|d> for some Mips hel=
+pers;
+       c. In vicinity of changes, fixed not-beautiful code formatting.
+   - Commit messages improved.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01232.=
+html)
 
-diff --git a/target-mips/translate.c b/target-mips/translate.c
-index 2cdd2bd..3b6b3b5 100644
---- a/target-mips/translate.c
-+++ b/target-mips/translate.c
-@@ -1434,6 +1434,7 @@ typedef struct DisasContext {
-     bool vp;
-     bool cmgcr;
-     bool mrp;
-+    bool abs2008;
- } DisasContext;
-=20
- enum {
-@@ -8879,7 +8880,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
-pcode op1,
-             TCGv_i32 fp0 =3D tcg_temp_new_i32();
-=20
-             gen_load_fpr32(ctx, fp0, fs);
--            gen_helper_float_abs_s(fp0, fp0);
-+            if (ctx->abs2008) {
-+                tcg_gen_andi_i32(fp0, fp0, 0x7fffffffUL);
-+            } else {
-+                gen_helper_float_abs_s(fp0, fp0);
-+            }
-             gen_store_fpr32(ctx, fp0, fd);
-             tcg_temp_free_i32(fp0);
-         }
-@@ -8898,7 +8903,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
-pcode op1,
-             TCGv_i32 fp0 =3D tcg_temp_new_i32();
-=20
-             gen_load_fpr32(ctx, fp0, fs);
--            gen_helper_float_chs_s(fp0, fp0);
-+            if (ctx->abs2008) {
-+                tcg_gen_xori_i32(fp0, fp0, 1UL << 31);
-+            } else {
-+                gen_helper_float_chs_s(fp0, fp0);
-+            }
-             gen_store_fpr32(ctx, fp0, fd);
-             tcg_temp_free_i32(fp0);
-         }
-@@ -9369,7 +9378,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
-pcode op1,
-             TCGv_i64 fp0 =3D tcg_temp_new_i64();
-=20
-             gen_load_fpr64(ctx, fp0, fs);
--            gen_helper_float_abs_d(fp0, fp0);
-+            if (ctx->abs2008) {
-+                tcg_gen_andi_i64(fp0, fp0, 0x7fffffffffffffffULL);
-+            } else {
-+                gen_helper_float_abs_d(fp0, fp0);
-+            }
-             gen_store_fpr64(ctx, fp0, fd);
-             tcg_temp_free_i64(fp0);
-         }
-@@ -9390,7 +9403,11 @@ static void gen_farith (DisasContext *ctx, enum fo=
-pcode op1,
-             TCGv_i64 fp0 =3D tcg_temp_new_i64();
-=20
-             gen_load_fpr64(ctx, fp0, fs);
--            gen_helper_float_chs_d(fp0, fp0);
-+            if (ctx->abs2008) {
-+                tcg_gen_xori_i64(fp0, fp0, 1ULL << 63);
-+            } else {
-+                gen_helper_float_chs_d(fp0, fp0);
-+            }
-             gen_store_fpr64(ctx, fp0, fd);
-             tcg_temp_free_i64(fp0);
-         }
-@@ -19775,6 +19792,7 @@ void gen_intermediate_code(CPUMIPSState *env, str=
-uct TranslationBlock *tb)
-              (env->insn_flags & (INSN_LOONGSON2E | INSN_LOONGSON2F));
-     ctx.vp =3D (env->CP0_Config5 >> CP0C5_VP) & 1;
-     ctx.mrp =3D (env->CP0_Config5 >> CP0C5_MRP) & 1;
-+    ctx.abs2008 =3D (env->active_fpu.fcr31 >> FCR31_ABS2008) & 1;
-     restore_cpu_state(env, &ctx);
- #ifdef CONFIG_USER_ONLY
-         ctx.mem_idx =3D MIPS_HFLAG_UM;
+V1 - Initial version
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg06082.=
+html)
+
+Mips platform represents the most complex case among QEMU-supported
+platforms in reference to certain aspects of floating-point arithmetics.
+This is mostly a consequence of the fact that Mips platform, for many
+reasons, evolved considerably over time related to floating-point
+arithmetics standards (significantly more than other platforms).
+It has been difficult for emulators like QEMU to support such variety
+of configurations.
+
+This patch series provides number of IEEE 754-2008-related features to
+Mips platform. It addresses the most sensitive changes that require
+modification of SoftFloat library, that is used by most other platforms.
+
+In order to make develpoment, testing, and integration easier, the patch
+is split into two distinct parts:
+
+   1. Part 1 (patches 1/9, 2/9, 3/9) that does not change any calculation
+      or behavior on any platform (and, for that matter, even on Mips
+      platform). Its sole purpose is to address platform independant
+      issues in a non-invasive manner, and to make Part 2 possible.
+
+   2. Part 2 (patches 4/9, 5/9, 6/9, 7/9, 8/9, 9/9) that sets some Mips
+      architecures to use provisions from Part 1, and additionally implem=
+ents
+      some of IEEE 754-2008-relates features for Mips, while, at the same=
+ time,
+      dealing with files located in directory target-mips only.
+
+A limitation of this patch series is that it does not cover all IEEE 754-=
+2008
+Mips issues (for example, handling FCR31's FS bit, handling R3 and R5
+architectures details, some gdb issues, ELF header nan2008-related change=
+s).
+However, hopefully all remaining such issues will touch only Mips-specifi=
+c
+source code files, and thus will be much easier to integrate in QEMU, and=
+,
+of course, will not be disruptive to orher platforms.
+
+This patch series is based on the original set of patches proposed by Mac=
+iej W.
+Rozycki: http://lists.nongnu.org/archive/html/qemu-devel/2014-12/msg00968=
+.html
+
+Aleksandar Markovic (9):
+  softfloat: Implement run-time-configurable meaning of signaling NaN bit
+  softfloat: For Mips only, correct default NaN values
+  softfloat: For Mips only, correct order in pickNaNMulAdd()
+  target-mips: Amend processor definitions in relation to FCR31
+  target-mips: Activate IEEE 274-2008 signaling NaN bit meaning
+  target-mips: Add abs2008 flavor of <ABS|NEG>.<S|D>
+  target-mips: Add nan2008 flavor of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<=
+S|D>
+  target-mips: Clean up position and order of helpers for CVT.<L|W>.<S|D>
+  target-mips: Clean up position of abs2008/nan2008 cases in genfarith()
+
+ fpu/softfloat-specialize.h    | 664 +++++++++++++++++++++---------------=
+------
+ fpu/softfloat.c               | 172 +++++------
+ include/fpu/softfloat.h       |  45 +--
+ target-arm/helper-a64.c       |  14 +-
+ target-arm/helper.c           |  40 +--
+ target-m68k/helper.c          |   6 +-
+ target-microblaze/op_helper.c |   6 +-
+ target-mips/cpu.h             |   5 +
+ target-mips/helper.h          |  22 +-
+ target-mips/msa_helper.c      |  98 ++++---
+ target-mips/op_helper.c       | 435 +++++++++++++++++++++++----
+ target-mips/translate.c       | 251 +++++++++++-----
+ target-mips/translate_init.c  |  18 +-
+ target-ppc/fpu_helper.c       | 120 ++++----
+ target-s390x/fpu_helper.c     |  28 +-
+ target-s390x/helper.h         |   6 +-
+ target-s390x/translate.c      |   6 +-
+ target-sh4/cpu.c              |   1 +
+ target-sparc/translate.c      |   2 +-
+ target-unicore32/cpu.c        |   2 +
+ 20 files changed, 1211 insertions(+), 730 deletions(-)
+
 --=20
 1.9.1
 

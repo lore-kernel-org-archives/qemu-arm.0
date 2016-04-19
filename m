@@ -1,233 +1,496 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1709024wrt;
-        Sat, 5 Jan 2019 07:02:21 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7dSkBTCBxK3Sdz9Wz1RiZqLIEPrqnAPymKWy9ITMO/Xuj6ezC3A9MacXP8hJyWkxNsyxP3
-X-Received: by 2002:a1c:58ce:: with SMTP id m197mr4420192wmb.31.1546700541769;
-        Sat, 05 Jan 2019 07:02:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546700541; cv=none;
-        d=google.com; s=arc-20160816;
-        b=QfZ+HLrU6u8aZste0gvDcoTlCh6y/wA1zt7JghElsZzZCS0dpPCg7jlU9xoCcbqQ6d
-         Ts2noCtDm7OiEPg2d1jLUKkrkh8RlL7gkiI3CuI9/Vp7CfZbp6t5VLkcMFKXBlouqyOW
-         k20pzWx8m4+jBkB/UzBFm++pNKFqC8w3IiDuhPphtqqx3XsTvV4GvblFIzOyR57jDa2F
-         dSJNLa6YL8eOdiExGrSIq7vbAIExhhqRTHl1LvWVgD3XvnjL7VMyauw1iEMMWMvNSR2d
-         NuM9u4u2WRz7gwZbzsAqIwh8RcSbpO87PXnyvtnwCnFALADUcMGbmA++GQIzk98ZUOpy
-         TdYQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=kf7w0ccGqxOuDU0Cum2rNWgCy+94BGLbIu2gbye0vls=;
-        b=TqSZlTbjF1qw5+v3fVWrDWRnoHuAA/ceHnEGQUgm8o/VjkgOlp8WbUX1pyU4KXVY1+
-         3Kx4c0XOqjWPu5WPw8Ezb7I4OCXO9ugTE7P8fTBr8xTEwDjfWHTvN+7iN9+vtq/68Pam
-         BvuswxfpQnrj3+hlPc3dT2vC/6DRuicCmQimlO921DhPJYCxMMsLcqP8QCk/Ua0HC9CN
-         cUDV/HSQ4VRxr3HKYbTWhjvKBjDEYgi8WgbZ9mwGWXDiH7ChDUlq9G9xgn4q9TafFxrs
-         fBBVTikUFVgyvmXzRFmOfNkYYnxZk/a4ov8dByPVn/GhmEruoDVYmD0LAsspW0jKf6wj
-         90nw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si32872920wrw.25.2019.01.05.07.02.21
+Received: by 10.25.208.194 with SMTP id h185csp1930356lfg;
+        Tue, 19 Apr 2016 06:40:25 -0700 (PDT)
+X-Received: by 10.28.5.85 with SMTP id 82mr25071898wmf.26.1461073195151;
+        Tue, 19 Apr 2016 06:39:55 -0700 (PDT)
+Return-Path: <a.rigo@virtualopensystems.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by mx.google.com with ESMTPS id cd8si349339wjc.60.2016.04.19.06.39.55
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 05 Jan 2019 07:02:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Apr 2016 06:39:55 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:400c:c09::243 is neither permitted nor denied by best guess record for domain of a.rigo@virtualopensystems.com) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36202 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gfnSu-0005hu-TE
-	for alex.bennee@linaro.org; Sat, 05 Jan 2019 10:02:20 -0500
-Received: from eggsout.gnu.org ([209.51.188.92]:43259 helo=eggs.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gfnSh-0005ff-Gl
-	for qemu-arm@nongnu.org; Sat, 05 Jan 2019 10:02:08 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gfnSe-0000ea-6L
-	for qemu-arm@nongnu.org; Sat, 05 Jan 2019 10:02:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43864)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gfnSd-0000cv-Un; Sat, 05 Jan 2019 10:02:04 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3FA40859FF;
-	Sat,  5 Jan 2019 15:02:01 +0000 (UTC)
-Received: from localhost (ovpn-116-33.ams2.redhat.com [10.36.116.33])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0C4205D6A9;
-	Sat,  5 Jan 2019 15:01:57 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Sat,  5 Jan 2019 14:44:29 +0000
-Message-Id: <20190105144429.8702-1-stefanha@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Sat, 05 Jan 2019 15:02:01 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH] arm: Stub out NRF51 TWI
- magnetometer/accelerometer detection
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
-	contrib@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
-	Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 54XYpaHgZPh6
+       dkim=pass header.i=@virtualopensystems-com.20150623.gappssmtp.com;
+       spf=neutral (google.com: 2a00:1450:400c:c09::243 is neither permitted nor denied by best guess record for domain of a.rigo@virtualopensystems.com) smtp.mailfrom=a.rigo@virtualopensystems.com
+Received: by mail-wm0-x243.google.com with SMTP id e201so3070568wme.2
+        for <alex.bennee@linaro.org>; Tue, 19 Apr 2016 06:39:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=virtualopensystems-com.20150623.gappssmtp.com; s=20150623;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=TDjzf6SWP5QvoucfDkm1A3k44xDYyjQv/jI3k17UpIg=;
+        b=UrAEV9ql/+W6pK1cTT5Dl4iAR6vHQSkd68+qGixJhu3MwOK7qsTxsgNV7N2ltNpe0j
+         LanByRV0pvglWVBwMbogiIbEgghi8a4p1+l7v2TJnhdZ/gfH4Addk75NneVGV8ThUXvu
+         IhnFXx7/PRyiHgDYLNqDaH9yHmPdwnPeDXWMDKh51/ODBkd4wEE6ic3fGi5OCAyhd2qi
+         6Npjed6OCDqraht0JU+dbP0VvUPOMDXQk12r+XxpwHtFPE5eVzZ1EWgg1jQkIsPfaREX
+         SSTZLRk7hWqC3emwWMer0KsHnyoeQKLZTmxWcoegacgZNY1mj/4bLEfVwNer4klwurjN
+         tjEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=TDjzf6SWP5QvoucfDkm1A3k44xDYyjQv/jI3k17UpIg=;
+        b=hfK2OK+ctDBvFTQJvw7dsqz96DsNIqJqB5wkvZQVsxNKtul7bINdH89ImqcWm2cynK
+         8iJ0wdllrhfjD18b27/iplrHfcGMgguIhQUpKdghynVBgC6Pk2VXmyZk4DhxHBJhEl6E
+         uZhYJ3fdDr5+wgi+WxBJhTnj+XwyD1jy3vMXDy+g8I5qCDzCnD2hCZs1JafJchNRLTRM
+         kchZXOqV0OtGfPcLLXrEKju0WeJ5PfF4FqhK8ziI/Hm6oQfhGLUbfpCeU7CY1prnpohD
+         Tdq/YOKXQegRU6CScnEu0jSi6rPg1XBauEsKcFx9mKSti/XZm7DhoNL62d5u/MTkmP82
+         qhag==
+X-Gm-Message-State: AOPr4FVooosgwrJi6Sby9piRR3w1wn98Zvy4BRykMi7K6aDBjygMyYAZwsRw3Z82xBzd/g==
+X-Received: by 10.28.210.73 with SMTP id j70mr4033999wmg.48.1461073194899;
+        Tue, 19 Apr 2016 06:39:54 -0700 (PDT)
+Return-Path: <a.rigo@virtualopensystems.com>
+Received: from localhost.localdomain (LPuteaux-656-1-278-113.w80-15.abo.wanadoo.fr. [80.15.154.113])
+        by smtp.googlemail.com with ESMTPSA id c85sm2789756wmd.0.2016.04.19.06.39.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 19 Apr 2016 06:39:53 -0700 (PDT)
+From: Alvise Rigo <a.rigo@virtualopensystems.com>
+To: qemu-devel@nongnu.org,
+	mttcg@listserver.greensocs.com
+Cc: jani.kokkonen@huawei.com,
+	claudio.fontana@huawei.com,
+	tech@virtualopensystems.com,
+	alex.bennee@linaro.org,
+	pbonzini@redhat.com,
+	rth@twiddle.net,
+	serge.fdrv@gmail.com,
+	Alvise Rigo <a.rigo@virtualopensystems.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [Qemu-devel] [RFC v8 12/14] target-arm: translate: Use ld/st excl for atomic insns
+Date: Tue, 19 Apr 2016 15:39:29 +0200
+Message-Id: <1461073171-22953-13-git-send-email-a.rigo@virtualopensystems.com>
+X-Mailer: git-send-email 2.8.0
+In-Reply-To: <1461073171-22953-1-git-send-email-a.rigo@virtualopensystems.com>
+References: <1461073171-22953-1-git-send-email-a.rigo@virtualopensystems.com>
+X-TUID: 7tnpXWPrMaiy
 
-From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+Use the new LL/SC runtime helpers to handle the ARM atomic instructions
+in softmmu_llsc_template.h.
 
-Recent microbit firmwares panic if the TWI magnetometer/accelerometer
-devices are not detected during startup.  We don't implement TWI (I2C)
-so let's stub out these devices just to let the firmware boot.
+In general, the helper generator
+gen_{ldrex,strex}_{8,16a,32a,64a}() calls the function
+helper_{le,be}_{ldlink,stcond}{ub,uw,ul,q}_mmu() implemented in
+softmmu_llsc_template.h, doing an alignment check.
 
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Based-on: <20190103091119.9367-1-stefanha@redhat.com>
+In addition, add a simple helper function to emulate the CLREX instruction.
+
+Suggested-by: Jani Kokkonen <jani.kokkonen@huawei.com>
+Suggested-by: Claudio Fontana <claudio.fontana@huawei.com>
+Signed-off-by: Alvise Rigo <a.rigo@virtualopensystems.com>
 ---
-Steffen: Please post your Signed-off-by.  I did some minor cleanups so
-your patch can be merged.  Thanks!
+ target-arm/cpu.h       |   3 +
+ target-arm/helper.h    |   2 +
+ target-arm/machine.c   |   7 ++
+ target-arm/op_helper.c |  14 ++-
+ target-arm/translate.c | 258 ++++++++++++++++++++++++++++---------------------
+ 5 files changed, 174 insertions(+), 110 deletions(-)
 
- include/hw/arm/nrf51.h     |  1 +
- include/hw/arm/nrf51_soc.h |  1 +
- hw/arm/nrf51_soc.c         | 62 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 64 insertions(+)
-
-diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
-index 175bb6c301..5411121b66 100644
---- a/include/hw/arm/nrf51.h
-+++ b/include/hw/arm/nrf51.h
-@@ -25,6 +25,7 @@
- #define NRF51_IOMEM_SIZE      0x20000000
-=20
- #define NRF51_UART_BASE       0x40002000
-+#define NRF51_TWI_BASE        0x40003000
- #define NRF51_TIMER_BASE      0x40008000
- #define NRF51_TIMER_SIZE      0x00001000
- #define NRF51_RNG_BASE        0x4000D000
-diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-index e06f0304b4..fbdefc07e4 100644
---- a/include/hw/arm/nrf51_soc.h
-+++ b/include/hw/arm/nrf51_soc.h
-@@ -39,6 +39,7 @@ typedef struct NRF51State {
-     MemoryRegion sram;
-     MemoryRegion flash;
-     MemoryRegion clock;
-+    MemoryRegion twi;
-=20
-     uint32_t sram_size;
-     uint32_t flash_size;
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 1630c27594..265438f916 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -32,6 +32,11 @@
- #define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
- #define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
-=20
-+#define NRF51_TWI_EVENT_STOPPED 0x104
-+#define NRF51_TWI_EVENT_RXDREADY 0x108
-+#define NRF51_TWI_EVENT_TXDSENT 0x11c
-+#define NRF51_TWI_REG_RXD 0x518
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index b8b3364..46ab87f 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -462,6 +462,9 @@ typedef struct CPUARMState {
+         float_status fp_status;
+         float_status standard_fp_status;
+     } vfp;
++    /* Even if we don't use these values anymore, we still keep them for
++     * retro-compatibility in case of migration toward QEMU versions without
++     * the LoadLink/StoreExclusive backend. */
+     uint64_t exclusive_addr;
+     uint64_t exclusive_val;
+     uint64_t exclusive_high;
+diff --git a/target-arm/helper.h b/target-arm/helper.h
+index c2a85c7..37cec49 100644
+--- a/target-arm/helper.h
++++ b/target-arm/helper.h
+@@ -532,6 +532,8 @@ DEF_HELPER_2(dc_zva, void, env, i64)
+ DEF_HELPER_FLAGS_2(neon_pmull_64_lo, TCG_CALL_NO_RWG_SE, i64, i64, i64)
+ DEF_HELPER_FLAGS_2(neon_pmull_64_hi, TCG_CALL_NO_RWG_SE, i64, i64, i64)
+ 
++DEF_HELPER_1(atomic_clear, void, env)
 +
- #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
-=20
- static uint64_t clock_read(void *opaque, hwaddr addr, unsigned int size)
-@@ -53,6 +58,58 @@ static const MemoryRegionOps clock_ops =3D {
-     .write =3D clock_write
- };
-=20
-+/* Two-Wire Interface (TWI) is not implemented but the microbit-dal firm=
-ware
-+ * panics if the TWI accelerometer and magnetometer WHO_AM_I registers c=
-annot
-+ * be read.  Stub out this read sequence so microbit-dal starts up.
-+ */
-+static uint32_t twi_read_sequence[] =3D {0x5A, 0x5A, 0x40};
-+static uint32_t twi_regs[0x1000 / 4];
-+
-+static uint64_t twi_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    static int i;
-+    uint64_t data =3D 0x00;
-+
-+    switch (addr) {
-+    case NRF51_TWI_EVENT_STOPPED:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_EVENT_RXDREADY:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_EVENT_TXDSENT:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_REG_RXD:
-+        data =3D twi_read_sequence[i];
-+        if (i < ARRAY_SIZE(twi_read_sequence)) {
-+            i++;
-+        }
-+        break;
-+    default:
-+        data =3D twi_regs[addr / 4];
-+        break;
-+    }
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u] =3D %" PRIx32 =
-"\n",
-+                  __func__, addr, size, (uint32_t)data);
-+
-+
-+    return data;
-+}
-+
-+static void twi_write(void *opaque, hwaddr addr, uint64_t data,
-+                      unsigned int size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
-u]\n",
-+                  __func__, addr, data, size);
-+    twi_regs[addr / 4] =3D data;
-+}
-+
-+static const MemoryRegionOps twi_ops =3D {
-+    .read =3D twi_read,
-+    .write =3D twi_write
-+};
-=20
- static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+ #ifdef TARGET_AARCH64
+ #include "helper-a64.h"
+ #endif
+diff --git a/target-arm/machine.c b/target-arm/machine.c
+index ed1925a..9660163 100644
+--- a/target-arm/machine.c
++++ b/target-arm/machine.c
+@@ -203,6 +203,7 @@ static const VMStateInfo vmstate_cpsr = {
+ static void cpu_pre_save(void *opaque)
  {
-@@ -156,6 +213,11 @@ static void nrf51_soc_realize(DeviceState *dev_soc, =
-Error **errp)
-     memory_region_add_subregion_overlap(&s->container,
-                                         NRF51_IOMEM_BASE, &s->clock, -1)=
-;
-=20
-+    memory_region_init_io(&s->twi, NULL, &twi_ops, NULL,
-+                          "nrf51_soc.twi", 0x1000);
-+    memory_region_add_subregion_overlap(&s->container,
-+                                        NRF51_TWI_BASE, &s->twi, -1);
+     ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
+ 
+     if (kvm_enabled()) {
+         if (!write_kvmstate_to_list(cpu)) {
+@@ -221,6 +222,12 @@ static void cpu_pre_save(void *opaque)
+            cpu->cpreg_array_len * sizeof(uint64_t));
+     memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
+            cpu->cpreg_array_len * sizeof(uint64_t));
 +
-     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
-                                 NRF51_IOMEM_SIZE);
-     create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
---=20
-2.20.1
-
++    /* Ensure to fail the next STREX for versions of QEMU with the
++     * old backend. */
++    env->exclusive_addr = -1;
++    env->exclusive_val = -1;
++    env->exclusive_high = -1;
+ }
+ 
+ static int cpu_post_load(void *opaque, int version_id)
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index a5ee65f..3ae0b6a 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -29,11 +29,13 @@ static void raise_exception(CPUARMState *env, uint32_t excp,
+                             uint32_t syndrome, uint32_t target_el)
+ {
+     CPUState *cs = CPU(arm_env_get_cpu(env));
++    CPUClass *cc = CPU_GET_CLASS(cs);
+ 
+     assert(!excp_is_internal(excp));
+     cs->exception_index = excp;
+     env->exception.syndrome = syndrome;
+     env->exception.target_el = target_el;
++    cc->cpu_reset_excl_context(cs);
+     cpu_loop_exit(cs);
+ }
+ 
+@@ -51,6 +53,14 @@ static int exception_target_el(CPUARMState *env)
+     return target_el;
+ }
+ 
++void HELPER(atomic_clear)(CPUARMState *env)
++{
++    CPUState *cs = ENV_GET_CPU(env);
++    CPUClass *cc = CPU_GET_CLASS(cs);
++
++    cc->cpu_reset_excl_context(cs);
++}
++
+ uint32_t HELPER(neon_tbl)(CPUARMState *env, uint32_t ireg, uint32_t def,
+                           uint32_t rn, uint32_t maxindex)
+ {
+@@ -681,6 +691,8 @@ static int el_from_spsr(uint32_t spsr)
+ 
+ void HELPER(exception_return)(CPUARMState *env)
+ {
++    CPUState *cs = ENV_GET_CPU(env);
++    CPUClass *cc = CPU_GET_CLASS(cs);
+     int cur_el = arm_current_el(env);
+     unsigned int spsr_idx = aarch64_banked_spsr_index(cur_el);
+     uint32_t spsr = env->banked_spsr[spsr_idx];
+@@ -689,7 +701,7 @@ void HELPER(exception_return)(CPUARMState *env)
+ 
+     aarch64_save_sp(env, cur_el);
+ 
+-    env->exclusive_addr = -1;
++    cc->cpu_reset_excl_context(cs);
+ 
+     /* We must squash the PSTATE.SS bit to zero unless both of the
+      * following hold:
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index cff511b..9c2b197 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -60,6 +60,7 @@ TCGv_ptr cpu_env;
+ static TCGv_i64 cpu_V0, cpu_V1, cpu_M0;
+ static TCGv_i32 cpu_R[16];
+ TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
++/* The following two variables are still used by the aarch64 front-end */
+ TCGv_i64 cpu_exclusive_addr;
+ TCGv_i64 cpu_exclusive_val;
+ #ifdef CONFIG_USER_ONLY
+@@ -7413,57 +7414,139 @@ static void gen_logicq_cc(TCGv_i32 lo, TCGv_i32 hi)
+     tcg_gen_or_i32(cpu_ZF, lo, hi);
+ }
+ 
+-/* Load/Store exclusive instructions are implemented by remembering
+-   the value/address loaded, and seeing if these are the same
+-   when the store is performed. This should be sufficient to implement
+-   the architecturally mandated semantics, and avoids having to monitor
+-   regular stores.
++/* If the softmmu is enabled, the translation of Load/Store exclusive
++   instructions will rely on the gen_helper_{ldlink,stcond} helpers,
++   offloading most of the work to the softmmu_llsc_template.h functions.
++   All the accesses made by the exclusive instructions include an
++   alignment check.
++
++   In user emulation mode we throw an exception and handle the atomic
++   operation elsewhere.  */
++
++#if TARGET_LONG_BITS == 32
++#define DO_GEN_LDREX(SUFF)                                             \
++static inline void gen_ldrex_##SUFF(TCGv_i32 dst, TCGv_i32 addr,       \
++                                    TCGv_i32 index)                    \
++{                                                                      \
++    gen_helper_ldlink_##SUFF(dst, cpu_env, addr, index);               \
++}
++
++#define DO_GEN_STREX(SUFF)                                             \
++static inline void gen_strex_##SUFF(TCGv_i32 dst, TCGv_i32 addr,       \
++                                    TCGv_i32 val, TCGv_i32 index)      \
++{                                                                      \
++    gen_helper_stcond_##SUFF(dst, cpu_env, addr, val, index);          \
++}
++
++static inline void gen_ldrex_i64a(TCGv_i64 dst, TCGv_i32 addr, TCGv_i32 index)
++{
++    gen_helper_ldlink_i64a(dst, cpu_env, addr, index);
++}
++
++static inline void gen_strex_i64a(TCGv_i32 dst, TCGv_i32 addr, TCGv_i64 val,
++                                  TCGv_i32 index)
++{
++
++    gen_helper_stcond_i64a(dst, cpu_env, addr, val, index);
++}
++#else
++#define DO_GEN_LDREX(SUFF)                                             \
++static inline void gen_ldrex_##SUFF(TCGv_i32 dst, TCGv_i32 addr,       \
++                                         TCGv_i32 index)               \
++{                                                                      \
++    TCGv addr64 = tcg_temp_new();                                      \
++    tcg_gen_extu_i32_i64(addr64, addr);                                \
++    gen_helper_ldlink_##SUFF(dst, cpu_env, addr64, index);             \
++    tcg_temp_free(addr64);                                             \
++}
++
++#define DO_GEN_STREX(SUFF)                                             \
++static inline void gen_strex_##SUFF(TCGv_i32 dst, TCGv_i32 addr,       \
++                                    TCGv_i32 val, TCGv_i32 index)      \
++{                                                                      \
++    TCGv addr64 = tcg_temp_new();                                      \
++    TCGv dst64 = tcg_temp_new();                                       \
++    tcg_gen_extu_i32_i64(addr64, addr);                                \
++    gen_helper_stcond_##SUFF(dst64, cpu_env, addr64, val, index);      \
++    tcg_gen_extrl_i64_i32(dst, dst64);                                 \
++    tcg_temp_free(dst64);                                              \
++    tcg_temp_free(addr64);                                             \
++}
++
++static inline void gen_ldrex_i64a(TCGv_i64 dst, TCGv_i32 addr, TCGv_i32 index)
++{
++    TCGv addr64 = tcg_temp_new();
++    tcg_gen_extu_i32_i64(addr64, addr);
++    gen_helper_ldlink_i64a(dst, cpu_env, addr64, index);
++    tcg_temp_free(addr64);
++}
++
++static inline void gen_strex_i64a(TCGv_i32 dst, TCGv_i32 addr, TCGv_i64 val,
++                                  TCGv_i32 index)
++{
++    TCGv addr64 = tcg_temp_new();
++    TCGv dst64 = tcg_temp_new();
++
++    tcg_gen_extu_i32_i64(addr64, addr);
++    gen_helper_stcond_i64a(dst64, cpu_env, addr64, val, index);
++    tcg_gen_extrl_i64_i32(dst, dst64);
++
++    tcg_temp_free(dst64);
++    tcg_temp_free(addr64);
++}
++#endif
++
++DO_GEN_LDREX(i8)
++DO_GEN_LDREX(i16a)
++DO_GEN_LDREX(i32a)
++
++DO_GEN_STREX(i8)
++DO_GEN_STREX(i16a)
++DO_GEN_STREX(i32a)
+ 
+-   In system emulation mode only one CPU will be running at once, so
+-   this sequence is effectively atomic.  In user emulation mode we
+-   throw an exception and handle the atomic operation elsewhere.  */
+ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
+                                TCGv_i32 addr, int size)
+-{
++ {
+     TCGv_i32 tmp = tcg_temp_new_i32();
++    TCGv_i32 mem_idx = tcg_temp_new_i32();
+ 
+-    s->is_ldex = true;
+-
+-    switch (size) {
+-    case 0:
+-        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
+-        break;
+-    case 1:
+-        gen_aa32_ld16ua(tmp, addr, get_mem_index(s));
+-        break;
+-    case 2:
+-    case 3:
+-        gen_aa32_ld32ua(tmp, addr, get_mem_index(s));
+-        break;
+-    default:
+-        abort();
+-    }
++    tcg_gen_movi_i32(mem_idx, get_mem_index(s));
+ 
+-    if (size == 3) {
+-        TCGv_i32 tmp2 = tcg_temp_new_i32();
+-        TCGv_i32 tmp3 = tcg_temp_new_i32();
++    if (size != 3) {
++        switch (size) {
++        case 0:
++            gen_ldrex_i8(tmp, addr, mem_idx);
++            break;
++        case 1:
++            gen_ldrex_i16a(tmp, addr, mem_idx);
++            break;
++        case 2:
++            gen_ldrex_i32a(tmp, addr, mem_idx);
++            break;
++        default:
++            abort();
++        }
+ 
+-        tcg_gen_addi_i32(tmp2, addr, 4);
+-        gen_aa32_ld32u(tmp3, tmp2, get_mem_index(s));
+-        tcg_temp_free_i32(tmp2);
+-        tcg_gen_concat_i32_i64(cpu_exclusive_val, tmp, tmp3);
+-        store_reg(s, rt2, tmp3);
++        store_reg(s, rt, tmp);
+     } else {
+-        tcg_gen_extu_i32_i64(cpu_exclusive_val, tmp);
++        TCGv_i64 tmp64 = tcg_temp_new_i64();
++        TCGv_i32 tmph = tcg_temp_new_i32();
++
++        gen_ldrex_i64a(tmp64, addr, mem_idx);
++        tcg_gen_extr_i64_i32(tmp, tmph, tmp64);
++
++        store_reg(s, rt, tmp);
++        store_reg(s, rt2, tmph);
++
++        tcg_temp_free_i64(tmp64);
+     }
+ 
+-    store_reg(s, rt, tmp);
+-    tcg_gen_extu_i32_i64(cpu_exclusive_addr, addr);
++    tcg_temp_free_i32(mem_idx);
+ }
+ 
+ static void gen_clrex(DisasContext *s)
+ {
+-    tcg_gen_movi_i64(cpu_exclusive_addr, -1);
++    gen_helper_atomic_clear(cpu_env);
+ }
+ 
+ #ifdef CONFIG_USER_ONLY
+@@ -7479,85 +7562,42 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+                                 TCGv_i32 addr, int size)
+ {
+-    TCGv_i32 tmp;
+-    TCGv_i64 val64, extaddr;
+-    TCGLabel *done_label;
+-    TCGLabel *fail_label;
+-
+-    /* if (env->exclusive_addr == addr && env->exclusive_val == [addr]) {
+-         [addr] = {Rt};
+-         {Rd} = 0;
+-       } else {
+-         {Rd} = 1;
+-       } */
+-    fail_label = gen_new_label();
+-    done_label = gen_new_label();
+-    extaddr = tcg_temp_new_i64();
+-    tcg_gen_extu_i32_i64(extaddr, addr);
+-    tcg_gen_brcond_i64(TCG_COND_NE, extaddr, cpu_exclusive_addr, fail_label);
+-    tcg_temp_free_i64(extaddr);
++    TCGv_i32 tmp, mem_idx;
+ 
+-    tmp = tcg_temp_new_i32();
+-    switch (size) {
+-    case 0:
+-        gen_aa32_ld8u(tmp, addr, get_mem_index(s));
+-        break;
+-    case 1:
+-        gen_aa32_ld16u(tmp, addr, get_mem_index(s));
+-        break;
+-    case 2:
+-    case 3:
+-        gen_aa32_ld32u(tmp, addr, get_mem_index(s));
+-        break;
+-    default:
+-        abort();
+-    }
++    mem_idx = tcg_temp_new_i32();
+ 
+-    val64 = tcg_temp_new_i64();
+-    if (size == 3) {
+-        TCGv_i32 tmp2 = tcg_temp_new_i32();
+-        TCGv_i32 tmp3 = tcg_temp_new_i32();
+-        tcg_gen_addi_i32(tmp2, addr, 4);
+-        gen_aa32_ld32u(tmp3, tmp2, get_mem_index(s));
+-        tcg_temp_free_i32(tmp2);
+-        tcg_gen_concat_i32_i64(val64, tmp, tmp3);
+-        tcg_temp_free_i32(tmp3);
++    tcg_gen_movi_i32(mem_idx, get_mem_index(s));
++    tmp = load_reg(s, rt);
++
++    if (size != 3) {
++        switch (size) {
++        case 0:
++            gen_strex_i8(cpu_R[rd], addr, tmp, mem_idx);
++            break;
++        case 1:
++            gen_strex_i16a(cpu_R[rd], addr, tmp, mem_idx);
++            break;
++        case 2:
++            gen_strex_i32a(cpu_R[rd], addr, tmp, mem_idx);
++            break;
++        default:
++            abort();
++        }
+     } else {
+-        tcg_gen_extu_i32_i64(val64, tmp);
+-    }
+-    tcg_temp_free_i32(tmp);
++        TCGv_i64 tmp64;
++        TCGv_i32 tmp2;
+ 
+-    tcg_gen_brcond_i64(TCG_COND_NE, val64, cpu_exclusive_val, fail_label);
+-    tcg_temp_free_i64(val64);
++        tmp64 = tcg_temp_new_i64();
++        tmp2 = load_reg(s, rt2);
++        tcg_gen_concat_i32_i64(tmp64, tmp, tmp2);
++        gen_strex_i64a(cpu_R[rd], addr, tmp64, mem_idx);
+ 
+-    tmp = load_reg(s, rt);
+-    switch (size) {
+-    case 0:
+-        gen_aa32_st8(tmp, addr, get_mem_index(s));
+-        break;
+-    case 1:
+-        gen_aa32_st16(tmp, addr, get_mem_index(s));
+-        break;
+-    case 2:
+-    case 3:
+-        gen_aa32_st32(tmp, addr, get_mem_index(s));
+-        break;
+-    default:
+-        abort();
++        tcg_temp_free_i32(tmp2);
++        tcg_temp_free_i64(tmp64);
+     }
++
+     tcg_temp_free_i32(tmp);
+-    if (size == 3) {
+-        tcg_gen_addi_i32(addr, addr, 4);
+-        tmp = load_reg(s, rt2);
+-        gen_aa32_st32(tmp, addr, get_mem_index(s));
+-        tcg_temp_free_i32(tmp);
+-    }
+-    tcg_gen_movi_i32(cpu_R[rd], 0);
+-    tcg_gen_br(done_label);
+-    gen_set_label(fail_label);
+-    tcg_gen_movi_i32(cpu_R[rd], 1);
+-    gen_set_label(done_label);
+-    tcg_gen_movi_i64(cpu_exclusive_addr, -1);
++    tcg_temp_free_i32(mem_idx);
+ }
+ #endif
+ 
+-- 
+2.8.0

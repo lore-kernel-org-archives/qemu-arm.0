@@ -1,108 +1,140 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id q77sm9994676wmd.12.2016.04.20.07.40.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Apr 2016 07:40:16 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 590C23E0323;
-	Wed, 20 Apr 2016 15:40:16 +0100 (BST)
-References: <1460044433-19282-1-git-send-email-sergey.fedorov@linaro.org> <1460044433-19282-8-git-send-email-sergey.fedorov@linaro.org> <87lh48v203.fsf@linaro.org> <57179253.9040505@gmail.com>
-User-agent: mu4e 0.9.17; emacs 25.0.92.6
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Sergey Fedorov <serge.fdrv@gmail.com>
-Cc: Sergey Fedorov <sergey.fedorov@linaro.org>, qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Andrzej Zaborowski <balrogg@gmail.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 07/11] tcg/arm: Make direct jump patching thread-safe
-In-reply-to: <57179253.9040505@gmail.com>
-Date: Wed, 20 Apr 2016 15:40:16 +0100
-Message-ID: <87fuuguywf.fsf@linaro.org>
+Received: by 10.25.208.194 with SMTP id h185csp2363941lfg;
+        Wed, 20 Apr 2016 07:52:46 -0700 (PDT)
+X-Received: by 10.194.21.65 with SMTP id t1mr9275154wje.12.1461163966397;
+        Wed, 20 Apr 2016 07:52:46 -0700 (PDT)
+Return-Path: <mttcg-owner@listserver.greensocs.com>
+Received: from greensocs.com (greensocs.com. [193.104.36.180])
+        by mx.google.com with ESMTP id z126si10397363wmg.58.2016.04.20.07.52.45;
+        Wed, 20 Apr 2016 07:52:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) client-ip=193.104.36.180;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) smtp.mailfrom=mttcg-owner@listserver.greensocs.com
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 20E5A2C004A;
+	Wed, 20 Apr 2016 16:52:45 +0200 (CEST)
+Authentication-Results: greensocs.com;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=R+yjQKb1
+X-Virus-Scanned: amavisd-new at greensocs.com
+X-Spam-Flag: NO
+X-Spam-Score: -1.788
+X-Spam-Level:
+X-Spam-Status: No, score=-1.788 tagged_above=-999 required=6.2
+	tests=[BAYES_00=-1.9, DKIM_SIGNED=0.1,
+	HEADER_FROM_DIFFERENT_DOMAINS=0.001, HK_RANDOM_ENVFROM=0.001,
+	T_DKIM_INVALID=0.01] autolearn=no autolearn_force=no
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=fail (2048-bit key) reason="fail (message has been altered)"
+	header.d=gmail.com
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AWa4CW8F5yjO; Wed, 20 Apr 2016 16:52:44 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 123)
+	id 058422C004D; Wed, 20 Apr 2016 16:52:43 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 73A2A2C004E
+	for <mttcg@listserver.greensocs.com>; Wed, 20 Apr 2016 16:52:39 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at greensocs.com
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bbvJAuw6X_dE for <mttcg@listserver.greensocs.com>;
+	Wed, 20 Apr 2016 16:52:34 +0200 (CEST)
+Received: from mail-qk0-f194.google.com (mail-qk0-f194.google.com [209.85.220.194])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by greensocs.com (Postfix) with ESMTPS id 69F2D2C004D
+	for <mttcg@greensocs.com>; Wed, 20 Apr 2016 16:52:31 +0200 (CEST)
+Received: by mail-qk0-f194.google.com with SMTP id q184so2433120qkf.0
+        for <mttcg@greensocs.com>; Wed, 20 Apr 2016 07:52:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=Lv+DkZwcnx6hU4ImkaF6NdIpu1r/sTAfppYrVq53GcU=;
+        b=R+yjQKb1SR6C8tLq1DK66LU+6/b6jXIoYuWSwjBtWuXPOBdfvcz67dZLuU7PrKJ/Ec
+         ZNH7ML5Ft25J+/g0wSD/e9mRoBrK03gTWaQS/6C76cpUNGlYA89yVK6ZQngxVQc/IVDm
+         0jvOrk+hxSh2uSzxDxQyY5VtUR9RD8ONcOI1+Z+5yVNOSk/gJoULXhYpvwiQWx+bXOep
+         DhYmydgf/dvwZ1McCXxEO9IT1o0CZiYkT4FJ9zdbg5+UGXelCMfO/O0f3hHGtjtuGqHX
+         2u0ohVzPE5BPtISUtVdqQoUn5C7nUnXy9R+Xgp76I0uVkfKKPS5OJmEwhGwOZYqzLfFt
+         nZlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=Lv+DkZwcnx6hU4ImkaF6NdIpu1r/sTAfppYrVq53GcU=;
+        b=c/8rqWug2RQCbDXzJdWWl7hKfJAjanBrI9HOkSisA8NU8ptT2psx1X/WdyirqOSBoC
+         DK0OAk2I7WB8gb4wZrccWf2bZDxSdSsDvvOq3tYkRYIkBXanD7Od6kzEQzcCnad6Viu8
+         95oS2YeMyNBdAe0N0SsMvMwSfkxpDYtrL1VbfzVLKL7QIUgddDpbZjdsZV5YkuxFlvcw
+         ry40Ix3FOsSvy+BtaEoWz4pFUmgCgLwdWkaA8UN/wj0sBHozxV2PI6fKnKV0xtCv4fFU
+         AqjXyFidDpapLGM8NOHQW4ygnCP7Gn1YnrKNYzvU7Kkyc1M5MFDOgG2yuD3XNaTscNf6
+         H7dg==
+X-Gm-Message-State: AOPr4FVwlMffeH1NM8CTpizDeH3f6FJMqvbl4/9C8KNk4x/NoTF3s0Ia99cCz1Gbm63DRQ==
+X-Received: by 10.55.80.86 with SMTP id e83mr11799429qkb.91.1461163950849;
+        Wed, 20 Apr 2016 07:52:30 -0700 (PDT)
+Received: from bigtime.twiddle.net (nat-pool-bos-u.redhat.com. [66.187.233.207])
+        by smtp.googlemail.com with ESMTPSA id c193sm8777044qkg.43.2016.04.20.07.52.28
+        (version=TLSv1/SSLv3 cipher=OTHER);
+        Wed, 20 Apr 2016 07:52:29 -0700 (PDT)
+Sender: mttcg-request@listserver.greensocs.com
+Subject: Re: [PATCH] tb: consistently use uint32_t for tb->flags
+To: "Emilio G. Cota" <cota@braap.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>,
+ Aurelien Jarno <aurelien@aurel32.net>, Leon Alrae <leon.alrae@imgtec.com>,
+ Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
+ Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <1460049562-23517-1-git-send-email-cota@braap.org>
+ <20160419232145.GA19286@flamenco>
+Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
+ MTTCG Devel <mttcg@greensocs.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <571797AA.2070002@twiddle.net>
+Date: Wed, 20 Apr 2016 07:52:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: cX1z+scrg2Q2
+In-Reply-To: <20160419232145.GA19286@flamenco>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Reply-To: Richard Henderson <rth@twiddle.net>
+X-Loop: mttcg@listserver.greensocs.com
+X-Sequence: 225
+Errors-to: mttcg-owner@listserver.greensocs.com
+Precedence: list
+Precedence: bulk
+X-no-archive: yes
+List-Id: <mttcg.listserver.greensocs.com>
+List-Help: <mailto:sympa@listserver.greensocs.com?subject=help>
+List-Subscribe: <mailto:sympa@listserver.greensocs.com?subject=subscribe%20mttcg>
+List-Unsubscribe: <mailto:sympa@listserver.greensocs.com?subject=unsubscribe%20mttcg>
+List-Post: <mailto:mttcg@listserver.greensocs.com>
+List-Owner: <mailto:mttcg-request@listserver.greensocs.com>
+List-Archive: <http://listserver.greensocs.com/wws/arc/mttcg>
+X-TUID: nVd0YPZR3qDY
 
-
-Sergey Fedorov <serge.fdrv@gmail.com> writes:
-
-> On 20/04/16 16:33, Alex Bennée wrote:
->> Sergey Fedorov <sergey.fedorov@linaro.org> writes:
->>> diff --git a/tcg/arm/tcg-target.inc.c b/tcg/arm/tcg-target.inc.c
->>> index 3edf6a6f971c..5c69de20bc69 100644
->>> --- a/tcg/arm/tcg-target.inc.c
->>> +++ b/tcg/arm/tcg-target.inc.c
->>> @@ -121,6 +121,13 @@ static inline void reloc_pc24(tcg_insn_unit *code_ptr, tcg_insn_unit *target)
->>>      *code_ptr = (*code_ptr & ~0xffffff) | (offset & 0xffffff);
->>>  }
->>>
->>> +static inline void reloc_pc24_atomic(tcg_insn_unit *code_ptr, tcg_insn_unit *target)
->>> +{
->>> +    ptrdiff_t offset = (tcg_ptr_byte_diff(target, code_ptr) - 8) >>
->>> 2;
->> This seems like something a tcg_debug_assert should be ensuring we don't overflow.
->
-> Then we should probably put the same assert into reloc_pc24() as well.
->
+On 04/19/2016 04:21 PM, Emilio G. Cota wrote:
+> On Thu, Apr 07, 2016 at 13:19:22 -0400, Emilio G. Cota wrote:
+>> We are inconsistent with the type of tb->flags: usage varies loosely
+>> between int and uint64_t. Settle to uint32_t everywhere, which is
+>> superior to both: at least one target (aarch64) uses the most significant
+>> bit in the u32, and uint64_t is wasteful.
 >>
->>> +    tcg_insn_unit insn = atomic_read(code_ptr);
->> Don't we already know what the instruction should be or could there be
->> multiple ones?
->
-> Actually, it is always what tcg_out_b_noaddr() generates. I'm not sure
-> it's worthwhile to introduce tcg_out_b_atomic() or something similar
-> here.
-
-No I don't think so. It depends if the branch instruction is going to
-have multiple potential conditions (so requiring the read) or always be
-the same.
-
->
+>> Compile-tested for all targets.
 >>
->>> +    atomic_set(code_ptr, (insn & ~0xffffff) | (offset & 0xffffff));
->> Please use deposit32 to set the offset like the aarch64 code.
+>> Suggested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+>> Suggested-by: Richard Henderson <rth@twiddle.net>
+>> Signed-off-by: Emilio G. Cota <cota@braap.org>
 >
-> Will do.
->
->>
->>> +}
->>> +
->>>  static void patch_reloc(tcg_insn_unit *code_ptr, int type,
->>>                          intptr_t value, intptr_t addend)
->>>  {
->>> @@ -1038,6 +1045,16 @@ static void tcg_out_call(TCGContext *s, tcg_insn_unit *addr)
->>>      }
->>>  }
->>>
->>> +void arm_tb_set_jmp_target(uintptr_t jmp_addr, uintptr_t addr)
->>> +{
->>> +    tcg_insn_unit *code_ptr = (tcg_insn_unit *)jmp_addr;
->>> +    tcg_insn_unit *target = (tcg_insn_unit *)addr;
->>> +
->>> +    /* we could use a ldr pc, [pc, #-4] kind of branch and avoid the
->>> flush */
->> So why don't we?
->
-> I think because it's a bit more expensive to take this kind of branch.
-> If we assume direct jumps are taken much more times than TB patching
-> then it's preferable to optimize for direct jumps instead of for
-> patching.
+> Has this patch been queued by anyone? If not, should I resend after
+> 2.6 is released?
 
-Looking again I see the comment came from code motion so I'm not overly
-fussed its just comments like that always leave me hanging. "We could
-...." and I want to know why we don't then ;-)
-
->
-> Kind regards,
-> Sergey
->
->>
->>> +    reloc_pc24_atomic(code_ptr, target);
->>> +    flush_icache_range(jmp_addr, jmp_addr + 4);
->>> +}
->>> +
->>>  static inline void tcg_out_goto_label(TCGContext *s, int cond, TCGLabel *l)
->>>  {
->>>      if (l->has_value) {
->>>
+Sorry for the delay.  Queued for 2.7.
 
 
---
-Alex Bennée
+r~

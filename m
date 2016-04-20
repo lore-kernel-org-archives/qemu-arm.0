@@ -1,140 +1,107 @@
-Received: by 10.25.208.194 with SMTP id h185csp2363941lfg;
-        Wed, 20 Apr 2016 07:52:46 -0700 (PDT)
-X-Received: by 10.194.21.65 with SMTP id t1mr9275154wje.12.1461163966397;
-        Wed, 20 Apr 2016 07:52:46 -0700 (PDT)
-Return-Path: <mttcg-owner@listserver.greensocs.com>
-Received: from greensocs.com (greensocs.com. [193.104.36.180])
-        by mx.google.com with ESMTP id z126si10397363wmg.58.2016.04.20.07.52.45;
-        Wed, 20 Apr 2016 07:52:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) client-ip=193.104.36.180;
+Received: by 10.25.208.194 with SMTP id h185csp2373095lfg;
+        Wed, 20 Apr 2016 08:08:51 -0700 (PDT)
+X-Received: by 10.13.252.67 with SMTP id m64mr6243196ywf.67.1461164931658;
+        Wed, 20 Apr 2016 08:08:51 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-qk0-x244.google.com (mail-qk0-x244.google.com. [2607:f8b0:400d:c09::244])
+        by mx.google.com with ESMTPS id 65si1731159ybk.48.2016.04.20.08.08.51
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 20 Apr 2016 08:08:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) client-ip=2607:f8b0:400d:c09::244;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of mttcg-owner@listserver.greensocs.com designates 193.104.36.180 as permitted sender) smtp.mailfrom=mttcg-owner@listserver.greensocs.com
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 20E5A2C004A;
-	Wed, 20 Apr 2016 16:52:45 +0200 (CEST)
-Authentication-Results: greensocs.com;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=R+yjQKb1
-X-Virus-Scanned: amavisd-new at greensocs.com
-X-Spam-Flag: NO
-X-Spam-Score: -1.788
-X-Spam-Level:
-X-Spam-Status: No, score=-1.788 tagged_above=-999 required=6.2
-	tests=[BAYES_00=-1.9, DKIM_SIGNED=0.1,
-	HEADER_FROM_DIFFERENT_DOMAINS=0.001, HK_RANDOM_ENVFROM=0.001,
-	T_DKIM_INVALID=0.01] autolearn=no autolearn_force=no
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=fail (2048-bit key) reason="fail (message has been altered)"
-	header.d=gmail.com
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AWa4CW8F5yjO; Wed, 20 Apr 2016 16:52:44 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 123)
-	id 058422C004D; Wed, 20 Apr 2016 16:52:43 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 73A2A2C004E
-	for <mttcg@listserver.greensocs.com>; Wed, 20 Apr 2016 16:52:39 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at greensocs.com
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bbvJAuw6X_dE for <mttcg@listserver.greensocs.com>;
-	Wed, 20 Apr 2016 16:52:34 +0200 (CEST)
-Received: from mail-qk0-f194.google.com (mail-qk0-f194.google.com [209.85.220.194])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by greensocs.com (Postfix) with ESMTPS id 69F2D2C004D
-	for <mttcg@greensocs.com>; Wed, 20 Apr 2016 16:52:31 +0200 (CEST)
-Received: by mail-qk0-f194.google.com with SMTP id q184so2433120qkf.0
-        for <mttcg@greensocs.com>; Wed, 20 Apr 2016 07:52:31 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-qk0-x244.google.com with SMTP id i7so2459022qkd.1;
+        Wed, 20 Apr 2016 08:08:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=sender:subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-transfer-encoding;
-        bh=Lv+DkZwcnx6hU4ImkaF6NdIpu1r/sTAfppYrVq53GcU=;
-        b=R+yjQKb1SR6C8tLq1DK66LU+6/b6jXIoYuWSwjBtWuXPOBdfvcz67dZLuU7PrKJ/Ec
-         ZNH7ML5Ft25J+/g0wSD/e9mRoBrK03gTWaQS/6C76cpUNGlYA89yVK6ZQngxVQc/IVDm
-         0jvOrk+hxSh2uSzxDxQyY5VtUR9RD8ONcOI1+Z+5yVNOSk/gJoULXhYpvwiQWx+bXOep
-         DhYmydgf/dvwZ1McCXxEO9IT1o0CZiYkT4FJ9zdbg5+UGXelCMfO/O0f3hHGtjtuGqHX
-         2u0ohVzPE5BPtISUtVdqQoUn5C7nUnXy9R+Xgp76I0uVkfKKPS5OJmEwhGwOZYqzLfFt
-         nZlA==
+        bh=sI6XM54fZOvPaVhjGVGy3cOUIPI5G/ADaP3BRaLrCbQ=;
+        b=mqEwwqQLc/Kx6PqNxoLYJNi2B5Qj6EbNqMiRXN51G9xiiMHiAlB/dxLpVprI1OXtlR
+         AYJ5y6rqV9XDT21P+EP0VQaiF4PzhZuxgCFCe3UZoqLK3p6ruzIoJGt4wMo+AjQGnJqA
+         HVsR9PulryAapWSETmhVUKWEvqyZS3j4F3YGjqeg9UC3feS0apS7oERM3ppXkQNge+ox
+         t5UPabZSQ0tqp24V/sJrtUMPVbvO/HQwSKiRlEk25flupXP/YggXIkK09xfGMfedBbUm
+         03ZucQcrmWH8BuQ0udkKU3Edp2eDEFHLg48EJUD8f/nlBJxITj9xQ3V25LXiVDEE0ShJ
+         WtQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=Lv+DkZwcnx6hU4ImkaF6NdIpu1r/sTAfppYrVq53GcU=;
-        b=c/8rqWug2RQCbDXzJdWWl7hKfJAjanBrI9HOkSisA8NU8ptT2psx1X/WdyirqOSBoC
-         DK0OAk2I7WB8gb4wZrccWf2bZDxSdSsDvvOq3tYkRYIkBXanD7Od6kzEQzcCnad6Viu8
-         95oS2YeMyNBdAe0N0SsMvMwSfkxpDYtrL1VbfzVLKL7QIUgddDpbZjdsZV5YkuxFlvcw
-         ry40Ix3FOsSvy+BtaEoWz4pFUmgCgLwdWkaA8UN/wj0sBHozxV2PI6fKnKV0xtCv4fFU
-         AqjXyFidDpapLGM8NOHQW4ygnCP7Gn1YnrKNYzvU7Kkyc1M5MFDOgG2yuD3XNaTscNf6
-         H7dg==
-X-Gm-Message-State: AOPr4FVwlMffeH1NM8CTpizDeH3f6FJMqvbl4/9C8KNk4x/NoTF3s0Ia99cCz1Gbm63DRQ==
-X-Received: by 10.55.80.86 with SMTP id e83mr11799429qkb.91.1461163950849;
-        Wed, 20 Apr 2016 07:52:30 -0700 (PDT)
+        bh=sI6XM54fZOvPaVhjGVGy3cOUIPI5G/ADaP3BRaLrCbQ=;
+        b=kdY2FYDOHgItK0Tmem5hx5z6Sy+PXKv/RURQMbk3mG1mmqXYsfFrKnr2fzoQtm5vuK
+         ahkEL2ypFW/cvQ9f/RyvQvDk0kv+PXlZvlAZNk8HocVxSGuABv0SMhWbse55b3OZdnC8
+         TySFfnU9y0uoFOsyhWT94NLeGgmm6pE7ON01WvmAdz6YvwPkTBaIREs2STt21t8w+9Cn
+         FLlKUZLeyfu4wk0NaQDN8iI2DXMSTGv/PFK6xMl28UtwdcTpivGmORrJSYspTCYKEmAo
+         cqi6ek7GdSdpIFwKkTWkpOEPcaEXgyTWn9LeYS4WZq6a/F2+P107i9HdY+dob+S3GkGT
+         16vA==
+X-Gm-Message-State: AOPr4FUGNEGlJmGAKiXolCUW89l0jj40Me6/RWsmtWD1hxBdc4jt3ps+Uua2aMCVj5Leyg==
+X-Received: by 10.55.82.6 with SMTP id g6mr12094020qkb.40.1461164930627;
+        Wed, 20 Apr 2016 08:08:50 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net (nat-pool-bos-u.redhat.com. [66.187.233.207])
-        by smtp.googlemail.com with ESMTPSA id c193sm8777044qkg.43.2016.04.20.07.52.28
+        by smtp.googlemail.com with ESMTPSA id t193sm9136011qke.21.2016.04.20.08.08.49
         (version=TLSv1/SSLv3 cipher=OTHER);
-        Wed, 20 Apr 2016 07:52:29 -0700 (PDT)
-Sender: mttcg-request@listserver.greensocs.com
-Subject: Re: [PATCH] tb: consistently use uint32_t for tb->flags
-To: "Emilio G. Cota" <cota@braap.org>, Paolo Bonzini <pbonzini@redhat.com>,
+        Wed, 20 Apr 2016 08:08:50 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH 08/11] tcg/aarch64: Make direct jump patching thread-safe
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Sergey Fedorov <sergey.fedorov@linaro.org>
+References: <1460044433-19282-1-git-send-email-sergey.fedorov@linaro.org>
+ <1460044433-19282-9-git-send-email-sergey.fedorov@linaro.org>
+ <87k2jsv0pv.fsf@linaro.org>
+Cc: qemu-devel@nongnu.org, Sergey Fedorov <serge.fdrv@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>,
- Aurelien Jarno <aurelien@aurel32.net>, Leon Alrae <leon.alrae@imgtec.com>,
- Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
- Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <1460049562-23517-1-git-send-email-cota@braap.org>
- <20160419232145.GA19286@flamenco>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
- MTTCG Devel <mttcg@greensocs.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org
+ Claudio Fontana <claudio.fontana@huawei.com>, qemu-arm@nongnu.org
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <571797AA.2070002@twiddle.net>
-Date: Wed, 20 Apr 2016 07:52:26 -0700
+Message-ID: <57179B80.9050800@twiddle.net>
+Date: Wed, 20 Apr 2016 08:08:48 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
  Thunderbird/38.7.1
 MIME-Version: 1.0
-In-Reply-To: <20160419232145.GA19286@flamenco>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Reply-To: Richard Henderson <rth@twiddle.net>
-X-Loop: mttcg@listserver.greensocs.com
-X-Sequence: 225
-Errors-to: mttcg-owner@listserver.greensocs.com
-Precedence: list
-Precedence: bulk
-X-no-archive: yes
-List-Id: <mttcg.listserver.greensocs.com>
-List-Help: <mailto:sympa@listserver.greensocs.com?subject=help>
-List-Subscribe: <mailto:sympa@listserver.greensocs.com?subject=subscribe%20mttcg>
-List-Unsubscribe: <mailto:sympa@listserver.greensocs.com?subject=unsubscribe%20mttcg>
-List-Post: <mailto:mttcg@listserver.greensocs.com>
-List-Owner: <mailto:mttcg-request@listserver.greensocs.com>
-List-Archive: <http://listserver.greensocs.com/wws/arc/mttcg>
-X-TUID: nVd0YPZR3qDY
+In-Reply-To: <87k2jsv0pv.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: EhfPLJTZvD02
 
-On 04/19/2016 04:21 PM, Emilio G. Cota wrote:
-> On Thu, Apr 07, 2016 at 13:19:22 -0400, Emilio G. Cota wrote:
->> We are inconsistent with the type of tb->flags: usage varies loosely
->> between int and uint64_t. Settle to uint32_t everywhere, which is
->> superior to both: at least one target (aarch64) uses the most significant
->> bit in the u32, and uint64_t is wasteful.
->>
->> Compile-tested for all targets.
->>
->> Suggested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
->> Suggested-by: Richard Henderson <rth@twiddle.net>
->> Signed-off-by: Emilio G. Cota <cota@braap.org>
+On 04/20/2016 07:01 AM, Alex Bennée wrote:
 >
-> Has this patch been queued by anyone? If not, should I resend after
-> 2.6 is released?
+> Sergey Fedorov <sergey.fedorov@linaro.org> writes:
+>
+>> From: Sergey Fedorov <serge.fdrv@gmail.com>
+>>
+>> Ensure direct jump patching in AArch64 is atomic by using
+>> atomic_read()/atomic_set() for code patching.
+>>
+>> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+>> Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
+>> ---
+>>   tcg/aarch64/tcg-target.inc.c | 14 +++++++++++++-
+>>   1 file changed, 13 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
+>> index 0ed10a974121..15fdebec921f 100644
+>> --- a/tcg/aarch64/tcg-target.inc.c
+>> +++ b/tcg/aarch64/tcg-target.inc.c
+>> @@ -73,6 +73,18 @@ static inline void reloc_pc26(tcg_insn_unit *code_ptr, tcg_insn_unit *target)
+>>       *code_ptr = deposit32(*code_ptr, 0, 26, offset);
+>>   }
+>>
+>> +static inline void reloc_pc26_atomic(tcg_insn_unit *code_ptr,
+>> +                                     tcg_insn_unit *target)
+>> +{
+>> +    ptrdiff_t offset = target - code_ptr;
+>> +    tcg_insn_unit insn;
+>> +    assert(offset == sextract64(offset, 0, 26));
+>> +    /* read instruction, mask away previous PC_REL26 parameter contents,
+>> +       set the proper offset, then write back the instruction. */
+>
+> This comment could be moved from here and reloc_pc26 and made common for
+> the two following functions.
 
-Sorry for the delay.  Queued for 2.7.
+There's a significant amount of cleanup that ought to happen here, now that 
+we're not re-translating TBs.  I don't know if Sergey should be gated on that.
 
 
 r~

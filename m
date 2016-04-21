@@ -1,112 +1,144 @@
-Received: by 10.25.208.194 with SMTP id h185csp163554lfg;
-        Thu, 21 Apr 2016 05:55:35 -0700 (PDT)
-X-Received: by 10.140.23.139 with SMTP id 11mr16708918qgp.62.1461243335077;
-        Thu, 21 Apr 2016 05:55:35 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp175262lfg;
+        Thu, 21 Apr 2016 06:15:33 -0700 (PDT)
+X-Received: by 10.55.71.76 with SMTP id u73mr20250459qka.6.1461244532988;
+        Thu, 21 Apr 2016 06:15:32 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g189si289816qkg.195.2016.04.21.05.55.34
+        by mx.google.com with ESMTPS id b26si334248qkj.205.2016.04.21.06.15.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Apr 2016 05:55:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 21 Apr 2016 06:15:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40755 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41022 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1atE8s-00025v-Jb
-	for alex.bennee@linaro.org; Thu, 21 Apr 2016 08:55:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33851)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1atESC-0005kz-G8
+	for alex.bennee@linaro.org; Thu, 21 Apr 2016 09:15:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atE8R-0001Ub-G2
-	for qemu-devel@nongnu.org; Thu, 21 Apr 2016 08:55:08 -0400
+	(envelope-from <sylgar@gmail.com>) id 1atES7-0005h2-Lk
+	for qemu-arm@nongnu.org; Thu, 21 Apr 2016 09:15:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atE8Q-0004f6-Lz
-	for qemu-devel@nongnu.org; Thu, 21 Apr 2016 08:55:07 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:36234)
+	(envelope-from <sylgar@gmail.com>) id 1atES2-00022k-Kw
+	for qemu-arm@nongnu.org; Thu, 21 Apr 2016 09:15:27 -0400
+Received: from mail-wm0-f53.google.com ([74.125.82.53]:36007)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atE8Q-0004cN-Ia
-	for qemu-devel@nongnu.org; Thu, 21 Apr 2016 08:55:06 -0400
-Received: by mail-vk0-x235.google.com with SMTP id n67so84520593vkf.3
-	for <qemu-devel@nongnu.org>; Thu, 21 Apr 2016 05:55:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=jwXa7rS1QVEdv73lVarQRuKAaskXztR3evQXfz8XIoc=;
-	b=MLWg3TIfJtGWJnsdIIVRg9PvUzMqxsisRb6K5Ceoang2Nt5FM8FHs8V//bwKPG3u6k
-	bWPqOaiLRVPTFC1RqUB8hGIuRmfiqTNjuSCicqTx/SrQ4hlKLIOr36nHwjBG5CxeNvzE
-	LH26r1AuYophoR0FaZzVR9J7ysYxqaLCB73/o=
+	(envelope-from <sylgar@gmail.com>)
+	id 1atES2-00022g-Ey; Thu, 21 Apr 2016 09:15:22 -0400
+Received: by mail-wm0-f53.google.com with SMTP id v188so244298013wme.1;
+	Thu, 21 Apr 2016 06:15:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=jwXa7rS1QVEdv73lVarQRuKAaskXztR3evQXfz8XIoc=;
-	b=TRz73Vqo5/CgPfROo8JAyo2khdsZmMLwrxTHqo4h/VT6hOGv4uM/GcN7m1JbfvbtR9
-	Uco4GAkNWZ1LNvXgj2xfWcMITWI+ODUgULLYR6Gm2dUIjxXJoEDcEyQskYztGtM+P4oR
-	dQBdXZ9dHSftiXX+49FHg6cnpXrIUCpELoAtNPRRyR0su/YlXUemwF6j1v2N59PKnThJ
-	ej0ZNdZlRBC4rOuTVV20L0qMSll/QTeU/ZMZ1UpOuNSOrBRXBACfMKy2K3t8IF70faSm
-	50/QkaNxJqjyPEfo3bbwf+hNB5VNkRUk4mnSU+U3Oym6+1mY+KrJIXmYdizMF9+J05L3
-	lh6A==
-X-Gm-Message-State: AOPr4FUYb6j126UDmKTdZlQiHRDgwdp3arG4FtM13cHea4jLtr1WNfnKtcHK53aSbild/kPucrhI4EabyKYr7qrh
-X-Received: by 10.31.63.77 with SMTP id m74mr79290vka.139.1461243304928; Thu,
-	21 Apr 2016 05:55:04 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Thu, 21 Apr 2016 05:54:45 -0700 (PDT)
-In-Reply-To: <DD3027E2-6F96-4D87-B2C5-02E9926AA402@sylvaingarrigues.com>
+	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=y/BqevAooc1LLyDkIBJX/FzlsJracOahVnRJA2JjagQ=;
+	b=isVycnxaf/dF6ZUF6BP3ZCk/iKKpwacl1ixsHORK4UkqAfQlBMYAfU/4yBfTqVSKGE
+	OyNymaoCsOLwZbAFSFsuiDyLNTMq9bicF/CaYZSXdvseRYybBKSMbCAumnpUXQR+1eAx
+	jImeMlOSRSTZJDD38wvwGubR/uNKLwsuN6yHwgDWGYJi0dl8cqif1o8gkb5PBTSAlrzi
+	pypA+MHKoVEjwnWrcDY53jfJU9tMBYbt8G+jr5/rW9DU1Rb45JFNkGIbh7QJQ0sM6K2R
+	JWLhv2u4+qIK9xOE9leZdMiTZN+ZukAw9CrbpgY7B0MrGa4uDVAee6ydnCJNzUeo3KL0
+	xP6A==
+X-Gm-Message-State: AOPr4FXBfrS46OZoRtYrdPeBxcFynjZnGANYGv10eklzLyUog6/uUMIJsDYfny2FtHmnZw==
+X-Received: by 10.194.103.98 with SMTP id fv2mr15275502wjb.23.1461244521895;
+	Thu, 21 Apr 2016 06:15:21 -0700 (PDT)
+Received: from [192.168.0.10] (plr75-1-82-226-218-68.fbx.proxad.net.
+	[82.226.218.68]) by smtp.gmail.com with ESMTPSA id
+	jr8sm2837063wjb.15.2016.04.21.06.15.20
+	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 21 Apr 2016 06:15:20 -0700 (PDT)
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+From: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+In-Reply-To: <CAFEAcA_nE2Ee_Ky+upz4veasmkyiVSHqyUe2-brtfopJA2-=_g@mail.gmail.com>
+Date: Thu, 21 Apr 2016 15:15:19 +0200
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <A03258E3-4CFE-49F8-8601-1467CD70AC29@sylvaingarrigues.com>
 References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
 	<CAFEAcA8mLk+3t+ypR96WPG9yMsvbJ4hmgk1NwfxPLHzk0R=Dwg@mail.gmail.com>
 	<DD3027E2-6F96-4D87-B2C5-02E9926AA402@sylvaingarrigues.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2016 13:54:45 +0100
-Message-ID: <CAFEAcA_nE2Ee_Ky+upz4veasmkyiVSHqyUe2-brtfopJA2-=_g@mail.gmail.com>
-To: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+	<CAFEAcA_nE2Ee_Ky+upz4veasmkyiVSHqyUe2-brtfopJA2-=_g@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3124)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Subject: Re: [Qemu-devel] [PATCH] bcm2835_property: use cached values when
+	[fuzzy]
+X-Received-From: 74.125.82.53
+Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: use cached values when
  querying framebuffer
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Markus Armbruster <armbru@redhat.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HumGaW/eXvWG
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gXOKLQlsWBmM
 
-On 21 April 2016 at 13:50, Sylvain Garrigues
-<sylvain@sylvaingarrigues.com> wrote:
-> It does prevent FreeBSD to boot correctly.
->
-> With that patch and
-> #define KERNEL_LOAD_ADDR 0x00200000
-> in arm/boot/boot.c, official FreeBSD RPI2 images boot like a charm :-)
+Le 21 avr. 2016 =C3=A0 14:54, Peter Maydell <peter.maydell@linaro.org> a =
+=C3=A9crit :
+> On 21 April 2016 at 13:50, Sylvain Garrigues
+> <sylvain@sylvaingarrigues.com> wrote:
+>> It does prevent FreeBSD to boot correctly.
+>>=20
+>> With that patch and
+>> #define KERNEL_LOAD_ADDR 0x00200000
+>> in arm/boot/boot.c, official FreeBSD RPI2 images boot like a charm =
+:-)
+>=20
+> This is the kind of thing that is useful to mention in the commit
+> message, because it tells people why the change is important=E2=80=A6
 
-This is the kind of thing that is useful to mention in the commit
-message, because it tells people why the change is important...
+You are obviously right, sorry about that.
 
-> BTW, would be great to be able to set the load addr on the command
-> line, wouldn=E2=80=99t it?
+>> BTW, would be great to be able to set the load addr on the command
+>> line, wouldn=E2=80=99t it?
+>=20
+> The booting protocol does not mandate any particular address
+> that the kernel has to be loaded at:
+> https://www.kernel.org/doc/Documentation/arm/Booting
 
-The booting protocol does not mandate any particular address
-that the kernel has to be loaded at:
-https://www.kernel.org/doc/Documentation/arm/Booting
+I didn=E2=80=99t know qemu would blindly follow and stick to Linux =
+rules, but I understand. I use qemu for baremetal and *BSD emulation, I =
+wish it would be easier to change the loading address (and not stick =
+with Linux rules like so many people again) :-) =20
 
-If the FreeBSD kernel can't handle being loaded wherever
-we put it, that sounds like a FreeBSD bug to me...
 
-thanks
--- PMM
+> If the FreeBSD kernel can't handle being loaded wherever
+> we put it, that sounds like a FreeBSD bug to me=E2=80=A6
+
+I would not say it is a bug, but an explicit assumption. Indeed, the =
+kernel expects it is loaded on a 2 MB page boundary.
+I=E2=80=99m no expert, but I believe it was made so that we could remove =
+the need for setting the physical address in the building process. The =
+virtual to physical offset is computed more simply with that assumption.=20=
+
+
+With the patch you committed for me earlier today (b4850e5), the patch =
+we are talking about in this email (which is not a feature but a bug fix =
+in my opinion), and the ability to set the load address to 0x200000 (on =
+the command line if possible), the following line just works straight to =
+the login prompt :-)=20
+# ./arm-softmmu/qemu-system-arm -M raspi2 -m 1024 -smp 4 -kernel =
+kernel.bin -serial stdio -dtb rpi2.dtb -sd =
+FreeBSD-11.0-CURRENT-arm-armv6-RPI2-20160408-r297692.img
+
+FreeBSD-11.0-CURRENT-arm-armv6-RPI2-20160408-r297692.img is the latest =
+FreeBSD official image.
+rpi2.dtb and kernel.bin are in the /boot/ partition of that img file.=20
+
+That=E2=80=99s it for my patches to make qemu and BSDs the best lovers =
+in the world.
+
+Have a good day,
+Sylvain Garrigues.=

@@ -1,106 +1,180 @@
-Received: by 10.25.208.194 with SMTP id h185csp142570lfg;
-        Thu, 21 Apr 2016 05:14:46 -0700 (PDT)
-X-Received: by 10.140.30.247 with SMTP id d110mr16583994qgd.43.1461240886197;
-        Thu, 21 Apr 2016 05:14:46 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7si204228qks.215.2016.04.21.05.14.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Apr 2016 05:14:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40146 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1atDVN-0001yA-Le
-	for alex.bennee@linaro.org; Thu, 21 Apr 2016 08:14:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53518)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atDVJ-0001qy-Qo
-	for qemu-arm@nongnu.org; Thu, 21 Apr 2016 08:14:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atDVI-0002tp-MS
-	for qemu-arm@nongnu.org; Thu, 21 Apr 2016 08:14:41 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34848)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1atDVI-0002tY-4y
-	for qemu-arm@nongnu.org; Thu, 21 Apr 2016 08:14:40 -0400
-Received: by mail-vk0-x230.google.com with SMTP id t129so95574464vkg.2
-	for <qemu-arm@nongnu.org>; Thu, 21 Apr 2016 05:14:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ttjuGs1zB7ayy4n8jJjjvtB9QtsxCQ2//0f3m0iL6Ys=;
-	b=U44IzJ1NFjCGMSmZ0cRdhPox0qXO+C476SgcT5NziNcL2jt/d0CY9OLGH7pfTpKsuX
-	CVQPalbXuEkNtJIP+3Qd3khD9fC+j9hg11L7o5YVHAkeVEltdR+H9UpZoQcTWtpyJots
-	snOLq11j3uZ8x9KEI8Ev5uQe4fUafFp9GDKOE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ttjuGs1zB7ayy4n8jJjjvtB9QtsxCQ2//0f3m0iL6Ys=;
-	b=H3zlFW2qQhWwtDTeCOJFfk75pWiHh3flTR9st8kFvSNdRtnppBBw+cmNm3tJdju7my
-	aI7e1h4Y0m/yKsr4YGBE3b39hCSbKQSzD0XnXzeTD+Ff+IigF3aQ6A6aIIXLcXG4ot5s
-	QgR3jiB2iMPYv683Up0qY+pisDGUMzcysokiPH+0FjVpW/PLEMtvVyxJDUT5Xz0vGXcd
-	shyauLz13EAiZky+xKR2Q61FwYSV89IQbMeSaKlaU3B5KagfwYfG3fiuUPIyNkB/g4IA
-	NDSZDmCrB0F7aGuCNCB5g2q4NdY/gsoOtAvOvatX4we/pqOKnVJkHvoJZjHUj6MjxCUw
-	e+PA==
-X-Gm-Message-State: AOPr4FXmqgqikulyHupk2VSqk7QB1EYGDzwsfdEDOiK+pR6qRdykQo/59lyzYmB2yB0N3F5QwuWBm9mfzvh9/Vxg
-X-Received: by 10.176.0.204 with SMTP id 70mr7880801uaj.4.1461240879527; Thu,
-	21 Apr 2016 05:14:39 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id a75sm1531658wme.18.2016.04.21.06.18.23
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Apr 2016 06:18:23 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id F1BBC3E00A6;
+	Thu, 21 Apr 2016 14:18:22 +0100 (BST)
+References: <1461186921-14977-1-git-send-email-sergey.fedorov@linaro.org> <1461186921-14977-10-git-send-email-sergey.fedorov@linaro.org>
+User-agent: mu4e 0.9.17; emacs 25.0.92.6
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Sergey Fedorov <sergey.fedorov@linaro.org>
+Cc: qemu-devel@nongnu.org, Sergey Fedorov <serge.fdrv@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite <crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>, Peter Maydell <peter.maydell@linaro.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, Alexander Graf <agraf@suse.de>, qemu-arm@nongnu.org
+Subject: Re: [PATCH v4 09/10] tcg: Clean up direct block chaining safety checks
+In-reply-to: <1461186921-14977-10-git-send-email-sergey.fedorov@linaro.org>
+Date: Thu, 21 Apr 2016 14:18:22 +0100
+Message-ID: <87y487t80x.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Thu, 21 Apr 2016 05:14:20 -0700 (PDT)
-In-Reply-To: <1461188128-1107-1-git-send-email-sylvain@sylvaingarrigues.com>
-References: <1461188128-1107-1-git-send-email-sylvain@sylvaingarrigues.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 Apr 2016 13:14:20 +0100
-Message-ID: <CAFEAcA-Dzrdr-WbbHk06v3GJAe6Ah2hFTn8C=YX0M_q+ScBh7A@mail.gmail.com>
-To: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Subject: Re: [Qemu-arm] [PATCH] Fix the ARM bootloader so that r0 is always
- 0 before jumping to the kernel entry point
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +91tTEclwnyi
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 2QXQAEOBqKFO
 
-On 20 April 2016 at 22:35, Sylvain Garrigues
-<sylvain@sylvaingarrigues.com> wrote:
-> Signed-off-by: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+
+Sergey Fedorov <sergey.fedorov@linaro.org> writes:
+
+> From: Sergey Fedorov <serge.fdrv@gmail.com>
+>
+> We don't take care of direct jumps when address mapping changes. Thus we
+> must be sure to generate direct jumps so that they always keep valid
+> even if address mapping changes. Luckily, we can only allow to execute a
+> TB if it was generated from the pages which match with current mapping.
+>
+> Document tcg_gen_goto_tb() declaration and note the reason for
+> destination PC limitations.
+>
+> Some targets with variable length instructions allow TB to straddle a
+> page boundary. However, we make sure that both of TB pages match the
+> current address mapping when looking up TBs. So it is safe to do direct
+> jumps into the both pages. Correct the checks for some of those targets.
+>
+> Given that, we can safely patch a TB which spans two pages. Remove the
+> unnecessary check in cpu_exec() and allow such TBs to be patched.
+>
+> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+> Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
 > ---
->  hw/arm/boot.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 5975fbf..5876945 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -68,7 +68,7 @@ static const ARMInsnFixup bootloader_aarch64[] = {
->   */
+> Changes in v4:
+>  * Documented tcg_gen_goto_tb() declaration
+>  * Destination PC check explanatory comments moved to tcg_gen_goto_tb()
+>    declaration comment
+>  * Updated commit message
 >
->  static const ARMInsnFixup bootloader[] = {
-> -    { 0xe28fe008 }, /* add     lr, pc, #8 */
-> +    { 0xe28fe004 }, /* add     lr, pc, #4 */
->      { 0xe51ff004 }, /* ldr     pc, [pc, #-4] */
->      { 0, FIXUP_BOARD_SETUP },
->  #define BOOTLOADER_NO_BOARD_SETUP_OFFSET 3
+>  cpu-exec.c               |  7 ++-----
+>  target-arm/translate.c   |  3 ++-
+>  target-cris/translate.c  |  4 +++-
+>  target-i386/translate.c  |  2 +-
+>  target-m68k/translate.c  |  2 +-
+>  target-s390x/translate.c |  2 +-
+>  tcg/tcg-op.h             | 10 ++++++++++
+>  7 files changed, 20 insertions(+), 10 deletions(-)
+>
+> diff --git a/cpu-exec.c b/cpu-exec.c
+> index bbfcbfb54385..065cc9159477 100644
+> --- a/cpu-exec.c
+> +++ b/cpu-exec.c
+> @@ -508,11 +508,8 @@ int cpu_exec(CPUState *cpu)
+>                      next_tb = 0;
+>                      tcg_ctx.tb_ctx.tb_invalidated_flag = 0;
+>                  }
+> -                /* see if we can patch the calling TB. When the TB
+> -                   spans two pages, we cannot safely do a direct
+> -                   jump. */
+> -                if (next_tb != 0 && tb->page_addr[1] == -1
+> -                    && !qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
+> +                /* See if we can patch the calling TB. */
+> +                if (next_tb != 0 &&
+> !qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
 
-Applied, to master, thanks. (I expanded the commit message a bit.)
+A pointer to the definitive comment helps ;-)
 
--- PMM
+                /* See if we can patch the calling TB, see tcg_gen_goto_tb */
+
+>                      tb_add_jump((TranslationBlock *)(next_tb & ~TB_EXIT_MASK),
+>                                  next_tb & TB_EXIT_MASK, tb);
+>                  }
+> diff --git a/target-arm/translate.c b/target-arm/translate.c
+> index 940ec8d981d1..34196a821772 100644
+> --- a/target-arm/translate.c
+> +++ b/target-arm/translate.c
+> @@ -4054,7 +4054,8 @@ static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
+>      TranslationBlock *tb;
+>
+>      tb = s->tb;
+> -    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+> +    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
+> +        ((s->pc - 1) & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+>          tcg_gen_goto_tb(n);
+>          gen_set_pc_im(s, dest);
+>          tcg_gen_exit_tb((uintptr_t)tb + n);
+> diff --git a/target-cris/translate.c b/target-cris/translate.c
+> index a73176c118b0..9c8ff8f2308a 100644
+> --- a/target-cris/translate.c
+> +++ b/target-cris/translate.c
+> @@ -524,7 +524,9 @@ static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
+>  {
+>      TranslationBlock *tb;
+>      tb = dc->tb;
+> -    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+> +
+> +    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
+> +        (dc->ppc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+>          tcg_gen_goto_tb(n);
+>          tcg_gen_movi_tl(env_pc, dest);
+>                  tcg_gen_exit_tb((uintptr_t)tb + n);
+> diff --git a/target-i386/translate.c b/target-i386/translate.c
+> index 1a1214dcb12e..cb725b41c37d 100644
+> --- a/target-i386/translate.c
+> +++ b/target-i386/translate.c
+> @@ -2094,7 +2094,7 @@ static inline void gen_goto_tb(DisasContext *s, int tb_num, target_ulong eip)
+>      tb = s->tb;
+>      /* NOTE: we handle the case where the TB spans two pages here */
+>      if ((pc & TARGET_PAGE_MASK) == (tb->pc & TARGET_PAGE_MASK) ||
+> -        (pc & TARGET_PAGE_MASK) == ((s->pc - 1) & TARGET_PAGE_MASK))  {
+> +        (pc & TARGET_PAGE_MASK) == (s->pc_start & TARGET_PAGE_MASK))  {
+>          /* jump to same page: we can use a direct jump */
+>          tcg_gen_goto_tb(tb_num);
+>          gen_jmp_im(eip);
+> diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+> index 7560c3a80841..e2ce6c615e07 100644
+> --- a/target-m68k/translate.c
+> +++ b/target-m68k/translate.c
+> @@ -861,7 +861,7 @@ static void gen_jmp_tb(DisasContext *s, int n, uint32_t dest)
+>      if (unlikely(s->singlestep_enabled)) {
+>          gen_exception(s, dest, EXCP_DEBUG);
+>      } else if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
+> -               (s->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+> +               (s->insn_pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
+>          tcg_gen_goto_tb(n);
+>          tcg_gen_movi_i32(QREG_PC, dest);
+>          tcg_gen_exit_tb((uintptr_t)tb + n);
+> diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+> index c871ef2bb302..c5179fe05d7e 100644
+> --- a/target-s390x/translate.c
+> +++ b/target-s390x/translate.c
+> @@ -610,7 +610,7 @@ static int use_goto_tb(DisasContext *s, uint64_t dest)
+>  {
+>      /* NOTE: we handle the case where the TB spans two pages here */
+>      return (((dest & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK)
+> -             || (dest & TARGET_PAGE_MASK) == ((s->pc - 1) & TARGET_PAGE_MASK))
+> +             || (dest & TARGET_PAGE_MASK) == (s->pc & TARGET_PAGE_MASK))
+>              && !s->singlestep_enabled
+>              && !(s->tb->cflags & CF_LAST_IO)
+>              && !(s->tb->flags & FLAG_MASK_PER));
+> diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
+> index c446d3dc7293..ace39619ef89 100644
+> --- a/tcg/tcg-op.h
+> +++ b/tcg/tcg-op.h
+> @@ -753,6 +753,16 @@ static inline void tcg_gen_exit_tb(uintptr_t val)
+>      tcg_gen_op1i(INDEX_op_exit_tb, val);
+>  }
+>
+> +/**
+> + * tcg_gen_goto_tb() - output goto_tb TCG operation
+> + * @idx: Direct jump slot index (0 or 1)
+> + *
+> + * See tcg/README for more info about this TCG operation.
+> + *
+> + * NOTE: Direct jumps with goto_tb are only safe within the pages this TB
+> + * resides in because we don't take care of direct jumps when address mapping
+> + * changes, e.g. in tlb_flush().
+> + */
+>  void tcg_gen_goto_tb(unsigned idx);
+>
+>  #if TARGET_LONG_BITS == 32
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+
+--
+Alex Bennée

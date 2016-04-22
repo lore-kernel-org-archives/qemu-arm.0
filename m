@@ -1,71 +1,59 @@
-Received: by 10.25.208.194 with SMTP id h185csp729102lfg;
-        Fri, 22 Apr 2016 05:12:30 -0700 (PDT)
-X-Received: by 10.140.234.195 with SMTP id f186mr22001944qhc.91.1461327150286;
-        Fri, 22 Apr 2016 05:12:30 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp736139lfg;
+        Fri, 22 Apr 2016 05:25:38 -0700 (PDT)
+X-Received: by 10.140.239.137 with SMTP id k131mr8045669qhc.11.1461327938123;
+        Fri, 22 Apr 2016 05:25:38 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t142si3492516qhb.69.2016.04.22.05.12.30
+        by mx.google.com with ESMTPS id f26si3313278qki.12.2016.04.22.05.25.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Apr 2016 05:12:30 -0700 (PDT)
+        Fri, 22 Apr 2016 05:25:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60320 helo=lists.gnu.org)
+Received: from localhost ([::1]:60536 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1atZwj-0003UN-Mj
-	for alex.bennee@linaro.org; Fri, 22 Apr 2016 08:12:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40030)
+	id 1ata9R-0008Vq-Il
+	for alex.bennee@linaro.org; Fri, 22 Apr 2016 08:25:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>) id 1atZwh-0003QN-1M
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:12:27 -0400
+	(envelope-from <drjones@redhat.com>) id 1ata9O-0008Qe-0q
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:25:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>) id 1atZwc-0000di-1N
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:12:26 -0400
-Received: from mail-wm0-f49.google.com ([74.125.82.49]:35545)
+	(envelope-from <drjones@redhat.com>) id 1ata9J-0004NL-Om
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:25:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49006)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>)
-	id 1atZwb-0000dd-SB; Fri, 22 Apr 2016 08:12:21 -0400
-Received: by mail-wm0-f49.google.com with SMTP id e201so16330340wme.0;
-	Fri, 22 Apr 2016 05:12:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=j/zJyxlj/CbUJ7hRf77182Tq88oeVYMytIerrYng5FE=;
-	b=kIR53n0W+c6aKQuAiK5wtwxNW4jINHRr7830n3dBHsp4FKh4YEN6We3q7OWX5SH0lq
-	zKhN29rzcZc32SlbfP07wi66YQGDNXvDkLMM+G4hZ2gDDYbhHsdUqUehRAkQ9xBazFhk
-	c/CRuhiugB1Pajx8RW/sBiYDU+oxHmVOZtgEN90BATnOX+WR0UNH/UMweaTV1CZ+FWmk
-	EdWcC0F5/1J86VB2kWHd1IxZ5LHfADA3XbSMPokwt8RQ4ei1tV+cMvoGgpj3QI8Xv8O0
-	cIeE26DG3+xEphg8ZppdwZiecdKu3XATQLTdNwEiS/u0FSRs4JSDyhpgZEDdW3ZIGR1t
-	n5gA==
-X-Gm-Message-State: AOPr4FU81XmuJ3IgilVnW1z92CDA1uP2wGTQDTH/VwSq6tXt07KN8ZMShjyLDl2pXNiozA==
-X-Received: by 10.194.192.106 with SMTP id hf10mr19521732wjc.134.1461327141318;
-	Fri, 22 Apr 2016 05:12:21 -0700 (PDT)
-Received: from [192.168.0.10] (plr75-1-82-226-218-68.fbx.proxad.net.
-	[82.226.218.68]) by smtp.gmail.com with ESMTPSA id
-	i11sm7811027wjn.36.2016.04.22.05.12.19
-	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 22 Apr 2016 05:12:19 -0700 (PDT)
-Content-Type: text/plain; charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-From: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-In-Reply-To: <BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Fri, 22 Apr 2016 14:12:18 +0200
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <91F60BC7-6887-4090-BB66-B2ABEC05ED47@sylvaingarrigues.com>
-References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
-	<BLUPR0301MB20342C97DD66FA58E3462B889E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<19E314DF-2836-4020-94F1-4D1B39CD6E6C@sylvaingarrigues.com>
-	<BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-X-Mailer: Apple Mail (2.3124)
+	(envelope-from <drjones@redhat.com>)
+	id 1ata9J-0004NF-HQ; Fri, 22 Apr 2016 08:25:29 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 25B1D81137;
+	Fri, 22 Apr 2016 12:25:29 +0000 (UTC)
+Received: from hawk.localdomain (dhcp-1-112.brq.redhat.com [10.34.1.112])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3MCPOeu017845
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 22 Apr 2016 08:25:27 -0400
+Date: Fri, 22 Apr 2016 14:25:24 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Message-ID: <20160422122524.ajlzftqa3mtvm6dd@hawk.localdomain>
+References: <1461219834-10416-1-git-send-email-zhaoshenglong@huawei.com>
+	<1461219834-10416-2-git-send-email-zhaoshenglong@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1461219834-10416-2-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.49
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] bcm2835_property: use cached
- values when querying framebuffer
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/5] ARM: Virt: Add
+ /distance-map node for NUMA
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,20 +65,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Cc: peter.maydell@linaro.org, david.daney@cavium.com, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com, qemu-arm@nongnu.org, shannon.zhao@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 49fZk4oVX4lo
+X-TUID: EGITrOlcTLAi
 
-Le 22 avr. 2016 =C3=A0 13:30, Andrew Baumann =
-<Andrew.Baumann@microsoft.com> a =C3=A9crit :
-> But I won't be merging this patch (hopefully Peter can do that?), so =
-it's probably best if you make the tweak and resend with my Reviewed-by.
+On Thu, Apr 21, 2016 at 02:23:50PM +0800, Shannon Zhao wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+> 
+> This /distance-map node is used to describe the accessing distance
+> between NUMA nodes.
+> 
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>  hw/arm/virt.c | 30 ++++++++++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 56d35c7..814a1eb 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -40,6 +40,7 @@
+>  #include "sysemu/device_tree.h"
+>  #include "sysemu/sysemu.h"
+>  #include "sysemu/kvm.h"
+> +#include "sysemu/numa.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+>  #include "exec/address-spaces.h"
+> @@ -203,6 +204,9 @@ static VirtBoardInfo *find_machine_info(const char *cpu)
+>  
+>  static void create_fdt(VirtBoardInfo *vbi)
+>  {
+> +    unsigned int i, j, number, count;
 
-Made the tweak and resent the patch with your reviewed-by.
+s/count/index/ ?
 
-Have a good day.=
+> +    uint64_t *matrix;
+> +
+>      void *fdt = create_device_tree(&vbi->fdt_size);
+>  
+>      if (!fdt) {
+> @@ -239,6 +243,32 @@ static void create_fdt(VirtBoardInfo *vbi)
+>                                  "clk24mhz");
+>      qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", vbi->clock_phandle);
+>  
+> +    if (nb_numa_nodes <= 0) {
+> +        return;
+> +    }
+> +
+> +    /* Add /distance-map node for NUMA */
+> +    qemu_fdt_add_subnode(fdt, "/distance-map");
+> +    qemu_fdt_setprop_string(fdt, "/distance-map", "compatible",
+> +                            "numa-distance-map-v1");
+> +
+> +    number = nb_numa_nodes * nb_numa_nodes * 6;
+> +    matrix = g_malloc0(number * sizeof(uint64_t));
+> +    for (i = 0; i < nb_numa_nodes; i++) {
+> +        for (j = 0; j < nb_numa_nodes; j++) {
+> +            count = (i * nb_numa_nodes + j) * 6;
+> +            matrix[count++] = 1;
+> +            matrix[count++] = i;
+> +            matrix[count++] = 1;
+> +            matrix[count++] = j;
+> +            matrix[count++] = 1;
+> +            matrix[count++] = (i == j) ? 10 : 20;
+> +        }
+> +    }
+> +    qemu_fdt_setprop_sized_cells_from_array(fdt, "/distance-map",
+> +                                            "distance-matrix", number / 2,
+> +                                            matrix);
+
+I had to read qemu_fdt_setprop_sized_cells_from_array to understand why
+above we're using 6 instead of 3, and then placing all the 1's in every
+other slot, and then dividing number by 2 here. Is using this function
+worth the confusion?
+
+I think the following would greatly improve reviewability, and shave off
+a bit of boot time (by not having to alloc more mem and copy the matrix).
+
+    uint32_t *matrix;
+
+    number = nb_numa_nodes * nb_numa_nodes * 3;
+    matrix = g_malloc0(number * sizeof(uint32_t));
+    for (i = 0; i < nb_numa_nodes; i++) {
+        for (j = 0; j < nb_numa_nodes; j++) {
+            count = (i * nb_numa_nodes + j) * 3;
+            matrix[count++] = cpu_to_be32(i);
+            matrix[count++] = cpu_to_be32(j);
+            matrix[count++] = cpu_to_be32(i == j ? 10 : 20);
+        }
+    }
+    qemu_fdt_setprop(fdt, "/distance-map", "distance-matrix",
+                     matrix, number * sizeof(uint32_t));
+
+
+> +    g_free(matrix);
+
+Also, I think it would nicer if all this was put in its own function, and
+then just add the following to create_fdt.
+
+  if (nb_numa_nodes) {
+      virt_fdt_create_distance_map(fdt);
+  }
+
+>  }
+>  
+>  static void fdt_add_psci_node(const VirtBoardInfo *vbi)
+> -- 
+> 2.0.4
+
+Otherwise per https://lkml.org/lkml/2016/4/8/572 it looks good.
+
+Thanks,
+drew

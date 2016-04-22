@@ -1,62 +1,59 @@
-Received: by 10.25.208.194 with SMTP id h185csp747622lfg;
-        Fri, 22 Apr 2016 05:48:54 -0700 (PDT)
-X-Received: by 10.55.19.75 with SMTP id d72mr4658619qkh.117.1461329334495;
-        Fri, 22 Apr 2016 05:48:54 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp768431lfg;
+        Fri, 22 Apr 2016 06:26:17 -0700 (PDT)
+X-Received: by 10.140.106.163 with SMTP id e32mr21796213qgf.77.1461331577009;
+        Fri, 22 Apr 2016 06:26:17 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s22si3573698qge.14.2016.04.22.05.48.54
+        by mx.google.com with ESMTPS id q205si3420673qkc.13.2016.04.22.06.26.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Apr 2016 05:48:54 -0700 (PDT)
+        Fri, 22 Apr 2016 06:26:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60889 helo=lists.gnu.org)
+Received: from localhost ([::1]:33138 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ataVy-0005gO-3v
-	for alex.bennee@linaro.org; Fri, 22 Apr 2016 08:48:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47713)
+	id 1atb68-0002rN-HB
+	for alex.bennee@linaro.org; Fri, 22 Apr 2016 09:26:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55469)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ataVw-0005et-Dq
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:48:53 -0400
+	(envelope-from <drjones@redhat.com>) id 1atb66-0002pQ-B2
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 09:26:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1ataVr-0002TY-KT
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 08:48:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36509)
+	(envelope-from <drjones@redhat.com>) id 1atb62-0003OB-Vo
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 09:26:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52781)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1ataVr-0002Sx-Cq; Fri, 22 Apr 2016 08:48:47 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1atb62-0003O6-Oo; Fri, 22 Apr 2016 09:26:10 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B6A0662654;
-	Fri, 22 Apr 2016 12:48:46 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2DEBB3B751;
+	Fri, 22 Apr 2016 13:26:10 +0000 (UTC)
 Received: from hawk.localdomain (dhcp-1-112.brq.redhat.com [10.34.1.112])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u3MCmgL6000740
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3MDQ6Wb004197
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 22 Apr 2016 08:48:44 -0400
-Date: Fri, 22 Apr 2016 14:48:42 +0200
+	verify=NO); Fri, 22 Apr 2016 09:26:08 -0400
+Date: Fri, 22 Apr 2016 15:26:05 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Shannon Zhao <zhaoshenglong@huawei.com>
-Message-ID: <20160422124842.uhskszmlsn6v53c5@hawk.localdomain>
+Message-ID: <20160422132605.gjyuda3magcoktyf@hawk.localdomain>
 References: <1461219834-10416-1-git-send-email-zhaoshenglong@huawei.com>
-	<1461219834-10416-4-git-send-email-zhaoshenglong@huawei.com>
+	<1461219834-10416-6-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1461219834-10416-4-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1461219834-10416-6-git-send-email-zhaoshenglong@huawei.com>
 User-Agent: Mutt/1.5.23.1 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 22 Apr 2016 12:48:46 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 3/5] ARM: Add numa-node-id
- for /memory node
+Subject: Re: [Qemu-arm] [PATCH v5 5/5] hw/arm/virt-acpi-build: Generate SRAT
+ table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,96 +65,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, david.daney@cavium.com, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com, qemu-arm@nongnu.org, shannon.zhao@linaro.org
+Cc: peter.maydell@linaro.org, david.daney@cavium.com,
+	peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, shannon.zhao@linaro.org, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1mxkcWcIsUzp
+X-TUID: fUZGFqagcUYN
 
-On Thu, Apr 21, 2016 at 02:23:52PM +0800, Shannon Zhao wrote:
+On Thu, Apr 21, 2016 at 02:23:54PM +0800, Shannon Zhao wrote:
 > From: Shannon Zhao <shannon.zhao@linaro.org>
 > 
-> When specifying NUMA for ARM machine, generate /memory node according to
-> NUMA topology.
+> To support NUMA, it needs to generate SRAT ACPI table.
 > 
 > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 > ---
->  hw/arm/boot.c | 31 ++++++++++++++++++++++++++++++-
->  1 file changed, 30 insertions(+), 1 deletion(-)
+>  hw/arm/virt-acpi-build.c | 58 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 58 insertions(+)
 > 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 5975fbf..3770235 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -14,6 +14,7 @@
->  #include "hw/arm/linux-boot-if.h"
->  #include "sysemu/kvm.h"
->  #include "sysemu/sysemu.h"
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index f51fe39..a618210 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -43,6 +43,7 @@
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/pci/pcie_host.h"
+>  #include "hw/pci/pci.h"
 > +#include "sysemu/numa.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> @@ -405,6 +406,9 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->      void *fdt = NULL;
->      int size, rc;
->      uint32_t acells, scells;
-> +    char *nodename;
-> +    unsigned int i;
-> +    hwaddr mem_base, mem_len;
 >  
->      if (binfo->dtb_filename) {
->          char *filename;
-> @@ -456,14 +460,39 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->          goto fail;
->      }
+>  #define ARM_SPI_BASE 32
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -414,6 +415,58 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+>  }
 >  
-> +    mem_len = (nb_numa_nodes > 0) ? numa_info[0].node_mem : binfo->ram_size;
->      rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+>  static void
+> +build_srat(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+> +{
+> +    AcpiSystemResourceAffinityTable *srat;
+> +    AcpiSratProcessorGiccAffinity *core;
+> +    AcpiSratMemoryAffinity *numamem;
+> +    int i, j, srat_start;
+> +    uint64_t mem_len, mem_base;
+> +    uint32_t *cpu_node = g_malloc0(guest_info->smp_cpus * sizeof *cpu_node);
 
-So node0's memory node will still be called '/memory' instead of
-'/memory@addr' like the other nodes? Shouldn't we change it too?
+nit1: the majority of qemu code uses () with sizeof
+nit2: sizeof(uint32_t) might be nicer than the cyclic reference
 
->                                        acells, binfo->loader_start,
-> -                                      scells, binfo->ram_size);
-> +                                      scells, mem_len);
->      if (rc < 0) {
->          fprintf(stderr, "couldn't set /memory/reg\n");
->          goto fail;
->      }
->  
-> +    if (nb_numa_nodes > 0) {
-> +        /* Set the numa-node-id for the first /memory node. */
-> +        qemu_fdt_setprop_cell(fdt, "/memory", "numa-node-id", 0);
-> +        /* create /memory node and set properties for other memory numa nodes */
-> +        mem_base = binfo->loader_start + mem_len;
-> +        for (i = 1; i < nb_numa_nodes; i++) {
-> +            mem_len = numa_info[i].node_mem;
-> +            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> +            qemu_fdt_add_subnode(fdt, nodename);
-> +            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> +            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> +                                              acells, mem_base,
-> +                                              scells, mem_len);
-> +            if (rc < 0) {
-> +                fprintf(stderr, "couldn't set /memory/reg\n");
-
-I'd extend this error message with either the full memory node name,
-i.e. '@addr', or something like "couldn't set... for node %d\n"
-
-> +                goto fail;
-> +            }
 > +
-> +            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
-> +            mem_base += mem_len;
-> +            g_free(nodename);
+> +    for (i = 0; i < guest_info->smp_cpus; i++) {
+> +        for (j = 0; j < nb_numa_nodes; j++) {
+> +            if (test_bit(i, numa_info[j].node_cpu)) {
+> +                cpu_node[i] = j;
+> +                break;
+> +            }
 > +        }
 > +    }
 > +
->      if (binfo->kernel_cmdline && *binfo->kernel_cmdline) {
->          rc = qemu_fdt_setprop_string(fdt, "/chosen", "bootargs",
->                                       binfo->kernel_cmdline);
+> +    srat_start = table_data->len;
+> +    srat = acpi_data_push(table_data, sizeof *srat);
+> +    srat->reserved1 = cpu_to_le32(1);
+> +
+> +    for (i = 0; i < guest_info->smp_cpus; ++i) {
+> +        core = acpi_data_push(table_data, sizeof *core);
+> +        core->type = ACPI_SRAT_PROCESSOR_GICC;
+> +        core->length = sizeof(*core);
+> +        core->proximity = cpu_node[i];
+> +        core->acpi_processor_uid = i;
+
+We'll want to use get_arch_id() here (after I implement it as part of
+the cpu topology work I keep promising).
+
+> +        core->flags = cpu_to_le32(1);
+> +    }
+> +    g_free(cpu_node);
+> +
+> +    mem_base = guest_info->memmap[VIRT_MEM].base;
+> +    for (i = 0; i < nb_numa_nodes; ++i) {
+> +        mem_len = numa_info[i].node_mem;
+> +        numamem = acpi_data_push(table_data, sizeof *numamem);
+> +        numamem->type = ACPI_SRAT_MEMORY;
+> +        numamem->length = sizeof(*numamem);
+> +        memset(numamem->proximity, 0, 4);
+> +        numamem->proximity[0] = i;
+
+This is weird (but I see x86 does it too). The spec says proximity is
+"Integer that represents the proximity domain to which the processor
+ belongs", and its 4 bytes. So why doesn't the structure define it as
+a uint32_t and then we'd just do
+
+  numamem->proximity = cpu_to_le32(i);
+
+(adding Igor)
+
+> +        numamem->flags = cpu_to_le32(1);
+> +        numamem->base_addr = cpu_to_le64(mem_base);
+> +        numamem->range_length = cpu_to_le64(mem_len);
+
+How about moving acpi_build_srat_memory from hw/i386/acpi-build.c to
+somewhere in hw/acpi and reusing it?
+
+> +        mem_base += mem_len;
+> +    }
+> +
+> +    build_header(linker, table_data,
+> +                 (void *)(table_data->data + srat_start), "SRAT",
+> +                 table_data->len - srat_start, 3, NULL, NULL);
+> +}
+> +
+> +static void
+>  build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+>  {
+>      AcpiTableMcfg *mcfg;
+> @@ -638,6 +691,11 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, guest_info);
+>  
+> +    if (nb_numa_nodes > 0) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_srat(tables_blob, tables->linker, guest_info);
+> +    }
+> +
+>      /* RSDT is pointed to by RSDP */
+>      rsdt = tables_blob->len;
+>      build_rsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
 > -- 
 > 2.0.4
+> 
+>
 
 Thanks,
-drew
+drew 

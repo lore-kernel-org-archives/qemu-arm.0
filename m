@@ -1,63 +1,60 @@
-Received: by 10.25.208.194 with SMTP id h185csp876195lfg;
-        Fri, 22 Apr 2016 09:55:27 -0700 (PDT)
-X-Received: by 10.55.134.6 with SMTP id i6mr5669645qkd.185.1461344126942;
-        Fri, 22 Apr 2016 09:55:26 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp910358lfg;
+        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
+X-Received: by 10.141.45.5 with SMTP id w5mr23962362qhe.1.1461348627516;
+        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r64si3786588qki.177.2016.04.22.09.55.26
+        by mx.google.com with ESMTPS id w198si3923471qkb.163.2016.04.22.11.10.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Apr 2016 09:55:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36267 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37428 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ateMY-0004io-HU
-	for alex.bennee@linaro.org; Fri, 22 Apr 2016 12:55:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55257)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1atfX8-0003RJ-UB
+	for alex.bennee@linaro.org; Fri, 22 Apr 2016 14:10:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44676)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ateMV-0004fb-K9
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 12:55:24 -0400
+	(envelope-from <sylgar@gmail.com>) id 1atfWe-0002aK-SN
+	for qemu-devel@nongnu.org; Fri, 22 Apr 2016 14:09:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>) id 1ateMU-0002bu-Bc
-	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 12:55:23 -0400
-Received: from mail-ob0-x22e.google.com ([2607:f8b0:4003:c01::22e]:36201)
+	(envelope-from <sylgar@gmail.com>) id 1atfWa-00059n-QW
+	for qemu-devel@nongnu.org; Fri, 22 Apr 2016 14:09:56 -0400
+Received: from mail-wm0-f42.google.com ([74.125.82.42]:36435)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosthwaitepeter@gmail.com>)
-	id 1ateMU-0002bq-51; Fri, 22 Apr 2016 12:55:22 -0400
-Received: by mail-ob0-x22e.google.com with SMTP id j9so51769550obd.3;
-	Fri, 22 Apr 2016 09:55:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc:content-transfer-encoding;
-	bh=U6+9+ScdtB2Lb/ficzClhyf3A3KVfe8qzfy95fTxj7A=;
-	b=YJ9Su2bffxGNSAFEzMJbsjZR+UeZvqWcW6sTEs9JakQOcessN0kofht7hI5evJHMYu
-	0L9o1k7Jlt6Jq9cVKPRaGccug+pruZPyUrxXZWSJEinKGNk+ZyrxYRLNfUYDhoZ/6b3I
-	Ol999KCZxLOnUcb270jhz+NyehamU7pY8zrFcEe4F0gxhAMrwU/5A6HwwI5noRFrDWXH
-	dhIzm7XK3yKdRT0Dx2PttvV6BTVerP9fU22VqXhQVXaUFXMrepKQaoNPU7uiL9NZkQPL
-	Ta2kepZleROzXTocGMSTjl4rh9SViN4he2HwyCQoffCBpA8Vmw62InkCWXF0mUH3QHge
-	bWUA==
+	(envelope-from <sylgar@gmail.com>)
+	id 1atfWa-00059j-HA; Fri, 22 Apr 2016 14:09:52 -0400
+Received: by mail-wm0-f42.google.com with SMTP id v188so30209513wme.1;
+	Fri, 22 Apr 2016 11:09:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc:content-transfer-encoding;
-	bh=U6+9+ScdtB2Lb/ficzClhyf3A3KVfe8qzfy95fTxj7A=;
-	b=XT4yOg6nl49aoNwH8fd3Qv2W/ClKzcjeNWRsCbLUHxUpJh/4wYb5cooYzcPplbQZEi
-	ZfG8JJeZKlw4wIYMCBd2HYwpvmrtE2bu3HFExfw1M8r59fEBt3wDuTIIShJdbW0Ab4Y9
-	35JXtZ367Hx8qRl5ik6myRd9b5B+vS4SAaRC+30ie+L6bDImdaudjsUjrUGdD5g6+mhT
-	J/Wn4WMMZlQqgwvOXJZtPiirYxdYcpnKCluKTs1qefLqwQcAeQOHxKQNM5XzxqprYSh/
-	t6m9EZcdF7OXqi78zTRvvIwuy4FZwKuAhJkdYbjslvkA3KzqR/kvRQsXBZxe8bWuoQO3
-	0nrA==
-X-Gm-Message-State: AOPr4FXQS3G31pV2V20WV1OR4SjkjElbTSwOsu4MNzTkXoQaGOYne6JTJruf5Q49Wurc2SJK4czZmmUB0qmGBA==
-MIME-Version: 1.0
-X-Received: by 10.60.14.232 with SMTP id s8mr9210583oec.66.1461344121549; Fri,
-	22 Apr 2016 09:55:21 -0700 (PDT)
-Received: by 10.157.44.196 with HTTP; Fri, 22 Apr 2016 09:55:21 -0700 (PDT)
+	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+	:message-id:references:to;
+	bh=eAj6FNuf5F/N0Ey3fjpGp4WqqXDp+uVWCq49xDyK+aY=;
+	b=T9bR7d+eb19pwEDh3kriER114BjWpgD15q9V2TyluttW7BVzVL1NLOzVYo7TERCkym
+	DnI/B+ve7YAyXod9wfg4E+tRzFiXgE1XPPOGIUSv8xi/3lM74b67iHxHx0gV/VyrLqp3
+	isO4AKSY5ju9UAJgTG3sXzXRm6gCk+LMyuRwM8aDwmRTYUdDffyM8dWt6lMDlHXEiFol
+	KZfZGVkJ5NVCbSHBm1/gHb9IH+zlZ2+aEpsRg34gTH+0soNG1krbrmKUnrKTPZWaOGLk
+	Wwl7J9txtlNayfQ0UOT5hei6TGTyiu0hAeYwzyESlYQxTeo+GDxlF0HBUjUc71z9iDOs
+	MOkw==
+X-Gm-Message-State: AOPr4FX6YjIlVKcqilZDVQtuCLDwnjZy0HY9OFTREqXuYwIuQtXNbAYuSpBAwrAlZjNEog==
+X-Received: by 10.28.212.71 with SMTP id l68mr5317415wmg.22.1461348591903;
+	Fri, 22 Apr 2016 11:09:51 -0700 (PDT)
+Received: from [192.168.0.10] (plr75-1-82-226-218-68.fbx.proxad.net.
+	[82.226.218.68]) by smtp.gmail.com with ESMTPSA id
+	r123sm4520623wmg.20.2016.04.22.11.09.49
+	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 22 Apr 2016 11:09:50 -0700 (PDT)
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5"
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+From: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
 In-Reply-To: <BLUPR0301MB2034E26C749A161446AAB1389E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Date: Fri, 22 Apr 2016 20:09:48 +0200
+Message-Id: <E923420D-A263-4C2C-80C7-AE10FFDF8E80@sylvaingarrigues.com>
 References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
 	<CAFEAcA8mLk+3t+ypR96WPG9yMsvbJ4hmgk1NwfxPLHzk0R=Dwg@mail.gmail.com>
 	<DD3027E2-6F96-4D87-B2C5-02E9926AA402@sylvaingarrigues.com>
@@ -68,143 +65,264 @@ References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
 	<5718FA7F.5030903@wwwdotorg.org>
 	<CAPokK=qiaGkd3oZ+r_cLNov4gvAF6Qtv-p6NwxHkY_m4_NrqRg@mail.gmail.com>
 	<BLUPR0301MB2034E26C749A161446AAB1389E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Fri, 22 Apr 2016 09:55:21 -0700
-Message-ID: <CAPokK=qt-Pxswp_84Uw4hHZVWs+HUfh6tTpkmQzU4HxY=NeFyg@mail.gmail.com>
-From: Peter Crosthwaite <crosthwaitepeter@gmail.com>
 To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+X-Mailer: Apple Mail (2.3124)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c01::22e
-Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: use cached values when
- querying framebuffer
-X-BeenThere: qemu-arm@nongnu.org
+	[fuzzy]
+X-Received-From: 74.125.82.42
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] bcm2835_property: use cached
+ values when querying framebuffer
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stephen Warren <swarren@wwwdotorg.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Sylvain Garrigues <sylvain@sylvaingarrigues.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q1YiMu1pxUoR
+	Markus Armbruster <armbru@redhat.com>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FCDiEbqhYDNy
 
-On Fri, Apr 22, 2016 at 4:44 AM, Andrew Baumann
-<Andrew.Baumann@microsoft.com> wrote:
-> Hi all,
->
->> From: Peter Crosthwaite [mailto:crosthwaitepeter@gmail.com]
->> Sent: Friday, 22 April 2016 09:18
->>
->> On Thu, Apr 21, 2016 at 9:06 AM, Stephen Warren
->> <swarren@wwwdotorg.org> wrote:
->> > On 04/21/2016 08:07 AM, Sylvain Garrigues wrote:
->> >>
->> >> Le 21 avr. 2016 =C3=A0 15:42, Peter Maydell <peter.maydell@linaro.org=
-> a
->> >> =C3=A9crit
->> >> :
->> >>>
->> >>>
->> >>> There may be something we can do here to make FreeBSD's life easier,
->> >>> but we definitely can't do it on the eve of a release.
->> >>
->> >>
->> >> I didn=E2=80=99t know it was release day, my timing is not perfect th=
-en,
->> >> sorry about that, I didn=E2=80=99t intend to put stress on you guys t=
-oday.
->> >> Like you mentioned, the Linux boot protocol doesn=E2=80=99t mandate a=
-ny
->> >> loading address, hence the possibility to set it on the command line.
->> >> It would benefit not only to FreeBSD (which is strictly Linux boot
->> >> ABI compliant BTW - that is how I found the qemu bootloader bug and
->> >> fixed it in
->> >> b4850e5) but all other OS.
->> >> On the real hardware Raspberry Pi, there is the kernel_address
->> >> firmware feature which enable to set the kernel load address. Would
->> >> be neat to have it *someday* in qemu for any board if it is not too h=
-ard to
->> implement.
->> >
->> >
->> > It would indeed be nice if qemu for the Pi implemented the exact same
->> > bootloader setup as real HW does. That is, loading boot images from
->> > the FAT partition on the SD card, parsing config.txt, etc.
->> >
->> > Ideally as was mentioned earlier this would be done by simply
->> > executing the existing bootloader under emulation, rather than
->> > building all that code into qemu. However, in the Pi case, the
->> > bootloader runs on the VideoCore (a separate non-ARM CPU), so isn't
->> > (and likely won't be since IIUC it isn't fully documented) emulated by
->> > qemu. by the time the ARM CPU runs, everything (kernel, DTB/ATAGS, ARM
->> > boot stub, ...) is already loaded into RAM, the display is already
->> > probed over HDMI and the controller scanning out a dummy image, etc.
->> >
->> > So I think if that were to be supported, it'd have to be coded into
->> > qemu. Is that something that could happen, or would such patches not
->> > fit qemu's model well?
->>
->> I made half a start on this project but had to shelve it.
->>
->> The hard part is the FAT filesystem. The basic approach I started on was=
- to link
->> in the relevant bits of the GNU mtools so QEMU can poke around in a FAT
->> filesystem hosted on a block device. Then just mount the SD card and emu=
-late
->> the boot logic of the VideoCore bootloader.
->> This amount of new code should actually be pretty small, as the FS drive=
-r is
->> handled by mtools and the SDHCI can be shorted by just having this alter=
-nate
->> bootloader go direct to the block device (fish the blockdev out from the=
- SD
->> card).
->
-> You got further on this than I did. I considered a couple of options, of =
-varying complexity/compatibility:
->
->  0. The status quo: we support -kernel (for Linux images) and -bios (e.g.=
- Windows), but otherwise all the options that can be set in config.txt are =
-treated as the defaults. For example, -bios images are always loaded at 0x8=
-000. Additionally, framebuffer parameters can be set directly from the comm=
-and line (e.g. Windows wants -global bcm2835-fb.pixo=3D0).
->  1. More pi-specific parameters in the line of the framebuffer parameters=
- above, to control things like the image load address, and maybe to enable =
-trustzone boot akin to config.txt's kernel-old=3D1.
->  2. Code to parse config.txt and set the parameters above.
->  3. Code to emulate the bootloader entirely, pulling config.txt and all t=
-he relevant boot bits out of an SD image (this is what Peter describes abov=
-e).
->  4. An ARM-based reimplementation of the bootloader, running under emulat=
-ion.
 
-Setting up U-boot to be #4 could work.
+--Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
->
-> I discarded even considering option 3 because I assumed you wouldn't want=
- a FAT implementation linked into qemu.
+Le 22 avr. 2016 =C3=A0 13:44, Andrew Baumann =
+<Andrew.Baumann@microsoft.com> a =C3=A9crit :
+> You got further on this than I did. I considered a couple of options, =
+of varying complexity/compatibility:
+>=20
+> 0. The status quo: we support -kernel (for Linux images) and -bios =
+(e.g. Windows), but otherwise all the options that can be set in =
+config.txt are treated as the defaults. For example, -bios images are =
+always loaded at 0x8000. Additionally, framebuffer parameters can be set =
+directly from the command line (e.g. Windows wants -global =
+bcm2835-fb.pixo=3D0).
+> 1. More pi-specific parameters in the line of the framebuffer =
+parameters above, to control things like the image load address, and =
+maybe to enable trustzone boot akin to config.txt's kernel-old=3D1.
+> 2. Code to parse config.txt and set the parameters above.
+> 3. Code to emulate the bootloader entirely, pulling config.txt and all =
+the relevant boot bits out of an SD image (this is what Peter describes =
+above).
+> 4. An ARM-based reimplementation of the bootloader, running under =
+emulation.
 
-rPI is not alone here though. Xilinx Zynq does exactly the same thing
-with boot code pulling things out of SD card + FAT so you have at
-least two precedents justifying the feature.
 
-Regards,
-Peter
+Having the ARM bootloader (called armstub in raspberry pi developers =
+words), the config.txt file, and the =C2=AB kernel =C2=BB (whatever it =
+is, ELF or raw binary) on a FAT portion of an SD card is convenient for =
+real hardware: on a lambda user perspective, you just use your lambda =
+computer to burn an image on a SD card (one you don=E2=80=99t use =
+anymore with your camera), then insert it in your shiny new raspberry pi =
+hardware.
 
-> And I'm not inclined to add ini-parsing code, so my gut feeling was to go=
- a little further on option 1 and add parameters to the raspi machines (I a=
-ssume this is possible?) for basic things like the load address, and rely o=
-n users to translate config.txt settings into command-line parameters.
->
-> Andrew
+QEMU in my opinion does not target the regular lambda user, and I =
+wouldn=E2=80=99t go as far as mimicking the FAT / SD emulation boot =
+process: my personal use case for qemu as a developer is =C2=AB kernel =
+=C2=BB development / debugging and my workflow sums up to a simple loop:=20=
+
+
+# vi some_kernel_source_code.c && make && qemu -kernel =
+the_new_kernel_image
+Do that 100 times a day.
+
+Having to place my kernel in a FAT partition of a mounted disk image in =
+my host OS would just complexity my process. I don=E2=80=99t expect my =
+emulator to be 100% similar to the real hardware (it will never in the =
+case of the Raspberry Pi, as long as the GPU firmware source code is =
+closed). I just want to use my emulator to get things done fast (on my =
+host computer rather than real hardware) and I want to emulate CPU and =
+code (interrupts, etc) as closely as possible, without too much effort.
+
+Having said that, I would give the qemu user who wants raspberry pi =
+emulation these two functionalities that the raspberry pi firmware =
+provides:
+1/ ability to use a custom bootloader before launching the kernel: =
+option armstub=3Dsomebootloader.bin in config.txt (be it u-boot or a =
+custom stub which leaves HYP mode)
+2/ ability to load your =C2=AB kernel =C2=BB at a specific address: =
+option kernel_address in config.txt
+
+So future -kernel-address and -bootloader qemu command line parameters =
+(either specific to Raspberry pi or global) is my dream. That way I can =
+play fast with whatever bootloader I want, play with HYP mode, and I can =
+use whatever loading address I want.=20
+
+By the way, for the Raspberry Pi, the address is 0x8000 compared to the =
+default 0x10000 for Arm in qemu, and being able to set it would enable =
+to boot (without patching QEMU=E2=80=99s code) NetBSD images (compiled =
+to work at 0x8000) and FreeBSD kernel without u-boot (requires the =
+loading address to be a multiple of 2MB). Seems to me like basic =
+functionality. I heard your argument Peter mentioning the linux boot =
+protocol doesn=E2=80=99t mandate a loading address, and I find it is for =
+this specific reason that which should let the user choose it. I also =
+heard the =C2=AB use an ELF =C2=BB argument but some non-Linux kernels =
+have by default a virtual (and not physical) address in their header, so =
+doesn=E2=80=99t work straight out of the box.
+
+Just my 2 cents :-) I however want to thank you all for the quality of =
+the ARM emulation and more specifically the Raspberry Pi one, it opens =
+many possibilities and is charm to work with.
+
+Have a very good week-end all,
+Sylvain.=
+
+--Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
+charset=3Dutf-8"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" =
+class=3D"">Le 22 avr. 2016 =C3=A0 13:44, Andrew Baumann &lt;<a =
+href=3D"mailto:Andrew.Baumann@microsoft.com" =
+class=3D"">Andrew.Baumann@microsoft.com</a>&gt; a =C3=A9crit :<br =
+class=3D""><div><blockquote type=3D"cite" class=3D""><div class=3D""><span=
+ style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+orphans: auto; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: auto; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; float: none; display: inline =
+!important;" class=3D"">You got further on this than I did. I considered =
+a couple of options, of varying complexity/compatibility:</span><br =
+style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+orphans: auto; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: auto; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px;" class=3D""><br style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: normal; =
+letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
+0px; text-transform: none; white-space: normal; widows: auto; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
+inline !important;" class=3D"">0. The status quo: we support -kernel =
+(for Linux images) and -bios (e.g. Windows), but otherwise all the =
+options that can be set in config.txt are treated as the defaults. For =
+example, -bios images are always loaded at 0x8000. Additionally, =
+framebuffer parameters can be set directly from the command line (e.g. =
+Windows wants -global bcm2835-fb.pixo=3D0).</span><br =
+style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+orphans: auto; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: auto; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px;" class=3D""><span style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+float: none; display: inline !important;" class=3D"">1. More pi-specific =
+parameters in the line of the framebuffer parameters above, to control =
+things like the image load address, and maybe to enable trustzone boot =
+akin to config.txt's kernel-old=3D1.</span><br style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: normal; =
+letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
+0px; text-transform: none; white-space: normal; widows: auto; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
+inline !important;" class=3D"">2. Code to parse config.txt and set the =
+parameters above.</span><br style=3D"font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; orphans: auto; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: =
+auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span=
+ style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+orphans: auto; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: auto; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; float: none; display: inline =
+!important;" class=3D"">3. Code to emulate the bootloader entirely, =
+pulling config.txt and all the relevant boot bits out of an SD image =
+(this is what Peter describes above).</span><br style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: normal; =
+letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
+0px; text-transform: none; white-space: normal; widows: auto; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
+inline !important;" class=3D"">4. An ARM-based reimplementation of the =
+bootloader, running under emulation.</span><br style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;" class=3D""></div></blockquote></div><br class=3D""><div =
+class=3D""><br class=3D""></div><div class=3D"">Having the ARM =
+bootloader (called armstub in raspberry pi developers words), the =
+config.txt file, and the =C2=AB&nbsp;kernel&nbsp;=C2=BB (whatever it is, =
+ELF or raw binary) on a FAT portion of an SD card is convenient for real =
+hardware: on a lambda user perspective, you just use your lambda =
+computer to burn an image on a SD card (one you don=E2=80=99t use =
+anymore with your camera), then insert it in your shiny new raspberry pi =
+hardware.</div><div class=3D""><br class=3D""></div><div class=3D"">QEMU =
+in my opinion does not target the regular lambda user, and I wouldn=E2=80=99=
+t go as far as mimicking the FAT / SD emulation boot process: my =
+personal use case for qemu as a developer is =C2=AB&nbsp;kernel&nbsp;=C2=BB=
+ development / debugging and my workflow sums up to a simple =
+loop:&nbsp;</div><div class=3D""><br class=3D""></div><div class=3D""># =
+vi some_kernel_source_code.c &amp;&amp; make &amp;&amp; qemu -kernel =
+the_new_kernel_image</div><div class=3D"">Do that 100 times a =
+day.</div><div class=3D""><br class=3D""></div><div class=3D"">Having to =
+place my kernel in a FAT partition of a mounted disk image in my host OS =
+would just complexity my process. I don=E2=80=99t expect my emulator to =
+be 100% similar to the real hardware (it will never in the case of the =
+Raspberry Pi, as long as the GPU firmware source code is closed). I just =
+want to use my emulator to get things done fast (on my host computer =
+rather than real hardware) and I want to emulate CPU and code =
+(interrupts, etc) as closely as possible, without too much =
+effort.</div><div class=3D""><br class=3D""></div><div class=3D"">Having =
+said that, I would give the qemu user who wants raspberry pi emulation =
+these two functionalities that the raspberry pi firmware =
+provides:</div><div class=3D"">1/ ability to use a custom bootloader =
+before launching the kernel: option armstub=3Dsomebootloader.bin in =
+config.txt (be it u-boot or a custom stub which leaves HYP =
+mode)</div><div class=3D"">2/ ability to load your =C2=AB kernel&nbsp;=C2=BB=
+ at a specific address: option kernel_address in config.txt</div><div =
+class=3D""><br class=3D""></div><div class=3D"">So future =
+-kernel-address and -bootloader qemu command line parameters (either =
+specific to Raspberry pi or global) is my dream. That way I can play =
+fast with whatever bootloader I want, play with HYP mode, and I can use =
+whatever loading address I want.&nbsp;</div><div class=3D""><br =
+class=3D""></div><div class=3D"">By the way, for the Raspberry Pi, the =
+address is 0x8000 compared to the default 0x10000 for Arm in qemu, and =
+being able to set it would enable to boot (without patching QEMU=E2=80=99s=
+ code) NetBSD images (compiled to work at 0x8000) and FreeBSD kernel =
+without u-boot (requires the loading address to be a multiple of 2MB). =
+Seems to me like basic functionality. I heard your argument Peter =
+mentioning the linux boot protocol doesn=E2=80=99t mandate a loading =
+address, and I find it is for this specific reason that which should let =
+the user choose it. I also heard the =C2=AB&nbsp;use an ELF =C2=BB =
+argument but some non-Linux kernels have by default a virtual (and not =
+physical) address in their header, so doesn=E2=80=99t work straight out =
+of the box.</div><div class=3D""><br class=3D""></div><div class=3D"">Just=
+ my 2 cents :-) I however want to thank you all for the quality of the =
+ARM emulation and more specifically the Raspberry Pi one, it opens many =
+possibilities and is charm to work with.</div><div class=3D""><br =
+class=3D""></div><div class=3D"">Have a very good week-end =
+all,</div><div class=3D"">Sylvain.</div></body></html>=
+
+--Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5--

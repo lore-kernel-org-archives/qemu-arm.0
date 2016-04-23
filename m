@@ -1,328 +1,240 @@
-Received: by 10.25.208.194 with SMTP id h185csp910358lfg;
-        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
-X-Received: by 10.141.45.5 with SMTP id w5mr23962362qhe.1.1461348627516;
-        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp1044403lfg;
+        Fri, 22 Apr 2016 18:01:57 -0700 (PDT)
+X-Received: by 10.55.173.5 with SMTP id w5mr7445360qke.115.1461373317300;
+        Fri, 22 Apr 2016 18:01:57 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w198si3923471qkb.163.2016.04.22.11.10.27
+        by mx.google.com with ESMTPS id g8si4824342qgf.54.2016.04.22.18.01.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Apr 2016 11:10:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Apr 2016 18:01:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37428 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43005 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1atfX8-0003RJ-UB
-	for alex.bennee@linaro.org; Fri, 22 Apr 2016 14:10:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44676)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1atlxL-0002Ab-Qz
+	for alex.bennee@linaro.org; Fri, 22 Apr 2016 21:01:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55160)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>) id 1atfWe-0002aK-SN
-	for qemu-devel@nongnu.org; Fri, 22 Apr 2016 14:09:58 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1atlxJ-00027m-Ii
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 21:01:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>) id 1atfWa-00059n-QW
-	for qemu-devel@nongnu.org; Fri, 22 Apr 2016 14:09:56 -0400
-Received: from mail-wm0-f42.google.com ([74.125.82.42]:36435)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1atlxG-0006co-Bi
+	for qemu-arm@nongnu.org; Fri, 22 Apr 2016 21:01:53 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:59135)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sylgar@gmail.com>)
-	id 1atfWa-00059j-HA; Fri, 22 Apr 2016 14:09:52 -0400
-Received: by mail-wm0-f42.google.com with SMTP id v188so30209513wme.1;
-	Fri, 22 Apr 2016 11:09:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-	:message-id:references:to;
-	bh=eAj6FNuf5F/N0Ey3fjpGp4WqqXDp+uVWCq49xDyK+aY=;
-	b=T9bR7d+eb19pwEDh3kriER114BjWpgD15q9V2TyluttW7BVzVL1NLOzVYo7TERCkym
-	DnI/B+ve7YAyXod9wfg4E+tRzFiXgE1XPPOGIUSv8xi/3lM74b67iHxHx0gV/VyrLqp3
-	isO4AKSY5ju9UAJgTG3sXzXRm6gCk+LMyuRwM8aDwmRTYUdDffyM8dWt6lMDlHXEiFol
-	KZfZGVkJ5NVCbSHBm1/gHb9IH+zlZ2+aEpsRg34gTH+0soNG1krbrmKUnrKTPZWaOGLk
-	Wwl7J9txtlNayfQ0UOT5hei6TGTyiu0hAeYwzyESlYQxTeo+GDxlF0HBUjUc71z9iDOs
-	MOkw==
-X-Gm-Message-State: AOPr4FX6YjIlVKcqilZDVQtuCLDwnjZy0HY9OFTREqXuYwIuQtXNbAYuSpBAwrAlZjNEog==
-X-Received: by 10.28.212.71 with SMTP id l68mr5317415wmg.22.1461348591903;
-	Fri, 22 Apr 2016 11:09:51 -0700 (PDT)
-Received: from [192.168.0.10] (plr75-1-82-226-218-68.fbx.proxad.net.
-	[82.226.218.68]) by smtp.gmail.com with ESMTPSA id
-	r123sm4520623wmg.20.2016.04.22.11.09.49
-	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 22 Apr 2016 11:09:50 -0700 (PDT)
-Content-Type: multipart/alternative;
-	boundary="Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5"
-Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
-From: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-In-Reply-To: <BLUPR0301MB2034E26C749A161446AAB1389E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Date: Fri, 22 Apr 2016 20:09:48 +0200
-Message-Id: <E923420D-A263-4C2C-80C7-AE10FFDF8E80@sylvaingarrigues.com>
-References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
-	<CAFEAcA8mLk+3t+ypR96WPG9yMsvbJ4hmgk1NwfxPLHzk0R=Dwg@mail.gmail.com>
-	<DD3027E2-6F96-4D87-B2C5-02E9926AA402@sylvaingarrigues.com>
-	<CAFEAcA_nE2Ee_Ky+upz4veasmkyiVSHqyUe2-brtfopJA2-=_g@mail.gmail.com>
-	<A03258E3-4CFE-49F8-8601-1467CD70AC29@sylvaingarrigues.com>
-	<CAFEAcA-yDZKEgZfFmtgn3+j3qCKo_zUJwp40BRERF4rF-tjASw@mail.gmail.com>
-	<DED29353-D9CE-45F5-990F-0A32DB57B4AE@sylvaingarrigues.com>
-	<5718FA7F.5030903@wwwdotorg.org>
-	<CAPokK=qiaGkd3oZ+r_cLNov4gvAF6Qtv-p6NwxHkY_m4_NrqRg@mail.gmail.com>
-	<BLUPR0301MB2034E26C749A161446AAB1389E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-X-Mailer: Apple Mail (2.3124)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 74.125.82.42
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] bcm2835_property: use cached
- values when querying framebuffer
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1atlxD-0006VQ-5v; Fri, 22 Apr 2016 21:01:50 -0400
+Received: from 172.24.1.60 (EHLO szxeml425-hub.china.huawei.com)
+	([172.24.1.60])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DFW17790; Sat, 23 Apr 2016 09:01:16 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml425-hub.china.huawei.com
+	(10.82.67.180) with Microsoft SMTP Server id 14.3.235.1;
+	Sat, 23 Apr 2016 09:01:06 +0800
+Message-ID: <571AC94D.20004@huawei.com>
+Date: Sat, 23 Apr 2016 09:01:01 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Andrew Jones <drjones@redhat.com>
+References: <1458899181-17896-1-git-send-email-zhaoshenglong@huawei.com>
+	<1458899181-17896-3-git-send-email-zhaoshenglong@huawei.com>
+	<20160422143233.aunjwn6l37toqtqc@hawk.localdomain>
+In-Reply-To: <20160422143233.aunjwn6l37toqtqc@hawk.localdomain>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020204.571AC95E.00D4, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 25cbd8d7d02c5d1958e278074c5b2114
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] hw/arm/virt: Add PMU node
+ for virt machine
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stephen Warren <swarren@wwwdotorg.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FCDiEbqhYDNy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, shannon.zhao@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kZpVaqzRgydW
 
 
---Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
 
-Le 22 avr. 2016 =C3=A0 13:44, Andrew Baumann =
-<Andrew.Baumann@microsoft.com> a =C3=A9crit :
-> You got further on this than I did. I considered a couple of options, =
-of varying complexity/compatibility:
->=20
-> 0. The status quo: we support -kernel (for Linux images) and -bios =
-(e.g. Windows), but otherwise all the options that can be set in =
-config.txt are treated as the defaults. For example, -bios images are =
-always loaded at 0x8000. Additionally, framebuffer parameters can be set =
-directly from the command line (e.g. Windows wants -global =
-bcm2835-fb.pixo=3D0).
-> 1. More pi-specific parameters in the line of the framebuffer =
-parameters above, to control things like the image load address, and =
-maybe to enable trustzone boot akin to config.txt's kernel-old=3D1.
-> 2. Code to parse config.txt and set the parameters above.
-> 3. Code to emulate the bootloader entirely, pulling config.txt and all =
-the relevant boot bits out of an SD image (this is what Peter describes =
-above).
-> 4. An ARM-based reimplementation of the bootloader, running under =
-emulation.
+On 2016/4/22 22:32, Andrew Jones wrote:
+> On Fri, Mar 25, 2016 at 05:46:20PM +0800, Shannon Zhao wrote:
+>> From: Shannon Zhao <shannon.zhao@linaro.org>
+>>
+>> Add a virtual PMU device for virt machine while use PPI 7 for PMU
+>> overflow interrupt number.
+>>
+>> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+>> ---
+>>  hw/arm/virt.c         | 31 +++++++++++++++++++++++++++++++
+>>  include/hw/arm/virt.h |  2 ++
+>>  include/sysemu/kvm.h  |  1 +
+>>  stubs/kvm.c           |  5 +++++
+>>  target-arm/kvm64.c    | 51 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>>  5 files changed, 90 insertions(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 95331a5..94c2beb 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -427,6 +427,35 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
+>>      qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
+>>  }
+>>  
+>> +static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi)
+>> +{
+>> +    CPUState *cpu;
+>> +    ARMCPU *armcpu;
+>> +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+>> +
+>> +    CPU_FOREACH(cpu) {
+>> +        armcpu = ARM_CPU(cpu);
+>> +	if (!armcpu->has_pmu) {
+>> +	    return;
+> 
+> funny indentation here
+> 
+>> +	}
+>> +
+>> +        kvm_arm_pmu_create(cpu, VIRTUAL_PMU_IRQ + 16);
+> 
+> I think we should have a PPI(irq) ((irq) + 16) type of macro.
+> 
+>> +    }
+>> +
+>> +    irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+>> +                         GIC_FDT_IRQ_PPI_CPU_WIDTH, (1 << vbi->smp_cpus) - 1);
+>> +
+>> +    armcpu = ARM_CPU(qemu_get_cpu(0));
+>> +    qemu_fdt_add_subnode(vbi->fdt, "/pmu");
+>> +    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+>> +        const char compat[] = "arm,armv8-pmuv3";
+>> +        qemu_fdt_setprop(vbi->fdt, "/pmu", "compatible",
+>> +                         compat, sizeof(compat));
+>> +        qemu_fdt_setprop_cells(vbi->fdt, "/pmu", "interrupts",
+>> +                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_PMU_IRQ, irqflags);
+>> +    }
+> 
+> else what? I guess it's not possible to have has_pmu and !ARM_FEATURE_V8
+> at the same time right now, but it seems strange to create a /pmu node,
+> but then only conditionally populate it.
+> 
+Yeah, currently kvm only supports guest PMU for ARMv8, but maybe in the
+future it will support ARMv7.
 
+>> +}
+>> +
+>>  static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
+>>  {
+>>      int i;
+>> @@ -1242,6 +1271,8 @@ static void machvirt_init(MachineState *machine)
+>>  
+>>      create_gic(vbi, pic, gic_version, vms->secure);
+>>  
+>> +    fdt_add_pmu_nodes(vbi);
+>> +
+>>      create_uart(vbi, pic, VIRT_UART, sysmem);
+>>  
+>>      if (vms->secure) {
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index ecd8589..864eb49 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -40,6 +40,8 @@
+>>  #define ARCH_TIMER_NS_EL1_IRQ 14
+>>  #define ARCH_TIMER_NS_EL2_IRQ 10
+>>  
+>> +#define VIRTUAL_PMU_IRQ 7
+> 
+> Can we find a way to make this configurable? a cpu property?
+> 
+Of course we can. But as we are the maker of the virt machine board, we
+can decide the design of the hardware. In addition, what's the purpose
+for making it configurable?
 
-Having the ARM bootloader (called armstub in raspberry pi developers =
-words), the config.txt file, and the =C2=AB kernel =C2=BB (whatever it =
-is, ELF or raw binary) on a FAT portion of an SD card is convenient for =
-real hardware: on a lambda user perspective, you just use your lambda =
-computer to burn an image on a SD card (one you don=E2=80=99t use =
-anymore with your camera), then insert it in your shiny new raspberry pi =
-hardware.
+>> +
+>>  enum {
+>>      VIRT_FLASH,
+>>      VIRT_MEM,
+>> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+>> index 6695fa7..80b6cb3 100644
+>> --- a/include/sysemu/kvm.h
+>> +++ b/include/sysemu/kvm.h
+>> @@ -514,4 +514,5 @@ int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source);
+>>   * Returns: 0 on success, or a negative errno on failure.
+>>   */
+>>  int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target);
+>> +void kvm_arm_pmu_create(CPUState *cs, int irq);
+>>  #endif
+>> diff --git a/stubs/kvm.c b/stubs/kvm.c
+>> index ddd6204..58a348a 100644
+>> --- a/stubs/kvm.c
+>> +++ b/stubs/kvm.c
+>> @@ -6,3 +6,8 @@ int kvm_arch_irqchip_create(MachineState *ms, KVMState *s)
+>>  {
+>>      return 0;
+>>  }
+>> +
+>> +void kvm_arm_pmu_create(CPUState *cs, int irq)
+>> +{
+>> +    return;
+>> +}
+>> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+>> index b364789..b97b9ef 100644
+>> --- a/target-arm/kvm64.c
+>> +++ b/target-arm/kvm64.c
+>> @@ -382,6 +382,57 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
+>>      return NULL;
+>>  }
+>>  
+>> +static bool kvm_arm_pmu_support_ctrl(CPUState *cs, struct kvm_device_attr *attr)
+>> +{
+>> +    return kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr) == 0;
+>> +}
+>> +
+>> +static void kvm_arm_pmu_init(CPUState *cs)
+>> +{
+>> +    int err;
+>> +
+>> +    struct kvm_device_attr attr = {
+>> +        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
+>> +        .attr = KVM_ARM_VCPU_PMU_V3_INIT,
+>> +        .flags = 0,
+>> +    };
+>> +
+>> +    if (!kvm_arm_pmu_support_ctrl(cs, &attr)) {
+>> +        return;
+>> +    }
+> 
+> I don't think we need to do this check again here. kvm_arm_pmu_init is
+> only called from a function that already checked for the IRQ attribute,
+> and both IRQ and INIT were added to the kernel at the same time.
+> 
+> Actually I think we could just opencode kvm_arm_pmu_init in
+> kvm_arm_pmu_create.
+> 
+Sure. Thanks.
 
-QEMU in my opinion does not target the regular lambda user, and I =
-wouldn=E2=80=99t go as far as mimicking the FAT / SD emulation boot =
-process: my personal use case for qemu as a developer is =C2=AB kernel =
-=C2=BB development / debugging and my workflow sums up to a simple loop:=20=
+-- 
+Shannon
 
-
-# vi some_kernel_source_code.c && make && qemu -kernel =
-the_new_kernel_image
-Do that 100 times a day.
-
-Having to place my kernel in a FAT partition of a mounted disk image in =
-my host OS would just complexity my process. I don=E2=80=99t expect my =
-emulator to be 100% similar to the real hardware (it will never in the =
-case of the Raspberry Pi, as long as the GPU firmware source code is =
-closed). I just want to use my emulator to get things done fast (on my =
-host computer rather than real hardware) and I want to emulate CPU and =
-code (interrupts, etc) as closely as possible, without too much effort.
-
-Having said that, I would give the qemu user who wants raspberry pi =
-emulation these two functionalities that the raspberry pi firmware =
-provides:
-1/ ability to use a custom bootloader before launching the kernel: =
-option armstub=3Dsomebootloader.bin in config.txt (be it u-boot or a =
-custom stub which leaves HYP mode)
-2/ ability to load your =C2=AB kernel =C2=BB at a specific address: =
-option kernel_address in config.txt
-
-So future -kernel-address and -bootloader qemu command line parameters =
-(either specific to Raspberry pi or global) is my dream. That way I can =
-play fast with whatever bootloader I want, play with HYP mode, and I can =
-use whatever loading address I want.=20
-
-By the way, for the Raspberry Pi, the address is 0x8000 compared to the =
-default 0x10000 for Arm in qemu, and being able to set it would enable =
-to boot (without patching QEMU=E2=80=99s code) NetBSD images (compiled =
-to work at 0x8000) and FreeBSD kernel without u-boot (requires the =
-loading address to be a multiple of 2MB). Seems to me like basic =
-functionality. I heard your argument Peter mentioning the linux boot =
-protocol doesn=E2=80=99t mandate a loading address, and I find it is for =
-this specific reason that which should let the user choose it. I also =
-heard the =C2=AB use an ELF =C2=BB argument but some non-Linux kernels =
-have by default a virtual (and not physical) address in their header, so =
-doesn=E2=80=99t work straight out of the box.
-
-Just my 2 cents :-) I however want to thank you all for the quality of =
-the ARM emulation and more specifically the Raspberry Pi one, it opens =
-many possibilities and is charm to work with.
-
-Have a very good week-end all,
-Sylvain.=
-
---Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html =
-charset=3Dutf-8"></head><body style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; -webkit-line-break: after-white-space;" =
-class=3D"">Le 22 avr. 2016 =C3=A0 13:44, Andrew Baumann &lt;<a =
-href=3D"mailto:Andrew.Baumann@microsoft.com" =
-class=3D"">Andrew.Baumann@microsoft.com</a>&gt; a =C3=A9crit :<br =
-class=3D""><div><blockquote type=3D"cite" class=3D""><div class=3D""><span=
- style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; float: none; display: inline =
-!important;" class=3D"">You got further on this than I did. I considered =
-a couple of options, of varying complexity/compatibility:</span><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
-0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
-0px; text-transform: none; white-space: normal; widows: auto; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">0. The status quo: we support -kernel =
-(for Linux images) and -bios (e.g. Windows), but otherwise all the =
-options that can be set in config.txt are treated as the defaults. For =
-example, -bios images are always loaded at 0x8000. Additionally, =
-framebuffer parameters can be set directly from the command line (e.g. =
-Windows wants -global bcm2835-fb.pixo=3D0).</span><br =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;" class=3D""><span style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-float: none; display: inline !important;" class=3D"">1. More pi-specific =
-parameters in the line of the framebuffer parameters above, to control =
-things like the image load address, and maybe to enable trustzone boot =
-akin to config.txt's kernel-old=3D1.</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
-0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
-0px; text-transform: none; white-space: normal; widows: auto; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">2. Code to parse config.txt and set the =
-parameters above.</span><br style=3D"font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; orphans: auto; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: =
-auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;" class=3D""><span=
- style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-orphans: auto; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: auto; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; float: none; display: inline =
-!important;" class=3D"">3. Code to emulate the bootloader entirely, =
-pulling config.txt and all the relevant boot bits out of an SD image =
-(this is what Peter describes above).</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
-0px;" class=3D""><span style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: normal; =
-letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
-0px; text-transform: none; white-space: normal; widows: auto; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; float: none; display: =
-inline !important;" class=3D"">4. An ARM-based reimplementation of the =
-bootloader, running under emulation.</span><br style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: =
-0px;" class=3D""></div></blockquote></div><br class=3D""><div =
-class=3D""><br class=3D""></div><div class=3D"">Having the ARM =
-bootloader (called armstub in raspberry pi developers words), the =
-config.txt file, and the =C2=AB&nbsp;kernel&nbsp;=C2=BB (whatever it is, =
-ELF or raw binary) on a FAT portion of an SD card is convenient for real =
-hardware: on a lambda user perspective, you just use your lambda =
-computer to burn an image on a SD card (one you don=E2=80=99t use =
-anymore with your camera), then insert it in your shiny new raspberry pi =
-hardware.</div><div class=3D""><br class=3D""></div><div class=3D"">QEMU =
-in my opinion does not target the regular lambda user, and I wouldn=E2=80=99=
-t go as far as mimicking the FAT / SD emulation boot process: my =
-personal use case for qemu as a developer is =C2=AB&nbsp;kernel&nbsp;=C2=BB=
- development / debugging and my workflow sums up to a simple =
-loop:&nbsp;</div><div class=3D""><br class=3D""></div><div class=3D""># =
-vi some_kernel_source_code.c &amp;&amp; make &amp;&amp; qemu -kernel =
-the_new_kernel_image</div><div class=3D"">Do that 100 times a =
-day.</div><div class=3D""><br class=3D""></div><div class=3D"">Having to =
-place my kernel in a FAT partition of a mounted disk image in my host OS =
-would just complexity my process. I don=E2=80=99t expect my emulator to =
-be 100% similar to the real hardware (it will never in the case of the =
-Raspberry Pi, as long as the GPU firmware source code is closed). I just =
-want to use my emulator to get things done fast (on my host computer =
-rather than real hardware) and I want to emulate CPU and code =
-(interrupts, etc) as closely as possible, without too much =
-effort.</div><div class=3D""><br class=3D""></div><div class=3D"">Having =
-said that, I would give the qemu user who wants raspberry pi emulation =
-these two functionalities that the raspberry pi firmware =
-provides:</div><div class=3D"">1/ ability to use a custom bootloader =
-before launching the kernel: option armstub=3Dsomebootloader.bin in =
-config.txt (be it u-boot or a custom stub which leaves HYP =
-mode)</div><div class=3D"">2/ ability to load your =C2=AB kernel&nbsp;=C2=BB=
- at a specific address: option kernel_address in config.txt</div><div =
-class=3D""><br class=3D""></div><div class=3D"">So future =
--kernel-address and -bootloader qemu command line parameters (either =
-specific to Raspberry pi or global) is my dream. That way I can play =
-fast with whatever bootloader I want, play with HYP mode, and I can use =
-whatever loading address I want.&nbsp;</div><div class=3D""><br =
-class=3D""></div><div class=3D"">By the way, for the Raspberry Pi, the =
-address is 0x8000 compared to the default 0x10000 for Arm in qemu, and =
-being able to set it would enable to boot (without patching QEMU=E2=80=99s=
- code) NetBSD images (compiled to work at 0x8000) and FreeBSD kernel =
-without u-boot (requires the loading address to be a multiple of 2MB). =
-Seems to me like basic functionality. I heard your argument Peter =
-mentioning the linux boot protocol doesn=E2=80=99t mandate a loading =
-address, and I find it is for this specific reason that which should let =
-the user choose it. I also heard the =C2=AB&nbsp;use an ELF =C2=BB =
-argument but some non-Linux kernels have by default a virtual (and not =
-physical) address in their header, so doesn=E2=80=99t work straight out =
-of the box.</div><div class=3D""><br class=3D""></div><div class=3D"">Just=
- my 2 cents :-) I however want to thank you all for the quality of the =
-ARM emulation and more specifically the Raspberry Pi one, it opens many =
-possibilities and is charm to work with.</div><div class=3D""><br =
-class=3D""></div><div class=3D"">Have a very good week-end =
-all,</div><div class=3D"">Sylvain.</div></body></html>=
-
---Apple-Mail=_02B2668F-7A53-44B3-A6ED-89FD9413FEC5--

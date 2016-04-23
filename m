@@ -1,169 +1,100 @@
-Received: by 10.25.208.194 with SMTP id h185csp1191167lfg;
-        Sat, 23 Apr 2016 02:15:36 -0700 (PDT)
-X-Received: by 10.140.105.134 with SMTP id c6mr5654324qgf.31.1461402936080;
-        Sat, 23 Apr 2016 02:15:36 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp1207890lfg;
+        Sat, 23 Apr 2016 03:06:13 -0700 (PDT)
+X-Received: by 10.141.47.66 with SMTP id y63mr16090277qhe.74.1461405973433;
+        Sat, 23 Apr 2016 03:06:13 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e24si5221367qkj.236.2016.04.23.02.15.35
+        by mx.google.com with ESMTPS id v11si5542886qhv.31.2016.04.23.03.06.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Apr 2016 02:15:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 23 Apr 2016 03:06:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50152 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50885 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1attf5-0000iI-Fq
-	for alex.bennee@linaro.org; Sat, 23 Apr 2016 05:15:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46023)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1atuS4-0008BI-RS
+	for alex.bennee@linaro.org; Sat, 23 Apr 2016 06:06:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50969)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1attf2-0000dt-AO
-	for qemu-arm@nongnu.org; Sat, 23 Apr 2016 05:15:33 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1atuQw-00064e-6b
+	for qemu-devel@nongnu.org; Sat, 23 Apr 2016 06:05:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1attf1-0002ig-9k
-	for qemu-arm@nongnu.org; Sat, 23 Apr 2016 05:15:32 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:22145)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1atuQr-0005uE-D0
+	for qemu-devel@nongnu.org; Sat, 23 Apr 2016 06:05:02 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:56163)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1attew-0002iJ-Eb; Sat, 23 Apr 2016 05:15:27 -0400
-Received: from 172.24.1.49 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.1.49])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CAK99779; Sat, 23 Apr 2016 17:07:03 +0800 (CST)
+	id 1atuQq-0005to-98; Sat, 23 Apr 2016 06:04:57 -0400
+Received: from 172.24.1.47 (EHLO szxeml422-hub.china.huawei.com)
+	([172.24.1.47])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DJI66787; Sat, 23 Apr 2016 18:04:38 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.235.1; Sat, 23 Apr 2016 17:06:53 +0800
+	szxeml422-hub.china.huawei.com (10.82.67.152) with Microsoft SMTP
+	Server id 14.3.235.1; Sat, 23 Apr 2016 18:04:27 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Sat, 23 Apr 2016 17:06:35 +0800
-Message-ID: <1461402396-11776-5-git-send-email-zhaoshenglong@huawei.com>
+Date: Sat, 23 Apr 2016 18:04:15 +0800
+Message-ID: <1461405855-15576-4-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1461402396-11776-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1461402396-11776-1-git-send-email-zhaoshenglong@huawei.com>
+In-Reply-To: <1461405855-15576-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1461405855-15576-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020205.571B3B37.00BD, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020203.571B48B7.0185, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 87bfbc57bfa3aab60c8877d37ce421c4
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 262495335b912ea68b8863ff740aa697
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Subject: [Qemu-arm] [PATCH v6 4/5] ACPI: move acpi_build_srat_memory to
- common place
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 58.251.152.64
+Subject: [Qemu-devel] [PATCH v2 3/3] hw/arm/virt-acpi-build: Add PMU IRQ
+ number in ACPI table
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>,
-	david.daney@cavium.com, peter.huangpeng@huawei.com,
-	qemu-devel@nongnu.org, shannon.zhao@linaro.org,
-	Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YFKT2wCm/KMA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, shannon.zhao@linaro.org, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qLrYgccXVq2t
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Move acpi_build_srat_memory to common place so that it could be reused
-by ARM.
+Add PMU IRQ number in ACPI table, then we can use PMU in guest through
+ACPI.
 
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 ---
- hw/acpi/aml-build.c         | 12 ++++++++++++
- hw/i386/acpi-build.c        | 20 --------------------
- include/hw/acpi/aml-build.h | 10 ++++++++++
- 3 files changed, 22 insertions(+), 20 deletions(-)
+ hw/arm/virt-acpi-build.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index ab89ca6..d167003 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1563,3 +1563,15 @@ build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets,
-     build_header(linker, table_data,
-                  (void *)rsdt, "RSDT", rsdt_len, 1, oem_id, oem_table_id);
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f51fe39..5031232 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -491,6 +491,9 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+         gicc->arm_mpidr = armcpu->mp_affinity;
+         gicc->uid = i;
+         gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
 +
-+void acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-+                            uint64_t len, int node, MemoryAffinityFlags flags)
-+{
-+    numamem->type = ACPI_SRAT_MEMORY;
-+    numamem->length = sizeof(*numamem);
-+    memset(numamem->proximity, 0, 4);
-+    numamem->proximity[0] = node;
-+    numamem->flags = cpu_to_le32(flags);
-+    numamem->base_addr = cpu_to_le64(base);
-+    numamem->range_length = cpu_to_le64(len);
-+}
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 9ae4c0d..cd93825 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2427,26 +2427,6 @@ build_tpm2(GArray *table_data, GArray *linker)
-                  (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
- }
++        if (armcpu->has_pmu)
++            gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+     }
  
--typedef enum {
--    MEM_AFFINITY_NOFLAGS      = 0,
--    MEM_AFFINITY_ENABLED      = (1 << 0),
--    MEM_AFFINITY_HOTPLUGGABLE = (1 << 1),
--    MEM_AFFINITY_NON_VOLATILE = (1 << 2),
--} MemoryAffinityFlags;
--
--static void
--acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
--                       uint64_t len, int node, MemoryAffinityFlags flags)
--{
--    numamem->type = ACPI_SRAT_MEMORY;
--    numamem->length = sizeof(*numamem);
--    memset(numamem->proximity, 0, 4);
--    numamem->proximity[0] = node;
--    numamem->flags = cpu_to_le32(flags);
--    numamem->base_addr = cpu_to_le64(base);
--    numamem->range_length = cpu_to_le64(len);
--}
--
- static void
- build_srat(GArray *table_data, GArray *linker, MachineState *machine)
- {
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 2c994b3..d8f9fca 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -198,6 +198,13 @@ typedef enum {
-     AML_PULL_NONE = 3,
- } AmlPinConfig;
- 
-+typedef enum {
-+    MEM_AFFINITY_NOFLAGS      = 0,
-+    MEM_AFFINITY_ENABLED      = (1 << 0),
-+    MEM_AFFINITY_HOTPLUGGABLE = (1 << 1),
-+    MEM_AFFINITY_NON_VOLATILE = (1 << 2),
-+} MemoryAffinityFlags;
-+
- typedef
- struct AcpiBuildTables {
-     GArray *table_data;
-@@ -372,4 +379,7 @@ int
- build_append_named_dword(GArray *array, const char *name_format, ...)
- GCC_FMT_ATTR(2, 3);
- 
-+void acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-+                            uint64_t len, int node, MemoryAffinityFlags flags);
-+
- #endif
+     if (guest_info->gic_version == 3) {
 -- 
 2.0.4
 

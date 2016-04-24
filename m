@@ -1,58 +1,58 @@
-Received: by 10.25.208.194 with SMTP id h185csp1207539lfg;
-        Sat, 23 Apr 2016 03:05:17 -0700 (PDT)
-X-Received: by 10.55.31.203 with SMTP id n72mr10255240qkh.53.1461405917632;
-        Sat, 23 Apr 2016 03:05:17 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp498550lfg;
+        Sun, 24 Apr 2016 09:55:51 -0700 (PDT)
+X-Received: by 10.140.98.175 with SMTP id o44mr30994461qge.46.1461516951185;
+        Sun, 24 Apr 2016 09:55:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z66si5548034qgz.65.2016.04.23.03.05.17
+        by mx.google.com with ESMTPS id n141si8607182qhc.132.2016.04.24.09.55.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Apr 2016 03:05:17 -0700 (PDT)
+        Sun, 24 Apr 2016 09:55:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50882 helo=lists.gnu.org)
+Received: from localhost ([::1]:55973 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1atuRB-0006WT-13
-	for alex.bennee@linaro.org; Sat, 23 Apr 2016 06:05:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51032)
+	id 1auNK2-0006Zw-QV
+	for alex.bennee@linaro.org; Sun, 24 Apr 2016 12:55:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1atuQy-00068O-MC
-	for qemu-arm@nongnu.org; Sat, 23 Apr 2016 06:05:05 -0400
+	(envelope-from <drjones@redhat.com>) id 1auNK0-0006Xj-Nk
+	for qemu-arm@nongnu.org; Sun, 24 Apr 2016 12:55:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1atuQx-0005vt-G9
-	for qemu-arm@nongnu.org; Sat, 23 Apr 2016 06:05:04 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:56166)
+	(envelope-from <drjones@redhat.com>) id 1auNJx-0002jt-HC
+	for qemu-arm@nongnu.org; Sun, 24 Apr 2016 12:55:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49776)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1atuQq-0005tu-N3; Sat, 23 Apr 2016 06:04:57 -0400
-Received: from 172.24.1.47 (EHLO szxeml422-hub.china.huawei.com)
-	([172.24.1.47])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DJI66786; Sat, 23 Apr 2016 18:04:38 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml422-hub.china.huawei.com (10.82.67.152) with Microsoft SMTP
-	Server id 14.3.235.1; Sat, 23 Apr 2016 18:04:27 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Sat, 23 Apr 2016 18:04:14 +0800
-Message-ID: <1461405855-15576-3-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1461405855-15576-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1461405855-15576-1-git-send-email-zhaoshenglong@huawei.com>
+	(envelope-from <drjones@redhat.com>)
+	id 1auNJx-0002jp-9m; Sun, 24 Apr 2016 12:55:45 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EFEABC0586A0;
+	Sun, 24 Apr 2016 16:55:43 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-19.brq.redhat.com [10.40.204.19])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3OGtdJO006189
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Sun, 24 Apr 2016 12:55:42 -0400
+Date: Sun, 24 Apr 2016 18:55:39 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Message-ID: <20160424165539.an6slm62jxyjm7py@hawk.localdomain>
+References: <1461402396-11776-1-git-send-email-zhaoshenglong@huawei.com>
+	<1461402396-11776-3-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.571B48B7.0199, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 2ba26beb7e5a36b5323c6aeeb4a4a0fa
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Subject: [Qemu-arm] [PATCH v2 2/3] hw/arm/virt: Add PMU node for virt machine
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1461402396-11776-3-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v6 2/5] ARM: Add numa-node-id for /memory node
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,164 +64,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, shannon.zhao@linaro.org, qemu-devel@nongnu.org,
-	peter.huangpeng@huawei.com
+Cc: peter.maydell@linaro.org, david.daney@cavium.com,
+	peter.huangpeng@huawei.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, shannon.zhao@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wMgAkWEu40ww
+X-TUID: 5fjvIu4ZbEJB
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
+On Sat, Apr 23, 2016 at 05:06:33PM +0800, Shannon Zhao wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+> 
+> When specifying NUMA for ARM machine, generate /memory node according to
+> NUMA topology.
+> 
+> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> ---
+>  hw/arm/boot.c | 43 +++++++++++++++++++++++++++++++++++++------
+>  1 file changed, 37 insertions(+), 6 deletions(-)
 
-Add a virtual PMU device for virt machine while use PPI 7 for PMU
-overflow interrupt number.
+Reviewed-by: Andrew Jones <drjones@redhat.com> 
 
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
----
- hw/arm/virt.c         | 31 +++++++++++++++++++++++++++++++
- include/hw/arm/virt.h |  4 ++++
- include/sysemu/kvm.h  |  1 +
- stubs/kvm.c           |  5 +++++
- target-arm/kvm64.c    | 39 +++++++++++++++++++++++++++++++++++++++
- 5 files changed, 80 insertions(+)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 56d35c7..d77b314 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -428,6 +428,35 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
-     qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
- }
- 
-+static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi)
-+{
-+    CPUState *cpu;
-+    ARMCPU *armcpu;
-+    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
-+
-+    CPU_FOREACH(cpu) {
-+        armcpu = ARM_CPU(cpu);
-+        if (!armcpu->has_pmu) {
-+            return;
-+        }
-+
-+        kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ));
-+    }
-+
-+    irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-+                         GIC_FDT_IRQ_PPI_CPU_WIDTH, (1 << vbi->smp_cpus) - 1);
-+
-+    armcpu = ARM_CPU(qemu_get_cpu(0));
-+    qemu_fdt_add_subnode(vbi->fdt, "/pmu");
-+    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
-+        const char compat[] = "arm,armv8-pmuv3";
-+        qemu_fdt_setprop(vbi->fdt, "/pmu", "compatible",
-+                         compat, sizeof(compat));
-+        qemu_fdt_setprop_cells(vbi->fdt, "/pmu", "interrupts",
-+                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_PMU_IRQ, irqflags);
-+    }
-+}
-+
- static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
- {
-     int i;
-@@ -1246,6 +1275,8 @@ static void machvirt_init(MachineState *machine)
- 
-     create_gic(vbi, pic, gic_version, vms->secure);
- 
-+    fdt_add_pmu_nodes(vbi);
-+
-     create_uart(vbi, pic, VIRT_UART, sysmem);
- 
-     if (vms->secure) {
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index ecd8589..b50f095 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -40,6 +40,10 @@
- #define ARCH_TIMER_NS_EL1_IRQ 14
- #define ARCH_TIMER_NS_EL2_IRQ 10
- 
-+#define VIRTUAL_PMU_IRQ 7
-+
-+#define PPI(irq) ((irq) + 16)
-+
- enum {
-     VIRT_FLASH,
-     VIRT_MEM,
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 0e18f15..90c2c54 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -523,4 +523,5 @@ int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source);
-  * Returns: 0 on success, or a negative errno on failure.
-  */
- int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target);
-+void kvm_arm_pmu_create(CPUState *cs, int irq);
- #endif
-diff --git a/stubs/kvm.c b/stubs/kvm.c
-index ddd6204..58a348a 100644
---- a/stubs/kvm.c
-+++ b/stubs/kvm.c
-@@ -6,3 +6,8 @@ int kvm_arch_irqchip_create(MachineState *ms, KVMState *s)
- {
-     return 0;
- }
-+
-+void kvm_arm_pmu_create(CPUState *cs, int irq)
-+{
-+    return;
-+}
-diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-index b364789..faec4fa 100644
---- a/target-arm/kvm64.c
-+++ b/target-arm/kvm64.c
-@@ -382,6 +382,45 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
-     return NULL;
- }
- 
-+static bool kvm_arm_pmu_support_ctrl(CPUState *cs, struct kvm_device_attr *attr)
-+{
-+    return kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr) == 0;
-+}
-+
-+void kvm_arm_pmu_create(CPUState *cs, int irq)
-+{
-+    int err;
-+
-+    struct kvm_device_attr attr = {
-+        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .addr = (intptr_t)&irq,
-+        .attr = KVM_ARM_VCPU_PMU_V3_IRQ,
-+        .flags = 0,
-+    };
-+
-+    if (!kvm_arm_pmu_support_ctrl(cs, &attr)) {
-+        return;
-+    }
-+
-+    err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, &attr);
-+    if (err < 0) {
-+        fprintf(stderr, "KVM_{SET/GET}_DEVICE_ATTR failed: %s\n",
-+                strerror(-err));
-+        abort();
-+    }
-+
-+    attr.group = KVM_ARM_VCPU_PMU_V3_CTRL;
-+    attr.attr = KVM_ARM_VCPU_PMU_V3_INIT;
-+    attr.addr = 0;
-+    attr.flags = 0;
-+
-+    err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, &attr);
-+    if (err < 0) {
-+        fprintf(stderr, "KVM_{SET/GET}_DEVICE_ATTR failed: %s\n",
-+                strerror(-err));
-+        abort();
-+    }
-+}
- 
- static inline void set_feature(uint64_t *features, int feature)
- {
--- 
-2.0.4
-
-
+> 
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 5975fbf..cbc65a7 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -14,6 +14,7 @@
+>  #include "hw/arm/linux-boot-if.h"
+>  #include "sysemu/kvm.h"
+>  #include "sysemu/sysemu.h"
+> +#include "sysemu/numa.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+> @@ -405,6 +406,9 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>      void *fdt = NULL;
+>      int size, rc;
+>      uint32_t acells, scells;
+> +    char *nodename;
+> +    unsigned int i;
+> +    hwaddr mem_base, mem_len;
+>  
+>      if (binfo->dtb_filename) {
+>          char *filename;
+> @@ -456,12 +460,39 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>          goto fail;
+>      }
+>  
+> -    rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+> -                                      acells, binfo->loader_start,
+> -                                      scells, binfo->ram_size);
+> -    if (rc < 0) {
+> -        fprintf(stderr, "couldn't set /memory/reg\n");
+> -        goto fail;
+> +    if (nb_numa_nodes > 0) {
+> +        /*
+> +         * Turn the /memory node created before into a NOP node, then create
+> +         * /memory@addr nodes for all numa nodes respectively.
+> +         */
+> +        qemu_fdt_nop_node(fdt, "/memory");
+> +        mem_base = binfo->loader_start;
+> +        for (i = 0; i < nb_numa_nodes; i++) {
+> +            mem_len = numa_info[i].node_mem;
+> +            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+> +            qemu_fdt_add_subnode(fdt, nodename);
+> +            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+> +            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+> +                                              acells, mem_base,
+> +                                              scells, mem_len);
+> +            if (rc < 0) {
+> +                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
+> +                        i);
+> +                goto fail;
+> +            }
+> +
+> +            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
+> +            mem_base += mem_len;
+> +            g_free(nodename);
+> +        }
+> +    } else {
+> +        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+> +                                          acells, binfo->loader_start,
+> +                                          scells, binfo->ram_size);
+> +        if (rc < 0) {
+> +            fprintf(stderr, "couldn't set /memory/reg\n");
+> +            goto fail;
+> +        }
+>      }
+>  
+>      if (binfo->kernel_cmdline && *binfo->kernel_cmdline) {
+> -- 
+> 2.0.4
+> 
+>

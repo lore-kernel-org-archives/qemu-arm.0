@@ -1,61 +1,59 @@
-Received: by 10.25.208.194 with SMTP id h185csp859078lfg;
-        Mon, 25 Apr 2016 04:37:42 -0700 (PDT)
-X-Received: by 10.55.40.164 with SMTP id o36mr17215321qko.125.1461584262404;
-        Mon, 25 Apr 2016 04:37:42 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp865950lfg;
+        Mon, 25 Apr 2016 04:52:23 -0700 (PDT)
+X-Received: by 10.140.107.11 with SMTP id g11mr33546274qgf.52.1461585143540;
+        Mon, 25 Apr 2016 04:52:23 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w203si10465844qha.56.2016.04.25.04.37.42
+        by mx.google.com with ESMTPS id v20si7804351qhb.65.2016.04.25.04.52.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Apr 2016 04:37:42 -0700 (PDT)
+        Mon, 25 Apr 2016 04:52:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59479 helo=lists.gnu.org)
+Received: from localhost ([::1]:59514 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1auepg-0000gO-JG
-	for alex.bennee@linaro.org; Mon, 25 Apr 2016 07:37:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40009)
+	id 1auf3v-0006EY-3s
+	for alex.bennee@linaro.org; Mon, 25 Apr 2016 07:52:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41637)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1auepd-0000by-LK
-	for qemu-arm@nongnu.org; Mon, 25 Apr 2016 07:37:38 -0400
+	(envelope-from <drjones@redhat.com>) id 1auf3s-0006BD-4S
+	for qemu-arm@nongnu.org; Mon, 25 Apr 2016 07:52:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1auepY-0003U4-Rm
-	for qemu-arm@nongnu.org; Mon, 25 Apr 2016 07:37:37 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:20187)
+	(envelope-from <drjones@redhat.com>) id 1auf3o-0007YO-Uu
+	for qemu-arm@nongnu.org; Mon, 25 Apr 2016 07:52:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50378)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1auepY-0003TX-2y; Mon, 25 Apr 2016 07:37:32 -0400
-Received: from 172.24.1.60 (EHLO szxeml431-hub.china.huawei.com)
-	([172.24.1.60])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CAN03462; Mon, 25 Apr 2016 19:37:25 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml431-hub.china.huawei.com
-	(10.82.67.208) with Microsoft SMTP Server id 14.3.235.1;
-	Mon, 25 Apr 2016 19:37:14 +0800
-Message-ID: <571E0169.5030705@huawei.com>
-Date: Mon, 25 Apr 2016 19:37:13 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Andrew Jones <drjones@redhat.com>
+	(envelope-from <drjones@redhat.com>)
+	id 1auf3o-0007YK-No; Mon, 25 Apr 2016 07:52:16 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04E34C057FA0;
+	Mon, 25 Apr 2016 11:52:16 +0000 (UTC)
+Received: from hawk.localdomain (dhcp-1-112.brq.redhat.com [10.34.1.112])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u3PBqCZ9008953
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 25 Apr 2016 07:52:14 -0400
+Date: Mon, 25 Apr 2016 13:52:11 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Message-ID: <20160425115211.gszhulcveh65egro@hawk.localdomain>
 References: <1461568306-14624-1-git-send-email-zhaoshenglong@huawei.com>
 	<1461568306-14624-3-git-send-email-zhaoshenglong@huawei.com>
 	<20160425092239.qhmyqjlrvms3auim@hawk.localdomain>
-In-Reply-To: <20160425092239.qhmyqjlrvms3auim@hawk.localdomain>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.571E0177.0054, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: b93fb2e615f2dd7fbcfc220ed3709806
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
+	<571E0169.5030705@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <571E0169.5030705@huawei.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 2/3] hw/arm/virt: Add PMU
  node for virt machine
 X-BeenThere: qemu-arm@nongnu.org
@@ -73,81 +71,89 @@ Cc: peter.maydell@linaro.org, peter.huangpeng@huawei.com, qemu-arm@nongnu.org,
 	shannon.zhao@linaro.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PO02iVnjVgJK
+X-TUID: wXbbTN291bys
 
+On Mon, Apr 25, 2016 at 07:37:13PM +0800, Shannon Zhao wrote:
+> 
+> 
+> On 2016/4/25 17:22, Andrew Jones wrote:
+> > On Mon, Apr 25, 2016 at 03:11:45PM +0800, Shannon Zhao wrote:
+> >> > From: Shannon Zhao <shannon.zhao@linaro.org>
+> >> > 
+> >> > Add a virtual PMU device for virt machine while use PPI 7 for PMU
+> >> > overflow interrupt number.
+> >> > 
+> >> > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+> >> > ---
+> >> >  hw/arm/virt.c         | 34 ++++++++++++++++++++++++++++++++++
+> >> >  include/hw/arm/virt.h |  4 ++++
+> >> >  include/sysemu/kvm.h  |  1 +
+> >> >  stubs/kvm.c           |  5 +++++
+> >> >  target-arm/kvm64.c    | 39 +++++++++++++++++++++++++++++++++++++++
+> >> >  5 files changed, 83 insertions(+)
+> >> > 
+> >> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >> > index 56d35c7..c3632d8 100644
+> >> > --- a/hw/arm/virt.c
+> >> > +++ b/hw/arm/virt.c
+> >> > @@ -428,6 +428,38 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
+> >> >      qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
+> >> >  }
+> >> >  
+> >> > +static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+> >> > +{
+> >> > +    CPUState *cpu;
+> >> > +    ARMCPU *armcpu;
+> >> > +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+> >> > +
+> >> > +    CPU_FOREACH(cpu) {
+> >> > +        armcpu = ARM_CPU(cpu);
+> >> > +        if (!armcpu->has_pmu) {
+> >> > +            return;
+> >> > +        }
+> >> > +
+> >> > +        kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ));
+> > I think we need to return a failure code from kvm_arm_pmu_create, and
+> > then do
+> > 
+> >            if (!kvm_arm_pmu_create(...)) {
+> >                return;
+> >            }
+> > 
+> > Otherwise we create a /pmu node for the guest that won't work.
+> > 
+> Ok, will update.
+> 
+> >> > +    }
+> >> > +
+> >> > +    if (gictype == 2) {
+> >> > +        irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+> >> > +                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
+> >> > +                             (1 << vbi->smp_cpus) - 1);
+> > So, if we're using gicv3, then we're level triggered and these cpu
+> > mask bits aren't defined by the arm,gic-v3.txt bindings spec. Good.
+> > 
+> > If we're using gicv2, then we're edge triggered and this mask is
+> > defined. Assuming the GIC implementation requires using edge
+> > triggered interrupts (as the comment in fdt_add_timer_nodes says),
+> > then OK.
+> > 
+> IIRC the comments in fdt_add_timer_nodes are not correct now since KVM
+> makes PPI level triggered.
+> 
+>     /* Note that on A15 h/w these interrupts are level-triggered,
+>      * but for the GIC implementation provided by both QEMU and KVM
+>      * they are edge-triggered.
+>      */
 
+OK, in that case the comment should be updated to say something like
+"used to", but I suspect it's too late for the timer to switch to
+level at this point anyway, unless KVM can be probed to determine if
+level is OK.
 
-On 2016/4/25 17:22, Andrew Jones wrote:
-> On Mon, Apr 25, 2016 at 03:11:45PM +0800, Shannon Zhao wrote:
->> > From: Shannon Zhao <shannon.zhao@linaro.org>
->> > 
->> > Add a virtual PMU device for virt machine while use PPI 7 for PMU
->> > overflow interrupt number.
->> > 
->> > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
->> > ---
->> >  hw/arm/virt.c         | 34 ++++++++++++++++++++++++++++++++++
->> >  include/hw/arm/virt.h |  4 ++++
->> >  include/sysemu/kvm.h  |  1 +
->> >  stubs/kvm.c           |  5 +++++
->> >  target-arm/kvm64.c    | 39 +++++++++++++++++++++++++++++++++++++++
->> >  5 files changed, 83 insertions(+)
->> > 
->> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> > index 56d35c7..c3632d8 100644
->> > --- a/hw/arm/virt.c
->> > +++ b/hw/arm/virt.c
->> > @@ -428,6 +428,38 @@ static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
->> >      qemu_fdt_setprop_cell(vbi->fdt, "/intc", "phandle", vbi->gic_phandle);
->> >  }
->> >  
->> > +static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
->> > +{
->> > +    CPUState *cpu;
->> > +    ARMCPU *armcpu;
->> > +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
->> > +
->> > +    CPU_FOREACH(cpu) {
->> > +        armcpu = ARM_CPU(cpu);
->> > +        if (!armcpu->has_pmu) {
->> > +            return;
->> > +        }
->> > +
->> > +        kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ));
-> I think we need to return a failure code from kvm_arm_pmu_create, and
-> then do
-> 
->            if (!kvm_arm_pmu_create(...)) {
->                return;
->            }
-> 
-> Otherwise we create a /pmu node for the guest that won't work.
-> 
-Ok, will update.
-
->> > +    }
->> > +
->> > +    if (gictype == 2) {
->> > +        irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
->> > +                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
->> > +                             (1 << vbi->smp_cpus) - 1);
-> So, if we're using gicv3, then we're level triggered and these cpu
-> mask bits aren't defined by the arm,gic-v3.txt bindings spec. Good.
-> 
-> If we're using gicv2, then we're edge triggered and this mask is
-> defined. Assuming the GIC implementation requires using edge
-> triggered interrupts (as the comment in fdt_add_timer_nodes says),
-> then OK.
-> 
-IIRC the comments in fdt_add_timer_nodes are not correct now since KVM
-makes PPI level triggered.
-
-    /* Note that on A15 h/w these interrupts are level-triggered,
-     * but for the GIC implementation provided by both QEMU and KVM
-     * they are edge-triggered.
-     */
+However, for PMU, we know that if the PMU feature exists, then level is
+OK, so if we want a level triggered interrupt for PMU, then we should
+change the giv2 irqflags assignment to an '|=' of the cpu mask.
 
 Thanks,
--- 
-Shannon
-
+drew

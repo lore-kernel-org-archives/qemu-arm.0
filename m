@@ -1,63 +1,52 @@
-Received: by 10.25.208.194 with SMTP id h185csp1613164lfg;
-        Tue, 26 Apr 2016 09:36:01 -0700 (PDT)
-X-Received: by 10.140.219.200 with SMTP id p191mr3366920qhb.90.1461688561338;
-        Tue, 26 Apr 2016 09:36:01 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp61655lfg;
+        Tue, 26 Apr 2016 14:46:08 -0700 (PDT)
+X-Received: by 10.55.77.216 with SMTP id a207mr5064840qkb.80.1461707168226;
+        Tue, 26 Apr 2016 14:46:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y70si14041731qka.77.2016.04.26.09.36.01
+        by mx.google.com with ESMTPS id 12si489359qgx.113.2016.04.26.14.46.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Apr 2016 09:36:01 -0700 (PDT)
+        Tue, 26 Apr 2016 14:46:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
+       dkim=pass header.i=@yandex.ru;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38766 helo=lists.gnu.org)
+       dmarc=pass (p=NONE dis=NONE) header.from=yandex.ru
+Received: from localhost ([::1]:39865 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1av5xw-0004OB-Po
-	for alex.bennee@linaro.org; Tue, 26 Apr 2016 12:36:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41683)
+	id 1avAo3-0000bD-Pm
+	for alex.bennee@linaro.org; Tue, 26 Apr 2016 17:46:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thomas.hanson@linaro.org>) id 1av5xu-0004Jg-0O
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 12:35:58 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1avAht-0004qq-QT
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 17:39:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thomas.hanson@linaro.org>) id 1av5xp-0001zq-QM
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 12:35:57 -0400
-Received: from mail-ig0-x236.google.com ([2607:f8b0:4001:c05::236]:35412)
+	(envelope-from <afarallax@yandex.ru>) id 1avAhq-0005kY-JH
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 17:39:45 -0400
+Received: from forward11j.cmail.yandex.net ([5.255.227.175]:55755)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thomas.hanson@linaro.org>) id 1av5xp-0001zf-MX
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 12:35:53 -0400
-Received: by mail-ig0-x236.google.com with SMTP id bi2so102325884igb.0
-	for <qemu-arm@nongnu.org>; Tue, 26 Apr 2016 09:35:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=NATzKiacNGdGGYK233beKtI4LoMgG3S42taExHIY7/o=;
-	b=BlKi7Xl9MTYWN6DT07rIiVrXye7aJjqQ/ilnQTjNDrhqqRw7yqNlygzV71i6exFfJd
-	UzAZBbr0khhI2CRQB166gIuXlgpDBez3Haf43Axhxm090WWlhszOxCistLhFqBKf2Ora
-	Q9U80pjIzS9yp2AjvmREyCpyfpzcY6frTdqTc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=NATzKiacNGdGGYK233beKtI4LoMgG3S42taExHIY7/o=;
-	b=lXnk0A4KnjDG1qTy0dBxYbRoAHWn0xg0KOUVinwwSfN0BCW1ktyj1883uzWxompgys
-	tmMA2rrS+j6FPC/oIS+ABqKdjp8Rs8eHl7/d4T4SEAxq8+5wlVw41ypCIlmOzYX5BuRa
-	aWBUHPh/H6W8Gz4HpprTqj04LSkr6YyfrL/4g6NBdPs5OhE/TDr/3ZIz6/8MgxjF6AZP
-	05QW38k60d4QAmjNM0M0wEhJLajUspH6IK7TqKoobAzNyrj1TeagYey13LMs0BzWc11o
-	KWM+sfXy+WH/4CpUrcDg455BSyp8m/OB/cirZadg53IMSJEDrgOk2mGLaaT6us75QTG7
-	Zocw==
-X-Gm-Message-State: AOPr4FWFCtMtJuJ+K+cuyDB6OhF/WfOdjBVpTdn0zVMMJAm4SgjzqdPhRe5pH3DoNaCtbCUp
-X-Received: by 10.50.116.169 with SMTP id jx9mr12326293igb.21.1461688551869;
-	Tue, 26 Apr 2016 09:35:51 -0700 (PDT)
-Received: from [10.0.0.5] ([64.37.16.184])
-	by smtp.gmail.com with ESMTPSA id o6sm1430738igy.11.2016.04.26.09.35.50
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 26 Apr 2016 09:35:51 -0700 (PDT)
-To: Sergey Sorokin <afarallax@yandex.ru>,
+	(envelope-from <afarallax@yandex.ru>)
+	id 1avAhp-0005kM-V1; Tue, 26 Apr 2016 17:39:42 -0400
+Received: from web27j.yandex.ru (web27j.yandex.ru [5.45.198.68])
+	by forward11j.cmail.yandex.net (Yandex) with ESMTP id 01EF72149C;
+	Wed, 27 Apr 2016 00:39:37 +0300 (MSK)
+Received: from web27j.yandex.ru (localhost [127.0.0.1])
+	by web27j.yandex.ru (Yandex) with ESMTP id DCD54DC231A;
+	Wed, 27 Apr 2016 00:39:36 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1461706777; bh=xv7Rkunosi6SI3CEzcIND777O1cAyvH/LY3fgVIneWg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=kW8VTwuExY5YMPZuuC7mIzW+fkJPEYhMbPfOg8CBuLJi7198fp8fJwtZQ5HSAkIOT
+	wEnFoUPpPy6X9UGiBuIyA2wO6HOuuK4L4/pd8F8Erzpi1sNnW5mE3IRlRkH5z62KiU
+	9BHUdrN5IaSGSfat5K5cz2soSP3GNFsoO1yUt7Ok=
+Received: by web27j.yandex.ru with HTTP;
+	Wed, 27 Apr 2016 00:39:36 +0300
+From: Sergey Sorokin <afarallax@yandex.ru>
+To: Tom Hanson <thomas.hanson@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <571F98E6.1010109@linaro.org>
 References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
 	<CAFEAcA8F9AdePC4h8ZqPftbBatnhbge=1jpoe1gdrYstpdiwzA@mail.gmail.com>
 	<1022901457739899@web28h.yandex.ru>
@@ -66,18 +55,16 @@ References: <1457107473-26292-1-git-send-email-afarallax@yandex.ru>
 	<CAFEAcA_s+YmPJSwmWYc4coMXzdRHhB3bsHew_AfRunD1pWhB_Q@mail.gmail.com>
 	<628941458228094@web26j.yandex.ru>
 	<CAFEAcA_+znhWyJFWC3eMi8JiZw-nb2MyK_+uD6Fww76reinoeQ@mail.gmail.com>
-	<1362381458575779@web6j.yandex.ru>
-From: Tom Hanson <thomas.hanson@linaro.org>
-Message-ID: <571F98E6.1010109@linaro.org>
-Date: Tue, 26 Apr 2016 10:35:50 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
+	<1362381458575779@web6j.yandex.ru> <571F98E6.1010109@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1362381458575779@web6j.yandex.ru>
-Content-Type: text/plain; charset=koi8-r; format=flowed
-Content-Transfer-Encoding: 7bit
+Message-Id: <1793781461706776@web27j.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Wed, 27 Apr 2016 00:39:36 +0300
+Content-Transfer-Encoding: base64
+Content-Type: text/html; charset=koi8-r
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::236
+	[fuzzy]
+X-Received-From: 5.255.227.175
 Subject: Re: [Qemu-arm] [PATCH] target-arm: Fix descriptor address masking
  in ARM address translation
 X-BeenThere: qemu-arm@nongnu.org
@@ -94,58 +81,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e7nCDgg3LNX8
+X-TUID: sPzplmEAYWGq
 
-On 03/21/2016 09:56 AM, Sergey Sorokin wrote:
-> 17.03.2016, 18:24, "Peter Maydell" <peter.maydell@linaro.org>:
->>   On 17 March 2016 at 15:21, Sergey Sorokin <afarallax@yandex.ru> wrote:
->>>    17.03.2016, 14:40, "Peter Maydell" <peter.maydell@linaro.org>:
->>>>    On 13 March 2016 at 18:28, Sergey Sorokin <afarallax@yandex.ru> wrote:
->>>>>>    If you want to implement the AddressSize checks that's fine,
->>>>>>    but otherwise please leave this bit of the code alone.
->>>>>
->>>>>     You said me that my code is not correct, I have proved that it conforms
->>>>>     to the documentation.
->>>>>     It's a bit obfuscating when the doc explicitly says to take bits up to 39
->>>>>     from the descriptor, but in QEMU we take bits up to 47 relying on the check in
->>>>>     another part of the code, even if both ways are correct.
->>>>
->>>>    The way the code in QEMU is structured is that we extract the
->>>>    descriptor field in one go and then will operate on it
->>>>    (checking for need to AddressSize fault, etc) as a second
->>>>    action. The field descriptors themselves are the sizes I said.
->>>
->>>    Well, may be it's enough just to change this comment as you intend:
->>>
->>>>>    - /* The address field in the descriptor goes up to bit 39 for ARMv7
->>>>>    - * but up to bit 47 for ARMv8.
->>>>>    + /* The address field in the descriptor goes up to bit 39 for AArch32
->>>>>    + * but up to bit 47 for AArch64.
->>>>>          */
->>
->>   The comment is correct as it stands.
->>
->>   thanks
->>   -- PMM
->
-> I mean in the patch.
-> We need to fix lower bits in descaddrmask anyway.
-> So:
->
-> I could describe in the comment, that the descriptor field is up to bit 47 for ARMv8 (as long as you want it),
-> but we use the descaddrmask up to bit 39 for AArch32,
-> because we don't need other bits in that case to construct next descriptor address.
-> It is clearly described in the ARM pseudo-code.
-> Why should we keep in the mask bits from 40 up to 47 if we don't need them? Even if they are all zeroes.
-> It is a bit obfuscating, as I said.
->
-  I agree with Peter.  The original comment is correct.
-
-Looking at the TLBRecord AArch32.TranslationTableWalkLD pseudocode, it is treating the AArch32 address as 48 bits long.  For example:
-     if !IsZero(baseregister<47:40>) then
-         level = 0;
-         result.addrdesc.fault = AArch32.AddressSizeFault(ipaddress, domain, level, acctype, iswrite,
-                                                          secondstage, s2fs1walk);
-     return result;
-
-This requires that an AArch32 address have specific values up through bit 47.
+PGRpdj4yNi4wNC4yMDE2LCAxOTozNSwgIlRvbSBIYW5zb24iICZsdDt0aG9tYXMuaGFuc29uQGxp
+bmFyby5vcmcmZ3Q7OjwvZGl2PjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiPjxwPk9uIDAzLzIxLzIw
+MTYgMDk6NTYgQU0sIFNlcmdleSBTb3Jva2luIHdyb3RlOjwvcD48YmxvY2txdW90ZT6aMTcuMDMu
+MjAxNiwgMTg6MjQsICJQZXRlciBNYXlkZWxsIiAmbHQ7PGEgaHJlZj0ibWFpbHRvOnBldGVyLm1h
+eWRlbGxAbGluYXJvLm9yZyI+cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPC9hPiZndDs6PGJyIC8+
+PGJsb2NrcXVvdGU+mpqaT24gMTcgTWFyY2ggMjAxNiBhdCAxNToyMSwgU2VyZ2V5IFNvcm9raW4g
+Jmx0OzxhIGhyZWY9Im1haWx0bzphZmFyYWxsYXhAeWFuZGV4LnJ1Ij5hZmFyYWxsYXhAeWFuZGV4
+LnJ1PC9hPiZndDsgd3JvdGU6PGJyIC8+PGJsb2NrcXVvdGU+mpqamjE3LjAzLjIwMTYsIDE0OjQw
+LCAiUGV0ZXIgTWF5ZGVsbCIgJmx0OzxhIGhyZWY9Im1haWx0bzpwZXRlci5tYXlkZWxsQGxpbmFy
+by5vcmciPnBldGVyLm1heWRlbGxAbGluYXJvLm9yZzwvYT4mZ3Q7OjxiciAvPjxibG9ja3F1b3Rl
+PpqamppPbiAxMyBNYXJjaCAyMDE2IGF0IDE4OjI4LCBTZXJnZXkgU29yb2tpbiAmbHQ7PGEgaHJl
+Zj0ibWFpbHRvOmFmYXJhbGxheEB5YW5kZXgucnUiPmFmYXJhbGxheEB5YW5kZXgucnU8L2E+Jmd0
+OyB3cm90ZTo8YnIgLz48YmxvY2txdW90ZT48YmxvY2txdW90ZT6ampqaSWYgeW91IHdhbnQgdG8g
+aW1wbGVtZW50IHRoZSBBZGRyZXNzU2l6ZSBjaGVja3MgdGhhdCdzIGZpbmUsPGJyIC8+mpqammJ1
+dCBvdGhlcndpc2UgcGxlYXNlIGxlYXZlIHRoaXMgYml0IG9mIHRoZSBjb2RlIGFsb25lLjwvYmxv
+Y2txdW90ZT48YnIgLz6ampqamllvdSBzYWlkIG1lIHRoYXQgbXkgY29kZSBpcyBub3QgY29ycmVj
+dCwgSSBoYXZlIHByb3ZlZCB0aGF0IGl0IGNvbmZvcm1zPGJyIC8+mpqampp0byB0aGUgZG9jdW1l
+bnRhdGlvbi48YnIgLz6ampqamkl0J3MgYSBiaXQgb2JmdXNjYXRpbmcgd2hlbiB0aGUgZG9jIGV4
+cGxpY2l0bHkgc2F5cyB0byB0YWtlIGJpdHMgdXAgdG8gMzk8YnIgLz6ampqammZyb20gdGhlIGRl
+c2NyaXB0b3IsIGJ1dCBpbiBRRU1VIHdlIHRha2UgYml0cyB1cCB0byA0NyByZWx5aW5nIG9uIHRo
+ZSBjaGVjayBpbjxiciAvPpqampqaYW5vdGhlciBwYXJ0IG9mIHRoZSBjb2RlLCBldmVuIGlmIGJv
+dGggd2F5cyBhcmUgY29ycmVjdC48L2Jsb2NrcXVvdGU+PGJyIC8+mpqamlRoZSB3YXkgdGhlIGNv
+ZGUgaW4gUUVNVSBpcyBzdHJ1Y3R1cmVkIGlzIHRoYXQgd2UgZXh0cmFjdCB0aGU8YnIgLz6ampqa
+ZGVzY3JpcHRvciBmaWVsZCBpbiBvbmUgZ28gYW5kIHRoZW4gd2lsbCBvcGVyYXRlIG9uIGl0PGJy
+IC8+mpqamihjaGVja2luZyBmb3IgbmVlZCB0byBBZGRyZXNzU2l6ZSBmYXVsdCwgZXRjKSBhcyBh
+IHNlY29uZDxiciAvPpqampphY3Rpb24uIFRoZSBmaWVsZCBkZXNjcmlwdG9ycyB0aGVtc2VsdmVz
+IGFyZSB0aGUgc2l6ZXMgSSBzYWlkLjwvYmxvY2txdW90ZT48YnIgLz6ampqaV2VsbCwgbWF5IGJl
+IGl0J3MgZW5vdWdoIGp1c3QgdG8gY2hhbmdlIHRoaXMgY29tbWVudCBhcyB5b3UgaW50ZW5kOjxi
+ciAvPjxiciAvPjxibG9ja3F1b3RlPjxibG9ja3F1b3RlPpqampotIC8qIFRoZSBhZGRyZXNzIGZp
+ZWxkIGluIHRoZSBkZXNjcmlwdG9yIGdvZXMgdXAgdG8gYml0IDM5IGZvciBBUk12NzxiciAvPpqa
+mpotICogYnV0IHVwIHRvIGJpdCA0NyBmb3IgQVJNdjguPGJyIC8+mpqamisgLyogVGhlIGFkZHJl
+c3MgZmllbGQgaW4gdGhlIGRlc2NyaXB0b3IgZ29lcyB1cCB0byBiaXQgMzkgZm9yIEFBcmNoMzI8
+YnIgLz6ampqaKyAqIGJ1dCB1cCB0byBiaXQgNDcgZm9yIEFBcmNoNjQuPGJyIC8+mpqampqampqa
+miovPC9ibG9ja3F1b3RlPjwvYmxvY2txdW90ZT48L2Jsb2NrcXVvdGU+PGJyIC8+mpqaVGhlIGNv
+bW1lbnQgaXMgY29ycmVjdCBhcyBpdCBzdGFuZHMuPGJyIC8+PGJyIC8+mpqadGhhbmtzPGJyIC8+
+mpqaLS0gUE1NPC9ibG9ja3F1b3RlPjxiciAvPppJIG1lYW4gaW4gdGhlIHBhdGNoLjxiciAvPppX
+ZSBuZWVkIHRvIGZpeCBsb3dlciBiaXRzIGluIGRlc2NhZGRybWFzayBhbnl3YXkuPGJyIC8+mlNv
+OjxiciAvPjxiciAvPppJIGNvdWxkIGRlc2NyaWJlIGluIHRoZSBjb21tZW50LCB0aGF0IHRoZSBk
+ZXNjcmlwdG9yIGZpZWxkIGlzIHVwIHRvIGJpdCA0NyBmb3IgQVJNdjggKGFzIGxvbmcgYXMgeW91
+IHdhbnQgaXQpLDxiciAvPppidXQgd2UgdXNlIHRoZSBkZXNjYWRkcm1hc2sgdXAgdG8gYml0IDM5
+IGZvciBBQXJjaDMyLDxiciAvPppiZWNhdXNlIHdlIGRvbid0IG5lZWQgb3RoZXIgYml0cyBpbiB0
+aGF0IGNhc2UgdG8gY29uc3RydWN0IG5leHQgZGVzY3JpcHRvciBhZGRyZXNzLjxiciAvPppJdCBp
+cyBjbGVhcmx5IGRlc2NyaWJlZCBpbiB0aGUgQVJNIHBzZXVkby1jb2RlLjxiciAvPppXaHkgc2hv
+dWxkIHdlIGtlZXAgaW4gdGhlIG1hc2sgYml0cyBmcm9tIDQwIHVwIHRvIDQ3IGlmIHdlIGRvbid0
+IG5lZWQgdGhlbT8gRXZlbiBpZiB0aGV5IGFyZSBhbGwgemVyb2VzLjxiciAvPppJdCBpcyBhIGJp
+dCBvYmZ1c2NhdGluZywgYXMgSSBzYWlkLjxiciAvPjxiciAvPjwvYmxvY2txdW90ZT48cD6amkkg
+YWdyZWUgd2l0aCBQZXRlci4gVGhlIG9yaWdpbmFsIGNvbW1lbnQgaXMgY29ycmVjdC48YnIgLz48
+YnIgLz5Mb29raW5nIGF0IHRoZSBUTEJSZWNvcmQgQUFyY2gzMi5UcmFuc2xhdGlvblRhYmxlV2Fs
+a0xEIHBzZXVkb2NvZGUsIGl0IGlzIHRyZWF0aW5nIHRoZSBBQXJjaDMyIGFkZHJlc3MgYXMgNDgg
+Yml0cyBsb25nLiBGb3IgZXhhbXBsZTo8YnIgLz6ampqammlmICFJc1plcm8oYmFzZXJlZ2lzdGVy
+Jmx0OzQ3OjQwJmd0OykgdGhlbjxiciAvPpqampqampqammxldmVsID0gMDs8YnIgLz6ampqampqa
+mppyZXN1bHQuYWRkcmRlc2MuZmF1bHQgPSBBQXJjaDMyLkFkZHJlc3NTaXplRmF1bHQoaXBhZGRy
+ZXNzLCBkb21haW4sIGxldmVsLCBhY2N0eXBlLCBpc3dyaXRlLDxiciAvPpqampqampqampqampqa
+mpqampqampqampqampqampqampqampqampqampqampqampqampqampqamppzZWNvbmRzdGFnZSwg
+czJmczF3YWxrKTs8YnIgLz6ampqamnJldHVybiByZXN1bHQ7PGJyIC8+PGJyIC8+VGhpcyByZXF1
+aXJlcyB0aGF0IGFuIEFBcmNoMzIgYWRkcmVzcyBoYXZlIHNwZWNpZmljIHZhbHVlcyB1cCB0aHJv
+dWdoIGJpdCA0Ny48L3A+PC9ibG9ja3F1b3RlPjxkaXY+mjwvZGl2PjxkaXY+VGhlcmUgaXMgYSBu
+ZXdlciB2ZXJzaW9uIG9mIHRoZSBwYXRjaC4gSSdtIHNvcnJ5LCBJIGZvcmdvdCB0byByZXBvcnQg
+aGVyZSBhYm91dCBpdC48L2Rpdj4=

@@ -1,43 +1,43 @@
-Received: by 10.25.208.194 with SMTP id h185csp1419589lfg;
-        Tue, 26 Apr 2016 03:42:28 -0700 (PDT)
-X-Received: by 10.233.220.4 with SMTP id q4mr1382112qkf.145.1461667348358;
-        Tue, 26 Apr 2016 03:42:28 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp1422190lfg;
+        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
+X-Received: by 10.140.108.229 with SMTP id j92mr1390168qgf.17.1461667624458;
+        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x189si2972475qkc.224.2016.04.26.03.42.28
+        by mx.google.com with ESMTPS id h33si1051730qgh.20.2016.04.26.03.47.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Apr 2016 03:42:28 -0700 (PDT)
+        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37348 helo=lists.gnu.org)
+Received: from localhost ([::1]:37392 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1av0Rn-0000BR-QQ
-	for alex.bennee@linaro.org; Tue, 26 Apr 2016 06:42:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54009)
+	id 1av0WG-0000NI-06
+	for alex.bennee@linaro.org; Tue, 26 Apr 2016 06:47:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53772)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Ri-0008UE-9Z
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:42:24 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Ql-0006sD-8Y
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Re-0006oN-91
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:42:22 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:9193)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Qg-0006C8-EZ
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:23 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:8672)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1av0RS-0006gK-92; Tue, 26 Apr 2016 06:42:07 -0400
+	id 1av0Qb-0006AS-VN; Tue, 26 Apr 2016 06:41:14 -0400
 Received: from 172.24.1.136 (EHLO szxeml434-hub.china.huawei.com)
 	([172.24.1.136])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CAP01982; Tue, 26 Apr 2016 18:40:55 +0800 (CST)
+	with ESMTP id CAP01978; Tue, 26 Apr 2016 18:40:54 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.235.1; Tue, 26 Apr 2016 18:40:43 +0800
+	Server id 14.3.235.1; Tue, 26 Apr 2016 18:40:42 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Tue, 26 Apr 2016 18:40:28 +0800
-Message-ID: <1461667229-9216-5-git-send-email-zhaoshenglong@huawei.com>
+Date: Tue, 26 Apr 2016 18:40:27 +0800
+Message-ID: <1461667229-9216-4-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
 In-Reply-To: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
 References: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
@@ -46,14 +46,14 @@ Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020203.571F45B8.0127, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A090202.571F45B7.0063, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: bf413caacfde0e8a412266391b3f8a66
+X-Mirapoint-Loop-Id: 39040758b7f8f5a60056e30d9a3fce2d
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
-Subject: [Qemu-arm] [PATCH v8 4/5] ACPI: move acpi_build_srat_memory to
- common place
+Subject: [Qemu-arm] [PATCH v8 3/5] ACPI: Fix the definition of proximity in
+ AcpiSratMemoryAffinity
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,148 +71,50 @@ Cc: drjones@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x/0LG8XifLC/
+X-TUID: dHwixkyrdY0p
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
-Move acpi_build_srat_memory to common place so that it could be reused
-by ARM. Rename it to build_srat_memory.
+ACPI spec says that Proximity Domain is an "Integer that represents
+the proximity domain to which the processor belongs". So define it as a
+uint32_t.
 
 Cc: Michael S. Tsirkin <mst@redhat.com>
 Cc: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/acpi/aml-build.c         | 11 +++++++++++
- hw/i386/acpi-build.c        | 38 +++++++++-----------------------------
- include/hw/acpi/aml-build.h | 10 ++++++++++
- 3 files changed, 30 insertions(+), 29 deletions(-)
+ hw/i386/acpi-build.c        | 3 +--
+ include/hw/acpi/acpi-defs.h | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index ab89ca6..cedb74e 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1563,3 +1563,14 @@ build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets,
-     build_header(linker, table_data,
-                  (void *)rsdt, "RSDT", rsdt_len, 1, oem_id, oem_table_id);
- }
-+
-+void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-+                       uint64_t len, int node, MemoryAffinityFlags flags)
-+{
-+    numamem->type = ACPI_SRAT_MEMORY;
-+    numamem->length = sizeof(*numamem);
-+    numamem->proximity = cpu_to_le32(node);
-+    numamem->flags = cpu_to_le32(flags);
-+    numamem->base_addr = cpu_to_le64(base);
-+    numamem->range_length = cpu_to_le64(len);
-+}
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 3c031aa..279f0d7 100644
+index 9ae4c0d..3c031aa 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -2427,25 +2427,6 @@ build_tpm2(GArray *table_data, GArray *linker)
-                  (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
- }
- 
--typedef enum {
--    MEM_AFFINITY_NOFLAGS      = 0,
--    MEM_AFFINITY_ENABLED      = (1 << 0),
--    MEM_AFFINITY_HOTPLUGGABLE = (1 << 1),
--    MEM_AFFINITY_NON_VOLATILE = (1 << 2),
--} MemoryAffinityFlags;
--
--static void
--acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
--                       uint64_t len, int node, MemoryAffinityFlags flags)
--{
--    numamem->type = ACPI_SRAT_MEMORY;
--    numamem->length = sizeof(*numamem);
--    numamem->proximity = cpu_to_le32(node);
--    numamem->flags = cpu_to_le32(flags);
--    numamem->base_addr = cpu_to_le64(base);
--    numamem->range_length = cpu_to_le64(len);
--}
--
- static void
- build_srat(GArray *table_data, GArray *linker, MachineState *machine)
+@@ -2440,8 +2440,7 @@ acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
  {
-@@ -2491,7 +2472,7 @@ build_srat(GArray *table_data, GArray *linker, MachineState *machine)
-     numa_start = table_data->len;
- 
-     numamem = acpi_data_push(table_data, sizeof *numamem);
--    acpi_build_srat_memory(numamem, 0, 640*1024, 0, MEM_AFFINITY_ENABLED);
-+    build_srat_memory(numamem, 0, 640 * 1024, 0, MEM_AFFINITY_ENABLED);
-     next_base = 1024 * 1024;
-     for (i = 1; i < pcms->numa_nodes + 1; ++i) {
-         mem_base = next_base;
-@@ -2507,21 +2488,21 @@ build_srat(GArray *table_data, GArray *linker, MachineState *machine)
-             mem_len -= next_base - pcms->below_4g_mem_size;
-             if (mem_len > 0) {
-                 numamem = acpi_data_push(table_data, sizeof *numamem);
--                acpi_build_srat_memory(numamem, mem_base, mem_len, i - 1,
--                                       MEM_AFFINITY_ENABLED);
-+                build_srat_memory(numamem, mem_base, mem_len, i - 1,
-+                                  MEM_AFFINITY_ENABLED);
-             }
-             mem_base = 1ULL << 32;
-             mem_len = next_base - pcms->below_4g_mem_size;
-             next_base += (1ULL << 32) - pcms->below_4g_mem_size;
-         }
-         numamem = acpi_data_push(table_data, sizeof *numamem);
--        acpi_build_srat_memory(numamem, mem_base, mem_len, i - 1,
--                               MEM_AFFINITY_ENABLED);
-+        build_srat_memory(numamem, mem_base, mem_len, i - 1,
-+                          MEM_AFFINITY_ENABLED);
-     }
-     slots = (table_data->len - numa_start) / sizeof *numamem;
-     for (; slots < pcms->numa_nodes + 2; slots++) {
-         numamem = acpi_data_push(table_data, sizeof *numamem);
--        acpi_build_srat_memory(numamem, 0, 0, 0, MEM_AFFINITY_NOFLAGS);
-+        build_srat_memory(numamem, 0, 0, 0, MEM_AFFINITY_NOFLAGS);
-     }
- 
-     /*
-@@ -2531,10 +2512,9 @@ build_srat(GArray *table_data, GArray *linker, MachineState *machine)
-      */
-     if (hotplugabble_address_space_size) {
-         numamem = acpi_data_push(table_data, sizeof *numamem);
--        acpi_build_srat_memory(numamem, pcms->hotplug_memory.base,
--                               hotplugabble_address_space_size, 0,
--                               MEM_AFFINITY_HOTPLUGGABLE |
--                               MEM_AFFINITY_ENABLED);
-+        build_srat_memory(numamem, pcms->hotplug_memory.base,
-+                          hotplugabble_address_space_size, 0,
-+                          MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
-     }
- 
-     build_header(linker, table_data,
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 2c994b3..7eb51c7 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -198,6 +198,13 @@ typedef enum {
-     AML_PULL_NONE = 3,
- } AmlPinConfig;
- 
-+typedef enum {
-+    MEM_AFFINITY_NOFLAGS      = 0,
-+    MEM_AFFINITY_ENABLED      = (1 << 0),
-+    MEM_AFFINITY_HOTPLUGGABLE = (1 << 1),
-+    MEM_AFFINITY_NON_VOLATILE = (1 << 2),
-+} MemoryAffinityFlags;
-+
- typedef
- struct AcpiBuildTables {
-     GArray *table_data;
-@@ -372,4 +379,7 @@ int
- build_append_named_dword(GArray *array, const char *name_format, ...)
- GCC_FMT_ATTR(2, 3);
- 
-+void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-+                       uint64_t len, int node, MemoryAffinityFlags flags);
-+
- #endif
+     numamem->type = ACPI_SRAT_MEMORY;
+     numamem->length = sizeof(*numamem);
+-    memset(numamem->proximity, 0, 4);
+-    numamem->proximity[0] = node;
++    numamem->proximity = cpu_to_le32(node);
+     numamem->flags = cpu_to_le32(flags);
+     numamem->base_addr = cpu_to_le64(base);
+     numamem->range_length = cpu_to_le64(len);
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index bcf5c3f..850a962 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -475,7 +475,7 @@ typedef struct AcpiSratProcessorAffinity AcpiSratProcessorAffinity;
+ struct AcpiSratMemoryAffinity
+ {
+     ACPI_SUB_HEADER_DEF
+-    uint8_t     proximity[4];
++    uint32_t    proximity;
+     uint16_t    reserved1;
+     uint64_t    base_addr;
+     uint64_t    range_length;
 -- 
 2.0.4
 

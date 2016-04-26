@@ -1,163 +1,113 @@
-Received: by 10.25.208.194 with SMTP id h185csp1432994lfg;
-        Tue, 26 Apr 2016 04:04:38 -0700 (PDT)
-X-Received: by 10.55.198.149 with SMTP id s21mr1555514qkl.61.1461668678259;
-        Tue, 26 Apr 2016 04:04:38 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.194 with SMTP id h185csp1436338lfg;
+        Tue, 26 Apr 2016 04:08:58 -0700 (PDT)
+X-Received: by 10.140.233.135 with SMTP id e129mr1493844qhc.86.1461668938087;
+        Tue, 26 Apr 2016 04:08:58 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a17si13263824qhb.79.2016.04.26.04.04.38
+        by mx.google.com with ESMTPS id q205si13382315qhq.67.2016.04.26.04.08.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Apr 2016 04:04:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 26 Apr 2016 04:08:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37470 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37486 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1av0nF-00051V-Qn
-	for alex.bennee@linaro.org; Tue, 26 Apr 2016 07:04:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53695)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1av0rR-0002T5-DF
+	for alex.bennee@linaro.org; Tue, 26 Apr 2016 07:08:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0QZ-0006fQ-Hg
-	for qemu-devel@nongnu.org; Tue, 26 Apr 2016 06:41:13 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0rJ-0002Hu-3C
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 07:08:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0QU-0006A1-NQ
-	for qemu-devel@nongnu.org; Tue, 26 Apr 2016 06:41:11 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:8640)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0rF-0004MW-Qy
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 07:08:49 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:25947)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1av0QU-00069L-5K; Tue, 26 Apr 2016 06:41:06 -0400
-Received: from 172.24.1.136 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.1.136])
+	id 1av0rF-0004LQ-8c; Tue, 26 Apr 2016 07:08:45 -0400
+Received: from 172.24.1.60 (EHLO szxeml428-hub.china.huawei.com)
+	([172.24.1.60])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CAP01981; Tue, 26 Apr 2016 18:40:54 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.235.1; Tue, 26 Apr 2016 18:40:44 +0800
+	with ESMTP id CAP04502; Tue, 26 Apr 2016 19:08:35 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml428-hub.china.huawei.com
+	(10.82.67.183) with Microsoft SMTP Server id 14.3.235.1;
+	Tue, 26 Apr 2016 19:08:26 +0800
+Message-ID: <571F4C29.8030503@huawei.com>
+Date: Tue, 26 Apr 2016 19:08:25 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Tue, 26 Apr 2016 18:40:29 +0800
-Message-ID: <1461667229-9216-6-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
+To: Shannon Zhao <shannon.zhao@linaro.org>, Andrew Jones <drjones@redhat.com>
+References: <1461568306-14624-1-git-send-email-zhaoshenglong@huawei.com>
+	<1461568306-14624-4-git-send-email-zhaoshenglong@huawei.com>
+	<20160425124232.zdjgvmwrykkrouas@hawk.localdomain>
+	<571E205E.3040508@linaro.org>
+In-Reply-To: <571E205E.3040508@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020206.571F45B7.006F, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020203.571F4C35.000E, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 44eef3b2c0128e56b1d4ac973e7eb1a3
+X-Mirapoint-Loop-Id: 2463ea3284f6ee441dee37030b06b352
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
-Subject: [Qemu-devel] [PATCH v8 5/5] ACPI: Virt: Generate SRAT table
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 3/3] hw/arm/virt-acpi-build:
+ Add PMU IRQ number in ACPI table
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.huangpeng@huawei.com, drjones@redhat.com, shannon.zhao@linaro.org,
-	qemu-devel@nongnu.org, david.daney@cavium.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 15wABozyD/na
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	peter.huangpeng@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wGNaowGk+tGA
 
-From: Shannon Zhao <shannon.zhao@linaro.org>
 
-To support NUMA, it needs to generate SRAT ACPI table.
 
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
----
- hw/arm/virt-acpi-build.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+On 2016/4/25 21:49, Shannon Zhao wrote:
+> On 2016年04月25日 20:42, Andrew Jones wrote:
+>> > On Mon, Apr 25, 2016 at 03:11:46PM +0800, Shannon Zhao wrote:
+>>>> >> > From: Shannon Zhao <shannon.zhao@linaro.org>
+>>>> >> > 
+>>>> >> > Add PMU IRQ number in ACPI table, then we can use PMU in guest through
+>>>> >> > ACPI.
+>>>> >> > 
+>>>> >> > Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+>>>> >> > Reviewed-by: Andrew Jones <drjones@redhat.com>
+>>>> >> > ---
+>>>> >> >  hw/arm/virt-acpi-build.c | 3 +++
+>>>> >> >  1 file changed, 3 insertions(+)
+>> > Question: for testing of this, did you use
+>> > https://lkml.org/lkml/2016/4/12/755 ?
+> Actually I didn't test PMU with ACPI since I didn't notice the patch
+> series you point out and it's very obvious for QEMU changes(adding irq
+> flag and irq number in GICC). I will have a test later.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index f51fe39..26a7bac 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -43,6 +43,7 @@
- #include "hw/acpi/aml-build.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
-+#include "sysemu/numa.h"
- 
- #define ARM_SPI_BASE 32
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-@@ -414,6 +415,52 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
- }
- 
- static void
-+build_srat(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+{
-+    AcpiSystemResourceAffinityTable *srat;
-+    AcpiSratProcessorGiccAffinity *core;
-+    AcpiSratMemoryAffinity *numamem;
-+    int i, j, srat_start;
-+    uint64_t mem_base;
-+    uint32_t *cpu_node = g_malloc0(guest_info->smp_cpus * sizeof(uint32_t));
-+
-+    for (i = 0; i < guest_info->smp_cpus; i++) {
-+        for (j = 0; j < nb_numa_nodes; j++) {
-+            if (test_bit(i, numa_info[j].node_cpu)) {
-+                cpu_node[i] = j;
-+                break;
-+            }
-+        }
-+    }
-+
-+    srat_start = table_data->len;
-+    srat = acpi_data_push(table_data, sizeof(*srat));
-+    srat->reserved1 = cpu_to_le32(1);
-+
-+    for (i = 0; i < guest_info->smp_cpus; ++i) {
-+        core = acpi_data_push(table_data, sizeof(*core));
-+        core->type = ACPI_SRAT_PROCESSOR_GICC;
-+        core->length = sizeof(*core);
-+        core->proximity = cpu_to_le32(cpu_node[i]);
-+        core->acpi_processor_uid = cpu_to_le32(i);
-+        core->flags = cpu_to_le32(1);
-+    }
-+    g_free(cpu_node);
-+
-+    mem_base = guest_info->memmap[VIRT_MEM].base;
-+    for (i = 0; i < nb_numa_nodes; ++i) {
-+        numamem = acpi_data_push(table_data, sizeof(*numamem));
-+        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
-+                          MEM_AFFINITY_ENABLED);
-+        mem_base += numa_info[i].node_mem;
-+    }
-+
-+    build_header(linker, table_data,
-+                 (void *)(table_data->data + srat_start), "SRAT",
-+                 table_data->len - srat_start, 3, NULL, NULL);
-+}
-+
-+static void
- build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
- {
-     AcpiTableMcfg *mcfg;
-@@ -638,6 +685,11 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
-     acpi_add_table(table_offsets, tables_blob);
-     build_spcr(tables_blob, tables->linker, guest_info);
- 
-+    if (nb_numa_nodes > 0) {
-+        acpi_add_table(table_offsets, tables_blob);
-+        build_srat(tables_blob, tables->linker, guest_info);
-+    }
-+
-     /* RSDT is pointed to by RSDP */
-     rsdt = tables_blob->len;
-     build_rsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
+I have test this patch series using ACPI and guest with the patches you
+point out. Guest prints below logs and perf works well in guest.
+
+[    0.000000] ACPI-PMU: Assign CPU 0 girq 23 level 0
+[    0.000000] ACPI-PMU: Assign CPU 1 girq 23 level 0
+[    0.000000] ACPI-PMU: Assign CPU 2 girq 23 level 0
+[    0.000000] ACPI-PMU: Assign CPU 3 girq 23 level 0
+[...]
+[    0.094782] ACPI-PMU: Setting up 4 PMUs for CPU type D07
+
+Thanks,
 -- 
-2.0.4
-
+Shannon
 

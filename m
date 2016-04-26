@@ -1,59 +1,56 @@
-Received: by 10.25.208.194 with SMTP id h185csp1422190lfg;
-        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
-X-Received: by 10.140.108.229 with SMTP id j92mr1390168qgf.17.1461667624458;
-        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
+Received: by 10.25.208.194 with SMTP id h185csp1423437lfg;
+        Tue, 26 Apr 2016 03:49:21 -0700 (PDT)
+X-Received: by 10.140.20.204 with SMTP id 70mr1435067qgj.38.1461667761758;
+        Tue, 26 Apr 2016 03:49:21 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h33si1051730qgh.20.2016.04.26.03.47.04
+        by mx.google.com with ESMTPS id s201si1056211qke.3.2016.04.26.03.49.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Apr 2016 03:47:04 -0700 (PDT)
+        Tue, 26 Apr 2016 03:49:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37392 helo=lists.gnu.org)
+Received: from localhost ([::1]:37410 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1av0WG-0000NI-06
-	for alex.bennee@linaro.org; Tue, 26 Apr 2016 06:47:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53772)
+	id 1av0YT-0003tq-Aw
+	for alex.bennee@linaro.org; Tue, 26 Apr 2016 06:49:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53705)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Ql-0006sD-8Y
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:25 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Qa-0006gl-SF
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1av0Qg-0006C8-EZ
-	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:23 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:8672)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1av0QY-0006Ab-L3
+	for qemu-arm@nongnu.org; Tue, 26 Apr 2016 06:41:12 -0400
+Received: from szxga02-in.huawei.com ([119.145.14.65]:40106)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1av0Qb-0006AS-VN; Tue, 26 Apr 2016 06:41:14 -0400
-Received: from 172.24.1.136 (EHLO szxeml434-hub.china.huawei.com)
-	([172.24.1.136])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CAP01978; Tue, 26 Apr 2016 18:40:54 +0800 (CST)
+	id 1av0QR-00068s-CH; Tue, 26 Apr 2016 06:41:03 -0400
+Received: from 172.24.1.36 (EHLO szxeml434-hub.china.huawei.com)
+	([172.24.1.36])
+	by szxrg02-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DGA01907; Tue, 26 Apr 2016 18:40:49 +0800 (CST)
 Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
 	szxeml434-hub.china.huawei.com (10.82.67.225) with Microsoft SMTP
-	Server id 14.3.235.1; Tue, 26 Apr 2016 18:40:42 +0800
+	Server id 14.3.235.1; Tue, 26 Apr 2016 18:40:39 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 To: <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
-Date: Tue, 26 Apr 2016 18:40:27 +0800
-Message-ID: <1461667229-9216-4-git-send-email-zhaoshenglong@huawei.com>
+Date: Tue, 26 Apr 2016 18:40:24 +0800
+Message-ID: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
 X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090202.571F45B7.0063, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020206.571F45B2.0065, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 39040758b7f8f5a60056e30d9a3fce2d
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: f6c85299f3fc7fe2047d57d6589e2a9a
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Subject: [Qemu-arm] [PATCH v8 3/5] ACPI: Fix the definition of proximity in
- AcpiSratMemoryAffinity
+X-Received-From: 119.145.14.65
+Subject: [Qemu-arm] [PATCH v8 0/5] ARM: Add NUMA support for machine virt
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,56 +62,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>,
-	david.daney@cavium.com, peter.huangpeng@huawei.com,
-	qemu-devel@nongnu.org, shannon.zhao@linaro.org,
-	Igor Mammedov <imammedo@redhat.com>
+Cc: peter.huangpeng@huawei.com, drjones@redhat.com, shannon.zhao@linaro.org,
+	qemu-devel@nongnu.org, david.daney@cavium.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dHwixkyrdY0p
+X-TUID: szwSPPkzw9Vd
 
 From: Shannon Zhao <shannon.zhao@linaro.org>
 
-ACPI spec says that Proximity Domain is an "Integer that represents
-the proximity domain to which the processor belongs". So define it as a
-uint32_t.
+Add NUMA support for machine virt. Tested successfully running a guest
+Linux kernel with the following patch applied:
 
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-Reviewed-by: Andrew Jones <drjones@redhat.com>
----
- hw/i386/acpi-build.c        | 3 +--
- include/hw/acpi/acpi-defs.h | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+- [PATCH v16 0/6] arm64, numa: Add numa support for arm64 platforms
+https://lkml.org/lkml/2016/4/8/571
+- [PATCH v5 00/14] ACPI NUMA support for ARM64
+https://lkml.org/lkml/2016/4/19/852
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 9ae4c0d..3c031aa 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2440,8 +2440,7 @@ acpi_build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
- {
-     numamem->type = ACPI_SRAT_MEMORY;
-     numamem->length = sizeof(*numamem);
--    memset(numamem->proximity, 0, 4);
--    numamem->proximity[0] = node;
-+    numamem->proximity = cpu_to_le32(node);
-     numamem->flags = cpu_to_le32(flags);
-     numamem->base_addr = cpu_to_le64(base);
-     numamem->range_length = cpu_to_le64(len);
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index bcf5c3f..850a962 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -475,7 +475,7 @@ typedef struct AcpiSratProcessorAffinity AcpiSratProcessorAffinity;
- struct AcpiSratMemoryAffinity
- {
-     ACPI_SUB_HEADER_DEF
--    uint8_t     proximity[4];
-+    uint32_t    proximity;
-     uint16_t    reserved1;
-     uint64_t    base_addr;
-     uint64_t    range_length;
+Example qemu command line:
+qemu-system-aarch64 \
+    -enable-kvm -smp 4\
+    -kernel Image \
+    -m 512 -machine virt,kernel_irqchip=on \
+    -initrd guestfs.cpio.gz \
+    -cpu host -nographic \
+    -numa node,mem=256M,cpus=0-1,nodeid=0 \
+    -numa node,mem=256M,cpus=2-3,nodeid=1 \
+    -append "console=ttyAMA0 root=/dev/ram"
+
+Changes since v7:
+* fix code style suggested by Marcel
+* rename acpi_build_srat_memory to build_srat_memory
+
+Changes since v6:
+* squash first two patches of previous series together
+* fix the definition of proximity in AcpiSratMemoryAffinity
+* rename acpi_build_srat_memory to build_acpi_srat_memory
+
+Changes since v5:
+* don't generate /distance-map node since it's optional
+* improve the /memory node name
+* move acpi_build_srat_memory to common place then reuse it to generate
+  SRAT table
+
+Changes since v4:
+* rebased on new kernel driver and device bindings, especially the
+  compatible string "numa-distance-map-v1" of /distance-map node
+* set the numa-node-id for first /memory node
+
+Changes since v3:
+* based on new kernel driver and device bindings
+* add ACPI part
+
+Changes since v2:
+* update to use NUMA node property arm,associativity.
+
+Changes since v1:
+Take into account Peter's comments:
+* rename virt_memory_init to arm_generate_memory_dtb
+* move arm_generate_memory_dtb to boot.c and make it a common func
+* use a struct numa_map to generate numa dtb
+
+Shannon Zhao (5):
+  ARM: Virt: Set numa-node-id for cpu and memory nodes
+  ACPI: Add GICC Affinity Structure
+  ACPI: Fix the definition of proximity in AcpiSratMemoryAffinity
+  ACPI: move acpi_build_srat_memory to common place
+  ACPI: Virt: Generate SRAT table
+
+ hw/acpi/aml-build.c         | 11 ++++++++++
+ hw/arm/boot.c               | 43 +++++++++++++++++++++++++++++++------
+ hw/arm/virt-acpi-build.c    | 52 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/virt.c               |  8 +++++++
+ hw/i386/acpi-build.c        | 41 +++++++++--------------------------
+ include/hw/acpi/acpi-defs.h | 17 +++++++++++++--
+ include/hw/acpi/aml-build.h | 10 +++++++++
+ 7 files changed, 143 insertions(+), 39 deletions(-)
+
 -- 
 2.0.4
 

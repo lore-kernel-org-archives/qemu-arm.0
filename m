@@ -1,737 +1,118 @@
-Received: by 10.25.208.137 with SMTP id h131csp508538lfg;
-        Thu, 28 Apr 2016 14:34:33 -0700 (PDT)
-X-Received: by 10.112.47.232 with SMTP id g8mr7479168lbn.55.1461879254880;
-        Thu, 28 Apr 2016 14:34:14 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from mail-lf0-x22b.google.com (mail-lf0-x22b.google.com. [2a00:1450:4010:c07::22b])
-        by mx.google.com with ESMTPS id a10si6120438lbx.55.2016.04.28.14.34.14
-        for <alex.bennee@linaro.org>
+Received: by 10.25.208.137 with SMTP id h131csp811245lfg;
+        Fri, 29 Apr 2016 04:54:12 -0700 (PDT)
+X-Received: by 10.28.178.129 with SMTP id b123mr3595325wmf.76.1461930852742;
+        Fri, 29 Apr 2016 04:54:12 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-wm0-x235.google.com (mail-wm0-x235.google.com. [2a00:1450:400c:c09::235])
+        by mx.google.com with ESMTPS id h201si3748970wme.86.2016.04.29.04.54.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Apr 2016 14:34:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c07::22b as permitted sender) client-ip=2a00:1450:4010:c07::22b;
+        Fri, 29 Apr 2016 04:54:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) client-ip=2a00:1450:400c:c09::235;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c07::22b as permitted sender) smtp.mailfrom=sergey.fedorov@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-lf0-x22b.google.com with SMTP id y84so98762062lfc.0
-        for <alex.bennee@linaro.org>; Thu, 28 Apr 2016 14:34:14 -0700 (PDT)
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::235 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x235.google.com with SMTP id e201so24495316wme.0;
+        Fri, 29 Apr 2016 04:54:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=LTa8n7ZE2WgaOHClocGSWbPGLfIrtnHwTIJSYI648cg=;
-        b=DnNKEHhpp73rbLy0NMLb31ERlH+OSuzYbJH+ruNngpTAm/UvE8xmZoRkN/x3ZK9Olp
-         eQPAHWE2KsWQRbpJWAntUlQY/7pv1uMWmO9I3RgOGTBH4y6OQhnzRULo7kdldm3TiDiG
-         bnX7KqRyR1NEIUX7SuCRxCXnWc5/Gaf/FYhT4=
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=m+pnkp3fm20qvaQvmTFLJ3gBrr0QaNFntGq/B8tumds=;
+        b=CZMN1PBA8wLscJnG9yWpauNoiTGKZUhVch4UHz6IOhZABJQmxyS9qxNaVEUg2YpqeE
+         lwnRlSZjA6SV0W/fyi/JdY+lSrUPU+9fCGwsGY8Gx8boV3UG65ccGFf5szCsPaxYly6F
+         dG6Eo36DG5wO0e5Dqo7COizsvlUVZrVwYTw0QK5fjOS40dWtnsjberhGA6D5ONoSxTcY
+         JKO6SYGZCSVYTfB1FG/wXLmnJG7y6QbW93TH18Ulopivq+PnNe9oKZxSGGhIOlbUwYQi
+         ysa2JcXSH5RnWPx7tFEaUu/5uxoP7Zyd/TmLDCXFwsyTw4Zql5hPuN7e3ZRXKhzWt1jm
+         Fy3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=LTa8n7ZE2WgaOHClocGSWbPGLfIrtnHwTIJSYI648cg=;
-        b=kSb/lZJSqyTu5TZQdk41BJvG9XPgH83O2tYc/8m8LeGic1j6GHH+ancrT8dunQ1GxU
-         9BvYZNrNLoaU9pkIjZxzqUDXHRTJoC1U5WDxw2QlfCxUeoY4vippv2R3dRy/CBCUPqtI
-         iLw9JPmdz0CKm+XUbaEu7i/iMYWfXN8uPDnVp7CCT7iKiS9Vuq483P758ffwXQr+7egq
-         izT0auh0vO8T/WSiqUjq6d6AWAkvW8fq29OXECBX78TfPqH0Q1K8OcSdiQeBuWT7s1U6
-         rRZTPkmOEo7Y2vQzQKdyiEIn3e5tbeRTJlGrBqOHQwHIGlUsPXb/p9CL8Knly+sIYtUB
-         tSZA==
-X-Gm-Message-State: AOPr4FX8Nsb70kaHapS3geCYKoS2wXoMUJUWjN8gAIHGncAbIeKmh3yFR4VKvQvk3SrysXzTMK4=
-X-Received: by 10.112.28.75 with SMTP id z11mr7078243lbg.40.1461879254471;
-        Thu, 28 Apr 2016 14:34:14 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from sergey-laptop.Dlink (broadband-46-188-121-115.2com.net. [46.188.121.115])
-        by smtp.gmail.com with ESMTPSA id m7sm1953148lbr.6.2016.04.28.14.34.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 28 Apr 2016 14:34:13 -0700 (PDT)
-From: Sergey Fedorov <sergey.fedorov@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=m+pnkp3fm20qvaQvmTFLJ3gBrr0QaNFntGq/B8tumds=;
+        b=X5WzafaTtau5jL0AifAyx/ZF1jUMhRi//I5TAtFbo2nY1OVNfh5hy49gP2HzFhMKxS
+         DfukkcueB8XI93PPGyVH8x/Rwuu4wUUAryeS2GQG9/O2oDWZ4+qPW8deEA5VhgN6MWo/
+         OhSdVyCRceW+oNxLTwsHYD7oEyaRF7BDIP9Fzm1RAUbBySOl4+ZfH1nf6JSEgmgrIcUi
+         E+n6gbjZzFJC5lrNUk5pYTccRzaRzbvZ3srXQ++Fu4VDhDnXUwo2DaV11TyDZJ5kr78b
+         A6Rr84i/2zc2YqDthO28ftHkhCXrk9ZYpJuPrahpTXPTpQClgtfEGRU+qGx0w9t2dK6e
+         nRFg==
+X-Gm-Message-State: AOPr4FVeQ7iD8zCt99YSUPQJgXCi9A7/0/QskWSGogDG/R2XWyc7JpHHWozncY7/MTYi6A==
+X-Received: by 10.195.13.135 with SMTP id ey7mr21189271wjd.161.1461930852460;
+        Fri, 29 Apr 2016 04:54:12 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+        by smtp.gmail.com with ESMTPSA id y3sm14429613wji.40.2016.04.29.04.54.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 29 Apr 2016 04:54:11 -0700 (PDT)
+Date: Fri, 29 Apr 2016 13:54:10 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
 	Sergey Fedorov <serge.fdrv@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Sergey Fedorov <sergey.fedorov@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Blue Swirl <blauwirbel@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Michael Walle <michael@walle.cc>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Leon Alrae <leon.alrae@imgtec.com>,
-	Anthony Green <green@moxielogic.com>,
-	Jia Liu <proljc@gmail.com>,
-	Alexander Graf <agraf@suse.de>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org
-Subject: [PATCH v5 10/10] tcg: Allow goto_tb to any target PC in user mode
-Date: Fri, 29 Apr 2016 00:33:55 +0300
-Message-Id: <1461879235-7694-11-git-send-email-sergey.fedorov@linaro.org>
-X-Mailer: git-send-email 2.8.1
-In-Reply-To: <1461879235-7694-1-git-send-email-sergey.fedorov@linaro.org>
-References: <1461879235-7694-1-git-send-email-sergey.fedorov@linaro.org>
+	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+	Edgar Iglesias <edgar.iglesias@xilinx.com>
+Subject: Re: [PATCH v2 4/8] target-arm: Add more fields to the data abort
+ syndrome generator
+Message-ID: <20160429115410.GW16305@toto>
+References: <1455912292-23807-1-git-send-email-edgar.iglesias@gmail.com>
+ <1455912292-23807-5-git-send-email-edgar.iglesias@gmail.com>
+ <CAFEAcA9c7OAF1Lqw1=xd3n+ipuYvo_9AW42wW0JwXM+L4e8iww@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: e9oSpqavFEks
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9c7OAF1Lqw1=xd3n+ipuYvo_9AW42wW0JwXM+L4e8iww@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: RzCEAUss8mdC
 
-From: Sergey Fedorov <serge.fdrv@gmail.com>
+On Thu, Feb 25, 2016 at 05:41:00PM +0000, Peter Maydell wrote:
+> On 19 February 2016 at 20:04, Edgar E. Iglesias
+> <edgar.iglesias@gmail.com> wrote:
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> >
+> > Add the following flags to the data abort syndrome generator:
+> > * isv - Instruction syndrome valid
+> > * sas - Syndrome access size
+> > * sse - Syndrome sign extend
+> > * srt - Syndrome register transfer
+> > * sf  - Sixty-Four bit register width
+> > * ar  - Acquire/Release
+> >
+> > These flags are not yet used, so this patch has no functional change.
+> >
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > ---
+> >  target-arm/internals.h | 20 ++++++++++++++++++--
+> >  target-arm/op_helper.c |  8 ++++++--
+> >  2 files changed, 24 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/target-arm/internals.h b/target-arm/internals.h
+> > index 34e2688..4e9d9f5 100644
+> > --- a/target-arm/internals.h
+> > +++ b/target-arm/internals.h
+> > @@ -383,13 +383,29 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+> >          | (ea << 9) | (s1ptw << 7) | fsc;
+> >  }
+> >
+> > -static inline uint32_t syn_data_abort(int same_el, int ea, int cm, int s1ptw,
+> > +static inline uint32_t syn_data_abort(int same_el, int isv,
+> > +                                      int sas, int sse, int srt,
+> > +                                      int sf, int ar,
+> > +                                      int ea, int cm, int s1ptw,
+> >                                        int wnr, int fsc,
+> >                                        bool is_16bit)
+> 
+> Everywhere we call this (both now and once the full patchset has
+> been applied) isv is a constant (either 0 or 1). I think it might
+> be cleaner to define both a syn_data_abort_with_isv() and a
+> syn_data_abort_no_isv(). Then the no_isv version doesn't need all
+> the arguments that are zeroes.
 
-In user mode, there's only a static address translation, TBs are always
-invalidated properly and direct jumps are reset when mapping change.
-Thus the destination address is always valid for direct jumps and
-there's no need to restrict it to the pages the TB resides in.
+Hi Peter,
 
-Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
-Cc: Riku Voipio <riku.voipio@iki.fi>
-Cc: Blue Swirl <blauwirbel@gmail.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
+Finally getting back to this :-)
 
-Changes in v5:
- * Don't check for in_superpage() in target-alpha/translate.c for
-   user-mode
-Changes in v4:
- * Explanatory comments moved to tcg_gen_goto_tb()
-   declaration comment
- * Cc'ed usermode maintainers in commit message excplicitly
+In v3, I've added two separate functions as suggested.
 
- target-alpha/translate.c      |  4 ++++
- target-arm/translate-a64.c    |  2 ++
- target-arm/translate.c        | 18 ++++++++++++------
- target-cris/translate.c       | 18 ++++++++++++------
- target-i386/translate.c       | 23 ++++++++++++++---------
- target-lm32/translate.c       | 21 +++++++++++++++------
- target-m68k/translate.c       | 18 ++++++++++++------
- target-microblaze/translate.c | 15 +++++++++++----
- target-mips/translate.c       | 20 +++++++++++++++-----
- target-moxie/translate.c      | 21 +++++++++++++++------
- target-openrisc/translate.c   | 20 +++++++++++++++-----
- target-ppc/translate.c        | 20 +++++++++++++++-----
- target-s390x/translate.c      | 17 +++++++++++------
- target-sh4/translate.c        | 21 +++++++++++++++------
- target-sparc/translate.c      | 24 +++++++++++++++++-------
- target-tricore/translate.c    | 20 +++++++++++++++-----
- target-unicore32/translate.c  | 16 +++++++++++-----
- target-xtensa/translate.c     |  4 ++++
- tcg/tcg-op.h                  |  9 ++++++---
- 19 files changed, 221 insertions(+), 90 deletions(-)
-
-diff --git a/target-alpha/translate.c b/target-alpha/translate.c
-index 5b86992dd367..8c2183a418e3 100644
---- a/target-alpha/translate.c
-+++ b/target-alpha/translate.c
-@@ -460,12 +460,16 @@ static bool use_goto_tb(DisasContext *ctx, uint64_t dest)
-         || ctx->singlestep_enabled || singlestep) {
-         return false;
-     }
-+#ifndef CONFIG_USER_ONLY
-     /* If the destination is in the superpage, the page perms can't change.  */
-     if (in_superpage(ctx, dest)) {
-         return true;
-     }
-     /* Check for the dest on the same page as the start of the TB.  */
-     return ((ctx->tb->pc ^ dest) & TARGET_PAGE_MASK) == 0;
-+#else
-+    return true;
-+#endif
- }
- 
- static ExitStatus gen_bdirect(DisasContext *ctx, int ra, int32_t disp)
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index b13cff756ad1..476d677f22d7 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -274,10 +274,12 @@ static inline bool use_goto_tb(DisasContext *s, int n, uint64_t dest)
-         return false;
-     }
- 
-+#ifndef CONFIG_USER_ONLY
-     /* Only link tbs from inside the same guest page */
-     if ((s->tb->pc & TARGET_PAGE_MASK) != (dest & TARGET_PAGE_MASK)) {
-         return false;
-     }
-+#endif
- 
-     return true;
- }
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 34196a821772..a43b1f61cf77 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -4049,16 +4049,22 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-     return 0;
- }
- 
--static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
-+static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
- {
--    TranslationBlock *tb;
-+#ifndef CONFIG_USER_ONLY
-+    return (s->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
-+           ((s->pc - 1) & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
- 
--    tb = s->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
--        ((s->pc - 1) & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
-+static inline void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
-+{
-+    if (use_goto_tb(s, dest)) {
-         tcg_gen_goto_tb(n);
-         gen_set_pc_im(s, dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + n);
-     } else {
-         gen_set_pc_im(s, dest);
-         tcg_gen_exit_tb(0);
-diff --git a/target-cris/translate.c b/target-cris/translate.c
-index 9c8ff8f2308a..f28b1999a786 100644
---- a/target-cris/translate.c
-+++ b/target-cris/translate.c
-@@ -520,16 +520,22 @@ static void t_gen_cc_jmp(TCGv pc_true, TCGv pc_false)
-     gen_set_label(l1);
- }
- 
--static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
-+static inline bool use_goto_tb(DisasContext *dc, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = dc->tb;
-+#ifndef CONFIG_USER_ONLY
-+    return (dc->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
-+           (dc->ppc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
- 
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
--        (dc->ppc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
-+static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
-+{
-+    if (use_goto_tb(dc, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_tl(env_pc, dest);
--                tcg_gen_exit_tb((uintptr_t)tb + n);
-+                tcg_gen_exit_tb((uintptr_t)dc->tb + n);
-     } else {
-         tcg_gen_movi_tl(env_pc, dest);
-         tcg_gen_exit_tb(0);
-diff --git a/target-i386/translate.c b/target-i386/translate.c
-index 058d85a1abf7..868c26244ba7 100644
---- a/target-i386/translate.c
-+++ b/target-i386/translate.c
-@@ -2085,20 +2085,25 @@ static inline int insn_const_size(TCGMemOp ot)
-     }
- }
- 
-+static inline bool use_goto_tb(DisasContext *s, target_ulong pc)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    return (pc & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK) ||
-+           (pc & TARGET_PAGE_MASK) == (s->pc_start & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static inline void gen_goto_tb(DisasContext *s, int tb_num, target_ulong eip)
- {
--    TranslationBlock *tb;
--    target_ulong pc;
--
--    pc = s->cs_base + eip;
--    tb = s->tb;
--    /* NOTE: we handle the case where the TB spans two pages here */
--    if ((pc & TARGET_PAGE_MASK) == (tb->pc & TARGET_PAGE_MASK) ||
--        (pc & TARGET_PAGE_MASK) == (s->pc_start & TARGET_PAGE_MASK))  {
-+    target_ulong pc = s->cs_base + eip;
-+
-+    if (use_goto_tb(s, pc))  {
-         /* jump to same page: we can use a direct jump */
-         tcg_gen_goto_tb(tb_num);
-         gen_jmp_im(eip);
--        tcg_gen_exit_tb((uintptr_t)tb + tb_num);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + tb_num);
-     } else {
-         /* jump to another page: currently not optimized */
-         gen_jmp_im(eip);
-diff --git a/target-lm32/translate.c b/target-lm32/translate.c
-index 256a51f8498f..dd972f5b8c59 100644
---- a/target-lm32/translate.c
-+++ b/target-lm32/translate.c
-@@ -133,16 +133,25 @@ static inline void t_gen_illegal_insn(DisasContext *dc)
-     gen_helper_ill(cpu_env);
- }
- 
--static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
-+static inline bool use_goto_tb(DisasContext *dc, target_ulong dest)
- {
--    TranslationBlock *tb;
-+    if (unlikely(dc->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (dc->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
- 
--    tb = dc->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--            likely(!dc->singlestep_enabled)) {
-+static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
-+{
-+    if (use_goto_tb(dc, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_tl(cpu_pc, dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)dc->tb + n);
-     } else {
-         tcg_gen_movi_tl(cpu_pc, dest);
-         if (dc->singlestep_enabled) {
-diff --git a/target-m68k/translate.c b/target-m68k/translate.c
-index e2ce6c615e07..e46356e44c78 100644
---- a/target-m68k/translate.c
-+++ b/target-m68k/translate.c
-@@ -852,19 +852,25 @@ static inline void gen_addr_fault(DisasContext *s)
-         }                                                               \
-     } while (0)
- 
-+static inline bool use_goto_tb(DisasContext *s, uint32_t dest)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    return (s->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
-+           (s->insn_pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- /* Generate a jump to an immediate address.  */
- static void gen_jmp_tb(DisasContext *s, int n, uint32_t dest)
- {
--    TranslationBlock *tb;
--
--    tb = s->tb;
-     if (unlikely(s->singlestep_enabled)) {
-         gen_exception(s, dest, EXCP_DEBUG);
--    } else if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) ||
--               (s->insn_pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
-+    } else if (use_goto_tb(s, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_i32(QREG_PC, dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + n);
-     } else {
-         gen_jmp_im(s, dest);
-         tcg_gen_exit_tb(0);
-diff --git a/target-microblaze/translate.c b/target-microblaze/translate.c
-index f944965a14e1..a7a8ac8f995f 100644
---- a/target-microblaze/translate.c
-+++ b/target-microblaze/translate.c
-@@ -124,14 +124,21 @@ static inline void t_gen_raise_exception(DisasContext *dc, uint32_t index)
-     dc->is_jmp = DISAS_UPDATE;
- }
- 
-+static inline bool use_goto_tb(DisasContext *dc, target_ulong dest)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    return (dc->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = dc->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
-+    if (use_goto_tb(dc, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_tl(cpu_SR[SR_PC], dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)dc->tb + n);
-     } else {
-         tcg_gen_movi_tl(cpu_SR[SR_PC], dest);
-         tcg_gen_exit_tb(0);
-diff --git a/target-mips/translate.c b/target-mips/translate.c
-index a3a05ec66dd2..ddfb9244d7e3 100644
---- a/target-mips/translate.c
-+++ b/target-mips/translate.c
-@@ -4191,15 +4191,25 @@ static void gen_trap (DisasContext *ctx, uint32_t opc,
-     tcg_temp_free(t1);
- }
- 
-+static inline bool use_goto_tb(DisasContext *ctx, target_ulong dest)
-+{
-+    if (unlikely(ctx->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (ctx->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static inline void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = ctx->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--        likely(!ctx->singlestep_enabled)) {
-+    if (use_goto_tb(ctx, dest)) {
-         tcg_gen_goto_tb(n);
-         gen_save_pc(dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
-     } else {
-         gen_save_pc(dest);
-         if (ctx->singlestep_enabled) {
-diff --git a/target-moxie/translate.c b/target-moxie/translate.c
-index a437e2ab6026..58200c25d3f4 100644
---- a/target-moxie/translate.c
-+++ b/target-moxie/translate.c
-@@ -121,17 +121,26 @@ void moxie_translate_init(void)
-     done_init = 1;
- }
- 
-+static inline bool use_goto_tb(DisasContext *ctx, target_ulong dest)
-+{
-+    if (unlikely(ctx->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (ctx->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static inline void gen_goto_tb(CPUMoxieState *env, DisasContext *ctx,
-                                int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = ctx->tb;
--
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--        !ctx->singlestep_enabled) {
-+    if (use_goto_tb(ctx, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_i32(cpu_pc, dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
-     } else {
-         tcg_gen_movi_i32(cpu_pc, dest);
-         if (ctx->singlestep_enabled) {
-diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
-index 5d0ab442a872..d4f1f260e425 100644
---- a/target-openrisc/translate.c
-+++ b/target-openrisc/translate.c
-@@ -190,15 +190,25 @@ static void check_ov64s(DisasContext *dc)
- }
- #endif*/
- 
-+static inline bool use_goto_tb(DisasContext *dc, target_ulong dest)
-+{
-+    if (unlikely(dc->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (dc->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = dc->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--                                       likely(!dc->singlestep_enabled)) {
-+    if (use_goto_tb(dc, dest)) {
-         tcg_gen_movi_tl(cpu_pc, dest);
-         tcg_gen_goto_tb(n);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)dc->tb + n);
-     } else {
-         tcg_gen_movi_tl(cpu_pc, dest);
-         if (dc->singlestep_enabled) {
-diff --git a/target-ppc/translate.c b/target-ppc/translate.c
-index b3860ecdea9c..d485d7c7cb18 100644
---- a/target-ppc/translate.c
-+++ b/target-ppc/translate.c
-@@ -3822,19 +3822,29 @@ static inline void gen_update_cfar(DisasContext *ctx, target_ulong nip)
- #endif
- }
- 
-+static inline bool use_goto_tb(DisasContext *ctx, target_ulong dest)
-+{
-+    if (unlikely(ctx->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (ctx->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- /***                                Branch                                 ***/
- static inline void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = ctx->tb;
-     if (NARROW_MODE(ctx)) {
-         dest = (uint32_t) dest;
-     }
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--        likely(!ctx->singlestep_enabled)) {
-+    if (use_goto_tb(ctx, dest)) {
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_tl(cpu_nip, dest & ~3);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
-     } else {
-         tcg_gen_movi_tl(cpu_nip, dest & ~3);
-         if (unlikely(ctx->singlestep_enabled)) {
-diff --git a/target-s390x/translate.c b/target-s390x/translate.c
-index c5179fe05d7e..e99eb5cb0169 100644
---- a/target-s390x/translate.c
-+++ b/target-s390x/translate.c
-@@ -608,12 +608,17 @@ static void gen_op_calc_cc(DisasContext *s)
- 
- static int use_goto_tb(DisasContext *s, uint64_t dest)
- {
--    /* NOTE: we handle the case where the TB spans two pages here */
--    return (((dest & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK)
--             || (dest & TARGET_PAGE_MASK) == (s->pc & TARGET_PAGE_MASK))
--            && !s->singlestep_enabled
--            && !(s->tb->cflags & CF_LAST_IO)
--            && !(s->tb->flags & FLAG_MASK_PER));
-+    if (unlikely(s->singlestep_enabled) ||
-+        (s->tb->cflags & CF_LAST_IO) ||
-+        (s->tb->flags & FLAG_MASK_PER)) {
-+        return false;
-+    }
-+#ifndef CONFIG_USER_ONLY
-+    return (dest & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK) ||
-+           (dest & TARGET_PAGE_MASK) == (s->pc & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
- }
- 
- static void account_noninline_branch(DisasContext *s, int cc_op)
-diff --git a/target-sh4/translate.c b/target-sh4/translate.c
-index 7c189680a7a4..53f782c05467 100644
---- a/target-sh4/translate.c
-+++ b/target-sh4/translate.c
-@@ -205,17 +205,26 @@ static void gen_write_sr(TCGv src)
-     tcg_gen_andi_i32(cpu_sr_t, cpu_sr_t, 1);
- }
- 
--static void gen_goto_tb(DisasContext * ctx, int n, target_ulong dest)
-+static inline bool use_goto_tb(DisasContext *ctx, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = ctx->tb;
-+    if (unlikely(ctx->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (ctx->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
- 
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--	!ctx->singlestep_enabled) {
-+static void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
-+{
-+    if (use_goto_tb(ctx, dest)) {
- 	/* Use a direct jump if in same page and singlestep not enabled */
-         tcg_gen_goto_tb(n);
-         tcg_gen_movi_i32(cpu_pc, dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
-     } else {
-         tcg_gen_movi_i32(cpu_pc, dest);
-         if (ctx->singlestep_enabled)
-diff --git a/target-sparc/translate.c b/target-sparc/translate.c
-index 7998ff57bf09..d154e3f7b633 100644
---- a/target-sparc/translate.c
-+++ b/target-sparc/translate.c
-@@ -303,20 +303,30 @@ static inline TCGv gen_dest_gpr(DisasContext *dc, int reg)
-     }
- }
- 
-+static inline bool use_goto_tb(DisasContext *s, target_ulong pc,
-+                               target_ulong npc)
-+{
-+    if (unlikely(s->singlestep)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (pc & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK) &&
-+           (npc & TARGET_PAGE_MASK) == (s->tb->pc & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static inline void gen_goto_tb(DisasContext *s, int tb_num,
-                                target_ulong pc, target_ulong npc)
- {
--    TranslationBlock *tb;
--
--    tb = s->tb;
--    if ((pc & TARGET_PAGE_MASK) == (tb->pc & TARGET_PAGE_MASK) &&
--        (npc & TARGET_PAGE_MASK) == (tb->pc & TARGET_PAGE_MASK) &&
--        !s->singlestep)  {
-+    if (use_goto_tb(s, pc, npc))  {
-         /* jump to same page: we can use a direct jump */
-         tcg_gen_goto_tb(tb_num);
-         tcg_gen_movi_tl(cpu_pc, pc);
-         tcg_gen_movi_tl(cpu_npc, npc);
--        tcg_gen_exit_tb((uintptr_t)tb + tb_num);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + tb_num);
-     } else {
-         /* jump to another page: currently not optimized */
-         tcg_gen_movi_tl(cpu_pc, pc);
-diff --git a/target-tricore/translate.c b/target-tricore/translate.c
-index 912bf226bedc..0237e7bea835 100644
---- a/target-tricore/translate.c
-+++ b/target-tricore/translate.c
-@@ -3236,15 +3236,25 @@ static inline void gen_save_pc(target_ulong pc)
-     tcg_gen_movi_tl(cpu_PC, pc);
- }
- 
-+static inline bool use_goto_tb(DisasContext *ctx, target_ulong dest)
-+{
-+    if (unlikely(ctx->singlestep_enabled)) {
-+        return false;
-+    }
-+
-+#ifndef CONFIG_USER_ONLY
-+    return (ctx->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
-+
- static inline void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
- {
--    TranslationBlock *tb;
--    tb = ctx->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK) &&
--        likely(!ctx->singlestep_enabled)) {
-+    if (use_goto_tb(ctx, dest)) {
-         tcg_gen_goto_tb(n);
-         gen_save_pc(dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
-     } else {
-         gen_save_pc(dest);
-         if (ctx->singlestep_enabled) {
-diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
-index 39af3af05f15..307f7b205924 100644
---- a/target-unicore32/translate.c
-+++ b/target-unicore32/translate.c
-@@ -1089,15 +1089,21 @@ static void disas_ucf64_insn(CPUUniCore32State *env, DisasContext *s, uint32_t i
-     }
- }
- 
--static inline void gen_goto_tb(DisasContext *s, int n, uint32_t dest)
-+static inline bool use_goto_tb(DisasContext *s, uint32_t dest)
- {
--    TranslationBlock *tb;
-+#ifndef CONFIG_USER_ONLY
-+    return (s->tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK);
-+#else
-+    return true;
-+#endif
-+}
- 
--    tb = s->tb;
--    if ((tb->pc & TARGET_PAGE_MASK) == (dest & TARGET_PAGE_MASK)) {
-+static inline void gen_goto_tb(DisasContext *s, int n, uint32_t dest)
-+{
-+    if (use_goto_tb(s, dest)) {
-         tcg_gen_goto_tb(n);
-         gen_set_pc_im(dest);
--        tcg_gen_exit_tb((uintptr_t)tb + n);
-+        tcg_gen_exit_tb((uintptr_t)s->tb + n);
-     } else {
-         gen_set_pc_im(dest);
-         tcg_gen_exit_tb(0);
-diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
-index 989448846902..9eac56e2a5bc 100644
---- a/target-xtensa/translate.c
-+++ b/target-xtensa/translate.c
-@@ -418,9 +418,11 @@ static void gen_jump(DisasContext *dc, TCGv dest)
- static void gen_jumpi(DisasContext *dc, uint32_t dest, int slot)
- {
-     TCGv_i32 tmp = tcg_const_i32(dest);
-+#ifndef CONFIG_USER_ONLY
-     if (((dc->tb->pc ^ dest) & TARGET_PAGE_MASK) != 0) {
-         slot = -1;
-     }
-+#endif
-     gen_jump_slot(dc, tmp, slot);
-     tcg_temp_free(tmp);
- }
-@@ -446,9 +448,11 @@ static void gen_callw(DisasContext *dc, int callinc, TCGv_i32 dest)
- static void gen_callwi(DisasContext *dc, int callinc, uint32_t dest, int slot)
- {
-     TCGv_i32 tmp = tcg_const_i32(dest);
-+#ifndef CONFIG_USER_ONLY
-     if (((dc->tb->pc ^ dest) & TARGET_PAGE_MASK) != 0) {
-         slot = -1;
-     }
-+#endif
-     gen_callw_slot(dc, callinc, tmp, slot);
-     tcg_temp_free(tmp);
- }
-diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
-index ace39619ef89..f217e8074715 100644
---- a/tcg/tcg-op.h
-+++ b/tcg/tcg-op.h
-@@ -759,9 +759,12 @@ static inline void tcg_gen_exit_tb(uintptr_t val)
-  *
-  * See tcg/README for more info about this TCG operation.
-  *
-- * NOTE: Direct jumps with goto_tb are only safe within the pages this TB
-- * resides in because we don't take care of direct jumps when address mapping
-- * changes, e.g. in tlb_flush().
-+ * NOTE: In softmmu emulation, direct jumps with goto_tb are only safe within
-+ * the pages this TB resides in because we don't take care of direct jumps when
-+ * address mapping changes, e.g. in tlb_flush(). In user mode, there's only a
-+ * static address translation, so the destination address is always valid, TBs
-+ * are always invalidated properly, and direct jumps are reset when mapping
-+ * changes.
-  */
- void tcg_gen_goto_tb(unsigned idx);
- 
--- 
-2.8.1
+Cheers,
+Edgar

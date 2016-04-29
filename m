@@ -1,459 +1,122 @@
-Received: by 10.25.208.137 with SMTP id h131csp819783lfg;
-        Fri, 29 Apr 2016 05:08:28 -0700 (PDT)
-X-Received: by 10.194.113.3 with SMTP id iu3mr24449686wjb.149.1461931695604;
-        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
-        by mx.google.com with ESMTPS id j142si3858783wmg.70.2016.04.29.05.08.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
+Received: by 10.25.208.137 with SMTP id h131csp875090lfg;
+        Fri, 29 Apr 2016 06:51:07 -0700 (PDT)
+X-Received: by 10.55.42.145 with SMTP id q17mr20340336qkq.159.1461937867361;
+        Fri, 29 Apr 2016 06:51:07 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id c3si7456395qkh.211.2016.04.29.06.51.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 29 Apr 2016 06:51:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x241.google.com with SMTP id e201so4518465wme.2;
-        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=WnqJF/xb1nQkD/xEV70UC8NNUVolZ81PGpy22G20c84=;
-        b=zcHuQiFbud549/iUMHgyZEpUJDdbTM+CnmzdkxQGkEDzmCnK1Ed6oWXRmTZm7OGahS
-         Mrtea2hoXLA8Qt7HINtr466Nb9BMczygYeIuW+ar3TzdhP79qlvW4cWlDkRV6TXEH5Pr
-         qqkpgao+agxZ/eXJ9U+lNOj02VigBygCAiFm+LfmX+Q/Ib7FPHGstSjhhtvV5t7QEobk
-         U/Knp63yxbAy18v6gjDUcIxJx92hAJe1hMvuqAMJQCIjr3pn2dURgTykHox5u6LSVjxM
-         mFClvozed7ro5fXEsW2TjO9xUvBtF5B9qYPNkfYyH0WCLyWNTtpB+WXhblH1sngVaRN8
-         gaEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=WnqJF/xb1nQkD/xEV70UC8NNUVolZ81PGpy22G20c84=;
-        b=m/QDmrfbSgx37xi/cMlKhpXnkKOiMMM3doImHMypsYVkYwVC3UCmLW47KulOweMG6l
-         UzTXloUW5ecjV8Oly6bEjBX+cH56b6VmtfTDEiRGAXcKVJLK/fxNMMMSZLAYeCOiZHps
-         0ohZu0rMsuRJqJ6/ZXtdALwfmwPzKN36qiyvM2mQiRJpe3DmZYANCMasxFM8bZLnGPVB
-         Da9gPdz1qM7ecs6gQOfhrlBSgCwcfK49eyc21eKnFeczG6l/M3COFfVJ3H/RikUEbqB7
-         qLZXI4cB0WSP423PqxWVaumXo/s4IHdnsLlgNRaj/SHhmYC74y3dgUUOb1vpdr+OUC+i
-         lpEg==
-X-Gm-Message-State: AOPr4FUkI3RKzbfObASkWKFrexQhUEjk+tu8NUbXKfQXaHTqel8OfFVGqXDnmJBbFl2LeQ==
-X-Received: by 10.28.11.143 with SMTP id 137mr3460069wml.92.1461931695333;
-        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-        by smtp.gmail.com with ESMTPSA id jh2sm14499529wjb.39.2016.04.29.05.08.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:14 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	qemu-arm@nongnu.org,
-	edgar.iglesias@xilinx.com
-Subject: [PATCH v3 7/7] target-arm: A64: Create Instruction Syndromes for Data Aborts
-Date: Fri, 29 Apr 2016 14:08:04 +0200
-Message-Id: <1461931684-1867-8-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.5.0
-In-Reply-To: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
-References: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: rWKiBEtUSdy+
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54629 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aw8ok-0000Np-SB
+	for alex.bennee@linaro.org; Fri, 29 Apr 2016 09:50:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48802)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1aw8oa-0000AF-Sg
+	for qemu-arm@nongnu.org; Fri, 29 Apr 2016 09:50:47 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1aw8oO-0000d1-Qf
+	for qemu-arm@nongnu.org; Fri, 29 Apr 2016 09:50:35 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:59887)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Leon.Alrae@imgtec.com>)
+	id 1aw8oO-0000Si-Kz; Fri, 29 Apr 2016 09:50:28 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Websense Email with ESMTPS id 5F32D2FF63F05;
+	Fri, 29 Apr 2016 14:49:56 +0100 (IST)
+Received: from [192.168.161.74] (192.168.161.74) by hhmail02.hh.imgtec.org
+	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.266.1;
+	Fri, 29 Apr 2016 14:49:59 +0100
+Message-ID: <5723666E.10107@imgtec.com>
+Date: Fri, 29 Apr 2016 14:49:34 +0100
+From: Leon Alrae <leon.alrae@imgtec.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64;
+	rv:8.0) Gecko/20111124 Thunderbird/8.0
+MIME-Version: 1.0
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
+References: <1460995422-14373-1-git-send-email-aleksandar.markovic@rt-rk.com>
+	<1460995422-14373-2-git-send-email-aleksandar.markovic@rt-rk.com>
+In-Reply-To: <1460995422-14373-2-git-send-email-aleksandar.markovic@rt-rk.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [192.168.161.74]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-arm] [PATCH v5 1/9] softfloat: Implement
+ run-time-configurable meaning of signaling NaN bit
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
+	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
+	maciej.rozycki@imgtec.com, qemu-devel@nongnu.org,
+	blauwirbel@gmail.com, jcmvbkbc@gmail.com,
+	aleksandar.markovic@imgtec.com, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, petar.jovanovic@imgtec.com,
+	miodrag.dinic@imgtec.com, pbonzini@redhat.com,
+	gxt@mprc.pku.edu.cn, afaerber@suse.de, aurelien@aurel32.net,
+	rth@twiddle.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: If3VjXp09Nbo
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 18/04/16 17:03, Aleksandar Markovic wrote:
+> -#if SNAN_BIT_IS_ONE
+> -    return ((uint32_t)(a << 1) >= 0xff800000);
+> -#else
+> -    return ( ( ( a>>22 ) & 0x1FF ) == 0x1FE ) && ( a & 0x003FFFFF );
+> -#endif
+> +    if (status->snan_bit_is_one) {
+> +        return ((uint32_t)(a << 1) >= 0xFF800000);
+> +    } else {
+> +        return (((a >> 22) & 0x1FF) == 0x1FE) && (a & 0x003FFFFF);
 
-Add support for generating the instruction syndrome for Data Aborts.
-These syndromes are used by hypervisors for example to trap and emulate
-memory accesses.
+Thanks for fixing the style of lines you modified, ...
 
-We save the decoded data out-of-band with the TBs at translation time.
-When exceptions hit, the extra data attached to the TB is used to
-recreate the state needed to encode instruction syndromes.
-This avoids the need to emit moves with every load/store.
+> -    z.sign = float32_val(a)>>31;
+> +    z.sign = float32_val(a) >> 31;
+>      z.low = 0;
+> -    z.high = ( (uint64_t) float32_val(a) )<<41;
+> +    z.high = ((uint64_t)float32_val(a)) << 41;
 
-Based on a suggestion from Peter Maydell.
+... here however I think we usually don't correct the style if the line
+wouldn't be touched otherwise. But obviously this is up to FPU Maintainers.
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- target-arm/cpu.h           |  12 ++++-
- target-arm/op_helper.c     |  49 ++++++++++++++---
- target-arm/translate-a64.c | 130 +++++++++++++++++++++++++++++++++++++++------
- target-arm/translate.c     |   5 +-
- target-arm/translate.h     |   2 +
- 5 files changed, 173 insertions(+), 25 deletions(-)
+> @@ -2940,7 +2952,8 @@ void helper_msa_fclass_df(CPUMIPSState *env, uint32_t df,
+>          c = update_msacsr(env, CLEAR_FS_UNDERFLOW, 0);                      \
+>                                                                              \
+>          if (get_enabled_exceptions(env, c)) {                               \
+> -            DEST = ((FLOAT_SNAN ## BITS >> 6) << 6) | c;                    \
+> +            DEST = ((FLOAT_SNAN ## BITS(&env->active_tc.msa_fp_status)      \
 
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 066ff67..256fbec 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -94,7 +94,17 @@
- struct arm_boot_info;
- 
- #define NB_MMU_MODES 7
--#define TARGET_INSN_START_EXTRA_WORDS 1
-+/* ARM-specific extra insn start words:
-+ * 1: Conditional execution bits
-+ * 2: Partial exception syndrome for data aborts
-+ */
-+#define TARGET_INSN_START_EXTRA_WORDS 2
-+
-+/* The 2nd extra word holding syndrome info for data aborts does not use
-+ * the lower 14 bits. We shift it down to help the sleb128 encoder do a
-+ * better job. When restoring the CPU state, we shift it back up.
-+ */
-+#define ARM_INSN_START_WORD2_SHIFT 14
- 
- /* We currently assume float and double are IEEE single and double
-    precision respectively.
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index c7fba85..26aa4af 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -75,6 +75,43 @@ uint32_t HELPER(neon_tbl)(CPUARMState *env, uint32_t ireg, uint32_t def,
- 
- #if !defined(CONFIG_USER_ONLY)
- 
-+static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-+                                            unsigned int target_el,
-+                                            bool same_el,
-+                                            bool s1ptw, int is_write,
-+                                            int fsc)
-+{
-+    uint32_t syn;
-+
-+    /* ISV is only set for data aborts routed to EL2 and
-+     * never for stage-1 page table walks faulting on stage 2.
-+     *
-+     * Furthermore, ISV is only set for certain kinds of load/stores.
-+     * If the template syndrome does not have ISV set, we should leave
-+     * it cleared.
-+     *
-+     * See ARMv8 specs, D7-1974:
-+     * ISS encoding for an exception from a Data Abort, the
-+     * ISV field.
-+     */
-+    if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
-+        syn = syn_data_abort_no_iss(same_el,
-+                                    0, 0, s1ptw, is_write == 1, fsc);
-+    } else {
-+        /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
-+         * syndrome created at translation time.
-+         * Now we create the runtime syndrome with the remaining fields.
-+         */
-+        syn = syn_data_abort_with_iss(same_el,
-+                                      0, 0, 0, 0, 0,
-+                                      0, 0, s1ptw, is_write == 1, fsc,
-+                                      false);
-+        /* Merge the runtime syndrome with the template syndrome.  */
-+        syn |= template_syn;
-+    }
-+    return syn;
-+}
-+
- /* try to fill the TLB and return an exception if error. If retaddr is
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
-@@ -115,8 +152,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int mmu_idx,
-             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
-             exc = EXCP_PREFETCH_ABORT;
-         } else {
--            syn = syn_data_abort_no_iss(same_el,
--                                        0, 0, fi.s1ptw, is_write == 1, syn);
-+            syn = merge_syn_data_abort(env->exception.syndrome, target_el,
-+                                       same_el, fi.s1ptw, is_write, syn);
-             if (is_write == 1 && arm_feature(env, ARM_FEATURE_V6)) {
-                 fsr |= (1 << 11);
-             }
-@@ -137,6 +174,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
-     CPUARMState *env = &cpu->env;
-     int target_el;
-     bool same_el;
-+    uint32_t syn;
- 
-     if (retaddr) {
-         /* now we have a real cpu fault */
-@@ -161,10 +199,9 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
-         env->exception.fsr |= (1 << 11);
-     }
- 
--    raise_exception(env, EXCP_DATA_ABORT,
--                    syn_data_abort_no_iss(same_el,
--                                          0, 0, 0, is_write == 1, 0x21),
--                    target_el);
-+    syn = merge_syn_data_abort(env->exception.syndrome, target_el,
-+                               same_el, 0, is_write, 0x21);
-+    raise_exception(env, EXCP_DATA_ABORT, syn, target_el);
- }
- 
- #endif /* !defined(CONFIG_USER_ONLY) */
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index 24f5e17..18024bb 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -720,23 +720,55 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i64 t0, TCGv_i64 t1)
-  * Store from GPR register to memory.
-  */
- static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
--                             TCGv_i64 tcg_addr, int size, int memidx)
-+                             TCGv_i64 tcg_addr, int size, int memidx,
-+                             bool iss_valid,
-+                             unsigned int iss_srt,
-+                             bool iss_sf, bool iss_ar)
- {
-     g_assert(size <= 3);
-     tcg_gen_qemu_st_i64(source, tcg_addr, memidx, s->be_data + size);
-+
-+    if (iss_valid) {
-+        uint32_t isyn32;
-+
-+        isyn32 = syn_data_abort_with_iss(0,
-+                                         size,
-+                                         false,
-+                                         iss_srt,
-+                                         iss_sf,
-+                                         iss_ar,
-+                                         0, 0, 0, 0, 0, false);
-+        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
-+        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
-+    }
-+}
-+
-+static void do_gpr_st_with_isv(DisasContext *s, TCGv_i64 source,
-+                               TCGv_i64 tcg_addr, int size,
-+                               bool iss_valid,
-+                               unsigned int iss_srt,
-+                               bool iss_sf, bool iss_ar)
-+{
-+    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s),
-+                     iss_valid, iss_srt, iss_sf, iss_ar);
- }
- 
- static void do_gpr_st(DisasContext *s, TCGv_i64 source,
-                       TCGv_i64 tcg_addr, int size)
- {
--    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s));
-+    do_gpr_st_with_isv(s, source, tcg_addr, size,
-+                       false, 0, false, false);
- }
- 
- /*
-  * Load from memory to GPR register
-  */
--static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
--                             int size, bool is_signed, bool extend, int memidx)
-+static void do_gpr_ld_memidx(DisasContext *s,
-+                             TCGv_i64 dest, TCGv_i64 tcg_addr,
-+                             int size, bool is_signed,
-+                             bool extend, int memidx,
-+                             bool iss_valid, unsigned int iss_srt,
-+                             bool iss_sf, bool iss_ar)
- {
-     TCGMemOp memop = s->be_data + size;
- 
-@@ -752,13 +784,39 @@ static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
-         g_assert(size < 3);
-         tcg_gen_ext32u_i64(dest, dest);
-     }
-+
-+    if (iss_valid) {
-+        uint32_t isyn32;
-+
-+        isyn32 = syn_data_abort_with_iss(0,
-+                                         size,
-+                                         is_signed,
-+                                         iss_srt,
-+                                         iss_sf,
-+                                         iss_ar,
-+                                         0, 0, 0, 0, 0, false);
-+        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
-+        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
-+    }
- }
- 
--static void do_gpr_ld(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
--                      int size, bool is_signed, bool extend)
-+static void do_gpr_ld_with_isv(DisasContext *s,
-+                               TCGv_i64 dest, TCGv_i64 tcg_addr,
-+                               int size, bool is_signed, bool extend,
-+                               bool iss_valid, unsigned int iss_srt,
-+                               bool iss_sf, bool iss_ar)
- {
-     do_gpr_ld_memidx(s, dest, tcg_addr, size, is_signed, extend,
--                     get_mem_index(s));
-+                     get_mem_index(s),
-+                     iss_valid, iss_srt, iss_sf, iss_ar);
-+}
-+
-+static void do_gpr_ld(DisasContext *s,
-+                      TCGv_i64 dest, TCGv_i64 tcg_addr,
-+                      int size, bool is_signed, bool extend)
-+{
-+    do_gpr_ld_with_isv(s, dest, tcg_addr, size, is_signed, extend,
-+                       false, 0, false, false);
- }
- 
- /*
-@@ -1814,6 +1872,22 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
- }
- #endif
- 
-+/* Update the Sixty-Four bit (SF) registersize. This logic is derived
-+ * from the ARMv8 specs for LDR (Shared decode for all encodings).
-+ */
-+static bool disas_ldst_compute_iss_sf(int size, bool is_signed, int opc)
-+{
-+    int opc0 = extract32(opc, 0, 1);
-+    int regsize;
-+
-+    if (is_signed) {
-+        regsize = opc0 ? 32 : 64;
-+    } else {
-+        regsize = size == 3 ? 64 : 32;
-+    }
-+    return regsize == 64;
-+}
-+
- /* C3.3.6 Load/store exclusive
-  *
-  *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
-@@ -1865,10 +1939,15 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, false, 0);
-+
-+        /* Generate ISS for non-exclusive accesses including LASR.  */
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
-+                               true, rt, iss_sf, is_lasr);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
-+            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size, false, false,
-+                               true, rt, iss_sf, is_lasr);
-         }
-     }
- }
-@@ -1920,7 +1999,11 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
-     if (is_vector) {
-         do_fp_ld(s, rt, tcg_addr, size);
-     } else {
--        do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false);
-+        /* Only unsigned 32bit loads target 32bit registers.  */
-+        bool iss_sf = opc == 0 ? 32 : 64;
-+
-+        do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size, is_signed, false,
-+                           true, rt, iss_sf, false);
-     }
-     tcg_temp_free_i64(tcg_addr);
- }
-@@ -2099,6 +2182,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     bool is_store = false;
-     bool is_extended = false;
-     bool is_unpriv = (idx == 2);
-+    bool iss_valid = !is_vector;
-     bool post_index;
-     bool writeback;
- 
-@@ -2166,12 +2250,15 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-         int memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
- 
-         if (is_store) {
--            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx);
-+            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx,
-+                             iss_valid, rt, iss_sf, false);
-         } else {
-             do_gpr_ld_memidx(s, tcg_rt, tcg_addr, size,
--                             is_signed, is_extended, memidx);
-+                             is_signed, is_extended, memidx,
-+                             iss_valid, rt, iss_sf, false);
-         }
-     }
- 
-@@ -2269,10 +2356,14 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
-+                               true, rt, iss_sf, false);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
-+            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size,
-+                               is_signed, is_extended,
-+                               true, rt, iss_sf, false);
-         }
-     }
- }
-@@ -2349,10 +2440,14 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
-+                               true, rt, iss_sf, false);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
-+            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size,
-+                               is_signed, is_extended,
-+                               true, rt, iss_sf, false);
-         }
-     }
- }
-@@ -11099,7 +11194,8 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-     tcg_clear_temp_count();
- 
-     do {
--        tcg_gen_insn_start(dc->pc, 0);
-+        dc->insn_start_idx = tcg_op_buf_count();
-+        tcg_gen_insn_start(dc->pc, 0, 0);
-         num_insns++;
- 
-         if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 940ec8d..594cbfc 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -11724,7 +11724,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-       }
-     do {
-         tcg_gen_insn_start(dc->pc,
--                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1));
-+                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
-+                           0);
-         num_insns++;
- 
- #ifdef CONFIG_USER_ONLY
-@@ -12041,8 +12042,10 @@ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
-     if (is_a64(env)) {
-         env->pc = data[0];
-         env->condexec_bits = 0;
-+        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     } else {
-         env->regs[15] = data[0];
-         env->condexec_bits = data[1];
-+        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     }
- }
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 6a18d7b..dbd7ac8 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -59,6 +59,8 @@ typedef struct DisasContext {
-     bool ss_same_el;
-     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
-     int c15_cpar;
-+    /* TCG op index of the current insn_start.  */
-+    int insn_start_idx;
- #define TMP_A64_MAX 16
-     int tmp_a64_count;
-     TCGv_i64 tmp_a64[TMP_A64_MAX];
--- 
-2.5.0
+You can use the existing local pointer "status". Similarly in other MSA
+macros.
+
+> +                       >> 6) << 6) | c;                                     \
+
+
+> @@ -4670,7 +4670,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+>                          TCGv r_const;
+>  
+>                          gen_address_mask(dc, cpu_addr);
+> -                        tcg_gen_qemu_ld8u(cpu_val, cpu_addr, dc->mem_idx);
+> +                        tcg_gen_qemu_ld8s(cpu_val, cpu_addr, dc->mem_idx);
+
+This change appeared here by mistake, isn't it?
+
+Thanks,
+Leon

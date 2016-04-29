@@ -1,48 +1,48 @@
-Received: by 10.25.208.137 with SMTP id h131csp819756lfg;
-        Fri, 29 Apr 2016 05:08:25 -0700 (PDT)
-X-Received: by 10.194.86.200 with SMTP id r8mr20842322wjz.158.1461931694209;
-        Fri, 29 Apr 2016 05:08:14 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp819783lfg;
+        Fri, 29 Apr 2016 05:08:28 -0700 (PDT)
+X-Received: by 10.194.113.3 with SMTP id iu3mr24449686wjb.149.1461931695604;
+        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
 Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by mx.google.com with ESMTPS id o63si3814899wmb.95.2016.04.29.05.08.14
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by mx.google.com with ESMTPS id j142si3858783wmg.70.2016.04.29.05.08.15
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id n129so4551003wmn.1;
-        Fri, 29 Apr 2016 05:08:14 -0700 (PDT)
+Received: by mail-wm0-x241.google.com with SMTP id e201so4518465wme.2;
+        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=cxdPDfJp2aqsTISMW21ehBX5vcD1ylnjvWXmF9PWLrY=;
-        b=Wub7mWwZ/KY0dDWfG+rlTA2Y5EUcVnQOWtrDCXcprB9vONo3KXamyrShkWSyFnT+yu
-         N14g5125PNKgDxueh7A2ukfd+R9qIomzXWWluBEXyphP7FRRFcVN2BFLKrJf2ukuiw0g
-         Zoc9ZcOysSrmhIYpsbnjlB8QsATpwtq6uu1Gs7mk8NGtlTQpEEZP9AqmIX9lTJcxPpe+
-         lsN2MuCASY9MsUFtCvIGiUH7LP0f5knezk8OuXHwn1gUZO2kY9q36kbyqg+SQsN5bTE6
-         134AsS5NmGfM4Zqsg4bfnbpR0nqKIw4nOOq4M5FAixSkAnCsHv9zcoTjPAYsCicd+6jG
-         bPzg==
+        bh=WnqJF/xb1nQkD/xEV70UC8NNUVolZ81PGpy22G20c84=;
+        b=zcHuQiFbud549/iUMHgyZEpUJDdbTM+CnmzdkxQGkEDzmCnK1Ed6oWXRmTZm7OGahS
+         Mrtea2hoXLA8Qt7HINtr466Nb9BMczygYeIuW+ar3TzdhP79qlvW4cWlDkRV6TXEH5Pr
+         qqkpgao+agxZ/eXJ9U+lNOj02VigBygCAiFm+LfmX+Q/Ib7FPHGstSjhhtvV5t7QEobk
+         U/Knp63yxbAy18v6gjDUcIxJx92hAJe1hMvuqAMJQCIjr3pn2dURgTykHox5u6LSVjxM
+         mFClvozed7ro5fXEsW2TjO9xUvBtF5B9qYPNkfYyH0WCLyWNTtpB+WXhblH1sngVaRN8
+         gaEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=cxdPDfJp2aqsTISMW21ehBX5vcD1ylnjvWXmF9PWLrY=;
-        b=AAPPWowaeEC84+MOTIr8Ipn1nOFWggIiElQJQwlDc/r+3YnIJTH5IjnTIJRDXZsUkD
-         qjP5hhqKg6zcLaOAUazVVaOTB0I7pFCE+bIUW7VifOVQhc645bLmI1HZD//QCWrrsVnH
-         L/G7/eP76d8eeFzTDyks/2DY8LnFYzu8uGEeJ+9x61y5rK/+bSPtGcpldJsZClP1lVe8
-         csQy2rr/cljAqmLcZN0zGLWZtVWPldvjeRc9QyXQrrk9BgC3JfUCmMiAtI+6MJjjaIQy
-         bXdkTAwiEpJhqQBr72bwyAmZJ8Ol99kNZI2OhI8/z5zMbfwzj1SBTfznyrAv9sJmgB1l
-         VdgQ==
-X-Gm-Message-State: AOPr4FVqaW9WGgc9NuQwrRERqOiGxVVfwSN05oW6bZvZ0kUqGjAVeWddXh2dqxu1QrAnRQ==
-X-Received: by 10.194.116.103 with SMTP id jv7mr22919489wjb.22.1461931693926;
-        Fri, 29 Apr 2016 05:08:13 -0700 (PDT)
+        bh=WnqJF/xb1nQkD/xEV70UC8NNUVolZ81PGpy22G20c84=;
+        b=m/QDmrfbSgx37xi/cMlKhpXnkKOiMMM3doImHMypsYVkYwVC3UCmLW47KulOweMG6l
+         UzTXloUW5ecjV8Oly6bEjBX+cH56b6VmtfTDEiRGAXcKVJLK/fxNMMMSZLAYeCOiZHps
+         0ohZu0rMsuRJqJ6/ZXtdALwfmwPzKN36qiyvM2mQiRJpe3DmZYANCMasxFM8bZLnGPVB
+         Da9gPdz1qM7ecs6gQOfhrlBSgCwcfK49eyc21eKnFeczG6l/M3COFfVJ3H/RikUEbqB7
+         qLZXI4cB0WSP423PqxWVaumXo/s4IHdnsLlgNRaj/SHhmYC74y3dgUUOb1vpdr+OUC+i
+         lpEg==
+X-Gm-Message-State: AOPr4FUkI3RKzbfObASkWKFrexQhUEjk+tu8NUbXKfQXaHTqel8OfFVGqXDnmJBbFl2LeQ==
+X-Received: by 10.28.11.143 with SMTP id 137mr3460069wml.92.1461931695333;
+        Fri, 29 Apr 2016 05:08:15 -0700 (PDT)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-        by smtp.gmail.com with ESMTPSA id gk4sm14459542wjd.7.2016.04.29.05.08.13
+        by smtp.gmail.com with ESMTPSA id jh2sm14499529wjb.39.2016.04.29.05.08.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:13 -0700 (PDT)
+        Fri, 29 Apr 2016 05:08:14 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org
@@ -51,134 +51,409 @@ Cc: alex.bennee@linaro.org,
 	rth@twiddle.net,
 	qemu-arm@nongnu.org,
 	edgar.iglesias@xilinx.com
-Subject: [PATCH v3 6/7] target-arm/translate-a64.c: Unify some of the ldst_reg decoding
-Date: Fri, 29 Apr 2016 14:08:03 +0200
-Message-Id: <1461931684-1867-7-git-send-email-edgar.iglesias@gmail.com>
+Subject: [PATCH v3 7/7] target-arm: A64: Create Instruction Syndromes for Data Aborts
+Date: Fri, 29 Apr 2016 14:08:04 +0200
+Message-Id: <1461931684-1867-8-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
 References: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: fNX8Ktmuw4n9
+X-TUID: rWKiBEtUSdy+
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-The various load/store variants under disas_ldst_reg can all reuse the
-same decoding for opc, size, rt and is_vector.
+Add support for generating the instruction syndrome for Data Aborts.
+These syndromes are used by hypervisors for example to trap and emulate
+memory accesses.
 
-This patch unifies the decoding in preparation for generating
-instruction syndromes for data aborts.
-This will allow us to reduce the number of places to hook in updates
-to the load/store state needed to generate the insn syndromes.
+We save the decoded data out-of-band with the TBs at translation time.
+When exceptions hit, the extra data attached to the TB is used to
+recreate the state needed to encode instruction syndromes.
+This avoids the need to emit moves with every load/store.
 
-No functional change.
+Based on a suggestion from Peter Maydell.
 
-Reviewed-by: Sergey Fedorov <serge.fdrv@gmail.com>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- target-arm/translate-a64.c | 41 +++++++++++++++++++++++------------------
- 1 file changed, 23 insertions(+), 18 deletions(-)
+ target-arm/cpu.h           |  12 ++++-
+ target-arm/op_helper.c     |  49 ++++++++++++++---
+ target-arm/translate-a64.c | 130 +++++++++++++++++++++++++++++++++++++++------
+ target-arm/translate.c     |   5 +-
+ target-arm/translate.h     |   2 +
+ 5 files changed, 173 insertions(+), 25 deletions(-)
 
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 066ff67..256fbec 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -94,7 +94,17 @@
+ struct arm_boot_info;
+ 
+ #define NB_MMU_MODES 7
+-#define TARGET_INSN_START_EXTRA_WORDS 1
++/* ARM-specific extra insn start words:
++ * 1: Conditional execution bits
++ * 2: Partial exception syndrome for data aborts
++ */
++#define TARGET_INSN_START_EXTRA_WORDS 2
++
++/* The 2nd extra word holding syndrome info for data aborts does not use
++ * the lower 14 bits. We shift it down to help the sleb128 encoder do a
++ * better job. When restoring the CPU state, we shift it back up.
++ */
++#define ARM_INSN_START_WORD2_SHIFT 14
+ 
+ /* We currently assume float and double are IEEE single and double
+    precision respectively.
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index c7fba85..26aa4af 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -75,6 +75,43 @@ uint32_t HELPER(neon_tbl)(CPUARMState *env, uint32_t ireg, uint32_t def,
+ 
+ #if !defined(CONFIG_USER_ONLY)
+ 
++static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
++                                            unsigned int target_el,
++                                            bool same_el,
++                                            bool s1ptw, int is_write,
++                                            int fsc)
++{
++    uint32_t syn;
++
++    /* ISV is only set for data aborts routed to EL2 and
++     * never for stage-1 page table walks faulting on stage 2.
++     *
++     * Furthermore, ISV is only set for certain kinds of load/stores.
++     * If the template syndrome does not have ISV set, we should leave
++     * it cleared.
++     *
++     * See ARMv8 specs, D7-1974:
++     * ISS encoding for an exception from a Data Abort, the
++     * ISV field.
++     */
++    if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
++        syn = syn_data_abort_no_iss(same_el,
++                                    0, 0, s1ptw, is_write == 1, fsc);
++    } else {
++        /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
++         * syndrome created at translation time.
++         * Now we create the runtime syndrome with the remaining fields.
++         */
++        syn = syn_data_abort_with_iss(same_el,
++                                      0, 0, 0, 0, 0,
++                                      0, 0, s1ptw, is_write == 1, fsc,
++                                      false);
++        /* Merge the runtime syndrome with the template syndrome.  */
++        syn |= template_syn;
++    }
++    return syn;
++}
++
+ /* try to fill the TLB and return an exception if error. If retaddr is
+  * NULL, it means that the function was called in C code (i.e. not
+  * from generated code or from helper.c)
+@@ -115,8 +152,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int mmu_idx,
+             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
+             exc = EXCP_PREFETCH_ABORT;
+         } else {
+-            syn = syn_data_abort_no_iss(same_el,
+-                                        0, 0, fi.s1ptw, is_write == 1, syn);
++            syn = merge_syn_data_abort(env->exception.syndrome, target_el,
++                                       same_el, fi.s1ptw, is_write, syn);
+             if (is_write == 1 && arm_feature(env, ARM_FEATURE_V6)) {
+                 fsr |= (1 << 11);
+             }
+@@ -137,6 +174,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+     CPUARMState *env = &cpu->env;
+     int target_el;
+     bool same_el;
++    uint32_t syn;
+ 
+     if (retaddr) {
+         /* now we have a real cpu fault */
+@@ -161,10 +199,9 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+         env->exception.fsr |= (1 << 11);
+     }
+ 
+-    raise_exception(env, EXCP_DATA_ABORT,
+-                    syn_data_abort_no_iss(same_el,
+-                                          0, 0, 0, is_write == 1, 0x21),
+-                    target_el);
++    syn = merge_syn_data_abort(env->exception.syndrome, target_el,
++                               same_el, 0, is_write, 0x21);
++    raise_exception(env, EXCP_DATA_ABORT, syn, target_el);
+ }
+ 
+ #endif /* !defined(CONFIG_USER_ONLY) */
 diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index 5c8dddb..24f5e17 100644
+index 24f5e17..18024bb 100644
 --- a/target-arm/translate-a64.c
 +++ b/target-arm/translate-a64.c
-@@ -2086,19 +2086,19 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-  * size: 00 -> 8 bit, 01 -> 16 bit, 10 -> 32 bit, 11 -> 64bit
-  * opc: 00 -> store, 01 -> loadu, 10 -> loads 64, 11 -> loads 32
+@@ -720,23 +720,55 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i64 t0, TCGv_i64 t1)
+  * Store from GPR register to memory.
   */
--static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-+                                int opc,
-+                                int size,
-+                                int rt,
-+                                bool is_vector)
+ static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
+-                             TCGv_i64 tcg_addr, int size, int memidx)
++                             TCGv_i64 tcg_addr, int size, int memidx,
++                             bool iss_valid,
++                             unsigned int iss_srt,
++                             bool iss_sf, bool iss_ar)
  {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     int imm9 = sextract32(insn, 12, 9);
--    int opc = extract32(insn, 22, 2);
--    int size = extract32(insn, 30, 2);
-     int idx = extract32(insn, 10, 2);
-     bool is_signed = false;
+     g_assert(size <= 3);
+     tcg_gen_qemu_st_i64(source, tcg_addr, memidx, s->be_data + size);
++
++    if (iss_valid) {
++        uint32_t isyn32;
++
++        isyn32 = syn_data_abort_with_iss(0,
++                                         size,
++                                         false,
++                                         iss_srt,
++                                         iss_sf,
++                                         iss_ar,
++                                         0, 0, 0, 0, 0, false);
++        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
++        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
++    }
++}
++
++static void do_gpr_st_with_isv(DisasContext *s, TCGv_i64 source,
++                               TCGv_i64 tcg_addr, int size,
++                               bool iss_valid,
++                               unsigned int iss_srt,
++                               bool iss_sf, bool iss_ar)
++{
++    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s),
++                     iss_valid, iss_srt, iss_sf, iss_ar);
+ }
+ 
+ static void do_gpr_st(DisasContext *s, TCGv_i64 source,
+                       TCGv_i64 tcg_addr, int size)
+ {
+-    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s));
++    do_gpr_st_with_isv(s, source, tcg_addr, size,
++                       false, 0, false, false);
+ }
+ 
+ /*
+  * Load from memory to GPR register
+  */
+-static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
+-                             int size, bool is_signed, bool extend, int memidx)
++static void do_gpr_ld_memidx(DisasContext *s,
++                             TCGv_i64 dest, TCGv_i64 tcg_addr,
++                             int size, bool is_signed,
++                             bool extend, int memidx,
++                             bool iss_valid, unsigned int iss_srt,
++                             bool iss_sf, bool iss_ar)
+ {
+     TCGMemOp memop = s->be_data + size;
+ 
+@@ -752,13 +784,39 @@ static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
+         g_assert(size < 3);
+         tcg_gen_ext32u_i64(dest, dest);
+     }
++
++    if (iss_valid) {
++        uint32_t isyn32;
++
++        isyn32 = syn_data_abort_with_iss(0,
++                                         size,
++                                         is_signed,
++                                         iss_srt,
++                                         iss_sf,
++                                         iss_ar,
++                                         0, 0, 0, 0, 0, false);
++        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
++        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
++    }
+ }
+ 
+-static void do_gpr_ld(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
+-                      int size, bool is_signed, bool extend)
++static void do_gpr_ld_with_isv(DisasContext *s,
++                               TCGv_i64 dest, TCGv_i64 tcg_addr,
++                               int size, bool is_signed, bool extend,
++                               bool iss_valid, unsigned int iss_srt,
++                               bool iss_sf, bool iss_ar)
+ {
+     do_gpr_ld_memidx(s, dest, tcg_addr, size, is_signed, extend,
+-                     get_mem_index(s));
++                     get_mem_index(s),
++                     iss_valid, iss_srt, iss_sf, iss_ar);
++}
++
++static void do_gpr_ld(DisasContext *s,
++                      TCGv_i64 dest, TCGv_i64 tcg_addr,
++                      int size, bool is_signed, bool extend)
++{
++    do_gpr_ld_with_isv(s, dest, tcg_addr, size, is_signed, extend,
++                       false, 0, false, false);
+ }
+ 
+ /*
+@@ -1814,6 +1872,22 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+ }
+ #endif
+ 
++/* Update the Sixty-Four bit (SF) registersize. This logic is derived
++ * from the ARMv8 specs for LDR (Shared decode for all encodings).
++ */
++static bool disas_ldst_compute_iss_sf(int size, bool is_signed, int opc)
++{
++    int opc0 = extract32(opc, 0, 1);
++    int regsize;
++
++    if (is_signed) {
++        regsize = opc0 ? 32 : 64;
++    } else {
++        regsize = size == 3 ? 64 : 32;
++    }
++    return regsize == 64;
++}
++
+ /* C3.3.6 Load/store exclusive
+  *
+  *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
+@@ -1865,10 +1939,15 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
+         }
+     } else {
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
++        bool iss_sf = disas_ldst_compute_iss_sf(size, false, 0);
++
++        /* Generate ISS for non-exclusive accesses including LASR.  */
+         if (is_store) {
+-            do_gpr_st(s, tcg_rt, tcg_addr, size);
++            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
++                               true, rt, iss_sf, is_lasr);
+         } else {
+-            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
++            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size, false, false,
++                               true, rt, iss_sf, is_lasr);
+         }
+     }
+ }
+@@ -1920,7 +1999,11 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
+     if (is_vector) {
+         do_fp_ld(s, rt, tcg_addr, size);
+     } else {
+-        do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false);
++        /* Only unsigned 32bit loads target 32bit registers.  */
++        bool iss_sf = opc == 0 ? 32 : 64;
++
++        do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size, is_signed, false,
++                           true, rt, iss_sf, false);
+     }
+     tcg_temp_free_i64(tcg_addr);
+ }
+@@ -2099,6 +2182,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
      bool is_store = false;
      bool is_extended = false;
      bool is_unpriv = (idx == 2);
--    bool is_vector = extract32(insn, 26, 1);
++    bool iss_valid = !is_vector;
      bool post_index;
      bool writeback;
  
-@@ -2205,19 +2205,19 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn)
-  * Rn: address register or SP for base
-  * Rm: offset register or ZR for offset
-  */
--static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
-+                                   int opc,
-+                                   int size,
-+                                   int rt,
-+                                   bool is_vector)
- {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     int shift = extract32(insn, 12, 1);
-     int rm = extract32(insn, 16, 5);
--    int opc = extract32(insn, 22, 2);
-     int opt = extract32(insn, 13, 3);
--    int size = extract32(insn, 30, 2);
-     bool is_signed = false;
-     bool is_store = false;
-     bool is_extended = false;
--    bool is_vector = extract32(insn, 26, 1);
+@@ -2166,12 +2250,15 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
+     } else {
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
+         int memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
++        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
  
-     TCGv_i64 tcg_rm;
-     TCGv_i64 tcg_addr;
-@@ -2294,14 +2294,14 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn)
-  * Rn: base address register (inc SP)
-  * Rt: target register
-  */
--static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn)
-+static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-+                                        int opc,
-+                                        int size,
-+                                        int rt,
-+                                        bool is_vector)
- {
--    int rt = extract32(insn, 0, 5);
-     int rn = extract32(insn, 5, 5);
-     unsigned int imm12 = extract32(insn, 10, 12);
--    bool is_vector = extract32(insn, 26, 1);
--    int size = extract32(insn, 30, 2);
--    int opc = extract32(insn, 22, 2);
-     unsigned int offset;
- 
-     TCGv_i64 tcg_addr;
-@@ -2360,20 +2360,25 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn)
- /* Load/store register (all forms) */
- static void disas_ldst_reg(DisasContext *s, uint32_t insn)
- {
-+    int rt = extract32(insn, 0, 5);
-+    int opc = extract32(insn, 22, 2);
-+    bool is_vector = extract32(insn, 26, 1);
-+    int size = extract32(insn, 30, 2);
-+
-     switch (extract32(insn, 24, 2)) {
-     case 0:
-         if (extract32(insn, 21, 1) == 1 && extract32(insn, 10, 2) == 2) {
--            disas_ldst_reg_roffset(s, insn);
-+            disas_ldst_reg_roffset(s, insn, opc, size, rt, is_vector);
+         if (is_store) {
+-            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx);
++            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx,
++                             iss_valid, rt, iss_sf, false);
          } else {
-             /* Load/store register (unscaled immediate)
-              * Load/store immediate pre/post-indexed
-              * Load/store register unprivileged
-              */
--            disas_ldst_reg_imm9(s, insn);
-+            disas_ldst_reg_imm9(s, insn, opc, size, rt, is_vector);
+             do_gpr_ld_memidx(s, tcg_rt, tcg_addr, size,
+-                             is_signed, is_extended, memidx);
++                             is_signed, is_extended, memidx,
++                             iss_valid, rt, iss_sf, false);
          }
-         break;
-     case 1:
--        disas_ldst_reg_unsigned_imm(s, insn);
-+        disas_ldst_reg_unsigned_imm(s, insn, opc, size, rt, is_vector);
-         break;
-     default:
-         unallocated_encoding(s);
+     }
+ 
+@@ -2269,10 +2356,14 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
+         }
+     } else {
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
++        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
+         if (is_store) {
+-            do_gpr_st(s, tcg_rt, tcg_addr, size);
++            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
++                               true, rt, iss_sf, false);
+         } else {
+-            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
++            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size,
++                               is_signed, is_extended,
++                               true, rt, iss_sf, false);
+         }
+     }
+ }
+@@ -2349,10 +2440,14 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
+         }
+     } else {
+         TCGv_i64 tcg_rt = cpu_reg(s, rt);
++        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
+         if (is_store) {
+-            do_gpr_st(s, tcg_rt, tcg_addr, size);
++            do_gpr_st_with_isv(s, tcg_rt, tcg_addr, size,
++                               true, rt, iss_sf, false);
+         } else {
+-            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
++            do_gpr_ld_with_isv(s, tcg_rt, tcg_addr, size,
++                               is_signed, is_extended,
++                               true, rt, iss_sf, false);
+         }
+     }
+ }
+@@ -11099,7 +11194,8 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
+     tcg_clear_temp_count();
+ 
+     do {
+-        tcg_gen_insn_start(dc->pc, 0);
++        dc->insn_start_idx = tcg_op_buf_count();
++        tcg_gen_insn_start(dc->pc, 0, 0);
+         num_insns++;
+ 
+         if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 940ec8d..594cbfc 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -11724,7 +11724,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
+       }
+     do {
+         tcg_gen_insn_start(dc->pc,
+-                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1));
++                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
++                           0);
+         num_insns++;
+ 
+ #ifdef CONFIG_USER_ONLY
+@@ -12041,8 +12042,10 @@ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
+     if (is_a64(env)) {
+         env->pc = data[0];
+         env->condexec_bits = 0;
++        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
+     } else {
+         env->regs[15] = data[0];
+         env->condexec_bits = data[1];
++        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
+     }
+ }
+diff --git a/target-arm/translate.h b/target-arm/translate.h
+index 6a18d7b..dbd7ac8 100644
+--- a/target-arm/translate.h
++++ b/target-arm/translate.h
+@@ -59,6 +59,8 @@ typedef struct DisasContext {
+     bool ss_same_el;
+     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
+     int c15_cpar;
++    /* TCG op index of the current insn_start.  */
++    int insn_start_idx;
+ #define TMP_A64_MAX 16
+     int tmp_a64_count;
+     TCGv_i64 tmp_a64[TMP_A64_MAX];
 -- 
 2.5.0

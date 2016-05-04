@@ -1,115 +1,187 @@
-Received: by 10.25.208.137 with SMTP id h131csp819504lfg;
-        Fri, 29 Apr 2016 05:08:05 -0700 (PDT)
-X-Received: by 10.28.227.138 with SMTP id a132mr3509397wmh.35.1461931685761;
-        Fri, 29 Apr 2016 05:08:05 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-wm0-x22b.google.com (mail-wm0-x22b.google.com. [2a00:1450:400c:c09::22b])
-        by mx.google.com with ESMTPS id a2si3848337wmc.91.2016.04.29.05.08.05
+Received: by 10.25.208.137 with SMTP id h131csp296195lfg;
+        Wed, 4 May 2016 10:39:09 -0700 (PDT)
+X-Received: by 10.37.11.216 with SMTP id 207mr5942743ybl.184.1462383549561;
+        Wed, 04 May 2016 10:39:09 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-yw0-x22c.google.com (mail-yw0-x22c.google.com. [2607:f8b0:4002:c05::22c])
+        by mx.google.com with ESMTPS id c189si1782745ybh.13.2016.05.04.10.39.09
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) client-ip=2a00:1450:400c:c09::22b;
+        Wed, 04 May 2016 10:39:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c05::22c as permitted sender) client-ip=2607:f8b0:4002:c05::22c;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::22b as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x22b.google.com with SMTP id a17so32897600wme.0;
-        Fri, 29 Apr 2016 05:08:05 -0700 (PDT)
+       dkim=pass header.i=@linaro.org;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:4002:c05::22c as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
+Received: by mail-yw0-x22c.google.com with SMTP id o66so108246062ywc.3
+        for <alex.bennee@linaro.org>; Wed, 04 May 2016 10:39:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id;
-        bh=TU4PKHCoH6mVO/QvnQ+mIa6zpnEYFS1FWItUriJHYhI=;
-        b=KB6pqtbCp1uQGbIsj7HurrAetibR7TopUQ2+EGOpHqzGT7Ygf+3AoWKbb8HuxKRGLq
-         XzgOepGz4HxmSpvinMlF7UfJLE7hQZOk6fG/OrTgjLhub/sLQBJvcp140oaslW61dzIi
-         dXHACmIL3v2F9hrMshf0zYaA4UHUcVCLz2DwAHKxIz3Bxklcg+AfI7Lpdabn24n0eLbN
-         1Vxw5Bbwiy5By+p+4OrKkS4Bs+8KkTUKR2IOHdHHgIlWsVPf8eBYGrWQAaSv2Yc8MKML
-         4MrS9pYJkDmE2pLplx8JfQ+rydeVLEMqTLN1SIul5mudDHN6TCRmLHKgklkBveIPBV8E
-         8p6A==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=ZIrBwIX7FhwGqzuP5Bh/PkZPAj+CQpc4uAes+/rAfYI=;
+        b=JU/v/uB5lfaqNS0Oq90cZDYqg2oJ8+meP3bgaLhRmZBMHHd5vbO3tQ4R5KjnE0DY2M
+         WzqmCMEEcsZyTSLgRY6sOKiMOgVrPXf31eoyTwE1AgYjX8YMo1WGL1oJ32uZnGhq/YkI
+         0e6l9k/CVuSViQ754iJ75qYK3148hRsde9SQs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=TU4PKHCoH6mVO/QvnQ+mIa6zpnEYFS1FWItUriJHYhI=;
-        b=Dlrf42ZHjOzDoGcWh7uhDnpI1MfIaIal0RD+4beOAs07dDypqmmZBU7WEmFu1u3GQM
-         mlub9pEmSCA2QwGGVy0svIssII4ZcC5UTGkp6sNkr5oqOPckfmweDOnZ7ZWX/M2pscHF
-         eZLxzNRP4t5CG63jr7AP5MNU57/RbRllo9WQa8QwCUkXndUTBKQmJFeli8/5fsutEdXm
-         axgQaDkGMLzwMaVCh1NjPbMv2AeEpAzaJZ+khpslpctP0O5glabJGok14Zth7IWBZmqs
-         pcs0y+E2wB9ZP8oCWQ/bNNLVIy0FSpE2Qv85sB4rRs8oZ2B0WZOv6NN013Zs/d+2basQ
-         uOqA==
-X-Gm-Message-State: AOPr4FWR6zkAzWTaiA+tkc23hBmfPS3TfH9HZ5hOo/yeIY/lIJ7rtifgpF6uRZHJst2c6Q==
-X-Received: by 10.194.32.165 with SMTP id k5mr8168749wji.23.1461931685407;
-        Fri, 29 Apr 2016 05:08:05 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-        by smtp.gmail.com with ESMTPSA id ip10sm14523086wjb.33.2016.04.29.05.08.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Apr 2016 05:08:04 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	qemu-arm@nongnu.org,
-	edgar.iglesias@xilinx.com
-Subject: [PATCH v3 0/7] arm: Steps towards EL2 support round 6
-Date: Fri, 29 Apr 2016 14:07:57 +0200
-Message-Id: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.5.0
-X-TUID: UWyw0HFyIMlF
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=ZIrBwIX7FhwGqzuP5Bh/PkZPAj+CQpc4uAes+/rAfYI=;
+        b=h4DY0UvBFObtjl3qiWeSWEN+mWimCfi9si7fEOxUBOC6tPri9eL26R3Ubcqi2ECTdX
+         w7ohiwNTbHNxswa2jkdaizS4C+qYF0xM4aQ8cRIz83f6KdcrZsYU0I0UJ8ABHDEhSSKQ
+         2SibMCRvnS68eW0AN0/X8zvFM6Nv3fG0gvu/ca2CZ3SxUHDvidf6rKSwxUKY14UszNuS
+         iv6WLmUBn8uGzC1J088Q1E3Tuou6PkXSRJ6EssN1sSDMBssmnYPEd9D/qGYa5qLsvu3o
+         Haj1ABwH8/KNhTIdCcQfpGH9CIPlfSCibMZSk/sEKBTESIDGu0WAdpWqFzVu5eNwjDjh
+         WfsA==
+X-Gm-Message-State: AOPr4FUgDp+Dbd4mpFLvBojLSAsBOV3+Pza9UfhdIveyPCEFtxkT1H5GZLN39cPJRp/aV/rLs0OM8npsg6vFYY7O1Jo=
+X-Received: by 10.176.0.204 with SMTP id 70mr6723406uaj.4.1462383549014; Wed,
+ 04 May 2016 10:39:09 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 10:38:49 -0700 (PDT)
+In-Reply-To: <1461931684-1867-8-git-send-email-edgar.iglesias@gmail.com>
+References: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com> <1461931684-1867-8-git-send-email-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 May 2016 18:38:49 +0100
+Message-ID: <CAFEAcA97rxkuGwY5ahSVXfBe8Y8XzWDZd143NBhVgFhLAKLi9A@mail.gmail.com>
+Subject: Re: [PATCH v3 7/7] target-arm: A64: Create Instruction Syndromes for
+ Data Aborts
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Sergey Fedorov <serge.fdrv@gmail.com>, Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
+	Edgar Iglesias <edgar.iglesias@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
+X-TUID: WH1bzuoxME/g
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 29 April 2016 at 13:08, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Add support for generating the instruction syndrome for Data Aborts.
+> These syndromes are used by hypervisors for example to trap and emulate
+> memory accesses.
+>
+> We save the decoded data out-of-band with the TBs at translation time.
+> When exceptions hit, the extra data attached to the TB is used to
+> recreate the state needed to encode instruction syndromes.
+> This avoids the need to emit moves with every load/store.
+>
+> Based on a suggestion from Peter Maydell.
 
-Hi,
+Worth mentioning in the commit message that we don't currently generate
+ISV information for exceptions from AArch32?
 
-Another round of patches towards EL2 support. This one adds partial
-Instruction Syndrome generation for Data Aborts while running in AArch64.
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>  target-arm/cpu.h           |  12 ++++-
+>  target-arm/op_helper.c     |  49 ++++++++++++++---
+>  target-arm/translate-a64.c | 130 +++++++++++++++++++++++++++++++++++++++------
+>  target-arm/translate.c     |   5 +-
+>  target-arm/translate.h     |   2 +
+>  5 files changed, 173 insertions(+), 25 deletions(-)
+>
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 066ff67..256fbec 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -94,7 +94,17 @@
+>  struct arm_boot_info;
+>
+>  #define NB_MMU_MODES 7
+> -#define TARGET_INSN_START_EXTRA_WORDS 1
+> +/* ARM-specific extra insn start words:
+> + * 1: Conditional execution bits
+> + * 2: Partial exception syndrome for data aborts
+> + */
+> +#define TARGET_INSN_START_EXTRA_WORDS 2
+> +
+> +/* The 2nd extra word holding syndrome info for data aborts does not use
+> + * the lower 14 bits. We shift it down to help the sleb128 encoder do a
+> + * better job. When restoring the CPU state, we shift it back up.
+> + */
+> +#define ARM_INSN_START_WORD2_SHIFT 14
 
-I don't feel very confident with the way I collect the regsize info used
-to fill out the SF field. Feedback on that would be great.
+We could also not bother putting bits 25..31 (ie the field that always reads
+EC_DATAABORT) in the insn start word.
 
-Once we sort out the details on how this should be implemented we can
-fill out the parts needed for AArch32. Possibly in a future version of
-this same series.
+> @@ -720,23 +720,55 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i64 t0, TCGv_i64 t1)
+>   * Store from GPR register to memory.
+>   */
+>  static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
+> -                             TCGv_i64 tcg_addr, int size, int memidx)
+> +                             TCGv_i64 tcg_addr, int size, int memidx,
+> +                             bool iss_valid,
+> +                             unsigned int iss_srt,
+> +                             bool iss_sf, bool iss_ar)
+>  {
+>      g_assert(size <= 3);
+>      tcg_gen_qemu_st_i64(source, tcg_addr, memidx, s->be_data + size);
+> +
+> +    if (iss_valid) {
+> +        uint32_t isyn32;
+> +
+> +        isyn32 = syn_data_abort_with_iss(0,
+> +                                         size,
+> +                                         false,
+> +                                         iss_srt,
+> +                                         iss_sf,
+> +                                         iss_ar,
+> +                                         0, 0, 0, 0, 0, false);
+> +        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
+> +        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
 
-Comments welcome!
+Is it worth doing
+      assert(s->insn_start_idx);
+      tcg_set_insn_param(...);
+      s->insn_start_idx = 0;
 
-Best regards,
-Edgar
+as a way to catch accidentally trying to set the syndrome info twice ?
 
-ChangeLog:
-v2 -> v3:
-* Commented on inst start extra words
-* Add macro for word2 shift
-* Move ISS field collection closer to tcg_gen_qemu_ld/st
-* Changed logic to compute regsize for disas_ld_lit
-* Introduce syn_data_abort_with_iss/no_iss
-* Rename some isv naming to iss
-* Drop the patch: "Use isyn.swstep.ex to hold the is_ldex state"
+> +    }
+> +}
+> +
+> +static void do_gpr_st_with_isv(DisasContext *s, TCGv_i64 source,
+> +                               TCGv_i64 tcg_addr, int size,
+> +                               bool iss_valid,
+> +                               unsigned int iss_srt,
+> +                               bool iss_sf, bool iss_ar)
+> +{
+> +    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s),
+> +                     iss_valid, iss_srt, iss_sf, iss_ar);
+>  }
+>
+>  static void do_gpr_st(DisasContext *s, TCGv_i64 source,
+>                        TCGv_i64 tcg_addr, int size)
+>  {
+> -    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s));
+> +    do_gpr_st_with_isv(s, source, tcg_addr, size,
+> +                       false, 0, false, false);
+>  }
 
-v1 -> v2:
-* Reworked the syndrome generation code to reuse syn_data_abort for
-  the encoding.
-* Reworded a bunch of comments.
-* Fixed thumb vs 16bit IL field issue.
+There's only two places where we use do_gpr_st() rather than the
+_with_isv() version (both in the load/store pair function), and
+similarly for do_gpr_ld(); so I think it would be better just to
+have do_gpr_ld/st always take the iss arguments and not have a
+separate do_gpr_st_with_isv(). (This also makes it harder to make
+the mistake of using the plain do_gpr_st() &c in future code and
+forgetting that you need to think about whether to set syndrome info.)
 
 
-Edgar E. Iglesias (7):
-  tcg: Add tcg_set_insn_param
-  gen-icount: Use tcg_set_insn_param
-  target-arm: Add the IL flag to syn_data_abort
-  target-arm: Split data abort syndrome generator
-  target-arm/translate-a64.c: Use extract32 in disas_ldst_reg_imm9
-  target-arm/translate-a64.c: Unify some of the ldst_reg decoding
-  target-arm: A64: Create Instruction Syndromes for Data Aborts
+Not in this patch series but something we need to fix:
 
- include/exec/gen-icount.h  |  16 ++---
- target-arm/cpu.h           |  12 +++-
- target-arm/internals.h     |  24 ++++++-
- target-arm/op_helper.c     |  47 ++++++++++--
- target-arm/translate-a64.c | 175 +++++++++++++++++++++++++++++++++++----------
- target-arm/translate.c     |   5 +-
- target-arm/translate.h     |   2 +
- tcg/tcg.h                  |   6 ++
- 8 files changed, 233 insertions(+), 54 deletions(-)
+(1) currently in arm_cpu_do_interrupt_aarch64() there is some
+code which does
+        if (!env->thumb) {
+            env->cp15.esr_el[new_el] |= 1 << 25;
+        }
+if we take an exception from 32 bit to 64 bit. This is completely
+bogus because that's not what the IL bit in the syndrome is for.
+This code should just be deleted, and rely on exception.syndrome
+having a correct IL bit (which it didn't for data aborts before
+your series but will afterwards).
 
--- 
-2.5.0
+(2) syn_insn_abort(), syn_swstep(), syn_watchpoint()
+should all create syndromes with the IL bit set, but don't.
+
+thanks
+-- PMM

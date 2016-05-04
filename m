@@ -1,69 +1,70 @@
-Received: by 10.25.208.137 with SMTP id h131csp223974lfg;
-        Wed, 4 May 2016 08:21:03 -0700 (PDT)
-X-Received: by 10.28.154.73 with SMTP id c70mr10251610wme.12.1462375261381;
-        Wed, 04 May 2016 08:21:01 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp239635lfg;
+        Wed, 4 May 2016 08:48:27 -0700 (PDT)
+X-Received: by 10.194.23.226 with SMTP id p2mr9204599wjf.131.1462376907243;
+        Wed, 04 May 2016 08:48:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y79si5744126wmh.22.2016.05.04.08.21.01
+        by mx.google.com with ESMTPS id kq8si5696969wjc.2.2016.05.04.08.48.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 May 2016 08:21:01 -0700 (PDT)
+        Wed, 04 May 2016 08:48:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48552 helo=lists.gnu.org)
+Received: from localhost ([::1]:48719 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1axybU-000237-2W
-	for alex.bennee@linaro.org; Wed, 04 May 2016 11:20:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46467)
+	id 1axz22-0003g9-50
+	for alex.bennee@linaro.org; Wed, 04 May 2016 11:48:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54891)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axyb7-0001PS-R1
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1axz1u-0003T4-E2
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:48:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axyaq-0000By-3U
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:16 -0400
-Received: from mail-yw0-x234.google.com ([2607:f8b0:4002:c05::234]:34592)
+	(envelope-from <peter.maydell@linaro.org>) id 1axz1i-0000GT-Mk
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:47:56 -0400
+Received: from mail-yw0-x233.google.com ([2607:f8b0:4002:c05::233]:34536)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axyao-0008UF-Tl
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:04 -0400
-Received: by mail-yw0-x234.google.com with SMTP id j74so86592583ywg.1
-	for <qemu-arm@nongnu.org>; Wed, 04 May 2016 08:19:44 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1axz1h-00008v-G6
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:47:50 -0400
+Received: by mail-yw0-x233.google.com with SMTP id j74so88442303ywg.1
+	for <qemu-arm@nongnu.org>; Wed, 04 May 2016 08:47:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Ihqo5Gi0zgSJnRipv1qqxkLWTZEkq7APlTh/X0+xnZI=;
-	b=DGzDxjmW+JShLQ2B9qxvpVwTMihZqvD85F+odCdjSJI0rlAFOkZ24a00Ld9SrChXMv
-	kSkuwsJ/ep8xpc7WuYwcPJMgkKQ+3i4so1vKloV0RN/dBaDAI/AC5Sywzli41FRo8VrV
-	P6ANFCBrksWu5yBJs0FQli6s5+ENoqu9n4Y6g=
+	:cc; bh=pJLIaWSjmtVGngHFxfOd144/VYzo4xdawRSK0PUchX8=;
+	b=hLpvhO+G/u6IXIISwCBTnlicGyBjiv8zt5iYGp6+B/GaKtJTuSXHVrqh76UhtNmIC+
+	q6bNkiH4qSmww5Tanr0Sw+TZLmJBkmy9IWPuh1gux3wADEbdjPiCqKpJQMtJx5uXw9VA
+	SuV/LmKNLN6uYCX/nIj2WW8ye0CIPfDVfKvD4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Ihqo5Gi0zgSJnRipv1qqxkLWTZEkq7APlTh/X0+xnZI=;
-	b=AsKoLTgie0NZ1DICiYIRX/4YqZqanc9OeAu3xxErGGaKAuStI0y04rQj/vRb8lYtGE
-	poV1R2CHcBnNWW2+jRC0tG8yN/3MezmbvMFAjOtN6N+emyjrLRqsgWSt8bC9Gfn9XpfG
-	XS8MhjOO/adkuOkf2lyhJ9GZZ5phvgrBoMGE8iP+Q41VKCBnL1FpW3okIMnP0cSwRyxf
-	mzhFeVGJ1+HMvJKPlm50HazvHu5o0wy8QwzJlQH6nR9w6xEcpZB1yfO4YF88gintq6hn
-	4tKH0gy7i4GssMtQLANHiMsNAehGBW7jWebQGqUgh3E3qK1wOKS2fTB6nm9OF4CPgeuP
-	h8Yw==
-X-Gm-Message-State: AOPr4FXh4+aaATuAViMLjzfhFRydjG3yeQrQVZ4lcEmoBC5mCMItL/x/OHl1fi0vFp+qDLG0OFIUAQZEXHK6ugC7
-X-Received: by 10.176.6.166 with SMTP id g35mr6051272uag.147.1462375181035;
-	Wed, 04 May 2016 08:19:41 -0700 (PDT)
+	bh=pJLIaWSjmtVGngHFxfOd144/VYzo4xdawRSK0PUchX8=;
+	b=d/zZUdB3Lk9vrFn9t9OJANvmK6ZoAOfc49yGjYfRA9Q4KIPcN+wnY7L+hP9WH+niQx
+	Rb8cDDRsXgjgW8JnCIcdzlooGMwKcRIgqT8qWcYthbOiponPLeqT0zTTWuLj29WXB3LJ
+	dwaA4xiWCUzmUDUj4R8OLmmmOl61e3ZiT6DDhqRj49kGNsLdFoEyWs2UlSdTWzBQEJte
+	YUi9XS22AVR9Q6M82AMozvLydiqhHWMjPx3TUQ71T8Q+yGI4qnhAsrlJTszN2f1bxgKY
+	MYwY9Lq1CqK1KKhnU7Dkydm8MJZJ4EAJ6gTs3rtQrsEYQjLqd+LXuHJN9hr1dd6S1IyW
+	1jhw==
+X-Gm-Message-State: AOPr4FUVgLU1MewjeRTr9gNtCpXSvCGYDL5+MEm0P/hNfIoCmPc4g2mD/Z8tnOlbRh/kN0n4nn4PauUTAJ3uWVDq
+X-Received: by 10.159.35.12 with SMTP id 12mr5778825uae.119.1462376847232;
+	Wed, 04 May 2016 08:47:27 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 08:19:21 -0700 (PDT)
-In-Reply-To: <1461325343-24995-1-git-send-email-sylvain@sylvaingarrigues.com>
-References: <1461325343-24995-1-git-send-email-sylvain@sylvaingarrigues.com>
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 08:47:07 -0700 (PDT)
+In-Reply-To: <1461089238-18314-2-git-send-email-afarallax@yandex.ru>
+References: <1461089238-18314-1-git-send-email-afarallax@yandex.ru>
+	<1461089238-18314-2-git-send-email-afarallax@yandex.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 4 May 2016 16:19:21 +0100
-Message-ID: <CAFEAcA80e3=4T6zJsxQNhZzE_a1A=sn6i3_qajk4naKBm03Mhw@mail.gmail.com>
-To: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+Date: Wed, 4 May 2016 16:47:07 +0100
+Message-ID: <CAFEAcA-hAsCS2231ya+Ode7MKs26R-bRJzT3eAKMxo8-wzM8gg@mail.gmail.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::234
-Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: use cached values when
- querying framebuffer
+X-Received-From: 2607:f8b0:4002:c05::233
+Subject: Re: [Qemu-arm] [PATCH 1/2] target-arm: Unify AArch32 exception
+ return generating functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,32 +76,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SUXgeACyjtpG
+X-TUID: 7h9sl2hfg+ui
 
-On 22 April 2016 at 12:42, Sylvain Garrigues
-<sylvain@sylvaingarrigues.com> wrote:
-> As the framebuffer settings are copied into the result message before it is
-> reconfigured, inconsistent behavior can happen when, for instance, you set with
-> a single message the width, height, and depth, and ask at the same time to
-> allocate the buffer and get the pitch and the size.
+On 19 April 2016 at 19:07, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> There is a duplicating code in AArch32 exception return implementation.
+> The patch rearranges the code to avoid this.
 >
-> In this case, the reported pitch and size would be incorrect as they were
-> computed with the initial values of width, height and depth, not the ones the
-> client requested.
->
-> Signed-off-by: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-> Reviewed-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
+> Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
 > ---
->  hw/misc/bcm2835_property.c | 31 ++++++++++++++++++++++---------
->  1 file changed, 22 insertions(+), 9 deletions(-)
+>  target-arm/translate.c | 36 +++++++++++++++++++++---------------
+>  1 file changed, 21 insertions(+), 15 deletions(-)
+>
+> diff --git a/target-arm/translate.c b/target-arm/translate.c
+> index 940ec8d..68671b7 100644
+> --- a/target-arm/translate.c
+> +++ b/target-arm/translate.c
+> @@ -4349,24 +4349,27 @@ static void gen_mrs_banked(DisasContext *s, int r, int sysm, int rn)
+>      s->is_jmp = DISAS_UPDATE;
+>  }
+>
+> -/* Generate an old-style exception return. Marks pc as dead. */
+> -static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+> +/* Generate an exception return. Marks both values as dead. */
+> +static void gen_exception_return_internal(DisasContext *s, TCGv_i32 pc,
+> +                                          TCGv_i32 cpsr)
+>  {
+> -    TCGv_i32 tmp;
+> +    gen_helper_cpsr_write_eret(cpu_env, cpsr);
+> +    tcg_temp_free_i32(cpsr);
+>      store_reg(s, 15, pc);
+> -    tmp = load_cpu_field(spsr);
+> -    gen_helper_cpsr_write_eret(cpu_env, tmp);
+> -    tcg_temp_free_i32(tmp);
+>      s->is_jmp = DISAS_JUMP;
+>  }
+>
+> +/* Generate an old-style exception return. Marks pc as dead. */
+> +static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+> +{
+> +    TCGv_i32 tmp = load_cpu_field(spsr);
+> +    gen_exception_return_internal(s, pc, tmp);
+> +}
+> +
+>  /* Generate a v6 exception return.  Marks both values as dead.  */
+>  static void gen_rfe(DisasContext *s, TCGv_i32 pc, TCGv_i32 cpsr)
+>  {
+> -    gen_helper_cpsr_write_eret(cpu_env, cpsr);
+> -    tcg_temp_free_i32(cpsr);
+> -    store_reg(s, 15, pc);
+> -    s->is_jmp = DISAS_JUMP;
+> +    gen_exception_return_internal(s, pc, cpsr);
+>  }
 
-Applied to target-arm.next, thanks. (I folded a couple of long lines
-that checkpatch.pl complains about.)
+This rearrangement of code is OK.
 
+>  static void gen_nop_hint(DisasContext *s, int val)
+> @@ -9378,11 +9381,14 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>                      store_reg(s, rn, loaded_var);
+>                  }
+>                  if (exc_return) {
+> -                    /* Restore CPSR from SPSR.  */
+> -                    tmp = load_cpu_field(spsr);
+> -                    gen_helper_cpsr_write_eret(cpu_env, tmp);
+> -                    tcg_temp_free_i32(tmp);
+> -                    s->is_jmp = DISAS_JUMP;
+> +                    /* Restore CPSR from SPSR.
+> +                     * Since gen_exception_return() function updates r15
+> +                     * we need just pass current r15 value into it.
+> +                     */
+> +                    tmp = tcg_temp_new_i32();
+> +                    tcg_gen_mov_i32(tmp, cpu_R[15]);
+> +                    /* It marks tmp as dead. */
+> +                    gen_exception_return(s, tmp);
+
+Won't this now emit TCG ops to load the PC from the state struct,
+AND it with ~1, and then write it back again ? That seebms worse than the
+current code.
+
+>                  }
+>              }
+>              break;
+
+thanks
 -- PMM

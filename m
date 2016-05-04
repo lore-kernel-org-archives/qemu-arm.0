@@ -1,65 +1,69 @@
-Received: by 10.25.208.137 with SMTP id h131csp196827lfg;
-        Wed, 4 May 2016 07:32:37 -0700 (PDT)
-X-Received: by 10.28.27.17 with SMTP id b17mr9522484wmb.19.1462372357671;
-        Wed, 04 May 2016 07:32:37 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp223974lfg;
+        Wed, 4 May 2016 08:21:03 -0700 (PDT)
+X-Received: by 10.28.154.73 with SMTP id c70mr10251610wme.12.1462375261381;
+        Wed, 04 May 2016 08:21:01 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h62si5312313wma.124.2016.05.04.07.32.37
+        by mx.google.com with ESMTPS id y79si5744126wmh.22.2016.05.04.08.21.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 May 2016 07:32:37 -0700 (PDT)
+        Wed, 04 May 2016 08:21:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48291 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48552 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1axxqe-00042y-Fh
-	for alex.bennee@linaro.org; Wed, 04 May 2016 10:32:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58527)
+	id 1axybU-000237-2W
+	for alex.bennee@linaro.org; Wed, 04 May 2016 11:20:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1axxqU-0003kG-IA
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 10:32:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1axyb7-0001PS-R1
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1axxqI-0002Um-IC
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 10:32:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33244)
+	(envelope-from <peter.maydell@linaro.org>) id 1axyaq-0000By-3U
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:16 -0400
+Received: from mail-yw0-x234.google.com ([2607:f8b0:4002:c05::234]:34592)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>)
-	id 1axxqI-0002NO-7R; Wed, 04 May 2016 10:31:58 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AE33762641;
-	Wed,  4 May 2016 14:31:41 +0000 (UTC)
-Received: from [10.3.113.21] (ovpn-113-21.phx2.redhat.com [10.3.113.21])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u44EVf23010124; Wed, 4 May 2016 10:31:41 -0400
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1462371352-21498-1-git-send-email-peter.maydell@linaro.org>
-	<1462371352-21498-3-git-send-email-peter.maydell@linaro.org>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
-Organization: Red Hat, Inc.
-Message-ID: <572A07CC.4070004@redhat.com>
-Date: Wed, 4 May 2016 08:31:40 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.3.0
+	(envelope-from <peter.maydell@linaro.org>) id 1axyao-0008UF-Tl
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 11:20:04 -0400
+Received: by mail-yw0-x234.google.com with SMTP id j74so86592583ywg.1
+	for <qemu-arm@nongnu.org>; Wed, 04 May 2016 08:19:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Ihqo5Gi0zgSJnRipv1qqxkLWTZEkq7APlTh/X0+xnZI=;
+	b=DGzDxjmW+JShLQ2B9qxvpVwTMihZqvD85F+odCdjSJI0rlAFOkZ24a00Ld9SrChXMv
+	kSkuwsJ/ep8xpc7WuYwcPJMgkKQ+3i4so1vKloV0RN/dBaDAI/AC5Sywzli41FRo8VrV
+	P6ANFCBrksWu5yBJs0FQli6s5+ENoqu9n4Y6g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Ihqo5Gi0zgSJnRipv1qqxkLWTZEkq7APlTh/X0+xnZI=;
+	b=AsKoLTgie0NZ1DICiYIRX/4YqZqanc9OeAu3xxErGGaKAuStI0y04rQj/vRb8lYtGE
+	poV1R2CHcBnNWW2+jRC0tG8yN/3MezmbvMFAjOtN6N+emyjrLRqsgWSt8bC9Gfn9XpfG
+	XS8MhjOO/adkuOkf2lyhJ9GZZ5phvgrBoMGE8iP+Q41VKCBnL1FpW3okIMnP0cSwRyxf
+	mzhFeVGJ1+HMvJKPlm50HazvHu5o0wy8QwzJlQH6nR9w6xEcpZB1yfO4YF88gintq6hn
+	4tKH0gy7i4GssMtQLANHiMsNAehGBW7jWebQGqUgh3E3qK1wOKS2fTB6nm9OF4CPgeuP
+	h8Yw==
+X-Gm-Message-State: AOPr4FXh4+aaATuAViMLjzfhFRydjG3yeQrQVZ4lcEmoBC5mCMItL/x/OHl1fi0vFp+qDLG0OFIUAQZEXHK6ugC7
+X-Received: by 10.176.6.166 with SMTP id g35mr6051272uag.147.1462375181035;
+	Wed, 04 May 2016 08:19:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1462371352-21498-3-git-send-email-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="FJDulp0WCIQXRtouNUOMxGnTbwbjSEdnL"
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 04 May 2016 14:31:41 +0000 (UTC)
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 08:19:21 -0700 (PDT)
+In-Reply-To: <1461325343-24995-1-git-send-email-sylvain@sylvaingarrigues.com>
+References: <1461325343-24995-1-git-send-email-sylvain@sylvaingarrigues.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 May 2016 16:19:21 +0100
+Message-ID: <CAFEAcA80e3=4T6zJsxQNhZzE_a1A=sn6i3_qajk4naKBm03Mhw@mail.gmail.com>
+To: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 2/2] hw/display/blizzard: Remove
- blizzard_template.h
+X-Received-From: 2607:f8b0:4002:c05::234
+Subject: Re: [Qemu-arm] [PATCH] bcm2835_property: use cached values when
+ querying framebuffer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,56 +75,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
-	Pooja Dhannawat <dhannawatpooja1@gmail.com>, patches@linaro.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u75TqdS2PbXM
+X-TUID: SUXgeACyjtpG
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---FJDulp0WCIQXRtouNUOMxGnTbwbjSEdnL
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 05/04/2016 08:15 AM, Peter Maydell wrote:
-> We no longer need to do the "multiply include this header" trick with
-> blizzard_template.h, and it is only used in a single .c file, so just
-> put its contents inline in blizzard.c.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 22 April 2016 at 12:42, Sylvain Garrigues
+<sylvain@sylvaingarrigues.com> wrote:
+> As the framebuffer settings are copied into the result message before it is
+> reconfigured, inconsistent behavior can happen when, for instance, you set with
+> a single message the width, height, and depth, and ask at the same time to
+> allocate the buffer and get the pitch and the size.
+>
+> In this case, the reported pitch and size would be incorrect as they were
+> computed with the initial values of width, height and depth, not the ones the
+> client requested.
+>
+> Signed-off-by: Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+> Reviewed-by: Andrew Baumann <Andrew.Baumann@microsoft.com>
 > ---
->  hw/display/blizzard.c          | 79 +++++++++++++++++++++++++++++++++-=
+>  hw/misc/bcm2835_property.c | 31 ++++++++++++++++++++++---------
+>  1 file changed, 22 insertions(+), 9 deletions(-)
 
->  hw/display/blizzard_template.h | 97 ----------------------------------=
---------
->  2 files changed, 77 insertions(+), 99 deletions(-)
->  delete mode 100644 hw/display/blizzard_template.h
->=20
+Applied to target-arm.next, thanks. (I folded a couple of long lines
+that checkpatch.pl complains about.)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
---=20
-Eric Blake   eblake redhat com    +1-919-301-3266
-Libvirt virtualization library http://libvirt.org
-
-
---FJDulp0WCIQXRtouNUOMxGnTbwbjSEdnL
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
-Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
-
-iQEcBAEBCAAGBQJXKgfMAAoJEKeha0olJ0NqEG8H/RwLJph1mYanQ2coD0vSwTNa
-WheJX6EhM99q2L6ckXfQTM4HE9dcsrVyoFaast/39T3q3IjzPzORc5I3PC2QR2Ro
-XOEl/kXDS+2nXLMAka1G1hUNzMyDLc1qrXJdOtU2y2VRyy9P48znjzMuzSBu8AT2
-IfZOkZ8G8OpgypFA1Y/V+xcRPuiXru9rwZkxLvF2JC+rl5UdG15SrZkXduqprlyj
-c2yzfBNdriYOHPUJkgyPK7OuQZ+ex0yHGwQpDLiVxbZpUwSXuS4HdLacVLJxmlBC
-m/hFHtVxIPnwpJUc35HMh4dOzo9O4Np49PbZY5AW/QPz70t9b80bsgF83hicrFk=
-=2/+5
------END PGP SIGNATURE-----
-
---FJDulp0WCIQXRtouNUOMxGnTbwbjSEdnL--
+-- PMM

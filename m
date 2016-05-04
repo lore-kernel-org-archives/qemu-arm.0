@@ -1,70 +1,69 @@
-Received: by 10.25.208.137 with SMTP id h131csp247380lfg;
-        Wed, 4 May 2016 09:02:55 -0700 (PDT)
-X-Received: by 10.28.109.86 with SMTP id i83mr32633620wmc.75.1462377775625;
-        Wed, 04 May 2016 09:02:55 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp253566lfg;
+        Wed, 4 May 2016 09:12:56 -0700 (PDT)
+X-Received: by 10.194.142.240 with SMTP id rz16mr9275797wjb.126.1462378376259;
+        Wed, 04 May 2016 09:12:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id wf4si5730408wjb.218.2016.05.04.09.02.55
+        by mx.google.com with ESMTPS id b186si6069363wmb.97.2016.05.04.09.12.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 May 2016 09:02:55 -0700 (PDT)
+        Wed, 04 May 2016 09:12:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48778 helo=lists.gnu.org)
+Received: from localhost ([::1]:48839 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1axzG2-0004My-GJ
-	for alex.bennee@linaro.org; Wed, 04 May 2016 12:02:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58233)
+	id 1axzPi-0000vi-RD
+	for alex.bennee@linaro.org; Wed, 04 May 2016 12:12:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33085)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axzFt-00048T-EO
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:02:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1axzPb-0000hh-CL
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:12:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axzFh-0003rx-Dw
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:02:24 -0400
-Received: from mail-yw0-x235.google.com ([2607:f8b0:4002:c05::235]:35885)
+	(envelope-from <peter.maydell@linaro.org>) id 1axzPN-0006hF-F7
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:12:25 -0400
+Received: from mail-yw0-x22c.google.com ([2607:f8b0:4002:c05::22c]:33960)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1axzFg-0003m0-7s
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:02:17 -0400
-Received: by mail-yw0-x235.google.com with SMTP id o66so101236663ywc.3
-	for <qemu-arm@nongnu.org>; Wed, 04 May 2016 09:01:57 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1axzPM-0006cV-8j
+	for qemu-arm@nongnu.org; Wed, 04 May 2016 12:12:17 -0400
+Received: by mail-yw0-x22c.google.com with SMTP id j74so90096120ywg.1
+	for <qemu-arm@nongnu.org>; Wed, 04 May 2016 09:11:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Aob12iSCh1ZkScdWYVqMqJjRWZXhuFvKnUaxmHMRZlk=;
-	b=Bsh3YbLujfavLeHKPwTYUTSVWdASv7/aI4mHJabndib0T8yLbI2xvteEFqjc4cvbll
-	NJpwgB8JCC9j6IbKnku3CFjFREpaN/AfmDtrv4qyE1dG2Fqd7b/MsQMTCipL+5I8IwmJ
-	bEtwreOV7i3BcAVObW1AVd27qCwtUNVUXO0bg=
+	:cc; bh=vsd0N5jCqUNSsaEo0UtB6QY/bxoW0KTu4JzkrJwmebw=;
+	b=TOboMaNCBS3e6gZp3NTjhURXgKBGH2fGdKdzKLLz4H4H1qc6ggvo9Sh5ycu40y64h5
+	dNZdUG2rRGNd3H20w8w50pYSLkWJMZEb8ungdA2TYIEq9ZmFoX6I3mWN4xQ+qOGrds/H
+	s9DoUsrwwf/N5+1J2p8apxl+6H3X3k145uh1I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Aob12iSCh1ZkScdWYVqMqJjRWZXhuFvKnUaxmHMRZlk=;
-	b=DQ8PRKMtLE3K//INDClSPyrSgxqyG5EGFYa19HKhFv4eXOKzc6jRRznkidV0MEDoz+
-	07i9L/ncSIhEh0FdouQVxEvNfQJ+l/osKw8eW1fJQ2YmtpjZeGvsIWFVEbKeJjMhtM9T
-	84SYDRYU+Mvd1cIEK3HaMnyd2tjy+uGi84xrm9hZzDgx8oIWK8C3Q619lejhrZhbBXjn
-	EmgOBqQRzch3doqMglFoMTXxf5tMhy6NNjC2AB6Nyyfi1ZN0cEB+QTpRaYNeARoJQh3/
-	5t+yDZs1MNvlBrGgikQIeopbxe9GR8JR2SYhYJqH9IwL4vZQQaGB3yfy5Zu2PHpuBZhP
-	mltQ==
-X-Gm-Message-State: AOPr4FVzTDBBVj93N6Sl5/1LH28B8VxewR7PTxY9ZD5qliKxCubI448Vohr85eZJeM37/dGBQ12PxGbqNnVGmk2X
-X-Received: by 10.176.68.162 with SMTP id n31mr6374579uan.26.1462377714165;
-	Wed, 04 May 2016 09:01:54 -0700 (PDT)
+	bh=vsd0N5jCqUNSsaEo0UtB6QY/bxoW0KTu4JzkrJwmebw=;
+	b=QDMXPOGJB1dptIeQ0dm4y5yKkQBno6MwVPe+wW+RULb1QDcpTlBQ29sEQGofX9pWFC
+	fLdxRZp9L7bkA3kjrV54f3dA/JqGdpJR90FNVbQ24UPju02PQfG6B18Vcxbl7ajn/DHO
+	KbqueRNcKRaPGp6TQr6NFFGhiNSVXMpICzjWrBrWtbF+4i5tICjjCKEDV9oio4jhwN3i
+	cVrrm5sl1Nr25+lqkEFf+DIWvqL8m8YMDcgGCeZ3m+zMjF3s4vmpibiqs6g/9aVOAyph
+	7sQlAqz2SS/cxMiv970VnvyKfnKaXwpuIoNpVmoy3vOLrZA5cPTe2AjVXvg+aGysgkbb
+	sRWg==
+X-Gm-Message-State: AOPr4FXL60UbEniSckSws7Dcu0eDEbiUY4t8GGUSb9TeJPxTjEzGmp8YM/ZqL84QbhbgBtS/W3k6v2j/lxhwy08F
+X-Received: by 10.159.54.232 with SMTP id p95mr6078010uap.107.1462378314314;
+	Wed, 04 May 2016 09:11:54 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 09:01:34 -0700 (PDT)
-In-Reply-To: <1461089238-18314-3-git-send-email-afarallax@yandex.ru>
-References: <1461089238-18314-1-git-send-email-afarallax@yandex.ru>
-	<1461089238-18314-3-git-send-email-afarallax@yandex.ru>
+Received: by 10.31.216.1 with HTTP; Wed, 4 May 2016 09:11:34 -0700 (PDT)
+In-Reply-To: <1461002400-3187-1-git-send-email-afarallax@yandex.ru>
+References: <1461002400-3187-1-git-send-email-afarallax@yandex.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 4 May 2016 17:01:34 +0100
-Message-ID: <CAFEAcA9FXJjMM4M5sbtZ2vtr6Tw+=cene0=vsbEfJQ1RUb2o-g@mail.gmail.com>
+Date: Wed, 4 May 2016 17:11:34 +0100
+Message-ID: <CAFEAcA-NuqFDO6E=6HD_wzAJGdZ9cVpMvpNFFeHpigkz1ME-Ww@mail.gmail.com>
 To: Sergey Sorokin <afarallax@yandex.ru>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::235
-Subject: Re: [Qemu-arm] [PATCH 2/2] target-arm: Fix an exception return on
- AArch32 instruction ADDS
+X-Received-From: 2607:f8b0:4002:c05::22c
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Stage 2 permission fault was
+ fixed in AArch32 state
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,54 +78,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJYJnQgTb6Au
+X-TUID: 6iGBtkYyIEgp
 
-On 19 April 2016 at 19:07, Sergey Sorokin <afarallax@yandex.ru> wrote:
-> In AArch32 instruction ADDS r15, ... is used for exception return.
+On 18 April 2016 at 19:00, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> As described in AArch32.CheckS2Permission an instruction fetch fails if
+> XN bit is set or there is no read permission for the address.
 >
 > Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
 > ---
->  target-arm/translate.c | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
+>  target-arm/helper.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 >
-> diff --git a/target-arm/translate.c b/target-arm/translate.c
-> index 68671b7..3e64ba9 100644
-> --- a/target-arm/translate.c
-> +++ b/target-arm/translate.c
-> @@ -8512,12 +8512,21 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->              store_reg_bx(s, rd, tmp);
->              break;
->          case 0x04:
-> -            if (set_cc) {
-> +            if (set_cc && rd == 15) {
-> +                /* ADDS r15, ... is used for exception return. */
-> +                if (IS_USER(s)) {
-> +                    goto illegal_op;
-> +                }
->                  gen_add_CC(tmp, tmp, tmp2);
-> +                gen_exception_return(s, tmp);
->              } else {
-> -                tcg_gen_add_i32(tmp, tmp, tmp2);
-> +                if (set_cc) {
-> +                    gen_add_CC(tmp, tmp, tmp2);
-> +                } else {
-> +                    tcg_gen_add_i32(tmp, tmp, tmp2);
-> +                }
-> +                store_reg_bx(s, rd, tmp);
->              }
-> -            store_reg_bx(s, rd, tmp);
->              break;
->          case 0x05:
->              if (set_cc) {
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index 09638b2..59efb90 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -6708,7 +6708,9 @@ static int get_S2prot(CPUARMState *env, int s2ap, int xn)
+>          prot |= PAGE_WRITE;
+>      }
+>      if (!xn) {
+> -        prot |= PAGE_EXEC;
+> +        if (arm_el_is_aa64(env, 2) || prot & PAGE_READ) {
+> +            prot |= PAGE_EXEC;
+> +        }
+>      }
+>      return prot;
+>  }
 
-From my reading of the ARM ARM, this "if set_cc and rd == 15 then exception
-return" behaviour should apply to more of these ops, not just 0x02 (SUB),
-0x04 (ADD) and 0x0d (MOV). RSB, ADC, SBC, RSC, AND, BIC, EOR all have
-exception return behaviour too. That suggests that perhaps we should be
-handling the gen_exception_return() at a level further out than this
-case statement. That would also allow us to do the IS_USER() check
-before we emit any TCG ops, which avoids spurious complaints about TCG
-temporary leaks.
+Thanks, applied to target-arm.next.
 
-thanks
 -- PMM

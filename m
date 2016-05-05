@@ -1,112 +1,112 @@
-Received: by 10.25.208.137 with SMTP id h131csp724897lfg;
-        Thu, 5 May 2016 06:13:15 -0700 (PDT)
-X-Received: by 10.28.174.70 with SMTP id x67mr3252334wme.43.1462453995020;
-        Thu, 05 May 2016 06:13:15 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m194si3718456wmg.82.2016.05.05.06.13.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 May 2016 06:13:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.137 with SMTP id h131csp813466lfg;
+        Thu, 5 May 2016 09:10:03 -0700 (PDT)
+X-Received: by 10.194.115.230 with SMTP id jr6mr15144445wjb.125.1462464602963;
+        Thu, 05 May 2016 09:10:02 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-wm0-x229.google.com (mail-wm0-x229.google.com. [2a00:1450:400c:c09::229])
+        by mx.google.com with ESMTPS id je6si12414811wjb.162.2016.05.05.09.10.02
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 May 2016 09:10:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) client-ip=2a00:1450:400c:c09::229;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53541 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ayJ5N-0006lE-Re
-	for alex.bennee@linaro.org; Thu, 05 May 2016 09:12:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41976)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayJ5F-0006Wv-0d
-	for qemu-arm@nongnu.org; Thu, 05 May 2016 09:12:55 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayJ52-000847-Q3
-	for qemu-arm@nongnu.org; Thu, 05 May 2016 09:12:43 -0400
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33124)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ayJ51-0007x2-IU
-	for qemu-arm@nongnu.org; Thu, 05 May 2016 09:12:36 -0400
-Received: by mail-vk0-x22d.google.com with SMTP id o133so24555363vka.0
-	for <qemu-arm@nongnu.org>; Thu, 05 May 2016 06:12:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=vRlFSdXAoGxgM3Nvm9+LAoNj7lmGzInL7SeRZn3LKMs=;
-	b=HL/g5bhdKDfu9VHbMCRYv08piw+VIwOcBoljmDDlsOY4/k8cEdOcoH/Pz8Eqb90MVm
-	wTZts3N+i+Ym+ZPwS+dXjNX/n5BNR6+6O2huB9MZb0TNNOzSpB928eXN6jAc6I9PN7Ds
-	QDIIpbwPvPsk4mZWaU9Cqms03ODcCVWZaVcQA=
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::229 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x229.google.com with SMTP id g17so35760638wme.1;
+        Thu, 05 May 2016 09:10:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=S+I1PYlyk1pTNDFuK5wwF8FNiXI8IjRkd2z3XSbtVq8=;
+        b=JRKimURZR4SGq5FlvqAkCE/3Dhf6Gc6mH+MML8vqkWaopDB5zqpEqCK4aj7qFcN1oO
+         sj6PbWzzjOMdWfQq6n7EhOGbAWB80eyK5ZEyTP2i9LW2FUSmASEAc2FAdgT5zXwH0beS
+         oxV6sYlK5Pmd0NdDm9WmkXyu8NRm2NHzASH0kxS5tj9VE/00/IlsFGw/eVk6FQLTKXiC
+         ng1WYLRsfuqO9vMWAT42uBB2WkY1WVaGXVcQq/pEj9/TkSncsx1qaI5Yr7zX2fAp+r4V
+         gFXjaw2sp94NFf95JAFQt/eCGJxW8zdLHd7N0qKLGxKgbpJ7zNfBswA40eCZwcATnolV
+         0BJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=vRlFSdXAoGxgM3Nvm9+LAoNj7lmGzInL7SeRZn3LKMs=;
-	b=OIswsrgl3UXzIC/kqKigZw8X26rnLgG++W7dk2QmEvFf+P7BokUtPBV+dghhDO+x0Q
-	HaZenfC7xi+QI9tZDzI0KKnHqPbMxk/Beslaz+iIL5aByUjTlU8SikSKGShB7QwFKaDP
-	Jdg9qaUEqnGbbb4u39iGYMlYYU6F+D0XwmS5EOcAl1IxnWS3Tfax36zMlc5CW1IBuyWf
-	4BbqK2QkyEQm9ydpx9D1Bw1pnfl6lbq9ia5DiJXlj+rP5ow1PFDlzQasOyWEKw3pCC92
-	c9XXeiOJF00d94jGXALtRC0p5cCtvo1X8hFFatDCpsDCGGXWgqA7U+S9x8ym+t0lTCTY
-	AtDA==
-X-Gm-Message-State: AOPr4FWzuQ0ZJi6GSR62VxORBZabYyiue6USvSsqtR35sZ3YK3INcPeXozKSJSLkMZMmAwqTK+OOSYfh7jTekag0
-X-Received: by 10.159.54.232 with SMTP id p95mr9095309uap.107.1462453933689;
-	Thu, 05 May 2016 06:12:13 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Thu, 5 May 2016 06:11:54 -0700 (PDT)
-In-Reply-To: <20160426112148.oyr4imw6ac2syxkv@hawk.localdomain>
-References: <1461667229-9216-1-git-send-email-zhaoshenglong@huawei.com>
-	<20160426112148.oyr4imw6ac2syxkv@hawk.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 May 2016 14:11:54 +0100
-Message-ID: <CAFEAcA-etT2a9m1MRxuJLCz5Se=WUtjTsWu-jFiFWaG2qPDFew@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v8 0/5] ARM: Add NUMA support
- for machine virt
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: david.daney@cavium.com, QEMU Developers <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T4zRSPDuLBGf
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=S+I1PYlyk1pTNDFuK5wwF8FNiXI8IjRkd2z3XSbtVq8=;
+        b=CtwfQNYlzur7YGOcwoDCWbtezl2++0a4Xw2hCl1KJoBoMTYRIQES7s0tJJvtKnDJ0z
+         v2TsE1AwCJYWqzlZhqqDu7Jom0Vrpv7zpczfHTGubgAcWjxV0axOFvxELw54e1NLzQ1n
+         7hCLrwgmXq6J5rK3LaIpPKaQsM5ni5LGZVYiwU2JcAns8O+YYjfqES0Ywg778moXc6n3
+         O5M8HnQlYrIXf8ycc9Gu1kWKB2FgCC3nwH3ZioD9Im3tNRkIzTebD91oLggXPu+QNDcw
+         a4F8G/vuS8eowyCjVdorCBPg5/fNIjtYBbPfGHgkEgvdgx3WqhLrckLWQsTgw/dcczdM
+         scjw==
+X-Gm-Message-State: AOPr4FX5ftEWsdVs4ooLmCxlZj/aLnfp00cmdtcMiO1RlIV8G8gRqjQclZS6pWO17yiaag==
+X-Received: by 10.28.1.143 with SMTP id 137mr4100709wmb.17.1462464602666;
+        Thu, 05 May 2016 09:10:02 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+        by smtp.gmail.com with ESMTPSA id cf6sm10426161wjc.12.2016.05.05.09.10.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 May 2016 09:10:01 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	peter.maydell@linaro.org
+Cc: alex.bennee@linaro.org,
+	serge.fdrv@gmail.com,
+	rth@twiddle.net,
+	qemu-arm@nongnu.org,
+	edgar.iglesias@xilinx.com
+Subject: [PATCH v4 0/1] arm: Steps towards EL2 support round 6
+Date: Thu,  5 May 2016 18:10:00 +0200
+Message-Id: <1462464601-10888-1-git-send-email-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.5.0
+X-TUID: uCg02ygc9lYe
 
-On 26 April 2016 at 12:21, Andrew Jones <drjones@redhat.com> wrote:
-> On Tue, Apr 26, 2016 at 06:40:24PM +0800, Shannon Zhao wrote:
->> From: Shannon Zhao <shannon.zhao@linaro.org>
->>
->> Add NUMA support for machine virt. Tested successfully running a guest
->> Linux kernel with the following patch applied:
->>
->> - [PATCH v16 0/6] arm64, numa: Add numa support for arm64 platforms
->> https://lkml.org/lkml/2016/4/8/571
->> - [PATCH v5 00/14] ACPI NUMA support for ARM64
->> https://lkml.org/lkml/2016/4/19/852
->
-> This series looks good to me, but I guess we still need to wait
-> for the DT spec[*] to be merged first. Hopefully that'll happen
-> around the time that the 2.7 dev window opens.
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-I'm going to put this series into target-arm.next now, really just
-so I can get it off my to-review list. I think the DT spec being
-in the for-next branch is a reasonable implication that it's stable,
-and in the worst case that we need to make fixups we have plenty
-of time before our next QEMU release to do them in.
-Please let me know if any spec change does happen before the DT
-hits mainline...
+Hi,
 
-thanks
--- PMM
+Another round of patches towards EL2 support. This one adds partial
+Instruction Syndrome generation for Data Aborts while running in AArch64.
+
+I don't feel very confident with the way I collect the regsize info used
+to fill out the SF field. Feedback on that would be great.
+
+Once we sort out the details on how this should be implemented we can
+fill out the parts needed for AArch32. Possibly in a future version of
+this same series.
+
+Comments welcome!
+
+Best regards,
+Edgar
+
+ChangeLog v3 -> v4
+* Assert that we only set the syndrome template once per insn
+* Mask out upper six bits from syndrome template
+* Remove the _with_isv versions of do_gpr_ld/st
+* Mention that we only handle AArch64 in the commit message
+
+ChangeLog:
+v2 -> v3:
+* Commented on inst start extra words
+* Add macro for word2 shift
+* Move ISS field collection closer to tcg_gen_qemu_ld/st
+* Changed logic to compute regsize for disas_ld_lit
+* Introduce syn_data_abort_with_iss/no_iss
+* Rename some isv naming to iss
+* Drop the patch: "Use isyn.swstep.ex to hold the is_ldex state"
+
+v1 -> v2:
+* Reworked the syndrome generation code to reuse syn_data_abort for
+  the encoding.
+* Reworded a bunch of comments.
+* Fixed thumb vs 16bit IL field issue.
+
+
+Edgar E. Iglesias (1):
+  target-arm: A64: Create Instruction Syndromes for Data Aborts
+
+ target-arm/cpu.h           |  14 ++++-
+ target-arm/op_helper.c     |  49 ++++++++++++++--
+ target-arm/translate-a64.c | 140 ++++++++++++++++++++++++++++++++++++++-------
+ target-arm/translate.c     |   5 +-
+ target-arm/translate.h     |   2 +
+ 5 files changed, 180 insertions(+), 30 deletions(-)
+
+-- 
+2.5.0

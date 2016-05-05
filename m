@@ -1,92 +1,226 @@
-Received: by 10.25.208.137 with SMTP id h131csp491818lfg;
-        Wed, 4 May 2016 20:07:31 -0700 (PDT)
-X-Received: by 10.28.56.69 with SMTP id f66mr642105wma.97.1462417649800;
-        Wed, 04 May 2016 20:07:29 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id vy5si8694125wjc.182.2016.05.04.20.07.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 May 2016 20:07:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.137 with SMTP id h131csp806135lfg;
+        Thu, 5 May 2016 08:56:08 -0700 (PDT)
+X-Received: by 10.194.92.237 with SMTP id cp13mr15065936wjb.168.1462463768646;
+        Thu, 05 May 2016 08:56:08 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-wm0-x22c.google.com (mail-wm0-x22c.google.com. [2a00:1450:400c:c09::22c])
+        by mx.google.com with ESMTPS id hp7si12343966wjb.145.2016.05.05.08.56.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 May 2016 08:56:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) client-ip=2a00:1450:400c:c09::22c;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51333 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ay9dA-0001k0-GP
-	for alex.bennee@linaro.org; Wed, 04 May 2016 23:07:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44598)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ay9cX-0000zC-BG
-	for qemu-devel@nongnu.org; Wed, 04 May 2016 23:06:39 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ay9cK-0002G8-DI
-	for qemu-devel@nongnu.org; Wed, 04 May 2016 23:06:27 -0400
-Received: from m12-12.163.com ([220.181.12.12]:48197)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1ay9cI-00025k-JZ; Wed, 04 May 2016 23:06:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=l2U4swMnEB0nX1tZ2y
-	d6uvlxBZIwy9B6xSZhxVLfpKk=; b=aFYC85Ds62wxrT/T/6uUUHQ6WEqnWIK0MQ
-	dF7LDYnKWRMGKWWJ2twpSoyorxWtrVpge13hZAV/XnOQMVT8sWY7yTdHSOwYmnzM
-	ekF+rIUwGo2OSFFhlUCwKC3Rik+hpxfrrIEhA8tCBoQHwZbIZxNZFTW87sHpyc/T
-	Ai4TRVH4U=
-Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp8 (Coremail) with SMTP id DMCowABXJrdyuCpXst8DBg--.1983S2;
-	Thu, 05 May 2016 11:05:46 +0800 (CST)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-To: qemu-devel@nongnu.org
-Date: Thu,  5 May 2016 11:04:44 +0800
-Message-Id: <1462417489-28603-1-git-send-email-zxq_yx_007@163.com>
-X-Mailer: git-send-email 2.1.4
-X-CM-TRANSID: DMCowABXJrdyuCpXst8DBg--.1983S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrGw18Ww47Jw17KrWkXw1kZrb_yoWxWrc_KF
-	WUCFyagr47Za98JFyxJrn5uFy0yw48tw1rJF9FqrW5Kry7XF1jyr1rCw45Wr1DZrsFyFW5
-	ur4UJr4kJwsxXjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0pnQUUUUUU==
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEgtgxlZXxm3+mgAAsx
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.12
-Subject: [Qemu-devel] [PATCH RESEND 0/5] QOM'ify hw/display devices
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: i.mitsyanko@gmail.com, michael@walle.cc, qemu-arm@nongnu.org,
-	hirofumi@mail.parknet.co.jp
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tyEFM0ElxqJT
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::22c as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-wm0-x22c.google.com with SMTP id n129so26113384wmn.1;
+        Thu, 05 May 2016 08:56:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=CQMXmWUb3mH+V9IkrjzDf5EGmiKNoNAEwIpKk6Lnyd0=;
+        b=u9naVUAZU3nmQQ2F76pMkrDnnia2K2GAQVUkxruKRgjqIyMMQrBg0T0JncknPBL+ud
+         2EaBTh+AsSy58gAFK+uFc72kho36tqoyDYtqCffBj/iMqXccUa2Gkbqx0NS2L9cmPs9k
+         20u33oBo+nkXxn4EVCitoUS2cnd2VkWEsn6IeqCwO1xcPkQa3vUvbD1I5fbeguKX7KD9
+         26boBP0hl7lObJUIbgLmx2i9a8Wibbf7xTHpBMHSqrJqnEWIO9dxoomD2NWOBtf6IMRu
+         FY3SURIWuZgO2NizWEqUfvUU7JI8+Xk32juGJyKHQD0Hdhxg6H4YVNzDna1iQG8TZJxs
+         UwlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=CQMXmWUb3mH+V9IkrjzDf5EGmiKNoNAEwIpKk6Lnyd0=;
+        b=eiu7IaHPzJr7j8SR5KEmIITGCAbAbQdjFbh9PWR5gtuoV3N7/feRjVr/2ENqNZbwf7
+         BMyZwYZQjMC6SaiaHeu7Rvrv2vALrHKeKELuLc7xd7L9KOG27gbFeufGeT2ZbePQf8Lu
+         FpQ8SgC+aDqe/B1PvfGOjiyOm9epWHHEFZiF5Q107lCozLzgrA5w0EATNsXymRXOo+nm
+         Fq9bOBazcQV4oyVkKKUaeBREbeusc1DGMoKEbOMv6a+Srqm+ZZE9xni3onRZeyJ46atr
+         NuNi5ap4lxJME4xVNA8HIb+4JEjzvjdM7u48qTTlrjaX0WuNjHPleQbxoX91NSc4hk+Q
+         7YXQ==
+X-Gm-Message-State: AOPr4FUgYxkyYgv5G6V1Yl5ljbHLaYf1+LpkGfW0+SEFXywE2RjiDH/hIcPYezlHPGL1OA==
+X-Received: by 10.194.133.135 with SMTP id pc7mr15225677wjb.49.1462463768300;
+        Thu, 05 May 2016 08:56:08 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+        by smtp.gmail.com with ESMTPSA id q77sm3809899wmd.12.2016.05.05.08.56.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 May 2016 08:56:07 -0700 (PDT)
+Date: Thu, 5 May 2016 17:56:06 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Sergey Fedorov <serge.fdrv@gmail.com>,
+	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+	Edgar Iglesias <edgar.iglesias@xilinx.com>
+Subject: Re: [PATCH v3 7/7] target-arm: A64: Create Instruction Syndromes for
+ Data Aborts
+Message-ID: <20160505155606.GB16305@toto>
+References: <1461931684-1867-1-git-send-email-edgar.iglesias@gmail.com>
+ <1461931684-1867-8-git-send-email-edgar.iglesias@gmail.com>
+ <CAFEAcA97rxkuGwY5ahSVXfBe8Y8XzWDZd143NBhVgFhLAKLi9A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA97rxkuGwY5ahSVXfBe8Y8XzWDZd143NBhVgFhLAKLi9A@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: 5omc23SRON6u
 
-This patch set trys to QOM'ify hw/display files, see commit messages
-for more details.
+On Wed, May 04, 2016 at 06:38:49PM +0100, Peter Maydell wrote:
+> On 29 April 2016 at 13:08, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> >
+> > Add support for generating the instruction syndrome for Data Aborts.
+> > These syndromes are used by hypervisors for example to trap and emulate
+> > memory accesses.
+> >
+> > We save the decoded data out-of-band with the TBs at translation time.
+> > When exceptions hit, the extra data attached to the TB is used to
+> > recreate the state needed to encode instruction syndromes.
+> > This avoids the need to emit moves with every load/store.
+> >
+> > Based on a suggestion from Peter Maydell.
+> 
+> Worth mentioning in the commit message that we don't currently generate
+> ISV information for exceptions from AArch32?
 
-xiaoqiang zhao (5):
-  hw/display: QOM'ify exynos4210_fimd.c
-  hw/display: QOM'ify jazz_led.c
-  hw/display: QOM'ify milkymist-tmu2.c
-  hw/display: QOM'ify milkymist-vgafb.c
-  hw/display: QOM'ify pl110.c
+Yes, I've changed the first part of the commit message to:
 
- hw/display/exynos4210_fimd.c | 19 ++++++++++++-------
- hw/display/jazz_led.c        | 18 +++++++++++-------
- hw/display/milkymist-tmu2.c  | 24 ++++++++++++++----------
- hw/display/milkymist-vgafb.c | 16 ++++++++++------
- hw/display/pl110.c           | 19 +++++++++----------
- 5 files changed, 56 insertions(+), 40 deletions(-)
+target-arm: A64: Create Instruction Syndromes for Data Aborts
 
--- 
-2.1.4
+Add support for generating the ISS (Instruction Specific Syndrome) for
+Data Abort exceptions taken from AArch64.
+
+...
 
 
+
+> 
+> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> > ---
+> >  target-arm/cpu.h           |  12 ++++-
+> >  target-arm/op_helper.c     |  49 ++++++++++++++---
+> >  target-arm/translate-a64.c | 130 +++++++++++++++++++++++++++++++++++++++------
+> >  target-arm/translate.c     |   5 +-
+> >  target-arm/translate.h     |   2 +
+> >  5 files changed, 173 insertions(+), 25 deletions(-)
+> >
+> > diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> > index 066ff67..256fbec 100644
+> > --- a/target-arm/cpu.h
+> > +++ b/target-arm/cpu.h
+> > @@ -94,7 +94,17 @@
+> >  struct arm_boot_info;
+> >
+> >  #define NB_MMU_MODES 7
+> > -#define TARGET_INSN_START_EXTRA_WORDS 1
+> > +/* ARM-specific extra insn start words:
+> > + * 1: Conditional execution bits
+> > + * 2: Partial exception syndrome for data aborts
+> > + */
+> > +#define TARGET_INSN_START_EXTRA_WORDS 2
+> > +
+> > +/* The 2nd extra word holding syndrome info for data aborts does not use
+> > + * the lower 14 bits. We shift it down to help the sleb128 encoder do a
+> > + * better job. When restoring the CPU state, we shift it back up.
+> > + */
+> > +#define ARM_INSN_START_WORD2_SHIFT 14
+> 
+> We could also not bother putting bits 25..31 (ie the field that always reads
+> EC_DATAABORT) in the insn start word.
+
+Yes, good point. I'll mask them out for v4.
+
+
+> 
+> > @@ -720,23 +720,55 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i64 t0, TCGv_i64 t1)
+> >   * Store from GPR register to memory.
+> >   */
+> >  static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
+> > -                             TCGv_i64 tcg_addr, int size, int memidx)
+> > +                             TCGv_i64 tcg_addr, int size, int memidx,
+> > +                             bool iss_valid,
+> > +                             unsigned int iss_srt,
+> > +                             bool iss_sf, bool iss_ar)
+> >  {
+> >      g_assert(size <= 3);
+> >      tcg_gen_qemu_st_i64(source, tcg_addr, memidx, s->be_data + size);
+> > +
+> > +    if (iss_valid) {
+> > +        uint32_t isyn32;
+> > +
+> > +        isyn32 = syn_data_abort_with_iss(0,
+> > +                                         size,
+> > +                                         false,
+> > +                                         iss_srt,
+> > +                                         iss_sf,
+> > +                                         iss_ar,
+> > +                                         0, 0, 0, 0, 0, false);
+> > +        isyn32 >>= ARM_INSN_START_WORD2_SHIFT;
+> > +        tcg_set_insn_param(s->insn_start_idx, 2, isyn32);
+> 
+> Is it worth doing
+>       assert(s->insn_start_idx);
+>       tcg_set_insn_param(...);
+>       s->insn_start_idx = 0;
+> 
+> as a way to catch accidentally trying to set the syndrome info twice ?
+
+Yes, why not. I've done that in v4.
+
+
+
+> 
+> > +    }
+> > +}
+> > +
+> > +static void do_gpr_st_with_isv(DisasContext *s, TCGv_i64 source,
+> > +                               TCGv_i64 tcg_addr, int size,
+> > +                               bool iss_valid,
+> > +                               unsigned int iss_srt,
+> > +                               bool iss_sf, bool iss_ar)
+> > +{
+> > +    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s),
+> > +                     iss_valid, iss_srt, iss_sf, iss_ar);
+> >  }
+> >
+> >  static void do_gpr_st(DisasContext *s, TCGv_i64 source,
+> >                        TCGv_i64 tcg_addr, int size)
+> >  {
+> > -    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s));
+> > +    do_gpr_st_with_isv(s, source, tcg_addr, size,
+> > +                       false, 0, false, false);
+> >  }
+> 
+> There's only two places where we use do_gpr_st() rather than the
+> _with_isv() version (both in the load/store pair function), and
+> similarly for do_gpr_ld(); so I think it would be better just to
+> have do_gpr_ld/st always take the iss arguments and not have a
+> separate do_gpr_st_with_isv(). (This also makes it harder to make
+> the mistake of using the plain do_gpr_st() &c in future code and
+> forgetting that you need to think about whether to set syndrome info.)
+
+I've removed the _with_isv versions for v4.
+
+
+> Not in this patch series but something we need to fix:
+> 
+> (1) currently in arm_cpu_do_interrupt_aarch64() there is some
+> code which does
+>         if (!env->thumb) {
+>             env->cp15.esr_el[new_el] |= 1 << 25;
+>         }
+> if we take an exception from 32 bit to 64 bit. This is completely
+> bogus because that's not what the IL bit in the syndrome is for.
+> This code should just be deleted, and rely on exception.syndrome
+> having a correct IL bit (which it didn't for data aborts before
+> your series but will afterwards).
+> 
+> (2) syn_insn_abort(), syn_swstep(), syn_watchpoint()
+> should all create syndromes with the IL bit set, but don't.
+
+
+Sounds good!
+
+Thanks,
+Edgar

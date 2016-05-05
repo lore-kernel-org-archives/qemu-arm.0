@@ -1,64 +1,69 @@
-Received: by 10.25.208.137 with SMTP id h131csp493880lfg;
-        Wed, 4 May 2016 20:14:02 -0700 (PDT)
-X-Received: by 10.28.15.74 with SMTP id 71mr740476wmp.34.1462418042385;
-        Wed, 04 May 2016 20:14:02 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp711581lfg;
+        Thu, 5 May 2016 05:47:36 -0700 (PDT)
+X-Received: by 10.194.205.134 with SMTP id lg6mr13009837wjc.153.1462452456775;
+        Thu, 05 May 2016 05:47:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j18si1042924wmd.71.2016.05.04.20.14.02
+        by mx.google.com with ESMTPS id u64si3596705wmd.74.2016.05.05.05.47.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 May 2016 20:14:02 -0700 (PDT)
+        Thu, 05 May 2016 05:47:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51375 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53372 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ay9jV-00041b-58
-	for alex.bennee@linaro.org; Wed, 04 May 2016 23:13:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45928)
+	id 1ayIgZ-0007L9-MY
+	for alex.bennee@linaro.org; Thu, 05 May 2016 08:47:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ay9jN-0003pG-92
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 23:13:43 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ayIgR-00073J-7m
+	for qemu-arm@nongnu.org; Thu, 05 May 2016 08:47:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1ay9jB-0004N3-Nq
-	for qemu-arm@nongnu.org; Wed, 04 May 2016 23:13:31 -0400
-Received: from m12-15.163.com ([220.181.12.15]:33961)
+	(envelope-from <peter.maydell@linaro.org>) id 1ayIgF-0000sy-Ja
+	for qemu-arm@nongnu.org; Thu, 05 May 2016 08:47:05 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34422)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1ay9j9-0004Go-Vu; Wed, 04 May 2016 23:13:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Subject:From:Message-ID:Date:MIME-Version; bh=1bSPp
-	pPqyEbOoAEypcMhS7U+eJECPUMfijhZ7t2Iw68=; b=EOySyfXl1Sw3LDYolxivT
-	Hdwb3Fiamr+SwQaD469mH01R0CH092xIylw5FdmzPyf5MTiNgsf+4a1PeVFZmqDD
-	r9bpfwJuaXLXBTniJF4yqkPINwxPFF3xxPDxm/hSqOV+OPmDrAI6zkh8tyRbrpgh
-	IqUClS3qnmrF+tGLerkr5E=
-Received: from [192.168.11.80] (unknown [118.187.28.42])
-	by smtp11 (Coremail) with SMTP id D8CowADH0og3uipXnSE0Ag--.58515S2;
-	Thu, 05 May 2016 11:12:55 +0800 (CST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1458815374-22279-1-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA8ohPD0pwkZYfE8RmDjpu15vUeYNo+wn4PFo2f4ZEq3Rg@mail.gmail.com>
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-Message-ID: <572ABA15.2000204@163.com>
-Date: Thu, 5 May 2016 11:12:21 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1ayIgE-0000lR-Cj
+	for qemu-arm@nongnu.org; Thu, 05 May 2016 08:46:59 -0400
+Received: by mail-vk0-x230.google.com with SMTP id m188so23685340vka.1
+	for <qemu-arm@nongnu.org>; Thu, 05 May 2016 05:46:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=ssnB3gC5MpOE8xYTAtY7j/I2Un7lfkyg2BTySdMbeCs=;
+	b=QmVIjJrE/yQ1frpvPGFUfVuoZOPS28HZo1PNvlbADdnDmetNjx6+zMYaD9sgGZb6Cs
+	A1KVZ7HK2E+j5eQPSvzxPyWflD47xT2Gxrc3q32r+/oiTzW4DN0hWVNqk7XAB0nXusee
+	invxt4oAMHu7p7ZYFlMoCKOmuZr+4Mmcnpblc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=ssnB3gC5MpOE8xYTAtY7j/I2Un7lfkyg2BTySdMbeCs=;
+	b=S8RBDQ8lnZCytEnDGLUm8r0vmwTYRmHtbFwoYJewGUf9rBy0Z8ecMK0kLWqW+CPXAz
+	C+lXgGuxWOHoN6aUfmgDZej20eu/aV3sDYqrIupv+/vpC6kJVAyW3YnkMnQFP9rvBZbg
+	H9k6u+Dde2LVGKF2Sr63j6dq9OQVyV4gZ7bL5myRzZV6SsrDyzv6/eKGyu+X53LhKUcS
+	jvbmcQ6R+GdvwujdoOJP24TEgmVU1AySMwXlxQCXptbunnQuoCUcHsEzvScs7/vI01ql
+	prfGMut4GBIdUZilEaEFnE/d0pdH92+fycceM9kiBsdSPYnv1lPfBSqRwGixFxwgQOL8
+	1W2Q==
+X-Gm-Message-State: AOPr4FWfMQJ33r0qQk5XH2gJX340baILadjMWJSn16mqoEkVaNrVfOspVA6fKqPSiyXXrPSukMa9MN7/7QmVLe4H
+X-Received: by 10.31.68.67 with SMTP id r64mr2241822vka.82.1462452393106; Thu,
+	05 May 2016 05:46:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8ohPD0pwkZYfE8RmDjpu15vUeYNo+wn4PFo2f4ZEq3Rg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: D8CowADH0og3uipXnSE0Ag--.58515S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JrW3CFWxWw1xAw4xAr1rCrg_yoWfCwbE9F
-	W8Crs2grW7Zay3KFs7AF45XryIvay8Wr1rG34qvry5try5Xr1YvFWfKw1Y9w4UC392yFZ8
-	ur1kJF4qv3sIvjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUeXtxPUUUUU==
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEBBgxlUL8PlXdQABsS
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.15
-Subject: Re: [Qemu-arm] [PATCH 0/5] QOM'ify hw/display devices
+Received: by 10.31.216.1 with HTTP; Thu, 5 May 2016 05:46:13 -0700 (PDT)
+In-Reply-To: <1462417489-28603-3-git-send-email-zxq_yx_007@163.com>
+References: <1462417489-28603-1-git-send-email-zxq_yx_007@163.com>
+	<1462417489-28603-3-git-send-email-zxq_yx_007@163.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 May 2016 13:46:13 +0100
+Message-ID: <CAFEAcA_gkX=xokbLwOGQeNHUvn-a7+oLF1=yaW6AptDTmBYWQA@mail.gmail.com>
+To: xiaoqiang zhao <zxq_yx_007@163.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH RESEND 2/5] hw/display: QOM'ify jazz_led.c
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,43 +75,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, Michael Walle <michael@walle.cc>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	hirofumi@mail.parknet.co.jp
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+	hirofumi@mail.parknet.co.jp, Leon Alrae <leon.alrae@imgtec.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7GCYxQVvXpGg
+X-TUID: fj8KsfM89KMD
 
-
-
-在 2016年05月04日 22:26, Peter Maydell 写道:
-> On 24 March 2016 at 10:29, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
->> This patch set trys to QOM'ify hw/display files, see commit messages
->> for more details
->>
->> xiaoqiang zhao (5):
->>    hw/display: QOM'ify exynos4210_fimd.c
->>    hw/display: QOM'ify jazz_led.c
->>    hw/display: QOM'ify milkymist-tmu2.c
->>    hw/display: QOM'ify milkymist-vgafb.c
->>    hw/display: QOM'ify pl110.c
-> Hi; I was going to review this series (apologies for taking so
-> long!), but looking at my email archive and the patchwork server
-> the patches in it seem a bit confused. I see seven patches, not five,
-> with rather odd patch number indications:
->   1/5
->   2/5
->   3/6
->   4/5
->   5/6
->   5/5
->   6/6
+On 5 May 2016 at 04:04, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
+> * Drop the old SysBus init function and use instance_init
+> * Move graphic_console_init into realize stage
 >
-> (and 5/5 and 6/6 seem to be the same). Could you resend the
-> series with the correct patches in it, please?
->
-> thanks
-> -- PMM
-I have resend patches, buf forget to cc to you, so I send you a separate 
-copy.
+> Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
+> ---
+>  hw/display/jazz_led.c | 18 +++++++++++-------
+>  1 file changed, 11 insertions(+), 7 deletions(-)
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+CCing the MIPS maintainers and the listed maintainer for this
+board so they can pick this patch up.
+
+thanks
+-- PMM

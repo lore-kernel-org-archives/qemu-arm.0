@@ -1,57 +1,59 @@
-Received: by 10.25.208.137 with SMTP id h131csp213986lfg;
-        Fri, 6 May 2016 04:03:57 -0700 (PDT)
-X-Received: by 10.28.18.81 with SMTP id 78mr8239280wms.59.1462532637164;
-        Fri, 06 May 2016 04:03:57 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp214062lfg;
+        Fri, 6 May 2016 04:04:05 -0700 (PDT)
+X-Received: by 10.28.212.8 with SMTP id l8mr4619670wmg.11.1462532645208;
+        Fri, 06 May 2016 04:04:05 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q145si10041807wme.41.2016.05.06.04.03.57
+        by mx.google.com with ESMTPS id h201si10016625wme.86.2016.05.06.04.04.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 May 2016 04:03:57 -0700 (PDT)
+        Fri, 06 May 2016 04:04:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57599 helo=lists.gnu.org)
+Received: from localhost ([::1]:57602 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aydXn-00073G-M4
-	for alex.bennee@linaro.org; Fri, 06 May 2016 07:03:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50153)
+	id 1aydXv-0007Jp-4Q
+	for alex.bennee@linaro.org; Fri, 06 May 2016 07:03:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aydXY-0006aA-CO
-	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:30 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1aydXZ-0006cl-W7
+	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aydXM-0001tT-CV
-	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:18 -0400
-Received: from m12-16.163.com ([220.181.12.16]:50792)
+	(envelope-from <zxq_yx_007@163.com>) id 1aydXN-0001tp-46
+	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:20 -0400
+Received: from m12-16.163.com ([220.181.12.16]:50794)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aydX0-0001eK-Cw; Fri, 06 May 2016 07:02:51 -0400
+	id 1aydWz-0001eL-D3; Fri, 06 May 2016 07:02:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=ZZJgTI3GvBe/tPS0Fr
-	JVX6Lv3gtQ8l+liKLauycJurE=; b=OANsmSx326P7jHK3q0tOZkHbVHGLz9S8Rx
-	VCesYIbIdVXR2QMOCB0IWCHwLiIX8abbOAQ8m435OJJmi4OQ30DsgTv9w5Wo8skf
-	6eG/t/tvFZjzAkWciUp7NTBwL/hzP+mQqDN7qAAsK/KVZxPgNwX7RwdtAz0ZEHLQ
-	K6jpzW44M=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=E43lye1wFxA7VmJ3Ex
+	JTTenp5zZyC6DvFkdA7kzdnNM=; b=DpUmZFUeQblRIktQ2kYh9eN1F2nb+zpaOg
+	siP2s7/0zeKGZCG+QPeeSaboRLwEQZ4fbQ/1njNeQ5uzyrxRy6m9obJucQYoUOLa
+	pn0a6LvbZEY83KBxAk/34LG3ykEQQvaSSOuwZXBThmlGL2d+4nE7rM5pFod/polF
+	F6SKHq8ac=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp12 (Coremail) with SMTP id EMCowACXRsM7eSxXsYpAAA--.18847S2;
-	Fri, 06 May 2016 19:01:55 +0800 (CST)
+	by smtp12 (Coremail) with SMTP id EMCowACXRsM7eSxXsYpAAA--.18847S7;
+	Fri, 06 May 2016 19:01:56 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 May 2016 18:59:30 +0800
-Message-Id: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
+Date: Fri,  6 May 2016 18:59:35 +0800
+Message-Id: <1462532375-29264-6-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-X-CM-TRANSID: EMCowACXRsM7eSxXsYpAAA--.18847S2
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Wr4rXr45Jw1UXr1UZFWDArb_yoW3Arb_KF
-	WUCFyagr42vF98tFyxJrn5uFy0qw40yw18JF9FqrW5Kry7Gr1UtF1rC3y5Wr1UZrsFkFy5
-	Zr48Jr4kJwnrXjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8NAw7UUUUU==
+In-Reply-To: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
+References: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: EMCowACXRsM7eSxXsYpAAA--.18847S7
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uFyrXFWkKFW5JFWUKF4xCrg_yoW8Cw1DpF
+	Z3uF13ArW8XFsrGw4ftF1kGF90kws7G3y5trZFyw1fA34jkws5ta4kA3ySyrWqqay0vF1Y
+	9FWrtF17Jr48Z3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jxMa8UUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOwNhxlXlTXqTVwAAsc
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOwRhxlXlTXqTWQAAsV
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 220.181.12.16
-Subject: [Qemu-arm] [PATCH v2 0/5] QOM'ify hw/display devices
+Subject: [Qemu-arm] [PATCH v2 5/5] hw/display: QOM'ify pl110.c
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,29 +69,72 @@ Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com, armbru@redhat.com,
 	michael@walle.cc, qemu-arm@nongnu.org, hirofumi@mail.parknet.co.jp
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /ZkfEHteQjUU
+X-TUID: rM76G/AdYmOH
 
-This patch set trys to QOM'ify hw/display files, see commit messages
-for more details.
+* Drop the old SysBus init function and use instance_init
+* Move graphic_console_init into realize stage
 
-v1 -> v2:
- * fix a version variable override problem in pl110.c
- * remove the trailing punctuation in error_setg message
+Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
+---
+ hw/display/pl110.c | 29 +++++++++++++++--------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
 
-xiaoqiang zhao (5):
-  hw/display: QOM'ify exynos4210_fimd.c
-  hw/display: QOM'ify jazz_led.c
-  hw/display: QOM'ify milkymist-tmu2.c
-  hw/display: QOM'ify milkymist-vgafb.c
-  hw/display: QOM'ify pl110.c
-
- hw/display/exynos4210_fimd.c | 19 ++++++++++++-------
- hw/display/jazz_led.c        | 18 +++++++++++-------
- hw/display/milkymist-tmu2.c  | 24 ++++++++++++++----------
- hw/display/milkymist-vgafb.c | 16 ++++++++++------
- hw/display/pl110.c           | 29 +++++++++++++++--------------
- 5 files changed, 62 insertions(+), 44 deletions(-)
-
+diff --git a/hw/display/pl110.c b/hw/display/pl110.c
+index d589959..73453b9 100644
+--- a/hw/display/pl110.c
++++ b/hw/display/pl110.c
+@@ -465,24 +465,26 @@ static const GraphicHwOps pl110_gfx_ops = {
+     .gfx_update  = pl110_update_display,
+ };
+ 
+-static int pl110_initfn(SysBusDevice *sbd)
++static void pl110_init(Object *obj)
+ {
+-    DeviceState *dev = DEVICE(sbd);
+-    PL110State *s = PL110(dev);
++    DeviceState *dev = DEVICE(obj);
++    PL110State *s = PL110(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &pl110_ops, s, "pl110", 0x1000);
++    /* subclass instance_init may override this */
++    s->version = PL110;
++
++    memory_region_init_io(&s->iomem, obj, &pl110_ops, s, "pl110", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq);
+     qdev_init_gpio_in(dev, pl110_mux_ctrl_set, 1);
++}
++
++static void pl110_realize(DeviceState *dev, Error **errp)
++{
++    PL110State *s = PL110(dev);
++
+     s->con = graphic_console_init(dev, 0, &pl110_gfx_ops, s);
+-    return 0;
+-}
+-
+-static void pl110_init(Object *obj)
+-{
+-    PL110State *s = PL110(obj);
+-
+-    s->version = PL110;
+ }
+ 
+ static void pl110_versatile_init(Object *obj)
+@@ -502,11 +504,10 @@ static void pl111_init(Object *obj)
+ static void pl110_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
+ 
+-    k->init = pl110_initfn;
+     set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+     dc->vmsd = &vmstate_pl110;
++    dc->realize = pl110_realize;
+ }
+ 
+ static const TypeInfo pl110_info = {
 -- 
 2.1.4
 

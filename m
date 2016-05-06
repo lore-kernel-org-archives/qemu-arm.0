@@ -1,59 +1,57 @@
-Received: by 10.25.208.137 with SMTP id h131csp213961lfg;
-        Fri, 6 May 2016 04:03:54 -0700 (PDT)
-X-Received: by 10.194.123.102 with SMTP id lz6mr20743058wjb.2.1462532634026;
-        Fri, 06 May 2016 04:03:54 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp213986lfg;
+        Fri, 6 May 2016 04:03:57 -0700 (PDT)
+X-Received: by 10.28.18.81 with SMTP id 78mr8239280wms.59.1462532637164;
+        Fri, 06 May 2016 04:03:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m4si17731472wjl.81.2016.05.06.04.03.53
+        by mx.google.com with ESMTPS id q145si10041807wme.41.2016.05.06.04.03.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 May 2016 04:03:54 -0700 (PDT)
+        Fri, 06 May 2016 04:03:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57598 helo=lists.gnu.org)
+Received: from localhost ([::1]:57599 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aydXk-0006yB-1W
-	for alex.bennee@linaro.org; Fri, 06 May 2016 07:03:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50145)
+	id 1aydXn-00073G-M4
+	for alex.bennee@linaro.org; Fri, 06 May 2016 07:03:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aydXW-0006XU-AW
-	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:29 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1aydXY-0006aA-CO
+	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1aydXK-0001sd-Ka
-	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:16 -0400
-Received: from m12-16.163.com ([220.181.12.16]:50791)
+	(envelope-from <zxq_yx_007@163.com>) id 1aydXM-0001tT-CV
+	for qemu-arm@nongnu.org; Fri, 06 May 2016 07:03:18 -0400
+Received: from m12-16.163.com ([220.181.12.16]:50792)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1aydWz-0001dy-Gb; Fri, 06 May 2016 07:02:51 -0400
+	id 1aydX0-0001eK-Cw; Fri, 06 May 2016 07:02:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=DYTM39KvO4gAoeRpef
-	vWzkanCIN4RMQfuwmYPFnXgBE=; b=YWLvg+hHLSnG02MzKHF8ydlh5C9vfKqyYc
-	XdpUqPVMRrazG40oHkbuWOWfFuknLqZnIHc5OGCkFmYLXz84tkgV4vVa79mjtTnq
-	MncJUWwXBcjwfyChXTtig8DLejsaQmVG2KiBM/adahzHGyMGpPZY06UsivTWOszF
-	ca2XIDbeQ=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=ZZJgTI3GvBe/tPS0Fr
+	JVX6Lv3gtQ8l+liKLauycJurE=; b=OANsmSx326P7jHK3q0tOZkHbVHGLz9S8Rx
+	VCesYIbIdVXR2QMOCB0IWCHwLiIX8abbOAQ8m435OJJmi4OQ30DsgTv9w5Wo8skf
+	6eG/t/tvFZjzAkWciUp7NTBwL/hzP+mQqDN7qAAsK/KVZxPgNwX7RwdtAz0ZEHLQ
+	K6jpzW44M=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp12 (Coremail) with SMTP id EMCowACXRsM7eSxXsYpAAA--.18847S4;
+	by smtp12 (Coremail) with SMTP id EMCowACXRsM7eSxXsYpAAA--.18847S2;
 	Fri, 06 May 2016 19:01:55 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  6 May 2016 18:59:32 +0800
-Message-Id: <1462532375-29264-3-git-send-email-zxq_yx_007@163.com>
+Date: Fri,  6 May 2016 18:59:30 +0800
+Message-Id: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
-References: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EMCowACXRsM7eSxXsYpAAA--.18847S4
-X-Coremail-Antispam: 1Uf129KBjvJXoW7uFyrXFWkKw1UtF1fJr17GFg_yoW8CrW5pr
-	93ZFs5C3y5tFs3Jw4fGF1DWF4DJ3WkCF18trZrGwn29w45Cr4qkr17Aw43uayrKFW0vF13
-	Xay8ta48AF4DZ3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jkjjDUUUUU=
+X-CM-TRANSID: EMCowACXRsM7eSxXsYpAAA--.18847S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Wr4rXr45Jw1UXr1UZFWDArb_yoW3Arb_KF
+	WUCFyagr42vF98tFyxJrn5uFy0qw40yw18JF9FqrW5Kry7Gr1UtF1rC3y5Wr1UZrsFkFy5
+	Zr48Jr4kJwnrXjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8NAw7UUUUU==
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiMwNhxlXlgH2hNAAAsP
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOwNhxlXlTXqTVwAAsc
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 220.181.12.16
-Subject: [Qemu-arm] [PATCH v2 2/5] hw/display: QOM'ify jazz_led.c
+Subject: [Qemu-arm] [PATCH v2 0/5] QOM'ify hw/display devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,67 +67,29 @@ Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com, armbru@redhat.com,
 	michael@walle.cc, qemu-arm@nongnu.org, hirofumi@mail.parknet.co.jp
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U3R35Giv2XwL
+X-TUID: /ZkfEHteQjUU
 
-* Drop the old SysBus init function and use instance_init
-* Move graphic_console_init into realize stage
+This patch set trys to QOM'ify hw/display files, see commit messages
+for more details.
 
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/display/jazz_led.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+v1 -> v2:
+ * fix a version variable override problem in pl110.c
+ * remove the trailing punctuation in error_setg message
 
-diff --git a/hw/display/jazz_led.c b/hw/display/jazz_led.c
-index 09dcdb4..b72fdb1 100644
---- a/hw/display/jazz_led.c
-+++ b/hw/display/jazz_led.c
-@@ -267,16 +267,20 @@ static const GraphicHwOps jazz_led_ops = {
-     .text_update = jazz_led_text_update,
- };
- 
--static int jazz_led_init(SysBusDevice *dev)
-+static void jazz_led_init(Object *obj)
- {
--    LedState *s = JAZZ_LED(dev);
-+    LedState *s = JAZZ_LED(obj);
-+    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
- 
--    memory_region_init_io(&s->iomem, OBJECT(s), &led_ops, s, "led", 1);
-+    memory_region_init_io(&s->iomem, obj, &led_ops, s, "led", 1);
-     sysbus_init_mmio(dev, &s->iomem);
-+}
- 
--    s->con = graphic_console_init(DEVICE(dev), 0, &jazz_led_ops, s);
-+static void jazz_led_realize(DeviceState *dev, Error **errp)
-+{
-+    LedState *s = JAZZ_LED(dev);
- 
--    return 0;
-+    s->con = graphic_console_init(dev, 0, &jazz_led_ops, s);
- }
- 
- static void jazz_led_reset(DeviceState *d)
-@@ -291,18 +295,18 @@ static void jazz_led_reset(DeviceState *d)
- static void jazz_led_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = jazz_led_init;
-     dc->desc = "Jazz LED display",
-     dc->vmsd = &vmstate_jazz_led;
-     dc->reset = jazz_led_reset;
-+    dc->realize = jazz_led_realize;
- }
- 
- static const TypeInfo jazz_led_info = {
-     .name          = TYPE_JAZZ_LED,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(LedState),
-+    .instance_init = jazz_led_init,
-     .class_init    = jazz_led_class_init,
- };
- 
+xiaoqiang zhao (5):
+  hw/display: QOM'ify exynos4210_fimd.c
+  hw/display: QOM'ify jazz_led.c
+  hw/display: QOM'ify milkymist-tmu2.c
+  hw/display: QOM'ify milkymist-vgafb.c
+  hw/display: QOM'ify pl110.c
+
+ hw/display/exynos4210_fimd.c | 19 ++++++++++++-------
+ hw/display/jazz_led.c        | 18 +++++++++++-------
+ hw/display/milkymist-tmu2.c  | 24 ++++++++++++++----------
+ hw/display/milkymist-vgafb.c | 16 ++++++++++------
+ hw/display/pl110.c           | 29 +++++++++++++++--------------
+ 5 files changed, 62 insertions(+), 44 deletions(-)
+
 -- 
 2.1.4
 

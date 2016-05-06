@@ -1,494 +1,152 @@
-Received: by 10.25.208.137 with SMTP id h131csp813482lfg;
-        Thu, 5 May 2016 09:10:04 -0700 (PDT)
-X-Received: by 10.194.164.228 with SMTP id yt4mr16515009wjb.64.1462464604511;
-        Thu, 05 May 2016 09:10:04 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-wm0-x232.google.com (mail-wm0-x232.google.com. [2a00:1450:400c:c09::232])
-        by mx.google.com with ESMTPS id w1si12385621wjj.244.2016.05.05.09.10.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 May 2016 09:10:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) client-ip=2a00:1450:400c:c09::232;
+Received: by 10.25.208.137 with SMTP id h131csp418924lfg;
+        Fri, 6 May 2016 11:16:02 -0700 (PDT)
+X-Received: by 10.195.31.130 with SMTP id km2mr20430374wjd.86.1462558562207;
+        Fri, 06 May 2016 11:16:02 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id b75si12164375wmf.43.2016.05.06.11.16.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 06 May 2016 11:16:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 2a00:1450:400c:c09::232 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-wm0-x232.google.com with SMTP id e201so26524001wme.0;
-        Thu, 05 May 2016 09:10:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=AlyL/UNPVdP7r5rnkBMLIAVh4zcP0PnVcS4eyMEUT0I=;
-        b=JwFtdoFkR/Nlgy1o8a86X2kkU+2Q+Gp6kOazQ8VU1s/heSEEDTQL1+mvxQqKVB0EUK
-         6XX4n13bc1hxaqB2iKRfTr9TSoJ7qgX2AlEAQuhorXgNbqwyXUdD13EkF7r2graw3o6C
-         uSywFGOeKhlKMk8u3yTjHESD/ArpIRNUdxMdrep2EDn5UlbCX+cpYxvOkwDZ1hTOfaP+
-         1Wc84HIXqCDENMCJ+mZ8z4mrLo2mCGdG8UMC3bAwD3TuzNk4n5DZEuCi7OzhGC3EzL+k
-         ep3SIBK9PzRZ9OESb+pvSP+LiZafJQA3vEHoGG78BsdM/7PqUwkwncN3DrWnMO73vYMp
-         PRWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=AlyL/UNPVdP7r5rnkBMLIAVh4zcP0PnVcS4eyMEUT0I=;
-        b=F7cWXi5h+oNDeELRWB6wp0qUCSRmEA8w1IMVHMrxN6pveonTho4VEHgdbJ42go+YR5
-         4map2BaQEEdTI6uUwvre+iWBZXXfxkZmWYgmVpwMvJr85u1rCa1Lkbs+quO+jqNGLBCU
-         nqAdrtfPuvCEU3V9XTg+5PW82g9Q8eiGE8qwJiMbAPrl4be6gQUQylInEjH4+QTUVg7T
-         yJksARO+WoEwNVGTDXqZMQjkqXxyEPW1R+Ipkw0whycyL1S1jaiW6Qy4bzzXIjYa3SEJ
-         ceyVoBnYME5k9IEMwh4d8ULyglYMqHVMTiWeLENUpx7fdljkjoKWwYWuuLt/FAXG++wm
-         abdg==
-X-Gm-Message-State: AOPr4FXh+GwctzWfQ0d/dl+lK7uCiYmtgqLZafXL1XIQDbl/t3/ShprrqhEYwleCmh3WtA==
-X-Received: by 10.28.31.73 with SMTP id f70mr4552572wmf.77.1462464604110;
-        Thu, 05 May 2016 09:10:04 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-        by smtp.gmail.com with ESMTPSA id jd4sm10405363wjb.43.2016.05.05.09.10.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 May 2016 09:10:03 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	qemu-arm@nongnu.org,
-	edgar.iglesias@xilinx.com
-Subject: [PATCH v4 1/1] target-arm: A64: Create Instruction Syndromes for Data Aborts
-Date: Thu,  5 May 2016 18:10:01 +0200
-Message-Id: <1462464601-10888-2-git-send-email-edgar.iglesias@gmail.com>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59681 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aykHw-0001NF-RZ
+	for alex.bennee@linaro.org; Fri, 06 May 2016 14:15:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39267)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair.francis@xilinx.com>) id 1aykH1-0008Mg-O0
+	for qemu-devel@nongnu.org; Fri, 06 May 2016 14:14:54 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alistair.francis@xilinx.com>) id 1aykGq-0004pj-3V
+	for qemu-devel@nongnu.org; Fri, 06 May 2016 14:14:42 -0400
+Received: from mail-cys01nam02on0049.outbound.protection.outlook.com
+	([104.47.37.49]:12896
+	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair.francis@xilinx.com>) id 1aykGp-0004nj-Ue
+	for qemu-devel@nongnu.org; Fri, 06 May 2016 14:14:36 -0400
+Received: from SN1NAM02FT018.eop-nam02.prod.protection.outlook.com
+	(10.152.72.53) by SN1NAM02HT226.eop-nam02.prod.protection.outlook.com
+	(10.152.72.224) with Microsoft SMTP Server (TLS) id 15.1.485.4;
+	Fri, 6 May 2016 18:14:26 +0000
+Authentication-Results: spf=temperror (sender IP is 149.199.60.96)
+	smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
+	header.d=none; gmail.com;
+	dmarc=temperror action=none header.from=xilinx.com; 
+Received-SPF: TempError (protection.outlook.com: error in processing during
+	lookup of xilinx.com: DNS Timeout)
+Received: from xsj-tvapsmtpgw01 (149.199.60.96) by
+	SN1NAM02FT018.mail.protection.outlook.com (10.152.72.122) with
+	Microsoft SMTP Server (TLS) id 15.1.485.4 via Frontend Transport;
+	Fri, 6 May 2016 18:14:24 +0000
+Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:58471
+	helo=xsj-tvapsmtp02.xilinx.com)
+	by xsj-tvapsmtpgw01 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aykGe-0002Gs-9g; Fri, 06 May 2016 11:14:24 -0700
+Received: from [127.0.0.1] (port=39078 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
+	by xsj-tvapsmtp02.xilinx.com with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aykGe-0001Yf-5g; Fri, 06 May 2016 11:14:24 -0700
+Received: from xsj-tvapsmtp02 (smtptest.xilinx.com [172.16.1.203])
+	by tsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
+	u46I8AUN012899; Fri, 6 May 2016 11:08:11 -0700
+Received: from [172.19.74.182] (port=48406 helo=xsjalistai50.xlnx.xilinx.com)
+	by xsj-tvapsmtp02 with esmtp (Exim 4.63)
+	(envelope-from <alistair.francis@xilinx.com>)
+	id 1aykGd-0001Yc-9Y; Fri, 06 May 2016 11:14:23 -0700
+From: Alistair Francis <alistair.francis@xilinx.com>
+To: <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
+Date: Fri, 6 May 2016 11:11:02 -0700
+Message-ID: <6459df5e54365d5dbe8a1b047a85ec65c67e9232.1462557987.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.5.0
-In-Reply-To: <1462464601-10888-1-git-send-email-edgar.iglesias@gmail.com>
-References: <1462464601-10888-1-git-send-email-edgar.iglesias@gmail.com>
-X-TUID: kctxi0NduDNv
+In-Reply-To: <cover.1462557987.git.alistair.francis@xilinx.com>
+References: <cover.1462557987.git.alistair.francis@xilinx.com>
+X-RCIS-Action: ALLOW
+X-TM-AS-MML: disable
+X-TM-AS-Product-Ver: IMSS-7.1.0.1679-8.0.0.1202-22304.005
+X-TM-AS-Result: No--3.422-7.0-31-10
+X-imss-scan-details: No--3.422-7.0-31-10
+X-TMASE-MatchedRID: Z28ZQS4q9JyzLD5kmcW6ZEyQ5fRSh265CqIJhrrDy28q1hvYOvwvB+Lz
+	NWBegCW2wgn7iDBesS1YF3qW3Je6+2pcCn7+ST3kxUqDfpa8DymJfZjU1ngPCeVnYCjGoZRlQQT
+	dEe7VvaOErb0fgDKQayY4tJFYnuTbcRsDZgzUNQPWnhXHS1vPZku/kTKv9giuqwOHO1Fdn0Kb4t
+	j0DvxRUIs9ro6z1cfcCdyqwX4Zffl+3BndfXUhXQ==
+X-EOPAttributedMessage: 0
+X-Forefront-Antispam-Report: CIP:149.199.60.96; IPV:NLI; CTRY:US; EFV:NLI;
+	SFV:NSPM;
+	SFS:(10009020)(6009001)(2980300002)(189002)(199003)(189998001)(586003)(2906002)(8936002)(4326007)(81166005)(76176999)(9786002)(50986999)(6806005)(19580405001)(50226002)(47776003)(19580395003)(5008740100001)(5003600100002)(1220700001)(11100500001)(77096005)(2950100001)(118296001)(64026002)(71366001)(48376002)(50466002)(33646002)(92566002)(5001770100001)(36756003)(87936001)(2201001)(86362001)(5003940100001)(229853001)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:SN1NAM02HT226; H:xsj-tvapsmtpgw01;
+	FPR:; SPF:TempError; MLV:sfv; MX:1; A:1; LANG:en; 
+MIME-Version: 1.0
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: bbb67104-2fca-4756-fb95-08d375da417c
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:SN1NAM02HT226;
+X-Microsoft-Antispam-PRVS: <0127ed0522974b50841356ec0014f63d@SN1NAM02HT226.eop-nam02.prod.protection.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:;
+X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
+	RULEID:(601004)(2401047)(13018025)(13017025)(13015025)(13023025)(13024025)(8121501046)(5005006)(10201501046)(3002001)(6055026);
+	SRVR:SN1NAM02HT226; BCL:0; PCL:0; RULEID:; SRVR:SN1NAM02HT226; 
+X-Forefront-PRVS: 09347618C4
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2016 18:14:24.9214 (UTC)
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
+	Ip=[149.199.60.96]; Helo=[xsj-tvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1NAM02HT226
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 104.47.37.49
+Subject: [Qemu-devel] [PATCH v1 2/2] target-arm: Enable EL2 for the A53s and
+ A57s
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, edgar.iglesias@gmail.com,
+	alistair.francis@xilinx.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OQeXqGkZx9fe
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Enable EL2 by default for the A53s and A57s.
 
-Add support for generating the ISS (Instruction Specific Syndrome) for
-Data Abort exceptions taken from AArch64.
-These syndromes are used by hypervisors for example to trap and emulate
-memory accesses.
-
-We save the decoded data out-of-band with the TBs at translation time.
-When exceptions hit, the extra data attached to the TB is used to
-recreate the state needed to encode instruction syndromes.
-This avoids the need to emit moves with every load/store.
-
-Based on a suggestion from Peter Maydell.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 ---
- target-arm/cpu.h           |  14 ++++-
- target-arm/op_helper.c     |  49 ++++++++++++++--
- target-arm/translate-a64.c | 140 ++++++++++++++++++++++++++++++++++++++-------
- target-arm/translate.c     |   5 +-
- target-arm/translate.h     |   2 +
- 5 files changed, 180 insertions(+), 30 deletions(-)
 
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 066ff67..dea9bab 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -94,7 +94,19 @@
- struct arm_boot_info;
- 
- #define NB_MMU_MODES 7
--#define TARGET_INSN_START_EXTRA_WORDS 1
-+/* ARM-specific extra insn start words:
-+ * 1: Conditional execution bits
-+ * 2: Partial exception syndrome for data aborts
-+ */
-+#define TARGET_INSN_START_EXTRA_WORDS 2
-+
-+/* The 2nd extra word holding syndrome info for data aborts does not use
-+ * the upper 6 bits nor the lower 14 bits. We mask and shift it down to
-+ * help the sleb128 encoder do a better job.
-+ * When restoring the CPU state, we shift it back up.
-+ */
-+#define ARM_INSN_START_WORD2_MASK ((1 << 26) - 1)
-+#define ARM_INSN_START_WORD2_SHIFT 14
- 
- /* We currently assume float and double are IEEE single and double
-    precision respectively.
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index c7fba85..26aa4af 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -75,6 +75,43 @@ uint32_t HELPER(neon_tbl)(CPUARMState *env, uint32_t ireg, uint32_t def,
- 
- #if !defined(CONFIG_USER_ONLY)
- 
-+static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-+                                            unsigned int target_el,
-+                                            bool same_el,
-+                                            bool s1ptw, int is_write,
-+                                            int fsc)
-+{
-+    uint32_t syn;
-+
-+    /* ISV is only set for data aborts routed to EL2 and
-+     * never for stage-1 page table walks faulting on stage 2.
-+     *
-+     * Furthermore, ISV is only set for certain kinds of load/stores.
-+     * If the template syndrome does not have ISV set, we should leave
-+     * it cleared.
-+     *
-+     * See ARMv8 specs, D7-1974:
-+     * ISS encoding for an exception from a Data Abort, the
-+     * ISV field.
-+     */
-+    if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
-+        syn = syn_data_abort_no_iss(same_el,
-+                                    0, 0, s1ptw, is_write == 1, fsc);
-+    } else {
-+        /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
-+         * syndrome created at translation time.
-+         * Now we create the runtime syndrome with the remaining fields.
-+         */
-+        syn = syn_data_abort_with_iss(same_el,
-+                                      0, 0, 0, 0, 0,
-+                                      0, 0, s1ptw, is_write == 1, fsc,
-+                                      false);
-+        /* Merge the runtime syndrome with the template syndrome.  */
-+        syn |= template_syn;
-+    }
-+    return syn;
-+}
-+
- /* try to fill the TLB and return an exception if error. If retaddr is
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
-@@ -115,8 +152,8 @@ void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int mmu_idx,
-             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
-             exc = EXCP_PREFETCH_ABORT;
-         } else {
--            syn = syn_data_abort_no_iss(same_el,
--                                        0, 0, fi.s1ptw, is_write == 1, syn);
-+            syn = merge_syn_data_abort(env->exception.syndrome, target_el,
-+                                       same_el, fi.s1ptw, is_write, syn);
-             if (is_write == 1 && arm_feature(env, ARM_FEATURE_V6)) {
-                 fsr |= (1 << 11);
-             }
-@@ -137,6 +174,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
-     CPUARMState *env = &cpu->env;
-     int target_el;
-     bool same_el;
-+    uint32_t syn;
- 
-     if (retaddr) {
-         /* now we have a real cpu fault */
-@@ -161,10 +199,9 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
-         env->exception.fsr |= (1 << 11);
-     }
- 
--    raise_exception(env, EXCP_DATA_ABORT,
--                    syn_data_abort_no_iss(same_el,
--                                          0, 0, 0, is_write == 1, 0x21),
--                    target_el);
-+    syn = merge_syn_data_abort(env->exception.syndrome, target_el,
-+                               same_el, 0, is_write, 0x21);
-+    raise_exception(env, EXCP_DATA_ABORT, syn, target_el);
- }
- 
- #endif /* !defined(CONFIG_USER_ONLY) */
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index 24f5e17..17ec6bb 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -305,6 +305,20 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
-     }
- }
- 
-+static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
-+{
-+    /* We don't need to save all of the syndrome so we mask and shift
-+     * out uneeded bits to help the sleb128 encoder do a better job.
-+     */
-+    syn &= ARM_INSN_START_WORD2_MASK;
-+    syn >>= ARM_INSN_START_WORD2_SHIFT;
-+
-+    /* We check and clear insn_start_idx to catch multiple updates.  */
-+    assert(s->insn_start_idx != 0);
-+    tcg_set_insn_param(s->insn_start_idx, 2, syn);
-+    s->insn_start_idx = 0;
-+}
-+
- static void unallocated_encoding(DisasContext *s)
- {
-     /* Unallocated and reserved encodings are uncategorized */
-@@ -720,23 +734,47 @@ static void gen_adc_CC(int sf, TCGv_i64 dest, TCGv_i64 t0, TCGv_i64 t1)
-  * Store from GPR register to memory.
-  */
- static void do_gpr_st_memidx(DisasContext *s, TCGv_i64 source,
--                             TCGv_i64 tcg_addr, int size, int memidx)
-+                             TCGv_i64 tcg_addr, int size, int memidx,
-+                             bool iss_valid,
-+                             unsigned int iss_srt,
-+                             bool iss_sf, bool iss_ar)
- {
-     g_assert(size <= 3);
-     tcg_gen_qemu_st_i64(source, tcg_addr, memidx, s->be_data + size);
-+
-+    if (iss_valid) {
-+        uint32_t syn;
-+
-+        syn = syn_data_abort_with_iss(0,
-+                                      size,
-+                                      false,
-+                                      iss_srt,
-+                                      iss_sf,
-+                                      iss_ar,
-+                                      0, 0, 0, 0, 0, false);
-+        disas_set_insn_syndrome(s, syn);
-+    }
- }
- 
- static void do_gpr_st(DisasContext *s, TCGv_i64 source,
--                      TCGv_i64 tcg_addr, int size)
-+                      TCGv_i64 tcg_addr, int size,
-+                      bool iss_valid,
-+                      unsigned int iss_srt,
-+                      bool iss_sf, bool iss_ar)
- {
--    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s));
-+    do_gpr_st_memidx(s, source, tcg_addr, size, get_mem_index(s),
-+                     iss_valid, iss_srt, iss_sf, iss_ar);
- }
- 
- /*
-  * Load from memory to GPR register
-  */
--static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
--                             int size, bool is_signed, bool extend, int memidx)
-+static void do_gpr_ld_memidx(DisasContext *s,
-+                             TCGv_i64 dest, TCGv_i64 tcg_addr,
-+                             int size, bool is_signed,
-+                             bool extend, int memidx,
-+                             bool iss_valid, unsigned int iss_srt,
-+                             bool iss_sf, bool iss_ar)
- {
-     TCGMemOp memop = s->be_data + size;
- 
-@@ -752,13 +790,30 @@ static void do_gpr_ld_memidx(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
-         g_assert(size < 3);
-         tcg_gen_ext32u_i64(dest, dest);
-     }
-+
-+    if (iss_valid) {
-+        uint32_t syn;
-+
-+        syn = syn_data_abort_with_iss(0,
-+                                      size,
-+                                      is_signed,
-+                                      iss_srt,
-+                                      iss_sf,
-+                                      iss_ar,
-+                                      0, 0, 0, 0, 0, false);
-+        disas_set_insn_syndrome(s, syn);
-+    }
- }
- 
--static void do_gpr_ld(DisasContext *s, TCGv_i64 dest, TCGv_i64 tcg_addr,
--                      int size, bool is_signed, bool extend)
-+static void do_gpr_ld(DisasContext *s,
-+                      TCGv_i64 dest, TCGv_i64 tcg_addr,
-+                      int size, bool is_signed, bool extend,
-+                      bool iss_valid, unsigned int iss_srt,
-+                      bool iss_sf, bool iss_ar)
- {
-     do_gpr_ld_memidx(s, dest, tcg_addr, size, is_signed, extend,
--                     get_mem_index(s));
-+                     get_mem_index(s),
-+                     iss_valid, iss_srt, iss_sf, iss_ar);
- }
- 
- /*
-@@ -1814,6 +1869,22 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
- }
- #endif
- 
-+/* Update the Sixty-Four bit (SF) registersize. This logic is derived
-+ * from the ARMv8 specs for LDR (Shared decode for all encodings).
-+ */
-+static bool disas_ldst_compute_iss_sf(int size, bool is_signed, int opc)
-+{
-+    int opc0 = extract32(opc, 0, 1);
-+    int regsize;
-+
-+    if (is_signed) {
-+        regsize = opc0 ? 32 : 64;
-+    } else {
-+        regsize = size == 3 ? 64 : 32;
-+    }
-+    return regsize == 64;
-+}
-+
- /* C3.3.6 Load/store exclusive
-  *
-  *  31 30 29         24  23  22   21  20  16  15  14   10 9    5 4    0
-@@ -1865,10 +1936,15 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, false, 0);
-+
-+        /* Generate ISS for non-exclusive accesses including LASR.  */
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st(s, tcg_rt, tcg_addr, size,
-+                      true, rt, iss_sf, is_lasr);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
-+            do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false,
-+                      true, rt, iss_sf, is_lasr);
-         }
-     }
- }
-@@ -1920,7 +1996,11 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
-     if (is_vector) {
-         do_fp_ld(s, rt, tcg_addr, size);
-     } else {
--        do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false);
-+        /* Only unsigned 32bit loads target 32bit registers.  */
-+        bool iss_sf = opc == 0 ? 32 : 64;
-+
-+        do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false,
-+                  true, rt, iss_sf, false);
-     }
-     tcg_temp_free_i64(tcg_addr);
- }
-@@ -2039,9 +2119,11 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-         if (is_load) {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false);
-+            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, false,
-+                      false, 0, false, false);
-         } else {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st(s, tcg_rt, tcg_addr, size,
-+                      false, 0, false, false);
-         }
-     }
-     tcg_gen_addi_i64(tcg_addr, tcg_addr, 1 << size);
-@@ -2054,9 +2136,11 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
-     } else {
-         TCGv_i64 tcg_rt2 = cpu_reg(s, rt2);
-         if (is_load) {
--            do_gpr_ld(s, tcg_rt2, tcg_addr, size, is_signed, false);
-+            do_gpr_ld(s, tcg_rt2, tcg_addr, size, is_signed, false,
-+                      false, 0, false, false);
-         } else {
--            do_gpr_st(s, tcg_rt2, tcg_addr, size);
-+            do_gpr_st(s, tcg_rt2, tcg_addr, size,
-+                      false, 0, false, false);
-         }
-     }
- 
-@@ -2099,6 +2183,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     bool is_store = false;
-     bool is_extended = false;
-     bool is_unpriv = (idx == 2);
-+    bool iss_valid = !is_vector;
-     bool post_index;
-     bool writeback;
- 
-@@ -2166,12 +2251,15 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-         int memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
- 
-         if (is_store) {
--            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx);
-+            do_gpr_st_memidx(s, tcg_rt, tcg_addr, size, memidx,
-+                             iss_valid, rt, iss_sf, false);
-         } else {
-             do_gpr_ld_memidx(s, tcg_rt, tcg_addr, size,
--                             is_signed, is_extended, memidx);
-+                             is_signed, is_extended, memidx,
-+                             iss_valid, rt, iss_sf, false);
-         }
-     }
- 
-@@ -2269,10 +2357,14 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st(s, tcg_rt, tcg_addr, size,
-+                      true, rt, iss_sf, false);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
-+            do_gpr_ld(s, tcg_rt, tcg_addr, size,
-+                      is_signed, is_extended,
-+                      true, rt, iss_sf, false);
-         }
-     }
- }
-@@ -2349,10 +2441,13 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-+        bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
-         if (is_store) {
--            do_gpr_st(s, tcg_rt, tcg_addr, size);
-+            do_gpr_st(s, tcg_rt, tcg_addr, size,
-+                      true, rt, iss_sf, false);
-         } else {
--            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended);
-+            do_gpr_ld(s, tcg_rt, tcg_addr, size, is_signed, is_extended,
-+                      true, rt, iss_sf, false);
-         }
-     }
- }
-@@ -11099,7 +11194,8 @@ void gen_intermediate_code_a64(ARMCPU *cpu, TranslationBlock *tb)
-     tcg_clear_temp_count();
- 
-     do {
--        tcg_gen_insn_start(dc->pc, 0);
-+        dc->insn_start_idx = tcg_op_buf_count();
-+        tcg_gen_insn_start(dc->pc, 0, 0);
-         num_insns++;
- 
-         if (unlikely(!QTAILQ_EMPTY(&cs->breakpoints))) {
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 940ec8d..594cbfc 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -11724,7 +11724,8 @@ void gen_intermediate_code(CPUARMState *env, TranslationBlock *tb)
-       }
-     do {
-         tcg_gen_insn_start(dc->pc,
--                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1));
-+                           (dc->condexec_cond << 4) | (dc->condexec_mask >> 1),
-+                           0);
-         num_insns++;
- 
- #ifdef CONFIG_USER_ONLY
-@@ -12041,8 +12042,10 @@ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
-     if (is_a64(env)) {
-         env->pc = data[0];
-         env->condexec_bits = 0;
-+        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     } else {
-         env->regs[15] = data[0];
-         env->condexec_bits = data[1];
-+        env->exception.syndrome = data[2] << ARM_INSN_START_WORD2_SHIFT;
-     }
- }
-diff --git a/target-arm/translate.h b/target-arm/translate.h
-index 6a18d7b..dbd7ac8 100644
---- a/target-arm/translate.h
-+++ b/target-arm/translate.h
-@@ -59,6 +59,8 @@ typedef struct DisasContext {
-     bool ss_same_el;
-     /* Bottom two bits of XScale c15_cpar coprocessor access control reg */
-     int c15_cpar;
-+    /* TCG op index of the current insn_start.  */
-+    int insn_start_idx;
- #define TMP_A64_MAX 16
-     int tmp_a64_count;
-     TCGv_i64 tmp_a64[TMP_A64_MAX];
+ target-arm/cpu64.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+index 1635deb..59a2042 100644
+--- a/target-arm/cpu64.c
++++ b/target-arm/cpu64.c
+@@ -110,6 +110,7 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+     cpu->midr = 0x411fd070;
+@@ -165,6 +166,7 @@ static void aarch64_a53_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_SHA256);
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+     cpu->midr = 0x410fd034;
 -- 
 2.5.0
+

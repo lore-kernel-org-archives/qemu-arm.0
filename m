@@ -1,48 +1,48 @@
-Received: by 10.25.208.137 with SMTP id h131csp1683262lfg;
-        Mon, 9 May 2016 10:30:38 -0700 (PDT)
-X-Received: by 10.140.179.76 with SMTP id z73mr38899607qhz.36.1462815028295;
-        Mon, 09 May 2016 10:30:28 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1683283lfg;
+        Mon, 9 May 2016 10:30:41 -0700 (PDT)
+X-Received: by 10.140.94.7 with SMTP id f7mr36569150qge.68.1462815030429;
+        Mon, 09 May 2016 10:30:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b13si6643847qkg.158.2016.05.09.10.30.28
+        by mx.google.com with ESMTPS id m189si19002508qhm.16.2016.05.09.10.30.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 10:30:28 -0700 (PDT)
+        Mon, 09 May 2016 10:30:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42475 helo=lists.gnu.org)
+Received: from localhost ([::1]:42477 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azp0l-0004ET-MZ
-	for alex.bennee@linaro.org; Mon, 09 May 2016 13:30:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37977)
+	id 1azp0n-0004J5-Sj
+	for alex.bennee@linaro.org; Mon, 09 May 2016 13:30:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0h-000443-S9
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0h-00043B-IY
 	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0f-0000ID-9m
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0e-0000I5-Q8
 	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:22 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0e-00005k-VI; Mon, 09 May 2016 13:30:21 -0400
+	id 1azp0e-00005k-Ff; Mon, 09 May 2016 13:30:20 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0K-0001Ui-Mt; Mon, 09 May 2016 18:30:00 +0100
+	id 1azp0L-0001Ux-5g; Mon, 09 May 2016 18:30:01 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 May 2016 18:29:42 +0100
-Message-Id: <1462814989-24360-17-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 May 2016 18:29:43 +0100
+Message-Id: <1462814989-24360-18-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 16/23] hw/intc/arm_gicv3: Implement
- gicv3_cpuif_update()
+Subject: [Qemu-arm] [PATCH 17/23] hw/intc/arm_gicv3: Implement CPU i/f SGI
+ generation registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,207 +60,246 @@ Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xCoGrmneXDWM
+X-TUID: 6BIREC143eqr
 
-Implement the gicv3_cpuif_update() function which deals with correctly
-asserting IRQ and FIQ based on the current running priority of the CPU,
-the priority of the highest priority pending interrupt and the CPU's
-current exception level and security state.
+Implement the registers in the GICv3 CPU interface which generate
+new SGI interrupts.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c | 140 +++++++++++++++++++++++++++++++++++++++++++++-
- hw/intc/gicv3_internal.h  |   5 +-
- trace-events              |   2 +
- 3 files changed, 142 insertions(+), 5 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c  | 125 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_redist.c |  40 +++++++++++++++
+ hw/intc/gicv3_internal.h   |   1 +
+ trace-events               |   2 +
+ 4 files changed, 168 insertions(+)
 
 diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index e112646..7faf3c0 100644
+index 7faf3c0..a368dbb 100644
 --- a/hw/intc/arm_gicv3_cpuif.c
 +++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -36,6 +36,142 @@ static bool gicv3_use_ns_bank(CPUARMState *env)
-     return !arm_is_secure_below_el3(env);
+@@ -331,6 +331,95 @@ static void icc_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     gicv3_cpuif_update(cs);
  }
  
-+static int icc_highest_active_prio(GICv3CPUState *cs)
++static void icc_generate_sgi(CPUARMState *env, GICv3CPUState *cs,
++                             uint64_t value, int grp, bool ns)
 +{
-+    /* Calculate the current running priority based on the set bits
-+     * in the Active Priority Registers.
-+     */
++    GICv3State *s = cs->gic;
++
++    /* Extract Aff3/Aff2/Aff1 and shift into the bottom 24 bits */
++    uint64_t aff = extract64(value, 48, 8) << 16 |
++        extract64(value, 32, 8) << 8 |
++        extract64(value, 16, 8);
++    uint32_t targetlist = extract64(value, 0, 16);
++    uint32_t irq = extract64(value, 24, 4);
++    bool irm = extract64(value, 40, 1);
 +    int i;
 +
-+    for (i = 0; i < ARRAY_SIZE(cs->icc_apr[0]); i++) {
-+        uint32_t apr = cs->icc_apr[GICV3_G0][i] |
-+            cs->icc_apr[GICV3_G1][i] | cs->icc_apr[GICV3_G1NS][i];
-+
-+        if (!apr) {
-+            continue;
-+        }
-+        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
-+    }
-+    /* No current active interrupts: return idle priority */
-+    return 0xff;
-+}
-+
-+static uint32_t icc_gprio_mask(GICv3CPUState *cs, int group)
-+{
-+    /* Return a mask word which clears the subpriority bits from
-+     * a priority value for an interrupt in the specified group.
-+     * This depends on the BPR value:
-+     *  a BPR of 0 means the group priority bits are [7:1];
-+     *  a BPR of 1 means they are [7:2], and so on down to
-+     *  a BPR of 7 meaning no group priority bits at all.
-+     * Which BPR to use depends on the group of the interrupt and
-+     * the current ICC_CTLR.CBPR settings.
-+     */
-+    if ((group == GICV3_G1 && cs->icc_ctlr_el1[GICV3_S] & ICC_CTLR_EL1_CBPR) ||
-+        (group == GICV3_G1NS &&
-+         cs->icc_ctlr_el1[GICV3_NS] & ICC_CTLR_EL1_CBPR)) {
-+        group = GICV3_G0;
-+    }
-+
-+    return ~0U << ((cs->icc_bpr[group] & 7) + 1);
-+}
-+
-+static bool icc_no_enabled_hppi(GICv3CPUState *cs)
-+{
-+    /* Return true if there is no pending interrupt, or the
-+     * highest priority pending interrupt is in a group which has been
-+     * disabled at the CPU interface by the ICC_IGRPEN* register enable bits.
-+     */
-+    return cs->hppi.prio == 0xff || (cs->icc_igrpen[cs->hppi.grp] == 0);
-+}
-+
-+static bool icc_hppi_can_preempt(GICv3CPUState *cs)
-+{
-+    /* Return true if we have a pending interrupt of sufficient
-+     * priority to preempt.
-+     */
-+    int rprio;
-+    uint32_t mask;
-+
-+    if (icc_no_enabled_hppi(cs)) {
-+        return false;
-+    }
-+
-+    if (cs->hppi.prio >= cs->icc_pmr_el1) {
-+        /* Priority mask masks this interrupt */
-+        return false;
-+    }
-+
-+    rprio = icc_highest_active_prio(cs);
-+    if (rprio == 0xff) {
-+        /* No currently running interrupt so we can preempt */
-+        return true;
-+    }
-+
-+    mask = icc_gprio_mask(cs, cs->hppi.grp);
-+
-+    /* We only preempt a running interrupt if the pending interrupt's
-+     * group priority is sufficient (the subpriorities are not considered).
-+     */
-+    if ((cs->hppi.prio & mask) < (rprio & mask)) {
-+        return true;
-+    }
-+
-+    return false;
-+}
-+
-+void gicv3_cpuif_update(GICv3CPUState *cs)
-+{
-+    /* Tell the CPU about its highest priority pending interrupt */
-+    int irqlevel = 0;
-+    int fiqlevel = 0;
-+    ARMCPU *cpu = ARM_CPU(cs->cpu);
-+    CPUARMState *env = &cpu->env;
-+
-+    trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
-+                             cs->hppi.grp, cs->hppi.prio);
-+
-+    if (cs->hppi.grp == GICV3_G1 && !arm_feature(env, ARM_FEATURE_EL3)) {
-+        /* If a Security-enabled GIC sends a G1S interrupt to a
-+         * Security-disabled CPU, we must treat it as if it were G0.
++    if (grp == GICV3_G1 && s->gicd_ctlr & GICD_CTLR_DS) {
++        /* If GICD_CTLR.DS == 1, the Distributor treats Secure Group 1
++         * interrupts as Group 0 interrupts and must send Secure Group 0
++         * interrupts to the target CPUs.
 +         */
-+        cs->hppi.grp = GICV3_G0;
++        grp = GICV3_G0;
 +    }
 +
-+    if (icc_hppi_can_preempt(cs)) {
-+        /* We have an interrupt: should we signal it as IRQ or FIQ?
-+         * This is described in the GICv3 spec section 4.6.2.
-+         */
-+        bool isfiq;
++    trace_gicv3_icc_generate_sgi(gicv3_redist_affid(cs), irq, irm,
++                                 aff, targetlist);
 +
-+        switch (cs->hppi.grp) {
-+        case GICV3_G0:
-+            isfiq = true;
-+            break;
-+        case GICV3_G1:
-+            isfiq = (!arm_is_secure(env) ||
-+                     (arm_current_el(env) == 3 && arm_el_is_aa64(env, 3)));
-+            break;
-+        case GICV3_G1NS:
-+            isfiq = arm_is_secure(env);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
++    for (i = 0; i < s->num_cpu; i++) {
++        GICv3CPUState *ocs = &s->cpu[i];
 +
-+        if (isfiq) {
-+            fiqlevel = 1;
++        if (irm) {
++            /* IRM == 1 : route to all CPUs except self */
++            if (cs == ocs) {
++                continue;
++            }
 +        } else {
-+            irqlevel = 1;
++            /* IRM == 0 : route to Aff3.Aff2.Aff1.n for all n in [0..15]
++             * where the corresponding bit is set in targetlist
++             */
++            int aff0;
++
++            if (ocs->gicr_typer >> 40 != aff) {
++                continue;
++            }
++            aff0 = extract64(ocs->gicr_typer, 32, 8);
++            if (aff0 > 15 || extract32(targetlist, aff0, 1) == 0) {
++                continue;
++            }
 +        }
++
++        /* The redistributor will check against its own GICR_NSACR as needed */
++        gicv3_redist_send_sgi(ocs, grp, irq, ns);
 +    }
-+
-+    trace_gicv3_cpuif_set_irqs(gicv3_redist_affid(cs), fiqlevel, irqlevel);
-+
-+    qemu_set_irq(cs->parent_fiq, fiqlevel);
-+    qemu_set_irq(cs->parent_irq, irqlevel);
 +}
 +
- static uint64_t icc_pmr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++static void icc_sgi0r_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    /* Generate Secure Group 0 SGI. */
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    bool ns = !arm_is_secure(env);
++
++    icc_generate_sgi(env, cs, value, GICV3_G0, ns);
++}
++
++static void icc_sgi1r_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    /* Generate Group 1 SGI for the current Security state */
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int grp;
++    bool ns = !arm_is_secure(env);
++
++    grp = ns ? GICV3_G1NS : GICV3_G1;
++    icc_generate_sgi(env, cs, value, grp, ns);
++}
++
++static void icc_asgi1r_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    /* Generate Group 1 SGI for the Security state that is not
++     * the current state
++     */
++    GICv3CPUState *cs = icc_cs_from_env(env);
++    int grp;
++    bool ns = !arm_is_secure(env);
++
++    grp = ns ? GICV3_G1 : GICV3_G1NS;
++    icc_generate_sgi(env, cs, value, grp, ns);
++}
++
+ static uint64_t icc_igrpen_read(CPUARMState *env, const ARMCPRegInfo *ri)
  {
      GICv3CPUState *cs = icc_cs_from_env(env);
-@@ -617,7 +753,9 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
- 
- static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
- {
--    /* Do nothing for now. */
-+    GICv3CPUState *cs = opaque;
-+
-+    gicv3_cpuif_update(cs);
+@@ -673,6 +762,42 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+       .readfn = icc_ap_read,
+       .writefn = icc_ap_write,
+     },
++    { .name = "ICC_SGI1R_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 5,
++      .type = ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_sgi1r_write,
++    },
++    { .name = "ICC_SGI1R",
++      .cp = 15, .opc1 = 0, .crm = 12,
++      .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_sgi1r_write,
++    },
++    { .name = "ICC_ASGI1R_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 6,
++      .type = ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_asgi1r_write,
++    },
++    { .name = "ICC_ASGI1R",
++      .cp = 15, .opc1 = 1, .crm = 12,
++      .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_asgi1r_write,
++    },
++    { .name = "ICC_SGI0R_EL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 11, .opc2 = 7,
++      .type = ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_sgi0r_write,
++    },
++    { .name = "ICC_SGI0R",
++      .cp = 15, .opc1 = 2, .crm = 12,
++      .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_NO_RAW,
++      .access = PL1_W, .accessfn = gicv3_irqfiq_access,
++      .writefn = icc_sgi0r_write,
++    },
+     /* This register is banked */
+     { .name = "ICC_BPR1_EL1", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 3,
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index 16b3422..13893d3 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -27,6 +27,13 @@ static uint32_t mask_group(GICv3CPUState *cs, MemTxAttrs attrs)
+     return 0xFFFFFFFFU;
  }
  
- void gicv3_init_cpuif(GICv3State *s)
++static int gicr_ns_access(GICv3CPUState *cs, int irq)
++{
++    /* Return the 2 bit NSACR.NS_access field for this SGI */
++    assert(irq < 16);
++    return extract32(cs->gicr_nsacr, irq * 2, 2);
++}
++
+ static void gicr_write_set_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
+                                       uint32_t *reg, uint32_t val)
+ {
+@@ -514,3 +521,36 @@ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
+ 
+     gicv3_redist_update(cs);
+ }
++
++void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns)
++{
++    /* Update redistributor state for a generated SGI */
++    int irqgrp = gicv3_irq_group(cs->gic, cs, irq);
++
++    /* If we are asked for a Secure Group 1 SGI and it's actually
++     * configured as Secure Group 0 this is OK (subject to the usual
++     * NSACR checks).
++     */
++    if (grp == GICV3_G1 && irqgrp == GICV3_G0) {
++        grp = GICV3_G0;
++    }
++
++    if (grp != irqgrp) {
++        return;
++    }
++
++    if (ns && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
++        /* If security is enabled we must test the NSACR bits */
++        int nsaccess = gicr_ns_access(cs, irq);
++
++        if ((irqgrp == GICV3_G0 && nsaccess < 1) ||
++            (irqgrp == GICV3_G1 && nsaccess < 2)) {
++            return;
++        }
++    }
++
++    /* OK, we can accept the SGI */
++    trace_gicv3_redist_send_sgi(gicv3_redist_affid(cs), irq);
++    cs->gicr_ipendr0 = deposit32(cs->gicr_ipendr0, irq, 1, 1);
++    gicv3_redist_update(cs);
++}
 diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index fa9d7a0..1dd75aa 100644
+index 1dd75aa..66bd1c0 100644
 --- a/hw/intc/gicv3_internal.h
 +++ b/hw/intc/gicv3_internal.h
-@@ -222,10 +222,7 @@ void gicv3_init_cpuif(GICv3State *s);
-  * current running priority or the CPU's current exception level or
-  * security state.
-  */
--static inline void gicv3_cpuif_update(GICv3CPUState *cs)
--{
--    /* This will be implemented in a later commit. */
--}
-+void gicv3_cpuif_update(GICv3CPUState *cs);
+@@ -211,6 +211,7 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
+                                unsigned size, MemTxAttrs attrs);
+ void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
++void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
+ void gicv3_init_cpuif(GICv3State *s);
  
- static inline uint32_t gicv3_iidr(void)
- {
+ /**
 diff --git a/trace-events b/trace-events
-index 592caf2..8765920 100644
+index 8765920..441469f 100644
 --- a/trace-events
 +++ b/trace-events
-@@ -1925,6 +1925,8 @@ gicv3_icc_ctlr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_CTLR read cpu %x valu
- gicv3_icc_ctlr_write(uint32_t cpu, uint64_t val) "GICv3 ICC_CTLR write cpu %x value 0x%" PRIx64
- gicv3_icc_ctlr_el3_read(uint32_t cpu, uint64_t val) "GICv3 ICC_CTLR_EL3 read cpu %x value 0x%" PRIx64
+@@ -1927,6 +1927,7 @@ gicv3_icc_ctlr_el3_read(uint32_t cpu, uint64_t val) "GICv3 ICC_CTLR_EL3 read cpu
  gicv3_icc_ctlr_el3_write(uint32_t cpu, uint64_t val) "GICv3 ICC_CTLR_EL3 write cpu %x value 0x%" PRIx64
-+gicv3_cpuif_update(uint32_t cpuid, int irq, int grp, int prio) "GICv3 CPU i/f %x HPPI update: irq %d group %d prio %d"
-+gicv3_cpuif_set_irqs(uint32_t cpuid, int fiqlevel, int irqlevel) "GICv3 CPU i/f %x HPPI update: setting FIQ %d IRQ %d"
+ gicv3_cpuif_update(uint32_t cpuid, int irq, int grp, int prio) "GICv3 CPU i/f %x HPPI update: irq %d group %d prio %d"
+ gicv3_cpuif_set_irqs(uint32_t cpuid, int fiqlevel, int irqlevel) "GICv3 CPU i/f %x HPPI update: setting FIQ %d IRQ %d"
++gicv3_icc_generate_sgi(uint32_t cpuid, int irq, int irm, uint32_t aff, uint32_t targetlist) "GICv3 CPU i/f %x generating SGI %d IRM %d target affinity 0x%xxx targetlist 0x%x"
  
  # hw/intc/arm_gicv3_dist.c
  gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
+@@ -1941,3 +1942,4 @@ gicv3_redist_badread(uint32_t cpu, uint64_t offset, unsigned size, bool secure)
+ gicv3_redist_write(uint32_t cpu, uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 redistributor %x write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
+ gicv3_redist_badwrite(uint32_t cpu, uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 redistributor %x write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d: error"
+ gicv3_redist_set_irq(uint32_t cpu, int irq, int level) "GICv3 redistributor %x interrupt %d level changed to %d"
++gicv3_redist_send_sgi(uint32_t cpu, int irq) "GICv3 redistributor %x pending SGI %d"
 -- 
 1.9.1
 

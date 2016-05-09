@@ -1,48 +1,47 @@
-Received: by 10.25.208.137 with SMTP id h131csp1685903lfg;
-        Mon, 9 May 2016 10:37:04 -0700 (PDT)
-X-Received: by 10.55.82.195 with SMTP id g186mr39368572qkb.47.1462815424660;
-        Mon, 09 May 2016 10:37:04 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1685928lfg;
+        Mon, 9 May 2016 10:37:07 -0700 (PDT)
+X-Received: by 10.55.82.195 with SMTP id g186mr39368805qkb.47.1462815427355;
+        Mon, 09 May 2016 10:37:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j60si19403281qge.40.2016.05.09.10.37.04
+        by mx.google.com with ESMTPS id z145si19358415qhz.89.2016.05.09.10.37.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 10:37:04 -0700 (PDT)
+        Mon, 09 May 2016 10:37:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42548 helo=lists.gnu.org)
+Received: from localhost ([::1]:42549 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azp79-0000P6-Th
-	for alex.bennee@linaro.org; Mon, 09 May 2016 13:37:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38167)
+	id 1azp7C-0000Wm-QQ
+	for alex.bennee@linaro.org; Mon, 09 May 2016 13:37:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0o-0004Ij-8t
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:32 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0q-0004Na-0v
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0k-0000Lq-TI
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:29 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0n-0000NJ-7e
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:30 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0k-00005k-Hc; Mon, 09 May 2016 13:30:26 -0400
+	id 1azp0m-00005k-Qk; Mon, 09 May 2016 13:30:29 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0B-0001Qz-Kj; Mon, 09 May 2016 18:29:51 +0100
+	id 1azp0E-0001S3-Ci; Mon, 09 May 2016 18:29:54 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 May 2016 18:29:28 +0100
-Message-Id: <1462814989-24360-3-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 May 2016 18:29:34 +0100
+Message-Id: <1462814989-24360-9-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 02/23] bitops.h: Implement half-shuffle and
- half-unshuffle ops
+Subject: [Qemu-arm] [PATCH 08/23] hw/intc/arm_gicv3: Add vmstate descriptors
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,223 +59,106 @@ Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 31EXzk0PbKTM
+X-TUID: mxvXdICfoYqq
 
-A half-shuffle operation takes a word with zeros in the high half:
- 0000 0000 0000 0000 ABCD EFGH IJKL MNOP
-and spreads the bits out so they are in every other bit of the word:
- 0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N 0O0P
-A half-unshuffle performs the reverse operation.
+From: Pavel Fedin <p.fedin@samsung.com>
 
-Provide functions in bitops.h which implement these operations
-for 32-bit and 64-bit inputs, and add tests for them.
+Add state structure descriptors for the GICv3 state. We mark
+the KVM GICv3 device as having a migration blocker until the
+code to save and restore the state in the kernel is implemented.
 
+Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
+[PMM: Adjust to renamed struct fields; switched to using uint32_t
+ array backed bitmaps; add migration blocker setting]
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/qemu/bitops.h | 108 ++++++++++++++++++++++++++++++++++++++++++++++++++
- tests/test-bitops.c   |  68 +++++++++++++++++++++++++++++++
- 2 files changed, 176 insertions(+)
+ hw/intc/arm_gicv3_common.c | 50 +++++++++++++++++++++++++++++++++++++++++++++-
+ hw/intc/arm_gicv3_kvm.c    |  7 +++++++
+ 2 files changed, 56 insertions(+), 1 deletion(-)
 
-diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
-index 755fdd1..15418a8 100644
---- a/include/qemu/bitops.h
-+++ b/include/qemu/bitops.h
-@@ -428,4 +428,112 @@ static inline uint64_t deposit64(uint64_t value, int start, int length,
-     return (value & ~mask) | ((fieldval << start) & mask);
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index 7a7fc9f..40866b8 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -49,11 +49,59 @@ static int gicv3_post_load(void *opaque, int version_id)
+     return 0;
  }
  
-+/**
-+ * half_shuffle32:
-+ * @value: 32-bit value (of which only the bottom 16 bits are of interest)
-+ *
-+ * Given an input value:
-+ *  xxxx xxxx xxxx xxxx ABCD EFGH IJKL MNOP
-+ * return the value where the bottom 16 bits are spread out into
-+ * the odd bits in the word, and the even bits are zeroed:
-+ *  0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N 0O0P
-+ *
-+ * Any bits set in the top half of the input are ignored.
-+ *
-+ * Returns: the shuffled bits.
-+ */
-+static inline uint32_t half_shuffle32(uint32_t x)
-+{
-+    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
-+     * It ignores any bits set in the top half of the input.
-+     */
-+    x = ((x & 0xFF00) << 8) | (x & 0x00FF);
-+    x = ((x << 4) | x) & 0x0F0F0F0F;
-+    x = ((x << 2) | x) & 0x33333333;
-+    x = ((x << 1) | x) & 0x55555555;
-+    return x;
-+}
++static const VMStateDescription vmstate_gicv3_cpu = {
++    .name = "arm_gicv3_cpu",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(level, GICv3CPUState),
++        VMSTATE_UINT32(gicr_ctlr, GICv3CPUState),
++        VMSTATE_UINT32_ARRAY(gicr_statusr, GICv3CPUState, 2),
++        VMSTATE_UINT32(gicr_waker, GICv3CPUState),
++        VMSTATE_UINT64(gicr_propbaser, GICv3CPUState),
++        VMSTATE_UINT64(gicr_pendbaser, GICv3CPUState),
++        VMSTATE_UINT32(gicr_igroupr0, GICv3CPUState),
++        VMSTATE_UINT32(gicr_ienabler0, GICv3CPUState),
++        VMSTATE_UINT32(gicr_ipendr0, GICv3CPUState),
++        VMSTATE_UINT32(gicr_iactiver0, GICv3CPUState),
++        VMSTATE_UINT32(edge_trigger, GICv3CPUState),
++        VMSTATE_UINT32(gicr_igrpmodr0, GICv3CPUState),
++        VMSTATE_UINT32(gicr_nsacr, GICv3CPUState),
++        VMSTATE_UINT8_ARRAY(gicr_ipriorityr, GICv3CPUState, GIC_INTERNAL),
++        VMSTATE_UINT64_ARRAY(icc_ctlr_el1, GICv3CPUState, 2),
++        VMSTATE_UINT64(icc_pmr_el1, GICv3CPUState),
++        VMSTATE_UINT64_ARRAY(icc_bpr, GICv3CPUState, 3),
++        VMSTATE_UINT64_2DARRAY(icc_apr, GICv3CPUState, 3, 4),
++        VMSTATE_UINT64_ARRAY(icc_igrpen, GICv3CPUState, 3),
++        VMSTATE_UINT64(icc_ctlr_el3, GICv3CPUState),
++        VMSTATE_END_OF_LIST()
++    }
++};
 +
-+/**
-+ * half_shuffle64:
-+ * @value: 64-bit value (of which only the bottom 32 bits are of interest)
-+ *
-+ * Given an input value:
-+ *  xxxx xxxx xxxx .... xxxx xxxx ABCD EFGH IJKL MNOP QRST UVWX YZab cdef
-+ * return the value where the bottom 32 bits are spread out into
-+ * the odd bits in the word, and the even bits are zeroed:
-+ *  0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N .... 0U0V 0W0X 0Y0Z 0a0b 0c0d 0e0f
-+ *
-+ * Any bits set in the top half of the input are ignored.
-+ *
-+ * Returns: the shuffled bits.
-+ */
-+static inline uint64_t half_shuffle64(uint64_t x)
-+{
-+    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
-+     * It ignores any bits set in the top half of the input.
-+     */
-+    x = ((x & 0xFFFF0000ULL) << 16) | (x & 0xFFFF);
-+    x = ((x << 8) | x) & 0x00FF00FF00FF00FFULL;
-+    x = ((x << 4) | x) & 0x0F0F0F0F0F0F0F0FULL;
-+    x = ((x << 2) | x) & 0x3333333333333333ULL;
-+    x = ((x << 1) | x) & 0x5555555555555555ULL;
-+    return x;
-+}
+ static const VMStateDescription vmstate_gicv3 = {
+     .name = "arm_gicv3",
+-    .unmigratable = 1,
++    .version_id = 1,
++    .minimum_version_id = 1,
+     .pre_save = gicv3_pre_save,
+     .post_load = gicv3_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(gicd_ctlr, GICv3State),
++        VMSTATE_UINT32_ARRAY(gicd_statusr, GICv3State, 2),
++        VMSTATE_UINT32_ARRAY(group, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(grpmod, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(enabled, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(pending, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(active, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(level, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT32_ARRAY(edge_trigger, GICv3State, GICV3_BMP_SIZE),
++        VMSTATE_UINT8_ARRAY(gicd_ipriority, GICv3State, GICV3_MAXSPI),
++        VMSTATE_UINT64_ARRAY(gicd_irouter, GICv3State, GICV3_MAXSPI),
++        VMSTATE_UINT32_ARRAY(gicd_nsacr, GICv3State,
++                             DIV_ROUND_UP(GICV3_MAXSPI, 16)),
++        VMSTATE_STRUCT_VARRAY_POINTER_UINT32(cpu, GICv3State, num_cpu,
++                                             vmstate_gicv3_cpu, GICv3CPUState),
++        VMSTATE_END_OF_LIST()
++    }
+ };
+ 
+ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index acc1730..d08808d 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -119,6 +119,13 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+                             KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd);
+     kvm_arm_register_device(&s->iomem_redist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
+                             KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd);
 +
-+/**
-+ * half_unshuffle32:
-+ * @value: 32-bit value (of which only the odd bits are of interest)
-+ *
-+ * Given an input value:
-+ *  xAxB xCxD xExF xGxH xIxJ xKxL xMxN xOxP
-+ * return the value where all the odd bits are compressed down
-+ * into the low half of the word, and the high half is zeroed:
-+ *  0000 0000 0000 0000 ABCD EFGH IJKL MNOP
-+ *
-+ * Any even bits set in the input are ignored.
-+ *
-+ * Returns: the unshuffled bits.
-+ */
-+static inline uint32_t half_unshuffle32(uint32_t x)
-+{
-+    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
-+     * where it is called an inverse half shuffle.
++    /* Block migration of a KVM GICv3 device: the API for saving and restoring
++     * the state in the kernel is not yet finalised in the kernel or
++     * implemented in QEMU.
 +     */
-+    x &= 0x55555555;
-+    x = ((x >> 1) | x) & 0x33333333;
-+    x = ((x >> 2) | x) & 0x0F0F0F0F;
-+    x = ((x >> 4) | x) & 0x00FF00FF;
-+    x = ((x >> 8) | x) & 0x0000FFFF;
-+    return x;
-+}
-+
-+/**
-+ * half_unshuffle64:
-+ * @value: 64-bit value (of which only the odd bits are of interest)
-+ *
-+ * Given an input value:
-+ *  xAxB xCxD xExF xGxH xIxJ xKxL xMxN .... xUxV xWxX xYxZ xaxb xcxd xexf
-+ * return the value where all the odd bits are compressed down
-+ * into the low half of the word, and the high half is zeroed:
-+ *  0000 0000 0000 .... 0000 0000 ABCD EFGH IJKL MNOP QRST UVWX YZab cdef
-+ *
-+ * Any even bits set in the input are ignored.
-+ *
-+ * Returns: the unshuffled bits.
-+ */
-+static inline uint64_t half_unshuffle64(uint64_t x)
-+{
-+    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
-+     * where it is called an inverse half shuffle.
-+     */
-+    x &= 0x5555555555555555ULL;
-+    x = ((x >> 1) | x) & 0x3333333333333333ULL;
-+    x = ((x >> 2) | x) & 0x0F0F0F0F0F0F0F0FULL;
-+    x = ((x >> 4) | x) & 0x00FF00FF00FF00FFULL;
-+    x = ((x >> 8) | x) & 0x0000FFFF0000FFFFULL;
-+    x = ((x >> 16) | x) & 0x00000000FFFFFFFFULL;
-+    return x;
-+}
-+
- #endif
-diff --git a/tests/test-bitops.c b/tests/test-bitops.c
-index 5050950..353fc98 100644
---- a/tests/test-bitops.c
-+++ b/tests/test-bitops.c
-@@ -66,10 +66,78 @@ static void test_sextract64(void)
-     }
++    error_setg(&s->migration_blocker, "vGICv3 migration is not implemented");
++    migrate_add_blocker(s->migration_blocker);
  }
  
-+typedef struct {
-+    uint32_t unshuffled;
-+    uint32_t shuffled;
-+} Shuffle32Test;
-+
-+typedef struct {
-+    uint64_t unshuffled;
-+    uint64_t shuffled;
-+} Shuffle64Test;
-+
-+static const Shuffle32Test test_shuffle32_data[] = {
-+    { 0x0000FFFF, 0x55555555 },
-+    { 0x000081C5, 0x40015011 },
-+};
-+
-+static const Shuffle64Test test_shuffle64_data[] = {
-+    { 0x00000000FFFFFFFFULL, 0x5555555555555555ULL },
-+    { 0x00000000493AB02CULL, 0x1041054445000450ULL },
-+};
-+
-+static void test_half_shuffle32(void)
-+{
-+    int i;
-+    for (i = 0; i < ARRAY_SIZE(test_shuffle32_data); i++) {
-+        const Shuffle32Test *test = &test_shuffle32_data[i];
-+        uint32_t r = half_shuffle32(test->unshuffled);
-+
-+        g_assert_cmpint(r, ==, test->shuffled);
-+    }
-+}
-+
-+static void test_half_shuffle64(void)
-+{
-+    int i;
-+    for (i = 0; i < ARRAY_SIZE(test_shuffle64_data); i++) {
-+        const Shuffle64Test *test = &test_shuffle64_data[i];
-+        uint64_t r = half_shuffle64(test->unshuffled);
-+
-+        g_assert_cmpint(r, ==, test->shuffled);
-+    }
-+}
-+
-+static void test_half_unshuffle32(void)
-+{
-+    int i;
-+    for (i = 0; i < ARRAY_SIZE(test_shuffle32_data); i++) {
-+        const Shuffle32Test *test = &test_shuffle32_data[i];
-+        uint32_t r = half_unshuffle32(test->shuffled);
-+
-+        g_assert_cmpint(r, ==, test->unshuffled);
-+    }
-+}
-+
-+static void test_half_unshuffle64(void)
-+{
-+    int i;
-+    for (i = 0; i < ARRAY_SIZE(test_shuffle64_data); i++) {
-+        const Shuffle64Test *test = &test_shuffle64_data[i];
-+        uint64_t r = half_unshuffle64(test->shuffled);
-+
-+        g_assert_cmpint(r, ==, test->unshuffled);
-+    }
-+}
-+
- int main(int argc, char **argv)
- {
-     g_test_init(&argc, &argv, NULL);
-     g_test_add_func("/bitops/sextract32", test_sextract32);
-     g_test_add_func("/bitops/sextract64", test_sextract64);
-+    g_test_add_func("/bitops/half_shuffle32", test_half_shuffle32);
-+    g_test_add_func("/bitops/half_shuffle64", test_half_shuffle64);
-+    g_test_add_func("/bitops/half_unshuffle32", test_half_unshuffle32);
-+    g_test_add_func("/bitops/half_unshuffle64", test_half_unshuffle64);
-     return g_test_run();
- }
+ static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
 -- 
 1.9.1
 

@@ -1,48 +1,48 @@
-Received: by 10.25.208.137 with SMTP id h131csp1685221lfg;
-        Mon, 9 May 2016 10:35:16 -0700 (PDT)
-X-Received: by 10.55.209.78 with SMTP id s75mr8130731qki.196.1462815316574;
-        Mon, 09 May 2016 10:35:16 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1685903lfg;
+        Mon, 9 May 2016 10:37:04 -0700 (PDT)
+X-Received: by 10.55.82.195 with SMTP id g186mr39368572qkb.47.1462815424660;
+        Mon, 09 May 2016 10:37:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m4si19399413qkf.67.2016.05.09.10.35.16
+        by mx.google.com with ESMTPS id j60si19403281qge.40.2016.05.09.10.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 10:35:16 -0700 (PDT)
+        Mon, 09 May 2016 10:37:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42534 helo=lists.gnu.org)
+Received: from localhost ([::1]:42548 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azp5P-0005GT-Pm
-	for alex.bennee@linaro.org; Mon, 09 May 2016 13:35:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38175)
+	id 1azp79-0000P6-Th
+	for alex.bennee@linaro.org; Mon, 09 May 2016 13:37:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0o-0004Jm-KF
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:31 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0o-0004Ij-8t
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0m-0000Mi-8t
+	(envelope-from <pm215@archaic.org.uk>) id 1azp0k-0000Lq-TI
 	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:30:29 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0l-00005k-Vr; Mon, 09 May 2016 13:30:28 -0400
+	id 1azp0k-00005k-Hc; Mon, 09 May 2016 13:30:26 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0D-0001RW-16; Mon, 09 May 2016 18:29:53 +0100
+	id 1azp0B-0001Qz-Kj; Mon, 09 May 2016 18:29:51 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon,  9 May 2016 18:29:31 +0100
-Message-Id: <1462814989-24360-6-git-send-email-peter.maydell@linaro.org>
+Date: Mon,  9 May 2016 18:29:28 +0100
+Message-Id: <1462814989-24360-3-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 05/23] target-arm: Add mp-affinity property for
- ARM CPU class
+Subject: [Qemu-arm] [PATCH 02/23] bitops.h: Implement half-shuffle and
+ half-unshuffle ops
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,31 +60,223 @@ Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 97TkxVnrClFE
+X-TUID: 31EXzk0PbKTM
 
-From: Pavel Fedin <p.fedin@samsung.com>
+A half-shuffle operation takes a word with zeros in the high half:
+ 0000 0000 0000 0000 ABCD EFGH IJKL MNOP
+and spreads the bits out so they are in every other bit of the word:
+ 0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N 0O0P
+A half-unshuffle performs the reverse operation.
 
-This allows to override default affinity IDs on a per-machine basis, and
-possibility to retrieve IDs will be used by vGICv3 live migration code.
+Provide functions in bitops.h which implement these operations
+for 32-bit and 64-bit inputs, and add tests for them.
 
-Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target-arm/cpu.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/qemu/bitops.h | 108 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ tests/test-bitops.c   |  68 +++++++++++++++++++++++++++++++
+ 2 files changed, 176 insertions(+)
 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 7e9a273..103ef67 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -1414,6 +1414,7 @@ static Property arm_cpu_properties[] = {
-     DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
-     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
-     DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-+    DEFINE_PROP_UINT64("mp-affinity", ARMCPU, mp_affinity, 0),
-     DEFINE_PROP_END_OF_LIST()
- };
+diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
+index 755fdd1..15418a8 100644
+--- a/include/qemu/bitops.h
++++ b/include/qemu/bitops.h
+@@ -428,4 +428,112 @@ static inline uint64_t deposit64(uint64_t value, int start, int length,
+     return (value & ~mask) | ((fieldval << start) & mask);
+ }
  
++/**
++ * half_shuffle32:
++ * @value: 32-bit value (of which only the bottom 16 bits are of interest)
++ *
++ * Given an input value:
++ *  xxxx xxxx xxxx xxxx ABCD EFGH IJKL MNOP
++ * return the value where the bottom 16 bits are spread out into
++ * the odd bits in the word, and the even bits are zeroed:
++ *  0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N 0O0P
++ *
++ * Any bits set in the top half of the input are ignored.
++ *
++ * Returns: the shuffled bits.
++ */
++static inline uint32_t half_shuffle32(uint32_t x)
++{
++    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
++     * It ignores any bits set in the top half of the input.
++     */
++    x = ((x & 0xFF00) << 8) | (x & 0x00FF);
++    x = ((x << 4) | x) & 0x0F0F0F0F;
++    x = ((x << 2) | x) & 0x33333333;
++    x = ((x << 1) | x) & 0x55555555;
++    return x;
++}
++
++/**
++ * half_shuffle64:
++ * @value: 64-bit value (of which only the bottom 32 bits are of interest)
++ *
++ * Given an input value:
++ *  xxxx xxxx xxxx .... xxxx xxxx ABCD EFGH IJKL MNOP QRST UVWX YZab cdef
++ * return the value where the bottom 32 bits are spread out into
++ * the odd bits in the word, and the even bits are zeroed:
++ *  0A0B 0C0D 0E0F 0G0H 0I0J 0K0L 0M0N .... 0U0V 0W0X 0Y0Z 0a0b 0c0d 0e0f
++ *
++ * Any bits set in the top half of the input are ignored.
++ *
++ * Returns: the shuffled bits.
++ */
++static inline uint64_t half_shuffle64(uint64_t x)
++{
++    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
++     * It ignores any bits set in the top half of the input.
++     */
++    x = ((x & 0xFFFF0000ULL) << 16) | (x & 0xFFFF);
++    x = ((x << 8) | x) & 0x00FF00FF00FF00FFULL;
++    x = ((x << 4) | x) & 0x0F0F0F0F0F0F0F0FULL;
++    x = ((x << 2) | x) & 0x3333333333333333ULL;
++    x = ((x << 1) | x) & 0x5555555555555555ULL;
++    return x;
++}
++
++/**
++ * half_unshuffle32:
++ * @value: 32-bit value (of which only the odd bits are of interest)
++ *
++ * Given an input value:
++ *  xAxB xCxD xExF xGxH xIxJ xKxL xMxN xOxP
++ * return the value where all the odd bits are compressed down
++ * into the low half of the word, and the high half is zeroed:
++ *  0000 0000 0000 0000 ABCD EFGH IJKL MNOP
++ *
++ * Any even bits set in the input are ignored.
++ *
++ * Returns: the unshuffled bits.
++ */
++static inline uint32_t half_unshuffle32(uint32_t x)
++{
++    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
++     * where it is called an inverse half shuffle.
++     */
++    x &= 0x55555555;
++    x = ((x >> 1) | x) & 0x33333333;
++    x = ((x >> 2) | x) & 0x0F0F0F0F;
++    x = ((x >> 4) | x) & 0x00FF00FF;
++    x = ((x >> 8) | x) & 0x0000FFFF;
++    return x;
++}
++
++/**
++ * half_unshuffle64:
++ * @value: 64-bit value (of which only the odd bits are of interest)
++ *
++ * Given an input value:
++ *  xAxB xCxD xExF xGxH xIxJ xKxL xMxN .... xUxV xWxX xYxZ xaxb xcxd xexf
++ * return the value where all the odd bits are compressed down
++ * into the low half of the word, and the high half is zeroed:
++ *  0000 0000 0000 .... 0000 0000 ABCD EFGH IJKL MNOP QRST UVWX YZab cdef
++ *
++ * Any even bits set in the input are ignored.
++ *
++ * Returns: the unshuffled bits.
++ */
++static inline uint64_t half_unshuffle64(uint64_t x)
++{
++    /* This algorithm is from _Hacker's Delight_ section 7-2 "Shuffling Bits".
++     * where it is called an inverse half shuffle.
++     */
++    x &= 0x5555555555555555ULL;
++    x = ((x >> 1) | x) & 0x3333333333333333ULL;
++    x = ((x >> 2) | x) & 0x0F0F0F0F0F0F0F0FULL;
++    x = ((x >> 4) | x) & 0x00FF00FF00FF00FFULL;
++    x = ((x >> 8) | x) & 0x0000FFFF0000FFFFULL;
++    x = ((x >> 16) | x) & 0x00000000FFFFFFFFULL;
++    return x;
++}
++
+ #endif
+diff --git a/tests/test-bitops.c b/tests/test-bitops.c
+index 5050950..353fc98 100644
+--- a/tests/test-bitops.c
++++ b/tests/test-bitops.c
+@@ -66,10 +66,78 @@ static void test_sextract64(void)
+     }
+ }
+ 
++typedef struct {
++    uint32_t unshuffled;
++    uint32_t shuffled;
++} Shuffle32Test;
++
++typedef struct {
++    uint64_t unshuffled;
++    uint64_t shuffled;
++} Shuffle64Test;
++
++static const Shuffle32Test test_shuffle32_data[] = {
++    { 0x0000FFFF, 0x55555555 },
++    { 0x000081C5, 0x40015011 },
++};
++
++static const Shuffle64Test test_shuffle64_data[] = {
++    { 0x00000000FFFFFFFFULL, 0x5555555555555555ULL },
++    { 0x00000000493AB02CULL, 0x1041054445000450ULL },
++};
++
++static void test_half_shuffle32(void)
++{
++    int i;
++    for (i = 0; i < ARRAY_SIZE(test_shuffle32_data); i++) {
++        const Shuffle32Test *test = &test_shuffle32_data[i];
++        uint32_t r = half_shuffle32(test->unshuffled);
++
++        g_assert_cmpint(r, ==, test->shuffled);
++    }
++}
++
++static void test_half_shuffle64(void)
++{
++    int i;
++    for (i = 0; i < ARRAY_SIZE(test_shuffle64_data); i++) {
++        const Shuffle64Test *test = &test_shuffle64_data[i];
++        uint64_t r = half_shuffle64(test->unshuffled);
++
++        g_assert_cmpint(r, ==, test->shuffled);
++    }
++}
++
++static void test_half_unshuffle32(void)
++{
++    int i;
++    for (i = 0; i < ARRAY_SIZE(test_shuffle32_data); i++) {
++        const Shuffle32Test *test = &test_shuffle32_data[i];
++        uint32_t r = half_unshuffle32(test->shuffled);
++
++        g_assert_cmpint(r, ==, test->unshuffled);
++    }
++}
++
++static void test_half_unshuffle64(void)
++{
++    int i;
++    for (i = 0; i < ARRAY_SIZE(test_shuffle64_data); i++) {
++        const Shuffle64Test *test = &test_shuffle64_data[i];
++        uint64_t r = half_unshuffle64(test->shuffled);
++
++        g_assert_cmpint(r, ==, test->unshuffled);
++    }
++}
++
+ int main(int argc, char **argv)
+ {
+     g_test_init(&argc, &argv, NULL);
+     g_test_add_func("/bitops/sextract32", test_sextract32);
+     g_test_add_func("/bitops/sextract64", test_sextract64);
++    g_test_add_func("/bitops/half_shuffle32", test_half_shuffle32);
++    g_test_add_func("/bitops/half_shuffle64", test_half_shuffle64);
++    g_test_add_func("/bitops/half_unshuffle32", test_half_unshuffle32);
++    g_test_add_func("/bitops/half_unshuffle64", test_half_unshuffle64);
+     return g_test_run();
+ }
 -- 
 1.9.1
 

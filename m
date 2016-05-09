@@ -1,122 +1,98 @@
-Received: by 10.25.208.137 with SMTP id h131csp1467390lfg;
-        Mon, 9 May 2016 02:35:16 -0700 (PDT)
-X-Received: by 10.28.149.205 with SMTP id x196mr10650188wmd.67.1462786516761;
-        Mon, 09 May 2016 02:35:16 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
-Received: from socrates.bennee.com (static.88-198-71-155.clients.your-server.de. [88.198.71.155])
-        by mx.google.com with ESMTPS id p204si24978353wmg.101.2016.05.09.02.35.16
+Received: by 10.25.208.137 with SMTP id h131csp1487261lfg;
+        Mon, 9 May 2016 03:27:48 -0700 (PDT)
+X-Received: by 10.140.156.81 with SMTP id c78mr36317823qhc.58.1462789668263;
+        Mon, 09 May 2016 03:27:48 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a20si18205292qkc.140.2016.05.09.03.27.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 May 2016 02:35:16 -0700 (PDT)
-Received-SPF: fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) client-ip=88.198.71.155;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 09 May 2016 03:27:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) smtp.mailfrom=qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from lists.gnu.org ([208.118.235.17])
-	by socrates.bennee.com with esmtp (Exim 4.84_2)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1azhar-0002GX-Vh
-	for kernel-hacker@bennee.com; Mon, 09 May 2016 11:35:15 +0200
-Received: from localhost ([::1]:40236 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40466 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1azham-0001AS-Uu
-	for kernel-hacker@bennee.com; Mon, 09 May 2016 05:35:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39739)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1aziPj-0006in-Pj
+	for alex.bennee@linaro.org; Mon, 09 May 2016 06:27:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1azhYE-0005DG-N4
-	for qemu-devel@nongnu.org; Mon, 09 May 2016 05:32:31 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1aziPi-0006hA-07
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 06:27:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1azhYD-0007d2-GV
-	for qemu-devel@nongnu.org; Mon, 09 May 2016 05:32:30 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:36078)
+	(envelope-from <pbonzini@redhat.com>) id 1aziPe-00023A-Og
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 06:27:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57314)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1azhYD-0007cs-7h
-	for qemu-devel@nongnu.org; Mon, 09 May 2016 05:32:29 -0400
-Received: by mail-vk0-x230.google.com with SMTP id s184so58641578vkb.3
-	for <qemu-devel@nongnu.org>; Mon, 09 May 2016 02:32:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=SC2oNoDESWMX5/x2sFwKiAeCFkMRRPtT9mP8MLjLU8A=;
-	b=VdzqM7mz21tR8wA9B+ytUtqZSuE0PAJjlztxubrkhYUlZYOVyhj8WEs/sdt6fjD4Bx
-	smlnTITyqb72cjGjjrLYTieswC0fjfVgERMeAD93naXZfaH9lspGaRPMhrI2Mq/ZneVP
-	tiC57yQ9Krbi1fY8/K6eb2+zwNgdjKVXp8/+Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=SC2oNoDESWMX5/x2sFwKiAeCFkMRRPtT9mP8MLjLU8A=;
-	b=dBVlqjaq8wQjMdruo1ngM1W531hYk3JlgkdZyQv6480Dkm2rjdtU6UXPo7AzFTcPLT
-	8x6k6tqzGScZV8GlqTJRhhyXN4uLivtgghJVDj4Tp5Jw2mL3CpES4Yu4wQDNp+qmKJrO
-	NTid+M9yAQSJm7s73C25QMCpmp8fA8POm9M4t54qOLY7MHYSIeLou3KXDjt+FjFkRmZj
-	TiWypjXzw7fHN4MJNOFbWbJqstD0QJVmo0k0YSE41JvS7zv+VkR3G2Sjqtnno5DOjNwa
-	8SVb8ysTSG9q7mlnh2DyH/oB1TV8ij64fBtYahufRhHaQTg+i1dtYMCHSFJAkeOQRtlL
-	1UNQ==
-X-Gm-Message-State: AOPr4FX0jiCZbCBG22z368QtlK4khuRAkG7SR2IBR00zrrx40w8jummPBe0z32CBA4R9ut5N5iYVPYabuJjYjnjh
-X-Received: by 10.31.81.199 with SMTP id f190mr5212464vkb.139.1462786348816;
-	Mon, 09 May 2016 02:32:28 -0700 (PDT)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1aziPe-00022K-Jd; Mon, 09 May 2016 06:27:42 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6CCE081F03;
+	Mon,  9 May 2016 10:27:41 +0000 (UTC)
+Received: from [10.36.112.65] (ovpn-112-65.ams2.redhat.com [10.36.112.65])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u49ARbk4020076
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 9 May 2016 06:27:39 -0400
+To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Sylvain Garrigues <sylvain@sylvaingarrigues.com>
+References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
+	<BLUPR0301MB20342C97DD66FA58E3462B889E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+	<19E314DF-2836-4020-94F1-4D1B39CD6E6C@sylvaingarrigues.com>
+	<BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <57306626.6050702@redhat.com>
+Date: Mon, 9 May 2016 12:27:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Thunderbird/38.7.1
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Mon, 9 May 2016 02:32:09 -0700 (PDT)
-In-Reply-To: <1462780092.22096.16.camel@redhat.com>
-References: <1462371352-21498-1-git-send-email-peter.maydell@linaro.org>
-	<1462780092.22096.16.camel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 9 May 2016 10:32:09 +0100
-Message-ID: <CAFEAcA8fWeOinXg9yYvNgo3GsGWQnemskk+v8szXenGR3CfDvQ@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] bcm2835_property: use cached
+ values when querying framebuffer
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Pooja Dhannawat <dhannawatpooja1@gmail.com>,
-	Patch Tracking <patches@linaro.org>
-Errors-To: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
-X-SA-Exim-Connect-IP: 208.118.235.17
-X-SA-Exim-Mail-From: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on socrates.bennee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,RCVD_IN_MSPIKE_H3,
-	RCVD_IN_MSPIKE_WL,T_DKIM_INVALID,T_HEADER_FROM_DIFFERENT_DOMAINS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
-Subject: Re: [Qemu-devel] [PATCH 0/2] hw/display/blizzard: remove
- blizzard_template.h
-X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
-X-SA-Exim-Scanned: Yes (on socrates.bennee.com)
-X-TUID: v0k3I6+07rOP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: g8ND+mIpHMaR
 
-On 9 May 2016 at 08:48, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> On Mi, 2016-05-04 at 15:15 +0100, Peter Maydell wrote:
->> Now that we can rely on the display surface being 32 bits,
->> the whole machinery of blizzard_template.h being included once
->> per supported depth is unnecessary.
+
+
+On 22/04/2016 13:30, Andrew Baumann wrote:
+>> From: Sylvain Garrigues [mailto:sylvain@sylvaingarrigues.com]
+>> Sent: Friday, 22 April 2016 13:27
 >>
->> This series expands out the DEPTH-dependent macros, and then
->> moves the remaining code into blizzard.c and removes the header file.
->>
->> It applies on top of Pooja Dhannawat's patch
->> "blizzard: Remove support for DEPTH != 32" (which you can
->> also find in my target-arm.next branch:
->> https://git.linaro.org/people/peter.maydell/qemu-arm.git target-arm.next)
->
-> So you take those two through the arm queue too I guess?
+>> Le 22 avr. 2016 =C3=A0 13:22, Andrew Baumann
+>> <Andrew.Baumann@microsoft.com> a =C3=A9crit :
+>>>> +            stl_le_phys(&s->dma_as, value + 16, tmp_xres * tmp_yres
+>>>> + * (tmp_bpp >> 3));
+>>>
+>>> Personal style nit: I prefer * 8 rather than >> 3, because it's more =
+immediately
+>> obvious what you're computing, a trivial optimisation for the compiler
 
-Yes.
+Note that it's only trivial for unsigned dividend.  A signed dividend
+has >> rounding towards -infinity and / rounding towards zero.
 
-> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-
-Thanks for the review.
-
--- PMM
+Paolo

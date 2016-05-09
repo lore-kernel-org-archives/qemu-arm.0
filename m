@@ -1,41 +1,59 @@
-Received: by 10.25.208.137 with SMTP id h131csp1500220lfg;
-        Mon, 9 May 2016 04:00:36 -0700 (PDT)
-X-Received: by 10.55.33.167 with SMTP id f39mr17233664qki.156.1462791635988;
-        Mon, 09 May 2016 04:00:35 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1510370lfg;
+        Mon, 9 May 2016 04:21:44 -0700 (PDT)
+X-Received: by 10.55.91.194 with SMTP id p185mr36307519qkb.182.1462792904006;
+        Mon, 09 May 2016 04:21:44 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z126si18270788qkb.145.2016.05.09.04.00.35
+        by mx.google.com with ESMTPS id 32si3262199qgt.125.2016.05.09.04.21.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 04:00:35 -0700 (PDT)
+        Mon, 09 May 2016 04:21:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40588 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40645 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azivT-0002Rb-KS
-	for alex.bennee@linaro.org; Mon, 09 May 2016 07:00:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54802)
+	id 1azjFv-0007C6-C3
+	for alex.bennee@linaro.org; Mon, 09 May 2016 07:21:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Suzuki.Poulose@arm.com>) id 1aziuu-0001O1-9i
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:00:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1azjFr-00075Q-VU
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:21:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Suzuki.Poulose@arm.com>) id 1aziur-00085P-0c
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:00:00 -0400
-Received: from foss.arm.com ([217.140.101.70]:35830)
+	(envelope-from <peter.maydell@linaro.org>) id 1azjFg-0003fF-Sw
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:21:38 -0400
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:33705)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Suzuki.Poulose@arm.com>)
-	id 1aziuq-00084N-Oz; Mon, 09 May 2016 06:59:56 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DFFFF3C;
-	Mon,  9 May 2016 04:00:04 -0700 (PDT)
-Received: from [10.1.209.136] (e106634-lin.cambridge.arm.com [10.1.209.136])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6E7A93F218;
-	Mon,  9 May 2016 03:59:52 -0700 (PDT)
-To: Vijay Kilari <vijay.kilari@gmail.com>,
-	Catalin Marinas <Catalin.Marinas@arm.com>,
-	Will Deacon <Will.Deacon@arm.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1azjFg-0003f4-Pk
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:21:28 -0400
+Received: by mail-vk0-x236.google.com with SMTP id o133so61413582vka.0
+	for <qemu-arm@nongnu.org>; Mon, 09 May 2016 04:21:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=4mcEN0h48uS76ZBrHZrYmjcay3Ukzz2dCiX1RtVuSz0=;
+	b=BfUWBNUzlcbu+64qLOU4u5ISMGieib/mZdclYT7sSmE7Y7Cx/5TNKp1yfzW+/gA6V/
+	miE6idg7ggBLTQb6JOmHBsXvvqINakE+7x3SLlrOJdrRDV+pCAVnPD75Wc8VA66RM2dL
+	q2sYgDojh+FTpNJ+XRZ5O/U2Vl1lvjAIB9l+w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=4mcEN0h48uS76ZBrHZrYmjcay3Ukzz2dCiX1RtVuSz0=;
+	b=gh4q8NLYro74gEZSjm4GQZqPPdWbDfJHkhxP62FgH47Ra4uqAiqsDQVYc/bDW63V1R
+	jOya9WYnlBxw83yDalPetYeL6FWfhXFkn7jfvlgMB7MjzHzhyB/eLdZUHXT88z19V9Q/
+	SvS47wsiE0GUbCaxDG8qUfoPmu+TlRhN+kKWM4xNqcA7kTEx1+M2W8+Dvh4PeIKHqjWp
+	wqtXkM/S8zyuk7O/AlJv5RV1FOmicBZuzhl1B9QMgnfdtDpS/KiHTq5eP9UKpCAwkNAG
+	B4FdThawLdzLGAQy+BKNJe3Pl86hJS+Uea6sQiOGroFZH6xvXFKyY9Bw6AyvVlsyHBYn
+	F9UQ==
+X-Gm-Message-State: AOPr4FWOEkUlezocNGrbTho+9ILzgG7s970QjCDLGBO/W2+/IiZgFJnBD74qEWV6k0ootl/K+b3SPjm5gcOIYvHI
+X-Received: by 10.176.4.20 with SMTP id 20mr19743048uav.125.1462792887998;
+	Mon, 09 May 2016 04:21:27 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Mon, 9 May 2016 04:21:08 -0700 (PDT)
+In-Reply-To: <57306DA7.4010002@arm.com>
 References: <1460023087-31509-1-git-send-email-vijayak@caviumnetworks.com>
 	<1460023087-31509-3-git-send-email-vijayak@caviumnetworks.com>
 	<CAFEAcA_0ssT32oNrgTHChKsAJNkjUfCHFGg2vPtk8-AWsRjVqw@mail.gmail.com>
@@ -48,17 +66,14 @@ References: <1460023087-31509-1-git-send-email-vijayak@caviumnetworks.com>
 	<CALicx6u-LOA2gAc2f33a=VY0duHhtiHSZ=2+269daeE3YZ1xiA@mail.gmail.com>
 	<570E1866.9010201@arm.com>
 	<CALicx6saTB9giRqubF=kUkBihvZRoCVq6XVNxvi2a+nkmzMKXA@mail.gmail.com>
-From: Suzuki K Poulose <Suzuki.Poulose@arm.com>
-Message-ID: <57306DA7.4010002@arm.com>
-Date: Mon, 9 May 2016 11:59:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.6.0
-MIME-Version: 1.0
-In-Reply-To: <CALicx6saTB9giRqubF=kUkBihvZRoCVq6XVNxvi2a+nkmzMKXA@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Transfer-Encoding: 7bit
+	<57306DA7.4010002@arm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 May 2016 12:21:08 +0100
+Message-ID: <CAFEAcA_Kp+_aoe19PBJXDdn7HHX3ZCYbzaY5vsbYEwdyRwxdaA@mail.gmail.com>
+To: Suzuki K Poulose <Suzuki.Poulose@arm.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.101.70
+X-Received-From: 2607:f8b0:400c:c05::236
 Subject: Re: [Qemu-arm] [RFC PATCH v2 2/3] utils: Add cpuinfo helper to
  fetch /proc/cpuinfo
 X-BeenThere: qemu-arm@nongnu.org
@@ -72,52 +87,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Vijay Kilari <vijay.kilari@gmail.com>,
 	Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	suresh knv <knv.suresh2009@gmail.com>,
+	Catalin Marinas <Catalin.Marinas@arm.com>,
 	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+	Will Deacon <Will.Deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Suresh <ksuresh@caviumnetworks.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+	qemu-arm <qemu-arm@nongnu.org>, suresh knv <knv.suresh2009@gmail.com>,
+	Suresh <ksuresh@caviumnetworks.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5gweNWfnnIL8
+X-TUID: LMUr33c0IwqY
 
-On 09/05/16 04:30, Vijay Kilari wrote:
->>> Hi Suzuki,
->>>
->>>    The last 5 patches are not compiling on v4.4. Looks like your patch
->>> series is not merged completely. Can you please
->>> rebase your patches and let me know.
->>>
->>
->> Could you please give the tree below a try ?
->>
->> git://linux-arm.org/linux-skp.git cpu-ftr/v3-4.3-rc4
->
-> This works.
-> Now the question is, Are your patches getting merged anytime soon?.
+On 9 May 2016 at 11:59, Suzuki K Poulose <Suzuki.Poulose@arm.com> wrote:
+> Well, we have been waiting for a use case, like this, before we merge
+> the series.
 
-Well, we have been waiting for a use case, like this, before we merge
-the series.
+This isn't a great strategy for moving people away from things
+you'd like them to avoid like parsing /proc/cpuinfo, because typically
+userspace app writers are not very interested in coding to facilities
+which don't exist yet, and will prefer to make do with what's actually
+present in the kernel today... You need to provide the improved API,
+and then it needs to get out into kernel versions in distros and
+otherwise, and only then are you likely to get app developers who
+will start to say "this is useful".
 
-Will, Catalin,
-
-Now that we have some real users of the infrastructure, what do you think ?
-I can post an updated/rebased series, if you would like.
-
-
-Suzuki
-
-
-
-> If not, I prefer to go with /proc/cpuinfo.
->
-> Another solution is look for /sys/devices/system/cpu/cpu$ID/identification/midr
-> if not available then fall back on /proc/cpuinfo.
->
-> Regards
-> Vijay
->
-
+thanks
+-- PMM

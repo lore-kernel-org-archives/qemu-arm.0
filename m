@@ -1,74 +1,71 @@
-Received: by 10.25.208.137 with SMTP id h131csp1669659lfg;
-        Mon, 9 May 2016 09:58:41 -0700 (PDT)
-X-Received: by 10.140.230.20 with SMTP id a20mr38728299qhc.68.1462813121459;
-        Mon, 09 May 2016 09:58:41 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1671609lfg;
+        Mon, 9 May 2016 10:02:56 -0700 (PDT)
+X-Received: by 10.141.28.204 with SMTP id f195mr37764924qhe.59.1462813376792;
+        Mon, 09 May 2016 10:02:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x189si19246099qhb.21.2016.05.09.09.58.41
+        by mx.google.com with ESMTPS id f91si19302438qga.24.2016.05.09.10.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 09:58:41 -0700 (PDT)
+        Mon, 09 May 2016 10:02:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42313 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azoW0-0007wu-Vu
-	for alex.bennee@linaro.org; Mon, 09 May 2016 12:58:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53064)
+	id 1azoa8-0006BD-AE
+	for alex.bennee@linaro.org; Mon, 09 May 2016 13:02:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57505)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1azoVx-0007pe-7i
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 12:58:38 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1azoZX-00053I-1G
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:02:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1azoVv-0001Gg-5J
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 12:58:36 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:35606)
+	(envelope-from <peter.maydell@linaro.org>) id 1azoZV-0002Kf-1f
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:02:17 -0400
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:35702)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1azoVv-0001Gc-0Q; Mon, 09 May 2016 12:58:35 -0400
-Received: by mail-oi0-x241.google.com with SMTP id w198so27537892oiw.2;
-	Mon, 09 May 2016 09:58:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=z4Y9A2Jf9F6GociQw8N8SuIsXmOo5r/D8PpOKXGIwk8=;
-	b=j3y0QrMJ7PkiRI+kupEJE3xTK0IQNS/9A/eg1fUH+0A/+AZNk6bSfQTAC5jPorbqiH
-	aFyjlYZDTYoq0uRHlO/pxgDXOm/qRHvSOWJjP/jg4yFeSj2tUWWwElWOwLmNIFqz5tku
-	Hyw7QZ1VY6mVDIf/vSnKDnPEt2kZmibHHhZ8XN4EDPYr/aFzDtz0AXZ1UziRtcStiC3F
-	SPZY3bl76uXlCHWSfeNnodFE7cunL7Q8o19Stzzx+piMjN7L64rUw+JDv11zbgDZj/xQ
-	+iAwyVHQvShKCLIXdYtXl6vtO0toAoWag2c6WFFZhYFy9w2VbOUv42p/rQ/Y9qtOIbyn
-	1YIw==
+	(envelope-from <peter.maydell@linaro.org>) id 1azoZU-0002KB-Iq
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 13:02:17 -0400
+Received: by mail-vk0-x22b.google.com with SMTP id f66so73777272vkh.2
+	for <qemu-arm@nongnu.org>; Mon, 09 May 2016 10:02:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=4ZZtLD7WTa940MUGvGk1+rsyajqTR2JkcT0YW0mRZVs=;
+	b=eiITZP7OiXaViiCA0UaiAdgqhvCE3NxzaRP9IFj9VjOOQnfxKWr3S4lAV5VJDigK2w
+	2wB7pKYBfv/BEXE5DZmO7jvTKieLhhMDtp8u1ULJZeePIana4NRQI3d+OX07OCkeXRDI
+	x2XLpOMuSNnhM6hR/p6Wo+2nCViwjbW44U5Vg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=z4Y9A2Jf9F6GociQw8N8SuIsXmOo5r/D8PpOKXGIwk8=;
-	b=ck+B4hWiJs/mdZL0TAxCUoSpKk9gm4o1moZHVCIpoOGJ667T0uhU7ABZPo5wZABmRc
-	/8NCtcg2blRJUWph+eGbmWd8IjYgktR1ean8wh9a0c8fsmVhFvGcjwey5IPJHyjNwnqN
-	C8g6MqA9hSsPxnRutysq32Mm2BZwcom3mFdI+qoGdH/2YLQt+uQBTxHhacP1WGMOzoba
-	E5YQh+fWL4gbfV35DhUbMzKDVOx57XzlDPj57smmD+zG90wi8IHZDOdDUANjZJ/aY+Mv
-	oiBxGbKgINYyGPxIkf3JYXCvWCYy/LVCZBUrpoJGXAHYiXpK+JFLZ1c56w9550QWyV4R
-	9DUA==
-X-Gm-Message-State: AOPr4FVMhWSBumil9zrufUs/dhM1FiQOdYFCZqIlW11k8K9I+ok2jXchGCXywf6cb3OJ0KXSgA41UThsC64Eag==
-X-Received: by 10.157.8.149 with SMTP id 21mr610227otf.109.1462813114023; Mon,
-	09 May 2016 09:58:34 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=4ZZtLD7WTa940MUGvGk1+rsyajqTR2JkcT0YW0mRZVs=;
+	b=OgVDFeEt7iWbegZ1UByLz82LNvhuLZwMrDsBVKl5KHqJfh150+GsPn0zHBrA27iEaH
+	B9AH4AgT/+35AAVSHrpPa1ACmWM7u5VqqmE5dqS6M6yEgIjkYvUb/57YOBbEwu5K5DEs
+	N33zn9ZiFKkygfusSIp/4nbtQ3KYsOj9EJ3HcdrTq5MkWOV458TH23gXlpbbCPiEsQ2c
+	iHnxm/k5Tz/m/HahESizjaCMyOAzn4HmgBHMsIqOFCFnedZGmGfxl2u9H4xRbjEVtKqh
+	lX17ti2V8q4gxz6laGkWihqg2kCE1plHNVjUo30qQLLZcEXVIl5IubuW7YZiJ2JBhqlk
+	I3+A==
+X-Gm-Message-State: AOPr4FXZCqiErtxyLUG1Ek859yi7K2hPLQu1kgOQsoCcD8pGPwokVvBR+okHp381sFZzVzluOUQpTXEeyovsQoYq
+X-Received: by 10.31.7.70 with SMTP id 67mr6964309vkh.82.1462813335871; Mon,
+	09 May 2016 10:02:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.182.142.193 with HTTP; Mon, 9 May 2016 09:58:04 -0700 (PDT)
-In-Reply-To: <20160507015121.GF16305@toto>
+Received: by 10.31.216.1 with HTTP; Mon, 9 May 2016 10:01:56 -0700 (PDT)
+In-Reply-To: <CAKmqyKMNbNoph2s1F4ZnC_Dqc-t_=bRtm5+oAHXnvdF09KHVeg@mail.gmail.com>
 References: <cover.1462557987.git.alistair.francis@xilinx.com>
 	<6459df5e54365d5dbe8a1b047a85ec65c67e9232.1462557987.git.alistair.francis@xilinx.com>
 	<CAFEAcA-G1jfUuK5JDFDnrFG5tKOt_VPnLBj7CD4WGkhrx_zp8w@mail.gmail.com>
 	<20160507015121.GF16305@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 9 May 2016 09:58:04 -0700
-X-Google-Sender-Auth: bC1apaCSvxApNJvvdkrMIcphUZ0
-Message-ID: <CAKmqyKMNbNoph2s1F4ZnC_Dqc-t_=bRtm5+oAHXnvdF09KHVeg@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+	<CAKmqyKMNbNoph2s1F4ZnC_Dqc-t_=bRtm5+oAHXnvdF09KHVeg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 May 2016 18:01:56 +0100
+Message-ID: <CAFEAcA9cGbU+LdZD9YzkJ8VMEyt+gKd5+8qi+Q-m+tgtNBg10w@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::241
+X-Received-From: 2607:f8b0:400c:c05::22b
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 2/2] target-arm: Enable EL2
  for the A53s and A57s
 X-BeenThere: qemu-arm@nongnu.org
@@ -82,47 +79,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2hCmPHXvn/S2
+X-TUID: +JkqA+TjfOSL
 
-On Fri, May 6, 2016 at 6:51 PM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Fri, May 06, 2016 at 11:25:52PM +0100, Peter Maydell wrote:
->> On 6 May 2016 at 19:11, Alistair Francis <alistair.francis@xilinx.com> wrote:
->> > Enable EL2 by default for the A53s and A57s.
->> >
->> > Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
->>
->> I don't really want to do this until we actually have
->> something approaching a workable EL2 implementation
->> (ideally including support in the GIC, since EL2's
->> not much good without it). I'd hope that software ought
->> to be able to work with an "EL3, but no EL2" CPU, since
->> that's a valid combination, unless it's very strongly
->> tied to a particular h/w implementation.
->
-> Yes, I agree, we've got a few more things to take care of.
+On 9 May 2016 at 17:58, Alistair Francis <alistair.francis@xilinx.com> wrote:
+> I might have to look at disabling EL3 support for the ZynqMP machine
+> form the command line, as I can't boot Linux with EL3 but not EL2.
 
-I haven't been keeping up with the EL2 status on mainline, so if you
-guys don't want to enable it yet that's fine with me. Just thought I'd
-try.
+I think it's worth trying to find out why this doesn't work:
+I'd hope that Linux can cope with a no-EL2 setup.
 
-I assume you don't have any fundamental problems with the first patch
-then, so hopefully at least that can get in.
-
-I might have to look at disabling EL3 support for the ZynqMP machine
-form the command line, as I can't boot Linux with EL3 but not EL2.
-
-Thanks,
-
-Alistair
-
->
-> Cheers,
-> Edgar
->
+thanks
+-- PMM

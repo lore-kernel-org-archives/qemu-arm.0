@@ -1,63 +1,66 @@
-Received: by 10.25.208.137 with SMTP id h131csp1487261lfg;
-        Mon, 9 May 2016 03:27:48 -0700 (PDT)
-X-Received: by 10.140.156.81 with SMTP id c78mr36317823qhc.58.1462789668263;
-        Mon, 09 May 2016 03:27:48 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1500220lfg;
+        Mon, 9 May 2016 04:00:36 -0700 (PDT)
+X-Received: by 10.55.33.167 with SMTP id f39mr17233664qki.156.1462791635988;
+        Mon, 09 May 2016 04:00:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a20si18205292qkc.140.2016.05.09.03.27.48
+        by mx.google.com with ESMTPS id z126si18270788qkb.145.2016.05.09.04.00.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 03:27:48 -0700 (PDT)
+        Mon, 09 May 2016 04:00:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40466 helo=lists.gnu.org)
+Received: from localhost ([::1]:40588 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aziPj-0006in-Pj
-	for alex.bennee@linaro.org; Mon, 09 May 2016 06:27:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49974)
+	id 1azivT-0002Rb-KS
+	for alex.bennee@linaro.org; Mon, 09 May 2016 07:00:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54802)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aziPi-0006hA-07
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 06:27:46 -0400
+	(envelope-from <Suzuki.Poulose@arm.com>) id 1aziuu-0001O1-9i
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:00:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1aziPe-00023A-Og
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 06:27:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57314)
+	(envelope-from <Suzuki.Poulose@arm.com>) id 1aziur-00085P-0c
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 07:00:00 -0400
+Received: from foss.arm.com ([217.140.101.70]:35830)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1aziPe-00022K-Jd; Mon, 09 May 2016 06:27:42 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6CCE081F03;
-	Mon,  9 May 2016 10:27:41 +0000 (UTC)
-Received: from [10.36.112.65] (ovpn-112-65.ams2.redhat.com [10.36.112.65])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u49ARbk4020076
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 9 May 2016 06:27:39 -0400
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Sylvain Garrigues <sylvain@sylvaingarrigues.com>
-References: <1461235306-3393-1-git-send-email-sylvain@sylvaingarrigues.com>
-	<BLUPR0301MB20342C97DD66FA58E3462B889E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-	<19E314DF-2836-4020-94F1-4D1B39CD6E6C@sylvaingarrigues.com>
-	<BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <57306626.6050702@redhat.com>
-Date: Mon, 9 May 2016 12:27:50 +0200
+	(envelope-from <Suzuki.Poulose@arm.com>)
+	id 1aziuq-00084N-Oz; Mon, 09 May 2016 06:59:56 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DFFFF3C;
+	Mon,  9 May 2016 04:00:04 -0700 (PDT)
+Received: from [10.1.209.136] (e106634-lin.cambridge.arm.com [10.1.209.136])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6E7A93F218;
+	Mon,  9 May 2016 03:59:52 -0700 (PDT)
+To: Vijay Kilari <vijay.kilari@gmail.com>,
+	Catalin Marinas <Catalin.Marinas@arm.com>,
+	Will Deacon <Will.Deacon@arm.com>
+References: <1460023087-31509-1-git-send-email-vijayak@caviumnetworks.com>
+	<1460023087-31509-3-git-send-email-vijayak@caviumnetworks.com>
+	<CAFEAcA_0ssT32oNrgTHChKsAJNkjUfCHFGg2vPtk8-AWsRjVqw@mail.gmail.com>
+	<CALicx6tM6__TWjVPLdNzMMpoyQYHZOnArFwz4E+QyyxN7TLruQ@mail.gmail.com>
+	<CAFEAcA8T-90NFw_fMWRZ7JuQ4UpxRGfwsbHLi9cigsiD=zXupA@mail.gmail.com>
+	<CALicx6ubAgfGJhGX5wRTeHfmj_RHX__hkJxAnBA8v=e8n=HgZg@mail.gmail.com>
+	<CAFEAcA8pboFpZynTny60JRQYL0S1+HH6KoBy+de6iHOGOGBFCg@mail.gmail.com>
+	<CALicx6vnEGxXA3yyzBg8VSHNns5kqvhFfVT23w_Hx7LLSkEq3w@mail.gmail.com>
+	<570B7048.5010501@arm.com>
+	<CALicx6u-LOA2gAc2f33a=VY0duHhtiHSZ=2+269daeE3YZ1xiA@mail.gmail.com>
+	<570E1866.9010201@arm.com>
+	<CALicx6saTB9giRqubF=kUkBihvZRoCVq6XVNxvi2a+nkmzMKXA@mail.gmail.com>
+From: Suzuki K Poulose <Suzuki.Poulose@arm.com>
+Message-ID: <57306DA7.4010002@arm.com>
+Date: Mon, 9 May 2016 11:59:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.1
+	Thunderbird/38.6.0
 MIME-Version: 1.0
-In-Reply-To: <BLUPR0301MB203485DA67E205999C1F0AC49E6F0@BLUPR0301MB2034.namprd03.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CALicx6saTB9giRqubF=kUkBihvZRoCVq6XVNxvi2a+nkmzMKXA@mail.gmail.com>
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] bcm2835_property: use cached
- values when querying framebuffer
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-arm] [RFC PATCH v2 2/3] utils: Add cpuinfo helper to
+ fetch /proc/cpuinfo
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,29 +73,51 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+	Vijaya Kumar K <vijayak@caviumnetworks.com>,
+	suresh knv <knv.suresh2009@gmail.com>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Suresh <ksuresh@caviumnetworks.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g8ND+mIpHMaR
+X-TUID: 5gweNWfnnIL8
 
-
-
-On 22/04/2016 13:30, Andrew Baumann wrote:
->> From: Sylvain Garrigues [mailto:sylvain@sylvaingarrigues.com]
->> Sent: Friday, 22 April 2016 13:27
->>
->> Le 22 avr. 2016 =C3=A0 13:22, Andrew Baumann
->> <Andrew.Baumann@microsoft.com> a =C3=A9crit :
->>>> +            stl_le_phys(&s->dma_as, value + 16, tmp_xres * tmp_yres
->>>> + * (tmp_bpp >> 3));
+On 09/05/16 04:30, Vijay Kilari wrote:
+>>> Hi Suzuki,
 >>>
->>> Personal style nit: I prefer * 8 rather than >> 3, because it's more =
-immediately
->> obvious what you're computing, a trivial optimisation for the compiler
+>>>    The last 5 patches are not compiling on v4.4. Looks like your patch
+>>> series is not merged completely. Can you please
+>>> rebase your patches and let me know.
+>>>
+>>
+>> Could you please give the tree below a try ?
+>>
+>> git://linux-arm.org/linux-skp.git cpu-ftr/v3-4.3-rc4
+>
+> This works.
+> Now the question is, Are your patches getting merged anytime soon?.
 
-Note that it's only trivial for unsigned dividend.  A signed dividend
-has >> rounding towards -infinity and / rounding towards zero.
+Well, we have been waiting for a use case, like this, before we merge
+the series.
 
-Paolo
+Will, Catalin,
+
+Now that we have some real users of the infrastructure, what do you think ?
+I can post an updated/rebased series, if you would like.
+
+
+Suzuki
+
+
+
+> If not, I prefer to go with /proc/cpuinfo.
+>
+> Another solution is look for /sys/devices/system/cpu/cpu$ID/identification/midr
+> if not available then fall back on /proc/cpuinfo.
+>
+> Regards
+> Vijay
+>
+

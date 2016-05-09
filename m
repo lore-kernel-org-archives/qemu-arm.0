@@ -1,61 +1,53 @@
-Received: by 10.25.208.137 with SMTP id h131csp1428794lfg;
-        Mon, 9 May 2016 00:48:25 -0700 (PDT)
-X-Received: by 10.140.179.76 with SMTP id z73mr35795316qhz.36.1462780105572;
-        Mon, 09 May 2016 00:48:25 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1452460lfg;
+        Mon, 9 May 2016 01:54:45 -0700 (PDT)
+X-Received: by 10.233.220.4 with SMTP id q4mr35004187qkf.145.1462784085595;
+        Mon, 09 May 2016 01:54:45 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u76si2532389qkg.204.2016.05.09.00.48.25
+        by mx.google.com with ESMTPS id 74si17990161qkj.181.2016.05.09.01.54.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 00:48:25 -0700 (PDT)
+        Mon, 09 May 2016 01:54:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39808 helo=lists.gnu.org)
+Received: from localhost ([::1]:40006 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azfvV-0005lM-6T
-	for alex.bennee@linaro.org; Mon, 09 May 2016 03:48:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48879)
+	id 1azgxh-0005WE-7y
+	for alex.bennee@linaro.org; Mon, 09 May 2016 04:54:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1azfvS-0005jA-MA
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 03:48:23 -0400
+	(envelope-from <michael@walle.cc>) id 1azgxe-0005VC-FD
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 04:54:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1azfvM-0002ZG-PJ
-	for qemu-arm@nongnu.org; Mon, 09 May 2016 03:48:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49721)
+	(envelope-from <michael@walle.cc>) id 1azgxZ-0008Jw-0u
+	for qemu-arm@nongnu.org; Mon, 09 May 2016 04:54:42 -0400
+Received: from ssl.serverraum.org ([213.133.101.245]:52147)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>)
-	id 1azfvM-0002Z4-Jj; Mon, 09 May 2016 03:48:16 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(envelope-from <michael@walle.cc>)
+	id 1azgxY-0008Ir-Qn; Mon, 09 May 2016 04:54:36 -0400
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+	(using TLSv1 with cipher DHE-RSA-CAMELLIA256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 54866627C9;
-	Mon,  9 May 2016 07:48:15 +0000 (UTC)
-Received: from nilsson.home.kraxel.org (ovpn-116-19.ams2.redhat.com
-	[10.36.116.19])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u497mESa029858; Mon, 9 May 2016 03:48:14 -0400
-Received: by nilsson.home.kraxel.org (Postfix, from userid 500)
-	id D597D80C1F; Mon,  9 May 2016 09:48:12 +0200 (CEST)
-Message-ID: <1462780092.22096.16.camel@redhat.com>
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 09 May 2016 09:48:12 +0200
-In-Reply-To: <1462371352-21498-1-git-send-email-peter.maydell@linaro.org>
-References: <1462371352-21498-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 09 May 2016 07:48:15 +0000 (UTC)
+	by ssl.serverraum.org (Postfix) with ESMTPSA id 3288422464;
+	Mon,  9 May 2016 10:54:35 +0200 (CEST)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Mon, 09 May 2016 10:54:35 +0200
+From: michael@walle.cc
+To: xiaoqiang zhao <zxq_yx_007@163.com>
+In-Reply-To: <1462532375-29264-5-git-send-email-zxq_yx_007@163.com>
+References: <1462532375-29264-1-git-send-email-zxq_yx_007@163.com>
+	<1462532375-29264-5-git-send-email-zxq_yx_007@163.com>
+Message-ID: <d26329a19049e8089873436a948b81e8@walle.cc>
+X-Sender: michael@walle.cc
+User-Agent: Roundcube Webmail/1.1.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 0/2] hw/display/blizzard: remove
- blizzard_template.h
+X-Received-From: 213.133.101.245
+Subject: Re: [Qemu-arm] [PATCH v2 4/5] hw/display: QOM'ify milkymist-vgafb.c
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,29 +59,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	Pooja Dhannawat <dhannawatpooja1@gmail.com>, patches@linaro.org
+Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com, qemu-devel@nongnu.org,
+	armbru@redhat.com, qemu-arm@nongnu.org, hirofumi@mail.parknet.co.jp
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JMTkEuqsLlMG
+X-TUID: q+HCkPdMowzF
 
-On Mi, 2016-05-04 at 15:15 +0100, Peter Maydell wrote:
-> Now that we can rely on the display surface being 32 bits,
-> the whole machinery of blizzard_template.h being included once
-> per supported depth is unnecessary.
->=20
-> This series expands out the DEPTH-dependent macros, and then
-> moves the remaining code into blizzard.c and removes the header file.
->=20
-> It applies on top of Pooja Dhannawat's patch
-> "blizzard: Remove support for DEPTH !=3D 32" (which you can
-> also find in my target-arm.next branch:
-> https://git.linaro.org/people/peter.maydell/qemu-arm.git target-arm.next)
+Am 2016-05-06 12:59, schrieb xiaoqiang zhao:
+> * Drop the old SysBus init function and use instance_init
+> * Move graphic_console_init into realize stage
+> 
+> Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 
-So you take those two through the arm queue too I guess?
+Acked-by: Michael Walle <michael@walle.cc>
+Tested-by: Michael Walle <michael@walle.cc>
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-
-cheers,
-  Gerd
-
+-michael

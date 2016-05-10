@@ -1,77 +1,85 @@
-Received: by 10.25.208.137 with SMTP id h131csp2004107lfg;
-        Tue, 10 May 2016 03:33:30 -0700 (PDT)
-X-Received: by 10.55.145.6 with SMTP id t6mr41559476qkd.206.1462876410133;
-        Tue, 10 May 2016 03:33:30 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp2005385lfg;
+        Tue, 10 May 2016 03:36:50 -0700 (PDT)
+X-Received: by 10.140.232.137 with SMTP id d131mr43248898qhc.87.1462876610539;
+        Tue, 10 May 2016 03:36:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q78si925752qhb.82.2016.05.10.03.33.29
+        by mx.google.com with ESMTPS id c13si943410qkb.79.2016.05.10.03.36.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 May 2016 03:33:30 -0700 (PDT)
+        Tue, 10 May 2016 03:36:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45684 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45698 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b04yn-0001cY-Lf
-	for alex.bennee@linaro.org; Tue, 10 May 2016 06:33:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54481)
+	id 1b0522-0004gG-3V
+	for alex.bennee@linaro.org; Tue, 10 May 2016 06:36:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sergey.fedorov@linaro.org>) id 1b04yh-0001Sh-JX
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 06:33:24 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1b051y-0004dI-Rr
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 06:36:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sergey.fedorov@linaro.org>) id 1b04yX-0008KD-P7
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 06:33:22 -0400
-Received: from mail-lf0-x230.google.com ([2a00:1450:4010:c07::230]:34118)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1b051s-0000Yw-PA
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 06:36:45 -0400
+Received: from mail-wm0-x22a.google.com ([2a00:1450:400c:c09::22a]:36235)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sergey.fedorov@linaro.org>) id 1b04yX-0008Jz-Hq
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 06:33:13 -0400
-Received: by mail-lf0-x230.google.com with SMTP id m64so9681849lfd.1
-	for <qemu-arm@nongnu.org>; Tue, 10 May 2016 03:33:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Db2Hyy3ak7BmQ3w3bu71FJB4wSAZk3/H+Il0zbiqEDk=;
-	b=FPI8T3MOhmtrb/eKpAN8Mo4TB7LOczDmYyprd7isAlVBH8nf7LIVBHUNWv7kVIIjpg
-	itKd+dwtucGSBaWj1a96k3PM8LLIX/xdDtzhLyTQpDiYPbjSr7/MarCcEIVmq1qZ7udv
-	So2trgFcSfO0EIKlCmmWzwzGx/4sh/op7Mcko=
+	(envelope-from <edgar.iglesias@gmail.com>)
+	id 1b051s-0000Ys-DG; Tue, 10 May 2016 06:36:40 -0400
+Received: by mail-wm0-x22a.google.com with SMTP id n129so172385358wmn.1;
+	Tue, 10 May 2016 03:36:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=hvYmGvD5zWv6F50G6ZoNLGzVLz1qlr9ScmKqB0oTR7I=;
+	b=eQDcsfAapgN2YQwCfD2E6jkLt1m2PTHaE2ZNWpkTaDnsCSCy76dAjPN95ZEuiK7+iD
+	53Y1v58Vx6l6q5KURnWI73y7XP539x4Y2Oju7eDn2caLPcaF0gLWEPGVz5zLj2GALIe7
+	rgruSdj+QykzsqOM/ZF62fx5MxNMf153t2WV/qAD/sabLC7ygPmiW5SAOlRRCZMA/OQF
+	I+J5ldTI5u2PsImZsf+Q6SpOOa/KNIO89/Jo5Vdr9I78slN7WjCH3pbCo998O9p5f/U+
+	LI5EAuscJAaMtXf5VLwlU1nFschkG2MzuBctI0t75fOENFDTGdMAd8/02vBTJJEGOh4c
+	8WDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Db2Hyy3ak7BmQ3w3bu71FJB4wSAZk3/H+Il0zbiqEDk=;
-	b=VXzv404IPIq6j+oVqezgIMyWn/QxMGQ4Ek2atIXAHzSIC7g7NwPMsIMMChusp6nzBz
-	mA0sVxBZ60qYz/kXRhaOK0+ZTilw9KG9MIhq9wPeBeVkSPSyY7NL/xFQNGeglsuPhRpP
-	xomMaP2jLWbqbHkp+kcCKOPOKspSX/vnK8V9G6pYae9K7mF4OEDzwa+YUN5ThmgiQDEn
-	rcfVS4u2ZHzKLi1rt6K6uJm268Lj0LlwP9xDTLO33F7xQsd9rs5roQkpG5Brd9W8n4LC
-	VaDOozT4hx7OBXmQclpfflW2H2jI9Uc1GnhUddBM3YSlSfc+pNr1S+3lGkhdr49S484+
-	jgkg==
-X-Gm-Message-State: AOPr4FUJ5gsUvU4Hy4MhT8ckSfi1T04hLdMyUZq1aNpKT7mKRytxVFO6jAoIdIeXfyqmwuG0
-X-Received: by 10.25.212.6 with SMTP id l6mr16909288lfg.163.1462876392389;
-	Tue, 10 May 2016 03:33:12 -0700 (PDT)
-Received: from [192.168.1.35] ([195.91.132.170])
-	by smtp.gmail.com with ESMTPSA id uc8sm263665lbb.30.2016.05.10.03.33.11
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Tue, 10 May 2016 03:33:11 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <1462875073-7127-1-git-send-email-peter.maydell@linaro.org>
-From: Sergey Fedorov <sergey.fedorov@linaro.org>
-Message-ID: <5731B8E5.1080608@linaro.org>
-Date: Tue, 10 May 2016 13:33:09 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.7.2
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=hvYmGvD5zWv6F50G6ZoNLGzVLz1qlr9ScmKqB0oTR7I=;
+	b=NzUFNiIX52I9SWuc4OCXrnzWCTCusK7tsJmL9Ft/XnUp0l7MqKTTL8/B+DKXgS7N/y
+	DUsbl7KjFH2OC5bg3DTdP3ljb/l6GIcpS9qB3mcCsqZv1i5w3JD3JKUw8QHPzO8x0qQn
+	ro597JidhrdmPRdfdO1z8dyVEc1AlcmEJ+QcD1al8LRkxxOzhg30oZ+2q8yn5NY9hGVN
+	G6OuFkvcIRTelp5H8dGldDTNefY/w+lw/2JGKA44YmoLCEesfhiQt5jFXugm8OYTSM7S
+	hluTM7Lhk6K+zw1SNFS+oERuC0iu5rDWP5we1rFblegYjKXHgzFL6MHRuoCRV2oyI3iF
+	TERQ==
+X-Gm-Message-State: AOPr4FUCtVsPUejI6xtOSnhgyHs7vmQOjfWeeYa24MU49Zfqw2bjsw8TXMQzh9zs2mecVw==
+X-Received: by 10.194.136.203 with SMTP id qc11mr38743206wjb.42.1462876599292; 
+	Tue, 10 May 2016 03:36:39 -0700 (PDT)
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id y1sm1750612wjy.36.2016.05.10.03.36.38
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 10 May 2016 03:36:38 -0700 (PDT)
+Date: Tue, 10 May 2016 12:36:37 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160510103637.GH16305@toto>
+References: <cover.1462557987.git.alistair.francis@xilinx.com>
+	<6459df5e54365d5dbe8a1b047a85ec65c67e9232.1462557987.git.alistair.francis@xilinx.com>
+	<CAFEAcA-G1jfUuK5JDFDnrFG5tKOt_VPnLBj7CD4WGkhrx_zp8w@mail.gmail.com>
+	<20160507015121.GF16305@toto>
+	<CAKmqyKMNbNoph2s1F4ZnC_Dqc-t_=bRtm5+oAHXnvdF09KHVeg@mail.gmail.com>
+	<CAFEAcA9cGbU+LdZD9YzkJ8VMEyt+gKd5+8qi+Q-m+tgtNBg10w@mail.gmail.com>
+	<CAKmqyKOjOwWOp-6kzOunxf0F8c8r+ua62gxFJ6x2vJR2Yaz_Nw@mail.gmail.com>
+	<CAFEAcA84aHCj2ADGkuxEbdx1qy7scu+nXSTU5K70ZPXR2PL1Ng@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1462875073-7127-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA84aHCj2ADGkuxEbdx1qy7scu+nXSTU5K70ZPXR2PL1Ng@mail.gmail.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::230
-Subject: Re: [Qemu-arm] [PATCH v2] target-arm: Avoid unnecessary TLB flush
- on TCR_EL2, TCR_EL3 writes
+X-Received-From: 2a00:1450:400c:c09::22a
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 2/2] target-arm: Enable EL2
+ for the A53s and A57s
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,63 +91,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GpuVKJCXtlsZ
+X-TUID: Fklpwg+AqRuN
 
-On 10/05/16 13:11, Peter Maydell wrote:
-> The TCR_EL2 and TCR_EL3 regdefs wer incorrectly using the
+On Tue, May 10, 2016 at 09:09:55AM +0100, Peter Maydell wrote:
+> On 10 May 2016 at 01:16, Alistair Francis <alistair.francis@xilinx.com> wrote:
+> > It is actually a u-boot problem. I originally just assumed it was a
+> > Linux problem, but it happens before u-boot hands off to Linux.
+> 
+> OK, that makes sense. u-boot tends to be a bit lower level and less
+> hardware-agnostic. I just wanted to check it wasn't caused by some
+> problem in QEMU's EL3 support we could easily fix.
+> 
+> > It appears that u-boot won't work at all with EL3 enabled but EL2
+> > disabled. It always moves to EL2 before moving to EL1 and there is no
+> > code prepared to handle going from EL3 directly to EL1.
+> >
+> > Just for the record, I'm specifically talking about what happens in
+> > the do_nonsec_virt_switch() function.
+> >
+> > It looks like there are three options:
+> >  1. Add support to u-boot to drop from EL3 to EL1 (I'm assuming this
+> > is possible, as not all implementations have EL2)
+> >  2. Just wait until QEMU adds EL2 support
+> >  3. Allow a QEMU command line option to start in EL1 instead of EL3
 
-s/wer/were/
+Alistair,
 
-otherwise:
+Our usual ZynqMP boot flow is
 
-Reviewed-by: Sergey Fedorov <sergey.fedorov@linaro.org>
+ATF at EL3
+ATF hands over to u-boot at EL2
+u-boot hands over to the Linux kernel at EL2
 
-Kind regards,
-Sergey
+Our ATF has a mode where it can be instructed to start u-boot in
+EL1, bypassing EL2. That would avoid this issue. You don't need to
+recompile ATF. We can discuss the details off-line.
 
-> vmsa_tcr_el1_write function for writes. Since these registers don't
-> have the A1 bit that TCR_EL1 does, we don't need to do a tlb_flush()
-> when they are written. Remove the unnecessary .writefn and also the
-> harmless but unneeded .raw_writefn and .resetfn definitions.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> v1->v2 changes: extend to TCR_EL3 as suggested by Sergey.
->
->  target-arm/helper.c | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
->
-> diff --git a/target-arm/helper.c b/target-arm/helper.c
-> index 09638b2..cbb9d92 100644
-> --- a/target-arm/helper.c
-> +++ b/target-arm/helper.c
-> @@ -3559,8 +3559,10 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
->        .resetvalue = 0 },
->      { .name = "TCR_EL2", .state = ARM_CP_STATE_BOTH,
->        .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 2,
-> -      .access = PL2_RW, .writefn = vmsa_tcr_el1_write,
-> -      .resetfn = vmsa_ttbcr_reset, .raw_writefn = raw_write,
-> +      .access = PL2_RW,
-> +      /* no .writefn needed as this can't cause an ASID change;
-> +       * no .raw_writefn or .resetfn needed as we never use mask/base_mask
-> +       */
->        .fieldoffset = offsetof(CPUARMState, cp15.tcr_el[2]) },
->      { .name = "VTCR", .state = ARM_CP_STATE_AA32,
->        .cp = 15, .opc1 = 4, .crn = 2, .crm = 1, .opc2 = 2,
-> @@ -3753,8 +3755,10 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->        .fieldoffset = offsetof(CPUARMState, cp15.ttbr0_el[3]) },
->      { .name = "TCR_EL3", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 0, .opc2 = 2,
-> -      .access = PL3_RW, .writefn = vmsa_tcr_el1_write,
-> -      .resetfn = vmsa_ttbcr_reset, .raw_writefn = raw_write,
-> +      .access = PL3_RW,
-> +      /* no .writefn needed as this can't cause an ASID change;
-> +       * no .raw_writefn or .resetfn needed as we never use mask/base_mask
-> +       */
->        .fieldoffset = offsetof(CPUARMState, cp15.tcr_el[3]) },
->      { .name = "ELR_EL3", .state = ARM_CP_STATE_AA64,
->        .type = ARM_CP_ALIAS,
 
+> I would be OK with any of these three from a QEMU perspective.
+> Fixing u-boot is probably conceptually the nicest but I've never
+> looked at u-boot internals so it could be simple or painful...
+> 
+> Edgar, do you have the list of what we're still missing before we
+> can turn on EL2?
+
+We're missing the Data Abort ISS:s, we're missing modelling of a few registers
+(like HSTR_EL2). Some regs are quite incomplete like HCR but I think we can
+live with that. GICv2 virtualization is missing. We are also missing a few
+AT_ modes. AArch32 support is probably lacking alot of more stuff.
+
+IIRC, last time this came up we talked about enabling EL2 after ISS and
+GICv2 virtualization support gets merged + a few odd regs. Enough to allow
+Xen and KVM to work under emulation.
+
+Cheers,
+Edgar

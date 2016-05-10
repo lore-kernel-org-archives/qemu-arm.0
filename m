@@ -1,59 +1,62 @@
-Received: by 10.25.208.137 with SMTP id h131csp2082183lfg;
-        Tue, 10 May 2016 06:23:18 -0700 (PDT)
-X-Received: by 10.141.46.71 with SMTP id x68mr44399758qhe.70.1462886597990;
-        Tue, 10 May 2016 06:23:17 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp2202482lfg;
+        Tue, 10 May 2016 11:13:43 -0700 (PDT)
+X-Received: by 10.141.2.9 with SMTP id e9mr46264590qhd.18.1462904023052;
+        Tue, 10 May 2016 11:13:43 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k4si1378147qkd.165.2016.05.10.06.23.17
+        by mx.google.com with ESMTPS id y62si2251582qke.261.2016.05.10.11.13.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 May 2016 06:23:17 -0700 (PDT)
+        Tue, 10 May 2016 11:13:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46266 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47970 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b07d7-00048x-C6
-	for alex.bennee@linaro.org; Tue, 10 May 2016 09:23:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36687)
+	id 1b0CAA-0004I5-I3
+	for alex.bennee@linaro.org; Tue, 10 May 2016 14:13:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38923)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b07cz-0003oB-86
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 09:23:14 -0400
+	(envelope-from <alistair23@gmail.com>) id 1b0CA6-0004Ea-Vk
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 14:13:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b07ct-0004Dq-5A
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 09:23:08 -0400
-Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:35768)
+	(envelope-from <alistair23@gmail.com>) id 1b0CA4-0007bX-Fw
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 14:13:37 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:35032)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b07cs-0004Db-Pb
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 09:23:03 -0400
-Received: by mail-vk0-x22c.google.com with SMTP id f66so15382168vkh.2
-	for <qemu-arm@nongnu.org>; Tue, 10 May 2016 06:23:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=psizZEcUMIfDCwjU03hATipSUtx3VlunQtUS79IYBKo=;
-	b=eSmqf5FGtBneRykOCQ1bG+4myxjZ/ILlI+uQD1eIN7oPIupVtHS/DKhmMtVnS3WstB
-	C92bPRnDia/v5+UyxzYVIfKnl+3vsWg6JxU4frKd+QOs3AV+D9vMxvcvoZl4HucyAfsV
-	U3cRVhvMa/c+oViKJYWJLbQaJUrfboi/aEqkk=
+	(envelope-from <alistair23@gmail.com>)
+	id 1b0CA4-0007bB-Bl; Tue, 10 May 2016 14:13:36 -0400
+Received: by mail-oi0-x241.google.com with SMTP id w198so2808428oiw.2;
+	Tue, 10 May 2016 11:13:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=uAouqN5FJ8ShBokzbVQDcMoV00BWHawlDstdJuDpK+Q=;
+	b=SIKHQuceZq4hxMOLvWki7aum2Mm/oBwDd+hG8ThFL9i8FndPnqX+k8HwmfAOKWRbBz
+	pDWGMyiprkuX2cbfI8R2RHIOy4DMxW9/LQ66AlTfOveFRagHpyYT0PtIEl3u3Nk49m7i
+	fY5+TGbsD9rRfFNekkLIm+GsgF1sd2qGKhBicPdthhm8KW7LFiePUa6fbU7tRArcDV4E
+	RSraW2JIyiXpxjA/rh5jEKyI6uguAxbaVhEJ4RZNbHf4dwEEqKTVBeJIr0w9Ud9SygbA
+	8mDto/iAXuD2WcP1FemfHcce8wc+UmnSH90mACcI4jdeO5b41PwROIwpFHjh++SeyRDx
+	LeUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=psizZEcUMIfDCwjU03hATipSUtx3VlunQtUS79IYBKo=;
-	b=WGKHstsIEVuapeTHR5hQK720EXFb8biuLCo19mi0rR/5PUUr0o5gS6Pdz5yMPCX1d6
-	l1mpFPKjma6FzJSFIEgVLN9mY32Zu9cGfNhvli0I/fiWaBGgA2H8U2B7NPtT2ZFE/Js0
-	YkMhwYbTg1TLcREgP8XSHhGG8+nCSi298ti3a5EJUR4tNNdxacO0sFajaCGUpElkz5nX
-	Nh/o//M6Lyq37WPzahZJLVr5EoaScIwn9WVWhbYTQzje7FM0VcWNgXyeHy8xGfRVW9dc
-	gVfGZz9SRw0xD0nzQewgqFXN90QCK56vT2uNCkEyAuuyZdBT9NIyrEIb9Q29nIDYaZsT
-	+PUg==
-X-Gm-Message-State: AOPr4FVHk2bckpHV2MwllqYU7ealFydIvHqckejcgdxSgd0lYl1VEwA8KvCxQ1jbid2+6sL41IUpk/RJzoM7QkZs
-X-Received: by 10.31.89.196 with SMTP id n187mr8247468vkb.83.1462886581960;
-	Tue, 10 May 2016 06:23:01 -0700 (PDT)
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=uAouqN5FJ8ShBokzbVQDcMoV00BWHawlDstdJuDpK+Q=;
+	b=UpKsiYCNlPTUwG6iAvBahZOpqRzyDb4iuRZSdNh85u+s0uuuhOdGDowtTiaDLfC0JS
+	zK4FT+Riyt04T5LJdGFLHkmERIJAFT87lEUlkSQHj3bf+aMMrwQHDe+luv4920z0AHWZ
+	NU3Tv168mNhR6fn5RN6KtwhqbFRJbMpH1VLkCvH8xjTwXhQbyzZ4RQhLYSJXXiZYqt93
+	qDKZTcvF94J0mBocdP2u1Z/gsU+V9hNDTMqNLrFVLVL4K0OcWZ2dRxjqp149ckpMWT5v
+	EMq00OTh+sINANFHBOpmx6EcSQkgTWNw92Z4hTGSFHq6TCSYAnaT2q+KekmJkyzSD+2P
+	N2Mg==
+X-Gm-Message-State: AOPr4FX4HisMe5z7S3V1zc3IX3wNDoGgZa4MHebDnoK9mN3DD2QZjwpPBpbMvdjtSyk6GUSw4gdys4vh2dd7AA==
+X-Received: by 10.202.203.78 with SMTP id b75mr11595476oig.161.1462904013893; 
+	Tue, 10 May 2016 11:13:33 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Tue, 10 May 2016 06:22:42 -0700 (PDT)
-In-Reply-To: <20160510103637.GH16305@toto>
+Received: by 10.182.142.193 with HTTP; Tue, 10 May 2016 11:13:04 -0700 (PDT)
+In-Reply-To: <CAFEAcA84aHCj2ADGkuxEbdx1qy7scu+nXSTU5K70ZPXR2PL1Ng@mail.gmail.com>
 References: <cover.1462557987.git.alistair.francis@xilinx.com>
 	<6459df5e54365d5dbe8a1b047a85ec65c67e9232.1462557987.git.alistair.francis@xilinx.com>
 	<CAFEAcA-G1jfUuK5JDFDnrFG5tKOt_VPnLBj7CD4WGkhrx_zp8w@mail.gmail.com>
@@ -62,14 +65,14 @@ References: <cover.1462557987.git.alistair.francis@xilinx.com>
 	<CAFEAcA9cGbU+LdZD9YzkJ8VMEyt+gKd5+8qi+Q-m+tgtNBg10w@mail.gmail.com>
 	<CAKmqyKOjOwWOp-6kzOunxf0F8c8r+ua62gxFJ6x2vJR2Yaz_Nw@mail.gmail.com>
 	<CAFEAcA84aHCj2ADGkuxEbdx1qy7scu+nXSTU5K70ZPXR2PL1Ng@mail.gmail.com>
-	<20160510103637.GH16305@toto>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 10 May 2016 14:22:42 +0100
-Message-ID: <CAFEAcA_yEjopJ_m2pXjPJC4u3n1YquAhAhSJ4=B8tvC1hn6H5Q@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 10 May 2016 11:13:04 -0700
+X-Google-Sender-Auth: VytEwUavWd-my-VQ_tb3y01-hPw
+Message-ID: <CAKmqyKP+SRd6ciE_8ZQDu1oGm=bvDzNGLfevsUngZ5kCJ+t8fA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22c
+X-Received-From: 2607:f8b0:4003:c06::241
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 2/2] target-arm: Enable EL2
  for the A53s and A57s
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,26 +91,44 @@ Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /rCKDA7Mhd55
+X-TUID: pYIhugV3CqqK
 
-On 10 May 2016 at 11:36, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> On Tue, May 10, 2016 at 09:09:55AM +0100, Peter Maydell wrote:
->> Edgar, do you have the list of what we're still missing before we
->> can turn on EL2?
+On Tue, May 10, 2016 at 1:09 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 10 May 2016 at 01:16, Alistair Francis <alistair.francis@xilinx.com> wrote:
+>> It is actually a u-boot problem. I originally just assumed it was a
+>> Linux problem, but it happens before u-boot hands off to Linux.
 >
-> We're missing the Data Abort ISS:s, we're missing modelling of a few registers
-> (like HSTR_EL2). Some regs are quite incomplete like HCR but I think we can
-> live with that. GICv2 virtualization is missing. We are also missing a few
-> AT_ modes. AArch32 support is probably lacking alot of more stuff.
+> OK, that makes sense. u-boot tends to be a bit lower level and less
+> hardware-agnostic. I just wanted to check it wasn't caused by some
+> problem in QEMU's EL3 support we could easily fix.
 >
-> IIRC, last time this came up we talked about enabling EL2 after ISS and
-> GICv2 virtualization support gets merged + a few odd regs. Enough to allow
-> Xen and KVM to work under emulation.
+>> It appears that u-boot won't work at all with EL3 enabled but EL2
+>> disabled. It always moves to EL2 before moving to EL1 and there is no
+>> code prepared to handle going from EL3 directly to EL1.
+>>
+>> Just for the record, I'm specifically talking about what happens in
+>> the do_nonsec_virt_switch() function.
+>>
+>> It looks like there are three options:
+>>  1. Add support to u-boot to drop from EL3 to EL1 (I'm assuming this
+>> is possible, as not all implementations have EL2)
+>>  2. Just wait until QEMU adds EL2 support
+>>  3. Allow a QEMU command line option to start in EL1 instead of EL3
+>
+> I would be OK with any of these three from a QEMU perspective.
+> Fixing u-boot is probably conceptually the nicest but I've never
+> looked at u-boot internals so it could be simple or painful...
 
-Yeah, my practical guide for when we can turn on EL2 would be
-"when you can run at least one of Xen and KVM, and not break
-booting of Linux", even if we're not 100% feature-complete.
-I think GIC virt support is the biggie here.
+I had a quick look and it didn't look easy to do unfortunately.
 
-thanks
--- PMM
+Thanks,
+
+Alistair
+
+>
+> Edgar, do you have the list of what we're still missing before we
+> can turn on EL2?
+>
+> thanks
+> -- PMM
+>

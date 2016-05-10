@@ -1,976 +1,153 @@
-Received: by 10.25.208.137 with SMTP id h131csp1688064lfg;
-        Mon, 9 May 2016 10:43:18 -0700 (PDT)
-X-Received: by 10.55.47.70 with SMTP id v67mr37258291qkh.135.1462815798457;
-        Mon, 09 May 2016 10:43:18 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.137 with SMTP id h131csp2074272lfg;
+        Tue, 10 May 2016 06:06:50 -0700 (PDT)
+X-Received: by 10.55.123.130 with SMTP id w124mr43968094qkc.164.1462885610558;
+        Tue, 10 May 2016 06:06:50 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7si4958612qgy.13.2016.05.09.10.43.18
+        by mx.google.com with ESMTPS id q63si1354056qki.52.2016.05.10.06.06.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 May 2016 10:43:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 10 May 2016 06:06:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42622 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46208 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1azpDB-0004LF-NR
-	for alex.bennee@linaro.org; Mon, 09 May 2016 13:43:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38460)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b07NC-0002TX-0K
+	for alex.bennee@linaro.org; Tue, 10 May 2016 09:06:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp11-0004iO-I5
-	for qemu-devel@nongnu.org; Mon, 09 May 2016 13:30:46 -0400
+	(envelope-from <catalin.marinas@arm.com>) id 1b07N9-0002QY-JF
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 09:06:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1azp0w-0000Rj-8m
-	for qemu-devel@nongnu.org; Mon, 09 May 2016 13:30:42 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:56751)
+	(envelope-from <catalin.marinas@arm.com>) id 1b07N4-0000FO-AL
+	for qemu-arm@nongnu.org; Tue, 10 May 2016 09:06:46 -0400
+Received: from foss.arm.com ([217.140.101.70]:43562)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0h-00005k-NX; Mon, 09 May 2016 13:30:24 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1azp0G-0001TO-8B; Mon, 09 May 2016 18:29:56 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  9 May 2016 18:29:37 +0100
-Message-Id: <1462814989-24360-12-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
-References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <catalin.marinas@arm.com>)
+	id 1b07N3-0000F8-Uh; Tue, 10 May 2016 09:06:42 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 730D83C;
+	Tue, 10 May 2016 06:06:51 -0700 (PDT)
+Received: from e104818-lin.cambridge.arm.com (e104818-lin.cambridge.arm.com
+	[10.1.203.148])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8998F3F21A;
+	Tue, 10 May 2016 06:06:37 -0700 (PDT)
+Date: Tue, 10 May 2016 14:06:35 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Will Deacon <will.deacon@arm.com>
+Message-ID: <20160510130634.GB3214@e104818-lin.cambridge.arm.com>
+References: <CAFEAcA8pboFpZynTny60JRQYL0S1+HH6KoBy+de6iHOGOGBFCg@mail.gmail.com>
+	<CALicx6vnEGxXA3yyzBg8VSHNns5kqvhFfVT23w_Hx7LLSkEq3w@mail.gmail.com>
+	<570B7048.5010501@arm.com>
+	<CALicx6u-LOA2gAc2f33a=VY0duHhtiHSZ=2+269daeE3YZ1xiA@mail.gmail.com>
+	<570E1866.9010201@arm.com>
+	<CALicx6saTB9giRqubF=kUkBihvZRoCVq6XVNxvi2a+nkmzMKXA@mail.gmail.com>
+	<57306DA7.4010002@arm.com>
+	<CAFEAcA_Kp+_aoe19PBJXDdn7HHX3ZCYbzaY5vsbYEwdyRwxdaA@mail.gmail.com>
+	<20160509134410.GA2504@localhost.localdomain>
+	<20160510102403.GE22813@arm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160510102403.GE22813@arm.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 11/23] hw/intc/arm_gicv3: Implement GICv3
- distributor registers
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 217.140.101.70
+Subject: Re: [Qemu-arm] [RFC PATCH v2 2/3] utils: Add cpuinfo helper to
+ fetch /proc/cpuinfo
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
-	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JB2mdohohGKd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Vijay Kilari <vijay.kilari@gmail.com>,
+	Suzuki K Poulose <Suzuki.Poulose@arm.com>,
+	Vijaya Kumar K <vijayak@caviumnetworks.com>,
+	suresh knv <knv.suresh2009@gmail.com>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Ramana Radhakrishnan <Ramana.Radhakrishnan@arm.com>,
+	Suresh <ksuresh@caviumnetworks.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mVMz6wtE1WEs
 
-From: Shlomo Pongratz <shlomo.pongratz@huawei.com>
+Cc'ing Ramana to get some input from the toolchain side.
 
-Implement the distributor registers of a GICv3.
+On Tue, May 10, 2016 at 11:24:04AM +0100, Will Deacon wrote:
+> On Mon, May 09, 2016 at 01:44:11PM +0000, Catalin Marinas wrote:
+> > On Mon, May 09, 2016 at 12:21:08PM +0100, Peter Maydell wrote:
+> > > On 9 May 2016 at 11:59, Suzuki K Poulose <Suzuki.Poulose@arm.com> wrote:
+> > > > Well, we have been waiting for a use case, like this, before we merge
+> > > > the series.
+> > > 
+> > > This isn't a great strategy for moving people away from things
+> > > you'd like them to avoid like parsing /proc/cpuinfo, because typically
+> > > userspace app writers are not very interested in coding to facilities
+> > > which don't exist yet, and will prefer to make do with what's actually
+> > > present in the kernel today... You need to provide the improved API,
+> > > and then it needs to get out into kernel versions in distros and
+> > > otherwise, and only then are you likely to get app developers who
+> > > will start to say "this is useful".
+> > 
+> > The problem is that the way kernel people think the API may be improved
+> > does not always match the use-cases required by app writers. One example
+> > here is exposing MIDR via MRS emulation, we know there are problems with
+> > big.LITTLE and the only clear answer I got so far is that we ignore such
+> > configurations. We don't even have a way to tell user space that this is
+> > a heterogeneous CPU configuration, unless we add another HWCAP bit
+> > specifically for this (or the opposite: HWCAP_HOMOGENEOUS_CPUS).
+> 
+> Personally, I think we should expose big.LITTLE as-is to userspace. That
+> is, if you execute an mrs instruction you'll get whichever core the
+> emulation happens to run on. This might even be useful to things like
+> pinned threadpools w/ userspace schedulers sitting on top.
 
-Signed-off-by: Shlomo Pongratz <shlomo.pongratz@huawei.com>
-[PMM: significantly overhauled/rewritten:
- * use the new bitmap data structures
- * restructure register read/write to handle different width accesses
-   natively, since almost all registers are 32-bit only, rather
-   than implementing everything as byte accesses
- * implemented security extension support
-]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/Makefile.objs    |   1 +
- hw/intc/arm_gicv3_dist.c | 841 +++++++++++++++++++++++++++++++++++++++++++++++
- hw/intc/gicv3_internal.h |   4 +
- trace-events             |   6 +
- 4 files changed, 852 insertions(+)
- create mode 100644 hw/intc/arm_gicv3_dist.c
+That's the point I try to make. We "think" there may be use-cases but
+there are no concrete examples yet. IIRC, the only request for mrs
+handling came from the tools guys for the ifunc support. However, they
+don't seem to have a solution for big.LITTLE either and they may simply
+ignore this feature. OTOH, we have to maintain it in the kernel on the
+long run because it became ABI (that said, I would be fine if this was
+complemented by another HWCAP bit for heterogeneous systems).
 
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 4e94fdd..a173d29 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -14,6 +14,7 @@ common-obj-$(CONFIG_ARM_GIC) += arm_gic.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv2m.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_common.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv3.o
-+common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_dist.o
- common-obj-$(CONFIG_OPENPIC) += openpic.o
- 
- obj-$(CONFIG_APIC) += apic.o apic_common.o
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-new file mode 100644
-index 0000000..f4bfd95
---- /dev/null
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -0,0 +1,841 @@
-+/*
-+ * ARM GICv3 emulation: Distributor
-+ *
-+ * Copyright (c) 2015 Huawei.
-+ * Copyright (c) 2016 Linaro Limited.
-+ * Written by Shlomo Pongratz, Peter Maydell
-+ *
-+ * This code is licensed under the GPL, version 2 or (at your option)
-+ * any later version.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "trace.h"
-+#include "gicv3_internal.h"
-+
-+/* The GICD_NSACR registers contain a two bit field for each interrupt which
-+ * allows the guest to give NonSecure code access to registers controlling
-+ * Secure interrupts:
-+ *  0b00: no access (NS accesses to bits for Secure interrupts will RAZ/WI)
-+ *  0b01: NS r/w accesses permitted to ISPENDR, SETSPI_NSR, SGIR
-+ *  0b10: as 0b01, and also r/w to ICPENDR, r/o to ISACTIVER/ICACTIVER,
-+ *        and w/o to CLRSPI_NSR
-+ *  0b11: as 0b10, and also r/w to IROUTER and ITARGETSR
-+ *
-+ * Given a (multiple-of-32) interrupt number, these mask functions return
-+ * a mask word where each bit is 1 if the NSACR settings permit access
-+ * to the interrupt. The mask returned can then be ORed with the GICD_GROUP
-+ * word for this set of interrupts to give an overall mask.
-+ */
-+
-+typedef uint32_t maskfn(GICv3State *s, int irq);
-+
-+static uint32_t mask_nsacr_ge1(GICv3State *s, int irq)
-+{
-+    /* Return a mask where each bit is set if the NSACR field is >= 1 */
-+    uint64_t raw_nsacr = s->gicd_nsacr[irq / 16 + 1];
-+
-+    raw_nsacr = raw_nsacr << 32 | s->gicd_nsacr[irq / 16];
-+    raw_nsacr = (raw_nsacr >> 1) | raw_nsacr;
-+    return half_unshuffle64(raw_nsacr);
-+}
-+
-+static uint32_t mask_nsacr_ge2(GICv3State *s, int irq)
-+{
-+    /* Return a mask where each bit is set if the NSACR field is >= 2 */
-+    uint64_t raw_nsacr = s->gicd_nsacr[irq / 16 + 1];
-+
-+    raw_nsacr = raw_nsacr << 32 | s->gicd_nsacr[irq / 16];
-+    raw_nsacr = raw_nsacr >> 1;
-+    return half_unshuffle64(raw_nsacr);
-+}
-+
-+/* We don't need a mask_nsacr_ge3() because IROUTER<n> isn't a bitmap register,
-+ * but it would be implemented using:
-+ *  raw_nsacr = (raw_nsacr >> 1) & raw_nsacr;
-+ */
-+
-+static uint32_t mask_group_and_nsacr(GICv3State *s, MemTxAttrs attrs,
-+                                     maskfn *maskfn, int irq)
-+{
-+    /* Return a 32-bit mask which should be applied for this set of 32
-+     * interrupts; each bit is 1 if access is permitted by the
-+     * combination of attrs.secure, GICD_GROUPR and GICD_NSACR.
-+     */
-+    uint32_t mask;
-+
-+    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+        /* bits for Group 0 or Secure Group 1 interrupts are RAZ/WI
-+         * unless the NSACR bits permit access.
-+         */
-+        mask = *gic_bmp_ptr32(s->group, irq - GIC_INTERNAL);
-+        if (maskfn) {
-+            mask |= maskfn(s, irq);
-+        }
-+        return mask;
-+    }
-+    return 0xFFFFFFFFU;
-+}
-+
-+static int gicd_ns_access(GICv3State *s, int irq)
-+{
-+    /* Return the 2 bit NS_access<x> field from GICD_NSACR<n> for the
-+     * specified interrupt.
-+     */
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return 0;
-+    }
-+    return extract32(s->gicd_nsacr[irq / 16], (irq % 16) * 2, 2);
-+}
-+
-+static void gicd_write_set_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                      uint32_t *bmp,
-+                                      maskfn *maskfn,
-+                                      int offset, uint32_t val)
-+{
-+    /* Helper routine to implement writing to a "set-bitmap" register
-+     * (GICD_ISENABLER, GICD_ISPENDR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * Writing 1 means "set bit in bitmap"; writing 0 is ignored.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    *gic_bmp_ptr32(bmp, irq - GIC_INTERNAL) |= val;
-+    gicv3_update(s, irq, 32);
-+}
-+
-+static void gicd_write_clear_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                        uint32_t *bmp,
-+                                        maskfn *maskfn,
-+                                        int offset, uint32_t val)
-+{
-+    /* Helper routine to implement writing to a "clear-bitmap" register
-+     * (GICD_ICENABLER, GICD_ICPENDR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * Writing 1 means "clear bit in bitmap"; writing 0 is ignored.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    *gic_bmp_ptr32(bmp, irq - GIC_INTERNAL) &= ~val;
-+    gicv3_update(s, irq, 32);
-+}
-+
-+static uint32_t gicd_read_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                     uint32_t *bmp,
-+                                     maskfn *maskfn,
-+                                     int offset)
-+{
-+    /* Helper routine to implement reading a "set/clear-bitmap" register
-+     * (GICD_ICENABLER, GICD_ISENABLER, GICD_ICPENDR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
-+    uint32_t val;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return 0;
-+    }
-+    val = *gic_bmp_ptr32(bmp, irq - GIC_INTERNAL);
-+    if (bmp == s->pending) {
-+        /* The PENDING register is a special case -- for level triggered
-+         * interrupts, the PENDING state is the logical OR of the state of
-+         * the PENDING latch with the input line level.
-+         */
-+        uint32_t edge = *gic_bmp_ptr32(s->edge_trigger, irq - GIC_INTERNAL);
-+        uint32_t level = *gic_bmp_ptr32(s->level, irq - GIC_INTERNAL);
-+        val |= (~edge & level);
-+    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    return val;
-+}
-+
-+static uint8_t gicd_read_ipriorityr(GICv3State *s, MemTxAttrs attrs, int irq)
-+{
-+    /* Read the value of GICD_IPRIORITYR<n> for the specified interrupt,
-+     * honouring security state (these are RAZ/WI for Group 0 or Secure
-+     * Group 1 interrupts).
-+     */
-+    uint32_t prio;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return 0;
-+    }
-+
-+    prio = s->gicd_ipriority[irq - GIC_INTERNAL];
-+
-+    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+        if (!gicv3_gicd_group_test(s, irq)) {
-+            /* Fields for Group 0 or Secure Group 1 interrupts are RAZ/WI */
-+            return 0;
-+        }
-+        /* NS view of the interrupt priority */
-+        prio = (prio << 1) & 0xff;
-+    }
-+    return prio;
-+}
-+
-+static void gicd_write_ipriorityr(GICv3State *s, MemTxAttrs attrs, int irq,
-+                                  uint8_t value)
-+{
-+    /* Write the value of GICD_IPRIORITYR<n> for the specified interrupt,
-+     * honouring security state (these are RAZ/WI for Group 0 or Secure
-+     * Group 1 interrupts).
-+     */
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+
-+    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+        if (!gicv3_gicd_group_test(s, irq)) {
-+            /* Fields for Group 0 or Secure Group 1 interrupts are RAZ/WI */
-+            return;
-+        }
-+        /* NS view of the interrupt priority */
-+        value = 0x80 | (value >> 1);
-+    }
-+    s->gicd_ipriority[irq - GIC_INTERNAL] = value;
-+}
-+
-+static uint64_t gicd_read_irouter(GICv3State *s, MemTxAttrs attrs, int irq)
-+{
-+    /* Read the value of GICD_IROUTER<n> for the specified interrupt,
-+     * honouring security state.
-+     */
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return 0;
-+    }
-+
-+    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+        /* RAZ/WI for NS accesses to secure interrupts */
-+        if (!gicv3_gicd_group_test(s, irq)) {
-+            if (gicd_ns_access(s, irq) != 3) {
-+                return 0;
-+            }
-+        }
-+    }
-+
-+    return s->gicd_irouter[irq];
-+}
-+
-+static void gicd_write_irouter(GICv3State *s, MemTxAttrs attrs, int irq,
-+                               uint64_t val)
-+{
-+    /* Write the value of GICD_IROUTER<n> for the specified interrupt,
-+     * honouring security state.
-+     */
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+
-+    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+        /* RAZ/WI for NS accesses to secure interrupts */
-+        if (!gicv3_gicd_group_test(s, irq)) {
-+            if (gicd_ns_access(s, irq) != 3) {
-+                return;
-+            }
-+        }
-+    }
-+
-+    s->gicd_irouter[irq] = val;
-+    gicv3_cache_target_cpustate(s, irq);
-+    gicv3_update(s, irq, 1);
-+}
-+
-+static MemTxResult gicd_readb(GICv3State *s, hwaddr offset,
-+                              uint64_t *data, MemTxAttrs attrs)
-+{
-+    /* Most GICv3 distributor registers do not support byte accesses. */
-+    switch (offset) {
-+    case GICD_CPENDSGIR ... GICD_CPENDSGIR + 0xf:
-+    case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-+    case GICD_ITARGETSR ... GICD_ITARGETSR + 0x3ff:
-+        /* This GIC implementation always has affinity routing enabled,
-+         * so these registers are all RAZ/WI.
-+         */
-+        return MEMTX_OK;
-+    case GICD_IPRIORITYR ... GICD_IPRIORITYR + 0x3ff:
-+        *data = gicd_read_ipriorityr(s, attrs, offset - GICD_IPRIORITYR);
-+        return MEMTX_OK;
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+static MemTxResult gicd_writeb(GICv3State *s, hwaddr offset,
-+                               uint64_t value, MemTxAttrs attrs)
-+{
-+    /* Most GICv3 distributor registers do not support byte accesses. */
-+    switch (offset) {
-+    case GICD_CPENDSGIR ... GICD_CPENDSGIR + 0xf:
-+    case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-+    case GICD_ITARGETSR ... GICD_ITARGETSR + 0x3ff:
-+        /* This GIC implementation always has affinity routing enabled,
-+         * so these registers are all RAZ/WI.
-+         */
-+        return MEMTX_OK;
-+    case GICD_IPRIORITYR ... GICD_IPRIORITYR + 0x3ff:
-+    {
-+        int irq = offset - GICD_IPRIORITYR;
-+
-+        gicd_write_ipriorityr(s, attrs, irq, value);
-+        gicv3_update(s, irq, 1);
-+        return MEMTX_OK;
-+    }
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+static MemTxResult gicd_readw(GICv3State *s, hwaddr offset,
-+                              uint64_t *data, MemTxAttrs attrs)
-+{
-+    /* Only GICD_SETSPI_NSR, GICD_CLRSPI_NSR, GICD_SETSPI_SR and GICD_SETSPI_NSR
-+     * support 16 bit accesses, and those registers are all part of the
-+     * optional message-based SPI feature which this GIC does not currently
-+     * implement (ie for us GICD_TYPER.MBIS == 0), so for us they are
-+     * reserved.
-+     */
-+    return MEMTX_ERROR;
-+}
-+
-+static MemTxResult gicd_writew(GICv3State *s, hwaddr offset,
-+                               uint64_t value, MemTxAttrs attrs)
-+{
-+    /* Only GICD_SETSPI_NSR, GICD_CLRSPI_NSR, GICD_SETSPI_SR and GICD_SETSPI_NSR
-+     * support 16 bit accesses, and those registers are all part of the
-+     * optional message-based SPI feature which this GIC does not currently
-+     * implement (ie for us GICD_TYPER.MBIS == 0), so for us they are
-+     * reserved.
-+     */
-+    return MEMTX_ERROR;
-+}
-+
-+static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
-+                              uint64_t *data, MemTxAttrs attrs)
-+{
-+    /* Almost all GICv3 distributor registers are 32-bit.
-+     * Note that WO registers must return an UNKNOWN value on reads,
-+     * not an abort.
-+     */
-+
-+    switch (offset) {
-+    case GICD_CTLR:
-+        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+            /* The NS view of the GICD_CTLR sees only certain bits:
-+             * + bit [31] (RWP) is an alias of the Secure bit [31]
-+             * + bit [4] (ARE_NS) is an alias of Secure bit [5]
-+             * + bit [1] (EnableGrp1A) is an alias of Secure bit [1] if
-+             *   NS affinity routing is enabled, otherwise RES0
-+             * + bit [0] (EnableGrp1) is an alias of Secure bit [1] if
-+             *   NS affinity routing is not enabled, otherwise RES0
-+             * Since for QEMU affinity routing is always enabled
-+             * for both S and NS this means that bits [4] and [5] are
-+             * both always 1, and we can simply make the NS view
-+             * be bits 31, 4 and 1 of the S view.
-+             */
-+            *data = s->gicd_ctlr & (GICD_CTLR_ARE_NS |
-+                                    GICD_CTLR_EN_GRP1NS |
-+                                    GICD_CTLR_RWP);
-+        } else {
-+            *data = s->gicd_ctlr;
-+        }
-+        return MEMTX_OK;
-+    case GICD_TYPER:
-+    {
-+        /* For this implementation:
-+         * No1N == 1 (1-of-N SPI interrupts not supported)
-+         * A3V == 1 (non-zero values of Affinity level 3 supported)
-+         * IDbits == 0xf (we support 16-bit interrupt identifiers)
-+         * DVIS == 0 (Direct virtual LPI injection not supported)
-+         * LPIS == 0 (LPIs not supported)
-+         * MBIS == 0 (message-based SPIs not supported)
-+         * SecurityExtn == 1 if security extns supported
-+         * CPUNumber == 0 since for us ARE is always 1
-+         * ITLinesNumber == (num external irqs / 32) - 1
-+         */
-+        int itlinesnumber = ((s->num_irq - GIC_INTERNAL) / 32) - 1;
-+
-+        *data = (1 << 25) | (1 << 24) | (s->security_extn << 10) |
-+            (0xf << 19) | itlinesnumber;
-+        return MEMTX_OK;
-+    }
-+    case GICD_IIDR:
-+        /* We claim to be an ARM r0p0 with a zero ProductID.
-+         * This is the same as an r0p0 GIC-500.
-+         */
-+        *data = gicv3_iidr();
-+        return MEMTX_OK;
-+    case GICD_STATUSR:
-+        /* RAZ/WI for us (this is an optional register and our implementation
-+         * does not track RO/WO/reserved violations to report them to the guest)
-+         */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case GICD_IGROUPR ... GICD_IGROUPR + 0x7f:
-+    {
-+        int irq;
-+
-+        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+        /* RAZ/WI for SGIs, PPIs, unimplemented irqs */
-+        irq = (offset - GICD_IGROUPR) * 8;
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+        *data = *gic_bmp_ptr32(s->group, irq - GIC_INTERNAL);
-+        return MEMTX_OK;
-+    }
-+    case GICD_ISENABLER ... GICD_ISENABLER + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->enabled, NULL,
-+                                     offset - GICD_ISENABLER);
-+        return MEMTX_OK;
-+    case GICD_ICENABLER ... GICD_ICENABLER + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->enabled, NULL,
-+                                     offset - GICD_ICENABLER);
-+        return MEMTX_OK;
-+    case GICD_ISPENDR ... GICD_ISPENDR + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->pending, mask_nsacr_ge1,
-+                                     offset - GICD_ISPENDR);
-+        return MEMTX_OK;
-+    case GICD_ICPENDR ... GICD_ICPENDR + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->pending, mask_nsacr_ge2,
-+                                     offset - GICD_ICPENDR);
-+        return MEMTX_OK;
-+    case GICD_ISACTIVER ... GICD_ISACTIVER + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->active, mask_nsacr_ge2,
-+                                     offset - GICD_ISACTIVER);
-+        return MEMTX_OK;
-+    case GICD_ICACTIVER ... GICD_ICACTIVER + 0x7f:
-+        *data = gicd_read_bitmap_reg(s, attrs, s->active, mask_nsacr_ge2,
-+                                     offset - GICD_ICACTIVER);
-+        return MEMTX_OK;
-+    case GICD_IPRIORITYR ... GICD_IPRIORITYR + 0x3ff:
-+    {
-+        int i, irq = offset - GICD_IPRIORITYR;
-+        uint32_t value = 0;
-+
-+        for (i = irq + 3; i >= irq; i--, value <<= 8) {
-+            value |= gicd_read_ipriorityr(s, attrs, i);
-+        }
-+        *data = value;
-+        return MEMTX_OK;
-+    }
-+    case GICD_ITARGETSR ... GICD_ITARGETSR + 0x3ff:
-+        /* RAZ/WI since affinity routing is always enabled */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case GICD_ICFGR ... GICD_ICFGR + 0xff:
-+    {
-+        /* Here only the even bits are used; odd bits are RES0 */
-+        int irq = (offset - GICD_ICFGR) * 4;
-+        uint32_t value = 0;
-+
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+
-+        /* Since our edge_trigger bitmap is one bit per irq, we only need
-+         * half of the 32-bit word, which we can then spread out
-+         * into the odd bits.
-+         */
-+        value = *gic_bmp_ptr32(s->edge_trigger, (irq - GIC_INTERNAL) & ~0x1f);
-+        value &= mask_group_and_nsacr(s, attrs, NULL, irq & ~0x1f);
-+        value = extract32(value, (irq & 0x1f) ? 16 : 0, 16);
-+        value = half_shuffle32(value) << 1;
-+        *data = value;
-+        return MEMTX_OK;
-+    }
-+    case GICD_IGRPMODR ... GICD_IGRPMODR + 0xff:
-+    {
-+        int irq;
-+
-+        if ((s->gicd_ctlr & GICD_CTLR_DS) || !attrs.secure) {
-+            /* RAZ/WI if security disabled, or if
-+             * security enabled and this is an NS access
-+             */
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+        /* RAZ/WI for SGIs, PPIs, unimplemented irqs */
-+        irq = (offset - GICD_IGRPMODR) * 8;
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+        *data = *gic_bmp_ptr32(s->grpmod, irq - GIC_INTERNAL);
-+        return MEMTX_OK;
-+    }
-+    case GICD_NSACR ... GICD_NSACR + 0xff:
-+    {
-+        /* Two bits per interrupt */
-+        int irq = (offset - GICD_NSACR) * 4;
-+
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+
-+        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+            *data = 0;
-+            return MEMTX_OK;
-+        }
-+
-+        *data = s->gicd_nsacr[(irq - GIC_INTERNAL) / 16];
-+        return MEMTX_OK;
-+    }
-+    case GICD_CPENDSGIR ... GICD_CPENDSGIR + 0xf:
-+    case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-+        /* RAZ/WI since affinity routing is always enabled */
-+        *data = 0;
-+        return MEMTX_OK;
-+    case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-+    {
-+        uint64_t r;
-+        int irq = (offset - GICD_IROUTER) / 8;
-+
-+        r = gicd_read_irouter(s, attrs, irq);
-+        if (offset & 7) {
-+            *data = r >> 32;
-+        } else {
-+            *data = (uint32_t)r;
-+        }
-+        return MEMTX_OK;
-+    }
-+    case GICD_IDREGS ... GICD_IDREGS + 0x1f:
-+        /* ID registers */
-+        *data = gicv3_idreg(offset - GICD_IDREGS);
-+        return MEMTX_OK;
-+    case GICD_SGIR:
-+        /* WO registers, return unknown value */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid guest read from WO register at offset "
-+                      TARGET_FMT_plx "\n", __func__, offset);
-+        *data = 0;
-+        return MEMTX_OK;
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+static MemTxResult gicd_writel(GICv3State *s, hwaddr offset,
-+                               uint64_t value, MemTxAttrs attrs)
-+{
-+    /* Almost all GICv3 distributor registers are 32-bit. Note that
-+     * RO registers must ignore writes, not abort.
-+     */
-+
-+    switch (offset) {
-+    case GICD_CTLR:
-+    {
-+        uint32_t mask;
-+        /* GICv3 5.3.20 */
-+        if (s->gicd_ctlr & GICD_CTLR_DS) {
-+            /* With only one security state, E1NWF is RAZ/WI, DS is RAO/WI,
-+             * ARE is RAO/WI (affinity routing always on), and only
-+             * bits 0 and 1 (group enables) are writable.
-+             */
-+            mask = GICD_CTLR_EN_GRP0 | GICD_CTLR_EN_GRP1NS;
-+        } else {
-+            if (attrs.secure) {
-+                /* for secure access:
-+                 * ARE_NS and ARE_S are RAO/WI (affinity routing always on)
-+                 * E1NWF is RAZ/WI (we don't support enable-1-of-n-wakeup)
-+                 *
-+                 * We can only modify bits[2:0] (the group enables).
-+                 */
-+                mask = GICD_CTLR_DS | GICD_CTLR_EN_GRP0 | GICD_CTLR_EN_GRP1_ALL;
-+            } else {
-+                /* For non secure access ARE_NS is RAO/WI and EnableGrp1
-+                 * is RES0. The only writable bit is [1] (EnableGrp1A), which
-+                 * is an alias of the Secure bit [1].
-+                 */
-+                mask = GICD_CTLR_EN_GRP1NS;
-+            }
-+        }
-+        s->gicd_ctlr = (s->gicd_ctlr & ~mask) | (value & mask);
-+        if (value & mask & GICD_CTLR_DS) {
-+            /* We just set DS, so the ARE_NS and EnG1S bits are now RES0.
-+             * Note that this is a one-way transition because if DS is set
-+             * then it's not writeable, so it can only go back to 0 with a
-+             * hardware reset.
-+             */
-+            s->gicd_ctlr &= ~(GICD_CTLR_EN_GRP1S | GICD_CTLR_ARE_NS);
-+        }
-+        gicv3_full_update(s);
-+        return MEMTX_OK;
-+    }
-+    case GICD_STATUSR:
-+        /* RAZ/WI for our implementation */
-+        return MEMTX_OK;
-+    case GICD_IGROUPR ... GICD_IGROUPR + 0x7f:
-+    {
-+        int irq;
-+
-+        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+            return MEMTX_OK;
-+        }
-+        /* RAZ/WI for SGIs, PPIs, unimplemented irqs */
-+        irq = (offset - GICD_IGROUPR) * 8;
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            return MEMTX_OK;
-+        }
-+        *gic_bmp_ptr32(s->group, irq - GIC_INTERNAL) = value;
-+        gicv3_update(s, irq, 32);
-+        return MEMTX_OK;
-+    }
-+    case GICD_ISENABLER ... GICD_ISENABLER + 0x7f:
-+        gicd_write_set_bitmap_reg(s, attrs, s->enabled, NULL,
-+                                  offset - GICD_ISENABLER, value);
-+        return MEMTX_OK;
-+    case GICD_ICENABLER ... GICD_ICENABLER + 0x7f:
-+        gicd_write_clear_bitmap_reg(s, attrs, s->enabled, NULL,
-+                                    offset - GICD_ICENABLER, value);
-+        return MEMTX_OK;
-+    case GICD_ISPENDR ... GICD_ISPENDR + 0x7f:
-+        gicd_write_set_bitmap_reg(s, attrs, s->pending, mask_nsacr_ge1,
-+                                  offset - GICD_ISPENDR, value);
-+        return MEMTX_OK;
-+    case GICD_ICPENDR ... GICD_ICPENDR + 0x7f:
-+        gicd_write_clear_bitmap_reg(s, attrs, s->pending, mask_nsacr_ge2,
-+                                    offset - GICD_ICPENDR, value);
-+        return MEMTX_OK;
-+    case GICD_ISACTIVER ... GICD_ISACTIVER + 0x7f:
-+        gicd_write_set_bitmap_reg(s, attrs, s->active, NULL,
-+                                  offset - GICD_ISACTIVER, value);
-+        return MEMTX_OK;
-+    case GICD_ICACTIVER ... GICD_ICACTIVER + 0x7f:
-+        gicd_write_clear_bitmap_reg(s, attrs, s->active, NULL,
-+                                    offset - GICD_ICACTIVER, value);
-+        return MEMTX_OK;
-+    case GICD_IPRIORITYR ... GICD_IPRIORITYR + 0x3ff:
-+    {
-+        int i, irq = offset - GICD_IPRIORITYR;
-+
-+        for (i = irq; i < irq + 4; i++, value >>= 8) {
-+            gicd_write_ipriorityr(s, attrs, i, value);
-+        }
-+        gicv3_update(s, irq, 4);
-+        return MEMTX_OK;
-+    }
-+    case GICD_ITARGETSR ... GICD_ITARGETSR + 0x3ff:
-+        /* RAZ/WI since affinity routing is always enabled */
-+        return MEMTX_OK;
-+    case GICD_ICFGR ... GICD_ICFGR + 0xff:
-+    {
-+        /* Here only the odd bits are used; even bits are RES0 */
-+        int irq = (offset - GICD_ICFGR) * 4;
-+        uint32_t mask, oldval;
-+
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            return MEMTX_OK;
-+        }
-+
-+        /* Since our edge_trigger bitmap is one bit per irq, our input
-+         * 32-bits will compress down into 16 bits which we need
-+         * to write into the bitmap.
-+         */
-+        value = half_unshuffle32(value >> 1);
-+        mask = mask_group_and_nsacr(s, attrs, NULL, irq & ~0x1f);
-+        if (irq & 0x1f) {
-+            value <<= 16;
-+            mask &= 0xffff0000U;
-+        } else {
-+            mask &= 0xffff;
-+        }
-+        oldval = *gic_bmp_ptr32(s->edge_trigger, (irq - GIC_INTERNAL) & ~0x1f);
-+        value = (oldval & ~mask) | (value & mask);
-+        *gic_bmp_ptr32(s->edge_trigger, (irq - GIC_INTERNAL) & ~0x1f) = value;
-+        return MEMTX_OK;
-+    }
-+    case GICD_IGRPMODR ... GICD_IGRPMODR + 0xff:
-+    {
-+        int irq;
-+
-+        if ((s->gicd_ctlr & GICD_CTLR_DS) || !attrs.secure) {
-+            /* RAZ/WI if security disabled, or if
-+             * security enabled and this is an NS access
-+             */
-+            return MEMTX_OK;
-+        }
-+        /* RAZ/WI for SGIs, PPIs, unimplemented irqs */
-+        irq = (offset - GICD_IGRPMODR) * 8;
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            return MEMTX_OK;
-+        }
-+        *gic_bmp_ptr32(s->grpmod, irq - GIC_INTERNAL) = value;
-+        gicv3_update(s, irq, 32);
-+        return MEMTX_OK;
-+    }
-+    case GICD_NSACR ... GICD_NSACR + 0xff:
-+    {
-+        /* Two bits per interrupt */
-+        int irq = (offset - GICD_NSACR) * 4;
-+
-+        if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+            return MEMTX_OK;
-+        }
-+
-+        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
-+            return MEMTX_OK;
-+        }
-+
-+        s->gicd_nsacr[(irq - GIC_INTERNAL) / 16] = value;
-+        /* No update required as this only affects access permission checks */
-+        return MEMTX_OK;
-+    }
-+    case GICD_SGIR:
-+        /* RES0 if affinity routing is enabled */
-+        return MEMTX_OK;
-+    case GICD_CPENDSGIR ... GICD_CPENDSGIR + 0xf:
-+    case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-+        /* RAZ/WI since affinity routing is always enabled */
-+        return MEMTX_OK;
-+    case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-+    {
-+        uint64_t r;
-+        int irq = (offset - GICD_IROUTER) / 8;
-+
-+        /* Write half of the 64-bit register */
-+        r = gicd_read_irouter(s, attrs, irq);
-+        r = deposit64(r, (offset & 7) ? 32 : 0, 32, value);
-+        gicd_write_irouter(s, attrs, irq, r);
-+        return MEMTX_OK;
-+    }
-+    case GICD_IDREGS ... GICD_IDREGS + 0x1f:
-+    case GICD_TYPER:
-+    case GICD_IIDR:
-+        /* RO registers, ignore the write */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid guest write to RO register at offset "
-+                      TARGET_FMT_plx "\n", __func__, offset);
-+        return MEMTX_OK;
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+static MemTxResult gicd_writell(GICv3State *s, hwaddr offset,
-+                                uint64_t value, MemTxAttrs attrs)
-+{
-+    /* Our only 64-bit registers are GICD_IROUTER<n> */
-+    int irq;
-+
-+    switch (offset) {
-+    case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-+        irq = (offset - GICD_IROUTER) / 8;
-+        gicd_write_irouter(s, attrs, irq, value);
-+        return MEMTX_OK;
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+static MemTxResult gicd_readll(GICv3State *s, hwaddr offset,
-+                               uint64_t *data, MemTxAttrs attrs)
-+{
-+    /* Our only 64-bit registers are GICD_IROUTER<n> */
-+    int irq;
-+
-+    switch (offset) {
-+    case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-+        irq = (offset - GICD_IROUTER) / 8;
-+        *data = gicd_read_irouter(s, attrs, irq);
-+        return MEMTX_OK;
-+    default:
-+        return MEMTX_ERROR;
-+    }
-+}
-+
-+MemTxResult gicv3_dist_read(void *opaque, hwaddr offset, uint64_t *data,
-+                            unsigned size, MemTxAttrs attrs)
-+{
-+    GICv3State *s = (GICv3State *)opaque;
-+    MemTxResult r;
-+
-+    switch (size) {
-+    case 1:
-+        r = gicd_readb(s, offset, data, attrs);
-+        break;
-+    case 2:
-+        r = gicd_readw(s, offset, data, attrs);
-+        break;
-+    case 4:
-+        r = gicd_readl(s, offset, data, attrs);
-+        break;
-+    case 8:
-+        r = gicd_readll(s, offset, data, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    if (r == MEMTX_ERROR) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid guest read at offset " TARGET_FMT_plx
-+                      "size %u\n", __func__, offset, size);
-+        trace_gicv3_dist_badread(offset, size, attrs.secure);
-+    } else {
-+        trace_gicv3_dist_read(offset, *data, size, attrs.secure);
-+    }
-+    return r;
-+}
-+
-+MemTxResult gicv3_dist_write(void *opaque, hwaddr offset, uint64_t data,
-+                             unsigned size, MemTxAttrs attrs)
-+{
-+    GICv3State *s = (GICv3State *)opaque;
-+    MemTxResult r;
-+
-+    switch (size) {
-+    case 1:
-+        r = gicd_writeb(s, offset, data, attrs);
-+        break;
-+    case 2:
-+        r = gicd_writew(s, offset, data, attrs);
-+        break;
-+    case 4:
-+        r = gicd_writel(s, offset, data, attrs);
-+        break;
-+    case 8:
-+        r = gicd_writell(s, offset, data, attrs);
-+        break;
-+    default:
-+        r = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    if (r == MEMTX_ERROR) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid guest write at offset " TARGET_FMT_plx
-+                      "size %u\n", __func__, offset, size);
-+        trace_gicv3_dist_badwrite(offset, data, size, attrs.secure);
-+    } else {
-+        trace_gicv3_dist_write(offset, data, size, attrs.secure);
-+    }
-+    return r;
-+}
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index d2eb290..2f2deed 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -201,6 +201,10 @@ void gicv3_full_update_noirqset(GICv3State *s);
-  * and inform the CPUs accordingly.
-  */
- void gicv3_full_update(GICv3State *s);
-+MemTxResult gicv3_dist_read(void *opaque, hwaddr offset, uint64_t *data,
-+                            unsigned size, MemTxAttrs attrs);
-+MemTxResult gicv3_dist_write(void *opaque, hwaddr addr, uint64_t data,
-+                             unsigned size, MemTxAttrs attrs);
- 
- /**
-  * gicv3_cpuif_update:
-diff --git a/trace-events b/trace-events
-index 8350743..50aecef 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1909,3 +1909,9 @@ aspeed_vic_update_fiq(int flags) "Raising FIQ: %d"
- aspeed_vic_update_irq(int flags) "Raising IRQ: %d"
- aspeed_vic_read(uint64_t offset, unsigned size, uint32_t value) "From 0x%" PRIx64 " of size %u: 0x%" PRIx32
- aspeed_vic_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+
-+# hw/intc/arm_gicv3_dist.c
-+gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
-+gicv3_dist_badread(uint64_t offset, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " size %u secure %d: error"
-+gicv3_dist_write(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
-+gicv3_dist_badwrite(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d: error"
+The CPU feature registers wouldn't be affected by the big.LITTLE
+configurations as we provide a sanitised version anyway. But, again, do
+we have concrete use-cases?
+
+> > That said, I'm perfectly fine with exposing:
+> > 
+> > 	/sys/devices/system/cpu/cpu$ID/identification/
+> > 							\- midr
+> > 							\- revidr
+> > 
+> > I had the wrong impression that we already merged this part but Suzuki
+> > just pointed out to me that it's not.
+> 
+> Yes, there are use-cases for this interface as well. I don't think it's
+> a choice between one or the other and I firmly believe we need both (the
+> sysfs and mrs code).
+
+At least for this one we have a clear use-case: JVM and errata
+workarounds.
+
+> > I think our 4.7-rc1 tree is pretty much frozen to new features now,
+> > though the sysfs patch is relatively small (I'll let Will comment):
+> 
+> The merge window opens in less than a week, so it's fixes only atm.
+
+We have more time to debate ;)
+
 -- 
-1.9.1
-
+Catalin

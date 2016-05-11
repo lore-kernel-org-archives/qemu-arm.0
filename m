@@ -1,51 +1,51 @@
-Received: by 10.25.208.137 with SMTP id h131csp416830lfg;
-        Wed, 11 May 2016 14:47:25 -0700 (PDT)
-X-Received: by 10.140.194.138 with SMTP id p132mr6387183qha.78.1463003245112;
-        Wed, 11 May 2016 14:47:25 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp417356lfg;
+        Wed, 11 May 2016 14:49:43 -0700 (PDT)
+X-Received: by 10.55.77.205 with SMTP id a196mr6189070qkb.94.1463003383828;
+        Wed, 11 May 2016 14:49:43 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x13si6664244qka.33.2016.05.11.14.47.24
+        by mx.google.com with ESMTPS id 47si6670730qgl.50.2016.05.11.14.49.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 May 2016 14:47:25 -0700 (PDT)
+        Wed, 11 May 2016 14:49:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54258 helo=lists.gnu.org)
+Received: from localhost ([::1]:54282 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b0byW-0003Wd-Kp
-	for alex.bennee@linaro.org; Wed, 11 May 2016 17:47:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42855)
+	id 1b0c0l-0000PC-DW
+	for alex.bennee@linaro.org; Wed, 11 May 2016 17:49:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1b0byR-0003P1-Ln
-	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:21 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1b0byT-0003RZ-NR
+	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1b0byO-0003gP-KH
-	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:18 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1b0byN-0003f6-J2
+	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:20 -0400
 Received: from roura.ac.upc.es ([147.83.33.10]:60372)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <vilanova@ac.upc.edu>)
-	id 1b0byO-0003au-51; Wed, 11 May 2016 17:47:16 -0400
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u4BIg4AV005807;
-	Wed, 11 May 2016 20:42:05 +0200
+	id 1b0byN-0003au-2H; Wed, 11 May 2016 17:47:15 -0400
+Received: from gw-2.ac.upc.es (gw-2.ac.upc.es [147.83.30.8])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u4BJteae008413;
+	Wed, 11 May 2016 21:55:40 +0200
 Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 9E15A21D;
-	Wed, 11 May 2016 20:42:04 +0200 (CEST)
+	by gw-2.ac.upc.es (Postfix) with ESMTPSA id 3D0E158B;
+	Wed, 11 May 2016 21:55:40 +0200 (CEST)
 From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
 To: qemu-devel@nongnu.org
-Date: Wed, 11 May 2016 20:42:04 +0200
-Message-Id: <146299212391.22870.17576864056088943016.stgit@localhost>
+Date: Wed, 11 May 2016 21:55:39 +0200
+Message-Id: <146299653947.5203.13161479377215549869.stgit@localhost>
 X-Mailer: git-send-email 2.8.1
-In-Reply-To: <146299211689.22870.560211702371824674.stgit@localhost>
-References: <146299211689.22870.560211702371824674.stgit@localhost>
+In-Reply-To: <146299653361.5203.4475655460859700214.stgit@localhost>
+References: <146299653361.5203.4475655460859700214.stgit@localhost>
 User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	u4BIg4AV005807
+	u4BJteae008413
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 147.83.33.10
 Subject: [Qemu-arm] [PATCH v2 1/2] exec: [tcg] Track which vCPU is
@@ -75,7 +75,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a4pnfAFj7wG7
+X-TUID: 6oMgsCXoK+yy
 
 Information is tracked inside the TCGContext structure, and later used
 by tracing events with the 'tcg' and 'vcpu' properties.

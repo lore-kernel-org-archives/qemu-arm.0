@@ -1,81 +1,55 @@
-Received: by 10.25.208.137 with SMTP id h131csp2204726lfg;
-        Tue, 10 May 2016 11:19:24 -0700 (PDT)
-X-Received: by 10.141.1.134 with SMTP id c128mr15329192qhd.7.1462904364842;
-        Tue, 10 May 2016 11:19:24 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp416830lfg;
+        Wed, 11 May 2016 14:47:25 -0700 (PDT)
+X-Received: by 10.140.194.138 with SMTP id p132mr6387183qha.78.1463003245112;
+        Wed, 11 May 2016 14:47:25 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c4si2282070qhc.122.2016.05.10.11.19.24
+        by mx.google.com with ESMTPS id x13si6664244qka.33.2016.05.11.14.47.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 May 2016 11:19:24 -0700 (PDT)
+        Wed, 11 May 2016 14:47:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47988 helo=lists.gnu.org)
+Received: from localhost ([::1]:54258 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b0CFg-0002c1-A6
-	for alex.bennee@linaro.org; Tue, 10 May 2016 14:19:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40012)
+	id 1b0byW-0003Wd-Kp
+	for alex.bennee@linaro.org; Wed, 11 May 2016 17:47:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1b0CFc-0002ZP-SN
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 14:19:22 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1b0byR-0003P1-Ln
+	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1b0CFb-0000Ob-9I
-	for qemu-arm@nongnu.org; Tue, 10 May 2016 14:19:20 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:36679)
+	(envelope-from <vilanova@ac.upc.edu>) id 1b0byO-0003gP-KH
+	for qemu-arm@nongnu.org; Wed, 11 May 2016 17:47:18 -0400
+Received: from roura.ac.upc.es ([147.83.33.10]:60372)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1b0CFb-0000O1-26; Tue, 10 May 2016 14:19:19 -0400
-Received: by mail-oi0-x242.google.com with SMTP id i2so2838584oib.3;
-	Tue, 10 May 2016 11:19:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=PDkQDk9+ShCZBHnJmJNQrAl2dllF+AM/QQlZY1N9zD4=;
-	b=qrT2LM2ViO/4Ee4VY9n68mpUpSM2M1KbVErKd0Gb9R/9WKj83qGKk5CxXTytS9J1nS
-	akQ1xq1miuhyPzbNujhOwMvuPAfr9tTokTMccjG47KIpdSQ51ooRNLPHVc1BzX/Qyy5o
-	/j54hkMsysWYLgqQB8Yktf+7eG/Rk7CC1WlJBbTC27RUHaQP3f6JJ/Ib6jbN4L1MHxlC
-	xHbf/V62V6c/YhLbN9X9gmc5oFYZl9Agp/Su3udaiUBRL/7wcLXd6HveiX1v3CE8AQ6O
-	HDmQSGvWeZCjb11EuOhj/bOz32I4UigFXazwvACnbEZWTRm6Duj8KE8CjJH24j/ddyO2
-	0bYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=PDkQDk9+ShCZBHnJmJNQrAl2dllF+AM/QQlZY1N9zD4=;
-	b=PdlwaigaCwbiPuIprdqKjConBoRYtvLfT5xw0eA2xY/NkNLl/uH7kEYYbTkcH4IBqG
-	qAU1NY7FvgUpOQRL1g4G+8au+RuJsQpwUMLOVOa9gVtLOq87AXakujUtMpVCwNmu6IME
-	JEhJUqZl/dsP91Ohuf6//ZUyIpNhJwJkAFdo6mkv5/mbuQmdDa4egzBhPDtkwhRCJLP7
-	Ok6h3zszimarxLzZX0OqSNm2u8/m854j3jG5DcEOyb7yanjj1bBt+Iyu//EugocUvyTP
-	L630qguzKdpfb4gsVmJx46F31pRjl0sbDYWel7x/sIyBJsC3YrbeM277v3VOoleZCfto
-	tGKQ==
-X-Gm-Message-State: AOPr4FXcmpRa8VV7EpfYJ6gx6E/NRBdfg/x3yAFwCy0InI7YsASkWP6GUHe5/ScpMXE/pXqdOkYT1qWJNxe4GQ==
-X-Received: by 10.157.1.79 with SMTP id 73mr3655361otu.17.1462904358405; Tue,
-	10 May 2016 11:19:18 -0700 (PDT)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1b0byO-0003au-51; Wed, 11 May 2016 17:47:16 -0400
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u4BIg4AV005807;
+	Wed, 11 May 2016 20:42:05 +0200
+Received: from localhost (unknown [84.88.51.85])
+	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 9E15A21D;
+	Wed, 11 May 2016 20:42:04 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Date: Wed, 11 May 2016 20:42:04 +0200
+Message-Id: <146299212391.22870.17576864056088943016.stgit@localhost>
+X-Mailer: git-send-email 2.8.1
+In-Reply-To: <146299211689.22870.560211702371824674.stgit@localhost>
+References: <146299211689.22870.560211702371824674.stgit@localhost>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Received: by 10.182.142.193 with HTTP; Tue, 10 May 2016 11:18:49 -0700 (PDT)
-In-Reply-To: <20160510103637.GH16305@toto>
-References: <cover.1462557987.git.alistair.francis@xilinx.com>
-	<6459df5e54365d5dbe8a1b047a85ec65c67e9232.1462557987.git.alistair.francis@xilinx.com>
-	<CAFEAcA-G1jfUuK5JDFDnrFG5tKOt_VPnLBj7CD4WGkhrx_zp8w@mail.gmail.com>
-	<20160507015121.GF16305@toto>
-	<CAKmqyKMNbNoph2s1F4ZnC_Dqc-t_=bRtm5+oAHXnvdF09KHVeg@mail.gmail.com>
-	<CAFEAcA9cGbU+LdZD9YzkJ8VMEyt+gKd5+8qi+Q-m+tgtNBg10w@mail.gmail.com>
-	<CAKmqyKOjOwWOp-6kzOunxf0F8c8r+ua62gxFJ6x2vJR2Yaz_Nw@mail.gmail.com>
-	<CAFEAcA84aHCj2ADGkuxEbdx1qy7scu+nXSTU5K70ZPXR2PL1Ng@mail.gmail.com>
-	<20160510103637.GH16305@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Tue, 10 May 2016 11:18:49 -0700
-X-Google-Sender-Auth: ILkQz5gsdo-BevgDPs6Owr9Yrj0
-Message-ID: <CAKmqyKMXg1Xfgh5igu4imAgn2MtpGFKk4d8ysHv3Rz8qhr5DWA@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 2/2] target-arm: Enable EL2
- for the A53s and A57s
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	u4BIg4AV005807
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.83.33.10
+Subject: [Qemu-arm] [PATCH v2 1/2] exec: [tcg] Track which vCPU is
+ performing translation and execution
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,84 +61,314 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W2wFzYiuXsP5
+X-TUID: a4pnfAFj7wG7
 
-On Tue, May 10, 2016 at 3:36 AM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Tue, May 10, 2016 at 09:09:55AM +0100, Peter Maydell wrote:
->> On 10 May 2016 at 01:16, Alistair Francis <alistair.francis@xilinx.com> wrote:
->> > It is actually a u-boot problem. I originally just assumed it was a
->> > Linux problem, but it happens before u-boot hands off to Linux.
->>
->> OK, that makes sense. u-boot tends to be a bit lower level and less
->> hardware-agnostic. I just wanted to check it wasn't caused by some
->> problem in QEMU's EL3 support we could easily fix.
->>
->> > It appears that u-boot won't work at all with EL3 enabled but EL2
->> > disabled. It always moves to EL2 before moving to EL1 and there is no
->> > code prepared to handle going from EL3 directly to EL1.
->> >
->> > Just for the record, I'm specifically talking about what happens in
->> > the do_nonsec_virt_switch() function.
->> >
->> > It looks like there are three options:
->> >  1. Add support to u-boot to drop from EL3 to EL1 (I'm assuming this
->> > is possible, as not all implementations have EL2)
->> >  2. Just wait until QEMU adds EL2 support
->> >  3. Allow a QEMU command line option to start in EL1 instead of EL3
->
-> Alistair,
->
-> Our usual ZynqMP boot flow is
->
-> ATF at EL3
-> ATF hands over to u-boot at EL2
-> u-boot hands over to the Linux kernel at EL2
->
-> Our ATF has a mode where it can be instructed to start u-boot in
-> EL1, bypassing EL2. That would avoid this issue. You don't need to
-> recompile ATF. We can discuss the details off-line.
+Information is tracked inside the TCGContext structure, and later used
+by tracing events with the 'tcg' and 'vcpu' properties.
 
-Hey Edgar,
+The 'cpu' field is used to check tracing of translation-time
+events ("*_trans"). The 'tcg_env' field is used to pass it to
+execution-time events ("*_exec").
 
-Unfortunately that doesn't work with JTAG boot mode, which is what we are using.
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target-alpha/translate.c      |    1 +
+ target-arm/translate.c        |    1 +
+ target-cris/translate.c       |    1 +
+ target-cris/translate_v10.c   |    1 +
+ target-i386/translate.c       |    1 +
+ target-lm32/translate.c       |    1 +
+ target-m68k/translate.c       |    1 +
+ target-microblaze/translate.c |    1 +
+ target-mips/translate.c       |    1 +
+ target-moxie/translate.c      |    1 +
+ target-openrisc/translate.c   |    1 +
+ target-ppc/translate.c        |    1 +
+ target-s390x/translate.c      |    1 +
+ target-sh4/translate.c        |    1 +
+ target-sparc/translate.c      |    1 +
+ target-tilegx/translate.c     |    1 +
+ target-tricore/translate.c    |    1 +
+ target-unicore32/translate.c  |    1 +
+ target-xtensa/translate.c     |    1 +
+ tcg/tcg.h                     |    4 ++++
+ translate-all.c               |    2 ++
+ 21 files changed, 25 insertions(+)
 
-Just to confirm it though I edited the ATF source to handoff to u-boot
-in EL1. Then using my device loader patches I managed to boot ATF to
-u-boot to Linux. So besides the missing EL2 support the general flow
-seems to work. Linux tried to execute code outside RAM or ROM, so I
-never made it to a login prompt though.
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 5b86992..67681f6 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -150,6 +150,7 @@ void alpha_translate_init(void)
+     done_init =3D 1;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 31; i++) {
+         cpu_std_ir[i] =3D tcg_global_mem_new_i64(cpu_env,
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 940ec8d..1a7496b 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -84,6 +84,7 @@ void arm_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 16; i++) {
+         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-cris/translate.c b/target-cris/translate.c
+index a73176c..f603af3 100644
+--- a/target-cris/translate.c
++++ b/target-cris/translate.c
+@@ -3364,6 +3364,7 @@ void cris_initialize_tcg(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cc_x =3D tcg_global_mem_new(cpu_env,
+                               offsetof(CPUCRISState, cc_x), "cc_x");
+     cc_src =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-cris/translate_v10.c b/target-cris/translate_v10.c
+index 7607ead..f2e9768 100644
+--- a/target-cris/translate_v10.c
++++ b/target-cris/translate_v10.c
+@@ -1250,6 +1250,7 @@ void cris_initialize_crisv10_tcg(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cc_x =3D tcg_global_mem_new(cpu_env,
+                               offsetof(CPUCRISState, cc_x), "cc_x");
+     cc_src =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 1a1214d..7a6ef7c 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -8135,6 +8135,7 @@ void tcg_x86_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_cc_op =3D tcg_global_mem_new_i32(cpu_env,
+                                        offsetof(CPUX86State, cc_op), "cc=
+_op");
+     cpu_cc_dst =3D tcg_global_mem_new(cpu_env, offsetof(CPUX86State, cc_=
+dst),
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index 256a51f..b2e5a3e 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -1191,6 +1191,7 @@ void lm32_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < ARRAY_SIZE(cpu_R); i++) {
+         cpu_R[i] =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+index 7560c3a..f90f80e 100644
+--- a/target-m68k/translate.c
++++ b/target-m68k/translate.c
+@@ -77,6 +77,7 @@ void m68k_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+ #define DEFO32(name, offset) \
+     QREG_##name =3D tcg_global_mem_new_i32(cpu_env, \
+diff --git a/target-microblaze/translate.c b/target-microblaze/translate.=
+c
+index f944965..05092f1 100644
+--- a/target-microblaze/translate.c
++++ b/target-microblaze/translate.c
+@@ -1869,6 +1869,7 @@ void mb_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     env_debug =3D tcg_global_mem_new(cpu_env,
+                     offsetof(CPUMBState, debug),
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index a3a05ec..24f994c 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -19993,6 +19993,7 @@ void mips_tcg_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     TCGV_UNUSED(cpu_gpr[0]);
+     for (i =3D 1; i < 32; i++)
+diff --git a/target-moxie/translate.c b/target-moxie/translate.c
+index a437e2a..44c8c0d 100644
+--- a/target-moxie/translate.c
++++ b/target-moxie/translate.c
+@@ -106,6 +106,7 @@ void moxie_translate_init(void)
+         return;
+     }
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
+                                     offsetof(CPUMoxieState, pc), "$pc");
+     for (i =3D 0; i < 16; i++)
+diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
+index 5d0ab44..170bb40 100644
+--- a/target-openrisc/translate.c
++++ b/target-openrisc/translate.c
+@@ -78,6 +78,7 @@ void openrisc_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_sr =3D tcg_global_mem_new(cpu_env,
+                                 offsetof(CPUOpenRISCState, sr), "sr");
+     env_flags =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-ppc/translate.c b/target-ppc/translate.c
+index b3860ec..cf4771b 100644
+--- a/target-ppc/translate.c
++++ b/target-ppc/translate.c
+@@ -87,6 +87,7 @@ void ppc_translate_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     p =3D cpu_reg_names;
+     cpu_reg_names_size =3D sizeof(cpu_reg_names);
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index c871ef2..24c1d07 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -168,6 +168,7 @@ void s390x_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     psw_addr =3D tcg_global_mem_new_i64(cpu_env,
+                                       offsetof(CPUS390XState, psw.addr),
+                                       "psw_addr");
+diff --git a/target-sh4/translate.c b/target-sh4/translate.c
+index 7c18968..b838386 100644
+--- a/target-sh4/translate.c
++++ b/target-sh4/translate.c
+@@ -100,6 +100,7 @@ void sh4_translate_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 24; i++)
+         cpu_gregs[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-sparc/translate.c b/target-sparc/translate.c
+index 7998ff5..f12b878 100644
+--- a/target-sparc/translate.c
++++ b/target-sparc/translate.c
+@@ -5392,6 +5392,7 @@ void gen_intermediate_code_init(CPUSPARCState *env)
+     inited =3D 1;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     cpu_regwptr =3D tcg_global_mem_new_ptr(cpu_env,
+                                          offsetof(CPUSPARCState, regwptr=
+),
+diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
+index 03918eb..399843a 100644
+--- a/target-tilegx/translate.c
++++ b/target-tilegx/translate.c
+@@ -2442,6 +2442,7 @@ void tilegx_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i64(cpu_env, offsetof(CPUTLGState, pc)=
+, "pc");
+     for (i =3D 0; i < TILEGX_R_COUNT; i++) {
+         cpu_regs[i] =3D tcg_global_mem_new_i64(cpu_env,
+diff --git a/target-tricore/translate.c b/target-tricore/translate.c
+index 912bf22..7195c4e 100644
+--- a/target-tricore/translate.c
++++ b/target-tricore/translate.c
+@@ -8823,6 +8823,7 @@ void tricore_tcg_init(void)
+         return;
+     }
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     /* reg init */
+     for (i =3D 0 ; i < 16 ; i++) {
+         cpu_gpr_a[i] =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
+index 39af3af..d2b786e 100644
+--- a/target-unicore32/translate.c
++++ b/target-unicore32/translate.c
+@@ -69,6 +69,7 @@ void uc32_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 32; i++) {
+         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
+index 9894488..0ba59da 100644
+--- a/target-xtensa/translate.c
++++ b/target-xtensa/translate.c
+@@ -218,6 +218,7 @@ void xtensa_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
+             offsetof(CPUXtensaState, pc), "pc");
+=20
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index 40c8fbe..89914c2 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -576,6 +576,10 @@ struct TCGContext {
+=20
+     TBContext tb_ctx;
+=20
++    /* Track which vCPU triggers events */
++    CPUState *cpu;                      /* *_trans */
++    TCGv_env tcg_env;                   /* *_exec  */
++
+     /* The TCGBackendData structure is private to tcg-target.inc.c.  */
+     struct TCGBackendData *be;
+=20
+diff --git a/translate-all.c b/translate-all.c
+index 8329ea6..1c16b14 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1092,6 +1092,8 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     ti =3D profile_getclock();
+ #endif
+=20
++    tcg_ctx.cpu =3D ENV_GET_CPU(env);
++
+     tcg_func_start(&tcg_ctx);
+=20
+     gen_intermediate_code(env, tb);
 
->
->
->> I would be OK with any of these three from a QEMU perspective.
->> Fixing u-boot is probably conceptually the nicest but I've never
->> looked at u-boot internals so it could be simple or painful...
->>
->> Edgar, do you have the list of what we're still missing before we
->> can turn on EL2?
->
-> We're missing the Data Abort ISS:s, we're missing modelling of a few registers
-> (like HSTR_EL2). Some regs are quite incomplete like HCR but I think we can
-> live with that. GICv2 virtualization is missing. We are also missing a few
-> AT_ modes. AArch32 support is probably lacking alot of more stuff.
->
-> IIRC, last time this came up we talked about enabling EL2 after ISS and
-> GICv2 virtualization support gets merged + a few odd regs. Enough to allow
-> Xen and KVM to work under emulation.
-
-Do you have a rough time frame on this? Right now I can't see any way
-to boot Linux on the up-streamed ZynqMP machine. If EL2 support will
-take a long time we might need to look into one of the alternative
-work arounds for the time being.
-
->
-> Cheers,
-> Edgar
->

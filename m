@@ -1,141 +1,122 @@
-Received: by 10.25.208.137 with SMTP id h131csp742458lfg;
-        Thu, 12 May 2016 08:23:14 -0700 (PDT)
-X-Received: by 10.55.159.75 with SMTP id i72mr10145441qke.29.1463066594863;
-        Thu, 12 May 2016 08:23:14 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.137 with SMTP id h131csp743039lfg;
+        Thu, 12 May 2016 08:24:23 -0700 (PDT)
+X-Received: by 10.55.159.75 with SMTP id i72mr10151941qke.29.1463066663110;
+        Thu, 12 May 2016 08:24:23 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e4si8892720qge.36.2016.05.12.08.23.14
+        by mx.google.com with ESMTPS id 22si4885484qky.108.2016.05.12.08.24.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 May 2016 08:23:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 12 May 2016 08:24:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58327 helo=lists.gnu.org)
+Received: from localhost ([::1]:58362 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b0sSI-0007FK-AW
-	for alex.bennee@linaro.org; Thu, 12 May 2016 11:23:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58424)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b0sTO-0000hu-Jq
+	for alex.bennee@linaro.org; Thu, 12 May 2016 11:24:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b0s7T-0000j3-Vg
-	for qemu-devel@nongnu.org; Thu, 12 May 2016 11:01:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1b0sSA-0007OY-8p
+	for qemu-arm@nongnu.org; Thu, 12 May 2016 11:23:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b0s7N-0001aN-4V
-	for qemu-devel@nongnu.org; Thu, 12 May 2016 11:01:42 -0400
-Received: from mail-pf0-x235.google.com ([2607:f8b0:400e:c00::235]:35055)
+	(envelope-from <peter.maydell@linaro.org>) id 1b0sS4-0007tR-Qv
+	for qemu-arm@nongnu.org; Thu, 12 May 2016 11:23:06 -0400
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:34543)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b0s7M-0001ZR-ST
-	for qemu-devel@nongnu.org; Thu, 12 May 2016 11:01:37 -0400
-Received: by mail-pf0-x235.google.com with SMTP id 77so31537055pfv.2
-	for <qemu-devel@nongnu.org>; Thu, 12 May 2016 08:01:36 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1b0sS4-0007tJ-Mc
+	for qemu-arm@nongnu.org; Thu, 12 May 2016 11:23:00 -0400
+Received: by mail-vk0-x22b.google.com with SMTP id m188so101901196vka.1
+	for <qemu-arm@nongnu.org>; Thu, 12 May 2016 08:23:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=RJpfmovm7iZDrZhrWwimjLf7ZfaQllDafPvNAXP+5x0=;
-	b=igx4t0K6CxgDChtxheIMwaMMsU94LsHR7khCJuz2BWD2is9rA/p6n36b274p5s4nOM
-	Ehlzp+eU7LCBdosmyqJMpsmf2BFnFpcTO0HFeX/8HjxNCMR7hVFe2wQMxfc6SN06OBTo
-	XS8hdJ6S49eMZv16QU4l37QZQttCkdRARaV0U=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=QSw34vPJhlIjioInzQLZ8NtJCK7kH9o1/woZn0rfaNA=;
+	b=Oi01/BJ6oMl0ZajtcTCdVtKl8JEk3LUfG0hfG52xcoxPjEvwmADY8jx/QRFPVuwcrq
+	ppZymUvNfGOTEL6pV3DlTwZ1ySdy6Sv04Vc/EwZrf3KIV1Kf05F5N7RM9IDeBo0n5rqO
+	1Ozd+z7kGZx04Far5B3Bmac43Q4f1monEo49Y=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=RJpfmovm7iZDrZhrWwimjLf7ZfaQllDafPvNAXP+5x0=;
-	b=VpnXCRaRVQAb5lGmmupXFds2j8lpy+kdqAI1qUXEz/D/9nZR8URU40zpNNdiaYvk/c
-	w3rZ4b2++g/XfG6mMHyYZhP4JCvmle+UkPIkRo0dyGWdjeIhgTf9qdIDTRD02BnT/8Ol
-	xY4u/2vO1nAFPxOP9SobwUpjdyK3gJF0tAsOI8it5d+gMKwP1qhUyPxzkcC7b3h4vQDh
-	nKEF57vMKf9JkUedv6h00bvBXcbcNx48YSlHiZpzsQFD9jveuN1jDvyuiTvKZbNT6ujk
-	+zxq/JVv9h4lZuaDEOyceiPLJ2qdvb7BnAs7ZFoB+3/j+vP4WU/0DrLMyACYc6mgPtmH
-	6yOg==
-X-Gm-Message-State: AOPr4FXJq0Vwbso8evMUPA3PmmgHYq63nJ776EC95jYWbZ5cYdkWecpQiH0gdXTqtFv9qbg/
-X-Received: by 10.98.43.133 with SMTP id r127mr14695633pfr.38.1463065295896;
-	Thu, 12 May 2016 08:01:35 -0700 (PDT)
-Received: from [10.13.7.150] ([104.238.32.71])
-	by smtp.gmail.com with ESMTPSA id
-	l123sm20589318pfl.36.2016.05.12.08.01.31
-	(version=TLSv1/SSLv3 cipher=OTHER);
-	Thu, 12 May 2016 08:01:34 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=QSw34vPJhlIjioInzQLZ8NtJCK7kH9o1/woZn0rfaNA=;
+	b=VwC9OabDvwpOpwKMiiwj3MRJiQslxblq7oNTcDg4FnFYgyvo1tdFUOCbl9jjtwxb3d
+	oydUi9N/jIuDP0oZfWeSv8CZ1NspuF+fuixSLn77N39aHUfGKDbvJj9W6tPsSX0mwIgD
+	0VXHYff3opYtfJh0vxBKqywSYAy07wkezYOK/aMLd3mmfoM8j7ENyS1GdhhZ3wqzpBWp
+	eFEz8ttqfQk8A3ZcaJBnqQouzUOzgBf+KIJ0Ha62Ufnq1nfc4BwahoCOWY4oIzuzqub8
+	RE/rKXYFcRiePd6nZkRaexh+hTcQyHh+AB7xSAIJvVfRLztYVPw3PgTpDRWG/j6LJeha
+	V0tQ==
+X-Gm-Message-State: AOPr4FXktB8ijvDvJ/NwDJSi3UCjhn2vPMIxhrSZjEid7KXOlW1HcFNT+xfyQuWHMHT38ZhGbxk1CR6n35iFEAqG
+X-Received: by 10.176.68.162 with SMTP id n31mr5143083uan.26.1463066579988;
+	Thu, 12 May 2016 08:22:59 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Thu, 12 May 2016 08:22:40 -0700 (PDT)
+In-Reply-To: <57349AC9.5070407@linaro.org>
 References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
 	<5732D667.3040105@huawei.com>
 	<CAFEAcA_ptjAd-hLUmfVr=47KD9w8-cyZJuWHgSvkwZKfgU+jaw@mail.gmail.com>
 	<573493A7.3030604@linaro.org>
 	<CAFEAcA8BeETRW_Rm5HwGX6_y6sBez86p5-WYUZoPdin54KoTxw@mail.gmail.com>
-From: Shannon Zhao <shannon.zhao@linaro.org>
-Message-ID: <57349AC9.5070407@linaro.org>
-Date: Thu, 12 May 2016 23:01:29 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8BeETRW_Rm5HwGX6_y6sBez86p5-WYUZoPdin54KoTxw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+	<57349AC9.5070407@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 May 2016 16:22:40 +0100
+Message-ID: <CAFEAcA9xXO6GA3MkLEprWNSUW8ayWZkT4xcY01ek6zOvm0GP3A@mail.gmail.com>
+To: Shannon Zhao <shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::235
-Subject: Re: [Qemu-devel] [PATCH 00/23] GICv3 emulation
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22b
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/23] GICv3 emulation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Patch Tracking <patches@linaro.org>,
 	Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Shlomo Pongratz <shlomopongratz@gmail.com>,
 	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <zhaoshenglong@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pKcOz/1cafNx
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m2/WqpQvq//l
 
-On 2016年05月12日 22:35, Peter Maydell wrote:
-> On 12 May 2016 at 15:31, Shannon Zhao <shannon.zhao@linaro.org> wrote:
->> > On 2016年05月12日 21:53, Peter Maydell wrote:
->>> >> On 11 May 2016 at 07:51, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->>>> >>> Hi Peter,
->>>> >>>
->>>> >>> On 2016/5/10 1:29, Peter Maydell wrote:
->>>> >>>
->>>>> >>>> Code review, testing, attempts to run guests other than Linux
->>>>> >>>> welcome (UEFI, anybody?)
->>>> >>> I run a guest with UEFI firmware. It gets stuck when kernel boots:
->>>> >>>
->>>> >>> [    0.186331] Brought up 1 CPUs
->>>> >>> [    0.186613] SMP: Total of 1 processors activated.
->>>> >>> [    0.187976] CPU: All CPU(s) started at EL1
->>>> >>> [    0.191060] alternatives: patching kernel code
->>>> >>> [    0.234352] devtmpfs: initialized
->>>> >>> [    0.273918] SMBIOS 3.0.0 present.
->>>> >>> [    0.280438] clocksource: jiffies: mask: 0xffffffff max_cycles:
->>>> >>> 0xffffffff, max_idle_ns: 7645041785100000 ns
->>>> >>> [    0.289983] pinctrl core: initialized pinctrl subsystem
->>>> >>> [    0.347558] NET: Registered protocol family 16
->>> >>
->>> >> Hmm, this works for me. I'm using the Linaro built UEFI from
->>> >> https://releases.linaro.org/components/kernel/uefi-linaro/15.12/release/qemu64/QEMU_EFI.fd
->>> >> and a 4.4 kernel and a command line
->>> >> ./build/a64-targets-nodbg/aarch64-softmmu/qemu-system-aarch64 -m 1024
->>> >> -M virt,gic-version=3 -cpu cortex-a57 -nographic -kernel
->>> >> ~/test-images/virtv8/Image -bios /tmp/QEMU_EFI.fd -append
->>> >> 'console=ttyAMA0,38400 keep_bootcon root=/dev/vda2'
->>> >>
->> > I wget the UEFI you use from above url and test with below script. It
->> > still hangs.
->> > ./qemu/aarch64-softmmu/qemu-system-aarch64 -smp 1 \
->> > -m 1024 -M virt,gic-version=3 -cpu cortex-a57 -nographic -kernel Image \
->> > -bios QEMU_EFI.fd -append 'console=ttyAMA0 root=/dev/ram
->> > earlycon=pl011,0x9000000 rw'
-> Can you put the Image file somewhere I can download it, please?
-I just upload it to
-http://people.linaro.org/~shannon.zhao/ACPI_ARM/Image
+On 12 May 2016 at 16:01, Shannon Zhao <shannon.zhao@linaro.org> wrote:
+> On 2016=E5=B9=B405=E6=9C=8812=E6=97=A5 22:35, Peter Maydell wrote:
+>> Can you put the Image file somewhere I can download it, please?
+> I just upload it to
+> http://people.linaro.org/~shannon.zhao/ACPI_ARM/Image
 
--- 
-Shannon
+OK, I can reproduce with that, and I think I know what this is.
+If we boot a "-bios" image then we don't apply the QEMU workaround
+for booting buggy Linux images which puts all the interrupts into
+Group 1, and it looks like a no-TZ-support UEFI doesn't
+configure the interrupt groups either. So Linux ends up hanging
+because the interrupt is group 0 but group 0 is disabled.
+
+If you apply this patch to your guest kernel you should find
+it boots OK I think:
+https://lkml.org/lkml/2016/5/10/297
+
+(I'm not sure why the images I was running worked OK; I must
+have been testing with an image that had that bugfix in it,
+though I could have sworn I wasn't.)
+
+I don't really want to apply the QEMU workaround when we're
+booting firmware images as well as raw kernels, but on the
+other hand via-UEFI is kind of supposed to be the normal way
+to boot in future. Perhaps we should drop the QEMU workaround
+altogether, putting everybody on the same playing field...
+
+thanks
+-- PMM

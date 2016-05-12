@@ -1,100 +1,99 @@
-Received: by 10.25.208.137 with SMTP id h131csp92945lfg;
-        Tue, 10 May 2016 23:52:21 -0700 (PDT)
-X-Received: by 10.140.107.225 with SMTP id h88mr1593832qgf.33.1462949541107;
-        Tue, 10 May 2016 23:52:21 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.137 with SMTP id h131csp475193lfg;
+        Wed, 11 May 2016 18:47:46 -0700 (PDT)
+X-Received: by 10.55.45.66 with SMTP id t63mr7338055qkh.72.1463017666810;
+        Wed, 11 May 2016 18:47:46 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a190si4072855qke.76.2016.05.10.23.52.20
+        by mx.google.com with ESMTPS id m10si7114708qkl.221.2016.05.11.18.47.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 May 2016 23:52:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 11 May 2016 18:47:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50739 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@163.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54998 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b0O0K-0005aC-Ma
-	for alex.bennee@linaro.org; Wed, 11 May 2016 02:52:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50934)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b0fj8-0001CH-DC
+	for alex.bennee@linaro.org; Wed, 11 May 2016 21:47:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1b0O0H-0005T3-7z
-	for qemu-arm@nongnu.org; Wed, 11 May 2016 02:52:18 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1b0fin-0000g8-Ne
+	for qemu-devel@nongnu.org; Wed, 11 May 2016 21:47:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1b0O0F-00083B-1E
-	for qemu-arm@nongnu.org; Wed, 11 May 2016 02:52:16 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:2951)
+	(envelope-from <zxq_yx_007@163.com>) id 1b0fij-0002xu-FB
+	for qemu-devel@nongnu.org; Wed, 11 May 2016 21:47:24 -0400
+Received: from m13-144.163.com ([220.181.13.144]:3360)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1b0O07-0007xX-JH; Wed, 11 May 2016 02:52:08 -0400
-Received: from 172.24.1.137 (EHLO szxeml422-hub.china.huawei.com)
-	([172.24.1.137])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DKJ06341; Wed, 11 May 2016 14:51:30 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml422-hub.china.huawei.com
-	(10.82.67.152) with Microsoft SMTP Server id 14.3.235.1;
-	Wed, 11 May 2016 14:51:21 +0800
-Message-ID: <5732D667.3040105@huawei.com>
-Date: Wed, 11 May 2016 14:51:19 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+	(envelope-from <zxq_yx_007@163.com>) id 1b0fii-0002xY-Kb
+	for qemu-devel@nongnu.org; Wed, 11 May 2016 21:47:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=jtDd3
+	d9CH71PSMmGWHd15HI27voDHHUDfx7UyYbmMD4=; b=WTVnYg3/iuW2yqOfdbqKh
+	UMM00zXW14rGqzrrs0xJy0PQPbuuAj0XGE8zlQuCYuN9VKECzwAHsFXRccYOO+RS
+	Ijk8AeTF2gq9B9PZAf1Mj2WITJ2qdK6k+ZjFPAgrO9RmaAJu6zksIl5a7RhE+67p
+	1+plZLn1mZxSlVf8aPp8Ig=
+Received: from zxq_yx_007$163.com ( [118.187.28.42] ) by
+	ajax-webmail-wmsvr144 (Coremail) ; Thu, 12 May 2016 09:46:48 +0800 (CST)
+X-Originating-IP: [118.187.28.42]
+Date: Thu, 12 May 2016 09:46:48 +0800 (CST)
+From: =?GBK?B?1dTQoce/?= <zxq_yx_007@163.com>
+To: "xiaoqiang zhao" <zxq_yx_007@163.com>
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version SP_ntes V3.5 build
+	20160223(81157.8522) Copyright (c) 2002-2016 www.mailtech.cn 163com
+In-Reply-To: <E44DBEC6-F0C6-4B70-A753-24D62179283D@163.com>
+References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
+	<CAFEAcA98BiQipq4PL=_9fBeOa01ESzyp7U4ghN0gZuxAyAqwoA@mail.gmail.com>
+	<CAFEAcA-P25AkJLBLst04J=BxTVvbfuQQAiE8nVS=w7oMXdtX8A@mail.gmail.com>
+	<56FC81E0.1000203@163.com>
+	<CAFEAcA_xGVpHW8ki0qqGMN8OtpbiZYtAsCJoxQG9z8FPXZBVqQ@mail.gmail.com>
+	<E44DBEC6-F0C6-4B70-A753-24D62179283D@163.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=GBK
 MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.5732D674.01A0, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: fbbbef7a54f3ca64313057d111f73139
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/23] GICv3 emulation
-X-BeenThere: qemu-arm@nongnu.org
+Message-ID: <1a238e2a.3db8.154a2a51724.Coremail.zxq_yx_007@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: kMGowAD3_YWK4DNXK0i2AA--.16724W
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOx1nxlXlTedyagABsE
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 220.181.13.144
+Subject: Re: [Qemu-devel] [PATCH 0/9] some QOM'ify work under hw/arm
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
-	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nkd5KgYUtHMP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, Rob Herring <robh@kernel.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vULqnurdPOD4
 
-Hi Peter,
-
-On 2016/5/10 1:29, Peter Maydell wrote:
-
-> Code review, testing, attempts to run guests other than Linux
-> welcome (UEFI, anybody?)
-I run a guest with UEFI firmware. It gets stuck when kernel boots:
-
-[    0.186331] Brought up 1 CPUs
-[    0.186613] SMP: Total of 1 processors activated.
-[    0.187976] CPU: All CPU(s) started at EL1
-[    0.191060] alternatives: patching kernel code
-[    0.234352] devtmpfs: initialized
-[    0.273918] SMBIOS 3.0.0 present.
-[    0.280438] clocksource: jiffies: mask: 0xffffffff max_cycles:
-0xffffffff, max_idle_ns: 7645041785100000 ns
-[    0.289983] pinctrl core: initialized pinctrl subsystem
-[    0.347558] NET: Registered protocol family 16
-
-Thanks,
--- 
-Shannon
-
+CtTaIDIwMTYtMDMtMzEgMTY6MTU6MTejrCJ4aWFvcWlhbmcgemhhbyIgPHp4cV95eF8wMDdAMTYz
+LmNvbT4g0LS1wKO6Cj4KPgo+PiDU2iAyMDE2xOoz1MIzMcjVo6wxNjowNaOsUGV0ZXIgTWF5ZGVs
+bCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPiDQtLXAo7oKPj4gCj4+PiBPbiAzMSBNYXJjaCAy
+MDE2IGF0IDAyOjQ4LCB4aWFvcWlhbmcgemhhbyA8enhxX3l4XzAwN0AxNjMuY29tPiB3cm90ZToK
+Pj4+IAo+Pj4+INTaIDIwMTbE6jAz1MIxNsjVIDIwOjAwLCBQZXRlciBNYXlkZWxsINC0tcA6Cj4+
+Pj4gCj4+Pj4+IE9uIDE2IE1hcmNoIDIwMTYgYXQgMTE6MzEsIFBldGVyIE1heWRlbGwgPHBldGVy
+Lm1heWRlbGxAbGluYXJvLm9yZz4gd3JvdGU6Cj4+Pj4+IAo+Pj4+PiBBIGdlbmVyYWwgbm90ZSAt
+LSBzaW5jZSB0aGVzZSBhcmVuJ3QgYnVnIGZpeGVzIGFuZCB3ZSdyZSBpbiBzb2Z0Cj4+Pj4+IGZy
+ZWV6ZSBub3csIEkgZG9uJ3QgdGhpbmsgd2Ugc2hvdWxkIHB1dCB0aGVtIGluIHVudGlsIDIuNiBp
+cyBvdXQuCj4+Pj4+IEknbGwgcmV2aWV3IHRoZSBwYXRjaGVzIGluIGEgc2Vjb25kLCB0aG91Z2gu
+Cj4+Pj4gCj4+Pj4gV2VsbCwgdGhlIHBhdGNoZXMgYWxsIGxvb2sgZ29vZCAtLSBwaW5nIG1lIGFm
+dGVyIDIuNiBpcyBvdXQgdG8KPj4+PiBhcHBseSB0aGVtIHRvIHRhcmdldC1hcm0ubmV4dCB0aGVu
+Lgo+Pj4+IAo+Pj4+IFdoZXJlIEkndmUgbm90ZWQgcG9zc2libGUgZnVydGhlciBjbGVhbnVwcywg
+dGhhdCdzIGludGVuZGVkIGFzCj4+Pj4gYW4gImlmIHlvdSBsaWtlIHdyaXRpbmcgY2xlYW51cCBw
+YXRjaGVzIiB0aGluZyAtLSB5b3UgZG9uJ3QgbmVlZAo+Pj4+IHRvIHRyeSB0byBkbyB0aGVtIGFz
+IHBhcnQgb2YgdGhpcyBwYXRjaCBzZXJpZXMuCj4+IAo+Pj4gcGluZyAhCj4+IAo+PiBJIHN1Z2dl
+c3RlZCB5b3UgcGluZyBtZSBhZnRlciAyLjYgaXMgb3V0LCB3aGljaCB3b24ndCBiZSB0aWwgdGhl
+Cj4+IGVuZCBvZiBBcHJpbCBvciB0aGVyZWFib3V0cy4KPj4gCj4+IHRoYW5rcwo+PiAtLSBQTU0K
+Pgo+T2ujoTIuNnJjIG1pc2xlYWRzIG1lo6EKCnBpbmcgOy0pCg==

@@ -1,136 +1,193 @@
-Received: by 10.25.208.137 with SMTP id h131csp208787lfg;
-        Fri, 13 May 2016 07:36:19 -0700 (PDT)
-X-Received: by 10.141.5.197 with SMTP id h188mr16479591qhd.97.1463150179827;
-        Fri, 13 May 2016 07:36:19 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.137 with SMTP id h131csp220360lfg;
+        Fri, 13 May 2016 08:05:52 -0700 (PDT)
+X-Received: by 10.140.30.246 with SMTP id d109mr15323205qgd.25.1463151951998;
+        Fri, 13 May 2016 08:05:51 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i13si1698102qke.208.2016.05.13.07.36.19
+        by mx.google.com with ESMTPS id x17si5050697qkx.34.2016.05.13.08.05.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 May 2016 07:36:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 13 May 2016 08:05:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34751 helo=lists.gnu.org)
+Received: from localhost ([::1]:34901 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b1ECR-0007mS-Df
-	for alex.bennee@linaro.org; Fri, 13 May 2016 10:36:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37235)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b1Ef1-00062I-De
+	for alex.bennee@linaro.org; Fri, 13 May 2016 11:05:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b1EC4-0007Ia-Fr
-	for qemu-devel@nongnu.org; Fri, 13 May 2016 10:35:57 -0400
+	(envelope-from <shannon.zhao@linaro.org>) id 1b1Eev-0005uW-3l
+	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:05:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b1EBy-00037V-Nv
-	for qemu-devel@nongnu.org; Fri, 13 May 2016 10:35:55 -0400
-Received: from mail-ig0-x233.google.com ([2607:f8b0:4001:c05::233]:36828)
+	(envelope-from <shannon.zhao@linaro.org>) id 1b1Eeq-0002NB-Iq
+	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:05:43 -0400
+Received: from mail-io0-x231.google.com ([2607:f8b0:4001:c06::231]:36066)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhao@linaro.org>) id 1b1EBy-000376-Cg
-	for qemu-devel@nongnu.org; Fri, 13 May 2016 10:35:50 -0400
-Received: by mail-ig0-x233.google.com with SMTP id qe5so9066242igc.1
-	for <qemu-devel@nongnu.org>; Fri, 13 May 2016 07:35:49 -0700 (PDT)
+	(envelope-from <shannon.zhao@linaro.org>) id 1b1Eep-0002N6-QR
+	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:05:40 -0400
+Received: by mail-io0-x231.google.com with SMTP id i75so130803413ioa.3
+	for <qemu-arm@nongnu.org>; Fri, 13 May 2016 08:05:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=StprF7+BbmKOAYBjHwE61WNmIcqBDA5taZQWeToAoa0=;
-	b=eKA6NzhZiEkq24BelqMGb+N6LST8Tj6tzRI78FvruJfS4n93wsTsuTuycHsvjG1Ujf
-	X21zyo1WVQhqy90unLDpxlIr9ABFDYe+wNHIRZV7LBHUHRYIfrtxJH7NAZv/1L9rSL7b
-	JDFnwUQzlzgdN7INqDR4lD8+ukRe7Ir/OLuC8=
+	bh=KBe4bML41dJz4+KFWNIb8sJUMg/a3EENABi9Lj9FgH8=;
+	b=YZXGhhh62DB/LDOZljYePe49oKoWMPUP6+UCzHgyjVWmoWqWXtvEG8uvUL6yfdbA/i
+	XpG2sqP0prnvjg/DwVugSkZOYaeGpF5F0V652j5erF3Ab6d6MvB+PaO9WwmgyYxh+bjc
+	7B6/TwZVsndPdOvk39pY2wkTbHVniY/iQmncg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=StprF7+BbmKOAYBjHwE61WNmIcqBDA5taZQWeToAoa0=;
-	b=hXjmqwKUZkRiqOCcTbSE1Yx74BRqsInfuBcOzZbniJ/bCvxU/GYlRL9eAUpL64oPd6
-	E/+yjQgQTGdChjmNQdv/sMHNVvNMZ9qIKq5S+9zWMDurDeOyeCEVo5/58VoyO7SNLtCv
-	bHS2Eef3GVWFtUOlXsd4/glIp6gWXTdQ5ve2n3YSFVcIBQr3WT6QH3A/TdW9TyAZQZ8Z
-	G6CsL2tdwvI/BOTvPKhBoZB3Sw7hD9sDkHyexCMiACifPI7rLAwlkMadQy9HZRjP+IFv
-	NoISoa6BuD53M5cCMiWJ6tg9W9jPMaMR37M1t+ZpMQTqKgBeZGiDobt4PxOUvIU5hDtw
-	Fu6Q==
-X-Gm-Message-State: AOPr4FWbAgnVKycUoYNMMCq1AKieBHk1JPMRIzL2/JtdGaosW44VeTjfB7h1rQnuatF4LDcE
-X-Received: by 10.50.187.133 with SMTP id fs5mr948835igc.61.1463150148878;
-	Fri, 13 May 2016 07:35:48 -0700 (PDT)
+	bh=KBe4bML41dJz4+KFWNIb8sJUMg/a3EENABi9Lj9FgH8=;
+	b=enfeJy6m5nDCjDrK5ZU2gMzLG48ES39uYsgpIZPcdRRyC8BbkKlud0Xot3fk1Fay3g
+	XewBn0Z8Qh2lI1+joqjyM6qpAPHwFEGDffCMWosbEq2OdzFCngwnB2C6/mCmH64Ccaym
+	POMtJBC1tGVYN/szCe2tZUi1+VAq0dHXCtbUq361xGZ8LTKwtoB5xEdOqwy2hhENmI53
+	5xlnD0bqI7xulPsSiQnO2XQ1HimkV1LQX+0yn2XOWmqQ/puGGcvYaJGpiH1tu36uwiK/
+	lCCZ3rca/Ss9nGXXktduSFIiZC55gdhbp3QeH6QAFLE7jfwwxieStZFF6BFPkSuURIAL
+	QIVw==
+X-Gm-Message-State: AOPr4FVN5+WiR9t7JcPRnxzQIEEB+BMxP5p7sU50ZAJ3z0zse/90ftWKpNWSXhb0hvzIZogd
+X-Received: by 10.36.204.198 with SMTP id x189mr1044711itf.19.1463151938776;
+	Fri, 13 May 2016 08:05:38 -0700 (PDT)
 Received: from [10.13.4.150] ([167.160.116.21])
-	by smtp.gmail.com with ESMTPSA id
-	o21sm1049403itc.18.2016.05.13.07.35.42
+	by smtp.gmail.com with ESMTPSA id s6sm1077530igg.15.2016.05.13.08.05.34
 	(version=TLSv1/SSLv3 cipher=OTHER);
-	Fri, 13 May 2016 07:35:47 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
+	Fri, 13 May 2016 08:05:37 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
-	<5732D667.3040105@huawei.com>
-	<CAFEAcA_ptjAd-hLUmfVr=47KD9w8-cyZJuWHgSvkwZKfgU+jaw@mail.gmail.com>
-	<573493A7.3030604@linaro.org>
-	<CAFEAcA8BeETRW_Rm5HwGX6_y6sBez86p5-WYUZoPdin54KoTxw@mail.gmail.com>
-	<57349AC9.5070407@linaro.org>
-	<CAFEAcA9xXO6GA3MkLEprWNSUW8ayWZkT4xcY01ek6zOvm0GP3A@mail.gmail.com>
+	<1462814989-24360-12-git-send-email-peter.maydell@linaro.org>
 From: Shannon Zhao <shannon.zhao@linaro.org>
-Message-ID: <5735E63B.7060500@linaro.org>
-Date: Fri, 13 May 2016 22:35:39 +0800
+Message-ID: <5735ED3B.8010904@linaro.org>
+Date: Fri, 13 May 2016 23:05:31 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
 	Thunderbird/38.5.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9xXO6GA3MkLEprWNSUW8ayWZkT4xcY01ek6zOvm0GP3A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1462814989-24360-12-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c05::233
-Subject: Re: [Qemu-devel] [PATCH 00/23] GICv3 emulation
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4001:c06::231
+Subject: Re: [Qemu-arm] [PATCH 11/23] hw/intc/arm_gicv3: Implement GICv3
+ distributor registers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Patch Tracking <patches@linaro.org>,
-	Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <zhaoshenglong@huawei.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YxaKhhKhfkQK
+	Pavel Fedin <p.fedin@samsung.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QE+x1z+qKJkK
 
-On 2016年05月12日 23:22, Peter Maydell wrote:
-> On 12 May 2016 at 16:01, Shannon Zhao <shannon.zhao@linaro.org> wrote:
->> On 2016年05月12日 22:35, Peter Maydell wrote:
->>> Can you put the Image file somewhere I can download it, please?
->> I just upload it to
->> http://people.linaro.org/~shannon.zhao/ACPI_ARM/Image
-> 
-> OK, I can reproduce with that, and I think I know what this is.
-> If we boot a "-bios" image then we don't apply the QEMU workaround
-> for booting buggy Linux images which puts all the interrupts into
-> Group 1, and it looks like a no-TZ-support UEFI doesn't
-> configure the interrupt groups either. So Linux ends up hanging
-> because the interrupt is group 0 but group 0 is disabled.
-> 
-> If you apply this patch to your guest kernel you should find
-> it boots OK I think:
-> https://lkml.org/lkml/2016/5/10/297
-> 
-Yeah, it boots OK with this patch.
+On 2016年05月10日 01:29, Peter Maydell wrote:
+> +static MemTxResult gicd_writeb(GICv3State *s, hwaddr offset,
+> +                               uint64_t value, MemTxAttrs attrs)
+> +{
+> +    /* Most GICv3 distributor registers do not support byte accesses. */
+> +    switch (offset) {
+> +    case GICD_CPENDSGIR ... GICD_CPENDSGIR + 0xf:
+> +    case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
+> +    case GICD_ITARGETSR ... GICD_ITARGETSR + 0x3ff:
+> +        /* This GIC implementation always has affinity routing enabled,
+> +         * so these registers are all RAZ/WI.
+> +         */
+> +        return MEMTX_OK;
+> +    case GICD_IPRIORITYR ... GICD_IPRIORITYR + 0x3ff:
+> +    {
+> +        int irq = offset - GICD_IPRIORITYR;
+> +
+> +        gicd_write_ipriorityr(s, attrs, irq, value);
+> +        gicv3_update(s, irq, 1);
+The GICv3 SPEC says:
+"
+When affinity routing is enabled for the security state of an interrupt:
+• GICR_IPRIORITYR<n> is used instead of GICD_IPRIORITYR<n> where n = 0
+to 7 (that
+is, for SGIs and PPIs).
+• GICD_IPRIORITYR<n> is RAZ/WI where n = 0 to 7.
+"
 
-> (I'm not sure why the images I was running worked OK; I must
-> have been testing with an image that had that bugfix in it,
-> though I could have sworn I wasn't.)
-> 
-> I don't really want to apply the QEMU workaround when we're
-> booting firmware images as well as raw kernels, but on the
-> other hand via-UEFI is kind of supposed to be the normal way
-> to boot in future. Perhaps we should drop the QEMU workaround
-> altogether, putting everybody on the same playing field...
-> 
-Maybe and if people want to use old kernels, they could use the stable
-kernel after the kernel patch applied.
+So I think it shouldn't call gicv3_update if attrs.secure is true and
+irq < 32. And it should check the parameter irq in gicv3_update().
 
-Thanks,
+> +        return MEMTX_OK;
+> +    }
+> +    default:
+> +        return MEMTX_ERROR;
+> +    }
+> +}
+> +
+> +static MemTxResult gicd_readw(GICv3State *s, hwaddr offset,
+> +                              uint64_t *data, MemTxAttrs attrs)
+> +{
+> +    /* Only GICD_SETSPI_NSR, GICD_CLRSPI_NSR, GICD_SETSPI_SR and GICD_SETSPI_NSR
+> +     * support 16 bit accesses, and those registers are all part of the
+> +     * optional message-based SPI feature which this GIC does not currently
+> +     * implement (ie for us GICD_TYPER.MBIS == 0), so for us they are
+> +     * reserved.
+> +     */
+> +    return MEMTX_ERROR;
+> +}
+> +
+> +static MemTxResult gicd_writew(GICv3State *s, hwaddr offset,
+> +                               uint64_t value, MemTxAttrs attrs)
+> +{
+> +    /* Only GICD_SETSPI_NSR, GICD_CLRSPI_NSR, GICD_SETSPI_SR and GICD_SETSPI_NSR
+> +     * support 16 bit accesses, and those registers are all part of the
+> +     * optional message-based SPI feature which this GIC does not currently
+> +     * implement (ie for us GICD_TYPER.MBIS == 0), so for us they are
+> +     * reserved.
+> +     */
+> +    return MEMTX_ERROR;
+> +}
+> +
+> +static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+> +                              uint64_t *data, MemTxAttrs attrs)
+> +{
+> +    /* Almost all GICv3 distributor registers are 32-bit.
+> +     * Note that WO registers must return an UNKNOWN value on reads,
+> +     * not an abort.
+> +     */
+> +
+> +    switch (offset) {
+> +    case GICD_CTLR:
+> +        if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
+> +            /* The NS view of the GICD_CTLR sees only certain bits:
+> +             * + bit [31] (RWP) is an alias of the Secure bit [31]
+> +             * + bit [4] (ARE_NS) is an alias of Secure bit [5]
+> +             * + bit [1] (EnableGrp1A) is an alias of Secure bit [1] if
+> +             *   NS affinity routing is enabled, otherwise RES0
+> +             * + bit [0] (EnableGrp1) is an alias of Secure bit [1] if
+> +             *   NS affinity routing is not enabled, otherwise RES0
+> +             * Since for QEMU affinity routing is always enabled
+> +             * for both S and NS this means that bits [4] and [5] are
+> +             * both always 1, and we can simply make the NS view
+> +             * be bits 31, 4 and 1 of the S view.
+> +             */
+> +            *data = s->gicd_ctlr & (GICD_CTLR_ARE_NS |
+As you said, we make the NS view be bit 4 of the S view. So the
+GICD_CTLR_ARE_NS should be GICD_CTLR_ARE_S, right?
+
+> +                                    GICD_CTLR_EN_GRP1NS |
+> +                                    GICD_CTLR_RWP);
+> +        } else {
+> +            *data = s->gicd_ctlr;
+> +        }
+> +        return MEMTX_OK;
+
+
 -- 
 Shannon

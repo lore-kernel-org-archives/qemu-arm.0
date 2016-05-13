@@ -1,135 +1,129 @@
-Received: by 10.25.208.137 with SMTP id h131csp232830lfg;
-        Fri, 13 May 2016 08:34:57 -0700 (PDT)
-X-Received: by 10.141.46.71 with SMTP id x68mr17290412qhe.70.1463153697017;
-        Fri, 13 May 2016 08:34:57 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.208.137 with SMTP id h131csp258162lfg;
+        Fri, 13 May 2016 09:41:52 -0700 (PDT)
+X-Received: by 10.140.239.137 with SMTP id k131mr17451313qhc.11.1463157712259;
+        Fri, 13 May 2016 09:41:52 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d126si12386019qkb.84.2016.05.13.08.34.56
+        by mx.google.com with ESMTPS id w21si6730124qkb.113.2016.05.13.09.41.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 May 2016 08:34:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 13 May 2016 09:41:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35011 helo=lists.gnu.org)
+       dkim=fail header.i=@microsoft.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=microsoft.com
+Received: from localhost ([::1]:35265 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b1F7A-0000PZ-HD
-	for alex.bennee@linaro.org; Fri, 13 May 2016 11:34:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50452)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b1G9v-0005IM-Oe
+	for alex.bennee@linaro.org; Fri, 13 May 2016 12:41:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b1F77-0000Ma-VU
-	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:34:55 -0400
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1b1G9K-0004bM-9v
+	for qemu-devel@nongnu.org; Fri, 13 May 2016 12:41:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b1F75-0000rS-P3
-	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:34:52 -0400
-Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:36428)
+	(envelope-from <Andrew.Baumann@microsoft.com>) id 1b1G9I-0008HB-Py
+	for qemu-devel@nongnu.org; Fri, 13 May 2016 12:41:13 -0400
+Received: from mail-bl2on0111.outbound.protection.outlook.com
+	([65.55.169.111]:18064
+	helo=na01-bl2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b1F75-0000r6-66
-	for qemu-arm@nongnu.org; Fri, 13 May 2016 11:34:51 -0400
-Received: by mail-vk0-x234.google.com with SMTP id s184so141436238vkb.3
-	for <qemu-arm@nongnu.org>; Fri, 13 May 2016 08:34:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=fVqn/3nEk9Qvg6wq3xmM+10r6Kt8ij4cyK/ujVYpyOk=;
-	b=LkQCf1AuTI9aQJqYQY7t+GB/w/7FdTpeDYa3tla1VaP36+sG/WGdush4L6kwAx00eL
-	QcVSBN7ILZY54akfEt4LbszF+grZm0P4PwPQcIq7rBQkMUcxvLkqFJ/BXNSnTtmGO0J6
-	VeDhc5Y6bhphLf4byYE126sbC5mZP7OdTVlrA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=fVqn/3nEk9Qvg6wq3xmM+10r6Kt8ij4cyK/ujVYpyOk=;
-	b=jrN74XT6AhZBJWRnQc2Dc4Pt5se83UDK/z53/5HHLaZvBT/B0eaHMcsz8GOD0EaD0h
-	5vntJWGctzHUEJYmmkxYk1EXcDpylA61LDr1n0fCM5rYCGV5UB3DlMwxiOsp/+lvLBqK
-	qtMObBmudZaZljyvW0rT55HJxIuPBM/5XppjNVIIxUfrxjxzD8jZBW1UPK4TnHgMcusM
-	hruzZRjwCtHOdhui6tiyfFG4XXKXm4gbyZ56Pb/CaWtNsX2BbVM0eonmmhRX54rTa7iR
-	viYBnmK5ta811vRiK6dz3F6jby7y0GixJyhiku/8ntikk7ZXW18P1CzWXFjm8V+ntcf5
-	q3dA==
-X-Gm-Message-State: AOPr4FX5FETSKfUw52urwUxkenzNLgOLAcfDwLAztDFQToUjHK4t7Eq/WzWbVl25IDGjQdNJbvwuFvO3zEmfK0Is
-X-Received: by 10.159.54.232 with SMTP id p95mr7127173uap.107.1463153690520;
-	Fri, 13 May 2016 08:34:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.216.1 with HTTP; Fri, 13 May 2016 08:34:30 -0700 (PDT)
-In-Reply-To: <1a238e2a.3db8.154a2a51724.Coremail.zxq_yx_007@163.com>
-References: <1457334350-5675-1-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA98BiQipq4PL=_9fBeOa01ESzyp7U4ghN0gZuxAyAqwoA@mail.gmail.com>
-	<CAFEAcA-P25AkJLBLst04J=BxTVvbfuQQAiE8nVS=w7oMXdtX8A@mail.gmail.com>
-	<56FC81E0.1000203@163.com>
-	<CAFEAcA_xGVpHW8ki0qqGMN8OtpbiZYtAsCJoxQG9z8FPXZBVqQ@mail.gmail.com>
-	<E44DBEC6-F0C6-4B70-A753-24D62179283D@163.com>
-	<1a238e2a.3db8.154a2a51724.Coremail.zxq_yx_007@163.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 May 2016 16:34:30 +0100
-Message-ID: <CAFEAcA9eaF8xecycuKyO==-Hx8Ht5yoNeQ9R5e-cNTYazQ-CXQ@mail.gmail.com>
-To: =?UTF-8?B?6LW15bCP5by6?= <zxq_yx_007@163.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <Andrew.Baumann@microsoft.com>)
+	id 1b1G9D-0008Fp-1w; Fri, 13 May 2016 12:41:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+	s=selector1; h=From:To:Date:Subject:Message-ID:Content-Type:MIME-Version;
+	bh=/PWf1WRkqt8vqETlQ9nWyTz+8nBwyemelkP2PXfQ6ZU=;
+	b=nFF2DASHymGi1iAmUuNPkQjV6m2ob4XBzhzDdxbmDWsGVhnFwVnEEYg4+lostuAbfK4Woqwu2kAXaOC9BZ+ieDnOHRyuCZt0EkIzknfBJZjzxV8eYd7boIGYNQKUxloZ1hnf5fDISoQ5SWGJKXEz89JgXAaqCheiwLlL2R9glxQ=
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com (10.164.22.24) by
+	BLUPR0301MB2036.namprd03.prod.outlook.com (10.164.22.26) with Microsoft
+	SMTP Server (TLS) id 15.1.492.11; Fri, 13 May 2016 16:41:04 +0000
+Received: from BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) by
+	BLUPR0301MB2034.namprd03.prod.outlook.com ([10.164.22.24]) with mapi id
+	15.01.0492.019; Fri, 13 May 2016 16:41:04 +0000
+From: Andrew Baumann <Andrew.Baumann@microsoft.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: Shouldn't cortex-a15 enable ARM_FEATURE_EL2?
+Thread-Index: AdGtM5hhHKTDP39VRCm+lEhZVDkFVA==
+Date: Fri, 13 May 2016 16:41:04 +0000
+Message-ID: <BLUPR0301MB203455969C9F25DB4CCD43849E740@BLUPR0301MB2034.namprd03.prod.outlook.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: linaro.org; dkim=none (message not signed)
+	header.d=none; linaro.org;
+	dmarc=none action=none header.from=microsoft.com; 
+x-originating-ip: [2001:4898:80e8:5::3ea]
+x-ms-office365-filtering-correlation-id: 69a8a979-b513-45c9-6ce9-08d37b4d6018
+x-microsoft-exchange-diagnostics: 1; BLUPR0301MB2036;
+	5:p+suN0FtDAQQZSMbxcFpYT9kSAJDPK+DWqQgCN1xGpBWFxSixTjlNY23pHlj5J1Q1KUX+vek+Cuu4MPoMAKNcDag6k4pFkHAfq1uSjhqy7vJUHMrUDj2JbeQ5LnL7epxksy62HTqzKfiobmQ01ansA==;
+	24:kCLtCFxrAxPuVX2K+AatAsfF4MPtXKEeiOIX/QJbfdKwUpmqcvQdkFu23fY9KYZ0LGANyRrOasdaB+zW7xTwiI3QylA2e65pe+3gfAKw4mQ=;
+	7:Ut3ueDOO5xfB1sPZ2fH5moiyKMO68VdUTxHeLTtgv5jvI0y2Pp6XEL0udp2hnFUaEx4l1BeBV2ACf/enhgzAkso4XF+YBe7soHCbkJKKNhhFe04ONkGyAgHI3SDy+1T9zRZI9E2bcwyRhG40W3Ui9CcJIw6WEBhuyvUTH1I3SR24ABasKo7Csen8tCzQUwSis0pHuV55mMLyy1t5qNNIZw==
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR0301MB2036;
+x-microsoft-antispam-prvs: <BLUPR0301MB2036ADA58FC646D55D4D0E909E740@BLUPR0301MB2036.namprd03.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:;
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(61425038)(601004)(2401047)(8121501046)(5005006)(3002001)(10201501046)(6055026)(61426038)(61427038);
+	SRVR:BLUPR0301MB2036; BCL:0; PCL:0; RULEID:;
+	SRVR:BLUPR0301MB2036; 
+x-forefront-prvs: 0941B96580
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(6009001)(2906002)(86612001)(76576001)(229853001)(77096005)(586003)(5003600100002)(3660700001)(1220700001)(10090500001)(11100500001)(110136002)(189998001)(6116002)(102836003)(99286002)(122556002)(5005710100001)(10290500002)(575784001)(86362001)(2900100001)(5004730100002)(8936002)(33656002)(5002640100001)(50986999)(92566002)(4326007)(81166006)(8676002)(5008740100001)(54356999)(3280700002)(9686002)(87936001)(74316001)(3826002);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BLUPR0301MB2036;
+	H:BLUPR0301MB2034.namprd03.prod.outlook.com; FPR:; SPF:None;
+	MLV:sfv; LANG:en; 
+spamdiagnosticoutput: 1:23
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::234
-Subject: Re: [Qemu-arm] [PATCH 0/9] some QOM'ify work under hw/arm
-X-BeenThere: qemu-arm@nongnu.org
+MIME-Version: 1.0
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 May 2016 16:41:04.2877 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR0301MB2036
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 65.55.169.111
+Subject: [Qemu-devel] Shouldn't cortex-a15 enable ARM_FEATURE_EL2?
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrew Zaborowski <balrogg@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T4ulSswg3oHC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qnDO1KpIbKRC
 
-On 12 May 2016 at 02:46, =E8=B5=B5=E5=B0=8F=E5=BC=BA <zxq_yx_007@163.com> w=
-rote:
->
-> =E5=9C=A8 2016-03-31 16:15:17=EF=BC=8C"xiaoqiang zhao" <zxq_yx_007@163.co=
-m> =E5=86=99=E9=81=93=EF=BC=9A
->>
->>
->>> =E5=9C=A8 2016=E5=B9=B43=E6=9C=8831=E6=97=A5=EF=BC=8C16:05=EF=BC=8CPete=
-r Maydell <peter.maydell@linaro.org> =E5=86=99=E9=81=93=EF=BC=9A
->>>
->>>> On 31 March 2016 at 02:48, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
->>>>
->>>>> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8816=E6=97=A5 20:00, Peter Maydell =
-=E5=86=99=E9=81=93:
->>>>>
->>>>>> On 16 March 2016 at 11:31, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>>>>>
->>>>>> A general note -- since these aren't bug fixes and we're in soft
->>>>>> freeze now, I don't think we should put them in until 2.6 is out.
->>>>>> I'll review the patches in a second, though.
->>>>>
->>>>> Well, the patches all look good -- ping me after 2.6 is out to
->>>>> apply them to target-arm.next then.
->>>>>
->>>>> Where I've noted possible further cleanups, that's intended as
->>>>> an "if you like writing cleanup patches" thing -- you don't need
->>>>> to try to do them as part of this patch series.
->>>
->>>> ping !
->>>
->>> I suggested you ping me after 2.6 is out, which won't be til the
->>> end of April or thereabouts.
->>>
->>> thanks
->>> -- PMM
->>
->>Ok=EF=BC=812.6rc misleads me=EF=BC=81
->
-> ping ;-)
+Hi Peter,
 
-These are now all in master; thanks.
+I'm trying to use the MRS/MSR banked register instructions you recently imp=
+lemented, but found that they raised an undefined instruction exception on =
+the cortex-a15 CPU model. This seems to be caused by the check in msr_banke=
+d_access_decode(), which looks for ARM_FEATURE_V8 or ARM_FEATURE_EL2.
 
--- PMM
+The quick kludge below worked for me, but I don't have high confidence in i=
+ts correctness -- the CPU supports the virtualisation extensions, but I've =
+no idea whether the rest of qemu is consistent with enabling that feature. =
+I guess you have a better idea?
+
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -1132,6 +1132,7 @@ static void cortex_a15_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+     set_feature(&cpu->env, ARM_FEATURE_LPAE);
++    set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     cpu->kvm_target =3D QEMU_KVM_ARM_TARGET_CORTEX_A15;
+     cpu->midr =3D 0x412fc0f1;
+
+Cheers,
+Andrew

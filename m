@@ -1,104 +1,125 @@
-Received: by 10.25.208.137 with SMTP id h131csp526211lfg;
-        Sat, 14 May 2016 04:43:46 -0700 (PDT)
-X-Received: by 10.55.143.129 with SMTP id r123mr20550950qkd.170.1463226226137;
-        Sat, 14 May 2016 04:43:46 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y9si6695203qgd.97.2016.05.14.04.43.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 14 May 2016 04:43:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.208.137 with SMTP id h131csp1145532lfg;
+        Mon, 16 May 2016 00:57:29 -0700 (PDT)
+X-Received: by 10.140.98.117 with SMTP id n108mr27205679qge.16.1463385449346;
+        Mon, 16 May 2016 00:57:29 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id x64si21824682qke.279.2016.05.16.00.57.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 16 May 2016 00:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37466 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b1Xyz-0001xT-N4
-	for alex.bennee@linaro.org; Sat, 14 May 2016 07:43:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38428)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>) id 1b1Xyg-0001Ug-4V
-	for qemu-devel@nongnu.org; Sat, 14 May 2016 07:43:26 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>) id 1b1Xye-0003nq-4a
-	for qemu-devel@nongnu.org; Sat, 14 May 2016 07:43:24 -0400
-Received: from mail-oi0-x22d.google.com ([2607:f8b0:4003:c06::22d]:35756)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>)
-	id 1b1Xya-0003mw-5u; Sat, 14 May 2016 07:43:20 -0400
-Received: by mail-oi0-x22d.google.com with SMTP id x19so207619640oix.2;
-	Sat, 14 May 2016 04:43:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-	:cc; bh=CWHGy/g25+WYt3b5kDrK6qlp+hqr3GP4MNdHBiGggBk=;
-	b=WYdDr7/mrCNa3nHNIzm87I9vjMtoo08jq4B9s5eiw1oFx8Oa+0Cp9YFapKZ4brqXsk
-	PdyFc+gqNknkMH/GEcCJwdHGETOsv/gI1sQAphytFNbs2heYanMX2bwKGpN+I5WEut5g
-	xteivRXUS0xBFs681zMg82mNJpJ4ueN+QD4hdzNPoivkN/tnKFCXa5L61z3K0YCrYgik
-	bpp0DnPF/el4jV3VoP2CzoRkDMKDST+Jfiot8Aw1hP0aOWDHMmMR1TCXSmCDDpUqozc6
-	Ln4ByhQ5Qm4r9txR3hfwTXO/VhGpC1hDob1v1gNf+UqPuYyhCZgi4KYvzmul9IWSVT9V
-	Ttfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:date
-	:message-id:subject:from:to:cc;
-	bh=CWHGy/g25+WYt3b5kDrK6qlp+hqr3GP4MNdHBiGggBk=;
-	b=IigdHoMMgr+3uo4GRrhoX8MjbJGnnUztmst2pxPyOKzSzjc6nNdd5bc/erANP6gR9N
-	K3IE+gyWKA8ImAln1l4twzueZ1B+syp9C+je+XXVp+A8wyx8Z0ppMJ8ArTpE7Qd54+Wx
-	rCBoj8Q1RAOl4Bo30U+zme7trSjDubpD5EHD1pI6DfwlblWrXXpLz17hWWuxVwdOeJ1e
-	7LPBkHL97lonKBkZh5mAmbFLYWyz6ygo36OuLLHYPBdrtjH63GeeZTmANzdeiwXSaO39
-	zGZSlMNum/F1Vve+C9cNXhGryZe9NUOxbQ9rXNF2I7ymMk0FsUGWbidodgXlxfJAdHkY
-	OrDQ==
-X-Gm-Message-State: AOPr4FW9HLsYi/ySrfZcIXYaC0Pcr98aGvEsOQ0wYI63xAcmoTCeTtt+KrNMyHnlLB2dDWB/Eo1SLX1Pkh7Jgg==
-MIME-Version: 1.0
-X-Received: by 10.157.9.100 with SMTP id 91mr10815591otp.142.1463226199608;
-	Sat, 14 May 2016 04:43:19 -0700 (PDT)
-Received: by 10.157.9.182 with HTTP; Sat, 14 May 2016 04:43:19 -0700 (PDT)
-In-Reply-To: <CAFEAcA-sc7-yoLCb5sh-1jN4er7aMcQgM9kWed5--90_cqXmiQ@mail.gmail.com>
-References: <1463202423-19943-1-git-send-email-tsunghan.tw@gmail.com>
-	<CAFEAcA-sc7-yoLCb5sh-1jN4er7aMcQgM9kWed5--90_cqXmiQ@mail.gmail.com>
-Date: Sat, 14 May 2016 20:43:19 +0900
-Message-ID: <CA+BS1oF+O0uuHqPQQW-tPY8DG-6cc3OdVDc=+e1uqf-cc3YWKQ@mail.gmail.com>
-From: Tsung-Han Lin <tsunghan.tw@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::22d
-Content-Type: text/plain; charset=UTF-8
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH] target-arm/helper.c: fix access rights of
- SP_ELs
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A7g0M7J3HpsE
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 561EBC05B1C5;
+	Mon, 16 May 2016 07:57:28 +0000 (UTC)
+Received: from hawk.localdomain.com (ovpn-204-50.brq.redhat.com [10.40.204.50])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u4G7vPBE018488;
+	Mon, 16 May 2016 03:57:25 -0400
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org,
+        alex.bennee@linaro.org
+Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com
+Subject: [kvm-unit-tests PATCH 00/10] arm/arm64: add gic framework
+Date: Mon, 16 May 2016 09:57:14 +0200
+Message-Id: <1463385444-12916-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Mon, 16 May 2016 07:57:28 +0000 (UTC)
+X-TUID: lEDm8nHQNyXz
 
-2016-05-14 19:08 GMT+09:00 Peter Maydell <peter.maydell@linaro.org>:
+Import defines, and steal enough helper functions, from Linux to
+enable programming of the gic (v2 and v3). Then use the framework
+to add an initial test (an ipi test; self, target-list, broadcast).
 
->
->
-> The ARM ARM defines that SP_EL1 is accessible only from
-> EL2 or higher via the system-register instructions, and
-> SP_EL2 only from EL3 or higher (see table C5-7 on page
-> C5-288 of the v8 ARM ARM DDI0487A.h, or the register description
-> pages for the two registers). Why do you think this is a correct
-> change?
->
-> Thanks for the correction. Seems like I misunderstood the spec.
+It's my hope that this framework will be a suitable base on which
+more tests may be easily added, particularly because we have
+vgic-new and tcg gicv3 emulation getting close to merge.
+
+To run it, along with other tests, just do
+
+ ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+ make
+ export QEMU=$PATH_TO_QEMU
+ ./run_tests.sh
+
+To run it separately do, e.g.
+
+$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 123 -machine gic-version=3 -append ipi
+
+      ^^ note, we can go nuts with nr-cpus on TCG :-)
+
+Or, a KVM example using a different "sender" cpu and irq (other than zero)
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
 
 
-> thanks
-> -- PMM
->
+Patches:
+01-05: fixes and functionality needed by the later gic patches
+06-07: code theft from Linux (defines, helper functions)
+08-10: arm/gic.flat (the base of the gic unit test), currently just IPI
+
+Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic
+
+
+Andrew Jones (10):
+  lib: xstr: allow multiple args
+  arm64: fix get_"sysreg32" and make MPIDR 64bit
+  arm/arm64: smp: support more than 8 cpus
+  arm/arm64: add some delay routines
+  arm/arm64: irq enable/disable
+  arm/arm64: add initial gicv2 support
+  arm64: add initial gicv3 support
+  arm/arm64: gicv2: add an IPI test
+  arm/arm64: gicv3: add an IPI test
+  arm/arm64: gic: don't just use zero
+
+ arm/Makefile.common        |   7 +-
+ arm/gic.c                  | 338 +++++++++++++++++++++++++++++++++++++++++++++
+ arm/run                    |  19 ++-
+ arm/selftest.c             |   5 +-
+ arm/unittests.cfg          |  13 ++
+ lib/arm/asm/arch_gicv3.h   | 184 ++++++++++++++++++++++++
+ lib/arm/asm/gic-v2.h       |  74 ++++++++++
+ lib/arm/asm/gic-v3.h       | 320 ++++++++++++++++++++++++++++++++++++++++++
+ lib/arm/asm/gic.h          |  21 +++
+ lib/arm/asm/processor.h    |  38 ++++-
+ lib/arm/asm/setup.h        |   4 +-
+ lib/arm/gic.c              | 127 +++++++++++++++++
+ lib/arm/processor.c        |  15 ++
+ lib/arm/setup.c            |  12 +-
+ lib/arm64/asm/arch_gicv3.h | 169 +++++++++++++++++++++++
+ lib/arm64/asm/gic-v2.h     |   1 +
+ lib/arm64/asm/gic-v3.h     |   1 +
+ lib/arm64/asm/gic.h        |   1 +
+ lib/arm64/asm/processor.h  |  53 +++++--
+ lib/arm64/asm/sysreg.h     |  44 ++++++
+ lib/arm64/processor.c      |  15 ++
+ lib/libcflat.h             |   4 +-
+ 22 files changed, 1439 insertions(+), 26 deletions(-)
+ create mode 100644 arm/gic.c
+ create mode 100644 lib/arm/asm/arch_gicv3.h
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic-v3.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm/gic.c
+ create mode 100644 lib/arm64/asm/arch_gicv3.h
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic-v3.h
+ create mode 100644 lib/arm64/asm/gic.h
+ create mode 100644 lib/arm64/asm/sysreg.h
+
+-- 
+2.4.11

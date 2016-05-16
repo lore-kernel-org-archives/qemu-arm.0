@@ -1,296 +1,182 @@
-Received: by 10.25.208.137 with SMTP id h131csp1145719lfg;
-        Mon, 16 May 2016 00:58:13 -0700 (PDT)
-X-Received: by 10.140.140.138 with SMTP id 132mr28794994qhm.85.1463385471845;
-        Mon, 16 May 2016 00:57:51 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1145776lfg;
+        Mon, 16 May 2016 00:58:23 -0700 (PDT)
+X-Received: by 10.55.180.133 with SMTP id d127mr29211926qkf.131.1463385474381;
+        Mon, 16 May 2016 00:57:54 -0700 (PDT)
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 124si1587832qkg.95.2016.05.16.00.57.51
+        by mx.google.com with ESMTPS id o94si21861757qge.94.2016.05.16.00.57.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 May 2016 00:57:51 -0700 (PDT)
+        Mon, 16 May 2016 00:57:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EF32962661;
-	Mon, 16 May 2016 07:57:50 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 72FA58553D;
+	Mon, 16 May 2016 07:57:53 +0000 (UTC)
 Received: from hawk.localdomain.com (ovpn-204-50.brq.redhat.com [10.40.204.50])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u4G7vPBN018488;
-	Mon, 16 May 2016 03:57:48 -0400
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u4G7vPBO018488;
+	Mon, 16 May 2016 03:57:51 -0400
 From: Andrew Jones <drjones@redhat.com>
 To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
         qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org,
         alex.bennee@linaro.org
 Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com
-Subject: [kvm-unit-tests PATCH 09/10] arm/arm64: gicv3: add an IPI test
-Date: Mon, 16 May 2016 09:57:23 +0200
-Message-Id: <1463385444-12916-10-git-send-email-drjones@redhat.com>
+Subject: [kvm-unit-tests PATCH 10/10] arm/arm64: gic: don't just use zero
+Date: Mon, 16 May 2016 09:57:24 +0200
+Message-Id: <1463385444-12916-11-git-send-email-drjones@redhat.com>
 In-Reply-To: <1463385444-12916-1-git-send-email-drjones@redhat.com>
 References: <1463385444-12916-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Mon, 16 May 2016 07:57:51 +0000 (UTC)
-X-TUID: Se3v3hGf4ugu
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Mon, 16 May 2016 07:57:53 +0000 (UTC)
+X-TUID: 4/fD4felmpif
+
+Allow user to select who sends ipis and with which irq, rather
+than just always sending irq=0 from cpu0.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- arm/gic.c         | 160 +++++++++++++++++++++++++++++++++++++++++++++++++++---
- arm/unittests.cfg |   6 ++
- 2 files changed, 157 insertions(+), 9 deletions(-)
+ arm/gic.c | 53 ++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 42 insertions(+), 11 deletions(-)
 
 diff --git a/arm/gic.c b/arm/gic.c
-index 24be9e0ade369..ec8e0a26ff724 100644
+index ec8e0a26ff724..b76b946f2c106 100644
 --- a/arm/gic.c
 +++ b/arm/gic.c
-@@ -3,6 +3,8 @@
-  *
-  * GICv2
-  *   . test sending/receiving IPIs
-+ * GICv3
-+ *   . test sending/receiving IPIs
-  *
-  * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-  *
-@@ -16,6 +18,18 @@
- #include <asm/barrier.h>
- #include <asm/io.h>
+@@ -11,6 +11,7 @@
+  * This work is licensed under the terms of the GNU LGPL, version 2.
+  */
+ #include <libcflat.h>
++#include <util.h>
+ #include <asm/setup.h>
+ #include <asm/processor.h>
+ #include <asm/gic.h>
+@@ -31,6 +32,7 @@ struct gic {
  
-+struct gic {
-+	struct {
-+		void (*enable)(void);
-+		void (*send_self)(void);
-+		void (*send_tlist)(cpumask_t *);
-+		void (*send_broadcast)(void);
-+	} ipi;
-+	u32 (*read_iar)(void);
-+	void (*write_eoi)(u32);
-+};
-+
-+static struct gic *gic;
+ static struct gic *gic;
  static int gic_version;
++static int sender, irq;
  static int acked[NR_CPUS];
  static cpumask_t ready;
-@@ -54,18 +68,114 @@ static void check_acked(cpumask_t *mask)
- 	report("timed-out (5s timeout)", false);
- }
  
-+static u32 gicv2_read_iar(void)
-+{
-+	return readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-+}
-+
-+static void gicv2_write_eoi(u32 irq)
-+{
-+	writel(irq, gicv2_cpu_base() + GIC_CPU_EOI);
-+}
-+
- static void ipi_handler(struct pt_regs *regs __unused)
+@@ -92,19 +94,19 @@ static void ipi_handler(struct pt_regs *regs __unused)
+ 
+ static void gicv2_ipi_send_self(void)
  {
--	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-+	u32 iar = gic->read_iar();
- 
- 	if (iar != GICC_INT_SPURIOUS) {
--		writel(iar, gicv2_cpu_base() + GIC_CPU_EOI);
-+		gic->write_eoi(iar);
- 		smp_rmb();
- 		++acked[smp_processor_id()];
- 		smp_wmb();
- 	}
- }
- 
-+static void gicv2_ipi_send_self(void)
-+{
-+	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+static void gicv2_ipi_send_tlist(cpumask_t *mask)
-+{
-+	u8 tlist = (u8)cpumask_bits(mask)[0];
-+
-+	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+static void gicv2_ipi_send_broadcast(void)
-+{
-+	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+#define ICC_SGI1R_AFFINITY_1_SHIFT	16
-+#define ICC_SGI1R_AFFINITY_2_SHIFT	32
-+#define ICC_SGI1R_AFFINITY_3_SHIFT	48
-+#define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
-+	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
-+
-+static void gicv3_ipi_send_tlist(cpumask_t *mask)
-+{
-+	u16 tlist;
-+	int cpu;
-+
-+	for_each_cpu(cpu, mask) {
-+		u64 mpidr = cpus[cpu], sgi1r;
-+		u64 cluster_id = mpidr & ~0xffUL;
-+
-+		tlist = 0;
-+
-+		while (cpu < nr_cpus) {
-+			if ((mpidr & 0xff) >= 16) {
-+				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
-+					cpu, (int)(mpidr & 0xff));
-+				break;
-+			}
-+
-+			tlist |= 1 << (mpidr & 0xf);
-+
-+			cpu = cpumask_next(cpu, mask);
-+			if (cpu >= nr_cpus)
-+				break;
-+
-+			mpidr = cpus[cpu];
-+
-+			if (cluster_id != (mpidr & ~0xffUL)) {
-+				--cpu;
-+				break;
-+			}
-+		}
-+
-+		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
-+			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
-+			 /* irq << 24				| */
-+			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
-+			 tlist);
-+
-+		gicv3_write_sgi1r(sgi1r);
-+	}
-+
-+	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
-+	isb();
-+}
-+
-+static void gicv3_ipi_send_self(void)
-+{
-+	cpumask_t mask;
-+
-+	cpumask_clear(&mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
-+	gicv3_ipi_send_tlist(&mask);
-+}
-+
-+static void gicv3_ipi_send_broadcast(void)
-+{
-+	cpumask_t mask;
-+
-+	cpumask_copy(&mask, &cpu_present_mask);
-+	cpumask_clear_cpu(smp_processor_id(), &mask);
-+	gicv3_ipi_send_tlist(&mask);
-+}
-+
- static void ipi_test_self(void)
- {
- 	cpumask_t mask;
-@@ -75,7 +185,7 @@ static void ipi_test_self(void)
- 	smp_wmb();
- 	cpumask_clear(&mask);
- 	cpumask_set_cpu(0, &mask);
 -	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
++	writel(2 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
  }
-@@ -83,14 +193,15 @@ static void ipi_test_self(void)
- static void ipi_test_smp(void)
- {
- 	cpumask_t mask;
--	unsigned long tlist;
-+	int i;
  
- 	report_prefix_push("target-list");
+ static void gicv2_ipi_send_tlist(cpumask_t *mask)
+ {
+ 	u8 tlist = (u8)cpumask_bits(mask)[0];
+ 
+-	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
++	writel(tlist << 16 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
+ }
+ 
+ static void gicv2_ipi_send_broadcast(void)
+ {
+-	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
++	writel(1 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
+ }
+ 
+ #define ICC_SGI1R_AFFINITY_1_SHIFT	16
+@@ -147,7 +149,7 @@ static void gicv3_ipi_send_tlist(cpumask_t *mask)
+ 
+ 		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
+ 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
+-			 /* irq << 24				| */
++			 irq << 24				|
+ 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
+ 			 tlist);
+ 
+@@ -184,7 +186,7 @@ static void ipi_test_self(void)
  	memset(acked, 0, sizeof(acked));
  	smp_wmb();
--	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
--	cpumask_bits(&mask)[0] = tlist;
--	writel((u8)tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	cpumask_copy(&mask, &cpu_present_mask);
-+	for (i = 0; i < nr_cpus; i += 2)
-+		cpumask_clear_cpu(i, &mask);
-+	gic->ipi.send_tlist(&mask);
+ 	cpumask_clear(&mask);
+-	cpumask_set_cpu(0, &mask);
++	cpumask_set_cpu(smp_processor_id(), &mask);
+ 	gic->ipi.send_self();
  	check_acked(&mask);
  	report_prefix_pop();
- 
-@@ -99,14 +210,14 @@ static void ipi_test_smp(void)
+@@ -199,7 +201,7 @@ static void ipi_test_smp(void)
+ 	memset(acked, 0, sizeof(acked));
  	smp_wmb();
  	cpumask_copy(&mask, &cpu_present_mask);
- 	cpumask_clear_cpu(0, &mask);
--	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	gic->ipi.send_broadcast();
+-	for (i = 0; i < nr_cpus; i += 2)
++	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
+ 		cpumask_clear_cpu(i, &mask);
+ 	gic->ipi.send_tlist(&mask);
+ 	check_acked(&mask);
+@@ -209,7 +211,7 @@ static void ipi_test_smp(void)
+ 	memset(acked, 0, sizeof(acked));
+ 	smp_wmb();
+ 	cpumask_copy(&mask, &cpu_present_mask);
+-	cpumask_clear_cpu(0, &mask);
++	cpumask_clear_cpu(smp_processor_id(), &mask);
+ 	gic->ipi.send_broadcast();
  	check_acked(&mask);
  	report_prefix_pop();
+@@ -226,6 +228,15 @@ static void ipi_enable(void)
+ 	local_irq_enable();
  }
  
- static void ipi_enable(void)
++static void ipi_send(void)
++{
++	ipi_enable();
++	wait_on_ready();
++	ipi_test_self();
++	ipi_test_smp();
++	exit(report_summary());
++}
++
+ static void ipi_recv(void)
  {
--	gicv2_enable_defaults();
-+	gic->ipi.enable();
- #ifdef __arm__
- 	install_exception_handler(EXCPTN_IRQ, ipi_handler);
- #else
-@@ -123,6 +234,28 @@ static void ipi_recv(void)
- 		wfi();
- }
+ 	ipi_enable();
+@@ -284,6 +295,19 @@ int main(int argc, char **argv)
+ 		ipi_test_self();
  
-+struct gic gicv2 = {
-+	.ipi = {
-+		.enable = gicv2_enable_defaults,
-+		.send_self = gicv2_ipi_send_self,
-+		.send_tlist = gicv2_ipi_send_tlist,
-+		.send_broadcast = gicv2_ipi_send_broadcast,
-+	},
-+	.read_iar = gicv2_read_iar,
-+	.write_eoi = gicv2_write_eoi,
-+};
+ 	} else if (!strcmp(argv[0], "ipi")) {
++		int off, i = 0;
++		long val;
 +
-+struct gic gicv3 = {
-+	.ipi = {
-+		.enable = gicv3_enable_defaults,
-+		.send_self = gicv3_ipi_send_self,
-+		.send_tlist = gicv3_ipi_send_tlist,
-+		.send_broadcast = gicv3_ipi_send_broadcast,
-+	},
-+	.read_iar = gicv3_read_iar,
-+	.write_eoi = gicv3_write_eoir,
-+};
-+
- int main(int argc, char **argv)
- {
- 	char pfx[8];
-@@ -135,6 +268,15 @@ int main(int argc, char **argv)
- 	snprintf(pfx, 8, "gicv%d", gic_version);
- 	report_prefix_push(pfx);
++		while (--argc) {
++			off = parse_keyval(argv[++i], &val);
++			if (off == -1)
++				continue;
++			argv[i][off] = '\0';
++			if (strcmp(argv[i], "sender") == 0)
++				sender = val;
++			else if (strcmp(argv[i], "irq") == 0)
++				irq = val;
++		}
  
-+	switch (gic_version) {
-+	case 2:
-+		gic = &gicv2;
-+		break;
-+	case 3:
-+		gic = &gicv3;
-+		break;
-+	}
-+
- 	if (argc == 0) {
+ 		report_prefix_push(argv[0]);
+ 		nr_cpu_check(2);
+@@ -292,11 +316,18 @@ int main(int argc, char **argv)
+ 		for_each_present_cpu(cpu) {
+ 			if (cpu == 0)
+ 				continue;
+-			smp_boot_secondary(cpu, ipi_recv);
++			if (cpu == sender)
++				smp_boot_secondary(cpu, ipi_send);
++			else
++				smp_boot_secondary(cpu, ipi_recv);
++		}
++		if (sender == 0)  {
++			wait_on_ready();
++			ipi_test_self();
++			ipi_test_smp();
++		} else {
++			ipi_recv();
+ 		}
+-		wait_on_ready();
+-		ipi_test_self();
+-		ipi_test_smp();
+ 		report_prefix_pop();
  
- 		report_prefix_push("ipi");
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index bb364675043f0..043a20e26e98c 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -58,3 +58,9 @@ file = gic.flat
- smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
- extra_params = -machine gic-version=2 -append 'ipi'
- groups = gic
-+
-+[gicv3-ipi]
-+file = gic.flat
-+smp = $MAX_SMP
-+extra_params = -machine gic-version=3 -append 'ipi'
-+groups = gic
+ 	} else {
 -- 
 2.4.11

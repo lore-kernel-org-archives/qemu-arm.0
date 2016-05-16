@@ -1,51 +1,51 @@
-Received: by 10.25.208.137 with SMTP id h131csp1291295lfg;
-        Mon, 16 May 2016 07:17:36 -0700 (PDT)
-X-Received: by 10.55.90.130 with SMTP id o124mr31559140qkb.178.1463408255945;
-        Mon, 16 May 2016 07:17:35 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1291379lfg;
+        Mon, 16 May 2016 07:17:49 -0700 (PDT)
+X-Received: by 10.140.239.137 with SMTP id k131mr31235718qhc.11.1463408269502;
+        Mon, 16 May 2016 07:17:49 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v44si23177813qgd.82.2016.05.16.07.17.35
+        by mx.google.com with ESMTPS id a35si23167652qgf.66.2016.05.16.07.17.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 May 2016 07:17:35 -0700 (PDT)
+        Mon, 16 May 2016 07:17:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44110 helo=lists.gnu.org)
+Received: from localhost ([::1]:44113 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b2JKx-0004Hm-E3
-	for alex.bennee@linaro.org; Mon, 16 May 2016 10:17:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39505)
+	id 1b2JLA-0004pB-Su
+	for alex.bennee@linaro.org; Mon, 16 May 2016 10:17:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39605)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JII-0008Pp-Sm
-	for qemu-devel@nongnu.org; Mon, 16 May 2016 10:14:52 -0400
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JIV-0000Ji-9W
+	for qemu-devel@nongnu.org; Mon, 16 May 2016 10:15:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JIH-00062J-RT
-	for qemu-devel@nongnu.org; Mon, 16 May 2016 10:14:50 -0400
-Received: from mx2.rt-rk.com ([89.216.37.149]:33118 helo=mail.rt-rk.com)
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JIU-00065X-5I
+	for qemu-devel@nongnu.org; Mon, 16 May 2016 10:15:03 -0400
+Received: from mx2.rt-rk.com ([89.216.37.149]:33169 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <aleksandar.markovic@rt-rk.com>)
-	id 1b2JIC-00060C-Lk; Mon, 16 May 2016 10:14:44 -0400
+	id 1b2JIO-00063h-Ls; Mon, 16 May 2016 10:14:56 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with ESMTP id C5AA51A451A;
-	Mon, 16 May 2016 16:14:42 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTP id C802A1A4522;
+	Mon, 16 May 2016 16:14:54 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at rt-rk.com
 Received: from rtrkw197-lin.domain.local (rtrkw197-lin.domain.local
 	[10.10.13.82])
-	by mail.rt-rk.com (Postfix) with ESMTPSA id A04471A44F1;
-	Mon, 16 May 2016 16:14:42 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTPSA id 986C21A4521;
+	Mon, 16 May 2016 16:14:54 +0200 (CEST)
 From: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 16 May 2016 16:12:41 +0200
-Message-Id: <1463407965-19733-6-git-send-email-aleksandar.markovic@rt-rk.com>
+Date: Mon, 16 May 2016 16:12:42 +0200
+Message-Id: <1463407965-19733-7-git-send-email-aleksandar.markovic@rt-rk.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
 References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 89.216.37.149
-Subject: [Qemu-devel] [PATCH v6 5/9] linux-user: Update preprocessor
- constants for Mips-specific e_flags bits
+Subject: [Qemu-devel] [PATCH v6 6/9] target-mips: Activate IEEE 754-2008
+ signaling NaN bit meaning
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,49 +68,66 @@ Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NyGjWIo5H8Jh
+X-TUID: IocCyjcZWcpd
 
 From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-Missing values EF_MIPS_FP64 and EF_MIPS_NAN2008 added, and the format
-of the surrounding code segment adjusted.
+Functions mips_cpu_reset() and msa_reset() are updated so that flag
+snan_bit_is_one is properly set for any Mips FPU/MSA configuration.
+For main FPUs, CPUs with FCR31's FCR31_NAN2008 bit set will invoke
+set_snan_bit_is_one(0). For MSA, as it is IEEE 274-2008 compliant
+from it inception, set_snan_bit_is_one(0) will always be invoked.
+
+By applying this patch, a number of incorrect behaviors for CPU
+configurations that require IEEE 754-2008 compliance will be fixed.
+Those are behaviors that (up to the moment of applying this patch)
+did not get the desired functionality from SoftFloat library with
+respect to distinguishing between quiet and signaling NaN, getting
+default NaN values (both quiet and signaling), establishing if a
+floating point number is Nan or not, etc.
+
+Two examples:
+
+* <MAX|MAXA>.<D|S> will now correctly detect and propagate NaNs.
+* CLASS.<D|S> and FCLASS.<D|S> will now correcty detect NaN flavors.
 
 Signed-off-by: Thomas Schwinge <thomas@codesourcery.com>
 Signed-off-by: Maciej W. Rozycki <macro@codesourcery.com>
 Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 ---
- include/elf.h | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+ target-mips/translate.c      | 6 +++++-
+ target-mips/translate_init.c | 3 ++-
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/include/elf.h b/include/elf.h
-index 28d448b..b7f59e4 100644
---- a/include/elf.h
-+++ b/include/elf.h
-@@ -46,14 +46,16 @@ typedef int64_t  Elf64_Sxword;
- #define EF_MIPS_ABI_O32		0x00001000	/* O32 ABI.  */
- #define EF_MIPS_ABI_O64		0x00002000	/* O32 extended for 64 bit.  */
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index e934884..2cdd2bd 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -20129,7 +20129,11 @@ void cpu_state_reset(CPUMIPSState *env)
+     env->CP0_PageGrain = env->cpu_model->CP0_PageGrain;
+     env->active_fpu.fcr0 = env->cpu_model->CP1_fcr0;
+     env->active_fpu.fcr31 = env->cpu_model->CP1_fcr31;
+-    set_snan_bit_is_one(1, &env->active_fpu.fp_status);
++    if ((env->active_fpu.fcr31 >> FCR31_NAN2008) & 1) {
++        set_snan_bit_is_one(0, &env->active_fpu.fp_status);
++    } else {
++        set_snan_bit_is_one(1, &env->active_fpu.fp_status);
++    }
+     env->msair = env->cpu_model->MSAIR;
+     env->insn_flags = env->cpu_model->insn_flags;
  
--#define EF_MIPS_NOREORDER 0x00000001
--#define EF_MIPS_PIC       0x00000002
--#define EF_MIPS_CPIC      0x00000004
--#define EF_MIPS_ABI2		0x00000020
--#define EF_MIPS_OPTIONS_FIRST	0x00000080
--#define EF_MIPS_32BITMODE	0x00000100
--#define EF_MIPS_ABI		0x0000f000
--#define EF_MIPS_ARCH      0xf0000000
-+#define EF_MIPS_NOREORDER       0x00000001
-+#define EF_MIPS_PIC             0x00000002
-+#define EF_MIPS_CPIC            0x00000004
-+#define EF_MIPS_ABI2            0x00000020
-+#define EF_MIPS_OPTIONS_FIRST   0x00000080
-+#define EF_MIPS_32BITMODE       0x00000100
-+#define EF_MIPS_FP64            0x00000200
-+#define EF_MIPS_NAN2008         0x00000400
-+#define EF_MIPS_ABI             0x0000f000
-+#define EF_MIPS_ARCH            0xf0000000
+diff --git a/target-mips/translate_init.c b/target-mips/translate_init.c
+index e81a831..a37d8bb 100644
+--- a/target-mips/translate_init.c
++++ b/target-mips/translate_init.c
+@@ -893,5 +893,6 @@ static void msa_reset(CPUMIPSState *env)
+     /* clear float_status nan mode */
+     set_default_nan_mode(0, &env->active_tc.msa_fp_status);
  
- /* These constants define the different elf file types */
- #define ET_NONE   0
+-    set_snan_bit_is_one(1, &env->active_tc.msa_fp_status);
++    /* set proper signanling bit meaning ("1" means "quiet") */
++    set_snan_bit_is_one(0, &env->active_tc.msa_fp_status);
+ }
 -- 
 1.9.1
 

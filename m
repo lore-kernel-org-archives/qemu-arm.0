@@ -1,51 +1,51 @@
-Received: by 10.25.208.137 with SMTP id h131csp1290509lfg;
-        Mon, 16 May 2016 07:15:29 -0700 (PDT)
-X-Received: by 10.140.223.10 with SMTP id t10mr30621039qhb.96.1463408129220;
-        Mon, 16 May 2016 07:15:29 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1290658lfg;
+        Mon, 16 May 2016 07:15:53 -0700 (PDT)
+X-Received: by 10.141.28.204 with SMTP id f195mr30473592qhe.59.1463408153622;
+        Mon, 16 May 2016 07:15:53 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r1si23132670qkc.189.2016.05.16.07.15.29
+        by mx.google.com with ESMTPS id f91si23172772qga.24.2016.05.16.07.15.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 May 2016 07:15:29 -0700 (PDT)
+        Mon, 16 May 2016 07:15:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44084 helo=lists.gnu.org)
+Received: from localhost ([::1]:44091 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b2JIu-00010g-JQ
-	for alex.bennee@linaro.org; Mon, 16 May 2016 10:15:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39381)
+	id 1b2JJI-0001ht-Og
+	for alex.bennee@linaro.org; Mon, 16 May 2016 10:15:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39695)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JI3-00085H-2Z
-	for qemu-arm@nongnu.org; Mon, 16 May 2016 10:14:35 -0400
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JIh-0000fE-Gr
+	for qemu-arm@nongnu.org; Mon, 16 May 2016 10:15:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JHv-0005vN-8T
-	for qemu-arm@nongnu.org; Mon, 16 May 2016 10:14:34 -0400
-Received: from mx2.rt-rk.com ([89.216.37.149]:33044 helo=mail.rt-rk.com)
+	(envelope-from <aleksandar.markovic@rt-rk.com>) id 1b2JIf-0006CO-1L
+	for qemu-arm@nongnu.org; Mon, 16 May 2016 10:15:14 -0400
+Received: from mx2.rt-rk.com ([89.216.37.149]:33375 helo=mail.rt-rk.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <aleksandar.markovic@rt-rk.com>)
-	id 1b2JHv-0005vH-0z; Mon, 16 May 2016 10:14:27 -0400
+	id 1b2JIe-0006CB-MD; Mon, 16 May 2016 10:15:12 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by mail.rt-rk.com (Postfix) with ESMTP id 258501A44EE;
-	Mon, 16 May 2016 16:14:25 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTP id C84811A4536;
+	Mon, 16 May 2016 16:15:10 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at rt-rk.com
 Received: from rtrkw197-lin.domain.local (rtrkw197-lin.domain.local
 	[10.10.13.82])
-	by mail.rt-rk.com (Postfix) with ESMTPSA id EA9C91A2239;
-	Mon, 16 May 2016 16:14:24 +0200 (CEST)
+	by mail.rt-rk.com (Postfix) with ESMTPSA id 9C6A41A4530;
+	Mon, 16 May 2016 16:15:10 +0200 (CEST)
 From: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 16 May 2016 16:12:40 +0200
-Message-Id: <1463407965-19733-5-git-send-email-aleksandar.markovic@rt-rk.com>
+Date: Mon, 16 May 2016 16:12:43 +0200
+Message-Id: <1463407965-19733-8-git-send-email-aleksandar.markovic@rt-rk.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
 References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 89.216.37.149
-Subject: [Qemu-arm] [PATCH v6 4/9] softfloat: For Mips only,
- correct order in pickNaNMulAdd()
+Subject: [Qemu-arm] [PATCH v6 7/9] target-mips: Add abs2008 flavor of
+ <ABS|NEG>.<S|D>
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,78 +67,104 @@ Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
 	afaerber@suse.de, aurelien@aurel32.net, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BuRuSK2KV/3s
+X-TUID: da/eZ4ZVOB31
 
 From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-Only for Mips platform, and only for cases when snan_bit_is_one is 0,
-correct the order of argument comparisons in pickNaNMulAdd().
+Updated handling of instructions <ABS|NEG>.<S|D>. Note that legacy
+(pre-abs2008) ABS and NEG instructions are arithmetic (and, therefore,
+any NaN operand causes signaling invalid operation), while abs2008
+ones are non-arithmetic, always and only changing the sign bit, even
+for NaN-like operands. Details on these instructions are documented
+in [1] p. 35 and 359.
 
-For more info, see [1], page 53, section "3.5.3 NaN Propagation".
+Implementation-wise, abs2008 versions are implemented without helpers,
+for simplicity and performance sake.
 
-[1] "MIPS Architecture for Programmers Volume IV-j:
-    The MIPS32 SIMD Architecture Module",
-    Imagination Technologies LTD, Revision 1.12, February 3, 2016
+[1] "MIPS Architecture For Programmers Volume II-A:
+    The MIPS64 Instruction Set Reference Manual",
+    Imagination Technologies LTD, Revision 6.04, November 13, 2015
 
 Reviewed-by: Leon Alrae <leon.alrae@imgtec.com>
+Signed-off-by: Thomas Schwinge <thomas@codesourcery.com>
+Signed-off-by: Maciej W. Rozycki <macro@codesourcery.com>
 Signed-off-by: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 ---
- fpu/softfloat-specialize.h | 41 +++++++++++++++++++++++++++++------------
- 1 file changed, 29 insertions(+), 12 deletions(-)
+ target-mips/translate.c | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
 
-diff --git a/fpu/softfloat-specialize.h b/fpu/softfloat-specialize.h
-index 093218f..11fc66b 100644
---- a/fpu/softfloat-specialize.h
-+++ b/fpu/softfloat-specialize.h
-@@ -571,19 +571,36 @@ static int pickNaNMulAdd(flag aIsQNaN, flag aIsSNaN, flag bIsQNaN, flag bIsSNaN,
-         return 3;
-     }
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index 2cdd2bd..3b6b3b5 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -1434,6 +1434,7 @@ typedef struct DisasContext {
+     bool vp;
+     bool cmgcr;
+     bool mrp;
++    bool abs2008;
+ } DisasContext;
  
--    /* Prefer sNaN over qNaN, in the a, b, c order. */
--    if (aIsSNaN) {
--        return 0;
--    } else if (bIsSNaN) {
--        return 1;
--    } else if (cIsSNaN) {
--        return 2;
--    } else if (aIsQNaN) {
--        return 0;
--    } else if (bIsQNaN) {
--        return 1;
-+    if (status->snan_bit_is_one) {
-+        /* Prefer sNaN over qNaN, in the c, a, b order. */
-+        if (cIsSNaN) {
-+            return 2;
-+        } else if (aIsSNaN) {
-+            return 0;
-+        } else if (bIsSNaN) {
-+            return 1;
-+        } else if (cIsQNaN) {
-+            return 2;
-+        } else if (aIsQNaN) {
-+            return 0;
-+        } else {
-+            return 1;
-+        }
-     } else {
--        return 2;
-+        /* Prefer sNaN over qNaN, in the a, b, c order. */
-+        if (aIsSNaN) {
-+            return 0;
-+        } else if (bIsSNaN) {
-+            return 1;
-+        } else if (cIsSNaN) {
-+            return 2;
-+        } else if (aIsQNaN) {
-+            return 0;
-+        } else if (bIsQNaN) {
-+            return 1;
-+        } else {
-+            return 2;
-+        }
-     }
- }
- #elif defined(TARGET_PPC)
+ enum {
+@@ -8879,7 +8880,11 @@ static void gen_farith (DisasContext *ctx, enum fopcode op1,
+             TCGv_i32 fp0 = tcg_temp_new_i32();
+ 
+             gen_load_fpr32(ctx, fp0, fs);
+-            gen_helper_float_abs_s(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_andi_i32(fp0, fp0, 0x7fffffffUL);
++            } else {
++                gen_helper_float_abs_s(fp0, fp0);
++            }
+             gen_store_fpr32(ctx, fp0, fd);
+             tcg_temp_free_i32(fp0);
+         }
+@@ -8898,7 +8903,11 @@ static void gen_farith (DisasContext *ctx, enum fopcode op1,
+             TCGv_i32 fp0 = tcg_temp_new_i32();
+ 
+             gen_load_fpr32(ctx, fp0, fs);
+-            gen_helper_float_chs_s(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_xori_i32(fp0, fp0, 1UL << 31);
++            } else {
++                gen_helper_float_chs_s(fp0, fp0);
++            }
+             gen_store_fpr32(ctx, fp0, fd);
+             tcg_temp_free_i32(fp0);
+         }
+@@ -9369,7 +9378,11 @@ static void gen_farith (DisasContext *ctx, enum fopcode op1,
+             TCGv_i64 fp0 = tcg_temp_new_i64();
+ 
+             gen_load_fpr64(ctx, fp0, fs);
+-            gen_helper_float_abs_d(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_andi_i64(fp0, fp0, 0x7fffffffffffffffULL);
++            } else {
++                gen_helper_float_abs_d(fp0, fp0);
++            }
+             gen_store_fpr64(ctx, fp0, fd);
+             tcg_temp_free_i64(fp0);
+         }
+@@ -9390,7 +9403,11 @@ static void gen_farith (DisasContext *ctx, enum fopcode op1,
+             TCGv_i64 fp0 = tcg_temp_new_i64();
+ 
+             gen_load_fpr64(ctx, fp0, fs);
+-            gen_helper_float_chs_d(fp0, fp0);
++            if (ctx->abs2008) {
++                tcg_gen_xori_i64(fp0, fp0, 1ULL << 63);
++            } else {
++                gen_helper_float_chs_d(fp0, fp0);
++            }
+             gen_store_fpr64(ctx, fp0, fd);
+             tcg_temp_free_i64(fp0);
+         }
+@@ -19775,6 +19792,7 @@ void gen_intermediate_code(CPUMIPSState *env, struct TranslationBlock *tb)
+              (env->insn_flags & (INSN_LOONGSON2E | INSN_LOONGSON2F));
+     ctx.vp = (env->CP0_Config5 >> CP0C5_VP) & 1;
+     ctx.mrp = (env->CP0_Config5 >> CP0C5_MRP) & 1;
++    ctx.abs2008 = (env->active_fpu.fcr31 >> FCR31_ABS2008) & 1;
+     restore_cpu_state(env, &ctx);
+ #ifdef CONFIG_USER_ONLY
+         ctx.mem_idx = MIPS_HFLAG_UM;
 -- 
 1.9.1
 

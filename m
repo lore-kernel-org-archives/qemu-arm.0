@@ -1,182 +1,108 @@
-Received: by 10.25.208.137 with SMTP id h131csp1145776lfg;
-        Mon, 16 May 2016 00:58:23 -0700 (PDT)
-X-Received: by 10.55.180.133 with SMTP id d127mr29211926qkf.131.1463385474381;
-        Mon, 16 May 2016 00:57:54 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id o94si21861757qge.94.2016.05.16.00.57.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 May 2016 00:57:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.208.137 with SMTP id h131csp1162538lfg;
+        Mon, 16 May 2016 01:56:39 -0700 (PDT)
+X-Received: by 10.141.30.201 with SMTP id t70mr29826818qhf.3.1463388999313;
+        Mon, 16 May 2016 01:56:39 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w81si2242504qke.145.2016.05.16.01.56.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 16 May 2016 01:56:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 72FA58553D;
-	Mon, 16 May 2016 07:57:53 +0000 (UTC)
-Received: from hawk.localdomain.com (ovpn-204-50.brq.redhat.com [10.40.204.50])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u4G7vPBO018488;
-	Mon, 16 May 2016 03:57:51 -0400
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org,
-        alex.bennee@linaro.org
-Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com
-Subject: [kvm-unit-tests PATCH 10/10] arm/arm64: gic: don't just use zero
-Date: Mon, 16 May 2016 09:57:24 +0200
-Message-Id: <1463385444-12916-11-git-send-email-drjones@redhat.com>
-In-Reply-To: <1463385444-12916-1-git-send-email-drjones@redhat.com>
-References: <1463385444-12916-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Mon, 16 May 2016 07:57:53 +0000 (UTC)
-X-TUID: 4/fD4felmpif
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43142 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b2EKM-0002g2-UY
+	for alex.bennee@linaro.org; Mon, 16 May 2016 04:56:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36455)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1b2EKJ-0002ao-W5
+	for qemu-arm@nongnu.org; Mon, 16 May 2016 04:56:36 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1b2EKI-0002NH-1G
+	for qemu-arm@nongnu.org; Mon, 16 May 2016 04:56:34 -0400
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:35298)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1b2EKH-0002Mp-4E
+	for qemu-arm@nongnu.org; Mon, 16 May 2016 04:56:33 -0400
+Received: by mail-vk0-x22b.google.com with SMTP id f66so205425936vkh.2
+	for <qemu-arm@nongnu.org>; Mon, 16 May 2016 01:56:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=aKKXDKjlYYtLfUQ5IFG+e700qQ0EkNHi0h70hZvoa14=;
+	b=htJRLZHEAW+AtKNU5SuM1/znDh1EqHtyym8JauJH8PV7dBDQed2WoFFjUzmasPSrpe
+	URUjr2FCKnEDcyV0aszzI5x10p7jh2CsHqdShVh3UxUTn9ui0+/+hWiZv4oxzhe9ItQe
+	OQF+rptHF5fgWyFmrAqN0eiHQ0gS7RD5MYrYM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=aKKXDKjlYYtLfUQ5IFG+e700qQ0EkNHi0h70hZvoa14=;
+	b=LHf9Y8W7yltBAgzaSuyw7jOEUzj5lr97I3t/GwiMso01tVvdiK8W8BkvSnk9UkwqhZ
+	fJMpReXZI8wMM5j2POP6PKkW8An/FkFmw3FefPSEnkBqsUBNJ96SZxdW25WqzEXWOFAn
+	lROimmp494WhGxnqpxkUDR2Jfv9+NorqWZL5mfNo8HZdqG4hFwn98gNjCqEkUsxr0QwK
+	TYjERNqe8nJJC5aAAGXZuCT0qP9xZw+jaok8F5scO5cVq+hlepbGqaOaV3/8eneIsaK8
+	aNf1YUvNXuObYBhLT3Tk6puGun1RP0a5iKaDqUBvjKqP8G9fjU/ocLPB8lvAghYE2MRJ
+	jBpg==
+X-Gm-Message-State: AOPr4FWW3OS79z3lTuyTvE09Y0Q2kWCFXzG6jHn9ADUU/DdQSq9t1i5UH9CzLy0PAfRBoZhStwjAoXQ6M94Ve0Ap
+X-Received: by 10.176.0.204 with SMTP id 70mr14738332uaj.4.1463388992225; Mon,
+	16 May 2016 01:56:32 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.216.1 with HTTP; Mon, 16 May 2016 01:56:12 -0700 (PDT)
+In-Reply-To: <CAFEAcA_9ZuAb79S1-PCU2kJ=6cHTYbuHTmD2VaZyecgBG_oFuw@mail.gmail.com>
+References: <1462814989-24360-1-git-send-email-peter.maydell@linaro.org>
+	<1462814989-24360-12-git-send-email-peter.maydell@linaro.org>
+	<5735ED3B.8010904@linaro.org>
+	<CAFEAcA_9ZuAb79S1-PCU2kJ=6cHTYbuHTmD2VaZyecgBG_oFuw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 May 2016 09:56:12 +0100
+Message-ID: <CAFEAcA-dJA2iz=u-Omc4pYUO1TdvRsCY08-+ma1+ForF6iof_A@mail.gmail.com>
+To: Shannon Zhao <shannon.zhao@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22b
+Subject: Re: [Qemu-arm] [PATCH 11/23] hw/intc/arm_gicv3: Implement GICv3
+ distributor registers
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Patch Tracking <patches@linaro.org>,
+	Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+	Shlomo Pongratz <shlomopongratz@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6Ph9JxS5m76Q
 
-Allow user to select who sends ipis and with which irq, rather
-than just always sending irq=0 from cpu0.
+On 13 May 2016 at 16:24, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 13 May 2016 at 16:05, Shannon Zhao <shannon.zhao@linaro.org> wrote:
+>> So I think it shouldn't call gicv3_update if attrs.secure is true and
+>> irq < 32. And it should check the parameter irq in gicv3_update().
+>
+> If irq < 32 then gicd_write_ipriority() will return without
+> doing anything. We'll unnecessarily call gicv3_update(), but that
+> does no harm, and I don't think being slightly inefficient for
+> an access a correctly functioning guest will never make is a big problem.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- arm/gic.c | 53 ++++++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 42 insertions(+), 11 deletions(-)
+Thinking about this again over the weekend I realised you're right,
+because gicv3_update() doesn't handle out-of-range irq numbers.
+I need to either make gicv3_update() return doing nothing for
+out of range IRQs or ensure we don't call it in that case (and
+add an assert just in case).
 
-diff --git a/arm/gic.c b/arm/gic.c
-index ec8e0a26ff724..b76b946f2c106 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -11,6 +11,7 @@
-  * This work is licensed under the terms of the GNU LGPL, version 2.
-  */
- #include <libcflat.h>
-+#include <util.h>
- #include <asm/setup.h>
- #include <asm/processor.h>
- #include <asm/gic.h>
-@@ -31,6 +32,7 @@ struct gic {
- 
- static struct gic *gic;
- static int gic_version;
-+static int sender, irq;
- static int acked[NR_CPUS];
- static cpumask_t ready;
- 
-@@ -92,19 +94,19 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- static void gicv2_ipi_send_self(void)
- {
--	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(2 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- static void gicv2_ipi_send_tlist(cpumask_t *mask)
- {
- 	u8 tlist = (u8)cpumask_bits(mask)[0];
- 
--	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(tlist << 16 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- static void gicv2_ipi_send_broadcast(void)
- {
--	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(1 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- #define ICC_SGI1R_AFFINITY_1_SHIFT	16
-@@ -147,7 +149,7 @@ static void gicv3_ipi_send_tlist(cpumask_t *mask)
- 
- 		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
--			 /* irq << 24				| */
-+			 irq << 24				|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
- 			 tlist);
- 
-@@ -184,7 +186,7 @@ static void ipi_test_self(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_clear(&mask);
--	cpumask_set_cpu(0, &mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -199,7 +201,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	for (i = 0; i < nr_cpus; i += 2)
-+	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
- 		cpumask_clear_cpu(i, &mask);
- 	gic->ipi.send_tlist(&mask);
- 	check_acked(&mask);
-@@ -209,7 +211,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	cpumask_clear_cpu(0, &mask);
-+	cpumask_clear_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_broadcast();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -226,6 +228,15 @@ static void ipi_enable(void)
- 	local_irq_enable();
- }
- 
-+static void ipi_send(void)
-+{
-+	ipi_enable();
-+	wait_on_ready();
-+	ipi_test_self();
-+	ipi_test_smp();
-+	exit(report_summary());
-+}
-+
- static void ipi_recv(void)
- {
- 	ipi_enable();
-@@ -284,6 +295,19 @@ int main(int argc, char **argv)
- 		ipi_test_self();
- 
- 	} else if (!strcmp(argv[0], "ipi")) {
-+		int off, i = 0;
-+		long val;
-+
-+		while (--argc) {
-+			off = parse_keyval(argv[++i], &val);
-+			if (off == -1)
-+				continue;
-+			argv[i][off] = '\0';
-+			if (strcmp(argv[i], "sender") == 0)
-+				sender = val;
-+			else if (strcmp(argv[i], "irq") == 0)
-+				irq = val;
-+		}
- 
- 		report_prefix_push(argv[0]);
- 		nr_cpu_check(2);
-@@ -292,11 +316,18 @@ int main(int argc, char **argv)
- 		for_each_present_cpu(cpu) {
- 			if (cpu == 0)
- 				continue;
--			smp_boot_secondary(cpu, ipi_recv);
-+			if (cpu == sender)
-+				smp_boot_secondary(cpu, ipi_send);
-+			else
-+				smp_boot_secondary(cpu, ipi_recv);
-+		}
-+		if (sender == 0)  {
-+			wait_on_ready();
-+			ipi_test_self();
-+			ipi_test_smp();
-+		} else {
-+			ipi_recv();
- 		}
--		wait_on_ready();
--		ipi_test_self();
--		ipi_test_smp();
- 		report_prefix_pop();
- 
- 	} else {
--- 
-2.4.11
+thanks
+-- PMM

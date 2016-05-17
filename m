@@ -1,48 +1,45 @@
-Received: by 10.25.208.137 with SMTP id h131csp1765732lfg;
-        Tue, 17 May 2016 05:24:24 -0700 (PDT)
-X-Received: by 10.55.33.102 with SMTP id h99mr1025617qkh.130.1463487864402;
-        Tue, 17 May 2016 05:24:24 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp1766437lfg;
+        Tue, 17 May 2016 05:25:45 -0700 (PDT)
+X-Received: by 10.140.180.132 with SMTP id b126mr1027417qha.32.1463487945550;
+        Tue, 17 May 2016 05:25:45 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s123si1956389qkd.247.2016.05.17.05.24.24
+        by mx.google.com with ESMTPS id n3si2021801qkc.48.2016.05.17.05.25.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 17 May 2016 05:24:24 -0700 (PDT)
+        Tue, 17 May 2016 05:25:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50008 helo=lists.gnu.org)
+Received: from localhost ([::1]:50024 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b2e2x-0003NI-TA
-	for alex.bennee@linaro.org; Tue, 17 May 2016 08:24:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49461)
+	id 1b2e4G-00064q-Vw
+	for alex.bennee@linaro.org; Tue, 17 May 2016 08:25:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49481)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b2e2u-0003GY-2n
-	for qemu-arm@nongnu.org; Tue, 17 May 2016 08:24:21 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1b2e2x-0003PO-Kd
+	for qemu-arm@nongnu.org; Tue, 17 May 2016 08:24:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b2e2r-0005dY-Sy
-	for qemu-arm@nongnu.org; Tue, 17 May 2016 08:24:18 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1b2e2r-0005dC-Iw
+	for qemu-arm@nongnu.org; Tue, 17 May 2016 08:24:23 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1b2e2r-0005cG-M7; Tue, 17 May 2016 08:24:17 -0400
+	id 1b2e2r-0005cG-Ci; Tue, 17 May 2016 08:24:17 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1b2dtD-0007T2-Ku; Tue, 17 May 2016 13:14:19 +0100
+	id 1b2dtD-0007Sr-5m; Tue, 17 May 2016 13:14:19 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 17 May 2016 13:14:17 +0100
-Message-Id: <1463487258-27468-2-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 17 May 2016 13:14:16 +0100
+Message-Id: <1463487258-27468-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1463487258-27468-1-git-send-email-peter.maydell@linaro.org>
-References: <1463487258-27468-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/2] target-arm: Set IL bit in syndromes for insn
- abort, watchpoint, swstep
+Subject: [Qemu-arm] [PATCH 0/2] target-arm: ESR IL bit fixes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,47 +55,31 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
 	Laurent Desnogues <laurent.desnogues@gmail.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Eb4XoJMLa2tu
+X-TUID: HjIloMatcA0T
 
-For some exception syndrome types, the IL bit should always be set.
-This includes the instruction abort, watchpoint and software step
-syndrome types; add the missing ARM_EL_IL bit to the syndrome
-values returned by syn_insn_abort(), syn_swstep() and syn_watchpoint().
+These patches fix some problems with setting the IL bit in
+ESR syndrome register values:
+ * we were not setting IL for insn abort, watchpoint or swstep
+   (which should all always have IL==1)
+ * we were trying to set the IL bit in arm_cpu_do_interrupt_aarch64()
+   if doing a 32->64 bit exception entry, which was wrong in
+   several ways; instead we should just rely on exception.syndrome
+   already having the correct IL bit value
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
+The patches are intended to apply on top of target-arm.next:
+ https://git.linaro.org/people/peter.maydell/qemu-arm.git target-arm.next
+(which has Edgar's patch which gets us correct IL bit values for
+data abort exceptions).
+
+Peter Maydell (2):
+  target-arm: Set IL bit in syndromes for insn abort, watchpoint, swstep
+  target-arm: Don't try to set ESR IL bit in
+    arm_cpu_do_interrupt_aarch64()
+
+ target-arm/helper.c    | 3 ---
  target-arm/internals.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ 2 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/target-arm/internals.h b/target-arm/internals.h
-index 54a0fb1..7768a24 100644
---- a/target-arm/internals.h
-+++ b/target-arm/internals.h
-@@ -382,7 +382,7 @@ static inline uint32_t syn_fp_access_trap(int cv, int cond, bool is_16bit)
- static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
- {
-     return (EC_INSNABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
--        | (ea << 9) | (s1ptw << 7) | fsc;
-+        | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
- }
- 
- static inline uint32_t syn_data_abort_no_iss(int same_el,
-@@ -411,13 +411,13 @@ static inline uint32_t syn_data_abort_with_iss(int same_el,
- static inline uint32_t syn_swstep(int same_el, int isv, int ex)
- {
-     return (EC_SOFTWARESTEP << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
--        | (isv << 24) | (ex << 6) | 0x22;
-+        | ARM_EL_IL | (isv << 24) | (ex << 6) | 0x22;
- }
- 
- static inline uint32_t syn_watchpoint(int same_el, int cm, int wnr)
- {
-     return (EC_WATCHPOINT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
--        | (cm << 8) | (wnr << 6) | 0x22;
-+        | ARM_EL_IL | (cm << 8) | (wnr << 6) | 0x22;
- }
- 
- static inline uint32_t syn_breakpoint(int same_el)
 -- 
 1.9.1
 

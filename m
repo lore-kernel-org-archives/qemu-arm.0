@@ -1,82 +1,82 @@
-Received: by 10.25.208.137 with SMTP id h131csp2488608lfg;
-        Wed, 18 May 2016 08:42:38 -0700 (PDT)
-X-Received: by 10.55.8.12 with SMTP id 12mr8286088qki.200.1463586158721;
-        Wed, 18 May 2016 08:42:38 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp2557678lfg;
+        Wed, 18 May 2016 10:55:49 -0700 (PDT)
+X-Received: by 10.55.148.130 with SMTP id w124mr9695356qkd.203.1463594149569;
+        Wed, 18 May 2016 10:55:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m27si7246717qkh.97.2016.05.18.08.42.38
+        by mx.google.com with ESMTPS id p190si7783058qkb.284.2016.05.18.10.55.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 18 May 2016 08:42:38 -0700 (PDT)
+        Wed, 18 May 2016 10:55:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45868 helo=lists.gnu.org)
+Received: from localhost ([::1]:46356 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b33cM-0008Th-85
-	for alex.bennee@linaro.org; Wed, 18 May 2016 11:42:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33210)
+	id 1b35hF-00037P-0j
+	for alex.bennee@linaro.org; Wed, 18 May 2016 13:55:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37464)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b33cI-0008TM-Hb
-	for qemu-arm@nongnu.org; Wed, 18 May 2016 11:42:35 -0400
+	(envelope-from <rth7680@gmail.com>) id 1b35ff-00021k-LX
+	for qemu-arm@nongnu.org; Wed, 18 May 2016 13:54:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b33cF-0005Bd-B4
-	for qemu-arm@nongnu.org; Wed, 18 May 2016 11:42:34 -0400
-Received: from e06smtp17.uk.ibm.com ([195.75.94.113]:59210)
+	(envelope-from <rth7680@gmail.com>) id 1b35fe-0003VO-Of
+	for qemu-arm@nongnu.org; Wed, 18 May 2016 13:54:11 -0400
+Received: from mail-qg0-x241.google.com ([2607:f8b0:400d:c04::241]:35166)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b33cE-0005Aa-Vy
-	for qemu-arm@nongnu.org; Wed, 18 May 2016 11:42:31 -0400
-Received: from localhost
-	by e06smtp17.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-arm@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
-	Wed, 18 May 2016 16:42:29 +0100
-Received: from d06dlp01.portsmouth.uk.ibm.com (9.149.20.13)
-	by e06smtp17.uk.ibm.com (192.168.101.147) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Wed, 18 May 2016 16:42:26 +0100
-X-IBM-Helo: d06dlp01.portsmouth.uk.ibm.com
-X-IBM-MailFrom: gkurz@linux.vnet.ibm.com
-X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org;qemu-ppc@nongnu.org
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
-	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
-	by d06dlp01.portsmouth.uk.ibm.com (Postfix) with ESMTP id B654B17D8056; 
-	Wed, 18 May 2016 16:43:26 +0100 (BST)
-Received: from d06av01.portsmouth.uk.ibm.com (d06av01.portsmouth.uk.ibm.com
-	[9.149.37.212])
-	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u4IFgQNS6619442; Wed, 18 May 2016 15:42:26 GMT
-Received: from d06av01.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av01.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u4IFgPmC007840; Wed, 18 May 2016 09:42:25 -0600
-Received: from smtp.lab.toulouse-stg.fr.ibm.com
-	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
-	by d06av01.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u4IFgPDa007837; Wed, 18 May 2016 09:42:25 -0600
-Received: from bahia.huguette.org (sig-9-84-49-211.evts.de.ibm.com
-	[9.84.49.211])
-	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id C68A7220219;
-	Wed, 18 May 2016 17:42:23 +0200 (CEST)
-Date: Wed, 18 May 2016 17:42:20 +0200
-From: Greg Kurz <gkurz@linux.vnet.ibm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160518174220.71c24727@bahia.huguette.org>
-In-Reply-To: <CAFEAcA84cHCeEMNQfk_hj=Trbzm1_VFo8QERV95hRGqypok40Q@mail.gmail.com>
-References: <146357953667.8807.5432652213311565530.stgit@bahia.huguette.org>
-	<CAFEAcA84cHCeEMNQfk_hj=Trbzm1_VFo8QERV95hRGqypok40Q@mail.gmail.com>
-Organization: IBM
-X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
+	(envelope-from <rth7680@gmail.com>)
+	id 1b35fa-0003Um-PL; Wed, 18 May 2016 13:54:06 -0400
+Received: by mail-qg0-x241.google.com with SMTP id b14so4817388qge.2;
+	Wed, 18 May 2016 10:54:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=yrJu7TXWcStt7Gn0pWKnzPotHaIbKEz2NNGAnC+2/BA=;
+	b=eVRXCxQXFYnXvvRW16cq4iI8E681UumL7L93lnX56KdHWe7Qzr6KPs5xVn3HXio60q
+	KegQv17Ho4udTgchVgZan9wyjLqLO4CulY5hfN74lStqkbTnnYATDrNvODgVMdhGVf7m
+	pTU2xyAvq8ASMzHqX4LqJ9knAbKA/TSCd7sJAaiweCfGWzOOMDA5sKGhG/6I7GcM7W60
+	JU8pFKalMnPBoaYchM+MJZvy01Sq+8KbTC+W3PiaYh5HTdF2iHgrjPS9kcmQmchkH5l2
+	96d11LQVtYdX5Pvho2+nXShTgFoY4T2GG5LQIFx4fjlSZ4sykkUfQosOkC0Qcaaggbrv
+	1ewA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=yrJu7TXWcStt7Gn0pWKnzPotHaIbKEz2NNGAnC+2/BA=;
+	b=k9mmkEXLVE016D3VvVH3LjkOLbGNMZFXi0xzp9rZ/PWlsZomLcZTwF4zoffccanISc
+	VBC0PHXkYwzzKiqInWPEH9C4L4fGorT69gwXne5wHS8w8lW0SIkE5OutdmOaylgX0eTV
+	J+vdqwKRCOMO8qJHkVSHmTkX+3HTvwSoffau9bQQceNOEEDZDsOf/m+EyFfoinnYWgoF
+	dydt2EXM3MSpAMIeHMMgyuY0iNGTsGRDpT+mx/3rCDiV3JPLqdCspJHCUhjK+V9qNAhe
+	L40/186qjxBcfuo8FwKFqLrMPNy/Iwr3Je7C1u7QmfJ9LaVZXRUXYs8kITjKZHDRIM1v
+	MTXQ==
+X-Gm-Message-State: AOPr4FWWE24uOJ4tqxR5FZQ9Uvfly6634Q1m6r68fyowACz8g0h/pcXi+c3E6qFJQMmMhg==
+X-Received: by 10.140.139.138 with SMTP id 132mr3835536qhl.34.1463594046272;
+	Wed, 18 May 2016 10:54:06 -0700 (PDT)
+Received: from anchor.twiddle.net
+	(50-194-63-110-static.hfc.comcastbusiness.net. [50.194.63.110])
+	by smtp.googlemail.com with ESMTPSA id
+	b99sm4690557qge.22.2016.05.18.10.54.03
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Wed, 18 May 2016 10:54:05 -0700 (PDT)
+To: =?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
+	qemu-devel@nongnu.org
+References: <146356846293.898.1638185578856249296.stgit@fimbulvetr.bsc.es>
+	<146356846834.898.6742213749357910213.stgit@fimbulvetr.bsc.es>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <d186c9d7-d19e-dfcb-0a0f-08d2d79ff2ca@twiddle.net>
+Date: Wed, 18 May 2016 10:54:01 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16051815-0005-0000-0000-000019B02600
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.113
-Subject: Re: [Qemu-arm] [PATCH v2] sysemu: support up to 1024 vCPUs
+In-Reply-To: <146356846834.898.6742213749357910213.stgit@fimbulvetr.bsc.es>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400d:c04::241
+Subject: Re: [Qemu-arm] [PATCH v3 1/2] exec: [tcg] Track which vCPU is
+ performing translation and execution
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,79 +88,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Leon Alrae <leon.alrae@imgtec.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Jia Liu <proljc@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cXYfD1oJO5oq
+X-TUID: M3mAxF13fnAe
 
-On Wed, 18 May 2016 16:31:31 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On 18 May 2016 at 14:52, Greg Kurz <gkurz@linux.vnet.ibm.com> wrote:
-> > Some PowerPC systems can already provide more than 255 hardware threads.
-> > Igor also posted a patch recently, to increase the the maxcpus limit to
-> > 288 for x86 targets.
-> >
-> > This patch bumps the limit to 1024:
-> > - 1024 is already the limit for PowerPC KVM in several distros
-> > - it has no visible overhead in top
-> > - the limit itself has no effect on hot paths
-> >
-> > We only do that for pseries at the moment and keep a 255 limit for the
-> > ARM Virtual Machine.
-> >
-> > Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
-> > ---
-> > v2: - updated changelog
-> >     - keep 255 limit in hw/arm/virt.c
-> > ---
-> >  hw/arm/virt.c           |    2 +-
-> >  include/sysemu/sysemu.h |    2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 56d35c7716e7..438e09c7a57d 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1358,7 +1358,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-> >       * it later in machvirt_init, where we have more information about the
-> >       * configuration of the particular instance.
-> >       */
-> > -    mc->max_cpus = MAX_CPUMASK_BITS;
-> > +    mc->max_cpus = 255;  
+On 05/18/2016 03:47 AM, Lluís Vilanova wrote:
+> Information is tracked inside the TCGContext structure, and later used
+> by tracing events with the 'tcg' and 'vcpu' properties.
 > 
-> This change makes the code disagree with the comment immediately
-> above it. As the comment says, we set max_cpus to the maximum
-> QEMU supports, and then dynamically check it later when we know
-> whether we have a GICv2 or GICv3 (which is what puts the limit
-> on number of CPUs for this board). So I think the change is
-> not needed.
+> The 'cpu' field is used to check tracing of translation-time
+> events ("*_trans"). The 'tcg_env' field is used to pass it to
+> execution-time events ("*_exec").
 > 
+> Signed-off-by: Lluís Vilanova <vilanova@ac.upc.edu>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
 
-Thank you Peter for the clarification. I'll mention that in the
-changelog in v3.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-> >      mc->has_dynamic_sysbus = true;
-> >      mc->block_default_type = IF_VIRTIO;
-> >      mc->no_cdrom = 1;
-> > diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> > index 38fb3cad35e1..89d742caa477 100644
-> > --- a/include/sysemu/sysemu.h
-> > +++ b/include/sysemu/sysemu.h
-> > @@ -185,7 +185,7 @@ extern int mem_prealloc;
-> >   *
-> >   * Note that cpu->get_arch_id() may be larger than MAX_CPUMASK_BITS.
-> >   */
-> > -#define MAX_CPUMASK_BITS 255
-> > +#define MAX_CPUMASK_BITS 1024
-> >
-> >  #define MAX_OPTION_ROMS 16
-> >  typedef struct QEMUOptionRom {  
-> 
-> thanks
-> -- PMM
-> 
 
+r~

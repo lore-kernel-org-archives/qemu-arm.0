@@ -1,56 +1,55 @@
-Received: by 10.25.208.137 with SMTP id h131csp3022516lfg;
-        Thu, 19 May 2016 06:20:09 -0700 (PDT)
-X-Received: by 10.140.109.10 with SMTP id k10mr13590278qgf.89.1463664009033;
-        Thu, 19 May 2016 06:20:09 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp3022814lfg;
+        Thu, 19 May 2016 06:20:40 -0700 (PDT)
+X-Received: by 10.55.22.5 with SMTP id g5mr14591735qkh.101.1463664040688;
+        Thu, 19 May 2016 06:20:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b86si12484957qkh.199.2016.05.19.06.20.08
+        by mx.google.com with ESMTPS id e190si12204287qkf.156.2016.05.19.06.20.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 May 2016 06:20:09 -0700 (PDT)
+        Thu, 19 May 2016 06:20:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50388 helo=lists.gnu.org)
+Received: from localhost ([::1]:50394 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b3Ns0-0007MO-AJ
-	for alex.bennee@linaro.org; Thu, 19 May 2016 09:20:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37849)
+	id 1b3NsW-0007wX-21
+	for alex.bennee@linaro.org; Thu, 19 May 2016 09:20:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37825)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b3Nrg-00073G-A8
-	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:57 -0400
+	(envelope-from <imammedo@redhat.com>) id 1b3Nrc-00070A-3Y
+	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b3NrZ-0001xx-MJ
-	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39571)
+	(envelope-from <imammedo@redhat.com>) id 1b3NrY-0001xg-0C
+	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52119)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1b3NrZ-0001xt-Gw; Thu, 19 May 2016 09:19:41 -0400
+	id 1b3NrX-0001xb-Q9; Thu, 19 May 2016 09:19:39 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 108AD49470;
-	Thu, 19 May 2016 13:19:41 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6E4B763140;
+	Thu, 19 May 2016 13:19:39 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq.redhat.com
 	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4JDJWQa016615; Thu, 19 May 2016 09:19:39 -0400
+	id u4JDJWQZ016615; Thu, 19 May 2016 09:19:38 -0400
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu, 19 May 2016 15:19:28 +0200
-Message-Id: <1463663970-23661-5-git-send-email-imammedo@redhat.com>
+Date: Thu, 19 May 2016 15:19:27 +0200
+Message-Id: <1463663970-23661-4-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1463663970-23661-1-git-send-email-imammedo@redhat.com>
 References: <1463663970-23661-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 19 May 2016 13:19:41 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 19 May 2016 13:19:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 4/6] tpm: apci: cleanup TCPA table
- initialization
+Subject: [Qemu-arm] [PATCH v2 3/6] acpi: cleanup bios_linker_loader_cleanup()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,52 +65,69 @@ Cc: zhaoshenglong@huawei.com, qemu-arm@nongnu.org,
 	guangrong.xiao@linux.intel.com, ehabkost@redhat.com, mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9bvigG03l4Xf
+X-TUID: ekdb58AyReMi
 
-At the time build_tpm_tcpa() is called the tcpalog size is
-always 0, so log_area_start_address which is actually offset
-from the start of ACPI_BUILD_TPMLOG_FILE is always 0.
+bios_linker_loader_cleanup() is called only from one place
+and returned value is immediately freed wich makes returning
+pointer from bios_linker_loader_cleanup() useless.
 
-Also as 'TCPA' is allocated 0 filled, there is no point
-in calculating always 0 log_area_start_address and set
-tcpa->log_area_start_address to it since the field should
-always point to start of ACPI_BUILD_TPMLOG_FILE.
-Make code easier to read dropping not needed offset
-calculations.
-While at that move tcpalog allocation closer to the code
-that defines its size.
+Cleanup bios_linker_loader_cleanup() by freeing
+data there so that caller won't have to free it.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/i386/acpi-build.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ hw/acpi/aml-build.c                  | 3 +--
+ hw/acpi/bios-linker-loader.c         | 8 +++-----
+ include/hw/acpi/bios-linker-loader.h | 2 +-
+ 3 files changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index ce96533..c99dbe7 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2391,11 +2391,10 @@ static void
- build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 8104d06..42955d6 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1531,8 +1531,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+ 
+ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
  {
-     Acpi20Tcpa *tcpa = acpi_data_push(table_data, sizeof *tcpa);
--    uint64_t log_area_start_address = acpi_data_len(tcpalog);
- 
-     tcpa->platform_class = cpu_to_le16(TPM_TCPA_ACPI_CLASS_CLIENT);
-     tcpa->log_area_minimum_length = cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
--    tcpa->log_area_start_address = cpu_to_le64(log_area_start_address);
-+    acpi_data_push(tcpalog, le32_to_cpu(tcpa->log_area_minimum_length));
- 
-     bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
-                              false /* high memory */);
-@@ -2408,8 +2407,6 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
- 
-     build_header(linker, table_data,
-                  (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
--
--    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+-    void *linker_data = bios_linker_loader_cleanup(tables->linker);
+-    g_free(linker_data);
++    bios_linker_loader_cleanup(tables->linker);
+     g_array_free(tables->rsdp, true);
+     g_array_free(tables->table_data, true);
+     g_array_free(tables->tcpalog, mfre);
+diff --git a/hw/acpi/bios-linker-loader.c b/hw/acpi/bios-linker-loader.c
+index a2f20ec..7a2e4d2 100644
+--- a/hw/acpi/bios-linker-loader.c
++++ b/hw/acpi/bios-linker-loader.c
+@@ -128,14 +128,12 @@ BIOSLinker *bios_linker_loader_init(void)
+     return linker;
  }
  
- static void
+-/* Free linker wrapper and return the linker commands array. */
+-void *bios_linker_loader_cleanup(BIOSLinker *linker)
++/* Free linker wrapper */
++void bios_linker_loader_cleanup(BIOSLinker *linker)
+ {
+-    void *cmd_blob = g_array_free(linker->cmd_blob, false);
+-
++    g_array_free(linker->cmd_blob, true);
+     g_array_free(linker->file_list, true);
+     g_free(linker);
+-    return cmd_blob;
+ }
+ 
+ static const BiosLinkerFileEntry *
+diff --git a/include/hw/acpi/bios-linker-loader.h b/include/hw/acpi/bios-linker-loader.h
+index bee6dee..564e192 100644
+--- a/include/hw/acpi/bios-linker-loader.h
++++ b/include/hw/acpi/bios-linker-loader.h
+@@ -26,5 +26,5 @@ void bios_linker_loader_add_pointer(BIOSLinker *linker,
+                                     void *pointer,
+                                     uint8_t pointer_size);
+ 
+-void *bios_linker_loader_cleanup(BIOSLinker *linker);
++void bios_linker_loader_cleanup(BIOSLinker *linker);
+ #endif
 -- 
 1.8.3.1
 

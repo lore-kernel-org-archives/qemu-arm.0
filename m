@@ -1,167 +1,100 @@
-Received: by 10.25.208.137 with SMTP id h131csp2275099lfg;
-        Wed, 18 May 2016 02:06:28 -0700 (PDT)
-X-Received: by 10.194.242.167 with SMTP id wr7mr5973124wjc.145.1463562388105;
-        Wed, 18 May 2016 02:06:28 -0700 (PDT)
-Return-Path: <christoffer.dall@linaro.org>
-Received: from mail-wm0-x230.google.com (mail-wm0-x230.google.com. [2a00:1450:400c:c09::230])
-        by mx.google.com with ESMTPS id q18si9109155wjw.87.2016.05.18.02.06.28
+Received: by 10.25.208.137 with SMTP id h131csp3022257lfg;
+        Thu, 19 May 2016 06:19:43 -0700 (PDT)
+X-Received: by 10.140.233.140 with SMTP id e134mr14368199qhc.38.1463663983756;
+        Thu, 19 May 2016 06:19:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f127si12462905qkd.274.2016.05.19.06.19.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 18 May 2016 02:06:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of christoffer.dall@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) client-ip=2a00:1450:400c:c09::230;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 19 May 2016 06:19:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of christoffer.dall@linaro.org designates 2a00:1450:400c:c09::230 as permitted sender) smtp.mailfrom=christoffer.dall@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-wm0-x230.google.com with SMTP id g17so25257147wme.0
-        for <alex.bennee@linaro.org>; Wed, 18 May 2016 02:06:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=MEwZJ9UE2c20L3QmHyBsJDMPT50u9zgqfCnfKq5UPdU=;
-        b=PIftWgRLwIByH81A3kB3ZXJ7sUsNu26yBZRypUgYKTLzxxTo5MVJ14vXQpebijSrAB
-         8FjcwvODFqhocNJNICUtjcLdLasuZMv6N1Jpiwh/qzS5mZGj+QvFAyYw0dcjGzruTR77
-         kJGmGkrO4uXxB99Nw8+Qvp8Np0NXEZehxkydE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=MEwZJ9UE2c20L3QmHyBsJDMPT50u9zgqfCnfKq5UPdU=;
-        b=fQQgjgi32bmuDrUGvyNFx6LrQUZahUGtxeT915YQ8DPJsWfjSFQrpaSzvm0n1lYfb2
-         eIZZnUH9SWWYjkV32hexae2pzPIyLJqqYNv8CKvAk19Le/sAuN++n8XLGBD6/UPfoxJa
-         9wHxPkxbKW3RNwujCBwDymtxbg3WI0qaWQHSegs3WOTSahtLy5S5DNVd3GQvFC2qU+ux
-         kbFJVksPm8m97MxvzqQ+rQvc362kyiN45toYQkvBeO1ngU00+AOK1lmbhv+pIXHB2xIa
-         AkZnDTcpJLGor3BMxgo+n3ZN1a+pVm0m8ubWsHz5vHohzvEvBZPMnZPySVD/LhBaIY+K
-         Tc6A==
-X-Gm-Message-State: AOPr4FXIZBDij602PnKd5hhJtjsea/kUlOJ/QBwDeKDhxPXoOOn6HsAMUQmJo3IolqoTak/V/pE=
-X-Received: by 10.194.105.230 with SMTP id gp6mr5764238wjb.90.1463562387849;
-        Wed, 18 May 2016 02:06:27 -0700 (PDT)
-Return-Path: <christoffer.dall@linaro.org>
-Received: from localhost ([94.18.191.146])
-        by smtp.gmail.com with ESMTPSA id m140sm28361024wma.24.2016.05.18.02.06.27
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Wed, 18 May 2016 02:06:27 -0700 (PDT)
-Date: Wed, 18 May 2016 11:07:14 +0200
-From: Christoffer Dall <christoffer.dall@linaro.org>
-To: Andrew Jones <drjones@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-	peter.maydell@linaro.org, alex.bennee@linaro.org,
-	marc.zyngier@arm.com
-Subject: Re: [kvm-unit-tests PATCH 00/10] arm/arm64: add gic framework
-Message-ID: <20160518090714.GA3827@cbox>
-References: <1463385444-12916-1-git-send-email-drjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1463385444-12916-1-git-send-email-drjones@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-TUID: mNepjS5jKVkp
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:50381 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b3Nrb-0006yH-5K
+	for alex.bennee@linaro.org; Thu, 19 May 2016 09:19:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37793)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1b3NrY-0006wC-6K
+	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:41 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1b3NrU-0001x4-02
+	for qemu-arm@nongnu.org; Thu, 19 May 2016 09:19:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45263)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>)
+	id 1b3NrT-0001ww-Pw; Thu, 19 May 2016 09:19:35 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EBB0B552DB;
+	Thu, 19 May 2016 13:19:34 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4JDJWQW016615; Thu, 19 May 2016 09:19:33 -0400
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 19 May 2016 15:19:24 +0200
+Message-Id: <1463663970-23661-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 19 May 2016 13:19:35 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 0/6] acpi: simplify bios_linker API
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: zhaoshenglong@huawei.com, qemu-arm@nongnu.org,
+	guangrong.xiao@linux.intel.com, ehabkost@redhat.com, mst@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FbbyWAIxIjD+
 
-Hi Drew,
+Simplify bios_linker API by adding file name + blob tracking
+so user would have to suppily less arguments which
+reduces chances of mistake by using wrong blob pointer
+with not related file.
+And also refactor API to take file offsets,
+which is what is usualy used in context of file APIs,
+(and as it's what actually current API were doing only internally),
+instead of using host pointers.
+I hope it makes it easier for user to use API without
+need to look at implementation in QEMU/SeaBIOS. 
 
-Thanks for doing this.  I'm happy to see some tests for the GIC.
 
-I've been pondering with how to write unit tests for all the MMIO
-implementations.  If you have some thoughts on how that could be easily
-fitted into this framework, that would probably be a good place to do it
-;)
+Igor Mammedov (6):
+  acpi: convert linker from GArray to BIOSLinker structure
+  acpi: simplify bios_linker API by removing redundant 'table' argument
+  acpi: cleanup bios_linker_loader_cleanup()
+  tpm: apci: cleanup TCPA table initialization
+  acpi: make bios_linker_loader_add_pointer() API offset based
+  acpi: make bios_linker_loader_add_checksum() API offset based
 
--Christoffer
+ hw/acpi/aml-build.c                  |  33 +++----
+ hw/acpi/bios-linker-loader.c         | 179 +++++++++++++++++++++--------------
+ hw/acpi/nvdimm.c                     |  22 +++--
+ hw/arm/virt-acpi-build.c             |  56 +++++------
+ hw/i386/acpi-build.c                 |  92 +++++++++---------
+ include/hw/acpi/aml-build.h          |   7 +-
+ include/hw/acpi/bios-linker-loader.h |  28 +++---
+ include/hw/mem/nvdimm.h              |   3 +-
+ 8 files changed, 235 insertions(+), 185 deletions(-)
 
-On Mon, May 16, 2016 at 09:57:14AM +0200, Andrew Jones wrote:
-> Import defines, and steal enough helper functions, from Linux to
-> enable programming of the gic (v2 and v3). Then use the framework
-> to add an initial test (an ipi test; self, target-list, broadcast).
-> 
-> It's my hope that this framework will be a suitable base on which
-> more tests may be easily added, particularly because we have
-> vgic-new and tcg gicv3 emulation getting close to merge.
-> 
-> To run it, along with other tests, just do
-> 
->  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
->  make
->  export QEMU=$PATH_TO_QEMU
->  ./run_tests.sh
-> 
-> To run it separately do, e.g.
-> 
-> $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
->  -device virtio-serial-device \
->  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->  -display none -serial stdio \
->  -kernel arm/gic.flat \
->  -smp 123 -machine gic-version=3 -append ipi
-> 
->       ^^ note, we can go nuts with nr-cpus on TCG :-)
-> 
-> Or, a KVM example using a different "sender" cpu and irq (other than zero)
-> 
-> $QEMU -machine virt,accel=kvm -cpu host \
->  -device virtio-serial-device \
->  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->  -display none -serial stdio \
->  -kernel arm/gic.flat \
->  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
-> 
-> 
-> Patches:
-> 01-05: fixes and functionality needed by the later gic patches
-> 06-07: code theft from Linux (defines, helper functions)
-> 08-10: arm/gic.flat (the base of the gic unit test), currently just IPI
-> 
-> Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic
-> 
-> 
-> Andrew Jones (10):
->   lib: xstr: allow multiple args
->   arm64: fix get_"sysreg32" and make MPIDR 64bit
->   arm/arm64: smp: support more than 8 cpus
->   arm/arm64: add some delay routines
->   arm/arm64: irq enable/disable
->   arm/arm64: add initial gicv2 support
->   arm64: add initial gicv3 support
->   arm/arm64: gicv2: add an IPI test
->   arm/arm64: gicv3: add an IPI test
->   arm/arm64: gic: don't just use zero
-> 
->  arm/Makefile.common        |   7 +-
->  arm/gic.c                  | 338 +++++++++++++++++++++++++++++++++++++++++++++
->  arm/run                    |  19 ++-
->  arm/selftest.c             |   5 +-
->  arm/unittests.cfg          |  13 ++
->  lib/arm/asm/arch_gicv3.h   | 184 ++++++++++++++++++++++++
->  lib/arm/asm/gic-v2.h       |  74 ++++++++++
->  lib/arm/asm/gic-v3.h       | 320 ++++++++++++++++++++++++++++++++++++++++++
->  lib/arm/asm/gic.h          |  21 +++
->  lib/arm/asm/processor.h    |  38 ++++-
->  lib/arm/asm/setup.h        |   4 +-
->  lib/arm/gic.c              | 127 +++++++++++++++++
->  lib/arm/processor.c        |  15 ++
->  lib/arm/setup.c            |  12 +-
->  lib/arm64/asm/arch_gicv3.h | 169 +++++++++++++++++++++++
->  lib/arm64/asm/gic-v2.h     |   1 +
->  lib/arm64/asm/gic-v3.h     |   1 +
->  lib/arm64/asm/gic.h        |   1 +
->  lib/arm64/asm/processor.h  |  53 +++++--
->  lib/arm64/asm/sysreg.h     |  44 ++++++
->  lib/arm64/processor.c      |  15 ++
->  lib/libcflat.h             |   4 +-
->  22 files changed, 1439 insertions(+), 26 deletions(-)
->  create mode 100644 arm/gic.c
->  create mode 100644 lib/arm/asm/arch_gicv3.h
->  create mode 100644 lib/arm/asm/gic-v2.h
->  create mode 100644 lib/arm/asm/gic-v3.h
->  create mode 100644 lib/arm/asm/gic.h
->  create mode 100644 lib/arm/gic.c
->  create mode 100644 lib/arm64/asm/arch_gicv3.h
->  create mode 100644 lib/arm64/asm/gic-v2.h
->  create mode 100644 lib/arm64/asm/gic-v3.h
->  create mode 100644 lib/arm64/asm/gic.h
->  create mode 100644 lib/arm64/asm/sysreg.h
-> 
-> -- 
-> 2.4.11
-> 
+-- 
+1.8.3.1
+

@@ -1,75 +1,75 @@
-Received: by 10.25.208.137 with SMTP id h131csp3300074lfg;
-        Thu, 19 May 2016 15:58:57 -0700 (PDT)
-X-Received: by 10.140.31.130 with SMTP id f2mr16492330qgf.69.1463698737239;
-        Thu, 19 May 2016 15:58:57 -0700 (PDT)
+Received: by 10.25.208.137 with SMTP id h131csp3300104lfg;
+        Thu, 19 May 2016 15:59:02 -0700 (PDT)
+X-Received: by 10.140.106.228 with SMTP id e91mr16528036qgf.75.1463698741935;
+        Thu, 19 May 2016 15:59:01 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v5si15018150qkv.204.2016.05.19.15.58.57
+        by mx.google.com with ESMTPS id v188si15030456qhe.47.2016.05.19.15.59.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 May 2016 15:58:57 -0700 (PDT)
+        Thu, 19 May 2016 15:59:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52446 helo=lists.gnu.org)
+Received: from localhost ([::1]:52447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b3Wu8-00040j-Kq
-	for alex.bennee@linaro.org; Thu, 19 May 2016 18:58:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45961)
+	id 1b3WuD-000438-Dc
+	for alex.bennee@linaro.org; Thu, 19 May 2016 18:59:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1b3Wq1-000067-Jj
-	for qemu-arm@nongnu.org; Thu, 19 May 2016 18:54:44 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1b3Wpz-0007IS-Dg
+	(envelope-from <edgar.iglesias@gmail.com>) id 1b3Wpz-0008VA-0H
 	for qemu-arm@nongnu.org; Thu, 19 May 2016 18:54:40 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:34832)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1b3Wpr-0007HN-Va
+	for qemu-arm@nongnu.org; Thu, 19 May 2016 18:54:37 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:36596)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1b3Wpm-0007Fu-D9; Thu, 19 May 2016 18:54:26 -0400
-Received: by mail-wm0-x244.google.com with SMTP id s63so10274890wme.2;
-	Thu, 19 May 2016 15:54:26 -0700 (PDT)
+	id 1b3Wpn-0007GD-SJ; Thu, 19 May 2016 18:54:28 -0400
+Received: by mail-wm0-x242.google.com with SMTP id w143so24718068wmw.3;
+	Thu, 19 May 2016 15:54:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=zFnkE3dN6rw5G4hQBrZz5iM3il3HrY+jjDEA6JqrQpY=;
-	b=daVARecE7rjrKXKPtqhSszr8zo0lKudMkGlQnsKutlBnL/4+uOGNkeTSmlz96qaZNL
-	Flg36vgnn1v/vD/3D2/ncu11lMeFM4LGLVEG3wxbrSWwVpI0thxfp0lhbxUuTGpS7QwA
-	xAi40TdQ7KiSBu1NjIigzZCUohFsqa8CxD9D/5wjiayPFYKg7VRlQQXECMSl5fF0Wbjg
-	ODZkJnwNj3QquEIyEob9bJ6q3VZwNw9wS6Yz+I51g3OJ1QAgVK9thvHCG9oAPyB0AOln
-	9RBcRGg10c4wLZIGPwGFc+0qYOH7RlDrcEVa/hciAuCwwMMsT/bponpQbUEY1aH693h9
-	iNVQ==
+	bh=eguJGXoW2JNWNoeUK84+yRlcn5YhLOeAn6BAZbSkcLY=;
+	b=QCGqPBJLKgkcxER37u9HTQZlCWjRGLOGCUdmsHYZVSq/szfdrwTQou3HmLgV8n6iSi
+	yrn50eWLOjhoEygU/OfHGVzb5LuJocSTyD2DejfXhYOpTivpw0Ek8+7EZ0bzhnelN9Q3
+	awkenJN4E5LzaneAtNOHuhpE6TLNB/QQQ5OitFWh+3iD1xMTHOBKI1l7OVHuX65NLN6u
+	GNG+PBnXhGMqpEw1OGhoUH/vEzdJwtjEjlSNhrbvd4VUDfjrmFIgeGObeCAJ3xAcIPXC
+	yTbCHnzOEt5zQLFDQlXRGza6zgG3EqA7t6RekxwWo0S3aELX+ktjFC0S+XVCMGcY5Iwn
+	Fm/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=zFnkE3dN6rw5G4hQBrZz5iM3il3HrY+jjDEA6JqrQpY=;
-	b=lpfw1Mbr083ntZEXuASmGUFVxV5R6VijEjBn3jDv+s8Ll0+B51E16Fofar+EY3eLpV
-	r/4XYxgLfrglMMDBXmGmudp0mk6OkPFOfa1FRkFpMA6WQrzmm6jdAl0DCehbYxCdPYzS
-	xn5L5xbJwaZsNFSUPk4G1SoPtUvBExX6QJq0K/UMOA0z7LZLG+vdSVJ/7UBRvm0mGrBb
-	CqHFPEWdjbwjS9hY5JqY7Z8CwSQD0yZNTdhPc792CiHbZnBcEJZE0GkkjL8sX8m1hNZ/
-	6EHtsrweNFrR0GzpYkaGQjWGyIob2406qHaBMg6vz5BTB3F4l+SdgQhuCeYj6cebN6BL
-	FdaQ==
-X-Gm-Message-State: AOPr4FXfhlRDfozJkuQeJkgQpaPA6sTlxnTczIg37p6+xpWzkQSOtc6GKGxZpGiCmbnriA==
-X-Received: by 10.194.122.199 with SMTP id lu7mr17097828wjb.40.1463698465768; 
-	Thu, 19 May 2016 15:54:25 -0700 (PDT)
+	bh=eguJGXoW2JNWNoeUK84+yRlcn5YhLOeAn6BAZbSkcLY=;
+	b=KTTJolCwMrXTBrTlDiZggXl7npqiPHRVLnZnVosSoThBubl2XFpoiyKVEr+9U/EkXP
+	VOv5qXsEeSoCNViO4cA58PaTdPzW67DTZn6xJNHY+vwF8GHkn6rp51ERo/fTLuMwhrsA
+	5LsJs1WWO8dfOUzl2en9TnHipEmXjED2094QzrT/skG4UpEflJChs32IUPsW5h2ku6PN
+	1DE3LtBe6cpJA9SpG7RBsUQtwbSKqq7Umj0Mwx/2XEU9XEGVCXONCYb/pRGM0TtVlSBe
+	ZFRcwCccEyMql/3Ag4FsJdaahmOV45vmnozrf1DuGegDC5IJk11/LqnZDWmL+eUCPAHA
+	k/1Q==
+X-Gm-Message-State: AOPr4FXq/VMHwCptCjvhjIPy5k8IhA6tVFtJxKtwpFIGHTyZeVX8T24pVhCsPWYgNI/fLw==
+X-Received: by 10.28.157.143 with SMTP id g137mr208150wme.29.1463698467180;
+	Thu, 19 May 2016 15:54:27 -0700 (PDT)
 Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
 	by smtp.gmail.com with ESMTPSA id
-	iv1sm16666344wjb.34.2016.05.19.15.54.24
+	e8sm16698584wjm.23.2016.05.19.15.54.26
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 19 May 2016 15:54:25 -0700 (PDT)
+	Thu, 19 May 2016 15:54:26 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 20 May 2016 00:54:17 +0200
-Message-Id: <1463698459-31312-4-git-send-email-edgar.iglesias@gmail.com>
+Date: Fri, 20 May 2016 00:54:18 +0200
+Message-Id: <1463698459-31312-5-git-send-email-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.5.0
 In-Reply-To: <1463698459-31312-1-git-send-email-edgar.iglesias@gmail.com>
 References: <1463698459-31312-1-git-send-email-edgar.iglesias@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: [Qemu-arm] [PATCH v1 3/5] xlnx-zynqmp: Make the RPU subsystem
- optional
+X-Received-From: 2a00:1450:400c:c09::242
+Subject: [Qemu-arm] [PATCH v1 4/5] xlnx-zynqmp: Delay realization of GIC
+ until post CPU realization
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,118 +85,95 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
 	alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Y7Uh9SV04C/
+X-TUID: tyoZRHSuUTRY
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-The way we currently model the RPU subsystem is of quite
-limited use. In addition to that, it causes problems for
-KVM and for GDB debugging.
-
-Make the RPU optional by adding a has_rpu property and
-default to having it disabled.
+Delay the realization of the GIC until after CPUs are
+realized. This is needed for KVM as the in-kernel GIC
+model will fail if it is realized with no available CPUs.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/arm/xlnx-zynqmp.c         | 50 +++++++++++++++++++++++++++++++++++++-------
- include/hw/arm/xlnx-zynqmp.h |  2 ++
- 2 files changed, 44 insertions(+), 8 deletions(-)
+ hw/arm/xlnx-zynqmp.c | 56 +++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 31 insertions(+), 25 deletions(-)
 
 diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 250ecc4..c180206 100644
+index c180206..0648028 100644
 --- a/hw/arm/xlnx-zynqmp.c
 +++ b/hw/arm/xlnx-zynqmp.c
-@@ -83,6 +83,40 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
-     return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
- }
- 
-+static bool xlnx_zynqmp_get_has_rpu(Object *obj, Error **errp)
-+{
-+    XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
-+
-+    return s->has_rpu;
-+}
-+
-+static void xlnx_zynqmp_set_has_rpu(Object *obj, bool value, Error **errp)
-+{
-+    XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
-+    int i;
-+
-+    if (s->has_rpu == value) {
-+        /* Nothing to do.  */
-+        return;
-+    }
-+
-+    /* We don't support clearing the flag.  */
-+    if (s->has_rpu) {
-+        error_setg(errp, "has_rpu is already set to %u",
-+                   s->has_rpu);
-+        return;
-+    }
-+
-+    /* Create the Cortex R5s.  */
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
-+        object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
-+                          "cortex-r5-" TYPE_ARM_CPU);
-+        object_property_add_child(obj, "rpu-cpu[*]", OBJECT(&s->rpu_cpu[i]),
-+                                  &error_abort);
-+    }
-+    s->has_rpu = value;
-+}
-+
- static void xlnx_zynqmp_setup_rpu(XlnxZynqMPState *s, const char *boot_cpu,
-                                   Error **errp)
- {
-@@ -118,6 +152,11 @@ static void xlnx_zynqmp_init(Object *obj)
-     XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
-     int i;
- 
-+    object_property_add_bool(obj, "has_rpu",
-+                             xlnx_zynqmp_get_has_rpu,
-+                             xlnx_zynqmp_set_has_rpu,
-+                             &error_abort);
-+
-     for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
-         object_initialize(&s->apu_cpu[i], sizeof(s->apu_cpu[i]),
-                           "cortex-a53-" TYPE_ARM_CPU);
-@@ -125,13 +164,6 @@ static void xlnx_zynqmp_init(Object *obj)
-                                   &error_abort);
-     }
- 
--    for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
--        object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
--                          "cortex-r5-" TYPE_ARM_CPU);
--        object_property_add_child(obj, "rpu-cpu[*]", OBJECT(&s->rpu_cpu[i]),
--                                  &error_abort);
+@@ -258,33 +258,9 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", XLNX_ZYNQMP_NUM_APU_CPUS);
+-    object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
 -    }
+-    assert(ARRAY_SIZE(xlnx_zynqmp_gic_regions) == XLNX_ZYNQMP_GIC_REGIONS);
+-    for (i = 0; i < XLNX_ZYNQMP_GIC_REGIONS; i++) {
+-        SysBusDevice *gic = SYS_BUS_DEVICE(&s->gic);
+-        const XlnxZynqMPGICRegion *r = &xlnx_zynqmp_gic_regions[i];
+-        MemoryRegion *mr = sysbus_mmio_get_region(gic, r->region_index);
+-        uint32_t addr = r->address;
+-        int j;
 -
-     object_property_add_link(obj, "ddr-ram", TYPE_MEMORY_REGION,
-                              (Object **)&s->ddr_ram,
-                              qdev_prop_allow_set_link_before_realize,
-@@ -290,7 +322,9 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), 1, irq);
-     }
+-        sysbus_mmio_map(gic, r->region_index, addr);
+-
+-        for (j = 0; j < XLNX_ZYNQMP_GIC_ALIASES; j++) {
+-            MemoryRegion *alias = &s->gic_mr[i][j];
+-
+-            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
+-            memory_region_init_alias(alias, OBJECT(s), "zynqmp-gic-alias", mr,
+-                                     0, XLNX_ZYNQMP_GIC_REGION_SIZE);
+-            memory_region_add_subregion(system_memory, addr, alias);
+-        }
+-    }
  
--    xlnx_zynqmp_setup_rpu(s, boot_cpu, errp);
-+    if (s->has_rpu) {
-+        xlnx_zynqmp_setup_rpu(s, boot_cpu, errp);
++    /* Realize APUs before realizing the GIC. KVM requires this.  */
+     for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
+-        qemu_irq irq;
+         char *name;
+ 
+         object_property_set_int(OBJECT(&s->apu_cpu[i]), QEMU_PSCI_CONDUIT_SMC,
+@@ -310,6 +286,36 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+             error_propagate(errp, err);
+             return;
+         }
 +    }
++
++    object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    assert(ARRAY_SIZE(xlnx_zynqmp_gic_regions) == XLNX_ZYNQMP_GIC_REGIONS);
++    for (i = 0; i < XLNX_ZYNQMP_GIC_REGIONS; i++) {
++        SysBusDevice *gic = SYS_BUS_DEVICE(&s->gic);
++        const XlnxZynqMPGICRegion *r = &xlnx_zynqmp_gic_regions[i];
++        MemoryRegion *mr = sysbus_mmio_get_region(gic, r->region_index);
++        uint32_t addr = r->address;
++        int j;
++
++        sysbus_mmio_map(gic, r->region_index, addr);
++
++        for (j = 0; j < XLNX_ZYNQMP_GIC_ALIASES; j++) {
++            MemoryRegion *alias = &s->gic_mr[i][j];
++
++            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
++            memory_region_init_alias(alias, OBJECT(s), "zynqmp-gic-alias", mr,
++                                     0, XLNX_ZYNQMP_GIC_REGION_SIZE);
++            memory_region_add_subregion(system_memory, addr, alias);
++        }
++    }
++
++    for (i = 0; i < XLNX_ZYNQMP_NUM_APU_CPUS; i++) {
++        qemu_irq irq;
  
-     if (!s->boot_cpu_ptr) {
-         error_setg(errp, "ZynqMP Boot cpu %s not found", boot_cpu);
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 38d4c8c..68f6eb0 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -87,6 +87,8 @@ typedef struct XlnxZynqMPState {
- 
-     /* Has the ARM Security extensions?  */
-     bool secure;
-+    /* Has the RPU subsystem?  */
-+    bool has_rpu;
- }  XlnxZynqMPState;
- 
- #define XLNX_ZYNQMP_H
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
+                            qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
 -- 
 2.5.0
 

@@ -1,58 +1,65 @@
-Received: by 10.25.30.65 with SMTP id e62csp41490lfe;
-        Sun, 22 May 2016 22:55:56 -0700 (PDT)
-X-Received: by 10.55.101.20 with SMTP id z20mr14732053qkb.80.1463982956637;
-        Sun, 22 May 2016 22:55:56 -0700 (PDT)
+Received: by 10.25.30.65 with SMTP id e62csp49887lfe;
+        Sun, 22 May 2016 23:21:16 -0700 (PDT)
+X-Received: by 10.140.228.16 with SMTP id y16mr14694124qhb.83.1463984476152;
+        Sun, 22 May 2016 23:21:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 10si28528805qks.223.2016.05.22.22.55.56
+        by mx.google.com with ESMTPS id m190si21771307qke.275.2016.05.22.23.21.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 22 May 2016 22:55:56 -0700 (PDT)
+        Sun, 22 May 2016 23:21:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail (test mode) header.i=@aj.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45711 helo=lists.gnu.org)
+Received: from localhost ([::1]:45830 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b4iqK-0005R4-2S
-	for alex.bennee@linaro.org; Mon, 23 May 2016 01:55:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50230)
+	id 1b4jEp-0008Hu-L7
+	for alex.bennee@linaro.org; Mon, 23 May 2016 02:21:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1b4iqF-0005Qh-8e
-	for qemu-arm@nongnu.org; Mon, 23 May 2016 01:55:54 -0400
+	(envelope-from <andrew@aj.id.au>) id 1b4jEm-0008Hk-IL
+	for qemu-arm@nongnu.org; Mon, 23 May 2016 02:21:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1b4iq9-0002js-4Y
-	for qemu-arm@nongnu.org; Mon, 23 May 2016 01:55:50 -0400
-Received: from 12.mo3.mail-out.ovh.net ([188.165.41.191]:54849)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1b4iq8-0002ji-N7
-	for qemu-arm@nongnu.org; Mon, 23 May 2016 01:55:45 -0400
-Received: from player772.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 88225FFB23F
-	for <qemu-arm@nongnu.org>; Mon, 23 May 2016 07:55:43 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player772.ha.ovh.net (Postfix) with ESMTPSA id 2B5134C007F;
-	Mon, 23 May 2016 07:55:39 +0200 (CEST)
-To: andrew@aj.id.au, Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <andrew@aj.id.au>) id 1b4jEi-0000xp-2Z
+	for qemu-arm@nongnu.org; Mon, 23 May 2016 02:21:11 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:52456
+	helo=homiemail-a13.g.dreamhost.com)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <andrew@aj.id.au>)
+	id 1b4jEh-0000xZ-Q6; Mon, 23 May 2016 02:21:07 -0400
+Received: from homiemail-a13.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a13.g.dreamhost.com (Postfix) with ESMTP id 5A7BF334072;
+	Sun, 22 May 2016 23:21:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
+	:subject:from:reply-to:to:cc:date:in-reply-to:references
+	:content-type:mime-version; s=aj.id.au; bh=f3j77ICud9/PUxDcfSdpI
+	6Ib/3U=; b=I/6h+LlgHpl11gB3S5NuYux5Q669JlwXSaPYFp3jW1okzMOtZSbKi
+	jMLftupjTg21TJDAScPm0IXXCq46Bo41B3dv1fbYk/dx36YfW3TWQ5xcoIuacGqx
+	6uL8gAPHl4XCi0DXk7z/pmRQMllM2Z9xqCohQl2Xjon0EXQ/vofJJE=
+Received: from keelia (unknown [203.0.153.9])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a13.g.dreamhost.com (Postfix) with ESMTPSA id 1001C33406F; 
+	Sun, 22 May 2016 23:20:59 -0700 (PDT)
+Message-ID: <1463984454.2703.291.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
+	<peter.maydell@linaro.org>
+Date: Mon, 23 May 2016 15:50:54 +0930
+In-Reply-To: <57429B4E.5080008@kaod.org>
 References: <1463761675-15227-1-git-send-email-clg@kaod.org>
-	<1463967709.2703.238.camel@aj.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <57429B4E.5080008@kaod.org>
-Date: Mon, 23 May 2016 07:55:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.8.0
-MIME-Version: 1.0
-In-Reply-To: <1463967709.2703.238.camel@aj.id.au>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 11195667202716896064
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrfeekgddvieehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
+	<1463967709.2703.238.camel@aj.id.au> <57429B4E.5080008@kaod.org>
+Organization: IBM OzLabs
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-awgkIy1JEC32op+3r+oa"
+X-Mailer: Evolution 3.18.5.2-0ubuntu1 
+Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 188.165.41.191
+X-Received-From: 69.163.253.7
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] i2c: add aspeed i2c crontroller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -65,699 +72,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: andrew@aj.id.au
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RlKVPfC0hKPR
+X-TUID: KrARWxEiSnGz
 
-On 05/23/2016 03:41 AM, Andrew Jeffery wrote:
-> Hi C=C3=A9dric,
+
+--=-awgkIy1JEC32op+3r+oa
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, 2016-05-23 at 07:55 +0200, C=C3=A9dric Le Goater wrote:
+> >=C2=A0
+> > The hunk fails to apply to master as the SCU isn't yet integrated
+> > there. The change to ast2400.h also fails to apply for this reason.
 >=20
-> On Fri, 2016-05-20 at 18:27 +0200, C=C3=A9dric Le Goater wrote:
->> The Aspeed AST2400 integrates a set of 14 I2C/SMBus bus controllers
->> directly connected to ab APB bus which can be programmed as a master
->> or slave.
->>
->> This patch offers a device model for the master mode only, slave mode
->> is not supported.
->>
->> On the TODO list, we also have :
->>
->>  - improve and harden the state machine.=20
->>  - bus recovery support (used by the Linux driver).
->>  - transfer mode state machine bits. this is not strictly necessary as
->>    it is mostly used for debug. The bus busy bit is deducted from the
->>    I2C core engine of qemu.
->>  - support of the pool buffer: 2048 bytes of internal SRAM (not used
->>    by the Linux driver).
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>  hw/arm/ast2400.c            |  16 ++
->>  hw/i2c/Makefile.objs        |   1 +
->>  hw/i2c/aspeed_i2c.c         | 449 +++++++++++++++++++++++++++++++++++=
-+++++++++
->>  include/hw/arm/ast2400.h    |   2 +
->>  include/hw/i2c/aspeed_i2c.h |  62 ++++++
->>  5 files changed, 530 insertions(+)
->>  create mode 100644 hw/i2c/aspeed_i2c.c
->>  create mode 100644 include/hw/i2c/aspeed_i2c.h
->>
->> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
->> index cf9f37e6a301..4576e67cd483 100644
->> --- a/hw/arm/ast2400.c
->> +++ b/hw/arm/ast2400.c
->> @@ -18,6 +18,7 @@
->>  #include "hw/arm/ast2400.h"
->>  #include "hw/char/serial.h"
->>  #include "hw/boards.h"
->> +#include "hw/i2c/aspeed_i2c.h"
->> =20
->>  #define AST2400_UART_5_BASE      0x00184000
->>  #define AST2400_IOMEM_SIZE       0x00200000
->> @@ -25,6 +26,7 @@
->>  #define AST2400_VIC_BASE         0x1E6C0000
->>  #define AST2400_SCU_BASE         0x1E6E2000
->>  #define AST2400_TIMER_BASE       0x1E782000
->> +#define AST2400_I2C_BASE         0x1E78A000
->> =20
->>  static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
->>  static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, }=
-;
->> @@ -71,6 +73,10 @@ static void ast2400_init(Object *obj)
->>      object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
->>      object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
->>      qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
+> Ah yes. I am using your branch for this patch.=C2=A0
 >=20
-> The hunk fails to apply to master as the SCU isn't yet integrated
-> there. The change to ast2400.h also fails to apply for this reason.
+> So, I will provide you a fix for "qemu/log.h" below=C2=A0 and let you do=
+=C2=A0
+> the sending of the SCU device ? or do you want me to send it all ?=C2=A0
+>=20
 
-Ah yes. I am using your branch for this patch.=20
-
-So, I will provide you a fix for "qemu/log.h" below  and let you do=20
-the sending of the SCU device ? or do you want me to send it all ?=20
+I'd make this patch apply to master and send it alone. The SCU patches
+aren't quite ready for posting and I've got a few distractions at the
+moment, so it might be a week or two before I can clean them up and
+send them out. I'll apply them on top of the i2c controller patch when
+I get around to it.
 
 Cheers,
 
-C.=20
+Andrew
+--=-awgkIy1JEC32op+3r+oa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
->> +
->> +    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
->> +    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
->> +    qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
->>  }
->> =20
->>  static void ast2400_realize(DeviceState *dev, Error **errp)
->> @@ -143,6 +149,16 @@ static void ast2400_realize(DeviceState *dev, Err=
-or **errp)
->>          serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
->>                         uart5, 38400, serial_hds[0], DEVICE_LITTLE_END=
-IAN);
->>      }
->> +
->> +    /* I2C */
->> +    object_property_set_bool(OBJECT(&s->i2c), true, "realized", &err)=
-;
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, AST2400_I2C_BASE);
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
->> +                       qdev_get_gpio_in(DEVICE(&s->vic), 12));
->>  }
->> =20
->>  static void ast2400_class_init(ObjectClass *oc, void *data)
->> diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
->> index aeb8f38d70f1..1fd54edf4c23 100644
->> --- a/hw/i2c/Makefile.objs
->> +++ b/hw/i2c/Makefile.objs
->> @@ -5,4 +5,5 @@ common-obj-$(CONFIG_APM) +=3D pm_smbus.o
->>  common-obj-$(CONFIG_BITBANG_I2C) +=3D bitbang_i2c.o
->>  common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_i2c.o
->>  common-obj-$(CONFIG_IMX_I2C) +=3D imx_i2c.o
->> +common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_i2c.o
->>  obj-$(CONFIG_OMAP) +=3D omap_i2c.o
->> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->> new file mode 100644
->> index 000000000000..c56780d7e362
->> --- /dev/null
->> +++ b/hw/i2c/aspeed_i2c.c
->> @@ -0,0 +1,449 @@
->> +/*
->> + * ARM Aspeed I2C controller
->> + *
->> + * Copyright (C) 2016 IBM Corp.
->> + *
->> + * This program is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU General Public License
->> + * as published by the Free Software Foundation; either version 2
->> + * of the License, or (at your option) any later version.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU General Public License
->> + * along with this program; if not, see .
->> + *
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/sysbus.h"
->> +#include "hw/i2c/aspeed_i2c.h"
->=20
-> Looks like you will need to also #include "qemu/log.h" as well, as
-> commit 03dd024ff57733a55cd2e455f361d053c81b1b29 cleaned up its
-> inclusion via hw/hw.h
->=20
-> Otherwise,
->=20
-> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
->=20
->> +
->> +/* I2C Global Register */
->> +
->> +#define I2C_CTRL_STATUS         0x00        /* Device Interrupt Statu=
-s */
->> +#define I2C_CTRL_ASSIGN         0x08        /* Device Interrupt Targe=
-t
->> +                                               Assignment */
->> +
->> +/* I2C Device (Bus) Register */
->> +
->> +#define I2CD_FUN_CTRL_REG       0x00       /* I2CD Function Control  =
-*/
->> +#define   I2CD_BUFF_SEL_MASK               (0x7 << 20)
->> +#define   I2CD_BUFF_SEL(x)                 (x << 20)
->> +#define   I2CD_M_SDA_LOCK_EN               (0x1 << 16)
->> +#define   I2CD_MULTI_MASTER_DIS            (0x1 << 15)
->> +#define   I2CD_M_SCL_DRIVE_EN              (0x1 << 14)
->> +#define   I2CD_MSB_STS                     (0x1 << 9)
->> +#define   I2CD_SDA_DRIVE_1T_EN             (0x1 << 8)
->> +#define   I2CD_M_SDA_DRIVE_1T_EN           (0x1 << 7)
->> +#define   I2CD_M_HIGH_SPEED_EN             (0x1 << 6)
->> +#define   I2CD_DEF_ADDR_EN                 (0x1 << 5)
->> +#define   I2CD_DEF_ALERT_EN                (0x1 << 4)
->> +#define   I2CD_DEF_ARP_EN                  (0x1 << 3)
->> +#define   I2CD_DEF_GCALL_EN                (0x1 << 2)
->> +#define   I2CD_SLAVE_EN                    (0x1 << 1)
->> +#define   I2CD_MASTER_EN                   (0x1)
->> +
->> +#define I2CD_AC_TIMING_REG1     0x04       /* Clock and AC Timing Con=
-trol #1 */
->> +#define I2CD_AC_TIMING_REG2     0x08       /* Clock and AC Timing Con=
-trol #1 */
->> +#define I2CD_INTR_CTRL_REG      0x0c       /* I2CD Interrupt Control =
-*/
->> +#define I2CD_INTR_STS_REG       0x10       /* I2CD Interrupt Status *=
-/
->> +#define   I2CD_INTR_SDA_DL_TIMEOUT         (0x1 << 14)
->> +#define   I2CD_INTR_BUS_RECOVER_DONE       (0x1 << 13)
->> +#define   I2CD_INTR_SMBUS_ALERT            (0x1 << 12) /* Bus [0-3] o=
-nly */
->> +#define   I2CD_INTR_SMBUS_ARP_ADDR         (0x1 << 11) /* Removed */
->> +#define   I2CD_INTR_SMBUS_DEV_ALERT_ADDR   (0x1 << 10) /* Removed */
->> +#define   I2CD_INTR_SMBUS_DEF_ADDR         (0x1 << 9)  /* Removed */
->> +#define   I2CD_INTR_GCALL_ADDR             (0x1 << 8)  /* Removed */
->> +#define   I2CD_INTR_SLAVE_MATCH            (0x1 << 7)  /* use RX_DONE=
- */
->> +#define   I2CD_INTR_SCL_TIMEOUT            (0x1 << 6)
->> +#define   I2CD_INTR_ABNORMAL               (0x1 << 5)
->> +#define   I2CD_INTR_NORMAL_STOP            (0x1 << 4)
->> +#define   I2CD_INTR_ARBIT_LOSS             (0x1 << 3)
->> +#define   I2CD_INTR_RX_DONE                (0x1 << 2)
->> +#define   I2CD_INTR_TX_NAK                 (0x1 << 1)
->> +#define   I2CD_INTR_TX_ACK                 (0x1 << 0)
->> +
->> +#define I2CD_CMD_REG            0x14       /* I2CD Command/Status */
->> +#define   I2CD_SDA_OE                      (0x1 << 28)
->> +#define   I2CD_SDA_O                       (0x1 << 27)
->> +#define   I2CD_SCL_OE                      (0x1 << 26)
->> +#define   I2CD_SCL_O                       (0x1 << 25)
->> +#define   I2CD_TX_TIMING                   (0x1 << 24)
->> +#define   I2CD_TX_STATUS                   (0x1 << 23)
->> +
->> +#define   I2CD_TX_STATE_SHIFT              19 /* Tx State Machine */
->> +#define   I2CD_TX_STATE_MASK                  0xf
->> +#define     I2CD_IDLE                         0x0
->> +#define     I2CD_MACTIVE                      0x8
->> +#define     I2CD_MSTART                       0x9
->> +#define     I2CD_MSTARTR                      0xa
->> +#define     I2CD_MSTOP                        0xb
->> +#define     I2CD_MTXD                         0xc
->> +#define     I2CD_MRXACK                       0xd
->> +#define     I2CD_MRXD                         0xe
->> +#define     I2CD_MTXACK                       0xf
->> +#define     I2CD_SWAIT                        0x1
->> +#define     I2CD_SRXD                         0x4
->> +#define     I2CD_STXACK                       0x5
->> +#define     I2CD_STXD                         0x6
->> +#define     I2CD_SRXACK                       0x7
->> +#define     I2CD_RECOVER                      0x3
->> +
->> +#define   I2CD_SCL_LINE_STS                (0x1 << 18)
->> +#define   I2CD_SDA_LINE_STS                (0x1 << 17)
->> +#define   I2CD_BUS_BUSY_STS                (0x1 << 16)
->> +#define   I2CD_SDA_OE_OUT_DIR              (0x1 << 15)
->> +#define   I2CD_SDA_O_OUT_DIR               (0x1 << 14)
->> +#define   I2CD_SCL_OE_OUT_DIR              (0x1 << 13)
->> +#define   I2CD_SCL_O_OUT_DIR               (0x1 << 12)
->> +#define   I2CD_BUS_RECOVER_CMD_EN          (0x1 << 11)
->> +#define   I2CD_S_ALT_EN                    (0x1 << 10)
->> +#define   I2CD_RX_DMA_ENABLE               (0x1 << 9)
->> +#define   I2CD_TX_DMA_ENABLE               (0x1 << 8)
->> +
->> +/* Command Bit */
->> +#define   I2CD_M_STOP_CMD                  (0x1 << 5)
->> +#define   I2CD_M_S_RX_CMD_LAST             (0x1 << 4)
->> +#define   I2CD_M_RX_CMD                    (0x1 << 3)
->> +#define   I2CD_S_TX_CMD                    (0x1 << 2)
->> +#define   I2CD_M_TX_CMD                    (0x1 << 1)
->> +#define   I2CD_M_START_CMD                 (0x1)
->> +
->> +#define I2CD_DEV_ADDR_REG       0x18       /* Slave Device Address */
->> +#define I2CD_BUF_CTRL_REG       0x1c       /* Pool Buffer Control */
->> +#define I2CD_BYTE_BUF_REG       0x20       /* Transmit/Receive Byte B=
-uffer */
->> +#define   I2CD_BYTE_BUF_TX_SHIFT           0
->> +#define   I2CD_BYTE_BUF_TX_MASK            0xff
->> +#define   I2CD_BYTE_BUF_RX_SHIFT           8
->> +#define   I2CD_BYTE_BUF_RX_MASK            0xff
->> +
->> +
->> +static inline bool aspeed_i2c_bus_is_master(AspeedI2CBus *bus)
->> +{
->> +    return bus->ctrl & I2CD_MASTER_EN;
->> +}
->> +
->> +static inline bool aspeed_i2c_bus_is_enabled(AspeedI2CBus *bus)
->> +{
->> +    return bus->ctrl & (I2CD_MASTER_EN | I2CD_SLAVE_EN);
->> +}
->> +
->> +static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
->> +{
->> +    bus->intr_status &=3D bus->intr_ctrl;
->> +    if (bus->intr_status) {
->> +        bus->controller->intr_status |=3D 1 << bus->id;
->> +        qemu_irq_raise(bus->controller->irq);
->> +    }
->> +}
->> +
->> +static uint64_t aspeed_i2c_bus_read(void *opaque, hwaddr offset,
->> +                                    unsigned size)
->> +{
->> +    AspeedI2CBus *bus =3D opaque;
->> +
->> +    switch (offset) {
->> +    case I2CD_FUN_CTRL_REG:
->> +        return bus->ctrl;
->> +    case I2CD_AC_TIMING_REG1:
->> +        return bus->timing[0];
->> +    case I2CD_AC_TIMING_REG2:
->> +        return bus->timing[1];
->> +    case I2CD_INTR_CTRL_REG:
->> +        return bus->intr_ctrl;
->> +    case I2CD_INTR_STS_REG:
->> +        return bus->intr_status;
->> +    case I2CD_BYTE_BUF_REG:
->> +        return bus->buf;
->> +    case I2CD_CMD_REG:
->> +        return bus->cmd | (i2c_bus_busy(bus->bus) << 16);
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__=
-, offset);
->> +        return -1;
->> +    }
->> +}
->> +
->> +static inline uint64_t aspeed_i2c_bus_get_state(AspeedI2CBus *bus)
->> +{
->> +    return bus->cmd >> 19 & 0xF;
->> +}
->> +
->> +static inline void aspeed_i2c_bus_set_state(AspeedI2CBus *bus, uint64=
-_t value)
->> +{
->> +    bus->cmd |=3D (value & 0xF) << 19;
->> +}
->> +
->> +static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus *bus, uint64_t val=
-ue)
->> +{
->> +    bus->cmd |=3D value & 0xFFFF;
->> +    bus->intr_status =3D 0;
->> +
->> +    if (bus->cmd & I2CD_M_START_CMD) {
->> +        if (i2c_start_transfer(bus->bus, extract32(bus->buf, 1, 7),
->> +                               extract32(bus->buf, 0, 1))) {
->> +            bus->intr_status |=3D I2CD_INTR_TX_NAK;
->> +        } else {
->> +            bus->intr_status |=3D I2CD_INTR_TX_ACK;
->> +        }
->> +
->> +    } else if (bus->cmd & I2CD_M_TX_CMD) {
->> +        if (i2c_send(bus->bus, bus->buf)) {
->> +            bus->intr_status |=3D (I2CD_INTR_TX_NAK | I2CD_INTR_ABNOR=
-MAL);
->> +            i2c_end_transfer(bus->bus);
->> +        } else {
->> +            bus->intr_status |=3D I2CD_INTR_TX_ACK;
->> +        }
->> +
->> +    } else if (bus->cmd & I2CD_M_RX_CMD) {
->> +        int ret =3D i2c_recv(bus->bus);
->> +        if (ret < 0) {
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: read failed\n", __fun=
-c__);
->> +            ret =3D 0xff;
->> +        } else {
->> +            bus->intr_status |=3D I2CD_INTR_RX_DONE;
->> +        }
->> +        bus->buf =3D (ret & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_R=
-X_SHIFT;
->> +    }
->> +
->> +    if (bus->cmd & (I2CD_M_STOP_CMD | I2CD_M_S_RX_CMD_LAST)) {
->> +        if (!i2c_bus_busy(bus->bus)) {
->> +            bus->intr_status |=3D I2CD_INTR_ABNORMAL;
->> +        } else {
->> +            i2c_end_transfer(bus->bus);
->> +            bus->intr_status |=3D I2CD_INTR_NORMAL_STOP;
->> +        }
->> +    }
->> +
->> +    /* command is handled, reset it and check for interrupts  */
->> +    bus->cmd &=3D ~0xFFFF;
->> +    aspeed_i2c_bus_raise_interrupt(bus);
->> +}
->> +
->> +static void aspeed_i2c_bus_write(void *opaque, hwaddr offset,
->> +                                 uint64_t value, unsigned size)
->> +{
->> +    AspeedI2CBus *bus =3D opaque;
->> +
->> +    switch (offset) {
->> +    case I2CD_FUN_CTRL_REG:
->> +        if (value & I2CD_SLAVE_EN) {
->> +            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\=
-n",
->> +                          __func__);
->> +            break;
->> +        }
->> +        bus->ctrl =3D value & 0x0071C3FF;
->> +        break;
->> +    case I2CD_AC_TIMING_REG1:
->> +        bus->timing[0] =3D value & 0xFFFFF0F;
->> +        break;
->> +    case I2CD_AC_TIMING_REG2:
->> +        bus->timing[1] =3D value & 0x7;
->> +        break;
->> +    case I2CD_INTR_CTRL_REG:
->> +        bus->intr_ctrl =3D value & 0x7FFF;
->> +        break;
->> +    case I2CD_INTR_STS_REG:
->> +        bus->intr_status &=3D ~(value & 0x7FFF);
->> +        bus->controller->intr_status &=3D ~(1 << bus->id);
->> +        qemu_irq_lower(bus->controller->irq);
->> +        break;
->> +    case I2CD_DEV_ADDR_REG:
->> +        qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\n",
->> +                      __func__);
->> +        break;
->> +    case I2CD_BYTE_BUF_REG:
->> +        bus->buf =3D (value & I2CD_BYTE_BUF_TX_MASK) << I2CD_BYTE_BUF=
-_TX_SHIFT;
->> +        break;
->> +    case I2CD_CMD_REG:
->> +        if (!aspeed_i2c_bus_is_enabled(bus)) {
->> +            break;
->> +        }
->> +
->> +        if (!aspeed_i2c_bus_is_master(bus)) {
->> +            qemu_log_mask(LOG_UNIMP, "%s: slave mode not implemented\=
-n",
->> +                          __func__);
->> +            break;
->> +        }
->> +
->> +        aspeed_i2c_bus_handle_cmd(bus, value);
->> +        break;
->> +
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PR=
-Ix "\n",
->> +                      __func__, offset);
->> +    }
->> +}
->> +
->> +static uint64_t aspeed_i2c_ctrl_read(void *opaque, hwaddr offset,
->> +                                   unsigned size)
->> +{
->> +    AspeedI2CState *s =3D opaque;
->> +
->> +    switch (offset) {
->> +    case I2C_CTRL_STATUS:
->> +        return s->intr_status;
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PR=
-Ix "\n",
->> +                      __func__, offset);
->> +        break;
->> +    }
->> +
->> +    return -1;
->> +}
->> +
->> +static void aspeed_i2c_ctrl_write(void *opaque, hwaddr offset,
->> +                                  uint64_t value, unsigned size)
->> +{
->> +    switch (offset) {
->> +    case I2C_CTRL_STATUS:
->> +    default:
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PR=
-Ix "\n",
->> +                      __func__, offset);
->> +        break;
->> +    }
->> +}
->> +
->> +static const MemoryRegionOps aspeed_i2c_bus_ops =3D {
->> +    .read =3D aspeed_i2c_bus_read,
->> +    .write =3D aspeed_i2c_bus_write,
->> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
->> +};
->> +
->> +static const MemoryRegionOps aspeed_i2c_ctrl_ops =3D {
->> +    .read =3D aspeed_i2c_ctrl_read,
->> +    .write =3D aspeed_i2c_ctrl_write,
->> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
->> +};
->> +
->> +static const VMStateDescription aspeed_i2c_bus_vmstate =3D {
->> +    .name =3D TYPE_ASPEED_I2C,
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_UINT8(id, AspeedI2CBus),
->> +        VMSTATE_UINT32(ctrl, AspeedI2CBus),
->> +        VMSTATE_UINT32_ARRAY(timing, AspeedI2CBus, 2),
->> +        VMSTATE_UINT32(intr_ctrl, AspeedI2CBus),
->> +        VMSTATE_UINT32(intr_status, AspeedI2CBus),
->> +        VMSTATE_UINT32(cmd, AspeedI2CBus),
->> +        VMSTATE_UINT32(buf, AspeedI2CBus),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static const VMStateDescription aspeed_i2c_vmstate =3D {
->> +    .name =3D TYPE_ASPEED_I2C,
->> +    .version_id =3D 1,
->> +    .minimum_version_id =3D 1,
->> +    .fields =3D (VMStateField[]) {
->> +        VMSTATE_UINT32(intr_status, AspeedI2CState),
->> +        VMSTATE_STRUCT_ARRAY(busses, AspeedI2CState,
->> +                             ASPEED_I2C_NR_BUSSES, 1, aspeed_i2c_bus_=
-vmstate,
->> +                             AspeedI2CBus),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->> +
->> +static void aspeed_i2c_reset(DeviceState *dev)
->> +{
->> +    int i;
->> +    AspeedI2CState *s =3D ASPEED_I2C(dev);
->> +
->> +    s->intr_status =3D 0;
->> +
->> +    for (i =3D 0; i < ASPEED_I2C_NR_BUSSES; i++) {
->> +        s->busses[i].intr_ctrl =3D 0;
->> +        s->busses[i].intr_status =3D 0;
->> +        s->busses[i].cmd =3D 0;
->> +        s->busses[i].buf =3D 0;
->> +        i2c_end_transfer(s->busses[i].bus);
->> +    }
->> +}
->> +
->> +/*
->> + * Address Definitions
->> + *
->> + *   0x000 ... 0x03F: Global Register
->> + *   0x040 ... 0x07F: Device 1
->> + *   0x080 ... 0x0BF: Device 2
->> + *   0x0C0 ... 0x0FF: Device 3
->> + *   0x100 ... 0x13F: Device 4
->> + *   0x140 ... 0x17F: Device 5
->> + *   0x180 ... 0x1BF: Device 6
->> + *   0x1C0 ... 0x1FF: Device 7
->> + *   0x200 ... 0x2FF: Buffer Pool  (unused in linux driver)
->> + *   0x300 ... 0x33F: Device 8
->> + *   0x340 ... 0x37F: Device 9
->> + *   0x380 ... 0x3BF: Device 10
->> + *   0x3C0 ... 0x3FF: Device 11
->> + *   0x400 ... 0x43F: Device 12
->> + *   0x440 ... 0x47F: Device 13
->> + *   0x480 ... 0x4BF: Device 14
->> + *   0x800 ... 0xFFF: Buffer Pool  (unused in linux driver)
->> + */
->> +static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->> +{
->> +    int i;
->> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->> +    AspeedI2CState *s =3D ASPEED_I2C(dev);
->> +
->> +    sysbus_init_irq(sbd, &s->irq);
->> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops,=
- s,
->> +                          "aspeed.i2c", 0x1000);
->> +    sysbus_init_mmio(sbd, &s->iomem);
->> +
->> +    for (i =3D 0; i < ASPEED_I2C_NR_BUSSES; i++) {
->> +        char name[16];
->> +        int offset =3D i < 7 ? 1 : 5;
->> +        snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
->> +        s->busses[i].controller =3D s;
->> +        s->busses[i].id =3D i;
->> +        s->busses[i].bus =3D i2c_init_bus(dev, name);
->> +        memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
->> +                              &aspeed_i2c_bus_ops, &s->busses[i], nam=
-e, 0x40);
->> +        memory_region_add_subregion(&s->iomem, 0x40 * (i + offset),
->> +                                    &s->busses[i].mr);
->> +    }
->> +}
->> +
->> +static void aspeed_i2c_class_init(ObjectClass *klass, void *data)
->> +{
->> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
->> +
->> +    dc->vmsd =3D &aspeed_i2c_vmstate;
->> +    dc->reset =3D aspeed_i2c_reset;
->> +    dc->realize =3D aspeed_i2c_realize;
->> +    dc->desc =3D "Aspeed I2C Controller";
->> +}
->> +
->> +static const TypeInfo aspeed_i2c_info =3D {
->> +    .name          =3D TYPE_ASPEED_I2C,
->> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
->> +    .instance_size =3D sizeof(AspeedI2CState),
->> +    .class_init    =3D aspeed_i2c_class_init,
->> +};
->> +
->> +static void aspeed_i2c_register_types(void)
->> +{
->> +    type_register_static(&aspeed_i2c_info);
->> +}
->> +
->> +type_init(aspeed_i2c_register_types)
->> +
->> +
->> +I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr)
->> +{
->> +    AspeedI2CState *s =3D ASPEED_I2C(dev);
->> +    I2CBus *bus =3D NULL;
->> +
->> +    if (busnr >=3D 0 && busnr < ASPEED_I2C_NR_BUSSES) {
->> +        bus =3D s->busses[busnr].bus;
->> +    }
->> +
->> +    return bus;
->> +}
->> diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
->> index cf7102145355..e96e3db3fbea 100644
->> --- a/include/hw/arm/ast2400.h
->> +++ b/include/hw/arm/ast2400.h
->> @@ -16,6 +16,7 @@
->>  #include "hw/intc/aspeed_vic.h"
->>  #include "hw/misc/aspeed_scu.h"
->>  #include "hw/timer/aspeed_timer.h"
->> +#include "hw/i2c/aspeed_i2c.h"
->> =20
->>  typedef struct AST2400State {
->>      /*< private >*/
->> @@ -28,6 +29,7 @@ typedef struct AST2400State {
->>      AspeedVICState vic;
->>      AspeedTimerCtrlState timerctrl;
->>      AspeedSCUState scu;
->> +    AspeedI2CState i2c;
->>  } AST2400State;
->> =20
->>  #define TYPE_AST2400 "ast2400"
->> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
->> new file mode 100644
->> index 000000000000..f9020acdef30
->> --- /dev/null
->> +++ b/include/hw/i2c/aspeed_i2c.h
->> @@ -0,0 +1,62 @@
->> +/*
->> + *  ASPEED AST2400 I2C Controller
->> + *
->> + *  Copyright (C) 2016 IBM Corp.
->> + *
->> + *  This program is free software; you can redistribute it and/or mod=
-ify
->> + *  it under the terms of the GNU General Public License as published=
- by
->> + *  the Free Software Foundation; either version 2 of the License, or
->> + *  (at your option) any later version.
->> + *
->> + *  This program is distributed in the hope that it will be useful,
->> + *  but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + *  GNU General Public License for more details.
->> + *
->> + *  You should have received a copy of the GNU General Public License=
- along
->> + *  with this program; if not, write to the Free Software Foundation,=
- Inc.,
->> + *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
->> + */
->> +#ifndef ASPEED_I2C_H
->> +#define ASPEED_I2C_H
->> +
->> +#include "hw/i2c/i2c.h"
->> +
->> +#define TYPE_ASPEED_I2C "aspeed.i2c"
->> +#define ASPEED_I2C(obj) \
->> +    OBJECT_CHECK(AspeedI2CState, (obj), TYPE_ASPEED_I2C)
->> +
->> +#define ASPEED_I2C_NR_BUSSES 14
->> +
->> +struct AspeedI2CState;
->> +
->> +typedef struct AspeedI2CBus {
->> +    struct AspeedI2CState *controller;
->> +
->> +    MemoryRegion mr;
->> +
->> +    I2CBus *bus;
->> +    uint8_t id;
->> +
->> +    uint32_t ctrl;
->> +    uint32_t timing[2];
->> +    uint32_t intr_ctrl;
->> +    uint32_t intr_status;
->> +    uint32_t cmd;
->> +    uint32_t buf;
->> +} AspeedI2CBus;
->> +
->> +typedef struct AspeedI2CState {
->> +    SysBusDevice parent_obj;
->> +
->> +    MemoryRegion iomem;
->> +    qemu_irq irq;
->> +
->> +    uint32_t intr_status;
->> +
->> +    AspeedI2CBus busses[ASPEED_I2C_NR_BUSSES];
->> +} AspeedI2CState;
->> +
->> +I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr);
->> +
->> +#endif /* ASPEED_I2C_H */
+iQIcBAABCgAGBQJXQqFGAAoJEJ0dnzgO5LT54VEP/iuKsCfW2+/pSGxCLfvlBHDT
+f7FjuWS7HVBSEW3v5uWo+xIhV3KvD4h/yU2iKNU8IsBUknPYO1tWboyDIl72BN64
+D/xcN2kdYgiNZFNVbh3s0LkRoqkKrcQrpj9Csxv5yMKKJR2QNqFi6Bj5hwhQXbMA
+mT9zX9Ov44qIwwlbZL0BrJ1644OkVSqQCaTEQFfanvmF9aFu4RXIQ9Ylpktxc+v+
+VAnzf1iNebt1n94mx79PCFqlpcnYO+OtPEEnWVHAwFFIQjHZnxsHvmSqwSoQrT6o
+DMtzK2SrtrKFM6g2qA3yb7B9aqveZKNz0zuPMV4bbq/4uv22Xk1r7CLnmzGZwqWX
+uHlFzgdhqDZwkkZAh7d2201VY7/3Wk4H266XyA5H0zaeuEonaPy41Ksg9R8j40XC
+gwdcCH35HSSXW1cLKngyWbT1Ec6xNhyeefus57e5Qr6Ql/5CqO8as5s67gjEhcgw
++AYFSIEk1vIV8YP+FSokeQeVjCsV3T/m2MDprWw7Vko3X4qEmoHyKSbw2VNlgXsF
+Sh5BTnqdgQOQptBWa5p7vmLpNbtflUgKTXWrcdSNTzXnEyhSJmJxpVuZonLo1BIf
+hH95yGkl3YgebLSatzrZcNj9elwvRj7tv2Pfe3GHdQtbcEctEr5fy6sBFMXVXIVs
+KP+zEib5WzgaaoJ180MG
+=1sOo
+-----END PGP SIGNATURE-----
+
+--=-awgkIy1JEC32op+3r+oa--
 

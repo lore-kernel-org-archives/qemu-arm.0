@@ -1,114 +1,143 @@
-Received: by 10.25.30.65 with SMTP id e62csp819323lfe;
-        Tue, 24 May 2016 09:20:49 -0700 (PDT)
-X-Received: by 10.140.180.132 with SMTP id b126mr4293484qha.32.1464106849391;
-        Tue, 24 May 2016 09:20:49 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.30.65 with SMTP id e62csp821853lfe;
+        Tue, 24 May 2016 09:25:56 -0700 (PDT)
+X-Received: by 10.140.150.209 with SMTP id 200mr3951550qhw.62.1464107156750;
+        Tue, 24 May 2016 09:25:56 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c128si3210295qkd.12.2016.05.24.09.20.49
+        by mx.google.com with ESMTPS id h184si3219594qke.54.2016.05.24.09.25.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 May 2016 09:20:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 24 May 2016 09:25:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54221 helo=lists.gnu.org)
+Received: from localhost ([::1]:54238 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b5F4a-0006g1-My
-	for alex.bennee@linaro.org; Tue, 24 May 2016 12:20:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55239)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b5F9Y-0000Nz-4A
+	for alex.bennee@linaro.org; Tue, 24 May 2016 12:25:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58024)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b5F4X-0006eq-6x
-	for qemu-arm@nongnu.org; Tue, 24 May 2016 12:20:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1b5F8E-0008DM-Ic
+	for qemu-devel@nongnu.org; Tue, 24 May 2016 12:24:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b5F4S-0001Nr-8x
-	for qemu-arm@nongnu.org; Tue, 24 May 2016 12:20:45 -0400
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:36617)
+	(envelope-from <peter.maydell@linaro.org>) id 1b5F7v-0002r3-Q4
+	for qemu-devel@nongnu.org; Tue, 24 May 2016 12:24:34 -0400
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33017)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b5F4R-0001Nf-Qi
-	for qemu-arm@nongnu.org; Tue, 24 May 2016 12:20:40 -0400
-Received: by mail-vk0-x229.google.com with SMTP id y2so28572337vka.3
-	for <qemu-arm@nongnu.org>; Tue, 24 May 2016 09:20:39 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1b5F7v-0002qr-Lj
+	for qemu-devel@nongnu.org; Tue, 24 May 2016 12:24:15 -0400
+Received: by mail-vk0-x22d.google.com with SMTP id r140so28841192vkf.0
+	for <qemu-devel@nongnu.org>; Tue, 24 May 2016 09:24:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=wtYvme4mPLrWR04WqiolKTQ2VaOaOiE4Rp2pm4pyhu0=;
-	b=POsmT1M69meV20v202ENhHEtBdrGwFwbzN/rLUHsS5ZLWk5gmRhpVjwGM6FosYidK5
-	KBg6PvzfilfU18+0mvvzs2hYrA/QXx6DygVP/llZLSgDp+b4c2/91jT/0ZvlPn7LtO4Y
-	wtZ5/n9Gofs0ifGj6LHP5YJ69zRHfCrtsAtrU=
+	:cc; bh=gUECpv4qi/8LG+i9QOKXuJ+0RC/igPIWjQoz/BOFMok=;
+	b=P7S85yeCuZijhA7cB3fXOezLgRWjK7v3aTF1PLUd/HkYymaAQxPIbPnMQI7XMj2eqe
+	GN8Htf8xZVZEuPcEijP6IDcxfjbbNyd1RsjcupNXaSJhrOePiJLWkbPXW7a+KdWJj3va
+	vqHPK+fuvA5Q4TOtTa7cjxALhl5/pE2AYzveE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=wtYvme4mPLrWR04WqiolKTQ2VaOaOiE4Rp2pm4pyhu0=;
-	b=EWAog/LZyQXnsioV28mlFvsPrGoUDg1Q7LEJabXiPL8GA93rJGLPxTn7LP5pXqIppM
-	uyOCix9g9FFnRTwkklzo1N3Svx0NXQHCjRg3T3/bxFfFWV5Q3WPO++9MKICKZ2H6NXoR
-	1Q/OktrQxM5rd5AB991Ztuzt01jgO/caPcyPEGK7ANrSH2/YSU4DH+GSr3YkMPbmURV5
-	/przmdotUbsn7ZBtT457TpkyS6b8vD3ALvj8nhHClysCop8PEB/NtV8y7BJy2kcHVhsd
-	WzUjO5RG6mLCvRTouU/7kWcJ2ZXrW4HarhY4+OvUyMzWXoUZKtHWPsI/fN9e3qWkAiRO
-	/kXA==
-X-Gm-Message-State: ALyK8tJ51tbhzxZHfc4SJ/bF10ltCBIdYj/PUr47Cis6CM5emeiJ4cU+X0qHtlk4wc0ajdqFvBXkyeInpBtz7xUU
-X-Received: by 10.31.81.199 with SMTP id f190mr2462303vkb.139.1464106839083;
-	Tue, 24 May 2016 09:20:39 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=gUECpv4qi/8LG+i9QOKXuJ+0RC/igPIWjQoz/BOFMok=;
+	b=buoJiuirJ2ZfiT61yzIq2/BIO+1FjPQCt+uZaNZm4QbKozzEoEY8P9GkelCOWA5m/D
+	yyHsbfuXwJDsMGln57uviyVAeepk7bncHoFgrFVoqRNrHlBCb0Z+MgVmj3XUjGVLy/Ow
+	gBO8r61bRNgO9Y/+FSdp/xlOiBd3rBBW2mzSnxCu1zBK2wCYfTZNxqjUXD95QJ2/8t86
+	3JhkPK5pPTYiFpOTnrVf/fiX+9Rb2nr0mihy5+JSefv1OsSdyvI3k7p3DU65aCEhirGL
+	Bg/GkUGusDullOlqgcAQUVTm/MCgJYleXEDeIEJ228F3nLw5xU6+rfa2aE6gAlau0LvN
+	LyQA==
+X-Gm-Message-State: ALyK8tIjyTb80+BiDK28I9ohXDa655oKTTouCPr1ge2Cn19F95YqaqLnWxORsy74D9eenM/Xo0O92/08SwZgRB3J
+X-Received: by 10.31.148.1 with SMTP id w1mr3016210vkd.6.1464107055036; Tue,
+	24 May 2016 09:24:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.69.66 with HTTP; Tue, 24 May 2016 09:20:19 -0700 (PDT)
-In-Reply-To: <56FAE2D2.6090307@gmail.com>
-References: <cover.1454169735.git.digetx@gmail.com>
-	<CAFEAcA8ozt0SdmfgzKVSr+2Y7ou2u29g=Y35u-jmi5O8ZgH7qg@mail.gmail.com>
-	<56F92FFC.4020805@gmail.com>
-	<CAFEAcA_SCnc_C_LteDMRwSXFa80gKOt0Gimc_R8vjVURWx8pSg@mail.gmail.com>
-	<56FAE2D2.6090307@gmail.com>
+Received: by 10.31.69.66 with HTTP; Tue, 24 May 2016 09:23:55 -0700 (PDT)
+In-Reply-To: <1463698459-31312-3-git-send-email-edgar.iglesias@gmail.com>
+References: <1463698459-31312-1-git-send-email-edgar.iglesias@gmail.com>
+	<1463698459-31312-3-git-send-email-edgar.iglesias@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 May 2016 17:20:19 +0100
-Message-ID: <CAFEAcA9o3gcsgLLPQpsnww+Wn3OgpXgM_gjbTg6t6J2_SmA=NA@mail.gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
+Date: Tue, 24 May 2016 17:23:55 +0100
+Message-ID: <CAFEAcA-tBcUAweU44Pec--MBDyvs7pfDUv7+2Q3k7m8iZhiZTA@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v12 0/9] PTimer fixes/features
- and ARM MPTimer conversion
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22d
+Subject: Re: [Qemu-devel] [PATCH v1 2/5] xlnx-zynqmp: Break out RPU setup
+ into a separate function
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R0hiE3AcYVoa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ni73Wirvk1E6
 
-On 29 March 2016 at 21:17, Dmitry Osipenko <digetx@gmail.com> wrote:
-> 29.03.2016 22:00, Peter Maydell =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
->> On 28 March 2016 at 14:22, Dmitry Osipenko <digetx@gmail.com> wrote:
->>> PTimer fixes ready for submission:
->>> [PATCH v12 1/9] hw/ptimer: Fix issues caused by the adjusted timer limi=
-t
->>> value
->>> [PATCH v12 2/9] hw/ptimer: Perform counter wrap around if timer already
->>> expired
->>> [PATCH v12 3/9] hw/ptimer: Update .delta on period/freq change
->>
->>
->> I'm afraid at this point I really don't want to apply changes
->> to code like ptimer that affects multiple platforms; this will
->> have to go to 2.7 :-(
+On 19 May 2016 at 23:54, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Break out RPU setup into a separate function. This is in
+> preparation for making the RPU optional.
+>
+> No functional change.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>  hw/arm/xlnx-zynqmp.c | 53 ++++++++++++++++++++++++++++++----------------------
+>  1 file changed, 31 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 965a250..250ecc4 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -83,6 +83,36 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+>      return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+>  }
+>
+> +static void xlnx_zynqmp_setup_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+> +                                  Error **errp)
+> +{
+> +    Error *err = NULL;
+> +    int i;
+> +
+> +    for (i = 0; i < XLNX_ZYNQMP_NUM_RPU_CPUS; i++) {
+> +        char *name;
+> +
+> +        name = object_get_canonical_path_component(OBJECT(&s->rpu_cpu[i]));
+> +        if (strcmp(name, boot_cpu)) {
+> +            /* Secondary CPUs start in PSCI powered-down state */
+> +            object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true,
+> +                                     "start-powered-off", &error_abort);
+> +        } else {
+> +            s->boot_cpu_ptr = &s->rpu_cpu[i];
+> +        }
+> +        g_free(name);
+> +
+> +        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "reset-hivecs",
+> +                                 &error_abort);
+> +        object_property_set_bool(OBJECT(&s->rpu_cpu[i]), true, "realized",
+> +                                 &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
 
-> Okay, this is fine too :)
+This used to return from xlnz_zynqmp_init, but now it only returns
+from this setup function, and xlnx_zynqmp_init will blithely continue.
 
-Can I ask you to rebase this series on master and resend it,
-please (or at least whichever parts of it you think are ready
-to go in) ? I'm sorry it's been kind of left in limbo for so
-long but I promise to look at it when you resend it :-(
+> +        }
+> +    }
+> +}
 
 thanks
 -- PMM

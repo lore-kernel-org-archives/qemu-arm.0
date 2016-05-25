@@ -1,59 +1,62 @@
-Received: by 10.25.30.65 with SMTP id e62csp1251694lfe;
-        Wed, 25 May 2016 04:30:55 -0700 (PDT)
-X-Received: by 10.140.108.183 with SMTP id j52mr2856302qgf.90.1464175855814;
-        Wed, 25 May 2016 04:30:55 -0700 (PDT)
+Received: by 10.25.30.65 with SMTP id e62csp1297080lfe;
+        Wed, 25 May 2016 06:01:55 -0700 (PDT)
+X-Received: by 10.200.35.4 with SMTP id a4mr1821111qta.17.1464181315466;
+        Wed, 25 May 2016 06:01:55 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r32si7420168qtc.58.2016.05.25.04.30.55
+        by mx.google.com with ESMTPS id d143si5016533qhc.106.2016.05.25.06.01.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 May 2016 04:30:55 -0700 (PDT)
+        Wed, 25 May 2016 06:01:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59121 helo=lists.gnu.org)
+Received: from localhost ([::1]:59840 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b5X1b-0004Lb-56
-	for alex.bennee@linaro.org; Wed, 25 May 2016 07:30:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52307)
+	id 1b5YRe-0003yq-Td
+	for alex.bennee@linaro.org; Wed, 25 May 2016 09:01:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55040)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b5WX9-0000uk-4t
-	for qemu-arm@nongnu.org; Wed, 25 May 2016 06:59:28 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1b5YRW-0003tQ-03
+	for qemu-arm@nongnu.org; Wed, 25 May 2016 09:01:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b5WX1-0002U7-ML
-	for qemu-arm@nongnu.org; Wed, 25 May 2016 06:59:27 -0400
-Received: from m12-18.163.com ([220.181.12.18]:39503)
+	(envelope-from <pbonzini@redhat.com>) id 1b5YRQ-0000rn-Dc
+	for qemu-arm@nongnu.org; Wed, 25 May 2016 09:01:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42541)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1b5WWj-0002K8-9e; Wed, 25 May 2016 06:59:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=lkqs7rl8xqESmc0DoW
-	CT2bUua25z5/4c8TlWFxDb0Hc=; b=qTkgzGWbGJiU+xfHg3DH56bks1tzgGqmBB
-	/tcdTJmPKr1WjgkPmQpAoem6fyRxB0v8xIQFcnHWmglqxZoqxvwVUvETBy5W5M5l
-	QXqeES5FkWK8f3o+9G5TVey6l4e9beSmppWHYKgNlImfiquxX022CWrA85YAOtze
-	4dasdF9r4=
-Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp14 (Coremail) with SMTP id EsCowECZp0pKhUVXzcaKAA--.5553S6;
-	Wed, 25 May 2016 18:58:52 +0800 (CST)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 25 May 2016 18:58:14 +0800
-Message-Id: <1464173896-4088-5-git-send-email-zxq_yx_007@163.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
+	(envelope-from <pbonzini@redhat.com>)
+	id 1b5YRQ-0000rY-8H; Wed, 25 May 2016 09:01:40 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 90902C0A805D;
+	Wed, 25 May 2016 13:01:39 +0000 (UTC)
+Received: from [10.36.112.49] (ovpn-112-49.ams2.redhat.com [10.36.112.49])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4PD1YI4008420
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 25 May 2016 09:01:36 -0400
+To: xiaoqiang zhao <zxq_yx_007@163.com>, qemu-devel@nongnu.org
 References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EsCowECZp0pKhUVXzcaKAA--.5553S6
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tFykGF1fGr4kur4UCFW3ZFb_yoW8tw15p3
-	W7GF47GrWa9asxXFW5GF409w18W3Wxury7Krn7Awn5uw1rWFy0qF9rKa1YkFWUGFWvya43
-	u3Z3WF13AFWxGaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jc4SrUUUUU=
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiqAx0xlc64AUQzAAAsC
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 220.181.12.18
-Subject: [Qemu-arm] [PATCH 4/6] hw/char: QOM'ify stm32f2xx_usart model
+	<1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <e012c6b0-f847-57f8-d323-c2bc85ceccb5@redhat.com>
+Date: Wed, 25 May 2016 15:01:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.0
+MIME-Version: 1.0
+In-Reply-To: <1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 25 May 2016 13:01:39 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 1/6] hw/char: QOM'ify pl011 model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,70 +68,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: robh@kernel.org, peter.maydell@linaro.org, alistair.francis@xilinx.com,
-	qemu-arm@nongnu.org, antonynpavlov@gmail.com, pbonzini@redhat.com
+Cc: peter.maydell@linaro.org, robh@kernel.org, alistair.francis@xilinx.com,
+	qemu-arm@nongnu.org, antonynpavlov@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LJ01SZ+IqyKS
-
-* drop qemu_char_get_next_serial and use chardev prop
-* change affected board code to use the new way
-
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/arm/stm32f205_soc.c    |  1 +
- hw/char/stm32f2xx_usart.c | 11 ++++++-----
- 2 files changed, 7 insertions(+), 5 deletions(-)
-
-diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-index 9c1dafb..9d5bcd4 100644
---- a/hw/arm/stm32f205_soc.c
-+++ b/hw/arm/stm32f205_soc.c
-@@ -107,6 +107,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
-     /* Attach UART (uses USART registers) and USART controllers */
-     for (i = 0; i < STM_NUM_USARTS; i++) {
-         usartdev = DEVICE(&(s->usart[i]));
-+        qdev_prop_set_chr(usartdev, "chardev", serial_hds[i]);
-         object_property_set_bool(OBJECT(&s->usart[i]), true, "realized", &err);
-         if (err != NULL) {
-             error_propagate(errp, err);
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 72305ec..9424abf 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -190,6 +190,11 @@ static const MemoryRegionOps stm32f2xx_usart_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
-+static Property stm32f2xx_usart_properties[] = {
-+    DEFINE_PROP_CHR("chardev", STM32F2XXUsartState, chr),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void stm32f2xx_usart_init(Object *obj)
- {
-     STM32F2XXUsartState *s = STM32F2XX_USART(obj);
-@@ -200,9 +205,6 @@ static void stm32f2xx_usart_init(Object *obj)
-                           TYPE_STM32F2XX_USART, 0x2000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
- 
--    /* FIXME use a qdev chardev prop instead of qemu_char_get_next_serial() */
--    s->chr = qemu_char_get_next_serial();
--
-     if (s->chr) {
-         qemu_chr_add_handlers(s->chr, stm32f2xx_usart_can_receive,
-                               stm32f2xx_usart_receive, NULL, s);
-@@ -214,8 +216,7 @@ static void stm32f2xx_usart_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->reset = stm32f2xx_usart_reset;
--    /* Reason: instance_init() method uses qemu_char_get_next_serial() */
--    dc->cannot_instantiate_with_device_add_yet = true;
-+    dc->props = stm32f2xx_usart_properties;
- }
- 
- static const TypeInfo stm32f2xx_usart_info = {
--- 
-2.1.4
+X-TUID: dCvs6hPucyHs
 
 
+
+On 25/05/2016 12:58, xiaoqiang zhao wrote:
+>  #define BCM2835_VC_PERI_BASE 0x7e000000
+> @@ -106,7 +107,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>      MemoryRegion *ram;
+>      Error *err = NULL;
+>      uint32_t ram_size, vcram_size;
+> -    CharDriverState *chr;
+>      int n;
+>  
+>      obj = object_property_get_link(OBJECT(dev), "ram", &err);
+> @@ -147,6 +147,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>      sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
+>  
+>      /* UART0 */
+> +    qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hds[0]);
+>      object_property_set_bool(OBJECT(s->uart0), true, "realized", &err);
+>      if (err) {
+>          error_propagate(errp, err);
+> @@ -158,17 +159,8 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>      sysbus_connect_irq(s->uart0, 0,
+>          qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+>                                 INTERRUPT_UART));
+> -
+>      /* AUX / UART1 */
+> -    /* TODO: don't call qemu_char_get_next_serial() here, instead set
+> -     * chardev properties for each uart at the board level, once pl011
+> -     * (uart0) has been updated to avoid qemu_char_get_next_serial()
+> -     */
+> -    chr = qemu_char_get_next_serial();
+> -    if (chr == NULL) {
+> -        chr = qemu_chr_new("bcm2835.uart1", "null", NULL);
+> -    }
+> -    qdev_prop_set_chr(DEVICE(&s->aux), "chardev", chr);
+> +    qdev_prop_set_chr(DEVICE(&s->aux), "chardev", serial_hds[1]);
+>  
+>      object_property_set_bool(OBJECT(&s->aux), true, "realized", &err);
+>      if (err) {
+> @@ -292,8 +284,6 @@ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(oc);
+>  
+>      dc->realize = bcm2835_peripherals_realize;
+> -    /* Reason: realize() method uses qemu_char_get_next_serial() */
+> -    dc->cannot_instantiate_with_device_add_yet = true;
+
+This must remain, though the reason is now "realize() method uses
+serial_hds[]".
+
+Otherwise, looks good.
+
+Thanks,
+
+Paolo
+
+>  }

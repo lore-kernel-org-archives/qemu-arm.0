@@ -1,57 +1,59 @@
-Received: by 10.25.30.65 with SMTP id e62csp1245482lfe;
-        Wed, 25 May 2016 04:17:32 -0700 (PDT)
-X-Received: by 10.55.67.21 with SMTP id q21mr2941763qka.49.1464175052349;
-        Wed, 25 May 2016 04:17:32 -0700 (PDT)
+Received: by 10.25.30.65 with SMTP id e62csp1246053lfe;
+        Wed, 25 May 2016 04:18:41 -0700 (PDT)
+X-Received: by 10.200.56.186 with SMTP id f55mr2937447qtc.14.1464175121168;
+        Wed, 25 May 2016 04:18:41 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n102si39452294qgn.72.2016.05.25.04.17.32
+        by mx.google.com with ESMTPS id t67si7355419qkf.107.2016.05.25.04.18.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 May 2016 04:17:32 -0700 (PDT)
+        Wed, 25 May 2016 04:18:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59033 helo=lists.gnu.org)
+Received: from localhost ([::1]:59038 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b5Wod-0008Ka-KQ
-	for alex.bennee@linaro.org; Wed, 25 May 2016 07:17:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52197)
+	id 1b5Wpk-0000xB-9O
+	for alex.bennee@linaro.org; Wed, 25 May 2016 07:18:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52158)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b5WWt-0000dO-6r
-	for qemu-devel@nongnu.org; Wed, 25 May 2016 06:59:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b5WWj-0002O2-U9
+	(envelope-from <zxq_yx_007@163.com>) id 1b5WWr-0000aj-GC
 	for qemu-devel@nongnu.org; Wed, 25 May 2016 06:59:11 -0400
-Received: from m12-18.163.com ([220.181.12.18]:39502)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <zxq_yx_007@163.com>) id 1b5WWk-0002P4-DV
+	for qemu-devel@nongnu.org; Wed, 25 May 2016 06:59:08 -0400
+Received: from m12-18.163.com ([220.181.12.18]:39498)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1b5WWj-0002K7-9u; Wed, 25 May 2016 06:59:01 -0400
+	id 1b5WWj-0002K9-9t; Wed, 25 May 2016 06:59:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=+Xlehaq9mi23HrS1r8
-	B2RjcchzDXVfFiFjzOKlVR1M4=; b=BIQWsYSCSS8mEzRQCHM/I2vLLQJI7NXmwV
-	Wz/mUA5ip5uci7RQ4Uv97l5nJo0dfaWIdamkCsd+2nbeCY0LMcKEHP3cetIJxkIG
-	aTVH5etw/ojjZzpCYv9H/7MNLljthsXPsKsIekoDYsWdF2LvLFudk0NdyTr1Zy5D
-	zIY0CnJaQ=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=4IfweR8eIXNnMiOd0f
+	Aan+dEfVUx0A7zz6w0kOE7quk=; b=UxxybP9mKU59Lx8nodIh9ennP8qIb1Y1LT
+	IkL2o97D26I0cd0ZkPAgRjPm4/PgBfnoLDofAFRfMt0zMwNIAMAROxZLj65UAvnb
+	+0vnxIQnGoonBRoIlHfZ9lcceCTQgB82Y/6XPXu0baqNBKPDMnmF06ccui+/dR3k
+	XkQRFIcKc=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp14 (Coremail) with SMTP id EsCowECZp0pKhUVXzcaKAA--.5553S2;
+	by smtp14 (Coremail) with SMTP id EsCowECZp0pKhUVXzcaKAA--.5553S3;
 	Wed, 25 May 2016 18:58:51 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 25 May 2016 18:58:10 +0800
-Message-Id: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
+Date: Wed, 25 May 2016 18:58:11 +0800
+Message-Id: <1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-X-CM-TRANSID: EsCowECZp0pKhUVXzcaKAA--.5553S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tFWDuFy3Ar45urWDZFWUJwb_yoW8Wry8pF
-	WrJFZxWrWjkFy3ZF1fCw129F43JF1kW34j9ryxtryrZ343KFW0ywnrKF4rZrWxJ340qr15
-	Ar9xXr9xGFnFqrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07joXdbUUUUU=
+In-Reply-To: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
+References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
+X-CM-TRANSID: EsCowECZp0pKhUVXzcaKAA--.5553S3
+X-Coremail-Antispam: 1Uf129KBjvAXoW3trWDZryfCw4UGw4fWF1xXwb_yoW8Jr1kKo
+	WfKF4Sgr4rGrsFyrnY9ayUZFsFqr4vgFW7A3s0kr4fGF97JF48XFyxtanrZw43AFyS9as8
+	JFW5Gry5Kw1xu34kn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUsmFCUUUUU
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEAt0xlUL8osemAAAsI
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOwx0xlXlTu4guQAAsM
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 220.181.12.18
-Subject: [Qemu-devel] [PATCH 0/6] Drop the qemu_char_get_next_serial function
+Subject: [Qemu-devel] [PATCH 1/6] hw/char: QOM'ify pl011 model
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,52 +70,338 @@ Cc: robh@kernel.org, peter.maydell@linaro.org, crosthwaite.peter@gmail.com,
 	antonynpavlov@gmail.com, pbonzini@redhat.com, edgar.iglesias@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dppwuXbMacDT
+X-TUID: lPfjWAGg3u4+
 
-This patch series's main idea is to drop the use of
-qemu_char_get_next_serial. patches 1-5 QOM'ify the related 
-device model and the affected board code. Most of them
-are arm related. The patch 6 get rid of the function from
-the code base.
+* drop qemu_char_get_next_serial and use chardev prop
+* add pl011_create wrapper function to create pl011 uart device
+* change affected board code to use the new way
 
-I only test the code with ARM versatilepb machine. The other
-machine need test!
-
-xiaoqiang zhao (6):
-  hw/char: QOM'ify pl011 model
-  hw/char: QOM'ify cadence_uart model
-  hw/char: QOM'ify digic-uart model
-  hw/char: QOM'ify stm32f2xx_usart model
-  hw/char: QOM'ify xilinx_uartlite model
-  char: get rid of qemu_char_get_next_serial
-
- hw/arm/bcm2835_peripherals.c             | 16 ++--------
- hw/arm/digic.c                           |  2 ++
- hw/arm/highbank.c                        |  3 +-
- hw/arm/integratorcp.c                    |  5 +--
- hw/arm/realview.c                        |  9 +++---
- hw/arm/stellaris.c                       |  6 ++--
- hw/arm/stm32f205_soc.c                   |  1 +
- hw/arm/versatilepb.c                     |  9 +++---
- hw/arm/vexpress.c                        |  9 +++---
- hw/arm/virt.c                            |  1 +
- hw/arm/xilinx_zynq.c                     |  5 +--
- hw/arm/xlnx-zynqmp.c                     |  1 +
- hw/char/cadence_uart.c                   | 13 ++++----
- hw/char/digic-uart.c                     | 10 +++---
- hw/char/pl011.c                          | 11 ++++---
- hw/char/stm32f2xx_usart.c                | 11 ++++---
- hw/char/xilinx_uartlite.c                | 10 +++---
- hw/microblaze/petalogix_s3adsp1800_mmu.c |  5 +--
- include/hw/char/cadence_uart.h           | 17 +++++++++++
- include/hw/char/pl011.h                  | 52 ++++++++++++++++++++++++++++++++
- include/hw/char/xilinx_uartlite.h        | 35 +++++++++++++++++++++
- include/sysemu/char.h                    |  1 -
- qemu-char.c                              | 16 ----------
- 23 files changed, 173 insertions(+), 75 deletions(-)
+Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
+---
+ hw/arm/bcm2835_peripherals.c | 16 +++-----------
+ hw/arm/highbank.c            |  3 ++-
+ hw/arm/integratorcp.c        |  5 +++--
+ hw/arm/realview.c            |  9 ++++----
+ hw/arm/stellaris.c           |  6 +++--
+ hw/arm/versatilepb.c         |  9 ++++----
+ hw/arm/vexpress.c            |  9 ++++----
+ hw/arm/virt.c                |  1 +
+ hw/char/pl011.c              | 11 +++++-----
+ include/hw/char/pl011.h      | 52 ++++++++++++++++++++++++++++++++++++++++++++
+ 10 files changed, 86 insertions(+), 35 deletions(-)
  create mode 100644 include/hw/char/pl011.h
- create mode 100644 include/hw/char/xilinx_uartlite.h
 
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 234d518..46c320f 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -14,6 +14,7 @@
+ #include "hw/misc/bcm2835_mbox_defs.h"
+ #include "hw/arm/raspi_platform.h"
+ #include "sysemu/char.h"
++#include "sysemu/sysemu.h"
+ 
+ /* Peripheral base address on the VC (GPU) system bus */
+ #define BCM2835_VC_PERI_BASE 0x7e000000
+@@ -106,7 +107,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     MemoryRegion *ram;
+     Error *err = NULL;
+     uint32_t ram_size, vcram_size;
+-    CharDriverState *chr;
+     int n;
+ 
+     obj = object_property_get_link(OBJECT(dev), "ram", &err);
+@@ -147,6 +147,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
+ 
+     /* UART0 */
++    qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hds[0]);
+     object_property_set_bool(OBJECT(s->uart0), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -158,17 +159,8 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(s->uart0, 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_UART));
+-
+     /* AUX / UART1 */
+-    /* TODO: don't call qemu_char_get_next_serial() here, instead set
+-     * chardev properties for each uart at the board level, once pl011
+-     * (uart0) has been updated to avoid qemu_char_get_next_serial()
+-     */
+-    chr = qemu_char_get_next_serial();
+-    if (chr == NULL) {
+-        chr = qemu_chr_new("bcm2835.uart1", "null", NULL);
+-    }
+-    qdev_prop_set_chr(DEVICE(&s->aux), "chardev", chr);
++    qdev_prop_set_chr(DEVICE(&s->aux), "chardev", serial_hds[1]);
+ 
+     object_property_set_bool(OBJECT(&s->aux), true, "realized", &err);
+     if (err) {
+@@ -292,8 +284,6 @@ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     dc->realize = bcm2835_peripherals_realize;
+-    /* Reason: realize() method uses qemu_char_get_next_serial() */
+-    dc->cannot_instantiate_with_device_add_yet = true;
+ }
+ 
+ static const TypeInfo bcm2835_peripherals_type_info = {
+diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+index 41029a6..80e5fd4 100644
+--- a/hw/arm/highbank.c
++++ b/hw/arm/highbank.c
+@@ -30,6 +30,7 @@
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
++#include "hw/char/pl011.h"
+ 
+ #define SMP_BOOT_ADDR           0x100
+ #define SMP_BOOT_REG            0x40
+@@ -326,7 +327,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+     busdev = SYS_BUS_DEVICE(dev);
+     sysbus_mmio_map(busdev, 0, 0xfff34000);
+     sysbus_connect_irq(busdev, 0, pic[18]);
+-    sysbus_create_simple("pl011", 0xfff36000, pic[20]);
++    pl011_create(0xfff36000, pic[20], serial_hds[0]);
+ 
+     dev = qdev_create(NULL, "highbank-regs");
+     qdev_init_nofail(dev);
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 24f1687..96dc150 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -20,6 +20,7 @@
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/error-report.h"
++#include "hw/char/pl011.h"
+ 
+ #define TYPE_INTEGRATOR_CM "integrator_core"
+ #define INTEGRATOR_CM(obj) \
+@@ -588,8 +589,8 @@ static void integratorcp_init(MachineState *machine)
+     sysbus_create_varargs("integrator_pit", 0x13000000,
+                           pic[5], pic[6], pic[7], NULL);
+     sysbus_create_simple("pl031", 0x15000000, pic[8]);
+-    sysbus_create_simple("pl011", 0x16000000, pic[1]);
+-    sysbus_create_simple("pl011", 0x17000000, pic[2]);
++    pl011_create(0x16000000, pic[1], serial_hds[0]);
++    pl011_create(0x17000000, pic[2], serial_hds[1]);
+     icp = sysbus_create_simple(TYPE_ICP_CONTROL_REGS, 0xcb000000,
+                                qdev_get_gpio_in(sic, 3));
+     sysbus_create_simple("pl050_keyboard", 0x18000000, pic[3]);
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 3222b36..7d0aa6f 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -23,6 +23,7 @@
+ #include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
++#include "hw/char/pl011.h"
+ 
+ #define SMP_BOOT_ADDR 0xe0000000
+ #define SMP_BOOTREG_ADDR 0x10000030
+@@ -202,10 +203,10 @@ static void realview_init(MachineState *machine,
+     sysbus_create_simple("pl050_keyboard", 0x10006000, pic[20]);
+     sysbus_create_simple("pl050_mouse", 0x10007000, pic[21]);
+ 
+-    sysbus_create_simple("pl011", 0x10009000, pic[12]);
+-    sysbus_create_simple("pl011", 0x1000a000, pic[13]);
+-    sysbus_create_simple("pl011", 0x1000b000, pic[14]);
+-    sysbus_create_simple("pl011", 0x1000c000, pic[15]);
++    pl011_create(0x10009000, pic[12], serial_hds[0]);
++    pl011_create(0x1000a000, pic[13], serial_hds[1]);
++    pl011_create(0x1000b000, pic[14], serial_hds[2]);
++    pl011_create(0x1000c000, pic[15], serial_hds[3]);
+ 
+     /* DMA controller is optional, apparently.  */
+     sysbus_create_simple("pl081", 0x10030000, pic[24]);
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 4459171..794a3ad 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -20,6 +20,7 @@
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
++#include "hw/char/pl011.h"
+ 
+ #define GPIO_A 0
+ #define GPIO_B 1
+@@ -1303,8 +1304,9 @@ static void stellaris_init(const char *kernel_filename, const char *cpu_model,
+ 
+     for (i = 0; i < 4; i++) {
+         if (board->dc2 & (1 << i)) {
+-            sysbus_create_simple("pl011_luminary", 0x4000c000 + i * 0x1000,
+-                                 qdev_get_gpio_in(nvic, uart_irq[i]));
++            pl011_luminary_create(0x4000c000 + i * 0x1000,
++                                  qdev_get_gpio_in(nvic, uart_irq[i]),
++                                  serial_hds[i]);
+         }
+     }
+     if (board->dc2 & (1 << 4)) {
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index d079bc9..20dd356 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -23,6 +23,7 @@
+ #include "exec/address-spaces.h"
+ #include "hw/block/flash.h"
+ #include "qemu/error-report.h"
++#include "hw/char/pl011.h"
+ 
+ #define VERSATILE_FLASH_ADDR 0x34000000
+ #define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
+@@ -284,10 +285,10 @@ static void versatile_init(MachineState *machine, int board_id)
+         n--;
+     }
+ 
+-    sysbus_create_simple("pl011", 0x101f1000, pic[12]);
+-    sysbus_create_simple("pl011", 0x101f2000, pic[13]);
+-    sysbus_create_simple("pl011", 0x101f3000, pic[14]);
+-    sysbus_create_simple("pl011", 0x10009000, sic[6]);
++    pl011_create(0x101f1000, pic[12], serial_hds[0]);
++    pl011_create(0x101f2000, pic[13], serial_hds[1]);
++    pl011_create(0x101f3000, pic[14], serial_hds[2]);
++    pl011_create(0x10009000, sic[6], serial_hds[3]);
+ 
+     sysbus_create_simple("pl080", 0x10130000, pic[17]);
+     sysbus_create_simple("sp804", 0x101e2000, pic[4]);
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 70b3e70..58760f4 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -39,6 +39,7 @@
+ #include "sysemu/device_tree.h"
+ #include "qemu/error-report.h"
+ #include <libfdt.h>
++#include "hw/char/pl011.h"
+ 
+ #define VEXPRESS_BOARD_ID 0x8e0
+ #define VEXPRESS_FLASH_SIZE (64 * 1024 * 1024)
+@@ -631,10 +632,10 @@ static void vexpress_common_init(MachineState *machine)
+     sysbus_create_simple("pl050_keyboard", map[VE_KMI0], pic[12]);
+     sysbus_create_simple("pl050_mouse", map[VE_KMI1], pic[13]);
+ 
+-    sysbus_create_simple("pl011", map[VE_UART0], pic[5]);
+-    sysbus_create_simple("pl011", map[VE_UART1], pic[6]);
+-    sysbus_create_simple("pl011", map[VE_UART2], pic[7]);
+-    sysbus_create_simple("pl011", map[VE_UART3], pic[8]);
++    pl011_create(map[VE_UART0], pic[5], serial_hds[0]);
++    pl011_create(map[VE_UART1], pic[6], serial_hds[1]);
++    pl011_create(map[VE_UART2], pic[7], serial_hds[2]);
++    pl011_create(map[VE_UART3], pic[8], serial_hds[3]);
+ 
+     sysbus_create_simple("sp804", map[VE_TIMER01], pic[2]);
+     sysbus_create_simple("sp804", map[VE_TIMER23], pic[3]);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e77ed88..883d89c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -536,6 +536,7 @@ static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
+     DeviceState *dev = qdev_create(NULL, "pl011");
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+ 
++    qdev_prop_set_chr(dev, "chardev", serial_hds[0]);
+     qdev_init_nofail(dev);
+     memory_region_add_subregion(mem, base,
+                                 sysbus_mmio_get_region(s, 0));
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 6876ea6..c0fbf8a 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -274,6 +274,11 @@ static const VMStateDescription vmstate_pl011 = {
+     }
+ };
+ 
++static Property pl011_properties[] = {
++    DEFINE_PROP_CHR("chardev", PL011State, chr),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void pl011_init(Object *obj)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+@@ -295,9 +300,6 @@ static void pl011_realize(DeviceState *dev, Error **errp)
+ {
+     PL011State *s = PL011(dev);
+ 
+-    /* FIXME use a qdev chardev prop instead of qemu_char_get_next_serial() */
+-    s->chr = qemu_char_get_next_serial();
+-
+     if (s->chr) {
+         qemu_chr_add_handlers(s->chr, pl011_can_receive, pl011_receive,
+                               pl011_event, s);
+@@ -310,8 +312,7 @@ static void pl011_class_init(ObjectClass *oc, void *data)
+ 
+     dc->realize = pl011_realize;
+     dc->vmsd = &vmstate_pl011;
+-    /* Reason: realize() method uses qemu_char_get_next_serial() */
+-    dc->cannot_instantiate_with_device_add_yet = true;
++    dc->props = pl011_properties;
+ }
+ 
+ static const TypeInfo pl011_arm_info = {
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+new file mode 100644
+index 0000000..93bd7ee
+--- /dev/null
++++ b/include/hw/char/pl011.h
+@@ -0,0 +1,52 @@
++/*
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef PL011_UART_H
++#define PL011_UART_H
++
++static inline DeviceState *pl011_create(hwaddr addr,
++                                        qemu_irq irq,
++                                        CharDriverState *chr)
++{
++    DeviceState *dev;
++    SysBusDevice *s;
++
++    dev = qdev_create(NULL, "pl011");
++    s = SYS_BUS_DEVICE(dev);
++    qdev_prop_set_chr(dev, "chardev", chr);
++    qdev_init_nofail(dev);
++    sysbus_mmio_map(s, 0, addr);
++    sysbus_connect_irq(s, 0, irq);
++
++    return dev;
++}
++
++static inline DeviceState *pl011_luminary_create(hwaddr addr,
++                                                 qemu_irq irq,
++                                                 CharDriverState *chr)
++{
++    DeviceState *dev;
++    SysBusDevice *s;
++
++    dev = qdev_create(NULL, "pl011_luminary");
++    s = SYS_BUS_DEVICE(dev);
++    qdev_prop_set_chr(dev, "chardev", chr);
++    qdev_init_nofail(dev);
++    sysbus_mmio_map(s, 0, addr);
++    sysbus_connect_irq(s, 0, irq);
++
++    return dev;
++}
++
++#endif
 -- 
 2.1.4
 

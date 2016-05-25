@@ -1,64 +1,74 @@
-Received: by 10.25.30.65 with SMTP id e62csp1315728lfe;
-        Wed, 25 May 2016 06:33:01 -0700 (PDT)
-X-Received: by 10.140.19.5 with SMTP id 5mr3368476qgg.98.1464183181855;
-        Wed, 25 May 2016 06:33:01 -0700 (PDT)
+Received: by 10.25.30.65 with SMTP id e62csp43210lfe;
+        Wed, 25 May 2016 10:23:07 -0700 (PDT)
+X-Received: by 10.200.53.22 with SMTP id y22mr4880246qtb.3.1464196986980;
+        Wed, 25 May 2016 10:23:06 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c70si7984571qka.36.2016.05.25.06.33.01
+        by mx.google.com with ESMTPS id 14si8953015qtm.75.2016.05.25.10.23.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 May 2016 06:33:01 -0700 (PDT)
+        Wed, 25 May 2016 10:23:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60567 helo=lists.gnu.org)
+Received: from localhost ([::1]:34198 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b5Yvl-000464-5l
-	for alex.bennee@linaro.org; Wed, 25 May 2016 09:33:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58693)
+	id 1b5cWQ-0006Wq-Ag
+	for alex.bennee@linaro.org; Wed, 25 May 2016 13:23:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44796)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b5Yer-0006O8-8J
-	for qemu-arm@nongnu.org; Wed, 25 May 2016 09:15:34 -0400
+	(envelope-from <alistair23@gmail.com>) id 1b5cWJ-0006Sm-RV
+	for qemu-arm@nongnu.org; Wed, 25 May 2016 13:23:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b5Yeg-0004nM-Bm
-	for qemu-arm@nongnu.org; Wed, 25 May 2016 09:15:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41948)
+	(envelope-from <alistair23@gmail.com>) id 1b5cWI-0000dS-Ul
+	for qemu-arm@nongnu.org; Wed, 25 May 2016 13:22:59 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1b5Yeg-0004nD-6D; Wed, 25 May 2016 09:15:22 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8466D80B56;
-	Wed, 25 May 2016 13:15:21 +0000 (UTC)
-Received: from [10.36.112.49] (ovpn-112-49.ams2.redhat.com [10.36.112.49])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4PDFGaW021745
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 25 May 2016 09:15:18 -0400
-To: Peter Maydell <peter.maydell@linaro.org>,
-	xiaoqiang zhao <zxq_yx_007@163.com>
-References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
-	<1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA8oEjC0wUudEpKKmtbk86eB87KOh-__QB+GrcW6LFy5uA@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <963b4bae-1f00-7406-6de7-f0bd3be8d2bb@redhat.com>
-Date: Wed, 25 May 2016 15:15:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.0
+	(envelope-from <alistair23@gmail.com>)
+	id 1b5cWG-0000d0-HP; Wed, 25 May 2016 13:22:56 -0400
+Received: by mail-oi0-x242.google.com with SMTP id x130so13250882oia.3;
+	Wed, 25 May 2016 10:22:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=AtfjOwTgy+8sUgd6d3l9MhBlAskH1iNVZWjZ5ZEoElg=;
+	b=xggMP+cZZKoUCqF0sUQ/FaKNOvSCdJh64UgmR5Hj716rHT2GAbCPO4C0oGuTLA/ii0
+	14Y2nY2OmqRA4/4USLD3WGf3Zb/6hpPiWh2CD0BDtxN+C/VGNET+763JhHSoVzta/pUC
+	ssAqb76YioEQ1hqjza189RqZPZujA2qMbrw0XvuTdKe4hByS4d33PmRF5fqqLteE6m2t
+	aPKMf5KP7grrxU9IlSi4gUIMGeBfGAhaKlYmSl1VrFucR7iqkehL2uIc/04cThnCR6eL
+	ptXbS70MgYlFjybMpPbRYIkEu8xyW9yOkMtP4cLsk4maukeRPRPEwAfhqgYcQRi9Tox+
+	4xKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=AtfjOwTgy+8sUgd6d3l9MhBlAskH1iNVZWjZ5ZEoElg=;
+	b=KcgLKu7u73tRS5CUP2yLLdtDh+YJpcGo2xgdyW6COoGnFrXnLp1O8b8PX7T7pMf2L/
+	oyU5wFgj0nd0dZ9GSMxmLAcNnufUwi4tezLWpf4XpdbsKWXoNuCv0u534lzH9fwvkSX2
+	X+o6bGV7Zf2RTiyPdIY6TKWjoVqv4aIw9Uuc/NAWJ5AC7Rfnqpe0mjoymoCMSvloANmM
+	0HFHlme1zsIEkZdEbycFphp01To/PHfVJ0k4CPZ6U1qM5CWjwOe4C1GWO6v9gniv8w4l
+	z2emM0xgk1DAS/gCmhKAiMQU5KMMNogsuZUzPlN7xMqDGT+2gbajksoK6nUoGDTeuwFX
+	UdoQ==
+X-Gm-Message-State: ALyK8tJh4Zpz0Jn5OyyGuxLokLY/fTXPtND10Z9qA9L6EU5t6T+Z+/oQ4hjWyQaLLVI0yXFPVm9eJH5B50C7Fg==
+X-Received: by 10.202.199.198 with SMTP id x189mr3234253oif.44.1464196975478; 
+	Wed, 25 May 2016 10:22:55 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8oEjC0wUudEpKKmtbk86eB87KOh-__QB+GrcW6LFy5uA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 25 May 2016 13:15:21 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Received: by 10.182.98.137 with HTTP; Wed, 25 May 2016 10:22:26 -0700 (PDT)
+In-Reply-To: <1464173555-12800-2-git-send-email-edgar.iglesias@gmail.com>
+References: <1464173555-12800-1-git-send-email-edgar.iglesias@gmail.com>
+	<1464173555-12800-2-git-send-email-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Wed, 25 May 2016 10:22:26 -0700
+X-Google-Sender-Auth: Y8MXuaVyKqpjg2jhhBGxaQ1PUIM
+Message-ID: <CAKmqyKMZ+g1MOTL8q3zXXTvX6cevj3c90xbiazUBbpU0FC4YQg@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 1/6] hw/char: QOM'ify pl011 model
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/4] xlnx-zynqmp: Add a
+ secure prop to en/disable ARM Security Extensions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,51 +80,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?B?0JDQvdGC0L7QvSDQn9Cw0LLQu9C+0LI=?= <antonynpavlov@gmail.com>
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2kUSpaOIkWo8
+X-TUID: uFVM0AxXRJiE
 
+On Wed, May 25, 2016 at 3:52 AM, Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Add a secure prop to en/disable ARM Security Extensions.
+> This is particularly useful for KVM runs.
+>
+> Default to disabled to match the behavior of KVM.
+>
+> This changes the default setup from having the ARM Security
+> Extensions to not longer having them.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
+Looks good to me
 
-On 25/05/2016 15:08, Peter Maydell wrote:
->> >      /* AUX / UART1 */
->> > -    /* TODO: don't call qemu_char_get_next_serial() here, instead s=
-et
->> > -     * chardev properties for each uart at the board level, once pl=
-011
->> > -     * (uart0) has been updated to avoid qemu_char_get_next_serial(=
-)
->> > -     */
-> This comment says this should be fixed by having board-level
-> properties; you've removed it but this patch isn't adding
-> the properties to this (SoC-level) device. I think the board
-> level should be looking at serial_hds[], not this code.
->=20
->> > @@ -310,8 +312,7 @@ static void pl011_class_init(ObjectClass *oc, vo=
-id *data)
->> >
->> >      dc->realize =3D pl011_realize;
->> >      dc->vmsd =3D &vmstate_pl011;
->> > -    /* Reason: realize() method uses qemu_char_get_next_serial() */
->> > -    dc->cannot_instantiate_with_device_add_yet =3D true;
-> Why does instantiating with device_add work now? There's
-> still no way to wire up interrupt lines or map mmio regions.
-> (This has never made much sense to me -- Markus?)
-
-You can create it with -device if your board provides a platform bus and
-there's an FDT creator function.  If you don't, you get an error.
-
-Regarding device_add, it's disabled anyway because sysbus is not
-hotpluggable.
-
-Eiter way it's safe to remove this line, which is for outliers that
-otherwise would not give any error message.
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
 
 Thanks,
 
-Paolo
+Alistair
+
+> ---
+>  hw/arm/xlnx-zynqmp.c         | 3 +++
+>  include/hw/arm/xlnx-zynqmp.h | 3 +++
+>  2 files changed, 6 insertions(+)
+>
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 4d504da..965a250 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -238,6 +238,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>          }
+>          g_free(name);
+>
+> +        object_property_set_bool(OBJECT(&s->apu_cpu[i]),
+> +                                 s->secure, "has_el3", NULL);
+>          object_property_set_int(OBJECT(&s->apu_cpu[i]), GIC_BASE_ADDR,
+>                                  "reset-cbar", &error_abort);
+>          object_property_set_bool(OBJECT(&s->apu_cpu[i]), true, "realized",
+> @@ -370,6 +372,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>
+>  static Property xlnx_zynqmp_props[] = {
+>      DEFINE_PROP_STRING("boot-cpu", XlnxZynqMPState, boot_cpu),
+> +    DEFINE_PROP_BOOL("secure", XlnxZynqMPState, secure, false),
+>      DEFINE_PROP_END_OF_LIST()
+>  };
+>
+> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+> index 2332596..38d4c8c 100644
+> --- a/include/hw/arm/xlnx-zynqmp.h
+> +++ b/include/hw/arm/xlnx-zynqmp.h
+> @@ -84,6 +84,9 @@ typedef struct XlnxZynqMPState {
+>
+>      char *boot_cpu;
+>      ARMCPU *boot_cpu_ptr;
+> +
+> +    /* Has the ARM Security extensions?  */
+> +    bool secure;
+>  }  XlnxZynqMPState;
+>
+>  #define XLNX_ZYNQMP_H
+> --
+> 2.5.0
+>
+>

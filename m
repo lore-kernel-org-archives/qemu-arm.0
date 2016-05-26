@@ -1,48 +1,45 @@
-Received: by 10.25.30.65 with SMTP id e62csp533548lfe;
-        Thu, 26 May 2016 07:55:59 -0700 (PDT)
-X-Received: by 10.140.249.5 with SMTP id u5mr9505622qhc.24.1464274559445;
-        Thu, 26 May 2016 07:55:59 -0700 (PDT)
+Received: by 10.25.30.65 with SMTP id e62csp533590lfe;
+        Thu, 26 May 2016 07:56:05 -0700 (PDT)
+X-Received: by 10.55.178.6 with SMTP id b6mr9810214qkf.70.1464274565506;
+        Thu, 26 May 2016 07:56:05 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a190si13287114qke.76.2016.05.26.07.55.59
+        by mx.google.com with ESMTPS id j60si13295110qtd.67.2016.05.26.07.56.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 May 2016 07:55:59 -0700 (PDT)
+        Thu, 26 May 2016 07:56:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38772 helo=lists.gnu.org)
+Received: from localhost ([::1]:38774 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b5wha-0007Rk-Qy
-	for alex.bennee@linaro.org; Thu, 26 May 2016 10:55:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52035)
+	id 1b5whg-0007ay-RE
+	for alex.bennee@linaro.org; Thu, 26 May 2016 10:56:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b5whU-0007PO-10
-	for qemu-arm@nongnu.org; Thu, 26 May 2016 10:55:53 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1b5whS-0007OO-23
+	for qemu-arm@nongnu.org; Thu, 26 May 2016 10:55:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1b5whS-00057C-QL
-	for qemu-arm@nongnu.org; Thu, 26 May 2016 10:55:52 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57265)
+	(envelope-from <pm215@archaic.org.uk>) id 1b5whQ-00056Z-NU
+	for qemu-arm@nongnu.org; Thu, 26 May 2016 10:55:50 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57240)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1b5whS-00056r-Ca; Thu, 26 May 2016 10:55:50 -0400
+	id 1b5whQ-00056O-4h; Thu, 26 May 2016 10:55:48 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1b5whR-00048l-Ck; Thu, 26 May 2016 15:55:49 +0100
+	id 1b5whJ-000459-BA; Thu, 26 May 2016 15:55:41 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 26 May 2016 15:55:32 +0100
-Message-Id: <1464274540-19693-15-git-send-email-peter.maydell@linaro.org>
+Date: Thu, 26 May 2016 15:55:18 +0100
+Message-Id: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
-References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 14/22] hw/intc/arm_gicv3: Implement
- gicv3_set_irq()
+Subject: [Qemu-arm] [PATCH v2 00/22] GICv3 emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,138 +57,138 @@ Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /1VjP9vfzSRf
+X-TUID: Kca0UxjBZuwE
 
-Implement the code which updates the GIC state when an interrupt
-input into the GIC is asserted.
+This series implements emulation of the GICv3 interrupt controller.
+It is based to some extent on previous patches from Shlomo and
+Pavel, but the bulk of it has turned out to be new code. (The
+combination of changing the underlying data structures, adding
+support for TrustZone and implementing proper GICv3 behaviour rather
+than borrowing fragments of GICv2 emulation code meant there wasn't
+much left to reuse.) I've tried to reflect this in the various
+authorship credits on the patches, but please let me know if you
+feel I got anything miscredited one way or the other.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3.c        | 20 +++++++++++++++++++-
- hw/intc/arm_gicv3_dist.c   | 21 +++++++++++++++++++++
- hw/intc/arm_gicv3_redist.c | 21 +++++++++++++++++++++
- hw/intc/gicv3_internal.h   |  2 ++
- trace-events               |  2 ++
- 5 files changed, 65 insertions(+), 1 deletion(-)
+Key points about the GICv3 emulated here:
+ * "non-legacy" only, ie system registers and affinity routing
+ * TrustZone is implemented
+ * no virtualization support
+ * only the "core" GICv3, so no LPI support (via ITS or otherwise)
+ * no attempt to work around the Linux guest kernel bug fixed
+   in commit 7c9b973061b0 (so you need that fix for your guest to
+   boot with this GICv3)
 
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index e8f6766..e770409 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -311,7 +311,25 @@ static void gicv3_set_irq(void *opaque, int irq, int level)
-      *  [N+32..N+63] : PPI (internal interrupts for CPU 1
-      *  ...
-      */
--    /* Do nothing for now */
-+    GICv3State *s = opaque;
-+
-+    if (irq < (s->num_irq - GIC_INTERNAL)) {
-+        /* external interrupt (SPI) */
-+        gicv3_dist_set_irq(s, irq + GIC_INTERNAL, level);
-+    } else {
-+        /* per-cpu interrupt (PPI) */
-+        int cpu;
-+
-+        irq -= (s->num_irq - GIC_INTERNAL);
-+        cpu = irq / GIC_INTERNAL;
-+        irq %= GIC_INTERNAL;
-+        assert(cpu < s->num_cpu);
-+        /* Raising SGIs via this function would be a bug in how the board
-+         * model wires up interrupts.
-+         */
-+        assert(irq >= 16 && irq < 32);
-+        gicv3_redist_set_irq(&s->cpu[cpu], irq, level);
-+    }
- }
- 
- static void arm_gicv3_post_load(GICv3State *s)
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 6ccb4d9..1634974 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -850,3 +850,24 @@ MemTxResult gicv3_dist_write(void *opaque, hwaddr offset, uint64_t data,
-     }
-     return r;
- }
-+
-+void gicv3_dist_set_irq(GICv3State *s, int irq, int level)
-+{
-+    /* Update distributor state for a change in an external SPI input line */
-+    if (level == gicv3_gicd_level_test(s, irq)) {
-+        return;
-+    }
-+
-+    trace_gicv3_dist_set_irq(irq, level);
-+
-+    gicv3_gicd_level_replace(s, irq, level);
-+
-+    if (level) {
-+        /* 0->1 edges latch the pending bit for edge-triggered interrupts */
-+        if (gicv3_gicd_edge_trigger_test(s, irq)) {
-+            gicv3_gicd_pending_set(s, irq);
-+        }
-+    }
-+
-+    gicv3_update(s, irq, 1);
-+}
-diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-index 18dc0c8..16b3422 100644
---- a/hw/intc/arm_gicv3_redist.c
-+++ b/hw/intc/arm_gicv3_redist.c
-@@ -493,3 +493,24 @@ MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
-     }
-     return r;
- }
-+
-+void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level)
-+{
-+    /* Update redistributor state for a change in an external PPI input line */
-+    if (level == extract32(cs->level, irq, 1)) {
-+        return;
-+    }
-+
-+    trace_gicv3_redist_set_irq(gicv3_redist_affid(cs), irq, level);
-+
-+    cs->level = deposit32(cs->level, irq, 1, level);
-+
-+    if (level) {
-+        /* 0->1 edges latch the pending bit for edge-triggered interrupts */
-+        if (extract32(cs->edge_trigger, irq, 1)) {
-+            cs->gicr_ipendr0 = deposit32(cs->gicr_ipendr0, irq, 1, 1);
-+        }
-+    }
-+
-+    gicv3_redist_update(cs);
-+}
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 39196fa..8ae6d66 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -209,6 +209,8 @@ MemTxResult gicv3_redist_read(void *opaque, hwaddr offset, uint64_t *data,
-                               unsigned size, MemTxAttrs attrs);
- MemTxResult gicv3_redist_write(void *opaque, hwaddr offset, uint64_t data,
-                                unsigned size, MemTxAttrs attrs);
-+void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
-+void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
- 
- /**
-  * gicv3_cpuif_update:
-diff --git a/trace-events b/trace-events
-index 308d458..c006723 100644
---- a/trace-events
-+++ b/trace-events
-@@ -1922,9 +1922,11 @@ gicv3_dist_read(uint64_t offset, uint64_t data, unsigned size, bool secure) "GIC
- gicv3_dist_badread(uint64_t offset, unsigned size, bool secure) "GICv3 distributor read: offset 0x%" PRIx64 " size %u secure %d: error"
- gicv3_dist_write(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
- gicv3_dist_badwrite(uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 distributor write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d: error"
-+gicv3_dist_set_irq(int irq, int level) "GICv3 distributor interrupt %d level changed to %d"
- 
- # hw/intc/arm_gicv3_redist.c
- gicv3_redist_read(uint32_t cpu, uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 redistributor %x read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
- gicv3_redist_badread(uint32_t cpu, uint64_t offset, unsigned size, bool secure) "GICv3 redistributor %x read: offset 0x%" PRIx64 " size %u secure %d: error"
- gicv3_redist_write(uint32_t cpu, uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 redistributor %x write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
- gicv3_redist_badwrite(uint32_t cpu, uint64_t offset, uint64_t data, unsigned size, bool secure) "GICv3 redistributor %x write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d: error"
-+gicv3_redist_set_irq(uint32_t cpu, int irq, int level) "GICv3 redistributor %x interrupt %d level changed to %d"
+I have included the "support KVM save/restore" patches from Pavel,
+reworked to use the new data structures, but they are only RFC
+status because the kernel API is not yet final (there are a couple
+of loose threads there to be followed up). Those patches are at the
+end of the series; I think everything else is in a commitable state
+(give or take code review).
+
+Testing: I have confirmed that we can boot a Linux guest kernel,
+but not tried any other GIC-using guest code. I've done some light
+stress-testing using 'stress', and checked an SMP (2-cpu) boot.
+I've also tested booting a guest kernel via UEFI.
+
+Design: all the code here is in hw/intc/, split into several
+files to avoid them being huge. The interface between the CPU
+proper and the CPU interface is a bit ad-hoc (you can see the
+awkward seams that result from the choice to think of the cpu
+i/f as part of the GIC device rather than part of the CPU itself),
+but I think that if you put the cpu i/f in the CPU you'd end up
+with an ad-hoc interface and awkward seams in the other direction.
+The GICv3 device currently assumes it is always connected to all
+CPUs; we can change that later to allow some kind of QOM link
+property to specify the CPUs explicitly, but I think this is OK
+for now (and it's already a pretty huge set of code changes to
+have to review).
+
+Code review, testing, attempts to run guests other than Linux
+welcome.
+
+Changes v1->v2:
+ * I have dropped the kernel bug workaround, since it didn't work for
+   boots via UEFI anyway. This means that you will need kernel commit
+   7c9b973061b0 (or its equivalent backports to stable) to boot a Linux
+   guest with this emulated GICv3
+ * make bitmaps and arrays be GIC_MAXIRQS in size rather than
+   GIC_MAXSPIS in size; this uses an extra 512 bytes or so per
+   vcpu, but makes bugs of the "forgot to add/subtract GIC_INTERNAL"
+   variety less likely to happen (and indeed a few were found and fixed
+   in making this change...)
+ * fixed GICD_CTLR NS read to use correct bitmask
+ * moved ARMELChangeHook related prototypes etc into cpu.h from cpu-qom.h
+   (needed after Paolo's recent header reshuffles)
+ * added missing 'inline' qualifier to arm_is_el3_or_mon()
+ * fixed missing reset of GICD_NSACR
+ * fixed icc_activate_irq() to call gicv3_redist_update() rather than
+   gicv3_update() when it changes redistributor state
+ * make sure (and assert) gicv3_update() isn't called for out of range irqs
+ * add missing "bad num_irqs values" checks from gicv2 code
+
+thanks
+-- PMM
+
+
+
+Pavel Fedin (5):
+  target-arm: Add mp-affinity property for ARM CPU class
+  hw/intc/arm_gicv3: Add state information
+  hw/intc/arm_gicv3: Add vmstate descriptors
+  NOT-FOR-UPSTREAM: kernel: Add definitions for GICv3 attributes
+  RFC: hw/intc/arm_gicv3_kvm: Implement get/put functions
+
+Peter Maydell (14):
+  migration: Define VMSTATE_UINT64_2DARRAY
+  bitops.h: Implement half-shuffle and half-unshuffle ops
+  target-arm: Define new arm_is_el3_or_mon() function
+  target-arm: Provide hook to tell GICv3 about changes of security state
+  hw/intc/arm_gicv3: Move irq lines into GICv3CPUState structure
+  hw/intc/arm_gicv3: Implement functions to identify next pending irq
+  hw/intc/arm_gicv3: Wire up distributor and redistributor MMIO regions
+  hw/intc/arm_gicv3: Implement gicv3_set_irq()
+  hw/intc/arm_gicv3: Implement GICv3 CPU interface registers
+  hw/intc/arm_gicv3: Implement gicv3_cpuif_update()
+  hw/intc/arm_gicv3: Implement CPU i/f SGI generation registers
+  hw/intc/arm_gicv3: Add IRQ handling CPU interface registers
+  target-arm/machine.c: Allow user to request GICv3 emulation
+  target-arm/monitor.c: Advertise emulated GICv3 in capabilities
+
+Shlomo Pongratz (3):
+  hw/intc/arm_gicv3: ARM GICv3 device framework
+  hw/intc/arm_gicv3: Implement GICv3 distributor registers
+  hw/intc/arm_gicv3: Implement GICv3 redistributor registers
+
+ hw/intc/Makefile.objs              |    4 +
+ hw/intc/arm_gicv3.c                |  400 +++++++++++
+ hw/intc/arm_gicv3_common.c         |  225 +++++-
+ hw/intc/arm_gicv3_cpuif.c          | 1346 ++++++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_dist.c           |  873 +++++++++++++++++++++++
+ hw/intc/arm_gicv3_kvm.c            |  447 +++++++++++-
+ hw/intc/arm_gicv3_redist.c         |  556 +++++++++++++++
+ hw/intc/gicv3_internal.h           |  331 +++++++++
+ include/hw/intc/arm_gicv3.h        |   32 +
+ include/hw/intc/arm_gicv3_common.h |  216 +++++-
+ include/migration/vmstate.h        |    6 +
+ include/qemu/bitops.h              |  108 +++
+ linux-headers/asm-arm64/kvm.h      |   17 +-
+ target-arm/cpu.c                   |   10 +
+ target-arm/cpu.h                   |   47 +-
+ target-arm/helper.c                |    2 +
+ target-arm/internals.h             |    8 +
+ target-arm/machine.c               |    3 +-
+ target-arm/monitor.c               |    3 +-
+ target-arm/op_helper.c             |    4 +
+ tests/test-bitops.c                |   68 ++
+ trace-events                       |   41 ++
+ 22 files changed, 4719 insertions(+), 28 deletions(-)
+ create mode 100644 hw/intc/arm_gicv3.c
+ create mode 100644 hw/intc/arm_gicv3_cpuif.c
+ create mode 100644 hw/intc/arm_gicv3_dist.c
+ create mode 100644 hw/intc/arm_gicv3_redist.c
+ create mode 100644 hw/intc/gicv3_internal.h
+ create mode 100644 include/hw/intc/arm_gicv3.h
+
 -- 
 1.9.1
 

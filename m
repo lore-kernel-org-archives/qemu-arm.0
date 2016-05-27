@@ -1,63 +1,63 @@
-Received: by 10.25.27.66 with SMTP id b63csp59367lfb;
-        Fri, 27 May 2016 02:40:41 -0700 (PDT)
-X-Received: by 10.55.168.86 with SMTP id r83mr116157qke.24.1464342041021;
-        Fri, 27 May 2016 02:40:41 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp60104lfb;
+        Fri, 27 May 2016 02:42:43 -0700 (PDT)
+X-Received: by 10.140.201.143 with SMTP id w137mr12815119qha.66.1464342163011;
+        Fri, 27 May 2016 02:42:43 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y88si3421713qtd.89.2016.05.27.02.40.40
+        by mx.google.com with ESMTPS id 66si7714221qgz.58.2016.05.27.02.42.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 May 2016 02:40:41 -0700 (PDT)
+        Fri, 27 May 2016 02:42:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44865 helo=lists.gnu.org)
+Received: from localhost ([::1]:44872 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b6EG0-0006bU-Gh
-	for alex.bennee@linaro.org; Fri, 27 May 2016 05:40:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58181)
+	id 1b6EHy-0007eR-H3
+	for alex.bennee@linaro.org; Fri, 27 May 2016 05:42:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58563)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b6EFw-0006bA-MU
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:40:37 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1b6EHu-0007e6-9R
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:42:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b6EFq-0000R0-Ni
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:40:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34393)
+	(envelope-from <pbonzini@redhat.com>) id 1b6EHo-0000oj-Ab
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:42:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pbonzini@redhat.com>)
-	id 1b6EFq-0000Qn-HT; Fri, 27 May 2016 05:40:30 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	id 1b6EHo-0000oe-4Y; Fri, 27 May 2016 05:42:32 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 24796D4E55;
-	Fri, 27 May 2016 09:40:28 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A3689C04B327;
+	Fri, 27 May 2016 09:42:31 +0000 (UTC)
 Received: from [10.36.112.66] (ovpn-112-66.ams2.redhat.com [10.36.112.66])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4R9eMma012677
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u4R9gQt8014843
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Fri, 27 May 2016 05:40:24 -0400
-To: xiaoqiang zhao <zxq_yx_007@163.com>,
-	Peter Maydell <peter.maydell@linaro.org>
+	Fri, 27 May 2016 05:42:28 -0400
+To: Peter Maydell <peter.maydell@linaro.org>,
+	xiaoqiang zhao <zxq_yx_007@163.com>
 References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
 	<1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
 	<CAFEAcA8oEjC0wUudEpKKmtbk86eB87KOh-__QB+GrcW6LFy5uA@mail.gmail.com>
-	<963b4bae-1f00-7406-6de7-f0bd3be8d2bb@redhat.com>
-	<5747AD41.9050007@163.com>
+	<5747AB8C.7040502@163.com>
+	<CAFEAcA8XO+6y8LoVnPa-WVKT2+HFFYC8KS5i0yHCa2jjingR=w@mail.gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3565905e-3796-e459-f69b-d3daac2728dd@redhat.com>
-Date: Fri, 27 May 2016 11:40:21 +0200
+Message-ID: <bf2900b6-980f-6a0c-fabe-6037b7592647@redhat.com>
+Date: Fri, 27 May 2016 11:42:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.0
 MIME-Version: 1.0
-In-Reply-To: <5747AD41.9050007@163.com>
+In-Reply-To: <CAFEAcA8XO+6y8LoVnPa-WVKT2+HFFYC8KS5i0yHCa2jjingR=w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 27 May 2016 09:40:29 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 27 May 2016 09:42:31 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/6] hw/char: QOM'ify pl011 model
@@ -79,43 +79,33 @@ Cc: Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?B?0JDQvdGC0L7QvSDQn9Cw0LLQu9C+0LI=?= <antonynpavlov@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6KOfecRkaiMS
+X-TUID: 0/nwqHSiJmPU
 
 
 
-On 27/05/2016 04:13, xiaoqiang zhao wrote:
->=20
->=20
-> =E5=9C=A8 2016=E5=B9=B405=E6=9C=8825=E6=97=A5 21:15, Paolo Bonzini =E5=86=
-=99=E9=81=93:
->>>>> @@ -310,8 +312,7 @@ static void pl011_class_init(ObjectClass *oc,
->>>>> void *data)
->>>>> >> >
->>>>> >> >      dc->realize =3D pl011_realize;
->>>>> >> >      dc->vmsd =3D &vmstate_pl011;
->>>>> >> >-    /* Reason: realize() method uses
->>>>> qemu_char_get_next_serial() */
->>>>> >> >-    dc->cannot_instantiate_with_device_add_yet =3D true;
->>> >Why does instantiating with device_add work now? There's
->>> >still no way to wire up interrupt lines or map mmio regions.
->>> >(This has never made much sense to me -- Markus?)
->> You can create it with -device if your board provides a platform bus a=
-nd
->> there's an FDT creator function.  If you don't, you get an error.
->>
->> Regarding device_add, it's disabled anyway because sysbus is not
->> hotpluggable.
->>
->> Eiter way it's safe to remove this line, which is for outliers that
->> otherwise would not give any error message.
-> Paolo: Do I need to send a new version to keep the
->=20
-> "dc->cannot_instantiate_with_device_add_yet =3D true"
-> untouched ?
+On 27/05/2016 11:01, Peter Maydell wrote:
+>> > I found bcm2835-peripherals is only used by bcm2836 code, you mean
+>> > this(bcm2836) is the 'board level' and I should set chardev properties here?
+> Device models subclass DeviceClass (possibly indirectly).
+> Boards subclass MachineClass. Only boards should be looking
+> at serial_hds[]. Sometimes you have a device which is just
+> a "container" which encapsulates several other devices
+> (typically this is a model of an SoC). For that kind of
+> container device, it should expose chardev properties for
+> its UARTs, which will usually be alias properties for
+> the properties on the actual UART devices which the
+> container has.
+> 
+> bcm2835-peripherals is a device, not a board, so it shouldn't
+> be using serial_hds[].
+> 
+> If it's clearer, you can use a separate patch to push the
+> serial_hds[] usage out another layer, rather than folding
+> it into this one.
 
-No, you should remove it.  cannot_instantiate_with_device_add_yet is set
-if you cannot_instantiate_with_device_add_yet *and* there is no code
-elsewhere to detect that.
+I agree.  This patch is fine (perhaps with the FIXME comment left
+there); then chardev properties can be added to bcm2835-peripherals and
+set in bcm2836.
 
 Thanks,
 

@@ -1,55 +1,72 @@
-Received: by 10.25.27.66 with SMTP id b63csp242696lfb;
-        Fri, 27 May 2016 09:02:00 -0700 (PDT)
-X-Received: by 10.200.45.177 with SMTP id p46mr14517950qta.82.1464364920256;
-        Fri, 27 May 2016 09:02:00 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp274674lfb;
+        Fri, 27 May 2016 10:04:59 -0700 (PDT)
+X-Received: by 10.55.20.208 with SMTP id 77mr9491998qku.124.1464368699493;
+        Fri, 27 May 2016 10:04:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a185si18062646qha.39.2016.05.27.09.02.00
+        by mx.google.com with ESMTPS id h3si18333648qtd.74.2016.05.27.10.04.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 May 2016 09:02:00 -0700 (PDT)
+        Fri, 27 May 2016 10:04:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46795 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47047 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b6KD1-0006KU-Kc
-	for alex.bennee@linaro.org; Fri, 27 May 2016 12:01:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39422)
+	id 1b6LBy-0002QC-Ob
+	for alex.bennee@linaro.org; Fri, 27 May 2016 13:04:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1b6KCu-0006IP-2S
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 12:01:54 -0400
+	(envelope-from <digetx@gmail.com>) id 1b6LBq-0002NO-Mx
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 13:04:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1b6KCs-0001nq-5y
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 12:01:52 -0400
-Received: from roura.ac.upc.es ([147.83.33.10]:48566)
+	(envelope-from <digetx@gmail.com>) id 1b6LBp-0003pw-7G
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 13:04:50 -0400
+Received: from mail-lb0-x244.google.com ([2a00:1450:4010:c04::244]:35072)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1b6KCd-0001f5-BC; Fri, 27 May 2016 12:01:35 -0400
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u4RG10ni005755;
-	Fri, 27 May 2016 18:01:00 +0200
-Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 531FB283;
-	Fri, 27 May 2016 18:00:59 +0200 (CEST)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Date: Fri, 27 May 2016 18:00:59 +0200
-Message-Id: <146436485884.18188.14266290823410419085.stgit@fimbulvetr.bsc.es>
-X-Mailer: git-send-email 2.8.1
-In-Reply-To: <146436485327.18188.3967167989618604187.stgit@fimbulvetr.bsc.es>
-References: <146436485327.18188.3967167989618604187.stgit@fimbulvetr.bsc.es>
-User-Agent: StGit/0.17.1-dirty
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	u4RG10ni005755
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 147.83.33.10
-Subject: [Qemu-arm] [PATCH v4 1/2] exec: [tcg] Track which vCPU is
- performing translation and execution
+	(envelope-from <digetx@gmail.com>)
+	id 1b6LBk-0003oC-16; Fri, 27 May 2016 13:04:44 -0400
+Received: by mail-lb0-x244.google.com with SMTP id sh2so6034726lbb.2;
+	Fri, 27 May 2016 10:04:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=Eh0FJDAx1urnEmzTWKdlHipMOpOGrQEsc1hOXG0zH1Q=;
+	b=1H899Hy2oaJ8UafqPkoWuiZE49x10VvGd5bTkQdNuN1tFAZaZrkAN5AsdtL8EJOQvl
+	U8XK4ACV7PF6n/hP5KKGzc44SXn1+56UACmCNx+5ajiLZtYsX+qSgdC1r+NeIhttfBg1
+	x6aJbp+W+k8j7gS1kXj/nFDCZkmFnVaAbgNiqY8ZiJprSZ7S16lqUre6sH4pyHVVoHsO
+	7JXiQKgs1QOf7T0VyI2CSdxy4Ju7LjSUm9gfK3CXBgSb0EA9MOumC+yCCBLjz2qiQBxd
+	lvCybRAglFfCbkEQoyrYPUB/t1QPUjI6yT9jm92RfWH3QSzT9dFj5f24w8u79sioGgif
+	mGjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Eh0FJDAx1urnEmzTWKdlHipMOpOGrQEsc1hOXG0zH1Q=;
+	b=RHtU006UKYR6G0kmL/WvfMePQm7diHV9fMliPF6IfZCNWxlGMdtB4iDjA7P2zX+lNx
+	tRIEzH2wR5BWC/4JbmtRTfKhO1eH4OF9gVT2R6wqgeUONbfsR1bS0FRfgSD4dtmPDEA+
+	fEWxoqBFOWIx/IQenDHT2LNNEFroPWTLkoA1WVSQ+UsQvmIbiA2y6jBCk1Jc1v+oM2yQ
+	X7hU8Sle2aM+kzKkbS4pZ6JHsBctQSQ9tcAzeuQ/2V+tx+asu31x94Ja2n1NAuyTX/ph
+	3GKwIKSI+ICvQlCrE73ByfYga16v9ULQbd5MFnK8Qx1hLMd53n141rkxgKMK1mkXp1Z6
+	xBoA==
+X-Gm-Message-State: ALyK8tJJcecz2u0RMeFI028ntz3i63TOqGIew0BxLzJ5cvXmWiHj/XsHJeSC/ac4NP0YNQ==
+X-Received: by 10.112.147.65 with SMTP id ti1mr4428738lbb.81.1464368682719;
+	Fri, 27 May 2016 10:04:42 -0700 (PDT)
+Received: from localhost.localdomain ([109.252.52.1])
+	by smtp.gmail.com with ESMTPSA id p4sm3123088lfe.40.2016.05.27.10.04.41
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 27 May 2016 10:04:42 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org
+Date: Fri, 27 May 2016 20:03:28 +0300
+Message-Id: <cover.1464367869.git.digetx@gmail.com>
+X-Mailer: git-send-email 2.8.3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c04::244
+Subject: [Qemu-arm] [PATCH v13 0/8] PTimer fixes/features and ARM MPTimer
+ conversion
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,316 +78,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uRi5yr66tcNh
+X-TUID: EV88xP6rEV4Y
 
-Information is tracked inside the TCGContext structure, and later used
-by tracing events with the 'tcg' and 'vcpu' properties.
+Hello,
 
-The 'cpu' field is used to check tracing of translation-time
-events ("*_trans"). The 'tcg_env' field is used to pass it to
-execution-time events ("*_exec").
+Current QEMU ARM MPTimer device model provides only a certain subset of the
+emulation behavior, so this patch series is supposed to add missing parts by
+converting the MPTimer to use generic ptimer helper. It fixes some important
+ptimer bugs and provides new features that are required for the ARM MPTimer.
 
-Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <rth@twiddle.net>
----
- target-alpha/translate.c      |    1 +
- target-arm/translate.c        |    1 +
- target-cris/translate.c       |    1 +
- target-cris/translate_v10.c   |    1 +
- target-i386/translate.c       |    1 +
- target-lm32/translate.c       |    1 +
- target-m68k/translate.c       |    1 +
- target-microblaze/translate.c |    1 +
- target-mips/translate.c       |    1 +
- target-moxie/translate.c      |    1 +
- target-openrisc/translate.c   |    1 +
- target-ppc/translate.c        |    1 +
- target-s390x/translate.c      |    1 +
- target-sh4/translate.c        |    1 +
- target-sparc/translate.c      |    1 +
- target-tilegx/translate.c     |    1 +
- target-tricore/translate.c    |    1 +
- target-unicore32/translate.c  |    1 +
- target-xtensa/translate.c     |    1 +
- tcg/tcg.h                     |    4 ++++
- translate-all.c               |    2 ++
- 21 files changed, 25 insertions(+)
+Emulation behavior is verified against the real HW by running specially
+crafted MPTimer tests in both icount and non-icount modes:
 
-diff --git a/target-alpha/translate.c b/target-alpha/translate.c
-index 5b86992..67681f6 100644
---- a/target-alpha/translate.c
-+++ b/target-alpha/translate.c
-@@ -150,6 +150,7 @@ void alpha_translate_init(void)
-     done_init =3D 1;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     for (i =3D 0; i < 31; i++) {
-         cpu_std_ir[i] =3D tcg_global_mem_new_i64(cpu_env,
-diff --git a/target-arm/translate.c b/target-arm/translate.c
-index 940ec8d..1a7496b 100644
---- a/target-arm/translate.c
-+++ b/target-arm/translate.c
-@@ -84,6 +84,7 @@ void arm_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     for (i =3D 0; i < 16; i++) {
-         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
-diff --git a/target-cris/translate.c b/target-cris/translate.c
-index a73176c..f603af3 100644
---- a/target-cris/translate.c
-+++ b/target-cris/translate.c
-@@ -3364,6 +3364,7 @@ void cris_initialize_tcg(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cc_x =3D tcg_global_mem_new(cpu_env,
-                               offsetof(CPUCRISState, cc_x), "cc_x");
-     cc_src =3D tcg_global_mem_new(cpu_env,
-diff --git a/target-cris/translate_v10.c b/target-cris/translate_v10.c
-index 7607ead..f2e9768 100644
---- a/target-cris/translate_v10.c
-+++ b/target-cris/translate_v10.c
-@@ -1250,6 +1250,7 @@ void cris_initialize_crisv10_tcg(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cc_x =3D tcg_global_mem_new(cpu_env,
-                               offsetof(CPUCRISState, cc_x), "cc_x");
-     cc_src =3D tcg_global_mem_new(cpu_env,
-diff --git a/target-i386/translate.c b/target-i386/translate.c
-index 1a1214d..7a6ef7c 100644
---- a/target-i386/translate.c
-+++ b/target-i386/translate.c
-@@ -8135,6 +8135,7 @@ void tcg_x86_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cpu_cc_op =3D tcg_global_mem_new_i32(cpu_env,
-                                        offsetof(CPUX86State, cc_op), "cc=
-_op");
-     cpu_cc_dst =3D tcg_global_mem_new(cpu_env, offsetof(CPUX86State, cc_=
-dst),
-diff --git a/target-lm32/translate.c b/target-lm32/translate.c
-index 256a51f..b2e5a3e 100644
---- a/target-lm32/translate.c
-+++ b/target-lm32/translate.c
-@@ -1191,6 +1191,7 @@ void lm32_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     for (i =3D 0; i < ARRAY_SIZE(cpu_R); i++) {
-         cpu_R[i] =3D tcg_global_mem_new(cpu_env,
-diff --git a/target-m68k/translate.c b/target-m68k/translate.c
-index 7560c3a..f90f80e 100644
---- a/target-m68k/translate.c
-+++ b/target-m68k/translate.c
-@@ -77,6 +77,7 @@ void m68k_tcg_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
- #define DEFO32(name, offset) \
-     QREG_##name =3D tcg_global_mem_new_i32(cpu_env, \
-diff --git a/target-microblaze/translate.c b/target-microblaze/translate.=
-c
-index f944965..05092f1 100644
---- a/target-microblaze/translate.c
-+++ b/target-microblaze/translate.c
-@@ -1869,6 +1869,7 @@ void mb_tcg_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     env_debug =3D tcg_global_mem_new(cpu_env,
-                     offsetof(CPUMBState, debug),
-diff --git a/target-mips/translate.c b/target-mips/translate.c
-index a3a05ec..24f994c 100644
---- a/target-mips/translate.c
-+++ b/target-mips/translate.c
-@@ -19993,6 +19993,7 @@ void mips_tcg_init(void)
-         return;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     TCGV_UNUSED(cpu_gpr[0]);
-     for (i =3D 1; i < 32; i++)
-diff --git a/target-moxie/translate.c b/target-moxie/translate.c
-index a437e2a..44c8c0d 100644
---- a/target-moxie/translate.c
-+++ b/target-moxie/translate.c
-@@ -106,6 +106,7 @@ void moxie_translate_init(void)
-         return;
-     }
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
-                                     offsetof(CPUMoxieState, pc), "$pc");
-     for (i =3D 0; i < 16; i++)
-diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
-index 5d0ab44..170bb40 100644
---- a/target-openrisc/translate.c
-+++ b/target-openrisc/translate.c
-@@ -78,6 +78,7 @@ void openrisc_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cpu_sr =3D tcg_global_mem_new(cpu_env,
-                                 offsetof(CPUOpenRISCState, sr), "sr");
-     env_flags =3D tcg_global_mem_new_i32(cpu_env,
-diff --git a/target-ppc/translate.c b/target-ppc/translate.c
-index b3860ec..cf4771b 100644
---- a/target-ppc/translate.c
-+++ b/target-ppc/translate.c
-@@ -87,6 +87,7 @@ void ppc_translate_init(void)
-         return;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     p =3D cpu_reg_names;
-     cpu_reg_names_size =3D sizeof(cpu_reg_names);
-diff --git a/target-s390x/translate.c b/target-s390x/translate.c
-index c871ef2..24c1d07 100644
---- a/target-s390x/translate.c
-+++ b/target-s390x/translate.c
-@@ -168,6 +168,7 @@ void s390x_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     psw_addr =3D tcg_global_mem_new_i64(cpu_env,
-                                       offsetof(CPUS390XState, psw.addr),
-                                       "psw_addr");
-diff --git a/target-sh4/translate.c b/target-sh4/translate.c
-index 7c18968..b838386 100644
---- a/target-sh4/translate.c
-+++ b/target-sh4/translate.c
-@@ -100,6 +100,7 @@ void sh4_translate_init(void)
-         return;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     for (i =3D 0; i < 24; i++)
-         cpu_gregs[i] =3D tcg_global_mem_new_i32(cpu_env,
-diff --git a/target-sparc/translate.c b/target-sparc/translate.c
-index 7998ff5..f12b878 100644
---- a/target-sparc/translate.c
-+++ b/target-sparc/translate.c
-@@ -5392,6 +5392,7 @@ void gen_intermediate_code_init(CPUSPARCState *env)
-     inited =3D 1;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     cpu_regwptr =3D tcg_global_mem_new_ptr(cpu_env,
-                                          offsetof(CPUSPARCState, regwptr=
-),
-diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
-index 03918eb..399843a 100644
---- a/target-tilegx/translate.c
-+++ b/target-tilegx/translate.c
-@@ -2442,6 +2442,7 @@ void tilegx_tcg_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cpu_pc =3D tcg_global_mem_new_i64(cpu_env, offsetof(CPUTLGState, pc)=
-, "pc");
-     for (i =3D 0; i < TILEGX_R_COUNT; i++) {
-         cpu_regs[i] =3D tcg_global_mem_new_i64(cpu_env,
-diff --git a/target-tricore/translate.c b/target-tricore/translate.c
-index 912bf22..7195c4e 100644
---- a/target-tricore/translate.c
-+++ b/target-tricore/translate.c
-@@ -8823,6 +8823,7 @@ void tricore_tcg_init(void)
-         return;
-     }
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     /* reg init */
-     for (i =3D 0 ; i < 16 ; i++) {
-         cpu_gpr_a[i] =3D tcg_global_mem_new(cpu_env,
-diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
-index 39af3af..d2b786e 100644
---- a/target-unicore32/translate.c
-+++ b/target-unicore32/translate.c
-@@ -69,6 +69,7 @@ void uc32_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-=20
-     for (i =3D 0; i < 32; i++) {
-         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
-diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
-index 9894488..0ba59da 100644
---- a/target-xtensa/translate.c
-+++ b/target-xtensa/translate.c
-@@ -218,6 +218,7 @@ void xtensa_translate_init(void)
-     int i;
-=20
-     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
-+    tcg_ctx.tcg_env =3D cpu_env;
-     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
-             offsetof(CPUXtensaState, pc), "pc");
-=20
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 40c8fbe..89914c2 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -576,6 +576,10 @@ struct TCGContext {
-=20
-     TBContext tb_ctx;
-=20
-+    /* Track which vCPU triggers events */
-+    CPUState *cpu;                      /* *_trans */
-+    TCGv_env tcg_env;                   /* *_exec  */
-+
-     /* The TCGBackendData structure is private to tcg-target.inc.c.  */
-     struct TCGBackendData *be;
-=20
-diff --git a/translate-all.c b/translate-all.c
-index 8329ea6..360b26a 100644
---- a/translate-all.c
-+++ b/translate-all.c
-@@ -1094,7 +1094,9 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-=20
-     tcg_func_start(&tcg_ctx);
-=20
-+    tcg_ctx.cpu =3D ENV_GET_CPU(env);
-     gen_intermediate_code(env, tb);
-+    tcg_ctx.cpu =3D NULL;
-=20
-     trace_translate_block(tb, tb->pc, tb->tc_ptr);
-=20
+https://gist.github.com/digetx/dbd46109503b1a91941a
+
+
+Changelog for the ARM MPTimer QEMUTimer to ptimer conversion:
+
+    V2: Fixed changing periodic timer counter value "on the fly". I added a
+        test to the gist to cover that issue.
+
+    V3: Fixed starting the timer with load = 0 and counter != 0, added tests
+        to the gist for this issue. Changed vmstate version for all VMSD's,
+        since loadvm doesn't check version of nested VMSD.
+
+    V4: Fixed spurious IT bit set for the timer starting in the periodic mode
+        with counter = 0. Test added.
+
+    V5: Code cleanup, now depends on ptimer_set_limit() fix.
+
+    V6: No code change, added test to check ptimer_get_count() with corrected
+        .limit value.
+
+    V7: No change.
+
+    V8: No change.
+
+    V9: No change.
+
+    V10: Correctly handle cases when counter = load = 0 and prescaler != 0,
+         i.e. triggering interrupt in that case. Call ptimer_* only when
+         certain MPTimer state was changed, like prescaler change. Factor out
+         timerblock_set_count from timerblock_run and inline both.
+         Tests updated.
+
+    V11: Fixed missed periodic timer stopping on setting counter => 0 with
+         load = 0 and prescaler = 0.
+
+    v12: Timer isn't doing uninterruptible IRQ, but ticks continuously.
+         On setting counter/load to 0 with prescaler != 0, timer would trigger
+         IRQ after one period. Verified on real HW, tests updated.
+
+    v13: Rebased on recent master, use new ptimer policy feature.
+
+Patches for ptimer are introduced since V5 of "ARM MPTimer conversion".
+
+Changelog for the ptimer patches:
+
+    V5: Only fixed ptimer_set_limit() for the disabled timer.
+
+    V6: As was pointed by Peter Maydell, there are other issues beyond
+        ptimer_set_limit(), so V6 supposed to cover all those issues.
+
+    V7: Added accidentally removed !use_icount check.
+        Added missed "else" statement.
+
+    V8: Adjust period instead of the limit and do it for periodic timer only
+        (.limit adjusting bug). Added patch/fix for freq/period change and
+        ptimer_get_count() improvement.
+
+    V9: Don't do wrap around if counter == 0, otherwise polled periodic
+        timer won't ever return counter = 0.
+
+    V10: Addressed V8/9 review comments.
+         Adjust timer period based on delta instead of limit.
+         Don't wrap around when in icount mode.
+         New patches: "on the fly" mode switch, silence error msg when
+                      delta = load = 0, introduce ptimer_get_limit.
+
+    V11: Dropped timer tick from "Perform tick and counter wrap around if
+         timer already expired" patch since it would cause bogus tick after
+         QEMU been reset if ptimer was stopped and it's QEMUtimer expired
+         during reset.
+         Patch "Legalize running with delta = load = 0" now explicitly
+         forbids period = 0.
+
+    v12: Fixed missed abort on setting freq > 1000000000.
+         New patches:
+            "Fix counter - 1 returned by ptimer_get_count for the active timer"
+            "Perform delayed tick instead of immediate if delta = 0"
+
+    v13: Squashed the following two patches from v12:
+
+        hw/ptimer: Legalize running with delta = load = 0 and abort on period = 0
+        hw/ptimer: Perform delayed tick instead of immediate if delta = 0
+
+        into
+
+        hw/ptimer: Support running with counter = 0 by introducing new policy feature
+
+        The second patch has no r-b, I omitted Peter's Crosthwaite r-b from the
+        first patch. I think it's not valid now, otherwise please let me know.
+
+Dmitry Osipenko (8):
+  hw/ptimer: Fix issues caused by the adjusted timer limit value
+  hw/ptimer: Perform counter wrap around if timer already expired
+  hw/ptimer: Update .delta on period/freq change
+  hw/ptimer: Support "on the fly" timer mode switch
+  hw/ptimer: Introduce ptimer_get_limit
+  hw/ptimer: Support running with counter = 0 by introducing new policy
+    feature
+  hw/ptimer: Fix counter - 1 returned by ptimer_get_count for the active
+    timer
+  arm_mptimer: Convert to use ptimer
+
+ hw/core/ptimer.c               | 131 ++++++++++++++++++++++++---------------
+ hw/timer/arm_mptimer.c         | 135 ++++++++++++++++++++++-------------------
+ include/hw/ptimer.h            |   7 +++
+ include/hw/timer/arm_mptimer.h |   5 +-
+ 4 files changed, 162 insertions(+), 116 deletions(-)
+
+-- 
+2.8.3
 

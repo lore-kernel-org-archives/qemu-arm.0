@@ -1,69 +1,55 @@
-Received: by 10.25.27.66 with SMTP id b63csp108926lfb;
-        Fri, 27 May 2016 04:37:31 -0700 (PDT)
-X-Received: by 10.140.85.106 with SMTP id m97mr12528651qgd.41.1464349051634;
-        Fri, 27 May 2016 04:37:31 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp242696lfb;
+        Fri, 27 May 2016 09:02:00 -0700 (PDT)
+X-Received: by 10.200.45.177 with SMTP id p46mr14517950qta.82.1464364920256;
+        Fri, 27 May 2016 09:02:00 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o9si8011948qge.88.2016.05.27.04.37.31
+        by mx.google.com with ESMTPS id a185si18062646qha.39.2016.05.27.09.02.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 May 2016 04:37:31 -0700 (PDT)
+        Fri, 27 May 2016 09:02:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45403 helo=lists.gnu.org)
+Received: from localhost ([::1]:46795 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b6G55-0003y5-2e
-	for alex.bennee@linaro.org; Fri, 27 May 2016 07:37:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48997)
+	id 1b6KD1-0006KU-Kc
+	for alex.bennee@linaro.org; Fri, 27 May 2016 12:01:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39422)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b6G4z-0003vz-Hh
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 07:37:26 -0400
+	(envelope-from <vilanova@ac.upc.edu>) id 1b6KCu-0006IP-2S
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 12:01:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b6G4x-0003u6-KS
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 07:37:24 -0400
-Received: from m12-17.163.com ([220.181.12.17]:38367)
+	(envelope-from <vilanova@ac.upc.edu>) id 1b6KCs-0001nq-5y
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 12:01:52 -0400
+Received: from roura.ac.upc.es ([147.83.33.10]:48566)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1b6G4p-0003ry-TU; Fri, 27 May 2016 07:37:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Mime-Version:Subject:From:Date:Message-Id; bh=kkucY
-	5EBdPURdOkebYbtxaPWMuR/VC50Q7hB3Le0PqI=; b=EgLxtbhKGjv0fPnPEBshM
-	QjWrzcxCF7qnH5MNJeb87ILgqmxW/A5lXqHxxXZ8F4ER8KPuc1FVK3PrreMruRtZ
-	GNIeJJlvM5pUf8B1wYupeFvqfP62PVQdYfBniI37DJo8G19neyorFatQDtpS4Gax
-	HgIIizSz+lUNEjLwdr+lhU=
-Received: from [10.162.33.50] (unknown [223.104.38.41])
-	by smtp13 (Coremail) with SMTP id EcCowACHlrpMMUhXZASBDA--.25962S2;
-	Fri, 27 May 2016 19:36:45 +0800 (CST)
-Content-Type: text/plain;
-	charset=gb2312
-Mime-Version: 1.0 (1.0)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-X-Mailer: iPhone Mail (13F69)
-In-Reply-To: <bf2900b6-980f-6a0c-fabe-6037b7592647@redhat.com>
-Date: Fri, 27 May 2016 19:36:43 +0800
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1b6KCd-0001f5-BC; Fri, 27 May 2016 12:01:35 -0400
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u4RG10ni005755;
+	Fri, 27 May 2016 18:01:00 +0200
+Received: from localhost (unknown [84.88.51.85])
+	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 531FB283;
+	Fri, 27 May 2016 18:00:59 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Date: Fri, 27 May 2016 18:00:59 +0200
+Message-Id: <146436485884.18188.14266290823410419085.stgit@fimbulvetr.bsc.es>
+X-Mailer: git-send-email 2.8.1
+In-Reply-To: <146436485327.18188.3967167989618604187.stgit@fimbulvetr.bsc.es>
+References: <146436485327.18188.3967167989618604187.stgit@fimbulvetr.bsc.es>
+User-Agent: StGit/0.17.1-dirty
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <E3903DF9-3C5C-4A2B-8737-20A64EBEF6C6@163.com>
-References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
-	<1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
-	<CAFEAcA8oEjC0wUudEpKKmtbk86eB87KOh-__QB+GrcW6LFy5uA@mail.gmail.com>
-	<5747AB8C.7040502@163.com>
-	<CAFEAcA8XO+6y8LoVnPa-WVKT2+HFFYC8KS5i0yHCa2jjingR=w@mail.gmail.com>
-	<bf2900b6-980f-6a0c-fabe-6037b7592647@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-X-CM-TRANSID: EcCowACHlrpMMUhXZASBDA--.25962S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWrKry8GrWrZry3Gw15Xw17trb_yoW8Jr43pa
-	ySqF4fKa1UKw18Cw4DZr1rua10kFyfJFZxJrWxXr4Yka98Xrn5GF92ka4j9a47WF1kJayU
-	KrWxGFyruas2qFJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UFiiDUUUUU=
-X-Originating-IP: [223.104.38.41]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiOw12xlXlTxSzAAAAse
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.17
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/6] hw/char: QOM'ify pl011 model
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	u4RG10ni005755
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.83.33.10
+Subject: [Qemu-arm] [PATCH v4 1/2] exec: [tcg] Track which vCPU is
+ performing translation and execution
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,52 +61,316 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?GB2312?B?p6Gn36fkp+Cn3yCnsafRp9On3afgp9M=?= <antonynpavlov@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SSBl0ixnTEDZ
+X-TUID: uRi5yr66tcNh
 
+Information is tracked inside the TCGContext structure, and later used
+by tracing events with the 'tcg' and 'vcpu' properties.
 
+The 'cpu' field is used to check tracing of translation-time
+events ("*_trans"). The 'tcg_env' field is used to pass it to
+execution-time events ("*_exec").
 
-> =D4=DA 2016=C4=EA5=D4=C227=C8=D5=A3=AC17:42=A3=ACPaolo Bonzini <pbonzini@r=
-edhat.com> =D0=B4=B5=C0=A3=BA
->=20
->=20
->=20
-> On 27/05/2016 11:01, Peter Maydell wrote:
->>>> I found bcm2835-peripherals is only used by bcm2836 code, you mean
->>>> this(bcm2836) is the 'board level' and I should set chardev properties h=
-ere?
->> Device models subclass DeviceClass (possibly indirectly).
->> Boards subclass MachineClass. Only boards should be looking
->> at serial_hds[]. Sometimes you have a device which is just
->> a "container" which encapsulates several other devices
->> (typically this is a model of an SoC). For that kind of
->> container device, it should expose chardev properties for
->> its UARTs, which will usually be alias properties for
->> the properties on the actual UART devices which the
->> container has.
->>=20
->> bcm2835-peripherals is a device, not a board, so it shouldn't
->> be using serial_hds[].
->>=20
->> If it's clearer, you can use a separate patch to push the
->> serial_hds[] usage out another layer, rather than folding
->> it into this one.
->=20
-> I agree.  This patch is fine (perhaps with the FIXME comment left
-> there); then chardev properties can be added to bcm2835-peripherals and
-> set in bcm2836.
->=20
-> Thanks,
->=20
-> Paolo
->=20
-Much clear.
-Thank you guys=A3=A1=
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+---
+ target-alpha/translate.c      |    1 +
+ target-arm/translate.c        |    1 +
+ target-cris/translate.c       |    1 +
+ target-cris/translate_v10.c   |    1 +
+ target-i386/translate.c       |    1 +
+ target-lm32/translate.c       |    1 +
+ target-m68k/translate.c       |    1 +
+ target-microblaze/translate.c |    1 +
+ target-mips/translate.c       |    1 +
+ target-moxie/translate.c      |    1 +
+ target-openrisc/translate.c   |    1 +
+ target-ppc/translate.c        |    1 +
+ target-s390x/translate.c      |    1 +
+ target-sh4/translate.c        |    1 +
+ target-sparc/translate.c      |    1 +
+ target-tilegx/translate.c     |    1 +
+ target-tricore/translate.c    |    1 +
+ target-unicore32/translate.c  |    1 +
+ target-xtensa/translate.c     |    1 +
+ tcg/tcg.h                     |    4 ++++
+ translate-all.c               |    2 ++
+ 21 files changed, 25 insertions(+)
 
+diff --git a/target-alpha/translate.c b/target-alpha/translate.c
+index 5b86992..67681f6 100644
+--- a/target-alpha/translate.c
++++ b/target-alpha/translate.c
+@@ -150,6 +150,7 @@ void alpha_translate_init(void)
+     done_init =3D 1;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 31; i++) {
+         cpu_std_ir[i] =3D tcg_global_mem_new_i64(cpu_env,
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 940ec8d..1a7496b 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -84,6 +84,7 @@ void arm_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 16; i++) {
+         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-cris/translate.c b/target-cris/translate.c
+index a73176c..f603af3 100644
+--- a/target-cris/translate.c
++++ b/target-cris/translate.c
+@@ -3364,6 +3364,7 @@ void cris_initialize_tcg(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cc_x =3D tcg_global_mem_new(cpu_env,
+                               offsetof(CPUCRISState, cc_x), "cc_x");
+     cc_src =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-cris/translate_v10.c b/target-cris/translate_v10.c
+index 7607ead..f2e9768 100644
+--- a/target-cris/translate_v10.c
++++ b/target-cris/translate_v10.c
+@@ -1250,6 +1250,7 @@ void cris_initialize_crisv10_tcg(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cc_x =3D tcg_global_mem_new(cpu_env,
+                               offsetof(CPUCRISState, cc_x), "cc_x");
+     cc_src =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-i386/translate.c b/target-i386/translate.c
+index 1a1214d..7a6ef7c 100644
+--- a/target-i386/translate.c
++++ b/target-i386/translate.c
+@@ -8135,6 +8135,7 @@ void tcg_x86_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_cc_op =3D tcg_global_mem_new_i32(cpu_env,
+                                        offsetof(CPUX86State, cc_op), "cc=
+_op");
+     cpu_cc_dst =3D tcg_global_mem_new(cpu_env, offsetof(CPUX86State, cc_=
+dst),
+diff --git a/target-lm32/translate.c b/target-lm32/translate.c
+index 256a51f..b2e5a3e 100644
+--- a/target-lm32/translate.c
++++ b/target-lm32/translate.c
+@@ -1191,6 +1191,7 @@ void lm32_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < ARRAY_SIZE(cpu_R); i++) {
+         cpu_R[i] =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-m68k/translate.c b/target-m68k/translate.c
+index 7560c3a..f90f80e 100644
+--- a/target-m68k/translate.c
++++ b/target-m68k/translate.c
+@@ -77,6 +77,7 @@ void m68k_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+ #define DEFO32(name, offset) \
+     QREG_##name =3D tcg_global_mem_new_i32(cpu_env, \
+diff --git a/target-microblaze/translate.c b/target-microblaze/translate.=
+c
+index f944965..05092f1 100644
+--- a/target-microblaze/translate.c
++++ b/target-microblaze/translate.c
+@@ -1869,6 +1869,7 @@ void mb_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     env_debug =3D tcg_global_mem_new(cpu_env,
+                     offsetof(CPUMBState, debug),
+diff --git a/target-mips/translate.c b/target-mips/translate.c
+index a3a05ec..24f994c 100644
+--- a/target-mips/translate.c
++++ b/target-mips/translate.c
+@@ -19993,6 +19993,7 @@ void mips_tcg_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     TCGV_UNUSED(cpu_gpr[0]);
+     for (i =3D 1; i < 32; i++)
+diff --git a/target-moxie/translate.c b/target-moxie/translate.c
+index a437e2a..44c8c0d 100644
+--- a/target-moxie/translate.c
++++ b/target-moxie/translate.c
+@@ -106,6 +106,7 @@ void moxie_translate_init(void)
+         return;
+     }
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
+                                     offsetof(CPUMoxieState, pc), "$pc");
+     for (i =3D 0; i < 16; i++)
+diff --git a/target-openrisc/translate.c b/target-openrisc/translate.c
+index 5d0ab44..170bb40 100644
+--- a/target-openrisc/translate.c
++++ b/target-openrisc/translate.c
+@@ -78,6 +78,7 @@ void openrisc_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_sr =3D tcg_global_mem_new(cpu_env,
+                                 offsetof(CPUOpenRISCState, sr), "sr");
+     env_flags =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-ppc/translate.c b/target-ppc/translate.c
+index b3860ec..cf4771b 100644
+--- a/target-ppc/translate.c
++++ b/target-ppc/translate.c
+@@ -87,6 +87,7 @@ void ppc_translate_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     p =3D cpu_reg_names;
+     cpu_reg_names_size =3D sizeof(cpu_reg_names);
+diff --git a/target-s390x/translate.c b/target-s390x/translate.c
+index c871ef2..24c1d07 100644
+--- a/target-s390x/translate.c
++++ b/target-s390x/translate.c
+@@ -168,6 +168,7 @@ void s390x_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     psw_addr =3D tcg_global_mem_new_i64(cpu_env,
+                                       offsetof(CPUS390XState, psw.addr),
+                                       "psw_addr");
+diff --git a/target-sh4/translate.c b/target-sh4/translate.c
+index 7c18968..b838386 100644
+--- a/target-sh4/translate.c
++++ b/target-sh4/translate.c
+@@ -100,6 +100,7 @@ void sh4_translate_init(void)
+         return;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 24; i++)
+         cpu_gregs[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-sparc/translate.c b/target-sparc/translate.c
+index 7998ff5..f12b878 100644
+--- a/target-sparc/translate.c
++++ b/target-sparc/translate.c
+@@ -5392,6 +5392,7 @@ void gen_intermediate_code_init(CPUSPARCState *env)
+     inited =3D 1;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     cpu_regwptr =3D tcg_global_mem_new_ptr(cpu_env,
+                                          offsetof(CPUSPARCState, regwptr=
+),
+diff --git a/target-tilegx/translate.c b/target-tilegx/translate.c
+index 03918eb..399843a 100644
+--- a/target-tilegx/translate.c
++++ b/target-tilegx/translate.c
+@@ -2442,6 +2442,7 @@ void tilegx_tcg_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i64(cpu_env, offsetof(CPUTLGState, pc)=
+, "pc");
+     for (i =3D 0; i < TILEGX_R_COUNT; i++) {
+         cpu_regs[i] =3D tcg_global_mem_new_i64(cpu_env,
+diff --git a/target-tricore/translate.c b/target-tricore/translate.c
+index 912bf22..7195c4e 100644
+--- a/target-tricore/translate.c
++++ b/target-tricore/translate.c
+@@ -8823,6 +8823,7 @@ void tricore_tcg_init(void)
+         return;
+     }
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     /* reg init */
+     for (i =3D 0 ; i < 16 ; i++) {
+         cpu_gpr_a[i] =3D tcg_global_mem_new(cpu_env,
+diff --git a/target-unicore32/translate.c b/target-unicore32/translate.c
+index 39af3af..d2b786e 100644
+--- a/target-unicore32/translate.c
++++ b/target-unicore32/translate.c
+@@ -69,6 +69,7 @@ void uc32_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+=20
+     for (i =3D 0; i < 32; i++) {
+         cpu_R[i] =3D tcg_global_mem_new_i32(cpu_env,
+diff --git a/target-xtensa/translate.c b/target-xtensa/translate.c
+index 9894488..0ba59da 100644
+--- a/target-xtensa/translate.c
++++ b/target-xtensa/translate.c
+@@ -218,6 +218,7 @@ void xtensa_translate_init(void)
+     int i;
+=20
+     cpu_env =3D tcg_global_reg_new_ptr(TCG_AREG0, "env");
++    tcg_ctx.tcg_env =3D cpu_env;
+     cpu_pc =3D tcg_global_mem_new_i32(cpu_env,
+             offsetof(CPUXtensaState, pc), "pc");
+=20
+diff --git a/tcg/tcg.h b/tcg/tcg.h
+index 40c8fbe..89914c2 100644
+--- a/tcg/tcg.h
++++ b/tcg/tcg.h
+@@ -576,6 +576,10 @@ struct TCGContext {
+=20
+     TBContext tb_ctx;
+=20
++    /* Track which vCPU triggers events */
++    CPUState *cpu;                      /* *_trans */
++    TCGv_env tcg_env;                   /* *_exec  */
++
+     /* The TCGBackendData structure is private to tcg-target.inc.c.  */
+     struct TCGBackendData *be;
+=20
+diff --git a/translate-all.c b/translate-all.c
+index 8329ea6..360b26a 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -1094,7 +1094,9 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+=20
+     tcg_func_start(&tcg_ctx);
+=20
++    tcg_ctx.cpu =3D ENV_GET_CPU(env);
+     gen_intermediate_code(env, tb);
++    tcg_ctx.cpu =3D NULL;
+=20
+     trace_translate_block(tb, tb->pc, tb->tc_ptr);
+=20
 

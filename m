@@ -1,60 +1,73 @@
-Received: by 10.25.27.66 with SMTP id b63csp44278lfb;
-        Thu, 26 May 2016 22:10:28 -0700 (PDT)
-X-Received: by 10.140.250.194 with SMTP id v185mr12113245qhc.15.1464325828153;
-        Thu, 26 May 2016 22:10:28 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp43992lfb;
+        Fri, 27 May 2016 02:01:59 -0700 (PDT)
+X-Received: by 10.140.84.229 with SMTP id l92mr12016261qgd.100.1464339719105;
+        Fri, 27 May 2016 02:01:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p10si6927337qgp.123.2016.05.26.22.10.27
+        by mx.google.com with ESMTPS id h140si16736774qhc.40.2016.05.27.02.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 May 2016 22:10:28 -0700 (PDT)
+        Fri, 27 May 2016 02:01:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@aj.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44017 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44740 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b6A2V-0006l5-J0
-	for alex.bennee@linaro.org; Fri, 27 May 2016 01:10:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54635)
+	id 1b6DeY-0003RJ-GO
+	for alex.bennee@linaro.org; Fri, 27 May 2016 05:01:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1b6A2Q-0006iz-PF
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 01:10:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1b6DeR-0003Ph-Pw
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:01:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1b6A2M-00043R-IQ
-	for qemu-arm@nongnu.org; Fri, 27 May 2016 01:10:22 -0400
-Received: from hapkido.dreamhost.com ([66.33.216.122]:53177)
+	(envelope-from <peter.maydell@linaro.org>) id 1b6DeP-0005dg-Qf
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:01:50 -0400
+Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:32780)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1b6A2M-00043E-75; Fri, 27 May 2016 01:10:18 -0400
-Received: from homiemail-a76.g.dreamhost.com (sub3.mail.dreamhost.com
-	[69.163.253.7])
-	by hapkido.dreamhost.com (Postfix) with ESMTP id F394297ECE;
-	Thu, 26 May 2016 22:10:15 -0700 (PDT)
-Received: from homiemail-a76.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a76.g.dreamhost.com (Postfix) with ESMTP id 3FE9A45807B;
-	Thu, 26 May 2016 22:10:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
-	:subject:date:message-id; s=aj.id.au; bh=pd4KBKybhKBADW3kQYL87x2
-	zErI=; b=xtQ2gy/SQteaybQ9A414wJlZ+4YZY062j0cc3Dw+1YcC8HijOFqMl8p
-	XCMokCKnuF2c72Qg6rLxtHLGjsEO6EgXShJhBO6G3TRKPdTmMSW05oq+pKp0l4k+
-	/6BGTb/K6IBfq/4X+i/F9K8HSgMrw8NVWRN/c/hnb1J4My2YBWgQ=
-Received: from keelia.au.ibm.com (unknown [203.0.153.9])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a76.g.dreamhost.com (Postfix) with ESMTPSA id 5BD42458079; 
-	Thu, 26 May 2016 22:10:10 -0700 (PDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 May 2016 14:38:26 +0930
-Message-Id: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 66.33.216.122
-Subject: [Qemu-arm] [PATCH] hw/timer: Add value matching support to
- aspeed_timer
+	(envelope-from <peter.maydell@linaro.org>) id 1b6DeP-0005dS-Dr
+	for qemu-arm@nongnu.org; Fri, 27 May 2016 05:01:49 -0400
+Received: by mail-vk0-x229.google.com with SMTP id r140so135641986vkf.0
+	for <qemu-arm@nongnu.org>; Fri, 27 May 2016 02:01:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=nhwIrp+aEKw9aLvw2b/sVsfKtfjs8/E6ovZ6N+Zz8/I=;
+	b=P8dOV295Eh8E4YBprECPt4KxVEjER2lbohUNZutbBLV1yhGexrw5duCDOdNcl5PSAn
+	C05qGsqWk5oMpI7DdxNo4GDiUK86XFZN4pVwKFANq0w6KPK/uAaGSF8qfawBoMdgAkwU
+	XjPozaDGdSShyo/eeKNwMJlo/+0yYYk2LfMlY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=nhwIrp+aEKw9aLvw2b/sVsfKtfjs8/E6ovZ6N+Zz8/I=;
+	b=aSAqqh/8ZJAE38nSlVWVF+v30mgqyPzM+A+lv5DXLmxt1tBt3j1Qrd3wVl55edGLXm
+	k6uWigDbUoSM0hnwBG4G9m71TzhSAaC84Yy6plWukuJVbjh54NcVxXxAo/4c75U41/Jw
+	OZg+4GE0eYF5h5NHau+fRhEXqIGCt/YP1NYQyvyNELGJz8vNIRP6nDc7sGcbbOmKW0G7
+	sH9/rvjHCswRNNJwnCOT7H+VTrNEqzc7u6EkuEbFs8IhnbVMsR8MHZUFYB/NzGiN7ToZ
+	ucmY8qCxtBitOYzUM4GdQL43Y8IZWG4rVObSl6e93HC6xTNQnAIwczwN5syh13Yn2ITq
+	WwYg==
+X-Gm-Message-State: ALyK8tJN57rMNe3oVp7QdQOruIUPCLZV/QrdquNvx4bzMuFj7v9wXJHR4OzWV06YnwSx93hMg/UKbPPoIXUoEl+O
+X-Received: by 10.31.88.196 with SMTP id m187mr8044932vkb.37.1464339708825;
+	Fri, 27 May 2016 02:01:48 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.69.66 with HTTP; Fri, 27 May 2016 02:01:29 -0700 (PDT)
+In-Reply-To: <5747AB8C.7040502@163.com>
+References: <1464173896-4088-1-git-send-email-zxq_yx_007@163.com>
+	<1464173896-4088-2-git-send-email-zxq_yx_007@163.com>
+	<CAFEAcA8oEjC0wUudEpKKmtbk86eB87KOh-__QB+GrcW6LFy5uA@mail.gmail.com>
+	<5747AB8C.7040502@163.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 27 May 2016 10:01:29 +0100
+Message-ID: <CAFEAcA8XO+6y8LoVnPa-WVKT2+HFFYC8KS5i0yHCa2jjingR=w@mail.gmail.com>
+To: xiaoqiang zhao <zxq_yx_007@163.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::229
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/6] hw/char: QOM'ify pl011 model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,276 +79,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
-	qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
+Cc: Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?B?0JDQvdGC0L7QvSDQn9Cw0LLQu9C+0LI=?= <antonynpavlov@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6e2TA4PNLUwH
+X-TUID: Y9my7hlitlE4
 
-Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=y on the
-palmetto-bmc machine. Two match registers are provided for each timer.
+On 27 May 2016 at 03:06, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
+> =E5=9C=A8 2016=E5=B9=B405=E6=9C=8825=E6=97=A5 21:08, Peter Maydell =E5=86=
+=99=E9=81=93:
+>>>
+>>> -
+>>> >      /* AUX / UART1 */
+>>> >-    /* TODO: don't call qemu_char_get_next_serial() here, instead set
+>>> >-     * chardev properties for each uart at the board level, once pl01=
+1
+>>> >-     * (uart0) has been updated to avoid qemu_char_get_next_serial()
+>>> >-     */
+>>
+>> This comment says this should be fixed by having board-level
+>> properties; you've removed it but this patch isn't adding
+>> the properties to this (SoC-level) device. I think the board
+>> level should be looking at serial_hds[], not this code.
+>>
+> Hi, Peter:
+>
+> I found bcm2835-peripherals is only used by bcm2836 code, you mean
+> this(bcm2836) is the 'board level' and I should set chardev properties he=
+re?
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
+Device models subclass DeviceClass (possibly indirectly).
+Boards subclass MachineClass. Only boards should be looking
+at serial_hds[]. Sometimes you have a device which is just
+a "container" which encapsulates several other devices
+(typically this is a model of an SoC). For that kind of
+container device, it should expose chardev properties for
+its UARTs, which will usually be alias properties for
+the properties on the actual UART devices which the
+container has.
 
-The change pulls out ptimer in favour of the regular timer infrastructure. As a
-consequence it implements the conversions between ticks and time which feels a
-little tedious. Any comments there would be appreciated.
+bcm2835-peripherals is a device, not a board, so it shouldn't
+be using serial_hds[].
 
- hw/timer/aspeed_timer.c         | 135 ++++++++++++++++++++++++++++++----------
- include/hw/timer/aspeed_timer.h |   6 +-
- 2 files changed, 105 insertions(+), 36 deletions(-)
+If it's clearer, you can use a separate patch to push the
+serial_hds[] usage out another layer, rather than folding
+it into this one.
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 4b94808821b4..905de0f788b2 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -9,13 +9,12 @@
-  * the COPYING file in the top-level directory.
-  */
- 
-+#include <math.h>
- #include "qemu/osdep.h"
--#include "hw/ptimer.h"
- #include "hw/sysbus.h"
- #include "hw/timer/aspeed_timer.h"
- #include "qemu-common.h"
- #include "qemu/bitops.h"
--#include "qemu/main-loop.h"
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "trace.h"
-@@ -77,21 +76,99 @@ static inline bool timer_can_pulse(AspeedTimer *t)
-     return t->id >= TIMER_FIRST_CAP_PULSE;
- }
- 
-+static inline bool timer_external_clock(AspeedTimer *t)
-+{
-+    return timer_ctrl_status(t, op_external_clock);
-+}
-+
-+static double clock_rates[] = { TIMER_CLOCK_APB_HZ, TIMER_CLOCK_EXT_HZ };
-+
-+static inline double calculate_rate(struct AspeedTimer *t)
-+{
-+    return clock_rates[timer_external_clock(t)];
-+}
-+
-+static inline double calculate_period(struct AspeedTimer *t)
-+{
-+    return NANOSECONDS_PER_SECOND / calculate_rate(t);
-+}
-+
-+static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_t now_ns)
-+{
-+    uint64_t delta_ns = now_ns - MIN(now_ns, t->start);
-+    uint32_t ticks = (uint32_t) floor(delta_ns / calculate_period(t));
-+
-+    return t->reload - MIN(t->reload, ticks);
-+}
-+
-+static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t ticks)
-+{
-+    uint64_t delta_ns;
-+
-+    ticks = MIN(t->reload, ticks);
-+    delta_ns = (uint64_t) floor((t->reload - ticks) * calculate_period(t));
-+
-+    return t->start + delta_ns;
-+}
-+
-+static uint64_t calculate_next(struct AspeedTimer *t)
-+{
-+    uint64_t now;
-+    uint64_t next;
-+    int i;
-+    /* We don't know the relationship between the values in the match
-+     * registers, so sort using MAX/MIN/zero. We sort in that order as the
-+     * timer counts down to zero. */
-+    uint64_t seq[] = {
-+        MAX(t->match[0], t->match[1]),
-+        MIN(t->match[0], t->match[1]),
-+        0,
-+    };
-+
-+    now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    for (i = 0; i < ARRAY_SIZE(seq); i++) {
-+        next = calculate_time(t, seq[i]);
-+        if (now < next) {
-+            return next;
-+        }
-+    }
-+
-+    {
-+        uint64_t reload_ns;
-+
-+        reload_ns = (uint64_t) floor(t->reload * calculate_period(t));
-+        t->start = now - ((now - t->start) % reload_ns);
-+    }
-+
-+    return calculate_next(t);
-+}
-+
- static void aspeed_timer_expire(void *opaque)
- {
-     AspeedTimer *t = opaque;
-+    bool interrupt = false;
-+    uint32_t ticks;
- 
--    /* Only support interrupts on match values of zero for the moment - this is
--     * sufficient to boot an aspeed_defconfig Linux kernel.
--     *
--     * TODO: matching on arbitrary values (see e.g. hw/timer/a9gtimer.c)
--     */
--    bool match = !(t->match[0] && t->match[1]);
--    bool interrupt = timer_overflow_interrupt(t) || match;
--    if (timer_enabled(t) && interrupt) {
-+    if (!timer_enabled(t)) {
-+        return;
-+    }
-+
-+    ticks = calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-+
-+    if (!ticks) {
-+        interrupt = timer_overflow_interrupt(t) || !t->match[0] || !t->match[1];
-+    } else if (ticks <= MIN(t->match[0], t->match[1])) {
-+        interrupt = true;
-+    } else if (ticks <= MAX(t->match[0], t->match[1])) {
-+        interrupt = true;
-+    }
-+
-+    if (interrupt) {
-         t->level = !t->level;
-         qemu_set_irq(t->irq, t->level);
-     }
-+
-+    timer_mod(&t->timer, calculate_next(t));
- }
- 
- static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
-@@ -100,7 +177,7 @@ static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
- 
-     switch (reg) {
-     case TIMER_REG_STATUS:
--        value = ptimer_get_count(t->timer);
-+        value = calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-         break;
-     case TIMER_REG_RELOAD:
-         value = t->reload;
-@@ -160,24 +237,21 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
-     switch (reg) {
-     case TIMER_REG_STATUS:
-         if (timer_enabled(t)) {
--            ptimer_set_count(t->timer, value);
-+            uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            int64_t delta = (int64_t) value - (int64_t) calculate_ticks(t, now);
-+
-+            t->start += delta * calculate_period(t);
-+            timer_mod(&t->timer, calculate_next(t));
-         }
-         break;
-     case TIMER_REG_RELOAD:
-         t->reload = value;
--        ptimer_set_limit(t->timer, value, 1);
-         break;
-     case TIMER_REG_MATCH_FIRST:
-     case TIMER_REG_MATCH_SECOND:
--        if (value) {
--            /* Non-zero match values are unsupported. As such an interrupt will
--             * always be triggered when the timer reaches zero even if the
--             * overflow interrupt control bit is clear.
--             */
--            qemu_log_mask(LOG_UNIMP, "%s: Match value unsupported by device: "
--                    "0x%" PRIx32 "\n", __func__, value);
--        } else {
--            t->match[reg - 2] = value;
-+        t->match[reg - 2] = value;
-+        if (timer_enabled(t)) {
-+            timer_mod(&t->timer, calculate_next(t));
-         }
-         break;
-     default:
-@@ -196,21 +270,16 @@ static void aspeed_timer_ctrl_enable(AspeedTimer *t, bool enable)
- {
-     trace_aspeed_timer_ctrl_enable(t->id, enable);
-     if (enable) {
--        ptimer_run(t->timer, 0);
-+        t->start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        timer_mod(&t->timer, calculate_next(t));
-     } else {
--        ptimer_stop(t->timer);
--        ptimer_set_limit(t->timer, t->reload, 1);
-+        timer_del(&t->timer);
-     }
- }
- 
- static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool enable)
- {
-     trace_aspeed_timer_ctrl_external_clock(t->id, enable);
--    if (enable) {
--        ptimer_set_freq(t->timer, TIMER_CLOCK_EXT_HZ);
--    } else {
--        ptimer_set_freq(t->timer, TIMER_CLOCK_APB_HZ);
--    }
- }
- 
- static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool enable)
-@@ -351,12 +420,10 @@ static const MemoryRegionOps aspeed_timer_ops = {
- 
- static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
- {
--    QEMUBH *bh;
-     AspeedTimer *t = &s->timers[id];
- 
-     t->id = id;
--    bh = qemu_bh_new(aspeed_timer_expire, t);
--    t->timer = ptimer_init(bh);
-+    timer_init_ns(&t->timer, QEMU_CLOCK_VIRTUAL, aspeed_timer_expire, t);
- }
- 
- static void aspeed_timer_realize(DeviceState *dev, Error **errp)
-@@ -404,7 +471,7 @@ static const VMStateDescription vmstate_aspeed_timer = {
-     .fields = (VMStateField[]) {
-         VMSTATE_UINT8(id, AspeedTimer),
-         VMSTATE_INT32(level, AspeedTimer),
--        VMSTATE_PTIMER(timer, AspeedTimer),
-+        VMSTATE_TIMER(timer, AspeedTimer),
-         VMSTATE_UINT32(reload, AspeedTimer),
-         VMSTATE_UINT32_ARRAY(match, AspeedTimer, 2),
-         VMSTATE_END_OF_LIST()
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-index 44dc2f89d5c6..970fea83143c 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -22,7 +22,8 @@
- #ifndef ASPEED_TIMER_H
- #define ASPEED_TIMER_H
- 
--#include "hw/ptimer.h"
-+#include "qemu/typedefs.h"
-+#include "qemu/timer.h"
- 
- #define ASPEED_TIMER(obj) \
-     OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
-@@ -33,15 +34,16 @@ typedef struct AspeedTimer {
-     qemu_irq irq;
- 
-     uint8_t id;
-+    QEMUTimer timer;
- 
-     /**
-      * Track the line level as the ASPEED timers implement edge triggered
-      * interrupts, signalling with both the rising and falling edge.
-      */
-     int32_t level;
--    ptimer_state *timer;
-     uint32_t reload;
-     uint32_t match[2];
-+    uint64_t start;
- } AspeedTimer;
- 
- typedef struct AspeedTimerCtrlState {
--- 
-2.7.4
-
+thanks
+-- PMM

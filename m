@@ -1,112 +1,104 @@
-Received: by 10.25.27.66 with SMTP id b63csp1943816lfb;
-        Tue, 31 May 2016 02:36:25 -0700 (PDT)
-X-Received: by 10.140.148.209 with SMTP id 200mr30090191qhu.60.1464687385732;
-        Tue, 31 May 2016 02:36:25 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p16si155515qtc.71.2016.05.31.02.36.25
+Received: by 10.25.27.66 with SMTP id b63csp2226118lfb;
+        Tue, 31 May 2016 11:40:38 -0700 (PDT)
+X-Received: by 10.37.79.194 with SMTP id d185mr13947887ybb.126.1464720031807;
+        Tue, 31 May 2016 11:40:31 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from mail-yw0-x243.google.com (mail-yw0-x243.google.com. [2607:f8b0:4002:c05::243])
+        by mx.google.com with ESMTPS id n186si17709565yba.54.2016.05.31.11.40.31
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 May 2016 02:36:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 May 2016 11:40:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) client-ip=2607:f8b0:4002:c05::243;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35459 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b7g65-0007Il-4n
-	for alex.bennee@linaro.org; Tue, 31 May 2016 05:36:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41711)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b7g1F-0003TE-5w
-	for qemu-devel@nongnu.org; Tue, 31 May 2016 05:31:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b7g1D-0008W9-7y
-	for qemu-devel@nongnu.org; Tue, 31 May 2016 05:31:24 -0400
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:35203)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b7g1C-0008Vx-Th
-	for qemu-devel@nongnu.org; Tue, 31 May 2016 05:31:23 -0400
-Received: by mail-vk0-x232.google.com with SMTP id d127so91475734vkh.2
-	for <qemu-devel@nongnu.org>; Tue, 31 May 2016 02:31:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=UgLPK9VZxXAjwOX/z8ztETxgSTjdEtjQH/O4/yynK5Y=;
-	b=cKmK/EdgEmEIfFK8Vm7j2UdBF2KSabshPyF+10gm+370iXT/Hu/HJIZC2o9Y57Crub
-	9Fsg7sqRjfc84TPuDtCBM/sPZZajycWzoo1rWjeX+/j488ZeOEpw2a8tw0jnNh+WR7zt
-	TpDThuKkEwTl9jwzhzDx81zKfb5z5UYE7z+EY=
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::243 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x243.google.com with SMTP id y6so20073845ywe.0;
+        Tue, 31 May 2016 11:40:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=ELw57VLifnE6JQ9soZ0ti7Gz1tzF1SZDhJvNp1xS1Vc=;
+        b=COpwBLTWIuzBvjtWH5t9VeJjBrBRm7qrNMqRtds3Z9Z9Rx8YG9ghfrKDT+KxB3pksD
+         Km2IR+gt2+ZcGRJiw+IB1vjQwg7EZDXTz7jSFlTKUQZ6O+PhkAfwewBW3pa+vfWXtV7C
+         l+a+zlGneF7e8eKweih+mLMXJLvruzy8efXlHBUCFj1TYl58VIwEQdecQSiu1L2aG4Ko
+         iGz/OuFh5T/dPRZ3mjYoueVdyaV3C4/wybSN/PTC7pvDh+B3mhkCcAOpip9gov4pij6c
+         NaaNaNNziu1VNZTwvcwQX8/+Y0fBynL1knP5d6ScW8VmnhcB6dLzN/+Bq686dNs19NPb
+         FFjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=UgLPK9VZxXAjwOX/z8ztETxgSTjdEtjQH/O4/yynK5Y=;
-	b=ZRd/gp+ZD6Als0d+BS3cGBPuSMpQSTi98xedNL3h4mASrW5xeGruQtVeZIPQyvY24s
-	rqpknlvGjhbaTU0GHoXMw+q5unjTwKIwLU/QkbRDm+g7iFcgWn/worAYLroFaSeqmBYU
-	8zSmYa0mlJ2Zh6uEs5TiqVo2sIcoKpa0BVLcofXYeHM1+YENg0l4nLlixUlbFlEsba56
-	orYPMFbbK6ibnx0IIwecW3ZYBpic/7owTw6k8ERuWq1Ve/McZ3zz1qjJjL/4rF08J65o
-	mrKz70st55q01rjozfnzw3KRg9XGqJYKE5vJTZnrATiv9s/6zo9eg4h5TiYt2k4yB6KG
-	rlng==
-X-Gm-Message-State: ALyK8tKIqoVHt61InkqFHF9LHtQYJTxuVSZc9Dy75HDdo548Hs60z9FdcKsWcs0DV+TuM3I1DEPvqdrmKz4OzPGL
-X-Received: by 10.31.62.70 with SMTP id l67mr16931134vka.82.1464687082334;
-	Tue, 31 May 2016 02:31:22 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.69.66 with HTTP; Tue, 31 May 2016 02:31:02 -0700 (PDT)
-In-Reply-To: <CALicx6uv8hr_HguPa_gXbt0r5Zc4spCCQ5_QyYe3j_72Vyq1mQ@mail.gmail.com>
-References: <1459777195-7907-1-git-send-email-vijayak@caviumnetworks.com>
-	<1459777195-7907-2-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA_RDSe=exvgo-yF57bQDk2=sx3kLnvKiKkXHPJHCTGE+w@mail.gmail.com>
-	<CALicx6u3yCdFSUuLyQgt7yP08RSwXP=k0w3WKmeTRfn7jS6vRA@mail.gmail.com>
-	<CAFEAcA8sCNFY7dF2MSZcELgEfJg9MhNERFAY2ZJrou=e1zKM5w@mail.gmail.com>
-	<CALicx6u_YinmXd4xCZKsRVtWcnSUHqoe_7Tc1TOG7ai3cg_rYQ@mail.gmail.com>
-	<CALicx6uv8hr_HguPa_gXbt0r5Zc4spCCQ5_QyYe3j_72Vyq1mQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 May 2016 10:31:02 +0100
-Message-ID: <CAFEAcA-o6h1zV3k37Vdb_M4JVQAY4pRD-fjPBz=sUk6tK-WDbw@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::232
-Subject: Re: [Qemu-devel] [RFC PATCH v1 1/2] target-arm: Update page size
- for aarch64
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijay <vijayak@cavium.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TKtxkvkDBZcF
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=ELw57VLifnE6JQ9soZ0ti7Gz1tzF1SZDhJvNp1xS1Vc=;
+        b=h7A7Spyw8zys554rJJiYeWERA+x1Uf0lWUe6xqoCG8jj8gLNyPaCOR1kFY538N9nxC
+         4SEA2aL0blYILSBQvihaJEXR8GvYrtSuHai3CmjY2lUfDcWoWmCSVe3H1azxb5YAz+oe
+         HPOE6H7qDrQvaRrrTwTwxi2V8YiXmJOBoAcnBNjX+YG9adjsJMxTjZSNDDs9OucX/Bia
+         lxS6ctao6RdBfk6vvpeo3wrOAAg0ZOzDpxmJ8dNqaE565SUUKksH3ur8O4/SbMz2rVUy
+         GKa5JZo6Xf+6nVSRTztstMsa6Jjy36NtUCGxeE7mt5CXZAEvCpwh0QNjmTSXGQEBlGx7
+         23EA==
+X-Gm-Message-State: ALyK8tIjTDZpjbC5XSWI0DIleqy3Vpek7G4BfnvqR1wJtNn4xuFsWycBOZzUr9K/O9aQ0Q==
+X-Received: by 10.37.71.3 with SMTP id u3mr21083569yba.36.1464720031493;
+        Tue, 31 May 2016 11:40:31 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from evgadesktop.attlocal.net (108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
+        by smtp.gmail.com with ESMTPSA id c62sm17150085ywf.12.2016.05.31.11.40.30
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 31 May 2016 11:40:30 -0700 (PDT)
+From: Pranith Kumar <bobby.prani@gmail.com>
+To: Claudio Fontana <claudio.fontana@huawei.com>,
+	Richard Henderson <rth@twiddle.net>,
+	qemu-arm@nongnu.org (open list:AArch64 target),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Cc: alex.bennee@linaro.org,
+	serge.fdrv@linaro.org,
+	qemu-devel@nongnu.org,
+	Claudio Fontana <claudio.fontana@gmail.com>
+Subject: [RFC v2 PATCH 03/13] tcg/aarch64: Add support for fence
+Date: Tue, 31 May 2016 14:39:18 -0400
+Message-Id: <20160531183928.29406-4-bobby.prani@gmail.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20160531183928.29406-1-bobby.prani@gmail.com>
+References: <20160531183928.29406-1-bobby.prani@gmail.com>
+X-TUID: N/TYQYnkBV+3
 
-On 31 May 2016 at 10:04, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Wed, Apr 6, 2016 at 8:31 PM, Vijay Kilari <vijay.kilari@gmail.com> wrote:
->> On Mon, Apr 4, 2016 at 10:14 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> If you want to avoid defining TARGET_PAGE_SIZE to the
->>> lowest-common-denominator 1K, then yes, you'd need to
->>> choose it at runtime. That could be painful to implement.
+Cc: Claudio Fontana <claudio.fontana@gmail.com>
+Signed-off-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
+---
+ tcg/aarch64/tcg-target.inc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-> The L1 page table size, L1 shift are dependent on TARGET_PAGE_BITS(page size).
-> as shown in snippet code below from translate-all.c
-
-Yes, that's why I said "painful to implement" :-)
-
-> How about adding CONFIG_PAGE_SIZE option to configure?.
-
-I don't want this to be a configure option, because QEMU
-should just work for everybody. Otherwise we have some QEMU
-binaries which silently don't implement the architecture/CPU
-that they ought to.
-
-thanks
--- PMM
+diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
+index 08efdf4..c361a5c 100644
+--- a/tcg/aarch64/tcg-target.inc.c
++++ b/tcg/aarch64/tcg-target.inc.c
+@@ -360,6 +360,9 @@ typedef enum {
+     I3510_EOR       = 0x4a000000,
+     I3510_EON       = 0x4a200000,
+     I3510_ANDS      = 0x6a000000,
++
++    /* System instructions.  */
++    DMB_ISH         = 0xd5033bbf,
+ } AArch64Insn;
+ 
+ static inline uint32_t tcg_in32(TCGContext *s)
+@@ -1625,6 +1628,9 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+         tcg_out_insn(s, 3508, SMULH, TCG_TYPE_I64, a0, a1, a2);
+         break;
+ 
++    case INDEX_op_mb:
++        tcg_out32(s, DMB_ISH);
++        break;
+     case INDEX_op_mov_i32:  /* Always emitted via tcg_out_mov.  */
+     case INDEX_op_mov_i64:
+     case INDEX_op_movi_i32: /* Always emitted via tcg_out_movi.  */
+@@ -1749,6 +1755,7 @@ static const TCGTargetOpDef aarch64_op_defs[] = {
+     { INDEX_op_muluh_i64, { "r", "r", "r" } },
+     { INDEX_op_mulsh_i64, { "r", "r", "r" } },
+ 
++    { INDEX_op_mb, { "r" } },
+     { -1 },
+ };
+ 
+-- 
+2.8.3

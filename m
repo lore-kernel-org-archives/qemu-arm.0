@@ -1,62 +1,83 @@
-Received: by 10.25.27.66 with SMTP id b63csp2051173lfb;
-        Tue, 31 May 2016 06:15:39 -0700 (PDT)
-X-Received: by 10.55.188.193 with SMTP id m184mr30817524qkf.183.1464700539543;
-        Tue, 31 May 2016 06:15:39 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp2081306lfb;
+        Tue, 31 May 2016 07:10:24 -0700 (PDT)
+X-Received: by 10.140.178.140 with SMTP id y134mr31945720qhy.44.1464703824071;
+        Tue, 31 May 2016 07:10:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k6si31001501qtb.70.2016.05.31.06.15.39
+        by mx.google.com with ESMTPS id 8si23196259qhk.124.2016.05.31.07.10.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 31 May 2016 06:15:39 -0700 (PDT)
+        Tue, 31 May 2016 07:10:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36298 helo=lists.gnu.org)
+Received: from localhost ([::1]:36597 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b7jWE-0002FL-Uo
-	for alex.bennee@linaro.org; Tue, 31 May 2016 09:15:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40242)
+	id 1b7kND-0002BB-D8
+	for alex.bennee@linaro.org; Tue, 31 May 2016 10:10:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54064)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b7jWA-0002D0-5F
-	for qemu-arm@nongnu.org; Tue, 31 May 2016 09:15:35 -0400
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b7kN7-00029m-Kr
+	for qemu-arm@nongnu.org; Tue, 31 May 2016 10:10:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1b7jW3-0005Tw-VJ
-	for qemu-arm@nongnu.org; Tue, 31 May 2016 09:15:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41976)
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b7kN3-0001IF-KC
+	for qemu-arm@nongnu.org; Tue, 31 May 2016 10:10:17 -0400
+Received: from e06smtp05.uk.ibm.com ([195.75.94.101]:38323)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1b7jW3-0005Tc-Ov; Tue, 31 May 2016 09:15:27 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 056B66314C;
-	Tue, 31 May 2016 13:15:26 +0000 (UTC)
-Received: from [10.36.112.62] (ovpn-112-62.ams2.redhat.com [10.36.112.62])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u4VDFLD0006002
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 31 May 2016 09:15:23 -0400
-To: Greg Kurz <gkurz@linux.vnet.ibm.com>
+	(envelope-from <gkurz@linux.vnet.ibm.com>) id 1b7kN3-0001Hp-97
+	for qemu-arm@nongnu.org; Tue, 31 May 2016 10:10:13 -0400
+Received: from localhost
+	by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <gkurz@linux.vnet.ibm.com>;
+	Tue, 31 May 2016 15:10:10 +0100
+Received: from d06dlp02.portsmouth.uk.ibm.com (9.149.20.14)
+	by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Tue, 31 May 2016 15:10:06 +0100
+X-IBM-Helo: d06dlp02.portsmouth.uk.ibm.com
+X-IBM-MailFrom: gkurz@linux.vnet.ibm.com
+X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org;qemu-ppc@nongnu.org
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+	by d06dlp02.portsmouth.uk.ibm.com (Postfix) with ESMTP id 7F2CC219005E; 
+	Tue, 31 May 2016 15:09:39 +0100 (BST)
+Received: from d06av01.portsmouth.uk.ibm.com (d06av01.portsmouth.uk.ibm.com
+	[9.149.37.212])
+	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u4VEA6Ir5767468; Tue, 31 May 2016 14:10:06 GMT
+Received: from d06av01.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av01.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u4VEA5mf011515; Tue, 31 May 2016 08:10:05 -0600
+Received: from smtp.lab.toulouse-stg.fr.ibm.com
+	(srv01.lab.toulouse-stg.fr.ibm.com [9.101.4.1])
+	by d06av01.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u4VEA5rd011501; Tue, 31 May 2016 08:10:05 -0600
+Received: from bahia.lab.toulouse-stg.fr.ibm.com
+	(bahia.lab.toulouse-stg.fr.ibm.com [9.101.4.41])
+	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id 741B322040A;
+	Tue, 31 May 2016 16:10:05 +0200 (CEST)
+Date: Tue, 31 May 2016 16:10:04 +0200
+From: Greg Kurz <gkurz@linux.vnet.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160531161004.0d34a9bf@bahia.lab.toulouse-stg.fr.ibm.com>
+In-Reply-To: <CAFEAcA_rsy6D25Yx4Ov+579bQOz35yYKmg9bMSewypBWYA+eYg@mail.gmail.com>
 References: <146468219419.25446.8053365248306938869.stgit@bahia.huguette.org>
 	<81bca811-db78-ffd2-dbfc-67e14ae88ce2@redhat.com>
 	<20160531151029.605aebb1@bahia.lab.toulouse-stg.fr.ibm.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0818d93b-358a-647d-b14b-698ae74031a1@redhat.com>
-Date: Tue, 31 May 2016 15:15:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.0
+	<CAFEAcA_rsy6D25Yx4Ov+579bQOz35yYKmg9bMSewypBWYA+eYg@mail.gmail.com>
+Organization: IBM
+X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20160531151029.605aebb1@bahia.lab.toulouse-stg.fr.ibm.com>
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 31 May 2016 13:15:26 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16053114-0021-0000-0000-00001C2724DA
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.75.94.101
 Subject: Re: [Qemu-arm] [PATCH] virtio: move bi-endian target support to a
  single location
 X-BeenThere: qemu-arm@nongnu.org
@@ -70,48 +91,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Alexander Graf <agraf@suse.de>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vUUiQV7gg4ea
+X-TUID: bXvPDdnJr27X
 
+On Tue, 31 May 2016 14:14:15 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
+> On 31 May 2016 at 14:10, Greg Kurz <gkurz@linux.vnet.ibm.com> wrote:
+> > Hence my tentative to put all the details in one place... would it
+> > be ok if I include "config-target.h" to ensure we have the TARGET macros ?  
+> 
+> No, config-target.h is one of the headers that should never be
+> included by any file except osdep.h (and scripts/clean-includes
+> will check for this). You're guaranteed that it's always included
+> for you.
+> 
 
-On 31/05/2016 15:10, Greg Kurz wrote:
->>> > > +#if defined(TARGET_PPC64) || defined(TARGET_ARM)
->>> > > +#define LEGACY_VIRTIO_IS_BIENDIAN 1
->>> > > +#endif  
->> > 
->> > These will only be correct if something else includes cpu.h.  Instead of
-> Unless I missed something, the TARGET_* macros come from the generated
-> config-target.h header, which is in turn included by qemu/osdep.h and
-> thus included by most of the code.
+So we don't even need to include osdep.h in virtio-access.h because we
+are sure all .c files that include virtio-access.h also include osdep.h
+first. Correct ?
 
-You're right.  Problems _could_ happen if virtio-access.h is included in
-a file compiled without -DNEED_CPU_H (i.e. with common-obj-y instead of
-obj-y) but include/exec/poison.h should take care of that.
+> thanks
+> -- PMM
+> 
 
->> > defining this, you should add
->> > 
->> > #include "cpu.h"
->> > 
->> > at the top of include/hw/virtio-access.h and leave the definitions in
->> > target-*/cpu.h.
->> > 
-> All this bi-endian stuff is really an old-virtio-only thing... it is
-> only to be used by virtio_access_is_big_endian(). The fact that it
-> broke silently with your cleanup series is yet another proof that
-> this workaround is fragile.
-
-It is not fragile actually.  cpu.h doesn't exist in common-obj-y, so the
-TARGET_IS_BIENDIAN define can be safely taken from cpu.h.
-
-Anyway because of poison.h your solution isn't fragile either, so
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-
-Paolo

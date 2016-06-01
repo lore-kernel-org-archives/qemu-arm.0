@@ -1,93 +1,109 @@
-Received: by 10.25.27.66 with SMTP id b63csp2276855lfb;
-        Tue, 31 May 2016 13:34:52 -0700 (PDT)
-X-Received: by 10.140.237.79 with SMTP id i76mr34784289qhc.43.1464726892428;
-        Tue, 31 May 2016 13:34:52 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-qk0-x22f.google.com (mail-qk0-x22f.google.com. [2607:f8b0:400d:c09::22f])
-        by mx.google.com with ESMTPS id n50si3368330qtc.125.2016.05.31.13.34.52
+Received: by 10.25.27.66 with SMTP id b63csp272161lfb;
+        Wed, 1 Jun 2016 09:41:00 -0700 (PDT)
+X-Received: by 10.55.113.197 with SMTP id m188mr35822368qkc.90.1464799251668;
+        Wed, 01 Jun 2016 09:40:51 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f128si5223142qkj.174.2016.06.01.09.40.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 May 2016 13:34:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::22f as permitted sender) client-ip=2607:f8b0:400d:c09::22f;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 01 Jun 2016 09:40:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:400d:c09::22f as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-qk0-x22f.google.com with SMTP id i187so12968783qkd.3;
-        Tue, 31 May 2016 13:34:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=+aSLhQ0fWmV/FMke/4ITwrDXZcQ0ACRPUORGNoUxFU4=;
-        b=ImNJBSFf0nTDtIFxWKHnGysfVN7sXlMUD2jt5fCq88/dmoFayANnvereCdLTOubuCb
-         EPbOID1W2xOKyrFVG8XRij9ggRY5lDguyM8Vdn4yR6bJ40s6siTT6G86oRTx8H/YVDRX
-         t76ZZUjE45pqkDM9mZbYmpsYJs+oZBtV4tS/TZlrhqxILUxQpYSgw5811qPAv8YsOVd6
-         6z+K4D+GnLH8jg7BVt1JuU0FxxK3sSQWOcRmvdK59Lr3PSTENdNer59aXy5F+glD4FgI
-         j1bjoIRD4IMjchGnfIQNHEkSz8Oq0x8R8V1GQ6aTzwH7/JxnAbZ6LHPz9s2vq2dyjb95
-         hTVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=+aSLhQ0fWmV/FMke/4ITwrDXZcQ0ACRPUORGNoUxFU4=;
-        b=WKKBAPNKTAa607WPqCx6lPAwxF4felGL3CTaShidaifZxIOjHNr9hGN36neuRJ1Vhc
-         3ivf5cfapnVELNvY0Ke+PLzQASe1ELW6YhCorq4xRIf+UhZpHQlyvoqXyIzsawI2DHw9
-         3d/Le3YIVxjpls4blpexvhgXpi3Hoogqj8y2o649DW4ymKAsnSF33hY/m/+Zx+zG+21K
-         hKz9k3kgmhH2sbli3/ayedl2sHnlVfe7TbMzjvJKU2IXzSAD+ZMJjFIOXs6RDXrjdrXu
-         kw0M5FwRFy3IQJZUOJCE+/7gUP/eBlfz3v5XhK5hJ9NMrzR1jxEY0orcid/DdHo5caUn
-         VCDg==
-X-Gm-Message-State: ALyK8tL021h7ilkRDTa/hW3v+rHosrR7ByY7kRNqpaIXZopMdXWYyYPdXrtDPn5eQP6uZA==
-X-Received: by 10.55.24.212 with SMTP id 81mr28568485qky.146.1464726892080;
-        Tue, 31 May 2016 13:34:52 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (71-37-54-227.tukw.qwest.net. [71.37.54.227])
-        by smtp.googlemail.com with ESMTPSA id b34sm11535982qtd.32.2016.05.31.13.34.50
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Tue, 31 May 2016 13:34:51 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [RFC v2 PATCH 03/13] tcg/aarch64: Add support for fence
-To: Pranith Kumar <bobby.prani@gmail.com>,
- Claudio Fontana <claudio.fontana@huawei.com>,
- "open list:AArch64 target" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20160531183928.29406-1-bobby.prani@gmail.com>
- <20160531183928.29406-4-bobby.prani@gmail.com>
-Cc: alex.bennee@linaro.org, serge.fdrv@linaro.org,
- Claudio Fontana <claudio.fontana@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <6685558a-6774-778f-a8c6-b6e845eb5ae4@twiddle.net>
-Date: Tue, 31 May 2016 13:34:48 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <20160531183928.29406-4-bobby.prani@gmail.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 7+NYeAuUk9g5
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43116 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b89CN-00080i-2Z
+	for alex.bennee@linaro.org; Wed, 01 Jun 2016 12:40:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52382)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1b899J-0005E1-Nf
+	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 12:37:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1b899E-0007r1-OQ
+	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 12:37:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58057)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>)
+	id 1b899E-0007qu-Ia; Wed, 01 Jun 2016 12:37:36 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E28A062658;
+	Wed,  1 Jun 2016 16:37:35 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u51GbXqc025067; Wed, 1 Jun 2016 12:37:33 -0400
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  1 Jun 2016 18:37:22 +0200
+Message-Id: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 01 Jun 2016 16:37:36 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH RFC 0/8] cpus: make "-cpu cpux,
+ features" global properties
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
+	mark.cave-ayland@ilande.co.uk, blauwirbel@gmail.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com, rth@twiddle.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SH7GRkYXvD4w
 
-On 05/31/2016 11:39 AM, Pranith Kumar wrote:
-> +    /* System instructions.  */
-> +    DMB_ISH         = 0xd5033bbf,
-...
-> +    case INDEX_op_mb:
-> +        tcg_out32(s, DMB_ISH);
-> +        break;
+Current CLI option -cpu cpux,features serves as template
+for all created cpus of type: cpux. However QEMU parses
+"features" every time it creates a cpu instance and applies
+them to it while doing parsing.
 
-With the flags argument, this needs to be split.
+That doesn't work well with -device/device_add infrastructure
+as it has no idea about cpu specific hooks that's used for
+parsing "features".
+In order to make -device/device_add utilize "-cpu features"
+template convert it into a set of global properties, so that
+every new CPU created will have them applied automatically.
 
-DMB_ISH = 0xd5033b8f
-DMB_RD  = 0x00000010
-DMB_WR  = 0x00000020
-
-	if (a0 == TCG_MB_READ) {
-		a0 = DMB_RD;
-	} else if (a0 == TCG_MB_WRITE) {
-		a0 = DMB_WR;
-	} else {
-		a0 = DMB_RD | DMB_WR;
-	}
-	tcg_out32(s, DMB_ISH | a0);
+That also allows to parse features only once, instread of
+doing it for every CPU instance created.
 
 
+Igor Mammedov (8):
+  target-i386: cpu: move features logic that requires CPUState to
+    realize time
+  target-i386: cpu: move xcc->kvm_required check to reaize time
+  target-i386: cpu: use cpu_generic_init() in cpu_x86_init()
+  target-i386: cpu: consolidate calls of object_property_parse() in
+    x86_cpu_parse_featurestr
+  target-sparc: cpu: use sparc_cpu_parse_features() directly
+  cpu: use CPUClass->parse_features() as convertor to global properties
+  arm: virt: parse cpu_model only once
+  pc: parse cpu features only once
 
-r~
+ hw/arm/virt.c      |  41 +++++++-------
+ hw/i386/pc.c       |  37 +++++++++----
+ include/qom/cpu.h  |   2 +-
+ qom/cpu.c          |  29 +++++-----
+ target-i386/cpu.c  | 155 +++++++++++++++++++----------------------------------
+ target-i386/cpu.h  |   1 -
+ target-sparc/cpu.c |   7 +--
+ 7 files changed, 125 insertions(+), 147 deletions(-)
+
+-- 
+1.8.3.1
+

@@ -1,69 +1,61 @@
-Received: by 10.25.27.66 with SMTP id b63csp320749lfb;
-        Wed, 1 Jun 2016 11:21:40 -0700 (PDT)
-X-Received: by 10.55.200.152 with SMTP id t24mr37052824qkl.197.1464805300646;
-        Wed, 01 Jun 2016 11:21:40 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp331245lfb;
+        Wed, 1 Jun 2016 11:46:36 -0700 (PDT)
+X-Received: by 10.140.105.71 with SMTP id b65mr37227339qgf.66.1464806796293;
+        Wed, 01 Jun 2016 11:46:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a133si9162570qkc.140.2016.06.01.11.21.40
+        by mx.google.com with ESMTPS id v70si9781995qkv.221.2016.06.01.11.46.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 01 Jun 2016 11:21:40 -0700 (PDT)
+        Wed, 01 Jun 2016 11:46:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43555 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43618 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8Alw-0004ve-0b
-	for alex.bennee@linaro.org; Wed, 01 Jun 2016 14:21:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45813)
+	id 1b8BA3-0002QK-NK
+	for alex.bennee@linaro.org; Wed, 01 Jun 2016 14:46:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49508)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b8Alq-0004tc-Ho
-	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:21:35 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1b8B9u-0002OV-3g
+	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:46:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b8Alc-000479-S4
-	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:21:33 -0400
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:35836)
+	(envelope-from <ehabkost@redhat.com>) id 1b8B9q-00011a-Nc
+	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:46:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36556)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b8Alc-00046x-NH
-	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:21:20 -0400
-Received: by mail-vk0-x236.google.com with SMTP id d127so38841753vkh.2
-	for <qemu-arm@nongnu.org>; Wed, 01 Jun 2016 11:21:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bXbCm07jwFJruZA2kXphtrJtRGRPyhfzDRPoZK+ED8o=;
-	b=HDnkm/GhsRmKaXNyWshtktewefkh0p8dbTFpdGoFxyfB9CRUOao3Ao8arHr9wN73Oz
-	kR+BpOgwTA8OpxKYNzl3Z1grS0dXjYfA6I/VYYjTaykdPr7HI/AEO6hecjNvPhZB34Gi
-	g+owUBriyZhkq2GPm5on2jKFp+PvyHJjxu90c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bXbCm07jwFJruZA2kXphtrJtRGRPyhfzDRPoZK+ED8o=;
-	b=g/UqqOqgqgRJpJ0YjsURbxXwtCxGUtsliWEcALjuKzJjI26+dvq3f8IduhjnoWUXmL
-	KSLQIEsw6+jsaXTin+WLLJoliuQr2DQKEN2LRviy8uQ6PhnFwP0CRZbufoTmWDgl9BfK
-	prWTGG6j9k7zHha0x9HL6I93g3VvVLaP4phe51EwKLTkAOK/0k8bGPssFDlUTXVNMDW4
-	QY6+DwnFOvsHBRG0VbEf2oRPyI7IKnu/MI/WRjTg8aQjGqI+RJw8vAVElBQHa0xz+sCl
-	DowBgE6J1EKAYrRnPX1FgtlMws5VH0nhPYeTsvad/tgGwp107xDx6n96RJ04/hHii7im
-	THAA==
-X-Gm-Message-State: ALyK8tJEFRK8CmJjlfFsjf/Ow1G9tl7QpufpMHMKEolaaFdR3/ecV3OgEgbcDf/KAvDmdFwxQCT0wy7FggfloWi+
-X-Received: by 10.159.33.68 with SMTP id 62mr2688928uab.26.1464805280114; Wed,
-	01 Jun 2016 11:21:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.69.66 with HTTP; Wed, 1 Jun 2016 11:21:00 -0700 (PDT)
-In-Reply-To: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 1 Jun 2016 19:21:00 +0100
-Message-ID: <CAFEAcA-KUzT7137bcowBSpLM-OvTNSs9pM6RvqkoySDBZQySGw@mail.gmail.com>
+	(envelope-from <ehabkost@redhat.com>)
+	id 1b8B9q-00011W-Ex; Wed, 01 Jun 2016 14:46:22 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D499963313;
+	Wed,  1 Jun 2016 18:46:21 +0000 (UTC)
+Received: from localhost (vpn1-7-51.gru2.redhat.com [10.97.7.51])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u51IkKSh017610; Wed, 1 Jun 2016 14:46:21 -0400
+Date: Wed, 1 Jun 2016 15:46:20 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+Message-ID: <20160601184620.GE13503@thinpad.lan.raisama.net>
+References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
+	<1464799050-11002-5-git-send-email-imammedo@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1464799050-11002-5-git-send-email-imammedo@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 01 Jun 2016 18:46:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Subject: Re: [Qemu-arm] [PATCH RFC 0/8] cpus: make "-cpu cpux,
- features" global properties
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH RFC 4/8] target-i386: cpu: consolidate calls
+ of object_property_parse() in x86_cpu_parse_featurestr
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,32 +67,234 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>, Blue Swirl <blauwirbel@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
+	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
+	pbonzini@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HiuE7aQSkRhR
+X-TUID: /QgQNaewx5SK
 
-On 1 June 2016 at 17:37, Igor Mammedov <imammedo@redhat.com> wrote:
-> Current CLI option -cpu cpux,features serves as template
-> for all created cpus of type: cpux. However QEMU parses
-> "features" every time it creates a cpu instance and applies
-> them to it while doing parsing.
->
-> That doesn't work well with -device/device_add infrastructure
-> as it has no idea about cpu specific hooks that's used for
-> parsing "features".
-> In order to make -device/device_add utilize "-cpu features"
-> template convert it into a set of global properties, so that
-> every new CPU created will have them applied automatically.
+On Wed, Jun 01, 2016 at 06:37:26PM +0200, Igor Mammedov wrote:
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  target-i386/cpu.c | 32 +++++++++++++++++---------------
+>  1 file changed, 17 insertions(+), 15 deletions(-)
+> 
+> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+> index 238f69d..618aef9 100644
+> --- a/target-i386/cpu.c
+> +++ b/target-i386/cpu.c
+> @@ -1945,12 +1945,15 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+>      X86CPU *cpu = X86_CPU(cs);
+>      char *featurestr; /* Single 'key=value" string being parsed */
+>      uint32_t numvalue;
+> +    char num[32];
+> +    const char *name;
+> +    char *err;
+>      Error *local_err = NULL;
+>  
+>      featurestr = features ? strtok(features, ",") : NULL;
+>  
+>      while (featurestr) {
+> -        char *val;
+> +        char *val = NULL;
+>          if (featurestr[0] == '+') {
+>              add_flagname_to_bitmaps(featurestr + 1, plus_features, &local_err);
+>          } else if (featurestr[0] == '-') {
+> @@ -1958,10 +1961,8 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+>          } else if ((val = strchr(featurestr, '='))) {
+>              *val = 0; val++;
+>              feat2prop(featurestr);
+> +            name = featurestr;
+>              if (!strcmp(featurestr, "xlevel")) {
+> -                char *err;
+> -                char num[32];
+> -
+>                  numvalue = strtoul(val, &err, 0);
+>                  if (!*val || *err) {
+>                      error_setg(errp, "bad numerical value %s", val);
+> @@ -1973,11 +1974,9 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+>                      numvalue += 0x80000000;
+>                  }
+>                  snprintf(num, sizeof(num), "%" PRIu32, numvalue);
+> -                object_property_parse(OBJECT(cpu), num, featurestr, &local_err);
+> +                val = num;
+>              } else if (!strcmp(featurestr, "tsc-freq")) {
+>                  int64_t tsc_freq;
+> -                char *err;
+> -                char num[32];
+>  
+>                  tsc_freq = qemu_strtosz_suffix_unit(val, &err,
+>                                                 QEMU_STRTOSZ_DEFSUFFIX_B, 1000);
+> @@ -1986,12 +1985,11 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+>                      return;
+>                  }
+>                  snprintf(num, sizeof(num), "%" PRId64, tsc_freq);
+> -                object_property_parse(OBJECT(cpu), num, "tsc-frequency",
+> -                                      &local_err);
+> +                val = num;
+> +                name = "tsc-frequency";
+>              } else if (!strcmp(featurestr, "hv-spinlocks")) {
+> -                char *err;
+>                  const int min = 0xFFF;
+> -                char num[32];
+> +
+>                  numvalue = strtoul(val, &err, 0);
+>                  if (!*val || *err) {
+>                      error_setg(errp, "bad numerical value %s", val);
+> @@ -2004,14 +2002,18 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+>                      numvalue = min;
+>                  }
+>                  snprintf(num, sizeof(num), "%" PRId32, numvalue);
+> -                object_property_parse(OBJECT(cpu), num, featurestr, &local_err);
+> -            } else {
+> -                object_property_parse(OBJECT(cpu), val, featurestr, &local_err);
+> +                val = num;
+>              }
+>          } else {
+>              feat2prop(featurestr);
+> -            object_property_parse(OBJECT(cpu), "on", featurestr, &local_err);
+> +            name = featurestr;
+> +            val = (char *)"on";
 
-Is there a plan for supporting heterogenous CPU setups?
-(We don't really do those very well at the moment, but
-we might in future. The closest we come today is the
-zynqmp SoC which has Cortex-R5s and A53s in it.)
+You don't need this hack if you do something like this:
 
-thanks
--- PMM
+
+     while (featurestr) {
+-        char *val = NULL;
++        const char *val = NULL;
++        char *eq = NULL;
+         if (featurestr[0] == '+') {
+             add_flagname_to_bitmaps(featurestr + 1, plus_features, &local_err);
+         } else if (featurestr[0] == '-') {
+             add_flagname_to_bitmaps(featurestr + 1, minus_features, &local_err);
+-        } else if ((val = strchr(featurestr, '='))) {
+-            *val = 0; val++;
++        } else if ((eq = strchr(featurestr, '='))) {
++            *eq++ = 0;
++            val = eq;
+             feat2prop(featurestr);
+             name = featurestr;
+             if (!strcmp(featurestr, "xlevel")) {
+
+
+>          }
+> +
+> +        if (val) {
+> +            object_property_parse(OBJECT(cpu), val, name, &local_err);
+> +        }
+
+I would find it easier to read if this part was inside the same
+block as the code that sets name/val.
+
+I would find it even better if object_property_parse() was in the
+main loop body, and the +feature/-feature code placed inside an
+if/continue branch (to make it clear that it is an exception, not
+the rule). Like this:
+
+/* untested */
+static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+                                     Error **errp)
+{
+    X86CPU *cpu = X86_CPU(cs);
+    char *featurestr; /* Single 'key=value" string being parsed */
+    char *err;
+    Error *local_err = NULL;
+
+    if (!features) {
+        return;
+    }
+
+    for (featurestr = strtok(features, ",");
+         featurestr;
+         featurestr = strtok(NULL, ",")) {
+        const char *name;
+        const char *val = NULL;
+        char *eq = NULL;
+        uint32_t numvalue;
+        char num[32];
+
+        /* Compatibility syntax: */
+        if (featurestr[0] == '+') {
+            add_flagname_to_bitmaps(featurestr + 1, plus_features, &local_err);
+            continue;
+        } else if (featurestr[0] == '-') {
+            add_flagname_to_bitmaps(featurestr + 1, minus_features, &local_err);
+            continue;
+        }
+
+        eq = strchr(featurestr, '=');
+        if (eq) {
+            *eq++ = 0;
+            val = eq;
+        } else {
+            val = "on";
+        }
+
+        feat2prop(featurestr);
+        name = featurestr;
+
+        /* Special cases: */
+        if (!strcmp(name, "xlevel")) {
+            numvalue = strtoul(val, &err, 0);
+            if (!*val || *err) {
+                error_setg(errp, "bad numerical value %s", val);
+                return;
+            }
+            if (numvalue < 0x80000000) {
+                error_report("xlevel value shall always be >= 0x80000000"
+                             ", fixup will be removed in future versions");
+                numvalue += 0x80000000;
+            }
+            snprintf(num, sizeof(num), "%" PRIu32, numvalue);
+            val = num;
+        } else if (!strcmp(name, "tsc-freq")) {
+            int64_t tsc_freq;
+
+            tsc_freq = qemu_strtosz_suffix_unit(val, &err,
+                                           QEMU_STRTOSZ_DEFSUFFIX_B, 1000);
+            if (tsc_freq < 0 || *err) {
+                error_setg(errp, "bad numerical value %s", val);
+                return;
+            }
+            snprintf(num, sizeof(num), "%" PRId64, tsc_freq);
+            val = num;
+            name = "tsc-frequency";
+        } else if (!strcmp(name, "hv-spinlocks")) {
+            const int min = 0xFFF;
+
+            numvalue = strtoul(val, &err, 0);
+            if (!*val || *err) {
+                error_setg(errp, "bad numerical value %s", val);
+                return;
+            }
+            if (numvalue < min) {
+                error_report("hv-spinlocks value shall always be >= 0x%x"
+                             ", fixup will be removed in future versions",
+                             min);
+                numvalue = min;
+            }
+            snprintf(num, sizeof(num), "%" PRId32, numvalue);
+            val = num;
+        }
+
+        object_property_parse(OBJECT(cpu), val, name, &local_err);
+
+        if (local_err) {
+            error_propagate(errp, local_err);
+            return;
+        }
+    }
+}
+
+
+> +
+>          if (local_err) {
+>              error_propagate(errp, local_err);
+>              return;
+> -- 
+> 1.8.3.1
+> 
+
+-- 
+Eduardo

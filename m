@@ -1,42 +1,42 @@
-Received: by 10.25.27.66 with SMTP id b63csp732501lfb;
-        Thu, 2 Jun 2016 07:10:50 -0700 (PDT)
-X-Received: by 10.200.56.240 with SMTP id g45mr8964065qtc.35.1464876649942;
-        Thu, 02 Jun 2016 07:10:49 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp732587lfb;
+        Thu, 2 Jun 2016 07:10:59 -0700 (PDT)
+X-Received: by 10.55.16.234 with SMTP id 103mr36754618qkq.147.1464876659224;
+        Thu, 02 Jun 2016 07:10:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u83si14896297qkl.118.2016.06.02.07.10.49
+        by mx.google.com with ESMTPS id 139si468502qhz.11.2016.06.02.07.10.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Jun 2016 07:10:49 -0700 (PDT)
+        Thu, 02 Jun 2016 07:10:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47383 helo=lists.gnu.org)
+Received: from localhost ([::1]:47385 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8TKj-0002z5-3o
-	for alex.bennee@linaro.org; Thu, 02 Jun 2016 10:10:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51936)
+	id 1b8TKs-00035A-E2
+	for alex.bennee@linaro.org; Thu, 02 Jun 2016 10:10:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51981)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bogdan.purcareata@nxp.com>) id 1b8SDj-0003P4-IZ
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 08:59:32 -0400
+	(envelope-from <bogdan.purcareata@nxp.com>) id 1b8SDu-0003Qb-R6
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 08:59:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bogdan.purcareata@nxp.com>) id 1b8SDh-0004v2-FU
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 08:59:30 -0400
-Received: from mail-by2on0079.outbound.protection.outlook.com
-	([207.46.100.79]:52355
-	helo=na01-by2-obe.outbound.protection.outlook.com)
+	(envelope-from <bogdan.purcareata@nxp.com>) id 1b8SDs-0004xA-Nk
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 08:59:41 -0400
+Received: from mail-bl2on0073.outbound.protection.outlook.com
+	([65.55.169.73]:60576
+	helo=na01-bl2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <bogdan.purcareata@nxp.com>)
-	id 1b8SDZ-0004rs-Nu; Thu, 02 Jun 2016 08:59:22 -0400
-Received: from BY2PR03CA047.namprd03.prod.outlook.com (10.141.249.20) by
-	BLUPR03MB200.namprd03.prod.outlook.com (10.255.212.153) with Microsoft
-	SMTP Server (TLS) id 15.1.492.11; Thu, 2 Jun 2016 12:26:31 +0000
-Received: from BN1BFFO11FD014.protection.gbl (2a01:111:f400:7c10::1:126) by
-	BY2PR03CA047.outlook.office365.com (2a01:111:e400:2c5d::20) with
+	id 1b8SDi-0004v6-FT; Thu, 02 Jun 2016 08:59:30 -0400
+Received: from BN3PR0301CA0080.namprd03.prod.outlook.com (10.160.152.176) by
+	BN1PR03MB202.namprd03.prod.outlook.com (10.255.200.144) with Microsoft
+	SMTP Server (TLS) id 15.1.492.11; Thu, 2 Jun 2016 12:26:28 +0000
+Received: from BL2FFO11OLC004.protection.gbl (2a01:111:f400:7c09::127) by
+	BN3PR0301CA0080.outlook.office365.com (2a01:111:e400:401e::48) with
 	Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.511.8 via
-	Frontend Transport; Thu, 2 Jun 2016 12:26:30 +0000
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.506.9 via
+	Frontend Transport; Thu, 2 Jun 2016 12:26:28 +0000
 Authentication-Results: spf=fail (sender IP is 192.88.158.2)
 	smtp.mailfrom=nxp.com; nongnu.org; dkim=none (message not signed)
 	header.d=none;nongnu.org; dmarc=none action=none header.from=nxp.com;
@@ -45,87 +45,88 @@ Received-SPF: Fail (protection.outlook.com: domain of nxp.com does not
 	receiver=protection.outlook.com; 
 	client-ip=192.88.158.2; helo=az84smr01.freescale.net;
 Received: from az84smr01.freescale.net (192.88.158.2) by
-	BN1BFFO11FD014.mail.protection.outlook.com (10.58.144.77) with
-	Microsoft SMTP Server (TLS) id 15.1.497.8 via Frontend Transport;
-	Thu, 2 Jun 2016 12:26:29 +0000
+	BL2FFO11OLC004.mail.protection.outlook.com (10.173.161.188) with
+	Microsoft
+	SMTP Server (TLS) id 15.1.497.8 via Frontend Transport; Thu, 2 Jun 2016
+	12:26:27 +0000
 Received: from localhost.localdomain (fsr-ub1464-106.ea.freescale.net
 	[10.171.73.16])
-	by az84smr01.freescale.net (8.14.3/8.14.0) with ESMTP id u52CQMYA027054;
-	Thu, 2 Jun 2016 05:26:27 -0700
+	by az84smr01.freescale.net (8.14.3/8.14.0) with ESMTP id u52CQMY9027054;
+	Thu, 2 Jun 2016 05:26:25 -0700
 From: Bogdan Purcareata <bogdan.purcareata@nxp.com>
 To: <eric.auger@linaro.org>, <crosthwaite.peter@gmail.com>, <agraf@suse.de>,
 	<peter.maydell@linaro.org>
-Date: Thu, 2 Jun 2016 12:26:22 +0000
-Message-ID: <1464870382-385-3-git-send-email-bogdan.purcareata@nxp.com>
+Date: Thu, 2 Jun 2016 12:26:21 +0000
+Message-ID: <1464870382-385-2-git-send-email-bogdan.purcareata@nxp.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1464870382-385-1-git-send-email-bogdan.purcareata@nxp.com>
 References: <1464870382-385-1-git-send-email-bogdan.purcareata@nxp.com>
 X-EOPAttributedMessage: 0
-X-Matching-Connectors: 131093439900956772;
+X-Matching-Connectors: 131093439881769930;
 	(91ab9b29-cfa4-454e-5278-08d120cd25b8); ()
 X-Forefront-Antispam-Report: CIP:192.88.158.2; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(2980300002)(1109001)(1110001)(339900001)(189002)(199003)(9170700003)(36756003)(2950100001)(2201001)(47776003)(8936002)(85426001)(5008740100001)(92566002)(50226002)(5003940100001)(8676002)(81166006)(19580395003)(77096005)(104016004)(87936001)(50466002)(86362001)(586003)(48376002)(19580405001)(49486002)(189998001)(105606002)(106466001)(5001770100001)(50986999)(229853001)(6806005)(2906002)(76176999)(4326007)(33646002);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BLUPR03MB200;
+	SFS:(10009020)(6009001)(2980300002)(1110001)(1109001)(339900001)(189002)(199003)(9170700003)(76176999)(85426001)(50986999)(50226002)(19580405001)(47776003)(5003940100001)(189998001)(87936001)(92566002)(33646002)(2201001)(586003)(86362001)(48376002)(104016004)(49486002)(8936002)(50466002)(77096005)(5008740100001)(6806005)(36756003)(105606002)(11100500001)(2950100001)(5001770100001)(19580395003)(2906002)(8676002)(81166006)(229853001)(106466001)(4326007);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BN1PR03MB202;
 	H:az84smr01.freescale.net; FPR:; SPF:Fail; MLV:sfv; MX:1; A:1;
 	LANG:en; 
-X-Microsoft-Exchange-Diagnostics: 1; BN1BFFO11FD014;
-	1:tlTBD2LSntcDVmOPfHEPe39IkF/uMbcjvZMpJkqRA6wf1IgTb5QENtw5isJSH7obC6tFTxQeoqoR+TPJPafMhTxjFnyq8RG2hexkRgtqlRK8uHXf7wO6myNceM25zw2G5tfXpRrZUrehDjXC2HGH9qV+H1vtQAo943/Mmud3Nati8LhwweYBm3sXPFcaJATyydiPJNO+4f8AfkOw8o4Wfv5VUm72CEUZevir+zbNb5YeuH6BoTazwjVQDDyMLGSBu8Wt+hTtqB7mxlctmdKBNpRIZYOYsDABXwGqv8BM2B1GePP0RgPCXaRhrZUdobUv2z7+M9tzJ3QEViEkppaJZefZ/PkzMJ2G9MdzUcNdcdsIjYw0BPZA2h+bEO50UYlYfrIKuyXvz5n4dV5o//P3F94LiH6nLGW6Ua8/3dczVN2Oe1pHAhjf8z+aqd/P59QvOF2etTQPc/IxHf95ByZVuYZDVMY4OQhcUQ1my4k2K/iHeK1p8mpqnjL6BouCAKXmlrThUIVoP1WQS+d9W7bkkQmRP6WR89+x+hI2V6XRZonohcXLu4mN23ffvvzh2j0FJo6Qr7D4syouJb5xZsnK7g==
+X-Microsoft-Exchange-Diagnostics: 1; BL2FFO11OLC004;
+	1:fzxCdiOCfxmsleqi3QHetsDeQ8MvoFvT/1NFO9+d9qa/WF+Os74VMGDi5gXPtT7E3w5I+KVZVtPf42LO7Cz/1w8vT4rJccVPqw1lDMAlynvf85l69gWpbJqYf2Cth2+AVD8NPp6YwJ+TyMfQCARacOA01U6pLobPecK4RpoFmuWju159n6YlVX36a1tSFblRgyc+7a/x/f9b9Z/FzhYwuEMAZ6BZgxjoTaWgIzON04uBPW45k9V53yoSAxIvWilSacGPPW0vHp+NdGkPNOI2OoFYWEHa8XEp1u5Xm/3FowkTbR9Wz2lMKtJmkgHuzxXp5iBi6zzuMMCuqJnrVJNWcci6beBIGQbpZ9vG0H84HuHmASURGiHSMS5oMM/FqNXP2jJFC2lC2TbDtKJsPdlMhsXk9vE5DPqRSx9uiSCz4WInS6AkpQNfKi/oBi6pfwsIFSJ+FkTQeswU4h4IxurnWBF8mS/NCbO7wqStQVJLr4S9lv/vTzzr6Bfx3ZVtBAW/+RFgj5udlQXSieMoQImRvcidq4igx2YKS94aa3LHaDtD/gRHkgbh0vkTG4P02XNVnmXdOW1lE54cWnW8M1LFZw==
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: 748a1cd8-d9f7-44d0-2d5c-08d38ae12012
-X-Microsoft-Exchange-Diagnostics: 1; BLUPR03MB200;
-	2:aRifXuQZO5UFnj+SqeEWnX4y5qHVxiaUtyyuJcUQJ1kIUbb7re2uDPHu4ofLMsTlXE4/XQrJYZ8Q/SGZsQWYda8UwhU3KomPEZUb2kNeqVjyU+YoF3baVU3iVP4JIGiEoAXDk/79zDMtrlMt7PYBBsLD3EJ6D0zWi2P+PaDg9tvVT2lDW6+y3E8UMX1AcPE4;
-	3:dYPVBMKRDroGCGXdjRjsk/REBER2BkenKdUyYlPir3nwwPfwnzgjveyjMXIKfbstFviWXW2Ci+g+4DRNPTHajxd7StMtjC2Fp10Svxy4fW81epChyU1FUHpE4ZyaGu2VDP0ZDjssoEohqxbKw7uiBztbdFzgevELYFeEA095Yz3HuBlx6dyUhXkRmph/2/l1Ce3vcU+6G7jBtR61yxDNhd+Dy0GRjh9tb9lRBjDt+kE=
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BLUPR03MB200;
-X-Microsoft-Exchange-Diagnostics: 1; BLUPR03MB200;
-	25:kYq5xEjvAJqiPUqsLW7T0xmVkPAXqtzg02Sv1U3kleIJyqhf+Yv+BSzcRhhxjUSvDhw1rKjEbm8lTj74rMuvlzFClJC3FtogvfiJeMYE6rD1wEYX4hwPJxleapoVrlN/q4dXev9heUDi3fGjk9091KPO7a1GNRwizC956DHPzczBeDVg1bQ4y1r0SbbSaNcy3bff6cf/G4CgvI7Z4Sz30fzp2R5FySyhdKPtoL870YiPr0WkO7LBkVPrUJGSFGbQlBoxANOfcY6SGIJMCWxG8+akf7IC9fqUUaore4mOBxKJt5/gboh7PBRIWdFpDGKP8nd7KI3+56lDGj7RucP++A9aC+uA6HtKrrgGuI7oAPJb5/xoUGTCC8/nh7B4rsgSxZzn2nEtGhdg1+LSFg9/Rlt6T5dElyaOoLMcq0OZjiV/0OBFElR4RSwIOeByaKPuPd/wyzNFXyHrWs+KZIRTXMNFYXNUgdf1M6BO7mx1CWZm3xgoq4lgVyBthv0GiwIccGF/pxQwU8f7jTWgHCL/S811wkD+CXuGzvtdqYTdPX4naGRvXhS4HvLZR/YcYTjKmw6CATVDFID4FabhX84rMCknGbOYB6c7413/dPuUHYe/qHAc/resep9THPDIuLEtvquLiSTXRc6kka/V0PPIP1mIbgyI3MTilvd16JodeBISA6imxSqS+aViSzrtRqWjx9wgCU1FUekRX+yPeEaoAqiPOlGKSh0alD7rcnAANEJ0+DEgnbPoqvy9+QxdzE6q
-X-Microsoft-Antispam-PRVS: <BLUPR03MB200524562D4A484A9D8A561EA580@BLUPR03MB200.namprd03.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 46678237-ba92-4d0b-73ca-08d38ae11f00
+X-Microsoft-Exchange-Diagnostics: 1; BN1PR03MB202;
+	2:UKkQb3Tbd5+cuAZRq3IX7YYj8e5A3aX1CC3/X6y5JK9zg49iLvIwdQ1r4a1C98Yav634y5XgLQMkq/fUMwUzgMnRI8E7l2UU4mjRKLatxMhcr8aI1xC4YCFKxNEMX88qeFzXYouHOjTTgth83Y7TxKnfJGoljz48oCypF3qUl90un1rnkJQbSPwisKHjh9td;
+	3:CHP0OwESurqxwYrA9EcLRAF50NKpdZ3yCl+YTlaHEDyutDK07xhNO5A6IS5m/2AVhdNv6TmSJ4Nke7tAD+zpA0NTwbqfBp5gSRmFPWSKE+KyZnhbdBDaL5tFEYe5EQb0Cvu7aZYzkceUcJqpG1Qxm0Ssq2NO2LM/CEpBwODbRpPUSRqKA0sNwsFQX0RVqDDp85cB3ll8oziTZxs0mtnplEjWlriNS9+D0p1MEUXh1LQ=
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BN1PR03MB202;
+X-Microsoft-Exchange-Diagnostics: 1; BN1PR03MB202;
+	25:W1WlwHSW2AiJD/OgWGw/K8qdP05bL9OKb8fe1Y5l+gOgwr2uAm+g0TbLSLuUqCQnb8ZeavGBoF0MzsSbSKXa7eQl4SfLyFtFdfNJCIb2RVNF0ybpR/Q2ZgDTs6cnjoNC9rwQy8FHTNL32GSqkcp19+c0i8q6Ep/917p9hz6Tb7hGGddpCZ3UcdRZT+ZRF8AsQ6p4yBZ7PM2hu/H51x37MU/7gI0G/lefXDQlOKmTMx73GAWZke+hAUUMhIhAZSdplobfvYsSqHo5RdNK88lAbYEMA48+3w+Y5WUpOYFpRxtlas52tJfsEeDwvTbM8PQ8mjuQz408rlESyjB49NiLwD7BWwmdWaXJha82PG1j9z5PVnPOQLU5iFbJVggpFCtBucXuCwFX0GqIAKlbB03x+KIPyqZOxiZ3N76DHnMX5yw32EHfSlrRp8+YlGtZ9gi58lbziVDpPIjqnFzyf9NtesIgGyJUCnSX1NNaUByFxhbOuv7kdmtlVC++BcaFSfPXxku2CoklVi5wIlBFHtU/VNnHGefSSrIEms/eUCQ53F3BITpfea+TDwUyx08y0v4xfyD1Zjkg2W8MYnas/TsNxnJtRqFI9u/j8jZEOucp/LinVyjlbZjkRiYkFfrS0oA01Oq4NE82b5UbHpv12jp4V3e82AlqksKS+p4DdV4w2NWBqxzmZHd4T15yZqjs13AppXliDa5RjI8InQy9fyKe4iGFpJTvMWBlrEJV+fWaZ9rVFjs6flNBZzs5OmhgDxW5
+X-Microsoft-Antispam-PRVS: <BN1PR03MB202076C0949797C76C4B53BEA580@BN1PR03MB202.namprd03.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(185117386973197);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(13023025)(13017025)(13024025)(8121501046)(13018025)(13015025)(5005006)(10201501046)(3002001)(6055026);
-	SRVR:BLUPR03MB200; BCL:0; PCL:0; RULEID:(400006);
-	SRVR:BLUPR03MB200; 
-X-Microsoft-Exchange-Diagnostics: 1; BLUPR03MB200;
-	4:TNPk3e5Qu01Sfz3GIly/5p8a19xHUp16RTnPwRr2UA8tTrHc1g0xfvdh4sK6OTK6v4muAnxYMZqQxAgI0Y4u0agb+pF24N2bIKd4oxQyfqEY0piGZcDgB4mbYzhBsxk+hYbvohxPm6TttNDVputTqyqYTi8MNi3NSCKH6ILeKFpYFircDEujz1wTW5g4Wih4UroUiLAo7l1mWGJm4TM28TqE4gjWZ6jGyBJJcFDSEbclbbeLdnCV8yuJSAUzc+M02aOIj2/TdmlRfzqdY6k750EfK003mwVhCIsAEEpLfj384U8yWftBnopuqaBLqy4Aby6ebECGKXCAZSC1yOlOkmQJCRlxJNm3L/FhcLrr+6wfJ/MuebDlP+wIF2gDQbslfNJbCBQ+LK/FMnyVLN77p9qt+HoTHVq5si9G9JnkGQlOOaOl5JYSA8myZQG+q2iEBxPEc9pgcV3YIB0iRIEq6isn9xRBki8tPtW8ZDmMJxjfBjWhSOPVK5RYijsdp0sc07zXbdpYou6+SDyFmfQTKQ==
+	RULEID:(601004)(2401047)(8121501046)(5005006)(13018025)(13023025)(13015025)(13017025)(13024025)(3002001)(10201501046)(6055026);
+	SRVR:BN1PR03MB202; BCL:0; PCL:0; RULEID:(400006);
+	SRVR:BN1PR03MB202; 
+X-Microsoft-Exchange-Diagnostics: 1; BN1PR03MB202;
+	4:m7OW51vB0jGnoOlgBntFfUVFm0a4f5FQ/BEbaHRxD5R4E1tGLaBTOrhR/k+1tuj79P6om0jUqIwbFlDIG2lAIzoPF132BHWuWBulGgcIyYyi9Ewzud0Cqzl6pQqJdORtWbbG0HG4OqVWiLFbGZ8afpkVbrXn6HHu34PQKNJ5R3sPfku4lsaj0GJ9DszIMoXURsKEU+SMbRpqOAtKUotxPvxffoJWnCFeqTmIv0i6hE6kUOaA24SlhjW18ieLMsRHmZzPsZPtI7ecrsoGyQqPl9FhPbOMpqCjgo5cXDr/sAnX7QJi36DNapPA6idIc+8gryYpnH7oZZtjnv9q2kMbMV0RtS7z7U1wos3v/PCneoJXHvJQDMx0Y9eImDgIqaqKefpvkQiSrtvxq5HOomqcZQFpSvKHlv6oxa0BtdT9nqgmd8O6TSIXV75dKle3tW6wl0ZspRUbsXsDV2oVlRKdv2p7P8In9i+WrpXkecKr47F8dJuvhCqoUsOe5d/x7bqfxR5SGlrnc0IUHyUuEbhL1g==
 X-Forefront-PRVS: 0961DF5286
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BLUPR03MB200;
-	23:dHbL+3aObMtRUTZM8YPMjtsrip92dv7GdjvzjHSJeM?=
-	=?us-ascii?Q?WKZMezfnE49Dtdbd23ZyMMJB8oTE6g+73n+V3gqq0k13dZ7AXVMFtU33awLV?=
-	=?us-ascii?Q?/M+VSVqDeufoW+u3h3DoItHubHmXA/CSGWAlg0QbBM5Jc1tMez+sLPOOHOp3?=
-	=?us-ascii?Q?qVmAwiCUkO+C08IafzSW8hkTgTWM/TXtOASyPNVUU9el69tO478FDTx6DHGW?=
-	=?us-ascii?Q?eWYJw8NsYwN/w1WgqQhaZZz+Jc04TXyi4CpRmTpnGiziOF2DgC/00WJ7mnEr?=
-	=?us-ascii?Q?nv7MTCkcFaIgHU6vZ1v2UTi5uuMJuBnwTi5QjW3pxWUYIWY4M4BG0RY0I8U7?=
-	=?us-ascii?Q?g8O1TFaTeaPVRyOpF+XTt592u2xxgxlBK/OKEVOAg7viWkAazTk6+go6uwPP?=
-	=?us-ascii?Q?Dlb3Ss0ImHQiB8yUio74Idka1qGawbco8DThOI9BLi+rtJVPEP006sRcCDSv?=
-	=?us-ascii?Q?LvFf/pjpMqKqRxf+/hzm5mXK6sWS+xplMdFhfYsA3DPGEF30JY29IznHgu+u?=
-	=?us-ascii?Q?Lm+qtTKbaKJ0NgeR4txFYOyUATHJrif4DMuhA89f3XaaWZKDAK2S/r4c/3k3?=
-	=?us-ascii?Q?OZXhcQAEjwXfGr8kDP2JUT2ilIgwsKJV880aBBggNhF/jgrnOsjZ5vJsxGg1?=
-	=?us-ascii?Q?uGbxw6YOnbXISxocXRkmhJsNWkiSTbZZoPhhvgwVC39B0Iq5u9dczcCBZdt0?=
-	=?us-ascii?Q?g1vC8XeIWr9hj0T0NQhgRPjEol+ybfHD/kRUDHZnCc2u2qpNuQselLsdLEm2?=
-	=?us-ascii?Q?z4D2rrrmoIl/bQPv+IR1fL8l31Q2m8bqZjseykBSr2SjxEndROAG/Ga0JHXf?=
-	=?us-ascii?Q?NnJwSrkAN63TmWqf4/8YhdSGhY9SISxCtGFm7cyKmwuIdXLUHfdQNSV46EA5?=
-	=?us-ascii?Q?qDG+32P+uCwoUOYGgMZwDxZCklVihnj4oHjhBaRRGhWVKjeD0+1X+EbH1D7/?=
-	=?us-ascii?Q?dPJR0RyPzWowhgaDoCz64AqKtDD73v5UjfHWwFdKSdmlr6b/WpU4WvYw6wKy?=
-	=?us-ascii?Q?bsatPA5PUjPL1UJnvFkZ6otM1TRph3nCYt3UYuGDOk04EJtFWBY5EFD8jcbo?=
-	=?us-ascii?Q?eXd4MHekOJkYu8gzIugK+5biKM?=
-X-Microsoft-Exchange-Diagnostics: 1; BLUPR03MB200;
-	5:B8aqH1GxybmcC970E9Ggosj/Taj9wIhFk8tHVZ4L7OWRfy2yyVMV5TwC/XdBh90dZM7dxVGJC16sxPPkvrgMQEgEXVQgMBPMgy/BdyUzWiamskonoLu4s/dSWLFmFheBgIPKqn6IHoCFy8BFltmjQkSKUQNSkGgVvNrCIcOdX6s=;
-	24:vZSW2z5Mt/xJW7zPFuMq2Y7bGOrt332yMwhSwai2l+ce91DhIoZXjLnlqPZzQTY3BF2x5ZaSq8Sxhv6GgRdOGPn/QgZgt3bMA1XF2i9GtKU=;
-	7:Tv/7B4INWfpaUq19RBZm2121gix8bzQquvxNTy2hh3xNRLfARYMED0Rrw4s99/LIjWSjE/CfRODg/soRMG40sofFtV++cJFFoEe54Xt4MjeSsgOMfm5x4T+pDVZ+/WUSQLgu4yLmANxHd1BCSZp3t6HNSxA05I71ci3BL31BcSlBHOcGaXhAxzSIoqf4Vtj5
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BN1PR03MB202;
+	23:rQ7xCiAYMpw64gSRdMYAXGp0gKeDxWmci33HkiTnXc?=
+	=?us-ascii?Q?V9OYypPVeqBNzYpslMLyCw3oi2lkWW1NQcWUMs6XdyorC7g+NoCSXRLIQJ9h?=
+	=?us-ascii?Q?AodRQX+Yh3xULBpRCpQsTuInZwoPC5OqQcoDKvl+mHE/wQBZFM5klkjKkI4Q?=
+	=?us-ascii?Q?kvdnL2AimLX4ZL7nwFa+2EJFSzQRZ0NT/G2lr30fgmKRc4zr0nGHJrK+j1Uh?=
+	=?us-ascii?Q?euZwOUkvktVUMvKML8sieFcuh/1SPvTgzZXYs6/GwUG6d8F5FtQ1rSIyeild?=
+	=?us-ascii?Q?iMpzJndjyxrErrWYT+hmemI/e9jIqwetswA2dYNLokQKGpiQGiryPdJM1FtH?=
+	=?us-ascii?Q?wHVGFQ6ABQdQop2Cfo8wnTvLSS3U7HaqCQSjtHGTOxG9vwWZc3+t3B3yL7PS?=
+	=?us-ascii?Q?7YHgoYq02Zzx2BUEj1Awpusf+swQisvRoMlY0Pvp1jhbZ7JGLm8hTNvoC5dv?=
+	=?us-ascii?Q?fb4MZfXwZOuuxpE+Q1KC9ZUEWHwqcYCIvfKR3zbWJrmJk6j3QkJQJYSY+r/F?=
+	=?us-ascii?Q?r9CKA95sw8u7KzsL1lJdGZdg7Zejkdoiwtse64tFFFh2+PnuMBFKlwXmVRmg?=
+	=?us-ascii?Q?6bequsxZqcKYW3aFOKqhSHlmPvpNOZhqjxd8xHWA8hRL7aSHYMf995UGtac+?=
+	=?us-ascii?Q?wT/0UdUDt4D+bHeeGQITqaK/G/R6PtLSz0cjuMmimGXy08z5Tm6YmBN9Rk1k?=
+	=?us-ascii?Q?Qkvmo/hGUdjfOAGdt2xqRCLKEh+F2+gHxEvXsvLOuF13g29IeH+aMoXmX4dl?=
+	=?us-ascii?Q?l1aXVKF+W+T9xLVBNHyIIFWkBxveJzUwHV7BIaHj0WoAmklzLyt60pl1+yfW?=
+	=?us-ascii?Q?KZX0k0t03SN9RU74dIr4lyoSq0WPtX5eORCWpxw4tBh8KuVMm+H8dq1m3o4T?=
+	=?us-ascii?Q?Rsvr72CTBvIXlMxnpdqoihlIGvK3o7h0Jx43FhAVPcKxHgKmMBggQ5QDIR44?=
+	=?us-ascii?Q?/oVeJmchZSTI8sT8uq5880vicqlykQH7q/scMK+e45DGpPFyVU7DmNUEHZ9t?=
+	=?us-ascii?Q?wQpj8XDmO8v8gB9l58pUU6zab8lX3OqbDxJKSKyMqcRUpd0c7rgysPj2xDVP?=
+	=?us-ascii?Q?zUItTdrMeFd7vVnT4dmVjMY3tul7u9OW3VC2PKuZZG1UA66A=3D=3D?=
+X-Microsoft-Exchange-Diagnostics: 1; BN1PR03MB202;
+	5:qEzdLAyahWh35OVqS/uhn/GQOPHPXRl8Chu/FszfP86OyO3MgTJKfQrD+EwxkghWvKH6sOusi8EAo1N0x8IQEw0AIGnrrDAyCbphKhyzgOXUZEL2+uT/vc3cql2wNIh2Yg5NSkG7x0Zx/XiQbVefLBMMX36+yv92XmT4ThRyg7Q=;
+	24:1Wx9mAWDksG9nUe0geXyDFHdJ336b+1eJy5r67c0ykPrmUl08XlDN0OMIxoZaDoI02Zd/xmuXq9htzVw8WSMV2hP06PiOvUkPyjhr6IgGyQ=;
+	7:PTEuEElZBFMTJ5I7jQXLl0smxJht4+lvCTtcAfaGFEeT9sAqnNjptVrjaTqRxqui7IlBt2kttV8S3BMmlwX4n56M7lw7WOoVifjpgiWNAVzswe0MkPE6f6Y33gF3wGYdC/fuOJIVmXoqMOulD3XZjP7etR6XtbZB3pKKPKwaKQaKsh31360+x1rjQFwmT0lW
 SpamDiagnosticOutput: 1:23
 SpamDiagnosticMetadata: NSPM
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2016 12:26:29.7056 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jun 2016 12:26:27.9429 (UTC)
 X-MS-Exchange-CrossTenant-Id: 5afe0b00-7697-4969-b663-5eab37d5f47e
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=5afe0b00-7697-4969-b663-5eab37d5f47e; Ip=[192.88.158.2];
 	Helo=[az84smr01.freescale.net]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLUPR03MB200
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN1PR03MB202
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 207.46.100.79
+X-Received-From: 65.55.169.73
 X-Mailman-Approved-At: Thu, 02 Jun 2016 10:10:02 -0400
-Subject: [Qemu-arm] [PATCH 2/2] arm/virt: Mark pcie controller node as
- dma-coherent
+Subject: [Qemu-arm] [PATCH 1/2] device_tree: introduce
+ qemu_fdt_node_path_prop
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,73 +141,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uI9X/hXOR7Ax
+X-TUID: f62HhqdQ91Pa
 
-A PCI device is marked either as coherent or non-coherent based on the pcie
-controller "dma-coherent" property. This is further used when configuring the
-IOMMU ops for the device DMA resources (e.g. descriptor rings, for e1000e).
-
-This dma-coherent property needs to be configured in the guest environment,
-in case there's a directly assigned VFIO PCI device. Since the guest only
-receives one emulated pcie controller bus - regardless of the host
-configuration - add this property if there's at least one host pcie host
-controller that is DMA coherent (this implies that the host interconnect
-is coherent as well).
+This new helper routine returns a NULL terminated array of
+node paths matching a property and, optionally, a name.
 
 Signed-off-by: Bogdan Purcareata <bogdan.purcareata@nxp.com>
 ---
- hw/arm/virt.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ device_tree.c                | 59 ++++++++++++++++++++++++++++++++++++++++++++
+ include/sysemu/device_tree.h | 20 +++++++++++++++
+ 2 files changed, 79 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 371e3a7..b640174 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -867,6 +867,32 @@ static void create_pcie_irq_map(const VirtBoardInfo *vbi, uint32_t gic_phandle,
-                            0x7           /* PCI irq */);
+diff --git a/device_tree.c b/device_tree.c
+index ccba1fd..85c81cc 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -281,6 +281,65 @@ char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+     return path_array;
  }
  
-+static bool is_host_pcie_dma_coherent(void)
++char **qemu_fdt_node_path_prop(void *fdt, const char *name,
++       const char *pname, const void *pval, int plen, Error **errp)
 +{
-+    void *host_fdt;
-+    char **node_path;
-+    bool ret = false;
++    int offset, len, ret;
++    const char *iter_name;
++    unsigned int path_len = 16, n = 0;
++    GSList *path_list = NULL, *iter;
++    char **path_array;
 +
-+    host_fdt = load_device_tree_from_sysfs();
++    for (offset = fdt_node_offset_by_prop_value(fdt, 0, pname, pval, plen);
++    offset >= 0;
++    offset = fdt_node_offset_by_prop_value(fdt, offset, pname, pval, plen)) {
 +
-+    node_path = qemu_fdt_node_path_prop(host_fdt, "pcie", "dma-coherent",
-+            NULL, 0, &error_fatal);
++        iter_name = fdt_get_name(fdt, offset, &len);
 +
-+    /* no pcie controllers found on host, therefore non dma-coherent */
-+    if (!node_path || !node_path[0]) {
-+        goto out;
++        if (!iter_name) {
++            continue;
++        }
++
++        /* if the node doesn't match the name, move on */
++        if (name && strncmp(iter_name, name, strlen(name))) {
++            continue;
++        }
++
++        char *path;
++
++        path = g_malloc(path_len);
++        while ((ret = fdt_get_path(fdt, offset, path, path_len)) ==
++                    -FDT_ERR_NOSPACE) {
++            path_len += 16;
++            path = g_realloc(path, path_len);
++        }
++
++        path_list = g_slist_prepend(path_list, path);
++        n++;
 +    }
 +
-+    /* for now, if at least one pcie node is dma-coherent,
-+     * it is considered that the host is dma-coherent with respect to pcie */
-+    ret = true;
++    if (offset < 0 && offset != -FDT_ERR_NOTFOUND) {
++        error_setg(errp, "%s: abort parsing dt for %s/%s: %s",
++                   __func__, name, pname, fdt_strerror(offset));
++        for (iter = path_list; iter; iter = iter->next) {
++            g_free(iter->data);
++        }
++        g_slist_free(path_list);
++        return NULL;
++    }
 +
-+out:
-+    g_strfreev(node_path);
-+    g_free(host_fdt);
-+    return ret;
++    path_array = g_new(char *, n + 1);
++    path_array[n--] = NULL;
++
++    for (iter = path_list; iter; iter = iter->next) {
++        path_array[n--] = iter->data;
++    }
++
++    g_slist_free(path_list);
++
++    return path_array;
 +}
 +
- static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-                         bool use_highmem)
+ int qemu_fdt_setprop(void *fdt, const char *node_path,
+                      const char *property, const void *val, int size)
  {
-@@ -981,6 +1007,11 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-     }
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 705650a..03c8193 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -43,6 +43,26 @@ void *load_device_tree_from_sysfs(void);
+ char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+                           Error **errp);
  
-     qemu_fdt_setprop_cell(vbi->fdt, nodename, "#interrupt-cells", 1);
++/**
++ * qemu_fdt_node_path_property: return the paths of nodes matching a given
++ * property and, optionally, a name string
++ * @fdt: pointer to the dt blob
++ * @name: node name (can be NULL) - if NULL, will return all nodes mathing prop
++ * @propname: property name
++ * @propvalue: property value (can be NULL)
++ * @proplen: property length (can be 0)
++ * @errp: handle to an error object
++ *
++ * returns a newly allocated NULL-terminated array of node paths.
++ * Use g_strfreev() to free it. If one or more nodes were found, the
++ * array contains the path of each node and the last element equals to
++ * NULL. If there is no error but no matching node was found, the
++ * returned array contains a single element equal to NULL. If an error
++ * was encountered when parsing the blob, the function returns NULL
++ */
++char **qemu_fdt_node_path_prop(void *fdt, const char *name,
++    const char *propname, const void *propvalue, int proplen, Error **errp);
 +
-+    if (is_host_pcie_dma_coherent()) {
-+        qemu_fdt_setprop(vbi->fdt, nodename, "dma-coherent", NULL, 0);
-+    }
-+
-     create_pcie_irq_map(vbi, vbi->gic_phandle, irq, nodename);
- 
-     g_free(nodename);
+ int qemu_fdt_setprop(void *fdt, const char *node_path,
+                      const char *property, const void *val, int size);
+ int qemu_fdt_setprop_cell(void *fdt, const char *node_path,
 -- 
 1.9.1
 

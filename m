@@ -1,61 +1,61 @@
-Received: by 10.25.27.66 with SMTP id b63csp617302lfb;
-        Thu, 2 Jun 2016 02:59:51 -0700 (PDT)
-X-Received: by 10.55.207.74 with SMTP id e71mr31998701qkj.64.1464861591524;
-        Thu, 02 Jun 2016 02:59:51 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp619882lfb;
+        Thu, 2 Jun 2016 03:05:10 -0700 (PDT)
+X-Received: by 10.140.197.215 with SMTP id s206mr7317734qha.37.1464861910466;
+        Thu, 02 Jun 2016 03:05:10 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 30si16302595qkp.218.2016.06.02.02.59.51
+        by mx.google.com with ESMTPS id 75si24119061qgo.49.2016.06.02.03.05.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Jun 2016 02:59:51 -0700 (PDT)
+        Thu, 02 Jun 2016 03:05:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46293 helo=lists.gnu.org)
+Received: from localhost ([::1]:46314 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8PPq-0003xU-VA
-	for alex.bennee@linaro.org; Thu, 02 Jun 2016 05:59:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35779)
+	id 1b8PUz-0007VD-UI
+	for alex.bennee@linaro.org; Thu, 02 Jun 2016 06:05:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36671)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b8PPj-0003x4-JW
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 05:59:47 -0400
+	(envelope-from <imammedo@redhat.com>) id 1b8PSb-0005aa-Ow
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 06:02:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b8PPe-0000J3-MH
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 05:59:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51542)
+	(envelope-from <imammedo@redhat.com>) id 1b8PSW-0000s4-GT
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 06:02:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49593)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1b8PPe-0000Iu-EC; Thu, 02 Jun 2016 05:59:38 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	id 1b8PSW-0000ro-BY; Thu, 02 Jun 2016 06:02:36 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5817BC00DDE7;
-	Thu,  2 Jun 2016 09:59:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9EC75709C1;
+	Thu,  2 Jun 2016 10:02:35 +0000 (UTC)
 Received: from igors-macbook-pro.local (ovpn-204-100.brq.redhat.com
 	[10.40.204.100])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u529xXOJ001796; Thu, 2 Jun 2016 05:59:34 -0400
-Date: Thu, 2 Jun 2016 11:59:30 +0200
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u52A2WPx007244; Thu, 2 Jun 2016 06:02:33 -0400
+Date: Thu, 2 Jun 2016 12:02:29 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20160602115930.6945e5d6@igors-macbook-pro.local>
-In-Reply-To: <20160601174309.GA13503@thinpad.lan.raisama.net>
+Message-ID: <20160602120229.240bb47f@igors-macbook-pro.local>
+In-Reply-To: <20160601174651.GB13503@thinpad.lan.raisama.net>
 References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<1464799050-11002-2-git-send-email-imammedo@redhat.com>
-	<20160601174309.GA13503@thinpad.lan.raisama.net>
+	<1464799050-11002-3-git-send-email-imammedo@redhat.com>
+	<20160601174651.GB13503@thinpad.lan.raisama.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 02 Jun 2016 09:59:37 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 02 Jun 2016 10:02:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH RFC 1/8] target-i386: cpu: move features
- logic that requires CPUState to realize time
+Subject: Re: [Qemu-arm] [PATCH RFC 2/8] target-i386: cpu: move
+ xcc->kvm_required check to reaize time
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,114 +72,71 @@ Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
 	pbonzini@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: td7lPQ7oVA0x
+X-TUID: MkpZTmNUm+4Z
 
-On Wed, 1 Jun 2016 14:43:09 -0300
+On Wed, 1 Jun 2016 14:46:51 -0300
 Eduardo Habkost <ehabkost@redhat.com> wrote:
-[...]
 
+> On Wed, Jun 01, 2016 at 06:37:24PM +0200, Igor Mammedov wrote:
+> > it will allow to drop custom cpu_x86_init() and use
+> > cpu_generic_init() instead reducing cpu_x86_create()
+> > to a simple 3-liner.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> 
+> Nice, it also gets us closer to finally making X86CPU
+> qmp_device_list_properties()-safe. Only one request:
+> 
+> > ---
+> >  target-i386/cpu.c | 14 +++++++-------
+> >  1 file changed, 7 insertions(+), 7 deletions(-)
+> > 
 > > diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> > index 3fbc6f3..6159a7f 100644
+> > index 6159a7f..c31afc7 100644
 > > --- a/target-i386/cpu.c
 > > +++ b/target-i386/cpu.c
-> > @@ -1932,6 +1932,11 @@ static inline void feat2prop(char *s)
+> > @@ -2200,7 +2200,6 @@ static void x86_cpu_load_def(X86CPU *cpu,
+> > X86CPUDefinition *def, Error **errp) X86CPU *cpu_x86_create(const
+> > char *cpu_model, Error **errp) {
+> >      X86CPU *cpu = NULL;
+> > -    X86CPUClass *xcc;
+> >      ObjectClass *oc;
+> >      gchar **model_pieces;
+> >      char *name, *features;
+> > @@ -2219,12 +2218,6 @@ X86CPU *cpu_x86_create(const char
+> > *cpu_model, Error **errp) error_setg(&error, "Unable to find CPU
+> > definition: %s", name); goto out;
 > >      }
-> >  }
+> > -    xcc = X86_CPU_CLASS(oc);
+> > -
+> > -    if (xcc->kvm_required && !kvm_enabled()) {
+> > -        error_setg(&error, "CPU model '%s' requires KVM", name);
+> > -        goto out;
+> > -    }
 > >  
-> > +/* Features to be added */
+> >      cpu = X86_CPU(object_new(object_class_get_name(oc)));
+> >  
+> > @@ -2901,6 +2894,13 @@ static void x86_cpu_realizefn(DeviceState
+> > *dev, Error **errp) static bool ht_warned;
+> >      FeatureWord w;
+> >  
+> > +    if (xcc->kvm_required && !kvm_enabled()) {
+> > +        char *name = g_strdup(object_get_typename(OBJECT(dev)));
+> > +        *strstr(name, X86_CPU_TYPE_SUFFIX) = 0;
 > 
-> Please add something like "Features to be added. Will be replaced
-> by global variables in the future".
+> I am not sure if I actually like this trick, but in either case
+> please use x86_cpu_class_get_model_name().
+thanks for pointing out that x86_cpu_class_get_model_name() exists.
+
 > 
-> > +static FeatureWordArray plus_features = { 0 };
-> > +/* Features to be removed */
-> > +static FeatureWordArray minus_features = { 0 };
+> > +        error_setg(&local_err, "CPU model '%s' requires KVM",
+> > name);
+> > +        goto out;
+> > +    }
 > > +
-> 
-> I see that this hack is replaced by the following patches, but is
-> there an easy way to remove the CPUState argument from
-> x86_cpu_parse_featurestr() before we introduce these static
-> variables? (No problem if there's no way to do that, as long as
-> the static variables are explicitly documented as a temporary
-> hack)
-It's hack to keep legacy +- semantic (i.e. it overrides feat1=x,feat2)
-local to x86 that probably would stay here forever.
-I should add comment that explains why +- can't be replaced
-with normal properties.
-
-I don't plan to replace plus/minus_features with anything nor to
-make this variables a global ones to spread +- x86/sparc legacy
-format everywhere.
- 
-What I would do though before enabling -device/device_add for X86CPU is
-to disable +- handling for new machine types so that CPUs would
-follow generic property semantic of device used everywhere else.
-
-> 
-> >  /* Parse "+feature,-feature,feature=foo" CPU feature string
-> >   */
-> >  static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
-> > @@ -1939,13 +1944,7 @@ static void
-> > x86_cpu_parse_featurestr(CPUState *cs, char *features, {
-> >      X86CPU *cpu = X86_CPU(cs);
-> >      char *featurestr; /* Single 'key=value" string being parsed */
-> > -    FeatureWord w;
-> > -    /* Features to be added */
-> > -    FeatureWordArray plus_features = { 0 };
-> > -    /* Features to be removed */
-> > -    FeatureWordArray minus_features = { 0 };
-> >      uint32_t numvalue;
-> > -    CPUX86State *env = &cpu->env;
-> >      Error *local_err = NULL;
-> >  
-> >      featurestr = features ? strtok(features, ",") : NULL;
-> > @@ -2019,18 +2018,6 @@ static void
-> > x86_cpu_parse_featurestr(CPUState *cs, char *features, }
-> >          featurestr = strtok(NULL, ",");
-> >      }
-> > -
-> > -    if (cpu->host_features) {
-> > -        for (w = 0; w < FEATURE_WORDS; w++) {
-> > -            env->features[w] =
-> > -                x86_cpu_get_supported_feature_word(w,
-> > cpu->migratable);
-> > -        }
-> > -    }
-> > -
-> > -    for (w = 0; w < FEATURE_WORDS; w++) {
-> > -        env->features[w] |= plus_features[w];
-> > -        env->features[w] &= ~minus_features[w];
-> > -    }
-> >  }
-> >  
-> >  /* Print all cpuid feature names in featureset
-> > @@ -2912,12 +2899,25 @@ static void x86_cpu_realizefn(DeviceState
-> > *dev, Error **errp) CPUX86State *env = &cpu->env;
-> >      Error *local_err = NULL;
-> >      static bool ht_warned;
-> > +    FeatureWord w;
-> >  
 > >      if (cpu->apic_id < 0) {
 > >          error_setg(errp, "apic-id property was not initialized
 > > properly"); return;
-> >      }
-> >  
-> > +    if (cpu->host_features) {
-> > +        for (w = 0; w < FEATURE_WORDS; w++) {
-> > +            env->features[w] =
-> > +                x86_cpu_get_supported_feature_word(w,
-> > cpu->migratable);
-> > +        }
-> > +    }
-> > +
-> > +    for (w = 0; w < FEATURE_WORDS; w++) {
-> > +        cpu->env.features[w] |= plus_features[w];
-> > +        cpu->env.features[w] &= ~minus_features[w];
-> > +    }
-> > +
-> >      if (env->features[FEAT_7_0_EBX] && env->cpuid_level < 7) {
-> >          env->cpuid_level = 7;
-> >      }
 > > -- 
 > > 1.8.3.1
 > > 

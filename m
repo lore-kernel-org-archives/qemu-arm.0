@@ -1,61 +1,54 @@
-Received: by 10.25.27.66 with SMTP id b63csp334686lfb;
-        Wed, 1 Jun 2016 11:55:02 -0700 (PDT)
-X-Received: by 10.55.197.82 with SMTP id p79mr30472999qki.138.1464807302334;
-        Wed, 01 Jun 2016 11:55:02 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp600499lfb;
+        Thu, 2 Jun 2016 02:12:41 -0700 (PDT)
+X-Received: by 10.55.145.67 with SMTP id t64mr7333919qkd.96.1464858760826;
+        Thu, 02 Jun 2016 02:12:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t38si26641060qgt.91.2016.06.01.11.55.02
+        by mx.google.com with ESMTPS id y189si18422930qky.234.2016.06.02.02.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 01 Jun 2016 11:55:02 -0700 (PDT)
+        Thu, 02 Jun 2016 02:12:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43668 helo=lists.gnu.org)
+Received: from localhost ([::1]:46143 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8BID-0006Kh-OC
-	for alex.bennee@linaro.org; Wed, 01 Jun 2016 14:55:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51024)
+	id 1b8OgC-0002C1-8N
+	for alex.bennee@linaro.org; Thu, 02 Jun 2016 05:12:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1b8BI9-0006KS-Bh
-	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:54:58 -0400
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1b8Og7-0002Bm-Lz
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 05:12:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1b8BI5-0002lq-Ly
-	for qemu-arm@nongnu.org; Wed, 01 Jun 2016 14:54:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38868)
+	(envelope-from <Leon.Alrae@imgtec.com>) id 1b8Og1-0005dR-KM
+	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 05:12:34 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:33346)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1b8BI5-0002lm-GT; Wed, 01 Jun 2016 14:54:53 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0824262649;
-	Wed,  1 Jun 2016 18:54:53 +0000 (UTC)
-Received: from localhost (vpn1-7-51.gru2.redhat.com [10.97.7.51])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u51IsqxF003296; Wed, 1 Jun 2016 14:54:52 -0400
-Date: Wed, 1 Jun 2016 15:54:50 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20160601185450.GG13503@thinpad.lan.raisama.net>
-References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<1464799050-11002-7-git-send-email-imammedo@redhat.com>
+	(envelope-from <Leon.Alrae@imgtec.com>)
+	id 1b8Og1-0005dE-Dh; Thu, 02 Jun 2016 05:12:29 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Websense Email with ESMTPS id D47B3E23EC0B1;
+	Thu,  2 Jun 2016 10:12:20 +0100 (IST)
+Received: from hhmipssw201.hh.imgtec.org (10.100.21.117) by
+	hhmail02.hh.imgtec.org (10.100.10.20) with Microsoft SMTP Server (TLS)
+	id 14.3.294.0; Thu, 2 Jun 2016 10:12:23 +0100
+Date: Thu, 2 Jun 2016 10:12:19 +0100
+From: Leon Alrae <leon.alrae@imgtec.com>
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
+Message-ID: <20160602091219.GA14419@hhmipssw201.hh.imgtec.org>
+References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
+	<1463407965-19733-10-git-send-email-aleksandar.markovic@rt-rk.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <1464799050-11002-7-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 01 Jun 2016 18:54:53 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH RFC 6/8] cpu: use CPUClass->parse_features()
- as convertor to global properties
+In-Reply-To: <1463407965-19733-10-git-send-email-aleksandar.markovic@rt-rk.com>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Originating-IP: [10.100.21.117]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-arm] [PATCH v6 9/9] target-mips: Implement FCR31's R/W
+ bitmask and related functionalities
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,54 +60,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
-	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, rth@twiddle.net
+Cc: peter.maydell@linaro.org, proljc@gmail.com, kbastian@mail.uni-paderborn.de,
+	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
+	maciej.rozycki@imgtec.com, qemu-devel@nongnu.org,
+	blauwirbel@gmail.com, jcmvbkbc@gmail.com,
+	aleksandar.markovic@imgtec.com, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, petar.jovanovic@imgtec.com,
+	miodrag.dinic@imgtec.com, pbonzini@redhat.com,
+	gxt@mprc.pku.edu.cn, afaerber@suse.de, aurelien@aurel32.net,
+	rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e6ucxKntmCIz
+X-TUID: w9ovHgSTeKMg
 
-On Wed, Jun 01, 2016 at 06:37:28PM +0200, Igor Mammedov wrote:
-> Currently CPUClass->parse_features() is used to parse
-> -cpu features string and set properties on created CPU
-> instances.
-> 
-> But considering that features specified -cpu apply to
-> every created CPU instance, it doesn't make sence to
-> parse the same features string for every CPU created.
-> It also makes every target that cares about parsing
-> features string explicitly call CPUClass->parse_features()
-> parser, which gets in a way if we consider using
-> generic device_add for CPU hotplug as device_add
-> has not a clue about CPU specific hooks.
-> 
-> Turns out we can use global properties mechanism to set
-> properties on every created Device instance for a given
-> type. That way it's possible to convert CPU features
-> into a set of global properties for specified by
->  -cpu cpu_model and common Device.device_post_init()
-> will apply them to every cpu model model automaticaaly
-> regardless whether it's manually created CPU or CPU
-> created with help of device_add.
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-[...]
-> -static void cpu_common_parse_features(CPUState *cpu, char *features,
-> +static void cpu_common_parse_features(const char *typename, char *features,
->                                        Error **errp)
->  {
->      char *featurestr; /* Single "key=value" string being parsed */
->      char *val;
-> -    Error *err = NULL;
-> +    static bool cpu_globals_initialized;
-> +
-> +    if (cpu_globals_initialized) {
-> +        return;
-> +    }
+> - Add preprocessor constants for all bits of FCR31 and related masks
+>   for its subfields.
 
-Should we replace this with assert(!cpu_globals_initialized)
-after applying patch 8/8?
+Introducing all these constants for fcr31_rw_bitmask doesn't seem necessary
+or useful
 
--- 
-Eduardo
+> 
+> - Modify handling of CFC1 and CTC1 instructions (cases 25, 26, 28)
+>   so that they utilize newly-defind constants. This is just a cosmetic
+>   change, to make the code more readable, and to avoid usage of
+>   hardcoded constants.
+
+this an unrelated change; it should be moved to a separate patch
+
+> +static inline void restore_snan_bit_mode(CPUMIPSState *env)
+> +{
+> +    set_snan_bit_is_one(!((env->active_fpu.fcr31 & (1 << FCR31_NAN2008)) != 0),
+
+this is just: (env->active_fpu.fcr31 & (1 << FCR31_NAN2008)) == 0
+
+> @@ -89,11 +89,9 @@ int mips_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+>      if (env->CP0_Config1 & (1 << CP0C1_FP) && n >= 38 && n < 72) {
+>          switch (n) {
+>          case 70:
+> -            env->active_fpu.fcr31 = tmp & 0xFF83FFFF;
+> -            /* set rounding mode */
+> -            restore_rounding_mode(env);
+> -            /* set flush-to-zero mode */
+> -            restore_flush_mode(env);
+> +            env->active_fpu.fcr31 = (tmp & env->active_fpu.fcr31_rw_bitmask) |
+> +               (env->active_fpu.fcr31 & !(env->active_fpu.fcr31_rw_bitmask));
+
+I think you wanted bitwise-not here
+
+> +            restore_fp_status(env);
+>              break;
+>          case 71:
+>              /* FIR is read-only.  Ignore writes.  */
+> diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
+> index 0d1e959..cb890bc 100644
+> --- a/target-mips/op_helper.c
+> +++ b/target-mips/op_helper.c
+> @@ -2490,15 +2490,23 @@ target_ulong helper_cfc1(CPUMIPSState *env, uint32_t reg)
+>          }
+>          break;
+>      case 25:
+> -        arg1 = ((env->active_fpu.fcr31 >> 24) & 0xfe) | ((env->active_fpu.fcr31 >> 23) & 0x1);
+> +        /* read from Floating Point Condition Codes Register (FCCR) */
+> +        arg1 = ((env->active_fpu.fcr31 >> 24) & 0xfe) |
+> +               ((env->active_fpu.fcr31 >> 23) & 0x1);
+
+this is an unrelated cosmetic change, please remove it from this patch (there
+are more changes like that in this patch)
+
+> @@ -2558,42 +2566,66 @@ void helper_ctc1(CPUMIPSState *env, target_ulong arg1, uint32_t fs, uint32_t rt)
+>          }
+>          break;
+>      case 25:
+> +        /* write to Floating Point Condition Codes Register (FCCR) */
+>          if ((env->insn_flags & ISA_MIPS32R6) || (arg1 & 0xffffff00)) {
+>              return;
+>          }
+> -        env->active_fpu.fcr31 = (env->active_fpu.fcr31 & 0x017fffff) | ((arg1 & 0xfe) << 24) |
+> -                     ((arg1 & 0x1) << 23);
+> +        env->active_fpu.fcr31 =
+> +                (env->active_fpu.fcr31 & FCR31_ROUNDING_MODE_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_FLAGS_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_ENABLE_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_CAUSE_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_IEEE2008_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_IMPL_MASK) |
+> +                (env->active_fpu.fcr31 & FCR31_FCC_MASK) |
+> +                ((arg1 & 0x1) << 23) |
+> +                (env->active_fpu.fcr31 & FCR31_FS_MASK) |
+> +                ((arg1 & 0xfe) << 24);
+>          break;
+
+I don't find it easier to read. CTC1 and CFC1 helpers became a mixture of
+various sub-masks and hardcoded constants. Also, it is now harder to map
+the implementation to the lines from CTC1/CFC1 in the MIPS64BIS manual:
+
+elseif fs = 25 then /* FCCR */
+if temp31..8 != then
+    UNPREDICTABLE
+else
+    FCSR <- temp7..1 || FCSR24 || temp0 || FCSR22..0
+
+
+Thanks,
+Leon

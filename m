@@ -1,108 +1,86 @@
-Received: by 10.25.27.66 with SMTP id b63csp880913lfb;
-        Thu, 2 Jun 2016 12:37:25 -0700 (PDT)
-X-Received: by 10.25.29.138 with SMTP id d132mr4555406lfd.142.1464896244974;
-        Thu, 02 Jun 2016 12:37:24 -0700 (PDT)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from mail-lf0-x243.google.com (mail-lf0-x243.google.com. [2a00:1450:4010:c07::243])
-        by mx.google.com with ESMTPS id o131si1024198lfe.284.2016.06.02.12.37.24
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b207sm1255545wmb.0.2016.06.03.13.40.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jun 2016 12:37:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) client-ip=2a00:1450:4010:c07::243;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of serge.fdrv@gmail.com designates 2a00:1450:4010:c07::243 as permitted sender) smtp.mailfrom=serge.fdrv@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-lf0-x243.google.com with SMTP id h68so6061023lfh.3;
-        Thu, 02 Jun 2016 12:37:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=8fjWH4CzEbJk7SxP9ugx99LIdsWHKgs54GTzPfmiITo=;
-        b=AsCOCQK1VMLlkG3ZWaMUIPWAtfsZj8gR0v4I6DbG2GMj3Jzl4ctVvUmsvMHeN+6IaV
-         8JD6wFXPSUHIO62xCiRoYhKAnB/K3Qf7WKRpQEP9MTtBmKMRr0wHukQBeFVBTJk44Nyn
-         FTQLcZydTjDjaOeC2ypEN7gRdO1ThwNNKPmXSgz+ED1K2c7UNXvH32St+jXoitWA0AS/
-         JVFfGpawv3s4KNPvpgXv5ilxLkB4AUByFYK0jSQhYJhi1dDrZa6r5LsfxgXPEQ5liTD8
-         xByh0Bdrce//lydsVNjKnkFdQ7Wl44IDt1GF3zuTuoSXclT1B4ZdZRRjYfctOY4m66Jk
-         reFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=8fjWH4CzEbJk7SxP9ugx99LIdsWHKgs54GTzPfmiITo=;
-        b=JKEnFvUrTv6Zg2MIAj3zOESQO1MEE9wLZEO8HGfoHeagemsHEHBxjXC/1snkRAoL5i
-         nZzwLxa1X+ErP4bR2qqH80lyBPyEhrH+bx8zSFGTGzoxO8Hfdre+Y7V1FXDG4QteT8Ns
-         i4G3+tMo1UyivqR+BeD3TS81yuubmttY4jswP+95UnYHfCdsGFZBO11RukUHTw3aarx5
-         t3dPIxptyTqRsIbXYxSH4bkjK0O5NepfUaxEb3Ms/BT9bUZqsShrsU0XoVtDunQ2iO6r
-         q2lGBy2k/a2A+VqfG2OHHOGkII8ASVQSU2kO0/szyOv6+z+MKpY4f5UC6cOlLoy0EJ8x
-         J/Rw==
-X-Gm-Message-State: ALyK8tJ0o0nQuaUOE88QLZa1uY/r6KAJ/IsewaHK7pBG81nbxBQZQJM6enZ4ufSNLqilag==
-X-Received: by 10.25.37.9 with SMTP id l9mr4305219lfl.70.1464896244660;
-        Thu, 02 Jun 2016 12:37:24 -0700 (PDT)
-Return-Path: <serge.fdrv@gmail.com>
-Received: from [192.168.0.65] (broadband-46-188-121-115.2com.net. [46.188.121.115])
-        by smtp.gmail.com with ESMTPSA id g82sm20959ljg.45.2016.06.02.12.37.23
-        (version=TLSv1/SSLv3 cipher=OTHER);
-        Thu, 02 Jun 2016 12:37:23 -0700 (PDT)
-Subject: Re: [Qemu-devel] [RFC v2 PATCH 11/13] target-arm: Generate fences in
- ARMv7 frontend
-To: Pranith Kumar <bobby.prani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, "open list:ARM"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-References: <20160531183928.29406-1-bobby.prani@gmail.com>
- <20160531183928.29406-12-bobby.prani@gmail.com>
-Cc: alex.bennee@linaro.org, rth@twiddle.net
-From: Sergey Fedorov <serge.fdrv@gmail.com>
-Message-ID: <57508AEE.70706@gmail.com>
-Date: Thu, 2 Jun 2016 22:37:18 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.8.0
+        Fri, 03 Jun 2016 13:40:35 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id E8F333E2F23;
+	Fri,  3 Jun 2016 21:40:39 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: mttcg@listserver.greensocs.com,
+	qemu-devel@nongnu.org,
+	fred.konrad@greensocs.com,
+	a.rigo@virtualopensystems.com,
+	serge.fdrv@gmail.com,
+	cota@braap.org,
+	bobby.prani@gmail.com
+Cc: mark.burton@greensocs.com,
+	pbonzini@redhat.com,
+	jan.kiszka@siemens.com,
+	rth@twiddle.net,
+	peter.maydell@linaro.org,
+	claudio.fontana@huawei.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alexander Spyridakis <a.spyridakis@virtualopensystems.com>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [RFC v3 09/19] target-arm/arm-powerctl: wake up sleeping CPUs
+Date: Fri,  3 Jun 2016 21:40:18 +0100
+Message-Id: <1464986428-6739-10-git-send-email-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1464986428-6739-1-git-send-email-alex.bennee@linaro.org>
+References: <1464986428-6739-1-git-send-email-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20160531183928.29406-12-bobby.prani@gmail.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: q1+eCH5eF6LU
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Yl/7MYkyUS1r
 
-On 31/05/16 21:39, Pranith Kumar wrote:
-> Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
-> Signed-off-by: Richard Henderson <rth@twiddle.net>
-> ---
->  target-arm/translate.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/target-arm/translate.c b/target-arm/translate.c
-> index c946c0e..e1b16c0 100644
-> --- a/target-arm/translate.c
-> +++ b/target-arm/translate.c
-> @@ -7980,9 +7980,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->                  gen_clrex(s);
->                  return;
->              case 4: /* dsb */
-> +                ARCH(7);
+Testing with Alexander's bare metal syncronisation tests fails in MTTCG
+leaving one CPU spinning forever waiting for the second CPU to wake up.
+We simply need to kick the vCPU once we have processed the PSCI power on
+call.
 
-ARMv7 ARM says: "A DSB behaves as a DMB with the same arguments, and
-also has the additional properties...".
+As the power control API is for system emulation only as is the
+qemu_kick_cpu function we also ensure we only build arm-powerctl for
+SoftMMU builds.
 
-Kind regards,
-Sergey
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
+CC: Alexander Spyridakis <a.spyridakis@virtualopensystems.com>
+Message-Id: <1439220437-23957-20-git-send-email-fred.konrad@greensocs.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-> +                return;
->              case 5: /* dmb */
->                  ARCH(7);
-> -                /* We don't emulate caches so these are a no-op.  */
-> +                tcg_gen_mb(TCG_MB_FULL);
->                  return;
->              case 6: /* isb */
->                  /* We need to break the TB after this insn to execute
-> @@ -10330,8 +10332,9 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
->                              gen_clrex(s);
->                              break;
->                          case 4: /* dsb */
-> +                            break;
->                          case 5: /* dmb */
-> -                            /* These execute as NOPs.  */
-> +                            tcg_gen_mb(TCG_MB_FULL);
->                              break;
->                          case 6: /* isb */
->                              /* We need to break the TB after this insn
+---
+v3
+  - re-base caught arm_powerctl re-factor
+  - include cpu.h header for kick definition
+  - fix Makefile.objs to only build for softmmu
+---
+ target-arm/Makefile.objs  | 2 +-
+ target-arm/arm-powerctl.c | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
+index f206411..847fb52 100644
+--- a/target-arm/Makefile.objs
++++ b/target-arm/Makefile.objs
+@@ -9,4 +9,4 @@ obj-y += neon_helper.o iwmmxt_helper.o
+ obj-y += gdbstub.o
+ obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+ obj-y += crypto_helper.o
+-obj-y += arm-powerctl.o
++obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
+diff --git a/target-arm/arm-powerctl.c b/target-arm/arm-powerctl.c
+index d452230..4baa051 100644
+--- a/target-arm/arm-powerctl.c
++++ b/target-arm/arm-powerctl.c
+@@ -166,6 +166,8 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+     /* Start the new CPU at the requested address */
+     cpu_set_pc(target_cpu_state, entry);
+ 
++    qemu_cpu_kick(target_cpu_state);
++
+     /* We are good to go */
+     return QEMU_ARM_POWERCTL_RET_SUCCESS;
+ }
+-- 
+2.7.4

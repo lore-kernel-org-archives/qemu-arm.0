@@ -1,80 +1,72 @@
-Received: by 10.37.56.16 with SMTP id f16csp199415yba;
-        Fri, 3 Jun 2016 05:14:49 -0700 (PDT)
-X-Received: by 10.140.25.209 with SMTP id 75mr1880146qgt.5.1464956089026;
-        Fri, 03 Jun 2016 05:14:49 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp286640lfb;
+        Fri, 3 Jun 2016 07:38:03 -0700 (PDT)
+X-Received: by 10.140.28.8 with SMTP id 8mr3276899qgy.91.1464964683553;
+        Fri, 03 Jun 2016 07:38:03 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s17si2180993qke.156.2016.06.03.05.14.48
+        by mx.google.com with ESMTPS id 82si3669722qhu.0.2016.06.03.07.38.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Jun 2016 05:14:49 -0700 (PDT)
+        Fri, 03 Jun 2016 07:38:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54622 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55913 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8o00-0003bk-Dn
-	for alex.bennee@linaro.org; Fri, 03 Jun 2016 08:14:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50144)
+	id 1b8qEd-0007oD-1i
+	for alex.bennee@linaro.org; Fri, 03 Jun 2016 10:38:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54150)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8nzu-0003Yc-Tz
-	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 08:14:43 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1b8qEZ-0007nu-Tc
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 10:38:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8nzo-0003cz-SB
-	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 08:14:41 -0400
-Received: from e06smtp06.uk.ibm.com ([195.75.94.102]:54161)
+	(envelope-from <peter.maydell@linaro.org>) id 1b8qEY-0005ka-0c
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 10:37:58 -0400
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:34802)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8nzo-0003cd-Hv
-	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 08:14:36 -0400
-Received: from localhost
-	by e06smtp06.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-arm@nongnu.org> from <dahi@linux.vnet.ibm.com>;
-	Fri, 3 Jun 2016 13:14:35 +0100
-Received: from d06dlp02.portsmouth.uk.ibm.com (9.149.20.14)
-	by e06smtp06.uk.ibm.com (192.168.101.136) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 3 Jun 2016 13:14:32 +0100
-X-IBM-Helo: d06dlp02.portsmouth.uk.ibm.com
-X-IBM-MailFrom: dahi@linux.vnet.ibm.com
-X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org
-Received: from b06cxnps4074.portsmouth.uk.ibm.com
-	(d06relay11.portsmouth.uk.ibm.com [9.149.109.196])
-	by d06dlp02.portsmouth.uk.ibm.com (Postfix) with ESMTP id 6EE612190063; 
-	Fri,  3 Jun 2016 13:14:04 +0100 (BST)
-Received: from d06av04.portsmouth.uk.ibm.com (d06av04.portsmouth.uk.ibm.com
-	[9.149.37.216])
-	by b06cxnps4074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u53CEV0A21692686; Fri, 3 Jun 2016 12:14:31 GMT
-Received: from d06av04.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u53CETrl015348; Fri, 3 Jun 2016 06:14:31 -0600
-Received: from thinkpad-w530 (dyn-9-152-224-205.boeblingen.de.ibm.com
-	[9.152.224.205])
-	by d06av04.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u53CES6i015268; Fri, 3 Jun 2016 06:14:29 -0600
-Date: Fri, 3 Jun 2016 14:14:26 +0200
-From: David Hildenbrand <dahi@linux.vnet.ibm.com>
-To: Jiri Denemark <jdenemar@redhat.com>
-Message-ID: <20160603141426.6d6ad708@thinkpad-w530>
-In-Reply-To: <20160603120658.GF40539@orkuz.home>
-References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<201606022044.u52KaKfW029022@mx0a-001b2d01.pphosted.com>
-	<20160603120658.GF40539@orkuz.home>
-Organization: IBM Deutschland GmbH
-X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
+	(envelope-from <peter.maydell@linaro.org>) id 1b8qEX-0005kS-Nw
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 10:37:57 -0400
+Received: by mail-vk0-x232.google.com with SMTP id c189so117174642vkb.1
+	for <qemu-arm@nongnu.org>; Fri, 03 Jun 2016 07:37:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=lI38fZQbD7INiR3T8h4d1dWCPVR62KJRZQEtDC6jZ9o=;
+	b=jEkaeLE5CclIMddjDnWCBgx847E5f8Purf77Zbj2WkK7xWX9zF6aa112vcU9gCxyKo
+	FiiodMFYeFq7gKD9pXG0IP58rBwR3GDTnM11w+zlVRf6hzrPapGGZPQ8qd3bu7tILTWo
+	0rNOJAQqCDPB/jIuG1skep3ZzUbvRxo9fl69M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=lI38fZQbD7INiR3T8h4d1dWCPVR62KJRZQEtDC6jZ9o=;
+	b=L8kJWOGoXjhPjPxGPPJLPzf0Sy3fwQY0XUKSuoeDkDaW5ivzmIk+elCVD43zNBgygw
+	1ryUQbWd5WRWiK3B4qZ4ye6IeGYjn6NAhI6w7sgDQiGtC+P27ANoDaoGVRJmafZFwRSj
+	bje/wNH0U3kH5DhOCAS7dVgMUDrztjRJwQq9HDkiiJwWgDkT1xRsw4BLRTvCnPZwrfsk
+	OKg04SovgN1pNdMsaMbZuGLUT1f/KZU7TZFpldSA9kAh+gZELrxcrZ3+XLqPTiZ9nsFl
+	O0iDyhJLJ6yNZeU+zET/QZpRidGmfR0LdEawL2K5Cc/oj4kPze6ebkZHK/Nf/0oIVPWx
+	+4mA==
+X-Gm-Message-State: ALyK8tKMGygpCFgUenr13cjJWhDUZNITojW4KPflcOK0n0gebHqDeQWaMxO81i+7aCUWuUsQuLRImKtlvOJuKs72
+X-Received: by 10.31.142.202 with SMTP id q193mr1885422vkd.37.1464964677282;
+	Fri, 03 Jun 2016 07:37:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16060312-0025-0000-0000-00001F260271
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.75.94.102
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 0/8] cpus: make "-cpu cpux,
- features" global properties
+Received: by 10.31.69.66 with HTTP; Fri, 3 Jun 2016 07:37:37 -0700 (PDT)
+In-Reply-To: <AM2PR04MB0739ED319596E29E8018D8EA84590@AM2PR04MB0739.eurprd04.prod.outlook.com>
+References: <1464870382-385-1-git-send-email-bogdan.purcareata@nxp.com>
+	<1464870382-385-3-git-send-email-bogdan.purcareata@nxp.com>
+	<CAFEAcA9yTmT+5zDYJjmLDvxmdOiEfAxKxjCYuYKfOwUrft1Drg@mail.gmail.com>
+	<AM2PR04MB0739ED319596E29E8018D8EA84590@AM2PR04MB0739.eurprd04.prod.outlook.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 Jun 2016 15:37:37 +0100
+Message-ID: <CAFEAcA9Q5NOy5u5Y8Sa4nE43WkzgQFi0BrdMwtyUcQ-WXO_EAA@mail.gmail.com>
+To: Mihai Claudiu Caraman <mike.caraman@nxp.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::232
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] arm/virt: Mark pcie
+ controller node as dma-coherent
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,64 +78,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
-	mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
-	blauwirbel@gmail.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	Igor Mammedov <imammedo@redhat.com>, rth@twiddle.net
+Cc: Eric Auger <eric.auger@linaro.org>, Alexander Graf <agraf@suse.de>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Bogdan Purcareata <bogdan.purcareata@nxp.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i12v7GUPmep7
+X-TUID: GOHFwjrlUIfA
 
-> On Thu, Jun 02, 2016 at 22:44:49 +0200, David Hildenbrand wrote:
-> > > Current CLI option -cpu cpux,features serves as template
-> > > for all created cpus of type: cpux. However QEMU parses
-> > > "features" every time it creates a cpu instance and applies
-> > > them to it while doing parsing.
-> > > 
-> > > That doesn't work well with -device/device_add infrastructure
-> > > as it has no idea about cpu specific hooks that's used for
-> > > parsing "features".
-> > > In order to make -device/device_add utilize "-cpu features"
-> > > template convert it into a set of global properties, so that
-> > > every new CPU created will have them applied automatically.
-> > > 
-> > > That also allows to parse features only once, instread of
-> > > doing it for every CPU instance created.  
-> > 
-> > While I think this makes sense for most cases, we (s390x) are
-> > currently working on a mechanism to compare and baseline cpu models via
-> > a qmp interface, to not have to replicate CPU models in libvirt
-> > every time we do some changes.  
-> 
-> BTW, we don't replicate any change to QEMU CPU models in libvirt. We
-> merely add new CPU models that match the current QEMU definition.
-> Existing CPU models are never changed. And while the CPU models are
-> currently used to check compatibility with host CPU, we will stop doing
-> that in the near future and our CPU models will mostly be used for
-> detecting what the host CPU is.
-> 
-> Jirka
-> 
+On 3 June 2016 at 15:22, Mihai Claudiu Caraman <mike.caraman@nxp.com> wrote:
+> In particular for virtual and emulated devices the host CPU behaves
+> as a DMA coherent 'device'. This should have been stated in patch
+> description.
 
+Wouldn't that imply that we should just always have the "dma-coherent"
+property set, and we don't need to do any of the messing around looking
+at the host sysfs ?
 
-Hi Jirka,
-
-thanks for that info!
-
-unfortunately we will have to perform changes to the cpu models.
-On z we have various cpu features that are confidential and only
-added over time, although they are around for quite some time.
-And we have features that are not implemented yet by KVM and will not
-be implemented in the near future.
-Therefore we will be adding features to our "flexible models"
-while keeping migration safe variants with base features stable.
-
-Some day in the future, we will also have all features around :)
-
-Another problematic thing for us is, that we really have to rely
-on a host cpu model detection using KVM. The features that
-are visible in user space (similar to cpuid()) don't give any
-guarantees to what we are able to virtualize.
-
-David
-
+thanks
+-- PMM

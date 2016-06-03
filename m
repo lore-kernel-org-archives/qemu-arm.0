@@ -1,149 +1,169 @@
-Received: by 10.25.27.66 with SMTP id b63csp976995lfb;
-        Thu, 2 Jun 2016 17:02:24 -0700 (PDT)
-X-Received: by 10.140.220.209 with SMTP id q200mr833366qhb.18.1464912144652;
-        Thu, 02 Jun 2016 17:02:24 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp998867lfb;
+        Thu, 2 Jun 2016 18:17:50 -0700 (PDT)
+X-Received: by 10.140.168.131 with SMTP id o125mr960243qho.101.1464916669975;
+        Thu, 02 Jun 2016 18:17:49 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k17si796677qkl.124.2016.06.02.17.02.24
+        by mx.google.com with ESMTPS id x7si960319qkb.24.2016.06.02.18.17.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 Jun 2016 17:02:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 02 Jun 2016 18:17:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50952 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51249 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8cZE-0006bl-4C
-	for alex.bennee@linaro.org; Thu, 02 Jun 2016 20:02:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40650)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b8dkD-0007zS-F8
+	for alex.bennee@linaro.org; Thu, 02 Jun 2016 21:17:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1b8cZ9-0006bf-Cz
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 20:02:20 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1b8djF-0007bA-KI
+	for qemu-devel@nongnu.org; Thu, 02 Jun 2016 21:16:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1b8cZ4-000734-Cp
-	for qemu-arm@nongnu.org; Thu, 02 Jun 2016 20:02:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55267)
+	(envelope-from <dgibson@ozlabs.org>) id 1b8djD-0006fk-Au
+	for qemu-devel@nongnu.org; Thu, 02 Jun 2016 21:16:48 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:52232)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1b8cZ4-00072z-47; Thu, 02 Jun 2016 20:02:14 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CF787AE82;
-	Fri,  3 Jun 2016 00:02:12 +0000 (UTC)
-Received: from localhost (vpn1-7-10.gru2.redhat.com [10.97.7.10])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5302Air014834; Thu, 2 Jun 2016 20:02:11 -0400
-Date: Thu, 2 Jun 2016 21:02:09 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: David Hildenbrand <dahi@linux.vnet.ibm.com>
-Message-ID: <20160603000209.GM19055@thinpad.lan.raisama.net>
-References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<201606022044.u52KaIkv017063@mx0a-001b2d01.pphosted.com>
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1b8djC-0006fc-Ul; Thu, 02 Jun 2016 21:16:47 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3rLR596Fdjz9t88; Fri,  3 Jun 2016 11:16:45 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1464916605;
+	bh=Rb0cOaYrfawvRPVYUanKhObdHHv0m4If8tjkv59pV3s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a7p2ByhHlMckQs0WJ/jFAOAfwvWjavijpC8MQRRiG7UAExHggmryMAvkLrpv/bBK5
+	Wj9jGdFyrzBn2xOzIlG51MaFTfEWxmV3O9FuYLor+AGgTJnINTKE8wB1jRZ+0Iaf9s
+	RobOEXITRxjT3LUjmntbdtUE4o0xXnv5c/Iony88=
+Date: Fri, 3 Jun 2016 11:16:04 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Greg Kurz <gkurz@linux.vnet.ibm.com>
+Message-ID: <20160603011604.GE1087@voom.fritz.box>
+References: <146468219419.25446.8053365248306938869.stgit@bahia.huguette.org>
+	<81bca811-db78-ffd2-dbfc-67e14ae88ce2@redhat.com>
+	<20160531151029.605aebb1@bahia.lab.toulouse-stg.fr.ibm.com>
+	<0818d93b-358a-647d-b14b-698ae74031a1@redhat.com>
+	<20160601023328.GB15455@voom.fritz.box>
+	<20160602180437.02f3ed85@bahia.huguette.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="bi5JUZtvcfApsciF"
 Content-Disposition: inline
-In-Reply-To: <201606022044.u52KaIkv017063@mx0a-001b2d01.pphosted.com>
-X-Fnord: you can see the fnord
+In-Reply-To: <20160602180437.02f3ed85@bahia.huguette.org>
 User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 03 Jun 2016 00:02:12 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 0/8] cpus: make "-cpu cpux,
- features" global properties
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-devel] [PATCH] virtio: move bi-endian target support to a
+ single location
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
-	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, Igor Mammedov <imammedo@redhat.com>, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NHRIUyTR3Yls
-
-On Thu, Jun 02, 2016 at 10:44:49PM +0200, David Hildenbrand wrote:
-> > Current CLI option -cpu cpux,features serves as template
-> > for all created cpus of type: cpux. However QEMU parses
-> > "features" every time it creates a cpu instance and applies
-> > them to it while doing parsing.
-> > 
-> > That doesn't work well with -device/device_add infrastructure
-> > as it has no idea about cpu specific hooks that's used for
-> > parsing "features".
-> > In order to make -device/device_add utilize "-cpu features"
-> > template convert it into a set of global properties, so that
-> > every new CPU created will have them applied automatically.
-> > 
-> > That also allows to parse features only once, instread of
-> > doing it for every CPU instance created.
-> 
-> While I think this makes sense for most cases, we (s390x) are
-> currently working on a mechanism to compare and baseline cpu models via
-> a qmp interface, to not have to replicate CPU models in libvirt
-> every time we do some changes.
-> 
-> To do that, we are creating temporary CPUs to handle the model
-> parsing. So, with our current prototype, we rely on the mechanism
-> to parse properties multiple time, as we are really creating
-> different CPUs.
-
-This series only changes the code that exists for parsing the
--cpu option, and nothing else. Is this (the code that parses
--cpu) really what you need to reuse?
-
-If all you need is to parse properties, why can't you reuse the
-existing QOM/Device mechanisms to handle properties (the one used
-by -device and device_add), instead of the -cpu code?
-
-We need to use less of the infrastructure that exists for the
-legacy -cpu option (and use more of the generic QOM/Device
-mechanisms), not more of it.
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ot+6mValmLGl
 
 
-> 
-> While we could somehow change our mechanism I don't think this is
-> the right thing to do.
-> 
+--bi5JUZtvcfApsciF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-If reusing the existing parsing code is something you absolutely
-need, we could split the process in two parts: 1) converting the
-feature string to a list of property=value pairs; 2) registering
-the property=value pairs as global properties. Then you coulde
-reuse (1) only. But do you really need to reuse the parser for
-the legacy -cpu option in your mechanism?
+On Thu, Jun 02, 2016 at 06:04:37PM +0200, Greg Kurz wrote:
+> On Wed, 1 Jun 2016 12:33:28 +1000
+> David Gibson <david@gibson.dropbear.id.au> wrote:
+>=20
+> > On Tue, May 31, 2016 at 03:15:21PM +0200, Paolo Bonzini wrote:
+> > >=20
+> > >=20
+> > > On 31/05/2016 15:10, Greg Kurz wrote: =20
+> > > >>> > > +#if defined(TARGET_PPC64) || defined(TARGET_ARM)
+> > > >>> > > +#define LEGACY_VIRTIO_IS_BIENDIAN 1
+> > > >>> > > +#endif   =20
+> > > >> >=20
+> > > >> > These will only be correct if something else includes cpu.h.  In=
+stead of =20
+> > > > Unless I missed something, the TARGET_* macros come from the genera=
+ted
+> > > > config-target.h header, which is in turn included by qemu/osdep.h a=
+nd
+> > > > thus included by most of the code. =20
+> > >=20
+> > > You're right.  Problems _could_ happen if virtio-access.h is included=
+ in
+> > > a file compiled without -DNEED_CPU_H (i.e. with common-obj-y instead =
+of
+> > > obj-y) but include/exec/poison.h should take care of that.
+> > >  =20
+> > > >> > defining this, you should add
+> > > >> >=20
+> > > >> > #include "cpu.h"
+> > > >> >=20
+> > > >> > at the top of include/hw/virtio-access.h and leave the definitio=
+ns in
+> > > >> > target-*/cpu.h.
+> > > >> >  =20
+> > > > All this bi-endian stuff is really an old-virtio-only thing... it is
+> > > > only to be used by virtio_access_is_big_endian(). The fact that it
+> > > > broke silently with your cleanup series is yet another proof that
+> > > > this workaround is fragile. =20
+> > >=20
+> > > It is not fragile actually.  cpu.h doesn't exist in common-obj-y, so =
+the
+> > > TARGET_IS_BIENDIAN define can be safely taken from cpu.h.
+> > >=20
+> > > Anyway because of poison.h your solution isn't fragile either, so
+> > >=20
+> > > Reviewed-by: Paolo Bonzini <pbonzini@redhat.com> =20
+> >=20
+> > Should I take this through my tree?
+> >=20
+>=20
+> That would be great !
 
-> We will have to support heterogeneous cpu models (I think arm was one of
-> the guys requesting this if I'm not mistaking) and it somehow
-> contradicts to the general mechanism of device_add fully specifying
-> parameters. These would now be implicit parameters.
+Actually, that was a question for Paolo..
 
-The -cpu interface really does contradict the general mechanism
-of device_add. This whole series is about translating the
-handling of -cpu to a more generic mechanism (-global), to allow
-us to deprecate -cpu in the future. Why is that a bad thing?
 
-> 
-> Would it be possible to do this for x86 only? Or find another way
-> to handle the "create just another ordinary CPU we already have"?
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Can you clarify what "create just another ordinary CPU we already
-have" mean? If you are talking about creating another CPU using
-what's on -cpu, nothing changes. If you are talking about
-creating another CPU with different options, I suggest not
-reusing the code that was written for -cpu.
+--bi5JUZtvcfApsciF
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-Eduardo
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXUNpUAAoJEGw4ysog2bOSpOAP/1cUsuLU/EMthfrCZT/Cs18K
+zjj4trllX4QYEE6PlUwvmm2G8fKdz35DfbfqlP0UnR9L2+DHNCwc3pmgsa8e2oIx
+w2bj6EG7cZD9nCqet2SS1DBF3t9VuWzObkelX0Sl0zH6eH4tfTk3Rn3ClVd8jc0b
+uqcpv6RumTa/NtYgMF7la6AjhVxFdwSJCDYGI06e3+8EeegkqUiUwMmGDe+Wg+Gm
+P1yNvcLNrF87qBw65Sqc/oK67fzN9ILi57BEgVfYWi5opjlqdXimAIganW0iPctu
+bKOMoGvv+CpBiHZdd5xG86/mxYTFiCZgzUY7asWvGo3lpdQXqegMdsx6OShRb7/c
+Zomue2+rqDtSzWMiyaD+6Sr80ta4lUjW0mB7e74edSR2pgpDnAy8t3pGX65kFrTw
+h8i/JWOt0US/my9Za940AEHpFYkBixqtpINFbIlb/Q/O43BkuFV0VHHaKoD0Y4IO
+orbxrkl8rk8RwSAh1Sk1qktuuZEeS0zaol78NMpdX/qCniCyAoT32yyYzuhfnu7U
+9FJ/+gVB5c/jtIj3Zr1puyHqEQMti6SdsXzc9SjWS90aroIN4OuhkqAyCge8EbkC
+0BM1qjf7Jk0DJbcCSyHkXPPuvHM9+jb0mT9abD1uxygVv+qFPXoZLYk9Vyb19MZ+
+3Ry0s//VK5p5VHwuaBiS
+=H2rG
+-----END PGP SIGNATURE-----
+
+--bi5JUZtvcfApsciF--

@@ -1,64 +1,99 @@
-Received: by 10.25.27.66 with SMTP id b63csp160979lfb;
-        Fri, 3 Jun 2016 03:13:32 -0700 (PDT)
-X-Received: by 10.200.36.5 with SMTP id c5mr2417686qtc.51.1464948812358;
-        Fri, 03 Jun 2016 03:13:32 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp163107lfb;
+        Fri, 3 Jun 2016 03:18:34 -0700 (PDT)
+X-Received: by 10.140.43.166 with SMTP id e35mr2339965qga.72.1464949114020;
+        Fri, 03 Jun 2016 03:18:34 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l73si1923327qkh.127.2016.06.03.03.13.32
+        by mx.google.com with ESMTPS id z35si1948566qge.18.2016.06.03.03.18.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Jun 2016 03:13:32 -0700 (PDT)
+        Fri, 03 Jun 2016 03:18:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53869 helo=lists.gnu.org)
+Received: from localhost ([::1]:53894 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b8m6d-0003up-Nx
-	for alex.bennee@linaro.org; Fri, 03 Jun 2016 06:13:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45056)
+	id 1b8mBV-0006Uy-De
+	for alex.bennee@linaro.org; Fri, 03 Jun 2016 06:18:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46540)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b8m6Z-0003tk-IT
-	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 06:13:28 -0400
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8mBP-0006SP-6L
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 06:18:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1b8m6V-0005K0-7y
-	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 06:13:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34063)
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8mBK-0006U7-Rw
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 06:18:26 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:43738
+	helo=mx0a-001b2d01.pphosted.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>)
-	id 1b8m6U-0005JW-W0; Fri, 03 Jun 2016 06:13:23 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 637498E3E4;
-	Fri,  3 Jun 2016 10:13:22 +0000 (UTC)
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u53ADJjg031415; Fri, 3 Jun 2016 06:13:20 -0400
-Date: Fri, 3 Jun 2016 12:13:18 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20160603121318.7e4b625d@nial.brq.redhat.com>
-In-Reply-To: <20160602173427.GI19055@thinpad.lan.raisama.net>
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b8mBK-0006Ty-NC
+	for qemu-arm@nongnu.org; Fri, 03 Jun 2016 06:18:22 -0400
+Received: from pps.filterd (m0049461.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
+	u53AFhNt007211
+	for <qemu-arm@nongnu.org>; Fri, 3 Jun 2016 06:18:22 -0400
+Message-Id: <201606031018.u53AFhNt007211@mx0a-001b2d01.pphosted.com>
+Received: from e06smtp10.uk.ibm.com (e06smtp10.uk.ibm.com [195.75.94.106])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 23b3njkkww-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Fri, 03 Jun 2016 06:18:21 -0400
+Received: from localhost
+	by e06smtp10.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <dahi@linux.vnet.ibm.com>;
+	Fri, 3 Jun 2016 11:18:20 +0100
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp10.uk.ibm.com (192.168.101.140) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Fri, 3 Jun 2016 11:18:18 +0100
+X-IBM-Helo: d06dlp03.portsmouth.uk.ibm.com
+X-IBM-MailFrom: dahi@linux.vnet.ibm.com
+X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org
+Received: from b06cxnps4076.portsmouth.uk.ibm.com
+	(d06relay13.portsmouth.uk.ibm.com [9.149.109.198])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 0A0171B08067; 
+	Fri,  3 Jun 2016 11:19:21 +0100 (BST)
+Received: from d06av08.portsmouth.uk.ibm.com (d06av08.portsmouth.uk.ibm.com
+	[9.149.37.249])
+	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u53AIHBF6488518; Fri, 3 Jun 2016 10:18:17 GMT
+Received: from d06av08.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u53AIG8v028919; Fri, 3 Jun 2016 04:18:16 -0600
+Received: from thinkpad-w530 (dyn-9-152-224-205.boeblingen.de.ibm.com
+	[9.152.224.205])
+	by d06av08.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u53AIGjZ028899; Fri, 3 Jun 2016 04:18:16 -0600
+Date: Fri, 3 Jun 2016 12:18:15 +0200
+From: David Hildenbrand <dahi@linux.vnet.ibm.com>
+To: Igor Mammedov <imammedo@redhat.com>
+In-Reply-To: <20160603112014.57782148@nial.brq.redhat.com>
 References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<1464799050-11002-2-git-send-email-imammedo@redhat.com>
-	<20160601174309.GA13503@thinpad.lan.raisama.net>
-	<20160602115930.6945e5d6@igors-macbook-pro.local>
-	<20160602143826.GD19055@thinpad.lan.raisama.net>
-	<20160602185655.20d7c7e0@nial.brq.redhat.com>
-	<20160602173427.GI19055@thinpad.lan.raisama.net>
+	<201606022044.u52KaIkv017063@mx0a-001b2d01.pphosted.com>
+	<20160603000209.GM19055@thinpad.lan.raisama.net>
+	<20160603083621.6547bde4@thinkpad-w530>
+	<20160603112014.57782148@nial.brq.redhat.com>
+Organization: IBM Deutschland GmbH
+X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 03 Jun 2016 10:13:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 1/8] target-i386: cpu: move
- features logic that requires CPUState to realize time
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16060310-0040-0000-0000-000001E684DC
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16060310-0041-0000-0000-0000207BECFA
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-06-03_06:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=8
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
+	definitions=main-1606030117
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 0/8] cpus: make "-cpu cpux,
+ features" global properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,91 +105,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
-	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, rth@twiddle.net
+Cc: peter.maydell@linaro.org, Eduardo Habkost <ehabkost@redhat.com>,
+	mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
+	blauwirbel@gmail.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+	rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U43ttOIY7HE8
+X-TUID: paJWafQJK4m3
 
-On Thu, 2 Jun 2016 14:34:27 -0300
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > e.g. in terms of s390x: z13 includes both vx and tx
+> > -cpu z13,vx=off,tx=off  
+> Above -cpu template will be translated into a corresponding
+> global properties template:
+> 
+> -global z13-s390-cpu.vx=off -global z13-s390-cpu.tx=off
 
-> On Thu, Jun 02, 2016 at 06:56:55PM +0200, Igor Mammedov wrote:
-> > On Thu, 2 Jun 2016 11:38:26 -0300
-> > Eduardo Habkost <ehabkost@redhat.com> wrote:
-> >   
-> > > On Thu, Jun 02, 2016 at 11:59:30AM +0200, Igor Mammedov wrote:  
-> > > > On Wed, 1 Jun 2016 14:43:09 -0300
-> > > > Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > > > [...]
-> > > >     
-> > > > > > diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> > > > > > index 3fbc6f3..6159a7f 100644
-> > > > > > --- a/target-i386/cpu.c
-> > > > > > +++ b/target-i386/cpu.c
-> > > > > > @@ -1932,6 +1932,11 @@ static inline void feat2prop(char *s)
-> > > > > >      }
-> > > > > >  }
-> > > > > >  
-> > > > > > +/* Features to be added */    
-> > > > > 
-> > > > > Please add something like "Features to be added. Will be replaced
-> > > > > by global variables in the future".
-> > > > >     
-> > > > > > +static FeatureWordArray plus_features = { 0 };
-> > > > > > +/* Features to be removed */
-> > > > > > +static FeatureWordArray minus_features = { 0 };
-> > > > > > +    
-> > > > > 
-> > > > > I see that this hack is replaced by the following patches, but is
-> > > > > there an easy way to remove the CPUState argument from
-> > > > > x86_cpu_parse_featurestr() before we introduce these static
-> > > > > variables? (No problem if there's no way to do that, as long as
-> > > > > the static variables are explicitly documented as a temporary
-> > > > > hack)    
-> > > > It's hack to keep legacy +- semantic (i.e. it overrides feat1=x,feat2)
-> > > > local to x86 that probably would stay here forever.
-> > > > I should add comment that explains why +- can't be replaced
-> > > > with normal properties.    
-> > > 
-> > > Oh, I assumed it would be temporary. In that case, I would like
-> > > to avoid adding the static variables if possible.
-> > >   
-> > > > 
-> > > > I don't plan to replace plus/minus_features with anything nor to
-> > > > make this variables a global ones to spread +- x86/sparc legacy
-> > > > format everywhere.    
-> > > 
-> > > Can't the +/- semantics be emulated by simply registering
-> > > plus_features/minus_features after the other global properties
-> > > are registered inside x86_cpu_parse_featurestr()?  
-> > it could be done, at the first glance it will take 2 extra parsing passes
+This description makes it much clearer how you expect -cpu to behave. Thanks.
+The important part for me was that -global applies to this cpu type only.
+
+And our internal hierarchy should make sure that this is guaranteed. 
+And good to known that it is a common schema we are following here.
+
+> > d) object_new("z13-s390-cpu")); // will I get a clean z13 with tx and vx on?  
+> nope, you'll z13 with tx and vx off
+> 
+> > d) has to work for us. Otherwise we will have to fallback to manual
+> > property parsing.  
+> could you elaborate more why do you need (d) work
+> in combination with -cpu z13,vx=off,tx=off ?
+> Perhaps there is another way to do what you need.
+
+Say we started QEMU with -z13,vx=off,tx=off.
+When I do a QMP query to e.g. compare two cpu models, say a temporary cpu
+zBC12,tx=on and zBC13,tx=on is created. And the additional
+parameters only affect these instances as I learned.
+
+When I now compare them, the result will depend on the
+way QEMU has been started. But most likely this is okay, as
+we expect this interface to be used without any cpu model at all.
+
+This then just has to be documented accordingly.
+
+> 
+> Current code uses -cpu for creating homogeneous cpus of given type
+> (i.e.) as template and that's exactly what -global cpufoo,feat=x ... does.
+> 
+> > > If all you need is to parse properties, why can't you reuse the
+> > > existing QOM/Device mechanisms to handle properties (the one used
+> > > by -device and device_add), instead of the -cpu code?    
 > > 
-> > 1: copy featurestr, parse feat=x,feat
-> > 2: copy featurestr, parse +feat
-> > 3: copy featurestr, parse -feat  
+> > We can, if my given example works. And the global properties
+> > don't interfere with cpus.  
+> if you need pure -device/device_add handling then don't use
+> -cpu CPUFOO,feat=x,... template as its current semantic
+> is to create all CPUs of type CPUFOO with feat=x,... applied
+> > It is a bad thing as soon as they affect other devices.
+> > If I did a -cpu z13,tx=off, I don't expect
+> > 
+> > a) a hot-plugged z13 to suddenly have tx=off  
+> you should expect it though, as -cpu z13,tx=off is template
+> for all z13 CPUs, it's not per instance thingy
 > 
-> Why? Can't we just replace plus_features and minus_features with
-> two string lists (or a QDict), and make the corresponding
-> object_property_parse()/qdev_prop_register_global() calls after
-> the main parsing loop?
+> > b) a hot-plugged zBC12 to suddenly have tx off  
+> that will not have tx off unless zBC12 is inherited from z13
+
+They don't inherit, so this should be fine.
+
 > 
-> (Didn't you do that in your old "target-i386: set [+-]feature
-> using static properties" patch?)
-It doesn't look like it will work due to broken 4d1b279b0 as
-plus_features/minus_features are applied after:
+> > Won't libvirt have to specify the cpu name either way in device-add?
+> > And your plan seems to be that the properties are suddenly implicit.
+> > I don't see a problem with libvirt having to specify the properties
+> > manually on device add.  
+> libvirt could do verbose
+> #1  -device CPUFOO,feat1=x -device CPUFOO,feat1=x ...
+> or
+> #2  -cpu CPUFOO,feat1=x -device CPUFOO -device CPUFOO ...
+>   which is equivalent of generic device syntax and not use -cpu at all:
+> #3  -global CPUFOO.feat1=x -device CPUFOO -device CPUFOO ...
+> 
+> #3 is where we are heading to by making -device/device_add available for
+> CPUs. If you wish to have CPUs of the same type but with different
+> features, don't use global properties for that features.
+> Just like with any other device.
 
-    if (cpu->host_features) {                                                    
-        for (w = 0; w < FEATURE_WORDS; w++) {                                    
-            env->features[w] =                                                   
-                x86_cpu_get_supported_feature_word(w, cpu->migratable);          
-        }                                                                        
-    }
+So this should work for us, we just have to document that -global for cpus
+or -cpu should not be used when trying to work with the new QMP 
+queries.
 
-and with above moving to realize(), +-feats would be overwritten by it.
-Lets temporary use static variables as in this patch so not to delay
-series on not related fixes. And deal with it when 4d1b279b0 is fixed.
+Thanks for the explanation!
 
-1 way to deal with it is to wait several releases till users fix their
-+-feats CLIs and then just drop it.
+David
+

@@ -1,86 +1,86 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b207sm1255545wmb.0.2016.06.03.13.40.31
+Received: by 10.25.27.66 with SMTP id b63csp736129lfb;
+        Sat, 4 Jun 2016 07:51:06 -0700 (PDT)
+X-Received: by 10.36.141.197 with SMTP id w188mr6042992itd.65.1465051866182;
+        Sat, 04 Jun 2016 07:51:06 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
+        by mx.google.com with ESMTPS id c77si3010246iod.42.2016.06.04.07.51.05
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 03 Jun 2016 13:40:35 -0700 (PDT)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id E8F333E2F23;
-	Fri,  3 Jun 2016 21:40:39 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: mttcg@listserver.greensocs.com,
-	qemu-devel@nongnu.org,
-	fred.konrad@greensocs.com,
-	a.rigo@virtualopensystems.com,
-	serge.fdrv@gmail.com,
-	cota@braap.org,
-	bobby.prani@gmail.com
-Cc: mark.burton@greensocs.com,
-	pbonzini@redhat.com,
-	jan.kiszka@siemens.com,
-	rth@twiddle.net,
-	peter.maydell@linaro.org,
-	claudio.fontana@huawei.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexander Spyridakis <a.spyridakis@virtualopensystems.com>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [RFC v3 09/19] target-arm/arm-powerctl: wake up sleeping CPUs
-Date: Fri,  3 Jun 2016 21:40:18 +0100
-Message-Id: <1464986428-6739-10-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1464986428-6739-1-git-send-email-alex.bennee@linaro.org>
-References: <1464986428-6739-1-git-send-email-alex.bennee@linaro.org>
+        Sat, 04 Jun 2016 07:51:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-io0-x242.google.com with SMTP id f128so3236376iof.3;
+        Sat, 04 Jun 2016 07:51:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=Y/MEJdGSm1yxUwOeSZ7oxPr8hTVjvNxlOsN06Inl5X0=;
+        b=aSUkBmLweyxFGfx39WIowXzQgilSawDJIj2Cjegt1iitinJDuJillxvfI0hIwLGKU7
+         OIOOKZdsiaKlB+lj4aIvVB06Y5R6R3f8Aoe/cWd57WU54NNOUv4oPxPly/0humwOKlLA
+         8efMXQfUSOkOSFPPnRBgdQADOymkxTL30JtsIW66GEA2PD7nlB2w7QvoVAnNZ9NTgnsb
+         UC/JV+8Czl2rDPHcwNbt6kv51XF8hKrjI+AUmaw2hXvvdedknScLG/U/4JLBA0UUHZY4
+         TgaJFmz4SakO6tihmnQgwDIL1cQRZl6LHOtbfqOACyS8ofLOm8z/oJg3w9JlM1zQp8bW
+         Woxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Y/MEJdGSm1yxUwOeSZ7oxPr8hTVjvNxlOsN06Inl5X0=;
+        b=QH95KzffafnoV3OxKt46Ag1Kxuzd6R408jbpepjvHrzX5YLQQ1qRSUMz64b8Z4Nv1T
+         DxRAm/r0JnSaNlzjI7eAAv4ZLtduTluFE/JcbEtMU9qePF+xxggv9J4CFYrmAktjdB1Z
+         33ypbNt3j3ngwPf1cyTmUl2H4zQ0TrnadnTDz/xxMfIR2gCbIQD2LPBSgZFDBPhPCd6e
+         yObTBGqeRcRKX4hEc6O6NtGnoaapMBcsCEBaNsBTRpsraGANaI+scfbnqv5qBDbEV1cs
+         5pY2Ulij81QXU9DPTMav03p6pBaiwdtNUD8JI/lekPmqC8DKC7ij55mL7cn6UU1VooMl
+         3lqw==
+X-Gm-Message-State: ALyK8tLkP2wJDcdYSnoDXgUC4nIjX0WL8rDooMx3JZHNEq6hj/aIn1FWjhhe1eS6KzZMHVXCGTY9yN9wqrcBBw==
+X-Received: by 10.107.191.7 with SMTP id p7mr13208595iof.115.1465051865798;
+ Sat, 04 Jun 2016 07:51:05 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.107.62.4 with HTTP; Sat, 4 Jun 2016 07:50:36 -0700 (PDT)
+In-Reply-To: <57508AEE.70706@gmail.com>
+References: <20160531183928.29406-1-bobby.prani@gmail.com> <20160531183928.29406-12-bobby.prani@gmail.com>
+ <57508AEE.70706@gmail.com>
+From: Pranith Kumar <bobby.prani@gmail.com>
+Date: Sat, 4 Jun 2016 10:50:36 -0400
+Message-ID: <CAJhHMCA7zhPLvmyRoFTW0=E=n5JeO3rrnvuR12aDnAuGYQWJ3Q@mail.gmail.com>
+Subject: Re: [Qemu-devel] [RFC v2 PATCH 11/13] target-arm: Generate fences in
+ ARMv7 frontend
+To: Sergey Fedorov <serge.fdrv@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>, 
+	"open list:All patches CC here" <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: Yl/7MYkyUS1r
+X-TUID: OpW7BzU92F4d
 
-Testing with Alexander's bare metal syncronisation tests fails in MTTCG
-leaving one CPU spinning forever waiting for the second CPU to wake up.
-We simply need to kick the vCPU once we have processed the PSCI power on
-call.
+On Thu, Jun 2, 2016 at 3:37 PM, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
+> On 31/05/16 21:39, Pranith Kumar wrote:
+>> Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
+>> Signed-off-by: Richard Henderson <rth@twiddle.net>
+>> ---
+>>  target-arm/translate.c | 7 +++++--
+>>  1 file changed, 5 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target-arm/translate.c b/target-arm/translate.c
+>> index c946c0e..e1b16c0 100644
+>> --- a/target-arm/translate.c
+>> +++ b/target-arm/translate.c
+>> @@ -7980,9 +7980,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>>                  gen_clrex(s);
+>>                  return;
+>>              case 4: /* dsb */
+>> +                ARCH(7);
+>
+> ARMv7 ARM says: "A DSB behaves as a DMB with the same arguments, and
+> also has the additional properties...".
+>
 
-As the power control API is for system emulation only as is the
-qemu_kick_cpu function we also ensure we only build arm-powerctl for
-SoftMMU builds.
+OK. I was just focusing on dmb for now. I will add translation for all
+other barriers too in the next version.
 
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-CC: Alexander Spyridakis <a.spyridakis@virtualopensystems.com>
-Message-Id: <1439220437-23957-20-git-send-email-fred.konrad@greensocs.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-
----
-v3
-  - re-base caught arm_powerctl re-factor
-  - include cpu.h header for kick definition
-  - fix Makefile.objs to only build for softmmu
----
- target-arm/Makefile.objs  | 2 +-
- target-arm/arm-powerctl.c | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
-index f206411..847fb52 100644
---- a/target-arm/Makefile.objs
-+++ b/target-arm/Makefile.objs
-@@ -9,4 +9,4 @@ obj-y += neon_helper.o iwmmxt_helper.o
- obj-y += gdbstub.o
- obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
- obj-y += crypto_helper.o
--obj-y += arm-powerctl.o
-+obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
-diff --git a/target-arm/arm-powerctl.c b/target-arm/arm-powerctl.c
-index d452230..4baa051 100644
---- a/target-arm/arm-powerctl.c
-+++ b/target-arm/arm-powerctl.c
-@@ -166,6 +166,8 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
-     /* Start the new CPU at the requested address */
-     cpu_set_pc(target_cpu_state, entry);
- 
-+    qemu_cpu_kick(target_cpu_state);
-+
-     /* We are good to go */
-     return QEMU_ARM_POWERCTL_RET_SUCCESS;
- }
+Thanks!
 -- 
-2.7.4
+Pranith

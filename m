@@ -1,86 +1,140 @@
-Received: by 10.25.27.66 with SMTP id b63csp736129lfb;
-        Sat, 4 Jun 2016 07:51:06 -0700 (PDT)
-X-Received: by 10.36.141.197 with SMTP id w188mr6042992itd.65.1465051866182;
-        Sat, 04 Jun 2016 07:51:06 -0700 (PDT)
-Return-Path: <bobby.prani@gmail.com>
-Received: from mail-io0-x242.google.com (mail-io0-x242.google.com. [2607:f8b0:4001:c06::242])
-        by mx.google.com with ESMTPS id c77si3010246iod.42.2016.06.04.07.51.05
+Received: by 10.25.27.66 with SMTP id b63csp799001lfb;
+        Sat, 4 Jun 2016 11:16:14 -0700 (PDT)
+X-Received: by 10.55.39.146 with SMTP id n140mr9147487qkn.10.1465064174030;
+        Sat, 04 Jun 2016 11:16:14 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id g27si1040782qtc.19.2016.06.04.11.16.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Jun 2016 07:51:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) client-ip=2607:f8b0:4001:c06::242;
+        Sat, 04 Jun 2016 11:16:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4001:c06::242 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-io0-x242.google.com with SMTP id f128so3236376iof.3;
-        Sat, 04 Jun 2016 07:51:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=Y/MEJdGSm1yxUwOeSZ7oxPr8hTVjvNxlOsN06Inl5X0=;
-        b=aSUkBmLweyxFGfx39WIowXzQgilSawDJIj2Cjegt1iitinJDuJillxvfI0hIwLGKU7
-         OIOOKZdsiaKlB+lj4aIvVB06Y5R6R3f8Aoe/cWd57WU54NNOUv4oPxPly/0humwOKlLA
-         8efMXQfUSOkOSFPPnRBgdQADOymkxTL30JtsIW66GEA2PD7nlB2w7QvoVAnNZ9NTgnsb
-         UC/JV+8Czl2rDPHcwNbt6kv51XF8hKrjI+AUmaw2hXvvdedknScLG/U/4JLBA0UUHZY4
-         TgaJFmz4SakO6tihmnQgwDIL1cQRZl6LHOtbfqOACyS8ofLOm8z/oJg3w9JlM1zQp8bW
-         Woxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=Y/MEJdGSm1yxUwOeSZ7oxPr8hTVjvNxlOsN06Inl5X0=;
-        b=QH95KzffafnoV3OxKt46Ag1Kxuzd6R408jbpepjvHrzX5YLQQ1qRSUMz64b8Z4Nv1T
-         DxRAm/r0JnSaNlzjI7eAAv4ZLtduTluFE/JcbEtMU9qePF+xxggv9J4CFYrmAktjdB1Z
-         33ypbNt3j3ngwPf1cyTmUl2H4zQ0TrnadnTDz/xxMfIR2gCbIQD2LPBSgZFDBPhPCd6e
-         yObTBGqeRcRKX4hEc6O6NtGnoaapMBcsCEBaNsBTRpsraGANaI+scfbnqv5qBDbEV1cs
-         5pY2Ulij81QXU9DPTMav03p6pBaiwdtNUD8JI/lekPmqC8DKC7ij55mL7cn6UU1VooMl
-         3lqw==
-X-Gm-Message-State: ALyK8tLkP2wJDcdYSnoDXgUC4nIjX0WL8rDooMx3JZHNEq6hj/aIn1FWjhhe1eS6KzZMHVXCGTY9yN9wqrcBBw==
-X-Received: by 10.107.191.7 with SMTP id p7mr13208595iof.115.1465051865798;
- Sat, 04 Jun 2016 07:51:05 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.107.62.4 with HTTP; Sat, 4 Jun 2016 07:50:36 -0700 (PDT)
-In-Reply-To: <57508AEE.70706@gmail.com>
-References: <20160531183928.29406-1-bobby.prani@gmail.com> <20160531183928.29406-12-bobby.prani@gmail.com>
- <57508AEE.70706@gmail.com>
-From: Pranith Kumar <bobby.prani@gmail.com>
-Date: Sat, 4 Jun 2016 10:50:36 -0400
-Message-ID: <CAJhHMCA7zhPLvmyRoFTW0=E=n5JeO3rrnvuR12aDnAuGYQWJ3Q@mail.gmail.com>
-Subject: Re: [Qemu-devel] [RFC v2 PATCH 11/13] target-arm: Generate fences in
- ARMv7 frontend
-To: Sergey Fedorov <serge.fdrv@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "open list:ARM" <qemu-arm@nongnu.org>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: OpW7BzU92F4d
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A05C463E1F;
+	Sat,  4 Jun 2016 18:16:12 +0000 (UTC)
+Received: from hawk.localdomain.com (dhcp-1-205.brq.redhat.com [10.34.1.205])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u54IG9nq008070;
+	Sat, 4 Jun 2016 14:16:09 -0400
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alex.bennee@linaro.org
+Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com
+Subject: [kvm-unit-tests PATCH v2 00/10] arm/arm64: add gic framework
+Date: Sat,  4 Jun 2016 20:15:55 +0200
+Message-Id: <1465064165-14885-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Sat, 04 Jun 2016 18:16:13 +0000 (UTC)
+X-TUID: Q7ANdYWIfWnl
 
-On Thu, Jun 2, 2016 at 3:37 PM, Sergey Fedorov <serge.fdrv@gmail.com> wrote:
-> On 31/05/16 21:39, Pranith Kumar wrote:
->> Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
->> Signed-off-by: Richard Henderson <rth@twiddle.net>
->> ---
->>  target-arm/translate.c | 7 +++++--
->>  1 file changed, 5 insertions(+), 2 deletions(-)
->>
->> diff --git a/target-arm/translate.c b/target-arm/translate.c
->> index c946c0e..e1b16c0 100644
->> --- a/target-arm/translate.c
->> +++ b/target-arm/translate.c
->> @@ -7980,9 +7980,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->>                  gen_clrex(s);
->>                  return;
->>              case 4: /* dsb */
->> +                ARCH(7);
->
-> ARMv7 ARM says: "A DSB behaves as a DMB with the same arguments, and
-> also has the additional properties...".
->
+v2:
+ Rebased on on latest master + my "populate argv[0]" series (will
+ send a REPOST for that shortly. Additionally a few patches got
+ fixes/features;
+ 07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
+       all interrupts as non-secure Group-1" in order to continue
+       working over TCG, as the gicv3 code for TCG removed a hack
+       it had there to make Linux happy.
+ 08/10 added more output for when things fail (if they fail)
+ 09/10 switched gicv3 broadcast implementation to using IRM. This
+       found a bug in a recent (but not tip) kernel, which I was
+       about to fix, but then I saw MarcZ beat me to it.
+ 10/10 actually check that the input irq is the received irq
 
-OK. I was just focusing on dmb for now. I will add translation for all
-other barriers too in the next version.
 
-Thanks!
+Import defines, and steal enough helper functions, from Linux to
+enable programming of the gic (v2 and v3). Then use the framework
+to add an initial test (an ipi test; self, target-list, broadcast).
+
+It's my hope that this framework will be a suitable base on which
+more tests may be easily added, particularly because we have
+vgic-new and tcg gicv3 emulation getting close to merge.
+
+To run it, along with other tests, just do
+
+ ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+ make
+ export QEMU=$PATH_TO_QEMU
+ ./run_tests.sh
+
+To run it separately do, e.g.
+
+$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 123 -machine gic-version=3 -append ipi
+
+      ^^ note, we can go nuts with nr-cpus on TCG :-)
+
+Or, a KVM example using a different "sender" cpu and irq (other than zero)
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
+
+
+Patches:
+01-05: fixes and functionality needed by the later gic patches
+06-07: code theft from Linux (defines, helper functions)
+08-10: arm/gic.flat (the base of the gic unit test), currently just IPI
+
+Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic
+
+
+Andrew Jones (10):
+  lib: xstr: allow multiple args
+  arm64: fix get_"sysreg32" and make MPIDR 64bit
+  arm/arm64: smp: support more than 8 cpus
+  arm/arm64: add some delay routines
+  arm/arm64: irq enable/disable
+  arm/arm64: add initial gicv2 support
+  arm/arm64: add initial gicv3 support
+  arm/arm64: gicv2: add an IPI test
+  arm/arm64: gicv3: add an IPI test
+  arm/arm64: gic: don't just use zero
+
+ arm/Makefile.common        |   7 +-
+ arm/gic.c                  | 381 +++++++++++++++++++++++++++++++++++++++++++++
+ arm/run                    |  19 ++-
+ arm/selftest.c             |   5 +-
+ arm/unittests.cfg          |  13 ++
+ lib/arm/asm/arch_gicv3.h   | 184 ++++++++++++++++++++++
+ lib/arm/asm/gic-v2.h       |  74 +++++++++
+ lib/arm/asm/gic-v3.h       | 321 ++++++++++++++++++++++++++++++++++++++
+ lib/arm/asm/gic.h          |  21 +++
+ lib/arm/asm/processor.h    |  38 ++++-
+ lib/arm/asm/setup.h        |   4 +-
+ lib/arm/gic.c              | 142 +++++++++++++++++
+ lib/arm/processor.c        |  15 ++
+ lib/arm/setup.c            |  12 +-
+ lib/arm64/asm/arch_gicv3.h | 169 ++++++++++++++++++++
+ lib/arm64/asm/gic-v2.h     |   1 +
+ lib/arm64/asm/gic-v3.h     |   1 +
+ lib/arm64/asm/gic.h        |   1 +
+ lib/arm64/asm/processor.h  |  53 ++++++-
+ lib/arm64/asm/sysreg.h     |  44 ++++++
+ lib/arm64/processor.c      |  15 ++
+ lib/libcflat.h             |   4 +-
+ 22 files changed, 1498 insertions(+), 26 deletions(-)
+ create mode 100644 arm/gic.c
+ create mode 100644 lib/arm/asm/arch_gicv3.h
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic-v3.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm/gic.c
+ create mode 100644 lib/arm64/asm/arch_gicv3.h
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic-v3.h
+ create mode 100644 lib/arm64/asm/gic.h
+ create mode 100644 lib/arm64/asm/sysreg.h
+
 -- 
-Pranith
+2.4.11

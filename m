@@ -1,84 +1,261 @@
-Received: by 10.25.27.66 with SMTP id b63csp799111lfb;
-        Sat, 4 Jun 2016 11:16:39 -0700 (PDT)
-X-Received: by 10.140.196.8 with SMTP id r8mr9014415qha.32.1465064185894;
-        Sat, 04 Jun 2016 11:16:25 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp799138lfb;
+        Sat, 4 Jun 2016 11:16:45 -0700 (PDT)
+X-Received: by 10.140.247.6 with SMTP id s6mr8790723qhc.41.1465064188625;
+        Sat, 04 Jun 2016 11:16:28 -0700 (PDT)
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b185si1203644qkd.54.2016.06.04.11.16.25
+        by mx.google.com with ESMTPS id e83si7136117qhd.52.2016.06.04.11.16.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 04 Jun 2016 11:16:25 -0700 (PDT)
+        Sat, 04 Jun 2016 11:16:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0F61F332F6E;
-	Sat,  4 Jun 2016 18:16:25 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 870D946295;
+	Sat,  4 Jun 2016 18:16:27 +0000 (UTC)
 Received: from hawk.localdomain.com (dhcp-1-205.brq.redhat.com [10.34.1.205])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u54IG9nv008070;
-	Sat, 4 Jun 2016 14:16:22 -0400
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u54IG9nw008070;
+	Sat, 4 Jun 2016 14:16:25 -0400
 From: Andrew Jones <drjones@redhat.com>
 To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
         qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
         peter.maydell@linaro.org, alex.bennee@linaro.org
 Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com
-Subject: [kvm-unit-tests PATCH v2 05/10] arm/arm64: irq enable/disable
-Date: Sat,  4 Jun 2016 20:16:00 +0200
-Message-Id: <1465064165-14885-6-git-send-email-drjones@redhat.com>
+Subject: [kvm-unit-tests PATCH v2 06/10] arm/arm64: add initial gicv2 support
+Date: Sat,  4 Jun 2016 20:16:01 +0200
+Message-Id: <1465064165-14885-7-git-send-email-drjones@redhat.com>
 In-Reply-To: <1465064165-14885-1-git-send-email-drjones@redhat.com>
 References: <1465064165-14885-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Sat, 04 Jun 2016 18:16:25 +0000 (UTC)
-X-TUID: XVSqhDYRKRID
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Sat, 04 Jun 2016 18:16:27 +0000 (UTC)
+X-TUID: SN4a9u4tDVje
+
+Add some gicv2 support. This just adds init and enable
+functions, allowing unit tests to start messing with it.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- lib/arm/asm/processor.h   | 10 ++++++++++
- lib/arm64/asm/processor.h | 10 ++++++++++
- 2 files changed, 20 insertions(+)
+ arm/Makefile.common    |  1 +
+ lib/arm/asm/gic-v2.h   | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ lib/arm/asm/gic.h      | 20 ++++++++++++++
+ lib/arm/gic.c          | 69 ++++++++++++++++++++++++++++++++++++++++++++++
+ lib/arm64/asm/gic-v2.h |  1 +
+ lib/arm64/asm/gic.h    |  1 +
+ 6 files changed, 166 insertions(+)
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm/gic.c
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic.h
 
-diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
-index afc903ca7d4ab..75a8d08b89330 100644
---- a/lib/arm/asm/processor.h
-+++ b/lib/arm/asm/processor.h
-@@ -35,6 +35,16 @@ static inline unsigned long current_cpsr(void)
+diff --git a/arm/Makefile.common b/arm/Makefile.common
+index a2dc82618b885..0dc9cac241007 100644
+--- a/arm/Makefile.common
++++ b/arm/Makefile.common
+@@ -43,6 +43,7 @@ cflatobjs += lib/arm/mmu.o
+ cflatobjs += lib/arm/bitops.o
+ cflatobjs += lib/arm/psci.o
+ cflatobjs += lib/arm/smp.o
++cflatobjs += lib/arm/gic.o
  
- #define current_mode() (current_cpsr() & MODE_MASK)
- 
-+static inline void local_irq_enable(void)
+ libeabi = lib/arm/libeabi.a
+ eabiobjs = lib/arm/eabi_compat.o
+diff --git a/lib/arm/asm/gic-v2.h b/lib/arm/asm/gic-v2.h
+new file mode 100644
+index 0000000000000..973c2bf3cc796
+--- /dev/null
++++ b/lib/arm/asm/gic-v2.h
+@@ -0,0 +1,74 @@
++/*
++ * All GIC* defines are lifted from include/linux/irqchip/arm-gic.h
++ *
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#ifndef _ASMARM_GIC_V2_H_
++#define _ASMARM_GIC_V2_H_
++
++#define GIC_CPU_CTRL			0x00
++#define GIC_CPU_PRIMASK			0x04
++#define GIC_CPU_BINPOINT		0x08
++#define GIC_CPU_INTACK			0x0c
++#define GIC_CPU_EOI			0x10
++#define GIC_CPU_RUNNINGPRI		0x14
++#define GIC_CPU_HIGHPRI			0x18
++#define GIC_CPU_ALIAS_BINPOINT		0x1c
++#define GIC_CPU_ACTIVEPRIO		0xd0
++#define GIC_CPU_IDENT			0xfc
++#define GIC_CPU_DEACTIVATE		0x1000
++
++#define GICC_ENABLE			0x1
++#define GICC_INT_PRI_THRESHOLD		0xf0
++
++#define GIC_CPU_CTRL_EOImodeNS		(1 << 9)
++
++#define GICC_IAR_INT_ID_MASK		0x3ff
++#define GICC_INT_SPURIOUS		1023
++#define GICC_DIS_BYPASS_MASK		0x1e0
++
++#define GIC_DIST_CTRL			0x000
++#define GIC_DIST_CTR			0x004
++#define GIC_DIST_IGROUP			0x080
++#define GIC_DIST_ENABLE_SET		0x100
++#define GIC_DIST_ENABLE_CLEAR		0x180
++#define GIC_DIST_PENDING_SET		0x200
++#define GIC_DIST_PENDING_CLEAR		0x280
++#define GIC_DIST_ACTIVE_SET		0x300
++#define GIC_DIST_ACTIVE_CLEAR		0x380
++#define GIC_DIST_PRI			0x400
++#define GIC_DIST_TARGET			0x800
++#define GIC_DIST_CONFIG			0xc00
++#define GIC_DIST_SOFTINT		0xf00
++#define GIC_DIST_SGI_PENDING_CLEAR	0xf10
++#define GIC_DIST_SGI_PENDING_SET	0xf20
++
++#define GICD_ENABLE			0x1
++#define GICD_DISABLE			0x0
++#define GICD_INT_ACTLOW_LVLTRIG		0x0
++#define GICD_INT_EN_CLR_X32		0xffffffff
++#define GICD_INT_EN_SET_SGI		0x0000ffff
++#define GICD_INT_EN_CLR_PPI		0xffff0000
++#define GICD_INT_DEF_PRI		0xa0
++#define GICD_INT_DEF_PRI_X4		((GICD_INT_DEF_PRI << 24) |\
++					(GICD_INT_DEF_PRI << 16) |\
++					(GICD_INT_DEF_PRI << 8) |\
++					GICD_INT_DEF_PRI)
++#ifndef __ASSEMBLY__
++
++struct gicv2_data {
++	void *dist_base;
++	void *cpu_base;
++};
++extern struct gicv2_data gicv2_data;
++
++#define gicv2_dist_base()		(gicv2_data.dist_base)
++#define gicv2_cpu_base()		(gicv2_data.cpu_base)
++
++extern int gicv2_init(void);
++extern void gicv2_enable_defaults(void);
++
++#endif /* !__ASSEMBLY__ */
++#endif /* _ASMARM_GIC_V2_H_ */
+diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
+new file mode 100644
+index 0000000000000..b1237d1c5ef22
+--- /dev/null
++++ b/lib/arm/asm/gic.h
+@@ -0,0 +1,20 @@
++/*
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#ifndef _ASMARM_GIC_H_
++#define _ASMARM_GIC_H_
++
++#include <asm/gic-v2.h>
++
++/*
++ * gic_init will try to find all known gics, and then
++ * initialize the gic data for the one found.
++ * returns
++ *  0   : no gic was found
++ *  > 0 : the gic version of the gic found
++ */
++extern int gic_init(void);
++
++#endif /* _ASMARM_GIC_H_ */
+diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+new file mode 100644
+index 0000000000000..64a3049c9e8ce
+--- /dev/null
++++ b/lib/arm/gic.c
+@@ -0,0 +1,69 @@
++/*
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#include <libcflat.h>
++#include <devicetree.h>
++#include <asm/gic.h>
++#include <asm/smp.h>
++#include <asm/io.h>
++
++struct gicv2_data gicv2_data;
++
++/*
++ * Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt
++ */
++static bool
++gic_get_dt_bases(const char *compatible, void **base1, void **base2)
 +{
-+	asm volatile("cpsie i" : : : "memory", "cc");
++	struct dt_pbus_reg reg;
++	struct dt_device gic;
++	struct dt_bus bus;
++	int node, ret;
++
++	dt_bus_init_defaults(&bus);
++	dt_device_init(&gic, &bus, NULL);
++
++	node = dt_device_find_compatible(&gic, compatible);
++	assert(node >= 0 || node == -FDT_ERR_NOTFOUND);
++
++	if (node == -FDT_ERR_NOTFOUND)
++		return false;
++
++	dt_device_bind_node(&gic, node);
++
++	ret = dt_pbus_translate(&gic, 0, &reg);
++	assert(ret == 0);
++	*base1 = ioremap(reg.addr, reg.size);
++
++	ret = dt_pbus_translate(&gic, 1, &reg);
++	assert(ret == 0);
++	*base2 = ioremap(reg.addr, reg.size);
++
++	return true;
 +}
 +
-+static inline void local_irq_disable(void)
++int gicv2_init(void)
 +{
-+	asm volatile("cpsid i" : : : "memory", "cc");
++	return gic_get_dt_bases("arm,cortex-a15-gic",
++			&gicv2_data.dist_base, &gicv2_data.cpu_base);
 +}
 +
- static inline unsigned int get_mpidr(void)
- {
- 	unsigned int mpidr;
-diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
-index 94f7ce35b65c1..d54a4ed1c1876 100644
---- a/lib/arm64/asm/processor.h
-+++ b/lib/arm64/asm/processor.h
-@@ -68,6 +68,16 @@ static inline unsigned long current_level(void)
- 	return el & 0xc;
- }
- 
-+static inline void local_irq_enable(void)
++int gic_init(void)
 +{
-+	asm volatile("msr daifclr, #2" : : : "memory");
++	if (gicv2_init())
++		return 2;
++	return 0;
 +}
 +
-+static inline void local_irq_disable(void)
++void gicv2_enable_defaults(void)
 +{
-+	asm volatile("msr daifset, #2" : : : "memory");
++	if (smp_processor_id() == 0) {
++		writel(GICD_INT_DEF_PRI_X4, gicv2_dist_base() + GIC_DIST_PRI);
++		writel(GICD_INT_EN_SET_SGI, gicv2_dist_base() + GIC_DIST_ENABLE_SET);
++		writel(GICD_ENABLE, gicv2_dist_base() + GIC_DIST_CTRL);
++	}
++	writel(GICC_INT_PRI_THRESHOLD, gicv2_cpu_base() + GIC_CPU_PRIMASK);
++	writel(GICC_ENABLE, gicv2_cpu_base() + GIC_CPU_CTRL);
 +}
-+
- #define DEFINE_GET_SYSREG(reg, type)				\
- static inline type get_##reg(void)				\
- {								\
+diff --git a/lib/arm64/asm/gic-v2.h b/lib/arm64/asm/gic-v2.h
+new file mode 100644
+index 0000000000000..52226624a2092
+--- /dev/null
++++ b/lib/arm64/asm/gic-v2.h
+@@ -0,0 +1 @@
++#include "../../arm/asm/gic-v2.h"
+diff --git a/lib/arm64/asm/gic.h b/lib/arm64/asm/gic.h
+new file mode 100644
+index 0000000000000..e5eb302a31b4d
+--- /dev/null
++++ b/lib/arm64/asm/gic.h
+@@ -0,0 +1 @@
++#include "../../arm/asm/gic.h"
 -- 
 2.4.11

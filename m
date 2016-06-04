@@ -1,59 +1,58 @@
-Received: by 10.25.27.66 with SMTP id b63csp617392lfb;
-        Sat, 4 Jun 2016 01:20:03 -0700 (PDT)
-X-Received: by 10.140.16.200 with SMTP id 66mr6743815qgb.52.1465028403155;
-        Sat, 04 Jun 2016 01:20:03 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp618040lfb;
+        Sat, 4 Jun 2016 01:22:39 -0700 (PDT)
+X-Received: by 10.55.134.6 with SMTP id i6mr7094997qkd.185.1465028559607;
+        Sat, 04 Jun 2016 01:22:39 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h90si4809622qgf.102.2016.06.04.01.20.02
+        by mx.google.com with ESMTPS id v65si5924394qtd.78.2016.06.04.01.22.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 04 Jun 2016 01:20:03 -0700 (PDT)
+        Sat, 04 Jun 2016 01:22:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59871 helo=lists.gnu.org)
+Received: from localhost ([::1]:59885 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b96oM-0005au-HX
-	for alex.bennee@linaro.org; Sat, 04 Jun 2016 04:20:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44641)
+	id 1b96qt-0007T6-0o
+	for alex.bennee@linaro.org; Sat, 04 Jun 2016 04:22:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b96jr-0001Ae-FR
-	for qemu-devel@nongnu.org; Sat, 04 Jun 2016 04:15:27 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1b96jp-00018Z-1Q
+	for qemu-devel@nongnu.org; Sat, 04 Jun 2016 04:15:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1b96jf-00024L-3C
-	for qemu-devel@nongnu.org; Sat, 04 Jun 2016 04:15:23 -0400
-Received: from m12-18.163.com ([220.181.12.18]:58674)
+	(envelope-from <zxq_yx_007@163.com>) id 1b96jf-00024x-Ii
+	for qemu-devel@nongnu.org; Sat, 04 Jun 2016 04:15:19 -0400
+Received: from m12-18.163.com ([220.181.12.18]:58671)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1b96jd-0001wy-2i; Sat, 04 Jun 2016 04:15:11 -0400
+	id 1b96jd-0001x2-O1; Sat, 04 Jun 2016 04:15:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=YsZVXlOUZ+ztfSI8B7
-	joL0tRvaANFUzp2U8+YxTucAY=; b=awNJCpVQ/JzcOUMZdwVCUMur5O2Swa9TaE
-	/staOdArQ5NrQn9SGf2KiJm6qO1iQ6j/hvYVtrfpMPJEliC0G/+F85TCYHj7aG/v
-	UnEYos70jcFGyjCuPURUj94QGNBzjm8j1i3rlVf7QvkkBx9Mq1RzO+zuvZANS1q0
-	3WGtiA0ss=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=SH8G+FAJ+rNbpYTtP5
+	gDA/bWLISxYBiuhJMqZofyawg=; b=g1H3nvj68+kLLT6XMa05mV1ByLqbMzQlbw
+	bo89Ve8PFl0AHjEQFV7Q8omZVkNcSFxUafPxZeLWOXhK6pE/yXUW+c01Q2K9Vaxp
+	BIGMi/IsEUZmN7K2ekJykDSj5DdWeghQO2HEFy4tEXnOxC1xisk9VRn1wCAj1tDV
+	E9JzIprHc=
 Received: from debian.lan (unknown [114.111.167.200])
-	by smtp14 (Coremail) with SMTP id EsCowECpfUbfjVJXKXU9AA--.28040S7;
-	Sat, 04 Jun 2016 16:14:36 +0800 (CST)
+	by smtp14 (Coremail) with SMTP id EsCowECpfUbfjVJXKXU9AA--.28040S2;
+	Sat, 04 Jun 2016 16:14:34 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Sat,  4 Jun 2016 16:14:24 +0800
-Message-Id: <1465028065-5855-6-git-send-email-zxq_yx_007@163.com>
+Date: Sat,  4 Jun 2016 16:14:19 +0800
+Message-Id: <1465028065-5855-1-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.8.1
-In-Reply-To: <1465028065-5855-1-git-send-email-zxq_yx_007@163.com>
-References: <1465028065-5855-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EsCowECpfUbfjVJXKXU9AA--.28040S7
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZF1rurWfCr4DGw45Ww18AFb_yoWrXF1UpF
-	WkG3Z8Gr9rJFy7JayfAr129Fs8GF97ur1jvryxGr10vw13KrWFy3Z8Ka10yrW3XrWxZ34U
-	ZrZ8WryDGF12vrJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bYEfrUUUUU=
+X-CM-TRANSID: EsCowECpfUbfjVJXKXU9AA--.28040S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFWDuFy3Ar45urWDZFWUJwb_yoW8Ar4rpF
+	W5JFZxWrWjkFy3ZF1fCw129a13JF1kW34j9ry7tryrZ343KFW0ywnrKF4rZrWxJ340qr15
+	Ar9xXr9xGFnFqrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bnCztUUUUU=
 X-Originating-IP: [114.111.167.200]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiqAx+xlc64Ky0-QAAs0
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiTAx+xlSIPd373wACsi
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 220.181.12.18
-Subject: [Qemu-devel] [PATCH v2 5/6] hw/char: QOM'ify xilinx_uartlite model
+Subject: [Qemu-devel] [PATCH v2 0/6] Drop the qemu_char_get_next_serial
+ function
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,120 +70,56 @@ Cc: robh@kernel.org, peter.maydell@linaro.org, crosthwaite.peter@gmail.com,
 	pbonzini@redhat.com, edgar.iglesias@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AyFjTxD9GIyS
+X-TUID: PUDTkdgWQum6
 
-* drop qemu_char_get_next_serial and use chardev prop
-* create xilinx_uartlite_create wrapper function to create
-  xilinx_uartlite device
-* change affected board code to use the new way
+This patch series's main idea is to drop the use of
+qemu_char_get_next_serial. patches 1-5 QOM'ify the related 
+device model and the affected board code. Most of them
+are arm related. The patch 6 get rid of the function from
+the code base.
 
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/char/xilinx_uartlite.c                | 10 +++++----
- hw/microblaze/petalogix_s3adsp1800_mmu.c |  5 +++--
- include/hw/char/xilinx_uartlite.h        | 35 ++++++++++++++++++++++++++++++++
- 3 files changed, 44 insertions(+), 6 deletions(-)
+I only test the code with ARM versatilepb machine. The other
+machine need test!
+
+v1 -> v2:
+* fix a typo in pl011.c which failed the make check
+* fix out of bound access error in stm32f205_soc.c
+
+xiaoqiang zhao (6):
+  hw/char: QOM'ify pl011 model
+  hw/char: QOM'ify cadence_uart model
+  hw/char: QOM'ify digic-uart model
+  hw/char: QOM'ify stm32f2xx_usart model
+  hw/char: QOM'ify xilinx_uartlite model
+  char: get rid of qemu_char_get_next_serial
+
+ hw/arm/bcm2835_peripherals.c             | 16 ++--------
+ hw/arm/digic.c                           |  2 ++
+ hw/arm/highbank.c                        |  3 +-
+ hw/arm/integratorcp.c                    |  5 +--
+ hw/arm/realview.c                        |  9 +++---
+ hw/arm/stellaris.c                       |  6 ++--
+ hw/arm/stm32f205_soc.c                   |  1 +
+ hw/arm/versatilepb.c                     |  9 +++---
+ hw/arm/vexpress.c                        |  9 +++---
+ hw/arm/virt.c                            |  1 +
+ hw/arm/xilinx_zynq.c                     |  5 +--
+ hw/arm/xlnx-zynqmp.c                     |  1 +
+ hw/char/cadence_uart.c                   | 13 ++++----
+ hw/char/digic-uart.c                     | 10 +++---
+ hw/char/pl011.c                          | 11 ++++---
+ hw/char/stm32f2xx_usart.c                | 15 ++++++---
+ hw/char/xilinx_uartlite.c                | 10 +++---
+ hw/microblaze/petalogix_s3adsp1800_mmu.c |  5 +--
+ include/hw/char/cadence_uart.h           | 17 +++++++++++
+ include/hw/char/pl011.h                  | 52 ++++++++++++++++++++++++++++++++
+ include/hw/char/xilinx_uartlite.h        | 35 +++++++++++++++++++++
+ include/sysemu/char.h                    |  1 -
+ qemu-char.c                              | 16 ----------
+ 23 files changed, 178 insertions(+), 74 deletions(-)
+ create mode 100644 include/hw/char/pl011.h
  create mode 100644 include/hw/char/xilinx_uartlite.h
 
-diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
-index 911af4a..4847efb 100644
---- a/hw/char/xilinx_uartlite.c
-+++ b/hw/char/xilinx_uartlite.c
-@@ -172,6 +172,11 @@ static const MemoryRegionOps uart_ops = {
-     }
- };
- 
-+static Property xilinx_uartlite_properties[] = {
-+    DEFINE_PROP_CHR("chardev", XilinxUARTLite, chr),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void uart_rx(void *opaque, const uint8_t *buf, int size)
- {
-     XilinxUARTLite *s = opaque;
-@@ -206,8 +211,6 @@ static void xilinx_uartlite_realize(DeviceState *dev, Error **errp)
- {
-     XilinxUARTLite *s = XILINX_UARTLITE(dev);
- 
--    /* FIXME use a qdev chardev prop instead of qemu_char_get_next_serial() */
--    s->chr = qemu_char_get_next_serial();
-     if (s->chr)
-         qemu_chr_add_handlers(s->chr, uart_can_rx, uart_rx, uart_event, s);
- }
-@@ -229,8 +232,7 @@ static void xilinx_uartlite_class_init(ObjectClass *klass, void *data)
- 
-     dc->reset = xilinx_uartlite_reset;
-     dc->realize = xilinx_uartlite_realize;
--    /* Reason: realize() method uses qemu_char_get_next_serial() */
--    dc->cannot_instantiate_with_device_add_yet = true;
-+    dc->props = xilinx_uartlite_properties;
- }
- 
- static const TypeInfo xilinx_uartlite_info = {
-diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-index f821e1c..423bcd7 100644
---- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-+++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-@@ -36,6 +36,7 @@
- #include "hw/boards.h"
- #include "sysemu/block-backend.h"
- #include "exec/address-spaces.h"
-+#include "hw/char/xilinx_uartlite.h"
- 
- #include "boot.h"
- 
-@@ -103,8 +104,8 @@ petalogix_s3adsp1800_init(MachineState *machine)
-         irq[i] = qdev_get_gpio_in(dev, i);
-     }
- 
--    sysbus_create_simple("xlnx.xps-uartlite", UARTLITE_BASEADDR,
--                         irq[UARTLITE_IRQ]);
-+    xilinx_uartlite_create(UARTLITE_BASEADDR, irq[UARTLITE_IRQ],
-+                           serial_hds[0]);
- 
-     /* 2 timers at irq 2 @ 62 Mhz.  */
-     dev = qdev_create(NULL, "xlnx.xps-timer");
-diff --git a/include/hw/char/xilinx_uartlite.h b/include/hw/char/xilinx_uartlite.h
-new file mode 100644
-index 0000000..8b4fc54
---- /dev/null
-+++ b/include/hw/char/xilinx_uartlite.h
-@@ -0,0 +1,35 @@
-+/*
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along with
-+ * this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef XILINX_UARTLITE_H
-+#define XILINX_UARTLITE_H
-+
-+static inline DeviceState *xilinx_uartlite_create(hwaddr addr,
-+                                        qemu_irq irq,
-+                                        CharDriverState *chr)
-+{
-+    DeviceState *dev;
-+    SysBusDevice *s;
-+
-+    dev = qdev_create(NULL, "xlnx.xps-uartlite");
-+    s = SYS_BUS_DEVICE(dev);
-+    qdev_prop_set_chr(dev, "chardev", chr);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(s, 0, addr);
-+    sysbus_connect_irq(s, 0, irq);
-+
-+    return dev;
-+}
-+
-+#endif
 -- 
 2.8.1
 

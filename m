@@ -1,59 +1,81 @@
-Received: by 10.25.27.66 with SMTP id b63csp1072407lfb;
-        Sun, 5 Jun 2016 06:49:43 -0700 (PDT)
-X-Received: by 10.55.161.204 with SMTP id k195mr11995106qke.193.1465134583616;
-        Sun, 05 Jun 2016 06:49:43 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp1121691lfb;
+        Sun, 5 Jun 2016 09:21:29 -0700 (PDT)
+X-Received: by 10.140.85.8 with SMTP id m8mr11423344qgd.7.1465143689080;
+        Sun, 05 Jun 2016 09:21:29 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v3si4348599qtv.128.2016.06.05.06.49.43
+        by mx.google.com with ESMTPS id q185si8529503qkb.158.2016.06.05.09.21.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 05 Jun 2016 06:49:43 -0700 (PDT)
+        Sun, 05 Jun 2016 09:21:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
+       dkim=fail (test mode) header.i=@jms.id.au;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37253 helo=lists.gnu.org)
+Received: from localhost ([::1]:37888 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b9YQw-0005Hb-OB
-	for alex.bennee@linaro.org; Sun, 05 Jun 2016 09:49:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52664)
+	id 1b9ano-00072w-Hr
+	for alex.bennee@linaro.org; Sun, 05 Jun 2016 12:21:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33973)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1b9Y0O-0003TU-6H
-	for qemu-devel@nongnu.org; Sun, 05 Jun 2016 09:22:22 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1b9an1-0006ij-0s
+	for qemu-devel@nongnu.org; Sun, 05 Jun 2016 12:20:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1b9Y0L-00052y-4q
-	for qemu-devel@nongnu.org; Sun, 05 Jun 2016 09:22:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60035)
+	(envelope-from <joel.stan@gmail.com>) id 1b9amx-0007g5-Vb
+	for qemu-devel@nongnu.org; Sun, 05 Jun 2016 12:20:37 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:33167)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>)
-	id 1b9Y0A-00051c-TF; Sun, 05 Jun 2016 09:22:03 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8243983F46;
-	Sun,  5 Jun 2016 13:22:02 +0000 (UTC)
-Received: from redhat.com (vpn1-7-180.ams2.redhat.com [10.36.7.180])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id u55DLwsB017267; Sun, 5 Jun 2016 09:21:59 -0400
-Date: Sun, 5 Jun 2016 16:21:58 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <1465132825-14242-22-git-send-email-mst@redhat.com>
-References: <1465132825-14242-1-git-send-email-mst@redhat.com>
+	(envelope-from <joel.stan@gmail.com>)
+	id 1b9amx-0007g0-HW; Sun, 05 Jun 2016 12:20:35 -0400
+Received: by mail-qt0-x241.google.com with SMTP id p26so1047914qtc.0;
+	Sun, 05 Jun 2016 09:20:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=/INNb1Es+mbHFuMrSweJDMvTWSrdpcCfV1HNwyeO2Vk=;
+	b=OPB3kozIKOCDocS4wveM7rnTb8cfi9hUGRDajnt8+6HhchCuuDyG9ltrj/2HE4QxLX
+	I2y6zEGMNduG9dP5BS/U/a6Je3uiXIJfDjVrBQbyh+NVGIEKz/5OhVET2mVMNvy6RbJU
+	CZAFVgr6xpMkflWG6rY7aViAgRovtAvl98gzL1NDy/54DK2M651/2LKQ1hzDRRn86BT3
+	2iOrDbBklW+Cuhs9iiTgg6S3qsLPcDJjBMVUPZWMDLnY+G1RtPU1tc4guYiMXE02TWZe
+	f7KG5wu8P1oTJAnDDvKP4tMaL7Y469+Mr1xDqo7iz7VyNh+h8X0JcYCyU8xIBEsL1ebH
+	0Itg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=/INNb1Es+mbHFuMrSweJDMvTWSrdpcCfV1HNwyeO2Vk=;
+	b=ZCoYEhHgNrSmdIVGC3RpOzXHMDWiaBuBL3g5iu7rVTglYP5QGpid33HCZTavGArwJI
+	VU9wOpzyTQMvTNWHIEZPxX5sB6IGxEsakIqoPg5Gz9A5CNLZ17WsVPdO+kt9KqkjAcov
+	QD/6tep+fr4rmM2hV7DE8eA4JG16ayvXanbGo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=/INNb1Es+mbHFuMrSweJDMvTWSrdpcCfV1HNwyeO2Vk=;
+	b=SVsv+7CzNwtAvVnFE5WclP7NbY2Ox3Qy+prkONniv3P0TDlA5VYg4YQv6BJMQYKEKE
+	jF4SsGcGgMLoiluqg0wDECsHwGjGpCM2WfrLPGkn2/UjyovKqeTZvDoMCUlFHhzaQXoi
+	hFo4/D9VmVhWDjle28Fnwpdjf4XNazE0vL2Bn4rFoZeXZv7RxmyLHXMhZpgvuzhvvJNN
+	7QtifDRho3JeXDQ/HsFpqY/WHoh9bvnO+TnHzyWgxW1l/3grJYtjVTsKAv03SO1aJ5/G
+	l4dBSqpt/fFtiRHY3yAdAsbllirCpTpz0XbgsNK4BJveVcqPXsz0YWngvrJSyOFSP7vr
+	YnPA==
+X-Gm-Message-State: ALyK8tK+/IH4tO0ILJPzNNycoc1B80BRGE289nMcMcOzA90XKVU1xtiZyv5aqiyYUnF4HidwLEm+Y/DEtjxWYg==
+X-Received: by 10.237.53.100 with SMTP id b33mr12234527qte.59.1465143634517;
+	Sun, 05 Jun 2016 09:20:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1465132825-14242-1-git-send-email-mst@redhat.com>
-X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Sun, 05 Jun 2016 13:22:02 +0000 (UTC)
+Received: by 10.237.44.196 with HTTP; Sun, 5 Jun 2016 09:20:15 -0700 (PDT)
+In-Reply-To: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
+References: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
+From: Joel Stanley <joel@jms.id.au>
+Date: Sun, 5 Jun 2016 11:20:15 -0500
+X-Google-Sender-Auth: 7oIornlTYHy8qVXacHOaYlQ0zpE
+Message-ID: <CACPK8Xc+RiHa44sS7jSA=4JTWWmO0iTqb-Q4MEqk-5u6iWfXug@mail.gmail.com>
+To: Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL 21/25] acpi: make
- bios_linker_loader_add_pointer() API offset based
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-devel] [PATCH] hw/timer: Add value matching support to
+ aspeed_timer
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,352 +87,282 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Xiao Guangrong <guangrong.xiao@linux.intel.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rTXXw9fycPrC
+X-TUID: jPrS9CTKwWVt
 
-From: Igor Mammedov <imammedo@redhat.com>
+On Fri, May 27, 2016 at 12:08 AM, Andrew Jeffery <andrew@aj.id.au> wrote:
+> Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=y on the
+> palmetto-bmc machine. Two match registers are provided for each timer.
 
-cleanup bios_linker_loader_add_pointer() API by switching
-arguments to taking offsets relative to corresponding files
-instead of doing pointer arithmetic on behalf of user which
-were confusing.
+Thanks for doing this. We now boot faster in my testing.
 
-Also make offset inside of source file explicit in API
-so that user won't have to manually set it in
-destination file blob and while at it add additional
-boundary checks.
+>
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- include/hw/acpi/bios-linker-loader.h |  5 ++--
- hw/acpi/aml-build.c                  | 20 ++++++++------
- hw/acpi/bios-linker-loader.c         | 53 ++++++++++++++++++++----------------
- hw/acpi/nvdimm.c                     |  7 ++---
- hw/arm/virt-acpi-build.c             | 26 +++++++++---------
- hw/i386/acpi-build.c                 | 45 +++++++++++++++---------------
- 6 files changed, 82 insertions(+), 74 deletions(-)
+Acked-by: Joel Stanley <joel@jms.id.au>
 
-diff --git a/include/hw/acpi/bios-linker-loader.h b/include/hw/acpi/bios-linker-loader.h
-index 564e192..f666b7c 100644
---- a/include/hw/acpi/bios-linker-loader.h
-+++ b/include/hw/acpi/bios-linker-loader.h
-@@ -22,9 +22,10 @@ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file,
- 
- void bios_linker_loader_add_pointer(BIOSLinker *linker,
-                                     const char *dest_file,
-+                                    uint32_t dst_patched_offset,
-+                                    uint8_t dst_patched_size,
-                                     const char *src_file,
--                                    void *pointer,
--                                    uint8_t pointer_size);
-+                                    uint32_t src_offset);
- 
- void bios_linker_loader_cleanup(BIOSLinker *linker);
- #endif
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 66e9bf8..a17bf7c 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1559,21 +1559,23 @@ void
- build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
-            const char *oem_id, const char *oem_table_id)
- {
--    AcpiRsdtDescriptorRev1 *rsdt;
--    size_t rsdt_len;
-     int i;
--    const int table_data_len = (sizeof(uint32_t) * table_offsets->len);
-+    unsigned rsdt_entries_offset;
-+    AcpiRsdtDescriptorRev1 *rsdt;
-+    const unsigned table_data_len = (sizeof(uint32_t) * table_offsets->len);
-+    const unsigned rsdt_entry_size = sizeof(rsdt->table_offset_entry[0]);
-+    const size_t rsdt_len = sizeof(*rsdt) + table_data_len;
- 
--    rsdt_len = sizeof(*rsdt) + table_data_len;
-     rsdt = acpi_data_push(table_data, rsdt_len);
--    memcpy(rsdt->table_offset_entry, table_offsets->data, table_data_len);
-+    rsdt_entries_offset = (char *)rsdt->table_offset_entry - table_data->data;
-     for (i = 0; i < table_offsets->len; ++i) {
-+        uint32_t ref_tbl_offset = g_array_index(table_offsets, uint32_t, i);
-+        uint32_t rsdt_entry_offset = rsdt_entries_offset + rsdt_entry_size * i;
-+
-         /* rsdt->table_offset_entry to be filled by Guest linker */
-         bios_linker_loader_add_pointer(linker,
--                                       ACPI_BUILD_TABLE_FILE,
--                                       ACPI_BUILD_TABLE_FILE,
--                                       &rsdt->table_offset_entry[i],
--                                       sizeof(uint32_t));
-+            ACPI_BUILD_TABLE_FILE, rsdt_entry_offset, rsdt_entry_size,
-+            ACPI_BUILD_TABLE_FILE, ref_tbl_offset);
-     }
-     build_header(linker, table_data,
-                  (void *)rsdt, "RSDT", rsdt_len, 1, oem_id, oem_table_id);
-diff --git a/hw/acpi/bios-linker-loader.c b/hw/acpi/bios-linker-loader.c
-index 7a2e4d2..4551c3a 100644
---- a/hw/acpi/bios-linker-loader.c
-+++ b/hw/acpi/bios-linker-loader.c
-@@ -237,37 +237,38 @@ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file_name,
- }
- 
- /*
-- * bios_linker_loader_add_pointer: ask guest to add address of source file
-- * into destination file at the specified pointer.
-+ * bios_linker_loader_add_pointer: ask guest to patch address in
-+ * destination file with a pointer to source file
-  *
-  * @linker: linker object instance
-  * @dest_file: destination file that must be changed
-+ * @dst_patched_offset: location within destination file blob to be patched
-+ *                      with the pointer to @src_file+@src_offset (i.e. source
-+ *                      blob allocated in guest memory + @src_offset), in bytes
-+ * @dst_patched_offset_size: size of the pointer to be patched
-+ *                      at @dst_patched_offset in @dest_file blob, in bytes
-  * @src_file: source file who's address must be taken
-- * @pointer: location of the pointer to be patched within destination file blob
-- * @pointer_size: size of pointer to be patched, in bytes
-- *
-- * Notes:
-- * - @pointer_size bytes must have been pushed into blob associated with
-- *   @dest_file and reside at address @pointer.
-- * - Guest address is added to initial value at @pointer
-- *   into copy of @dest_file in Guest memory.
-- *   e.g. to get start of src_file in guest memory, put 0x0 there
-- *   to get address of a field at offset 0x10 in src_file, put 0x10 there
-- * - Both @dest_file and @src_file must be
-- *   loaded into Guest memory using bios_linker_loader_alloc
-+ * @src_offset: location within source file blob to which
-+ *              @dest_file+@dst_patched_offset will point to after
-+ *              firmware's executed ADD_POINTER command
-  */
- void bios_linker_loader_add_pointer(BIOSLinker *linker,
-                                     const char *dest_file,
-+                                    uint32_t dst_patched_offset,
-+                                    uint8_t dst_patched_size,
-                                     const char *src_file,
--                                    void *pointer,
--                                    uint8_t pointer_size)
-+                                    uint32_t src_offset)
- {
-+    uint64_t le_src_offset;
-     BiosLinkerLoaderEntry entry;
--    const BiosLinkerFileEntry *file = bios_linker_find_file(linker, dest_file);
--    ptrdiff_t offset = (gchar *)pointer - file->blob->data;
-+    const BiosLinkerFileEntry *dst_file =
-+        bios_linker_find_file(linker, dest_file);
-+    const BiosLinkerFileEntry *source_file =
-+        bios_linker_find_file(linker, src_file);
- 
--    assert(offset >= 0);
--    assert(offset + pointer_size <= file->blob->len);
-+    assert(dst_patched_offset < dst_file->blob->len);
-+    assert(dst_patched_offset + dst_patched_size <= dst_file->blob->len);
-+    assert(src_offset < source_file->blob->len);
- 
-     memset(&entry, 0, sizeof entry);
-     strncpy(entry.pointer.dest_file, dest_file,
-@@ -275,10 +276,14 @@ void bios_linker_loader_add_pointer(BIOSLinker *linker,
-     strncpy(entry.pointer.src_file, src_file,
-             sizeof entry.pointer.src_file - 1);
-     entry.command = cpu_to_le32(BIOS_LINKER_LOADER_COMMAND_ADD_POINTER);
--    entry.pointer.offset = cpu_to_le32(offset);
--    entry.pointer.size = pointer_size;
--    assert(pointer_size == 1 || pointer_size == 2 ||
--           pointer_size == 4 || pointer_size == 8);
-+    entry.pointer.offset = cpu_to_le32(dst_patched_offset);
-+    entry.pointer.size = dst_patched_size;
-+    assert(dst_patched_size == 1 || dst_patched_size == 2 ||
-+           dst_patched_size == 4 || dst_patched_size == 8);
-+
-+    le_src_offset = cpu_to_le64(src_offset);
-+    memcpy(dst_file->blob->data + dst_patched_offset,
-+           &le_src_offset, dst_patched_size);
- 
-     g_array_append_vals(linker->cmd_blob, &entry, sizeof entry);
- }
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 9d95b1d..b4c2262 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -682,10 +682,9 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
-     bios_linker_loader_alloc(linker,
-                              NVDIMM_DSM_MEM_FILE, dsm_dma_arrea,
-                              sizeof(NvdimmDsmIn), false /* high memory */);
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   NVDIMM_DSM_MEM_FILE,
--                                   table_data->data + mem_addr_offset,
--                                   sizeof(uint32_t));
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
-+        NVDIMM_DSM_MEM_FILE, 0);
-     build_header(linker, table_data,
-         (void *)(table_data->data + nvdimm_ssdt),
-         "SSDT", table_data->len - nvdimm_ssdt, 1, NULL, "NVDIMM");
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 2d85bc4..1e37681 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -353,9 +353,12 @@ static void acpi_dsdt_add_power_button(Aml *scope)
- 
- /* RSDP */
- static GArray *
--build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
-+build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
- {
-     AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
-+    unsigned rsdt_pa_size = sizeof(rsdp->rsdt_physical_address);
-+    unsigned rsdt_pa_offset =
-+        (char *)&rsdp->rsdt_physical_address - rsdp_table->data;
- 
-     bios_linker_loader_alloc(linker, ACPI_BUILD_RSDP_FILE, rsdp_table, 16,
-                              true /* fseg memory */);
-@@ -365,13 +368,11 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
-     rsdp->length = cpu_to_le32(sizeof(*rsdp));
-     rsdp->revision = 0x02;
- 
--    /* Point to RSDT */
--    rsdp->rsdt_physical_address = cpu_to_le32(rsdt);
-     /* Address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
--                                   ACPI_BUILD_TABLE_FILE,
--                                   &rsdp->rsdt_physical_address,
--                                   sizeof rsdp->rsdt_physical_address);
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
-+        ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
-+
-     rsdp->checksum = 0;
-     /* Checksum to be filled by Guest linker */
-     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
-@@ -565,9 +566,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- 
- /* FADT */
- static void
--build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt)
-+build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt_tbl_offset)
- {
-     AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
-+    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
- 
-     /* Hardware Reduced = 1 and use PSCI 0.2+ and with HVC */
-     fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
-@@ -577,12 +579,10 @@ build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt)
-     /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
-     fadt->minor_revision = 0x1;
- 
--    fadt->dsdt = cpu_to_le32(dsdt);
-     /* DSDT address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   ACPI_BUILD_TABLE_FILE,
--                                   &fadt->dsdt,
--                                   sizeof fadt->dsdt);
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
-+        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
- 
-     build_header(linker, table_data,
-                  (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 1e8364a..b3ce5be 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -306,26 +306,23 @@ static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
- /* FADT */
- static void
- build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
--           unsigned facs, unsigned dsdt,
-+           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
-            const char *oem_id, const char *oem_table_id)
- {
-     AcpiFadtDescriptorRev1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
-+    unsigned fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
-+    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
- 
--    fadt->firmware_ctrl = cpu_to_le32(facs);
-     /* FACS address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   ACPI_BUILD_TABLE_FILE,
--                                   &fadt->firmware_ctrl,
--                                   sizeof fadt->firmware_ctrl);
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
-+        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
- 
--    fadt->dsdt = cpu_to_le32(dsdt);
-     /* DSDT address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   ACPI_BUILD_TABLE_FILE,
--                                   &fadt->dsdt,
--                                   sizeof fadt->dsdt);
--
-     fadt_setup(fadt, pm);
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
-+        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
- 
-     build_header(linker, table_data,
-                  (void *)fadt, "FACP", sizeof(*fadt), 1, oem_id, oem_table_id);
-@@ -2258,6 +2255,9 @@ static void
- build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
- {
-     Acpi20Tcpa *tcpa = acpi_data_push(table_data, sizeof *tcpa);
-+    unsigned log_addr_size = sizeof(tcpa->log_area_start_address);
-+    unsigned log_addr_offset =
-+        (char *)&tcpa->log_area_start_address - table_data->data;
- 
-     tcpa->platform_class = cpu_to_le16(TPM_TCPA_ACPI_CLASS_CLIENT);
-     tcpa->log_area_minimum_length = cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
-@@ -2267,10 +2267,9 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
-                              false /* high memory */);
- 
-     /* log area start address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   ACPI_BUILD_TPMLOG_FILE,
--                                   &tcpa->log_area_start_address,
--                                   sizeof(tcpa->log_area_start_address));
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_TABLE_FILE, log_addr_offset, log_addr_size,
-+        ACPI_BUILD_TPMLOG_FILE, 0);
- 
-     build_header(linker, table_data,
-                  (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
-@@ -2442,21 +2441,23 @@ build_dmar_q35(GArray *table_data, BIOSLinker *linker)
- }
- 
- static GArray *
--build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
-+build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
- {
-     AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
-+    unsigned rsdt_pa_size = sizeof(rsdp->rsdt_physical_address);
-+    unsigned rsdt_pa_offset =
-+        (char *)&rsdp->rsdt_physical_address - rsdp_table->data;
- 
-     bios_linker_loader_alloc(linker, ACPI_BUILD_RSDP_FILE, rsdp_table, 16,
-                              true /* fseg memory */);
- 
-     memcpy(&rsdp->signature, "RSD PTR ", 8);
-     memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, 6);
--    rsdp->rsdt_physical_address = cpu_to_le32(rsdt);
-     /* Address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
--                                   ACPI_BUILD_TABLE_FILE,
--                                   &rsdp->rsdt_physical_address,
--                                   sizeof rsdp->rsdt_physical_address);
-+    bios_linker_loader_add_pointer(linker,
-+        ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
-+        ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
-+
-     rsdp->checksum = 0;
-     /* Checksum to be filled by Guest linker */
-     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
--- 
-MST
-
+> ---
+>
+> The change pulls out ptimer in favour of the regular timer infrastructure. As a
+> consequence it implements the conversions between ticks and time which feels a
+> little tedious. Any comments there would be appreciated.
+>
+>  hw/timer/aspeed_timer.c         | 135 ++++++++++++++++++++++++++++++----------
+>  include/hw/timer/aspeed_timer.h |   6 +-
+>  2 files changed, 105 insertions(+), 36 deletions(-)
+>
+> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> index 4b94808821b4..905de0f788b2 100644
+> --- a/hw/timer/aspeed_timer.c
+> +++ b/hw/timer/aspeed_timer.c
+> @@ -9,13 +9,12 @@
+>   * the COPYING file in the top-level directory.
+>   */
+>
+> +#include <math.h>
+>  #include "qemu/osdep.h"
+> -#include "hw/ptimer.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/timer/aspeed_timer.h"
+>  #include "qemu-common.h"
+>  #include "qemu/bitops.h"
+> -#include "qemu/main-loop.h"
+>  #include "qemu/timer.h"
+>  #include "qemu/log.h"
+>  #include "trace.h"
+> @@ -77,21 +76,99 @@ static inline bool timer_can_pulse(AspeedTimer *t)
+>      return t->id >= TIMER_FIRST_CAP_PULSE;
+>  }
+>
+> +static inline bool timer_external_clock(AspeedTimer *t)
+> +{
+> +    return timer_ctrl_status(t, op_external_clock);
+> +}
+> +
+> +static double clock_rates[] = { TIMER_CLOCK_APB_HZ, TIMER_CLOCK_EXT_HZ };
+> +
+> +static inline double calculate_rate(struct AspeedTimer *t)
+> +{
+> +    return clock_rates[timer_external_clock(t)];
+> +}
+> +
+> +static inline double calculate_period(struct AspeedTimer *t)
+> +{
+> +    return NANOSECONDS_PER_SECOND / calculate_rate(t);
+> +}
+> +
+> +static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_t now_ns)
+> +{
+> +    uint64_t delta_ns = now_ns - MIN(now_ns, t->start);
+> +    uint32_t ticks = (uint32_t) floor(delta_ns / calculate_period(t));
+> +
+> +    return t->reload - MIN(t->reload, ticks);
+> +}
+> +
+> +static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t ticks)
+> +{
+> +    uint64_t delta_ns;
+> +
+> +    ticks = MIN(t->reload, ticks);
+> +    delta_ns = (uint64_t) floor((t->reload - ticks) * calculate_period(t));
+> +
+> +    return t->start + delta_ns;
+> +}
+> +
+> +static uint64_t calculate_next(struct AspeedTimer *t)
+> +{
+> +    uint64_t now;
+> +    uint64_t next;
+> +    int i;
+> +    /* We don't know the relationship between the values in the match
+> +     * registers, so sort using MAX/MIN/zero. We sort in that order as the
+> +     * timer counts down to zero. */
+> +    uint64_t seq[] = {
+> +        MAX(t->match[0], t->match[1]),
+> +        MIN(t->match[0], t->match[1]),
+> +        0,
+> +    };
+> +
+> +    now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> +    for (i = 0; i < ARRAY_SIZE(seq); i++) {
+> +        next = calculate_time(t, seq[i]);
+> +        if (now < next) {
+> +            return next;
+> +        }
+> +    }
+> +
+> +    {
+> +        uint64_t reload_ns;
+> +
+> +        reload_ns = (uint64_t) floor(t->reload * calculate_period(t));
+> +        t->start = now - ((now - t->start) % reload_ns);
+> +    }
+> +
+> +    return calculate_next(t);
+> +}
+> +
+>  static void aspeed_timer_expire(void *opaque)
+>  {
+>      AspeedTimer *t = opaque;
+> +    bool interrupt = false;
+> +    uint32_t ticks;
+>
+> -    /* Only support interrupts on match values of zero for the moment - this is
+> -     * sufficient to boot an aspeed_defconfig Linux kernel.
+> -     *
+> -     * TODO: matching on arbitrary values (see e.g. hw/timer/a9gtimer.c)
+> -     */
+> -    bool match = !(t->match[0] && t->match[1]);
+> -    bool interrupt = timer_overflow_interrupt(t) || match;
+> -    if (timer_enabled(t) && interrupt) {
+> +    if (!timer_enabled(t)) {
+> +        return;
+> +    }
+> +
+> +    ticks = calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+> +
+> +    if (!ticks) {
+> +        interrupt = timer_overflow_interrupt(t) || !t->match[0] || !t->match[1];
+> +    } else if (ticks <= MIN(t->match[0], t->match[1])) {
+> +        interrupt = true;
+> +    } else if (ticks <= MAX(t->match[0], t->match[1])) {
+> +        interrupt = true;
+> +    }
+> +
+> +    if (interrupt) {
+>          t->level = !t->level;
+>          qemu_set_irq(t->irq, t->level);
+>      }
+> +
+> +    timer_mod(&t->timer, calculate_next(t));
+>  }
+>
+>  static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
+> @@ -100,7 +177,7 @@ static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
+>
+>      switch (reg) {
+>      case TIMER_REG_STATUS:
+> -        value = ptimer_get_count(t->timer);
+> +        value = calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>          break;
+>      case TIMER_REG_RELOAD:
+>          value = t->reload;
+> @@ -160,24 +237,21 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
+>      switch (reg) {
+>      case TIMER_REG_STATUS:
+>          if (timer_enabled(t)) {
+> -            ptimer_set_count(t->timer, value);
+> +            uint64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> +            int64_t delta = (int64_t) value - (int64_t) calculate_ticks(t, now);
+> +
+> +            t->start += delta * calculate_period(t);
+> +            timer_mod(&t->timer, calculate_next(t));
+>          }
+>          break;
+>      case TIMER_REG_RELOAD:
+>          t->reload = value;
+> -        ptimer_set_limit(t->timer, value, 1);
+>          break;
+>      case TIMER_REG_MATCH_FIRST:
+>      case TIMER_REG_MATCH_SECOND:
+> -        if (value) {
+> -            /* Non-zero match values are unsupported. As such an interrupt will
+> -             * always be triggered when the timer reaches zero even if the
+> -             * overflow interrupt control bit is clear.
+> -             */
+> -            qemu_log_mask(LOG_UNIMP, "%s: Match value unsupported by device: "
+> -                    "0x%" PRIx32 "\n", __func__, value);
+> -        } else {
+> -            t->match[reg - 2] = value;
+> +        t->match[reg - 2] = value;
+> +        if (timer_enabled(t)) {
+> +            timer_mod(&t->timer, calculate_next(t));
+>          }
+>          break;
+>      default:
+> @@ -196,21 +270,16 @@ static void aspeed_timer_ctrl_enable(AspeedTimer *t, bool enable)
+>  {
+>      trace_aspeed_timer_ctrl_enable(t->id, enable);
+>      if (enable) {
+> -        ptimer_run(t->timer, 0);
+> +        t->start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+> +        timer_mod(&t->timer, calculate_next(t));
+>      } else {
+> -        ptimer_stop(t->timer);
+> -        ptimer_set_limit(t->timer, t->reload, 1);
+> +        timer_del(&t->timer);
+>      }
+>  }
+>
+>  static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool enable)
+>  {
+>      trace_aspeed_timer_ctrl_external_clock(t->id, enable);
+> -    if (enable) {
+> -        ptimer_set_freq(t->timer, TIMER_CLOCK_EXT_HZ);
+> -    } else {
+> -        ptimer_set_freq(t->timer, TIMER_CLOCK_APB_HZ);
+> -    }
+>  }
+>
+>  static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool enable)
+> @@ -351,12 +420,10 @@ static const MemoryRegionOps aspeed_timer_ops = {
+>
+>  static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
+>  {
+> -    QEMUBH *bh;
+>      AspeedTimer *t = &s->timers[id];
+>
+>      t->id = id;
+> -    bh = qemu_bh_new(aspeed_timer_expire, t);
+> -    t->timer = ptimer_init(bh);
+> +    timer_init_ns(&t->timer, QEMU_CLOCK_VIRTUAL, aspeed_timer_expire, t);
+>  }
+>
+>  static void aspeed_timer_realize(DeviceState *dev, Error **errp)
+> @@ -404,7 +471,7 @@ static const VMStateDescription vmstate_aspeed_timer = {
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT8(id, AspeedTimer),
+>          VMSTATE_INT32(level, AspeedTimer),
+> -        VMSTATE_PTIMER(timer, AspeedTimer),
+> +        VMSTATE_TIMER(timer, AspeedTimer),
+>          VMSTATE_UINT32(reload, AspeedTimer),
+>          VMSTATE_UINT32_ARRAY(match, AspeedTimer, 2),
+>          VMSTATE_END_OF_LIST()
+> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+> index 44dc2f89d5c6..970fea83143c 100644
+> --- a/include/hw/timer/aspeed_timer.h
+> +++ b/include/hw/timer/aspeed_timer.h
+> @@ -22,7 +22,8 @@
+>  #ifndef ASPEED_TIMER_H
+>  #define ASPEED_TIMER_H
+>
+> -#include "hw/ptimer.h"
+> +#include "qemu/typedefs.h"
+> +#include "qemu/timer.h"
+>
+>  #define ASPEED_TIMER(obj) \
+>      OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
+> @@ -33,15 +34,16 @@ typedef struct AspeedTimer {
+>      qemu_irq irq;
+>
+>      uint8_t id;
+> +    QEMUTimer timer;
+>
+>      /**
+>       * Track the line level as the ASPEED timers implement edge triggered
+>       * interrupts, signalling with both the rising and falling edge.
+>       */
+>      int32_t level;
+> -    ptimer_state *timer;
+>      uint32_t reload;
+>      uint32_t match[2];
+> +    uint64_t start;
+>  } AspeedTimer;
+>
+>  typedef struct AspeedTimerCtrlState {
+> --
+> 2.7.4
+>

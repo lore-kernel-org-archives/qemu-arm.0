@@ -1,180 +1,325 @@
-Received: by 10.25.27.66 with SMTP id b63csp1400628lfb;
-        Mon, 6 Jun 2016 03:01:21 -0700 (PDT)
-X-Received: by 10.140.19.5 with SMTP id 5mr14180561qgg.98.1465207281271;
-        Mon, 06 Jun 2016 03:01:21 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp1404722lfb;
+        Mon, 6 Jun 2016 03:10:19 -0700 (PDT)
+X-Received: by 10.55.195.193 with SMTP id r62mr14525627qkl.23.1465207819610;
+        Mon, 06 Jun 2016 03:10:19 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o66si10475637qkd.123.2016.06.06.03.01.21
+        by mx.google.com with ESMTPS id s18si11608555qts.66.2016.06.06.03.10.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Jun 2016 03:01:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 06 Jun 2016 03:10:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41079 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41117 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b9rLU-0002zc-OI
-	for alex.bennee@linaro.org; Mon, 06 Jun 2016 06:01:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46807)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1b9rUB-0000bd-20
+	for alex.bennee@linaro.org; Mon, 06 Jun 2016 06:10:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJv-0001zu-5f
-	for qemu-devel@nongnu.org; Mon, 06 Jun 2016 05:59:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1b9rU7-0000bT-VK
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJp-0002JG-Sh
-	for qemu-devel@nongnu.org; Mon, 06 Jun 2016 05:59:42 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:31975
-	helo=mx0b-001b2d01.pphosted.com)
+	(envelope-from <peter.maydell@linaro.org>) id 1b9rU5-0004ZT-6V
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:14 -0400
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:34954)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJp-0002JC-J9
-	for qemu-devel@nongnu.org; Mon, 06 Jun 2016 05:59:37 -0400
-Received: from pps.filterd (m0082756.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
-	u569wtau013539
-	for <qemu-devel@nongnu.org>; Mon, 6 Jun 2016 05:59:36 -0400
-Message-Id: <201606060959.u569wtau013539@mx0a-001b2d01.pphosted.com>
-Received: from e06smtp15.uk.ibm.com (e06smtp15.uk.ibm.com [195.75.94.111])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 23bt1pymmu-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Mon, 06 Jun 2016 05:59:34 -0400
-Received: from localhost
-	by e06smtp15.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-devel@nongnu.org> from <dahi@linux.vnet.ibm.com>;
-	Mon, 6 Jun 2016 10:59:25 +0100
-Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
-	by e06smtp15.uk.ibm.com (192.168.101.145) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Mon, 6 Jun 2016 10:59:22 +0100
-X-IBM-Helo: d06dlp03.portsmouth.uk.ibm.com
-X-IBM-MailFrom: dahi@linux.vnet.ibm.com
-X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org
-Received: from b06cxnps3074.portsmouth.uk.ibm.com
-	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
-	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 3B9CD1B08070; 
-	Mon,  6 Jun 2016 11:00:26 +0100 (BST)
-Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
-	[9.149.37.250])
-	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id u569xLA144302584; Mon, 6 Jun 2016 09:59:21 GMT
-Received: from d06av09.portsmouth.uk.ibm.com (localhost [127.0.0.1])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
-	ESMTP id u569xKut021526; Mon, 6 Jun 2016 03:59:21 -0600
-Received: from thinkpad-w530 (dyn-9-152-224-205.boeblingen.de.ibm.com
-	[9.152.224.205])
-	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
-	ESMTP id u569xK4f021512; Mon, 6 Jun 2016 03:59:20 -0600
-Date: Mon, 6 Jun 2016 11:59:19 +0200
-From: David Hildenbrand <dahi@linux.vnet.ibm.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-In-Reply-To: <20160603195457.GZ19055@thinpad.lan.raisama.net>
-References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
-	<201606022044.u52KaIkv017063@mx0a-001b2d01.pphosted.com>
-	<20160603000209.GM19055@thinpad.lan.raisama.net>
-	<20160603083621.6547bde4@thinkpad-w530>
-	<20160603195457.GZ19055@thinpad.lan.raisama.net>
-Organization: IBM Deutschland GmbH
-X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
+	(envelope-from <peter.maydell@linaro.org>) id 1b9rU3-0004ZD-TX
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:13 -0400
+Received: by mail-vk0-x22b.google.com with SMTP id d127so192677897vkh.2
+	for <qemu-arm@nongnu.org>; Mon, 06 Jun 2016 03:10:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=QZVs0DT2C6US6PP0zzN4PrRS2w+2yscuhfhvvqUWc78=;
+	b=Dcr4N0ogtR16VQmaeu1ATn8K/sgpz8RDLoniPb5Xytm9S8WfYCIiYP6+ynA1WOq6DM
+	XDXkR9OMSDKJWDy0WFluCfT6VcBDPtBTMh1+48Ek8ProtLyN6RAaGkKR6W/wEQOL5r57
+	tRmRNQUw9YRmEkbQZ4ij8mNeBSoO3t/N2sHMY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=QZVs0DT2C6US6PP0zzN4PrRS2w+2yscuhfhvvqUWc78=;
+	b=KI5TacG/945XfTBZCZHmcwCKmZaDK3KgitVea/Tdsds2vw+2MOCINDUFQXcZyyJk3Q
+	d7T56GNdou/9UGQcN8eB7Ou1Lu4mE7foJ5sw7o2h2tmUrO5gTi25fbmi2uW1QicrTfzg
+	BKmFwVGu+8G0rp8OwyDWzQgA17PsWUKg6+ZDuXXegpnpIcN2s9GppZ5Ao6v6BTy6fH9n
+	9HXWBez1Rh9wAqFeED94B5ISYLzhR4weukrMAshSaxlFgwaMFBjxvMWOrDGy9udilLEk
+	ml4Uq1DKHDTh+I7bF53e9NuNEQJBzghRMgS2rsdpz6DZysEt+QXTrG5WFUyjbtpftVS7
+	oLzA==
+X-Gm-Message-State: ALyK8tLruMnvVtjw3HLrp/5uUkjZ1jIlzOcVunPZAJDedIdiVWWWR8KwEo5wyFlVYbrO8qd4VpXyxWrGomB3azwD
+X-Received: by 10.31.89.196 with SMTP id n187mr6214149vkb.83.1465207811372;
+	Mon, 06 Jun 2016 03:10:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16060609-0020-0000-0000-00000207306E
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16060609-0021-0000-0000-00003C446914
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-06-06_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=8
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
-	definitions=main-1606060122
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: Re: [Qemu-devel] [PATCH RFC 0/8] cpus: make "-cpu cpux,
- features" global properties
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.31.67.65 with HTTP; Mon, 6 Jun 2016 03:09:51 -0700 (PDT)
+In-Reply-To: <97318fe5bbe95202ca2d96e72a31c597a148ea77.1464367869.git.digetx@gmail.com>
+References: <cover.1464367869.git.digetx@gmail.com>
+	<97318fe5bbe95202ca2d96e72a31c597a148ea77.1464367869.git.digetx@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Jun 2016 11:09:51 +0100
+Message-ID: <CAFEAcA_Y29-mxShvHqZrQC-g4Ve5X+yE18SWaCKumb40FaSmeQ@mail.gmail.com>
+To: Dmitry Osipenko <digetx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22b
+Subject: Re: [Qemu-arm] [PATCH v13 6/8] hw/ptimer: Support running with
+ counter = 0 by introducing new policy feature
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
-	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, Igor Mammedov <imammedo@redhat.com>, rth@twiddle.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 85lOr0EARhz+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VncYfnWxC6FM
 
+On 27 May 2016 at 18:03, Dmitry Osipenko <digetx@gmail.com> wrote:
+> Currently ptimer prints error message and clears enable flag for an arming
+> timer that has delta = load = 0. That actually is a valid case for most
+> of the timers, like instant IRQ trigger for oneshot timer or continuous in
+> periodic mode. There are different possible policies of how particular timer
+> could interpret setting counter to 0, like:
+>
+> 1) Immediate stop with triggering the interrupt in oneshot mode. Immediate
+>    wraparound with triggering the interrupt in continuous mode.
+>
+> 2) Immediate stop without triggering the interrupt in oneshot mode. Immediate
+>    wraparound without triggering the interrupt in continuous mode.
+>
+> 3) Stopping with triggering the interrupt after one period in oneshot mode.
+>    Wraparound with triggering the interrupt in continuous mode after one
+>    period.
+>
+> 4) Stopping without triggering the interrupt after one period in oneshot mode.
+>    Wraparound without triggering the interrupt in continuous mode after one
+>    period.
+>
+> As well as handling oneshot/continuous modes differently.
+>
+> Given that, currently, running the timer with counter/period equal to 0 is
+> treated as a error case, it's not obvious what policies should be supported
+> by ptimer. Let's implement the third policy for now, as it is known to be
+> used by the ARM MPTimer.
+>
+> Explicitly forbid running with counter/period == 0 in all cases by aborting
+> QEMU execution instead of printing the error message.
+>
+> Bump VMSD version since a new VMState member is added.
 
-> I assume Igor explained it, already, and his suggestion sounds OK
-> to you. But I will answer your questions to confirm that this is
-> really the case:
+I'm afraid you can't do that -- the ptimer code is used by a lot of
+platforms including some which do not permit migration compatibility
+breaks (at least sparc, for instance).
 
-Yes, this all sounds good to me, thanks for the additional explanation!
-[...]
+If you want to add this feature you need to at least make it seamlessly
+support migration from the old version using a vmstate subsection.
 
-> 
-> > 
-> > d) has to work for us. Otherwise we will have to fallback to manual
-> > property parsing.  
-> 
-> It will be affected by the globals, but I assume management code
-> is not going to use add extra -cpu arguments when probing for CPU
-> model information, right?
+Better would be to make the policy a QOM property -- then it is
+constant for the lifetime of the timer and doesn't need to be migrated
+at all. (There's no reason to support timers which change policy at
+runtime, I hope). The default property value should be "same behaviour
+as previously".
 
-Yes, that's also what I figured out, this should not be a problem.
+This whole change would be more solidly supported if it came with
+a clear description of the bug being fixed (ie what device is currently
+using the default-but-wrong behaviour and is going to be fixed by
+setting a different policy).
 
-> 
-> Users will need to be aware that -cpu is equivalent to -global,
-> and will affect CPU information returned by query-cpu-definitions
-> (or similar commands).
-> 
-> >   
-> > > 
-> > > If all you need is to parse properties, why can't you reuse the
-> > > existing QOM/Device mechanisms to handle properties (the one used
-> > > by -device and device_add), instead of the -cpu code?  
-> > 
-> > We can, if my given example works. And the global properties
-> > don't interfere with cpus.  
-> 
-> They do, but only the model specified in -cpu.
-> 
-> >   
-> > > 
-> > > We need to use less of the infrastructure that exists for the
-> > > legacy -cpu option (and use more of the generic QOM/Device
-> > > mechanisms), not more of it.  
-> > 
-> > It is better to have one way of creating cpus that two.  
-> 
-> Unfortunately we already have two ways of creating CPUs: -cpu and
-> device_add. We are trying to translate -cpu to something
-> equivalent to generic mechanisms (-device and -global), so we
-> have only one underlying mechanism.
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+> ---
+>  hw/core/ptimer.c    | 53 +++++++++++++++++++++++++++++++----------------------
+>  include/hw/ptimer.h |  6 ++++++
+>  2 files changed, 37 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index 05b0c27..9bc70f5 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -21,6 +21,7 @@ struct ptimer_state
+>      int64_t period;
+>      int64_t last_event;
+>      int64_t next_event;
+> +    uint8_t policy;
+>      QEMUBH *bh;
+>      QEMUTimer *timer;
+>  };
+> @@ -37,15 +38,16 @@ static void ptimer_reload(ptimer_state *s)
+>  {
+>      uint32_t period_frac = s->period_frac;
+>      uint64_t period = s->period;
+> +    uint64_t delta = MAX(1, s->delta);
+>
+> -    if (s->delta == 0) {
+> -        ptimer_trigger(s);
+> -        s->delta = s->limit;
+> +    if (s->delta == 0 && s->policy == UNIMPLEMENTED) {
+> +        hw_error("ptimer: Running with counter=0 is unimplemented by " \
+> +                 "this timer, fix it!\n");
 
-Yes, understood. Sounds sane to me!
-[...]
+hw_error() is effectively a verbose assert. Have you checked that
+all the users of ptimer do the right thing? If not, we can't
+assert() until we've fixed them all. Similarly below.
+Note that what we had previously was just a warning-and-continue
 
-> I understand that this may be confusing, but that's because -smp
-> and -cpu don't fit the QEMU device/object models. We are moving
-> towards allowing CPU topologies to be created using only -device.
-> 
-> To do that, we are gradually translating -cpu to the generic
-> mechanisms used by -device/-global, so command-line options could
-> be easily converted to use the new mechanisms in the future.
-> 
-> Does that make sense?
-> 
+>      }
+> -    if (s->delta == 0 || s->period == 0) {
+> -        fprintf(stderr, "Timer with period zero, disabling\n");
+> -        s->enabled = 0;
+> -        return;
+> +
+> +    if (period == 0) {
+> +        hw_error("ptimer: Timer tries to run with period=0, behaviour is " \
+> +                 "undefined, fix it!\n");
+>      }
+>
+>      /*
+> @@ -57,15 +59,15 @@ static void ptimer_reload(ptimer_state *s)
+>       * on the current generation of host machines.
+>       */
+>
+> -    if (s->enabled == 1 && (s->delta * period < 10000) && !use_icount) {
+> -        period = 10000 / s->delta;
+> +    if (s->enabled == 1 && (delta * period < 10000) && !use_icount) {
+> +        period = 10000 / delta;
+>          period_frac = 0;
+>      }
+>
+>      s->last_event = s->next_event;
+> -    s->next_event = s->last_event + s->delta * period;
+> +    s->next_event = s->last_event + delta * period;
+>      if (period_frac) {
+> -        s->next_event += ((int64_t)period_frac * s->delta) >> 32;
+> +        s->next_event += ((int64_t)period_frac * delta) >> 32;
+>      }
+>      timer_mod(s->timer, s->next_event);
+>  }
+> @@ -73,27 +75,30 @@ static void ptimer_reload(ptimer_state *s)
+>  static void ptimer_tick(void *opaque)
+>  {
+>      ptimer_state *s = (ptimer_state *)opaque;
+> -    ptimer_trigger(s);
+> -    s->delta = 0;
+> -    if (s->enabled == 2) {
+> +
+> +    s->delta = (s->enabled == 1) ? s->limit : 0;
+> +
+> +    if (s->delta == 0) {
+>          s->enabled = 0;
+>      } else {
+>          ptimer_reload(s);
+>      }
+> +
+> +    ptimer_trigger(s);
+>  }
+>
+>  uint64_t ptimer_get_count(ptimer_state *s)
+>  {
+>      uint64_t counter;
+>
+> -    if (s->enabled) {
+> +    if (s->enabled && s->delta != 0) {
+>          int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>          int64_t next = s->next_event;
+>          bool expired = (now - next >= 0);
+>          bool oneshot = (s->enabled == 2);
+>
+>          /* Figure out the current counter value.  */
+> -        if (s->period == 0 || (expired && (oneshot || use_icount))) {
+> +        if (expired && (oneshot || use_icount)) {
+>              /* Prevent timer underflowing if it should already have
+>                 triggered.  */
+>              counter = 0;
+> @@ -165,11 +170,8 @@ void ptimer_run(ptimer_state *s, int oneshot)
+>  {
+>      bool was_disabled = !s->enabled;
+>
+> -    if (was_disabled && s->period == 0) {
+> -        fprintf(stderr, "Timer with period zero, disabling\n");
+> -        return;
+> -    }
+>      s->enabled = oneshot ? 2 : 1;
+> +
 
-Absolutely!
+Stray extra blank line.
 
-David
+>      if (was_disabled) {
+>          s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>          ptimer_reload(s);
+> @@ -203,6 +205,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
+>  /* Set counter frequency in Hz.  */
+>  void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+>  {
+> +    g_assert(freq != 0 && freq <= 1000000000);
 
+This probably needs an LL suffix like the others below.
+
+>      s->delta = ptimer_get_count(s);
+>      s->period = 1000000000ll / freq;
+>      s->period_frac = (1000000000ll << 32) / freq;
+> @@ -230,10 +233,15 @@ uint64_t ptimer_get_limit(ptimer_state *s)
+>      return s->limit;
+>  }
+>
+> +void ptimer_set_policy(ptimer_state *s, enum ptimer_policy policy)
+> +{
+> +    s->policy = policy;
+> +}
+> +
+>  const VMStateDescription vmstate_ptimer = {
+>      .name = "ptimer",
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> +    .version_id = 2,
+> +    .minimum_version_id = 2,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT8(enabled, ptimer_state),
+>          VMSTATE_UINT64(limit, ptimer_state),
+> @@ -243,6 +251,7 @@ const VMStateDescription vmstate_ptimer = {
+>          VMSTATE_INT64(last_event, ptimer_state),
+>          VMSTATE_INT64(next_event, ptimer_state),
+>          VMSTATE_TIMER_PTR(timer, ptimer_state),
+> +        VMSTATE_UINT8(policy, ptimer_state),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
+> diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+> index e397db5..221f591 100644
+> --- a/include/hw/ptimer.h
+> +++ b/include/hw/ptimer.h
+> @@ -12,6 +12,11 @@
+>  #include "qemu/timer.h"
+>  #include "migration/vmstate.h"
+>
+> +enum ptimer_policy {
+> +    UNIMPLEMENTED,
+> +    SET_CNT_TO_0_TRIGGERS_IRQ_AFTER_ONE_PERIOD,
+
+Given that enums aren't namespaced, "UNIMPLEMENTED" is too broad;
+you need some PTIMER_ prefixes. Also the second one of these is
+too long a name.
+
+> +};
+> +
+>  /* ptimer.c */
+>  typedef struct ptimer_state ptimer_state;
+>  typedef void (*ptimer_cb)(void *opaque);
+> @@ -25,6 +30,7 @@ uint64_t ptimer_get_count(ptimer_state *s);
+>  void ptimer_set_count(ptimer_state *s, uint64_t count);
+>  void ptimer_run(ptimer_state *s, int oneshot);
+>  void ptimer_stop(ptimer_state *s);
+> +void ptimer_set_policy(ptimer_state *s, enum ptimer_policy policy);
+
+Documentation comment headers for new global functions, please.
+
+>  extern const VMStateDescription vmstate_ptimer;
+
+thanks
+-- PMM

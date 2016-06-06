@@ -1,60 +1,98 @@
-Received: by 10.25.27.66 with SMTP id b63csp1139215lfb;
-        Sun, 5 Jun 2016 10:22:54 -0700 (PDT)
-X-Received: by 10.140.20.241 with SMTP id 104mr12055247qgj.32.1465147374280;
-        Sun, 05 Jun 2016 10:22:54 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp1399928lfb;
+        Mon, 6 Jun 2016 02:59:38 -0700 (PDT)
+X-Received: by 10.140.38.165 with SMTP id t34mr14306356qgt.47.1465207178214;
+        Mon, 06 Jun 2016 02:59:38 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i65si8644004qkf.224.2016.06.05.10.22.54
+        by mx.google.com with ESMTPS id s35si11575418qtd.102.2016.06.06.02.59.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 05 Jun 2016 10:22:54 -0700 (PDT)
+        Mon, 06 Jun 2016 02:59:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38072 helo=lists.gnu.org)
+Received: from localhost ([::1]:41065 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b9blF-0007jo-MY
-	for alex.bennee@linaro.org; Sun, 05 Jun 2016 13:22:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46612)
+	id 1b9rJp-0001vn-Li
+	for alex.bennee@linaro.org; Mon, 06 Jun 2016 05:59:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46766)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1b9blB-0007gS-Ab
-	for qemu-arm@nongnu.org; Sun, 05 Jun 2016 13:22:51 -0400
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJm-0001uo-8A
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 05:59:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1b9bl6-0006c5-7F
-	for qemu-arm@nongnu.org; Sun, 05 Jun 2016 13:22:48 -0400
-Received: from mo68.mail-out.ovh.net ([178.32.228.68]:57824)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1b9bl5-0006aM-TC
-	for qemu-arm@nongnu.org; Sun, 05 Jun 2016 13:22:44 -0400
-Received: from player695.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo68.mail-out.ovh.net (Postfix) with ESMTP id 96D991000CB1
-	for <qemu-arm@nongnu.org>; Sun,  5 Jun 2016 19:22:39 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player695.ha.ovh.net (Postfix) with ESMTPSA id A5BEC460082;
-	Sun,  5 Jun 2016 19:22:34 +0200 (CEST)
-To: Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>
-References: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
-	<CACPK8Xc+RiHa44sS7jSA=4JTWWmO0iTqb-Q4MEqk-5u6iWfXug@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <57545FDA.4020402@kaod.org>
-Date: Sun, 5 Jun 2016 19:22:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Icedove/38.8.0
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJh-0002IY-Az
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 05:59:34 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:38911)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <dahi@linux.vnet.ibm.com>) id 1b9rJh-0002IQ-5e
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 05:59:29 -0400
+Received: from pps.filterd (m0075420.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.11/8.16.0.11) with SMTP id
+	u569wu0v004736
+	for <qemu-arm@nongnu.org>; Mon, 6 Jun 2016 05:59:27 -0400
+Message-Id: <201606060959.u569wu0v004736@mx0a-001b2d01.pphosted.com>
+Received: from e06smtp15.uk.ibm.com (e06smtp15.uk.ibm.com [195.75.94.111])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 23d39hv5qj-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Mon, 06 Jun 2016 05:59:27 -0400
+Received: from localhost
+	by e06smtp15.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <dahi@linux.vnet.ibm.com>;
+	Mon, 6 Jun 2016 10:59:25 +0100
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp15.uk.ibm.com (192.168.101.145) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Mon, 6 Jun 2016 10:59:22 +0100
+X-IBM-Helo: d06dlp03.portsmouth.uk.ibm.com
+X-IBM-MailFrom: dahi@linux.vnet.ibm.com
+X-IBM-RcptTo: qemu-arm@nongnu.org;qemu-devel@nongnu.org
+Received: from b06cxnps3074.portsmouth.uk.ibm.com
+	(d06relay09.portsmouth.uk.ibm.com [9.149.109.194])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id 3B9CD1B08070; 
+	Mon,  6 Jun 2016 11:00:26 +0100 (BST)
+Received: from d06av09.portsmouth.uk.ibm.com (d06av09.portsmouth.uk.ibm.com
+	[9.149.37.250])
+	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id u569xLA144302584; Mon, 6 Jun 2016 09:59:21 GMT
+Received: from d06av09.portsmouth.uk.ibm.com (localhost [127.0.0.1])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with
+	ESMTP id u569xKut021526; Mon, 6 Jun 2016 03:59:21 -0600
+Received: from thinkpad-w530 (dyn-9-152-224-205.boeblingen.de.ibm.com
+	[9.152.224.205])
+	by d06av09.portsmouth.uk.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with
+	ESMTP id u569xK4f021512; Mon, 6 Jun 2016 03:59:20 -0600
+Date: Mon, 6 Jun 2016 11:59:19 +0200
+From: David Hildenbrand <dahi@linux.vnet.ibm.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+In-Reply-To: <20160603195457.GZ19055@thinpad.lan.raisama.net>
+References: <1464799050-11002-1-git-send-email-imammedo@redhat.com>
+	<201606022044.u52KaIkv017063@mx0a-001b2d01.pphosted.com>
+	<20160603000209.GM19055@thinpad.lan.raisama.net>
+	<20160603083621.6547bde4@thinkpad-w530>
+	<20160603195457.GZ19055@thinpad.lan.raisama.net>
+Organization: IBM Deutschland GmbH
+X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xc+RiHa44sS7jSA=4JTWWmO0iTqb-Q4MEqk-5u6iWfXug@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 6908240355063532464
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrieejgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 178.32.228.68
-Subject: Re: [Qemu-arm] [PATCH] hw/timer: Add value matching support to
- aspeed_timer
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16060609-0020-0000-0000-00000207306E
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16060609-0021-0000-0000-00003C446914
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-06-06_05:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=8
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1604210000
+	definitions=main-1606060122
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 0/8] cpus: make "-cpu cpux,
+ features" global properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,325 +104,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
+	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
+	pbonzini@redhat.com, Igor Mammedov <imammedo@redhat.com>, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ViQ4D7yeF/3r
+X-TUID: jEpszs+z/ETT
 
-On 06/05/2016 06:20 PM, Joel Stanley wrote:
-> On Fri, May 27, 2016 at 12:08 AM, Andrew Jeffery <andrew@aj.id.au> wrot=
-e:
->> Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=3Dy on the
->> palmetto-bmc machine. Two match registers are provided for each timer.
->=20
-> Thanks for doing this. We now boot faster in my testing.
->=20
->>
->> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->=20
-> Acked-by: Joel Stanley <joel@jms.id.au>
 
-Yes. I should have mentioned it also. This is a must have for the SMC=20
-patches (soon to come) which let us boot directly for the OpenBMC flash=20
-images.
+> I assume Igor explained it, already, and his suggestion sounds OK
+> to you. But I will answer your questions to confirm that this is
+> really the case:
 
-Acked-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Yes, this all sounds good to me, thanks for the additional explanation!
+[...]
 
-Thanks
+> 
+> > 
+> > d) has to work for us. Otherwise we will have to fallback to manual
+> > property parsing.  
+> 
+> It will be affected by the globals, but I assume management code
+> is not going to use add extra -cpu arguments when probing for CPU
+> model information, right?
 
-C.
-=20
->> ---
->>
->> The change pulls out ptimer in favour of the regular timer infrastruct=
-ure. As a
->> consequence it implements the conversions between ticks and time which=
- feels a
->> little tedious. Any comments there would be appreciated.
->>
->>  hw/timer/aspeed_timer.c         | 135 ++++++++++++++++++++++++++++++-=
----------
->>  include/hw/timer/aspeed_timer.h |   6 +-
->>  2 files changed, 105 insertions(+), 36 deletions(-)
->>
->> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
->> index 4b94808821b4..905de0f788b2 100644
->> --- a/hw/timer/aspeed_timer.c
->> +++ b/hw/timer/aspeed_timer.c
->> @@ -9,13 +9,12 @@
->>   * the COPYING file in the top-level directory.
->>   */
->>
->> +#include <math.h>
->>  #include "qemu/osdep.h"
->> -#include "hw/ptimer.h"
->>  #include "hw/sysbus.h"
->>  #include "hw/timer/aspeed_timer.h"
->>  #include "qemu-common.h"
->>  #include "qemu/bitops.h"
->> -#include "qemu/main-loop.h"
->>  #include "qemu/timer.h"
->>  #include "qemu/log.h"
->>  #include "trace.h"
->> @@ -77,21 +76,99 @@ static inline bool timer_can_pulse(AspeedTimer *t)
->>      return t->id >=3D TIMER_FIRST_CAP_PULSE;
->>  }
->>
->> +static inline bool timer_external_clock(AspeedTimer *t)
->> +{
->> +    return timer_ctrl_status(t, op_external_clock);
->> +}
->> +
->> +static double clock_rates[] =3D { TIMER_CLOCK_APB_HZ, TIMER_CLOCK_EXT=
-_HZ };
->> +
->> +static inline double calculate_rate(struct AspeedTimer *t)
->> +{
->> +    return clock_rates[timer_external_clock(t)];
->> +}
->> +
->> +static inline double calculate_period(struct AspeedTimer *t)
->> +{
->> +    return NANOSECONDS_PER_SECOND / calculate_rate(t);
->> +}
->> +
->> +static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_=
-t now_ns)
->> +{
->> +    uint64_t delta_ns =3D now_ns - MIN(now_ns, t->start);
->> +    uint32_t ticks =3D (uint32_t) floor(delta_ns / calculate_period(t=
-));
->> +
->> +    return t->reload - MIN(t->reload, ticks);
->> +}
->> +
->> +static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t=
- ticks)
->> +{
->> +    uint64_t delta_ns;
->> +
->> +    ticks =3D MIN(t->reload, ticks);
->> +    delta_ns =3D (uint64_t) floor((t->reload - ticks) * calculate_per=
-iod(t));
->> +
->> +    return t->start + delta_ns;
->> +}
->> +
->> +static uint64_t calculate_next(struct AspeedTimer *t)
->> +{
->> +    uint64_t now;
->> +    uint64_t next;
->> +    int i;
->> +    /* We don't know the relationship between the values in the match
->> +     * registers, so sort using MAX/MIN/zero. We sort in that order a=
-s the
->> +     * timer counts down to zero. */
->> +    uint64_t seq[] =3D {
->> +        MAX(t->match[0], t->match[1]),
->> +        MIN(t->match[0], t->match[1]),
->> +        0,
->> +    };
->> +
->> +    now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->> +    for (i =3D 0; i < ARRAY_SIZE(seq); i++) {
->> +        next =3D calculate_time(t, seq[i]);
->> +        if (now < next) {
->> +            return next;
->> +        }
->> +    }
->> +
->> +    {
->> +        uint64_t reload_ns;
->> +
->> +        reload_ns =3D (uint64_t) floor(t->reload * calculate_period(t=
-));
->> +        t->start =3D now - ((now - t->start) % reload_ns);
->> +    }
->> +
->> +    return calculate_next(t);
->> +}
->> +
->>  static void aspeed_timer_expire(void *opaque)
->>  {
->>      AspeedTimer *t =3D opaque;
->> +    bool interrupt =3D false;
->> +    uint32_t ticks;
->>
->> -    /* Only support interrupts on match values of zero for the moment=
- - this is
->> -     * sufficient to boot an aspeed_defconfig Linux kernel.
->> -     *
->> -     * TODO: matching on arbitrary values (see e.g. hw/timer/a9gtimer=
-.c)
->> -     */
->> -    bool match =3D !(t->match[0] && t->match[1]);
->> -    bool interrupt =3D timer_overflow_interrupt(t) || match;
->> -    if (timer_enabled(t) && interrupt) {
->> +    if (!timer_enabled(t)) {
->> +        return;
->> +    }
->> +
->> +    ticks =3D calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL=
-));
->> +
->> +    if (!ticks) {
->> +        interrupt =3D timer_overflow_interrupt(t) || !t->match[0] || =
-!t->match[1];
->> +    } else if (ticks <=3D MIN(t->match[0], t->match[1])) {
->> +        interrupt =3D true;
->> +    } else if (ticks <=3D MAX(t->match[0], t->match[1])) {
->> +        interrupt =3D true;
->> +    }
->> +
->> +    if (interrupt) {
->>          t->level =3D !t->level;
->>          qemu_set_irq(t->irq, t->level);
->>      }
->> +
->> +    timer_mod(&t->timer, calculate_next(t));
->>  }
->>
->>  static uint64_t aspeed_timer_get_value(AspeedTimer *t, int reg)
->> @@ -100,7 +177,7 @@ static uint64_t aspeed_timer_get_value(AspeedTimer=
- *t, int reg)
->>
->>      switch (reg) {
->>      case TIMER_REG_STATUS:
->> -        value =3D ptimer_get_count(t->timer);
->> +        value =3D calculate_ticks(t, qemu_clock_get_ns(QEMU_CLOCK_VIR=
-TUAL));
->>          break;
->>      case TIMER_REG_RELOAD:
->>          value =3D t->reload;
->> @@ -160,24 +237,21 @@ static void aspeed_timer_set_value(AspeedTimerCt=
-rlState *s, int timer, int reg,
->>      switch (reg) {
->>      case TIMER_REG_STATUS:
->>          if (timer_enabled(t)) {
->> -            ptimer_set_count(t->timer, value);
->> +            uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->> +            int64_t delta =3D (int64_t) value - (int64_t) calculate_t=
-icks(t, now);
->> +
->> +            t->start +=3D delta * calculate_period(t);
->> +            timer_mod(&t->timer, calculate_next(t));
->>          }
->>          break;
->>      case TIMER_REG_RELOAD:
->>          t->reload =3D value;
->> -        ptimer_set_limit(t->timer, value, 1);
->>          break;
->>      case TIMER_REG_MATCH_FIRST:
->>      case TIMER_REG_MATCH_SECOND:
->> -        if (value) {
->> -            /* Non-zero match values are unsupported. As such an inte=
-rrupt will
->> -             * always be triggered when the timer reaches zero even i=
-f the
->> -             * overflow interrupt control bit is clear.
->> -             */
->> -            qemu_log_mask(LOG_UNIMP, "%s: Match value unsupported by =
-device: "
->> -                    "0x%" PRIx32 "\n", __func__, value);
->> -        } else {
->> -            t->match[reg - 2] =3D value;
->> +        t->match[reg - 2] =3D value;
->> +        if (timer_enabled(t)) {
->> +            timer_mod(&t->timer, calculate_next(t));
->>          }
->>          break;
->>      default:
->> @@ -196,21 +270,16 @@ static void aspeed_timer_ctrl_enable(AspeedTimer=
- *t, bool enable)
->>  {
->>      trace_aspeed_timer_ctrl_enable(t->id, enable);
->>      if (enable) {
->> -        ptimer_run(t->timer, 0);
->> +        t->start =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->> +        timer_mod(&t->timer, calculate_next(t));
->>      } else {
->> -        ptimer_stop(t->timer);
->> -        ptimer_set_limit(t->timer, t->reload, 1);
->> +        timer_del(&t->timer);
->>      }
->>  }
->>
->>  static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool ena=
-ble)
->>  {
->>      trace_aspeed_timer_ctrl_external_clock(t->id, enable);
->> -    if (enable) {
->> -        ptimer_set_freq(t->timer, TIMER_CLOCK_EXT_HZ);
->> -    } else {
->> -        ptimer_set_freq(t->timer, TIMER_CLOCK_APB_HZ);
->> -    }
->>  }
->>
->>  static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool=
- enable)
->> @@ -351,12 +420,10 @@ static const MemoryRegionOps aspeed_timer_ops =3D=
- {
->>
->>  static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id=
-)
->>  {
->> -    QEMUBH *bh;
->>      AspeedTimer *t =3D &s->timers[id];
->>
->>      t->id =3D id;
->> -    bh =3D qemu_bh_new(aspeed_timer_expire, t);
->> -    t->timer =3D ptimer_init(bh);
->> +    timer_init_ns(&t->timer, QEMU_CLOCK_VIRTUAL, aspeed_timer_expire,=
- t);
->>  }
->>
->>  static void aspeed_timer_realize(DeviceState *dev, Error **errp)
->> @@ -404,7 +471,7 @@ static const VMStateDescription vmstate_aspeed_tim=
-er =3D {
->>      .fields =3D (VMStateField[]) {
->>          VMSTATE_UINT8(id, AspeedTimer),
->>          VMSTATE_INT32(level, AspeedTimer),
->> -        VMSTATE_PTIMER(timer, AspeedTimer),
->> +        VMSTATE_TIMER(timer, AspeedTimer),
->>          VMSTATE_UINT32(reload, AspeedTimer),
->>          VMSTATE_UINT32_ARRAY(match, AspeedTimer, 2),
->>          VMSTATE_END_OF_LIST()
->> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed=
-_timer.h
->> index 44dc2f89d5c6..970fea83143c 100644
->> --- a/include/hw/timer/aspeed_timer.h
->> +++ b/include/hw/timer/aspeed_timer.h
->> @@ -22,7 +22,8 @@
->>  #ifndef ASPEED_TIMER_H
->>  #define ASPEED_TIMER_H
->>
->> -#include "hw/ptimer.h"
->> +#include "qemu/typedefs.h"
->> +#include "qemu/timer.h"
->>
->>  #define ASPEED_TIMER(obj) \
->>      OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
->> @@ -33,15 +34,16 @@ typedef struct AspeedTimer {
->>      qemu_irq irq;
->>
->>      uint8_t id;
->> +    QEMUTimer timer;
->>
->>      /**
->>       * Track the line level as the ASPEED timers implement edge trigg=
-ered
->>       * interrupts, signalling with both the rising and falling edge.
->>       */
->>      int32_t level;
->> -    ptimer_state *timer;
->>      uint32_t reload;
->>      uint32_t match[2];
->> +    uint64_t start;
->>  } AspeedTimer;
->>
->>  typedef struct AspeedTimerCtrlState {
->> --
->> 2.7.4
->>
+Yes, that's also what I figured out, this should not be a problem.
+
+> 
+> Users will need to be aware that -cpu is equivalent to -global,
+> and will affect CPU information returned by query-cpu-definitions
+> (or similar commands).
+> 
+> >   
+> > > 
+> > > If all you need is to parse properties, why can't you reuse the
+> > > existing QOM/Device mechanisms to handle properties (the one used
+> > > by -device and device_add), instead of the -cpu code?  
+> > 
+> > We can, if my given example works. And the global properties
+> > don't interfere with cpus.  
+> 
+> They do, but only the model specified in -cpu.
+> 
+> >   
+> > > 
+> > > We need to use less of the infrastructure that exists for the
+> > > legacy -cpu option (and use more of the generic QOM/Device
+> > > mechanisms), not more of it.  
+> > 
+> > It is better to have one way of creating cpus that two.  
+> 
+> Unfortunately we already have two ways of creating CPUs: -cpu and
+> device_add. We are trying to translate -cpu to something
+> equivalent to generic mechanisms (-device and -global), so we
+> have only one underlying mechanism.
+
+Yes, understood. Sounds sane to me!
+[...]
+
+> I understand that this may be confusing, but that's because -smp
+> and -cpu don't fit the QEMU device/object models. We are moving
+> towards allowing CPU topologies to be created using only -device.
+> 
+> To do that, we are gradually translating -cpu to the generic
+> mechanisms used by -device/-global, so command-line options could
+> be easily converted to use the new mechanisms in the future.
+> 
+> Does that make sense?
+> 
+
+Absolutely!
+
+David
 

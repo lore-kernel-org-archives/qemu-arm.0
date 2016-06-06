@@ -1,222 +1,181 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c9sm16210462wjh.49.2016.06.06.10.32.41
+        by smtp.gmail.com with ESMTPSA id g8sm15284013wme.23.2016.06.06.10.39.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Jun 2016 10:32:41 -0700 (PDT)
+        Mon, 06 Jun 2016 10:39:34 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 9F2DA3E02BF;
-	Mon,  6 Jun 2016 18:32:56 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTPS id 0B5583E02BF;
+	Mon,  6 Jun 2016 18:39:50 +0100 (BST)
 User-agent: mu4e 0.9.17; emacs 25.0.94.5
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Andrew Jones <drjones@redhat.com>
 Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org, christoffer.dall@linaro.org, marc.zyngier@arm.com
-Subject: Re: [kvm-unit-tests PATCH v2 03/10] arm/arm64: smp: support more than 8 cpus
-In-reply-to: <20160606163133.kzbk5qapmhvv5kem@hawk.localdomain>
-Date: Mon, 06 Jun 2016 18:32:56 +0100
-Message-ID: <87wpm2gr3r.fsf@linaro.org>
+Subject: Re: [kvm-unit-tests PATCH v2 04/10] arm/arm64: add some delay routines
+In-reply-to: <1465064165-14885-5-git-send-email-drjones@redhat.com>
+Date: Mon, 06 Jun 2016 18:39:50 +0100
+Message-ID: <87vb1mgqs9.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zws0hKfqKYs6
+X-TUID: EDXV9vlOoDgn
 
 
 Andrew Jones <drjones@redhat.com> writes:
 
-> On Mon, Jun 06, 2016 at 05:22:49PM +0100, Alex Bennée wrote:
->>
->> Andrew Jones <drjones@redhat.com> writes:
->>
->> > Signed-off-by: Andrew Jones <drjones@redhat.com>
->> > ---
->> >  arm/run                   | 19 ++++++++++++-------
->> >  arm/selftest.c            |  5 ++++-
->> >  lib/arm/asm/processor.h   |  9 +++++++--
->> >  lib/arm/asm/setup.h       |  4 ++--
->> >  lib/arm/setup.c           | 12 +++++++++++-
->> >  lib/arm64/asm/processor.h |  9 +++++++--
->> >  6 files changed, 43 insertions(+), 15 deletions(-)
->> >
->> > diff --git a/arm/run b/arm/run
->> > index a2f35ef6a7e63..2d0698619606e 100755
->> > --- a/arm/run
->> > +++ b/arm/run
->> > @@ -31,13 +31,6 @@ if [ -z "$ACCEL" ]; then
->> >  	fi
->> >  fi
->> >
->> > -if [ "$HOST" = "aarch64" ] && [ "$ACCEL" = "kvm" ]; then
->> > -	processor="host"
->> > -	if [ "$ARCH" = "arm" ]; then
->> > -		processor+=",aarch64=off"
->> > -	fi
->> > -fi
->> > -
->> >  qemu="${QEMU:-qemu-system-$ARCH_NAME}"
->> >  qpath=$(which $qemu 2>/dev/null)
->> >
->> > @@ -53,6 +46,18 @@ fi
->> >
->> >  M='-machine virt'
->> >
->> > +if [ "$ACCEL" = "kvm" ]; then
->> > +	if $qemu $M,\? 2>&1 | grep gic-version > /dev/null; then
->> > +		M+=',gic-version=host'
->> > +	fi
->> > +	if [ "$HOST" = "aarch64" ]; then
->> > +		processor="host"
->> > +		if [ "$ARCH" = "arm" ]; then
->> > +			processor+=",aarch64=off"
->> > +		fi
->> > +	fi
->> > +fi
->> > +
->> >  if ! $qemu $M -device '?' 2>&1 | grep virtconsole > /dev/null; then
->> >  	echo "$qpath doesn't support virtio-console for chr-testdev. Exiting."
->> >  	exit 2
->> > diff --git a/arm/selftest.c b/arm/selftest.c
->> > index 5656f2bb1cc88..ad1f452f8ebfa 100644
->> > --- a/arm/selftest.c
->> > +++ b/arm/selftest.c
->> > @@ -313,9 +313,10 @@ static bool psci_check(void)
->> >  static cpumask_t smp_reported;
->> >  static void cpu_report(void)
->> >  {
->> > +	unsigned long mpidr = get_mpidr();
->> >  	int cpu = smp_processor_id();
->> >
->> > -	report("CPU%d online", true, cpu);
->> > +	report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == cpu, cpu, mpidr);
->> >  	cpumask_set_cpu(cpu, &smp_reported);
->> >  	halt();
->> >  }
->> > @@ -344,6 +345,7 @@ int main(int argc, char **argv)
->> >
->> >  	} else if (strcmp(argv[1], "smp") == 0) {
->> >
->> > +		unsigned long mpidr = get_mpidr();
->> >  		int cpu;
->> >
->> >  		report("PSCI version", psci_check());
->> > @@ -354,6 +356,7 @@ int main(int argc, char **argv)
->> >  			smp_boot_secondary(cpu, cpu_report);
->> >  		}
->> >
->> > +		report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == 0, 0, mpidr);
->> >  		cpumask_set_cpu(0, &smp_reported);
->> >  		while (!cpumask_full(&smp_reported))
->> >  			cpu_relax();
->> > diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
->> > index f25e7eee3666c..d2048f5f5f7e6 100644
->> > --- a/lib/arm/asm/processor.h
->> > +++ b/lib/arm/asm/processor.h
->> > @@ -40,8 +40,13 @@ static inline unsigned int get_mpidr(void)
->> >  	return mpidr;
->> >  }
->> >
->> > -/* Only support Aff0 for now, up to 4 cpus */
->> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
->> > +#define MPIDR_HWID_BITMASK 0xffffff
->> > +extern int mpidr_to_cpu(unsigned long mpidr);
->> > +
->> > +#define MPIDR_LEVEL_SHIFT(level) \
->> > +	(((1 << level) >> 1) << 3)
->> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
->> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
->> >
->> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
->> >  extern bool is_user(void);
->> > diff --git a/lib/arm/asm/setup.h b/lib/arm/asm/setup.h
->> > index cb8fdbd38dd5d..c501c6ddd8657 100644
->> > --- a/lib/arm/asm/setup.h
->> > +++ b/lib/arm/asm/setup.h
->> > @@ -10,8 +10,8 @@
->> >  #include <asm/page.h>
->> >  #include <asm/pgtable-hwdef.h>
->> >
->> > -#define NR_CPUS			8
->> > -extern u32 cpus[NR_CPUS];
->> > +#define NR_CPUS			255
->> > +extern u64 cpus[NR_CPUS];
->> >  extern int nr_cpus;
->> >
->> >  #define NR_MEM_REGIONS		8
->> > diff --git a/lib/arm/setup.c b/lib/arm/setup.c
->> > index 8c6172ff94106..1d6b6949c920e 100644
->> > --- a/lib/arm/setup.c
->> > +++ b/lib/arm/setup.c
->> > @@ -24,12 +24,22 @@ extern unsigned long stacktop;
->> >  extern void io_init(void);
->> >  extern void setup_args(const char *args);
->> >
->> > -u32 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
->> > +u64 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
->> >  int nr_cpus;
->> >
->> >  struct mem_region mem_regions[NR_MEM_REGIONS];
->> >  phys_addr_t __phys_offset, __phys_end;
->> >
->> > +int mpidr_to_cpu(unsigned long mpidr)
->> > +{
->> > +	int i;
->> > +
->> > +	for (i = 0; i < nr_cpus; ++i)
->> > +		if (cpus[i] == (mpidr & MPIDR_HWID_BITMASK))
->> > +			return i;
->> > +	return -1;
->> > +}
->> > +
->> >  static void cpu_set(int fdtnode __unused, u32 regval, void *info __unused)
->> >  {
->> >  	int cpu = nr_cpus++;
->> > diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
->> > index 9a208ff729b7e..7e448dc81a6aa 100644
->> > --- a/lib/arm64/asm/processor.h
->> > +++ b/lib/arm64/asm/processor.h
->> > @@ -78,8 +78,13 @@ static inline type get_##reg(void)				\
->> >
->> >  DEFINE_GET_SYSREG64(mpidr)
->> >
->> > -/* Only support Aff0 for now, gicv2 only */
->> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
->> > +#define MPIDR_HWID_BITMASK 0xff00ffffff
->> > +extern int mpidr_to_cpu(unsigned long mpidr);
->> > +
->> > +#define MPIDR_LEVEL_SHIFT(level) \
->> > +	(((1 << level) >> 1) << 3)
->> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
->> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
->>
->> Doesn't Aff3 break this little macro? It sits at 32:39 with a gap for
->> MT, RES0, U, RES1 for bits 25:31
->
-> Nope, doesn't break. I had the same thought when I lifted it from
-> Linux, but stare at it long enough and you'll see that it works :-)
+> Allow a thread to wait some specified amount of time. Can
+> specify in cycles, usecs, and msecs.
 
-Maybe a comment although I'm hard pressed to think of a good one except
-maybe and explicit:
+I wonder if delay() and mdelay() can be in common code with just the
+freq and count getting functions in specific code? I guess that would
+need a lib/arm-generic/ or some such?
 
-    /* Shifts to 0, 8, 16, 32 */
-
-But either way:
+Otherwise:
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 
 >
-> Thanks,
-> drew
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  lib/arm/asm/processor.h   | 19 +++++++++++++++++++
+>  lib/arm/processor.c       | 15 +++++++++++++++
+>  lib/arm64/asm/processor.h | 19 +++++++++++++++++++
+>  lib/arm64/processor.c     | 15 +++++++++++++++
+>  4 files changed, 68 insertions(+)
 >
->>
->> >
->> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
->> >  extern bool is_user(void);
->>
->>
->> --
->> Alex Bennée
->> --
->> To unsubscribe from this list: send the line "unsubscribe kvm" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
+> index d2048f5f5f7e6..afc903ca7d4ab 100644
+> --- a/lib/arm/asm/processor.h
+> +++ b/lib/arm/asm/processor.h
+> @@ -5,7 +5,9 @@
+>   *
+>   * This work is licensed under the terms of the GNU LGPL, version 2.
+>   */
+> +#include <libcflat.h>
+>  #include <asm/ptrace.h>
+> +#include <asm/barrier.h>
+>
+>  enum vector {
+>  	EXCPTN_RST,
+> @@ -51,4 +53,21 @@ extern int mpidr_to_cpu(unsigned long mpidr);
+>  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+>  extern bool is_user(void);
+>
+> +static inline u64 get_cntvct(void)
+> +{
+> +	u64 vct;
+> +	isb();
+> +	asm volatile("mrrc p15, 1, %Q0, %R0, c14" : "=r" (vct));
+> +	return vct;
+> +}
+> +
+> +extern void delay(u64 cycles);
+> +extern void udelay(unsigned long usecs);
+> +
+> +static inline void mdelay(unsigned long msecs)
+> +{
+> +	while (msecs--)
+> +		udelay(1000);
+> +}
+> +
+>  #endif /* _ASMARM_PROCESSOR_H_ */
+> diff --git a/lib/arm/processor.c b/lib/arm/processor.c
+> index 54fdb87ef0196..c2ee360df6884 100644
+> --- a/lib/arm/processor.c
+> +++ b/lib/arm/processor.c
+> @@ -9,6 +9,7 @@
+>  #include <asm/ptrace.h>
+>  #include <asm/processor.h>
+>  #include <asm/thread_info.h>
+> +#include <asm/barrier.h>
+>
+>  static const char *processor_modes[] = {
+>  	"USER_26", "FIQ_26" , "IRQ_26" , "SVC_26" ,
+> @@ -141,3 +142,17 @@ bool is_user(void)
+>  {
+>  	return current_thread_info()->flags & TIF_USER_MODE;
+>  }
+> +
+> +void delay(u64 cycles)
+> +{
+> +	u64 start = get_cntvct();
+> +	while ((get_cntvct() - start) < cycles)
+> +		cpu_relax();
+> +}
+> +
+> +void udelay(unsigned long usec)
+> +{
+> +	unsigned int frq;
+> +	asm volatile("mrc p15, 0, %0, c14, c0, 0" : "=r" (frq));
+> +	delay((u64)usec * frq / 1000000);
+> +}
+> diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
+> index 7e448dc81a6aa..94f7ce35b65c1 100644
+> --- a/lib/arm64/asm/processor.h
+> +++ b/lib/arm64/asm/processor.h
+> @@ -17,8 +17,10 @@
+>  #define SCTLR_EL1_M	(1 << 0)
+>
+>  #ifndef __ASSEMBLY__
+> +#include <libcflat.h>
+>  #include <asm/ptrace.h>
+>  #include <asm/esr.h>
+> +#include <asm/barrier.h>
+>
+>  enum vector {
+>  	EL1T_SYNC,
+> @@ -89,5 +91,22 @@ extern int mpidr_to_cpu(unsigned long mpidr);
+>  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+>  extern bool is_user(void);
+>
+> +static inline u64 get_cntvct(void)
+> +{
+> +	u64 vct;
+> +	isb();
+> +	asm volatile("mrs %0, cntvct_el0" : "=r" (vct));
+> +	return vct;
+> +}
+> +
+> +extern void delay(u64 cycles);
+> +extern void udelay(unsigned long usecs);
+> +
+> +static inline void mdelay(unsigned long msecs)
+> +{
+> +	while (msecs--)
+> +		udelay(1000);
+> +}
+> +
+>  #endif /* !__ASSEMBLY__ */
+>  #endif /* _ASMARM64_PROCESSOR_H_ */
+> diff --git a/lib/arm64/processor.c b/lib/arm64/processor.c
+> index deeab4ec9c8ac..50fa835c6f1e3 100644
+> --- a/lib/arm64/processor.c
+> +++ b/lib/arm64/processor.c
+> @@ -9,6 +9,7 @@
+>  #include <asm/ptrace.h>
+>  #include <asm/processor.h>
+>  #include <asm/thread_info.h>
+> +#include <asm/barrier.h>
+>
+>  static const char *vector_names[] = {
+>  	"el1t_sync",
+> @@ -253,3 +254,17 @@ bool is_user(void)
+>  {
+>  	return current_thread_info()->flags & TIF_USER_MODE;
+>  }
+> +
+> +void delay(u64 cycles)
+> +{
+> +	u64 start = get_cntvct();
+> +	while ((get_cntvct() - start) < cycles)
+> +		cpu_relax();
+> +}
+> +
+> +void udelay(unsigned long usec)
+> +{
+> +	unsigned int frq;
+> +	asm volatile("mrs %0, cntfrq_el0" : "=r" (frq));
+> +	delay((u64)usec * frq / 1000000);
+> +}
 
 
 --

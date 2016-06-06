@@ -1,70 +1,71 @@
-Received: by 10.25.27.66 with SMTP id b63csp1404722lfb;
-        Mon, 6 Jun 2016 03:10:19 -0700 (PDT)
-X-Received: by 10.55.195.193 with SMTP id r62mr14525627qkl.23.1465207819610;
-        Mon, 06 Jun 2016 03:10:19 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp1487600lfb;
+        Mon, 6 Jun 2016 06:26:13 -0700 (PDT)
+X-Received: by 10.55.39.146 with SMTP id n140mr16345535qkn.10.1465219572968;
+        Mon, 06 Jun 2016 06:26:12 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s18si11608555qts.66.2016.06.06.03.10.19
+        by mx.google.com with ESMTPS id d73si3874828qke.270.2016.06.06.06.26.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Jun 2016 03:10:19 -0700 (PDT)
+        Mon, 06 Jun 2016 06:26:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@foxmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41117 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=foxmail.com
+Received: from localhost ([::1]:42511 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1b9rUB-0000bd-20
-	for alex.bennee@linaro.org; Mon, 06 Jun 2016 06:10:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49035)
+	id 1b9uXk-0007E0-4c
+	for alex.bennee@linaro.org; Mon, 06 Jun 2016 09:26:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53327)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9rU7-0000bT-VK
-	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:17 -0400
+	(envelope-from <droiing@foxmail.com>) id 1b9py8-0000aB-TG
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 04:33:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9rU5-0004ZT-6V
-	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:14 -0400
-Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:34954)
+	(envelope-from <droiing@foxmail.com>) id 1b9py3-00009U-JF
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 04:33:07 -0400
+Received: from smtpbgsg2.qq.com ([54.254.200.128]:43741)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1b9rU3-0004ZD-TX
-	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 06:10:13 -0400
-Received: by mail-vk0-x22b.google.com with SMTP id d127so192677897vkh.2
-	for <qemu-arm@nongnu.org>; Mon, 06 Jun 2016 03:10:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=QZVs0DT2C6US6PP0zzN4PrRS2w+2yscuhfhvvqUWc78=;
-	b=Dcr4N0ogtR16VQmaeu1ATn8K/sgpz8RDLoniPb5Xytm9S8WfYCIiYP6+ynA1WOq6DM
-	XDXkR9OMSDKJWDy0WFluCfT6VcBDPtBTMh1+48Ek8ProtLyN6RAaGkKR6W/wEQOL5r57
-	tRmRNQUw9YRmEkbQZ4ij8mNeBSoO3t/N2sHMY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=QZVs0DT2C6US6PP0zzN4PrRS2w+2yscuhfhvvqUWc78=;
-	b=KI5TacG/945XfTBZCZHmcwCKmZaDK3KgitVea/Tdsds2vw+2MOCINDUFQXcZyyJk3Q
-	d7T56GNdou/9UGQcN8eB7Ou1Lu4mE7foJ5sw7o2h2tmUrO5gTi25fbmi2uW1QicrTfzg
-	BKmFwVGu+8G0rp8OwyDWzQgA17PsWUKg6+ZDuXXegpnpIcN2s9GppZ5Ao6v6BTy6fH9n
-	9HXWBez1Rh9wAqFeED94B5ISYLzhR4weukrMAshSaxlFgwaMFBjxvMWOrDGy9udilLEk
-	ml4Uq1DKHDTh+I7bF53e9NuNEQJBzghRMgS2rsdpz6DZysEt+QXTrG5WFUyjbtpftVS7
-	oLzA==
-X-Gm-Message-State: ALyK8tLruMnvVtjw3HLrp/5uUkjZ1jIlzOcVunPZAJDedIdiVWWWR8KwEo5wyFlVYbrO8qd4VpXyxWrGomB3azwD
-X-Received: by 10.31.89.196 with SMTP id n187mr6214149vkb.83.1465207811372;
-	Mon, 06 Jun 2016 03:10:11 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.67.65 with HTTP; Mon, 6 Jun 2016 03:09:51 -0700 (PDT)
-In-Reply-To: <97318fe5bbe95202ca2d96e72a31c597a148ea77.1464367869.git.digetx@gmail.com>
-References: <cover.1464367869.git.digetx@gmail.com>
-	<97318fe5bbe95202ca2d96e72a31c597a148ea77.1464367869.git.digetx@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jun 2016 11:09:51 +0100
-Message-ID: <CAFEAcA_Y29-mxShvHqZrQC-g4Ve5X+yE18SWaCKumb40FaSmeQ@mail.gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22b
-Subject: Re: [Qemu-arm] [PATCH v13 6/8] hw/ptimer: Support running with
- counter = 0 by introducing new policy feature
+	(envelope-from <droiing@foxmail.com>) id 1b9py2-00006A-55
+	for qemu-arm@nongnu.org; Mon, 06 Jun 2016 04:33:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foxmail.com;
+	s=s201512; t=1465201967;
+	bh=q3MKmH3F+50oK/7JLxOw9dJNT44Smt6n5r48LIPITEk=;
+	h=From:To:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:Date:Message-ID;
+	b=Uw5A/SOraq4eiKzE7NEjF4QJ5Rv+paKlWEMODZkEPqubgCnmIvfZF2KTGveqiyLJJ
+	0FB6By8hxk/nsiVKD3xmhfgs5WbpQlMrq0sCAgBMXOaCDyN/Dklrshdr4ER0FXynht
+	5Q2hGN0zI38yM5KmmctvxrEt4eNWYsSZYXJn4o14=
+X-QQ-FEAT: Jvw1P2of/jY/E7SH5OwzDPMhi7bE2e43k2Cs4I+x4ZGFoLbFzYS9fPbxAdVX6
+	s2bvtqSvpJhUFkuwb+Nu84o1haMPCThjA8K2R8W4K2PcGKvnT7SjU232eyHB5XqdcT44vvl
+	X1wam0jBp4FTAHQL42D0FFIlRUXOXn00GQPMefnbR6VXO3uF+plf97BkLR/uipjIYGYfoJU
+	epcw48sjbd8R1FWsg3CsI7ItFvE61wWRqpJM/cY7RU2J1eC3K4oURJo0NFtQRY0TjgLMkCc
+	w/J85/wAZC8QKD
+X-QQ-SSF: 00000000000000F000000000000000R
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 218.76.220.175
+X-QQ-STYLE: 
+X-QQ-mid: webmail198t1465201965t5860455
+From: "=?gb18030?B?t+PDorH5wr0=?=" <droiing@foxmail.com>
+To: "=?gb18030?B?cWVtdS1hcm0=?=" <qemu-arm@nongnu.org>
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_5755352D_0982F4A8_3479EA84"
+Content-Transfer-Encoding: 8Bit
+Date: Mon, 6 Jun 2016 16:32:45 +0800
+X-Priority: 3
+Message-ID: <tencent_0AB7D7F1246052E1231C420C@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+X-QQ-SENDSIZE: 520
+X-QQ-Bgrelay: 1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 54.254.200.128
+X-Mailman-Approved-At: Mon, 06 Jun 2016 09:26:05 -0400
+Subject: [Qemu-arm] [aarch64] Input device(USB kbd and USB mouse) Connection
+ timed out.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,250 +77,333 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VncYfnWxC6FM
+X-TUID: DwCWEX3NzaP+
 
-On 27 May 2016 at 18:03, Dmitry Osipenko <digetx@gmail.com> wrote:
-> Currently ptimer prints error message and clears enable flag for an arming
-> timer that has delta = load = 0. That actually is a valid case for most
-> of the timers, like instant IRQ trigger for oneshot timer or continuous in
-> periodic mode. There are different possible policies of how particular timer
-> could interpret setting counter to 0, like:
->
-> 1) Immediate stop with triggering the interrupt in oneshot mode. Immediate
->    wraparound with triggering the interrupt in continuous mode.
->
-> 2) Immediate stop without triggering the interrupt in oneshot mode. Immediate
->    wraparound without triggering the interrupt in continuous mode.
->
-> 3) Stopping with triggering the interrupt after one period in oneshot mode.
->    Wraparound with triggering the interrupt in continuous mode after one
->    period.
->
-> 4) Stopping without triggering the interrupt after one period in oneshot mode.
->    Wraparound without triggering the interrupt in continuous mode after one
->    period.
->
-> As well as handling oneshot/continuous modes differently.
->
-> Given that, currently, running the timer with counter/period equal to 0 is
-> treated as a error case, it's not obvious what policies should be supported
-> by ptimer. Let's implement the third policy for now, as it is known to be
-> used by the ARM MPTimer.
->
-> Explicitly forbid running with counter/period == 0 in all cases by aborting
-> QEMU execution instead of printing the error message.
->
-> Bump VMSD version since a new VMState member is added.
+This is a multi-part message in MIME format.
 
-I'm afraid you can't do that -- the ptimer code is used by a lot of
-platforms including some which do not permit migration compatibility
-breaks (at least sparc, for instance).
+------=_NextPart_5755352D_0982F4A8_3479EA84
+Content-Type: text/plain;
+	charset="gb18030"
+Content-Transfer-Encoding: base64
 
-If you want to add this feature you need to at least make it seamlessly
-support migration from the old version using a vmstate subsection.
+SGkgZXZlcnlvbmU6DQogICAgSSBlbmNvdW50ZXJlZCBhIHFlbXUgdmlydHVhbCB1c2IgZXJy
+b3IgaW4gYXJtNjQgbWFjaGluZSB3aXRoIEtWTS4NCiAgICBJIHVzZWQgdmlydC1tYW5hZ2Vy
+IHRvIGNyZWF0ZSBhIHZpcnR1YWwgbWFjaGluZSB3aXRoIFVTQiBrYmQgYW5kIFVTQiBtb3Vz
+ZS4gV2hlbiBib290LCBJIGdvdCBzb21lIGtlcm5lbCBlcnJvcnM6ICJkZXZpY2UgZGVzY3Jp
+cHRvciByZWFkLzY0LCBlcnJvciAtMTEwIi4NCiAgICBJIGZvdW5kIHRoaXMgZXJyb3IgaW4g
+ZWhjaV9wY2kgbW9kdWxlLiBUaGVuLCBJIHJlLWluc21vZCB0aGlzIG1vZHVsZSwgZ290IHRo
+aXMgb3V0cHV0Og0KDQoNCi0tLS0tLQ0KW3Jvb3RARHJvLU9QIH5dIyBsc21vZA0KbHNtb2QN
+Ck1vZHVsZSAgICAgICAgICAgICAgICAgIFNpemUgIFVzZWQgYnkNCmVoY2lfaGNkICAgICAg
+ICAgICAgICAgNDMyMjEgIDANCmVidGFibGVfZmlsdGVyICAgICAgICAgIDI0NDYgIDANCmVi
+dGFibGVzICAgICAgICAgICAgICAgMjc5ODEgIDEgZWJ0YWJsZV9maWx0ZXINCmlwNl90YWJs
+ZXMgICAgICAgICAgICAgMTc1MzMgIDANCmlwdGFibGVfZmlsdGVyICAgICAgICAgIDI2MjQg
+IDANCmlwX3RhYmxlcyAgICAgICAgICAgICAgMTc0NTQgIDEgaXB0YWJsZV9maWx0ZXINCmRt
+X21vZCAgICAgICAgICAgICAgICAxMTcwNzAgIDANCg0KW3Jvb3RARHJvLU9QIH5dIyBkbWVz
+ZyAtQw0KW3Jvb3RARHJvLU9QIH5dIyBtb2Rwb3JvYmUgZWhjaV9wY2kNCltyb290QERyby1P
+UCB+XSMgbHNtb2QNCk1vZHVsZSAgICAgICAgICAgICAgICAgIFNpemUgIFVzZWQgYnkNCmVo
+Y2lfcGNpICAgICAgICAgICAgICAgIDQ5NzAgIDANCmVoY2lfaGNkICAgICAgICAgICAgICAg
+NDMyMjEgIDEgZWhjaV9wY2kNCmVidGFibGVfZmlsdGVyICAgICAgICAgIDI0NDYgIDANCmVi
+dGFibGVzICAgICAgICAgICAgICAgMjc5ODEgIDEgZWJ0YWJsZV9maWx0ZXINCmlwNl90YWJs
+ZXMgICAgICAgICAgICAgMTc1MzMgIDANCmlwdGFibGVfZmlsdGVyICAgICAgICAgIDI2MjQg
+IDANCmlwX3RhYmxlcyAgICAgICAgICAgICAgMTc0NTQgIDEgaXB0YWJsZV9maWx0ZXINCmRt
+X21vZCAgICAgICAgICAgICAgICAxMTcwNzAgIDANCg0KW3Jvb3RARHJvLU9QIH5dIyBkbWVz
+Zw0KWyAgMzg0LjA2NDczOV0gZWhjaS1wY2k6IEVIQ0kgUENJIHBsYXRmb3JtIGRyaXZlcg0K
+WyAgMzg0LjA2NDc1OV0gYnVzOiAncGNpJzogYWRkIGRyaXZlciBlaGNpLXBjaQ0KWyAgMzg0
+LjA2NDc4M10gYnVzOiAncGNpJzogZHJpdmVyX3Byb2JlX2RldmljZTogbWF0Y2hlZCBkZXZp
+Y2UgMDAwMDowMjowMS43IHdpdGggZHJpdmVyIGVoY2ktcGNpDQpbICAzODQuMDY0Nzg4XSBi
+dXM6ICdwY2knOiByZWFsbHlfcHJvYmU6IHByb2JpbmcgZHJpdmVyIGVoY2ktcGNpIHdpdGgg
+ZGV2aWNlIDAwMDA6MDI6MDEuNw0KWyAgMzg0LjA2NDc5OV0gZGV2aWNlc19rc2V0OiBNb3Zp
+bmcgMDAwMDowMjowMS43IHRvIGVuZCBvZiBsaXN0DQpbICAzODQuMDY2ODE0XSBlaGNpLXBj
+aSAwMDAwOjAyOjAxLjc6IEVIQ0kgSG9zdCBDb250cm9sbGVyDQpbICAzODQuMDY2ODM1XSBl
+aGNpLXBjaSAwMDAwOjAyOjAxLjc6IG5ldyBVU0IgYnVzIHJlZ2lzdGVyZWQsIGFzc2lnbmVk
+IGJ1cyBudW1iZXIgMQ0KWyAgMzg0LjA2NzA1OV0gZWhjaS1wY2kgMDAwMDowMjowMS43OiBp
+cnEgNDAsIGlvIG1lbSAweDEwMDAwMDAwDQpbICAzODQuMDc3OTkwXSBlaGNpLXBjaSAwMDAw
+OjAyOjAxLjc6IFVTQiAyLjAgc3RhcnRlZCwgRUhDSSAxLjAwDQpbICAzODQuMDc4MDgzXSB1
+c2IgdXNiMTogTmV3IFVTQiBkZXZpY2UgZm91bmQsIGlkVmVuZG9yPTFkNmIsIGlkUHJvZHVj
+dD0wMDAyDQpbICAzODQuMDc4MDg5XSB1c2IgdXNiMTogTmV3IFVTQiBkZXZpY2Ugc3RyaW5n
+czogTWZyPTMsIFByb2R1Y3Q9MiwgU2VyaWFsTnVtYmVyPTENClsgIDM4NC4wNzgwOTVdIHVz
+YiB1c2IxOiBQcm9kdWN0OiBFSENJIEhvc3QgQ29udHJvbGxlcg0KWyAgMzg0LjA3ODEwMF0g
+dXNiIHVzYjE6IE1hbnVmYWN0dXJlcjogTGludXggNC43LjAtcmMyLnNlcnZlci5rdm0gZWhj
+aV9oY2QNClsgIDM4NC4wNzgxMDRdIHVzYiB1c2IxOiBTZXJpYWxOdW1iZXI6IDAwMDA6MDI6
+MDEuNw0KWyAgMzg0LjA3ODExMl0gZGV2aWNlOiAndXNiMSc6IGRldmljZV9hZGQNClsgIDM4
+NC4wNzgxNjldIGJ1czogJ3VzYic6IGFkZCBkZXZpY2UgdXNiMQ0KWyAgMzg0LjA4MjMyOF0g
+YnVzOiAndXNiJzogZHJpdmVyX3Byb2JlX2RldmljZTogbWF0Y2hlZCBkZXZpY2UgdXNiMSB3
+aXRoIGRyaXZlciB1c2INClsgIDM4NC4wODIzMzVdIGJ1czogJ3VzYic6IHJlYWxseV9wcm9i
+ZTogcHJvYmluZyBkcml2ZXIgdXNiIHdpdGggZGV2aWNlIHVzYjENClsgIDM4NC4wODIzNDdd
+IGRldmljZXNfa3NldDogTW92aW5nIHVzYjEgdG8gZW5kIG9mIGxpc3QNClsgIDM4NC4wODIz
+NzZdIGRldmljZTogJzEtMDoxLjAnOiBkZXZpY2VfYWRkDQpbICAzODQuMDgyNDAxXSBidXM6
+ICd1c2InOiBhZGQgZGV2aWNlIDEtMDoxLjANClsgIDM4NC4wODI0ODhdIGJ1czogJ3VzYic6
+IGRyaXZlcl9wcm9iZV9kZXZpY2U6IG1hdGNoZWQgZGV2aWNlIDEtMDoxLjAgd2l0aCBkcml2
+ZXIgaHViDQpbICAzODQuMDgyNDkzXSBidXM6ICd1c2InOiByZWFsbHlfcHJvYmU6IHByb2Jp
+bmcgZHJpdmVyIGh1YiB3aXRoIGRldmljZSAxLTA6MS4wDQpbICAzODQuMDgyNTAyXSBkZXZp
+Y2VzX2tzZXQ6IE1vdmluZyAxLTA6MS4wIHRvIGVuZCBvZiBsaXN0DQpbICAzODQuMDgyNTA4
+XSBodWIgMS0wOjEuMDogVVNCIGh1YiBmb3VuZA0KWyAgMzg0LjA4MjUyNV0gaHViIDEtMDox
+LjA6IDYgcG9ydHMgZGV0ZWN0ZWQNClsgIDM4NC4wODI1NDVdIGRldmljZTogJ3VzYjEtcG9y
+dDEnOiBkZXZpY2VfYWRkDQpbICAzODQuMDgyNTYwXSBkZXZpY2U6ICd1c2IxLXBvcnQyJzog
+ZGV2aWNlX2FkZA0KWyAgMzg0LjA4MjU3MV0gZGV2aWNlOiAndXNiMS1wb3J0Myc6IGRldmlj
+ZV9hZGQNClsgIDM4NC4wODI1ODJdIGRldmljZTogJ3VzYjEtcG9ydDQnOiBkZXZpY2VfYWRk
+DQpbICAzODQuMDgyNTkzXSBkZXZpY2U6ICd1c2IxLXBvcnQ1JzogZGV2aWNlX2FkZA0KWyAg
+Mzg0LjA4MjYwNF0gZGV2aWNlOiAndXNiMS1wb3J0Nic6IGRldmljZV9hZGQNClsgIDM4NC4w
+ODI3NDJdIGRyaXZlcjogJ2h1Yic6IGRyaXZlcl9ib3VuZDogYm91bmQgdG8gZGV2aWNlICcx
+LTA6MS4wJw0KWyAgMzg0LjA4Mjc1Nl0gYnVzOiAndXNiJzogcmVhbGx5X3Byb2JlOiBib3Vu
+ZCBkZXZpY2UgMS0wOjEuMCB0byBkcml2ZXIgaHViDQpbICAzODQuMDgyNzY0XSBkZXZpY2U6
+ICdlcF84MSc6IGRldmljZV9hZGQNClsgIDM4NC4wODI3ODddIGRyaXZlcjogJ3VzYic6IGRy
+aXZlcl9ib3VuZDogYm91bmQgdG8gZGV2aWNlICd1c2IxJw0KWyAgMzg0LjA4Mjc5Nl0gYnVz
+OiAndXNiJzogcmVhbGx5X3Byb2JlOiBib3VuZCBkZXZpY2UgdXNiMSB0byBkcml2ZXIgdXNi
+DQpbICAzODQuMDgyODAyXSBkZXZpY2U6ICdlcF8wMCc6IGRldmljZV9hZGQNClsgIDM4NC4w
+ODI4MzFdIGRyaXZlcjogJ2VoY2ktcGNpJzogZHJpdmVyX2JvdW5kOiBib3VuZCB0byBkZXZp
+Y2UgJzAwMDA6MDI6MDEuNycNClsgIDM4NC4wODI4NDBdIGJ1czogJ3BjaSc6IHJlYWxseV9w
+cm9iZTogYm91bmQgZGV2aWNlIDAwMDA6MDI6MDEuNyB0byBkcml2ZXIgZWhjaS1wY2kNClsg
+IDM4NC4zOTc5NjVdIHVzYiAxLTE6IG5ldyBoaWdoLXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVy
+IDIgdXNpbmcgZWhjaS1wY2kNClsgIDM5OS45Mzc5NTRdIHVzYiAxLTE6IGRldmljZSBub3Qg
+YWNjZXB0aW5nIGFkZHJlc3MgMiwgZXJyb3IgLTExMA0KWyAgNDAwLjA1Nzk1MV0gdXNiIDEt
+MTogbmV3IGhpZ2gtc3BlZWQgVVNCIGRldmljZSBudW1iZXIgMyB1c2luZyBlaGNpLXBjaQ0K
+WyAgNDA1LjE3Nzk1N10gdXNiIDEtMTogZGV2aWNlIGRlc2NyaXB0b3IgcmVhZC82NCwgZXJy
+b3IgLTExMA0KWyAgNDIwLjQwNzk3MF0gdXNiIDEtMTogZGV2aWNlIGRlc2NyaXB0b3IgcmVh
+ZC82NCwgZXJyb3IgLTExMA0KWyAgNDIwLjYzNzk1Ml0gdXNiIDEtMTogbmV3IGhpZ2gtc3Bl
+ZWQgVVNCIGRldmljZSBudW1iZXIgNCB1c2luZyBlaGNpLXBjaQ0KWyAgNDMxLjA1Nzk1Nl0g
+dXNiIDEtMTogZGV2aWNlIG5vdCBhY2NlcHRpbmcgYWRkcmVzcyA0LCBlcnJvciAtMTEwDQpb
+ICA0MzEuMTc4MDM3XSB1c2IgMS0xOiBuZXcgaGlnaC1zcGVlZCBVU0IgZGV2aWNlIG51bWJl
+ciA1IHVzaW5nIGVoY2ktcGNpDQpbICA0NDEuNTk3OTU5XSB1c2IgMS0xOiBkZXZpY2Ugbm90
+IGFjY2VwdGluZyBhZGRyZXNzIDUsIGVycm9yIC0xMTANClsgIDQ0MS41OTkwOTFdIHVzYiB1
+c2IxLXBvcnQxOiB1bmFibGUgdG8gZW51bWVyYXRlIFVTQiBkZXZpY2UNCg0KW3Jvb3RARHJv
+LU9QIH5dIyBsc3VzYg0KQnVzIDAwMSBEZXZpY2UgMDAxOiBJRCAxZDZiOjAwMDIgTGludXgg
+Rm91bmRhdGlvbiAyLjAgcm9vdCBodWINCg0KLS0tLS0tDQoNCg0KICAgIEkgY2FuJ3QgZmlu
+ZCBhbnkgVVNCIGRldmljZSBleGNlcHQgcm9vdCBodWIuDQogICAgSSB0cnkgcmVpbnNtb2Qg
+dWhjaV9oY2QsIGdvdCBzYW1lIGVycm9yLCBhbmQgY2FuJ3QgZmluZCBhbnkgVVNCIGRldmlj
+ZSBleGNlcHQgcm9vdCBodWIuDQogICAgQWZ0ZXIgaW5zbW9kIGVoY2ktcGNpIG1vZHVsZSAs
+IGFib3V0IDMtNSBtaW51dGVzIHZpcnR1YWwgbWFjaGluZSBjcmFzaGVkIHdpdGhvdXQgYW55
+IG91dHB1dC4NCg0KDQpFbnZpcm9ubWVudDoNCkFyY2g6IGFybTY0KGFhcmNoNjQpDQpPUzog
+dWJ1bnR1IDE2LjEwKHlha2tldHkpDQpTb21lIHBhY2thZ2UgdmVyc2lvbjoNCiAgbGlidmly
+dC1iaW46IDEuMy40LTF1YnVudHU0DQogIGxpYnZpcnQwOiAxLjMuNC0xdWJ1bnR1NA0KICB2
+aXJ0LW1hbmFnZXI6IDE6MS4zLjItM3VidW50dTINCiAgcWVtdS1zeXN0ZW0tYXJtOiAxOjIu
+NitkZnNnLTF1YnVudHUxDQogIHFlbXUta3ZtOiAxOjIuNitkZnNnLTF1YnVudHUxDQoNCg0K
+dmlydC1tYW5hZ2VyIGNvbW1hbmRsaW5lOg0KW3Jvb3RARHJvLU9QIH5dIyBwcyBhdXggfGdy
+ZXAgcWVtdQ0KbGlidmlydCsgIDk5MzggIDEwMyAgNS42IDE5MjEzODQgNDU3NzQ0ID8gICAg
+ICBTbCAgIDE2OjA0ICAyMTozNSBxZW11LXN5c3RlbS1hYXJjaDY0IC1lbmFibGUta3ZtIC1u
+YW1lIGdlbmVyaWMsZGVidWctdGhyZWFkcz1vbiAtUyAtb2JqZWN0IHNlY3JldCxpZD1tYXN0
+ZXJLZXkwLGZvcm1hdD1yYXcsZmlsZT0vdmFyL2xpYi9saWJ2aXJ0L3FlbXUvZG9tYWluLTEx
+LWdlbmVyaWMvbWFzdGVyLWtleS5hZXMgLW1hY2hpbmUgdmlydC0yLjYsYWNjZWw9a3ZtLHVz
+Yj1vZmYsZ2ljLXZlcnNpb249MyAtY3B1IGhvc3QgLW0gMTAyNCAtcmVhbHRpbWUgbWxvY2s9
+b2ZmIC1zbXAgMSxzb2NrZXRzPTEsY29yZXM9MSx0aHJlYWRzPTEgLXV1aWQgMDFlMDgxMWYt
+ZDM2OC00NzIzLWI1MDUtNWU1NGQ4ZjU4ZTA1IC1ub2dyYXBoaWMgLW5vLXVzZXItY29uZmln
+IC1ub2RlZmF1bHRzIC1jaGFyZGV2IHNvY2tldCxpZD1jaGFybW9uaXRvcixwYXRoPS92YXIv
+bGliL2xpYnZpcnQvcWVtdS9kb21haW4tMTEtZ2VuZXJpYy9tb25pdG9yLnNvY2ssc2VydmVy
+LG5vd2FpdCAtbW9uIGNoYXJkZXY9Y2hhcm1vbml0b3IsaWQ9bW9uaXRvcixtb2RlPWNvbnRy
+b2wgLXJ0YyBiYXNlPXV0YyAtbm8tc2h1dGRvd24gLWJvb3Qgc3RyaWN0PW9uIC1rZXJuZWwg
+L2hvbWUvZHJvaWluZy9rdm0tMDEvYm9vdC9JbWFnZS40LjcgLWluaXRyZCAvaG9tZS9kcm9p
+aW5nL2t2bS0wMS9ib290L2luaXRyZC5pbWcgLWFwcGVuZCByb290PS9kZXYvc2RhIHJ3IHJv
+b3R3YWl0IGNvbnNvbGU9dHR5UzAgY29uc29sZT10dHlBTUEwIC1kZXZpY2UgaTgyODAxYjEx
+LWJyaWRnZSxpZD1wY2kuMSxidXM9cGNpZS4wLGFkZHI9MHgxIC1kZXZpY2UgcGNpLWJyaWRn
+ZSxjaGFzc2lzX25yPTIsaWQ9cGNpLjIsYnVzPXBjaS4xLGFkZHI9MHgxIC1kZXZpY2UgaWNo
+OS11c2ItZWhjaTEsaWQ9dXNiLGJ1cz1wY2kuMixhZGRyPTB4MS4weDcgLWRldmljZSBpY2g5
+LXVzYi11aGNpMSxtYXN0ZXJidXM9dXNiLjAsZmlyc3Rwb3J0PTAsYnVzPXBjaS4yLG11bHRp
+ZnVuY3Rpb249b24sYWRkcj0weDEgLWRldmljZSBpY2g5LXVzYi11aGNpMixtYXN0ZXJidXM9
+dXNiLjAsZmlyc3Rwb3J0PTIsYnVzPXBjaS4yLGFkZHI9MHgxLjB4MSAtZGV2aWNlIGljaDkt
+dXNiLXVoY2kzLG1hc3RlcmJ1cz11c2IuMCxmaXJzdHBvcnQ9NCxidXM9cGNpLjIsYWRkcj0w
+eDEuMHgyIC1kZXZpY2UgdmlydGlvLXNjc2ktZGV2aWNlLGlkPXNjc2kwIC1kZXZpY2Ugdmly
+dGlvLXNlcmlhbC1kZXZpY2UsaWQ9dmlydGlvLXNlcmlhbDAgLWRldmljZSB2aXJ0aW8tc2Vy
+aWFsLWRldmljZSxpZD12aXJ0aW8tc2VyaWFsMSAtZHJpdmUgZmlsZT0vaG9tZS9kcm9paW5n
+L2t2bS0wMS9yb290ZnMucWNvdzIsZm9ybWF0PXFjb3cyLGlmPW5vbmUsaWQ9ZHJpdmUtc2Nz
+aTAtMC0wLTAgLWRldmljZSBzY3NpLWhkLGJ1cz1zY3NpMC4wLGNoYW5uZWw9MCxzY3NpLWlk
+PTAsbHVuPTAsZHJpdmU9ZHJpdmUtc2NzaTAtMC0wLTAsaWQ9c2NzaTAtMC0wLTAsYm9vdGlu
+ZGV4PTEgLW5ldGRldiB0YXAsZmQ9MjYsaWQ9aG9zdG5ldDAsdmhvc3Q9b24sdmhvc3RmZD0y
+OCAtZGV2aWNlIHZpcnRpby1uZXQtZGV2aWNlLG5ldGRldj1ob3N0bmV0MCxpZD1uZXQwLG1h
+Yz01Mjo1NDowMDphNDpkYzpiMiAtc2VyaWFsIHB0eSAtZGV2aWNlIHVzYi1rYmQsaWQ9aW5w
+dXQwIC1kZXZpY2UgdXNiLWhvc3QsaG9zdGJ1cz00LGhvc3RhZGRyPTIsaWQ9aG9zdGRldjAg
+LW1zZyB0aW1lc3RhbXA9b24=
 
-Better would be to make the policy a QOM property -- then it is
-constant for the lifetime of the timer and doesn't need to be migrated
-at all. (There's no reason to support timers which change policy at
-runtime, I hope). The default property value should be "same behaviour
-as previously".
+------=_NextPart_5755352D_0982F4A8_3479EA84
+Content-Type: text/html;
+	charset="gb18030"
+Content-Transfer-Encoding: base64
 
-This whole change would be more solidly supported if it came with
-a clear description of the bug being fixed (ie what device is currently
-using the default-but-wrong behaviour and is going to be fixed by
-setting a different policy).
+PGRpdj5IaSBldmVyeW9uZTo8L2Rpdj48ZGl2PjxzcGFuIHN0eWxlPSJsaW5lLWhlaWdodDog
+MS41OyI+Jm5ic3A7ICZuYnNwOyBJIGVuY291bnRlcmVkIGEgcWVtdSB2aXJ0dWFsIHVzYiBl
+cnJvcjwvc3Bhbj48c3BhbiBzdHlsZT0ibGluZS1oZWlnaHQ6IDEuNTsiPiZuYnNwO2luIGFy
+bTY0IG1hY2hpbmUgd2l0aCBLVk0uPC9zcGFuPjwvZGl2PjxkaXY+Jm5ic3A7ICZuYnNwOyBJ
+IHVzZWQgdmlydC1tYW5hZ2VyIHRvIGNyZWF0ZSBhIHZpcnR1YWwgbWFjaGluZSB3aXRoIFVT
+QiBrYmQgYW5kIFVTQiBtb3VzZS4gV2hlbiBib290LCBJIGdvdCBzb21lIGtlcm5lbCBlcnJv
+cnM6ICJkZXZpY2UgZGVzY3JpcHRvciByZWFkLzY0LCBlcnJvciAtMTEwIi48L2Rpdj48ZGl2
+PiZuYnNwOyAmbmJzcDsgSSBmb3VuZCB0aGlzIGVycm9yIGluJm5ic3A7ZWhjaV9wY2kmbmJz
+cDttb2R1bGUuIFRoZW4sIEkgcmUtaW5zbW9kIHRoaXMgbW9kdWxlLCBnb3QgdGhpcyBvdXRw
+dXQ6PC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdj4tLS0tLS08L2Rpdj48ZGl2Pltyb290QERy
+by1PUCB+XSMgbHNtb2Q8L2Rpdj48ZGl2PjxkaXY+bHNtb2Q8L2Rpdj48ZGl2Pk1vZHVsZSAm
+bmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7
+ICZuYnNwO1NpemUgJm5ic3A7VXNlZCBieTwvZGl2PjxkaXY+ZWhjaV9oY2QgJm5ic3A7ICZu
+YnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7IDQzMjIxICZuYnNwOzA8
+L2Rpdj48ZGl2PmVidGFibGVfZmlsdGVyICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAm
+bmJzcDsyNDQ2ICZuYnNwOzA8L2Rpdj48ZGl2PmVidGFibGVzICZuYnNwOyAmbmJzcDsgJm5i
+c3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAyNzk4MSAmbmJzcDsxIGVidGFibGVf
+ZmlsdGVyPC9kaXY+PGRpdj5pcDZfdGFibGVzICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNw
+OyAmbmJzcDsgJm5ic3A7IDE3NTMzICZuYnNwOzA8L2Rpdj48ZGl2PmlwdGFibGVfZmlsdGVy
+ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsyNjI0ICZuYnNwOzA8L2Rpdj48
+ZGl2PmlwX3RhYmxlcyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNw
+OyAmbmJzcDsxNzQ1NCAmbmJzcDsxIGlwdGFibGVfZmlsdGVyPC9kaXY+PGRpdj5kbV9tb2Qg
+Jm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNw
+OzExNzA3MCAmbmJzcDswPC9kaXY+PC9kaXY+PGRpdj48c3BhbiBzdHlsZT0ibGluZS1oZWln
+aHQ6IDEuNTsiPltyb290QERyby1PUCB+XSMgZG1lc2cgLUM8L3NwYW4+PC9kaXY+PGRpdiBz
+dHlsZT0ibGluZS1oZWlnaHQ6IDEuNTsiPltyb290QERyby1PUCB+XSMgbW9kcG9yb2JlIGVo
+Y2lfcGNpPC9kaXY+PGRpdj48ZGl2PjxzcGFuIHN0eWxlPSJsaW5lLWhlaWdodDogMS41OyI+
+W3Jvb3RARHJvLU9QIH5dIzwvc3Bhbj48c3BhbiBzdHlsZT0ibGluZS1oZWlnaHQ6IDEuNTsi
+PiZuYnNwOzwvc3Bhbj5sc21vZDwvZGl2PjxkaXY+TW9kdWxlICZuYnNwOyAmbmJzcDsgJm5i
+c3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7U2l6ZSAmbmJz
+cDtVc2VkIGJ5PC9kaXY+PGRpdj5laGNpX3BjaSAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJz
+cDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7NDk3MCAmbmJzcDswPC9kaXY+PGRpdj5l
+aGNpX2hjZCAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJz
+cDsgNDMyMjEgJm5ic3A7MSBlaGNpX3BjaTwvZGl2PjxkaXY+ZWJ0YWJsZV9maWx0ZXIgJm5i
+c3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOzI0NDYgJm5ic3A7MDwvZGl2PjxkaXY+
+ZWJ0YWJsZXMgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5i
+c3A7IDI3OTgxICZuYnNwOzEgZWJ0YWJsZV9maWx0ZXI8L2Rpdj48ZGl2PmlwNl90YWJsZXMg
+Jm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgMTc1MzMgJm5ic3A7
+MDwvZGl2PjxkaXY+aXB0YWJsZV9maWx0ZXIgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7
+ICZuYnNwOzI2MjQgJm5ic3A7MDwvZGl2PjxkaXY+aXBfdGFibGVzICZuYnNwOyAmbmJzcDsg
+Jm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOzE3NDU0ICZuYnNwOzEgaXB0YWJs
+ZV9maWx0ZXI8L2Rpdj48ZGl2PmRtX21vZCAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsg
+Jm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7MTE3MDcwICZuYnNwOzA8L2Rpdj48L2Rpdj48
+ZGl2PjxkaXY+PHNwYW4gc3R5bGU9ImxpbmUtaGVpZ2h0OiAxLjU7Ij5bcm9vdEBEcm8tT1Ag
+fl0jPC9zcGFuPiZuYnNwO2RtZXNnPC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wNjQ3MzldIGVo
+Y2ktcGNpOiBFSENJIFBDSSBwbGF0Zm9ybSBkcml2ZXI8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0
+LjA2NDc1OV0gYnVzOiAncGNpJzogYWRkIGRyaXZlciBlaGNpLXBjaTwvZGl2PjxkaXY+WyAm
+bmJzcDszODQuMDY0NzgzXSBidXM6ICdwY2knOiBkcml2ZXJfcHJvYmVfZGV2aWNlOiBtYXRj
+aGVkIGRldmljZSAwMDAwOjAyOjAxLjcgd2l0aCBkcml2ZXIgZWhjaS1wY2k8L2Rpdj48ZGl2
+PlsgJm5ic3A7Mzg0LjA2NDc4OF0gYnVzOiAncGNpJzogcmVhbGx5X3Byb2JlOiBwcm9iaW5n
+IGRyaXZlciBlaGNpLXBjaSB3aXRoIGRldmljZSAwMDAwOjAyOjAxLjc8L2Rpdj48ZGl2Plsg
+Jm5ic3A7Mzg0LjA2NDc5OV0gZGV2aWNlc19rc2V0OiBNb3ZpbmcgMDAwMDowMjowMS43IHRv
+IGVuZCBvZiBsaXN0PC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wNjY4MTRdIGVoY2ktcGNpIDAw
+MDA6MDI6MDEuNzogRUhDSSBIb3N0IENvbnRyb2xsZXI8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0
+LjA2NjgzNV0gZWhjaS1wY2kgMDAwMDowMjowMS43OiBuZXcgVVNCIGJ1cyByZWdpc3RlcmVk
+LCBhc3NpZ25lZCBidXMgbnVtYmVyIDE8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA2NzA1OV0g
+ZWhjaS1wY2kgMDAwMDowMjowMS43OiBpcnEgNDAsIGlvIG1lbSAweDEwMDAwMDAwPC9kaXY+
+PGRpdj5bICZuYnNwOzM4NC4wNzc5OTBdIGVoY2ktcGNpIDAwMDA6MDI6MDEuNzogVVNCIDIu
+MCBzdGFydGVkLCBFSENJIDEuMDA8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA3ODA4M10gdXNi
+IHVzYjE6IE5ldyBVU0IgZGV2aWNlIGZvdW5kLCBpZFZlbmRvcj0xZDZiLCBpZFByb2R1Y3Q9
+MDAwMjwvZGl2PjxkaXY+WyAmbmJzcDszODQuMDc4MDg5XSB1c2IgdXNiMTogTmV3IFVTQiBk
+ZXZpY2Ugc3RyaW5nczogTWZyPTMsIFByb2R1Y3Q9MiwgU2VyaWFsTnVtYmVyPTE8L2Rpdj48
+ZGl2PlsgJm5ic3A7Mzg0LjA3ODA5NV0gdXNiIHVzYjE6IFByb2R1Y3Q6IEVIQ0kgSG9zdCBD
+b250cm9sbGVyPC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wNzgxMDBdIHVzYiB1c2IxOiBNYW51
+ZmFjdHVyZXI6IExpbnV4IDQuNy4wLXJjMi5zZXJ2ZXIua3ZtIGVoY2lfaGNkPC9kaXY+PGRp
+dj5bICZuYnNwOzM4NC4wNzgxMDRdIHVzYiB1c2IxOiBTZXJpYWxOdW1iZXI6IDAwMDA6MDI6
+MDEuNzwvZGl2PjxkaXY+WyAmbmJzcDszODQuMDc4MTEyXSBkZXZpY2U6ICd1c2IxJzogZGV2
+aWNlX2FkZDwvZGl2PjxkaXY+WyAmbmJzcDszODQuMDc4MTY5XSBidXM6ICd1c2InOiBhZGQg
+ZGV2aWNlIHVzYjE8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjMyOF0gYnVzOiAndXNiJzog
+ZHJpdmVyX3Byb2JlX2RldmljZTogbWF0Y2hlZCBkZXZpY2UgdXNiMSB3aXRoIGRyaXZlciB1
+c2I8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjMzNV0gYnVzOiAndXNiJzogcmVhbGx5X3By
+b2JlOiBwcm9iaW5nIGRyaXZlciB1c2Igd2l0aCBkZXZpY2UgdXNiMTwvZGl2PjxkaXY+WyAm
+bmJzcDszODQuMDgyMzQ3XSBkZXZpY2VzX2tzZXQ6IE1vdmluZyB1c2IxIHRvIGVuZCBvZiBs
+aXN0PC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wODIzNzZdIGRldmljZTogJzEtMDoxLjAnOiBk
+ZXZpY2VfYWRkPC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wODI0MDFdIGJ1czogJ3VzYic6IGFk
+ZCBkZXZpY2UgMS0wOjEuMDwvZGl2PjxkaXY+WyAmbmJzcDszODQuMDgyNDg4XSBidXM6ICd1
+c2InOiBkcml2ZXJfcHJvYmVfZGV2aWNlOiBtYXRjaGVkIGRldmljZSAxLTA6MS4wIHdpdGgg
+ZHJpdmVyIGh1YjwvZGl2PjxkaXY+WyAmbmJzcDszODQuMDgyNDkzXSBidXM6ICd1c2InOiBy
+ZWFsbHlfcHJvYmU6IHByb2JpbmcgZHJpdmVyIGh1YiB3aXRoIGRldmljZSAxLTA6MS4wPC9k
+aXY+PGRpdj5bICZuYnNwOzM4NC4wODI1MDJdIGRldmljZXNfa3NldDogTW92aW5nIDEtMDox
+LjAgdG8gZW5kIG9mIGxpc3Q8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjUwOF0gaHViIDEt
+MDoxLjA6IFVTQiBodWIgZm91bmQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjUyNV0gaHVi
+IDEtMDoxLjA6IDYgcG9ydHMgZGV0ZWN0ZWQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjU0
+NV0gZGV2aWNlOiAndXNiMS1wb3J0MSc6IGRldmljZV9hZGQ8L2Rpdj48ZGl2PlsgJm5ic3A7
+Mzg0LjA4MjU2MF0gZGV2aWNlOiAndXNiMS1wb3J0Mic6IGRldmljZV9hZGQ8L2Rpdj48ZGl2
+PlsgJm5ic3A7Mzg0LjA4MjU3MV0gZGV2aWNlOiAndXNiMS1wb3J0Myc6IGRldmljZV9hZGQ8
+L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjU4Ml0gZGV2aWNlOiAndXNiMS1wb3J0NCc6IGRl
+dmljZV9hZGQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjU5M10gZGV2aWNlOiAndXNiMS1w
+b3J0NSc6IGRldmljZV9hZGQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjYwNF0gZGV2aWNl
+OiAndXNiMS1wb3J0Nic6IGRldmljZV9hZGQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4Mjc0
+Ml0gZHJpdmVyOiAnaHViJzogZHJpdmVyX2JvdW5kOiBib3VuZCB0byBkZXZpY2UgJzEtMDox
+LjAnPC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wODI3NTZdIGJ1czogJ3VzYic6IHJlYWxseV9w
+cm9iZTogYm91bmQgZGV2aWNlIDEtMDoxLjAgdG8gZHJpdmVyIGh1YjwvZGl2PjxkaXY+WyAm
+bmJzcDszODQuMDgyNzY0XSBkZXZpY2U6ICdlcF84MSc6IGRldmljZV9hZGQ8L2Rpdj48ZGl2
+PlsgJm5ic3A7Mzg0LjA4Mjc4N10gZHJpdmVyOiAndXNiJzogZHJpdmVyX2JvdW5kOiBib3Vu
+ZCB0byBkZXZpY2UgJ3VzYjEnPC9kaXY+PGRpdj5bICZuYnNwOzM4NC4wODI3OTZdIGJ1czog
+J3VzYic6IHJlYWxseV9wcm9iZTogYm91bmQgZGV2aWNlIHVzYjEgdG8gZHJpdmVyIHVzYjwv
+ZGl2PjxkaXY+WyAmbmJzcDszODQuMDgyODAyXSBkZXZpY2U6ICdlcF8wMCc6IGRldmljZV9h
+ZGQ8L2Rpdj48ZGl2PlsgJm5ic3A7Mzg0LjA4MjgzMV0gZHJpdmVyOiAnZWhjaS1wY2knOiBk
+cml2ZXJfYm91bmQ6IGJvdW5kIHRvIGRldmljZSAnMDAwMDowMjowMS43JzwvZGl2PjxkaXY+
+WyAmbmJzcDszODQuMDgyODQwXSBidXM6ICdwY2knOiByZWFsbHlfcHJvYmU6IGJvdW5kIGRl
+dmljZSAwMDAwOjAyOjAxLjcgdG8gZHJpdmVyIGVoY2ktcGNpPC9kaXY+PGRpdj5bICZuYnNw
+OzM4NC4zOTc5NjVdIHVzYiAxLTE6IG5ldyBoaWdoLXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVy
+IDIgdXNpbmcgZWhjaS1wY2k8L2Rpdj48ZGl2PlsgJm5ic3A7Mzk5LjkzNzk1NF0gdXNiIDEt
+MTogPGZvbnQgY29sb3I9IiNmZjAwMDAiPmRldmljZSBub3QgYWNjZXB0aW5nIGFkZHJlc3Mg
+MiwgZXJyb3IgLTExMDwvZm9udD48L2Rpdj48ZGl2PlsgJm5ic3A7NDAwLjA1Nzk1MV0gdXNi
+IDEtMTogbmV3IGhpZ2gtc3BlZWQgVVNCIGRldmljZSBudW1iZXIgMyB1c2luZyBlaGNpLXBj
+aTwvZGl2PjxkaXY+WyAmbmJzcDs0MDUuMTc3OTU3XSB1c2IgMS0xOiA8Zm9udCBjb2xvcj0i
+I2ZmMDAwMCI+ZGV2aWNlIGRlc2NyaXB0b3IgcmVhZC82NCwgZXJyb3IgLTExMDwvZm9udD48
+L2Rpdj48ZGl2PlsgJm5ic3A7NDIwLjQwNzk3MF0gdXNiIDEtMTogPGZvbnQgY29sb3I9IiNm
+ZjAwMDAiPmRldmljZSBkZXNjcmlwdG9yIHJlYWQvNjQsIGVycm9yIC0xMTA8L2ZvbnQ+PC9k
+aXY+PGRpdj5bICZuYnNwOzQyMC42Mzc5NTJdIHVzYiAxLTE6IG5ldyBoaWdoLXNwZWVkIFVT
+QiBkZXZpY2UgbnVtYmVyIDQgdXNpbmcgZWhjaS1wY2k8L2Rpdj48ZGl2PlsgJm5ic3A7NDMx
+LjA1Nzk1Nl0gdXNiIDEtMTogPGZvbnQgY29sb3I9IiNmZjAwMDAiPmRldmljZSBub3QgYWNj
+ZXB0aW5nIGFkZHJlc3MgNCwgZXJyb3IgLTExMDwvZm9udD48L2Rpdj48ZGl2PlsgJm5ic3A7
+NDMxLjE3ODAzN10gdXNiIDEtMTogbmV3IGhpZ2gtc3BlZWQgVVNCIGRldmljZSBudW1iZXIg
+NSB1c2luZyBlaGNpLXBjaTwvZGl2PjxkaXY+WyAmbmJzcDs0NDEuNTk3OTU5XSB1c2IgMS0x
+OiA8Zm9udCBjb2xvcj0iI2ZmMDAwMCI+ZGV2aWNlIG5vdCBhY2NlcHRpbmcgYWRkcmVzcyA1
+LCBlcnJvciAtMTEwPC9mb250PjwvZGl2PjxkaXY+WyAmbmJzcDs0NDEuNTk5MDkxXSB1c2Ig
+dXNiMS1wb3J0MTo8Zm9udCBjb2xvcj0iI2ZmMDAwMCI+IHVuYWJsZSB0byBlbnVtZXJhdGUg
+VVNCIGRldmljZTwvZm9udD48L2Rpdj48L2Rpdj48ZGl2PjxkaXY+PHNwYW4gc3R5bGU9Imxp
+bmUtaGVpZ2h0OiAxLjU7Ij5bcm9vdEBEcm8tT1Agfl0jPC9zcGFuPjxzcGFuIHN0eWxlPSJs
+aW5lLWhlaWdodDogMS41OyI+Jm5ic3A7PC9zcGFuPmxzdXNiPC9kaXY+PGRpdj5CdXMgMDAx
+IERldmljZSAwMDE6IElEIDFkNmI6MDAwMiBMaW51eCBGb3VuZGF0aW9uIDIuMCByb290IGh1
+YjwvZGl2PjwvZGl2PjxkaXY+LS0tLS0tPC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdj4mbmJz
+cDsgJm5ic3A7IEkgY2FuJ3QgZmluZCBhbnkgVVNCIGRldmljZSBleGNlcHQgcm9vdCBodWIu
+PC9kaXY+PGRpdj4mbmJzcDsgJm5ic3A7IEkgdHJ5IHJlaW5zbW9kIHVoY2lfaGNkLCBnb3Qg
+c2FtZSBlcnJvciwgYW5kIGNhbid0IGZpbmQgYW55IFVTQiBkZXZpY2U8c3BhbiBzdHlsZT0i
+bGluZS1oZWlnaHQ6IDEuNTsiPiZuYnNwOzwvc3Bhbj48c3BhbiBzdHlsZT0ibGluZS1oZWln
+aHQ6IDEuNTsiPmV4Y2VwdCByb290IGh1Yjwvc3Bhbj48c3BhbiBzdHlsZT0ibGluZS1oZWln
+aHQ6IDEuNTsiPi48L3NwYW4+PC9kaXY+PGRpdj48c3BhbiBzdHlsZT0ibGluZS1oZWlnaHQ6
+IDEuNTsiPiZuYnNwOyAmbmJzcDsgQWZ0ZXIgaW5zbW9kIGVoY2ktcGNpIG1vZHVsZSAsIGFi
+b3V0IDMtNSA8L3NwYW4+bWludXRlcyA8c3BhbiBzdHlsZT0ibGluZS1oZWlnaHQ6IDEuNTsi
+PnZpcnR1YWwgbWFjaGluZSA8L3NwYW4+PHNwYW4gc3R5bGU9ImxpbmUtaGVpZ2h0OiAxLjU7
+Ij5jcmFzaGVkIHdpdGhvdXQgYW55IG91dHB1dC48L3NwYW4+PC9kaXY+PGRpdj48YnI+PC9k
+aXY+PGRpdj5FbnZpcm9ubWVudDo8L2Rpdj48ZGl2PkFyY2g6IGFybTY0KGFhcmNoNjQpPC9k
+aXY+PGRpdj5PUzogdWJ1bnR1IDE2LjEwKHlha2tldHkpPC9kaXY+PGRpdj5Tb21lIHBhY2th
+Z2UgdmVyc2lvbjo8L2Rpdj48ZGl2PiZuYnNwOyBsaWJ2aXJ0LWJpbjogMS4zLjQtMXVidW50
+dTQ8L2Rpdj48ZGl2PiZuYnNwOyBsaWJ2aXJ0MDogMS4zLjQtMXVidW50dTQ8L2Rpdj48ZGl2
+PiZuYnNwOyB2aXJ0LW1hbmFnZXI6IDE6MS4zLjItM3VidW50dTI8L2Rpdj48ZGl2PjxzcGFu
+IHN0eWxlPSJsaW5lLWhlaWdodDogMS41OyI+Jm5ic3A7IHFlbXUtc3lzdGVtLWFybTogPC9z
+cGFuPjE6Mi42K2Rmc2ctMXVidW50dTE8L2Rpdj48ZGl2PiZuYnNwOyBxZW11LWt2bTogMToy
+LjYrZGZzZy0xdWJ1bnR1MTwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+dmlydC1tYW5hZ2Vy
+IGNvbW1hbmRsaW5lOjwvZGl2PjxkaXY+PGRpdj48c3BhbiBzdHlsZT0ibGluZS1oZWlnaHQ6
+IDEuNTsiPltyb290QERyby1PUCB+XSM8L3NwYW4+PHNwYW4gc3R5bGU9ImxpbmUtaGVpZ2h0
+OiAxLjU7Ij4mbmJzcDs8L3NwYW4+cHMgYXV4IHxncmVwIHFlbXU8L2Rpdj48ZGl2PmxpYnZp
+cnQrICZuYnNwOzk5MzggJm5ic3A7MTAzICZuYnNwOzUuNiAxOTIxMzg0IDQ1Nzc0NCA/ICZu
+YnNwOyAmbmJzcDsgJm5ic3A7U2wgJm5ic3A7IDE2OjA0ICZuYnNwOzIxOjM1IHFlbXUtc3lz
+dGVtLWFhcmNoNjQgLWVuYWJsZS1rdm0gLW5hbWUgZ2VuZXJpYyxkZWJ1Zy10aHJlYWRzPW9u
+IC1TIC1vYmplY3Qgc2VjcmV0LGlkPW1hc3RlcktleTAsZm9ybWF0PXJhdyxmaWxlPS92YXIv
+bGliL2xpYnZpcnQvcWVtdS9kb21haW4tMTEtZ2VuZXJpYy9tYXN0ZXIta2V5LmFlcyAtbWFj
+aGluZSB2aXJ0LTIuNixhY2NlbD1rdm0sdXNiPW9mZixnaWMtdmVyc2lvbj0zIC1jcHUgaG9z
+dCAtbSAxMDI0IC1yZWFsdGltZSBtbG9jaz1vZmYgLXNtcCAxLHNvY2tldHM9MSxjb3Jlcz0x
+LHRocmVhZHM9MSAtdXVpZCAwMWUwODExZi1kMzY4LTQ3MjMtYjUwNS01ZTU0ZDhmNThlMDUg
+LW5vZ3JhcGhpYyAtbm8tdXNlci1jb25maWcgLW5vZGVmYXVsdHMgLWNoYXJkZXYgc29ja2V0
+LGlkPWNoYXJtb25pdG9yLHBhdGg9L3Zhci9saWIvbGlidmlydC9xZW11L2RvbWFpbi0xMS1n
+ZW5lcmljL21vbml0b3Iuc29jayxzZXJ2ZXIsbm93YWl0IC1tb24gY2hhcmRldj1jaGFybW9u
+aXRvcixpZD1tb25pdG9yLG1vZGU9Y29udHJvbCAtcnRjIGJhc2U9dXRjIC1uby1zaHV0ZG93
+biAtYm9vdCBzdHJpY3Q9b24gLWtlcm5lbCAvaG9tZS9kcm9paW5nL2t2bS0wMS9ib290L0lt
+YWdlLjQuNyAtaW5pdHJkIC9ob21lL2Ryb2lpbmcva3ZtLTAxL2Jvb3QvaW5pdHJkLmltZyAt
+YXBwZW5kIHJvb3Q9L2Rldi9zZGEgcncgcm9vdHdhaXQgY29uc29sZT10dHlTMCBjb25zb2xl
+PXR0eUFNQTAgLWRldmljZSBpODI4MDFiMTEtYnJpZGdlLGlkPXBjaS4xLGJ1cz1wY2llLjAs
+YWRkcj0weDEgLWRldmljZSBwY2ktYnJpZGdlLGNoYXNzaXNfbnI9MixpZD1wY2kuMixidXM9
+cGNpLjEsYWRkcj0weDEgLWRldmljZSBpY2g5LXVzYi1laGNpMSxpZD11c2IsYnVzPXBjaS4y
+LGFkZHI9MHgxLjB4NyAtZGV2aWNlIGljaDktdXNiLXVoY2kxLG1hc3RlcmJ1cz11c2IuMCxm
+aXJzdHBvcnQ9MCxidXM9cGNpLjIsbXVsdGlmdW5jdGlvbj1vbixhZGRyPTB4MSAtZGV2aWNl
+IGljaDktdXNiLXVoY2kyLG1hc3RlcmJ1cz11c2IuMCxmaXJzdHBvcnQ9MixidXM9cGNpLjIs
+YWRkcj0weDEuMHgxIC1kZXZpY2UgaWNoOS11c2ItdWhjaTMsbWFzdGVyYnVzPXVzYi4wLGZp
+cnN0cG9ydD00LGJ1cz1wY2kuMixhZGRyPTB4MS4weDIgLWRldmljZSB2aXJ0aW8tc2NzaS1k
+ZXZpY2UsaWQ9c2NzaTAgLWRldmljZSB2aXJ0aW8tc2VyaWFsLWRldmljZSxpZD12aXJ0aW8t
+c2VyaWFsMCAtZGV2aWNlIHZpcnRpby1zZXJpYWwtZGV2aWNlLGlkPXZpcnRpby1zZXJpYWwx
+IC1kcml2ZSBmaWxlPS9ob21lL2Ryb2lpbmcva3ZtLTAxL3Jvb3Rmcy5xY293Mixmb3JtYXQ9
+cWNvdzIsaWY9bm9uZSxpZD1kcml2ZS1zY3NpMC0wLTAtMCAtZGV2aWNlIHNjc2ktaGQsYnVz
+PXNjc2kwLjAsY2hhbm5lbD0wLHNjc2ktaWQ9MCxsdW49MCxkcml2ZT1kcml2ZS1zY3NpMC0w
+LTAtMCxpZD1zY3NpMC0wLTAtMCxib290aW5kZXg9MSAtbmV0ZGV2IHRhcCxmZD0yNixpZD1o
+b3N0bmV0MCx2aG9zdD1vbix2aG9zdGZkPTI4IC1kZXZpY2UgdmlydGlvLW5ldC1kZXZpY2Us
+bmV0ZGV2PWhvc3RuZXQwLGlkPW5ldDAsbWFjPTUyOjU0OjAwOmE0OmRjOmIyIC1zZXJpYWwg
+cHR5IC1kZXZpY2UgdXNiLWtiZCxpZD1pbnB1dDAgLWRldmljZSB1c2ItaG9zdCxob3N0YnVz
+PTQsaG9zdGFkZHI9MixpZD1ob3N0ZGV2MCAtbXNnIHRpbWVzdGFtcD1vbjwvZGl2PjwvZGl2
+PjxkaXY+PGJyPjwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+PHNw
+YW4gc3R5bGU9ImxpbmUtaGVpZ2h0OiAxLjU7Ij48L3NwYW4+PC9kaXY+PGRpdj48YnI+PC9k
+aXY+PGRpdj4mbmJzcDsgJm5ic3A7IDwvZGl2Pg==
 
-> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
-> ---
->  hw/core/ptimer.c    | 53 +++++++++++++++++++++++++++++++----------------------
->  include/hw/ptimer.h |  6 ++++++
->  2 files changed, 37 insertions(+), 22 deletions(-)
->
-> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-> index 05b0c27..9bc70f5 100644
-> --- a/hw/core/ptimer.c
-> +++ b/hw/core/ptimer.c
-> @@ -21,6 +21,7 @@ struct ptimer_state
->      int64_t period;
->      int64_t last_event;
->      int64_t next_event;
-> +    uint8_t policy;
->      QEMUBH *bh;
->      QEMUTimer *timer;
->  };
-> @@ -37,15 +38,16 @@ static void ptimer_reload(ptimer_state *s)
->  {
->      uint32_t period_frac = s->period_frac;
->      uint64_t period = s->period;
-> +    uint64_t delta = MAX(1, s->delta);
->
-> -    if (s->delta == 0) {
-> -        ptimer_trigger(s);
-> -        s->delta = s->limit;
-> +    if (s->delta == 0 && s->policy == UNIMPLEMENTED) {
-> +        hw_error("ptimer: Running with counter=0 is unimplemented by " \
-> +                 "this timer, fix it!\n");
+------=_NextPart_5755352D_0982F4A8_3479EA84--
 
-hw_error() is effectively a verbose assert. Have you checked that
-all the users of ptimer do the right thing? If not, we can't
-assert() until we've fixed them all. Similarly below.
-Note that what we had previously was just a warning-and-continue
 
->      }
-> -    if (s->delta == 0 || s->period == 0) {
-> -        fprintf(stderr, "Timer with period zero, disabling\n");
-> -        s->enabled = 0;
-> -        return;
-> +
-> +    if (period == 0) {
-> +        hw_error("ptimer: Timer tries to run with period=0, behaviour is " \
-> +                 "undefined, fix it!\n");
->      }
->
->      /*
-> @@ -57,15 +59,15 @@ static void ptimer_reload(ptimer_state *s)
->       * on the current generation of host machines.
->       */
->
-> -    if (s->enabled == 1 && (s->delta * period < 10000) && !use_icount) {
-> -        period = 10000 / s->delta;
-> +    if (s->enabled == 1 && (delta * period < 10000) && !use_icount) {
-> +        period = 10000 / delta;
->          period_frac = 0;
->      }
->
->      s->last_event = s->next_event;
-> -    s->next_event = s->last_event + s->delta * period;
-> +    s->next_event = s->last_event + delta * period;
->      if (period_frac) {
-> -        s->next_event += ((int64_t)period_frac * s->delta) >> 32;
-> +        s->next_event += ((int64_t)period_frac * delta) >> 32;
->      }
->      timer_mod(s->timer, s->next_event);
->  }
-> @@ -73,27 +75,30 @@ static void ptimer_reload(ptimer_state *s)
->  static void ptimer_tick(void *opaque)
->  {
->      ptimer_state *s = (ptimer_state *)opaque;
-> -    ptimer_trigger(s);
-> -    s->delta = 0;
-> -    if (s->enabled == 2) {
-> +
-> +    s->delta = (s->enabled == 1) ? s->limit : 0;
-> +
-> +    if (s->delta == 0) {
->          s->enabled = 0;
->      } else {
->          ptimer_reload(s);
->      }
-> +
-> +    ptimer_trigger(s);
->  }
->
->  uint64_t ptimer_get_count(ptimer_state *s)
->  {
->      uint64_t counter;
->
-> -    if (s->enabled) {
-> +    if (s->enabled && s->delta != 0) {
->          int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->          int64_t next = s->next_event;
->          bool expired = (now - next >= 0);
->          bool oneshot = (s->enabled == 2);
->
->          /* Figure out the current counter value.  */
-> -        if (s->period == 0 || (expired && (oneshot || use_icount))) {
-> +        if (expired && (oneshot || use_icount)) {
->              /* Prevent timer underflowing if it should already have
->                 triggered.  */
->              counter = 0;
-> @@ -165,11 +170,8 @@ void ptimer_run(ptimer_state *s, int oneshot)
->  {
->      bool was_disabled = !s->enabled;
->
-> -    if (was_disabled && s->period == 0) {
-> -        fprintf(stderr, "Timer with period zero, disabling\n");
-> -        return;
-> -    }
->      s->enabled = oneshot ? 2 : 1;
-> +
 
-Stray extra blank line.
-
->      if (was_disabled) {
->          s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->          ptimer_reload(s);
-> @@ -203,6 +205,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
->  /* Set counter frequency in Hz.  */
->  void ptimer_set_freq(ptimer_state *s, uint32_t freq)
->  {
-> +    g_assert(freq != 0 && freq <= 1000000000);
-
-This probably needs an LL suffix like the others below.
-
->      s->delta = ptimer_get_count(s);
->      s->period = 1000000000ll / freq;
->      s->period_frac = (1000000000ll << 32) / freq;
-> @@ -230,10 +233,15 @@ uint64_t ptimer_get_limit(ptimer_state *s)
->      return s->limit;
->  }
->
-> +void ptimer_set_policy(ptimer_state *s, enum ptimer_policy policy)
-> +{
-> +    s->policy = policy;
-> +}
-> +
->  const VMStateDescription vmstate_ptimer = {
->      .name = "ptimer",
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT8(enabled, ptimer_state),
->          VMSTATE_UINT64(limit, ptimer_state),
-> @@ -243,6 +251,7 @@ const VMStateDescription vmstate_ptimer = {
->          VMSTATE_INT64(last_event, ptimer_state),
->          VMSTATE_INT64(next_event, ptimer_state),
->          VMSTATE_TIMER_PTR(timer, ptimer_state),
-> +        VMSTATE_UINT8(policy, ptimer_state),
->          VMSTATE_END_OF_LIST()
->      }
->  };
-> diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-> index e397db5..221f591 100644
-> --- a/include/hw/ptimer.h
-> +++ b/include/hw/ptimer.h
-> @@ -12,6 +12,11 @@
->  #include "qemu/timer.h"
->  #include "migration/vmstate.h"
->
-> +enum ptimer_policy {
-> +    UNIMPLEMENTED,
-> +    SET_CNT_TO_0_TRIGGERS_IRQ_AFTER_ONE_PERIOD,
-
-Given that enums aren't namespaced, "UNIMPLEMENTED" is too broad;
-you need some PTIMER_ prefixes. Also the second one of these is
-too long a name.
-
-> +};
-> +
->  /* ptimer.c */
->  typedef struct ptimer_state ptimer_state;
->  typedef void (*ptimer_cb)(void *opaque);
-> @@ -25,6 +30,7 @@ uint64_t ptimer_get_count(ptimer_state *s);
->  void ptimer_set_count(ptimer_state *s, uint64_t count);
->  void ptimer_run(ptimer_state *s, int oneshot);
->  void ptimer_stop(ptimer_state *s);
-> +void ptimer_set_policy(ptimer_state *s, enum ptimer_policy policy);
-
-Documentation comment headers for new global functions, please.
-
->  extern const VMStateDescription vmstate_ptimer;
-
-thanks
--- PMM

@@ -1,91 +1,62 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id h14sm13072312wme.1.2016.06.06.01.55.11
+        by smtp.gmail.com with ESMTPSA id w16sm13554338wmw.6.2016.06.06.03.48.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Jun 2016 01:55:11 -0700 (PDT)
+        Mon, 06 Jun 2016 03:48:54 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 3F2533E0358;
-	Mon,  6 Jun 2016 09:55:26 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTPS id 497BA3E0358;
+	Mon,  6 Jun 2016 11:49:09 +0100 (BST)
 User-agent: mu4e 0.9.17; emacs 25.0.94.5
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Sergey Fedorov <serge.fdrv@gmail.com>
-Cc: mttcg@listserver.greensocs.com, fred.konrad@greensocs.com, a.rigo@virtualopensystems.com, cota@braap.org, qemu-devel@nongnu.org, mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com, rth@twiddle.net, peter.maydell@linaro.org, claudio.fontana@huawei.com, Peter Crosthwaite <crosthwaite.peter@gmail.com>, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [RFC v1 10/12] arm: use tlb_flush_page_all for tlbimva[a]
-In-reply-to: <5754594A.10304@gmail.com>
-Date: Mon, 06 Jun 2016 09:55:26 +0100
-Message-ID: <87fusqitmp.fsf@linaro.org>
+To: Andrew Jones <drjones@redhat.com>
+Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org, christoffer.dall@linaro.org, marc.zyngier@arm.com
+Subject: Re: [kvm-unit-tests PATCH v2 01/10] lib: xstr: allow multiple args
+In-reply-to: <1465064165-14885-2-git-send-email-drjones@redhat.com>
+Date: Mon, 06 Jun 2016 11:49:09 +0100
+Message-ID: <87d1nuiod6.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: g+ca5NaSu785
+X-TUID: TDzZRmTPmh5B
 
 
-Sergey Fedorov <serge.fdrv@gmail.com> writes:
+Andrew Jones <drjones@redhat.com> writes:
 
-> On 15/04/16 17:23, Alex Bennée wrote:
->> From: KONRAD Frederic <fred.konrad@greensocs.com>
->>
->> Instead of flushing each individual vCPU use the tlb_flush_page_all
->> functions which is async enabled for MTTCG.
->>
->> Signed-off-by: KONRAD Frederic <fred.konrad@greensocs.com>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> ---
->>  include/exec/exec-all.h |  3 +++
->>  target-arm/helper.c     | 12 ++----------
->>  2 files changed, 5 insertions(+), 10 deletions(-)
->>
->> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
->> index 858055b..bc97683 100644
->> --- a/include/exec/exec-all.h
->> +++ b/include/exec/exec-all.h
->> @@ -208,6 +208,9 @@ static inline void tlb_flush_page_by_mmuidx(CPUState *cpu,
->>  static inline void tlb_flush_by_mmuidx(CPUState *cpu, ...)
->>  {
->>  }
->> +static inline void tlb_flush_page_all(target_ulong addr)
->> +{
->> +}
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  lib/libcflat.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> This change belongs to the patch which introduced the function.
+> diff --git a/lib/libcflat.h b/lib/libcflat.h
+> index 582e3fc60e287..e5e588c742763 100644
+> --- a/lib/libcflat.h
+> +++ b/lib/libcflat.h
+> @@ -27,8 +27,8 @@
+>
+>  #define __unused __attribute__((__unused__))
+>
+> -#define xstr(s) xxstr(s)
+> -#define xxstr(s) #s
+> +#define xstr(s...) xxstr(s)
+> +#define xxstr(s...) #s
 
-Thanks, will fix.
+OK my knowledge of stringinfication is still rusty despite having read
+the QEMU softmmu code. However:
+
+                printf("Unknown subtest:" xstr(foo,ba) "\n");
+
+Yields:
+
+                Unknown subtestfoo,ba
+
+Is that what you wanted? Or were you aiming for xstr(foo,ba) => fooba
+
+As an aside I couldn't actually see xstr being called with multiple
+arguments in the source tree.
 
 >
-> Kind regards,
-> Sergey
->
->>  #endif
->>
->>  #define CODE_GEN_ALIGN           16 /* must be >= of the size of a icache line */
->> diff --git a/target-arm/helper.c b/target-arm/helper.c
->> index 19d5d52..bc9fbda 100644
->> --- a/target-arm/helper.c
->> +++ b/target-arm/helper.c
->> @@ -554,21 +554,13 @@ static void tlbiasid_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>  static void tlbimva_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>                               uint64_t value)
->>  {
->> -    CPUState *other_cs;
->> -
->> -    CPU_FOREACH(other_cs) {
->> -        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
->> -    }
->> +    tlb_flush_page_all(value & TARGET_PAGE_MASK);
->>  }
->>
->>  static void tlbimvaa_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>                               uint64_t value)
->>  {
->> -    CPUState *other_cs;
->> -
->> -    CPU_FOREACH(other_cs) {
->> -        tlb_flush_page(other_cs, value & TARGET_PAGE_MASK);
->> -    }
->> +    tlb_flush_page_all(value & TARGET_PAGE_MASK);
->>  }
->>
->>  static const ARMCPRegInfo cp_reginfo[] = {
+>  #define __ALIGN_MASK(x, mask)	(((x) + (mask)) & ~(mask))
+>  #define __ALIGN(x, a)		__ALIGN_MASK(x, (typeof(x))(a) - 1)
 
 
 --

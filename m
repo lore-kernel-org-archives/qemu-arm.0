@@ -1,67 +1,68 @@
-Received: by 10.25.27.66 with SMTP id b63csp2063083lfb;
-        Tue, 7 Jun 2016 08:17:14 -0700 (PDT)
-X-Received: by 10.140.194.73 with SMTP id p70mr21785446qha.78.1465312634329;
-        Tue, 07 Jun 2016 08:17:14 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp2063294lfb;
+        Tue, 7 Jun 2016 08:17:37 -0700 (PDT)
+X-Received: by 10.140.103.241 with SMTP id y104mr20799777qge.54.1465312657321;
+        Tue, 07 Jun 2016 08:17:37 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z128si15374921qhc.114.2016.06.07.08.17.14
+        by mx.google.com with ESMTPS id y9si14284241qkg.176.2016.06.07.08.17.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 08:17:14 -0700 (PDT)
+        Tue, 07 Jun 2016 08:17:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50898 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50903 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAIkj-000872-NL
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 11:17:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56738)
+	id 1bAIl6-0008SA-NR
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 11:17:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bABuW-0008KD-3i
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 03:58:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bAIl2-0008P1-9g
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 11:17:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bABuR-0006wC-T3
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 03:58:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58047)
+	(envelope-from <peter.maydell@linaro.org>) id 1bAIl0-0004dT-9a
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 11:17:31 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:33900)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>)
-	id 1bABuR-0006vb-O1; Tue, 07 Jun 2016 03:58:47 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 601353DD47;
-	Tue,  7 Jun 2016 07:58:46 +0000 (UTC)
-Received: from localhost.localdomain (vpn1-5-56.ams2.redhat.com [10.36.5.56])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u577wfmS017004
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 7 Jun 2016 03:58:43 -0400
-To: Alexander Graf <agraf@suse.de>, Peter Maydell <peter.maydell@linaro.org>, 
-	Bogdan Purcareata <bogdan.purcareata@nxp.com>
-References: <1464870382-385-1-git-send-email-bogdan.purcareata@nxp.com>
-	<1464870382-385-3-git-send-email-bogdan.purcareata@nxp.com>
-	<CAFEAcA9yTmT+5zDYJjmLDvxmdOiEfAxKxjCYuYKfOwUrft1Drg@mail.gmail.com>
-	<9d7c8c4e-1445-87d8-f367-8b3773c38365@suse.de>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <3110383c-909d-92de-333b-89b687dcacac@redhat.com>
-Date: Tue, 7 Jun 2016 09:58:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1bAIkz-0004d4-2B
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 11:17:30 -0400
+Received: by mail-vk0-x230.google.com with SMTP id e4so110728892vkb.1
+	for <qemu-arm@nongnu.org>; Tue, 07 Jun 2016 08:17:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=+vTfeswMvTXVyOUoZPt4anhnpctUT1EK5jr15QzqE1o=;
+	b=fepTZZ874siK0+tcZ1edO7Ikr+9jfbv1xPD3OFVb2Dv4gfXSozYCktMTZdvv4UUsAF
+	h5IZ4nxnxQAAoNxzBh3hyetlxDhTat0aWzgoss94HyZ4wk9aiyN9e4b4n2QrI7CuWoH3
+	L6YZHp16Nbw+8ULF84o3ZDXGVRfN5mVe0Dzr0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=+vTfeswMvTXVyOUoZPt4anhnpctUT1EK5jr15QzqE1o=;
+	b=ehnV2HtV7IEjTfdyzlN047oqvbWkLrIp5lMUbmFPIhgU+bLSpSJsh9P7z91TTZUX6g
+	zDeRMj/WfT7ljmFrvsmVI7/+FiyT+d2dVAB4CXPbuJwwxmBSCN1OBqaIOkmYVqk4ADev
+	7maNkbazUomuE80We1hzA7eA8dlH3bQm47+CkN357ZfNkqIso6vW/WBemmP2lbSvUKPd
+	4WZvOeqb99k/4f5AmhsyExhKcqSH23Ncle2c444R2ys8rVQoD/NIe3mJeyKWay+L7fID
+	nEjRSdsQSlX1VMx8LzRvpdkUkwz8crbmvn09H+GXDy2vj7nWxQA8hIF2VNB8WU8sL9G7
+	nRDw==
+X-Gm-Message-State: ALyK8tJcn/wfSpE7W4AodKbZpSEQLnbO3ZUWq6AB8oISA5PkhnD1Zo0ayrYgcUsaWK4354nb7q/492UpHmKfVeCb
+X-Received: by 10.31.0.6 with SMTP id 6mr5215875vka.82.1465312648593; Tue, 07
+	Jun 2016 08:17:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <9d7c8c4e-1445-87d8-f367-8b3773c38365@suse.de>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 07 Jun 2016 07:58:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Received: by 10.31.67.65 with HTTP; Tue, 7 Jun 2016 08:17:09 -0700 (PDT)
+In-Reply-To: <1457717778-17727-1-git-send-email-wei@redhat.com>
+References: <1457717778-17727-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Jun 2016 16:17:09 +0100
+Message-ID: <CAFEAcA_FU3LdJLWrYLcv0WAugiYfnOxfDFgs6oRFVRaUEs1L-g@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Tue, 07 Jun 2016 11:17:11 -0400
-Subject: Re: [Qemu-arm] [PATCH 2/2] arm/virt: Mark pcie controller node as
- dma-coherent
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH V1 0/2] Versioning ARM virt machine types
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,65 +74,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	Will Deacon <will.deacon@arm.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Andrea Bolognani <abologna@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lBZjleg4AaGM
+X-TUID: R78HEWqm8O7z
 
-Hi,
-Le 02/06/2016 =C3=A0 14:45, Alexander Graf a =C3=A9crit :
->=20
->=20
-> On 02.06.16 14:32, Peter Maydell wrote:
->> On 2 June 2016 at 13:26, Bogdan Purcareata <bogdan.purcareata@nxp.com>=
- wrote:
->>> A PCI device is marked either as coherent or non-coherent based on th=
-e pcie
->>> controller "dma-coherent" property. This is further used when configu=
-ring the
->>> IOMMU ops for the device DMA resources (e.g. descriptor rings, for e1=
-000e).
->>>
->>> This dma-coherent property needs to be configured in the guest enviro=
-nment,
->>> in case there's a directly assigned VFIO PCI device. Since the guest =
-only
->>> receives one emulated pcie controller bus - regardless of the host
->>> configuration - add this property if there's at least one host pcie h=
-ost
->>> controller that is DMA coherent (this implies that the host interconn=
-ect
->>> is coherent as well).
->>
->> This patch seems to change the property of the emulated PCIe controlle=
-r
->> based on the host PCIe controller even if we're not doing any PCIe
->> passthrough at all. That seems definitely wrong to me.
->>
->> (Should the purely-emulated case be marked DMA-coherent anyway?
->> I forget the fiddly details...)
->=20
-> I do too, let's involve a few people who know :). Not exposing it as
-> coherent is definitely wrong, but whether "dma-coherent" is the right
-> choice I don't know.
+On 11 March 2016 at 17:36, Wei Huang <wei@redhat.com> wrote:
+> We start to see more features been added to ARM virtual machine models.
+> For the purpose of backward compatibility (e.g. migration), it is time
+> to consider versioning machine types for ARM VMs. As a beginning step, this
+> patchset defines an abstract machine type for ARM VMs. The current
+> "virt" machine is re-written based on this new abstract type accordingly.
+> These patches have been verified by booting existing VMs.
+>
+> RFC->V1:
+>  * Rename the machine type to "virt-2.6", matching the imminent QEMU version
+>  * Remove mc->is_default (Peter's comment)
 
-For information, on AMD overdrive the PCI host controller is marked as
-dma-coherent too but I do not observe any issue with 82574L (e1000e)
-and it worked fine as well on X540T1 Intel NIC. I just tested with
-e1000e and dma-coherent guest PCI controller and works fine too. Don't
-have x540t1 anymore so can't test with that PCIe CARD.
+So is there a plan to provide a virt-2.7 for the next release?
 
-With Intel I35OT1 and guest non dma-coherent PCIe controller I cope with
-some issues when assigning the PF but I don't know yet if there is any
-relationship.
-
-Best Regards
-
-Eric
->=20
->=20
-> Alex
->=20
+thanks
+-- PMM

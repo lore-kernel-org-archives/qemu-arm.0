@@ -1,72 +1,57 @@
-Received: by 10.25.27.66 with SMTP id b63csp1940697lfb;
-        Tue, 7 Jun 2016 04:00:56 -0700 (PDT)
-X-Received: by 10.28.85.3 with SMTP id j3mr2247928wmb.0.1465297254639;
-        Tue, 07 Jun 2016 04:00:54 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
-Received: from socrates.bennee.com (static.88-198-71-155.clients.your-server.de. [88.198.71.155])
-        by mx.google.com with ESMTPS id ud8si12442377wjc.216.2016.06.07.04.00.54
+Received: by 10.25.27.66 with SMTP id b63csp1941478lfb;
+        Tue, 7 Jun 2016 04:02:24 -0700 (PDT)
+X-Received: by 10.55.142.132 with SMTP id q126mr19832787qkd.81.1465297344835;
+        Tue, 07 Jun 2016 04:02:24 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d80si13663731qkj.249.2016.06.07.04.02.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Jun 2016 04:00:54 -0700 (PDT)
-Received-SPF: fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) client-ip=88.198.71.155;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 07 Jun 2016 04:02:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) smtp.mailfrom=qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from lists.gnu.org ([208.118.235.17])
-	by socrates.bennee.com with esmtp (Exim 4.84_2)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1bAEkZ-0000Dx-Im
-	for kernel-hacker@bennee.com; Tue, 07 Jun 2016 13:00:52 +0200
-Received: from localhost ([::1]:48513 helo=lists.gnu.org)
+       dkim=fail header.i=@163.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48530 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
-	id 1bAEkV-0000Mr-NJ
-	for kernel-hacker@bennee.com; Tue, 07 Jun 2016 07:00:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43667)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bAEm8-0001yP-7E
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 07:02:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bAEQh-00004z-4R
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:16 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1bAENK-0005L2-BV
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bAEQc-0003Wd-RO
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:15 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:33963)
+	(envelope-from <zxq_yx_007@163.com>) id 1bAENB-0002VJ-33
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:46 -0400
+Received: from m12-18.163.com ([220.181.12.18]:51389)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bAEQc-0003WP-No
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:10 -0400
-Received: by mail-vk0-x235.google.com with SMTP id e4so100203225vkb.1
-	for <qemu-devel@nongnu.org>; Tue, 07 Jun 2016 03:40:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=AmCt5HThH5CSl4daiLqAselm0iTyJpnMV7Ar7O+5pUU=;
-	b=FVgGsoCO06b8MDSBnvoAN5q8SjBYxXPuIBi8stBreLUdvLmLXls4IR594p5WQtUjtc
-	jxaJK4Pa2bTOhbB6zALZaKotjSWY8sqyodde6HKhEE3UnqVUli+yNoqno3pn2c5Qxkj2
-	fyf/5eiZ0cf4yEBsN1BGDonTvEh57ywZHvwLk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=AmCt5HThH5CSl4daiLqAselm0iTyJpnMV7Ar7O+5pUU=;
-	b=hbQqDNbNcZLrtETjNmQO153QPFVlk0U1NFHgVG1wTjcwsdd8810VyQYa6RDdJggn2X
-	YHqldk31l9iWCPDVz8yo+5Fe4Jx0OBCimdZPOi2Tosnr67JI0XtM/trL0dWw0EpvIE+k
-	ZJQj3v+7+a670ZMQ4o6MmWq5hFKY+KWaN4d1CahvX7RukyecNuEd//l5zA8WVA4GCTrx
-	4NrAMZRvVC9LoOL99dWDGOyZcOCCDFfmGZAtjtdWWN6kGGnRElgcZzBlfXXH1fgNuc6o
-	+hiiNcysNdlSBFm/ayrf836VHvFpQQcrjeKUZ8WyokI56updNX3ly98KOizzrytdb/l8
-	YL7Q==
-X-Gm-Message-State: ALyK8tLGIzVQDqORUP1UW6eVson/9IxUbX+Sbx5EINpqT8gsMHJpcxjv+1SgB1GRgM9K2iN8Lpj+HLYtGs4lS/J7
-X-Received: by 10.176.0.146 with SMTP id 18mr6283175uaj.17.1465296010259; Tue,
-	07 Jun 2016 03:40:10 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.67.65 with HTTP; Tue, 7 Jun 2016 03:39:50 -0700 (PDT)
-In-Reply-To: <1465267577-1808-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1465267577-1808-1-git-send-email-zhaoshenglong@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Jun 2016 11:39:50 +0100
-Message-ID: <CAFEAcA_kW27BYOphHxMuQn4e8pRw0Wx_C5UtB2OrJijWMOkWsg@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
+	(envelope-from <zxq_yx_007@163.com>)
+	id 1bAENA-0002Uq-G2; Tue, 07 Jun 2016 06:36:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id; bh=6nCkRycDuGN0cNnJTd
+	L7E8TcTKz8X1UVIsI2ZFcZTiA=; b=j8wrPcetavMS/dgwq8ijlS8T56HBKjO7T2
+	Vs3selBT0iWPGuyhQVONwv7l8QZf1nu+1cZtbSC69Hr96wHnD8TaYFTD6pb3ehxt
+	owd8Q7TOp6tlSY0ib/cp+PX0tbRuUyPH74XiXAK4wdpWSQLC4NvAgwZUve95gj5S
+	RhHVvIp9E=
+Received: from localhost.localdomain (unknown [118.187.28.42])
+	by smtp14 (Coremail) with SMTP id EsCowECZ5UeKo1ZXnD8LAA--.4292S2;
+	Tue, 07 Jun 2016 18:36:11 +0800 (CST)
+From: xiaoqiang zhao <zxq_yx_007@163.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  7 Jun 2016 18:35:40 +0800
+Message-Id: <1465295747-11651-1-git-send-email-zxq_yx_007@163.com>
+X-Mailer: git-send-email 2.1.4
+X-CM-TRANSID: EsCowECZ5UeKo1ZXnD8LAA--.4292S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tw4rGw18Jr1DXF4UAw4Utwb_yoW8urWxpF
+	Z7WFn5Zrs5KFZ7JrWftr1DC3W8A397G34xKr1xJr1Syw43Gr45tFWDuayay34DtrWvv3WY
+	q3yrGa47Aa12kw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jxqXdUUUUU=
+X-Originating-IP: [118.187.28.42]
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbB0huBxlUL-PlFIwAAsz
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 220.181.12.18
+Subject: [Qemu-devel] [PATCH 10/17] hw/misc: QOM'ify eccmemctl.c
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,56 +63,82 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Errors-To: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
-X-SA-Exim-Connect-IP: 208.118.235.17
-X-SA-Exim-Mail-From: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on socrates.bennee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,RCVD_IN_MSPIKE_H3,
-	RCVD_IN_MSPIKE_WL,T_DKIM_INVALID,T_HEADER_FROM_DIFFERENT_DOMAINS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
-Subject: Re: [Qemu-devel] [PATCH v5 0/3] Add guest PMU in machine virt
-X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
-X-SA-Exim-Scanned: Yes (on socrates.bennee.com)
-X-TUID: RmTjMpLkoikU
+Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8v47fiNjD6hh
 
-On 7 June 2016 at 03:46, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> From: Shannon Zhao <shannon.zhao@linaro.org>
->
-> KVM-ARM64 supports guest PMU now. This series add the support in machine
-> virt so that guest could use PMU.
->
-> The ACPI part is tested with below guest kernel patches.
-> https://lkml.org/lkml/2016/4/12/755
->
-> Changes since v4:
-> * fix building failure due to kvm_arm_pmu_create()
-> * rebase on master
->
-> Changes since v3:
-> * if kvm_arm_pmu_create returns a failure, don't create pmu dts node for
->   guest
->
-> Changes since v2:
-> * address Andrew's comments on PATCH 2, thanks
->
-> Changes since v1:
-> * rebase on master
-> * Address Andrew's comments, add a macro PPI, fix code style, add
->   cpu_to_le32()
->
-> Shannon Zhao (3):
->   target-arm: kvm64: set guest PMUv3 feature bit if supported
->   hw/arm/virt: Add PMU node for virt machine
->   hw/arm/virt-acpi-build: Add PMU IRQ number in ACPI table
+* Split the old SysBus init into an instance_init and a
+  DeviceClass::realize function
+* Drop the old SysBus init function and use instance_init
+
+Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
+---
+ hw/misc/eccmemctl.c | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/hw/misc/eccmemctl.c b/hw/misc/eccmemctl.c
+index a0071f3..bb7cc52 100644
+--- a/hw/misc/eccmemctl.c
++++ b/hw/misc/eccmemctl.c
+@@ -295,22 +295,29 @@ static void ecc_reset(DeviceState *d)
+     s->regs[ECC_ECR1] = 0;
+ }
+ 
+-static int ecc_init1(SysBusDevice *dev)
++static void ecc_init(Object *obj)
+ {
+-    ECCState *s = ECC_MEMCTL(dev);
++    ECCState *s = ECC_MEMCTL(obj);
++    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+ 
+     sysbus_init_irq(dev, &s->irq);
+-    s->regs[0] = s->version;
+-    memory_region_init_io(&s->iomem, OBJECT(dev), &ecc_mem_ops, s, "ecc", ECC_SIZE);
++
++    memory_region_init_io(&s->iomem, obj, &ecc_mem_ops, s, "ecc", ECC_SIZE);
+     sysbus_init_mmio(dev, &s->iomem);
++}
++
++static void ecc_realize(DeviceState *dev, Error **errp)
++{
++    ECCState *s = ECC_MEMCTL(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    s->regs[0] = s->version;
+ 
+     if (s->version == ECC_MCC) { // SS-600MP only
+         memory_region_init_io(&s->iomem_diag, OBJECT(dev), &ecc_diag_mem_ops, s,
+                               "ecc.diag", ECC_DIAG_SIZE);
+-        sysbus_init_mmio(dev, &s->iomem_diag);
++        sysbus_init_mmio(sbd, &s->iomem_diag);
+     }
+-
+-    return 0;
+ }
+ 
+ static Property ecc_properties[] = {
+@@ -321,9 +328,8 @@ static Property ecc_properties[] = {
+ static void ecc_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
+ 
+-    k->init = ecc_init1;
++    dc->realize = ecc_realize;
+     dc->reset = ecc_reset;
+     dc->vmsd = &vmstate_ecc;
+     dc->props = ecc_properties;
+@@ -333,6 +339,7 @@ static const TypeInfo ecc_info = {
+     .name          = TYPE_ECC_MEMCTL,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(ECCState),
++    .instance_init = ecc_init,
+     .class_init    = ecc_class_init,
+ };
+ 
+-- 
+2.1.4
 
 
-
-Applied to target-arm.next, thanks.
-
--- PMM

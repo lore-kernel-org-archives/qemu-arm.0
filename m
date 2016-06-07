@@ -1,184 +1,242 @@
-Received: by 10.25.27.66 with SMTP id b63csp2007264lfb;
-        Tue, 7 Jun 2016 06:25:49 -0700 (PDT)
-X-Received: by 10.55.70.66 with SMTP id t63mr21474756qka.173.1465305948953;
-        Tue, 07 Jun 2016 06:25:48 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp2011568lfb;
+        Tue, 7 Jun 2016 06:34:14 -0700 (PDT)
+X-Received: by 10.200.51.89 with SMTP id u25mr21697693qta.58.1465306454585;
+        Tue, 07 Jun 2016 06:34:14 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y91si14036661qgy.35.2016.06.07.06.25.48
+        by mx.google.com with ESMTPS id i207si14007984qke.191.2016.06.07.06.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 06:25:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Jun 2016 06:34:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49721 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAH0u-00073I-DG
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 09:25:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54984)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bAH94-0006wC-1F
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 09:34:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1bAGaW-00083y-Uq
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 08:58:37 -0400
+	(envelope-from <mst@redhat.com>) id 1bAGaI-0007mY-Kc
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 08:58:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1bAGaV-0003Kq-Sp
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 08:58:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37695)
+	(envelope-from <mst@redhat.com>) id 1bAGaF-0003Ep-HY
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 08:58:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53816)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1bAGaS-0003JA-3F; Tue, 07 Jun 2016 08:58:28 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	id 1bAGaF-0003Ek-8S; Tue, 07 Jun 2016 08:58:15 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 897DD63171;
-	Tue,  7 Jun 2016 12:58:27 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9BDE37F6B1;
+	Tue,  7 Jun 2016 12:58:14 +0000 (UTC)
 Received: from redhat.com (ovpn-116-19.ams2.redhat.com [10.36.116.19])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u57CwMgS018108; Tue, 7 Jun 2016 08:58:23 -0400
-Date: Tue, 7 Jun 2016 15:58:22 +0300
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u57CwAVa001188; Tue, 7 Jun 2016 08:58:11 -0400
+Date: Tue, 7 Jun 2016 15:58:10 +0300
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
-Message-ID: <20160607155822-mutt-send-email-mst@redhat.com>
+Message-ID: <20160607155810-mutt-send-email-mst@redhat.com>
 References: <1465304171-10874-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1465304171-10874-1-git-send-email-mst@redhat.com>
 X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 07 Jun 2016 12:58:27 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 07 Jun 2016 12:58:14 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL v2 25/25] virtio: move bi-endian target support
- to a single location
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PULL v2 22/25] acpi: make
+ bios_linker_loader_add_checksum() API offset based
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@suse.de>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Greg Kurz <gkurz@linux.vnet.ibm.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I61FOwL4Kox0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3bElkbBnDYaz
 
-From: Greg Kurz <gkurz@linux.vnet.ibm.com>
+From: Igor Mammedov <imammedo@redhat.com>
 
-Paolo's recent cpu.h cleanups broke legacy virtio for ppc64 LE guests (an=
-d
-arm BE guests as well, even if I have not verified that). Especially, com=
-mit
-"33c11879fd42 qemu-common: push cpu.h inclusion out of qemu-common.h" has
-the side-effect of silently hiding the TARGET_IS_BIENDIAN macro from the
-virtio memory accessors, and thus fully disabling support of endian chang=
-ing
-targets.
+It should help to make clear that bios_linker works in terms
+of offsets within a file. Also it should prevent mistakes
+where user passes as arguments pointers to unrelated to file blobs.
 
-To be sure this cannot happen again, let's gather all the bi-endian bits
-where they belong in include/hw/virtio/virtio-access.h.
+While at it, considering that it's a ACPI checksum and
+it's initial value must be 0, move checksum field zeroing
+into bios_linker_loader_add_checksum() instead of doing it
+at every call site manually before bios_linker_loader_add_checksum()
+is called.
 
-The changes in hw/virtio/vhost.c are safe because vhost_needs_vring_endia=
-n()
-is not called on a hot path and non bi-endian targets will return false
-anyway.
+In addition add extra boundary checks.
 
-While here, also rename TARGET_IS_BIENDIAN to be more precise: it is only=
- for
-legacy virtio and bi-endian guests.
-
-Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Acked-by: C=E9dric Le Goater <clg@kaod.org>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- include/hw/virtio/virtio-access.h | 6 +++++-
- target-arm/cpu.h                  | 2 --
- target-ppc/cpu.h                  | 2 --
- hw/virtio/vhost.c                 | 4 ----
- 4 files changed, 5 insertions(+), 9 deletions(-)
+ include/hw/acpi/bios-linker-loader.h |  4 ++--
+ hw/acpi/aml-build.c                  |  5 +++--
+ hw/acpi/bios-linker-loader.c         | 36 +++++++++++++-----------------------
+ hw/arm/virt-acpi-build.c             |  5 ++---
+ hw/i386/acpi-build.c                 |  5 ++---
+ 5 files changed, 22 insertions(+), 33 deletions(-)
 
-diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio=
--access.h
-index 8dc84f5..4b28038 100644
---- a/include/hw/virtio/virtio-access.h
-+++ b/include/hw/virtio/virtio-access.h
-@@ -17,9 +17,13 @@
- #include "hw/virtio/virtio.h"
- #include "exec/address-spaces.h"
-=20
-+#if defined(TARGET_PPC64) || defined(TARGET_ARM)
-+#define LEGACY_VIRTIO_IS_BIENDIAN 1
-+#endif
-+
- static inline bool virtio_access_is_big_endian(VirtIODevice *vdev)
+diff --git a/include/hw/acpi/bios-linker-loader.h b/include/hw/acpi/bios-linker-loader.h
+index f666b7c..a05227e 100644
+--- a/include/hw/acpi/bios-linker-loader.h
++++ b/include/hw/acpi/bios-linker-loader.h
+@@ -17,8 +17,8 @@ void bios_linker_loader_alloc(BIOSLinker *linker,
+                               bool alloc_fseg);
+ 
+ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file,
+-                                     void *start, unsigned size,
+-                                     uint8_t *checksum);
++                                     unsigned start_offset, unsigned size,
++                                     unsigned checksum_offset);
+ 
+ void bios_linker_loader_add_pointer(BIOSLinker *linker,
+                                     const char *dest_file,
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index d025837..123160a 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1493,6 +1493,8 @@ build_header(BIOSLinker *linker, GArray *table_data,
+              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+              const char *oem_id, const char *oem_table_id)
  {
--#if defined(TARGET_IS_BIENDIAN)
-+#if defined(LEGACY_VIRTIO_IS_BIENDIAN)
-     return virtio_is_big_endian(vdev);
- #elif defined(TARGET_WORDS_BIGENDIAN)
-     if (virtio_vdev_has_feature(vdev, VIRTIO_F_VERSION_1)) {
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 401955f..17d8051 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -29,8 +29,6 @@
- #  define TARGET_LONG_BITS 32
- #endif
-=20
--#define TARGET_IS_BIENDIAN 1
--
- #define CPUArchState struct CPUARMState
-=20
- #include "qemu-common.h"
-diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
-index 98a24a5..db7ee0c 100644
---- a/target-ppc/cpu.h
-+++ b/target-ppc/cpu.h
-@@ -28,8 +28,6 @@
- #define TARGET_LONG_BITS 64
- #define TARGET_PAGE_BITS 12
-=20
--#define TARGET_IS_BIENDIAN 1
--
- /* Note that the official physical address space bits is 62-M where M
-    is implementation dependent.  I've not looked up M for the set of
-    cpus we emulate at the system level.  */
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 4400718..81cc5b0 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -767,15 +767,11 @@ static inline bool vhost_needs_vring_endian(VirtIOD=
-evice *vdev)
-     if (virtio_vdev_has_feature(vdev, VIRTIO_F_VERSION_1)) {
-         return false;
-     }
--#ifdef TARGET_IS_BIENDIAN
- #ifdef HOST_WORDS_BIGENDIAN
-     return vdev->device_endian =3D=3D VIRTIO_DEVICE_ENDIAN_LITTLE;
- #else
-     return vdev->device_endian =3D=3D VIRTIO_DEVICE_ENDIAN_BIG;
- #endif
--#else
--    return false;
--#endif
++    unsigned tbl_offset = (char *)h - table_data->data;
++    unsigned checksum_offset = (char *)&h->checksum - table_data->data;
+     memcpy(&h->signature, sig, 4);
+     h->length = cpu_to_le32(len);
+     h->revision = rev;
+@@ -1513,10 +1515,9 @@ build_header(BIOSLinker *linker, GArray *table_data,
+     h->oem_revision = cpu_to_le32(1);
+     memcpy(h->asl_compiler_id, ACPI_BUILD_APPNAME4, 4);
+     h->asl_compiler_revision = cpu_to_le32(1);
+-    h->checksum = 0;
+     /* Checksum to be filled in by Guest linker */
+     bios_linker_loader_add_checksum(linker, ACPI_BUILD_TABLE_FILE,
+-                                    h, len, &h->checksum);
++        tbl_offset, len, checksum_offset);
  }
-=20
- static int vhost_virtqueue_set_vring_endian_legacy(struct vhost_dev *dev=
-,
---=20
+ 
+ void *acpi_data_push(GArray *table_data, unsigned size)
+diff --git a/hw/acpi/bios-linker-loader.c b/hw/acpi/bios-linker-loader.c
+index 3fb54dc..d963ebe 100644
+--- a/hw/acpi/bios-linker-loader.c
++++ b/hw/acpi/bios-linker-loader.c
+@@ -189,8 +189,8 @@ void bios_linker_loader_alloc(BIOSLinker *linker,
+ }
+ 
+ /*
+- * bios_linker_loader_add_checksum: ask guest to add checksum of file data
+- * into (same) file at the specified pointer.
++ * bios_linker_loader_add_checksum: ask guest to add checksum of ACPI
++ * table in the specified file at the specified offset.
+  *
+  * Checksum calculation simply sums -X for each byte X in the range
+  * using 8-bit math (i.e. ACPI checksum).
+@@ -198,35 +198,25 @@ void bios_linker_loader_alloc(BIOSLinker *linker,
+  * @linker: linker object instance
+  * @file: file that includes the checksum to be calculated
+  *        and the data to be checksummed
+- * @start, @size: range of data to checksum
+- * @checksum: location of the checksum to be patched within file blob
+- *
+- * Notes:
+- * - checksum byte initial value must have been pushed into blob
+- *   associated with @file and reside at address @checksum.
+- * - @size bytes must have been pushed into blob associated wtih @file
+- *   and reside at address @start.
+- * - Guest calculates checksum of specified range of data, result is added to
+- *   initial value at @checksum into copy of @file in Guest memory.
+- * - Range might include the checksum itself.
+- * - To avoid confusion, caller must always put 0x0 at @checksum.
+- * - @file must be loaded into Guest memory using bios_linker_loader_alloc
++ * @start_offset, @size: range of data in the file to checksum,
++ *                       relative to the start of file blob
++ * @checksum_offset: location of the checksum to be patched within file blob,
++ *                   relative to the start of file blob
+  */
+ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file_name,
+-                                     void *start, unsigned size,
+-                                     uint8_t *checksum)
++                                     unsigned start_offset, unsigned size,
++                                     unsigned checksum_offset)
+ {
+     BiosLinkerLoaderEntry entry;
+     const BiosLinkerFileEntry *file = bios_linker_find_file(linker, file_name);
+-    ptrdiff_t checksum_offset = (gchar *)checksum - file->blob->data;
+-    ptrdiff_t start_offset = (gchar *)start - file->blob->data;
+ 
+-    assert(checksum_offset >= 0);
+-    assert(start_offset >= 0);
+-    assert(checksum_offset + 1 <= file->blob->len);
++    assert(file);
++    assert(start_offset < file->blob->len);
+     assert(start_offset + size <= file->blob->len);
+-    assert(*checksum == 0x0);
++    assert(checksum_offset >= start_offset);
++    assert(checksum_offset + 1 <= start_offset + size);
+ 
++    *(file->blob->data + checksum_offset) = 0;
+     memset(&entry, 0, sizeof entry);
+     strncpy(entry.cksum.file, file_name, sizeof entry.cksum.file - 1);
+     entry.command = cpu_to_le32(BIOS_LINKER_LOADER_COMMAND_ADD_CHECKSUM);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 1cbb496..735ab86 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -374,11 +374,10 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
+         ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
+         ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
+ 
+-    rsdp->checksum = 0;
+     /* Checksum to be filled by Guest linker */
+     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+-                                    rsdp, sizeof *rsdp,
+-                                    &rsdp->checksum);
++        (char *)rsdp - rsdp_table->data, sizeof *rsdp,
++        (char *)&rsdp->checksum - rsdp_table->data);
+ 
+     return rsdp_table;
+ }
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index b3ce5be..06d6204 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2458,11 +2458,10 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
+         ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
+         ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
+ 
+-    rsdp->checksum = 0;
+     /* Checksum to be filled by Guest linker */
+     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+-                                    rsdp, sizeof *rsdp,
+-                                    &rsdp->checksum);
++        (char *)rsdp - rsdp_table->data, sizeof *rsdp,
++        (char *)&rsdp->checksum - rsdp_table->data);
+ 
+     return rsdp_table;
+ }
+-- 
 MST
 

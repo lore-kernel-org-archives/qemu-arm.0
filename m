@@ -1,606 +1,425 @@
-Received: by 10.25.27.66 with SMTP id b63csp1999467lfb;
-        Tue, 7 Jun 2016 06:10:25 -0700 (PDT)
-X-Received: by 10.55.55.20 with SMTP id e20mr20454407qka.11.1465305025279;
-        Tue, 07 Jun 2016 06:10:25 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp2002940lfb;
+        Tue, 7 Jun 2016 06:16:59 -0700 (PDT)
+X-Received: by 10.55.4.23 with SMTP id 23mr19999009qke.179.1465305419186;
+        Tue, 07 Jun 2016 06:16:59 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k65si13994878qgf.39.2016.06.07.06.10.25
+        by mx.google.com with ESMTPS id 102si15093162qte.105.2016.06.07.06.16.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 06:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Jun 2016 06:16:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49630 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49661 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAGm0-00023y-JJ
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 09:10:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54786)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bAGsM-00072N-Fr
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 09:16:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54928)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1bAGZx-0007ON-C8
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 08:58:03 -0400
+	(envelope-from <mst@redhat.com>) id 1bAGaN-0007qN-4j
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 08:58:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1bAGZu-00035Q-81
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 08:57:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53681)
+	(envelope-from <mst@redhat.com>) id 1bAGaG-0003Ev-1Q
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 08:58:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53794)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mst@redhat.com>)
-	id 1bAGZt-00034x-Vt; Tue, 07 Jun 2016 08:57:54 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	id 1bAGaA-0003Ci-Fm; Tue, 07 Jun 2016 08:58:10 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 629AA7F6A5;
-	Tue,  7 Jun 2016 12:57:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id EA6577F6A5;
+	Tue,  7 Jun 2016 12:58:09 +0000 (UTC)
 Received: from redhat.com (ovpn-116-19.ams2.redhat.com [10.36.116.19])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
-	id u57CvmPN017724; Tue, 7 Jun 2016 08:57:49 -0400
-Date: Tue, 7 Jun 2016 15:57:48 +0300
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u57Cw6hS001119; Tue, 7 Jun 2016 08:58:06 -0400
+Date: Tue, 7 Jun 2016 15:58:05 +0300
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
-Message-ID: <20160607155748-mutt-send-email-mst@redhat.com>
+Message-ID: <20160607155805-mutt-send-email-mst@redhat.com>
 References: <1465304171-10874-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <1465304171-10874-1-git-send-email-mst@redhat.com>
 X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.25]);
-	Tue, 07 Jun 2016 12:57:53 +0000 (UTC)
+	Tue, 07 Jun 2016 12:58:10 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL v2 17/25] acpi: convert linker from GArray to
- BIOSLinker structure
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PULL v2 21/25] acpi: make
+ bios_linker_loader_add_pointer() API offset based
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Xiao Guangrong <guangrong.xiao@linux.intel.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p92Sl3rmlymM
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uuKcD2Twgi2V
 
 From: Igor Mammedov <imammedo@redhat.com>
 
-Patch just changes type of of linker variables to
-a structure, there aren't any functional changes.
+cleanup bios_linker_loader_add_pointer() API by switching
+arguments to taking offsets relative to corresponding files
+instead of doing pointer arithmetic on behalf of user which
+were confusing.
 
-Converting linker to a structure will allow to extend
-it functionality in follow up patch adding sanity blob
-checks.
+Also make offset inside of source file explicit in API
+so that user won't have to manually set it in
+destination file blob and while at it add additional
+boundary checks.
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- include/hw/acpi/aml-build.h          |  7 ++++---
- include/hw/acpi/bios-linker-loader.h | 14 ++++++++-----
- include/hw/mem/nvdimm.h              |  3 ++-
- hw/acpi/aml-build.c                  |  5 ++---
- hw/acpi/bios-linker-loader.c         | 40 +++++++++++++++++++++---------------
- hw/acpi/nvdimm.c                     |  6 +++---
- hw/arm/virt-acpi-build.c             | 24 +++++++++++-----------
- hw/i386/acpi-build.c                 | 29 +++++++++++++-------------
- 8 files changed, 70 insertions(+), 58 deletions(-)
+ include/hw/acpi/bios-linker-loader.h |  5 ++--
+ hw/acpi/aml-build.c                  | 22 ++++++++-------
+ hw/acpi/bios-linker-loader.c         | 53 ++++++++++++++++++++----------------
+ hw/acpi/nvdimm.c                     |  7 ++---
+ hw/arm/virt-acpi-build.c             | 26 +++++++++---------
+ hw/i386/acpi-build.c                 | 45 +++++++++++++++---------------
+ 6 files changed, 83 insertions(+), 75 deletions(-)
 
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index dd432d2..3952f85 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -3,6 +3,7 @@
- 
- #include <glib.h>
- #include "hw/acpi/acpi-defs.h"
-+#include "hw/acpi/bios-linker-loader.h"
- 
- /* Reserve RAM space for tables: add another order of magnitude. */
- #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
-@@ -210,7 +211,7 @@ struct AcpiBuildTables {
-     GArray *table_data;
-     GArray *rsdp;
-     GArray *tcpalog;
--    GArray *linker;
-+    BIOSLinker *linker;
- } AcpiBuildTables;
- 
- /**
-@@ -365,7 +366,7 @@ Aml *aml_sizeof(Aml *arg);
- Aml *aml_concatenate(Aml *source1, Aml *source2, Aml *target);
- 
- void
--build_header(GArray *linker, GArray *table_data,
-+build_header(BIOSLinker *linker, GArray *table_data,
-              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
-              const char *oem_id, const char *oem_table_id);
- void *acpi_data_push(GArray *table_data, unsigned size);
-@@ -374,7 +375,7 @@ void acpi_add_table(GArray *table_offsets, GArray *table_data);
- void acpi_build_tables_init(AcpiBuildTables *tables);
- void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre);
- void
--build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets,
-+build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
-            const char *oem_id, const char *oem_table_id);
- 
- int
 diff --git a/include/hw/acpi/bios-linker-loader.h b/include/hw/acpi/bios-linker-loader.h
-index 82f1af6..4145c56 100644
+index 564e192..f666b7c 100644
 --- a/include/hw/acpi/bios-linker-loader.h
 +++ b/include/hw/acpi/bios-linker-loader.h
-@@ -3,23 +3,27 @@
+@@ -22,9 +22,10 @@ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file,
  
- #include <glib.h>
- 
--GArray *bios_linker_loader_init(void);
-+typedef struct BIOSLinker {
-+    GArray *cmd_blob;
-+} BIOSLinker;
- 
--void bios_linker_loader_alloc(GArray *linker,
-+BIOSLinker *bios_linker_loader_init(void);
-+
-+void bios_linker_loader_alloc(BIOSLinker *linker,
-                               const char *file,
-                               uint32_t alloc_align,
-                               bool alloc_fseg);
- 
--void bios_linker_loader_add_checksum(GArray *linker, const char *file,
-+void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file,
-                                      GArray *table,
-                                      void *start, unsigned size,
-                                      uint8_t *checksum);
- 
--void bios_linker_loader_add_pointer(GArray *linker,
-+void bios_linker_loader_add_pointer(BIOSLinker *linker,
+ void bios_linker_loader_add_pointer(BIOSLinker *linker,
                                      const char *dest_file,
++                                    uint32_t dst_patched_offset,
++                                    uint8_t dst_patched_size,
                                      const char *src_file,
-                                     GArray *table, void *pointer,
-                                     uint8_t pointer_size);
+-                                    void *pointer,
+-                                    uint8_t pointer_size);
++                                    uint32_t src_offset);
  
--void *bios_linker_loader_cleanup(GArray *linker);
-+void *bios_linker_loader_cleanup(BIOSLinker *linker);
- #endif
-diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
-index 517de9c..32e1445 100644
---- a/include/hw/mem/nvdimm.h
-+++ b/include/hw/mem/nvdimm.h
-@@ -24,6 +24,7 @@
- #define QEMU_NVDIMM_H
- 
- #include "hw/mem/pc-dimm.h"
-+#include "hw/acpi/bios-linker-loader.h"
- 
- #define NVDIMM_DEBUG 0
- #define nvdimm_debug(fmt, ...)                                \
-@@ -58,5 +59,5 @@ typedef struct AcpiNVDIMMState AcpiNVDIMMState;
- void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
-                             FWCfgState *fw_cfg, Object *owner);
- void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
--                       GArray *linker);
-+                       BIOSLinker *linker);
+ void bios_linker_loader_cleanup(BIOSLinker *linker);
  #endif
 diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 95f6021..a3fc93a 100644
+index 66e9bf8..d025837 100644
 --- a/hw/acpi/aml-build.c
 +++ b/hw/acpi/aml-build.c
-@@ -24,7 +24,6 @@
- #include "hw/acpi/aml-build.h"
- #include "qemu/bswap.h"
- #include "qemu/bitops.h"
--#include "hw/acpi/bios-linker-loader.h"
+@@ -1534,7 +1534,7 @@ unsigned acpi_data_len(GArray *table)
  
- static GArray *build_alloc_array(void)
+ void acpi_add_table(GArray *table_offsets, GArray *table_data)
  {
-@@ -1490,7 +1489,7 @@ Aml *aml_concatenate(Aml *source1, Aml *source2, Aml *target)
+-    uint32_t offset = cpu_to_le32(table_data->len);
++    uint32_t offset = table_data->len;
+     g_array_append_val(table_offsets, offset);
  }
  
- void
--build_header(GArray *linker, GArray *table_data,
-+build_header(BIOSLinker *linker, GArray *table_data,
-              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
-              const char *oem_id, const char *oem_table_id)
- {
-@@ -1558,7 +1557,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
- 
- /* Build rsdt table */
- void
--build_rsdt(GArray *table_data, GArray *linker, GArray *table_offsets,
-+build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
+@@ -1559,21 +1559,23 @@ void
+ build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
             const char *oem_id, const char *oem_table_id)
  {
-     AcpiRsdtDescriptorRev1 *rsdt;
+-    AcpiRsdtDescriptorRev1 *rsdt;
+-    size_t rsdt_len;
+     int i;
+-    const int table_data_len = (sizeof(uint32_t) * table_offsets->len);
++    unsigned rsdt_entries_offset;
++    AcpiRsdtDescriptorRev1 *rsdt;
++    const unsigned table_data_len = (sizeof(uint32_t) * table_offsets->len);
++    const unsigned rsdt_entry_size = sizeof(rsdt->table_offset_entry[0]);
++    const size_t rsdt_len = sizeof(*rsdt) + table_data_len;
+ 
+-    rsdt_len = sizeof(*rsdt) + table_data_len;
+     rsdt = acpi_data_push(table_data, rsdt_len);
+-    memcpy(rsdt->table_offset_entry, table_offsets->data, table_data_len);
++    rsdt_entries_offset = (char *)rsdt->table_offset_entry - table_data->data;
+     for (i = 0; i < table_offsets->len; ++i) {
++        uint32_t ref_tbl_offset = g_array_index(table_offsets, uint32_t, i);
++        uint32_t rsdt_entry_offset = rsdt_entries_offset + rsdt_entry_size * i;
++
+         /* rsdt->table_offset_entry to be filled by Guest linker */
+         bios_linker_loader_add_pointer(linker,
+-                                       ACPI_BUILD_TABLE_FILE,
+-                                       ACPI_BUILD_TABLE_FILE,
+-                                       &rsdt->table_offset_entry[i],
+-                                       sizeof(uint32_t));
++            ACPI_BUILD_TABLE_FILE, rsdt_entry_offset, rsdt_entry_size,
++            ACPI_BUILD_TABLE_FILE, ref_tbl_offset);
+     }
+     build_header(linker, table_data,
+                  (void *)rsdt, "RSDT", rsdt_len, 1, oem_id, oem_table_id);
 diff --git a/hw/acpi/bios-linker-loader.c b/hw/acpi/bios-linker-loader.c
-index 5153ab1..6b15a85 100644
+index b67da68..3fb54dc 100644
 --- a/hw/acpi/bios-linker-loader.c
 +++ b/hw/acpi/bios-linker-loader.c
-@@ -96,33 +96,39 @@ enum {
- };
- 
- /*
-- * bios_linker_loader_init: allocate a new linker file blob array.
-+ * bios_linker_loader_init: allocate a new linker object instance.
-  *
-  * After initialization, linker commands can be added, and will
-- * be stored in the array.
-+ * be stored in the linker.cmd_blob array.
-  */
--GArray *bios_linker_loader_init(void)
-+BIOSLinker *bios_linker_loader_init(void)
- {
--    return g_array_new(false, true /* clear */, 1);
-+    BIOSLinker *linker = g_new(BIOSLinker, 1);
-+
-+    linker->cmd_blob = g_array_new(false, true /* clear */, 1);
-+    return linker;
- }
- 
--/* Free linker wrapper and return the linker array. */
--void *bios_linker_loader_cleanup(GArray *linker)
-+/* Free linker wrapper and return the linker commands array. */
-+void *bios_linker_loader_cleanup(BIOSLinker *linker)
- {
--    return g_array_free(linker, false);
-+    void *cmd_blob = g_array_free(linker->cmd_blob, false);
-+
-+    g_free(linker);
-+    return cmd_blob;
+@@ -238,37 +238,38 @@ void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file_name,
  }
  
  /*
-  * bios_linker_loader_alloc: ask guest to load file into guest memory.
+- * bios_linker_loader_add_pointer: ask guest to add address of source file
+- * into destination file at the specified pointer.
++ * bios_linker_loader_add_pointer: ask guest to patch address in
++ * destination file with a pointer to source file
   *
-- * @linker: linker file blob array
-- * @file: file to be loaded
-+ * @linker: linker object instance
-+ * @file: name of the file blob to be loaded
-  * @alloc_align: required minimal alignment in bytes. Must be a power of 2.
-  * @alloc_fseg: request allocation in FSEG zone (useful for the RSDP ACPI table)
-  *
-  * Note: this command must precede any other linker command using this file.
-  */
--void bios_linker_loader_alloc(GArray *linker,
-+void bios_linker_loader_alloc(BIOSLinker *linker,
-                               const char *file,
-                               uint32_t alloc_align,
-                               bool alloc_fseg)
-@@ -139,7 +145,7 @@ void bios_linker_loader_alloc(GArray *linker,
-                                     BIOS_LINKER_LOADER_ALLOC_ZONE_HIGH;
- 
-     /* Alloc entries must come first, so prepend them */
--    g_array_prepend_vals(linker, &entry, sizeof entry);
-+    g_array_prepend_vals(linker->cmd_blob, &entry, sizeof entry);
- }
- 
- /*
-@@ -149,7 +155,7 @@ void bios_linker_loader_alloc(GArray *linker,
-  * Checksum calculation simply sums -X for each byte X in the range
-  * using 8-bit math (i.e. ACPI checksum).
-  *
-- * @linker: linker file blob array
-+ * @linker: linker object instance
-  * @file: file that includes the checksum to be calculated
-  *        and the data to be checksummed
-  * @table: @file blob contents
-@@ -167,7 +173,7 @@ void bios_linker_loader_alloc(GArray *linker,
-  * - To avoid confusion, caller must always put 0x0 at @checksum.
-  * - @file must be loaded into Guest memory using bios_linker_loader_alloc
-  */
--void bios_linker_loader_add_checksum(GArray *linker, const char *file,
-+void bios_linker_loader_add_checksum(BIOSLinker *linker, const char *file,
-                                      GArray *table,
-                                      void *start, unsigned size,
-                                      uint8_t *checksum)
-@@ -189,14 +195,14 @@ void bios_linker_loader_add_checksum(GArray *linker, const char *file,
-     entry.cksum.start = cpu_to_le32(start_offset);
-     entry.cksum.length = cpu_to_le32(size);
- 
--    g_array_append_vals(linker, &entry, sizeof entry);
-+    g_array_append_vals(linker->cmd_blob, &entry, sizeof entry);
- }
- 
- /*
-  * bios_linker_loader_add_pointer: ask guest to add address of source file
-  * into destination file at the specified pointer.
-  *
-- * @linker: linker file blob array
-+ * @linker: linker object instance
+  * @linker: linker object instance
   * @dest_file: destination file that must be changed
++ * @dst_patched_offset: location within destination file blob to be patched
++ *                      with the pointer to @src_file+@src_offset (i.e. source
++ *                      blob allocated in guest memory + @src_offset), in bytes
++ * @dst_patched_offset_size: size of the pointer to be patched
++ *                      at @dst_patched_offset in @dest_file blob, in bytes
   * @src_file: source file who's address must be taken
-  * @table: @dest_file blob contents array
-@@ -213,7 +219,7 @@ void bios_linker_loader_add_checksum(GArray *linker, const char *file,
-  * - Both @dest_file and @src_file must be
-  *   loaded into Guest memory using bios_linker_loader_alloc
+- * @pointer: location of the pointer to be patched within destination file blob
+- * @pointer_size: size of pointer to be patched, in bytes
+- *
+- * Notes:
+- * - @pointer_size bytes must have been pushed into blob associated with
+- *   @dest_file and reside at address @pointer.
+- * - Guest address is added to initial value at @pointer
+- *   into copy of @dest_file in Guest memory.
+- *   e.g. to get start of src_file in guest memory, put 0x0 there
+- *   to get address of a field at offset 0x10 in src_file, put 0x10 there
+- * - Both @dest_file and @src_file must be
+- *   loaded into Guest memory using bios_linker_loader_alloc
++ * @src_offset: location within source file blob to which
++ *              @dest_file+@dst_patched_offset will point to after
++ *              firmware's executed ADD_POINTER command
   */
--void bios_linker_loader_add_pointer(GArray *linker,
-+void bios_linker_loader_add_pointer(BIOSLinker *linker,
+ void bios_linker_loader_add_pointer(BIOSLinker *linker,
                                      const char *dest_file,
++                                    uint32_t dst_patched_offset,
++                                    uint8_t dst_patched_size,
                                      const char *src_file,
-                                     GArray *table, void *pointer,
-@@ -236,5 +242,5 @@ void bios_linker_loader_add_pointer(GArray *linker,
-     assert(pointer_size == 1 || pointer_size == 2 ||
-            pointer_size == 4 || pointer_size == 8);
+-                                    void *pointer,
+-                                    uint8_t pointer_size)
++                                    uint32_t src_offset)
+ {
++    uint64_t le_src_offset;
+     BiosLinkerLoaderEntry entry;
+-    const BiosLinkerFileEntry *file = bios_linker_find_file(linker, dest_file);
+-    ptrdiff_t offset = (gchar *)pointer - file->blob->data;
++    const BiosLinkerFileEntry *dst_file =
++        bios_linker_find_file(linker, dest_file);
++    const BiosLinkerFileEntry *source_file =
++        bios_linker_find_file(linker, src_file);
  
--    g_array_append_vals(linker, &entry, sizeof entry);
-+    g_array_append_vals(linker->cmd_blob, &entry, sizeof entry);
+-    assert(offset >= 0);
+-    assert(offset + pointer_size <= file->blob->len);
++    assert(dst_patched_offset < dst_file->blob->len);
++    assert(dst_patched_offset + dst_patched_size <= dst_file->blob->len);
++    assert(src_offset < source_file->blob->len);
+ 
+     memset(&entry, 0, sizeof entry);
+     strncpy(entry.pointer.dest_file, dest_file,
+@@ -276,10 +277,14 @@ void bios_linker_loader_add_pointer(BIOSLinker *linker,
+     strncpy(entry.pointer.src_file, src_file,
+             sizeof entry.pointer.src_file - 1);
+     entry.command = cpu_to_le32(BIOS_LINKER_LOADER_COMMAND_ADD_POINTER);
+-    entry.pointer.offset = cpu_to_le32(offset);
+-    entry.pointer.size = pointer_size;
+-    assert(pointer_size == 1 || pointer_size == 2 ||
+-           pointer_size == 4 || pointer_size == 8);
++    entry.pointer.offset = cpu_to_le32(dst_patched_offset);
++    entry.pointer.size = dst_patched_size;
++    assert(dst_patched_size == 1 || dst_patched_size == 2 ||
++           dst_patched_size == 4 || dst_patched_size == 8);
++
++    le_src_offset = cpu_to_le64(src_offset);
++    memcpy(dst_file->blob->data + dst_patched_offset,
++           &le_src_offset, dst_patched_size);
+ 
+     g_array_append_vals(linker->cmd_blob, &entry, sizeof entry);
  }
 diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index fb925dc..a2d20ea 100644
+index 9d95b1d..b4c2262 100644
 --- a/hw/acpi/nvdimm.c
 +++ b/hw/acpi/nvdimm.c
-@@ -353,7 +353,7 @@ static GArray *nvdimm_build_device_structure(GSList *device_list)
- }
- 
- static void nvdimm_build_nfit(GSList *device_list, GArray *table_offsets,
--                              GArray *table_data, GArray *linker)
-+                              GArray *table_data, BIOSLinker *linker)
- {
-     GArray *structures = nvdimm_build_device_structure(device_list);
-     unsigned int header;
-@@ -579,7 +579,7 @@ static void nvdimm_build_nvdimm_devices(GSList *device_list, Aml *root_dev)
- }
- 
- static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
--                              GArray *table_data, GArray *linker)
-+                              GArray *table_data, BIOSLinker *linker)
- {
-     Aml *ssdt, *sb_scope, *dev, *field;
-     int mem_addr_offset, nvdimm_ssdt;
-@@ -691,7 +691,7 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
- }
- 
- void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
--                       GArray *linker)
-+                       BIOSLinker *linker)
- {
-     GSList *device_list;
- 
+@@ -682,10 +682,9 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
+     bios_linker_loader_alloc(linker,
+                              NVDIMM_DSM_MEM_FILE, dsm_dma_arrea,
+                              sizeof(NvdimmDsmIn), false /* high memory */);
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-                                   NVDIMM_DSM_MEM_FILE,
+-                                   table_data->data + mem_addr_offset,
+-                                   sizeof(uint32_t));
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
++        NVDIMM_DSM_MEM_FILE, 0);
+     build_header(linker, table_data,
+         (void *)(table_data->data + nvdimm_ssdt),
+         "SSDT", table_data->len - nvdimm_ssdt, 1, NULL, "NVDIMM");
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 83a5420..fc130ff 100644
+index 2b23cef..1cbb496 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -354,7 +354,7 @@ static void acpi_dsdt_add_power_button(Aml *scope)
+@@ -354,9 +354,12 @@ static void acpi_dsdt_add_power_button(Aml *scope)
  
  /* RSDP */
  static GArray *
--build_rsdp(GArray *rsdp_table, GArray *linker, unsigned rsdt)
-+build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
+-build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
++build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
  {
      AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
++    unsigned rsdt_pa_size = sizeof(rsdp->rsdt_physical_address);
++    unsigned rsdt_pa_offset =
++        (char *)&rsdp->rsdt_physical_address - rsdp_table->data;
  
-@@ -383,7 +383,7 @@ build_rsdp(GArray *rsdp_table, GArray *linker, unsigned rsdt)
- }
+     bios_linker_loader_alloc(linker, ACPI_BUILD_RSDP_FILE, rsdp_table, 16,
+                              true /* fseg memory */);
+@@ -366,13 +369,11 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
+     rsdp->length = cpu_to_le32(sizeof(*rsdp));
+     rsdp->revision = 0x02;
  
- static void
--build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+build_spcr(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- {
-     AcpiSerialPortConsoleRedirection *spcr;
-     const MemMapEntry *uart_memmap = &guest_info->memmap[VIRT_UART];
-@@ -416,7 +416,7 @@ build_spcr(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
- }
- 
- static void
--build_srat(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+build_srat(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- {
-     AcpiSystemResourceAffinityTable *srat;
-     AcpiSratProcessorGiccAffinity *core;
-@@ -456,13 +456,12 @@ build_srat(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-         mem_base += numa_info[i].node_mem;
-     }
- 
--    build_header(linker, table_data,
--                 (void *)(table_data->data + srat_start), "SRAT",
-+    build_header(linker, table_data, (void *)srat, "SRAT",
-                  table_data->len - srat_start, 3, NULL, NULL);
- }
- 
- static void
--build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+build_mcfg(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- {
-     AcpiTableMcfg *mcfg;
-     const MemMapEntry *memmap = guest_info->memmap;
-@@ -482,7 +481,7 @@ build_mcfg(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
- 
- /* GTDT */
- static void
--build_gtdt(GArray *table_data, GArray *linker)
-+build_gtdt(GArray *table_data, BIOSLinker *linker)
- {
-     int gtdt_start = table_data->len;
-     AcpiGenericTimerTable *gtdt;
-@@ -508,7 +507,7 @@ build_gtdt(GArray *table_data, GArray *linker)
- 
- /* MADT */
- static void
--build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- {
-     int madt_start = table_data->len;
-     const MemMapEntry *memmap = guest_info->memmap;
-@@ -567,7 +566,7 @@ build_madt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
+-    /* Point to RSDT */
+-    rsdp->rsdt_physical_address = cpu_to_le32(rsdt);
+     /* Address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
+-                                   ACPI_BUILD_TABLE_FILE,
+-                                   &rsdp->rsdt_physical_address,
+-                                   sizeof rsdp->rsdt_physical_address);
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
++        ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
++
+     rsdp->checksum = 0;
+     /* Checksum to be filled by Guest linker */
+     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+@@ -566,9 +567,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
  
  /* FADT */
  static void
--build_fadt(GArray *table_data, GArray *linker, unsigned dsdt)
-+build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt)
+-build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt)
++build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt_tbl_offset)
  {
      AcpiFadtDescriptorRev5_1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
++    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
  
-@@ -592,7 +591,7 @@ build_fadt(GArray *table_data, GArray *linker, unsigned dsdt)
+     /* Hardware Reduced = 1 and use PSCI 0.2+ and with HVC */
+     fadt->flags = cpu_to_le32(1 << ACPI_FADT_F_HW_REDUCED_ACPI);
+@@ -578,12 +580,10 @@ build_fadt(GArray *table_data, BIOSLinker *linker, unsigned dsdt)
+     /* ACPI v5.1 (fadt->revision.fadt->minor_revision) */
+     fadt->minor_revision = 0x1;
  
- /* DSDT */
- static void
--build_dsdt(GArray *table_data, GArray *linker, VirtGuestInfo *guest_info)
-+build_dsdt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
- {
-     Aml *scope, *dsdt;
-     const MemMapEntry *memmap = guest_info->memmap;
-@@ -731,7 +730,7 @@ static void virt_acpi_build_update(void *build_opaque)
+-    fadt->dsdt = cpu_to_le32(dsdt);
+     /* DSDT address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-                                   ACPI_BUILD_TABLE_FILE,
+-                                   &fadt->dsdt,
+-                                   sizeof fadt->dsdt);
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
++        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
  
-     acpi_ram_update(build_state->table_mr, tables.table_data);
-     acpi_ram_update(build_state->rsdp_mr, tables.rsdp);
--    acpi_ram_update(build_state->linker_mr, tables.linker);
-+    acpi_ram_update(build_state->linker_mr, tables.linker->cmd_blob);
- 
- 
-     acpi_build_tables_cleanup(&tables, true);
-@@ -789,7 +788,8 @@ void virt_acpi_setup(VirtGuestInfo *guest_info)
-     assert(build_state->table_mr != NULL);
- 
-     build_state->linker_mr =
--        acpi_add_rom_blob(build_state, tables.linker, "etc/table-loader", 0);
-+        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-+                          "etc/table-loader", 0);
- 
-     fw_cfg_add_file(guest_info->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+     build_header(linker, table_data,
+                  (void *)fadt, "FACP", sizeof(*fadt), 5, NULL, NULL);
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 768918f..e6c390c 100644
+index 1e8364a..b3ce5be 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -260,7 +260,7 @@ static void acpi_align_size(GArray *blob, unsigned align)
- 
- /* FACS */
- static void
--build_facs(GArray *table_data, GArray *linker)
-+build_facs(GArray *table_data, BIOSLinker *linker)
- {
-     AcpiFacsDescriptorRev1 *facs = acpi_data_push(table_data, sizeof *facs);
-     memcpy(&facs->signature, "FACS", 4);
-@@ -305,7 +305,7 @@ static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
- 
+@@ -306,26 +306,23 @@ static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
  /* FADT */
  static void
--build_fadt(GArray *table_data, GArray *linker, AcpiPmInfo *pm,
-+build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
-            unsigned facs, unsigned dsdt,
+ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+-           unsigned facs, unsigned dsdt,
++           unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
             const char *oem_id, const char *oem_table_id)
  {
-@@ -332,7 +332,7 @@ build_fadt(GArray *table_data, GArray *linker, AcpiPmInfo *pm,
- }
+     AcpiFadtDescriptorRev1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
++    unsigned fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
++    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
  
- static void
--build_madt(GArray *table_data, GArray *linker, PCMachineState *pcms)
-+build_madt(GArray *table_data, BIOSLinker *linker, PCMachineState *pcms)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(pcms);
-     CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(pcms));
-@@ -1869,7 +1869,7 @@ static Aml *build_q35_osc_method(void)
- }
+-    fadt->firmware_ctrl = cpu_to_le32(facs);
+     /* FACS address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-                                   ACPI_BUILD_TABLE_FILE,
+-                                   &fadt->firmware_ctrl,
+-                                   sizeof fadt->firmware_ctrl);
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->firmware_ctrl),
++        ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
  
- static void
--build_dsdt(GArray *table_data, GArray *linker,
-+build_dsdt(GArray *table_data, BIOSLinker *linker,
-            AcpiPmInfo *pm, AcpiMiscInfo *misc,
-            PcPciInfo *pci, MachineState *machine)
- {
-@@ -2240,7 +2240,7 @@ build_dsdt(GArray *table_data, GArray *linker,
- }
+-    fadt->dsdt = cpu_to_le32(dsdt);
+     /* DSDT address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-                                   ACPI_BUILD_TABLE_FILE,
+-                                   &fadt->dsdt,
+-                                   sizeof fadt->dsdt);
+-
+     fadt_setup(fadt, pm);
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
++        ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
  
- static void
--build_hpet(GArray *table_data, GArray *linker)
-+build_hpet(GArray *table_data, BIOSLinker *linker)
- {
-     Acpi20Hpet *hpet;
- 
-@@ -2255,7 +2255,7 @@ build_hpet(GArray *table_data, GArray *linker)
- }
- 
- static void
--build_tpm_tcpa(GArray *table_data, GArray *linker, GArray *tcpalog)
-+build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+     build_header(linker, table_data,
+                  (void *)fadt, "FACP", sizeof(*fadt), 1, oem_id, oem_table_id);
+@@ -2258,6 +2255,9 @@ static void
+ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
  {
      Acpi20Tcpa *tcpa = acpi_data_push(table_data, sizeof *tcpa);
-     uint64_t log_area_start_address = acpi_data_len(tcpalog);
-@@ -2280,7 +2280,7 @@ build_tpm_tcpa(GArray *table_data, GArray *linker, GArray *tcpalog)
- }
++    unsigned log_addr_size = sizeof(tcpa->log_area_start_address);
++    unsigned log_addr_offset =
++        (char *)&tcpa->log_area_start_address - table_data->data;
  
- static void
--build_tpm2(GArray *table_data, GArray *linker)
-+build_tpm2(GArray *table_data, BIOSLinker *linker)
- {
-     Acpi20TPM2 *tpm2_ptr;
+     tcpa->platform_class = cpu_to_le16(TPM_TCPA_ACPI_CLASS_CLIENT);
+     tcpa->log_area_minimum_length = cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+@@ -2267,10 +2267,9 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+                              false /* high memory */);
  
-@@ -2295,7 +2295,7 @@ build_tpm2(GArray *table_data, GArray *linker)
- }
+     /* log area start address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+-                                   ACPI_BUILD_TPMLOG_FILE,
+-                                   &tcpa->log_area_start_address,
+-                                   sizeof(tcpa->log_area_start_address));
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_TABLE_FILE, log_addr_offset, log_addr_size,
++        ACPI_BUILD_TPMLOG_FILE, 0);
  
- static void
--build_srat(GArray *table_data, GArray *linker, MachineState *machine)
-+build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
- {
-     AcpiSystemResourceAffinityTable *srat;
-     AcpiSratProcessorAffinity *core;
-@@ -2392,7 +2392,7 @@ build_srat(GArray *table_data, GArray *linker, MachineState *machine)
- }
- 
- static void
--build_mcfg_q35(GArray *table_data, GArray *linker, AcpiMcfgInfo *info)
-+build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
- {
-     AcpiTableMcfg *mcfg;
-     const char *sig;
-@@ -2421,7 +2421,7 @@ build_mcfg_q35(GArray *table_data, GArray *linker, AcpiMcfgInfo *info)
- }
- 
- static void
--build_dmar_q35(GArray *table_data, GArray *linker)
-+build_dmar_q35(GArray *table_data, BIOSLinker *linker)
- {
-     int dmar_start = table_data->len;
- 
-@@ -2445,7 +2445,7 @@ build_dmar_q35(GArray *table_data, GArray *linker)
+     build_header(linker, table_data,
+                  (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
+@@ -2442,21 +2441,23 @@ build_dmar_q35(GArray *table_data, BIOSLinker *linker)
  }
  
  static GArray *
--build_rsdp(GArray *rsdp_table, GArray *linker, unsigned rsdt)
-+build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
+-build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt)
++build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
  {
      AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
++    unsigned rsdt_pa_size = sizeof(rsdp->rsdt_physical_address);
++    unsigned rsdt_pa_offset =
++        (char *)&rsdp->rsdt_physical_address - rsdp_table->data;
  
-@@ -2657,7 +2657,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-         acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
-     }
+     bios_linker_loader_alloc(linker, ACPI_BUILD_RSDP_FILE, rsdp_table, 16,
+                              true /* fseg memory */);
  
--    acpi_align_size(tables->linker, ACPI_BUILD_ALIGN_SIZE);
-+    acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
- 
-     /* Cleanup memory that's no longer used. */
-     g_array_free(table_offsets, true);
-@@ -2697,7 +2697,7 @@ static void acpi_build_update(void *build_opaque)
-         acpi_ram_update(build_state->rsdp_mr, tables.rsdp);
-     }
- 
--    acpi_ram_update(build_state->linker_mr, tables.linker);
-+    acpi_ram_update(build_state->linker_mr, tables.linker->cmd_blob);
-     acpi_build_tables_cleanup(&tables, true);
- }
- 
-@@ -2761,7 +2761,8 @@ void acpi_setup(void)
-     assert(build_state->table_mr != NULL);
- 
-     build_state->linker_mr =
--        acpi_add_rom_blob(build_state, tables.linker, "etc/table-loader", 0);
-+        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-+                          "etc/table-loader", 0);
- 
-     fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+     memcpy(&rsdp->signature, "RSD PTR ", 8);
+     memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, 6);
+-    rsdp->rsdt_physical_address = cpu_to_le32(rsdt);
+     /* Address to be filled by Guest linker */
+-    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
+-                                   ACPI_BUILD_TABLE_FILE,
+-                                   &rsdp->rsdt_physical_address,
+-                                   sizeof rsdp->rsdt_physical_address);
++    bios_linker_loader_add_pointer(linker,
++        ACPI_BUILD_RSDP_FILE, rsdt_pa_offset, rsdt_pa_size,
++        ACPI_BUILD_TABLE_FILE, rsdt_tbl_offset);
++
+     rsdp->checksum = 0;
+     /* Checksum to be filled by Guest linker */
+     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
 -- 
 MST
 

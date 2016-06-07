@@ -1,59 +1,72 @@
-Received: by 10.25.27.66 with SMTP id b63csp1939212lfb;
-        Tue, 7 Jun 2016 03:57:09 -0700 (PDT)
-X-Received: by 10.141.0.133 with SMTP id b127mr2314816qhd.9.1465297029312;
-        Tue, 07 Jun 2016 03:57:09 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s67si13679608qkh.110.2016.06.07.03.57.09
+Received: by 10.25.27.66 with SMTP id b63csp1940697lfb;
+        Tue, 7 Jun 2016 04:00:56 -0700 (PDT)
+X-Received: by 10.28.85.3 with SMTP id j3mr2247928wmb.0.1465297254639;
+        Tue, 07 Jun 2016 04:00:54 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
+Received: from socrates.bennee.com (static.88-198-71-155.clients.your-server.de. [88.198.71.155])
+        by mx.google.com with ESMTPS id ud8si12442377wjc.216.2016.06.07.04.00.54
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 03:57:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 07 Jun 2016 04:00:54 -0700 (PDT)
+Received-SPF: fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) client-ip=88.198.71.155;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48497 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=fail (google.com: domain of qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org does not designate 88.198.71.155 as permitted sender) smtp.mailfrom=qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from lists.gnu.org ([208.118.235.17])
+	by socrates.bennee.com with esmtp (Exim 4.84_2)
+	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
+	id 1bAEkZ-0000Dx-Im
+	for kernel-hacker@bennee.com; Tue, 07 Jun 2016 13:00:52 +0200
+Received: from localhost ([::1]:48513 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAEh2-0005nf-Lu
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 06:57:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42592)
+	(envelope-from <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>)
+	id 1bAEkV-0000Mr-NJ
+	for kernel-hacker@bennee.com; Tue, 07 Jun 2016 07:00:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAENH-0005HN-Kl
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bAEQh-00004z-4R
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAENB-0002Va-7c
-	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:42 -0400
-Received: from m12-18.163.com ([220.181.12.18]:51399)
+	(envelope-from <peter.maydell@linaro.org>) id 1bAEQc-0003Wd-RO
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:15 -0400
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:33963)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1bAENA-0002V0-LE; Tue, 07 Jun 2016 06:36:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=u8fMScUYVk9LdTBULi
-	PPVuu1Bk62Y1uAXggLpDTScog=; b=g2FbFC8Zd8nOff/VEfxMTCFpr7tY5yBBDh
-	1xrr4e2L2g5+CP4u40QZoYwPDYin1E355y7B0nKICebPS5QsItoPiXwRj9G0vrF8
-	WhTDF9DkJlToH51Ap2dQaJxy7Pou49FsaKMNB3bcTmdMfErqtkydXDNDRPhmMTR+
-	W68gaVv7k=
-Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp14 (Coremail) with SMTP id EsCowECZ5UeKo1ZXnD8LAA--.4292S7;
-	Tue, 07 Jun 2016 18:36:11 +0800 (CST)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  7 Jun 2016 18:35:45 +0800
-Message-Id: <1465295747-11651-6-git-send-email-zxq_yx_007@163.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1465295747-11651-1-git-send-email-zxq_yx_007@163.com>
-References: <1465295747-11651-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EsCowECZ5UeKo1ZXnD8LAA--.4292S7
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tw4rtr45tryftF13Xw15XFb_yoW8try5pF
-	93uFs5Wry5KFZrGr4fXan2gF1kJwnYk3yS9rW3Jrn2qFsrWr15ta4vyrySyr909rZ7ZF4F
-	ga95Jw45ur17Cw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jD5rcUUUUU=
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEByBxlUL82dTtAAAsm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 220.181.12.18
-Subject: [Qemu-devel] [PATCH 15/17] hw/dma: QOM'ify sparc32_dma.c
+	(envelope-from <peter.maydell@linaro.org>) id 1bAEQc-0003WP-No
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:40:10 -0400
+Received: by mail-vk0-x235.google.com with SMTP id e4so100203225vkb.1
+	for <qemu-devel@nongnu.org>; Tue, 07 Jun 2016 03:40:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=AmCt5HThH5CSl4daiLqAselm0iTyJpnMV7Ar7O+5pUU=;
+	b=FVgGsoCO06b8MDSBnvoAN5q8SjBYxXPuIBi8stBreLUdvLmLXls4IR594p5WQtUjtc
+	jxaJK4Pa2bTOhbB6zALZaKotjSWY8sqyodde6HKhEE3UnqVUli+yNoqno3pn2c5Qxkj2
+	fyf/5eiZ0cf4yEBsN1BGDonTvEh57ywZHvwLk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=AmCt5HThH5CSl4daiLqAselm0iTyJpnMV7Ar7O+5pUU=;
+	b=hbQqDNbNcZLrtETjNmQO153QPFVlk0U1NFHgVG1wTjcwsdd8810VyQYa6RDdJggn2X
+	YHqldk31l9iWCPDVz8yo+5Fe4Jx0OBCimdZPOi2Tosnr67JI0XtM/trL0dWw0EpvIE+k
+	ZJQj3v+7+a670ZMQ4o6MmWq5hFKY+KWaN4d1CahvX7RukyecNuEd//l5zA8WVA4GCTrx
+	4NrAMZRvVC9LoOL99dWDGOyZcOCCDFfmGZAtjtdWWN6kGGnRElgcZzBlfXXH1fgNuc6o
+	+hiiNcysNdlSBFm/ayrf836VHvFpQQcrjeKUZ8WyokI56updNX3ly98KOizzrytdb/l8
+	YL7Q==
+X-Gm-Message-State: ALyK8tLGIzVQDqORUP1UW6eVson/9IxUbX+Sbx5EINpqT8gsMHJpcxjv+1SgB1GRgM9K2iN8Lpj+HLYtGs4lS/J7
+X-Received: by 10.176.0.146 with SMTP id 18mr6283175uaj.17.1465296010259; Tue,
+	07 Jun 2016 03:40:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.67.65 with HTTP; Tue, 7 Jun 2016 03:39:50 -0700 (PDT)
+In-Reply-To: <1465267577-1808-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1465267577-1808-1-git-send-email-zhaoshenglong@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Jun 2016 11:39:50 +0100
+Message-ID: <CAFEAcA_kW27BYOphHxMuQn4e8pRw0Wx_C5UtB2OrJijWMOkWsg@mail.gmail.com>
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::235
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,84 +78,56 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5tyMTH1bWmMX
+Cc: "Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
+	Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>
+Errors-To: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org>
+X-SA-Exim-Connect-IP: 208.118.235.17
+X-SA-Exim-Mail-From: qemu-devel-bounces+kernel-hacker=bennee.com@nongnu.org
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on socrates.bennee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.9 required=5.0 tests=BAYES_00,RCVD_IN_MSPIKE_H3,
+	RCVD_IN_MSPIKE_WL,T_DKIM_INVALID,T_HEADER_FROM_DIFFERENT_DOMAINS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+Subject: Re: [Qemu-devel] [PATCH v5 0/3] Add guest PMU in machine virt
+X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
+X-SA-Exim-Scanned: Yes (on socrates.bennee.com)
+X-TUID: RmTjMpLkoikU
 
-Drop the old SysBus init function and use instance_init
-and an realize function
-
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/dma/sparc32_dma.c | 25 +++++++++++++++----------
- 1 file changed, 15 insertions(+), 10 deletions(-)
-
-diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
-index 9d545e4..ef4c6a9 100644
---- a/hw/dma/sparc32_dma.c
-+++ b/hw/dma/sparc32_dma.c
-@@ -270,23 +270,28 @@ static const VMStateDescription vmstate_dma = {
-     }
- };
- 
--static int sparc32_dma_init1(SysBusDevice *sbd)
-+static void sparc32_dma_init(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    DMAState *s = SPARC32_DMA(dev);
--    int reg_size;
-+    DeviceState *dev = DEVICE(obj);
-+    DMAState *s = SPARC32_DMA(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     sysbus_init_irq(sbd, &s->irq);
- 
--    reg_size = s->is_ledma ? DMA_ETH_SIZE : DMA_SIZE;
--    memory_region_init_io(&s->iomem, OBJECT(s), &dma_mem_ops, s,
--                          "dma", reg_size);
-     sysbus_init_mmio(sbd, &s->iomem);
- 
-     qdev_init_gpio_in(dev, dma_set_irq, 1);
-     qdev_init_gpio_out(dev, s->gpio, 2);
-+}
- 
--    return 0;
-+static void sparc32_dma_realize(DeviceState *dev, Error **errp)
-+{
-+    DMAState *s = SPARC32_DMA(dev);
-+    int reg_size;
-+
-+    reg_size = s->is_ledma ? DMA_ETH_SIZE : DMA_SIZE;
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &dma_mem_ops, s,
-+                          "dma", reg_size);
- }
- 
- static Property sparc32_dma_properties[] = {
-@@ -298,12 +303,11 @@ static Property sparc32_dma_properties[] = {
- static void sparc32_dma_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = sparc32_dma_init1;
-     dc->reset = dma_reset;
-     dc->vmsd = &vmstate_dma;
-     dc->props = sparc32_dma_properties;
-+    dc->realize = sparc32_dma_realize;
-     /* Reason: pointer property "iommu_opaque" */
-     dc->cannot_instantiate_with_device_add_yet = true;
- }
-@@ -312,6 +316,7 @@ static const TypeInfo sparc32_dma_info = {
-     .name          = TYPE_SPARC32_DMA,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(DMAState),
-+    .instance_init = sparc32_dma_init,
-     .class_init    = sparc32_dma_class_init,
- };
- 
--- 
-2.1.4
+On 7 June 2016 at 03:46, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+> From: Shannon Zhao <shannon.zhao@linaro.org>
+>
+> KVM-ARM64 supports guest PMU now. This series add the support in machine
+> virt so that guest could use PMU.
+>
+> The ACPI part is tested with below guest kernel patches.
+> https://lkml.org/lkml/2016/4/12/755
+>
+> Changes since v4:
+> * fix building failure due to kvm_arm_pmu_create()
+> * rebase on master
+>
+> Changes since v3:
+> * if kvm_arm_pmu_create returns a failure, don't create pmu dts node for
+>   guest
+>
+> Changes since v2:
+> * address Andrew's comments on PATCH 2, thanks
+>
+> Changes since v1:
+> * rebase on master
+> * Address Andrew's comments, add a macro PPI, fix code style, add
+>   cpu_to_le32()
+>
+> Shannon Zhao (3):
+>   target-arm: kvm64: set guest PMUv3 feature bit if supported
+>   hw/arm/virt: Add PMU node for virt machine
+>   hw/arm/virt-acpi-build: Add PMU IRQ number in ACPI table
 
 
+
+Applied to target-arm.next, thanks.
+
+-- PMM

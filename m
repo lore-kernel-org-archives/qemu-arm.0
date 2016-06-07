@@ -1,144 +1,89 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c191sm20450831wmh.5.2016.06.07.10.13.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Jun 2016 10:13:36 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 34B8F3E0200;
-	Tue,  7 Jun 2016 18:13:53 +0100 (BST)
-User-agent: mu4e 0.9.17; emacs 25.0.94.5
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Andrew Jones <drjones@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com, peter.maydell@linaro.org, christoffer.dall@linaro.org, marc.zyngier@arm.com
-Subject: Re: [kvm-unit-tests PATCH v2 00/10] arm/arm64: add gic framework
-In-reply-to: <87d1nweqsc.fsf@linaro.org>
-Date: Tue, 07 Jun 2016 18:13:53 +0100
-Message-ID: <87oa7chqge.fsf@linaro.org>
+Received: by 10.25.27.66 with SMTP id b63csp2191767lfb;
+        Tue, 7 Jun 2016 13:23:25 -0700 (PDT)
+X-Received: by 10.237.33.151 with SMTP id l23mr1392704qtc.81.1465331005877;
+        Tue, 07 Jun 2016 13:23:25 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a133si15061004qkc.140.2016.06.07.13.23.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 07 Jun 2016 13:23:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52811 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bANX3-0007v1-AM
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 16:23:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39454)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bANWu-0007rw-Lj
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 16:23:17 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bANWk-0004D8-BQ
+	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 16:23:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41506)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bANWk-0004D1-6H; Tue, 07 Jun 2016 16:23:06 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 90F7F7F6A2;
+	Tue,  7 Jun 2016 20:23:05 +0000 (UTC)
+Received: from localhost (vpn1-7-78.gru2.redhat.com [10.97.7.78])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u57KN4KQ013793; Tue, 7 Jun 2016 16:23:04 -0400
+Date: Tue, 7 Jun 2016 17:23:03 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20160607202303.GE18662@thinpad.lan.raisama.net>
+References: <1465226212-254093-1-git-send-email-imammedo@redhat.com>
+	<1465226212-254093-4-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 7kdUaDUF8XvV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1465226212-254093-4-git-send-email-imammedo@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 07 Jun 2016 20:23:05 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 03/10] target-i386: cpu: move
+ xcc->kvm_required check to realize time
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
+	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
+	pbonzini@redhat.com, rth@twiddle.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3SOfc73FtsPf
 
+On Mon, Jun 06, 2016 at 05:16:45PM +0200, Igor Mammedov wrote:
+> it will allow to drop custom cpu_x86_init() and use
+> cpu_generic_init() insteadi, reducing cpu_x86_create()
+> to a simple 3-liner.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Eduardo Habkost <ehabkost@redhat.com>
 
-Alex Bennée <alex.bennee@linaro.org> writes:
+The "Reviewed-by: " prefix is missing, but this can be fixed when
+applying the patch.
 
-> Andrew Jones <drjones@redhat.com> writes:
->
->> v2:
->>  Rebased on on latest master + my "populate argv[0]" series (will
->>  send a REPOST for that shortly. Additionally a few patches got
->>  fixes/features;
->>  07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
->>        all interrupts as non-secure Group-1" in order to continue
->>        working over TCG, as the gicv3 code for TCG removed a hack
->>        it had there to make Linux happy.
->>  08/10 added more output for when things fail (if they fail)
->>  09/10 switched gicv3 broadcast implementation to using IRM. This
->>        found a bug in a recent (but not tip) kernel, which I was
->>        about to fix, but then I saw MarcZ beat me to it.
->>  10/10 actually check that the input irq is the received irq
->
-> Cool stuff. I'll get to reviewing this next week as my kvm-unit-tests
-> queue is getting overly long I need to clean-up and re-submit.
-
-OK I think I'm done for now. Sorry I've skipped the main bits of the GIC
-test but I'm not up to speed on the GIC layout so I'll defer to people
-who have a better understanding of it ;-)
-
->
->>
->>
->> Import defines, and steal enough helper functions, from Linux to
->> enable programming of the gic (v2 and v3). Then use the framework
->> to add an initial test (an ipi test; self, target-list, broadcast).
->>
->> It's my hope that this framework will be a suitable base on which
->> more tests may be easily added, particularly because we have
->> vgic-new and tcg gicv3 emulation getting close to merge.
->>
->> To run it, along with other tests, just do
->>
->>  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
->>  make
->>  export QEMU=$PATH_TO_QEMU
->>  ./run_tests.sh
->>
->> To run it separately do, e.g.
->>
->> $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
->>  -device virtio-serial-device \
->>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->>  -display none -serial stdio \
->>  -kernel arm/gic.flat \
->>  -smp 123 -machine gic-version=3 -append ipi
->>
->>       ^^ note, we can go nuts with nr-cpus on TCG :-)
->>
->> Or, a KVM example using a different "sender" cpu and irq (other than zero)
->>
->> $QEMU -machine virt,accel=kvm -cpu host \
->>  -device virtio-serial-device \
->>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->>  -display none -serial stdio \
->>  -kernel arm/gic.flat \
->>  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
->>
->>
->> Patches:
->> 01-05: fixes and functionality needed by the later gic patches
->> 06-07: code theft from Linux (defines, helper functions)
->> 08-10: arm/gic.flat (the base of the gic unit test), currently just IPI
->>
->> Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic
->>
->>
->> Andrew Jones (10):
->>   lib: xstr: allow multiple args
->>   arm64: fix get_"sysreg32" and make MPIDR 64bit
->>   arm/arm64: smp: support more than 8 cpus
->>   arm/arm64: add some delay routines
->>   arm/arm64: irq enable/disable
->>   arm/arm64: add initial gicv2 support
->>   arm/arm64: add initial gicv3 support
->>   arm/arm64: gicv2: add an IPI test
->>   arm/arm64: gicv3: add an IPI test
->>   arm/arm64: gic: don't just use zero
->>
->>  arm/Makefile.common        |   7 +-
->>  arm/gic.c                  | 381 +++++++++++++++++++++++++++++++++++++++++++++
->>  arm/run                    |  19 ++-
->>  arm/selftest.c             |   5 +-
->>  arm/unittests.cfg          |  13 ++
->>  lib/arm/asm/arch_gicv3.h   | 184 ++++++++++++++++++++++
->>  lib/arm/asm/gic-v2.h       |  74 +++++++++
->>  lib/arm/asm/gic-v3.h       | 321 ++++++++++++++++++++++++++++++++++++++
->>  lib/arm/asm/gic.h          |  21 +++
->>  lib/arm/asm/processor.h    |  38 ++++-
->>  lib/arm/asm/setup.h        |   4 +-
->>  lib/arm/gic.c              | 142 +++++++++++++++++
->>  lib/arm/processor.c        |  15 ++
->>  lib/arm/setup.c            |  12 +-
->>  lib/arm64/asm/arch_gicv3.h | 169 ++++++++++++++++++++
->>  lib/arm64/asm/gic-v2.h     |   1 +
->>  lib/arm64/asm/gic-v3.h     |   1 +
->>  lib/arm64/asm/gic.h        |   1 +
->>  lib/arm64/asm/processor.h  |  53 ++++++-
->>  lib/arm64/asm/sysreg.h     |  44 ++++++
->>  lib/arm64/processor.c      |  15 ++
->>  lib/libcflat.h             |   4 +-
->>  22 files changed, 1498 insertions(+), 26 deletions(-)
->>  create mode 100644 arm/gic.c
->>  create mode 100644 lib/arm/asm/arch_gicv3.h
->>  create mode 100644 lib/arm/asm/gic-v2.h
->>  create mode 100644 lib/arm/asm/gic-v3.h
->>  create mode 100644 lib/arm/asm/gic.h
->>  create mode 100644 lib/arm/gic.c
->>  create mode 100644 lib/arm64/asm/arch_gicv3.h
->>  create mode 100644 lib/arm64/asm/gic-v2.h
->>  create mode 100644 lib/arm64/asm/gic-v3.h
->>  create mode 100644 lib/arm64/asm/gic.h
->>  create mode 100644 lib/arm64/asm/sysreg.h
-
-
---
-Alex Bennée
+-- 
+Eduardo

@@ -1,153 +1,130 @@
-Received: by 10.25.27.66 with SMTP id b63csp1935970lfb;
-        Tue, 7 Jun 2016 03:48:19 -0700 (PDT)
-X-Received: by 10.55.65.210 with SMTP id o201mr13606354qka.133.1465296499579;
-        Tue, 07 Jun 2016 03:48:19 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp1936754lfb;
+        Tue, 7 Jun 2016 03:50:17 -0700 (PDT)
+X-Received: by 10.237.35.152 with SMTP id j24mr20360068qtc.95.1465296617609;
+        Tue, 07 Jun 2016 03:50:17 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i5si5211945qhc.100.2016.06.07.03.48.19
+        by mx.google.com with ESMTPS id t67si13677143qkf.107.2016.06.07.03.50.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 03:48:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Jun 2016 03:50:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48451 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48457 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAEYU-0006jn-UD
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 06:48:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42629)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bAEaO-00089A-W2
+	for alex.bennee@linaro.org; Tue, 07 Jun 2016 06:50:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42642)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAENJ-0005JV-UW
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 06:36:46 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1bAENK-0005Kz-Ap
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAENH-0002XF-V7
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 06:36:44 -0400
-Received: from m12-18.163.com ([220.181.12.18]:51408)
+	(envelope-from <zxq_yx_007@163.com>) id 1bAENB-0002VK-3k
+	for qemu-devel@nongnu.org; Tue, 07 Jun 2016 06:36:46 -0400
+Received: from m12-18.163.com ([220.181.12.18]:51391)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1bAENA-0002V2-PL; Tue, 07 Jun 2016 06:36:37 -0400
+	id 1bAENA-0002Uu-H0; Tue, 07 Jun 2016 06:36:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=tS0utbdAs3QMsQ5xlt
-	XtVFvRg79y2jCxOZJPm3LzNNg=; b=B+xJ3PyLrQnn5d2Yl8HGweJUWZcWrSPhJa
-	OZAr5HXJ/DoCmngSzfk0z9Kq8cBk4XfEDL28oIXEcoNrFHe1rR9RrC0IcdgjZtW5
-	96rihBmM7RsgmxJtulxenQ2FXH3zjshNg7YXLvALEETeh+drrNSNdI22ZxjdaSM6
-	upO7V/jH0=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=8sIYql+ZyGEkIAhM5K
+	eeaLbRraOtCzapdKNoLeEakKo=; b=duMTNZX4edejpd1Ly69TZNT31StzR/Cemq
+	VlZsCv2zd0IB8m8+Iq+okO1JXKGk6YxuQDKSlCGumDfAUqHeCvdD1qpSp1ukQeIN
+	jlnQ8vBRJFppJEGG68b4/NDdXlt8zAMVL9KSDxNYVGbVhpYcRuakIL7JxkkWNQoo
+	ClBqva7yU=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp14 (Coremail) with SMTP id EsCowECZ5UeKo1ZXnD8LAA--.4292S9;
-	Tue, 07 Jun 2016 18:36:12 +0800 (CST)
+	by smtp14 (Coremail) with SMTP id EsCowECZ5UeKo1ZXnD8LAA--.4292S4;
+	Tue, 07 Jun 2016 18:36:11 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  7 Jun 2016 18:35:47 +0800
-Message-Id: <1465295747-11651-8-git-send-email-zxq_yx_007@163.com>
+Date: Tue,  7 Jun 2016 18:35:42 +0800
+Message-Id: <1465295747-11651-3-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1465295747-11651-1-git-send-email-zxq_yx_007@163.com>
 References: <1465295747-11651-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EsCowECZ5UeKo1ZXnD8LAA--.4292S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tw47Gw4xGFyxZry3Aw1rXrb_yoW8tFy7pF
-	Z29Fn8Ar4UJFsrW34xJr1xG3Z5Gws5Cw1xGr97XrnYy34qkFn8Zw4kJ3ySyFyq9rZ7AFW5
-	GF95trW8AFs7J3DanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jD5rcUUUUU=
+X-CM-TRANSID: EsCowECZ5UeKo1ZXnD8LAA--.4292S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tw47uF17Xr4DCFW5uF18Grg_yoW8CFWUpF
+	93Z3WDur4rXrsFqrWfXrn8WF48Kws7Gws5tr10yws3ua4xGFWFq3Z2k3y2yrWUArWkXF4Y
+	9F18WFyftayUCw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jpYLkUUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiMxyBxlXlgs1VfwAAs9
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiFhuBxlWBRPuW+gAAsN
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
 X-Received-From: 220.181.12.18
-Subject: [Qemu-arm] [PATCH 17/17] hw/sd: QOM'ify pl181.c
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 12/17] hw/misc: QOM'ify mst_fpga.c
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	balrogg@gmail.com, zhaoshenglong@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qj8CRwEXFfM2
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ONWcNoDaO9q4
 
-split the old SysBus init function into an instance_init
-and a Device realize function
+Drop the old SysBus init function and use instance_init
 
 Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- hw/sd/pl181.c | 26 ++++++++++++++++----------
- 1 file changed, 16 insertions(+), 10 deletions(-)
+ hw/misc/mst_fpga.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index eb783c6..82c63a4 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -13,6 +13,7 @@
- #include "hw/sysbus.h"
- #include "hw/sd/sd.h"
- #include "qemu/log.h"
-+#include "qapi/error.h"
- 
- //#define DEBUG_PL181 1
- 
-@@ -481,43 +482,48 @@ static void pl181_reset(DeviceState *d)
-     sd_set_cb(s->card, s->cardstatus[0], s->cardstatus[1]);
+diff --git a/hw/misc/mst_fpga.c b/hw/misc/mst_fpga.c
+index 48d7dfb..a10f049 100644
+--- a/hw/misc/mst_fpga.c
++++ b/hw/misc/mst_fpga.c
+@@ -200,10 +200,11 @@ static int mst_fpga_post_load(void *opaque, int version_id)
+ 	return 0;
  }
  
--static int pl181_init(SysBusDevice *sbd)
-+static void pl181_init(Object *obj)
+-static int mst_fpga_init(SysBusDevice *sbd)
++static void mst_fpga_init(Object *obj)
  {
 -    DeviceState *dev = DEVICE(sbd);
--    PL181State *s = PL181(dev);
--    DriveInfo *dinfo;
+-    mst_irq_state *s = MAINSTONE_FPGA(dev);
 +    DeviceState *dev = DEVICE(obj);
-+    PL181State *s = PL181(obj);
++    mst_irq_state *s = MAINSTONE_FPGA(obj);
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
  
--    memory_region_init_io(&s->iomem, OBJECT(s), &pl181_ops, s, "pl181", 0x1000);
-+    memory_region_init_io(&s->iomem, obj, &pl181_ops, s, "pl181", 0x1000);
+     s->pcmcia0 = MST_PCMCIAx_READY | MST_PCMCIAx_nCD;
+     s->pcmcia1 = MST_PCMCIAx_READY | MST_PCMCIAx_nCD;
+@@ -213,10 +214,9 @@ static int mst_fpga_init(SysBusDevice *sbd)
+     /* alloc the external 16 irqs */
+     qdev_init_gpio_in(dev, mst_fpga_set_irq, MST_NUM_IRQS);
+ 
+-    memory_region_init_io(&s->iomem, OBJECT(s), &mst_fpga_ops, s,
++    memory_region_init_io(&s->iomem, obj, &mst_fpga_ops, s,
+                           "fpga", 0x00100000);
      sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq[0]);
-     sysbus_init_irq(sbd, &s->irq[1]);
-     qdev_init_gpio_out(dev, s->cardstatus, 2);
-+}
-+
-+static void pl181_realize(DeviceState *dev, Error **errp)
-+{
-+    PL181State *s = PL181(dev);
-+    DriveInfo *dinfo;
-+
-     /* FIXME use a qdev drive property instead of drive_get_next() */
-     dinfo = drive_get_next(IF_SD);
-     s->card = sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, false);
-     if (s->card == NULL) {
--        return -1;
-+        error_setg(errp, "sd_init failed");
-     }
--
 -    return 0;
  }
  
- static void pl181_class_init(ObjectClass *klass, void *data)
+ static VMStateDescription vmstate_mst_fpga_regs = {
+@@ -245,9 +245,7 @@ static VMStateDescription vmstate_mst_fpga_regs = {
+ static void mst_fpga_class_init(ObjectClass *klass, void *data)
  {
--    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(klass);
-     DeviceClass *k = DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+-    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
  
--    sdc->init = pl181_init;
-     k->vmsd = &vmstate_pl181;
-     k->reset = pl181_reset;
-     /* Reason: init() method uses drive_get_next() */
-     k->cannot_instantiate_with_device_add_yet = true;
-+    k->realize = pl181_realize;
+-    k->init = mst_fpga_init;
+     dc->desc = "Mainstone II FPGA";
+     dc->vmsd = &vmstate_mst_fpga_regs;
  }
- 
- static const TypeInfo pl181_info = {
-     .name          = TYPE_PL181,
+@@ -256,6 +254,7 @@ static const TypeInfo mst_fpga_info = {
+     .name          = TYPE_MAINSTONE_FPGA,
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(PL181State),
-+    .instance_init = pl181_init,
-     .class_init    = pl181_class_init,
+     .instance_size = sizeof(mst_irq_state),
++    .instance_init = mst_fpga_init,
+     .class_init    = mst_fpga_class_init,
  };
  
 -- 

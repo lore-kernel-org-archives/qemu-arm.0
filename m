@@ -1,65 +1,66 @@
-Received: by 10.25.27.66 with SMTP id b63csp2316738lfb;
-        Tue, 7 Jun 2016 20:50:35 -0700 (PDT)
-X-Received: by 10.55.119.66 with SMTP id s63mr2732420qkc.169.1465357835557;
-        Tue, 07 Jun 2016 20:50:35 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp2344945lfb;
+        Tue, 7 Jun 2016 22:31:47 -0700 (PDT)
+X-Received: by 10.140.136.16 with SMTP id 16mr3064250qhi.25.1465363907304;
+        Tue, 07 Jun 2016 22:31:47 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t38si15954217qgt.91.2016.06.07.20.50.35
+        by mx.google.com with ESMTPS id a15si1071287qge.63.2016.06.07.22.31.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Jun 2016 20:50:35 -0700 (PDT)
+        Tue, 07 Jun 2016 22:31:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
+       dkim=fail (test mode) header.i=@aj.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54321 helo=lists.gnu.org)
+Received: from localhost ([::1]:54590 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAUVm-0008TM-UT
-	for alex.bennee@linaro.org; Tue, 07 Jun 2016 23:50:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36396)
+	id 1bAW5i-0003Up-OV
+	for alex.bennee@linaro.org; Wed, 08 Jun 2016 01:31:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56341)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAUVA-0007xY-5u
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 23:49:57 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bAW5d-0003UZ-TH
+	for qemu-arm@nongnu.org; Wed, 08 Jun 2016 01:31:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bAUV5-0007ai-6t
-	for qemu-arm@nongnu.org; Tue, 07 Jun 2016 23:49:55 -0400
-Received: from m12-13.163.com ([220.181.12.13]:35432)
+	(envelope-from <andrew@aj.id.au>) id 1bAW5Z-0004Ev-Tv
+	for qemu-arm@nongnu.org; Wed, 08 Jun 2016 01:31:41 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:41633
+	helo=homiemail-a19.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1bAUV4-0007aB-DF; Tue, 07 Jun 2016 23:49:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Subject:From:Message-ID:Date:MIME-Version; bh=ogdab
-	sT02NMf2qIZsssr7Ree81vunP2i3Lxz1aw+yss=; b=gABoEIiuSLlZBBcBY5p+T
-	pJfOiwEuQWRzFcOwfmU7DV/no/LuxIOL822XIEgkLfi3sJekzwHswtK9Op9DPjqp
-	dt4mBdW7wiLAzPDfO1PAtN7dd9JJgpZS6x9giocCqOiA/DjQtLTdEn7Zm4qKzrgy
-	tcfhlugosBUYj4O1LeOqDA=
-Received: from [192.168.31.184] (unknown [118.187.28.42])
-	by smtp9 (Coremail) with SMTP id DcCowABXVc6ylVdX_5wFAA--.194S2;
-	Wed, 08 Jun 2016 11:49:07 +0800 (CST)
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-References: <1465295683-11505-1-git-send-email-zxq_yx_007@163.com>
-	<57573D52.4090006@ilande.co.uk>
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-Message-ID: <575795AA.2050909@163.com>
-Date: Wed, 8 Jun 2016 11:48:58 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.1.0
-MIME-Version: 1.0
-In-Reply-To: <57573D52.4090006@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: DcCowABXVc6ylVdX_5wFAA--.194S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Zr1xCFWkWrWrurWDtF4kCrg_yoW8tw48pr
-	WfKF43Zr18JrWfuwnI9w4jqF15Xw1kGa4DGr4ayr18Wr1jvr13Ar1UurWrX34DXrykXF13
-	Jr1UJr9xC3WDArJanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jQxhLUUUUU=
-X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEBOCxlWBV0QFXQAAsY
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 220.181.12.13
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/17] some ARM platform QOM'ify
- work
+	(envelope-from <andrew@aj.id.au>)
+	id 1bAW5Z-0004DY-AQ; Wed, 08 Jun 2016 01:31:37 -0400
+Received: from homiemail-a19.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTP id 2871C604078;
+	Tue,  7 Jun 2016 22:31:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
+	:subject:from:reply-to:to:cc:date:in-reply-to:references
+	:content-type:mime-version; s=aj.id.au; bh=3b7hDoBEZz/mRjlJsQHRE
+	4gub1s=; b=MbcFi51/shVL19I5rcv2kwl0cebce+XF8W9AuyL1WzXer38BsYYV7
+	tOskfsnnvY1CGWyD+hkWPW4TbQCYTDhyGBSzB9B3dgP7LIUv+Z65hma75OiJHZT9
+	chVKgrbEomQRkSvQAZTesnSGy3MGz3z8eV8fMm6EDsjNqV5QAcyzq8=
+Received: from keelia (ppp203-122-213-247.static.internode.on.net
+	[203.122.213.247])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTPSA id 319F2604069; 
+	Tue,  7 Jun 2016 22:31:30 -0700 (PDT)
+Message-ID: <1465363881.16048.134.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 08 Jun 2016 15:01:21 +0930
+In-Reply-To: <CAFEAcA_Pseb+W6q-TjyZxsf+OuET=FpzNwck+72QpnY0iqxS6g@mail.gmail.com>
+References: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
+	<CAFEAcA_Pseb+W6q-TjyZxsf+OuET=FpzNwck+72QpnY0iqxS6g@mail.gmail.com>
+Organization: IBM OzLabs
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-Hobq0SFDGu2xSLU7AygK"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 69.163.253.7
+Subject: Re: [Qemu-arm] [PATCH] hw/timer: Add value matching support to
+ aspeed_timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,71 +72,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	zhaoshenglong@huawei.com
+Reply-To: andrew@aj.id.au
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7vVrwJtqlpYl
+X-TUID: hozRkrl1Kd0a
 
 
+--=-Hobq0SFDGu2xSLU7AygK
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-在 2016年06月08日 05:32, Mark Cave-Ayland 写道:
-> On 07/06/16 11:34, xiaoqiang zhao wrote:
->
->> This patch series QOM'ify ARM platform related devices.
->> Where we drop the sysbus init function if possible and use
->> instance_init and DeviceClass::realize function.
->>
->> xiaoqiang zhao (17):
->>    hw/i2c: QOM'ify bitbang_i2c.c
->>    hw/i2c: QOM'ify exynos4210_i2c.c
->>    hw/i2c: QOM'ify omap_i2c.c
->>    hw/i2c: QOM'ify versatile_i2c.c
->>    hw/gpio: QOM'ify mpc8xxx.c
->>    hw/gpio: QOM'ify omap_gpio.c
->>    hw/gpio: QOM'ify pl061.c
->>    hw/gpio: QOM'ify zaurus.c
->>    hw/misc: QOM'ify arm_l2x0.c
->>    hw/misc: QOM'ify eccmemctl.c
->>    hw/misc: QOM'ify exynos4210_pmu.c
->>    hw/misc: QOM'ify mst_fpga.c
->>    hw/misc: QOM'ify slavio_misc.c
->>    hw/dma: QOM'ify pxa2xx_dma.c
->>    hw/dma: QOM'ify sparc32_dma.c
->>    hw/dma: QOM'ify sun4m_iommu.c
->>    hw/sd: QOM'ify pl181.c
->>
->>   hw/dma/pxa2xx_dma.c      | 38 +++++++++++++++++-------------
->>   hw/dma/sparc32_dma.c     | 25 ++++++++++++--------
->>   hw/dma/sun4m_iommu.c     | 12 ++++------
->>   hw/gpio/mpc8xxx.c        | 20 +++++++++-------
->>   hw/gpio/omap_gpio.c      | 61 ++++++++++++++++++++++++------------------------
->>   hw/gpio/pl061.c          | 24 +++++++------------
->>   hw/gpio/zaurus.c         | 14 +++++------
->>   hw/i2c/bitbang_i2c.c     | 14 +++++------
->>   hw/i2c/exynos4210_i2c.c  | 13 +++++------
->>   hw/i2c/omap_i2c.c        | 44 ++++++++++++++++++++--------------
->>   hw/i2c/versatile_i2c.c   | 19 +++++----------
->>   hw/misc/arm_l2x0.c       | 11 ++++-----
->>   hw/misc/eccmemctl.c      | 25 +++++++++++++-------
->>   hw/misc/exynos4210_pmu.c | 11 ++++-----
->>   hw/misc/mst_fpga.c       | 13 +++++------
->>   hw/misc/slavio_misc.c    | 43 ++++++++++++++--------------------
->>   hw/sd/pl181.c            | 26 +++++++++++++--------
->>   17 files changed, 207 insertions(+), 206 deletions(-)
-> Patches 16 and 17 for sparc32_dma and sun4m_iommu are actually sun4m
-> SPARC rather than ARM devices, so while I don't mind if these go through
-> someone else's tree then please ensure that you also test
-> qemu-system-sparc thoroughly with these patches.
->
->
-> ATB,
->
-> Mark.
->
-I have tested with following cmdline:
+On Mon, 2016-06-06 at 15:01 +0100, Peter Maydell wrote:
+> On 27 May 2016 at 06:08, Andrew Jeffery <andrew@aj.id.au> wrote:
+> >=20
+> > Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=3Dy on the
+> > palmetto-bmc machine. Two match registers are provided for each timer.
+> >=20
+> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> > ---
+> >=20
+> > The change pulls out ptimer in favour of the regular timer infrastructu=
+re. As a
+> > consequence it implements the conversions between ticks and time which =
+feels a
+> > little tedious. Any comments there would be appreciated.
+> So what would you need from ptimer to be able to implement value
+> matching with it; or is ptimer just too far away from what this
+> timer device needs to make that worthwhile ?
 
-qemu-system-sparc -hda /home/hitmoon/debian_etch_sparc_small.qcow2
+I gave expanding the ptimer API some (quick) consideration. It feels
+like it might be a departure from "simple" and depending on your view a
+departure from "periodic"; though an interrupt for a given match value
+is at least periodic with respect to itself. In this case the hardware
+supports two match values, so if we add something to the ptimer API it
+would need to support an arbitrary number of values
+(ptimer_{add,del}_match(...)?). In this case the hardware counts down,
+but just as we're doing currently we can fix the values to give the
+right behaviour.
 
-default machine is SS-5 and guest is debian, It seems everything is ok!
+I guess the final thought was that you queried me on the #include
+"qemu/main-loop.h" in the original patch, and that moving away from
+ptimer would eliminate it.
+
+If we come up with an acceptable match value API for ptimer I can
+implement it and resend.
+
+Cheers,
+
+Andrew
+--=-Hobq0SFDGu2xSLU7AygK
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCgAGBQJXV62pAAoJEJ0dnzgO5LT5dsQQALXOb9Rqc6bbPPtO4Kzqv1ua
+uSjIs7GEzBSOm31ESwvLd7rPItApktBgA/eQ8NpetkpmUqVAvWLey3tzgLs7QQob
+lqF64oGZpDutAKW5dNh+j5fRqHdysnWMUH0g9L0igWVkYDWBM1HIBRCxtSycHwd5
+LouP21XeQQz4mMXvr6F3Is/MceJqohQjI/GULV4QyLieN3II15DJalhKj1iA/yD7
+a3JiKJHicLsHrSdItFb5xQeGe25HKkgcJawp3ifmWl49cFLsK3frewA8uUWpXrwG
+Od5ZxsKp4IQmSwRqIuoaZCKmixLELVU+c0dW1QPU/CdfPmT34ML/ILScD9okvl9i
+y4uESHRYWM/qjD7wMOwm3Tp0NrTbpSuW5vy7D1L48VUJvwv8HP0dCkYGuLrejgCC
+a4YBofrVeyIZXAiz6c9yEL6jXns8mVJ1sheYHTCYao1C7EEoYZgPp2nL1BS4EBg3
+j5W5M69Wy380M8tsrhHcG4yqgsJEFoDY6lXblegtwPerEmzBlAYtRY2WKy1HvrR4
++fg+1y7DE/332mdm568RhAtVr8vMyNF9HY0OPuTPoULKZoEJv0nir/ux5+XhA3X2
+rmp/MB2XG0qcTX9SU8YsbTdHMpGkq/57w/JUx2w2AdGBw98Q0cPmefZNBX50rXwK
+91N4c4OA0BJyW7yvA3Z3
+=kWIn
+-----END PGP SIGNATURE-----
+
+--=-Hobq0SFDGu2xSLU7AygK--
 

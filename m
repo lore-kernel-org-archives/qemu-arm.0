@@ -1,61 +1,61 @@
-Received: by 10.25.27.66 with SMTP id b63csp280642lfb;
-        Thu, 9 Jun 2016 05:07:57 -0700 (PDT)
-X-Received: by 10.55.126.7 with SMTP id z7mr9258550qkc.137.1465474077701;
-        Thu, 09 Jun 2016 05:07:57 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp294646lfb;
+        Thu, 9 Jun 2016 05:39:08 -0700 (PDT)
+X-Received: by 10.55.173.84 with SMTP id w81mr10037968qke.115.1465475948298;
+        Thu, 09 Jun 2016 05:39:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b188si3251409qhd.6.2016.06.09.05.07.57
+        by mx.google.com with ESMTPS id 76si3305342qgp.65.2016.06.09.05.39.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Jun 2016 05:07:57 -0700 (PDT)
+        Thu, 09 Jun 2016 05:39:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34224 helo=lists.gnu.org)
+Received: from localhost ([::1]:34355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bAykf-0002dl-0G
-	for alex.bennee@linaro.org; Thu, 09 Jun 2016 08:07:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56570)
+	id 1bAzEp-0000Tx-MS
+	for alex.bennee@linaro.org; Thu, 09 Jun 2016 08:39:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38143)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bAyka-0002bM-5I
-	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 08:07:53 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bAzEk-0000Sv-Tu
+	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 08:39:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bAykT-0002bQ-91
-	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 08:07:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54149)
+	(envelope-from <imammedo@redhat.com>) id 1bAzEe-0002ju-To
+	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 08:39:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46482)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1bAykT-0002bC-08; Thu, 09 Jun 2016 08:07:45 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1bAzEe-0002jp-KR; Thu, 09 Jun 2016 08:38:56 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0DA4CC0703B0;
-	Thu,  9 Jun 2016 12:07:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B24EA71091;
+	Thu,  9 Jun 2016 12:38:55 +0000 (UTC)
 Received: from igors-macbook-pro.local (ovpn-204-90.brq.redhat.com
 	[10.40.204.90])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u59C7ceV007370; Thu, 9 Jun 2016 08:07:39 -0400
-Date: Thu, 9 Jun 2016 14:07:35 +0200
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u59CcqIG025785; Thu, 9 Jun 2016 08:38:53 -0400
+Date: Thu, 9 Jun 2016 14:38:49 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20160609140735.535045d0@igors-macbook-pro.local>
-In-Reply-To: <20160608170315.GO18662@thinpad.lan.raisama.net>
+Message-ID: <20160609143849.1a72741d@igors-macbook-pro.local>
+In-Reply-To: <20160608164746.GM18662@thinpad.lan.raisama.net>
 References: <1465226212-254093-1-git-send-email-imammedo@redhat.com>
-	<1465226212-254093-11-git-send-email-imammedo@redhat.com>
-	<20160608170315.GO18662@thinpad.lan.raisama.net>
+	<1465226212-254093-9-git-send-email-imammedo@redhat.com>
+	<20160608164746.GM18662@thinpad.lan.raisama.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 09 Jun 2016 12:07:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 09 Jun 2016 12:38:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 10/10] pc: parse cpu features
- only once
+Subject: Re: [Qemu-arm] [PATCH 08/10] cpu: use CPUClass->parse_features() as
+ convertor to global properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,224 +72,316 @@ Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
 	pbonzini@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A+0P259Q/ELb
+X-TUID: rmlJjaMSeEn/
 
-On Wed, 8 Jun 2016 14:03:15 -0300
+On Wed, 8 Jun 2016 13:47:46 -0300
 Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-> On Mon, Jun 06, 2016 at 05:16:52PM +0200, Igor Mammedov wrote:
-> > considering that features are converted to
-> > global properties and global properties are
-> > automatically applied to every new instance
-> > of created CPU (at object_new() time), there
-> > is no point in parsing cpu_model string every
-> > time a CPU created.
-> > So move parsing outside CPU creation loop and
-> > do it only once.
-> > Parsing also should be done before any CPU is
-> > created so that features would affect the first
-> > CPU a well.
+> On Mon, Jun 06, 2016 at 05:16:50PM +0200, Igor Mammedov wrote:
+> > Currently CPUClass->parse_features() is used to parse
+> > -cpu features string and set properties on created CPU
+> > instances.
+> > 
+> > But considering that features specified by -cpu apply to
+> > every created CPU instance, it doesn't make sence to
+> > parse the same features string for every CPU created.
+> > It also makes every target that cares about parsing
+> > features string explicitly call CPUClass->parse_features()
+> > parser, which gets in a way if we consider using
+> > generic device_add for CPU hotplug as device_add
+> > has not a clue about CPU specific hooks.
+> > 
+> > Turns out we can use global properties mechanism to set
+> > properties on every created CPU instance for a given
+> > type. That way it's possible to convert CPU features
+> > into a set of global properties for CPU type specified
+> > by -cpu cpu_model and common Device.device_post_init()
+> > will apply them to CPU of given type automatically
+> > regardless whether it's manually created CPU or CPU
+> > created with help of device_add.
 > > 
 > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > > ---
-> >  hw/i386/pc.c      | 37 ++++++++++++++++++++++++++++---------
-> >  target-i386/cpu.c | 44 --------------------------------------------
-> >  target-i386/cpu.h |  1 -
-> >  3 files changed, 28 insertions(+), 54 deletions(-)
+> > This patch only make CPUClass->parse_features()
+> > a global properties convertor and follow up patches
+> > will switch individual users to new behaviour
+> 
+> Considering that we won't fix all callers to not call it multiple
+> times in the same series, can we add TODO notes to the
+> ->parse_features() callers that are still need to be fixed?
+the only callers left that aren't fixed after this series are
+cpu_init() callers.
+The rest are taken care of by the last 2 patches.
+
+> 
+> Additional comments (and TODO notes suggestions) below:
+> 
+> > ---
+> >  hw/arm/virt.c     |  7 ++++---
+> >  include/qom/cpu.h |  2 +-
+> >  qom/cpu.c         | 29 +++++++++++++++++------------
+> >  target-i386/cpu.c | 30 ++++++++++++++++++++----------
+> >  4 files changed, 42 insertions(+), 26 deletions(-)
 > > 
-> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> > index c48322b..0331e6d 100644
-> > --- a/hw/i386/pc.c
-> > +++ b/hw/i386/pc.c
-> > @@ -1041,21 +1041,17 @@ void pc_acpi_smi_interrupt(void *opaque,
-> > int irq, int level) }
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index e77ed88..473e439 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -1193,6 +1193,7 @@ static void machvirt_init(MachineState
+> > *machine) 
+> >      for (n = 0; n < smp_cpus; n++) {
+> >          ObjectClass *oc = cpu_class_by_name(TYPE_ARM_CPU,
+> > cpustr[0]);
+> > +        const char *typename = object_class_get_name(oc);
+> >          CPUClass *cc = CPU_CLASS(oc);
+> >          Object *cpuobj;
+> >          Error *err = NULL;
+> > @@ -1202,10 +1203,10 @@ static void machvirt_init(MachineState
+> > *machine) error_report("Unable to find CPU definition");
+> >              exit(1);
+> >          }
+> > -        cpuobj = object_new(object_class_get_name(oc));
+> > +        /* convert -smp CPU options specified by the user into
+> > global props */
+> > +        cc->parse_features(typename, cpuopts, &err);
+> 
+> /*TODO: call cc->parse_features() only once */
+I'd not add TODO here as it's done by the next patch.
+
+> 
+> > +        cpuobj = object_new(typename);
+> >  
+> > -        /* Handle any CPU options specified by the user */
+> > -        cc->parse_features(CPU(cpuobj), cpuopts, &err);
+> >          g_free(cpuopts);
+> >          if (err) {
+> >              error_report_err(err);
+> > diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> > index 32f3af3..cacb100 100644
+> > --- a/include/qom/cpu.h
+> > +++ b/include/qom/cpu.h
+> > @@ -134,7 +134,7 @@ typedef struct CPUClass {
+> >      /*< public >*/
+> >  
+> >      ObjectClass *(*class_by_name)(const char *cpu_model);
+> > -    void (*parse_features)(CPUState *cpu, char *str, Error **errp);
+> > +    void (*parse_features)(const char *typename, char *str, Error
+> > **errp); 
+> >      void (*reset)(CPUState *cpu);
+> >      int reset_dump_flags;
+> > diff --git a/qom/cpu.c b/qom/cpu.c
+> > index 751e992..f3e3c02 100644
+> > --- a/qom/cpu.c
+> > +++ b/qom/cpu.c
+> > @@ -28,6 +28,7 @@
+> >  #include "exec/log.h"
+> >  #include "qemu/error-report.h"
+> >  #include "sysemu/sysemu.h"
+> > +#include "hw/qdev-properties.h"
+> >  
+> >  bool cpu_exists(int64_t id)
+> >  {
+> > @@ -46,7 +47,7 @@ bool cpu_exists(int64_t id)
+> >  CPUState *cpu_generic_init(const char *typename, const char
+> > *cpu_model) {
+> >      char *str, *name, *featurestr;
+> > -    CPUState *cpu;
+> > +    CPUState *cpu = NULL;
+> >      ObjectClass *oc;
+> >      CPUClass *cc;
+> >      Error *err = NULL;
+> > @@ -60,16 +61,15 @@ CPUState *cpu_generic_init(const char
+> > *typename, const char *cpu_model) return NULL;
+> >      }
+> >  
+> > -    cpu = CPU(object_new(object_class_get_name(oc)));
+> > -    cc = CPU_GET_CLASS(cpu);
+> > -
+> > +    cc = CPU_CLASS(oc);
+> >      featurestr = strtok(NULL, ",");
+> > -    cc->parse_features(cpu, featurestr, &err);
+> > +    cc->parse_features(object_class_get_name(oc), featurestr,
+> > &err);
+> 
+> /*TODO: all callers of cpu_generic_init() need to be converted to
+>  * call parse_features() only once, before calling cpu_generic_init().
+>  */
+> 
+> >      g_free(str);
+> >      if (err != NULL) {
+> >          goto out;
+> >      }
+> >  
+> > +    cpu = CPU(object_new(object_class_get_name(oc)));
+> >      object_property_set_bool(OBJECT(cpu), true, "realized", &err);
+> >  
+> >  out:
+> > @@ -282,25 +282,29 @@ static ObjectClass
+> > *cpu_common_class_by_name(const char *cpu_model) return NULL;
 > >  }
 > >  
-> > -static X86CPU *pc_new_cpu(const char *cpu_model, int64_t apic_id,
-> > +static X86CPU *pc_new_cpu(const char *typename, int64_t apic_id,
-> >                            Error **errp)
+> > -static void cpu_common_parse_features(CPUState *cpu, char
+> > *features, +static void cpu_common_parse_features(const char
+> > *typename, char *features, Error **errp)
 > >  {
-> >      X86CPU *cpu = NULL;
-> >      Error *local_err = NULL;
-> >  
-> > -    cpu = cpu_x86_create(cpu_model, &local_err);
-> > -    if (local_err != NULL) {
-> > -        goto out;
-> > -    }
-> > +    cpu = X86_CPU(object_new(typename));
-> 
-> Nice. :)
-> 
-> >  
-> >      object_property_set_int(OBJECT(cpu), apic_id, "apic-id",
-> > &local_err); object_property_set_bool(OBJECT(cpu), true,
-> > "realized", &local_err); 
-> > -out:
-> >      if (local_err) {
-> >          error_propagate(errp, local_err);
-> >          object_unref(OBJECT(cpu));
-> > @@ -1067,7 +1063,8 @@ out:
-> >  void pc_hot_add_cpu(const int64_t id, Error **errp)
-> >  {
-> >      X86CPU *cpu;
-> > -    MachineState *machine = MACHINE(qdev_get_machine());
-> > +    ObjectClass *oc;
-> > +    PCMachineState *pcms = PC_MACHINE(qdev_get_machine());
-> >      int64_t apic_id = x86_cpu_apic_id_from_index(id);
-> >      Error *local_err = NULL;
-> >  
-> > @@ -1095,7 +1092,9 @@ void pc_hot_add_cpu(const int64_t id, Error
-> > **errp) return;
-> >      }
-> >  
-> > -    cpu = pc_new_cpu(machine->cpu_model, apic_id, &local_err);
-> > +    assert(pcms->possible_cpus->cpus[0].cpu); /* BSP is always
-> > present */
-> > +    oc =
-> > OBJECT_CLASS(CPU_GET_CLASS(pcms->possible_cpus->cpus[0].cpu));
-> 
-> The same pattern will probably repeat in other machines. I
-> wouldn't mind adding a new MachineState::cpu_type field, as we
-> already have MachineState::cpu_model.
-> 
-> MachineState::cpu_model could eventually go away if we move all
-> parse_features() calls to generic code.
-All of above should be done as one step i.e.
- add cpu_type + drop cpu_model
-When we are ready to call parsing from generic code but not now.
-
-For calling parsing from generic place, the only blocker is sparc
-target. 
-It needs to be converted to CPU subtypes + features=>properties,
-like hat you've done with x86. 
-
-> 
-> > +    cpu = pc_new_cpu(object_class_get_name(oc), apic_id,
-> > &local_err); if (local_err) {
-> >          error_propagate(errp, local_err);
-> >          return;
-> > @@ -1106,6 +1105,10 @@ void pc_hot_add_cpu(const int64_t id, Error
-> > **errp) void pc_cpus_init(PCMachineState *pcms)
-> >  {
-> >      int i, j;
-> > +    CPUClass *cc;
-> > +    ObjectClass *oc;
-> > +    const char *typename;
-> > +    gchar **model_pieces;
-> >      X86CPU *cpu = NULL;
-> >      MachineState *machine = MACHINE(pcms);
-> >  
-> > @@ -1118,6 +1121,22 @@ void pc_cpus_init(PCMachineState *pcms)
-> >  #endif
-> >      }
-> >  
-> > +    model_pieces = g_strsplit(machine->cpu_model, ",", 2);
-> > +    if (!model_pieces[0]) {
-> > +        error_report("Invalid/empty CPU model name");
-> > +        exit(1);
-> > +    }
+> >      char *featurestr; /* Single "key=value" string being parsed */
+> >      char *val;
+> > -    Error *err = NULL;
+> > +    static bool cpu_globals_initialized;
 > > +
-> > +    oc = cpu_class_by_name(TYPE_X86_CPU, model_pieces[0]);
-> > +    if (oc == NULL) {
-> > +        error_report("Unable to find CPU definition: %s",
-> > model_pieces[0]);
-> > +        exit(1);
-> > +    }
-> > +    typename = object_class_get_name(oc);
-> > +    cc = CPU_CLASS(oc);
-> > +    cc->parse_features(typename, model_pieces[1], &error_fatal);
-> > +    g_strfreev(model_pieces);
 > 
-> Can we move this to a generic function to be reused by other
-> machines?
-It could be generalized and reduce similar site in virt-arm 
-to 1 function. I'll do it on top of this series.
+> /*TODO: all callers of ->parse_features() need to be changed to
+>  * call it only once, so we can remove this check (or change it
+>  * to assert(!cpu_globals_initialized).
+>  * Current callers of ->parse_features() are:
+>  * - machvirt_init()
+>  * - cpu_generic_init()
+>  * - cpu_x86_create()
+>  */
+> 
+> As far as I can see, after applying the whole series, only
+> cpu_x86_create() will remain.
+Have you meant cpu_generic_init() ?  cpu_x86_create is removed
+in the last patch.
 
-> > +
-> >      /* Calculates the limit to CPU APIC ID values
-> >       *
-> >       * Limit for the APIC ID value, so that all
-> > @@ -1148,7 +1167,7 @@ void pc_cpus_init(PCMachineState *pcms)
-> >          }
+So I'd drop cpu_x86_create() and machvirt_init() from suggested
+comment.
+
+> 
+> > +    if (cpu_globals_initialized) {
+> > +        return;
+> > +    }
 > >  
-> >          if (i < smp_cpus) {
-> > -            cpu = pc_new_cpu(machine->cpu_model,
-> > x86_cpu_apic_id_from_index(i),
-> > +            cpu = pc_new_cpu(typename,
-> > x86_cpu_apic_id_from_index(i), &error_fatal);
-> >              pcms->possible_cpus->cpus[i].cpu = CPU(cpu);
-> >              object_unref(OBJECT(cpu));
+> >      featurestr = features ? strtok(features, ",") : NULL;
+> >  
+> >      while (featurestr) {
+> >          val = strchr(featurestr, '=');
+> >          if (val) {
+> > +            GlobalProperty *prop = g_new0(typeof(*prop), 1);
+> >              *val = 0;
+> >              val++;
+> > -            object_property_parse(OBJECT(cpu), val, featurestr,
+> > &err);
+> > -            if (err) {
+> > -                error_propagate(errp, err);
+> > -                return;
+> > -            }
+> > +            prop->driver = typename;
+> > +            prop->property = g_strdup(featurestr);
+> > +            prop->value = g_strdup(val);
+> > +            qdev_prop_register_global(prop);
+> >          } else {
+> >              error_setg(errp, "Expected key=value format, found
+> > %s.", featurestr);
+> > @@ -308,6 +312,7 @@ static void cpu_common_parse_features(CPUState
+> > *cpu, char *features, }
+> >          featurestr = strtok(NULL, ",");
+> >      }
+> > +    cpu_globals_initialized = true;
+> 
+> This will register globals multiple times if called with
+> "foo=x,bar".
+I fail to see how it could happen here.
+
+> Easier to just set cpu_globals_initialized=true
+> earlier, and report errors only on the first ->parse_features()
+> call?
+Agreed, I'll make it like this:
+
+    if (cpu_globals_initialized) {
+        return;
+    }
+    cpu_globals_initialized = true;
+ 
+> (The same comment applies to x86_cpu_parse_featurestr() below)
+> 
+> >  }
+> >  
+> >  static void cpu_common_realizefn(DeviceState *dev, Error **errp)
 > > diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> > index 43b22e6..c633579 100644
+> > index 31e5e6f..43b22e6 100644
 > > --- a/target-i386/cpu.c
 > > +++ b/target-i386/cpu.c
-> > @@ -2211,50 +2211,6 @@ static void x86_cpu_load_def(X86CPU *cpu,
-> > X86CPUDefinition *def, Error **errp) 
+> > @@ -1950,12 +1950,16 @@ static FeatureWordArray minus_features =
+> > { 0 }; 
+> >  /* Parse "+feature,-feature,feature=foo" CPU feature string
+> >   */
+> > -static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
+> > +static void x86_cpu_parse_featurestr(const char *typename, char
+> > *features, Error **errp)
+> >  {
+> > -    X86CPU *cpu = X86_CPU(cs);
+> >      char *featurestr; /* Single 'key=value" string being parsed */
+> >      Error *local_err = NULL;
+> > +    static bool cpu_globals_initialized;
+> > +
+> > +    if (cpu_globals_initialized) {
+> > +        return;
+> > +    }
+> >  
+> >      if (!features) {
+> >          return;
+> > @@ -1967,6 +1971,7 @@ static void x86_cpu_parse_featurestr(CPUState
+> > *cs, char *features, const char *name;
+> >          const char *val = NULL;
+> >          char *eq = NULL;
+> > +        GlobalProperty *prop;
+> >  
+> >          /* Compatibility syntax: */
+> >          if (featurestr[0] == '+') {
+> > @@ -2019,12 +2024,14 @@ static void
+> > x86_cpu_parse_featurestr(CPUState *cs, char *features, name =
+> > "tsc-frequency"; }
+> >  
+> > -        object_property_parse(OBJECT(cpu), val, name, &local_err);
+> > -        if (local_err) {
+> > -            error_propagate(errp, local_err);
+> > -            return;
+> > -        }
+> > +        prop = g_new0(typeof(*prop), 1);
+> > +        prop->driver = typename;
+> > +        prop->property = g_strdup(name);
+> > +        prop->value = g_strdup(val);
+> > +        qdev_prop_register_global(prop);
+> >      }
+> > +
+> > +    cpu_globals_initialized = true;
 > >  }
 > >  
-> > -X86CPU *cpu_x86_create(const char *cpu_model, Error **errp)
-> > -{
-> > -    X86CPU *cpu = NULL;
-> > -    ObjectClass *oc;
-> > -    CPUClass *cc;
-> > -    gchar **model_pieces;
-> > -    char *name, *features;
-> > -    Error *error = NULL;
-> > -    const char *typename;
-> > -
-> > -    model_pieces = g_strsplit(cpu_model, ",", 2);
-> > -    if (!model_pieces[0]) {
-> > -        error_setg(&error, "Invalid/empty CPU model name");
-> > -        goto out;
-> > -    }
-> > -    name = model_pieces[0];
-> > -    features = model_pieces[1];
-> > -
-> > -    oc = x86_cpu_class_by_name(name);
-> > -    if (oc == NULL) {
-> > -        error_setg(&error, "Unable to find CPU definition: %s",
-> > name);
-> > -        goto out;
-> > -    }
-> > -    cc = CPU_CLASS(oc);
-> > -    typename = object_class_get_name(oc);
-> > -
-> > -    cc->parse_features(typename, features, &error);
-> > -    cpu = X86_CPU(object_new(typename));
-> > -    if (error) {
-> > -        goto out;
-> > -    }
-> > -
-> > -out:
-> > -    if (error != NULL) {
-> > -        error_propagate(errp, error);
-> > -        if (cpu) {
-> > -            object_unref(OBJECT(cpu));
-> > -            cpu = NULL;
-> > -        }
-> > -    }
-> > -    g_strfreev(model_pieces);
-> > -    return cpu;
-> > -}
-> 
-> Nice. :)
-> 
-> > -
-> >  X86CPU *cpu_x86_init(const char *cpu_model)
-> >  {
-> >      return X86_CPU(cpu_generic_init(TYPE_X86_CPU, cpu_model));
-> > diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-> > index a257c53..a9a3b87 100644
-> > --- a/target-i386/cpu.h
-> > +++ b/target-i386/cpu.h
-> > @@ -1227,7 +1227,6 @@ void x86_cpu_exec_enter(CPUState *cpu);
-> >  void x86_cpu_exec_exit(CPUState *cpu);
+> >  /* Print all cpuid feature names in featureset
+> > @@ -2208,9 +2215,11 @@ X86CPU *cpu_x86_create(const char
+> > *cpu_model, Error **errp) {
+> >      X86CPU *cpu = NULL;
+> >      ObjectClass *oc;
+> > +    CPUClass *cc;
+> >      gchar **model_pieces;
+> >      char *name, *features;
+> >      Error *error = NULL;
+> > +    const char *typename;
 > >  
-> >  X86CPU *cpu_x86_init(const char *cpu_model);
-> > -X86CPU *cpu_x86_create(const char *cpu_model, Error **errp);
-> >  int cpu_x86_exec(CPUState *cpu);
-> >  void x86_cpu_list(FILE *f, fprintf_function cpu_fprintf);
-> >  int cpu_x86_support_mca_broadcast(CPUX86State *env);
+> >      model_pieces = g_strsplit(cpu_model, ",", 2);
+> >      if (!model_pieces[0]) {
+> > @@ -2225,10 +2234,11 @@ X86CPU *cpu_x86_create(const char
+> > *cpu_model, Error **errp) error_setg(&error, "Unable to find CPU
+> > definition: %s", name); goto out;
+> >      }
+> > +    cc = CPU_CLASS(oc);
+> > +    typename = object_class_get_name(oc);
+> >  
+> > -    cpu = X86_CPU(object_new(object_class_get_name(oc)));
+> > -
+> > -    x86_cpu_parse_featurestr(CPU(cpu), features, &error);
+> > +    cc->parse_features(typename, features, &error);
+> 
+> /*TODO: call cc->parse_features() only once, before calling
+> cpu_x86_create() */
+ditto, I'd not add TODO here as it's done by a following patch.
+
+> 
+> > +    cpu = X86_CPU(object_new(typename));
+> >      if (error) {
+> >          goto out;
+> >      }
 > > -- 
 > > 1.8.3.1
 > > 

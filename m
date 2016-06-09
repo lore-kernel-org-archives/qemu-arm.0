@@ -1,56 +1,55 @@
-Received: by 10.25.27.66 with SMTP id b63csp443032lfb;
-        Thu, 9 Jun 2016 10:48:02 -0700 (PDT)
-X-Received: by 10.200.49.248 with SMTP id i53mr11285539qte.49.1465494482690;
-        Thu, 09 Jun 2016 10:48:02 -0700 (PDT)
+Received: by 10.25.27.66 with SMTP id b63csp444959lfb;
+        Thu, 9 Jun 2016 10:52:58 -0700 (PDT)
+X-Received: by 10.55.21.170 with SMTP id 42mr11247003qkv.159.1465494778559;
+        Thu, 09 Jun 2016 10:52:58 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u83si3998939qkl.118.2016.06.09.10.48.02
+        by mx.google.com with ESMTPS id t79si4033652qgd.32.2016.06.09.10.52.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Jun 2016 10:48:02 -0700 (PDT)
+        Thu, 09 Jun 2016 10:52:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36119 helo=lists.gnu.org)
+Received: from localhost ([::1]:36140 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bB43m-0008KU-1r
-	for alex.bennee@linaro.org; Thu, 09 Jun 2016 13:48:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55704)
+	id 1bB48X-0003sk-TJ
+	for alex.bennee@linaro.org; Thu, 09 Jun 2016 13:52:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55838)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bB3UC-0000YF-KQ
-	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 13:11:17 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bB3UL-0000d7-OV
+	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 13:11:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bB3U6-0007Y8-85
-	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 13:11:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57605)
+	(envelope-from <imammedo@redhat.com>) id 1bB3UF-0007af-SZ
+	for qemu-arm@nongnu.org; Thu, 09 Jun 2016 13:11:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57678)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1bB3U6-0007Xy-0A; Thu, 09 Jun 2016 13:11:10 -0400
+	id 1bB3UF-0007aX-K7; Thu, 09 Jun 2016 13:11:19 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 97BB13F725;
-	Thu,  9 Jun 2016 17:11:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3E78F7AE91;
+	Thu,  9 Jun 2016 17:11:19 +0000 (UTC)
 Received: from Igors-MacBook-Pro.local.com (ovpn-204-90.brq.redhat.com
 	[10.40.204.90])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u59HB4rV031581; Thu, 9 Jun 2016 13:11:07 -0400
+	id u59HB4rZ031581; Thu, 9 Jun 2016 13:11:17 -0400
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Thu,  9 Jun 2016 19:10:58 +0200
-Message-Id: <1465492263-28472-2-git-send-email-imammedo@redhat.com>
+Date: Thu,  9 Jun 2016 19:11:02 +0200
+Message-Id: <1465492263-28472-6-git-send-email-imammedo@redhat.com>
 In-Reply-To: <1465492263-28472-1-git-send-email-imammedo@redhat.com>
 References: <1465492263-28472-1-git-send-email-imammedo@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 09 Jun 2016 17:11:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 09 Jun 2016 17:11:19 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 1/6] target-i386: cpu: consolidate calls of
- object_property_parse() in x86_cpu_parse_featurestr
+Subject: [Qemu-arm] [PATCH v2 5/6] arm: virt: parse cpu_model only once
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,119 +66,107 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
 	qemu-arm@nongnu.org, pbonzini@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pdCemTX4fw71
+X-TUID: QHrgsv0WFegL
 
-From: Eduardo Habkost <ehabkost@redhat.com>
+considering that features are converted to
+global properties and global properties are
+automatically applied to every new instance
+of created CPU (at object_new() time), there
+is no point in parsing cpu_model string every
+time a CPU created.
+So move parsing outside CPU creation loop and
+do it only once.
+Parsing also should be done before any CPU is
+created so that features would affect the first
+CPU a well.
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v1:
- - fix error handling in of +-feat, Igor Mammedov <imammedo@redhat.com>
- - rebase on top of
-    "target-i386: Remove xlevel & hv-spinlocks option fixups"
-v2:
- - move error_propagate() out of loop.
-       Eduardo Habkost <ehabkost@redhat.com>
----
- target-i386/cpu.c | 74 +++++++++++++++++++++++++++++++++----------------------
- 1 file changed, 45 insertions(+), 29 deletions(-)
+ hw/arm/virt.c | 42 +++++++++++++++++++++---------------------
+ qom/cpu.c     |  1 -
+ 2 files changed, 21 insertions(+), 22 deletions(-)
 
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index 0e6d342..947cf18 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -1965,43 +1965,59 @@ static void x86_cpu_parse_featurestr(CPUState *cs, char *features,
-     char *featurestr; /* Single 'key=value" string being parsed */
-     Error *local_err = NULL;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3519c9f..790680f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1113,6 +1113,10 @@ static void machvirt_init(MachineState *machine)
+     VirtGuestInfoState *guest_info_state = g_malloc0(sizeof *guest_info_state);
+     VirtGuestInfo *guest_info = &guest_info_state->info;
+     char **cpustr;
++    ObjectClass *oc;
++    const char *typename;
++    CPUClass *cc;
++    Error *err = NULL;
+     bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
  
--    featurestr = features ? strtok(features, ",") : NULL;
-+    if (!features) {
-+        return;
-+    }
-+
-+    for (featurestr = strtok(features, ",");
-+         featurestr  && !local_err;
-+         featurestr = strtok(NULL, ",")) {
-+        const char *name;
-+        const char *val = NULL;
-+        char *eq = NULL;
+     if (!cpu_model) {
+@@ -1196,27 +1200,24 @@ static void machvirt_init(MachineState *machine)
  
--    while (featurestr) {
--        char *val;
-+        /* Compatibility syntax: */
-         if (featurestr[0] == '+') {
-             add_flagname_to_bitmaps(featurestr + 1, plus_features, &local_err);
-+            continue;
-         } else if (featurestr[0] == '-') {
-             add_flagname_to_bitmaps(featurestr + 1, minus_features, &local_err);
--        } else if ((val = strchr(featurestr, '='))) {
--            *val = 0; val++;
--            feat2prop(featurestr);
--            if (!strcmp(featurestr, "tsc-freq")) {
--                int64_t tsc_freq;
--                char *err;
--                char num[32];
+     create_fdt(vbi);
+ 
+-    for (n = 0; n < smp_cpus; n++) {
+-        ObjectClass *oc = cpu_class_by_name(TYPE_ARM_CPU, cpustr[0]);
+-        const char *typename = object_class_get_name(oc);
+-        CPUClass *cc = CPU_CLASS(oc);
+-        Object *cpuobj;
+-        Error *err = NULL;
+-        char *cpuopts = g_strdup(cpustr[1]);
 -
--                tsc_freq = qemu_strtosz_suffix_unit(val, &err,
--                                               QEMU_STRTOSZ_DEFSUFFIX_B, 1000);
--                if (tsc_freq < 0 || *err) {
--                    error_setg(errp, "bad numerical value %s", val);
--                    return;
--                }
--                snprintf(num, sizeof(num), "%" PRId64, tsc_freq);
--                object_property_parse(OBJECT(cpu), num, "tsc-frequency",
--                                      &local_err);
--            } else {
--                object_property_parse(OBJECT(cpu), val, featurestr, &local_err);
--            }
-+            continue;
-+        }
-+
-+        eq = strchr(featurestr, '=');
-+        if (eq) {
-+            *eq++ = 0;
-+            val = eq;
-         } else {
--            feat2prop(featurestr);
--            object_property_parse(OBJECT(cpu), "on", featurestr, &local_err);
-+            val = "on";
-         }
--        if (local_err) {
--            error_propagate(errp, local_err);
--            return;
-+
-+        feat2prop(featurestr);
-+        name = featurestr;
-+
-+        /* Special case: */
-+        if (!strcmp(name, "tsc-freq")) {
-+            int64_t tsc_freq;
-+            char *err;
-+            char num[32];
-+
-+            tsc_freq = qemu_strtosz_suffix_unit(val, &err,
-+                                           QEMU_STRTOSZ_DEFSUFFIX_B, 1000);
-+            if (tsc_freq < 0 || *err) {
-+                error_setg(errp, "bad numerical value %s", val);
-+                return;
-+            }
-+            snprintf(num, sizeof(num), "%" PRId64, tsc_freq);
-+            val = num;
-+            name = "tsc-frequency";
-         }
--        featurestr = strtok(NULL, ",");
-+
-+        object_property_parse(OBJECT(cpu), val, name, &local_err);
+-        if (!oc) {
+-            error_report("Unable to find CPU definition");
+-            exit(1);
+-        }
+-        /* convert -smp CPU options specified by the user into global props */
+-        cc->parse_features(typename, cpuopts, &err);
+-        cpuobj = object_new(typename);
++    oc = cpu_class_by_name(TYPE_ARM_CPU, cpustr[0]);
++    if (!oc) {
++        error_report("Unable to find CPU definition");
++        exit(1);
++    }
++    typename = object_class_get_name(oc);
+ 
+-        g_free(cpuopts);
+-        if (err) {
+-            error_report_err(err);
+-            exit(1);
+-        }
++    /* convert -smp CPU options specified by the user into global props */
++    cc = CPU_CLASS(oc);
++    cc->parse_features(typename, cpustr[1], &err);
++    g_strfreev(cpustr);
++    if (err) {
++        error_report_err(err);
++        exit(1);
 +    }
 +
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-     }
- }
++    for (n = 0; n < smp_cpus; n++) {
++        Object *cpuobj = object_new(typename);
  
+         if (!vms->secure) {
+             object_property_set_bool(cpuobj, false, "has_el3", NULL);
+@@ -1247,7 +1248,6 @@ static void machvirt_init(MachineState *machine)
+ 
+         object_property_set_bool(cpuobj, true, "realized", NULL);
+     }
+-    g_strfreev(cpustr);
+     fdt_add_timer_nodes(vbi, gic_version);
+     fdt_add_cpu_nodes(vbi);
+     fdt_add_psci_node(vbi);
+diff --git a/qom/cpu.c b/qom/cpu.c
+index eee23db..1295f5b 100644
+--- a/qom/cpu.c
++++ b/qom/cpu.c
+@@ -296,7 +296,6 @@ static void cpu_common_parse_features(const char *typename, char *features,
+      * call it only once, so we can remove this check (or change it
+      * to assert(!cpu_globals_initialized).
+      * Current callers of ->parse_features() are:
+-     * - machvirt_init()
+      * - cpu_generic_init()
+      * - cpu_x86_create()
+      */
 -- 
 2.7.0
 

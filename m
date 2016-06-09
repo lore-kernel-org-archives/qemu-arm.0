@@ -1,121 +1,122 @@
-Received: by 10.25.27.66 with SMTP id b63csp405253lfb;
-        Thu, 9 Jun 2016 09:20:03 -0700 (PDT)
-X-Received: by 10.140.134.134 with SMTP id 128mr11150817qhg.63.1465489203678;
-        Thu, 09 Jun 2016 09:20:03 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 11si3772159qko.272.2016.06.09.09.20.03
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Jun 2016 09:20:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.27.66 with SMTP id b63csp462893lfb;
+        Thu, 9 Jun 2016 11:36:56 -0700 (PDT)
+X-Received: by 10.200.53.39 with SMTP id y36mr11308085qtb.92.1465497416323;
+        Thu, 09 Jun 2016 11:36:56 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 10si4118239qtc.51.2016.06.09.11.36.56
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 09 Jun 2016 11:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36412 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bB4p5-0005y9-LA
+	for alex.bennee@linaro.org; Thu, 09 Jun 2016 14:36:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50788)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bB4my-0004ib-Hm
+	for qemu-devel@nongnu.org; Thu, 09 Jun 2016 14:34:46 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bB4mw-0005LR-8Q
+	for qemu-devel@nongnu.org; Thu, 09 Jun 2016 14:34:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39166)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bB4mq-0005Bm-Ab; Thu, 09 Jun 2016 14:34:36 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B3FF48F4F9;
-	Thu,  9 Jun 2016 16:20:02 +0000 (UTC)
-Received: from hawk.localdomain (dhcp-1-122.brq.redhat.com [10.34.1.122])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u59GJxiS010816
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Thu, 9 Jun 2016 12:20:01 -0400
-Date: Thu, 9 Jun 2016 18:19:58 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, wei@redhat.com,
-        peter.maydell@linaro.org
-Subject: Re: [Qemu-devel] [PATCH 5/5] hw/arm/virt: create the 2.7 machine type
-Message-ID: <20160609161958.bqtgzrrwborhbccy@hawk.localdomain>
-References: <1465410291-2971-6-git-send-email-drjones@redhat.com>
- <8737omgxd8.fsf@linaro.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id 151ABA78D;
+	Thu,  9 Jun 2016 18:34:32 +0000 (UTC)
+Received: from localhost (vpn1-7-121.gru2.redhat.com [10.97.7.121])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u59IYVeM000322; Thu, 9 Jun 2016 14:34:31 -0400
+Date: Thu, 9 Jun 2016 15:34:30 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20160609183430.GC17952@thinpad.lan.raisama.net>
+References: <1465226212-254093-1-git-send-email-imammedo@redhat.com>
+	<1465226212-254093-4-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <8737omgxd8.fsf@linaro.org>
-User-Agent: Mutt/1.5.23.1 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Thu, 09 Jun 2016 16:20:02 +0000 (UTC)
-X-TUID: Mitiw15B88rN
+In-Reply-To: <1465226212-254093-4-git-send-email-imammedo@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 09 Jun 2016 18:34:32 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH 03/10] target-i386: cpu: move
+ xcc->kvm_required check to realize time
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk,
+	qemu-devel@nongnu.org, blauwirbel@gmail.com, qemu-arm@nongnu.org,
+	pbonzini@redhat.com, rth@twiddle.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IjZevRwqfme1
 
-On Thu, Jun 09, 2016 at 05:06:43PM +0100, Alex Bennée wrote:
+On Mon, Jun 06, 2016 at 05:16:45PM +0200, Igor Mammedov wrote:
+> it will allow to drop custom cpu_x86_init() and use
+> cpu_generic_init() insteadi, reducing cpu_x86_create()
+> to a simple 3-liner.
 > 
-> Andrew Jones <drjones@redhat.com> writes:
-> 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> 
-> 
-> I'm confused. These steps have introduced a bunch of boiler plate to set
-> the default virt machine type so we can introduce 2.7 which is an alias
-> of the existing 2.6? Wouldn't this be better of waiting until there is a
-> concrete difference or have I missed something subtle here?
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Eduardo Habkost <ehabkost@redhat.com>
 
-The concrete difference is the minor number; 7 != 6.
+This triggers an assert when trying to use -cpu host with TCG:
 
-Take a look at how hw/i386/pc and hw/ppc/spapr do this.
-I basically just stole from them.
+  # ./x86_64-softmmu/qemu-system-x86_64 -machine accel=tcg -cpu host -nographic
+  qemu-system-x86_64: /root/qemu/target-i386/cpu.c:1558: host_x86_cpu_initfn: Assertion `(kvm_allowed)' failed.
+  Aborted
 
-Now, on differences (besides the version); I'm trying to decide
-what warrants versioning. There's the obvious migrateable state,
-but what about changes to DT/ACPI? We've added NUMA info to the
-hardware description for 2.7, but there's no easy way to version
-that with the way we currently do it (like this series). Thoughts
-on that?
+I will squash the following fix in it:
 
-Thanks,
-drew
+diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+index 3f886a5..dcbfa0b 100644
+--- a/target-i386/cpu.c
++++ b/target-i386/cpu.c
+@@ -1555,16 +1555,17 @@ static void host_x86_cpu_initfn(Object *obj)
+     CPUX86State *env = &cpu->env;
+     KVMState *s = kvm_state;
+ 
+-    assert(kvm_enabled());
+-
+     /* We can't fill the features array here because we don't know yet if
+      * "migratable" is true or false.
+      */
+     cpu->host_features = true;
+ 
+-    env->cpuid_level = kvm_arch_get_supported_cpuid(s, 0x0, 0, R_EAX);
+-    env->cpuid_xlevel = kvm_arch_get_supported_cpuid(s, 0x80000000, 0, R_EAX);
+-    env->cpuid_xlevel2 = kvm_arch_get_supported_cpuid(s, 0xC0000000, 0, R_EAX);
++    /* If KVM is disabled, x86_cpu_realizefn() will report an error later */
++    if (kvm_enabled()) {
++        env->cpuid_level = kvm_arch_get_supported_cpuid(s, 0x0, 0, R_EAX);
++        env->cpuid_xlevel = kvm_arch_get_supported_cpuid(s, 0x80000000, 0, R_EAX);
++        env->cpuid_xlevel2 = kvm_arch_get_supported_cpuid(s, 0xC0000000, 0, R_EAX);
++    }
+ 
+     object_property_set_bool(OBJECT(cpu), true, "pmu", &error_abort);
+ }
 
-> 
-> > ---
-> >  hw/arm/virt.c | 20 ++++++++++++++++++--
-> >  1 file changed, 18 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 017c244a46f41..323ffd4689641 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -42,6 +42,7 @@
-> >  #include "sysemu/sysemu.h"
-> >  #include "sysemu/kvm.h"
-> >  #include "hw/boards.h"
-> > +#include "hw/compat.h"
-> >  #include "hw/loader.h"
-> >  #include "exec/address-spaces.h"
-> >  #include "qemu/bitops.h"
-> > @@ -1423,7 +1424,7 @@ static void machvirt_machine_init(void)
-> >  }
-> >  type_init(machvirt_machine_init);
-> >
-> > -static void virt_2_6_instance_init(Object *obj)
-> > +static void virt_2_7_instance_init(Object *obj)
-> >  {
-> >      VirtMachineState *vms = VIRT_MACHINE(obj);
-> >
-> > @@ -1456,7 +1457,22 @@ static void virt_2_6_instance_init(Object *obj)
-> >                                      "Valid values are 2, 3 and host", NULL);
-> >  }
-> >
-> > +static void virt_machine_2_7_options(MachineClass *mc)
-> > +{
-> > +}
-> > +DEFINE_VIRT_MACHINE_AS_LATEST(2, 7)
-> > +
-> > +#define VIRT_COMPAT_2_6 \
-> > +    HW_COMPAT_2_6
-> > +
-> > +static void virt_2_6_instance_init(Object *obj)
-> > +{
-> > +    virt_2_7_instance_init(obj);
-> > +}
-> > +
-> >  static void virt_machine_2_6_options(MachineClass *mc)
-> >  {
-> > +    virt_machine_2_7_options(mc);
-> > +    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
-> >  }
-> > -DEFINE_VIRT_MACHINE_AS_LATEST(2, 6)
-> > +DEFINE_VIRT_MACHINE(2, 6)
-> 
-> 
-> --
-> Alex Bennée
+-- 
+Eduardo

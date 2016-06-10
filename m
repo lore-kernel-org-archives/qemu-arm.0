@@ -1,55 +1,61 @@
-Received: by 10.25.85.209 with SMTP id j200csp108683lfb;
-        Fri, 10 Jun 2016 11:02:25 -0700 (PDT)
-X-Received: by 10.55.183.135 with SMTP id h129mr3221320qkf.105.1465581744775;
-        Fri, 10 Jun 2016 11:02:24 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp121666lfb;
+        Fri, 10 Jun 2016 11:33:03 -0700 (PDT)
+X-Received: by 10.140.169.10 with SMTP id p10mr3214918qhp.99.1465583583637;
+        Fri, 10 Jun 2016 11:33:03 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o34si6954635qtd.10.2016.06.10.11.02.24
+        by mx.google.com with ESMTPS id s67si7002504qkh.110.2016.06.10.11.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Jun 2016 11:02:24 -0700 (PDT)
+        Fri, 10 Jun 2016 11:33:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43732 helo=lists.gnu.org)
+Received: from localhost ([::1]:43832 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bBQlE-0007dR-8u
-	for alex.bennee@linaro.org; Fri, 10 Jun 2016 14:02:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55927)
+	id 1bBREt-0002KS-2r
+	for alex.bennee@linaro.org; Fri, 10 Jun 2016 14:33:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bBQQZ-0006bL-PS
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:09 -0400
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bBREl-0002J8-NQ
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 14:32:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bBQQV-0000RW-3H
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42933)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bBREh-0003QV-Gb
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 14:32:54 -0400
+Received: from chuckie.co.uk ([82.165.15.123]:40249
+	helo=s16892447.onlinehome-server.info)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1bBQQU-0000RK-Rs; Fri, 10 Jun 2016 13:40:59 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 62DCFC04D292;
-	Fri, 10 Jun 2016 17:40:58 +0000 (UTC)
-Received: from hawk.localdomain.com (dhcp-1-122.brq.redhat.com [10.34.1.122])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u5AHeVPb032552; Fri, 10 Jun 2016 13:40:56 -0400
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Date: Fri, 10 Jun 2016 19:40:21 +0200
-Message-Id: <1465580427-13596-11-git-send-email-drjones@redhat.com>
-In-Reply-To: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 10 Jun 2016 17:40:58 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH RFC 10/16] hw/ppc/spapr: don't use smp_cores,
- smp_threads
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bBREh-0003PM-9t; Fri, 10 Jun 2016 14:32:51 -0400
+Received: from host217-42-121-223.range217-42.btcentralplus.com
+	([217.42.121.223] helo=[192.168.1.65])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bBREa-00061d-7f; Fri, 10 Jun 2016 19:32:45 +0100
+To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+References: <1465226212-254093-1-git-send-email-imammedo@redhat.com>
+	<1465226212-254093-8-git-send-email-imammedo@redhat.com>
+	<20160608163011.GL18662@thinpad.lan.raisama.net>
+	<20160610115121.GG17952@thinpad.lan.raisama.net>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <575B07A1.4040606@ilande.co.uk>
+Date: Fri, 10 Jun 2016 19:32:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+	Icedove/38.8.0
+MIME-Version: 1.0
+In-Reply-To: <20160610115121.GG17952@thinpad.lan.raisama.net>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 217.42.121.223
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 07/10] target-sparc: cpu: use
+ sparc_cpu_parse_features() directly
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,78 +67,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
-	pbonzini@redhat.com, dgibson@redhat.com, imammedo@redhat.com,
-	david@gibson.dropbear.id.au
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, blauwirbel@gmail.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hOkkLZgUEsLC
+X-TUID: mJiIBGJy728m
 
-Use CPUState nr_cores,nr_threads and MachineState
-cores,threads instead.
+On 10/06/16 12:51, Eduardo Habkost wrote:
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- hw/ppc/spapr.c      | 9 +++++----
- hw/ppc/spapr_rtas.c | 2 +-
- 2 files changed, 6 insertions(+), 5 deletions(-)
+> On Wed, Jun 08, 2016 at 01:30:11PM -0300, Eduardo Habkost wrote:
+>> On Mon, Jun 06, 2016 at 05:16:49PM +0200, Igor Mammedov wrote:
+>>> make SPARC target use sparc_cpu_parse_features() directly
+>>> so it won't get in the way of switching other propertified
+>>> targets to handling features as global properties.
+>>>
+>>> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+>>
+>> I would like to apply this to the x86 tree, to allow the
+>> remaining patches to be applied. May I get an Acked-by from the
+>> SPARC maintainers?
+> 
+> I hear no objections, I will queue it on x86-next.
 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 063664234106e..f78276bb4b164 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -35,7 +35,6 @@
- #include "net/net.h"
- #include "sysemu/device_tree.h"
- #include "sysemu/block-backend.h"
--#include "sysemu/cpus.h"
- #include "sysemu/kvm.h"
- #include "sysemu/device_tree.h"
- #include "kvm_ppc.h"
-@@ -603,7 +602,7 @@ static void spapr_populate_cpu_dt(CPUState *cs, void *fdt, int offset,
-     uint32_t cpufreq = kvm_enabled() ? kvmppc_get_clockfreq() : 1000000000;
-     uint32_t page_sizes_prop[64];
-     size_t page_sizes_prop_size;
--    uint32_t vcpus_per_socket = smp_threads * smp_cores;
-+    uint32_t vcpus_per_socket = cs->nr_cores * cs->nr_threads;
-     uint32_t pft_size_prop[] = {0, cpu_to_be32(spapr->htab_shift)};
- 
-     /* Note: we keep CI large pages off for now because a 64K capable guest
-@@ -1774,7 +1773,7 @@ static void ppc_spapr_init(MachineState *machine)
-     /* Set up Interrupt Controller before we create the VCPUs */
-     spapr->icp = xics_system_init(machine,
-                                   DIV_ROUND_UP(max_cpus * kvmppc_smt_threads(),
--                                               smp_threads),
-+                                               machine->threads),
-                                   XICS_IRQS, &error_fatal);
- 
-     if (smc->dr_lmb_enabled) {
-@@ -2268,9 +2267,11 @@ static HotplugHandler *spapr_get_hotpug_handler(MachineState *machine,
- 
- static unsigned spapr_cpu_index_to_socket_id(unsigned cpu_index)
- {
-+    CPUState *cs = first_cpu;
-+
-     /* Allocate to NUMA nodes on a "socket" basis (not that concept of
-      * socket means much for the paravirtualized PAPR platform) */
--    return cpu_index / smp_threads / smp_cores;
-+    return cpu_index / cs->nr_cores / cs->nr_threads;
- }
- 
- static void spapr_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
-index 43e2c684fda8d..3fdfbb01a20dd 100644
---- a/hw/ppc/spapr_rtas.c
-+++ b/hw/ppc/spapr_rtas.c
-@@ -742,7 +742,7 @@ int spapr_rtas_device_tree_setup(void *fdt, hwaddr rtas_addr,
-     lrdr_capacity[1] = cpu_to_be32(max_hotplug_addr & 0xffffffff);
-     lrdr_capacity[2] = 0;
-     lrdr_capacity[3] = cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE);
--    lrdr_capacity[4] = cpu_to_be32(max_cpus/smp_threads);
-+    lrdr_capacity[4] = cpu_to_be32(max_cpus / machine->threads);
-     ret = qemu_fdt_setprop(fdt, "/rtas", "ibm,lrdr-capacity", lrdr_capacity,
-                      sizeof(lrdr_capacity));
-     if (ret < 0) {
--- 
-2.4.11
+Given that I've never used CPU options for SPARC, this is probably okay
+as long the standard sun4m/sun4u guests fire up with the same command lines.
+
+Apologies for the delay on reviewing, my QEMU development is relegated
+to time outside of work and the recent breakage on PPC/SPARC has eaten
+huge amounts of my available time over the past week :/
+
+
+ATB,
+
+Mark.
 

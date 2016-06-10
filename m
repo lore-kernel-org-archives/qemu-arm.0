@@ -1,54 +1,54 @@
-Received: by 10.25.85.209 with SMTP id j200csp108671lfb;
-        Fri, 10 Jun 2016 11:02:23 -0700 (PDT)
-X-Received: by 10.200.47.212 with SMTP id m20mr3139536qta.53.1465581743671;
-        Fri, 10 Jun 2016 11:02:23 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp108683lfb;
+        Fri, 10 Jun 2016 11:02:25 -0700 (PDT)
+X-Received: by 10.55.183.135 with SMTP id h129mr3221320qkf.105.1465581744775;
+        Fri, 10 Jun 2016 11:02:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s140si6935939qhb.21.2016.06.10.11.02.23
+        by mx.google.com with ESMTPS id o34si6954635qtd.10.2016.06.10.11.02.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Jun 2016 11:02:23 -0700 (PDT)
+        Fri, 10 Jun 2016 11:02:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43731 helo=lists.gnu.org)
+Received: from localhost ([::1]:43732 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bBQlD-0007ci-41
-	for alex.bennee@linaro.org; Fri, 10 Jun 2016 14:02:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56138)
+	id 1bBQlE-0007dR-8u
+	for alex.bennee@linaro.org; Fri, 10 Jun 2016 14:02:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55927)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bBQQq-0006rP-2J
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:23 -0400
+	(envelope-from <drjones@redhat.com>) id 1bBQQZ-0006bL-PS
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bBQQj-0000WN-V3
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40787)
+	(envelope-from <drjones@redhat.com>) id 1bBQQV-0000RW-3H
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 13:41:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42933)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1bBQQj-0000W5-PP; Fri, 10 Jun 2016 13:41:13 -0400
+	id 1bBQQU-0000RK-Rs; Fri, 10 Jun 2016 13:40:59 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 50833218D;
-	Fri, 10 Jun 2016 17:41:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 62DCFC04D292;
+	Fri, 10 Jun 2016 17:40:58 +0000 (UTC)
 Received: from hawk.localdomain.com (dhcp-1-122.brq.redhat.com [10.34.1.122])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u5AHeVPh032552; Fri, 10 Jun 2016 13:41:11 -0400
+	ESMTP id u5AHeVPb032552; Fri, 10 Jun 2016 13:40:56 -0400
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Date: Fri, 10 Jun 2016 19:40:27 +0200
-Message-Id: <1465580427-13596-17-git-send-email-drjones@redhat.com>
+Date: Fri, 10 Jun 2016 19:40:21 +0200
+Message-Id: <1465580427-13596-11-git-send-email-drjones@redhat.com>
 In-Reply-To: <1465580427-13596-1-git-send-email-drjones@redhat.com>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 10 Jun 2016 17:41:13 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 10 Jun 2016 17:40:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH RFC 16/16] sysemu/cpus: bye, bye smp_cores,
+Subject: [Qemu-arm] [PATCH RFC 10/16] hw/ppc/spapr: don't use smp_cores,
  smp_threads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -66,65 +66,73 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
 	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7X53Z1zlYoPo
+X-TUID: hOkkLZgUEsLC
 
-The smp_cores and smp_threads globals are no longer used.
-Vanish them.
+Use CPUState nr_cores,nr_threads and MachineState
+cores,threads instead.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/core/machine.c     |  2 --
- include/sysemu/cpus.h | 10 ----------
- vl.c                  |  2 --
- 3 files changed, 14 deletions(-)
+ hw/ppc/spapr.c      | 9 +++++----
+ hw/ppc/spapr_rtas.c | 2 +-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 5427924d4c911..fdd28e5786685 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -529,8 +529,6 @@ static void machine_pre_init(MachineState *ms)
-     };
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 063664234106e..f78276bb4b164 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -35,7 +35,6 @@
+ #include "net/net.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/block-backend.h"
+-#include "sysemu/cpus.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/device_tree.h"
+ #include "kvm_ppc.h"
+@@ -603,7 +602,7 @@ static void spapr_populate_cpu_dt(CPUState *cs, void *fdt, int offset,
+     uint32_t cpufreq = kvm_enabled() ? kvmppc_get_clockfreq() : 1000000000;
+     uint32_t page_sizes_prop[64];
+     size_t page_sizes_prop_size;
+-    uint32_t vcpus_per_socket = smp_threads * smp_cores;
++    uint32_t vcpus_per_socket = cs->nr_cores * cs->nr_threads;
+     uint32_t pft_size_prop[] = {0, cpu_to_be32(spapr->htab_shift)};
  
-     machine_set_smp_parameters(ms);
--    smp_cores   = ms->cores;
--    smp_threads = ms->threads;
-     max_cpus    = ms->maxcpus;
-     smp_cpus    = ms->cpus;
+     /* Note: we keep CI large pages off for now because a 64K capable guest
+@@ -1774,7 +1773,7 @@ static void ppc_spapr_init(MachineState *machine)
+     /* Set up Interrupt Controller before we create the VCPUs */
+     spapr->icp = xics_system_init(machine,
+                                   DIV_ROUND_UP(max_cpus * kvmppc_smt_threads(),
+-                                               smp_threads),
++                                               machine->threads),
+                                   XICS_IRQS, &error_fatal);
  
-diff --git a/include/sysemu/cpus.h b/include/sysemu/cpus.h
-index fe992a8946ed5..d3e19ca214564 100644
---- a/include/sysemu/cpus.h
-+++ b/include/sysemu/cpus.h
-@@ -27,16 +27,6 @@ void cpu_synchronize_all_post_init(void);
+     if (smc->dr_lmb_enabled) {
+@@ -2268,9 +2267,11 @@ static HotplugHandler *spapr_get_hotpug_handler(MachineState *machine,
  
- void qtest_clock_warp(int64_t dest);
+ static unsigned spapr_cpu_index_to_socket_id(unsigned cpu_index)
+ {
++    CPUState *cs = first_cpu;
++
+     /* Allocate to NUMA nodes on a "socket" basis (not that concept of
+      * socket means much for the paravirtualized PAPR platform) */
+-    return cpu_index / smp_threads / smp_cores;
++    return cpu_index / cs->nr_cores / cs->nr_threads;
+ }
  
--#ifndef CONFIG_USER_ONLY
--/* vl.c */
--extern int smp_cores;
--extern int smp_threads;
--#else
--/* *-user doesn't have configurable SMP topology */
--#define smp_cores   1
--#define smp_threads 1
--#endif
--
- void list_cpus(FILE *f, fprintf_function cpu_fprintf, const char *optarg);
- 
- #endif
-diff --git a/vl.c b/vl.c
-index 843b7a9dff753..e73c66364932c 100644
---- a/vl.c
-+++ b/vl.c
-@@ -155,8 +155,6 @@ int win2k_install_hack = 0;
- int singlestep = 0;
- int smp_cpus = 1;
- int max_cpus = 1;
--int smp_cores = 1;
--int smp_threads = 1;
- int acpi_enabled = 1;
- int no_hpet = 0;
- int fd_bootchk = 1;
+ static void spapr_machine_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+index 43e2c684fda8d..3fdfbb01a20dd 100644
+--- a/hw/ppc/spapr_rtas.c
++++ b/hw/ppc/spapr_rtas.c
+@@ -742,7 +742,7 @@ int spapr_rtas_device_tree_setup(void *fdt, hwaddr rtas_addr,
+     lrdr_capacity[1] = cpu_to_be32(max_hotplug_addr & 0xffffffff);
+     lrdr_capacity[2] = 0;
+     lrdr_capacity[3] = cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE);
+-    lrdr_capacity[4] = cpu_to_be32(max_cpus/smp_threads);
++    lrdr_capacity[4] = cpu_to_be32(max_cpus / machine->threads);
+     ret = qemu_fdt_setprop(fdt, "/rtas", "ibm,lrdr-capacity", lrdr_capacity,
+                      sizeof(lrdr_capacity));
+     if (ret < 0) {
 -- 
 2.4.11
 

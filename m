@@ -1,70 +1,70 @@
-Received: by 10.25.85.209 with SMTP id j200csp77039lfb;
-        Fri, 10 Jun 2016 09:42:36 -0700 (PDT)
-X-Received: by 10.140.93.97 with SMTP id c88mr2726938qge.64.1465576956321;
-        Fri, 10 Jun 2016 09:42:36 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp77862lfb;
+        Fri, 10 Jun 2016 09:44:40 -0700 (PDT)
+X-Received: by 10.200.42.152 with SMTP id b24mr2713347qta.35.1465577080567;
+        Fri, 10 Jun 2016 09:44:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b68si6740806qkc.44.2016.06.10.09.42.33
+        by mx.google.com with ESMTPS id t123si6758553qhe.9.2016.06.10.09.44.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Jun 2016 09:42:36 -0700 (PDT)
+        Fri, 10 Jun 2016 09:44:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:43378 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43388 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bBPVw-0007cQ-Mm
-	for alex.bennee@linaro.org; Fri, 10 Jun 2016 12:42:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42261)
+	id 1bBPY0-0001CK-1G
+	for alex.bennee@linaro.org; Fri, 10 Jun 2016 12:44:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42728)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bBPVr-0007aB-8t
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 12:42:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bBPXa-0000vS-QL
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 12:44:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bBPVm-00030u-UZ
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 12:42:26 -0400
-Received: from forward4p.cmail.yandex.net ([77.88.31.19]:34337)
+	(envelope-from <peter.maydell@linaro.org>) id 1bBPXU-0003cM-NT
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 12:44:13 -0400
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:33225)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1bBPVl-0002zd-Jz; Fri, 10 Jun 2016 12:42:22 -0400
-Received: from mxback6g.mail.yandex.net (mxback6g.mail.yandex.net
-	[77.88.29.167])
-	by forward4p.cmail.yandex.net (Yandex) with ESMTP id 37C8C20C43;
-	Fri, 10 Jun 2016 19:42:03 +0300 (MSK)
-Received: from web25g.yandex.ru (web25g.yandex.ru [95.108.253.234])
-	by mxback6g.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
-	jA4FVKpaYN-g24WlDxm; Fri, 10 Jun 2016 19:42:02 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1465576922; bh=Bs8slfZdrlogpRQQs5ShbJjxtJV2YqKkB0TQby2Zm58=;
-	h=X-Yandex-Sender-Uid:From:To:Cc:In-Reply-To:References:Subject:
-	MIME-Version:Message-Id:X-Mailer:Date:Content-Transfer-Encoding:
-	Content-Type;
-	b=co3zYuTtYmbaf4YwM3A449aLT8s2VpBzp0YmAR56096pVuACa7K1HICzK2qgB4NxA
-	9Z7Kgx4Ass0slPGwEXmfka1Pk/GS5/CGi7AY8aGT3+G1iBezWl/FdJ+BBWLW7Ly3YL
-	d4Iam3zS5UpdCClBWI5vgljCr1jETk88kDsGgPfY=
-Authentication-Results: mxback6g.mail.yandex.net; dkim=pass header.i=@yandex.ru
-X-Yandex-Suid-Status: 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0,
-	1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 0, 1 37377968
-X-Yandex-Sender-Uid: 15784356
-Received: by web25g.yandex.ru with HTTP;
-	Fri, 10 Jun 2016 19:42:02 +0300
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <CAFEAcA-UqUdkoM2abzNiVstLR9tO_SgaQBTjsm=QHt-Hr6xrzQ@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1bBPXU-0003c3-IQ
+	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 12:44:08 -0400
+Received: by mail-vk0-x22e.google.com with SMTP id d64so104965387vkb.0
+	for <qemu-arm@nongnu.org>; Fri, 10 Jun 2016 09:44:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=XRiIx/a9OoBy+6gcWLGWuPZFeWwNiL3F+bp3QBMyV/I=;
+	b=U+1a4yVtg4WkkqaIu9Nk48Id0v8JC2bBrwjgWy4OvPHPE9QRHDS/8D3vE3q0pRkM7S
+	emD4fekyM86U1QtgLnQ6s5EImNarOVAKdRbzFEand8/9aiqdLpE2Y81OEMsmmS3/DRVN
+	7IC4j5xOzwgN8oNOf/tmepcKidA14M5M4wxjc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=XRiIx/a9OoBy+6gcWLGWuPZFeWwNiL3F+bp3QBMyV/I=;
+	b=kDHjeEGEFTSuLmBjEqOY6nNuV9C3UenmbSnxAfPQpuMLwg15T3HAUWrWYrMkm4TsVt
+	N70VHYIBDtCjJC41OK6G8dBOHsnwIS1fsq9Hd/QTEuoKASh+ng2z4zZVhFea4kb/1FYm
+	aA+3biFOsGk7zmHJhk6n/t8xooRiapPmhHBHaz3gVB3OXu5qjGfl2TpHjCHS5QIfrvk9
+	mfWAHNZ8eFwgDs03T0YeBkzYdy94rxto77O3ht/FFFnzWZDRDaGFOJha4CEnyaU+58Y+
+	vdmaN59ERmy1zWwr2abuTyuIk6lBgGk0Ndr+F0Jn9vYvk/r73aG6sOJ8LOWSRSMDSGBw
+	ayQQ==
+X-Gm-Message-State: ALyK8tJJM7aCYN31Qzva+f65LKwa7k6P2+1otQdtU3ZF5sMAeezVJP6FF06sRwJUKoGuJX0x84KXNOeFzcqOpH+U
+X-Received: by 10.176.64.69 with SMTP id h63mr1206003uad.125.1465577048084;
+	Fri, 10 Jun 2016 09:44:08 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.97.68 with HTTP; Fri, 10 Jun 2016 09:43:48 -0700 (PDT)
+In-Reply-To: <4506161465576922@web25g.yandex.ru>
 References: <1465575999-3594234-1-git-send-email-afarallax@yandex.ru>
 	<1465575999-3594234-2-git-send-email-afarallax@yandex.ru>
 	<CAFEAcA-UqUdkoM2abzNiVstLR9tO_SgaQBTjsm=QHt-Hr6xrzQ@mail.gmail.com>
-MIME-Version: 1.0
-Message-Id: <4506161465576922@web25g.yandex.ru>
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Fri, 10 Jun 2016 19:42:02 +0300
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+	<4506161465576922@web25g.yandex.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jun 2016 17:43:48 +0100
+Message-ID: <CAFEAcA9wU2=jsfAqDOA=ZhOkAZ2wxmkYFhGDw=OwKFM6-04=tQ@mail.gmail.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 77.88.31.19
+X-Received-From: 2607:f8b0:400c:c05::22e
 Subject: Re: [Qemu-arm] [PATCH 1/2] Fix confusing argument names of
  do_unaligned_access() functions
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,24 +93,11 @@ Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>, Eduardo Habkost <ehabkost@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DdiIgBPhFVfR
+X-TUID: XPZsJjerRXGa
 
-What if I combine both patches into single one?
+On 10 June 2016 at 17:42, Sergey Sorokin <afarallax@yandex.ru> wrote:
+> What if I combine both patches into single one?
 
-10.06.2016, 19:33, "Peter Maydell" <peter.maydell@linaro.org>:
-> On 10 June 2016 at 17:26, Sergey Sorokin <afarallax@yandex.ru> wrote:
->> =C2=A0There are functions cpu_unaligned_access() and do_unaligned_acce=
-ss() that
->> =C2=A0are called with access type and mmu index arguments. But these a=
-rguments
->> =C2=A0are named 'is_write' and 'is_user' in their declarations.
->> =C2=A0The patch fixes the names to avoid a confusion.
->>
->> =C2=A0Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
->
-> If we're going to touch all of these then we have an enum type
-> we should be using instead of just 'int' for the old
-> is_write argument: MMUAccessType (defined in cpu-common.h).
->
-> thanks
-> -- PMM
+No particular objection.
+
+-- PMM

@@ -1,94 +1,200 @@
-Received: by 10.25.27.66 with SMTP id b63csp216572lfb;
-        Fri, 10 Jun 2016 03:35:45 -0700 (PDT)
-X-Received: by 10.140.235.131 with SMTP id g125mr1074087qhc.56.1465554945762;
-        Fri, 10 Jun 2016 03:35:45 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.27.66 with SMTP id b63csp219293lfb;
+        Fri, 10 Jun 2016 03:44:03 -0700 (PDT)
+X-Received: by 10.55.22.94 with SMTP id g91mr1082213qkh.101.1465555442942;
+        Fri, 10 Jun 2016 03:44:02 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s5si5901485qkc.169.2016.06.10.03.35.45
+        by mx.google.com with ESMTPS id 91si5941716qga.89.2016.06.10.03.44.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 Jun 2016 03:35:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 10 Jun 2016 03:44:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39649 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39706 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bBJmz-0006rw-5I
-	for alex.bennee@linaro.org; Fri, 10 Jun 2016 06:35:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44650)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bBJv0-0003oH-BL
+	for alex.bennee@linaro.org; Fri, 10 Jun 2016 06:44:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bBJmt-0006qL-H1
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 06:35:40 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bBJtj-0002pR-GS
+	for qemu-devel@nongnu.org; Fri, 10 Jun 2016 06:42:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bBJmn-0006n2-HN
-	for qemu-arm@nongnu.org; Fri, 10 Jun 2016 06:35:38 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:56395)
+	(envelope-from <peter.maydell@linaro.org>) id 1bBJtg-0000ff-Kg
+	for qemu-devel@nongnu.org; Fri, 10 Jun 2016 06:42:41 -0400
+Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:33100)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>)
-	id 1bBJmn-0006lS-9f; Fri, 10 Jun 2016 06:35:33 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Forcepoint Email with ESMTPS id 874E6730557DA;
-	Fri, 10 Jun 2016 11:35:26 +0100 (IST)
-Received: from [10.20.78.140] (10.20.78.140) by HHMAIL01.hh.imgtec.org
-	(10.100.10.21) with Microsoft SMTP Server id 14.3.294.0;
-	Fri, 10 Jun 2016 11:35:27 +0100
-Date: Fri, 10 Jun 2016 11:35:04 +0100
-From: "Maciej W. Rozycki" <macro@imgtec.com>
-To: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
-In-Reply-To: <EF5FA6C3467F85449672C3E735957B85916B85AC@BADAG02.ba.imgtec.org>
-Message-ID: <alpine.DEB.2.00.1606101132270.10382@tp.orcam.me.uk>
-References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
-	<1463407965-19733-9-git-send-email-aleksandar.markovic@rt-rk.com>,
-	<alpine.DEB.2.00.1606071221480.9917@tp.orcam.me.uk>
-	<EF5FA6C3467F85449672C3E735957B85916B85AC@BADAG02.ba.imgtec.org>
-User-Agent: Alpine 2.00 (DEB 1167 2008-08-23)
+	(envelope-from <peter.maydell@linaro.org>) id 1bBJtg-0000ek-1X
+	for qemu-devel@nongnu.org; Fri, 10 Jun 2016 06:42:40 -0400
+Received: by mail-vk0-x22a.google.com with SMTP id d64so92120244vkb.0
+	for <qemu-devel@nongnu.org>; Fri, 10 Jun 2016 03:42:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=1y2nrLwo36D/UASBbXLJaldob0SRXWTm4ryfn8MejiY=;
+	b=JslsoH2h1PNw08idCNjTSnUjXUvOhnNopdhSC2rWIrAEP22L4y3jr1C4T/EMQtJjiu
+	6J0B7Gm2DWRZ/8uI8wxTr8pUnkQq9as4FSVUoHS6byaDQ2UZ/J+It+lcjRH4ULbpnPEZ
+	yZVF+AV/b1VrH7gKDa4e8m/pFSPnt6akj/Sws=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=1y2nrLwo36D/UASBbXLJaldob0SRXWTm4ryfn8MejiY=;
+	b=ijfpf9xwrHqW7AFFrPw/xem81us/5Oa6Jg9KTc/tN1effFrNdteuOqrl1Rk0p8Af/4
+	2W8XXRa4mjbpdYmLKolCiX69H7nIrsLVVed04vZvBKkQvDva9dz2kNmGdRUyFmavkVtH
+	Pb12+Qmn+OTdaLaxuEl9h/R2CW5K4ACw8fCCK7ff1usz0j3xyMYgqh1DRvKf89X+UVKG
+	Gd0k36pNsxPR6QAjmU4MihoOH+kzqpSokt2k1O4Gf0zOxdu5AaOBgR2fXmIY4VHgPn5l
+	YuOTZQpUnGPkN7doZW040HIcqYq4P9LrU6za26SYt/UFPOVTFWiaY3Mxua4Kj2FbzMJS
+	s2hA==
+X-Gm-Message-State: ALyK8tIZoFW/xWal8IT40XBOiWQVac+nEm6GZOQIRRPLMAcjIyoLU3AULSe1H4ue7oxtsZtzczBMHtTqU2hClC86
+X-Received: by 10.176.64.69 with SMTP id h63mr494032uad.125.1465555359308;
+	Fri, 10 Jun 2016 03:42:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-Originating-IP: [10.20.78.140]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-arm] [PATCH v6 8/9] target-mips: Add nan2008 flavor of
- <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 10.31.97.68 with HTTP; Fri, 10 Jun 2016 03:42:19 -0700 (PDT)
+In-Reply-To: <1465520347.16048.180.camel@aj.id.au>
+References: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
+	<CAFEAcA8+3trGJ=6K8fFX4-2Z1N+ZUiBKUcSTR6fYnQtMfNs3rw@mail.gmail.com>
+	<1465520347.16048.180.camel@aj.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jun 2016 11:42:19 +0100
+Message-ID: <CAFEAcA9OUKDmA_CHXXMOWJCMF+-DeQYvGTY29KRkNktB=nCb_g@mail.gmail.com>
+To: Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22a
+Subject: Re: [Qemu-devel] [PATCH] hw/timer: Add value matching support to
+ aspeed_timer
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"proljc@gmail.com" <proljc@gmail.com>,
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"agraf@suse.de" <agraf@suse.de>,
-	Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
-	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
-	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
-	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	Leon Alrae <Leon.Alrae@imgtec.com>, "afaerber@suse.de" <afaerber@suse.de>,
-	Aurelien Jarno <aurelien@aurel32.net>, "rth@twiddle.net" <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ShsW7iJc933I
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sULVR3yVWlSw
 
-On Fri, 10 Jun 2016, Aleksandar Markovic wrote:
+On 10 June 2016 at 01:59, Andrew Jeffery <andrew@aj.id.au> wrote:
+> On Thu, 2016-06-09 at 19:15 +0100, Peter Maydell wrote:
+>> On 27 May 2016 at 06:08, Andrew Jeffery <andrew@aj.id.au> wrote:
+>> >
+>> > Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=y on the
+>> > palmetto-bmc machine. Two match registers are provided for each timer.
+>> >
+>> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+>> > ---
+>> >
+>> > The change pulls out ptimer in favour of the regular timer infrastructure. As a
+>> > consequence it implements the conversions between ticks and time which feels a
+>> > little tedious. Any comments there would be appreciated.
+>> Couple of minor comments below.
+>>
+>> >
+>> >  hw/timer/aspeed_timer.c         | 135 ++++++++++++++++++++++++++++++----------
+>> >  include/hw/timer/aspeed_timer.h |   6 +-
+>> >  2 files changed, 105 insertions(+), 36 deletions(-)
+>> >
+>> > diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+>> > index 4b94808821b4..905de0f788b2 100644
+>> > --- a/hw/timer/aspeed_timer.c
+>> > +++ b/hw/timer/aspeed_timer.c
+>> > @@ -9,13 +9,12 @@
+>> >   * the COPYING file in the top-level directory.
+>> >   */
+>> >
+>> > +#include
+>> >  #include "qemu/osdep.h"
+>> osdep.h must always be the first include.
+>
+> Thanks for picking that up.
 
-> I referred to SoftFloat library in QEMU code, and the case "Operand is 
-> smaller than INT_MIN" is different between SoftFloat and Mips-B, while 
-> the case "Operand is a NaN" is different between SoftFloat and Mips-A.
+If you like you can run scripts/clean-includes file ...
+and it will automatically make any necessary changes like this to
+your files.
 
- Ah, but then you just can and indeed need to fix it to match hardware.  
-I had it done properly with the original patches I believe.
 
-  Maciej
+>> > +static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_t now_ns)
+>> > +{
+>> > +    uint64_t delta_ns = now_ns - MIN(now_ns, t->start);
+>> > +    uint32_t ticks = (uint32_t) floor(delta_ns / calculate_period(t));
+>> Do we really need to do this with floating point ?
+>
+> I went with floating point to avoid accumulating errors from truncation
+> by integer division. At eg 24MHz truncation increases the tick rate by
+> approximately 1 in 63. We're using floor() here, but that only
+> truncates at the end of the calculation, so the fractional current
+> tick.
+
+Right, but you only have a risk of truncation because of the way
+you've structured the calculation. You have
+
+floor(delta_ns / calculate_period())
+== floor(delta_ns / (calculate_rate() / NS_PER_SEC))
+== floor((delta_ns * NS_PER_SEC) / calculate_rate())
+
+and calculate_rate() returns either 1000000 or 24000000.
+
+So you have a 64 bit delta_ns, a 32 bit NANOSECONDS_PER_SECOND
+and a 32 bit frequency. We have a function for doing this
+accurately with integer arithmetic: muldiv64() (which takes
+a 64 bit a, 32 bit b and 32 bit c and returns (a*b)/c using
+an intermediate 96 bit precision to avoid overflow).
+
+Doing ticks-to-ns and ns-to-ticks with muldiv64() is pretty
+standard (grep the codebase and you'll see a lot of it).
+
+> Having said that, grep'ing around under {,include/}hw/ doesn't show a
+> lot of use of floating point. It looks like we are explicitly avoiding
+> it, however with a quick search I didn't find it mentioned in any of
+> the docs. What's the reasoning? Should I use a fixed-point approach
+> like ptimer?
+
+My view is that hardware doesn't generally use floating point
+so it's odd to see it in a software model of hardware. Double
+doesn't actually get you any more bits than uint64_t anyway...
+
+>> > +    return calculate_next(t);
+
+>> Why is this recursing ?
+>
+> The common case is that we return during iterating over seq array i.e.
+> we're anticipating another match event (either from the match values or
+> the timer reaching zero). If not then we've overrun, so we reinitialise
+> the timer by resetting the 'start' reference point then searching again
+> for the next event (iterating over seq). As the search for the next
+> event is encoded in the function, I've recursed to reuse it.
+>
+> Would you prefer a loop here?
+>
+> Considering the two approaches (recursion vs loop), if TCO doesn't
+> apply we could blow the stack, and with loops or TCO it's possible we
+> could spin here indefinitely if the timer period is shorter than the
+> time it takes to recalculate. Arguably, not crashing is better so I'm
+> happy to rework it.
+
+Yes, I'd prefer a loop -- TCO is an optimization, not a guarantee
+by the compiler.
+
+> As an aside, the approach for reinitialising start skips countdown
+> periods that were completely missed through high service latency, and
+> there will be no interrupts issued for the missing events. Is that
+> reasonable?
+
+If the countdown period is so short that we can't service it
+in time then the system is probably not going to be functional
+anyway, so I don't think it matters very much. (In ptimer we
+impose an artificial limit on the timeout rate for a periodic timer
+and just refuse to fire any faster than that: see ptimer_reload().)
+
+thanks
+-- PMM

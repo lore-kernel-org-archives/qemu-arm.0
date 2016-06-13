@@ -1,71 +1,64 @@
-Received: by 10.25.85.209 with SMTP id j200csp1095434lfb;
-        Mon, 13 Jun 2016 02:12:31 -0700 (PDT)
-X-Received: by 10.140.41.51 with SMTP id y48mr12585488qgy.58.1465809151153;
-        Mon, 13 Jun 2016 02:12:31 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1105406lfb;
+        Mon, 13 Jun 2016 02:42:06 -0700 (PDT)
+X-Received: by 10.55.31.72 with SMTP id f69mr13387516qkf.36.1465810926116;
+        Mon, 13 Jun 2016 02:42:06 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z63si8957395qtc.93.2016.06.13.02.12.30
+        by mx.google.com with ESMTPS id x77si14702904qgx.58.2016.06.13.02.42.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 02:12:31 -0700 (PDT)
+        Mon, 13 Jun 2016 02:42:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54577 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54773 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCNv4-0005qX-Fc
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 05:12:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40365)
+	id 1bCONg-0005NO-Qh
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 05:42:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47811)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCNtO-0004nK-Cp
-	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 05:10:50 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCOLl-00044K-GA
+	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 05:40:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCNtM-0003WN-63
-	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 05:10:45 -0400
-Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:35656)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCOLh-0001rQ-6o
+	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 05:40:04 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:22039)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCNtK-0003W9-Sx
-	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 05:10:44 -0400
-Received: by mail-vk0-x22f.google.com with SMTP id d127so170359617vkh.2
-	for <qemu-devel@nongnu.org>; Mon, 13 Jun 2016 02:10:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ELTomsWKKUw/72/3OxGyZPJlovpYS4NdP8dFveHzPeg=;
-	b=Om8Q0FZvRIBI3JMRRJp/fklP8Jy6sCefKBXyd94fxCH8T/P80fzvZnbC+Gs9F0YvaT
-	HuPPVQ+tWMjMAaFOslmAbgIqBtdSlXmwnWcD3b7yiPPGOpe83hR62Ygi1zlxqWAAFBZU
-	NMNkySNqOcW5CpkXfx/Wf6CMoP2l058X8U3IU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ELTomsWKKUw/72/3OxGyZPJlovpYS4NdP8dFveHzPeg=;
-	b=OPshtyvtwYsQZce5quW/egLq5xcCQCmRCsSdA9PGoAeSd6UrNO5RZYwnFgu3iQcXp2
-	QKbjbibozISF0DMfMBWkbGqozxZEiGezgcMhhYOfDfKa7AoWVHQUSdqY4dPs56veVZ4p
-	Uef3zHPaB2jagn2OjeJImuUpAtxePVkH1E94/graTAp5VCxFrXf4oyyAEci5SsaDhdsz
-	g/6zA+3xSxrRIjC8aqf1vlKQXVBwT4vJUp+3wqSiUBElpi50HAonMXGGQvh/oqSlso81
-	DxNoEs0x6BbO1As5wYzeOu8mVrpcJzqJrduoO3MUJexagw6aKy4thrTa9TaAdWcynZmB
-	SlEA==
-X-Gm-Message-State: ALyK8tK87mZ7LCQkLQ1tQx8KeZZQywQ1+gqirZcrVCFkMKcf7C5Rpx35A4xi779dtTzGbgSjVtNcNfhuuEyevFEu
-X-Received: by 10.176.5.227 with SMTP id e90mr6277330uae.4.1465809042406; Mon,
-	13 Jun 2016 02:10:42 -0700 (PDT)
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1bCOLW-0001o2-4v; Mon, 13 Jun 2016 05:40:01 -0400
+Received: from 172.24.1.136 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.1.136])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DMC12850; Mon, 13 Jun 2016 17:35:47 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml432-hub.china.huawei.com
+	(10.82.67.209) with Microsoft SMTP Server id 14.3.235.1;
+	Mon, 13 Jun 2016 17:35:38 +0800
+Message-ID: <575E7E68.5020001@huawei.com>
+Date: Mon, 13 Jun 2016 17:35:36 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Received: by 10.31.97.68 with HTTP; Mon, 13 Jun 2016 02:10:22 -0700 (PDT)
-In-Reply-To: <575E673E.2080500@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
-	<1464274540-19693-17-git-send-email-peter.maydell@linaro.org>
-	<575E673E.2080500@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jun 2016 10:10:22 +0100
-Message-ID: <CAFEAcA-91=s368kA_50J259EMd5U5W9fbvK09B_RGpNGxRpRLQ@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22f
-Subject: Re: [Qemu-devel] [PATCH v2 16/22] hw/intc/arm_gicv3: Implement
- gicv3_cpuif_update()
+	<1464274540-19693-12-git-send-email-peter.maydell@linaro.org>
+	<575E5239.6030408@huawei.com>
+	<CAFEAcA-B4Mt_+owi7oCyH=qde1Sda2imKEXdtrYfhVq5JtWzdw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-B4Mt_+owi7oCyH=qde1Sda2imKEXdtrYfhVq5JtWzdw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090204.575E7E76.0069, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: 22af8b8da73b2aba8ced350f0340812a
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Subject: Re: [Qemu-devel] [PATCH v2 11/22] hw/intc/arm_gicv3: Implement
+ GICv3 distributor registers
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,73 +78,43 @@ Cc: Patch Tracking <patches@linaro.org>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rQeQmI6RHRQJ
+X-TUID: ZXMbtppTPGsg
 
-On 13 June 2016 at 08:56, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->
->
-> On 2016/5/26 22:55, Peter Maydell wrote:
->> +void gicv3_cpuif_update(GICv3CPUState *cs)
->> +{
->> +    /* Tell the CPU about its highest priority pending interrupt */
->> +    int irqlevel = 0;
->> +    int fiqlevel = 0;
->> +    ARMCPU *cpu = ARM_CPU(cs->cpu);
->> +    CPUARMState *env = &cpu->env;
->> +
->> +    trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
->> +                             cs->hppi.grp, cs->hppi.prio);
->> +
->> +    if (cs->hppi.grp == GICV3_G1 && !arm_feature(env, ARM_FEATURE_EL3)) {
->> +        /* If a Security-enabled GIC sends a G1S interrupt to a
->> +         * Security-disabled CPU, we must treat it as if it were G0.
->> +         */
->> +        cs->hppi.grp = GICV3_G0;
->> +    }
->> +
->> +    if (icc_hppi_can_preempt(cs)) {
->> +        /* We have an interrupt: should we signal it as IRQ or FIQ?
->> +         * This is described in the GICv3 spec section 4.6.2.
->> +         */
->> +        bool isfiq;
->> +
->> +        switch (cs->hppi.grp) {
->> +        case GICV3_G0:
->> +            isfiq = true;
->> +            break;
->> +        case GICV3_G1:
->> +            isfiq = (!arm_is_secure(env) ||
->> +                     (arm_current_el(env) == 3 && arm_el_is_aa64(env, 3)));
->> +            break;
->> +        case GICV3_G1NS:
->> +            isfiq = arm_is_secure(env);
->> +            break;
->> +        default:
->> +            g_assert_not_reached();
->> +        }
->> +
->> +        if (isfiq) {
->> +            fiqlevel = 1;
->> +        } else {
->> +            irqlevel = 1;
->> +        }
->> +    }
->> +
->> +    trace_gicv3_cpuif_set_irqs(gicv3_redist_affid(cs), fiqlevel, irqlevel);
->> +
->> +    qemu_set_irq(cs->parent_fiq, fiqlevel);
->> +    qemu_set_irq(cs->parent_irq, irqlevel);
-> Does it need to set both fiq and irq for one interrupt? I think it
-> should be called differently based on the value of isfiq.
 
-If the state of the CPU changes then an asserted interrupt may
-switch from "must assert FIQ" to "must assert IRQ". This means
-we need to call qemu_set_irq() for both (in one case with a 0
-level and in the other case with a 1 level); we can't just ignore
-the IRQ/FIQ line which doesn't apply to this interrupt.
-There's also the case of "icc_hppi_can_preempt() returns false" where
-we need to make both calls with a 0 level, so we can't simplify to
-one call with isfiq and one call with !isfiq.
 
-thanks
--- PMM
+On 2016/6/13 17:04, Peter Maydell wrote:
+> On 13 June 2016 at 07:27, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+>> >
+>> >
+>> > On 2016/5/26 22:55, Peter Maydell wrote:
+>>> >> +static uint8_t gicd_read_ipriorityr(GICv3State *s, MemTxAttrs attrs, int irq)
+>>> >> +{
+>>> >> +    /* Read the value of GICD_IPRIORITYR<n> for the specified interrupt,
+>>> >> +     * honouring security state (these are RAZ/WI for Group 0 or Secure
+>>> >> +     * Group 1 interrupts).
+>>> >> +     */
+>>> >> +    uint32_t prio;
+>>> >> +
+>>> >> +    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
+>>> >> +        return 0;
+>>> >> +    }
+>>> >> +
+>>> >> +    prio = s->gicd_ipriority[irq];
+>>> >> +
+>>> >> +    if (!attrs.secure && !(s->gicd_ctlr & GICD_CTLR_DS)) {
+>>> >> +        if (!gicv3_gicd_group_test(s, irq)) {
+>>> >> +            /* Fields for Group 0 or Secure Group 1 interrupts are RAZ/WI */
+>> > Here this check assure this interrupt belongs to Group 0 and NS access
+>> > is not permitted, so it should return 0. But it doesn't say anything
+>> > about Secure Group 1.
+> We're testing the GICD_IGROUPR bit here. If DS is zero (security
+> enabled), then IGROUPR == 0 means "Group 0 or Secure Group 1", which
+> is what the comment says we're testing. (If you care which of 0 and S1
+> it is then you look at IGRPMODR, but for security checks like these
+> we don't need to.)
+> 
+Oh, right.
+
+-- 
+Shannon
+

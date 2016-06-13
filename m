@@ -1,168 +1,129 @@
-Received: by 10.25.85.209 with SMTP id j200csp1136604lfb;
-        Mon, 13 Jun 2016 04:04:50 -0700 (PDT)
-X-Received: by 10.140.137.136 with SMTP id 130mr13721994qhj.100.1465815890409;
-        Mon, 13 Jun 2016 04:04:50 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.85.209 with SMTP id j200csp1136679lfb;
+        Mon, 13 Jun 2016 04:04:58 -0700 (PDT)
+X-Received: by 10.140.91.244 with SMTP id z107mr13019834qgd.82.1465815898726;
+        Mon, 13 Jun 2016 04:04:58 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k137si14829971qhc.67.2016.06.13.04.04.50
+        by mx.google.com with ESMTPS id 13si5165045qtr.72.2016.06.13.04.04.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 04:04:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 13 Jun 2016 04:04:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55331 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55327 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCPfl-0004GO-Ob
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 07:04:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42108)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bCPfu-0003tx-4o
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 07:04:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41852)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPX8-0004oz-9T
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:55:55 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1bCPWm-0004TO-LJ
+	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 06:55:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPWz-0003Ot-T0
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:55:53 -0400
-Received: from m50-134.163.com ([123.125.50.134]:47874)
+	(envelope-from <zxq_yx_007@163.com>) id 1bCPWe-0003Hm-H4
+	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 06:55:32 -0400
+Received: from m50-134.163.com ([123.125.50.134]:47818)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1bCPWe-0003GC-4R; Mon, 13 Jun 2016 06:55:26 -0400
+	id 1bCPWd-0003G9-Dt; Mon, 13 Jun 2016 06:55:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=V9I94wK7MIdkAa/jrv
-	rNwtlH46doMmSfpyERYIf+joM=; b=EvQCDjE+Zl7khk3FMaEroq3qRHr8gvUaZV
-	ttmiPBoiOPSkziB9HGYTiyt5hMvWVkuBczqzg2zliMc8xgyCH0BSvhnq2d/8GS8H
-	uWhEsUX78RCXVNDO23p6r0YHEJQMx3hECQ7TyJ/LBoSt3d1vWfBdE0SYW1JbWu1n
-	jHlh219Xk=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=hwkBkP8cdi0S0zwQPT
+	ykJy7XKkwEyReBbcVVevqbB3g=; b=UDF5jWVMkphUazSAHlrkFihxQvbOsBZktp
+	8obEoKmm/bDVNKBpAiPZn8Len6Q+yJNVA4zNpgRiDfvK49DYYzlxiUZhoE4PgQ+D
+	nBwwiPCF8qC4FLmdB/whGBZUyR9GWFaGBHI6idYt08MEUJ0dH5mSk6nDKJVlExBu
+	Rl1lcD8dM=
 Received: from localhost.localdomain (unknown [101.254.142.162])
-	by smtp4 (Coremail) with SMTP id DtGowADHQpfkkF5X+0_jBA--.36165S5;
+	by smtp4 (Coremail) with SMTP id DtGowADHQpfkkF5X+0_jBA--.36165S3;
 	Mon, 13 Jun 2016 18:54:32 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 13 Jun 2016 18:54:06 +0800
-Message-Id: <1465815255-21776-4-git-send-email-zxq_yx_007@163.com>
+Date: Mon, 13 Jun 2016 18:54:04 +0800
+Message-Id: <1465815255-21776-2-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
 References: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DtGowADHQpfkkF5X+0_jBA--.36165S5
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZw1Dtr4DJF17Zr1xCrW7urg_yoW5AFyfpF
-	9xtFn3GrWkJFs7XrZaqr4DCFs5Xw4kK348tr13Jwnavr1DuwsIyw4vyF4Yv34UG392ya13
-	XayrJFy8GF48AaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jlg4hUUUUU=
+X-CM-TRANSID: DtGowADHQpfkkF5X+0_jBA--.36165S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tw47AF1DWryUZFWfZFyftFb_yoW8Ar48pa
+	yfZFn5u3y5XFZ7Wry2qFs3GF18Jws7WFZ3Cw4Ikr1093WDurWqyr1DAayavw1UJrWku3WS
+	qw4rJay7AF4vkw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j6-erUUUUU=
 X-Originating-IP: [101.254.142.162]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/xtbBEgiHxlZXyT3J5wAAsA
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiFgiHxlWBRV1LOAAAsg
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 123.125.50.134
-Subject: [Qemu-arm] [RESEND PATCH 03/12] hw/i2c: QOM'ify omap_i2c.c
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RESEND PATCH 01/12] hw/i2c: QOM'ify bitbang_i2c.c
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	balrogg@gmail.com, zhaoshenglong@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7xQ2PcpIzBVM
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HjCsTDWzJAaB
 
-* Split the omap_i2c_init into an instance_init and realize function
-* Drop the old SysBus init function and use instance_init
+Drop the old SysBus init function and use instance_init
 
 Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
 ---
- hw/i2c/omap_i2c.c | 44 ++++++++++++++++++++++++++------------------
- 1 file changed, 26 insertions(+), 18 deletions(-)
+ hw/i2c/bitbang_i2c.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-index 67fbbff..f7c92ea 100644
---- a/hw/i2c/omap_i2c.c
-+++ b/hw/i2c/omap_i2c.c
-@@ -22,6 +22,7 @@
- #include "hw/arm/omap.h"
- #include "hw/sysbus.h"
- #include "qemu/error-report.h"
-+#include "qapi/error.h"
- 
- #define TYPE_OMAP_I2C "omap_i2c"
- #define OMAP_I2C(obj) OBJECT_CHECK(OMAPI2CState, (obj), TYPE_OMAP_I2C)
-@@ -445,29 +446,35 @@ static const MemoryRegionOps omap_i2c_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
--static int omap_i2c_init(SysBusDevice *sbd)
-+static void omap_i2c_init(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    OMAPI2CState *s = OMAP_I2C(dev);
--
--    if (!s->fclk) {
--        error_report("omap_i2c: fclk not connected");
--        return -1;
--    }
--    if (s->revision >= OMAP2_INTR_REV && !s->iclk) {
--        /* Note that OMAP1 doesn't have a separate interface clock */
--        error_report("omap_i2c: iclk not connected");
--        return -1;
--    }
-+    DeviceState *dev = DEVICE(obj);
-+    OMAPI2CState *s = OMAP_I2C(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     sysbus_init_irq(sbd, &s->irq);
-     sysbus_init_irq(sbd, &s->drq[0]);
-     sysbus_init_irq(sbd, &s->drq[1]);
--    memory_region_init_io(&s->iomem, OBJECT(s), &omap_i2c_ops, s, "omap.i2c",
--                          (s->revision < OMAP2_INTR_REV) ? 0x800 : 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-     s->bus = i2c_init_bus(dev, NULL);
--    return 0;
-+}
-+
-+static void omap_i2c_realize(DeviceState *dev, Error **errp)
-+{
-+    OMAPI2CState *s = OMAP_I2C(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &omap_i2c_ops, s, "omap.i2c",
-+                          (s->revision < OMAP2_INTR_REV) ? 0x800 : 0x1000);
-+
-+    if (!s->fclk) {
-+        error_setg(errp, "omap_i2c: fclk not connected");
-+        return;
-+    }
-+    if (s->revision >= OMAP2_INTR_REV && !s->iclk) {
-+        /* Note that OMAP1 doesn't have a separate interface clock */
-+        error_setg(errp, "omap_i2c: iclk not connected");
-+        return;
-+    }
+diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+index 6ed2060..d3a2989 100644
+--- a/hw/i2c/bitbang_i2c.c
++++ b/hw/i2c/bitbang_i2c.c
+@@ -210,13 +210,14 @@ static void bitbang_i2c_gpio_set(void *opaque, int irq, int level)
+     }
  }
  
- static Property omap_i2c_properties[] = {
-@@ -480,18 +487,19 @@ static Property omap_i2c_properties[] = {
- static void omap_i2c_class_init(ObjectClass *klass, void *data)
+-static int gpio_i2c_init(SysBusDevice *sbd)
++static void gpio_i2c_init(Object *obj)
+ {
+-    DeviceState *dev = DEVICE(sbd);
+-    GPIOI2CState *s = GPIO_I2C(dev);
++    DeviceState *dev = DEVICE(obj);
++    GPIOI2CState *s = GPIO_I2C(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+     I2CBus *bus;
+ 
+-    memory_region_init(&s->dummy_iomem, OBJECT(s), "gpio_i2c", 0);
++    memory_region_init(&s->dummy_iomem, obj, "gpio_i2c", 0);
+     sysbus_init_mmio(sbd, &s->dummy_iomem);
+ 
+     bus = i2c_init_bus(dev, "i2c");
+@@ -224,16 +225,12 @@ static int gpio_i2c_init(SysBusDevice *sbd)
+ 
+     qdev_init_gpio_in(dev, bitbang_i2c_gpio_set, 2);
+     qdev_init_gpio_out(dev, &s->out, 1);
+-
+-    return 0;
+ }
+ 
+ static void gpio_i2c_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
 -    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
--    k->init = omap_i2c_init;
-+
-     dc->props = omap_i2c_properties;
-     dc->reset = omap_i2c_reset;
-     /* Reason: pointer properties "iclk", "fclk" */
-     dc->cannot_instantiate_with_device_add_yet = true;
-+    dc->realize = omap_i2c_realize;
- }
  
- static const TypeInfo omap_i2c_info = {
-     .name = TYPE_OMAP_I2C,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(OMAPI2CState),
-+    .instance_init = omap_i2c_init,
-     .class_init = omap_i2c_class_init,
+-    k->init = gpio_i2c_init;
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->desc = "Virtual GPIO to I2C bridge";
+ }
+@@ -242,6 +239,7 @@ static const TypeInfo gpio_i2c_info = {
+     .name          = TYPE_GPIO_I2C,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(GPIOI2CState),
++    .instance_init = gpio_i2c_init,
+     .class_init    = gpio_i2c_class_init,
  };
  
 -- 

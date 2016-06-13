@@ -1,59 +1,57 @@
-Received: by 10.25.85.209 with SMTP id j200csp1127783lfb;
-        Mon, 13 Jun 2016 03:42:21 -0700 (PDT)
-X-Received: by 10.55.212.133 with SMTP id s5mr12999574qks.85.1465814540982;
-        Mon, 13 Jun 2016 03:42:20 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1127817lfb;
+        Mon, 13 Jun 2016 03:42:27 -0700 (PDT)
+X-Received: by 10.140.106.228 with SMTP id e91mr13017018qgf.75.1465814547867;
+        Mon, 13 Jun 2016 03:42:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r185si14796044qke.5.2016.06.13.03.42.20
+        by mx.google.com with ESMTPS id z63si9144326qtc.93.2016.06.13.03.42.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 03:42:20 -0700 (PDT)
+        Mon, 13 Jun 2016 03:42:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@163.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55167 helo=lists.gnu.org)
+Received: from localhost ([::1]:55168 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCPK0-0001C3-7Y
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 06:42:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32846)
+	id 1bCPK7-0001I9-7N
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 06:42:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPBF-0001ML-89
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:33:24 -0400
+	(envelope-from <zxq_yx_007@163.com>) id 1bCPBF-0001MI-7n
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:33:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPBD-00057a-A2
+	(envelope-from <zxq_yx_007@163.com>) id 1bCPBD-00057m-Fr
 	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:33:16 -0400
-Received: from m12-17.163.com ([220.181.12.17]:35245)
+Received: from m12-17.163.com ([220.181.12.17]:35329)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zxq_yx_007@163.com>)
-	id 1bCPAv-000527-7x; Mon, 13 Jun 2016 06:32:58 -0400
+	id 1bCPAv-00052D-L9; Mon, 13 Jun 2016 06:32:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=cjM2kj3T3p6VFDK9N8
-	GZyrkCrYTKSFTm8jhGwbQCt3s=; b=qWEHBJYluj9cQj66WCU7SwhihgPP/8Wqh5
-	bnXpRSLeDQP5QidxmjFn1bV/Xg4NwKEsKoWlLq7BAZV79pdE6xdwIgzIkkKSus+5
-	ED29cUKWmfyx9nVJiFBAUHxe+jGPiRwc6XGexpIGLQBU7iMCfjX8RhW+iZgLc9Ua
-	ql+H9hjyo=
+	s=s110527; h=From:Subject:Date:Message-Id; bh=UKbeiz7CSDZ+LyjEJe
+	pqiRRRSvuof/wgHLdURbQl/tk=; b=o2I2G+J0xDCP2vwyhRCTeVA63hXaiClN/2
+	tw06lYb9Kth4uVkDHMF7E+uQ+SIrVTuWw9itU+m2LXhfPwaKtEhj+cTvNT/VCsra
+	JZlcSULxbXAYN4Yi7Nxn3RpabWoMz91LtZGvBrFHNQrUf/FP0Pmz/3tc+DQXipdT
+	1kG8UiN38=
 Received: from localhost.localdomain (unknown [118.187.28.42])
-	by smtp13 (Coremail) with SMTP id EcCowADHYci3i15XduskAw--.9790S9;
-	Mon, 13 Jun 2016 18:32:29 +0800 (CST)
+	by smtp13 (Coremail) with SMTP id EcCowADHYci3i15XduskAw--.9790S2;
+	Mon, 13 Jun 2016 18:32:28 +0800 (CST)
 From: xiaoqiang zhao <zxq_yx_007@163.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 13 Jun 2016 18:32:06 +0800
-Message-Id: <1465813931-20534-8-git-send-email-zxq_yx_007@163.com>
+Date: Mon, 13 Jun 2016 18:31:59 +0800
+Message-Id: <1465813931-20534-1-git-send-email-zxq_yx_007@163.com>
 X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1465813931-20534-1-git-send-email-zxq_yx_007@163.com>
-References: <1465813931-20534-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: EcCowADHYci3i15XduskAw--.9790S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tw4rWF4UGryUXFyUWF18uFg_yoW8AryxpF
-	Z7WF1DCFn5WFsrXryftr4qgF1rGws7Wwn7Zr1xKr1Ik3WUKFy5ZFs7Aa4avrs8J3ykZF1Y
-	9rWrGFyxAr4Yyw7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jDTmhUUUUU=
+X-CM-TRANSID: EcCowADHYci3i15XduskAw--.9790S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWrZF1xArW7Ww43WF17Zw4ruFg_yoW8Jr4Upa
+	ySqF43XrW8JayfXw1a9w4jyFy5Jr1kJ3WDWw17tryrXryUAw17Ar1UWFWrZ34UJrykXF15
+	JryUtr13Cw1DArDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jxXo7UUUUU=
 X-Originating-IP: [118.187.28.42]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiMxyHxlXlgy63sAAAs0
+X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiEByHxlWBV5hlsgAAsB
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 220.181.12.17
-Subject: [Qemu-arm] [PATCH 07/12] hw/gpio: QOM'ify zaurus.c
+Subject: [Qemu-arm] [PATCH 00/12] some ARM platform QOM'ify work (update)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,62 +67,40 @@ Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
 	balrogg@gmail.com, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sET6ADbWuFeJ
+X-TUID: rY9YX4xOpedk
 
-Drop the old SysBus init function and use instance_init
+This patch series QOM'ify ARM platform related devices.
+Where we drop the sysbus init function if possible and use 
+instance_init and DeviceClass::realize function.
 
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/gpio/zaurus.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+xiaoqiang zhao (12):
+  hw/i2c: QOM'ify bitbang_i2c.c
+  hw/i2c: QOM'ify exynos4210_i2c.c
+  hw/i2c: QOM'ify omap_i2c.c
+  hw/i2c: QOM'ify versatile_i2c.c
+  hw/gpio: QOM'ify omap_gpio.c
+  hw/gpio: QOM'ify pl061.c
+  hw/gpio: QOM'ify zaurus.c
+  hw/misc: QOM'ify arm_l2x0.c
+  hw/misc: QOM'ify exynos4210_pmu.c
+  hw/misc: QOM'ify mst_fpga.c
+  hw/dma: QOM'ify pxa2xx_dma.c
+  hw/sd: QOM'ify pl181.c
 
-diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-index 555da28..15865e1 100644
---- a/hw/gpio/zaurus.c
-+++ b/hw/gpio/zaurus.c
-@@ -167,19 +167,18 @@ static void scoop_gpio_set(void *opaque, int line, int level)
-         s->gpio_level &= ~(1 << line);
- }
- 
--static int scoop_init(SysBusDevice *sbd)
-+static void scoop_init(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    ScoopInfo *s = SCOOP(dev);
-+    DeviceState *dev = DEVICE(obj);
-+    ScoopInfo *s = SCOOP(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     s->status = 0x02;
-     qdev_init_gpio_out(dev, s->handler, 16);
-     qdev_init_gpio_in(dev, scoop_gpio_set, 16);
--    memory_region_init_io(&s->iomem, OBJECT(s), &scoop_ops, s, "scoop", 0x1000);
-+    memory_region_init_io(&s->iomem, obj, &scoop_ops, s, "scoop", 0x1000);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
--
--    return 0;
- }
- 
- static int scoop_post_load(void *opaque, int version_id)
-@@ -239,9 +238,7 @@ static const VMStateDescription vmstate_scoop_regs = {
- static void scoop_sysbus_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = scoop_init;
-     dc->desc = "Scoop2 Sharp custom ASIC";
-     dc->vmsd = &vmstate_scoop_regs;
- }
-@@ -250,6 +247,7 @@ static const TypeInfo scoop_sysbus_info = {
-     .name          = TYPE_SCOOP,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(ScoopInfo),
-+    .instance_init = scoop_init,
-     .class_init    = scoop_sysbus_class_init,
- };
- 
+ hw/dma/pxa2xx_dma.c      | 38 +++++++++++++++++-------------
+ hw/gpio/omap_gpio.c      | 61 ++++++++++++++++++++++++------------------------
+ hw/gpio/pl061.c          | 24 +++++++------------
+ hw/gpio/zaurus.c         | 14 +++++------
+ hw/i2c/bitbang_i2c.c     | 14 +++++------
+ hw/i2c/exynos4210_i2c.c  | 13 +++++------
+ hw/i2c/omap_i2c.c        | 44 ++++++++++++++++++++--------------
+ hw/i2c/versatile_i2c.c   | 19 +++++----------
+ hw/misc/arm_l2x0.c       | 11 ++++-----
+ hw/misc/exynos4210_pmu.c | 11 ++++-----
+ hw/misc/mst_fpga.c       | 13 +++++------
+ hw/sd/pl181.c            | 26 +++++++++++++--------
+ 12 files changed, 143 insertions(+), 145 deletions(-)
+
 -- 
 2.1.4
 

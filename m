@@ -1,41 +1,41 @@
-Received: by 10.25.85.209 with SMTP id j200csp1067230lfb;
-        Mon, 13 Jun 2016 00:50:45 -0700 (PDT)
-X-Received: by 10.233.235.83 with SMTP id b80mr13119587qkg.83.1465804245759;
-        Mon, 13 Jun 2016 00:50:45 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1069276lfb;
+        Mon, 13 Jun 2016 00:57:36 -0700 (PDT)
+X-Received: by 10.140.41.178 with SMTP id z47mr11997503qgz.25.1465804656887;
+        Mon, 13 Jun 2016 00:57:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l30si4638422qtl.74.2016.06.13.00.50.45
+        by mx.google.com with ESMTPS id b11si12247377qte.87.2016.06.13.00.57.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 00:50:45 -0700 (PDT)
+        Mon, 13 Jun 2016 00:57:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54266 helo=lists.gnu.org)
+Received: from localhost ([::1]:54289 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCMdx-0002Nb-79
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 03:50:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51472)
+	id 1bCMka-0005Tj-BA
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 03:57:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bCMds-0002LP-Mj
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 03:50:41 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCMkW-0005LC-Hj
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 03:57:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bCMdq-0003a4-Fk
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 03:50:39 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:62637)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCMkU-0004XV-IR
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 03:57:31 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:5760)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1bCMdj-0003Xu-CL; Mon, 13 Jun 2016 03:50:32 -0400
-Received: from 172.24.1.47 (EHLO szxeml432-hub.china.huawei.com)
-	([172.24.1.47])
+	id 1bCMkO-0004X5-Af; Mon, 13 Jun 2016 03:57:24 -0400
+Received: from 172.24.1.36 (EHLO SZXEML424-HUB.china.huawei.com)
+	([172.24.1.36])
 	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CDE05916; Mon, 13 Jun 2016 15:50:08 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml432-hub.china.huawei.com
-	(10.82.67.209) with Microsoft SMTP Server id 14.3.235.1;
-	Mon, 13 Jun 2016 15:49:56 +0800
-Message-ID: <575E65A4.1080802@huawei.com>
-Date: Mon, 13 Jun 2016 15:49:56 +0800
+	with ESMTP id CDE06935; Mon, 13 Jun 2016 15:56:58 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by SZXEML424-HUB.china.huawei.com
+	(10.82.67.153) with Microsoft SMTP Server id 14.3.235.1;
+	Mon, 13 Jun 2016 15:56:47 +0800
+Message-ID: <575E673E.2080500@huawei.com>
+Date: Mon, 13 Jun 2016 15:56:46 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.1;
 	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
@@ -43,21 +43,21 @@ MIME-Version: 1.0
 To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
 	<qemu-devel@nongnu.org>
 References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
-	<1464274540-19693-15-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1464274540-19693-15-git-send-email-peter.maydell@linaro.org>
+	<1464274540-19693-17-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1464274540-19693-17-git-send-email-peter.maydell@linaro.org>
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
 X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020202.575E65B3.015F, ss=1, re=0.000, recu=0.000,
+	refid=str=0001.0A020205.575E674C.00CB, ss=1, re=0.000, recu=0.000,
 	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
 	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: d68e894073ee1d51a73298c4cf21ffae
+X-Mirapoint-Loop-Id: f38c6c0f65ddb98daf71ac9f4a9e17fb
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
 X-Received-From: 119.145.14.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 14/22] hw/intc/arm_gicv3:
- Implement gicv3_set_irq()
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 16/22] hw/intc/arm_gicv3:
+ Implement gicv3_cpuif_update()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,53 +75,65 @@ Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
 	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HoASfB3cjEv2
+X-TUID: fF+oRJ6FmmLa
 
 
 
 On 2016/5/26 22:55, Peter Maydell wrote:
-> Implement the code which updates the GIC state when an interrupt
-> input into the GIC is asserted.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv3.c        | 20 +++++++++++++++++++-
->  hw/intc/arm_gicv3_dist.c   | 21 +++++++++++++++++++++
->  hw/intc/arm_gicv3_redist.c | 21 +++++++++++++++++++++
->  hw/intc/gicv3_internal.h   |  2 ++
->  trace-events               |  2 ++
->  5 files changed, 65 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index e8f6766..e770409 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -311,7 +311,25 @@ static void gicv3_set_irq(void *opaque, int irq, int level)
->       *  [N+32..N+63] : PPI (internal interrupts for CPU 1
->       *  ...
->       */
-> -    /* Do nothing for now */
-> +    GICv3State *s = opaque;
+> +void gicv3_cpuif_update(GICv3CPUState *cs)
+> +{
+> +    /* Tell the CPU about its highest priority pending interrupt */
+> +    int irqlevel = 0;
+> +    int fiqlevel = 0;
+> +    ARMCPU *cpu = ARM_CPU(cs->cpu);
+> +    CPUARMState *env = &cpu->env;
 > +
-> +    if (irq < (s->num_irq - GIC_INTERNAL)) {
-> +        /* external interrupt (SPI) */
-> +        gicv3_dist_set_irq(s, irq + GIC_INTERNAL, level);
-> +    } else {
-> +        /* per-cpu interrupt (PPI) */
-> +        int cpu;
+> +    trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
+> +                             cs->hppi.grp, cs->hppi.prio);
 > +
-> +        irq -= (s->num_irq - GIC_INTERNAL);
-> +        cpu = irq / GIC_INTERNAL;
-> +        irq %= GIC_INTERNAL;
-> +        assert(cpu < s->num_cpu);
-> +        /* Raising SGIs via this function would be a bug in how the board
-> +         * model wires up interrupts.
+> +    if (cs->hppi.grp == GICV3_G1 && !arm_feature(env, ARM_FEATURE_EL3)) {
+> +        /* If a Security-enabled GIC sends a G1S interrupt to a
+> +         * Security-disabled CPU, we must treat it as if it were G0.
 > +         */
-> +        assert(irq >= 16 && irq < 32);
-Nit: Use GIC_NR_SGIS instead and irq < 32 is unnecessary.
+> +        cs->hppi.grp = GICV3_G0;
+> +    }
+> +
+> +    if (icc_hppi_can_preempt(cs)) {
+> +        /* We have an interrupt: should we signal it as IRQ or FIQ?
+> +         * This is described in the GICv3 spec section 4.6.2.
+> +         */
+> +        bool isfiq;
+> +
+> +        switch (cs->hppi.grp) {
+> +        case GICV3_G0:
+> +            isfiq = true;
+> +            break;
+> +        case GICV3_G1:
+> +            isfiq = (!arm_is_secure(env) ||
+> +                     (arm_current_el(env) == 3 && arm_el_is_aa64(env, 3)));
+> +            break;
+> +        case GICV3_G1NS:
+> +            isfiq = arm_is_secure(env);
+> +            break;
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+> +
+> +        if (isfiq) {
+> +            fiqlevel = 1;
+> +        } else {
+> +            irqlevel = 1;
+> +        }
+> +    }
+> +
+> +    trace_gicv3_cpuif_set_irqs(gicv3_redist_affid(cs), fiqlevel, irqlevel);
+> +
+> +    qemu_set_irq(cs->parent_fiq, fiqlevel);
+> +    qemu_set_irq(cs->parent_irq, irqlevel);
+Does it need to set both fiq and irq for one interrupt? I think it
+should be called differently based on the value of isfiq.
 
-Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
-
+Thanks,
 -- 
 Shannon
 

@@ -1,65 +1,71 @@
-Received: by 10.25.85.209 with SMTP id j200csp1114437lfb;
-        Mon, 13 Jun 2016 03:06:36 -0700 (PDT)
-X-Received: by 10.140.38.145 with SMTP id t17mr12937485qgt.10.1465812396861;
-        Mon, 13 Jun 2016 03:06:36 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1116974lfb;
+        Mon, 13 Jun 2016 03:12:46 -0700 (PDT)
+X-Received: by 10.55.70.66 with SMTP id t63mr10777202qka.162.1465812765770;
+        Mon, 13 Jun 2016 03:12:45 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z191si8831165qhz.102.2016.06.13.03.06.36
+        by mx.google.com with ESMTPS id 23si12205594qtu.73.2016.06.13.03.12.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 03:06:36 -0700 (PDT)
+        Mon, 13 Jun 2016 03:12:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54962 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCOlQ-0007dd-7M
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 06:06:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55039)
+	id 1bCOrN-00040s-44
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 06:12:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bCOlL-0007cc-99
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:06:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bCOqE-0003A2-J9
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:11:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bCOlG-0007u0-AR
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:06:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34892)
+	(envelope-from <peter.maydell@linaro.org>) id 1bCOq0-0000WL-M9
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:11:34 -0400
+Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:36572)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bCOlG-0007tu-51; Mon, 13 Jun 2016 06:06:26 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B2F1B25895;
-	Mon, 13 Jun 2016 10:06:25 +0000 (UTC)
-Received: from [10.36.112.17] (ovpn-112-17.ams2.redhat.com [10.36.112.17])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5DA6Kwt008653
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 13 Jun 2016 06:06:22 -0400
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
-	<1465808915-4887-4-git-send-email-vijayak@caviumnetworks.com>
-	<16ef20d6-8c02-8617-0b6a-16fab76d3333@redhat.com>
-	<CAFEAcA_0HXxBO7c0UjxuWbYgQv+nmP6JO7pHKKK8O53CWdG_fg@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <fb4bf179-fc78-5540-53ee-d572148633e5@redhat.com>
-Date: Mon, 13 Jun 2016 12:06:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1bCOpz-0000Vz-ED
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 06:11:20 -0400
+Received: by mail-vk0-x22b.google.com with SMTP id u64so60961163vkf.3
+	for <qemu-arm@nongnu.org>; Mon, 13 Jun 2016 03:11:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=1F/NNlPmdSEnkqr4tWCWEYI4nkOSfK7/Cw4j/9H9+h4=;
+	b=CjtlJ3WXgLPYtD6PATABC4OmvuQuZBrAf1kCPt5rbuX+YLceZSyMR0mV6xT2xeX2cU
+	oCc/znEoa4K+bEMdNKxkdGrh+WSe3w3sNq+fMDHStRSV+N8+fR3244eZKs8PXfs8U/51
+	vc31+ANOx0DxjCAG0IltpyS30NVEUNVMsRKww=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=1F/NNlPmdSEnkqr4tWCWEYI4nkOSfK7/Cw4j/9H9+h4=;
+	b=m2jKpfLMqJkVX/q/a5L4d1/jn9YEA3v1yTCvPpjbRyxzlKb3vKnI5TKGv3DNXcukOC
+	oP4sFsDvPf1nmbArdUtrg1UKmeEvF5Q4pXi2NFbhUvLqy0U+L0jW2uy5ZrclE+a75dmk
+	obUa2RaVm/GO4xA6+/ac/slblj+roXjrPRJCVoFgIbbJ5fO105Q78nr+L6foXxHdWjM6
+	A+bAj2QSlCHng6mAk6nc5xkWVIlHoPxft7UtnLrksxEH+uaJIlDwzfwOQE8T61wBebiy
+	3k9KaYQt3hGlZQqkBoQdxmJ09wcH4IJtcemIFTDcKwkDvXcAWfBKRmfnAkd98YoojFeh
+	vTBQ==
+X-Gm-Message-State: ALyK8tI5tPgYoLbR2uECi5kyIYtOyGI5SOKk4Hj5xAqZ14kHZlUp4wlAnkAw6VXfhcy/cWagthaTBNR0D5QnXhhc
+X-Received: by 10.176.1.238 with SMTP id 101mr3857245ual.119.1465812678895;
+	Mon, 13 Jun 2016 03:11:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_0HXxBO7c0UjxuWbYgQv+nmP6JO7pHKKK8O53CWdG_fg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 13 Jun 2016 10:06:25 +0000 (UTC)
+Received: by 10.31.97.68 with HTTP; Mon, 13 Jun 2016 03:10:59 -0700 (PDT)
+In-Reply-To: <CAFEAcA8+qWep8E3+k30n1gTUexoTrqipg=bnxS5yYPNvfFpTYw@mail.gmail.com>
+References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
+	<1465808915-4887-5-git-send-email-vijayak@caviumnetworks.com>
+	<CAFEAcA8+qWep8E3+k30n1gTUexoTrqipg=bnxS5yYPNvfFpTYw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Jun 2016 11:10:59 +0100
+Message-ID: <CAFEAcA_dBDhUEZr+mLPJkiiMRyjqUuXMaaYfZX3PUwZdKFk9uA@mail.gmail.com>
+To: Vijaya Kumar K <vijayak@caviumnetworks.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH v1 3/4] translate-all.c: Compute L1 page
- table properties at runtime
+X-Received-From: 2607:f8b0:400c:c05::22b
+Subject: Re: [Qemu-arm] [RFC PATCH v1 4/4] target-arm: Compute page size
+ based on ARM target cpu type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,30 +78,37 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Vijay Kilari <vijay.kilari@gmail.com>, Juan Quintela <quintela@redhat.com>,
-	Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
 	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Vijaya Kumar K <vijayak@cavium.com>
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Vijaya Kumar K <vijayak@cavium.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vNldH6/wtYaT
+X-TUID: 47M+3NUkJjN3
 
+On 13 June 2016 at 10:43, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 13 June 2016 at 10:08,  <vijayak@caviumnetworks.com> wrote:
+>> +/*
+>> + * Holds TARGET_AARCH_64_PAGE_BITS or TARGET_ARM_PAGE_BITS
+>> + * based on the the cpu type emulated at runtime.
+>> + */
+>> +static uint32_t target_page_bits;
+>
+> The CPU page size is not specific to the 'virt' board, so this
+> is the wrong place to do this. You should identify the
+> page size in arm_cpu_realizefn() based on the set of feature
+> bits the CPU has: anything with ARM_FEATURE_V7 has a 4K page
+> table (this includes a lot of 32-bit CPUs).
 
+Actually that should be "with ARM_FEATURE_V7 and not
+ARM_FEATURE_MPU", or we'll break the PMSA code.
 
-On 13/06/2016 11:36, Peter Maydell wrote:
->>>  /* The bottom level has pointers to PageDesc */
->>> >> -static void *l1_map[V_L1_SIZE];
->>> >> +static void *l1_map;
->> >
->> > You can make this array have a static V_L2_SIZE * 16 size too.  Peter,
->> > what do you think?
-> I don't know this code well enough to have an informed view,
-> but we only allocate this once at startup, right? I'm not sure
-> why making it a static array would be better?
+Note that you'll also need to handle systems where the
+different CPUs in it disagree about the preferred target
+page size -- the xlnx-ep108 board can have both
+Cortex-A53 (prefers 4K) and Cortex-R5 (prefers 1K) CPUs in it.
+"Use the smallest value required by any CPU on the board"
+is probably the best approach.
 
-It makes accesses faster by avoiding a pointer load.  On one hand it
-might be just microoptimization, on the other hand... death by one
-thousand papercuts...
-
-Paolo
+thanks
+-- PMM

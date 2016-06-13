@@ -1,131 +1,112 @@
-Received: by 10.25.85.209 with SMTP id j200csp1140515lfb;
-        Mon, 13 Jun 2016 04:12:42 -0700 (PDT)
-X-Received: by 10.237.36.35 with SMTP id r32mr13846561qtc.61.1465816362373;
-        Mon, 13 Jun 2016 04:12:42 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.85.209 with SMTP id j200csp1155056lfb;
+        Mon, 13 Jun 2016 04:49:00 -0700 (PDT)
+X-Received: by 10.200.53.39 with SMTP id y36mr13680480qtb.92.1465818540453;
+        Mon, 13 Jun 2016 04:49:00 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q70si14826820qkc.252.2016.06.13.04.12.42
+        by mx.google.com with ESMTPS id b23si14936299qkh.75.2016.06.13.04.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 04:12:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 13 Jun 2016 04:49:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55381 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55661 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCPnN-0002go-O7
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 07:12:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41878)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bCQMV-0000J0-Pc
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 07:48:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53478)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPWn-0004Ub-Qm
-	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 06:55:39 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCQHp-0004Et-5K
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 07:44:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>) id 1bCPWg-0003IR-Cj
-	for qemu-devel@nongnu.org; Mon, 13 Jun 2016 06:55:33 -0400
-Received: from m50-134.163.com ([123.125.50.134]:48076)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCQHo-0005jT-BC
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 07:44:09 -0400
+Received: from szxga01-in.huawei.com ([58.251.152.64]:40771)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zxq_yx_007@163.com>)
-	id 1bCPWf-0003HG-Cl; Mon, 13 Jun 2016 06:55:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:Subject:Date:Message-Id; bh=cjM2kj3T3p6VFDK9N8
-	GZyrkCrYTKSFTm8jhGwbQCt3s=; b=D/HWPoSTk8tqOfjRdp2bb71qrvLr2xFOhu
-	rMhljpeZVvNuQeGog9EudFiuC0k7MPwoQMpQ4YNQKs1YE1ktrFGCNHDr9RqZOl6c
-	wuKxldeYo64i/tcDiugceFK5+aZ7plvVdzMBTKhp0WYKMYHTHG4JDbz3R2TNamwi
-	QSXj9YoDA=
-Received: from localhost.localdomain (unknown [101.254.142.162])
-	by smtp4 (Coremail) with SMTP id DtGowABHnZnpkF5XcVHjBA--.36675S3;
-	Mon, 13 Jun 2016 18:54:33 +0800 (CST)
-From: xiaoqiang zhao <zxq_yx_007@163.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 13 Jun 2016 18:54:10 +0800
-Message-Id: <1465815255-21776-8-git-send-email-zxq_yx_007@163.com>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
-References: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
-X-CM-TRANSID: DtGowABHnZnpkF5XcVHjBA--.36675S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7tw4rWF4UGryUXFyUWF18uFg_yoW8AryxpF
-	Z7WF1DCFn5WFsrXryftr4qgF1rGws7Wwn7Zr1xKr1Ik3WUKFy5ZFs7Aa4avrs8J3ykZF1Y
-	9rWrGFyxAr4Yyw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j6a0PUUUUU=
-X-Originating-IP: [101.254.142.162]
-X-CM-SenderInfo: 520ts5t0bqili6rwjhhfrp/1tbiqAmHxlc64UK41wABsA
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 123.125.50.134
-Subject: [Qemu-devel] [RESEND PATCH 07/12] hw/gpio: QOM'ify zaurus.c
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1bCQFO-00052L-2M; Mon, 13 Jun 2016 07:44:01 -0400
+Received: from 172.24.1.60 (EHLO SZXEML429-HUB.china.huawei.com)
+	([172.24.1.60])
+	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
+	with ESMTP id DMC26167; Mon, 13 Jun 2016 19:40:39 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by SZXEML429-HUB.china.huawei.com
+	(10.82.67.184) with Microsoft SMTP Server id 14.3.235.1;
+	Mon, 13 Jun 2016 19:40:28 +0800
+Message-ID: <575E9B3B.5050606@huawei.com>
+Date: Mon, 13 Jun 2016 19:38:35 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>
+References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
+	<1464274540-19693-20-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1464274540-19693-20-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A090205.575E9BB9.00AA, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: e8f7884137b0b66024fe94fe8abb3ed4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 58.251.152.64
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 19/22] target-arm/machine.c:
+ Allow user to request GICv3 emulation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: i.mitsyanko@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6UeT9mgIqyo2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+	Shlomo Pongratz <shlomopongratz@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BAKz/cvGqJHa
 
-Drop the old SysBus init function and use instance_init
 
-Signed-off-by: xiaoqiang zhao <zxq_yx_007@163.com>
----
- hw/gpio/zaurus.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-index 555da28..15865e1 100644
---- a/hw/gpio/zaurus.c
-+++ b/hw/gpio/zaurus.c
-@@ -167,19 +167,18 @@ static void scoop_gpio_set(void *opaque, int line, int level)
-         s->gpio_level &= ~(1 << line);
- }
- 
--static int scoop_init(SysBusDevice *sbd)
-+static void scoop_init(Object *obj)
- {
--    DeviceState *dev = DEVICE(sbd);
--    ScoopInfo *s = SCOOP(dev);
-+    DeviceState *dev = DEVICE(obj);
-+    ScoopInfo *s = SCOOP(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
- 
-     s->status = 0x02;
-     qdev_init_gpio_out(dev, s->handler, 16);
-     qdev_init_gpio_in(dev, scoop_gpio_set, 16);
--    memory_region_init_io(&s->iomem, OBJECT(s), &scoop_ops, s, "scoop", 0x1000);
-+    memory_region_init_io(&s->iomem, obj, &scoop_ops, s, "scoop", 0x1000);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
--
--    return 0;
- }
- 
- static int scoop_post_load(void *opaque, int version_id)
-@@ -239,9 +238,7 @@ static const VMStateDescription vmstate_scoop_regs = {
- static void scoop_sysbus_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
--    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
- 
--    k->init = scoop_init;
-     dc->desc = "Scoop2 Sharp custom ASIC";
-     dc->vmsd = &vmstate_scoop_regs;
- }
-@@ -250,6 +247,7 @@ static const TypeInfo scoop_sysbus_info = {
-     .name          = TYPE_SCOOP,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(ScoopInfo),
-+    .instance_init = scoop_init,
-     .class_init    = scoop_sysbus_class_init,
- };
- 
+On 2016/5/26 22:55, Peter Maydell wrote:
+> Now we have an emulated GICv3, remove the restriction in
+> gicv3_class_name() so that the user can request a GICv3 with
+> -machine gic-version=3 even when not using KVM.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
+
+> ---
+>  target-arm/machine.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/target-arm/machine.c b/target-arm/machine.c
+> index 2f45260..2dbeb82 100644
+> --- a/target-arm/machine.c
+> +++ b/target-arm/machine.c
+> @@ -342,8 +342,7 @@ const char *gicv3_class_name(void)
+>                       "platform");
+>  #endif
+>      } else {
+> -        /* TODO: Software emulation is not implemented yet */
+> -        error_report("KVM is currently required for GICv3 emulation");
+> +        return "arm-gicv3";
+>      }
+>  
+>      exit(1);
+> 
+
 -- 
-2.1.4
-
+Shannon
 

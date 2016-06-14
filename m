@@ -1,58 +1,58 @@
-Received: by 10.25.85.209 with SMTP id j200csp1480372lfb;
-        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
-X-Received: by 10.140.143.79 with SMTP id 76mr17329808qhp.72.1465868167449;
-        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1480388lfb;
+        Mon, 13 Jun 2016 18:36:09 -0700 (PDT)
+X-Received: by 10.55.174.198 with SMTP id x189mr9426778qke.71.1465868168799;
+        Mon, 13 Jun 2016 18:36:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q79si8819946qhb.121.2016.06.13.18.36.07
+        by mx.google.com with ESMTPS id u20si16924871qke.28.2016.06.13.18.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
+        Mon, 13 Jun 2016 18:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60369 helo=lists.gnu.org)
+Received: from localhost ([::1]:60371 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCdGw-0002Et-Pl
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 21:36:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57219)
+	id 1bCdGy-0002Fx-6V
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 21:36:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57228)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCdGq-0002CI-DQ
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:36:01 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bCdGr-0002DW-Op
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:36:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCdGo-0007E9-8U
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:35:59 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:58268)
+	(envelope-from <dgibson@ozlabs.org>) id 1bCdGm-0007Dm-K2
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:36:00 -0400
+Received: from ozlabs.org ([103.22.144.67]:54103)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dgibson@ozlabs.org>)
-	id 1bCdGn-0007Da-SI; Mon, 13 Jun 2016 21:35:58 -0400
+	id 1bCdGm-0007DX-95; Mon, 13 Jun 2016 21:35:56 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3rTC086gk9z9t10; Tue, 14 Jun 2016 11:35:52 +1000 (AEST)
+	id 3rTC08615Yz9t0X; Tue, 14 Jun 2016 11:35:52 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1465868152;
-	bh=14CE/abHGxgIoyJbrV+B7Nnt5EfqhkrYKSveqf+v0M0=;
+	bh=dQTJl8AlN+AP2qlgonFsg58/qb52MG2bzVSv+9ESG+0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aL6nDYsOt1IgY0ELJuO3apXebjRWR8fEwyvAplg64m1nXOv/4DtUTmgL2T/QJLJGJ
-	GF29HuFr6QzK9q+BGmXQ+CcJWCadE+cPRzTtDGl4eL28eAxp1Y6uPXyD06wZSis5Wd
-	ldJ0AoA8PKQFYkZsiT4t6ty0xZrFMcM7ZJSFWHhU=
-Date: Tue, 14 Jun 2016 11:15:26 +1000
+	b=A0uM5w89yipSLby3Wc4uHFrnvluIqk9zdQdOruQ5Z7nUmsKW7sFCSjd5/krpcY6GO
+	QDuTetBtlRAkpypY2UU7ZUT0hoNpv5qCsX8xSiVXBahvlb4NZAR8b01RUlD0Nm+lPy
+	pnxsFGmTXK8Y1GgdnJPBv4U3y7J4ztQdSPEsJpzw=
+Date: Tue, 14 Jun 2016 11:28:52 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160614011526.GE4882@voom.fritz.box>
+Message-ID: <20160614012852.GF4882@voom.fritz.box>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-2-git-send-email-drjones@redhat.com>
+	<1465580427-13596-3-git-send-email-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="HeFlAV5LIbMFYYuh"
+	protocol="application/pgp-signature"; boundary="rWhLK7VZz0iBluhq"
 Content-Disposition: inline
-In-Reply-To: <1465580427-13596-2-git-send-email-drjones@redhat.com>
+In-Reply-To: <1465580427-13596-3-git-send-email-drjones@redhat.com>
 User-Agent: Mutt/1.6.1 (2016-04-27)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH RFC 01/16] vl: smp_parse: cleanups
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH RFC 02/16] vl: smp: add checks for maxcpus
+ based topologies
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,97 +69,81 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, qemu-devel@nongnu.org,
 	pbonzini@redhat.com, imammedo@redhat.com, dgibson@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cCspdbEEIxjZ
+X-TUID: LS+kNb4NedcU
 
 
---HeFlAV5LIbMFYYuh
+--rWhLK7VZz0iBluhq
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 10, 2016 at 07:40:12PM +0200, Andrew Jones wrote:
-> No functional changes; only some code movement and removal of
-> dead code (impossible conditions). Also, max_cpus can be
-> initialized to 1, like smp_cpus, because it's either set by the
-> user or set to smp_cpus, when smp_cpus is set by the user, or
-> set to 1, when nothing is set.
+On Fri, Jun 10, 2016 at 07:40:13PM +0200, Andrew Jones wrote:
+> smp_parse computes missing smp options. Unfortunately cores and
+> threads are computed by dividing smp_cpus, instead of max_cpus.
+> This is incorrect because the topology doesn't leave room for
+> hotplug. More unfortunately, we can't change it easily, as doing
+> so would impact existing command lines. This patch adds a warning
+> when the topology doesn't add up, and then checks that the topology
+> at least computes when sockets are recalculated. If not, then it
+> does fail.
+>=20
+> Adding the new failure is justified by the fact that we don't
+> store the number of input sockets, and thus all consumers of
+> cpu topology information recalculate it. If they choose to
+> (correctly) calculate it based on maxcpus, then we need to
+> guard them against building topologies which provide more cpu
+> slots than are the maximum allowed cpus.
 >=20
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Hmm.. this makes sense to me.  Except that I've never been clear if
+sockets=3D was supposed to match initial cpus or maxcpus.
 
 > ---
->  vl.c | 34 +++++++++++++++-------------------
->  1 file changed, 15 insertions(+), 19 deletions(-)
+>  vl.c | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
 >=20
 > diff --git a/vl.c b/vl.c
-> index b0bcc255ee9a5..7b96e787922f9 100644
+> index 7b96e787922f9..8d482cb1bf020 100644
 > --- a/vl.c
 > +++ b/vl.c
-> @@ -154,7 +154,7 @@ CharDriverState *sclp_hds[MAX_SCLP_CONSOLES];
->  int win2k_install_hack =3D 0;
->  int singlestep =3D 0;
->  int smp_cpus =3D 1;
-> -int max_cpus =3D 0;
-> +int max_cpus =3D 1;
->  int smp_cores =3D 1;
->  int smp_threads =3D 1;
->  int acpi_enabled =3D 1;
-> @@ -1223,7 +1223,6 @@ static QemuOptsList qemu_smp_opts =3D {
->  static void smp_parse(QemuOpts *opts)
->  {
->      if (opts) {
-> -
->          unsigned cpus    =3D qemu_opt_get_number(opts, "cpus", 0);
+> @@ -1227,6 +1227,7 @@ static void smp_parse(QemuOpts *opts)
 >          unsigned sockets =3D qemu_opt_get_number(opts, "sockets", 0);
 >          unsigned cores   =3D qemu_opt_get_number(opts, "cores", 0);
-> @@ -1251,6 +1250,17 @@ static void smp_parse(QemuOpts *opts)
+>          unsigned threads =3D qemu_opt_get_number(opts, "threads", 0);
+> +        bool sockets_input =3D sockets > 0;
+> =20
+>          /* compute missing values, prefer sockets over cores over thread=
+s */
+>          if (cpus =3D=3D 0 || sockets =3D=3D 0) {
+> @@ -1269,6 +1270,24 @@ static void smp_parse(QemuOpts *opts)
+>              exit(1);
 >          }
 > =20
->          max_cpus =3D qemu_opt_get_number(opts, "maxcpus", cpus);
+> +        if (sockets_input && sockets * cores * threads !=3D max_cpus) {
+> +            unsigned sockets_rounded =3D DIV_ROUND_UP(max_cpus, cores * =
+threads);
 > +
-> +        if (max_cpus > MAX_CPUMASK_BITS) {
-> +            error_report("unsupported number of maxcpus");
-> +            exit(1);
+> +            error_report("warning: cpu topology: "
+> +                         "sockets (%u) * cores (%u) * threads (%u) !=3D "
+> +                         "maxcpus (%u). Trying sockets=3D%u.",
+> +                         sockets, cores, threads, max_cpus, sockets_roun=
+ded);
+> +            sockets =3D sockets_rounded;
+> +
+> +            if (sockets * cores * threads > max_cpus) {
+> +                error_report("cpu topology: "
+> +                             "sockets (%u) * cores (%u) * threads (%u) >=
+ "
+> +                             "maxcpus (%u)",
+> +                             sockets, cores, threads, max_cpus);
+> +                exit(1);
+> +            }
 > +        }
 > +
-> +        if (max_cpus < cpus) {
-> +            error_report("maxcpus must be equal to or greater than smp");
-> +            exit(1);
-> +        }
-> +
->          if (sockets * cores * threads > max_cpus) {
->              error_report("cpu topology: "
->                           "sockets (%u) * cores (%u) * threads (%u) > "
-> @@ -1260,25 +1270,11 @@ static void smp_parse(QemuOpts *opts)
->          }
-> =20
 >          smp_cpus =3D cpus;
-> -        smp_cores =3D cores > 0 ? cores : 1;
-> -        smp_threads =3D threads > 0 ? threads : 1;
-> -
-> -    }
-> -
-> -    if (max_cpus =3D=3D 0) {
-> -        max_cpus =3D smp_cpus;
-> -    }
-> -
-> -    if (max_cpus > MAX_CPUMASK_BITS) {
-> -        error_report("unsupported number of maxcpus");
-> -        exit(1);
-> -    }
-> -    if (max_cpus < smp_cpus) {
-> -        error_report("maxcpus must be equal to or greater than smp");
-> -        exit(1);
-> +        smp_cores =3D cores;
-> +        smp_threads =3D threads;
->      }
-> =20
-> -    if (smp_cpus > 1 || smp_cores > 1 || smp_threads > 1) {
-> +    if (smp_cpus > 1) {
->          Error *blocker =3D NULL;
->          error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
->          replay_add_blocker(blocker);
+>          smp_cores =3D cores;
+>          smp_threads =3D threads;
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -167,25 +151,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---HeFlAV5LIbMFYYuh
+--rWhLK7VZz0iBluhq
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAEBAgAGBQJXX1quAAoJEGw4ysog2bOSAqUP/R2Q/tX70QgME0XMJYxRo0b0
-/zuniIHTGIyOcRltwTq2ZG3i+8iN+EFabyitOvUZVPlIgObCbE6MPATIDrl1ZeMp
-SpAAKrE7nPkjuTIcWo2Zi4xoWrxjPucMukoKXIUW7hoN8eR12fQQzmiz7c4hUuWq
-FAZqvEGNYdJUG3BN6+mBpNl4l5/Uk7/W6b1tDrHiTiyFo1OhFu/SYiz+5z15jNWn
-8BrCsk9cj6PKEHQNVmB62C97gOfmBhCFckFqlYf9hdNOgj1ANaIcDVjzX2uoXo7Y
-plrW8MLelJOv6Ign9fvngkWlapqA0QYxUeWOe9WwK7yBuFLYbu1osW4mmALQyEpL
-N91Qst/QpCk+wUaITysOsPNHjmN9nJYxuNysFBEBLLYMAcJUZYiClp7QDR9n+SL8
-wqKD+6J4Q5FjIrdrDA7XoEC1O54gNZyQuLO/OxOAwp9HWUGivk3qV0ATuMfDuJz5
-9Yw0U0OJRbPNbMo2eDSVCPk7hPc8GqM/W9Ih2JfuqpiRjol+oaFF1pRgBiueaGjg
-6fRTqSBwRPnEwpLRfd7+tHSX706huv6ARX2rTNUQmmcglzyLvGVfrIaxesx5YTno
-qoFJq0K3j9AiKyUaVd9I8LpgUX8gn9VjOM2rAiLOlOiOZLjUdn+NtQMFywi420Rz
-yO2t4h5L8D/ofe/2/mal
-=Dq9h
+iQIcBAEBAgAGBQJXX13UAAoJEGw4ysog2bOSFdwQAMzJmz+pZN639n1ate/Dd7kq
+BVeOO5MCYUz/AHeWrwiqWyuzYB4VJRg+UdZh/hIZXpw4JDQvYzPzeWK8ZTENuKfL
+hhGlGQTLC9VZ+69t5FiT5awqUR7vAghsZ897RpcoC356IriLnRrOO3yQVgqrBtwm
+Znyyy7xBpm0BJGId/N4Fg1tkQY5EUzeBugq6PiYlbrWS27X99bK/o1UeAvQwG1MZ
+q26Kbz9svdvyNDq58Z/B/f7xHsxj34bGzEFcb/SFCXXhJedDz34lz0xszZLJ5jrK
+YxESsBMIGE90qq+A/6ROEuOcp4OgWe6uBbj5yD24ZQKCeHJzVvSK0UCPVtXwK9op
+GDuauiO7HsfX0WxQ8yfqERvMN1l3nofUkKZtIbyk4pomaIB6PkBYNcJcaCE3piY2
+vVVtiyEaCRoSwOZ5SEUdkO97ZOmaM4p8+KR1ZwyGnILKeBmyUj7i3bhb27Cuedvr
+yk9eTPdZFlqWayjZERa1gcMNLjzjpT7N3p1o9CHrOmFJthG+40OZw9BP9Y4ze5BG
+6H7oSvFYBHt1FRWdPHu6SZeKKVvrBW5TFxVbjy6CshsiFLNkvuijvREJUlRP8bAa
+G9kwgf0GWufHtxQwijLFyhDat/nU9ZawYe7Bc8ywvFJua92JOyVLtDmu9WE/WNij
+ehKHbvyo+4Q+9285NzCQ
+=5Hzb
 -----END PGP SIGNATURE-----
 
---HeFlAV5LIbMFYYuh--
+--rWhLK7VZz0iBluhq--

@@ -1,59 +1,61 @@
-Received: by 10.25.21.96 with SMTP id l93csp155091lfi;
-        Tue, 14 Jun 2016 09:15:59 -0700 (PDT)
-X-Received: by 10.140.233.4 with SMTP id e4mr20822469qhc.90.1465920959631;
-        Tue, 14 Jun 2016 09:15:59 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp208939lfi;
+        Tue, 14 Jun 2016 11:40:52 -0700 (PDT)
+X-Received: by 10.140.23.198 with SMTP id 64mr1760550qgp.62.1465929651916;
+        Tue, 14 Jun 2016 11:40:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m2si18873208qkc.42.2016.06.14.09.15.59
+        by mx.google.com with ESMTPS id c130si16813707qkb.126.2016.06.14.11.40.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Jun 2016 09:15:59 -0700 (PDT)
+        Tue, 14 Jun 2016 11:40:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36491 helo=lists.gnu.org)
+Received: from localhost ([::1]:37466 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCr0Q-0005Zh-QB
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 12:15:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43057)
+	id 1bCtGd-0004sv-Ck
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 14:40:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bCqJS-0004XV-4Y
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 11:31:35 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bCtGZ-0004r5-Sc
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 14:40:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bCqJN-0004m9-5M
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 11:31:33 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:31748)
+	(envelope-from <ehabkost@redhat.com>) id 1bCtGV-0000SJ-MM
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 14:40:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54445)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Maciej.Rozycki@imgtec.com>)
-	id 1bCqJM-0004lv-VF; Tue, 14 Jun 2016 11:31:29 -0400
-Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
-	by Forcepoint Email with ESMTPS id 90824C9522447;
-	Tue, 14 Jun 2016 16:31:21 +0100 (IST)
-Received: from [10.20.78.165] (10.20.78.165) by HHMAIL01.hh.imgtec.org
-	(10.100.10.21) with Microsoft SMTP Server id 14.3.294.0;
-	Tue, 14 Jun 2016 16:31:23 +0100
-Date: Tue, 14 Jun 2016 16:30:55 +0100
-From: "Maciej W. Rozycki" <macro@imgtec.com>
-To: Leon Alrae <leon.alrae@imgtec.com>
-In-Reply-To: <20160614141753.GD13260@hhmipssw201.hh.imgtec.org>
-Message-ID: <alpine.DEB.2.00.1606141629380.7182@tp.orcam.me.uk>
-References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
-	<1463407965-19733-9-git-send-email-aleksandar.markovic@rt-rk.com>
-	<alpine.DEB.2.00.1606071221480.9917@tp.orcam.me.uk>
-	<EF5FA6C3467F85449672C3E735957B85916B85AC@BADAG02.ba.imgtec.org>
-	<alpine.DEB.2.00.1606101132270.10382@tp.orcam.me.uk>
-	<EF5FA6C3467F85449672C3E735957B85916B87C8@BADAG02.ba.imgtec.org>
-	<alpine.DEB.2.00.1606102045400.10382@tp.orcam.me.uk>
-	<20160614141753.GD13260@hhmipssw201.hh.imgtec.org>
-User-Agent: Alpine 2.00 (DEB 1167 2008-08-23)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bCtGV-0000SC-Gf; Tue, 14 Jun 2016 14:40:43 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4E32037E71;
+	Tue, 14 Jun 2016 18:40:41 +0000 (UTC)
+Received: from localhost (vpn1-7-151.gru2.redhat.com [10.97.7.151])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5EIeZcf001355; Tue, 14 Jun 2016 14:40:35 -0400
+Date: Tue, 14 Jun 2016 15:40:34 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Sergey Sorokin <afarallax@yandex.ru>
+Message-ID: <20160614184034.GX18662@thinpad.lan.raisama.net>
+References: <1465575999-3594234-1-git-send-email-afarallax@yandex.ru>
+	<1465575999-3594234-3-git-send-email-afarallax@yandex.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-X-Originating-IP: [10.20.78.165]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-arm] [PATCH v6 8/9] target-mips: Add nan2008 flavor of
- <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1465575999-3594234-3-git-send-email-afarallax@yandex.ru>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 14 Jun 2016 18:40:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 2/2] Fix a confusing argument name in
+ tlb_fill() function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,38 +67,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"proljc@gmail.com" <proljc@gmail.com>,
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"agraf@suse.de" <agraf@suse.de>,
-	Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
-	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
-	Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
-	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
-	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	"afaerber@suse.de" <afaerber@suse.de>,
-	Aurelien Jarno <aurelien@aurel32.net>, "rth@twiddle.net" <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Jia Liu <proljc@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mHbHy2OVUyoB
+X-TUID: tocvm0p9bY9B
 
-On Tue, 14 Jun 2016, Leon Alrae wrote:
-
-> > 1. A bug fix for SoftFloat legacy-NaN (original) MIPS support, which has 
-> >    been there probably since forever (i.e. since the MIPS target was added 
-> >    to QEMU).
+On Fri, Jun 10, 2016 at 07:26:39PM +0300, Sergey Sorokin wrote:
+> The function tlb_fill() is called with access type argument which is named
+> 'is_write' in its declaration. The patch fixes the argument name
+> to avoid a confusion.
 > 
-> I've just done another round of review and as far as I can tell these
-> patches don't modify the legacy-NaN MIPS behaviour. I believe Aleksandar
-> was referring to new functionality (i.e. 2008 NaN) only.
+> Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
 
- Well, if there's a bug, then it needs to be fixed rather than documented.
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 
-  Maciej
+-- 
+Eduardo

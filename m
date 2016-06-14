@@ -1,58 +1,58 @@
-Received: by 10.25.85.209 with SMTP id j200csp1480347lfb;
-        Mon, 13 Jun 2016 18:36:02 -0700 (PDT)
-X-Received: by 10.55.146.71 with SMTP id u68mr17224381qkd.30.1465868162647;
-        Mon, 13 Jun 2016 18:36:02 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1480372lfb;
+        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
+X-Received: by 10.140.143.79 with SMTP id 76mr17329808qhp.72.1465868167449;
+        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y128si14101399qhe.34.2016.06.13.18.36.02
+        by mx.google.com with ESMTPS id q79si8819946qhb.121.2016.06.13.18.36.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 18:36:02 -0700 (PDT)
+        Mon, 13 Jun 2016 18:36:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60368 helo=lists.gnu.org)
+Received: from localhost ([::1]:60369 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCdGs-0002DA-3p
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 21:36:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57196)
+	id 1bCdGw-0002Et-Pl
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 21:36:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCdGo-0002BP-Ck
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:35:59 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bCdGq-0002CI-DQ
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:36:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCdGm-0007Dg-6p
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:35:57 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:36420)
+	(envelope-from <dgibson@ozlabs.org>) id 1bCdGo-0007E9-8U
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:35:59 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:58268)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dgibson@ozlabs.org>)
-	id 1bCdGl-0007DZ-NG; Mon, 13 Jun 2016 21:35:56 -0400
+	id 1bCdGn-0007Da-SI; Mon, 13 Jun 2016 21:35:58 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3rTC090FtRz9t0Z; Tue, 14 Jun 2016 11:35:52 +1000 (AEST)
+	id 3rTC086gk9z9t10; Tue, 14 Jun 2016 11:35:52 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1465868153;
-	bh=R0849+9ADmrNdp8xSxurauf0UFkdfo31BMIXXo8p71g=;
+	d=gibson.dropbear.id.au; s=201602; t=1465868152;
+	bh=14CE/abHGxgIoyJbrV+B7Nnt5EfqhkrYKSveqf+v0M0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oSzFLf3zc9kbicQ5bJYLSurQUPDuPy/iHq2NxbR+zEqYV29SZGt3F35RgSzmQN5IV
-	MtGnwh/CShxPT5YghB0Ay6QfAonAZe0J3G+MwFfbjK9YEfo81xlilqC0R+EcKskifT
-	PtvYSRE6TXOMNKIZZO7N897POWKHVDSM2TJ5Xbgs=
-Date: Tue, 14 Jun 2016 11:30:37 +1000
+	b=aL6nDYsOt1IgY0ELJuO3apXebjRWR8fEwyvAplg64m1nXOv/4DtUTmgL2T/QJLJGJ
+	GF29HuFr6QzK9q+BGmXQ+CcJWCadE+cPRzTtDGl4eL28eAxp1Y6uPXyD06wZSis5Wd
+	ldJ0AoA8PKQFYkZsiT4t6ty0xZrFMcM7ZJSFWHhU=
+Date: Tue, 14 Jun 2016 11:15:26 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160614013037.GG4882@voom.fritz.box>
+Message-ID: <20160614011526.GE4882@voom.fritz.box>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-5-git-send-email-drjones@redhat.com>
+	<1465580427-13596-2-git-send-email-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="L+ofChggJdETEG3Y"
+	protocol="application/pgp-signature"; boundary="HeFlAV5LIbMFYYuh"
 Content-Disposition: inline
-In-Reply-To: <1465580427-13596-5-git-send-email-drjones@redhat.com>
+In-Reply-To: <1465580427-13596-2-git-send-email-drjones@redhat.com>
 User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH RFC 04/16] hw/core/machine: Introduce pre_init
+Subject: Re: [Qemu-arm] [PATCH RFC 01/16] vl: smp_parse: cleanups
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,77 +69,97 @@ Cc: peter.maydell@linaro.org, ehabkost@redhat.com, qemu-devel@nongnu.org,
 	pbonzini@redhat.com, imammedo@redhat.com, dgibson@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rBhWJB2c0OtB
+X-TUID: cCspdbEEIxjZ
 
 
---L+ofChggJdETEG3Y
+--HeFlAV5LIbMFYYuh
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 10, 2016 at 07:40:15PM +0200, Andrew Jones wrote:
-> From: Igor Mammedov <imammedo@redhat.com>
+On Fri, Jun 10, 2016 at 07:40:12PM +0200, Andrew Jones wrote:
+> No functional changes; only some code movement and removal of
+> dead code (impossible conditions). Also, max_cpus can be
+> initialized to 1, like smp_cpus, because it's either set by the
+> user or set to smp_cpus, when smp_cpus is set by the user, or
+> set to 1, when nothing is set.
 >=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
 
-I think this needs some kind of rationale.
-
-Since with this patch it is called immediately before ->init, I'm not
-really seeing the point of this.
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/core/machine.c   | 6 ++++++
->  include/hw/boards.h | 1 +
->  vl.c                | 1 +
->  3 files changed, 8 insertions(+)
+>  vl.c | 34 +++++++++++++++-------------------
+>  1 file changed, 15 insertions(+), 19 deletions(-)
 >=20
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index ccdd5fa3e7728..3dce9020e510a 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -368,10 +368,16 @@ static void machine_init_notify(Notifier *notifier,=
- void *data)
->      foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
->  }
-> =20
-> +static void machine_pre_init(MachineState *ms)
-> +{
-> +}
-> +
->  static void machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> =20
-> +    mc->pre_init =3D machine_pre_init;
-> +
->      /* Default 128 MB as guest ram size */
->      mc->default_ram_size =3D 128 * M_BYTE;
->      mc->rom_file_has_mr =3D true;
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index d268bd00a9f7d..4e8dc68b07a24 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -92,6 +92,7 @@ struct MachineClass {
->      const char *alias;
->      const char *desc;
-> =20
-> +    void (*pre_init)(MachineState *state);
->      void (*init)(MachineState *state);
->      void (*reset)(void);
->      void (*hot_add_cpu)(const int64_t id, Error **errp);
 > diff --git a/vl.c b/vl.c
-> index 8d482cb1bf020..4849dd465d667 100644
+> index b0bcc255ee9a5..7b96e787922f9 100644
 > --- a/vl.c
 > +++ b/vl.c
-> @@ -4500,6 +4500,7 @@ int main(int argc, char **argv, char **envp)
->      current_machine->boot_order =3D boot_order;
->      current_machine->cpu_model =3D cpu_model;
+> @@ -154,7 +154,7 @@ CharDriverState *sclp_hds[MAX_SCLP_CONSOLES];
+>  int win2k_install_hack =3D 0;
+>  int singlestep =3D 0;
+>  int smp_cpus =3D 1;
+> -int max_cpus =3D 0;
+> +int max_cpus =3D 1;
+>  int smp_cores =3D 1;
+>  int smp_threads =3D 1;
+>  int acpi_enabled =3D 1;
+> @@ -1223,7 +1223,6 @@ static QemuOptsList qemu_smp_opts =3D {
+>  static void smp_parse(QemuOpts *opts)
+>  {
+>      if (opts) {
+> -
+>          unsigned cpus    =3D qemu_opt_get_number(opts, "cpus", 0);
+>          unsigned sockets =3D qemu_opt_get_number(opts, "sockets", 0);
+>          unsigned cores   =3D qemu_opt_get_number(opts, "cores", 0);
+> @@ -1251,6 +1250,17 @@ static void smp_parse(QemuOpts *opts)
+>          }
 > =20
-> +    machine_class->pre_init(current_machine);
->      machine_class->init(current_machine);
+>          max_cpus =3D qemu_opt_get_number(opts, "maxcpus", cpus);
+> +
+> +        if (max_cpus > MAX_CPUMASK_BITS) {
+> +            error_report("unsupported number of maxcpus");
+> +            exit(1);
+> +        }
+> +
+> +        if (max_cpus < cpus) {
+> +            error_report("maxcpus must be equal to or greater than smp");
+> +            exit(1);
+> +        }
+> +
+>          if (sockets * cores * threads > max_cpus) {
+>              error_report("cpu topology: "
+>                           "sockets (%u) * cores (%u) * threads (%u) > "
+> @@ -1260,25 +1270,11 @@ static void smp_parse(QemuOpts *opts)
+>          }
 > =20
->      realtime_init();
+>          smp_cpus =3D cpus;
+> -        smp_cores =3D cores > 0 ? cores : 1;
+> -        smp_threads =3D threads > 0 ? threads : 1;
+> -
+> -    }
+> -
+> -    if (max_cpus =3D=3D 0) {
+> -        max_cpus =3D smp_cpus;
+> -    }
+> -
+> -    if (max_cpus > MAX_CPUMASK_BITS) {
+> -        error_report("unsupported number of maxcpus");
+> -        exit(1);
+> -    }
+> -    if (max_cpus < smp_cpus) {
+> -        error_report("maxcpus must be equal to or greater than smp");
+> -        exit(1);
+> +        smp_cores =3D cores;
+> +        smp_threads =3D threads;
+>      }
+> =20
+> -    if (smp_cpus > 1 || smp_cores > 1 || smp_threads > 1) {
+> +    if (smp_cpus > 1) {
+>          Error *blocker =3D NULL;
+>          error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
+>          replay_add_blocker(blocker);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -147,25 +167,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---L+ofChggJdETEG3Y
+--HeFlAV5LIbMFYYuh
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAEBAgAGBQJXX148AAoJEGw4ysog2bOS434P/iVmjG8WvQfaauxrKQ2qJFYw
-wc6Vw/17uKner0roFMU1fwgic2gLrWxKsj90VDc0NO0zRWPjVcYO6J69aptNOzRr
-2+myPILXUj8TtCGPlOYE7ynnWVRh4EG7E1yUwxhmt82OzqJDCkoluU4gqLHZpASl
-vAmgg0+BjNDjJqptMgT3bA0cmQ3Ln6Jeabd2Ifp3oqCCWPxVO8FXjuyWcOqbYrpb
-F3jrqNDpw+VKWHgJ88R1RhdBH784wt3bDKY/t08VdRveKEUBwvoMZoYK9DkJR1mL
-gW2ZKO9DjyYltjSYDGkakKnpWCKgafFQB24PA8CU7S8alaXLXuOQw2ykdGxuQA9r
-dtaRSFx2InAI+H2hKM05wO709ZMUgS/gXgERjeAs+jPpsYJL3xml9h9VSHZyT48b
-JkNQiT9VChRVgMO9G0LXEKi/MF5bbagOTv2FfLQLbDfyJt05qQ80fZnFefLeCI1v
-kcdihvdOziRH3q8UGFpPwzoZeq8eACCryF9FJwUujLzD/RlsV4hfbS2wTS+v+v8P
-JNJI6rdFIdgKZIYGULikY1CTk+kDd2qHqf6tYcSPQTi2gQGmJBVwVuajc8OENlBr
-LWFZ64uQXUiHJJheU3DVaawItMiaNMOFWmXfOhKNtgnuUeSgt2G8ZHt8eZldaGl5
-dgx2R9/IJb7IjSeI9hSt
-=mCMz
+iQIcBAEBAgAGBQJXX1quAAoJEGw4ysog2bOSAqUP/R2Q/tX70QgME0XMJYxRo0b0
+/zuniIHTGIyOcRltwTq2ZG3i+8iN+EFabyitOvUZVPlIgObCbE6MPATIDrl1ZeMp
+SpAAKrE7nPkjuTIcWo2Zi4xoWrxjPucMukoKXIUW7hoN8eR12fQQzmiz7c4hUuWq
+FAZqvEGNYdJUG3BN6+mBpNl4l5/Uk7/W6b1tDrHiTiyFo1OhFu/SYiz+5z15jNWn
+8BrCsk9cj6PKEHQNVmB62C97gOfmBhCFckFqlYf9hdNOgj1ANaIcDVjzX2uoXo7Y
+plrW8MLelJOv6Ign9fvngkWlapqA0QYxUeWOe9WwK7yBuFLYbu1osW4mmALQyEpL
+N91Qst/QpCk+wUaITysOsPNHjmN9nJYxuNysFBEBLLYMAcJUZYiClp7QDR9n+SL8
+wqKD+6J4Q5FjIrdrDA7XoEC1O54gNZyQuLO/OxOAwp9HWUGivk3qV0ATuMfDuJz5
+9Yw0U0OJRbPNbMo2eDSVCPk7hPc8GqM/W9Ih2JfuqpiRjol+oaFF1pRgBiueaGjg
+6fRTqSBwRPnEwpLRfd7+tHSX706huv6ARX2rTNUQmmcglzyLvGVfrIaxesx5YTno
+qoFJq0K3j9AiKyUaVd9I8LpgUX8gn9VjOM2rAiLOlOiOZLjUdn+NtQMFywi420Rz
+yO2t4h5L8D/ofe/2/mal
+=Dq9h
 -----END PGP SIGNATURE-----
 
---L+ofChggJdETEG3Y--
+--HeFlAV5LIbMFYYuh--

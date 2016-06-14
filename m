@@ -1,28 +1,28 @@
-Received: by 10.25.21.96 with SMTP id l93csp269655lfi;
-        Tue, 14 Jun 2016 14:52:40 -0700 (PDT)
-X-Received: by 10.55.25.155 with SMTP id 27mr23240817qkz.61.1465941160565;
-        Tue, 14 Jun 2016 14:52:40 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp270160lfi;
+        Tue, 14 Jun 2016 14:54:38 -0700 (PDT)
+X-Received: by 10.55.148.130 with SMTP id w124mr23133597qkd.203.1465941278853;
+        Tue, 14 Jun 2016 14:54:38 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p37si17648564qgp.22.2016.06.14.14.52.40
+        by mx.google.com with ESMTPS id s201si19775500qke.179.2016.06.14.14.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Jun 2016 14:52:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 14 Jun 2016 14:54:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38417 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38424 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCwGF-0002hY-S8
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 17:52:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35049)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bCwIA-0004c5-8g
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 17:54:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bCwCJ-0007QE-LO
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 17:48:36 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bCwCN-0007TE-7v
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 17:48:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bCwCE-0002hD-MM
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 17:48:34 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bCwCL-0002lB-4p
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 17:48:38 -0400
 Received: from mx1.redhat.com ([209.132.183.28]:60513)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <ehabkost@redhat.com>)
@@ -56,28 +56,29 @@ X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	Tue, 14 Jun 2016 21:48:30 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] Handling errors caused by -global (was Re:
- [Qemu-devel] [PATCH v2 4/6] cpu: use CPUClass->parse_features() as
- convertor to global properties)
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] Handling errors caused by -global (was Re: [PATCH
+ v2 4/6] cpu: use CPUClass->parse_features() as convertor to global
+ properties)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter maydell <peter.maydell@linaro.org>,
 	mark cave-ayland <mark.cave-ayland@ilande.co.uk>,
 	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
 	blauwirbel@gmail.com, qemu-arm@nongnu.org,
 	Igor Mammedov <imammedo@redhat.com>, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2Nl8zBPzQ1KQ
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2X6kCubqbnvY
+Message-ID: <20160614214827.8dANqyLEfkklKOWqqJAgJws9wn1HUV7CHQu6RrMg9ek@z>
 
 On Tue, Jun 14, 2016 at 05:41:03PM -0400, Paolo Bonzini wrote:
 > 

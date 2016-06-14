@@ -1,81 +1,107 @@
-Received: by 10.25.21.96 with SMTP id l93csp66628lfi;
-        Tue, 14 Jun 2016 05:51:58 -0700 (PDT)
-X-Received: by 10.159.37.196 with SMTP id 62mr8538418uaf.68.1465908718791;
-        Tue, 14 Jun 2016 05:51:58 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x230.google.com (mail-vk0-x230.google.com. [2607:f8b0:400c:c05::230])
-        by mx.google.com with ESMTPS id a192si9833324vkf.47.2016.06.14.05.51.58
+Received: by 10.25.21.96 with SMTP id l93csp83487lfi;
+        Tue, 14 Jun 2016 06:30:11 -0700 (PDT)
+X-Received: by 10.55.89.131 with SMTP id n125mr20782262qkb.143.1465911010976;
+        Tue, 14 Jun 2016 06:30:10 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id x6si18357636qhc.41.2016.06.14.06.30.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Jun 2016 05:51:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) client-ip=2607:f8b0:400c:c05::230;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 14 Jun 2016 06:30:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::230 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-vk0-x230.google.com with SMTP id t129so91634359vka.1
-        for <alex.bennee@linaro.org>; Tue, 14 Jun 2016 05:51:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=qPrX203Q5sxwv8xSqFrtEopRuffgo86Dzyy/C2cJ4uo=;
-        b=YN6he6yz22kcVs2YQIA4Bst9UjC69aWUuwkZA41qK6LM8o7xpB6cDhvPOAd2nseclP
-         XjIjqJmZMSfk5bhAy918RRbUtVlGsQSLCjwN8MoFvFQ9EdHsnazh7dkD4dURZ3vxkO4H
-         +qgRRiHyXzmXt0PGjeKKWYoCupkHrYTxAjNF4=
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35267 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bCoPy-0002hf-C6
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 09:30:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49939)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bCo8i-0002M7-70
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 09:12:21 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bCo8d-00087I-C1
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 09:12:19 -0400
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35036)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bCo8c-000873-4H
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 09:12:15 -0400
+Received: by mail-vk0-x235.google.com with SMTP id j2so43997532vkg.2
+	for <qemu-devel@nongnu.org>; Tue, 14 Jun 2016 06:12:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=FwadO3g1TlkYJhAZrqbOftUIG6DoLvSApKIkqfIKs7s=;
+	b=ZBEyY+d8BIe/vFHOp1n6ubSwWIA8WSmzg8qnX5e2W6Z2vdCPNE8Dyj5ZRUttL9WJ0j
+	TJVfy5qr/CG7lPv+SJv8t4mSW+MIkLJPlxl6+oXnoEtht4o/Tfc2jEEipBP/FZ0KmxhB
+	luVKoKVApT26E+PTzyyZlSgHz/sF5mvjy8tuk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=qPrX203Q5sxwv8xSqFrtEopRuffgo86Dzyy/C2cJ4uo=;
-        b=XmuIvINp8pMET3SCMgkVjNKnTT79TJqQMSfxP6D4R0UaHdpp7CIYP5QqQRSqutFnom
-         FD7hwVV06mHbWoXBKsBVIlq+QpypElA3+tx0MwMj64al1OB8tLeKw0oN17rXDnT5deMK
-         vb4SbL1Cgot3vahWITNWvyeL0DADMaH9t5MxNO5gk82M1JR3eYrvdQCrR845BL+qSJto
-         asJcuPn+r458xlfWhqS/F02WwnvdwwPbjQa6eUxXATMiBgj9NGo6ILp72MkQ883kcMS8
-         XuHWrab5VrmrkEsvmmJXwMEFXJykxkzcrtjG59S3NUUWUI4o2xRkjR3ERDgqC+/dWWci
-         AWuw==
-X-Gm-Message-State: ALyK8tKRofUysHYP2M0o1v1Ow7Nzs94VyCepIg2bM6a4QBJ8oKbuZlo8DRF6N+aHtPIbRQpf5DGke0wKFSqrzwgcnAo=
-X-Received: by 10.176.1.238 with SMTP id 101mr5993590ual.119.1465908718438;
- Tue, 14 Jun 2016 05:51:58 -0700 (PDT)
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=FwadO3g1TlkYJhAZrqbOftUIG6DoLvSApKIkqfIKs7s=;
+	b=ZLbQYay64euaS/3T7buDkvvTWt2JE9Fq8ri5U0jsT7ZTrnJb+XfLQI6WEo9xowcNHL
+	XG0TVYUYTCw2J+Ch94dLgFubPk6bEDwOqGTNbsZBBYsLgAZvBe5fbvWfl+Luu6b9PY2/
+	vMZm9XzBDoinH+fJhNpReN38X7wXWkbQ2RRa7aq5LHzi/K1PvzJfXN0hrq+FZEW2y2Jt
+	oTy9YtnmDrZb1EPjdWHh+p0bRh6bS+JGL54SdaGJymAxAyKNE1j9vJvSKhVQvaW67gHV
+	VPfskulw1QJpa5kcabLXsWpW+wF9oZ4ljTyjNfPSU4aLSw5aJKX4M9yseHsLnpA9+G/Y
+	OcgQ==
+X-Gm-Message-State: ALyK8tLiBHccmoFaTlAFnK3EnbAYoqS4XniEF9wSkWcO/AplQ708QyUWXm88OD5e6oquaf7v2BF4TdC4Xa0RSoLo
+X-Received: by 10.31.62.70 with SMTP id l67mr8653348vka.92.1465909933680; Tue,
+	14 Jun 2016 06:12:13 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.97.68 with HTTP; Tue, 14 Jun 2016 05:51:39 -0700 (PDT)
-In-Reply-To: <1465746713-30414-1-git-send-email-drjones@redhat.com>
-References: <1465746713-30414-1-git-send-email-drjones@redhat.com>
+Received: by 10.31.97.68 with HTTP; Tue, 14 Jun 2016 06:11:54 -0700 (PDT)
+In-Reply-To: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
+References: <1465815255-21776-1-git-send-email-zxq_yx_007@163.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Jun 2016 13:51:39 +0100
-Message-ID: <CAFEAcA-Z=8sj0RqOZF_jkQ+KZQnebm-TxHNfJdcFodci+UKsjw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] create the mach-virt 2.7 machine type
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Wei Huang <wei@redhat.com>
+Date: Tue, 14 Jun 2016 14:11:54 +0100
+Message-ID: <CAFEAcA-wnV1Zp=S82eWio2eewHpHn0OGFMaY34XQCeb_JBYxoQ@mail.gmail.com>
+To: xiaoqiang zhao <zxq_yx_007@163.com>
 Content-Type: text/plain; charset=UTF-8
-X-TUID: +XLwIixokGMq
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::235
+Subject: Re: [Qemu-devel] [RESEND PATCH 00/12] some ARM platform QOM'ify
+ work (resend)
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lZvzkzgBbTy/
 
-On 12 June 2016 at 16:51, Andrew Jones <drjones@redhat.com> wrote:
-> v2:
->  - drop 'is_default' setting [Peter]
->  - fix checkpatch warning [Peter]
->  - add a couple R-b's
+On 13 June 2016 at 11:54, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
+> This patch series QOM'ify ARM platform related devices.
+> Where we drop the sysbus init function if possible and use
+> instance_init and DeviceClass::realize function.
 >
-> This is the first new machine type mach-virt has received
-> (2.6 being the first versioned machine type), so we need to
-> do a bit more than the average "new machine type" patch.
-> The first four patches prepare for easy-adding of machine
-> types. The last patch adds the 2.7 type.
+> xiaoqiang zhao (12):
+>   hw/i2c: QOM'ify bitbang_i2c.c
+>   hw/i2c: QOM'ify exynos4210_i2c.c
+>   hw/i2c: QOM'ify omap_i2c.c
+>   hw/i2c: QOM'ify versatile_i2c.c
+>   hw/gpio: QOM'ify omap_gpio.c
+>   hw/gpio: QOM'ify pl061.c
+>   hw/gpio: QOM'ify zaurus.c
+>   hw/misc: QOM'ify arm_l2x0.c
+>   hw/misc: QOM'ify exynos4210_pmu.c
+>   hw/misc: QOM'ify mst_fpga.c
+>   hw/dma: QOM'ify pxa2xx_dma.c
+>   hw/sd: QOM'ify pl181.c
 >
->
-> Andrew Jones (4):
->   hw/arm/virt: separate versioned type-init code
->   hw/arm/virt: introduce DEFINE_VIRT_MACHINE
->   hw/arm/virt: introduce DEFINE_VIRT_MACHINE_AS_LATEST
->   hw/arm/virt: create the 2.7 machine type
->
->  hw/arm/virt.c | 66 ++++++++++++++++++++++++++++++++++++++++++++---------------
->  1 file changed, 50 insertions(+), 16 deletions(-)
 
-
-
-Applied to target-arm.next, thanks.
+Thanks, applied to target-arm.next.
 
 -- PMM

@@ -1,63 +1,65 @@
-Received: by 10.25.141.12 with SMTP id p12csp51568lfd;
-        Mon, 13 Jun 2016 23:08:25 -0700 (PDT)
-X-Received: by 10.140.20.179 with SMTP id 48mr12564847qgj.32.1465884505467;
-        Mon, 13 Jun 2016 23:08:25 -0700 (PDT)
+Received: by 10.25.141.12 with SMTP id p12csp55171lfd;
+        Mon, 13 Jun 2016 23:20:05 -0700 (PDT)
+X-Received: by 10.140.27.212 with SMTP id 78mr17496712qgx.106.1465885204914;
+        Mon, 13 Jun 2016 23:20:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c126si15519221qkf.208.2016.06.13.23.08.25
+        by mx.google.com with ESMTPS id x58si17433984qtx.38.2016.06.13.23.20.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 23:08:25 -0700 (PDT)
+        Mon, 13 Jun 2016 23:20:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:32862 helo=lists.gnu.org)
+Received: from localhost ([::1]:32896 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bChWS-0002uU-RR
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 02:08:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37371)
+	id 1bChhk-0007LM-Bt
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 02:20:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bChWM-0002sF-Ms
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 02:08:20 -0400
+	(envelope-from <drjones@redhat.com>) id 1bChhf-0007Ky-Qk
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 02:20:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bChWH-0006xG-JG
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 02:08:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52030)
+	(envelope-from <drjones@redhat.com>) id 1bChhc-0000q3-KY
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 02:19:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56748)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1bChWH-0006x6-B0; Tue, 14 Jun 2016 02:08:13 -0400
+	id 1bChhc-0000py-Bl; Tue, 14 Jun 2016 02:19:56 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DBC218553F;
-	Tue, 14 Jun 2016 06:08:12 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6A1013F722;
+	Tue, 14 Jun 2016 06:19:55 +0000 (UTC)
 Received: from hawk.localdomain (ovpn-204-35.brq.redhat.com [10.40.204.35])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5E687KL012222
+	id u5E6Jntf018739
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 14 Jun 2016 02:08:10 -0400
-Date: Tue, 14 Jun 2016 08:08:07 +0200
+	verify=NO); Tue, 14 Jun 2016 02:19:52 -0400
+Date: Tue, 14 Jun 2016 08:19:49 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20160614060807.tkdq2dy2kw6d3bw4@hawk.localdomain>
+Message-ID: <20160614061949.eh45x57tdimt6obr@hawk.localdomain>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-6-git-send-email-drjones@redhat.com>
-	<20160614020026.GH4882@voom.fritz.box>
+	<1465580427-13596-8-git-send-email-drjones@redhat.com>
+	<575BB5AB.3010509@redhat.com>
+	<20160612134810.posa6p4wyxhit4yt@hawk.localdomain>
+	<20160614021216.GI4882@voom.fritz.box>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160614020026.GH4882@voom.fritz.box>
+In-Reply-To: <20160614021216.GI4882@voom.fritz.box>
 User-Agent: Mutt/1.5.23.1 (2014-03-12)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 14 Jun 2016 06:08:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 14 Jun 2016 06:19:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 05/16] hw/core/machine: add
- smp properites
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 07/16] qom/cpu: make
+ nr-cores, nr-threads real properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,181 +71,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	imammedo@redhat.com, pbonzini@redhat.com, dgibson@redhat.com
+Cc: peter.maydell@linaro.org, Thomas Huth <thuth@redhat.com>,
+	ehabkost@redhat.com, pbonzini@redhat.com, qemu-devel@nongnu.org,
+	agraf@suse.de, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>, imammedo@redhat.com,
+	dgibson@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UC++/OHhmCAX
+X-TUID: uSd5O9Ek2jHn
 
-On Tue, Jun 14, 2016 at 12:00:26PM +1000, David Gibson wrote:
-> On Fri, Jun 10, 2016 at 07:40:16PM +0200, Andrew Jones wrote:
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  hw/core/machine.c   | 81 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  include/hw/boards.h |  6 ++++
-> >  2 files changed, 87 insertions(+)
+On Tue, Jun 14, 2016 at 12:12:16PM +1000, David Gibson wrote:
+> On Sun, Jun 12, 2016 at 03:48:10PM +0200, Andrew Jones wrote:
+> > On Sat, Jun 11, 2016 at 08:54:35AM +0200, Thomas Huth wrote:
+> > > On 10.06.2016 19:40, Andrew Jones wrote:
+> > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > > ---
+> > > >  qom/cpu.c | 8 ++++++++
+> > > >  1 file changed, 8 insertions(+)
+> > > > 
+> > > > diff --git a/qom/cpu.c b/qom/cpu.c
+> > > > index 751e992de8823..024cda3eb98c8 100644
+> > > > --- a/qom/cpu.c
+> > > > +++ b/qom/cpu.c
+> > > > @@ -28,6 +28,7 @@
+> > > >  #include "exec/log.h"
+> > > >  #include "qemu/error-report.h"
+> > > >  #include "sysemu/sysemu.h"
+> > > > +#include "hw/qdev-properties.h"
+> > > >  
+> > > >  bool cpu_exists(int64_t id)
+> > > >  {
+> > > > @@ -342,6 +343,12 @@ static int64_t cpu_common_get_arch_id(CPUState *cpu)
+> > > >      return cpu->cpu_index;
+> > > >  }
+> > > >  
+> > > > +static Property cpu_common_properties[] = {
+> > > > +    DEFINE_PROP_INT32("nr-cores", CPUState, nr_cores, 1),
+> > > > +    DEFINE_PROP_INT32("nr-threads", CPUState, nr_threads, 1),
+> > > > +    DEFINE_PROP_END_OF_LIST()
+> > > > +};
+> > > 
+> > > Are you aware of the current CPU hotplug discussion that is going on?
 > > 
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index 3dce9020e510a..2625044002e57 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -172,6 +172,53 @@ static void machine_set_dumpdtb(Object *obj, const char *value, Error **errp)
-> >      ms->dumpdtb = g_strdup(value);
-> >  }
-> >  
-> > +static void machine_get_smp(Object *obj, Visitor *v, const char *name,
-> > +                            void *opaque, Error **errp)
-> > +{
-> > +    MachineState *ms = MACHINE(obj);
-> > +    int64_t value;
-> > +
-> > +    if (strncmp(name, "sockets", 7) == 0) {
-> > +        value = ms->sockets;
-> > +    } else if (strncmp(name, "cores", 5) == 0) {
-> > +        value = ms->cores;
-> > +    } else if (strncmp(name, "threads", 7) == 0) {
-> > +        value = ms->threads;
-> > +    } else if (strncmp(name, "maxcpus", 7) == 0) {
-> > +        value = ms->maxcpus;
-> > +    } else if (strncmp(name, "cpus", 4) == 0) {
-> > +        value = ms->cpus;
-> > +    }
-> > +
-> > +    visit_type_int(v, name, &value, errp);
-> > +}
+> > I'm aware of it going on, but haven't been following it.
+> > 
+> > > I'm not very involved there, but I think some of these reworks also move
+> > > "nr_threads" into the CPU state already, e.g. see:
+> > 
+> > nr_threads (and nr_cores) are already state in CPUState. This patch just
+> > exposes that state via properties.
+> > 
+> > > 
+> > > https://github.com/dgibson/qemu/commit/9d07719784ecbeebea71
+> > > 
+> > > ... so you might want to check these patches first to see whether you
+> > > can base your rework on them?
+> > 
+> > Every cpu, and thus every machine, uses CPUState for its cpus. I'm
+> > not sure every machine will want to use that new abstract core class
+> > though. If they did, then we could indeed use nr_threads from there
+> > instead (and remove it from CPUState), but we'd still need nr_cores
+> > from the abstract cpu package class (CPUState).
 > 
-> Any particular for multiplexing all the set / get, rather than having
-> separate callbacks for each property?
-
-Not really. This way just makes denser code. But I'll go whichever
-direction people prefer. Actually I should probably add an
-else { error_report(...) } in either case, which means the multifunction
-direction would still contain strncmps.
-
+> Hmm.  Since the CPUState object represents just a single thread, it
+> seems weird to me that it would have nr_threads and nr_cores
+> information.
 > 
-> > +
-> > +static void machine_set_smp(Object *obj, Visitor *v, const char *name,
-> > +                            void *opaque, Error **errp)
-> > +{
-> > +    MachineState *ms = MACHINE(obj);
-> > +    Error *error = NULL;
-> > +    int64_t value;
-> > +
-> > +    visit_type_int(v, name, &value, &error);
-> > +    if (error) {
-> > +        error_propagate(errp, error);
-> > +        return;
-> > +    }
-> > +
-> > +    if (strncmp(name, "sockets", 7) == 0) {
-> > +        ms->sockets = value;
-> > +    } else if (strncmp(name, "cores", 5) == 0) {
-> > +        ms->cores = value;;
-> > +    } else if (strncmp(name, "threads", 7) == 0) {
-> > +        ms->threads = value;
-> > +    } else if (strncmp(name, "maxcpus", 7) == 0) {
-> > +        ms->maxcpus = value;
-> > +    } else if (strncmp(name, "cpus", 4) == 0) {
-> > +        ms->cpus = value;
-> > +    }
-> > +}
-> > +
-> >  static void machine_get_phandle_start(Object *obj, Visitor *v,
-> >                                        const char *name, void *opaque,
-> >                                        Error **errp)
-> > @@ -368,8 +415,18 @@ static void machine_init_notify(Notifier *notifier, void *data)
-> >      foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
-> >  }
-> >  
-> > +static void machine_set_smp_parameters(MachineState *ms)
-> > +{
-> > +    if (ms->sockets != -1 || ms->cores != -1 || ms->threads != -1 ||
-> > +        ms->maxcpus != -1 || ms->cpus != -1) {
-> > +        error_report("warning: cpu topology: "
-> > +                     "machine properties currently ignored");
-> > +    }
-> > +}
-> > +
-> >  static void machine_pre_init(MachineState *ms)
-> >  {
-> > +    machine_set_smp_parameters(ms);
-> >  }
-> >  
-> >  static void machine_class_init(ObjectClass *oc, void *data)
-> > @@ -403,6 +460,11 @@ static void machine_initfn(Object *obj)
-> >      ms->dump_guest_core = true;
-> >      ms->mem_merge = true;
-> >      ms->enable_graphics = true;
-> > +    ms->sockets = -1;
-> > +    ms->cores = -1;
-> > +    ms->threads = -1;
-> > +    ms->maxcpus = -1;
-> > +    ms->cpus = -1;
-> >  
-> >      object_property_add_str(obj, "accel",
-> >                              machine_get_accel, machine_set_accel, NULL);
-> > @@ -462,6 +524,25 @@ static void machine_initfn(Object *obj)
-> >      object_property_set_description(obj, "dt-compatible",
-> >                                      "Overrides the \"compatible\" property of the dt root node",
-> >                                      NULL);
-> > +    object_property_add(obj, "sockets", "int", machine_get_smp,
-> > +                        machine_set_smp, NULL, NULL, NULL);
-> > +    object_property_set_description(obj, "sockets", "Number of sockets", NULL);
-> > +    object_property_add(obj, "cores", "int", machine_get_smp,
-> > +                        machine_set_smp, NULL, NULL, NULL);
-> > +    object_property_set_description(obj, "cores",
-> > +                                    "Number of cores per socket", NULL);
-> > +    object_property_add(obj, "threads", "int", machine_get_smp,
-> > +                        machine_set_smp, NULL, NULL, NULL);
-> > +    object_property_set_description(obj, "threads",
-> > +                                    "Number of threads per core", NULL);
-> > +    object_property_add(obj, "maxcpus", "int", machine_get_smp,
-> > +                        machine_set_smp, NULL, NULL, NULL);
-> > +    object_property_set_description(obj, "maxcpus", "Maximum number of cpus",
-> > +                                    NULL);
-> > +    object_property_add(obj, "cpus", "int", machine_get_smp,
-> > +                        machine_set_smp, NULL, NULL, NULL);
-> > +    object_property_set_description(obj, "cpus", "Number of online cpus",
-> > +                                    NULL);
-> >      object_property_add_bool(obj, "dump-guest-core",
-> >                               machine_get_dump_guest_core,
-> >                               machine_set_dump_guest_core,
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index 4e8dc68b07a24..53adbfe2a3099 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -166,6 +166,12 @@ struct MachineState {
-> >      char *initrd_filename;
-> >      const char *cpu_model;
-> >      AccelState *accelerator;
-> > +
-> > +    int sockets;
-> > +    int cores;
-> > +    int threads;
-> > +    int maxcpus;
-> > +    int cpus;
-> 
-> Hrm.. as the tests added in earlier patches highlight, essentially one
-> of these properties is redundant.  Is there a reason to include them
-> all, rather than to pick one to drop?
+> Exposing those as properties makes that much worse, because it's now
+> ABI, rather than internal detail we can clean up at some future time.
 
-Well, IMO, only maxcpus could be dropped. I'd prefer not to though
-because it's a convenient state to have pre-calculated, and possibly
-error prone to leave to all users to re-calculate.
+CPUState is supposed to be "State of one CPU core or thread", which
+justifies having nr_threads state, as it may be describing a core.
+I guess there's no justification for having nr_cores in there though.
+I agree adding the Core class is a good idea, assuming it will get used
+by all machines, and CPUState then gets changed to a Thread class. The
+question then, though, is do we also create a Socket class that contains
+nr_cores? And how will a Thread method get that information when it
+needs to emulate, e.g. CPUID, that requires it? It's a bit messy, so
+I'm open to all suggestions on it.
 
 Thanks,
 drew
-
-> 
-> >  };
-> >  
-> >  #define DEFINE_MACHINE(namestr, machine_initfn) \
-> 
-> -- 
-> David Gibson			| I'll have my music baroque, and my code
-> david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-> 				| _way_ _around_!
-> http://www.ozlabs.org/~dgibson
-
-

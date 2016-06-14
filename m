@@ -1,57 +1,63 @@
-Received: by 10.25.85.209 with SMTP id j200csp1469798lfb;
-        Mon, 13 Jun 2016 17:55:49 -0700 (PDT)
-X-Received: by 10.141.0.133 with SMTP id b127mr17942364qhd.9.1465865749870;
-        Mon, 13 Jun 2016 17:55:49 -0700 (PDT)
+Received: by 10.25.85.209 with SMTP id j200csp1484077lfb;
+        Mon, 13 Jun 2016 18:50:57 -0700 (PDT)
+X-Received: by 10.140.233.4 with SMTP id e4mr17521148qhc.90.1465869057392;
+        Mon, 13 Jun 2016 18:50:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h52si16882126qgf.10.2016.06.13.17.55.49
+        by mx.google.com with ESMTPS id g9si14645218qtb.32.2016.06.13.18.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 17:55:49 -0700 (PDT)
+        Mon, 13 Jun 2016 18:50:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60281 helo=lists.gnu.org)
+Received: from localhost ([::1]:60466 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCcdx-0006ET-Aq
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 20:55:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52424)
+	id 1bCdVI-0008JP-QG
+	for alex.bennee@linaro.org; Mon, 13 Jun 2016 21:50:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59169)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCcdo-0006Cv-62
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 20:55:41 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCdVC-0008GF-9e
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:50:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCcdj-0000AK-GD
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 20:55:39 -0400
-Received: from ozlabs.org ([103.22.144.67]:46411)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bCdVA-0001NQ-3A
+	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 21:50:49 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:37116)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>)
-	id 1bCcdi-00009i-8E; Mon, 13 Jun 2016 20:55:35 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3rTB5W0ccLz9sBM; Tue, 14 Jun 2016 10:55:27 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1465865727;
-	bh=l6TwoEk86MCsl5XDRnOowOYVHZcAQB+4sCiRHzZ9B7M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bORGqJq26CXnqNMWgrC+1XqHNM/mFbINGCwC0YlKqv2TOi7LwyADswpuXZbueJDDk
-	9yNbi0kyWVH7Rd9GCn1F/6M0Vt53S57EQW7t2mOSTEUb9k1Q9k8SO8z49he3qtJHRT
-	mA1zjp55qFyyyuozKKTWHAfI9hB3nKYQYBpn1jS8=
-Date: Tue, 14 Jun 2016 10:39:13 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20160614003913.GB4882@voom.fritz.box>
-References: <1465823429-24403-1-git-send-email-kraxel@redhat.com>
-	<1465823429-24403-5-git-send-email-kraxel@redhat.com>
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1bCdV3-0001MU-F2; Mon, 13 Jun 2016 21:50:42 -0400
+Received: from 172.24.1.47 (EHLO szxeml432-hub.china.huawei.com)
+	([172.24.1.47])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id CDF80745; Tue, 14 Jun 2016 09:50:22 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml432-hub.china.huawei.com
+	(10.82.67.209) with Microsoft SMTP Server id 14.3.235.1;
+	Tue, 14 Jun 2016 09:49:42 +0800
+Message-ID: <575F62B2.6030502@huawei.com>
+Date: Tue, 14 Jun 2016 09:49:38 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="hQiwHBbRI9kgIhsi"
-Content-Disposition: inline
-In-Reply-To: <1465823429-24403-5-git-send-email-kraxel@redhat.com>
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-arm] [PULL 4/4] vl: Eliminate usb_enabled()
+To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>
+References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
+	<1464274540-19693-5-git-send-email-peter.maydell@linaro.org>
+In-Reply-To: <1464274540-19693-5-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.575F62E0.0027, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: c1c705d3908a0f9acf711bdfd1adbdd6
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 04/22] target-arm: Provide
+ hook to tell GICv3 about changes of security state
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,230 +69,165 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>, Richard Henderson <rth@twiddle.net>
+Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
+	Shlomo Pongratz <shlomopongratz@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Christoffer Dall <christoffer.dall@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /Yv4CAUvnbBw
+X-TUID: X65Cjmn1d99h
 
 
---hQiwHBbRI9kgIhsi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jun 13, 2016 at 03:10:29PM +0200, Gerd Hoffmann wrote:
-> From: Eduardo Habkost <ehabkost@redhat.com>
->=20
-> This wrapper for machine_usb(current_machine) is not necessary,
-> replace all usages of usb_enabled() with machine_usb().
->=20
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Alexander Graf <agraf@suse.de>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-ppc@nongnu.org
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Message-id: 1465419025-21519-3-git-send-email-ehabkost@redhat.com
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-
-ppc portions
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+On 2016/5/26 22:55, Peter Maydell wrote:
+> The GICv3 CPU interface needs to know when the CPU it is attached
+> to makes an exception level or mode transition that changes the
+> security state, because whether it is asserting IRQ or FIQ can change
+> depending on these things. Provide a mechanism for letting the GICv3
+> device register a hook to be called on such changes.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Shannon Zhao <shannon.zhao@linaro.org>
 
 > ---
->  hw/arm/nseries.c        |  2 +-
->  hw/arm/realview.c       |  2 +-
->  hw/arm/versatilepb.c    |  2 +-
->  hw/i386/pc_piix.c       |  2 +-
->  hw/i386/pc_q35.c        |  2 +-
->  hw/ppc/mac_oldworld.c   |  2 +-
->  hw/ppc/prep.c           |  2 +-
->  include/sysemu/sysemu.h |  1 -
->  vl.c                    | 11 +++--------
->  9 files changed, 10 insertions(+), 16 deletions(-)
->=20
-> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-> index d4eb141..fea911e 100644
-> --- a/hw/arm/nseries.c
-> +++ b/hw/arm/nseries.c
-> @@ -1351,7 +1351,7 @@ static void n8x0_init(MachineState *machine,
->      n8x0_dss_setup(s);
->      n8x0_cbus_setup(s);
->      n8x0_uart_setup(s);
-> -    if (usb_enabled()) {
-> +    if (machine_usb(machine)) {
->          n8x0_usb_setup(s);
->      }
-> =20
-> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-> index 7d0aa6f..8eafcca 100644
-> --- a/hw/arm/realview.c
-> +++ b/hw/arm/realview.c
-> @@ -254,7 +254,7 @@ static void realview_init(MachineState *machine,
->          sysbus_connect_irq(busdev, 2, pic[50]);
->          sysbus_connect_irq(busdev, 3, pic[51]);
->          pci_bus =3D (PCIBus *)qdev_get_child_bus(dev, "pci");
-> -        if (usb_enabled()) {
-> +        if (machine_usb(machine)) {
->              pci_create_simple(pci_bus, -1, "pci-ohci");
->          }
->          n =3D drive_get_max_bus(IF_SCSI);
-> diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-> index 20dd356..8ae5392 100644
-> --- a/hw/arm/versatilepb.c
-> +++ b/hw/arm/versatilepb.c
-> @@ -276,7 +276,7 @@ static void versatile_init(MachineState *machine, int=
- board_id)
->              pci_nic_init_nofail(nd, pci_bus, "rtl8139", NULL);
->          }
->      }
-> -    if (usb_enabled()) {
-> +    if (machine_usb(machine)) {
->          pci_create_simple(pci_bus, -1, "pci-ohci");
->      }
->      n =3D drive_get_max_bus(IF_SCSI);
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 14dd0cc..82c7c0a 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -262,7 +262,7 @@ static void pc_init1(MachineState *machine,
-> =20
->      pc_cmos_init(pcms, idebus[0], idebus[1], rtc_state);
-> =20
-> -    if (pcmc->pci_enabled && usb_enabled()) {
-> +    if (pcmc->pci_enabled && machine_usb(machine)) {
->          pci_create_simple(pci_bus, piix3_devfn + 2, "piix3-usb-uhci");
->      }
-> =20
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 04aae89..31a6a59 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -234,7 +234,7 @@ static void pc_q35_init(MachineState *machine)
->      ide_drive_get(hd, ICH_AHCI(ahci)->ahci.ports);
->      ahci_ide_create_devs(ahci, hd);
-> =20
-> -    if (usb_enabled()) {
-> +    if (machine_usb(machine)) {
->          /* Should we create 6 UHCI according to ich9 spec? */
->          ehci_create_ich9_with_companions(host_bus, 0x1d);
->      }
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index a9bb1c2..4479487 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -309,7 +309,7 @@ static void ppc_heathrow_init(MachineState *machine)
->      dev =3D qdev_create(adb_bus, TYPE_ADB_MOUSE);
->      qdev_init_nofail(dev);
-> =20
-> -    if (usb_enabled()) {
-> +    if (machine_usb(machine)) {
->          pci_create_simple(pci_bus, -1, "pci-ohci");
->      }
-> =20
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 07ffe72..054af1e 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -649,7 +649,7 @@ static void ppc_prep_init(MachineState *machine)
->      memory_region_add_subregion(sysmem, 0xFEFF0000, xcsr);
->  #endif
-> =20
-> -    if (usb_enabled()) {
-> +    if (machine_usb(machine)) {
->          pci_create_simple(pci_bus, -1, "pci-ohci");
->      }
-> =20
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index 9428141..7313673 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -233,7 +233,6 @@ void qemu_boot_set(const char *boot_order, Error **er=
-rp);
->  QemuOpts *qemu_get_machine_opts(void);
-> =20
->  bool defaults_enabled(void);
-> -bool usb_enabled(void);
-> =20
->  extern QemuOptsList qemu_legacy_drive_opts;
->  extern QemuOptsList qemu_common_drive_opts;
-> diff --git a/vl.c b/vl.c
-> index b0bcc25..45eff56 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -1072,11 +1072,6 @@ bool defaults_enabled(void)
->      return has_defaults;
+>  target-arm/cpu.c       |  9 +++++++++
+>  target-arm/cpu.h       | 34 ++++++++++++++++++++++++++++++++++
+>  target-arm/helper.c    |  2 ++
+>  target-arm/internals.h |  8 ++++++++
+>  target-arm/op_helper.c |  4 ++++
+>  5 files changed, 57 insertions(+)
+> 
+> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+> index 3fd0743..0eaa907 100644
+> --- a/target-arm/cpu.c
+> +++ b/target-arm/cpu.c
+> @@ -51,6 +51,15 @@ static bool arm_cpu_has_work(CPUState *cs)
+>           | CPU_INTERRUPT_EXITTB);
 >  }
-> =20
-> -bool usb_enabled(void)
-> -{
-> -    return machine_usb(current_machine);
-> -}
-> -
->  #ifndef _WIN32
->  static int parse_add_fd(void *opaque, QemuOpts *opts, Error **errp)
+>  
+> +void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
+> +                                 void *opaque)
+> +{
+> +    /* We currently only support registering a single hook function */
+> +    assert(!cpu->el_change_hook);
+> +    cpu->el_change_hook = hook;
+> +    cpu->el_change_hook_opaque = opaque;
+> +}
+> +
+>  static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
 >  {
-> @@ -1393,7 +1388,7 @@ static int usb_device_add(const char *devname)
->      const char *p;
+>      /* Reset a single ARMCPRegInfo register */
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 2fa1f41..9b045af 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -504,6 +504,13 @@ typedef struct CPUARMState {
+>  } CPUARMState;
+>  
+>  /**
+> + * ARMELChangeHook:
+> + * type of a function which can be registered via arm_register_el_change_hook()
+> + * to get callbacks when the CPU changes its exception level or mode.
+> + */
+> +typedef void ARMELChangeHook(ARMCPU *cpu, void *opaque);
+> +
+> +/**
+>   * ARMCPU:
+>   * @env: #CPUARMState
+>   *
+> @@ -641,6 +648,9 @@ struct ARMCPU {
+>      /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+>      uint32_t dcz_blocksize;
+>      uint64_t rvbar;
+> +
+> +    ARMELChangeHook *el_change_hook;
+> +    void *el_change_hook_opaque;
+>  };
+>  
+>  static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
+> @@ -2373,4 +2383,28 @@ static inline AddressSpace *arm_addressspace(CPUState *cs, MemTxAttrs attrs)
+>  }
 >  #endif
-> =20
-> -    if (!usb_enabled()) {
-> +    if (!machine_usb(current_machine)) {
->          return -1;
+>  
+> +/**
+> + * arm_register_el_change_hook:
+> + * Register a hook function which will be called back whenever this
+> + * CPU changes exception level or mode. The hook function will be
+> + * passed a pointer to the ARMCPU and the opaque data pointer passed
+> + * to this function when the hook was registered.
+> + *
+> + * Note that we currently only support registering a single hook function,
+> + * and will assert if this function is called twice.
+> + * This facility is intended for the use of the GICv3 emulation.
+> + */
+> +void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHook *hook,
+> +                                 void *opaque);
+> +
+> +/**
+> + * arm_get_el_change_hook_opaque:
+> + * Return the opaque data that will be used by the el_change_hook
+> + * for this CPU.
+> + */
+> +static inline void *arm_get_el_change_hook_opaque(ARMCPU *cpu)
+> +{
+> +    return cpu->el_change_hook_opaque;
+> +}
+> +
+>  #endif
+> diff --git a/target-arm/helper.c b/target-arm/helper.c
+> index e3ea26f..d907598 100644
+> --- a/target-arm/helper.c
+> +++ b/target-arm/helper.c
+> @@ -6496,6 +6496,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
+>          arm_cpu_do_interrupt_aarch32(cs);
 >      }
-> =20
-> @@ -1425,7 +1420,7 @@ static int usb_device_del(const char *devname)
->          return -1;
+>  
+> +    arm_call_el_change_hook(cpu);
+> +
+>      if (!kvm_enabled()) {
+>          cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
 >      }
-> =20
-> -    if (!usb_enabled()) {
-> +    if (!machine_usb(current_machine)) {
->          return -1;
+> diff --git a/target-arm/internals.h b/target-arm/internals.h
+> index a125873..5d8ec43 100644
+> --- a/target-arm/internals.h
+> +++ b/target-arm/internals.h
+> @@ -479,4 +479,12 @@ bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
+>  void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is_write,
+>                                   int is_user, uintptr_t retaddr);
+>  
+> +/* Call the EL change hook if one has been registered */
+> +static inline void arm_call_el_change_hook(ARMCPU *cpu)
+> +{
+> +    if (cpu->el_change_hook) {
+> +        cpu->el_change_hook(cpu, cpu->el_change_hook_opaque);
+> +    }
+> +}
+> +
+>  #endif
+> diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+> index 0b29b9d..8021738 100644
+> --- a/target-arm/op_helper.c
+> +++ b/target-arm/op_helper.c
+> @@ -437,6 +437,8 @@ void HELPER(cpsr_write)(CPUARMState *env, uint32_t val, uint32_t mask)
+>  void HELPER(cpsr_write_eret)(CPUARMState *env, uint32_t val)
+>  {
+>      cpsr_write(env, val, CPSR_ERET_MASK, CPSRWriteExceptionReturn);
+> +
+> +    arm_call_el_change_hook(arm_env_get_cpu(env));
+>  }
+>  
+>  /* Access to user mode registers from privileged modes.  */
+> @@ -932,6 +934,8 @@ void HELPER(exception_return)(CPUARMState *env)
+>          env->pc = env->elr_el[cur_el];
 >      }
-> =20
-> @@ -4501,7 +4496,7 @@ int main(int argc, char **argv, char **envp)
->      }
-> =20
->      /* init USB devices */
-> -    if (usb_enabled()) {
-> +    if (machine_usb(current_machine)) {
->          if (foreach_device_config(DEV_USB, usb_parse) < 0)
->              exit(1);
->      }
+>  
+> +    arm_call_el_change_hook(arm_env_get_cpu(env));
+> +
+>      return;
+>  
+>  illegal_return:
+> 
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+-- 
+Shannon
 
---hQiwHBbRI9kgIhsi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJXX1IxAAoJEGw4ysog2bOS25QQANxDi2DdYbmOihOzxoBJ30Us
-5oKFLl7WIiWwBUrRNEu0HsWYMoxvCvPPQfr2XUldUdlKtQBubP9v+VcvQzjukKHJ
-wTE4xkndftFFrsz1oJgHqIyP0RYO6eYsulww9bGV/+nzeyDWF8/BK6beJteAt1/q
-RnZIpSJYtuIBCRWaxO7ZeOSkcft2d2WE14MrowOwUUFrB7a6YTHET12SUiW8XJ9h
-Tjj6dwDXxSzp0hbVAcyfPaJG+hBEZ3/a389SBEJn1onBhE8vaTiUaLhig3GxgXyr
-5nEAgH0L70cKTzMTvs70o0mJEcvnSetoqQ2hHDQi5ks2jBVChidBuRz3mqMlKRKd
-/J3tiArsGLGD43kLV5/yFs4LrTvODhs4maRRQRfjdKsLBV4MjPLmffTI6Qb9sKWX
-GbMArphOQclnG1iItP3JCVL6r46Qecxpjunc4ON7yU7xeGZvs+2aBit6g19A/1R2
-UgMfO1Zk0aPjo9I+om02IHRd2iI881E/mycbGcTJ0dmUatBDpHlxvorH0zKNE4Mi
-xJ663ZOE6kOXqLNf96Zc6lEmiXQxDgjInEfgmf3j2VPI4VUw4LZWvDmp7JTwj2Y+
-Q9rJKkwHirAcp7aKkDV+53BL34Z5ZGVgOUXAYwW41lr+FKpJboodfVvsEuiVyeNc
-Z3+kguXvyoVP0SqJbrU/
-=bim9
------END PGP SIGNATURE-----
-
---hQiwHBbRI9kgIhsi--

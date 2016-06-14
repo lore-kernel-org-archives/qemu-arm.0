@@ -1,141 +1,139 @@
-Received: by 10.25.21.96 with SMTP id l93csp121686lfi;
-        Tue, 14 Jun 2016 07:58:54 -0700 (PDT)
-X-Received: by 10.55.197.82 with SMTP id p79mr21128790qki.138.1465916334215;
-        Tue, 14 Jun 2016 07:58:54 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp123180lfi;
+        Tue, 14 Jun 2016 08:02:16 -0700 (PDT)
+X-Received: by 10.140.144.204 with SMTP id 195mr20054313qhq.92.1465916536181;
+        Tue, 14 Jun 2016 08:02:16 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 15si18612510qke.117.2016.06.14.07.58.54
+        by mx.google.com with ESMTPS id o202si18639760qke.46.2016.06.14.08.02.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Jun 2016 07:58:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 14 Jun 2016 08:02:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35853 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35901 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCpnp-0005hs-Hs
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 10:58:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44131)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bCpr5-0008DM-EW
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 11:02:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52135)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1bCpAI-0006tf-5W
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 10:18:03 -0400
+	(envelope-from <programmingkidx@gmail.com>) id 1bCpZl-0008Q8-2s
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 10:44:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1bCpAC-0000Sp-VP
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 10:18:02 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:63201)
+	(envelope-from <programmingkidx@gmail.com>) id 1bCpZg-0007LO-Vm
+	for qemu-devel@nongnu.org; Tue, 14 Jun 2016 10:44:21 -0400
+Received: from mail-it0-x234.google.com ([2607:f8b0:4001:c0b::234]:33295)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>)
-	id 1bCpAC-0000Sj-Pp; Tue, 14 Jun 2016 10:17:56 -0400
-Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
-	by Forcepoint Email with ESMTPS id 917C63CF77FAB;
-	Tue, 14 Jun 2016 15:17:51 +0100 (IST)
-Received: from hhmipssw201.hh.imgtec.org (10.100.21.117) by
-	hhmail02.hh.imgtec.org (10.100.10.20) with Microsoft SMTP Server (TLS)
-	id 14.3.294.0; Tue, 14 Jun 2016 15:17:54 +0100
-Date: Tue, 14 Jun 2016 15:17:53 +0100
-From: Leon Alrae <leon.alrae@imgtec.com>
-To: "Maciej W. Rozycki" <macro@imgtec.com>
-Message-ID: <20160614141753.GD13260@hhmipssw201.hh.imgtec.org>
-References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
-	<1463407965-19733-9-git-send-email-aleksandar.markovic@rt-rk.com>
-	<alpine.DEB.2.00.1606071221480.9917@tp.orcam.me.uk>
-	<EF5FA6C3467F85449672C3E735957B85916B85AC@BADAG02.ba.imgtec.org>
-	<alpine.DEB.2.00.1606101132270.10382@tp.orcam.me.uk>
-	<EF5FA6C3467F85449672C3E735957B85916B87C8@BADAG02.ba.imgtec.org>
-	<alpine.DEB.2.00.1606102045400.10382@tp.orcam.me.uk>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.00.1606102045400.10382@tp.orcam.me.uk>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Originating-IP: [10.100.21.117]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-arm] [PATCH v6 8/9] target-mips: Add nan2008 flavor of
- <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <programmingkidx@gmail.com>)
+	id 1bCpZX-0007Ir-BE; Tue, 14 Jun 2016 10:44:07 -0400
+Received: by mail-it0-x234.google.com with SMTP id i6so15461070ith.0;
+	Tue, 14 Jun 2016 07:44:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:mime-version:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=9AmfcCkUSYVMxRm3w42DlzNqi56Gjb4Wt7Id1rE9omo=;
+	b=uxVvaJl60ZtDGWW8XZFN7z7BB2i2iBF0r3qaS7VhBOwIv6WpYkjNiZZZUj5aVmbaGk
+	w3zmpo6M1kPoqlXMyd1cyxepTgLrTCxgghg5IybZZ1fn6JdTgm95xudsM9qOhQN60uQ4
+	XAAE2GpTIspBdM5dUBUf0LDqXGcskb6kK4PfJEntla3lpvHk3IFjLSB9jMCZMJKWMSmv
+	M/lfyZuGzw6lvU8dwA4ogLIe1nuuBiU06rW1uBaqinT/pmCrGiuv+GrPTctmgnG7wOn7
+	efLvpFcnjXslae0P/upRPhAjG9aGiOeFexPXj2RkLkqAlADQGlQgR1VyVKZRO3Oh/5xe
+	Yv6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:mime-version:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=9AmfcCkUSYVMxRm3w42DlzNqi56Gjb4Wt7Id1rE9omo=;
+	b=gAZ3LO//hJQ0QcdP/Nd2Of7Fnafslo7UXfWzczX9svy4w13sXH3AE1dWNJuUGKE5HM
+	flu7zCNRZ0OQs1TbHgfTwWkqMDJUvH4vL/HTrugh7w7jcTzPVKXHLV30km93B1+K4xo2
+	FblqWTVWYY7HO1sfzR5uwq6fsqfvjVfi8evlBr2q3XRRZinnpRkq8p3pGRQ4bDxyzjTV
+	30i1WdkBjOp/JtQtgIokhB7Byd9Olmo0m1PldAyFEFTtE1k5+Zyyvm+ZfR0ehzVJeQXk
+	5Hx1fcK5s9vFjeZFeb2hlqn3i9709z7KtZuaG73Dnafpbp4R+siP7Wr4KrWi2o1X1Ok2
+	COfg==
+X-Gm-Message-State: ALyK8tLna/ljJbBQDOvoLG06KgoawFWx68t59u7IszTHw8YpW8yM4nIDeUWo+tv9Fe6NIQ==
+X-Received: by 10.36.29.199 with SMTP id 190mr8284578itj.99.1465915446444;
+	Tue, 14 Jun 2016 07:44:06 -0700 (PDT)
+Received: from [192.168.0.5] (d199-74-164-53.col.wideopenwest.com.
+	[74.199.53.164]) by smtp.gmail.com with ESMTPSA id
+	f189sm14809861ioe.44.2016.06.14.07.44.04
+	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 14 Jun 2016 07:44:05 -0700 (PDT)
+Mime-Version: 1.0 (Apple Message framework v1084)
+Content-Type: text/plain; charset=us-ascii
+From: Programmingkid <programmingkidx@gmail.com>
+In-Reply-To: <mailman.7015.1465904373.1213.qemu-ppc@nongnu.org>
+Date: Tue, 14 Jun 2016 10:44:03 -0400
+Content-Transfer-Encoding: 7bit
+Message-Id: <2615C07F-1076-4896-BED0-D13155383A33@gmail.com>
+References: <mailman.7015.1465904373.1213.qemu-ppc@nongnu.org>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc-request@nongnu.org
+X-Mailer: Apple Mail (2.1084)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4001:c0b::234
+Subject: Re: [Qemu-devel] [Qemu-ppc] [PATCH RFC 06/16] vl: move smp parsing
+ to machine pre_init
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"proljc@gmail.com" <proljc@gmail.com>,
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"agraf@suse.de" <agraf@suse.de>,
-	Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
-	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
-	Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
-	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
-	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	"afaerber@suse.de" <afaerber@suse.de>,
-	Aurelien Jarno <aurelien@aurel32.net>, "rth@twiddle.net" <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bAFOzBVNwl5v
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, ehabkost@redhat.com,
+	qemu-devel qemu-devel <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>, qemu-arm@nongnu.org,
+	"qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
+	dgibson@redhat.com, imammedo@redhat.com,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Mb1PIf24KBfJ
 
-On Fri, Jun 10, 2016 at 09:12:12PM +0100, Maciej W. Rozycki wrote:
-> On Fri, 10 Jun 2016, Aleksandar Markovic wrote:
-> 
-> > The changes that make QEMU behavior the same as hardware behavior (in 
-> > relation to CEIL, CVT, FLOOR, ROUND, TRUNC Mips instructions) are 
-> > already contained in this patch.
-> 
->  Good, however that means that you've really combined two logically 
-> separate changes into a single patch:
-> 
-> 1. A bug fix for SoftFloat legacy-NaN (original) MIPS support, which has 
->    been there probably since forever (i.e. since the MIPS target was added 
->    to QEMU).
 
-I've just done another round of review and as far as I can tell these
-patches don't modify the legacy-NaN MIPS behaviour. I believe Aleksandar
-was referring to new functionality (i.e. 2008 NaN) only.
+On Jun 14, 2016, at 7:39 AM, qemu-ppc-request@nongnu.org wrote:
 
-Regards,
-Leon
+> On 13/06/2016 22:35, Andrew Jones wrote:
+>> On Mon, Jun 13, 2016 at 07:04:01PM +0200, Paolo Bonzini wrote:
+>>> On 10/06/2016 19:40, Andrew Jones wrote:
+>>>> +    if (sockets == -1 || cores == -1 || threads == -1 ||
+>>>> +        maxcpus == -1 || cpus == -1) {
+>>>> +        error_report("cpu topology: "
+>>>> +                     "all machine properties must be specified");
+>>>> +        exit(1);
+>>>> +    }
+>>>> +
+>>> 
+>>> I think it's sane to accept some defaults.  It must not be the DWIM
+>>> thing that -smp does (which is targeted to Windows's dislike of
+>>> multi-socket machine on consumer hardware).  It must be something that
+>>> makes sense, and my proposal is:
+>>> 
+>>> - threads: 1
+>>> - cores: 1
+>>> - sockets:
+>>>  - maxcpus / (cores * threads) if maxcpus given
+>>>  - cpus / (cores * threads) if cpus given
+>>>  - else 1
+>>> - maxcpus: cores * threads * sockets
+>>> - cpus: maxcpus
+>> 
+>> I think some machines may prefer
+>> 
+>> - threads: 1
+>> - sockets: 1
+>> - cores:
+>>  - maxcpus / (sockets * threads) if maxcpus given
+>>  - cpus / (sockets * threads) if cpus given
+>>  - else 1
+> 
+> smp_cores is only used by pseries and x86 machines.  I expect machines
+> that must be single-socket to disregard smp_sockets altogether.
 
-> 
-> 2. A new feature for 2008-NaN MIPS support.
-> 
-> To me it really looks like the two need to be separate patches, with the 
-> bug fix applied first (or among any other bug fixes at the beginning) in 
-> the patch set, or even as a separate change marked as a prerequisite for 
-> the rest of the changes.
-> 
->  The bug fix will then be self-contained and more prominently exposed, 
-> rather than being buried among feature additions.  It can then be 
-> independently reviewed and likely more easily accepted as long as it is 
-> technically correct.  It can also be cherry-picked and backported easily 
-> if necessary, perhaps outside the upstream tree.
-> 
->  Review of the new feature set can then follow, once the bug(s) have been 
-> fixed.
-> 
-> > I just mentioned Mips-A / Mips-B / SoftFloat differences as an 
-> > explanation/observation related to the change in this patch.
-> 
->  Maybe it's just myself, but from your description I got the impression 
-> that your change preserves the status quo and the explanation merely 
-> serves the purpose of documenting it.  Please consider rewriting it such 
-> that it is unambiguous that the SoftFloat bug is being fixed with your 
-> change.
-> 
->  Obviously once you've made the bug fix a separate change, it'll become 
-> unambiguous naturally, as then you won't have the 2008-NaN feature along 
-> it obfuscating the picture.
-> 
->   Maciej
+Could smp support be added to the beigeg3 and mac99 targets?

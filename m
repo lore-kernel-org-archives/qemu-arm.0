@@ -1,73 +1,65 @@
-Received: by 10.25.21.96 with SMTP id l93csp36898lfi;
-        Tue, 14 Jun 2016 04:36:35 -0700 (PDT)
-X-Received: by 10.140.81.18 with SMTP id e18mr14070157qgd.60.1465904194890;
-        Tue, 14 Jun 2016 04:36:34 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp37917lfi;
+        Tue, 14 Jun 2016 04:39:28 -0700 (PDT)
+X-Received: by 10.200.39.33 with SMTP id g30mr7634966qtg.16.1465904368050;
+        Tue, 14 Jun 2016 04:39:28 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j66si2360209qgf.11.2016.06.14.04.36.34
+        by mx.google.com with ESMTPS id w48si18118976qgw.78.2016.06.14.04.39.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Jun 2016 04:36:34 -0700 (PDT)
+        Tue, 14 Jun 2016 04:39:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34343 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34350 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCme2-00078t-A9
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 07:36:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53615)
+	id 1bCmgp-0000pA-GD
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 07:39:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54177)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCmdx-00078J-3o
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 07:36:30 -0400
+	(envelope-from <drjones@redhat.com>) id 1bCmgd-0000l7-WF
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 07:39:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCmdr-0002az-Ij
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 07:36:28 -0400
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:34526)
+	(envelope-from <drjones@redhat.com>) id 1bCmgX-000353-QF
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 07:39:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60330)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bCmdq-0002al-FI
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 07:36:23 -0400
-Received: by mail-vk0-x229.google.com with SMTP id t129so89125347vka.1
-	for <qemu-arm@nongnu.org>; Tue, 14 Jun 2016 04:36:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=h+trSUBpf3HFuZstp7TXMBII0bAurGmlDKSOUM0UalA=;
-	b=QOnH+FhberziZUf9se1ccFVfISmmXfK7Kgf2/g27YupBXblqOxRMPAWnjAeFOwc0lR
-	ZwOLju9nBqmPoNsX583ew3j6Pk2xzwcYtka6PmejDhunhS13uRa9moD8CGFC7FQdWo1G
-	vz/lgpN+/5T7pvMiXKPYiNj+NdffJNsABTVbg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=h+trSUBpf3HFuZstp7TXMBII0bAurGmlDKSOUM0UalA=;
-	b=QaQWYSeTFn3xtV9ohrJMRms1RtTKop95PkLwFEV7lhNH3nl/d2Tj9P5X6jnEA7zphD
-	0+Gp9yKcp3I9okFA4wXCLFIqTDUjQg4GbkcMP4kuw0a6iCwdu2MeWWC/cqlXWqX+rfAh
-	BR7vpLP4/2x9f2QctgWLv02J+a4Db32fRC8YWTZ2qgmWGL6sPFfaxveK0yPZQGa+rSpp
-	ePxnVca4MATcKG4ciEjPuLjLIWlYl0V8W12ie58VYric2gY41v3NLLKKWXxqtu8+NmUo
-	CZG95hSbkXQAbRz88uHPDAtTTpf49s/X8WfCWFiMFK37tA39QTa0QJykTWtMTOQCkwLu
-	F4Tw==
-X-Gm-Message-State: ALyK8tI1Vw/gUgTt5II/ddPQYjouLmNdOeaNa9kxw1A01fjPfsItl4KQxBI/NMPhwFMFjPuJdVmPvMoug3wil3V5
-X-Received: by 10.31.142.202 with SMTP id q193mr8775111vkd.37.1465904181631;
-	Tue, 14 Jun 2016 04:36:21 -0700 (PDT)
+	(envelope-from <drjones@redhat.com>)
+	id 1bCmgX-00034x-Hh; Tue, 14 Jun 2016 07:39:09 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1A62E3DD47;
+	Tue, 14 Jun 2016 11:39:09 +0000 (UTC)
+Received: from hawk.localdomain (dhcp-1-122.brq.redhat.com [10.34.1.122])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5EBd4Lg004755
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 14 Jun 2016 07:39:06 -0400
+Date: Tue, 14 Jun 2016 13:39:04 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20160614113904.2u5qvf7kasv5hact@hawk.localdomain>
+References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
+	<1465580427-13596-7-git-send-email-drjones@redhat.com>
+	<d4b656c3-757d-7922-bd1b-38b4101a4519@redhat.com>
+	<20160613203529.6ln7dlgnrcgda5x4@hawk.localdomain>
+	<60ee196d-0292-3fb4-5d59-68c2d742eaa4@redhat.com>
 MIME-Version: 1.0
-Received: by 10.31.97.68 with HTTP; Tue, 14 Jun 2016 04:36:02 -0700 (PDT)
-In-Reply-To: <CALicx6tYEX-6u7anPb=kgvOtg4HQriC5oRJPQtZiMipeBJazVw@mail.gmail.com>
-References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
-	<1465808915-4887-5-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA8+qWep8E3+k30n1gTUexoTrqipg=bnxS5yYPNvfFpTYw@mail.gmail.com>
-	<CAFEAcA_dBDhUEZr+mLPJkiiMRyjqUuXMaaYfZX3PUwZdKFk9uA@mail.gmail.com>
-	<CALicx6tYEX-6u7anPb=kgvOtg4HQriC5oRJPQtZiMipeBJazVw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Jun 2016 12:36:02 +0100
-Message-ID: <CAFEAcA-=iT1r1mJgr94JUP9XfMJ2XxxW47pMF3vZ6btdO=MnUw@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <60ee196d-0292-3fb4-5d59-68c2d742eaa4@redhat.com>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 14 Jun 2016 11:39:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Subject: Re: [Qemu-arm] [RFC PATCH v1 4/4] target-arm: Compute page size
- based on ARM target cpu type
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 06/16] vl: move smp parsing
+ to machine pre_init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,67 +71,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Juan Quintela <quintela@redhat.com>,
-	Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Vijaya Kumar K <vijayak@cavium.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	imammedo@redhat.com, dgibson@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BA0DndGJH2h+
+X-TUID: ecrfmCpGT8GB
 
-On 14 June 2016 at 12:14, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Mon, Jun 13, 2016 at 3:40 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 13 June 2016 at 10:43, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 13 June 2016 at 10:08,  <vijayak@caviumnetworks.com> wrote:
->>>> +/*
->>>> + * Holds TARGET_AARCH_64_PAGE_BITS or TARGET_ARM_PAGE_BITS
->>>> + * based on the the cpu type emulated at runtime.
->>>> + */
->>>> +static uint32_t target_page_bits;
->>>
->>> The CPU page size is not specific to the 'virt' board, so this
->>> is the wrong place to do this. You should identify the
->>> page size in arm_cpu_realizefn() based on the set of feature
->>> bits the CPU has: anything with ARM_FEATURE_V7 has a 4K page
->>> table (this includes a lot of 32-bit CPUs).
->
->   cpu_init and cpu_realizefn() of required cpu model is called in
-> machvirt_init(),
-> which is quite late in the initialization sequence.
-> The cpu_exec_init_all() which calls memory_map_init() is called very
-> early stage,
-> is where TARGET_PAGE_BITS information is required.
->
-> In order to get feature information of CPU early, one option is to
-> create cpu object
-> early, initialize it. This means moving some cpu object creation and
-> initalization
-> code from machvirt_init().
+On Tue, Jun 14, 2016 at 10:17:49AM +0200, Paolo Bonzini wrote:
+> 
+> 
+> On 13/06/2016 22:35, Andrew Jones wrote:
+> > On Mon, Jun 13, 2016 at 07:04:01PM +0200, Paolo Bonzini wrote:
+> >> On 10/06/2016 19:40, Andrew Jones wrote:
+> >>> +    if (sockets == -1 || cores == -1 || threads == -1 ||
+> >>> +        maxcpus == -1 || cpus == -1) {
+> >>> +        error_report("cpu topology: "
+> >>> +                     "all machine properties must be specified");
+> >>> +        exit(1);
+> >>> +    }
+> >>> +
+> >>
+> >> I think it's sane to accept some defaults.  It must not be the DWIM
+> >> thing that -smp does (which is targeted to Windows's dislike of
+> >> multi-socket machine on consumer hardware).  It must be something that
+> >> makes sense, and my proposal is:
+> >>
+> >> - threads: 1
+> >> - cores: 1
+> >> - sockets:
+> >>   - maxcpus / (cores * threads) if maxcpus given
+> >>   - cpus / (cores * threads) if cpus given
+> >>   - else 1
+> >> - maxcpus: cores * threads * sockets
+> >> - cpus: maxcpus
+> > 
+> > I think some machines may prefer
+> > 
+> > - threads: 1
+> > - sockets: 1
+> > - cores:
+> >   - maxcpus / (sockets * threads) if maxcpus given
+> >   - cpus / (sockets * threads) if cpus given
+> >   - else 1
+> 
+> smp_cores is only used by pseries and x86 machines.  I expect machines
+> that must be single-socket to disregard smp_sockets altogether.
 
-It would be better to delay the point at which we allocate
-the data structures which care about page size, rather than
-moving init of the CPU earlier.
+mach-virt currently assumes 1 "socket" with N cores when -smp N is used.
+This is because, until recently, ARM machines didn't define sockets. I
+presume the mindset will remain that cpus=N means cores=N even after
+introducing support for multi-socket topology.
 
-Also we should consider what happens if we have decided
-the page size is X, and then a CPU is hotplugged which
-requires a page size Y where Y < X.
+> 
+> >> - any argument < 1
+> > 
+> > What if a user says threads=0, because they don't have HT, and assume
+> > that a value of zero will get them a non-HT system? Or what about
+> > machines that don't describe sockets, so a user inputs zero? In both
+> > those cases I agree we should just use 1, but from a user's perspective,
+> > it might seem weird.
+> 
+> They should just not specify it and get a default of 1. ;)
 
->> Actually that should be "with ARM_FEATURE_V7 and not
->> ARM_FEATURE_MPU", or we'll break the PMSA code.
->>
->> Note that you'll also need to handle systems where the
->> different CPUs in it disagree about the preferred target
->> page size -- the xlnx-ep108 board can have both
->> Cortex-A53 (prefers 4K) and Cortex-R5 (prefers 1K) CPUs in it.
->> "Use the smallest value required by any CPU on the board"
->> is probably the best approach.
->
-> How -cpu options are passed for xlnx-ep108 board in qemu command?
+Yeah, threads, the only one we should never calculate, could be
+optional. If not specified, defaulting to 1 makes perfect sense.
+But, threads=0, which is weird, but in a way specifying that it's
+not specified, also makes some sense.
 
-They aren't -- you always get the cpus the board has in real h/w.
+> 
+> >> - any argument > some compile-time value (1024?) to avoid overflows
+> > 
+> > Agreed. We should do this regardless of this series.
+> > 
+> >> - cpus % (cores * threads) != 0
+> > 
+> > Hmm. This makes sense where cpus is the number of cpu packages,
+> 
+> I'm not sure I understand what you mean here.  The point is that the
+> machine starts with an integral number of sockets.
 
-thanks
--- PMM
+OK, s/cpus/maxcpus/ then. By using the currently online number, I
+thought you were starting to prepare for cpu packages, which are
+indivisible sets of cores and threads. But now that I think about
+it, cpus % (cores * threads) isn't right for that either. It should
+be total-online-threads % (cores * threads) != 0
+
+> 
+> >> - cpus > sockets * cores * threads
+> >> - maxcpus != cores * threads * sockets
+> > 
+> > We check these two (the 2nd added with this series) already.
+> 
+> Yup, I was just making a complete list.
+> 
+> >> Alone the last relation shows that requiring all four of maxcpus, cores,
+> >> threads and sockets is unnecessary. :)
+> > 
+> > Not really. It depends on if you assume sockets, cores or threads to
+> > be the N in maxcpus=N. We could just require sockets, cores, and threads
+> > to be input, which allows us to easily calculate maxcpus, and then set
+> > cpus from that. In that case maxcpus would just be an available input
+> > for sanity checking.
+> 
+> Or you could just specify -machine cpus=16,maxcpus=32 and expect 1
+> core/socket, 1 thread/core, and 16 to 32 sockets.
+
+Or 32 cores/socket (only 16 populated), 1 thread/core
+
+> 
+> >> -smp should do its legacy magic and assign all five values based on it.
+> >> If the results do not match the obvious s/smp/-machine/ command line it
+> >> should warn, and perhaps suggest the equivalent -machine command line.
+> >> It doesn't have to be a minimal command line, just equivalent.
+> > 
+> > This is a good idea. I'm just still not sure what the -machine command
+> > line should/should not assume.
+> 
+> It's okay.  Adding defaults can be done later, as long as strict checks
+> are in place from the beginning and there is a clean separation between
+> -smp defaults and -machine.
+> 
+> Relaxing checks can be done later, so I am much more interested in
+> having strict checks than in having defaults.
+
+Yes, my current thinking (which is always adjustable :-) is to start
+with strict checks, and maybe always have them in this common code.
+Machines that override this can implement defaults based on their
+machine-specific knowledge, allowing the user to get sane topologies
+without really needing to know what they want.
+
+> 
+> Though I think that we can at least agree on defaults for threads,
+> maxcpus and cpus.  The only sticky point is sockets vs. cores.  We can
+> make them both mandatory for now.  That is: cores and sockets are
+> mandatory until we decide which one to default to 1; threads is
+> optional; cpus is mandatory if you want hotplug, otherwise it's
+> redundant; maxcpus is optional and always redundant.
+
+Agreed. I'll do the following for the next round of this series
+
+ threads: 1
+ cores:   required
+ sockets: required
+ maxcpus: maxcpus ? maxcpus : sockets * cores * threads
+ cpus:    cpus ? cpus : maxcpus
+
+If maxcpus is input, it's redundant, but should be sanity checked.
+Maybe the user wants to use the QEMU cmdline to check their math...
+
+Thanks,
+drew

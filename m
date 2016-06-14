@@ -1,63 +1,68 @@
-Received: by 10.25.141.12 with SMTP id p12csp6824lfd;
-        Mon, 13 Jun 2016 20:17:58 -0700 (PDT)
-X-Received: by 10.233.221.130 with SMTP id r124mr12740344qkf.19.1465874278562;
-        Mon, 13 Jun 2016 20:17:58 -0700 (PDT)
+Received: by 10.25.141.12 with SMTP id p12csp37007lfd;
+        Mon, 13 Jun 2016 22:16:46 -0700 (PDT)
+X-Received: by 10.237.49.227 with SMTP id 90mr18258314qth.44.1465881406218;
+        Mon, 13 Jun 2016 22:16:46 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a133si17077202qkc.140.2016.06.13.20.17.58
+        by mx.google.com with ESMTPS id f65si17302556qhe.24.2016.06.13.22.16.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Jun 2016 20:17:58 -0700 (PDT)
+        Mon, 13 Jun 2016 22:16:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail (test mode) header.i=@aj.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60664 helo=lists.gnu.org)
+Received: from localhost ([::1]:60937 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCerV-0005x0-Th
-	for alex.bennee@linaro.org; Mon, 13 Jun 2016 23:17:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43054)
+	id 1bCgiT-0004pa-LY
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 01:16:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bCerM-0005tf-UK
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 23:17:52 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bCgiO-0004pF-FE
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 01:16:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bCerJ-0001VT-L4
-	for qemu-arm@nongnu.org; Mon, 13 Jun 2016 23:17:47 -0400
-Received: from szxga03-in.huawei.com ([119.145.14.66]:49681)
+	(envelope-from <andrew@aj.id.au>) id 1bCgiK-0005L0-Ms
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 01:16:39 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:53858
+	helo=homiemail-a39.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1bCerC-0001TT-Ok; Mon, 13 Jun 2016 23:17:39 -0400
-Received: from 172.24.1.136 (EHLO szxeml425-hub.china.huawei.com)
-	([172.24.1.136])
-	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
-	with ESMTP id CDF91195; Tue, 14 Jun 2016 11:09:57 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml425-hub.china.huawei.com
-	(10.82.67.180) with Microsoft SMTP Server id 14.3.235.1;
-	Tue, 14 Jun 2016 11:09:43 +0800
-Message-ID: <575F7577.1020903@huawei.com>
-Date: Tue, 14 Jun 2016 11:09:43 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-References: <1464274540-19693-1-git-send-email-peter.maydell@linaro.org>
-	<1464274540-19693-13-git-send-email-peter.maydell@linaro.org>
-In-Reply-To: <1464274540-19693-13-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A020204.575F7587.00E9, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 40985381999d27724eaabd7bb55eee8f
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 119.145.14.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 12/22] hw/intc/arm_gicv3:
- Implement GICv3 redistributor registers
+	(envelope-from <andrew@aj.id.au>)
+	id 1bCgiK-0005Kw-B2; Tue, 14 Jun 2016 01:16:36 -0400
+Received: from homiemail-a39.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a39.g.dreamhost.com (Postfix) with ESMTP id E0429150074;
+	Mon, 13 Jun 2016 22:16:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
+	:subject:from:reply-to:to:cc:date:in-reply-to:references
+	:content-type:mime-version; s=aj.id.au; bh=e+y5sjbBEuA7WLmbC+VsY
+	dHQjkc=; b=HUdl4t7h7UaOaMf1gVZA+RU9WYUwBoXEx8aFbx+59vjr3I/F/Tnkk
+	76cF4yOO1BXJieo9ik7eoyYIW0oFn57k55tuHCTc9BIgZZclsOl9+GSafAEbswbG
+	ACqt/3iQAPA5hpr+rAjD0RHShiSx39pbGT60Tg1SsxkLCQdp6potxM=
+Received: from localhost (orion.jms.id.au [119.9.53.35])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a39.g.dreamhost.com (Postfix) with ESMTPSA id C474C15006D; 
+	Mon, 13 Jun 2016 22:16:32 -0700 (PDT)
+Message-ID: <1465881389.2644.14.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 Jun 2016 15:16:29 +1000
+In-Reply-To: <CAFEAcA9OUKDmA_CHXXMOWJCMF+-DeQYvGTY29KRkNktB=nCb_g@mail.gmail.com>
+References: <1464325706-11221-1-git-send-email-andrew@aj.id.au>
+	<CAFEAcA8+3trGJ=6K8fFX4-2Z1N+ZUiBKUcSTR6fYnQtMfNs3rw@mail.gmail.com>
+	<1465520347.16048.180.camel@aj.id.au>
+	<CAFEAcA9OUKDmA_CHXXMOWJCMF+-DeQYvGTY29KRkNktB=nCb_g@mail.gmail.com>
+Organization: IBM OzLabs
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-Mfb4wUvIwWOxB0HA5QvL"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 69.163.253.7
+Subject: Re: [Qemu-arm] [PATCH] hw/timer: Add value matching support to
+ aspeed_timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,436 +74,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, Shlomo Pongratz <shlomo.pongratz@huawei.com>,
-	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Christoffer Dall <christoffer.dall@linaro.org>
+Reply-To: andrew@aj.id.au
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QoNJGCFLQkkD
+X-TUID: tSH6Naw4x67d
 
 
+--=-Mfb4wUvIwWOxB0HA5QvL
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 2016/5/26 22:55, Peter Maydell wrote:
-> From: Shlomo Pongratz <shlomo.pongratz@huawei.com>
-> 
-> Implement the redistributor registers of a GICv3.
-> 
-> Signed-off-by: Shlomo Pongratz <shlomo.pongratz@huawei.com>
-> [PMM: significantly overhauled/rewritten:
->  * use the new data structures
->  * restructure register read/write to handle different width accesses
->    natively, since almost all registers are 32-bit only, rather
->    than implementing everything as byte accesses
->  * implemented security extension support
-> ]
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/Makefile.objs      |   1 +
->  hw/intc/arm_gicv3_redist.c | 495 +++++++++++++++++++++++++++++++++++++++++++++
->  hw/intc/gicv3_internal.h   |   4 +
->  trace-events               |   6 +
->  4 files changed, 506 insertions(+)
->  create mode 100644 hw/intc/arm_gicv3_redist.c
-> 
-> diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-> index a173d29..417db11 100644
-> --- a/hw/intc/Makefile.objs
-> +++ b/hw/intc/Makefile.objs
-> @@ -15,6 +15,7 @@ common-obj-$(CONFIG_ARM_GIC) += arm_gicv2m.o
->  common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_common.o
->  common-obj-$(CONFIG_ARM_GIC) += arm_gicv3.o
->  common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_dist.o
-> +common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_redist.o
->  common-obj-$(CONFIG_OPENPIC) += openpic.o
->  
->  obj-$(CONFIG_APIC) += apic.o apic_common.o
-> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
-> new file mode 100644
-> index 0000000..18dc0c8
-> --- /dev/null
-> +++ b/hw/intc/arm_gicv3_redist.c
-> @@ -0,0 +1,495 @@
-> +/*
-> + * ARM GICv3 emulation: Redistributor
-> + *
-> + * Copyright (c) 2015 Huawei.
-> + * Copyright (c) 2016 Linaro Limited.
-> + * Written by Shlomo Pongratz, Peter Maydell
-> + *
-> + * This code is licensed under the GPL, version 2 or (at your option)
-> + * any later version.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "trace.h"
-> +#include "gicv3_internal.h"
-> +
-> +static uint32_t mask_group(GICv3CPUState *cs, MemTxAttrs attrs)
-> +{
-> +    /* Return a 32-bit mask which should be applied for this set of 32
-> +     * interrupts; each bit is 1 if access is permitted by the
-> +     * combination of attrs.secure and GICR_GROUPR. (GICR_NSACR does
-> +     * not affect config register accesses, unlike GICD_NSACR.)
-> +     */
-> +    if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +        /* bits for Group 0 or Secure Group 1 interrupts are RAZ/WI */
-> +        return cs->gicr_igroupr0;
-> +    }
-> +    return 0xFFFFFFFFU;
-> +}
-> +
-> +static void gicr_write_set_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
-> +                                      uint32_t *reg, uint32_t val)
-> +{
-> +    /* Helper routine to implement writing to a "set-bitmap" register */
-> +    val &= mask_group(cs, attrs);
-> +    *reg |= val;
-> +    gicv3_redist_update(cs);
-> +}
-> +
-> +static void gicr_write_clear_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
-> +                                        uint32_t *reg, uint32_t val)
-> +{
-> +    /* Helper routine to implement writing to a "clear-bitmap" register */
-> +    val &= mask_group(cs, attrs);
-> +    *reg &= ~val;
-> +    gicv3_redist_update(cs);
-> +}
-> +
-> +static uint32_t gicr_read_bitmap_reg(GICv3CPUState *cs, MemTxAttrs attrs,
-> +                                     uint32_t reg)
-> +{
-> +    reg &= mask_group(cs, attrs);
-> +    return reg;
-> +}
-> +
-> +static uint8_t gicr_read_ipriorityr(GICv3CPUState *cs, MemTxAttrs attrs,
-> +                                    int irq)
-> +{
-> +    /* Read the value of GICR_IPRIORITYR<n> for the specified interrupt,
-> +     * honouring security state (these are RAZ/WI for Group 0 or Secure
-> +     * Group 1 interrupts).
-> +     */
-> +    uint32_t prio;
-> +
-> +    prio = cs->gicr_ipriorityr[irq];
-> +
-> +    if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +        if (!(cs->gicr_igroupr0 & (1U << irq))) {
-> +            /* Fields for Group 0 or Secure Group 1 interrupts are RAZ/WI */
-> +            return 0;
-> +        }
-> +        /* NS view of the interrupt priority */
-> +        prio = (prio << 1) & 0xff;
-> +    }
-> +    return prio;
-> +}
-> +
-> +static void gicr_write_ipriorityr(GICv3CPUState *cs, MemTxAttrs attrs, int irq,
-> +                                  uint8_t value)
-> +{
-> +    /* Write the value of GICD_IPRIORITYR<n> for the specified interrupt,
-> +     * honouring security state (these are RAZ/WI for Group 0 or Secure
-> +     * Group 1 interrupts).
-> +     */
-> +    if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +        if (!(cs->gicr_igroupr0 & (1U << irq))) {
-> +            /* Fields for Group 0 or Secure Group 1 interrupts are RAZ/WI */
-> +            return;
-> +        }
-> +        /* NS view of the interrupt priority */
-> +        value = 0x80 | (value >> 1);
-> +    }
-> +    cs->gicr_ipriorityr[irq] = value;
-> +}
-> +
-> +static MemTxResult gicr_readb(GICv3CPUState *cs, hwaddr offset,
-> +                              uint64_t *data, MemTxAttrs attrs)
-> +{
-> +    switch (offset) {
-> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
-> +        *data = gicr_read_ipriorityr(cs, attrs, offset - GICR_IPRIORITYR);
-> +        return MEMTX_OK;
-> +    default:
-> +        return MEMTX_ERROR;
-> +    }
-> +}
-> +
-> +static MemTxResult gicr_writeb(GICv3CPUState *cs, hwaddr offset,
-> +                               uint64_t value, MemTxAttrs attrs)
-> +{
-> +    switch (offset) {
-> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
-> +        gicr_write_ipriorityr(cs, attrs, offset - GICR_IPRIORITYR, value);
-> +        gicv3_redist_update(cs);
-> +        return MEMTX_OK;
-> +    default:
-> +        return MEMTX_ERROR;
-> +    }
-> +}
-> +
-> +static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
-> +                              uint64_t *data, MemTxAttrs attrs)
-> +{
-> +    switch (offset) {
-> +    case GICR_CTLR:
-> +        *data = cs->gicr_ctlr;
-> +        return MEMTX_OK;
-> +    case GICR_IIDR:
-> +        *data = gicv3_iidr();
-> +        return MEMTX_OK;
-> +    case GICR_TYPER:
-> +        *data = extract64(cs->gicr_typer, 0, 32);
-> +        return MEMTX_OK;
-> +    case GICR_TYPER + 4:
-> +        *data = extract64(cs->gicr_typer, 32, 32);
-> +        return MEMTX_OK;
-> +    case GICR_STATUSR:
-> +        /* RAZ/WI for us (this is an optional register and our implementation
-> +         * does not track RO/WO/reserved violations to report them to the guest)
-> +         */
-> +        *data = 0;
-> +        return MEMTX_OK;
-> +    case GICR_WAKER:
-> +        *data = cs->gicr_waker;
-> +        return MEMTX_OK;
-> +    case GICR_PROPBASER:
-> +        *data = extract64(cs->gicr_propbaser, 0, 32);
-> +        return MEMTX_OK;
-> +    case GICR_PROPBASER + 4:
-> +        *data = extract64(cs->gicr_propbaser, 32, 32);
-> +        return MEMTX_OK;
-> +    case GICR_PENDBASER:
-> +        *data = extract64(cs->gicr_pendbaser, 0, 32);
-> +        return MEMTX_OK;
-> +    case GICR_PENDBASER + 4:
-> +        *data = extract64(cs->gicr_pendbaser, 32, 32);
-> +        return MEMTX_OK;
-> +    case GICR_IGROUPR0:
-> +        if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +            *data = 0;
-> +            return MEMTX_OK;
-> +        }
-> +        *data = cs->gicr_igroupr0;
-> +        return MEMTX_OK;
-> +    case GICR_ISENABLER0:
-> +    case GICR_ICENABLER0:
-> +        *data = gicr_read_bitmap_reg(cs, attrs, cs->gicr_ienabler0);
-GICv3 SPEC says when GICD_CTLR.DS == 0, for GICD_ICENABLER<n> bits
-corresponding to Group 0 and Secure Group 1 interrupts are RAZ/WI to
-Non-secure accesses. But for GICR_ICENABLER0 all bits are RAZ/WI to
-Non-secure accesses. It doesn't care the interrupt Group. If so,
-gicr_read_bitmap_reg() wrongly uses the return value of mask_group() as
-the mask.
+On Fri, 2016-06-10 at 11:42 +0100, Peter Maydell wrote:
+> On 10 June 2016 at 01:59, Andrew Jeffery <andrew@aj.id.au> wrote:
+> >=20
+> > On Thu, 2016-06-09 at 19:15 +0100, Peter Maydell wrote:
+> > >=20
+> > > On 27 May 2016 at 06:08, Andrew Jeffery <andrew@aj.id.au> wrote:
+> > > >=20
+> > > >=20
+> > > > Value matching allows Linux to boot with CONFIG_NO_HZ_IDLE=3Dy on t=
+he
+> > > > palmetto-bmc machine. Two match registers are provided for each tim=
+er.
+> > > >=20
+> > > > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> > > > ---
+> > > >=20
+> > > > The change pulls out ptimer in favour of the regular timer infrastr=
+ucture. As a
+> > > > consequence it implements the conversions between ticks and time wh=
+ich feels a
+> > > > little tedious. Any comments there would be appreciated.
+> > > Couple of minor comments below.
+> > >=20
+> > > >=20
+> > > >=20
+> > > > =C2=A0hw/timer/aspeed_timer.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0| 135 ++++++++++++++++++++++++++++++----------
+> > > > =C2=A0include/hw/timer/aspeed_timer.h |=C2=A0=C2=A0=C2=A06 +-
+> > > > =C2=A02 files changed, 105 insertions(+), 36 deletions(-)
+> > > >=20
+> > > > diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> > > > index 4b94808821b4..905de0f788b2 100644
+> > > > --- a/hw/timer/aspeed_timer.c
+> > > > +++ b/hw/timer/aspeed_timer.c
+> > > > @@ -9,13 +9,12 @@
+> > > > =C2=A0 * the COPYING file in the top-level directory.
+> > > > =C2=A0 */
+> > > >=20
+> > > > +#include
+> > > > =C2=A0#include "qemu/osdep.h"
+> > > osdep.h must always be the first include.
+> > Thanks for picking that up.
+> If you like you can run scripts/clean-includes file ...
+> and it will automatically make any necessary changes like this to
+> your files.
 
-> +        return MEMTX_OK;
-> +    case GICR_ISPENDR0:
-> +    case GICR_ICPENDR0:
-> +    {
-> +        /* The pending register reads as the logical OR of the pending
-> +         * latch and the input line level for level-triggered interrupts.
-> +         */
-> +        uint32_t val = cs->gicr_ipendr0 | (~cs->edge_trigger & cs->level);
-> +        *data = gicr_read_bitmap_reg(cs, attrs, val);
-> +        return MEMTX_OK;
-> +    }
-> +    case GICR_ISACTIVER0:
-> +    case GICR_ICACTIVER0:
-> +        *data = gicr_read_bitmap_reg(cs, attrs, cs->gicr_iactiver0);
-> +        return MEMTX_OK;
-> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
-> +    {
-> +        int i, irq = offset - GICR_IPRIORITYR;
-> +        uint32_t value = 0;
-> +
-> +        for (i = irq + 3; i >= irq; i--, value <<= 8) {
-> +            value |= gicr_read_ipriorityr(cs, attrs, i);
-> +        }
-> +        *data = value;
-> +        return MEMTX_OK;
-> +    }
-> +    case GICR_ICFGR0:
-> +    case GICR_ICFGR1:
-> +    {
-> +        /* Our edge_trigger bitmap is one bit per irq; take the correct
-> +         * half of it, and spread it out into the odd bits.
-> +         */
-> +        uint32_t value;
-> +
-> +        value = cs->edge_trigger & mask_group(cs, attrs);
-For GICR_ICFGR0, it doesn't need to use mask_group() as mask because the
-SPEC doesn't say it's RAZ/WI to a Group 0 or Secure Group 1 interrupt.
+Thanks, I'll add that to my submission checklist
 
-> +        value = extract32(value, (offset == GICR_ICFGR1) ? 16 : 0, 16);
-> +        value = half_shuffle32(value) << 1;
-> +        *data = value;
-> +        return MEMTX_OK;
-> +    }
-> +    case GICR_IGRPMODR0:
-> +        if ((cs->gic->gicd_ctlr & GICD_CTLR_DS) || !attrs.secure) {
-> +            /* RAZ/WI if security disabled, or if
-> +             * security enabled and this is an NS access
-> +             */
-> +            *data = 0;
-> +            return MEMTX_OK;
-> +        }
-> +        *data = cs->gicr_igrpmodr0;
-> +        return MEMTX_OK;
-> +    case GICR_NSACR:
-> +        if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +            *data = 0;
-> +            return MEMTX_OK;
-> +        }
-> +        *data = cs->gicr_nsacr;
-Look like this is not consistent with the SPEC.
-The SPEC says
-"When GICD_CTLR.DS == 1, this register is RAZ/WI.
-When GICD_CTLR.DS == 0, this register is Secure, and is RAZ/WI to
-Non-secure accesses."
+>=20
+>=20
+> >=20
+> > >=20
+> > > >=20
+> > > > +static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint=
+64_t now_ns)
+> > > > +{
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0uint64_t delta_ns =3D now_ns - MIN(now_ns,=
+ t->start);
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t ticks =3D (uint32_t) floor(delta_=
+ns / calculate_period(t));
+> > > Do we really need to do this with floating point ?
+> > I went with floating point to avoid accumulating errors from truncation
+> > by integer division. At eg 24MHz truncation increases the tick rate by
+> > approximately 1 in 63. We're using floor() here, but that only
+> > truncates at the end of the calculation, so the fractional current
+> > tick.
+> Right, but you only have a risk of truncation because of the way
+> you've structured the calculation. You have
+>=20
+> floor(delta_ns / calculate_period())
+> =3D=3D floor(delta_ns / (calculate_rate() / NS_PER_SEC))
+> =3D=3D floor((delta_ns * NS_PER_SEC) / calculate_rate())
+>=20
+> and calculate_rate() returns either 1000000 or 24000000.
+>=20
+> So you have a 64 bit delta_ns, a 32 bit NANOSECONDS_PER_SECOND
+> and a 32 bit frequency. We have a function for doing this
+> accurately with integer arithmetic: muldiv64() (which takes
+> a 64 bit a, 32 bit b and 32 bit c and returns (a*b)/c using
+> an intermediate 96 bit precision to avoid overflow).
+>=20
+> Doing ticks-to-ns and ns-to-ticks with muldiv64() is pretty
+> standard (grep the codebase and you'll see a lot of it).
 
-So when GICD_CTLR.DS == 1, it should make *data = 0.
+Right! As I didn't see a concern with floating point prior to sending
+the patch I didn't try to rearrange the calculation. I'll rework to use
+muldiv64().
 
-> +        return MEMTX_OK;
-> +    case GICR_IDREGS ... GICR_IDREGS + 0x1f:
-> +        *data = gicv3_idreg(offset - GICR_IDREGS);
-> +        return MEMTX_OK;
-> +    default:
-> +        return MEMTX_ERROR;
-> +    }
-> +}
-> +
-> +static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
-> +                               uint64_t value, MemTxAttrs attrs)
-> +{
-> +    switch (offset) {
-> +    case GICR_CTLR:
-> +        /* For our implementation, GICR_TYPER.DPGS is 0 and so all
-> +         * the DPG bits are RAZ/WI. We don't do anything asynchronously,
-> +         * so UWP and RWP are RAZ/WI. And GICR_TYPER.LPIS is 0 (we don't
-> +         * implement LPIs) so Enable_LPIs is RES0. So there are no writable
-> +         * bits for us.
-> +         */
-> +        return MEMTX_OK;
-> +    case GICR_STATUSR:
-> +        /* RAZ/WI for our implementation */
-> +        return MEMTX_OK;
-> +    case GICR_WAKER:
-> +        /* Only the ProcessorSleep bit is writeable. When the guest sets
-> +         * it it requests that we transition the channel between the
-> +         * redistributor and the cpu interface to quiescent, and that
-> +         * we set the ChildrenAsleep bit once the inteface has reached the
-> +         * quiescent state.
-> +         * Setting the ProcessorSleep to 0 reverses the quiescing, and
-> +         * ChildrenAsleep is cleared once the transition is complete.
-> +         * Since our interface is not asynchronous, we complete these
-> +         * transitions instantaneously, so we set ChildrenAsleep to the
-> +         * same value as ProcessorSleep here.
-> +         */
-> +        value &= GICR_WAKER_ProcessorSleep;
-> +        if (value & GICR_WAKER_ProcessorSleep) {
-> +            value |= GICR_WAKER_ChildrenAsleep;
-> +        }
-> +        cs->gicr_waker = value;
-> +        return MEMTX_OK;
-> +    case GICR_PROPBASER:
-> +        cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 0, 32, value);
-> +        return MEMTX_OK;
-> +    case GICR_PROPBASER + 4:
-> +        cs->gicr_propbaser = deposit64(cs->gicr_propbaser, 32, 32, value);
-> +        return MEMTX_OK;
-> +    case GICR_PENDBASER:
-> +        cs->gicr_pendbaser = deposit64(cs->gicr_pendbaser, 0, 32, value);
-> +        return MEMTX_OK;
-> +    case GICR_PENDBASER + 4:
-> +        cs->gicr_pendbaser = deposit64(cs->gicr_pendbaser, 32, 32, value);
-> +        return MEMTX_OK;
-> +    case GICR_IGROUPR0:
-> +        if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +            return MEMTX_OK;
-> +        }
-> +        cs->gicr_igroupr0 = value;
-> +        gicv3_redist_update(cs);
-> +        return MEMTX_OK;
-> +    case GICR_ISENABLER0:
-> +        gicr_write_set_bitmap_reg(cs, attrs, &cs->gicr_ienabler0, value);
-> +        return MEMTX_OK;
-> +    case GICR_ICENABLER0:
-> +        gicr_write_clear_bitmap_reg(cs, attrs, &cs->gicr_ienabler0, value);
-> +        return MEMTX_OK;
-> +    case GICR_ISPENDR0:
-> +        gicr_write_set_bitmap_reg(cs, attrs, &cs->gicr_ipendr0, value);
-> +        return MEMTX_OK;
-> +    case GICR_ICPENDR0:
-> +        gicr_write_clear_bitmap_reg(cs, attrs, &cs->gicr_ipendr0, value);
-> +        return MEMTX_OK;
-> +    case GICR_ISACTIVER0:
-> +        gicr_write_set_bitmap_reg(cs, attrs, &cs->gicr_iactiver0, value);
-> +        return MEMTX_OK;
-> +    case GICR_ICACTIVER0:
-> +        gicr_write_clear_bitmap_reg(cs, attrs, &cs->gicr_iactiver0, value);
-> +        return MEMTX_OK;
-> +    case GICR_IPRIORITYR ... GICR_IPRIORITYR + 0x1f:
-> +    {
-> +        int i, irq = offset - GICR_IPRIORITYR;
-> +
-> +        for (i = irq; i < irq + 4; i++, value >>= 8) {
-> +            gicr_write_ipriorityr(cs, attrs, i, value);
-> +        }
-> +        gicv3_redist_update(cs);
-> +        return MEMTX_OK;
-> +    }
-> +    case GICR_ICFGR0:
-> +        /* Register is all RAZ/WI or RAO/WI bits */
-> +        return MEMTX_OK;
-> +    case GICR_ICFGR1:
-> +    {
-> +        uint32_t mask;
-> +
-> +        /* Since our edge_trigger bitmap is one bit per irq, our input
-> +         * 32-bits will compress down into 16 bits which we need
-> +         * to write into the bitmap.
-> +         */
-> +        value = half_unshuffle32(value >> 1) << 16;
-> +        mask = mask_group(cs, attrs) & 0xffff0000U;
-> +
-> +        cs->edge_trigger &= ~mask;
-> +        cs->edge_trigger |= (value & mask);
-> +
-> +        gicv3_redist_update(cs);
-> +        return MEMTX_OK;
-> +    }
-> +    case GICR_IGRPMODR0:
-> +        if ((cs->gic->gicd_ctlr & GICD_CTLR_DS) || !attrs.secure) {
-> +            /* RAZ/WI if security disabled, or if
-> +             * security enabled and this is an NS access
-> +             */
-> +            return MEMTX_OK;
-> +        }
-> +        cs->gicr_igrpmodr0 = value;
-> +        gicv3_redist_update(cs);
-> +        return MEMTX_OK;
-> +    case GICR_NSACR:
-> +        if (!attrs.secure && !(cs->gic->gicd_ctlr & GICD_CTLR_DS)) {
-> +            return MEMTX_OK;
-> +        }
-> +        cs->gicr_nsacr = value;
-> +        /* no update required as this only affects access permission checks */
-> +        return MEMTX_OK;
-> +    case GICR_IIDR:
-> +    case GICR_TYPER:
-> +    case GICR_IDREGS ... GICR_IDREGS + 0x1f:
-> +        /* RO registers, ignore the write */
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid guest write to RO register at offset "
-> +                      TARGET_FMT_plx "\n", __func__, offset);
-> +        return MEMTX_OK;
-> +    default:
-> +        return MEMTX_ERROR;
-> +    }
-> +}
-> +
+>=20
+> >=20
+> > Having said that, grep'ing around under {,include/}hw/ doesn't show a
+> > lot of use of floating point. It looks like we are explicitly avoiding
+> > it, however with a quick search I didn't find it mentioned in any of
+> > the docs. What's the reasoning? Should I use a fixed-point approach
+> > like ptimer?
+> My view is that hardware doesn't generally use floating point
+> so it's odd to see it in a software model of hardware.
 
--- 
-Shannon
+Fair enough.
+
+>  Double
+> doesn't actually get you any more bits than uint64_t anyway...
+>=20
+> >=20
+> > >=20
+> > > >=20
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0return calculate_next(t);
+> >=20
+> > >=20
+> > > Why is this recursing ?
+> > The common case is that we return during iterating over seq array i.e.
+> > we're anticipating another match event (either from the match values or
+> > the timer reaching zero). If not then we've overrun, so we reinitialise
+> > the timer by resetting the 'start' reference point then searching again
+> > for the next event (iterating over seq). As the search for the next
+> > event is encoded in the function, I've recursed to reuse it.
+> >=20
+> > Would you prefer a loop here?
+> >=20
+> > Considering the two approaches (recursion vs loop), if TCO doesn't
+> > apply we could blow the stack, and with loops or TCO it's possible we
+> > could spin here indefinitely if the timer period is shorter than the
+> > time it takes to recalculate. Arguably, not crashing is better so I'm
+> > happy to rework it.
+> Yes, I'd prefer a loop -- TCO is an optimization, not a guarantee
+> by the compiler.
+
+Yes, on reflection I agree. I'll rework it.
+
+>=20
+> >=20
+> > As an aside, the approach for reinitialising start skips countdown
+> > periods that were completely missed through high service latency, and
+> > there will be no interrupts issued for the missing events. Is that
+> > reasonable?
+> If the countdown period is so short that we can't service it
+> in time then the system is probably not going to be functional
+> anyway, so I don't think it matters very much. (In ptimer we
+> impose an artificial limit on the timeout rate for a periodic timer
+> and just refuse to fire any faster than that: see ptimer_reload().)
+
+I'll leave it as is for v2.
+
+Thanks for the feedback!
+
+Andrew
+--=-Mfb4wUvIwWOxB0HA5QvL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCgAGBQJXX5MtAAoJEJ0dnzgO5LT56F4P/3C0pmIsfwsr0RaZUc7CQdiN
+8j488ThZV1WJlj7pzG8cv7NvBwWOOokJ9ezmJ9S907CQ7oIANoQ552FxsFyruiNi
+hkvmgBvwBp+HRwa+FHU6/vFrAYI6kFiJYAD8hY0dZHWRZGao/PZzTh/fq4IvKY/r
+tUY69GLMXjWfWb54vksY33PoOWBBmgHlKpb5naV+qPIrtnhjZ4PSDknyE91u1T5g
+pDNCuxNAa+UKpzXXmAnLAxm0U0OQEPnz+RyAdMjqYNLjuW/NSJy/1Y9taIT5VdwC
+wMcUmeoDNY5AeYlKI+eRGbyuYYBL93v9W516qeTsSXFHPAwW4gF+l8jP/yU41Tx9
+TU2TYCRhhncbcjL++M4zw5JUQl/IEoTmnsPLK1kuLtyuN/KpG1ZsrL8Dl7zLUaRQ
+TR6gBdqpWsw1PYcUXgjLOnfmknQ+CIcqTr8kkFdCUxbi/ZwYmO+bT7frFIGSNUIR
+1UKYb50FYsjxVf0hZsfJYarCH1DUTEpefnDaHmaMYPnh4veGLu/Qdp0sIWkUp9Jg
+6t1rB0NPPqSXv2d8L5W47IB5gXEiC0aZD9n/qqntHhILtc9tFDcm0zGGR2z1+DV2
+/z6MPKs35BPe2EJvKU5tkFDc74uAbOr8WogrvVSZi4kX8g4sg4EzTQc42BwsOt+D
+hiXd21d9cO28VPeI+i9Q
+=7NWu
+-----END PGP SIGNATURE-----
+
+--=-Mfb4wUvIwWOxB0HA5QvL--
 

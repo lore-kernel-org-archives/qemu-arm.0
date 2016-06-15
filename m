@@ -1,61 +1,65 @@
-Received: by 10.25.21.96 with SMTP id l93csp315964lfi;
-        Tue, 14 Jun 2016 17:59:51 -0700 (PDT)
-X-Received: by 10.140.168.2 with SMTP id o2mr23280892qho.13.1465952391198;
-        Tue, 14 Jun 2016 17:59:51 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp315969lfi;
+        Tue, 14 Jun 2016 17:59:54 -0700 (PDT)
+X-Received: by 10.200.55.219 with SMTP id e27mr23794048qtc.93.1465952394170;
+        Tue, 14 Jun 2016 17:59:54 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i207si20258514qke.191.2016.06.14.17.59.50
+        by mx.google.com with ESMTPS id c5si19722923qhc.88.2016.06.14.17.59.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Jun 2016 17:59:51 -0700 (PDT)
+        Tue, 14 Jun 2016 17:59:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38948 helo=lists.gnu.org)
+Received: from localhost ([::1]:38949 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCzBO-00083o-IU
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 20:59:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42826)
+	id 1bCzBR-00087J-I4
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 20:59:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCzB8-00080x-VX
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCzB3-0007eX-Re
+	(envelope-from <dgibson@ozlabs.org>) id 1bCzB7-00080l-6Z
 	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:34 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:59702)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <dgibson@ozlabs.org>) id 1bCzB4-0007ex-Ue
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:32 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:37280)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dgibson@ozlabs.org>)
-	id 1bCzB2-0007dd-Vi; Tue, 14 Jun 2016 20:59:29 -0400
+	id 1bCzB2-0007df-VW; Tue, 14 Jun 2016 20:59:30 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3rTp7Z01PWz9t1H; Wed, 15 Jun 2016 10:59:21 +1000 (AEST)
+	id 3rTp7Z0ff8z9t1G; Wed, 15 Jun 2016 10:59:22 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1465952362;
-	bh=EdAdTysnDuhl0Z/l+snesiXSdeEgKpRO0/jKcGUfWAU=;
+	bh=yQTjasIwy6t1CB3dDLRkgD9PZAagwGhsTIaW6hD/jZE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pU2t4/69GEmH+DlC0M8enKa/O2MbK5uVM9041qvu0FEMQrGGclbP0QGhqp5HtqFGM
-	9sdPgsBxPc/iBHSjgNp/lTvNofi+Y/weQ/+z/kNupvyzRRpNyQFc23xAXVNvY7tbul
-	IWQaquiqa9fl/FXnBt73LPWkyhWD7TFL7DyY5+Ys=
-Date: Wed, 15 Jun 2016 10:37:59 +1000
+	b=KA7CVL7R3iicgdMWKuwiRCp0mWg2Twz0xDhUi1TCwwRylzC2AwaX2PbH+2DnTznDb
+	CKd9qIftikA678xUU3960xbWMTQ5EWRpGHwTVKFAyjWWOjJ08f8eb/jyNL7VcvlcpS
+	hTi91qlJeBv6jDYiuc2Gh8X/XQ8HZnxxKypiYXqQ=
+Date: Wed, 15 Jun 2016 10:51:08 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160615003759.GR4882@voom.fritz.box>
+Message-ID: <20160615005108.GT4882@voom.fritz.box>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-6-git-send-email-drjones@redhat.com>
-	<20160614020026.GH4882@voom.fritz.box>
-	<20160614060807.tkdq2dy2kw6d3bw4@hawk.localdomain>
+	<1465580427-13596-7-git-send-email-drjones@redhat.com>
+	<d4b656c3-757d-7922-bd1b-38b4101a4519@redhat.com>
+	<20160613203529.6ln7dlgnrcgda5x4@hawk.localdomain>
+	<60ee196d-0292-3fb4-5d59-68c2d742eaa4@redhat.com>
+	<20160614113904.2u5qvf7kasv5hact@hawk.localdomain>
+	<c1f094e3-c41b-88d3-9bf2-91b334d9513a@redhat.com>
+	<20160614140329.6oz6mzlgs4gswjls@hawk.localdomain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="1GSL5ZULXUIqbbH1"
+	protocol="application/pgp-signature"; boundary="VZEZlOQeSr/zV9d3"
 Content-Disposition: inline
-In-Reply-To: <20160614060807.tkdq2dy2kw6d3bw4@hawk.localdomain>
+In-Reply-To: <20160614140329.6oz6mzlgs4gswjls@hawk.localdomain>
 User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 05/16] hw/core/machine: add
- smp properites
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 06/16] vl: move smp parsing
+ to machine pre_init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,204 +71,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	imammedo@redhat.com, pbonzini@redhat.com, dgibson@redhat.com
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, imammedo@redhat.com,
+	qemu-devel@nongnu.org, agraf@suse.de, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, dgibson@redhat.com,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bkB0AvqdqokY
+X-TUID: CUY7GMykROdK
 
 
---1GSL5ZULXUIqbbH1
+--VZEZlOQeSr/zV9d3
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jun 14, 2016 at 08:08:07AM +0200, Andrew Jones wrote:
-> On Tue, Jun 14, 2016 at 12:00:26PM +1000, David Gibson wrote:
-> > On Fri, Jun 10, 2016 at 07:40:16PM +0200, Andrew Jones wrote:
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > ---
-> > >  hw/core/machine.c   | 81 +++++++++++++++++++++++++++++++++++++++++++=
-++++++++++
-> > >  include/hw/boards.h |  6 ++++
-> > >  2 files changed, 87 insertions(+)
+On Tue, Jun 14, 2016 at 04:03:29PM +0200, Andrew Jones wrote:
+> On Tue, Jun 14, 2016 at 01:53:05PM +0200, Paolo Bonzini wrote:
+> >=20
+> >=20
+> > On 14/06/2016 13:39, Andrew Jones wrote:
+> > > On Tue, Jun 14, 2016 at 10:17:49AM +0200, Paolo Bonzini wrote:
+> > >> On 13/06/2016 22:35, Andrew Jones wrote:
+> > >>> On Mon, Jun 13, 2016 at 07:04:01PM +0200, Paolo Bonzini wrote:
+> > >>>> On 10/06/2016 19:40, Andrew Jones wrote:
+> > >> They should just not specify it and get a default of 1. ;)
 > > >=20
-> > > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > > index 3dce9020e510a..2625044002e57 100644
-> > > --- a/hw/core/machine.c
-> > > +++ b/hw/core/machine.c
-> > > @@ -172,6 +172,53 @@ static void machine_set_dumpdtb(Object *obj, con=
-st char *value, Error **errp)
-> > >      ms->dumpdtb =3D g_strdup(value);
-> > >  }
-> > > =20
-> > > +static void machine_get_smp(Object *obj, Visitor *v, const char *nam=
-e,
-> > > +                            void *opaque, Error **errp)
-> > > +{
-> > > +    MachineState *ms =3D MACHINE(obj);
-> > > +    int64_t value;
-> > > +
-> > > +    if (strncmp(name, "sockets", 7) =3D=3D 0) {
-> > > +        value =3D ms->sockets;
-> > > +    } else if (strncmp(name, "cores", 5) =3D=3D 0) {
-> > > +        value =3D ms->cores;
-> > > +    } else if (strncmp(name, "threads", 7) =3D=3D 0) {
-> > > +        value =3D ms->threads;
-> > > +    } else if (strncmp(name, "maxcpus", 7) =3D=3D 0) {
-> > > +        value =3D ms->maxcpus;
-> > > +    } else if (strncmp(name, "cpus", 4) =3D=3D 0) {
-> > > +        value =3D ms->cpus;
-> > > +    }
-> > > +
-> > > +    visit_type_int(v, name, &value, errp);
-> > > +}
+> > > Yeah, threads, the only one we should never calculate, could be
+> > > optional. If not specified, defaulting to 1 makes perfect sense.
+> > > But, threads=3D0, which is weird, but in a way specifying that it's
+> > > not specified, also makes some sense.
 > >=20
-> > Any particular for multiplexing all the set / get, rather than having
-> > separate callbacks for each property?
+> > If it's weird, let's make it invalid. :)
 >=20
-> Not really. This way just makes denser code. But I'll go whichever
-> direction people prefer.
-
-I'd prefer not to have the multiplexer, but I don't care that much.
-
-> Actually I should probably add an
-> else { error_report(...) } in either case, which means the multifunction
-> direction would still contain strncmps.
-
-Hrm.. that would seem an odd choice to me if you didn't have the
-multiplex.  Not including the strncmp() means you can change the
-property name (or add aliases) in a single place, without changing the
-callback functions.
-
-Note also that the current set of strncmp()s is only correct because
-there is a limited set of things bound to this callback.  Remember
-that strncmp(name, "sockets", 7) will match "socketsfoo".
-
-> > > +
-> > > +static void machine_set_smp(Object *obj, Visitor *v, const char *nam=
-e,
-> > > +                            void *opaque, Error **errp)
-> > > +{
-> > > +    MachineState *ms =3D MACHINE(obj);
-> > > +    Error *error =3D NULL;
-> > > +    int64_t value;
-> > > +
-> > > +    visit_type_int(v, name, &value, &error);
-> > > +    if (error) {
-> > > +        error_propagate(errp, error);
-> > > +        return;
-> > > +    }
-> > > +
-> > > +    if (strncmp(name, "sockets", 7) =3D=3D 0) {
-> > > +        ms->sockets =3D value;
-> > > +    } else if (strncmp(name, "cores", 5) =3D=3D 0) {
-> > > +        ms->cores =3D value;;
-> > > +    } else if (strncmp(name, "threads", 7) =3D=3D 0) {
-> > > +        ms->threads =3D value;
-> > > +    } else if (strncmp(name, "maxcpus", 7) =3D=3D 0) {
-> > > +        ms->maxcpus =3D value;
-> > > +    } else if (strncmp(name, "cpus", 4) =3D=3D 0) {
-> > > +        ms->cpus =3D value;
-> > > +    }
-> > > +}
-> > > +
-> > >  static void machine_get_phandle_start(Object *obj, Visitor *v,
-> > >                                        const char *name, void *opaque,
-> > >                                        Error **errp)
-> > > @@ -368,8 +415,18 @@ static void machine_init_notify(Notifier *notifi=
-er, void *data)
-> > >      foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
-> > >  }
-> > > =20
-> > > +static void machine_set_smp_parameters(MachineState *ms)
-> > > +{
-> > > +    if (ms->sockets !=3D -1 || ms->cores !=3D -1 || ms->threads !=3D=
- -1 ||
-> > > +        ms->maxcpus !=3D -1 || ms->cpus !=3D -1) {
-> > > +        error_report("warning: cpu topology: "
-> > > +                     "machine properties currently ignored");
-> > > +    }
-> > > +}
-> > > +
-> > >  static void machine_pre_init(MachineState *ms)
-> > >  {
-> > > +    machine_set_smp_parameters(ms);
-> > >  }
-> > > =20
-> > >  static void machine_class_init(ObjectClass *oc, void *data)
-> > > @@ -403,6 +460,11 @@ static void machine_initfn(Object *obj)
-> > >      ms->dump_guest_core =3D true;
-> > >      ms->mem_merge =3D true;
-> > >      ms->enable_graphics =3D true;
-> > > +    ms->sockets =3D -1;
-> > > +    ms->cores =3D -1;
-> > > +    ms->threads =3D -1;
-> > > +    ms->maxcpus =3D -1;
-> > > +    ms->cpus =3D -1;
-> > > =20
-> > >      object_property_add_str(obj, "accel",
-> > >                              machine_get_accel, machine_set_accel, NU=
-LL);
-> > > @@ -462,6 +524,25 @@ static void machine_initfn(Object *obj)
-> > >      object_property_set_description(obj, "dt-compatible",
-> > >                                      "Overrides the \"compatible\" pr=
-operty of the dt root node",
-> > >                                      NULL);
-> > > +    object_property_add(obj, "sockets", "int", machine_get_smp,
-> > > +                        machine_set_smp, NULL, NULL, NULL);
-> > > +    object_property_set_description(obj, "sockets", "Number of socke=
-ts", NULL);
-> > > +    object_property_add(obj, "cores", "int", machine_get_smp,
-> > > +                        machine_set_smp, NULL, NULL, NULL);
-> > > +    object_property_set_description(obj, "cores",
-> > > +                                    "Number of cores per socket", NU=
-LL);
-> > > +    object_property_add(obj, "threads", "int", machine_get_smp,
-> > > +                        machine_set_smp, NULL, NULL, NULL);
-> > > +    object_property_set_description(obj, "threads",
-> > > +                                    "Number of threads per core", NU=
-LL);
-> > > +    object_property_add(obj, "maxcpus", "int", machine_get_smp,
-> > > +                        machine_set_smp, NULL, NULL, NULL);
-> > > +    object_property_set_description(obj, "maxcpus", "Maximum number =
-of cpus",
-> > > +                                    NULL);
-> > > +    object_property_add(obj, "cpus", "int", machine_get_smp,
-> > > +                        machine_set_smp, NULL, NULL, NULL);
-> > > +    object_property_set_description(obj, "cpus", "Number of online c=
-pus",
-> > > +                                    NULL);
-> > >      object_property_add_bool(obj, "dump-guest-core",
-> > >                               machine_get_dump_guest_core,
-> > >                               machine_set_dump_guest_core,
-> > > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > > index 4e8dc68b07a24..53adbfe2a3099 100644
-> > > --- a/include/hw/boards.h
-> > > +++ b/include/hw/boards.h
-> > > @@ -166,6 +166,12 @@ struct MachineState {
-> > >      char *initrd_filename;
-> > >      const char *cpu_model;
-> > >      AccelState *accelerator;
-> > > +
-> > > +    int sockets;
-> > > +    int cores;
-> > > +    int threads;
-> > > +    int maxcpus;
-> > > +    int cpus;
+> I'm weird, and starting to like it :-)
+>=20
 > >=20
-> > Hrm.. as the tests added in earlier patches highlight, essentially one
-> > of these properties is redundant.  Is there a reason to include them
-> > all, rather than to pick one to drop?
+> > >>>> - cpus % (cores * threads) !=3D 0
+> > >>>
+> > >>> Hmm. This makes sense where cpus is the number of cpu packages,
+> > >>
+> > >> I'm not sure I understand what you mean here.  The point is that the
+> > >> machine starts with an integral number of sockets.
+> > >=20
+> > > OK, s/cpus/maxcpus/ then. By using the currently online number, I
+> > > thought you were starting to prepare for cpu packages, which are
+> > > indivisible sets of cores and threads.
+> >=20
+> > Yes, that's what I meant to do.  Isn't cpus what you call
+> > "total-online-threads" below?
 >=20
-> Well, IMO, only maxcpus could be dropped. I'd prefer not to though
-> because it's a convenient state to have pre-calculated, and possibly
-> error prone to leave to all users to re-calculate.
+> It is. I was thinking it may need to be redefined if we wanted to
+> hotplug these "indivisible sets of cores and threads" (sockets),
+> instead of what we do today, which is to hotplug one "cpu" at a time.
+> However, I just chatted with Igor, and he says cpu hotplug operates
+> on logical processors, and thus it's fine to talk about hotplugging
+> threads. Even real hardware does this. Real hardware will plug a
+> socket full of threads, but then the firmware may keep most of them
+> disabled until they're "hotplugged". So, I think the value of cpus
+> can be anything. Even the useless value of zero.
 
-Sorry, to clarify.  I have no problem with having all 5 variables,
-with one precalculated from the others.  What I'm not convinced is a
-good idea is exposing all 5 as settable properties.
+Uh.. this depends on the platform (machine type).  ACPI allows
+(logical) hotplugging of individual threads.  However on pseries the
+hotplug mechanism works at core granularity only.  I don't know of
+real examples off hand, but it's easy to imagine a platform interface
+which worked at socket, or even a multi-socket-module level
+
+In other words the "cpu package" doesn't necessarily lie at a fixed
+level of the thread/core/socket heirarchy.
+
+This is something we're grappling with in trying to implement
+cross-platform cpu hotplug, and we obviously don't want to make it
+worse with these -smp changes.
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -272,25 +149,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---1GSL5ZULXUIqbbH1
+--VZEZlOQeSr/zV9d3
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAEBAgAGBQJXYKNnAAoJEGw4ysog2bOSobsP/2US8wGM6sQShEtVQRJ5bk3n
-SiSMzgldvs6u2Ky7Q2bUPY2wRd4laLWGq6d28m3TER24PcR0SM5de6ob4aCMMmCl
-/Wwel+dznkKiYyar0ikxbmhk5/y8HlgHl2MWmwldas+kr7tE+s2v8ECUYykggKbQ
-Bv54tBiHuH+C6xbtNgXjX8ttvLqje3BVD6DQEE5F/QFm0Pb+dnNLhF7qgUsYwjDT
-wU2KA0dLXEjhf8uoKsEZew1mrLZp47vFtn/uTLIta1LeW0y/uDuR0DjoAqbGBa/O
-M3DVT5IYmsgBk3VrrSVFWnu5bfber6gdY5JfrtXRAX1X/fGEKaElnllu10t7C5LF
-dh3oV1RfxG/L+o83yxhPo208iFg+DjwN7KPpwke8b8no8eA3smw0+ZCB0JsG/wA8
-nLjwtkj/nQmMquSMBf8B7WK9vauIp7FtaeHzCjnXcmHvLdXoEPa6Tr8z9KOYhJjF
-a8yxf4unC1RdwA8le+lL/zlB9oMa5RfHXdHbxD6jxDu80Zq1pC1TerkI00D3E0fH
-1TbxHN+nt7vxDpYmdk8q1Uzf7f62oqfztrulDOYDkGihbEIRc5r010dW4Ckm3VRT
-nkcvK4DdoTtnS7eRLRKgmaOMKEJCWN9opOQsT7YzkFX8XmG4ZCIR1aeyXCtID2cv
-yWrJUiiGnoE0Y6KNFwdM
-=UzTy
+iQIcBAEBAgAGBQJXYKZ8AAoJEGw4ysog2bOSu5sP/0hyKngGAztMJe4Noxlg7USR
+mNTGUaoLCczfYpaNjSEWbp3P54fecJVOqhWdTU+qDhNWwdd9401yYvaJ9rnkJUfu
+7hQ3AO5li6HOiWEdmewbc98bTsEa+E/DOOSZJG/WADulzKdAyUVJoJz7KcI1k2KK
+5dVYCUZULPXLuuq1fpUNkQruaLV1++hCWigyo8WWVN0u8rNQHMJCcLV/T+JZIsYx
+wf8+kSLKsmTH3vE4sLkSmd1C3BVlWcjkSooS2vhV3umbcBxZ1ax34uQhsrZvSK5J
+j0xRPT2wGLe7YPTUnin2sMLoEjBjHxNnYetE7AjlL0D5nFXaBPgjn0Ozm7s2qbBl
+1TEMoNCgmsYHJIPlLR1VdT9fB3bpLLWp2EMDFrfeMVqEYu75BdBkZEvprbUkoKZ+
+Zrlbz2nIvbr2rA7ssRmePRRAvjzvByEx0FszJqL8vMiEhJ0xFAIbzvqrZ/xKFrf4
+vNsaspEh1+V0yqZbEqb9469YAcz6thxE+tF3EVN/2Nrd1cBbiISRPmDKvqRD/hu9
+N5Dqh0CoUaviBYPXz4SMjZ1ED+D/fsYE2RQW3xoi3oMmD07lBCgK4csv4m1nWKuD
+Jgdn7gUFRlDlfjjSl7cs5CtJs45bZdRbL5I95Hk9njRGfJ2h7woqkCEKmohTwKDL
+Ge6AshfAW8Efhu2hKykP
+=BcMC
 -----END PGP SIGNATURE-----
 
---1GSL5ZULXUIqbbH1--
+--VZEZlOQeSr/zV9d3--

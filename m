@@ -1,10 +1,10 @@
-Received: by 10.25.21.96 with SMTP id l93csp315925lfi;
-        Tue, 14 Jun 2016 17:59:42 -0700 (PDT)
-X-Received: by 10.55.70.66 with SMTP id t63mr20538737qka.162.1465952382401;
+Received: by 10.25.21.96 with SMTP id l93csp315939lfi;
+        Tue, 14 Jun 2016 17:59:44 -0700 (PDT)
+X-Received: by 10.140.176.21 with SMTP id w21mr19988242qhw.101.1465952382987;
         Tue, 14 Jun 2016 17:59:42 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u31si12193868qge.68.2016.06.14.17.59.42
+        by mx.google.com with ESMTPS id r2si18359117qkd.182.2016.06.14.17.59.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 14 Jun 2016 17:59:42 -0700 (PDT)
@@ -12,50 +12,49 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38946 helo=lists.gnu.org)
+Received: from localhost ([::1]:38947 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bCzBF-00082l-Pd
-	for alex.bennee@linaro.org; Tue, 14 Jun 2016 20:59:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42812)
+	id 1bCzBG-000832-97
+	for alex.bennee@linaro.org; Tue, 14 Jun 2016 20:59:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42833)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCzB7-00080n-MM
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:34 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bCzB9-000812-AS
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1bCzB3-0007eR-Mx
-	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:33 -0400
-Received: from ozlabs.org ([103.22.144.67]:38908)
+	(envelope-from <dgibson@ozlabs.org>) id 1bCzB4-0007f5-VO
+	for qemu-arm@nongnu.org; Tue, 14 Jun 2016 20:59:35 -0400
+Received: from ozlabs.org ([103.22.144.67]:44640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <dgibson@ozlabs.org>)
-	id 1bCzB2-0007db-VS; Tue, 14 Jun 2016 20:59:29 -0400
+	id 1bCzB3-0007dc-1X; Tue, 14 Jun 2016 20:59:30 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 3rTp7Z1Jl0z9t1K; Wed, 15 Jun 2016 10:59:22 +1000 (AEST)
+	id 3rTp7Z2hYqz9t1L; Wed, 15 Jun 2016 10:59:22 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1465952362;
-	bh=C41MwvbHMbnYjexeX1Sn4SQvJWZgrWj2tB8pmzm6HuQ=;
+	bh=b6jwUeWj9ZtGgSEFQ5xEvhxnjSbygAvyqTcnftmenEA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hLJdB1zSSH6qApiFHAdwq2kqF0SH+T32/uZlQ4N1lhP4ZiJM9et4HKv+InZ6IHJj+
-	VUKRp4Nkx64+KnMUPbrYW7g23umgdSR4MR+1d0WbfRFdARtkeOVlA8XE4YxuxXZjrF
-	KJFUqrkKs0cHXwQGkbQOJDEdYLIwScGnZjvx4/Y0=
-Date: Wed, 15 Jun 2016 10:43:17 +1000
+	b=Dl2O75fPQjuneJcJQ5SdelbTg0YMS71ubkczftEoXVbl2804F4qY+OOYSMz6qsh/3
+	2BmfPHOUmQaDpiCActLqexNSKSMaISywEiqgTpCEqK2zUu135HsU/BO9tejERBnsV9
+	BVd7PFpOciCliBM0I21QtRQRcS2pE4ssnJaEqigI=
+Date: Wed, 15 Jun 2016 10:59:01 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20160615004317.GS4882@voom.fritz.box>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20160615005901.GV4882@voom.fritz.box>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-7-git-send-email-drjones@redhat.com>
-	<d4b656c3-757d-7922-bd1b-38b4101a4519@redhat.com>
-	<20160613203529.6ln7dlgnrcgda5x4@hawk.localdomain>
-	<60ee196d-0292-3fb4-5d59-68c2d742eaa4@redhat.com>
+	<1465580427-13596-11-git-send-email-drjones@redhat.com>
+	<20160614030341.GJ4882@voom.fritz.box>
+	<20160614062308.r6nafsv56yy7rjf5@hawk.localdomain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="daC8KDjlMyCcZyAo"
+	protocol="application/pgp-signature"; boundary="xMJbWctQEcNQiBqK"
 Content-Disposition: inline
-In-Reply-To: <60ee196d-0292-3fb4-5d59-68c2d742eaa4@redhat.com>
+In-Reply-To: <20160614062308.r6nafsv56yy7rjf5@hawk.localdomain>
 User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 103.22.144.67
-Subject: Re: [Qemu-arm] [PATCH RFC 06/16] vl: move smp parsing to machine
- pre_init
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 10/16] hw/ppc/spapr: don't
+ use smp_cores, smp_threads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,64 +66,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
-	ehabkost@redhat.com, qemu-devel@nongnu.org, agraf@suse.de,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, dgibson@redhat.com,
-	imammedo@redhat.com
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	imammedo@redhat.com, pbonzini@redhat.com, dgibson@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bJlaxWaUanHs
+X-TUID: qu+a+uSuD/vJ
 
 
---daC8KDjlMyCcZyAo
+--xMJbWctQEcNQiBqK
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jun 14, 2016 at 10:17:49AM +0200, Paolo Bonzini wrote:
->=20
->=20
-> On 13/06/2016 22:35, Andrew Jones wrote:
-> > On Mon, Jun 13, 2016 at 07:04:01PM +0200, Paolo Bonzini wrote:
-> >> On 10/06/2016 19:40, Andrew Jones wrote:
-> >>> +    if (sockets =3D=3D -1 || cores =3D=3D -1 || threads =3D=3D -1 ||
-> >>> +        maxcpus =3D=3D -1 || cpus =3D=3D -1) {
-> >>> +        error_report("cpu topology: "
-> >>> +                     "all machine properties must be specified");
-> >>> +        exit(1);
-> >>> +    }
-> >>> +
-> >>
-> >> I think it's sane to accept some defaults.  It must not be the DWIM
-> >> thing that -smp does (which is targeted to Windows's dislike of
-> >> multi-socket machine on consumer hardware).  It must be something that
-> >> makes sense, and my proposal is:
-> >>
-> >> - threads: 1
-> >> - cores: 1
-> >> - sockets:
-> >>   - maxcpus / (cores * threads) if maxcpus given
-> >>   - cpus / (cores * threads) if cpus given
-> >>   - else 1
-> >> - maxcpus: cores * threads * sockets
-> >> - cpus: maxcpus
-> >=20
-> > I think some machines may prefer
-> >=20
-> > - threads: 1
-> > - sockets: 1
-> > - cores:
-> >   - maxcpus / (sockets * threads) if maxcpus given
-> >   - cpus / (sockets * threads) if cpus given
-> >   - else 1
->=20
-> smp_cores is only used by pseries and x86 machines.  I expect machines
-> that must be single-socket to disregard smp_sockets altogether.
+On Tue, Jun 14, 2016 at 08:23:08AM +0200, Andrew Jones wrote:
+> On Tue, Jun 14, 2016 at 01:03:41PM +1000, David Gibson wrote:
+> > On Fri, Jun 10, 2016 at 07:40:21PM +0200, Andrew Jones wrote:
+> > > Use CPUState nr_cores,nr_threads and MachineState
+> > > cores,threads instead.
+> > >=20
+> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > ---
+> > >  hw/ppc/spapr.c      | 9 +++++----
+> > >  hw/ppc/spapr_rtas.c | 2 +-
+> > >  2 files changed, 6 insertions(+), 5 deletions(-)
+> > >=20
+> > > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> > > index 063664234106e..f78276bb4b164 100644
+> > > --- a/hw/ppc/spapr.c
+> > > +++ b/hw/ppc/spapr.c
+> > > @@ -35,7 +35,6 @@
+> > >  #include "net/net.h"
+> > >  #include "sysemu/device_tree.h"
+> > >  #include "sysemu/block-backend.h"
+> > > -#include "sysemu/cpus.h"
+> > >  #include "sysemu/kvm.h"
+> > >  #include "sysemu/device_tree.h"
+> > >  #include "kvm_ppc.h"
+> > > @@ -603,7 +602,7 @@ static void spapr_populate_cpu_dt(CPUState *cs, v=
+oid *fdt, int offset,
+> > >      uint32_t cpufreq =3D kvm_enabled() ? kvmppc_get_clockfreq() : 10=
+00000000;
+> > >      uint32_t page_sizes_prop[64];
+> > >      size_t page_sizes_prop_size;
+> > > -    uint32_t vcpus_per_socket =3D smp_threads * smp_cores;
+> > > +    uint32_t vcpus_per_socket =3D cs->nr_cores * cs->nr_threads;
 
-Note that on pseries (as a purely paravirt platform), the distinction
-between cores and sockets is basically meaningless - there is no
-important difference between a threads=3D4,cores=3D4,sockets=3D1 machine and
-a threads=3D4,cores=3D1,sockets=3D4 machine.s
+This function has an 'spapr' parameter which is a subcloss of
+MachineState, so you can get to the machine value from there.
+
+> > >      uint32_t pft_size_prop[] =3D {0, cpu_to_be32(spapr->htab_shift)};
+> > > =20
+> > >      /* Note: we keep CI large pages off for now because a 64K capabl=
+e guest
+> > > @@ -1774,7 +1773,7 @@ static void ppc_spapr_init(MachineState *machin=
+e)
+> > >      /* Set up Interrupt Controller before we create the VCPUs */
+> > >      spapr->icp =3D xics_system_init(machine,
+> > >                                    DIV_ROUND_UP(max_cpus * kvmppc_smt=
+_threads(),
+> > > -                                               smp_threads),
+> > > +                                               machine->threads),
+> > >                                    XICS_IRQS, &error_fatal);
+> > > =20
+> > >      if (smc->dr_lmb_enabled) {
+> > > @@ -2268,9 +2267,11 @@ static HotplugHandler *spapr_get_hotpug_handle=
+r(MachineState *machine,
+> > > =20
+> > >  static unsigned spapr_cpu_index_to_socket_id(unsigned cpu_index)
+> > >  {
+> > > +    CPUState *cs =3D first_cpu;
+> > > +
+> > >      /* Allocate to NUMA nodes on a "socket" basis (not that concept =
+of
+> > >       * socket means much for the paravirtualized PAPR platform) */
+> > > -    return cpu_index / smp_threads / smp_cores;
+> > > +    return cpu_index / cs->nr_cores / cs->nr_threads;
+
+Here you can use qdev_get_machine().  That's no more an ugly use of a
+global than using first_cpu.
+
+> > >  }
+> > > =20
+> > >  static void spapr_machine_class_init(ObjectClass *oc, void *data)
+> > > diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+> > > index 43e2c684fda8d..3fdfbb01a20dd 100644
+> > > --- a/hw/ppc/spapr_rtas.c
+> > > +++ b/hw/ppc/spapr_rtas.c
+> > > @@ -742,7 +742,7 @@ int spapr_rtas_device_tree_setup(void *fdt, hwadd=
+r rtas_addr,
+> > >      lrdr_capacity[1] =3D cpu_to_be32(max_hotplug_addr & 0xffffffff);
+> > >      lrdr_capacity[2] =3D 0;
+> > >      lrdr_capacity[3] =3D cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE);
+> > > -    lrdr_capacity[4] =3D cpu_to_be32(max_cpus/smp_threads);
+> > > +    lrdr_capacity[4] =3D cpu_to_be32(max_cpus / machine->threads);
+> > >      ret =3D qemu_fdt_setprop(fdt, "/rtas", "ibm,lrdr-capacity", lrdr=
+_capacity,
+> > >                       sizeof(lrdr_capacity));
+> > >      if (ret < 0) {
+> >=20
+> > I think all the places that use cs->nr_* here it actually makes more
+> > sense to use the value in the machine state.
+>=20
+> I think I used machine state whenever I (easily) could. How do I get to
+> machine state from a CPU method? I will if I can, for all machines,
+> and then gladly kill the CPUState->nr_cores/nr_threads.
+
+I can't speak to all machines, but notes above on how it can be done
+for spapr.
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -132,25 +181,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---daC8KDjlMyCcZyAo
+--xMJbWctQEcNQiBqK
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAEBAgAGBQJXYKSlAAoJEGw4ysog2bOSSmQP/08QxOQeubw0O94kpK3zhLQG
-Oij/Tp5Us1Yi+5qXykS51U5nhM5M5yve23KWfjoKPlykwKbTJXHMZsHuhaimiwtq
-FEIsFC/JjaLl3SgWUr/QahiH52KuBLX8xsIwZTb0zVnrkRbibpuLQQLumZzCYay9
-152Ah1fN7uFTTc7jJvJKMql8uzBtoPVNBTWjV3j2nCvDTsUGknX/3s4wjreSa2w5
-V4qiqDu/hsiO3RNutQ+xvUPQOET0/mu0y96euX/m/64MjfN93a7FFIHnnZE38WVf
-Nsk6m36IBJbXxSvUlHlRDpYpVX+1HUyQwn1EwQo3dW/jNggQj8JD+4BSHVnT4YrS
-ahX1NqbRaoOdK9j15J9LukAz4Y/gWnXqInCPoQq9IX0Yew0d6bhkifMrewwmWVMW
-k3N6BoD93kexhNJ7DO0Akvm705HZGVqLWac8OKj2lhu5rQqtd+mDdiVEccxZTgdg
-zkP/LXoigMmbBUzzfi+M3GwcjJN9Rp3Bm1yk7MBMvpVaQEPoxET0f/APdHfmNf6b
-cWfkwWKq1YtCKQCzPdyT/hEo2ru0TPtJHEGgEzaHFat8nYdwsfioUGl0BjPD4Hnj
-QP2uxE7g4+IlZvMAbhjUf3EZ8D7dHLk7bhiGyAvrUWDA0Vh4fqyFWWf7h6NbC8pQ
-mM40mO12kyptfXmJq0Dv
-=kFBj
+iQIcBAEBAgAGBQJXYKhVAAoJEGw4ysog2bOSE24QAKRDegYVCaB2xBYBW7YkLOlV
+F9wZs4buzixpZaF8AxNmf0LPAYcv0FefskrMd1pu5CNRxSwPBnXiNQY3y/SFmykG
+Q/oB1R+MFBbCb1U+u3LnULIBc96dnDhCOe7xiqOXNrT7QGWCegW726+qXE39yxUx
+ryMXzEeR3ttLnv/4qPZ9ndAdOuIP0s57LZbDFuyqy5IOb4LUfaXBTJWlNWHm+Zsm
+P3Tf3netngGwMYTjpipm2CzJFyHs3ky8mqC6w864QIRkJeq9W8wdHbWPFn0PE8UY
+wME+gbEn3nehLk1kXhofcSVYMk9m7YOhygqbZkyKisOKto8QBUd3BdDVAtSzC1fu
+eFNLQfwJrZpKjdcVJsakcw8PNIyj5uP1ArfQLvgFj2931Esx/gdcy353vaHLw3s1
+qPp0ATUxMWjqjI+r9QUnbuM7OBsYP3o/UAr2pqef+Na48zPpY007p4XzUGgVEeyY
+AV1MJ1jpE8YL9WDY1jDQT3RVLKjFPjjhKN5w13yEmJSEtqXNH4a87d44V+msn/V1
+mpeej4n+BGdN7LPeJpc5tKKPzgPUTooG+NwX82eKWbHy/chYgKc6i0VWu9u8/xKO
+ktBdUE1cVUA9pF4e53a+n9jx1OSAep8WrZXePLX74nAL3PDj+uJHDL9ChImb7HLf
+gy58iufbQDKcB9gOJY/e
+=72M3
 -----END PGP SIGNATURE-----
 
---daC8KDjlMyCcZyAo--
+--xMJbWctQEcNQiBqK--

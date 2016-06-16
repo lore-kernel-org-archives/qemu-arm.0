@@ -1,63 +1,59 @@
-Received: by 10.25.21.96 with SMTP id l93csp8836lfi;
-        Wed, 15 Jun 2016 14:25:29 -0700 (PDT)
-X-Received: by 10.140.23.202 with SMTP id 68mr871345qgp.105.1466025929468;
-        Wed, 15 Jun 2016 14:25:29 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp66974lfi;
+        Wed, 15 Jun 2016 18:00:35 -0700 (PDT)
+X-Received: by 10.55.71.138 with SMTP id u132mr1877184qka.1.1466038835125;
+        Wed, 15 Jun 2016 18:00:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e92si23672937qga.115.2016.06.15.14.25.29
+        by mx.google.com with ESMTPS id r17si24257428qtr.122.2016.06.15.18.00.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 Jun 2016 14:25:29 -0700 (PDT)
+        Wed, 15 Jun 2016 18:00:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45183 helo=lists.gnu.org)
+Received: from localhost ([::1]:45834 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDIJU-0006J0-Sh
-	for alex.bennee@linaro.org; Wed, 15 Jun 2016 17:25:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38084)
+	id 1bDLfe-0004a7-CY
+	for alex.bennee@linaro.org; Wed, 15 Jun 2016 21:00:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55246)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bDIJO-0006It-Om
-	for qemu-arm@nongnu.org; Wed, 15 Jun 2016 17:25:27 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1bDLfX-0004XC-MC
+	for qemu-arm@nongnu.org; Wed, 15 Jun 2016 21:00:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bDIJK-0002e0-7G
-	for qemu-arm@nongnu.org; Wed, 15 Jun 2016 17:25:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46310)
+	(envelope-from <dgibson@ozlabs.org>) id 1bDLfT-0002i5-0R
+	for qemu-arm@nongnu.org; Wed, 15 Jun 2016 21:00:26 -0400
+Received: from ozlabs.org ([103.22.144.67]:51436)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bDIJJ-0002dq-Tf; Wed, 15 Jun 2016 17:25:18 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 24DEFC0828C4;
-	Wed, 15 Jun 2016 21:25:17 +0000 (UTC)
-Received: from [10.36.112.54] (ovpn-112-54.ams2.redhat.com [10.36.112.54])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5FLPAJ0009608
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 15 Jun 2016 17:25:12 -0400
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <1466025380-6186-1-git-send-email-clg@kaod.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <e458bb0c-1f63-78f5-04ad-fc32dc829c8a@redhat.com>
-Date: Wed, 15 Jun 2016 23:25:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.0
+	(envelope-from <dgibson@ozlabs.org>)
+	id 1bDLfQ-0002hD-NM; Wed, 15 Jun 2016 21:00:22 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3rVQ656BVnz9t1y; Thu, 16 Jun 2016 11:00:13 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1466038813;
+	bh=O1GB8GOohyqMa1E878JtKMTeW0GMDqNhxEhi0/llnto=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NAkGLUW92A9vGQE4KrSsqmOceGJGgTrKKx1fNChLJtWk53+RtlU3Nq70ldLMIAY0P
+	K1bOs8oIIpmtiKEIk7ZUVlSYRNBz+W2cR2BXXyWZbM1sSwKG3YaE0FP6Ax0rhyW8ZU
+	AG4lCEEsw5UC4TW5/7+X5rRCasGqGoIZvHs5lxqo=
+Date: Thu, 16 Jun 2016 10:53:05 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Sergey Sorokin <afarallax@yandex.ru>
+Message-ID: <20160616005305.GF28087@voom.fritz.box>
+References: <1465907177-1399402-1-git-send-email-afarallax@yandex.ru>
+	<20160615010540.GY4882@voom.fritz.box>
+	<403201465987558@web9g.yandex.ru>
 MIME-Version: 1.0
-In-Reply-To: <1466025380-6186-1-git-send-email-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 15 Jun 2016 21:25:17 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Bqc0IY4JZZt50bUr"
+Content-Disposition: inline
+In-Reply-To: <403201465987558@web9g.yandex.ru>
+User-Agent: Mutt/1.6.1 (2016-04-27)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2] ssi: change ssi_slave_init to be a
- realize ops
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] [PATCH v2] Fix confusing argument names in some
+ common functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,419 +65,881 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-block@nongnu.org, Marcin Krzeminski <marcin.krzeminski@nokia.com>,
-	qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
-	qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JK0JwI/q0sMS
+X-TUID: cKRGjVOhrVjz
 
 
+--Bqc0IY4JZZt50bUr
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 15/06/2016 23:16, C=C3=A9dric Le Goater wrote:
-> This enables qemu to handle late inits and report errors. All the SSI
-> slave routine names were changed accordingly. Code was modified to
-> handle errors when possible (m25p80 and ssi-sd)
+On Wed, Jun 15, 2016 at 01:45:58PM +0300, Sergey Sorokin wrote:
+> 15.06.2016, 06:03, "David Gibson" <david@gibson.dropbear.id.au>:
+> > On Tue, Jun 14, 2016 at 03:26:17PM +0300, Sergey Sorokin wrote:
+> >> =A0There are functions tlb_fill(), cpu_unaligned_access() and
+> >> =A0do_unaligned_access() that are called with access type and mmu index
+> >> =A0arguments. But these arguments are named 'is_write' and 'is_user' i=
+n their
+> >> =A0declarations. The patches fix the arguments to avoid a confusion.
+> >>
+> >> =A0Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
+> >> =A0---
+> >> =A0In the second version of the patch a type of access_type argument
+> >> =A0was changed from int to MMUAccessType. To allow it the declaration =
+of
+> >> =A0MMUAccessType was moved from exec/cpu-common.h into qom/cpu.h
+> >> =A0The series of two patches was merged into one.
+> >>
+> >> =A0=A0include/exec/cpu-common.h | 6 ------
+> >> =A0=A0include/exec/exec-all.h | 4 ++--
+> >> =A0=A0include/qom/cpu.h | 15 +++++++++++----
+> >> =A0=A0target-alpha/cpu.h | 3 ++-
+> >> =A0=A0target-alpha/mem_helper.c | 7 ++++---
+> >> =A0=A0target-arm/internals.h | 5 +++--
+> >> =A0=A0target-arm/op_helper.c | 30 +++++++++++++++++-------------
+> >> =A0=A0target-cris/op_helper.c | 6 +++---
+> >> =A0=A0target-i386/mem_helper.c | 6 +++---
+> >> =A0=A0target-lm32/op_helper.c | 6 +++---
+> >> =A0=A0target-m68k/op_helper.c | 6 +++---
+> >> =A0=A0target-microblaze/op_helper.c | 6 +++---
+> >> =A0=A0target-mips/cpu.h | 3 ++-
+> >> =A0=A0target-mips/op_helper.c | 10 +++++-----
+> >> =A0=A0target-moxie/helper.c | 6 +++---
+> >> =A0=A0target-openrisc/mmu_helper.c | 4 ++--
+> >> =A0=A0target-ppc/mmu_helper.c | 8 ++++----
+> >> =A0=A0target-s390x/mem_helper.c | 6 +++---
+> >> =A0=A0target-sh4/op_helper.c | 6 +++---
+> >> =A0=A0target-sparc/cpu.h | 7 ++++---
+> >> =A0=A0target-sparc/ldst_helper.c | 13 +++++++------
+> >> =A0=A0target-tricore/op_helper.c | 6 +++---
+> >> =A0=A0target-unicore32/op_helper.c | 4 ++--
+> >> =A0=A0target-xtensa/cpu.h | 3 ++-
+> >> =A0=A0target-xtensa/op_helper.c | 11 ++++++-----
+> >> =A0=A025 files changed, 100 insertions(+), 87 deletions(-)
+> >>
+> >> =A0diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+> >> =A0index aaee995..9ac1eaf 100644
+> >> =A0--- a/include/exec/cpu-common.h
+> >> =A0+++ b/include/exec/cpu-common.h
+> >> =A0@@ -23,12 +23,6 @@ typedef struct CPUListState {
+> >> =A0=A0=A0=A0=A0=A0FILE *file;
+> >> =A0=A0} CPUListState;
+> >>
+> >> =A0-typedef enum MMUAccessType {
+> >> =A0- MMU_DATA_LOAD =3D 0,
+> >> =A0- MMU_DATA_STORE =3D 1,
+> >> =A0- MMU_INST_FETCH =3D 2
+> >> =A0-} MMUAccessType;
+> >> =A0-
+> >> =A0=A0#if !defined(CONFIG_USER_ONLY)
+> >>
+> >> =A0=A0enum device_endian {
+> >> =A0diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> >> =A0index c1f59fa..db79ab6 100644
+> >> =A0--- a/include/exec/exec-all.h
+> >> =A0+++ b/include/exec/exec-all.h
+> >> =A0@@ -361,8 +361,8 @@ extern uintptr_t tci_tb_ptr;
+> >> =A0=A0struct MemoryRegion *iotlb_to_region(CPUState *cpu,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0hwaddr index, MemTxAttrs at=
+trs);
+> >>
+> >> =A0-void tlb_fill(CPUState *cpu, target_ulong addr, int is_write, int =
+mmu_idx,
+> >> =A0- uintptr_t retaddr);
+> >> =A0+void tlb_fill(CPUState *cpu, target_ulong addr, MMUAccessType acce=
+ss_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >>
+> >> =A0=A0#endif
+> >>
+> >> =A0diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> >> =A0index 32f3af3..422ac41 100644
+> >> =A0--- a/include/qom/cpu.h
+> >> =A0+++ b/include/qom/cpu.h
+> >> =A0@@ -60,6 +60,12 @@ typedef uint64_t vaddr;
+> >> =A0=A0#define CPU_CLASS(class) OBJECT_CLASS_CHECK(CPUClass, (class), T=
+YPE_CPU)
+> >> =A0=A0#define CPU_GET_CLASS(obj) OBJECT_GET_CLASS(CPUClass, (obj), TYP=
+E_CPU)
+> >>
+> >> =A0+typedef enum MMUAccessType {
+> >> =A0+ MMU_DATA_LOAD =3D 0,
+> >> =A0+ MMU_DATA_STORE =3D 1,
+> >> =A0+ MMU_INST_FETCH =3D 2
+> >> =A0+} MMUAccessType;
+> >> =A0+
+> >> =A0=A0typedef struct CPUWatchpoint CPUWatchpoint;
+> >>
+> >> =A0=A0typedef void (*CPUUnassignedAccess)(CPUState *cpu, hwaddr addr,
+> >> =A0@@ -142,7 +148,8 @@ typedef struct CPUClass {
+> >> =A0=A0=A0=A0=A0=A0void (*do_interrupt)(CPUState *cpu);
+> >> =A0=A0=A0=A0=A0=A0CPUUnassignedAccess do_unassigned_access;
+> >> =A0=A0=A0=A0=A0=A0void (*do_unaligned_access)(CPUState *cpu, vaddr add=
+r,
+> >> =A0- int is_write, int is_user, uintptr_t retaddr);
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >> =A0=A0=A0=A0=A0=A0bool (*virtio_is_big_endian)(CPUState *cpu);
+> >> =A0=A0=A0=A0=A0=A0int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0uint8_t *buf, int len, bool is_write);
+> >> =A0@@ -716,12 +723,12 @@ static inline void cpu_unassigned_access(CPUS=
+tate *cpu, hwaddr addr,
+> >> =A0=A0}
+> >>
+> >> =A0=A0static inline void cpu_unaligned_access(CPUState *cpu, vaddr add=
+r,
+> >> =A0- int is_write, int is_user,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0CPUClass *cc =3D CPU_GET_CLASS(cpu);
+> >>
+> >> =A0- cc->do_unaligned_access(cpu, addr, is_write, is_user, retaddr);
+> >> =A0+ cc->do_unaligned_access(cpu, addr, access_type, mmu_idx, retaddr);
+> >> =A0=A0}
+> >> =A0=A0#endif
+> >>
+> >> =A0diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
+> >> =A0index e71ea70..cfbb615 100644
+> >> =A0--- a/target-alpha/cpu.h
+> >> =A0+++ b/target-alpha/cpu.h
+> >> =A0@@ -323,7 +323,8 @@ hwaddr alpha_cpu_get_phys_page_debug(CPUState *=
+cpu, vaddr addr);
+> >> =A0=A0int alpha_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int=
+ reg);
+> >> =A0=A0int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, in=
+t reg);
+> >> =A0=A0void alpha_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+> >> =A0- int is_write, int is_user, uintptr_t retaddr);
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >>
+> >> =A0=A0#define cpu_list alpha_cpu_list
+> >> =A0=A0#define cpu_exec cpu_alpha_exec
+> >> =A0diff --git a/target-alpha/mem_helper.c b/target-alpha/mem_helper.c
+> >> =A0index 7f4d15f..1b2be50 100644
+> >> =A0--- a/target-alpha/mem_helper.c
+> >> =A0+++ b/target-alpha/mem_helper.c
+> >> =A0@@ -99,7 +99,8 @@ uint64_t helper_stq_c_phys(CPUAlphaState *env, ui=
+nt64_t p, uint64_t v)
+> >> =A0=A0}
+> >>
+> >> =A0=A0void alpha_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+> >> =A0- int is_write, int is_user, uintptr_t retaddr)
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0AlphaCPU *cpu =3D ALPHA_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUAlphaState *env =3D &cpu->env;
+> >> =A0@@ -144,12 +145,12 @@ void alpha_cpu_unassigned_access(CPUState *cs=
+, hwaddr addr,
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0=A0/* XXX: fix it to restore all registers */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write,
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0int mmu_idx, uintptr_t=
+ retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D alpha_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D alpha_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx=
+);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret !=3D 0)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0cpu_restore_state(cs, retadd=
+r);
+> >> =A0diff --git a/target-arm/internals.h b/target-arm/internals.h
+> >> =A0index 728ecba..e0d37da 100644
+> >> =A0--- a/target-arm/internals.h
+> >> =A0+++ b/target-arm/internals.h
+> >> =A0@@ -476,7 +476,8 @@ bool arm_tlb_fill(CPUState *cpu, vaddr address,=
+ int rw, int mmu_idx,
+> >> =A0=A0bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx=
+ mmu_idx);
+> >>
+> >> =A0=A0/* Raise a data fault alignment exception for the specified virt=
+ual address */
+> >> =A0-void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is=
+_write,
+> >> =A0- int is_user, uintptr_t retaddr);
+> >> =A0+void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >>
+> >> =A0=A0#endif
+> >> =A0diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+> >> =A0index 35912a1..3ee2284 100644
+> >> =A0--- a/target-arm/op_helper.c
+> >> =A0+++ b/target-arm/op_helper.c
+> >> =A0@@ -79,7 +79,7 @@ uint32_t HELPER(neon_tbl)(CPUARMState *env, uint3=
+2_t ireg, uint32_t def,
+> >> =A0=A0static inline uint32_t merge_syn_data_abort(uint32_t template_sy=
+n,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0unsign=
+ed int target_el,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0bool s=
+ame_el,
+> >> =A0- bool s1ptw, int is_write,
+> >> =A0+ bool s1ptw, bool is_write,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0int fs=
+c)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0uint32_t syn;
+> >> =A0@@ -97,7 +97,7 @@ static inline uint32_t merge_syn_data_abort(uint3=
+2_t template_syn,
+> >> =A0=A0=A0=A0=A0=A0=A0*/
+> >> =A0=A0=A0=A0=A0=A0if (!(template_syn & ARM_EL_ISV) || target_el !=3D 2=
+ || s1ptw) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0syn =3D syn_data_abort_no_iss(same_el,
+> >> =A0- 0, 0, s1ptw, is_write =3D=3D 1, fsc);
+> >> =A0+ 0, 0, s1ptw, is_write, fsc);
+> >> =A0=A0=A0=A0=A0=A0} else {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* Fields: IL, ISV, SAS, SSE, SRT, SF an=
+d AR come from the template
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0* syndrome created at translation tim=
+e.
+> >> =A0@@ -105,7 +105,7 @@ static inline uint32_t merge_syn_data_abort(uin=
+t32_t template_syn,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0*/
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0syn =3D syn_data_abort_with_iss(same_el,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A00, 0, 0, 0, 0,
+> >> =A0- 0, 0, s1ptw, is_write =3D=3D 1, fsc,
+> >> =A0+ 0, 0, s1ptw, is_write, fsc,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0false);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* Merge the runtime syndrome with the t=
+emplate syndrome. */
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0syn |=3D template_syn;
+> >> =A0@@ -117,14 +117,14 @@ static inline uint32_t merge_syn_data_abort(u=
+int32_t template_syn,
+> >> =A0=A0=A0* NULL, it means that the function was called in C code (i.e.=
+ not
+> >> =A0=A0=A0* from generated code or from helper.c)
+> >> =A0=A0=A0*/
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0bool ret;
+> >> =A0=A0=A0=A0=A0=A0uint32_t fsr =3D 0;
+> >> =A0=A0=A0=A0=A0=A0ARMMMUFaultInfo fi =3D {};
+> >>
+> >> =A0- ret =3D arm_tlb_fill(cs, addr, is_write, mmu_idx, &fsr, &fi);
+> >> =A0+ ret =3D arm_tlb_fill(cs, addr, access_type, mmu_idx, &fsr, &fi);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0ARMCPU *cpu =3D ARM_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0CPUARMState *env =3D &cpu->env;
+> >> =A0@@ -149,13 +149,15 @@ void tlb_fill(CPUState *cs, target_ulong addr=
+, int is_write, int mmu_idx,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* For insn and data aborts we assume th=
+ere is no instruction syndrome
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0* information; this is always true fo=
+r exceptions reported to EL1.
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0*/
+> >> =A0- if (is_write =3D=3D 2) {
+> >> =A0+ if (access_type =3D=3D MMU_INST_FETCH) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0syn =3D syn_insn_abort(same_=
+el, 0, fi.s1ptw, syn);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0exc =3D EXCP_PREFETCH_ABORT;
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0} else {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0syn =3D merge_syn_data_abort=
+(env->exception.syndrome, target_el,
+> >> =A0- same_el, fi.s1ptw, is_write, syn);
+> >> =A0- if (is_write =3D=3D 1 && arm_feature(env, ARM_FEATURE_V6)) {
+> >> =A0+ same_el, fi.s1ptw,
+> >> =A0+ access_type =3D=3D MMU_DATA_STORE, syn);
+> >> =A0+ if (access_type =3D=3D MMU_DATA_STORE
+> >> =A0+ && arm_feature(env, ARM_FEATURE_V6)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0fsr |=3D (1 << 1=
+1);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0}
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0exc =3D EXCP_DATA_ABORT;
+> >> =A0@@ -168,8 +170,9 @@ void tlb_fill(CPUState *cs, target_ulong addr, =
+int is_write, int mmu_idx,
+> >> =A0=A0}
+> >>
+> >> =A0=A0/* Raise a data fault alignment exception for the specified virt=
+ual address */
+> >> =A0-void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr, int is=
+_write,
+> >> =A0- int is_user, uintptr_t retaddr)
+> >> =A0+void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0ARMCPU *cpu =3D ARM_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUARMState *env =3D &cpu->env;
+> >> =A0@@ -196,12 +199,13 @@ void arm_cpu_do_unaligned_access(CPUState *cs=
+, vaddr vaddr, int is_write,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0env->exception.fsr =3D 0x1;
+> >> =A0=A0=A0=A0=A0=A0}
+> >>
+> >> =A0- if (is_write =3D=3D 1 && arm_feature(env, ARM_FEATURE_V6)) {
+> >> =A0+ if (access_type =3D=3D MMU_DATA_STORE && arm_feature(env, ARM_FEA=
+TURE_V6)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0env->exception.fsr |=3D (1 << 11);
+> >> =A0=A0=A0=A0=A0=A0}
+> >>
+> >> =A0=A0=A0=A0=A0=A0syn =3D merge_syn_data_abort(env->exception.syndrome=
+, target_el,
+> >> =A0- same_el, 0, is_write, 0x21);
+> >> =A0+ same_el, 0, access_type =3D=3D MMU_DATA_STORE,
+> >> =A0+ 0x21);
+> >> =A0=A0=A0=A0=A0=A0raise_exception(env, EXCP_DATA_ABORT, syn, target_el=
+);
+> >> =A0=A0}
+> >>
+> >> =A0diff --git a/target-cris/op_helper.c b/target-cris/op_helper.c
+> >> =A0index 675ab86..5043039 100644
+> >> =A0--- a/target-cris/op_helper.c
+> >> =A0+++ b/target-cris/op_helper.c
+> >> =A0@@ -41,8 +41,8 @@
+> >> =A0=A0/* Try to fill the TLB and return an exception if error. If reta=
+ddr is
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0CRISCPU *cpu =3D CRIS_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUCRISState *env =3D &cpu->env;
+> >> =A0@@ -50,7 +50,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, in=
+t is_write, int mmu_idx,
+> >>
+> >> =A0=A0=A0=A0=A0=A0D_LOG("%s pc=3D%x tpc=3D%x ra=3D%p\n", __func__,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0env->pc, env->pregs[PR_EDA], (void=
+ *)retaddr);
+> >> =A0- ret =3D cris_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D cris_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-i386/mem_helper.c b/target-i386/mem_helper.c
+> >> =A0index c2f4769..5bc0594 100644
+> >> =A0--- a/target-i386/mem_helper.c
+> >> =A0+++ b/target-i386/mem_helper.c
+> >> =A0@@ -140,12 +140,12 @@ void helper_boundl(CPUX86State *env, target_u=
+long a0, int v)
+> >> =A0=A0=A0* from generated code or from helper.c)
+> >> =A0=A0=A0*/
+> >> =A0=A0/* XXX: fix it to restore all registers */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D x86_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D x86_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0X86CPU *cpu =3D X86_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0CPUX86State *env =3D &cpu->env;
+> >> =A0diff --git a/target-lm32/op_helper.c b/target-lm32/op_helper.c
+> >> =A0index 7a550d1..2177c8a 100644
+> >> =A0--- a/target-lm32/op_helper.c
+> >> =A0+++ b/target-lm32/op_helper.c
+> >> =A0@@ -144,12 +144,12 @@ uint32_t HELPER(rcsr_jrx)(CPULM32State *env)
+> >> =A0=A0=A0* NULL, it means that the function was called in C code (i.e.=
+ not
+> >> =A0=A0=A0* from generated code or from helper.c)
+> >> =A0=A0=A0*/
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D lm32_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D lm32_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-m68k/op_helper.c b/target-m68k/op_helper.c
+> >> =A0index ff32e35..e41ae46 100644
+> >> =A0--- a/target-m68k/op_helper.c
+> >> =A0+++ b/target-m68k/op_helper.c
+> >> =A0@@ -39,12 +39,12 @@ static inline void do_interrupt_m68k_hardirq(CP=
+UM68KState *env)
+> >> =A0=A0/* Try to fill the TLB and return an exception if error. If reta=
+ddr is
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D m68k_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D m68k_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-microblaze/op_helper.c b/target-microblaze/op_h=
+elper.c
+> >> =A0index 0533939..c52253d 100644
+> >> =A0--- a/target-microblaze/op_helper.c
+> >> =A0+++ b/target-microblaze/op_helper.c
+> >> =A0@@ -33,12 +33,12 @@
+> >> =A0=A0=A0* NULL, it means that the function was called in C code (i.e.=
+ not
+> >> =A0=A0=A0* from generated code or from helper.c)
+> >> =A0=A0=A0*/
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D mb_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D mb_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-mips/cpu.h b/target-mips/cpu.h
+> >> =A0index 4ce9d47..3e6221a 100644
+> >> =A0--- a/target-mips/cpu.h
+> >> =A0+++ b/target-mips/cpu.h
+> >> =A0@@ -651,7 +651,8 @@ hwaddr mips_cpu_get_phys_page_debug(CPUState *c=
+pu, vaddr addr);
+> >> =A0=A0int mips_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int =
+reg);
+> >> =A0=A0int mips_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int=
+ reg);
+> >> =A0=A0void mips_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+> >> =A0- int is_write, int is_user, uintptr_t retaddr);
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >>
+> >> =A0=A0#if !defined(CONFIG_USER_ONLY)
+> >> =A0=A0int no_mmu_map_address (CPUMIPSState *env, hwaddr *physical, int=
+ *prot,
+> >> =A0diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
+> >> =A0index 7cf9807..11ee8ac 100644
+> >> =A0--- a/target-mips/op_helper.c
+> >> =A0+++ b/target-mips/op_helper.c
+> >> =A0@@ -2383,8 +2383,8 @@ void helper_wait(CPUMIPSState *env)
+> >> =A0=A0#if !defined(CONFIG_USER_ONLY)
+> >>
+> >> =A0=A0void mips_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
+> >> =A0- int access_type, int is_user,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0MIPSCPU *cpu =3D MIPS_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUMIPSState *env =3D &cpu->env;
+> >> =A0@@ -2405,12 +2405,12 @@ void mips_cpu_do_unaligned_access(CPUState =
+*cs, vaddr addr,
+> >> =A0=A0=A0=A0=A0=A0do_raise_exception_err(env, excp, error_code, retadd=
+r);
+> >> =A0=A0}
+> >>
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D mips_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D mips_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0MIPSCPU *cpu =3D MIPS_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0CPUMIPSState *env =3D &cpu->env;
+> >> =A0diff --git a/target-moxie/helper.c b/target-moxie/helper.c
+> >> =A0index d51e9b9..330299f 100644
+> >> =A0--- a/target-moxie/helper.c
+> >> =A0+++ b/target-moxie/helper.c
+> >> =A0@@ -29,12 +29,12 @@
+> >> =A0=A0/* Try to fill the TLB and return an exception if error. If reta=
+ddr is
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D moxie_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D moxie_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx=
+);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0cpu_restore_state(cs, retadd=
+r);
+> >> =A0diff --git a/target-openrisc/mmu_helper.c b/target-openrisc/mmu_hel=
+per.c
+> >> =A0index c0658c3..a44d0aa 100644
+> >> =A0--- a/target-openrisc/mmu_helper.c
+> >> =A0+++ b/target-openrisc/mmu_helper.c
+> >> =A0@@ -25,12 +25,12 @@
+> >>
+> >> =A0=A0#ifndef CONFIG_USER_ONLY
+> >>
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write,
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0int mmu_idx, uintptr_t=
+ retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D openrisc_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx=
+);
+> >> =A0+ ret =3D openrisc_cpu_handle_mmu_fault(cs, addr, access_type, mmu_=
+idx);
+> >>
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0diff --git a/target-ppc/mmu_helper.c b/target-ppc/mmu_helper.c
+> >> =A0index 485d5b8..3eb3cd7 100644
+> >> =A0--- a/target-ppc/mmu_helper.c
+> >> =A0+++ b/target-ppc/mmu_helper.c
+> >> =A0@@ -2878,8 +2878,8 @@ void helper_check_tlb_flush(CPUPPCState *env)
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0=A0/* XXX: fix it to restore all registers */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >
+> > If you're using MMUAccessType here..
+> >
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0PowerPCCPU *cpu =3D POWERPC_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0PowerPCCPUClass *pcc =3D POWERPC_CPU_GET_CLASS(cs);
+> >> =A0@@ -2887,9 +2887,9 @@ void tlb_fill(CPUState *cs, target_ulong addr=
+, int is_write, int mmu_idx,
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0=A0=A0=A0=A0=A0if (pcc->handle_mmu_fault) {
+> >> =A0- ret =3D pcc->handle_mmu_fault(cpu, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D pcc->handle_mmu_fault(cpu, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0} else {
+> >> =A0- ret =3D cpu_ppc_handle_mmu_fault(env, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D cpu_ppc_handle_mmu_fault(env, addr, access_type, mmu_idx);
+> >
+> > ..surely the prototype of cpu_ppc_handle_mmu_fault() and all the
+> > others should be change to use it as well.
+> >
+> >> =A0=A0=A0=A0=A0=A0}
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret !=3D 0)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (likely(retaddr)) {
+> >> =A0diff --git a/target-s390x/mem_helper.c b/target-s390x/mem_helper.c
+> >> =A0index ec8059a..99bc5e2 100644
+> >> =A0--- a/target-s390x/mem_helper.c
+> >> =A0+++ b/target-s390x/mem_helper.c
+> >> =A0@@ -36,12 +36,12 @@
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0=A0/* XXX: fix it to restore all registers */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D s390_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D s390_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret !=3D 0)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (likely(retaddr)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-sh4/op_helper.c b/target-sh4/op_helper.c
+> >> =A0index 303e83e..0204b03 100644
+> >> =A0--- a/target-sh4/op_helper.c
+> >> =A0+++ b/target-sh4/op_helper.c
+> >> =A0@@ -24,12 +24,12 @@
+> >>
+> >> =A0=A0#ifndef CONFIG_USER_ONLY
+> >>
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D superh_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D superh_cpu_handle_mmu_fault(cs, addr, access_type, mmu_id=
+x);
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fault */
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
+> >> =A0index ba37f4b..78c9010 100644
+> >> =A0--- a/target-sparc/cpu.h
+> >> =A0+++ b/target-sparc/cpu.h
+> >> =A0@@ -540,9 +540,10 @@ void sparc_cpu_dump_state(CPUState *cpu, FILE =
+*f,
+> >> =A0=A0hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+> >> =A0=A0int sparc_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int=
+ reg);
+> >> =A0=A0int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, in=
+t reg);
+> >> =A0-void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cpu,
+> >> =A0- vaddr addr, int is_write,
+> >> =A0- int is_user, uintptr_t retaddr);
+> >> =A0+void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cpu, va=
+ddr addr,
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx,
+> >> =A0+ uintptr_t retaddr);
+> >>
+> >> =A0=A0#ifndef NO_CPU_IO_DEFS
+> >> =A0=A0/* cpu_init.c */
+> >> =A0diff --git a/target-sparc/ldst_helper.c b/target-sparc/ldst_helper.c
+> >> =A0index f73cf6d..e941cac 100644
+> >> =A0--- a/target-sparc/ldst_helper.c
+> >> =A0+++ b/target-sparc/ldst_helper.c
+> >> =A0@@ -2420,9 +2420,10 @@ void sparc_cpu_unassigned_access(CPUState *c=
+s, hwaddr addr,
+> >> =A0=A0#endif
+> >>
+> >> =A0=A0#if !defined(CONFIG_USER_ONLY)
+> >> =A0-void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cs,
+> >> =A0- vaddr addr, int is_write,
+> >> =A0- int is_user, uintptr_t retaddr)
+> >> =A0+void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cs, vad=
+dr addr,
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx,
+> >> =A0+ uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0SPARCCPU *cpu =3D SPARC_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUSPARCState *env =3D &cpu->env;
+> >> =A0@@ -2441,12 +2442,12 @@ void QEMU_NORETURN sparc_cpu_do_unaligned_a=
+ccess(CPUState *cs,
+> >> =A0=A0=A0=A0=A0NULL, it means that the function was called in C code (=
+i.e. not
+> >> =A0=A0=A0=A0=A0from generated code or from helper.c) */
+> >> =A0=A0/* XXX: fix it to restore all registers */
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D sparc_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D sparc_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx=
+);
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0cpu_restore_state(cs, retadd=
+r);
+> >> =A0diff --git a/target-tricore/op_helper.c b/target-tricore/op_helper.c
+> >> =A0index a73ed53..873a123 100644
+> >> =A0--- a/target-tricore/op_helper.c
+> >> =A0+++ b/target-tricore/op_helper.c
+> >> =A0@@ -2833,11 +2833,11 @@ static inline void QEMU_NORETURN do_raise_e=
+xception_err(CPUTriCoreState *env,
+> >> =A0=A0=A0=A0=A0=A0cpu_loop_exit(cs);
+> >> =A0=A0}
+> >>
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write, int m=
+mu_idx,
+> >> =A0- uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >> =A0- ret =3D cpu_tricore_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D cpu_tricore_handle_mmu_fault(cs, addr, access_type, mmu_i=
+dx);
+> >> =A0=A0=A0=A0=A0=A0if (ret) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0TriCoreCPU *cpu =3D TRICORE_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0CPUTriCoreState *env =3D &cpu->env;
+> >> =A0diff --git a/target-unicore32/op_helper.c b/target-unicore32/op_hel=
+per.c
+> >> =A0index a782d33..0872c29 100644
+> >> =A0--- a/target-unicore32/op_helper.c
+> >> =A0+++ b/target-unicore32/op_helper.c
+> >> =A0@@ -244,12 +244,12 @@ uint32_t HELPER(ror_cc)(CPUUniCore32State *en=
+v, uint32_t x, uint32_t i)
+> >> =A0=A0}
+> >>
+> >> =A0=A0#ifndef CONFIG_USER_ONLY
+> >> =A0-void tlb_fill(CPUState *cs, target_ulong addr, int is_write,
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType acces=
+s_type,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0int mmu_idx, uintptr_t=
+ retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0int ret;
+> >>
+> >> =A0- ret =3D uc32_cpu_handle_mmu_fault(cs, addr, is_write, mmu_idx);
+> >> =A0+ ret =3D uc32_cpu_handle_mmu_fault(cs, addr, access_type, mmu_idx);
+> >> =A0=A0=A0=A0=A0=A0if (unlikely(ret)) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0if (retaddr) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0/* now we have a real cpu fa=
+ult */
+> >> =A0diff --git a/target-xtensa/cpu.h b/target-xtensa/cpu.h
+> >> =A0index 442176a..3c1aaf4 100644
+> >> =A0--- a/target-xtensa/cpu.h
+> >> =A0+++ b/target-xtensa/cpu.h
+> >> =A0@@ -414,7 +414,8 @@ hwaddr xtensa_cpu_get_phys_page_debug(CPUState =
+*cpu, vaddr addr);
+> >> =A0=A0int xtensa_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, in=
+t reg);
+> >> =A0=A0int xtensa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, i=
+nt reg);
+> >> =A0=A0void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+> >> =A0- int is_write, int is_user, uintptr_t retaddr);
+> >> =A0+ MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr);
+> >>
+> >> =A0=A0#define cpu_exec cpu_xtensa_exec
+> >> =A0=A0#define cpu_signal_handler cpu_xtensa_signal_handler
+> >> =A0diff --git a/target-xtensa/op_helper.c b/target-xtensa/op_helper.c
+> >> =A0index bc3667f..0a4b214 100644
+> >> =A0--- a/target-xtensa/op_helper.c
+> >> =A0+++ b/target-xtensa/op_helper.c
+> >> =A0@@ -35,7 +35,8 @@
+> >> =A0=A0#include "qemu/timer.h"
+> >>
+> >> =A0=A0void xtensa_cpu_do_unaligned_access(CPUState *cs,
+> >> =A0- vaddr addr, int is_write, int is_user, uintptr_t retaddr)
+> >> =A0+ vaddr addr, MMUAccessType access_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0XtensaCPU *cpu =3D XTENSA_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUXtensaState *env =3D &cpu->env;
+> >> =A0@@ -48,19 +49,19 @@ void xtensa_cpu_do_unaligned_access(CPUState *c=
+s,
+> >> =A0=A0=A0=A0=A0=A0}
+> >> =A0=A0}
+> >>
+> >> =A0-void tlb_fill(CPUState *cs,
+> >> =A0- target_ulong vaddr, int is_write, int mmu_idx, uintptr_t retaddr)
+> >> =A0+void tlb_fill(CPUState *cs, target_ulong vaddr, MMUAccessType acce=
+ss_type,
+> >> =A0+ int mmu_idx, uintptr_t retaddr)
+> >> =A0=A0{
+> >> =A0=A0=A0=A0=A0=A0XtensaCPU *cpu =3D XTENSA_CPU(cs);
+> >> =A0=A0=A0=A0=A0=A0CPUXtensaState *env =3D &cpu->env;
+> >> =A0=A0=A0=A0=A0=A0uint32_t paddr;
+> >> =A0=A0=A0=A0=A0=A0uint32_t page_size;
+> >> =A0=A0=A0=A0=A0=A0unsigned access;
+> >> =A0- int ret =3D xtensa_get_physical_addr(env, true, vaddr, is_write, =
+mmu_idx,
+> >> =A0+ int ret =3D xtensa_get_physical_addr(env, true, vaddr, access_typ=
+e, mmu_idx,
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0&paddr, &page_size, &access);
+> >>
+> >> =A0=A0=A0=A0=A0=A0qemu_log_mask(CPU_LOG_MMU, "%s(%08x, %d, %d) -> %08x=
+, ret =3D %d\n",
+> >> =A0- __func__, vaddr, is_write, mmu_idx, paddr, ret);
+> >> =A0+ __func__, vaddr, access_type, mmu_idx, paddr, ret);
+> >>
+> >> =A0=A0=A0=A0=A0=A0if (ret =3D=3D 0) {
+> >> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0tlb_set_page(cs,
+> >
 >=20
-> Tested with the m25p80 slave object.
->=20
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->=20
->  Should apply on top of :
-> =20
->     m25p80: fix test on blk_pread() return value
->     https://lists.gnu.org/archive/html/qemu-devel/2016-05/msg05574.html
->=20
->  Changes since v1 :
->=20
->  - added a error_setg() report in ssi_sd_realize()
->=20
->  hw/arm/spitz.c       |   12 ++++--------
->  hw/arm/tosa.c        |    5 ++---
->  hw/arm/z2.c          |    6 ++----
->  hw/block/m25p80.c    |   12 +++++-------
->  hw/display/ads7846.c |    5 ++---
->  hw/display/ssd0323.c |    5 ++---
->  hw/misc/max111x.c    |   12 ++++++------
->  hw/sd/ssi-sd.c       |    9 +++++----
->  hw/ssi/ssi.c         |    6 +++---
->  include/hw/ssi/ssi.h |    2 +-
->  10 files changed, 32 insertions(+), 42 deletions(-)
->=20
-> Index: qemu-ast2400-mainline.git/hw/arm/spitz.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/arm/spitz.c
-> +++ qemu-ast2400-mainline.git/hw/arm/spitz.c
-> @@ -598,15 +598,13 @@ static uint32_t spitz_lcdtg_transfer(SSI
->      return 0;
->  }
-> =20
-> -static int spitz_lcdtg_init(SSISlave *dev)
-> +static void spitz_lcdtg_realize(SSISlave *dev, Error **errp)
->  {
->      SpitzLCDTG *s =3D FROM_SSI_SLAVE(SpitzLCDTG, dev);
-> =20
->      spitz_lcdtg =3D s;
->      s->bl_power =3D 0;
->      s->bl_intensity =3D 0x20;
-> -
-> -    return 0;
->  }
-> =20
->  /* SSP devices */
-> @@ -666,7 +664,7 @@ static void spitz_adc_temp_on(void *opaq
->          max111x_set_input(max1111, MAX1111_BATT_TEMP, 0);
->  }
-> =20
-> -static int corgi_ssp_init(SSISlave *d)
-> +static void corgi_ssp_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev =3D DEVICE(d);
->      CorgiSSPState *s =3D FROM_SSI_SLAVE(CorgiSSPState, d);
-> @@ -675,8 +673,6 @@ static int corgi_ssp_init(SSISlave *d)
->      s->bus[0] =3D ssi_create_bus(dev, "ssi0");
->      s->bus[1] =3D ssi_create_bus(dev, "ssi1");
->      s->bus[2] =3D ssi_create_bus(dev, "ssi2");
-> -
-> -    return 0;
->  }
-> =20
->  static void spitz_ssp_attach(PXA2xxState *cpu)
-> @@ -1121,7 +1117,7 @@ static void corgi_ssp_class_init(ObjectC
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D corgi_ssp_init;
-> +    k->realize =3D corgi_ssp_realize;
->      k->transfer =3D corgi_ssp_transfer;
->      dc->vmsd =3D &vmstate_corgi_ssp_regs;
->  }
-> @@ -1150,7 +1146,7 @@ static void spitz_lcdtg_class_init(Objec
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D spitz_lcdtg_init;
-> +    k->realize =3D spitz_lcdtg_realize;
->      k->transfer =3D spitz_lcdtg_transfer;
->      dc->vmsd =3D &vmstate_spitz_lcdtg_regs;
->  }
-> Index: qemu-ast2400-mainline.git/hw/arm/tosa.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/arm/tosa.c
-> +++ qemu-ast2400-mainline.git/hw/arm/tosa.c
-> @@ -127,10 +127,9 @@ static uint32_t tosa_ssp_tansfer(SSISlav
->      return 0;
->  }
-> =20
-> -static int tosa_ssp_init(SSISlave *dev)
-> +static void tosa_ssp_realize(SSISlave *dev, Error **errp)
->  {
->      /* Nothing to do.  */
-> -    return 0;
->  }
-> =20
->  #define TYPE_TOSA_DAC "tosa_dac"
-> @@ -283,7 +282,7 @@ static void tosa_ssp_class_init(ObjectCl
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D tosa_ssp_init;
-> +    k->realize =3D tosa_ssp_realize;
->      k->transfer =3D tosa_ssp_tansfer;
->  }
-> =20
-> Index: qemu-ast2400-mainline.git/hw/arm/z2.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/arm/z2.c
-> +++ qemu-ast2400-mainline.git/hw/arm/z2.c
-> @@ -151,14 +151,12 @@ static void z2_lcd_cs(void *opaque, int
->      z2_lcd->selected =3D !level;
->  }
-> =20
-> -static int zipit_lcd_init(SSISlave *dev)
-> +static void zipit_lcd_realize(SSISlave *dev, Error **errp)
->  {
->      ZipitLCD *z =3D FROM_SSI_SLAVE(ZipitLCD, dev);
->      z->selected =3D 0;
->      z->enabled =3D 0;
->      z->pos =3D 0;
-> -
-> -    return 0;
->  }
-> =20
->  static VMStateDescription vmstate_zipit_lcd_state =3D {
-> @@ -181,7 +179,7 @@ static void zipit_lcd_class_init(ObjectC
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D zipit_lcd_init;
-> +    k->realize =3D zipit_lcd_realize;
->      k->transfer =3D zipit_lcd_transfer;
->      dc->vmsd =3D &vmstate_zipit_lcd_state;
->  }
-> Index: qemu-ast2400-mainline.git/hw/block/m25p80.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/block/m25p80.c
-> +++ qemu-ast2400-mainline.git/hw/block/m25p80.c
-> @@ -28,6 +28,7 @@
->  #include "hw/ssi/ssi.h"
->  #include "qemu/bitops.h"
->  #include "qemu/log.h"
-> +#include "qapi/error.h"
-> =20
->  #ifndef M25P80_ERR_DEBUG
->  #define M25P80_ERR_DEBUG 0
-> @@ -878,7 +879,7 @@ static uint32_t m25p80_transfer8(SSISlav
->      return r;
->  }
-> =20
-> -static int m25p80_init(SSISlave *ss)
-> +static void m25p80_realize(SSISlave *ss, Error **errp)
->  {
->      DriveInfo *dinfo;
->      Flash *s =3D M25P80(ss);
-> @@ -899,18 +900,15 @@ static int m25p80_init(SSISlave *ss)
-> =20
->          s->storage =3D blk_blockalign(s->blk, s->size);
-> =20
-> -        /* FIXME: Move to late init */
->          if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
-> -            fprintf(stderr, "Failed to initialize SPI flash!\n");
-> -            return 1;
-> +            error_setg(errp, "failed to read the initial flash content=
-");
-> +            return;
->          }
->      } else {
->          DB_PRINT_L(0, "No BDRV - binding to RAM\n");
->          s->storage =3D blk_blockalign(NULL, s->size);
->          memset(s->storage, 0xFF, s->size);
->      }
-> -
-> -    return 0;
->  }
-> =20
->  static void m25p80_reset(DeviceState *d)
-> @@ -960,7 +958,7 @@ static void m25p80_class_init(ObjectClas
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
->      M25P80Class *mc =3D M25P80_CLASS(klass);
-> =20
-> -    k->init =3D m25p80_init;
-> +    k->realize =3D m25p80_realize;
->      k->transfer =3D m25p80_transfer8;
->      k->set_cs =3D m25p80_cs;
->      k->cs_polarity =3D SSI_CS_LOW;
-> Index: qemu-ast2400-mainline.git/hw/display/ads7846.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/display/ads7846.c
-> +++ qemu-ast2400-mainline.git/hw/display/ads7846.c
-> @@ -133,7 +133,7 @@ static const VMStateDescription vmstate_
->      }
->  };
-> =20
-> -static int ads7846_init(SSISlave *d)
-> +static void ads7846_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev =3D DEVICE(d);
->      ADS7846State *s =3D FROM_SSI_SLAVE(ADS7846State, d);
-> @@ -152,14 +152,13 @@ static int ads7846_init(SSISlave *d)
->      ads7846_int_update(s);
-> =20
->      vmstate_register(NULL, -1, &vmstate_ads7846, s);
-> -    return 0;
->  }
-> =20
->  static void ads7846_class_init(ObjectClass *klass, void *data)
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D ads7846_init;
-> +    k->realize =3D ads7846_realize;
->      k->transfer =3D ads7846_transfer;
->  }
-> =20
-> Index: qemu-ast2400-mainline.git/hw/display/ssd0323.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/display/ssd0323.c
-> +++ qemu-ast2400-mainline.git/hw/display/ssd0323.c
-> @@ -361,7 +361,7 @@ static const GraphicHwOps ssd0323_ops =3D
->      .gfx_update  =3D ssd0323_update_display,
->  };
-> =20
-> -static int ssd0323_init(SSISlave *d)
-> +static void ssd0323_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev =3D DEVICE(d);
->      ssd0323_state *s =3D FROM_SSI_SLAVE(ssd0323_state, d);
-> @@ -375,14 +375,13 @@ static int ssd0323_init(SSISlave *d)
-> =20
->      register_savevm(dev, "ssd0323_oled", -1, 1,
->                      ssd0323_save, ssd0323_load, s);
-> -    return 0;
->  }
-> =20
->  static void ssd0323_class_init(ObjectClass *klass, void *data)
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D ssd0323_init;
-> +    k->realize =3D ssd0323_realize;
->      k->transfer =3D ssd0323_transfer;
->      k->cs_polarity =3D SSI_CS_HIGH;
->  }
-> Index: qemu-ast2400-mainline.git/hw/misc/max111x.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/misc/max111x.c
-> +++ qemu-ast2400-mainline.git/hw/misc/max111x.c
-> @@ -147,14 +147,14 @@ static int max111x_init(SSISlave *d, int
->      return 0;
->  }
-> =20
-> -static int max1110_init(SSISlave *dev)
-> +static void max1110_realize(SSISlave *dev, Error **errp)
->  {
-> -    return max111x_init(dev, 8);
-> +    max111x_init(dev, 8);
->  }
-> =20
-> -static int max1111_init(SSISlave *dev)
-> +static void max1111_realize(SSISlave *dev, Error **errp)
->  {
-> -    return max111x_init(dev, 4);
-> +    max111x_init(dev, 4);
->  }
-> =20
->  void max111x_set_input(DeviceState *dev, int line, uint8_t value)
-> @@ -183,7 +183,7 @@ static void max1110_class_init(ObjectCla
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D max1110_init;
-> +    k->realize =3D max1110_realize;
->  }
-> =20
->  static const TypeInfo max1110_info =3D {
-> @@ -196,7 +196,7 @@ static void max1111_class_init(ObjectCla
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D max1111_init;
-> +    k->realize =3D max1111_realize;
->  }
-> =20
->  static const TypeInfo max1111_info =3D {
-> Index: qemu-ast2400-mainline.git/hw/sd/ssi-sd.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/sd/ssi-sd.c
-> +++ qemu-ast2400-mainline.git/hw/sd/ssi-sd.c
-> @@ -15,6 +15,7 @@
->  #include "sysemu/blockdev.h"
->  #include "hw/ssi/ssi.h"
->  #include "hw/sd/sd.h"
-> +#include "qapi/error.h"
-> =20
->  //#define DEBUG_SSI_SD 1
-> =20
-> @@ -249,7 +250,7 @@ static int ssi_sd_load(QEMUFile *f, void
->      return 0;
->  }
-> =20
-> -static int ssi_sd_init(SSISlave *d)
-> +static void ssi_sd_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev =3D DEVICE(d);
->      ssi_sd_state *s =3D FROM_SSI_SLAVE(ssi_sd_state, d);
-> @@ -260,17 +261,17 @@ static int ssi_sd_init(SSISlave *d)
->      dinfo =3D drive_get_next(IF_SD);
->      s->sd =3D sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, true)=
-;
->      if (s->sd =3D=3D NULL) {
-> -        return -1;
-> +        error_setg(errp, "Device initialization failed.");
-> +        return;
->      }
->      register_savevm(dev, "ssi_sd", -1, 1, ssi_sd_save, ssi_sd_load, s)=
-;
-> -    return 0;
->  }
-> =20
->  static void ssi_sd_class_init(ObjectClass *klass, void *data)
->  {
->      SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
-> =20
-> -    k->init =3D ssi_sd_init;
-> +    k->realize =3D ssi_sd_realize;
->      k->transfer =3D ssi_sd_transfer;
->      k->cs_polarity =3D SSI_CS_LOW;
->  }
-> Index: qemu-ast2400-mainline.git/hw/ssi/ssi.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/hw/ssi/ssi.c
-> +++ qemu-ast2400-mainline.git/hw/ssi/ssi.c
-> @@ -54,7 +54,7 @@ static uint32_t ssi_transfer_raw_default
->      return 0;
->  }
-> =20
-> -static int ssi_slave_init(DeviceState *dev)
-> +static void ssi_slave_realize(DeviceState *dev, Error **errp)
->  {
->      SSISlave *s =3D SSI_SLAVE(dev);
->      SSISlaveClass *ssc =3D SSI_SLAVE_GET_CLASS(s);
-> @@ -64,7 +64,7 @@ static int ssi_slave_init(DeviceState *d
->          qdev_init_gpio_in_named(dev, ssi_cs_default, SSI_GPIO_CS, 1);
->      }
-> =20
-> -    return ssc->init(s);
-> +    ssc->realize(s, errp);
->  }
-> =20
->  static void ssi_slave_class_init(ObjectClass *klass, void *data)
-> @@ -72,7 +72,7 @@ static void ssi_slave_class_init(ObjectC
->      SSISlaveClass *ssc =3D SSI_SLAVE_CLASS(klass);
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> =20
-> -    dc->init =3D ssi_slave_init;
-> +    dc->realize =3D ssi_slave_realize;
->      dc->bus_type =3D TYPE_SSI_BUS;
->      if (!ssc->transfer_raw) {
->          ssc->transfer_raw =3D ssi_transfer_raw_default;
-> Index: qemu-ast2400-mainline.git/include/hw/ssi/ssi.h
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- qemu-ast2400-mainline.git.orig/include/hw/ssi/ssi.h
-> +++ qemu-ast2400-mainline.git/include/hw/ssi/ssi.h
-> @@ -37,7 +37,7 @@ enum SSICSMode {
->  struct SSISlaveClass {
->      DeviceClass parent_class;
-> =20
-> -    int (*init)(SSISlave *dev);
-> +    void (*realize)(SSISlave *dev, Error **errp);
-> =20
->      /* if you have standard or no CS behaviour, just override transfer=
-.
->       * This is called when the device cs is active (true by default).
->=20
+> I agree. But I think it's a subject for a separate patch.
+> May be I'll fix it later, but I didn't plan it for a nearest future.
 
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Ok, fair enough.  In that case, ppc pieces are
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--Bqc0IY4JZZt50bUr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXYfhxAAoJEGw4ysog2bOSgmoQAN7+fcwFvJy2Xm6O2jvLDlaX
+3QYRruGClS1bHnCnkbnLDUEtKa0GNW2FARQCFEG+OrzWYB8eVkDEhW3hU3vMzFZ3
+SdoWN7vvVq8DnEsPnIiz5iiwY18ynEjGrVVdM+7gBLMpwKMLnc4du3OztMjnzPyD
+HryIukAEOw0SK1+/NuiRAOgAVPQeJoCI3QlKi6B/P68VZUhPa3BLeInh4npl+qpu
+W6ARVXLJxlB0Py2ykniN++/y2HDYgmdFfoJPERM05r/ufsja4HZ/Uop2M1hZ8Vw5
+wJ31hbo4/3OWbB2Bfd3xL8SbqB6N2HLE6hbtL381KZuvA0gBiMesn7R0NnPmej7j
+Zsb2RTbymJLoTtIsdr4RApz+AdCSRhsa0Gx5bINhyXO8FDK3BE8c6aBTABTfIlzy
+Nzro2Rtbx7YTYO+60B3k2xDG3gFqZu0rAu+UaDic+bjQMWx4ewKYRbhxsL1Se0p4
+PoFIZgAzgKbv3o3xbimY3nY7yAHzOgQ7T1+6cUQMre+qlqYkm8O6h9d/fdHQbY8r
+HVCiPprj286bhdfadHuv1dPcCy7sBAhhBRYgGQ+6CLa92I46QjHFISUjvBylJ//L
+pHFGwjVUv1Sl3LwN59EwLf4anfIZD5W/rD4kgdzJB8RjuJ/hKspobGsjFOAf32uV
+AU5t6qLne05y8yyitb7K
+=FhQ2
+-----END PGP SIGNATURE-----
+
+--Bqc0IY4JZZt50bUr--

@@ -1,64 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp182463lfi;
-        Thu, 16 Jun 2016 00:50:20 -0700 (PDT)
-X-Received: by 10.140.81.18 with SMTP id e18mr3090476qgd.60.1466063420463;
-        Thu, 16 Jun 2016 00:50:20 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp330680lfi;
+        Thu, 16 Jun 2016 07:00:15 -0700 (PDT)
+X-Received: by 10.55.71.138 with SMTP id u132mr5096017qka.1.1466085615523;
+        Thu, 16 Jun 2016 07:00:15 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b70si25357811qkb.64.2016.06.16.00.50.20
+        by mx.google.com with ESMTPS id 36si26193345qgg.38.2016.06.16.07.00.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Jun 2016 00:50:20 -0700 (PDT)
+        Thu, 16 Jun 2016 07:00:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@aj.id.au;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47090 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49537 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDS4B-0004Py-QZ
-	for alex.bennee@linaro.org; Thu, 16 Jun 2016 03:50:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39150)
+	id 1bDXqB-0001qw-0t
+	for alex.bennee@linaro.org; Thu, 16 Jun 2016 10:00:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bDS2S-0002hc-5x
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 03:48:37 -0400
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1bDXon-0001BP-He
+	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 09:58:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bDS2P-0006u6-UC
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 03:48:31 -0400
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:59894
-	helo=homiemail-a19.g.dreamhost.com)
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1bDXom-0006Sv-Fj
+	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 09:58:49 -0400
+Received: from mail-io0-x230.google.com ([2607:f8b0:4001:c06::230]:34411)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1bDS2J-0006ri-6W; Thu, 16 Jun 2016 03:48:23 -0400
-Received: from homiemail-a19.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTP id A2F2D604076;
-	Thu, 16 Jun 2016 00:48:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=from:to:cc
-	:subject:date:message-id:in-reply-to:references:mime-version
-	:content-type:content-transfer-encoding; s=aj.id.au; bh=aUj+AuuX
-	qdRlfbu3mGrZ0jGrfaA=; b=q3B+9qUrJQbEKfWphVB31kpamWgamglpPAm9AhbI
-	QkKTIyfNtOjFhwF5sE3XevE9QRSCSLrym4pBFQ59CphV9fPf9f1fjl6MLw7v3ALl
-	pae55S8rs7zHMh/ZFPmy/51yePoBD9yxCiNtxAYiM3OEGfE/WmGZnB/hhBPqDekv
-	I2I=
-Received: from keelia.au.ibm.com (orion.jms.id.au [119.9.53.35])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a19.g.dreamhost.com (Postfix) with ESMTPSA id E9152604069; 
-	Thu, 16 Jun 2016 00:48:20 -0700 (PDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Jun 2016 17:48:07 +1000
-Message-Id: <1466063287-19350-3-git-send-email-andrew@aj.id.au>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
-References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1bDXom-0006SO-1k
+	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 09:58:48 -0400
+Received: by mail-io0-x230.google.com with SMTP id 5so51119198ioy.1
+	for <qemu-devel@nongnu.org>; Thu, 16 Jun 2016 06:58:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8nqjRiIKX9V2Z8824VPWRwERq8C385xcizoBScqe+oE=;
+	b=f8VUc1lVj2hVG3wrMaVYbAq0EbS7+US2dnATH29Mzkqbijs9i3pRWzFXep//r3begi
+	CTjb2ew2tdPa0DQ1V219h14ilEqTYy0CFZz1zxaCiN/P6EC0UzTzncOl4NDp2KtWaE7c
+	8b668Z/tb3dIUnzdRQFgfu7YRn+E+2i3ana4A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8nqjRiIKX9V2Z8824VPWRwERq8C385xcizoBScqe+oE=;
+	b=UdMZiy0BqWXttukXPRoOfxE6aq4fbwYKel0kafR67svUmg4ddnXgx47pIzBo3TCRKZ
+	l8jLe9Y2jMCup1sEG4qoqKjInG0v3KhlNTCN8os2vRK73zxsGNGqQR+cTZePlpZRd0U8
+	ye96mE+ZX/guPnezdXkbwYc4Q4Vl/TGuHzPDgfefLI6OP66ra94Exs4PE67YwPvOq7eB
+	wX/zO++qa5P1YAJLv2X6LtSKqHfUS4t+Uox9yWT3YOigLCDeIoQEGt3+SVwwdf66ZDvW
+	oSTyCT2oKvkwfGRP/IJIXSUVUxgshqFCrKkBPGlLx51fQ/6JQk4FDO8zMpazYGqXJLMQ
+	XqyQ==
+X-Gm-Message-State: ALyK8tKk25Q4uGG8ZhLL65almeI9viv2Pr37SI69lVlzAqO4FWJ8ncmik9Tj4FeDtQA4xlDJ7oiniUrHh7PlQJxk
+X-Received: by 10.107.40.67 with SMTP id o64mr7643823ioo.183.1466085527231;
+	Thu, 16 Jun 2016 06:58:47 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.36.116.146 with HTTP; Thu, 16 Jun 2016 06:58:46 -0700 (PDT)
+In-Reply-To: <9d7c8c4e-1445-87d8-f367-8b3773c38365@suse.de>
+References: <1464870382-385-1-git-send-email-bogdan.purcareata@nxp.com>
+	<1464870382-385-3-git-send-email-bogdan.purcareata@nxp.com>
+	<CAFEAcA9yTmT+5zDYJjmLDvxmdOiEfAxKxjCYuYKfOwUrft1Drg@mail.gmail.com>
+	<9d7c8c4e-1445-87d8-f367-8b3773c38365@suse.de>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Thu, 16 Jun 2016 15:58:46 +0200
+Message-ID: <CAKv+Gu-1g4FYEaqUWnO25oZVnq9inX_jd7B2RjWd+uhs34CPpw@mail.gmail.com>
+To: Alexander Graf <agraf@suse.de>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 69.163.253.7
-Subject: [Qemu-devel] [PATCH 2/2] ast2400: Integrate the SCU model and
- configure reset values
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4001:c06::230
+Subject: Re: [Qemu-devel] [PATCH 2/2] arm/virt: Mark pcie controller node as
+ dma-coherent
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,149 +78,47 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
-	qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Eric Auger <eric.auger@linaro.org>, Will Deacon <will.deacon@arm.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Bogdan Purcareata <bogdan.purcareata@nxp.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rMWm4y7ZNjHk
+X-TUID: njoDyJSoxANM
 
-Almost all configured reset values are specified by the datasheet. The
-notable exception is ASPEED_SCU_SOC_SCRATCH1, where we mark the DRAM as
-successfully initialised by the SoC to avoid unnecessary dark corners in
-the SoC's u-boot support.
+On 2 June 2016 at 14:45, Alexander Graf <agraf@suse.de> wrote:
+>
+>
+> On 02.06.16 14:32, Peter Maydell wrote:
+>> On 2 June 2016 at 13:26, Bogdan Purcareata <bogdan.purcareata@nxp.com> wrote:
+>>> A PCI device is marked either as coherent or non-coherent based on the pcie
+>>> controller "dma-coherent" property. This is further used when configuring the
+>>> IOMMU ops for the device DMA resources (e.g. descriptor rings, for e1000e).
+>>>
+>>> This dma-coherent property needs to be configured in the guest environment,
+>>> in case there's a directly assigned VFIO PCI device. Since the guest only
+>>> receives one emulated pcie controller bus - regardless of the host
+>>> configuration - add this property if there's at least one host pcie host
+>>> controller that is DMA coherent (this implies that the host interconnect
+>>> is coherent as well).
+>>
+>> This patch seems to change the property of the emulated PCIe controller
+>> based on the host PCIe controller even if we're not doing any PCIe
+>> passthrough at all. That seems definitely wrong to me.
+>>
+>> (Should the purely-emulated case be marked DMA-coherent anyway?
+>> I forget the fiddly details...)
+>
+> I do too, let's involve a few people who know :). Not exposing it as
+> coherent is definitely wrong, but whether "dma-coherent" is the right
+> choice I don't know.
+>
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
----
- hw/arm/ast2400.c         | 57 ++++++++++++++++++++++++++++++++++++++++++=
-++++++
- include/hw/arm/ast2400.h |  2 ++
- 2 files changed, 59 insertions(+)
-
-diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
-index 4a9de0e10cbc..fc0da5c38557 100644
---- a/hw/arm/ast2400.c
-+++ b/hw/arm/ast2400.c
-@@ -24,12 +24,48 @@
- #define AST2400_IOMEM_SIZE       0x00200000
- #define AST2400_IOMEM_BASE       0x1E600000
- #define AST2400_VIC_BASE         0x1E6C0000
-+#define AST2400_SCU_BASE         0x1E6E2000
- #define AST2400_TIMER_BASE       0x1E782000
- #define AST2400_I2C_BASE         0x1E78A000
-=20
- static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
- static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
-=20
-+static const AspeedSCUResetCfg scu_reset[] =3D {
-+    /* Values are defaults from the datasheet except where noted */
-+    { ASPEED_SCU_SYS_RST_CTRL,   0xFFCFFEDCU },
-+    { ASPEED_SCU_CLK_SEL,        0xF3F40000U },
-+    { ASPEED_SCU_CLK_STOP_CTRL,  0x19FC3E8BU },
-+    { ASPEED_SCU_D2PLL_PARAM,    0x00026108U },
-+    { ASPEED_SCU_MPLL_PARAM,     0x00030291U },
-+    { ASPEED_SCU_HPLL_PARAM,     0x00000291U },
-+    { ASPEED_SCU_MISC_CTRL1,     0x00000010U },
-+    { ASPEED_SCU_PCI_CTRL1,      0x20001A03U },
-+    { ASPEED_SCU_PCI_CTRL2,      0x20001A03U },
-+    { ASPEED_SCU_PCI_CTRL3,      0x04000030U },
-+    { ASPEED_SCU_SYS_RST_STATUS, 0x00000001U },
-+    { ASPEED_SCU_SOC_SCRATCH1,   0x000000C0U }, /* SoC completed DRAM in=
-it */
-+    { ASPEED_SCU_MISC_CTRL2,     0x00000023U },
-+    { ASPEED_SCU_HW_STRAP1,      0x120CE416U }, /* Extracted after boot =
-*/
-+    { ASPEED_SCU_RNG_CTRL,       0x0000000EU },
-+    { ASPEED_SCU_REV_ID,         0x02000303U },
-+    { ASPEED_SCU_PINMUX_CTRL2,   0x0000F000U },
-+    { ASPEED_SCU_PINMUX_CTRL3,   0x01000000U },
-+    { ASPEED_SCU_PINMUX_CTRL4,   0x000000FFU },
-+    { ASPEED_SCU_PINMUX_CTRL5,   0x0000A000U },
-+    { ASPEED_SCU_WDT_RST_CTRL,   0x003FFFF3U },
-+    { ASPEED_SCU_PINMUX_CTRL8,   0xFFFF0000U },
-+    { ASPEED_SCU_PINMUX_CTRL9,   0x000FFFFFU },
-+    { ASPEED_SCU_FREE_CNTR4,     0x000000FFU },
-+    { ASPEED_SCU_FREE_CNTR4_EXT, 0x000000FFU },
-+    { ASPEED_SCU_CPU2_BASE_SEG1, 0x80000000U },
-+    { ASPEED_SCU_CPU2_BASE_SEG4, 0x1E600000U },
-+    { ASPEED_SCU_CPU2_BASE_SEG5, 0xC0000000U },
-+    { ASPEED_SCU_UART_HPLL_CLK,  0x00001903U },
-+    { ASPEED_SCU_PCIE_CTRL,      0x0000007BU },
-+    { ASPEED_SCU_BMC_DEV_ID,     0x00002402U }
-+};
-+
- /*
-  * IO handlers: simply catch any reads/writes to IO addresses that aren'=
-t
-  * handled by a device mapping.
-@@ -57,6 +93,7 @@ static const MemoryRegionOps ast2400_io_ops =3D {
-=20
- static void ast2400_init(Object *obj)
- {
-+    int i;
-     AST2400State *s =3D AST2400(obj);
-=20
-     s->cpu =3D cpu_arm_init("arm926");
-@@ -72,6 +109,18 @@ static void ast2400_init(Object *obj)
-     object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
-     object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
-     qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
-+
-+    object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
-+    object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
-+    qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
-+
-+    qdev_prop_set_uint32(DEVICE(&s->scu), "len-reset", ASPEED_SCU_NR_REG=
-S);
-+    for (i =3D 0; i < ARRAY_SIZE(scu_reset); i++) {
-+        int reg =3D ASPEED_SCU_TO_REG(scu_reset[i].offset);
-+        char *propname =3D g_strdup_printf("reset[%d]", reg);
-+        qdev_prop_set_uint32(DEVICE(&s->scu), propname, scu_reset[i].val=
-);
-+        g_free(propname);
-+    }
- }
-=20
- static void ast2400_realize(DeviceState *dev, Error **errp)
-@@ -110,6 +159,14 @@ static void ast2400_realize(DeviceState *dev, Error =
-**errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-     }
-=20
-+    /* SCU */
-+    object_property_set_bool(OBJECT(&s->scu), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, AST2400_SCU_BASE);
-+
-     /* UART - attach an 8250 to the IO space as our UART5 */
-     if (serial_hds[0]) {
-         qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4=
-]);
-diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
-index c05ed5376736..f1a64fd3893d 100644
---- a/include/hw/arm/ast2400.h
-+++ b/include/hw/arm/ast2400.h
-@@ -14,6 +14,7 @@
-=20
- #include "hw/arm/arm.h"
- #include "hw/intc/aspeed_vic.h"
-+#include "hw/misc/aspeed_scu.h"
- #include "hw/timer/aspeed_timer.h"
- #include "hw/i2c/aspeed_i2c.h"
-=20
-@@ -27,6 +28,7 @@ typedef struct AST2400State {
-     AspeedVICState vic;
-     AspeedTimerCtrlState timerctrl;
-     AspeedI2CState i2c;
-+    AspeedSCUState scu;
- } AST2400State;
-=20
- #define TYPE_AST2400 "ast2400"
---=20
-2.7.4
-
+As far as I understand it, the purely emulated case should be marked
+DMA coherent, since otherwise, guest drivers may perform cache
+maintenance that the host is not expecting. This is especially harmful
+if the guest invalidates the caches after a device to memory transfer,
+which may result in data being lost if the data was only present in
+the caches to begin with (which is the case for devices that are
+emulated by the host)

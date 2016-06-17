@@ -1,119 +1,108 @@
-Received: by 10.25.21.96 with SMTP id l93csp365121lfi;
-        Fri, 17 Jun 2016 10:14:25 -0700 (PDT)
-X-Received: by 10.55.154.136 with SMTP id c130mr3476529qke.79.1466183665608;
-        Fri, 17 Jun 2016 10:14:25 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp376997lfi;
+        Fri, 17 Jun 2016 10:47:57 -0700 (PDT)
+X-Received: by 10.200.40.49 with SMTP id 46mr3753994qtq.79.1466185677711;
+        Fri, 17 Jun 2016 10:47:57 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v82si32172503qkb.250.2016.06.17.10.14.25
+        by mx.google.com with ESMTPS id d66si32382201qgf.70.2016.06.17.10.47.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 10:14:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 17 Jun 2016 10:47:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59189 helo=lists.gnu.org)
+       dkim=fail header.i=@livius-net.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59411 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDxLc-0005qk-Sg
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 13:14:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36007)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bDxs5-0000y3-2d
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 13:47:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1bDwhg-0004iQ-62
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 12:33:09 -0400
+	(envelope-from <ilg@livius.net>) id 1bDwXv-0001Lu-AR
+	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 12:23:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rjones@redhat.com>) id 1bDwha-0002fZ-Vw
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 12:33:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43724)
+	(envelope-from <ilg@livius.net>) id 1bDwXr-00007e-6h
+	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 12:23:03 -0400
+Received: from mail-wm0-x22d.google.com ([2a00:1450:400c:c09::22d]:38041)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rjones@redhat.com>)
-	id 1bDwha-0002fS-QY; Fri, 17 Jun 2016 12:33:02 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3824480E4A;
-	Fri, 17 Jun 2016 16:33:02 +0000 (UTC)
-Received: from localhost (ovpn-204-136.brq.redhat.com [10.40.204.136])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5HGX17D012815; Fri, 17 Jun 2016 12:33:01 -0400
-Date: Fri, 17 Jun 2016 17:33:00 +0100
-From: "Richard W.M. Jones" <rjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160617163300.GV16797@redhat.com>
-References: <b1b3b0dd143b7995a7f4062966b80a2cf3e3c71e.1464273085.git.crobinso@redhat.com>
-	<20160526144629.GH28935@redhat.com>
-	<CAFEAcA-G4rL8o-6gmQvXHMVUrvH9utZOQuFhDO=J9imtzophjA@mail.gmail.com>
-	<CAFEAcA8QmK+_cHfPuk90poixxbqSJpb+OuoXg-3OnXcfRYKQUg@mail.gmail.com>
-	<20160617161016.GU16797@redhat.com>
-	<CAFEAcA931Pn7jbyRF-G5jGSi=h7CjV3j7v7Xvpb8rbPttVJKvQ@mail.gmail.com>
-MIME-Version: 1.0
+	(envelope-from <ilg@livius.net>) id 1bDwXq-00007R-Uz
+	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 12:22:59 -0400
+Received: by mail-wm0-x22d.google.com with SMTP id m124so6388021wme.1
+	for <qemu-devel@nongnu.org>; Fri, 17 Jun 2016 09:22:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=livius-net.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=vFJ6+3O6Y+UsvQQhQ5YnZWr66CmOVq6HfCn6KhcIMTE=;
+	b=Ba2X6Le9E9uMF7O584mpg0Vws35s2nu8TCQyFa0oz4wekVbCtoD0/tm2lwtq1cb2XL
+	ZlQNOHNEM5S7Ti4tBTwoAZ/q+YP01MwIMz53InFiBj8vuoEb8x48QBwz2OrnVdgbh1PI
+	qFLhwLZ7whfFs3X+gbSeez9C5pP0kPPCnEDM64ESindvx/wCQyikBE9wB97N5jgOlugn
+	zTDIhGe2FbsBSeeKY1jpzYCTR0AHqG/dSi7boaz7E6CmTsdUiP1wHEIX24SFobWTBOlH
+	oHL/uDwlGeY572vgqv9BXZ6EltFXVoUlHGf5pswqdgFpJR2+MqWHtmhTDvTW01ufyLXi
+	EXAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+	:content-transfer-encoding:message-id:references:to;
+	bh=vFJ6+3O6Y+UsvQQhQ5YnZWr66CmOVq6HfCn6KhcIMTE=;
+	b=mfX0qqMZz1JQCW1gJV6NnVZAruNEkXGeuO8Ozk1cwcBv/FiJITP1mVe1+FjvQuDJcL
+	m7xT6RRElBdEqt2jbaP9nTqXy/eqboeYvXxOtTErmeA3zUnP/zbmZ0sX+Mtse724htdi
+	+3ZNJOqo8jrglUGo0JEVTAjazzxTY7BHVpTirrTeUyWRZxjIkoqFXCGAx/Z/tCE0yoCG
+	632YvX8VobnRmbPpPOKTyX6C7TU2KMdx0QysvokuNl1SUhVCJlb07Cpf2auwtN3dXgdw
+	UjJYHx0qS9/nKYt/srQFdP+rCbdxDY2QuKst74TaB6RoQJZ03Dor1MEuZd43sZFCUsh+
+	iBVA==
+X-Gm-Message-State: ALyK8tIRGmFy9MTqJcpxSqxuy+jGxAwx6BLGJrlqLuuhIAchoXW4i5zQUSOWOrI/KTM4lA==
+X-Received: by 10.195.11.163 with SMTP id ej3mr3518212wjd.130.1466180578037;
+	Fri, 17 Jun 2016 09:22:58 -0700 (PDT)
+Received: from [172.16.62.12] ([109.99.239.84])
+	by smtp.gmail.com with ESMTPSA id q63sm160618wma.0.2016.06.17.09.22.56
+	(version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 17 Jun 2016 09:22:57 -0700 (PDT)
 Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA931Pn7jbyRF-G5jGSi=h7CjV3j7v7Xvpb8rbPttVJKvQ@mail.gmail.com>
-User-Agent: Mutt/1.5.20 (2009-12-10)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 17 Jun 2016 16:33:02 +0000 (UTC)
+Mime-Version: 1.0 (Mac OS X Mail 9.3 \(3124\))
+From: Liviu Ionescu <ilg@livius.net>
+In-Reply-To: <1466131046-25516-1-git-send-email-tsunghan.tw@gmail.com>
+Date: Fri, 17 Jun 2016 19:22:55 +0300
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <B8CD3C5F-E177-460D-AD9B-4636681ACFAA@livius.net>
+References: <1466131046-25516-1-git-send-email-tsunghan.tw@gmail.com>
+To: Tsung-Han Lin <tsunghan.tw@gmail.com>
+X-Mailer: Apple Mail (2.3124)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: Reject
- gic-version=host for non-KVM
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::22d
+Subject: Re: [Qemu-devel] [RFC] target-arm: fix semihosting ram base issue
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Cole Robinson <crobinso@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8DZvchdkS0oQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	pbonzini@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AbSk12QSg7D5
 
-On Fri, Jun 17, 2016 at 05:31:20PM +0100, Peter Maydell wrote:
-> On 17 June 2016 at 17:10, Richard W.M. Jones <rjones@redhat.com> wrote:
-> > On Fri, Jun 17, 2016 at 03:49:38PM +0100, Peter Maydell wrote:
-> >> > I agree that we really need to do better here (thinking about
-> >> > the problem is on my todo list but generally other more pressing
-> >> > issues intervene). I'd welcome suggestions for semantics which
-> >> > (a) do what you want (b) are reasonably in line with what we do
-> >> > on other host architectures (c) don't break existing command lines.
-> >> > (I think those are the main requirements.)
-> >>
-> >> ...so does anybody have any concrete suggestions? We could fix
-> >> this for 2.7 but we're starting to run low on time for that.
-> >
-> > I have changed libguestfs so it tries to guess if KVM will be used or
-> > not.  We have to do this for the -cpu option too, but the guess is not
-> > too reliable.  Only QEMU has the actual knowledge we need.
-> >
-> > https://github.com/libguestfs/libguestfs/commit/7023f20830a681ef36f8f99415fe41791555a3db
-> >
-> > Can we not have a "give me a GIC which will work" option, eg.
-> >
-> >   -M virt,gic-version=besteffort,accel=kvm:tcg
-> >
-> > I don't care if it's not the fastest or most featureful.
-> 
-> Do we also not care if the result is not consistent
-> between versions of QEMU? (eg if you go from 2.6 to
-> 2.7 does it have to stay doing the same thing it
-> always did?)
 
-For libguestfs, no, since we don't do any migration or saving the
-state of the VM.
+> On 17 Jun 2016, at 05:37, Tsung-Han Lin <tsunghan.tw@gmail.com> wrote:
+>=20
+> Hi, I made some changes to TRY TO fix the ARM semihosting issue ...
+> This problem has been bothering me for quite a while.
 
-Rich.
+semihosting was the first thing I fixed in GNU ARM Eclipse QEMU, and =
+since then I use it constantly.
 
--- 
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjones
-Read my programming and virtualization blog: http://rwmj.wordpress.com
-Fedora Windows cross-compiler. Compile Windows programs, test, and
-build Windows installers. Over 100 libraries supported.
-http://fedoraproject.org/wiki/MinGW
+I don't know if this addresses your problem, but perhaps you could also =
+take a look there.
+
+
+regards,
+
+Liviu
+

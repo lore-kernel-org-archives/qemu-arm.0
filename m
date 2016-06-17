@@ -1,70 +1,73 @@
-Received: by 10.25.21.96 with SMTP id l93csp378404lfi;
-        Thu, 16 Jun 2016 08:43:05 -0700 (PDT)
-X-Received: by 10.55.119.66 with SMTP id s63mr5773391qkc.169.1466091785024;
-        Thu, 16 Jun 2016 08:43:05 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp77100lfi;
+        Thu, 16 Jun 2016 21:19:24 -0700 (PDT)
+X-Received: by 10.140.20.136 with SMTP id 8mr66469qgj.14.1466137163970;
+        Thu, 16 Jun 2016 21:19:23 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 40si23383381qgf.121.2016.06.16.08.43.04
+        by mx.google.com with ESMTPS id q68si29690127qkq.90.2016.06.16.21.19.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Jun 2016 08:43:05 -0700 (PDT)
+        Thu, 16 Jun 2016 21:19:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50197 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53697 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDZRg-0001xY-CI
-	for alex.bennee@linaro.org; Thu, 16 Jun 2016 11:43:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51945)
+	id 1bDlFb-0001mg-CM
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 00:19:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bDYJj-0004L3-EJ
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 10:30:48 -0400
+	(envelope-from <tsunghan.tw@gmail.com>) id 1bDjfF-0005rU-Mr
+	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 22:37:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bDYJc-0006Hs-8t
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 10:30:46 -0400
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33695)
+	(envelope-from <tsunghan.tw@gmail.com>) id 1bDjfE-0007ix-1F
+	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 22:37:45 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:35043)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bDYJc-0006HI-4N
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 10:30:40 -0400
-Received: by mail-vk0-x22d.google.com with SMTP id d185so75767510vkg.0
-	for <qemu-devel@nongnu.org>; Thu, 16 Jun 2016 07:30:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=v44FwpjFs515VWzRpP46XQTcbjL7IpT7Nu/bvNEiDx4=;
-	b=T6WB3mOcYZXIai3hlCLBfnSOJGKdFNCcbj8v32FwHr/HuLRy0JOiqyD3bXdCnv/IkB
-	LOVc8oWS4tIEQDwQCzku8cK8T2cIbmJCjSEFPlen12S0o/B9o/uzQInG1NgKWz5M5tBM
-	J3iE9MQW0dF/67RcHOsiy+UFqY6b4t2HT0OgM=
+	(envelope-from <tsunghan.tw@gmail.com>)
+	id 1bDjf6-0007iA-5w; Thu, 16 Jun 2016 22:37:36 -0400
+Received: by mail-pf0-x242.google.com with SMTP id t190so5128022pfb.2;
+	Thu, 16 Jun 2016 19:37:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=YjC1+XQvtvPwTpPASevUlc8BClDT4X06XoK8G+pEobI=;
+	b=nGbLuHqJJ6P3hA52LNspubnMJH850rp8WJW8o6r+Y6vn0tyEA914YItYvOBr+KPyWd
+	RwPcwMD5pwrFF5kkNLX6+WtU1531MzwL4PXf8RW5TuCRDSDLKzbAtdKC8KswyDSc/GvM
+	o7YxUH54zX06XcXp8pqx6+he4/XfA0OSbKprjulo1OqKwBLHYC1t4/ryKGv2nhusymNc
+	g2B2XvQki4mqr7B6UUSiF5p6OFCvWRG8/+m404DIT1zTHzO7PJUiLbwS4xdaG7ETf2uj
+	AgVgWTef8K9SH5mlJGGdNE/T24SplzJl3AVrS+CxHC/kDZylwjdUgouduQyfZumldOhA
+	U1NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=v44FwpjFs515VWzRpP46XQTcbjL7IpT7Nu/bvNEiDx4=;
-	b=LZ00AQcMxhfKIGxuQ2BIkE7eXMz53YFBURMQHhhZ99EuAOvCkG+UL0QdrxL7EwmYzO
-	UYOYlE4U0ntObj5/PwuS6ubbYt4xvC1HC7nw7ODCIPKtFIAaojJJJnSuHpoAuRDfSanZ
-	6rv4Mdzj9kvUsQmOEGqlUepM7ZhlJ6NE416WlZYUIIwfittdZ0NoQDSS1JCR2ru6Hw0K
-	h15U4aU1MIxeUq5NbfKuCPvu+IHavCsbd/LjDDBppbMVI1fFprIwZ7oqBgNG0UBGLDrD
-	OswtbfdutZv9OAnqEHgBNlzqI856beqlYMBp+rvF85y9E85+kfja1juFTRBy7fIR3xiX
-	anIQ==
-X-Gm-Message-State: ALyK8tI1LmjjZd3C2jXheOGOyZo+o4aIYo4oeS68GUEVxL/HfPVKPAvLuDdtelyjsanN+R7z1bGnegfoFZMUXzYD
-X-Received: by 10.176.0.238 with SMTP id 101mr1902602uaj.107.1466087439619;
-	Thu, 16 Jun 2016 07:30:39 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.97.68 with HTTP; Thu, 16 Jun 2016 07:30:20 -0700 (PDT)
-In-Reply-To: <20160615085200.hcqq3nkzug5eicus@hawk.localdomain>
-References: <1465960955-17388-1-git-send-email-zhaoshenglong@huawei.com>
-	<20160615085200.hcqq3nkzug5eicus@hawk.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Jun 2016 15:30:20 +0100
-Message-ID: <CAFEAcA-wv7ccid5D6CxyRUSC1hg8TGXYrP0gRZOPR8AuUyi-9A@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=YjC1+XQvtvPwTpPASevUlc8BClDT4X06XoK8G+pEobI=;
+	b=WiPaz3+TMOLJ5Sc0QchsgrKbAp7PEX4q5w06a7fDtBGlqeMQTYpbqe2PiBCo7SHIpH
+	id4V00lkLRFAmt1PySRjCH0mo0XfVOwO9jvy0hRKOpO4RtoP+KNfqZ+3VEVJTQ0bk+WZ
+	CGdQh9d9134S561si88vBeXkIgvi7kr+DutO/ptB62c/SzV/wa3B/peDAZPEoJSnyvfb
+	e6FHsS35sf3QkA3h88bpuY3URoPWfw1JfQTnCjk4nKe8+KX23oqy9ibPsN2d8M10dc6G
+	QqSQap4LIiAZlBflQtKL/0y4BM61dhWNY5eRUc3FRGjiH6yb0EBWfm6F0/RY9mskSoz0
+	oK+Q==
+X-Gm-Message-State: ALyK8tIhoKLKQfSRqLeRXsmPPj71JmwP3KcRRSbU7KFmcyujlg/vjaz3dsPHdK9jXYR+mQ==
+X-Received: by 10.98.134.196 with SMTP id x187mr8914750pfd.21.1466131054827;
+	Thu, 16 Jun 2016 19:37:34 -0700 (PDT)
+Received: from Tari7Braves.flets-east.jp (p3b93c7bf.tokynt01.ap.so-net.ne.jp.
+	[59.147.199.191]) by smtp.googlemail.com with ESMTPSA id
+	h189sm24569791pfc.52.2016.06.16.19.37.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Thu, 16 Jun 2016 19:37:34 -0700 (PDT)
+From: Tsung-Han Lin <tsunghan.tw@gmail.com>
+To: peter.maydell@linaro.org,
+	pbonzini@redhat.com
+Date: Fri, 17 Jun 2016 11:37:26 +0900
+Message-Id: <1466131046-25516-1-git-send-email-tsunghan.tw@gmail.com>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Subject: Re: [Qemu-devel] [PATCH] ACPI: ARM: Present GIC version in MADT
- table
+X-Received-From: 2607:f8b0:400e:c00::242
+X-Mailman-Approved-At: Fri, 17 Jun 2016 00:17:29 -0400
+Subject: [Qemu-devel] [RFC] target-arm: fix semihosting ram base issue
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,34 +79,177 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	"Huangpeng \(Peter\)" <peter.huangpeng@huawei.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Igor Mammedov <imammedo@redhat.com>
+Cc: tsunghan.tw@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3wDR2sotOY/f
+X-TUID: QLxd41m680as
 
-On 15 June 2016 at 09:52, Andrew Jones <drjones@redhat.com> wrote:
-> On Wed, Jun 15, 2016 at 11:22:35AM +0800, Shannon Zhao wrote:
->> From: Shannon Zhao <shannon.zhao@linaro.org>
->>
->> In ACPI 5.1 Errata, it adds GIC version in GIC distributor structure.
->> This is useful for guest kernel to identify which version GIC hardware
->> is. Update GIC distributor structure and present GIC version in MADT
->> table.
->>
->> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
+Hi, I made some changes to TRY TO fix the ARM semihosting issue in
+SYS_HEAPINFO handling.
+This problem has been bothering me for quite a while.
 
->
-> AFAICT, Linux is actually fine with version=0 (as before this patch).
-> One way or another it has already determined that the gic is either v3
-> or v4, and then just proceeds. That said, it does seem like the right
-> thing to do to set it
->
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
+A new global variable 'main_ram_base' is added while a new memory
+API, memory_region_add_subregion_main, is also provided to let
+SoC/board creator to initialize this variable.
+I am not sure if this is a good idea (to add a new API)
+or maybe we just let SoC/board creator to simply
+set 'main_ram_base' in their 'xxx_realize' functions?
 
-Applied to target-arm.next, thanks.
+As for Cortex-M series, 'main_ram_base' is set during cpu initialization.
+A64 semihosting handling is also added and use zynqmp as an example.
 
--- PMM
+Any comments/reviews are big welcome!
+Thanks in advance!
+---
+ hw/arm/xlnx-zynqmp.c      |  2 +-
+ include/exec/cpu-common.h |  1 +
+ include/exec/memory.h     |  6 ++++++
+ memory.c                  |  8 ++++++++
+ target-arm/arm-semi.c     | 37 ++++++++++++++++++++++++++-----------
+ target-arm/cpu.c          |  1 +
+ vl.c                      |  1 +
+ 7 files changed, 44 insertions(+), 12 deletions(-)
+
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 23c719986715..8124f71992b4 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -206,7 +206,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         memory_region_init_alias(&s->ddr_ram_high, NULL,
+                                  "ddr-ram-high", s->ddr_ram,
+                                   ddr_low_size, ddr_high_size);
+-        memory_region_add_subregion(get_system_memory(),
++        memory_region_add_subregion_main(get_system_memory(),
+                                     XLNX_ZYNQMP_HIGH_RAM_START,
+                                     &s->ddr_ram_high);
+     } else {
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index aaee99563464..c345e61ede16 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -49,6 +49,7 @@ typedef uintptr_t ram_addr_t;
+ #endif
+ 
+ extern ram_addr_t ram_size;
++extern ram_addr_t main_ram_base;
+ 
+ /* memory API */
+ 
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 4ab680052f27..d76b0a069c98 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -972,6 +972,8 @@ void memory_region_del_eventfd(MemoryRegion *mr,
+  * may only be added once as a subregion (unless removed with
+  * memory_region_del_subregion()); use memory_region_init_alias() if you
+  * want a region to be a subregion in multiple locations.
++ * The _main version is used to define the main working ram area, such ddr
++ * ram region.
+  *
+  * @mr: the region to contain the new subregion; must be a container
+  *      initialized with memory_region_init().
+@@ -981,6 +983,10 @@ void memory_region_del_eventfd(MemoryRegion *mr,
+ void memory_region_add_subregion(MemoryRegion *mr,
+                                  hwaddr offset,
+                                  MemoryRegion *subregion);
++
++void memory_region_add_subregion_main(MemoryRegion *mr,
++                                 hwaddr offset,
++                                 MemoryRegion *subregion);
+ /**
+  * memory_region_add_subregion_overlap: Add a subregion to a container
+  *                                      with overlap.
+diff --git a/memory.c b/memory.c
+index 8ba496dc7b2a..3221838abefe 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1911,6 +1911,14 @@ void memory_region_add_subregion(MemoryRegion *mr,
+     memory_region_add_subregion_common(mr, offset, subregion);
+ }
+ 
++void memory_region_add_subregion_main(MemoryRegion *mr,
++                                 hwaddr offset,
++                                 MemoryRegion *subregion)
++{
++    main_ram_base = offset;
++    memory_region_add_subregion(mr, offset, subregion);
++}
++
+ void memory_region_add_subregion_overlap(MemoryRegion *mr,
+                                          hwaddr offset,
+                                          MemoryRegion *subregion,
+diff --git a/target-arm/arm-semi.c b/target-arm/arm-semi.c
+index 8be0645eb08b..d30469688b01 100644
+--- a/target-arm/arm-semi.c
++++ b/target-arm/arm-semi.c
+@@ -599,17 +599,32 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             unlock_user(ptr, arg0, 16);
+ #else
+             limit = ram_size;
+-            ptr = lock_user(VERIFY_WRITE, arg0, 16, 0);
+-            if (!ptr) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
+-            }
+-            /* TODO: Make this use the limit of the loaded application.  */
+-            ptr[0] = tswap32(limit / 2);
+-            ptr[1] = tswap32(limit);
+-            ptr[2] = tswap32(limit); /* Stack base */
+-            ptr[3] = tswap32(0); /* Stack limit.  */
+-            unlock_user(ptr, arg0, 16);
++			if (is_a64(env)) {
++				uint64_t *ptrx;
++				ptrx = lock_user(VERIFY_WRITE, arg0, 32, 0);
++				if (!ptrx) {
++					/* FIXME - should this error code be -TARGET_EFAULT ? */
++					return (uint32_t)-1;
++				}
++				/* TODO: Make this use the limit of the loaded application.  */
++				ptrx[0] = tswap64(main_ram_base + ram_size / 2); /* Heap base */
++				ptrx[1] = tswap64(main_ram_base + ram_size);         /* limit */
++				ptrx[2] = tswap64(main_ram_base + ram_size); /* Stack base */
++				ptrx[3] = tswap64(main_ram_base + ram_size / 2);  /* limit */
++				unlock_user(ptrx, arg0, 32);
++			} else {
++				ptr = lock_user(VERIFY_WRITE, arg0, 16, 0);
++				if (!ptr) {
++					/* FIXME - should this error code be -TARGET_EFAULT ? */
++					return (uint32_t)-1;
++				}
++				/* TODO: Make this use the limit of the loaded application.  */
++				ptr[0] = tswap32(main_ram_base + limit / 2);
++				ptr[1] = tswap32(main_ram_base + limit);
++				ptr[2] = tswap32(main_ram_base + limit); /* Stack base */
++				ptr[3] = tswap32(main_ram_base); /* Stack limit.  */
++				unlock_user(ptr, arg0, 16);
++			}
+ #endif
+             return 0;
+         }
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 3fd0743cb391..fbc7d6914694 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -193,6 +193,7 @@ static void arm_cpu_reset(CPUState *s)
+             initial_msp = ldl_phys(s->as, 0);
+             initial_pc = ldl_phys(s->as, 4);
+         }
++		main_ram_base = 0x20000000;
+ 
+         env->regs[13] = initial_msp & 0xFFFFFFFC;
+         env->regs[15] = initial_pc & ~1;
+diff --git a/vl.c b/vl.c
+index 0736d8430dc3..ff1eeb50329f 100644
+--- a/vl.c
++++ b/vl.c
+@@ -133,6 +133,7 @@ int request_opengl = -1;
+ int display_opengl;
+ const char* keyboard_layout = NULL;
+ ram_addr_t ram_size;
++ram_addr_t main_ram_base = 0x0; /* default ram base to 0 */
+ const char *mem_path = NULL;
+ int mem_prealloc = 0; /* force preallocation of physical target memory */
+ bool enable_mlock = false;
+-- 
+2.7.4
+

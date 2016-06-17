@@ -1,255 +1,616 @@
-Received: by 10.25.21.96 with SMTP id l93csp77100lfi;
-        Thu, 16 Jun 2016 21:19:24 -0700 (PDT)
-X-Received: by 10.140.20.136 with SMTP id 8mr66469qgj.14.1466137163970;
-        Thu, 16 Jun 2016 21:19:23 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp155266lfi;
+        Fri, 17 Jun 2016 01:43:14 -0700 (PDT)
+X-Received: by 10.55.64.141 with SMTP id n135mr849402qka.134.1466152994558;
+        Fri, 17 Jun 2016 01:43:14 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q68si29690127qkq.90.2016.06.16.21.19.23
+        by mx.google.com with ESMTPS id c62si13062954qkd.267.2016.06.17.01.43.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Jun 2016 21:19:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 17 Jun 2016 01:43:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53697 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54861 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDlFb-0001mg-CM
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 00:19:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39253)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bDpMv-0006cf-Tw
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 04:43:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48808)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>) id 1bDjfF-0005rU-Mr
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 22:37:47 -0400
+	(envelope-from <clg@kaod.org>) id 1bDpMb-0006KP-6y
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:42:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>) id 1bDjfE-0007ix-1F
-	for qemu-devel@nongnu.org; Thu, 16 Jun 2016 22:37:45 -0400
-Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:35043)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <tsunghan.tw@gmail.com>)
-	id 1bDjf6-0007iA-5w; Thu, 16 Jun 2016 22:37:36 -0400
-Received: by mail-pf0-x242.google.com with SMTP id t190so5128022pfb.2;
-	Thu, 16 Jun 2016 19:37:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=YjC1+XQvtvPwTpPASevUlc8BClDT4X06XoK8G+pEobI=;
-	b=nGbLuHqJJ6P3hA52LNspubnMJH850rp8WJW8o6r+Y6vn0tyEA914YItYvOBr+KPyWd
-	RwPcwMD5pwrFF5kkNLX6+WtU1531MzwL4PXf8RW5TuCRDSDLKzbAtdKC8KswyDSc/GvM
-	o7YxUH54zX06XcXp8pqx6+he4/XfA0OSbKprjulo1OqKwBLHYC1t4/ryKGv2nhusymNc
-	g2B2XvQki4mqr7B6UUSiF5p6OFCvWRG8/+m404DIT1zTHzO7PJUiLbwS4xdaG7ETf2uj
-	AgVgWTef8K9SH5mlJGGdNE/T24SplzJl3AVrS+CxHC/kDZylwjdUgouduQyfZumldOhA
-	U1NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=YjC1+XQvtvPwTpPASevUlc8BClDT4X06XoK8G+pEobI=;
-	b=WiPaz3+TMOLJ5Sc0QchsgrKbAp7PEX4q5w06a7fDtBGlqeMQTYpbqe2PiBCo7SHIpH
-	id4V00lkLRFAmt1PySRjCH0mo0XfVOwO9jvy0hRKOpO4RtoP+KNfqZ+3VEVJTQ0bk+WZ
-	CGdQh9d9134S561si88vBeXkIgvi7kr+DutO/ptB62c/SzV/wa3B/peDAZPEoJSnyvfb
-	e6FHsS35sf3QkA3h88bpuY3URoPWfw1JfQTnCjk4nKe8+KX23oqy9ibPsN2d8M10dc6G
-	QqSQap4LIiAZlBflQtKL/0y4BM61dhWNY5eRUc3FRGjiH6yb0EBWfm6F0/RY9mskSoz0
-	oK+Q==
-X-Gm-Message-State: ALyK8tIhoKLKQfSRqLeRXsmPPj71JmwP3KcRRSbU7KFmcyujlg/vjaz3dsPHdK9jXYR+mQ==
-X-Received: by 10.98.134.196 with SMTP id x187mr8914750pfd.21.1466131054827;
-	Thu, 16 Jun 2016 19:37:34 -0700 (PDT)
-Received: from Tari7Braves.flets-east.jp (p3b93c7bf.tokynt01.ap.so-net.ne.jp.
-	[59.147.199.191]) by smtp.googlemail.com with ESMTPSA id
-	h189sm24569791pfc.52.2016.06.16.19.37.32
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Thu, 16 Jun 2016 19:37:34 -0700 (PDT)
-From: Tsung-Han Lin <tsunghan.tw@gmail.com>
-To: peter.maydell@linaro.org,
-	pbonzini@redhat.com
-Date: Fri, 17 Jun 2016 11:37:26 +0900
-Message-Id: <1466131046-25516-1-git-send-email-tsunghan.tw@gmail.com>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::242
-X-Mailman-Approved-At: Fri, 17 Jun 2016 00:17:29 -0400
-Subject: [Qemu-devel] [RFC] target-arm: fix semihosting ram base issue
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <clg@kaod.org>) id 1bDpMV-0003KU-23
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:42:52 -0400
+Received: from 1.mo53.mail-out.ovh.net ([178.32.108.164]:52635)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
+	id 1bDpH7-0002EW-6U
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:42:46 -0400
+Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 3D61FFF9245
+	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 10:36:31 +0200 (CEST)
+Received: from hermes.ibm.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
+	by player158.ha.ovh.net (Postfix) with ESMTPSA id BA80562008D;
+	Fri, 17 Jun 2016 10:36:23 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Date: Fri, 17 Jun 2016 10:35:52 +0200
+Message-Id: <1466152555-10406-2-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1466152555-10406-1-git-send-email-clg@kaod.org>
+References: <1466152555-10406-1-git-send-email-clg@kaod.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 13154733039251393297
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrledtgddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 178.32.108.164
+Subject: [Qemu-arm] [PATCH 1/4] ast2400: add SMC controllers (FMC and SPI)
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: tsunghan.tw@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QLxd41m680as
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XAq6b4AL7Y4a
 
-Hi, I made some changes to TRY TO fix the ARM semihosting issue in
-SYS_HEAPINFO handling.
-This problem has been bothering me for quite a while.
+The Aspeed AST2400 soc includes a static memory controller for the BMC
+which supports NOR, NAND and SPI flash memory modules. This controller
+has two modes : the SMC for the legacy interface which supports only
+one module and the FMC for the new interface which supports up to five
+modules. The AST2400 also includes a SPI only controller used for the
+host firmware, commonly called BIOS on Intel. It can be used in three
+mode : a SPI master, SPI slave and SPI pass-through
 
-A new global variable 'main_ram_base' is added while a new memory
-API, memory_region_add_subregion_main, is also provided to let
-SoC/board creator to initialize this variable.
-I am not sure if this is a good idea (to add a new API)
-or maybe we just let SoC/board creator to simply
-set 'main_ram_base' in their 'xxx_realize' functions?
+Below is the initial framework for the SMC controller (FMC mode only)
+and the SPI controller: the sysbus object, MMIO for registers
+configuration and controls. Each controller has a SPI bus and a
+configurable number of CS lines for SPI flash slaves.
 
-As for Cortex-M series, 'main_ram_base' is set during cpu initialization.
-A64 semihosting handling is also added and use zynqmp as an example.
+The differences between the controllers are small, so they are
+abstracted using indirections on the register numbers.
 
-Any comments/reviews are big welcome!
-Thanks in advance!
+Only SPI flash modules are supported.
+
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/xlnx-zynqmp.c      |  2 +-
- include/exec/cpu-common.h |  1 +
- include/exec/memory.h     |  6 ++++++
- memory.c                  |  8 ++++++++
- target-arm/arm-semi.c     | 37 ++++++++++++++++++++++++++-----------
- target-arm/cpu.c          |  1 +
- vl.c                      |  1 +
- 7 files changed, 44 insertions(+), 12 deletions(-)
+ hw/arm/ast2400.c            |  31 +++++
+ hw/ssi/Makefile.objs        |   1 +
+ hw/ssi/aspeed_smc.c         | 300 ++++++++++++++++++++++++++++++++++++++=
+++++++
+ include/hw/arm/ast2400.h    |   3 +
+ include/hw/ssi/aspeed_smc.h |  79 ++++++++++++
+ 5 files changed, 414 insertions(+)
+ create mode 100644 hw/ssi/aspeed_smc.c
+ create mode 100644 include/hw/ssi/aspeed_smc.h
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 23c719986715..8124f71992b4 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -206,7 +206,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-         memory_region_init_alias(&s->ddr_ram_high, NULL,
-                                  "ddr-ram-high", s->ddr_ram,
-                                   ddr_low_size, ddr_high_size);
--        memory_region_add_subregion(get_system_memory(),
-+        memory_region_add_subregion_main(get_system_memory(),
-                                     XLNX_ZYNQMP_HIGH_RAM_START,
-                                     &s->ddr_ram_high);
-     } else {
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index aaee99563464..c345e61ede16 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -49,6 +49,7 @@ typedef uintptr_t ram_addr_t;
- #endif
- 
- extern ram_addr_t ram_size;
-+extern ram_addr_t main_ram_base;
- 
- /* memory API */
- 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 4ab680052f27..d76b0a069c98 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -972,6 +972,8 @@ void memory_region_del_eventfd(MemoryRegion *mr,
-  * may only be added once as a subregion (unless removed with
-  * memory_region_del_subregion()); use memory_region_init_alias() if you
-  * want a region to be a subregion in multiple locations.
-+ * The _main version is used to define the main working ram area, such ddr
-+ * ram region.
-  *
-  * @mr: the region to contain the new subregion; must be a container
-  *      initialized with memory_region_init().
-@@ -981,6 +983,10 @@ void memory_region_del_eventfd(MemoryRegion *mr,
- void memory_region_add_subregion(MemoryRegion *mr,
-                                  hwaddr offset,
-                                  MemoryRegion *subregion);
+diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
+index fc0da5c38557..458c6d151fd2 100644
+--- a/hw/arm/ast2400.c
++++ b/hw/arm/ast2400.c
+@@ -23,6 +23,9 @@
+ #define AST2400_UART_5_BASE      0x00184000
+ #define AST2400_IOMEM_SIZE       0x00200000
+ #define AST2400_IOMEM_BASE       0x1E600000
++#define AST2400_SMC_BASE         AST2400_IOMEM_BASE /* Legacy SMC */
++#define AST2400_FMC_BASE         0X1E620000
++#define AST2400_SPI_BASE         0X1E630000
+ #define AST2400_VIC_BASE         0x1E6C0000
+ #define AST2400_SCU_BASE         0x1E6E2000
+ #define AST2400_TIMER_BASE       0x1E782000
+@@ -121,6 +124,14 @@ static void ast2400_init(Object *obj)
+         qdev_prop_set_uint32(DEVICE(&s->scu), propname, scu_reset[i].val=
+);
+         g_free(propname);
+     }
 +
-+void memory_region_add_subregion_main(MemoryRegion *mr,
-+                                 hwaddr offset,
-+                                 MemoryRegion *subregion);
- /**
-  * memory_region_add_subregion_overlap: Add a subregion to a container
-  *                                      with overlap.
-diff --git a/memory.c b/memory.c
-index 8ba496dc7b2a..3221838abefe 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1911,6 +1911,14 @@ void memory_region_add_subregion(MemoryRegion *mr,
-     memory_region_add_subregion_common(mr, offset, subregion);
++    object_initialize(&s->smc, sizeof(s->smc), "aspeed.smc.fmc");
++    object_property_add_child(obj, "smc", OBJECT(&s->smc), NULL);
++    qdev_set_parent_bus(DEVICE(&s->smc), sysbus_get_default());
++
++    object_initialize(&s->spi, sizeof(s->spi), "aspeed.smc.spi");
++    object_property_add_child(obj, "spi", OBJECT(&s->spi), NULL);
++    qdev_set_parent_bus(DEVICE(&s->spi), sysbus_get_default());
  }
- 
-+void memory_region_add_subregion_main(MemoryRegion *mr,
-+                                 hwaddr offset,
-+                                 MemoryRegion *subregion)
+=20
+ static void ast2400_realize(DeviceState *dev, Error **errp)
+@@ -183,6 +194,26 @@ static void ast2400_realize(DeviceState *dev, Error =
+**errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, AST2400_I2C_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
+                        qdev_get_gpio_in(DEVICE(&s->vic), 12));
++
++    /* SMC */
++    object_property_set_int(OBJECT(&s->smc), 1, "num-cs", &err);
++    object_property_set_bool(OBJECT(&s->smc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 0, AST2400_FMC_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->smc), 0,
++                       qdev_get_gpio_in(DEVICE(&s->vic), 19));
++
++    /* SPI */
++    object_property_set_int(OBJECT(&s->spi), 1, "num-cs", &err);
++    object_property_set_bool(OBJECT(&s->spi), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0, AST2400_SPI_BASE);
+ }
+=20
+ static void ast2400_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
+index fcbb79ef0185..c79a8dcd86a9 100644
+--- a/hw/ssi/Makefile.objs
++++ b/hw/ssi/Makefile.objs
+@@ -2,6 +2,7 @@ common-obj-$(CONFIG_PL022) +=3D pl022.o
+ common-obj-$(CONFIG_SSI) +=3D ssi.o
+ common-obj-$(CONFIG_XILINX_SPI) +=3D xilinx_spi.o
+ common-obj-$(CONFIG_XILINX_SPIPS) +=3D xilinx_spips.o
++common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_smc.o
+=20
+ obj-$(CONFIG_OMAP) +=3D omap_spi.o
+ obj-$(CONFIG_IMX) +=3D imx_spi.o
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+new file mode 100644
+index 000000000000..7937a9030903
+--- /dev/null
++++ b/hw/ssi/aspeed_smc.c
+@@ -0,0 +1,300 @@
++/*
++ * ASPEED AST2400 SMC Controller (SPI Flash Only)
++ *
++ * Copyright (C) 2016 IBM Corp.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "sysemu/sysemu.h"
++#include "qemu/log.h"
++#include "include/qemu/error-report.h"
++#include "exec/address-spaces.h"
++
++#include "hw/ssi/aspeed_smc.h"
++
++/* CE Type Setting Register */
++#define R_CONF            (0x00 / 4)
++#define   CONF_LEGACY_DISABLE  (1 << 31)
++#define   CONF_ENABLE_W4       20
++#define   CONF_ENABLE_W3       19
++#define   CONF_ENABLE_W2       18
++#define   CONF_ENABLE_W1       17
++#define   CONF_ENABLE_W0       16
++#define   CONF_FLASH_TYPE4     9
++#define   CONF_FLASH_TYPE3     7
++#define   CONF_FLASH_TYPE2     5
++#define   CONF_FLASH_TYPE1     3
++#define   CONF_FLASH_TYPE0     1
++
++/* CE Control Register */
++#define R_CE_CTRL            (0x04 / 4)
++#define   CRTL_EXTENDED4       4  /* 32 bit addressing for SPI */
++#define   CRTL_EXTENDED3       3  /* 32 bit addressing for SPI */
++#define   CRTL_EXTENDED2       2  /* 32 bit addressing for SPI */
++#define   CRTL_EXTENDED1       1  /* 32 bit addressing for SPI */
++#define   CRTL_EXTENDED0       0  /* 32 bit addressing for SPI */
++
++/* Interrupt Control and Status Register */
++#define R_INTR_CTRL       (0x08 / 4)
++
++/* CEx Control Register */
++#define R_CTRL0           (0x10 / 4)
++#define   CTRL_CMD_SHIFT           16
++#define   CTRL_CMD_MASK            0xff
++#define   CTRL_CE_STOP_ACTIVE      (1 << 2)
++#define   CTRL_CMD_MODE_MASK       0x3
++#define     CTRL_READMODE          0x0
++#define     CTRL_FREADMODE         0x1
++#define     CTRL_WRITEMODE         0x2
++#define     CTRL_USERMODE          0x3
++#define R_CTRL1           (0x14 / 4)
++#define R_CTRL2           (0x18 / 4)
++#define R_CTRL3           (0x1C / 4)
++#define R_CTRL4           (0x20 / 4)
++
++/* CEx Segment Address Register */
++#define R_SEG_ADDR0       (0x30 / 4)
++#define   SEG_SIZE_SHIFT       24   /* 8MB units */
++#define   SEG_SIZE_MASK        0x7f
++#define   SEG_START_SHIFT      16   /* address bit [A29-A23] */
++#define   SEG_START_MASK       0x7f
++#define R_SEG_ADDR1       (0x34 / 4)
++#define R_SEG_ADDR2       (0x38 / 4)
++#define R_SEG_ADDR3       (0x3C / 4)
++#define R_SEG_ADDR4       (0x40 / 4)
++
++/* Misc Control Register #1 */
++#define R_MISC_CRTL1      (0x50 / 4)
++
++/* Misc Control Register #2 */
++#define R_MISC_CRTL2      (0x54 / 4)
++
++/* Misc Control Register #2 */
++#define R_TIMINGS         (0x94 / 4)
++
++/* SPI controller registers and bits */
++#define R_SPI_CONF        (0x00 / 4)
++#define   SPI_CONF_ENABLE_W0   0
++#define R_SPI_CTRL0       (0x4 / 4)
++#define R_SPI_MISC_CRTL   (0x10 / 4)
++#define R_SPI_TIMINGS     (0x14 / 4)
++
++static const AspeedSMCController controllers[] =3D {
++    { "aspeed.smc.smc", R_CONF, R_CE_CTRL, R_CTRL0, R_TIMINGS,
++      CONF_ENABLE_W0, 5 },
++    { "aspeed.smc.fmc", R_CONF, R_CE_CTRL, R_CTRL0, R_TIMINGS,
++      CONF_ENABLE_W0, 5 },
++    { "aspeed.smc.spi", R_SPI_CONF, 0xff, R_SPI_CTRL0, R_SPI_TIMINGS,
++      SPI_CONF_ENABLE_W0, 1 },
++};
++
++static bool aspeed_smc_is_ce_stop_active(AspeedSMCState *s, int cs)
 +{
-+    main_ram_base = offset;
-+    memory_region_add_subregion(mr, offset, subregion);
++    return s->regs[s->r_ctrl0 + cs] & CTRL_CE_STOP_ACTIVE;
 +}
 +
- void memory_region_add_subregion_overlap(MemoryRegion *mr,
-                                          hwaddr offset,
-                                          MemoryRegion *subregion,
-diff --git a/target-arm/arm-semi.c b/target-arm/arm-semi.c
-index 8be0645eb08b..d30469688b01 100644
---- a/target-arm/arm-semi.c
-+++ b/target-arm/arm-semi.c
-@@ -599,17 +599,32 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             unlock_user(ptr, arg0, 16);
- #else
-             limit = ram_size;
--            ptr = lock_user(VERIFY_WRITE, arg0, 16, 0);
--            if (!ptr) {
--                /* FIXME - should this error code be -TARGET_EFAULT ? */
--                return (uint32_t)-1;
--            }
--            /* TODO: Make this use the limit of the loaded application.  */
--            ptr[0] = tswap32(limit / 2);
--            ptr[1] = tswap32(limit);
--            ptr[2] = tswap32(limit); /* Stack base */
--            ptr[3] = tswap32(0); /* Stack limit.  */
--            unlock_user(ptr, arg0, 16);
-+			if (is_a64(env)) {
-+				uint64_t *ptrx;
-+				ptrx = lock_user(VERIFY_WRITE, arg0, 32, 0);
-+				if (!ptrx) {
-+					/* FIXME - should this error code be -TARGET_EFAULT ? */
-+					return (uint32_t)-1;
-+				}
-+				/* TODO: Make this use the limit of the loaded application.  */
-+				ptrx[0] = tswap64(main_ram_base + ram_size / 2); /* Heap base */
-+				ptrx[1] = tswap64(main_ram_base + ram_size);         /* limit */
-+				ptrx[2] = tswap64(main_ram_base + ram_size); /* Stack base */
-+				ptrx[3] = tswap64(main_ram_base + ram_size / 2);  /* limit */
-+				unlock_user(ptrx, arg0, 32);
-+			} else {
-+				ptr = lock_user(VERIFY_WRITE, arg0, 16, 0);
-+				if (!ptr) {
-+					/* FIXME - should this error code be -TARGET_EFAULT ? */
-+					return (uint32_t)-1;
-+				}
-+				/* TODO: Make this use the limit of the loaded application.  */
-+				ptr[0] = tswap32(main_ram_base + limit / 2);
-+				ptr[1] = tswap32(main_ram_base + limit);
-+				ptr[2] = tswap32(main_ram_base + limit); /* Stack base */
-+				ptr[3] = tswap32(main_ram_base); /* Stack limit.  */
-+				unlock_user(ptr, arg0, 16);
-+			}
- #endif
-             return 0;
-         }
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 3fd0743cb391..fbc7d6914694 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -193,6 +193,7 @@ static void arm_cpu_reset(CPUState *s)
-             initial_msp = ldl_phys(s->as, 0);
-             initial_pc = ldl_phys(s->as, 4);
-         }
-+		main_ram_base = 0x20000000;
- 
-         env->regs[13] = initial_msp & 0xFFFFFFFC;
-         env->regs[15] = initial_pc & ~1;
-diff --git a/vl.c b/vl.c
-index 0736d8430dc3..ff1eeb50329f 100644
---- a/vl.c
-+++ b/vl.c
-@@ -133,6 +133,7 @@ int request_opengl = -1;
- int display_opengl;
- const char* keyboard_layout = NULL;
- ram_addr_t ram_size;
-+ram_addr_t main_ram_base = 0x0; /* default ram base to 0 */
- const char *mem_path = NULL;
- int mem_prealloc = 0; /* force preallocation of physical target memory */
- bool enable_mlock = false;
--- 
-2.7.4
++static void aspeed_smc_update_cs(AspeedSMCState *s)
++{
++    int i;
++
++    for (i =3D 0; i < s->num_cs; ++i) {
++        qemu_set_irq(s->cs_lines[i], aspeed_smc_is_ce_stop_active(s, i))=
+;
++    }
++}
++
++static void aspeed_smc_reset(DeviceState *d)
++{
++    AspeedSMCState *s =3D ASPEED_SMC(d);
++    int i;
++
++    memset(s->regs, 0, sizeof s->regs);
++
++    /* Unselect all slaves */
++    for (i =3D 0; i < s->num_cs; ++i) {
++        s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
++    }
++
++    aspeed_smc_update_cs(s);
++}
++
++static bool aspeed_smc_is_implemented(AspeedSMCState *s, hwaddr addr)
++{
++    return (addr =3D=3D s->r_conf || addr =3D=3D s->r_timings || addr =3D=
+=3D s->r_ce_ctrl ||
++            (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs));
++}
++
++static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int =
+size)
++{
++    AspeedSMCState *s =3D ASPEED_SMC(opaque);
++
++    addr >>=3D 2;
++
++    if (addr >=3D ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return 0;
++    }
++
++    if (!aspeed_smc_is_implemented(s, addr)) {
++        qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
++                __func__, addr);
++        return 0;
++    }
++
++    return s->regs[addr];
++}
++
++static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
++                             unsigned int size)
++{
++    AspeedSMCState *s =3D ASPEED_SMC(opaque);
++    uint32_t value =3D data;
++
++    addr >>=3D 2;
++
++    if (addr >=3D ARRAY_SIZE(s->regs)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at 0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return;
++    }
++
++    if (!aspeed_smc_is_implemented(s, addr)) {
++        qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
++                      __func__, addr);
++        return;
++    }
++
++    /*
++     * Not much to do apart from storing the value and set the cs
++     * lines if the register is a controlling one.
++     */
++    s->regs[addr] =3D value;
++    if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs) {
++        aspeed_smc_update_cs(s);
++    }
++}
++
++static const MemoryRegionOps aspeed_smc_ops =3D {
++    .read =3D aspeed_smc_read,
++    .write =3D aspeed_smc_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid.unaligned =3D true,
++};
++
++static int aspeed_smc_init(SysBusDevice *sbd)
++{
++    DeviceState *dev =3D DEVICE(sbd);
++    AspeedSMCState *s =3D ASPEED_SMC(dev);
++    AspeedSMCClass *mc =3D ASPEED_SMC_GET_CLASS(s);
++    int i;
++
++    s->ctrl =3D mc->ctrl;
++
++    /* keep a copy under AspeedSMCState to speed up accesses */
++    s->r_conf =3D s->ctrl->r_conf;
++    s->r_ce_ctrl =3D s->ctrl->r_ce_ctrl;
++    s->r_ctrl0 =3D s->ctrl->r_ctrl0;
++    s->r_timings =3D s->ctrl->r_timings;
++    s->conf_enable_w0 =3D s->ctrl->conf_enable_w0;
++
++    /* Enforce some real HW limits */
++    if (s->num_cs > s->ctrl->max_slaves) {
++        s->num_cs =3D s->ctrl->max_slaves;
++    }
++
++    s->spi =3D ssi_create_bus(dev, "spi");
++
++    /* Setup cs_lines for slaves */
++    sysbus_init_irq(sbd, &s->irq);
++    s->cs_lines =3D g_new0(qemu_irq, s->num_cs);
++    ssi_auto_connect_slaves(dev, s->cs_lines, s->spi);
++
++    for (i =3D 0; i < s->num_cs; ++i) {
++        sysbus_init_irq(sbd, &s->cs_lines[i]);
++    }
++
++    aspeed_smc_reset(dev);
++
++    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
++                          s->ctrl->name, ASPEED_SMC_R_MAX * 4);
++    sysbus_init_mmio(sbd, &s->mmio);
++    return 0;
++}
++
++static const VMStateDescription vmstate_aspeed_smc =3D {
++    .name =3D "aspeed.smc",
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT8(num_cs, AspeedSMCState),
++        VMSTATE_UINT8(r_conf, AspeedSMCState),
++        VMSTATE_UINT8(r_ctrl0, AspeedSMCState),
++        VMSTATE_UINT8(conf_enable_w0, AspeedSMCState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static Property aspeed_smc_properties[] =3D {
++    DEFINE_PROP_UINT8("num-cs", AspeedSMCState, num_cs, 1),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void aspeed_smc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
++    AspeedSMCClass *mc =3D ASPEED_SMC_CLASS(klass);
++
++    k->init =3D aspeed_smc_init;
++    dc->reset =3D aspeed_smc_reset;
++    dc->props =3D aspeed_smc_properties;
++    dc->vmsd =3D &vmstate_aspeed_smc;
++    mc->ctrl =3D data;
++}
++
++static const TypeInfo aspeed_smc_info =3D {
++    .name           =3D TYPE_ASPEED_SMC,
++    .parent         =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size  =3D sizeof(AspeedSMCState),
++    .class_size     =3D sizeof(AspeedSMCClass),
++    .abstract       =3D true,
++};
++
++static void aspeed_smc_register_types(void)
++{
++    int i;
++
++    type_register_static(&aspeed_smc_info);
++    for (i =3D 0; i < ARRAY_SIZE(controllers); ++i) {
++        TypeInfo ti =3D {
++            .name       =3D controllers[i].name,
++            .parent     =3D TYPE_ASPEED_SMC,
++            .class_init =3D aspeed_smc_class_init,
++            .class_data =3D (void *)&controllers[i],
++        };
++        type_register(&ti);
++    }
++}
++
++type_init(aspeed_smc_register_types)
+diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
+index f1a64fd3893d..7833bc716cd8 100644
+--- a/include/hw/arm/ast2400.h
++++ b/include/hw/arm/ast2400.h
+@@ -17,6 +17,7 @@
+ #include "hw/misc/aspeed_scu.h"
+ #include "hw/timer/aspeed_timer.h"
+ #include "hw/i2c/aspeed_i2c.h"
++#include "hw/ssi/aspeed_smc.h"
+=20
+ typedef struct AST2400State {
+     /*< private >*/
+@@ -29,6 +30,8 @@ typedef struct AST2400State {
+     AspeedTimerCtrlState timerctrl;
+     AspeedI2CState i2c;
+     AspeedSCUState scu;
++    AspeedSMCState smc;
++    AspeedSMCState spi;
+ } AST2400State;
+=20
+ #define TYPE_AST2400 "ast2400"
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+new file mode 100644
+index 000000000000..2d3e9f6b46d5
+--- /dev/null
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -0,0 +1,79 @@
++/*
++ * ASPEED AST2400 SMC Controller (SPI Flash Only)
++ *
++ * Copyright (C) 2016 IBM Corp.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
++ */
++
++#ifndef ASPEED_SMC_H
++#define ASPEED_SMC_H
++
++#include "hw/ssi/ssi.h"
++
++typedef struct AspeedSMCController {
++    const char *name;
++    uint8_t r_conf;
++    uint8_t r_ce_ctrl;
++    uint8_t r_ctrl0;
++    uint8_t r_timings;
++    uint8_t conf_enable_w0;
++    uint8_t max_slaves;
++} AspeedSMCController;
++
++#define TYPE_ASPEED_SMC "aspeed.smc"
++#define ASPEED_SMC(obj) OBJECT_CHECK(AspeedSMCState, (obj), TYPE_ASPEED_=
+SMC)
++#define ASPEED_SMC_CLASS(klass) \
++     OBJECT_CLASS_CHECK(AspeedSMCClass, (klass), TYPE_ASPEED_SMC)
++#define ASPEED_SMC_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(AspeedSMCClass, (obj), TYPE_ASPEED_SMC)
++
++typedef struct  AspeedSMCClass {
++    SysBusDevice parent_obj;
++    const AspeedSMCController *ctrl;
++}  AspeedSMCClass;
++
++#define ASPEED_SMC_R_MAX        (0x100 / 4)
++
++typedef struct AspeedSMCState {
++    SysBusDevice parent_obj;
++
++    const AspeedSMCController *ctrl;
++
++    MemoryRegion mmio;
++
++    qemu_irq irq;
++    int irqline;
++
++    uint8_t num_cs;
++    qemu_irq *cs_lines;
++
++    SSIBus *spi;
++
++    uint32_t regs[ASPEED_SMC_R_MAX];
++
++    /* depends on the controller type */
++    uint8_t r_conf;
++    uint8_t r_ce_ctrl;
++    uint8_t r_ctrl0;
++    uint8_t r_timings;
++    uint8_t conf_enable_w0;
++} AspeedSMCState;
++
++#endif /* ASPEED_SMC_H */
+--=20
+2.1.4
 

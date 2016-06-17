@@ -1,131 +1,115 @@
-Received: by 10.25.21.96 with SMTP id l93csp190255lfi;
-        Fri, 17 Jun 2016 03:24:05 -0700 (PDT)
-X-Received: by 10.55.195.193 with SMTP id r62mr1193724qkl.23.1466159045333;
-        Fri, 17 Jun 2016 03:24:05 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp192223lfi;
+        Fri, 17 Jun 2016 03:29:54 -0700 (PDT)
+X-Received: by 10.237.33.35 with SMTP id 32mr1370645qtc.8.1466159394394;
+        Fri, 17 Jun 2016 03:29:54 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c82si30805074qkj.237.2016.06.17.03.24.05
+        by mx.google.com with ESMTPS id m42si22522259qtb.65.2016.06.17.03.29.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 03:24:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 17 Jun 2016 03:29:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55469 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDqwW-0001pi-QT
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 06:24:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41437)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bDr29-0005mE-PC
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 06:29:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bDqtT-0007om-Ca
-	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 06:20:56 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bDr1r-0005ar-F9
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 06:29:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bDqtQ-0000au-Sw
-	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 06:20:54 -0400
-Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:36820)
+	(envelope-from <peter.maydell@linaro.org>) id 1bDr1f-0002ar-UF
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 06:29:35 -0400
+Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:34997)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1bDqtQ-0000ai-On; Fri, 17 Jun 2016 06:20:52 -0400
-Received: by mail-oi0-x22e.google.com with SMTP id p204so110681567oih.3;
-	Fri, 17 Jun 2016 03:20:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	(envelope-from <peter.maydell@linaro.org>) id 1bDr1f-0002ah-Q7
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 06:29:23 -0400
+Received: by mail-vk0-x22f.google.com with SMTP id j2so110063425vkg.2
+	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 03:29:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=P7viB/JkkPqeJej7s8nKEtm6ZCLDKZp8/QNnq4N74zY=;
-	b=Lsqs/ZQ4CKdO7FJOrqlJMzUzPTyYuv9xFOtU4MnuEK9NFZXdZI59rOn3N+cRcrf0iA
-	ljicaalPgpZfUrRWpKNrKBXolMMoaTxDWErz6B1JCgrNuNt3CBlqpaPFPzC0bzIiA1AP
-	apriA0YHtnYuTZoqxNHqrO2XClqx1uYO6wDVI53eBoqXQ3BDOHQs5EKl7RrfiGwPZSnB
-	t0H9dRACO9aR/tBSemgyHH8yBbHGCOCu7bZkdHvg2CI5JZbz01u7+36fOd4YgPpmQOvq
-	suO7r4ThWmNQkgDBAJVT/Kw+Qc0o4GLdy+LAMsV1A6ThBCp1BZI3/rIs3oi/SaA15tqZ
-	ofmA==
+	:cc; bh=0zrKDiDkgyaYN5VUS2tt2UExHmxE3+zHqaYMMBFnsWQ=;
+	b=Jx1DuQ+DX8nj9MLMOwsEQd/vw6QsSifRvPt48kADF1ZH6MxYDqaoLEyxvdorVnMaDD
+	6SFSboN5f+nQVPB66rm4sWGQzB6ns/HHqyaswxCS5WEUqG7F/V9uma7kOskR/O3eVrz2
+	ZjkkIIdlDMo+umU+ut78pQUzQDq1HPgyT0Eqo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=P7viB/JkkPqeJej7s8nKEtm6ZCLDKZp8/QNnq4N74zY=;
-	b=dpbXtKEANcIkiCxSVixvEweyBXRPL3ydK5bX8FcD7McZR2ZwbRYljGvQhwMlmt8UC8
-	dQ2xzxUjQCvtfWXgNlRskealppmkEt2PlTZkts5r1ygaqj5BYMHieemYk03Wmdv7WOvp
-	U784jtDD2SfmsozChufjj/4v6Mzi1+2ZvvIftYbdax5u4D2dVkkkGNwZS4CaXPVgaV/m
-	t2xyZIQTcTaJkf730u9k05NZglAjRMx6+OE9F9pjtx02/k3VOnNqU0BOM+4tpd8ohETD
-	J/1eAD3+hSSl+U3EtvTZ2xuk3qF2W355Vgxe9gRhbKiT2ZXFnfn2N0bkufpzy4F2/Pvq
-	hj4A==
-X-Gm-Message-State: ALyK8tIzOsChYsbd5HW0XYogM92OlVMJogemOQ0PSaDo36NxjrxNwZVeAijaJOtvNlOKZeyM6ztel7w5PoaNsQ==
-X-Received: by 10.202.48.18 with SMTP id w18mr573039oiw.61.1466158852151; Fri,
-	17 Jun 2016 03:20:52 -0700 (PDT)
+	bh=0zrKDiDkgyaYN5VUS2tt2UExHmxE3+zHqaYMMBFnsWQ=;
+	b=VJwkLuhjjsyk4lYmKfi7LmGF0vMRNmuDECNahFujDyr3hWbrqkNpz5gWq03ECM/kuf
+	WwEvvu6Z3VxhviH0qjV/tvMaiVU5kas2HDbQMCQRl6R5m+mTdcvddbNC4E3s4ygrCnPR
+	MQo4QfB/COSDSrkGm3i822so9kMptdCt5N1d7UDWa6uOCSreFspibrKG6AcCWjl3h/6a
+	9SFwEn3MCtnEgR3mhIM8mcLQZ38V+MAQYa0AGESDQCQRcBJ4v5av8uvGy3tNPkP/Fjpz
+	KBtx5wVn/5JB4s4wicu/ql5i+RTH2MLsi3/KcbDiLyvuT9T00XL2x2LVCJWx/OijGWRg
+	sroQ==
+X-Gm-Message-State: ALyK8tInGob0ktl7Uddt+8LtsstpY/Cg1vaCmtkhAupeigD3Q9kSk7YiY7zmHx7+78I4cRThvlIAldicfB3jT+ll
+X-Received: by 10.176.65.7 with SMTP id j7mr431769uad.38.1466159363182; Fri,
+	17 Jun 2016 03:29:23 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.157.37.201 with HTTP; Fri, 17 Jun 2016 03:20:51 -0700 (PDT)
-In-Reply-To: <c551cc85-ba31-63bc-9c23-8457ec4a6c12@twiddle.net>
+Received: by 10.31.97.68 with HTTP; Fri, 17 Jun 2016 03:29:03 -0700 (PDT)
+In-Reply-To: <CALicx6svRE+cjeehkftpudox8=bvTqvPFyAx=whOhAFb4+WSWg@mail.gmail.com>
 References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
-	<1465808915-4887-5-git-send-email-vijayak@caviumnetworks.com>
-	<CAFEAcA8+qWep8E3+k30n1gTUexoTrqipg=bnxS5yYPNvfFpTYw@mail.gmail.com>
-	<CAFEAcA_dBDhUEZr+mLPJkiiMRyjqUuXMaaYfZX3PUwZdKFk9uA@mail.gmail.com>
-	<CALicx6tYEX-6u7anPb=kgvOtg4HQriC5oRJPQtZiMipeBJazVw@mail.gmail.com>
-	<CAFEAcA-=iT1r1mJgr94JUP9XfMJ2XxxW47pMF3vZ6btdO=MnUw@mail.gmail.com>
-	<c551cc85-ba31-63bc-9c23-8457ec4a6c12@twiddle.net>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Fri, 17 Jun 2016 15:50:51 +0530
-Message-ID: <CALicx6tuVFbUxqv9Jjj35w51PmkB2eVAPg-bbBPLgFavGTAs5A@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
+	<1465808915-4887-3-git-send-email-vijayak@caviumnetworks.com>
+	<fe539d79-cac4-27e3-589f-66290ae8f243@redhat.com>
+	<CALicx6svRE+cjeehkftpudox8=bvTqvPFyAx=whOhAFb4+WSWg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Jun 2016 11:29:03 +0100
+Message-ID: <CAFEAcA8gkvgsQ9e0aTE7vnJyorXkjjL6KS=yZ6nSN_GvPFzUow@mail.gmail.com>
+To: Vijay Kilari <vijay.kilari@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::22e
-Subject: Re: [Qemu-devel] [RFC PATCH v1 4/4] target-arm: Compute page size
- based on ARM target cpu type
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22f
+Subject: Re: [Qemu-arm] [RFC PATCH v1 2/4] exec.c: Remove static allocation
+ of sub_section of sub_page
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Juan Quintela <quintela@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Juan Quintela <quintela@redhat.com>,
 	Vijaya Kumar K <vijayak@caviumnetworks.com>,
 	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Vijaya Kumar K <vijayak@cavium.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rnj7HESRiW5q
+	qemu-arm <qemu-arm@nongnu.org>, Vijaya Kumar K <vijayak@cavium.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j8rvYT9X60gE
 
-On Fri, Jun 17, 2016 at 1:12 AM, Richard Henderson <rth@twiddle.net> wrote:
-> On 06/14/2016 04:36 AM, Peter Maydell wrote:
->> It would be better to delay the point at which we allocate
->> the data structures which care about page size, rather than
->> moving init of the CPU earlier.
+On 17 June 2016 at 11:14, Vijay Kilari <vijay.kilari@gmail.com> wrote:
+> Hi Paolo,
 >
-> It would be *best* if we could re-initialize and re-allocate these data
-> structures so that we can follow the current page size as it changes.
+> On Mon, Jun 13, 2016 at 3:22 PM, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>>> diff --git a/exec.c b/exec.c
+>>> index a9d465b..e803a41 100644
+>>> --- a/exec.c
+>>> +++ b/exec.c
+>>> @@ -154,7 +154,7 @@ typedef struct subpage_t {
+>>>      MemoryRegion iomem;
+>>>      AddressSpace *as;
+>>>      hwaddr base;
+>>> -    uint16_t sub_section[TARGET_PAGE_SIZE];
+>>> +    uint16_t *sub_section;
+>>
+>> Please make this a flexible array member instead, so that you can avoid
+>> the extra pointer dereference.
 >
-> Yes, this might require flushing just about everything, but it's the kind of
-> thing that's likely to happen only at system startup.  After that, everything
-> benefits from having the correct (larger) page size.
+> What do you mean by flexible array member?. please give more info.
 
-I tried shuffling the memory initialization code after cpu initialization.
-but it was full mess. So could not proceed further.
+https://en.wikipedia.org/wiki/Flexible_array_member
 
-However, I tried early creation cpu objects instead of doing it from
-machvirt_init.
-With this, initfn of the cpu model is called earlier and feature set is updated.
-With that I could fetch arm architecture info. Based on this we can
-choose page size.
-I can send out RFC patch.
-
->
->> Also we should consider what happens if we have decided
->> the page size is X, and then a CPU is hotplugged which
->> requires a page size Y where Y < X.
->
-> Is that a real possibility?  Or trivially true because the new cpu has yet to
-> be initialized by the OS to use the regular OS page size.
->
->
-> r~
+thanks
+-- PMM

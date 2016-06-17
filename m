@@ -1,58 +1,58 @@
-Received: by 10.25.21.96 with SMTP id l93csp157755lfi;
-        Fri, 17 Jun 2016 01:51:40 -0700 (PDT)
-X-Received: by 10.233.235.83 with SMTP id b80mr883061qkg.83.1466153500851;
-        Fri, 17 Jun 2016 01:51:40 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp159141lfi;
+        Fri, 17 Jun 2016 01:56:26 -0700 (PDT)
+X-Received: by 10.55.177.193 with SMTP id a184mr890448qkf.16.1466153786845;
+        Fri, 17 Jun 2016 01:56:26 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z1si1912174qtd.17.2016.06.17.01.51.40
+        by mx.google.com with ESMTPS id v64si14495027qkh.209.2016.06.17.01.56.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 01:51:40 -0700 (PDT)
+        Fri, 17 Jun 2016 01:56:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54912 helo=lists.gnu.org)
+Received: from localhost ([::1]:54945 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDpV6-0005Zt-BK
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 04:51:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49290)
+	id 1bDpZi-0000yy-8y
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 04:56:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50186)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDpOe-000893-H4
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:45:06 -0400
+	(envelope-from <clg@kaod.org>) id 1bDpTU-00042o-0s
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:50:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDpOX-0003xQ-Lt
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:44:59 -0400
-Received: from 3.mo53.mail-out.ovh.net ([178.33.44.239]:56909)
+	(envelope-from <clg@kaod.org>) id 1bDpTN-0004qX-57
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:49:58 -0400
+Received: from mo53.mail-out.ovh.net ([178.32.228.53]:59875)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bDpOX-0003ws-By
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:44:53 -0400
+	id 1bDpTM-0004pk-Rm
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 04:49:53 -0400
 Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 11D6CFF9413
-	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 10:36:46 +0200 (CEST)
+	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 90B66FF9466
+	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 10:36:53 +0200 (CEST)
 Received: from hermes.ibm.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
 	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id AE0AC62006F;
-	Fri, 17 Jun 2016 10:36:38 +0200 (CEST)
+	by player158.ha.ovh.net (Postfix) with ESMTPSA id 1D2AC62006F;
+	Fri, 17 Jun 2016 10:36:46 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Fri, 17 Jun 2016 10:35:54 +0200
-Message-Id: <1466152555-10406-4-git-send-email-clg@kaod.org>
+Date: Fri, 17 Jun 2016 10:35:55 +0200
+Message-Id: <1466152555-10406-5-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1466152555-10406-1-git-send-email-clg@kaod.org>
 References: <1466152555-10406-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 13158955165186034449
+X-Ovh-Tracer-Id: 13160925487516191505
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrledtgddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 178.33.44.239
-Subject: [Qemu-arm] [PATCH 3/4] ast2400: create SPI flash slaves
+X-Received-From: 178.32.228.53
+Subject: [Qemu-arm] [PATCH 4/4] tests: add a m25p80 test
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,163 +69,312 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iT9sq/yGMbHz
+X-TUID: MqU3JD5hfQPL
 
-A set of SPI flash slaves is attached under the flash controllers of
-the palmetto platform. "n25q256a" flash modules are used for the BMC
-and "mx25l25635e" for the host. These types are common in the
-OpenPower ecosystem.
-
-The segment addresses used for the memory mappings are the defaults
-provided by the specs. They can be changed with the Segment Address
-Register but this is not supported in the current implementation.
+This test uses the palmetto platform and the AST2400 SPI controller to
+test the m25p80 flash module device model. The flash model is defined
+by the platform (n25q256a) and it would be nice to find way to control
+it, using a property probably.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/palmetto-bmc.c       |  3 +++
- hw/ssi/aspeed_smc.c         | 60 +++++++++++++++++++++++++++++++++++++++=
-+++---
- include/hw/ssi/aspeed_smc.h | 10 ++++++++
- 3 files changed, 70 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
-index a51d960510ee..0aed97a7d9cf 100644
---- a/hw/arm/palmetto-bmc.c
-+++ b/hw/arm/palmetto-bmc.c
-@@ -47,6 +47,9 @@ static void palmetto_bmc_init(MachineState *machine)
-     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
-                              &error_abort);
-=20
-+    aspeed_smc_init_flashes(&bmc->soc.smc, "n25q256a", &error_abort);
-+    aspeed_smc_init_flashes(&bmc->soc.spi, "mx25l25635e", &error_abort);
-+
-     palmetto_bmc_binfo.kernel_filename =3D machine->kernel_filename;
-     palmetto_bmc_binfo.initrd_filename =3D machine->initrd_filename;
-     palmetto_bmc_binfo.kernel_cmdline =3D machine->kernel_cmdline;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6a02906c8f97..f7ef69418c0c 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -98,13 +98,32 @@
- #define R_SPI_MISC_CRTL   (0x10 / 4)
- #define R_SPI_TIMINGS     (0x14 / 4)
-=20
+ This ugly message polutes the log. How could we fix it ?=20
+
+WARNING: Image format was not specified for '/tmp/qtest.qFpMyW' and probi=
+ng guessed raw.
+         Automatically detecting the format is dangerous for raw images, =
+write operations on block 0 will be restricted.
+         Specify the 'raw' format explicitly to remove the restrictions.
+
+ tests/Makefile.include |   2 +
+ tests/m25p80-test.c    | 241 +++++++++++++++++++++++++++++++++++++++++++=
+++++++
+ 2 files changed, 243 insertions(+)
+ create mode 100644 tests/m25p80-test.c
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 6135875c37f6..81264fbdf7e7 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -252,6 +252,7 @@ gcov-files-sparc-y +=3D hw/timer/m48t59.c
+ gcov-files-sparc64-y +=3D hw/timer/m48t59.c
+ check-qtest-arm-y =3D tests/tmp105-test$(EXESUF)
+ check-qtest-arm-y =3D tests/ds1338-test$(EXESUF)
++check-qtest-arm-y =3D tests/m25p80-test$(EXESUF)
+ gcov-files-arm-y +=3D hw/misc/tmp105.c
+ check-qtest-arm-y +=3D tests/virtio-blk-test$(EXESUF)
+ gcov-files-arm-y +=3D arm-softmmu/hw/block/virtio-blk.c
+@@ -562,6 +563,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-te=
+st.o \
+ tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-o=
+bj-y)
+ tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
+ tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
++tests/m25p80-test$(EXESUF): tests/m25p80-test.o
+ tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
+ tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
+ tests/fw_cfg-test$(EXESUF): tests/fw_cfg-test.o $(libqos-pc-obj-y)
+diff --git a/tests/m25p80-test.c b/tests/m25p80-test.c
+new file mode 100644
+index 000000000000..5ab493ae9373
+--- /dev/null
++++ b/tests/m25p80-test.c
+@@ -0,0 +1,241 @@
 +/*
-+ * Default segments mappings and size for each slave
++ * QTest testcase for the M25P80 Flash (Using the AST2400 SPI Controller=
+)
++ *
++ * Copyright (C) 2016 IBM Corp.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
 + */
-+static const AspeedSegments aspeed_segments_legacy[] =3D {
-+    { 0x14000000, 32 * 1024 * 1024 },
++
++#include "qemu/osdep.h"
++#include "qemu/bswap.h"
++#include "libqtest.h"
++
++/*
++ * AST2400 SPI Controller registers
++ */
++#define R_CONF              0x00
++#define   CONF_ENABLE_W0       (1 << 16)
++#define R_CE_CTRL           0x04
++#define   CRTL_EXTENDED0       0  /* 32 bit addressing for SPI */
++#define R_CTRL0             0x10
++#define   CTRL_CE_STOP_ACTIVE  (1 << 2)
++#define   CTRL_USERMODE        0x3
++
++#define AST2400_FMC_BASE    0x1E620000
++#define AST2400_FLASH_BASE  0x20000000
++
++/*
++ * Flash commands
++ */
++enum {
++    JEDEC_READ =3D 0x9f,
++    BULK_ERASE =3D 0xc7,
++    READ =3D 0x03,
++    PP =3D 0x02,
++    WREN =3D 0x6,
++    EN_4BYTE_ADDR =3D 0xB7,
++    ERASE_SECTOR =3D 0xd8,
 +};
 +
-+static const AspeedSegments aspeed_segments_fmc[] =3D {
-+    { 0x20000000, 64 * 1024 * 1024 },
-+    { 0x24000000, 32 * 1024 * 1024 },
-+    { 0x26000000, 32 * 1024 * 1024 },
-+    { 0x28000000, 32 * 1024 * 1024 },
-+    { 0x2A000000, 32 * 1024 * 1024 }
-+};
++#define FLASH_JEDEC         0x20ba19  /* n25q256a */
++#define FLASH_SIZE          (32 * 1024 * 1024)
 +
-+static const AspeedSegments aspeed_segments_spi[] =3D {
-+    { 0x30000000, 64 * 1024 * 1024 },
-+};
++#define PAGE_SIZE           256
 +
- static const AspeedSMCController controllers[] =3D {
-     { "aspeed.smc.smc", R_CONF, R_CE_CTRL, R_CTRL0, R_TIMINGS,
--      CONF_ENABLE_W0, 5 },
-+      CONF_ENABLE_W0, 5, aspeed_segments_legacy },
-     { "aspeed.smc.fmc", R_CONF, R_CE_CTRL, R_CTRL0, R_TIMINGS,
--      CONF_ENABLE_W0, 5 },
-+      CONF_ENABLE_W0, 5, aspeed_segments_fmc },
-     { "aspeed.smc.spi", R_SPI_CONF, 0xff, R_SPI_CTRL0, R_SPI_TIMINGS,
--      SPI_CONF_ENABLE_W0, 1 },
-+      SPI_CONF_ENABLE_W0, 1, aspeed_segments_spi },
- };
-=20
- static bool aspeed_smc_is_ce_stop_active(AspeedSMCState *s, int cs)
-@@ -254,6 +273,8 @@ static int aspeed_smc_init(SysBusDevice *sbd)
-     memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
-                           s->ctrl->name, ASPEED_SMC_R_MAX * 4);
-     sysbus_init_mmio(sbd, &s->mmio);
-+
-+    s->flashes =3D g_new0(AspeedSMCFlashState *, s->num_cs);
-     return 0;
- }
-=20
-@@ -395,3 +416,36 @@ static void aspeed_smc_flash_register_types(void)
- }
-=20
- type_init(aspeed_smc_flash_register_types)
-+
-+void aspeed_smc_init_flashes(AspeedSMCState *s, const char *flashtype,
-+                             Error **errp)
++static void spi_conf(uint32_t value)
 +{
-+    int i ;
-+    char name[32];
++    uint32_t conf =3D readl(AST2400_FMC_BASE + R_CONF);
 +
-+    for (i =3D 0; i < s->num_cs; ++i) {
-+        Object *obj =3D object_new(TYPE_ASPEED_SMC_FLASH);
-+        AspeedSMCFlashState *fl =3D ASPEED_SMC_FLASH(obj);
-+        qemu_irq cs_line;
++    conf |=3D value;
++    writel(AST2400_FMC_BASE + R_CONF, conf);
++}
 +
-+        s->flashes[i] =3D fl;
++static void spi_ctrl_start_user(void)
++{
++    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
 +
-+        snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
++    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
++    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
 +
-+        fl->id =3D i;
-+        fl->controller =3D s;
-+        fl->size =3D s->ctrl->segments[i].size;
++    ctrl &=3D ~CTRL_CE_STOP_ACTIVE;
++    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
++}
 +
-+        /* backing region */
-+        memory_region_init_io(&fl->mmio, obj, &aspeed_smc_flash_ops, fl,=
- name,
-+                              fl->size);
-+        sysbus_init_mmio(SYS_BUS_DEVICE(fl), &fl->mmio);
++static void spi_ctrl_stop_user(void)
++{
++    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
 +
-+        /* SPI Flash module */
-+        fl->flash =3D ssi_create_slave(s->spi, flashtype);
-+        cs_line =3D qdev_get_gpio_in_named(fl->flash, SSI_GPIO_CS, 0);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(s), i + 1, cs_line);
++    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
++    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
++}
 +
-+        sysbus_mmio_map(SYS_BUS_DEVICE(fl), 0, s->ctrl->segments[i].addr=
-);
++static void test_read_jedec(void)
++{
++    uint32_t jedec =3D 0x0;
++
++    spi_conf(CONF_ENABLE_W0);
++
++    spi_ctrl_start_user();
++    writeb(AST2400_FLASH_BASE, JEDEC_READ);
++    jedec |=3D readb(AST2400_FLASH_BASE) << 16;
++    jedec |=3D readb(AST2400_FLASH_BASE) << 8;
++    jedec |=3D readb(AST2400_FLASH_BASE);
++    spi_ctrl_stop_user();
++
++    g_assert_cmphex(jedec, =3D=3D, FLASH_JEDEC);
++}
++
++static void read_page(uint32_t addr, uint32_t *page)
++{
++    int i;
++
++    spi_ctrl_start_user();
++
++    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
++    writeb(AST2400_FLASH_BASE, READ);
++    writel(AST2400_FLASH_BASE, cpu_to_be32(addr));
++
++    /* Continuous read are supported */
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        page[i] =3D be32_to_cpu(readl(AST2400_FLASH_BASE));
++    }
++    spi_ctrl_stop_user();
++}
++
++static void test_erase_sector(void)
++{
++    uint32_t some_page_addr =3D 0x600 * PAGE_SIZE;
++    uint32_t page[PAGE_SIZE / 4];
++    int i;
++
++    spi_conf(CONF_ENABLE_W0);
++
++    spi_ctrl_start_user();
++    writeb(AST2400_FLASH_BASE, WREN);
++    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
++    writeb(AST2400_FLASH_BASE, ERASE_SECTOR);
++    writel(AST2400_FLASH_BASE, cpu_to_be32(some_page_addr));
++    spi_ctrl_stop_user();
++
++    /* Previous page should be full of zeroes as backend is not
++     * initialized */
++    read_page(some_page_addr - PAGE_SIZE, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, 0x0);
++    }
++
++    /* But this one was erased */
++    read_page(some_page_addr, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
 +    }
 +}
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index abd0005b01c2..2636c775c90f 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -43,6 +43,11 @@ typedef struct AspeedSMCFlashState {
- #define ASPEED_SMC_FLASH(obj) \
-     OBJECT_CHECK(AspeedSMCFlashState, (obj), TYPE_ASPEED_SMC_FLASH)
-=20
-+typedef struct AspeedSegments {
-+    hwaddr addr;
-+    uint32_t size;
-+} AspeedSegments;
 +
- typedef struct AspeedSMCController {
-     const char *name;
-     uint8_t r_conf;
-@@ -51,6 +56,7 @@ typedef struct AspeedSMCController {
-     uint8_t r_timings;
-     uint8_t conf_enable_w0;
-     uint8_t max_slaves;
-+    const AspeedSegments *segments;
- } AspeedSMCController;
-=20
- #define TYPE_ASPEED_SMC "aspeed.smc"
-@@ -90,6 +96,10 @@ typedef struct AspeedSMCState {
-     uint8_t r_ctrl0;
-     uint8_t r_timings;
-     uint8_t conf_enable_w0;
++static void test_erase_all(void)
++{
++    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
++    uint32_t page[PAGE_SIZE / 4];
++    int i;
 +
-+    AspeedSMCFlashState **flashes;
- } AspeedSMCState;
-=20
-+extern void aspeed_smc_init_flashes(AspeedSMCState *s, const char *flash=
-type,
-+                                    Error **errp);
- #endif /* ASPEED_SMC_H */
++    spi_conf(CONF_ENABLE_W0);
++
++    /* Check some random page. Should be full of zeroes as backend is
++     * not initialized */
++    read_page(some_page_addr, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, 0x0);
++    }
++
++    spi_ctrl_start_user();
++    writeb(AST2400_FLASH_BASE, WREN);
++    writeb(AST2400_FLASH_BASE, BULK_ERASE);
++    spi_ctrl_stop_user();
++
++    /* Recheck that some random page */
++    read_page(some_page_addr, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
++    }
++}
++
++static void test_write_page(void)
++{
++    uint32_t my_page_addr =3D 0x14000 * PAGE_SIZE; /* beyond 16MB */
++    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
++    uint32_t page[PAGE_SIZE / 4];
++    int i;
++
++    spi_conf(CONF_ENABLE_W0);
++
++    spi_ctrl_start_user();
++    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
++    writeb(AST2400_FLASH_BASE, PP);
++    writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr));
++
++    /* Fill the page with its own addresses */
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr + i * 4));
++    }
++    spi_ctrl_stop_user();
++
++    /* Check what was written */
++    read_page(my_page_addr, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, my_page_addr + i * 4);
++    }
++
++    /* Check some other page. It should be full of 0xff */
++    read_page(some_page_addr, page);
++    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
++        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
++    }
++}
++
++static char tmp_path[] =3D "/tmp/qtest.XXXXXX";
++
++int main(int argc, char **argv)
++{
++    int ret;
++    int fd;
++    char *args;
++
++    g_test_init(&argc, &argv, NULL);
++
++    fd =3D mkstemp(tmp_path);
++    g_assert(fd >=3D 0);
++    ret =3D ftruncate(fd, FLASH_SIZE);
++    g_assert(ret =3D=3D 0);
++    close(fd);
++
++    args =3D g_strdup_printf("-M 256 -machine palmetto-bmc -mtdblock %s"=
+,
++                           tmp_path);
++    qtest_start(args);
++
++    qtest_add_func("/m25p80/read_jedec", test_read_jedec);
++    qtest_add_func("/m25p80/erase_sector", test_erase_sector);
++    qtest_add_func("/m25p80/erase_all",  test_erase_all);
++    qtest_add_func("/m25p80/write_page", test_write_page);
++
++    ret =3D g_test_run();
++
++    qtest_quit(global_qtest);
++    unlink(tmp_path);
++    g_free(args);
++    return ret;
++}
 --=20
 2.1.4
 

@@ -1,235 +1,148 @@
-Received: by 10.25.21.96 with SMTP id l93csp262323lfi;
-        Fri, 17 Jun 2016 06:23:17 -0700 (PDT)
-X-Received: by 10.55.192.203 with SMTP id v72mr2228663qkv.122.1466169797132;
-        Fri, 17 Jun 2016 06:23:17 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 6si31441631qkh.47.2016.06.17.06.23.16
+Received: by 10.25.21.96 with SMTP id l93csp269358lfi;
+        Fri, 17 Jun 2016 06:38:29 -0700 (PDT)
+X-Received: by 10.200.49.165 with SMTP id h34mr2369719qte.43.1466170709452;
+        Fri, 17 Jun 2016 06:38:29 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w77si31476040qkb.113.2016.06.17.06.38.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 06:23:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Fri, 17 Jun 2016 06:38:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57454 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57562 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDtjw-0008Ss-Fg
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 09:23:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56326)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bDtye-0006xX-Rc
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 09:38:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDtVI-0008JJ-UZ
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 09:08:10 -0400
+	(envelope-from <digetx@gmail.com>) id 1bDten-00033n-Lp
+	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 09:17:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDtVE-0008IW-FI
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 09:08:08 -0400
-Received: from 3.mo53.mail-out.ovh.net ([178.33.44.239]:59355)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bDtVE-0008IK-5A
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 09:08:04 -0400
-Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 4320EFF95ED
-	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 15:08:03 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id 7AE316200A0;
-	Fri, 17 Jun 2016 15:07:54 +0200 (CEST)
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <1466165724-7620-1-git-send-email-clg@kaod.org>
-	<1466165724-7620-2-git-send-email-clg@kaod.org>
-	<04090e71-2d6f-d157-4d7a-73d8bc8b0b3f@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2beb3e5d-033a-d9d5-7b28-4a0e3a6565a5@kaod.org>
-Date: Fri, 17 Jun 2016 15:07:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <04090e71-2d6f-d157-4d7a-73d8bc8b0b3f@redhat.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 17740523359917870035
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrledtgdehlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 178.33.44.239
-Subject: Re: [Qemu-arm] [PATCH v2 1/5] m25p80: qdev-ify drive property
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <digetx@gmail.com>) id 1bDtei-0002nh-Je
+	for qemu-devel@nongnu.org; Fri, 17 Jun 2016 09:17:57 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:35705)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <digetx@gmail.com>)
+	id 1bDtei-0002mM-BQ; Fri, 17 Jun 2016 09:17:52 -0400
+Received: by mail-lf0-x243.google.com with SMTP id w130so8334864lfd.2;
+	Fri, 17 Jun 2016 06:17:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=TJxerH+3u9E0WB2wGh98vaDB5QupWWkSJte5OoM1OIE=;
+	b=a7pIcYjkYny7pwStPwD48XS64dYm37Do14z776MvYHKm9JSXHvbR5emW7Li9BrJPxg
+	eGAEpiEeXGNHPsHtp5yRFsmkklj2lfEIiTc/lCg/dBX5cDXS0AkACZ1WR70rN7z6CMRj
+	HlW+ZIJPLf/zwvaBAdASyGm5sOaDCxsIWeaB+qYx1cWD23zeaYEKb7YYjSYeitref8SW
+	Bi4q+lQQaUxvAlmWxr8puwuLQUUcnjaPQzDHxHV3BzWRYfclJ0vo6cBBzPdMC3qzR1A5
+	uzBjSkFpmT8c+s3ujrtLtLM197dByxLqKc3u9JQ6nUO3570Xpa23o1y7a+iThMyyI3Yi
+	Vw6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=TJxerH+3u9E0WB2wGh98vaDB5QupWWkSJte5OoM1OIE=;
+	b=M5l7R9PTGQVUqkefPCY1fGwquLsEx1ZdtYd1K3k7J+yrCpwzX6hfB6Ucs5mp6EzS/l
+	t89HBi6pz6L45mpb8IJIRtkE3XWXTCKeInns/O2Yn5r9WbJ5tgH2fBA9KgXNCE7n/+v+
+	nnXXEb7K1oy8+7b2zYlk9GAXzWGENQ1qGBEdw2EVAblx8tRtucnBQASLAGBx57w1HF8M
+	+dAt4CVYsJS0qnsxFEN0kziBjDfMM4FXkTtoo6U5Q715iDtUnxneMZ9Jfs+Lt7/a9ewT
+	hFzAE6rAGzSKsfMbfDR9bHd/cRMxFGqf1SnPEofZfw8/+YDqeYWEHinS89fILmqbd50o
+	3ujg==
+X-Gm-Message-State: ALyK8tIo2IZTABF3Hq5NwdSD+BdkmXvSqrbdDgtWUvhMF4cPq979AjP9eAAFfrP1tp1EMQ==
+X-Received: by 10.25.1.65 with SMTP id 62mr760185lfb.54.1466169471327;
+	Fri, 17 Jun 2016 06:17:51 -0700 (PDT)
+Received: from localhost.localdomain (ppp109-252-52-30.pppoe.spdop.ru.
+	[109.252.52.30])
+	by smtp.gmail.com with ESMTPSA id d8sm2538183lbc.29.2016.06.17.06.17.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 17 Jun 2016 06:17:50 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org
+Date: Fri, 17 Jun 2016 16:17:25 +0300
+Message-Id: <cover.1466167530.git.digetx@gmail.com>
+X-Mailer: git-send-email 2.9.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: [Qemu-devel] [PATCH v14 0/3] PTimer fixes/features and ARM MPTimer
+ conversion
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
-	armbru@redhat.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: It9Xt6VdMQur
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6SatlqCcIvm8
 
-On 06/17/2016 02:32 PM, Paolo Bonzini wrote:
->=20
->=20
-> On 17/06/2016 14:15, C=C3=A9dric Le Goater wrote:
->> From: Paolo Bonzini <pbonzini@redhat.com>
->>
->> This allows specifying the property via -drive if=3Dnone and creating
->> the flash device with -device.
->>
->> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
->=20
-> You need to add your Signed-off-by line too. =20
+Hello,
 
-Yes. Sorry about that :/
+Current QEMU ARM MPTimer device model provides only a certain subset of the
+emulation behavior, so this patch series is supposed to add missing parts by
+converting the MPTimer to use generic ptimer helper. It fixes some important
+ptimer bugs and provides new features that are required for the ARM MPTimer.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>=20
+Emulation behavior is verified against the real HW by running specially
+crafted MPTimer tests in both icount and non-icount modes:
 
-I will next round.=20
+https://gist.github.com/digetx/dbd46109503b1a91941a
 
-> You should have used "git
-> am -s" for that, but in this case just replace to my mail with the
-> signoff and the maintainer will collect it.
->=20
-> Thanks for picking up the patch. :)
+Changelog:
 
-That was needed and it should help us for the next item we want=20
-to work on. We need more control on the flash storage as we
-should be mapping it in memory.
+    I ommitted old changelog since the rest of the precursor ptimer patches
+    already been applied and the ARM MPTimer patch has Peter's Crosthwaite r-b.
 
-Thanks,
+    V14: Set the ptimer policy in the ptimer_init() instead of adding
+         ptimer_set_policy(), keeping ptimer VMState unchanged and dropped
+         hw_error() hardening asserts as per Peter's Maydell V13 review
+         comments, addressed the rest of the review comments.
 
-C.
+Dmitry Osipenko (3):
+  hw/ptimer: Support running with counter = 0 by introducing new policy
+    feature
+  hw/ptimer: Fix counter - 1 returned by ptimer_get_count for the active
+    timer
+  arm_mptimer: Convert to use ptimer
 
-> Paolo
->=20
->> ---
->>  hw/arm/xilinx_zynq.c                |  8 +++++++-
->>  hw/arm/xlnx-ep108.c                 |  9 ++++++++-
->>  hw/block/m25p80.c                   | 10 ++--------
->>  hw/microblaze/petalogix_ml605_mmu.c |  9 ++++++++-
->>  4 files changed, 25 insertions(+), 11 deletions(-)
->>
->> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
->> index aefebcfa6d8f..b0cabe2e4a67 100644
->> --- a/hw/arm/xilinx_zynq.c
->> +++ b/hw/arm/xilinx_zynq.c
->> @@ -138,7 +138,13 @@ static inline void zynq_init_spi_flashes(uint32_t=
- base_addr, qemu_irq irq,
->>          spi =3D (SSIBus *)qdev_get_child_bus(dev, bus_name);
->> =20
->>          for (j =3D 0; j < num_ss; ++j) {
->> -            flash_dev =3D ssi_create_slave(spi, "n25q128");
->> +            DriveInfo *dinfo =3D drive_get_next(IF_MTD);
->> +            flash_dev =3D ssi_create_slave_no_init(spi, "n25q128");
->> +            if (dinfo) {
->> +                qdev_prop_set_drive(flash_dev, "drive",
->> +                                    blk_by_legacy_dinfo(dinfo), &erro=
-r_fatal);
->> +            }
->> +            qdev_init_nofail(flash_dev);
->> =20
->>              cs_line =3D qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS=
-, 0);
->>              sysbus_connect_irq(busdev, i * num_ss + j + 1, cs_line);
->> diff --git a/hw/arm/xlnx-ep108.c b/hw/arm/xlnx-ep108.c
->> index 34b464171266..4ec590a25db5 100644
->> --- a/hw/arm/xlnx-ep108.c
->> +++ b/hw/arm/xlnx-ep108.c
->> @@ -88,12 +88,19 @@ static void xlnx_ep108_init(MachineState *machine)
->>          SSIBus *spi_bus;
->>          DeviceState *flash_dev;
->>          qemu_irq cs_line;
->> +        DriveInfo *dinfo =3D drive_get_next(IF_MTD);
->>          gchar *bus_name =3D g_strdup_printf("spi%d", i);
->> =20
->>          spi_bus =3D (SSIBus *)qdev_get_child_bus(DEVICE(&s->soc), bus=
-_name);
->>          g_free(bus_name);
->> =20
->> -        flash_dev =3D ssi_create_slave(spi_bus, "sst25wf080");
->> +        flash_dev =3D ssi_create_slave_no_init(spi_bus, "sst25wf080")=
-;
->> +        if (dinfo) {
->> +            qdev_prop_set_drive(flash_dev, "drive", blk_by_legacy_din=
-fo(dinfo),
->> +                                &error_fatal);
->> +        }
->> +        qdev_init_nofail(flash_dev);
->> +
->>          cs_line =3D qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0)=
-;
->> =20
->>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi[i]), 1, cs_line=
-);
->> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
->> index e6f6e23fb71d..7d1c34a1a2d1 100644
->> --- a/hw/block/m25p80.c
->> +++ b/hw/block/m25p80.c
->> @@ -881,7 +881,6 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uin=
-t32_t tx)
->> =20
->>  static void m25p80_realize(SSISlave *ss, Error **errp)
->>  {
->> -    DriveInfo *dinfo;
->>      Flash *s =3D M25P80(ss);
->>      M25P80Class *mc =3D M25P80_GET_CLASS(s);
->> =20
->> @@ -890,14 +889,8 @@ static void m25p80_realize(SSISlave *ss, Error **=
-errp)
->>      s->size =3D s->pi->sector_size * s->pi->n_sectors;
->>      s->dirty_page =3D -1;
->> =20
->> -    /* FIXME use a qdev drive property instead of drive_get_next() */
->> -    dinfo =3D drive_get_next(IF_MTD);
->> -
->> -    if (dinfo) {
->> +    if (s->blk) {
->>          DB_PRINT_L(0, "Binding to IF_MTD drive\n");
->> -        s->blk =3D blk_by_legacy_dinfo(dinfo);
->> -        blk_attach_dev_nofail(s->blk, s);
->> -
->>          s->storage =3D blk_blockalign(s->blk, s->size);
->> =20
->>          if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
->> @@ -925,6 +918,7 @@ static void m25p80_pre_save(void *opaque)
->> =20
->>  static Property m25p80_properties[] =3D {
->>      DEFINE_PROP_UINT32("nonvolatile-cfg", Flash, nonvolatile_cfg, 0x8=
-FFF),
->> +    DEFINE_PROP_DRIVE("drive", Flash, blk),
->>      DEFINE_PROP_END_OF_LIST(),
->>  };
->> =20
->> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petal=
-ogix_ml605_mmu.c
->> index 07527b677b37..4968bdbb2821 100644
->> --- a/hw/microblaze/petalogix_ml605_mmu.c
->> +++ b/hw/microblaze/petalogix_ml605_mmu.c
->> @@ -191,9 +191,16 @@ petalogix_ml605_init(MachineState *machine)
->>          spi =3D (SSIBus *)qdev_get_child_bus(dev, "spi");
->> =20
->>          for (i =3D 0; i < NUM_SPI_FLASHES; i++) {
->> +            DriveInfo *dinfo =3D drive_get_next(IF_MTD);
->>              qemu_irq cs_line;
->> =20
->> -            dev =3D ssi_create_slave(spi, "n25q128");
->> +            dev =3D ssi_create_slave_no_init(spi, "n25q128");
->> +            if (dinfo) {
->> +                qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo=
-(dinfo),
->> +                                    &error_fatal);
->> +            }
->> +            qdev_init_nofail(dev);
->> +
->>              cs_line =3D qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
->>              sysbus_connect_irq(busdev, i+1, cs_line);
->>          }
->>
+ hw/arm/musicpal.c              |   2 +-
+ hw/core/ptimer.c               |  49 ++++++++-------
+ hw/dma/xilinx_axidma.c         |   2 +-
+ hw/m68k/mcf5206.c              |   2 +-
+ hw/m68k/mcf5208.c              |   2 +-
+ hw/net/fsl_etsec/etsec.c       |   2 +-
+ hw/net/lan9118.c               |   2 +-
+ hw/timer/allwinner-a10-pit.c   |   2 +-
+ hw/timer/arm_mptimer.c         | 133 +++++++++++++++++++++--------------------
+ hw/timer/arm_timer.c           |   2 +-
+ hw/timer/aspeed_timer.c        |   2 +-
+ hw/timer/digic-timer.c         |   2 +-
+ hw/timer/etraxfs_timer.c       |   6 +-
+ hw/timer/exynos4210_mct.c      |   7 ++-
+ hw/timer/exynos4210_pwm.c      |   2 +-
+ hw/timer/exynos4210_rtc.c      |   4 +-
+ hw/timer/grlib_gptimer.c       |   2 +-
+ hw/timer/imx_epit.c            |   4 +-
+ hw/timer/imx_gpt.c             |   2 +-
+ hw/timer/lm32_timer.c          |   2 +-
+ hw/timer/milkymist-sysctl.c    |   4 +-
+ hw/timer/puv3_ost.c            |   2 +-
+ hw/timer/sh_timer.c            |   2 +-
+ hw/timer/slavio_timer.c        |   2 +-
+ hw/timer/xilinx_timer.c        |   2 +-
+ include/hw/ptimer.h            |   7 ++-
+ include/hw/timer/arm_mptimer.h |   5 +-
+ 27 files changed, 133 insertions(+), 122 deletions(-)
+
+-- 
+2.9.0
 

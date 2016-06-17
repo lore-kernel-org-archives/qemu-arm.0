@@ -1,79 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp274867lfi;
-        Fri, 17 Jun 2016 06:51:53 -0700 (PDT)
-X-Received: by 10.55.169.147 with SMTP id s141mr2241581qke.107.1466171512782;
-        Fri, 17 Jun 2016 06:51:52 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp290048lfi;
+        Fri, 17 Jun 2016 07:23:05 -0700 (PDT)
+X-Received: by 10.237.50.6 with SMTP id y6mr2655307qtd.84.1466173385004;
+        Fri, 17 Jun 2016 07:23:05 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o77si7947426qka.265.2016.06.17.06.51.52
+        by mx.google.com with ESMTPS id g6si5153424qkf.273.2016.06.17.07.23.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 06:51:52 -0700 (PDT)
+        Fri, 17 Jun 2016 07:23:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57684 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57933 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDuBc-0003qB-5f
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 09:51:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60834)
+	id 1bDufo-0003Iz-CN
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 10:23:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bDtfE-0003Zb-US
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 09:18:29 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bDufg-0003Fz-HG
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 10:22:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bDtf4-00035Z-QW
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 09:18:23 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:36773)
+	(envelope-from <peter.maydell@linaro.org>) id 1bDufe-0002GR-4W
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 10:22:55 -0400
+Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:33640)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1bDtel-0002pz-BH; Fri, 17 Jun 2016 09:17:55 -0400
-Received: by mail-lf0-x244.google.com with SMTP id a2so8322194lfe.3;
-	Fri, 17 Jun 2016 06:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=q6+fh2TRcfaG7Ai2kTlT0N4WEeLJzic8KL3fN4FpFuI=;
-	b=maINaua7IquOu4fDPWXrNMVneabE+JpLZbMgPaQCLWi27knT9QwRkgu3rbagafGyl+
-	WRlIIAX+x7MnZPzkmRPBeP/Ny5ydum6QshiYdUuAj0RQ9EF1/WAZmzmGMpgNL1EvREtL
-	LnH7gMVtwAzxWKzmGkZLdvkRTB7tMPeAsKmcaRZlK/BjLPTVVrEWpE08vpo68m7rtD4l
-	uYgXF6pGbVXr/1kXa7zu9XaqdE/owmgK2F19isLXYydPvOBxOcWINUNNykAVXle/koey
-	RPdxUj0dRizC5xYGVP/ie5ipf7FkZAM6BzENv4LKSUYrwLCsPRioumDwjXePvo3YX1xy
-	vK/Q==
+	(envelope-from <peter.maydell@linaro.org>) id 1bDufd-0002GE-W4
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 10:22:54 -0400
+Received: by mail-vk0-x22d.google.com with SMTP id d185so117855552vkg.0
+	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 07:22:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=tlkH++0NEc4RLp0mQgGy9W7MUvr3MN1OvbFL6Cvcew0=;
+	b=AAoEBEBpz7NBCg8CEld8bkylspgE6XjbRrTUS/P25Oy/2sycfdTLpKia7CnDrjobcw
+	xdi81UDkakMWZ9bb9Yd8iu9xs6/z611J405S+XarqwOHmPZ0P9XiiLuG4tnaWybncoNc
+	CU/b+0caqA4qAr4TPrt7o26SlIMGFPFFm7Zts=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:in-reply-to:references;
-	bh=q6+fh2TRcfaG7Ai2kTlT0N4WEeLJzic8KL3fN4FpFuI=;
-	b=Ff7ILAR1UDD1td6JITpfRCX1mU04x5mQjT7D9mPJMyCDbaQ7JBxANo7g/MjERC8pYG
-	ORSJVkz2lLO6nBpd271wS2f57u/kROvypOJGuOJmh5DwqE979ukl3SVGTtHZhOfA0AVd
-	RnGxqPbNQNlDyprL6pKeZ1ZczvW3H1FKr0rjTJ75V4zwRxR48SRkuJmitEdEhudXZ6Rj
-	EufCa+p5u6CTxtndpP6dCSSyXk7cp9TTLtun34lENGc0yUIPKP8mHSQACvN/WsbqZUjD
-	WZMm/xF2Vz8PBMIlmLQ2sppFFDpngLPRZRh/gkhAHC8shfiFutA5KsHHnDlVvgNuO5E1
-	NRaA==
-X-Gm-Message-State: ALyK8tIezgP+Y7Wl5PEsvlCHvpiaLdo76K6QiInJZmyEtasCfmfbfKLVX8NloHcNxXN0FA==
-X-Received: by 10.25.196.216 with SMTP id u207mr592420lff.164.1466169474474;
-	Fri, 17 Jun 2016 06:17:54 -0700 (PDT)
-Received: from localhost.localdomain (ppp109-252-52-30.pppoe.spdop.ru.
-	[109.252.52.30])
-	by smtp.gmail.com with ESMTPSA id d8sm2538183lbc.29.2016.06.17.06.17.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 17 Jun 2016 06:17:53 -0700 (PDT)
-From: Dmitry Osipenko <digetx@gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm@nongnu.org
-Date: Fri, 17 Jun 2016 16:17:27 +0300
-Message-Id: <bf8a11d66b68c0d0738428bf6dd18d1a532b3eb3.1466167530.git.digetx@gmail.com>
-X-Mailer: git-send-email 2.9.0
-In-Reply-To: <cover.1466167530.git.digetx@gmail.com>
-References: <cover.1466167530.git.digetx@gmail.com>
-In-Reply-To: <cover.1466167530.git.digetx@gmail.com>
-References: <cover.1466167530.git.digetx@gmail.com>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=tlkH++0NEc4RLp0mQgGy9W7MUvr3MN1OvbFL6Cvcew0=;
+	b=Uv5HqmLB6ssHe5xLtGLUCtE0aj5yBpT0jEsatyfPYKEsDUJdoU4ftMP6ErWHZrSBFd
+	fqBqBiH89Eld3DSt7CtWav+nOCGvjtF5dhhsolPbpb3MEwuQ2E+lllhuIbFqCx5Geoko
+	vfE2aeoKynzgfvKVYe8mlaRlZTRVg9WwfD28kTAu3MYyVeoSjzXTEnZcxKoB2qzvmPwv
+	1RXHJ+6JXNeVn/oGM4jtc50Dtrddm4J55cvUgfVZYFpHIYHzvk57rvIoMtJzM2kSgS5Y
+	+5/4e+7bJhc9kJxJVXq11A+3FObCh4a61OFN+iju37Z3nOq2uK0c2ww8DfGZIXHJYbyf
+	/78Q==
+X-Gm-Message-State: ALyK8tKU844yKRsgj1Xe7kR/098XIbvF0P+s5Sm8OPEjfz/zx59LV3IGW9TdKoQ317fq+dhHOauSb8V3q7nsLOaZ
+X-Received: by 10.159.35.230 with SMTP id 93mr1050135uao.26.1466173373412;
+	Fri, 17 Jun 2016 07:22:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.97.68 with HTTP; Fri, 17 Jun 2016 07:22:34 -0700 (PDT)
+In-Reply-To: <1466063287-19350-2-git-send-email-andrew@aj.id.au>
+References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
+	<1466063287-19350-2-git-send-email-andrew@aj.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 17 Jun 2016 15:22:34 +0100
+Message-ID: <CAFEAcA_-+nWvAsCLE71d4qb_3eFkF80L-JgZSxwF5L3CH+W_Aw@mail.gmail.com>
+To: Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: [Qemu-arm] [PATCH v14 2/3] hw/ptimer: Fix counter - 1 returned by
- ptimer_get_count for the active timer
+X-Received-From: 2607:f8b0:400c:c05::22d
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: Add a model for the ASPEED
+ System Control Unit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,50 +78,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QZEIp4qadpJT
+X-TUID: /xHUQCJ66C0R
 
-Due to rounding down performed by ptimer_get_count, it returns counter - 1 for
-the active timer. That's incorrect because counter should decrement only after
-period been expired, not before. I.e. if running timer has been loaded with
-value X, then timer counter should stay with X until period expired and
-decrement after. Fix this by adding 1 to the counter value for the active and
-unexpired timer.
+On 16 June 2016 at 08:48, Andrew Jeffery <andrew@aj.id.au> wrote:
+> The SCU is a collection of chip-level control registers that manage the
+> various functions supported by the AST2400. Typically the bits control
+> interactions with clocks, external hardware or reset behaviour, and we
+> can largly take a hands-off approach to reads and writes.
+>
+> Firmware makes heavy use of the state to determine how to boot, but the
+> reset values vary from SoC to SoC. qdev properties are exposed so that
+> the integrating SoC model can configure the appropriate reset values.
+>
+> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> ---
+> +static Property aspeed_scu_properties[] =3D {
+> +    DEFINE_PROP_ARRAY("reset", AspeedSCUState, num_resets, reset,
+> +                      qdev_prop_uint32, uint32_t),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +#define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
 
-Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
----
- hw/core/ptimer.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+This seems like a very unwieldy way of specifying the reset values
+for this device. Are they really all fully configurable in the
+hardware? It seems unlikely. I'd much rather see something that
+looks more like what you might plausibly be configuring when wiring
+up the SoC, which might be some version/revision numbers and/or
+some particular tweakable parameters.
 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index 289e23e..7f89001 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -89,10 +89,10 @@ static void ptimer_tick(void *opaque)
- 
- uint64_t ptimer_get_count(ptimer_state *s)
- {
-+    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     uint64_t counter;
- 
--    if (s->enabled && s->delta != 0) {
--        int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    if (s->enabled && s->delta != 0 && now != s->last_event) {
-         int64_t next = s->next_event;
-         bool expired = (now - next >= 0);
-         bool oneshot = (s->enabled == 2);
-@@ -144,7 +144,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
-                 if ((uint32_t)(period_frac << shift))
-                     div += 1;
-             }
--            counter = rem / div;
-+            counter = rem / div + (expired ? 0 : 1);
- 
-             if (expired && counter != 0) {
-                 /* Wrap around periodic counter.  */
--- 
-2.9.0
-
+thanks
+-- PMM

@@ -1,58 +1,64 @@
-Received: by 10.25.21.96 with SMTP id l93csp235233lfi;
-        Fri, 17 Jun 2016 05:20:49 -0700 (PDT)
-X-Received: by 10.55.26.94 with SMTP id a91mr1937777qka.26.1466166048994;
-        Fri, 17 Jun 2016 05:20:48 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp240017lfi;
+        Fri, 17 Jun 2016 05:32:39 -0700 (PDT)
+X-Received: by 10.55.40.150 with SMTP id o22mr1852065qko.195.1466166759579;
+        Fri, 17 Jun 2016 05:32:39 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w77si31219081qkb.113.2016.06.17.05.20.48
+        by mx.google.com with ESMTPS id b58si26847514qtc.7.2016.06.17.05.32.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 05:20:48 -0700 (PDT)
+        Fri, 17 Jun 2016 05:32:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56442 helo=lists.gnu.org)
+Received: from localhost ([::1]:56505 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bDslU-0006om-9f
-	for alex.bennee@linaro.org; Fri, 17 Jun 2016 08:20:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41099)
+	id 1bDsww-0006NT-TF
+	for alex.bennee@linaro.org; Fri, 17 Jun 2016 08:32:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44682)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDsh9-00028S-VM
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 08:16:24 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1bDsws-0006LL-NK
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 08:32:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bDsh4-0003C0-Ua
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 08:16:18 -0400
-Received: from 9.mo53.mail-out.ovh.net ([87.98.186.128]:39943)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bDsh4-0003BZ-JJ
-	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 08:16:14 -0400
-Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo53.mail-out.ovh.net (Postfix) with ESMTP id B3480FF9492
-	for <qemu-arm@nongnu.org>; Fri, 17 Jun 2016 14:16:13 +0200 (CEST)
-Received: from hermes.ibm.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id 3B1226200A4;
-	Fri, 17 Jun 2016 14:16:04 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
+	(envelope-from <pbonzini@redhat.com>) id 1bDswo-0006vg-Ht
+	for qemu-arm@nongnu.org; Fri, 17 Jun 2016 08:32:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33691)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1bDswo-0006vY-9b; Fri, 17 Jun 2016 08:32:30 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9648F90E49;
+	Fri, 17 Jun 2016 12:32:29 +0000 (UTC)
+Received: from [10.36.112.68] (ovpn-112-68.ams2.redhat.com [10.36.112.68])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5HCWOak018223
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Fri, 17 Jun 2016 08:32:26 -0400
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Fri, 17 Jun 2016 14:15:22 +0200
-Message-Id: <1466165724-7620-4-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1466165724-7620-1-git-send-email-clg@kaod.org>
 References: <1466165724-7620-1-git-send-email-clg@kaod.org>
+	<1466165724-7620-2-git-send-email-clg@kaod.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <04090e71-2d6f-d157-4d7a-73d8bc8b0b3f@redhat.com>
+Date: Fri, 17 Jun 2016 14:32:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 16865136183255796497
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeekledrledtgdeglecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+In-Reply-To: <1466165724-7620-2-git-send-email-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 17 Jun 2016 12:32:29 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 87.98.186.128
-Subject: [Qemu-arm] [PATCH v2 3/5] ast2400: add SPI flash slave object
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 1/5] m25p80: qdev-ify drive property
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,176 +71,147 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: kwolf@redhat.com, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
-	armbru@redhat.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+	armbru@redhat.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N96tHqRt20um
+X-TUID: rrdVniOUzMst
 
-Each SPI flash slave can operate in two modes: Command and User. When
-in User mode, accesses to the memory segment of the slaves are
-translated in SPI transfers. When in Command mode, the HW generates
-the SPI commands automatically and the memory segment is accessed as
-if doing a MMIO. Other SPI controllers call that mode linear
-addressing mode.
 
-This object is a model proposal for a SPI flash module, gathering SPI
-slave properties and a MemoryRegion handling the memory accesses.
-Only the User mode is supported for now but we are preparing ground
-for the Command mode.
 
-The framework below is sufficient to support Linux which only uses
-User Mode.
+On 17/06/2016 14:15, C=C3=A9dric Le Goater wrote:
+> From: Paolo Bonzini <pbonzini@redhat.com>
+>=20
+> This allows specifying the property via -drive if=3Dnone and creating
+> the flash device with -device.
+>=20
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/ssi/aspeed_smc.c         | 97 +++++++++++++++++++++++++++++++++++++++=
-++++++
- include/hw/ssi/aspeed_smc.h | 16 ++++++++
- 2 files changed, 113 insertions(+)
+You need to add your Signed-off-by line too.  You should have used "git
+am -s" for that, but in this case just replace to my mail with the
+signoff and the maintainer will collect it.
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 7937a9030903..6a02906c8f97 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -112,6 +112,21 @@ static bool aspeed_smc_is_ce_stop_active(AspeedSMCSt=
-ate *s, int cs)
-     return s->regs[s->r_ctrl0 + cs] & CTRL_CE_STOP_ACTIVE;
- }
-=20
-+static inline int aspeed_smc_flash_mode(AspeedSMCState *s, int cs)
-+{
-+    return s->regs[s->r_ctrl0 + cs] & CTRL_CMD_MODE_MASK;
-+}
-+
-+static inline bool aspeed_smc_is_usermode(AspeedSMCState *s, int cs)
-+{
-+    return (aspeed_smc_flash_mode(s, cs) =3D=3D CTRL_USERMODE);
-+}
-+
-+static inline bool aspeed_smc_is_writable(AspeedSMCState *s, int cs)
-+{
-+    return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + cs));
-+}
-+
- static void aspeed_smc_update_cs(AspeedSMCState *s)
- {
-     int i;
-@@ -298,3 +313,85 @@ static void aspeed_smc_register_types(void)
- }
-=20
- type_init(aspeed_smc_register_types)
-+
-+static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigne=
-d size)
-+{
-+    AspeedSMCFlashState *fl =3D ASPEED_SMC_FLASH(opaque);
-+    AspeedSMCState *s =3D fl->controller;
-+    uint64_t ret =3D 0;
-+    int i;
-+
-+    if (aspeed_smc_is_usermode(s, fl->id)) {
-+        for (i =3D 0; i < size; i++) {
-+            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
-+        }
-+    } else {
-+        error_report("%s: flash not in usermode", __func__);
-+        ret =3D -1;
-+    }
-+
-+    return ret;
-+}
-+
-+static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t d=
-ata,
-+                           unsigned size)
-+{
-+    AspeedSMCFlashState *fl =3D ASPEED_SMC_FLASH(opaque);
-+    AspeedSMCState *s =3D fl->controller;
-+    int i;
-+
-+    if (!aspeed_smc_is_writable(s, fl->id)) {
-+        error_report("%s: flash is not writable", __func__);
-+        return;
-+    }
-+
-+    if (!aspeed_smc_is_usermode(s, fl->id)) {
-+        error_report("%s: flash not in usermode", __func__);
-+        return;
-+    }
-+
-+    for (i =3D 0; i < size; i++) {
-+        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_smc_flash_ops =3D {
-+    .read =3D aspeed_smc_flash_read,
-+    .write =3D aspeed_smc_flash_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid =3D {
-+        .min_access_size =3D 1,
-+        .max_access_size =3D 4,
-+    },
-+};
-+
-+static const VMStateDescription vmstate_aspeed_smc_flash =3D {
-+    .name =3D "aspeed.smc_flash",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT8(id, AspeedSMCFlashState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void aspeed_smc_flash_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->vmsd =3D &vmstate_aspeed_smc_flash;
-+}
-+
-+static const TypeInfo aspeed_smc_flash_info =3D {
-+    .name           =3D TYPE_ASPEED_SMC_FLASH,
-+    .parent         =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size  =3D sizeof(AspeedSMCState),
-+    .class_init     =3D aspeed_smc_flash_class_init,
-+};
-+
-+static void aspeed_smc_flash_register_types(void)
-+{
-+    type_register_static(&aspeed_smc_flash_info);
-+}
-+
-+type_init(aspeed_smc_flash_register_types)
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 2d3e9f6b46d5..abd0005b01c2 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -27,6 +27,22 @@
-=20
- #include "hw/ssi/ssi.h"
-=20
-+struct AspeedSMCState;
-+
-+typedef struct AspeedSMCFlashState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion mmio;
-+    uint8_t id;
-+    size_t size;
-+    struct AspeedSMCState *controller;
-+    DeviceState *flash;
-+} AspeedSMCFlashState;
-+
-+#define TYPE_ASPEED_SMC_FLASH "aspeed.smc.flash"
-+#define ASPEED_SMC_FLASH(obj) \
-+    OBJECT_CHECK(AspeedSMCFlashState, (obj), TYPE_ASPEED_SMC_FLASH)
-+
- typedef struct AspeedSMCController {
-     const char *name;
-     uint8_t r_conf;
---=20
-2.1.4
+Thanks for picking up the patch. :)
 
+Paolo
+
+> ---
+>  hw/arm/xilinx_zynq.c                |  8 +++++++-
+>  hw/arm/xlnx-ep108.c                 |  9 ++++++++-
+>  hw/block/m25p80.c                   | 10 ++--------
+>  hw/microblaze/petalogix_ml605_mmu.c |  9 ++++++++-
+>  4 files changed, 25 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index aefebcfa6d8f..b0cabe2e4a67 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -138,7 +138,13 @@ static inline void zynq_init_spi_flashes(uint32_t =
+base_addr, qemu_irq irq,
+>          spi =3D (SSIBus *)qdev_get_child_bus(dev, bus_name);
+> =20
+>          for (j =3D 0; j < num_ss; ++j) {
+> -            flash_dev =3D ssi_create_slave(spi, "n25q128");
+> +            DriveInfo *dinfo =3D drive_get_next(IF_MTD);
+> +            flash_dev =3D ssi_create_slave_no_init(spi, "n25q128");
+> +            if (dinfo) {
+> +                qdev_prop_set_drive(flash_dev, "drive",
+> +                                    blk_by_legacy_dinfo(dinfo), &error=
+_fatal);
+> +            }
+> +            qdev_init_nofail(flash_dev);
+> =20
+>              cs_line =3D qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS,=
+ 0);
+>              sysbus_connect_irq(busdev, i * num_ss + j + 1, cs_line);
+> diff --git a/hw/arm/xlnx-ep108.c b/hw/arm/xlnx-ep108.c
+> index 34b464171266..4ec590a25db5 100644
+> --- a/hw/arm/xlnx-ep108.c
+> +++ b/hw/arm/xlnx-ep108.c
+> @@ -88,12 +88,19 @@ static void xlnx_ep108_init(MachineState *machine)
+>          SSIBus *spi_bus;
+>          DeviceState *flash_dev;
+>          qemu_irq cs_line;
+> +        DriveInfo *dinfo =3D drive_get_next(IF_MTD);
+>          gchar *bus_name =3D g_strdup_printf("spi%d", i);
+> =20
+>          spi_bus =3D (SSIBus *)qdev_get_child_bus(DEVICE(&s->soc), bus_=
+name);
+>          g_free(bus_name);
+> =20
+> -        flash_dev =3D ssi_create_slave(spi_bus, "sst25wf080");
+> +        flash_dev =3D ssi_create_slave_no_init(spi_bus, "sst25wf080");
+> +        if (dinfo) {
+> +            qdev_prop_set_drive(flash_dev, "drive", blk_by_legacy_dinf=
+o(dinfo),
+> +                                &error_fatal);
+> +        }
+> +        qdev_init_nofail(flash_dev);
+> +
+>          cs_line =3D qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
+> =20
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->soc.spi[i]), 1, cs_line)=
+;
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index e6f6e23fb71d..7d1c34a1a2d1 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -881,7 +881,6 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint=
+32_t tx)
+> =20
+>  static void m25p80_realize(SSISlave *ss, Error **errp)
+>  {
+> -    DriveInfo *dinfo;
+>      Flash *s =3D M25P80(ss);
+>      M25P80Class *mc =3D M25P80_GET_CLASS(s);
+> =20
+> @@ -890,14 +889,8 @@ static void m25p80_realize(SSISlave *ss, Error **e=
+rrp)
+>      s->size =3D s->pi->sector_size * s->pi->n_sectors;
+>      s->dirty_page =3D -1;
+> =20
+> -    /* FIXME use a qdev drive property instead of drive_get_next() */
+> -    dinfo =3D drive_get_next(IF_MTD);
+> -
+> -    if (dinfo) {
+> +    if (s->blk) {
+>          DB_PRINT_L(0, "Binding to IF_MTD drive\n");
+> -        s->blk =3D blk_by_legacy_dinfo(dinfo);
+> -        blk_attach_dev_nofail(s->blk, s);
+> -
+>          s->storage =3D blk_blockalign(s->blk, s->size);
+> =20
+>          if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
+> @@ -925,6 +918,7 @@ static void m25p80_pre_save(void *opaque)
+> =20
+>  static Property m25p80_properties[] =3D {
+>      DEFINE_PROP_UINT32("nonvolatile-cfg", Flash, nonvolatile_cfg, 0x8F=
+FF),
+> +    DEFINE_PROP_DRIVE("drive", Flash, blk),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> =20
+> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalo=
+gix_ml605_mmu.c
+> index 07527b677b37..4968bdbb2821 100644
+> --- a/hw/microblaze/petalogix_ml605_mmu.c
+> +++ b/hw/microblaze/petalogix_ml605_mmu.c
+> @@ -191,9 +191,16 @@ petalogix_ml605_init(MachineState *machine)
+>          spi =3D (SSIBus *)qdev_get_child_bus(dev, "spi");
+> =20
+>          for (i =3D 0; i < NUM_SPI_FLASHES; i++) {
+> +            DriveInfo *dinfo =3D drive_get_next(IF_MTD);
+>              qemu_irq cs_line;
+> =20
+> -            dev =3D ssi_create_slave(spi, "n25q128");
+> +            dev =3D ssi_create_slave_no_init(spi, "n25q128");
+> +            if (dinfo) {
+> +                qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(=
+dinfo),
+> +                                    &error_fatal);
+> +            }
+> +            qdev_init_nofail(dev);
+> +
+>              cs_line =3D qdev_get_gpio_in_named(dev, SSI_GPIO_CS, 0);
+>              sysbus_connect_irq(busdev, i+1, cs_line);
+>          }
+>=20

@@ -1,72 +1,61 @@
-Received: by 10.25.21.96 with SMTP id l93csp1464171lfi;
-        Mon, 20 Jun 2016 07:01:14 -0700 (PDT)
-X-Received: by 10.37.73.130 with SMTP id w124mr8308293yba.169.1466431273902;
-        Mon, 20 Jun 2016 07:01:13 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1488558lfi;
+        Mon, 20 Jun 2016 07:55:12 -0700 (PDT)
+X-Received: by 10.55.71.138 with SMTP id u132mr22661947qka.1.1466434512792;
+        Mon, 20 Jun 2016 07:55:12 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x21si18566496ywd.191.2016.06.20.07.01.13
+        by mx.google.com with ESMTPS id 63si48117991qkm.83.2016.06.20.07.55.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Jun 2016 07:01:13 -0700 (PDT)
+        Mon, 20 Jun 2016 07:55:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43821 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44135 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bEzlJ-0004O8-6D
-	for alex.bennee@linaro.org; Mon, 20 Jun 2016 10:01:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45191)
+	id 1bF0bY-0002sx-7Y
+	for alex.bennee@linaro.org; Mon, 20 Jun 2016 10:55:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56701)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bEziD-0001UK-Ds
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:58:03 -0400
+	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bF0Ng-0003TW-SE
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 10:40:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bEziA-00058K-FH
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:58:00 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:36257)
+	(envelope-from <Maciej.Rozycki@imgtec.com>) id 1bF0Nd-0005UR-6g
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 10:40:51 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:62564)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bEzi9-00057t-7i
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:57:58 -0400
-Received: by mail-vk0-x230.google.com with SMTP id u64so196326141vkf.3
-	for <qemu-arm@nongnu.org>; Mon, 20 Jun 2016 06:57:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=g4Ixkp0osqmBjKnprvaqOw6ZfhluRABJrXMHw1LGGnE=;
-	b=PhPgRmGjfwm55m/HD+mJnJOZTi1BW8mtnKP4LGveP7GmO8Q2oZstBx4k8vSTeNp6jC
-	MoUzRhvNzpYbtNr0n58WdC/1Fs9S7Kp7b5VIXflRQOIX4i7IYwopkQRm2fqn773pLoA6
-	/lESaOTnUgbUn1JBPdTCvyoBkK4WaLdpQsoIo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=g4Ixkp0osqmBjKnprvaqOw6ZfhluRABJrXMHw1LGGnE=;
-	b=meYua2uOuRYAWWRd3lhRr5qjypGBV9msmXAqh7CIdpKsX1T3TXya85pcF1Wt9TvJKn
-	DBWRpGPKNSDzllVD9KLzCKYTBxXnCAKi+vu9qQab6tMujFkHt7VdWPIbUahPn/0C24of
-	0N2pWsbcbsgsaGeviJ8NPdJZCU4iS650OhxYwXbwx7dC+L4ovMhUO5CcPxwsMLgm5kWH
-	XzB96dvIm5zlrebmFE5hVd38R16VV4cATxna3DFsmZSL8FZwua4KAsXw8BHc4ArkMwpx
-	WIxK+worRGfyAfpsmX3ia0pCUywrM3rqBcGyKkisL9CPR1/RWqgkpN8UDBEOOVxGn+wa
-	X9qg==
-X-Gm-Message-State: ALyK8tI2PXzY0Gl9TVYBbupUdEt26iuZUjSWyq2Uea7NTTi338sbF9247UCtelkUannrguX/zXfr/4ApObOuR+GX
-X-Received: by 10.176.64.69 with SMTP id h63mr6539430uad.125.1466431076392;
-	Mon, 20 Jun 2016 06:57:56 -0700 (PDT)
+	(envelope-from <Maciej.Rozycki@imgtec.com>)
+	id 1bF0Nd-0005Tl-03; Mon, 20 Jun 2016 10:40:49 -0400
+Received: from HHMAIL01.hh.imgtec.org (unknown [10.100.10.19])
+	by Forcepoint Email with ESMTPS id 3940F75CDB774;
+	Mon, 20 Jun 2016 15:40:41 +0100 (IST)
+Received: from [10.20.78.204] (10.20.78.204) by HHMAIL01.hh.imgtec.org
+	(10.100.10.21) with Microsoft SMTP Server id 14.3.294.0;
+	Mon, 20 Jun 2016 15:40:43 +0100
+Date: Mon, 20 Jun 2016 15:40:25 +0100
+From: "Maciej W. Rozycki" <macro@imgtec.com>
+To: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
+In-Reply-To: <EF5FA6C3467F85449672C3E735957B85916C0A4C@BADAG02.ba.imgtec.org>
+Message-ID: <alpine.DEB.2.00.1606201528270.7182@tp.orcam.me.uk>
+References: <1463407965-19733-1-git-send-email-aleksandar.markovic@rt-rk.com>
+	<1463407965-19733-9-git-send-email-aleksandar.markovic@rt-rk.com>
+	<alpine.DEB.2.00.1606071221480.9917@tp.orcam.me.uk>
+	<EF5FA6C3467F85449672C3E735957B85916B85AC@BADAG02.ba.imgtec.org>
+	<alpine.DEB.2.00.1606101132270.10382@tp.orcam.me.uk>
+	<EF5FA6C3467F85449672C3E735957B85916B87C8@BADAG02.ba.imgtec.org>
+	<alpine.DEB.2.00.1606102045400.10382@tp.orcam.me.uk>
+	<20160614141753.GD13260@hhmipssw201.hh.imgtec.org>,
+	<alpine.DEB.2.00.1606141629380.7182@tp.orcam.me.uk>
+	<EF5FA6C3467F85449672C3E735957B85916C0A4C@BADAG02.ba.imgtec.org>
+User-Agent: Alpine 2.00 (DEB 1167 2008-08-23)
 MIME-Version: 1.0
-Received: by 10.31.193.141 with HTTP; Mon, 20 Jun 2016 06:57:37 -0700 (PDT)
-In-Reply-To: <1466394273.4344.25.camel@aj.id.au>
-References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
-	<1466063287-19350-2-git-send-email-andrew@aj.id.au>
-	<CAFEAcA_-+nWvAsCLE71d4qb_3eFkF80L-JgZSxwF5L3CH+W_Aw@mail.gmail.com>
-	<1466394273.4344.25.camel@aj.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Jun 2016 14:57:37 +0100
-Message-ID: <CAFEAcA_=5Dvg9R1o67b-5MuMZWtWbobywA+XzKuR-TeTCWfN0Q@mail.gmail.com>
-To: Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: Add a model for the ASPEED
- System Control Unit
+Content-Type: text/plain; charset="US-ASCII"
+X-Originating-IP: [10.20.78.204]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-arm] [PATCH v6 8/9] target-mips: Add nan2008 flavor of
+ <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,73 +67,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"proljc@gmail.com" <proljc@gmail.com>,
+	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
+	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"agraf@suse.de" <agraf@suse.de>,
+	Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
+	"jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+	Miodrag Dinic <Miodrag.Dinic@imgtec.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Petar Jovanovic <Petar.Jovanovic@imgtec.com>,
+	"blauwirbel@gmail.com" <blauwirbel@gmail.com>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
+	Leon Alrae <Leon.Alrae@imgtec.com>, "afaerber@suse.de" <afaerber@suse.de>,
+	Aurelien Jarno <aurelien@aurel32.net>, "rth@twiddle.net" <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kxNkDsYyf2aj
+X-TUID: V5q40BYdSsKk
 
-On 20 June 2016 at 04:44, Andrew Jeffery <andrew@aj.id.au> wrote:
-> On Fri, 2016-06-17 at 15:22 +0100, Peter Maydell wrote:
->> +static Property aspeed_scu_properties[] = {
->> +    DEFINE_PROP_ARRAY("reset", AspeedSCUState, num_resets, reset,
->> +                      qdev_prop_uint32, uint32_t),
->> +    DEFINE_PROP_END_OF_LIST(),
->> +};
->> +
->> +#define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
->> This seems like a very unwieldy way of specifying the reset values
->> for this device. Are they really all fully configurable in the
->> hardware? It seems unlikely. I'd much rather see something that
->> looks more like what you might plausibly be configuring when wiring
->> up the SoC, which might be some version/revision numbers and/or
->> some particular tweakable parameters.
->
-> Right. I left out some context which may clear things up: We are
-> working with two SoCs at the moment, the AST2400 and AST2500 (hopefully
-> the AST2500 patches will be sent to the list soon). I wanted to
-> abstract the configuration to cater for the differences in register
-> values between the SoCs, less so for wiring the one SoC up in a
-> different fashion. For what it's worth, out of 86 registers defined in
-> the IO space between the two SoCs, 37 take the same value and 49
-> differ.
+On Mon, 20 Jun 2016, Aleksandar Markovic wrote:
 
-I think there are a couple of plausible ways you might model this:
+> This patch is about NaN-2008 flavor of Mips instructions CEIL, CVT, 
+> FLOOR, ROUND, TRUNC only (its title is "Add nan2008 flavor...").
+> 
+> Legacy-NaN flavors of the same Mips instructions already operate 
+> correctly, and there is nothing to be fixed.
+> 
+> The commit message is not description of another bug, it explains the 
+> context of the change, and the content of added code segments.
 
-(a) just have a single property for "revision" which corresponds
-to the revision of this bit of silicon IP within the SoC; the
-model of the device itself then knows what the reset state is
-for this revision of the device.
-(b) ditto, but also have some configurable flags where relevant
-(ie approximately where it's the same IP rev within the SoC
-but it's been configured by tying down different config lines;
-for instance hw/dma/pl330.c has a collection of properties
-which match the configurable knobs for the hardware.)
+ Well, if the matter does not affect MIPS emulation, then why do you think 
+there's a need to mention it in the first place?
 
-You might or might not have enough visibility into the thing to
-know which of these is closest to what the real hardware is doing;
-if not then it's a matter of taste, looking at what is varying
-between the two and what isn't, etc. But "board level specifies
-all the register reset values" is definitely far too broad
-and generalised an API, I think.
+ I don't think stating what other emulation targets do in a commit 
+description for a platform feature adds any value, but I think it bears 
+the risk to confuse people examining code history.  Your description has 
+to be meaningful for someone reading it say 10 years on from now who does 
+not necessarily know the context nor has any of us available to ask.  
+Please consider this.
 
-> Separately, the qdev array approach was lifted from your commit
-> 9c7d489379c2 hw/vexpress: Set reset values for daughterboard
-> oscillators.
+ If you do think this mention adds value, then please make it unambiguous 
+in the commit description that the third conversion variant applies to 
+non-MIPS targets only.  It wasn't to me at all or I wouldn't have spoken 
+out.
 
-You'll notice that we only configure the specific things
-that need configuring with interfaces specific to those things
-(eg "daughterboard clocks" and "daughterboard voltages" are
-separate), not a single "have a complete set of register values" API.
+ Thank you.
 
-> Another approach would be to set the members of the SCU's
-> reset array directly as we know the type. That seems less convoluted
-> but my gut instinct was that wasn't how we should be configuring the
-> devices. Is qdev the right way to go in the SCU's case?
-
-We should definitely use qdev rather than poking directly at
-the device's internal state struct.
-
-thanks
--- PMM
+  Maciej

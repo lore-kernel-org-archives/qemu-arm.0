@@ -1,62 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp1463302lfi;
-        Mon, 20 Jun 2016 06:59:26 -0700 (PDT)
-X-Received: by 10.55.165.4 with SMTP id o4mr21302412qke.15.1466431166435;
-        Mon, 20 Jun 2016 06:59:26 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1464171lfi;
+        Mon, 20 Jun 2016 07:01:14 -0700 (PDT)
+X-Received: by 10.37.73.130 with SMTP id w124mr8308293yba.169.1466431273902;
+        Mon, 20 Jun 2016 07:01:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u45si47741436qtb.52.2016.06.20.06.59.26
+        by mx.google.com with ESMTPS id x21si18566496ywd.191.2016.06.20.07.01.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Jun 2016 06:59:26 -0700 (PDT)
+        Mon, 20 Jun 2016 07:01:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@yandex.ru;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:43810 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bEzjZ-0003Op-Qr
-	for alex.bennee@linaro.org; Mon, 20 Jun 2016 09:59:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45054)
+	id 1bEzlJ-0004O8-6D
+	for alex.bennee@linaro.org; Mon, 20 Jun 2016 10:01:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bEzhh-0000EW-50
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:57:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bEziD-0001UK-Ds
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:58:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bEzhc-0004zd-2j
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:57:29 -0400
-Received: from forward18o.cmail.yandex.net ([37.9.109.216]:39109)
+	(envelope-from <peter.maydell@linaro.org>) id 1bEziA-00058K-FH
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:58:00 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:36257)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1bEzha-0004yQ-JH; Mon, 20 Jun 2016 09:57:24 -0400
-Received: from smtp2o.mail.yandex.net (smtp2o.mail.yandex.net [37.140.190.27])
-	by forward18o.cmail.yandex.net (Yandex) with ESMTP id 91C8B2128A;
-	Mon, 20 Jun 2016 16:57:09 +0300 (MSK)
-Received: from smtp2o.mail.yandex.net (localhost [127.0.0.1])
-	by smtp2o.mail.yandex.net (Yandex) with ESMTP id D14DA36A01D7;
-	Mon, 20 Jun 2016 16:57:07 +0300 (MSK)
-Received: by smtp2o.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
-	zLO1XlBKZZ-v658oCnm; Mon, 20 Jun 2016 16:57:06 +0300
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
-	(Client certificate not present)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1466431026; bh=VO8HcHo0W5+Cp2c3J+58K17vSlx1qmpCUe7ZAO+ALVk=;
-	h=From:To:Cc:Subject:Date:Message-Id:X-Mailer;
-	b=KkOX/CmUmdl5aDwP98XOKpHA0IzJgSPuMtOOeQYkXNFaXxc/gENYobX0wE4nPn/Q1
-	KciNmL5hDb/dNajKXXcSM0dwcgqVYK2HDn+DZzC6fYGFPWgke42orpEG+e9L/ox0vg
-	oGmETPvHuRLq0vJBbuYAt+E9U3TcAy+JeYykpYpY=
-Authentication-Results: smtp2o.mail.yandex.net; dkim=pass header.i=@yandex.ru
-X-Yandex-ForeignMX: US
-X-Yandex-Suid-Status: 1 0,1 0,1 0,1 0,1 0,1 0,1 0,1 0,1 37377968
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: qemu-devel@nongnu.org
-Date: Mon, 20 Jun 2016 16:56:57 +0300
-Message-Id: <1466431017-123868-1-git-send-email-afarallax@yandex.ru>
-X-Mailer: git-send-email 1.9.3
+	(envelope-from <peter.maydell@linaro.org>) id 1bEzi9-00057t-7i
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 09:57:58 -0400
+Received: by mail-vk0-x230.google.com with SMTP id u64so196326141vkf.3
+	for <qemu-arm@nongnu.org>; Mon, 20 Jun 2016 06:57:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=g4Ixkp0osqmBjKnprvaqOw6ZfhluRABJrXMHw1LGGnE=;
+	b=PhPgRmGjfwm55m/HD+mJnJOZTi1BW8mtnKP4LGveP7GmO8Q2oZstBx4k8vSTeNp6jC
+	MoUzRhvNzpYbtNr0n58WdC/1Fs9S7Kp7b5VIXflRQOIX4i7IYwopkQRm2fqn773pLoA6
+	/lESaOTnUgbUn1JBPdTCvyoBkK4WaLdpQsoIo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=g4Ixkp0osqmBjKnprvaqOw6ZfhluRABJrXMHw1LGGnE=;
+	b=meYua2uOuRYAWWRd3lhRr5qjypGBV9msmXAqh7CIdpKsX1T3TXya85pcF1Wt9TvJKn
+	DBWRpGPKNSDzllVD9KLzCKYTBxXnCAKi+vu9qQab6tMujFkHt7VdWPIbUahPn/0C24of
+	0N2pWsbcbsgsaGeviJ8NPdJZCU4iS650OhxYwXbwx7dC+L4ovMhUO5CcPxwsMLgm5kWH
+	XzB96dvIm5zlrebmFE5hVd38R16VV4cATxna3DFsmZSL8FZwua4KAsXw8BHc4ArkMwpx
+	WIxK+worRGfyAfpsmX3ia0pCUywrM3rqBcGyKkisL9CPR1/RWqgkpN8UDBEOOVxGn+wa
+	X9qg==
+X-Gm-Message-State: ALyK8tI2PXzY0Gl9TVYBbupUdEt26iuZUjSWyq2Uea7NTTi338sbF9247UCtelkUannrguX/zXfr/4ApObOuR+GX
+X-Received: by 10.176.64.69 with SMTP id h63mr6539430uad.125.1466431076392;
+	Mon, 20 Jun 2016 06:57:56 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.193.141 with HTTP; Mon, 20 Jun 2016 06:57:37 -0700 (PDT)
+In-Reply-To: <1466394273.4344.25.camel@aj.id.au>
+References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
+	<1466063287-19350-2-git-send-email-andrew@aj.id.au>
+	<CAFEAcA_-+nWvAsCLE71d4qb_3eFkF80L-JgZSxwF5L3CH+W_Aw@mail.gmail.com>
+	<1466394273.4344.25.camel@aj.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Jun 2016 14:57:37 +0100
+Message-ID: <CAFEAcA_=5Dvg9R1o67b-5MuMZWtWbobywA+XzKuR-TeTCWfN0Q@mail.gmail.com>
+To: Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 37.9.109.216
-Subject: [Qemu-arm] [PATCH] Improve the alignment check infrastructure
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: Add a model for the ASPEED
+ System Control Unit
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,315 +78,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Sergey Sorokin <afarallax@yandex.ru>,
-	Claudio Fontana <claudio.fontana@huawei.com>,
-	Alexander Graf <agraf@suse.de>, qemu-arm@nongnu.org,
-	"Vassili Karpov \(malc\)" <av1474@comtv.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EhD6kp85dpNt
+X-TUID: kxNkDsYyf2aj
 
-Some architectures (e.g. ARMv8) need the address which is aligned
-to a size more than the size of the memory access.
-It's enougth the current costless alignment check implementation in QEMU,
-but we need to support the alignment size specifying.
+On 20 June 2016 at 04:44, Andrew Jeffery <andrew@aj.id.au> wrote:
+> On Fri, 2016-06-17 at 15:22 +0100, Peter Maydell wrote:
+>> +static Property aspeed_scu_properties[] = {
+>> +    DEFINE_PROP_ARRAY("reset", AspeedSCUState, num_resets, reset,
+>> +                      qdev_prop_uint32, uint32_t),
+>> +    DEFINE_PROP_END_OF_LIST(),
+>> +};
+>> +
+>> +#define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
+>> This seems like a very unwieldy way of specifying the reset values
+>> for this device. Are they really all fully configurable in the
+>> hardware? It seems unlikely. I'd much rather see something that
+>> looks more like what you might plausibly be configuring when wiring
+>> up the SoC, which might be some version/revision numbers and/or
+>> some particular tweakable parameters.
+>
+> Right. I left out some context which may clear things up: We are
+> working with two SoCs at the moment, the AST2400 and AST2500 (hopefully
+> the AST2500 patches will be sent to the list soon). I wanted to
+> abstract the configuration to cater for the differences in register
+> values between the SoCs, less so for wiring the one SoC up in a
+> different fashion. For what it's worth, out of 86 registers defined in
+> the IO space between the two SoCs, 37 take the same value and 49
+> differ.
 
-Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
----
- include/exec/cpu-all.h       | 11 +++++---
- tcg/aarch64/tcg-target.inc.c |  9 ++++---
- tcg/i386/tcg-target.inc.c    | 15 ++++++-----
- tcg/ppc/tcg-target.inc.c     | 12 +++++----
- tcg/s390/tcg-target.inc.c    |  9 ++++---
- tcg/tcg.c                    | 20 ++++++++++++--
- tcg/tcg.h                    | 63 +++++++++++++++++++++++++++++++++++++++++---
- 7 files changed, 110 insertions(+), 29 deletions(-)
+I think there are a couple of plausible ways you might model this:
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 9f38edf..a2f0781 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -288,14 +288,17 @@ CPUArchState *cpu_copy(CPUArchState *env);
- #if !defined(CONFIG_USER_ONLY)
- 
- /* Flags stored in the low bits of the TLB virtual address.  These are
--   defined so that fast path ram access is all zeros.  */
-+ * defined so that fast path ram access is all zeros.
-+ * They start after address alignment bits.
-+ */
-+#define TLB_FLAGS_START_BIT 6
- /* Zero if TLB entry is valid.  */
--#define TLB_INVALID_MASK   (1 << 3)
-+#define TLB_INVALID_MASK    (1 << (TLB_FLAGS_START_BIT + 0))
- /* Set if TLB entry references a clean RAM page.  The iotlb entry will
-    contain the page physical address.  */
--#define TLB_NOTDIRTY    (1 << 4)
-+#define TLB_NOTDIRTY        (1 << (TLB_FLAGS_START_BIT + 1))
- /* Set if TLB entry is an IO callback.  */
--#define TLB_MMIO        (1 << 5)
-+#define TLB_MMIO            (1 << (TLB_FLAGS_START_BIT + 2))
- 
- void dump_exec_info(FILE *f, fprintf_function cpu_fprintf);
- void dump_opcount_info(FILE *f, fprintf_function cpu_fprintf);
-diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
-index 1447f7c..8627b60 100644
---- a/tcg/aarch64/tcg-target.inc.c
-+++ b/tcg/aarch64/tcg-target.inc.c
-@@ -1071,19 +1071,20 @@ static void tcg_out_tlb_read(TCGContext *s, TCGReg addr_reg, TCGMemOp opc,
-     int tlb_offset = is_read ?
-         offsetof(CPUArchState, tlb_table[mem_index][0].addr_read)
-         : offsetof(CPUArchState, tlb_table[mem_index][0].addr_write);
--    int s_mask = (1 << (opc & MO_SIZE)) - 1;
-+    int a_bits = get_alignment_bits(opc);
-     TCGReg base = TCG_AREG0, x3;
-     uint64_t tlb_mask;
- 
-     /* For aligned accesses, we check the first byte and include the alignment
-        bits within the address.  For unaligned access, we check that we don't
-        cross pages using the address of the last byte of the access.  */
--    if ((opc & MO_AMASK) == MO_ALIGN || s_mask == 0) {
--        tlb_mask = TARGET_PAGE_MASK | s_mask;
-+    if (a_bits >= 0) {
-+        /* A byte access or an alignment check required */
-+        tlb_mask = TARGET_PAGE_MASK | ((1 << a_bits) - 1);
-         x3 = addr_reg;
-     } else {
-         tcg_out_insn(s, 3401, ADDI, TARGET_LONG_BITS == 64,
--                     TCG_REG_X3, addr_reg, s_mask);
-+                     TCG_REG_X3, addr_reg, (1 << (opc & MO_SIZE)) - 1);
-         tlb_mask = TARGET_PAGE_MASK;
-         x3 = TCG_REG_X3;
-     }
-diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
-index 317484c..55e4dec 100644
---- a/tcg/i386/tcg-target.inc.c
-+++ b/tcg/i386/tcg-target.inc.c
-@@ -1195,8 +1195,8 @@ static inline void tcg_out_tlb_load(TCGContext *s, TCGReg addrlo, TCGReg addrhi,
-     TCGType ttype = TCG_TYPE_I32;
-     TCGType tlbtype = TCG_TYPE_I32;
-     int trexw = 0, hrexw = 0, tlbrexw = 0;
--    int s_mask = (1 << (opc & MO_SIZE)) - 1;
--    bool aligned = (opc & MO_AMASK) == MO_ALIGN || s_mask == 0;
-+    int a_bits = get_alignment_bits(opc);
-+    uint64_t tlb_mask;
- 
-     if (TCG_TARGET_REG_BITS == 64) {
-         if (TARGET_LONG_BITS == 64) {
-@@ -1213,19 +1213,22 @@ static inline void tcg_out_tlb_load(TCGContext *s, TCGReg addrlo, TCGReg addrhi,
-     }
- 
-     tcg_out_mov(s, tlbtype, r0, addrlo);
--    if (aligned) {
-+    if (a_bits >= 0) {
-+        /* A byte access or an alignment check required */
-         tcg_out_mov(s, ttype, r1, addrlo);
-+        tlb_mask = TARGET_PAGE_MASK | ((1 << a_bits) - 1);
-     } else {
-         /* For unaligned access check that we don't cross pages using
-            the page address of the last byte.  */
--        tcg_out_modrm_offset(s, OPC_LEA + trexw, r1, addrlo, s_mask);
-+        tcg_out_modrm_offset(s, OPC_LEA + trexw, r1, addrlo,
-+                             (1 << (opc & MO_SIZE)) - 1);
-+        tlb_mask = TARGET_PAGE_MASK;
-     }
- 
-     tcg_out_shifti(s, SHIFT_SHR + tlbrexw, r0,
-                    TARGET_PAGE_BITS - CPU_TLB_ENTRY_BITS);
- 
--    tgen_arithi(s, ARITH_AND + trexw, r1,
--                TARGET_PAGE_MASK | (aligned ? s_mask : 0), 0);
-+    tgen_arithi(s, ARITH_AND + trexw, r1, tlb_mask, 0);
-     tgen_arithi(s, ARITH_AND + tlbrexw, r0,
-                 (CPU_TLB_SIZE - 1) << CPU_TLB_ENTRY_BITS, 0);
- 
-diff --git a/tcg/ppc/tcg-target.inc.c b/tcg/ppc/tcg-target.inc.c
-index da10052..3a399ec 100644
---- a/tcg/ppc/tcg-target.inc.c
-+++ b/tcg/ppc/tcg-target.inc.c
-@@ -1399,6 +1399,7 @@ static TCGReg tcg_out_tlb_read(TCGContext *s, TCGMemOp opc,
-     int add_off = offsetof(CPUArchState, tlb_table[mem_index][0].addend);
-     TCGReg base = TCG_AREG0;
-     TCGMemOp s_bits = opc & MO_SIZE;
-+    int a_bits = get_alignment_bits(opc);
- 
-     /* Extract the page index, shifted into place for tlb index.  */
-     if (TCG_TARGET_REG_BITS == 64) {
-@@ -1457,13 +1458,14 @@ static TCGReg tcg_out_tlb_read(TCGContext *s, TCGMemOp opc,
-          * unaligned accesses
-          */
-         tcg_out_rlw(s, RLWINM, TCG_REG_R0, addrlo, 0,
--                    (32 - s_bits) & 31, 31 - TARGET_PAGE_BITS);
--    } else if (s_bits) {
--        /* > byte access, we need to handle alignment */
--        if ((opc & MO_AMASK) == MO_ALIGN) {
-+                    (32 - (a_bits > 0 ? a_bits : s_bits)) & 31,
-+                    31 - TARGET_PAGE_BITS);
-+    } else if (a_bits) {
-+        /* More than byte access, we need to handle alignment */
-+        if (a_bits > 0) {
-             /* Alignment required by the front-end, same as 32-bits */
-             tcg_out_rld(s, RLDICL, TCG_REG_R0, addrlo,
--                        64 - TARGET_PAGE_BITS, TARGET_PAGE_BITS - s_bits);
-+                        64 - TARGET_PAGE_BITS, TARGET_PAGE_BITS - a_bits);
-             tcg_out_rld(s, RLDICL, TCG_REG_R0, TCG_REG_R0, TARGET_PAGE_BITS, 0);
-        } else {
-            /* We support unaligned accesses, we need to make sure we fail
-diff --git a/tcg/s390/tcg-target.inc.c b/tcg/s390/tcg-target.inc.c
-index e0a60e6..0c4e1b4 100644
---- a/tcg/s390/tcg-target.inc.c
-+++ b/tcg/s390/tcg-target.inc.c
-@@ -1499,18 +1499,19 @@ QEMU_BUILD_BUG_ON(offsetof(CPUArchState, tlb_table[NB_MMU_MODES - 1][1])
- static TCGReg tcg_out_tlb_read(TCGContext* s, TCGReg addr_reg, TCGMemOp opc,
-                                int mem_index, bool is_ld)
- {
--    int s_mask = (1 << (opc & MO_SIZE)) - 1;
-+    int a_bits = get_alignment_bits(opc);
-     int ofs, a_off;
-     uint64_t tlb_mask;
- 
-     /* For aligned accesses, we check the first byte and include the alignment
-        bits within the address.  For unaligned access, we check that we don't
-        cross pages using the address of the last byte of the access.  */
--    if ((opc & MO_AMASK) == MO_ALIGN || s_mask == 0) {
-+    if (a_bits >= 0) {
-+        /* A byte access or an alignment check required */
-         a_off = 0;
--        tlb_mask = TARGET_PAGE_MASK | s_mask;
-+        tlb_mask = TARGET_PAGE_MASK | ((1 << a_bits) - 1);
-     } else {
--        a_off = s_mask;
-+        a_off = (1 << (opc & MO_SIZE)) - 1;
-         tlb_mask = TARGET_PAGE_MASK;
-     }
- 
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 254427b..ca04388 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -997,6 +997,16 @@ static const char * const ldst_name[] =
-     [MO_BEQ]  = "beq",
- };
- 
-+static const char * const alignment_name[] = {
-+    [0] = "UNREACHABLE",
-+    [1] = "al2+",
-+    [2] = "al4+",
-+    [3] = "al8+",
-+    [4] = "al16+",
-+    [5] = "al32+",
-+    [6] = "al64+",
-+};
-+
- void tcg_dump_ops(TCGContext *s)
- {
-     char buf[128];
-@@ -1099,9 +1109,15 @@ void tcg_dump_ops(TCGContext *s)
-                         qemu_log(",$0x%x,%u", op, ix);
-                     } else {
-                         const char *s_al = "", *s_op;
-+                        int a_bits;
-                         if (op & MO_AMASK) {
--                            if ((op & MO_AMASK) == MO_ALIGN) {
--                                s_al = "al+";
-+                            a_bits = get_alignment_bits(op);
-+                            if (a_bits >= 0) {
-+                                if ((op & MO_SIZE) == a_bits) {
-+                                    s_al = "al+";
-+                                } else {
-+                                    s_al = alignment_name[a_bits];
-+                                }
-                             } else {
-                                 s_al = "un+";
-                             }
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 909db3f..85991c5 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -275,10 +275,25 @@ typedef enum TCGMemOp {
- #endif
- 
-     /* MO_UNALN accesses are never checked for alignment.
--       MO_ALIGN accesses will result in a call to the CPU's
--       do_unaligned_access hook if the guest address is not aligned.
--       The default depends on whether the target CPU defines ALIGNED_ONLY.  */
--    MO_AMASK = 16,
-+     * MO_ALIGN accesses will result in a call to the CPU's
-+     * do_unaligned_access hook if the guest address is not aligned.
-+     * The default depends on whether the target CPU defines ALIGNED_ONLY.
-+     * Some architectures (e.g. ARMv8) need the address which is aligned
-+     * to a size more than the size of the memory access.
-+     * It's enougth the current costless alignment check implementation
-+     * in QEMU, but we need to support alignment size specifying.
-+     * MO_ALIGN supposes a natural alignment
-+     * (i.e. the alignment size is the size of a memory access).
-+     * Note that an alignment size must be equal or greater
-+     * than an access size.
-+     * There are three options:
-+     * - an alignment to the size of an access (MO_ALIGN);
-+     * - an alignment to the specified size that is equal or greater than
-+     *   an access size (MO_ALIGN_x where 'x' is a size in bytes);
-+     * - unaligned access permitted (MO_UNALN).
-+     */
-+    MO_ASHIFT = 4,
-+    MO_AMASK = 7 << MO_ASHIFT,
- #ifdef ALIGNED_ONLY
-     MO_ALIGN = 0,
-     MO_UNALN = MO_AMASK,
-@@ -286,6 +301,12 @@ typedef enum TCGMemOp {
-     MO_ALIGN = MO_AMASK,
-     MO_UNALN = 0,
- #endif
-+    MO_ALIGN_2  = 1 << MO_ASHIFT,
-+    MO_ALIGN_4  = 2 << MO_ASHIFT,
-+    MO_ALIGN_8  = 3 << MO_ASHIFT,
-+    MO_ALIGN_16 = 4 << MO_ASHIFT,
-+    MO_ALIGN_32 = 5 << MO_ASHIFT,
-+    MO_ALIGN_64 = 6 << MO_ASHIFT,
- 
-     /* Combinations of the above, for ease of use.  */
-     MO_UB    = MO_8,
-@@ -317,6 +338,40 @@ typedef enum TCGMemOp {
-     MO_SSIZE = MO_SIZE | MO_SIGN,
- } TCGMemOp;
- 
-+/**
-+ * get_alignment_bits
-+ * @memop: TCGMemOp value
-+ *
-+ * Extract the alignment size from the memop.
-+ *
-+ * Returns: 0 in case of byte access (which is always aligned);
-+ *          positive value - number of alignment bits;
-+ *          negative value if unaligned access enabled
-+ *          and this is not a byte access.
-+ */
-+static inline int get_alignment_bits(TCGMemOp memop)
-+{
-+    int a = memop & MO_AMASK;
-+    int s = memop & MO_SIZE;
-+
-+    if (a == MO_UNALN) {
-+        /* Negative value if unaligned access enabled,
-+         * or zero value in case of byte access.
-+         */
-+        return -s;
-+    } else if (a == MO_ALIGN) {
-+        /* A natural alignment: return a number of access size bits */
-+        return s;
-+    } else {
-+        /* Specific alignment size. It must be equal or greater
-+         * than the access size.
-+         */
-+        a >>= MO_ASHIFT;
-+        assert(a >= s);
-+        return a;
-+    }
-+}
-+
- typedef tcg_target_ulong TCGArg;
- 
- /* Define a type and accessor macros for variables.  Using pointer types
--- 
-1.9.3
+(a) just have a single property for "revision" which corresponds
+to the revision of this bit of silicon IP within the SoC; the
+model of the device itself then knows what the reset state is
+for this revision of the device.
+(b) ditto, but also have some configurable flags where relevant
+(ie approximately where it's the same IP rev within the SoC
+but it's been configured by tying down different config lines;
+for instance hw/dma/pl330.c has a collection of properties
+which match the configurable knobs for the hardware.)
 
+You might or might not have enough visibility into the thing to
+know which of these is closest to what the real hardware is doing;
+if not then it's a matter of taste, looking at what is varying
+between the two and what isn't, etc. But "board level specifies
+all the register reset values" is definitely far too broad
+and generalised an API, I think.
+
+> Separately, the qdev array approach was lifted from your commit
+> 9c7d489379c2 hw/vexpress: Set reset values for daughterboard
+> oscillators.
+
+You'll notice that we only configure the specific things
+that need configuring with interfaces specific to those things
+(eg "daughterboard clocks" and "daughterboard voltages" are
+separate), not a single "have a complete set of register values" API.
+
+> Another approach would be to set the members of the SCU's
+> reset array directly as we know the type. That seems less convoluted
+> but my gut instinct was that wasn't how we should be configuring the
+> devices. Is qdev the right way to go in the SCU's case?
+
+We should definitely use qdev rather than poking directly at
+the device's internal state struct.
+
+thanks
+-- PMM

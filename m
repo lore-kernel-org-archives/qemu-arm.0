@@ -1,67 +1,80 @@
-Received: by 10.25.21.96 with SMTP id l93csp1556963lfi;
-        Mon, 20 Jun 2016 10:34:08 -0700 (PDT)
-X-Received: by 10.200.49.50 with SMTP id g47mr23513917qtb.76.1466444047988;
-        Mon, 20 Jun 2016 10:34:07 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1595736lfi;
+        Mon, 20 Jun 2016 12:16:31 -0700 (PDT)
+X-Received: by 10.55.94.135 with SMTP id s129mr15001483qkb.70.1466450191294;
+        Mon, 20 Jun 2016 12:16:31 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l12si48866840qtb.131.2016.06.20.10.34.07
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id n61si20718139qtd.25.2016.06.20.12.16.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Jun 2016 10:34:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 20 Jun 2016 12:16:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@yandex.ru;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:45278 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45849 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bF35L-0004X7-BZ
-	for alex.bennee@linaro.org; Mon, 20 Jun 2016 13:34:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51292)
+	id 1bF4gQ-0001B8-Nw
+	for alex.bennee@linaro.org; Mon, 20 Jun 2016 15:16:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bF35H-0004VV-KK
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 13:34:04 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bF4g7-0000p8-LN
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 15:16:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bF35E-0001c1-EK
-	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 13:34:03 -0400
-Received: from forward2m.cmail.yandex.net ([5.255.216.20]:41613)
+	(envelope-from <rth7680@gmail.com>) id 1bF4g3-0007GU-DM
+	for qemu-arm@nongnu.org; Mon, 20 Jun 2016 15:16:11 -0400
+Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:33841)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1bF35C-0001aG-Ur; Mon, 20 Jun 2016 13:34:00 -0400
-Received: from mxback5m.mail.yandex.net (mxback5m.mail.yandex.net
-	[37.140.138.65])
-	by forward2m.cmail.yandex.net (Yandex) with ESMTP id ED9682102E;
-	Mon, 20 Jun 2016 20:33:45 +0300 (MSK)
-Received: from web26m.yandex.ru (web26m.yandex.ru [37.140.138.117])
-	by mxback5m.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
-	4v3bVoLsNl-XjAWs8bj; Mon, 20 Jun 2016 20:33:45 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1466444025; bh=JQftiRiuMIP8lcQadQFXizj9GzLInNFhwSYsB1TdP98=;
-	h=X-Yandex-Sender-Uid:From:To:Cc:In-Reply-To:References:Subject:
-	MIME-Version:Message-Id:X-Mailer:Date:Content-Transfer-Encoding:
-	Content-Type;
-	b=Q3iVZeylVjyAoQUU0SduD4+6vmq+3iSZ8mSm71dQ0QMLMzbxUukmqPigV+nKvB1dZ
-	UoVjPYQWgtwNuhQOB90ngoKJux5zTHt+DRVpey/WdxBBkg1gptaWmV19/iKBrWe5qQ
-	dYuVmuUxDcvKQNiyk7UEcRt9DzqBIBvUFtJuB/D4=
-Authentication-Results: mxback5m.mail.yandex.net; dkim=pass header.i=@yandex.ru
-Received: by web26m.yandex.ru with HTTP;
-	Mon, 20 Jun 2016 20:33:45 +0300
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: Richard Henderson <rth@twiddle.net>,
+	(envelope-from <rth7680@gmail.com>)
+	id 1bF4g3-0007GO-9A; Mon, 20 Jun 2016 15:16:07 -0400
+Received: by mail-qk0-x22c.google.com with SMTP id t127so53840322qkf.1;
+	Mon, 20 Jun 2016 12:16:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=1VQhrx1W9Ap8YzgJ9MwPOIvpTVC+ayzj0pTmfYp0t7Y=;
+	b=Qapp1iM17/KSdXiULzzM/H6/3Pm+E3xa8h8103coQbSvjKvUAeXdqNnS6Dr+j3sPxB
+	Cglc8lncr5jN7IhPOhMAotI+xCBHQ7OKo5K6t/oeejWuZ15Z1oDrIB34HBfFiBYvpDf8
+	AthdreR4+l+JCMOJR6A/A0pSTv1CA22NC81Z5wQok9sFEiJlViUYzAk7Imhbf7FDn+rY
+	sNFoxJcAXAotQxseVb9FQ5VW5TbOIbrJ3eFPqXfh/Tmb9Ttdk6tIPVaRG8m0LYMvENeg
+	k+t7+gzUw53sVu4HHjwhiRvr1VPOMnxNVU4w6gdhHYX0BZ8M5mf39lOWRIjIyZKJ4iRz
+	ft2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=1VQhrx1W9Ap8YzgJ9MwPOIvpTVC+ayzj0pTmfYp0t7Y=;
+	b=cycJQPdY1VDJqIWyOHoW4dSUDM1m7MzAUh0Hch6Rmv/GKf71/ggzB1SpMsQ5WO2DNB
+	F1BkuvfMuLo6TFq6wR/fZ6pjZ5ndiJq2frFWp0zWUy3JRCY4BjjvTTbp6hxAJHfWbmdo
+	uVkkIBamtHkNleY/Cn2paKW9mjm9h/l/6gIZ9kvVnxRKqAC9CvnLzREDCcvFvyoIjiCI
+	jnOcTieaejbPUgeWXPBs4zYhtTiPexiXaDLB30RcA7HhjvmlqmiotMDgd96OuPoCQcOR
+	8f0T/JMhcrHaIPhIfFaBEn+CBDZn0njxgvwUZ2B8008uFSOUQcijFKB7EeUHeSikIE+O
+	vflA==
+X-Gm-Message-State: ALyK8tL+14nzikfPypyRL+Yn3FVtzTiggamkHOdR+k90MXwSlxssOJw8/hXt39gR6EMgCg==
+X-Received: by 10.55.59.196 with SMTP id i187mr480287qka.167.1466450166700;
+	Mon, 20 Jun 2016 12:16:06 -0700 (PDT)
+Received: from bigtime.twiddle.net (71-37-54-227.tukw.qwest.net.
+	[71.37.54.227]) by smtp.googlemail.com with ESMTPSA id
+	j62sm8404043qtb.35.2016.06.20.12.16.05
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Mon, 20 Jun 2016 12:16:06 -0700 (PDT)
+To: Sergey Sorokin <afarallax@yandex.ru>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-In-Reply-To: <ace0b2e6-613b-cc8e-aa05-f583ed43857b@twiddle.net>
 References: <1466431017-123868-1-git-send-email-afarallax@yandex.ru>
 	<ace0b2e6-613b-cc8e-aa05-f583ed43857b@twiddle.net>
+	<44881466444025@web26m.yandex.ru>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <6ef866a2-ba0c-4814-a2b8-fedd28be5599@twiddle.net>
+Date: Mon, 20 Jun 2016 12:16:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-Message-Id: <44881466444025@web26m.yandex.ru>
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Mon, 20 Jun 2016 20:33:45 +0300
-Content-Transfer-Encoding: base64
-Content-Type: text/html; charset=utf-8
+In-Reply-To: <44881466444025@web26m.yandex.ru>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 5.255.216.20
+X-Received-From: 2607:f8b0:400d:c09::22c
 Subject: Re: [Qemu-arm] [PATCH] Improve the alignment check infrastructure
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -81,77 +94,16 @@ Cc: Claudio Fontana <claudio.fontana@huawei.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vfPwH+4oZ1/v
+X-TUID: /AxhqaFwwIVH
 
-PGRpdj7CoDwvZGl2PjxkaXY+wqA8L2Rpdj48ZGl2PjIwLjA2LjIwMTYsIDE4OjQ1LCAiUmljaGFy
-ZCBIZW5kZXJzb24iICZsdDtydGhAdHdpZGRsZS5uZXQmZ3Q7OjwvZGl2PjxibG9ja3F1b3RlIHR5
-cGU9ImNpdGUiPjxwPk9uIDA2LzIwLzIwMTYgMDY6NTYgQU0sIFNlcmdleSBTb3Jva2luIHdyb3Rl
-OjwvcD48YmxvY2txdW90ZT7CoMKgLyogRmxhZ3Mgc3RvcmVkIGluIHRoZSBsb3cgYml0cyBvZiB0
-aGUgVExCIHZpcnR1YWwgYWRkcmVzcy4gVGhlc2UgYXJlPGJyIC8+wqAtIGRlZmluZWQgc28gdGhh
-dCBmYXN0IHBhdGggcmFtIGFjY2VzcyBpcyBhbGwgemVyb3MuICovPGJyIC8+wqArICogZGVmaW5l
-ZCBzbyB0aGF0IGZhc3QgcGF0aCByYW0gYWNjZXNzIGlzIGFsbCB6ZXJvcy48YnIgLz7CoCsgKiBU
-aGV5IHN0YXJ0IGFmdGVyIGFkZHJlc3MgYWxpZ25tZW50IGJpdHMuPGJyIC8+wqArICovPGJyIC8+
-wqArI2RlZmluZSBUTEJfRkxBR1NfU1RBUlRfQklUIDY8YnIgLz7CoMKgLyogWmVybyBpZiBUTEIg
-ZW50cnkgaXMgdmFsaWQuICovPGJyIC8+wqAtI2RlZmluZSBUTEJfSU5WQUxJRF9NQVNLICgxICZs
-dDsmbHQ7IDMpPGJyIC8+wqArI2RlZmluZSBUTEJfSU5WQUxJRF9NQVNLICgxICZsdDsmbHQ7IChU
-TEJfRkxBR1NfU1RBUlRfQklUICsgMCkpPGJyIC8+wqDCoC8qIFNldCBpZiBUTEIgZW50cnkgcmVm
-ZXJlbmNlcyBhIGNsZWFuIFJBTSBwYWdlLiBUaGUgaW90bGIgZW50cnkgd2lsbDxiciAvPsKgwqDC
-oMKgwqBjb250YWluIHRoZSBwYWdlIHBoeXNpY2FsIGFkZHJlc3MuICovPGJyIC8+wqAtI2RlZmlu
-ZSBUTEJfTk9URElSVFkgKDEgJmx0OyZsdDsgNCk8YnIgLz7CoCsjZGVmaW5lIFRMQl9OT1RESVJU
-WSAoMSAmbHQ7Jmx0OyAoVExCX0ZMQUdTX1NUQVJUX0JJVCArIDEpKTxiciAvPsKgwqAvKiBTZXQg
-aWYgVExCIGVudHJ5IGlzIGFuIElPIGNhbGxiYWNrLiAqLzxiciAvPsKgLSNkZWZpbmUgVExCX01N
-SU8gKDEgJmx0OyZsdDsgNSk8YnIgLz7CoCsjZGVmaW5lIFRMQl9NTUlPICgxICZsdDsmbHQ7IChU
-TEJfRkxBR1NfU1RBUlRfQklUICsgMikpPC9ibG9ja3F1b3RlPjxwPjxiciAvPkkgdGhpbmsgd2Ug
-bWF5IG5lZWQgdG8gYXNzZXJ0IHRoYXQgVExCX0ZMQUdTX1NUQVJUX0JJVCArIDMgJmx0OyBUQVJH
-RVRfUEFHRV9CSVRTLiA8YnIgLz5PciBwZXJoYXBzIHN0YXJ0IGZyb20gVEFSR0VUX1BBR0VfQklU
-Uy0xIGFuZCBzdWJ0cmFjdD88L3A+PC9ibG9ja3F1b3RlPjxwPkkgdGhvdWdodCBhYm91dCB0aGlz
-IGJ1dCBsZWZ0IHVuY2hlY2tlZCBhcyBpdCB3YXMuIEFueXdheSwgaWRlYSBpcyBnb29kLjwvcD48
-cD7CoDwvcD48YmxvY2txdW90ZSB0eXBlPSJjaXRlIj48cD5JJ20gdGhpbmtpbmcgb2YgdGhlIEFW
-UiB0YXJnZXQgY3VycmVudGx5IHVuZGVyIHJldmlldyB3aGljaCByZXF1aXJlcyA8YnIgLz5UQVJH
-RVRfUEFHRV9CSVRTID09IDggaW4gb3JkZXIgdG8gc3VwcG9ydCB0aGUgbWVtb3J5IGRldmljZSBs
-YXlvdXQuPC9wPjwvYmxvY2txdW90ZT48ZGl2PldoYXQgaXMgbWF4aW11bSBhbGlnbm1lbnQgc2l6
-ZSBmb3IgQVZSPyBJIHRoaW5rIGl0J3MgcG9zc2libGUgdG8gaW1wbGVtZW50IHNvbWUgY2hlY2tz
-IGZvciB0aGlzIG1heGltdW0uPC9kaXY+PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHA+PGJyIC8+
-PGJyIC8+PC9wPjxibG9ja3F1b3RlPsKgQEAgLTExOTUsOCArMTE5NSw4IEBAIHN0YXRpYyBpbmxp
-bmUgdm9pZCB0Y2dfb3V0X3RsYl9sb2FkKFRDR0NvbnRleHQgKnMsIFRDR1JlZyBhZGRybG8sIFRD
-R1JlZyBhZGRyaGksPGJyIC8+wqDCoMKgwqDCoMKgVENHVHlwZSB0dHlwZSA9IFRDR19UWVBFX0kz
-Mjs8YnIgLz7CoMKgwqDCoMKgwqBUQ0dUeXBlIHRsYnR5cGUgPSBUQ0dfVFlQRV9JMzI7PGJyIC8+
-wqDCoMKgwqDCoMKgaW50IHRyZXh3ID0gMCwgaHJleHcgPSAwLCB0bGJyZXh3ID0gMDs8YnIgLz7C
-oC0gaW50IHNfbWFzayA9ICgxICZsdDsmbHQ7IChvcGMgJmFtcDsgTU9fU0laRSkpIC0gMTs8YnIg
-Lz7CoC0gYm9vbCBhbGlnbmVkID0gKG9wYyAmYW1wOyBNT19BTUFTSykgPT0gTU9fQUxJR04gfHwg
-c19tYXNrID09IDA7PGJyIC8+wqArIGludCBhX2JpdHMgPSBnZXRfYWxpZ25tZW50X2JpdHMob3Bj
-KTs8YnIgLz7CoCsgdWludDY0X3QgdGxiX21hc2s7PC9ibG9ja3F1b3RlPjxwPjxiciAvPnRsYl9t
-YXNrIHNob3VsZCBiZSB0YXJnZXRfdWxvbmcuPGJyIC8+PGJyIC8+PGJyIC8+PC9wPjxibG9ja3F1
-b3RlPsKgQEAgLTEwOTksOSArMTEwOSwxNSBAQCB2b2lkIHRjZ19kdW1wX29wcyhUQ0dDb250ZXh0
-ICpzKTxiciAvPsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBxZW11X2xvZygiLCQweCV4LCV1Iiwgb3AsIGl4KTs8YnIgLz7CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0gZWxzZSB7PGJyIC8+wqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNvbnN0IGNoYXIgKnNfYWwgPSAi
-IiwgKnNfb3A7PGJyIC8+wqArIGludCBhX2JpdHM7PGJyIC8+wqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlmIChvcCAmYW1wOyBNT19BTUFTSykgezxi
-ciAvPsKgLSBpZiAoKG9wICZhbXA7IE1PX0FNQVNLKSA9PSBNT19BTElHTikgezxiciAvPsKgLSBz
-X2FsID0gImFsKyI7PGJyIC8+wqArIGFfYml0cyA9IGdldF9hbGlnbm1lbnRfYml0cyhvcCk7PGJy
-IC8+wqArIGlmIChhX2JpdHMgJmd0Oz0gMCkgezxiciAvPsKgKyBpZiAoKG9wICZhbXA7IE1PX1NJ
-WkUpID09IGFfYml0cykgezxiciAvPsKgKyBzX2FsID0gImFsKyI7PGJyIC8+wqArIH0gZWxzZSB7
-PGJyIC8+wqArIHNfYWwgPSBhbGlnbm1lbnRfbmFtZVthX2JpdHNdOzxiciAvPsKgKyB9PC9ibG9j
-a3F1b3RlPjxwPjxiciAvPkkgdGhpbmsgcGVyaGFwcyB3ZSBzaG91bGQgYmUgbW9yZSBleHBsaWNp
-dCBhYm91dCB3aGF0J3MgYWN0dWFsbHkgZW5jb2RlZCBoZXJlLiA8YnIgLz5FZyBvbmx5IHByaW50
-ICJhbCsiIGlmIChvcCAmYW1wOyBNT19BTUFTSykgPT0gTU9fQUxJR04uIFNvIGlmIGFuIGV4cGxp
-Y2l0IGFsNCBpcyA8YnIgLz5lbmNvZGVkIGZvciBzaXplIDQsIHByaW50IHRoYXQuIFdoaWNoIGRv
-ZXMgc2ltcGxpZnkgYWxsIHRoaXMgY29kZSB0bzxiciAvPjxiciAvPitzdGF0aWMgY29uc3QgY2hh
-ciAqIGNvbnN0IGFsaWdubWVudF9uYW1lW01PX0FNQVNLICZndDsmZ3Q7IE1PX0FTSElGVF0gPSB7
-PGJyIC8+KyBbTU9fVU5BTE4gJmd0OyZndDsgTU9fQVNISUZUXSA9ICJ1bisiLDxiciAvPisgW01P
-X0FMSUdOICZndDsmZ3Q7IE1PX0FTSElGVF0gPSAiYWwrIiw8YnIgLz4rIFtNT19BTElHTl8yICZn
-dDsmZ3Q7IE1PX0FTSElGVF0gPSAiYWwyKyIsPGJyIC8+KyBbTU9fQUxJR05fNCAmZ3Q7Jmd0OyBN
-T19BU0hJRlRdID0gImFsNCsiLDxiciAvPisgW01PX0FMSUdOXzggJmd0OyZndDsgTU9fQVNISUZU
-XSA9ICJhbDgrIiw8YnIgLz4rIFtNT19BTElHTl8xNiAmZ3Q7Jmd0OyBNT19BU0hJRlRdID0gImFs
-MTYrIiw8YnIgLz4rIFtNT19BTElHTl8zMiAmZ3Q7Jmd0OyBNT19BU0hJRlRdID0gImFsMzIrIiw8
-YnIgLz4rIFtNT19BTElHTl82NCAmZ3Q7Jmd0OyBNT19BU0hJRlRdID0gImFsNjQrIiw8YnIgLz4r
-fTs8YnIgLz48YnIgLz5zX2FsID0gYWxpZ25tZW50X25hbWVbKG9wICZhbXA7IE1PX0FNQVNLKSAm
-Z3Q7Jmd0OyBNT19BU0hJRlRdOzwvcD48L2Jsb2NrcXVvdGU+PHA+PC9wPjxwPjwvcD48cD48L3A+
-PGJsb2NrcXVvdGUgdHlwZT0iY2l0ZSI+PHA+PC9wPjxibG9ja3F1b3RlPsKgKyAvKiBTcGVjaWZp
-YyBhbGlnbm1lbnQgc2l6ZS4gSXQgbXVzdCBiZSBlcXVhbCBvciBncmVhdGVyPGJyIC8+wqArICog
-dGhhbiB0aGUgYWNjZXNzIHNpemUuPGJyIC8+wqArICovPGJyIC8+wqArIGEgJmd0OyZndDs9IE1P
-X0FTSElGVDs8YnIgLz7CoCsgYXNzZXJ0KGEgJmd0Oz0gcyk7PGJyIC8+wqArIHJldHVybiBhOzwv
-YmxvY2txdW90ZT48cD48YnIgLz50Y2dfZGVidWdfYXNzZXJ0LjxiciAvPjxiciAvPjxiciAvPnJ+
-PC9wPjwvYmxvY2txdW90ZT4=
+On 06/20/2016 10:33 AM, Sergey Sorokin wrote:
+>> I'm thinking of the AVR target currently under review which requires
+>> TARGET_PAGE_BITS == 8 in order to support the memory device layout.
+>>
+> What is maximum alignment size for AVR? I think it's possible to implement some
+> checks for this maximum.
+
+It's an 8-bit microcontroler -- maximum alignment is 1.  ;-)
+
+
+r~

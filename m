@@ -1,65 +1,48 @@
-Received: by 10.25.21.96 with SMTP id l93csp1904906lfi;
-        Tue, 21 Jun 2016 04:58:08 -0700 (PDT)
-X-Received: by 10.55.203.73 with SMTP id d70mr29655430qkj.116.1466510288596;
-        Tue, 21 Jun 2016 04:58:08 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp2053406lfi;
+        Tue, 21 Jun 2016 10:09:53 -0700 (PDT)
+X-Received: by 10.200.46.235 with SMTP id i40mr31285820qta.13.1466528993430;
+        Tue, 21 Jun 2016 10:09:53 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id y32si53525136qta.101.2016.06.21.04.58.08
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q8si54961297qta.40.2016.06.21.10.09.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Jun 2016 04:58:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 21 Jun 2016 10:09:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51010 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53207 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFKJk-0000lf-2Q
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 07:58:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49736)
+	id 1bFPBQ-00049h-LV
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 13:09:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54373)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bFKJg-0000Uw-5q
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 07:58:05 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bFPBL-00047S-JX
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 13:09:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bFKJc-00024e-0E
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 07:58:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52241)
+	(envelope-from <pm215@archaic.org.uk>) id 1bFPBJ-00045j-CL
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 13:09:46 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57938)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bFKJb-00024Z-QO; Tue, 21 Jun 2016 07:57:59 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0CB0373049;
-	Tue, 21 Jun 2016 11:57:59 +0000 (UTC)
-Received: from [10.36.112.60] (ovpn-112-60.ams2.redhat.com [10.36.112.60])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5LBvsUq029708
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 21 Jun 2016 07:57:56 -0400
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
-	<1465808915-4887-4-git-send-email-vijayak@caviumnetworks.com>
-	<16ef20d6-8c02-8617-0b6a-16fab76d3333@redhat.com>
-	<CAFEAcA_A=f0H3DkquozZKKVs4A3UR+fEhE9wfwe8zDHrsprEyQ@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0e6c012c-26c5-8878-f579-d2410c640cfb@redhat.com>
-Date: Tue, 21 Jun 2016 13:57:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_A=f0H3DkquozZKKVs4A3UR+fEhE9wfwe8zDHrsprEyQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 21 Jun 2016 11:57:59 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bFPBJ-00044f-3p; Tue, 21 Jun 2016 13:09:45 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bFPBA-000253-Mw; Tue, 21 Jun 2016 18:09:36 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 21 Jun 2016 18:09:31 +0100
+Message-Id: <1466528974-12183-4-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH v1 3/4] translate-all.c: Compute L1 page
- table properties at runtime
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH v2 3/6] translate-all.c: Compute L1 page table
+ properties at runtime
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,31 +54,153 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Vijay Kilari <vijay.kilari@gmail.com>, Juan Quintela <quintela@redhat.com>,
-	Vijaya Kumar K <vijayak@caviumnetworks.com>,
-	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Vijaya Kumar K <vijayak@cavium.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 97K+uaKFJZZv
+X-TUID: 8vXNnMsqZRmX
 
+From: Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>
 
+Remove L1 page mapping table properties computing
+statically using macros which is dependent on
+TARGET_PAGE_BITS. Drop macros V_L1_SIZE, V_L1_SHIFT,
+V_L1_BITS macros and replace with variables which are
+computed at early stage of VM boot.
 
-On 21/06/2016 13:53, Peter Maydell wrote:
->>> >>      object_property_add_child(object_get_root(), "machine",
->>> >>                                OBJECT(current_machine), &error_abort);
->>> >> +
->>> >> +    init_l1_page_table_param();
->> >
->> > Please call this from cpu_exec_init_all instead.
-> If you're going to call it that early (ie before machine init)
-> than I think we might as well just call it from the existing
-> page_init() function in translate-all.c instead, right?
-> (gets called when the tcg accelerator is inited; we don't need
-> to set up the l1 map if we're not using TCG).
+Removing dependency can help to make TARGET_PAGE_BITS
+dynamic.
 
-Yes, good idea.
+Signed-off-by: Vijaya Kumar K <vijayak@cavium.com>
+Message-id: 1465808915-4887-4-git-send-email-vijayak@caviumnetworks.com
+[PMM:
+ assert(v_l1_shift % V_L2_BITS == 0)
+ cache v_l2_levels
+ initialize from page_init() rather than vl.c
+ minor code style fixes]
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ translate-all.c | 67 +++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 44 insertions(+), 23 deletions(-)
 
-Paolo
+diff --git a/translate-all.c b/translate-all.c
+index 3f402df..e59efdb 100644
+--- a/translate-all.c
++++ b/translate-all.c
+@@ -97,25 +97,24 @@ typedef struct PageDesc {
+ #define V_L2_BITS 10
+ #define V_L2_SIZE (1 << V_L2_BITS)
+ 
+-/* The bits remaining after N lower levels of page tables.  */
+-#define V_L1_BITS_REM \
+-    ((L1_MAP_ADDR_SPACE_BITS - TARGET_PAGE_BITS) % V_L2_BITS)
+-
+-#if V_L1_BITS_REM < 4
+-#define V_L1_BITS  (V_L1_BITS_REM + V_L2_BITS)
+-#else
+-#define V_L1_BITS  V_L1_BITS_REM
+-#endif
+-
+-#define V_L1_SIZE  ((target_ulong)1 << V_L1_BITS)
+-
+-#define V_L1_SHIFT (L1_MAP_ADDR_SPACE_BITS - TARGET_PAGE_BITS - V_L1_BITS)
+-
+ uintptr_t qemu_host_page_size;
+ intptr_t qemu_host_page_mask;
+ 
+-/* The bottom level has pointers to PageDesc */
+-static void *l1_map[V_L1_SIZE];
++/*
++ * L1 Mapping properties
++ */
++static int v_l1_size;
++static int v_l1_shift;
++static int v_l2_levels;
++
++/* The bottom level has pointers to PageDesc, and is indexed by
++ * anything from 4 to (V_L2_BITS + 3) bits, depending on target page size.
++ */
++#define V_L1_MIN_BITS 4
++#define V_L1_MAX_BITS (V_L2_BITS + 3)
++#define V_L1_MAX_SIZE (1 << V_L1_MAX_BITS)
++
++static void *l1_map[V_L1_MAX_SIZE];
+ 
+ /* code generation context */
+ TCGContext tcg_ctx;
+@@ -125,6 +124,26 @@ TCGContext tcg_ctx;
+ __thread int have_tb_lock;
+ #endif
+ 
++static void page_table_config_init(void)
++{
++    uint32_t v_l1_bits;
++
++    assert(TARGET_PAGE_BITS);
++    /* The bits remaining after N lower levels of page tables.  */
++    v_l1_bits = (L1_MAP_ADDR_SPACE_BITS - TARGET_PAGE_BITS) % V_L2_BITS;
++    if (v_l1_bits < V_L1_MIN_BITS) {
++        v_l1_bits += V_L2_BITS;
++    }
++
++    v_l1_size = 1 << v_l1_bits;
++    v_l1_shift = L1_MAP_ADDR_SPACE_BITS - TARGET_PAGE_BITS - v_l1_bits;
++    v_l2_levels = v_l1_shift / V_L2_BITS - 1;
++
++    assert(v_l1_bits <= V_L1_MAX_BITS);
++    assert(v_l1_shift % V_L2_BITS == 0);
++    assert(v_l2_levels >= 0);
++}
++
+ void tb_lock(void)
+ {
+ #ifdef CONFIG_USER_ONLY
+@@ -330,6 +349,8 @@ void page_size_init(void)
+ static void page_init(void)
+ {
+     page_size_init();
++    page_table_config_init();
++
+ #if defined(CONFIG_BSD) && defined(CONFIG_USER_ONLY)
+     {
+ #ifdef HAVE_KINFO_GETVMMAP
+@@ -406,10 +427,10 @@ static PageDesc *page_find_alloc(tb_page_addr_t index, int alloc)
+     int i;
+ 
+     /* Level 1.  Always allocated.  */
+-    lp = l1_map + ((index >> V_L1_SHIFT) & (V_L1_SIZE - 1));
++    lp = l1_map + ((index >> v_l1_shift) & (v_l1_size - 1));
+ 
+     /* Level 2..N-1.  */
+-    for (i = V_L1_SHIFT / V_L2_BITS - 1; i > 0; i--) {
++    for (i = v_l2_levels; i > 0; i--) {
+         void **p = atomic_rcu_read(lp);
+ 
+         if (p == NULL) {
+@@ -825,8 +846,8 @@ static void page_flush_tb(void)
+ {
+     int i;
+ 
+-    for (i = 0; i < V_L1_SIZE; i++) {
+-        page_flush_tb_1(V_L1_SHIFT / V_L2_BITS - 1, l1_map + i);
++    for (i = 0; i < v_l1_size; i++) {
++        page_flush_tb_1(v_l2_levels, l1_map + i);
+     }
+ }
+ 
+@@ -1850,9 +1871,9 @@ int walk_memory_regions(void *priv, walk_memory_regions_fn fn)
+     data.start = -1u;
+     data.prot = 0;
+ 
+-    for (i = 0; i < V_L1_SIZE; i++) {
+-        int rc = walk_memory_regions_1(&data, (target_ulong)i << (V_L1_SHIFT + TARGET_PAGE_BITS),
+-                                       V_L1_SHIFT / V_L2_BITS - 1, l1_map + i);
++    for (i = 0; i < v_l1_size; i++) {
++        target_ulong base = i << (v_l1_shift + TARGET_PAGE_BITS);
++        int rc = walk_memory_regions_1(&data, base, v_l2_levels, l1_map + i);
+         if (rc != 0) {
+             return rc;
+         }
+-- 
+1.9.1
+

@@ -1,74 +1,56 @@
-Received: by 10.25.21.96 with SMTP id l93csp1925771lfi;
-        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
-X-Received: by 10.233.237.13 with SMTP id c13mr6264836qkg.126.1466512912429;
-        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1954229lfi;
+        Tue, 21 Jun 2016 06:41:20 -0700 (PDT)
+X-Received: by 10.200.56.184 with SMTP id f53mr29030476qtc.39.1466516480779;
+        Tue, 21 Jun 2016 06:41:20 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id d26si51034461qtb.58.2016.06.21.05.41.52
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id s69si52235774qka.43.2016.06.21.06.41.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 21 Jun 2016 06:41:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51473 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51855 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFL03-0003L6-Sh
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 08:41:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33235)
+	id 1bFLvc-0007SF-6Q
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 09:41:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1bFL00-0003Kj-1c
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 08:41:49 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bFLfM-0006nc-5M
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 09:24:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1bFKzv-00039R-4p
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 08:41:47 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:31827)
+	(envelope-from <imammedo@redhat.com>) id 1bFLfH-0003qd-23
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 09:24:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44385)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Aleksandar.Markovic@imgtec.com>)
-	id 1bFKzu-00039M-RQ; Tue, 21 Jun 2016 08:41:43 -0400
-Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
-	by Forcepoint Email with ESMTPS id 00B32A30451CE;
-	Tue, 21 Jun 2016 13:41:35 +0100 (IST)
-Received: from BADAG04.ba.imgtec.org (10.20.40.112) by hhmail02.hh.imgtec.org
-	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.294.0;
-	Tue, 21 Jun 2016 13:41:37 +0100
-Received: from BADAG02.ba.imgtec.org ([fe80::612d:e977:c603:32d6]) by
-	BADAG04.ba.imgtec.org ([fe80::b930:4082:95b0:e446%15]) with mapi id
-	14.03.0266.001; Tue, 21 Jun 2016 05:41:33 -0700
-From: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
-To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, "Maciej
-	Rozycki" <Maciej.Rozycki@imgtec.com>,
-	"proljc@gmail.com" <proljc@gmail.com>, 
-	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
-	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
-	"agraf@suse.de" <agraf@suse.de>, "blauwirbel@gmail.com"
-	<blauwirbel@gmail.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "edgar.iglesias@gmail.com"
-	<edgar.iglesias@gmail.com>, "gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
-	"rth@twiddle.net" <rth@twiddle.net>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "aurelien@aurel32.net" <aurelien@aurel32.net>, 
-	Leon Alrae <Leon.Alrae@imgtec.com>, Petar Jovanovic
-	<Petar.Jovanovic@imgtec.com>, Miodrag Dinic <Miodrag.Dinic@imgtec.com>
-Thread-Topic: [PATCH v9 00/10] IEEE 754-2008 support for Mips
-Thread-Index: AQHRwv6cs/10H8rQfEaXaaw6F3e/ZJ/z7mc5
-Date: Tue, 21 Jun 2016 12:41:33 +0000
-Message-ID: <EF5FA6C3467F85449672C3E735957B85E3E997D3@BADAG02.ba.imgtec.org>
-References: <1465552668-30084-1-git-send-email-aleksandar.markovic@rt-rk.com>
-In-Reply-To: <1465552668-30084-1-git-send-email-aleksandar.markovic@rt-rk.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [82.117.201.26]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-arm] [PATCH v9 00/10] IEEE 754-2008 support for Mips
+	(envelope-from <imammedo@redhat.com>)
+	id 1bFLfG-0003qU-Su; Tue, 21 Jun 2016 09:24:26 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6F6AA3B730;
+	Tue, 21 Jun 2016 13:24:26 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.34.112.60])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5LDOO9b018541; Tue, 21 Jun 2016 09:24:25 -0400
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 21 Jun 2016 15:24:17 +0200
+Message-Id: <1466515457-253194-1-git-send-email-imammedo@redhat.com>
+In-Reply-To: <1465492263-28472-5-git-send-email-imammedo@redhat.com>
+References: <1465492263-28472-5-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 21 Jun 2016 13:24:26 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 4/6] fixup! cpu: use
+ CPUClass->parse_features() as convertor to global properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,174 +62,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, rth@twiddle.net, qemu-arm@nongnu.org,
+	ehabkost@redhat.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tctbufJy9bI/
+X-TUID: E0ScJV7S30bv
 
-ping
+make sure that -cpu features converted to global properties
+will not be ignored and QEMU exits with error as it used to
+in case feature couldn't be applied.
 
-________________________________________
-From: Aleksandar Markovic [aleksandar.markovic@rt-rk.com]
-Sent: Friday, June 10, 2016 2:57 AM
-To: qemu-devel@nongnu.org; qemu-arm@nongnu.org; qemu-ppc@nongnu.org; Maciej=
- Rozycki; proljc@gmail.com; kbastian@mail.uni-paderborn.de; mark.cave-aylan=
-d@ilande.co.uk; agraf@suse.de; blauwirbel@gmail.com; jcmvbkbc@gmail.com; pb=
-onzini@redhat.com; edgar.iglesias@gmail.com; gxt@mprc.pku.edu.cn; rth@twidd=
-le.net; peter.maydell@linaro.org; aurelien@aurel32.net; Leon Alrae; Petar J=
-ovanovic; Miodrag Dinic; Aleksandar Markovic
-Subject: [PATCH v9 00/10] IEEE 754-2008 support for Mips
+fixup is on top of:
+ [PATCH v2 00/10] globals: Clean up validation and error checking
 
-From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+ qom/cpu.c         | 1 +
+ target-i386/cpu.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-v8 -> v9:
-   - patches 1 and 2 slightly reorganized to separate real changes from
-     cleanup changes more clearly
-   - unnecessary changes removed from patches 5 and 9
-   - changes related to FS bit moved to a separate patch (patch 10)
-   - mail recipients for individual patches slightly adjusted
-
-v7 -> v8:
-   - fixed mail recipients
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-06/msg00896.ht=
-ml)
-
-v6 -> v7:
-   - preprocesor constants for FCR31 bits removed
-   - cleanup items in CFC1 and CTC1 handling removed
-   - initialization of snan_bit_is_one for main FP unit moved
-     from patch 6 to patch 9
-   - an instance of "!" corrected to "~" (logical vs. bitwise negation)
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-06/msg00886.ht=
-ml)
-
-v5 -> v6:
-   - code for hanlding MSA FCLASS instructions slightly simplified
-   - handling of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D> corrected for
-     nan2008 case
-   - R/W bitmask for FCR31 introduced, and related functionalities
-     implemented
-   - cleanup items for SoftFloat library are now in a separate patch
-   - minor errors corrected
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-05/msg02513.ht=
-ml)
-
-v4 -> v5:
-   - platform initialization code revisited one more time;
-   - handling of CLASS.<S|D> and their MSA counterparts revisited;
-   - better orgranization of patches (squashing, splitting);
-   - corrected handling of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>;
-   - code cleanup item in genfarith() - order of cases;
-   - scripts/checkpatch.pl executed and errors addressed.
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg02774.ht=
-ml)
-
-v3 -> v4:
-   - Added code cleanup items:
-       a. Capitalization of hex constants in softfloat-specialize.h;
-       b. White spaces in softfloat-specialize.h;
-       c. Order of Mips helpers for CVT.<L|W>.<S|D>.
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01962.ht=
-ml)
-
-v2 -> v3:
-   - Patch series reorganized into 6 patches instead of 2.
-   - Commit messages improved.
-   - Except commit messages, net result of applying v3 and v2 is the same.
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01870.ht=
-ml)
-
-v1 -> v2:
-   - Relevant CPU initialization code changes revisited for all platforms.
-   - In connection with <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D> and
-     <ABS|NEG>.<S|D> Mips instructions handling, decision on whether
-     pre-nan2008/pre-abs2008 or nan2008/abs2008 handling will apply
-     moved from run-time to translate-time.
-   - For Mips only, in nan2008 cases only, default NaN values fixed.
-   - For Mips only, in nan2008 cases only, order in pickNaNMulAdd() fixed.
-   - Code cleanup issues:
-       a. Constants <floatx80|float128>_default_nan_<low|high> removed;
-       b. Suffix <l|w>_<s|d> replaced with _<l|w>_<s|d> for some Mips helpe=
-rs;
-       c. In vicinity of changes, fixed not-beautiful code formatting.
-   - Commit messages improved.
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01232.ht=
-ml)
-
-v1 - Initial version
-(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg06082.ht=
-ml)
-
-Mips platform represents the most complex case among QEMU-supported
-platforms in reference to certain aspects of floating-point arithmetics.
-This is mostly a consequence of the fact that Mips platform, for many
-reasons, evolved considerably over time related to floating-point
-arithmetics standards (significantly more than other platforms).
-It has been difficult for emulators like QEMU to support such variety
-of configurations.
-
-This patch series provides number of IEEE 754-2008-related features to
-Mips platform. It addresses the most sensitive changes that require
-modification of SoftFloat library, also used by most other platforms.
-
-In order to make develpoment, testing, and integration easier, the patch
-is split into two distinct parts:
-
-   1. Part 1 (patches 1/10, 2/10, 3/10, 4/10, 5/10) that does not change an=
-y
-      calculation or behavior on any platform (and, for that matter, even o=
-n
-      Mips platform). Its sole purpose is to address platform independant
-      issues in a non-invasive manner, and to make Part 2 possible.
-
-   2. Part 2 (patches 6/10, 7/10, 8/10, 9/10, 10/10) that sets some Mips
-      processors to use provisions from Part 1, and additionally implements
-      number of IEEE 754-2008-related features for Mips, while, at the same
-      time, mainly dealing with files located in directory target-mips only=
-.
-
-This patch series is based on the original set of patches proposed by Macie=
-j W.
-Rozycki: http://lists.nongnu.org/archive/html/qemu-devel/2014-12/msg00968.h=
-tml
-
-Aleksandar Markovic (10):
-  softfloat: Implement run-time-configurable meaning of signaling NaN bit
-  softfloat: Clean code format in fpu/softfloat-specialize.h
-  softfloat: For Mips only, correct default NaN values
-  softfloat: For Mips only, correct order in pickNaNMulAdd()
-  linux-user: Update preprocessor constants for Mips-specific e_flags bits
-  target-mips: Activate IEEE 754-2008 signaling NaN bit meaning for MSA
-  target-mips: Add abs2008 flavor of <ABS|NEG>.<S|D>
-  target-mips: Add nan2008 flavor of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|=
-D>
-  target-mips: Implement FCR31's R/W bitmask and related functionalities
-  target-mips: Add FCR31's FS bit definition
-
- fpu/softfloat-specialize.h    | 659 +++++++++++++++++++++-----------------=
-----
- fpu/softfloat.c               | 172 +++++------
- include/elf.h                 |   2 +
- include/fpu/softfloat.h       |  45 +--
- linux-user/main.c             |  14 +
- target-arm/helper-a64.c       |  14 +-
- target-arm/helper.c           |  40 +--
- target-m68k/helper.c          |   6 +-
- target-microblaze/op_helper.c |   6 +-
- target-mips/cpu.h             |  16 +-
- target-mips/gdbstub.c         |   8 +-
- target-mips/helper.h          |  22 +-
- target-mips/msa_helper.c      |  88 +++---
- target-mips/op_helper.c       | 400 ++++++++++++++++++++++---
- target-mips/translate.c       | 156 ++++++++--
- target-mips/translate_init.c  |  29 ++
- target-ppc/fpu_helper.c       | 120 ++++----
- target-s390x/fpu_helper.c     |  28 +-
- target-s390x/helper.h         |   6 +-
- target-s390x/translate.c      |   6 +-
- target-sh4/cpu.c              |   1 +
- target-unicore32/cpu.c        |   2 +
- 22 files changed, 1167 insertions(+), 673 deletions(-)
-
---
-1.9.1
+diff --git a/qom/cpu.c b/qom/cpu.c
+index b34c4a0..a9727a1 100644
+--- a/qom/cpu.c
++++ b/qom/cpu.c
+@@ -314,6 +314,7 @@ static void cpu_common_parse_features(const char *typename, char *features,
+             prop->driver = typename;
+             prop->property = g_strdup(featurestr);
+             prop->value = g_strdup(val);
++            prop->errp = &error_fatal;
+             qdev_prop_register_global(prop);
+         } else {
+             error_setg(errp, "Expected key=value format, found %s.",
+diff --git a/target-i386/cpu.c b/target-i386/cpu.c
+index 212d552..0f0a3f3 100644
+--- a/target-i386/cpu.c
++++ b/target-i386/cpu.c
+@@ -2024,6 +2024,7 @@ static void x86_cpu_parse_featurestr(const char *typename, char *features,
+         prop->driver = typename;
+         prop->property = g_strdup(name);
+         prop->value = g_strdup(val);
++        prop->errp = &error_fatal;
+         qdev_prop_register_global(prop);
+     }
+ 
+-- 
+1.8.3.1
 

@@ -1,70 +1,74 @@
-Received: by 10.25.21.96 with SMTP id l93csp1798168lfi;
-        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
-X-Received: by 10.55.154.136 with SMTP id c130mr26092949qke.79.1466493090029;
-        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1925771lfi;
+        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
+X-Received: by 10.233.237.13 with SMTP id c13mr6264836qkg.126.1466512912429;
+        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g9si50139686qtb.32.2016.06.21.00.11.29
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id d26si51034461qtb.58.2016.06.21.05.41.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 21 Jun 2016 05:41:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail (test mode) header.i=@aj.id.au;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49301 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51473 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFFqL-0001o3-6m
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 03:11:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50806)
+	id 1bFL03-0003L6-Sh
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 08:41:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33235)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bFFqH-0001m2-5X
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 03:11:26 -0400
+	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1bFL00-0003Kj-1c
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 08:41:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bFFqB-0003lo-4H
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 03:11:24 -0400
-Received: from sub3.mail.dreamhost.com ([69.163.253.7]:58572
-	helo=homiemail-a23.g.dreamhost.com)
+	(envelope-from <Aleksandar.Markovic@imgtec.com>) id 1bFKzv-00039R-4p
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 08:41:47 -0400
+Received: from mailapp01.imgtec.com ([195.59.15.196]:31827)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1bFFqA-0003lZ-Jr; Tue, 21 Jun 2016 03:11:19 -0400
-Received: from homiemail-a23.g.dreamhost.com (localhost [127.0.0.1])
-	by homiemail-a23.g.dreamhost.com (Postfix) with ESMTP id F0DD94B0084;
-	Tue, 21 Jun 2016 00:11:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
-	:subject:from:reply-to:to:cc:date:in-reply-to:references
-	:content-type:mime-version; s=aj.id.au; bh=sMyoOvBwyAeG+Nuu6FW/u
-	t0xP/U=; b=inODViTQHl9586LiEuakWtXTLnd8R65lw0nqA2Fg9MBMKT6Xpa38d
-	oUn5TQdTl0YAGNqzKMyXybBWx+vQ7ajb1tWTNUMZeDcsq2shfPXMfC/RhSgBV0N3
-	h0rmOoBdD1twUmx3fZDDmxbqAKF4t3qyKbukoi3p0aLoWinwe763Ag=
-Received: from keelia (unknown [203.0.153.9])
-	(using TLSv1 with cipher AES128-SHA (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: andrew@aj.id.au)
-	by homiemail-a23.g.dreamhost.com (Postfix) with ESMTPSA id 924EB4B0062; 
-	Tue, 21 Jun 2016 00:11:15 -0700 (PDT)
-Message-ID: <1466493071.4344.59.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Jun 2016 16:41:11 +0930
-In-Reply-To: <CAFEAcA85mf8Rr+rKEm4x0aA3r4XNuRFwHEzXsUk4D-EEwO8WbA@mail.gmail.com>
-References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
-	<1466063287-19350-2-git-send-email-andrew@aj.id.au>
-	<CAFEAcA_-+nWvAsCLE71d4qb_3eFkF80L-JgZSxwF5L3CH+W_Aw@mail.gmail.com>
-	<1466394273.4344.25.camel@aj.id.au>
-	<CAFEAcA_=5Dvg9R1o67b-5MuMZWtWbobywA+XzKuR-TeTCWfN0Q@mail.gmail.com>
-	<1466480985.4344.50.camel@aj.id.au>
-	<CAFEAcA85mf8Rr+rKEm4x0aA3r4XNuRFwHEzXsUk4D-EEwO8WbA@mail.gmail.com>
-Organization: IBM OzLabs
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-UqdqewCXMeSW+b7zXnev"
-X-Mailer: Evolution 3.18.5.2-0ubuntu3 
-Mime-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 69.163.253.7
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: Add a model for the ASPEED
- System Control Unit
+	(envelope-from <Aleksandar.Markovic@imgtec.com>)
+	id 1bFKzu-00039M-RQ; Tue, 21 Jun 2016 08:41:43 -0400
+Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
+	by Forcepoint Email with ESMTPS id 00B32A30451CE;
+	Tue, 21 Jun 2016 13:41:35 +0100 (IST)
+Received: from BADAG04.ba.imgtec.org (10.20.40.112) by hhmail02.hh.imgtec.org
+	(10.100.10.20) with Microsoft SMTP Server (TLS) id 14.3.294.0;
+	Tue, 21 Jun 2016 13:41:37 +0100
+Received: from BADAG02.ba.imgtec.org ([fe80::612d:e977:c603:32d6]) by
+	BADAG04.ba.imgtec.org ([fe80::b930:4082:95b0:e446%15]) with mapi id
+	14.03.0266.001; Tue, 21 Jun 2016 05:41:33 -0700
+From: Aleksandar Markovic <Aleksandar.Markovic@imgtec.com>
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, "Maciej
+	Rozycki" <Maciej.Rozycki@imgtec.com>,
+	"proljc@gmail.com" <proljc@gmail.com>, 
+	"kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
+	"mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+	"agraf@suse.de" <agraf@suse.de>, "blauwirbel@gmail.com"
+	<blauwirbel@gmail.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "edgar.iglesias@gmail.com"
+	<edgar.iglesias@gmail.com>, "gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>,
+	"rth@twiddle.net" <rth@twiddle.net>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "aurelien@aurel32.net" <aurelien@aurel32.net>, 
+	Leon Alrae <Leon.Alrae@imgtec.com>, Petar Jovanovic
+	<Petar.Jovanovic@imgtec.com>, Miodrag Dinic <Miodrag.Dinic@imgtec.com>
+Thread-Topic: [PATCH v9 00/10] IEEE 754-2008 support for Mips
+Thread-Index: AQHRwv6cs/10H8rQfEaXaaw6F3e/ZJ/z7mc5
+Date: Tue, 21 Jun 2016 12:41:33 +0000
+Message-ID: <EF5FA6C3467F85449672C3E735957B85E3E997D3@BADAG02.ba.imgtec.org>
+References: <1465552668-30084-1-git-send-email-aleksandar.markovic@rt-rk.com>
+In-Reply-To: <1465552668-30084-1-git-send-email-aleksandar.markovic@rt-rk.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [82.117.201.26]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 195.59.15.196
+Subject: Re: [Qemu-arm] [PATCH v9 00/10] IEEE 754-2008 support for Mips
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,88 +80,174 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: andrew@aj.id.au
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9mPivrAEM67u
+X-TUID: tctbufJy9bI/
 
+ping
 
---=-UqdqewCXMeSW+b7zXnev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+________________________________________
+From: Aleksandar Markovic [aleksandar.markovic@rt-rk.com]
+Sent: Friday, June 10, 2016 2:57 AM
+To: qemu-devel@nongnu.org; qemu-arm@nongnu.org; qemu-ppc@nongnu.org; Maciej=
+ Rozycki; proljc@gmail.com; kbastian@mail.uni-paderborn.de; mark.cave-aylan=
+d@ilande.co.uk; agraf@suse.de; blauwirbel@gmail.com; jcmvbkbc@gmail.com; pb=
+onzini@redhat.com; edgar.iglesias@gmail.com; gxt@mprc.pku.edu.cn; rth@twidd=
+le.net; peter.maydell@linaro.org; aurelien@aurel32.net; Leon Alrae; Petar J=
+ovanovic; Miodrag Dinic; Aleksandar Markovic
+Subject: [PATCH v9 00/10] IEEE 754-2008 support for Mips
 
-On Tue, 2016-06-21 at 07:56 +0100, Peter Maydell wrote:
-> On 21 June 2016 at 04:49, Andrew Jeffery <andrew@aj.id.au> wrote:
-> >=20
-> > On Mon, 2016-06-20 at 14:57 +0100, Peter Maydell wrote:
-> > >=20
-> > > I think there are a couple of plausible ways you might model this:
-> > >=20
-> > > (a) just have a single property for "revision" which corresponds
-> > > to the revision of this bit of silicon IP within the SoC; the
-> > > model of the device itself then knows what the reset state is
-> > > for this revision of the device.
-> > > (b) ditto, but also have some configurable flags where relevant
-> > > (ie approximately where it's the same IP rev within the SoC
-> > > but it's been configured by tying down different config lines;
-> > > for instance hw/dma/pl330.c has a collection of properties
-> > > which match the configurable knobs for the hardware.)
-> > Okay. I think (b) is the most appropriate. The board-controllable bits
-> > are primarily in the hardware strapping register. The register is
-> > composed of fields of mostly unrelated bits, so we could go two ways
-> > here:
-> >=20
-> > (1) expose the register through a single 32bit property
-> > (2) break out a property for each bitfield
-> >=20
-> > Do you have a preference? grepping the tree suggests there isn't a
-> > precedent for "large" numbers of properties* so maybe (2) is overkill,
-> > but (1) feels like it might fit into the overly-general-interface
-> > problem that we're trying to eliminate.
-> >=20
-> > * Seems the microblaze CPU defines the most with 9 properties?
-> (You forgot '-n' on your sort rune.)
-> hw/dma/pl330.c has 15.
+From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
 
-Ugh.
+v8 -> v9:
+   - patches 1 and 2 slightly reorganized to separate real changes from
+     cleanup changes more clearly
+   - unnecessary changes removed from patches 5 and 9
+   - changes related to FS bit moved to a separate patch (patch 10)
+   - mail recipients for individual patches slightly adjusted
 
->=20
-> >=20
-> > Approach (2) will leave us with 21 properties for the SCU.
-> What would the 21 properties be in this case?
->=20
-> But yes, a single 32 bit property would probably be better.
+v7 -> v8:
+   - fixed mail recipients
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-06/msg00896.ht=
+ml)
 
-Alright, I'll go ahead with that.
+v6 -> v7:
+   - preprocesor constants for FCR31 bits removed
+   - cleanup items in CFC1 and CTC1 handling removed
+   - initialization of snan_bit_is_one for main FP unit moved
+     from patch 6 to patch 9
+   - an instance of "!" corrected to "~" (logical vs. bitwise negation)
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-06/msg00886.ht=
+ml)
 
-Thanks for the feedback.
+v5 -> v6:
+   - code for hanlding MSA FCLASS instructions slightly simplified
+   - handling of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D> corrected for
+     nan2008 case
+   - R/W bitmask for FCR31 introduced, and related functionalities
+     implemented
+   - cleanup items for SoftFloat library are now in a separate patch
+   - minor errors corrected
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-05/msg02513.ht=
+ml)
 
-Andrew
---=-UqdqewCXMeSW+b7zXnev
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+v4 -> v5:
+   - platform initialization code revisited one more time;
+   - handling of CLASS.<S|D> and their MSA counterparts revisited;
+   - better orgranization of patches (squashing, splitting);
+   - corrected handling of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D>;
+   - code cleanup item in genfarith() - order of cases;
+   - scripts/checkpatch.pl executed and errors addressed.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg02774.ht=
+ml)
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+v3 -> v4:
+   - Added code cleanup items:
+       a. Capitalization of hex constants in softfloat-specialize.h;
+       b. White spaces in softfloat-specialize.h;
+       c. Order of Mips helpers for CVT.<L|W>.<S|D>.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01962.ht=
+ml)
 
-iQIcBAABCgAGBQJXaOiPAAoJEJ0dnzgO5LT53fEP/iiQoUfrExvO7/CwjclASI7z
-IZrdPd4XQmYqwRWFUxn9baNFOt5fNRaLlYBaSebC1Yaf0SYcCckBeZDlcIvd6uQl
-UgS/fSlycW0R/18sLrjpQodUtAfZRRI9cx4qWzokTnN7MmeLNfMMTHuUb9U1+JR7
-frf7vk3dkfGFYKqYxJ5n5kCxp3iNeIiq/WKbQnpb9x0nwe/awqm2+/gkoyTX9K1X
-yq2Lzdm+MeVxzh02blHj2WgIRhdt62rxy6rylvniCGpo+dTaE5iCvP2NOCrqUVV6
-cF+eTRlxpj1hG8AKa8qEGBzghqHMJ55vyP6sHOG+em4W/jGyUbLIxhHCupPwCH/m
-HV4Pcw0GXqTdtCU/owXgscJQ3K4wJRKtwMJbQqSU083qECuR4kp00RN6ToIzpKdO
-fdqyMZ2lBBIUw+cKnEWQhgqOUXArhzoXHbCImpw7r7o+J+1n7KkUqfObL4+ZC5FV
-I8ufb1IPAd/t8nQmMHT5k32EfLr2u9VtupQMxT96Hotz2rJNd+rLUCUDdzOnrFGc
-1LKKEhiraY8msucYZ++OfntuuQ/bet8etwJtRCooj2ZwKrmR9/a6P+6ah2P+qj3d
-btUtw0d3f+spZnuJHQAf+BV3vo5v/oChGikE5ICLNi2V4dH/O+lqUFBW588apLli
-T+oxO5d37K0f+CcQKQat
-=Z9HS
------END PGP SIGNATURE-----
+v2 -> v3:
+   - Patch series reorganized into 6 patches instead of 2.
+   - Commit messages improved.
+   - Except commit messages, net result of applying v3 and v2 is the same.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01870.ht=
+ml)
 
---=-UqdqewCXMeSW+b7zXnev--
+v1 -> v2:
+   - Relevant CPU initialization code changes revisited for all platforms.
+   - In connection with <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|D> and
+     <ABS|NEG>.<S|D> Mips instructions handling, decision on whether
+     pre-nan2008/pre-abs2008 or nan2008/abs2008 handling will apply
+     moved from run-time to translate-time.
+   - For Mips only, in nan2008 cases only, default NaN values fixed.
+   - For Mips only, in nan2008 cases only, order in pickNaNMulAdd() fixed.
+   - Code cleanup issues:
+       a. Constants <floatx80|float128>_default_nan_<low|high> removed;
+       b. Suffix <l|w>_<s|d> replaced with _<l|w>_<s|d> for some Mips helpe=
+rs;
+       c. In vicinity of changes, fixed not-beautiful code formatting.
+   - Commit messages improved.
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-04/msg01232.ht=
+ml)
+
+v1 - Initial version
+(link: https://lists.nongnu.org/archive/html/qemu-devel/2016-03/msg06082.ht=
+ml)
+
+Mips platform represents the most complex case among QEMU-supported
+platforms in reference to certain aspects of floating-point arithmetics.
+This is mostly a consequence of the fact that Mips platform, for many
+reasons, evolved considerably over time related to floating-point
+arithmetics standards (significantly more than other platforms).
+It has been difficult for emulators like QEMU to support such variety
+of configurations.
+
+This patch series provides number of IEEE 754-2008-related features to
+Mips platform. It addresses the most sensitive changes that require
+modification of SoftFloat library, also used by most other platforms.
+
+In order to make develpoment, testing, and integration easier, the patch
+is split into two distinct parts:
+
+   1. Part 1 (patches 1/10, 2/10, 3/10, 4/10, 5/10) that does not change an=
+y
+      calculation or behavior on any platform (and, for that matter, even o=
+n
+      Mips platform). Its sole purpose is to address platform independant
+      issues in a non-invasive manner, and to make Part 2 possible.
+
+   2. Part 2 (patches 6/10, 7/10, 8/10, 9/10, 10/10) that sets some Mips
+      processors to use provisions from Part 1, and additionally implements
+      number of IEEE 754-2008-related features for Mips, while, at the same
+      time, mainly dealing with files located in directory target-mips only=
+.
+
+This patch series is based on the original set of patches proposed by Macie=
+j W.
+Rozycki: http://lists.nongnu.org/archive/html/qemu-devel/2014-12/msg00968.h=
+tml
+
+Aleksandar Markovic (10):
+  softfloat: Implement run-time-configurable meaning of signaling NaN bit
+  softfloat: Clean code format in fpu/softfloat-specialize.h
+  softfloat: For Mips only, correct default NaN values
+  softfloat: For Mips only, correct order in pickNaNMulAdd()
+  linux-user: Update preprocessor constants for Mips-specific e_flags bits
+  target-mips: Activate IEEE 754-2008 signaling NaN bit meaning for MSA
+  target-mips: Add abs2008 flavor of <ABS|NEG>.<S|D>
+  target-mips: Add nan2008 flavor of <CEIL|CVT|FLOOR|ROUND|TRUNC>.<L|W>.<S|=
+D>
+  target-mips: Implement FCR31's R/W bitmask and related functionalities
+  target-mips: Add FCR31's FS bit definition
+
+ fpu/softfloat-specialize.h    | 659 +++++++++++++++++++++-----------------=
+----
+ fpu/softfloat.c               | 172 +++++------
+ include/elf.h                 |   2 +
+ include/fpu/softfloat.h       |  45 +--
+ linux-user/main.c             |  14 +
+ target-arm/helper-a64.c       |  14 +-
+ target-arm/helper.c           |  40 +--
+ target-m68k/helper.c          |   6 +-
+ target-microblaze/op_helper.c |   6 +-
+ target-mips/cpu.h             |  16 +-
+ target-mips/gdbstub.c         |   8 +-
+ target-mips/helper.h          |  22 +-
+ target-mips/msa_helper.c      |  88 +++---
+ target-mips/op_helper.c       | 400 ++++++++++++++++++++++---
+ target-mips/translate.c       | 156 ++++++++--
+ target-mips/translate_init.c  |  29 ++
+ target-ppc/fpu_helper.c       | 120 ++++----
+ target-s390x/fpu_helper.c     |  28 +-
+ target-s390x/helper.h         |   6 +-
+ target-s390x/translate.c      |   6 +-
+ target-sh4/cpu.c              |   1 +
+ target-unicore32/cpu.c        |   2 +
+ 22 files changed, 1167 insertions(+), 673 deletions(-)
+
+--
+1.9.1
 

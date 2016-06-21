@@ -1,129 +1,163 @@
-Received: by 10.25.21.96 with SMTP id l93csp1793123lfi;
-        Mon, 20 Jun 2016 23:57:48 -0700 (PDT)
-X-Received: by 10.233.239.18 with SMTP id d18mr28418269qkg.41.1466492268653;
-        Mon, 20 Jun 2016 23:57:48 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id q40si1885850qkh.175.2016.06.20.23.57.48
+Received: by 10.25.21.96 with SMTP id l93csp1798168lfi;
+        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
+X-Received: by 10.55.154.136 with SMTP id c130mr26092949qke.79.1466493090029;
+        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id g9si50139686qtb.32.2016.06.21.00.11.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Jun 2016 23:57:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 21 Jun 2016 00:11:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49226 helo=lists.gnu.org)
+       dkim=fail (test mode) header.i=@aj.id.au;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49301 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFFd6-00014O-8c
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 02:57:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47141)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bFFqL-0001o3-6m
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 03:11:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFFcD-0000hV-Pn
-	for qemu-devel@nongnu.org; Tue, 21 Jun 2016 02:56:54 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bFFqH-0001m2-5X
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 03:11:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFFc9-0000j8-EE
-	for qemu-devel@nongnu.org; Tue, 21 Jun 2016 02:56:50 -0400
-Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:33708)
+	(envelope-from <andrew@aj.id.au>) id 1bFFqB-0003lo-4H
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 03:11:24 -0400
+Received: from sub3.mail.dreamhost.com ([69.163.253.7]:58572
+	helo=homiemail-a23.g.dreamhost.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFFc9-0000j2-0f
-	for qemu-devel@nongnu.org; Tue, 21 Jun 2016 02:56:49 -0400
-Received: by mail-vk0-x233.google.com with SMTP id d185so8733030vkg.0
-	for <qemu-devel@nongnu.org>; Mon, 20 Jun 2016 23:56:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=oc4Imd9lN9Xsa08SirSz1cO6SkpmTSVBOEexqmLFrDo=;
-	b=I9r6oVuktUAg7nDa+Q0OvIlJYjZX+te4sbnUUE12X/bWpLXIxKiUcmnLyffEyc+gdw
-	9BXwIfyQMFbqSlOYkl9j9f9NPrkcoiE06UpFVTpqBPicQND2i/bnIv0SI7nkOh6tqHfq
-	kvJQ/6FbkdZtcCjLt5pkCQaqju6dpwpiMC5QA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=oc4Imd9lN9Xsa08SirSz1cO6SkpmTSVBOEexqmLFrDo=;
-	b=dAMOlWNOE1gwtGlWkeSuTSD3LEkNen54HnPRw4tk5P4mD+sSY492Ee84wXziNVVtMV
-	MJBxxViLVJtv62e/iwYhvrg4y9puBj1unuQYvB9+H9g3dlP507sTFzs4d5o2vmpWs0qE
-	kL57SoHn+itiZypiMDX907uULAPDj1zg9AFwOZTHBw40h+jfBJQivNzI/Fnw/49OGxC2
-	YdCaQcTFS0AEZhEfryHoEej2eXgUuBNkJ5x2uyAe76F4Yt8mChxywQwlYtbq57/M2gc2
-	1oVz2yPISxo8UKpvMBbiflMYA1VEiJRx1mf9Gy0ZCd+W36N0lHUdPXK+CESfHdaxrIjX
-	2yTQ==
-X-Gm-Message-State: ALyK8tJw/mOFVhaIV5EFrjZAanN4WY/vPdM/dMEsymV4DsC1Qoux9mEGIXblfcW8kYNJjwMe/Awuhl+RPJWaDe2H
-X-Received: by 10.31.15.20 with SMTP id 20mr8733999vkp.82.1466492208385; Mon,
-	20 Jun 2016 23:56:48 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.193.141 with HTTP; Mon, 20 Jun 2016 23:56:28 -0700 (PDT)
-In-Reply-To: <1466480985.4344.50.camel@aj.id.au>
+	(envelope-from <andrew@aj.id.au>)
+	id 1bFFqA-0003lZ-Jr; Tue, 21 Jun 2016 03:11:19 -0400
+Received: from homiemail-a23.g.dreamhost.com (localhost [127.0.0.1])
+	by homiemail-a23.g.dreamhost.com (Postfix) with ESMTP id F0DD94B0084;
+	Tue, 21 Jun 2016 00:11:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=aj.id.au; h=message-id
+	:subject:from:reply-to:to:cc:date:in-reply-to:references
+	:content-type:mime-version; s=aj.id.au; bh=sMyoOvBwyAeG+Nuu6FW/u
+	t0xP/U=; b=inODViTQHl9586LiEuakWtXTLnd8R65lw0nqA2Fg9MBMKT6Xpa38d
+	oUn5TQdTl0YAGNqzKMyXybBWx+vQ7ajb1tWTNUMZeDcsq2shfPXMfC/RhSgBV0N3
+	h0rmOoBdD1twUmx3fZDDmxbqAKF4t3qyKbukoi3p0aLoWinwe763Ag=
+Received: from keelia (unknown [203.0.153.9])
+	(using TLSv1 with cipher AES128-SHA (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: andrew@aj.id.au)
+	by homiemail-a23.g.dreamhost.com (Postfix) with ESMTPSA id 924EB4B0062; 
+	Tue, 21 Jun 2016 00:11:15 -0700 (PDT)
+Message-ID: <1466493071.4344.59.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Jun 2016 16:41:11 +0930
+In-Reply-To: <CAFEAcA85mf8Rr+rKEm4x0aA3r4XNuRFwHEzXsUk4D-EEwO8WbA@mail.gmail.com>
 References: <1466063287-19350-1-git-send-email-andrew@aj.id.au>
 	<1466063287-19350-2-git-send-email-andrew@aj.id.au>
 	<CAFEAcA_-+nWvAsCLE71d4qb_3eFkF80L-JgZSxwF5L3CH+W_Aw@mail.gmail.com>
 	<1466394273.4344.25.camel@aj.id.au>
 	<CAFEAcA_=5Dvg9R1o67b-5MuMZWtWbobywA+XzKuR-TeTCWfN0Q@mail.gmail.com>
 	<1466480985.4344.50.camel@aj.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Jun 2016 07:56:28 +0100
-Message-ID: <CAFEAcA85mf8Rr+rKEm4x0aA3r4XNuRFwHEzXsUk4D-EEwO8WbA@mail.gmail.com>
-To: Andrew Jeffery <andrew@aj.id.au>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::233
-Subject: Re: [Qemu-devel] [PATCH 1/2] hw/misc: Add a model for the ASPEED
+	<CAFEAcA85mf8Rr+rKEm4x0aA3r4XNuRFwHEzXsUk4D-EEwO8WbA@mail.gmail.com>
+Organization: IBM OzLabs
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-UqdqewCXMeSW+b7zXnev"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 69.163.253.7
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: Add a model for the ASPEED
  System Control Unit
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: andrew@aj.id.au
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
 	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pc54+HNzLB/r
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9mPivrAEM67u
 
-On 21 June 2016 at 04:49, Andrew Jeffery <andrew@aj.id.au> wrote:
-> On Mon, 2016-06-20 at 14:57 +0100, Peter Maydell wrote:
->> I think there are a couple of plausible ways you might model this:
->>
->> (a) just have a single property for "revision" which corresponds
->> to the revision of this bit of silicon IP within the SoC; the
->> model of the device itself then knows what the reset state is
->> for this revision of the device.
->> (b) ditto, but also have some configurable flags where relevant
->> (ie approximately where it's the same IP rev within the SoC
->> but it's been configured by tying down different config lines;
->> for instance hw/dma/pl330.c has a collection of properties
->> which match the configurable knobs for the hardware.)
->
-> Okay. I think (b) is the most appropriate. The board-controllable bits
-> are primarily in the hardware strapping register. The register is
-> composed of fields of mostly unrelated bits, so we could go two ways
-> here:
->
-> (1) expose the register through a single 32bit property
-> (2) break out a property for each bitfield
->
-> Do you have a preference? grepping the tree suggests there isn't a
-> precedent for "large" numbers of properties* so maybe (2) is overkill,
-> but (1) feels like it might fit into the overly-general-interface
-> problem that we're trying to eliminate.
->
-> * Seems the microblaze CPU defines the most with 9 properties?
 
-(You forgot '-n' on your sort rune.)
-hw/dma/pl330.c has 15.
+--=-UqdqewCXMeSW+b7zXnev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> Approach (2) will leave us with 21 properties for the SCU.
+On Tue, 2016-06-21 at 07:56 +0100, Peter Maydell wrote:
+> On 21 June 2016 at 04:49, Andrew Jeffery <andrew@aj.id.au> wrote:
+> >=20
+> > On Mon, 2016-06-20 at 14:57 +0100, Peter Maydell wrote:
+> > >=20
+> > > I think there are a couple of plausible ways you might model this:
+> > >=20
+> > > (a) just have a single property for "revision" which corresponds
+> > > to the revision of this bit of silicon IP within the SoC; the
+> > > model of the device itself then knows what the reset state is
+> > > for this revision of the device.
+> > > (b) ditto, but also have some configurable flags where relevant
+> > > (ie approximately where it's the same IP rev within the SoC
+> > > but it's been configured by tying down different config lines;
+> > > for instance hw/dma/pl330.c has a collection of properties
+> > > which match the configurable knobs for the hardware.)
+> > Okay. I think (b) is the most appropriate. The board-controllable bits
+> > are primarily in the hardware strapping register. The register is
+> > composed of fields of mostly unrelated bits, so we could go two ways
+> > here:
+> >=20
+> > (1) expose the register through a single 32bit property
+> > (2) break out a property for each bitfield
+> >=20
+> > Do you have a preference? grepping the tree suggests there isn't a
+> > precedent for "large" numbers of properties* so maybe (2) is overkill,
+> > but (1) feels like it might fit into the overly-general-interface
+> > problem that we're trying to eliminate.
+> >=20
+> > * Seems the microblaze CPU defines the most with 9 properties?
+> (You forgot '-n' on your sort rune.)
+> hw/dma/pl330.c has 15.
 
-What would the 21 properties be in this case?
+Ugh.
 
-But yes, a single 32 bit property would probably be better.
+>=20
+> >=20
+> > Approach (2) will leave us with 21 properties for the SCU.
+> What would the 21 properties be in this case?
+>=20
+> But yes, a single 32 bit property would probably be better.
 
-thanks
--- PMM
+Alright, I'll go ahead with that.
+
+Thanks for the feedback.
+
+Andrew
+--=-UqdqewCXMeSW+b7zXnev
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCgAGBQJXaOiPAAoJEJ0dnzgO5LT53fEP/iiQoUfrExvO7/CwjclASI7z
+IZrdPd4XQmYqwRWFUxn9baNFOt5fNRaLlYBaSebC1Yaf0SYcCckBeZDlcIvd6uQl
+UgS/fSlycW0R/18sLrjpQodUtAfZRRI9cx4qWzokTnN7MmeLNfMMTHuUb9U1+JR7
+frf7vk3dkfGFYKqYxJ5n5kCxp3iNeIiq/WKbQnpb9x0nwe/awqm2+/gkoyTX9K1X
+yq2Lzdm+MeVxzh02blHj2WgIRhdt62rxy6rylvniCGpo+dTaE5iCvP2NOCrqUVV6
+cF+eTRlxpj1hG8AKa8qEGBzghqHMJ55vyP6sHOG+em4W/jGyUbLIxhHCupPwCH/m
+HV4Pcw0GXqTdtCU/owXgscJQ3K4wJRKtwMJbQqSU083qECuR4kp00RN6ToIzpKdO
+fdqyMZ2lBBIUw+cKnEWQhgqOUXArhzoXHbCImpw7r7o+J+1n7KkUqfObL4+ZC5FV
+I8ufb1IPAd/t8nQmMHT5k32EfLr2u9VtupQMxT96Hotz2rJNd+rLUCUDdzOnrFGc
+1LKKEhiraY8msucYZ++OfntuuQ/bet8etwJtRCooj2ZwKrmR9/a6P+6ah2P+qj3d
+btUtw0d3f+spZnuJHQAf+BV3vo5v/oChGikE5ICLNi2V4dH/O+lqUFBW588apLli
+T+oxO5d37K0f+CcQKQat
+=Z9HS
+-----END PGP SIGNATURE-----
+
+--=-UqdqewCXMeSW+b7zXnev--
+

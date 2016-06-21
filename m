@@ -1,48 +1,62 @@
-Received: by 10.25.21.96 with SMTP id l93csp2054065lfi;
-        Tue, 21 Jun 2016 10:11:20 -0700 (PDT)
-X-Received: by 10.237.40.99 with SMTP id r90mr31467003qtd.0.1466529080841;
-        Tue, 21 Jun 2016 10:11:20 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp2091892lfi;
+        Tue, 21 Jun 2016 11:46:07 -0700 (PDT)
+X-Received: by 10.55.214.89 with SMTP id t86mr30713783qki.180.1466534766687;
+        Tue, 21 Jun 2016 11:46:06 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a3si618381qkc.229.2016.06.21.10.11.20
+        by mx.google.com with ESMTPS id l1si2301092qta.123.2016.06.21.11.46.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Jun 2016 10:11:20 -0700 (PDT)
+        Tue, 21 Jun 2016 11:46:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53223 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53662 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFPCq-0005QQ-8R
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 13:11:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54375)
+	id 1bFQgY-000782-4Y
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 14:46:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46447)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bFPBL-00047U-K0
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 13:09:48 -0400
+	(envelope-from <drjones@redhat.com>) id 1bFQgS-00075R-Qy
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 14:46:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bFPBJ-00045r-NF
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 13:09:46 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:57938)
+	(envelope-from <drjones@redhat.com>) id 1bFQgP-0005Sv-MQ
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 14:46:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56166)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1bFPBJ-00044f-G1; Tue, 21 Jun 2016 13:09:45 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1bFPBA-00024i-8Q; Tue, 21 Jun 2016 18:09:36 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 21 Jun 2016 18:09:30 +0100
-Message-Id: <1466528974-12183-3-git-send-email-peter.maydell@linaro.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	(envelope-from <drjones@redhat.com>)
+	id 1bFQgP-0005Sl-Gp; Tue, 21 Jun 2016 14:45:57 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D1EAAC04B303;
+	Tue, 21 Jun 2016 18:45:56 +0000 (UTC)
+Received: from hawk.localdomain (dhcp-1-122.brq.redhat.com [10.34.1.122])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5LIjrWt012341
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 21 Jun 2016 14:45:55 -0400
+Date: Tue, 21 Jun 2016 20:45:52 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160621184552.p7trf4zpqnrmwruu@hawk.localdomain>
 References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	<1466528974-12183-7-git-send-email-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1466528974-12183-7-git-send-email-peter.maydell@linaro.org>
+User-Agent: Mutt/1.5.23.1 (2014-03-12)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 21 Jun 2016 18:45:56 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 2/6] exec.c: Remove static allocation of
- sub_section of sub_page
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 6/6] hw/arm/virt: Set
+ minimum_page_bits to 12
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,49 +69,49 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>, patches@linaro.org
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J+pTvOA6oIKd
+X-TUID: s1pLISLJkVFU
 
-From: Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>
+On Tue, Jun 21, 2016 at 06:09:34PM +0100, Peter Maydell wrote:
+> Since the virt board model will never create a CPU which is
+> pre-ARMv7, we know that our minimum page size is 4K and can
+> set minimum_page_bits accordingly, for improved performance.
+> 
+> Note that this is a migration compatibility break.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/virt.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index c5c125e..f9b51aa 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1440,6 +1440,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->block_default_type = IF_VIRTIO;
+>      mc->no_cdrom = 1;
+>      mc->pci_allow_0_address = true;
+> +    /* We know we will never create a pre-ARMv7 CPU which needs 1K pages */
+> +    mc->minimum_page_bits = 12;
+>  }
 
-Allocate sub_section dynamically. Remove dependency
-on TARGET_PAGE_SIZE to make run-time page size detection
-for arm platforms.
+As this breaks migration, then I guess we also need
 
-Signed-off-by: Vijaya Kumar K <vijayak@cavium.com>
-Message-id: 1465808915-4887-3-git-send-email-vijayak@caviumnetworks.com
-[PMM: use flexible array member rather than separate malloc
- so we don't need an extra pointer deref when using it]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- exec.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/exec.c b/exec.c
-index 0122ef7..8eaeb0c 100644
---- a/exec.c
-+++ b/exec.c
-@@ -153,7 +153,7 @@ typedef struct subpage_t {
-     MemoryRegion iomem;
-     AddressSpace *as;
-     hwaddr base;
--    uint16_t sub_section[TARGET_PAGE_SIZE];
-+    uint16_t sub_section[];
- } subpage_t;
- 
- #define PHYS_SECTION_UNASSIGNED 0
-@@ -2270,8 +2270,7 @@ static subpage_t *subpage_init(AddressSpace *as, hwaddr base)
+@@ -1507,5 +1510,6 @@ static void virt_machine_2_6_options(MachineClass *mc)
  {
-     subpage_t *mmio;
- 
--    mmio = g_malloc0(sizeof(subpage_t));
--
-+    mmio = g_malloc0(sizeof(subpage_t) + TARGET_PAGE_SIZE * sizeof(uint16_t));
-     mmio->as = as;
-     mmio->base = base;
-     memory_region_init_io(&mmio->iomem, NULL, &subpage_ops, mmio,
--- 
-1.9.1
+     virt_machine_2_7_options(mc);
+     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
++    mc->minimum_page_bits = 10;
+ }
+ DEFINE_VIRT_MACHINE(2, 6)
 
+>  
+>  static const TypeInfo virt_machine_info = {
+> -- 
+> 1.9.1
+> 
+> 

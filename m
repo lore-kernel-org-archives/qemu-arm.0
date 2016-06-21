@@ -1,116 +1,110 @@
-Received: by 10.25.21.96 with SMTP id l93csp539291lfi;
-        Fri, 17 Jun 2016 21:06:03 -0700 (PDT)
-X-Received: by 10.13.237.130 with SMTP id w124mr3055505ywe.248.1466222732998;
-        Fri, 17 Jun 2016 21:05:32 -0700 (PDT)
-Return-Path: <bobby.prani@gmail.com>
-Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
-        by mx.google.com with ESMTPS id w125si7566162ywc.204.2016.06.17.21.05.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 17 Jun 2016 21:05:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
+Received: by 10.25.21.96 with SMTP id l93csp1903476lfi;
+        Tue, 21 Jun 2016 04:54:14 -0700 (PDT)
+X-Received: by 10.55.129.135 with SMTP id c129mr29520400qkd.174.1466510053925;
+        Tue, 21 Jun 2016 04:54:13 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w16si37719993qtw.100.2016.06.21.04.54.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 21 Jun 2016 04:54:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yw0-x242.google.com with SMTP id b75so10800166ywe.1;
-        Fri, 17 Jun 2016 21:05:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=IeskbTnnZFI33w8YztYnKUdHGvwGRb8S1dtITSiNuXg=;
-        b=di6Q5MRQSr/5FNp9CIn9AV9hnAsDovD2c1hWPQQdoPx6RwnuOMHUsjjpI3GLhCzkvq
-         5Uz9IAzyMZXll46k82l6PgMDNE3b/8o+0l2WNO0UHR18Q0WW/jdo4fGPvyhqb1kSflno
-         Lw4wdU+BkG4FJvC1NotL7AFN1IBqC6eOUk7UfMysy68mnqqp8m14OPLmD5ikhbLAgl1o
-         L2OxRQmkNSaEn2G4cNZtUjz+VNZLdSzIr4oil4Ks74f4odmMwzrvM4mZv+Gg8938V0uE
-         fsXe2tdElEis08huukO3w6uQhz8z/WlNU5/57FwV0/f/rGnFvBwUWMEWBkloo6Y4C9vK
-         87nQ==
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50991 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bFKFx-0005QP-C3
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 07:54:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48805)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bFKFt-0005PD-Qg
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 07:54:10 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bFKFs-0001Pb-0S
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 07:54:08 -0400
+Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:32944)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bFKFq-0001OU-QC
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 07:54:07 -0400
+Received: by mail-vk0-x232.google.com with SMTP id d185so16844027vkg.0
+	for <qemu-arm@nongnu.org>; Tue, 21 Jun 2016 04:54:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=lxN1o1PfxxPYM8z5Xw2Pai0GS6NpHGalqYyUCyZXCIM=;
+	b=a4WL38kc15uTi8FCPq1tXIZUOKTnXonoetwSugL8zgCzVlglcGpHKuMQwWmNozziyb
+	ZP0XwDlfMHfzHtb5PBHB9LK0ez9z45BaokFW+pymApY7S6U85H4eXuBnFjb+RSoXN2qi
+	BtXXlAu0whm0mN9b2YhV815L6mjo7d4YQnHYI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=IeskbTnnZFI33w8YztYnKUdHGvwGRb8S1dtITSiNuXg=;
-        b=I6Sm2kbzf0EacSn2YovhkaEeIpRfE7+VjZrOEBah34AUubRo0o+CcEpnPGbFQ6pUk9
-         S37/aa4NAVHBH5nxlSVCidNDrMwsKU3FN+DkyJfN3XDXm6jSPTu+huL0SE7oI+laFZYh
-         OSgbOR2J/FKds++CV+77SukMzzr+4xCL3pkzATjJxdFMm6V7h9WbyGiSBQxy+qAwHh7X
-         +Ax4Mn/oPsBiCWbXyjEPMJeU1PDQL0wNTZE1mfz8vBAcrz5kkGusmK0ThZcAAZZKW5qN
-         GrQLYPFGNKfmWtm2RZ63jW6Bw91Rpc//gm0l61GqgQV2ZI/ZFYajlcVo5tyv1Iw0PbyX
-         Clxg==
-X-Gm-Message-State: ALyK8tKZPe3BykObbz0BfOib915fGLz/xYJh6AxP8WRjoFtXCD6G2N3B9DFR1HzUuq8n4Q==
-X-Received: by 10.129.125.139 with SMTP id y133mr2848879ywc.151.1466222732674;
-        Fri, 17 Jun 2016 21:05:32 -0700 (PDT)
-Return-Path: <bobby.prani@gmail.com>
-Received: from evgadesktop.attlocal.net (108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
-        by smtp.gmail.com with ESMTPSA id q7sm19517992ywg.16.2016.06.17.21.05.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 17 Jun 2016 21:05:32 -0700 (PDT)
-From: Pranith Kumar <bobby.prani@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM),
-	qemu-devel@nongnu.org (open list:All patches CC here)
-Cc: alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net
-Subject: [RFC v3 PATCH 13/14] aarch64: Generate fences for aarch64
-Date: Sat, 18 Jun 2016 00:03:42 -0400
-Message-Id: <20160618040343.19517-14-bobby.prani@gmail.com>
-X-Mailer: git-send-email 2.9.0
-In-Reply-To: <20160618040343.19517-1-bobby.prani@gmail.com>
-References: <20160618040343.19517-1-bobby.prani@gmail.com>
-X-TUID: vXzKIieQCZDe
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=lxN1o1PfxxPYM8z5Xw2Pai0GS6NpHGalqYyUCyZXCIM=;
+	b=JBTBKzm0+dCLgeYxtfW3Ta4wmB7mHHtq4nOq7kUG1/BTxyNSTKdbSaEy3Ur7I4QVOf
+	LKJJx0fWWG6xRahN3d3PpIwtf5Q3/afLJrqOijNzQv6xwDaSLNRyvhW0zIKd0sR4RtLG
+	kop6Vxi3Kqc8mwN8Wo4ZPsJjplhKFArLrsEjXsvaWIl3leeF9qljaBK4T78/tJJzJACr
+	0tTCY52S/P+Groht8Xv7VzEpYhyiC8noc6UuskrFEnlxvb8WRzQ/n18yxOwJK/ulKw2Y
+	AsC6xGmFEQKeutKR3EPGORG5kOlHIlONkfreN1U1PZ0fVnvZUEUF96wCEbzkRVuv4Hy/
+	XbUg==
+X-Gm-Message-State: ALyK8tKDVJIAMy9IhlhSmMP/zHoKML0+782/nvYFqNSEOV9DyAm2KxbfWoUbbDPuoB1H8Uwdo3+6Mcfcm6WlSRze
+X-Received: by 10.176.0.145 with SMTP id 17mr9005228uaj.103.1466510045979;
+	Tue, 21 Jun 2016 04:54:05 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.50.140 with HTTP; Tue, 21 Jun 2016 04:53:45 -0700 (PDT)
+In-Reply-To: <16ef20d6-8c02-8617-0b6a-16fab76d3333@redhat.com>
+References: <1465808915-4887-1-git-send-email-vijayak@caviumnetworks.com>
+	<1465808915-4887-4-git-send-email-vijayak@caviumnetworks.com>
+	<16ef20d6-8c02-8617-0b6a-16fab76d3333@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Jun 2016 12:53:45 +0100
+Message-ID: <CAFEAcA_A=f0H3DkquozZKKVs4A3UR+fEhE9wfwe8zDHrsprEyQ@mail.gmail.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::232
+Subject: Re: [Qemu-arm] [RFC PATCH v1 3/4] translate-all.c: Compute L1 page
+ table properties at runtime
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Vijay Kilari <vijay.kilari@gmail.com>, Juan Quintela <quintela@redhat.com>,
+	Vijaya Kumar K <vijayak@caviumnetworks.com>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Prasun Kapoor <Prasun.Kapoor@caviumnetworks.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Vijaya Kumar K <vijayak@cavium.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 23sGFCpyd9nf
 
-Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
----
- target-arm/translate-a64.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+On 13 June 2016 at 10:25, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> On 13/06/2016 11:08, vijayak@caviumnetworks.com wrote:
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -4044,6 +4044,9 @@ int main(int argc, char **argv, char **envp)
+>>      }
+>>      object_property_add_child(object_get_root(), "machine",
+>>                                OBJECT(current_machine), &error_abort);
+>> +
+>> +    init_l1_page_table_param();
+>
+> Please call this from cpu_exec_init_all instead.
 
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index ce8141a..fa24bf2 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -1250,7 +1250,7 @@ static void handle_sync(DisasContext *s, uint32_t insn,
-         return;
-     case 4: /* DSB */
-     case 5: /* DMB */
--        /* We don't emulate caches so barriers are no-ops */
-+        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
-         return;
-     case 6: /* ISB */
-         /* We need to break the TB after this insn to execute
-@@ -1855,23 +1855,31 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-     }
-     tcg_addr = read_cpu_reg_sp(s, rn, 1);
- 
--    /* Note that since TCG is single threaded load-acquire/store-release
--     * semantics require no extra if (is_lasr) { ... } handling.
--     */
--
-     if (is_excl) {
-         if (!is_store) {
-             s->is_ldex = true;
-             gen_load_exclusive(s, rt, rt2, tcg_addr, size, is_pair);
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_ACQ);
-+            }
-         } else {
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_REL);
-+            }
-             gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, is_pair);
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
-         if (is_store) {
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_REL);
-+            }
-             do_gpr_st(s, tcg_rt, tcg_addr, size);
-         } else {
-             do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false);
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_ACQ);
-+            }
-         }
-     }
- }
--- 
-2.9.0
+If you're going to call it that early (ie before machine init)
+than I think we might as well just call it from the existing
+page_init() function in translate-all.c instead, right?
+(gets called when the tcg accelerator is inited; we don't need
+to set up the l1 map if we're not using TCG).
+
+thanks
+-- PMM

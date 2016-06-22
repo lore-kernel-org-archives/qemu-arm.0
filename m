@@ -1,69 +1,69 @@
-Received: by 10.25.21.96 with SMTP id l93csp2432101lfi;
-        Wed, 22 Jun 2016 05:06:29 -0700 (PDT)
-X-Received: by 10.55.120.5 with SMTP id t5mr9901926qkc.131.1466597186451;
-        Wed, 22 Jun 2016 05:06:26 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp2438143lfi;
+        Wed, 22 Jun 2016 05:19:18 -0700 (PDT)
+X-Received: by 10.237.39.167 with SMTP id a36mr22167476qtd.103.1466597958789;
+        Wed, 22 Jun 2016 05:19:18 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l4si27576827qtc.12.2016.06.22.05.06.26
+        by mx.google.com with ESMTPS id w203si5908219qka.104.2016.06.22.05.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Jun 2016 05:06:26 -0700 (PDT)
+        Wed, 22 Jun 2016 05:19:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57690 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57851 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFgvJ-0003My-MU
-	for alex.bennee@linaro.org; Wed, 22 Jun 2016 08:06:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44158)
+	id 1bFh7m-0007UX-5j
+	for alex.bennee@linaro.org; Wed, 22 Jun 2016 08:19:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFgu1-0002eQ-G2
-	for qemu-devel@nongnu.org; Wed, 22 Jun 2016 08:05:06 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1bFh6I-000671-4o
+	for qemu-devel@nongnu.org; Wed, 22 Jun 2016 08:17:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFgtt-0005hQ-F1
-	for qemu-devel@nongnu.org; Wed, 22 Jun 2016 08:05:04 -0400
-Received: from mail-vk0-x229.google.com ([2607:f8b0:400c:c05::229]:36033)
+	(envelope-from <dgilbert@redhat.com>) id 1bFh6G-00007t-6E
+	for qemu-devel@nongnu.org; Wed, 22 Jun 2016 08:17:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34619)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bFgtt-0005hD-BK
-	for qemu-devel@nongnu.org; Wed, 22 Jun 2016 08:04:57 -0400
-Received: by mail-vk0-x229.google.com with SMTP id u64so58832243vkf.3
-	for <qemu-devel@nongnu.org>; Wed, 22 Jun 2016 05:04:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=jZct3G541WYZKCX7P2ybbFeXPRzYokk4FDsi6WspjKk=;
-	b=PBxmpFBCw2/duHIgBkqyajdOMp3Ff3w0wpeuebMKXRIZsLMfMzM5yXTzUt9fVGgNvh
-	C1sE6jBfz6r8AxZemV0FIUoeX9vU0bxan1XAI2EBYAzW52SZpPnKSXZZ+vlpVSfV7QRT
-	056KFPfRCadsmw7oaMlTeQqTTBv171tqVpS1I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=jZct3G541WYZKCX7P2ybbFeXPRzYokk4FDsi6WspjKk=;
-	b=DI0OWJYOMbLxopCt7gM2scEWNUzJGOrA9YcCNGVH3batGvubwI+OP+MxvVOFe9zaJl
-	fu518EonTCINqe8wywFDnCpm6rchF3YvDlH1IHqxiLfgPKr6Y35IH4X6zr9KcnA8bexh
-	9SpwNWkGt1oVyKO8tjTEQMA79fAulJPDXUNR3QhJ5zNyxhczewa1nuDuvCOzXxA08429
-	s24DdjG6JlUsY84aWC3KmQ7fB4TrG2iNnCExrbizGW3CB1cDaHdIeBwAgLbWqk1mtpzU
-	BKuoP8s+ONPlANQg70waM1CWaYTCkUntGs0lA9IYsLYdECz91EDa6E6mpdgpmGkff584
-	bE5A==
-X-Gm-Message-State: ALyK8tKqQBvC6UTE2/NDDwRgqyFnfvV4mb18pU6fgcgMwrLpvBPAkhlwzQ0iJYn4XV7DhngiRiWAgapUI/rz24Gz
-X-Received: by 10.176.65.106 with SMTP id j97mr12105776uad.64.1466597096918;
-	Wed, 22 Jun 2016 05:04:56 -0700 (PDT)
+	(envelope-from <dgilbert@redhat.com>)
+	id 1bFh68-00005y-KX; Wed, 22 Jun 2016 08:17:36 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D9DBE7F6A2;
+	Wed, 22 Jun 2016 12:17:35 +0000 (UTC)
+Received: from work-vm (ovpn-116-97.ams2.redhat.com [10.36.116.97])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u5MCHVQc012744
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 22 Jun 2016 08:17:34 -0400
+Date: Wed, 22 Jun 2016 13:17:31 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160622121731.GI2274@work-vm>
+References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	<1466528974-12183-7-git-send-email-peter.maydell@linaro.org>
+	<20160621184552.p7trf4zpqnrmwruu@hawk.localdomain>
+	<CAFEAcA_AnYGV0jy9HAUevHPB=FY3NP25-7BUpdbySZS-QPeGrg@mail.gmail.com>
+	<20160622080234.f57jjn43tcwmvmcd@hawk.localdomain>
+	<20160622113558.GF2274@work-vm>
+	<CAFEAcA9tRnKuc4Dqj4_7vKwmg2Y00ifNQHA1rUirEy5viWsG3A@mail.gmail.com>
+	<20160622115432.GA6604@work-vm>
+	<CAFEAcA9xEx_hJJDuUmyrb_DMyoUarHVZQ_tJ5cjR-MLyVsqDdg@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Wed, 22 Jun 2016 05:04:37 -0700 (PDT)
-In-Reply-To: <CAN76PtRzf2qAwkMi9PMCUCaUha+6EpFnA_TiBB_oWLVFEQ8yyw@mail.gmail.com>
-References: <CAN76PtRzf2qAwkMi9PMCUCaUha+6EpFnA_TiBB_oWLVFEQ8yyw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 22 Jun 2016 13:04:37 +0100
-Message-ID: <CAFEAcA_SRt+uDMy=bAqktW=cGErYkMiAsNGBT7Jbyd1KRGtjxA@mail.gmail.com>
-To: Kevin Zhao <kevin.zhao@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9xEx_hJJDuUmyrb_DMyoUarHVZQ_tJ5cjR-MLyVsqDdg@mail.gmail.com>
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Wed, 22 Jun 2016 12:17:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::229
-Subject: Re: [Qemu-devel] Question about a qemu Aarch64 error when adding
- several SCSI disks
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v2 6/6] hw/arm/virt: Set minimum_page_bits
+ to 12
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,22 +75,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jones <drjones@redhat.com>, Patch Tracking <patches@linaro.org>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U5ALt2lSI9w5
+X-TUID: BFcfzOn8yVY6
 
-On 22 June 2016 at 12:51, Kevin Zhao <kevin.zhao@linaro.org> wrote:
-> Hi All,
->        Greetings from Linaro. This is Kevin from Linaro, and recently I
-> have met a problem of qemu-system-aarch64 when I am working on virt-manager.
->        I have reported a bug here:
-> https://bugs.launchpad.net/qemu/+bug/1594239
->
->        It's mainly bout adding several SCSI disks to Aarch64 guests.
->        If you have a moment, pls kindly give some advice about this.Thanks
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On 22 June 2016 at 12:54, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> >> On 22 June 2016 at 12:35, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> >> > Yes, my hope is that any versioned machine type should migrate to
+> >> > a newer qemu with the same machine type set.
+> >> >
+> >> > There are really two separate things that we state with the machine
+> >> > versioning:
+> >> >   a) that the guest view is the same
+> >> >   b) that the migration format is the same
+> >>
+> >> Well, this is true for PC.
+> >
+> > PC, ppc/spapr, and I think s390.
+> >
+> >> But my impression when we started
+> >> applying versioned machine types to ARM virt was that it was
+> >> signing up to (a) but not (yet) (b)...
+> >
+> > So that would make ARM special; the problem is we have no way
+> > to communicate to the user that it's special.
+> 
+> Is anybody testing that migration between versions for
+> virt works?
 
-Can you reproduce the bug with a newer version of QEMU?
+I don't know (Perhaps Drew knows), but I'd love to add
+a make check test for the x86 equivalent, but there's two
+things I'm stuck on;
+   1) What to run in the guest to check it survives
+   2) How to know we have an old qemu binary to check.
 
-thanks
--- PMM
+  I was thinking for (2) I could use an environment variable
+and if it's not set then skip the test.
+  For (1) perhaps a trivial little image (like I use for postcopy)
+that wouldn't check much except that the CPU/serial is still happy,
+but at least migration completed OK.
+
+  You could use virt-test/avocado to run a test with a full guest;
+it has options to specify source and destination qemu's separately.
+
+Dave
+
+> 
+> thanks
+> -- PMM
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

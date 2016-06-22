@@ -1,110 +1,81 @@
-Received: by 10.25.21.96 with SMTP id l93csp2120598lfi;
-        Tue, 21 Jun 2016 13:04:23 -0700 (PDT)
-X-Received: by 10.55.20.32 with SMTP id e32mr33112241qkh.210.1466539462014;
-        Tue, 21 Jun 2016 13:04:22 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp2225171lfi;
+        Tue, 21 Jun 2016 18:44:54 -0700 (PDT)
+X-Received: by 10.55.157.196 with SMTP id g187mr34625047qke.68.1466559894509;
+        Tue, 21 Jun 2016 18:44:54 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l143si1491062qke.164.2016.06.21.13.04.21
+        by mx.google.com with ESMTPS id l63si3339309qki.38.2016.06.21.18.44.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Jun 2016 13:04:22 -0700 (PDT)
+        Tue, 21 Jun 2016 18:44:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54009 helo=lists.gnu.org)
+Received: from localhost ([::1]:55144 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFRuH-0007vS-Bk
-	for alex.bennee@linaro.org; Tue, 21 Jun 2016 16:04:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36960)
+	id 1bFXDp-0006vh-Sz
+	for alex.bennee@linaro.org; Tue, 21 Jun 2016 21:44:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46981)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bFRuB-0007ts-0S
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 16:04:15 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bFXDl-0006t5-Bg
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 21:44:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bFRu5-0005O5-MP
-	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 16:04:14 -0400
-Received: from mail-sn1nam02on0084.outbound.protection.outlook.com
-	([104.47.36.84]:35840
-	helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	(envelope-from <rth7680@gmail.com>) id 1bFXDj-0002U0-IW
+	for qemu-arm@nongnu.org; Tue, 21 Jun 2016 21:44:48 -0400
+Received: from mail-qk0-x236.google.com ([2607:f8b0:400d:c09::236]:33348)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bFRu5-0005Nw-Dj; Tue, 21 Jun 2016 16:04:09 -0400
-Received: from CY1NAM02FT013.eop-nam02.prod.protection.outlook.com
-	(10.152.74.58) by CY1NAM02HT004.eop-nam02.prod.protection.outlook.com
-	(10.152.75.71) with Microsoft SMTP Server (TLS) id 15.1.523.9;
-	Tue, 21 Jun 2016 20:04:07 +0000
-Authentication-Results: spf=fail (sender IP is 149.199.60.96)
-	smtp.mailfrom=xilinx.com; 360.cn; dkim=none (message not signed)
-	header.d=none;360.cn; dmarc=none action=none header.from=xilinx.com;
-Received-SPF: Fail (protection.outlook.com: domain of xilinx.com does not
-	designate 149.199.60.96 as permitted sender)
-	receiver=protection.outlook.com; 
-	client-ip=149.199.60.96; helo=xsj-tvapsmtpgw01;
-Received: from xsj-tvapsmtpgw01 (149.199.60.96) by
-	CY1NAM02FT013.mail.protection.outlook.com (10.152.75.162) with
-	Microsoft SMTP Server (TLS) id 15.1.523.9 via Frontend Transport;
-	Tue, 21 Jun 2016 20:04:06 +0000
-Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:57099
-	helo=xsj-tvapsmtp02.xilinx.com)
-	by xsj-tvapsmtpgw01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bFRu1-0004dF-RD; Tue, 21 Jun 2016 13:04:05 -0700
-Received: from [127.0.0.1] (port=37706 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
-	by xsj-tvapsmtp02.xilinx.com with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bFRu1-0000jv-OF; Tue, 21 Jun 2016 13:04:05 -0700
-Received: from xsj-tvapsmtp02 (smtptest.xilinx.com [172.16.1.203])
-	by tsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	u5LJvYhq005127; Tue, 21 Jun 2016 12:57:34 -0700
-Received: from [172.19.74.182] (port=56024 helo=xsjalistai50.xilinx.com)
-	by xsj-tvapsmtp02 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bFRu0-0000js-Uf; Tue, 21 Jun 2016 13:04:04 -0700
-From: Alistair Francis <alistair.francis@xilinx.com>
-To: <qemu-devel@nongnu.org>
-Date: Tue, 21 Jun 2016 13:03:53 -0700
-Message-ID: <eb23f15c67989ea6a53609dc66568399dadf52a7.1466539342.git.alistair.francis@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1466539342.git.alistair.francis@xilinx.com>
-References: <cover.1466539342.git.alistair.francis@xilinx.com>
-X-RCIS-Action: ALLOW
-X-TM-AS-MML: disable
-X-TM-AS-Product-Ver: IMSS-7.1.0.1679-8.0.0.1202-22404.005
-X-TM-AS-Result: No--4.118-7.0-31-10
-X-imss-scan-details: No--4.118-7.0-31-10
-X-TMASE-MatchedRID: 9iphTy/NMyjK/aYi+nzkSeLdprnA5EQRjiWciALpTNMNht78/JfyBPRm
-	0kmqtH+DCnyzgpyXj45zG+TD5qY6+Eu13DUpbG24A9lly13c/gH0O7M3lSnTW5soi2XrUn/Jn6K
-	dMrRsL14qtq5d3cxkNU1dl19RiQr/jmzMDCxfK9OYnVSJmWvpDLAb3Hg+CLA6puYUHXyNI7HsxA
-	LPRhSRLnk/tab5N9TP4DmmdEVWLr3NwE0XieLem1LvHqPi046FU8mdcvbI1h2S6jzjuXTm0MTMz
-	ICazP4UKnrQ9LhGzFxDDKa3G4nrLQ==
-X-EOPAttributedMessage: 0
-X-Forefront-Antispam-Report: CIP:149.199.60.96; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(6009001)(7916002)(2980300002)(1109001)(1110001)(339900001)(189002)(199003)(92566002)(36756003)(5003600100003)(50466002)(7846002)(118296001)(33646002)(64026002)(6806005)(586003)(85426001)(2906002)(8936002)(356003)(50226002)(4326007)(50986999)(76176999)(7696003)(11100500001)(47776003)(2950100001)(2351001)(81156014)(229853001)(86362001)(105606002)(81166006)(106466001)(9786002)(110136002)(71366001)(48376002)(87936001)(8676002)(77096005)(19580405001)(189998001)(5003940100001)(19580395003)(107986001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:CY1NAM02HT004; H:xsj-tvapsmtpgw01;
-	FPR:; SPF:Fail; PTR:unknown-60-96.xilinx.com; MX:1; A:1;
-	CAT:NONE; LANG:en; CAT:NONE; 
+	(envelope-from <rth7680@gmail.com>)
+	id 1bFXDd-0002T6-6l; Tue, 21 Jun 2016 21:44:41 -0400
+Received: by mail-qk0-x236.google.com with SMTP id a186so46539241qkf.0;
+	Tue, 21 Jun 2016 18:44:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=hOuFUtvhKvsL7KlaIOV5K8FCiRksqVQfhGKmsG0bYkg=;
+	b=XBnjAxOnXvY+FxG88KaJgskf98HW3uiyLQtxbE82dz97a+hj7agKOQScXOWIFMQ4o5
+	92OHyamFpPlYdwd9EFSzmWSEpzyp6ei5CqC+M/XW6Wvydy7Y17Ln1cSzWmgoJ0Tj/GdK
+	ifMpVgSnelIKY5MxRhTPEc93kX/npGKcKbTjlu84przI61W/KZAFzoUxaeP6Tr6JpGkx
+	LHopoVKobY91Ij2JMl5BFo0S3210Gk4k5I8NIovLN8F0ASIwJL+q2c0ROU/duclVmZA3
+	poExlmeXeAGbcHmoHj2GDM+cl6hOj1fvBuFwy6o8Z5x+wIb8Yvf0jZ7nu9ioWDIdhXMD
+	k+QQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=hOuFUtvhKvsL7KlaIOV5K8FCiRksqVQfhGKmsG0bYkg=;
+	b=N7T8MhTFfqkeAMm2bqR77rgdSCh6g7j9DU4jUqTOuNfFkwT29/rAiP1dZ+M/BkvWiU
+	APDLWqKoUv/PZxruMS/DJMLvtl03BMjYVt8el40D4cTg+njbLFmmNfvHK7BchmQLyCr+
+	0uDV4jFW+RL3x1qNQZ879gpZQ44lfcMIQcABMBqFS0Kkh+mpZKZlEKmIUAB0VG2Ynchz
+	7cm5xKk/y1Wflm96cCO/+6tSlNHT5+9hTltLd/58fZK68mt74uKxaeFgGDr37CRT0w31
+	vnyDooef/8ZMZ+JSFz+XuSax7NmsjHbCKYMDmD6KctJW6wrPl8I9IIiMbrN9CYgY9ZRm
+	nUEQ==
+X-Gm-Message-State: ALyK8tLIEBBIWraDiTRvvVh71fpn17+w5PelEPvhh82FUtkS0lOou+GJsvj0NE14Ma39Ag==
+X-Received: by 10.55.200.9 with SMTP id c9mr34442158qkj.158.1466559880723;
+	Tue, 21 Jun 2016 18:44:40 -0700 (PDT)
+Received: from bigtime.twiddle.net (71-37-54-227.tukw.qwest.net.
+	[71.37.54.227]) by smtp.googlemail.com with ESMTPSA id
+	v12sm25089744qtc.3.2016.06.21.18.44.39
+	(version=TLSv1/SSLv3 cipher=OTHER);
+	Tue, 21 Jun 2016 18:44:40 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	<1466528974-12183-2-git-send-email-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <57258216-bc5a-2e2b-33f4-3116c51fe7f6@twiddle.net>
+Date: Tue, 21 Jun 2016 18:44:36 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: 04f7ee86-ee9a-44b4-c75b-08d39a0f335e
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1NAM02HT004;
-X-Microsoft-Antispam-PRVS: <c7dede1214c04fed9bd35aba9e05d9fb@CY1NAM02HT004.eop-nam02.prod.protection.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(13018025)(13017025)(13015025)(13024025)(13023025)(5005006)(8121501046)(3002001)(10201501046)(6055026);
-	SRVR:CY1NAM02HT004; BCL:0; PCL:0; RULEID:; SRVR:CY1NAM02HT004; 
-X-Forefront-PRVS: 098076C36C
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2016 20:04:06.3126 (UTC)
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.96]; Helo=[xsj-tvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1NAM02HT004
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.36.84
-Subject: [Qemu-arm] [PATCH v1 2/2] cadence_gem: Set the last bit when wrap
- is set
+In-Reply-To: <1466528974-12183-2-git-send-email-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400d:c09::236
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/6] migration: Remove static
+ allocation of xzblre cache buffer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,52 +87,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: ppandit@redhat.com, qemu-arm@nongnu.org, liqiang6-s@360.cn,
-	alistair.francis@xilinx.com
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mOL9Jz+HbCb5
+X-TUID: Kyjg6PqJuylW
 
-The Cadence GEM data sheet says:
-"Wrap - marks last descriptor in transmit buffer descriptor list. This
-can be set for any buffer within the frame."
-which seems to imply that when the wrap bit is set so is the last bit.
+On 06/21/2016 10:09 AM, Peter Maydell wrote:
+> From: Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>
+>
+> Allocate xzblre zero page cache buffer dynamically.
+> Remove dependency on TARGET_PAGE_SIZE to make run-time
+> page size detection for arm platforms.
+>
+> Signed-off-by: Vijaya Kumar K <vijayak@cavium.com>
+> Message-id: 1465808915-4887-2-git-send-email-vijayak@caviumnetworks.com
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  migration/ram.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Previously if the wrap bit is set, but the last is not then QEMU will
-enter an infinite loop.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
-Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reported-by: Li Qiang <liqiang6-s@360.cn>
-Reported-by: P J P <ppandit@redhat.com>
----
 
- hw/net/cadence_gem.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index e5f3c98..8a4be1e 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -274,6 +274,11 @@ static inline unsigned tx_desc_get_last(unsigned *desc)
-     return (desc[1] & DESC_1_TX_LAST) ? 1 : 0;
- }
- 
-+static inline void tx_desc_set_last(unsigned *desc)
-+{
-+    desc[1] |= DESC_1_TX_LAST;
-+}
-+
- static inline unsigned tx_desc_get_length(unsigned *desc)
- {
-     return desc[1] & DESC_1_LENGTH;
-@@ -939,6 +944,7 @@ static void gem_transmit(CadenceGEMState *s)
- 
-         /* read next descriptor */
-         if (tx_desc_get_wrap(desc)) {
-+            tx_desc_set_last(desc);
-             packet_desc_addr = s->regs[GEM_TXQBASE];
-         } else {
-             packet_desc_addr += 8;
--- 
-2.7.4
-
+r~

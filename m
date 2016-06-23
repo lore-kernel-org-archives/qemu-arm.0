@@ -1,74 +1,71 @@
-Received: by 10.25.21.96 with SMTP id l93csp659185lfi;
-        Thu, 23 Jun 2016 11:23:53 -0700 (PDT)
-X-Received: by 10.55.130.1 with SMTP id e1mr46208612qkd.139.1466706233762;
-        Thu, 23 Jun 2016 11:23:53 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp664255lfi;
+        Thu, 23 Jun 2016 11:37:47 -0700 (PDT)
+X-Received: by 10.55.163.65 with SMTP id m62mr44706095qke.21.1466707067417;
+        Thu, 23 Jun 2016 11:37:47 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x56si1374149qtb.41.2016.06.23.11.23.53
+        by mx.google.com with ESMTPS id g129si1406724qkf.230.2016.06.23.11.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Jun 2016 11:23:53 -0700 (PDT)
+        Thu, 23 Jun 2016 11:37:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
-Received: from localhost ([::1]:38632 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38696 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bG9I9-0007Oz-3b
-	for alex.bennee@linaro.org; Thu, 23 Jun 2016 14:23:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45830)
+	id 1bG9Va-0006hY-Qq
+	for alex.bennee@linaro.org; Thu, 23 Jun 2016 14:37:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50427)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bG9Fj-0004Fd-N8
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 14:21:27 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bG9U8-00060E-0e
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 14:36:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>) id 1bG9Fh-0004yi-P5
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 14:21:22 -0400
-Received: from forward5p.cmail.yandex.net ([77.88.31.20]:33231)
+	(envelope-from <peter.maydell@linaro.org>) id 1bG9U6-0000wJ-7N
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 14:36:14 -0400
+Received: from mail-vk0-x233.google.com ([2607:f8b0:400c:c05::233]:36172)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <afarallax@yandex.ru>)
-	id 1bG9Fa-0004ty-Nm; Thu, 23 Jun 2016 14:21:15 -0400
-Received: from mxback9g.mail.yandex.net (mxback9g.mail.yandex.net
-	[77.88.29.170])
-	by forward5p.cmail.yandex.net (Yandex) with ESMTP id D976920CC1;
-	Thu, 23 Jun 2016 21:21:02 +0300 (MSK)
-Received: from web16g.yandex.ru (web16g.yandex.ru [95.108.252.116])
-	by mxback9g.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
-	gdEQ4aVfoH-L2iWIPwe; Thu, 23 Jun 2016 21:21:02 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
-	t=1466706062; bh=QLAZ8DSvkIgZ1y3YGsvhqJP8mOL2ebMOYmcGInYfFhM=;
-	h=From:To:Cc:In-Reply-To:References:Subject:MIME-Version:Message-Id:
-	X-Mailer:Date:Content-Transfer-Encoding:Content-Type;
-	b=UEeBxkLkiukyVI5eXrKER7dZfmq7Q+wP7fou790Kc9Gu9Z4g5fJYHdaBPXCzspIy3
-	OOB+AAjuNM7xeTdbnGLvillXTAWmsbbgdIbYo9xDjXgYPU4wkNXc4/OLsg69wbOshN
-	vibRRIge05bLGYk+YRexwC12jFDn3sPADgpOdOwg=
-Authentication-Results: mxback9g.mail.yandex.net; dkim=pass header.i=@yandex.ru
-Received: by web16g.yandex.ru with HTTP;
-	Thu, 23 Jun 2016 21:21:02 +0300
-From: Sergey Sorokin <afarallax@yandex.ru>
-To: Richard Henderson <rth@twiddle.net>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-In-Reply-To: <d021833e-312d-5dad-1a77-5800fadb733a@twiddle.net>
-References: <1466599029-3388432-1-git-send-email-afarallax@yandex.ru>
-	<5d86b8ba-16e8-e94d-ba7f-e865cbcc938e@twiddle.net>
-	<1793281466613020@web5h.yandex.ru>
-	<6c24c820-4a26-848c-e62d-88ebce59125d@twiddle.net>
-	<201241466676212@web21j.yandex.ru>
-	<458f40bb-cb58-4e10-2237-a08cb35155bd@twiddle.net>
-	<200981466691221@web14m.yandex.ru>
-	<d021833e-312d-5dad-1a77-5800fadb733a@twiddle.net>
+	(envelope-from <peter.maydell@linaro.org>) id 1bG9U5-0000w5-Hq
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 14:36:14 -0400
+Received: by mail-vk0-x233.google.com with SMTP id u64so118966840vkf.3
+	for <qemu-devel@nongnu.org>; Thu, 23 Jun 2016 11:36:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=P3kZ/JTqqtWqaCgS79eKpE5+kBGaOfPPnOJIf4SfSOs=;
+	b=hutsOpD1i6iQwTL74bfVNDRufd/aSD9E8pmEeStBteSOx8ae+uWYTtu8+ibxxs/yHN
+	KeBV69+S94GCf5yiBMqfZXT5z9RwSeNkuuNLg75VIFiuuipdcV6BloJYlZ3Lc7offOHW
+	Vl1w6tdaYe2KuRGQ8TsJ6cViG7rGgX5S1C2fM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=P3kZ/JTqqtWqaCgS79eKpE5+kBGaOfPPnOJIf4SfSOs=;
+	b=ddLi9m4yM1VhQwz2gGBVj1xJMW8Ih+59drIxCYVBCed5XaXmG5wQ48rqhtNs2bsYub
+	94D5Gw35X8KiF6I6E/5Bu3x3srMSXYm3Bj6I5f2oYSbPG12OlU/t0Xvkyrvk0V7Q0l9s
+	dXeYAKs97n1VrfNmUy1Rcs7fFtg0UgzXmrx5cOoNqwx4hIM0oiSofA3fbrgdLBC++rYH
+	Q/6FIDMPaytbtTNTXno9uocvWoMK2TBCvpbqFploZT+af6BtOR+6SCQWv+CyDpNbjBph
+	dPE9tIA76edqP1hLWLdZlIKFrQrmQOloGNbe9aStomH1L0al5m383+A9OeYku98MwH8y
+	49bw==
+X-Gm-Message-State: ALyK8tIRkJ2ZZ3gsYWfrc9WnYwLpmpdPl1MWZaVXaJhLt2Al0Nsgz02AyWJiNJReMxgC/U0OI/X/mAfk98weqTZh
+X-Received: by 10.31.109.197 with SMTP id i188mr16260035vkc.157.1466706973123; 
+	Thu, 23 Jun 2016 11:36:13 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <804691466706062@web16g.yandex.ru>
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Thu, 23 Jun 2016 21:21:02 +0300
-Content-Type: text/plain; charset=utf-8
+Received: by 10.31.157.141 with HTTP; Thu, 23 Jun 2016 11:35:53 -0700 (PDT)
+In-Reply-To: <1466699607-30406-2-git-send-email-clg@kaod.org>
+References: <1466699607-30406-1-git-send-email-clg@kaod.org>
+	<1466699607-30406-2-git-send-email-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Jun 2016 19:35:53 +0100
+Message-ID: <CAFEAcA-qovoyt-d2-KJyuj2bur9DrnRSFcPr2=iPOX2YzDMnZQ@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 77.88.31.20
-Subject: Re: [Qemu-devel] [PATCH v2] Improve the alignment check
- infrastructure
+X-Received-From: 2607:f8b0:400c:c05::233
+Subject: Re: [Qemu-devel] [PATCH v3 1/5] m25p80: qdev-ify drive property
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,30 +77,31 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Claudio Fontana <claudio.fontana@huawei.com>,
-	Alexander Graf <agraf@suse.de>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Vassili Karpov <av1474@comtv.ru>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Jeffery <andrew@aj.id.au>, Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mkiB+cdDlwsJ
+X-TUID: howvoPCVmLrt
 
-Yes, I thought about it. tcg_canonicalize_memop() is good place too.
-But do you think that get_alignment_bits() is not good enough?
+On 23 June 2016 at 17:33, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> From: Paolo Bonzini <pbonzini@redhat.com>
+>
+> This allows specifying the property via -drive if=3Dnone and creating
+> the flash device with -device.
+>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  hw/arm/xilinx_zynq.c                |  8 +++++++-
+>  hw/arm/xlnx-ep108.c                 |  9 ++++++++-
+>  hw/block/m25p80.c                   | 10 ++--------
+>  hw/microblaze/petalogix_ml605_mmu.c |  9 ++++++++-
+>  4 files changed, 25 insertions(+), 11 deletions(-)
 
-23.06.2016, 19:13, "Richard Henderson" <rth@twiddle.net>:
-> On 06/23/2016 07:13 AM, Sergey Sorokin wrote:
->>> =C2=A0I think we ought to check this in tcg-op.c, rather than wait un=
-til generating
->>> =C2=A0code in the backend.
->> =C2=A0I think it's better to check this in one place in get_alignment_=
-bits() function
->> =C2=A0because there can be a direct call of helpers from softmmu_templ=
-ate.h.
->
-> I'm talking about the asserts in tcg/*/tcg-target.inc.c. Those asserts =
-are
-> better done in once place in tcg_canonicalize_memop.
->
-> r~
+hw/arm/sabrelite.c also creates one of these devices and needs updating.
+
+thanks
+-- PMM

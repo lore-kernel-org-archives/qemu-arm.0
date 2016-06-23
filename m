@@ -1,61 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp585593lfi;
-        Thu, 23 Jun 2016 08:34:32 -0700 (PDT)
-X-Received: by 10.55.47.6 with SMTP id v6mr43814598qkh.11.1466696072815;
-        Thu, 23 Jun 2016 08:34:32 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp586227lfi;
+        Thu, 23 Jun 2016 08:35:48 -0700 (PDT)
+X-Received: by 10.200.42.43 with SMTP id k40mr43917816qtk.98.1466696147954;
+        Thu, 23 Jun 2016 08:35:47 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v83si628249qka.68.2016.06.23.08.34.32
+        by mx.google.com with ESMTPS id h3si371809qkf.92.2016.06.23.08.35.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Jun 2016 08:34:32 -0700 (PDT)
+        Thu, 23 Jun 2016 08:35:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37411 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37422 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bG6eG-0006bT-44
-	for alex.bennee@linaro.org; Thu, 23 Jun 2016 11:34:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48201)
+	id 1bG6fT-0007bK-71
+	for alex.bennee@linaro.org; Thu, 23 Jun 2016 11:35:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50847)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bG6TG-0002kt-5p
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 11:23:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bG6b9-0002wF-T6
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 11:31:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bG6TF-0006gS-DK
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 11:23:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51154)
+	(envelope-from <peter.maydell@linaro.org>) id 1bG6b7-0000fl-Iq
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 11:31:18 -0400
+Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:35400)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1bG6T6-0006cK-2q; Thu, 23 Jun 2016 11:23:00 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9F250C0703A0;
-	Thu, 23 Jun 2016 15:22:59 +0000 (UTC)
-Received: from localhost (vpn1-7-238.gru2.redhat.com [10.97.7.238])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5NFMwEG001803; Thu, 23 Jun 2016 11:22:59 -0400
-Date: Thu, 23 Jun 2016 12:22:57 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20160623152257.GA2048@thinpad.lan.raisama.net>
-References: <1465492263-28472-5-git-send-email-imammedo@redhat.com>
-	<1466515457-253194-1-git-send-email-imammedo@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1bG6b6-0000em-CY
+	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 11:31:17 -0400
+Received: by mail-vk0-x235.google.com with SMTP id j2so111419599vkg.2
+	for <qemu-devel@nongnu.org>; Thu, 23 Jun 2016 08:31:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=cOqsMtYp03nizYCDcnV5i8vAUpuZHWiiz5Rjy8sb4Jc=;
+	b=K3UXPwWuOYMDjIvEyNpbhEIPy96THRhmRNt6iQSY02t8MiSlZcjNraec9gBpiXkzcf
+	IKsozVJ6VV6b1MLzaJEfTzDG9dOS6u+fogZdLROvflu7ZfCPdPF2LBGHl3P8OsXz5HF6
+	ppKJspPw4wbmrLOfX/UQdY0PIOSODq87M9vMY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=cOqsMtYp03nizYCDcnV5i8vAUpuZHWiiz5Rjy8sb4Jc=;
+	b=My69FwdAtTgPKYgwVMSu7qRG4ZTMrdHGBLKvRa4LOCR6Cvt/0adlDbD7+kX7qWjeP9
+	86x1no1ZAgoKrlZuEDQ/vZSwXLykWwi15/WHlf+8cNTWX8ou1ZMRVcaoPnS3gpH7rvUc
+	S5cEB6kGR9jE+nt52Xoc7P+xpCGwcoZjgra/d9/2hfHZ6Wi7buNa3Sb9kppHl1ptMr1m
+	iouoRubcrLwZ2hlwPKdgcrehjsS/yDqDPXREj1sRzd3pzDdn1b9wijP8xUG1tioh4ZWh
+	Vb5Gof5u9uC4xIyoY/PxoC8bFLG5C9dQNeoDEof8QnALjf94DGvCH62yszoPjbipKdtq
+	U24g==
+X-Gm-Message-State: ALyK8tJRzo7cFB8j7d0+JkjHrlsH5coOtyRVP0OpGjhXRiPXjpMAqJbheKUd6ftj3+LqHYQG8PtybAjN4ULGTXzl
+X-Received: by 10.176.5.3 with SMTP id 3mr15863844uax.52.1466695875515; Thu,
+	23 Jun 2016 08:31:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1466515457-253194-1-git-send-email-imammedo@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 23 Jun 2016 15:22:59 +0000 (UTC)
+Received: by 10.31.157.141 with HTTP; Thu, 23 Jun 2016 08:30:55 -0700 (PDT)
+In-Reply-To: <1465552668-30084-2-git-send-email-aleksandar.markovic@rt-rk.com>
+References: <1465552668-30084-1-git-send-email-aleksandar.markovic@rt-rk.com>
+	<1465552668-30084-2-git-send-email-aleksandar.markovic@rt-rk.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Jun 2016 16:30:55 +0100
+Message-ID: <CAFEAcA8+K_nUEmGsbeOifo5aNm=nvar+81nLN0obY96UDOHf9A@mail.gmail.com>
+To: Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v2 4/6] fixup! cpu: use
- CPUClass->parse_features() as convertor to global properties
+X-Received-From: 2607:f8b0:400c:c05::235
+Subject: Re: [Qemu-devel] [PATCH v9 01/10] softfloat: Implement
+ run-time-configurable meaning of signaling NaN bit
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,25 +78,98 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, rth@twiddle.net, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, pbonzini@redhat.com
+Cc: Ethan Hunt <proljc@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	Blue Swirl <blauwirbel@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Miodrag Dinic <miodrag.dinic@imgtec.com>, maciej.rozycki@imgtec.com,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Petar Jovanovic <petar.jovanovic@imgtec.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Aleksandar Markovic <aleksandar.markovic@imgtec.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1EafOtNYdpH2
+X-TUID: 0FiAB1HG01BJ
 
-On Tue, Jun 21, 2016 at 03:24:17PM +0200, Igor Mammedov wrote:
-> make sure that -cpu features converted to global properties
-> will not be ignored and QEMU exits with error as it used to
-> in case feature couldn't be applied.
-> 
-> fixup is on top of:
->  [PATCH v2 00/10] globals: Clean up validation and error checking
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+On 10 June 2016 at 10:57, Aleksandar Markovic
+<aleksandar.markovic@rt-rk.com> wrote:
+> From: Aleksandar Markovic <aleksandar.markovic@imgtec.com>
+>
+> This patch modifies SoftFloat library so that it can be configured in
+> run-time in relation to the meaning of signaling NaN bit, while, at the
+> same time, strictly preserving its behavior on all existing platforms.
 
-To original patch + fixup:
+This doesn't compile:
 
-Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+In file included from
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat.c:106:0:
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat-specialize.h:
+In function =E2=80=98commonNaNToFloat32=E2=80=99:
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat-specialize.h:398:=
+9:
+error: return makes integer from pointer without a cast [-Werror]
+         return float32_default_nan;
+         ^
+In file included from
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat.c:106:0:
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat-specialize.h:
+In function =E2=80=98commonNaNToFloat64=E2=80=99:
+/home/petmay01/linaro/qemu-from-laptop/qemu/fpu/softfloat-specialize.h:816:=
+9:
+error: return makes integer from pointer without a cast [-Werror]
+         return float64_default_nan;
+         ^
 
--- 
-Eduardo
+This is because a couple of changes currently in patch 2 should
+be in this patch:
+
+@@ -391,11 +391,12 @@ static float32 commonNaNToFloat32(commonNaNT a,
+float_status *status)
+         return float32_default_nan(status);
+     }
+
+-    if ( mantissa )
++    if (mantissa) {
+         return make_float32(
+             (((uint32_t)a.sign) << 31) | 0x7F800000 | (a.high >> 41));
+-    else
+-        return float32_default_nan;
++    } else {
++        return float32_default_nan(status);
++    }
+ }
+
+and
+
+@@ -807,13 +807,14 @@ static float64 commonNaNToFloat64(commonNaNT a,
+float_status *status)
+         return float64_default_nan(status);
+     }
+
+-    if ( mantissa )
++    if (mantissa) {
+         return make_float64(
+               (((uint64_t) a.sign) << 63)
+             | LIT64(0x7FF0000000000000)
+             | (a.high >> 12));
+-    else
+-        return float64_default_nan;
++    } else {
++        return float64_default_nan(status);
++    }
+ }
+
+
+Otherwise:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+(As an aside, this patch reveals a bug in scripts/checkpatch.pl, which
+goes into an infinite loop if you try to run it on it.)
+
+thanks
+-- PMM

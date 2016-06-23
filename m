@@ -1,102 +1,141 @@
-Received: by 10.25.21.96 with SMTP id l93csp363237lfi;
-        Wed, 22 Jun 2016 23:44:15 -0700 (PDT)
-X-Received: by 10.55.40.68 with SMTP id o65mr124285qkh.201.1466664255420;
-        Wed, 22 Jun 2016 23:44:15 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id r70si4281801qkr.195.2016.06.22.23.44.15
+Received: by 10.25.21.96 with SMTP id l93csp434371lfi;
+        Thu, 23 Jun 2016 03:04:03 -0700 (PDT)
+X-Received: by 10.55.186.193 with SMTP id k184mr44139705qkf.184.1466676243409;
+        Thu, 23 Jun 2016 03:04:03 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d6si4883698qtd.124.2016.06.23.03.04.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Jun 2016 23:44:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Thu, 23 Jun 2016 03:04:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34768 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
+Received: from localhost ([::1]:35629 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bFyN4-0008SH-Pz
-	for alex.bennee@linaro.org; Thu, 23 Jun 2016 02:44:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44754)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bG1UQ-0004np-Qw
+	for alex.bennee@linaro.org; Thu, 23 Jun 2016 06:04:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43270)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bFy6t-0006eC-0b
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 02:27:32 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1bG1UI-0004kt-A6
+	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 06:04:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bFy6n-0003pu-0w
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 02:27:29 -0400
-Received: from 19.mo1.mail-out.ovh.net ([178.32.97.206]:52751)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bFy6m-0003po-QO
-	for qemu-devel@nongnu.org; Thu, 23 Jun 2016 02:27:24 -0400
-Received: from player758.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id DAF03FF9AAD
-	for <qemu-devel@nongnu.org>; Thu, 23 Jun 2016 08:27:23 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player758.ha.ovh.net (Postfix) with ESMTPSA id 2D1692C0085;
-	Thu, 23 Jun 2016 08:27:19 +0200 (CEST)
-To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <1466648115-17015-1-git-send-email-andrew@aj.id.au>
-	<1466648115-17015-2-git-send-email-andrew@aj.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ccc7f78a-c5d7-8598-7faa-a7f8099a4258@kaod.org>
-Date: Thu, 23 Jun 2016 08:27:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
+	(envelope-from <afarallax@yandex.ru>) id 1bG1UD-00068U-5E
+	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 06:03:53 -0400
+Received: from forward2j.cmail.yandex.net ([5.255.227.20]:42295)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <afarallax@yandex.ru>)
+	id 1bG1UB-00062s-Kb; Thu, 23 Jun 2016 06:03:49 -0400
+Received: from mxback5j.mail.yandex.net (mxback5j.mail.yandex.net
+	[5.45.198.19])
+	by forward2j.cmail.yandex.net (Yandex) with ESMTP id 1816720F7B;
+	Thu, 23 Jun 2016 13:03:33 +0300 (MSK)
+Received: from web21j.yandex.ru (web21j.yandex.ru [5.45.198.62])
+	by mxback5j.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
+	D6EebyiVv4-3W103Wbr; Thu, 23 Jun 2016 13:03:32 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1466676212; bh=KPdQSFcUIorgMJAM0ANT/KX7Q5sYcHh93U7TYAjHyNI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:MIME-Version:Message-Id:
+	X-Mailer:Date:Content-Transfer-Encoding:Content-Type;
+	b=lIRowEbRT/s5GWIBOTz/wK+OWG7b2yZiI5dTmr+gtQgv1dT2Fi0MvuV7jwXQ/rkGk
+	99v7M7OZe+iOY6CduSa8DYvJTA0hyzPWi+/CrnkRB6XjpRE3ymC4ep1H6psasfhNdp
+	ZRNIwqGDRnIXq3RehCvspCnoh0AxrosTlfL0nTp8=
+Authentication-Results: mxback5j.mail.yandex.net; dkim=pass header.i=@yandex.ru
+Received: by web21j.yandex.ru with HTTP;
+	Thu, 23 Jun 2016 13:03:32 +0300
+From: Sergey Sorokin <afarallax@yandex.ru>
+To: Richard Henderson <rth@twiddle.net>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+In-Reply-To: <6c24c820-4a26-848c-e62d-88ebce59125d@twiddle.net>
+References: <1466599029-3388432-1-git-send-email-afarallax@yandex.ru>
+	<5d86b8ba-16e8-e94d-ba7f-e865cbcc938e@twiddle.net>
+	<1793281466613020@web5h.yandex.ru>
+	<6c24c820-4a26-848c-e62d-88ebce59125d@twiddle.net>
 MIME-Version: 1.0
-In-Reply-To: <1466648115-17015-2-git-send-email-andrew@aj.id.au>
-Content-Type: text/plain; charset=windows-1252
-X-Ovh-Tracer-Id: 9316540257005570992
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrtdehgdduudefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Message-Id: <201241466676212@web21j.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Thu, 23 Jun 2016 13:03:32 +0300
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 178.32.97.206
-Subject: Re: [Qemu-devel] [PATCH v2 1/3] hw/misc: Add a model for the ASPEED
- System Control Unit
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 5.255.227.20
+Subject: Re: [Qemu-arm] [PATCH v2] Improve the alignment check infrastructure
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4OOKAI01Q1CP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Claudio Fontana <claudio.fontana@huawei.com>,
+	Alexander Graf <agraf@suse.de>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Vassili Karpov <av1474@comtv.ru>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yIqT5/KWdgO2
 
-On 06/23/2016 04:15 AM, Andrew Jeffery wrote:
-> The SCU is a collection of chip-level control registers that manage the
-> various functions supported by ASPEED SoCs. Typically the bits control
-> interactions with clocks, external hardware or reset behaviour, and we
-> can largly take a hands-off approach to reads and writes.
->=20
-> Firmware makes heavy use of the state to determine how to boot, but the
-> reset values vary from SoC to SoC (eg AST2400 vs AST2500). A qdev
-> property is exposed so that the integrating SoC model can configure the
-> silicon revision, which in-turn selects the appropriate reset values.
-> Further qdev properties are exposed so the board model can configure th=
-e
-> board-dependent hardware strapping.
->=20
-> Almost all provided AST2400 reset values are specified by the datasheet=
-.
-> The notable exception is SOC_SCRATCH1, where we mark the DRAM as
-> successfully initialised to avoid unnecessary dark corners in the SoC's
-> u-boot support.
->=20
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+So what's wrong in this part of the patch?
 
-
-
-Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
+22.06.2016, 20:12, "Richard Henderson" <rth@twiddle.net>:
+> On 06/22/2016 09:30 AM, Sergey Sorokin wrote:
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0diff --git a/tcg/ppc/tcg-target.i=
+nc.c b/tcg/ppc/tcg-target.inc.c
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0index da10052..3dc38fa 100644
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0--- a/tcg/ppc/tcg-target.inc.c
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+++ b/tcg/ppc/tcg-target.inc.c
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0@@ -1399,6 +1399,7 @@ static TCGR=
+eg tcg_out_tlb_read(TCGContext *s,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0TCGMemOp opc,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int=
+ add_off =3D offsetof(CPUArchState, tlb_table[mem_index][0].addend);
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0TCG=
+Reg base =3D TCG_AREG0;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0TCG=
+MemOp s_bits =3D opc & MO_SIZE;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ int a_bits =3D get_alignment_bi=
+ts(opc);
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/* =
+Extract the page index, shifted into place for tlb index. */
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if =
+(TCG_TARGET_REG_BITS =3D=3D 64) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0@@ -1456,14 +1457,21 @@ static TC=
+GReg tcg_out_tlb_read(TCGContext *s,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0TCGMemOp opc,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0* the bottom bits and thus trigger a compariso=
+n failure on
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0* unaligned accesses
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0*/
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ if (a_bits > 0) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ tcg_debug_assert((((1 << a_bits=
+) - 1) & TLB_FLAGS_MASK) =3D=3D 0);
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ } else {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ a_bits =3D s_bits;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ }
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0tcg_out_rlw(s, RLWINM, TCG_REG_R0, addrlo, 0,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0+ (32 - a_bits) & 31, 31 - TARGET=
+_PAGE_BITS);
+>>>
+>>> =C2=A0ppc32 can certainly support over-alignment, just like every oth=
+er target. It's
+>>> =C2=A0just that there are some 32-bit parts that don't support unalig=
+ned accesses.
+>>
+>> =C2=A0I don't understand your point here.
+>
+> ppc32 can support a_bits > s_bits.
+>
+> r~

@@ -1,74 +1,74 @@
-Received: by 10.25.21.96 with SMTP id l93csp809410lfi;
-        Thu, 23 Jun 2016 19:05:11 -0700 (PDT)
-X-Received: by 10.55.78.16 with SMTP id c16mr1975049qkb.48.1466733911558;
-        Thu, 23 Jun 2016 19:05:11 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp815267lfi;
+        Thu, 23 Jun 2016 19:22:24 -0700 (PDT)
+X-Received: by 10.55.209.83 with SMTP id s80mr1856310qki.87.1466734944176;
+        Thu, 23 Jun 2016 19:22:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a4si3024300qkh.203.2016.06.23.19.05.11
+        by mx.google.com with ESMTPS id y32si3079111qta.101.2016.06.23.19.22.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Jun 2016 19:05:11 -0700 (PDT)
+        Thu, 23 Jun 2016 19:22:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@aj.id.au;
        dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40315 helo=lists.gnu.org)
+Received: from localhost ([::1]:40352 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bGGUZ-0007Cy-1D
-	for alex.bennee@linaro.org; Thu, 23 Jun 2016 22:05:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42400)
+	id 1bGGlD-0005Fe-Kl
+	for alex.bennee@linaro.org; Thu, 23 Jun 2016 22:22:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bGGUU-0007BE-1C
-	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 22:05:07 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bGGl9-0005FY-5k
+	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 22:22:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bGGUP-0002dQ-Nf
-	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 22:05:04 -0400
-Received: from new1-smtp.messagingengine.com ([66.111.4.221]:40329)
+	(envelope-from <andrew@aj.id.au>) id 1bGGl4-0006U1-20
+	for qemu-arm@nongnu.org; Thu, 23 Jun 2016 22:22:19 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:54342)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andrew@aj.id.au>)
-	id 1bGGUN-0002XG-BK; Thu, 23 Jun 2016 22:05:01 -0400
+	id 1bGGl1-0006S8-L0; Thu, 23 Jun 2016 22:22:13 -0400
 Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailnew.nyi.internal (Postfix) with ESMTP id 8DA08A7C;
-	Thu, 23 Jun 2016 22:04:45 -0400 (EDT)
+	by mailnew.nyi.internal (Postfix) with ESMTP id 271C8CDF;
+	Thu, 23 Jun 2016 22:21:58 -0400 (EDT)
 Received: from frontend1 ([10.202.2.160])
-	by compute5.internal (MEProxy); Thu, 23 Jun 2016 22:04:45 -0400
+	by compute5.internal (MEProxy); Thu, 23 Jun 2016 22:21:58 -0400
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
 	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=BAPpb
-	tXW++0XiUAWlt5f2IvbE6Y=; b=S/UBB3tMehN1ddWYWuWe507NIF5qKlWRbgYSg
-	XO0Th/CyyUK7yDK//UsPUARFrzXSNUmwQvrPmQYGsApNWPBwK4suHof5p67RRx+Z
-	8wN1xP09hBNme2XYGhKhnGqtRVEjn2yJZigt0Kh65TDPdzH66cF6MXjk0huPzM6V
-	4Hf0Qw=
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=mNxhg
+	1ybIqhp+BGY6Vp8Xf4UQLw=; b=Ym1KJs6uHzcyFjWHV1b4M8dc07YNzfh30amRB
+	gsyYZAY/aHbUALMUoV5YBuNGXyb5p2uwG5rLrbrwqxl7DYZp9Z+fnm1q7xwLzZxE
+	d3dvZ8fx6RgcGBdkqPzAozKAv8Jo+G2QlF4OsZdlcx6l667zEkTXooi+Dnwxd0H1
+	2ld5PU=
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to:x-sasl-enc
-	:x-sasl-enc; s=smtpout; bh=BAPpbtXW++0XiUAWlt5f2IvbE6Y=; b=or2i+
-	Sfm/ewtMn3X0od/UQQEFbzvruklzWVDeDbNqdHmYeo+2VMhoovYhEWA74h3dNWBR
-	hZ6ad0L0Lzh1gXkoi/2FzZTL+yjufQip2vJ2Re3UUSmt4N3t/Fc8A+nYraHyvwC7
-	9muu3UwMLnkRWZc2Sz+TRXv25lloXh9fLzMiws=
-X-Sasl-enc: ggg0vNr1J9KGfjRn5zpssKvvO5L4RS+fo5aE/cyA5WDx 1466733881
+	:x-sasl-enc; s=smtpout; bh=mNxhg1ybIqhp+BGY6Vp8Xf4UQLw=; b=L+O3A
+	+5rfpllYGIv79N/JDkeFU2GuLVwRcwnDHlaVtul/EdtZP3txbH0Q8BY7EYtfJrWO
+	/UOjX/W1TwIwlUZffN/hdmu5CHayUzaGfZqCWMNTdd4feJteu6jUjEWA//TNnpRD
+	5DIk5U/ZmlYCpXMjS9HutZ86qFWkON9Okq42rA=
+X-Sasl-enc: uRzmSVz83Mp91TFYpGatf1gNPqY2SvSTkAv2KxqcCTO6 1466734916
 Received: from keelia (ppp203-122-213-247.static.internode.on.net
 	[203.122.213.247])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 8E947F29F3;
-	Thu, 23 Jun 2016 22:04:38 -0400 (EDT)
-Message-ID: <1466733871.23740.111.camel@aj.id.au>
+	by mail.messagingengine.com (Postfix) with ESMTPA id 88230F29FA;
+	Thu, 23 Jun 2016 22:21:54 -0400 (EDT)
+Message-ID: <1466734909.23740.125.camel@aj.id.au>
 From: Andrew Jeffery <andrew@aj.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jun 2016 11:34:31 +0930
-In-Reply-To: <CAFEAcA9MYTmTRsj1ga-Vu0yrunytvY9rAUDwHR3ziY2oHWNYpg@mail.gmail.com>
+Date: Fri, 24 Jun 2016 11:51:49 +0930
+In-Reply-To: <CAFEAcA94oy9Bw=1trtn1rnbobMQwpRg-8oOgf1G_1rbhaZH-7w@mail.gmail.com>
 References: <1466648115-17015-1-git-send-email-andrew@aj.id.au>
-	<1466648115-17015-2-git-send-email-andrew@aj.id.au>
-	<CAFEAcA9MYTmTRsj1ga-Vu0yrunytvY9rAUDwHR3ziY2oHWNYpg@mail.gmail.com>
+	<1466648115-17015-4-git-send-email-andrew@aj.id.au>
+	<CAFEAcA94oy9Bw=1trtn1rnbobMQwpRg-8oOgf1G_1rbhaZH-7w@mail.gmail.com>
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-iCjhPVV1IdiIPjiWO/wB"
+	protocol="application/pgp-signature"; boundary="=-x4DU9CVQVzsxpw64qPwE"
 X-Mailer: Evolution 3.18.5.2-0ubuntu3 
 Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 66.111.4.221
-Subject: Re: [Qemu-arm] [PATCH v2 1/3] hw/misc: Add a model for the ASPEED
- System Control Unit
+Subject: Re: [Qemu-arm] [PATCH v2 3/3] palmetto-bmc: Configure the SCU's
+ hardware strapping register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,67 +85,89 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QI+DS9YnUF1U
+X-TUID: a+xw1HqzZ1LV
 
 
---=-iCjhPVV1IdiIPjiWO/wB
+--=-x4DU9CVQVzsxpw64qPwE
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, 2016-06-23 at 18:42 +0100, Peter Maydell wrote:
+On Thu, 2016-06-23 at 18:39 +0100, Peter Maydell wrote:
 > On 23 June 2016 at 03:15, Andrew Jeffery <andrew@aj.id.au> wrote:
 > >=20
-> > The SCU is a collection of chip-level control registers that manage the
-> > various functions supported by ASPEED SoCs. Typically the bits control
-> > interactions with clocks, external hardware or reset behaviour, and we
-> > can largly take a hands-off approach to reads and writes.
+> > The magic constant configures the following options:
 > >=20
-> > Firmware makes heavy use of the state to determine how to boot, but the
-> > reset values vary from SoC to SoC (eg AST2400 vs AST2500). A qdev
-> > property is exposed so that the integrating SoC model can configure the
-> > silicon revision, which in-turn selects the appropriate reset values.
-> > Further qdev properties are exposed so the board model can configure th=
-e
-> > board-dependent hardware strapping.
-> >=20
-> > Almost all provided AST2400 reset values are specified by the datasheet=
-.
-> > The notable exception is SOC_SCRATCH1, where we mark the DRAM as
-> > successfully initialised to avoid unnecessary dark corners in the SoC's
-> > u-boot support.
-> >=20
-> > +static Property aspeed_scu_properties[] =3D {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_UINT32("silicon-rev", AspeedSCUSta=
-te, silicon_rev, 0),
-> > +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState=
-, hw_strap1, 0),
-> > +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState=
-, hw_strap1, 0),
-> > +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_END_OF_LIST(),
-> > +};
-> You don't seem to specify in the board layer or the SoC layer
-> any of these except hw-strap1, so should the default values
-> for these really all be zero?
+> > * 28:27: Configure DRAM size as 256MB
+> > * 26:24: DDR3 SDRAM with CL =3D 6, CWL =3D 5
+> > * 23: Configure 24/48MHz CLKIN
+> > * 22: Disable GPIOE pass-through mode
+> > * 21: Disable GPIOD pass-through mode
+> > * 20: Enable LPC decode of SuperIO 0x2E/0x4E addresses
+> > * 19: Disable ACPI
+> > * 18: Configure 48MHz CLKIN
+> > * 17: Disable BMC 2nd boot watchdog timer
+> > * 16: Decode SuperIO address 0x2E
+> > * 15: VGA Class Code
+> > * 14: Enable LPC dedicated reset pin
+> > * 13:12: Enable SPI Master and SPI Slave to AHB Bridge
+> > * 11:10: Select CPU:AHB ratio =3D 2:1
+> > * 9:8: Select 384MHz H-PLL
+> > * 7: Configure MAC#2 for RMII/NCSI
+> > * 6: Configure MAC#1 for RMII/NCSI
+> > * 5: No VGA BIOS ROM
+> > * 4: Boot using 32bit SPI address mode
+> > * 3:2: Select 16MB VGA memory
+> > * 1:0: Boot from SPI flash memory
+> Maybe we should say this in a comment in the code?
 
-Both strap register default values are 0 according to the datasheet.
+The list describes our specific value choices in the register's
+bitfields rather than fully documenting the bitfields and values. If
+you prefer I could switch to the latter and make it a comment, but
+failing that my only thought was if we tweaked the value the comment
+maybe come out of sync. By putting our choices in the commit message
+the description is at least accurate for what was configured at the
+time.
+
+However I don't expect we will tweak the value...
 
 >=20
-> I suspect silicon-rev at least should either have a default
-> value specified here, or have the SoC layer specify it.
-> (It probably should not be specified at the board level.)
-
-I intended to set silicon-rev in the SoC layer, so I'll fix patch 2/3.
-With the addition of sanity checking in the SCU's realise() we'll catch
-the case where it's an invalid value (eg 0). I don't think it's right
-to plow ahead with an unexpected configuration if a chosen default
-value doesn't match the SoC at hand.
-
-Maybe I shouldn't send patches with a heavy head cold :/
+> >=20
+> > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+> > ---
+> > =C2=A0hw/arm/palmetto-bmc.c | 2 ++
+> > =C2=A01 file changed, 2 insertions(+)
+> >=20
+> > diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
+> > index a51d960510ee..b8eed21348d8 100644
+> > --- a/hw/arm/palmetto-bmc.c
+> > +++ b/hw/arm/palmetto-bmc.c
+> > @@ -44,6 +44,8 @@ static void palmetto_bmc_init(MachineState *machine)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&bmc->ram);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_const_link(OBJECT(&bm=
+c->soc), "ram", OBJECT(&bmc->ram),
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&er=
+ror_abort);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0object_property_set_int(OBJECT(&bmc->soc), 0x1=
+20CE416, "hw-strap1",
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0&error_abort);
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_property_set_bool(OBJECT(&bmc->soc=
+), true, "realized",
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0&error_abort);
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 Cheers,
 
 Andrew
---=-iCjhPVV1IdiIPjiWO/wB
+
+--=-x4DU9CVQVzsxpw64qPwE
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
@@ -153,20 +175,20 @@ Content-Transfer-Encoding: 7bit
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCgAGBQJXbJUvAAoJEJ0dnzgO5LT5I4oP/20HU2XwQO2RjAvucWTOPteq
-cIHuRwxZY7rkcApdOgGs/1IXHfJ/PIr5wO93ql+Bz3jXLIYb/g8KNQc/KIfB9RjZ
-ywANoO93tH9XscHLWJ3h+qvJ54t8q8VusXrPm0wN3aZB9PC63eUfWMKmJyTP/Pzd
-Ps39VUzRTfc1o/NAcHo8M3sTobo/lyk4Z25FirFhnVvDz+g0drialgXMo8NTEHrD
-nrA85KtxlOl74CoCQTk/GY3+NiqA3JSGVJ9rRxwIgl8sTQxZfjHcMaJnnXCLk2DO
-6OCfjtDpljbVI6Hdq2fswvEeoEuif6Mz/Ki0cSAO060kb+n+R+S+rkwpfv+3zllF
-8ILWFHV+JUNjrAB7nL8Hjkq2u1Pub1uQVNI14SJp9R4UU9Im2qKly1l0tn4fCXat
-YLUxho0Xdq0hCPks3uLIrR6rqpMMM7gpytIXa7q0KDbtVt10H2AOKJ0tn6fZteDP
-wo0BkzhR6aUxtKSIdgNZlDGctrBGGpsYKyvETl6Z7ds7+ZTev0lkdv7DbS6zeORS
-5/sduvLP13FWNqA6Kyz2J+iXITowPJaEbLtW7uQyxgA3qZkcU3zj/t9UudhGDVqS
-pnqF8UEl3xTS7hBeoXMeZnxYQf7CLRa8T2x002n5YOFT0O5cELg9m8Mkg5NzJsIn
-39zUcQMu6SX/fwcjgCQo
-=encd
+iQIcBAABCgAGBQJXbJk+AAoJEJ0dnzgO5LT59+4P/2j5Lfqh0cebwIi22o1l4z3F
+BfdnRlHJDodE8uyNft2RorDDKPERFOt+i7RIxgF+olnhI1oUZFS7AJPWa/B4KCe3
+RYSL2y5zF4xPjtvplK9GBROIfTYMgVL7bEqst3w2aAKj4udMeG5gnbMU9VaSIu4Y
+YI+SGvf67g4kCvsQ1pJN0bWRBsnce3VOhQ4Jc4jWMzZSgcPt1diNbezIhroJUMKT
+jgfQTR7KCYeRaeQ91yYM7r6ykKZrhCUzMwmSrbmp4z0IP5pABG0g5+Ag4pPEatLe
+yyP/+BlIP2Xaci4y+igceYdERag8q5k4+VF6GzB7iKiQJLm01Nu5kPKXjOMOrbBN
+Ui7/ElvlGslSOJhZn3V57uvy+jmON0nBYF9NPxqI/9vzlFqZdudHAn8grpqrV9pm
+rV7pRiAxgbYTxHGp3r/6mdW1i7dbAWRVUFM4yP/Cc9Scs3O7dRh6luRsXwAqCKsK
+RTVRi5vASZSPGvq2nMDpnh/6q4CmCoszgiziCAFPf+mNDW6o8PzdvJOjDSR2w7Tc
+037vWOdaCSAZOLF59NRFAZgoLm9w1Uh3sXJyIjsUiYOOXLXk+ViLwxi+aOsKENBD
+ch6eh+0rHzvxMCQI7R4h0udSxBmIJRD4M3PI7HhTTKgY86zigMAkOdpAk13LQ6Lg
+k+CWefope6yEkRxis3qX
+=O+DC
 -----END PGP SIGNATURE-----
 
---=-iCjhPVV1IdiIPjiWO/wB--
+--=-x4DU9CVQVzsxpw64qPwE--
 

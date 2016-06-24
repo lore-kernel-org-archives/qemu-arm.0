@@ -1,74 +1,73 @@
-Received: by 10.25.21.96 with SMTP id l93csp1158106lfi;
-        Fri, 24 Jun 2016 10:27:47 -0700 (PDT)
-X-Received: by 10.55.176.130 with SMTP id z124mr6397599qke.55.1466789267252;
-        Fri, 24 Jun 2016 10:27:47 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp65577lfi;
+        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
+X-Received: by 10.55.116.195 with SMTP id p186mr7010326qkc.52.1466800267273;
+        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u24si5609337qki.197.2016.06.24.10.27.47
+        by mx.google.com with ESMTPS id u82si5804806qku.15.2016.06.24.13.31.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Jun 2016 10:27:47 -0700 (PDT)
+        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45158 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47232 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bGUtO-0003Hd-NN
-	for alex.bennee@linaro.org; Fri, 24 Jun 2016 13:27:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55342)
+	id 1bGXko-00035M-NV
+	for alex.bennee@linaro.org; Fri, 24 Jun 2016 16:31:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39524)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bGUtL-0003BN-FX
-	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 13:27:44 -0400
+	(envelope-from <digetx@gmail.com>) id 1bGXkl-0002ue-9Q
+	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 16:31:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bGUtJ-000659-D4
-	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 13:27:42 -0400
-Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:34575)
+	(envelope-from <digetx@gmail.com>) id 1bGXkk-0001cA-Ao
+	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 16:31:03 -0400
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34633)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bGUtI-00064z-R7
-	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 13:27:41 -0400
-Received: by mail-vk0-x231.google.com with SMTP id c2so129423063vkg.1
-	for <qemu-arm@nongnu.org>; Fri, 24 Jun 2016 10:27:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TQpLCfq+QN+DWH6yVtyeO/t7uL/LjOnurLBdLe/NaL4=;
-	b=GJ74hg/Bk/qBkyRbJFQf+Q2yjq0uMCKeiXmB/JJaUN1ydhbDbHanen7GhnntQTsTMK
-	W1Rk30vFnqlvWj9qZvKaWIrMnd8/A0yzXkcQPQhTceNVvXe5IcGD15KOlv03ja+P0h5h
-	7T5Jqa78FaPsXAizq6t7gdGjh2oaLiNbQHwb0=
+	(envelope-from <digetx@gmail.com>)
+	id 1bGXke-0001ar-T1; Fri, 24 Jun 2016 16:30:57 -0400
+Received: by mail-lf0-x244.google.com with SMTP id l184so22878987lfl.1;
+	Fri, 24 Jun 2016 13:30:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=4NYSbLHeGnMunz+YmizcGvO8lNR2QG5vP+z3WGr7dAg=;
+	b=tF4mhYj33PZp8jMwViE02VJyzjXVdCcJQlyoCsDu5/tzK0v3C1dsN4djczJ35P4P0z
+	E1AHfK+3JH+fgMN9xo3TmEa8bxNfZFr8YJjeWgmyC6LXxKWxmf29xzFZ9kBeAbKaacEj
+	tEpaNCM7o07rekfMBVSSiFuJBZIY072FwQP1QYYithV8LZE2KEZHHVZG8xGvc2xPQJov
+	xG429aIJaaapN6veYZytxvCpL3oFUWEHIiH5wnJpEuI7o3ljkpS0qVkKe1995YFNmiU8
+	PTuoJUFmED36Ep8Y5QgTC0HFV42MSSsULZhCIb8emUrmXwzptK+7BXsrGjzy1o2fMWY7
+	ZPJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=TQpLCfq+QN+DWH6yVtyeO/t7uL/LjOnurLBdLe/NaL4=;
-	b=J7gUaAj0uJaHhJNgaPSenSHrcdeE0ufOeLAwSvXtj+PTsCVHWDK4pZAOPQuMfVW6gq
-	SKZ4Gn+ER4VN2GeHK5dTfdTJOiBRW9fnhAmqrGWyHQsLQ2lc48r7ySshprMKc+P8EzZw
-	yJJ5kD9KO+MQxjNZ5X8OGAZGfT62FgqCwQN92Jk+2OwJA82JiCn8GRxs9aGPhD+2s92b
-	IasP0AUTKMiwN6AxMcEe8Ho5EKBe+5kssI1zvj0BCzuTaaA9QfJYn7GkTOgCrTNVcnok
-	EJF0dQOoOErgn9mzW8e4EeUPuwrbI6pvx6IhJ1ghqjgpY75zU91NmsHvJrJUnvy/8Doy
-	LQKg==
-X-Gm-Message-State: ALyK8tI1UfbkU4faN6MkFujC+0+8GYiIGaCs+zmFQ72mQ+Z+JC44cJNkiAfmt3FQFwrvbrAlycN8ujZVo0zpZ9O/
-X-Received: by 10.176.0.145 with SMTP id 17mr3113262uaj.103.1466789260388;
-	Fri, 24 Jun 2016 10:27:40 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Fri, 24 Jun 2016 10:27:20 -0700 (PDT)
-In-Reply-To: <20160624172223.gxbd7nsna6spflxt@hawk.localdomain>
-References: <1466535515-18092-1-git-send-email-drjones@redhat.com>
-	<CAFEAcA-56LUe_jYK=V-H890WVL12YuDeRSZn9FK3yReiJ4p2Hw@mail.gmail.com>
-	<20160624160321.nvn5run4kmywk7kc@hawk.localdomain>
-	<20160624161513.zgqxspxhdre3d67c@hawk.localdomain>
-	<CAFEAcA8xQV3PJ7BgFa=ohYDGqyVEtQ9bssoB+0JkGaGJqtaK=w@mail.gmail.com>
-	<20160624172223.gxbd7nsna6spflxt@hawk.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 Jun 2016 18:27:20 +0100
-Message-ID: <CAFEAcA9o57GET+mWOfrVhdRo=5a1w-AJeRPwssmJG1BcD4Ag8Q@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=4NYSbLHeGnMunz+YmizcGvO8lNR2QG5vP+z3WGr7dAg=;
+	b=OIMCNhOTxO+JKzo+Th5JbaSBWEseriHfUiH9pFZLWWi9fAnM536zaPhbaSBFNN21Mm
+	8cHmAuZKbKVIIuLBKh/PkO5Tl4CqGbRP+fGR4FwcfHtbe0qxxsnQD2kUfMqkBeUlgaxP
+	vCWjNbPcselD0zAi6OxcjzYnoCyLFfSSnsAl5Ju7I5DxQwdwmZuobR2cqhbz4psw0qu1
+	w8igB7ucTdJbH6CA8uktr57enWAYipS+tHJsCv3UrmeiALSzBvPPwNZ3H8IBLZGA5v4V
+	ubi+67PESfwvRVHFGZx9EQRYzXR9spZzzbT9uTyqteWQiMhYpRe3vmtTNeWZ19rjqKbG
+	vDzw==
+X-Gm-Message-State: ALyK8tKPCPsCjv2OLYFbbeY6f/G/+WnYmbTtx3t7hZ19rv+tWTmUdYdDt0bY0FtkYvGeLg==
+X-Received: by 10.25.169.7 with SMTP id s7mr2092482lfe.57.1466800255981;
+	Fri, 24 Jun 2016 13:30:55 -0700 (PDT)
+Received: from localhost.localdomain (ppp109-252-52-30.pppoe.spdop.ru.
+	[109.252.52.30]) by smtp.gmail.com with ESMTPSA id
+	u13sm1119542lja.15.2016.06.24.13.30.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 24 Jun 2016 13:30:55 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org
+Date: Fri, 24 Jun 2016 23:29:34 +0300
+Message-Id: <20160624202934.702-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.9.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::231
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt: gicv3: use all
- target-list bits
+X-Received-From: 2a00:1450:4010:c07::244
+Subject: [Qemu-arm] [PATCH] hw/ptimer: Don't wrap around counter for expired
+ timer that uses tick handler
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,31 +79,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UN/RdScpLgs5
+X-TUID: VPS0I4UOZHA/
 
-On 24 June 2016 at 18:22, Andrew Jones <drjones@redhat.com> wrote:
-> On Fri, Jun 24, 2016 at 05:41:55PM +0100, Peter Maydell wrote:
->> KVM AArch32 is 4 CPUs per cluster:
->> http://lxr.free-electrons.com/source/arch/arm/kvm/coproc.c#L109
->
-> Hmm... yes, it should use coproc.c, but here's what I get when I
-> test
->
-> qemu-system-aarch64 \
->   -machine virt,gic-version=2,accel=kvm \
->   -cpu host,aarch64=off \
->   -device virtio-serial-device \
->   -device virtconsole,chardev=ctd \
->   -chardev testdev,id=ctd \
->   -display none -serial stdio \
->   -kernel arm/selftest.flat \
->   -append smp -smp 8
+Software should see timer counter wrap around only after IRQ being triggered.
+Change returned counter value to "1" for the expired timer and avoid returning
+wrapped around counter value in periodic mode for the timer that has bottom-half
+handler setup, assuming it is IRQ handler.
 
-This suggests that 32-bit-guest-on-64-bit-host and
-32-bit-guest-on-32-bit-host differ...
+This fixes regression introduced by the commit 5a50307 ("hw/ptimer: Perform
+counter wrap around if timer already expired") on SPARC emulated machine as
+reported by Mark Cave-Ayland.
 
-thanks
--- PMM
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+---
+ hw/core/ptimer.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index 7f89001..620ac2e 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -98,10 +98,10 @@ uint64_t ptimer_get_count(ptimer_state *s)
+         bool oneshot = (s->enabled == 2);
+ 
+         /* Figure out the current counter value.  */
+-        if (expired && (oneshot || use_icount)) {
++        if (expired && (oneshot || use_icount || s->bh != NULL)) {
+             /* Prevent timer underflowing if it should already have
+                triggered.  */
+-            counter = 0;
++            counter = 1;
+         } else {
+             uint64_t rem;
+             uint64_t div;
+@@ -148,7 +148,9 @@ uint64_t ptimer_get_count(ptimer_state *s)
+ 
+             if (expired && counter != 0) {
+                 /* Wrap around periodic counter.  */
+-                counter = s->limit - (counter - 1) % s->limit;
++                counter = s->delta = s->limit - (counter - 1) % s->limit;
++                /* Re-arm timer according to the wrapped around value.  */
++                ptimer_reload(s);
+             }
+         }
+     } else {
+-- 
+2.9.0
+

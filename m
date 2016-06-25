@@ -1,158 +1,133 @@
-Received: by 10.25.21.96 with SMTP id l93csp1127643lfi;
-        Fri, 24 Jun 2016 09:17:59 -0700 (PDT)
-X-Received: by 10.55.186.193 with SMTP id k184mr6008972qkf.184.1466785079368;
-        Fri, 24 Jun 2016 09:17:59 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp320166lfi;
+        Sat, 25 Jun 2016 05:38:31 -0700 (PDT)
+X-Received: by 10.200.51.35 with SMTP id t32mr10887957qta.91.1466858311817;
+        Sat, 25 Jun 2016 05:38:31 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t82si1637801qkl.33.2016.06.24.09.17.59
+        by mx.google.com with ESMTPS id q38si8919234qtb.16.2016.06.25.05.38.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Jun 2016 09:17:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 25 Jun 2016 05:38:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44752 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49797 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bGTnq-0007sK-Lp
-	for alex.bennee@linaro.org; Fri, 24 Jun 2016 12:17:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37410)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bGmr1-0000TI-8Z
+	for alex.bennee@linaro.org; Sat, 25 Jun 2016 08:38:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49487)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bGTlN-0006D7-84
-	for qemu-devel@nongnu.org; Fri, 24 Jun 2016 12:15:26 -0400
+	(envelope-from <digetx@gmail.com>) id 1bGmqx-0000Ro-U8
+	for qemu-arm@nongnu.org; Sat, 25 Jun 2016 08:38:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bGTlL-0003cN-Vs
-	for qemu-devel@nongnu.org; Fri, 24 Jun 2016 12:15:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34448)
+	(envelope-from <digetx@gmail.com>) id 1bGmqw-0001mF-80
+	for qemu-arm@nongnu.org; Sat, 25 Jun 2016 08:38:27 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:36848)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1bGTlF-0003aa-5t; Fri, 24 Jun 2016 12:15:17 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8AC55C04B311;
-	Fri, 24 Jun 2016 16:15:16 +0000 (UTC)
-Received: from hawk.localdomain (dhcp-1-122.brq.redhat.com [10.34.1.122])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5OGFDV8022877
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 24 Jun 2016 12:15:15 -0400
-Date: Fri, 24 Jun 2016 18:15:13 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160624161513.zgqxspxhdre3d67c@hawk.localdomain>
-References: <1466535515-18092-1-git-send-email-drjones@redhat.com>
-	<CAFEAcA-56LUe_jYK=V-H890WVL12YuDeRSZn9FK3yReiJ4p2Hw@mail.gmail.com>
-	<20160624160321.nvn5run4kmywk7kc@hawk.localdomain>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20160624160321.nvn5run4kmywk7kc@hawk.localdomain>
-User-Agent: Mutt/1.5.23.1 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 24 Jun 2016 16:15:16 +0000 (UTC)
+	(envelope-from <digetx@gmail.com>)
+	id 1bGmqq-0001jG-LX; Sat, 25 Jun 2016 08:38:20 -0400
+Received: by mail-lf0-x241.google.com with SMTP id a2so24358283lfe.3;
+	Sat, 25 Jun 2016 05:38:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=X6Yh41+MqX6UohJFk1nfq5yGtOZJdgsThHYtSN93jVE=;
+	b=oLgIHKFiq3WRWJrAMvaf8E7U5Ev6oVjzu0NpWCDT4GbCQsj6HsVnRmFLZuNSinanJC
+	7nzR2m8ecsDQMEbg8sEf06ze9Ou1f7h/sr/3myAIKhmTVWx9Uvc3pBMiNtnKZPsNJJJ0
+	QY4MVEUI1xLkMuQac51hiYzhjkqR+XkMUPWmEsW8s0RikP25mxeaHuSQd7DOLasHdcSk
+	yMnOiL2f2mWfQ9yecUjnyCnhXNG2I2QmKbvr769/zzH84OEnwO+VGT9AdFxLJNzrbdUD
+	s6IR5GDeB3ZIrb0wWlaOAAPvUgcmOe2MNZtd8m5q3A9ogKQIKTgkbR0iEmeyJdQaL7qP
+	zHqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=X6Yh41+MqX6UohJFk1nfq5yGtOZJdgsThHYtSN93jVE=;
+	b=M3VxxsOijSr6F3aHrM+s9x2K6D/W+lU9sfvH6SQo27et6349fip4LkrbeU2mLim7AV
+	7LBje4X7eYPAnzQ9aCQFqxeGcOitYVTVHW5+8lrxKqOfvd4uyTkm041lTNMHXWarjCpW
+	NJVsI3eE7gzgS3xjjAbabCP5+Qe4IFt0InNr5hbI4SkHP3NaD6U0luodIouQ6JT0BIUw
+	MwL+h0zHO8q0NaYwx5aredqrvo0HvY8TQpgvReE+weBONUaty+zOMC7nwrERpxN+beDN
+	oZCj1uUGc2OYUuhSAyl5BW906W5Yj/Q8qJUTwuxTAIFPrt8pPwFoFTe2yZwtm42Ao7my
+	Hwhg==
+X-Gm-Message-State: ALyK8tIsQq0lpahVDCsO7L6RIUV25j9iybQkrSMYyJLH9VzjLsi4xuCtCEq2/qk5/slclA==
+X-Received: by 10.25.90.209 with SMTP id o200mr2313965lfb.193.1466858299692;
+	Sat, 25 Jun 2016 05:38:19 -0700 (PDT)
+Received: from localhost.localdomain (ppp109-252-52-30.pppoe.spdop.ru.
+	[109.252.52.30]) by smtp.gmail.com with ESMTPSA id
+	e32sm1620871lji.41.2016.06.25.05.38.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sat, 25 Jun 2016 05:38:19 -0700 (PDT)
+From: Dmitry Osipenko <digetx@gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org
+Date: Sat, 25 Jun 2016 15:35:21 +0300
+Message-Id: <20160625123521.16752-1-digetx@gmail.com>
+X-Mailer: git-send-email 2.9.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: gicv3: use all target-list
- bits
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: [Qemu-arm] [PATCH v2] hw/ptimer: Don't wrap around counter for
+ expired timer that uses tick handler
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 790XsmP/EyF1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BFo+3DCkLaVt
 
-On Fri, Jun 24, 2016 at 06:03:21PM +0200, Andrew Jones wrote:
-> On Thu, Jun 23, 2016 at 12:15:59PM +0100, Peter Maydell wrote:
-> > On 21 June 2016 at 19:58, Andrew Jones <drjones@redhat.com> wrote:
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > I think this commit message could be improved...it's both
-> > very short and a bit off the mark.
-> > 
-> > > ---
-> > >  hw/arm/virt.c | 10 ++++++++++
-> > >  1 file changed, 10 insertions(+)
-> > >
-> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > index c5c125e9204a0..53f545921003c 100644
-> > > --- a/hw/arm/virt.c
-> > > +++ b/hw/arm/virt.c
-> > > @@ -1271,6 +1271,16 @@ static void machvirt_init(MachineState *machine)
-> > >          }
-> > >          cpuobj = object_new(object_class_get_name(oc));
-> > >
-> > > +        /* Adjust MPIDR per the GIC's target-list size. */
-> > > +        if (gic_version == 3) {
-> > > +            CPUState *cs = CPU(cpuobj);
-> > > +            uint8_t Aff1 = cs->cpu_index / 16;
-> > > +            uint8_t Aff0 = cs->cpu_index % 16;
-> > > +
-> > > +            object_property_set_int(cpuobj, (Aff1 << ARM_AFF1_SHIFT) | Aff0,
-> > > +                                    "mp-affinity", NULL);
-> > > +        }
-> > 
-> > We still don't have support in KVM for telling the CPU what
-> > affinity to use, so these may get overridden later if KVM's
-> > idea of affinity and ours differ. I guess that's no different
-> > to what we have today, though.
-> > 
-> > I think it would be better to:
-> >  * use the loop index 'n' rather than fishing the cpu_index
-> >    out of the CPUState.
-> >  * do this regardless of GIC version (if it's GICv2 we only
-> >    have 8 CPUs max anyway)
-> >  * comment it as "Create our CPUs in clusters of 16; this suits
-> >    the GICv3's target list limitations, and matches how KVM
-> >    assigns them"
-> >  * for 32-bit, set the mp-affinity in the same arrangement the
-> >    kernel does for KVM, which is clusters of 4 CPUs
-> 
-> Actually this depends on the host. KVM will use all 8 tlist bits
-> with ARM guests, when running on an AArch64 host. As a guest doesn't
-> really have to worry about clusters for shared cache, then ignoring
-> the 4 per cluster requirement is likely fine (is that a hard
-> requirement anyway?), but it could confuse a guest.
-> 
-> So we can either
-> a) play it safe and always use clusters of 4 for ARM guests, and
->    KVM will get "fixed" when we start managing the guest's MPIDR
->    from userspace, or
-> b) use 8 here, as TCG always has, and KVM does for AArch32 guests.
->    This might be less safe, but also improves SGI efficiency.
+Software should see timer counter wrap around only after IRQ being triggered.
+Change returned counter value to "1" for the expired timer and avoid returning
+wrapped around counter value in periodic mode for the timer that has bottom-half
+handler setup, assuming it drives timer IRQ.
 
-Actually AArch32 guests would even use all 16 tlist bits on gicv3, if
-there was a KVM host available to try it. So the (b) option shouldn't
-be "use 8" it should be "don't treat 32-bit guests differently"
+This fixes regression introduced by the commit 5a50307 ("hw/ptimer: Perform
+counter wrap around if timer already expired") on SPARC emulated machine as
+reported by Mark Cave-Ayland.
 
-Thanks,
-drew
+Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+---
+ hw/core/ptimer.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index 05b0c27..8006442 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -93,10 +93,10 @@ uint64_t ptimer_get_count(ptimer_state *s)
+         bool oneshot = (s->enabled == 2);
+ 
+         /* Figure out the current counter value.  */
+-        if (s->period == 0 || (expired && (oneshot || use_icount))) {
++        if (expired && (oneshot || use_icount || s->bh != NULL)) {
+             /* Prevent timer underflowing if it should already have
+                triggered.  */
+-            counter = 0;
++            counter = 1;
+         } else {
+             uint64_t rem;
+             uint64_t div;
+@@ -143,7 +143,9 @@ uint64_t ptimer_get_count(ptimer_state *s)
+ 
+             if (expired && counter != 0) {
+                 /* Wrap around periodic counter.  */
+-                counter = s->limit - (counter - 1) % s->limit;
++                counter = s->delta = s->limit - (counter - 1) % s->limit;
++                /* Re-arm timer according to the wrapped around value.  */
++                ptimer_reload(s);
+             }
+         }
+     } else {
+-- 
+2.9.0
 
-
-> 
-> Thanks,
-> drew
-> 
-> 
-> >  * note also in the comment that for KVM these will be overridden
-> >    by the hard-coded topology in the kernel when the CPU is
-> >    realized
-> > 
-> > [is changing mp-affinity a migration compat break?]
-> > 
-> > thanks
-> > -- PMM
-> > 

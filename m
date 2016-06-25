@@ -1,73 +1,59 @@
-Received: by 10.25.21.96 with SMTP id l93csp65577lfi;
-        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
-X-Received: by 10.55.116.195 with SMTP id p186mr7010326qkc.52.1466800267273;
-        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp273440lfi;
+        Sat, 25 Jun 2016 03:04:27 -0700 (PDT)
+X-Received: by 10.55.190.134 with SMTP id o128mr9869698qkf.181.1466849067854;
+        Sat, 25 Jun 2016 03:04:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u82si5804806qku.15.2016.06.24.13.31.07
+        by mx.google.com with ESMTPS id w16si8449259qtw.100.2016.06.25.03.04.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Jun 2016 13:31:07 -0700 (PDT)
+        Sat, 25 Jun 2016 03:04:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47232 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49191 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bGXko-00035M-NV
-	for alex.bennee@linaro.org; Fri, 24 Jun 2016 16:31:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39524)
+	id 1bGkRu-0007Xj-L5
+	for alex.bennee@linaro.org; Sat, 25 Jun 2016 06:04:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bGXkl-0002ue-9Q
-	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 16:31:04 -0400
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bGkRr-0007Xc-EZ
+	for qemu-arm@nongnu.org; Sat, 25 Jun 2016 06:04:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bGXkk-0001cA-Ao
-	for qemu-arm@nongnu.org; Fri, 24 Jun 2016 16:31:03 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34633)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bGkRn-0000hU-8u
+	for qemu-arm@nongnu.org; Sat, 25 Jun 2016 06:04:22 -0400
+Received: from chuckie.co.uk ([82.165.15.123]:44241
+	helo=s16892447.onlinehome-server.info)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1bGXke-0001ar-T1; Fri, 24 Jun 2016 16:30:57 -0400
-Received: by mail-lf0-x244.google.com with SMTP id l184so22878987lfl.1;
-	Fri, 24 Jun 2016 13:30:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=4NYSbLHeGnMunz+YmizcGvO8lNR2QG5vP+z3WGr7dAg=;
-	b=tF4mhYj33PZp8jMwViE02VJyzjXVdCcJQlyoCsDu5/tzK0v3C1dsN4djczJ35P4P0z
-	E1AHfK+3JH+fgMN9xo3TmEa8bxNfZFr8YJjeWgmyC6LXxKWxmf29xzFZ9kBeAbKaacEj
-	tEpaNCM7o07rekfMBVSSiFuJBZIY072FwQP1QYYithV8LZE2KEZHHVZG8xGvc2xPQJov
-	xG429aIJaaapN6veYZytxvCpL3oFUWEHIiH5wnJpEuI7o3ljkpS0qVkKe1995YFNmiU8
-	PTuoJUFmED36Ep8Y5QgTC0HFV42MSSsULZhCIb8emUrmXwzptK+7BXsrGjzy1o2fMWY7
-	ZPJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=4NYSbLHeGnMunz+YmizcGvO8lNR2QG5vP+z3WGr7dAg=;
-	b=OIMCNhOTxO+JKzo+Th5JbaSBWEseriHfUiH9pFZLWWi9fAnM536zaPhbaSBFNN21Mm
-	8cHmAuZKbKVIIuLBKh/PkO5Tl4CqGbRP+fGR4FwcfHtbe0qxxsnQD2kUfMqkBeUlgaxP
-	vCWjNbPcselD0zAi6OxcjzYnoCyLFfSSnsAl5Ju7I5DxQwdwmZuobR2cqhbz4psw0qu1
-	w8igB7ucTdJbH6CA8uktr57enWAYipS+tHJsCv3UrmeiALSzBvPPwNZ3H8IBLZGA5v4V
-	ubi+67PESfwvRVHFGZx9EQRYzXR9spZzzbT9uTyqteWQiMhYpRe3vmtTNeWZ19rjqKbG
-	vDzw==
-X-Gm-Message-State: ALyK8tKPCPsCjv2OLYFbbeY6f/G/+WnYmbTtx3t7hZ19rv+tWTmUdYdDt0bY0FtkYvGeLg==
-X-Received: by 10.25.169.7 with SMTP id s7mr2092482lfe.57.1466800255981;
-	Fri, 24 Jun 2016 13:30:55 -0700 (PDT)
-Received: from localhost.localdomain (ppp109-252-52-30.pppoe.spdop.ru.
-	[109.252.52.30]) by smtp.gmail.com with ESMTPSA id
-	u13sm1119542lja.15.2016.06.24.13.30.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Fri, 24 Jun 2016 13:30:55 -0700 (PDT)
-From: Dmitry Osipenko <digetx@gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm@nongnu.org
-Date: Fri, 24 Jun 2016 23:29:34 +0300
-Message-Id: <20160624202934.702-1-digetx@gmail.com>
-X-Mailer: git-send-email 2.9.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: [Qemu-arm] [PATCH] hw/ptimer: Don't wrap around counter for expired
- timer that uses tick handler
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bGkRn-0000hI-26; Sat, 25 Jun 2016 06:04:19 -0400
+Received: from host86-175-160-51.range86-175.btcentralplus.com
+	([86.175.160.51] helo=[192.168.1.65])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bGkRi-0002LT-1a; Sat, 25 Jun 2016 11:04:15 +0100
+To: Dmitry Osipenko <digetx@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org
+References: <20160624202934.702-1-digetx@gmail.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <d0f7648b-81e9-c4d9-d9d4-87e06422b441@ilande.co.uk>
+Date: Sat, 25 Jun 2016 11:04:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.1.0
+MIME-Version: 1.0
+In-Reply-To: <20160624202934.702-1-digetx@gmail.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.175.160.51
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/ptimer: Don't wrap around
+ counter for expired timer that uses tick handler
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,54 +66,73 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VPS0I4UOZHA/
+X-TUID: IHCHhh3GLT5l
 
-Software should see timer counter wrap around only after IRQ being triggered.
-Change returned counter value to "1" for the expired timer and avoid returning
-wrapped around counter value in periodic mode for the timer that has bottom-half
-handler setup, assuming it is IRQ handler.
+On 24/06/16 21:29, Dmitry Osipenko wrote:
 
-This fixes regression introduced by the commit 5a50307 ("hw/ptimer: Perform
-counter wrap around if timer already expired") on SPARC emulated machine as
-reported by Mark Cave-Ayland.
+> Software should see timer counter wrap around only after IRQ being triggered.
+> Change returned counter value to "1" for the expired timer and avoid returning
+> wrapped around counter value in periodic mode for the timer that has bottom-half
+> handler setup, assuming it is IRQ handler.
+>
+> This fixes regression introduced by the commit 5a50307 ("hw/ptimer: Perform
+> counter wrap around if timer already expired") on SPARC emulated machine as
+> reported by Mark Cave-Ayland.
+>
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+> ---
+>  hw/core/ptimer.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index 7f89001..620ac2e 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -98,10 +98,10 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>          bool oneshot = (s->enabled == 2);
+>
+>          /* Figure out the current counter value.  */
+> -        if (expired && (oneshot || use_icount)) {
+> +        if (expired && (oneshot || use_icount || s->bh != NULL)) {
+>              /* Prevent timer underflowing if it should already have
+>                 triggered.  */
+> -            counter = 0;
+> +            counter = 1;
+>          } else {
+>              uint64_t rem;
+>              uint64_t div;
+> @@ -148,7 +148,9 @@ uint64_t ptimer_get_count(ptimer_state *s)
+>
+>              if (expired && counter != 0) {
+>                  /* Wrap around periodic counter.  */
+> -                counter = s->limit - (counter - 1) % s->limit;
+> +                counter = s->delta = s->limit - (counter - 1) % s->limit;
+> +                /* Re-arm timer according to the wrapped around value.  */
+> +                ptimer_reload(s);
+>              }
+>          }
+>      } else {
+>
 
-Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
----
- hw/core/ptimer.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+Hi Dmitry,
 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index 7f89001..620ac2e 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -98,10 +98,10 @@ uint64_t ptimer_get_count(ptimer_state *s)
-         bool oneshot = (s->enabled == 2);
- 
-         /* Figure out the current counter value.  */
--        if (expired && (oneshot || use_icount)) {
-+        if (expired && (oneshot || use_icount || s->bh != NULL)) {
-             /* Prevent timer underflowing if it should already have
-                triggered.  */
--            counter = 0;
-+            counter = 1;
-         } else {
-             uint64_t rem;
-             uint64_t div;
-@@ -148,7 +148,9 @@ uint64_t ptimer_get_count(ptimer_state *s)
- 
-             if (expired && counter != 0) {
-                 /* Wrap around periodic counter.  */
--                counter = s->limit - (counter - 1) % s->limit;
-+                counter = s->delta = s->limit - (counter - 1) % s->limit;
-+                /* Re-arm timer according to the wrapped around value.  */
-+                ptimer_reload(s);
-             }
-         }
-     } else {
--- 
-2.9.0
+Thanks for the patch, however I am unable to apply this to git master 
+with git am or directly using patch:
+
+$ patch -p1 < timer.eml
+(Stripping trailing CRs from patch.)
+patching file hw/core/ptimer.c
+Hunk #1 FAILED at 98.
+Hunk #2 succeeded at 143 (offset -5 lines).
+1 out of 2 hunks FAILED -- saving rejects to file hw/core/ptimer.c.rej
+
+Does it need to be rebased before it can be applied?
+
+
+ATB,
+
+Mark.
 

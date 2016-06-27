@@ -1,166 +1,452 @@
-Received: by 10.25.21.96 with SMTP id l93csp1000379lfi;
-        Mon, 27 Jun 2016 01:32:22 -0700 (PDT)
-X-Received: by 10.200.47.156 with SMTP id l28mr22070215qta.20.1467016342039;
-        Mon, 27 Jun 2016 01:32:22 -0700 (PDT)
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id a3si16080278qkc.229.2016.06.27.01.32.21;
-        Mon, 27 Jun 2016 01:32:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 10.25.21.96 with SMTP id l93csp1015388lfi;
+        Mon, 27 Jun 2016 02:18:13 -0700 (PDT)
+X-Received: by 10.237.50.6 with SMTP id y6mr22278819qtd.84.1467019093815;
+        Mon, 27 Jun 2016 02:18:13 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 3si16234998qkh.135.2016.06.27.02.18.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 27 Jun 2016 02:18:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5535349B3F;
-	Mon, 27 Jun 2016 04:27:14 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.202
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
-	autolearn=unavailable
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FJWijXUmUOdP; Mon, 27 Jun 2016 04:27:13 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4D72249B2E;
-	Mon, 27 Jun 2016 04:27:13 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id AA57E412D0
- for <kvmarm@lists.cs.columbia.edu>; Mon, 27 Jun 2016 04:27:12 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Ge9pINaYmoA for <kvmarm@lists.cs.columbia.edu>;
- Mon, 27 Jun 2016 04:27:11 -0400 (EDT)
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 42034411E3
- for <kvmarm@lists.cs.columbia.edu>; Mon, 27 Jun 2016 04:27:11 -0400 (EDT)
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
- (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 865A16438E;
- Mon, 27 Jun 2016 08:32:17 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-79.brq.redhat.com [10.40.204.79])
- by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id
- u5R8WDGB016999
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 27 Jun 2016 04:32:15 -0400
-Date: Mon, 27 Jun 2016 10:32:12 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: gicv3: use all target-list bits
-Message-ID: <20160627083212.jyanolgait7yrzs6@hawk.localdomain>
-References: <1466535515-18092-1-git-send-email-drjones@redhat.com>
- <CAFEAcA-56LUe_jYK=V-H890WVL12YuDeRSZn9FK3yReiJ4p2Hw@mail.gmail.com>
- <20160624160321.nvn5run4kmywk7kc@hawk.localdomain>
- <20160624161513.zgqxspxhdre3d67c@hawk.localdomain>
- <CAFEAcA8xQV3PJ7BgFa=ohYDGqyVEtQ9bssoB+0JkGaGJqtaK=w@mail.gmail.com>
- <20160624172223.gxbd7nsna6spflxt@hawk.localdomain>
- <CAFEAcA9o57GET+mWOfrVhdRo=5a1w-AJeRPwssmJG1BcD4Ag8Q@mail.gmail.com>
- <20160627064154.h3npws4voswo3z7d@hawk.localdomain>
- <5770DB0F.8050203@arm.com>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57356 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bHSgH-0002nd-4l
+	for alex.bennee@linaro.org; Mon, 27 Jun 2016 05:18:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54420)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>) id 1bHSbj-0007ey-Ht
+	for qemu-devel@nongnu.org; Mon, 27 Jun 2016 05:13:33 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>) id 1bHSbg-0007mm-N0
+	for qemu-devel@nongnu.org; Mon, 27 Jun 2016 05:13:30 -0400
+Received: from roura.ac.upc.es ([147.83.33.10]:59123)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <vilanova@ac.upc.edu>)
+	id 1bHSbY-0007lx-4O; Mon, 27 Jun 2016 05:13:20 -0400
+Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
+	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u5R9CJdf025261;
+	Mon, 27 Jun 2016 11:12:19 +0200
+Received: from localhost (unknown [84.88.51.85])
+	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 2C9583DB;
+	Mon, 27 Jun 2016 11:12:19 +0200 (CEST)
+From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
+To: qemu-devel@nongnu.org
+Date: Mon, 27 Jun 2016 11:12:19 +0200
+Message-Id: <146701873882.26946.1226638783869471055.stgit@fimbulvetr.bsc.es>
+X-Mailer: git-send-email 2.8.1
+In-Reply-To: <146701872793.26946.11572417385271053432.stgit@fimbulvetr.bsc.es>
+References: <146701872793.26946.11572417385271053432.stgit@fimbulvetr.bsc.es>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5770DB0F.8050203@arm.com>
-User-Agent: Mutt/1.5.23.1 (2014-03-12)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Mon, 27 Jun 2016 08:32:17 +0000 (UTC)
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
+	u5R9CJdf025261
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 147.83.33.10
+Subject: [Qemu-devel] [PATCH v7 2/7] disas: Remove unused macro '_'
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: OCdz9ITN06ji
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"open list:ARM target" <qemu-arm@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
+	Leon Alrae <leon.alrae@imgtec.com>,
+	"Vassili Karpov \(malc\)" <av1474@comtv.ru>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nja6omuWSrHO
 
-On Mon, Jun 27, 2016 at 08:51:43AM +0100, Marc Zyngier wrote:
-> On 27/06/16 07:41, Andrew Jones wrote:
-> > On Fri, Jun 24, 2016 at 06:27:20PM +0100, Peter Maydell wrote:
-> >> On 24 June 2016 at 18:22, Andrew Jones <drjones@redhat.com> wrote:
-> >>> On Fri, Jun 24, 2016 at 05:41:55PM +0100, Peter Maydell wrote:
-> >>>> KVM AArch32 is 4 CPUs per cluster:
-> >>>> http://lxr.free-electrons.com/source/arch/arm/kvm/coproc.c#L109
-> >>>
-> >>> Hmm... yes, it should use coproc.c, but here's what I get when I
-> >>> test
-> >>>
-> >>> qemu-system-aarch64 \
-> >>>   -machine virt,gic-version=2,accel=kvm \
-> >>>   -cpu host,aarch64=off \
-> >>>   -device virtio-serial-device \
-> >>>   -device virtconsole,chardev=ctd \
-> >>>   -chardev testdev,id=ctd \
-> >>>   -display none -serial stdio \
-> >>>   -kernel arm/selftest.flat \
-> >>>   -append smp -smp 8
-> >>
-> >> This suggests that 32-bit-guest-on-64-bit-host and
-> >> 32-bit-guest-on-32-bit-host differ...
-> > 
-> > Yes, this is the case. I just looked at KVM and, it shouldn't use coproc.c
-> > (that's not one of the shared files between 32 and 64 bit hosts), and
-> > there's no special handing in reset_mpidr for KVM_ARM_VCPU_EL1_32BIT.
-> > The only special handing is in handlers for trapped coproc accesses,
-> > which MPIDR is not.
-> > 
-> > I think it makes sense that the 32bit guest view be consistent. This
-> > means we need one of two patches in KVM. Either
-> > 
-> >  a) decide we don't need to emulate clusters of 4, and just use the
-> >     max the gic supports, or
-> >  b) modify arm64's reset_mpidr to change behavior based on
-> >     KVM_ARM_VCPU_EL1_32BIT.
-> > 
-> > If the clusters of 4 thing is a hard requirement, then we should go
-> > that way. If not, as it doesn't seem to break guests today (aarch64=off
-> > and tcg guests have never done it) then I say we stop doing it on 32bit
-> > hosts too, as it will increase SGI efficiency.
-> 
-> I've never been fond of the 32bit behaviour, to be honest, and I'd
-> rather stick to the default being to max Aff0 on 64bit hosts (and before
-> anyone asks, yes, GICv3 support is coming to 32bit as well).
+Eliminates a future compilation error when UI code includes the tracing
+headers (indirectly pulling "disas/bfd.h" through "qom/cpu.h") and
+GLib's i18n '_' macro.
 
-OK
+Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ disas/alpha.c       |    6 +++---
+ disas/arm.c         |    2 +-
+ disas/i386.c        |    2 +-
+ disas/m68k.c        |    4 ++--
+ disas/mips.c        |   50 +++++++++++++++++++++++++--------------------=
+-----
+ disas/ppc.c         |   22 +++++++++++-----------
+ disas/sparc.c       |    6 +++---
+ include/disas/bfd.h |    1 -
+ 8 files changed, 46 insertions(+), 47 deletions(-)
 
-> 
-> What I think we should have though is a way for userspace to override
-> the defaults presented by KVM. That way, 64bit userspace can enforce 4
-> CPU clusters if it sees fit.
+diff --git a/disas/alpha.c b/disas/alpha.c
+index 44d00a3..b7b0ae0 100644
+--- a/disas/alpha.c
++++ b/disas/alpha.c
+@@ -521,7 +521,7 @@ static unsigned
+ insert_bdisp(unsigned insn, int value, const char **errmsg)
+ {
+   if (errmsg !=3D (const char **)NULL && (value & 3))
+-    *errmsg =3D _("branch operand unaligned");
++    *errmsg =3D "branch operand unaligned";
+   return insn | ((value / 4) & 0x1FFFFF);
+ }
+=20
+@@ -539,7 +539,7 @@ static unsigned
+ insert_jhint(unsigned insn, int value, const char **errmsg)
+ {
+   if (errmsg !=3D (const char **)NULL && (value & 3))
+-    *errmsg =3D _("jump hint unaligned");
++    *errmsg =3D "jump hint unaligned";
+   return insn | ((value / 4) & 0x3FFF);
+ }
+=20
+@@ -556,7 +556,7 @@ static unsigned
+ insert_ev6hwjhint(unsigned insn, int value, const char **errmsg)
+ {
+   if (errmsg !=3D (const char **)NULL && (value & 3))
+-    *errmsg =3D _("jump hint unaligned");
++    *errmsg =3D "jump hint unaligned";
+   return insn | ((value / 4) & 0x1FFF);
+ }
+=20
+diff --git a/disas/arm.c b/disas/arm.c
+index 70da529..32f8ca9 100644
+--- a/disas/arm.c
++++ b/disas/arm.c
+@@ -1817,7 +1817,7 @@ print_insn_coprocessor (bfd_vma pc, struct disassem=
+ble_info *info, long given,
+ 			  func (stream, "e");
+ 			  break;
+ 			default:
+-			  func (stream, _("<illegal precision>"));
++			  func (stream, "<illegal precision>");
+ 			  break;
+ 			}
+ 		      break;
+diff --git a/disas/i386.c b/disas/i386.c
+index c0e717a..57145d0 100644
+--- a/disas/i386.c
++++ b/disas/i386.c
+@@ -3406,7 +3406,7 @@ static const struct dis386 three_byte_table[][256] =
+=3D {
+   }
+ };
+=20
+-#define INTERNAL_DISASSEMBLER_ERROR _("<internal disassembler error>")
++#define INTERNAL_DISASSEMBLER_ERROR "<internal disassembler error>"
+=20
+ static void
+ ckprefix (void)
+diff --git a/disas/m68k.c b/disas/m68k.c
+index 8f74ae1..8e7c3f7 100644
+--- a/disas/m68k.c
++++ b/disas/m68k.c
+@@ -1676,7 +1676,7 @@ print_insn_arg (const char *d,
+ 	  (*info->fprintf_func) (info->stream, "%%sfc");
+ 	else
+ 	  /* xgettext:c-format */
+-	  (*info->fprintf_func) (info->stream, _("<function code %d>"), fc);
++	  (*info->fprintf_func) (info->stream, "<function code %d>", fc);
+       }
+       break;
+=20
+@@ -1827,7 +1827,7 @@ match_insn_m68k (bfd_vma memaddr,
+ 	{
+ 	  info->fprintf_func (info->stream,
+ 			      /* xgettext:c-format */
+-			      _("<internal error in opcode table: %s %s>\n"),
++			      "<internal error in opcode table: %s %s>\n",
+ 			      best->name,  best->args);
+ 	  info->fprintf_func =3D save_printer;
+ 	  info->print_address_func =3D save_print_address;
+diff --git a/disas/mips.c b/disas/mips.c
+index 249931b..97f661a 100644
+--- a/disas/mips.c
++++ b/disas/mips.c
+@@ -4257,7 +4257,7 @@ print_insn_args (const char *d,
+ 	    case '\0':
+ 	      /* xgettext:c-format */
+ 	      (*info->fprintf_func) (info->stream,
+-				     _("# internal error, incomplete extension sequence (+)"));
++				     "# internal error, incomplete extension sequence (+)");
+ 	      return;
+=20
+ 	    case 'A':
+@@ -4515,7 +4515,7 @@ print_insn_args (const char *d,
+ 	    default:
+ 	      /* xgettext:c-format */
+ 	      (*info->fprintf_func) (info->stream,
+-				     _("# internal error, undefined extension sequence (+%c)"),
++				     "# internal error, undefined extension sequence (+%c)",
+ 				     *d);
+ 	      return;
+ 	    }
+@@ -4875,7 +4875,7 @@ print_insn_args (const char *d,
+ 	default:
+ 	  /* xgettext:c-format */
+ 	  (*info->fprintf_func) (info->stream,
+-				 _("# internal error, undefined modifier(%c)"),
++				 "# internal error, undefined modifier(%c)",
+ 				 *d);
+ 	  return;
+ 	}
+@@ -5739,7 +5739,7 @@ print_mips16_insn_arg (char type,
+       /* xgettext:c-format */
+       (*info->fprintf_func)
+ 	(info->stream,
+-	 _("# internal disassembler error, unrecognised modifier (%c)"),
++	 "# internal disassembler error, unrecognised modifier (%c)",
+ 	 type);
+       abort ();
+     }
+@@ -5750,51 +5750,51 @@ print_mips_disassembler_options (FILE *stream)
+ {
+   unsigned int i;
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+ The following MIPS specific disassembler options are supported for use\n=
+\
+-with the -M switch (multiple options should be separated by commas):\n")=
+);
++with the -M switch (multiple options should be separated by commas):\n")=
+;
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   gpr-names=3DABI            Print GPR names according to  specified ABI=
+.\n\
+-                           Default: based on binary being disassembled.\=
+n"));
++                           Default: based on binary being disassembled.\=
+n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   fpr-names=3DABI            Print FPR names according to specified ABI.=
+\n\
+-                           Default: numeric.\n"));
++                           Default: numeric.\n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   cp0-names=3DARCH           Print CP0 register names according to\n\
+                            specified architecture.\n\
+-                           Default: based on binary being disassembled.\=
+n"));
++                           Default: based on binary being disassembled.\=
+n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   hwr-names=3DARCH           Print HWR names according to specified\n\
+ 			   architecture.\n\
+-                           Default: based on binary being disassembled.\=
+n"));
++                           Default: based on binary being disassembled.\=
+n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   reg-names=3DABI            Print GPR and FPR names according to\n\
+-                           specified ABI.\n"));
++                           specified ABI.\n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   reg-names=3DARCH           Print CP0 register and HWR names according =
+to\n\
+-                           specified architecture.\n"));
++                           specified architecture.\n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   For the options above, the following values are supported for \"ABI\":=
+\n\
+-   "));
++   ");
+   for (i =3D 0; i < ARRAY_SIZE (mips_abi_choices); i++)
+     fprintf (stream, " %s", mips_abi_choices[i].name);
+-  fprintf (stream, _("\n"));
++  fprintf (stream, "\n");
+=20
+-  fprintf (stream, _("\n\
++  fprintf (stream, "\n\
+   For the options above, The following values are supported for \"ARCH\"=
+:\n\
+-   "));
++   ");
+   for (i =3D 0; i < ARRAY_SIZE (mips_arch_choices); i++)
+     if (*mips_arch_choices[i].name !=3D '\0')
+       fprintf (stream, " %s", mips_arch_choices[i].name);
+-  fprintf (stream, _("\n"));
++  fprintf (stream, "\n");
+=20
+-  fprintf (stream, _("\n"));
++  fprintf (stream, "\n");
+ }
+ #endif
+diff --git a/disas/ppc.c b/disas/ppc.c
+index 478332b..052cebe 100644
+--- a/disas/ppc.c
++++ b/disas/ppc.c
+@@ -1120,7 +1120,7 @@ insert_bo (unsigned long insn,
+ 	   const char **errmsg)
+ {
+   if (!valid_bo (value, dialect, 0))
+-    *errmsg =3D _("invalid conditional option");
++    *errmsg =3D "invalid conditional option";
+   return insn | ((value & 0x1f) << 21);
+ }
+=20
+@@ -1148,9 +1148,9 @@ insert_boe (unsigned long insn,
+ 	    const char **errmsg)
+ {
+   if (!valid_bo (value, dialect, 0))
+-    *errmsg =3D _("invalid conditional option");
++    *errmsg =3D "invalid conditional option";
+   else if ((value & 1) !=3D 0)
+-    *errmsg =3D _("attempt to set y bit when using + or - modifier");
++    *errmsg =3D "attempt to set y bit when using + or - modifier";
+=20
+   return insn | ((value & 0x1f) << 21);
+ }
+@@ -1182,7 +1182,7 @@ insert_fxm (unsigned long insn,
+     {
+       if (value =3D=3D 0 || (value & -value) !=3D value)
+ 	{
+-	  *errmsg =3D _("invalid mask field");
++	  *errmsg =3D "invalid mask field";
+ 	  value =3D 0;
+ 	}
+     }
+@@ -1208,7 +1208,7 @@ insert_fxm (unsigned long insn,
+   /* Any other value on mfcr is an error.  */
+   else if ((insn & (0x3ff << 1)) =3D=3D 19 << 1)
+     {
+-      *errmsg =3D _("ignoring invalid mfcr mask");
++      *errmsg =3D "ignoring invalid mfcr mask";
+       value =3D 0;
+     }
+=20
+@@ -1258,7 +1258,7 @@ insert_mbe (unsigned long insn,
+=20
+   if (uval =3D=3D 0)
+     {
+-      *errmsg =3D _("illegal bitmask");
++      *errmsg =3D "illegal bitmask";
+       return insn;
+     }
+=20
+@@ -1293,7 +1293,7 @@ insert_mbe (unsigned long insn,
+     me =3D 32;
+=20
+   if (count !=3D 2 && (count !=3D 0 || ! last))
+-    *errmsg =3D _("illegal bitmask");
++    *errmsg =3D "illegal bitmask";
+=20
+   return insn | (mb << 6) | ((me - 1) << 1);
+ }
+@@ -1413,7 +1413,7 @@ insert_ram (unsigned long insn,
+ 	    const char **errmsg)
+ {
+   if ((unsigned long) value >=3D ((insn >> 21) & 0x1f))
+-    *errmsg =3D _("index register in load range");
++    *errmsg =3D "index register in load range";
+   return insn | ((value & 0x1f) << 16);
+ }
+=20
+@@ -1429,7 +1429,7 @@ insert_raq (unsigned long insn,
+   long rtvalue =3D (insn & RT_MASK) >> 21;
+=20
+   if (value =3D=3D rtvalue)
+-    *errmsg =3D _("source and target register operands must be different=
+");
++    *errmsg =3D "source and target register operands must be different";
+   return insn | ((value & 0x1f) << 16);
+ }
+=20
+@@ -1444,7 +1444,7 @@ insert_ras (unsigned long insn,
+ 	    const char **errmsg)
+ {
+   if (value =3D=3D 0)
+-    *errmsg =3D _("invalid register operand when updating");
++    *errmsg =3D "invalid register operand when updating";
+   return insn | ((value & 0x1f) << 16);
+ }
+=20
+@@ -1526,7 +1526,7 @@ insert_sprg (unsigned long insn,
+   if (value > 7
+       || (value > 3
+ 	  && (dialect & (PPC_OPCODE_BOOKE | PPC_OPCODE_403)) =3D=3D 0))
+-    *errmsg =3D _("invalid sprg number");
++    *errmsg =3D "invalid sprg number";
+=20
+   /* If this is mfsprg4..7 then use spr 260..263 which can be read in
+      user mode.  Anything else must use spr 272..279.  */
+diff --git a/disas/sparc.c b/disas/sparc.c
+index 64bba8d..f120f4e 100644
+--- a/disas/sparc.c
++++ b/disas/sparc.c
+@@ -2494,7 +2494,7 @@ compare_opcodes (const void * a, const void * b)
+       fprintf
+         (stderr,
+          /* xgettext:c-format */
+-         _("Internal error:  bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\=
+n"),
++         "Internal error:  bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n"=
+,
+          op0->name, match0, lose0);
+       op0->lose &=3D ~op0->match;
+       lose0 =3D op0->lose;
+@@ -2505,7 +2505,7 @@ compare_opcodes (const void * a, const void * b)
+       fprintf
+         (stderr,
+          /* xgettext:c-format */
+-         _("Internal error: bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n=
+"),
++         "Internal error: bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n",
+          op1->name, match1, lose1);
+       op1->lose &=3D ~op1->match;
+       lose1 =3D op1->lose;
+@@ -2555,7 +2555,7 @@ compare_opcodes (const void * a, const void * b)
+       else
+         fprintf (stderr,
+                  /* xgettext:c-format */
+-                 _("Internal error: bad sparc-opcode.h: \"%s\" =3D=3D \"=
+%s\"\n"),
++                 "Internal error: bad sparc-opcode.h: \"%s\" =3D=3D \"%s=
+\"\n",
+                  op0->name, op1->name);
+     }
+=20
+diff --git a/include/disas/bfd.h b/include/disas/bfd.h
+index a112e9c..a761d5b 100644
+--- a/include/disas/bfd.h
++++ b/include/disas/bfd.h
+@@ -477,7 +477,6 @@ int generic_symbol_at_address(bfd_vma, struct disasse=
+mble_info *);
+   (INFO).disassembler_options =3D NULL, \
+   (INFO).insn_info_valid =3D 0
+=20
+-#define _(x) x
+ #define ATTRIBUTE_UNUSED __attribute__((unused))
+=20
+ /* from libbfd */
 
-OK, so it sounds like you'd rather not get any KVM patches now, but rather
-just wait for userspace to take control. That means, in the case of non-
-userspace MPIDR controlled systems, we'll still have a difference between
-32-on-64 and 32-on-32.
-
-Anyway, userspace controlled MPIDR is definitely the goal. I'm sneaking up
-on it. In order to justify it, I also need to add cpu topology support to
-mach-virt. In order to do that, I need to 1) cleanup cpu topology
-parameters in QEMU (RFC posted), 2) write the DT and ACPI generation
-patches (written, will post soon), 3) determine how to inform KVM of the
-desired MPIDR (set-one-reg or maybe change the vcpu-id to be the MPIDR?)
-4) adjust the MPIDR.
-
-The patch that spurred this immediate discussion is loosely related to
-(4), as it starts adjusting MPIDR (but, atm, it's just to be consistent
-with KVM)
-
-Thanks,
-drew
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

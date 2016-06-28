@@ -1,72 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp1503050lfi;
-        Tue, 28 Jun 2016 01:03:17 -0700 (PDT)
-X-Received: by 10.55.24.215 with SMTP id 84mr2459550qky.51.1467100997016;
-        Tue, 28 Jun 2016 01:03:17 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp1504174lfi;
+        Tue, 28 Jun 2016 01:06:01 -0700 (PDT)
+X-Received: by 10.55.37.17 with SMTP id x17mr2205080qkg.136.1467101161372;
+        Tue, 28 Jun 2016 01:06:01 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e3si21514082qta.70.2016.06.28.01.03.16
+        by mx.google.com with ESMTPS id r7si2778871qta.62.2016.06.28.01.06.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Jun 2016 01:03:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 28 Jun 2016 01:06:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34879 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34892 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bHnzI-0007yX-G2
-	for alex.bennee@linaro.org; Tue, 28 Jun 2016 04:03:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48132)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bHo1w-0001u0-Oh
+	for alex.bennee@linaro.org; Tue, 28 Jun 2016 04:06:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bHnzF-0007w1-IX
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 04:03:14 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1bHnyK-0007Ls-8y
+	for qemu-devel@nongnu.org; Tue, 28 Jun 2016 04:02:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bHnzB-00063M-Dd
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 04:03:12 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36674)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1bHnyD-0005nx-H4
+	for qemu-devel@nongnu.org; Tue, 28 Jun 2016 04:02:15 -0400
+Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:35121)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1bHnzB-00063G-7M; Tue, 28 Jun 2016 04:03:09 -0400
-Received: by mail-wm0-x243.google.com with SMTP id c82so3614848wme.3;
-	Tue, 28 Jun 2016 01:03:09 -0700 (PDT)
+	id 1bHny8-0005nQ-0U; Tue, 28 Jun 2016 04:02:04 -0400
+Received: by mail-wm0-x241.google.com with SMTP id a66so3572121wme.2;
+	Tue, 28 Jun 2016 01:02:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=sender:subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=7Lu6dTMnxpE+CYRsFzfwZ6JugRC0ZB3uq9KL02suXKQ=;
-	b=osevfAWrlspLAeK3pKBB8VCSDs8auFbRqWFiX+MLsJI/mrmQ8neRSLbNd04rm8xYZL
-	8+NBjwq9Fhh5+QOvY8WzNzzaJyFFqBuUVVZKzElktHwcZipA5pkG3bh4lR3regItheK6
-	hZuyB4uG8cBpm64zEWgrDQMcwVEiGPE1HOZ2H+pirvWXgbhup0hIYNFbXpXQf/PdJ5Qy
-	607XcnCEkh0c7hGVoP0EO35Hsvis4Tng1GYr4Eac2F3806LB42qo2hdREAFnIVTOUAns
-	61FbHYkoy0CbqlTaoPMfpnmyQuEo1TIMYHJqzjVbpkVusnOxThnI+cHd5znioj5MFn2y
-	Z2iQ==
+	bh=TgfbLlOARjcDOzEtQbj5FYHIRtD9M9oZYmfIGtfr2S4=;
+	b=1JcNMZN9iGYwHkp3ZejvCJ2tEkteqlD7nLkHTLxgpsogq6BYdIY+DvCCEatVp1QxYH
+	NL1BKjpIc+dbjD+ETQKgJCvf8Bof5sgwSpJiD/TPlckxUZ8OsfZ8ji35NxhLPHtIewoa
+	BsWJsk2RL9NQeR3/MLvVJTdTowe67tjviSX/74lajAjdPdQUNc0NzQrj/9BLAfQyboPA
+	ffzPyxqWdHPkiVqu5hpNKTU5lQGD5Qo4qr2clb7Z9RHc5GWsjH4yt0DGpPwgSQrPmleP
+	3sDIG9wqIEfpb1WkEFP71FoBdKZRKxLbMSk5RtjEPtBUoeLz2T6itb1BzMOHZMHShZfT
+	F5HQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
 	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=7Lu6dTMnxpE+CYRsFzfwZ6JugRC0ZB3uq9KL02suXKQ=;
-	b=ZLQxUzkNzmjNXOTswEftQ5cO2Hj0yalXR6qahj7VLkhMTQbrc9yF9GtPk1MjeAjJkm
-	ETBsdC9GUD+pCrXqKUlkctTHGVW+rHD5qnAt2WYqYypp+hR+VU6n4alg8Mh39eEEuzjj
-	qpOQOGM6XzGMu8boCRCer00neCYzr/2YAh2NdtVXy+esl7gB5VVKEKjwB+TKxwQy7hKP
-	R/pM7XNJslVYohAJbUSWCCDzV7Bg8tM0JwMPJcNzwtGiPOFxHm9vGnpjeWS+7r6t8BYI
-	fl5NcDF5BBec2ADP9OKG56dDUw8pVnLKgmn/iTMhahAa3qYVrCa2BqwJeVOAgX/o62H7
-	HNlg==
-X-Gm-Message-State: ALyK8tKSX0yGUdvOCSc/8sTZ9zd6/Q1IUa/EoKGReihr6CkGOWOfIFHSJ80iQCyeU5mxfA==
-X-Received: by 10.194.248.230 with SMTP id yp6mr1609423wjc.144.1467100988481; 
-	Tue, 28 Jun 2016 01:03:08 -0700 (PDT)
+	bh=TgfbLlOARjcDOzEtQbj5FYHIRtD9M9oZYmfIGtfr2S4=;
+	b=RyzPIabviLJqRB1qHZA1sQFhUho3PKiFOM/nn7NFsKIBIf7wyiehQzJnGaOoxmypa6
+	Hm/DxR8DhP8Ivvx88wlzcsg20xnRXShwqwG3IwjEaLG+D/H+KUOyXg9I631jc0e+e8VJ
+	tiZcpnDSz86587XfcJORaSk6CUpOzxbdxiez/kKcxtFib2ZtdCiIybE2oN2sB5sIRPV9
+	Nwy03AQH6JXEmEtQTmJ1WMDISBINciK+0c8RdegkxlYepRe8+lhjNcDPIzhL2SUz5a+Q
+	XFIj42VZLLi2e6pzogsdjyBssj5STAuW3OTn2qrnVsCbzgLetixt5AVPTwyGC/QtgkbP
+	uVBQ==
+X-Gm-Message-State: ALyK8tKj/AR5iI66yIThbpK3y4pH63IueRmGr4/40yBM/9RFLqQ2Q8/gjrJWxZlo0i3Ulw==
+X-Received: by 10.28.31.140 with SMTP id f134mr13935481wmf.69.1467100918797;
+	Tue, 28 Jun 2016 01:01:58 -0700 (PDT)
 Received: from [192.168.10.150] (94-39-188-118.adsl-ull.clienti.tiscali.it.
 	[94.39.188.118]) by smtp.googlemail.com with ESMTPSA id
-	w81sm1935852wmg.20.2016.06.28.01.03.07
+	v200sm9237813wmv.4.2016.06.28.01.01.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 28 Jun 2016 01:03:07 -0700 (PDT)
+	Tue, 28 Jun 2016 01:01:57 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
 References: <1467045813-18144-1-git-send-email-clg@kaod.org>
 	<1467045813-18144-6-git-send-email-clg@kaod.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <cfcd090c-bf43-4bfd-a8dd-c871e483c21b@redhat.com>
-Date: Tue, 28 Jun 2016 10:03:05 +0200
+Message-ID: <bed58244-e877-aeda-d7c6-76d01540beb3@redhat.com>
+Date: Tue, 28 Jun 2016 10:01:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.1.1
 MIME-Version: 1.0
@@ -74,36 +74,35 @@ In-Reply-To: <1467045813-18144-6-git-send-email-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [PATCH v4 5/5] tests: add a m25p80 test
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::241
+Subject: Re: [Qemu-devel] [PATCH v4 5/5] tests: add a m25p80 test
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: kwolf@redhat.com, Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, armbru@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6uFao/l43Lg9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wXSq5Tas3ETq
+Message-ID: <20160628080156.qVYSNyY_PTrnaDJj7npXLaRosLnKlIDpfVXckegWF78@z>
 
 
 
 On 27/06/2016 18:43, Cédric Le Goater wrote:
-> +    args = g_strdup_printf("-M 256 -machine palmetto-bmc "
+>  check-qtest-arm-y = tests/ds1338-test$(EXESUF)
+> +check-qtest-arm-y = tests/m25p80-test$(EXESUF)
 
-Also you want "-m 256".  This is not failing because the "256" machine
-type is overwritten by "palmetto-bmc".
+This should be a "+=".
 
 Paolo
 
-> +                           "-drive file=%s,format=raw,if=mtd",
-> +                           tmp_path);
-> +    qtest_start(args);
-> +
+>  gcov-files-arm-y += hw/misc/tmp105.c
+>  check-qtest-arm-y += tests/virtio-blk-test$(EXESUF)

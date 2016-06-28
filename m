@@ -1,58 +1,59 @@
-Received: by 10.25.21.96 with SMTP id l93csp1783834lfi;
-        Tue, 28 Jun 2016 11:32:15 -0700 (PDT)
-X-Received: by 10.55.180.198 with SMTP id d189mr4509450qkf.9.1467138735761;
-        Tue, 28 Jun 2016 11:32:15 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1784908lfi;
+        Tue, 28 Jun 2016 11:35:04 -0700 (PDT)
+X-Received: by 10.55.55.202 with SMTP id e193mr4427716qka.130.1467138904619;
+        Tue, 28 Jun 2016 11:35:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x29si23591287qta.3.2016.06.28.11.32.15
+        by mx.google.com with ESMTPS id k6si4971901qkc.101.2016.06.28.11.35.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Jun 2016 11:32:15 -0700 (PDT)
+        Tue, 28 Jun 2016 11:35:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38760 helo=lists.gnu.org)
+Received: from localhost ([::1]:38780 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bHxny-0006kt-LV
-	for alex.bennee@linaro.org; Tue, 28 Jun 2016 14:32:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52385)
+	id 1bHxqi-0001t9-3W
+	for alex.bennee@linaro.org; Tue, 28 Jun 2016 14:35:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51872)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bHxi5-0007Ze-9E
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:26:10 -0400
+	(envelope-from <clg@kaod.org>) id 1bHxgu-0006K7-CA
+	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:24:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bHxi0-0002an-UJ
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:26:08 -0400
-Received: from 5.mo3.mail-out.ovh.net ([87.98.178.36]:38849)
+	(envelope-from <clg@kaod.org>) id 1bHxgr-0002FO-0X
+	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:24:56 -0400
+Received: from 13.mo3.mail-out.ovh.net ([188.165.33.202]:59165)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bHxi0-0002aa-KF
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:26:04 -0400
+	id 1bHxgq-0002F6-Ic
+	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 14:24:52 -0400
 Received: from player772.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 110ACFF8E44
-	for <qemu-arm@nongnu.org>; Tue, 28 Jun 2016 20:26:04 +0200 (CEST)
+	by mo3.mail-out.ovh.net (Postfix) with ESMTP id AF0D3FF8E6F
+	for <qemu-arm@nongnu.org>; Tue, 28 Jun 2016 20:24:51 +0200 (CEST)
 Received: from hermes.ibm.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
 	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player772.ha.ovh.net (Postfix) with ESMTPSA id 8B8644C0073;
-	Tue, 28 Jun 2016 20:25:55 +0200 (CEST)
+	by player772.ha.ovh.net (Postfix) with ESMTPSA id 2B5624C007B;
+	Tue, 28 Jun 2016 20:24:43 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Tue, 28 Jun 2016 20:24:30 +0200
-Message-Id: <1467138270-32481-10-git-send-email-clg@kaod.org>
+Date: Tue, 28 Jun 2016 20:24:22 +0200
+Message-Id: <1467138270-32481-2-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1467138270-32481-1-git-send-email-clg@kaod.org>
 References: <1467138270-32481-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 13924004149283621649
+X-Ovh-Tracer-Id: 13903456478905666321
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudefgdduudekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudefgdduudeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 87.98.178.36
-Subject: [Qemu-arm] [PATCH v5 9/9] tests: add a m25p80 test
+X-Received-From: 188.165.33.202
+Subject: [Qemu-arm] [PATCH v5 1/9] ssi: change ssi_slave_init to be a
+ realize ops
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,318 +70,392 @@ Cc: kwolf@redhat.com, Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j4rBGVmzL5GL
+X-TUID: GaNFHHd/JmDh
 
-This test uses the palmetto platform and the AST2400 SPI controller to
-test the m25p80 flash module device model. The flash model is defined
-by the platform (n25q256a) and it would be nice to find way to control
-it, using a property probably.
+This enables qemu to handle late inits and report errors. All the SSI
+slave routine names were changed accordingly. Code was modified to
+handle errors when possible (m25p80 and ssi-sd)
 
+Tested with the m25p80 slave object.
+
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
+ hw/arm/spitz.c       | 12 ++++--------
+ hw/arm/tosa.c        |  5 ++---
+ hw/arm/z2.c          |  6 ++----
+ hw/block/m25p80.c    | 12 +++++-------
+ hw/display/ads7846.c |  5 ++---
+ hw/display/ssd0323.c |  5 ++---
+ hw/misc/max111x.c    | 12 ++++++------
+ hw/sd/ssi-sd.c       |  9 +++++----
+ hw/ssi/ssi.c         |  6 +++---
+ include/hw/ssi/ssi.h |  2 +-
+ 10 files changed, 32 insertions(+), 42 deletions(-)
 
- Changes since v4:
-
- - fixed Makefile targets
- - replaced -M with -m in qtest command line
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index ba40f8302bc6..41cc2eeeb1ba 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -598,15 +598,13 @@ static uint32_t spitz_lcdtg_transfer(SSISlave *dev,=
+ uint32_t value)
+     return 0;
+ }
 =20
- Changes since v2:
-
- - changed mkstemp() path prefix
+-static int spitz_lcdtg_init(SSISlave *dev)
++static void spitz_lcdtg_realize(SSISlave *dev, Error **errp)
+ {
+     SpitzLCDTG *s =3D FROM_SSI_SLAVE(SpitzLCDTG, dev);
 =20
- Changes since v1:
-
- - fixed guest args to use -drive and not -mtdblock
-
- tests/Makefile.include |   2 +
- tests/m25p80-test.c    | 242 +++++++++++++++++++++++++++++++++++++++++++=
-++++++
- 2 files changed, 244 insertions(+)
- create mode 100644 tests/m25p80-test.c
-
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 6c09962f7581..149f92585c1b 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -252,6 +252,7 @@ gcov-files-sparc-y +=3D hw/timer/m48t59.c
- gcov-files-sparc64-y +=3D hw/timer/m48t59.c
- check-qtest-arm-y =3D tests/tmp105-test$(EXESUF)
- check-qtest-arm-y +=3D tests/ds1338-test$(EXESUF)
-+check-qtest-arm-y +=3D tests/m25p80-test$(EXESUF)
- gcov-files-arm-y +=3D hw/misc/tmp105.c
- check-qtest-arm-y +=3D tests/virtio-blk-test$(EXESUF)
- gcov-files-arm-y +=3D arm-softmmu/hw/block/virtio-blk.c
-@@ -568,6 +569,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-te=
-st.o \
- tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-o=
-bj-y)
- tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
- tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
-+tests/m25p80-test$(EXESUF): tests/m25p80-test.o
- tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
- tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
- tests/fw_cfg-test$(EXESUF): tests/fw_cfg-test.o $(libqos-pc-obj-y)
-diff --git a/tests/m25p80-test.c b/tests/m25p80-test.c
-new file mode 100644
-index 000000000000..305c52319a33
---- /dev/null
-+++ b/tests/m25p80-test.c
-@@ -0,0 +1,242 @@
-+/*
-+ * QTest testcase for the M25P80 Flash (Using the AST2400 SPI Controller=
-)
-+ *
-+ * Copyright (C) 2016 IBM Corp.
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-+ * of this software and associated documentation files (the "Software"),=
- to deal
-+ * in the Software without restriction, including without limitation the=
- rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
-sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be includ=
-ed in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
-SS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
-TY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
-LL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
-OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
-NG FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
-S IN
-+ * THE SOFTWARE.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bswap.h"
-+#include "libqtest.h"
-+
-+/*
-+ * AST2400 SPI Controller registers
-+ */
-+#define R_CONF              0x00
-+#define   CONF_ENABLE_W0       (1 << 16)
-+#define R_CE_CTRL           0x04
-+#define   CRTL_EXTENDED0       0  /* 32 bit addressing for SPI */
-+#define R_CTRL0             0x10
-+#define   CTRL_CE_STOP_ACTIVE  (1 << 2)
-+#define   CTRL_USERMODE        0x3
-+
-+#define AST2400_FMC_BASE    0x1E620000
-+#define AST2400_FLASH_BASE  0x20000000
-+
-+/*
-+ * Flash commands
-+ */
-+enum {
-+    JEDEC_READ =3D 0x9f,
-+    BULK_ERASE =3D 0xc7,
-+    READ =3D 0x03,
-+    PP =3D 0x02,
-+    WREN =3D 0x6,
-+    EN_4BYTE_ADDR =3D 0xB7,
-+    ERASE_SECTOR =3D 0xd8,
-+};
-+
-+#define FLASH_JEDEC         0x20ba19  /* n25q256a */
-+#define FLASH_SIZE          (32 * 1024 * 1024)
-+
-+#define PAGE_SIZE           256
-+
-+static void spi_conf(uint32_t value)
-+{
-+    uint32_t conf =3D readl(AST2400_FMC_BASE + R_CONF);
-+
-+    conf |=3D value;
-+    writel(AST2400_FMC_BASE + R_CONF, conf);
-+}
-+
-+static void spi_ctrl_start_user(void)
-+{
-+    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
-+
-+    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
-+    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
-+
-+    ctrl &=3D ~CTRL_CE_STOP_ACTIVE;
-+    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
-+}
-+
-+static void spi_ctrl_stop_user(void)
-+{
-+    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
-+
-+    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
-+    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
-+}
-+
-+static void test_read_jedec(void)
-+{
-+    uint32_t jedec =3D 0x0;
-+
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    spi_ctrl_start_user();
-+    writeb(AST2400_FLASH_BASE, JEDEC_READ);
-+    jedec |=3D readb(AST2400_FLASH_BASE) << 16;
-+    jedec |=3D readb(AST2400_FLASH_BASE) << 8;
-+    jedec |=3D readb(AST2400_FLASH_BASE);
-+    spi_ctrl_stop_user();
-+
-+    g_assert_cmphex(jedec, =3D=3D, FLASH_JEDEC);
-+}
-+
-+static void read_page(uint32_t addr, uint32_t *page)
-+{
-+    int i;
-+
-+    spi_ctrl_start_user();
-+
-+    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(AST2400_FLASH_BASE, READ);
-+    writel(AST2400_FLASH_BASE, cpu_to_be32(addr));
-+
-+    /* Continuous read are supported */
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        page[i] =3D be32_to_cpu(readl(AST2400_FLASH_BASE));
-+    }
-+    spi_ctrl_stop_user();
-+}
-+
-+static void test_erase_sector(void)
-+{
-+    uint32_t some_page_addr =3D 0x600 * PAGE_SIZE;
-+    uint32_t page[PAGE_SIZE / 4];
-+    int i;
-+
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    spi_ctrl_start_user();
-+    writeb(AST2400_FLASH_BASE, WREN);
-+    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(AST2400_FLASH_BASE, ERASE_SECTOR);
-+    writel(AST2400_FLASH_BASE, cpu_to_be32(some_page_addr));
-+    spi_ctrl_stop_user();
-+
-+    /* Previous page should be full of zeroes as backend is not
-+     * initialized */
-+    read_page(some_page_addr - PAGE_SIZE, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, 0x0);
-+    }
-+
-+    /* But this one was erased */
-+    read_page(some_page_addr, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
-+    }
-+}
-+
-+static void test_erase_all(void)
-+{
-+    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
-+    uint32_t page[PAGE_SIZE / 4];
-+    int i;
-+
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    /* Check some random page. Should be full of zeroes as backend is
-+     * not initialized */
-+    read_page(some_page_addr, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, 0x0);
-+    }
-+
-+    spi_ctrl_start_user();
-+    writeb(AST2400_FLASH_BASE, WREN);
-+    writeb(AST2400_FLASH_BASE, BULK_ERASE);
-+    spi_ctrl_stop_user();
-+
-+    /* Recheck that some random page */
-+    read_page(some_page_addr, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
-+    }
-+}
-+
-+static void test_write_page(void)
-+{
-+    uint32_t my_page_addr =3D 0x14000 * PAGE_SIZE; /* beyond 16MB */
-+    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
-+    uint32_t page[PAGE_SIZE / 4];
-+    int i;
-+
-+    spi_conf(CONF_ENABLE_W0);
-+
-+    spi_ctrl_start_user();
-+    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
-+    writeb(AST2400_FLASH_BASE, PP);
-+    writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr));
-+
-+    /* Fill the page with its own addresses */
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr + i * 4));
-+    }
-+    spi_ctrl_stop_user();
-+
-+    /* Check what was written */
-+    read_page(my_page_addr, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, my_page_addr + i * 4);
-+    }
-+
-+    /* Check some other page. It should be full of 0xff */
-+    read_page(some_page_addr, page);
-+    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
-+        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
-+    }
-+}
-+
-+static char tmp_path[] =3D "/tmp/qtest.m25p80.XXXXXX";
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+    int fd;
-+    char *args;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    fd =3D mkstemp(tmp_path);
-+    g_assert(fd >=3D 0);
-+    ret =3D ftruncate(fd, FLASH_SIZE);
-+    g_assert(ret =3D=3D 0);
-+    close(fd);
-+
-+    args =3D g_strdup_printf("-m 256 -machine palmetto-bmc "
-+                           "-drive file=3D%s,format=3Draw,if=3Dmtd",
-+                           tmp_path);
-+    qtest_start(args);
-+
-+    qtest_add_func("/m25p80/read_jedec", test_read_jedec);
-+    qtest_add_func("/m25p80/erase_sector", test_erase_sector);
-+    qtest_add_func("/m25p80/erase_all",  test_erase_all);
-+    qtest_add_func("/m25p80/write_page", test_write_page);
-+
-+    ret =3D g_test_run();
-+
-+    qtest_quit(global_qtest);
-+    unlink(tmp_path);
-+    g_free(args);
-+    return ret;
-+}
+     spitz_lcdtg =3D s;
+     s->bl_power =3D 0;
+     s->bl_intensity =3D 0x20;
+-
+-    return 0;
+ }
+=20
+ /* SSP devices */
+@@ -666,7 +664,7 @@ static void spitz_adc_temp_on(void *opaque, int line,=
+ int level)
+         max111x_set_input(max1111, MAX1111_BATT_TEMP, 0);
+ }
+=20
+-static int corgi_ssp_init(SSISlave *d)
++static void corgi_ssp_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev =3D DEVICE(d);
+     CorgiSSPState *s =3D FROM_SSI_SLAVE(CorgiSSPState, d);
+@@ -675,8 +673,6 @@ static int corgi_ssp_init(SSISlave *d)
+     s->bus[0] =3D ssi_create_bus(dev, "ssi0");
+     s->bus[1] =3D ssi_create_bus(dev, "ssi1");
+     s->bus[2] =3D ssi_create_bus(dev, "ssi2");
+-
+-    return 0;
+ }
+=20
+ static void spitz_ssp_attach(PXA2xxState *cpu)
+@@ -1121,7 +1117,7 @@ static void corgi_ssp_class_init(ObjectClass *klass=
+, void *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D corgi_ssp_init;
++    k->realize =3D corgi_ssp_realize;
+     k->transfer =3D corgi_ssp_transfer;
+     dc->vmsd =3D &vmstate_corgi_ssp_regs;
+ }
+@@ -1150,7 +1146,7 @@ static void spitz_lcdtg_class_init(ObjectClass *kla=
+ss, void *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D spitz_lcdtg_init;
++    k->realize =3D spitz_lcdtg_realize;
+     k->transfer =3D spitz_lcdtg_transfer;
+     dc->vmsd =3D &vmstate_spitz_lcdtg_regs;
+ }
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index 4e9494f94c20..2db66508b5b6 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -127,10 +127,9 @@ static uint32_t tosa_ssp_tansfer(SSISlave *dev, uint=
+32_t value)
+     return 0;
+ }
+=20
+-static int tosa_ssp_init(SSISlave *dev)
++static void tosa_ssp_realize(SSISlave *dev, Error **errp)
+ {
+     /* Nothing to do.  */
+-    return 0;
+ }
+=20
+ #define TYPE_TOSA_DAC "tosa_dac"
+@@ -283,7 +282,7 @@ static void tosa_ssp_class_init(ObjectClass *klass, v=
+oid *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D tosa_ssp_init;
++    k->realize =3D tosa_ssp_realize;
+     k->transfer =3D tosa_ssp_tansfer;
+ }
+=20
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index aea895a500ef..68a92f3184d7 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -151,14 +151,12 @@ static void z2_lcd_cs(void *opaque, int line, int l=
+evel)
+     z2_lcd->selected =3D !level;
+ }
+=20
+-static int zipit_lcd_init(SSISlave *dev)
++static void zipit_lcd_realize(SSISlave *dev, Error **errp)
+ {
+     ZipitLCD *z =3D FROM_SSI_SLAVE(ZipitLCD, dev);
+     z->selected =3D 0;
+     z->enabled =3D 0;
+     z->pos =3D 0;
+-
+-    return 0;
+ }
+=20
+ static VMStateDescription vmstate_zipit_lcd_state =3D {
+@@ -181,7 +179,7 @@ static void zipit_lcd_class_init(ObjectClass *klass, =
+void *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D zipit_lcd_init;
++    k->realize =3D zipit_lcd_realize;
+     k->transfer =3D zipit_lcd_transfer;
+     dc->vmsd =3D &vmstate_zipit_lcd_state;
+ }
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 326b688e8328..3cdcfce07ba9 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -28,6 +28,7 @@
+ #include "hw/ssi/ssi.h"
+ #include "qemu/bitops.h"
+ #include "qemu/log.h"
++#include "qapi/error.h"
+=20
+ #ifndef M25P80_ERR_DEBUG
+ #define M25P80_ERR_DEBUG 0
+@@ -1132,7 +1133,7 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint=
+32_t tx)
+     return r;
+ }
+=20
+-static int m25p80_init(SSISlave *ss)
++static void m25p80_realize(SSISlave *ss, Error **errp)
+ {
+     DriveInfo *dinfo;
+     Flash *s =3D M25P80(ss);
+@@ -1153,18 +1154,15 @@ static int m25p80_init(SSISlave *ss)
+=20
+         s->storage =3D blk_blockalign(s->blk, s->size);
+=20
+-        /* FIXME: Move to late init */
+         if (blk_pread(s->blk, 0, s->storage, s->size) !=3D s->size) {
+-            fprintf(stderr, "Failed to initialize SPI flash!\n");
+-            return 1;
++            error_setg(errp, "failed to read the initial flash content")=
+;
++            return;
+         }
+     } else {
+         DB_PRINT_L(0, "No BDRV - binding to RAM\n");
+         s->storage =3D blk_blockalign(NULL, s->size);
+         memset(s->storage, 0xFF, s->size);
+     }
+-
+-    return 0;
+ }
+=20
+ static void m25p80_reset(DeviceState *d)
+@@ -1224,7 +1222,7 @@ static void m25p80_class_init(ObjectClass *klass, v=
+oid *data)
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+     M25P80Class *mc =3D M25P80_CLASS(klass);
+=20
+-    k->init =3D m25p80_init;
++    k->realize =3D m25p80_realize;
+     k->transfer =3D m25p80_transfer8;
+     k->set_cs =3D m25p80_cs;
+     k->cs_polarity =3D SSI_CS_LOW;
+diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
+index 05aa2d1e6b6e..166edade7dc0 100644
+--- a/hw/display/ads7846.c
++++ b/hw/display/ads7846.c
+@@ -133,7 +133,7 @@ static const VMStateDescription vmstate_ads7846 =3D {
+     }
+ };
+=20
+-static int ads7846_init(SSISlave *d)
++static void ads7846_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev =3D DEVICE(d);
+     ADS7846State *s =3D FROM_SSI_SLAVE(ADS7846State, d);
+@@ -152,14 +152,13 @@ static int ads7846_init(SSISlave *d)
+     ads7846_int_update(s);
+=20
+     vmstate_register(NULL, -1, &vmstate_ads7846, s);
+-    return 0;
+ }
+=20
+ static void ads7846_class_init(ObjectClass *klass, void *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D ads7846_init;
++    k->realize =3D ads7846_realize;
+     k->transfer =3D ads7846_transfer;
+ }
+=20
+diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
+index 14c1bf339ccf..6d1faf44afd7 100644
+--- a/hw/display/ssd0323.c
++++ b/hw/display/ssd0323.c
+@@ -361,7 +361,7 @@ static const GraphicHwOps ssd0323_ops =3D {
+     .gfx_update  =3D ssd0323_update_display,
+ };
+=20
+-static int ssd0323_init(SSISlave *d)
++static void ssd0323_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev =3D DEVICE(d);
+     ssd0323_state *s =3D FROM_SSI_SLAVE(ssd0323_state, d);
+@@ -375,14 +375,13 @@ static int ssd0323_init(SSISlave *d)
+=20
+     register_savevm(dev, "ssd0323_oled", -1, 1,
+                     ssd0323_save, ssd0323_load, s);
+-    return 0;
+ }
+=20
+ static void ssd0323_class_init(ObjectClass *klass, void *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D ssd0323_init;
++    k->realize =3D ssd0323_realize;
+     k->transfer =3D ssd0323_transfer;
+     k->cs_polarity =3D SSI_CS_HIGH;
+ }
+diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
+index 9014f0f705d6..2a277bdb86dd 100644
+--- a/hw/misc/max111x.c
++++ b/hw/misc/max111x.c
+@@ -147,14 +147,14 @@ static int max111x_init(SSISlave *d, int inputs)
+     return 0;
+ }
+=20
+-static int max1110_init(SSISlave *dev)
++static void max1110_realize(SSISlave *dev, Error **errp)
+ {
+-    return max111x_init(dev, 8);
++    max111x_init(dev, 8);
+ }
+=20
+-static int max1111_init(SSISlave *dev)
++static void max1111_realize(SSISlave *dev, Error **errp)
+ {
+-    return max111x_init(dev, 4);
++    max111x_init(dev, 4);
+ }
+=20
+ void max111x_set_input(DeviceState *dev, int line, uint8_t value)
+@@ -183,7 +183,7 @@ static void max1110_class_init(ObjectClass *klass, vo=
+id *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D max1110_init;
++    k->realize =3D max1110_realize;
+ }
+=20
+ static const TypeInfo max1110_info =3D {
+@@ -196,7 +196,7 @@ static void max1111_class_init(ObjectClass *klass, vo=
+id *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D max1111_init;
++    k->realize =3D max1111_realize;
+ }
+=20
+ static const TypeInfo max1111_info =3D {
+diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+index 075e4ed5df85..3ff0886dd55d 100644
+--- a/hw/sd/ssi-sd.c
++++ b/hw/sd/ssi-sd.c
+@@ -15,6 +15,7 @@
+ #include "sysemu/blockdev.h"
+ #include "hw/ssi/ssi.h"
+ #include "hw/sd/sd.h"
++#include "qapi/error.h"
+=20
+ //#define DEBUG_SSI_SD 1
+=20
+@@ -249,7 +250,7 @@ static int ssi_sd_load(QEMUFile *f, void *opaque, int=
+ version_id)
+     return 0;
+ }
+=20
+-static int ssi_sd_init(SSISlave *d)
++static void ssi_sd_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev =3D DEVICE(d);
+     ssi_sd_state *s =3D FROM_SSI_SLAVE(ssi_sd_state, d);
+@@ -260,17 +261,17 @@ static int ssi_sd_init(SSISlave *d)
+     dinfo =3D drive_get_next(IF_SD);
+     s->sd =3D sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, true);
+     if (s->sd =3D=3D NULL) {
+-        return -1;
++        error_setg(errp, "Device initialization failed.");
++        return;
+     }
+     register_savevm(dev, "ssi_sd", -1, 1, ssi_sd_save, ssi_sd_load, s);
+-    return 0;
+ }
+=20
+ static void ssi_sd_class_init(ObjectClass *klass, void *data)
+ {
+     SSISlaveClass *k =3D SSI_SLAVE_CLASS(klass);
+=20
+-    k->init =3D ssi_sd_init;
++    k->realize =3D ssi_sd_realize;
+     k->transfer =3D ssi_sd_transfer;
+     k->cs_polarity =3D SSI_CS_LOW;
+ }
+diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+index 9791c0d94714..7eaaf565fd67 100644
+--- a/hw/ssi/ssi.c
++++ b/hw/ssi/ssi.c
+@@ -54,7 +54,7 @@ static uint32_t ssi_transfer_raw_default(SSISlave *dev,=
+ uint32_t val)
+     return 0;
+ }
+=20
+-static int ssi_slave_init(DeviceState *dev)
++static void ssi_slave_realize(DeviceState *dev, Error **errp)
+ {
+     SSISlave *s =3D SSI_SLAVE(dev);
+     SSISlaveClass *ssc =3D SSI_SLAVE_GET_CLASS(s);
+@@ -64,7 +64,7 @@ static int ssi_slave_init(DeviceState *dev)
+         qdev_init_gpio_in_named(dev, ssi_cs_default, SSI_GPIO_CS, 1);
+     }
+=20
+-    return ssc->init(s);
++    ssc->realize(s, errp);
+ }
+=20
+ static void ssi_slave_class_init(ObjectClass *klass, void *data)
+@@ -72,7 +72,7 @@ static void ssi_slave_class_init(ObjectClass *klass, vo=
+id *data)
+     SSISlaveClass *ssc =3D SSI_SLAVE_CLASS(klass);
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
+-    dc->init =3D ssi_slave_init;
++    dc->realize =3D ssi_slave_realize;
+     dc->bus_type =3D TYPE_SSI_BUS;
+     if (!ssc->transfer_raw) {
+         ssc->transfer_raw =3D ssi_transfer_raw_default;
+diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+index 4a0a53903c66..6a0c3c3cdb28 100644
+--- a/include/hw/ssi/ssi.h
++++ b/include/hw/ssi/ssi.h
+@@ -37,7 +37,7 @@ enum SSICSMode {
+ struct SSISlaveClass {
+     DeviceClass parent_class;
+=20
+-    int (*init)(SSISlave *dev);
++    void (*realize)(SSISlave *dev, Error **errp);
+=20
+     /* if you have standard or no CS behaviour, just override transfer.
+      * This is called when the device cs is active (true by default).
 --=20
 2.1.4
 

@@ -1,72 +1,73 @@
-Received: by 10.25.21.96 with SMTP id l93csp1963215lfi;
-        Tue, 28 Jun 2016 21:02:48 -0700 (PDT)
-X-Received: by 10.55.5.144 with SMTP id 138mr7897585qkf.196.1467172968635;
-        Tue, 28 Jun 2016 21:02:48 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp2016506lfi;
+        Wed, 29 Jun 2016 00:00:59 -0700 (PDT)
+X-Received: by 10.200.51.212 with SMTP id d20mr10403088qtb.14.1467183659309;
+        Wed, 29 Jun 2016 00:00:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b7si515319qke.116.2016.06.28.21.02.48
+        by mx.google.com with ESMTPS id y135si2022911qky.58.2016.06.29.00.00.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Jun 2016 21:02:48 -0700 (PDT)
+        Wed, 29 Jun 2016 00:00:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41055 helo=lists.gnu.org)
+Received: from localhost ([::1]:41605 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bI6i7-0005JK-UN
-	for alex.bennee@linaro.org; Wed, 29 Jun 2016 00:02:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55449)
+	id 1bI9UY-0003Hi-Pm
+	for alex.bennee@linaro.org; Wed, 29 Jun 2016 03:00:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36741)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1bI0oc-00082p-2i
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 17:45:07 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1bI9UU-0003Hd-BM
+	for qemu-arm@nongnu.org; Wed, 29 Jun 2016 03:00:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1bI0oX-0001e5-5Y
-	for qemu-arm@nongnu.org; Tue, 28 Jun 2016 17:45:05 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:33420)
+	(envelope-from <vijay.kilari@gmail.com>) id 1bI9UT-0000Ta-7m
+	for qemu-arm@nongnu.org; Wed, 29 Jun 2016 03:00:54 -0400
+Received: from mail-ob0-x235.google.com ([2607:f8b0:4003:c01::235]:35765)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>)
-	id 1bI0oW-0001e1-UL; Tue, 28 Jun 2016 17:45:01 -0400
-Received: by mail-pf0-x241.google.com with SMTP id c74so2746408pfb.0;
-	Tue, 28 Jun 2016 14:45:00 -0700 (PDT)
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1bI9UT-0000TW-3J; Wed, 29 Jun 2016 03:00:53 -0400
+Received: by mail-ob0-x235.google.com with SMTP id o10so300078obp.2;
+	Wed, 29 Jun 2016 00:00:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id;
-	bh=5E0jvldEjWzKB3KLxCRjoXv4MLXc7YoqKsRoEys1lQ4=;
-	b=amncH6AIa3Z6TIt7FFwptl+IF3/w5Dlqv9+ZJLzxtFlSBdqtdii9kqetbRGLWMghNJ
-	DkP0cI+L5nSICrJsHbmUqTTIhuq/ZtXsWIFfygkS4I41pDpD9gRNM+b0c3kilVM25Rkq
-	QSmyJJlrumjhStmuqUrTuOLw+MhNY/sCtVkSSHDa+g77+8oN8D6h80QXQKJPnd3R6t61
-	bM83lnNck7HA3fVX0VVokrz+y0SVRZbSjFRUpSr7YMNA7D8FEjYDBm1AJprZPlM3T4Pj
-	w4kYK1d9TTXu3Ohp3hQpnbm9/CHE6JctZIsPT3C7R0N9uS1pELwkN2M6oy+PIrfOuqE+
-	TJnw==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=HyX6I9Ufch+L3glVmrcfy5aWN3vFAuk1CfhN7qu0l/c=;
+	b=HrujjZTQUDYpFexTrd0t8uAnjuxIyCzINmdMRJL4AkQrYL+qP1SBYfnCgmp6bgUW1y
+	RIovCRY/nYN+FveBOvwr4esgVMB0ievdydikSxQsfornwEaye1CSDhLzEBg2++fV2GU1
+	0F2YyKPE8j4MoSMGGwVb2rxHVUDGPvaEFQT7uVv+AQL4qsIHkiyU5D/IdVaPyu8ZzYUh
+	qVFEo9xdA1GfsbU72bIRqmN8GF5UezVpVxDiNQrfOIOrxCKYuKyALDwhZZjqsMT6iy6e
+	JFHHNG6UBF7K9E1apalJgAZvy1XfzooYcHZB8pl40zHwhnYrmrRml3nqjmjJvHD8ujF0
+	nhfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=5E0jvldEjWzKB3KLxCRjoXv4MLXc7YoqKsRoEys1lQ4=;
-	b=cAIw4ddZp1Vc3+LkWqKqoDdQHxH8kibtOiSnWMs15Ti8wnrByVQlQG7bUZH0uuftlO
-	3IaP110mzvb2UYLhKENZQU11PP81axSwu2F5Z+gQ39tzXgeysqxibYBciIRWZjRgfwIY
-	MpPVM9JW1srjvsTXSHclEUHSFT7XxkFq4E0sKQSZ6xyHxm0HC+vJZsZM3C2zGhXp/qaJ
-	UX+GNzbwYdjsemxeIB0jomQ7v9WuBDT6tgCZInvZtHEBLRutBt2IgJxC9ECq9cRdIiEa
-	hjkQVuSfLfJ+oHL88wDbDUB/fENQ3/WGaFWX8MxVzRtsSNy4KgEvefhHtdMuAEMi0D0d
-	r6JA==
-X-Gm-Message-State: ALyK8tIN+7/SKqSSvXO4Ghb4I2dBJDbuJS6f8vpcvwtIayGLa9vNkiWvAkL8+Y+CQ29pDA==
-X-Received: by 10.98.36.130 with SMTP id k2mr5705696pfk.118.1467150299621;
-	Tue, 28 Jun 2016 14:44:59 -0700 (PDT)
-Received: from squirtle.localdomain.com ([173.226.206.194])
-	by smtp.gmail.com with ESMTPSA id a87sm294596pfc.63.2016.06.28.14.44.57
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 28 Jun 2016 14:44:59 -0700 (PDT)
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-To: qemu-arm@nongnu.org
-Date: Tue, 28 Jun 2016 14:44:27 -0700
-Message-Id: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com>
-X-Mailer: git-send-email 2.5.5
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=HyX6I9Ufch+L3glVmrcfy5aWN3vFAuk1CfhN7qu0l/c=;
+	b=F4vbfz5Yz94Uufs/G5iHu5jT42ZM9r8lIRg4woFdWTKUzkULn8W07/0n6DVgXOdAFu
+	vTGE5I4/OHxCmLz8Slnh8sA1lXonI4SiAlsgF8ZrLBEeS1ARehp6pX8AWYfzScwstqws
+	ZrAHOALwMqVIC5jA0uXgdJlOeDDzDNKcYYNTER5lptY86CDRqfTZ0GO/ZOPkLcgGghCl
+	sHx0ffpOtMB5f/XrA81dBT2DOrFQLdCe9mAgj9WOwW9xQI7oleFtQOIvobeUtDR3Eyn8
+	xhlSyheDFbL0JaxO50tK5/tJXIoIxR5u9uiUz75OE6DWmIIAmGjnQgdN6Plj3M0DYIPk
+	zAWA==
+X-Gm-Message-State: ALyK8tIhtxQRh5iBuYh3n9ksxVO1O+7HflktFYeI+46f1VjMenBsGXV5eEY6AhzEt4seAZnSP7wwL9v6cB8v0A==
+X-Received: by 10.202.68.6 with SMTP id r6mr4566151oia.53.1467183652183; Wed,
+	29 Jun 2016 00:00:52 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.157.37.201 with HTTP; Wed, 29 Jun 2016 00:00:51 -0700 (PDT)
+In-Reply-To: <BLUPR0701MB1684CF1920D922BD00E93EE6F2230@BLUPR0701MB1684.namprd07.prod.outlook.com>
+References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8iPStWP4Pcf6Bxmn8gL5SnBDFyrPNDUpi8syc7PC_QiQ@mail.gmail.com>
+	<BLUPR0701MB1684CF1920D922BD00E93EE6F2230@BLUPR0701MB1684.namprd07.prod.outlook.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Wed, 29 Jun 2016 12:30:51 +0530
+Message-ID: <CALicx6tbpSZDBYYzA0Uk5dHGoW-4_CTFuUnUDDe+NGieakts+g@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-X-Mailman-Approved-At: Wed, 29 Jun 2016 00:02:41 -0400
-Subject: [Qemu-arm] [RFC PATCH] armv7m_nvic: Use qemu_get_cpu(0) instead of
- current_cpu
+X-Received-From: 2607:f8b0:4003:c01::235
+Subject: Re: [Qemu-arm] Fw:  [PATCH v2 0/6] Runtime pagesize computation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,61 +79,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: "prasun.kapoor" <prasun.kapoor@cavium.com>, patches@linaro.org,
+	QEMU Developers <qemu-devel@nongnu.org>, "Kumar,
+	Vijaya" <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VAKzxB6elhyZ
+X-TUID: RxavFlX6WVQo
 
-Starting QEMU with -S results in current_cpu containing its initial
-value of NULL. It is however possible to connect to such QEMU instance
-and query various CPU registers, one example being CPUID, and doing that
-results in QEMU segfaulting.
+On Wed, Jun 29, 2016 at 12:24 PM, Kumar, Vijaya <Vijaya.Kumar@cavium.com> wrote:
+>
+>
+>
+> ________________________________
+> From: Peter Maydell <peter.maydell@linaro.org>
+> Sent: Tuesday, June 28, 2016 1:46 PM
+> To: qemu-arm; QEMU Developers
+> Cc: Paolo Bonzini; Kumar, Vijaya; Patch Tracking
+> Subject: Re: [Qemu-arm] [PATCH v2 0/6] Runtime pagesize computation
+>
+> On 21 June 2016 at 18:09, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> This set of patches is a development based on the ones from Vijaya:
+>> the general idea is similar but I have tried to improve the interface
+>> for defining the page size a bit.  I've also tweaked patches 2 and 3
+>> to address code review comments.
+>
+>> NB: I have only very lightly tested these and haven't attempted
+>> to measure performance at all. There is an assert() in the
+>> definition of TARGET_PAGE_BITS which is good for making sure
+>> it isn't used before it's valid but not so good for speed.
+>
+> Vijaya, are you in a position to test this patchset for
+> performance? Presumably you have a test case benchmark you're
+> looking to improve here?
 
-Using qemu_get_cpu(0) seem reasonable enough given that ARMv7M
-architecture is a single core architecture.
+I have tested the patches and the test case that I was trying was
+Live migration of Idle VM on arm64 platform.
+VM migrated is with 4 VCPUS and 8GB RAM running CentOS.
 
-Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
----
- hw/intc/armv7m_nvic.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+With page bits 10 (1K), the live migration time is 5.8 sec
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 890d5d7..06d8db6 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -187,11 +187,11 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-     case 0x1c: /* SysTick Calibration Value.  */
-         return 10000;
-     case 0xd00: /* CPUID Base.  */
--        cpu = ARM_CPU(current_cpu);
-+        cpu = ARM_CPU(qemu_get_cpu(0));
-         return cpu->midr;
-     case 0xd04: /* Interrupt Control State.  */
-         /* VECTACTIVE */
--        cpu = ARM_CPU(current_cpu);
-+        cpu = ARM_CPU(qemu_get_cpu(0));
-         val = cpu->env.v7m.exception;
-         if (val == 1023) {
-             val = 0;
-@@ -222,7 +222,7 @@ static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
-             val |= (1 << 31);
-         return val;
-     case 0xd08: /* Vector Table Offset.  */
--        cpu = ARM_CPU(current_cpu);
-+        cpu = ARM_CPU(qemu_get_cpu(0));
-         return cpu->env.v7m.vecbase;
-     case 0xd0c: /* Application Interrupt/Reset Control.  */
-         return 0xfa050000;
-@@ -349,7 +349,7 @@ static void nvic_writel(nvic_state *s, uint32_t offset, uint32_t value)
-         }
-         break;
-     case 0xd08: /* Vector Table Offset.  */
--        cpu = ARM_CPU(current_cpu);
-+        cpu = ARM_CPU(qemu_get_cpu(0));
-         cpu->env.v7m.vecbase = value & 0xffffff80;
-         break;
-     case 0xd0c: /* Application Interrupt/Reset Control.  */
--- 
-2.5.5
+capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
+zero-blocks: off compress: off events: off x-postcopy-ram: off
+Migration status: completed
+total time: 5857 milliseconds
+downtime: 102 milliseconds
+setup: 14 milliseconds
+transferred ram: 336081 kbytes
+throughput: 470.21 mbps
+remaining ram: 0 kbytes
+total ram: 8519872 kbytes
+duplicate: 8271539 pages
+skipped: 0 pages
+normal: 261340 pages
+normal bytes: 261340 kbytes
+dirty sync count: 3
 
+With page bits 12 (4K), live migration time is 2.9 sec
+
+capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
+zero-blocks: off compress: off events: off x-postcopy-ram: off
+Migration status: completed
+total time: 2974 milliseconds
+downtime: 76 milliseconds
+setup: 5 milliseconds
+transferred ram: 301327 kbytes
+throughput: 830.30 mbps
+remaining ram: 0 kbytes
+total ram: 8519872 kbytes
+duplicate: 2062398 pages
+skipped: 0 pages
+normal: 70662 pages
+normal bytes: 282648 kbytes
+dirty sync count: 3
+
+Regards
+Vijay
+>
+> thanks
+> -- PMM

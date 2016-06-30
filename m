@@ -1,71 +1,74 @@
-Received: by 10.25.21.96 with SMTP id l93csp390979lfi;
-        Thu, 30 Jun 2016 08:02:51 -0700 (PDT)
-X-Received: by 10.55.20.170 with SMTP id 42mr18382159qku.168.1467298970173;
-        Thu, 30 Jun 2016 08:02:50 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp481465lfi;
+        Thu, 30 Jun 2016 11:24:58 -0700 (PDT)
+X-Received: by 10.55.195.131 with SMTP id r3mr15432401qkl.130.1467311098480;
+        Thu, 30 Jun 2016 11:24:58 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v35si2864979qtb.4.2016.06.30.08.02.49
+        by mx.google.com with ESMTPS id y32si3331597qta.101.2016.06.30.11.24.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Jun 2016 08:02:50 -0700 (PDT)
+        Thu, 30 Jun 2016 11:24:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50809 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52020 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bIdUP-0001qz-MN
-	for alex.bennee@linaro.org; Thu, 30 Jun 2016 11:02:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48576)
+	id 1bIge1-00036y-SQ
+	for alex.bennee@linaro.org; Thu, 30 Jun 2016 14:24:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIdUM-0001nk-Kr
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:02:47 -0400
+	(envelope-from <andrew.smirnov@gmail.com>) id 1bIgdw-00034X-8P
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 14:24:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIdUI-00010t-Lh
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:02:46 -0400
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:35782)
+	(envelope-from <andrew.smirnov@gmail.com>) id 1bIgdt-0007RV-V0
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 14:24:51 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:36779)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIdUI-00010f-Gf
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:02:42 -0400
-Received: by mail-vk0-x22a.google.com with SMTP id u68so70791926vkf.2
-	for <qemu-arm@nongnu.org>; Thu, 30 Jun 2016 08:02:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(envelope-from <andrew.smirnov@gmail.com>)
+	id 1bIgdm-0007Pj-SD; Thu, 30 Jun 2016 14:24:42 -0400
+Received: by mail-qk0-x242.google.com with SMTP id r68so15752735qka.3;
+	Thu, 30 Jun 2016 11:24:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=O/jAuQxFvtmvWP1Od3ZGLP/qIoArjVI+5hSN+auu3wM=;
-	b=O5MFGqLJggzn4Yozs4LwltDui+7ktnmjcVxSfM7lb0TDL6LxU/hbJBNe5g1uqqsDCU
-	Ll1dDAnnL0Q18+anQppfJ60Ajm71lHTpTP30MlnFcBBHjoiiLDbmt3gE17zKmv8b17GB
-	wjozv2KP+rCQn/JsY7rWV2/1Mw8zpoI3m18Y4=
+	:cc; bh=WwRSIzW06Pbab2itS5ZsQg/oBMvuB0+pTssk8yCRN50=;
+	b=by+4L6q+i6OKgazWnOzqK7P+LAYOrfA2W1+I0we3R4iVTTpAYl2hEfmOnRJLhhlx1k
+	IaSE3YZvfEMZ+NWKnvzcHo7lgBhzGiy5YLVJVexty+lU9B/JvDTSeQa8Bt0H+3vj31Cp
+	FcIX4cZyTsKOlpgpmtx+Af4D2M4ygW21cwMYR9Fe9/wkBB8RjjvU3LP29pkHrORZOuVC
+	pjYAzNrr7VPNxpwNxwZ4zpizcrzOf8rn5PT5fC8fSAFvTnUe86lCJi9Bg7PE1mn3xr5H
+	RkVwCk1tKFMBCKP3RoEeyF+/xP7D/84n0ihL4l2P4X9dFpTc3nqz2cGW8vg1n5l3JdgC
+	IErg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=O/jAuQxFvtmvWP1Od3ZGLP/qIoArjVI+5hSN+auu3wM=;
-	b=GYj3Hbn5JKSi2ka6lM0+lUOteCB9/Y+UWeTN2qVTHvSGqi1SAbc6n2W+y+T9v7x/c/
-	B7W74vBaKXDB6hcGtat1wCq0XMx8QPgykwysN5dJBPd2Df32zOmcsYsgdZc0FbX4i/AI
-	FuT1jvtT7Zek0E+BlbJvI0zea940qkutbnNIq1OWRA1GAtXnSzknXl1fOET6G6IV3h/R
-	GtP1x/1qwv8qnL57rxGR9eXemXX/tUNB7lgKtFNJWaZJZazZZl5YuzYWKdr3ZT/I5o8n
-	76UXTcwXNErvsZo4o0vh3Nvqd1Lo2Q3tsxa46G2OurdhqicZ//bNTevU60Jb9EZN00PX
-	cKaQ==
-X-Gm-Message-State: ALyK8tKW+DidIqQVfcsLgi3ucDGcxmMbFLZzNu8lZbeJ7PM4F/WgG2x/L9s52LJuTt+Gh69XNCXYuexcPhoLkKy6
-X-Received: by 10.31.7.78 with SMTP id 75mr7233668vkh.74.1467298961695; Thu,
-	30 Jun 2016 08:02:41 -0700 (PDT)
+	bh=WwRSIzW06Pbab2itS5ZsQg/oBMvuB0+pTssk8yCRN50=;
+	b=NeR+I1UUYTJ+RrDRJFSg0h8Zo8zztcmmcdejreQfVS2Cu5ewusEfPOOj7F+jM9ofOm
+	LmM7Um4s6vunyZKLvnHLJW6TnoZiswCMt3BDLd9jEESKMwGM+3bZmnzh9iswt00m2PE3
+	sHjApogpmNXTq5o7S53iJ0H1V1thOM+EmREklE7CstXL4TmpMqTI39nBYyTIDxJfIDti
+	EvDrvCL9BR6h+jFCBI1aFeDWSjkR8L3GbhMOU7g6yh17/Uu9DN//wqCpDnlW2ehAKDEZ
+	7GBtTB5xZw3ocLUSEQNsGHH/yECg+dDhXqH20Ah6rJ72PjZiJ3Azg3X3HeGEJ8lb8YzM
+	g7pQ==
+X-Gm-Message-State: ALyK8tLXO0McrdZ3Ru+G5lmiXDz8kQkMGUe26cxw7n3JhTMJnDkqaR+qJzl9o/geXJzf7EfhbRUEuq4DsgTsFg==
+X-Received: by 10.37.3.202 with SMTP id 193mr7132470ybd.130.1467311082355;
+	Thu, 30 Jun 2016 11:24:42 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Thu, 30 Jun 2016 08:02:22 -0700 (PDT)
-In-Reply-To: <5814242b-8a8c-852a-51e8-268033b51200@gmail.com>
-References: <20160625123521.16752-1-digetx@gmail.com>
-	<CAFEAcA8HFfuEHP-d8+H3DC06+RpjjXqQoCX81w2Yr+Txsn5fSw@mail.gmail.com>
-	<5814242b-8a8c-852a-51e8-268033b51200@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jun 2016 16:02:22 +0100
-Message-ID: <CAFEAcA8788W2infUBneuUh4eNMLqPpdNzGXqKESgi+ZKpigdyg@mail.gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
+Received: by 10.83.35.205 with HTTP; Thu, 30 Jun 2016 11:24:41 -0700 (PDT)
+In-Reply-To: <CAFEAcA8YKL5rBvYtbg22da3x6Xg3MNnHBnjetqL0kxEKqcLXqg@mail.gmail.com>
+References: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com>
+	<1467150268-11038-2-git-send-email-andrew.smirnov@gmail.com>
+	<CAFEAcA8YKL5rBvYtbg22da3x6Xg3MNnHBnjetqL0kxEKqcLXqg@mail.gmail.com>
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Thu, 30 Jun 2016 11:24:41 -0700
+Message-ID: <CAHQ1cqEDf0=RpFb1kaqhPe_qzfjEYBdcsYpjEoTKd-9h=y3wUg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Subject: Re: [Qemu-arm] [PATCH v2] hw/ptimer: Don't wrap around counter for
- expired timer that uses tick handler
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: Re: [Qemu-arm] [RFC PATCH] exec: Support non-direct memory writes
+ in cpu_memory_rw_debug
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,41 +80,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Alexander Graf <agraf@suse.de>, Marcelo Tosatti <mtosatti@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:PReP" <qemu-ppc@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	"open list:X86" <kvm@vger.kernel.org>,
+	Cornelia Huck <cornelia.huck@de.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Luiz Capitulino <lcapitulino@redhat.com>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2UIE73bQ7JWp
+X-TUID: hBim0BQuiliP
 
-On 27 June 2016 at 19:26, Dmitry Osipenko <digetx@gmail.com> wrote:
-> On 27.06.2016 16:27, Peter Maydell wrote:
->> I guess this fixes a regression, but it looks really weird.
->> Why should the timer behaviour change if there happens to be
->> a bottom half present? That should be an internal implementation
->> detail. It's also a bit odd that use_icount is in the check:
->> that shouldn't generally affect device emulation behaviour...
+On Thu, Jun 30, 2016 at 7:06 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 28 June 2016 at 22:44, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
+>> Add code to support writing to memory mapped peripherals via
+>> cpu_memory_rw_debug(). The code of that function already supports
+>> reading from such memory regions, so this commit makes that
+>> functionality "symmetric".
+>>
+>> One use-case for that functionality is setting various registers of a
+>> non-running CPU. A concrete example would be starting QEMU emulating
+>> Cortex-M with -S, connecting with GDB and modifying the value of Vector
+>> Table Offset register.
+>>
+>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 >
-> In case of a polled timer that doesn't have ptimer trigger bottom half callback
-> setup, we are free to wrap around counter since timer behaviour isn't changed
-> from ptimer user perspective, as it won't be able to change it's state in the
-> handler.
+>>  static uint16_t vring_used_idx(VirtQueue *vq)
+>> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+>> index 9f38edf..d5b4966 100644
+>> --- a/include/exec/cpu-all.h
+>> +++ b/include/exec/cpu-all.h
+>> @@ -302,6 +302,6 @@ void dump_opcount_info(FILE *f, fprintf_function cpu_fprintf);
+>>  #endif /* !CONFIG_USER_ONLY */
+>>
+>>  int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+>> -                        uint8_t *buf, int len, int is_write);
+>> +                        uint8_t *buf, int len, MemTxType type);
+>>
+>>  #endif /* CPU_ALL_H */
+>> diff --git a/include/exec/memory.h b/include/exec/memory.h
+>> index 4ab6800..8fbaf1b 100644
+>> --- a/include/exec/memory.h
+>> +++ b/include/exec/memory.h
+>> @@ -14,6 +14,13 @@
+>>  #ifndef MEMORY_H
+>>  #define MEMORY_H
+>>
+>> +typedef enum {
+>> +    MEMTX_READ,
+>> +    MEMTX_WRITE,
+>> +    MEMTX_PROGRAM,
+>> +} MemTxType;
 >
-> I just decided to keep that wraparound feature for a case of a polled free
-> running timer, this should result in a better distribution of the polled value.
-> The potential users of that feature are "imx_epit" and "digic" timer device
-> models. I should have mentioned it in the commit message to avoid confusion, sorry.
+> We already have an enum for this: MMUAccessType.
+> That is currently unhelpfully located in cpu-common.h, but there's a
+> patch on list which should get applied soon which moves it to
+> include/qom/cpu.h:
+>  http://patchwork.ozlabs.org/patch/635235/
 >
-> It is still an internal implementation detail, not sure what you are meaning.
-> Could you elaborate, please?
+>
+>> +
+>>  #ifndef CONFIG_USER_ONLY
+>>
+>>  #define DIRTY_MEMORY_VGA       0
+>> @@ -1240,6 +1247,7 @@ AddressSpace *address_space_init_shareable(MemoryRegion *root,
+>>   */
+>>  void address_space_destroy(AddressSpace *as);
+>>
+>> +
+>>  /**
+>>   * address_space_rw: read from or write to an address space.
+>>   *
+>> @@ -1251,11 +1259,11 @@ void address_space_destroy(AddressSpace *as);
+>>   * @addr: address within that address space
+>>   * @attrs: memory transaction attributes
+>>   * @buf: buffer with the data transferred
+>> - * @is_write: indicates the transfer direction
+>> + * @type: indicates the transfer type
+>>   */
+>>  MemTxResult address_space_rw(AddressSpace *as, hwaddr addr,
+>>                               MemTxAttrs attrs, uint8_t *buf,
+>> -                             int len, bool is_write);
+>> +                             int len, MemTxType type);
+>>
+>>  /**
+>>   * address_space_write: write to address space.
+>> @@ -1268,10 +1276,11 @@ MemTxResult address_space_rw(AddressSpace *as, hwaddr addr,
+>>   * @addr: address within that address space
+>>   * @attrs: memory transaction attributes
+>>   * @buf: buffer with the data transferred
+>> + * @force: force writing to ROM areas
+>>   */
+>>  MemTxResult address_space_write(AddressSpace *as, hwaddr addr,
+>>                                  MemTxAttrs attrs,
+>> -                                const uint8_t *buf, int len);
+>> +                                const uint8_t *buf, int len, bool force);
+>>
+>>  /* address_space_ld*: load from an address space
+>>   * address_space_st*: store to an address space
+>
+> I think this patch would be easier to review if it was
+> split up, something like:
+>  * a patch which just converts the is_write bool parameter to the
+>    enum and updates all the callers, with no change in behaviour
+>  * a patch which makes use of the ability to pass in something other
+>    than 0 or 1
+>  * a patch which adds and uses address_space_write_debug(),
+>    or whatever API we go for
+>
+> The important bit is splitting the mechanical "convert bool
+> to enum" part (which touches lots of files but makes no
+> behaviour change) from the part which changes behaviour
+> and doesn't touch many files.
 
-What I meant was: ptimer_get_count() is typically called to generate
-a value to return from a register. That's a separate thing, conceptually,
-from whether the device happens to also trigger an interrupt on timer
-expiry by passing a bh to ptimer_init(). So it's very odd for a detail
-of interrupt-on-timer-expiry (that there is a bottom half) to affect
-the value returned when you read the timer count register.
+OK, sounds good, will update in v2.
 
-thanks
--- PMM
+Andrey

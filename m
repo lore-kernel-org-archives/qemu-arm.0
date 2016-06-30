@@ -1,111 +1,183 @@
-Received: by 10.25.21.96 with SMTP id l93csp355002lfi;
-        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
-X-Received: by 10.55.191.129 with SMTP id p123mr19453916qkf.1.1467294687123;
-        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u21si2670283qkl.71.2016.06.30.06.51.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.21.96 with SMTP id l93csp363152lfi;
+        Thu, 30 Jun 2016 07:07:18 -0700 (PDT)
+X-Received: by 10.66.182.194 with SMTP id eg2mr22011782pac.159.1467295638001;
+        Thu, 30 Jun 2016 07:07:18 -0700 (PDT)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d20si4544682pfk.240.2016.06.30.07.07.17;
+        Thu, 30 Jun 2016 07:07:17 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49538 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bIcNK-0001Vt-Gc
-	for alex.bennee@linaro.org; Thu, 30 Jun 2016 09:51:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51645)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcIP-0003Gk-GB
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:22 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcIK-00046u-He
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:20 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34707)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcIK-00046e-DM
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:16 -0400
-Received: by mail-vk0-x230.google.com with SMTP id c2so110208745vkg.1
-	for <qemu-arm@nongnu.org>; Thu, 30 Jun 2016 06:46:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6p6qFBXZZQIPxMQjG1G8UVLHOaVRVlAwpH5QpiwJdqk=;
-	b=VDWBiax4CcyuwQhfnPRR7ndLxEemoxd/gZnXXJF+5E5qn7QeXIfm5mR9fmkpOguYct
-	GdTMzeQ+UiOFvRXdy9rhzA74mTUAhyhC1w08ghaXKstt76NGxQi87jMLHr8zGcjARpY2
-	DPeEeGi+QPwU7iNKBoDk+b5FBnfQJn3WVSVEw=
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+	id S1752526AbcF3OHN (ORCPT <rfc822;xinliang.liu@linaro.org>
+	+ 8 others); Thu, 30 Jun 2016 10:07:13 -0400
+Received: from mail-vk0-f52.google.com ([209.85.213.52]:33759 "EHLO
+	mail-vk0-f52.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+	with ESMTP id S1752521AbcF3OHL (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Thu, 30 Jun 2016 10:07:11 -0400
+Received: by mail-vk0-f52.google.com with SMTP id k68so24366830vkb.0
+        for <kvm@vger.kernel.org>; Thu, 30 Jun 2016 07:07:11 -0700 (PDT)
+DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=DtYGc2cSWUGSblSxca1jV1RcIZ/q5bRZoF/1fE0yqDY=;
+        b=D4kj6DluXZ8/Z0uZzB9DF2R8W5Nrf30xmSKjbsaRWm+cUs22K0Ck5bRcYMJNiix/8Y
+         m8rI7Y/KwrQDg+2Mfmaoyfb7qaRRsy/5SxuI+Ckk50k/zt50/oXjDK5kd5v/kZmLsHD+
+         lGegmM0o0tlqoH9OPgy8QmiUOIxXX1qjDCeQM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6p6qFBXZZQIPxMQjG1G8UVLHOaVRVlAwpH5QpiwJdqk=;
-	b=f4oDXbYNWRMikflSbPC8if39GoHSewpbvnyxnrRnBZiXt5um4g6qIZ/DzoF+6M++4J
-	jQ8aNVzMb72zasQ2qGX0LgppBi8NkjEwn3Jy0eXQfdEBaT1/V1ECxCfmx9wkTwnJcn9t
-	kj/dL/4KtYsO1gW3EQLD2MKQkKYhKwsMnqTKGEFdzDt8Gs9lnil52eEiVsJ6SYSSAIIP
-	k3dLMn7drsvFhzHQaEHP8vIDqhY38GH82tyK4JuADF0CB+FAhkWUiJsKfyIut587quiS
-	g+rAGnpCZUsEuIdMyvl4YJ7qeLmmcfT9SdoezHUCOS7OTbgFneO8B1h64VubhGfugMAs
-	rTLQ==
-X-Gm-Message-State: ALyK8tJdjhNPzkuC5/twtKG8JhYQPqxyJBKjtwiCMYtd60aFIJ22DfIZtuV3uf3nmosFY7VQjGwgwlUQ0BKRd/Ai
-X-Received: by 10.176.65.7 with SMTP id j7mr5630288uad.38.1467294374817; Thu,
-	30 Jun 2016 06:46:14 -0700 (PDT)
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=DtYGc2cSWUGSblSxca1jV1RcIZ/q5bRZoF/1fE0yqDY=;
+        b=b5uoReq14SXnXmgHpkAUayXqiXJE/LMse+vcRSGbottFGsNL/vzby/fNHUHi9jq9Rk
+         9rLjji7Ft42UKGFm99PPTQAc2cPI7yU6iMdcPntC4+QRAYs4Z+UMEuvjzkIHyfCKZ9Vh
+         b7lh3fxc47pDOQHnEpDHc5NoMrl+Hm9+6IQYreAsdtvI55HAtvWvSuVT+QoHT9mqr4AO
+         ou/fD82P6AdJpbubTLHwdUOstaQX0UvzpZ/8FXUV9+ZavwhdM4FXs973kSP6KJ4xAaia
+         GnYt8gAx7UR16TpBphTy3YWOlZzv8atfjxRSXk3IjaNb5S4ARFpb4IKosE362BCisx9x
+         VjQA==
+X-Gm-Message-State: ALyK8tK5Hmqk9XWsTP4CTPK5SdrBSYaN0q6C41WQ3MHhg+5AkF4oCjFFriQqCBaIMqrUNC9vLw77m7Z9qktaSHDK
+X-Received: by 10.31.152.85 with SMTP id a82mr5371681vke.47.1467295630702;
+ Thu, 30 Jun 2016 07:07:10 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Thu, 30 Jun 2016 06:45:55 -0700 (PDT)
-In-Reply-To: <1467190029-694-2-git-send-email-vijayak@cavium.com>
-References: <1467190029-694-1-git-send-email-vijayak@cavium.com>
-	<1467190029-694-2-git-send-email-vijayak@cavium.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jun 2016 14:45:55 +0100
-Message-ID: <CAFEAcA-Ro3tN-4aGvivH864o0Sk3+FY=Z0W8=_3yooxk5+x=4A@mail.gmail.com>
-To: Vijay <vijayak@cavium.com>
+Received: by 10.31.157.141 with HTTP; Thu, 30 Jun 2016 07:06:51 -0700 (PDT)
+In-Reply-To: <1467150268-11038-2-git-send-email-andrew.smirnov@gmail.com>
+References: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com> <1467150268-11038-2-git-send-email-andrew.smirnov@gmail.com>
+From:	Peter Maydell <peter.maydell@linaro.org>
+Date:	Thu, 30 Jun 2016 15:06:51 +0100
+Message-ID: <CAFEAcA8YKL5rBvYtbg22da3x6Xg3MNnHBnjetqL0kxEKqcLXqg@mail.gmail.com>
+Subject: Re: [RFC PATCH] exec: Support non-direct memory writes in cpu_memory_rw_debug
+To:	Andrey Smirnov <andrew.smirnov@gmail.com>
+Cc:	QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Leon Alrae <leon.alrae@imgtec.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Luiz Capitulino <lcapitulino@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alexander Graf <agraf@suse.de>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cornelia.huck@de.ibm.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"open list:PReP" <qemu-ppc@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:X86" <kvm@vger.kernel.org>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Subject: Re: [Qemu-arm] [PATCH v3 1/1] target-arm: Use Neon for zero checking
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Prasun.Kapoor@cavium.com, Vijay Kilari <vijay.kilari@gmail.com>,
-	Suresh <ksuresh@cavium.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hMA5wky6OM9o
+Sender:	kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List:	kvm@vger.kernel.org
+X-TUID: /2rDGuMCG/Sm
 
-On 29 June 2016 at 09:47,  <vijayak@cavium.com> wrote:
-> From: Vijay <vijayak@cavium.com>
+On 28 June 2016 at 22:44, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
+> Add code to support writing to memory mapped peripherals via
+> cpu_memory_rw_debug(). The code of that function already supports
+> reading from such memory regions, so this commit makes that
+> functionality "symmetric".
 >
-> Use Neon instructions to perform zero checking of
-> buffer. This is helps in reducing total migration time.
+> One use-case for that functionality is setting various registers of a
+> non-running CPU. A concrete example would be starting QEMU emulating
+> Cortex-M with -S, connecting with GDB and modifying the value of Vector
+> Table Offset register.
+>
+> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 
-> diff --git a/util/cutils.c b/util/cutils.c
-> index 5830a68..4779403 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -184,6 +184,13 @@ int qemu_fdatasync(int fd)
->  #define SPLAT(p)       _mm_set1_epi8(*(p))
->  #define ALL_EQ(v1, v2) (_mm_movemask_epi8(_mm_cmpeq_epi8(v1, v2)) == 0xFFFF)
->  #define VEC_OR(v1, v2) (_mm_or_si128(v1, v2))
-> +#elif __aarch64__
-> +#include "arm_neon.h"
-> +#define VECTYPE        uint64x2_t
-> +#define ALL_EQ(v1, v2) \
-> +        ((vgetq_lane_u64(v1, 0) == vgetq_lane_u64(v2, 0)) && \
-> +         (vgetq_lane_u64(v1, 1) == vgetq_lane_u64(v2, 1)))
-> +#define VEC_OR(v1, v2) ((v1) | (v2))
+>  static uint16_t vring_used_idx(VirtQueue *vq)
+> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+> index 9f38edf..d5b4966 100644
+> --- a/include/exec/cpu-all.h
+> +++ b/include/exec/cpu-all.h
+> @@ -302,6 +302,6 @@ void dump_opcount_info(FILE *f, fprintf_function cpu_fprintf);
+>  #endif /* !CONFIG_USER_ONLY */
+>
+>  int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+> -                        uint8_t *buf, int len, int is_write);
+> +                        uint8_t *buf, int len, MemTxType type);
+>
+>  #endif /* CPU_ALL_H */
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 4ab6800..8fbaf1b 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -14,6 +14,13 @@
+>  #ifndef MEMORY_H
+>  #define MEMORY_H
+>
+> +typedef enum {
+> +    MEMTX_READ,
+> +    MEMTX_WRITE,
+> +    MEMTX_PROGRAM,
+> +} MemTxType;
 
-Should be '#elif defined(__aarch64__)'. I have made this
-tweak and put this patch in target-arm.next.
+We already have an enum for this: MMUAccessType.
+That is currently unhelpfully located in cpu-common.h, but there's a
+patch on list which should get applied soon which moves it to
+include/qom/cpu.h:
+ http://patchwork.ozlabs.org/patch/635235/
+
+
+> +
+>  #ifndef CONFIG_USER_ONLY
+>
+>  #define DIRTY_MEMORY_VGA       0
+> @@ -1240,6 +1247,7 @@ AddressSpace *address_space_init_shareable(MemoryRegion *root,
+>   */
+>  void address_space_destroy(AddressSpace *as);
+>
+> +
+>  /**
+>   * address_space_rw: read from or write to an address space.
+>   *
+> @@ -1251,11 +1259,11 @@ void address_space_destroy(AddressSpace *as);
+>   * @addr: address within that address space
+>   * @attrs: memory transaction attributes
+>   * @buf: buffer with the data transferred
+> - * @is_write: indicates the transfer direction
+> + * @type: indicates the transfer type
+>   */
+>  MemTxResult address_space_rw(AddressSpace *as, hwaddr addr,
+>                               MemTxAttrs attrs, uint8_t *buf,
+> -                             int len, bool is_write);
+> +                             int len, MemTxType type);
+>
+>  /**
+>   * address_space_write: write to address space.
+> @@ -1268,10 +1276,11 @@ MemTxResult address_space_rw(AddressSpace *as, hwaddr addr,
+>   * @addr: address within that address space
+>   * @attrs: memory transaction attributes
+>   * @buf: buffer with the data transferred
+> + * @force: force writing to ROM areas
+>   */
+>  MemTxResult address_space_write(AddressSpace *as, hwaddr addr,
+>                                  MemTxAttrs attrs,
+> -                                const uint8_t *buf, int len);
+> +                                const uint8_t *buf, int len, bool force);
+>
+>  /* address_space_ld*: load from an address space
+>   * address_space_st*: store to an address space
+
+I think this patch would be easier to review if it was
+split up, something like:
+ * a patch which just converts the is_write bool parameter to the
+   enum and updates all the callers, with no change in behaviour
+ * a patch which makes use of the ability to pass in something other
+   than 0 or 1
+ * a patch which adds and uses address_space_write_debug(),
+   or whatever API we go for
+
+The important bit is splitting the mechanical "convert bool
+to enum" part (which touches lots of files but makes no
+behaviour change) from the part which changes behaviour
+and doesn't touch many files.
 
 thanks
 -- PMM

@@ -1,63 +1,69 @@
-Received: by 10.25.21.96 with SMTP id l93csp2242394lfi;
-        Wed, 29 Jun 2016 08:56:00 -0700 (PDT)
-X-Received: by 10.129.48.85 with SMTP id w82mr4033715yww.152.1467215760261;
-        Wed, 29 Jun 2016 08:56:00 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp355002lfi;
+        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
+X-Received: by 10.55.191.129 with SMTP id p123mr19453916qkf.1.1467294687123;
+        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b71si3427444qka.336.2016.06.29.08.56.00
+        by mx.google.com with ESMTPS id u21si2670283qkl.71.2016.06.30.06.51.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 29 Jun 2016 08:56:00 -0700 (PDT)
+        Thu, 30 Jun 2016 06:51:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44581 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49538 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bIHqJ-0003OJ-PU
-	for alex.bennee@linaro.org; Wed, 29 Jun 2016 11:55:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34884)
+	id 1bIcNK-0001Vt-Gc
+	for alex.bennee@linaro.org; Thu, 30 Jun 2016 09:51:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bIHqG-0003OC-7Y
-	for qemu-arm@nongnu.org; Wed, 29 Jun 2016 11:55:57 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bIcIP-0003Gk-GB
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1bIHqA-0005IM-MW
-	for qemu-arm@nongnu.org; Wed, 29 Jun 2016 11:55:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46389)
+	(envelope-from <peter.maydell@linaro.org>) id 1bIcIK-00046u-He
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:20 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34707)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>)
-	id 1bIHqA-0005Hs-GL; Wed, 29 Jun 2016 11:55:50 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 26D1E552FE;
-	Wed, 29 Jun 2016 15:55:47 +0000 (UTC)
-Received: from [10.36.112.42] (ovpn-112-42.ams2.redhat.com [10.36.112.42])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u5TFtbol030541
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Wed, 29 Jun 2016 11:55:39 -0400
-To: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org
-References: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com>
-	<1467150268-11038-2-git-send-email-andrew.smirnov@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <daa5a9d7-bc26-71ab-cc74-c3a6f0f8787b@redhat.com>
-Date: Wed, 29 Jun 2016 17:55:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	(envelope-from <peter.maydell@linaro.org>) id 1bIcIK-00046e-DM
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:46:16 -0400
+Received: by mail-vk0-x230.google.com with SMTP id c2so110208745vkg.1
+	for <qemu-arm@nongnu.org>; Thu, 30 Jun 2016 06:46:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6p6qFBXZZQIPxMQjG1G8UVLHOaVRVlAwpH5QpiwJdqk=;
+	b=VDWBiax4CcyuwQhfnPRR7ndLxEemoxd/gZnXXJF+5E5qn7QeXIfm5mR9fmkpOguYct
+	GdTMzeQ+UiOFvRXdy9rhzA74mTUAhyhC1w08ghaXKstt76NGxQi87jMLHr8zGcjARpY2
+	DPeEeGi+QPwU7iNKBoDk+b5FBnfQJn3WVSVEw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6p6qFBXZZQIPxMQjG1G8UVLHOaVRVlAwpH5QpiwJdqk=;
+	b=f4oDXbYNWRMikflSbPC8if39GoHSewpbvnyxnrRnBZiXt5um4g6qIZ/DzoF+6M++4J
+	jQ8aNVzMb72zasQ2qGX0LgppBi8NkjEwn3Jy0eXQfdEBaT1/V1ECxCfmx9wkTwnJcn9t
+	kj/dL/4KtYsO1gW3EQLD2MKQkKYhKwsMnqTKGEFdzDt8Gs9lnil52eEiVsJ6SYSSAIIP
+	k3dLMn7drsvFhzHQaEHP8vIDqhY38GH82tyK4JuADF0CB+FAhkWUiJsKfyIut587quiS
+	g+rAGnpCZUsEuIdMyvl4YJ7qeLmmcfT9SdoezHUCOS7OTbgFneO8B1h64VubhGfugMAs
+	rTLQ==
+X-Gm-Message-State: ALyK8tJdjhNPzkuC5/twtKG8JhYQPqxyJBKjtwiCMYtd60aFIJ22DfIZtuV3uf3nmosFY7VQjGwgwlUQ0BKRd/Ai
+X-Received: by 10.176.65.7 with SMTP id j7mr5630288uad.38.1467294374817; Thu,
+	30 Jun 2016 06:46:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1467150268-11038-2-git-send-email-andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 29 Jun 2016 15:55:47 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Received: by 10.31.157.141 with HTTP; Thu, 30 Jun 2016 06:45:55 -0700 (PDT)
+In-Reply-To: <1467190029-694-2-git-send-email-vijayak@cavium.com>
+References: <1467190029-694-1-git-send-email-vijayak@cavium.com>
+	<1467190029-694-2-git-send-email-vijayak@cavium.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Jun 2016 14:45:55 +0100
+Message-ID: <CAFEAcA-Ro3tN-4aGvivH864o0Sk3+FY=Z0W8=_3yooxk5+x=4A@mail.gmail.com>
+To: Vijay <vijayak@cavium.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH] exec: Support non-direct memory writes
- in cpu_memory_rw_debug
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH v3 1/1] target-arm: Use Neon for zero checking
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,60 +75,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:X86" <kvm@vger.kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Luiz Capitulino <lcapitulino@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Alexander Graf <agraf@suse.de>, "open list:ARM" <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	Cornelia Huck <cornelia.huck@de.ibm.com>,
-	"open list:PReP" <qemu-ppc@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Prasun.Kapoor@cavium.com, Vijay Kilari <vijay.kilari@gmail.com>,
+	Suresh <ksuresh@cavium.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lCU1zSkpp9tk
+X-TUID: hMA5wky6OM9o
 
-On 28/06/2016 23:44, Andrey Smirnov wrote:
-> Add code to support writing to memory mapped peripherals via
-> cpu_memory_rw_debug(). The code of that function already supports
-> reading from such memory regions, so this commit makes that
-> functionality "symmetric".
+On 29 June 2016 at 09:47,  <vijayak@cavium.com> wrote:
+> From: Vijay <vijayak@cavium.com>
+>
+> Use Neon instructions to perform zero checking of
+> buffer. This is helps in reducing total migration time.
 
-It's not entirely symmetric however, as you cannot write to the MMIO
-registers of romd devices.  Is this correct?  So I'll leave to others
-the review of whether the functionality is appropriate.  Regarding the co=
-de:
+> diff --git a/util/cutils.c b/util/cutils.c
+> index 5830a68..4779403 100644
+> --- a/util/cutils.c
+> +++ b/util/cutils.c
+> @@ -184,6 +184,13 @@ int qemu_fdatasync(int fd)
+>  #define SPLAT(p)       _mm_set1_epi8(*(p))
+>  #define ALL_EQ(v1, v2) (_mm_movemask_epi8(_mm_cmpeq_epi8(v1, v2)) == 0xFFFF)
+>  #define VEC_OR(v1, v2) (_mm_or_si128(v1, v2))
+> +#elif __aarch64__
+> +#include "arm_neon.h"
+> +#define VECTYPE        uint64x2_t
+> +#define ALL_EQ(v1, v2) \
+> +        ((vgetq_lane_u64(v1, 0) == vgetq_lane_u64(v2, 0)) && \
+> +         (vgetq_lane_u64(v1, 1) == vgetq_lane_u64(v2, 1)))
+> +#define VEC_OR(v1, v2) ((v1) | (v2))
 
-> @@ -2621,7 +2625,7 @@ static MemTxResult address_space_write_continue(A=
-ddressSpace *as, hwaddr addr,
->  }
-> =20
->  MemTxResult address_space_write(AddressSpace *as, hwaddr addr, MemTxAt=
-trs attrs,
-> -                                const uint8_t *buf, int len)
-> +                                const uint8_t *buf, int len, bool forc=
-e)
+Should be '#elif defined(__aarch64__)'. I have made this
+tweak and put this patch in target-arm.next.
 
-I would prefer to leave this API as is, and instead add a new API such
-as address_space_write_debug or address_space_program.  It's okay to add
-the "force" argument to address_space_write_continue.
-
->=20
-> +typedef enum {
-> +    MEMTX_READ,
-> +    MEMTX_WRITE,
-> +    MEMTX_PROGRAM,
-> +} MemTxType;
-
-This needs comments.  If you go with address_space_write_debug, rename
-MEMTX_PROGRAM to MEMTX_WRITE_DEBUG.
-
-Thanks,
-
-Paolo
+thanks
+-- PMM

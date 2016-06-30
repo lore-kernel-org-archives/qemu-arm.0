@@ -1,69 +1,56 @@
-Received: by 10.25.21.96 with SMTP id l93csp356558lfi;
-        Thu, 30 Jun 2016 06:54:53 -0700 (PDT)
-X-Received: by 10.55.183.129 with SMTP id h123mr18185973qkf.105.1467294893771;
-        Thu, 30 Jun 2016 06:54:53 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp414222lfi;
+        Thu, 30 Jun 2016 08:50:52 -0700 (PDT)
+X-Received: by 10.129.115.5 with SMTP id o5mr6857525ywc.311.1467301852491;
+        Thu, 30 Jun 2016 08:50:52 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o13si2634622qkl.331.2016.06.30.06.54.53
+        by mx.google.com with ESMTPS id t65si486970ybf.178.2016.06.30.08.50.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 Jun 2016 06:54:53 -0700 (PDT)
+        Thu, 30 Jun 2016 08:50:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49556 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51284 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bIcQf-000576-5I
-	for alex.bennee@linaro.org; Thu, 30 Jun 2016 09:54:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54142)
+	id 1bIeEt-0005HL-Nl
+	for alex.bennee@linaro.org; Thu, 30 Jun 2016 11:50:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36828)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcQb-000557-6W
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:54:50 -0400
+	(envelope-from <clg@kaod.org>) id 1bIeEq-0005GR-4E
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:50:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcQZ-0006PQ-Fm
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:54:48 -0400
-Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:33961)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bIcQY-0006PF-VP
-	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 09:54:47 -0400
-Received: by mail-vk0-x234.google.com with SMTP id c2so110557470vkg.1
-	for <qemu-arm@nongnu.org>; Thu, 30 Jun 2016 06:54:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=k5TymAO2u4aXpPf7a76WRJiTDxU7Tff/zp7FoU3+Oew=;
-	b=Y/maRYryNKQKv/pgK45E4ztPQsuvM0uTUqpbk5NhVK2Vu0iAGqkc49PhnwO8/qA1f4
-	lwkWRNPTOp3DqH/2Co/BuN7fhQ9jii9ukwLJoHptQJUMAmA7jwrX0nlfZ/9VAV3QbfU3
-	G0tvekJCenWcZE67AGj/jcwPikOAqBQqhkESE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=k5TymAO2u4aXpPf7a76WRJiTDxU7Tff/zp7FoU3+Oew=;
-	b=Gs8IVqIyaOMQMa9uHobbAOCiPfDo+Lj6i9/+Dn/zx6e9uPqENVKVyllqu0ISkW1/VX
-	7MhWT6vRD5rJN5H4+aXE1paq6jzVzXSOce59hxQKJA3x4PcGCncxtJejRJ+n1d8cAhNc
-	r9APtMeLG+3oszY6LtzEkcTrqW1NGtkW0KMgTlPjt4O850EzoierCOHfrS/5AgrimUpS
-	QXai7B6TVaQllWY1jyCh58QSy0Y9nnfh7y73xmmcSx2K3CQdFY5gLcFsVlb+rBFIybkj
-	Fm1Up7amADfp+2XZS8lKXGn5fHvsl9EeY0DApMh7J1EaBjTnIpsTCgB0BEk9EUSyxqVl
-	tByw==
-X-Gm-Message-State: ALyK8tIG4N5WfT0hK56jxUZ9Gm/55/HJxbd8WcqR3AQ0GtpGtRgYpt4IlmXmxe88eDPg4oVtmc96hCgpSCz4GBGD
-X-Received: by 10.176.6.41 with SMTP id f38mr6552550uaf.82.1467294886282; Thu,
-	30 Jun 2016 06:54:46 -0700 (PDT)
+	(envelope-from <clg@kaod.org>) id 1bIeEk-0006Rv-4p
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:50:47 -0400
+Received: from 6.mo6.mail-out.ovh.net ([87.98.177.69]:58316)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
+	id 1bIeEj-0006Rn-TE
+	for qemu-arm@nongnu.org; Thu, 30 Jun 2016 11:50:42 -0400
+Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo6.mail-out.ovh.net (Postfix) with ESMTP id D1838FFC025
+	for <qemu-arm@nongnu.org>; Thu, 30 Jun 2016 17:50:40 +0200 (CEST)
+Received: from hermes.lab.toulouse-stg.fr.ibm.com
+	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
+	(Authenticated sender: clg@kaod.org)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id 820691200A0;
+	Thu, 30 Jun 2016 17:50:34 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Jun 2016 17:50:23 +0200
+Message-Id: <1467301824-10123-1-git-send-email-clg@kaod.org>
+X-Mailer: git-send-email 2.1.4
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Thu, 30 Jun 2016 06:54:26 -0700 (PDT)
-In-Reply-To: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com>
-References: <1467150268-11038-1-git-send-email-andrew.smirnov@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jun 2016 14:54:26 +0100
-Message-ID: <CAFEAcA_fb-dArdV5_hUKSRAnmH81wuP_UT6SP2M+T2rKRoyCqw@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::234
-Subject: Re: [Qemu-arm] [RFC PATCH] armv7m_nvic: Use qemu_get_cpu(0) instead
- of current_cpu
+X-Ovh-Tracer-Id: 4597893747282184977
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudejgdeltdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 87.98.177.69
+Subject: [Qemu-arm] [PATCH 1/2] hw/misc: fix Aspeed SCU hw-strap2 property
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,25 +62,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iMkccYOpawPj
+X-TUID: JQTHsvsT2RDd
 
-On 28 June 2016 at 22:44, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> Starting QEMU with -S results in current_cpu containing its initial
-> value of NULL. It is however possible to connect to such QEMU instance
-> and query various CPU registers, one example being CPUID, and doing that
-> results in QEMU segfaulting.
->
-> Using qemu_get_cpu(0) seem reasonable enough given that ARMv7M
-> architecture is a single core architecture.
->
-> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
-> ---
->  hw/intc/armv7m_nvic.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+These strap registers are complex enough, let's not mix them.
 
-Applied to target-arm.next, thanks.
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ hw/misc/aspeed_scu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- PMM
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 4f9df581e70a..14b2d75e6049 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -254,7 +254,7 @@ static const VMStateDescription vmstate_aspeed_scu =3D=
+ {
+ static Property aspeed_scu_properties[] =3D {
+     DEFINE_PROP_UINT32("silicon-rev", AspeedSCUState, silicon_rev, 0),
+     DEFINE_PROP_UINT32("hw-strap1", AspeedSCUState, hw_strap1, 0),
+-    DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap1, 0),
++    DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
+--=20
+2.1.4
+

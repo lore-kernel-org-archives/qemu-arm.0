@@ -1,139 +1,153 @@
-Received: by 10.25.21.96 with SMTP id l93csp492933lfi;
-        Fri, 1 Jul 2016 14:47:50 -0700 (PDT)
-X-Received: by 10.200.41.14 with SMTP id y14mr787252qty.11.1467409670768;
-        Fri, 01 Jul 2016 14:47:50 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp498989lfi;
+        Fri, 1 Jul 2016 15:08:02 -0700 (PDT)
+X-Received: by 10.129.156.131 with SMTP id t125mr331261ywg.224.1467410882375;
+        Fri, 01 Jul 2016 15:08:02 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 23si2912510qtv.138.2016.07.01.14.47.50
+        by mx.google.com with ESMTPS id l5si3241578qkd.96.2016.07.01.15.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jul 2016 14:47:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 01 Jul 2016 15:08:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35903 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35951 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bJ6Hu-0005F0-9t
-	for alex.bennee@linaro.org; Fri, 01 Jul 2016 17:47:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60653)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bJ6bR-0008Jc-QA
+	for alex.bennee@linaro.org; Fri, 01 Jul 2016 18:08:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38232)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1bJ6Gx-0004y4-9f
-	for qemu-devel@nongnu.org; Fri, 01 Jul 2016 17:46:52 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bJ6bO-0008JG-Vg
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 18:08:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1bJ6Gt-0006Vn-AZ
-	for qemu-devel@nongnu.org; Fri, 01 Jul 2016 17:46:51 -0400
-Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:55089)
+	(envelope-from <rth7680@gmail.com>) id 1bJ6bJ-0003aV-SS
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 18:07:57 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:32806)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1bJ6Gt-0006VA-54
-	for qemu-devel@nongnu.org; Fri, 01 Jul 2016 17:46:47 -0400
-Received: from player789.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo69.mail-out.ovh.net (Postfix) with ESMTP id 723E51008D0F
-	for <qemu-devel@nongnu.org>; Fri,  1 Jul 2016 23:46:44 +0200 (CEST)
-Received: from bahia.lan (unknown [91.224.149.27])
-	(Authenticated sender: groug@kaod.org)
-	by player789.ha.ovh.net (Postfix) with ESMTPSA id 3D84526006B;
-	Fri,  1 Jul 2016 23:46:35 +0200 (CEST)
-Date: Fri, 1 Jul 2016 23:46:33 +0200
-From: Greg Kurz <groug@kaod.org>
-To: =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>
-Message-ID: <20160701234633.7e073c2f@bahia.lan>
-In-Reply-To: <39c0c830-dd0b-301f-78fc-6de176772a7c@kaod.org>
-References: <1467138270-32481-1-git-send-email-clg@kaod.org>
-	<1467138270-32481-10-git-send-email-clg@kaod.org>
-	<CAFEAcA9Z_6bPMwCumhwQqqwyy-B_vKXyLPBfJeK8uY03Xx3G+A@mail.gmail.com>
-	<39c0c830-dd0b-301f-78fc-6de176772a7c@kaod.org>
-X-Mailer: Claws Mail 3.13.2 (GTK+ 2.24.30; x86_64-redhat-linux-gnu)
+	(envelope-from <rth7680@gmail.com>)
+	id 1bJ6bJ-0003aI-NQ; Fri, 01 Jul 2016 18:07:53 -0400
+Received: by mail-qk0-x244.google.com with SMTP id n132so26477979qka.0;
+	Fri, 01 Jul 2016 15:07:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=Z2v02EI4q938mSaXTNaCPMbeVBoGmTFmlq/+sMRr1FI=;
+	b=Nhha985CjlieKJgfupPXZ9n/CHACqc9iaWNKIJKqJP2MQrjpAKtAmparXJkowrpS5u
+	tYHBgnTKo3XYdYk/KJuVr4hEKv1sqcPTkW8ag1AluIgZTbcS8H9Pz7kfLYKtwL3cF3Np
+	p7qZiMW0SiEXe6q0Bd5V6MXyuPD9jHUAjITUVpiv2h9vmjRs+2/VC4ak4Bn8WIURzEqA
+	FyFY7zWOZiaCbITQ4+kEImcO29UluVzBNKJV7jUWdxUDIEpT1a3IGrVIYlNb7dXCzJTY
+	FY7E08ftJQrtgishriGNhTs58KaoqM4Po14hmpEWBlYhufr3E6GvQQjij51Vsj04zI5X
+	Gh9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=Z2v02EI4q938mSaXTNaCPMbeVBoGmTFmlq/+sMRr1FI=;
+	b=FNjMiLfKtKkNNaCW8mt0OH5s/sHmsgDVGZTunrKAPgIJgAvqdUnhoSAIC92Xn4iyE1
+	FNq4U94PTUBFf53SiSInppL2Prfct/7lF8rYuLIRp+JcLjL3zw5Lk3Iju6nL+ManSiO5
+	IuR4c0QRvzvrIY7sem6Ss5tDPKEsh8bevDJxJ8nrIe/bAYu0wm/kpPlcxfamnfUS5DwT
+	ZHB7dFYcfdK7WXKIDtJbZACidiYWrvfVrhB4n6nSYE+MjAF2rHOVEJvzbdFNIieE9vh6
+	sOu8j+yafuR0sDFS9KmIyIf1QLByM+pzOyoZdOxnTq+7asT7yBXVv8UNgoIRa3Kqd288
+	kaaQ==
+X-Gm-Message-State: ALyK8tI/MGJsmIWrAeaSrrCsuR4JaGMSohwDLCn5WPsHMT7BGLbU9pWF3lz0y9ZjsRo3hw==
+X-Received: by 10.55.175.134 with SMTP id y128mr752398qke.67.1467410873263;
+	Fri, 01 Jul 2016 15:07:53 -0700 (PDT)
+Received: from bigtime.twiddle.net (71-37-54-227.tukw.qwest.net.
+	[71.37.54.227]) by smtp.googlemail.com with ESMTPSA id
+	p62sm3148513qkd.21.2016.07.01.15.07.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 01 Jul 2016 15:07:52 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, Vijay <vijayak@cavium.com>
+References: <1467190029-694-1-git-send-email-vijayak@cavium.com>
+	<1467190029-694-2-git-send-email-vijayak@cavium.com>
+	<CAFEAcA-Ro3tN-4aGvivH864o0Sk3+FY=Z0W8=_3yooxk5+x=4A@mail.gmail.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <de1ccdbf-59e9-bece-923b-f83ddc02154a@twiddle.net>
+Date: Fri, 1 Jul 2016 15:07:50 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Ovh-Tracer-Id: 16484300539710970251
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudelgdduheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 46.105.56.233
-Subject: Re: [Qemu-devel] [PATCH v5 9/9] tests: add a m25p80 test
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAFEAcA-Ro3tN-4aGvivH864o0Sk3+FY=Z0W8=_3yooxk5+x=4A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 1/1] target-arm: Use Neon for
+ zero checking
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kxmp5+i6r4wi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Prasun.Kapoor@cavium.com, Vijay Kilari <vijay.kilari@gmail.com>,
+	Suresh <ksuresh@cavium.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LkoDv+MlNzBp
 
-On Fri, 1 Jul 2016 19:30:30 +0200
-C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On 06/30/2016 06:45 AM, Peter Maydell wrote:
+> On 29 June 2016 at 09:47,  <vijayak@cavium.com> wrote:
+>> From: Vijay <vijayak@cavium.com>
+>>
+>> Use Neon instructions to perform zero checking of
+>> buffer. This is helps in reducing total migration time.
+>
+>> diff --git a/util/cutils.c b/util/cutils.c
+>> index 5830a68..4779403 100644
+>> --- a/util/cutils.c
+>> +++ b/util/cutils.c
+>> @@ -184,6 +184,13 @@ int qemu_fdatasync(int fd)
+>>  #define SPLAT(p)       _mm_set1_epi8(*(p))
+>>  #define ALL_EQ(v1, v2) (_mm_movemask_epi8(_mm_cmpeq_epi8(v1, v2)) == 0xFFFF)
+>>  #define VEC_OR(v1, v2) (_mm_or_si128(v1, v2))
+>> +#elif __aarch64__
+>> +#include "arm_neon.h"
+>> +#define VECTYPE        uint64x2_t
+>> +#define ALL_EQ(v1, v2) \
+>> +        ((vgetq_lane_u64(v1, 0) == vgetq_lane_u64(v2, 0)) && \
+>> +         (vgetq_lane_u64(v1, 1) == vgetq_lane_u64(v2, 1)))
+>> +#define VEC_OR(v1, v2) ((v1) | (v2))
+>
+> Should be '#elif defined(__aarch64__)'. I have made this
+> tweak and put this patch in target-arm.next.
 
-> On 07/01/2016 07:18 PM, Peter Maydell wrote:
-> > On 28 June 2016 at 19:24, C=C3=A9dric Le Goater <clg@kaod.org> wrote: =
-=20
-> >> This test uses the palmetto platform and the AST2400 SPI controller to
-> >> test the m25p80 flash module device model. The flash model is defined
-> >> by the platform (n25q256a) and it would be nice to find way to control
-> >> it, using a property probably.
-> >>
-> >> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> >> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >> ---
-> >> =20
-> >=20
-> > This test fails on ppc64be:
-> >=20
-> > TEST: tests/m25p80-test... (pid=3D65123)
-> >   /arm/m25p80/read_jedec:                                              =
-OK
-> >   /arm/m25p80/erase_sector:                                            =
-OK
-> >   /arm/m25p80/erase_all:                                               =
-**
-> > ERROR:/home/pm215/qemu/tests/m25p80-test.c:162:test_erase_all:
-> > assertion failed (page[i] =3D=3D 0x0):
-> > (0xffffffff =3D=3D 0x00000000)
-> > FAIL
-> > GTester: last random seed: R02S54b2016fda21b092e18d7a23a2db86ba
-> > (pid=3D65128)
-> >   /arm/m25p80/write_page:                                              =
-**
-> > ERROR:/home/pm215/qemu/tests/m25p80-test.c:200:test_write_page:
-> > assertion failed (page[i] =3D=3D my_page_addr + i * 4): (0x00000000 =3D=
-=3D
-> > 0x01400000)
-> > FAIL
-> > GTester: last random seed: R02S8708910d6b72f700bc41e9340a516239
-> > (pid=3D65133)
-> > FAIL: tests/m25p80-test =20
->=20
-> yes ... I am not sure how to fix this :/=20
->=20
-> I started with a patch using qtest_big_endian() and I found that=20
-> this one was fixing the problem :=20
->=20
-> 	https://lists.gnu.org/archive/html/qemu-devel/2016-06/msg07876.html
->=20
-> but it feels wrong. The interesting part is that the guest fully=20
-> boots on a ppc64be. We need an endian shaman for this. Greg ?=20
->=20
+Consider
 
-Heh ! Looking at the Cc list I guess you have chances to find the
-shaman you're looking for :)
+#define VECTYPE        uint32x4_t
+#define ALL_EQ(v1, v2) (vmaxvq_u32((v1) ^ (v2)) == 0)
 
-Anyway, doing bswap32() systematically like in the patch mentioned above
-looks weird indeed.
 
-> Thanks,
->=20
-> C.
+which compiles down to
 
+   1c:	6e211c00 	eor	v0.16b, v0.16b, v1.16b
+   20:	6eb0a800 	umaxv	s0, v0.4s
+   24:	1e260000 	fmov	w0, s0
+   28:	6b1f001f 	cmp	w0, wzr
+   2c:	1a9f17e0 	cset	w0, eq
+   30:	d65f03c0 	ret
+
+vs
+
+   34:	4e083c20 	mov	x0, v1.d[0]
+   38:	4e083c01 	mov	x1, v0.d[0]
+   3c:	eb00003f 	cmp	x1, x0
+   40:	52800000 	mov	w0, #0
+   44:	54000040 	b.eq	4c <f0+0x18>
+   48:	d65f03c0 	ret
+   4c:	4e183c20 	mov	x0, v1.d[1]
+   50:	4e183c01 	mov	x1, v0.d[1]
+   54:	eb00003f 	cmp	x1, x0
+   58:	1a9f17e0 	cset	w0, eq
+   5c:	d65f03c0 	ret
+
+
+r~

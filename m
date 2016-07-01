@@ -1,59 +1,72 @@
-Received: by 10.25.21.96 with SMTP id l93csp386469lfi;
-        Fri, 1 Jul 2016 09:44:54 -0700 (PDT)
-X-Received: by 10.237.53.51 with SMTP id a48mr7341180qte.54.1467391494165;
-        Fri, 01 Jul 2016 09:44:54 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp392764lfi;
+        Fri, 1 Jul 2016 10:01:06 -0700 (PDT)
+X-Received: by 10.237.55.168 with SMTP id j37mr33738744qtb.102.1467392466661;
+        Fri, 01 Jul 2016 10:01:06 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x63si2849960qke.12.2016.07.01.09.44.53
+        by mx.google.com with ESMTPS id b193si2854924qkg.291.2016.07.01.10.01.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jul 2016 09:44:54 -0700 (PDT)
+        Fri, 01 Jul 2016 10:01:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34538 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34601 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bJ1Yj-0002NI-Jw
-	for alex.bennee@linaro.org; Fri, 01 Jul 2016 12:44:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49615)
+	id 1bJ1oQ-0007Xo-32
+	for alex.bennee@linaro.org; Fri, 01 Jul 2016 13:01:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bJ1Ye-0002My-SO
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 12:44:50 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ1nn-0006x4-OK
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 13:00:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bJ1Ya-0000vR-Ll
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 12:44:47 -0400
-Received: from 9.mo53.mail-out.ovh.net ([87.98.186.128]:52229)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bJ1Ya-0000v4-B9
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 12:44:44 -0400
-Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 50E26FF9510
-	for <qemu-arm@nongnu.org>; Fri,  1 Jul 2016 18:44:42 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id 9310A620075;
-	Fri,  1 Jul 2016 18:44:35 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ1nm-0004tq-Ga
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 13:00:27 -0400
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:34917)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ1nm-0004tf-1V
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 13:00:26 -0400
+Received: by mail-vk0-x236.google.com with SMTP id u68so118206522vkf.2
+	for <qemu-arm@nongnu.org>; Fri, 01 Jul 2016 10:00:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=LDm6/kYEKR01Vs6chtN7fZ01sD9qyxbJVDe8VUMBNI0=;
+	b=TPAiC5ek7eWeQ/KSFuIAdmldsAP7RYx/UnIVtpLkGrosbepbp7Kw/f/rN+11uWUxnv
+	3C5d35aUlLnOJ4dZI32k0AlrFmgEtH+tirbOAySBCposj1WCT/QP1buSBXOnynyW8gKE
+	nd5q+l74C5Rt6ve8UxUsixsBT8qfC1TRdviDg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=LDm6/kYEKR01Vs6chtN7fZ01sD9qyxbJVDe8VUMBNI0=;
+	b=az5bb4jbIGNg1hkkPEvmn9axq8zUDm6ZyoZOvEQc7b28A9g4KV93uxkvf663Fs+RqA
+	B9mS0aNrxdOX/i6qfurmVGKYiED+8ztXlyQpY19900/xtPnyOKvHUE/IzsgCD/af9lLu
+	ESdzjo/Q0b70RcpYmFQgcbvemJT2wKpum0aQ68sTaUEjFBFi2utkoPbV0ofFZ0gGMiBk
+	My31sR7FoOnOmdpNAHQsKdI0DiPuW+w0ZDvWuNEnlugGjMgY97ojhu9KK++VtFQR5phq
+	7hW4LzURI2ed2sVk5wHeKOve618SfYqDHH4e0W0SSjLIy9csARRhxLCIl+vuGhLbAuCx
+	Lydw==
+X-Gm-Message-State: ALyK8tK3NbIsfik82taWyiv33RSY8orL/pdfydKGGnLpsBtFO/DMHiDvig5j7j0R0tWdt0bV1gWPKnCZ7XoI6am+
+X-Received: by 10.31.188.80 with SMTP id m77mr9704938vkf.30.1467392425236;
+	Fri, 01 Jul 2016 10:00:25 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 10:00:05 -0700 (PDT)
+In-Reply-To: <d63ffd58-7006-5eb1-bbfa-fa62fb1797be@kaod.org>
 References: <1467138270-32481-1-git-send-email-clg@kaod.org>
 	<1467138270-32481-8-git-send-email-clg@kaod.org>
 	<CAFEAcA_8+XubTSH2sstoyoXi6s1DkZySckyUqrt0BGiMALC4+Q@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <d63ffd58-7006-5eb1-bbfa-fa62fb1797be@kaod.org>
-Date: Fri, 1 Jul 2016 18:44:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_8+XubTSH2sstoyoXi6s1DkZySckyUqrt0BGiMALC4+Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 11383411011802270635
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudelgdelkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+	<d63ffd58-7006-5eb1-bbfa-fa62fb1797be@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Jul 2016 18:00:05 +0100
+Message-ID: <CAFEAcA-pbJYuHOGSfDWKG+pVLWX3G9ETh+5QkQ9Shsn6aBVtqw@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 87.98.186.128
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::236
 Subject: Re: [Qemu-arm] [PATCH v5 7/9] ast2400: add SPI flash slaves
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -71,121 +84,16 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pz1A4fxmoT2Z
+X-TUID: CXVGz0MOXeDJ
 
-On 07/01/2016 06:24 PM, Peter Maydell wrote:
-> On 28 June 2016 at 19:24, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->> Each controller on the ast2400 has a memory range on which it maps its
->> flash module slaves. Each slave is assigned a memory segment for its
->> mapping that can be changed at bootime with the Segment Address
->> Register. This is not supported in the current implementation so we
->> are using the defaults provided by the specs.
->>
->> Each SPI flash slave can then be accessed in two modes: Command and
->> User. When in User mode, accesses to the memory segment of the slaves
->> are translated in SPI transfers. When in Command mode, the HW
->> generates the SPI commands automatically and the memory segment is
->> accessed as if doing a MMIO. Other SPI controllers call that mode
->> linear addressing mode.
->>
->> For this purpose, we are adding below each crontoller an array of
->> structs gathering for each SPI flash module, a segment rank, a
->> MemoryRegion to handle the memory accesses and the associated SPI
->> slave device, which should be a m25p80.
->>
->> Only the User mode is supported for now but we are preparing ground
->> for the Command mode. The framework is sufficient to support Linux.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->=20
->> +/*
->> + * Default segments mapping addresses and size for each slave per
->> + * controller. These can be changed when board is initialized with th=
-e
->> + * Segment Address Registers but they don't seem do be used on the
->> + * field.
->> + */
->> +static const AspeedSegments aspeed_segments_legacy[] =3D {
->> +    { 0x10000000, 32 * 1024 * 1024 },
->> +};
->> +
->> +static const AspeedSegments aspeed_segments_fmc[] =3D {
->> +    { 0x20000000, 64 * 1024 * 1024 },
->> +    { 0x24000000, 32 * 1024 * 1024 },
->> +    { 0x26000000, 32 * 1024 * 1024 },
->> +    { 0x28000000, 32 * 1024 * 1024 },
->> +    { 0x2A000000, 32 * 1024 * 1024 }
->> +};
->> +
->> +static const AspeedSegments aspeed_segments_spi[] =3D {
->> +    { 0x30000000, 64 * 1024 * 1024 },
->> +};
->=20
-> If I understand this correctly, and the Segment Address Registers
-> are part of the SMC controller, then eventually if we want to
-> implement making these writable then the correct approach is
-> probably to have a container memory region which the SMC controller
-> provides to the board (and which the board then maps into the
-> system memory space), and then the controller is responsible for
-> mapping and unmapping the individual memory regions inside that
-> container. This is basically how we do PCI controllers, which also
-> allow guests to write to PCI BARs to map and unmap bits of memory.
+On 1 July 2016 at 17:44, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> I have some extra patches to use a rom device and boot from flash0.
+> That is for next week.
 
-OK. I will take a look at the approach. The default setting seems to=20
-satisfy the different implementations I know of.  =20
+We're in softfreeze now, so really I should stop
+taking non-bugfix patches, though for a new board
+with missing stuff that prevents boot there's a little
+flexibility.
 
-> This will be fine for now, though.
->=20
->>  static bool aspeed_smc_is_ce_stop_active(const AspeedSMCState *s, int=
- cs)
->> @@ -237,6 +353,8 @@ static void aspeed_smc_realize(DeviceState *dev, E=
-rror **errp)
->>      AspeedSMCState *s =3D ASPEED_SMC(dev);
->>      AspeedSMCClass *mc =3D ASPEED_SMC_GET_CLASS(s);
->>      int i;
->> +    char name[32];
->> +    hwaddr offset =3D 0;
->>
->>      s->ctrl =3D mc->ctrl;
->>
->> @@ -270,6 +388,32 @@ static void aspeed_smc_realize(DeviceState *dev, =
-Error **errp)
->>      memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_ops, s,
->>                            s->ctrl->name, ASPEED_SMC_R_MAX * 4);
->>      sysbus_init_mmio(sbd, &s->mmio);
->> +
->> +    /*
->> +     * Memory region where flash modules are remapped
->> +     */
->> +    snprintf(name, sizeof(name), "%s.flash", s->ctrl->name);
->> +
->> +    memory_region_init_io(&s->mmio_flash, OBJECT(s),
->> +                          &aspeed_smc_flash_default_ops, s, name,
->> +                          s->ctrl->mapping_window_size);
->> +    sysbus_init_mmio(sbd, &s->mmio_flash);
->> +
->> +    s->flashes =3D g_malloc0(sizeof(AspeedSMCFlash) * s->num_cs);
->=20
-> This should be g_new0(AspeedSMCFlash, s->num_cs);  -- multiplying
-> in a g_malloc0() is usually a sign you should use g_new0 instead.
-
-ah yes. I have changed that back and forth and kept the wrong one ...
-
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->=20
-> so I'll just fix that when I put the series in target-arm.next.
-
-I have some extra patches to use a rom device and boot from flash0.
-That is for next week.=20
-
-Thanks,
-
-C.
-
-
-=20
-> thanks
-> -- PMM
->=20
-
+thanks
+-- PMM

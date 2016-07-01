@@ -1,72 +1,71 @@
-Received: by 10.25.21.96 with SMTP id l93csp345943lfi;
-        Fri, 1 Jul 2016 08:16:53 -0700 (PDT)
-X-Received: by 10.13.221.204 with SMTP id g195mr9975873ywe.238.1467386212306;
-        Fri, 01 Jul 2016 08:16:52 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp347517lfi;
+        Fri, 1 Jul 2016 08:19:57 -0700 (PDT)
+X-Received: by 10.37.64.195 with SMTP id n186mr9931787yba.166.1467386397565;
+        Fri, 01 Jul 2016 08:19:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k68si471363ybk.241.2016.07.01.08.16.52
+        by mx.google.com with ESMTPS id g194si87046ybf.84.2016.07.01.08.19.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jul 2016 08:16:52 -0700 (PDT)
+        Fri, 01 Jul 2016 08:19:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33958 helo=lists.gnu.org)
+Received: from localhost ([::1]:33965 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bJ0BX-0000Cl-L9
-	for alex.bennee@linaro.org; Fri, 01 Jul 2016 11:16:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50500)
+	id 1bJ0EX-0002YO-1N
+	for alex.bennee@linaro.org; Fri, 01 Jul 2016 11:19:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0BS-0000AK-7W
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:16:47 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0ES-0002Wm-Jg
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:19:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0BQ-0002mI-3o
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:16:45 -0400
-Received: from mail-vk0-x235.google.com ([2607:f8b0:400c:c05::235]:36007)
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0ER-0003sw-Ly
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:19:52 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:33762)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bJ0BP-0002mB-Vj
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:16:44 -0400
-Received: by mail-vk0-x235.google.com with SMTP id m127so97520547vkb.3
-	for <qemu-arm@nongnu.org>; Fri, 01 Jul 2016 08:16:43 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bJ0ER-0003sm-I3
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 11:19:51 -0400
+Received: by mail-vk0-x230.google.com with SMTP id k68so70612091vkb.0
+	for <qemu-arm@nongnu.org>; Fri, 01 Jul 2016 08:19:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=R5yzO0JQO9EotidkW/H2weDUfjMQIR3aLJHdW//Uif8=;
-	b=GCbYsGgQWVlReTfn86FDTLoCxjlg53S0ft4qA1qVUlxq+ptBqiXtf2B2xYO2xqirVn
-	ywe1qj7vtu8shZTuoGOfiusXTj59fmqOO0Q7QmfZJfdtoQ7DQ2khrg/gzFmvi0LXdpAI
-	VOjOixTjjmTZ5zxQYfgobOHwsasvL4mSzxk/0=
+	bh=jHJNJyTAEDVHKF6gaoOZ/LOlQuPL5fNp27vD9XegzLU=;
+	b=YeuCn6+p785dcbaEMtAZnBekSp/wc9w+4sGYpf1F3g4BUuBEgEhhO4EQOByolrXLA/
+	KZcU2vOwfN2PELsx+DDLkIXrX5LmcbZnhfjtP3cyzHYvBFaWP5LdE9qbkdLj4AAejc7/
+	HlNLeyQX6SeBMLyX7bW5tkYDAebKLMdP12ZHE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=R5yzO0JQO9EotidkW/H2weDUfjMQIR3aLJHdW//Uif8=;
-	b=JYApm1EHv88BVVUa63p6Apx3JQyX9xXm0EzLHP9cexWsfz/xunP0VkPoUUf21d8WK4
-	iyXfrUg5CbTzYbS3eRNy/hdZC9auJo8hg9kr81ZbFyjmHFfb3j6/Je/LuDm2sgbZSLsU
-	g8YDnwh8Si+uIoUXNNDCFxzodueeCmhCSajDw5h/x/UEcHwY3ixHI9NpX2qFyqp/2UM3
-	xKp7s514o1QtPz/jVLIaqzcsdPhlL0fUnlbkhCVMj2tgzKN5pi4L5EmYfqayrf2mBbTf
-	jZEDMF/ZHYF4Rh5GOuUgxZzpbxT5TomnLZv0q0wH1rd7RD7lj/0W2u6q3EweO2ktT2YA
-	9VQA==
-X-Gm-Message-State: ALyK8tL6kowWqZvkCRGOtkpHydFnYg0DFLSrQ6yiMy5kuqNUblogrXRri8G/dW0cALBFEBIxNWgaT00lmha/Gl/q
-X-Received: by 10.176.65.106 with SMTP id j97mr10056178uad.64.1467386203610;
-	Fri, 01 Jul 2016 08:16:43 -0700 (PDT)
+	bh=jHJNJyTAEDVHKF6gaoOZ/LOlQuPL5fNp27vD9XegzLU=;
+	b=DguZYbOfZhz4qfgBO5U1jO01liN7+k62wugyB8OrzEqKlCzwzNrAGNVrNOgbVfPs5O
+	zu0Yn/H35I6PJiw7kihtPO6CiJajgdbWB6ocnJIWdwmXBKTbqgikd/UjgbtOmISz2Fo6
+	ZJMwPnvFaEjrOE4n5tozo27DDivNBUo2P8TB3zgtq2zkq6UY+x2m/suZdKndRNwKIghY
+	VoslXtmWrFKh4OlmQ4Zd5Q891S7rjBcs5+c+pWFXkxeewTmFmEQAd2EobKqd7I5FcZGr
+	5GTUVaardkIuVkRJteAuN379TiVVw7WwXR+M8YE1lglQscg1feGjsa88NyEvdpXI4HDa
+	wCVg==
+X-Gm-Message-State: ALyK8tK9GEMx/s/61LcNSL3tlmMIsWxEDgS3+gqIkWs4uKjHZ2CpykuRjp9BQHBzrdFR+h5K/O274j9Fz1fAx95n
+X-Received: by 10.176.69.138 with SMTP id u10mr9612662uau.24.1467386391139;
+	Fri, 01 Jul 2016 08:19:51 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 08:16:24 -0700 (PDT)
-In-Reply-To: <1467138270-32481-2-git-send-email-clg@kaod.org>
+Received: by 10.31.157.141 with HTTP; Fri, 1 Jul 2016 08:19:31 -0700 (PDT)
+In-Reply-To: <1467138270-32481-9-git-send-email-clg@kaod.org>
 References: <1467138270-32481-1-git-send-email-clg@kaod.org>
-	<1467138270-32481-2-git-send-email-clg@kaod.org>
+	<1467138270-32481-9-git-send-email-clg@kaod.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Jul 2016 16:16:24 +0100
-Message-ID: <CAFEAcA9Hw8EZRJnFHNSSauv6r5untnL=HBzWsw2SwDsmfxnETg@mail.gmail.com>
+Date: Fri, 1 Jul 2016 16:19:31 +0100
+Message-ID: <CAFEAcA_aRb-n_QhG8KU_7XCSXPmsCUUa_agZGv+Jn7cjfOfPbw@mail.gmail.com>
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::235
-Subject: Re: [Qemu-arm] [PATCH v5 1/9] ssi: change ssi_slave_init to be a
- realize ops
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH v5 8/9] ast2400: create SPI flash slaves
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,18 +82,28 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jmbFNz0FZQWG
+X-TUID: a2NaZUo/9sQ/
 
 On 28 June 2016 at 19:24, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> This enables qemu to handle late inits and report errors. All the SSI
-> slave routine names were changed accordingly. Code was modified to
-> handle errors when possible (m25p80 and ssi-sd)
+> A set of SPI flash slaves is attached under the flash controllers of
+> the palmetto platform. "n25q256a" flash modules are used for the BMC
+> and "mx25l25635e" for the host. These types are common in the
+> OpenPower ecosystem.
 >
-> Tested with the m25p80 slave object.
->
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
+>
+>  Changes since v3 :
+>
+>  - moved memory mapping to platform initialization
+>
+>  Changes since v2 :
+>
+>  - moved the initialization of the flash modules under the palmetto
+>    platform
+>
+>  hw/arm/palmetto-bmc.c | 31 +++++++++++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

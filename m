@@ -1,62 +1,55 @@
-Received: by 10.25.21.96 with SMTP id l93csp169324lfi;
-        Fri, 1 Jul 2016 01:29:19 -0700 (PDT)
-X-Received: by 10.237.55.168 with SMTP id j37mr30298853qtb.102.1467361759137;
-        Fri, 01 Jul 2016 01:29:19 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp280088lfi;
+        Fri, 1 Jul 2016 06:02:27 -0700 (PDT)
+X-Received: by 10.200.40.181 with SMTP id i50mr5989831qti.89.1467378147323;
+        Fri, 01 Jul 2016 06:02:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k53si1770765qta.39.2016.07.01.01.29.18
+        by mx.google.com with ESMTPS id g12si2311874qtg.83.2016.07.01.06.02.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jul 2016 01:29:19 -0700 (PDT)
+        Fri, 01 Jul 2016 06:02:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54408 helo=lists.gnu.org)
+Received: from localhost ([::1]:33455 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bItp8-0004PM-HG
-	for alex.bennee@linaro.org; Fri, 01 Jul 2016 04:29:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56700)
+	id 1bIy5S-0006nC-Km
+	for alex.bennee@linaro.org; Fri, 01 Jul 2016 09:02:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50229)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bItp2-0004Oy-I8
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 04:29:14 -0400
+	(envelope-from <drjones@redhat.com>) id 1bIy5N-0006lE-EM
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 09:02:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bItoz-00089x-DH
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 04:29:12 -0400
-Received: from 5.mo53.mail-out.ovh.net ([46.105.48.2]:38070)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bItoz-000880-4t
-	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 04:29:09 -0400
-Received: from player158.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo53.mail-out.ovh.net (Postfix) with ESMTP id 5D6DCFF9252
-	for <qemu-arm@nongnu.org>; Fri,  1 Jul 2016 10:29:07 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id C430B6200BE;
-	Fri,  1 Jul 2016 10:29:03 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1467301824-10123-1-git-send-email-clg@kaod.org>
-	<CAFEAcA_iAVMPNxi8m=uv9OTGoHqxg8egsLT+SN=YFJA=tS4B9w@mail.gmail.com>
-	<4c195494-c97a-29e5-f5fb-88e26e71ae13@kaod.org>
-	<CAFEAcA-xQ7Y=LPMweCU4yxLr7Mk5t0yy7SXX3=u2rGvAi7VA0w@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <d49da044-0396-a1b8-2b7f-02921102fe81@kaod.org>
-Date: Fri, 1 Jul 2016 10:28:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-xQ7Y=LPMweCU4yxLr7Mk5t0yy7SXX3=u2rGvAi7VA0w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 3013752575793662891
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrudelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 46.105.48.2
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/misc: fix Aspeed SCU hw-strap2
- property
+	(envelope-from <drjones@redhat.com>) id 1bIy5J-0004xE-7Z
+	for qemu-arm@nongnu.org; Fri, 01 Jul 2016 09:02:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43785)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>)
+	id 1bIy5J-0004x1-2E; Fri, 01 Jul 2016 09:02:17 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8DE91C0624B0;
+	Fri,  1 Jul 2016 13:02:16 +0000 (UTC)
+Received: from hawk.localdomain.com (dhcp-1-139.brq.redhat.com [10.34.1.139])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u61D2DDC023420; Fri, 1 Jul 2016 09:02:15 -0400
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Fri,  1 Jul 2016 15:02:08 +0200
+Message-Id: <1467378129-23302-2-git-send-email-drjones@redhat.com>
+In-Reply-To: <1467378129-23302-1-git-send-email-drjones@redhat.com>
+References: <1467378129-23302-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 01 Jul 2016 13:02:16 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 1/2] gic: provide defines for v2/v3 targetlist
+ sizes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,41 +61,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Do4rApQCd4Wx
+X-TUID: d9t3EoVZRCXM
 
-On 07/01/2016 10:02 AM, Peter Maydell wrote:
-> On 1 July 2016 at 07:11, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->> On 06/30/2016 08:24 PM, Peter Maydell wrote:
->>> On 30 June 2016 at 16:50, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->>>> These strap registers are complex enough, let's not mix them.
->>>>
->>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>
->>> Was there a cover letter for this patchset? I can't find
->>> it in my email...
->>
->> Ah :/ No, I didn't send one as the patches were small and self
->> contained. Should we each time ?
->=20
-> The basic rule is that single standalone patches don't
-> need a cover letter; a series with more than one patch
-> should have a cover letter. Some of our automated tooling
-> gets confused otherwise (also I like to be able to have a
-> single email to mark for attention in my mail client).
-> These confused me a bit because they had the series
-> indicators in the subject (1/2, 2/2) but no cover.
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ include/hw/intc/arm_gic.h          | 3 +++
+ include/hw/intc/arm_gicv3_common.h | 3 +++
+ 2 files changed, 6 insertions(+)
 
-Yes, the email threading was a bit confusing in my mail
-client also. Sorry about that.=20
-
-I will resend with a cover letter. I need to add where=20
-the macros are coming from.
-
-Thanks,
-
-C.=20
+diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
+index 0971e37710dd6..42bb535fd4571 100644
+--- a/include/hw/intc/arm_gic.h
++++ b/include/hw/intc/arm_gic.h
+@@ -23,6 +23,9 @@
+ 
+ #include "arm_gic_common.h"
+ 
++/* Number of SGI target-list bits */
++#define GIC_TARGETLIST_BITS 8
++
+ #define TYPE_ARM_GIC "arm_gic"
+ #define ARM_GIC(obj) \
+      OBJECT_CHECK(GICState, (obj), TYPE_ARM_GIC)
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index f72e49922feb1..341a3118f0f44 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -35,6 +35,9 @@
+ #define GICV3_MAXIRQ 1020
+ #define GICV3_MAXSPI (GICV3_MAXIRQ - GIC_INTERNAL)
+ 
++/* Number of SGI target-list bits */
++#define GICV3_TARGETLIST_BITS 16
++
+ /* Minimum BPR for Secure, or when security not enabled */
+ #define GIC_MIN_BPR 0
+ /* Minimum BPR for Nonsecure when security is enabled */
+-- 
+2.7.4
 

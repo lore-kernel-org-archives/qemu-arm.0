@@ -1,62 +1,75 @@
-Received: by 10.25.21.96 with SMTP id l93csp1423366lfi;
-        Mon, 4 Jul 2016 02:16:03 -0700 (PDT)
-X-Received: by 10.200.48.74 with SMTP id g10mr16956876qte.40.1467623763615;
-        Mon, 04 Jul 2016 02:16:03 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1436927lfi;
+        Mon, 4 Jul 2016 02:57:23 -0700 (PDT)
+X-Received: by 10.55.177.193 with SMTP id a184mr13854986qkf.121.1467626243562;
+        Mon, 04 Jul 2016 02:57:23 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i27si1509472qtc.76.2016.07.04.02.16.03
+        by mx.google.com with ESMTPS id b63si2517915qke.125.2016.07.04.02.57.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Jul 2016 02:16:03 -0700 (PDT)
+        Mon, 04 Jul 2016 02:57:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46066 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46274 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bJzz0-0005Cv-UJ
-	for alex.bennee@linaro.org; Mon, 04 Jul 2016 05:16:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57952)
+	id 1bK0d0-0003Kf-WC
+	for alex.bennee@linaro.org; Mon, 04 Jul 2016 05:57:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40801)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bJzyv-00056Y-VS
-	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:15:59 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bK0bB-0007mu-9p
+	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:55:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bJzyq-0007gS-R2
-	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:15:57 -0400
-Received: from 2.mo3.mail-out.ovh.net ([46.105.75.36]:59128)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bJzyq-0007g8-Bu
-	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:15:52 -0400
-Received: from player761.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 6AD64FFBA09
-	for <qemu-arm@nongnu.org>; Mon,  4 Jul 2016 11:15:50 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player761.ha.ovh.net (Postfix) with ESMTPSA id 9633748008E;
-	Mon,  4 Jul 2016 11:15:41 +0200 (CEST)
-To: "mar.krzeminski" <mar.krzeminski@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <1467138270-32481-1-git-send-email-clg@kaod.org>
-	<1467138270-32481-10-git-send-email-clg@kaod.org>
-	<5778025A.9020608@gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <8ace1056-de8d-cfbb-9e63-e0e26df71952@kaod.org>
-Date: Mon, 4 Jul 2016 11:15:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
+	(envelope-from <peter.maydell@linaro.org>) id 1bK0b9-0007qc-8d
+	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:55:28 -0400
+Received: from mail-vk0-x22f.google.com ([2607:f8b0:400c:c05::22f]:35851)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bK0b9-0007qJ-4l
+	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 05:55:27 -0400
+Received: by mail-vk0-x22f.google.com with SMTP id m127so165945294vkb.3
+	for <qemu-arm@nongnu.org>; Mon, 04 Jul 2016 02:55:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=3w+TSdLU/4IRbgIEogK0V0u6hEgvTRyRh4rkInnjZ6s=;
+	b=MblcXvHcEtdUOK09tlNf1Kz6SMOKIB4uexpdodlofhkYG/BY+OMzcKczZ7X9TCrbA5
+	u39pSAEzIUNTzuw20vUrMxe7KLuB8j1HHV/Pfg1DxBt9+Vfk1zLBGf8u72CA8PoTV31j
+	HkYdj77ylf/uNYeKULMOZgMzTLx+G3mfTGlKw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=3w+TSdLU/4IRbgIEogK0V0u6hEgvTRyRh4rkInnjZ6s=;
+	b=l80e5wd62+Dnv1QTSfPhYmI/UcYrFuBTY+0U8TVgaEgW4enQkS5ed7bxgq3tN4Vo+0
+	uilOT9wIVJE/JgsmoywGY+bj0trMG7VKSs9gqvO7e1gGPzB3GGsnygU3Dsrz7430ScVc
+	DT5lwTbZW+wxnS9ymIPes75buY0ThzjEXpsVBagSthVJLcaRuAJBislzCAPiN/MGTu/o
+	GAWdFckANlF8g6X4bLZCOQoic1ZyoXZRMdsj4mybL77P2mnqElMKcb2Qovt5N9wRQznb
+	w5TmUFGh2ks6dbeQgRB85pDwG2YkSyMvn1suD2iLUunNIch7DS5WtULzXVJ2HrIIIum2
+	mEKA==
+X-Gm-Message-State: ALyK8tK+aDexlWq9uX22xtsR7JIaGrJd4qaV8UhEsd9RrSSoteZ3bjeZUVxYznQ4MwI5/zNLT78307mU+MNa9WUy
+X-Received: by 10.31.188.80 with SMTP id m77mr4734465vkf.30.1467626126600;
+	Mon, 04 Jul 2016 02:55:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5778025A.9020608@gmail.com>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 2973783131713473456
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrvddvgdduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 46.105.75.36
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 9/9] tests: add a m25p80 test
+Received: by 10.31.242.75 with HTTP; Mon, 4 Jul 2016 02:55:07 -0700 (PDT)
+In-Reply-To: <340f08ea-ee9b-1284-7e7f-17d33b314885@gmail.com>
+References: <20160625123521.16752-1-digetx@gmail.com>
+	<CAFEAcA8HFfuEHP-d8+H3DC06+RpjjXqQoCX81w2Yr+Txsn5fSw@mail.gmail.com>
+	<5814242b-8a8c-852a-51e8-268033b51200@gmail.com>
+	<CAFEAcA8788W2infUBneuUh4eNMLqPpdNzGXqKESgi+ZKpigdyg@mail.gmail.com>
+	<121dd825-9c64-b3b9-bca8-41bcb984ec0f@gmail.com>
+	<CAFEAcA-ZGbR2nz80n=QcxRTr=PN5EMQ-OrbncaAQnHMwmhPtZg@mail.gmail.com>
+	<340f08ea-ee9b-1284-7e7f-17d33b314885@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jul 2016 10:55:07 +0100
+Message-ID: <CAFEAcA8sv7tLrp84dnVV=gWqn21DFEqHCiAkDzVOWrCOux=Tug@mail.gmail.com>
+To: Dmitry Osipenko <digetx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::22f
+Subject: Re: [Qemu-arm] [PATCH v2] hw/ptimer: Don't wrap around counter for
+ expired timer that uses tick handler
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,354 +81,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, armbru@redhat.com
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v7JHom6yehpi
+X-TUID: eeVv6k2qRIkS
 
-On 07/02/2016 08:05 PM, mar.krzeminski wrote:
->=20
->=20
-> W dniu 28.06.2016 o 20:24, C=C3=A9dric Le Goater pisze:
->> This test uses the palmetto platform and the AST2400 SPI controller to
->> test the m25p80 flash module device model. The flash model is defined
->> by the platform (n25q256a) and it would be nice to find way to control
->> it, using a property probably.
+On 1 July 2016 at 18:49, Dmitry Osipenko <digetx@gmail.com> wrote:
+> On 01.07.2016 19:36, Peter Maydell wrote:
+>> On 30 June 2016 at 20:01, Dmitry Osipenko <digetx@gmail.com> wrote:
+>>> On 30.06.2016 18:02, Peter Maydell wrote:
+>>>> What I meant was: ptimer_get_count() is typically called to generate
+>>>> a value to return from a register. That's a separate thing, conceptually,
+>>>> from whether the device happens to also trigger an interrupt on timer
+>>>> expiry by passing a bh to ptimer_init(). So it's very odd for a detail
+>>>> of interrupt-on-timer-expiry (that there is a bottom half) to affect
+>>>> the value returned when you read the timer count register.
 >>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
+>>> In order to handle wraparound correctly, software needs to track the moment of
+>>> the wraparound - the interrupt. If software reads wrapped around counter value
+>>> before IRQ triggered (ptimer expired), then it would assume that no wraparound
+>>> happened and won't perform counter value correction, resulting in periodic
+>>> counter "jumping" backwards.
 >>
->>   Changes since v4:
+>> That just says you need particular behaviour between counter reads
+>> and IRQ triggers; it doesn't say that you need the behaviour to be
+>> different if the ptimer code doesn't know about the IRQ trigger.
 >>
->>   - fixed Makefile targets
->>   - replaced -M with -m in qtest command line
->>     Changes since v2:
->>
->>   - changed mkstemp() path prefix
->>     Changes since v1:
->>
->>   - fixed guest args to use -drive and not -mtdblock
->>
->>   tests/Makefile.include |   2 +
->>   tests/m25p80-test.c    | 242 +++++++++++++++++++++++++++++++++++++++=
-++++++++++
->>   2 files changed, 244 insertions(+)
->>   create mode 100644 tests/m25p80-test.c
->>
->> diff --git a/tests/Makefile.include b/tests/Makefile.include
->> index 6c09962f7581..149f92585c1b 100644
->> --- a/tests/Makefile.include
->> +++ b/tests/Makefile.include
->> @@ -252,6 +252,7 @@ gcov-files-sparc-y +=3D hw/timer/m48t59.c
->>   gcov-files-sparc64-y +=3D hw/timer/m48t59.c
->>   check-qtest-arm-y =3D tests/tmp105-test$(EXESUF)
->>   check-qtest-arm-y +=3D tests/ds1338-test$(EXESUF)
->> +check-qtest-arm-y +=3D tests/m25p80-test$(EXESUF)
->>   gcov-files-arm-y +=3D hw/misc/tmp105.c
->>   check-qtest-arm-y +=3D tests/virtio-blk-test$(EXESUF)
->>   gcov-files-arm-y +=3D arm-softmmu/hw/block/virtio-blk.c
->> @@ -568,6 +569,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables=
--test.o \
->>   tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libq=
-os-obj-y)
->>   tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
->>   tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
->> +tests/m25p80-test$(EXESUF): tests/m25p80-test.o
->>   tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
->>   tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
->>   tests/fw_cfg-test$(EXESUF): tests/fw_cfg-test.o $(libqos-pc-obj-y)
->> diff --git a/tests/m25p80-test.c b/tests/m25p80-test.c
->> new file mode 100644
->> index 000000000000..305c52319a33
->> --- /dev/null
->> +++ b/tests/m25p80-test.c
->> @@ -0,0 +1,242 @@
->> +/*
->> + * QTest testcase for the M25P80 Flash (Using the AST2400 SPI Control=
-ler)
->> + *
->> + * Copyright (C) 2016 IBM Corp.
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtain=
-ing a copy
->> + * of this software and associated documentation files (the "Software=
-"), to deal
->> + * in the Software without restriction, including without limitation =
-the rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/=
-or sell
->> + * copies of the Software, and to permit persons to whom the Software=
- is
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be inc=
-luded in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EX=
-PRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTAB=
-ILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT =
-SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES =
-OR OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, AR=
-ISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL=
-INGS IN
->> + * THE SOFTWARE.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/bswap.h"
->> +#include "libqtest.h"
->> +
->> +/*
->> + * AST2400 SPI Controller registers
->> + */
->> +#define R_CONF              0x00
->> +#define   CONF_ENABLE_W0       (1 << 16)
->> +#define R_CE_CTRL           0x04
->> +#define   CRTL_EXTENDED0       0  /* 32 bit addressing for SPI */
->> +#define R_CTRL0             0x10
->> +#define   CTRL_CE_STOP_ACTIVE  (1 << 2)
->> +#define   CTRL_USERMODE        0x3
->> +
->> +#define AST2400_FMC_BASE    0x1E620000
->> +#define AST2400_FLASH_BASE  0x20000000
->> +
->> +/*
->> + * Flash commands
->> + */
->> +enum {
->> +    JEDEC_READ =3D 0x9f,
->> +    BULK_ERASE =3D 0xc7,
->> +    READ =3D 0x03,
->> +    PP =3D 0x02,
->> +    WREN =3D 0x6,
->> +    EN_4BYTE_ADDR =3D 0xB7,
->> +    ERASE_SECTOR =3D 0xd8,
->> +};
->> +
->> +#define FLASH_JEDEC         0x20ba19  /* n25q256a */
->> +#define FLASH_SIZE          (32 * 1024 * 1024)
->> +
->> +#define PAGE_SIZE           256
->> +
->> +static void spi_conf(uint32_t value)
->> +{
->> +    uint32_t conf =3D readl(AST2400_FMC_BASE + R_CONF);
->> +
->> +    conf |=3D value;
->> +    writel(AST2400_FMC_BASE + R_CONF, conf);
->> +}
->> +
->> +static void spi_ctrl_start_user(void)
->> +{
->> +    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
->> +
->> +    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
->> +    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
->> +
->> +    ctrl &=3D ~CTRL_CE_STOP_ACTIVE;
->> +    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
->> +}
->> +
->> +static void spi_ctrl_stop_user(void)
->> +{
->> +    uint32_t ctrl =3D readl(AST2400_FMC_BASE + R_CTRL0);
->> +
->> +    ctrl |=3D CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
->> +    writel(AST2400_FMC_BASE + R_CTRL0, ctrl);
->> +}
->> +
->> +static void test_read_jedec(void)
->> +{
->> +    uint32_t jedec =3D 0x0;
->> +
->> +    spi_conf(CONF_ENABLE_W0);
->> +
->> +    spi_ctrl_start_user();
->> +    writeb(AST2400_FLASH_BASE, JEDEC_READ);
->> +    jedec |=3D readb(AST2400_FLASH_BASE) << 16;
->> +    jedec |=3D readb(AST2400_FLASH_BASE) << 8;
->> +    jedec |=3D readb(AST2400_FLASH_BASE);
->> +    spi_ctrl_stop_user();
->> +
->> +    g_assert_cmphex(jedec, =3D=3D, FLASH_JEDEC);
->> +}
->> +
->> +static void read_page(uint32_t addr, uint32_t *page)
->> +{
->> +    int i;
->> +
->> +    spi_ctrl_start_user();
->> +
->> +    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
->> +    writeb(AST2400_FLASH_BASE, READ);
->> +    writel(AST2400_FLASH_BASE, cpu_to_be32(addr));
->> +
->> +    /* Continuous read are supported */
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        page[i] =3D be32_to_cpu(readl(AST2400_FLASH_BASE));
->> +    }
->> +    spi_ctrl_stop_user();
->> +}
->> +
->> +static void test_erase_sector(void)
->> +{
->> +    uint32_t some_page_addr =3D 0x600 * PAGE_SIZE;
->> +    uint32_t page[PAGE_SIZE / 4];
->> +    int i;
->> +
->> +    spi_conf(CONF_ENABLE_W0);
->> +
->> +    spi_ctrl_start_user();
->> +    writeb(AST2400_FLASH_BASE, WREN);
->> +    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
->> +    writeb(AST2400_FLASH_BASE, ERASE_SECTOR);
->> +    writel(AST2400_FLASH_BASE, cpu_to_be32(some_page_addr));
-> Hi,
->=20
-> I think you should not make any byte swapping because
-> qtest for all write* instructions (see qtest.c:377).
+>
+> Okay, I already explained the reason for having two different behaviours - to
+> make polled counter value more distributed when possible. If I understand you
+> correctly, you don't like it because it is "odd" and I agree that it's a bit clumsy.
 
-yes. on a BE, we should not byte swap.
+> So, what we are going to do now? Would you just revert the offending commit or
+> you have some other suggestions?
 
-When on a LE host, the cpu_to_be32() call in the test byte-swaps
-the address, tswap32() in qtest.c does nothing as the host endian=20
-and guest endian are in sync and so the address reaches the=20
-controller region in the expected order. =20
+Well, we need to fix the regression, but basically I'm kind of
+confused at the moment. I haven't invested a lot of time in
+trying to understand the timer code, so all I can really do
+is say "this does not look like the right thing" and ask you
+to come up with a different fix for it.
 
-When on a BE host, the cpu_to_be32() does nothing but tswap32() in=20
-qtest.c reverses the order and so the address reaches the controller=20
-region in the wrong order (LE). =20
-
-I see two possible fixes :=20
-
-1 - replace the read* routines by out* (no tswap there)
-2 - add an extra byteswap on BE hosts using qtest_big_endian() as=20
-    in virtio-blk-test.c. see virtio_blk_fix_request()=20
-
-Thanks,
-
-C.=20
-
-> Regards,
-> Marcin
->=20
->> +    spi_ctrl_stop_user();
->> +
->> +    /* Previous page should be full of zeroes as backend is not
->> +     * initialized */
->> +    read_page(some_page_addr - PAGE_SIZE, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, 0x0);
->> +    }
->> +
->> +    /* But this one was erased */
->> +    read_page(some_page_addr, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
->> +    }
->> +}
->> +
->> +static void test_erase_all(void)
->> +{
->> +    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
->> +    uint32_t page[PAGE_SIZE / 4];
->> +    int i;
->> +
->> +    spi_conf(CONF_ENABLE_W0);
->> +
->> +    /* Check some random page. Should be full of zeroes as backend is
->> +     * not initialized */
->> +    read_page(some_page_addr, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, 0x0);
->> +    }
->> +
->> +    spi_ctrl_start_user();
->> +    writeb(AST2400_FLASH_BASE, WREN);
->> +    writeb(AST2400_FLASH_BASE, BULK_ERASE);
->> +    spi_ctrl_stop_user();
->> +
->> +    /* Recheck that some random page */
->> +    read_page(some_page_addr, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
->> +    }
->> +}
->> +
->> +static void test_write_page(void)
->> +{
->> +    uint32_t my_page_addr =3D 0x14000 * PAGE_SIZE; /* beyond 16MB */
->> +    uint32_t some_page_addr =3D 0x15000 * PAGE_SIZE;
->> +    uint32_t page[PAGE_SIZE / 4];
->> +    int i;
->> +
->> +    spi_conf(CONF_ENABLE_W0);
->> +
->> +    spi_ctrl_start_user();
->> +    writeb(AST2400_FLASH_BASE, EN_4BYTE_ADDR);
->> +    writeb(AST2400_FLASH_BASE, PP);
->> +    writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr));
->> +
->> +    /* Fill the page with its own addresses */
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        writel(AST2400_FLASH_BASE, cpu_to_be32(my_page_addr + i * 4))=
-;
->> +    }
->> +    spi_ctrl_stop_user();
->> +
->> +    /* Check what was written */
->> +    read_page(my_page_addr, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, my_page_addr + i * 4);
->> +    }
->> +
->> +    /* Check some other page. It should be full of 0xff */
->> +    read_page(some_page_addr, page);
->> +    for (i =3D 0; i < PAGE_SIZE / 4; i++) {
->> +        g_assert_cmphex(page[i], =3D=3D, 0xffffffff);
->> +    }
->> +}
->> +
->> +static char tmp_path[] =3D "/tmp/qtest.m25p80.XXXXXX";
->> +
->> +int main(int argc, char **argv)
->> +{
->> +    int ret;
->> +    int fd;
->> +    char *args;
->> +
->> +    g_test_init(&argc, &argv, NULL);
->> +
->> +    fd =3D mkstemp(tmp_path);
->> +    g_assert(fd >=3D 0);
->> +    ret =3D ftruncate(fd, FLASH_SIZE);
->> +    g_assert(ret =3D=3D 0);
->> +    close(fd);
->> +
->> +    args =3D g_strdup_printf("-m 256 -machine palmetto-bmc "
->> +                           "-drive file=3D%s,format=3Draw,if=3Dmtd",
->> +                           tmp_path);
->> +    qtest_start(args);
->> +
->> +    qtest_add_func("/m25p80/read_jedec", test_read_jedec);
->> +    qtest_add_func("/m25p80/erase_sector", test_erase_sector);
->> +    qtest_add_func("/m25p80/erase_all",  test_erase_all);
->> +    qtest_add_func("/m25p80/write_page", test_write_page);
->> +
->> +    ret =3D g_test_run();
->> +
->> +    qtest_quit(global_qtest);
->> +    unlink(tmp_path);
->> +    g_free(args);
->> +    return ret;
->> +}
->=20
-
+thanks
+-- PMM

@@ -1,57 +1,57 @@
-Received: by 10.25.21.96 with SMTP id l93csp753376lfi;
-        Wed, 6 Jul 2016 02:46:51 -0700 (PDT)
-X-Received: by 10.55.58.6 with SMTP id h6mr7982483qka.185.1467798411762;
-        Wed, 06 Jul 2016 02:46:51 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp753431lfi;
+        Wed, 6 Jul 2016 02:46:59 -0700 (PDT)
+X-Received: by 10.200.43.236 with SMTP id n41mr34006221qtn.52.1467798419148;
+        Wed, 06 Jul 2016 02:46:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h3si1938559qkf.92.2016.07.06.02.46.51
+        by mx.google.com with ESMTPS id u28si1869227qta.95.2016.07.06.02.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jul 2016 02:46:51 -0700 (PDT)
+        Wed, 06 Jul 2016 02:46:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60581 helo=lists.gnu.org)
+Received: from localhost ([::1]:60584 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bKjPv-0000ry-2r
-	for alex.bennee@linaro.org; Wed, 06 Jul 2016 05:46:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58429)
+	id 1bKjQ2-0001Ek-Dw
+	for alex.bennee@linaro.org; Wed, 06 Jul 2016 05:46:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bKjPh-0000Q8-BU
-	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:38 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bKjPn-0000q0-TX
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bKjPg-000730-3m
-	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37224)
+	(envelope-from <eric.auger@redhat.com>) id 1bKjPk-000753-7h
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37254)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bKjPf-00071h-SJ; Wed, 06 Jul 2016 05:46:36 -0400
+	id 1bKjPj-00074M-V3; Wed, 06 Jul 2016 05:46:40 -0400
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F271AD7E4D;
-	Wed,  6 Jul 2016 09:46:34 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7793264D08;
+	Wed,  6 Jul 2016 09:46:39 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn1-6-81.ams2.redhat.com
 	[10.36.6.81])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u669kPEI013861; Wed, 6 Jul 2016 05:46:32 -0400
+	id u669kPEK013861; Wed, 6 Jul 2016 05:46:37 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
-Date: Wed,  6 Jul 2016 11:46:01 +0200
-Message-Id: <1467798364-9049-4-git-send-email-eric.auger@redhat.com>
+Date: Wed,  6 Jul 2016 11:46:03 +0200
+Message-Id: <1467798364-9049-6-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1467798364-9049-1-git-send-email-eric.auger@redhat.com>
 References: <1467798364-9049-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.39]);
-	Wed, 06 Jul 2016 09:46:35 +0000 (UTC)
+	Wed, 06 Jul 2016 09:46:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 3/6] linux-headers: update to 4.7-rc6 + ITS
- emulation and GSI routing
+Subject: [Qemu-arm] [RFC v4 5/6] hw/intc/arm_gicv3_its: Implement support
+ for in-kernel ITS emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,148 +66,205 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: diana.craciun@freescale.com, shlomopongratz@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 42v6ZPmuu/x1
+X-TUID: e8nlNpivbztB
 
 From: Pavel Fedin <p.fedin@samsung.com>
 
-Linux header update for in-kernel ITS emulation and KVM MSI routing.
+The ITS control frame is in-kernel emulated while accesses to the
+GITS_TRANSLATER are mediated through the KVM_SIGNAL_MSI ioctl (MSI
+direct MSI injection advertised by the CAP_SIGNAL_MSI capability)
 
-The kernel can be found at
-https://github.com/eauger/linux/tree/v4.7-rc6-its-emul-v7-gsi-routing-v5
+the kvm_gsi_direct_mapping is explicitly set to false to emphasize the
+difference with GICv2M. Direct mapping cannot work with ITS since
+the content of the MSI data is not the target interrupt ID but an
+eventd id.
+
+GSI routing is advertised (kvm_gsi_routing_allowed) as well as
+msi/irqfd signaling (kvm_msi_via_irqfd_allowed).
 
 Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v4 -> v5:
-- upgrade
+v3 -> v4:
+- include "qemu/osdep.h" and  "qapi/error.h"
+- rename KVM_VGIC_V3_ADDR_TYPE_ITS into KVM_VGIC_ITS_ADDR_TYPE
+- reword commit message
+- change kvm_msi_via_irqfd_allowed definition (attached to irqfd dynamic
+  availability + MSI controller availability)
+- create the ITS KVM device (previously abstracted by the GICv3 KVM device)
+- init sequence changed
+- absolute GITS_TRANSLATER GPA stored
 ---
- include/standard-headers/linux/input-event-codes.h | 31 ++++++++++++++++++++++
- include/standard-headers/linux/input.h             |  1 +
- linux-headers/asm-arm64/kvm.h                      |  2 ++
- linux-headers/linux/kvm.h                          | 12 +++++++--
- 4 files changed, 44 insertions(+), 2 deletions(-)
+ hw/intc/Makefile.objs       |   1 +
+ hw/intc/arm_gicv3_its_kvm.c | 145 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 146 insertions(+)
+ create mode 100644 hw/intc/arm_gicv3_its_kvm.c
 
-diff --git a/include/standard-headers/linux/input-event-codes.h b/include/standard-headers/linux/input-event-codes.h
-index 354f0de..1f33521 100644
---- a/include/standard-headers/linux/input-event-codes.h
-+++ b/include/standard-headers/linux/input-event-codes.h
-@@ -611,6 +611,37 @@
- #define KEY_KBDINPUTASSIST_ACCEPT		0x264
- #define KEY_KBDINPUTASSIST_CANCEL		0x265
- 
-+/* Diagonal movement keys */
-+#define KEY_RIGHT_UP			0x266
-+#define KEY_RIGHT_DOWN			0x267
-+#define KEY_LEFT_UP			0x268
-+#define KEY_LEFT_DOWN			0x269
-+
-+#define KEY_ROOT_MENU			0x26a /* Show Device's Root Menu */
-+/* Show Top Menu of the Media (e.g. DVD) */
-+#define KEY_MEDIA_TOP_MENU		0x26b
-+#define KEY_NUMERIC_11			0x26c
-+#define KEY_NUMERIC_12			0x26d
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index 2f04792..b457369 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -22,6 +22,7 @@ common-obj-$(CONFIG_OPENPIC) += openpic.o
+ obj-$(CONFIG_APIC) += apic.o apic_common.o
+ obj-$(CONFIG_ARM_GIC_KVM) += arm_gic_kvm.o
+ obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_kvm.o
++obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_its_kvm.o
+ obj-$(CONFIG_STELLARIS) += armv7m_nvic.o
+ obj-$(CONFIG_EXYNOS4) += exynos4210_gic.o exynos4210_combiner.o
+ obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+new file mode 100644
+index 0000000..b6d92aa
+--- /dev/null
++++ b/hw/intc/arm_gicv3_its_kvm.c
+@@ -0,0 +1,145 @@
 +/*
-+ * Toggle Audio Description: refers to an audio service that helps blind and
-+ * visually impaired consumers understand the action in a program. Note: in
-+ * some countries this is referred to as "Video Description".
++ * KVM-based ITS implementation for a GICv3-based system
++ *
++ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
++ * Written by Pavel Fedin <p.fedin@samsung.com>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
 + */
-+#define KEY_AUDIO_DESC			0x26e
-+#define KEY_3D_MODE			0x26f
-+#define KEY_NEXT_FAVORITE		0x270
-+#define KEY_STOP_RECORD			0x271
-+#define KEY_PAUSE_RECORD		0x272
-+#define KEY_VOD				0x273 /* Video on Demand */
-+#define KEY_UNMUTE			0x274
-+#define KEY_FASTREVERSE			0x275
-+#define KEY_SLOWREVERSE			0x276
-+/*
-+ * Control a data application associated with the currently viewed channel,
-+ * e.g. teletext or data broadcast application (MHEG, MHP, HbbTV, etc.)
-+ */
-+#define KEY_DATA			0x275
 +
- #define BTN_TRIGGER_HAPPY		0x2c0
- #define BTN_TRIGGER_HAPPY1		0x2c0
- #define BTN_TRIGGER_HAPPY2		0x2c1
-diff --git a/include/standard-headers/linux/input.h b/include/standard-headers/linux/input.h
-index a52b202..7361a16 100644
---- a/include/standard-headers/linux/input.h
-+++ b/include/standard-headers/linux/input.h
-@@ -244,6 +244,7 @@ struct input_mask {
- #define BUS_ATARI		0x1B
- #define BUS_SPI			0x1C
- #define BUS_RMI			0x1D
-+#define BUS_CEC			0x1E
- 
- /*
-  * MT_TOOL types
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 7d82d1f..dc6f750 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -87,9 +87,11 @@ struct kvm_regs {
- /* Supported VGICv3 address types  */
- #define KVM_VGIC_V3_ADDR_TYPE_DIST	2
- #define KVM_VGIC_V3_ADDR_TYPE_REDIST	3
-+#define KVM_VGIC_ITS_ADDR_TYPE		4
- 
- #define KVM_VGIC_V3_DIST_SIZE		SZ_64K
- #define KVM_VGIC_V3_REDIST_SIZE		(2 * SZ_64K)
-+#define KVM_VGIC_V3_ITS_SIZE		SZ_64K
- 
- #define KVM_ARM_VCPU_POWER_OFF		0 /* CPU is started in OFF state */
- #define KVM_ARM_VCPU_EL1_32BIT		1 /* CPU running a 32bit VM */
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index e60e21b..37c05e2 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -866,6 +866,7 @@ struct kvm_ppc_smmu_info {
- #define KVM_CAP_ARM_PMU_V3 126
- #define KVM_CAP_VCPU_ATTRIBUTES 127
- #define KVM_CAP_MAX_VCPU_ID 128
-+#define KVM_CAP_MSI_DEVID 129
- 
- #ifdef KVM_CAP_IRQ_ROUTING
- 
-@@ -878,7 +879,10 @@ struct kvm_irq_routing_msi {
- 	__u32 address_lo;
- 	__u32 address_hi;
- 	__u32 data;
--	__u32 pad;
-+	union {
-+		__u32 pad;
-+		__u32 devid;
-+	};
- };
- 
- struct kvm_irq_routing_s390_adapter {
-@@ -1024,12 +1028,14 @@ struct kvm_one_reg {
- 	__u64 addr;
- };
- 
-+#define KVM_MSI_VALID_DEVID	(1U << 0)
- struct kvm_msi {
- 	__u32 address_lo;
- 	__u32 address_hi;
- 	__u32 data;
- 	__u32 flags;
--	__u8  pad[16];
-+	__u32 devid;
-+	__u8  pad[12];
- };
- 
- struct kvm_arm_device_addr {
-@@ -1074,6 +1080,8 @@ enum kvm_device_type {
- #define KVM_DEV_TYPE_FLIC		KVM_DEV_TYPE_FLIC
- 	KVM_DEV_TYPE_ARM_VGIC_V3,
- #define KVM_DEV_TYPE_ARM_VGIC_V3	KVM_DEV_TYPE_ARM_VGIC_V3
-+	KVM_DEV_TYPE_ARM_VGIC_ITS,
-+#define KVM_DEV_TYPE_ARM_VGIC_ITS	KVM_DEV_TYPE_ARM_VGIC_ITS
- 	KVM_DEV_TYPE_MAX,
- };
- 
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/intc/arm_gicv3_its_common.h"
++#include "sysemu/sysemu.h"
++#include "sysemu/kvm.h"
++#include "kvm_arm.h"
++
++#define TYPE_KVM_ARM_ITS "arm-its-kvm"
++#define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
++
++static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
++{
++    struct kvm_msi msi;
++
++    msi.address_lo = s->gits_translater_gpa & 0xFFFFFFFFULL;
++    msi.address_hi = s->gits_translater_gpa >> 32;
++    msi.data = value;
++    msi.flags = KVM_MSI_VALID_DEVID;
++    msi.devid = devid;
++    memset(msi.pad, 0, sizeof(msi.pad));
++
++    return kvm_vm_ioctl(kvm_state, KVM_SIGNAL_MSI, &msi);
++}
++
++typedef struct ItsInitNotifierParams {
++    Notifier notifier;
++    GICv3ITSState *s;
++} ItsInitNotifierParams;
++
++/**
++ *
++ * We currently do not use kvm_arm_register_device to provide
++ * the kernel with the vITS control frame base address since the
++ * KVM_DEV_ARM_VGIC_CTRL_INIT init MUST be called after the
++ * KVM_ARM_SET_DEVICE_ADDR and the kvm_arm_register_device
++ * infra does not allow this.
++ */
++static void its_notify(Notifier *notifier, void *data)
++{
++    ItsInitNotifierParams *p = DO_UPCAST(ItsInitNotifierParams,
++                                         notifier, notifier);
++    GICv3ITSState *s = p->s;
++    MemoryRegion *mr = &s->iomem_its_cntrl;
++    MemoryRegionSection mrs;
++    struct kvm_device_attr attr;
++    uint64_t addr;
++    int ret;
++
++    mrs = memory_region_find(mr, 0, 1);
++    addr = mrs.offset_within_address_space;
++
++    attr.flags = 0;
++    attr.group = KVM_DEV_ARM_VGIC_GRP_ADDR;
++    attr.attr = KVM_VGIC_ITS_ADDR_TYPE;
++    attr.addr =  (uintptr_t)&addr;
++
++    s->gits_translater_gpa = addr + ITS_CONTROL_SIZE + 0x40;
++
++    ret = kvm_device_ioctl(s->dev_fd, KVM_SET_DEVICE_ATTR, attr);
++    if (ret) {
++        error_setg_errno(&error_fatal, -ret,
++                         "not able to set base address for vITS ctrl frame");
++    }
++
++    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
++                      KVM_DEV_ARM_VGIC_CTRL_INIT, NULL, true);
++}
++
++static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
++{
++    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
++    ItsInitNotifierParams *p = g_new(ItsInitNotifierParams, 1);
++
++    s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
++    if (s->dev_fd < 0) {
++        error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
++        return;
++    }
++
++    gicv3_its_init_mmio(s, NULL);
++
++    p->notifier.notify = its_notify;
++    p->s = s;
++    qemu_add_machine_init_done_notifier(&p->notifier);
++
++    kvm_arm_msi_use_devid = true;
++    kvm_gsi_routing_allowed = kvm_has_gsi_routing();
++    kvm_gsi_direct_mapping = false;
++    kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
++}
++
++static void kvm_arm_its_init(Object *obj)
++{
++    GICv3ITSState *s = KVM_ARM_ITS(obj);
++
++    object_property_add_link(obj, "parent-gicv3",
++                             "kvm-arm-gicv3", (Object **)&s->gicv3,
++                             object_property_allow_set_link,
++                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
++                             &error_abort);
++}
++
++static void kvm_arm_its_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    GICv3ITSCommonClass *icc = ARM_GICV3_ITS_COMMON_CLASS(klass);
++
++    dc->realize = kvm_arm_its_realize;
++    icc->send_msi = kvm_its_send_msi;
++}
++
++static const TypeInfo kvm_arm_its_info = {
++    .name = TYPE_KVM_ARM_ITS,
++    .parent = TYPE_ARM_GICV3_ITS_COMMON,
++    .instance_size = sizeof(GICv3ITSState),
++    .instance_init = kvm_arm_its_init,
++    .class_init = kvm_arm_its_class_init,
++};
++
++static void kvm_arm_its_register_types(void)
++{
++    type_register_static(&kvm_arm_its_info);
++}
++
++type_init(kvm_arm_its_register_types)
 -- 
 2.5.5
 

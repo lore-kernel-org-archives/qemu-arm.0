@@ -1,104 +1,73 @@
-Received: by 10.25.21.96 with SMTP id l93csp44644lfi;
-        Mon, 4 Jul 2016 18:38:35 -0700 (PDT)
-X-Received: by 10.237.35.152 with SMTP id j24mr22729205qtc.96.1467682715067;
-        Mon, 04 Jul 2016 18:38:35 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp647150lfi;
+        Tue, 5 Jul 2016 21:35:18 -0700 (PDT)
+X-Received: by 10.55.140.69 with SMTP id o66mr28456778qkd.143.1467779718017;
+        Tue, 05 Jul 2016 21:35:18 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k10si781383qtc.22.2016.07.04.18.38.34
+        by mx.google.com with ESMTPS id z205si2270059qka.224.2016.07.05.21.35.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Jul 2016 18:38:35 -0700 (PDT)
+        Tue, 05 Jul 2016 21:35:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nokia.onmicrosoft.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=nokia.com
-Received: from localhost ([::1]:51374 helo=lists.gnu.org)
+       dkim=fail header.i=@aj.id.au;
+       dkim=fail header.i=@messagingengine.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59211 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bKFJq-0005Rd-Ev
-	for alex.bennee@linaro.org; Mon, 04 Jul 2016 21:38:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55618)
+	id 1bKeYP-000371-9N
+	for alex.bennee@linaro.org; Wed, 06 Jul 2016 00:35:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43085)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcin.krzeminski@nokia.com>) id 1bKFJl-0005P6-PT
-	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 21:38:31 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bKeYK-00035k-Q4
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 00:35:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcin.krzeminski@nokia.com>) id 1bKFJh-0001Oa-Ct
-	for qemu-arm@nongnu.org; Mon, 04 Jul 2016 21:38:28 -0400
-Received: from mail-ve1eur01on0109.outbound.protection.outlook.com
-	([104.47.1.109]:39424
-	helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+	(envelope-from <andrew@aj.id.au>) id 1bKeYE-00022W-TJ
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 00:35:11 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:36828)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcin.krzeminski@nokia.com>)
-	id 1bKFJg-0001OJ-UW; Mon, 04 Jul 2016 21:38:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nokia.onmicrosoft.com; 
-	s=selector1-nokia-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
-	bh=zYs7+dB4qdn7EA1Ho22Uzmpl27A3iwuMqTEm4Ud9niU=;
-	b=CrKeLU3P2GpcCM6cTMuK78gfoSwk8qA2gSQyHyXlGipqVQu5PsutSRQbB33MuWGCasMEblUKLzjPW9QCiLZxSu2kALFRwUtet6oSeqh19MOhp6irdx9PE+IdWonqXteFWHAXJMmPu+q227aE14hPEGchh1/uJnUPe+3xfdAPjfU=
-Received: from AM4PR0701MB2130.eurprd07.prod.outlook.com (10.167.132.139) by
-	AM4PR0701MB2132.eurprd07.prod.outlook.com (10.167.132.141) with
-	Microsoft
-	SMTP Server (TLS) id 15.1.534.14; Mon, 4 Jul 2016 16:03:08 +0000
-Received: from AM4PR0701MB2130.eurprd07.prod.outlook.com ([10.167.132.139]) by
-	AM4PR0701MB2130.eurprd07.prod.outlook.com ([10.167.132.139]) with
-	mapi id 15.01.0528.022; Mon, 4 Jul 2016 16:03:08 +0000
-From: "Krzeminski, Marcin (Nokia - PL/Wroclaw)" <marcin.krzeminski@nokia.com>
-To: =?iso-8859-2?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+	(envelope-from <andrew@aj.id.au>)
+	id 1bKeYB-0001vJ-Uz; Wed, 06 Jul 2016 00:35:06 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailnew.nyi.internal (Postfix) with ESMTP id BC7D5B9B;
+	Wed,  6 Jul 2016 00:34:49 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute4.internal (MEProxy); Wed, 06 Jul 2016 00:34:49 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=c5uNQ
+	HtH6OCXdgDH0FRNqxW0VcI=; b=dtVJnpk+NScCid2LrwzR5oHqSE64UT9KSl8pa
+	NaCuM4eBXvK46xUKYdle+NLUJg1KF9pCmhhWeE27KAYjXEibl0Emeh1TeoXlZxUz
+	puPhW1OxGrn914GTnc4EQkgH9eEzWYjTfn6vFCgTFbJOq/iv5z9Qk+4XkNk6Uywa
+	ZgZ9HM=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-sasl-enc
+	:x-sasl-enc; s=smtpout; bh=c5uNQHtH6OCXdgDH0FRNqxW0VcI=; b=lh7Nm
+	6d/mbyRQdAvOBdsvxqE/webLQ9DylbOZpuaiDB7dcekokqaEMWF7qVy1xXZ1jmUk
+	1ckV3nQld2gVb/sh4/UhYxoetxAsQKcXfSuAiBi5Jn49PrNHo7veeFIN2ABZxUSG
+	CmAIpRw6nEammgb+I4/4jsJmD5C2pa3f2xSBkQ=
+X-Sasl-enc: f4WSVUNy4Yoo9V3M+m4fPgSS0bWqoS3PIJ41N/WAafuZ 1467779688
+Received: from keelia (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 2D866F29FA;
+	Wed,  6 Jul 2016 00:34:45 -0400 (EDT)
+Message-ID: <1467779679.3344.19.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
 	<peter.maydell@linaro.org>, Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Thread-Topic: Odp.: [Qemu-devel] [PATCH 2/7] m25p80: add mx25l25635f chip
-Thread-Index: AQHR1e6c9tCcxjdIJk6LyVPiRPgd/KAIN91AgAAPzICAABxrj4AAByGAgAAD0zQ=
-Date: Mon, 4 Jul 2016 16:03:08 +0000
-Message-ID: <AM4PR0701MB21309D00FD9A06BFA997A1D9FE380@AM4PR0701MB2130.eurprd07.prod.outlook.com>
+Date: Wed, 06 Jul 2016 14:04:39 +0930
+In-Reply-To: <1467634738-28642-8-git-send-email-clg@kaod.org>
 References: <1467634738-28642-1-git-send-email-clg@kaod.org>
-	<1467634738-28642-3-git-send-email-clg@kaod.org>
-	<AM4PR0701MB2130DB6B6A3116443D7A1B7CFE380@AM4PR0701MB2130.eurprd07.prod.outlook.com>
-	<2cf9416b-25d6-c628-1a39-fd5faa345e5e@kaod.org>
-	<AM4PR0701MB213096F960474E3A0B462209FE380@AM4PR0701MB2130.eurprd07.prod.outlook.com>,
-	<37bf2fe0-4c2c-87d1-142b-e7bd6efd4746@kaod.org>
-In-Reply-To: <37bf2fe0-4c2c-87d1-142b-e7bd6efd4746@kaod.org>
-Accept-Language: pl-PL, en-US
-Content-Language: pl-PL
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=marcin.krzeminski@nokia.com; 
-x-originating-ip: [132.245.55.181]
-x-ms-office365-filtering-correlation-id: a8fc47de-e2a5-4251-2d97-08d3a424b115
-x-microsoft-exchange-diagnostics: 1; AM4PR0701MB2132;
-	6:UcGp0JF4O4/0yo7Fh+CYXBRCEA9AsONmdAiG26iZfa9/au5qdQDtVWSJ+9OxplhGy3tzZAxkga4Va3wFI1/CxFOEs/VG/J+dwtDHdDvYH1NQnuMG7WGaMTZRszHye4lTkKoUTJKPqEMQKUo2GTNKMVAR9bd88yYVY9O2YO1GQASEQoIyHnRxUCl5ef7CiMhENu8eOKP6kZRmJbFRMNuoKq2DPqfivRH4EVWzalZwl7wAGlmufIuie2qg9s1hREzPulfg1YHkxL1AcSWFUB4tvOuZ5YdQbhZA8PVdVAOfVE8=;
-	5:kdKZF/RwyDAdNTo00J5S6586EuS0jCjBqyvvZVV5Pzo+z93wQWB0bHaF3i1uBV0GBf9Rmww3iz52r+2BdLYkzFT0y3ac/18IUFxRGNL6nQoa7fJUmuzlbZPXzyjf0p3c7Y/oqcXaSftHzsFOoD8i1Q==;
-	24:cO2j3WkDlzqYjLqfm1X2UWuKFd8qqzXYUD63u9G70DYg6TuruEVsW4ROXDhH/05pIRbdpqsDv2LHIc+9AwT7Uj62vP+yod8d+qCJ9LGfg0k=;
-	7:FhGh4Q2lj60dgeMSCKtUSwEhyS+R/O//lzPvR3v5LJlq5qkgovmMqHSX+ECQ63NyaVMlXzwgOssdPiR/U3rRuTYBaggL7PpD+WzswOcOwPf8fWt11i01JIOWL7HO2XtYdJWhzZyIQ21RSL2RE3IXK+HQnq9uVTYD8J40B4JMeI7upQdLSeCikrB3Rwrlpq71iZizEHBXfB8SkB9674j0SLHNOtdtE7+KYDpt/PolkPhb1N2A1DRklVH92DVaN5d1
-x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:AM4PR0701MB2132;
-x-microsoft-antispam-prvs: <AM4PR0701MB21324861C7C3515536809B35FE380@AM4PR0701MB2132.eurprd07.prod.outlook.com>
-x-exchange-antispam-report-test: UriScan:(166708455590820);
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(5005006)(8121501046)(10201501046)(3002001);
-	SRVR:AM4PR0701MB2132; BCL:0; PCL:0; RULEID:;
-	SRVR:AM4PR0701MB2132; 
-x-forefront-prvs: 0993689CD1
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(6009001)(7916002)(199003)(377454003)(24454002)(13464003)(189002)(586003)(105586002)(106356001)(106116001)(93886004)(97736004)(122556002)(11100500001)(10400500002)(3280700002)(3846002)(5002640100001)(50986999)(102836003)(229853001)(8936002)(6116002)(92566002)(3660700001)(9686002)(54356999)(19580405001)(87936001)(76576001)(7846002)(81166006)(81156014)(305945005)(15975445007)(76176999)(86362001)(77096005)(2950100001)(189998001)(19580395003)(2900100001)(2906002)(33656002)(101416001)(68736007)(5001770100001)(8676002)(7696003)(4326007)(7736002)(66066001)(5003600100003)(74316002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:AM4PR0701MB2132;
-	H:AM4PR0701MB2130.eurprd07.prod.outlook.com; FPR:; SPF:None;
-	PTR:InfoNoRecords; A:1; MX:1; LANG:en; 
-received-spf: None (protection.outlook.com: nokia.com does not designate
-	permitted sender hosts)
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="iso-8859-2"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-OriginatorOrg: nokia.com
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Jul 2016 16:03:08.4243 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 5d471751-9675-428d-917b-70f44f9630b0
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM4PR0701MB2132
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.1.109
-Subject: [Qemu-arm] Odp.: Odp.: [Qemu-devel] [PATCH 2/7] m25p80: add
- mx25l25635f chip
+	<1467634738-28642-8-git-send-email-clg@kaod.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-OXlQvAnAY9y8Axeqwzqy"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 66.111.4.221
+Subject: Re: [Qemu-arm] [PATCH 7/7] ast2400: add a memory controller device
+ model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,171 +79,390 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"mar.krzeminski@gmail.com" <mar.krzeminski@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mar.krzeminski@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L9C5pvAGjXeD
+X-TUID: EVMeEuTofsSZ
 
 
+--=-OXlQvAnAY9y8Axeqwzqy
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-W dniu 04.07.2016 o 17:48, C=E9dric Le Goater pisze:
-> On 07/04/2016 05:23 PM, Krzeminski, Marcin (Nokia - PL/Wroclaw) wrote:
->>
->>
->> W dniu 04.07.2016 o 15:41, C=E9dric Le Goater pisze:
->>> On 07/04/2016 02:57 PM, Krzeminski, Marcin (Nokia - PL/Wroclaw) wrote:
->>>>
->>>>
->>>>> -----Original Message-----
->>>>> From: Qemu-devel [mailto:qemu-devel-
->>>>> bounces+marcin.krzeminski=3Dnokia.com@nongnu.org] On Behalf Of C=E9dr=
-ic Le
->>>>> Goater
->>>>> Sent: Monday, July 04, 2016 2:19 PM
->>>>> To: Peter Maydell <peter.maydell@linaro.org>; Peter Crosthwaite
->>>>> <crosthwaite.peter@gmail.com>
->>>>> Cc: Andrew Jeffery <andrew@aj.id.au>; qemu-arm@nongnu.org; qemu-
->>>>> devel@nongnu.org; mar.krzeminski@gmail.com; C=E9dric Le Goater
->>>>> <clg@kaod.org>
->>>>> Subject: [Qemu-devel] [PATCH 2/7] m25p80: add mx25l25635f chip
->>>>>
->>>>> The Macronix chip mx25l25635f used on some OpenPower boxes is very
->>>>> similar to the mx25l25635e. They share the same JEDEC identifier but =
-the
->>>>> WRSR instruction requires 2 bytes in the mx25l25635f case.
->>>>>
->>>>> To prevent some warnings on guests, let's introduce a new chip identi=
-fying
->>>>> JEDEC 0xc22019 as a MX25L25635F chip.
->>>>>
->>>> Hello,
->>>>
->>>> Adding fake JEDEC id is not good idea at all, we should somehow handle=
- this in the code.
->>>
->>> It is not a fake JEDEC id. It is a real one from the datasheet :)
->>>
->>> mx25l25635f and mx25l25635e share the same 0xc22019 JEDEC.=20
->> Sorry, I misunderstand and haven't check in data-sheet :)
->
-> np.
->
->
->>>>> Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
->>>>> ---
->>>>>  hw/block/m25p80.c | 4 ++++
->>>>>  1 file changed, 4 insertions(+)
->>>>>
->>>>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c index
->>>>> d9b27939dde6..aa964280beab 100644
->>>>> --- a/hw/block/m25p80.c
->>>>> +++ b/hw/block/m25p80.c
->>>>> @@ -199,6 +199,7 @@ static const FlashPartInfo known_devices[] =3D {
->>>>>      { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
->>>>>      { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
->>>>>      { INFO("mx25l25635e", 0xc22019,      0,  64 << 10, 512, 0) },
->>>>> +    { INFO("mx25l25635f", 0xc22019,      0,  64 << 10, 512, 0) },
->>>>>      { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
->>>>>      { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K |=
- ER_32K) },
->>>>>      { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K |=
- ER_32K) },
->>>>> @@ -991,6 +992,9 @@ static void decode_new_cmd(Flash *s, uint32_t
->>>>> value)
->>>>>              s->pos =3D 0;
->>>>>              s->len =3D 0;
->>>>>              s->state =3D STATE_COLLECTING_DATA;
->>>>> +            if (!strcmp(s->pi->part_name, "mx25l25635f")) {
->>>>> +                s->needed_bytes =3D 2;
->>>>> +            }
->>>>>          }
->>>>>          break;
->>>> Is it based on current master?
->>>
->>> You are right. The patch has bit rotted, it still applies on qemu's HEA=
-D
->>> but at the wrong place :/ But, I don't think it is needed anymore, see=
-=20
->>> below.
->>>
->>>> In my last series (and current master) this case should be handled by =
-this code:
->>>>             case MAN_MACRONIX:
->>>>                 s->needed_bytes =3D 2;
->>>>                 s->state =3D STATE_COLLECTING_VAR_LEN_DATA;
->>>>                 break;
->>>> I do not know what quest you are using, but linux mainline (at least 4=
-.4.0) is=20
->>>> sending only one byte, in WRSR so this will not work.
->>>
->>> It is not Linux, it is a user space tool :
->>>
->>> 	https://github.com/open-power/skiboot/blob/master/hw/ast-bmc/ast-sf-ct=
-rl.c#L465
->> I meant spi-nor framework in Linux, if you are using different tool it i=
-s different story,
->> but should work for both (if real hw works for both...).
->
-> Yes. =20
->
-> Linux still does not know about the mx25l25635f and it is behaving=20
-> fine using the mx25l25635e definition. We should send a patch for=20
-> it I guess. I have the HW, I will look into that when I have some=20
-> time.
-Linux detects flash type by JEDEC code, so if the JEDEC is the same
-it will be hard to patch this. They are working on detection by JEDEC216,
-and then probably it will be possible to properly identify the flash.
->
->>>> Could you rebase to master and check if it will boot without your this=
- change?
->>>
->>> So the current code is fine for the mx25l25635f, which takes 2 bytes=20
->>> for the WRSR. But, now, how would the m25p80 object behave with the=20
->>> mx25l25635e ? Only one byte will be written.
->>
->> It should behave properly (as in my case spi-nor framework in Linux writ=
-es only
->> one byte for Macronix in WSRS). COLLECTING_VAR_LEN_DATA state apply chan=
-ges
->> (call complete_collecting_data) when CS go high. If it takes one byte in=
-stead of two,
->> one byte will be written to SR.
->
-> ah yes, this is true. so we are fine on that side.
->
->>> Should we deprecate mx25l25635e ? It is not used in qemu.
->>
->> That is good question, I do not see any flash with same JEDEC in the cod=
-e, so
->> this one could be the first if you leave both of them.
->> You mentioned about warnings when you configure Qemu to use mx25l25635e,
->> instead of mx25l25635f, in my it should not matter, what are those warni=
-ngs?
->
-> Before your patchset, we could get these:
->
->         qemu_log_mask(LOG_GUEST_ERROR, "M25P80: Unknown cmd %x\n", value)=
+On Mon, 2016-07-04 at 14:18 +0200, C=C3=A9dric Le Goater wrote:
+> The uboot in the previous release of the SDK was using a hardcoded
+> value for memory size. This is not true anymore, the value is now
+> retrieved from the memory controller.
+>=20
+> Below is a model for this device, only supporting unlock and
+> configuration. Without it, we endup running a guest with 64MB, which
+> is a bit low for Linux nowdays.
+>=20
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+> =C2=A0hw/arm/ast2400.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0|=C2=A0=C2=A013 +++++
+> =C2=A0hw/misc/Makefile.objs=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0|=C2=A0=C2=A0=C2=A02 +-
+> =C2=A0hw/misc/aspeed_sdmc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0| 126 ++++++++++++++++++++++++++++++++++++++++++
+> =C2=A0include/hw/arm/ast2400.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0|=C2=A0=
+=C2=A0=C2=A01 +
+> =C2=A0include/hw/misc/aspeed_sdmc.h |=C2=A0=C2=A049 ++++++++++++++++
+> =C2=A05 files changed, 190 insertions(+), 1 deletion(-)
+> =C2=A0create mode 100644 hw/misc/aspeed_sdmc.c
+> =C2=A0create mode 100644 include/hw/misc/aspeed_sdmc.h
+>=20
+> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
+> index 9c30b45f87a9..fb0156ba8bc1 100644
+> --- a/hw/arm/ast2400.c
+> +++ b/hw/arm/ast2400.c
+> @@ -27,6 +27,7 @@
+> =C2=A0#define AST2400_FMC_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A00X1E620000
+> =C2=A0#define AST2400_SPI_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A00X1E630000
+> =C2=A0#define AST2400_VIC_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A00x1E6C0000
+> +#define AST2400_SDMC_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A00x1E6E0000
+> =C2=A0#define AST2400_SCU_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A00x1E6E2000
+> =C2=A0#define AST2400_TIMER_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A00x1E782000
+> =C2=A0#define AST2400_I2C_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A00x1E78A000
+> @@ -99,6 +100,10 @@ static void ast2400_init(Object *obj)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_initialize(&s->spi, sizeof(s->spi), =
+"aspeed.smc.spi");
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_child(obj, "spi", OBJEC=
+T(&s->spi), NULL);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qdev_set_parent_bus(DEVICE(&s->spi), sysbus=
+_get_default());
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0object_initialize(&s->sdmc, sizeof(s->sdmc), TYP=
+E_ASPEED_SDMC);
+> +=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_child(obj, "sdmc", OBJECT(&s=
+->sdmc), NULL);
+> +=C2=A0=C2=A0=C2=A0=C2=A0qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get=
+_default());
+> =C2=A0}
+> =C2=A0
+> =C2=A0static void ast2400_realize(DeviceState *dev, Error **errp)
+> @@ -184,6 +189,14 @@ static void ast2400_realize(DeviceState *dev, Error =
+**errp)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0,=
+ AST2400_SPI_BASE);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1,=
+ AST2400_SPI_FLASH_BASE);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0/* SDMC - SDRAM Memory Controller */
+> +=C2=A0=C2=A0=C2=A0=C2=A0object_property_set_bool(OBJECT(&s->sdmc), true,=
+ "realized", &err);
+> +=C2=A0=C2=A0=C2=A0=C2=A0if (err) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0error_propagate(errp, er=
+r);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return;
+> +=C2=A0=C2=A0=C2=A0=C2=A0}
+> +=C2=A0=C2=A0=C2=A0=C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, AST=
+2400_SDMC_BASE);
+> =C2=A0}
+> =C2=A0
+> =C2=A0static void ast2400_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 54020aa06c00..d488b748c789 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -52,4 +52,4 @@ obj-$(CONFIG_PVPANIC) +=3D pvpanic.o
+> =C2=A0obj-$(CONFIG_EDU) +=3D edu.o
+> =C2=A0obj-$(CONFIG_HYPERV_TESTDEV) +=3D hyperv_testdev.o
+> =C2=A0obj-$(CONFIG_AUX) +=3D aux.o
+> -obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o
+> +obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> new file mode 100644
+> index 000000000000..52b6393b3f0b
+> --- /dev/null
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -0,0 +1,126 @@
+> +/*
+> + * ASPEED SDRAM Memory Controller
+> + *
+> + * Copyright 2016 IBM Corp.
+> + *
+> + * This code is licensed under the GPL version 2 or later.=C2=A0=C2=A0Se=
+e
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/aspeed_sdmc.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+
+We need to #include "qemu/log.h" here to avoid build failures when
+alternative tracing backends are enabled. I have forgotten it a couple
+of times recently.
+
+> +
+> +/* Protection Key Register */
+> +#define R_PROT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0(0x00 / 4)
+> +#define=C2=A0=C2=A0=C2=A0PROT_KEY_UNLOCK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A00x=
+FC600309
+> +
+> +/* Configuration Register */
+> +#define R_CONF=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0(0x04 / 4)
+> +
+> +static uint64_t aspeed_sdmc_read(void *opaque, hwaddr addr, unsigned siz=
+e)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState *s =3D ASPEED_SDMC(opaque);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0addr >>=3D 2;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0if (addr >=3D ARRAY_SIZE(s->regs)) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_GUEST_=
+ERROR,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0"%s: Out-of-bou=
+nds read at offset 0x%" HWADDR_PRIx "\n",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0__func__, addr)=
 ;
->
-> you have solved that.=20
->
-> So I guess we could just add :=20
->
->  +    { INFO("mx25l25635f", 0xc22019,      0,  64 << 10, 512, 0) },
->
-> but as we don't have any errors without them, I will just drop=20
-> those oneliner patches.=20
-I think you should add this line, since this model is supported.
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return 0;
+> +=C2=A0=C2=A0=C2=A0=C2=A0}
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0return s->regs[addr];
+> +}
+> +
+> +static void aspeed_sdmc_write(void *opaque, hwaddr addr, uint64_t data,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0unsigned int size)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState *s =3D ASPEED_SDMC(opaque);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0addr >>=3D 2;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0if (addr >=3D ARRAY_SIZE(s->regs)) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_GUEST_=
+ERROR,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0"%s: Out-of-bou=
+nds write at offset 0x%" HWADDR_PRIx "\n",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0__func__, addr)=
+;
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return;
+> +=C2=A0=C2=A0=C2=A0=C2=A0}
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0if (addr !=3D R_PROT && s->regs[R_PROT] !=3D PRO=
+T_KEY_UNLOCK) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0qemu_log_mask(LOG_GUEST_=
+ERROR, "%s: SDMC is locked!\n", __func__);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return;
+> +=C2=A0=C2=A0=C2=A0=C2=A0}
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0s->regs[addr] =3D data;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_sdmc_ops =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0.read =3D aspeed_sdmc_read,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.write =3D aspeed_sdmc_write,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.endianness =3D DEVICE_LITTLE_ENDIAN,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.valid.min_access_size =3D 4,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.valid.max_access_size =3D 4,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.valid.unaligned =3D false,
+> +};
+> +
+> +static void aspeed_sdmc_reset(DeviceState *dev)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState *s =3D ASPEED_SDMC(dev);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0memset(s->regs, 0, sizeof(s->regs));
+> +=C2=A0=C2=A0=C2=A0=C2=A0s->regs[R_CONF] =3D s->config;
+> +}
+> +
+> +static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState *s =3D ASPEED_SDMC(dev);
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0memory_region_init_io(&s->iomem, OBJECT(s), &asp=
+eed_sdmc_ops, s,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0TYPE_ASPEED_SDMC, 0x1000);
+> +=C2=A0=C2=A0=C2=A0=C2=A0sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static const VMStateDescription vmstate_aspeed_sdmc =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0.name =3D "aspeed.sdmc",
+> +=C2=A0=C2=A0=C2=A0=C2=A0.version_id =3D 1,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.minimum_version_id =3D 1,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.fields =3D (VMStateField[]) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_UINT32_ARRAY(reg=
+s, AspeedSDMCState, ASPEED_SDMC_NR_REGS),
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0VMSTATE_END_OF_LIST()
+> +=C2=A0=C2=A0=C2=A0=C2=A0}
+> +};
+> +
+> +static Property aspeed_sdmc_properties[] =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_UINT32("configuration", AspeedSDMCSt=
+ate, config,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ASPEED_SD=
+MC_256MB),
 
-Thanks,
-Marcin
->
->
-> Thanks,
->
-> C.
->
+The datasheet's default value for configuration is 0x40, which
+configures a read-only, backwards-compatible 16-bit VGA mode bit.
+Should we also set this bit? Do we care?
+
+> +=C2=A0=C2=A0=C2=A0=C2=A0DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void aspeed_sdmc_class_init(ObjectClass *klass, void *data)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +=C2=A0=C2=A0=C2=A0=C2=A0dc->realize =3D aspeed_sdmc_realize;
+> +=C2=A0=C2=A0=C2=A0=C2=A0dc->reset =3D aspeed_sdmc_reset;
+> +=C2=A0=C2=A0=C2=A0=C2=A0dc->desc =3D "ASPEED SDRAM Memory Controller";
+> +=C2=A0=C2=A0=C2=A0=C2=A0dc->vmsd =3D &vmstate_aspeed_sdmc;
+> +=C2=A0=C2=A0=C2=A0=C2=A0dc->props =3D aspeed_sdmc_properties;
+> +}
+> +
+> +static const TypeInfo aspeed_sdmc_info =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0.name =3D TYPE_ASPEED_SDMC,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.parent =3D TYPE_SYS_BUS_DEVICE,
+> +=C2=A0=C2=A0=C2=A0=C2=A0.instance_size =3D sizeof(AspeedSDMCState),
+> +=C2=A0=C2=A0=C2=A0=C2=A0.class_init =3D aspeed_sdmc_class_init,
+> +};
+> +
+> +static void aspeed_sdmc_register_types(void)
+> +{
+> +=C2=A0=C2=A0=C2=A0=C2=A0type_register_static(&aspeed_sdmc_info);
+> +}
+> +
+> +type_init(aspeed_sdmc_register_types);
+> diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
+> index 7833bc716cd8..d549cceb121c 100644
+> --- a/include/hw/arm/ast2400.h
+> +++ b/include/hw/arm/ast2400.h
+> @@ -32,6 +32,7 @@ typedef struct AST2400State {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSCUState scu;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSMCState smc;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSMCState spi;
+> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState sdmc;
+
+You need to #include "hw/misc/aspeed_sdmc.h" for the AspeedSDMCState
+type.
+
+> =C2=A0} AST2400State;
+> =C2=A0
+> =C2=A0#define TYPE_AST2400 "ast2400"
+> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.=
+h
+> new file mode 100644
+> index 000000000000..65fefebdb2cd
+> --- /dev/null
+> +++ b/include/hw/misc/aspeed_sdmc.h
+> @@ -0,0 +1,49 @@
+> +/*
+> + * ASPEED SDRAM Memory Controller
+> + *
+> + * Copyright 2016 IBM Corp.
+> + *
+> + * This code is licensed under the GPL version 2 or later.=C2=A0=C2=A0Se=
+e
+> + * the COPYING file in the top-level directory.
+> + */
+> +#ifndef ASPEED_SDMC_H
+> +#define ASPEED_SDMC_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_SDMC "aspeed.sdmc"
+> +#define ASPEED_SDMC(obj) OBJECT_CHECK(AspeedSDMCState, (obj), TYPE_ASPEE=
+D_SDMC)
+> +
+> +#define ASPEED_SDMC_NR_REGS (0x8 >> 2)
+> +
+> +typedef struct AspeedSDMCState {
+> +=C2=A0=C2=A0=C2=A0=C2=A0/*< private >*/
+> +=C2=A0=C2=A0=C2=A0=C2=A0SysBusDevice parent_obj;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0/*< public >*/
+> +=C2=A0=C2=A0=C2=A0=C2=A0MemoryRegion iomem;
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t regs[ASPEED_SDMC_NR_REGS];
+> +=C2=A0=C2=A0=C2=A0=C2=A0uint32_t config;
+> +
+> +} AspeedSDMCState;
+> +
+> +/*
+> + * For Aspeed AST2400 SOC
+> + */
+> +#define ASPEED_SDMC_64MB=C2=A0=C2=A0=C2=A0=C2=A00x0
+> +#define ASPEED_SDMC_128MB=C2=A0=C2=A0=C2=A00x1
+> +#define ASPEED_SDMC_256MB=C2=A0=C2=A0=C2=A00x2
+> +#define ASPEED_SDMC_512MB=C2=A0=C2=A0=C2=A00x3
+> +
+> +/*
+> + * For Aspeed AST2500 SOC and higher revision number
+> + */
+
+It might be worth noting somewhere in a comment that the AST2500
+datasheet explicitly states the DRAM controller for the AST2500 is not
+backwards compatible with the AST2400, but given the current
+implementation it doesn't matter. If we start caring about the values
+in any of the registers MCR10-MCR24, MCR34, MCR38, MCR54, MCR5C-MCR6C,
+MCR80-MCR8C, then we need to be careful, i.e. test DRAM Controller
+Hardware Version field in R_CONF (MCR04) to dispatch. That check needs
+care as well, as the version field is 4 bits but only 2 values are
+defined in the AST2500 datasheet.
+
+> +#define ASPEED_SDMC_NEW_VERSION=C2=A0=C2=A0(1 << 28)
+> +
+> +#define ASPEED_SDMC_NEW_128MB=C2=A0=C2=A0=C2=A0(0x0 | ASPEED_SDMC_NEW_VE=
+RSION)
+> +#define ASPEED_SDMC_NEW_256MB=C2=A0=C2=A0=C2=A0(0x1 | ASPEED_SDMC_NEW_VE=
+RSION)
+> +#define ASPEED_SDMC_NEW_512MB=C2=A0=C2=A0=C2=A0(0x2 | ASPEED_SDMC_NEW_VE=
+RSION)
+> +#define ASPEED_SDMC_NEW_1024MB=C2=A0=C2=A0(0x3 | ASPEED_SDMC_NEW_VERSION=
+)
+> +
+> +#endif /* ASPEED_SDMC_H */
+
+Cheers,
+
+Andrew
+--=-OXlQvAnAY9y8Axeqwzqy
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCgAGBQJXfIpfAAoJEJ0dnzgO5LT5vngP/icB2v8uCclnx3Z1BSOLwiq5
+teIaqZtL69kwxFo3rWTHlt+YaZtz8SDQmAVOPku519BgsbL3mDJrI/iqlkmHLuTy
+pJeeE7BcFsoKp3q+EB4hfsThFlA3rDrItJOgzt1hrdIpne8Ex8CmnphH074dxAnx
+8ASDthUk4JMiq5xLCNBXwnBhV8Utsc9I008BqHo4fP4TbAxUMN5SDFU7vQV2RSKL
+Wo3JfbK/r5fGpP6lWyXYH0zZnkmGfUsi8ibAwvwRtTiZLdJqctfxqgE8gLkAmLLt
+GB+q34FRH8m25BmQQxSJSHx6ozqLqn99H1VG41zgEGSFrEYtIjuO4DyP2N1qg8fV
+xeT6Q/Ybcz4Y7XsBrQtKmqYpHLvN+yUklEx38SabandZ5xrWYXYcJUljq8jn5+gd
+mSLBJmO55FnB2R2wfW4RP6wgE/C8DsFVJuNcFXO85rxRCoQLH1lvbwZ5GhjJRWBG
++aMhXQ2LfFLO+79tsPYKCNX3j+hIC5RA5mrZObwDEaDFcpwRClbd/yv8Wf5N67kA
+hkYSeUEUPLnsH0CA9hNLC3pLv7Rar8LccQmlgNc7CpnKL+mDP6GL7UDvAwRCzT94
+kZ/3EWi/3ChSXyrdsA4fL0uNxjaBLmimGwcZha5MKgtzDCzjTuWvxv563zUoZoyE
+2ZWgYNZiWfk3jkuR0oQv
+=83Px
+-----END PGP SIGNATURE-----
+
+--=-OXlQvAnAY9y8Axeqwzqy--
 

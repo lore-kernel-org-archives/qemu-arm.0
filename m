@@ -1,286 +1,386 @@
-Received: by 10.25.21.96 with SMTP id l93csp272770lfi;
-        Tue, 5 Jul 2016 05:25:30 -0700 (PDT)
-X-Received: by 10.200.41.163 with SMTP id 32mr27179113qts.101.1467721530384;
-        Tue, 05 Jul 2016 05:25:30 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.96 with SMTP id l93csp753337lfi;
+        Wed, 6 Jul 2016 02:46:43 -0700 (PDT)
+X-Received: by 10.55.156.7 with SMTP id f7mr29352662qke.123.1467798403716;
+        Wed, 06 Jul 2016 02:46:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u189si2047562qkd.80.2016.07.05.05.25.30
+        by mx.google.com with ESMTPS id z21si1712317qta.67.2016.07.06.02.46.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Jul 2016 05:25:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 06 Jul 2016 02:46:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54635 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60577 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bKPPt-0002TR-Pn
-	for alex.bennee@linaro.org; Tue, 05 Jul 2016 08:25:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35856)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bKjPn-0000Ye-0w
+	for alex.bennee@linaro.org; Wed, 06 Jul 2016 05:46:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58355)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bKPOp-0001wF-5P
-	for qemu-devel@nongnu.org; Tue, 05 Jul 2016 08:24:24 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bKjPe-0000Kg-6J
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bKPOm-0006AM-EY
-	for qemu-devel@nongnu.org; Tue, 05 Jul 2016 08:24:22 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34025)
+	(envelope-from <eric.auger@redhat.com>) id 1bKjPb-0006zk-8O
+	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 05:46:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52667)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1bKPOm-0006AB-7B; Tue, 05 Jul 2016 08:24:20 -0400
-Received: by mail-oi0-x244.google.com with SMTP id s17so27317075oih.1;
-	Tue, 05 Jul 2016 05:24:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ei4P52ktSGytKxzftl6ZMQEeIrECR/7SEVfrW99jQ/M=;
-	b=i6fDGt9rzv5u3TRNUAg2hGFmsddl4SNC1rzM8rKumXWDuSdpnPuB8halV8LyKnhotp
-	JMzlmY5uqJsbz3dDzBWOuzbERqhw52UmizJTM9QD9/FomEoqZ7By1qovAHxVBTRb6VgW
-	W9Yax+bGj9/O6Tc/VBQwGtMTUqBiFsgQKGT/YDB6WAwv7tMe5FUzJE93uPHE7DxTO1QQ
-	3jJI3UR1meZ0zYSxLrz5SLwUvMRghrilEq88sah6zgX/TfpmLBc9CMpbRH/rJQoNKh7S
-	KU+bmOFFhOmT37peB+Z/dGozIIC2bvlHK39NniWt3ZQ6g3SUcZ9ayR3ER72liNi/DCxc
-	wHOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ei4P52ktSGytKxzftl6ZMQEeIrECR/7SEVfrW99jQ/M=;
-	b=Mq6TEMN73MDRNX9cT2UhXU52SYr3GST74QzNln6+FJxuWEikO07wArCc96L62UIOq/
-	jZVTZrCjtAAuCBmDSmzIFrYoefoKCab0QYCLmQJL6xPIX8Z3791HH/Qjo2edVcg6C7lv
-	5xgpEFOSRlb7BAXCNnN5bQp8meTyB6C3I3MSGUbZhmFRMJ5cE52RlhAGSUedRhY8FdrZ
-	+2fB77ShE4d9PEr/4hYWW2stMB4TX8SXDHZKegxlhnIsjxrbJdLpBCtMT6ViYd1GGyQi
-	4Gmdyyv4bKsYOUAK+nzUI9Z/kli3dmRGzGjx/s9n1xF5h7Tbvs4yDt0d8CSe9J3yNgmZ
-	lHag==
-X-Gm-Message-State: ALyK8tJ9/i9+eik7JqPIzN/lkEUYAl+E4G8eAU8dUq/FuE+qouqK8P3bWdaCfYvIJDIRNmOW1JHDh0K5uzoPfg==
-X-Received: by 10.202.218.215 with SMTP id r206mr9580198oig.55.1467721459383; 
-	Tue, 05 Jul 2016 05:24:19 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.157.56.7 with HTTP; Tue, 5 Jul 2016 05:24:18 -0700 (PDT)
-In-Reply-To: <de1ccdbf-59e9-bece-923b-f83ddc02154a@twiddle.net>
-References: <1467190029-694-1-git-send-email-vijayak@cavium.com>
-	<1467190029-694-2-git-send-email-vijayak@cavium.com>
-	<CAFEAcA-Ro3tN-4aGvivH864o0Sk3+FY=Z0W8=_3yooxk5+x=4A@mail.gmail.com>
-	<de1ccdbf-59e9-bece-923b-f83ddc02154a@twiddle.net>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Tue, 5 Jul 2016 17:54:18 +0530
-Message-ID: <CALicx6uJ=nK0-EKqi2j4_wQvikf2vRWV+Td1Ke5C6ysrv7ombA@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <eric.auger@redhat.com>)
+	id 1bKjPa-0006zN-W3; Wed, 06 Jul 2016 05:46:31 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6B6DB3F724;
+	Wed,  6 Jul 2016 09:46:30 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn1-6-81.ams2.redhat.com
+	[10.36.6.81])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u669kPEG013861; Wed, 6 Jul 2016 05:46:28 -0400
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
+Date: Wed,  6 Jul 2016 11:45:59 +0200
+Message-Id: <1467798364-9049-2-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1467798364-9049-1-git-send-email-eric.auger@redhat.com>
+References: <1467798364-9049-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 06 Jul 2016 09:46:30 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-devel] [PATCH v3 1/1] target-arm: Use Neon for zero
- checking
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v4 1/6] hw/intc/arm_gicv3_its: Implement ITS base
+ class
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"prasun.kapoor" <Prasun.Kapoor@cavium.com>, Suresh <ksuresh@cavium.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Vijay <vijayak@cavium.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kU0ljpqKHs9u
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: diana.craciun@freescale.com, shlomopongratz@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wFfTNg8BIMCJ
 
-On Sat, Jul 2, 2016 at 3:37 AM, Richard Henderson <rth@twiddle.net> wrote:
-> On 06/30/2016 06:45 AM, Peter Maydell wrote:
->>
->> On 29 June 2016 at 09:47,  <vijayak@cavium.com> wrote:
->>>
->>> From: Vijay <vijayak@cavium.com>
->>>
->>> Use Neon instructions to perform zero checking of
->>> buffer. This is helps in reducing total migration time.
->>
->>
->>> diff --git a/util/cutils.c b/util/cutils.c
->>> index 5830a68..4779403 100644
->>> --- a/util/cutils.c
->>> +++ b/util/cutils.c
->>> @@ -184,6 +184,13 @@ int qemu_fdatasync(int fd)
->>>  #define SPLAT(p)       _mm_set1_epi8(*(p))
->>>  #define ALL_EQ(v1, v2) (_mm_movemask_epi8(_mm_cmpeq_epi8(v1, v2)) ==
->>> 0xFFFF)
->>>  #define VEC_OR(v1, v2) (_mm_or_si128(v1, v2))
->>> +#elif __aarch64__
->>> +#include "arm_neon.h"
->>> +#define VECTYPE        uint64x2_t
->>> +#define ALL_EQ(v1, v2) \
->>> +        ((vgetq_lane_u64(v1, 0) == vgetq_lane_u64(v2, 0)) && \
->>> +         (vgetq_lane_u64(v1, 1) == vgetq_lane_u64(v2, 1)))
->>> +#define VEC_OR(v1, v2) ((v1) | (v2))
->>
->>
->> Should be '#elif defined(__aarch64__)'. I have made this
->> tweak and put this patch in target-arm.next.
->
->
-> Consider
->
-> #define VECTYPE        uint32x4_t
-> #define ALL_EQ(v1, v2) (vmaxvq_u32((v1) ^ (v2)) == 0)
->
->
-> which compiles down to
->
->   1c:   6e211c00        eor     v0.16b, v0.16b, v1.16b
->   20:   6eb0a800        umaxv   s0, v0.4s
->   24:   1e260000        fmov    w0, s0
->   28:   6b1f001f        cmp     w0, wzr
->   2c:   1a9f17e0        cset    w0, eq
->   30:   d65f03c0        ret
+From: Pavel Fedin <p.fedin@samsung.com>
 
-For me this code compiles as below and migration time is ~100ms more.
+This is the basic skeleton for both KVM and software-emulated ITS.
+Since we already prepare status structure, we also introduce complete
+VMState description. But, because we currently have no migratable
+implementations, we also set unmigratable flag.
 
-See below 3 trails of migration time
+Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-  7039cc:       6eb0a800        umaxv   s0, v0.4s
-  7039d0:       0e043c02        mov     w2, v0.s[0]
-  7039d4:       350000c2        cbnz    w2, 7039ec <f0+0xf4>
-  7039d8:       91002084        add     x4, x4, #0x8
-  7039dc:       91020063        add     x3, x3, #0x80
-  7039e0:       eb01009f        cmp     x4, x1
+---
 
-(qemu) info migrate
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 3070 milliseconds
-downtime: 55 milliseconds
-setup: 4 milliseconds
-transferred ram: 300637 kbytes
-throughput: 802.49 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2062834 pages
-skipped: 0 pages
-normal: 70489 pages
-normal bytes: 281956 kbytes
-dirty sync count: 3
+v3 -> v4:
+- fix compilation error
+- msi_supported -> msi_nonbroken
+- streamid -> requester_id
+- use PRIx64
+- read ops uses _with_attrs form
+- 16/32b write access allowed to GITS_TRANSLATER
+- move its_class_name in kvm_arm.h and remove #ifdef TARGET_AARCH64
+- add new kvm device dev_fd field
+- add new gits_translater_gpa field in GICv3ITSState
+---
+ hw/intc/Makefile.objs                  |   1 +
+ hw/intc/arm_gicv3_its_common.c         | 155 +++++++++++++++++++++++++++++++++
+ include/hw/intc/arm_gicv3_its_common.h |  75 ++++++++++++++++
+ target-arm/kvm_arm.h                   |  19 ++++
+ 4 files changed, 250 insertions(+)
+ create mode 100644 hw/intc/arm_gicv3_its_common.c
+ create mode 100644 include/hw/intc/arm_gicv3_its_common.h
 
-(qemu) info migrate
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 3067 milliseconds
-downtime: 47 milliseconds
-setup: 5 milliseconds
-transferred ram: 290277 kbytes
-throughput: 775.61 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2064185 pages
-skipped: 0 pages
-normal: 67901 pages
-normal bytes: 271604 kbytes
-dirty sync count: 3
-(qemu)
+diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+index 530df2e..2f04792 100644
+--- a/hw/intc/Makefile.objs
++++ b/hw/intc/Makefile.objs
+@@ -16,6 +16,7 @@ common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_common.o
+ common-obj-$(CONFIG_ARM_GIC) += arm_gicv3.o
+ common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_dist.o
+ common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_redist.o
++common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_its_common.o
+ common-obj-$(CONFIG_OPENPIC) += openpic.o
+ 
+ obj-$(CONFIG_APIC) += apic.o apic_common.o
+diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+new file mode 100644
+index 0000000..346e37d
+--- /dev/null
++++ b/hw/intc/arm_gicv3_its_common.c
+@@ -0,0 +1,155 @@
++/*
++ * ITS base class for a GICv3-based system
++ *
++ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
++ * Written by Pavel Fedin
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/pci/msi.h"
++#include "hw/intc/arm_gicv3_its_common.h"
++#include "qemu/log.h"
++
++static void gicv3_its_pre_save(void *opaque)
++{
++    GICv3ITSState *s = (GICv3ITSState *)opaque;
++    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
++
++    if (c->pre_save) {
++        c->pre_save(s);
++    }
++}
++
++static int gicv3_its_post_load(void *opaque, int version_id)
++{
++    GICv3ITSState *s = (GICv3ITSState *)opaque;
++    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
++
++    if (c->post_load) {
++        c->post_load(s);
++    }
++    return 0;
++}
++
++static const VMStateDescription vmstate_its = {
++    .name = "arm_gicv3_its",
++    .pre_save = gicv3_its_pre_save,
++    .post_load = gicv3_its_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(ctlr, GICv3ITSState),
++        VMSTATE_UINT64(cbaser, GICv3ITSState),
++        VMSTATE_UINT64(cwriter, GICv3ITSState),
++        VMSTATE_UINT64(creadr, GICv3ITSState),
++        VMSTATE_UINT64_ARRAY(baser, GICv3ITSState, 8),
++        VMSTATE_END_OF_LIST()
++    },
++    .unmigratable = true,
++};
++
++static MemTxResult gicv3_its_trans_read(void *opaque, hwaddr offset,
++                                        uint64_t *data, unsigned size,
++                                        MemTxAttrs attrs)
++{
++    qemu_log_mask(LOG_GUEST_ERROR, "ITS read at offset 0x%"PRIx64"\n", offset);
++    return MEMTX_ERROR;
++}
++
++static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
++                                         uint64_t value, unsigned size,
++                                         MemTxAttrs attrs)
++{
++    if (offset == 0x0040 && ((size == 2) || (size == 4))) {
++        GICv3ITSState *s = ARM_GICV3_ITS_COMMON(opaque);
++        GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
++        int ret = c->send_msi(s, le64_to_cpu(value), attrs.requester_id);
++
++        if (ret) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "ITS: Error sending MSI: %s\n", strerror(-ret));
++            return MEMTX_DECODE_ERROR;
++        }
++
++        return MEMTX_OK;
++    } else {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "ITS write at bad offset 0x%jX\n", offset);
++        return MEMTX_DECODE_ERROR;
++    }
++}
++
++static const MemoryRegionOps gicv3_its_trans_ops = {
++    .read_with_attrs = gicv3_its_trans_read,
++    .write_with_attrs = gicv3_its_trans_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(s);
++
++    memory_region_init_io(&s->iomem_its_cntrl, OBJECT(s), ops, s,
++                          "control", ITS_CONTROL_SIZE);
++    memory_region_init_io(&s->iomem_its, OBJECT(s), &gicv3_its_trans_ops, s,
++                          "translation", ITS_TRANS_SIZE);
++
++    /* Our two regions are always adjacent, therefore we now combine them
++     * into a single one in order to make our users' life easier.
++     */
++    memory_region_init(&s->iomem_main, OBJECT(s), "gicv3_its", ITS_SIZE);
++    memory_region_add_subregion(&s->iomem_main, 0, &s->iomem_its_cntrl);
++    memory_region_add_subregion(&s->iomem_main, ITS_CONTROL_SIZE,
++                                &s->iomem_its);
++    sysbus_init_mmio(sbd, &s->iomem_main);
++
++    msi_nonbroken = true;
++}
++
++static void gicv3_its_common_reset(DeviceState *dev)
++{
++    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
++
++    s->ctlr = 0;
++    s->cbaser = 0;
++    s->cwriter = 0;
++    s->creadr = 0;
++    memset(&s->baser, 0, sizeof(s->baser));
++
++    gicv3_its_post_load(s, 0);
++}
++
++static void gicv3_its_common_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = gicv3_its_common_reset;
++    dc->vmsd = &vmstate_its;
++}
++
++static const TypeInfo gicv3_its_common_info = {
++    .name = TYPE_ARM_GICV3_ITS_COMMON,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(GICv3ITSState),
++    .class_size = sizeof(GICv3ITSCommonClass),
++    .class_init = gicv3_its_common_class_init,
++    .abstract = true,
++};
++
++static void gicv3_its_common_register_types(void)
++{
++    type_register_static(&gicv3_its_common_info);
++}
++
++type_init(gicv3_its_common_register_types)
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+new file mode 100644
+index 0000000..b590f90
+--- /dev/null
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -0,0 +1,75 @@
++/*
++ * ITS support for ARM GICv3
++ *
++ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
++ * Written by Pavel Fedin
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef QEMU_ARM_GICV3_ITS_COMMON_H
++#define QEMU_ARM_GICV3_ITS_COMMON_H
++
++#include "hw/sysbus.h"
++#include "hw/intc/arm_gicv3_common.h"
++
++#define ITS_CONTROL_SIZE 0x10000
++#define ITS_TRANS_SIZE   0x10000
++#define ITS_SIZE         (ITS_CONTROL_SIZE + ITS_TRANS_SIZE)
++
++struct GICv3ITSState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem_main;
++    MemoryRegion iomem_its_cntrl;
++    MemoryRegion iomem_its;
++
++    GICv3State *gicv3;
++
++    int dev_fd; /* kvm device fd if backed by kvm vgic support */
++    uint64_t gits_translater_gpa;
++
++    /* Registers */
++    uint32_t ctlr;
++    uint64_t cbaser;
++    uint64_t cwriter;
++    uint64_t creadr;
++    uint64_t baser[8];
++};
++
++typedef struct GICv3ITSState GICv3ITSState;
++
++void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops);
++
++#define TYPE_ARM_GICV3_ITS_COMMON "arm-gicv3-its-common"
++#define ARM_GICV3_ITS_COMMON(obj) \
++     OBJECT_CHECK(GICv3ITSState, (obj), TYPE_ARM_GICV3_ITS_COMMON)
++#define ARM_GICV3_ITS_COMMON_CLASS(klass) \
++     OBJECT_CLASS_CHECK(GICv3ITSCommonClass, (klass), TYPE_ARM_GICV3_ITS_COMMON)
++#define ARM_GICV3_ITS_COMMON_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(GICv3ITSCommonClass, (obj), TYPE_ARM_GICV3_ITS_COMMON)
++
++struct GICv3ITSCommonClass {
++    /*< private >*/
++    SysBusDeviceClass parent_class;
++    /*< public >*/
++
++    int (*send_msi)(GICv3ITSState *s, uint32_t data, uint16_t devid);
++    void (*pre_save)(GICv3ITSState *s);
++    void (*post_load)(GICv3ITSState *s);
++};
++
++typedef struct GICv3ITSCommonClass GICv3ITSCommonClass;
++
++#endif
+diff --git a/target-arm/kvm_arm.h b/target-arm/kvm_arm.h
+index a419368..544e404 100644
+--- a/target-arm/kvm_arm.h
++++ b/target-arm/kvm_arm.h
+@@ -255,4 +255,23 @@ struct kvm_guest_debug_arch;
+ 
+ void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
+ 
++/**
++ * its_class_name
++ *
++ * Return the ITS class name to use depending on whether KVM acceleration
++ * and KVM CAP_SIGNAL_MSI are supported
++ *
++ * Returns: class name to use or NULL
++ */
++static inline const char *its_class_name(void)
++{
++    if (kvm_irqchip_in_kernel()) {
++        /* KVM implementation requires this capability */
++        return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
++    } else {
++        /* Software emulation is not implemented yet */
++        return NULL;
++    }
++}
++
+ #endif
+-- 
+2.5.5
 
-(qemu) info migrate
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 3067 milliseconds
-downtime: 34 milliseconds
-setup: 5 milliseconds
-transferred ram: 294614 kbytes
-throughput: 787.19 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2063365 pages
-skipped: 0 pages
-normal: 68985 pages
-normal bytes: 275940 kbytes
-dirty sync count: 3
-
->
-> vs
->
->   34:   4e083c20        mov     x0, v1.d[0]
->   38:   4e083c01        mov     x1, v0.d[0]
->   3c:   eb00003f        cmp     x1, x0
->   40:   52800000        mov     w0, #0
->   44:   54000040        b.eq    4c <f0+0x18>
->   48:   d65f03c0        ret
->   4c:   4e183c20        mov     x0, v1.d[1]
->   50:   4e183c01        mov     x1, v0.d[1]
->   54:   eb00003f        cmp     x1, x0
->   58:   1a9f17e0        cset    w0, eq
->   5c:   d65f03c0        ret
->
-
-My patch compiles to below code and takes ~100ms less time
-
-#define VECTYPE        uint64x2_t
-#define ALL_EQ(v1, v2) \
-        ((vgetq_lane_u64(v1, 0) == vgetq_lane_u64(v2, 0)) && \
-         (vgetq_lane_u64(v1, 1) == vgetq_lane_u64(v2, 1)))
-
-  7039d0:       4e083c02        mov     x2, v0.d[0]
-  7039d4:       b5000102        cbnz    x2, 7039f4 <f0+0xfc>
-  7039d8:       4e183c02        mov     x2, v0.d[1]
-  7039dc:       b50000c2        cbnz    x2, 7039f4 <f0+0xfc>
-  7039e0:       91002084        add     x4, x4, #0x8
-  7039e4:       91020063        add     x3, x3, #0x80
-  7039e8:       eb04003f        cmp     x1, x4
-
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 2973 milliseconds
-downtime: 67 milliseconds
-setup: 5 milliseconds
-transferred ram: 293659 kbytes
-throughput: 809.45 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2062791 pages
-skipped: 0 pages
-normal: 68748 pages
-normal bytes: 274992 kbytes
-dirty sync count: 3
-(qemu)
-
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 2972 milliseconds
-downtime: 47 milliseconds
-setup: 5 milliseconds
-transferred ram: 295972 kbytes
-throughput: 816.10 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2062861 pages
-skipped: 0 pages
-normal: 69325 pages
-normal bytes: 277300 kbytes
-dirty sync count: 3
-(qemu)
-
-capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-zero-blocks: off compress: off events: off x-postcopy-ram: off
-Migration status: completed
-total time: 2982 milliseconds
-downtime: 40 milliseconds
-setup: 5 milliseconds
-transferred ram: 293386 kbytes
-throughput: 806.26 mbps
-remaining ram: 0 kbytes
-total ram: 8519872 kbytes
-duplicate: 2063199 pages
-skipped: 0 pages
-normal: 68679 pages
-normal bytes: 274716 kbytes
-dirty sync count: 4
-(qemu)
-
-Regards
-Vijay

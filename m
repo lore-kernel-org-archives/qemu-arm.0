@@ -1,86 +1,76 @@
-Received: by 10.25.21.96 with SMTP id l93csp977199lfi;
-        Wed, 6 Jul 2016 10:44:23 -0700 (PDT)
-X-Received: by 10.200.53.142 with SMTP id k14mr38661303qtb.63.1467827063786;
-        Wed, 06 Jul 2016 10:44:23 -0700 (PDT)
+Received: by 10.25.21.96 with SMTP id l93csp1343178lfi;
+        Thu, 7 Jul 2016 03:54:44 -0700 (PDT)
+X-Received: by 10.233.237.203 with SMTP id c194mr34225647qkg.126.1467888884036;
+        Thu, 07 Jul 2016 03:54:44 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f92si3038781qtb.112.2016.07.06.10.44.23
+        by mx.google.com with ESMTPS id i91si2202241qtd.125.2016.07.07.03.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jul 2016 10:44:23 -0700 (PDT)
+        Thu, 07 Jul 2016 03:54:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35055 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38852 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bKqs3-0001Ov-34
-	for alex.bennee@linaro.org; Wed, 06 Jul 2016 13:44:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49798)
+	id 1bL6x9-0004Nn-Ef
+	for alex.bennee@linaro.org; Thu, 07 Jul 2016 06:54:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1bKqrw-0001NJ-VL
-	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 13:44:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bL6w9-0003ll-IN
+	for qemu-arm@nongnu.org; Thu, 07 Jul 2016 06:53:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1bKqrs-0003El-OV
-	for qemu-arm@nongnu.org; Wed, 06 Jul 2016 13:44:16 -0400
-Received: from mail-lf0-x234.google.com ([2a00:1450:4010:c07::234]:33031)
+	(envelope-from <peter.maydell@linaro.org>) id 1bL6w8-0005Ax-La
+	for qemu-arm@nongnu.org; Thu, 07 Jul 2016 06:53:41 -0400
+Received: from mail-vk0-x231.google.com ([2607:f8b0:400c:c05::231]:35070)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>)
-	id 1bKqrs-0003EO-GM; Wed, 06 Jul 2016 13:44:12 -0400
-Received: by mail-lf0-x234.google.com with SMTP id f6so159440701lfg.0;
-	Wed, 06 Jul 2016 10:44:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TbQD3I0jokdZvgKlsf2Bl8yZnjWky9RSWt/53ek0Xgk=;
-	b=OX/rlVZaFBRh0u5Aa2rVq2eOMwgesfD+sviksj7lRt3Ck6wvhHaMFPxkHGfgtO5e5S
-	2vyiGTKn28gkqZa1IwLoicsx9AM2PlQsEY/LWOjaUhp03SOmyulrIN2L6jgDnYD29oiu
-	oz2BwpX1rd9L7qeoMW13+VlGmDxfaPNDNgixWnSoQGYfgTFReu6WIsQU9F1WM3+bPtLJ
-	D/m8NjjdHlSMnJHyC8b2Gt5Q9jZeo+KhdI9S6Gznduj7Er5vyyLLk6BSWuKu+nNN/3Yd
-	C7MlnLwXXCiv5tIaoPXEBqhUpe8ulFyDkuXW3SRm67uhL9+dPPRLIw55IFmVuJpKnBwl
-	nCig==
+	(envelope-from <peter.maydell@linaro.org>) id 1bL6w8-0005Ap-39
+	for qemu-arm@nongnu.org; Thu, 07 Jul 2016 06:53:40 -0400
+Received: by mail-vk0-x231.google.com with SMTP id v6so15086656vkb.2
+	for <qemu-arm@nongnu.org>; Thu, 07 Jul 2016 03:53:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=zMpwg9TvNB5nu4rogdsfC5yCinf3cRq8CKfkqSYcW+E=;
+	b=X1CkyAlI8HJHR3VdHG0e4EhlqXYPNlufZt/L1OVDUtucCc85esWSnpT0l7Xeav7X0E
+	yptv49wfdfhnkcbedZEO4XU3numYMbJI217oqc2ILTeFUTiJmS9tA05H3BHrzZATQaq/
+	9RnUWAWIJV+DQED7NSVSNgr5VB/O/gJawAxiI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TbQD3I0jokdZvgKlsf2Bl8yZnjWky9RSWt/53ek0Xgk=;
-	b=DyPzwdrsV2EP3FTNZfvGdx/zWJZ+rcDEnPtZ0UkVRRqOyHzyjMl8od38wfwcafL5Ft
-	pQquB3L0xx9eY1/J0tsF2jVftvpGkqMnH760KvvXndiv66Ll2e5yiJVFsDunF4y1Rd8I
-	1pGuJ7VG5jJnRO1IB3WwSUdzcar1A8MTDooDUGT2AfBDnuP/CUoNfFTdI+ksD/ZEmpM2
-	mUhYOpoqP9XGe2ZkemAyHIDm9obrDSwnpI/fVENB+y1s/bRWmOaye1bgYWndTrYqb53B
-	md57xVmph1dU7drakjCRw+IVs5QxiMz8XLlKDhPcuuGaIu4tozZNzwzrFSQ+h2tPdtwx
-	qv1g==
-X-Gm-Message-State: ALyK8tLuVFHa1TdLnYU5e38HVth502JgT6vmnZwh4EUN0jazpjTAOMlbGoBUc3qH4aNxUQ==
-X-Received: by 10.25.163.68 with SMTP id m65mr5411094lfe.144.1467827051360;
-	Wed, 06 Jul 2016 10:44:11 -0700 (PDT)
-Received: from [192.168.75.104] (31-178-123-4.dynamic.chello.pl.
-	[31.178.123.4])
-	by smtp.gmail.com with ESMTPSA id 25sm1783724lft.24.2016.07.06.10.44.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 06 Jul 2016 10:44:10 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <1467634738-28642-1-git-send-email-clg@kaod.org>
-	<1467634738-28642-5-git-send-email-clg@kaod.org>
-	<577AA388.3060100@gmail.com>
-	<daf14775-cbd6-3f5d-a384-e50b1dc7830b@kaod.org>
-	<f9b1192b-27ef-ae8f-947d-0a5151fbe26d@kaod.org>
-From: "mar.krzeminski" <mar.krzeminski@gmail.com>
-Message-ID: <577D4369.1050408@gmail.com>
-Date: Wed, 6 Jul 2016 19:44:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.8.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=zMpwg9TvNB5nu4rogdsfC5yCinf3cRq8CKfkqSYcW+E=;
+	b=K1sgldHitG45daSam1imSakpvGOdw5++RFtStHAJ9YPTjsoNtXdYDFIqm1gltU1B+H
+	5h71ccP+C5kD9ojisNHEcKsDx+Khd8UOUa8Bws8t6yKL7UoddGs61UtldI4vM4h9edRv
+	JzqcQDRoqEkVxgRVCF/mk7L9aDECojnE2jWJ4NWzrAVO7KC5gmcwbMI25ARMpRiwmJCm
+	OG+nBinfw+ZWcP9oeJcxhkPcm3z7H0MgfmRgDYZMHh9gPSBpo0hqnR+nOlosJf5XJnGg
+	W5kpdWvcg1fa+ECewbgdJM9Hq7XgWhachAaVD1pZHlFdswUu6OypnHZ7dSlmGrvLgr+5
+	SD8g==
+X-Gm-Message-State: ALyK8tJPUpv7DHa1vbvc2lMgsuIUYxC36GJOCbixBFTw95Hbe+4nN8mXvep5IBotikG/AMWqGOa58JAwaOqIMBjz
+X-Received: by 10.176.5.138 with SMTP id e10mr9810342uae.38.1467888819546;
+	Thu, 07 Jul 2016 03:53:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <f9b1192b-27ef-ae8f-947d-0a5151fbe26d@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Received: by 10.31.242.75 with HTTP; Thu, 7 Jul 2016 03:53:20 -0700 (PDT)
+In-Reply-To: <CAFEAcA8sv7tLrp84dnVV=gWqn21DFEqHCiAkDzVOWrCOux=Tug@mail.gmail.com>
+References: <20160625123521.16752-1-digetx@gmail.com>
+	<CAFEAcA8HFfuEHP-d8+H3DC06+RpjjXqQoCX81w2Yr+Txsn5fSw@mail.gmail.com>
+	<5814242b-8a8c-852a-51e8-268033b51200@gmail.com>
+	<CAFEAcA8788W2infUBneuUh4eNMLqPpdNzGXqKESgi+ZKpigdyg@mail.gmail.com>
+	<121dd825-9c64-b3b9-bca8-41bcb984ec0f@gmail.com>
+	<CAFEAcA-ZGbR2nz80n=QcxRTr=PN5EMQ-OrbncaAQnHMwmhPtZg@mail.gmail.com>
+	<340f08ea-ee9b-1284-7e7f-17d33b314885@gmail.com>
+	<CAFEAcA8sv7tLrp84dnVV=gWqn21DFEqHCiAkDzVOWrCOux=Tug@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Jul 2016 11:53:20 +0100
+Message-ID: <CAFEAcA_dbGMJm4OT62CKEQKaPf-sV818fwboy_GarXYeT973Ag@mail.gmail.com>
+To: Dmitry Osipenko <digetx@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::234
-Subject: Re: [Qemu-arm] [PATCH 4/7] m25p80: add a m25p80_set_rom_storage()
- routine
+X-Received-From: 2607:f8b0:400c:c05::231
+Subject: Re: [Qemu-arm] [PATCH v2] hw/ptimer: Don't wrap around counter for
+ expired timer that uses tick handler
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,74 +82,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0f4mnH+G/FxA
+X-TUID: NWLWu6rxZpKE
 
-
-
-W dniu 06.07.2016 o 18:30, Cédric Le Goater pisze:
-> On 07/04/2016 08:12 PM, Cédric Le Goater wrote:
->> On 07/04/2016 07:57 PM, mar.krzeminski wrote:
+On 4 July 2016 at 10:55, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 1 July 2016 at 18:49, Dmitry Osipenko <digetx@gmail.com> wrote:
+>> On 01.07.2016 19:36, Peter Maydell wrote:
+>>> On 30 June 2016 at 20:01, Dmitry Osipenko <digetx@gmail.com> wrote:
+>>>> On 30.06.2016 18:02, Peter Maydell wrote:
+>>>>> What I meant was: ptimer_get_count() is typically called to generate
+>>>>> a value to return from a register. That's a separate thing, conceptually,
+>>>>> from whether the device happens to also trigger an interrupt on timer
+>>>>> expiry by passing a bh to ptimer_init(). So it's very odd for a detail
+>>>>> of interrupt-on-timer-expiry (that there is a bottom half) to affect
+>>>>> the value returned when you read the timer count register.
 >>>
->>> W dniu 04.07.2016 o 14:18, Cédric Le Goater pisze:
->>>> Some SPI controllers, such as the Aspeed AST2400, have a mode in which
->>>> accesses to the flash content are no different than doing MMIOs. The
->>>> controller generates all the necessary commands to load (or store)
->>>> data in memory.
->>>>
->>>> To emulate such a behavior, we need to have access to the underlying
->>>> storage of the flash object. The purpose of the routine is to set the
->>>> storage of a preinitialized SPI flash object, which can then be used
->>>> by the object itself but also by a SPI controller to handled the
->>>> MMIOs.
->>> Hi,
+>>>> In order to handle wraparound correctly, software needs to track the moment of
+>>>> the wraparound - the interrupt. If software reads wrapped around counter value
+>>>> before IRQ triggered (ptimer expired), then it would assume that no wraparound
+>>>> happened and won't perform counter value correction, resulting in periodic
+>>>> counter "jumping" backwards.
 >>>
->>> I am not sure if this approach is correct. I can not find any datasheet
->>> to this SPI controller, but as you mentioned in first paragraph, controller
->>> generates all commands (probably ones are somehow configurable).
->> yes. see this patch :
+>>> That just says you need particular behaviour between counter reads
+>>> and IRQ triggers; it doesn't say that you need the behaviour to be
+>>> different if the ptimer code doesn't know about the IRQ trigger.
+>>>
 >>
->> 	http://lists.nongnu.org/archive/html/qemu-devel/2016-06/msg08229.html
->>
->> 	/* CEx Control Register */
->> 	#define R_CTRL0           (0x10 / 4)
->> 	#define   CTRL_CMD_SHIFT           16
->> 	#define   CTRL_CMD_MASK            0xff
->>
->>
->>> In this series you hack this behaviour and you do direct access to file.
->> It is true it is not very respectful of the m25p80 interface.
->>
->>> IMHO you should emulate sending such commands in SPI controller
->>> model.
->> I will give it a try. I don't think the alternative is a complex
->> change anyhow.
-> So yes, that would work out pretty well. But there is another need
-> that does not show up in the series (I am not splitting the patches
-> correctly I guess) We would like to boot directly from a flash image.
-> For this purpose, the pflash_cfi object uses a memory region of type
-> rom and uses the storage behind the region.
+>> Okay, I already explained the reason for having two different behaviours - to
+>> make polled counter value more distributed when possible. If I understand you
+>> correctly, you don't like it because it is "odd" and I agree that it's a bit clumsy.
 >
-> m25p80_set_rom_storage() is probably not the right API to share the
-> storage. I am looking for a way to handle this without changing too
-> much m25p80, which does not have a mem region currently. Suggestions
-> welcomed ! :)
-I do not know if this is a good idea - for sure yet another complication,
-but we still should process like the HW. The flash is memory mapped
-to some memory area, so maybe creating alias to this memory area
-would help with the implementation?
-Then read will be still done by SPI and m25p80. Some configuration
-from the board level might be needed to initialise the controller
-(or maybe defaults are ok - depends how it is done in hw).
+>> So, what we are going to do now? Would you just revert the offending commit or
+>> you have some other suggestions?
+>
+> Well, we need to fix the regression, but basically I'm kind of
+> confused at the moment. I haven't invested a lot of time in
+> trying to understand the timer code, so all I can really do
+> is say "this does not look like the right thing" and ask you
+> to come up with a different fix for it.
 
-Regards,
-Marcin
-> Thanks,
->
-> C.
->
->
+My current best guess is that this condition should simply be
+"if (expired) {".
 
+thanks
+-- PMM

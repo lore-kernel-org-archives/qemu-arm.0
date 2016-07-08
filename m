@@ -1,154 +1,314 @@
-Received: by 10.25.21.96 with SMTP id l93csp1385698lfi;
-        Thu, 7 Jul 2016 05:22:39 -0700 (PDT)
-X-Received: by 10.13.234.16 with SMTP id t16mr18251490ywe.262.1467894158979;
-        Thu, 07 Jul 2016 05:22:38 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp311981lfv;
+        Fri, 8 Jul 2016 08:49:32 -0700 (PDT)
+X-Received: by 10.55.97.80 with SMTP id v77mr8596652qkb.41.1467992972672;
+        Fri, 08 Jul 2016 08:49:32 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n26si2652978qkl.8.2016.07.07.05.22.38
+        by mx.google.com with ESMTPS id t66si204486qke.81.2016.07.08.08.49.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Jul 2016 05:22:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 08 Jul 2016 08:49:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39524 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@yandex.ru;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=ya.ru
+Received: from localhost ([::1]:46375 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bL8KE-00052U-8f
-	for alex.bennee@linaro.org; Thu, 07 Jul 2016 08:22:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43553)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bLY20-0005ag-0J
+	for alex.bennee@linaro.org; Fri, 08 Jul 2016 11:49:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bL8II-0001eI-4F
-	for qemu-arm@nongnu.org; Thu, 07 Jul 2016 08:20:39 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1bLY0Y-0004zW-U3
+	for qemu-devel@nongnu.org; Fri, 08 Jul 2016 11:48:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bL8IE-00082E-5D
-	for qemu-arm@nongnu.org; Thu, 07 Jul 2016 08:20:37 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:35224)
+	(envelope-from <afarallax@yandex.ru>) id 1bLY0W-0004ya-9a
+	for qemu-devel@nongnu.org; Fri, 08 Jul 2016 11:48:01 -0400
+Received: from forward14h.cmail.yandex.net ([87.250.230.156]:57103)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>)
-	id 1bL8ID-00082A-EN; Thu, 07 Jul 2016 08:20:34 -0400
-Received: by mail-lf0-x241.google.com with SMTP id w130so1292381lfd.2;
-	Thu, 07 Jul 2016 05:20:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TBKNZ9eZxmy6+PA3yVqvF/QohnOVKjyDx1pvcFUiQuY=;
-	b=hb3hEfRzloHWaUX5zOCeapfiSfdLwQco53hMtjqXURnpz5pbuKADRbPjHYCU2q1Q+P
-	OFw3ESZl+dVom4hqP5+9WJ+H+4/NIawwVl1nFqwgQRbPsCpm1R5U+Cd7iDbarsxeoLZM
-	ETQ1ctbgoh5GQWeR4ui+FOL5sFmaWbFSqrDqHstK5kasHx8bsvBYWuWAFS5WEsCb231p
-	lkIGzC3+0rgDrcfz5OQEloTz410VAYYGbuGn2dRZ3upoNvbp4KRhobEqjTnzjHxg3bkZ
-	u8Xzr7TWqzccXroyRhovOeeWmQM8/rqVRa8PiQa8k/qyubMblst6zWHDP30C26iB5S3Q
-	kjFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=TBKNZ9eZxmy6+PA3yVqvF/QohnOVKjyDx1pvcFUiQuY=;
-	b=RIiWfhYXvZu5iJHH4kbEZ84OrhPM3wTtcbsU5Dt9DyUTVdaI+jllIyxKvxyyCd0D5c
-	PtSxUqaShKwxiulfgf52P16wV+XzelcR2yA/Wr7Ip6uzYGqsSs9ffOfwwjqmkOvbB2a3
-	gnFpJzokcG5qaaJc0v8I/GxD6X8BO9TkU5m3UGfQiEtPuqPCkcjAw2UpXH6zWaRVaxJu
-	udpoGncuB1lunI0JsZWIbYVP6rkQF4b3AQxfPqQIJWJMKrkicQ2hkROVZ6EqCbIljTGN
-	MRDsxmk15YZZErR2UX4TTjY6Gb0YQHFseVHj7S7hUxAMa7ik3N7GX9GPlT+ffXP641qu
-	pSKg==
-X-Gm-Message-State: ALyK8tKO8PmmZf7dPA8d9INclKoFUmZWEhESvdMfyvoyrZBJ6S1vw8AYV10uaiDnQXQUmQ==
-X-Received: by 10.25.81.17 with SMTP id f17mr5869100lfb.206.1467894028209;
-	Thu, 07 Jul 2016 05:20:28 -0700 (PDT)
-Received: from [192.168.1.145] (ppp109-252-52-30.pppoe.spdop.ru.
-	[109.252.52.30]) by smtp.googlemail.com with ESMTPSA id
-	w192sm7398389lfd.44.2016.07.07.05.20.26
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 07 Jul 2016 05:20:27 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20160625123521.16752-1-digetx@gmail.com>
-	<CAFEAcA8HFfuEHP-d8+H3DC06+RpjjXqQoCX81w2Yr+Txsn5fSw@mail.gmail.com>
-	<5814242b-8a8c-852a-51e8-268033b51200@gmail.com>
-	<CAFEAcA8788W2infUBneuUh4eNMLqPpdNzGXqKESgi+ZKpigdyg@mail.gmail.com>
-	<121dd825-9c64-b3b9-bca8-41bcb984ec0f@gmail.com>
-	<CAFEAcA-ZGbR2nz80n=QcxRTr=PN5EMQ-OrbncaAQnHMwmhPtZg@mail.gmail.com>
-	<340f08ea-ee9b-1284-7e7f-17d33b314885@gmail.com>
-	<CAFEAcA8sv7tLrp84dnVV=gWqn21DFEqHCiAkDzVOWrCOux=Tug@mail.gmail.com>
-	<CAFEAcA_dbGMJm4OT62CKEQKaPf-sV818fwboy_GarXYeT973Ag@mail.gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <6493a684-c571-c8d8-3b2f-f8da719a1b54@gmail.com>
-Date: Thu, 7 Jul 2016 15:20:21 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_dbGMJm4OT62CKEQKaPf-sV818fwboy_GarXYeT973Ag@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+	(envelope-from <afarallax@yandex.ru>)
+	id 1bLY0P-0004so-R2; Fri, 08 Jul 2016 11:47:55 -0400
+Received: from mxback8h.mail.yandex.net (mxback8h.mail.yandex.net
+	[84.201.186.17])
+	by forward14h.cmail.yandex.net (Yandex) with ESMTP id DC6CB21885;
+	Fri,  8 Jul 2016 18:47:41 +0300 (MSK)
+Received: from mxback8h.mail.yandex.net (localhost [127.0.0.1])
+	by mxback8h.mail.yandex.net (Yandex) with ESMTP id DA9952013A6;
+	Fri,  8 Jul 2016 18:47:41 +0300 (MSK)
+Received: from web25h.yandex.ru (web25h.yandex.ru [84.201.187.159])
+	by mxback8h.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
+	FUIE5i35ar-lfGiBtVL; Fri, 08 Jul 2016 18:47:41 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1467992861; bh=i1NYkfaG9UHiSN0DpmZdeIWV9j6mkp2WNyFNSeptIrk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Message-Id:Date;
+	b=VhV/JZyT4fuc7L82+ATD03WZgV/qqqr1EqKWFmRC03lK3Kk16cxMU2mVKnKnsFTf/
+	HGASphCmpewS1bv4LYmgWBY9wqeLBPr69zlopdl6mueKIOPXAitiaJY8zYNJC7dBp7
+	xuHWdNtRnLvwPSxgTRZI8LIQgZA/mtHFydl8A/xA=
+Authentication-Results: mxback8h.mail.yandex.net; dkim=pass header.i=@yandex.ru
+X-Yandex-Suid-Status: 1 0,1 0,1 0,1 37377968
+X-Yandex-Sender-Uid: 15784356
+Received: by web25h.yandex.ru with HTTP;
+	Fri, 08 Jul 2016 18:47:41 +0300
+From: Sergey Sorokin <afarallax@ya.ru>
+Envelope-From: afarallax@yandex.ru
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+In-Reply-To: <1466694717-556963-1-git-send-email-afarallax@yandex.ru>
+References: <1466694717-556963-1-git-send-email-afarallax@yandex.ru>
+Message-Id: <758361467992861@web25h.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Fri, 08 Jul 2016 18:47:41 +0300
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [PATCH v2] hw/ptimer: Don't wrap around counter for
- expired timer that uses tick handler
-X-BeenThere: qemu-arm@nongnu.org
+	[fuzzy]
+X-Received-From: 87.250.230.156
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH] target-arm: Add missed AArch32 TLBI sytem
+ registers
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cZDlG7+1nQXi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 31KyFmnWwQc+
 
-On 07.07.2016 13:53, Peter Maydell wrote:
-> On 4 July 2016 at 10:55, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 1 July 2016 at 18:49, Dmitry Osipenko <digetx@gmail.com> wrote:
->>> On 01.07.2016 19:36, Peter Maydell wrote:
->>>> On 30 June 2016 at 20:01, Dmitry Osipenko <digetx@gmail.com> wrote:
->>>>> On 30.06.2016 18:02, Peter Maydell wrote:
->>>>>> What I meant was: ptimer_get_count() is typically called to generate
->>>>>> a value to return from a register. That's a separate thing, conceptually,
->>>>>> from whether the device happens to also trigger an interrupt on timer
->>>>>> expiry by passing a bh to ptimer_init(). So it's very odd for a detail
->>>>>> of interrupt-on-timer-expiry (that there is a bottom half) to affect
->>>>>> the value returned when you read the timer count register.
->>>>
->>>>> In order to handle wraparound correctly, software needs to track the moment of
->>>>> the wraparound - the interrupt. If software reads wrapped around counter value
->>>>> before IRQ triggered (ptimer expired), then it would assume that no wraparound
->>>>> happened and won't perform counter value correction, resulting in periodic
->>>>> counter "jumping" backwards.
->>>>
->>>> That just says you need particular behaviour between counter reads
->>>> and IRQ triggers; it doesn't say that you need the behaviour to be
->>>> different if the ptimer code doesn't know about the IRQ trigger.
->>>>
->>>
->>> Okay, I already explained the reason for having two different behaviours - to
->>> make polled counter value more distributed when possible. If I understand you
->>> correctly, you don't like it because it is "odd" and I agree that it's a bit clumsy.
->>
->>> So, what we are going to do now? Would you just revert the offending commit or
->>> you have some other suggestions?
->>
->> Well, we need to fix the regression, but basically I'm kind of
->> confused at the moment. I haven't invested a lot of time in
->> trying to understand the timer code, so all I can really do
->> is say "this does not look like the right thing" and ask you
->> to come up with a different fix for it.
-> 
+   23.06.2016, 18:12, "Sergey Sorokin" <afarallax@yandex.ru>:
 
-I'm currently leaning to the revert solution. Unfortunately, I haven't had a
-chance to look at it yet, will do it today and send patch after.
+     Some PL2 related TLBI system registers are missed in AArch32
+     implementation. The patch fixes it.
+     Signed-off-by: Sergey Sorokin <[1]afarallax@yandex.ru>
+     ---
+     Â target-arm/helper.c | 148
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++
+     Â 1 file changed, 148 insertions(+)
+     diff --git a/target-arm/helper.c b/target-arm/helper.c
+     index 35ff772..73c844f 100644
+     --- a/target-arm/helper.c
+     +++ b/target-arm/helper.c
+     @@ -572,6 +572,111 @@ static void tlbimvaa_is_write(CPUARMState
+     *env, const ARMCPRegInfo *ri,
+     Â Â Â Â Â }
+     Â }
+     +static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo
+     *ri,
+     + uint64_t value)
+     +{
+     + CPUState *cs = ENV_GET_CPU(env);
+     +
+     + if (arm_feature(env, ARM_FEATURE_EL2)) {
+     + tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0,
+     + ARMMMUIdx_S2NS, -1);
+     + } else {
+     + tlb_flush_by_mmuidx(cs, ARMMMUIdx_S12NSE1, ARMMMUIdx_S12NSE0, -1);
+     + }
+     +}
+     +
+     +static void tlbiall_nsnh_is_write(CPUARMState *env, const
+     ARMCPRegInfo *ri,
+     + uint64_t value)
+     +{
+     + bool has_el2 = arm_feature(env, ARM_FEATURE_EL2);
+     + CPUState *other_cs;
+     +
+     + CPU_FOREACH(other_cs) {
+     + if (has_el2) {
+     + tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
+     + ARMMMUIdx_S12NSE0, ARMMMUIdx_S2NS, -1);
+     + } else {
+     + tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S12NSE1,
+     + ARMMMUIdx_S12NSE0, -1);
+     + }
+     + }
+     +}
+     +
+     +static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo
+     *ri,
+     + uint64_t value)
+     +{
+     + /* Invalidate by IPA. This has to invalidate any structures that
+     + * contain only stage 2 translation information, but does not need
+     + * to apply to structures that contain combined stage 1 and stage 2
+     + * translation information.
+     + * This must NOP if EL2 isn't implemented or SCR_EL3.NS is zero.
+     + */
+     + CPUState *cs = ENV_GET_CPU(env);
+     + uint64_t pageaddr;
+     +
+     + if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 &
+     SCR_NS)) {
+     + return;
+     + }
+     +
+     + pageaddr = sextract64(value << 12, 0, 40);
+     +
+     + tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdx_S2NS, -1);
+     +}
+     +
+     +static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo
+     *ri,
+     + uint64_t value)
+     +{
+     + CPUState *other_cs;
+     + uint64_t pageaddr;
+     +
+     + if (!arm_feature(env, ARM_FEATURE_EL2) || !(env->cp15.scr_el3 &
+     SCR_NS)) {
+     + return;
+     + }
+     +
+     + pageaddr = sextract64(value << 12, 0, 40);
+     +
+     + CPU_FOREACH(other_cs) {
+     + tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S2NS, -1);
+     + }
+     +}
+     +
+     +static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo
+     *ri,
+     + uint64_t value)
+     +{
+     + CPUState *cs = ENV_GET_CPU(env);
+     +
+     + tlb_flush_by_mmuidx(cs, ARMMMUIdx_S1E2, -1);
+     +}
+     +
+     +static void tlbiall_hyp_is_write(CPUARMState *env, const
+     ARMCPRegInfo *ri,
+     + uint64_t value)
+     +{
+     + CPUState *other_cs;
+     +
+     + CPU_FOREACH(other_cs) {
+     + tlb_flush_by_mmuidx(other_cs, ARMMMUIdx_S1E2, -1);
+     + }
+     +}
+     +
+     +static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo
+     *ri,
+     + uint64_t value)
+     +{
+     + CPUState *cs = ENV_GET_CPU(env);
+     +
+     + tlb_flush_page_by_mmuidx(cs, value & TARGET_PAGE_MASK,
+     ARMMMUIdx_S1E2, -1);
+     +}
+     +
+     +static void tlbimva_hyp_is_write(CPUARMState *env, const
+     ARMCPRegInfo *ri,
+     + uint64_t value)
+     +{
+     + CPUState *other_cs;
+     + uint64_t pageaddr = value & TARGET_PAGE_MASK;
+     +
+     + CPU_FOREACH(other_cs) {
+     + tlb_flush_page_by_mmuidx(other_cs, pageaddr, ARMMMUIdx_S1E2, -1);
+     + }
+     +}
+     +
+     Â static const ARMCPRegInfo cp_reginfo[] = {
+     Â Â Â Â Â /* Define the secure and non-secure FCSE identifier CP
+     registers
+     Â Â Â Â Â Â * separately because there is no secure bank in V8 (no
+     _EL3). This allows
+     @@ -1238,6 +1343,14 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
+     Â Â Â Â Â Â Â .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn =
+     tlbiasid_write },
+     Â Â Â Â Â { .name = "TLBIMVAA", .cp = 15, .opc1 = 0, .crn = 8, .crm
+     = 7, .opc2 = 3,
+     Â Â Â Â Â Â Â .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn =
+     tlbimvaa_write },
+     + { .name = "TLBIALLNSNH",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 4,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiall_nsnh_write },
+     + { .name = "TLBIALLNSNHIS",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiall_nsnh_is_write },
+     Â Â Â Â Â REGINFO_SENTINEL
+     Â };
+     @@ -3273,6 +3386,22 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     Â Â Â Â Â Â Â .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn =
+     tlbimva_write },
+     Â Â Â Â Â { .name = "TLBIMVAAL", .cp = 15, .opc1 = 0, .crn = 8, .crm
+     = 7, .opc2 = 7,
+     Â Â Â Â Â Â Â .type = ARM_CP_NO_RAW, .access = PL1_W, .writefn =
+     tlbimvaa_write },
+     + { .name = "TLBIIPAS2",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 1,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiipas2_write },
+     + { .name = "TLBIIPAS2IS",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 1,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiipas2_is_write },
+     + { .name = "TLBIIPAS2L",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 5,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiipas2_write },
+     + { .name = "TLBIIPAS2LIS",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 5,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiipas2_is_write },
+     Â Â Â Â Â /* 32 bit cache operations */
+     Â Â Â Â Â { .name = "ICIALLUIS", .cp = 15, .opc1 = 0, .crn = 7, .crm
+     = 1, .opc2 = 0,
+     Â Â Â Â Â Â Â .type = ARM_CP_NOP, .access = PL1_W },
+     @@ -3605,6 +3734,25 @@ static const ARMCPRegInfo el2_cp_reginfo[] =
+     {
+     Â Â Â Â Â { .name = "HTTBR", .cp = 15, .opc1 = 4, .crm = 2,
+     Â Â Â Â Â Â Â .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_ALIAS,
+     Â Â Â Â Â Â Â .fieldoffset = offsetof(CPUARMState, cp15.ttbr0_el[2])
+     },
+     + { .name = "TLBIALLH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7,
+     .opc2 = 0,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiall_hyp_write },
+     + { .name = "TLBIALLHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3,
+     .opc2 = 0,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbiall_hyp_is_write },
+     + { .name = "TLBIMVAH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7,
+     .opc2 = 1,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbimva_hyp_write },
+     + { .name = "TLBIMVAHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3,
+     .opc2 = 1,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbimva_hyp_is_write },
+     + { .name = "TLBIMVALH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7,
+     .opc2 = 5,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbimva_hyp_write },
+     + { .name = "TLBIMVALHIS",
+     + .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 5,
+     + .type = ARM_CP_NO_RAW, .access = PL2_W,
+     + .writefn = tlbimva_hyp_is_write },
+     Â Â Â Â Â { .name = "TLBI_ALLE2", .state = ARM_CP_STATE_AA64,
+     Â Â Â Â Â Â Â .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+     Â Â Â Â Â Â Â .type = ARM_CP_NO_RAW, .access = PL2_W,
+     --
+     1.9.3
 
-> My current best guess is that this condition should simply be
-> "if (expired) {".
-> 
+   ping
 
-Since you are insisted that wraparound isn't a needed feature - yes, that's
-nearly the same what the original code did :)
+   http://patchwork.ozlabs.org/patch/639688/
 
--- 
-Dmitry
+References
+
+   Visible links
+   1. mailto:afarallax@yandex.ru
+
+   Hidden links:
+   2. http://patchwork.ozlabs.org/patch/639688/

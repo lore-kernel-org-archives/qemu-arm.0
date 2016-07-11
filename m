@@ -1,54 +1,68 @@
-Received: by 10.25.21.156 with SMTP id 28csp1404600lfv;
-        Mon, 11 Jul 2016 03:57:38 -0700 (PDT)
-X-Received: by 10.237.37.180 with SMTP id x49mr14214879qtc.43.1468234658382;
-        Mon, 11 Jul 2016 03:57:38 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1433230lfv;
+        Mon, 11 Jul 2016 05:05:59 -0700 (PDT)
+X-Received: by 10.200.49.100 with SMTP id h33mr8849587qtb.86.1468238759122;
+        Mon, 11 Jul 2016 05:05:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k48si1934004qtb.119.2016.07.11.03.57.38
+        by mx.google.com with ESMTPS id e62si2602647qkd.41.2016.07.11.05.05.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jul 2016 03:57:38 -0700 (PDT)
+        Mon, 11 Jul 2016 05:05:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60488 helo=lists.gnu.org)
+       dkim=fail header.i=@yandex.ru;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=ya.ru
+Received: from localhost ([::1]:33336 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bMYu9-0003Xa-PT
-	for alex.bennee@linaro.org; Mon, 11 Jul 2016 06:57:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55617)
+	id 1bMZyI-0002wk-GS
+	for alex.bennee@linaro.org; Mon, 11 Jul 2016 08:05:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52911)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1bMYrW-0007zc-RO
-	for qemu-arm@nongnu.org; Mon, 11 Jul 2016 06:54:56 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1bMZyD-0002uh-Ar
+	for qemu-arm@nongnu.org; Mon, 11 Jul 2016 08:05:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>) id 1bMYrU-0001k0-1B
-	for qemu-arm@nongnu.org; Mon, 11 Jul 2016 06:54:53 -0400
-Received: from roura.ac.upc.es ([147.83.33.10]:44756)
+	(envelope-from <afarallax@yandex.ru>) id 1bMZy9-0001tq-1r
+	for qemu-arm@nongnu.org; Mon, 11 Jul 2016 08:05:52 -0400
+Received: from forward1p.cmail.yandex.net ([77.88.31.16]:50128)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vilanova@ac.upc.edu>)
-	id 1bMYrG-0001eA-No; Mon, 11 Jul 2016 06:54:39 -0400
-Received: from gw-3.ac.upc.es (gw-3.ac.upc.es [147.83.30.9])
-	by roura.ac.upc.es (8.13.8/8.13.8) with ESMTP id u6BArUQn024147;
-	Mon, 11 Jul 2016 12:53:30 +0200
-Received: from localhost (unknown [84.88.51.85])
-	by gw-3.ac.upc.es (Postfix) with ESMTPSA id 6B861726;
-	Mon, 11 Jul 2016 12:53:30 +0200 (CEST)
-From: =?utf-8?b?TGx1w61z?= Vilanova <vilanova@ac.upc.edu>
-To: qemu-devel@nongnu.org
-Date: Mon, 11 Jul 2016 12:53:30 +0200
-Message-Id: <146823441011.4232.7174468318683107622.stgit@fimbulvetr.bsc.es>
-X-Mailer: git-send-email 2.8.1
-In-Reply-To: <146823439924.4232.11681843324134763312.stgit@fimbulvetr.bsc.es>
-References: <146823439924.4232.11681843324134763312.stgit@fimbulvetr.bsc.es>
-User-Agent: StGit/0.17.1-dirty
+	(envelope-from <afarallax@yandex.ru>)
+	id 1bMZy7-0001rz-Ly; Mon, 11 Jul 2016 08:05:48 -0400
+Received: from mxback9g.mail.yandex.net (mxback9g.mail.yandex.net
+	[77.88.29.170])
+	by forward1p.cmail.yandex.net (Yandex) with ESMTP id A9453206A2;
+	Mon, 11 Jul 2016 15:05:32 +0300 (MSK)
+Received: from web30g.yandex.ru (web30g.yandex.ru [95.108.253.239])
+	by mxback9g.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
+	Xqw3uGs27A-5Vjat9a3; Mon, 11 Jul 2016 15:05:32 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1468238732; bh=4jg8qOO5I7ipAf4Et5ATMI6Jf2oS+rXHtra0xkILsIc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Message-Id:Date;
+	b=XwGGeDDke5BTgQe6tYchw/Ub+lSxX2xhmD61YAsrGO8mqcUJ1FEiR/NoBFeae/nuj
+	iueI6J4RXJJ7MR0Thumfr3G1i8FOU1NesZs5sMfwKyrMiQ/WyvsUXIiIjnTj2S5elr
+	h2yvVGdcTQsxB4my2l+utwrcmUo2CqtVLTWPCx9U=
+Authentication-Results: mxback9g.mail.yandex.net; dkim=pass header.i=@yandex.ru
+Received: by web30g.yandex.ru with HTTP;
+	Mon, 11 Jul 2016 15:05:31 +0300
+From: Sergey Sorokin <afarallax@ya.ru>
+Envelope-From: afarallax@yandex.ru
+To: David Gibson <david@gibson.dropbear.id.au>
+In-Reply-To: <20160711015718.GH16355@voom.fritz.box>
+References: <1465907177-1399402-1-git-send-email-afarallax@yandex.ru>
+	<767251467993130@web25h.yandex.ru>
+	<20160711015718.GH16355@voom.fritz.box>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by roura.ac.upc.es id
-	u6BArUQn024147
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 147.83.33.10
-Subject: [Qemu-arm] [PATCH v9 2/7] disas: Remove unused macro '_'
+Message-Id: <86891468238731@web30g.yandex.ru>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Mon, 11 Jul 2016 15:05:31 +0300
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 77.88.31.16
+Subject: Re: [Qemu-arm] [PATCH v2] Fix confusing argument names in some
+ common functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,394 +74,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"open list:ARM target" <qemu-arm@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>, Eric Blake <eblake@redhat.com>,
+	Jia Liu <proljc@gmail.com>, Anthony Green <green@moxielogic.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Alexander Graf <agraf@suse.de>, Blue Swirl <blauwirbel@gmail.com>,
-	Leon Alrae <leon.alrae@imgtec.com>,
-	"Vassili Karpov \(malc\)" <av1474@comtv.ru>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Leon Alrae <leon.alrae@imgtec.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UyvnahSlJ671
+X-TUID: 3EZQZ5iU4eTp
 
-Eliminates a future compilation error when UI code includes the tracing
-headers (indirectly pulling "disas/bfd.h" through "qom/cpu.h") and
-GLib's i18n '_' macro.
 
-Signed-off-by: Llu=C3=ADs Vilanova <vilanova@ac.upc.edu>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
----
- disas/alpha.c       |    6 +++---
- disas/arm.c         |    2 +-
- disas/i386.c        |    2 +-
- disas/m68k.c        |    4 ++--
- disas/mips.c        |   50 +++++++++++++++++++++++++--------------------=
------
- disas/ppc.c         |   22 +++++++++++-----------
- disas/sparc.c       |    6 +++---
- include/disas/bfd.h |    1 -
- 8 files changed, 46 insertions(+), 47 deletions(-)
 
-diff --git a/disas/alpha.c b/disas/alpha.c
-index 44d00a3..b7b0ae0 100644
---- a/disas/alpha.c
-+++ b/disas/alpha.c
-@@ -521,7 +521,7 @@ static unsigned
- insert_bdisp(unsigned insn, int value, const char **errmsg)
- {
-   if (errmsg !=3D (const char **)NULL && (value & 3))
--    *errmsg =3D _("branch operand unaligned");
-+    *errmsg =3D "branch operand unaligned";
-   return insn | ((value / 4) & 0x1FFFFF);
- }
-=20
-@@ -539,7 +539,7 @@ static unsigned
- insert_jhint(unsigned insn, int value, const char **errmsg)
- {
-   if (errmsg !=3D (const char **)NULL && (value & 3))
--    *errmsg =3D _("jump hint unaligned");
-+    *errmsg =3D "jump hint unaligned";
-   return insn | ((value / 4) & 0x3FFF);
- }
-=20
-@@ -556,7 +556,7 @@ static unsigned
- insert_ev6hwjhint(unsigned insn, int value, const char **errmsg)
- {
-   if (errmsg !=3D (const char **)NULL && (value & 3))
--    *errmsg =3D _("jump hint unaligned");
-+    *errmsg =3D "jump hint unaligned";
-   return insn | ((value / 4) & 0x1FFF);
- }
-=20
-diff --git a/disas/arm.c b/disas/arm.c
-index 70da529..32f8ca9 100644
---- a/disas/arm.c
-+++ b/disas/arm.c
-@@ -1817,7 +1817,7 @@ print_insn_coprocessor (bfd_vma pc, struct disassem=
-ble_info *info, long given,
- 			  func (stream, "e");
- 			  break;
- 			default:
--			  func (stream, _("<illegal precision>"));
-+			  func (stream, "<illegal precision>");
- 			  break;
- 			}
- 		      break;
-diff --git a/disas/i386.c b/disas/i386.c
-index c0e717a..57145d0 100644
---- a/disas/i386.c
-+++ b/disas/i386.c
-@@ -3406,7 +3406,7 @@ static const struct dis386 three_byte_table[][256] =
-=3D {
-   }
- };
-=20
--#define INTERNAL_DISASSEMBLER_ERROR _("<internal disassembler error>")
-+#define INTERNAL_DISASSEMBLER_ERROR "<internal disassembler error>"
-=20
- static void
- ckprefix (void)
-diff --git a/disas/m68k.c b/disas/m68k.c
-index 8f74ae1..8e7c3f7 100644
---- a/disas/m68k.c
-+++ b/disas/m68k.c
-@@ -1676,7 +1676,7 @@ print_insn_arg (const char *d,
- 	  (*info->fprintf_func) (info->stream, "%%sfc");
- 	else
- 	  /* xgettext:c-format */
--	  (*info->fprintf_func) (info->stream, _("<function code %d>"), fc);
-+	  (*info->fprintf_func) (info->stream, "<function code %d>", fc);
-       }
-       break;
-=20
-@@ -1827,7 +1827,7 @@ match_insn_m68k (bfd_vma memaddr,
- 	{
- 	  info->fprintf_func (info->stream,
- 			      /* xgettext:c-format */
--			      _("<internal error in opcode table: %s %s>\n"),
-+			      "<internal error in opcode table: %s %s>\n",
- 			      best->name,  best->args);
- 	  info->fprintf_func =3D save_printer;
- 	  info->print_address_func =3D save_print_address;
-diff --git a/disas/mips.c b/disas/mips.c
-index 249931b..97f661a 100644
---- a/disas/mips.c
-+++ b/disas/mips.c
-@@ -4257,7 +4257,7 @@ print_insn_args (const char *d,
- 	    case '\0':
- 	      /* xgettext:c-format */
- 	      (*info->fprintf_func) (info->stream,
--				     _("# internal error, incomplete extension sequence (+)"));
-+				     "# internal error, incomplete extension sequence (+)");
- 	      return;
-=20
- 	    case 'A':
-@@ -4515,7 +4515,7 @@ print_insn_args (const char *d,
- 	    default:
- 	      /* xgettext:c-format */
- 	      (*info->fprintf_func) (info->stream,
--				     _("# internal error, undefined extension sequence (+%c)"),
-+				     "# internal error, undefined extension sequence (+%c)",
- 				     *d);
- 	      return;
- 	    }
-@@ -4875,7 +4875,7 @@ print_insn_args (const char *d,
- 	default:
- 	  /* xgettext:c-format */
- 	  (*info->fprintf_func) (info->stream,
--				 _("# internal error, undefined modifier(%c)"),
-+				 "# internal error, undefined modifier(%c)",
- 				 *d);
- 	  return;
- 	}
-@@ -5739,7 +5739,7 @@ print_mips16_insn_arg (char type,
-       /* xgettext:c-format */
-       (*info->fprintf_func)
- 	(info->stream,
--	 _("# internal disassembler error, unrecognised modifier (%c)"),
-+	 "# internal disassembler error, unrecognised modifier (%c)",
- 	 type);
-       abort ();
-     }
-@@ -5750,51 +5750,51 @@ print_mips_disassembler_options (FILE *stream)
- {
-   unsigned int i;
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
- The following MIPS specific disassembler options are supported for use\n=
-\
--with the -M switch (multiple options should be separated by commas):\n")=
-);
-+with the -M switch (multiple options should be separated by commas):\n")=
-;
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   gpr-names=3DABI            Print GPR names according to  specified ABI=
-.\n\
--                           Default: based on binary being disassembled.\=
-n"));
-+                           Default: based on binary being disassembled.\=
-n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   fpr-names=3DABI            Print FPR names according to specified ABI.=
-\n\
--                           Default: numeric.\n"));
-+                           Default: numeric.\n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   cp0-names=3DARCH           Print CP0 register names according to\n\
-                            specified architecture.\n\
--                           Default: based on binary being disassembled.\=
-n"));
-+                           Default: based on binary being disassembled.\=
-n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   hwr-names=3DARCH           Print HWR names according to specified\n\
- 			   architecture.\n\
--                           Default: based on binary being disassembled.\=
-n"));
-+                           Default: based on binary being disassembled.\=
-n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   reg-names=3DABI            Print GPR and FPR names according to\n\
--                           specified ABI.\n"));
-+                           specified ABI.\n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   reg-names=3DARCH           Print CP0 register and HWR names according =
-to\n\
--                           specified architecture.\n"));
-+                           specified architecture.\n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   For the options above, the following values are supported for \"ABI\":=
-\n\
--   "));
-+   ");
-   for (i =3D 0; i < ARRAY_SIZE (mips_abi_choices); i++)
-     fprintf (stream, " %s", mips_abi_choices[i].name);
--  fprintf (stream, _("\n"));
-+  fprintf (stream, "\n");
-=20
--  fprintf (stream, _("\n\
-+  fprintf (stream, "\n\
-   For the options above, The following values are supported for \"ARCH\"=
-:\n\
--   "));
-+   ");
-   for (i =3D 0; i < ARRAY_SIZE (mips_arch_choices); i++)
-     if (*mips_arch_choices[i].name !=3D '\0')
-       fprintf (stream, " %s", mips_arch_choices[i].name);
--  fprintf (stream, _("\n"));
-+  fprintf (stream, "\n");
-=20
--  fprintf (stream, _("\n"));
-+  fprintf (stream, "\n");
- }
- #endif
-diff --git a/disas/ppc.c b/disas/ppc.c
-index 478332b..052cebe 100644
---- a/disas/ppc.c
-+++ b/disas/ppc.c
-@@ -1120,7 +1120,7 @@ insert_bo (unsigned long insn,
- 	   const char **errmsg)
- {
-   if (!valid_bo (value, dialect, 0))
--    *errmsg =3D _("invalid conditional option");
-+    *errmsg =3D "invalid conditional option";
-   return insn | ((value & 0x1f) << 21);
- }
-=20
-@@ -1148,9 +1148,9 @@ insert_boe (unsigned long insn,
- 	    const char **errmsg)
- {
-   if (!valid_bo (value, dialect, 0))
--    *errmsg =3D _("invalid conditional option");
-+    *errmsg =3D "invalid conditional option";
-   else if ((value & 1) !=3D 0)
--    *errmsg =3D _("attempt to set y bit when using + or - modifier");
-+    *errmsg =3D "attempt to set y bit when using + or - modifier";
-=20
-   return insn | ((value & 0x1f) << 21);
- }
-@@ -1182,7 +1182,7 @@ insert_fxm (unsigned long insn,
-     {
-       if (value =3D=3D 0 || (value & -value) !=3D value)
- 	{
--	  *errmsg =3D _("invalid mask field");
-+	  *errmsg =3D "invalid mask field";
- 	  value =3D 0;
- 	}
-     }
-@@ -1208,7 +1208,7 @@ insert_fxm (unsigned long insn,
-   /* Any other value on mfcr is an error.  */
-   else if ((insn & (0x3ff << 1)) =3D=3D 19 << 1)
-     {
--      *errmsg =3D _("ignoring invalid mfcr mask");
-+      *errmsg =3D "ignoring invalid mfcr mask";
-       value =3D 0;
-     }
-=20
-@@ -1258,7 +1258,7 @@ insert_mbe (unsigned long insn,
-=20
-   if (uval =3D=3D 0)
-     {
--      *errmsg =3D _("illegal bitmask");
-+      *errmsg =3D "illegal bitmask";
-       return insn;
-     }
-=20
-@@ -1293,7 +1293,7 @@ insert_mbe (unsigned long insn,
-     me =3D 32;
-=20
-   if (count !=3D 2 && (count !=3D 0 || ! last))
--    *errmsg =3D _("illegal bitmask");
-+    *errmsg =3D "illegal bitmask";
-=20
-   return insn | (mb << 6) | ((me - 1) << 1);
- }
-@@ -1413,7 +1413,7 @@ insert_ram (unsigned long insn,
- 	    const char **errmsg)
- {
-   if ((unsigned long) value >=3D ((insn >> 21) & 0x1f))
--    *errmsg =3D _("index register in load range");
-+    *errmsg =3D "index register in load range";
-   return insn | ((value & 0x1f) << 16);
- }
-=20
-@@ -1429,7 +1429,7 @@ insert_raq (unsigned long insn,
-   long rtvalue =3D (insn & RT_MASK) >> 21;
-=20
-   if (value =3D=3D rtvalue)
--    *errmsg =3D _("source and target register operands must be different=
-");
-+    *errmsg =3D "source and target register operands must be different";
-   return insn | ((value & 0x1f) << 16);
- }
-=20
-@@ -1444,7 +1444,7 @@ insert_ras (unsigned long insn,
- 	    const char **errmsg)
- {
-   if (value =3D=3D 0)
--    *errmsg =3D _("invalid register operand when updating");
-+    *errmsg =3D "invalid register operand when updating";
-   return insn | ((value & 0x1f) << 16);
- }
-=20
-@@ -1526,7 +1526,7 @@ insert_sprg (unsigned long insn,
-   if (value > 7
-       || (value > 3
- 	  && (dialect & (PPC_OPCODE_BOOKE | PPC_OPCODE_403)) =3D=3D 0))
--    *errmsg =3D _("invalid sprg number");
-+    *errmsg =3D "invalid sprg number";
-=20
-   /* If this is mfsprg4..7 then use spr 260..263 which can be read in
-      user mode.  Anything else must use spr 272..279.  */
-diff --git a/disas/sparc.c b/disas/sparc.c
-index 64bba8d..f120f4e 100644
---- a/disas/sparc.c
-+++ b/disas/sparc.c
-@@ -2494,7 +2494,7 @@ compare_opcodes (const void * a, const void * b)
-       fprintf
-         (stderr,
-          /* xgettext:c-format */
--         _("Internal error:  bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\=
-n"),
-+         "Internal error:  bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n"=
-,
-          op0->name, match0, lose0);
-       op0->lose &=3D ~op0->match;
-       lose0 =3D op0->lose;
-@@ -2505,7 +2505,7 @@ compare_opcodes (const void * a, const void * b)
-       fprintf
-         (stderr,
-          /* xgettext:c-format */
--         _("Internal error: bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n=
-"),
-+         "Internal error: bad sparc-opcode.h: \"%s\", %#.8lx, %#.8lx\n",
-          op1->name, match1, lose1);
-       op1->lose &=3D ~op1->match;
-       lose1 =3D op1->lose;
-@@ -2555,7 +2555,7 @@ compare_opcodes (const void * a, const void * b)
-       else
-         fprintf (stderr,
-                  /* xgettext:c-format */
--                 _("Internal error: bad sparc-opcode.h: \"%s\" =3D=3D \"=
-%s\"\n"),
-+                 "Internal error: bad sparc-opcode.h: \"%s\" =3D=3D \"%s=
-\"\n",
-                  op0->name, op1->name);
-     }
-=20
-diff --git a/include/disas/bfd.h b/include/disas/bfd.h
-index a112e9c..a761d5b 100644
---- a/include/disas/bfd.h
-+++ b/include/disas/bfd.h
-@@ -477,7 +477,6 @@ int generic_symbol_at_address(bfd_vma, struct disasse=
-mble_info *);
-   (INFO).disassembler_options =3D NULL, \
-   (INFO).insn_info_valid =3D 0
-=20
--#define _(x) x
- #define ATTRIBUTE_UNUSED __attribute__((unused))
-=20
- /* from libbfd */
+11.07.2016, 05:18, "David Gibson" <david@gibson.dropbear.id.au>:
+> I'm afraid your mailer has turned this into an unreadable HTML mess.
 
+It was just a ping.
+http://patchwork.ozlabs.org/patch/635235/

@@ -1,149 +1,115 @@
-Received: by 10.25.21.156 with SMTP id 28csp469797lfv;
-        Tue, 12 Jul 2016 09:35:06 -0700 (PDT)
-X-Received: by 10.200.49.203 with SMTP id i11mr4843612qte.40.1468341306249;
-        Tue, 12 Jul 2016 09:35:06 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp470436lfv;
+        Tue, 12 Jul 2016 09:36:34 -0700 (PDT)
+X-Received: by 10.200.48.112 with SMTP id g45mr4956411qte.70.1468341394650;
+        Tue, 12 Jul 2016 09:36:34 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y34si4276qta.16.2016.07.12.09.35.06
+        by mx.google.com with ESMTPS id a34si1334552qte.3.2016.07.12.09.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Jul 2016 09:35:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 12 Jul 2016 09:36:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42069 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42085 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bN0eH-0004sj-Nz
-	for alex.bennee@linaro.org; Tue, 12 Jul 2016 12:35:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48571)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bN0fi-0006YW-3V
+	for alex.bennee@linaro.org; Tue, 12 Jul 2016 12:36:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bN0c7-00026A-2T
-	for qemu-devel@nongnu.org; Tue, 12 Jul 2016 12:32:52 -0400
+	(envelope-from <alistair23@gmail.com>) id 1bN0eg-0005nQ-BK
+	for qemu-arm@nongnu.org; Tue, 12 Jul 2016 12:35:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bN0c2-0005Df-0d
-	for qemu-devel@nongnu.org; Tue, 12 Jul 2016 12:32:49 -0400
-Received: from 10.mo179.mail-out.ovh.net ([46.105.79.46]:34141)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bN0c1-0005DV-MH
-	for qemu-devel@nongnu.org; Tue, 12 Jul 2016 12:32:45 -0400
-Received: from player698.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 117F510088B5
-	for <qemu-devel@nongnu.org>; Tue, 12 Jul 2016 18:32:44 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player698.ha.ovh.net (Postfix) with ESMTPSA id 911DB520071;
-	Tue, 12 Jul 2016 18:32:39 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1467994016-11678-1-git-send-email-clg@kaod.org>
-	<CAFEAcA_pvYaFuo=U_LjnD6-+2iHzbaAahjTMxf_X41+BGDR0vA@mail.gmail.com>
-	<08ab3354-d97f-2f80-b6d5-d8169b46e199@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c9349deb-8ad7-50b9-9a6e-aa138e609b32@kaod.org>
-Date: Tue, 12 Jul 2016 18:32:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
+	(envelope-from <alistair23@gmail.com>) id 1bN0ef-0005gf-AE
+	for qemu-arm@nongnu.org; Tue, 12 Jul 2016 12:35:30 -0400
+Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:34887)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>)
+	id 1bN0ef-0005gH-6f; Tue, 12 Jul 2016 12:35:29 -0400
+Received: by mail-oi0-x22e.google.com with SMTP id r2so30675910oih.2;
+	Tue, 12 Jul 2016 09:35:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=GWMJAp7fqm3sgCmGHW+v/3qo2nYhv3c7lDtATLOTT1c=;
+	b=jVpDvKvj8lZTsBIFM1vevmPSBvtm39DbAhtljEYPOJGsiAiA8mrW4n9qJAx/tgaJmg
+	qkYzT5CwjxVXEgICkR9XOvng/BqkcAdXNllfbDIqfAekfcCNgfu9PsjnuSCjz2mj/E57
+	L2PSxKk6zVs0p0xZM7oX6gfkENGN41dANzlvY8pZJSFV7pbQEZo/KsnYWR+S9TV2L0JO
+	HAv/dua/uNyhFCq9uDe4NvT7LABPdiAGZhOBr6II4FnFpnGDfm83I3obFJZjcoSJVghN
+	S7hB38jTcQr1uIzDPMa4HZ3cQZgh+7K1ZMzcxYVp6cIfOY1+dxLlR2RHNWwTrnpqKT8/
+	AVPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=GWMJAp7fqm3sgCmGHW+v/3qo2nYhv3c7lDtATLOTT1c=;
+	b=G0novqtYdDvYoB4yPmJxsvGMfXHvRlLZDoYGIfhXlLNv64PV7NFiDBQkOtHvnw/QA1
+	TTB2taI7C6JA3Q8l8cT/mg7W0S1K/S5UkylOcqheWBrVWPlsO5C79tvf4v5U2SOlUyCm
+	yuwNp9tmio6dkmnSm1EpOsCGqWnRojzxD6F02iM//HBX4nSpGXrvtxbkz3VTzgia5iim
+	K/AiIES9Sv+BCDzc42cLfsEjAoW2TiSg4FMFggOC8guNc8sdMbDDizjVOBeCFvpscKSS
+	E+NcLzd+a77VN7UoVpNxn4oIesve7z8MSNKAMFBufH39OVeVBdI26XRii6Kvga4Gm/tr
+	x69Q==
+X-Gm-Message-State: ALyK8tIA9Qus/2Dsn3dI9jBg1RjENRRg4H459Uwxy7gT50WjXuJ+VT7ibMRe7pYxQOYGjbjTErPG8jw0pAH9xw==
+X-Received: by 10.202.206.66 with SMTP id e63mr8472152oig.136.1468341328616;
+	Tue, 12 Jul 2016 09:35:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <08ab3354-d97f-2f80-b6d5-d8169b46e199@kaod.org>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 1993687260994309035
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrfeekgddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 46.105.79.46
-Subject: Re: [Qemu-devel] [PATCH 0/5] ast2400: some cleanups and a simple
- memory controller model
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 10.182.0.81 with HTTP; Tue, 12 Jul 2016 09:34:58 -0700 (PDT)
+In-Reply-To: <CAFEAcA9V=dV8qiuQ_HOfU=9=GiCJ6u=+g075CU=x8h-iBMiC2A@mail.gmail.com>
+References: <cover.1468279072.git.alistair.francis@xilinx.com>
+	<CAFEAcA9V=dV8qiuQ_HOfU=9=GiCJ6u=+g075CU=x8h-iBMiC2A@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 12 Jul 2016 09:34:59 -0700
+X-Google-Sender-Auth: 0o_MNoGeDhdCY8MvRZ6TFMafq78
+Message-ID: <CAKmqyKNqbpqfR=+yzXtMOzdUzMTP4m_82hL5gdW=KC1nKjeGtA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c06::22e
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 0/5] Add support for Cadence
+ GEM priority queues
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: puzryFqxQTJ5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tNU+12s9/f8M
 
-On 07/12/2016 06:20 PM, C=C3=A9dric Le Goater wrote:
-> Hello Peter,
->=20
-> On 07/12/2016 04:19 PM, Peter Maydell wrote:
->> On 8 July 2016 at 17:06, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->>> Hello,
->>>
->>> Here are a couple of cleanups and a very basic memory controller mode=
-l
->>> providing a configuration register. This is needed to determine the
->>> RAM size of the SOC, only used by U-Boot as of today.
->>>
->>> Ultimately, we would want to add more support for U-Boot and be able
->>> to boot from flash 0 but the device model of the m25p80 object is not
->>> designed to use a memory region. And so, it is difficult to define a
->>> rom device for the flash backend.
->>>
->>> Some initial patches were proposed but they are not being friendly
->>> with the object interface. Work in progress.
+On Tue, Jul 12, 2016 at 7:25 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 12 July 2016 at 00:20, Alistair Francis <alistair.francis@xilinx.com> wrote:
+>> This patch series adds initial priority queue support to the Cadence GEM
+>> device. This is based on original work by Peter C, that has been ported
+>> to the latest version of QEMU.
 >>
->> Hi; the release process is now at the point where I wouldn't really
->> want to put this into 2.7; I can be persuaded if you have a solid
->> justification, though.
->=20
-> Here is my take to it  :
->=20
-> * 1/5 hw/misc: fix typo in Aspeed SCU hw-strap2 property name
->  =20
->   That's a minor fix
->=20
-> * 2/5 ast2400: replace aspeed_smc_is_implemented()
->=20
->   That is not a fix but it removes some ugliness in the code, which=20
->   you had noticed, and which prevents us from fixing possible issues=20
->   nicely. So this is a preventive cleanup :)
->=20
-> * 3/5 ast2400: pretend DMAs are done for U-boot
->=20
->   This is a work around fix. U-boot[1] uses DMAs to calibrate the=20
->   SPI flash module. It will spin until the DMA transfers are done.
->=20
-> * 4/5 ast2400: externalize revision numbers
->=20
->   This is minor fix de-duplicating code and a prereq for the next
->   patch.
->=20
-> * 5/5  ast2400: add a memory controller device model
->=20
->   That's an enhancement. It adds a basic device model for the memory
->   controller. This is needed by some version of the SDK relying on
->   the configuration register to know how much RAM the SOC has. Older
->   versions used a hardcoded value. =20
+>> There is more GEM work that I'd like to upstream after this, but I
+>> figured this a good place to start. I have done limited testing on the
+>> Xilinx machine, including running some of our GEM regressions, although
+>> they don't cover everything. I can't really think of too many other test
+>> cases that I can run at the moment.
+>
+> Hi; I'll get to a proper review at some point in the future, but
+> for the moment I just wanted to let you know that I'm classifying
+> this as "not for 2.7", given where we are in the release process.
 
-oh yes and that's a v2. first version was sent on 06/29/2016.
+That's fine, I should have sent it earlier.
 
 Thanks,
 
-C.=20
+Alistair
 
-> The first patches should not be too much of a problem regarding the=20
-> soft freeze. The last can wait 2.8 if you prefer, we need more work=20
-> to fully support u-boot anyhow. I would be happy to have review=20
-> though :) The model is very much like the SCU.
->=20
-> Thanks,
->=20
-> C.
->=20
-> [1] not supported yet in qemu because of the lack of a rom device=20
->     memory region needed to boot from the flash module.
->=20
->=20
-
+>
+> thanks
+> -- PMM
+>

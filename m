@@ -1,195 +1,130 @@
-Received: by 10.25.21.156 with SMTP id 28csp271749lfv;
-        Thu, 14 Jul 2016 13:18:33 -0700 (PDT)
-X-Received: by 10.13.207.193 with SMTP id r184mr11408907ywd.246.1468527513857;
-        Thu, 14 Jul 2016 13:18:33 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s20si2399390qka.266.2016.07.14.13.18.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:18:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.21.156 with SMTP id 28csp272580lfv;
+        Thu, 14 Jul 2016 13:20:55 -0700 (PDT)
+X-Received: by 10.37.57.83 with SMTP id g80mr6912207yba.59.1468527649902;
+        Thu, 14 Jul 2016 13:20:49 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
+        by mx.google.com with ESMTPS id z128si1682095ybz.317.2016.07.14.13.20.49
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 14 Jul 2016 13:20:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56732 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNn5d-0005I6-9g
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:18:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47437)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNn5Y-00058Z-TY
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:18:30 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNn5U-00014B-Ic
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:18:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40133)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1bNn5U-000147-AJ; Thu, 14 Jul 2016 16:18:24 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BFD6CC00F082;
-	Thu, 14 Jul 2016 20:18:23 +0000 (UTC)
-Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6EKILTF010520; Thu, 14 Jul 2016 16:18:22 -0400
-Date: Thu, 14 Jul 2016 17:18:20 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160714201820.GE31865@thinpad.lan.raisama.net>
-References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-6-git-send-email-drjones@redhat.com>
-	<20160614020026.GH4882@voom.fritz.box>
-	<20160614060807.tkdq2dy2kw6d3bw4@hawk.localdomain>
-	<20160615003759.GR4882@voom.fritz.box>
-	<20160615071113.jvvuqpgtkg6okqdg@hawk.localdomain>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20160615071113.jvvuqpgtkg6okqdg@hawk.localdomain>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 14 Jul 2016 20:18:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 05/16] hw/core/machine: add
- smp properites
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, agraf@suse.de, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, imammedo@redhat.com,
-	pbonzini@redhat.com, dgibson@redhat.com,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2NlAQr+yoMG9
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
+Received: by mail-yw0-x241.google.com with SMTP id y188so5582680ywf.3;
+        Thu, 14 Jul 2016 13:20:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=QCJI0UAU6jiqmgHaJY9g+DpZrbkMhKh61glpYjA3coE=;
+        b=kWT4OA02QUQxqccvcvOza49jY+Sab4pJRdiB2adO3P8c6H4cpa7inT+BMe35+AGXCE
+         AQV0BjDObKyXIH37ugPusNf25UT6RoYbYZnA7/ZPpE7VeQH0dexQPeRs4DLVrcE7kkWi
+         v5dd8MBXqe4HMEaZNumAijejSBGK5JlnaGrOGSuFqe8Pz36JYWxv1fKxZOf4KhdU4QdE
+         iftBhZ7Oxh2+/+ktgxPnjM/ZR0KvJFYcESR7ANpF1fCntHCSvYgjaVyE4QcUF0mpgHDK
+         +ykErbNOlPHv8IkxC+cDct93pTKWr6nMTWS+FVMCPePEp9L6BfTIGgictlNnwIl/guIm
+         zqtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=QCJI0UAU6jiqmgHaJY9g+DpZrbkMhKh61glpYjA3coE=;
+        b=DmROCE+hQYkX2CPw2w9VR6gjBj4dKj68A1fS1TlrDgnzYDZ1jxxXndSME7xGg69Yfg
+         uH02fAGN9bIPiQWbsIYEtqXabwSQ0PX6PF6nF8mtLjt/f/H9DyrBk1pJbGahW7expjqG
+         3+lu/l0lXPktKZSWhGKcsn/O4BqsUzgRFZmK/WhxQmYSqaJg2j5mVtsy/o4IDmeaBBB4
+         u3yFNuGtWErKvJ2fle7CAILrUAEcT3iNt35msGE7418a9UsxafEg8eKp9mfn/F4LiQHE
+         UjE1SU6CCnqAujylQewT7gYU5QPLguYWPnKqoxlmoLBZL3Xr9VZ2IT8LvSpQ3zY9BHUw
+         QRKQ==
+X-Gm-Message-State: ALyK8tKEl4ynY7OD5u96uMsUPUnLwDDG2yEIe8DIRE2gOcRxGK3I0lx9WaOkR2ZKa7olew==
+X-Received: by 10.129.4.78 with SMTP id 75mr11176624ywe.66.1468527649595;
+        Thu, 14 Jul 2016 13:20:49 -0700 (PDT)
+Return-Path: <bobby.prani@gmail.com>
+Received: from evgadesktop.attlocal.net (108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
+        by smtp.gmail.com with ESMTPSA id v68sm1634604ywg.31.2016.07.14.13.20.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Thu, 14 Jul 2016 13:20:47 -0700 (PDT)
+From: Pranith Kumar <bobby.prani@gmail.com>
+To: Claudio Fontana <claudio.fontana@huawei.com>,
+	Richard Henderson <rth@twiddle.net>,
+	qemu-arm@nongnu.org (open list:AArch64 target),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Cc: qemu-devel@nongnu.org,
+	alex.bennee@linaro.org,
+	serge.fdrv@gmail.com,
+	pbonzini@redhat.com,
+	peter.maydell@linaro.org,
+	Claudio Fontana <claudio.fontana@gmail.com>
+Subject: [PATCH v4 03/14] tcg/aarch64: Add support for fence
+Date: Thu, 14 Jul 2016 16:20:15 -0400
+Message-Id: <20160714202026.9727-4-bobby.prani@gmail.com>
+X-Mailer: git-send-email 2.9.0
+In-Reply-To: <20160714202026.9727-1-bobby.prani@gmail.com>
+References: <20160714202026.9727-1-bobby.prani@gmail.com>
+X-TUID: e5FpmeHUZXnr
 
-On Wed, Jun 15, 2016 at 09:11:13AM +0200, Andrew Jones wrote:
-> On Wed, Jun 15, 2016 at 10:37:59AM +1000, David Gibson wrote:
-> > On Tue, Jun 14, 2016 at 08:08:07AM +0200, Andrew Jones wrote:
-> > > On Tue, Jun 14, 2016 at 12:00:26PM +1000, David Gibson wrote:
-> > > > On Fri, Jun 10, 2016 at 07:40:16PM +0200, Andrew Jones wrote:
-> > > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > > > ---
-> > > > >  hw/core/machine.c   | 81 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-> > > > >  include/hw/boards.h |  6 ++++
-> > > > >  2 files changed, 87 insertions(+)
-> > > > > 
-> > > > > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > > > > index 3dce9020e510a..2625044002e57 100644
-> > > > > --- a/hw/core/machine.c
-> > > > > +++ b/hw/core/machine.c
-> > > > > @@ -172,6 +172,53 @@ static void machine_set_dumpdtb(Object *obj, const char *value, Error **errp)
-> > > > >      ms->dumpdtb = g_strdup(value);
-> > > > >  }
-> > > > >  
-> > > > > +static void machine_get_smp(Object *obj, Visitor *v, const char *name,
-> > > > > +                            void *opaque, Error **errp)
-> > > > > +{
-> > > > > +    MachineState *ms = MACHINE(obj);
-> > > > > +    int64_t value;
-> > > > > +
-> > > > > +    if (strncmp(name, "sockets", 7) == 0) {
-> > > > > +        value = ms->sockets;
-> > > > > +    } else if (strncmp(name, "cores", 5) == 0) {
-> > > > > +        value = ms->cores;
-> > > > > +    } else if (strncmp(name, "threads", 7) == 0) {
-> > > > > +        value = ms->threads;
-> > > > > +    } else if (strncmp(name, "maxcpus", 7) == 0) {
-> > > > > +        value = ms->maxcpus;
-> > > > > +    } else if (strncmp(name, "cpus", 4) == 0) {
-> > > > > +        value = ms->cpus;
-> > > > > +    }
-> > > > > +
-> > > > > +    visit_type_int(v, name, &value, errp);
-> > > > > +}
-> > > > 
-> > > > Any particular for multiplexing all the set / get, rather than having
-> > > > separate callbacks for each property?
-> > > 
-> > > Not really. This way just makes denser code. But I'll go whichever
-> > > direction people prefer.
-> > 
-> > I'd prefer not to have the multiplexer, but I don't care that much.
-> > 
-> > > Actually I should probably add an
-> > > else { error_report(...) } in either case, which means the multifunction
-> > > direction would still contain strncmps.
-> > 
-> > Hrm.. that would seem an odd choice to me if you didn't have the
-> > multiplex.  Not including the strncmp() means you can change the
-> > property name (or add aliases) in a single place, without changing the
-> > callback functions.
-> > 
-> > Note also that the current set of strncmp()s is only correct because
-> > there is a limited set of things bound to this callback.  Remember
-> > that strncmp(name, "sockets", 7) will match "socketsfoo".
-> 
-> Good point. I'll change to multiple functions and just drop the
-> strncmps.
+Cc: Claudio Fontana <claudio.fontana@gmail.com>
+Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
+---
+ tcg/aarch64/tcg-target.inc.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-Multiple functions that just get/set struct fields would be
-easier to convert to use a better property API (that don't
-require writing getter/setters) in the future.
-
-[...]
-> > > > > +
-> > > > > +    int sockets;
-> > > > > +    int cores;
-> > > > > +    int threads;
-> > > > > +    int maxcpus;
-> > > > > +    int cpus;
-> > > > 
-> > > > Hrm.. as the tests added in earlier patches highlight, essentially one
-> > > > of these properties is redundant.  Is there a reason to include them
-> > > > all, rather than to pick one to drop?
-> > > 
-> > > Well, IMO, only maxcpus could be dropped. I'd prefer not to though
-> > > because it's a convenient state to have pre-calculated, and possibly
-> > > error prone to leave to all users to re-calculate.
-> > 
-> > Sorry, to clarify.  I have no problem with having all 5 variables,
-> > with one precalculated from the others.  What I'm not convinced is a
-> > good idea is exposing all 5 as settable properties.
-> 
-> I see. I think we need them all, especially as we decide which ones
-> can be optional, if given others. For example we need cpus and maxcpus
-> for obvious reasons. threads can be optional (default =1), but if you
-> want to specify more than 1 then we need the property. Currently I
-> think both sockets and cores should be required since we don't know
-> which should be calculated form the other, and therefore can't set
-> a default for either. That's all five.
-
-If we were designing a new interface, I would prefer to make it
-different, and add properties only to machine classes that really
-make this configurable. But as we are just moving existing data
-and logic from vl.c into MachineState fields, I agree we need all
-the struct fields, so the existing vl.c code can be easily moved
-to machine.c.
-
-But:
-
-About the new externally-visible interface: what about we
-register the properties only on the machine subclasses that
-really do something with those options? Then we won't need to
-worry about keeping compatibility in machines that never
-supported multi-core/multi-thread configurations in the first
-place.
-
+diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
+index 08b2d03..1d220b7 100644
+--- a/tcg/aarch64/tcg-target.inc.c
++++ b/tcg/aarch64/tcg-target.inc.c
+@@ -372,6 +372,11 @@ typedef enum {
+     I3510_EOR       = 0x4a000000,
+     I3510_EON       = 0x4a200000,
+     I3510_ANDS      = 0x6a000000,
++
++    /* System instructions.  */
++    DMB_ISH         = 0xd50338bf,
++    DMB_LD          = 0x00000100,
++    DMB_ST          = 0x00000200,
+ } AArch64Insn;
+ 
+ static inline uint32_t tcg_in32(TCGContext *s)
+@@ -981,6 +986,22 @@ static inline void tcg_out_addsub2(TCGContext *s, int ext, TCGReg rl,
+     tcg_out_mov(s, ext, orig_rl, rl);
+ }
+ 
++static inline void tcg_out_mb(TCGContext *s, TCGArg a0)
++{
++    uint32_t dmb_type = DMB_ISH;
++    if (a0 & (TCG_MO_LD_ST | TCG_MO_ST_LD)) {
++        tcg_out32(s, dmb_type | DMB_LD | DMB_ST);
++        return;
++    }
++    if (a0 & TCG_MO_LD_LD) {
++        dmb_type |= DMB_LD;
++    }
++    if (a0 & TCG_MO_ST_ST) {
++        dmb_type |= DMB_ST;
++    }
++    tcg_out32(s, dmb_type);
++}
++
+ #ifdef CONFIG_SOFTMMU
+ /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
+  *                                     TCGMemOpIdx oi, uintptr_t ra)
+@@ -1648,6 +1669,10 @@ static void tcg_out_op(TCGContext *s, TCGOpcode opc,
+         tcg_out_insn(s, 3508, SMULH, TCG_TYPE_I64, a0, a1, a2);
+         break;
+ 
++    case INDEX_op_mb:
++        tcg_out_mb(s, a0);
++        break;
++
+     case INDEX_op_mov_i32:  /* Always emitted via tcg_out_mov.  */
+     case INDEX_op_mov_i64:
+     case INDEX_op_movi_i32: /* Always emitted via tcg_out_movi.  */
+@@ -1772,6 +1797,7 @@ static const TCGTargetOpDef aarch64_op_defs[] = {
+     { INDEX_op_muluh_i64, { "r", "r", "r" } },
+     { INDEX_op_mulsh_i64, { "r", "r", "r" } },
+ 
++    { INDEX_op_mb, { } },
+     { -1 },
+ };
+ 
 -- 
-Eduardo
+2.9.0

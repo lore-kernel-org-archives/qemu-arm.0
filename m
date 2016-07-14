@@ -1,130 +1,102 @@
-Bcc: qemu-ppc@nongnu.org
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id n26sm3542490wmi.3.2016.07.14.06.15.54
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Jul 2016 06:15:54 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id B23403E031D;
-	Thu, 14 Jul 2016 14:15:57 +0100 (BST)
-References: <1468354426-837-1-git-send-email-sergey.fedorov@linaro.org> <1468354426-837-7-git-send-email-sergey.fedorov@linaro.org> <87oa604bzf.fsf@linaro.org> <57878CFA.4060604@gmail.com>
-User-agent: mu4e 0.9.17; emacs 25.0.95.9
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Sergey Fedorov <serge.fdrv@gmail.com>
-Cc: Sergey Fedorov <sergey.fedorov@linaro.org>, qemu-devel@nongnu.org, 
-	mttcg@listserver.greensocs.com, fred.konrad@greensocs.com, 
-	a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com, 
-	rth@twiddle.net, patches@linaro.org, mark.burton@greensocs.com, 
-	pbonzini@redhat.com, jan.kiszka@siemens.com, peter.maydell@linaro.org, 
-	claudio.fontana@huawei.com, Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, 
-	Michael Walle <michael@walle.cc>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Leon Alrae <leon.alrae@imgtec.com>, Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>, 
-	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>, 
-	Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, "u.org" <qemu-ppc@nongn>
-Subject: Re: [PATCH v3 06/11] tcg: Introduce tb_mark_invalid() and tb_is_invalid()
-In-reply-to: <57878CFA.4060604@gmail.com>
-Date: Thu, 14 Jul 2016 14:15:57 +0100
-Message-ID: <87furc4aya.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: puVVZZlWbXkX
+Received: by 10.25.21.156 with SMTP id 28csp115841lfv;
+        Thu, 14 Jul 2016 07:20:29 -0700 (PDT)
+X-Received: by 10.200.43.47 with SMTP id 44mr20215427qtu.66.1468506029669;
+        Thu, 14 Jul 2016 07:20:29 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t66si1446370qke.81.2016.07.14.07.20.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 14 Jul 2016 07:20:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54247 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bNhV7-000651-3E
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 10:20:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56061)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marcel@redhat.com>) id 1bNgvx-00035x-W0
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 09:44:10 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <marcel@redhat.com>) id 1bNgvv-0001hQ-Kn
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 09:44:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37485)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <marcel@redhat.com>)
+	id 1bNgvv-0001hH-FV; Thu, 14 Jul 2016 09:44:07 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DEA294EB10;
+	Thu, 14 Jul 2016 13:44:06 +0000 (UTC)
+Received: from work.redhat.com (vpn-202-40.tlv.redhat.com [10.35.202.40])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6EDhkRP004016; Thu, 14 Jul 2016 09:44:02 -0400
+From: Marcel Apfelbaum <marcel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 14 Jul 2016 16:43:42 +0300
+Message-Id: <1468503826-10617-4-git-send-email-marcel@redhat.com>
+In-Reply-To: <1468503826-10617-1-git-send-email-marcel@redhat.com>
+References: <1468503826-10617-1-git-send-email-marcel@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 14 Jul 2016 13:44:06 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [Qemu-devel] [PATCH 3/7] hw/mips: fix PCI bus
+ initialization
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, thuth@redhat.com, mst@redhat.com,
+	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, marcel@redhat.com,
+	leon.alrae@imgtec.com, aurelien@aurel32.net, rth@twiddle.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PW3i/0eaGeKu
 
+Delay the host-bridge 'realization' until the
+PCI root bus is attached.
 
-Sergey Fedorov <serge.fdrv@gmail.com> writes:
+Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
+---
+ hw/mips/gt64xxx_pci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 14/07/16 15:53, Alex Bennée wrote:
->> Sergey Fedorov <sergey.fedorov@linaro.org> writes:
->>
->>> From: Sergey Fedorov <serge.fdrv@gmail.com>
->>>
->>> These functions will be used to make translation block invalidation safe
->>> with concurrent lockless lookup in the global hash table.
->>>
->>> Most targets don't use 'cs_base'; so marking TB as invalid is as simple
->>> as assigning -1 to 'cs_base'. SPARC target stores the next program
->>> counter into 'cs_base', and -1 is a fine invalid value since PC must bet
->>> a multiple of 4 in SPARC. The only odd target is i386, for which a
->>> special flag is introduced in place of removed 'HF_SOFTMMU_MASK'.
->>>
->>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->>> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
->>> Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
->>> ---
->>>  include/exec/exec-all.h  | 10 ++++++++++
->>>  target-alpha/cpu.h       | 14 ++++++++++++++
->>>  target-arm/cpu.h         | 14 ++++++++++++++
->>>  target-cris/cpu.h        | 14 ++++++++++++++
->>>  target-i386/cpu.h        | 17 +++++++++++++++++
->>>  target-lm32/cpu.h        | 14 ++++++++++++++
->>>  target-m68k/cpu.h        | 14 ++++++++++++++
->>>  target-microblaze/cpu.h  | 14 ++++++++++++++
->>>  target-mips/cpu.h        | 14 ++++++++++++++
->>>  target-moxie/cpu.h       | 14 ++++++++++++++
->>>  target-openrisc/cpu.h    | 14 ++++++++++++++
->>>  target-ppc/cpu.h         | 14 ++++++++++++++
->>>  target-s390x/cpu.h       | 14 ++++++++++++++
->>>  target-sh4/cpu.h         | 14 ++++++++++++++
->>>  target-sparc/cpu.h       | 14 ++++++++++++++
->>>  target-sparc/translate.c |  1 +
->>>  target-tilegx/cpu.h      | 14 ++++++++++++++
->>>  target-tricore/cpu.h     | 14 ++++++++++++++
->>>  target-unicore32/cpu.h   | 14 ++++++++++++++
->>>  target-xtensa/cpu.h      | 14 ++++++++++++++
->>>  20 files changed, 266 insertions(+)
->>>
->>> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
->>> index db79ab65cebe..61cc3a1fb8f7 100644
->>> --- a/include/exec/exec-all.h
->>> +++ b/include/exec/exec-all.h
->>> @@ -256,6 +256,16 @@ void tb_free(TranslationBlock *tb);
->>>  void tb_flush(CPUState *cpu);
->>>  void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
->>>
->>> +static inline void tb_mark_invalid(TranslationBlock *tb)
->>> +{
->>> +    cpu_get_invalid_tb_cpu_state(&tb->pc, &tb->cs_base, &tb->flags);
->> Hmmm are we getting something here? Maybe cpu_tb_invalidate_cpu_state?
->
-> Just to be similar to cpu_get_tb_cpu_state().
+diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+index 3f4523d..4811843 100644
+--- a/hw/mips/gt64xxx_pci.c
++++ b/hw/mips/gt64xxx_pci.c
+@@ -1167,7 +1167,6 @@ PCIBus *gt64120_register(qemu_irq *pic)
+     DeviceState *dev;
+ 
+     dev = qdev_create(NULL, TYPE_GT64120_PCI_HOST_BRIDGE);
+-    qdev_init_nofail(dev);
+     d = GT64120_PCI_HOST_BRIDGE(dev);
+     phb = PCI_HOST_BRIDGE(dev);
+     memory_region_init(&d->pci0_mem, OBJECT(dev), "pci0-mem", UINT32_MAX);
+@@ -1178,6 +1177,7 @@ PCIBus *gt64120_register(qemu_irq *pic)
+                                 &d->pci0_mem,
+                                 get_system_io(),
+                                 PCI_DEVFN(18, 0), 4, TYPE_PCI_BUS);
++    qdev_init_nofail(dev);
+     memory_region_init_io(&d->ISD_mem, OBJECT(dev), &isd_mem_ops, d, "isd-mem", 0x1000);
+ 
+     pci_create_simple(phb->bus, PCI_DEVFN(0, 0), "gt64120_pci");
+-- 
+2.4.3
 
-I guess if you squint just right. I'll drop the objection.
-
->
->>
->>> +}
->>> +
->>> +static inline bool tb_is_invalid(TranslationBlock *tb)
->>> +{
->>> +    return cpu_tb_cpu_state_is_invalidated(tb->pc, tb->cs_base, tb->flags);
->>> +}
->> Also why are we passing three pointers to parts of TranslationBlock? Why
->> not just pass tb directly and be done with it?
->
-> I'm not sure we want to include exec/exec-all.h in target-*/cpu.h
-
-Fair enough.
-
->
->>
->> I'm sure the compiler does something sensible but seems overly verbose
->> to me.
->>
->>> +
->>>  #if defined(USE_DIRECT_JUMP)
->>>
->>>  #if defined(CONFIG_TCG_INTERPRETER)
-> (snip)
->> Otherwise:
->>
->> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
->
-> Kind regards,
-> Sergey
-
-
---
-Alex Bennée

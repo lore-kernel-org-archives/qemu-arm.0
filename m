@@ -1,66 +1,63 @@
-Received: by 10.25.21.156 with SMTP id 28csp267736lfv;
-        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
-X-Received: by 10.55.27.207 with SMTP id m76mr19634298qkh.12.1468526879100;
-        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp268970lfv;
+        Thu, 14 Jul 2016 13:11:00 -0700 (PDT)
+X-Received: by 10.200.45.8 with SMTP id n8mr23411151qta.57.1468527060498;
+        Thu, 14 Jul 2016 13:11:00 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a48si2380693qta.99.2016.07.14.13.07.58
+        by mx.google.com with ESMTPS id h19si2368674qke.295.2016.07.14.13.11.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
+        Thu, 14 Jul 2016 13:11:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56700 helo=lists.gnu.org)
+Received: from localhost ([::1]:56712 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNmvO-0006mY-8G
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:07:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45544)
+	id 1bNmyJ-00019B-U7
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:10:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45980)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNmvK-0006Xr-32
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:07:55 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bNmyF-000191-0Q
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:10:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNmvE-0007Pj-W7
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:07:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48477)
+	(envelope-from <ehabkost@redhat.com>) id 1bNmyB-00086F-DS
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:10:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57887)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <ehabkost@redhat.com>)
-	id 1bNmvE-0007Pf-NU; Thu, 14 Jul 2016 16:07:48 -0400
+	id 1bNmyB-00086B-7j; Thu, 14 Jul 2016 16:10:51 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E1F78D56E9;
-	Thu, 14 Jul 2016 20:07:47 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C162B142580;
+	Thu, 14 Jul 2016 20:10:50 +0000 (UTC)
 Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6EK7j4N013923; Thu, 14 Jul 2016 16:07:46 -0400
-Date: Thu, 14 Jul 2016 17:07:43 -0300
+	id u6EKAmnd015980; Thu, 14 Jul 2016 16:10:49 -0400
+Date: Thu, 14 Jul 2016 17:10:47 -0300
 From: Eduardo Habkost <ehabkost@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20160714200743.GC31865@thinpad.lan.raisama.net>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20160714201047.GD31865@thinpad.lan.raisama.net>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-8-git-send-email-drjones@redhat.com>
-	<575BB5AB.3010509@redhat.com>
-	<20160612134810.posa6p4wyxhit4yt@hawk.localdomain>
-	<20160614021216.GI4882@voom.fritz.box>
-	<20160614061949.eh45x57tdimt6obr@hawk.localdomain>
-	<20160615005620.GU4882@voom.fritz.box>
+	<1465580427-13596-5-git-send-email-drjones@redhat.com>
+	<20160614013037.GG4882@voom.fritz.box>
+	<20160614055856.6ixqhiuezthebact@hawk.localdomain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20160615005620.GU4882@voom.fritz.box>
+In-Reply-To: <20160614055856.6ixqhiuezthebact@hawk.localdomain>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.6.1 (2016-04-27)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 14 Jul 2016 20:07:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 14 Jul 2016 20:10:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 07/16] qom/cpu: make
- nr-cores, nr-threads real properties
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 04/16] hw/core/machine:
+ Introduce pre_init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,136 +69,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
-	imammedo@redhat.com, qemu-devel@nongnu.org, agraf@suse.de,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	Thomas Huth <thuth@redhat.com>, pbonzini@redhat.com, dgibson@redhat.com
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, agraf@suse.de,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	imammedo@redhat.com, dgibson@redhat.com,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BkRcg7gACOjP
+X-TUID: mc3odrKiN6Kf
 
-
-First of all, sorry for the horrible delay in replying to this
-thread.
-
-On Wed, Jun 15, 2016 at 10:56:20AM +1000, David Gibson wrote:
-> On Tue, Jun 14, 2016 at 08:19:49AM +0200, Andrew Jones wrote:
-> > On Tue, Jun 14, 2016 at 12:12:16PM +1000, David Gibson wrote:
-> > > On Sun, Jun 12, 2016 at 03:48:10PM +0200, Andrew Jones wrote:
-> > > > On Sat, Jun 11, 2016 at 08:54:35AM +0200, Thomas Huth wrote:
-> > > > > On 10.06.2016 19:40, Andrew Jones wrote:
-> > > > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > > > > ---
-> > > > > >  qom/cpu.c | 8 ++++++++
-> > > > > >  1 file changed, 8 insertions(+)
-> > > > > > 
-> > > > > > diff --git a/qom/cpu.c b/qom/cpu.c
-> > > > > > index 751e992de8823..024cda3eb98c8 100644
-> > > > > > --- a/qom/cpu.c
-> > > > > > +++ b/qom/cpu.c
-> > > > > > @@ -28,6 +28,7 @@
-> > > > > >  #include "exec/log.h"
-> > > > > >  #include "qemu/error-report.h"
-> > > > > >  #include "sysemu/sysemu.h"
-> > > > > > +#include "hw/qdev-properties.h"
-> > > > > >  
-> > > > > >  bool cpu_exists(int64_t id)
-> > > > > >  {
-> > > > > > @@ -342,6 +343,12 @@ static int64_t cpu_common_get_arch_id(CPUState *cpu)
-> > > > > >      return cpu->cpu_index;
-> > > > > >  }
-> > > > > >  
-> > > > > > +static Property cpu_common_properties[] = {
-> > > > > > +    DEFINE_PROP_INT32("nr-cores", CPUState, nr_cores, 1),
-> > > > > > +    DEFINE_PROP_INT32("nr-threads", CPUState, nr_threads, 1),
-> > > > > > +    DEFINE_PROP_END_OF_LIST()
-> > > > > > +};
-> > > > > 
-> > > > > Are you aware of the current CPU hotplug discussion that is going on?
-> > > > 
-> > > > I'm aware of it going on, but haven't been following it.
-> > > > 
-> > > > > I'm not very involved there, but I think some of these reworks also move
-> > > > > "nr_threads" into the CPU state already, e.g. see:
-> > > > 
-> > > > nr_threads (and nr_cores) are already state in CPUState. This patch just
-> > > > exposes that state via properties.
-> > > > 
-> > > > > 
-> > > > > https://github.com/dgibson/qemu/commit/9d07719784ecbeebea71
-> > > > > 
-> > > > > ... so you might want to check these patches first to see whether you
-> > > > > can base your rework on them?
-> > > > 
-> > > > Every cpu, and thus every machine, uses CPUState for its cpus. I'm
-> > > > not sure every machine will want to use that new abstract core class
-> > > > though. If they did, then we could indeed use nr_threads from there
-> > > > instead (and remove it from CPUState), but we'd still need nr_cores
-> > > > from the abstract cpu package class (CPUState).
+On Tue, Jun 14, 2016 at 07:58:56AM +0200, Andrew Jones wrote:
+> On Tue, Jun 14, 2016 at 11:30:37AM +1000, David Gibson wrote:
+> > On Fri, Jun 10, 2016 at 07:40:15PM +0200, Andrew Jones wrote:
+> > > From: Igor Mammedov <imammedo@redhat.com>
 > > > 
-> > > Hmm.  Since the CPUState object represents just a single thread, it
-> > > seems weird to me that it would have nr_threads and nr_cores
-> > > information.
-
-Agreed it is weird, and I think we should try to move it away
-from CPUState, not make it part of the TYPE_CPU interface.
-nr_threads belongs to the actual container of the Thread objects,
-and nr_cores in the actual container of the Core objects.
-
-The problem is how to implement that in a non-intrusive way that
-would require changing the object hierarchy of all architectures.
-
-
-> > > 
-> > > Exposing those as properties makes that much worse, because it's now
-> > > ABI, rather than internal detail we can clean up at some future time.
+> > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > > 
-> > CPUState is supposed to be "State of one CPU core or thread", which
-> > justifies having nr_threads state, as it may be describing a core.
+> > I think this needs some kind of rationale.
+> > 
+> > Since with this patch it is called immediately before ->init, I'm not
+> > really seeing the point of this.
 > 
-> Um.. does it ever actually represent a (multithread) core in practice?
-> It would need to have duplicated register state for every thread were
-> that the case.
+> Many machines already override ->init, so if we want to move code
+> from vl.c into machine methods, but be sure that they run it now,
+> then we have to invent a pre-init. I (or Igor) can add something
+> like that to the commit message for the next round.
 
-AFAIK, CPUState is still always thread state. Or has this changed
-in some architectures, already?
+If we just want to move vl.c code into machine, why not just
+create a simple machine_pre_init() function?
 
-> 
-> > I guess there's no justification for having nr_cores in there though.
-> > I agree adding the Core class is a good idea, assuming it will get used
-> > by all machines, and CPUState then gets changed to a Thread class. The
-> > question then, though, is do we also create a Socket class that contains
-> > nr_cores?
-> 
-> That was roughly our intention with the way the cross platform hotplug
-> stuff is evolving.  But the intention was that the Socket objects
-> would only need to be constructed for machine types where it makes
-> sense.  So for example on the paravirt pseries platform, we'll only
-> have Core objects, because the socket distinction isn't really
-> meaningful.
-> 
-> > And how will a Thread method get that information when it
-> > needs to emulate, e.g. CPUID, that requires it? It's a bit messy, so
-> > I'm open to all suggestions on it.
-> 
-> So, if the Thread needs this information, I'm not opposed to it having
-> it internally (presumably populated earlier from the Core object).
-> But I am opposed to it being a locked in part of the interface by
-> having it as an exposed property.
-
-I agree we don't want to make this part of the external
-interface. In this case, if we don't add the properties, how
-exactly is the Machine or Core code supposed to pass that
-information to the Thread object?
-
-Maybe the intermediate steps could be:
-
-* Make the Thread code that uses CPUState::nr_{cores,threads} and
-  smp_{cores,threads} get that info from MachineState instead.
-* On the architectures where we already have a reasonable
-  Socket/Core/Thread hierarchy, let the Thread code simply ask
-  for that information from its parent.
+We can add a virtual method that can be reimplemented by
+subclasses later, only when we really see the need for a subclass
+to override some behavior.
 
 -- 
 Eduardo

@@ -1,61 +1,61 @@
-Received: by 10.25.21.156 with SMTP id 28csp280224lfv;
-        Thu, 14 Jul 2016 13:44:09 -0700 (PDT)
-X-Received: by 10.200.52.182 with SMTP id w51mr14179302qtb.90.1468529049331;
-        Thu, 14 Jul 2016 13:44:09 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp282826lfv;
+        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
+X-Received: by 10.55.13.11 with SMTP id 11mr19807050qkn.150.1468529501491;
+        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s27si2475503qks.234.2016.07.14.13.44.09
+        by mx.google.com with ESMTPS id e100si2503231qkh.223.2016.07.14.13.51.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:44:09 -0700 (PDT)
+        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56883 helo=lists.gnu.org)
+Received: from localhost ([::1]:56942 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNnUO-00046v-M3
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:44:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52224)
+	id 1bNnbg-0005A9-V3
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:51:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNnUH-00044H-IW
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:44:02 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bNnbV-00053V-OI
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:51:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNnUB-0005zy-JE
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:44:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44103)
+	(envelope-from <ehabkost@redhat.com>) id 1bNnbP-0007VG-P9
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:51:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39583)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <ehabkost@redhat.com>)
-	id 1bNnUB-0005zp-DP; Thu, 14 Jul 2016 16:43:55 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	id 1bNnbP-0007VC-JH; Thu, 14 Jul 2016 16:51:23 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EA5157F3F9;
-	Thu, 14 Jul 2016 20:43:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D28DA142582;
+	Thu, 14 Jul 2016 20:51:22 +0000 (UTC)
 Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6EKhqDE027649; Thu, 14 Jul 2016 16:43:54 -0400
-Date: Thu, 14 Jul 2016 17:43:51 -0300
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6EKpKHZ010749; Thu, 14 Jul 2016 16:51:22 -0400
+Date: Thu, 14 Jul 2016 17:51:19 -0300
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160714204351.GG31865@thinpad.lan.raisama.net>
+Message-ID: <20160714205119.GH31865@thinpad.lan.raisama.net>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-15-git-send-email-drjones@redhat.com>
+	<1465580427-13596-16-git-send-email-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1465580427-13596-15-git-send-email-drjones@redhat.com>
+In-Reply-To: <1465580427-13596-16-git-send-email-drjones@redhat.com>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 14 Jul 2016 20:43:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 14 Jul 2016 20:51:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 14/16] hw/arm/virt: stash
- cpu topo info in VirtGuestInfo
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 15/16] smbios: don't use
+ smp_cores, smp_threads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,60 +72,40 @@ Cc: peter.maydell@linaro.org, imammedo@redhat.com, qemu-devel@nongnu.org,
 	dgibson@redhat.com, pbonzini@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2dx+LaAwns6R
+X-TUID: 7ItpIWm57deT
 
-On Fri, Jun 10, 2016 at 07:40:25PM +0200, Andrew Jones wrote:
-> This is a first step to preparing mach-virt for configurable
-> cpu topology, and is necessary now to prepare to move smbios
-> code away from using cpu topology globals smp_cores,smp_threads.
+On Fri, Jun 10, 2016 at 07:40:26PM +0200, Andrew Jones wrote:
+> SMBIOS needs cpu topology for Type4 tables, so we need to pass
+> it in. There are several parameters so we use a structure. There
+> are two callers (of non-legacy, which generates Type4 tables),
+> x86 and arm, so we also update both to pass the topology
+> parameters from their MachineState properties (directly in the
+> case of x86, indirectly through VirtGuestInfo in the case of arm).
 > 
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
-
-I'd rather put a MachineState pointer inside VirtGuestInfo, and
-eventually eliminate VirtGuestInfo completely (like we already
-did with PCGuestInfo in x86).
-
-> ---
->  hw/arm/virt.c                    | 6 +++++-
->  include/hw/arm/virt-acpi-build.h | 4 ++++
->  2 files changed, 9 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 134b6e36623ba..769a49aa5be77 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1281,7 +1281,11 @@ static void machvirt_init(MachineState *machine)
->      create_fw_cfg(vbi, &address_space_memory);
->      rom_set_fw(fw_cfg_find());
+[...]
+> @@ -701,12 +701,19 @@ static uint32_t x86_cpu_apic_id_from_index(MachineState *ms,
+>      }
+>  }
 >  
-> -    guest_info->cpus = vbi->cpus;
-> +    guest_info->sockets = machine->sockets;
-> +    guest_info->cores   = machine->cores;
-> +    guest_info->threads = machine->threads;
-> +    guest_info->maxcpus = machine->maxcpus;
-> +    guest_info->cpus    = machine->cpus;
->      guest_info->fw_cfg = fw_cfg_find();
->      guest_info->memmap = vbi->memmap;
->      guest_info->irqmap = vbi->irqmap;
-> diff --git a/include/hw/arm/virt-acpi-build.h b/include/hw/arm/virt-acpi-build.h
-> index d6c5982960403..a34fb04230e66 100644
-> --- a/include/hw/arm/virt-acpi-build.h
-> +++ b/include/hw/arm/virt-acpi-build.h
-> @@ -27,6 +27,10 @@
->  #define ACPI_GICC_ENABLED 1
+> -static void pc_build_smbios(FWCfgState *fw_cfg)
+> +static void pc_build_smbios(MachineState *ms, FWCfgState *fw_cfg)
+>  {
+>      uint8_t *smbios_tables, *smbios_anchor;
+>      size_t smbios_tables_len, smbios_anchor_len;
+>      struct smbios_phys_mem_area *mem_array;
+>      unsigned i, array_count;
+> +    struct smbios_cpu_topology topo = {
+> +        .sockets = ms->sockets,
+> +        .cores   = ms->cores,
+> +        .threads = ms->threads,
+> +        .maxcpus = ms->maxcpus,
+> +        .cpus    = ms->cpus,
+> +    };
 >  
->  typedef struct VirtGuestInfo {
-> +    int sockets;
-> +    int cores;
-> +    int threads;
-> +    int maxcpus;
->      int cpus;
->      FWCfgState *fw_cfg;
->      const MemMapEntry *memmap;
-> -- 
-> 2.4.11
-> 
-> 
+
+Do we really need to manually copy data around this way when
+smbios.c could just use qdev_get_machine() directly?
 
 -- 
 Eduardo

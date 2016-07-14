@@ -1,123 +1,91 @@
-Received: by 10.25.21.156 with SMTP id 28csp272595lfv;
+Received: by 10.25.21.156 with SMTP id 28csp272777lfv;
+        Thu, 14 Jul 2016 13:21:28 -0700 (PDT)
+X-Received: by 10.37.77.85 with SMTP id a82mr3456420ybb.155.1468527658995;
         Thu, 14 Jul 2016 13:20:58 -0700 (PDT)
-X-Received: by 10.37.78.133 with SMTP id c127mr11278725ybb.102.1468527652325;
-        Thu, 14 Jul 2016 13:20:52 -0700 (PDT)
 Return-Path: <bobby.prani@gmail.com>
-Received: from mail-yw0-x242.google.com (mail-yw0-x242.google.com. [2607:f8b0:4002:c05::242])
-        by mx.google.com with ESMTPS id 20si1687641ybn.208.2016.07.14.13.20.52
+Received: from mail-yw0-x241.google.com (mail-yw0-x241.google.com. [2607:f8b0:4002:c05::241])
+        by mx.google.com with ESMTPS id s6si1686107ybf.216.2016.07.14.13.20.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Jul 2016 13:20:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) client-ip=2607:f8b0:4002:c05::242;
+        Thu, 14 Jul 2016 13:20:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) client-ip=2607:f8b0:4002:c05::241;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::242 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
+       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::241 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
        dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yw0-x242.google.com with SMTP id c13so5574034ywh.2;
-        Thu, 14 Jul 2016 13:20:52 -0700 (PDT)
+Received: by mail-yw0-x241.google.com with SMTP id y188so5582839ywf.3;
+        Thu, 14 Jul 2016 13:20:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=wmp9o4dxBoE+rb2qlhN/nF6Jyh3UF3FBLw4JrGAXL0w=;
-        b=YSTYPF5kChaFq2RSWjPXLFJFdxVkfN5XpKqYzSbrhyvG3m8yPwHK2/kz4wLpiLJZYe
-         /uXCwqkMRTyaSii7hcUS/QhbGcKNARiYMtgpqaT6IFJYhWXMoXlQe7P6ZpwlejH/jrDH
-         zyX0CvnFNdbWb46x6kPdWfI2DOzYcwjJLwvuWnxlCIkBi8yLjjpWCz3iihcRLbzHiSHK
-         qDBlV9uBDsY9pgDq+apDQzym0ntl7iVBmk/rpM4rFDz2LFX9eStOHDJ5jIjMmVjPr687
-         jjXNasXnzHQgTh6YK9QXhTlDZOij/bwj80p6Ets3iPciZrUAFZkFOkYD88xwEtNi+iQp
-         z1CA==
+        bh=MBq+AsdNjrmy9HJlSEq3KgJj1kUjeGxzK6ICXpx5d4A=;
+        b=krUURf0JGgKA++kdLXhyv5hpGd2Y2oWMfi03VOYJ66AQyLDuRbU0qb9fpnRVY/WYf+
+         ZMcMWSHkTxF2Zw3+tDcvnY+AfRUi85awIXq0XnHRYmXDe7YSOop97Mo8fH29xySihPQp
+         7zYMdAqBY9SQ25pIz4CvD/38OM6E8zyY/KcYp42ajq4yipWIvJOrg/4FM2YGtJSvrsdv
+         yh2K8t/R9eiGgVYZQKM/ElftuRyuzj3+n1I/MS56IkK+r9N+ZrQx6yV9X4q14kLAFrFr
+         6bmvGQNjxg+nLzr8NE0jt+tdnTqhIlgN//9UoWqdZ4mqQemHxri6+41Wux5qyt6Y6UaD
+         8tqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=wmp9o4dxBoE+rb2qlhN/nF6Jyh3UF3FBLw4JrGAXL0w=;
-        b=YKk4IzdG12lFn16Um6soBBfL70VolAh5jWWRKjLVcXO4A6q/5ENoUEcW/z4C2+RfJe
-         6La8ZImNwAl+G/JmqR87rfFaXdO+XJchp2uQD6wMWmm+lRPPl0NRsXlxGyusSP4fUk3j
-         JTO8Pi7cwUJ4LAGt2LpohnoDg2hsz6c7iPF2Fertm65G7w++u1U0faOU2HZv+l0pvwSs
-         RSF2Sg+PE8MRvR5YZcjvskKy7tDp9XQv+7Mc5X+Xm2VD/vPiXJbIWK8X8p0zOiRaLF04
-         Ct44B7oR8/pzrGGBwTr2IJRq4QPpw6flQ9shgvYs73eSzJ5PCmpfAndU++Z6rDxar6En
-         eHGQ==
-X-Gm-Message-State: ALyK8tIeWyrVANEq4lMHkP9PL/i/st1EVhM1s6E8Zz2V9/Kwn5rZMSfnyiJlnjSKxU3Rfg==
-X-Received: by 10.129.153.149 with SMTP id q143mr12311518ywg.229.1468527652020;
-        Thu, 14 Jul 2016 13:20:52 -0700 (PDT)
+        bh=MBq+AsdNjrmy9HJlSEq3KgJj1kUjeGxzK6ICXpx5d4A=;
+        b=MaNvlQklDIDO7GRjaHW6OZpP5gNQ8wGKsi94BYbWtMhp+XkZnBfwkzOap6wnyXtl23
+         dUhGo0G1qF9Tq919miOIhTFtGlffx4KSkgGph55jcJPsL7FsLKKmPJYYLn/BMHCZ2aza
+         cdtg6XsnZxDdKFM5MmXfNOww+ODJXnS5x1oXRA9obgllvrN95lJk2CaOtdcCB++mA9ur
+         iHQ0/xtFeKDet9Q6D3jGUcX8dDqVCehQqDnd5bLpjHKt7Tej8McnOwAu57um43vZnvIt
+         ZHdH/PIbQVVmMKDHVzAMuxDM9vqjyQSKh4z2mrzl2TnX7DWJO5GPjMut3WtwhqKWRQEU
+         +fWQ==
+X-Gm-Message-State: ALyK8tJo4i0ku6KLCOmBU7EdrbZV+IpjcMg2IF2xsxjsqbDQhE6MxNxaMalGklhdBIOHMg==
+X-Received: by 10.129.101.137 with SMTP id z131mr12931301ywb.88.1468527658673;
+        Thu, 14 Jul 2016 13:20:58 -0700 (PDT)
 Return-Path: <bobby.prani@gmail.com>
 Received: from evgadesktop.attlocal.net (108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
-        by smtp.gmail.com with ESMTPSA id v68sm1634604ywg.31.2016.07.14.13.20.49
+        by smtp.gmail.com with ESMTPSA id v68sm1634604ywg.31.2016.07.14.13.20.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:20:51 -0700 (PDT)
+        Thu, 14 Jul 2016 13:20:58 -0700 (PDT)
 From: Pranith Kumar <bobby.prani@gmail.com>
-To: Andrzej Zaborowski <balrogg@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	qemu-arm@nongnu.org (open list:ARM target),
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM),
 	qemu-devel@nongnu.org (open list:All patches CC here)
 Cc: qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	serge.fdrv@gmail.com,
-	pbonzini@redhat.com,
-	peter.maydell@linaro.org
-Subject: [PATCH v4 04/14] tcg/arm: Add support for fence
-Date: Thu, 14 Jul 2016 16:20:16 -0400
-Message-Id: <20160714202026.9727-5-bobby.prani@gmail.com>
+	rth@twiddle.net,
+	pbonzini@redhat.com
+Subject: [PATCH v4 11/14] target-arm: Generate fences in ARMv7 frontend
+Date: Thu, 14 Jul 2016 16:20:23 -0400
+Message-Id: <20160714202026.9727-12-bobby.prani@gmail.com>
 X-Mailer: git-send-email 2.9.0
 In-Reply-To: <20160714202026.9727-1-bobby.prani@gmail.com>
 References: <20160714202026.9727-1-bobby.prani@gmail.com>
-X-TUID: 1rtGb02wxSWF
+X-TUID: kvoL56NXXEuV
 
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
-Signed-off-by: Richard Henderson <rth@twiddle.net>
 ---
- tcg/arm/tcg-target.inc.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ target-arm/translate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tcg/arm/tcg-target.inc.c b/tcg/arm/tcg-target.inc.c
-index 172feba..4e66bcd 100644
---- a/tcg/arm/tcg-target.inc.c
-+++ b/tcg/arm/tcg-target.inc.c
-@@ -313,6 +313,10 @@ typedef enum {
-     INSN_LDRD_REG  = 0x000000d0,
-     INSN_STRD_IMM  = 0x004000f0,
-     INSN_STRD_REG  = 0x000000f0,
-+
-+    INSN_DMB_ISH   = 0x5bf07ff5,
-+    INSN_DMB_MCR   = 0xba0f07ee,
-+
- } ARMInsn;
- 
- #define SHIFT_IMM_LSL(im)	(((im) << 7) | 0x00)
-@@ -1066,6 +1070,15 @@ static inline void tcg_out_goto_label(TCGContext *s, int cond, TCGLabel *l)
-     }
- }
- 
-+static inline void tcg_out_mb(TCGContext *s, TCGArg a0)
-+{
-+    if (use_armv7_instructions) {
-+        tcg_out32(s, INSN_DMB_ISH);
-+    } else if (use_armv6_instructions) {
-+        tcg_out32(s, INSN_DMB_MCR);
-+    }
-+}
-+
- #ifdef CONFIG_SOFTMMU
- /* helper signature: helper_ret_ld_mmu(CPUState *env, target_ulong addr,
-  *                                     int mmu_idx, uintptr_t ra)
-@@ -1923,6 +1936,10 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
-         tcg_out_udiv(s, COND_AL, args[0], args[1], args[2]);
-         break;
- 
-+    case INDEX_op_mb:
-+        tcg_out_mb(s, args[0]);
-+        break;
-+
-     case INDEX_op_mov_i32:  /* Always emitted via tcg_out_mov.  */
-     case INDEX_op_movi_i32: /* Always emitted via tcg_out_movi.  */
-     case INDEX_op_call:     /* Always emitted via tcg_out_call.  */
-@@ -1997,6 +2014,7 @@ static const TCGTargetOpDef arm_op_defs[] = {
-     { INDEX_op_div_i32, { "r", "r", "r" } },
-     { INDEX_op_divu_i32, { "r", "r", "r" } },
- 
-+    { INDEX_op_mb, { } },
-     { -1 },
- };
- 
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index bd5d5cb..693d4bc 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -8083,7 +8083,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             case 4: /* dsb */
+             case 5: /* dmb */
+                 ARCH(7);
+-                /* We don't emulate caches so these are a no-op.  */
++                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+                 return;
+             case 6: /* isb */
+                 /* We need to break the TB after this insn to execute
+@@ -10432,7 +10432,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                             break;
+                         case 4: /* dsb */
+                         case 5: /* dmb */
+-                            /* These execute as NOPs.  */
++                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+                             break;
+                         case 6: /* isb */
+                             /* We need to break the TB after this insn
 -- 
 2.9.0

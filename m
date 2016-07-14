@@ -1,114 +1,109 @@
-Received: by 10.25.21.156 with SMTP id 28csp272818lfv;
-        Thu, 14 Jul 2016 13:21:35 -0700 (PDT)
-X-Received: by 10.13.194.3 with SMTP id e3mr11689129ywd.50.1468527660965;
-        Thu, 14 Jul 2016 13:21:00 -0700 (PDT)
-Return-Path: <bobby.prani@gmail.com>
-Received: from mail-yw0-x244.google.com (mail-yw0-x244.google.com. [2607:f8b0:4002:c05::244])
-        by mx.google.com with ESMTPS id y18si1684004ywa.427.2016.07.14.13.21.00
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Jul 2016 13:21:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::244 as permitted sender) client-ip=2607:f8b0:4002:c05::244;
+Received: by 10.25.21.156 with SMTP id 28csp277198lfv;
+        Thu, 14 Jul 2016 13:34:59 -0700 (PDT)
+X-Received: by 10.55.10.147 with SMTP id 141mr19712275qkk.42.1468528499071;
+        Thu, 14 Jul 2016 13:34:59 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r67si1634620qka.282.2016.07.14.13.34.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 14 Jul 2016 13:34:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of bobby.prani@gmail.com designates 2607:f8b0:4002:c05::244 as permitted sender) smtp.mailfrom=bobby.prani@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-yw0-x244.google.com with SMTP id i12so5519370ywa.0;
-        Thu, 14 Jul 2016 13:21:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=u3oZqkpxQydkIValXqJKFpKHJFXj6mE5a2P5z+Aa8iY=;
-        b=kzXE3O8V1c1uXfDx1YAzZc4/2yh8lR8KAzbHAzkYxT4TQwj87Ngv2Q5uBESWY4K023
-         k45RDk49YSxLrlnB1X737u7F8wMTMtgNe+P4MalOsR4+ulQFxiowZEmddOUiybdq2Sf6
-         4GT06JnGnTdPkrBL4iX8a3+4qzs3zrf9IdohzRd0XqTD/28pXlIfA7JKB+lWr/c3J9pL
-         UuQFL2TCPR7rhOeJZhTbGb3YaB4Xvtncvp3oU2QWyAMsxNov26tYBzhs7uJQkkGElzYL
-         SWPrh2GCt/UNnjppY8H/mijEnFdO6CAwq0EvIgKncjqj5Kb6c2deE2F0ozbxEWfBIVTn
-         Pabg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=u3oZqkpxQydkIValXqJKFpKHJFXj6mE5a2P5z+Aa8iY=;
-        b=EVwefoTqbSBdke/OpdtF2ij5S9Bzj8S/6U+t/+Ey9ztasbasZMizkQmOrgtaQ5uU6W
-         fNM8z7S2ppIcrIUlhBzQd7+MwU0HPzZT05iPEHYmwHkpbSZEIPNvtR/sJ/v49mZmtVov
-         nz4rDCEdR2UmIqd5Gg0rSByMRmXAMAplvC4Dz8pJJ47Ep/rLQ2QlubueSBETbuHXxdd0
-         zsF9iTdth/sovV/deXzudK/clcdVcikPq0slDzz5GbpiuYmgYfWKBtPHCSREIiTtrBD5
-         NRUMEuQsLyrA7Xf5n007rBMU8Be56wBpDWhfweOR7BfuvUbklAJS+qpqq51oLJj+elod
-         ATzg==
-X-Gm-Message-State: ALyK8tIA3G2nFNdv3uWSgybHU6FFX5gDFicKaYP9hz93BtSMlUGwCY75DrqAku0C4Ra7Xg==
-X-Received: by 10.129.31.84 with SMTP id f81mr11140825ywf.127.1468527660528;
-        Thu, 14 Jul 2016 13:21:00 -0700 (PDT)
-Return-Path: <bobby.prani@gmail.com>
-Received: from evgadesktop.attlocal.net (108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
-        by smtp.gmail.com with ESMTPSA id v68sm1634604ywg.31.2016.07.14.13.20.59
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:21:00 -0700 (PDT)
-From: Pranith Kumar <bobby.prani@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM),
-	qemu-devel@nongnu.org (open list:All patches CC here)
-Cc: qemu-devel@nongnu.org,
-	alex.bennee@linaro.org,
-	serge.fdrv@gmail.com,
-	rth@twiddle.net,
-	pbonzini@redhat.com
-Subject: [PATCH v4 13/14] target-aarch64: Generate fences for aarch64
-Date: Thu, 14 Jul 2016 16:20:25 -0400
-Message-Id: <20160714202026.9727-14-bobby.prani@gmail.com>
-X-Mailer: git-send-email 2.9.0
-In-Reply-To: <20160714202026.9727-1-bobby.prani@gmail.com>
-References: <20160714202026.9727-1-bobby.prani@gmail.com>
-X-TUID: hPfVjThlDEE3
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56824 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bNnLW-00080M-FP
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:34:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50189)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bNnJw-0006lp-0W
+	for qemu-devel@nongnu.org; Thu, 14 Jul 2016 16:33:23 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bNnJr-0003mq-K3
+	for qemu-devel@nongnu.org; Thu, 14 Jul 2016 16:33:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35328)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bNnJm-0003kp-5Q; Thu, 14 Jul 2016 16:33:10 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A1C5D142583;
+	Thu, 14 Jul 2016 20:33:09 +0000 (UTC)
+Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6EKX7mc020791; Thu, 14 Jul 2016 16:33:08 -0400
+Date: Thu, 14 Jul 2016 17:33:05 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20160714203305.GF31865@thinpad.lan.raisama.net>
+References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
+	<1465580427-13596-10-git-send-email-drjones@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1465580427-13596-10-git-send-email-drjones@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 14 Jul 2016 20:33:09 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH RFC 09/16] hw/i386/pc: don't use smp_cores,
+ smp_threads
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, imammedo@redhat.com, qemu-devel@nongnu.org,
+	agraf@suse.de, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	dgibson@redhat.com, pbonzini@redhat.com, david@gibson.dropbear.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: omaJT6pstfWK
 
-Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
----
- target-arm/translate-a64.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+On Fri, Jun 10, 2016 at 07:40:20PM +0200, Andrew Jones wrote:
+[...]
+> @@ -1940,9 +1943,10 @@ static void pc_machine_reset(void)
+>  
+>  static unsigned pc_cpu_index_to_socket_id(unsigned cpu_index)
+>  {
+> +    CPUState *cs = first_cpu;
 
-diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
-index f5e29d2..09877bc 100644
---- a/target-arm/translate-a64.c
-+++ b/target-arm/translate-a64.c
-@@ -1305,7 +1305,7 @@ static void handle_sync(DisasContext *s, uint32_t insn,
-         return;
-     case 4: /* DSB */
-     case 5: /* DMB */
--        /* We don't emulate caches so barriers are no-ops */
-+        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
-         return;
-     case 6: /* ISB */
-         /* We need to break the TB after this insn to execute
-@@ -1934,7 +1934,13 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         if (!is_store) {
-             s->is_ldex = true;
-             gen_load_exclusive(s, rt, rt2, tcg_addr, size, is_pair);
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+            }
-         } else {
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+            }
-             gen_store_exclusive(s, rs, rt, rt2, tcg_addr, size, is_pair);
-         }
-     } else {
-@@ -1943,11 +1949,17 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
- 
-         /* Generate ISS for non-exclusive accesses including LASR.  */
-         if (is_store) {
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+            }
-             do_gpr_st(s, tcg_rt, tcg_addr, size,
-                       true, rt, iss_sf, is_lasr);
-         } else {
-             do_gpr_ld(s, tcg_rt, tcg_addr, size, false, false,
-                       true, rt, iss_sf, is_lasr);
-+            if (is_lasr) {
-+                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+            }
-         }
-     }
- }
+Eww.
+
+>      X86CPUTopoInfo topo;
+> -    x86_topo_ids_from_idx(smp_cores, smp_threads, cpu_index,
+> -                          &topo);
+> +
+> +    x86_topo_ids_from_idx(cs->nr_cores, cs->nr_threads, cpu_index, &topo);
+
+If first_cpu is already available[1], then current_machine would
+also be available. Better to use the new MachineState fields you
+added, than the CPUState::nr_{cores,threads} fields that
+shouldn't have existed in the first place.
+
+[1] Is it really available? This function is called very early,
+    from parse_numa_opts(). I think current_machine is already
+    available, though. But we need to ensure parse_numa_opts()
+    will be called only after SMP option parsing is done and SMP
+    topology data in MachineState is already populated.
+
+    Later, we could also make the NUMA option parsing not depend
+    on SMP parsing to be done first. The cpu_index_to_socket_id()
+    magic can be moved to numa_post_machine_init(), probably.
+
 -- 
-2.9.0
+Eduardo

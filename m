@@ -1,62 +1,66 @@
-Received: by 10.25.21.156 with SMTP id 28csp160397lfv;
-        Thu, 14 Jul 2016 08:51:48 -0700 (PDT)
-X-Received: by 10.200.54.28 with SMTP id m28mr21180103qtb.87.1468511508704;
-        Thu, 14 Jul 2016 08:51:48 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp267736lfv;
+        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
+X-Received: by 10.55.27.207 with SMTP id m76mr19634298qkh.12.1468526879100;
+        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h94si1709701qkh.38.2016.07.14.08.51.48
+        by mx.google.com with ESMTPS id a48si2380693qta.99.2016.07.14.13.07.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 08:51:48 -0700 (PDT)
+        Thu, 14 Jul 2016 13:07:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55118 helo=lists.gnu.org)
+Received: from localhost ([::1]:56700 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNivU-0000Jd-3K
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 11:51:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55034)
+	id 1bNmvO-0006mY-8G
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:07:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45544)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1bNiQi-0003zr-Pa
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 11:20:02 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bNmvK-0006Xr-32
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:07:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1bNiQd-0000SC-VI
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 11:20:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52394)
+	(envelope-from <ehabkost@redhat.com>) id 1bNmvE-0007Pj-W7
+	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:07:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48477)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>)
-	id 1bNiQd-0000Rv-Pg; Thu, 14 Jul 2016 11:19:55 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bNmvE-0007Pf-NU; Thu, 14 Jul 2016 16:07:48 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 095831555A;
-	Thu, 14 Jul 2016 15:19:55 +0000 (UTC)
-Received: from [10.35.202.40] (vpn-202-40.tlv.redhat.com [10.35.202.40])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6EFJoqY002835; Thu, 14 Jul 2016 11:19:51 -0400
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1468503826-10617-1-git-send-email-marcel@redhat.com>
-	<1468503826-10617-2-git-send-email-marcel@redhat.com>
-	<c4294e73-88a1-ba9b-9e52-3527b142ae57@redhat.com>
-From: Marcel Apfelbaum <marcel@redhat.com>
-Message-ID: <5787AD95.3080100@redhat.com>
-Date: Thu, 14 Jul 2016 18:19:49 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
+	by mx1.redhat.com (Postfix) with ESMTPS id E1F78D56E9;
+	Thu, 14 Jul 2016 20:07:47 +0000 (UTC)
+Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6EK7j4N013923; Thu, 14 Jul 2016 16:07:46 -0400
+Date: Thu, 14 Jul 2016 17:07:43 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20160714200743.GC31865@thinpad.lan.raisama.net>
+References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
+	<1465580427-13596-8-git-send-email-drjones@redhat.com>
+	<575BB5AB.3010509@redhat.com>
+	<20160612134810.posa6p4wyxhit4yt@hawk.localdomain>
+	<20160614021216.GI4882@voom.fritz.box>
+	<20160614061949.eh45x57tdimt6obr@hawk.localdomain>
+	<20160615005620.GU4882@voom.fritz.box>
 MIME-Version: 1.0
-In-Reply-To: <c4294e73-88a1-ba9b-9e52-3527b142ae57@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20160615005620.GU4882@voom.fritz.box>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 14 Jul 2016 15:19:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 14 Jul 2016 20:07:48 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/7] tests/prom-env-test:
- increase the test timeout
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 07/16] qom/cpu: make
+ nr-cores, nr-threads real properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,45 +72,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
-	agraf@suse.de, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	leon.alrae@imgtec.com, aurelien@aurel32.net, rth@twiddle.net
+Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
+	imammedo@redhat.com, qemu-devel@nongnu.org, agraf@suse.de,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Thomas Huth <thuth@redhat.com>, pbonzini@redhat.com, dgibson@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /mvnl6+RnveK
+X-TUID: BkRcg7gACOjP
 
-On 07/14/2016 04:51 PM, Thomas Huth wrote:
-> On 14.07.2016 15:43, Marcel Apfelbaum wrote:
->> On a slower machine the test can take more than 30 seconds.
->> Increase the timeout to 100 seconds.
->>
->> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
->> ---
->>   tests/prom-env-test.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/tests/prom-env-test.c b/tests/prom-env-test.c
->> index 6df57d2..7a62857 100644
->> --- a/tests/prom-env-test.c
->> +++ b/tests/prom-env-test.c
->> @@ -30,7 +30,7 @@ static void check_guest_memory(void)
->>       int i;
->>
->>       /* Poll until code has run and modified memory. Wait at most 30 seconds */
->> -    for (i = 0; i < 3000; ++i) {
->> +    for (i = 0; i < 10000; ++i) {
->>           signature = readl(ADDRESS);
->>           if (signature == MAGIC) {
->>               break;
->
-> Ack, but could you please also update the comment before the for-loop?
->
 
-Sure, I'll take care of it once I'll get comments for the other patches.
-Thanks,
-Marcel
+First of all, sorry for the horrible delay in replying to this
+thread.
 
->   Thanks,
->    Thomas
->
+On Wed, Jun 15, 2016 at 10:56:20AM +1000, David Gibson wrote:
+> On Tue, Jun 14, 2016 at 08:19:49AM +0200, Andrew Jones wrote:
+> > On Tue, Jun 14, 2016 at 12:12:16PM +1000, David Gibson wrote:
+> > > On Sun, Jun 12, 2016 at 03:48:10PM +0200, Andrew Jones wrote:
+> > > > On Sat, Jun 11, 2016 at 08:54:35AM +0200, Thomas Huth wrote:
+> > > > > On 10.06.2016 19:40, Andrew Jones wrote:
+> > > > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > > > > ---
+> > > > > >  qom/cpu.c | 8 ++++++++
+> > > > > >  1 file changed, 8 insertions(+)
+> > > > > > 
+> > > > > > diff --git a/qom/cpu.c b/qom/cpu.c
+> > > > > > index 751e992de8823..024cda3eb98c8 100644
+> > > > > > --- a/qom/cpu.c
+> > > > > > +++ b/qom/cpu.c
+> > > > > > @@ -28,6 +28,7 @@
+> > > > > >  #include "exec/log.h"
+> > > > > >  #include "qemu/error-report.h"
+> > > > > >  #include "sysemu/sysemu.h"
+> > > > > > +#include "hw/qdev-properties.h"
+> > > > > >  
+> > > > > >  bool cpu_exists(int64_t id)
+> > > > > >  {
+> > > > > > @@ -342,6 +343,12 @@ static int64_t cpu_common_get_arch_id(CPUState *cpu)
+> > > > > >      return cpu->cpu_index;
+> > > > > >  }
+> > > > > >  
+> > > > > > +static Property cpu_common_properties[] = {
+> > > > > > +    DEFINE_PROP_INT32("nr-cores", CPUState, nr_cores, 1),
+> > > > > > +    DEFINE_PROP_INT32("nr-threads", CPUState, nr_threads, 1),
+> > > > > > +    DEFINE_PROP_END_OF_LIST()
+> > > > > > +};
+> > > > > 
+> > > > > Are you aware of the current CPU hotplug discussion that is going on?
+> > > > 
+> > > > I'm aware of it going on, but haven't been following it.
+> > > > 
+> > > > > I'm not very involved there, but I think some of these reworks also move
+> > > > > "nr_threads" into the CPU state already, e.g. see:
+> > > > 
+> > > > nr_threads (and nr_cores) are already state in CPUState. This patch just
+> > > > exposes that state via properties.
+> > > > 
+> > > > > 
+> > > > > https://github.com/dgibson/qemu/commit/9d07719784ecbeebea71
+> > > > > 
+> > > > > ... so you might want to check these patches first to see whether you
+> > > > > can base your rework on them?
+> > > > 
+> > > > Every cpu, and thus every machine, uses CPUState for its cpus. I'm
+> > > > not sure every machine will want to use that new abstract core class
+> > > > though. If they did, then we could indeed use nr_threads from there
+> > > > instead (and remove it from CPUState), but we'd still need nr_cores
+> > > > from the abstract cpu package class (CPUState).
+> > > 
+> > > Hmm.  Since the CPUState object represents just a single thread, it
+> > > seems weird to me that it would have nr_threads and nr_cores
+> > > information.
 
+Agreed it is weird, and I think we should try to move it away
+from CPUState, not make it part of the TYPE_CPU interface.
+nr_threads belongs to the actual container of the Thread objects,
+and nr_cores in the actual container of the Core objects.
+
+The problem is how to implement that in a non-intrusive way that
+would require changing the object hierarchy of all architectures.
+
+
+> > > 
+> > > Exposing those as properties makes that much worse, because it's now
+> > > ABI, rather than internal detail we can clean up at some future time.
+> > 
+> > CPUState is supposed to be "State of one CPU core or thread", which
+> > justifies having nr_threads state, as it may be describing a core.
+> 
+> Um.. does it ever actually represent a (multithread) core in practice?
+> It would need to have duplicated register state for every thread were
+> that the case.
+
+AFAIK, CPUState is still always thread state. Or has this changed
+in some architectures, already?
+
+> 
+> > I guess there's no justification for having nr_cores in there though.
+> > I agree adding the Core class is a good idea, assuming it will get used
+> > by all machines, and CPUState then gets changed to a Thread class. The
+> > question then, though, is do we also create a Socket class that contains
+> > nr_cores?
+> 
+> That was roughly our intention with the way the cross platform hotplug
+> stuff is evolving.  But the intention was that the Socket objects
+> would only need to be constructed for machine types where it makes
+> sense.  So for example on the paravirt pseries platform, we'll only
+> have Core objects, because the socket distinction isn't really
+> meaningful.
+> 
+> > And how will a Thread method get that information when it
+> > needs to emulate, e.g. CPUID, that requires it? It's a bit messy, so
+> > I'm open to all suggestions on it.
+> 
+> So, if the Thread needs this information, I'm not opposed to it having
+> it internally (presumably populated earlier from the Core object).
+> But I am opposed to it being a locked in part of the interface by
+> having it as an exposed property.
+
+I agree we don't want to make this part of the external
+interface. In this case, if we don't add the properties, how
+exactly is the Machine or Core code supposed to pass that
+information to the Thread object?
+
+Maybe the intermediate steps could be:
+
+* Make the Thread code that uses CPUState::nr_{cores,threads} and
+  smp_{cores,threads} get that info from MachineState instead.
+* On the architectures where we already have a reasonable
+  Socket/Core/Thread hierarchy, let the Thread code simply ask
+  for that information from its parent.
+
+-- 
+Eduardo

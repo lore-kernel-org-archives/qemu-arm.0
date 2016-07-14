@@ -1,614 +1,1716 @@
-Received: by 10.25.21.156 with SMTP id 28csp556430lfv;
-        Tue, 12 Jul 2016 13:14:43 -0700 (PDT)
-X-Received: by 10.25.83.80 with SMTP id h77mr2437296lfb.83.1468354464908;
-        Tue, 12 Jul 2016 13:14:24 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from mail-lf0-x233.google.com (mail-lf0-x233.google.com. [2a00:1450:4010:c07::233])
-        by mx.google.com with ESMTPS id 87si3620322lfp.38.2016.07.12.13.14.24
+Received: by 10.25.21.156 with SMTP id 28csp1224466lfv;
+        Wed, 13 Jul 2016 21:08:01 -0700 (PDT)
+X-Received: by 10.200.46.122 with SMTP id s55mr17754540qta.80.1468469281573;
+        Wed, 13 Jul 2016 21:08:01 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 38si210768qtq.133.2016.07.13.21.08.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 12 Jul 2016 13:14:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c07::233 as permitted sender) client-ip=2a00:1450:4010:c07::233;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 13 Jul 2016 21:08:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of sergey.fedorov@linaro.org designates 2a00:1450:4010:c07::233 as permitted sender) smtp.mailfrom=sergey.fedorov@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-lf0-x233.google.com with SMTP id h129so22906939lfh.1
-        for <alex.bennee@linaro.org>; Tue, 12 Jul 2016 13:14:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=oY7zxAOwFnqVHmq96BJRkZ4ZDaud607qNKkKchUPx8k=;
-        b=LD7Azl9A+kE3uCx1sgdRUWQED3A/bCZVwUxh7Rs/k4W/xJNch0JYyTcCY/p88Mqatz
-         rJigmMAJPFMzeznZ2dORv+QJw8CKSv6CXSZIaGCSyS7r6bvxvpKUxuyZYSkew4Qdu/VY
-         VyK8K8gc9YO4+WVyK1fjq9OsKHEAN3EletEWQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=oY7zxAOwFnqVHmq96BJRkZ4ZDaud607qNKkKchUPx8k=;
-        b=euXuNhCqegCkGMqiNae4cS7sCr7a0AlwNF1c5benGg5K2wUiI11+NDDAQrPwXUPO+T
-         7dZhTI7WzkJH2yZvQThkZQ1WlfNC7J8NNf+u7Pr0pP4l5Z818PTOzfi8Nvf8796ZzzeE
-         rOcPf/thSDwW5j8mXuQT8cmAerEbEmpyuqH+F5jXm+kqXy86E2+Re+Ho8miQ8Ubuug2T
-         KlkFqGO6m4h/zzY0Ts1Xb9y97BCscWT/g7Kfr+yCncKaR4qwf6hMYvfKiIiXfC/dtNnY
-         j0tSm2pSKnd7Ppe5cR2pGcT31FclOnO8QSALvpnBTkb2wESdck++YtBLUmR9H/NA5LTj
-         POvA==
-X-Gm-Message-State: ALyK8tIm4IrNPubW4t8Q2c7NCLsLDWicx7506KN3KxvHdxuHXbHOOViTt3yjg1V/skSTCw/Crk4=
-X-Received: by 10.25.2.195 with SMTP id 186mr2461510lfc.36.1468354464539;
-        Tue, 12 Jul 2016 13:14:24 -0700 (PDT)
-Return-Path: <sergey.fedorov@linaro.org>
-Received: from sergey-laptop.Dlink (broadband-46-188-120-37.2com.net. [46.188.120.37])
-        by smtp.gmail.com with ESMTPSA id g40sm2474029ljg.22.2016.07.12.13.14.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 12 Jul 2016 13:14:23 -0700 (PDT)
-From: Sergey Fedorov <sergey.fedorov@linaro.org>
-To: qemu-devel@nongnu.org,
-	mttcg@listserver.greensocs.com,
-	fred.konrad@greensocs.com,
-	a.rigo@virtualopensystems.com,
-	serge.fdrv@gmail.com,
-	cota@braap.org,
-	bobby.prani@gmail.com,
-	rth@twiddle.net
-Cc: patches@linaro.org,
-	mark.burton@greensocs.com,
-	pbonzini@redhat.com,
-	jan.kiszka@siemens.com,
-	peter.maydell@linaro.org,
-	claudio.fontana@huawei.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Sergey Fedorov <sergey.fedorov@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51279 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bNXwO-0006XN-QP
+	for alex.bennee@linaro.org; Thu, 14 Jul 2016 00:08:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55773)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eblake@redhat.com>) id 1bNXfr-0002NR-08
+	for qemu-arm@nongnu.org; Wed, 13 Jul 2016 23:50:59 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eblake@redhat.com>) id 1bNXfk-0007fb-OV
+	for qemu-arm@nongnu.org; Wed, 13 Jul 2016 23:50:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56569)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eblake@redhat.com>)
+	id 1bNXfk-0007fK-92; Wed, 13 Jul 2016 23:50:48 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 82A007F3EE;
+	Thu, 14 Jul 2016 03:50:46 +0000 (UTC)
+Received: from red.redhat.com (ovpn-116-64.phx2.redhat.com [10.3.116.64])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6E3oWuV025884; Wed, 13 Jul 2016 23:50:42 -0400
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 Jul 2016 21:50:23 -0600
+Message-Id: <1468468228-27827-13-git-send-email-eblake@redhat.com>
+In-Reply-To: <1468468228-27827-1-git-send-email-eblake@redhat.com>
+References: <1468468228-27827-1-git-send-email-eblake@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 14 Jul 2016 03:50:47 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v9 12/17] qapi: Change Netdev into a flat union
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Vincenzo Maffione <v.maffione@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	Dmitry Fleytman <dmitry@daynix.com>, Rob Herring <robh@kernel.org>,
+	Stefano Stabellini <sstabellini@kernel.org>, armbru@redhat.com,
+	Scott Feldman <sfeldma@gmail.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	"open list:Musicpal" <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	Scott Wood <scottwood@freescale.com>,
+	Giuseppe Lettieri <g.lettieri@iet.unipi.it>,
+	Luiz Capitulino <lcapitulino@redhat.com>, Luigi Rizzo <rizzo@iet.unipi.it>,
+	David Gibson <david@gibson.dropbear.id.au>, berrange@redhat.com,
 	Michael Walle <michael@walle.cc>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Leon Alrae <leon.alrae@imgtec.com>,
-	Anthony Green <green@moxielogic.com>,
-	Jia Liu <proljc@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Alexander Graf <agraf@suse.de>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org
-Subject: [PATCH v3 06/11] tcg: Introduce tb_mark_invalid() and tb_is_invalid()
-Date: Tue, 12 Jul 2016 23:13:41 +0300
-Message-Id: <1468354426-837-7-git-send-email-sergey.fedorov@linaro.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1468354426-837-1-git-send-email-sergey.fedorov@linaro.org>
-References: <1468354426-837-1-git-send-email-sergey.fedorov@linaro.org>
-X-TUID: oTpOmXptBTA7
+	"open list:ppce500" <qemu-ppc@nongnu.org>,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	"open list:X86" <xen-devel@lists.xensource.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3DrgwTia+OfN
 
-From: Sergey Fedorov <serge.fdrv@gmail.com>
+This is a mostly-mechanical conversion that creates a new flat
+union 'Netdev' QAPI type that covers all the branches of the
+former 'NetClientOptions' simple union, where the branches are
+now listed in a new 'NetClientDriver' enum rather than generated
+from the simple union.  The existence of a flat union has no
+change to the command line syntax accepted for new code, and
+will make it possible for a future patch to switch the QMP
+command to parse a boxed union for no change to valid QMP; but
+it does have some ripple effect on the C code when dealing with
+the new types.
 
-These functions will be used to make translation block invalidation safe
-with concurrent lockless lookup in the global hash table.
+While making the conversion, note that the 'NetLegacy' type
+remains unchanged: it applies only to legacy command line options,
+and will not be ported to QMP, so it should remain a wrapper
+around a simple union; to avoid confusion, the type named
+'NetClientOptions' is now gone, and we introduce 'NetLegacyOptions'
+in its place.  Then, in the C code, we convert from NetLegacy to
+Netdev as soon as possible, so that the bulk of the net stack
+only has to deal with one QAPI type, not two.  Note that since
+the old legacy code always rejected 'hubport', we can just omit
+that branch from the new 'NetLegacyOptions' simple union.
 
-Most targets don't use 'cs_base'; so marking TB as invalid is as simple
-as assigning -1 to 'cs_base'. SPARC target stores the next program
-counter into 'cs_base', and -1 is a fine invalid value since PC must bet
-a multiple of 4 in SPARC. The only odd target is i386, for which a
-special flag is introduced in place of removed 'HF_SOFTMMU_MASK'.
+Based on an idea originally by Zolt=C3=A1n K=C5=91v=C3=A1g=C3=B3 <DirtY.i=
+CE.hu@gmail.com>:
+Message-Id: <01a527fbf1a5de880091f98cf011616a78adeeee.1441627176.git.Dirt=
+Y.iCE.hu@gmail.com>
+although the sed script in that patch no longer applies due to
+other changes in the tree since then, and I also did some manual
+cleanups (such as fixing whitespace to keep checkpatch happy).
 
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
-Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+
 ---
- include/exec/exec-all.h  | 10 ++++++++++
- target-alpha/cpu.h       | 14 ++++++++++++++
- target-arm/cpu.h         | 14 ++++++++++++++
- target-cris/cpu.h        | 14 ++++++++++++++
- target-i386/cpu.h        | 17 +++++++++++++++++
- target-lm32/cpu.h        | 14 ++++++++++++++
- target-m68k/cpu.h        | 14 ++++++++++++++
- target-microblaze/cpu.h  | 14 ++++++++++++++
- target-mips/cpu.h        | 14 ++++++++++++++
- target-moxie/cpu.h       | 14 ++++++++++++++
- target-openrisc/cpu.h    | 14 ++++++++++++++
- target-ppc/cpu.h         | 14 ++++++++++++++
- target-s390x/cpu.h       | 14 ++++++++++++++
- target-sh4/cpu.h         | 14 ++++++++++++++
- target-sparc/cpu.h       | 14 ++++++++++++++
- target-sparc/translate.c |  1 +
- target-tilegx/cpu.h      | 14 ++++++++++++++
- target-tricore/cpu.h     | 14 ++++++++++++++
- target-unicore32/cpu.h   | 14 ++++++++++++++
- target-xtensa/cpu.h      | 14 ++++++++++++++
- 20 files changed, 266 insertions(+)
+v8: rewrite commit message, claim authorship, rebase to latest
+v7: rebase to latest master
+v6: rebase to latest master
+---
+ qapi-schema.json                 |  49 ++++++++++-----
+ include/net/net.h                |   4 +-
+ hw/arm/musicpal.c                |   2 +-
+ hw/core/qdev-properties-system.c |   2 +-
+ hw/net/allwinner_emac.c          |   2 +-
+ hw/net/cadence_gem.c             |   2 +-
+ hw/net/dp8393x.c                 |   2 +-
+ hw/net/e1000.c                   |   2 +-
+ hw/net/e1000e.c                  |   2 +-
+ hw/net/eepro100.c                |   2 +-
+ hw/net/etraxfs_eth.c             |   2 +-
+ hw/net/fsl_etsec/etsec.c         |   2 +-
+ hw/net/imx_fec.c                 |   2 +-
+ hw/net/lan9118.c                 |   2 +-
+ hw/net/lance.c                   |   2 +-
+ hw/net/mcf_fec.c                 |   2 +-
+ hw/net/milkymist-minimac2.c      |   2 +-
+ hw/net/mipsnet.c                 |   2 +-
+ hw/net/ne2000-isa.c              |   2 +-
+ hw/net/ne2000.c                  |   2 +-
+ hw/net/opencores_eth.c           |   2 +-
+ hw/net/pcnet-pci.c               |   2 +-
+ hw/net/rocker/rocker_fp.c        |   2 +-
+ hw/net/rtl8139.c                 |   2 +-
+ hw/net/smc91c111.c               |   2 +-
+ hw/net/spapr_llan.c              |   2 +-
+ hw/net/stellaris_enet.c          |   2 +-
+ hw/net/vhost_net.c               |  20 +++---
+ hw/net/virtio-net.c              |  10 +--
+ hw/net/vmxnet3.c                 |   2 +-
+ hw/net/xen_nic.c                 |   2 +-
+ hw/net/xgmac.c                   |   2 +-
+ hw/net/xilinx_axienet.c          |   2 +-
+ hw/net/xilinx_ethlite.c          |   2 +-
+ hw/usb/dev-network.c             |   2 +-
+ monitor.c                        |  14 ++---
+ net/dump.c                       |   6 +-
+ net/filter.c                     |   2 +-
+ net/hub.c                        |  22 +++----
+ net/l2tpv3.c                     |   6 +-
+ net/net.c                        | 133 +++++++++++++++++++++++++--------=
+------
+ net/netmap.c                     |   4 +-
+ net/slirp.c                      |   6 +-
+ net/socket.c                     |   8 +--
+ net/tap-win32.c                  |   6 +-
+ net/tap.c                        |  24 +++----
+ net/vde.c                        |   6 +-
+ net/vhost-user.c                 |  20 +++---
+ 48 files changed, 230 insertions(+), 172 deletions(-)
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index db79ab65cebe..61cc3a1fb8f7 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -256,6 +256,16 @@ void tb_free(TranslationBlock *tb);
- void tb_flush(CPUState *cpu);
- void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
- 
-+static inline void tb_mark_invalid(TranslationBlock *tb)
-+{
-+    cpu_get_invalid_tb_cpu_state(&tb->pc, &tb->cs_base, &tb->flags);
-+}
+diff --git a/qapi-schema.json b/qapi-schema.json
+index d2d6506..5658723 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -2809,16 +2809,32 @@
+     '*queues':        'int' } }
+
+ ##
+-# @NetClientOptions
++# @NetClientDriver
+ #
+-# A discriminated record of network device traits.
++# Available netdev drivers.
++#
++# Since 2.7
++##
++{ 'enum': 'NetClientDriver',
++  'data': [ 'none', 'nic', 'user', 'tap', 'l2tpv3', 'socket', 'vde', 'du=
+mp',
++            'bridge', 'hubport', 'netmap', 'vhost-user' ] }
 +
-+static inline bool tb_is_invalid(TranslationBlock *tb)
-+{
-+    return cpu_tb_cpu_state_is_invalidated(tb->pc, tb->cs_base, tb->flags);
-+}
-+
- #if defined(USE_DIRECT_JUMP)
- 
- #if defined(CONFIG_TCG_INTERPRETER)
-diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
-index 791da3b4ad67..1ce4526d7a72 100644
---- a/target-alpha/cpu.h
-+++ b/target-alpha/cpu.h
-@@ -524,4 +524,18 @@ static inline void cpu_get_tb_cpu_state(CPUAlphaState *env, target_ulong *pc,
-     *pflags = flags;
++##
++# @Netdev
++#
++# Captures the configuration of a network device.
++#
++# @id: identifier for monitor commands.
++#
++# @type: Specify the driver used for interpreting remaining arguments.
+ #
+ # Since 1.2
+ #
+ # 'l2tpv3' - since 2.1
+-#
+ ##
+-{ 'union': 'NetClientOptions',
++{ 'union': 'Netdev',
++  'base': { 'id': 'str', 'type': 'NetClientDriver' },
++  'discriminator': 'type',
+   'data': {
+     'none':     'NetdevNoneOptions',
+     'nic':      'NetLegacyNicOptions',
+@@ -2853,23 +2869,28 @@
+     '*vlan': 'int32',
+     '*id':   'str',
+     '*name': 'str',
+-    'opts':  'NetClientOptions' } }
++    'opts':  'NetLegacyOptions' } }
+
+ ##
+-# @Netdev
++# @NetLegacyOptions
+ #
+-# Captures the configuration of a network device.
+-#
+-# @id: identifier for monitor commands.
+-#
+-# @opts: device type specific properties
++# Like Netdev, but for use only by the legacy command line options
+ #
+ # Since 1.2
+ ##
+-{ 'struct': 'Netdev',
++{ 'union': 'NetLegacyOptions',
+   'data': {
+-    'id':   'str',
+-    'opts': 'NetClientOptions' } }
++    'none':     'NetdevNoneOptions',
++    'nic':      'NetLegacyNicOptions',
++    'user':     'NetdevUserOptions',
++    'tap':      'NetdevTapOptions',
++    'l2tpv3':   'NetdevL2TPv3Options',
++    'socket':   'NetdevSocketOptions',
++    'vde':      'NetdevVdeOptions',
++    'dump':     'NetdevDumpOptions',
++    'bridge':   'NetdevBridgeOptions',
++    'netmap':   'NetdevNetmapOptions',
++    'vhost-user': 'NetdevVhostUserOptions' } }
+
+ ##
+ # @NetFilterDirection
+diff --git a/include/net/net.h b/include/net/net.h
+index a5c5095..48382c3 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -66,7 +66,7 @@ typedef struct SocketReadState SocketReadState;
+ typedef void (SocketReadStateFinalize)(SocketReadState *rs);
+
+ typedef struct NetClientInfo {
+-    NetClientOptionsKind type;
++    NetClientDriver type;
+     size_t size;
+     NetReceive *receive;
+     NetReceive *receive_raw;
+@@ -122,7 +122,7 @@ int net_fill_rstate(SocketReadState *rs, const uint8_=
+t *buf, int size);
+ char *qemu_mac_strdup_printf(const uint8_t *macaddr);
+ NetClientState *qemu_find_netdev(const char *id);
+ int qemu_find_net_clients_except(const char *id, NetClientState **ncs,
+-                                 NetClientOptionsKind type, int max);
++                                 NetClientDriver type, int max);
+ NetClientState *qemu_new_net_client(NetClientInfo *info,
+                                     NetClientState *peer,
+                                     const char *model,
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 7a4cc07..cc50ace 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -378,7 +378,7 @@ static void eth_cleanup(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #endif /* !defined (__CPU_ALPHA_H__) */
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index e2fac46909c6..2855bdae7800 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -2371,6 +2371,20 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-     *cs_base = 0;
+
+ static NetClientInfo net_mv88w8618_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D eth_receive,
+     .cleanup =3D eth_cleanup,
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-s=
+ystem.c
+index 65d9fa9..fa54d0b 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -231,7 +231,7 @@ static void set_netdev(Object *obj, Visitor *v, const=
+ char *name,
+     }
+
+     queues =3D qemu_find_net_clients_except(str, peers,
+-                                          NET_CLIENT_OPTIONS_KIND_NIC,
++                                          NET_CLIENT_DRIVER_NIC,
+                                           MAX_QUEUE_NUM);
+     if (queues =3D=3D 0) {
+         err =3D -ENOENT;
+diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+index d575023..50e8361 100644
+--- a/hw/net/allwinner_emac.c
++++ b/hw/net/allwinner_emac.c
+@@ -424,7 +424,7 @@ static const MemoryRegionOps aw_emac_mem_ops =3D {
+ };
+
+ static NetClientInfo net_aw_emac_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D aw_emac_can_receive,
+     .receive =3D aw_emac_receive,
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 8a4be1e..db1b301 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1207,7 +1207,7 @@ static void gem_set_link(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- enum {
-     QEMU_PSCI_CONDUIT_DISABLED = 0,
-     QEMU_PSCI_CONDUIT_SMC = 1,
-diff --git a/target-cris/cpu.h b/target-cris/cpu.h
-index e6046d20ca10..fae3219304df 100644
---- a/target-cris/cpu.h
-+++ b/target-cris/cpu.h
-@@ -295,6 +295,20 @@ static inline void cpu_get_tb_cpu_state(CPUCRISState *env, target_ulong *pc,
- 				     | X_FLAG | PFIX_FLAG));
+
+ static NetClientInfo net_gem_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D gem_can_receive,
+     .receive =3D gem_receive,
+diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+index 0fa652c..17f0338 100644
+--- a/hw/net/dp8393x.c
++++ b/hw/net/dp8393x.c
+@@ -812,7 +812,7 @@ static void dp8393x_reset(DeviceState *dev)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #define cpu_list cris_cpu_list
- void cris_cpu_list(FILE *f, fprintf_function cpu_fprintf);
- 
-diff --git a/target-i386/cpu.h b/target-i386/cpu.h
-index a7c752afdad8..c9125b725ca4 100644
---- a/target-i386/cpu.h
-+++ b/target-i386/cpu.h
-@@ -129,6 +129,8 @@
-    positions to ease oring with eflags. */
- /* current cpl */
- #define HF_CPL_SHIFT         0
-+/* used to mark invalidated translation blocks */
-+#define HF_INVALID_SHIFT     2
- /* true if hardware interrupts must be disabled for next instruction */
- #define HF_INHIBIT_IRQ_SHIFT 3
- /* 16 or 32 segments */
-@@ -158,6 +160,7 @@
- #define HF_MPX_IU_SHIFT     26 /* BND registers in-use */
- 
- #define HF_CPL_MASK          (3 << HF_CPL_SHIFT)
-+#define HF_INVALID_MASK      (1 << HF_INVALID_SHIFT)
- #define HF_INHIBIT_IRQ_MASK  (1 << HF_INHIBIT_IRQ_SHIFT)
- #define HF_CS32_MASK         (1 << HF_CS32_SHIFT)
- #define HF_SS32_MASK         (1 << HF_SS32_SHIFT)
-@@ -1489,6 +1492,20 @@ static inline void cpu_get_tb_cpu_state(CPUX86State *env, target_ulong *pc,
-         (env->eflags & (IOPL_MASK | TF_MASK | RF_MASK | VM_MASK | AC_MASK));
+
+ static NetClientInfo net_dp83932_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D dp8393x_can_receive,
+     .receive =3D dp8393x_receive,
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index 06ca7b2..9324949 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -1563,7 +1563,7 @@ pci_e1000_uninit(PCIDevice *dev)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *flags = HF_INVALID_MASK;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return flags == HF_INVALID_MASK;
-+}
-+
- void do_cpu_init(X86CPU *cpu);
- void do_cpu_sipi(X86CPU *cpu);
- 
-diff --git a/target-lm32/cpu.h b/target-lm32/cpu.h
-index 4efe98d828f8..5f78c3c619e5 100644
---- a/target-lm32/cpu.h
-+++ b/target-lm32/cpu.h
-@@ -271,4 +271,18 @@ static inline void cpu_get_tb_cpu_state(CPULM32State *env, target_ulong *pc,
-     *flags = 0;
+
+ static NetClientInfo net_e1000_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D e1000_can_receive,
+     .receive =3D e1000_receive,
+diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+index b4758bc..d001c96 100644
+--- a/hw/net/e1000e.c
++++ b/hw/net/e1000e.c
+@@ -225,7 +225,7 @@ e1000e_set_link_status(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #endif
-diff --git a/target-m68k/cpu.h b/target-m68k/cpu.h
-index 908776999797..c44f4339e40a 100644
---- a/target-m68k/cpu.h
-+++ b/target-m68k/cpu.h
-@@ -269,4 +269,18 @@ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, target_ulong *pc,
-             | ((env->macsr >> 4) & 0xf);        /* Bits 0-3 */
+
+ static NetClientInfo net_e1000e_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D e1000e_nc_can_receive,
+     .receive =3D e1000e_nc_receive,
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index b10c419..bab4dbf 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -1848,7 +1848,7 @@ static void pci_nic_uninit(PCIDevice *pci_dev)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #endif
-diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
-index 16815dfc6abc..22362efce586 100644
---- a/target-microblaze/cpu.h
-+++ b/target-microblaze/cpu.h
-@@ -371,6 +371,20 @@ static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
-                  (env->sregs[SR_MSR] & (MSR_UM | MSR_VM | MSR_EE));
+
+ static NetClientInfo net_eepro100_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D nic_receive,
+ };
+diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
+index 05495ec..efaa49f 100644
+--- a/hw/net/etraxfs_eth.c
++++ b/hw/net/etraxfs_eth.c
+@@ -578,7 +578,7 @@ static const MemoryRegionOps eth_ops =3D {
+ };
+
+ static NetClientInfo net_etraxfs_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D eth_receive,
+     .link_status_changed =3D eth_set_link,
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index 98250e0..b5c777f 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -371,7 +371,7 @@ static void etsec_set_link_status(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #if !defined(CONFIG_USER_ONLY)
- void mb_cpu_unassigned_access(CPUState *cpu, hwaddr addr,
-                               bool is_write, bool is_exec, int is_asi,
-diff --git a/target-mips/cpu.h b/target-mips/cpu.h
-index 9c4fc816bf9b..a887154274b3 100644
---- a/target-mips/cpu.h
-+++ b/target-mips/cpu.h
-@@ -901,6 +901,20 @@ static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, target_ulong *pc,
-                             MIPS_HFLAG_HWRENA_ULR);
+
+ static NetClientInfo net_etsec_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D etsec_receive,
+     .link_status_changed =3D etsec_set_link_status,
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index d91e029..1c415ab 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1147,7 +1147,7 @@ static void imx_eth_cleanup(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- static inline int mips_vpe_active(CPUMIPSState *env)
+
+ static NetClientInfo imx_eth_net_info =3D {
+-    .type                =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type                =3D NET_CLIENT_DRIVER_NIC,
+     .size                =3D sizeof(NICState),
+     .can_receive         =3D imx_eth_can_receive,
+     .receive             =3D imx_eth_receive,
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index 2052073..4615d87 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -1313,7 +1313,7 @@ static const MemoryRegionOps lan9118_16bit_mem_ops =
+=3D {
+ };
+
+ static NetClientInfo net_lan9118_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D lan9118_receive,
+     .link_status_changed =3D lan9118_set_link,
+diff --git a/hw/net/lance.c b/hw/net/lance.c
+index 6253d21..573d724 100644
+--- a/hw/net/lance.c
++++ b/hw/net/lance.c
+@@ -93,7 +93,7 @@ static const MemoryRegionOps lance_mem_ops =3D {
+ };
+
+ static NetClientInfo net_lance_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D pcnet_receive,
+     .link_status_changed =3D pcnet_set_link_status,
+diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
+index 7c0398e..0ee8ad9 100644
+--- a/hw/net/mcf_fec.c
++++ b/hw/net/mcf_fec.c
+@@ -507,7 +507,7 @@ static const MemoryRegionOps mcf_fec_ops =3D {
+ };
+
+ static NetClientInfo net_mcf_fec_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D mcf_fec_receive,
+ };
+diff --git a/hw/net/milkymist-minimac2.c b/hw/net/milkymist-minimac2.c
+index 1e147c3..c3a12e1 100644
+--- a/hw/net/milkymist-minimac2.c
++++ b/hw/net/milkymist-minimac2.c
+@@ -447,7 +447,7 @@ static void milkymist_minimac2_reset(DeviceState *d)
+ }
+
+ static NetClientInfo net_milkymist_minimac2_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D minimac2_rx,
+ };
+diff --git a/hw/net/mipsnet.c b/hw/net/mipsnet.c
+index 5115adc..5a63df7 100644
+--- a/hw/net/mipsnet.c
++++ b/hw/net/mipsnet.c
+@@ -224,7 +224,7 @@ static const VMStateDescription vmstate_mipsnet =3D {
+ };
+
+ static NetClientInfo net_mipsnet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D mipsnet_receive,
+ };
+diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
+index 8fab7ae..f345533 100644
+--- a/hw/net/ne2000-isa.c
++++ b/hw/net/ne2000-isa.c
+@@ -44,7 +44,7 @@ typedef struct ISANE2000State {
+ } ISANE2000State;
+
+ static NetClientInfo net_ne2000_isa_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D ne2000_receive,
+ };
+diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+index f0feaf9..798d681 100644
+--- a/hw/net/ne2000.c
++++ b/hw/net/ne2000.c
+@@ -712,7 +712,7 @@ void ne2000_setup_io(NE2000State *s, DeviceState *dev=
+, unsigned size)
+ }
+
+ static NetClientInfo net_ne2000_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D ne2000_receive,
+ };
+diff --git a/hw/net/opencores_eth.c b/hw/net/opencores_eth.c
+index 484d113..268d6a7 100644
+--- a/hw/net/opencores_eth.c
++++ b/hw/net/opencores_eth.c
+@@ -473,7 +473,7 @@ static ssize_t open_eth_receive(NetClientState *nc,
+ }
+
+ static NetClientInfo net_open_eth_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D open_eth_can_receive,
+     .receive =3D open_eth_receive,
+diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+index 595439a..0acf8a4 100644
+--- a/hw/net/pcnet-pci.c
++++ b/hw/net/pcnet-pci.c
+@@ -272,7 +272,7 @@ static void pci_pcnet_uninit(PCIDevice *dev)
+ }
+
+ static NetClientInfo net_pci_pcnet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D pcnet_receive,
+     .link_status_changed =3D pcnet_set_link_status,
+diff --git a/hw/net/rocker/rocker_fp.c b/hw/net/rocker/rocker_fp.c
+index 0149899..1305ac3 100644
+--- a/hw/net/rocker/rocker_fp.c
++++ b/hw/net/rocker/rocker_fp.c
+@@ -167,7 +167,7 @@ static void fp_port_set_link_status(NetClientState *n=
+c)
+ }
+
+ static NetClientInfo fp_port_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D fp_port_receive,
+     .receive_iov =3D fp_port_receive_iov,
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 07297cb..3345bc6 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -3393,7 +3393,7 @@ static void rtl8139_set_link_status(NetClientState =
+*nc)
+ }
+
+ static NetClientInfo net_rtl8139_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D rtl8139_can_receive,
+     .receive =3D rtl8139_receive,
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index 21c1b8f..3b16dcf 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -755,7 +755,7 @@ static const MemoryRegionOps smc91c111_mem_ops =3D {
+ };
+
+ static NetClientInfo net_smc91c111_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D smc91c111_can_receive_nc,
+     .receive =3D smc91c111_receive,
+diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
+index 8b2eebd..b273eda 100644
+--- a/hw/net/spapr_llan.c
++++ b/hw/net/spapr_llan.c
+@@ -278,7 +278,7 @@ static ssize_t spapr_vlan_receive(NetClientState *nc,=
+ const uint8_t *buf,
+ }
+
+ static NetClientInfo net_spapr_vlan_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D spapr_vlan_can_receive,
+     .receive =3D spapr_vlan_receive,
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index 6880894..957730e 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -460,7 +460,7 @@ static void stellaris_enet_reset(stellaris_enet_state=
+ *s)
+ }
+
+ static NetClientInfo net_stellaris_enet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D stellaris_enet_receive,
+ };
+diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
+index 11fabc0..f92d3f8 100644
+--- a/hw/net/vhost_net.c
++++ b/hw/net/vhost_net.c
+@@ -88,10 +88,10 @@ static const int *vhost_net_get_feature_bits(struct v=
+host_net *net)
+     const int *feature_bits =3D 0;
+
+     switch (net->nc->info->type) {
+-    case NET_CLIENT_OPTIONS_KIND_TAP:
++    case NET_CLIENT_DRIVER_TAP:
+         feature_bits =3D kernel_feature_bits;
+         break;
+-    case NET_CLIENT_OPTIONS_KIND_VHOST_USER:
++    case NET_CLIENT_DRIVER_VHOST_USER:
+         feature_bits =3D user_feature_bits;
+         break;
+     default:
+@@ -128,7 +128,7 @@ uint64_t vhost_net_get_acked_features(VHostNetState *=
+net)
+ static int vhost_net_get_fd(NetClientState *backend)
  {
-     int active = 1;
-diff --git a/target-moxie/cpu.h b/target-moxie/cpu.h
-index 63d5cafc5528..f0f95a2701e1 100644
---- a/target-moxie/cpu.h
-+++ b/target-moxie/cpu.h
-@@ -136,6 +136,20 @@ static inline void cpu_get_tb_cpu_state(CPUMoxieState *env, target_ulong *pc,
-     *flags = 0;
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- int moxie_cpu_handle_mmu_fault(CPUState *cpu, vaddr address,
-                                int rw, int mmu_idx);
- 
-diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
-index 9451a7cca691..a5650cbed4b7 100644
---- a/target-openrisc/cpu.h
-+++ b/target-openrisc/cpu.h
-@@ -398,6 +398,20 @@ static inline void cpu_get_tb_cpu_state(CPUOpenRISCState *env,
-     *flags = (env->flags & D_FLAG);
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- static inline int cpu_mmu_index(CPUOpenRISCState *env, bool ifetch)
+     switch (backend->info->type) {
+-    case NET_CLIENT_OPTIONS_KIND_TAP:
++    case NET_CLIENT_DRIVER_TAP:
+         return tap_get_fd(backend);
+     default:
+         fprintf(stderr, "vhost-net requires tap backend\n");
+@@ -191,7 +191,7 @@ struct vhost_net *vhost_net_init(VhostNetOptions *opt=
+ions)
+     }
+
+     /* Set sane init value. Override when guest acks. */
+-    if (net->nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER) {
++    if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER) {
+         features =3D vhost_user_get_acked_features(net->nc);
+         if (~net->dev.features & features) {
+             fprintf(stderr, "vhost lacks feature mask %" PRIu64
+@@ -238,7 +238,7 @@ static int vhost_net_start_one(struct vhost_net *net,
+         net->nc->info->poll(net->nc, false);
+     }
+
+-    if (net->nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP) {
++    if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP) {
+         qemu_set_fd_handler(net->backend, NULL, NULL, NULL);
+         file.fd =3D net->backend;
+         for (file.index =3D 0; file.index < net->dev.nvqs; ++file.index)=
  {
-     if (!(env->sr & SR_IME)) {
-diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
-index 2666a3f80d00..092c7954d19a 100644
---- a/target-ppc/cpu.h
-+++ b/target-ppc/cpu.h
-@@ -2294,6 +2294,20 @@ static inline void cpu_get_tb_cpu_state(CPUPPCState *env, target_ulong *pc,
-     *flags = env->hflags;
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #if !defined(CONFIG_USER_ONLY)
- static inline int booke206_tlbm_id(CPUPPCState *env, ppcmas_tlb_t *tlbm)
+@@ -253,7 +253,7 @@ static int vhost_net_start_one(struct vhost_net *net,
+     return 0;
+ fail:
+     file.fd =3D -1;
+-    if (net->nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP) {
++    if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP) {
+         while (file.index-- > 0) {
+             const VhostOps *vhost_ops =3D net->dev.vhost_ops;
+             int r =3D vhost_ops->vhost_net_set_backend(&net->dev, &file)=
+;
+@@ -275,7 +275,7 @@ static void vhost_net_stop_one(struct vhost_net *net,
  {
-diff --git a/target-s390x/cpu.h b/target-s390x/cpu.h
-index 8bcb0f75f399..574cdb51c967 100644
---- a/target-s390x/cpu.h
-+++ b/target-s390x/cpu.h
-@@ -393,6 +393,20 @@ static inline void cpu_get_tb_cpu_state(CPUS390XState* env, target_ulong *pc,
-              ((env->psw.mask & PSW_MASK_32) ? FLAG_MASK_32 : 0);
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- /* While the PoO talks about ILC (a number between 1-3) what is actually
-    stored in LowCore is shifted left one bit (an even between 2-6).  As
-    this is the actual length of the insn and therefore more useful, that
-diff --git a/target-sh4/cpu.h b/target-sh4/cpu.h
-index 3f9dae2d1f0d..bcddbf31c853 100644
---- a/target-sh4/cpu.h
-+++ b/target-sh4/cpu.h
-@@ -387,4 +387,18 @@ static inline void cpu_get_tb_cpu_state(CPUSH4State *env, target_ulong *pc,
-             | (env->movcal_backup ? TB_FLAG_PENDING_MOVCA : 0); /* Bit 4 */
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #endif				/* _CPU_SH4_H */
-diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
-index 604de84624ca..09df29b7b439 100644
---- a/target-sparc/cpu.h
-+++ b/target-sparc/cpu.h
-@@ -749,6 +749,20 @@ static inline void cpu_get_tb_cpu_state(CPUSPARCState *env, target_ulong *pc,
- #endif
- }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1; /* npc must be a multible of 4 */
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- static inline bool tb_fpu_enabled(int tb_flags)
+     struct vhost_vring_file file =3D { .fd =3D -1 };
+
+-    if (net->nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP) {
++    if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP) {
+         for (file.index =3D 0; file.index < net->dev.nvqs; ++file.index)=
  {
- #if defined(CONFIG_USER_ONLY)
-diff --git a/target-sparc/translate.c b/target-sparc/translate.c
-index 0f4faf70624f..cc160bc67be0 100644
---- a/target-sparc/translate.c
-+++ b/target-sparc/translate.c
-@@ -38,6 +38,7 @@
- #define DYNAMIC_PC  1 /* dynamic pc value */
- #define JUMP_PC     2 /* dynamic pc value which takes only two values
-                          according to jump_pc[T2] */
-+/* NOTE: -1 is reserved for cpu_get_invalid_tb_cpu_state() */
- 
- /* global register indexes */
- static TCGv_env cpu_env;
-diff --git a/target-tilegx/cpu.h b/target-tilegx/cpu.h
-index d74032925b12..79f84a422de1 100644
---- a/target-tilegx/cpu.h
-+++ b/target-tilegx/cpu.h
-@@ -174,4 +174,18 @@ static inline void cpu_get_tb_cpu_state(CPUTLGState *env, target_ulong *pc,
-     *flags = 0;
+             const VhostOps *vhost_ops =3D net->dev.vhost_ops;
+             int r =3D vhost_ops->vhost_net_set_backend(&net->dev, &file)=
+;
+@@ -312,7 +312,7 @@ int vhost_net_start(VirtIODevice *dev, NetClientState=
+ *ncs,
+          * because vhost user doesn't interrupt masking/unmasking
+          * properly.
+          */
+-        if (net->nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USE=
+R) {
++        if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER) {
+                 dev->use_guest_notifier_mask =3D false;
+         }
+      }
+@@ -413,10 +413,10 @@ VHostNetState *get_vhost_net(NetClientState *nc)
+     }
+
+     switch (nc->info->type) {
+-    case NET_CLIENT_OPTIONS_KIND_TAP:
++    case NET_CLIENT_DRIVER_TAP:
+         vhost_net =3D tap_get_vhost_net(nc);
+         break;
+-    case NET_CLIENT_OPTIONS_KIND_VHOST_USER:
++    case NET_CLIENT_DRIVER_VHOST_USER:
+         vhost_net =3D vhost_user_get_vhost_net(nc);
+         break;
+     default:
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 9999899..56d8506 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -468,11 +468,11 @@ static int peer_attach(VirtIONet *n, int index)
+         return 0;
+     }
+
+-    if (nc->peer->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER) =
+{
++    if (nc->peer->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER) {
+         vhost_set_vring_enable(nc->peer, 1);
+     }
+
+-    if (nc->peer->info->type !=3D NET_CLIENT_OPTIONS_KIND_TAP) {
++    if (nc->peer->info->type !=3D NET_CLIENT_DRIVER_TAP) {
+         return 0;
+     }
+
+@@ -487,11 +487,11 @@ static int peer_detach(VirtIONet *n, int index)
+         return 0;
+     }
+
+-    if (nc->peer->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER) =
+{
++    if (nc->peer->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER) {
+         vhost_set_vring_enable(nc->peer, 0);
+     }
+
+-    if (nc->peer->info->type !=3D  NET_CLIENT_OPTIONS_KIND_TAP) {
++    if (nc->peer->info->type !=3D  NET_CLIENT_DRIVER_TAP) {
+         return 0;
+     }
+
+@@ -1680,7 +1680,7 @@ static int virtio_net_load_device(VirtIODevice *vde=
+v, QEMUFile *f,
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #endif
-diff --git a/target-tricore/cpu.h b/target-tricore/cpu.h
-index a298d63eea24..8f3ca20241b7 100644
---- a/target-tricore/cpu.h
-+++ b/target-tricore/cpu.h
-@@ -410,6 +410,20 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, target_ulong *pc,
-     *flags = 0;
+
+ static NetClientInfo net_virtio_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D virtio_net_can_receive,
+     .receive =3D virtio_net_receive,
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index e767fc6..bbf44ad 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -2087,7 +2087,7 @@ static void vmxnet3_set_link_status(NetClientState =
+*nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- TriCoreCPU *cpu_tricore_init(const char *cpu_model);
- 
- #define cpu_init(cpu_model) CPU(cpu_tricore_init(cpu_model))
-diff --git a/target-unicore32/cpu.h b/target-unicore32/cpu.h
-index 83f758496a6c..6bcda6aa3e38 100644
---- a/target-unicore32/cpu.h
-+++ b/target-unicore32/cpu.h
-@@ -179,6 +179,20 @@ static inline void cpu_get_tb_cpu_state(CPUUniCore32State *env, target_ulong *pc
+
+ static NetClientInfo net_vmxnet3_info =3D {
+-        .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++        .type =3D NET_CLIENT_DRIVER_NIC,
+         .size =3D sizeof(NICState),
+         .receive =3D vmxnet3_receive,
+         .link_status_changed =3D vmxnet3_set_link_status,
+diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
+index 0b4ddae..6856b52 100644
+--- a/hw/net/xen_nic.c
++++ b/hw/net/xen_nic.c
+@@ -269,7 +269,7 @@ static ssize_t net_rx_packet(NetClientState *nc, cons=
+t uint8_t *buf, size_t size
+ /* ------------------------------------------------------------- */
+
+ static NetClientInfo net_xen_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D net_rx_packet,
+ };
+diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
+index 0c5f793..46b1aa1 100644
+--- a/hw/net/xgmac.c
++++ b/hw/net/xgmac.c
+@@ -371,7 +371,7 @@ out:
+ }
+
+ static NetClientInfo net_xgmac_enet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D eth_rx,
+ };
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index de23ab5..b670184 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -935,7 +935,7 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uin=
+t8_t *buf, size_t size)
+ }
+
+ static NetClientInfo net_xilinx_enet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D eth_rx,
+ };
+diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+index bc846e7..54db2b8 100644
+--- a/hw/net/xilinx_ethlite.c
++++ b/hw/net/xilinx_ethlite.c
+@@ -217,7 +217,7 @@ static void xilinx_ethlite_reset(DeviceState *dev)
+ }
+
+ static NetClientInfo net_xilinx_ethlite_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .can_receive =3D eth_can_rx,
+     .receive =3D eth_rx,
+diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
+index 5c18198..3ced4ba 100644
+--- a/hw/usb/dev-network.c
++++ b/hw/usb/dev-network.c
+@@ -1334,7 +1334,7 @@ static void usb_net_handle_destroy(USBDevice *dev)
+ }
+
+ static NetClientInfo net_usbnet_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NIC,
++    .type =3D NET_CLIENT_DRIVER_NIC,
+     .size =3D sizeof(NICState),
+     .receive =3D usbnet_receive,
+     .cleanup =3D usbnet_cleanup,
+diff --git a/monitor.c b/monitor.c
+index d0ff246..0e055f8 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -3055,8 +3055,8 @@ void netdev_add_completion(ReadLineState *rs, int n=
+b_args, const char *str)
+     }
+     len =3D strlen(str);
+     readline_set_completion_index(rs, len);
+-    for (i =3D 0; NetClientOptionsKind_lookup[i]; i++) {
+-        add_completion_option(rs, str, NetClientOptionsKind_lookup[i]);
++    for (i =3D 0; NetClientDriver_lookup[i]; i++) {
++        add_completion_option(rs, str, NetClientDriver_lookup[i]);
      }
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- int uc32_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
-                               int mmu_idx);
- void uc32_translate_init(void);
-diff --git a/target-xtensa/cpu.h b/target-xtensa/cpu.h
-index ce9fb5b0033a..bd0a3b1deddf 100644
---- a/target-xtensa/cpu.h
-+++ b/target-xtensa/cpu.h
-@@ -582,6 +582,20 @@ static inline void cpu_get_tb_cpu_state(CPUXtensaState *env, target_ulong *pc,
-     }
+
+@@ -3256,7 +3256,7 @@ void set_link_completion(ReadLineState *rs, int nb_=
+args, const char *str)
+         NetClientState *ncs[MAX_QUEUE_NUM];
+         int count, i;
+         count =3D qemu_find_net_clients_except(NULL, ncs,
+-                                             NET_CLIENT_OPTIONS_KIND_NON=
+E,
++                                             NET_CLIENT_DRIVER_NONE,
+                                              MAX_QUEUE_NUM);
+         for (i =3D 0; i < MIN(count, MAX_QUEUE_NUM); i++) {
+             const char *name =3D ncs[i]->name;
+@@ -3281,7 +3281,7 @@ void netdev_del_completion(ReadLineState *rs, int n=
+b_args, const char *str)
+
+     len =3D strlen(str);
+     readline_set_completion_index(rs, len);
+-    count =3D qemu_find_net_clients_except(NULL, ncs, NET_CLIENT_OPTIONS=
+_KIND_NIC,
++    count =3D qemu_find_net_clients_except(NULL, ncs, NET_CLIENT_DRIVER_=
+NIC,
+                                          MAX_QUEUE_NUM);
+     for (i =3D 0; i < MIN(count, MAX_QUEUE_NUM); i++) {
+         QemuOpts *opts;
+@@ -3393,7 +3393,7 @@ void host_net_remove_completion(ReadLineState *rs, =
+int nb_args, const char *str)
+     readline_set_completion_index(rs, len);
+     if (nb_args =3D=3D 2) {
+         count =3D qemu_find_net_clients_except(NULL, ncs,
+-                                             NET_CLIENT_OPTIONS_KIND_NON=
+E,
++                                             NET_CLIENT_DRIVER_NONE,
+                                              MAX_QUEUE_NUM);
+         for (i =3D 0; i < MIN(count, MAX_QUEUE_NUM); i++) {
+             int id;
+@@ -3410,13 +3410,13 @@ void host_net_remove_completion(ReadLineState *rs=
+, int nb_args, const char *str)
+         return;
+     } else if (nb_args =3D=3D 3) {
+         count =3D qemu_find_net_clients_except(NULL, ncs,
+-                                             NET_CLIENT_OPTIONS_KIND_NIC=
+,
++                                             NET_CLIENT_DRIVER_NIC,
+                                              MAX_QUEUE_NUM);
+         for (i =3D 0; i < MIN(count, MAX_QUEUE_NUM); i++) {
+             int id;
+             const char *name;
+
+-            if (ncs[i]->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_HUBPOR=
+T ||
++            if (ncs[i]->info->type =3D=3D NET_CLIENT_DRIVER_HUBPORT ||
+                 net_hub_id_for_client(ncs[i], &id)) {
+                 continue;
+             }
+diff --git a/net/dump.c b/net/dump.c
+index f8a500f..89a149b 100644
+--- a/net/dump.c
++++ b/net/dump.c
+@@ -172,7 +172,7 @@ static void dumpclient_cleanup(NetClientState *nc)
  }
- 
-+static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
-+                                                target_ulong *cs_base,
-+                                                uint32_t *flags)
-+{
-+    *cs_base = -1;
-+}
-+
-+static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
-+                                                   target_ulong cs_base,
-+                                                   uint32_t flags)
-+{
-+    return cs_base == -1;
-+}
-+
- #include "exec/cpu-all.h"
- 
+
+ static NetClientInfo net_dump_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_DUMP,
++    .type =3D NET_CLIENT_DRIVER_DUMP,
+     .size =3D sizeof(DumpNetClient),
+     .receive =3D dumpclient_receive,
+     .receive_iov =3D dumpclient_receive_iov,
+@@ -189,8 +189,8 @@ int net_init_dump(const Netdev *netdev, const char *n=
+ame,
+     NetClientState *nc;
+     DumpNetClient *dnc;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_DUMP);
+-    dump =3D netdev->opts->u.dump.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_DUMP);
++    dump =3D &netdev->u.dump;
+
+     assert(peer);
+
+diff --git a/net/filter.c b/net/filter.c
+index 8ac79f3..888fe6d 100644
+--- a/net/filter.c
++++ b/net/filter.c
+@@ -201,7 +201,7 @@ static void netfilter_complete(UserCreatable *uc, Err=
+or **errp)
+     }
+
+     queues =3D qemu_find_net_clients_except(nf->netdev_id, ncs,
+-                                          NET_CLIENT_OPTIONS_KIND_NIC,
++                                          NET_CLIENT_DRIVER_NIC,
+                                           MAX_QUEUE_NUM);
+     if (queues < 1) {
+         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "netdev",
+diff --git a/net/hub.c b/net/hub.c
+index ec4626f..32d8cf5 100644
+--- a/net/hub.c
++++ b/net/hub.c
+@@ -131,7 +131,7 @@ static void net_hub_port_cleanup(NetClientState *nc)
+ }
+
+ static NetClientInfo net_hub_port_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_HUBPORT,
++    .type =3D NET_CLIENT_DRIVER_HUBPORT,
+     .size =3D sizeof(NetHubPort),
+     .can_receive =3D net_hub_port_can_receive,
+     .receive =3D net_hub_port_receive,
+@@ -266,10 +266,10 @@ int net_hub_id_for_client(NetClientState *nc, int *=
+id)
+ {
+     NetHubPort *port;
+
+-    if (nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_HUBPORT) {
++    if (nc->info->type =3D=3D NET_CLIENT_DRIVER_HUBPORT) {
+         port =3D DO_UPCAST(NetHubPort, nc, nc);
+     } else if (nc->peer !=3D NULL && nc->peer->info->type =3D=3D
+-            NET_CLIENT_OPTIONS_KIND_HUBPORT) {
++            NET_CLIENT_DRIVER_HUBPORT) {
+         port =3D DO_UPCAST(NetHubPort, nc, nc->peer);
+     } else {
+         return -ENOENT;
+@@ -286,9 +286,9 @@ int net_init_hubport(const Netdev *netdev, const char=
+ *name,
+ {
+     const NetdevHubPortOptions *hubport;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_HUBPORT);
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_HUBPORT);
+     assert(!peer);
+-    hubport =3D netdev->opts->u.hubport.data;
++    hubport =3D &netdev->u.hubport;
+
+     net_hub_add_port(hubport->hubid, name);
+     return 0;
+@@ -315,14 +315,14 @@ void net_hub_check_clients(void)
+             }
+
+             switch (peer->info->type) {
+-            case NET_CLIENT_OPTIONS_KIND_NIC:
++            case NET_CLIENT_DRIVER_NIC:
+                 has_nic =3D 1;
+                 break;
+-            case NET_CLIENT_OPTIONS_KIND_USER:
+-            case NET_CLIENT_OPTIONS_KIND_TAP:
+-            case NET_CLIENT_OPTIONS_KIND_SOCKET:
+-            case NET_CLIENT_OPTIONS_KIND_VDE:
+-            case NET_CLIENT_OPTIONS_KIND_VHOST_USER:
++            case NET_CLIENT_DRIVER_USER:
++            case NET_CLIENT_DRIVER_TAP:
++            case NET_CLIENT_DRIVER_SOCKET:
++            case NET_CLIENT_DRIVER_VDE:
++            case NET_CLIENT_DRIVER_VHOST_USER:
+                 has_host_dev =3D 1;
+                 break;
+             default:
+diff --git a/net/l2tpv3.c b/net/l2tpv3.c
+index df02f5b..6745b78 100644
+--- a/net/l2tpv3.c
++++ b/net/l2tpv3.c
+@@ -516,7 +516,7 @@ static void net_l2tpv3_cleanup(NetClientState *nc)
+ }
+
+ static NetClientInfo net_l2tpv3_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_L2TPV3,
++    .type =3D NET_CLIENT_DRIVER_L2TPV3,
+     .size =3D sizeof(NetL2TPV3State),
+     .receive =3D net_l2tpv3_receive_dgram,
+     .receive_iov =3D net_l2tpv3_receive_dgram_iov,
+@@ -545,8 +545,8 @@ int net_init_l2tpv3(const Netdev *netdev,
+     s->queue_tail =3D 0;
+     s->header_mismatch =3D false;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_L2TPV3);
+-    l2tpv3 =3D netdev->opts->u.l2tpv3.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_L2TPV3);
++    l2tpv3 =3D &netdev->u.l2tpv3;
+
+     if (l2tpv3->has_ipv6 && l2tpv3->ipv6) {
+         s->ipv6 =3D l2tpv3->ipv6;
+diff --git a/net/net.c b/net/net.c
+index d80fd82..4a7f392 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -289,7 +289,7 @@ NICState *qemu_new_nic(NetClientInfo *info,
+     NICState *nic;
+     int i, queues =3D MAX(1, conf->peers.queues);
+
+-    assert(info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC);
++    assert(info->type =3D=3D NET_CLIENT_DRIVER_NIC);
+     assert(info->size >=3D sizeof(NICState));
+
+     nic =3D g_malloc0(info->size + sizeof(NetClientState) * queues);
+@@ -360,13 +360,13 @@ void qemu_del_net_client(NetClientState *nc)
+     int queues, i;
+     NetFilterState *nf, *next;
+
+-    assert(nc->info->type !=3D NET_CLIENT_OPTIONS_KIND_NIC);
++    assert(nc->info->type !=3D NET_CLIENT_DRIVER_NIC);
+
+     /* If the NetClientState belongs to a multiqueue backend, we will ch=
+ange all
+      * other NetClientStates also.
+      */
+     queues =3D qemu_find_net_clients_except(nc->name, ncs,
+-                                          NET_CLIENT_OPTIONS_KIND_NIC,
++                                          NET_CLIENT_DRIVER_NIC,
+                                           MAX_QUEUE_NUM);
+     assert(queues !=3D 0);
+
+@@ -375,7 +375,7 @@ void qemu_del_net_client(NetClientState *nc)
+     }
+
+     /* If there is a peer NIC, delete and cleanup client, but do not fre=
+e. */
+-    if (nc->peer && nc->peer->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_=
+NIC) {
++    if (nc->peer && nc->peer->info->type =3D=3D NET_CLIENT_DRIVER_NIC) {
+         NICState *nic =3D qemu_get_nic(nc->peer);
+         if (nic->peer_deleted) {
+             return;
+@@ -431,7 +431,7 @@ void qemu_foreach_nic(qemu_nic_foreach func, void *op=
+aque)
+     NetClientState *nc;
+
+     QTAILQ_FOREACH(nc, &net_clients, next) {
+-        if (nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (nc->info->type =3D=3D NET_CLIENT_DRIVER_NIC) {
+             if (nc->queue_index =3D=3D 0) {
+                 func(qemu_get_nic(nc), opaque);
+             }
+@@ -603,7 +603,7 @@ void qemu_flush_or_purge_queued_packets(NetClientStat=
+e *nc, bool purge)
+ {
+     nc->receive_disabled =3D 0;
+
+-    if (nc->peer && nc->peer->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_=
+HUBPORT) {
++    if (nc->peer && nc->peer->info->type =3D=3D NET_CLIENT_DRIVER_HUBPOR=
+T) {
+         if (net_hub_flush(nc->peer)) {
+             qemu_notify_event();
+         }
+@@ -777,7 +777,7 @@ NetClientState *qemu_find_netdev(const char *id)
+     NetClientState *nc;
+
+     QTAILQ_FOREACH(nc, &net_clients, next) {
+-        if (nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC)
++        if (nc->info->type =3D=3D NET_CLIENT_DRIVER_NIC)
+             continue;
+         if (!strcmp(nc->name, id)) {
+             return nc;
+@@ -788,7 +788,7 @@ NetClientState *qemu_find_netdev(const char *id)
+ }
+
+ int qemu_find_net_clients_except(const char *id, NetClientState **ncs,
+-                                 NetClientOptionsKind type, int max)
++                                 NetClientDriver type, int max)
+ {
+     NetClientState *nc;
+     int ret =3D 0;
+@@ -869,8 +869,8 @@ static int net_init_nic(const Netdev *netdev, const c=
+har *name,
+     NICInfo *nd;
+     const NetLegacyNicOptions *nic;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC);
+-    nic =3D netdev->opts->u.nic.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_NIC);
++    nic =3D &netdev->u.nic;
+
+     idx =3D nic_get_free_idx();
+     if (idx =3D=3D -1 || nb_nics >=3D MAX_NICS) {
+@@ -930,39 +930,38 @@ static int net_init_nic(const Netdev *netdev, const=
+ char *name,
+ }
+
+
+-static int (* const net_client_init_fun[NET_CLIENT_OPTIONS_KIND__MAX])(
++static int (* const net_client_init_fun[NET_CLIENT_DRIVER__MAX])(
+     const Netdev *netdev,
+     const char *name,
+     NetClientState *peer, Error **errp) =3D {
+-        [NET_CLIENT_OPTIONS_KIND_NIC]       =3D net_init_nic,
++        [NET_CLIENT_DRIVER_NIC]       =3D net_init_nic,
+ #ifdef CONFIG_SLIRP
+-        [NET_CLIENT_OPTIONS_KIND_USER]      =3D net_init_slirp,
++        [NET_CLIENT_DRIVER_USER]      =3D net_init_slirp,
  #endif
--- 
-1.9.1
+-        [NET_CLIENT_OPTIONS_KIND_TAP]       =3D net_init_tap,
+-        [NET_CLIENT_OPTIONS_KIND_SOCKET]    =3D net_init_socket,
++        [NET_CLIENT_DRIVER_TAP]       =3D net_init_tap,
++        [NET_CLIENT_DRIVER_SOCKET]    =3D net_init_socket,
+ #ifdef CONFIG_VDE
+-        [NET_CLIENT_OPTIONS_KIND_VDE]       =3D net_init_vde,
++        [NET_CLIENT_DRIVER_VDE]       =3D net_init_vde,
+ #endif
+ #ifdef CONFIG_NETMAP
+-        [NET_CLIENT_OPTIONS_KIND_NETMAP]    =3D net_init_netmap,
++        [NET_CLIENT_DRIVER_NETMAP]    =3D net_init_netmap,
+ #endif
+-        [NET_CLIENT_OPTIONS_KIND_DUMP]      =3D net_init_dump,
++        [NET_CLIENT_DRIVER_DUMP]      =3D net_init_dump,
+ #ifdef CONFIG_NET_BRIDGE
+-        [NET_CLIENT_OPTIONS_KIND_BRIDGE]    =3D net_init_bridge,
++        [NET_CLIENT_DRIVER_BRIDGE]    =3D net_init_bridge,
+ #endif
+-        [NET_CLIENT_OPTIONS_KIND_HUBPORT]   =3D net_init_hubport,
++        [NET_CLIENT_DRIVER_HUBPORT]   =3D net_init_hubport,
+ #ifdef CONFIG_VHOST_NET_USED
+-        [NET_CLIENT_OPTIONS_KIND_VHOST_USER] =3D net_init_vhost_user,
++        [NET_CLIENT_DRIVER_VHOST_USER] =3D net_init_vhost_user,
+ #endif
+ #ifdef CONFIG_L2TPV3
+-        [NET_CLIENT_OPTIONS_KIND_L2TPV3]    =3D net_init_l2tpv3,
++        [NET_CLIENT_DRIVER_L2TPV3]    =3D net_init_l2tpv3,
+ #endif
+ };
+
+
+ static int net_client_init1(const void *object, int is_netdev, Error **e=
+rrp)
+ {
+-    const NetClientOptions *opts;
+     Netdev legacy =3D {0};
+     const Netdev *netdev;
+     const char *name;
+@@ -970,34 +969,72 @@ static int net_client_init1(const void *object, int=
+ is_netdev, Error **errp)
+
+     if (is_netdev) {
+         netdev =3D object;
+-        opts =3D netdev->opts;
+         name =3D netdev->id;
+
+-        if (opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_DUMP ||
+-            opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC ||
+-            !net_client_init_fun[opts->type]) {
++        if (netdev->type =3D=3D NET_CLIENT_DRIVER_DUMP ||
++            netdev->type =3D=3D NET_CLIENT_DRIVER_NIC ||
++            !net_client_init_fun[netdev->type]) {
+             error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "type",
+                        "a netdev backend type");
+             return -1;
+         }
+     } else {
+         const NetLegacy *net =3D object;
++        const NetLegacyOptions *opts =3D net->opts;
+         legacy.id =3D net->id;
+-        opts =3D legacy.opts =3D net->opts;
+         netdev =3D &legacy;
+         /* missing optional values have been initialized to "all bits ze=
+ro" */
+         name =3D net->has_id ? net->id : net->name;
+
+-        if (opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_NONE) {
++        /* Map the old options to the new flat type */
++        switch (opts->type) {
++        case NET_LEGACY_OPTIONS_KIND_NONE:
+             return 0; /* nothing to do */
+-        }
+-        if (opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_HUBPORT) {
+-            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "type",
+-                       "a net type");
+-            return -1;
++        case NET_LEGACY_OPTIONS_KIND_NIC:
++            legacy.type =3D NET_CLIENT_DRIVER_NIC;
++            legacy.u.nic =3D *opts->u.nic.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_USER:
++            legacy.type =3D NET_CLIENT_DRIVER_USER;
++            legacy.u.user =3D *opts->u.user.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_TAP:
++            legacy.type =3D NET_CLIENT_DRIVER_TAP;
++            legacy.u.tap =3D *opts->u.tap.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_L2TPV3:
++            legacy.type =3D NET_CLIENT_DRIVER_L2TPV3;
++            legacy.u.l2tpv3 =3D *opts->u.l2tpv3.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_SOCKET:
++            legacy.type =3D NET_CLIENT_DRIVER_SOCKET;
++            legacy.u.socket =3D *opts->u.socket.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_VDE:
++            legacy.type =3D NET_CLIENT_DRIVER_VDE;
++            legacy.u.vde =3D *opts->u.vde.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_DUMP:
++            legacy.type =3D NET_CLIENT_DRIVER_DUMP;
++            legacy.u.dump =3D *opts->u.dump.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_BRIDGE:
++            legacy.type =3D NET_CLIENT_DRIVER_BRIDGE;
++            legacy.u.bridge =3D *opts->u.bridge.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_NETMAP:
++            legacy.type =3D NET_CLIENT_DRIVER_NETMAP;
++            legacy.u.netmap =3D *opts->u.netmap.data;
++            break;
++        case NET_LEGACY_OPTIONS_KIND_VHOST_USER:
++            legacy.type =3D NET_CLIENT_DRIVER_VHOST_USER;
++            legacy.u.vhost_user =3D *opts->u.vhost_user.data;
++            break;
++        default:
++            abort();
+         }
+
+-        if (!net_client_init_fun[opts->type]) {
++        if (!net_client_init_fun[netdev->type]) {
+             error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "type",
+                        "a net backend type (maybe it is not compiled "
+                        "into this binary)");
+@@ -1005,17 +1042,17 @@ static int net_client_init1(const void *object, i=
+nt is_netdev, Error **errp)
+         }
+
+         /* Do not add to a vlan if it's a nic with a netdev=3D parameter=
+. */
+-        if (opts->type !=3D NET_CLIENT_OPTIONS_KIND_NIC ||
++        if (netdev->type !=3D NET_CLIENT_DRIVER_NIC ||
+             !opts->u.nic.data->has_netdev) {
+             peer =3D net_hub_add_port(net->has_vlan ? net->vlan : 0, NUL=
+L);
+         }
+     }
+
+-    if (net_client_init_fun[opts->type](netdev, name, peer, errp) < 0) {
++    if (net_client_init_fun[netdev->type](netdev, name, peer, errp) < 0)=
+ {
+         /* FIXME drop when all init functions store an Error */
+         if (errp && !*errp) {
+             error_setg(errp, QERR_DEVICE_INIT_FAILED,
+-                       NetClientOptionsKind_lookup[opts->type]);
++                       NetClientDriver_lookup[netdev->type]);
+         }
+         return -1;
+     }
+@@ -1135,7 +1172,7 @@ void hmp_host_net_remove(Monitor *mon, const QDict =
+*qdict)
+                      device, vlan_id);
+         return;
+     }
+-    if (nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++    if (nc->info->type =3D=3D NET_CLIENT_DRIVER_NIC) {
+         error_report("invalid host network device '%s'", device);
+         return;
+     }
+@@ -1226,7 +1263,7 @@ void print_net_client(Monitor *mon, NetClientState =
+*nc)
+
+     monitor_printf(mon, "%s: index=3D%d,type=3D%s,%s\n", nc->name,
+                    nc->queue_index,
+-                   NetClientOptionsKind_lookup[nc->info->type],
++                   NetClientDriver_lookup[nc->info->type],
+                    nc->info_str);
+     if (!QTAILQ_EMPTY(&nc->filters)) {
+         monitor_printf(mon, "filters:\n");
+@@ -1256,7 +1293,7 @@ RxFilterInfoList *qmp_query_rx_filter(bool has_name=
+, const char *name,
+         }
+
+         /* only query rx-filter information of NIC */
+-        if (nc->info->type !=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (nc->info->type !=3D NET_CLIENT_DRIVER_NIC) {
+             if (has_name) {
+                 error_setg(errp, "net client(%s) isn't a NIC", name);
+                 return NULL;
+@@ -1302,7 +1339,7 @@ RxFilterInfoList *qmp_query_rx_filter(bool has_name=
+, const char *name,
+ void hmp_info_network(Monitor *mon, const QDict *qdict)
+ {
+     NetClientState *nc, *peer;
+-    NetClientOptionsKind type;
++    NetClientDriver type;
+
+     net_hub_info(mon);
+
+@@ -1315,10 +1352,10 @@ void hmp_info_network(Monitor *mon, const QDict *=
+qdict)
+             continue;
+         }
+
+-        if (!peer || type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (!peer || type =3D=3D NET_CLIENT_DRIVER_NIC) {
+             print_net_client(mon, nc);
+         } /* else it's a netdev connected to a NIC, printed with the NIC=
+ */
+-        if (peer && type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (peer && type =3D=3D NET_CLIENT_DRIVER_NIC) {
+             monitor_printf(mon, " \\ ");
+             print_net_client(mon, peer);
+         }
+@@ -1332,7 +1369,7 @@ void qmp_set_link(const char *name, bool up, Error =
+**errp)
+     int queues, i;
+
+     queues =3D qemu_find_net_clients_except(name, ncs,
+-                                          NET_CLIENT_OPTIONS_KIND__MAX,
++                                          NET_CLIENT_DRIVER__MAX,
+                                           MAX_QUEUE_NUM);
+
+     if (queues =3D=3D 0) {
+@@ -1359,7 +1396,7 @@ void qmp_set_link(const char *name, bool up, Error =
+**errp)
+          * multiple clients that can still communicate with each other i=
+n
+          * disconnected mode. For now maintain this compatibility.
+          */
+-        if (nc->peer->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (nc->peer->info->type =3D=3D NET_CLIENT_DRIVER_NIC) {
+             for (i =3D 0; i < queues; i++) {
+                 ncs[i]->peer->link_down =3D !up;
+             }
+@@ -1400,7 +1437,7 @@ void net_cleanup(void)
+      */
+     while (!QTAILQ_EMPTY(&net_clients)) {
+         nc =3D QTAILQ_FIRST(&net_clients);
+-        if (nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC) {
++        if (nc->info->type =3D=3D NET_CLIENT_DRIVER_NIC) {
+             qemu_del_nic(qemu_get_nic(nc));
+         } else {
+             qemu_del_net_client(nc);
+@@ -1420,7 +1457,7 @@ void net_check_clients(void)
+     QTAILQ_FOREACH(nc, &net_clients, next) {
+         if (!nc->peer) {
+             fprintf(stderr, "Warning: %s %s has no peer\n",
+-                    nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_NIC ?
++                    nc->info->type =3D=3D NET_CLIENT_DRIVER_NIC ?
+                     "nic" : "netdev", nc->name);
+         }
+     }
+diff --git a/net/netmap.c b/net/netmap.c
+index beb8d28..2d11a8f 100644
+--- a/net/netmap.c
++++ b/net/netmap.c
+@@ -400,7 +400,7 @@ static void netmap_set_offload(NetClientState *nc, in=
+t csum, int tso4, int tso6,
+
+ /* NetClientInfo methods */
+ static NetClientInfo net_netmap_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_NETMAP,
++    .type =3D NET_CLIENT_DRIVER_NETMAP,
+     .size =3D sizeof(NetmapState),
+     .receive =3D netmap_receive,
+     .receive_iov =3D netmap_receive_iov,
+@@ -421,7 +421,7 @@ static NetClientInfo net_netmap_info =3D {
+ int net_init_netmap(const Netdev *netdev,
+                     const char *name, NetClientState *peer, Error **errp=
+)
+ {
+-    const NetdevNetmapOptions *netmap_opts =3D netdev->opts->u.netmap.da=
+ta;
++    const NetdevNetmapOptions *netmap_opts =3D &netdev->u.netmap;
+     struct nm_desc *nmd;
+     NetClientState *nc;
+     Error *err =3D NULL;
+diff --git a/net/slirp.c b/net/slirp.c
+index bb49629..5aafbf3 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -128,7 +128,7 @@ static void net_slirp_cleanup(NetClientState *nc)
+ }
+
+ static NetClientInfo net_slirp_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_USER,
++    .type =3D NET_CLIENT_DRIVER_USER,
+     .size =3D sizeof(SlirpState),
+     .receive =3D net_slirp_receive,
+     .cleanup =3D net_slirp_cleanup,
+@@ -828,8 +828,8 @@ int net_init_slirp(const Netdev *netdev, const char *=
+name,
+     const char **dnssearch;
+     bool ipv4 =3D true, ipv6 =3D true;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_USER);
+-    user =3D netdev->opts->u.user.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_USER);
++    user =3D &netdev->u.user;
+
+     if ((user->has_ipv6 && user->ipv6 && !user->has_ipv4) ||
+         (user->has_ipv4 && !user->ipv4)) {
+diff --git a/net/socket.c b/net/socket.c
+index 6e5c902..17e635d 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -311,7 +311,7 @@ static void net_socket_cleanup(NetClientState *nc)
+ }
+
+ static NetClientInfo net_dgram_socket_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_SOCKET,
++    .type =3D NET_CLIENT_DRIVER_SOCKET,
+     .size =3D sizeof(NetSocketState),
+     .receive =3D net_socket_receive_dgram,
+     .cleanup =3D net_socket_cleanup,
+@@ -395,7 +395,7 @@ static void net_socket_connect(void *opaque)
+ }
+
+ static NetClientInfo net_socket_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_SOCKET,
++    .type =3D NET_CLIENT_DRIVER_SOCKET,
+     .size =3D sizeof(NetSocketState),
+     .receive =3D net_socket_receive,
+     .cleanup =3D net_socket_cleanup,
+@@ -670,8 +670,8 @@ int net_init_socket(const Netdev *netdev, const char =
+*name,
+     Error *err =3D NULL;
+     const NetdevSocketOptions *sock;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_SOCKET);
+-    sock =3D netdev->opts->u.socket.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_SOCKET);
++    sock =3D &netdev->u.socket;
+
+     if (sock->has_fd + sock->has_listen + sock->has_connect + sock->has_=
+mcast +
+         sock->has_udp !=3D 1) {
+diff --git a/net/tap-win32.c b/net/tap-win32.c
+index 0f23b19..729309d 100644
+--- a/net/tap-win32.c
++++ b/net/tap-win32.c
+@@ -750,7 +750,7 @@ static void tap_set_vnet_hdr_len(NetClientState *nc, =
+int len)
+ }
+
+ static NetClientInfo net_tap_win32_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_TAP,
++    .type =3D NET_CLIENT_DRIVER_TAP,
+     .size =3D sizeof(TAPState),
+     .receive =3D tap_receive,
+     .cleanup =3D tap_cleanup,
+@@ -794,8 +794,8 @@ int net_init_tap(const Netdev *netdev, const char *na=
+me,
+     /* FIXME error_setg(errp, ...) on failure */
+     const NetdevTapOptions *tap;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
+-    tap =3D netdev->opts->u.tap.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_TAP);
++    tap =3D netdev->u.tap;
+
+     if (!tap->has_ifname) {
+         error_report("tap: no interface name");
+diff --git a/net/tap.c b/net/tap.c
+index 0e713b0..0015e7b 100644
+--- a/net/tap.c
++++ b/net/tap.c
+@@ -222,7 +222,7 @@ static bool tap_has_ufo(NetClientState *nc)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+
+     return s->has_ufo;
+ }
+@@ -231,7 +231,7 @@ static bool tap_has_vnet_hdr(NetClientState *nc)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+
+     return !!s->host_vnet_hdr_len;
+ }
+@@ -240,7 +240,7 @@ static bool tap_has_vnet_hdr_len(NetClientState *nc, =
+int len)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+
+     return !!tap_probe_vnet_hdr_len(s->fd, len);
+ }
+@@ -249,7 +249,7 @@ static void tap_set_vnet_hdr_len(NetClientState *nc, =
+int len)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+     assert(len =3D=3D sizeof(struct virtio_net_hdr_mrg_rxbuf) ||
+            len =3D=3D sizeof(struct virtio_net_hdr));
+
+@@ -261,7 +261,7 @@ static void tap_using_vnet_hdr(NetClientState *nc, bo=
+ol using_vnet_hdr)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+     assert(!!s->host_vnet_hdr_len =3D=3D using_vnet_hdr);
+
+     s->using_vnet_hdr =3D using_vnet_hdr;
+@@ -327,14 +327,14 @@ static void tap_poll(NetClientState *nc, bool enabl=
+e)
+ int tap_get_fd(NetClientState *nc)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+     return s->fd;
+ }
+
+ /* fd support */
+
+ static NetClientInfo net_tap_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_TAP,
++    .type =3D NET_CLIENT_DRIVER_TAP,
+     .size =3D sizeof(TAPState),
+     .receive =3D tap_receive,
+     .receive_raw =3D tap_receive_raw,
+@@ -566,8 +566,8 @@ int net_init_bridge(const Netdev *netdev, const char =
+*name,
+     TAPState *s;
+     int fd, vnet_hdr;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_BRIDGE);
+-    bridge =3D netdev->opts->u.bridge.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_BRIDGE);
++    bridge =3D &netdev->u.bridge;
+
+     helper =3D bridge->has_helper ? bridge->helper : DEFAULT_BRIDGE_HELP=
+ER;
+     br     =3D bridge->has_br     ? bridge->br     : DEFAULT_BRIDGE_INTE=
+RFACE;
+@@ -734,8 +734,8 @@ int net_init_tap(const Netdev *netdev, const char *na=
+me,
+     const char *vhostfdname;
+     char ifname[128];
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
+-    tap =3D netdev->opts->u.tap.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_TAP);
++    tap =3D &netdev->u.tap;
+     queues =3D tap->has_queues ? tap->queues : 1;
+     vhostfdname =3D tap->has_vhostfd ? tap->vhostfd : NULL;
+
+@@ -898,7 +898,7 @@ int net_init_tap(const Netdev *netdev, const char *na=
+me,
+ VHostNetState *tap_get_vhost_net(NetClientState *nc)
+ {
+     TAPState *s =3D DO_UPCAST(TAPState, nc, nc);
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_TAP);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP);
+     return s->vhost_net;
+ }
+
+diff --git a/net/vde.c b/net/vde.c
+index 53cdbbf..b8725f8 100644
+--- a/net/vde.c
++++ b/net/vde.c
+@@ -68,7 +68,7 @@ static void vde_cleanup(NetClientState *nc)
+ }
+
+ static NetClientInfo net_vde_info =3D {
+-    .type =3D NET_CLIENT_OPTIONS_KIND_VDE,
++    .type =3D NET_CLIENT_DRIVER_VDE,
+     .size =3D sizeof(VDEState),
+     .receive =3D vde_receive,
+     .cleanup =3D vde_cleanup,
+@@ -115,8 +115,8 @@ int net_init_vde(const Netdev *netdev, const char *na=
+me,
+     /* FIXME error_setg(errp, ...) on failure */
+     const NetdevVdeOptions *vde;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_VDE);
+-    vde =3D netdev->opts->u.vde.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_VDE);
++    vde =3D netdev->u.vde;
+
+     /* missing optional values have been initialized to "all bits zero" =
+*/
+     if (net_vde_init(peer, "vde", name, vde->sock, vde->port, vde->group=
+,
+diff --git a/net/vhost-user.c b/net/vhost-user.c
+index dfdcca2..c4d63e0 100644
+--- a/net/vhost-user.c
++++ b/net/vhost-user.c
+@@ -34,14 +34,14 @@ typedef struct VhostUserChardevProps {
+ VHostNetState *vhost_user_get_vhost_net(NetClientState *nc)
+ {
+     VhostUserState *s =3D DO_UPCAST(VhostUserState, nc, nc);
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+     return s->vhost_net;
+ }
+
+ uint64_t vhost_user_get_acked_features(NetClientState *nc)
+ {
+     VhostUserState *s =3D DO_UPCAST(VhostUserState, nc, nc);
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+     return s->acked_features;
+ }
+
+@@ -56,7 +56,7 @@ static void vhost_user_stop(int queues, NetClientState =
+*ncs[])
+     int i;
+
+     for (i =3D 0; i < queues; i++) {
+-        assert (ncs[i]->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_=
+USER);
++        assert(ncs[i]->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+
+         s =3D DO_UPCAST(VhostUserState, nc, ncs[i]);
+         if (!vhost_user_running(s)) {
+@@ -82,7 +82,7 @@ static int vhost_user_start(int queues, NetClientState =
+*ncs[])
+     options.backend_type =3D VHOST_BACKEND_TYPE_USER;
+
+     for (i =3D 0; i < queues; i++) {
+-        assert (ncs[i]->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_=
+USER);
++        assert(ncs[i]->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+
+         s =3D DO_UPCAST(VhostUserState, nc, ncs[i]);
+         if (vhost_user_running(s)) {
+@@ -163,20 +163,20 @@ static void vhost_user_cleanup(NetClientState *nc)
+
+ static bool vhost_user_has_vnet_hdr(NetClientState *nc)
+ {
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+
+     return true;
+ }
+
+ static bool vhost_user_has_ufo(NetClientState *nc)
+ {
+-    assert(nc->info->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER);
++    assert(nc->info->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
+
+     return true;
+ }
+
+ static NetClientInfo net_vhost_user_info =3D {
+-        .type =3D NET_CLIENT_OPTIONS_KIND_VHOST_USER,
++        .type =3D NET_CLIENT_DRIVER_VHOST_USER,
+         .size =3D sizeof(VhostUserState),
+         .receive =3D vhost_user_receive,
+         .cleanup =3D vhost_user_cleanup,
+@@ -207,7 +207,7 @@ static void net_vhost_user_event(void *opaque, int ev=
+ent)
+     int queues;
+
+     queues =3D qemu_find_net_clients_except(name, ncs,
+-                                          NET_CLIENT_OPTIONS_KIND_NIC,
++                                          NET_CLIENT_DRIVER_NIC,
+                                           MAX_QUEUE_NUM);
+     assert(queues < MAX_QUEUE_NUM);
+
+@@ -341,8 +341,8 @@ int net_init_vhost_user(const Netdev *netdev, const c=
+har *name,
+     const NetdevVhostUserOptions *vhost_user_opts;
+     CharDriverState *chr;
+
+-    assert(netdev->opts->type =3D=3D NET_CLIENT_OPTIONS_KIND_VHOST_USER)=
+;
+-    vhost_user_opts =3D netdev->opts->u.vhost_user.data;
++    assert(netdev->type =3D=3D NET_CLIENT_DRIVER_VHOST_USER);
++    vhost_user_opts =3D &netdev->u.vhost_user;
+
+     chr =3D net_vhost_parse_chardev(vhost_user_opts, errp);
+     if (!chr) {
+--=20
+2.5.5
+

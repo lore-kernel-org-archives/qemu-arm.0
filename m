@@ -1,152 +1,561 @@
-Received: by 10.25.21.156 with SMTP id 28csp1322534lfv;
-        Thu, 14 Jul 2016 02:16:52 -0700 (PDT)
-X-Received: by 10.55.7.14 with SMTP id 14mr15691056qkh.135.1468487812446;
-        Thu, 14 Jul 2016 02:16:52 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x35si770724qtb.87.2016.07.14.02.16.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 02:16:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52416 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNclH-0004i0-TB
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 05:16:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54550)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bNcl8-0004dn-QK
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 05:16:43 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bNcl5-0006Hk-JE
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 05:16:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51873)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1bNcl5-0006HE-CB; Thu, 14 Jul 2016 05:16:39 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6DF2161A11;
-	Thu, 14 Jul 2016 09:16:38 +0000 (UTC)
-Received: from kamzik.localdomain (dhcp-1-220.brq.redhat.com [10.34.1.220])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6E9GYTe028388
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 14 Jul 2016 05:16:36 -0400
-Date: Thu, 14 Jul 2016 11:16:33 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Message-ID: <20160714091633.k6ilf5dnp5sfrmds@kamzik.localdomain>
-References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id p126sm2347121wmp.13.2016.07.14.03.25.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 14 Jul 2016 03:25:08 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id C2F943E03EF;
+	Thu, 14 Jul 2016 11:25:06 +0100 (BST)
+References: <1468354426-837-1-git-send-email-sergey.fedorov@linaro.org> <1468354426-837-7-git-send-email-sergey.fedorov@linaro.org>
+User-agent: mu4e 0.9.17; emacs 25.0.95.9
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Sergey Fedorov <sergey.fedorov@linaro.org>
+Cc: qemu-devel@nongnu.org, mttcg@listserver.greensocs.com, fred.konrad@greensocs.com, a.rigo@virtualopensystems.com, serge.fdrv@gmail.com, cota@braap.org, bobby.prani@gmail.com, rth@twiddle.net, patches@linaro.org, mark.burton@greensocs.com, pbonzini@redhat.com, jan.kiszka@siemens.com, peter.maydell@linaro.org, claudio.fontana@huawei.com, Peter Crosthwaite <crosthwaite.peter@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>, Aurelien Jarno <aurelien@aurel32.net>, Leon Alrae <leon.alrae@imgtec.com>, Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>, David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Guan Xuetao <gxt@mprc.pku.edu.cn>, Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [PATCH v3 06/11] tcg: Introduce tb_mark_invalid() and tb_is_invalid()
+In-reply-to: <1468354426-837-7-git-send-email-sergey.fedorov@linaro.org>
+Date: Thu, 14 Jul 2016 11:25:06 +0100
+Message-ID: <87y4544iv1.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 14 Jul 2016 09:16:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 00/16] Rework SMP parameters
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, agraf@suse.de,
-	pbonzini@redhat.com, imammedo@redhat.com, dgibson@redhat.com,
-	david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SKO5OSzCAwyb
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 4gUoVvHI2wMr
 
 
-Eduardo,
+Sergey Fedorov <sergey.fedorov@linaro.org> writes:
 
-ping?
+> From: Sergey Fedorov <serge.fdrv@gmail.com>
+>
+> These functions will be used to make translation block invalidation safe
+> with concurrent lockless lookup in the global hash table.
+>
+> Most targets don't use 'cs_base'; so marking TB as invalid is as simple
+> as assigning -1 to 'cs_base'. SPARC target stores the next program
+> counter into 'cs_base', and -1 is a fine invalid value since PC must bet
+> a multiple of 4 in SPARC. The only odd target is i386, for which a
+> special flag is introduced in place of removed 'HF_SOFTMMU_MASK'.
+>
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Sergey Fedorov <serge.fdrv@gmail.com>
+> Signed-off-by: Sergey Fedorov <sergey.fedorov@linaro.org>
 
-I'd like to spin a v1 soon, but have been putting it off until
-I can get some input from you about this RFC.
+This has merge conflicts with the current state of master. Is there
+anyway to have a common implementation that is specialised only when
+needed?
 
-Thanks,
-drew
+> ---
+>  include/exec/exec-all.h  | 10 ++++++++++
+>  target-alpha/cpu.h       | 14 ++++++++++++++
+>  target-arm/cpu.h         | 14 ++++++++++++++
+>  target-cris/cpu.h        | 14 ++++++++++++++
+>  target-i386/cpu.h        | 17 +++++++++++++++++
+>  target-lm32/cpu.h        | 14 ++++++++++++++
+>  target-m68k/cpu.h        | 14 ++++++++++++++
+>  target-microblaze/cpu.h  | 14 ++++++++++++++
+>  target-mips/cpu.h        | 14 ++++++++++++++
+>  target-moxie/cpu.h       | 14 ++++++++++++++
+>  target-openrisc/cpu.h    | 14 ++++++++++++++
+>  target-ppc/cpu.h         | 14 ++++++++++++++
+>  target-s390x/cpu.h       | 14 ++++++++++++++
+>  target-sh4/cpu.h         | 14 ++++++++++++++
+>  target-sparc/cpu.h       | 14 ++++++++++++++
+>  target-sparc/translate.c |  1 +
+>  target-tilegx/cpu.h      | 14 ++++++++++++++
+>  target-tricore/cpu.h     | 14 ++++++++++++++
+>  target-unicore32/cpu.h   | 14 ++++++++++++++
+>  target-xtensa/cpu.h      | 14 ++++++++++++++
+>  20 files changed, 266 insertions(+)
+>
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index db79ab65cebe..61cc3a1fb8f7 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -256,6 +256,16 @@ void tb_free(TranslationBlock *tb);
+>  void tb_flush(CPUState *cpu);
+>  void tb_phys_invalidate(TranslationBlock *tb, tb_page_addr_t page_addr);
+>
+> +static inline void tb_mark_invalid(TranslationBlock *tb)
+> +{
+> +    cpu_get_invalid_tb_cpu_state(&tb->pc, &tb->cs_base, &tb->flags);
+> +}
+> +
+> +static inline bool tb_is_invalid(TranslationBlock *tb)
+> +{
+> +    return cpu_tb_cpu_state_is_invalidated(tb->pc, tb->cs_base, tb->flags);
+> +}
+> +
+>  #if defined(USE_DIRECT_JUMP)
+>
+>  #if defined(CONFIG_TCG_INTERPRETER)
+> diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
+> index 791da3b4ad67..1ce4526d7a72 100644
+> --- a/target-alpha/cpu.h
+> +++ b/target-alpha/cpu.h
+> @@ -524,4 +524,18 @@ static inline void cpu_get_tb_cpu_state(CPUAlphaState *env, target_ulong *pc,
+>      *pflags = flags;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #endif /* !defined (__CPU_ALPHA_H__) */
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index e2fac46909c6..2855bdae7800 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -2371,6 +2371,20 @@ static inline void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
+>      *cs_base = 0;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  enum {
+>      QEMU_PSCI_CONDUIT_DISABLED = 0,
+>      QEMU_PSCI_CONDUIT_SMC = 1,
+> diff --git a/target-cris/cpu.h b/target-cris/cpu.h
+> index e6046d20ca10..fae3219304df 100644
+> --- a/target-cris/cpu.h
+> +++ b/target-cris/cpu.h
+> @@ -295,6 +295,20 @@ static inline void cpu_get_tb_cpu_state(CPUCRISState *env, target_ulong *pc,
+>  				     | X_FLAG | PFIX_FLAG));
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #define cpu_list cris_cpu_list
+>  void cris_cpu_list(FILE *f, fprintf_function cpu_fprintf);
+>
+> diff --git a/target-i386/cpu.h b/target-i386/cpu.h
+> index a7c752afdad8..c9125b725ca4 100644
+> --- a/target-i386/cpu.h
+> +++ b/target-i386/cpu.h
+> @@ -129,6 +129,8 @@
+>     positions to ease oring with eflags. */
+>  /* current cpl */
+>  #define HF_CPL_SHIFT         0
+> +/* used to mark invalidated translation blocks */
+> +#define HF_INVALID_SHIFT     2
+>  /* true if hardware interrupts must be disabled for next instruction */
+>  #define HF_INHIBIT_IRQ_SHIFT 3
+>  /* 16 or 32 segments */
+> @@ -158,6 +160,7 @@
+>  #define HF_MPX_IU_SHIFT     26 /* BND registers in-use */
+>
+>  #define HF_CPL_MASK          (3 << HF_CPL_SHIFT)
+> +#define HF_INVALID_MASK      (1 << HF_INVALID_SHIFT)
+>  #define HF_INHIBIT_IRQ_MASK  (1 << HF_INHIBIT_IRQ_SHIFT)
+>  #define HF_CS32_MASK         (1 << HF_CS32_SHIFT)
+>  #define HF_SS32_MASK         (1 << HF_SS32_SHIFT)
+> @@ -1489,6 +1492,20 @@ static inline void cpu_get_tb_cpu_state(CPUX86State *env, target_ulong *pc,
+>          (env->eflags & (IOPL_MASK | TF_MASK | RF_MASK | VM_MASK | AC_MASK));
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *flags = HF_INVALID_MASK;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return flags == HF_INVALID_MASK;
+> +}
+> +
+>  void do_cpu_init(X86CPU *cpu);
+>  void do_cpu_sipi(X86CPU *cpu);
+>
+> diff --git a/target-lm32/cpu.h b/target-lm32/cpu.h
+> index 4efe98d828f8..5f78c3c619e5 100644
+> --- a/target-lm32/cpu.h
+> +++ b/target-lm32/cpu.h
+> @@ -271,4 +271,18 @@ static inline void cpu_get_tb_cpu_state(CPULM32State *env, target_ulong *pc,
+>      *flags = 0;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #endif
+> diff --git a/target-m68k/cpu.h b/target-m68k/cpu.h
+> index 908776999797..c44f4339e40a 100644
+> --- a/target-m68k/cpu.h
+> +++ b/target-m68k/cpu.h
+> @@ -269,4 +269,18 @@ static inline void cpu_get_tb_cpu_state(CPUM68KState *env, target_ulong *pc,
+>              | ((env->macsr >> 4) & 0xf);        /* Bits 0-3 */
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #endif
+> diff --git a/target-microblaze/cpu.h b/target-microblaze/cpu.h
+> index 16815dfc6abc..22362efce586 100644
+> --- a/target-microblaze/cpu.h
+> +++ b/target-microblaze/cpu.h
+> @@ -371,6 +371,20 @@ static inline void cpu_get_tb_cpu_state(CPUMBState *env, target_ulong *pc,
+>                   (env->sregs[SR_MSR] & (MSR_UM | MSR_VM | MSR_EE));
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #if !defined(CONFIG_USER_ONLY)
+>  void mb_cpu_unassigned_access(CPUState *cpu, hwaddr addr,
+>                                bool is_write, bool is_exec, int is_asi,
+> diff --git a/target-mips/cpu.h b/target-mips/cpu.h
+> index 9c4fc816bf9b..a887154274b3 100644
+> --- a/target-mips/cpu.h
+> +++ b/target-mips/cpu.h
+> @@ -901,6 +901,20 @@ static inline void cpu_get_tb_cpu_state(CPUMIPSState *env, target_ulong *pc,
+>                              MIPS_HFLAG_HWRENA_ULR);
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  static inline int mips_vpe_active(CPUMIPSState *env)
+>  {
+>      int active = 1;
+> diff --git a/target-moxie/cpu.h b/target-moxie/cpu.h
+> index 63d5cafc5528..f0f95a2701e1 100644
+> --- a/target-moxie/cpu.h
+> +++ b/target-moxie/cpu.h
+> @@ -136,6 +136,20 @@ static inline void cpu_get_tb_cpu_state(CPUMoxieState *env, target_ulong *pc,
+>      *flags = 0;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  int moxie_cpu_handle_mmu_fault(CPUState *cpu, vaddr address,
+>                                 int rw, int mmu_idx);
+>
+> diff --git a/target-openrisc/cpu.h b/target-openrisc/cpu.h
+> index 9451a7cca691..a5650cbed4b7 100644
+> --- a/target-openrisc/cpu.h
+> +++ b/target-openrisc/cpu.h
+> @@ -398,6 +398,20 @@ static inline void cpu_get_tb_cpu_state(CPUOpenRISCState *env,
+>      *flags = (env->flags & D_FLAG);
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  static inline int cpu_mmu_index(CPUOpenRISCState *env, bool ifetch)
+>  {
+>      if (!(env->sr & SR_IME)) {
+> diff --git a/target-ppc/cpu.h b/target-ppc/cpu.h
+> index 2666a3f80d00..092c7954d19a 100644
+> --- a/target-ppc/cpu.h
+> +++ b/target-ppc/cpu.h
+> @@ -2294,6 +2294,20 @@ static inline void cpu_get_tb_cpu_state(CPUPPCState *env, target_ulong *pc,
+>      *flags = env->hflags;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #if !defined(CONFIG_USER_ONLY)
+>  static inline int booke206_tlbm_id(CPUPPCState *env, ppcmas_tlb_t *tlbm)
+>  {
+> diff --git a/target-s390x/cpu.h b/target-s390x/cpu.h
+> index 8bcb0f75f399..574cdb51c967 100644
+> --- a/target-s390x/cpu.h
+> +++ b/target-s390x/cpu.h
+> @@ -393,6 +393,20 @@ static inline void cpu_get_tb_cpu_state(CPUS390XState* env, target_ulong *pc,
+>               ((env->psw.mask & PSW_MASK_32) ? FLAG_MASK_32 : 0);
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  /* While the PoO talks about ILC (a number between 1-3) what is actually
+>     stored in LowCore is shifted left one bit (an even between 2-6).  As
+>     this is the actual length of the insn and therefore more useful, that
+> diff --git a/target-sh4/cpu.h b/target-sh4/cpu.h
+> index 3f9dae2d1f0d..bcddbf31c853 100644
+> --- a/target-sh4/cpu.h
+> +++ b/target-sh4/cpu.h
+> @@ -387,4 +387,18 @@ static inline void cpu_get_tb_cpu_state(CPUSH4State *env, target_ulong *pc,
+>              | (env->movcal_backup ? TB_FLAG_PENDING_MOVCA : 0); /* Bit 4 */
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #endif				/* _CPU_SH4_H */
+> diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
+> index 604de84624ca..09df29b7b439 100644
+> --- a/target-sparc/cpu.h
+> +++ b/target-sparc/cpu.h
+> @@ -749,6 +749,20 @@ static inline void cpu_get_tb_cpu_state(CPUSPARCState *env, target_ulong *pc,
+>  #endif
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1; /* npc must be a multible of 4 */
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  static inline bool tb_fpu_enabled(int tb_flags)
+>  {
+>  #if defined(CONFIG_USER_ONLY)
+> diff --git a/target-sparc/translate.c b/target-sparc/translate.c
+> index 0f4faf70624f..cc160bc67be0 100644
+> --- a/target-sparc/translate.c
+> +++ b/target-sparc/translate.c
+> @@ -38,6 +38,7 @@
+>  #define DYNAMIC_PC  1 /* dynamic pc value */
+>  #define JUMP_PC     2 /* dynamic pc value which takes only two values
+>                           according to jump_pc[T2] */
+> +/* NOTE: -1 is reserved for cpu_get_invalid_tb_cpu_state() */
+>
+>  /* global register indexes */
+>  static TCGv_env cpu_env;
+> diff --git a/target-tilegx/cpu.h b/target-tilegx/cpu.h
+> index d74032925b12..79f84a422de1 100644
+> --- a/target-tilegx/cpu.h
+> +++ b/target-tilegx/cpu.h
+> @@ -174,4 +174,18 @@ static inline void cpu_get_tb_cpu_state(CPUTLGState *env, target_ulong *pc,
+>      *flags = 0;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #endif
+> diff --git a/target-tricore/cpu.h b/target-tricore/cpu.h
+> index a298d63eea24..8f3ca20241b7 100644
+> --- a/target-tricore/cpu.h
+> +++ b/target-tricore/cpu.h
+> @@ -410,6 +410,20 @@ static inline void cpu_get_tb_cpu_state(CPUTriCoreState *env, target_ulong *pc,
+>      *flags = 0;
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  TriCoreCPU *cpu_tricore_init(const char *cpu_model);
+>
+>  #define cpu_init(cpu_model) CPU(cpu_tricore_init(cpu_model))
+> diff --git a/target-unicore32/cpu.h b/target-unicore32/cpu.h
+> index 83f758496a6c..6bcda6aa3e38 100644
+> --- a/target-unicore32/cpu.h
+> +++ b/target-unicore32/cpu.h
+> @@ -179,6 +179,20 @@ static inline void cpu_get_tb_cpu_state(CPUUniCore32State *env, target_ulong *pc
+>      }
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  int uc32_cpu_handle_mmu_fault(CPUState *cpu, vaddr address, int rw,
+>                                int mmu_idx);
+>  void uc32_translate_init(void);
+> diff --git a/target-xtensa/cpu.h b/target-xtensa/cpu.h
+> index ce9fb5b0033a..bd0a3b1deddf 100644
+> --- a/target-xtensa/cpu.h
+> +++ b/target-xtensa/cpu.h
+> @@ -582,6 +582,20 @@ static inline void cpu_get_tb_cpu_state(CPUXtensaState *env, target_ulong *pc,
+>      }
+>  }
+>
+> +static inline void cpu_get_invalid_tb_cpu_state(target_ulong *pc,
+> +                                                target_ulong *cs_base,
+> +                                                uint32_t *flags)
+> +{
+> +    *cs_base = -1;
+> +}
+> +
+> +static inline bool cpu_tb_cpu_state_is_invalidated(target_ulong pc,
+> +                                                   target_ulong cs_base,
+> +                                                   uint32_t flags)
+> +{
+> +    return cs_base == -1;
+> +}
+> +
+>  #include "exec/cpu-all.h"
+>
+>  #endif
 
 
-On Fri, Jun 10, 2016 at 07:40:11PM +0200, Andrew Jones wrote:
-> This series is a first step in eliminating smp_* global
-> variables (the last patch gets rid of two of them!) And, it's
-> a first step in deprecating '-smp' in favor of using machine
-> properties, e.g.
->  qemu -machine pc,sockets=2,cores=2,threads=2,maxcpus=8,cpus=8 ...
-> 
-> It's also a first step in allowing machine types to override
-> the default parameter parsing, which makes assumptions that
-> not all machine types may agree with. (mach-virt is coming...)
-> 
-> So, three first steps, I guess that's 3 steps. And a forth
-> thing it does is some fixes for the smp parsing and also for
-> SMBIOS use of cpu topology.
-> 
-> Tested with kvm-unit-tests on all five arches supported
-> there, x86_64 both with KVM and TCG, and booting an x86_64
-> guest (KVM) to check SMBIOS before and after in order to make
-> sure it was the same. Also compile tested all targets.
-> 
-> Thanks,
-> drew
-> 
-> 
-> Andrew Jones (15):
->   vl: smp_parse: cleanups
->   vl: smp: add checks for maxcpus based topologies
->   hw/smbios/smbios: fix number of sockets calculation
->   hw/core/machine: add smp properites
->   vl: move smp parsing to machine pre_init
->   qom/cpu: make nr-cores,nr-threads real properties
->   hw/core/machine: set cpu global nr_cores,nr_threads in pre_init
->   hw/i386/pc: don't use smp_cores,smp_threads
->   hw/ppc/spapr: don't use smp_cores,smp_threads
->   target-ppc: don't use smp_threads
->   hw/arm/virt: rename *.smp_cpus to *.cpus
->   hw/arm/virt: don't use smp_cpus,max_cpus
->   hw/arm/virt: stash cpu topo info in VirtGuestInfo
->   smbios: don't use smp_cores,smp_threads
->   sysemu/cpus: bye, bye smp_cores,smp_threads
-> 
-> Igor Mammedov (1):
->   hw/core/machine: Introduce pre_init
-> 
->  cpus.c                           |   2 -
->  hw/arm/virt-acpi-build.c         |  14 +--
->  hw/arm/virt.c                    |  41 +++++---
->  hw/core/machine.c                | 210 +++++++++++++++++++++++++++++++++++++++
->  hw/i386/pc.c                     |  39 +++++---
->  hw/ppc/spapr.c                   |   9 +-
->  hw/ppc/spapr_rtas.c              |   2 +-
->  hw/smbios/smbios.c               |  20 ++--
->  include/hw/arm/virt-acpi-build.h |   6 +-
->  include/hw/boards.h              |   7 ++
->  include/hw/smbios/smbios.h       |  10 ++
->  include/sysemu/cpus.h            |  10 --
->  qom/cpu.c                        |   8 ++
->  target-ppc/translate_init.c      |  15 ++-
->  vl.c                             | 101 +++++++------------
->  15 files changed, 356 insertions(+), 138 deletions(-)
-> 
-> -- 
-> 2.4.11
-> 
-> 
+--
+Alex Bennée

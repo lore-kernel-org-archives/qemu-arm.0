@@ -1,61 +1,65 @@
-Received: by 10.25.21.156 with SMTP id 28csp282826lfv;
-        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
-X-Received: by 10.55.13.11 with SMTP id 11mr19807050qkn.150.1468529501491;
-        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp450965lfv;
+        Thu, 14 Jul 2016 23:26:37 -0700 (PDT)
+X-Received: by 10.55.10.147 with SMTP id 141mr22270900qkk.42.1468563996027;
+        Thu, 14 Jul 2016 23:26:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e100si2503231qkh.223.2016.07.14.13.51.41
+        by mx.google.com with ESMTPS id q25si4308773qtq.57.2016.07.14.23.26.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jul 2016 13:51:41 -0700 (PDT)
+        Thu, 14 Jul 2016 23:26:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56942 helo=lists.gnu.org)
+Received: from localhost ([::1]:58677 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bNnbg-0005A9-V3
-	for alex.bennee@linaro.org; Thu, 14 Jul 2016 16:51:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53809)
+	id 1bNwa3-00046n-FD
+	for alex.bennee@linaro.org; Fri, 15 Jul 2016 02:26:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNnbV-00053V-OI
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:51:30 -0400
+	(envelope-from <drjones@redhat.com>) id 1bNwZz-00046c-Rx
+	for qemu-arm@nongnu.org; Fri, 15 Jul 2016 02:26:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bNnbP-0007VG-P9
-	for qemu-arm@nongnu.org; Thu, 14 Jul 2016 16:51:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39583)
+	(envelope-from <drjones@redhat.com>) id 1bNwZw-0000Wk-N4
+	for qemu-arm@nongnu.org; Fri, 15 Jul 2016 02:26:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59028)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1bNnbP-0007VC-JH; Thu, 14 Jul 2016 16:51:23 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(envelope-from <drjones@redhat.com>)
+	id 1bNwZw-0000W5-GV; Fri, 15 Jul 2016 02:26:28 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D28DA142582;
-	Thu, 14 Jul 2016 20:51:22 +0000 (UTC)
-Received: from localhost (vpn1-5-31.gru2.redhat.com [10.97.5.31])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6EKpKHZ010749; Thu, 14 Jul 2016 16:51:22 -0400
-Date: Thu, 14 Jul 2016 17:51:19 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20160714205119.GH31865@thinpad.lan.raisama.net>
+	by mx1.redhat.com (Postfix) with ESMTPS id 95F4D37E64;
+	Fri, 15 Jul 2016 06:26:26 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-66.brq.redhat.com [10.40.204.66])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6F6QKoR017899
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 15 Jul 2016 02:26:22 -0400
+Date: Fri, 15 Jul 2016 08:26:20 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20160715062620.6du2q6japlty7aye@hawk.localdomain>
 References: <1465580427-13596-1-git-send-email-drjones@redhat.com>
-	<1465580427-13596-16-git-send-email-drjones@redhat.com>
+	<1465580427-13596-5-git-send-email-drjones@redhat.com>
+	<20160614013037.GG4882@voom.fritz.box>
+	<20160614055856.6ixqhiuezthebact@hawk.localdomain>
+	<20160714201047.GD31865@thinpad.lan.raisama.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1465580427-13596-16-git-send-email-drjones@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+In-Reply-To: <20160714201047.GD31865@thinpad.lan.raisama.net>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 14 Jul 2016 20:51:23 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 15 Jul 2016 06:26:26 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 15/16] smbios: don't use
- smp_cores, smp_threads
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 04/16] hw/core/machine:
+ Introduce pre_init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,45 +71,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, imammedo@redhat.com, qemu-devel@nongnu.org,
-	agraf@suse.de, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	dgibson@redhat.com, pbonzini@redhat.com, david@gibson.dropbear.id.au
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, agraf@suse.de,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, imammedo@redhat.com,
+	pbonzini@redhat.com, dgibson@redhat.com,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7ItpIWm57deT
+X-TUID: 1C6BdWe8+NLy
 
-On Fri, Jun 10, 2016 at 07:40:26PM +0200, Andrew Jones wrote:
-> SMBIOS needs cpu topology for Type4 tables, so we need to pass
-> it in. There are several parameters so we use a structure. There
-> are two callers (of non-legacy, which generates Type4 tables),
-> x86 and arm, so we also update both to pass the topology
-> parameters from their MachineState properties (directly in the
-> case of x86, indirectly through VirtGuestInfo in the case of arm).
+On Thu, Jul 14, 2016 at 05:10:47PM -0300, Eduardo Habkost wrote:
+> On Tue, Jun 14, 2016 at 07:58:56AM +0200, Andrew Jones wrote:
+> > On Tue, Jun 14, 2016 at 11:30:37AM +1000, David Gibson wrote:
+> > > On Fri, Jun 10, 2016 at 07:40:15PM +0200, Andrew Jones wrote:
+> > > > From: Igor Mammedov <imammedo@redhat.com>
+> > > > 
+> > > > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > 
+> > > I think this needs some kind of rationale.
+> > > 
+> > > Since with this patch it is called immediately before ->init, I'm not
+> > > really seeing the point of this.
+> > 
+> > Many machines already override ->init, so if we want to move code
+> > from vl.c into machine methods, but be sure that they run it now,
+> > then we have to invent a pre-init. I (or Igor) can add something
+> > like that to the commit message for the next round.
 > 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-[...]
-> @@ -701,12 +701,19 @@ static uint32_t x86_cpu_apic_id_from_index(MachineState *ms,
->      }
->  }
->  
-> -static void pc_build_smbios(FWCfgState *fw_cfg)
-> +static void pc_build_smbios(MachineState *ms, FWCfgState *fw_cfg)
->  {
->      uint8_t *smbios_tables, *smbios_anchor;
->      size_t smbios_tables_len, smbios_anchor_len;
->      struct smbios_phys_mem_area *mem_array;
->      unsigned i, array_count;
-> +    struct smbios_cpu_topology topo = {
-> +        .sockets = ms->sockets,
-> +        .cores   = ms->cores,
-> +        .threads = ms->threads,
-> +        .maxcpus = ms->maxcpus,
-> +        .cpus    = ms->cpus,
-> +    };
->  
+> If we just want to move vl.c code into machine, why not just
+> create a simple machine_pre_init() function?
+> 
+> We can add a virtual method that can be reimplemented by
+> subclasses later, only when we really see the need for a subclass
+> to override some behavior.
 
-Do we really need to manually copy data around this way when
-smbios.c could just use qdev_get_machine() directly?
+That's fine for this series. Of course one of the main motivators
+of this series is to be able to override the old parsing though, so
+I already see the need. I'll need to either add this method now, or
+later, when I add cpu topo support to the ARM mach-virt machine type.
 
--- 
-Eduardo
+Thanks,
+drew
+
+> 
+> -- 
+> Eduardo
+> 

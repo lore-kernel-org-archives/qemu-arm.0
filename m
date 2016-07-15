@@ -1,109 +1,59 @@
-Received: by 10.25.21.156 with SMTP id 28csp587922lfv;
-        Fri, 15 Jul 2016 05:31:27 -0700 (PDT)
-X-Received: by 10.55.166.149 with SMTP id p143mr23514149qke.79.1468585886756;
-        Fri, 15 Jul 2016 05:31:26 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 16si5129119qkm.83.2016.07.15.05.31.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jul 2016 05:31:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.21.156 with SMTP id 28csp600542lfv;
+        Fri, 15 Jul 2016 06:00:49 -0700 (PDT)
+X-Received: by 10.55.189.65 with SMTP id n62mr17323697qkf.3.1468587649666;
+        Fri, 15 Jul 2016 06:00:49 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id h5si5219443qkf.7.2016.07.15.06.00.49
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Jul 2016 06:00:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60462 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bO2H8-0002gm-97
-	for alex.bennee@linaro.org; Fri, 15 Jul 2016 08:31:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46996)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1bO2H4-0002fp-Vd
-	for qemu-arm@nongnu.org; Fri, 15 Jul 2016 08:31:23 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>) id 1bO2Gz-0004er-V3
-	for qemu-arm@nongnu.org; Fri, 15 Jul 2016 08:31:21 -0400
-Received: from mailapp01.imgtec.com ([195.59.15.196]:64161)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Leon.Alrae@imgtec.com>)
-	id 1bO2Gz-0004bn-Pd; Fri, 15 Jul 2016 08:31:17 -0400
-Received: from hhmail02.hh.imgtec.org (unknown [10.100.10.20])
-	by Forcepoint Email with ESMTPS id 129245B80945C;
-	Fri, 15 Jul 2016 13:31:07 +0100 (IST)
-Received: from hhmipssw201.hh.imgtec.org (10.100.21.117) by
-	hhmail02.hh.imgtec.org (10.100.10.20) with Microsoft SMTP Server (TLS)
-	id 14.3.294.0; Fri, 15 Jul 2016 13:31:10 +0100
-Date: Fri, 15 Jul 2016 13:31:05 +0100
-From: Leon Alrae <leon.alrae@imgtec.com>
-To: Marcel Apfelbaum <marcel@redhat.com>
-Message-ID: <20160715123105.GA32594@hhmipssw201.hh.imgtec.org>
-References: <1468503826-10617-1-git-send-email-marcel@redhat.com>
-	<1468503826-10617-4-git-send-email-marcel@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <1468503826-10617-4-git-send-email-marcel@redhat.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Originating-IP: [10.100.21.117]
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 195.59.15.196
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/7] hw/mips: fix PCI bus
- initialization
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, thuth@redhat.com, mst@redhat.com,
-	mark.cave-ayland@ilande.co.uk, agraf@suse.de,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	aurelien@aurel32.net, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j5B/C2+hnPUn
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A997C1E2C3;
+	Fri, 15 Jul 2016 13:00:48 +0000 (UTC)
+Received: from hawk.localdomain.com (ovpn-204-44.brq.redhat.com [10.40.204.44])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u6FD0gc7018213;
+	Fri, 15 Jul 2016 09:00:46 -0400
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alex.bennee@linaro.org
+Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
+        wei@redhat.com
+Subject: [kvm-unit-tests PATCH v3 01/10] lib: xstr: allow multiple args
+Date: Fri, 15 Jul 2016 15:00:32 +0200
+Message-Id: <1468587641-7300-2-git-send-email-drjones@redhat.com>
+In-Reply-To: <1468587641-7300-1-git-send-email-drjones@redhat.com>
+References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Fri, 15 Jul 2016 13:00:48 +0000 (UTC)
+X-TUID: mpKiKqYY2go0
 
-On Thu, Jul 14, 2016 at 04:43:42PM +0300, Marcel Apfelbaum wrote:
-> Delay the host-bridge 'realization' until the
-> PCI root bus is attached.
-> 
-> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
-> ---
->  hw/mips/gt64xxx_pci.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Make implementation equivalent to Linux's include/linux/stringify.h
 
-Acked-by: Leon Alrae <leon.alrae@imgtec.com>
-Tested-by: Leon Alrae <leon.alrae@imgtec.com>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ lib/libcflat.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-Leon
-
-> 
-> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-> index 3f4523d..4811843 100644
-> --- a/hw/mips/gt64xxx_pci.c
-> +++ b/hw/mips/gt64xxx_pci.c
-> @@ -1167,7 +1167,6 @@ PCIBus *gt64120_register(qemu_irq *pic)
->      DeviceState *dev;
->  
->      dev = qdev_create(NULL, TYPE_GT64120_PCI_HOST_BRIDGE);
-> -    qdev_init_nofail(dev);
->      d = GT64120_PCI_HOST_BRIDGE(dev);
->      phb = PCI_HOST_BRIDGE(dev);
->      memory_region_init(&d->pci0_mem, OBJECT(dev), "pci0-mem", UINT32_MAX);
-> @@ -1178,6 +1177,7 @@ PCIBus *gt64120_register(qemu_irq *pic)
->                                  &d->pci0_mem,
->                                  get_system_io(),
->                                  PCI_DEVFN(18, 0), 4, TYPE_PCI_BUS);
-> +    qdev_init_nofail(dev);
->      memory_region_init_io(&d->ISD_mem, OBJECT(dev), &isd_mem_ops, d, "isd-mem", 0x1000);
->  
->      pci_create_simple(phb->bus, PCI_DEVFN(0, 0), "gt64120_pci");
-> -- 
-> 2.4.3
-> 
+diff --git a/lib/libcflat.h b/lib/libcflat.h
+index 72b1bf9668ef1..82005f5d014fb 100644
+--- a/lib/libcflat.h
++++ b/lib/libcflat.h
+@@ -27,8 +27,8 @@
+ 
+ #define __unused __attribute__((__unused__))
+ 
+-#define xstr(s) xxstr(s)
+-#define xxstr(s) #s
++#define xstr(s...) xxstr(s)
++#define xxstr(s...) #s
+ 
+ #define __ALIGN_MASK(x, mask)	(((x) + (mask)) & ~(mask))
+ #define __ALIGN(x, a)		__ALIGN_MASK(x, (typeof(x))(a) - 1)
+-- 
+2.7.4

@@ -1,236 +1,105 @@
-Received: by 10.25.21.156 with SMTP id 28csp601058lfv;
-        Fri, 15 Jul 2016 06:01:44 -0700 (PDT)
-X-Received: by 10.129.41.138 with SMTP id p132mr13473958ywp.46.1468587674985;
-        Fri, 15 Jul 2016 06:01:14 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id g184si5223168qkf.28.2016.07.15.06.01.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Jul 2016 06:01:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.21.156 with SMTP id 28csp662034lfv;
+        Fri, 15 Jul 2016 08:08:06 -0700 (PDT)
+X-Received: by 10.55.13.11 with SMTP id 11mr24922062qkn.150.1468595286260;
+        Fri, 15 Jul 2016 08:08:06 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r123si5512073qkd.243.2016.07.15.08.08.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 15 Jul 2016 08:08:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EA2D515555;
-	Fri, 15 Jul 2016 13:01:13 +0000 (UTC)
-Received: from hawk.localdomain.com (ovpn-204-44.brq.redhat.com [10.40.204.44])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u6FD0gcG018213;
-	Fri, 15 Jul 2016 09:01:11 -0400
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alex.bennee@linaro.org
-Cc: christoffer.dall@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
-        wei@redhat.com
-Subject: [kvm-unit-tests PATCH v3 10/10] arm/arm64: gic: don't just use zero
-Date: Fri, 15 Jul 2016 15:00:41 +0200
-Message-Id: <1468587641-7300-11-git-send-email-drjones@redhat.com>
-In-Reply-To: <1468587641-7300-1-git-send-email-drjones@redhat.com>
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Fri, 15 Jul 2016 13:01:14 +0000 (UTC)
-X-TUID: sOTC3Jlko/Ih
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33070 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bO4ij-0008Dl-JI
+	for alex.bennee@linaro.org; Fri, 15 Jul 2016 11:08:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54881)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bO4go-000708-O3
+	for qemu-devel@nongnu.org; Fri, 15 Jul 2016 11:06:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1bO4gn-0006zt-Jb
+	for qemu-devel@nongnu.org; Fri, 15 Jul 2016 11:06:06 -0400
+Received: from chuckie.co.uk ([82.165.15.123]:39423
+	helo=s16892447.onlinehome-server.info)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bO4gf-0006yg-LU; Fri, 15 Jul 2016 11:05:57 -0400
+Received: from host86-138-127-109.range86-138.btcentralplus.com
+	([86.138.127.109] helo=[192.168.1.65])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1bO4gS-0000XD-PF; Fri, 15 Jul 2016 16:05:47 +0100
+To: Marcel Apfelbaum <marcel@redhat.com>, qemu-devel@nongnu.org
+References: <1468503826-10617-1-git-send-email-marcel@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <64f54148-13ec-ab1e-6e9f-dcb19a26c885@ilande.co.uk>
+Date: Fri, 15 Jul 2016 16:05:34 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Icedove/45.1.0
+MIME-Version: 1.0
+In-Reply-To: <1468503826-10617-1-git-send-email-marcel@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.138.127.109
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-devel] [PATCH 0/7] hw/pci-bus: Fix PCI bus regression on
+ several archs
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, thuth@redhat.com, mst@redhat.com, agraf@suse.de,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, leon.alrae@imgtec.com,
+	aurelien@aurel32.net, rth@twiddle.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VZLJ4E7aFdwN
 
-Allow user to select who sends ipis and with which irq,
-rather than just always sending irq=0 from cpu0.
+On 14/07/16 14:43, Marcel Apfelbaum wrote:
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Commit b86eacb (hw/pci: delay bus_master_enable_region initialization) delayed
+> enabling the 'bus-master' region for PCI devices until 'machine-done' event.
+> The event registration happens in the PCIBus realize function, however
+> the PCI bus is not 'realized' *at all* for some machines.
+> 
+> It appears to be a hidden issue revealed by the above commit.
+> Thanks Mark Cave-Ayland and Leon Alrae for reporting it!
+> 
+> For all the series:
+> Reported-by: Leon Alrae <leon.alrae@imgtec.com>
+> Reported-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> 
+> Patch 1: Increase the timeout for the prom-env-test since I encountered random failures.
+> Patch 2-7: Separate fix for each arch so it will be easier for maintainers to ack.
+> 
+> Thanks,
+> Marcel
 
----
-v2: actually check that the irq received was the irq sent,
-    and (for gicv2) that the sender is the expected one.
----
- arm/gic.c | 80 ++++++++++++++++++++++++++++++++++++++++++++++++++-------------
- 1 file changed, 64 insertions(+), 16 deletions(-)
+Hi Marcel,
 
-diff --git a/arm/gic.c b/arm/gic.c
-index fc7ef241de3e2..d3ab97d4ae470 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -11,6 +11,7 @@
-  * This work is licensed under the terms of the GNU LGPL, version 2.
-  */
- #include <libcflat.h>
-+#include <util.h>
- #include <asm/setup.h>
- #include <asm/processor.h>
- #include <asm/gic.h>
-@@ -33,6 +34,8 @@ static struct gic *gic;
- static int gic_version;
- static int acked[NR_CPUS], spurious[NR_CPUS];
- static cpumask_t ready;
-+static int sender;
-+static u32 irq;
- 
- static void nr_cpu_check(int nr)
- {
-@@ -85,7 +88,16 @@ static void check_acked(cpumask_t *mask)
- 
- static u32 gicv2_read_iar(void)
- {
--	return readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-+	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-+	int src = (iar >> 10) & 7;
-+
-+	if (src != sender) {
-+		report("cpu%d received IPI from unexpected source cpu%d "
-+		       "(expected cpu%d)",
-+		       false, smp_processor_id(), src, sender);
-+	}
-+
-+	return iar & 0x3ff;
- }
- 
- static void gicv2_write_eoi(u32 irq)
-@@ -99,9 +111,15 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- 	if (iar != GICC_INT_SPURIOUS) {
- 		gic->write_eoi(iar);
--		smp_rmb(); /* pairs with wmb in ipi_test functions */
--		++acked[smp_processor_id()];
--		smp_wmb(); /* pairs with rmb in check_acked */
-+		if (iar == irq) {
-+			smp_rmb(); /* pairs with wmb in ipi_test functions */
-+			++acked[smp_processor_id()];
-+			smp_wmb(); /* pairs with rmb in check_acked */
-+		} else {
-+			report("cpu%d received unexpected irq %u "
-+			       "(expected %u)",
-+			       false, smp_processor_id(), iar, irq);
-+		}
- 	} else {
- 		++spurious[smp_processor_id()];
- 		smp_wmb();
-@@ -110,19 +128,19 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- static void gicv2_ipi_send_self(void)
- {
--	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(2 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- static void gicv2_ipi_send_tlist(cpumask_t *mask)
- {
- 	u8 tlist = (u8)cpumask_bits(mask)[0];
- 
--	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(tlist << 16 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- static void gicv2_ipi_send_broadcast(void)
- {
--	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	writel(1 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
- }
- 
- #define ICC_SGI1R_AFFINITY_1_SHIFT	16
-@@ -165,7 +183,7 @@ static void gicv3_ipi_send_tlist(cpumask_t *mask)
- 
- 		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
--			 /* irq << 24				| */
-+			 irq << 24				|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
- 			 tlist);
- 
-@@ -187,7 +205,7 @@ static void gicv3_ipi_send_self(void)
- 
- static void gicv3_ipi_send_broadcast(void)
- {
--	gicv3_write_sgi1r(1ULL << 40);
-+	gicv3_write_sgi1r(1ULL << 40 | irq << 24);
- 	isb();
- }
- 
-@@ -199,7 +217,7 @@ static void ipi_test_self(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_clear(&mask);
--	cpumask_set_cpu(0, &mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -214,7 +232,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	for (i = 0; i < nr_cpus; i += 2)
-+	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
- 		cpumask_clear_cpu(i, &mask);
- 	gic->ipi.send_tlist(&mask);
- 	check_acked(&mask);
-@@ -224,7 +242,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	cpumask_clear_cpu(0, &mask);
-+	cpumask_clear_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_broadcast();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -241,6 +259,15 @@ static void ipi_enable(void)
- 	local_irq_enable();
- }
- 
-+static void ipi_send(void)
-+{
-+	ipi_enable();
-+	wait_on_ready();
-+	ipi_test_self();
-+	ipi_test_smp();
-+	exit(report_summary());
-+}
-+
- static void ipi_recv(void)
- {
- 	ipi_enable();
-@@ -300,19 +327,40 @@ int main(int argc, char **argv)
- 		report_prefix_pop();
- 
- 	} else if (!strcmp(argv[1], "ipi")) {
-+		int off, i = 1;
-+		long val;
- 
- 		report_prefix_push(argv[1]);
-+
-+		while (--argc != 1) {
-+			off = parse_keyval(argv[++i], &val);
-+			if (off == -1)
-+				continue;
-+			argv[i][off] = '\0';
-+			if (strcmp(argv[i], "sender") == 0)
-+				sender = val;
-+			else if (strcmp(argv[i], "irq") == 0)
-+				irq = val;
-+		}
-+
- 		nr_cpu_check(2);
- 		ipi_enable();
- 
- 		for_each_present_cpu(cpu) {
- 			if (cpu == 0)
- 				continue;
--			smp_boot_secondary(cpu, ipi_recv);
-+			if (cpu == sender)
-+				smp_boot_secondary(cpu, ipi_send);
-+			else
-+				smp_boot_secondary(cpu, ipi_recv);
-+		}
-+		if (sender == 0)  {
-+			wait_on_ready();
-+			ipi_test_self();
-+			ipi_test_smp();
-+		} else {
-+			ipi_recv();
- 		}
--		wait_on_ready();
--		ipi_test_self();
--		ipi_test_smp();
- 
- 		smp_rmb();
- 		for_each_present_cpu(cpu) {
--- 
-2.7.4
+I can confirm that this patchset fixes the boot regression for me under
+qemu-system-sparc64 - thanks a lot!
+
+Tested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.
+

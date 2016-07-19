@@ -1,74 +1,71 @@
-Received: by 10.25.21.156 with SMTP id 28csp1534287lfv;
-        Tue, 19 Jul 2016 04:01:23 -0700 (PDT)
-X-Received: by 10.37.11.88 with SMTP id 85mr13552353ybl.92.1468926083061;
-        Tue, 19 Jul 2016 04:01:23 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1560335lfv;
+        Tue, 19 Jul 2016 05:02:22 -0700 (PDT)
+X-Received: by 10.129.46.196 with SMTP id u187mr24975554ywu.227.1468929742269;
+        Tue, 19 Jul 2016 05:02:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u196si19243054qka.265.2016.07.19.04.01.22
+        by mx.google.com with ESMTPS id d196si6121130ywe.130.2016.07.19.05.02.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jul 2016 04:01:23 -0700 (PDT)
+        Tue, 19 Jul 2016 05:02:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54656 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54943 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bPSmA-0003yW-JK
-	for alex.bennee@linaro.org; Tue, 19 Jul 2016 07:01:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42694)
+	id 1bPTjB-0006mP-K1
+	for alex.bennee@linaro.org; Tue, 19 Jul 2016 08:02:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bPSm3-0003x3-57
-	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:01:16 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bPTbN-0003n5-6V
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bPSm1-0001QC-UE
-	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:01:15 -0400
-Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:33408)
+	(envelope-from <ehabkost@redhat.com>) id 1bPTbH-0005BV-CG
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:54:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38909)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1bPSm1-0001Q4-PX; Tue, 19 Jul 2016 07:01:13 -0400
-Received: by mail-oi0-x229.google.com with SMTP id j185so20089510oih.0;
-	Tue, 19 Jul 2016 04:01:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=+zrVELMRbUxKhcgxeeVCLOqRlL4QVM5tIpyNDnts1Ew=;
-	b=M6t1c9bGqLaViSdxj6J+kckXzO5fuZkwyrRwX59XzFgHMOeWD4pbhkZDcCnkoEo2mX
-	1K9d9tObtEkJ3KwiKj4yIexg/DiQjX1glODmuvBYdyqKZ/rUT46n8yrV3GM80ZOFK3c0
-	YACWVSEvgr4QU0foGq/sxRStLirbtW+NHPOYEJ9MNWjPLEYM8YFWhmUs1gtlkTRazc5K
-	bYr36M1/amDoOfdyzpzkscIAf/Ty0SkSO01No4Rz9vZqzacmdXOZRPP2XsdD9y6L3ppS
-	g5SXs0yVQQkZVVNX2d7HQhS1nfo2a9wByT1bbrXrZt29aE3chSjTrM8CQmb7EBa2cWBg
-	4lFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=+zrVELMRbUxKhcgxeeVCLOqRlL4QVM5tIpyNDnts1Ew=;
-	b=eKt/R7L46k7bn8wtYuPJn/Z8geQKpes2BwBRXdWCpwTPkGVUIDcRJzLKY0mhIzp097
-	UQlKg45r39fXSm9/mw+phq8zLT0GdMrzAji/Qjwn28Zv5W2YQF5dgnhnUp3zbFEV6mXy
-	6C+XSdU9XyKSbMPEuNpSPPI2NSsGiIJ051P7FE+Sw/6ZguB1tp1n5AgAlGooHTXTs1ux
-	S3Bss7oWgm8Vj9blcupV/WPg3976OHEQx8K3AEARh3ewRSfCYsOj4UMBDI8KLnQCsyUC
-	oR+5uEl5jQhsGTrrs+vKNpJQLqUx9A4/duCMLW7VK98AYU3iFU+3fHMqiZBcn79YT4/E
-	DOWA==
-X-Gm-Message-State: ALyK8tKWrVZWcnWFQuZdBwKq/QhhAH0g2+NNGgkkwnOs0b8t461Knn4/Z3Izb+hNptvXcxbqxDqqqOS5SoDc3w==
-X-Received: by 10.202.59.68 with SMTP id i65mr17149396oia.61.1468926072753;
-	Tue, 19 Jul 2016 04:01:12 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>)
+	id 1bPTbH-0005BP-3s; Tue, 19 Jul 2016 07:54:11 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DBFEC769E6;
+	Tue, 19 Jul 2016 11:54:09 +0000 (UTC)
+Received: from localhost (vpn1-5-56.gru2.redhat.com [10.97.5.56])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6JBs7vF020191; Tue, 19 Jul 2016 07:54:08 -0400
+Date: Tue, 19 Jul 2016 08:54:06 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20160719115406.GA3337@thinpad.lan.raisama.net>
+References: <20160615005620.GU4882@voom.fritz.box>
+	<20160714200743.GC31865@thinpad.lan.raisama.net>
+	<20160715063530.2ebl4v4vpdtrpx5a@hawk.localdomain>
+	<20160715111138.114d8b5f@nial.brq.redhat.com>
+	<20160715161009.GB3727@thinpad.lan.raisama.net>
+	<ea2c5171-ec0d-39a8-42b8-02c3f5b6655e@suse.de>
+	<20160715174353.GD3727@thinpad.lan.raisama.net>
+	<20160715203835.38565299@igors-macbook-pro.local>
+	<20160715213353.GA3618@thinpad.lan.raisama.net>
+	<20160716153004.3a3arbrz2thfk3zj@hawk.localdomain>
 MIME-Version: 1.0
-Received: by 10.157.41.150 with HTTP; Tue, 19 Jul 2016 04:01:12 -0700 (PDT)
-In-Reply-To: <CALicx6tbpSZDBYYzA0Uk5dHGoW-4_CTFuUnUDDe+NGieakts+g@mail.gmail.com>
-References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA8iPStWP4Pcf6Bxmn8gL5SnBDFyrPNDUpi8syc7PC_QiQ@mail.gmail.com>
-	<BLUPR0701MB1684CF1920D922BD00E93EE6F2230@BLUPR0701MB1684.namprd07.prod.outlook.com>
-	<CALicx6tbpSZDBYYzA0Uk5dHGoW-4_CTFuUnUDDe+NGieakts+g@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Tue, 19 Jul 2016 16:31:12 +0530
-Message-ID: <CALicx6tk2xkVf=Rz9KG-v-0xLb5=Tz1VidjuBDiqP0j-p+x=Pw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20160716153004.3a3arbrz2thfk3zj@hawk.localdomain>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.6.1 (2016-04-27)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 19 Jul 2016 11:54:09 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::229
-Subject: Re: [Qemu-arm] Fw:  [PATCH v2 0/6] Runtime pagesize computation
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] QOM: best way for parents to pass
+ information to children? (was Re: [PATCH RFC 07/16] qom/cpu: make nr-cores,
+ nr-threads real properties)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,87 +77,264 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "prasun.kapoor" <prasun.kapoor@cavium.com>, patches@linaro.org,
-	QEMU Developers <qemu-devel@nongnu.org>, "Kumar,
-	Vijaya" <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, Thomas Huth <thuth@redhat.com>,
+	pbonzini@redhat.com, agraf@suse.de, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Igor Mammedov <imammedo@redhat.com>, dgibson@redhat.com,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UDa2/HWka49S
+X-TUID: klTgP8dokAua
 
-Hi Peter,
+On Sat, Jul 16, 2016 at 05:30:04PM +0200, Andrew Jones wrote:
+> On Fri, Jul 15, 2016 at 06:33:53PM -0300, Eduardo Habkost wrote:
+> > On Fri, Jul 15, 2016 at 08:38:35PM +0200, Igor Mammedov wrote:
+> > > On Fri, 15 Jul 2016 14:43:53 -0300
+> > > Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > > > On Fri, Jul 15, 2016 at 06:30:41PM +0200, Andreas F=E4rber wrote:
+> > > > > Am 15.07.2016 um 18:10 schrieb Eduardo Habkost:
+> > > > > > On Fri, Jul 15, 2016 at 11:11:38AM +0200, Igor Mammedov wrote=
+:
+> > > > > >> On Fri, 15 Jul 2016 08:35:30 +0200
+> > > > > >> Andrew Jones <drjones@redhat.com> wrote:
+> > > > > >>> On Thu, Jul 14, 2016 at 05:07:43PM -0300, Eduardo Habkost w=
+rote:
+> > > > > >>>>
+> > > > > >>>> First of all, sorry for the horrible delay in replying to =
+this
+> > > > > >>>> thread.
+> > > > > >>>>
+> > > > > >>>> On Wed, Jun 15, 2016 at 10:56:20AM +1000, David Gibson wro=
+te: =20
+> > > > > >>>>> On Tue, Jun 14, 2016 at 08:19:49AM +0200, Andrew Jones
+> > > > > >>>>> wrote: =20
+> > > > > >>>>>> On Tue, Jun 14, 2016 at 12:12:16PM +1000, David Gibson
+> > > > > >>>>>> wrote: =20
+> > > > > >>>>>>> On Sun, Jun 12, 2016 at 03:48:10PM +0200, Andrew Jones
+> > > > > >>>>>>> wrote: =20
+> > > > > > [...]
+> > > > > >>>>>>>>>> +static Property cpu_common_properties[] =3D {
+> > > > > >>>>>>>>>> +    DEFINE_PROP_INT32("nr-cores", CPUState, nr_core=
+s,
+> > > > > >>>>>>>>>> 1),
+> > > > > >>>>>>>>>> +    DEFINE_PROP_INT32("nr-threads", CPUState,
+> > > > > >>>>>>>>>> nr_threads, 1),
+> > > > > >>>>>>>>>> +    DEFINE_PROP_END_OF_LIST()
+> > > > > >>>>>>>>>> +}; =20
+> > > > > >>>>>>>>>
+> > > > > >>>>>>>>> Are you aware of the current CPU hotplug discussion t=
+hat
+> > > > > >>>>>>>>> is going on? =20
+> > > > > >>>>>>>>
+> > > > > >>>>>>>> I'm aware of it going on, but haven't been following i=
+t.
+> > > > > >>>>>>>>  =20
+> > > > > >>>>>>>>> I'm not very involved there, but I think some of thes=
+e
+> > > > > >>>>>>>>> reworks also move "nr_threads" into the CPU state
+> > > > > >>>>>>>>> already, e.g. see: =20
+> > > > > >>>>>>>>
+> > > > > >>>>>>>> nr_threads (and nr_cores) are already state in CPUStat=
+e.
+> > > > > >>>>>>>> This patch just exposes that state via properties.
+> > > > > >>>>>>>>  =20
+> > > > > >>>>>>>>>
+> > > > > >>>>>>>>> https://github.com/dgibson/qemu/commit/9d07719784ecbe=
+ebea71
+> > > > > >>>>>>>>>
+> > > > > >>>>>>>>> ... so you might want to check these patches first to=
+ see
+> > > > > >>>>>>>>> whether you can base your rework on them? =20
+> > > > > >>>>>>>>
+> > > > > >>>>>>>> Every cpu, and thus every machine, uses CPUState for i=
+ts
+> > > > > >>>>>>>> cpus. I'm not sure every machine will want to use that=
+ new
+> > > > > >>>>>>>> abstract core class though. If they did, then we could
+> > > > > >>>>>>>> indeed use nr_threads from there instead (and remove i=
+t
+> > > > > >>>>>>>> from CPUState), but we'd still need nr_cores from the
+> > > > > >>>>>>>> abstract cpu package class (CPUState). =20
+> > > > > >>>>>>>
+> > > > > >>>>>>> Hmm.  Since the CPUState object represents just a singl=
+e
+> > > > > >>>>>>> thread, it seems weird to me that it would have nr_thre=
+ads
+> > > > > >>>>>>> and nr_cores information. =20
+> > > > > >>>>
+> > > > > >>>> Agreed it is weird, and I think we should try to move it a=
+way
+> > > > > >>>> from CPUState, not make it part of the TYPE_CPU interface.
+> > > > > >>>> nr_threads belongs to the actual container of the Thread
+> > > > > >>>> objects, and nr_cores in the actual container of the Core
+> > > > > >>>> objects.
+> > > > > >>>>
+> > > > > >>>> The problem is how to implement that in a non-intrusive wa=
+y
+> > > > > >>>> that would require changing the object hierarchy of all
+> > > > > >>>> architectures.
+> > > > > >>>>
+> > > > > >>>>  =20
+> > > > > >>>>>>>
+> > > > > >>>>>>> Exposing those as properties makes that much worse, bec=
+ause
+> > > > > >>>>>>> it's now ABI, rather than internal detail we can clean =
+up
+> > > > > >>>>>>> at some future time. =20
+> > > > > >>>>>>
+> > > > > >>>>>> CPUState is supposed to be "State of one CPU core or
+> > > > > >>>>>> thread", which justifies having nr_threads state, as it =
+may
+> > > > > >>>>>> be describing a core. =20
+> > > > > >>>>>
+> > > > > >>>>> Um.. does it ever actually represent a (multithread) core=
+ in
+> > > > > >>>>> practice? It would need to have duplicated register state=
+ for
+> > > > > >>>>> every thread were that the case. =20
+> > > > > >>>>
+> > > > > >>>> AFAIK, CPUState is still always thread state. Or has this
+> > > > > >>>> changed in some architectures, already?
+> > > > > >>>>  =20
+> > > > > >>>>>  =20
+> > > > > >>>>>> I guess there's no justification for having nr_cores in
+> > > > > >>>>>> there though. I agree adding the Core class is a good id=
+ea,
+> > > > > >>>>>> assuming it will get used by all machines, and CPUState =
+then
+> > > > > >>>>>> gets changed to a Thread class. The question then, thoug=
+h,
+> > > > > >>>>>> is do we also create a Socket class that contains nr_cor=
+es? =20
+> > > > > >>>>>
+> > > > > >>>>> That was roughly our intention with the way the cross
+> > > > > >>>>> platform hotplug stuff is evolving.  But the intention wa=
+s
+> > > > > >>>>> that the Socket objects would only need to be constructed=
+ for
+> > > > > >>>>> machine types where it makes sense.  So for example on th=
+e
+> > > > > >>>>> paravirt pseries platform, we'll only have Core objects,
+> > > > > >>>>> because the socket distinction isn't really meaningful.
+> > > > > >>>>>  =20
+> > > > > >>>>>> And how will a Thread method get that information when i=
+t
+> > > > > >>>>>> needs to emulate, e.g. CPUID, that requires it? It's a b=
+it
+> > > > > >>>>>> messy, so I'm open to all suggestions on it. =20
+> > > > > >>>>>
+> > > > > >>>>> So, if the Thread needs this information, I'm not opposed=
+ to
+> > > > > >>>>> it having it internally (presumably populated earlier fro=
+m
+> > > > > >>>>> the Core object). But I am opposed to it being a locked i=
+n
+> > > > > >>>>> part of the interface by having it as an exposed property=
+. =20
+> > > > > >>>>
+> > > > > >>>> I agree we don't want to make this part of the external
+> > > > > >>>> interface. In this case, if we don't add the properties, h=
+ow
+> > > > > >>>> exactly is the Machine or Core code supposed to pass that
+> > > > > >>>> information to the Thread object?
+> > > > > >>>>
+> > > > > >>>> Maybe the intermediate steps could be:
+> > > > > >>>>
+> > > > > >>>> * Make the Thread code that uses CPUState::nr_{cores,threa=
+ds}
+> > > > > >>>> and smp_{cores,threads} get that info from MachineState
+> > > > > >>>> instead. =20
+> > > > > >>>
+> > > > > >>> I have some patches already headed down this road.
+> > > > > >>>
+> > > > > >>>> * On the architectures where we already have a reasonable
+> > > > > >>>>   Socket/Core/Thread hierarchy, let the Thread code simply=
+ ask
+> > > > > >>>>   for that information from its parent. =20
+> > > > > >>>
+> > > > > >>> I guess that's just spapr so far, or at least spapr is the
+> > > > > >>> closest. Indeed this appears to be the cleanest approach, s=
+o
+> > > > > >>> architectures adding support for cpu topology should likely
+> > > > > >>> strive to implement it this way.
+> > > > > >> If I recall correctly, the only thing about accessing parent=
+ is
+> > > > > >> that in QOM design accessing parent from child wasn't accept=
+ed
+> > > > > >> well, i.e. child shouldn't be aware nor access parent object=
+.
+> > > > > >=20
+> > > > > > Can anybody explain why?
+> > > > > >=20
+> > > > > > In this case, what's the best way for a parent to pass
+> > > > > > information to its children without adding new externally-vis=
+ible
+> > > > > > properties that the user is never supposed to set directly?
+> > > > > >=20
+> > > > > > Should Thread objects have an additional link to the parent C=
+ore
+> > > > > > object, just to be able to get the information it needs?
+> > > > >=20
+> > > > > I am not fully aware either and believe I ignored it in my x86
+> > > > > socket patchset, part of which it was RFC.
+> > > > >=20
+> > > > > The key thing to consider is that this breaks user instantiatio=
+n of
+> > > > > a device, so it needs to be disabled.
+> > > >=20
+> > > > Good point, and this is hard to solve without changing the way
+> > > > device_add works. Setting extra properties, on the other hand,
+> > > > can be done easily by the hotplug handler if necessary (like we
+> > > > do with apic-id in PC).
+> > > >=20
+> > > > Also, if the properties are not supposed to be set directly by
+> > > > the user, then the hotplug handler could refuse to hotplug the
+> > > > device if the user tried to fiddle with them. Then the "external
+> > > > interface" problem is solved.
+> > > >=20
+> > > > Now, depending on how much information is needed, "extra
+> > > > properties" may be duplicating data that is already available in
+> > > > other objects (like nr-cores/nr-threads), or just a link property
+> > > > (e.g. a link to the Core object in the case of spapr). If we
+> > > > still don't have the right object topology implemented, then we
+> > > > may need to use individual properties like "nr-cores" and
+> > > > "nr-threads" (preferably as a temporary solution?).
+> > > >=20
+> > > > In other words, maybe "nr-cores" and "nr-threads" properties will
+> > > > be useful in x86, but only if we reject device creation in case
+> > > > the user tries to set them manually, and if we do _not_ expose
+> > > > them on TYPE_CPU.
+> > > Should be add a QOM API that could mark property as an internal
+> > > that would be beneficial in generic as we won't have to be scared
+> > > exposing internal stuff to users and be able to hide target specifi=
+cs
+> > > behind properties?
+> > >=20
+> > > it should be simple enough to do.
+> >=20
+> > If it's internal, do we have any reason to register a (writeable)
+> > property in the first place? Why not use a plain old
+> > "obj->field =3D value" C statement? Or, if a simple assignment
+> > isn't enough, why not a simple obj_set_field(value) C function?
+>=20
+> Being able to use qdev_prop_register_global was the motivation for
+> making nr-cores,nr-threads properties. If we can create something
+> like that for a "field", without too much code duplication, then
+> that'd work. If we end up duplicating much of the property code,
+> though, then I think extending the property code with a set-as-internal
+> feature, as Igor proposes, may be the better way to go.
 
-  Any update on this patch set. Is it merged?
+In the case of -smp, I don't think we should use global
+properties: we just need to set the right MachineState fields.
+But you have a point: compat_props (which are registered as
+global properties) are probably the main reason we have been
+adding QOM properties for internal stuff.
 
-On Wed, Jun 29, 2016 at 12:30 PM, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Wed, Jun 29, 2016 at 12:24 PM, Kumar, Vijaya <Vijaya.Kumar@cavium.com> wrote:
->>
->>
->>
->> ________________________________
->> From: Peter Maydell <peter.maydell@linaro.org>
->> Sent: Tuesday, June 28, 2016 1:46 PM
->> To: qemu-arm; QEMU Developers
->> Cc: Paolo Bonzini; Kumar, Vijaya; Patch Tracking
->> Subject: Re: [Qemu-arm] [PATCH v2 0/6] Runtime pagesize computation
->>
->> On 21 June 2016 at 18:09, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> This set of patches is a development based on the ones from Vijaya:
->>> the general idea is similar but I have tried to improve the interface
->>> for defining the page size a bit.  I've also tweaked patches 2 and 3
->>> to address code review comments.
->>
->>> NB: I have only very lightly tested these and haven't attempted
->>> to measure performance at all. There is an assert() in the
->>> definition of TARGET_PAGE_BITS which is good for making sure
->>> it isn't used before it's valid but not so good for speed.
->>
->> Vijaya, are you in a position to test this patchset for
->> performance? Presumably you have a test case benchmark you're
->> looking to improve here?
->
-> I have tested the patches and the test case that I was trying was
-> Live migration of Idle VM on arm64 platform.
-> VM migrated is with 4 VCPUS and 8GB RAM running CentOS.
->
-> With page bits 10 (1K), the live migration time is 5.8 sec
->
-> capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-> zero-blocks: off compress: off events: off x-postcopy-ram: off
-> Migration status: completed
-> total time: 5857 milliseconds
-> downtime: 102 milliseconds
-> setup: 14 milliseconds
-> transferred ram: 336081 kbytes
-> throughput: 470.21 mbps
-> remaining ram: 0 kbytes
-> total ram: 8519872 kbytes
-> duplicate: 8271539 pages
-> skipped: 0 pages
-> normal: 261340 pages
-> normal bytes: 261340 kbytes
-> dirty sync count: 3
->
-> With page bits 12 (4K), live migration time is 2.9 sec
->
-> capabilities: xbzrle: off rdma-pin-all: off auto-converge: off
-> zero-blocks: off compress: off events: off x-postcopy-ram: off
-> Migration status: completed
-> total time: 2974 milliseconds
-> downtime: 76 milliseconds
-> setup: 5 milliseconds
-> transferred ram: 301327 kbytes
-> throughput: 830.30 mbps
-> remaining ram: 0 kbytes
-> total ram: 8519872 kbytes
-> duplicate: 2062398 pages
-> skipped: 0 pages
-> normal: 70662 pages
-> normal bytes: 282648 kbytes
-> dirty sync count: 3
->
-> Regards
-> Vijay
->>
->> thanks
->> -- PMM
+But maybe that's a feature? If we want to make something
+different depending on the machine-type, it's better to make the
+difference visible to the user and management software.
+
+--=20
+Eduardo

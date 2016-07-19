@@ -1,45 +1,44 @@
-Received: by 10.25.21.156 with SMTP id 28csp1564552lfv;
-        Tue, 19 Jul 2016 05:10:13 -0700 (PDT)
-X-Received: by 10.129.78.147 with SMTP id c141mr25375818ywb.57.1468930213702;
-        Tue, 19 Jul 2016 05:10:13 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1569746lfv;
+        Tue, 19 Jul 2016 05:21:22 -0700 (PDT)
+X-Received: by 10.55.170.141 with SMTP id t135mr53494496qke.112.1468930882012;
+        Tue, 19 Jul 2016 05:21:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j189si19376327qkc.285.2016.07.19.05.10.13
+        by mx.google.com with ESMTPS id h23si19429536qtb.114.2016.07.19.05.21.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jul 2016 05:10:13 -0700 (PDT)
+        Tue, 19 Jul 2016 05:21:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55149 helo=lists.gnu.org)
+Received: from localhost ([::1]:55492 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bPTqn-0000fz-3I
-	for alex.bennee@linaro.org; Tue, 19 Jul 2016 08:10:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54889)
+	id 1bPU1Z-0000Sf-I3
+	for alex.bennee@linaro.org; Tue, 19 Jul 2016 08:21:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bPTge-0003B9-Vb
-	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:59:47 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1bPU1V-0000SX-H8
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 08:21:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bPTga-0006VL-5c
-	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:59:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49891)
+	(envelope-from <pbonzini@redhat.com>) id 1bPU1R-0004OH-8I
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 08:21:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52282)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>)
-	id 1bPTgZ-0006Uq-TN; Tue, 19 Jul 2016 07:59:40 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(envelope-from <pbonzini@redhat.com>)
+	id 1bPU1R-0004O8-2Q; Tue, 19 Jul 2016 08:21:13 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 31AFD15553;
-	Tue, 19 Jul 2016 11:59:39 +0000 (UTC)
-Received: from localhost (vpn1-5-56.gru2.redhat.com [10.97.5.56])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6JBxax3016520; Tue, 19 Jul 2016 07:59:37 -0400
-Date: Tue, 19 Jul 2016 08:59:35 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20160719115935.GB3337@thinpad.lan.raisama.net>
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F8187F088;
+	Tue, 19 Jul 2016 12:21:12 +0000 (UTC)
+Received: from [10.36.112.64] (ovpn-112-64.ams2.redhat.com [10.36.112.64])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6JCL6DF025675
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 19 Jul 2016 08:21:08 -0400
+To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 References: <20160615005620.GU4882@voom.fritz.box>
 	<20160714200743.GC31865@thinpad.lan.raisama.net>
 	<20160715063530.2ebl4v4vpdtrpx5a@hawk.localdomain>
@@ -50,17 +49,20 @@ References: <20160615005620.GU4882@voom.fritz.box>
 	<20160715203835.38565299@igors-macbook-pro.local>
 	<20160715213353.GA3618@thinpad.lan.raisama.net>
 	<20160718092304.363ac0c0@nial.brq.redhat.com>
+	<20160719115935.GB3337@thinpad.lan.raisama.net>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <d83443d4-48f8-2354-dad7-f92bc384eb00@redhat.com>
+Date: Tue, 19 Jul 2016 14:21:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20160718092304.363ac0c0@nial.brq.redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.6.1 (2016-04-27)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+In-Reply-To: <20160719115935.GB3337@thinpad.lan.raisama.net>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 19 Jul 2016 11:59:39 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 19 Jul 2016 12:21:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] QOM: best way for parents to pass
@@ -80,258 +82,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
 	qemu-devel@nongnu.org, agraf@suse.de, qemu-arm@nongnu.org,
 	qemu-ppc@nongnu.org, Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	Thomas Huth <thuth@redhat.com>, pbonzini@redhat.com, dgibson@redhat.com,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Thomas Huth <thuth@redhat.com>, dgibson@redhat.com,
+	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 17Y5YlgimiFr
+X-TUID: TzsVhKrALEVV
 
-On Mon, Jul 18, 2016 at 09:23:04AM +0200, Igor Mammedov wrote:
-> On Fri, 15 Jul 2016 18:33:53 -0300
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
->=20
-> > On Fri, Jul 15, 2016 at 08:38:35PM +0200, Igor Mammedov wrote:
-> > > On Fri, 15 Jul 2016 14:43:53 -0300
-> > > Eduardo Habkost <ehabkost@redhat.com> wrote: =20
-> > > > On Fri, Jul 15, 2016 at 06:30:41PM +0200, Andreas F=E4rber wrote:=
- =20
-> > > > > Am 15.07.2016 um 18:10 schrieb Eduardo Habkost: =20
-> > > > > > On Fri, Jul 15, 2016 at 11:11:38AM +0200, Igor Mammedov wrote=
-: =20
-> > > > > >> On Fri, 15 Jul 2016 08:35:30 +0200
-> > > > > >> Andrew Jones <drjones@redhat.com> wrote: =20
-> > > > > >>> On Thu, Jul 14, 2016 at 05:07:43PM -0300, Eduardo Habkost w=
-rote: =20
-> > > > > >>>>
-> > > > > >>>> First of all, sorry for the horrible delay in replying to =
-this
-> > > > > >>>> thread.
-> > > > > >>>>
-> > > > > >>>> On Wed, Jun 15, 2016 at 10:56:20AM +1000, David Gibson wro=
-te:   =20
-> > > > > >>>>> On Tue, Jun 14, 2016 at 08:19:49AM +0200, Andrew Jones
-> > > > > >>>>> wrote:   =20
-> > > > > >>>>>> On Tue, Jun 14, 2016 at 12:12:16PM +1000, David Gibson
-> > > > > >>>>>> wrote:   =20
-> > > > > >>>>>>> On Sun, Jun 12, 2016 at 03:48:10PM +0200, Andrew Jones
-> > > > > >>>>>>> wrote:   =20
-> > > > > > [...] =20
-> > > > > >>>>>>>>>> +static Property cpu_common_properties[] =3D {
-> > > > > >>>>>>>>>> +    DEFINE_PROP_INT32("nr-cores", CPUState, nr_core=
-s,
-> > > > > >>>>>>>>>> 1),
-> > > > > >>>>>>>>>> +    DEFINE_PROP_INT32("nr-threads", CPUState,
-> > > > > >>>>>>>>>> nr_threads, 1),
-> > > > > >>>>>>>>>> +    DEFINE_PROP_END_OF_LIST()
-> > > > > >>>>>>>>>> +};   =20
-> > > > > >>>>>>>>>
-> > > > > >>>>>>>>> Are you aware of the current CPU hotplug discussion t=
-hat
-> > > > > >>>>>>>>> is going on?   =20
-> > > > > >>>>>>>>
-> > > > > >>>>>>>> I'm aware of it going on, but haven't been following i=
-t.
-> > > > > >>>>>>>>    =20
-> > > > > >>>>>>>>> I'm not very involved there, but I think some of thes=
-e
-> > > > > >>>>>>>>> reworks also move "nr_threads" into the CPU state
-> > > > > >>>>>>>>> already, e.g. see:   =20
-> > > > > >>>>>>>>
-> > > > > >>>>>>>> nr_threads (and nr_cores) are already state in CPUStat=
-e.
-> > > > > >>>>>>>> This patch just exposes that state via properties.
-> > > > > >>>>>>>>    =20
-> > > > > >>>>>>>>>
-> > > > > >>>>>>>>> https://github.com/dgibson/qemu/commit/9d07719784ecbe=
-ebea71
-> > > > > >>>>>>>>>
-> > > > > >>>>>>>>> ... so you might want to check these patches first to=
- see
-> > > > > >>>>>>>>> whether you can base your rework on them?   =20
-> > > > > >>>>>>>>
-> > > > > >>>>>>>> Every cpu, and thus every machine, uses CPUState for i=
-ts
-> > > > > >>>>>>>> cpus. I'm not sure every machine will want to use that=
- new
-> > > > > >>>>>>>> abstract core class though. If they did, then we could
-> > > > > >>>>>>>> indeed use nr_threads from there instead (and remove i=
-t
-> > > > > >>>>>>>> from CPUState), but we'd still need nr_cores from the
-> > > > > >>>>>>>> abstract cpu package class (CPUState).   =20
-> > > > > >>>>>>>
-> > > > > >>>>>>> Hmm.  Since the CPUState object represents just a singl=
-e
-> > > > > >>>>>>> thread, it seems weird to me that it would have nr_thre=
-ads
-> > > > > >>>>>>> and nr_cores information.   =20
-> > > > > >>>>
-> > > > > >>>> Agreed it is weird, and I think we should try to move it a=
-way
-> > > > > >>>> from CPUState, not make it part of the TYPE_CPU interface.
-> > > > > >>>> nr_threads belongs to the actual container of the Thread
-> > > > > >>>> objects, and nr_cores in the actual container of the Core
-> > > > > >>>> objects.
-> > > > > >>>>
-> > > > > >>>> The problem is how to implement that in a non-intrusive wa=
-y
-> > > > > >>>> that would require changing the object hierarchy of all
-> > > > > >>>> architectures.
-> > > > > >>>>
-> > > > > >>>>    =20
-> > > > > >>>>>>>
-> > > > > >>>>>>> Exposing those as properties makes that much worse, bec=
-ause
-> > > > > >>>>>>> it's now ABI, rather than internal detail we can clean =
-up
-> > > > > >>>>>>> at some future time.   =20
-> > > > > >>>>>>
-> > > > > >>>>>> CPUState is supposed to be "State of one CPU core or
-> > > > > >>>>>> thread", which justifies having nr_threads state, as it =
-may
-> > > > > >>>>>> be describing a core.   =20
-> > > > > >>>>>
-> > > > > >>>>> Um.. does it ever actually represent a (multithread) core=
- in
-> > > > > >>>>> practice? It would need to have duplicated register state=
- for
-> > > > > >>>>> every thread were that the case.   =20
-> > > > > >>>>
-> > > > > >>>> AFAIK, CPUState is still always thread state. Or has this
-> > > > > >>>> changed in some architectures, already?
-> > > > > >>>>    =20
-> > > > > >>>>>    =20
-> > > > > >>>>>> I guess there's no justification for having nr_cores in
-> > > > > >>>>>> there though. I agree adding the Core class is a good id=
-ea,
-> > > > > >>>>>> assuming it will get used by all machines, and CPUState =
-then
-> > > > > >>>>>> gets changed to a Thread class. The question then, thoug=
-h,
-> > > > > >>>>>> is do we also create a Socket class that contains nr_cor=
-es?   =20
-> > > > > >>>>>
-> > > > > >>>>> That was roughly our intention with the way the cross
-> > > > > >>>>> platform hotplug stuff is evolving.  But the intention wa=
-s
-> > > > > >>>>> that the Socket objects would only need to be constructed=
- for
-> > > > > >>>>> machine types where it makes sense.  So for example on th=
-e
-> > > > > >>>>> paravirt pseries platform, we'll only have Core objects,
-> > > > > >>>>> because the socket distinction isn't really meaningful.
-> > > > > >>>>>    =20
-> > > > > >>>>>> And how will a Thread method get that information when i=
-t
-> > > > > >>>>>> needs to emulate, e.g. CPUID, that requires it? It's a b=
-it
-> > > > > >>>>>> messy, so I'm open to all suggestions on it.   =20
-> > > > > >>>>>
-> > > > > >>>>> So, if the Thread needs this information, I'm not opposed=
- to
-> > > > > >>>>> it having it internally (presumably populated earlier fro=
-m
-> > > > > >>>>> the Core object). But I am opposed to it being a locked i=
-n
-> > > > > >>>>> part of the interface by having it as an exposed property=
-.   =20
-> > > > > >>>>
-> > > > > >>>> I agree we don't want to make this part of the external
-> > > > > >>>> interface. In this case, if we don't add the properties, h=
-ow
-> > > > > >>>> exactly is the Machine or Core code supposed to pass that
-> > > > > >>>> information to the Thread object?
-> > > > > >>>>
-> > > > > >>>> Maybe the intermediate steps could be:
-> > > > > >>>>
-> > > > > >>>> * Make the Thread code that uses CPUState::nr_{cores,threa=
-ds}
-> > > > > >>>> and smp_{cores,threads} get that info from MachineState
-> > > > > >>>> instead.   =20
-> > > > > >>>
-> > > > > >>> I have some patches already headed down this road.
-> > > > > >>> =20
-> > > > > >>>> * On the architectures where we already have a reasonable
-> > > > > >>>>   Socket/Core/Thread hierarchy, let the Thread code simply=
- ask
-> > > > > >>>>   for that information from its parent.   =20
-> > > > > >>>
-> > > > > >>> I guess that's just spapr so far, or at least spapr is the
-> > > > > >>> closest. Indeed this appears to be the cleanest approach, s=
-o
-> > > > > >>> architectures adding support for cpu topology should likely
-> > > > > >>> strive to implement it this way. =20
-> > > > > >> If I recall correctly, the only thing about accessing parent=
- is
-> > > > > >> that in QOM design accessing parent from child wasn't accept=
-ed
-> > > > > >> well, i.e. child shouldn't be aware nor access parent object=
-. =20
-> > > > > >=20
-> > > > > > Can anybody explain why?
-> > > > > >=20
-> > > > > > In this case, what's the best way for a parent to pass
-> > > > > > information to its children without adding new externally-vis=
-ible
-> > > > > > properties that the user is never supposed to set directly?
-> > > > > >=20
-> > > > > > Should Thread objects have an additional link to the parent C=
-ore
-> > > > > > object, just to be able to get the information it needs? =20
-> > > > >=20
-> > > > > I am not fully aware either and believe I ignored it in my x86
-> > > > > socket patchset, part of which it was RFC.
-> > > > >=20
-> > > > > The key thing to consider is that this breaks user instantiatio=
-n of
-> > > > > a device, so it needs to be disabled. =20
-> > > >=20
-> > > > Good point, and this is hard to solve without changing the way
-> > > > device_add works. Setting extra properties, on the other hand,
-> > > > can be done easily by the hotplug handler if necessary (like we
-> > > > do with apic-id in PC).
-> > > >=20
-> > > > Also, if the properties are not supposed to be set directly by
-> > > > the user, then the hotplug handler could refuse to hotplug the
-> > > > device if the user tried to fiddle with them. Then the "external
-> > > > interface" problem is solved.
-> > > >=20
-> > > > Now, depending on how much information is needed, "extra
-> > > > properties" may be duplicating data that is already available in
-> > > > other objects (like nr-cores/nr-threads), or just a link property
-> > > > (e.g. a link to the Core object in the case of spapr). If we
-> > > > still don't have the right object topology implemented, then we
-> > > > may need to use individual properties like "nr-cores" and
-> > > > "nr-threads" (preferably as a temporary solution?).
-> > > >=20
-> > > > In other words, maybe "nr-cores" and "nr-threads" properties will
-> > > > be useful in x86, but only if we reject device creation in case
-> > > > the user tries to set them manually, and if we do _not_ expose
-> > > > them on TYPE_CPU. =20
-> > > Should be add a QOM API that could mark property as an internal
-> > > that would be beneficial in generic as we won't have to be scared
-> > > exposing internal stuff to users and be able to hide target specifi=
-cs
-> > > behind properties?
-> > >=20
-> > > it should be simple enough to do. =20
-> >=20
-> > If it's internal, do we have any reason to register a (writeable)
-> > property in the first place? Why not use a plain old
-> > "obj->field =3D value" C statement? Or, if a simple assignment
-> > isn't enough, why not a simple obj_set_field(value) C function?
-> So that arch neutral code won't have to pull obj type definition
 
-I don't get it. If arch neutral code uses it, it should be
-available in an arch-neutral header.
 
-> and we would be able to reuse all machinery that uses properties
-> instead of inventing yet another API or ad-hoc function calls.
+On 19/07/2016 13:59, Eduardo Habkost wrote:
+>>> > > If it's internal, do we have any reason to register a (writeable)
+>>> > > property in the first place? Why not use a plain old
+>>> > > "obj->field = value" C statement? Or, if a simple assignment
+>>> > > isn't enough, why not a simple obj_set_field(value) C function?
+>> > So that arch neutral code won't have to pull obj type definition
+> 
+> I don't get it. If arch neutral code uses it, it should be
+> available in an arch-neutral header.
 
-Why is adding a new C function or setting a struct field worse
-than adding a new property name? I actually prefer the former,
-because it makes code review easier and allows the compiler to
-detect more mistakes.
+I agree.  If arch-neutral code uses it, the method should be in CPUClass.
 
---=20
-Eduardo
+Paolo
+
+>> > and we would be able to reuse all machinery that uses properties
+>> > instead of inventing yet another API or ad-hoc function calls.
+> Why is adding a new C function or setting a struct field worse
+> than adding a new property name? I actually prefer the former,
+> because it makes code review easier and allows the compiler to
+> detect more mistakes.

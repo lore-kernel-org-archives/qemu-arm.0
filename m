@@ -1,293 +1,107 @@
-Received: by 10.25.21.156 with SMTP id 28csp1296499lfv;
-        Mon, 18 Jul 2016 15:46:02 -0700 (PDT)
-X-Received: by 10.98.46.70 with SMTP id u67mr49113229pfu.134.1468881960793;
-        Mon, 18 Jul 2016 15:46:00 -0700 (PDT)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id st9si29057026pab.84.2016.07.18.15.46.00;
-        Mon, 18 Jul 2016 15:46:00 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.25.21.156 with SMTP id 28csp1536094lfv;
+        Tue, 19 Jul 2016 04:04:41 -0700 (PDT)
+X-Received: by 10.37.192.200 with SMTP id c191mr25383693ybf.105.1468926281077;
+        Tue, 19 Jul 2016 04:04:41 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v207si19280433qka.94.2016.07.19.04.04.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 19 Jul 2016 04:04:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-	id S1751930AbcGRWp4 (ORCPT <rfc822;xinliang.liu@linaro.org>
-	+ 8 others); Mon, 18 Jul 2016 18:45:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42671 "EHLO mx1.redhat.com"
-	rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-	id S1751290AbcGRWpz (ORCPT <rfc822;kvm@vger.kernel.org>);
-	Mon, 18 Jul 2016 18:45:55 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A6D8F4480D;
-	Mon, 18 Jul 2016 22:45:54 +0000 (UTC)
-Received: from redhat.com (vpn1-7-82.ams2.redhat.com [10.36.7.82])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP id u6IMjkDs028678;
-	Mon, 18 Jul 2016 18:45:47 -0400
-Date:	Tue, 19 Jul 2016 01:45:45 +0300
-From:	"Michael S. Tsirkin" <mst@redhat.com>
-To:	qemu-devel@nongnu.org
-Cc:	Peter Maydell <peter.maydell@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	James Hogan <james.hogan@imgtec.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Leon Alrae <leon.alrae@imgtec.com>,
-	Alexander Graf <agraf@suse.de>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cornelia.huck@de.ibm.com>, kvm@vger.kernel.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Subject: [PULL 30/55] kvm-irqchip: i386: add hook for add/remove virq
-Message-ID: <20160719014545-mutt-send-email-mst@redhat.com>
-References: <1468881010-27229-1-git-send-email-mst@redhat.com>
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54668 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bPSpM-00077y-Lt
+	for alex.bennee@linaro.org; Tue, 19 Jul 2016 07:04:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43291)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bPSpG-000773-Lz
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:04:35 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bPSpF-0001xo-NH
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:04:34 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:36606)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1bPSpE-0001xX-Gn
+	for qemu-arm@nongnu.org; Tue, 19 Jul 2016 07:04:33 -0400
+Received: by mail-vk0-x230.google.com with SMTP id g1so6763647vkb.3
+	for <qemu-arm@nongnu.org>; Tue, 19 Jul 2016 04:04:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=l9bYT244hncSRVkS99EtwNYdUFyFBYWalEqU3FaSLXU=;
+	b=hlDZL5RBJcVqI6/14x5LyXcgXwUlplKrxAUHDU1R/C2YUT0qRhpllsNPBPpjWm1z5O
+	pUb16rCcs5WjJnC/GRZZFzSlQsjm7YPlfsYCVZ3a6AqkyG5UDooWhjyMSxmf/AcMSkTn
+	+tNrNiywxuqSxQqjZ5zcsKEY/o4jq/yP53OGI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=l9bYT244hncSRVkS99EtwNYdUFyFBYWalEqU3FaSLXU=;
+	b=CqnRLfUtYbyoIm5O8KJu142Tj/iNjL8f1ortnMOpFhUHiLaqNRQaXBpqkch9aqQSKn
+	IbrIuD3+jcNqhaC06rTynXzWLf0FC6elLwbZKgZExPONFWNovWggkfMQITcGHSQUH5Qu
+	3sSAvvmxp/PbnFPz7ZE70JAm06iuBz5LQ/HvB/47JDLwP4GysGTqAT9kbj6tnnXlsAj9
+	D3jX/XhnIXegeTg7kaT8BR66sqM+efSHSx2nB+tdBDQtGni0GoE+taTwTOXIJW5t9RXm
+	fwiIxnyfgog6uEMcvthCj752ybYEcSSdMjJqLjAaVQnMSnTbh8953mQ81VU2HWDDMTLi
+	T2Cw==
+X-Gm-Message-State: ALyK8tKTPXfqNMoTmVUYGsPLjAIV8sC8kQ2OPiEUNR5EYiA6Gn5ug5AcD3I5HAf3wQ78o+LdZ2wKobWAqUAOgZq8
+X-Received: by 10.176.65.71 with SMTP id j65mr20258726uad.103.1468926272041;
+	Tue, 19 Jul 2016 04:04:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1468881010-27229-1-git-send-email-mst@redhat.com>
-X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Mon, 18 Jul 2016 22:45:54 +0000 (UTC)
-Sender:	kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List:	kvm@vger.kernel.org
-X-TUID: VfQhZC1BdA8w
+Received: by 10.31.137.69 with HTTP; Tue, 19 Jul 2016 04:04:12 -0700 (PDT)
+In-Reply-To: <CALicx6tk2xkVf=Rz9KG-v-0xLb5=Tz1VidjuBDiqP0j-p+x=Pw@mail.gmail.com>
+References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
+	<CAFEAcA8iPStWP4Pcf6Bxmn8gL5SnBDFyrPNDUpi8syc7PC_QiQ@mail.gmail.com>
+	<BLUPR0701MB1684CF1920D922BD00E93EE6F2230@BLUPR0701MB1684.namprd07.prod.outlook.com>
+	<CALicx6tbpSZDBYYzA0Uk5dHGoW-4_CTFuUnUDDe+NGieakts+g@mail.gmail.com>
+	<CALicx6tk2xkVf=Rz9KG-v-0xLb5=Tz1VidjuBDiqP0j-p+x=Pw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Jul 2016 12:04:12 +0100
+Message-ID: <CAFEAcA9wNtFSmoJD2jHOy2LWPNBa_f1WyG1VBO2d5pSD0LQjgA@mail.gmail.com>
+To: Vijay Kilari <vijay.kilari@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] Fw:  [PATCH v2 0/6] Runtime pagesize computation
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "prasun.kapoor" <prasun.kapoor@cavium.com>,
+	Patch Tracking <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, "Kumar,
+	Vijaya" <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zWEbj8KxkUOe
 
-From: Peter Xu <peterx@redhat.com>
+On 19 July 2016 at 12:01, Vijay Kilari <vijay.kilari@gmail.com> wrote:
+> Hi Peter,
+>
+>   Any update on this patch set. Is it merged?
 
-Adding two hooks to be notified when adding/removing msi routes. There
-are two kinds of MSI routes:
+No. It's an RFC patchset really, and it was posted during softfreeze,
+so I never expected or intended it to be merged before the 2.7
+release. It also needs a respin to address some of the review comments
+I got on it.
 
-- in kvm_irqchip_add_irq_route(): before assigning IRQFD. Used by
-  vhost, vfio, etc.
+What would be useful in getting it further forward would be
+some good performance benchmarking of more than just migration.
+In particular whether it improves the speed in TCG emulation
+mode of aarch64 guests and whether that assert in the definition
+of TARGET_PAGE_BITS is particularly performance-draining.
 
-- in kvm_irqchip_send_msi(): when sending direct MSI message, if
-  direct MSI not allowed, we will first create one MSI route entry
-  in the kernel, then trigger it.
-
-This patch only hooks the first one (irqfd case). We do not need to
-take care for the 2nd one, since it's only used by QEMU userspace
-(kvm-apic) and the messages will always do in-time translation when
-triggered. While we need to note them down for the 1st one, so that we
-can notify the kernel when cache invalidation happens.
-
-Also, we do not hook IOAPIC msi routes (we have explicit notifier for
-IOAPIC to keep its cache updated). We only need to care about irqfd
-users.
-
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Peter Xu <peterx@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
----
- include/sysemu/kvm.h     |  6 ++++++
- kvm-all.c                |  2 ++
- target-arm/kvm.c         | 11 +++++++++++
- target-i386/kvm.c        | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
- target-mips/kvm.c        | 11 +++++++++++
- target-ppc/kvm.c         | 11 +++++++++++
- target-s390x/kvm.c       | 11 +++++++++++
- target-i386/trace-events |  2 ++
- 8 files changed, 102 insertions(+)
-
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index e5d90bd..0a16e0e 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -359,6 +359,12 @@ void kvm_arch_init_irq_routing(KVMState *s);
- int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-                              uint64_t address, uint32_t data, PCIDevice *dev);
- 
-+/* Notify arch about newly added MSI routes */
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev);
-+/* Notify arch about released MSI routes */
-+int kvm_arch_release_virq_post(int virq);
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data);
- 
- int kvm_set_irq(KVMState *s, int irq, int level);
-diff --git a/kvm-all.c b/kvm-all.c
-index d94c0e4..69ff658 100644
---- a/kvm-all.c
-+++ b/kvm-all.c
-@@ -1133,6 +1133,7 @@ void kvm_irqchip_release_virq(KVMState *s, int virq)
-         }
-     }
-     clear_gsi(s, virq);
-+    kvm_arch_release_virq_post(virq);
- }
- 
- static unsigned int kvm_hash_msi(uint32_t data)
-@@ -1281,6 +1282,7 @@ int kvm_irqchip_add_msi_route(KVMState *s, int vector, PCIDevice *dev)
-     }
- 
-     kvm_add_routing_entry(s, &kroute);
-+    kvm_arch_add_msi_route_post(&kroute, vector, dev);
-     kvm_irqchip_commit_routes(s);
- 
-     return virq;
-diff --git a/target-arm/kvm.c b/target-arm/kvm.c
-index 5c2bd7a..dbe393c 100644
---- a/target-arm/kvm.c
-+++ b/target-arm/kvm.c
-@@ -622,6 +622,17 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev)
-+{
-+    return 0;
-+}
-+
-+int kvm_arch_release_virq_post(int virq)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     return (data - 32) & 0xffff;
-diff --git a/target-i386/kvm.c b/target-i386/kvm.c
-index f574513..8875034 100644
---- a/target-i386/kvm.c
-+++ b/target-i386/kvm.c
-@@ -3400,6 +3400,54 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+typedef struct MSIRouteEntry MSIRouteEntry;
-+
-+struct MSIRouteEntry {
-+    PCIDevice *dev;             /* Device pointer */
-+    int vector;                 /* MSI/MSIX vector index */
-+    int virq;                   /* Virtual IRQ index */
-+    QLIST_ENTRY(MSIRouteEntry) list;
-+};
-+
-+/* List of used GSI routes */
-+static QLIST_HEAD(, MSIRouteEntry) msi_route_list = \
-+    QLIST_HEAD_INITIALIZER(msi_route_list);
-+
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev)
-+{
-+    MSIRouteEntry *entry;
-+
-+    if (!dev) {
-+        /* These are (possibly) IOAPIC routes only used for split
-+         * kernel irqchip mode, while what we are housekeeping are
-+         * PCI devices only. */
-+        return 0;
-+    }
-+
-+    entry = g_new0(MSIRouteEntry, 1);
-+    entry->dev = dev;
-+    entry->vector = vector;
-+    entry->virq = route->gsi;
-+    QLIST_INSERT_HEAD(&msi_route_list, entry, list);
-+
-+    trace_kvm_x86_add_msi_route(route->gsi);
-+    return 0;
-+}
-+
-+int kvm_arch_release_virq_post(int virq)
-+{
-+    MSIRouteEntry *entry, *next;
-+    QLIST_FOREACH_SAFE(entry, &msi_route_list, list, next) {
-+        if (entry->virq == virq) {
-+            trace_kvm_x86_remove_msi_route(virq);
-+            QLIST_REMOVE(entry, list);
-+            break;
-+        }
-+    }
-+    return 0;
-+}
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     abort();
-diff --git a/target-mips/kvm.c b/target-mips/kvm.c
-index f3f832d..dcf5fbb 100644
---- a/target-mips/kvm.c
-+++ b/target-mips/kvm.c
-@@ -1043,6 +1043,17 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev)
-+{
-+    return 0;
-+}
-+
-+int kvm_arch_release_virq_post(int virq)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     abort();
-diff --git a/target-ppc/kvm.c b/target-ppc/kvm.c
-index 7a8f555..91e6daf 100644
---- a/target-ppc/kvm.c
-+++ b/target-ppc/kvm.c
-@@ -2621,6 +2621,17 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev)
-+{
-+    return 0;
-+}
-+
-+int kvm_arch_release_virq_post(int virq)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     return data & 0xffff;
-diff --git a/target-s390x/kvm.c b/target-s390x/kvm.c
-index 2991bff..80ac621 100644
---- a/target-s390x/kvm.c
-+++ b/target-s390x/kvm.c
-@@ -2267,6 +2267,17 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-     return 0;
- }
- 
-+int kvm_arch_add_msi_route_post(struct kvm_irq_routing_entry *route,
-+                                int vector, PCIDevice *dev)
-+{
-+    return 0;
-+}
-+
-+int kvm_arch_release_virq_post(int virq)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_msi_data_to_gsi(uint32_t data)
- {
-     abort();
-diff --git a/target-i386/trace-events b/target-i386/trace-events
-index 2113075..818058c 100644
---- a/target-i386/trace-events
-+++ b/target-i386/trace-events
-@@ -2,3 +2,5 @@
- 
- # target-i386/kvm.c
- kvm_x86_fixup_msi_error(uint32_t gsi) "VT-d failed to remap interrupt for GSI %" PRIu32
-+kvm_x86_add_msi_route(int virq) "Adding route entry for virq %d"
-+kvm_x86_remove_msi_route(int virq) "Removing route entry for virq %d"
--- 
-MST
-
+thanks
+-- PMM

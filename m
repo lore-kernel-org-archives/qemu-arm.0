@@ -1,114 +1,159 @@
-Received: by 10.25.21.156 with SMTP id 28csp1226086lfv;
-        Mon, 18 Jul 2016 12:35:43 -0700 (PDT)
-X-Received: by 10.55.122.65 with SMTP id v62mr44829658qkc.145.1468870543028;
-        Mon, 18 Jul 2016 12:35:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f65si17225862qkj.271.2016.07.18.12.35.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Jul 2016 12:35:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.21.156 with SMTP id 28csp1960438lfv;
+        Tue, 19 Jul 2016 22:03:28 -0700 (PDT)
+X-Received: by 10.98.47.132 with SMTP id v126mr21890693pfv.152.1468991007902;
+        Tue, 19 Jul 2016 22:03:27 -0700 (PDT)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id j71si1263732pfa.161.2016.07.19.22.03.27;
+        Tue, 19 Jul 2016 22:03:27 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49950 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bPEKM-0007dt-84
-	for alex.bennee@linaro.org; Mon, 18 Jul 2016 15:35:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58293)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1bPEJV-00068x-1R
-	for qemu-arm@nongnu.org; Mon, 18 Jul 2016 15:34:49 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel@redhat.com>) id 1bPEJQ-0001Y8-Sr
-	for qemu-arm@nongnu.org; Mon, 18 Jul 2016 15:34:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55264)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel@redhat.com>)
-	id 1bPEJQ-0001Y4-Mm; Mon, 18 Jul 2016 15:34:44 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B8E98C0B73EC;
-	Mon, 18 Jul 2016 19:34:43 +0000 (UTC)
-Received: from [10.35.202.35] (vpn-202-35.tlv.redhat.com [10.35.202.35])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6IJYY0l011091; Mon, 18 Jul 2016 15:34:38 -0400
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, mst@redhat.com
-References: <1468503826-10617-1-git-send-email-marcel@redhat.com>
-	<1468503826-10617-2-git-send-email-marcel@redhat.com>
-	<c4294e73-88a1-ba9b-9e52-3527b142ae57@redhat.com>
-From: Marcel Apfelbaum <marcel@redhat.com>
-Message-ID: <578D2F4A.50607@redhat.com>
-Date: Mon, 18 Jul 2016 22:34:34 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
-	Thunderbird/38.5.0
-MIME-Version: 1.0
-In-Reply-To: <c4294e73-88a1-ba9b-9e52-3527b142ae57@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 18 Jul 2016 19:34:44 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/7] tests/prom-env-test:
- increase the test timeout
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mark.cave-ayland@ilande.co.uk, agraf@suse.de,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, leon.alrae@imgtec.com,
-	aurelien@aurel32.net, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cbPVqNG2wrYJ
+       dkim=neutral (body hash did not verify) header.i=@gmail.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+	id S1750856AbcGTFDU (ORCPT <rfc822;xinliang.liu@linaro.org>
+	+ 8 others); Wed, 20 Jul 2016 01:03:20 -0400
+Received: from mail-pf0-f195.google.com ([209.85.192.195]:36466 "EHLO
+	mail-pf0-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+	with ESMTP id S1750796AbcGTFDT (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Wed, 20 Jul 2016 01:03:19 -0400
+Received: by mail-pf0-f195.google.com with SMTP id y134so2685470pfg.3
+        for <kvm@vger.kernel.org>; Tue, 19 Jul 2016 22:03:18 -0700 (PDT)
+DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=from:to:cc:subject:date:message-id;
+        bh=usGoOnL6psFVcYHrVmPNOctCgGb2lNlD8XBK4p4TBPo=;
+        b=BdJeSl3ZfrFXpS27XYq5JV8Pgr4LoLQhRLFLZIryVSn+y7yVck7bOCOS0UNSKowfTM
+         8bfhESez+QG478dYU2+0Vwtsr/T/aDWXWcO9xhHf4W9pHsw6JbUWjJz2wH2T+8BBQSn5
+         2qzbx9G3Yuej1NKSp8DUNHFZpsMVyPWGQ0qbNuC92tHgN8c7HTb/aIjqphiK9+LpWc2k
+         36Lxt6w7EglEJ0j97u1bXTL9X08g9BebGc5f/c866ud/gnOUuXESxj1gohudbsvMOUUA
+         sBlblo0+lNT+pT9LTvN+quN1nJxfNUkO3cJL92qDrdtdcJ/QH3i4/v4m21aoQagonl2a
+         s3YA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=usGoOnL6psFVcYHrVmPNOctCgGb2lNlD8XBK4p4TBPo=;
+        b=XCMMmhfmZL4yVT+bRtNU42GdMaGSLt1gzvBl9O8WNww5xqOKW9hSHTiWy3kTqwR+cG
+         eDn7EbIiRo5/hWZMymG6JWcHzUa0pyZRPQgGBWTvBAc5H3UgvsoDtI0xyyr+L5GNJDlN
+         ieWvJTN7ocCBl2m6ZiDEds8Q9u5nA3JHCqRnmdGCyEU9aSsQxZgbgWHbaWLj+J8eFTo+
+         NBDRUoVBpilxL1oojTfPfWZ03zimI7qfSsXzMBrPaAvonQ2RqzIZ1nz9rj+CG1+qBlPm
+         /MWf/1VAgrJ6tzDMs/hwrBBUoBPiBxlR0UJ6t4VdZ8BCMTjhvBurOsFpTrEpAxPbE0Co
+         RFpg==
+X-Gm-Message-State: ALyK8tL84pRAqW0x0qcN7DR9wlG8qo8LUZ6mlQMzrEpl3YQP679nf3eaJoY8DCfdqk8q7g==
+X-Received: by 10.98.103.214 with SMTP id t83mr61765339pfj.158.1468990998188;
+        Tue, 19 Jul 2016 22:03:18 -0700 (PDT)
+Received: from squirtle.localdomain.localdomain (c-73-225-163-254.hsd1.wa.comcast.net. [73.225.163.254])
+        by smtp.gmail.com with ESMTPSA id c66sm1031757pfd.24.2016.07.19.22.03.17
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 19 Jul 2016 22:03:17 -0700 (PDT)
+From:	Andrey Smirnov <andrew.smirnov@gmail.com>
+To:	qemu-devel@nongnu.org
+Cc:	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-ppc@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: [PATCH v3 00/10] Support non-direct memory writes in cpu_memory_rw_debug
+Date:	Tue, 19 Jul 2016 22:02:50 -0700
+Message-Id: <1468990980-4598-1-git-send-email-andrew.smirnov@gmail.com>
+X-Mailer: git-send-email 2.5.5
+Sender:	kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List:	kvm@vger.kernel.org
+X-TUID: NNtiHruyp9hw
 
-On 07/14/2016 04:51 PM, Thomas Huth wrote:
-> On 14.07.2016 15:43, Marcel Apfelbaum wrote:
->> On a slower machine the test can take more than 30 seconds.
->> Increase the timeout to 100 seconds.
->>
->> Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
->> ---
->>   tests/prom-env-test.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/tests/prom-env-test.c b/tests/prom-env-test.c
->> index 6df57d2..7a62857 100644
->> --- a/tests/prom-env-test.c
->> +++ b/tests/prom-env-test.c
->> @@ -30,7 +30,7 @@ static void check_guest_memory(void)
->>       int i;
->>
->>       /* Poll until code has run and modified memory. Wait at most 30 seconds */
->> -    for (i = 0; i < 3000; ++i) {
->> +    for (i = 0; i < 10000; ++i) {
->>           signature = readl(ADDRESS);
->>           if (signature == MAGIC) {
->>               break;
->
-> Ack, but could you please also update the comment before the for-loop?
->
+Hi everyone,
 
-Hi Michael,
-It seems a V2 is not needed, can you tweak the comment or do you prefer me to send the series/patch again?
+This is the third version of the patch that implements an ability to
+write to MMIO registers from GDB stub.
 
-Thanks,
-Marcel
+Changes since v2:
 
->   Thanks,
->    Thomas
->
+	- MMUAccessType is renamed to MemoryAccessType
+
+	- Minor formating fixes
+
+Changes since v1
+(https://www.mail-archive.com/qemu-devel@nongnu.org/msg382431.html):
+
+        - Single patch split into multiple patches
+
+        - MMUAccessType (extended) is used to differentiate between
+          access types
+
+        - New function address_space_write_debug is introduced instead
+          of changing address_space_write's signature
+
+        - Rebased on top of http://patchwork.ozlabs.org/patch/635235/
+
+        - Additional code cleanup patches
+
+
+Andrey Smirnov (10):
+  Avoid needless calls to address_space_rw()
+  Change signature of address_space_read() to avoid casting
+  Change signature of address_space_write() to avoid casting
+  address_space_write_continue: Distill common code
+  Rename MMUAccessType to MemoryAccessType
+  Change signature of cpu_memory_rw_debug() to avoid casting
+  Convert cpu_memory_rw_debug to use MemoryAccessType
+  Convert address_space_rw to use MemoryAccessType
+  gdbstub: Convert target_memory_rw_debug to use MemoryAccessType
+  exec: Use address_space_rw to handle reads and wirtes
+
+ cpus.c                        |   2 +-
+ disas.c                       |   4 +-
+ dma-helpers.c                 |   4 +-
+ exec.c                        | 116 ++++++++++++++++++++++++++----------------
+ gdbstub.c                     |  12 +++--
+ hw/i386/kvmvapic.c            |  22 ++++----
+ hw/net/dp8393x.c              |  58 +++++++++++----------
+ hw/virtio/virtio.c            |   4 +-
+ include/exec/cpu-all.h        |   2 +-
+ include/exec/exec-all.h       |   2 +-
+ include/exec/memory.h         |  11 ++--
+ include/exec/softmmu-semi.h   |  16 +++---
+ include/qom/cpu.h             |  15 +++---
+ kvm-all.c                     |   8 +--
+ monitor.c                     |   3 +-
+ scripts/coverity-model.c      |   9 +++-
+ softmmu_template.h            |  18 +++----
+ target-alpha/cpu.h            |   2 +-
+ target-alpha/mem_helper.c     |   4 +-
+ target-arm/arm-semi.c         |   2 +-
+ target-arm/internals.h        |   2 +-
+ target-arm/kvm64.c            |  12 +++--
+ target-arm/op_helper.c        |  14 ++---
+ target-cris/op_helper.c       |   2 +-
+ target-i386/helper.c          |   7 +--
+ target-i386/kvm.c             |  11 ++--
+ target-i386/mem_helper.c      |   2 +-
+ target-lm32/op_helper.c       |   2 +-
+ target-m68k/op_helper.c       |   2 +-
+ target-microblaze/op_helper.c |   2 +-
+ target-mips/cpu.h             |   2 +-
+ target-mips/helper.c          |  14 ++---
+ target-mips/op_helper.c       |   8 +--
+ target-moxie/helper.c         |   2 +-
+ target-openrisc/mmu_helper.c  |   2 +-
+ target-ppc/kvm.c              |  13 ++---
+ target-ppc/mmu_helper.c       |   2 +-
+ target-s390x/helper.c         |   2 +-
+ target-s390x/kvm.c            |  15 +++---
+ target-s390x/mem_helper.c     |   8 +--
+ target-s390x/mmu_helper.c     |  10 ++--
+ target-sh4/op_helper.c        |   2 +-
+ target-sparc/cpu.h            |   2 +-
+ target-sparc/ldst_helper.c    |   4 +-
+ target-sparc/mmu_helper.c     |   8 ++-
+ target-tricore/op_helper.c    |   2 +-
+ target-unicore32/op_helper.c  |   2 +-
+ target-xtensa/cpu.h           |   2 +-
+ target-xtensa/op_helper.c     |   4 +-
+ target-xtensa/xtensa-semi.c   |  10 ++--
+ 50 files changed, 272 insertions(+), 212 deletions(-)
+
+-- 
+2.5.5
 

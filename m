@@ -1,6 +1,6 @@
-Received: by 10.25.21.156 with SMTP id 28csp1960503lfv;
-        Tue, 19 Jul 2016 22:03:40 -0700 (PDT)
-X-Received: by 10.66.146.69 with SMTP id ta5mr68124008pab.157.1468991019595;
+Received: by 10.25.21.156 with SMTP id 28csp1960515lfv;
+        Tue, 19 Jul 2016 22:03:43 -0700 (PDT)
+X-Received: by 10.66.74.133 with SMTP id t5mr19050409pav.114.1468991019970;
         Tue, 19 Jul 2016 22:03:39 -0700 (PDT)
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
@@ -12,51 +12,51 @@ Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-	id S1751487AbcGTFDb (ORCPT <rfc822;xinliang.liu@linaro.org>
-	+ 8 others); Wed, 20 Jul 2016 01:03:31 -0400
-Received: from mail-pa0-f65.google.com ([209.85.220.65]:35370 "EHLO
+	id S1751527AbcGTFDc (ORCPT <rfc822;xinliang.liu@linaro.org>
+	+ 8 others); Wed, 20 Jul 2016 01:03:32 -0400
+Received: from mail-pa0-f65.google.com ([209.85.220.65]:36810 "EHLO
 	mail-pa0-f65.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-	with ESMTP id S1751061AbcGTFDX (ORCPT <rfc822;kvm@vger.kernel.org>);
-	Wed, 20 Jul 2016 01:03:23 -0400
-Received: by mail-pa0-f65.google.com with SMTP id cf3so2560144pad.2
-        for <kvm@vger.kernel.org>; Tue, 19 Jul 2016 22:03:23 -0700 (PDT)
+	with ESMTP id S1751304AbcGTFDZ (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Wed, 20 Jul 2016 01:03:25 -0400
+Received: by mail-pa0-f65.google.com with SMTP id ez1so2564565pab.3
+        for <kvm@vger.kernel.org>; Tue, 19 Jul 2016 22:03:24 -0700 (PDT)
 DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=XuKwa27F2+qYvnuD8XlQHHUfvjw6KgQdcpU++zsZQ9E=;
-        b=tUmliYaXQpBFSCW8qJ+hu0QQazwDFrrPoa09Kkx7BeYgA20Lm/n7Ds2YZlFWec3yEH
-         WHm2xR28k1iT9aWZPEQ8udbrxfsRIypvU0OEiZH+iDVy7Oz/pDoMhn/yEikMYzkON9jq
-         lO+i7Fsy1lUq1H5RvM2F7/hI81Jnz+WHTstrkwctS1998Cx10s2jmfM1YN/YcnjBCPrQ
-         14MLe7pg49rfa+r4odGmowqtHbfsR/Oa/GhGgDZvMN5Moqshm9uiMUx83RAyQ1R0xp3q
-         /FU/BQCHew1HvfF9LYDoiHdeSs8k4HFdmZCFjLr7FSIScOxRdm0R32BhkweKIXQnyJmD
-         X7Gw==
+        bh=Cy1T2XoacS0R1ZoTsYbQ+GwBo3QNntW3UXwOfy+Cuqk=;
+        b=yUbtBnqZb2YaWOCAgYa7CEhLvfNvzestWWvN5Jh89yNZv/Zi9Ge7fLED3xe7fHOYoZ
+         iEDa3yDGvZVQEofFccvt53U943SBw+GL0vHfy+bUp3jq6DiZlqDy1gKJe13lkAJCKXer
+         rrmrE+8MYUZN6XyAyT9w+Iik+z1Hw3oXkduP0OcALA0h+w0BMiJFbwifUfyUWrhKd24k
+         3WOMPEAkLC++PV1TyJZgmSn/PdBf67mOOQbUN/llduiHtBKGa9MeB6iIubUCjXh3cCpn
+         R7IasXb0CPh1T3mLDYvrNjRlv6C4zzxZBpIs2Qz6FwOvY+Ue/NENqXu45K3MwX5sZzvW
+         ZD0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=XuKwa27F2+qYvnuD8XlQHHUfvjw6KgQdcpU++zsZQ9E=;
-        b=hFys8SpTMfYNEP/tg1V4xUeEnvgm2+I10y9EmHivLoPhmNucouzjx6DxU1p7m9Qzvo
-         jGvuDiyK+mY3IOfmyl8lec05TXC8hQtquSTnRSfq5M8Bbl+9RgzPR7zrkxDyuk9lYJNa
-         jgUZst9cesplY/ok43dBci5VIgx5GMBsui9nupOpEJXBQYnZWfhtJ3lX+6eSOc/gT3oA
-         aLCJbRcC0sL4Rgm5cIsfgDImzmstllz6wTTk+mXirzlKnxxnnNI2nLGh04AtQk9sL0mF
-         rhdH/0Jmyoue8igK1RGuLNbD+QtXiMw7wH42ZpRLPARgzzONZpi/dg74rb5Y1u1PkdMa
-         S7sw==
-X-Gm-Message-State: ALyK8tLVYWWxpQa5Zf8xu8pZsyXqXAFT1qKk5AcI4IeN7IaHn2iZ0QLxgdWzRfHRlRRpJQ==
-X-Received: by 10.66.158.170 with SMTP id wv10mr8892061pab.153.1468991002347;
-        Tue, 19 Jul 2016 22:03:22 -0700 (PDT)
+        bh=Cy1T2XoacS0R1ZoTsYbQ+GwBo3QNntW3UXwOfy+Cuqk=;
+        b=knKHqWPVITs7WK5k1ryKQe5MoW5JmJiu3ENI6UHS1va+va4FdZ6oo+VKiM+XlnfVJ8
+         dYgr5shQ+MNoboZ1/yj3ZRS9TDQGQ+v3UAyw49GgAsdD82uohl8ha8RPIuxCXRHCCXOr
+         D5wgHFCfvJgstiqdNTroPFslVebWLyD2Nr6ptkcoY0qsEkYmbFhIoh0EQTze00HLAnJo
+         qCWetM2LcpUchC7A8HGUsn6pLkKqmQhVLQiQDU63Nz2nd/LGA/KW8MDo18S2PhAZIyWt
+         dK4oA1WOVn1WoikayyDmKBpBp1sTK7rivC13i7E/LIjdiY7QXnikpm8/mjXbjVzE6rRI
+         JINA==
+X-Gm-Message-State: ALyK8tLE4c/5lVxUdpVpc6nId27jFFC7jCmHXmS5xGCnKn7ZdZHc0y5U1Ro6JsGZSLQVvg==
+X-Received: by 10.66.101.101 with SMTP id ff5mr66346029pab.88.1468991004068;
+        Tue, 19 Jul 2016 22:03:24 -0700 (PDT)
 Received: from squirtle.localdomain.localdomain (c-73-225-163-254.hsd1.wa.comcast.net. [73.225.163.254])
-        by smtp.gmail.com with ESMTPSA id c66sm1031757pfd.24.2016.07.19.22.03.21
+        by smtp.gmail.com with ESMTPSA id c66sm1031757pfd.24.2016.07.19.22.03.23
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Jul 2016 22:03:21 -0700 (PDT)
+        Tue, 19 Jul 2016 22:03:23 -0700 (PDT)
 From:	Andrey Smirnov <andrew.smirnov@gmail.com>
 To:	qemu-devel@nongnu.org
 Cc:	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	qemu-ppc@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v3 05/10] Rename MMUAccessType to MemoryAccessType
-Date:	Tue, 19 Jul 2016 22:02:55 -0700
-Message-Id: <1468990980-4598-6-git-send-email-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 07/10] Convert cpu_memory_rw_debug to use MemoryAccessType
+Date:	Tue, 19 Jul 2016 22:02:57 -0700
+Message-Id: <1468990980-4598-8-git-send-email-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.5.5
 In-Reply-To: <1468990980-4598-1-git-send-email-andrew.smirnov@gmail.com>
 References: <1468990980-4598-1-git-send-email-andrew.smirnov@gmail.com>
@@ -64,693 +64,540 @@ Sender:	kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List:	kvm@vger.kernel.org
-X-TUID: oo5z8FTOHQQD
+X-TUID: 07D7K5ABMpp6
 
-Rename MMUAccessType to MemoryAccessType and MMU_*
-constants to corresponding MEM_* constants, so it would be possible to
-re-use these defenitions in other, non MMU-related, contexts.
+Convert cpu_memory_rw_debug() to use MemoryAccessType as a way of
+specifying memory reads/writes. This makes caller code be more obvious
+in what it does (previously one had to interpret 0 or 1 and remember the
+semantics of the last boolean argument of the function).
 
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- include/exec/exec-all.h       |  2 +-
- include/qom/cpu.h             | 14 +++++++-------
- softmmu_template.h            | 18 +++++++++---------
- target-alpha/cpu.h            |  2 +-
- target-alpha/mem_helper.c     |  4 ++--
- target-arm/internals.h        |  2 +-
- target-arm/op_helper.c        | 14 +++++++-------
- target-cris/op_helper.c       |  2 +-
- target-i386/mem_helper.c      |  2 +-
- target-lm32/op_helper.c       |  2 +-
- target-m68k/op_helper.c       |  2 +-
- target-microblaze/op_helper.c |  2 +-
- target-mips/cpu.h             |  2 +-
- target-mips/helper.c          | 14 +++++++-------
- target-mips/op_helper.c       |  8 ++++----
- target-moxie/helper.c         |  2 +-
- target-openrisc/mmu_helper.c  |  2 +-
- target-ppc/mmu_helper.c       |  2 +-
- target-s390x/helper.c         |  2 +-
- target-s390x/mem_helper.c     |  8 ++++----
- target-s390x/mmu_helper.c     | 10 +++++-----
- target-sh4/op_helper.c        |  2 +-
- target-sparc/cpu.h            |  2 +-
- target-sparc/ldst_helper.c    |  4 ++--
- target-tricore/op_helper.c    |  2 +-
- target-unicore32/op_helper.c  |  2 +-
- target-xtensa/cpu.h           |  2 +-
- target-xtensa/op_helper.c     |  4 ++--
- 28 files changed, 67 insertions(+), 67 deletions(-)
+ cpus.c                      |  2 +-
+ disas.c                     |  4 ++--
+ exec.c                      | 14 ++++++++++----
+ gdbstub.c                   |  3 ++-
+ hw/i386/kvmvapic.c          | 20 +++++++++++---------
+ include/exec/cpu-all.h      |  2 +-
+ include/exec/softmmu-semi.h | 16 ++++++++--------
+ monitor.c                   |  3 ++-
+ target-arm/arm-semi.c       |  2 +-
+ target-arm/kvm64.c          | 12 ++++++++----
+ target-i386/helper.c        |  7 ++++---
+ target-i386/kvm.c           |  9 +++++----
+ target-ppc/kvm.c            |  9 +++++----
+ target-s390x/kvm.c          |  9 +++++----
+ target-sparc/mmu_helper.c   |  8 ++++++--
+ target-xtensa/xtensa-semi.c | 10 +++++-----
+ 16 files changed, 76 insertions(+), 54 deletions(-)
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index acda7b6..1d5c71e 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -361,7 +361,7 @@ extern uintptr_t tci_tb_ptr;
- struct MemoryRegion *iotlb_to_region(CPUState *cpu,
-                                      hwaddr index, MemTxAttrs attrs);
+diff --git a/cpus.c b/cpus.c
+index 84c3520..ce19a13 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -1691,7 +1691,7 @@ void qmp_memsave(int64_t addr, int64_t size, const char *filename,
+         l = sizeof(buf);
+         if (l > size)
+             l = size;
+-        if (cpu_memory_rw_debug(cpu, addr, buf, l, 0) != 0) {
++        if (cpu_memory_rw_debug(cpu, addr, buf, l, MEM_DATA_LOAD) != 0) {
+             error_setg(errp, "Invalid addr 0x%016" PRIx64 "/size %" PRId64
+                              " specified", orig_addr, orig_size);
+             goto exit;
+diff --git a/disas.c b/disas.c
+index 05a7a12..c72c0dc 100644
+--- a/disas.c
++++ b/disas.c
+@@ -39,7 +39,7 @@ target_read_memory (bfd_vma memaddr,
+ {
+     CPUDebug *s = container_of(info, CPUDebug, info);
  
--void tlb_fill(CPUState *cpu, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cpu, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr);
- 
- #endif
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index a6c6ed8..b23b4b1 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -60,11 +60,11 @@ typedef uint64_t vaddr;
- #define CPU_CLASS(class) OBJECT_CLASS_CHECK(CPUClass, (class), TYPE_CPU)
- #define CPU_GET_CLASS(obj) OBJECT_GET_CLASS(CPUClass, (obj), TYPE_CPU)
- 
--typedef enum MMUAccessType {
--    MMU_DATA_LOAD  = 0,
--    MMU_DATA_STORE = 1,
--    MMU_INST_FETCH = 2
--} MMUAccessType;
-+typedef enum MemoryAccessType {
-+    MEM_DATA_LOAD  = 0,
-+    MEM_DATA_STORE = 1,
-+    MEM_INST_FETCH = 2
-+} MemoryAccessType;
- 
- typedef struct CPUWatchpoint CPUWatchpoint;
- 
-@@ -148,7 +148,7 @@ typedef struct CPUClass {
-     void (*do_interrupt)(CPUState *cpu);
-     CPUUnassignedAccess do_unassigned_access;
-     void (*do_unaligned_access)(CPUState *cpu, vaddr addr,
--                                MMUAccessType access_type,
-+                                MemoryAccessType access_type,
-                                 int mmu_idx, uintptr_t retaddr);
-     bool (*virtio_is_big_endian)(CPUState *cpu);
-     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-@@ -723,7 +723,7 @@ static inline void cpu_unassigned_access(CPUState *cpu, hwaddr addr,
+-    cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, 0);
++    cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, MEM_DATA_LOAD);
+     return 0;
  }
  
- static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
--                                        MMUAccessType access_type,
-+                                        MemoryAccessType access_type,
-                                         int mmu_idx, uintptr_t retaddr)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
-diff --git a/softmmu_template.h b/softmmu_template.h
-index 284ab2c..e872a21 100644
---- a/softmmu_template.h
-+++ b/softmmu_template.h
-@@ -67,10 +67,10 @@
- #endif
- 
- #ifdef SOFTMMU_CODE_ACCESS
--#define READ_ACCESS_TYPE MMU_INST_FETCH
-+#define READ_ACCESS_TYPE MEM_INST_FETCH
- #define ADDR_READ addr_code
- #else
--#define READ_ACCESS_TYPE MMU_DATA_LOAD
-+#define READ_ACCESS_TYPE MEM_DATA_LOAD
- #define ADDR_READ addr_read
- #endif
- 
-@@ -338,7 +338,7 @@ void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-     retaddr -= GETPC_ADJ;
- 
-     if (a_bits > 0 && (addr & ((1 << a_bits) - 1)) != 0) {
--        cpu_unaligned_access(ENV_GET_CPU(env), addr, MMU_DATA_STORE,
-+        cpu_unaligned_access(ENV_GET_CPU(env), addr, MEM_DATA_STORE,
-                              mmu_idx, retaddr);
-     }
- 
-@@ -346,7 +346,7 @@ void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-     if ((addr & TARGET_PAGE_MASK)
-         != (tlb_addr & (TARGET_PAGE_MASK | TLB_INVALID_MASK))) {
-         if (!VICTIM_TLB_HIT(addr_write, addr)) {
--            tlb_fill(ENV_GET_CPU(env), addr, MMU_DATA_STORE, mmu_idx, retaddr);
-+            tlb_fill(ENV_GET_CPU(env), addr, MEM_DATA_STORE, mmu_idx, retaddr);
-         }
-         tlb_addr = env->tlb_table[mmu_idx][index].addr_write;
-     }
-@@ -381,7 +381,7 @@ void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-         tlb_addr2 = env->tlb_table[mmu_idx][index2].addr_write;
-         if (page2 != (tlb_addr2 & (TARGET_PAGE_MASK | TLB_INVALID_MASK))
-             && !VICTIM_TLB_HIT(addr_write, page2)) {
--            tlb_fill(ENV_GET_CPU(env), page2, MMU_DATA_STORE,
-+            tlb_fill(ENV_GET_CPU(env), page2, MEM_DATA_STORE,
-                      mmu_idx, retaddr);
-         }
- 
-@@ -421,7 +421,7 @@ void helper_be_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-     retaddr -= GETPC_ADJ;
- 
-     if (a_bits > 0 && (addr & ((1 << a_bits) - 1)) != 0) {
--        cpu_unaligned_access(ENV_GET_CPU(env), addr, MMU_DATA_STORE,
-+        cpu_unaligned_access(ENV_GET_CPU(env), addr, MEM_DATA_STORE,
-                              mmu_idx, retaddr);
-     }
- 
-@@ -429,7 +429,7 @@ void helper_be_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-     if ((addr & TARGET_PAGE_MASK)
-         != (tlb_addr & (TARGET_PAGE_MASK | TLB_INVALID_MASK))) {
-         if (!VICTIM_TLB_HIT(addr_write, addr)) {
--            tlb_fill(ENV_GET_CPU(env), addr, MMU_DATA_STORE, mmu_idx, retaddr);
-+            tlb_fill(ENV_GET_CPU(env), addr, MEM_DATA_STORE, mmu_idx, retaddr);
-         }
-         tlb_addr = env->tlb_table[mmu_idx][index].addr_write;
-     }
-@@ -464,7 +464,7 @@ void helper_be_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
-         tlb_addr2 = env->tlb_table[mmu_idx][index2].addr_write;
-         if (page2 != (tlb_addr2 & (TARGET_PAGE_MASK | TLB_INVALID_MASK))
-             && !VICTIM_TLB_HIT(addr_write, page2)) {
--            tlb_fill(ENV_GET_CPU(env), page2, MMU_DATA_STORE,
-+            tlb_fill(ENV_GET_CPU(env), page2, MEM_DATA_STORE,
-                      mmu_idx, retaddr);
-         }
- 
-@@ -504,7 +504,7 @@ void probe_write(CPUArchState *env, target_ulong addr, int mmu_idx,
-         != (tlb_addr & (TARGET_PAGE_MASK | TLB_INVALID_MASK))) {
-         /* TLB entry is for a different page */
-         if (!VICTIM_TLB_HIT(addr_write, addr)) {
--            tlb_fill(ENV_GET_CPU(env), addr, MMU_DATA_STORE, mmu_idx, retaddr);
-+            tlb_fill(ENV_GET_CPU(env), addr, MEM_DATA_STORE, mmu_idx, retaddr);
-         }
-     }
- }
-diff --git a/target-alpha/cpu.h b/target-alpha/cpu.h
-index ac5e801..700f616 100644
---- a/target-alpha/cpu.h
-+++ b/target-alpha/cpu.h
-@@ -323,7 +323,7 @@ hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int alpha_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void alpha_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
--                                   MMUAccessType access_type,
-+                                   MemoryAccessType access_type,
-                                    int mmu_idx, uintptr_t retaddr);
- 
- #define cpu_list alpha_cpu_list
-diff --git a/target-alpha/mem_helper.c b/target-alpha/mem_helper.c
-index 1b2be50..d6ffabe 100644
---- a/target-alpha/mem_helper.c
-+++ b/target-alpha/mem_helper.c
-@@ -99,7 +99,7 @@ uint64_t helper_stq_c_phys(CPUAlphaState *env, uint64_t p, uint64_t v)
- }
- 
- void alpha_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
--                                   MMUAccessType access_type,
-+                                   MemoryAccessType access_type,
-                                    int mmu_idx, uintptr_t retaddr)
- {
-     AlphaCPU *cpu = ALPHA_CPU(cs);
-@@ -145,7 +145,7 @@ void alpha_cpu_unassigned_access(CPUState *cs, hwaddr addr,
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
- /* XXX: fix it to restore all registers */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-arm/internals.h b/target-arm/internals.h
-index cd57401..d6fafc5 100644
---- a/target-arm/internals.h
-+++ b/target-arm/internals.h
-@@ -477,7 +477,7 @@ bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
- 
- /* Raise a data fault alignment exception for the specified virtual address */
- void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
--                                 MMUAccessType access_type,
-+                                 MemoryAccessType access_type,
-                                  int mmu_idx, uintptr_t retaddr);
- 
- /* Call the EL change hook if one has been registered */
-diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index 3e8588e..74526a2 100644
---- a/target-arm/op_helper.c
-+++ b/target-arm/op_helper.c
-@@ -117,7 +117,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
-  */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     bool ret;
-@@ -149,14 +149,14 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-         /* For insn and data aborts we assume there is no instruction syndrome
-          * information; this is always true for exceptions reported to EL1.
-          */
--        if (access_type == MMU_INST_FETCH) {
-+        if (access_type == MEM_INST_FETCH) {
-             syn = syn_insn_abort(same_el, 0, fi.s1ptw, syn);
-             exc = EXCP_PREFETCH_ABORT;
-         } else {
-             syn = merge_syn_data_abort(env->exception.syndrome, target_el,
-                                        same_el, fi.s1ptw,
--                                       access_type == MMU_DATA_STORE, syn);
--            if (access_type == MMU_DATA_STORE
-+                                       access_type == MEM_DATA_STORE, syn);
-+            if (access_type == MEM_DATA_STORE
-                 && arm_feature(env, ARM_FEATURE_V6)) {
-                 fsr |= (1 << 11);
-             }
-@@ -171,7 +171,7 @@ void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
- 
- /* Raise a data fault alignment exception for the specified virtual address */
- void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
--                                 MMUAccessType access_type,
-+                                 MemoryAccessType access_type,
-                                  int mmu_idx, uintptr_t retaddr)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -199,12 +199,12 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-         env->exception.fsr = 0x1;
-     }
- 
--    if (access_type == MMU_DATA_STORE && arm_feature(env, ARM_FEATURE_V6)) {
-+    if (access_type == MEM_DATA_STORE && arm_feature(env, ARM_FEATURE_V6)) {
-         env->exception.fsr |= (1 << 11);
-     }
- 
-     syn = merge_syn_data_abort(env->exception.syndrome, target_el,
--                               same_el, 0, access_type == MMU_DATA_STORE,
-+                               same_el, 0, access_type == MEM_DATA_STORE,
-                                0x21);
-     raise_exception(env, EXCP_DATA_ABORT, syn, target_el);
- }
-diff --git a/target-cris/op_helper.c b/target-cris/op_helper.c
-index 5043039..c83e955 100644
---- a/target-cris/op_helper.c
-+++ b/target-cris/op_helper.c
-@@ -41,7 +41,7 @@
- /* Try to fill the TLB and return an exception if error. If retaddr is
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     CRISCPU *cpu = CRIS_CPU(cs);
-diff --git a/target-i386/mem_helper.c b/target-i386/mem_helper.c
-index 5bc0594..679322c 100644
---- a/target-i386/mem_helper.c
-+++ b/target-i386/mem_helper.c
-@@ -140,7 +140,7 @@ void helper_boundl(CPUX86State *env, target_ulong a0, int v)
-  * from generated code or from helper.c)
-  */
- /* XXX: fix it to restore all registers */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-lm32/op_helper.c b/target-lm32/op_helper.c
-index 2177c8a..bc78f3c 100644
---- a/target-lm32/op_helper.c
-+++ b/target-lm32/op_helper.c
-@@ -144,7 +144,7 @@ uint32_t HELPER(rcsr_jrx)(CPULM32State *env)
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
-  */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-m68k/op_helper.c b/target-m68k/op_helper.c
-index e41ae46..43f556e 100644
---- a/target-m68k/op_helper.c
-+++ b/target-m68k/op_helper.c
-@@ -39,7 +39,7 @@ static inline void do_interrupt_m68k_hardirq(CPUM68KState *env)
- /* Try to fill the TLB and return an exception if error. If retaddr is
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-microblaze/op_helper.c b/target-microblaze/op_helper.c
-index 4a856e6..1e1690a 100644
---- a/target-microblaze/op_helper.c
-+++ b/target-microblaze/op_helper.c
-@@ -33,7 +33,7 @@
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
-  */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-mips/cpu.h b/target-mips/cpu.h
-index 5182dc7..55a3e34 100644
---- a/target-mips/cpu.h
-+++ b/target-mips/cpu.h
-@@ -657,7 +657,7 @@ hwaddr mips_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int mips_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int mips_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void mips_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
--                                  MMUAccessType access_type,
-+                                  MemoryAccessType access_type,
-                                   int mmu_idx, uintptr_t retaddr);
- 
- #if !defined(CONFIG_USER_ONLY)
-diff --git a/target-mips/helper.c b/target-mips/helper.c
-index 9fbca26..bd3f7cd 100644
---- a/target-mips/helper.c
-+++ b/target-mips/helper.c
-@@ -88,13 +88,13 @@ int r4k_map_address (CPUMIPSState *env, hwaddr *physical, int *prot,
-             if (!(n ? tlb->V1 : tlb->V0)) {
-                 return TLBRET_INVALID;
-             }
--            if (rw == MMU_INST_FETCH && (n ? tlb->XI1 : tlb->XI0)) {
-+            if (rw == MEM_INST_FETCH && (n ? tlb->XI1 : tlb->XI0)) {
-                 return TLBRET_XI;
-             }
--            if (rw == MMU_DATA_LOAD && (n ? tlb->RI1 : tlb->RI0)) {
-+            if (rw == MEM_DATA_LOAD && (n ? tlb->RI1 : tlb->RI0)) {
-                 return TLBRET_RI;
-             }
--            if (rw != MMU_DATA_STORE || (n ? tlb->D1 : tlb->D0)) {
-+            if (rw != MEM_DATA_STORE || (n ? tlb->D1 : tlb->D0)) {
-                 *physical = tlb->PFN[n] | (address & (mask >> 1));
-                 *prot = PAGE_READ;
-                 if (n ? tlb->D1 : tlb->D0)
-@@ -338,7 +338,7 @@ static void raise_mmu_exception(CPUMIPSState *env, target_ulong address,
-     CPUState *cs = CPU(mips_env_get_cpu(env));
-     int exception = 0, error_code = 0;
- 
--    if (rw == MMU_INST_FETCH) {
-+    if (rw == MEM_INST_FETCH) {
-         error_code |= EXCP_INST_NOTAVAIL;
-     }
- 
-@@ -347,7 +347,7 @@ static void raise_mmu_exception(CPUMIPSState *env, target_ulong address,
-     case TLBRET_BADADDR:
-         /* Reference to kernel address from user mode or supervisor mode */
-         /* Reference to supervisor address from user mode */
--        if (rw == MMU_DATA_STORE) {
-+        if (rw == MEM_DATA_STORE) {
-             exception = EXCP_AdES;
-         } else {
-             exception = EXCP_AdEL;
-@@ -355,7 +355,7 @@ static void raise_mmu_exception(CPUMIPSState *env, target_ulong address,
-         break;
-     case TLBRET_NOMATCH:
-         /* No TLB match for a mapped address */
--        if (rw == MMU_DATA_STORE) {
-+        if (rw == MEM_DATA_STORE) {
-             exception = EXCP_TLBS;
-         } else {
-             exception = EXCP_TLBL;
-@@ -364,7 +364,7 @@ static void raise_mmu_exception(CPUMIPSState *env, target_ulong address,
-         break;
-     case TLBRET_INVALID:
-         /* TLB match with no valid bit */
--        if (rw == MMU_DATA_STORE) {
-+        if (rw == MEM_DATA_STORE) {
-             exception = EXCP_TLBS;
-         } else {
-             exception = EXCP_TLBL;
-diff --git a/target-mips/op_helper.c b/target-mips/op_helper.c
-index ea2f2ab..dd705f2 100644
---- a/target-mips/op_helper.c
-+++ b/target-mips/op_helper.c
-@@ -2384,7 +2384,7 @@ void helper_wait(CPUMIPSState *env)
- #if !defined(CONFIG_USER_ONLY)
- 
- void mips_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
--                                  MMUAccessType access_type,
-+                                  MemoryAccessType access_type,
-                                   int mmu_idx, uintptr_t retaddr)
- {
-     MIPSCPU *cpu = MIPS_CPU(cs);
-@@ -2394,11 +2394,11 @@ void mips_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
- 
-     env->CP0_BadVAddr = addr;
- 
--    if (access_type == MMU_DATA_STORE) {
-+    if (access_type == MEM_DATA_STORE) {
-         excp = EXCP_AdES;
+@@ -358,7 +358,7 @@ monitor_read_memory (bfd_vma memaddr, bfd_byte *myaddr, int length,
+     if (monitor_disas_is_physical) {
+         cpu_physical_memory_read(memaddr, myaddr, length);
      } else {
-         excp = EXCP_AdEL;
--        if (access_type == MMU_INST_FETCH) {
-+        if (access_type == MEM_INST_FETCH) {
-             error_code |= EXCP_INST_NOTAVAIL;
+-        cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, 0);
++        cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, MEM_DATA_LOAD);
+     }
+     return 0;
+ }
+diff --git a/exec.c b/exec.c
+index f20b216..995ff60 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2436,13 +2436,16 @@ MemoryRegion *get_system_io(void)
+ /* physical memory access (slow version, mainly for debug) */
+ #if defined(CONFIG_USER_ONLY)
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *b, int len, int is_write)
++                        void *b, int len, MemoryAccessType access_type)
+ {
+     int l, flags;
+     target_ulong page;
+     void * p;
+     uint8_t *buf = b;
+ 
++    g_assert(access_type == MEM_DATA_STORE ||
++             access_type == MEM_DATA_LOAD);
++
+     while (len > 0) {
+         page = addr & TARGET_PAGE_MASK;
+         l = (page + TARGET_PAGE_SIZE) - addr;
+@@ -2451,7 +2454,7 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+         flags = page_get_flags(page);
+         if (!(flags & PAGE_VALID))
+             return -1;
+-        if (is_write) {
++        if (access_type == MEM_DATA_STORE) {
+             if (!(flags & PAGE_WRITE))
+                 return -1;
+             /* XXX: this code should not depend on lock_user */
+@@ -3618,13 +3621,16 @@ void stq_be_phys(AddressSpace *as, hwaddr addr, uint64_t val)
+ 
+ /* virtual memory access for debug (includes writing to ROM) */
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *b, int len, int is_write)
++                        void *b, int len, MemoryAccessType access_type)
+ {
+     int l;
+     hwaddr phys_addr;
+     target_ulong page;
+     uint8_t *buf = b;
+ 
++    g_assert(access_type == MEM_DATA_STORE ||
++             access_type == MEM_DATA_LOAD);
++
+     while (len > 0) {
+         int asidx;
+         MemTxAttrs attrs;
+@@ -3639,7 +3645,7 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+         if (l > len)
+             l = len;
+         phys_addr += (addr & ~TARGET_PAGE_MASK);
+-        if (is_write) {
++        if (access_type == MEM_DATA_STORE) {
+             cpu_physical_memory_write_rom(cpu->cpu_ases[asidx].as,
+                                           phys_addr, buf, l);
+         } else {
+diff --git a/gdbstub.c b/gdbstub.c
+index 5da66f1..9c4cbe4 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -51,7 +51,8 @@ static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
+     if (cc->memory_rw_debug) {
+         return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
+     }
+-    return cpu_memory_rw_debug(cpu, addr, buf, len, is_write);
++    return cpu_memory_rw_debug(cpu, addr, buf, len,
++                               is_write ? MEM_DATA_STORE : MEM_DATA_LOAD);
+ }
+ 
+ enum {
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index c684675..8e15c0b 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -233,7 +233,7 @@ static int evaluate_tpr_instruction(VAPICROMState *s, X86CPU *cpu,
+                 continue;
+             }
+             if (cpu_memory_rw_debug(cs, ip - instr->length, opcode,
+-                                    sizeof(opcode), 0) < 0) {
++                                    sizeof(opcode), MEM_DATA_LOAD) < 0) {
+                 return -1;
+             }
+             if (opcode_matches(opcode, instr)) {
+@@ -243,7 +243,8 @@ static int evaluate_tpr_instruction(VAPICROMState *s, X86CPU *cpu,
+         }
+         return -1;
+     } else {
+-        if (cpu_memory_rw_debug(cs, ip, opcode, sizeof(opcode), 0) < 0) {
++        if (cpu_memory_rw_debug(cs, ip, opcode,
++                                sizeof(opcode), MEM_DATA_LOAD) < 0) {
+             return -1;
+         }
+         for (i = 0; i < ARRAY_SIZE(tpr_instr); i++) {
+@@ -262,7 +263,7 @@ instruction_ok:
+      */
+     if (cpu_memory_rw_debug(cs, ip + instr->addr_offset,
+                             &real_tpr_addr,
+-                            sizeof(real_tpr_addr), 0) < 0) {
++                            sizeof(real_tpr_addr), MEM_DATA_LOAD) < 0) {
+         return -1;
+     }
+     real_tpr_addr = le32_to_cpu(real_tpr_addr);
+@@ -349,7 +350,7 @@ static int get_kpcr_number(X86CPU *cpu)
+     } QEMU_PACKED kpcr;
+ 
+     if (cpu_memory_rw_debug(CPU(cpu), env->segs[R_FS].base,
+-                            &kpcr, sizeof(kpcr), 0) < 0 ||
++                            &kpcr, sizeof(kpcr), MEM_DATA_LOAD) < 0 ||
+         kpcr.self != env->segs[R_FS].base) {
+         return -1;
+     }
+@@ -378,7 +379,7 @@ static int vapic_enable(VAPICROMState *s, X86CPU *cpu)
+ 
+ static void patch_byte(X86CPU *cpu, target_ulong addr, uint8_t byte)
+ {
+-    cpu_memory_rw_debug(CPU(cpu), addr, &byte, 1, 1);
++    cpu_memory_rw_debug(CPU(cpu), addr, &byte, 1, MEM_DATA_STORE);
+ }
+ 
+ static void patch_call(VAPICROMState *s, X86CPU *cpu, target_ulong ip,
+@@ -388,7 +389,8 @@ static void patch_call(VAPICROMState *s, X86CPU *cpu, target_ulong ip,
+ 
+     offset = cpu_to_le32(target - ip - 5);
+     patch_byte(cpu, ip, 0xe8); /* call near */
+-    cpu_memory_rw_debug(CPU(cpu), ip + 1, &offset, sizeof(offset), 1);
++    cpu_memory_rw_debug(CPU(cpu), ip + 1, &offset,
++                        sizeof(offset), MEM_DATA_STORE);
+ }
+ 
+ static void patch_instruction(VAPICROMState *s, X86CPU *cpu, target_ulong ip)
+@@ -415,7 +417,7 @@ static void patch_instruction(VAPICROMState *s, X86CPU *cpu, target_ulong ip)
+ 
+     pause_all_vcpus();
+ 
+-    cpu_memory_rw_debug(cs, ip, opcode, sizeof(opcode), 0);
++    cpu_memory_rw_debug(cs, ip, opcode, sizeof(opcode), MEM_DATA_LOAD);
+ 
+     switch (opcode[0]) {
+     case 0x89: /* mov r32 to r/m32 */
+@@ -434,8 +436,8 @@ static void patch_instruction(VAPICROMState *s, X86CPU *cpu, target_ulong ip)
+         break;
+     case 0xc7: /* mov imm32, r/m32 (c7/0) */
+         patch_byte(cpu, ip, 0x68);  /* push imm32 */
+-        cpu_memory_rw_debug(cs, ip + 6, &imm32, sizeof(imm32), 0);
+-        cpu_memory_rw_debug(cs, ip + 1, &imm32, sizeof(imm32), 1);
++        cpu_memory_rw_debug(cs, ip + 6, &imm32, sizeof(imm32), MEM_DATA_LOAD);
++        cpu_memory_rw_debug(cs, ip + 1, &imm32, sizeof(imm32), MEM_DATA_STORE);
+         patch_call(s, cpu, ip + 5, handlers->set_tpr);
+         break;
+     case 0xff: /* push r/m32 */
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index ad498d0..8cde65d 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -310,7 +310,7 @@ void dump_opcount_info(FILE *f, fprintf_function cpu_fprintf);
+ #endif /* !CONFIG_USER_ONLY */
+ 
+ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
+-                        void *buf, int len, int is_write);
++                        void *buf, int len, MemoryAccessType access_type);
+ 
+ int cpu_exec(CPUState *cpu);
+ 
+diff --git a/include/exec/softmmu-semi.h b/include/exec/softmmu-semi.h
+index 263aa25..4dde38c 100644
+--- a/include/exec/softmmu-semi.h
++++ b/include/exec/softmmu-semi.h
+@@ -14,7 +14,7 @@ static inline uint64_t softmmu_tget64(CPUArchState *env, target_ulong addr)
+ {
+     uint64_t val;
+ 
+-    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 8, 0);
++    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 8, MEM_DATA_LOAD);
+     return tswap64(val);
+ }
+ 
+@@ -22,7 +22,7 @@ static inline uint32_t softmmu_tget32(CPUArchState *env, target_ulong addr)
+ {
+     uint32_t val;
+ 
+-    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 4, 0);
++    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 4, MEM_DATA_LOAD);
+     return tswap32(val);
+ }
+ 
+@@ -30,7 +30,7 @@ static inline uint32_t softmmu_tget8(CPUArchState *env, target_ulong addr)
+ {
+     uint8_t val;
+ 
+-    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 1, 0);
++    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 1, MEM_DATA_LOAD);
+     return val;
+ }
+ 
+@@ -43,14 +43,14 @@ static inline void softmmu_tput64(CPUArchState *env,
+                                   target_ulong addr, uint64_t val)
+ {
+     val = tswap64(val);
+-    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 8, 1);
++    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 8, MEM_DATA_STORE);
+ }
+ 
+ static inline void softmmu_tput32(CPUArchState *env,
+                                   target_ulong addr, uint32_t val)
+ {
+     val = tswap32(val);
+-    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 4, 1);
++    cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &val, 4, MEM_DATA_STORE);
+ }
+ #define put_user_u64(arg, p) ({ softmmu_tput64(env, p, arg) ; 0; })
+ #define put_user_u32(arg, p) ({ softmmu_tput32(env, p, arg) ; 0; })
+@@ -63,7 +63,7 @@ static void *softmmu_lock_user(CPUArchState *env,
+     /* TODO: Make this something that isn't fixed size.  */
+     p = malloc(len);
+     if (p && copy) {
+-        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, p, len, 0);
++        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, p, len, MEM_DATA_LOAD);
+     }
+     return p;
+ }
+@@ -79,7 +79,7 @@ static char *softmmu_lock_user_string(CPUArchState *env, target_ulong addr)
+         return NULL;
+     }
+     do {
+-        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &c, 1, 0);
++        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, &c, 1, MEM_DATA_LOAD);
+         addr++;
+         *(p++) = c;
+     } while (c);
+@@ -90,7 +90,7 @@ static void softmmu_unlock_user(CPUArchState *env, void *p, target_ulong addr,
+                                 target_ulong len)
+ {
+     if (len) {
+-        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, p, len, 1);
++        cpu_memory_rw_debug(ENV_GET_CPU(env), addr, p, len, MEM_DATA_STORE);
+     }
+     free(p);
+ }
+diff --git a/monitor.c b/monitor.c
+index d0ff246..226b060 100644
+--- a/monitor.c
++++ b/monitor.c
+@@ -1269,7 +1269,8 @@ static void memory_dump(Monitor *mon, int count, int format, int wsize,
+         if (is_physical) {
+             cpu_physical_memory_read(addr, buf, l);
+         } else {
+-            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf, l, 0) < 0) {
++            if (cpu_memory_rw_debug(mon_get_cpu(), addr, buf,
++                                    l, MEM_DATA_LOAD) < 0) {
+                 monitor_printf(mon, " Cannot access memory\n");
+                 break;
+             }
+diff --git a/target-arm/arm-semi.c b/target-arm/arm-semi.c
+index bd4bf13..157fb0b 100644
+--- a/target-arm/arm-semi.c
++++ b/target-arm/arm-semi.c
+@@ -187,7 +187,7 @@ static void arm_semi_flen_cb(CPUState *cs, target_ulong ret, target_ulong err)
+     /* The size is always stored in big-endian order, extract
+        the value. We assume the size always fit in 32 bits.  */
+     uint32_t size;
+-    cpu_memory_rw_debug(cs, arm_flen_buf(cpu) + 32, &size, 4, 0);
++    cpu_memory_rw_debug(cs, arm_flen_buf(cpu) + 32, &size, 4, MEM_DATA_LOAD);
+     size = be32_to_cpu(size);
+     if (is_a64(env)) {
+         env->xregs[0] = size;
+diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+index 7ba5acd..9bd821e 100644
+--- a/target-arm/kvm64.c
++++ b/target-arm/kvm64.c
+@@ -874,8 +874,10 @@ static const uint32_t brk_insn = 0xd4200000;
+ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     if (have_guest_debug) {
+-        if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 4, 0) ||
+-            cpu_memory_rw_debug(cs, bp->pc, &brk_insn, 4, 1)) {
++        if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
++                                4, MEM_DATA_LOAD) ||
++            cpu_memory_rw_debug(cs, bp->pc, &brk_insn,
++                                4, MEM_DATA_STORE)) {
+             return -EINVAL;
+         }
+         return 0;
+@@ -890,9 +892,11 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     static uint32_t brk;
+ 
+     if (have_guest_debug) {
+-        if (cpu_memory_rw_debug(cs, bp->pc, &brk, 4, 0) ||
++        if (cpu_memory_rw_debug(cs, bp->pc, &brk,
++                                4, MEM_DATA_LOAD) ||
+             brk != brk_insn ||
+-            cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 4, 1)) {
++            cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
++                                4, MEM_DATA_STORE)) {
+             return -EINVAL;
+         }
+         return 0;
+diff --git a/target-i386/helper.c b/target-i386/helper.c
+index 3e8d86f..8161807 100644
+--- a/target-i386/helper.c
++++ b/target-i386/helper.c
+@@ -555,7 +555,8 @@ void x86_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
+ 
+         cpu_fprintf(f, "Code=");
+         for (i = 0; i < DUMP_CODE_BYTES_TOTAL; i++) {
+-            if (cpu_memory_rw_debug(cs, base - offs + i, &code, 1, 0) == 0) {
++            if (cpu_memory_rw_debug(cs, base - offs + i, &code,
++                                    1, MEM_DATA_LOAD) == 0) {
+                 snprintf(codestr, sizeof(codestr), "%02x", code);
+             } else {
+                 snprintf(codestr, sizeof(codestr), "??");
+@@ -1286,8 +1287,8 @@ int cpu_x86_get_descr_debug(CPUX86State *env, unsigned int selector,
+     index = selector & ~7;
+     ptr = dt->base + index;
+     if ((index + 7) > dt->limit
+-        || cpu_memory_rw_debug(cs, ptr, &e1, sizeof(e1), 0) != 0
+-        || cpu_memory_rw_debug(cs, ptr + 4, &e2, sizeof(e2), 0) != 0)
++        || cpu_memory_rw_debug(cs, ptr, &e1, sizeof(e1), MEM_DATA_LOAD) != 0
++        || cpu_memory_rw_debug(cs, ptr + 4, &e2, sizeof(e2), MEM_DATA_LOAD) != 0)
+         return 0;
+ 
+     *base = ((e1 >> 16) | ((e2 & 0xff) << 16) | (e2 & 0xff000000));
+diff --git a/target-i386/kvm.c b/target-i386/kvm.c
+index 46e6a64..8d01142 100644
+--- a/target-i386/kvm.c
++++ b/target-i386/kvm.c
+@@ -2913,8 +2913,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     uint8_t int3 = 0xcc;
+ 
+-    if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 1, 0) ||
+-        cpu_memory_rw_debug(cs, bp->pc, &int3, 1, 1)) {
++    if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 1, MEM_DATA_LOAD) ||
++        cpu_memory_rw_debug(cs, bp->pc, &int3, 1, MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+     return 0;
+@@ -2924,8 +2924,9 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     uint8_t int3;
+ 
+-    if (cpu_memory_rw_debug(cs, bp->pc, &int3, 1, 0) || int3 != 0xcc ||
+-        cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 1, 1)) {
++    if (cpu_memory_rw_debug(cs, bp->pc, &int3, 1, MEM_DATA_LOAD) ||
++        int3 != 0xcc ||
++        cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn, 1, MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+     return 0;
+diff --git a/target-ppc/kvm.c b/target-ppc/kvm.c
+index 73ac879..8ffe6e0 100644
+--- a/target-ppc/kvm.c
++++ b/target-ppc/kvm.c
+@@ -1455,8 +1455,8 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     uint32_t sc = debug_inst_opcode;
+ 
+     if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
+-                            sizeof(sc), 0) ||
+-        cpu_memory_rw_debug(cs, bp->pc, &sc, sizeof(sc), 1)) {
++                            sizeof(sc), MEM_DATA_LOAD) ||
++        cpu_memory_rw_debug(cs, bp->pc, &sc, sizeof(sc), MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+ 
+@@ -1467,10 +1467,11 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     uint32_t sc;
+ 
+-    if (cpu_memory_rw_debug(cs, bp->pc, &sc, sizeof(sc), 0) ||
++    if (cpu_memory_rw_debug(cs, bp->pc, &sc,
++                            sizeof(sc), MEM_DATA_LOAD) ||
+         sc != debug_inst_opcode ||
+         cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
+-                            sizeof(sc), 1)) {
++                            sizeof(sc), MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+ 
+diff --git a/target-s390x/kvm.c b/target-s390x/kvm.c
+index 565b1b2..c279ddb 100644
+--- a/target-s390x/kvm.c
++++ b/target-s390x/kvm.c
+@@ -672,9 +672,9 @@ int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+ 
+     if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
+-                            sizeof(diag_501), 0) ||
++                            sizeof(diag_501), MEM_DATA_LOAD) ||
+         cpu_memory_rw_debug(cs, bp->pc, diag_501,
+-                            sizeof(diag_501), 1)) {
++                            sizeof(diag_501), MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+     return 0;
+@@ -684,12 +684,13 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+ {
+     uint8_t t[sizeof(diag_501)];
+ 
+-    if (cpu_memory_rw_debug(cs, bp->pc, t, sizeof(diag_501), 0)) {
++    if (cpu_memory_rw_debug(cs, bp->pc, t,
++                            sizeof(diag_501), MEM_DATA_LOAD)) {
+         return -EINVAL;
+     } else if (memcmp(t, diag_501, sizeof(diag_501))) {
+         return -EINVAL;
+     } else if (cpu_memory_rw_debug(cs, bp->pc, &bp->saved_insn,
+-                                   sizeof(diag_501), 1)) {
++                                   sizeof(diag_501), MEM_DATA_STORE)) {
+         return -EINVAL;
+     }
+ 
+diff --git a/target-sparc/mmu_helper.c b/target-sparc/mmu_helper.c
+index 32b629f..5040603 100644
+--- a/target-sparc/mmu_helper.c
++++ b/target-sparc/mmu_helper.c
+@@ -398,7 +398,10 @@ int sparc_cpu_memory_rw_debug(CPUState *cs, vaddr address,
+             /* Handle access before this window.  */
+             if (addr < fp) {
+                 len1 = fp - addr;
+-                if (cpu_memory_rw_debug(cs, addr, buf, len1, is_write) != 0) {
++                if (cpu_memory_rw_debug(cs, addr, buf, len1,
++                                        is_write ?
++                                        MEM_DATA_STORE :
++                                        MEM_DATA_LOAD) != 0) {
+                     return -1;
+                 }
+                 addr += len1;
+@@ -434,7 +437,8 @@ int sparc_cpu_memory_rw_debug(CPUState *cs, vaddr address,
+             }
          }
      }
-@@ -2406,7 +2406,7 @@ void mips_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-     do_raise_exception_err(env, excp, error_code, retaddr);
+-    return cpu_memory_rw_debug(cs, addr, buf, len, is_write);
++    return cpu_memory_rw_debug(cs, addr, buf, len,
++                               is_write ? MEM_DATA_STORE : MEM_DATA_LOAD);
  }
  
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-moxie/helper.c b/target-moxie/helper.c
-index 330299f..a7b7b08 100644
---- a/target-moxie/helper.c
-+++ b/target-moxie/helper.c
-@@ -29,7 +29,7 @@
- /* Try to fill the TLB and return an exception if error. If retaddr is
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-openrisc/mmu_helper.c b/target-openrisc/mmu_helper.c
-index a44d0aa..e26116c 100644
---- a/target-openrisc/mmu_helper.c
-+++ b/target-openrisc/mmu_helper.c
-@@ -25,7 +25,7 @@
+ #else /* !TARGET_SPARC64 */
+diff --git a/target-xtensa/xtensa-semi.c b/target-xtensa/xtensa-semi.c
+index ec199ac..c775375 100644
+--- a/target-xtensa/xtensa-semi.c
++++ b/target-xtensa/xtensa-semi.c
+@@ -202,7 +202,7 @@ void HELPER(simcall)(CPUXtensaState *env)
  
- #ifndef CONFIG_USER_ONLY
+             for (i = 0; i < ARRAY_SIZE(name); ++i) {
+                 rc = cpu_memory_rw_debug(cs, regs[3] + i,
+-                                         &name[i], 1, 0);
++                                         &name[i], 1, MEM_DATA_LOAD);
+                 if (rc != 0 || name[i] == 0) {
+                     break;
+                 }
+@@ -246,8 +246,8 @@ void HELPER(simcall)(CPUXtensaState *env)
+             FD_SET(fd, &fdset);
  
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-ppc/mmu_helper.c b/target-ppc/mmu_helper.c
-index 3eb3cd7..be436c1 100644
---- a/target-ppc/mmu_helper.c
-+++ b/target-ppc/mmu_helper.c
-@@ -2878,7 +2878,7 @@ void helper_check_tlb_flush(CPUPPCState *env)
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
- /* XXX: fix it to restore all registers */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     PowerPCCPU *cpu = POWERPC_CPU(cs);
-diff --git a/target-s390x/helper.c b/target-s390x/helper.c
-index 54a5177..136c6be 100644
---- a/target-s390x/helper.c
-+++ b/target-s390x/helper.c
-@@ -199,7 +199,7 @@ hwaddr s390_cpu_get_phys_page_debug(CPUState *cs, vaddr vaddr)
-         vaddr &= 0x7fffffff;
-     }
+             if (target_tv) {
+-                cpu_memory_rw_debug(cs, target_tv,
+-                                    target_tvv, sizeof(target_tvv), 0);
++                cpu_memory_rw_debug(cs, target_tv, target_tvv,
++                                    sizeof(target_tvv), MEM_DATA_LOAD);
+                 tv.tv_sec = (int32_t)tswap32(target_tvv[0]);
+                 tv.tv_usec = (int32_t)tswap32(target_tvv[1]);
+             }
+@@ -281,8 +281,8 @@ void HELPER(simcall)(CPUXtensaState *env)
+             };
  
--    if (mmu_translate(env, vaddr, MMU_INST_FETCH, asc, &raddr, &prot, false)) {
-+    if (mmu_translate(env, vaddr, MEM_INST_FETCH, asc, &raddr, &prot, false)) {
-         return -1;
-     }
-     return raddr;
-diff --git a/target-s390x/mem_helper.c b/target-s390x/mem_helper.c
-index 99bc5e2..c56cfa0 100644
---- a/target-s390x/mem_helper.c
-+++ b/target-s390x/mem_helper.c
-@@ -36,7 +36,7 @@
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
- /* XXX: fix it to restore all registers */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-@@ -77,7 +77,7 @@ static void fast_memset(CPUS390XState *env, uint64_t dest, uint8_t byte,
-     int mmu_idx = cpu_mmu_index(env, false);
+             argv.argptr[0] = tswap32(regs[3] + offsetof(struct Argv, text));
+-            cpu_memory_rw_debug(cs,
+-                                regs[3], &argv, sizeof(argv), 1);
++            cpu_memory_rw_debug(cs, regs[3], &argv,
++                                sizeof(argv), MEM_DATA_STORE);
+         }
+         break;
  
-     while (l > 0) {
--        void *p = tlb_vaddr_to_host(env, dest, MMU_DATA_STORE, mmu_idx);
-+        void *p = tlb_vaddr_to_host(env, dest, MEM_DATA_STORE, mmu_idx);
-         if (p) {
-             /* Access to the whole page in write mode granted.  */
-             int l_adj = adj_len_to_page(l, dest);
-@@ -100,8 +100,8 @@ static void fast_memmove(CPUS390XState *env, uint64_t dest, uint64_t src,
-     int mmu_idx = cpu_mmu_index(env, false);
- 
-     while (l > 0) {
--        void *src_p = tlb_vaddr_to_host(env, src, MMU_DATA_LOAD, mmu_idx);
--        void *dest_p = tlb_vaddr_to_host(env, dest, MMU_DATA_STORE, mmu_idx);
-+        void *src_p = tlb_vaddr_to_host(env, src, MEM_DATA_LOAD, mmu_idx);
-+        void *dest_p = tlb_vaddr_to_host(env, dest, MEM_DATA_STORE, mmu_idx);
-         if (src_p && dest_p) {
-             /* Access to both whole pages granted.  */
-             int l_adj = adj_len_to_page(l, src);
-diff --git a/target-s390x/mmu_helper.c b/target-s390x/mmu_helper.c
-index b11a027..5324dfb 100644
---- a/target-s390x/mmu_helper.c
-+++ b/target-s390x/mmu_helper.c
-@@ -71,7 +71,7 @@ static void trigger_prot_fault(CPUS390XState *env, target_ulong vaddr,
- {
-     uint64_t tec;
- 
--    tec = vaddr | (rw == MMU_DATA_STORE ? FS_WRITE : FS_READ) | 4 | asc >> 46;
-+    tec = vaddr | (rw == MEM_DATA_STORE ? FS_WRITE : FS_READ) | 4 | asc >> 46;
- 
-     DPRINTF("%s: trans_exc_code=%016" PRIx64 "\n", __func__, tec);
- 
-@@ -88,7 +88,7 @@ static void trigger_page_fault(CPUS390XState *env, target_ulong vaddr,
-     int ilen = ILEN_LATER;
-     uint64_t tec;
- 
--    tec = vaddr | (rw == MMU_DATA_STORE ? FS_WRITE : FS_READ) | asc >> 46;
-+    tec = vaddr | (rw == MEM_DATA_STORE ? FS_WRITE : FS_READ) | asc >> 46;
- 
-     DPRINTF("%s: trans_exc_code=%016" PRIx64 "\n", __func__, tec);
- 
-@@ -97,7 +97,7 @@ static void trigger_page_fault(CPUS390XState *env, target_ulong vaddr,
-     }
- 
-     /* Code accesses have an undefined ilc.  */
--    if (rw == MMU_INST_FETCH) {
-+    if (rw == MEM_INST_FETCH) {
-         ilen = 2;
-     }
- 
-@@ -291,7 +291,7 @@ static int mmu_translate_asce(CPUS390XState *env, target_ulong vaddr,
- 
-     r = mmu_translate_region(env, vaddr, asc, asce, level, raddr, flags, rw,
-                              exc);
--    if (rw == MMU_DATA_STORE && !(*flags & PAGE_WRITE)) {
-+    if (rw == MEM_DATA_STORE && !(*flags & PAGE_WRITE)) {
-         trigger_prot_fault(env, vaddr, asc, rw, exc);
-         return -1;
-     }
-@@ -348,7 +348,7 @@ int mmu_translate(CPUS390XState *env, target_ulong vaddr, int rw, uint64_t asc,
-          * Instruction: Primary
-          * Data: Secondary
-          */
--        if (rw == MMU_INST_FETCH) {
-+        if (rw == MEM_INST_FETCH) {
-             r = mmu_translate_asce(env, vaddr, PSW_ASC_PRIMARY, env->cregs[1],
-                                    raddr, flags, rw, exc);
-             *flags &= ~(PAGE_READ | PAGE_WRITE);
-diff --git a/target-sh4/op_helper.c b/target-sh4/op_helper.c
-index 0204b03..b00addd 100644
---- a/target-sh4/op_helper.c
-+++ b/target-sh4/op_helper.c
-@@ -24,7 +24,7 @@
- 
- #ifndef CONFIG_USER_ONLY
- 
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-sparc/cpu.h b/target-sparc/cpu.h
-index a3d64a4..5134f1d 100644
---- a/target-sparc/cpu.h
-+++ b/target-sparc/cpu.h
-@@ -541,7 +541,7 @@ hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int sparc_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
--                                                 MMUAccessType access_type,
-+                                                 MemoryAccessType access_type,
-                                                  int mmu_idx,
-                                                  uintptr_t retaddr);
- 
-diff --git a/target-sparc/ldst_helper.c b/target-sparc/ldst_helper.c
-index 6ce5ccc..042227c 100644
---- a/target-sparc/ldst_helper.c
-+++ b/target-sparc/ldst_helper.c
-@@ -2351,7 +2351,7 @@ void sparc_cpu_unassigned_access(CPUState *cs, hwaddr addr,
- 
- #if !defined(CONFIG_USER_ONLY)
- void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
--                                                 MMUAccessType access_type,
-+                                                 MemoryAccessType access_type,
-                                                  int mmu_idx,
-                                                  uintptr_t retaddr)
- {
-@@ -2372,7 +2372,7 @@ void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-    NULL, it means that the function was called in C code (i.e. not
-    from generated code or from helper.c) */
- /* XXX: fix it to restore all registers */
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-tricore/op_helper.c b/target-tricore/op_helper.c
-index ac02e0a..ead24e7 100644
---- a/target-tricore/op_helper.c
-+++ b/target-tricore/op_helper.c
-@@ -2828,7 +2828,7 @@ static inline void QEMU_NORETURN do_raise_exception_err(CPUTriCoreState *env,
-     cpu_loop_exit(cs);
- }
- 
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-unicore32/op_helper.c b/target-unicore32/op_helper.c
-index 0872c29..1927efe 100644
---- a/target-unicore32/op_helper.c
-+++ b/target-unicore32/op_helper.c
-@@ -244,7 +244,7 @@ uint32_t HELPER(ror_cc)(CPUUniCore32State *env, uint32_t x, uint32_t i)
- }
- 
- #ifndef CONFIG_USER_ONLY
--void tlb_fill(CPUState *cs, target_ulong addr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong addr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     int ret;
-diff --git a/target-xtensa/cpu.h b/target-xtensa/cpu.h
-index 7fe82a3..22c4471 100644
---- a/target-xtensa/cpu.h
-+++ b/target-xtensa/cpu.h
-@@ -414,7 +414,7 @@ hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
- int xtensa_cpu_gdb_read_register(CPUState *cpu, uint8_t *buf, int reg);
- int xtensa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
--                                    MMUAccessType access_type,
-+                                    MemoryAccessType access_type,
-                                     int mmu_idx, uintptr_t retaddr);
- 
- #define cpu_signal_handler cpu_xtensa_signal_handler
-diff --git a/target-xtensa/op_helper.c b/target-xtensa/op_helper.c
-index 0a4b214..11e0432 100644
---- a/target-xtensa/op_helper.c
-+++ b/target-xtensa/op_helper.c
-@@ -35,7 +35,7 @@
- #include "qemu/timer.h"
- 
- void xtensa_cpu_do_unaligned_access(CPUState *cs,
--        vaddr addr, MMUAccessType access_type,
-+        vaddr addr, MemoryAccessType access_type,
-         int mmu_idx, uintptr_t retaddr)
- {
-     XtensaCPU *cpu = XTENSA_CPU(cs);
-@@ -49,7 +49,7 @@ void xtensa_cpu_do_unaligned_access(CPUState *cs,
-     }
- }
- 
--void tlb_fill(CPUState *cs, target_ulong vaddr, MMUAccessType access_type,
-+void tlb_fill(CPUState *cs, target_ulong vaddr, MemoryAccessType access_type,
-               int mmu_idx, uintptr_t retaddr)
- {
-     XtensaCPU *cpu = XTENSA_CPU(cs);
 -- 
 2.5.5
 

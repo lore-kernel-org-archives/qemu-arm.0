@@ -1,62 +1,62 @@
-Received: by 10.25.21.156 with SMTP id 28csp1960580lfv;
-        Tue, 19 Jul 2016 22:03:55 -0700 (PDT)
-X-Received: by 10.66.94.71 with SMTP id da7mr71423324pab.31.1468991025185;
-        Tue, 19 Jul 2016 22:03:45 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1960602lfv;
+        Tue, 19 Jul 2016 22:03:58 -0700 (PDT)
+X-Received: by 10.98.32.81 with SMTP id g78mr61587803pfg.20.1468991027249;
+        Tue, 19 Jul 2016 22:03:47 -0700 (PDT)
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id r71si1236963pfa.279.2016.07.19.22.03.44;
-        Tue, 19 Jul 2016 22:03:45 -0700 (PDT)
+        by mx.google.com with ESMTP id r71si1236963pfa.279.2016.07.19.22.03.47;
+        Tue, 19 Jul 2016 22:03:47 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        dkim=neutral (body hash did not verify) header.i=@gmail.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-	id S1751579AbcGTFDl (ORCPT <rfc822;xinliang.liu@linaro.org>
-	+ 8 others); Wed, 20 Jul 2016 01:03:41 -0400
-Received: from mail-pa0-f65.google.com ([209.85.220.65]:32855 "EHLO
+	id S1751459AbcGTFDa (ORCPT <rfc822;xinliang.liu@linaro.org>
+	+ 8 others); Wed, 20 Jul 2016 01:03:30 -0400
+Received: from mail-pa0-f65.google.com ([209.85.220.65]:36803 "EHLO
 	mail-pa0-f65.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-	with ESMTP id S1751346AbcGTFD1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-	Wed, 20 Jul 2016 01:03:27 -0400
-Received: by mail-pa0-f65.google.com with SMTP id q2so2577450pap.0
-        for <kvm@vger.kernel.org>; Tue, 19 Jul 2016 22:03:26 -0700 (PDT)
+	with ESMTP id S1750923AbcGTFDW (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Wed, 20 Jul 2016 01:03:22 -0400
+Received: by mail-pa0-f65.google.com with SMTP id ez1so2564490pab.3
+        for <kvm@vger.kernel.org>; Tue, 19 Jul 2016 22:03:22 -0700 (PDT)
 DKIM-Signature:	v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=KFES7X5TcEsOOde34zItxoSDMGKim4CyjLBZAyJvIKk=;
-        b=PjwscXINGfEnHFciYXvEp4O4CvD2NhyLsfSwIDefum/uHWQNSr6RI9H6p0xvlDqhxA
-         GaQBMvjhxI+KMJToJGqYV+qvXmYjmDVkcWF+WUOp4ofTKowrWaYuG3rUmdQXCcOt5tKK
-         7yGVJB9g27v4Og0VgcgYVUb9lO1nSVboKr85B3pyjCaB6d4CNXLwl9QV/UOF78i8zPSR
-         N9lsqhM1D7RZvD88azd48Jb0MTuFAtjVSHUyD9+30MpJ1ze4YSK235gkM3OVAZUVnyHh
-         HNO4GfssPo+yg7zKjBpncmjRfLOmfkNTLELCVcwQLSbXM6JJq+JQDoWiPG5I7r42VN43
-         +4rQ==
+        bh=wdrpkMn5RYUt6mE5m9S7CEEUXhnzN18D2R7qN/IcEx8=;
+        b=GsU9bNTwcLN/NQOY1e4gZNUdSAXkJvHHsQ1bZxU4qwWtLlz8eeVVweHuXIaxa6bsDi
+         s0NnvbTxzogaUys3Dq8NTa2H/01qj7+Mlfx/QZoOFJLf/tzJ1eBSMYHNqJteE/9yCU7f
+         qBrq+VGyiiPxTxmGqrvubAFCuFAPPCwT/OscFTsDyZx7G+VTCATdFFK1onHSkYW02oHA
+         rcRc/f1gb0mh9COSsa2WZcdaYi6bwMmJYrTG20c40ii5RJSi3Wli2MvV79Vo6P8kin55
+         ChMOIq2rw/IhR/Cn5BZk4dMxmT4mc7Aomtq2XUNKxwL45e9cK9lSyXSMKYlItBvZc387
+         5waQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=KFES7X5TcEsOOde34zItxoSDMGKim4CyjLBZAyJvIKk=;
-        b=XSZtKCw5vYM9De0OCGE+HrnR2DVPRtxdxaxUKx1/F/jrsUsNEeBlIY4BRoMSeRMBfF
-         ZT4koz7mxseYdn7W/k2Sd5+12X9/OMPa+4TRXfwZXo193FI6tF0R7FalAcjl39z+rFhn
-         oheN79J+J6thOfLrjKXNGmFG55LN9z3NmDzXqdixY/rCIIkgfnLA+y0n7D0PLWnUqVcG
-         X/TWaQg49xBtOVjcSYKamLwkAaGAqzMMOWSCoSZ1yJpVg/WY3OczR1YcZse/ryzYyVgi
-         F+zWzus5M94dNoMgsyAeDUZDkvsd3TwO3+UtghP/JFrfX/l8YVPpjZhs5BU1FTjeacuF
-         69xg==
-X-Gm-Message-State: ALyK8tIChHXLyvPIakrZ8t2+4UTj5yCXrRFTbM6nSlnHgbrP9dtiFqAhuQPH0xOUf+UbvA==
-X-Received: by 10.66.26.105 with SMTP id k9mr72974778pag.103.1468991006266;
-        Tue, 19 Jul 2016 22:03:26 -0700 (PDT)
+        bh=wdrpkMn5RYUt6mE5m9S7CEEUXhnzN18D2R7qN/IcEx8=;
+        b=Xp9luh/nFuWr5wWyqdWtI5vYUSNTIxModCFNG0HC/lrkNOi8mrbK0rWgBZ8LkrpKCb
+         yk5OLxcaCx0dPWHRZ5w4DhUEiLbi2tFaYOWynKOL5lKfp9SmHsoBI9lqsIpBs053YB+M
+         JDjvp6PlsfzAciGpWUySfIBtVaRP7einrxs6Bd7ty5id729pxOAuxCfGD+My2VEu91mp
+         uxejqCHIzslHZXynzVBsDEmmS3seE8gdP4kspNPcLpVQQ/63GJVWCGCn+OPRKcXwdUj8
+         h1e94XnQwEmWwp36S8ilo5HtvezvRZT2RGwA4TwVRSLBd/jNRuoLXFHvgOyvzvYoQ3rH
+         jolA==
+X-Gm-Message-State: ALyK8tJUt8zfRDpzPMKaJsn+Hj+lwPIkkSI0y5hTfK6GXDuIQzGwCr/M+kF6m0E/VynAuQ==
+X-Received: by 10.66.155.129 with SMTP id vw1mr70947576pab.148.1468991001544;
+        Tue, 19 Jul 2016 22:03:21 -0700 (PDT)
 Received: from squirtle.localdomain.localdomain (c-73-225-163-254.hsd1.wa.comcast.net. [73.225.163.254])
-        by smtp.gmail.com with ESMTPSA id c66sm1031757pfd.24.2016.07.19.22.03.25
+        by smtp.gmail.com with ESMTPSA id c66sm1031757pfd.24.2016.07.19.22.03.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Jul 2016 22:03:25 -0700 (PDT)
+        Tue, 19 Jul 2016 22:03:21 -0700 (PDT)
 From:	Andrey Smirnov <andrew.smirnov@gmail.com>
 To:	qemu-devel@nongnu.org
 Cc:	Andrey Smirnov <andrew.smirnov@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	qemu-ppc@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v3 09/10] gdbstub: Convert target_memory_rw_debug to use MemoryAccessType
-Date:	Tue, 19 Jul 2016 22:02:59 -0700
-Message-Id: <1468990980-4598-10-git-send-email-andrew.smirnov@gmail.com>
+Subject: [PATCH v3 04/10] address_space_write_continue: Distill common code
+Date:	Tue, 19 Jul 2016 22:02:54 -0700
+Message-Id: <1468990980-4598-5-git-send-email-andrew.smirnov@gmail.com>
 X-Mailer: git-send-email 2.5.5
 In-Reply-To: <1468990980-4598-1-git-send-email-andrew.smirnov@gmail.com>
 References: <1468990980-4598-1-git-send-email-andrew.smirnov@gmail.com>
@@ -64,60 +64,62 @@ Sender:	kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List:	kvm@vger.kernel.org
-X-TUID: UZR3aog1WHNw
+X-TUID: DMx9PDxwDtgs
 
-Convert target_memory_rw_debug to use MemoryAccessType as to follow
-similar conversion of cpu_memory_rw_debug.
+Move call to memory_region_dispatch_write() outside of swtich statement
+since the only thing that is different about all of those call is
+"length" argument and that matches value in "l".
 
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
 ---
- gdbstub.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ exec.c | 23 +++++++----------------
+ 1 file changed, 7 insertions(+), 16 deletions(-)
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 9c4cbe4..c215672 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -44,15 +44,17 @@
- #endif
- 
- static inline int target_memory_rw_debug(CPUState *cpu, target_ulong addr,
--                                         uint8_t *buf, int len, bool is_write)
-+                                         uint8_t *buf, int len,
-+                                         MemoryAccessType access_type)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-     if (cc->memory_rw_debug) {
-+        const bool is_write = (access_type == MEM_DATA_STORE);
-         return cc->memory_rw_debug(cpu, addr, buf, len, is_write);
-     }
--    return cpu_memory_rw_debug(cpu, addr, buf, len,
--                               is_write ? MEM_DATA_STORE : MEM_DATA_LOAD);
+diff --git a/exec.c b/exec.c
+index 44cd424..e2425c5 100644
+--- a/exec.c
++++ b/exec.c
+@@ -2567,32 +2567,23 @@ static MemTxResult address_space_write_continue(AddressSpace *as, hwaddr addr,
+                potential bugs */
+             switch (l) {
+             case 8:
+-                /* 64 bit write access */
+-                val = ldq_p(buf);
+-                result |= memory_region_dispatch_write(mr, addr1, val, 8,
+-                                                       attrs);
++                val = ldq_p(buf);  /* 64 bit write access */
+                 break;
+             case 4:
+-                /* 32 bit write access */
+-                val = ldl_p(buf);
+-                result |= memory_region_dispatch_write(mr, addr1, val, 4,
+-                                                       attrs);
++                val = ldl_p(buf); /* 32 bit write access */
+                 break;
+             case 2:
+-                /* 16 bit write access */
+-                val = lduw_p(buf);
+-                result |= memory_region_dispatch_write(mr, addr1, val, 2,
+-                                                       attrs);
++                val = lduw_p(buf); /* 16 bit write access */
+                 break;
+             case 1:
+-                /* 8 bit write access */
+-                val = ldub_p(buf);
+-                result |= memory_region_dispatch_write(mr, addr1, val, 1,
+-                                                       attrs);
++                val = ldub_p(buf); /*  8 bit write access */
+                 break;
+             default:
+                 abort();
+             }
 +
-+    return cpu_memory_rw_debug(cpu, addr, buf, len, access_type);
- }
- 
- enum {
-@@ -966,7 +968,8 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
-             break;
-         }
- 
--        if (target_memory_rw_debug(s->g_cpu, addr, mem_buf, len, false) != 0) {
-+        if (target_memory_rw_debug(s->g_cpu, addr, mem_buf,
-+                                   len, MEM_DATA_LOAD) != 0) {
-             put_packet (s, "E14");
++            result |= memory_region_dispatch_write(mr, addr1, val, l,
++                                                   attrs);
          } else {
-             memtohex(buf, mem_buf, len);
-@@ -988,7 +991,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
-         }
-         hextomem(mem_buf, p, len);
-         if (target_memory_rw_debug(s->g_cpu, addr, mem_buf, len,
--                                   true) != 0) {
-+                                   MEM_DATA_STORE) != 0) {
-             put_packet(s, "E14");
-         } else {
-             put_packet(s, "OK");
+             /* RAM case */
+             ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
 -- 
 2.5.5
 

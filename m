@@ -1,30 +1,30 @@
-Received: by 10.25.21.156 with SMTP id 28csp492910lfv;
-        Thu, 21 Jul 2016 09:28:39 -0700 (PDT)
-X-Received: by 10.98.30.133 with SMTP id e127mr23974983pfe.104.1469118519361;
-        Thu, 21 Jul 2016 09:28:39 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp531477lfv;
+        Thu, 21 Jul 2016 10:53:46 -0700 (PDT)
+X-Received: by 10.36.163.1 with SMTP id p1mr16169309ite.1.1469123625914;
+        Thu, 21 Jul 2016 10:53:45 -0700 (PDT)
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id lv5si10636297pab.152.2016.07.21.09.28.39;
-        Thu, 21 Jul 2016 09:28:39 -0700 (PDT)
+        by mx.google.com with ESMTP id k27si6677629ioo.50.2016.07.21.10.53.45;
+        Thu, 21 Jul 2016 10:53:45 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-	id S1753411AbcGUQ2i (ORCPT <rfc822;xinliang.liu@linaro.org>
-	+ 8 others); Thu, 21 Jul 2016 12:28:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60869 "EHLO mx1.redhat.com"
+	id S1753613AbcGURxo (ORCPT <rfc822;xinliang.liu@linaro.org>
+	+ 8 others); Thu, 21 Jul 2016 13:53:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39700 "EHLO mx1.redhat.com"
 	rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-	id S1753396AbcGUQ2g (ORCPT <rfc822;kvm@vger.kernel.org>);
-	Thu, 21 Jul 2016 12:28:36 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	id S1753594AbcGURxm (ORCPT <rfc822;kvm@vger.kernel.org>);
+	Thu, 21 Jul 2016 13:53:42 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 51C9346202;
-	Thu, 21 Jul 2016 16:28:35 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6CA7EF2621;
+	Thu, 21 Jul 2016 17:53:42 +0000 (UTC)
 Received: from redhat.com (vpn1-7-84.ams2.redhat.com [10.36.7.84])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP id u6LGSRRo009931;
-	Thu, 21 Jul 2016 12:28:28 -0400
-Date:	Thu, 21 Jul 2016 19:28:27 +0300
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP id u6LHrZiF006868;
+	Thu, 21 Jul 2016 13:53:36 -0400
+Date:	Thu, 21 Jul 2016 20:53:34 +0300
 From:	"Michael S. Tsirkin" <mst@redhat.com>
 To:	qemu-devel@nongnu.org
 Cc:	Peter Maydell <peter.maydell@linaro.org>,
@@ -41,21 +41,21 @@ Cc:	Peter Maydell <peter.maydell@linaro.org>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Cornelia Huck <cornelia.huck@de.ibm.com>, kvm@vger.kernel.org,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Subject: [PULL v4 30/57] kvm-irqchip: i386: add hook for add/remove virq
-Message-ID: <1469118288-4776-31-git-send-email-mst@redhat.com>
-References: <1469118288-4776-1-git-send-email-mst@redhat.com>
+Subject: [PULL v5 31/57] kvm-irqchip: i386: add hook for add/remove virq
+Message-ID: <1469123413-20809-32-git-send-email-mst@redhat.com>
+References: <1469123413-20809-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1469118288-4776-1-git-send-email-mst@redhat.com>
+In-Reply-To: <1469123413-20809-1-git-send-email-mst@redhat.com>
 X-Mutt-Fcc: =sent
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Thu, 21 Jul 2016 16:28:35 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Thu, 21 Jul 2016 17:53:42 +0000 (UTC)
 Sender:	kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List:	kvm@vger.kernel.org
-X-TUID: CDALqo1KyH+I
+X-TUID: vGfaUAg2HhsG
 
 From: Peter Xu <peterx@redhat.com>
 

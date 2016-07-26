@@ -1,70 +1,70 @@
-Received: by 10.25.21.156 with SMTP id 28csp1647827lfv;
-        Tue, 26 Jul 2016 04:07:21 -0700 (PDT)
-X-Received: by 10.200.36.174 with SMTP id s43mr36937964qts.52.1469531241133;
-        Tue, 26 Jul 2016 04:07:21 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1666168lfv;
+        Tue, 26 Jul 2016 04:48:19 -0700 (PDT)
+X-Received: by 10.55.150.195 with SMTP id y186mr27440511qkd.7.1469533699409;
+        Tue, 26 Jul 2016 04:48:19 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p22si154074qki.36.2016.07.26.04.07.20
+        by mx.google.com with ESMTPS id h19si215455qke.295.2016.07.26.04.48.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jul 2016 04:07:21 -0700 (PDT)
+        Tue, 26 Jul 2016 04:48:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38848 helo=lists.gnu.org)
+Received: from localhost ([::1]:38983 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bS0Cm-0003Dg-Eh
-	for alex.bennee@linaro.org; Tue, 26 Jul 2016 07:07:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43249)
+	id 1bS0qQ-0007nJ-R9
+	for alex.bennee@linaro.org; Tue, 26 Jul 2016 07:48:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50901)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS0Cf-0003BD-NP
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:07:14 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bS0qK-0007lR-D2
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:48:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS0Cd-0004Dg-J4
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:07:12 -0400
-Received: from mail-yw0-x236.google.com ([2607:f8b0:4002:c05::236]:33755)
+	(envelope-from <peter.maydell@linaro.org>) id 1bS0qI-0004Ch-E6
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:48:11 -0400
+Received: from mail-qt0-x233.google.com ([2607:f8b0:400d:c0d::233]:33960)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS0Cd-0004DT-2Q
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:07:11 -0400
-Received: by mail-yw0-x236.google.com with SMTP id r9so6122738ywg.0
-	for <qemu-arm@nongnu.org>; Tue, 26 Jul 2016 04:07:11 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bS0qI-0004CZ-3d
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 07:48:10 -0400
+Received: by mail-qt0-x233.google.com with SMTP id u25so2447504qtb.1
+	for <qemu-arm@nongnu.org>; Tue, 26 Jul 2016 04:48:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=i4JZxUyO3WtcoLEIQKeUxJS1ifHRP5jRx3UB0TIlNTw=;
-	b=QhDJ72yCTkhN3SSTRABBf4zPO0mqVLdIX4oDgzchIc1NdfKh7ZMDt11rwfsI7HX7vN
-	OgNEDAk7to+WX1YXFfUks84OerPe4Zb0cwRDJNEd6z+fUEcCSUYabREqlC6vcAL27FkF
-	4RguIGXO0i3U6un/aybkNlUjZeaiEKnu/NfX4=
+	:cc; bh=S++uy5VdvmFgpNchXQFO4TRqB8CNMDVLw/AS4qqxNd8=;
+	b=WrcxN5UTT9FBz6VosEXilSCDR1ADGcUSpl/+LKPmqjiKFb8vCGcruWlGgZky8NyWTb
+	50ASs/FNSfEvZp50jiHF900gBLsp0JjGClTcPcjs2Fs18ZlUfnZ2ye/fNl+ROzKfio62
+	7vZFCP4W19LKACCYYjclB2W7wkyPeaFcanyC4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=i4JZxUyO3WtcoLEIQKeUxJS1ifHRP5jRx3UB0TIlNTw=;
-	b=SVNyd4KZmwd/ov85K2be5Lm5XEy+rDfASlf7G8mPJrsoAg7zPHloosF9qDUHwksy7O
-	+cyGDCIonB/azgleJuwDzvmu+/6oBqmAAKXks6fVN5ozH8pFqs+VMHzbffamRd8oc4XN
-	lh89kSGfkvOgKeGzyJQT0Bke6yRWET+hTjYmtJoyMMp/fT2hUPMhBjiUpDtBQmTWNb7U
-	7+jZeCW/zPp/RcTqvN4d/lNLeOe6eB23sohKCHRgtNtRC0wo90jQf3qmkYz7FK11HrBg
-	5HEoq8iVqzAX1gsW6ac3seUOT4N+OR0mK2jx0aIlJc7sVEwEaNxj3eH+CYiYcnamnzGR
-	+qQA==
-X-Gm-Message-State: AEkoousH+EkRTBRoUrWTzJ20QYW4wdBKjalfX3Yp7B/VvmxHnw/SpI6vMQ7hMAwgIHMLHPGb0t8LWKemWuD4MJSs
-X-Received: by 10.31.218.198 with SMTP id r189mr9805815vkg.30.1469531230393;
-	Tue, 26 Jul 2016 04:07:10 -0700 (PDT)
+	bh=S++uy5VdvmFgpNchXQFO4TRqB8CNMDVLw/AS4qqxNd8=;
+	b=BhB507ecv8CAb6hiiNXOe7SiTTFuTv9MwqDd94S+iSYarIl5GmO2z2u0ZasfUqoYne
+	44bDcJsvxt+PShlqdWoFeNLhCCLT0x7ixc/wguSwTJV11w9oT+HRKC5Tqvfyy5moVwR8
+	w1g49mNMPmn919vDC8EXIAZpZAVX5ZdBmMhm/PWGiu3epQXZS6ADGqTAOW9vbwlMmQmj
+	Xmqu0VF8U1Lqc07Hj5K+9/NCfFaEOoG0dNI4n/j+92HLCNPG6OVNxkvaV2zPJl1SXQYe
+	D/dQL7n2l718idd4f1DCGH/8tAddSUj9Zw10MMd0iG41IQBnlhX4CtuGUGHYaOWKXtRk
+	bC3Q==
+X-Gm-Message-State: AEkooutbcvGlpVZX0xnrB5UDVkeoT8D5eDY/CCosoUw4q1A5MmS/3QN/gs8A3nxGm+ZbX99tY/PCOH+OvZJWrzrx
+X-Received: by 10.159.40.67 with SMTP id c61mr10039362uac.82.1469533689611;
+	Tue, 26 Jul 2016 04:48:09 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.137.136 with HTTP; Tue, 26 Jul 2016 04:06:51 -0700 (PDT)
-In-Reply-To: <1469530917-13842-3-git-send-email-vijay.kilari@gmail.com>
-References: <1469530917-13842-1-git-send-email-vijay.kilari@gmail.com>
-	<1469530917-13842-3-git-send-email-vijay.kilari@gmail.com>
+Received: by 10.31.137.136 with HTTP; Tue, 26 Jul 2016 04:47:50 -0700 (PDT)
+In-Reply-To: <5778bd2c8a0fe59682bf830c2c17ff7207b296d7.1469491920.git.alistair.francis@xilinx.com>
+References: <cover.1469491920.git.alistair.francis@xilinx.com>
+	<5778bd2c8a0fe59682bf830c2c17ff7207b296d7.1469491920.git.alistair.francis@xilinx.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 Jul 2016 12:06:51 +0100
-Message-ID: <CAFEAcA9ntTvNp-uthmJ4+jON+SRr6FCfcgooas=akbEA2S+R9A@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Tue, 26 Jul 2016 12:47:50 +0100
+Message-ID: <CAFEAcA_1-_+LmbMmZH3F7idZxfTerveUh8bQFHsUivMVP+ggqw@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::236
-Subject: Re: [Qemu-arm] [RFC PATCH v1 2/2] hw/intc/arm_gicv3_kvm: Implement
- get/put functions
+X-Received-From: 2607:f8b0:400d:c0d::233
+Subject: Re: [Qemu-arm] [PATCH v2 2/6] cadence_gem: Add the
+ num-priority-queues property
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,37 +76,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "prasun.kapoor" <Prasun.Kapoor@cavium.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bUzMm3v857kG
+X-TUID: a3b60Fxtxwo2
 
-On 26 July 2016 at 12:01,  <vijay.kilari@gmail.com> wrote:
-> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+On 26 July 2016 at 01:12, Alistair Francis <alistair.francis@xilinx.com> wrote:
+> The Cadence GEM hardware supports N number priority queues, this patch is a
+> step towards that by adding the property to set the queues. At the moment
+> behaviour doesn't change as we only use queue 0.
 >
-> This actually implements pre_save and post_load methods for in-kernel
-> vGICv3.
->
-> Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
-> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
-> [Vijay: - Adjusted macros to handle gicr variables
->  - Used gicr_typer for affinity
->  - Made all GICD/GICR registers access as 32-bit.
->  - All ICC register access as 64 bit.
->  ]
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 > ---
->  hw/intc/arm_gicv3_common.c         |    3 +
->  hw/intc/arm_gicv3_kvm.c            |  496 +++++++++++++++++++++++++++++++++++-
->  hw/intc/gicv3_internal.h           |  113 ++++++++
->  include/hw/intc/arm_gicv3_common.h |    1 +
->  4 files changed, 607 insertions(+), 6 deletions(-)
 
-Please base this on the rearrangement I did in
-http://patchwork.ozlabs.org/patch/626746/
-not Pavel's first version.
+> @@ -1218,7 +1220,7 @@ static void gem_realize(DeviceState *dev, Error **errp)
+>  {
+>      CadenceGEMState *s = CADENCE_GEM(dev);
+>
+> -    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+> +    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[0]);
+>
+>      qemu_macaddr_default_if_unset(&s->conf.macaddr);
+
+At some point realize() needs to error-check the num-priority-queues
+property (ie check it isn't >8). Do you do that later in the series?
+(if so fine, if not, this patch is as good a place as any to put it.)
+
+> @@ -1243,13 +1245,15 @@ static void gem_init(Object *obj)
+>  static const VMStateDescription vmstate_cadence_gem = {
+>      .name = "cadence_gem",
+>      .version_id = 2,
+> -    .minimum_version_id = 2,
+> +    .minimum_version_id = 3,
+
+You need to bump .version_id too.
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

@@ -1,70 +1,74 @@
-Received: by 10.25.21.156 with SMTP id 28csp1254353lfv;
-        Mon, 25 Jul 2016 09:13:02 -0700 (PDT)
-X-Received: by 10.237.44.66 with SMTP id f60mr31535811qtd.11.1469463182631;
-        Mon, 25 Jul 2016 09:13:02 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1543413lfv;
+        Mon, 25 Jul 2016 23:33:08 -0700 (PDT)
+X-Received: by 10.55.217.89 with SMTP id u86mr27429664qki.114.1469514788409;
+        Mon, 25 Jul 2016 23:33:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t13si18323393qkt.322.2016.07.25.09.13.02
+        by mx.google.com with ESMTPS id z186si20141607qke.27.2016.07.25.23.33.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Jul 2016 09:13:02 -0700 (PDT)
+        Mon, 25 Jul 2016 23:33:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33409 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37802 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bRiV3-0002ZR-V7
-	for alex.bennee@linaro.org; Mon, 25 Jul 2016 12:13:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46615)
+	id 1bRvvP-0004dt-Nm
+	for alex.bennee@linaro.org; Tue, 26 Jul 2016 02:33:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55150)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bRiUz-0002Z7-6M
-	for qemu-arm@nongnu.org; Mon, 25 Jul 2016 12:12:58 -0400
+	(envelope-from <kwangwoo.lee@sk.com>) id 1bRvvJ-0004bf-Mq
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 02:33:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bRiUx-0001CK-Ln
-	for qemu-arm@nongnu.org; Mon, 25 Jul 2016 12:12:57 -0400
-Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:34955)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bRiUx-0001C0-5I
-	for qemu-arm@nongnu.org; Mon, 25 Jul 2016 12:12:55 -0400
-Received: by mail-vk0-x22c.google.com with SMTP id w127so250548173vkh.2
-	for <qemu-arm@nongnu.org>; Mon, 25 Jul 2016 09:12:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=/qGYJbREpWkDqkfzyNQZ/mGZFLuZ5fxfgxQGGnqqy1g=;
-	b=DEoYVlq5GGVUzT6/T4R7yTvG24GbMzyH8bNqEQsoT/ti54R44LyDzmUJJ4VajOuBfl
-	+A27hlBCfPWyQ0TRMBZEbl6Is0EUnApkENYppuAa0otoGhYesQ80BJdwOHnfXeVCzov5
-	6dFSuNc1C3sVZ7/+jrj2HvkkXreHn+iYoOpqo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=/qGYJbREpWkDqkfzyNQZ/mGZFLuZ5fxfgxQGGnqqy1g=;
-	b=ba/Aj+tQJovnLkJ6wUDqkBE75TZHqUqzPJFrkSCoUyJxN9VjacTfHHMwGtDaPzQNbF
-	mBVb+lVcTiE59ZmPJlz9+OLaDMvKbmgPVoeLaSVrVccSXix6W7FgpwxTOgoJGnpiafJ/
-	9bBnpgHyYCVM0dQDhDDSxX93r584SDgWWpoljiBT2/V4nPlJ6T1iQ1cId6BlGbZmsnJ2
-	cSv2Efz0/Yj8fLMcg/eHT2rFC1Yz3Yw2MORECzLpxsljhSkuFs6sIw+uE0AtZqweFE0g
-	n7f7snbkix5O/r0J1s2iytsBxsscMi5f5PsQc4rPkWU5veww3uhmk/ntYe2LEqP1a/IL
-	FgEA==
-X-Gm-Message-State: AEkooutJMrTxbFbjdNJZhSGffbJ64SYza3vRmEnFcSjlOBmLpRDi21S0tUkpU/eZtCkqBkqdbWrfZJ0LmKFD5Vmq
-X-Received: by 10.31.88.70 with SMTP id m67mr8542590vkb.108.1469463174735;
-	Mon, 25 Jul 2016 09:12:54 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.137.136 with HTTP; Mon, 25 Jul 2016 09:12:35 -0700 (PDT)
-In-Reply-To: <1468975744-12587-3-git-send-email-kwangwoo.lee@sk.com>
+	(envelope-from <kwangwoo.lee@sk.com>) id 1bRvvH-0000Zn-Mp
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 02:33:00 -0400
+Received: from exvmail4.skhynix.com ([166.125.252.92]:48129
+	helo=invmail4.hynix.com) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kwangwoo.lee@sk.com>)
+	id 1bRvvA-0000ZU-Pj; Tue, 26 Jul 2016 02:32:53 -0400
+X-AuditID: a67dfc5b-f79386d000007ffb-0f-5797040d9929
+Received: from nmail01.hynixad.com (10.156.98.81) by nmail05.hynixad.com
+	(10.156.98.85) with Microsoft SMTP Server (TLS) id 15.0.847.32;
+	Tue, 26 Jul 2016 15:32:39 +0900
+Received: from nmail01.hynixad.com ([::1]) by nmail01.hynixad.com
+	([fe80::b401:ed0f:ec2d:533c%24]) with mapi id 15.00.0847.030;
+	Tue, 26 Jul 2016 15:32:39 +0900
+From: "kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: [RFC PATCH 0/3] add nvdimm support on AArch64 virt platform
+Thread-Index: AQHR4iCy2E+tnayAQkKaa+cF88CEZqAowfCAgAGE4VA=
+Date: Tue, 26 Jul 2016 06:32:39 +0000
+Message-ID: <eef1f2e11f704d4a86ee15143c333f21@nmail01.hynixad.com>
 References: <1468975744-12587-1-git-send-email-kwangwoo.lee@sk.com>
-	<1468975744-12587-3-git-send-email-kwangwoo.lee@sk.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Jul 2016 17:12:35 +0100
-Message-ID: <CAFEAcA9Dce1qQS6QHjxYWMykX6wycusPQM3UDquifTr38oOd=Q@mail.gmail.com>
-To: Kwangwoo Lee <kwangwoo.lee@sk.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22c
-Subject: Re: [Qemu-arm] [RFC PATCH 2/3] nvdimm: use configurable ACPI IO
- base and size
+	<CAFEAcA-GZpj-Rb_zU4guGVsdAXYekQc+Yix0yfc8xCA9BtO=ZQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-GZpj-Rb_zU4guGVsdAXYekQc+Yix0yfc8xCA9BtO=ZQ@mail.gmail.com>
+Accept-Language: ko-KR, en-US
+Content-Language: ko-KR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.92.132.196]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrPIsWRmVeSWpSXmKPExsXCNUdUSZeXZXq4wZLNChYN90ItFq5axmxx
+	+mgHs8X/X69YLfZv+8dqMefMAxaLBd0L2SyO9+5gsZh26g6rxdNlv1kt5m14weTA7dFy5C2r
+	x51re9g85p0M9HhybTOTx/t9V9k8+qZ/YA5gi+KySUnNySxLLdK3S+DKOH7wNUtBk3TFkxVn
+	WRsYV0h1MXJySAiYSExvusMOYYtJXLi3nq2LkYtDSGANo8SzXe+YIJzFjBIXjv1gBaliEzCU
+	2HtrH5gtIqAjceX6ZrAiZoFPzBJXdi5jAkkIC3hI/Lk8iR2iyFNi6/3vQGM5gGwriYkbnEDC
+	LAKqEt8v32MBsXkFnCSezN4F1iok0MUo0X8oHKScUyBQ4uExQRCTUUBW4uo1GZAKZgFxicVf
+	rzFD3CwgsWTPeShbVOLl43+sELaixLfX39lBWpkFNCXW79KHaFWUmNL9kB1iqaDEyZlPWCDK
+	JSUOrrjBMoFRfBaSDbMQumch6Z6FpHsBI8sqRpHMvLLcxMwcE73i7IzKvMwKveT83E2MwGhe
+	Vvsnegfjkr8ehxgFOBiVeHgnuE4LF2JNLCuuzD3EKMHBrCTC2/QfKMSbklhZlVqUH19UmpNa
+	fIhRmoNFSZz32/++cCGB9MSS1OzU1ILUIpgsEwenVAPjNpd5xV/27pxTu7lD8l7L6wm/zU1q
+	j3amh17cu0N98ZptD0sb5j56eiYlr+H9yd9WB50Z6z7G5LaXXOcV21P5JkX2/QPb+c9WC089
+	kiRQttyKaX1YE58daw3bGv7shm/npKvcIu4tvr8r5O7r6cYbFzFfWHuvIn35iTblziDBI5b7
+	N+3U2ST2SomlOCPRUIu5qDgRADU0hrDiAgAA
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
+X-Received-From: 166.125.252.92
+Subject: Re: [Qemu-arm] [RFC PATCH 0/3] add nvdimm support on AArch64 virt
+ platform
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,162 +85,57 @@ Cc: Xiao Guangrong <guangrong.xiao@linux.intel.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Woosuk Chung <woosuk.chung@sk.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
+	"woosuk.chung@sk.com" <woosuk.chung@sk.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Hyunchul Kim <hyunchul3.kim@sk.com>, Richard Henderson <rth@twiddle.net>
+	"hyunchul3.kim@sk.com" <hyunchul3.kim@sk.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cm4ZZewd19eo
+X-TUID: J3/qEjAc6bOq
 
-On 20 July 2016 at 01:49, Kwangwoo Lee <kwangwoo.lee@sk.com> wrote:
-> This patch uses configurable IO base and size to create NPIO AML for
-> ACPI NFIT. Since a different architecture like AArch64 does not use
-> port-mapped IO, a configurable IO base is required to create correct
-> mapping of ACPI IO address and size.
->
-> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
-> ---
->  hw/acpi/nvdimm.c        | 23 +++++++++++++++--------
->  hw/i386/acpi-build.c    |  2 +-
->  hw/i386/pc_piix.c       |  8 +++++++-
->  hw/i386/pc_q35.c        |  8 +++++++-
->  include/hw/mem/nvdimm.h | 17 ++++++++++++++++-
->  5 files changed, 46 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index e486128..57e03ee 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -765,8 +765,8 @@ void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
->                              FWCfgState *fw_cfg, Object *owner)
->  {
->      memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
-> -                          "nvdimm-acpi-io", NVDIMM_ACPI_IO_LEN);
-> -    memory_region_add_subregion(io, NVDIMM_ACPI_IO_BASE, &state->io_mr);
-> +                          "nvdimm-acpi-io", state->dsm_io.size);
-> +    memory_region_add_subregion(io, state->dsm_io.base, &state->io_mr);
->
->      state->dsm_mem = g_array_new(false, true /* clear */, 1);
->      acpi_data_push(state->dsm_mem, sizeof(NvdimmDsmIn));
-
-Why does this function take a MemoryRegion to insert itself into,
-rather than returning a MemoryRegion for the caller to map into
-wherever is appropriate, or even being a DeviceState which has
-mappable memory regions via the sysbus API ?
-
-I guess the answer is "that's the way it happens to be at the moment",
-so I'm not really asking for a change here necessarily.
-
-> @@ -912,9 +912,10 @@ static void nvdimm_build_nvdimm_devices(GSList *device_list, Aml *root_dev)
->
->  static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
->                                GArray *table_data, BIOSLinker *linker,
-> -                              GArray *dsm_dma_arrea)
-> +                              AcpiNVDIMMState *acpi_nvdimm_state)
->  {
->      Aml *ssdt, *sb_scope, *dev, *field;
-> +    AmlRegionSpace rs;
->      int mem_addr_offset, nvdimm_ssdt;
->
->      acpi_add_table(table_offsets, table_data);
-> @@ -940,8 +941,14 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
->      aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0012")));
->
->      /* map DSM memory and IO into ACPI namespace. */
-> -    aml_append(dev, aml_operation_region("NPIO", AML_SYSTEM_IO,
-> -               aml_int(NVDIMM_ACPI_IO_BASE), NVDIMM_ACPI_IO_LEN));
-> +    if (acpi_nvdimm_state->dsm_io.type == NVDIMM_ACPI_IO_PORT) {
-> +        rs = AML_SYSTEM_IO;
-> +    } else {
-> +        rs = AML_SYSTEM_MEMORY;
-> +    }
-> +    aml_append(dev, aml_operation_region("NPIO", rs,
-> +               aml_int(acpi_nvdimm_state->dsm_io.base),
-> +               acpi_nvdimm_state->dsm_io.size));
->      aml_append(dev, aml_operation_region("NRAM", AML_SYSTEM_MEMORY,
->                 aml_name(NVDIMM_ACPI_MEM_ADDR), sizeof(NvdimmDsmIn)));
->
-> @@ -1014,7 +1021,7 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
->                                                 NVDIMM_ACPI_MEM_ADDR);
->
->      bios_linker_loader_alloc(linker,
-> -                             NVDIMM_DSM_MEM_FILE, dsm_dma_arrea,
-> +                             NVDIMM_DSM_MEM_FILE, acpi_nvdimm_state->dsm_mem,
->                               sizeof(NvdimmDsmIn), false /* high memory */);
->      bios_linker_loader_add_pointer(linker,
->          ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
-> @@ -1026,7 +1033,7 @@ static void nvdimm_build_ssdt(GSList *device_list, GArray *table_offsets,
->  }
->
->  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
-> -                       BIOSLinker *linker, GArray *dsm_dma_arrea)
-> +                       BIOSLinker *linker, AcpiNVDIMMState *acpi_nvdimm_state)
->  {
->      GSList *device_list;
->
-> @@ -1037,6 +1044,6 @@ void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
->      }
->      nvdimm_build_nfit(device_list, table_offsets, table_data, linker);
->      nvdimm_build_ssdt(device_list, table_offsets, table_data, linker,
-> -                      dsm_dma_arrea);
-> +                      acpi_nvdimm_state);
->      g_slist_free(device_list);
->  }
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index fbba461..54b09a9 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2632,7 +2632,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
->      }
->      if (pcms->acpi_nvdimm_state.is_enabled) {
->          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-> -                          pcms->acpi_nvdimm_state.dsm_mem);
-> +                          &pcms->acpi_nvdimm_state);
->      }
->
->      /* Add tables supplied by user (if any) */
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index a07dc81..b624f59 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -298,7 +298,13 @@ static void pc_init1(MachineState *machine,
->      }
->
->      if (pcms->acpi_nvdimm_state.is_enabled) {
-> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> +        AcpiNVDIMMState *acpi_nvdimm_state = &pcms->acpi_nvdimm_state;
-> +
-> +        acpi_nvdimm_state->dsm_io.type = NVDIMM_ACPI_IO_PORT;
-> +        acpi_nvdimm_state->dsm_io.base = NVDIMM_ACPI_IO_BASE;
-> +        acpi_nvdimm_state->dsm_io.size = NVDIMM_ACPI_IO_LEN;
-> +
-> +        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
->                                 pcms->fw_cfg, OBJECT(pcms));
->      }
->  }
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index c0b9961..779ac32 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -263,7 +263,13 @@ static void pc_q35_init(MachineState *machine)
->      }
->
->      if (pcms->acpi_nvdimm_state.is_enabled) {
-> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> +        AcpiNVDIMMState *acpi_nvdimm_state = &pcms->acpi_nvdimm_state;
-> +
-> +        acpi_nvdimm_state->dsm_io.type = NVDIMM_ACPI_IO_PORT;
-> +        acpi_nvdimm_state->dsm_io.base = NVDIMM_ACPI_IO_BASE;
-> +        acpi_nvdimm_state->dsm_io.size = NVDIMM_ACPI_IO_LEN;
-> +
-> +        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
->                                 pcms->fw_cfg, OBJECT(pcms));
->      }
->  }
-
-Ideally this would be a QOM object with QOM properties, rather
-than an ad-hoc init function.
-
-thanks
--- PMM
+SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgeW91ciBraW5kIGNvbW1lbnQhIEkgZGVzY3JpYmVkIGFi
+b3V0IE5WRElNTSBicmllZmx5IGJlbG93Lg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0t
+DQo+IEZyb206IFBldGVyIE1heWRlbGwgW21haWx0bzpwZXRlci5tYXlkZWxsQGxpbmFyby5vcmdd
+DQo+IFNlbnQ6IFR1ZXNkYXksIEp1bHkgMjYsIDIwMTYgMTowNyBBTQ0KPiBUbzog7J206rSR7Jqw
+KExFRSBLV0FOR1dPTykgTVMgU1cNCj4gQ2M6IFhpYW8gR3Vhbmdyb25nOyBNaWNoYWVsIFMuIFRz
+aXJraW47IElnb3IgTWFtbWVkb3Y7IFBhb2xvIEJvbnppbmk7IFJpY2hhcmQgSGVuZGVyc29uOyBF
+ZHVhcmRvDQo+IEhhYmtvc3Q7IFNoYW5ub24gWmhhbzsgU2hhbm5vbiBaaGFvOyBRRU1VIERldmVs
+b3BlcnM7IHFlbXUtYXJtOyDsoJXsmrDshJ0oQ0hVTkcgV09PIFNVSykgTVMgU1c7IOq5gO2YhOyy
+oChLSU0NCj4gSFlVTkNIVUwpIE1TIFNXDQo+IFN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIDAvM10g
+YWRkIG52ZGltbSBzdXBwb3J0IG9uIEFBcmNoNjQgdmlydCBwbGF0Zm9ybQ0KPiANCj4gT24gMjAg
+SnVseSAyMDE2IGF0IDAxOjQ5LCBLd2FuZ3dvbyBMZWUgPGt3YW5nd29vLmxlZUBzay5jb20+IHdy
+b3RlOg0KPiA+IFRoaXMgcGF0Y2ggc2VyaWVzIGFkZCBhbiBldmFsdWF0aW9uIGVudmlyb25tZW50
+IG9mIE5WRElNTSBvbiBBQXJjaDY0DQo+ID4gdmlydCBwbGF0Zm9ybS4gVGhyZWUgcGFydHMgbmVl
+ZCB0byBiZSBpbXBsZW1lbnRlZCB0byBtYWtlIHRoaXMgZmVhdHVyZQ0KPiA+IHdvcmtpbmcgcHJv
+cGVybHkuDQo+ID4NCj4gPiAxLiBtZW1vcnkgaG90cGx1ZyBvbiBhcm0gdmlydCBwbGF0Zm9ybQ0K
+PiA+IDIuIGNvbmZpZ3VyYWJsZSBBQ1BJIElPIGJhc2UgYW5kIHNpemUgYm90aCBmb3IgaTM4NiBh
+bmQgYXJtIHBsYXRmb3JtDQo+ID4gMy4gZW5hYmxlIE5WRElNTSBvbiBhcm0gdmlydCBwbGF0Zm9y
+bQ0KPiA+DQo+ID4gVGhlIG1lbW9yeSBob3RwbHVnIGlzIHJlcXVpcmVkIHRvIHJlY29nbml6ZSBE
+SU1NIHR5cGUgbWVtb3J5IGFuZCB0aGlzDQo+ID4gaXMgYWxzbyB1c2VkIGZvciBOVkRJTU0gZGV2
+aWNlIHJlY29nbml0aW9uLg0KPiA+DQo+ID4gVGhlIEFDUEkgSU8gYmFzZSBhbmQgc2l6ZSBuZWVk
+IHRvIGJlIGNoYW5nZWQgb24gY3JlYXRpbmcgQUNQSSBORklUDQo+ID4gYmVjYXVzZSBhcm0gcGxh
+dGZvcm0gdXNlcyBtZW1vcnktbWFwcGVkIElPIHdoaWNoIGlzIGRpZmZlcmVudCBmcm9tDQo+ID4g
+aTM4NiBwbGF0Zm9ybS4gVGh1cywgdGhpcyBwYXRjaCBzZXQgaW5jbHVkZXMgdGhlIGNoYW5nZXMg
+b2Ygc2V0dGluZw0KPiA+IEFDUEkgSU8gYmFzZSBhbmQgc2l6ZSBkdXJpbmcgTlZESU1NIGluaXRp
+YWxpemF0aW9uLg0KPiA+DQo+ID4gVGhlIGxhc3QgcGFydCBlbmFibGVzIE5WRElNTSBvbiBhcm0g
+dmlydCBwbGF0Zm9ybS4gVGhlIGZlYXR1cmUgaXMNCj4gPiBkaXNhYmxlZCBieSBkZWZhdWx0LiBT
+byBleHBsaWNpdCBvcHRpb24gLSBudmRpbW09b24gLSBpcyByZXF1aXJlZCB0bw0KPiA+IGVuYWJs
+ZSB0aGUgZmVhdHVyZS4NCj4gDQo+IFRoYW5rcyBmb3IgdGhpcyBwYXRjaHNldC4gQ291bGQgeW91
+IHByb3ZpZGUgYSBicmllZiBzdW1tYXJ5IG9mDQo+IHdoeSB0aGlzIGlzIGludGVyZXN0aW5nL3Vz
+ZWZ1bCBmb3IgdGhlIGJlbmVmaXQgb2YgcGVvcGxlIHdobyBkb24ndA0KPiBrbm93IHdoYXQgYW4g
+TlZESU1NIGlzLCBwbGVhc2U/DQoNCk5WRElNTSBzdGFuZHMgZm9yIE5vbi1Wb2xhdGlsZSBESU1N
+IHdoaWNoIGhhcyBESU1NIGZvcm0gZmFjdG9yIGxpa2UgUEMtRElNTQ0KKE1lbW9yeSBNb2R1bGUg
+dXNlZCBpbiBQQykgYW5kIGNhbiBiZSB1c2VkIGxpa2UgYSBtZW1vcnksIGJ1dCB0aGUgc3RvcmVk
+IGRhdGENCmlzIHByZXNlcnZlZCBvbiBwb3dlciBmYWlsdXJlLiBTbyBpdCBjYW4gYmUgdXNlZCBh
+cyBhIG1lbW9yeSwgYSBzdG9yYWdlLCBvcg0KYmFja3VwIG1lbW9yeSBvbiBwb3dlciBmYWlsdXJl
+Lg0KDQpOVkRJTU0tTiBpcyBhbHJlYWR5IG91dCBpbiB0aGUgbWFya2V0IGFuZCBJbnRlbCwgSFBF
+LCBhbmQgb3RoZXIgY29tcGFuaWVzDQphY3RpdmVseSBkZXZlbG9waW5nIHJlbGF0ZWQgc29mdHdh
+cmUuIEluIExpbnV4IGtlcm5lbCwgc2V2ZXJhbCB1c2FnZXMgZXhpc3QNCmxpa2UgUE1FTSwgQkxL
+LWFwZXJ0dXJlLCBhbmQgbWl4ZWQgbW9kZS4gVGhleSBhcmUgYWN0aXZlbHkgdW5kZXIgZGV2ZWxv
+cGluZy4NCg0KSW4gUUVNVSwgTlZESU1NIGhhcyBiZWVuIGVtdWxhdGVkIG9uIGkzODYgcGxhdGZv
+cm0uIE15IHBhdGNoIHNlcmllcyB0cmllcyB0bw0KZW5hYmxlIHRoZSBlbnZpcm9ubWVudCBpbiBB
+QXJjaDY0IHBsYXRmb3JtLiBSZWxhdGVkIExpbnV4IGtlcm5lbCBwYXRjaGVzIHdlcmUNCnBvc3Rl
+ZCBpbnRvIHRoZSBtYWlsaW5nIGxpc3QgYW5kIHRoZXkgYXJlIHVuZGVyIHJldmlldy9yZXZpc2Ug
+cHJvY2VzcyBjdXJyZW50bHkuDQoNCj4gdGhhbmtzDQo+IC0tIFBNTQ0KDQpCZXN0IFJlZ2FyZHMs
+DQpLd2FuZ3dvbyBMZWUNCg==

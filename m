@@ -1,69 +1,58 @@
-Received: by 10.25.21.156 with SMTP id 28csp1681530lfv;
-        Tue, 26 Jul 2016 05:21:15 -0700 (PDT)
-X-Received: by 10.13.245.198 with SMTP id e189mr6782327ywf.24.1469535675325;
-        Tue, 26 Jul 2016 05:21:15 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1730394lfv;
+        Tue, 26 Jul 2016 07:01:19 -0700 (PDT)
+X-Received: by 10.55.143.198 with SMTP id r189mr29916570qkd.1.1469541679785;
+        Tue, 26 Jul 2016 07:01:19 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l3si307512qkf.79.2016.07.26.05.21.15
+        by mx.google.com with ESMTPS id f98si540776qkf.312.2016.07.26.07.01.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jul 2016 05:21:15 -0700 (PDT)
+        Tue, 26 Jul 2016 07:01:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39307 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40091 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bS1MI-0006kp-L6
-	for alex.bennee@linaro.org; Tue, 26 Jul 2016 08:21:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55062)
+	id 1bS2v9-00050q-7j
+	for alex.bennee@linaro.org; Tue, 26 Jul 2016 10:01:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS18m-0002gI-Cw
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 08:07:18 -0400
+	(envelope-from <mst@redhat.com>) id 1bS2v4-0004yw-Kx
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 10:01:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS18j-0008Kh-3p
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 08:07:15 -0400
-Received: from mail-yw0-x22b.google.com ([2607:f8b0:4002:c05::22b]:33753)
+	(envelope-from <mst@redhat.com>) id 1bS2v0-0001Ax-Jl
+	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 10:01:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47646)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bS18i-0008KW-T0
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 08:07:13 -0400
-Received: by mail-yw0-x22b.google.com with SMTP id r9so8677399ywg.0
-	for <qemu-arm@nongnu.org>; Tue, 26 Jul 2016 05:07:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ju8QgjV6hHdmpSHWX+CN5EcdS0Rm9sRc/cUPfg4HBeo=;
-	b=IfJGMXRgKnB4TasHCtGlhDVRohte8TlZX9gjrydgvlMDbOS4nAKGNMkZizoeQjjnoU
-	rKStktIK+OARCl8nn96Zza88SbKp/eV4FDLkRBHqz9/2n6WZMNNlm/cY5BtESAf+/BTZ
-	9A14SRxkY6dSjifCE+BoHSkIs2PODIB1S21l0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=ju8QgjV6hHdmpSHWX+CN5EcdS0Rm9sRc/cUPfg4HBeo=;
-	b=W9f0o8H3UEQAFnr+L6hBJQcuSZrfFnSQtYPE3p27ibnks1AeyPMV/3oI2u/tYLLOmi
-	5Ik/o1R5IrGf1NueAi8cJcsld/SqPbtcx7QVX/ao40VTtNE6tF8kIlV77gG1CzjDlPcb
-	h4DOdoLy7tuoQuzSSv+qDxhj4rR0FM1bk5tPDm7u7VF9RG2wqxsoGGjWBGrauPCtjNce
-	10ngnak/3AejGPX+Ams83NDSBI9VZ0vdnM+h1lSBh+D3oeAy3flkaRfEm4DWTuxTGWYQ
-	BMT8qMaXG9YhXoqto9iBPph4BgISqjhx4QumQvilNgj9dcJO4nUXCFA96A7BKglEMM4W
-	nsZg==
-X-Gm-Message-State: AEkoous4GOetFdA5QhP32SNouBxjj4PacGUdnSCpKLAuY4Ph2IySd4ij9uE1WAheNTEtLPtww5EWRNghPr2QpDsU
-X-Received: by 10.159.41.69 with SMTP id t63mr10417752uat.66.1469534832024;
-	Tue, 26 Jul 2016 05:07:12 -0700 (PDT)
+	(envelope-from <mst@redhat.com>)
+	id 1bS2v0-0001Aq-BW; Tue, 26 Jul 2016 10:01:10 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 50A84AACD1;
+	Tue, 26 Jul 2016 14:01:09 +0000 (UTC)
+Received: from redhat.com (vpn1-5-134.ams2.redhat.com [10.36.5.134])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with SMTP
+	id u6QE12xI025186; Tue, 26 Jul 2016 10:01:03 -0400
+Date: Tue, 26 Jul 2016 17:01:02 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20160726170044-mutt-send-email-mst@kernel.org>
+References: <1469541331-86342-1-git-send-email-imammedo@redhat.com>
 MIME-Version: 1.0
-Received: by 10.31.137.136 with HTTP; Tue, 26 Jul 2016 05:06:52 -0700 (PDT)
-In-Reply-To: <b270adaf1f9d2b0a4b618c8f7267ca7402c7a48c.1469491920.git.alistair.francis@xilinx.com>
-References: <cover.1469491920.git.alistair.francis@xilinx.com>
-	<b270adaf1f9d2b0a4b618c8f7267ca7402c7a48c.1469491920.git.alistair.francis@xilinx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 26 Jul 2016 13:06:52 +0100
-Message-ID: <CAFEAcA8fZF5rXKniMBaS9WQf3uCCLAFea6XhCuE2QmgwLFiYUA@mail.gmail.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1469541331-86342-1-git-send-email-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 26 Jul 2016 14:01:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::22b
-Subject: Re: [Qemu-arm] [PATCH v2 4/6] cadence_gem: Add queue support
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] i2c: fix migration regression introduced by
+ broadcast support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,485 +64,363 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, hyun.kwon@xilinx.com,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-devel@nongnu.org,
+	alistair.francis@xilinx.com, "open list:PXA2XX" <qemu-arm@nongnu.org>,
+	Peter Chubb <peter.chubb@nicta.com.au>, amit.shah@redhat.com,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>, dgilbert@redhat.com,
+	fred.konrad@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YjOCVUuYunpo
+X-TUID: kWleSAQ/OeAo
 
-On 26 July 2016 at 01:12, Alistair Francis <alistair.francis@xilinx.com> wrote:
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+On Tue, Jul 26, 2016 at 03:55:30PM +0200, Igor Mammedov wrote:
+> QEMU fails migration with following error:
+> 
+> qemu-system-x86_64: Missing section footer for i2c_bus
+> qemu-system-x86_64: load of migration failed: Invalid argument
+> 
+> when migrating from:
+>   qemu-system-x86_64-v2.6.0 -m 256M rhel72.img -M pc-i440fx-2.6
+> to
+>   qemu-system-x86_64-v2.7.0-rc0 -m 256M rhel72.img -M pc-i440fx-2.6
+> 
+> Regression is added by commit 2293c27f (i2c: implement broadcast write)
+> 
+> Fix it by moving 'broadcast' VMState to an optional subsection
+> enabled by default and disabled via compat properties
+> for pc/q35-2.6 and older machine types.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
 > ---
->
-> There is a indentation error in this patch in the gem_transmit function.
-> I have written it like that to make it easier to see the changes. It is
-> fixed in the next patch.
->
-> V2:
->  - Use the new screening function
->  - Update interrupt generation
->  - Increase vmstate to 3.0
->
->  hw/net/cadence_gem.c         | 180 ++++++++++++++++++++++++++++++++-----------
->  include/hw/net/cadence_gem.h |   2 +-
->  2 files changed, 135 insertions(+), 47 deletions(-)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index d38bc1e..28c2ddb 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -142,6 +142,30 @@
->  #define GEM_DESCONF6      (0x00000294/4)
->  #define GEM_DESCONF7      (0x00000298/4)
->
-> +#define GEM_INT_Q1_STATUS               (0x00000400 / 4)
-> +#define GEM_INT_Q1_MASK                 (0x00000640 / 4)
-> +
-> +#define GEM_TRANSMIT_Q1_PTR             (0x00000440 / 4)
-> +#define GEM_TRANSMIT_Q15_PTR            (GEM_TRANSMIT_Q1_PTR + 14)
-> +
-> +#define GEM_RECEIVE_Q1_PTR              (0x00000480 / 4)
-> +#define GEM_RECEIVE_Q15_PTR             (GEM_RECEIVE_Q1_PTR + 14)
-> +
-> +#define GEM_INT_Q1_ENABLE               (0x00000600 / 4)
-> +#define GEM_INT_Q7_ENABLE               (GEM_INT_Q1_ENABLE + 6)
-> +#define GEM_INT_Q8_ENABLE               (0x00000660 / 4)
-> +#define GEM_INT_Q15_ENABLE              (GEM_INT_Q8_ENABLE + 7)
-> +
-> +#define GEM_INT_Q1_DISABLE              (0x00000620 / 4)
-> +#define GEM_INT_Q7_DISABLE              (GEM_INT_Q1_DISABLE + 6)
-> +#define GEM_INT_Q8_DISABLE              (0x00000680 / 4)
-> +#define GEM_INT_Q15_DISABLE             (GEM_INT_Q8_DISABLE + 7)
-> +
-> +#define GEM_INT_Q1_MASK                 (0x00000640 / 4)
-> +#define GEM_INT_Q7_MASK                 (GEM_INT_Q1_MASK + 6)
-> +#define GEM_INT_Q8_MASK                 (0x000006A0 / 4)
-> +#define GEM_INT_Q15_MASK                (GEM_INT_Q8_MASK + 7)
-> +
->  #define GEM_SCREENING_TYPE1_REGISTER_0  (0x00000500 / 4)
->
->  #define GEM_ST1R_UDP_PORT_MATCH_ENABLE  (1 << 29)
-> @@ -316,9 +340,9 @@ static inline unsigned tx_desc_get_length(unsigned *desc)
->      return desc[1] & DESC_1_LENGTH;
->  }
->
-> -static inline void print_gem_tx_desc(unsigned *desc)
-> +static inline void print_gem_tx_desc(unsigned *desc, uint8_t queue)
->  {
-> -    DB_PRINT("TXDESC:\n");
-> +    DB_PRINT("TXDESC (queue %" PRId8 "):\n", queue);
->      DB_PRINT("bufaddr: 0x%08x\n", *desc);
->      DB_PRINT("used_hw: %d\n", tx_desc_get_used(desc));
->      DB_PRINT("wrap:    %d\n", tx_desc_get_wrap(desc));
-> @@ -448,6 +472,7 @@ static void phy_update_link(CadenceGEMState *s)
->  static int gem_can_receive(NetClientState *nc)
->  {
->      CadenceGEMState *s;
-> +    int i;
->
->      s = qemu_get_nic_opaque(nc);
->
-> @@ -460,18 +485,20 @@ static int gem_can_receive(NetClientState *nc)
->          return 0;
->      }
->
-> -    if (rx_desc_get_ownership(s->rx_desc[0]) == 1) {
-> -        if (s->can_rx_state != 2) {
-> -            s->can_rx_state = 2;
-> -            DB_PRINT("can't receive - busy buffer descriptor 0x%x\n",
-> -                     s->rx_desc_addr[0]);
-> +    for (i = 0; i < s->num_priority_queues; i++) {
-> +        if (rx_desc_get_ownership(s->rx_desc[i]) == 1) {
-> +            if (s->can_rx_state != 2) {
-> +                s->can_rx_state = 2;
-> +                DB_PRINT("can't receive - busy buffer descriptor (q%d) 0x%x\n",
-> +                         i, s->rx_desc_addr[i]);
-> +             }
-> +            return 0;
+> CC: fred.konrad@greensocs.com
+> CC: alistair.francis@xilinx.com
+> CC: crosthwaite.peter@gmail.com
+> CC: hyun.kwon@xilinx.com
+> CC: peter.maydell@linaro.org
+> ---
+>  include/hw/i2c/i2c.h      |  2 +-
+>  include/hw/i2c/pm_smbus.h |  1 +
+>  include/hw/i386/pc.h      | 10 ++++++++++
+>  hw/acpi/piix4.c           |  2 ++
+>  hw/arm/pxa2xx.c           |  4 ++--
+>  hw/arm/stellaris.c        |  2 +-
+>  hw/i2c/aspeed_i2c.c       |  2 +-
+>  hw/i2c/bitbang_i2c.c      |  2 +-
+>  hw/i2c/core.c             | 32 +++++++++++++++++++++++++++++---
+>  hw/i2c/exynos4210_i2c.c   |  2 +-
+>  hw/i2c/imx_i2c.c          |  2 +-
+>  hw/i2c/omap_i2c.c         |  2 +-
+>  hw/i2c/pm_smbus.c         |  2 +-
+>  hw/i2c/smbus_ich9.c       |  7 +++++++
+>  hw/i2c/versatile_i2c.c    |  2 +-
+>  hw/misc/auxbus.c          |  2 +-
+>  16 files changed, 61 insertions(+), 15 deletions(-)
+> 
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index c4085aa..488a0fa 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -50,7 +50,7 @@ struct I2CSlave
+>      uint8_t address;
+>  };
+>  
+> -I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
+> +I2CBus *i2c_init_bus(DeviceState *parent, const char *name, bool broadcast);
+>  void i2c_set_slave_address(I2CSlave *dev, uint8_t address);
+>  int i2c_bus_busy(I2CBus *bus);
+>  int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv);
+> diff --git a/include/hw/i2c/pm_smbus.h b/include/hw/i2c/pm_smbus.h
+> index 2a837af..b17c052 100644
+> --- a/include/hw/i2c/pm_smbus.h
+> +++ b/include/hw/i2c/pm_smbus.h
+> @@ -3,6 +3,7 @@
+>  
+>  typedef struct PMSMBus {
+>      I2CBus *smbus;
+> +    bool smb_broadcast_enabled;
+>      MemoryRegion io;
+>  
+>      uint8_t smb_stat;
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index c87c5c1..738b8a5 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -391,6 +391,16 @@ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+>          .driver   = "apic",\
+>          .property = "legacy-instance-id",\
+>          .value    = "on",\
+> +    },\
+> +    {\
+> +        .driver   = "ICH9 SMB",\
+> +        .property = "smbus-broadcast-enabled",\
+> +        .value    = "off",\
+> +    },\
+> +    {\
+> +        .driver   = "PIIX4_PM",\
+> +        .property = "smbus-broadcast-enabled",\
+> +        .value    = "off",\
+>      },
+>  
+>  #define PC_COMPAT_2_5 \
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index 2adc246..8a29179 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -669,6 +669,8 @@ static Property piix4_pm_properties[] = {
+>                       use_acpi_pci_hotplug, true),
+>      DEFINE_PROP_BOOL("memory-hotplug-support", PIIX4PMState,
+>                       acpi_memory_hotplug.is_enabled, true),
+> +    DEFINE_PROP_BOOL("smbus-broadcast-enabled", PIIX4PMState,
+> +                     smb.smb_broadcast_enabled, true),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index cb55704..045ab20 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -1491,7 +1491,7 @@ PXA2xxI2CState *pxa2xx_i2c_init(hwaddr base,
+>  
+>      s = PXA2XX_I2C(i2c_dev);
+>      /* FIXME: Should the slave device really be on a separate bus?  */
+> -    i2cbus = i2c_init_bus(dev, "dummy");
+> +    i2cbus = i2c_init_bus(dev, "dummy", true);
+>      dev = i2c_create_slave(i2cbus, TYPE_PXA2XX_I2C_SLAVE, 0);
+>      s->slave = PXA2XX_I2C_SLAVE(dev);
+>      s->slave->host = s;
+> @@ -1505,7 +1505,7 @@ static void pxa2xx_i2c_initfn(Object *obj)
+>      PXA2xxI2CState *s = PXA2XX_I2C(obj);
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>  
+> -    s->bus = i2c_init_bus(dev, "i2c");
+> +    s->bus = i2c_init_bus(dev, "i2c", true);
+>  
+>      memory_region_init_io(&s->iomem, obj, &pxa2xx_i2c_ops, s,
+>                            "pxa2xx-i2c", s->region_size);
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index 794a3ad..ac38e4d 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -882,7 +882,7 @@ static void stellaris_i2c_init(Object *obj)
+>      I2CBus *bus;
+>  
+>      sysbus_init_irq(sbd, &s->irq);
+> -    bus = i2c_init_bus(dev, "i2c");
+> +    bus = i2c_init_bus(dev, "i2c", true);
+>      s->bus = bus;
+>  
+>      memory_region_init_io(&s->iomem, obj, &stellaris_i2c_ops, s,
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index ce5b1f0..af62636 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -394,7 +394,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>          snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
+>          s->busses[i].controller = s;
+>          s->busses[i].id = i;
+> -        s->busses[i].bus = i2c_init_bus(dev, name);
+> +        s->busses[i].bus = i2c_init_bus(dev, name, true);
+>          memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
+>                                &aspeed_i2c_bus_ops, &s->busses[i], name, 0x40);
+>          memory_region_add_subregion(&s->iomem, 0x40 * (i + offset),
+> diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+> index d3a2989..63f922b 100644
+> --- a/hw/i2c/bitbang_i2c.c
+> +++ b/hw/i2c/bitbang_i2c.c
+> @@ -220,7 +220,7 @@ static void gpio_i2c_init(Object *obj)
+>      memory_region_init(&s->dummy_iomem, obj, "gpio_i2c", 0);
+>      sysbus_init_mmio(sbd, &s->dummy_iomem);
+>  
+> -    bus = i2c_init_bus(dev, "i2c");
+> +    bus = i2c_init_bus(dev, "i2c", true);
+>      s->bitbang = bitbang_i2c_init(bus);
+>  
+>      qdev_init_gpio_in(dev, bitbang_i2c_gpio_set, 2);
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index abb3efb..3ab1ed5 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -9,6 +9,7 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "hw/i2c/i2c.h"
+> +#include "qapi/error.h"
+>  
+>  typedef struct I2CNode I2CNode;
+>  
+> @@ -22,6 +23,7 @@ struct I2CBus
+>      BusState qbus;
+>      QLIST_HEAD(, I2CNode) current_devs;
+>      uint8_t saved_address;
+> +    bool broadcast_enabled;
+>      bool broadcast;
+>  };
+>  
+> @@ -45,12 +47,32 @@ static void i2c_bus_pre_save(void *opaque)
+>  
+>      bus->saved_address = -1;
+>      if (!QLIST_EMPTY(&bus->current_devs)) {
+> -        if (!bus->broadcast) {
+> +        if (!bus->broadcast_enabled && !bus->broadcast) {
+>              bus->saved_address = QLIST_FIRST(&bus->current_devs)->elt->address;
 >          }
-> -        return 0;
 >      }
->
->      if (s->can_rx_state != 0) {
->          s->can_rx_state = 0;
-> -        DB_PRINT("can receive 0x%x\n", s->rx_desc_addr[0]);
-> +        DB_PRINT("can receive\n");
->      }
->      return 1;
 >  }
-> @@ -482,9 +509,20 @@ static int gem_can_receive(NetClientState *nc)
->   */
->  static void gem_update_int_status(CadenceGEMState *s)
->  {
-> -    if (s->regs[GEM_ISR]) {
-> -        DB_PRINT("asserting int. (0x%08x)\n", s->regs[GEM_ISR]);
-> +    int i;
+>  
+> +static bool vmstate_test_use_broadcast(void *opaque)
+> +{
+> +    I2CBus *bus = opaque;
 > +
-> +    if (!s->num_priority_queues && s->regs[GEM_ISR]) {
-
-Other parts of the code assume that num_priority_queues can't
-be zero (ie that the smallest case is "one priority queue").
-Either they're wrong or this is.
-
-> +        /* No priority queues, just trigger the interrupt */
-> +        DB_PRINT("asserting int.\n", i);
->          qemu_set_irq(s->irq[0], 1);
-> +        return;
+> +    return bus->broadcast_enabled;
+> +}
+> +
+> +static const VMStateDescription vmstate_broadcast_state = {
+> +    .name = "i2c_bus/broadcast",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .minimum_version_id_old = 1,
+> +    .needed = vmstate_test_use_broadcast,
+> +    .fields      = (VMStateField[]) {
+> +        VMSTATE_BOOL(broadcast, I2CBus),
+> +        VMSTATE_END_OF_LIST()
 > +    }
 > +
-> +    for (i = 0; i < s->num_priority_queues; ++i) {
-> +        if (s->regs[GEM_INT_Q1_STATUS + i]) {
-> +            DB_PRINT("asserting int. (q=%d)\n", i);
-> +            qemu_set_irq(s->irq[i], 1);
-> +        }
->      }
->  }
->
-> @@ -748,17 +786,17 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr)
->      return 0;
->  }
->
-> -static void gem_get_rx_desc(CadenceGEMState *s)
-> +static void gem_get_rx_desc(CadenceGEMState *s, int q)
->  {
-> -    DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[0]);
-> +    DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[q]);
->      /* read current descriptor */
->      cpu_physical_memory_read(s->rx_desc_addr[0],
->                               (uint8_t *)s->rx_desc[0], sizeof(s->rx_desc[0]));
->
->      /* Descriptor owned by software ? */
-> -    if (rx_desc_get_ownership(s->rx_desc[0]) == 1) {
-> +    if (rx_desc_get_ownership(s->rx_desc[q]) == 1) {
->          DB_PRINT("descriptor 0x%x owned by sw.\n",
-> -                 (unsigned)s->rx_desc_addr[0]);
-> +                 (unsigned)s->rx_desc_addr[q]);
->          s->regs[GEM_RXSTATUS] |= GEM_RXSTATUS_NOBUF;
->          s->regs[GEM_ISR] |= GEM_INT_RXUSED & ~(s->regs[GEM_IMR]);
->          /* Handle interrupt consequences */
-> @@ -779,6 +817,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->      uint8_t   *rxbuf_ptr;
->      bool first_desc = true;
->      int maf;
-> +    int q = 0;
->
->      s = qemu_get_nic_opaque(nc);
->
-> @@ -857,6 +896,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->
->      DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
->
-> +    /* Find which queue we are targetting */
-> +    q = get_queue_from_screen(s, rxbuf_ptr);
+> +};
 > +
->      while (bytes_to_copy) {
->          /* Do nothing if receive is not enabled. */
->          if (!gem_can_receive(nc)) {
-> @@ -865,10 +907,10 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->          }
->
->          DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
-> -                rx_desc_get_buffer(s->rx_desc[0]));
-> +                rx_desc_get_buffer(s->rx_desc[q]));
->
->          /* Copy packet data to emulated DMA buffer */
-> -        cpu_physical_memory_write(rx_desc_get_buffer(s->rx_desc[0]) +
-> +        cpu_physical_memory_write(rx_desc_get_buffer(s->rx_desc[q]) +
->                                                                   rxbuf_offset,
->                                    rxbuf_ptr, MIN(bytes_to_copy, rxbufsize));
->          rxbuf_ptr += MIN(bytes_to_copy, rxbufsize);
-> @@ -876,47 +918,48 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->
->          /* Update the descriptor.  */
->          if (first_desc) {
-> -            rx_desc_set_sof(s->rx_desc[0]);
-> +            rx_desc_set_sof(s->rx_desc[q]);
->              first_desc = false;
->          }
->          if (bytes_to_copy == 0) {
-> -            rx_desc_set_eof(s->rx_desc[0]);
-> -            rx_desc_set_length(s->rx_desc[0], size);
-> +            rx_desc_set_eof(s->rx_desc[q]);
-> +            rx_desc_set_length(s->rx_desc[q], size);
->          }
-> -        rx_desc_set_ownership(s->rx_desc[0]);
-> +        rx_desc_set_ownership(s->rx_desc[q]);
->
->          switch (maf) {
->          case GEM_RX_PROMISCUOUS_ACCEPT:
->              break;
->          case GEM_RX_BROADCAST_ACCEPT:
-> -            rx_desc_set_broadcast(s->rx_desc[0]);
-> +            rx_desc_set_broadcast(s->rx_desc[q]);
->              break;
->          case GEM_RX_UNICAST_HASH_ACCEPT:
-> -            rx_desc_set_unicast_hash(s->rx_desc[0]);
-> +            rx_desc_set_unicast_hash(s->rx_desc[q]);
->              break;
->          case GEM_RX_MULTICAST_HASH_ACCEPT:
-> -            rx_desc_set_multicast_hash(s->rx_desc[0]);
-> +            rx_desc_set_multicast_hash(s->rx_desc[q]);
->              break;
->          case GEM_RX_REJECT:
->              abort();
->          default: /* SAR */
-> -            rx_desc_set_sar(s->rx_desc[0], maf);
-> +            rx_desc_set_sar(s->rx_desc[q], maf);
->          }
->
->          /* Descriptor write-back.  */
-> -        cpu_physical_memory_write(s->rx_desc_addr[0],
-> -                                  (uint8_t *)s->rx_desc[0],
-> -                                  sizeof(s->rx_desc[0]));
-> +        cpu_physical_memory_write(s->rx_desc_addr[q],
-> +                                  (uint8_t *)s->rx_desc[q],
-> +                                  sizeof(s->rx_desc[q]));
->
->          /* Next descriptor */
-> -        if (rx_desc_get_wrap(s->rx_desc[0])) {
-> +        if (rx_desc_get_wrap(s->rx_desc[q])) {
->              DB_PRINT("wrapping RX descriptor list\n");
->              s->rx_desc_addr[0] = s->regs[GEM_RXQBASE];
->          } else {
->              DB_PRINT("incrementing RX descriptor list\n");
->              s->rx_desc_addr[0] += 8;
->          }
-> -        gem_get_rx_desc(s);
-> +
-> +        gem_get_rx_desc(s, q);
->      }
->
->      /* Count it */
-> @@ -988,6 +1031,7 @@ static void gem_transmit(CadenceGEMState *s)
->      uint8_t     tx_packet[2048];
->      uint8_t     *p;
->      unsigned    total_bytes;
-> +    int8_t q;
-
-Why int8_t here but int earlier?
-
->
->      /* Do nothing if transmit is not enabled. */
->      if (!(s->regs[GEM_NWCTRL] & GEM_NWCTRL_TXENA)) {
-> @@ -1003,8 +1047,9 @@ static void gem_transmit(CadenceGEMState *s)
->      p = tx_packet;
->      total_bytes = 0;
->
-> +    for (q = s->num_priority_queues - 1; q >= 0; q--) {
->      /* read current descriptor */
-> -    packet_desc_addr = s->tx_desc_addr[0];
-> +    packet_desc_addr = s->tx_desc_addr[q];
-
-(This is an example of code which assumes num_priority_queues is at least 1.)
-
->
->      DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
->      cpu_physical_memory_read(packet_desc_addr,
-> @@ -1016,7 +1061,7 @@ static void gem_transmit(CadenceGEMState *s)
->          if (!(s->regs[GEM_NWCTRL] & GEM_NWCTRL_TXENA)) {
->              return;
->          }
-> -        print_gem_tx_desc(desc);
-> +        print_gem_tx_desc(desc, q);
->
->          /* The real hardware would eat this (and possibly crash).
->           * For QEMU let's lend a helping hand.
-> @@ -1051,22 +1096,28 @@ static void gem_transmit(CadenceGEMState *s)
->              /* Modify the 1st descriptor of this packet to be owned by
->               * the processor.
->               */
-> -            cpu_physical_memory_read(s->tx_desc_addr[0], (uint8_t *)desc_first,
-> +            cpu_physical_memory_read(s->tx_desc_addr[q], (uint8_t *)desc_first,
->                                       sizeof(desc_first));
->              tx_desc_set_used(desc_first);
-> -            cpu_physical_memory_write(s->tx_desc_addr[0], (uint8_t *)desc_first,
-> +            cpu_physical_memory_write(s->tx_desc_addr[q], (uint8_t *)desc_first,
->                                        sizeof(desc_first));
->              /* Advance the hardware current descriptor past this packet */
->              if (tx_desc_get_wrap(desc)) {
-> -                s->tx_desc_addr[0] = s->regs[GEM_TXQBASE];
-> +                s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
->              } else {
-> -                s->tx_desc_addr[0] = packet_desc_addr + 8;
-> +                s->tx_desc_addr[q] = packet_desc_addr + 8;
->              }
-> -            DB_PRINT("TX descriptor next: 0x%08x\n", s->tx_desc_addr[0]);
-> +            DB_PRINT("TX descriptor next: 0x%08x\n", s->tx_desc_addr[q]);
->
->              s->regs[GEM_TXSTATUS] |= GEM_TXSTATUS_TXCMPL;
->              s->regs[GEM_ISR] |= GEM_INT_TXCMPL & ~(s->regs[GEM_IMR]);
->
-> +            /* Update queue interrupt status */
-> +            if (s->num_priority_queues) {
-> +                s->regs[GEM_INT_Q1_STATUS + q] |=
-> +                        GEM_INT_TXCMPL & ~(s->regs[GEM_INT_Q1_MASK + q]);
-> +            }
-> +
->              /* Handle interrupt consequences */
->              gem_update_int_status(s);
->
-> @@ -1108,6 +1159,7 @@ static void gem_transmit(CadenceGEMState *s)
->          s->regs[GEM_ISR] |= GEM_INT_TXUSED & ~(s->regs[GEM_IMR]);
->          gem_update_int_status(s);
->      }
-> +    }
->  }
->
->  static void gem_phy_reset(CadenceGEMState *s)
-> @@ -1214,7 +1266,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
->  {
->      CadenceGEMState *s;
->      uint32_t retval;
-> -
-> +    int i;
->      s = (CadenceGEMState *)opaque;
->
->      offset >>= 2;
-> @@ -1224,8 +1276,10 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
->
->      switch (offset) {
->      case GEM_ISR:
-> -        DB_PRINT("lowering irq on ISR read\n");
-> -        qemu_set_irq(s->irq[0], 0);
-> +        DB_PRINT("lowering irqs on ISR read\n");
-> +        for (i = 0; i < s->num_priority_queues; ++i) {
-> +            qemu_set_irq(s->irq[i], 0);
-> +        }
->          break;
->      case GEM_PHYMNTNC:
->          if (retval & GEM_PHYMNTNC_OP_R) {
-> @@ -1250,6 +1304,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
->      retval &= ~(s->regs_wo[offset]);
->
->      DB_PRINT("0x%08x\n", retval);
-> +    gem_update_int_status(s);
->      return retval;
->  }
->
-> @@ -1262,6 +1317,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->  {
->      CadenceGEMState *s = (CadenceGEMState *)opaque;
->      uint32_t readonly;
-> +    int i;
->
->      DB_PRINT("offset: 0x%04x write: 0x%08x ", (unsigned)offset, (unsigned)val);
->      offset >>= 2;
-> @@ -1281,14 +1337,18 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->      switch (offset) {
->      case GEM_NWCTRL:
->          if (val & GEM_NWCTRL_RXENA) {
-> -            gem_get_rx_desc(s);
-> +            for (i = 0; i < s->num_priority_queues; ++i) {
-> +                gem_get_rx_desc(s, i);
-> +            }
->          }
->          if (val & GEM_NWCTRL_TXSTART) {
->              gem_transmit(s);
->          }
->          if (!(val & GEM_NWCTRL_TXENA)) {
->              /* Reset to start of Q when transmit disabled. */
-> -            s->tx_desc_addr[0] = s->regs[GEM_TXQBASE];
-> +            for (i = 0; i < s->num_priority_queues; i++) {
-> +                s->tx_desc_addr[i] = s->regs[GEM_TXQBASE];
-> +            }
->          }
->          if (gem_can_receive(qemu_get_queue(s->nic))) {
->              qemu_flush_queued_packets(qemu_get_queue(s->nic));
-> @@ -1301,9 +1361,15 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->      case GEM_RXQBASE:
->          s->rx_desc_addr[0] = val;
->          break;
-> +    case GEM_RECEIVE_Q1_PTR ... GEM_RECEIVE_Q15_PTR:
-> +        s->rx_desc_addr[offset - GEM_RECEIVE_Q1_PTR + 1] = val;
-> +        break;
->      case GEM_TXQBASE:
->          s->tx_desc_addr[0] = val;
->          break;
-> +    case GEM_TRANSMIT_Q1_PTR ... GEM_TRANSMIT_Q15_PTR:
-> +        s->tx_desc_addr[offset - GEM_TRANSMIT_Q1_PTR + 1] = val;
-> +        break;
->      case GEM_RXSTATUS:
->          gem_update_int_status(s);
->          break;
-> @@ -1311,10 +1377,26 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->          s->regs[GEM_IMR] &= ~val;
->          gem_update_int_status(s);
->          break;
-> +    case GEM_INT_Q1_ENABLE ... GEM_INT_Q7_ENABLE:
-> +        s->regs[GEM_INT_Q1_MASK + offset - GEM_INT_Q1_ENABLE] &= ~val;
-> +        gem_update_int_status(s);
-> +        break;
-> +    case GEM_INT_Q8_ENABLE ... GEM_INT_Q15_ENABLE:
-> +        s->regs[GEM_INT_Q8_MASK + offset - GEM_INT_Q8_ENABLE] &= ~val;
-> +        gem_update_int_status(s);
-> +        break;
->      case GEM_IDR:
->          s->regs[GEM_IMR] |= val;
->          gem_update_int_status(s);
->          break;
-> +    case GEM_INT_Q1_DISABLE ... GEM_INT_Q7_DISABLE:
-> +        s->regs[GEM_INT_Q1_MASK + offset - GEM_INT_Q1_DISABLE] |= val;
-> +        gem_update_int_status(s);
-> +        break;
-> +    case GEM_INT_Q8_DISABLE ... GEM_INT_Q15_DISABLE:
-> +        s->regs[GEM_INT_Q8_MASK + offset - GEM_INT_Q8_DISABLE] |= val;
-> +        gem_update_int_status(s);
-> +        break;
->      case GEM_SPADDR1LO:
->      case GEM_SPADDR2LO:
->      case GEM_SPADDR3LO:
-> @@ -1351,8 +1433,11 @@ static const MemoryRegionOps gem_ops = {
->
->  static void gem_set_link(NetClientState *nc)
->  {
-> +    CadenceGEMState *s = qemu_get_nic_opaque(nc);
-> +
->      DB_PRINT("\n");
-> -    phy_update_link(qemu_get_nic_opaque(nc));
-> +    phy_update_link(s);
-> +    gem_update_int_status(s);
->  }
->
->  static NetClientInfo net_gem_info = {
-> @@ -1366,8 +1451,11 @@ static NetClientInfo net_gem_info = {
->  static void gem_realize(DeviceState *dev, Error **errp)
->  {
->      CadenceGEMState *s = CADENCE_GEM(dev);
-> +    int i;
->
-> -    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[0]);
-> +    for (i = 0; i < s->num_priority_queues; ++i) {
-> +        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[i]);
-> +    }
->
->      qemu_macaddr_default_if_unset(&s->conf.macaddr);
->
-> @@ -1391,8 +1479,8 @@ static void gem_init(Object *obj)
->
->  static const VMStateDescription vmstate_cadence_gem = {
->      .name = "cadence_gem",
-> -    .version_id = 2,
-> -    .minimum_version_id = 3,
-> +    .version_id = 3,
-> +    .minimum_version_id = 0,
-
-Something odd has happened here -- the minimum_version_id is wrong.
-
+>  static const VMStateDescription vmstate_i2c_bus = {
+>      .name = "i2c_bus",
+>      .version_id = 1,
+> @@ -58,17 +80,21 @@ static const VMStateDescription vmstate_i2c_bus = {
+>      .pre_save = i2c_bus_pre_save,
 >      .fields = (VMStateField[]) {
->          VMSTATE_UINT32_ARRAY(regs, CadenceGEMState, CADENCE_GEM_MAXREG),
->          VMSTATE_UINT16_ARRAY(phy_regs, CadenceGEMState, 32),
-> diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
-> index f2f78c0..47a1661 100644
-> --- a/include/hw/net/cadence_gem.h
-> +++ b/include/hw/net/cadence_gem.h
-> @@ -30,7 +30,7 @@
->  #include "net/net.h"
->  #include "hw/sysbus.h"
->
-> -#define CADENCE_GEM_MAXREG        (0x00000640/4) /* Last valid GEM address */
-> +#define CADENCE_GEM_MAXREG        (0x00000800 / 4) /* Last valid GEM address */
->
->  #define MAX_PRIORITY_QUEUES             8
-
-thanks
--- PMM
+>          VMSTATE_UINT8(saved_address, I2CBus),
+> -        VMSTATE_BOOL(broadcast, I2CBus),
+>          VMSTATE_END_OF_LIST()
+> +    },
+> +    .subsections = (const VMStateDescription * []) {
+> +        &vmstate_broadcast_state,
+> +        NULL
+>      }
+>  };
+>  
+>  /* Create a new I2C bus.  */
+> -I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+> +I2CBus *i2c_init_bus(DeviceState *parent, const char *name, bool broadcast)
+>  {
+>      I2CBus *bus;
+>  
+>      bus = I2C_BUS(qbus_create(TYPE_I2C_BUS, parent, name));
+> +    bus->broadcast_enabled = broadcast;
+>      QLIST_INIT(&bus->current_devs);
+>      vmstate_register(NULL, -1, &vmstate_i2c_bus, bus);
+>      return bus;
+> diff --git a/hw/i2c/exynos4210_i2c.c b/hw/i2c/exynos4210_i2c.c
+> index c96fa7d..1f78399 100644
+> --- a/hw/i2c/exynos4210_i2c.c
+> +++ b/hw/i2c/exynos4210_i2c.c
+> @@ -309,7 +309,7 @@ static void exynos4210_i2c_init(Object *obj)
+>                            TYPE_EXYNOS4_I2C, EXYNOS4_I2C_MEM_SIZE);
+>      sysbus_init_mmio(sbd, &s->iomem);
+>      sysbus_init_irq(sbd, &s->irq);
+> -    s->bus = i2c_init_bus(dev, "i2c");
+> +    s->bus = i2c_init_bus(dev, "i2c", true);
+>  }
+>  
+>  static void exynos4210_i2c_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+> index 37e5a62..aa8fb9f 100644
+> --- a/hw/i2c/imx_i2c.c
+> +++ b/hw/i2c/imx_i2c.c
+> @@ -310,7 +310,7 @@ static void imx_i2c_realize(DeviceState *dev, Error **errp)
+>                            IMX_I2C_MEM_SIZE);
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+>      sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+> -    s->bus = i2c_init_bus(DEVICE(dev), "i2c");
+> +    s->bus = i2c_init_bus(DEVICE(dev), "i2c", true);
+>  }
+>  
+>  static void imx_i2c_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+> index f7c92ea..852a61d 100644
+> --- a/hw/i2c/omap_i2c.c
+> +++ b/hw/i2c/omap_i2c.c
+> @@ -456,7 +456,7 @@ static void omap_i2c_init(Object *obj)
+>      sysbus_init_irq(sbd, &s->drq[0]);
+>      sysbus_init_irq(sbd, &s->drq[1]);
+>      sysbus_init_mmio(sbd, &s->iomem);
+> -    s->bus = i2c_init_bus(dev, NULL);
+> +    s->bus = i2c_init_bus(dev, NULL, true);
+>  }
+>  
+>  static void omap_i2c_realize(DeviceState *dev, Error **errp)
+> diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+> index 6fc3923..4e91cc1 100644
+> --- a/hw/i2c/pm_smbus.c
+> +++ b/hw/i2c/pm_smbus.c
+> @@ -222,7 +222,7 @@ static const MemoryRegionOps pm_smbus_ops = {
+>  
+>  void pm_smbus_init(DeviceState *parent, PMSMBus *smb)
+>  {
+> -    smb->smbus = i2c_init_bus(parent, "i2c");
+> +    smb->smbus = i2c_init_bus(parent, "i2c", smb->smb_broadcast_enabled);
+>      memory_region_init_io(&smb->io, OBJECT(parent), &pm_smbus_ops, smb,
+>                            "pm-smbus", 64);
+>  }
+> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+> index 48fab22..6e739e3 100644
+> --- a/hw/i2c/smbus_ich9.c
+> +++ b/hw/i2c/smbus_ich9.c
+> @@ -86,6 +86,12 @@ static void ich9_smbus_realize(PCIDevice *d, Error **errp)
+>                       &s->smb.io);
+>  }
+>  
+> +static Property ich9_smbus_properties[] = {
+> +    DEFINE_PROP_BOOL("smbus-broadcast-enabled", ICH9SMBState,
+> +                     smb.smb_broadcast_enabled, true),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void ich9_smb_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -97,6 +103,7 @@ static void ich9_smb_class_init(ObjectClass *klass, void *data)
+>      k->class_id = PCI_CLASS_SERIAL_SMBUS;
+>      dc->vmsd = &vmstate_ich9_smbus;
+>      dc->desc = "ICH9 SMBUS Bridge";
+> +    dc->props = ich9_smbus_properties;
+>      k->realize = ich9_smbus_realize;
+>      k->config_write = ich9_smbus_write_config;
+>      /*
+> diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+> index da9f298..490c93a 100644
+> --- a/hw/i2c/versatile_i2c.c
+> +++ b/hw/i2c/versatile_i2c.c
+> @@ -86,7 +86,7 @@ static void versatile_i2c_init(Object *obj)
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>      I2CBus *bus;
+>  
+> -    bus = i2c_init_bus(dev, "i2c");
+> +    bus = i2c_init_bus(dev, "i2c", true);
+>      s->bitbang = bitbang_i2c_init(bus);
+>      memory_region_init_io(&s->iomem, obj, &versatile_i2c_ops, s,
+>                            "versatile_i2c", 0x1000);
+> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> index e4a7ba4..47ee115 100644
+> --- a/hw/misc/auxbus.c
+> +++ b/hw/misc/auxbus.c
+> @@ -214,7 +214,7 @@ static void aux_bridge_init(Object *obj)
+>  {
+>      AUXTOI2CState *s = AUXTOI2C(obj);
+>  
+> -    s->i2c_bus = i2c_init_bus(DEVICE(obj), "aux-i2c");
+> +    s->i2c_bus = i2c_init_bus(DEVICE(obj), "aux-i2c", true);
+>  }
+>  
+>  static inline I2CBus *aux_bridge_get_i2c_bus(AUXTOI2CState *bridge)
+> -- 
+> 2.7.4

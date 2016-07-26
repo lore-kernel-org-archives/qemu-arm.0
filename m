@@ -1,153 +1,167 @@
-Received: by 10.25.21.156 with SMTP id 28csp1566475lfv;
-        Tue, 26 Jul 2016 00:34:59 -0700 (PDT)
-X-Received: by 10.55.3.143 with SMTP id 137mr28176884qkd.154.1469518499351;
-        Tue, 26 Jul 2016 00:34:59 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f127si20203349qkj.86.2016.07.26.00.34.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jul 2016 00:34:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.21.156 with SMTP id 28csp1578306lfv;
+        Tue, 26 Jul 2016 01:07:53 -0700 (PDT)
+X-Received: by 10.237.36.173 with SMTP id t42mr36093063qtc.89.1469520473525;
+        Tue, 26 Jul 2016 01:07:53 -0700 (PDT)
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id c18si20256505qke.294.2016.07.26.01.07.53;
+        Tue, 26 Jul 2016 01:07:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38014 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bRwtG-0003Uy-RX
-	for alex.bennee@linaro.org; Tue, 26 Jul 2016 03:34:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35777)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bRwtC-0003Um-8r
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 03:34:55 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bRwt8-0003Lr-2A
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 03:34:53 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:13997)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1bRwt7-0003Kb-7F; Tue, 26 Jul 2016 03:34:49 -0400
-Received: from 172.24.1.60 (EHLO szxeml428-hub.china.huawei.com)
-	([172.24.1.60])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DOH10573; Tue, 26 Jul 2016 15:34:21 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml428-hub.china.huawei.com
-	(10.82.67.183) with Microsoft SMTP Server id 14.3.235.1;
-	Tue, 26 Jul 2016 15:34:09 +0800
-Message-ID: <57971270.1010008@huawei.com>
-Date: Tue, 26 Jul 2016 15:34:08 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+       dkim=neutral (body hash did not verify) header.i=@linaro.org;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 178AE49B51;
+	Tue, 26 Jul 2016 04:01:25 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.209
+X-Spam-Level: 
+X-Spam-Status: No, score=0.209 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_LOW=-0.7,
+	T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wpMIX4AmaOul; Tue, 26 Jul 2016 04:01:24 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0140749B45;
+	Tue, 26 Jul 2016 04:01:24 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E964249B3C
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 26 Jul 2016 04:01:22 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QZ+c-z-kw0Ty for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 26 Jul 2016 04:01:21 -0400 (EDT)
+Received: from mail-it0-f51.google.com (mail-it0-f51.google.com
+ [209.85.214.51])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id EAF5849B30
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 26 Jul 2016 04:01:20 -0400 (EDT)
+Received: by mail-it0-f51.google.com with SMTP id f6so104324939ith.1
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 26 Jul 2016 01:07:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=xySXyrbq2d1qzBWZ+SxIuLgqdlFQs0uDzJtTYbY45Io=;
+ b=BwBzkaipvkyQPXE0/CcYLi+wYWfiptA6z1aSYPAXw1E0RWUmRSEy0FHSKXZahXCaDO
+ ZB+obiqNa3omuN3IpI5nwUMSB+ir0yBj4oSYlL99C64C95vEftPfFso4/jbZZB0S+Jiv
+ TDGn+3rTPbXJJPTQrAU+AZbZH/5JoeUKBgohc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20130820;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xySXyrbq2d1qzBWZ+SxIuLgqdlFQs0uDzJtTYbY45Io=;
+ b=N4vXUxvGWCUzMcXzSiJTbIXZzSYBJsz9BC78lBoT2OjyAAy/vprx+tfVxgrr0ioZS/
+ dLJALDZL4luQlv3yNi53ZM9aViVedsG/ot9offTWLm8YGRysb65QK2JdyvKPA3DOHc2W
+ 1vP7GzZ5B9Ow5GdRKCccHSOhZrkYW0z4gvpnEg0GE+7lHfmni6SNw4UtLJOsX0CuxXuQ
+ e576WaKOSYPmsFNtHlyJ1x9/5PeQrzWqRnSqV/OSkMVh9uopFEyMonnjZ+W9TEDjK8Kx
+ XtClgczSwcESgHNSlQuceQrnvOm5i9pO79CgeQWb4PGVgtnCeENhJM8SdvvgHo0x/dos
+ N2jw==
+X-Gm-Message-State: ALyK8tLee436/Nq8NEoMHSwmOTTrh4IzMrlvkJbZGoMEI4lwFqF9E+c+p8Rnb/y8g8E6fSZi/vxXbIeROBe3eSLS
+X-Received: by 10.36.25.202 with SMTP id b193mr91557595itb.29.1469520467806;
+ Tue, 26 Jul 2016 01:07:47 -0700 (PDT)
 MIME-Version: 1.0
-To: "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>, qemu-devel
-	<qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, arm-mail-list
-	<linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A0B0205.57971280.01A4, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 867789143bb129da3be4e69952a7e22e
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Subject: [Qemu-arm] usb keyboard and mouse can't work on QEMU ARM64 with KVM
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+Received: by 10.36.204.195 with HTTP; Tue, 26 Jul 2016 01:07:47 -0700 (PDT)
+In-Reply-To: <57971270.1010008@huawei.com>
+References: <57971270.1010008@huawei.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Tue, 26 Jul 2016 10:07:47 +0200
+Message-ID: <CAKv+Gu8jzjLjpC7FR4fq13H+4rThQsW=fpMZ0F3Qfc45Gj1XSw@mail.gmail.com>
+Subject: Re: usb keyboard and mouse can't work on QEMU ARM64 with KVM
+To: Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: Marc Zyngier <Marc.Zyngier@arm.com>, qemu-devel <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
+ "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <Marc.Zyngier@arm.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	Hangaohuai <hangaohuai@huawei.com>, Shannon Zhao <shannon.zhao@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7b7cslJxXf6B
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: ICYuvHed39d7
 
-Hi，
-
-Recently I'm trying to use usb keyboard and mouse with QEMU on ARM64. Below is my QEMU command line,
-host and guest kernel both are 4.7.0-rc7+, and I ran it on Hikey board.
-
-    qemu-system-aarch64 \
-    -smp 1 -cpu host -enable-kvm \
-    -m 256 -M virt \
-    -k en-us \
-    -nographic \
-    -device usb-ehci -device usb-kbd -device usb-mouse -usb\
-    -kernel Image \
-    -initrd guestfs.cpio.gz \
-    -append "rdinit=/sbin/init console=ttyAMA0 root=/dev/ram earlycon=pl011,0x9000000 rw"
-
-The following guest log shows that usb controller can be probed but the keyboard and mouse can't be
-found.
-
-[    1.597433] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-[    1.599562] ehci-pci: EHCI PCI platform driver
-[    1.608082] ehci-pci 0000:00:03.0: EHCI Host Controller
-[    1.609485] ehci-pci 0000:00:03.0: new USB bus registered, assigned bus number 1
-[    1.611833] ehci-pci 0000:00:03.0: irq 49, io mem 0x10041000
-[    1.623599] ehci-pci 0000:00:03.0: USB 2.0 started, EHCI 1.00
-[    1.625867] hub 1-0:1.0: USB hub found
-[    1.626906] hub 1-0:1.0: 6 ports detected
-[    1.628685] ehci-platform: EHCI generic platform driver
-[    1.630263] ehci-msm: Qualcomm On-Chip EHCI Host Controller
-[    1.631947] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
-[    1.633547] ohci-pci: OHCI PCI platform driver
-[    1.634807] ohci-platform: OHCI generic platform driver
-[...]
-[    1.939001] usb 1-1: new high-speed USB device number 2 using ehci-pci
-[   17.467040] usb 1-1: device not accepting address 2, error -110
-[   17.579165] usb 1-1: new high-speed USB device number 3 using ehci-pci
-[   32.287242] random: dd urandom read with 7 bits of entropy available
-[   33.110970] usb 1-1: device not accepting address 3, error -110
-[   33.223030] usb 1-1: new high-speed USB device number 4 using ehci-pci
-[   43.635185] usb 1-1: device not accepting address 4, error -110
-[   43.747033] usb 1-1: new high-speed USB device number 5 using ehci-pci
-[   54.159043] usb 1-1: device not accepting address 5, error -110
-[   54.160752] usb usb1-port1: unable to enumerate USB device
-[   54.307290] usb 1-2: new high-speed USB device number 6 using ehci-pci
-[   69.839052] usb 1-2: device not accepting address 6, error -110
-[   69.951249] usb 1-2: new high-speed USB device number 7 using ehci-pci
-[   85.483171] usb 1-2: device not accepting address 7, error -110
-[   85.595035] usb 1-2: new high-speed USB device number 8 using ehci-pci
-[   90.619247] usb 1-2: device descriptor read/8, error -110
-[   95.743482] usb 1-2: device descriptor read/8, error -110
-[   95.959165] usb 1-2: new high-speed USB device number 9 using ehci-pci
-[  106.371177] usb 1-2: device not accepting address 9, error -110
-[  106.372894] usb usb1-port2: unable to enumerate USB device
-
-lsusb shows:
-root@genericarmv8:~# lsusb
-Bus 001 Device 001: ID 1d6b:0002
-
-Besides, I have also tried QEMU TCG without KVM. The guest can successfully probe usb controller,
-keyboard and mouse.
-lsusb shows:
-root@genericarmv8:~# lsusb
-Bus 001 Device 002: ID 0627:0001
-Bus 001 Device 003: ID 0627:0001
-Bus 001 Device 001: ID 1d6b:0002
-
-So it looks like that usb keyboard and mouse don't work with KVM on QEMU ARM64 while they can work
-with TCG. IIUC, all the usb devices are emulated by QEMU, it has nothing with KVM. So it really
-confused me and I'm not familiar with usb devices. Also I have seen someone else reports this issue
-before[1].
-
-[1]https://lists.gnu.org/archive/html/qemu-arm/2016-06/msg00110.html
-
-Any comments and help are welcome. Thanks in advance.
-
-Thanks,
--- 
-Shannon
-
+T24gMjYgSnVseSAyMDE2IGF0IDA5OjM0LCBTaGFubm9uIFpoYW8gPHpoYW9zaGVuZ2xvbmdAaHVh
+d2VpLmNvbT4gd3JvdGU6Cj4gSGnvvIwKPgo+IFJlY2VudGx5IEknbSB0cnlpbmcgdG8gdXNlIHVz
+YiBrZXlib2FyZCBhbmQgbW91c2Ugd2l0aCBRRU1VIG9uIEFSTTY0LiBCZWxvdyBpcyBteSBRRU1V
+IGNvbW1hbmQgbGluZSwKPiBob3N0IGFuZCBndWVzdCBrZXJuZWwgYm90aCBhcmUgNC43LjAtcmM3
+KywgYW5kIEkgcmFuIGl0IG9uIEhpa2V5IGJvYXJkLgo+Cj4gICAgIHFlbXUtc3lzdGVtLWFhcmNo
+NjQgXAo+ICAgICAtc21wIDEgLWNwdSBob3N0IC1lbmFibGUta3ZtIFwKPiAgICAgLW0gMjU2IC1N
+IHZpcnQgXAo+ICAgICAtayBlbi11cyBcCj4gICAgIC1ub2dyYXBoaWMgXAo+ICAgICAtZGV2aWNl
+IHVzYi1laGNpIC1kZXZpY2UgdXNiLWtiZCAtZGV2aWNlIHVzYi1tb3VzZSAtdXNiXAo+ICAgICAt
+a2VybmVsIEltYWdlIFwKPiAgICAgLWluaXRyZCBndWVzdGZzLmNwaW8uZ3ogXAo+ICAgICAtYXBw
+ZW5kICJyZGluaXQ9L3NiaW4vaW5pdCBjb25zb2xlPXR0eUFNQTAgcm9vdD0vZGV2L3JhbSBlYXJs
+eWNvbj1wbDAxMSwweDkwMDAwMDAgcnciCj4KPiBUaGUgZm9sbG93aW5nIGd1ZXN0IGxvZyBzaG93
+cyB0aGF0IHVzYiBjb250cm9sbGVyIGNhbiBiZSBwcm9iZWQgYnV0IHRoZSBrZXlib2FyZCBhbmQg
+bW91c2UgY2FuJ3QgYmUKPiBmb3VuZC4KPgo+IFsgICAgMS41OTc0MzNdIGVoY2lfaGNkOiBVU0Ig
+Mi4wICdFbmhhbmNlZCcgSG9zdCBDb250cm9sbGVyIChFSENJKSBEcml2ZXIKPiBbICAgIDEuNTk5
+NTYyXSBlaGNpLXBjaTogRUhDSSBQQ0kgcGxhdGZvcm0gZHJpdmVyCj4gWyAgICAxLjYwODA4Ml0g
+ZWhjaS1wY2kgMDAwMDowMDowMy4wOiBFSENJIEhvc3QgQ29udHJvbGxlcgo+IFsgICAgMS42MDk0
+ODVdIGVoY2ktcGNpIDAwMDA6MDA6MDMuMDogbmV3IFVTQiBidXMgcmVnaXN0ZXJlZCwgYXNzaWdu
+ZWQgYnVzIG51bWJlciAxCj4gWyAgICAxLjYxMTgzM10gZWhjaS1wY2kgMDAwMDowMDowMy4wOiBp
+cnEgNDksIGlvIG1lbSAweDEwMDQxMDAwCj4gWyAgICAxLjYyMzU5OV0gZWhjaS1wY2kgMDAwMDow
+MDowMy4wOiBVU0IgMi4wIHN0YXJ0ZWQsIEVIQ0kgMS4wMAo+IFsgICAgMS42MjU4NjddIGh1YiAx
+LTA6MS4wOiBVU0IgaHViIGZvdW5kCj4gWyAgICAxLjYyNjkwNl0gaHViIDEtMDoxLjA6IDYgcG9y
+dHMgZGV0ZWN0ZWQKPiBbICAgIDEuNjI4Njg1XSBlaGNpLXBsYXRmb3JtOiBFSENJIGdlbmVyaWMg
+cGxhdGZvcm0gZHJpdmVyCj4gWyAgICAxLjYzMDI2M10gZWhjaS1tc206IFF1YWxjb21tIE9uLUNo
+aXAgRUhDSSBIb3N0IENvbnRyb2xsZXIKPiBbICAgIDEuNjMxOTQ3XSBvaGNpX2hjZDogVVNCIDEu
+MSAnT3BlbicgSG9zdCBDb250cm9sbGVyIChPSENJKSBEcml2ZXIKPiBbICAgIDEuNjMzNTQ3XSBv
+aGNpLXBjaTogT0hDSSBQQ0kgcGxhdGZvcm0gZHJpdmVyCj4gWyAgICAxLjYzNDgwN10gb2hjaS1w
+bGF0Zm9ybTogT0hDSSBnZW5lcmljIHBsYXRmb3JtIGRyaXZlcgo+IFsuLi5dCj4gWyAgICAxLjkz
+OTAwMV0gdXNiIDEtMTogbmV3IGhpZ2gtc3BlZWQgVVNCIGRldmljZSBudW1iZXIgMiB1c2luZyBl
+aGNpLXBjaQo+IFsgICAxNy40NjcwNDBdIHVzYiAxLTE6IGRldmljZSBub3QgYWNjZXB0aW5nIGFk
+ZHJlc3MgMiwgZXJyb3IgLTExMAo+IFsgICAxNy41NzkxNjVdIHVzYiAxLTE6IG5ldyBoaWdoLXNw
+ZWVkIFVTQiBkZXZpY2UgbnVtYmVyIDMgdXNpbmcgZWhjaS1wY2kKPiBbICAgMzIuMjg3MjQyXSBy
+YW5kb206IGRkIHVyYW5kb20gcmVhZCB3aXRoIDcgYml0cyBvZiBlbnRyb3B5IGF2YWlsYWJsZQo+
+IFsgICAzMy4xMTA5NzBdIHVzYiAxLTE6IGRldmljZSBub3QgYWNjZXB0aW5nIGFkZHJlc3MgMywg
+ZXJyb3IgLTExMAo+IFsgICAzMy4yMjMwMzBdIHVzYiAxLTE6IG5ldyBoaWdoLXNwZWVkIFVTQiBk
+ZXZpY2UgbnVtYmVyIDQgdXNpbmcgZWhjaS1wY2kKPiBbICAgNDMuNjM1MTg1XSB1c2IgMS0xOiBk
+ZXZpY2Ugbm90IGFjY2VwdGluZyBhZGRyZXNzIDQsIGVycm9yIC0xMTAKPiBbICAgNDMuNzQ3MDMz
+XSB1c2IgMS0xOiBuZXcgaGlnaC1zcGVlZCBVU0IgZGV2aWNlIG51bWJlciA1IHVzaW5nIGVoY2kt
+cGNpCj4gWyAgIDU0LjE1OTA0M10gdXNiIDEtMTogZGV2aWNlIG5vdCBhY2NlcHRpbmcgYWRkcmVz
+cyA1LCBlcnJvciAtMTEwCj4gWyAgIDU0LjE2MDc1Ml0gdXNiIHVzYjEtcG9ydDE6IHVuYWJsZSB0
+byBlbnVtZXJhdGUgVVNCIGRldmljZQo+IFsgICA1NC4zMDcyOTBdIHVzYiAxLTI6IG5ldyBoaWdo
+LXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVyIDYgdXNpbmcgZWhjaS1wY2kKPiBbICAgNjkuODM5MDUy
+XSB1c2IgMS0yOiBkZXZpY2Ugbm90IGFjY2VwdGluZyBhZGRyZXNzIDYsIGVycm9yIC0xMTAKPiBb
+ICAgNjkuOTUxMjQ5XSB1c2IgMS0yOiBuZXcgaGlnaC1zcGVlZCBVU0IgZGV2aWNlIG51bWJlciA3
+IHVzaW5nIGVoY2ktcGNpCj4gWyAgIDg1LjQ4MzE3MV0gdXNiIDEtMjogZGV2aWNlIG5vdCBhY2Nl
+cHRpbmcgYWRkcmVzcyA3LCBlcnJvciAtMTEwCj4gWyAgIDg1LjU5NTAzNV0gdXNiIDEtMjogbmV3
+IGhpZ2gtc3BlZWQgVVNCIGRldmljZSBudW1iZXIgOCB1c2luZyBlaGNpLXBjaQo+IFsgICA5MC42
+MTkyNDddIHVzYiAxLTI6IGRldmljZSBkZXNjcmlwdG9yIHJlYWQvOCwgZXJyb3IgLTExMAo+IFsg
+ICA5NS43NDM0ODJdIHVzYiAxLTI6IGRldmljZSBkZXNjcmlwdG9yIHJlYWQvOCwgZXJyb3IgLTEx
+MAo+IFsgICA5NS45NTkxNjVdIHVzYiAxLTI6IG5ldyBoaWdoLXNwZWVkIFVTQiBkZXZpY2UgbnVt
+YmVyIDkgdXNpbmcgZWhjaS1wY2kKPiBbICAxMDYuMzcxMTc3XSB1c2IgMS0yOiBkZXZpY2Ugbm90
+IGFjY2VwdGluZyBhZGRyZXNzIDksIGVycm9yIC0xMTAKPiBbICAxMDYuMzcyODk0XSB1c2IgdXNi
+MS1wb3J0MjogdW5hYmxlIHRvIGVudW1lcmF0ZSBVU0IgZGV2aWNlCj4KPiBsc3VzYiBzaG93czoK
+PiByb290QGdlbmVyaWNhcm12ODp+IyBsc3VzYgo+IEJ1cyAwMDEgRGV2aWNlIDAwMTogSUQgMWQ2
+YjowMDAyCj4KPiBCZXNpZGVzLCBJIGhhdmUgYWxzbyB0cmllZCBRRU1VIFRDRyB3aXRob3V0IEtW
+TS4gVGhlIGd1ZXN0IGNhbiBzdWNjZXNzZnVsbHkgcHJvYmUgdXNiIGNvbnRyb2xsZXIsCj4ga2V5
+Ym9hcmQgYW5kIG1vdXNlLgo+IGxzdXNiIHNob3dzOgo+IHJvb3RAZ2VuZXJpY2FybXY4On4jIGxz
+dXNiCj4gQnVzIDAwMSBEZXZpY2UgMDAyOiBJRCAwNjI3OjAwMDEKPiBCdXMgMDAxIERldmljZSAw
+MDM6IElEIDA2Mjc6MDAwMQo+IEJ1cyAwMDEgRGV2aWNlIDAwMTogSUQgMWQ2YjowMDAyCj4KPiBT
+byBpdCBsb29rcyBsaWtlIHRoYXQgdXNiIGtleWJvYXJkIGFuZCBtb3VzZSBkb24ndCB3b3JrIHdp
+dGggS1ZNIG9uIFFFTVUgQVJNNjQgd2hpbGUgdGhleSBjYW4gd29yawo+IHdpdGggVENHLiBJSVVD
+LCBhbGwgdGhlIHVzYiBkZXZpY2VzIGFyZSBlbXVsYXRlZCBieSBRRU1VLCBpdCBoYXMgbm90aGlu
+ZyB3aXRoIEtWTS4gU28gaXQgcmVhbGx5Cj4gY29uZnVzZWQgbWUgYW5kIEknbSBub3QgZmFtaWxp
+YXIgd2l0aCB1c2IgZGV2aWNlcy4gQWxzbyBJIGhhdmUgc2VlbiBzb21lb25lIGVsc2UgcmVwb3J0
+cyB0aGlzIGlzc3VlCj4gYmVmb3JlWzFdLgo+Cj4gWzFdaHR0cHM6Ly9saXN0cy5nbnUub3JnL2Fy
+Y2hpdmUvaHRtbC9xZW11LWFybS8yMDE2LTA2L21zZzAwMTEwLmh0bWwKPgo+IEFueSBjb21tZW50
+cyBhbmQgaGVscCBhcmUgd2VsY29tZS4gVGhhbmtzIGluIGFkdmFuY2UuCj4KCkRvZXMgeW91ciBR
+RU1VIGhhdmUgdGhpcyBwYXRjaD8KaHR0cDovL2dpdC5xZW11Lm9yZy8/cD1xZW11LmdpdDthPWNv
+bW1pdGRpZmY7aD01ZDYzNmUyMWM0NGVjZjk4MmEyMmE3YmM0Y2E4OTE4NjA3OWFjMjgzCgotLSAK
+QXJkLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwprdm1h
+cm0gbWFpbGluZyBsaXN0Cmt2bWFybUBsaXN0cy5jcy5jb2x1bWJpYS5lZHUKaHR0cHM6Ly9saXN0
+cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9saXN0aW5mby9rdm1hcm0K

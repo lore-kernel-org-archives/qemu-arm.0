@@ -1,58 +1,58 @@
-Received: by 10.25.21.156 with SMTP id 28csp349236lfv;
-        Wed, 27 Jul 2016 09:50:55 -0700 (PDT)
-X-Received: by 10.37.89.8 with SMTP id n8mr16036372ybb.164.1469638255821;
-        Wed, 27 Jul 2016 09:50:55 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp349381lfv;
+        Wed, 27 Jul 2016 09:51:15 -0700 (PDT)
+X-Received: by 10.13.209.129 with SMTP id t123mr26992246ywd.93.1469638275566;
+        Wed, 27 Jul 2016 09:51:15 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s90si4874330qtd.71.2016.07.27.09.50.55
+        by mx.google.com with ESMTPS id o72si4871284qko.183.2016.07.27.09.51.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jul 2016 09:50:55 -0700 (PDT)
+        Wed, 27 Jul 2016 09:51:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47667 helo=lists.gnu.org)
+Received: from localhost ([::1]:47670 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSS2p-0001jv-6U
-	for alex.bennee@linaro.org; Wed, 27 Jul 2016 12:50:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60304)
+	id 1bSS39-000208-1T
+	for alex.bennee@linaro.org; Wed, 27 Jul 2016 12:51:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60441)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSRzc-0007Iu-Fl
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:37 -0400
+	(envelope-from <clg@kaod.org>) id 1bSRzn-0007QC-OU
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSRzZ-0001yM-Kz
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:36 -0400
-Received: from 20.mo7.mail-out.ovh.net ([46.105.49.208]:46337)
+	(envelope-from <clg@kaod.org>) id 1bSRzj-00021f-UI
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:46 -0400
+Received: from 5.mo7.mail-out.ovh.net ([178.32.120.239]:57114)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bSRzZ-0001y9-9N
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:33 -0400
+	id 1bSRzj-00021R-KR
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:43 -0400
 Received: from player796.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 5ACBDFFCFCB
-	for <qemu-devel@nongnu.org>; Wed, 27 Jul 2016 18:47:31 +0200 (CEST)
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 7CFF6FFD010
+	for <qemu-devel@nongnu.org>; Wed, 27 Jul 2016 18:47:42 +0200 (CEST)
 Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
 	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player796.ha.ovh.net (Postfix) with ESMTPSA id 0B9F95C0088;
-	Wed, 27 Jul 2016 18:47:26 +0200 (CEST)
+	by player796.ha.ovh.net (Postfix) with ESMTPSA id B71255C008A;
+	Wed, 27 Jul 2016 18:47:36 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 27 Jul 2016 18:46:54 +0200
-Message-Id: <1469638018-17590-3-git-send-email-clg@kaod.org>
+Date: Wed, 27 Jul 2016 18:46:56 +0200
+Message-Id: <1469638018-17590-5-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.1.4
 In-Reply-To: <1469638018-17590-1-git-send-email-clg@kaod.org>
 References: <1469638018-17590-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 16547069456685107985
+X-Ovh-Tracer-Id: 16550165682376641297
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrieehgdellecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 46.105.49.208
-Subject: [Qemu-devel] [PATCH 2/6] palmetto-bmc: replace palmetto_bmc with
- aspeed
+X-Received-From: 178.32.120.239
+Subject: [Qemu-devel] [PATCH 4/6] palmetto-bmc: add board specific
+ configuration
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,124 +68,102 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZSXxKaOU31tG
+X-TUID: eF7vZhtCJTUs
 
-This is mostly a name replacement to prepare ground for other socs
-specificities. It also adds a specific TypeInfo struct for the
-palmetto_bmc board with a custom initialization for the same reason.
+aspeed_init() now uses a board identifier to customize some values
+specific to the board, ram base, board revision number, etc.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
-
- Should we change the name of the file to aspeed.c ? I am not found of
- such renames as it is then difficult to track code changes.
-
- hw/arm/palmetto-bmc.c | 54 ++++++++++++++++++++++++++++++++++-----------=
-------
- 1 file changed, 36 insertions(+), 18 deletions(-)
+ hw/arm/palmetto-bmc.c | 34 ++++++++++++++++++++++++++--------
+ 1 file changed, 26 insertions(+), 8 deletions(-)
 
 diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
-index 1ee13d578899..f80a15733864 100644
+index 8a3ff5568575..cd8aa59756b9 100644
 --- a/hw/arm/palmetto-bmc.c
 +++ b/hw/arm/palmetto-bmc.c
-@@ -21,19 +21,19 @@
- #include "sysemu/block-backend.h"
+@@ -22,8 +22,6 @@
  #include "sysemu/blockdev.h"
 =20
--static struct arm_boot_info palmetto_bmc_binfo =3D {
-+static struct arm_boot_info aspeed_binfo =3D {
-     .loader_start =3D AST2400_SDRAM_BASE,
-     .board_id =3D 0,
+ static struct arm_boot_info aspeed_binfo =3D {
+-    .loader_start =3D AST2400_SDRAM_BASE,
+-    .board_id =3D 0,
      .nb_cpus =3D 1,
  };
 =20
--typedef struct PalmettoBMCState {
-+typedef struct AspeedBoardState {
-     AST2400State soc;
+@@ -32,6 +30,21 @@ typedef struct AspeedBoardState {
      MemoryRegion ram;
--} PalmettoBMCState;
-+} AspeedBoardState;
+ } AspeedBoardState;
 =20
--static void palmetto_bmc_init_flashes(AspeedSMCState *s, const char *fla=
-shtype,
--                                      Error **errp)
-+static void aspeed_init_flashes(AspeedSMCState *s, const char *flashtype=
++typedef struct AspeedBoardConfig {
++    uint32_t hw_strap1;
++    uint32_t silicon_rev;
++    hwaddr sdram_base;
++} AspeedBoardConfig;
++
++enum {
++    PALMETTO_BMC
++};
++
++static const AspeedBoardConfig aspeed_boards[] =3D {
++    [ PALMETTO_BMC ] =3D { 0x120CE416, AST2400_A0_SILICON_REV,
++                         AST2400_SDRAM_BASE },
++};
++
+ static void aspeed_init_flashes(AspeedSMCState *s, const char *flashtype=
 ,
-+                                Error **errp)
+                                 Error **errp)
  {
-     int i ;
-=20
-@@ -58,11 +58,11 @@ static void palmetto_bmc_init_flashes(AspeedSMCState =
-*s, const char *flashtype,
+@@ -58,7 +71,7 @@ static void aspeed_init_flashes(AspeedSMCState *s, cons=
+t char *flashtype,
      }
  }
 =20
--static void palmetto_bmc_init(MachineState *machine)
-+static void aspeed_init(MachineState *machine)
+-static void aspeed_init(MachineState *machine)
++static void aspeed_init(MachineState *machine, int board_model)
  {
--    PalmettoBMCState *bmc;
-+    AspeedBoardState *bmc;
+     AspeedBoardState *bmc;
 =20
--    bmc =3D g_new0(PalmettoBMCState, 1);
-+    bmc =3D g_new0(AspeedBoardState, 1);
-     object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_AST2400);
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
+@@ -68,13 +81,16 @@ static void aspeed_init(MachineState *machine)
                                &error_abort);
-@@ -79,19 +79,26 @@ static void palmetto_bmc_init(MachineState *machine)
+=20
+     memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_siz=
+e);
+-    memory_region_add_subregion(get_system_memory(), AST2400_SDRAM_BASE,
++    memory_region_add_subregion(get_system_memory(),
++                                aspeed_boards[board_model].sdram_base,
+                                 &bmc->ram);
+     object_property_add_const_link(OBJECT(&bmc->soc), "ram", OBJECT(&bmc=
+->ram),
+                                    &error_abort);
+-    object_property_set_int(OBJECT(&bmc->soc), 0x120CE416, "hw-strap1",
+-                            &error_abort);
+-    object_property_set_int(OBJECT(&bmc->soc), AST2400_A0_SILICON_REV,
++    object_property_set_int(OBJECT(&bmc->soc),
++                            aspeed_boards[board_model].hw_strap1,
++                            "hw-strap1", &error_abort);
++    object_property_set_int(OBJECT(&bmc->soc),
++                            aspeed_boards[board_model].silicon_rev,
+                             "silicon-rev", &error_abort);
      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
                               &error_abort);
-=20
--    palmetto_bmc_init_flashes(&bmc->soc.smc, "n25q256a", &error_abort);
--    palmetto_bmc_init_flashes(&bmc->soc.spi, "mx25l25635e", &error_abort=
-);
-+    aspeed_init_flashes(&bmc->soc.smc, "n25q256a", &error_abort);
-+    aspeed_init_flashes(&bmc->soc.spi, "mx25l25635e", &error_abort);
-+
-+    aspeed_binfo.kernel_filename =3D machine->kernel_filename;
-+    aspeed_binfo.initrd_filename =3D machine->initrd_filename;
-+    aspeed_binfo.kernel_cmdline =3D machine->kernel_cmdline;
-+    aspeed_binfo.ram_size =3D ram_size;
-+    arm_load_kernel(ARM_CPU(first_cpu), &aspeed_binfo);
-+}
-=20
--    palmetto_bmc_binfo.kernel_filename =3D machine->kernel_filename;
--    palmetto_bmc_binfo.initrd_filename =3D machine->initrd_filename;
--    palmetto_bmc_binfo.kernel_cmdline =3D machine->kernel_cmdline;
--    palmetto_bmc_binfo.ram_size =3D ram_size;
--    arm_load_kernel(ARM_CPU(first_cpu), &palmetto_bmc_binfo);
-+static void palmetto_bmc_init(MachineState *machine)
-+{
-+    aspeed_init(machine);
+@@ -86,13 +102,15 @@ static void aspeed_init(MachineState *machine)
+     aspeed_binfo.initrd_filename =3D machine->initrd_filename;
+     aspeed_binfo.kernel_cmdline =3D machine->kernel_cmdline;
+     aspeed_binfo.ram_size =3D ram_size;
++    aspeed_binfo.loader_start =3D aspeed_boards[board_model].sdram_base,
++    aspeed_binfo.board_id =3D aspeed_boards[board_model].silicon_rev,
+     arm_load_kernel(ARM_CPU(first_cpu), &aspeed_binfo);
  }
 =20
--static void palmetto_bmc_machine_init(MachineClass *mc)
-+static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
+ static void palmetto_bmc_init(MachineState *machine)
  {
--    mc->desc =3D "OpenPOWER Palmetto BMC";
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+
-+    mc->desc =3D "OpenPOWER Palmetto BMC (ARM926EJ-S)";
-     mc->init =3D palmetto_bmc_init;
-     mc->max_cpus =3D 1;
-     mc->no_sdcard =3D 1;
-@@ -101,4 +108,15 @@ static void palmetto_bmc_machine_init(MachineClass *=
-mc)
-     mc->no_parallel =3D 1;
+     machine->cpu_model =3D "arm926";
+-    aspeed_init(machine);
++    aspeed_init(machine, PALMETTO_BMC);
  }
 =20
--DEFINE_MACHINE("palmetto-bmc", palmetto_bmc_machine_init);
-+static const TypeInfo palmetto_bmc_type =3D {
-+    .name =3D MACHINE_TYPE_NAME("palmetto-bmc"),
-+    .parent =3D TYPE_MACHINE,
-+    .class_init =3D palmetto_bmc_class_init,
-+};
-+
-+static void aspeed_machine_init(void)
-+{
-+    type_register_static(&palmetto_bmc_type);
-+}
-+
-+type_init(aspeed_machine_init)
+ static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
 --=20
 2.1.4
 

@@ -1,55 +1,58 @@
-Received: by 10.25.21.156 with SMTP id 28csp349438lfv;
-        Wed, 27 Jul 2016 09:51:24 -0700 (PDT)
-X-Received: by 10.55.12.1 with SMTP id 1mr36736427qkm.136.1469638284481;
-        Wed, 27 Jul 2016 09:51:24 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp350762lfv;
+        Wed, 27 Jul 2016 09:54:40 -0700 (PDT)
+X-Received: by 10.55.135.194 with SMTP id j185mr36334238qkd.105.1469638480117;
+        Wed, 27 Jul 2016 09:54:40 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q187si4877861qkd.89.2016.07.27.09.51.24
+        by mx.google.com with ESMTPS id z68si4881832qka.194.2016.07.27.09.54.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jul 2016 09:51:24 -0700 (PDT)
+        Wed, 27 Jul 2016 09:54:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47671 helo=lists.gnu.org)
+Received: from localhost ([::1]:47716 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSS3H-00027G-TY
-	for alex.bennee@linaro.org; Wed, 27 Jul 2016 12:51:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60178)
+	id 1bSS6R-0005Ot-Kt
+	for alex.bennee@linaro.org; Wed, 27 Jul 2016 12:54:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSRzT-0007Ad-0h
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:28 -0400
+	(envelope-from <clg@kaod.org>) id 1bSRzX-0007DV-5h
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSRzQ-0001sp-5n
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:26 -0400
-Received: from 9.mo7.mail-out.ovh.net ([46.105.60.248]:57234)
+	(envelope-from <clg@kaod.org>) id 1bSRzT-0001wh-9m
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:30 -0400
+Received: from 18.mo7.mail-out.ovh.net ([188.165.56.163]:40631)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bSRzP-0001rJ-VP
-	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:24 -0400
+	id 1bSRzS-0001w2-VM
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 12:47:27 -0400
 Received: from player796.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 5CACBFFCFBF
-	for <qemu-devel@nongnu.org>; Wed, 27 Jul 2016 18:47:20 +0200 (CEST)
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 030A1FFCFC4
+	for <qemu-devel@nongnu.org>; Wed, 27 Jul 2016 18:47:26 +0200 (CEST)
 Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
 	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player796.ha.ovh.net (Postfix) with ESMTPSA id 3F3625C0086;
-	Wed, 27 Jul 2016 18:47:14 +0200 (CEST)
+	by player796.ha.ovh.net (Postfix) with ESMTPSA id 9DE965C0088;
+	Wed, 27 Jul 2016 18:47:20 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 27 Jul 2016 18:46:52 +0200
-Message-Id: <1469638018-17590-1-git-send-email-clg@kaod.org>
+Date: Wed, 27 Jul 2016 18:46:53 +0200
+Message-Id: <1469638018-17590-2-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.1.4
+In-Reply-To: <1469638018-17590-1-git-send-email-clg@kaod.org>
+References: <1469638018-17590-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 16543973234748853009
+X-Ovh-Tracer-Id: 16545380608995461905
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrieehgdellecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 46.105.60.248
-Subject: [Qemu-devel] [PATCH 0/6] arm: add ast2500 support
+X-Received-From: 188.165.56.163
+Subject: [Qemu-devel] [PATCH 1/6] palmetto-bmc: add a "silicon-rev" property
+ at the soc level
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,73 +68,90 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xrfE+zLT3skB
+X-TUID: NenvPLlZr39V
 
-The ast2500 soc being very close to the ast2400 soc, the goal of the
-changes below is to modify the existing platform 'palmetto-bmc' and
-existing soc 'ast2400' to take into account the small differences and
-avoid code duplication. This is mostly inspired by the realview
-platform.
+The SCU controler holds the board revision number in its 0x7C
+register. Let's use an alias to link a "silicon-rev" property of the
+soc to the "silicon-rev" property of the SCU controler.
 
-First patches rework the palmetto-bmc platform and the ast2400 soc
-models to provide room to other platforms and socs which have a common
-design. Being able to set the 'silicon-rev' and the cpu model are the
-primary motivation.
+The SDMC controler "silicon-rev" property is derived from the SCU one
+at realize time. I did not find a better way to handle this part.
+Links and aliases being a one-to-one relation, I could not use one of
+them. I might wrong though.
 
-I tried to link all the silicon-rev properties to a common one (in the
-SCU controller) but I failed to find the right pattern. I am not sure
-it is possible to have multiple aliases on the same property. You will
-see what I came up with in the first patch.
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ hw/arm/ast2400.c      | 18 +++++++++++++-----
+ hw/arm/palmetto-bmc.c |  2 ++
+ 2 files changed, 15 insertions(+), 5 deletions(-)
 
-The last patches add support for the new ast2500 soc in the required
-controller (sdmc and scu) and define a new platform for an Aspeed
-evaluation board.
-
-The 'palmetto-bmc.c' file could be renamed to 'aspeed.c' now that it
-contains more than one platform, but I don't really like the idea as
-it breaks history. As for the ast2400.c file, I think we are fine as
-we are just adding a configurable cpu. Nothing major. Please advise on
-that topic.
-
-
-On the ast2500, I am still having a little issue under uboot which
-sets the vbar doing :
-
-	mcr     p15, 0, r0, c12, c0, 0  /* Set VBAR */
-
-and this is trapped as an undefined instruction by qemu.
-
-Looking at hw/arm/helper.c, the VBAR register seems to be defined only
-for feature ARM_FEATURE_V7 (v7_cp_reginfo). The ast2500 soc uses a
-arm1176 which defines ARM_FEATURE_EL3 which gives us a VBAR_EL3.
-According to th specs, the arm1176jzf-s has a Vector Base Address
-Register. So am I missing something in the board definition or is
-uboot being too optimistic on the cpu features ? This is confusing for
-me, some direction would be welcomed :)
-
-
-A part from that, the soc behaves fine.
-
-Thanks,
-
-
-C=C3=A9dric Le Goater (6):
-  palmetto-bmc: add a "silicon-rev" property at the soc level
-  palmetto-bmc: replace palmetto_bmc with aspeed
-  ast2400: use machine cpu_model to initialize the soc cpu
-  palmetto-bmc: add board specific configuration
-  aspeed/scu: add ast2500 support
-  arm: add support for an ast2500 evaluation board
-
- hw/arm/ast2400.c             |  26 +++++++---
- hw/arm/palmetto-bmc.c        | 115 ++++++++++++++++++++++++++++++++++---=
-------
- hw/misc/aspeed_scu.c         |  45 ++++++++++++++++-
- hw/misc/aspeed_sdmc.c        |   1 +
- include/hw/arm/ast2400.h     |   5 ++
- include/hw/misc/aspeed_scu.h |   1 +
- 6 files changed, 163 insertions(+), 30 deletions(-)
-
+diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
+index 136bf6464e1d..fa535065f765 100644
+--- a/hw/arm/ast2400.c
++++ b/hw/arm/ast2400.c
+@@ -84,8 +84,8 @@ static void ast2400_init(Object *obj)
+     object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
+     object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
+     qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
+-    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
+-                         AST2400_A0_SILICON_REV);
++    object_property_add_alias(obj, "silicon-rev", OBJECT(&s->scu),
++                              "silicon-rev", &error_abort);
+     object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
+                               "hw-strap1", &error_abort);
+     object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
+@@ -102,8 +102,6 @@ static void ast2400_init(Object *obj)
+     object_initialize(&s->sdmc, sizeof(s->sdmc), TYPE_ASPEED_SDMC);
+     object_property_add_child(obj, "sdmc", OBJECT(&s->sdmc), NULL);
+     qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get_default());
+-    qdev_prop_set_uint32(DEVICE(&s->sdmc), "silicon-rev",
+-                         AST2400_A0_SILICON_REV);
+ }
+=20
+ static void ast2400_realize(DeviceState *dev, Error **errp)
+@@ -111,6 +109,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+     int i;
+     AST2400State *s =3D AST2400(dev);
+     Error *err =3D NULL, *local_err =3D NULL;
++    uint32_t silicon_rev;
+=20
+     /* IO space */
+     memory_region_init_io(&s->iomem, NULL, &ast2400_io_ops, NULL,
+@@ -192,7 +191,16 @@ static void ast2400_realize(DeviceState *dev, Error =
+**errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, AST2400_SPI_FLASH_BASE);
+=20
+     /* SDMC - SDRAM Memory Controller */
+-    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
++    silicon_rev =3D (uint32_t)
++        object_property_get_int(OBJECT(&s->scu), "silicon-rev", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_int(OBJECT(&s->sdmc), silicon_rev, "silicon-rev"=
+, &err);
++    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &local_=
+err);
++    error_propagate(&err, local_err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
+index 54e29a865d88..1ee13d578899 100644
+--- a/hw/arm/palmetto-bmc.c
++++ b/hw/arm/palmetto-bmc.c
+@@ -74,6 +74,8 @@ static void palmetto_bmc_init(MachineState *machine)
+                                    &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), 0x120CE416, "hw-strap1",
+                             &error_abort);
++    object_property_set_int(OBJECT(&bmc->soc), AST2400_A0_SILICON_REV,
++                            "silicon-rev", &error_abort);
+     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+                              &error_abort);
+=20
 --=20
 2.1.4
 

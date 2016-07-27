@@ -1,407 +1,444 @@
-Received: by 10.25.21.156 with SMTP id 28csp1863456lfv;
-        Tue, 26 Jul 2016 11:31:21 -0700 (PDT)
-X-Received: by 10.55.12.1 with SMTP id 1mr30206734qkm.136.1469557880971;
-        Tue, 26 Jul 2016 11:31:20 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp92652lfv;
+        Wed, 27 Jul 2016 00:53:49 -0700 (PDT)
+X-Received: by 10.55.153.70 with SMTP id b67mr35958973qke.190.1469606029539;
+        Wed, 27 Jul 2016 00:53:49 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p41si1244797qtc.147.2016.07.26.11.31.20
+        by mx.google.com with ESMTPS id 88si3533764qth.150.2016.07.27.00.53.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jul 2016 11:31:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Jul 2016 00:53:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41704 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44704 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bS78S-0005bS-6P
-	for alex.bennee@linaro.org; Tue, 26 Jul 2016 14:31:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43583)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bSJf2-0005Kf-GK
+	for alex.bennee@linaro.org; Wed, 27 Jul 2016 03:53:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bS73t-0001J1-1U
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 14:26:39 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bSJMZ-0003xf-GQ
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 03:34:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bS73o-0006N0-KM
-	for qemu-arm@nongnu.org; Tue, 26 Jul 2016 14:26:36 -0400
-Received: from mail-sn1nam02on0075.outbound.protection.outlook.com
-	([104.47.36.75]:18365
-	helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+	(envelope-from <imammedo@redhat.com>) id 1bSJMX-00069f-GK
+	for qemu-devel@nongnu.org; Wed, 27 Jul 2016 03:34:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54488)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bS73o-0006Mn-8k; Tue, 26 Jul 2016 14:26:32 -0400
-Received: from CY1NAM02FT016.eop-nam02.prod.protection.outlook.com
-	(10.152.74.51) by CY1NAM02HT216.eop-nam02.prod.protection.outlook.com
-	(10.152.74.102) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.549.5;
-	Tue, 26 Jul 2016 18:26:30 +0000
-Authentication-Results: spf=fail (sender IP is 149.199.60.96)
-	smtp.mailfrom=xilinx.com; linaro.org; dkim=none (message not signed)
-	header.d=none; linaro.org; dmarc=none action=none header.from=xilinx.com;
-Received-SPF: Fail (protection.outlook.com: domain of xilinx.com does not
-	designate 149.199.60.96 as permitted sender)
-	receiver=protection.outlook.com; 
-	client-ip=149.199.60.96; helo=xsj-tvapsmtpgw01;
-Received: from xsj-tvapsmtpgw01 (149.199.60.96) by
-	CY1NAM02FT016.mail.protection.outlook.com (10.152.75.164) with
-	Microsoft SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.549.5
-	via Frontend Transport; Tue, 26 Jul 2016 18:26:30 +0000
-Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:52084
-	helo=xsj-tvapsmtp02.xilinx.com)
-	by xsj-tvapsmtpgw01 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bS73l-0003qu-DP; Tue, 26 Jul 2016 11:26:29 -0700
-Received: from [127.0.0.1] (port=57371 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
-	by xsj-tvapsmtp02.xilinx.com with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bS73l-0006OE-BA; Tue, 26 Jul 2016 11:26:29 -0700
-Received: from xsj-tvapsmtp02 (xsj-tvapsmtp02.xilinx.com [172.16.1.203])
-	by tsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	u6QIJiFd016376; Tue, 26 Jul 2016 11:19:44 -0700
-Received: from [172.19.74.182] (port=41282 helo=xsjalistai50.xilinx.com)
-	by xsj-tvapsmtp02 with esmtp (Exim 4.63)
-	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bS73k-0006OB-HE; Tue, 26 Jul 2016 11:26:28 -0700
-From: Alistair Francis <alistair.francis@xilinx.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Tue, 26 Jul 2016 11:25:58 -0700
-Message-ID: <3c9804d1c3d4c0a420b9314f0636991b35a76987.1469556788.git.alistair.francis@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cover.1469556788.git.alistair.francis@xilinx.com>
-References: <cover.1469556788.git.alistair.francis@xilinx.com>
-X-RCIS-Action: ALLOW
-X-TM-AS-MML: disable
-X-TM-AS-Product-Ver: IMSS-7.1.0.1679-8.0.0.1202-22474.005
-X-TM-AS-Result: No--7.060-7.0-31-10
-X-imss-scan-details: No--7.060-7.0-31-10
-X-TMASE-MatchedRID: NqUYE3Jzbv8dsKV+lYHQBqOONuzwygtGmyqQJWNsukn/evmlVf9xZvp9
-	YdWlfxDykKaVbA4S4D3c8+FPg1rJdhLmJd2F/yFu4pdq9sdj8LUSNRDlFTpYkvNhzIgXtFJVibw
-	HCxoXFpesrpv7ZGx0TfmRngQJRUJwi9Om4SO4imTThGbP9qB93BPbyBtwZTa9RQ0dAChl/lwxBh
-	Y3mcMkVIeOUtXkXvGMeTjw/FyRX6QfE8yM4pjsDwtuKBGekqUpI/NGWt0UYPBVxYUwfvqMpx67g
-	4dLRmRnjb9Nq/BX8Ch617D4o5aohsdLFNEgDIsW
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.96; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(6009001)(7916002)(2980300002)(1109001)(1110001)(339900001)(199003)(189002)(85426001)(4326007)(50986999)(92566002)(64026002)(19580405001)(19580395003)(586003)(50466002)(76176999)(11100500001)(71366001)(33646002)(50226002)(2906002)(48376002)(47776003)(36756003)(8936002)(87936001)(81156014)(5003600100003)(2950100001)(5001770100001)(106466001)(105606002)(189998001)(356003)(7696003)(9786002)(8676002)(77096005)(7846002)(81166006)(86362001)(118296001)(5003940100001)(305945005)(229853001)(107986001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:CY1NAM02HT216; H:xsj-tvapsmtpgw01;
-	FPR:; SPF:Fail; PTR:unknown-60-96.xilinx.com; A:1; MX:1; LANG:en;
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT016;
-	1:JQGNKL4j3FbbbLZuw96QpyMr34AkFgzw+WtOHM33O1r34vgKKh9qXYHvneVaulPXOWifXsMnM6Cz29/pUZzk56JeoJWdGZNJrOanExpW3aTklmWKGNdEpzuFXDtJmrbsv5dRVuyIkDGiEn7HGWXpJnTmUbt0YrEyRWuFDGaIxVjFXqhQQwUQvXuzH3fbY3lXKcb+eXPQTdnc9Aq2caBHeyqY9Q2yn4jBCgTmGdMRtkU94tKBR6vq4syzM/8PWF3Io6Zp80WZsUDEiT5vwUNhT1MVIx9qEeIezHk3+/tYHf/mXEbqibskqsQl5z58b62kLFxqI38jYZa9BAux3nR365o2OF6+VtfnWOTzkhWhXcggySYDc0YP+gnHnFHpMsFseTJ5tR9yUHTKYm2cuDwg0ih0BYl6fr8AvRJv3rUQ9qSCrUo1EKJTbdi/Jh0gWcZ7l4oN5pbYrku9V6AAj0tgrJrBdYwKVZETaJuXuAstnfML3GWb9r/XGIvZYhWA81qdwsQNY+W65TbO1YGCqvO7yhdWrGNo7EOZmOouuVGdQUqEqj+nwYKNQaZCSi7DaUJYeY8G7x3uqC5l4twPTknoU1fhKcH0B8pUweWzdpUFaZk=
+	(envelope-from <imammedo@redhat.com>)
+	id 1bSJMQ-00067O-PF; Wed, 27 Jul 2016 03:34:34 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 28C023F723;
+	Wed, 27 Jul 2016 07:34:34 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u6R7YUrd013872; Wed, 27 Jul 2016 03:34:31 -0400
+Date: Wed, 27 Jul 2016 09:34:29 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20160727093429.45841209@nial.brq.redhat.com>
+In-Reply-To: <82468299.10757116.1469547105896.JavaMail.zimbra@redhat.com>
+References: <1469541331-86342-1-git-send-email-imammedo@redhat.com>
+	<82468299.10757116.1469547105896.JavaMail.zimbra@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: c3a283b4-6dc1-4e76-74f5-08d3b5825d52
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02HT216;
-	2:IWkip1kO3sn/KzWtnoUQIGr4VO3o1mLJb7gPcDTMZ/UDqU2QcEv4drboi8X6SB6nslz0L4nmyAW5Mhw5/EiB5OSMyKluv+mrnC2cUrC+7HTsF2xm/WikXoSMB32Updq8S/HsbrpkbQ9uC+yrGrma4Uw+MZuUVPDOKPSpL8+9sn8zBBCLvxM4n2f9QtNsHF2W;
-	3:+9fWV76uqED1G+SGO51W3OrCibHDMiU3gl3SFniS/75FSh8AbkObgpJb5MtrlP2d1MrjLuY9nozVMgnZcZOhOKdzWuTTVXanJBhdzVCvWEe3jJOFWL4vE+Pyx5V2uOg8ZJdh33GtnohcrDLrrokF06Ilfqh37m30BVJmh5pPG4TxgEKaHCAMet8m0A9EdVlAx04HAbKPL3HsxP7gWp795cMUPhbllpFZnZbrQzo8F4M=
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:CY1NAM02HT216;
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02HT216;
-	25:WRaNY0w2mvcguc8uWYmCAeXNPtuqHEx2Xn4P0WJNu0dQny0DzfkM70cTT3xJaABywmzy7FlqdPzfbrjmfcit8Cx3SZ0jjiTFf/IVAVpltuPQAZ/5za6t6cg1eqY0xHPPRSVsXKKUIBAAr3F04+B3GvhX3TX1xIiyzHnmFJ1bkdMB4a3097A2FLWX3p9smdQV/svOdHWorND5UaKSsUu6am0L8d1D4p6IqMODxYMQ2fahqaq6roRu+DuzRVad7A4j0/2f9X24bYELbWCMsGOs0kbCVYINGShZophqGVWNLWRGO6NnTtQevL4JJTOdWTfgmxN2j3qLpWuPoQ6PWmVRxNUkl12rZKDO4gtDcZuh1OHXQWa00piOd75RZke9S5nvTV5Jn8l1KnihxyR0L20MadL1L2bUbDJAHI/EuEpHX5KV0vGmqXNn+idJfS7PIR9z4PRmiUAqvcDgBd4iNCWMvo2WosQ9DF9L5UzsUs85rH4+sCJIwvdUBlbxR1WkPtWV1QZJk/+ZSB1OD48UcnmiN2ZnqmJ2KM49qrAJoyvGZDoYUjw1FsuthsnWSfycjQXlGk3RERoie5NI3Ehn4IPgiw88SCypFEeYNZDDQVXiEWPDuhj8qZWvxpApo+kssYQ4Y2qwy/8rWR74R5PF0FbQwZhXUFcIA2VHAK836Ivoz/1zSuA23TubT7LjZGHeijHnEVxngcpU3Fl9ofq0KvfETlBY4WxtP+pBdxX2rMrj1wQR6xbVTxBzJgNhe8fvcZf7gI8rea7NuIjUYEb1Ee2KeKP26OHwsTURM4Q74c25GzkFHt6TP1wou9OgHPG0O/rW
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02HT216;
-	31:0zDtr6ZVNFtM0tNgjddMf89oDyYQeovr+L84fd/jWr/wwdxQRM7Feg+HLnbT0Exmv5rL0TUte8j1pENBfVZHdd2mHD/99VyMFwMyIM0HglnjEsNlSRPoXdr4eeQtVwubw535f6jbFFS2GC4SpWxvuLwiq89VNZNQDTTor5mUi/5ey+JJozsLpwiMWRHp1YqkpDKawad5Nh/vCMUgvdctj3VHNoi+MaKY7k9eSKecNtc=;
-	20:QzJN/ONM6PzROODLuBQ1iBXLLF4XnQYP33l4MaVrxA6QAP40JdO+Xfs50N3jch3VVQgV1e07+k4P3MZbxC88g/7cIWZNQI2xv4GT05xpfzyAGTa264/vp84/NycwnYP9yipBa4VG4z6TLa8tM6Hwm06Ef542+TvQodobhhqQt4srTzbkd6DbaEhoNIBPukiPMKvAnlbuqkB8IqoBX32W9dTB9+AfM6mefvMZMWjTg6RRJL6F9wRJrh2bCwI8XzJgER+STUt7KLNkQ1XmzAt3wYtT3zsrrAhF7U30Xu7nXkAg4gk5sn8S/BbJNNnmAdUFsFWA8f5LWJiDO1hb8ceRGv+UDVQoiw1LQUfqcbwtb7Cdpol4LEBCHmtGpAXmRJd0zehCCunA+MrgZ68zlFxkZzYN6ChArnyYZcujIZqgeg+rKwnmaQSyteDpIfkqDpFTdVMmnGoTnvpYKrcUMDOncc41Ev0dACZwJ2n/XBAski6OZR5MB1f14Bmk+7j6XerT
-X-Microsoft-Antispam-PRVS: <171b300b07ec4dd6a5565ab730676ea1@CY1NAM02HT216.eop-nam02.prod.protection.outlook.com>
-X-Exchange-Antispam-Report-Test: UriScan:(192813158149592)(17755550239193);
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(6040149)(601004)(2401047)(8121501046)(5005006)(13017025)(13023025)(13015025)(13018025)(13024025)(3002001)(10201501046)(6055026);
-	SRVR:CY1NAM02HT216; BCL:0; PCL:0; RULEID:; SRVR:CY1NAM02HT216; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02HT216;
-	4:2Jvmj97qm6YJ4GvL5c8a5tnR/lRXfqZdL6NCkCBEHPrS42wohOZWfuxxc3sHaLjKDzqrzXeFTFTob7N0UOdlM4VPHZ6UF+k0ckpR2x2EP1CJ08sDncP08a4lPddD6iC5DQeGUDu8nz6ygfeZtyfgFjUS97ruqPbWRcDq/p+0ImnpjQmNOwnPronHtHZlXIZCnn1I/SVcbUum3zUedI5rHsexWG2KMBI8J6XCxZ09NnAspz0ie3AqM55vz9prvfl1+yQUNNqK+Rxk3QrG64EHpA+hNzY/EIkGNHrL8ClY67GjE2ev7P8aZrlN4s+/5POC6J2TX7SiOD0pn6uGrYjKhkqDMOIaU7uXsUUObyBw6Si1Ba4iRM/f+QUODQWa81SYvCAXElw33Amn4kBM3zXoaQbVYPZc2AP57B2eew6G6ESd14TSPFYUgky41FwHc6p+VHf7wVcXs73xRUyCFZAjKexUA8vNWBbTKFx2BiryZmYNSw4Rbdrk8JG2ACcYm2yOuy0X+F9em+GO7Xoqx0toKg0ZxM6Ftq0coQ0gowSpQMG+m/N7T9w1Z7+rez2z9kEVwax9WCvaoloExOsuV154lA==
-X-Forefront-PRVS: 00159D1518
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; CY1NAM02HT216;
-	23:3q22qjNBFMHbAnuzxct3cKUqB2IPZ2OOdEXtMcsK7?=
-	=?us-ascii?Q?UX591CHRocr4vQSkseVQNxwkuA+TIBCA2rDab75uUBPu3AD2SIg8Adu8Y+7X?=
-	=?us-ascii?Q?OZNuMIha1yz1eDeeCr2KdrMcL1t8IHQogws8IW3ZrAicWZDv+ujXED0TSPkO?=
-	=?us-ascii?Q?OVstsBTl3wKh5/0SPNIoo/c05hdK4bqrONEi10qZZa3maJuai5OHvs3mAO0O?=
-	=?us-ascii?Q?IS0poJc2svgNCXL9IIrR+5/knudhnVzo/ujUHEx8CxtnOBdke2tbO4AuXWaE?=
-	=?us-ascii?Q?ueuRXCRtzQ+ZNG5n4cfni46kabNkUd8K0x5t3gKTLcLlfb8YOljiFZtZ7BTA?=
-	=?us-ascii?Q?ln2XxpL/tkyK740WoatzyLuR+AbfUnaKt+v5ke5xSDSwRFl+6/lhvCUhL6Q2?=
-	=?us-ascii?Q?B7DXiKzFEieIOfKSGWIk8NR3r0i44Bz07akYy7dlRc9BJKc3B4ZAsygPjWG7?=
-	=?us-ascii?Q?rrI0mm0xq/ubRmvPmasU6xsEsvDwIXxhimM2Q6UDz7d+mHEyoCEDz5FGT6ap?=
-	=?us-ascii?Q?5d+J+Rhm+wtrmIQ+9aKIUxMEP3fX1hTwxQ7K359vPFQDnfPTlPpcSuHySW3Q?=
-	=?us-ascii?Q?/caLb+8ELT6SLBKB+blY69wo76wlwtqZx9FpMcj4p0aO6dKbXqDQ34qonHhL?=
-	=?us-ascii?Q?BxEvTQnLMXPWOzNGM4okUEHrIGRufUPcJz/OeVc2Fn1o0lHvsrjqhpOdVyts?=
-	=?us-ascii?Q?esB0P8KjhQFUdbYKRwKKJB5q9Kk+MbV7bTpm5F2c9cFvMMYuxxgUpuh8OZdP?=
-	=?us-ascii?Q?Syj9ULuISjadaYCkcbsOXmALgHQ7qyqPhKmcX1oypKiRnwldJI4+ZWGYTNup?=
-	=?us-ascii?Q?qbzZaYOuGehi7uSNKWGlTSbQXK+1g2/gy6RrjHiv8RAyazcAeWQNh/hZrJSq?=
-	=?us-ascii?Q?5TLz9TaFnSM2Z2MRhdZ1wCUw+QSk1LKBuehapqBYFp/Xr456uMo8BapIkNPp?=
-	=?us-ascii?Q?0wB/alT2bANqVEExFZhfDZHbZZXaowP1zZhD3Xqsa6gWQTM0ic9uA+Zjp14c?=
-	=?us-ascii?Q?LZCJYwo7IeBxqVab/J7Qw/y09axWHOG3FhHSZCuQpdhLYxY8bIOnKriG47uN?=
-	=?us-ascii?Q?vCDzx7/FMSBr1zMNm040VC/bpifPy15cugwEEzX+NQm+kbAuSMxu4+MwaSt6?=
-	=?us-ascii?Q?AbZS08cE1avPdG4evRux63zGzz/QLUn9OS7cXTATcVbxfKBdOED79HlFbrnD?=
-	=?us-ascii?Q?1r9AI4Ocbi8kWwwZT3lasUdcNwtwkofMjme?=
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02HT216;
-	6:dKY8YPw7WK+biEp/E2jDiytaBnu/IThQUK3KYFFMwNGJ5FTz4cNJnrZtjO6y0URPSb4QwsUuNgLW9v1xmaQAnbnHVOAb/74zlJGI2gZzmC/U4ET1sgQCLm3PSrxozwG0anzMvkvpvmO4n0vj9HXPnYpmc3ho6mZtBVNYpUzbL8McdRXmokVMSPJoyK+jOkYtoXfrD7sjZoBAUpA1axCgdxI1KC+ip+bSY4IViqyLNdYHyUee7lPNoQCaHLnuekSHjZGxx+C2Wu15YW5DRFvmAUxlUYuZklSC00ZO2vroAPxAobNFna01Cl49OddU4CTWA8saueZZJ7yxjW0tWGxiYg==;
-	5:glduwbfr6kRbATeamlYniy5OJrDdJ1RPM74pDFNjqpatAHbrhreOLJcyGSSxepjcgPEOnsC6ZNW46plYqLwWjilIoGsBaRlrB+DfoZCjIn8mxxyvXWrkd13CEYV3ydN1MLHXxF/ImHot6FJZHtQnRw==;
-	24:nBJGYt5FcZmLue3sqKFAC3hNtnPJmGX6+lfLADYGusJAprNaTondEhbMdpyjOLcNCxklhjx+w7yEAt90RcazYQREBkmnQj2iGR7ffWrmAb4=;
-	7:bHBOf8eI/ongo7+PnVd5Et15rtwp2I6JJMfybnd1IEA0nMgxNaXKK3FzXgOD2lFJ6peJKaHeMb7CsLym5ZTW7NvphF1M5fPworlQQ+J5AmyqzbKeWA/sl/Ltd7Ezoj5hsd//hQNAH6D+tkAjOslsmwjoh9Kx3AXedtfjTvTuhKPWnO6pL/58qGge9AAEN8KF9dAi89dJDBud1PMdwbWqwKP5LBg6Jx9Rx6XdI5UhusORLumLj0r5yvbe2aom+T7G
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jul 2016 18:26:30.1213 (UTC)
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.96]; Helo=[xsj-tvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1NAM02HT216
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.36.75
-Subject: [Qemu-arm] [PATCH v3 5/6] cadence_gem: Correct indentation
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 27 Jul 2016 07:34:34 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH] i2c: fix migration regression introduced
+ by broadcast support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, crosthwaitepeter@gmail.com,
-	alistair.francis@xilinx.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ITZlqKOhV/dT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter maydell <peter.maydell@linaro.org>, hyun kwon <hyun.kwon@xilinx.com>,
+	crosthwaite peter <crosthwaite.peter@gmail.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	alistair francis <alistair.francis@xilinx.com>, "open
+	list:PXA2XX" <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>,
+	amit shah <amit.shah@redhat.com>, dgilbert@redhat.com,
+	fred konrad <fred.konrad@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8slCoFcy2CIA
 
-Fix up the indentation inside the for loop that was introduced in the previous
-patch. This commit is almost empty if viewed using 'git show -w', except for a
-few changes that were required to avoid the 80 charecter line limit.
+On Tue, 26 Jul 2016 11:31:45 -0400 (EDT)
+Paolo Bonzini <pbonzini@redhat.com> wrote:
 
-Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
-V2:
- - Conform to 80 chareceter line limit
- - Improve commit message
- - Re-apply based on previous patches
+> ----- Igor Mammedov <imammedo@redhat.com> ha scritto:
+> > QEMU fails migration with following error:
+> > 
+> > qemu-system-x86_64: Missing section footer for i2c_bus
+> > qemu-system-x86_64: load of migration failed: Invalid argument
+> > 
+> > when migrating from:
+> >   qemu-system-x86_64-v2.6.0 -m 256M rhel72.img -M pc-i440fx-2.6
+> > to
+> >   qemu-system-x86_64-v2.7.0-rc0 -m 256M rhel72.img -M pc-i440fx-2.6
+> > 
+> > Regression is added by commit 2293c27f (i2c: implement broadcast write)
+> > 
+> > Fix it by moving 'broadcast' VMState to an optional subsection
+> > enabled by default and disabled via compat properties
+> > for pc/q35-2.6 and older machine types.  
+> 
+> Please instead define the needed function for the subsection
+> so that the default state is not transmitted. This should make the patch 
+> much simpler and avoid the need to touch all i2c bus implementations.
+I'm not sure that I get your suggestion and how it would eliminate need
+for touching all users of i2c_init_bus().
 
- hw/net/cadence_gem.c | 197 ++++++++++++++++++++++++++-------------------------
- 1 file changed, 101 insertions(+), 96 deletions(-)
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index c46fff4..8618e7a 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1054,117 +1054,122 @@ static void gem_transmit(CadenceGEMState *s)
-     total_bytes = 0;
- 
-     for (q = s->num_priority_queues - 1; q >= 0; q--) {
--    /* read current descriptor */
--    packet_desc_addr = s->tx_desc_addr[q];
--
--    DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
--    cpu_physical_memory_read(packet_desc_addr,
--                             (uint8_t *)desc, sizeof(desc));
--    /* Handle all descriptors owned by hardware */
--    while (tx_desc_get_used(desc) == 0) {
--
--        /* Do nothing if transmit is not enabled. */
--        if (!(s->regs[GEM_NWCTRL] & GEM_NWCTRL_TXENA)) {
--            return;
--        }
--        print_gem_tx_desc(desc, q);
--
--        /* The real hardware would eat this (and possibly crash).
--         * For QEMU let's lend a helping hand.
--         */
--        if ((tx_desc_get_buffer(desc) == 0) ||
--            (tx_desc_get_length(desc) == 0)) {
--            DB_PRINT("Invalid TX descriptor @ 0x%x\n",
--                     (unsigned)packet_desc_addr);
--            break;
--        }
--
--        if (tx_desc_get_length(desc) > sizeof(tx_packet) - (p - tx_packet)) {
--            DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space 0x%x\n",
--                     (unsigned)packet_desc_addr,
--                     (unsigned)tx_desc_get_length(desc),
--                     sizeof(tx_packet) - (p - tx_packet));
--            break;
--        }
-+        /* read current descriptor */
-+        packet_desc_addr = s->tx_desc_addr[q];
- 
--        /* Gather this fragment of the packet from "dma memory" to our contig.
--         * buffer.
--         */
--        cpu_physical_memory_read(tx_desc_get_buffer(desc), p,
--                                 tx_desc_get_length(desc));
--        p += tx_desc_get_length(desc);
--        total_bytes += tx_desc_get_length(desc);
-+        DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-+        cpu_physical_memory_read(packet_desc_addr,
-+                                 (uint8_t *)desc, sizeof(desc));
-+        /* Handle all descriptors owned by hardware */
-+        while (tx_desc_get_used(desc) == 0) {
- 
--        /* Last descriptor for this packet; hand the whole thing off */
--        if (tx_desc_get_last(desc)) {
--            unsigned    desc_first[2];
-+            /* Do nothing if transmit is not enabled. */
-+            if (!(s->regs[GEM_NWCTRL] & GEM_NWCTRL_TXENA)) {
-+                return;
-+            }
-+            print_gem_tx_desc(desc, q);
- 
--            /* Modify the 1st descriptor of this packet to be owned by
--             * the processor.
-+            /* The real hardware would eat this (and possibly crash).
-+             * For QEMU let's lend a helping hand.
-              */
--            cpu_physical_memory_read(s->tx_desc_addr[q], (uint8_t *)desc_first,
--                                     sizeof(desc_first));
--            tx_desc_set_used(desc_first);
--            cpu_physical_memory_write(s->tx_desc_addr[q], (uint8_t *)desc_first,
--                                      sizeof(desc_first));
--            /* Advance the hardware current descriptor past this packet */
--            if (tx_desc_get_wrap(desc)) {
--                s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
--            } else {
--                s->tx_desc_addr[q] = packet_desc_addr + 8;
-+            if ((tx_desc_get_buffer(desc) == 0) ||
-+                (tx_desc_get_length(desc) == 0)) {
-+                DB_PRINT("Invalid TX descriptor @ 0x%x\n",
-+                         (unsigned)packet_desc_addr);
-+                break;
-             }
--            DB_PRINT("TX descriptor next: 0x%08x\n", s->tx_desc_addr[q]);
--
--            s->regs[GEM_TXSTATUS] |= GEM_TXSTATUS_TXCMPL;
--            s->regs[GEM_ISR] |= GEM_INT_TXCMPL & ~(s->regs[GEM_IMR]);
- 
--            /* Update queue interrupt status */
--            if (s->num_priority_queues > 1) {
--                s->regs[GEM_INT_Q1_STATUS + q] |=
--                        GEM_INT_TXCMPL & ~(s->regs[GEM_INT_Q1_MASK + q]);
-+            if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-+                                               (p - tx_packet)) {
-+                DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
-+                         "0x%x\n", (unsigned)packet_desc_addr,
-+                         (unsigned)tx_desc_get_length(desc),
-+                         sizeof(tx_packet) - (p - tx_packet));
-+                break;
-             }
- 
--            /* Handle interrupt consequences */
--            gem_update_int_status(s);
--
--            /* Is checksum offload enabled? */
--            if (s->regs[GEM_DMACFG] & GEM_DMACFG_TXCSUM_OFFL) {
--                net_checksum_calculate(tx_packet, total_bytes);
-+            /* Gather this fragment of the packet from "dma memory" to our
-+             * contig buffer.
-+             */
-+            cpu_physical_memory_read(tx_desc_get_buffer(desc), p,
-+                                     tx_desc_get_length(desc));
-+            p += tx_desc_get_length(desc);
-+            total_bytes += tx_desc_get_length(desc);
-+
-+            /* Last descriptor for this packet; hand the whole thing off */
-+            if (tx_desc_get_last(desc)) {
-+                unsigned    desc_first[2];
-+
-+                /* Modify the 1st descriptor of this packet to be owned by
-+                 * the processor.
-+                 */
-+                cpu_physical_memory_read(s->tx_desc_addr[q],
-+                                         (uint8_t *)desc_first,
-+                                         sizeof(desc_first));
-+                tx_desc_set_used(desc_first);
-+                cpu_physical_memory_write(s->tx_desc_addr[q],
-+                                          (uint8_t *)desc_first,
-+                                          sizeof(desc_first));
-+                /* Advance the hardware current descriptor past this packet */
-+                if (tx_desc_get_wrap(desc)) {
-+                    s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
-+                } else {
-+                    s->tx_desc_addr[q] = packet_desc_addr + 8;
-+                }
-+                DB_PRINT("TX descriptor next: 0x%08x\n", s->tx_desc_addr[q]);
-+
-+                s->regs[GEM_TXSTATUS] |= GEM_TXSTATUS_TXCMPL;
-+                s->regs[GEM_ISR] |= GEM_INT_TXCMPL & ~(s->regs[GEM_IMR]);
-+
-+                /* Update queue interrupt status */
-+                if (s->num_priority_queues > 1) {
-+                    s->regs[GEM_INT_Q1_STATUS + q] |=
-+                            GEM_INT_TXCMPL & ~(s->regs[GEM_INT_Q1_MASK + q]);
-+                }
-+
-+                /* Handle interrupt consequences */
-+                gem_update_int_status(s);
-+
-+                /* Is checksum offload enabled? */
-+                if (s->regs[GEM_DMACFG] & GEM_DMACFG_TXCSUM_OFFL) {
-+                    net_checksum_calculate(tx_packet, total_bytes);
-+                }
-+
-+                /* Update MAC statistics */
-+                gem_transmit_updatestats(s, tx_packet, total_bytes);
-+
-+                /* Send the packet somewhere */
-+                if (s->phy_loop || (s->regs[GEM_NWCTRL] &
-+                                    GEM_NWCTRL_LOCALLOOP)) {
-+                    gem_receive(qemu_get_queue(s->nic), tx_packet,
-+                                total_bytes);
-+                } else {
-+                    qemu_send_packet(qemu_get_queue(s->nic), tx_packet,
-+                                     total_bytes);
-+                }
-+
-+                /* Prepare for next packet */
-+                p = tx_packet;
-+                total_bytes = 0;
-             }
- 
--            /* Update MAC statistics */
--            gem_transmit_updatestats(s, tx_packet, total_bytes);
--
--            /* Send the packet somewhere */
--            if (s->phy_loop || (s->regs[GEM_NWCTRL] & GEM_NWCTRL_LOCALLOOP)) {
--                gem_receive(qemu_get_queue(s->nic), tx_packet, total_bytes);
-+            /* read next descriptor */
-+            if (tx_desc_get_wrap(desc)) {
-+                tx_desc_set_last(desc);
-+                packet_desc_addr = s->regs[GEM_TXQBASE];
-             } else {
--                qemu_send_packet(qemu_get_queue(s->nic), tx_packet,
--                                 total_bytes);
-+                packet_desc_addr += 8;
-             }
--
--            /* Prepare for next packet */
--            p = tx_packet;
--            total_bytes = 0;
-+            DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
-+            cpu_physical_memory_read(packet_desc_addr,
-+                                     (uint8_t *)desc, sizeof(desc));
-         }
- 
--        /* read next descriptor */
--        if (tx_desc_get_wrap(desc)) {
--            tx_desc_set_last(desc);
--            packet_desc_addr = s->regs[GEM_TXQBASE];
--        } else {
--            packet_desc_addr += 8;
-+        if (tx_desc_get_used(desc)) {
-+            s->regs[GEM_TXSTATUS] |= GEM_TXSTATUS_USED;
-+            s->regs[GEM_ISR] |= GEM_INT_TXUSED & ~(s->regs[GEM_IMR]);
-+            gem_update_int_status(s);
-         }
--        DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
--        cpu_physical_memory_read(packet_desc_addr,
--                                 (uint8_t *)desc, sizeof(desc));
--    }
--
--    if (tx_desc_get_used(desc)) {
--        s->regs[GEM_TXSTATUS] |= GEM_TXSTATUS_USED;
--        s->regs[GEM_ISR] |= GEM_INT_TXUSED & ~(s->regs[GEM_IMR]);
--        gem_update_int_status(s);
--    }
-     }
- }
- 
--- 
-2.7.4
+
+> 
+> Thanks,
+> 
+> Paolo
+> 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> > CC: fred.konrad@greensocs.com
+> > CC: alistair.francis@xilinx.com
+> > CC: crosthwaite.peter@gmail.com
+> > CC: hyun.kwon@xilinx.com
+> > CC: peter.maydell@linaro.org
+> > ---
+> >  include/hw/i2c/i2c.h      |  2 +-
+> >  include/hw/i2c/pm_smbus.h |  1 +
+> >  include/hw/i386/pc.h      | 10 ++++++++++
+> >  hw/acpi/piix4.c           |  2 ++
+> >  hw/arm/pxa2xx.c           |  4 ++--
+> >  hw/arm/stellaris.c        |  2 +-
+> >  hw/i2c/aspeed_i2c.c       |  2 +-
+> >  hw/i2c/bitbang_i2c.c      |  2 +-
+> >  hw/i2c/core.c             | 32 +++++++++++++++++++++++++++++---
+> >  hw/i2c/exynos4210_i2c.c   |  2 +-
+> >  hw/i2c/imx_i2c.c          |  2 +-
+> >  hw/i2c/omap_i2c.c         |  2 +-
+> >  hw/i2c/pm_smbus.c         |  2 +-
+> >  hw/i2c/smbus_ich9.c       |  7 +++++++
+> >  hw/i2c/versatile_i2c.c    |  2 +-
+> >  hw/misc/auxbus.c          |  2 +-
+> >  16 files changed, 61 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> > index c4085aa..488a0fa 100644
+> > --- a/include/hw/i2c/i2c.h
+> > +++ b/include/hw/i2c/i2c.h
+> > @@ -50,7 +50,7 @@ struct I2CSlave
+> >      uint8_t address;
+> >  };
+> >  
+> > -I2CBus *i2c_init_bus(DeviceState *parent, const char *name);
+> > +I2CBus *i2c_init_bus(DeviceState *parent, const char *name, bool broadcast);
+> >  void i2c_set_slave_address(I2CSlave *dev, uint8_t address);
+> >  int i2c_bus_busy(I2CBus *bus);
+> >  int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv);
+> > diff --git a/include/hw/i2c/pm_smbus.h b/include/hw/i2c/pm_smbus.h
+> > index 2a837af..b17c052 100644
+> > --- a/include/hw/i2c/pm_smbus.h
+> > +++ b/include/hw/i2c/pm_smbus.h
+> > @@ -3,6 +3,7 @@
+> >  
+> >  typedef struct PMSMBus {
+> >      I2CBus *smbus;
+> > +    bool smb_broadcast_enabled;
+> >      MemoryRegion io;
+> >  
+> >      uint8_t smb_stat;
+> > diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> > index c87c5c1..738b8a5 100644
+> > --- a/include/hw/i386/pc.h
+> > +++ b/include/hw/i386/pc.h
+> > @@ -391,6 +391,16 @@ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+> >          .driver   = "apic",\
+> >          .property = "legacy-instance-id",\
+> >          .value    = "on",\
+> > +    },\
+> > +    {\
+> > +        .driver   = "ICH9 SMB",\
+> > +        .property = "smbus-broadcast-enabled",\
+> > +        .value    = "off",\
+> > +    },\
+> > +    {\
+> > +        .driver   = "PIIX4_PM",\
+> > +        .property = "smbus-broadcast-enabled",\
+> > +        .value    = "off",\
+> >      },
+> >  
+> >  #define PC_COMPAT_2_5 \
+> > diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> > index 2adc246..8a29179 100644
+> > --- a/hw/acpi/piix4.c
+> > +++ b/hw/acpi/piix4.c
+> > @@ -669,6 +669,8 @@ static Property piix4_pm_properties[] = {
+> >                       use_acpi_pci_hotplug, true),
+> >      DEFINE_PROP_BOOL("memory-hotplug-support", PIIX4PMState,
+> >                       acpi_memory_hotplug.is_enabled, true),
+> > +    DEFINE_PROP_BOOL("smbus-broadcast-enabled", PIIX4PMState,
+> > +                     smb.smb_broadcast_enabled, true),
+> >      DEFINE_PROP_END_OF_LIST(),
+> >  };
+> >  
+> > diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> > index cb55704..045ab20 100644
+> > --- a/hw/arm/pxa2xx.c
+> > +++ b/hw/arm/pxa2xx.c
+> > @@ -1491,7 +1491,7 @@ PXA2xxI2CState *pxa2xx_i2c_init(hwaddr base,
+> >  
+> >      s = PXA2XX_I2C(i2c_dev);
+> >      /* FIXME: Should the slave device really be on a separate bus?  */
+> > -    i2cbus = i2c_init_bus(dev, "dummy");
+> > +    i2cbus = i2c_init_bus(dev, "dummy", true);
+> >      dev = i2c_create_slave(i2cbus, TYPE_PXA2XX_I2C_SLAVE, 0);
+> >      s->slave = PXA2XX_I2C_SLAVE(dev);
+> >      s->slave->host = s;
+> > @@ -1505,7 +1505,7 @@ static void pxa2xx_i2c_initfn(Object *obj)
+> >      PXA2xxI2CState *s = PXA2XX_I2C(obj);
+> >      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> >  
+> > -    s->bus = i2c_init_bus(dev, "i2c");
+> > +    s->bus = i2c_init_bus(dev, "i2c", true);
+> >  
+> >      memory_region_init_io(&s->iomem, obj, &pxa2xx_i2c_ops, s,
+> >                            "pxa2xx-i2c", s->region_size);
+> > diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> > index 794a3ad..ac38e4d 100644
+> > --- a/hw/arm/stellaris.c
+> > +++ b/hw/arm/stellaris.c
+> > @@ -882,7 +882,7 @@ static void stellaris_i2c_init(Object *obj)
+> >      I2CBus *bus;
+> >  
+> >      sysbus_init_irq(sbd, &s->irq);
+> > -    bus = i2c_init_bus(dev, "i2c");
+> > +    bus = i2c_init_bus(dev, "i2c", true);
+> >      s->bus = bus;
+> >  
+> >      memory_region_init_io(&s->iomem, obj, &stellaris_i2c_ops, s,
+> > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> > index ce5b1f0..af62636 100644
+> > --- a/hw/i2c/aspeed_i2c.c
+> > +++ b/hw/i2c/aspeed_i2c.c
+> > @@ -394,7 +394,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+> >          snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
+> >          s->busses[i].controller = s;
+> >          s->busses[i].id = i;
+> > -        s->busses[i].bus = i2c_init_bus(dev, name);
+> > +        s->busses[i].bus = i2c_init_bus(dev, name, true);
+> >          memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
+> >                                &aspeed_i2c_bus_ops, &s->busses[i], name, 0x40);
+> >          memory_region_add_subregion(&s->iomem, 0x40 * (i + offset),
+> > diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+> > index d3a2989..63f922b 100644
+> > --- a/hw/i2c/bitbang_i2c.c
+> > +++ b/hw/i2c/bitbang_i2c.c
+> > @@ -220,7 +220,7 @@ static void gpio_i2c_init(Object *obj)
+> >      memory_region_init(&s->dummy_iomem, obj, "gpio_i2c", 0);
+> >      sysbus_init_mmio(sbd, &s->dummy_iomem);
+> >  
+> > -    bus = i2c_init_bus(dev, "i2c");
+> > +    bus = i2c_init_bus(dev, "i2c", true);
+> >      s->bitbang = bitbang_i2c_init(bus);
+> >  
+> >      qdev_init_gpio_in(dev, bitbang_i2c_gpio_set, 2);
+> > diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> > index abb3efb..3ab1ed5 100644
+> > --- a/hw/i2c/core.c
+> > +++ b/hw/i2c/core.c
+> > @@ -9,6 +9,7 @@
+> >  
+> >  #include "qemu/osdep.h"
+> >  #include "hw/i2c/i2c.h"
+> > +#include "qapi/error.h"
+> >  
+> >  typedef struct I2CNode I2CNode;
+> >  
+> > @@ -22,6 +23,7 @@ struct I2CBus
+> >      BusState qbus;
+> >      QLIST_HEAD(, I2CNode) current_devs;
+> >      uint8_t saved_address;
+> > +    bool broadcast_enabled;
+> >      bool broadcast;
+> >  };
+> >  
+> > @@ -45,12 +47,32 @@ static void i2c_bus_pre_save(void *opaque)
+> >  
+> >      bus->saved_address = -1;
+> >      if (!QLIST_EMPTY(&bus->current_devs)) {
+> > -        if (!bus->broadcast) {
+> > +        if (!bus->broadcast_enabled && !bus->broadcast) {
+> >              bus->saved_address = QLIST_FIRST(&bus->current_devs)->elt->address;
+> >          }
+> >      }
+> >  }
+> >  
+> > +static bool vmstate_test_use_broadcast(void *opaque)
+> > +{
+> > +    I2CBus *bus = opaque;
+> > +
+> > +    return bus->broadcast_enabled;
+> > +}
+> > +
+> > +static const VMStateDescription vmstate_broadcast_state = {
+> > +    .name = "i2c_bus/broadcast",
+> > +    .version_id = 1,
+> > +    .minimum_version_id = 1,
+> > +    .minimum_version_id_old = 1,
+> > +    .needed = vmstate_test_use_broadcast,
+> > +    .fields      = (VMStateField[]) {
+> > +        VMSTATE_BOOL(broadcast, I2CBus),
+> > +        VMSTATE_END_OF_LIST()
+> > +    }
+> > +
+> > +};
+> > +
+> >  static const VMStateDescription vmstate_i2c_bus = {
+> >      .name = "i2c_bus",
+> >      .version_id = 1,
+> > @@ -58,17 +80,21 @@ static const VMStateDescription vmstate_i2c_bus = {
+> >      .pre_save = i2c_bus_pre_save,
+> >      .fields = (VMStateField[]) {
+> >          VMSTATE_UINT8(saved_address, I2CBus),
+> > -        VMSTATE_BOOL(broadcast, I2CBus),
+> >          VMSTATE_END_OF_LIST()
+> > +    },
+> > +    .subsections = (const VMStateDescription * []) {
+> > +        &vmstate_broadcast_state,
+> > +        NULL
+> >      }
+> >  };
+> >  
+> >  /* Create a new I2C bus.  */
+> > -I2CBus *i2c_init_bus(DeviceState *parent, const char *name)
+> > +I2CBus *i2c_init_bus(DeviceState *parent, const char *name, bool broadcast)
+> >  {
+> >      I2CBus *bus;
+> >  
+> >      bus = I2C_BUS(qbus_create(TYPE_I2C_BUS, parent, name));
+> > +    bus->broadcast_enabled = broadcast;
+> >      QLIST_INIT(&bus->current_devs);
+> >      vmstate_register(NULL, -1, &vmstate_i2c_bus, bus);
+> >      return bus;
+> > diff --git a/hw/i2c/exynos4210_i2c.c b/hw/i2c/exynos4210_i2c.c
+> > index c96fa7d..1f78399 100644
+> > --- a/hw/i2c/exynos4210_i2c.c
+> > +++ b/hw/i2c/exynos4210_i2c.c
+> > @@ -309,7 +309,7 @@ static void exynos4210_i2c_init(Object *obj)
+> >                            TYPE_EXYNOS4_I2C, EXYNOS4_I2C_MEM_SIZE);
+> >      sysbus_init_mmio(sbd, &s->iomem);
+> >      sysbus_init_irq(sbd, &s->irq);
+> > -    s->bus = i2c_init_bus(dev, "i2c");
+> > +    s->bus = i2c_init_bus(dev, "i2c", true);
+> >  }
+> >  
+> >  static void exynos4210_i2c_class_init(ObjectClass *klass, void *data)
+> > diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+> > index 37e5a62..aa8fb9f 100644
+> > --- a/hw/i2c/imx_i2c.c
+> > +++ b/hw/i2c/imx_i2c.c
+> > @@ -310,7 +310,7 @@ static void imx_i2c_realize(DeviceState *dev, Error **errp)
+> >                            IMX_I2C_MEM_SIZE);
+> >      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+> >      sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+> > -    s->bus = i2c_init_bus(DEVICE(dev), "i2c");
+> > +    s->bus = i2c_init_bus(DEVICE(dev), "i2c", true);
+> >  }
+> >  
+> >  static void imx_i2c_class_init(ObjectClass *klass, void *data)
+> > diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+> > index f7c92ea..852a61d 100644
+> > --- a/hw/i2c/omap_i2c.c
+> > +++ b/hw/i2c/omap_i2c.c
+> > @@ -456,7 +456,7 @@ static void omap_i2c_init(Object *obj)
+> >      sysbus_init_irq(sbd, &s->drq[0]);
+> >      sysbus_init_irq(sbd, &s->drq[1]);
+> >      sysbus_init_mmio(sbd, &s->iomem);
+> > -    s->bus = i2c_init_bus(dev, NULL);
+> > +    s->bus = i2c_init_bus(dev, NULL, true);
+> >  }
+> >  
+> >  static void omap_i2c_realize(DeviceState *dev, Error **errp)
+> > diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+> > index 6fc3923..4e91cc1 100644
+> > --- a/hw/i2c/pm_smbus.c
+> > +++ b/hw/i2c/pm_smbus.c
+> > @@ -222,7 +222,7 @@ static const MemoryRegionOps pm_smbus_ops = {
+> >  
+> >  void pm_smbus_init(DeviceState *parent, PMSMBus *smb)
+> >  {
+> > -    smb->smbus = i2c_init_bus(parent, "i2c");
+> > +    smb->smbus = i2c_init_bus(parent, "i2c", smb->smb_broadcast_enabled);
+> >      memory_region_init_io(&smb->io, OBJECT(parent), &pm_smbus_ops, smb,
+> >                            "pm-smbus", 64);
+> >  }
+> > diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+> > index 48fab22..6e739e3 100644
+> > --- a/hw/i2c/smbus_ich9.c
+> > +++ b/hw/i2c/smbus_ich9.c
+> > @@ -86,6 +86,12 @@ static void ich9_smbus_realize(PCIDevice *d, Error **errp)
+> >                       &s->smb.io);
+> >  }
+> >  
+> > +static Property ich9_smbus_properties[] = {
+> > +    DEFINE_PROP_BOOL("smbus-broadcast-enabled", ICH9SMBState,
+> > +                     smb.smb_broadcast_enabled, true),
+> > +    DEFINE_PROP_END_OF_LIST(),
+> > +};
+> > +
+> >  static void ich9_smb_class_init(ObjectClass *klass, void *data)
+> >  {
+> >      DeviceClass *dc = DEVICE_CLASS(klass);
+> > @@ -97,6 +103,7 @@ static void ich9_smb_class_init(ObjectClass *klass, void *data)
+> >      k->class_id = PCI_CLASS_SERIAL_SMBUS;
+> >      dc->vmsd = &vmstate_ich9_smbus;
+> >      dc->desc = "ICH9 SMBUS Bridge";
+> > +    dc->props = ich9_smbus_properties;
+> >      k->realize = ich9_smbus_realize;
+> >      k->config_write = ich9_smbus_write_config;
+> >      /*
+> > diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+> > index da9f298..490c93a 100644
+> > --- a/hw/i2c/versatile_i2c.c
+> > +++ b/hw/i2c/versatile_i2c.c
+> > @@ -86,7 +86,7 @@ static void versatile_i2c_init(Object *obj)
+> >      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> >      I2CBus *bus;
+> >  
+> > -    bus = i2c_init_bus(dev, "i2c");
+> > +    bus = i2c_init_bus(dev, "i2c", true);
+> >      s->bitbang = bitbang_i2c_init(bus);
+> >      memory_region_init_io(&s->iomem, obj, &versatile_i2c_ops, s,
+> >                            "versatile_i2c", 0x1000);
+> > diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> > index e4a7ba4..47ee115 100644
+> > --- a/hw/misc/auxbus.c
+> > +++ b/hw/misc/auxbus.c
+> > @@ -214,7 +214,7 @@ static void aux_bridge_init(Object *obj)
+> >  {
+> >      AUXTOI2CState *s = AUXTOI2C(obj);
+> >  
+> > -    s->i2c_bus = i2c_init_bus(DEVICE(obj), "aux-i2c");
+> > +    s->i2c_bus = i2c_init_bus(DEVICE(obj), "aux-i2c", true);
+> >  }
+> >  
+> >  static inline I2CBus *aux_bridge_get_i2c_bus(AUXTOI2CState *bridge)
+> > -- 
+> > 2.7.4
+> >   
+> 
 

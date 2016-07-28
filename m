@@ -1,61 +1,75 @@
-Received: by 10.25.21.156 with SMTP id 28csp663032lfv;
-        Thu, 28 Jul 2016 00:52:01 -0700 (PDT)
-X-Received: by 10.200.35.44 with SMTP id a41mr56613282qta.25.1469692321448;
-        Thu, 28 Jul 2016 00:52:01 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp665267lfv;
+        Thu, 28 Jul 2016 00:58:57 -0700 (PDT)
+X-Received: by 10.237.36.173 with SMTP id t42mr54730517qtc.89.1469692737308;
+        Thu, 28 Jul 2016 00:58:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x142si7171990qka.115.2016.07.28.00.52.01
+        by mx.google.com with ESMTPS id l32si7191574qtl.100.2016.07.28.00.58.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 00:52:01 -0700 (PDT)
+        Thu, 28 Jul 2016 00:58:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@aj.id.au;
+       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51493 helo=lists.gnu.org)
+Received: from localhost ([::1]:51520 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSg6q-0004wp-TQ
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 03:52:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33528)
+	id 1bSgDY-0008GQ-Rr
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 03:58:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34680)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSg6n-0004vN-69
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 03:51:58 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bSgDU-0008FP-Rc
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 03:58:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSg6g-0003Ty-Ch
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 03:51:55 -0400
-Received: from 18.mo7.mail-out.ovh.net ([188.165.56.163]:60582)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bSg6g-0003Tq-2u
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 03:51:50 -0400
-Received: from player796.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id EB93D101013A
-	for <qemu-arm@nongnu.org>; Thu, 28 Jul 2016 09:51:44 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player796.ha.ovh.net (Postfix) with ESMTPSA id 607395C0077;
-	Thu, 28 Jul 2016 09:51:41 +0200 (CEST)
-To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <andrew@aj.id.au>) id 1bSgDQ-0004oI-08
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 03:58:52 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:42994)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <andrew@aj.id.au>)
+	id 1bSgDN-0004jy-KO; Thu, 28 Jul 2016 03:58:47 -0400
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 6CFE5BC3;
+	Thu, 28 Jul 2016 03:58:33 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute7.internal (MEProxy); Thu, 28 Jul 2016 03:58:33 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=l9YVr
+	Umr9L5IIpu466RsBpP0nV8=; b=hsGF4SFz9RQxYXVbxNfzXbJnY/2LCdu8VfoJA
+	6Tlx6Ti+NwCbmPa82DMspTylj3pXm8u2RGLNcEtcGKCwmaHIQnasyzvf9upG0v8j
+	j1QzWZrVtwf1LcOXGD3S/Uc6rAfDjT9LjIXMJ/X+xvaxn3D7sw8AdmBxCTuZj+Nb
+	/RvD+8=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-sasl-enc
+	:x-sasl-enc; s=smtpout; bh=l9YVrUmr9L5IIpu466RsBpP0nV8=; b=VT3Oi
+	EiKLe2ka6xGcJeU6t8/SNMy2OpEFDH25/AZoibP+gf9Lud0duiu+YN/CnhonRl63
+	OrtJHXanUqydLENY/Zzy6l994A17UKw9bG9h2Zz/PE1Onn/2rtZmVJkNKCxD4Xey
+	gBJxa23aI/jYxEQK2Jk+dLUiiL8iBpYHSE3Bag=
+X-Sasl-enc: 5nKnd/sLfhxqIuqNgb4GBoOMYx5CdhB/CsbbRiZYPXb9 1469692712
+Received: from keelia (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 06F31F29F4;
+	Thu, 28 Jul 2016 03:58:30 -0400 (EDT)
+Message-ID: <1469692703.5468.125.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
+	<peter.maydell@linaro.org>
+Date: Thu, 28 Jul 2016 17:28:23 +0930
+In-Reply-To: <947a8251-7bb6-ea6e-8bd0-05bdd89b9bc0@kaod.org>
 References: <1469638018-17590-1-git-send-email-clg@kaod.org>
-	<1469638018-17590-2-git-send-email-clg@kaod.org>
-	<1469672053.5468.81.camel@aj.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9316329d-c22d-aab1-c5d9-e10ab306ffb8@kaod.org>
-Date: Thu, 28 Jul 2016 09:51:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <1469672053.5468.81.camel@aj.id.au>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 13371187295660575664
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrieeigdduvdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 188.165.56.163
-Subject: Re: [Qemu-arm] [PATCH 1/6] palmetto-bmc: add a "silicon-rev"
- property at the soc level
+	<1469638018-17590-7-git-send-email-clg@kaod.org>
+	<1469682716.5468.114.camel@aj.id.au>
+	<947a8251-7bb6-ea6e-8bd0-05bdd89b9bc0@kaod.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-tc+i+4+3W3l5ItKE/1W1"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 66.111.4.221
+Subject: Re: [Qemu-arm] [PATCH 6/6] arm: add support for an ast2500
+ evaluation board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,135 +84,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PXNDDRmDcE8g
+X-TUID: HsQO6B5dDnKb
 
-On 07/28/2016 04:14 AM, Andrew Jeffery wrote:
-> On Wed, 2016-07-27 at 18:46 +0200, C=C3=A9dric Le Goater wrote:
->> The SCU controler holds the board revision number in its 0x7C
->> register. Let's use an alias to link a "silicon-rev" property of the
->> soc to the "silicon-rev" property of the SCU controler.
->>
->> The SDMC controler "silicon-rev" property is derived from the SCU one
->> at realize time. I did not find a better way to handle this part.
->> Links and aliases being a one-to-one relation, I could not use one of
->> them. I might wrong though.
+
+--=-tc+i+4+3W3l5ItKE/1W1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, 2016-07-28 at 09:15 +0200, C=C3=A9dric Le Goater wrote:
+> >=C2=A0
+> > Also, the meaning of the bits have changed from the AST2400 - they
+> > probably should be documented somewhere?
 >=20
-> Are we trying to over-use the silicon-rev value (it would seem so at
-> least in the face of the link/alias constraints)? We know which SDMC
-> revision we need for each SoC and we'll be modelling an explicit SoC
-> revision, so should we instead set a separate property on the SDMC in
-> the SoCs' respective initialise functions (and leave silicon-rev to the
-> SCU)?=20
+> So you want me send to an updated version of :
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0http://lists.nongnu.org/a=
+rchive/html/qemu-arm/2016-06/msg00698.html
+>=20
+> as a prereq ?=C2=A0
 
-This is the case. no ?=20
+I mentioned this in passing due to the discussion on my original patch.
+I think we discussed this separately and concluded the macros were
+pretty verbose given they are sort-of single-use given the value
+doesn't change. Maybe just comments as Peter was requesting? You have
+the patch below but some of the macros will be different for the
+AST2500.
 
-SCU holds the silicon-rev value. The patch adds a property alias to the=20
-SCU 'silicon-rev' property at the soc level. This is convenient for the
-platform to initialize the soc. This is similar to what the rpi2 does,
-which goes one level in the aliasing.
+I'm probably leaning towards comments over macros, but don't feel
+strongly either way.
 
-Then, at initialize time, the SCU 'silicon-rev' property value is read
-to initialize the SDMC controller. If we have more controllers in the=20
-future needing 'silicon-rev,  we could follow the same pattern. Not=20
-saying this is perfect.=20
+Andrew
 
-What I would have liked to do, is to link all the 'silicon-rev' do
-the SCU one. I did not find a way.
+>=20
+> Now that we have done the cleanups in U-Boot, we can pull from :
+>=20
+> https://github.com/openbmc/u-boot/blob/v2016.07-aspeed-openbmc/arch/arm/i=
+nclude/asm/arch-aspeed/regs-scu.h
+>=20
+> to get the definitions. I will add that.
+--=-tc+i+4+3W3l5ItKE/1W1
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-> My thought was the silicon-rev value is reflective of the SoC
-> design rather than the other way around - but maybe that's splitting
-> hairs.=20
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-ah. is your concern about which object is holding the value ? If so,
-I thought that keeping it where it belongs on real HW was the better=20
-option, that is in SCU, and then build from there.
+iQIcBAABCgAGBQJXmbsfAAoJEJ0dnzgO5LT5fpcP/0VT9U8cl8CJ+iCR+oGcHN9p
+QuMFnyUU/umejpiL5Ea3C6Ibnj0SEeiFCRe55BQnLC76cok1p1+zo6KN8Fa5yrgh
+hhIgaV5zs0nRATuKnBcNIMvn82OD3KqKgFUugt7NpuTZYcAd9dTlMkfliONBITq0
+19fsQ7cKLPoSQLsoCzGAq2RW7lWBQAraE3dKCPbJZkuvFnRtXvmSdw/rSbRwE4qz
+XbAXJlpNx1Tv6Ht5H1oFKotFAudQeeKwrAL/Nf/DvJg/MAxCtzs7wYpfylbO9C9+
+Ge4XZ4dPGybp14PuCurytDvqgEu9VzqGinGG8WaK1rYp096Se21/yblqw0TtTjmZ
+GCk7jXr8T3o93K3kpiOA9ZgYwaHnViUghy9XmEV/Z5fTUyREAd92RqY5nejcMr9p
+PyC8gdPmIutyjuTCUpjWXPINGVzTm9+thbXcs2uMmkowciZtX7zC7a+Kfy3jBqTf
+ER9ZFYA6hp3stpxLJ1FM+xzClGvnSIefz9O0393dBQqD+RMYyZWawAOvPP7S7Po/
+UmxyLUn48vE+s26uBx75YZOS6ZBvQsqwfseNggWsUxyuE9KcwlfUEOEDYrvyVOFz
+eZlFO84ea/7wSD3tst0zE4ehrJmBK4xshOW0cVQ9XSKDsvZX4xY5T3tR4HIy29PL
+V/lIAWxusOcIGzHoR5Zl
+=cqoG
+-----END PGP SIGNATURE-----
 
-> It would also be trading off a bit of ugliness in this patch for
-> potential bugs if the properties get out of sync.
-
-This is the exact the purpose of the patch ! I failed to make it feel
-that way :)=20
-
-Thanks,
-
-C.=20
-
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>  hw/arm/ast2400.c      | 18 +++++++++++++-----
->>  hw/arm/palmetto-bmc.c |  2 ++
->>  2 files changed, 15 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
->> index 136bf6464e1d..fa535065f765 100644
->> --- a/hw/arm/ast2400.c
->> +++ b/hw/arm/ast2400.c
->> @@ -84,8 +84,8 @@ static void ast2400_init(Object *obj)
->>      object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
->>      object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
->>      qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
->> -    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
->> -                         AST2400_A0_SILICON_REV);
->> +    object_property_add_alias(obj, "silicon-rev", OBJECT(&s->scu),
->> +                              "silicon-rev", &error_abort);
->>      object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
->>                                "hw-strap1", &error_abort);
->>      object_property_add_alias(obj, "hw-strap2", OBJECT(&s->scu),
->> @@ -102,8 +102,6 @@ static void ast2400_init(Object *obj)
->>      object_initialize(&s->sdmc, sizeof(s->sdmc), TYPE_ASPEED_SDMC);
->>      object_property_add_child(obj, "sdmc", OBJECT(&s->sdmc), NULL);
->>      qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get_default());
->> -    qdev_prop_set_uint32(DEVICE(&s->sdmc), "silicon-rev",
->> -                         AST2400_A0_SILICON_REV);
->>  }
->> =20
->>  static void ast2400_realize(DeviceState *dev, Error **errp)
->> @@ -111,6 +109,7 @@ static void ast2400_realize(DeviceState *dev, Erro=
-r **errp)
->>      int i;
->>      AST2400State *s =3D AST2400(dev);
->>      Error *err =3D NULL, *local_err =3D NULL;
->> +    uint32_t silicon_rev;
->> =20
->>      /* IO space */
->>      memory_region_init_io(&s->iomem, NULL, &ast2400_io_ops, NULL,
->> @@ -192,7 +191,16 @@ static void ast2400_realize(DeviceState *dev, Err=
-or **errp)
->>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, AST2400_SPI_FLASH_BAS=
-E);
->> =20
->>      /* SDMC - SDRAM Memory Controller */
->> -    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err=
-);
->> +    silicon_rev =3D (uint32_t)
->> +        object_property_get_int(OBJECT(&s->scu), "silicon-rev", &err)=
-;
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +
->> +    object_property_set_int(OBJECT(&s->sdmc), silicon_rev, "silicon-r=
-ev", &err);
->> +    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &loc=
-al_err);
->> +    error_propagate(&err, local_err);
->>      if (err) {
->>          error_propagate(errp, err);
->>          return;
->> diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
->> index 54e29a865d88..1ee13d578899 100644
->> --- a/hw/arm/palmetto-bmc.c
->> +++ b/hw/arm/palmetto-bmc.c
->> @@ -74,6 +74,8 @@ static void palmetto_bmc_init(MachineState *machine)
->>                                     &error_abort);
->>      object_property_set_int(OBJECT(&bmc->soc), 0x120CE416, "hw-strap1=
-",
->>                              &error_abort);
->> +    object_property_set_int(OBJECT(&bmc->soc), AST2400_A0_SILICON_REV=
-,
->> +                            "silicon-rev", &error_abort);
->>      object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
->>                               &error_abort);
->> =20
+--=-tc+i+4+3W3l5ItKE/1W1--
 

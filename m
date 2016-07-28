@@ -1,73 +1,73 @@
-Received: by 10.25.21.156 with SMTP id 28csp564007lfv;
-        Wed, 27 Jul 2016 19:37:47 -0700 (PDT)
-X-Received: by 10.55.57.134 with SMTP id g128mr7471378qka.10.1469673467533;
-        Wed, 27 Jul 2016 19:37:47 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp566515lfv;
+        Wed, 27 Jul 2016 19:46:13 -0700 (PDT)
+X-Received: by 10.55.48.19 with SMTP id w19mr41255382qkw.141.1469673973864;
+        Wed, 27 Jul 2016 19:46:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 6si6458453qkp.262.2016.07.27.19.37.47
+        by mx.google.com with ESMTPS id j3si6489671qkd.136.2016.07.27.19.46.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Jul 2016 19:37:47 -0700 (PDT)
+        Wed, 27 Jul 2016 19:46:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@aj.id.au;
        dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50514 helo=lists.gnu.org)
+Received: from localhost ([::1]:50542 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSbCk-0000xu-To
-	for alex.bennee@linaro.org; Wed, 27 Jul 2016 22:37:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40427)
+	id 1bSbKv-0004co-A3
+	for alex.bennee@linaro.org; Wed, 27 Jul 2016 22:46:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41487)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bSbCh-0000xb-2h
-	for qemu-arm@nongnu.org; Wed, 27 Jul 2016 22:37:44 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bSbKr-0004cX-9E
+	for qemu-arm@nongnu.org; Wed, 27 Jul 2016 22:46:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bSbCc-0007St-Ss
-	for qemu-arm@nongnu.org; Wed, 27 Jul 2016 22:37:42 -0400
-Received: from new1-smtp.messagingengine.com ([66.111.4.221]:36291)
+	(envelope-from <andrew@aj.id.au>) id 1bSbKo-0001W4-4m
+	for qemu-arm@nongnu.org; Wed, 27 Jul 2016 22:46:09 -0400
+Received: from new1-smtp.messagingengine.com ([66.111.4.221]:56935)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <andrew@aj.id.au>)
-	id 1bSbCa-0007QA-JX; Wed, 27 Jul 2016 22:37:38 -0400
+	id 1bSbKl-0001Rg-RF; Wed, 27 Jul 2016 22:46:06 -0400
 Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
-	by mailnew.nyi.internal (Postfix) with ESMTP id B90351B65;
-	Wed, 27 Jul 2016 22:37:24 -0400 (EDT)
+	by mailnew.nyi.internal (Postfix) with ESMTP id 62C9211E5;
+	Wed, 27 Jul 2016 22:45:50 -0400 (EDT)
 Received: from frontend2 ([10.202.2.161])
-	by compute7.internal (MEProxy); Wed, 27 Jul 2016 22:37:24 -0400
+	by compute7.internal (MEProxy); Wed, 27 Jul 2016 22:45:50 -0400
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
 	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=KS6Tp
-	U1edpk0IozQjmvD9yt0WNo=; b=P/lB3P+ymLQk8RHOaIzEL+bpY4rrisnejdUk6
-	a4BpElsVl4mTJ4NfFzzFcDaLxKDLUBhiBCZ/vD5fhQWkAuYEYYW2EoVuITvnvvHb
-	vz9KZy+vuEGAj8OqMcD0LN07YWTnHlSQDLWJbBzU/EWH3wFi4AAbr0yPbwvFTljk
-	ZtoVes=
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=DQE09
+	zWdOwOXgNZHZwxfgd1+m78=; b=Dk6Sj5AbrL+Ftx6CHhNQL5TIQq8MzPiSUyqFZ
+	6sG+nhtw1DssXsViKMOxHwuO3NSmQqF36j4mS4i+QqaX3eIml+ddNTOhpNbpoLbu
+	QRkT00Zlncjx/C7Jf//0zpzgh9rZQKyQahQqho8k8DrxfSOpSFGWxomPJE8FCmcD
+	dwVVXk=
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to:x-sasl-enc
-	:x-sasl-enc; s=smtpout; bh=KS6TpU1edpk0IozQjmvD9yt0WNo=; b=qB/g/
-	98fuMwA/GoGqA1OM8wKotj1AOCDwjvCt7NyTqvG9t1Unw4+ooRAQ3V6USXUl6hnw
-	FjauSDSCcswf2puL6G7GrIeyOomzuzUkM4yw+NbdPgicVHmiTMhU0FyN10RK62l2
-	yBVVbO+/raYIdV9KwsCEDSYHytUrpQ9umnoORA=
-X-Sasl-enc: THtpOPYwlMtSQ/plxzouKSAVqe1CxIFpO9B21PEn5VCq 1469673443
+	:x-sasl-enc; s=smtpout; bh=DQE09zWdOwOXgNZHZwxfgd1+m78=; b=Ng8xE
+	Ves9nsHxpARNfGnd2W+/oWcAO1GuHHywOMZ1eCwdn0lVzDqCyByufYLJL1viTGmo
+	4dQ6wszgKizfjPQnC2jdnpndJiKnC8gQZ5SIw92bTIrSTeVpZ6pzXvQPfjwkHagu
+	Q1h5tebORNuxlZZC2GXRus+nP/y5GEuxj96tWw=
+X-Sasl-enc: hxGC+Ag78wyNFYyYcyDSGDsO3WpP6hsb406cwLj1muXB 1469673949
 Received: from keelia (unknown [203.0.153.9])
-	by mail.messagingengine.com (Postfix) with ESMTPA id E881ECCDB1;
-	Wed, 27 Jul 2016 22:37:21 -0400 (EDT)
-Message-ID: <1469673438.5468.89.camel@aj.id.au>
+	by mail.messagingengine.com (Postfix) with ESMTPA id A55C6CCDB1;
+	Wed, 27 Jul 2016 22:45:47 -0400 (EDT)
+Message-ID: <1469673943.5468.94.camel@aj.id.au>
 From: Andrew Jeffery <andrew@aj.id.au>
 To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
 	<peter.maydell@linaro.org>
-Date: Thu, 28 Jul 2016 12:07:18 +0930
-In-Reply-To: <1469638018-17590-4-git-send-email-clg@kaod.org>
+Date: Thu, 28 Jul 2016 12:15:43 +0930
+In-Reply-To: <1469638018-17590-5-git-send-email-clg@kaod.org>
 References: <1469638018-17590-1-git-send-email-clg@kaod.org>
-	<1469638018-17590-4-git-send-email-clg@kaod.org>
+	<1469638018-17590-5-git-send-email-clg@kaod.org>
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-jVozKiq5XacEIpj6ikXJ"
+	protocol="application/pgp-signature"; boundary="=-Byuravp6aYz1JatHzP8Y"
 X-Mailer: Evolution 3.18.5.2-0ubuntu3 
 Mime-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 66.111.4.221
-Subject: Re: [Qemu-arm] [PATCH 3/6] ast2400: use machine cpu_model to
- initialize the soc cpu
+Subject: Re: [Qemu-arm] [PATCH 4/6] palmetto-bmc: add board specific
+ configuration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,81 +82,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y5T6SuAMZf/7
+X-TUID: FgyYARmDhlPL
 
 
---=-jVozKiq5XacEIpj6ikXJ
+--=-Byuravp6aYz1JatHzP8Y
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
 
-On Wed, 2016-07-27 at 18:46 +0200, C=C3=A9dric Le Goater wrote:
-> It will be easier to specify a different cpu for other soc derived
-> from the ast2400 soc.
->=20
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
-> =C2=A0hw/arm/ast2400.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0| 8 +++++++-
-> =C2=A0hw/arm/palmetto-bmc.c | 1 +
-> =C2=A02 files changed, 8 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/arm/ast2400.c b/hw/arm/ast2400.c
-> index fa535065f765..7f3517a2c6c6 100644
-> --- a/hw/arm/ast2400.c
-> +++ b/hw/arm/ast2400.c
-> @@ -15,6 +15,7 @@
-> =C2=A0#include "qemu-common.h"
-> =C2=A0#include "cpu.h"
-> =C2=A0#include "exec/address-spaces.h"
-> +#include "hw/boards.h"
-> =C2=A0#include "hw/arm/ast2400.h"
-> =C2=A0#include "hw/char/serial.h"
-> =C2=A0#include "qemu/log.h"
-> @@ -65,9 +66,14 @@ static const MemoryRegionOps ast2400_io_ops =3D {
-> =C2=A0
-> =C2=A0static void ast2400_init(Object *obj)
-> =C2=A0{
-> +=C2=A0=C2=A0=C2=A0=C2=A0const char *cpu_model =3D current_machine->cpu_m=
-odel;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AST2400State *s =3D AST2400(obj);
-> =C2=A0
-> -=C2=A0=C2=A0=C2=A0=C2=A0s->cpu =3D cpu_arm_init("arm926");
-> +=C2=A0=C2=A0=C2=A0=C2=A0if (!cpu_model) {
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0cpu_model =3D "arm926";
-> +=C2=A0=C2=A0=C2=A0=C2=A0}
-> +
-> +=C2=A0=C2=A0=C2=A0=C2=A0s->cpu =3D cpu_arm_init(cpu_model);
+T24gV2VkLCAyMDE2LTA3LTI3IGF0IDE4OjQ2ICswMjAwLCBDw6lkcmljIExlIEdvYXRlciB3cm90
+ZToKPiBhc3BlZWRfaW5pdCgpIG5vdyB1c2VzIGEgYm9hcmQgaWRlbnRpZmllciB0byBjdXN0b21p
+emUgc29tZSB2YWx1ZXMKPiBzcGVjaWZpYyB0byB0aGUgYm9hcmQsIHJhbSBiYXNlLCBib2FyZCBy
+ZXZpc2lvbiBudW1iZXIsIGV0Yy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRl
+ciA8Y2xnQGthb2Qub3JnPgoKTG9va3Mgb2theSB0byBtZSwgc29tZSBtaW5vciBjb21tZW50cyBi
+ZWxvdzoKCj4gLS0tCj4gwqBody9hcm0vcGFsbWV0dG8tYm1jLmMgfCAzNCArKysrKysrKysrKysr
+KysrKysrKysrKysrKy0tLS0tLS0tCj4gwqAxIGZpbGUgY2hhbmdlZCwgMjYgaW5zZXJ0aW9ucygr
+KSwgOCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3BhbG1ldHRvLWJtYy5j
+IGIvaHcvYXJtL3BhbG1ldHRvLWJtYy5jCj4gaW5kZXggOGEzZmY1NTY4NTc1Li5jZDhhYTU5NzU2
+YjkgMTAwNjQ0Cj4gLS0tIGEvaHcvYXJtL3BhbG1ldHRvLWJtYy5jCj4gKysrIGIvaHcvYXJtL3Bh
+bG1ldHRvLWJtYy5jCj4gQEAgLTIyLDggKzIyLDYgQEAKPiDCoCNpbmNsdWRlICJzeXNlbXUvYmxv
+Y2tkZXYuaCIKPiDCoAo+IMKgc3RhdGljIHN0cnVjdCBhcm1fYm9vdF9pbmZvIGFzcGVlZF9iaW5m
+byA9IHsKPiAtwqDCoMKgwqAubG9hZGVyX3N0YXJ0ID0gQVNUMjQwMF9TRFJBTV9CQVNFLAo+IC3C
+oMKgwqDCoC5ib2FyZF9pZCA9IDAsCj4gwqDCoMKgwqDCoC5uYl9jcHVzID0gMSwKPiDCoH07Cj4g
+wqAKPiBAQCAtMzIsNiArMzAsMjEgQEAgdHlwZWRlZiBzdHJ1Y3QgQXNwZWVkQm9hcmRTdGF0ZSB7
+Cj4gwqDCoMKgwqDCoE1lbW9yeVJlZ2lvbiByYW07Cj4gwqB9IEFzcGVlZEJvYXJkU3RhdGU7Cj4g
+wqAKPiArdHlwZWRlZiBzdHJ1Y3QgQXNwZWVkQm9hcmRDb25maWcgewo+ICvCoMKgwqDCoHVpbnQz
+Ml90IGh3X3N0cmFwMTsKPiArwqDCoMKgwqB1aW50MzJfdCBzaWxpY29uX3JldjsKPiArwqDCoMKg
+wqBod2FkZHIgc2RyYW1fYmFzZTsKPiArfSBBc3BlZWRCb2FyZENvbmZpZzsKPiArCj4gK2VudW0g
+ewo+ICvCoMKgwqDCoFBBTE1FVFRPX0JNQwo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IEFzcGVl
+ZEJvYXJkQ29uZmlnIGFzcGVlZF9ib2FyZHNbXSA9IHsKPiArwqDCoMKgwqBbIFBBTE1FVFRPX0JN
+QyBdID0geyAweDEyMENFNDE2LCBBU1QyNDAwX0EwX1NJTElDT05fUkVWLAo+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoEFTVDI0MDBfU0RSQU1fQkFT
+RSB9LAoKSSB3YXMgcGxheWluZyBhcm91bmQgYmVmb3JlIGFuZCBteSB0ZXN0IHNjcmlwdHMgbm90
+aWNlZCBjaGVja3BhdGNoCmNvbXBsYWluZWQgYWJvdXQgdGhlIHNwYWNpbmcgd2l0aCB0aGUgYXJy
+YXkgaW5kZXhpbmc6ICJbUEFMTUVUVE9fQk1DXSIKZml4ZWQgdGhlIGVycm9yLgoKPiArfTsKPiAr
+Cj4gwqBzdGF0aWMgdm9pZCBhc3BlZWRfaW5pdF9mbGFzaGVzKEFzcGVlZFNNQ1N0YXRlICpzLCBj
+b25zdCBjaGFyICpmbGFzaHR5cGUsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgRXJyb3IgKiplcnJwKQo+IMKgewo+IEBA
+IC01OCw3ICs3MSw3IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9pbml0X2ZsYXNoZXMoQXNwZWVkU01D
+U3RhdGUgKnMsIGNvbnN0IGNoYXIgKmZsYXNodHlwZSwKPiDCoMKgwqDCoMKgfQo+IMKgfQo+IMKg
+Cj4gLXN0YXRpYyB2b2lkIGFzcGVlZF9pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGluZSkKPiArc3Rh
+dGljIHZvaWQgYXNwZWVkX2luaXQoTWFjaGluZVN0YXRlICptYWNoaW5lLCBpbnQgYm9hcmRfbW9k
+ZWwpCgpJIGZlZWwgbGlrZSB3ZSBzaG91bGQgcGFzcyBhICJzdHJ1Y3QgQXNwZWVkQm9hcmRDb25m
+aWcgKiIgcmF0aGVyIHRoYW4KdGhlICJpbnQgYm9hcmRfbW9kZWwiLCBjbGVhbmluZyB1cCB0aGUg
+cmVwZWF0ZWQgaW5kZXhpbmcgaW50bwphc3BlZWRfYm9hcmRzIHRoZSBib2R5LiBUaG91Z2h0cz8g
+PC9iaWtlc2hlZD4KCkFuZHJldwoKPiDCoHsKPiDCoMKgwqDCoMKgQXNwZWVkQm9hcmRTdGF0ZSAq
+Ym1jOwo+IMKgCj4gQEAgLTY4LDEzICs4MSwxNiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfaW5pdChN
+YWNoaW5lU3RhdGUgKm1hY2hpbmUpCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAmZXJyb3JfYWJvcnQpOwo+IMKgCj4gwqDCoMKg
+wqDCoG1lbW9yeV9yZWdpb25fYWxsb2NhdGVfc3lzdGVtX21lbW9yeSgmYm1jLT5yYW0sIE5VTEws
+ICJyYW0iLCByYW1fc2l6ZSk7Cj4gLcKgwqDCoMKgbWVtb3J5X3JlZ2lvbl9hZGRfc3VicmVnaW9u
+KGdldF9zeXN0ZW1fbWVtb3J5KCksIEFTVDI0MDBfU0RSQU1fQkFTRSwKPiArwqDCoMKgwqBtZW1v
+cnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oZ2V0X3N5c3RlbV9tZW1vcnkoKSwKPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFz
+cGVlZF9ib2FyZHNbYm9hcmRfbW9kZWxdLnNkcmFtX2Jhc2UsCj4gwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgJmJtYy0+cmFt
+KTsKPiDCoMKgwqDCoMKgb2JqZWN0X3Byb3BlcnR5X2FkZF9jb25zdF9saW5rKE9CSkVDVCgmYm1j
+LT5zb2MpLCAicmFtIiwgT0JKRUNUKCZibWMtPnJhbSksCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgJmVycm9y
+X2Fib3J0KTsKPiAtwqDCoMKgwqBvYmplY3RfcHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJmJtYy0+
+c29jKSwgMHgxMjBDRTQxNiwgImh3LXN0cmFwMSIsCj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgJmVycm9yX2Fib3J0KTsKPiAtwqDCoMKg
+wqBvYmplY3RfcHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJmJtYy0+c29jKSwgQVNUMjQwMF9BMF9T
+SUxJQ09OX1JFViwKPiArwqDCoMKgwqBvYmplY3RfcHJvcGVydHlfc2V0X2ludChPQkpFQ1QoJmJt
+Yy0+c29jKSwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqBhc3BlZWRfYm9hcmRzW2JvYXJkX21vZGVsXS5od19zdHJhcDEsCj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgImh3LXN0
+cmFwMSIsICZlcnJvcl9hYm9ydCk7Cj4gK8KgwqDCoMKgb2JqZWN0X3Byb3BlcnR5X3NldF9pbnQo
+T0JKRUNUKCZibWMtPnNvYyksCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgYXNwZWVkX2JvYXJkc1tib2FyZF9tb2RlbF0uc2lsaWNvbl9y
+ZXYsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCJzaWxpY29uLXJldiIsICZlcnJvcl9hYm9ydCk7Cj4gwqDCoMKgwqDCoG9iamVjdF9w
+cm9wZXJ0eV9zZXRfYm9vbChPQkpFQ1QoJmJtYy0+c29jKSwgdHJ1ZSwgInJlYWxpemVkIiwKPiDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAmZXJyb3JfYWJvcnQpOwo+IEBAIC04NiwxMyArMTAyLDE1IEBAIHN0YXRpYyB2b2lkIGFzcGVl
+ZF9pbml0KE1hY2hpbmVTdGF0ZSAqbWFjaGluZSkKPiDCoMKgwqDCoMKgYXNwZWVkX2JpbmZvLmlu
+aXRyZF9maWxlbmFtZSA9IG1hY2hpbmUtPmluaXRyZF9maWxlbmFtZTsKPiDCoMKgwqDCoMKgYXNw
+ZWVkX2JpbmZvLmtlcm5lbF9jbWRsaW5lID0gbWFjaGluZS0+a2VybmVsX2NtZGxpbmU7Cj4gwqDC
+oMKgwqDCoGFzcGVlZF9iaW5mby5yYW1fc2l6ZSA9IHJhbV9zaXplOwo+ICvCoMKgwqDCoGFzcGVl
+ZF9iaW5mby5sb2FkZXJfc3RhcnQgPSBhc3BlZWRfYm9hcmRzW2JvYXJkX21vZGVsXS5zZHJhbV9i
+YXNlLAo+ICvCoMKgwqDCoGFzcGVlZF9iaW5mby5ib2FyZF9pZCA9IGFzcGVlZF9ib2FyZHNbYm9h
+cmRfbW9kZWxdLnNpbGljb25fcmV2LAo+IMKgwqDCoMKgwqBhcm1fbG9hZF9rZXJuZWwoQVJNX0NQ
+VShmaXJzdF9jcHUpLCAmYXNwZWVkX2JpbmZvKTsKPiDCoH0KPiDCoAo+IMKgc3RhdGljIHZvaWQg
+cGFsbWV0dG9fYm1jX2luaXQoTWFjaGluZVN0YXRlICptYWNoaW5lKQo+IMKgewo+IMKgwqDCoMKg
+wqBtYWNoaW5lLT5jcHVfbW9kZWwgPSAiYXJtOTI2IjsKPiAtwqDCoMKgwqBhc3BlZWRfaW5pdCht
+YWNoaW5lKTsKPiArwqDCoMKgwqBhc3BlZWRfaW5pdChtYWNoaW5lLCBQQUxNRVRUT19CTUMpOwo+
+IMKgfQo+IMKgCj4gwqBzdGF0aWMgdm9pZCBwYWxtZXR0b19ibWNfY2xhc3NfaW5pdChPYmplY3RD
+bGFzcyAqb2MsIHZvaWQgKmRhdGEp
 
-I did a similar thing in the series introducing the AST2400 SoC, and
-Peter had a comment on the approach[1]:
 
-    What we do now is not let the user override the cpu model at all;
-    presumably this SoC only ever has an ARM926 and it doesn't make
-    any sense to have some frankenstein "this SoC but with a different
-    CPU in it" config.
-
-Given this is the ast2400_init() it looks to me like we should be
-hardwiring the CPU rather than leaving it to the machine to define.
-
-[1]=C2=A0https://patchwork.kernel.org/patch/8325651/=C2=A0
-
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_initialize(&s->vic, sizeof(s->vic), =
-TYPE_ASPEED_VIC);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_child(obj, "vic", OBJEC=
-T(&s->vic), NULL);
-> diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
-> index f80a15733864..8a3ff5568575 100644
-> --- a/hw/arm/palmetto-bmc.c
-> +++ b/hw/arm/palmetto-bmc.c
-> @@ -91,6 +91,7 @@ static void aspeed_init(MachineState *machine)
-> =C2=A0
-> =C2=A0static void palmetto_bmc_init(MachineState *machine)
-> =C2=A0{
-> +=C2=A0=C2=A0=C2=A0=C2=A0machine->cpu_model =3D "arm926";
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0aspeed_init(machine);
-> =C2=A0}
-> =C2=A0
---=-jVozKiq5XacEIpj6ikXJ
+--=-Byuravp6aYz1JatHzP8Y
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
@@ -164,20 +178,20 @@ Content-Transfer-Encoding: 7bit
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCgAGBQJXmW/eAAoJEJ0dnzgO5LT5neYQAIqvF9yXmd4BqX5YEDgOFTxB
-2HS/LQVr/g73yG1aZEvKgtwKz8jFw1WJ8j6l/YbnbStoov/Lh7I1ZCrWYmBVepeh
-MxIYPhi85DQfX9N0KF0EiLREZhjys6XLw6F7lTiSI39iD9id8Pwm8STr3u0Je81l
-AQ0Cr4Uj7e7wFB/rtAbeZsmSpgroAUh2tnL6/ua4jF/XIuxyHxR6BlREo5tCDBLI
-bCFC395lc+o6KDguxKD4ryRtcAJB1AdtFmRqvDY3Gel++bBMroB9EMGVBZR29ALp
-szo8B3K1IACz7Fw8NxgDNR1TjFLk7yF1FRLqvuqwuAANjpHsVbfx/5fXVaGU5Ksn
-Kbc3PYB3xJ2RabtbzecIE0fvUBkZGNTyDfBZmkRtCaWvX5Cw2lbUhJTDcqC+ssir
-mGVqsoDqJxp+xKEfxVvpyCyoZZGlmiF3SeVggLYFkOoFMgJs+M1iMz3sbH5cKppL
-odpTjwEwy5FOwFKUNKS52nameETt2q5x/W0fc7KkgLvFOwlcWQBVDIE+t3TmPd5N
-92eu1won9sCNJelCMB6lncFpk606cA1SMTj1Ui/TTO5kpeQAyw2GFLRlVgvFksZV
-dUgOlx2c4s5vKvFv6DWZAtyp8s4vvAED+4TBg0DybTEZaI28NR+cKGm/vmNifFwt
-Yolfoc99uRigpL7ykbDU
-=MOTU
+iQIcBAABCgAGBQJXmXHXAAoJEJ0dnzgO5LT5huoP/3l3snOEJttY/qOM2pAfMqyz
+nFxjVxejj7M1gk9H4qvXXnfM0aVufvR8gA9QXYQRUhvlXLgYKAP/+VkdUCSAP+1i
+2WKTdmGVqH6dA2SFZcNYLm2eZrGG0DougmXRs5fCOC186nTFlFU1NKkOODHBArwF
+YhpPT5rndfiSsRMGEJUjuCqKef7FVB3+DRLpS1mpoeKvl2cwXufVyaF4UY7VgnuW
+4HBZODIJVkkNVjsCNVB+/0Ro36kckYsN4kv329mlXBz0pcEbZxJMhCSN+RhQhUNo
+v1RmDJoDJ9S7qYMuK/4E1zAEiSxqZZ/qI7Ga2iN73UjsCRlhdFg9OJpi0e+lSh0T
+PCJ4s1yrxqrqePPdBjP1oVzU6vuv3fGUZf3P+xZcyaCEnM2A0P7kDPIgoa1dFUr2
+DxpNgxGgUKkIG5G495DKLGT9ocLGbdcuZZF7D4mwmnVGfXFoe+ttMu/O4aAIewiv
+zjZUmaPYSBr6FrS5EEcs0Qx1EvHb/J8J6tTiG0tpgEimGX4VZXFLWt0gtZo0pQf2
+9MTNQ0KnwJ0sZCCLsqmXWFelDBO3+PMS9PK9CaCgtM0U+82ISQK0sEk3K86ckiBk
+yXVkwnHKusBN8dAYh33qoU0pfLfw36M+6ohFb/iKv+w0RbG0hwE2Dd9hdw56QtED
+WWQj2tAuBu3YHZf5SNxZ
+=0fTO
 -----END PGP SIGNATURE-----
 
---=-jVozKiq5XacEIpj6ikXJ--
+--=-Byuravp6aYz1JatHzP8Y--
 

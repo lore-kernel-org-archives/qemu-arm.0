@@ -1,58 +1,73 @@
-Received: by 10.25.21.156 with SMTP id 28csp841671lfv;
-        Thu, 28 Jul 2016 07:40:13 -0700 (PDT)
-X-Received: by 10.55.97.80 with SMTP id v77mr45427692qkb.41.1469716813728;
-        Thu, 28 Jul 2016 07:40:13 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp898105lfv;
+        Thu, 28 Jul 2016 09:33:51 -0700 (PDT)
+X-Received: by 10.55.212.134 with SMTP id s6mr45138046qks.109.1469723631208;
+        Thu, 28 Jul 2016 09:33:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d64si8171760qkc.301.2016.07.28.07.40.13
+        by mx.google.com with ESMTPS id 71si6655803qku.207.2016.07.28.09.33.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 07:40:13 -0700 (PDT)
+        Thu, 28 Jul 2016 09:33:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53675 helo=lists.gnu.org)
+Received: from localhost ([::1]:54578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSmTt-0000zq-3l
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 10:40:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38440)
+	id 1bSoFq-0001L7-IJ
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 12:33:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44490)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSmJY-0008Cf-Nr
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:29:36 -0400
+	(envelope-from <alistair23@gmail.com>) id 1bSoFk-0001K7-4B
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:33:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSmJT-00060y-5q
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:29:31 -0400
-Received: from 16.mo7.mail-out.ovh.net ([46.105.72.216]:34658)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bSmJS-00060p-WE
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:29:27 -0400
-Received: from player796.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 7FB621010444
-	for <qemu-arm@nongnu.org>; Thu, 28 Jul 2016 16:29:21 +0200 (CEST)
-Received: from hermes.ibm.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player796.ha.ovh.net (Postfix) with ESMTPSA id 435855C0098;
-	Thu, 28 Jul 2016 16:29:16 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jul 2016 16:28:18 +0200
-Message-Id: <1469716099-8975-9-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.1.4
-In-Reply-To: <1469716099-8975-1-git-send-email-clg@kaod.org>
-References: <1469716099-8975-1-git-send-email-clg@kaod.org>
+	(envelope-from <alistair23@gmail.com>) id 1bSoFi-0003wZ-Up
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:33:44 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:32986)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alistair23@gmail.com>)
+	id 1bSoFi-0003vU-Q8; Thu, 28 Jul 2016 12:33:42 -0400
+Received: by mail-oi0-x242.google.com with SMTP id l9so4995577oih.0;
+	Thu, 28 Jul 2016 09:33:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=TfUVp+oRGv57n+Q9wyCSyRWpigeDkzq0bBO86ABiRHY=;
+	b=kP3VxtQ0ywXfpFAXgS0YI0j+jur+JnLWieh365wSgrG3r3zWc8HAT++OLP2AzPPl8v
+	DEPOzdUSLO8PFizfQoXckztwsQGItldREkhUyGK6PY7co52Q0MBCDM10oscIDySVnkjV
+	qXhV0Xr+kUTHI2A5LpryAv0y33Tihs/IzoomPaV+0XIXW8XYRgY3LpPDW2shTmTeWsWO
+	GO676z+CWJhB4UjsAo8mNMpq4wfqd8vE5xtGsObEv26YDrrWRH/9yHifi9qvBIRYgr/O
+	gyL4Fx2Z+c+hhRcs/KPy+qtZNt8LzJVAMdmeWxC/eg3LcGevhK/un7SRmX8CjvKQ7LeP
+	mahQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=TfUVp+oRGv57n+Q9wyCSyRWpigeDkzq0bBO86ABiRHY=;
+	b=Li8LAUWa0zHiaW+GzkTcxpYdqLuprC3EOT25VvmsrQj2yv6N/OCyHMKcuzABJezj8X
+	ocP8k+wBx7g+tvRglZg/xoK/WTDpza3NDEq8Tu7MyEK7pGp4kcPhwukvw7rpId0+T9Tk
+	gRHH9t7TMNppd4ktiEFbQECSd3yEi+fB9ky8b6OzPalFpwkTAJKX8Wx0dPu5/BzHPN4W
+	FSEauQ0U6lN4ggYuKXUl/fcaG1ZqfWH2NRdU0gPQvaILvx6xRRnzXnfyPEM14qJh3yO+
+	xXY262EuD9PoBCauy0Eq+5DQ/3Y+oCQyQNZjSoFXxbFO4BI9PMMjuTp2xXQrvYUNwmX2
+	17UA==
+X-Gm-Message-State: AEkoouvaOSQXA6m2AJ4C9MvL4FQuE05g4CJtPI7cqG9zUxUdBA+y6gLr43pwBcT2tvEMnDBJy5NKZ8K2savi1w==
+X-Received: by 10.157.41.134 with SMTP id n6mr20463845otb.69.1469723620980;
+	Thu, 28 Jul 2016 09:33:40 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.182.14.72 with HTTP; Thu, 28 Jul 2016 09:33:11 -0700 (PDT)
+In-Reply-To: <CAFEAcA_UPR+nyBPX2qSPiX1j=fVkg9-+7FCo2bxX7RpmftfNKQ@mail.gmail.com>
+References: <CAFEAcA_UPR+nyBPX2qSPiX1j=fVkg9-+7FCo2bxX7RpmftfNKQ@mail.gmail.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 28 Jul 2016 09:33:11 -0700
+X-Google-Sender-Auth: ntxN-44UrFnB4ADpUAX_9cbNtJ0
+Message-ID: <CAKmqyKNxG4rNa6Nke6nXzXN1frRnkMYM3cy6p3Gr3sOGv-8n1A@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1639591741863201553
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrieejgdejjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 46.105.72.216
-Subject: [Qemu-arm] [PATCH v2 8/9] arm: add support for an ast2500
- evaluation board
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 4/6] cadence_gem: Add queue
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,97 +79,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gP5LNpSUi5jY
+X-TUID: EijEVWfe54Fz
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
+On Thu, Jul 28, 2016 at 2:39 AM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 26 July 2016 at 19:25, Alistair Francis <alistair.francis@xilinx.com> wrote:
+>> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+>> ---
+>>
+>> There is a indentation error in this patch in the gem_transmit function.
+>> I have written it like that to make it easier to see the changes. It is
+>> fixed in the next patch.
+>
+>> @@ -1417,8 +1500,8 @@ static void gem_init(Object *obj)
+>>
+>>  static const VMStateDescription vmstate_cadence_gem = {
+>>      .name = "cadence_gem",
+>> -    .version_id = 3,
+>> -    .minimum_version_id = 3,
+>> +    .version_id = 4,
+>> +    .minimum_version_id = 4,
+>>      .fields = (VMStateField[]) {
+>>          VMSTATE_UINT32_ARRAY(regs, CadenceGEMState, CADENCE_GEM_MAXREG),
+>>          VMSTATE_UINT16_ARRAY(phy_regs, CadenceGEMState, 32),
+>
+> This bit should have moved into the other patch with the change of
+> the CADENCE_GEM_MAXREG define, right?
 
- Changes since v1:
+Woops, I have moved it to the previous patch.
 
- - changed AST2500_EDK to AST2500_EVB
- - fixed white space issues
- - added AST2500_HW_STRAP1=20
+>
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
- hw/arm/aspeed.c          | 31 ++++++++++++++++++++++++++++++-
- include/hw/arm/ast2400.h |  5 +++++
- 2 files changed, 35 insertions(+), 1 deletion(-)
+Thanks!
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index b5d34a3a0367..c8812cc358bb 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -37,12 +37,15 @@ typedef struct AspeedBoardConfig {
- } AspeedBoardConfig;
-=20
- enum {
--    PALMETTO_BMC
-+    PALMETTO_BMC,
-+    AST2500_EVB
- };
-=20
- static const AspeedBoardConfig aspeed_boards[] =3D {
-     [PALMETTO_BMC] =3D { AST2400_HW_STRAP1, AST2400_A0_SILICON_REV,
-                        AST2400_SDRAM_BASE },
-+    [AST2500_EVB]  =3D { AST2500_HW_STRAP1, AST2500_A1_SILICON_REV,
-+                       AST2500_SDRAM_BASE },
- };
-=20
- static void aspeed_init_flashes(AspeedSMCState *s, const char *flashtype=
-,
-@@ -130,9 +133,35 @@ static const TypeInfo palmetto_bmc_type =3D {
-     .class_init =3D palmetto_bmc_class_init,
- };
-=20
-+static void ast2500_evb_init(MachineState *machine)
-+{
-+    machine->cpu_model =3D "arm1176";
-+    aspeed_init(machine, &aspeed_boards[AST2500_EVB]);
-+}
-+
-+static void ast2500_evb_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc =3D MACHINE_CLASS(oc);
-+
-+    mc->desc =3D "Aspeed AST2500 EVB (ARM1176)";
-+    mc->init =3D ast2500_evb_init;
-+    mc->max_cpus =3D 1;
-+    mc->no_sdcard =3D 1;
-+    mc->no_floppy =3D 1;
-+    mc->no_cdrom =3D 1;
-+    mc->no_parallel =3D 1;
-+}
-+
-+static const TypeInfo ast2500_evb_type =3D {
-+    .name =3D MACHINE_TYPE_NAME("ast2500-evb"),
-+    .parent =3D TYPE_MACHINE,
-+    .class_init =3D ast2500_evb_class_init,
-+};
-+
- static void aspeed_machine_init(void)
- {
-     type_register_static(&palmetto_bmc_type);
-+    type_register_static(&ast2500_evb_type);
- }
-=20
- type_init(aspeed_machine_init)
-diff --git a/include/hw/arm/ast2400.h b/include/hw/arm/ast2400.h
-index e68807d475b7..2e6864f88790 100644
---- a/include/hw/arm/ast2400.h
-+++ b/include/hw/arm/ast2400.h
-@@ -41,4 +41,9 @@ typedef struct AST2400State {
-=20
- #define AST2400_SDRAM_BASE       0x40000000
-=20
-+/*
-+ * for Aspeed AST2500 SOC and higher
-+ */
-+#define AST2500_SDRAM_BASE       0x80000000
-+
- #endif /* AST2400_H */
---=20
-2.1.4
+Will this make it into 2.7?
 
+Thanks,
+
+Alistair
+
+>
+> thanks
+> -- PMM
+>

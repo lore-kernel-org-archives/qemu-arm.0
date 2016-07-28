@@ -1,39 +1,39 @@
-Received: by 10.25.21.156 with SMTP id 28csp958566lfv;
-        Thu, 28 Jul 2016 12:02:42 -0700 (PDT)
-X-Received: by 10.200.51.34 with SMTP id t31mr58533412qta.61.1469732562353;
-        Thu, 28 Jul 2016 12:02:42 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp958695lfv;
+        Thu, 28 Jul 2016 12:02:56 -0700 (PDT)
+X-Received: by 10.55.155.22 with SMTP id d22mr46645425qke.103.1469732576777;
+        Thu, 28 Jul 2016 12:02:56 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r6si8951426qkf.216.2016.07.28.12.02.42
+        by mx.google.com with ESMTPS id o43si8973664qta.89.2016.07.28.12.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 12:02:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 28 Jul 2016 12:02:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55176 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55175 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSqZt-00045c-Nw
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 15:02:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47294)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bSqa8-0003v3-6H
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 15:02:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47258)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bSqYR-0002lz-PT
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 15:01:15 -0400
+	(envelope-from <alistair.francis@xilinx.com>) id 1bSqYP-0002k7-Iu
+	for qemu-devel@nongnu.org; Thu, 28 Jul 2016 15:01:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair.francis@xilinx.com>) id 1bSqYM-0001w8-QP
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 15:01:10 -0400
-Received: from mail-bl2nam02on0078.outbound.protection.outlook.com
-	([104.47.38.78]:30336
+	(envelope-from <alistair.francis@xilinx.com>) id 1bSqYM-0001wF-UI
+	for qemu-devel@nongnu.org; Thu, 28 Jul 2016 15:01:08 -0400
+Received: from mail-bl2nam02on0070.outbound.protection.outlook.com
+	([104.47.38.70]:44096
 	helo=NAM02-BL2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bSqYM-0001w1-Mt; Thu, 28 Jul 2016 15:01:06 -0400
-Received: from BL2NAM02FT038.eop-nam02.prod.protection.outlook.com
-	(10.152.76.51) by BL2NAM02HT228.eop-nam02.prod.protection.outlook.com
-	(10.152.76.231) with Microsoft SMTP Server (version=TLS1_2,
+	id 1bSqYF-0001t4-MD; Thu, 28 Jul 2016 15:00:59 -0400
+Received: from BL2NAM02FT016.eop-nam02.prod.protection.outlook.com
+	(10.152.76.59) by BL2NAM02HT165.eop-nam02.prod.protection.outlook.com
+	(10.152.76.149) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.549.5;
-	Thu, 28 Jul 2016 19:01:05 +0000
+	Thu, 28 Jul 2016 19:00:57 +0000
 Authentication-Results: spf=fail (sender IP is 149.199.60.96)
 	smtp.mailfrom=xilinx.com; linaro.org; dkim=none (message not signed)
 	header.d=none; linaro.org; dmarc=none action=none header.from=xilinx.com;
@@ -42,151 +42,400 @@ Received-SPF: Fail (protection.outlook.com: domain of xilinx.com does not
 	receiver=protection.outlook.com; 
 	client-ip=149.199.60.96; helo=xsj-tvapsmtpgw01;
 Received: from xsj-tvapsmtpgw01 (149.199.60.96) by
-	BL2NAM02FT038.mail.protection.outlook.com (10.152.77.25) with Microsoft
-	SMTP Server (version=TLS1_0,
+	BL2NAM02FT016.mail.protection.outlook.com (10.152.77.171) with
+	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.1.549.5
-	via Frontend Transport; Thu, 28 Jul 2016 19:01:04 +0000
-Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:46909
+	via Frontend Transport; Thu, 28 Jul 2016 19:00:57 +0000
+Received: from 172-16-1-203.xilinx.com ([172.16.1.203]:46891
 	helo=xsj-tvapsmtp02.xilinx.com)
 	by xsj-tvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bSqYK-0008JV-3W; Thu, 28 Jul 2016 12:01:04 -0700
-Received: from [127.0.0.1] (port=52197 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
+	id 1bSqYC-0008JA-IG; Thu, 28 Jul 2016 12:00:56 -0700
+Received: from [127.0.0.1] (port=52178 helo=tsj-smtp-dlp1.xlnx.xilinx.com)
 	by xsj-tvapsmtp02.xilinx.com with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bSqYK-0007od-0D; Thu, 28 Jul 2016 12:01:04 -0700
+	id 1bSqYC-0007o5-Fn; Thu, 28 Jul 2016 12:00:56 -0700
 Received: from xsj-tvapsmtp02 (xsj-tvapsmtp02.xilinx.com [172.16.1.203])
 	by tsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	u6SIsIZd008166; Thu, 28 Jul 2016 11:54:18 -0700
-Received: from [172.19.74.182] (port=55034 helo=xsjalistai50.xilinx.com)
+	u6SIsAC9008154; Thu, 28 Jul 2016 11:54:11 -0700
+Received: from [172.19.74.182] (port=55028 helo=xsjalistai50.xilinx.com)
 	by xsj-tvapsmtp02 with esmtp (Exim 4.63)
 	(envelope-from <alistair.francis@xilinx.com>)
-	id 1bSqYJ-0007oa-5E; Thu, 28 Jul 2016 12:01:03 -0700
+	id 1bSqYB-0007o2-NN; Thu, 28 Jul 2016 12:00:55 -0700
 From: Alistair Francis <alistair.francis@xilinx.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Thu, 28 Jul 2016 12:00:33 -0700
-Message-ID: <e047c338ee981a61afd7f765a317b3de25a4f629.1469727764.git.alistair.francis@xilinx.com>
+Date: Thu, 28 Jul 2016 12:00:26 -0700
+Message-ID: <73e69a8ad9fa2763e9f68f71eaf2469dd5744fcc.1469727764.git.alistair.francis@xilinx.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <cover.1469727764.git.alistair.francis@xilinx.com>
 References: <cover.1469727764.git.alistair.francis@xilinx.com>
 X-RCIS-Action: ALLOW
 X-TM-AS-MML: disable
 X-TM-AS-Product-Ver: IMSS-7.1.0.1679-8.0.0.1202-22478.005
-X-TM-AS-Result: No--4.237-7.0-31-10
-X-imss-scan-details: No--4.237-7.0-31-10
-X-TMASE-MatchedRID: OpZG7Ha4m7C2jsN8aguKvGNW0DAjL5p+MyouZnRyPDjfUZT83lbkELg2
-	PcpzvEciLPVFwhmBX1vibtj5CZ7LrrvaJG+XDhc2ngIgpj8eDcAZ1CdBJOsoY9mzcdRxL+xwKra
-	uXd3MZDUAc6ie4OhFAUAwhyW9fj9pv6FRRFsFSnkaRwsb7+ExdglykIfybt8vIvvUaX8EhoJUhC
-	IxQJNVwfYEG0wJP64LlzOfX5XBYM2ZbXP29aXx5lPJnXL2yNYdkuo847l05tDEzMyAmsz+FHoWL
-	WlXcsZv
+X-TM-AS-Result: No--13.645-7.0-31-10
+X-imss-scan-details: No--13.645-7.0-31-10
+X-TMASE-MatchedRID: jVlrLlAunV73Zb7NlHCdGMnUT+eskUQP7h2RrsKOiu1cKZwALwMGs0Ge
+	sM6GkoIPW9Qf37gKneG2hwqmyYJpCwyJM1t3sBlJlj0PT81HGiok9Lf/qe8xxzRCaZSKE/OsZnb
+	bjcbalVQwfXkTrrUIE/h3DHRsQxlaEuYl3YX/IW5QiFNNqFvt1dvvjRlzNy/+aHYTYK/ridqmIl
+	j92kc9fKr6e35LzInTA1HgyxDmh1hwV5bWNthnlOKXavbHY/C1SoCG4sefl8R2iqcE/RbrKIkuT
+	XuMw1pd8tlGagkt1LXhgM7lrVqO2GTCzF7UO28x0Xw0ILvo/uUpWss5kPUFdLMDna8tQimpNZBt
+	OMYbSa2XsNF5Bqt2x7nU2ozE5+XADHlMveoJOASQTsyupo9izYfsPVs/8Vw6tJvETkmCvxQ7xhQ
+	NQMRsmU95K6QOISmn42Q73ENE9hUfE8yM4pjsDwtuKBGekqUpI/NGWt0UYPBh8yCRkqTQ9j4DGV
+	LceYZepnHjRNeqcWoo6a78jYF4EFYpyEJCU4h4
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
 X-Forefront-Antispam-Report: CIP:149.199.60.96; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(6009001)(7916002)(2980300002)(1110001)(1109001)(339900001)(199003)(189002)(5003940100001)(8936002)(50226002)(356003)(47776003)(2906002)(118296001)(85426001)(77096005)(7696003)(19580405001)(305945005)(106466001)(64026002)(50466002)(48376002)(4326007)(36756003)(87936001)(7846002)(189998001)(2950100001)(33646002)(19580395003)(11100500001)(50986999)(81156014)(105606002)(9786002)(8676002)(229853001)(71366001)(586003)(92566002)(5001770100001)(81166006)(86362001)(76176999)(107986001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BL2NAM02HT228; H:xsj-tvapsmtpgw01;
-	FPR:; SPF:Fail; PTR:unknown-60-96.xilinx.com; A:1; MX:1; LANG:en;
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT038;
-	1:vXcJQa73SVrNSp1aiqJ08NPadlT2+o21pFmFrw3M8WyF1ukm5gNXXKoeLmGubspMU0jDTK9pluCkRFMMwbImQvDzRpprS5GGTDaahiKZzNXYOxdGmb+xWD9bIDny9WGeidmXP+t7rh5kZJtiZtJGyVj+nSLnIjlfzkwbhhRZxnYzGiq0+sLMlByhnhF+YhTsNzuAjNoGElwLdPSLS/xbx2ECxgXcIhOW9qwOvLnuNTMLin6xeVjh1fdd4SCBwYH5KFf+oAeYYokit2TYX5rR32PfRABWhUjl5+lQdU2b+AlEbAyUy6zOtB5mJAnuHRkK6uvdr0jpaypB0Sc7rsPvJQM2ylyhEjDLcvOtdWIq3IrBjW3nF4r7SzufNHfpC8rRC552hjwNXeXgev9W/MZsZz+uW5Da/+Fcul/SO1K/9I2C046y334jeeT2jNUeFAmWYvTylFHGDmYWLbJnJPDrcY57GNlHz4N2IhcBPrqxShVxyfGEvHVbffljyf9mfPSOqtl93kjai+bSn90SpHXDXVXIDhLa1ac65Wz6t/3/e9jIslyLrL7O1OqkcUdJ033j//mhZRXTU0jE+8F31gEYfiJH1fEWfGQBLber4+XhlHA=
+	SFS:(10009020)(6009001)(7916002)(2980300002)(1109001)(1110001)(339900001)(189002)(199003)(105606002)(64026002)(229853001)(4326007)(11100500001)(77096005)(36756003)(9786002)(2950100001)(92566002)(71366001)(8936002)(305945005)(81166006)(106466001)(7696003)(81156014)(7846002)(33646002)(5003940100001)(19580405001)(189998001)(118296001)(87936001)(47776003)(586003)(356003)(76176999)(19580395003)(8676002)(50986999)(50466002)(2906002)(85426001)(86362001)(50226002)(48376002)(5001770100001)(461764006)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BL2NAM02HT165; H:xsj-tvapsmtpgw01;
+	FPR:; SPF:Fail; PTR:unknown-60-96.xilinx.com; MX:1; A:1; LANG:en;
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02FT016;
+	1:b6XpvuV+9a8LIrLDoJf3XbdJjP2Lgs59iT3hkU/WkgJcFYV5B1e0H/K1BoKLf8KrmA8js/pJsDKSEX27sd9fh2qgjEds92Bt1FZ8NNG7hORoKWNIEBT9phgV8O8yYQELnOHZ76yxT2Lkg5+LneKriueZlDJjdrfVhW9MiAuyo7IGA9HOxNGUQqbiQ2NTzSBk2gOZp0UNM79GPlLY/RiH9VMJumyHSyMjMxyUtZItJMkUn9njcfH1bFHX3jEmKa0teLbCr1HBG/VcWVbDZzoZuYThjSCoCcrLmtCxK+chS2h7mifpQTgiZQFfQjiArV0CXKSjsHNwt5bOqfYafwKqqXRuctpFsJKobmtgOW43w1F6oFa+d12GlgTWpj8+JObk23pNOP/r7m6OsO/yB0OATZMii9yZbJB2rf8iXtEy0c5p3GNhiq4S/GN7JUU6JTgxktZquIWhCMBX/Ihp8hT42s17fwrLqmu1SXzPedsaVohrseGO2LPcqvj7YUENG70cd6zDdgVaAR4z2zXOIdL4ykOPTbh+LEB8Rg4La5woF5mNOxkCpg40l3a0/rJGbZ9XAcXr73zLowAdCtgw4UDkZRMxOKZtP2+OhjBta06EJ4o=
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: d52a110f-72be-44fe-9396-08d3b7198681
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT228;
-	2:CkISz0Wp2tK47L/kGEa5snIQqoNE3gkziNsl/eiipgkXv+3pkUcii3XN7VFksD1rzz8EdE4GaueUkGsn8xcXEldcg+laOfkf4GVCCA2WoKfUy7VE5LrOABywNr/Rj0A83hWJ2usykFLvsPeQXRBnaF6lqgzTzRYUvOXWIe/MsLC0TtrhkyTWiuFYdqVbg4A9;
-	3:jOHd4qiQaU4sO4VCGstEFwNkMnzhUMi9fyXWvoIaLLsJKgD7ZorBaAOpTdTZpsiVgsWYeGF7vLOuHN/YSy77NC8k5OKC2rCI6i28s71JHG+ZDXOfSUW3rxaR3VneSWlxBkE1AVDfoI+B6J/4EpMZayioEw1pZiySVgGNYwG7hw/cfFKmpjDS2f2OFm2HTuNz5UyNDBqn9B2CD5kXH1CFwKraq009unxvWCQtye5DeUg=
-X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BL2NAM02HT228;
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT228;
-	25:V0n7Y2x+kXs2DpSuSNtPzCFThcpR7Ejh25ULJL5O5AkbXelsyoEKS1HgVuGzSYhd0p0fmgpV/2QXvp3l87f5ZNTC7L1ZmUWL0E5DDQkIH2Thtnl9uyQWXEKVW7CXSwutS0uzsJSRHn4RakZ1s17VwKsDizeT3+mLboWRTEENjP6Z2E3WTVQac8KlGNA83BxD7CAayntf8CSXL3iI/rtfGjtJB+rkbIznLKn7xLBfRZT9IYRhWY/PWnn6Nwrb8Ky48CBQPoIuGyyJlI9VfUQ3RGStHnIMNV6s31eFKIIz1faqNZ0/JbgVYcWggihbxowKYW/Brs8DUlB4SIgUMKRg7v41c/xcHzmdyVOJf5Fr6RBkOhrzqLjjj4ZXPkaiYUSD88fVsmq7rkagDnSutdTAuGmQgu5xeKqEly8tIU/aqP9fIG7l5JwpyIuot0d9C38IGRw3XB34Zdu7TM8GlNEC8rAmbrMqrKr6jwhPcjgYLPm4q0MMcpaI1OqFdreBj7We2c+mG6jdl/RonhApzkR7pCD4tTI18ntXIrDRG+8o5eZZM4VqnnNHiaEW9BDRHxypKurL+ZQU/SWT2yShy1Q5LM26WysIE9VRxkYaKliMQgetUZHFdzv7rbFlgjFLODdM8gPPvjBB+AH5jbBYW6XIQxp0qfxrZo2l0U6ROAPjFutqFjDfrFeDix/jkD+UjfI+aUF4gXBysVYwkWWxoBnM0HTDbL+TpoVvJGA9vWYiKJAjI0PSHlDcJaN+dr4enUPOR9vuTgnsR7OPGpaB04TEkXW1t7NSim2q4O9vC8BW6CI=
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT228;
-	31:DRu30+3URcwRwqAOGW0zKqQrVijYPiPND4qt1TYrY3d9HoO50afFDCJ1Gyj5wqfVZuJ3bVZdlmjnNeHpZ1kDi1vOxQtsYHRRvw6CTsUbBovddd/Qzb23AIZlGxePy4LsjeMxAe29AexvqhbYTx03aZvnZ5MkWKGP5Lp5T8frbzT4lG6Zwd/pLMKqkV5ziHGdkVn2iywn3Mra/bae7/XX9MZPTFMjtZq7LDRLSJ8JTzs=;
-	20:163Jtk/iMxcWCJ4DMD2fbmaitdBKf0uVsNyeK96VkyfqtE0EI5XyzQN+s6Ya2Nc3xnRtEl38ULurz+CWePdu325t/x/0/773gIrOVcNVbCdIJsxGuBxFbGrppMJeCf1au4wpNzhs78JaAmuhU4G999PFtjmv8AT2H6vWCLsH1uveUNqBjsX+nji05y+qWcIWLFGtVcGI0jl/nbJTYh0CVV6e9qUHsL3Lv8yfdL9bqUlFAJ4cZ1Mg5LwRkh5nr7OuJv+2kosXN/+0ErR8ornOCsx5vLgMn2Y5x9koOKJ5nXTkGe8ovAqmbfi1fwhCcQiOFhR+dUuVVIfYu1M7K0EBFA8OQ4a24cVARs4cLnwzQitwKfSgs1tbIx9BykbAW4zvI3v/+ueAXXhL98fYgQNOgLoK5LF0cIRWwI+97iXYlufzwTAK+EPlqHCXSuK0p0wzrt4CtFjX6Yeam65AEUn7J2jRGZ0qnC4UmWlqzdF8hxACuUnjE5cC8GhMrclLNxN9
-X-Microsoft-Antispam-PRVS: <8375c1b6f47842c39edf225b505946fb@BL2NAM02HT228.eop-nam02.prod.protection.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: c910ff4b-eefd-4daa-0063-08d3b7198272
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT165;
+	2:NNaJBygC3Gir1aXxYuC6Gq3tx0eCtEt2ltjViAnheXnvptG8Q6rmX7eUHLewvhtxncNqNsLXELjAmfiU1YWVyi+/QpFAdEkR29Y/XKLjKOC9967bxr+qaFzeFF6ECv9tDjKn58iLsSYZxhEWF4qZKlSCZMA3vYh9ns1Ta7OyjlCD3PQO++JHHQv0duUXbdOS;
+	3:hsT232nErgXuSFbFQLvDzQ7tctcayOrcFcre4ECcr8o06BjWDN623VFok3EbcCOnwJhFU0RV2fGL9HsEpzFGieO12KXhF8Wm89qMCucNqQUX553UdzGKXe2NJ4gf2gohLdlcpgB6uAX49ySPnYExOW8THAOhISaWkqbgdhrQHgsgrJMQLv6x6aTqQ4Bq40+TAh2TbwQid3jrFk2WQz6HE1ppkS2vabV632DknjQKBUw=;
+	25:WaG02S3lnQcChjfXsUgXZErP1fAoV92KKQGkSI+V+H1Bg+C1hI/wu0vuvDi49NAFcUEilgQyJrgZMFFPTeereBOguwgAQS0+QaDxPE6tS5pOy7pRDtLEfwjoZfakv9cBDl6WwJXTtfiuFgTrNzgKwWsCT7kA7lHNd5jS9TfkfaGreLcPNU9MGtApTU8OjLk+skCBnCaZZxefxWU3yT+sjwZp73r71Dw1iOBwCbSbaEed57YxGqyPv8KxB02XAAtQecZt+sK5nydcAsq2y+sH/a2RH0qlfmhrY44pdVt74aN8xVlEjb5cxl94eCvFcmKhosnRCKjrnWb2TrYeFfBI1W3/FSVgFUze36o45esZ6eVYXb0acN+wAQg6kjWf544QnHnTJRDcGOBGl+KC7fxZ+u9ua41avp9hkSgtvIqCMkQ=
+X-Microsoft-Antispam: UriScan:;BCL:0;PCL:0;RULEID:;SRVR:BL2NAM02HT165;
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT165;
+	31:zo12VrUKvOpgsXtjmjhnm6JyON0LzvAhvNDdEi5v4sBIr2uPE+evII2+hsvsMI9r/6kxJCsBnbEN3REi9NSuv5caCTfScQz8USFDoDTuA2nASbY+P+klOP0BySUHamp4QjvGPh7kEbrFFxoFrfQmA0bFpXL7pf3cRFwwY/hIx8Hg7264ms5G6A9HE9PfplpfTWTlEI1TG2nv+e6MEYHxBYP+r2zLQuwbl1bvHWrzPWY=;
+	20:QmmBGrBPfKbXvbsKpR9dBPFhDjzdlZk0JUSiseKwORC8hTcTVo5182S2U6WmSjSQefPC/ZTSBAOAA/nIMqXX1S9ChvAS100/AnM25LHsFSYw60I2Jegae0kD9xZrG2sygABvZA6M2bqv6mksrYUcXlLogAaFWpiFXxTiqpdDjlbeHUD9a3fpTrXYB3pRyFGZbvpppCPS1cJKxpokKwYGpa0lYU/yhk7MtnAdYpYKXl/cjG9oeBrFxOi8uVXg752IvRT9ZR0Ky3HYH60y8a33fqnD322dp08Ffp9rhWlQ4+gloL5GIGQAvpS8sxPN3x6yRgUuDU6RDXHVpEBnaFsOEFXJdaJV/ZI2q9gXI+vVFC8E5ER02lVpiHAPVpKdyRpQImIv24Vj3WcU7o5vdMOHdpZg5vGiOrEAqgFifYWBAxT1NlMGVbrYVSAKcJdOT3Is/rEJlm4MNq+k+oQN+d8AYVO0o91sWL7GS2gmexP1V2qeRxVo4RKyubFl13zm53Y8
+X-Microsoft-Antispam-PRVS: <3fccbb86ac314941bb75263efcbd2efa@BL2NAM02HT165.eop-nam02.prod.protection.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(601004)(2401047)(13018025)(13023025)(13024025)(13015025)(13017025)(8121501046)(5005006)(10201501046)(3002001)(6055026);
-	SRVR:BL2NAM02HT228; BCL:0; PCL:0; RULEID:; SRVR:BL2NAM02HT228; 
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT228;
-	4:EosXbKzbQDs1PNnKk2I5BaMMyE+k7tjUf522kvoZboheovhM1fqwPHtiiPoGrjyl382jbyv6TmlpYIi5fXkZUaSqrGcm6e/sZnxxzppDEbSe+MBkZp6vYdKTpIHhG881M58uj65ufu+df67I8rBDhaUPtxa1DjS5umJjaJSETphWmWN25tXZOofjecag7bJwjc7RHWKn5NpAAXvkXCwHytZEFx7JkZHaAqzijoZISFx082pTCmEUDjGFLqeUo5Ww32aprPYaMUSee6GSLoZ3EXX4TYeBS4ryelOSlwh0OOXbOgvNHqyO3NXdY4WQZ/o/9MRj/IaDBnJP0S6WNrB3TG6w078WKSv0EfRHU2sJfqC7N+i0EW3B+LzEE17Ntx1q82VUYETLaBVlebVP6UTzaSPUVn5Hkmg9rziHO82Ffhpo/m0unDMLCM4kHmL3mTncjWIYiyiAolRbNV9731VI9ADifVmWFns6DYd9ENlt4BWHmPYwDDFbTEE0hE0nw1UIVhV6s8F/0eA7G362is3G6Q==
+	RULEID:(6040149)(601004)(2401047)(8121501046)(13024025)(13023025)(13015025)(13017025)(13018025)(5005006)(3002001)(10201501046)(6055026);
+	SRVR:BL2NAM02HT165; BCL:0; PCL:0; RULEID:; SRVR:BL2NAM02HT165; 
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT165;
+	4:ZDBd/mpODcu/AtM3gpugjGMnfp+PyZKHhpkFbz/6AdMVQE48prJzf6/jNOSOyNtvcmAfgis75J+WWJtGSoAxQM7I/TI6wqlY51bOubeP1GuILrR4ST5luIJNhSSZgqQvtXeE8+rYeUmeONwS6Orm/ywEOHZf5P2QMDFJ+xky44aPwl0l7a0vo12s3MSG0WwAxqLuTooLa5f+b5Tuf7JOFgE++ynC1gc49uPysSAbQr0EeuFsOM9AxVcE8pguO5Z09/ysvTBEjQF3+7gRt7CrhPXMcG4OFfKOi0pnU3NFcYITKnjAm/9PolXY+pvF+gjqJtoAWHVWYXVWgyB15VaTpOEPvRT0+nQm2ODOfPQQ74i5sXTzfhnAFXhbLbl/l2bIPD6JrVSAn5U10YhnD/8YzWh1RLxSSDMX4aHdg24MJ4WQoszEwGSmS7keed9nL1GeuU8eXflf6QXL4HeXMlLE+YmZk1iEobuOzSyu56fvqNRUvniEy/yj8hBbChNOMbEkhQ6tpQcmZyNPNIPYnafZfKrmRJqelk8Itx+cWGYH6ns=
 X-Forefront-PRVS: 00179089FD
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BL2NAM02HT228;
-	23:pPDxdjlBY1DvH/2sTOOe9WENrSVQ1JDdSh+16sMuP?=
-	=?us-ascii?Q?TC7cM/0GrKkXitzZiZSd+T/8wmWeKqniwoCUSJGz8kI3TTtbrlR3sbIkoZri?=
-	=?us-ascii?Q?hnhpbSOhw8UVQg25UGAeIEzxNzlfgG8y5Z9sQQfuVynQSL8IU+PaXuPgM8gS?=
-	=?us-ascii?Q?1GCJ51m4eXjsEo9HxBGV1FGVon8f10NESsqn6kSn2kXol/LhvO3yXRjIoKWE?=
-	=?us-ascii?Q?aPjP2B/d/9KgtHOt5W88x7oWPOJt4/fByXh30JK+6xac1vdFzoc074ePxwJc?=
-	=?us-ascii?Q?kRrSlGJ4KADMa4qXZtL/lsIlGUi+OrN3lauK3kX86xmtUGhumrEWJ1BxNePt?=
-	=?us-ascii?Q?hquHhPap7h9SGpfrn9C5URhZZBT3WVaniNrcAtwZ0nIFQ1L375GZ5I+yrh82?=
-	=?us-ascii?Q?uKAzQdNP5BnIbb+UqlD9JYf5jYNcz+PBIuE2d2Yu7yRUjewVJ89OP3PNXUpp?=
-	=?us-ascii?Q?QHv46wDhzfAJX3uhVpYzJz5cXkJSjOlwwjFYxOhilPiI+gXW6AvQXt4OJgmX?=
-	=?us-ascii?Q?4q/4XWjGZQEPfdHTNtWPUObib88KbJ5NTGVTLKiMArFX7hfICrImvGTnQLkg?=
-	=?us-ascii?Q?JX4ExqyDDiFMTkm3E3C20VSr+XozP+TN07tE4PpKb0HfZaoPyBypwF/OB51d?=
-	=?us-ascii?Q?ukQ2MgIhc+2I3jbqhI4W2rrRVO6M0ecYbxlI5EEEma9u0Zu7yZh+SDbQ0quh?=
-	=?us-ascii?Q?TW/D2OqXuPi6kEKruv56SNROIZlVk49jCIB/AnjUNEQkOKEAKtvmv2pjFJ39?=
-	=?us-ascii?Q?yVF13hfrD6YbDhdlKYjYnuAJFIvCgZ0Ov6aBzeQqN4Ffy/nOWN+QvD2/AOKj?=
-	=?us-ascii?Q?el6VKPwUcnR9RGK+FgEHwODC7GsqwTK3oUJyUYK4hMqw0Csi7HdaWyf2Rpku?=
-	=?us-ascii?Q?pQNjCq60MdxZ8yYRpJwEJwXyKbkjSliZ0gxprO4XdPrmg0R5oJtEGDk1Z/cb?=
-	=?us-ascii?Q?utHsePgI/Ldi4IMy0rjs6qtw4pXWVe1T2l42MBNoBa26+a/EZJflL7EbKSQ7?=
-	=?us-ascii?Q?rcMz0dKhf7Sm1WmQ2v05S8HMDSeZQF6mEY9EB1Ri0rcruRvnb9YDWFX/Wgu7?=
-	=?us-ascii?Q?/eSp0q1LnpgeZN9dZrDYOcqkpaGXDRaeDyDeA2H3nTvVQl7304gl0b9wJ0SV?=
-	=?us-ascii?Q?ig/mqicJunz4c7C92l6EbbrFSENNlH2SFwv41RTCq4RRuTzLsX/PQWuy2ODV?=
-	=?us-ascii?Q?lUyem9J/b/eUPw=3D?=
-X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT228;
-	6:GDt/m+/87LJEFXI5Dfo6NKoYHEFgB41KI8U3TcXYqliygqZfBQ+Qr7VM7oY9jwa2MkdoMdp3oNTj7xpiVE/yrebepXyuMmTk2Mh/sG62rKhc5zZF0L2TNBkyM8XEB+Hk54NlERw6nUtYL9mchE5cjnbjnQ7Hkh6N9nQOBBfGJ+TFERFUIrSDSmuccXDBaCDOSoaTqg0RfxHzyRm6iIfD+ZwNmkLjmFG53Ez9yQ7tIh77iSdLemnyj2Y243Q1O+XzSWbYXqDyc5V2b5XxhNSqe5MhqAEWoKQaFa8fq5+nxbCEv8tILXiIQJoSRWmWnpz2rB2Benom0Z/CNAnUrVjDVg==;
-	5:7pykrEOuRLrffg7nrYsLlhYetW7+s1Iajx6zZ7S3EDuZ+xJh+625ft5brxGuuY8KBmJthI8ClVErMVfgvgNHYDPGx4JO0DEuAUip2Z7OZhxFLOFRD9uxYfRTkeydUJx1dzJ2obLSDNcVzc6m+wAvQA==;
-	24:BTsdh10FSttXgx2QN/Umrm5KhHPHWUEyP0yveYSUL9nWznoY/WmdfDEPT0Setp2oTvvwN+iDUFaYj1XtZ8z3uxB9xLQK/pyjJjINQ7cp59k=;
-	7:ILSvHtPC6la57rlxnhEITzTEkkfRu+8r+8UJyMLXJgIOe/ZJK4k9ISmzJlhz6K4fWLUp+B9KtBU111QkmLraUmluaemV+pVGjtUoFoLOcLHrzBwbWfVV89lJzXiggXIpJDN4ax9V6fuDgsiERsgGe7FyD3QO+bJ+luiCUVvqsz1berm6EV/MBInzXqBZhS1AzsPlnMGrgjB1nvqlz8OLDC3KXVTHbjj7N4wnpfwAUO283x33sSvxpJD5FoOOwq59
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BL2NAM02HT165;
+	23:wboPpgbBjrOosCr7jkD89XgqDn4OoGEoeMlnmq7+v?=
+	=?us-ascii?Q?elvWUF9e+lc595wDB7BT++38hzdV07xe6WAEmwvE/Z/4oaoszh6O52KPSN1N?=
+	=?us-ascii?Q?4YMBrpBf/xjhH9ZQl62uzchQnqx/OFS+RmNaHZzciXc5iHELZmtAfApYf6bO?=
+	=?us-ascii?Q?U8AGbhTS8XlIAOI6RjjZsfkY27fY4F2a3BrIc7fOEG3YiIk7bEaFJFNlc1U0?=
+	=?us-ascii?Q?pz44JB+BYTYuT8+50JUnpT3zBHP+syNmLViAx43x/n4nGXIYklJACEkyaDKn?=
+	=?us-ascii?Q?TnJnbd8YZDFiHvRB22E77sN5xaxg85txDFaQ2Djv4OmQ/RhB46ZGD+fMXJ+O?=
+	=?us-ascii?Q?BetHdqVvzapov1Mel0bdtNcR7bB/SEfgZgNgL+hgODC8GxJHgf+a3Rb8h8iH?=
+	=?us-ascii?Q?cVTIR/79CMMLV/yB8zgb6yUHqddWSoTcukG2Ae2OY4hiOVpN7Io9q41jkSfg?=
+	=?us-ascii?Q?wszbBQarBfhbm2DLf9shi2M55vrl81DWZEAqupcPQRqdXY+OR60HkREHKhJG?=
+	=?us-ascii?Q?Y4m5vhmZTgjivY8YSIavPfqq1P9oEjZUGWTKwB+UwPeo5a2B8o+tKxHRHUH9?=
+	=?us-ascii?Q?emKpX5Ob2oY3IHwO2oIZgjYHscLSw6WHZo0SVPTI227AXwyaqyG6dMSkJ0KU?=
+	=?us-ascii?Q?QpGrAtJyg25Mcrr/elNZWj7awXnUVcoYBowwCdclmVQiVSiWfz72g2Xep6E5?=
+	=?us-ascii?Q?5/PwWbBxz1/MDsA20RwelbRU499lYSYm3AA4wuVWe/LQanhyFFPHGpx/AoDJ?=
+	=?us-ascii?Q?wtROhd9oQLNK6eRlnAMekbDw8gmW5tjmQujSkJWEsJi5d42iMY+YVllbZ+Id?=
+	=?us-ascii?Q?WSH+jTqdj/0zEnINoKkkNC6r5CGgBXnuKIFKFkrG28SW3aGCqmdUDPM3siG3?=
+	=?us-ascii?Q?2l79QDUIovWr+IV10R33EqycEOfrvJ8bSHvQUgaDBtwIwiIPf0khM3bX18dW?=
+	=?us-ascii?Q?DKIcCSZbhuxPY/ODsoIbDOdLjG2TgucVPvvCNE0YKWzWI/JwrOigYBkl5l7v?=
+	=?us-ascii?Q?G6oJjbMZzNrmoxvskZg2DY/aObbseH9xdtyv9gRWFkBN88tBQH/4/2o9BKt8?=
+	=?us-ascii?Q?SbPBr6r1umY1GPaX182+TlmpLqJJLPc7yJMUYJE0FHOCl8NlxN15r6fuSlbR?=
+	=?us-ascii?Q?n8hCX8G9BHG8P4k3I/N9t3LC/IJxge+PyDHlw4wwdxnL62O2J7vAcRCB2/n0?=
+	=?us-ascii?Q?bp769ZnibGCmsQylkKa8NEvxZJMWkQA9cmZ?=
+X-Microsoft-Exchange-Diagnostics: 1; BL2NAM02HT165;
+	6:fKshgmGr4XpWxLWnsb/erDYwCqkMgWbbeJpupA1pZi/dxiJ+m6J9ioswQXn6lUZxKeq27GeSFun6YdfB72B/1T6zxHVUjdVcDExi+5u70xjSAfXZWLxMj2XbRuSkPPh+DIosIoBdprZdhKVWjOOfI+2cs5qP10zxOdsktCA93Zt3f/r1isOcNJXMnBX9mMjojapN6OKOg69J+EBXXnPv35eh6tN140E9FwoWc2D63u4D9yNED/VMj6NyGErpOfOkQQSTPFJUP+cfCo84MjOmBZj4so5WyAmpBOZ1Uk1ioh2s7v52UO1xs0Bw3scAiAXYGrLY1iYWkf32Xaz0PiMwpQ==;
+	5:exHGQejYQOnYv81LyD+DpKSfIZYtVE32VusOF35ifFiHZmALbZnrwQ+pbWuSt+iam73dcHdYVMyXU8vcuv9YXzbs7rIaFP0hlkVFovi85uzzyRgCjwPohv2Z8zjFiK/0m9NafOnOTdX39kkichdZfg==;
+	24:fonQleuh7aTmX+uLWLVGcw+aVAApHEc2AQIK1KUfRE0Y2t4s9hREasovJfsTR8ZPe30mkz/2rVxYKDxoQtWGCUSjarRYx0Zm/RYUEirPu9A=;
+	7:f9LUyNJrtEi9OyQNITERlXvceonK3uYs2w/Heypxpb6m4WRCrm7NmtO31daRZhZXyHte+KsPMz7CyL4GtElFHkQ6wSGQKrmTA1IQnOeYa1X1fSD/W+4lOylMc69ZmAwjuGipK0Y1IOSeu4Y5r/qho3ynDqhS9Jx26dIVyw1bKs65a0hMHYQKm6lIYYiiZ7LgAs7n4RVG1Jgr2Arr+g2+DY4QmbRJ4r9f1vqgXdMJ2paby8HVLDS9Q3g7Mhb2cTwC
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2016 19:01:04.6201 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2016 19:00:57.6352 (UTC)
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
 	Ip=[149.199.60.96]; Helo=[xsj-tvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL2NAM02HT228
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL2NAM02HT165
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 104.47.38.78
-Subject: [Qemu-arm] [PATCH for-2.8 v4 6/6] xlnx-zynqmp: Set the number of
- priority queues
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 104.47.38.70
+Subject: [Qemu-devel] [PATCH for-2.8 v4 3/6] cadence_gem: Add support for
+ screening
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, crosthwaitepeter@gmail.com,
 	alistair.francis@xilinx.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b0zwDa15lh2E
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G+MlzXUKvJ4D
 
-Set the ZynqMP number of priority queues to 2.
+The Cadence GEM hardware allows incoming data to be 'screened' based on some
+register values. Add support for these screens.
+
+We also need to increase the max regs to avoid compilation failures. These new
+registers are implemented in the next patch.
 
 Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
+V3:
+ - Add error checking
+ - Fix up screening function
+V2:
+ - Initial commit
 
- hw/arm/xlnx-zynqmp.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/net/cadence_gem.c         | 171 ++++++++++++++++++++++++++++++++++++++++++-
+ include/hw/net/cadence_gem.h |   6 +-
+ 2 files changed, 174 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 23c7199..0d86ba3 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -332,6 +332,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-             qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
-             qdev_set_nic_properties(DEVICE(&s->gem[i]), nd);
-         }
-+        object_property_set_int(OBJECT(&s->gem[i]), 2, "num-priority-queues",
-+                                  &error_abort);
-         object_property_set_bool(OBJECT(&s->gem[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 08b3747..49a63a7 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -27,6 +27,7 @@
+ 
+ #include "hw/net/cadence_gem.h"
+ #include "qapi/error.h"
++#include "qemu/log.h"
+ #include "net/checksum.h"
+ 
+ #ifdef CADENCE_GEM_ERR_DEBUG
+@@ -142,6 +143,37 @@
+ #define GEM_DESCONF6      (0x00000294/4)
+ #define GEM_DESCONF7      (0x00000298/4)
+ 
++#define GEM_SCREENING_TYPE1_REGISTER_0  (0x00000500 / 4)
++
++#define GEM_ST1R_UDP_PORT_MATCH_ENABLE  (1 << 29)
++#define GEM_ST1R_DSTC_ENABLE            (1 << 28)
++#define GEM_ST1R_UDP_PORT_MATCH_SHIFT   (12)
++#define GEM_ST1R_UDP_PORT_MATCH_WIDTH   (27 - GEM_ST1R_UDP_PORT_MATCH_SHIFT + 1)
++#define GEM_ST1R_DSTC_MATCH_SHIFT       (4)
++#define GEM_ST1R_DSTC_MATCH_WIDTH       (11 - GEM_ST1R_DSTC_MATCH_SHIFT + 1)
++#define GEM_ST1R_QUEUE_SHIFT            (0)
++#define GEM_ST1R_QUEUE_WIDTH            (3 - GEM_ST1R_QUEUE_SHIFT + 1)
++
++#define GEM_SCREENING_TYPE2_REGISTER_0  (0x00000540 / 4)
++
++#define GEM_ST2R_COMPARE_A_ENABLE       (1 << 18)
++#define GEM_ST2R_COMPARE_A_SHIFT        (13)
++#define GEM_ST2R_COMPARE_WIDTH          (17 - GEM_ST2R_COMPARE_A_SHIFT + 1)
++#define GEM_ST2R_ETHERTYPE_ENABLE       (1 << 12)
++#define GEM_ST2R_ETHERTYPE_INDEX_SHIFT  (9)
++#define GEM_ST2R_ETHERTYPE_INDEX_WIDTH  (11 - GEM_ST2R_ETHERTYPE_INDEX_SHIFT \
++                                            + 1)
++#define GEM_ST2R_QUEUE_SHIFT            (0)
++#define GEM_ST2R_QUEUE_WIDTH            (3 - GEM_ST2R_QUEUE_SHIFT + 1)
++
++#define GEM_SCREENING_TYPE2_ETHERTYPE_REG_0     (0x000006e0 / 4)
++#define GEM_TYPE2_COMPARE_0_WORD_0              (0x00000700 / 4)
++
++#define GEM_T2CW1_COMPARE_OFFSET_SHIFT  (7)
++#define GEM_T2CW1_COMPARE_OFFSET_WIDTH  (8 - GEM_T2CW1_COMPARE_OFFSET_SHIFT + 1)
++#define GEM_T2CW1_OFFSET_VALUE_SHIFT    (0)
++#define GEM_T2CW1_OFFSET_VALUE_WIDTH    (6 - GEM_T2CW1_OFFSET_VALUE_SHIFT + 1)
++
+ /*****************************************/
+ #define GEM_NWCTRL_TXSTART     0x00000200 /* Transmit Enable */
+ #define GEM_NWCTRL_TXENA       0x00000008 /* Transmit Enable */
+@@ -602,6 +634,126 @@ static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
+     return GEM_RX_REJECT;
+ }
+ 
++/* Figure out which queue the received data should be sent to */
++static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
++                                 unsigned rxbufsize)
++{
++    uint32_t reg;
++    bool matched, mismatched;
++    int i, j;
++
++    for (i = 0; i < s->num_type1_screeners; i++) {
++        reg = s->regs[GEM_SCREENING_TYPE1_REGISTER_0 + i];
++        matched = false;
++        mismatched = false;
++
++        /* Screening is based on UDP Port */
++        if (reg & GEM_ST1R_UDP_PORT_MATCH_ENABLE) {
++            uint16_t udp_port = rxbuf_ptr[14 + 22] << 8 | rxbuf_ptr[14 + 23];
++            if (udp_port == extract32(reg, GEM_ST1R_UDP_PORT_MATCH_SHIFT,
++                                           GEM_ST1R_UDP_PORT_MATCH_WIDTH)) {
++                matched = true;
++            } else {
++                mismatched = true;
++            }
++        }
++
++        /* Screening is based on DS/TC */
++        if (reg & GEM_ST1R_DSTC_ENABLE) {
++            uint8_t dscp = rxbuf_ptr[14 + 1];
++            if (dscp == extract32(reg, GEM_ST1R_DSTC_MATCH_SHIFT,
++                                       GEM_ST1R_DSTC_MATCH_WIDTH)) {
++                matched = true;
++            } else {
++                mismatched = true;
++            }
++        }
++
++        if (matched && !mismatched) {
++            return extract32(reg, GEM_ST1R_QUEUE_SHIFT, GEM_ST1R_QUEUE_WIDTH);
++        }
++    }
++
++    for (i = 0; i < s->num_type2_screeners; i++) {
++        reg = s->regs[GEM_SCREENING_TYPE2_REGISTER_0 + i];
++        matched = false;
++        mismatched = false;
++
++        if (reg & GEM_ST2R_ETHERTYPE_ENABLE) {
++            uint16_t type = rxbuf_ptr[12] << 8 | rxbuf_ptr[13];
++            int et_idx = extract32(reg, GEM_ST2R_ETHERTYPE_INDEX_SHIFT,
++                                        GEM_ST2R_ETHERTYPE_INDEX_WIDTH);
++
++            if (et_idx > s->num_type2_screeners) {
++                qemu_log_mask(LOG_GUEST_ERROR, "Out of range ethertype "
++                              "register index: %d\n", et_idx);
++            }
++            if (type == s->regs[GEM_SCREENING_TYPE2_ETHERTYPE_REG_0 +
++                                et_idx]) {
++                matched = true;
++            } else {
++                mismatched = true;
++            }
++        }
++
++        /* Compare A, B, C */
++        for (j = 0; j < 3; j++) {
++            uint32_t cr0, cr1, mask;
++            uint16_t rx_cmp;
++            int offset;
++            int cr_idx = extract32(reg, GEM_ST2R_COMPARE_A_SHIFT + j * 6,
++                                        GEM_ST2R_COMPARE_WIDTH);
++
++            if (!(reg & (GEM_ST2R_COMPARE_A_ENABLE << (j * 6)))) {
++                continue;
++            }
++            if (cr_idx > s->num_type2_screeners) {
++                qemu_log_mask(LOG_GUEST_ERROR, "Out of range compare "
++                              "register index: %d\n", cr_idx);
++            }
++
++            cr0 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2];
++            cr1 = s->regs[GEM_TYPE2_COMPARE_0_WORD_0 + cr_idx * 2 + 1];
++            offset = extract32(cr1, GEM_T2CW1_OFFSET_VALUE_SHIFT,
++                                    GEM_T2CW1_OFFSET_VALUE_WIDTH);
++
++            switch (extract32(cr1, GEM_T2CW1_COMPARE_OFFSET_SHIFT,
++                                   GEM_T2CW1_COMPARE_OFFSET_WIDTH)) {
++            case 3: /* Skip UDP header */
++                qemu_log_mask(LOG_UNIMP, "TCP compare offsets"
++                              "unimplemented - assuming UDP\n");
++                offset += 8;
++                /* Fallthrough */
++            case 2: /* skip the IP header */
++                offset += 20;
++                /* Fallthrough */
++            case 1: /* Count from after the ethertype */
++                offset += 14;
++                break;
++            case 0:
++                /* Offset from start of frame */
++                break;
++            }
++
++            rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
++            mask = extract32(cr0, 0, 16);
++
++            if ((rx_cmp & mask) == (extract32(cr0, 16, 16) & mask)) {
++                matched = true;
++            } else {
++                mismatched = true;
++            }
++        }
++
++        if (matched && !mismatched) {
++            return extract32(reg, GEM_ST2R_QUEUE_SHIFT, GEM_ST2R_QUEUE_WIDTH);
++        }
++    }
++
++    /* We made it here, assume it's queue 0 */
++    return 0;
++}
++
+ static void gem_get_rx_desc(CadenceGEMState *s)
+ {
+     DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[0]);
+@@ -712,6 +864,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+ 
+     DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
+ 
++    /* Find which queue we are targetting */
++    q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
++
+     while (bytes_to_copy) {
+         /* Do nothing if receive is not enabled. */
+         if (!gem_can_receive(nc)) {
+@@ -1228,6 +1383,14 @@ static void gem_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, "Invalid num-priority-queues value: %" PRIx8,
+                    s->num_priority_queues);
+         return;
++    } else if (s->num_type1_screeners > MAX_TYPE1_SCREENERS) {
++        error_setg(errp, "Invalid num-type1-screeners value: %" PRIx8,
++                   s->num_type1_screeners);
++        return;
++    } else if (s->num_type2_screeners > MAX_TYPE2_SCREENERS) {
++        error_setg(errp, "Invalid num-type2-screeners value: %" PRIx8,
++                   s->num_type2_screeners);
++        return;
+     }
+ 
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq[0]);
+@@ -1254,8 +1417,8 @@ static void gem_init(Object *obj)
+ 
+ static const VMStateDescription vmstate_cadence_gem = {
+     .name = "cadence_gem",
+-    .version_id = 3,
+-    .minimum_version_id = 3,
++    .version_id = 4,
++    .minimum_version_id = 4,
+     .fields = (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, CadenceGEMState, CADENCE_GEM_MAXREG),
+         VMSTATE_UINT16_ARRAY(phy_regs, CadenceGEMState, 32),
+@@ -1273,6 +1436,10 @@ static Property gem_properties[] = {
+     DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+     DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
+                       num_priority_queues, 1),
++    DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
++                      num_type1_screeners, 4),
++    DEFINE_PROP_UINT8("num-type2-screeners", CadenceGEMState,
++                      num_type2_screeners, 4),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+index 77e0582..c469ffe 100644
+--- a/include/hw/net/cadence_gem.h
++++ b/include/hw/net/cadence_gem.h
+@@ -30,9 +30,11 @@
+ #include "net/net.h"
+ #include "hw/sysbus.h"
+ 
+-#define CADENCE_GEM_MAXREG        (0x00000640/4) /* Last valid GEM address */
++#define CADENCE_GEM_MAXREG        (0x00000800 / 4) /* Last valid GEM address */
+ 
+ #define MAX_PRIORITY_QUEUES             8
++#define MAX_TYPE1_SCREENERS             16
++#define MAX_TYPE2_SCREENERS             16
+ 
+ typedef struct CadenceGEMState {
+     /*< private >*/
+@@ -46,6 +48,8 @@ typedef struct CadenceGEMState {
+ 
+     /* Static properties */
+     uint8_t num_priority_queues;
++    uint8_t num_type1_screeners;
++    uint8_t num_type2_screeners;
+ 
+     /* GEM registers backing store */
+     uint32_t regs[CADENCE_GEM_MAXREG];
 -- 
 2.7.4
 

@@ -1,53 +1,73 @@
-Received: by 10.25.21.156 with SMTP id 28csp900366lfv;
-        Thu, 28 Jul 2016 09:39:09 -0700 (PDT)
-X-Received: by 10.37.202.145 with SMTP id a139mr21011024ybg.122.1469723948074;
-        Thu, 28 Jul 2016 09:39:08 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp905172lfv;
+        Thu, 28 Jul 2016 09:50:49 -0700 (PDT)
+X-Received: by 10.13.230.78 with SMTP id p75mr31783096ywe.187.1469724649377;
+        Thu, 28 Jul 2016 09:50:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r69si8523484qkl.90.2016.07.28.09.39.07
+        by mx.google.com with ESMTPS id m76si8542673qke.275.2016.07.28.09.50.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 09:39:08 -0700 (PDT)
+        Thu, 28 Jul 2016 09:50:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54612 helo=lists.gnu.org)
+Received: from localhost ([::1]:54680 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSoKx-0004WT-Gu
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 12:39:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45675)
+	id 1bSoWG-0002gW-L8
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 12:50:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48859)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bSoKF-0003zi-9F
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:38:24 -0400
+	(envelope-from <alistair23@gmail.com>) id 1bSoWC-0002dl-2X
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:50:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bSoKB-00053s-0u
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:38:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:61998)
+	(envelope-from <alistair23@gmail.com>) id 1bSoW9-0007zz-Ux
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:50:43 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:32988)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1bSoKA-00052S-Om; Thu, 28 Jul 2016 12:38:18 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B496D8122D;
-	Thu, 28 Jul 2016 16:38:17 +0000 (UTC)
-Received: from rhlaptop.redhat.com (vpn-61-195.rdu2.redhat.com [10.10.61.195])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u6SGcGPP009127; Thu, 28 Jul 2016 12:38:16 -0400
-From: Wei Huang <wei@redhat.com>
-To: qemu-arm@nongnu.org
-Date: Thu, 28 Jul 2016 11:38:16 -0500
-Message-Id: <1469723896-28049-1-git-send-email-wei@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 28 Jul 2016 16:38:17 +0000 (UTC)
+	(envelope-from <alistair23@gmail.com>)
+	id 1bSoW6-0007za-Ce; Thu, 28 Jul 2016 12:50:38 -0400
+Received: by mail-oi0-x241.google.com with SMTP id l9so5037743oih.0;
+	Thu, 28 Jul 2016 09:50:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=psw5wuvnvNT9AQQjgDwkxsso/rh+H/b9abyzstgH4N4=;
+	b=NHHwANuTbERpEwZflCp4ZyW8p6lWu4HAO75K6RRTg87zL0FCJ8qx7aZ5SRvPR7kRK8
+	FTCw+Bp5tfZaTDj13bLSL661VBN5pWSLeQF+WlGEXzIZHPSoqH8mN6kIIGGIdV4MoIvZ
+	GPDzrU3Pjc0z+XsRadDTPlnPtErOBFeAAS9C20MJFzv/UAzDR5C7G5p/cWHh6qjqcO07
+	zIThwoipN82v/1J6HD0/+Bhm/bDZ72uqfba+KeyZ2QdkFB0Uqk/CgcxxAJsL5EOQW7Qe
+	0rkGZLyJ61Gx8yWZN5Q2DI+0ad+eklYpXZmk290RuEKd2F+oFC3X6bnisBLEeMLepTll
+	bDNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=psw5wuvnvNT9AQQjgDwkxsso/rh+H/b9abyzstgH4N4=;
+	b=ei3ieibPAPCTcxBvknmv/qTWhhhViz1bLC6vHzhB7qHo2tGT+Py5HW1bJaKQQNpuxb
+	LXsSvSZo3x3EX3OI2oC15WxffFIZpKnmyS3S8DCn6ordQ/HZ1eJXLjRi0qViHfBsP3vR
+	dyWXdMqPA3+P5r6yoeVHk7A9A9PyslKFk1UIMTwd09z14V8nwk7POi7dQZe73CrEAJ1B
+	r1vibs0nBnLoSHraoYlV2a9WKVFvBiX/t6/lMqX94iwnLNFBcnItAVeU1AqfeJPymcdF
+	4Qvkz5uQTrIqSAplJmfZICmm3SMsjRsAwLv4XnvHKw8gbd8ebWhresxYTCnjJy2Lvi3F
+	BrrQ==
+X-Gm-Message-State: AEkoousDQ+ENlJO5Axg1nZ2EL60K3vg9UyoHeTszIVUpB0a6bddx2rfS8SIdiGTvRMdMfA8eeq5g/YV4i8wctw==
+X-Received: by 10.202.68.6 with SMTP id r6mr21477433oia.53.1469724637898; Thu,
+	28 Jul 2016 09:50:37 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.182.14.72 with HTTP; Thu, 28 Jul 2016 09:50:08 -0700 (PDT)
+In-Reply-To: <69992ebef8db49ddc320cd9f5d9a60c95c593aa7.1467752513.git.alistair.francis@xilinx.com>
+References: <69992ebef8db49ddc320cd9f5d9a60c95c593aa7.1467752513.git.alistair.francis@xilinx.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Thu, 28 Jul 2016 09:50:08 -0700
+X-Google-Sender-Auth: 9VR6BtQ0Uk4EP53vEttmTiOHUHw
+Message-ID: <CAKmqyKO3fR_dMQy=P7acVPjaXLUG96F4bfVYUPz3w45oKe747w@mail.gmail.com>
+To: Alistair Francis <alistair.francis@xilinx.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH RFC 1/1] arm64: add an option to turn on/off vpmu
- support
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 1/1] MAINTAINERS: Update the
+ Xilinx maintainers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,103 +79,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, drjones@redhat.com,
-	shannon.zhao@linaro.org, abologna@redhat.com
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vbaGQwU8BSKy
+X-TUID: loZ4KcIQfOMG
 
-This patch adds a pmu=[on/off] option to enable/disable vpmu support
-in guest vm. There are several reasons to justify this option. First
-vpmu can be problematic for cross-migration between different SoC as
-perf counters is architecture-dependent. It is more flexible to
-have an option to turn it on/off. Secondly it matches the -cpu pmu
-option in libivrt. This patch has been tested on both DT/ACPI modes.
+On Mon, Jul 11, 2016 at 4:22 PM, Alistair Francis
+<alistair.francis@xilinx.com> wrote:
+> Update the Xilinx maintainers documentation to simplify what we maintain
+> and cover all of our upstream code.
 
-Signed-off-by: Wei Huang <wei@redhat.com>
----
- hw/arm/virt-acpi-build.c |  2 +-
- hw/arm/virt.c            |  2 +-
- target-arm/cpu.c         |  1 +
- target-arm/cpu.h         |  5 +++--
- target-arm/kvm64.c       | 10 +++++-----
- 5 files changed, 11 insertions(+), 9 deletions(-)
+This is the patch I was talking about. I can't find it in the web archive.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 28fc59c..dc5f66d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
-         gicc->uid = i;
-         gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
- 
--        if (armcpu->has_pmu) {
-+        if (armcpu->enable_pmu) {
-             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-         }
-     }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a193b5a..6aea901 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
- 
-     CPU_FOREACH(cpu) {
-         armcpu = ARM_CPU(cpu);
--        if (!armcpu->has_pmu ||
-+        if (!armcpu->enable_pmu ||
-             !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
-             return;
-         }
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index ce8b8f4..f7daf81 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -1412,6 +1412,7 @@ static const ARMCPUInfo arm_cpus[] = {
- };
- 
- static Property arm_cpu_properties[] = {
-+    DEFINE_PROP_BOOL("pmu", ARMCPU, enable_pmu, true),
-     DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
-     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
-     DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index 76d824d..f2341c0 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -579,8 +579,9 @@ struct ARMCPU {
-     bool powered_off;
-     /* CPU has security extension */
-     bool has_el3;
--    /* CPU has PMU (Performance Monitor Unit) */
--    bool has_pmu;
-+
-+    /* CPU has vPMU (Performance Monitor Unit) support */
-+    bool enable_pmu;
- 
-     /* CPU has memory protection unit */
-     bool has_mpu;
-diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-index 5faa76c..ca21670 100644
---- a/target-arm/kvm64.c
-+++ b/target-arm/kvm64.c
-@@ -501,11 +501,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
-     }
--    if (kvm_irqchip_in_kernel() &&
--        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
--        cpu->has_pmu = true;
--        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
--    }
-+
-+    /* enable vPMU based on KVM mode and hardware capability */
-+    cpu->enable_pmu &= (kvm_irqchip_in_kernel() &&
-+        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3));
-+    cpu->kvm_init_features[0] |= cpu->enable_pmu << KVM_ARM_VCPU_PMU_V3;
- 
-     /* Do KVM_ARM_VCPU_INIT ioctl */
-     ret = kvm_arm_vcpu_init(cs);
--- 
-2.4.11
+Thanks,
 
+Alistair
+
+>
+> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+> ---
+>
+>  MAINTAINERS | 30 ++++++++++++++----------------
+>  1 file changed, 14 insertions(+), 16 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1d0e2c3..14183d3 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -449,23 +449,23 @@ S: Maintained
+>  F: hw/*/versatile*
+>
+>  Xilinx Zynq
+> +M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+>  M: Alistair Francis <alistair.francis@xilinx.com>
+> -M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+> -F: hw/arm/xilinx_zynq.c
+> -F: hw/misc/zynq_slcr.c
+> +F: hw/*/xilinx_*
+>  F: hw/*/cadence_*
+> -F: hw/ssi/xilinx_spips.c
+> +F: hw/misc/zynq_slcr.c
+> +F: include/hw/xilinx.h
+> +X: hw/ssi/xilinx_*
+>
+>  Xilinx ZynqMP
+>  M: Alistair Francis <alistair.francis@xilinx.com>
+> -M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+> +M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+> -F: hw/arm/xlnx-zynqmp.c
+> -F: hw/arm/xlnx-ep108.c
+> -F: include/hw/arm/xlnx-zynqmp.h
+> +F: hw/*/xlnx*.c
+> +F: include/hw/*/xlnx*.c
+>
+>  ARM ACPI Subsystem
+>  M: Shannon Zhao <zhaoshenglong@huawei.com>
+> @@ -948,14 +948,6 @@ S: Supported
+>  F: hw/scsi/megasas.c
+>  F: hw/scsi/mfi.h
+>
+> -Xilinx EDK
+> -M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> -M: Alistair Francis <alistair.francis@xilinx.com>
+> -M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+> -S: Maintained
+> -F: hw/*/xilinx_*
+> -F: include/hw/xilinx.h
+> -
+>  Network packet abstractions
+>  M: Dmitry Fleytman <dmitry@daynix.com>
+>  S: Maintained
+> @@ -1243,6 +1235,12 @@ F: docs/*qmp-*
+>  F: scripts/qmp/
+>  T: git git://repo.or.cz/qemu/armbru.git qapi-next
+>
+> +Register API
+> +M: Alistair Francis <alistair.francis@xilinx.com>
+> +S: Maintained
+> +F: hw/core/register.c
+> +F: include/hw/register.h
+> +
+>  SLIRP
+>  M: Samuel Thibault <samuel.thibault@ens-lyon.org>
+>  M: Jan Kiszka <jan.kiszka@siemens.com>
+> --
+> 2.7.4
+>
+>

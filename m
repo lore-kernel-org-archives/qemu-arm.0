@@ -1,64 +1,53 @@
-Received: by 10.25.21.156 with SMTP id 28csp835147lfv;
-        Thu, 28 Jul 2016 07:27:00 -0700 (PDT)
-X-Received: by 10.55.52.147 with SMTP id b141mr42331616qka.13.1469716020727;
-        Thu, 28 Jul 2016 07:27:00 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp900366lfv;
+        Thu, 28 Jul 2016 09:39:09 -0700 (PDT)
+X-Received: by 10.37.202.145 with SMTP id a139mr21011024ybg.122.1469723948074;
+        Thu, 28 Jul 2016 09:39:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c71si8120695qke.248.2016.07.28.07.27.00
+        by mx.google.com with ESMTPS id r69si8523484qkl.90.2016.07.28.09.39.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 07:27:00 -0700 (PDT)
+        Thu, 28 Jul 2016 09:39:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53596 helo=lists.gnu.org)
+Received: from localhost ([::1]:54612 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSmH6-0005zD-6J
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 10:27:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37267)
+	id 1bSoKx-0004WT-Gu
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 12:39:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45675)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSmH0-0005z0-Hl
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:26:55 -0400
+	(envelope-from <wei@redhat.com>) id 1bSoKF-0003zi-9F
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:38:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bSmGu-0005Ho-I8
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:26:53 -0400
-Received: from 19.mo7.mail-out.ovh.net ([178.33.251.118]:49533)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bSmGu-0005Gr-BL
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 10:26:48 -0400
-Received: from player796.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id D5E1210043DC
-	for <qemu-arm@nongnu.org>; Thu, 28 Jul 2016 16:26:46 +0200 (CEST)
-Received: from [192.168.124.3] (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player796.ha.ovh.net (Postfix) with ESMTPSA id 399265C0096;
-	Thu, 28 Jul 2016 16:26:43 +0200 (CEST)
-To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <1469638018-17590-1-git-send-email-clg@kaod.org>
-	<1469638018-17590-7-git-send-email-clg@kaod.org>
-	<1469682716.5468.114.camel@aj.id.au>
-	<947a8251-7bb6-ea6e-8bd0-05bdd89b9bc0@kaod.org>
-	<1469692703.5468.125.camel@aj.id.au>
-	<81cfd17c-ee36-6ba1-7c63-7046d935ea06@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <84463040-1bd5-46c7-a6ad-cb38cfea65e2@kaod.org>
-Date: Thu, 28 Jul 2016 16:26:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Icedove/45.1.0
-MIME-Version: 1.0
-In-Reply-To: <81cfd17c-ee36-6ba1-7c63-7046d935ea06@kaod.org>
-Content-Type: text/plain; charset=utf-8
-X-Ovh-Tracer-Id: 1595963119555480496
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrieejgdejiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 178.33.251.118
-Subject: Re: [Qemu-arm] [PATCH 6/6] arm: add support for an ast2500
- evaluation board
+	(envelope-from <wei@redhat.com>) id 1bSoKB-00053s-0u
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 12:38:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:61998)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wei@redhat.com>)
+	id 1bSoKA-00052S-Om; Thu, 28 Jul 2016 12:38:18 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B496D8122D;
+	Thu, 28 Jul 2016 16:38:17 +0000 (UTC)
+Received: from rhlaptop.redhat.com (vpn-61-195.rdu2.redhat.com [10.10.61.195])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u6SGcGPP009127; Thu, 28 Jul 2016 12:38:16 -0400
+From: Wei Huang <wei@redhat.com>
+To: qemu-arm@nongnu.org
+Date: Thu, 28 Jul 2016 11:38:16 -0500
+Message-Id: <1469723896-28049-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 28 Jul 2016 16:38:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH RFC 1/1] arm64: add an option to turn on/off vpmu
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,47 +59,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, drjones@redhat.com,
+	shannon.zhao@linaro.org, abologna@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MIbKV8yI3Par
+X-TUID: vbaGQwU8BSKy
 
-On 07/28/2016 10:03 AM, C=C3=A9dric Le Goater wrote:
-> On 07/28/2016 09:58 AM, Andrew Jeffery wrote:
->> On Thu, 2016-07-28 at 09:15 +0200, C=C3=A9dric Le Goater wrote:
->>>> =20
->>>> Also, the meaning of the bits have changed from the AST2400 - they
->>>> probably should be documented somewhere?
->>>
->>> So you want me send to an updated version of :
->>>
->>>         http://lists.nongnu.org/archive/html/qemu-arm/2016-06/msg0069=
-8.html
->>>
->>> as a prereq ?=20
->>
->> I mentioned this in passing due to the discussion on my original patch=
-.
->> I think we discussed this separately and concluded the macros were
->> pretty verbose given they are sort-of single-use given the value
->> doesn't change. Maybe just comments as Peter was requesting? You have
->> the patch below but some of the macros will be different for the
->> AST2500.
->=20
-> yes.
->=20
->> I'm probably leaning towards comments over macros, but don't feel
->> strongly either way.
->=20
-> ok. having a correct value is a minimum and this is not the case=20
-> in this patch. I think I will go for the comments for now as We=20
-> have not merged anything in mainline uboot yet.
+This patch adds a pmu=[on/off] option to enable/disable vpmu support
+in guest vm. There are several reasons to justify this option. First
+vpmu can be problematic for cross-migration between different SoC as
+perf counters is architecture-dependent. It is more flexible to
+have an option to turn it on/off. Secondly it matches the -cpu pmu
+option in libivrt. This patch has been tested on both DT/ACPI modes.
 
-I gave comments a try and honestly, macros are cleaner to check=20
-which bits you are setting. less prone to errors. So I will send
-a v2 with macros.=20
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ hw/arm/virt-acpi-build.c |  2 +-
+ hw/arm/virt.c            |  2 +-
+ target-arm/cpu.c         |  1 +
+ target-arm/cpu.h         |  5 +++--
+ target-arm/kvm64.c       | 10 +++++-----
+ 5 files changed, 11 insertions(+), 9 deletions(-)
 
-Cheers,
-
-C.=20
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 28fc59c..dc5f66d 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
+         gicc->uid = i;
+         gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+ 
+-        if (armcpu->has_pmu) {
++        if (armcpu->enable_pmu) {
+             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+         }
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a193b5a..6aea901 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+ 
+     CPU_FOREACH(cpu) {
+         armcpu = ARM_CPU(cpu);
+-        if (!armcpu->has_pmu ||
++        if (!armcpu->enable_pmu ||
+             !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
+             return;
+         }
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index ce8b8f4..f7daf81 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -1412,6 +1412,7 @@ static const ARMCPUInfo arm_cpus[] = {
+ };
+ 
+ static Property arm_cpu_properties[] = {
++    DEFINE_PROP_BOOL("pmu", ARMCPU, enable_pmu, true),
+     DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
+     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+     DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 76d824d..f2341c0 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -579,8 +579,9 @@ struct ARMCPU {
+     bool powered_off;
+     /* CPU has security extension */
+     bool has_el3;
+-    /* CPU has PMU (Performance Monitor Unit) */
+-    bool has_pmu;
++
++    /* CPU has vPMU (Performance Monitor Unit) support */
++    bool enable_pmu;
+ 
+     /* CPU has memory protection unit */
+     bool has_mpu;
+diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+index 5faa76c..ca21670 100644
+--- a/target-arm/kvm64.c
++++ b/target-arm/kvm64.c
+@@ -501,11 +501,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+     }
+-    if (kvm_irqchip_in_kernel() &&
+-        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+-        cpu->has_pmu = true;
+-        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+-    }
++
++    /* enable vPMU based on KVM mode and hardware capability */
++    cpu->enable_pmu &= (kvm_irqchip_in_kernel() &&
++        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3));
++    cpu->kvm_init_features[0] |= cpu->enable_pmu << KVM_ARM_VCPU_PMU_V3;
+ 
+     /* Do KVM_ARM_VCPU_INIT ioctl */
+     ret = kvm_arm_vcpu_init(cs);
+-- 
+2.4.11
 

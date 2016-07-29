@@ -1,61 +1,75 @@
-Received: by 10.25.21.156 with SMTP id 28csp1074521lfv;
-        Thu, 28 Jul 2016 18:03:56 -0700 (PDT)
-X-Received: by 10.237.59.79 with SMTP id q15mr61026639qte.77.1469754236203;
-        Thu, 28 Jul 2016 18:03:56 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1078691lfv;
+        Thu, 28 Jul 2016 18:16:44 -0700 (PDT)
+X-Received: by 10.200.40.99 with SMTP id 32mr61122541qtr.97.1469755003940;
+        Thu, 28 Jul 2016 18:16:43 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e70si5370366qka.15.2016.07.28.18.03.56
+        by mx.google.com with ESMTPS id v94si10302649qtd.148.2016.07.28.18.16.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 18:03:56 -0700 (PDT)
+        Thu, 28 Jul 2016 18:16:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@aj.id.au;
+       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56473 helo=lists.gnu.org)
+Received: from localhost ([::1]:56522 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bSwDT-0000EI-Iv
-	for alex.bennee@linaro.org; Thu, 28 Jul 2016 21:03:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43986)
+	id 1bSwPr-0004yv-8X
+	for alex.bennee@linaro.org; Thu, 28 Jul 2016 21:16:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45849)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bSwDO-0000Bo-MK
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 21:03:51 -0400
+	(envelope-from <andrew@aj.id.au>) id 1bSwPn-0004yR-Ns
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 21:16:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1bSwDM-0004Xf-Dq
-	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 21:03:49 -0400
-Received: from szxga01-in.huawei.com ([58.251.152.64]:54008)
+	(envelope-from <andrew@aj.id.au>) id 1bSwPj-0007Fa-EM
+	for qemu-arm@nongnu.org; Thu, 28 Jul 2016 21:16:38 -0400
+Received: from new2-smtp.messagingengine.com ([66.111.4.224]:57872)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>)
-	id 1bSwDF-0004TN-1M; Thu, 28 Jul 2016 21:03:42 -0400
-Received: from 172.24.1.36 (EHLO szxeml427-hub.china.huawei.com)
-	([172.24.1.36])
-	by szxrg01-dlp.huawei.com (MOS 4.3.7-GA FastPath queued)
-	with ESMTP id DOK31096; Fri, 29 Jul 2016 09:00:02 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by szxeml427-hub.china.huawei.com
-	(10.82.67.182) with Microsoft SMTP Server id 14.3.235.1;
-	Fri, 29 Jul 2016 08:59:58 +0800
-Message-ID: <579AAA8E.4060703@huawei.com>
-Date: Fri, 29 Jul 2016 08:59:58 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
-MIME-Version: 1.0
-To: Wei Huang <wei@redhat.com>, <qemu-arm@nongnu.org>
-References: <1469723896-28049-1-git-send-email-wei@redhat.com>
-In-Reply-To: <1469723896-28049-1-git-send-email-wei@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-	refid=str=0001.0A090204.579AAA93.00D6, ss=1, re=0.000, recu=0.000,
-	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
-	so=2013-06-18 04:22:30, dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 49c62be70d229348b8c911b483c640ea
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
-X-Received-From: 58.251.152.64
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 1/1] arm64: add an option to
- turn on/off vpmu support
+	(envelope-from <andrew@aj.id.au>)
+	id 1bSwPh-0007Dr-2D; Thu, 28 Jul 2016 21:16:35 -0400
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
+	by mailnew.nyi.internal (Postfix) with ESMTP id 49F211748;
+	Thu, 28 Jul 2016 21:16:20 -0400 (EDT)
+Received: from frontend1 ([10.202.2.160])
+	by compute7.internal (MEProxy); Thu, 28 Jul 2016 21:16:20 -0400
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=jvijF
+	vZrRhab9HK0Wfu4LIBXNiw=; b=XMViwBoB5azQXD1ra+/dxTxYM6ZT7XJrAtqq0
+	RYCk1XEVGIZJj52Z0l8OfhO7p7gCC4YuPLH6pjfRRVneXR1ofMDGJd0Q8Fm2DdCS
+	+9kdx/xPuaX9mAsIJNxe1WiRfs57WLsCbUm/XIBX08DgqW0lZSQWbW0D/woIbxhx
+	SKwoIE=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-sasl-enc
+	:x-sasl-enc; s=smtpout; bh=jvijFvZrRhab9HK0Wfu4LIBXNiw=; b=ptKE5
+	cel2br4pap7zHmcaWNVklQ+gc9tEVFyDG/vDwRe2zjhrLpScKtlFJSwxfQSIGR/K
+	ydixV1iEcRsNhxd4ogLCbBSGVpSz3uwrOgwtlQP3UMfuTvbayn4l6j4koR8IxxZa
+	ZZKkTdcx7l0BONX7X4ppMLAcBWfd5vzV8fT2cU=
+X-Sasl-enc: b4oG0sFa+xHZ24+kiNSZhWMX2YeUzbq29xP4fQ3BqLH/ 1469754979
+Received: from keelia (unknown [203.0.153.9])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 014CFF29F5;
+	Thu, 28 Jul 2016 21:16:17 -0400 (EDT)
+Message-ID: <1469754973.5468.149.camel@aj.id.au>
+From: Andrew Jeffery <andrew@aj.id.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
+	<peter.maydell@linaro.org>
+Date: Fri, 29 Jul 2016 10:46:13 +0930
+In-Reply-To: <9316329d-c22d-aab1-c5d9-e10ab306ffb8@kaod.org>
+References: <1469638018-17590-1-git-send-email-clg@kaod.org>
+	<1469638018-17590-2-git-send-email-clg@kaod.org>
+	<1469672053.5468.81.camel@aj.id.au>
+	<9316329d-c22d-aab1-c5d9-e10ab306ffb8@kaod.org>
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-9aThMwXhVcOD38W4d9L8"
+X-Mailer: Evolution 3.18.5.2-0ubuntu3 
+Mime-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 66.111.4.224
+Subject: Re: [Qemu-arm] [PATCH 1/6] palmetto-bmc: add a "silicon-rev"
+ property at the soc level
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,110 +81,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
-	abologna@redhat.com, shannon.zhao@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YuoRXcjXgKFn
+X-TUID: hweFsBGpfBrl
 
 
+--=-9aThMwXhVcOD38W4d9L8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 2016/7/29 0:38, Wei Huang wrote:
-> This patch adds a pmu=[on/off] option to enable/disable vpmu support
-> in guest vm. There are several reasons to justify this option. First
-> vpmu can be problematic for cross-migration between different SoC as
-> perf counters is architecture-dependent. It is more flexible to
-> have an option to turn it on/off. Secondly it matches the -cpu pmu
-> option in libivrt. This patch has been tested on both DT/ACPI modes.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
-Reviewed-by：Shannon Zhao <shannon.zhao@linaro.org>
+On Thu, 2016-07-28 at 09:51 +0200, C=C3=A9dric Le Goater wrote:
+> On 07/28/2016 04:14 AM, Andrew Jeffery wrote:
+> >=20
+> > On Wed, 2016-07-27 at 18:46 +0200, C=C3=A9dric Le Goater wrote:
+> > >=20
+> > > The SCU controler holds the board revision number in its 0x7C
+> > > register. Let's use an alias to link a "silicon-rev" property of the
+> > > soc to the "silicon-rev" property of the SCU controler.
+> > >=20
+> > > The SDMC controler "silicon-rev" property is derived from the SCU one
+> > > at realize time. I did not find a better way to handle this part.
+> > > Links and aliases being a one-to-one relation, I could not use one of
+> > > them. I might wrong though.
+> > Are we trying to over-use the silicon-rev value (it would seem so at
+> > least in the face of the link/alias constraints)? We know which SDMC
+> > revision we need for each SoC and we'll be modelling an explicit SoC
+> > revision, so should we instead set a separate property on the SDMC in
+> > the SoCs' respective initialise functions (and leave silicon-rev to the
+> > SCU)?=C2=A0
+> This is the case. no ?=C2=A0
 
-> ---
->  hw/arm/virt-acpi-build.c |  2 +-
->  hw/arm/virt.c            |  2 +-
->  target-arm/cpu.c         |  1 +
->  target-arm/cpu.h         |  5 +++--
->  target-arm/kvm64.c       | 10 +++++-----
->  5 files changed, 11 insertions(+), 9 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 28fc59c..dc5f66d 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
->          gicc->uid = i;
->          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
->  
-> -        if (armcpu->has_pmu) {
-> +        if (armcpu->enable_pmu) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->          }
->      }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a193b5a..6aea901 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
->  
->      CPU_FOREACH(cpu) {
->          armcpu = ARM_CPU(cpu);
-> -        if (!armcpu->has_pmu ||
-> +        if (!armcpu->enable_pmu ||
->              !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
->              return;
->          }
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index ce8b8f4..f7daf81 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -1412,6 +1412,7 @@ static const ARMCPUInfo arm_cpus[] = {
->  };
->  
->  static Property arm_cpu_properties[] = {
-> +    DEFINE_PROP_BOOL("pmu", ARMCPU, enable_pmu, true),
->      DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
->      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
->      DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 76d824d..f2341c0 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -579,8 +579,9 @@ struct ARMCPU {
->      bool powered_off;
->      /* CPU has security extension */
->      bool has_el3;
-> -    /* CPU has PMU (Performance Monitor Unit) */
-> -    bool has_pmu;
-> +
-> +    /* CPU has vPMU (Performance Monitor Unit) support */
-> +    bool enable_pmu;
->  
->      /* CPU has memory protection unit */
->      bool has_mpu;
-> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-> index 5faa76c..ca21670 100644
-> --- a/target-arm/kvm64.c
-> +++ b/target-arm/kvm64.c
-> @@ -501,11 +501,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
-> -    if (kvm_irqchip_in_kernel() &&
-> -        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> -        cpu->has_pmu = true;
-> -        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-> -    }
-> +
-> +    /* enable vPMU based on KVM mode and hardware capability */
-> +    cpu->enable_pmu &= (kvm_irqchip_in_kernel() &&
-> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3));
-> +    cpu->kvm_init_features[0] |= cpu->enable_pmu << KVM_ARM_VCPU_PMU_V3;
->  
->      /* Do KVM_ARM_VCPU_INIT ioctl */
->      ret = kvm_arm_vcpu_init(cs);
-> 
+No, because you are selecting the SDMC configuration from the silicon-
+rev rather than letting e.g. the SDMC configuration define which
+silicon-rev the SoC takes.
 
--- 
-Shannon
+My thinking is the silicon rev is a property of the SoC. The platform
+should select a SoC to use and not be setting silicon revision values,
+that is I think it's a layering violation for the platform to be
+setting the silicon-rev (and also the CPU).
+
+We also wind up in a situation where the ast2500 soc identifies as an
+ast2400 in TypeInfo.name due to the approach to reuse by this series.
+
+>=20
+> SCU holds the silicon-rev value. The patch adds a property alias to the=
+=C2=A0
+> SCU 'silicon-rev' property at the soc level. This is convenient
+
+Right, but "convenient" here is a bit of a stretch given we are
+subsequently fetching the value out of the SCU to select the SDMC
+configuration. You might argue that it's due to limitations of the
+property alias/link API, but maybe we could rearrange things so this
+goes away.
+
+>  for the
+> platform to initialize the soc. This is similar to what the rpi2 does,
+> which goes one level in the aliasing.
+
+Okay, maybe I'm barking up trees unnecessarily.
+
+>=20
+> Then, at initialize time, the SCU 'silicon-rev' property value is read
+> to initialize the SDMC controller. If we have more controllers in the=C2=
+=A0
+> future needing 'silicon-rev,=C2=A0=C2=A0we could follow the same pattern.=
+ Not=C2=A0
+> saying this is perfect.=C2=A0
+>=20
+> What I would have liked to do, is to link all the 'silicon-rev' do
+> the SCU one. I did not find a way.
+
+Yes, that would be nice. I did briefly poke around to see if there was
+a solution to the link/alias issue but it seems not.=C2=A0
+
+>=20
+> >=20
+> > My thought was the silicon-rev value is reflective of the SoC
+> > design rather than the other way around - but maybe that's splitting
+> > hairs.=C2=A0
+> ah. is your concern about which object is holding the value ? If so,
+> I thought that keeping it where it belongs on real HW was the better=C2=
+=A0
+> option, that is in SCU, and then build from there.
+
+No, that's not my concern, but I agree that it would not reflect the
+hardware if there was a property on the SoC (i.e. there is nowhere
+besides the SCU that the value is held).
+
+>=20
+> >=20
+> > It would also be trading off a bit of ugliness in this patch for
+> > potential bugs if the properties get out of sync.
+> This is the exact the purpose of the patch ! I failed to make it feel
+> that way :)
+
+Right. I think we need another layer of abstraction, essentially a soc
+configuration struct that is accessed by what are currently the
+ast2400_{init,realise}() functions. This will capture differences like
+changes in IO addresses, changes to IP behaviour, the CPU types and
+ultimately the silicon-rev value. What is now ast2400_init() and
+ast2400_realise() can become generic aspeed_soc_{init,realise}(), and
+then we wrap calls to this up in SoC-specific
+ast2{4,5}00_{init,realise}() where we set the configuration struct. It
+is a bit more work but I think the result would better reflect the
+hardware and avoid introducing what feel to me like layering
+violations.
+
+Thoughts?
+
+Andrew
+--=-9aThMwXhVcOD38W4d9L8
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCgAGBQJXmq5eAAoJEJ0dnzgO5LT5Fe8QAKSBS94yGEGhYg+t0IjEfOCD
+fyi7f+qhqg16EkUjntvK1TFjA/nAUSv6HryI9yLkYV6ZOdSKak8RturpNrnWwZFv
+oTDMP/rKW43m5BkoHyJUxGqPlhBI6QtZDiLRTC55BBBhw2I+LZmkeEk51LcrA5GC
+FZADtRdr6QUdpCKvLqsc11hYxTbSnxNbrXuWZzy9fMDJHcNDyrJsA+go78CLvG6H
++eDsCM+L08s7lP1vnM5GY1On6a0Iu+vMMQvplC77SK9VisEJ9VMGsdFOGwGXQO+u
+ReePPyWf8CbAYy0880Fec+NDGQGfuvJ28tXUITtkDqfa57AdHVKXBvCoBMBRKYs4
+HJk8vSIr8TRVZgI54kimBqSNk4Obfd/0lrqOKzPGXEkXN0X8To5YaejHGXIOpBpf
+daUgy9rAJJXNtMkKCYUtuDg0y1dKrTuLLMY+nHT3XClnAhpwtOuaVVw9wqUjk6v7
+5h1WayDVNCa5mkbPJwlCswQdStmDBYQVFm2feVgYRqxXclfLnnfrIFaqHUTQmMc2
+x68O90Gj+uNF9G4gquZN3M784VPJ10eMx3KpxDBVOPPkN3uOH0Mllby2CCc63KK4
+Lv6SBknk96AMmg8KUxy5KqSgHmgEqA6QvTkoBE2HDdcJHS4RiRYewQuPj+5T7MKl
+AnB9LoAw5pua36FE/fQG
+=J/wh
+-----END PGP SIGNATURE-----
+
+--=-9aThMwXhVcOD38W4d9L8--
 

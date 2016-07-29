@@ -1,61 +1,69 @@
-Received: by 10.25.21.156 with SMTP id 28csp1179721lfv;
-        Thu, 28 Jul 2016 23:55:11 -0700 (PDT)
-X-Received: by 10.55.43.210 with SMTP id r79mr12210378qkr.158.1469775310951;
-        Thu, 28 Jul 2016 23:55:10 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1201705lfv;
+        Fri, 29 Jul 2016 00:58:26 -0700 (PDT)
+X-Received: by 10.200.52.182 with SMTP id w51mr63681424qtb.90.1469779106828;
+        Fri, 29 Jul 2016 00:58:26 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u8si11231871qtc.132.2016.07.28.23.55.10
+        by mx.google.com with ESMTPS id m184si11349463qkd.202.2016.07.29.00.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jul 2016 23:55:10 -0700 (PDT)
+        Fri, 29 Jul 2016 00:58:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57776 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58007 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bT1hN-0002km-TS
-	for alex.bennee@linaro.org; Fri, 29 Jul 2016 02:55:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41831)
+	id 1bT2gc-0006mx-Bc
+	for alex.bennee@linaro.org; Fri, 29 Jul 2016 03:58:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51331)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bT1hJ-0002iu-U7
-	for qemu-arm@nongnu.org; Fri, 29 Jul 2016 02:55:07 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bT2gY-0006mV-3w
+	for qemu-arm@nongnu.org; Fri, 29 Jul 2016 03:58:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bT1hE-0004de-0B
-	for qemu-arm@nongnu.org; Fri, 29 Jul 2016 02:55:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39150)
+	(envelope-from <peter.maydell@linaro.org>) id 1bT2gW-0006Ck-5b
+	for qemu-arm@nongnu.org; Fri, 29 Jul 2016 03:58:21 -0400
+Received: from mail-ua0-x22f.google.com ([2607:f8b0:400c:c08::22f]:35234)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1bT1hD-0004dZ-O6; Fri, 29 Jul 2016 02:54:59 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1136661E45;
-	Fri, 29 Jul 2016 06:54:58 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-57.brq.redhat.com [10.40.204.57])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u6T6ssk5003051
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 29 Jul 2016 02:54:56 -0400
-Date: Fri, 29 Jul 2016 08:54:53 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Wei Huang <wei@redhat.com>
-Message-ID: <20160729065453.qq44y2hxohizk3yw@hawk.localdomain>
-References: <1469723896-28049-1-git-send-email-wei@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1bT2gV-0006CZ-QP
+	for qemu-arm@nongnu.org; Fri, 29 Jul 2016 03:58:20 -0400
+Received: by mail-ua0-x22f.google.com with SMTP id l32so56715644ual.2
+	for <qemu-arm@nongnu.org>; Fri, 29 Jul 2016 00:58:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6bNEjfUS/Wq0nrCgHy1ThXRndjukud7O9cz4BcJz8wQ=;
+	b=XBIAG/J6HWxzPeUqQJV04xrbz0Q/0cTaWCF/H51bJgs2Fp6EhZAdg8VRCBSm3/i3rx
+	vi7stFqOpFU+ygQVLFXxmLsSXHxPnyP2dJJ5iQBrpNOvIuS1UqpJnciyPvHGisxPHLNZ
+	nhrSs3/8HuEHNMIzY24TIrvYk+SikxkfWbyrg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6bNEjfUS/Wq0nrCgHy1ThXRndjukud7O9cz4BcJz8wQ=;
+	b=a2jWKi6Ji3wpHl/U2zTlDz5q62dAOCFTNUA4X5MGoal0I25fvQjBKdpumgai69HG6z
+	m8HbrR2g7uCn3QhxFjbr01P6w5UfzyiVVXF7BG5SbVQFX/Z2phLNnviDpNUP2jWbKhzp
+	RU/77nW0Pl1m6FYrDc+T9mb3fjKq6rkbMa33P57SmjD2tHaCFwLdTxqAEfmi8IoSenxa
+	vYdn15IfQg8u73qLCFef7XaEUG9jNvMJZWIL/vDoH3nzUgI0dYzqjhzpVYDzkHcc1mfY
+	YRCjgY0T7olH6ZX2/uaeurTq5aptkMGOUoL3b9IUjzTw1xODMKOKJj+N1FAtrR/y3QMj
+	EF0g==
+X-Gm-Message-State: AEkoouvrdDkm5XwuzIaDo0amLaebFgVPLvig8Di0pKzfQkO4htP1hdHN8t65yNitGmc6yr3n/3fJ+x99XPf0PqLT
+X-Received: by 10.176.69.180 with SMTP id u49mr17612912uau.24.1469779098307;
+	Fri, 29 Jul 2016 00:58:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Received: by 10.31.137.136 with HTTP; Fri, 29 Jul 2016 00:57:58 -0700 (PDT)
 In-Reply-To: <1469723896-28049-1-git-send-email-wei@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 29 Jul 2016 06:54:58 +0000 (UTC)
+References: <1469723896-28049-1-git-send-email-wei@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 29 Jul 2016 08:57:58 +0100
+Message-ID: <CAFEAcA_x+4KesFxPfc-B=m1BF0f-yfVg=xYQLNE-XJUiXNFh=A@mail.gmail.com>
+To: Wei Huang <wei@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 1/1] arm64: add an option to
- turn on/off vpmu support
+X-Received-From: 2607:f8b0:400c:c08::22f
+Subject: Re: [Qemu-arm] [PATCH RFC 1/1] arm64: add an option to turn on/off
+ vpmu support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,81 +75,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	abologna@redhat.com, shannon.zhao@linaro.org
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Andrea Bolognani <abologna@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pwvciBlmnzY0
+X-TUID: FnOk64zuZkOZ
 
-On Thu, Jul 28, 2016 at 11:38:16AM -0500, Wei Huang wrote:
+On 28 July 2016 at 17:38, Wei Huang <wei@redhat.com> wrote:
 > This patch adds a pmu=[on/off] option to enable/disable vpmu support
 > in guest vm. There are several reasons to justify this option. First
 > vpmu can be problematic for cross-migration between different SoC as
 > perf counters is architecture-dependent. It is more flexible to
 > have an option to turn it on/off. Secondly it matches the -cpu pmu
 > option in libivrt. This patch has been tested on both DT/ACPI modes.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  hw/arm/virt-acpi-build.c |  2 +-
->  hw/arm/virt.c            |  2 +-
->  target-arm/cpu.c         |  1 +
->  target-arm/cpu.h         |  5 +++--
->  target-arm/kvm64.c       | 10 +++++-----
->  5 files changed, 11 insertions(+), 9 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 28fc59c..dc5f66d 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
->          gicc->uid = i;
->          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
->  
-> -        if (armcpu->has_pmu) {
-> +        if (armcpu->enable_pmu) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->          }
->      }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a193b5a..6aea901 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
->  
->      CPU_FOREACH(cpu) {
->          armcpu = ARM_CPU(cpu);
-> -        if (!armcpu->has_pmu ||
-> +        if (!armcpu->enable_pmu ||
->              !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
->              return;
->          }
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index ce8b8f4..f7daf81 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -1412,6 +1412,7 @@ static const ARMCPUInfo arm_cpus[] = {
->  };
->  
->  static Property arm_cpu_properties[] = {
-> +    DEFINE_PROP_BOOL("pmu", ARMCPU, enable_pmu, true),
 
-x86's pmu property defaults to off. I'm not sure if it's necessary to
-have a consistent default between x86 and arm in order for libvirt to
-be able to use it in the same way. We should confirm with libvirt
-people. Anyway, I think I'd prefer we default off here, and then we
-can default on in machine code for configurations that we want it by
-default (only AArch64 KVM). Or, maybe we don't want it by default at
-all? Possibly we should only set it on by default for virt-2.6, and
-then, from 2.7 on, require users to opt-in to the feature. It makes
-sense to require opting-in to features that can cause problems with
-migration.
 
->      DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
->      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
->      DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 76d824d..f2341c0 100644
+What particular two systems are you trying to migrate between?
+In general we don't support migrating between different CPU
+types at the moment, so the PMU sholud be the same on both ends.
+
+(If we ever do get to supporting cross-cpu-type migration
+then it will probably involve a very long and detailed command
+line to specify exactly a whole lot of things like pmu yes/no,
+number of hw breakpoints/watchpoints, and everything else that
+can differ between implementations.)
+
+That said, I don't have any objection to making the PMU
+presence controllable (especially if we have similar
+control on x86).
+
 > --- a/target-arm/cpu.h
 > +++ b/target-arm/cpu.h
 > @@ -579,8 +579,9 @@ struct ARMCPU {
@@ -153,57 +116,13 @@ migration.
 > +
 > +    /* CPU has vPMU (Performance Monitor Unit) support */
 > +    bool enable_pmu;
->  
+
+Why rename the flag? has_foo is what we use for other features,
+as you can see in the context of this bit of the patch.
+
+>
 >      /* CPU has memory protection unit */
 >      bool has_mpu;
-> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-> index 5faa76c..ca21670 100644
-> --- a/target-arm/kvm64.c
-> +++ b/target-arm/kvm64.c
-> @@ -501,11 +501,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
-> -    if (kvm_irqchip_in_kernel() &&
-> -        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> -        cpu->has_pmu = true;
-> -        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-> -    }
-> +
-> +    /* enable vPMU based on KVM mode and hardware capability */
-> +    cpu->enable_pmu &= (kvm_irqchip_in_kernel() &&
-> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3));
 
-nit: the () aren't necessary
-
-> +    cpu->kvm_init_features[0] |= cpu->enable_pmu << KVM_ARM_VCPU_PMU_V3;
->  
->      /* Do KVM_ARM_VCPU_INIT ioctl */
->      ret = kvm_arm_vcpu_init(cs);
-> -- 
-> 2.4.11
-> 
->
-
-OK, so this property will be exposed to all ARM cpu types, and if a user
-turns it on, then it will stay on for all types, except when using KVM
-with an aarch64 cpu type, and KVM doesn't support it. This could mislead
-users to believe they'll get a pmu, by simply adding pmu=on, even when
-they can't. I think we'd ideally keep has_pmu, and the current code that
-sets it, and then add code like
-
- if (enable_pmu && !has_pmu) {
-   error_report("Warning: ...")
- }
-
-somewhere. Unfortunately I don't think there's any one place we could
-add that. We'd need to add it to every ARM machine type that cares about
-not misleading users. Too bad cpu properties aren't whitelisted by
-machines to avoid this issue.
-
-Anyway, all that said, I see this is just how cpu properties currently
-work, so we probably don't need to worry about it for every machine. I
-do still suggest we add the above warning to mach-virt though.
-
-Thanks,
-drew
+thanks
+-- PMM

@@ -1,73 +1,59 @@
-Received: by 10.25.21.156 with SMTP id 28csp2369909lfv;
-        Sun, 31 Jul 2016 17:35:54 -0700 (PDT)
-X-Received: by 10.200.37.60 with SMTP id 57mr84066775qtm.82.1470011753905;
-        Sun, 31 Jul 2016 17:35:53 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp2493946lfv;
+        Mon, 1 Aug 2016 00:46:27 -0700 (PDT)
+X-Received: by 10.200.54.185 with SMTP id a54mr90246282qtc.63.1470037587120;
+        Mon, 01 Aug 2016 00:46:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q197si5566098qke.163.2016.07.31.17.35.53
+        by mx.google.com with ESMTPS id a12si19335080qte.3.2016.08.01.00.46.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 31 Jul 2016 17:35:53 -0700 (PDT)
+        Mon, 01 Aug 2016 00:46:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41272 helo=lists.gnu.org)
+Received: from localhost ([::1]:42309 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bU1Cz-0005lo-8x
-	for alex.bennee@linaro.org; Sun, 31 Jul 2016 20:35:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48588)
+	id 1bU7ve-0006VY-JO
+	for alex.bennee@linaro.org; Mon, 01 Aug 2016 03:46:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>) id 1bU1Ct-0005lh-MZ
-	for qemu-arm@nongnu.org; Sun, 31 Jul 2016 20:35:49 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bU7vZ-0006VH-Ak
+	for qemu-arm@nongnu.org; Mon, 01 Aug 2016 03:46:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>) id 1bU1Cq-0001XJ-Dr
-	for qemu-arm@nongnu.org; Sun, 31 Jul 2016 20:35:47 -0400
-Received: from exvmail.hynix.com ([166.125.252.79]:61612
-	helo=invmail.skhynix.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>)
-	id 1bU1Cp-0001WR-Bf; Sun, 31 Jul 2016 20:35:44 -0400
-X-AuditID: a67dfc4e-f797e6d000000a40-4c-579e995801ef
-Received: from nmail01.hynixad.com (10.156.98.81) by nmail07.hynixad.com
-	(10.156.98.87) with Microsoft SMTP Server (TLS) id 15.0.847.32;
-	Mon, 1 Aug 2016 09:35:36 +0900
-Received: from nmail01.hynixad.com ([::1]) by nmail01.hynixad.com
-	([fe80::b401:ed0f:ec2d:533c%24]) with mapi id 15.00.0847.030;
-	Mon, 1 Aug 2016 09:35:36 +0900
-From: "kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [RFC PATCH 1/3] hw/arm/virt: add hotplug memory support
-Thread-Index: AQHR4iCz63i60J7QhU+DySTPVw+aOaAvLcOAgAQZZ3A=
-Date: Mon, 1 Aug 2016 00:35:35 +0000
-Message-ID: <79b91f02b26441be993e372cef44002d@nmail01.hynixad.com>
+	(envelope-from <imammedo@redhat.com>) id 1bU7vT-0003ON-9o
+	for qemu-arm@nongnu.org; Mon, 01 Aug 2016 03:46:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39090)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>)
+	id 1bU7vT-0003OA-2C; Mon, 01 Aug 2016 03:46:15 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04A964E03C;
+	Mon,  1 Aug 2016 07:46:13 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u717k8j2012545; Mon, 1 Aug 2016 03:46:09 -0400
+Date: Mon, 1 Aug 2016 09:46:07 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: "kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com>
+Message-ID: <20160801094607.057cef2f@nial.brq.redhat.com>
+In-Reply-To: <79b91f02b26441be993e372cef44002d@nmail01.hynixad.com>
 References: <1468975744-12587-1-git-send-email-kwangwoo.lee@sk.com>
 	<1468975744-12587-2-git-send-email-kwangwoo.lee@sk.com>
 	<CAFEAcA_5jngVxajJxdJ0krz0inrkdjTNYYZ+5SNGOipoQo35ZA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_5jngVxajJxdJ0krz0inrkdjTNYYZ+5SNGOipoQo35ZA@mail.gmail.com>
-Accept-Language: ko-KR, en-US
-Content-Language: ko-KR
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.92.132.196]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	<79b91f02b26441be993e372cef44002d@nmail01.hynixad.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrLIsWRmVeSWpSXmKPExsXCNUdUWTdi5rxwg8W/jC0a7oVaLFy1jNni
-	9NEOZov/v16xWuzf9o/VYs6ZBywWC7oXslkc793BYjHt1B1Wi6fLfrNazNvwgsmB26PlyFtW
-	jzvX9rB5zDsZ6PHk2mYmj/f7rrJ59E3/wBzAFsVlk5Kak1mWWqRvl8CV0ds7k7FgXULFmgOd
-	rA2MH2K7GDk5JARMJGafWMcMYYtJXLi3nq2LkYtDSGA1o8Si/mVgCSGBRYwSjd8VQWw2AUOJ
-	vbf2sYLYIgI6Eleub2YCaWAW+MQscWXnMiCHg0NYwEXi+HIhEFNEwFXiyEYDCNNKYlVjEEgn
-	i4CKxOpPPUwgNq+Ak8Tuj52MEGuPMEps3zeJBSTBKRAoMWniTxaQXkYBWYmr12RAwswC4hKL
-	v16DOllAYsme81C2qMTLx/9YIWxFiW+vv7ODtDILaEqs36UP0aooMaX7ITvEWkGJkzOfsECU
-	S0ocXHGDZQKj+CwkG2YhdM9C0j0LSfcCRpZVjMKZeWW5iZk5esXZGZV5mRV6yfm5mxiBkbys
-	9o/fDsYXv7QOMQpwMCrx8CawzAsXYk0sK67MPcQowcGsJMK7bhpQiDclsbIqtSg/vqg0J7X4
-	EKM0B4uSOO+3/33hQgLpiSWp2ampBalFMFkmDk6pBsYFmzm3fU9Ml/n7SE/4xV3jq95ZNgu5
-	ex5X3PYIvRGxbedVwYltkXzBFeqiqkvq3Zoz+u4derDzfXK7xgXOIJaJ+z4GeAX9spjO7yWn
-	yr8+QOBScPV6xjX3Z+9MPvpe4v+pXJunntPPfKvbHJgf8krZ5NJzr/mrvh5Kmr9cs6zjq8zx
-	zxGBPapKLMUZiYZazEXFiQAmmrBe4AIAAA==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 166.125.252.79
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 01 Aug 2016 07:46:13 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [RFC PATCH 1/3] hw/arm/virt: add hotplug memory
  support
 X-BeenThere: qemu-arm@nongnu.org
@@ -81,176 +67,294 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Xiao Guangrong <guangrong.xiao@linux.intel.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Xiao Guangrong <guangrong.xiao@linux.intel.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	"woosuk.chung@sk.com" <woosuk.chung@sk.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	"hyunchul3.kim@sk.com" <hyunchul3.kim@sk.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T9v5EwfaviQV
+X-TUID: DaKDL7Qs8Cf5
 
-SGkgUGV0ZXIsDQoNClRoYW5rcyBhIGxvdCBmb3IgeW91ciBjb21tZW50cyEgSSBhbnN3ZXJlZCBp
-biBsaW5lIGJlbG93Lg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFBl
-dGVyIE1heWRlbGwgW21haWx0bzpwZXRlci5tYXlkZWxsQGxpbmFyby5vcmddDQo+IFNlbnQ6IFNh
-dHVyZGF5LCBKdWx5IDMwLCAyMDE2IDM6MTAgQU0NCj4gVG86IOydtOq0keyasChMRUUgS1dBTkdX
-T08pIE1TIFNXDQo+IENjOiBYaWFvIEd1YW5ncm9uZzsgTWljaGFlbCBTLiBUc2lya2luOyBJZ29y
-IE1hbW1lZG92OyBQYW9sbyBCb256aW5pOyBSaWNoYXJkIEhlbmRlcnNvbjsgRWR1YXJkbw0KPiBI
-YWJrb3N0OyBTaGFubm9uIFpoYW87IFNoYW5ub24gWmhhbzsgUUVNVSBEZXZlbG9wZXJzOyBxZW11
-LWFybTsg7KCV7Jqw7ISdKENIVU5HIFdPTyBTVUspIE1TIFNXOyDquYDtmITssqAoS0lNDQo+IEhZ
-VU5DSFVMKSBNUyBTVw0KPiBTdWJqZWN0OiBSZTogW1JGQyBQQVRDSCAxLzNdIGh3L2FybS92aXJ0
-OiBhZGQgaG90cGx1ZyBtZW1vcnkgc3VwcG9ydA0KPiANCj4gT24gMjAgSnVseSAyMDE2IGF0IDAx
-OjQ5LCBLd2FuZ3dvbyBMZWUgPGt3YW5nd29vLmxlZUBzay5jb20+IHdyb3RlOg0KPiA+IEFkZCBo
-b3RwbHVnIG1lbW9yeSBmZWF0dXJlIG9uIGFhcmNoNjQgdmlydCBwbGF0Zm9tLiBUaGlzIHBhdGNo
-IGlzDQo+ID4gcmVxdWlyZWQgdG8gZW11bGF0ZSBhIERJTU0gdHlwZSBtZW1vcnkgbGlrZSBOVkRJ
-TU0uDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBLd2FuZ3dvbyBMZWUgPGt3YW5nd29vLmxlZUBz
-ay5jb20+DQo+ID4gLS0tDQo+ID4gIGRlZmF1bHQtY29uZmlncy9hYXJjaDY0LXNvZnRtbXUubWFr
-IHwgICAxICsNCj4gPiAgaHcvYXJtL3ZpcnQuYyAgICAgICAgICAgICAgICAgICAgICAgfCAxMTAg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+ID4gIGluY2x1ZGUvaHcvYXJt
-L3ZpcnQuaCAgICAgICAgICAgICAgIHwgICAzICsNCj4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAxMTQg
-aW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2RlZmF1bHQtY29uZmlncy9hYXJj
-aDY0LXNvZnRtbXUubWFrIGIvZGVmYXVsdC1jb25maWdzL2FhcmNoNjQtc29mdG1tdS5tYWsNCj4g
-PiBpbmRleCAyNDQ5NDgzLi41NzkwY2QyIDEwMDY0NA0KPiA+IC0tLSBhL2RlZmF1bHQtY29uZmln
-cy9hYXJjaDY0LXNvZnRtbXUubWFrDQo+ID4gKysrIGIvZGVmYXVsdC1jb25maWdzL2FhcmNoNjQt
-c29mdG1tdS5tYWsNCj4gPiBAQCAtNywzICs3LDQgQEAgQ09ORklHX0FVWD15DQo+ID4gIENPTkZJ
-R19EREM9eQ0KPiA+ICBDT05GSUdfRFBDRD15DQo+ID4gIENPTkZJR19YTE5YX1pZTlFNUD15DQo+
-ID4gK0NPTkZJR19NRU1fSE9UUExVRz15DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0LmMg
-Yi9ody9hcm0vdmlydC5jDQo+ID4gaW5kZXggYTE5M2I1YS4uZjdmZjQxMSAxMDA2NDQNCj4gPiAt
-LS0gYS9ody9hcm0vdmlydC5jDQo+ID4gKysrIGIvaHcvYXJtL3ZpcnQuYw0KPiA+IEBAIC01OCw2
-ICs1OCw4IEBADQo+ID4gICNpbmNsdWRlICJody9zbWJpb3Mvc21iaW9zLmgiDQo+ID4gICNpbmNs
-dWRlICJxYXBpL3Zpc2l0b3IuaCINCj4gPiAgI2luY2x1ZGUgInN0YW5kYXJkLWhlYWRlcnMvbGlu
-dXgvaW5wdXQuaCINCj4gPiArI2luY2x1ZGUgImh3L21lbS9wYy1kaW1tLmgiDQo+ID4gKyNpbmNs
-dWRlICJody9hY3BpL2FjcGkuaCINCj4gPg0KPiA+ICAvKiBOdW1iZXIgb2YgZXh0ZXJuYWwgaW50
-ZXJydXB0IGxpbmVzIHRvIGNvbmZpZ3VyZSB0aGUgR0lDIHdpdGggKi8NCj4gPiAgI2RlZmluZSBO
-VU1fSVJRUyAyNTYNCj4gPiBAQCAtOTEsNiArOTMsNyBAQCB0eXBlZGVmIHN0cnVjdCB7DQo+ID4g
-ICAgICBib29sIHNlY3VyZTsNCj4gPiAgICAgIGJvb2wgaGlnaG1lbTsNCj4gPiAgICAgIGludDMy
-X3QgZ2ljX3ZlcnNpb247DQo+ID4gKyAgICBNZW1vcnlIb3RwbHVnU3RhdGUgaG90cGx1Z19tZW1v
-cnk7DQo+ID4gIH0gVmlydE1hY2hpbmVTdGF0ZTsNCj4gPg0KPiA+ICAjZGVmaW5lIFRZUEVfVklS
-VF9NQUNISU5FICAgTUFDSElORV9UWVBFX05BTUUoInZpcnQiKQ0KPiA+IEBAIC0xMzc2LDYgKzEz
-NzksNDAgQEAgc3RhdGljIHZvaWQgbWFjaHZpcnRfaW5pdChNYWNoaW5lU3RhdGUgKm1hY2hpbmUp
-DQo+ID4gICAgICBndWVzdF9pbmZvX3N0YXRlLT5tYWNoaW5lX2RvbmUubm90aWZ5ID0gdmlydF9n
-dWVzdF9pbmZvX21hY2hpbmVfZG9uZTsNCj4gPiAgICAgIHFlbXVfYWRkX21hY2hpbmVfaW5pdF9k
-b25lX25vdGlmaWVyKCZndWVzdF9pbmZvX3N0YXRlLT5tYWNoaW5lX2RvbmUpOw0KPiA+DQo+ID4g
-KyAgICAvKiBpbml0aWFsaXplIGhvdHBsdWcgbWVtb3J5IGFkZHJlc3Mgc3BhY2UgKi8NCj4gPiAr
-ICAgIGlmIChtYWNoaW5lLT5yYW1fc2l6ZSA8IG1hY2hpbmUtPm1heHJhbV9zaXplKSB7DQo+ID4g
-KyAgICAgICAgcmFtX2FkZHJfdCBob3RwbHVnX21lbV9zaXplID0gbWFjaGluZS0+bWF4cmFtX3Np
-emUgLSBtYWNoaW5lLT5yYW1fc2l6ZTsNCj4gPiArDQo+ID4gKyAgICAgICAgaWYgKG1hY2hpbmUt
-PnJhbV9zbG90cyA+IEFDUElfTUFYX1JBTV9TTE9UUykgew0KPiA+ICsgICAgICAgICAgICBlcnJv
-cl9yZXBvcnQoInVuc3VwcG9ydGVkIGFtb3VudCBvZiBtZW1vcnkgc2xvdHM6ICUiUFJJdTY0LA0K
-PiANCj4gIm51bWJlciBvZiINCg0KT0suIEknbGwgZml4IHRoaXMuDQoNCj4gPiArICAgICAgICAg
-ICAgICAgICAgICAgbWFjaGluZS0+cmFtX3Nsb3RzKTsNCj4gPiArICAgICAgICAgICAgZXhpdChF
-WElUX0ZBSUxVUkUpOw0KPiA+ICsgICAgICAgIH0NCj4gPiArDQo+ID4gKyAgICAgICAgaWYgKFFF
-TVVfQUxJR05fVVAobWFjaGluZS0+bWF4cmFtX3NpemUsDQo+ID4gKyAgICAgICAgICAgICAgICAg
-ICAgIFRBUkdFVF9QQUdFX1NJWkUpICE9IG1hY2hpbmUtPm1heHJhbV9zaXplKSB7DQo+ID4gKyAg
-ICAgICAgICAgIGVycm9yX3JlcG9ydCgibWF4aW11bSBtZW1vcnkgc2l6ZSBtdXN0IGJ5IGFsaWdu
-ZWQgdG8gbXVsdGlwbGUgb2YgIg0KPiANCj4gIm11c3QgYmUiDQoNCk9LLiBJJ2xsIGZpeCB0aGlz
-DQoNCj4gPiArICAgICAgICAgICAgICAgICAgICAgIiVkIGJ5dGVzIiwgVEFSR0VUX1BBR0VfU0la
-RSk7DQo+ID4gKyAgICAgICAgICAgIGV4aXQoRVhJVF9GQUlMVVJFKTsNCj4gPiArICAgICAgICB9
-DQo+ID4gKw0KPiA+ICsgICAgICAgIHZtcy0+aG90cGx1Z19tZW1vcnkuYmFzZSA9DQo+ID4gKyAg
-ICAgICAgICAgICAgICAgICAgIFJPVU5EX1VQKHZiaS0+bWVtbWFwW1ZJUlRfTUVNXS5iYXNlICsg
-bWFjaGluZS0+cmFtX3NpemUsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBBUkNIX1ZJUlRfSE9UUExVR19NRU1fQUxJR04pOw0KPiA+ICsNCj4gPiAr
-ICAgICAgICBpZiAoKHZtcy0+aG90cGx1Z19tZW1vcnkuYmFzZSArIGhvdHBsdWdfbWVtX3NpemUp
-IDwNCj4gPiArICAgICAgICAgICAgaG90cGx1Z19tZW1fc2l6ZSkgew0KPiANCj4gVGhpcyBleHBy
-ZXNzaW9uIGlzIGNvbmZ1c2luZy4gSXMgaXQgdHJ5aW5nIHRvIHRlc3QgZm9yIG92ZXJmbG93Pw0K
-PiBXaGVuIGNhbiB0aGF0IGhhcHBlbj8NCg0KQWguLiB5b3UgYXJlIHJpZ2h0LiBObyBuZWVkIHRv
-IGNoZWNrIHRoaXMuIEknbGwgcmVtb3ZlIHRoaXMuIFRoYW5rcyENCg0KPiA+ICsgICAgICAgICAg
-ICBlcnJvcl9yZXBvcnQoInVuc3VwcG9ydGVkIGFtb3VudCBvZiBtYXhpbXVtIG1lbW9yeTogIiBS
-QU1fQUREUl9GTVQsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgIG1hY2hpbmUtPm1heHJhbV9z
-aXplKTsNCj4gPiArICAgICAgICAgICAgZXhpdChFWElUX0ZBSUxVUkUpOw0KPiA+ICsgICAgICAg
-IH0NCj4gPiArDQo+ID4gKyAgICAgICAgbWVtb3J5X3JlZ2lvbl9pbml0KCZ2bXMtPmhvdHBsdWdf
-bWVtb3J5Lm1yLCBPQkpFQ1Qodm1zKSwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ImhvdHBsdWctbWVtb3J5IiwgaG90cGx1Z19tZW1fc2l6ZSk7DQo+ID4gKyAgICAgICAgbWVtb3J5
-X3JlZ2lvbl9hZGRfc3VicmVnaW9uKHN5c21lbSwgdm1zLT5ob3RwbHVnX21lbW9yeS5iYXNlLA0K
-PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmdm1zLT5ob3RwbHVnX21l
-bW9yeS5tcik7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICAgICAgdmJpLT5ib290aW5mby5yYW1f
-c2l6ZSA9IG1hY2hpbmUtPnJhbV9zaXplOw0KPiA+ICAgICAgdmJpLT5ib290aW5mby5rZXJuZWxf
-ZmlsZW5hbWUgPSBtYWNoaW5lLT5rZXJuZWxfZmlsZW5hbWU7DQo+ID4gICAgICB2YmktPmJvb3Rp
-bmZvLmtlcm5lbF9jbWRsaW5lID0gbWFjaGluZS0+a2VybmVsX2NtZGxpbmU7DQo+ID4gQEAgLTE0
-NDgsOSArMTQ4NSw3NSBAQCBzdGF0aWMgdm9pZCB2aXJ0X3NldF9naWNfdmVyc2lvbihPYmplY3Qg
-Km9iaiwgY29uc3QgY2hhciAqdmFsdWUsIEVycm9yICoqZXJycCkNCj4gPiAgICAgIH0NCj4gPiAg
-fQ0KPiA+DQo+ID4gK3N0YXRpYyB2b2lkIHZpcnRfZGltbV9wbHVnKEhvdHBsdWdIYW5kbGVyICpo
-b3RwbHVnX2RldiwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgIERldmljZVN0YXRlICpk
-ZXYsIEVycm9yICoqZXJycCkNCj4gPiArew0KPiA+ICsgICAgVmlydE1hY2hpbmVTdGF0ZSAqdm1z
-ID0gVklSVF9NQUNISU5FKGhvdHBsdWdfZGV2KTsNCj4gPiArICAgIFBDRElNTURldmljZSAqZGlt
-bSA9IFBDX0RJTU0oZGV2KTsNCj4gPiArICAgIFBDRElNTURldmljZUNsYXNzICpkZGMgPSBQQ19E
-SU1NX0dFVF9DTEFTUyhkaW1tKTsNCj4gPiArICAgIE1lbW9yeVJlZ2lvbiAqbXIgPSBkZGMtPmdl
-dF9tZW1vcnlfcmVnaW9uKGRpbW0pOw0KPiA+ICsgICAgRXJyb3IgKmxvY2FsX2VyciA9IE5VTEw7
-DQo+ID4gKyAgICB1aW50NjRfdCBhbGlnbiA9IG1lbW9yeV9yZWdpb25fZ2V0X2FsaWdubWVudCht
-cik7DQo+ID4gKw0KPiA+ICsgICAgcGNfZGltbV9tZW1vcnlfcGx1ZyhkZXYsICZ2bXMtPmhvdHBs
-dWdfbWVtb3J5LCBtciwgYWxpZ24sICZsb2NhbF9lcnIpOw0KPiA+ICsgICAgaWYgKGxvY2FsX2Vy
-cikgew0KPiA+ICsgICAgICAgIGdvdG8gb3V0Ow0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArb3V0
-Og0KPiA+ICsgICAgZXJyb3JfcHJvcGFnYXRlKGVycnAsIGxvY2FsX2Vycik7DQo+ID4gK30NCj4g
-PiArDQo+ID4gK3N0YXRpYyB2b2lkIHZpcnRfZGltbV91bnBsdWcoSG90cGx1Z0hhbmRsZXIgKmhv
-dHBsdWdfZGV2LA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICBEZXZpY2VTdGF0ZSAq
-ZGV2LCBFcnJvciAqKmVycnApDQo+ID4gK3sNCj4gPiArICAgIFZpcnRNYWNoaW5lU3RhdGUgKnZt
-cyA9IFZJUlRfTUFDSElORShob3RwbHVnX2Rldik7DQo+ID4gKyAgICBQQ0RJTU1EZXZpY2UgKmRp
-bW0gPSBQQ19ESU1NKGRldik7DQo+ID4gKyAgICBQQ0RJTU1EZXZpY2VDbGFzcyAqZGRjID0gUENf
-RElNTV9HRVRfQ0xBU1MoZGltbSk7DQo+ID4gKyAgICBNZW1vcnlSZWdpb24gKm1yID0gZGRjLT5n
-ZXRfbWVtb3J5X3JlZ2lvbihkaW1tKTsNCj4gPiArICAgIEVycm9yICpsb2NhbF9lcnIgPSBOVUxM
-Ow0KPiA+ICsNCj4gPiArICAgIHBjX2RpbW1fbWVtb3J5X3VucGx1ZyhkZXYsICZ2bXMtPmhvdHBs
-dWdfbWVtb3J5LCBtcik7DQo+ID4gKyAgICBvYmplY3RfdW5wYXJlbnQoT0JKRUNUKGRldikpOw0K
-PiA+ICsNCj4gPiArICAgIGVycm9yX3Byb3BhZ2F0ZShlcnJwLCBsb2NhbF9lcnIpOw0KPiA+ICt9
-DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCB2aXJ0X21hY2hpbmVkZXZpY2VfcGx1Z19jYihIb3Rw
-bHVnSGFuZGxlciAqaG90cGx1Z19kZXYsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgRGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+ID4g
-KyAgICBpZiAob2JqZWN0X2R5bmFtaWNfY2FzdChPQkpFQ1QoZGV2KSwgVFlQRV9QQ19ESU1NKSkg
-ew0KPiA+ICsgICAgICAgIHZpcnRfZGltbV9wbHVnKGhvdHBsdWdfZGV2LCBkZXYsIGVycnApOw0K
-PiA+ICsgICAgfSBlbHNlIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJhY3BpOiBk
-ZXZpY2UgcGx1ZyByZXF1ZXN0IGZvciBub3Qgc3VwcG9ydGVkIGRldmljZSINCj4gDQo+ICJ1bnN1
-cHBvcnRlZCINCg0KT0suIFdpbGwgZml4Lg0KDQo+ID4gKyAgICAgICAgICAgICAgICAgICAiIHR5
-cGU6ICVzIiwgb2JqZWN0X2dldF90eXBlbmFtZShPQkpFQ1QoZGV2KSkpOw0KPiA+ICsgICAgfQ0K
-PiA+ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCB2aXJ0X21hY2hpbmVkZXZpY2VfdW5wbHVn
-X2NiKEhvdHBsdWdIYW5kbGVyICpob3RwbHVnX2RldiwNCj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIERldmljZVN0YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4g
-PiArew0KPiA+ICsgICAgaWYgKG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGRldiksIFRZUEVf
-UENfRElNTSkpIHsNCj4gPiArICAgICAgICB2aXJ0X2RpbW1fdW5wbHVnKGhvdHBsdWdfZGV2LCBk
-ZXYsIGVycnApOw0KPiA+ICsgICAgfSBlbHNlIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVy
-cnAsICJhY3BpOiBkZXZpY2UgdW5wbHVnIGZvciBub3Qgc3VwcG9ydGVkIGRldmljZSINCj4gDQo+
-ICJ1bnN1cHBvcnRlZCINCg0KT0suIFdpbGwgZml4Lg0KDQo+ID4gKyAgICAgICAgICAgICAgICAg
-ICAiIHR5cGU6ICVzIiwgb2JqZWN0X2dldF90eXBlbmFtZShPQkpFQ1QoZGV2KSkpOw0KPiA+ICsg
-ICAgfQ0KPiA+ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMgSG90cGx1Z0hhbmRsZXIgKnZpcnRfZ2V0
-X2hvdHBsdWdfaGFuZGxlcihNYWNoaW5lU3RhdGUgKm1hY2hpbmUsDQo+ID4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERldmljZVN0YXRlICpkZXYpDQo+ID4g
-K3sNCj4gPiArICAgIGlmIChvYmplY3RfZHluYW1pY19jYXN0KE9CSkVDVChkZXYpLCBUWVBFX1BD
-X0RJTU0pKSB7DQo+ID4gKyAgICAgICAgcmV0dXJuIEhPVFBMVUdfSEFORExFUihtYWNoaW5lKTsN
-Cj4gPiArICAgIH0NCj4gPiArICAgIHJldHVybiBOVUxMOw0KPiA+ICt9DQo+ID4gKw0KPiA+ICBz
-dGF0aWMgdm9pZCB2aXJ0X21hY2hpbmVfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqb2MsIHZvaWQg
-KmRhdGEpDQo+ID4gIHsNCj4gPiAgICAgIE1hY2hpbmVDbGFzcyAqbWMgPSBNQUNISU5FX0NMQVNT
-KG9jKTsNCj4gPiArICAgIEhvdHBsdWdIYW5kbGVyQ2xhc3MgKmhjID0gSE9UUExVR19IQU5ETEVS
-X0NMQVNTKG9jKTsNCj4gPg0KPiA+ICAgICAgbWMtPmluaXQgPSBtYWNodmlydF9pbml0Ow0KPiA+
-ICAgICAgLyogU3RhcnQgbWF4X2NwdXMgYXQgdGhlIG1heGltdW0gUUVNVSBzdXBwb3J0cy4gV2Un
-bGwgZnVydGhlciByZXN0cmljdA0KPiA+IEBAIC0xNDYyLDYgKzE1NjUsOSBAQCBzdGF0aWMgdm9p
-ZCB2aXJ0X21hY2hpbmVfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqb2MsIHZvaWQgKmRhdGEpDQo+
-ID4gICAgICBtYy0+YmxvY2tfZGVmYXVsdF90eXBlID0gSUZfVklSVElPOw0KPiA+ICAgICAgbWMt
-Pm5vX2Nkcm9tID0gMTsNCj4gPiAgICAgIG1jLT5wY2lfYWxsb3dfMF9hZGRyZXNzID0gdHJ1ZTsN
-Cj4gPiArICAgIG1jLT5nZXRfaG90cGx1Z19oYW5kbGVyID0gdmlydF9nZXRfaG90cGx1Z19oYW5k
-bGVyOw0KPiA+ICsgICAgaGMtPnBsdWcgPSB2aXJ0X21hY2hpbmVkZXZpY2VfcGx1Z19jYjsNCj4g
-PiArICAgIGhjLT51bnBsdWcgPSB2aXJ0X21hY2hpbmVkZXZpY2VfdW5wbHVnX2NiOw0KPiA+ICB9
-DQo+ID4NCj4gPiAgc3RhdGljIGNvbnN0IFR5cGVJbmZvIHZpcnRfbWFjaGluZV9pbmZvID0gew0K
-PiA+IEBAIC0xNDcxLDYgKzE1NzcsMTAgQEAgc3RhdGljIGNvbnN0IFR5cGVJbmZvIHZpcnRfbWFj
-aGluZV9pbmZvID0gew0KPiA+ICAgICAgLmluc3RhbmNlX3NpemUgPSBzaXplb2YoVmlydE1hY2hp
-bmVTdGF0ZSksDQo+ID4gICAgICAuY2xhc3Nfc2l6ZSAgICA9IHNpemVvZihWaXJ0TWFjaGluZUNs
-YXNzKSwNCj4gPiAgICAgIC5jbGFzc19pbml0ICAgID0gdmlydF9tYWNoaW5lX2NsYXNzX2luaXQs
-DQo+ID4gKyAgICAuaW50ZXJmYWNlcyA9IChJbnRlcmZhY2VJbmZvW10pIHsNCj4gPiArICAgICAg
-ICAgeyBUWVBFX0hPVFBMVUdfSEFORExFUiB9LA0KPiA+ICsgICAgICAgICB7IH0NCj4gPiArICAg
-IH0sDQo+ID4gIH07DQo+ID4NCj4gPiAgc3RhdGljIHZvaWQgbWFjaHZpcnRfbWFjaGluZV9pbml0
-KHZvaWQpDQo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvYXJtL3ZpcnQuaCBiL2luY2x1ZGUv
-aHcvYXJtL3ZpcnQuaA0KPiA+IGluZGV4IDk2NTAxOTMuLjM1YWEzY2MgMTAwNjQ0DQo+ID4gLS0t
-IGEvaW5jbHVkZS9ody9hcm0vdmlydC5oDQo+ID4gKysrIGIvaW5jbHVkZS9ody9hcm0vdmlydC5o
-DQo+ID4gQEAgLTQ1LDYgKzQ1LDkgQEANCj4gPg0KPiA+ICAjZGVmaW5lIFBQSShpcnEpICgoaXJx
-KSArIDE2KQ0KPiA+DQo+ID4gKy8qIDFHQiBhbGlnbm1lbnQgZm9yIGhvdHBsdWcgbWVtb3J5IHJl
-Z2lvbiAqLw0KPiA+ICsjZGVmaW5lIEFSQ0hfVklSVF9IT1RQTFVHX01FTV9BTElHTiAoMVVMTCA8
-PCAzMCkNCj4gDQo+IFdoZXJlIGRvZXMgdGhlIDFHQiBhbGlnbm1lbnQgY29tZSBmcm9tPyBXaHkg
-ZG8gd2UgbmVlZCAxR0INCj4gYWxpZ25tZW50IGZvciB0aGUgYmFzZSBidXQgb25seSAxS0IgYWxp
-Z25tZW50IGZvciB0aGUgc2l6ZT8NCg0KVGhlIGFsaWdubWVudCB2YWx1ZSBvZiBob3RwbHVnX21l
-bW9yeS5iYXNlIHJlZmVycmVkIGZyb20gaTM4NiBwYy5jIGFuZCBwcGMgc3BhcHIuYy4NCkNvdWxk
-IHlvdSBzdWdnZXN0IGEgcHJvcGVyIHJhbmdlIGZvciB0aGlzPw0KDQo+ID4gKw0KPiA+ICBlbnVt
-IHsNCj4gPiAgICAgIFZJUlRfRkxBU0gsDQo+ID4gICAgICBWSVJUX01FTSwNCj4gPiAtLQ0KPiA+
-IDIuNS4wDQo+IA0KPiB0aGFua3MNCj4gLS0gUE1NDQoNCkJlc3QgUmVnYXJkcywNCkt3YW5nd29v
-IExlZQ0K
+On Mon, 1 Aug 2016 00:35:35 +0000
+"kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com> wrote:
+
+> Hi Peter,
+>=20
+> Thanks a lot for your comments! I answered in line below.
+>=20
+> > -----Original Message-----
+> > From: Peter Maydell [mailto:peter.maydell@linaro.org]
+> > Sent: Saturday, July 30, 2016 3:10 AM
+> > To: =EC=9D=B4=EA=B4=91=EC=9A=B0(LEE KWANGWOO) MS SW
+> > Cc: Xiao Guangrong; Michael S. Tsirkin; Igor Mammedov; Paolo Bonzini; R=
+ichard Henderson; Eduardo
+> > Habkost; Shannon Zhao; Shannon Zhao; QEMU Developers; qemu-arm; =EC=A0=
+=95=EC=9A=B0=EC=84=9D(CHUNG WOO SUK) MS SW; =EA=B9=80=ED=98=84=EC=B2=A0(KIM
+> > HYUNCHUL) MS SW
+> > Subject: Re: [RFC PATCH 1/3] hw/arm/virt: add hotplug memory support
+> >=20
+> > On 20 July 2016 at 01:49, Kwangwoo Lee <kwangwoo.lee@sk.com> wrote: =20
+> > > Add hotplug memory feature on aarch64 virt platfom. This patch is
+> > > required to emulate a DIMM type memory like NVDIMM.
+> > >
+> > > Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> > > ---
+> > >  default-configs/aarch64-softmmu.mak |   1 +
+> > >  hw/arm/virt.c                       | 110 ++++++++++++++++++++++++++=
+++++++++++
+> > >  include/hw/arm/virt.h               |   3 +
+> > >  3 files changed, 114 insertions(+)
+> > >
+> > > diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aa=
+rch64-softmmu.mak
+> > > index 2449483..5790cd2 100644
+> > > --- a/default-configs/aarch64-softmmu.mak
+> > > +++ b/default-configs/aarch64-softmmu.mak
+> > > @@ -7,3 +7,4 @@ CONFIG_AUX=3Dy
+> > >  CONFIG_DDC=3Dy
+> > >  CONFIG_DPCD=3Dy
+> > >  CONFIG_XLNX_ZYNQMP=3Dy
+> > > +CONFIG_MEM_HOTPLUG=3Dy
+> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > index a193b5a..f7ff411 100644
+> > > --- a/hw/arm/virt.c
+> > > +++ b/hw/arm/virt.c
+> > > @@ -58,6 +58,8 @@
+> > >  #include "hw/smbios/smbios.h"
+> > >  #include "qapi/visitor.h"
+> > >  #include "standard-headers/linux/input.h"
+> > > +#include "hw/mem/pc-dimm.h"
+> > > +#include "hw/acpi/acpi.h"
+> > >
+> > >  /* Number of external interrupt lines to configure the GIC with */
+> > >  #define NUM_IRQS 256
+> > > @@ -91,6 +93,7 @@ typedef struct {
+> > >      bool secure;
+> > >      bool highmem;
+> > >      int32_t gic_version;
+> > > +    MemoryHotplugState hotplug_memory;
+> > >  } VirtMachineState;
+> > >
+> > >  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+> > > @@ -1376,6 +1379,40 @@ static void machvirt_init(MachineState *machin=
+e)
+> > >      guest_info_state->machine_done.notify =3D virt_guest_info_machin=
+e_done;
+> > >      qemu_add_machine_init_done_notifier(&guest_info_state->machine_d=
+one);
+> > >
+> > > +    /* initialize hotplug memory address space */
+> > > +    if (machine->ram_size < machine->maxram_size) {
+> > > +        ram_addr_t hotplug_mem_size =3D machine->maxram_size - machi=
+ne->ram_size;
+> > > +
+> > > +        if (machine->ram_slots > ACPI_MAX_RAM_SLOTS) {
+> > > +            error_report("unsupported amount of memory slots: %"PRIu=
+64, =20
+> >=20
+> > "number of" =20
+>=20
+> OK. I'll fix this.
+>=20
+> > > +                     machine->ram_slots);
+> > > +            exit(EXIT_FAILURE);
+> > > +        }
+> > > +
+> > > +        if (QEMU_ALIGN_UP(machine->maxram_size,
+> > > +                     TARGET_PAGE_SIZE) !=3D machine->maxram_size) {
+> > > +            error_report("maximum memory size must by aligned to mul=
+tiple of " =20
+> >=20
+> > "must be" =20
+>=20
+> OK. I'll fix this
+>=20
+> > > +                     "%d bytes", TARGET_PAGE_SIZE);
+> > > +            exit(EXIT_FAILURE);
+> > > +        }
+> > > +
+> > > +        vms->hotplug_memory.base =3D
+> > > +                     ROUND_UP(vbi->memmap[VIRT_MEM].base + machine->=
+ram_size,
+> > > +                                              ARCH_VIRT_HOTPLUG_MEM_=
+ALIGN);
+> > > +
+> > > +        if ((vms->hotplug_memory.base + hotplug_mem_size) <
+> > > +            hotplug_mem_size) { =20
+> >=20
+> > This expression is confusing. Is it trying to test for overflow?
+> > When can that happen? =20
+>=20
+> Ah.. you are right. No need to check this. I'll remove this. Thanks!
+>=20
+> > > +            error_report("unsupported amount of maximum memory: " RA=
+M_ADDR_FMT,
+> > > +                     machine->maxram_size);
+> > > +            exit(EXIT_FAILURE);
+> > > +        }
+> > > +
+> > > +        memory_region_init(&vms->hotplug_memory.mr, OBJECT(vms),
+> > > +                           "hotplug-memory", hotplug_mem_size);
+> > > +        memory_region_add_subregion(sysmem, vms->hotplug_memory.base,
+> > > +                                    &vms->hotplug_memory.mr);
+> > > +    }
+> > > +
+> > >      vbi->bootinfo.ram_size =3D machine->ram_size;
+> > >      vbi->bootinfo.kernel_filename =3D machine->kernel_filename;
+> > >      vbi->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
+> > > @@ -1448,9 +1485,75 @@ static void virt_set_gic_version(Object *obj, =
+const char *value, Error **errp)
+> > >      }
+> > >  }
+> > >
+> > > +static void virt_dimm_plug(HotplugHandler *hotplug_dev,
+> > > +                         DeviceState *dev, Error **errp)
+> > > +{
+> > > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
+> > > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+> > > +    MemoryRegion *mr =3D ddc->get_memory_region(dimm);
+> > > +    Error *local_err =3D NULL;
+> > > +    uint64_t align =3D memory_region_get_alignment(mr);
+> > > +
+> > > +    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align, &local=
+_err);
+> > > +    if (local_err) {
+> > > +        goto out;
+> > > +    }
+> > > +
+> > > +out:
+> > > +    error_propagate(errp, local_err);
+> > > +}
+> > > +
+> > > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> > > +                           DeviceState *dev, Error **errp)
+> > > +{
+> > > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
+> > > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+> > > +    MemoryRegion *mr =3D ddc->get_memory_region(dimm);
+> > > +    Error *local_err =3D NULL;
+> > > +
+> > > +    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
+> > > +    object_unparent(OBJECT(dev));
+> > > +
+> > > +    error_propagate(errp, local_err);
+> > > +}
+> > > +
+> > > +static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
+> > > +                                      DeviceState *dev, Error **errp)
+> > > +{
+> > > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > > +        virt_dimm_plug(hotplug_dev, dev, errp);
+> > > +    } else {
+> > > +        error_setg(errp, "acpi: device plug request for not supporte=
+d device" =20
+> >=20
+> > "unsupported" =20
+>=20
+> OK. Will fix.
+>=20
+> > > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > > +    }
+> > > +}
+> > > +
+> > > +static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
+> > > +                                        DeviceState *dev, Error **er=
+rp)
+> > > +{
+> > > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > > +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> > > +    } else {
+> > > +        error_setg(errp, "acpi: device unplug for not supported devi=
+ce" =20
+> >=20
+> > "unsupported" =20
+>=20
+> OK. Will fix.
+>=20
+> > > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > > +    }
+> > > +}
+> > > +
+> > > +static HotplugHandler *virt_get_hotplug_handler(MachineState *machin=
+e,
+> > > +                                             DeviceState *dev)
+> > > +{
+> > > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > > +        return HOTPLUG_HANDLER(machine);
+> > > +    }
+> > > +    return NULL;
+> > > +}
+> > > +
+> > >  static void virt_machine_class_init(ObjectClass *oc, void *data)
+> > >  {
+> > >      MachineClass *mc =3D MACHINE_CLASS(oc);
+> > > +    HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
+> > >
+> > >      mc->init =3D machvirt_init;
+> > >      /* Start max_cpus at the maximum QEMU supports. We'll further re=
+strict
+> > > @@ -1462,6 +1565,9 @@ static void virt_machine_class_init(ObjectClass=
+ *oc, void *data)
+> > >      mc->block_default_type =3D IF_VIRTIO;
+> > >      mc->no_cdrom =3D 1;
+> > >      mc->pci_allow_0_address =3D true;
+> > > +    mc->get_hotplug_handler =3D virt_get_hotplug_handler;
+> > > +    hc->plug =3D virt_machinedevice_plug_cb;
+> > > +    hc->unplug =3D virt_machinedevice_unplug_cb;
+> > >  }
+> > >
+> > >  static const TypeInfo virt_machine_info =3D {
+> > > @@ -1471,6 +1577,10 @@ static const TypeInfo virt_machine_info =3D {
+> > >      .instance_size =3D sizeof(VirtMachineState),
+> > >      .class_size    =3D sizeof(VirtMachineClass),
+> > >      .class_init    =3D virt_machine_class_init,
+> > > +    .interfaces =3D (InterfaceInfo[]) {
+> > > +         { TYPE_HOTPLUG_HANDLER },
+> > > +         { }
+> > > +    },
+> > >  };
+> > >
+> > >  static void machvirt_machine_init(void)
+> > > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > > index 9650193..35aa3cc 100644
+> > > --- a/include/hw/arm/virt.h
+> > > +++ b/include/hw/arm/virt.h
+> > > @@ -45,6 +45,9 @@
+> > >
+> > >  #define PPI(irq) ((irq) + 16)
+> > >
+> > > +/* 1GB alignment for hotplug memory region */
+> > > +#define ARCH_VIRT_HOTPLUG_MEM_ALIGN (1ULL << 30) =20
+> >=20
+> > Where does the 1GB alignment come from? Why do we need 1GB
+> > alignment for the base but only 1KB alignment for the size? =20
+>=20
+> The alignment value of hotplug_memory.base referred from i386 pc.c and pp=
+c spapr.c.
+> Could you suggest a proper range for this?
+Base alignment comes from max supported hugepage size, while
+size alignment should depend on backend's page size.
+
+>=20
+> > > +
+> > >  enum {
+> > >      VIRT_FLASH,
+> > >      VIRT_MEM,
+> > > --
+> > > 2.5.0 =20
+> >=20
+> > thanks
+> > -- PMM =20
+>=20
+> Best Regards,
+> Kwangwoo Lee
+

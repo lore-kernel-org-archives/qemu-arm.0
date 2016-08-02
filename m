@@ -1,260 +1,396 @@
-Received: by 10.25.21.156 with SMTP id 28csp316925lfv;
-        Tue, 2 Aug 2016 10:21:14 -0700 (PDT)
-X-Received: by 10.55.201.70 with SMTP id q67mr37012043qki.45.1470158473972;
-        Tue, 02 Aug 2016 10:21:13 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp317503lfv;
+        Tue, 2 Aug 2016 10:22:40 -0700 (PDT)
+X-Received: by 10.55.53.140 with SMTP id c134mr8811545qka.143.1470158559971;
+        Tue, 02 Aug 2016 10:22:39 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i4si2078413qtd.91.2016.08.02.10.21.13
+        by mx.google.com with ESMTPS id n59si2070934qtd.126.2016.08.02.10.22.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Aug 2016 10:21:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 02 Aug 2016 10:22:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57899 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57903 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bUdNR-000215-7v
-	for alex.bennee@linaro.org; Tue, 02 Aug 2016 13:21:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60697)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bUdOp-0002kf-7o
+	for alex.bennee@linaro.org; Tue, 02 Aug 2016 13:22:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bUdJ4-0006P3-0G
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 13:16:46 -0400
+	(envelope-from <clg@kaod.org>) id 1bUdIc-00065P-5x
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bUdIy-0007Fl-Tv
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 13:16:40 -0400
-Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:35145)
+	(envelope-from <clg@kaod.org>) id 1bUdIZ-00079E-8l
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:13 -0400
+Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:40140)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bUdIy-0007Fa-JS
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 13:16:36 -0400
+	id 1bUdIY-000794-Vg
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:11 -0400
 Received: from player732.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 1F84B1000C67
-	for <qemu-arm@nongnu.org>; Tue,  2 Aug 2016 19:16:36 +0200 (CEST)
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 7B55F1000C67
+	for <qemu-devel@nongnu.org>; Tue,  2 Aug 2016 19:16:10 +0200 (CEST)
 Received: from localhost.localdomain.com (bad36-1-78-202-132-1.fbx.proxad.net
 	[78.202.132.1]) (Authenticated sender: clg@kaod.org)
-	by player732.ha.ovh.net (Postfix) with ESMTPSA id 039C51000A0;
-	Tue,  2 Aug 2016 19:16:31 +0200 (CEST)
+	by player732.ha.ovh.net (Postfix) with ESMTPSA id 5E4421000A0;
+	Tue,  2 Aug 2016 19:16:05 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue,  2 Aug 2016 19:15:44 +0200
-Message-Id: <1470158147-16378-8-git-send-email-clg@kaod.org>
+Date: Tue,  2 Aug 2016 19:15:39 +0200
+Message-Id: <1470158147-16378-3-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1470158147-16378-1-git-send-email-clg@kaod.org>
 References: <1470158147-16378-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 15380918631593577233
+X-Ovh-Tracer-Id: 15373600278076099345
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrjeekgdejlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 46.105.43.140
-Subject: [Qemu-arm] [PATCH v3 07/10] hw/misc: use macros to define hw-strap1
- register on the AST2400 Aspeed SoC
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.76.148
+Subject: [Qemu-devel] [PATCH v3 02/10] ast2400: replace ast2400 with
+ aspeed_soc
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lreBt+7i5Jfa
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XHEuyvUH3qk3
 
-This gives some explanation behind the magic number 0x120CE416.
+This is a name replacement to prepare ground for other SoCs.
+
+Let's also remove the AST2400_SMC_BASE definition from the address
+space mappings, as it is not used. This controller was removed from
+the Aspeed SoC AST2500, so this provides us a better common base for
+the address space mapping on both SoCs.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
+ hw/arm/aspeed_soc.c         | 95 ++++++++++++++++++++++-----------------=
+------
+ hw/arm/palmetto-bmc.c       |  4 +-
+ include/hw/arm/aspeed_soc.h | 16 ++++----
+ 3 files changed, 57 insertions(+), 58 deletions(-)
 
- Changes since v2:
-
- - more precise definitions of the hw-strap1 register
- - moved hw-strap1 to the board level.
-
- hw/arm/aspeed.c              |  15 +++++-
- include/hw/misc/aspeed_scu.h | 118 +++++++++++++++++++++++++++++++++++++=
-++++++
- 2 files changed, 132 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 4226b8dcd95c..80907b4244ea 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -39,8 +39,21 @@ enum {
-     PALMETTO_BMC
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index b272f4e48cfc..1bec478fef68 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -1,5 +1,5 @@
+ /*
+- * AST2400 SoC
++ * ASPEED SoC family
+  *
+  * Andrew Jeffery <andrew@aj.id.au>
+  * Jeremy Kerr <jk@ozlabs.org>
+@@ -20,20 +20,19 @@
+ #include "qemu/log.h"
+ #include "hw/i2c/aspeed_i2c.h"
+=20
+-#define AST2400_UART_5_BASE      0x00184000
+-#define AST2400_IOMEM_SIZE       0x00200000
+-#define AST2400_IOMEM_BASE       0x1E600000
+-#define AST2400_SMC_BASE         AST2400_IOMEM_BASE /* Legacy SMC */
+-#define AST2400_FMC_BASE         0X1E620000
+-#define AST2400_SPI_BASE         0X1E630000
+-#define AST2400_VIC_BASE         0x1E6C0000
+-#define AST2400_SDMC_BASE        0x1E6E0000
+-#define AST2400_SCU_BASE         0x1E6E2000
+-#define AST2400_TIMER_BASE       0x1E782000
+-#define AST2400_I2C_BASE         0x1E78A000
+-
+-#define AST2400_FMC_FLASH_BASE   0x20000000
+-#define AST2400_SPI_FLASH_BASE   0x30000000
++#define ASPEED_SOC_UART_5_BASE      0x00184000
++#define ASPEED_SOC_IOMEM_SIZE       0x00200000
++#define ASPEED_SOC_IOMEM_BASE       0x1E600000
++#define ASPEED_SOC_FMC_BASE         0x1E620000
++#define ASPEED_SOC_SPI_BASE         0x1E630000
++#define ASPEED_SOC_VIC_BASE         0x1E6C0000
++#define ASPEED_SOC_SDMC_BASE        0x1E6E0000
++#define ASPEED_SOC_SCU_BASE         0x1E6E2000
++#define ASPEED_SOC_TIMER_BASE       0x1E782000
++#define ASPEED_SOC_I2C_BASE         0x1E78A000
++
++#define ASPEED_SOC_FMC_FLASH_BASE   0x20000000
++#define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
+=20
+ static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
+ static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
+@@ -43,29 +42,29 @@ static const int timer_irqs[] =3D { 16, 17, 18, 35, 3=
+6, 37, 38, 39, };
+  * handled by a device mapping.
+  */
+=20
+-static uint64_t ast2400_io_read(void *p, hwaddr offset, unsigned size)
++static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size=
+)
+ {
+     qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
+                   __func__, offset, size);
+     return 0;
+ }
+=20
+-static void ast2400_io_write(void *opaque, hwaddr offset, uint64_t value=
+,
++static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t va=
+lue,
+                 unsigned size)
+ {
+     qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
+u]\n",
+                   __func__, offset, value, size);
+ }
+=20
+-static const MemoryRegionOps ast2400_io_ops =3D {
+-    .read =3D ast2400_io_read,
+-    .write =3D ast2400_io_write,
++static const MemoryRegionOps aspeed_soc_io_ops =3D {
++    .read =3D aspeed_soc_io_read,
++    .write =3D aspeed_soc_io_write,
+     .endianness =3D DEVICE_LITTLE_ENDIAN,
  };
 =20
-+#define PALMETTO_BMC_HW_STRAP1 (                                        =
-\
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               =
-\
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=3D6, CWL=3D5 =
-*/) | \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 =
-\
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       =
-\
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                =
-\
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1=
-) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        =
-\
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-+
- static const AspeedBoardConfig aspeed_boards[] =3D {
--    [PALMETTO_BMC] =3D { "ast2400-a0", 0x120CE416 },
-+    [PALMETTO_BMC] =3D { "ast2400-a0", PALMETTO_BMC_HW_STRAP1 },
+-static void ast2400_init(Object *obj)
++static void aspeed_soc_init(Object *obj)
+ {
+-    AST2400State *s =3D AST2400(obj);
++    AspeedSoCState *s =3D ASPEED_SOC(obj);
+=20
+     s->cpu =3D cpu_arm_init("arm926");
+=20
+@@ -106,17 +105,17 @@ static void ast2400_init(Object *obj)
+                          AST2400_A0_SILICON_REV);
+ }
+=20
+-static void ast2400_realize(DeviceState *dev, Error **errp)
++static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+ {
+     int i;
+-    AST2400State *s =3D AST2400(dev);
++    AspeedSoCState *s =3D ASPEED_SOC(dev);
+     Error *err =3D NULL, *local_err =3D NULL;
+=20
+     /* IO space */
+-    memory_region_init_io(&s->iomem, NULL, &ast2400_io_ops, NULL,
+-            "ast2400.io", AST2400_IOMEM_SIZE);
+-    memory_region_add_subregion_overlap(get_system_memory(), AST2400_IOM=
+EM_BASE,
+-            &s->iomem, -1);
++    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
++            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
++    memory_region_add_subregion_overlap(get_system_memory(),
++                                        ASPEED_SOC_IOMEM_BASE, &s->iomem=
+, -1);
+=20
+     /* VIC */
+     object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
+@@ -124,7 +123,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, AST2400_VIC_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, ASPEED_SOC_VIC_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
+                        qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
+@@ -136,7 +135,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, AST2400_TIMER_BASE=
+);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, ASPEED_SOC_TIMER_B=
+ASE);
+     for (i =3D 0; i < ARRAY_SIZE(timer_irqs); i++) {
+         qemu_irq irq =3D qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]=
+);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+@@ -148,12 +147,12 @@ static void ast2400_realize(DeviceState *dev, Error=
+ **errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, AST2400_SCU_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
+=20
+     /* UART - attach an 8250 to the IO space as our UART5 */
+     if (serial_hds[0]) {
+         qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4=
+]);
+-        serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
++        serial_mm_init(&s->iomem, ASPEED_SOC_UART_5_BASE, 2,
+                        uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN=
+);
+     }
+=20
+@@ -163,7 +162,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, AST2400_I2C_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, ASPEED_SOC_I2C_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
+                        qdev_get_gpio_in(DEVICE(&s->vic), 12));
+=20
+@@ -175,8 +174,8 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 0, AST2400_FMC_BASE);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 1, AST2400_FMC_FLASH_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 0, ASPEED_SOC_FMC_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 1, ASPEED_SOC_FMC_FLASH_BAS=
+E);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->smc), 0,
+                        qdev_get_gpio_in(DEVICE(&s->vic), 19));
+=20
+@@ -188,8 +187,8 @@ static void ast2400_realize(DeviceState *dev, Error *=
+*errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0, AST2400_SPI_BASE);
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, AST2400_SPI_FLASH_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0, ASPEED_SOC_SPI_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, ASPEED_SOC_SPI_FLASH_BAS=
+E);
+=20
+     /* SDMC - SDRAM Memory Controller */
+     object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
+@@ -197,14 +196,14 @@ static void ast2400_realize(DeviceState *dev, Error=
+ **errp)
+         error_propagate(errp, err);
+         return;
+     }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, AST2400_SDMC_BASE);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
+ }
+=20
+-static void ast2400_class_init(ObjectClass *oc, void *data)
++static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(oc);
+=20
+-    dc->realize =3D ast2400_realize;
++    dc->realize =3D aspeed_soc_realize;
+=20
+     /*
+      * Reason: creates an ARM CPU, thus use after free(), see
+@@ -213,17 +212,17 @@ static void ast2400_class_init(ObjectClass *oc, voi=
+d *data)
+     dc->cannot_destroy_with_object_finalize_yet =3D true;
+ }
+=20
+-static const TypeInfo ast2400_type_info =3D {
+-    .name =3D TYPE_AST2400,
++static const TypeInfo aspeed_soc_type_info =3D {
++    .name =3D TYPE_ASPEED_SOC,
+     .parent =3D TYPE_SYS_BUS_DEVICE,
+-    .instance_size =3D sizeof(AST2400State),
+-    .instance_init =3D ast2400_init,
+-    .class_init =3D ast2400_class_init,
++    .instance_size =3D sizeof(AspeedSoCState),
++    .instance_init =3D aspeed_soc_init,
++    .class_init =3D aspeed_soc_class_init,
  };
 =20
- static void aspeed_board_init_flashes(AspeedSMCState *s, const char *fla=
-shtype,
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index fdfd982288f2..0761f0880c69 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -36,4 +36,122 @@ typedef struct AspeedSCUState {
+-static void ast2400_register_types(void)
++static void aspeed_soc_register_types(void)
+ {
+-    type_register_static(&ast2400_type_info);
++    type_register_static(&aspeed_soc_type_info);
+ }
 =20
- extern bool is_supported_silicon_rev(uint32_t silicon_rev);
+-type_init(ast2400_register_types)
++type_init(aspeed_soc_register_types)
+diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
+index 67676a8a8042..4d11905cfb18 100644
+--- a/hw/arm/palmetto-bmc.c
++++ b/hw/arm/palmetto-bmc.c
+@@ -28,7 +28,7 @@ static struct arm_boot_info palmetto_bmc_binfo =3D {
+ };
 =20
-+/*
-+ * Extracted from Aspeed SDK v00.03.21. Fixes and extra definitions
-+ * were added.
-+ *
-+ * Original header file :
-+ *    arch/arm/mach-aspeed/include/mach/regs-scu.h
-+ *
-+ *    Copyright (C) 2012-2020  ASPEED Technology Inc.
-+ *
-+ *    This program is free software; you can redistribute it and/or modi=
-fy
-+ *    it under the terms of the GNU General Public License version 2 as
-+ *    published by the Free Software Foundation.
-+ *
-+ *      History      :
-+ *       1. 2012/12/29 Ryan Chen Create
-+ */
-+
-+/* Hardware Strapping Register definition (for Aspeed AST2400 SOC)
-+ *
-+ * 31:29  Software defined strapping registers
-+ * 28:27  DRAM size setting (for VGA driver use)
-+ * 26:24  DRAM configuration setting
-+ * 23     Enable 25 MHz reference clock input
-+ * 22     Enable GPIOE pass-through mode
-+ * 21     Enable GPIOD pass-through mode
-+ * 20     Disable LPC to decode SuperIO 0x2E/0x4E address
-+ * 19     Disable ACPI function
-+ * 23,18  Clock source selection
-+ * 17     Enable BMC 2nd boot watchdog timer
-+ * 16     SuperIO configuration address selection
-+ * 15     VGA Class Code selection
-+ * 14     Enable LPC dedicated reset pin function
-+ * 13:12  SPI mode selection
-+ * 11:10  CPU/AHB clock frequency ratio selection
-+ * 9:8    H-PLL default clock frequency selection
-+ * 7      Define MAC#2 interface
-+ * 6      Define MAC#1 interface
-+ * 5      Enable VGA BIOS ROM
-+ * 4      Boot flash memory extended option
-+ * 3:2    VGA memory size selection
-+ * 1:0    BMC CPU boot code selection
-+ */
-+#define SCU_AST2400_HW_STRAP_SW_DEFINE(x)          (x << 29)
-+#define SCU_AST2400_HW_STRAP_SW_DEFINE_MASK        (0x7 << 29)
-+
-+#define SCU_AST2400_HW_STRAP_DRAM_SIZE(x)          (x << 27)
-+#define SCU_AST2400_HW_STRAP_DRAM_SIZE_MASK        (0x3 << 27)
-+#define     DRAM_SIZE_64MB                             0
-+#define     DRAM_SIZE_128MB                            1
-+#define     DRAM_SIZE_256MB                            2
-+#define     DRAM_SIZE_512MB                            3
-+
-+#define SCU_AST2400_HW_STRAP_DRAM_CONFIG(x)        (x << 24)
-+#define SCU_AST2400_HW_STRAP_DRAM_CONFIG_MASK      (0x7 << 24)
-+
-+#define SCU_HW_STRAP_GPIOE_PT_EN                   (0x1 << 22)
-+#define SCU_HW_STRAP_GPIOD_PT_EN                   (0x1 << 21)
-+#define SCU_HW_STRAP_LPC_DEC_SUPER_IO              (0x1 << 20)
-+#define SCU_AST2400_HW_STRAP_ACPI_DIS              (0x1 << 19)
-+
-+/* bit 23, 18 [1,0] */
-+#define SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(x)     ((((x & 0x3) >> 1) <<=
- 23) | \
-+                                                    ((x & 0x1) << 18))
-+#define SCU_AST2400_HW_STRAP_GET_CLK_SOURCE(x)     ((((x >> 23) & 0x1) <=
-< 1) | \
-+                                                    ((x >> 18) & 0x1))
-+#define SCU_AST2400_HW_STRAP_CLK_SOURCE_MASK       ((0x1 << 23) | (0x1 <=
-< 18))
-+#define     AST2400_CLK_25M_IN                         (0x1 << 23)
-+#define     AST2400_CLK_24M_IN                         0
-+#define     AST2400_CLK_48M_IN                         1
-+#define     AST2400_CLK_25M_IN_24M_USB_CKI             2
-+#define     AST2400_CLK_25M_IN_48M_USB_CKI             3
-+
-+#define SCU_HW_STRAP_2ND_BOOT_WDT                  (0x1 << 17)
-+#define SCU_HW_STRAP_SUPER_IO_CONFIG               (0x1 << 16)
-+#define SCU_HW_STRAP_VGA_CLASS_CODE                (0x1 << 15)
-+#define SCU_HW_STRAP_LPC_RESET_PIN                 (0x1 << 14)
-+
-+#define SCU_HW_STRAP_SPI_MODE(x)                   (x << 12)
-+#define SCU_HW_STRAP_SPI_MODE_MASK                 (0x3 << 12)
-+#define     SCU_HW_STRAP_SPI_DIS                       0
-+#define     SCU_HW_STRAP_SPI_MASTER                    1
-+#define     SCU_HW_STRAP_SPI_M_S_EN                    2
-+#define     SCU_HW_STRAP_SPI_PASS_THROUGH              3
-+
-+#define SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(x)  (x << 10)
-+#define SCU_AST2400_HW_STRAP_GET_CPU_AHB_RATIO(x)  ((x >> 10) & 3)
-+#define SCU_AST2400_HW_STRAP_CPU_AHB_RATIO_MASK    (0x3 << 10)
-+#define     AST2400_CPU_AHB_RATIO_1_1                  0
-+#define     AST2400_CPU_AHB_RATIO_2_1                  1
-+#define     AST2400_CPU_AHB_RATIO_4_1                  2
-+#define     AST2400_CPU_AHB_RATIO_3_1                  3
-+
-+#define SCU_AST2400_HW_STRAP_GET_H_PLL_CLK(x)      ((x >> 8) & 0x3)
-+#define SCU_AST2400_HW_STRAP_H_PLL_CLK_MASK        (0x3 << 8)
-+#define     AST2400_CPU_384MHZ                         0
-+#define     AST2400_CPU_360MHZ                         1
-+#define     AST2400_CPU_336MHZ                         2
-+#define     AST2400_CPU_408MHZ                         3
-+
-+#define SCU_HW_STRAP_MAC1_RGMII                    (0x1 << 7)
-+#define SCU_HW_STRAP_MAC0_RGMII                    (0x1 << 6)
-+#define SCU_HW_STRAP_VGA_BIOS_ROM                  (0x1 << 5)
-+#define SCU_HW_STRAP_SPI_WIDTH                     (0x1 << 4)
-+
-+#define SCU_HW_STRAP_VGA_SIZE_GET(x)               ((x >> 2) & 0x3)
-+#define SCU_HW_STRAP_VGA_MASK                      (0x3 << 2)
-+#define SCU_HW_STRAP_VGA_SIZE_SET(x)               (x << 2)
-+#define     VGA_8M_DRAM                                0
-+#define     VGA_16M_DRAM                               1
-+#define     VGA_32M_DRAM                               2
-+#define     VGA_64M_DRAM                               3
-+
-+#define SCU_AST2400_HW_STRAP_BOOT_MODE(x)          (x)
-+#define     AST2400_NOR_BOOT                           0
-+#define     AST2400_NAND_BOOT                          1
-+#define     AST2400_SPI_BOOT                           2
-+#define     AST2400_DIS_BOOT                           3
-+
- #endif /* ASPEED_SCU_H */
+ typedef struct PalmettoBMCState {
+-    AST2400State soc;
++    AspeedSoCState soc;
+     MemoryRegion ram;
+ } PalmettoBMCState;
+=20
+@@ -63,7 +63,7 @@ static void palmetto_bmc_init(MachineState *machine)
+     PalmettoBMCState *bmc;
+=20
+     bmc =3D g_new0(PalmettoBMCState, 1);
+-    object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_AST2400);
++    object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_ASPEED_SOC);
+     object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
+                               &error_abort);
+=20
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index e68807d475b7..bf63ae90cabe 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -1,5 +1,5 @@
+ /*
+- * ASPEED AST2400 SoC
++ * ASPEED SoC family
+  *
+  * Andrew Jeffery <andrew@aj.id.au>
+  *
+@@ -9,8 +9,8 @@
+  * the COPYING file in the top-level directory.
+  */
+=20
+-#ifndef AST2400_H
+-#define AST2400_H
++#ifndef ASPEED_SOC_H
++#define ASPEED_SOC_H
+=20
+ #include "hw/arm/arm.h"
+ #include "hw/intc/aspeed_vic.h"
+@@ -20,7 +20,7 @@
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
+=20
+-typedef struct AST2400State {
++typedef struct AspeedSoCState {
+     /*< private >*/
+     DeviceState parent;
+=20
+@@ -34,11 +34,11 @@ typedef struct AST2400State {
+     AspeedSMCState smc;
+     AspeedSMCState spi;
+     AspeedSDMCState sdmc;
+-} AST2400State;
++} AspeedSoCState;
+=20
+-#define TYPE_AST2400 "ast2400"
+-#define AST2400(obj) OBJECT_CHECK(AST2400State, (obj), TYPE_AST2400)
++#define TYPE_ASPEED_SOC "aspeed-soc"
++#define ASPEED_SOC(obj) OBJECT_CHECK(AspeedSoCState, (obj), TYPE_ASPEED_=
+SOC)
+=20
+ #define AST2400_SDRAM_BASE       0x40000000
+=20
+-#endif /* AST2400_H */
++#endif /* ASPEED_SOC_H */
 --=20
 2.7.4
 

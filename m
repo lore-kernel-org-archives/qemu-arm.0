@@ -1,58 +1,58 @@
-Received: by 10.25.21.156 with SMTP id 28csp317503lfv;
-        Tue, 2 Aug 2016 10:22:40 -0700 (PDT)
-X-Received: by 10.55.53.140 with SMTP id c134mr8811545qka.143.1470158559971;
-        Tue, 02 Aug 2016 10:22:39 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp317652lfv;
+        Tue, 2 Aug 2016 10:23:07 -0700 (PDT)
+X-Received: by 10.37.201.71 with SMTP id z68mr48996120ybf.168.1470158586955;
+        Tue, 02 Aug 2016 10:23:06 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n59si2070934qtd.126.2016.08.02.10.22.39
+        by mx.google.com with ESMTPS id o142si2100111qke.46.2016.08.02.10.23.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Aug 2016 10:22:39 -0700 (PDT)
+        Tue, 02 Aug 2016 10:23:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57903 helo=lists.gnu.org)
+Received: from localhost ([::1]:57905 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bUdOp-0002kf-7o
-	for alex.bennee@linaro.org; Tue, 02 Aug 2016 13:22:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60501)
+	id 1bUdPG-00037l-8Q
+	for alex.bennee@linaro.org; Tue, 02 Aug 2016 13:23:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bUdIc-00065P-5x
-	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:18 -0400
+	(envelope-from <clg@kaod.org>) id 1bUdIu-0006Hx-3o
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bUdIZ-00079E-8l
-	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:13 -0400
-Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:40140)
+	(envelope-from <clg@kaod.org>) id 1bUdIp-0007DB-2l
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:32 -0400
+Received: from 10.mo179.mail-out.ovh.net ([46.105.79.46]:54527)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bUdIY-000794-Vg
-	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:11 -0400
+	id 1bUdIo-0007Cn-Ns
+	for qemu-devel@nongnu.org; Tue, 02 Aug 2016 13:16:27 -0400
 Received: from player732.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 7B55F1000C67
-	for <qemu-devel@nongnu.org>; Tue,  2 Aug 2016 19:16:10 +0200 (CEST)
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id D45211000C88
+	for <qemu-devel@nongnu.org>; Tue,  2 Aug 2016 19:16:25 +0200 (CEST)
 Received: from localhost.localdomain.com (bad36-1-78-202-132-1.fbx.proxad.net
 	[78.202.132.1]) (Authenticated sender: clg@kaod.org)
-	by player732.ha.ovh.net (Postfix) with ESMTPSA id 5E4421000A0;
-	Tue,  2 Aug 2016 19:16:05 +0200 (CEST)
+	by player732.ha.ovh.net (Postfix) with ESMTPSA id BB15C1000A0;
+	Tue,  2 Aug 2016 19:16:20 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue,  2 Aug 2016 19:15:39 +0200
-Message-Id: <1470158147-16378-3-git-send-email-clg@kaod.org>
+Date: Tue,  2 Aug 2016 19:15:42 +0200
+Message-Id: <1470158147-16378-6-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1470158147-16378-1-git-send-email-clg@kaod.org>
 References: <1470158147-16378-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 15373600278076099345
+X-Ovh-Tracer-Id: 15377822403908766481
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrjeekgdejlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 46.105.76.148
-Subject: [Qemu-devel] [PATCH v3 02/10] ast2400: replace ast2400 with
- aspeed_soc
+X-Received-From: 46.105.79.46
+Subject: [Qemu-devel] [PATCH v3 05/10] palmetto-bmc: replace palmetto_bmc
+ with aspeed
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,329 +68,123 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XHEuyvUH3qk3
+X-TUID: RUC0Z7tijInB
 
-This is a name replacement to prepare ground for other SoCs.
-
-Let's also remove the AST2400_SMC_BASE definition from the address
-space mappings, as it is not used. This controller was removed from
-the Aspeed SoC AST2500, so this provides us a better common base for
-the address space mapping on both SoCs.
+This is mostly a name replacement to prepare ground for other SoCs
+specificities. It also adds a TypeInfo struct for the palmetto-bmc
+board with a custom initialization for the same reason.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_soc.c         | 95 ++++++++++++++++++++++-----------------=
-------
- hw/arm/palmetto-bmc.c       |  4 +-
- include/hw/arm/aspeed_soc.h | 16 ++++----
- 3 files changed, 57 insertions(+), 58 deletions(-)
+ hw/arm/aspeed.c | 56 +++++++++++++++++++++++++++++++++++++--------------=
+-----
+ 1 file changed, 37 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index b272f4e48cfc..1bec478fef68 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -1,5 +1,5 @@
- /*
-- * AST2400 SoC
-+ * ASPEED SoC family
-  *
-  * Andrew Jeffery <andrew@aj.id.au>
-  * Jeremy Kerr <jk@ozlabs.org>
-@@ -20,20 +20,19 @@
- #include "qemu/log.h"
- #include "hw/i2c/aspeed_i2c.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 531c266d9449..ad0a062b5624 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -21,16 +21,16 @@
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
 =20
--#define AST2400_UART_5_BASE      0x00184000
--#define AST2400_IOMEM_SIZE       0x00200000
--#define AST2400_IOMEM_BASE       0x1E600000
--#define AST2400_SMC_BASE         AST2400_IOMEM_BASE /* Legacy SMC */
--#define AST2400_FMC_BASE         0X1E620000
--#define AST2400_SPI_BASE         0X1E630000
--#define AST2400_VIC_BASE         0x1E6C0000
--#define AST2400_SDMC_BASE        0x1E6E0000
--#define AST2400_SCU_BASE         0x1E6E2000
--#define AST2400_TIMER_BASE       0x1E782000
--#define AST2400_I2C_BASE         0x1E78A000
--
--#define AST2400_FMC_FLASH_BASE   0x20000000
--#define AST2400_SPI_FLASH_BASE   0x30000000
-+#define ASPEED_SOC_UART_5_BASE      0x00184000
-+#define ASPEED_SOC_IOMEM_SIZE       0x00200000
-+#define ASPEED_SOC_IOMEM_BASE       0x1E600000
-+#define ASPEED_SOC_FMC_BASE         0x1E620000
-+#define ASPEED_SOC_SPI_BASE         0x1E630000
-+#define ASPEED_SOC_VIC_BASE         0x1E6C0000
-+#define ASPEED_SOC_SDMC_BASE        0x1E6E0000
-+#define ASPEED_SOC_SCU_BASE         0x1E6E2000
-+#define ASPEED_SOC_TIMER_BASE       0x1E782000
-+#define ASPEED_SOC_I2C_BASE         0x1E78A000
-+
-+#define ASPEED_SOC_FMC_FLASH_BASE   0x20000000
-+#define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
-=20
- static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
- static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
-@@ -43,29 +42,29 @@ static const int timer_irqs[] =3D { 16, 17, 18, 35, 3=
-6, 37, 38, 39, };
-  * handled by a device mapping.
-  */
-=20
--static uint64_t ast2400_io_read(void *p, hwaddr offset, unsigned size)
-+static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size=
-)
- {
-     qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
-                   __func__, offset, size);
-     return 0;
- }
-=20
--static void ast2400_io_write(void *opaque, hwaddr offset, uint64_t value=
-,
-+static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t va=
-lue,
-                 unsigned size)
- {
-     qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
-u]\n",
-                   __func__, offset, value, size);
- }
-=20
--static const MemoryRegionOps ast2400_io_ops =3D {
--    .read =3D ast2400_io_read,
--    .write =3D ast2400_io_write,
-+static const MemoryRegionOps aspeed_soc_io_ops =3D {
-+    .read =3D aspeed_soc_io_read,
-+    .write =3D aspeed_soc_io_write,
-     .endianness =3D DEVICE_LITTLE_ENDIAN,
+-static struct arm_boot_info palmetto_bmc_binfo =3D {
++static struct arm_boot_info aspeed_board_binfo =3D {
+     .nb_cpus =3D 1,
  };
 =20
--static void ast2400_init(Object *obj)
-+static void aspeed_soc_init(Object *obj)
- {
--    AST2400State *s =3D AST2400(obj);
-+    AspeedSoCState *s =3D ASPEED_SOC(obj);
-=20
-     s->cpu =3D cpu_arm_init("arm926");
-=20
-@@ -106,17 +105,17 @@ static void ast2400_init(Object *obj)
-                          AST2400_A0_SILICON_REV);
- }
-=20
--static void ast2400_realize(DeviceState *dev, Error **errp)
-+static void aspeed_soc_realize(DeviceState *dev, Error **errp)
- {
-     int i;
--    AST2400State *s =3D AST2400(dev);
-+    AspeedSoCState *s =3D ASPEED_SOC(dev);
-     Error *err =3D NULL, *local_err =3D NULL;
-=20
-     /* IO space */
--    memory_region_init_io(&s->iomem, NULL, &ast2400_io_ops, NULL,
--            "ast2400.io", AST2400_IOMEM_SIZE);
--    memory_region_add_subregion_overlap(get_system_memory(), AST2400_IOM=
-EM_BASE,
--            &s->iomem, -1);
-+    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
-+            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
-+    memory_region_add_subregion_overlap(get_system_memory(),
-+                                        ASPEED_SOC_IOMEM_BASE, &s->iomem=
-, -1);
-=20
-     /* VIC */
-     object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
-@@ -124,7 +123,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
-*errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, AST2400_VIC_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, ASPEED_SOC_VIC_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
-                        qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
-@@ -136,7 +135,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
-*errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, AST2400_TIMER_BASE=
-);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, ASPEED_SOC_TIMER_B=
-ASE);
-     for (i =3D 0; i < ARRAY_SIZE(timer_irqs); i++) {
-         qemu_irq irq =3D qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]=
-);
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
-@@ -148,12 +147,12 @@ static void ast2400_realize(DeviceState *dev, Error=
- **errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, AST2400_SCU_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
-=20
-     /* UART - attach an 8250 to the IO space as our UART5 */
-     if (serial_hds[0]) {
-         qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4=
-]);
--        serial_mm_init(&s->iomem, AST2400_UART_5_BASE, 2,
-+        serial_mm_init(&s->iomem, ASPEED_SOC_UART_5_BASE, 2,
-                        uart5, 38400, serial_hds[0], DEVICE_LITTLE_ENDIAN=
-);
-     }
-=20
-@@ -163,7 +162,7 @@ static void ast2400_realize(DeviceState *dev, Error *=
-*errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, AST2400_I2C_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, ASPEED_SOC_I2C_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
-                        qdev_get_gpio_in(DEVICE(&s->vic), 12));
-=20
-@@ -175,8 +174,8 @@ static void ast2400_realize(DeviceState *dev, Error *=
-*errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 0, AST2400_FMC_BASE);
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 1, AST2400_FMC_FLASH_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 0, ASPEED_SOC_FMC_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->smc), 1, ASPEED_SOC_FMC_FLASH_BAS=
-E);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->smc), 0,
-                        qdev_get_gpio_in(DEVICE(&s->vic), 19));
-=20
-@@ -188,8 +187,8 @@ static void ast2400_realize(DeviceState *dev, Error *=
-*errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0, AST2400_SPI_BASE);
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, AST2400_SPI_FLASH_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 0, ASPEED_SOC_SPI_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi), 1, ASPEED_SOC_SPI_FLASH_BAS=
-E);
-=20
-     /* SDMC - SDRAM Memory Controller */
-     object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
-@@ -197,14 +196,14 @@ static void ast2400_realize(DeviceState *dev, Error=
- **errp)
-         error_propagate(errp, err);
-         return;
-     }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, AST2400_SDMC_BASE);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
- }
-=20
--static void ast2400_class_init(ObjectClass *oc, void *data)
-+static void aspeed_soc_class_init(ObjectClass *oc, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(oc);
-=20
--    dc->realize =3D ast2400_realize;
-+    dc->realize =3D aspeed_soc_realize;
-=20
-     /*
-      * Reason: creates an ARM CPU, thus use after free(), see
-@@ -213,17 +212,17 @@ static void ast2400_class_init(ObjectClass *oc, voi=
-d *data)
-     dc->cannot_destroy_with_object_finalize_yet =3D true;
- }
-=20
--static const TypeInfo ast2400_type_info =3D {
--    .name =3D TYPE_AST2400,
-+static const TypeInfo aspeed_soc_type_info =3D {
-+    .name =3D TYPE_ASPEED_SOC,
-     .parent =3D TYPE_SYS_BUS_DEVICE,
--    .instance_size =3D sizeof(AST2400State),
--    .instance_init =3D ast2400_init,
--    .class_init =3D ast2400_class_init,
-+    .instance_size =3D sizeof(AspeedSoCState),
-+    .instance_init =3D aspeed_soc_init,
-+    .class_init =3D aspeed_soc_class_init,
- };
-=20
--static void ast2400_register_types(void)
-+static void aspeed_soc_register_types(void)
- {
--    type_register_static(&ast2400_type_info);
-+    type_register_static(&aspeed_soc_type_info);
- }
-=20
--type_init(ast2400_register_types)
-+type_init(aspeed_soc_register_types)
-diff --git a/hw/arm/palmetto-bmc.c b/hw/arm/palmetto-bmc.c
-index 67676a8a8042..4d11905cfb18 100644
---- a/hw/arm/palmetto-bmc.c
-+++ b/hw/arm/palmetto-bmc.c
-@@ -28,7 +28,7 @@ static struct arm_boot_info palmetto_bmc_binfo =3D {
- };
-=20
- typedef struct PalmettoBMCState {
--    AST2400State soc;
-+    AspeedSoCState soc;
+-typedef struct PalmettoBMCState {
++typedef struct AspeedBoardState {
+     AspeedSoCState soc;
      MemoryRegion ram;
- } PalmettoBMCState;
+-} PalmettoBMCState;
++} AspeedBoardState;
 =20
-@@ -63,7 +63,7 @@ static void palmetto_bmc_init(MachineState *machine)
-     PalmettoBMCState *bmc;
+-static void palmetto_bmc_init_flashes(AspeedSMCState *s, const char *fla=
+shtype,
++static void aspeed_board_init_flashes(AspeedSMCState *s, const char *fla=
+shtype,
+                                       Error **errp)
+ {
+     int i ;
+@@ -56,12 +56,12 @@ static void palmetto_bmc_init_flashes(AspeedSMCState =
+*s, const char *flashtype,
+     }
+ }
 =20
-     bmc =3D g_new0(PalmettoBMCState, 1);
--    object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_AST2400);
-+    object_initialize(&bmc->soc, (sizeof(bmc->soc)), TYPE_ASPEED_SOC);
+-static void palmetto_bmc_init(MachineState *machine)
++static void aspeed_board_init(MachineState *machine)
+ {
+-    PalmettoBMCState *bmc;
++    AspeedBoardState *bmc;
+     AspeedSoCClass *sc;
+=20
+-    bmc =3D g_new0(PalmettoBMCState, 1);
++    bmc =3D g_new0(AspeedBoardState, 1);
+     object_initialize(&bmc->soc, (sizeof(bmc->soc)), "ast2400-a0");
      object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
                                &error_abort);
+@@ -78,22 +78,29 @@ static void palmetto_bmc_init(MachineState *machine)
+     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+                              &error_abort);
 =20
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index e68807d475b7..bf63ae90cabe 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -1,5 +1,5 @@
- /*
-- * ASPEED AST2400 SoC
-+ * ASPEED SoC family
-  *
-  * Andrew Jeffery <andrew@aj.id.au>
-  *
-@@ -9,8 +9,8 @@
-  * the COPYING file in the top-level directory.
-  */
+-    palmetto_bmc_init_flashes(&bmc->soc.smc, "n25q256a", &error_abort);
+-    palmetto_bmc_init_flashes(&bmc->soc.spi, "mx25l25635e", &error_abort=
+);
++    aspeed_board_init_flashes(&bmc->soc.smc, "n25q256a", &error_abort);
++    aspeed_board_init_flashes(&bmc->soc.spi, "mx25l25635e", &error_abort=
+);
++
++    aspeed_board_binfo.kernel_filename =3D machine->kernel_filename;
++    aspeed_board_binfo.initrd_filename =3D machine->initrd_filename;
++    aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
++    aspeed_board_binfo.ram_size =3D ram_size;
++    aspeed_board_binfo.board_id =3D sc->info->silicon_rev;
++    aspeed_board_binfo.loader_start =3D sc->info->sdram_base;
 =20
--#ifndef AST2400_H
--#define AST2400_H
-+#ifndef ASPEED_SOC_H
-+#define ASPEED_SOC_H
+-    palmetto_bmc_binfo.kernel_filename =3D machine->kernel_filename;
+-    palmetto_bmc_binfo.initrd_filename =3D machine->initrd_filename;
+-    palmetto_bmc_binfo.kernel_cmdline =3D machine->kernel_cmdline;
+-    palmetto_bmc_binfo.ram_size =3D ram_size;
+-    palmetto_bmc_binfo.board_id =3D sc->info->silicon_rev;
+-    palmetto_bmc_binfo.loader_start =3D sc->info->sdram_base;
++    arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
++}
 =20
- #include "hw/arm/arm.h"
- #include "hw/intc/aspeed_vic.h"
-@@ -20,7 +20,7 @@
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
+-    arm_load_kernel(ARM_CPU(first_cpu), &palmetto_bmc_binfo);
++static void palmetto_bmc_init(MachineState *machine)
++{
++    aspeed_board_init(machine);
+ }
 =20
--typedef struct AST2400State {
-+typedef struct AspeedSoCState {
-     /*< private >*/
-     DeviceState parent;
+-static void palmetto_bmc_machine_init(MachineClass *mc)
++static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
+ {
+-    mc->desc =3D "OpenPOWER Palmetto BMC";
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++
++    mc->desc =3D "OpenPOWER Palmetto BMC (ARM926EJ-S)";
+     mc->init =3D palmetto_bmc_init;
+     mc->max_cpus =3D 1;
+     mc->no_sdcard =3D 1;
+@@ -103,4 +110,15 @@ static void palmetto_bmc_machine_init(MachineClass *=
+mc)
+     mc->no_parallel =3D 1;
+ }
 =20
-@@ -34,11 +34,11 @@ typedef struct AST2400State {
-     AspeedSMCState smc;
-     AspeedSMCState spi;
-     AspeedSDMCState sdmc;
--} AST2400State;
-+} AspeedSoCState;
-=20
--#define TYPE_AST2400 "ast2400"
--#define AST2400(obj) OBJECT_CHECK(AST2400State, (obj), TYPE_AST2400)
-+#define TYPE_ASPEED_SOC "aspeed-soc"
-+#define ASPEED_SOC(obj) OBJECT_CHECK(AspeedSoCState, (obj), TYPE_ASPEED_=
-SOC)
-=20
- #define AST2400_SDRAM_BASE       0x40000000
-=20
--#endif /* AST2400_H */
-+#endif /* ASPEED_SOC_H */
+-DEFINE_MACHINE("palmetto-bmc", palmetto_bmc_machine_init);
++static const TypeInfo palmetto_bmc_type =3D {
++    .name =3D MACHINE_TYPE_NAME("palmetto-bmc"),
++    .parent =3D TYPE_MACHINE,
++    .class_init =3D palmetto_bmc_class_init,
++};
++
++static void aspeed_machine_init(void)
++{
++    type_register_static(&palmetto_bmc_type);
++}
++
++type_init(aspeed_machine_init)
 --=20
 2.7.4
 

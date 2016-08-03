@@ -1,56 +1,64 @@
-Received: by 10.25.21.156 with SMTP id 28csp339889lfv;
-        Tue, 2 Aug 2016 11:16:46 -0700 (PDT)
-X-Received: by 10.37.202.8 with SMTP id a8mr2114559ybg.61.1470161806097;
-        Tue, 02 Aug 2016 11:16:46 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp476429lfv;
+        Tue, 2 Aug 2016 18:04:23 -0700 (PDT)
+X-Received: by 10.55.68.81 with SMTP id r78mr80377020qka.129.1470186262933;
+        Tue, 02 Aug 2016 18:04:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j1si24103291qkf.317.2016.08.02.11.16.45
+        by mx.google.com with ESMTPS id b34si3274165qtb.136.2016.08.02.18.04.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Aug 2016 11:16:46 -0700 (PDT)
+        Tue, 02 Aug 2016 18:04:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58285 helo=lists.gnu.org)
+Received: from localhost ([::1]:59609 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bUeFB-0003Ia-F9
-	for alex.bennee@linaro.org; Tue, 02 Aug 2016 14:16:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53980)
+	id 1bUkbe-0007xP-9f
+	for alex.bennee@linaro.org; Tue, 02 Aug 2016 21:04:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38424)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bUe6f-0003hI-CM
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 14:07:59 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bUkbV-0007vo-Re
+	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 21:04:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bUe6b-00013z-5o
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 14:07:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43880)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1bUkbU-0006Yh-FG
+	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 21:04:13 -0400
+Received: from szxga03-in.huawei.com ([119.145.14.66]:41244)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>)
-	id 1bUe6a-00013i-TZ; Tue, 02 Aug 2016 14:07:53 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8698E4E038;
-	Tue,  2 Aug 2016 18:07:52 +0000 (UTC)
-Received: from localhost.localdomain.com (vpn1-7-58.ams2.redhat.com
-	[10.36.7.58])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u72I7UL9024790; Tue, 2 Aug 2016 14:07:49 -0400
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
-Date: Tue,  2 Aug 2016 20:07:26 +0200
-Message-Id: <1470161247-10251-7-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1470161247-10251-1-git-send-email-eric.auger@redhat.com>
+	(envelope-from <zhaoshenglong@huawei.com>)
+	id 1bUkbP-0006Os-3x; Tue, 02 Aug 2016 21:04:07 -0400
+Received: from 172.24.1.137 (EHLO szxeml433-hub.china.huawei.com)
+	([172.24.1.137])
+	by szxrg03-dlp.huawei.com (MOS 4.4.3-GA FastPath queued)
+	with ESMTP id CFT65186; Wed, 03 Aug 2016 08:56:22 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by szxeml433-hub.china.huawei.com
+	(10.82.67.210) with Microsoft SMTP Server id 14.3.235.1; Wed, 3 Aug 2016
+	08:56:12 +0800
+Message-ID: <57A1412A.8070407@huawei.com>
+Date: Wed, 3 Aug 2016 08:56:10 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+MIME-Version: 1.0
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+	<peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>, <p.fedin@samsung.com>
 References: <1470161247-10251-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 02 Aug 2016 18:07:52 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 6/7] arm/virt: Add ITS to the virt board
+	<1470161247-10251-8-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1470161247-10251-8-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
+	refid=str=0001.0A020202.57A14138.000E, ss=1, re=0.000, recu=0.000,
+	reip=0.000, cl=1, cld=1, fgs=0, ip=0.0.0.0,
+	so=2013-05-26 15:14:31, dmn=2013-03-21 17:37:32
+X-Mirapoint-Loop-Id: d2feb11d4287df64d846e9e4829c5379
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.4.x-2.6.x [generic]
+X-Received-From: 119.145.14.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 7/7] hw/arm/virt-acpi-build:
+ Add ITS description in ACPI MADT table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,123 +75,108 @@ Cc: drjones@redhat.com, tn@semihalf.com, shlomopongratz@gmail.com,
 	christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grf3Q3OPMWHb
+X-TUID: 3uwFqFrYxJ7Z
 
-From: Pavel Fedin <p.fedin@samsung.com>
+Hi Eric,
 
-If supported by the configuration, ITS will be added automatically.
+On 2016/8/3 2:07, Eric Auger wrote:
+> This patch exposes the GICv3 ITS to the ACPI guest. The ITS structure
+> is added to the MADT table.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v5: new
+> 
+> Tested with Tomasz' kernel series on guest side:
+> - [PATCH V7 0/8] Introduce ACPI world to ITS,
+>   https://lkml.org/lkml/2016/6/20/321
+> - for running PCIe on the guest (virtio-pci-net or vhost-net)
+>   the following series is also needed, although not directly ITS:
+>   Support for ARM64 ACPI based PCI host controller,
+>   https://lwn.net/Articles/690995/
+> ---
+>  hw/arm/virt-acpi-build.c    |  7 +++++++
+>  include/hw/acpi/acpi-defs.h | 13 ++++++++++++-
+>  2 files changed, 19 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 28fc59c..6cfedff 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -546,6 +546,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
+>      }
+>  
+>      if (guest_info->gic_version == 3) {
+> +        AcpiMadtGicIts *gic_its;
+>          AcpiMadtGenericRedistributor *gicr = acpi_data_push(table_data,
+>                                                           sizeof *gicr);
+>  
+> @@ -553,6 +554,12 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
+>          gicr->length = sizeof(*gicr);
+>          gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST].base);
+>          gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST].size);
+> +
+> +        gic_its = acpi_data_push(table_data, sizeof *gic_its);
+> +        gic_its->type = ACPI_APIC_ITS_STRUCTURE;
+> +        gic_its->length = sizeof(*gic_its);
+> +        gic_its->gic_its_id = 0;
+> +        gic_its->base_address = cpu_to_le64(memmap[VIRT_GIC_ITS].base);
+Since for TCG it doesn't support ITS yet, it should check here using
+its_class_name().
 
-This patch also renames v2m_phandle to msi_phandle because it's now used
-by both MSI implementations.
+>      } else {
+>          gic_msi = acpi_data_push(table_data, sizeof *gic_msi);
+>          gic_msi->type = ACPI_APIC_GENERIC_MSI_FRAME;
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 41c1d95..ba3be1e 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -294,7 +294,8 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_GENERIC_DISTRIBUTOR   12
+>  #define ACPI_APIC_GENERIC_MSI_FRAME     13
+>  #define ACPI_APIC_GENERIC_REDISTRIBUTOR 14
+> -#define ACPI_APIC_RESERVED              15   /* 15 and greater are reserved */
+> +#define ACPI_APIC_ITS_STRUCTURE         15
+use ACPI_APIC_GENERIC_TRANSLATOR instead.
 
-Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> +#define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>  
+>  /*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+> @@ -386,6 +387,16 @@ struct AcpiMadtGenericMsiFrame {
+>  
+>  typedef struct AcpiMadtGenericMsiFrame AcpiMadtGenericMsiFrame;
+>  
+> +struct AcpiMadtGicIts {
+> +    ACPI_SUB_HEADER_DEF
+> +    uint16_t reserved;
+> +    uint32_t gic_its_id;
+> +    uint64_t base_address;
+> +    uint32_t reserved2;
+> +} QEMU_PACKED;
+> +
+> +typedef struct AcpiMadtGicIts AcpiMadtGicIts;
+> +
+Define it like below to respect the name in linux kernel and also keep
+consistent with other structures.
 
---
-
-v3 -> v4:
-- added Peter's R-b
----
- hw/arm/virt.c | 47 +++++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 41 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a193b5a..c5f65dd 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -76,7 +76,7 @@ typedef struct VirtBoardInfo {
-     int fdt_size;
-     uint32_t clock_phandle;
-     uint32_t gic_phandle;
--    uint32_t v2m_phandle;
-+    uint32_t msi_phandle;
-     bool using_psci;
- } VirtBoardInfo;
- 
-@@ -423,9 +423,22 @@ static void fdt_add_cpu_nodes(const VirtBoardInfo *vbi)
-     }
- }
- 
-+static void fdt_add_its_gic_node(VirtBoardInfo *vbi)
-+{
-+    vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
-+    qemu_fdt_add_subnode(vbi->fdt, "/intc/its");
-+    qemu_fdt_setprop_string(vbi->fdt, "/intc/its", "compatible",
-+                            "arm,gic-v3-its");
-+    qemu_fdt_setprop(vbi->fdt, "/intc/its", "msi-controller", NULL, 0);
-+    qemu_fdt_setprop_sized_cells(vbi->fdt, "/intc/its", "reg",
-+                                 2, vbi->memmap[VIRT_GIC_ITS].base,
-+                                 2, vbi->memmap[VIRT_GIC_ITS].size);
-+    qemu_fdt_setprop_cell(vbi->fdt, "/intc/its", "phandle", vbi->msi_phandle);
-+}
++struct AcpiMadtGenericTranslator {
++    ACPI_SUB_HEADER_DEF
++    uint16_t reserved;
++    uint32_t translation_id;
++    uint64_t base_address;
++    uint32_t reserved2;
++} QEMU_PACKED;
 +
- static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
- {
--    vbi->v2m_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
-+    vbi->msi_phandle = qemu_fdt_alloc_phandle(vbi->fdt);
-     qemu_fdt_add_subnode(vbi->fdt, "/intc/v2m");
-     qemu_fdt_setprop_string(vbi->fdt, "/intc/v2m", "compatible",
-                             "arm,gic-v2m-frame");
-@@ -433,7 +446,7 @@ static void fdt_add_v2m_gic_node(VirtBoardInfo *vbi)
-     qemu_fdt_setprop_sized_cells(vbi->fdt, "/intc/v2m", "reg",
-                                  2, vbi->memmap[VIRT_GIC_V2M].base,
-                                  2, vbi->memmap[VIRT_GIC_V2M].size);
--    qemu_fdt_setprop_cell(vbi->fdt, "/intc/v2m", "phandle", vbi->v2m_phandle);
-+    qemu_fdt_setprop_cell(vbi->fdt, "/intc/v2m", "phandle", vbi->msi_phandle);
- }
- 
- static void fdt_add_gic_node(VirtBoardInfo *vbi, int type)
-@@ -500,6 +513,26 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
-     }
- }
- 
-+static void create_its(VirtBoardInfo *vbi, DeviceState *gicdev)
-+{
-+    const char *itsclass = its_class_name();
-+    DeviceState *dev;
-+
-+    if (!itsclass) {
-+        /* Do nothing if not supported */
-+        return;
-+    }
-+
-+    dev = qdev_create(NULL, itsclass);
-+
-+    object_property_set_link(OBJECT(dev), OBJECT(gicdev), "parent-gicv3",
-+                             &error_abort);
-+    qdev_init_nofail(dev);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vbi->memmap[VIRT_GIC_ITS].base);
-+
-+    fdt_add_its_gic_node(vbi);
-+}
-+
- static void create_v2m(VirtBoardInfo *vbi, qemu_irq *pic)
- {
-     int i;
-@@ -583,7 +616,9 @@ static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type, bool secure)
- 
-     fdt_add_gic_node(vbi, type);
- 
--    if (type == 2) {
-+    if (type == 3) {
-+        create_its(vbi, gicdev);
-+    } else {
-         create_v2m(vbi, pic);
-     }
- }
-@@ -1025,9 +1060,9 @@ static void create_pcie(const VirtBoardInfo *vbi, qemu_irq *pic,
-                            nr_pcie_buses - 1);
-     qemu_fdt_setprop(vbi->fdt, nodename, "dma-coherent", NULL, 0);
- 
--    if (vbi->v2m_phandle) {
-+    if (vbi->msi_phandle) {
-         qemu_fdt_setprop_cells(vbi->fdt, nodename, "msi-parent",
--                               vbi->v2m_phandle);
-+                               vbi->msi_phandle);
-     }
- 
-     qemu_fdt_setprop_sized_cells(vbi->fdt, nodename, "reg",
++typedef struct AcpiMadtGenericTranslator AcpiMadtGenericTranslator;
+
+BTW, you could have a look at [1] which I sent before.
+
+[1] https://lists.gnu.org/archive/html/qemu-devel/2015-11/msg06282.html
+
+Thanks,
 -- 
-2.5.5
+Shannon
 

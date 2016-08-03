@@ -1,138 +1,104 @@
-Received: by 10.25.21.156 with SMTP id 28csp465494lfv;
-        Tue, 2 Aug 2016 17:24:54 -0700 (PDT)
-X-Received: by 10.237.37.99 with SMTP id w32mr102168044qtc.59.1470183893932;
-        Tue, 02 Aug 2016 17:24:53 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp584632lfv;
+        Wed, 3 Aug 2016 00:04:53 -0700 (PDT)
+X-Received: by 10.200.47.39 with SMTP id j36mr107144614qta.10.1470207893269;
+        Wed, 03 Aug 2016 00:04:53 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g2si606631qkf.151.2016.08.02.17.24.53
+        by mx.google.com with ESMTPS id s70si1372559qki.330.2016.08.03.00.04.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Aug 2016 17:24:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 03 Aug 2016 00:04:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59518 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60565 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bUjzR-0004K6-Ag
-	for alex.bennee@linaro.org; Tue, 02 Aug 2016 20:24:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51017)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bUqEW-0000WQ-P7
+	for alex.bennee@linaro.org; Wed, 03 Aug 2016 03:04:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36660)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bUjy6-0002vP-Hw
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 20:23:31 -0400
+	(envelope-from <clg@kaod.org>) id 1bUqD7-0007si-Qy
+	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 03:03:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1bUjy0-0007HX-IV
-	for qemu-arm@nongnu.org; Tue, 02 Aug 2016 20:23:29 -0400
-Received: from out5-smtp.messagingengine.com ([66.111.4.29]:48914)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1bUjxz-0007BJ-Ts; Tue, 02 Aug 2016 20:23:24 -0400
-Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id 61866204C2;
-	Tue,  2 Aug 2016 20:23:11 -0400 (EDT)
-Received: from frontend2 ([10.202.2.161])
-	by compute7.internal (MEProxy); Tue, 02 Aug 2016 20:23:11 -0400
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=VtsAg
-	56kraub3xxmnH4ma2I/EoE=; b=ZZaCq9eu2MwiOIAcIlFXYUsmas+FI1GM8a9gm
-	yfhS04T1P2vQgmwSZz0knxNLk7je44YycSUY9Hp0+77xw27bb8EL/d04ZQ34OXDB
-	ak3nIEUr9YJRtIh93SLW/act7IdtTK3EAIjms2M6er7RPuUd2X9dQPJwSFurh22M
-	PrXVV8=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-sasl-enc
-	:x-sasl-enc; s=smtpout; bh=VtsAg56kraub3xxmnH4ma2I/EoE=; b=QpTBr
-	orAkeSaWTPcK0Clbs8O13ALchIQBSYxWTNW9QjhcifHwXqc3ckHebetAt8bvf4ra
-	V0MTLEqubhKyK56GUWRFlVx6ylKpq8sqrf+ewzxWWe28IgZvvcd+ekJ56aQgc43K
-	s/Nmc8JLWxyE+7FGylsZfapNe4Zc0apKC51Eww=
-X-Sasl-enc: 75g+u5tpfyxd4NgqIaktjqAvvbWsZxP5aEa/xr1C2Q+L 1470183790
-Received: from keelia (unknown [203.0.153.9])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 6763ACCDCC;
-	Tue,  2 Aug 2016 20:23:09 -0400 (EDT)
-Message-ID: <1470183785.4428.45.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
-	<peter.maydell@linaro.org>
-Date: Wed, 03 Aug 2016 09:53:05 +0930
-In-Reply-To: <1470158147-16378-11-git-send-email-clg@kaod.org>
+	(envelope-from <clg@kaod.org>) id 1bUqD3-00057Q-LC
+	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 03:03:24 -0400
+Received: from 9.mo69.mail-out.ovh.net ([46.105.56.78]:37369)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
+	id 1bUqD3-00057E-FL
+	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 03:03:21 -0400
+Received: from player696.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo69.mail-out.ovh.net (Postfix) with ESMTP id E1EE4FFA12D
+	for <qemu-devel@nongnu.org>; Wed,  3 Aug 2016 09:03:18 +0200 (CEST)
+Received: from localhost.localdomain (bad36-1-78-202-132-1.fbx.proxad.net
+	[78.202.132.1]) (Authenticated sender: clg@kaod.org)
+	by player696.ha.ovh.net (Postfix) with ESMTPSA id 036783C006E;
+	Wed,  3 Aug 2016 09:03:08 +0200 (CEST)
+To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
 References: <1470158147-16378-1-git-send-email-clg@kaod.org>
 	<1470158147-16378-11-git-send-email-clg@kaod.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-vGi9XBhSfvpJx6j5uXym"
-X-Mailer: Evolution 3.18.5.2-0ubuntu3 
-Mime-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.29
-Subject: Re: [Qemu-arm] [PATCH v3 10/10] palmetto-bmc: remove extra
+	<1470183785.4428.45.camel@aj.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <315707e3-1058-59d9-e9cf-ad7501eafe7b@kaod.org>
+Date: Wed, 3 Aug 2016 09:03:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
+MIME-Version: 1.0
+In-Reply-To: <1470183785.4428.45.camel@aj.id.au>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 10895896349947562928
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeltddrjeelgdduudekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 46.105.56.78
+Subject: Re: [Qemu-devel] [PATCH v3 10/10] palmetto-bmc: remove extra
  no_sdcard assignement
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7I0pV9i0Tutk
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IEXjRZyIJCK+
 
-
---=-vGi9XBhSfvpJx6j5uXym
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, 2016-08-02 at 19:15 +0200, C=C3=A9dric Le Goater wrote:
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-
-> ---
-> =C2=A0hw/arm/aspeed.c | 1 -
-> =C2=A01 file changed, 1 deletion(-)
+On 08/03/2016 02:23 AM, Andrew Jeffery wrote:
+> On Tue, 2016-08-02 at 19:15 +0200, C=C3=A9dric Le Goater wrote:
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 >=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index e71500c64bd3..6d7b70df70da 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -145,7 +145,6 @@ static void palmetto_bmc_class_init(ObjectClass *oc, =
-void *data)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0mc->no_sdcard =3D 1;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0mc->no_floppy =3D 1;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0mc->no_cdrom =3D 1;
-> -=C2=A0=C2=A0=C2=A0=C2=A0mc->no_sdcard =3D 1;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0mc->no_parallel =3D 1;
-> =C2=A0}
-> =C2=A0
---=-vGi9XBhSfvpJx6j5uXym
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQIcBAABCgAGBQJXoTlqAAoJEJ0dnzgO5LT5sscQAJA7oHfd8ctLE3HEdib+NdEn
-2v4NyFrx9LpV/LaRTIeiP+N+ICHnqGOQ/ijifnSZO5w01Z9owxKeI+OTcy6gwMDT
-nqXoYnp9gQFuYJJVCU45NotTOr4jq2qrfkTdfswr9UZiQOdOMwz0th7lh4pYoBWt
-OAoy5mF3l4dAGIACdJlhMAmTxaSve50gvAlqZYGIaeYDfmI/O1KIR8+qUHBpenSu
-SvXxI4Ux1G3wkTEAGZwurYentKWSMruiListo7JfZkVSAMjiT4VzrfcdrQDv75uP
-X1c+VQi9a4j4SkYvPOPLlB3Oclv0j+zxWHMC0jv++j0ctBR3mpmCToVOpfJkv112
-15JFw9PABt8sndYgJRGIf9l11AamwIaAOkxPtOI27kcEtGGRAmPQXzgj1jZO0b3D
-GbGSSoCEWuklZRaaxM12CKZocgSxuO2C46IVir4zlrWadfsqFM1jmZiuW3dDDmU/
-TmdCUFM/nM+ylEMdsgBUzVhYQJu8wrgFDo9Qnap73ZbVEihTX0ETh22Jb7n79OXI
-jCVdLt8XqHls9grHAXhPh/ZvVDQhDqMi6B2h6lNnYIXP4iDo4bvmrx9/fFSWYkUV
-HlI9+vVq6uXFKrHFAdRcaYDIkHqccnyQjtGdv0sCrqo56i6VeD2RWs7pGB9A/dVs
-K4COIr2sjMtbmZNxLy3p
-=lG63
------END PGP SIGNATURE-----
+Thanks for the overall review Andrew,
 
---=-vGi9XBhSfvpJx6j5uXym--
+C.=20
+
+
+>> ---
+>>  hw/arm/aspeed.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index e71500c64bd3..6d7b70df70da 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -145,7 +145,6 @@ static void palmetto_bmc_class_init(ObjectClass *o=
+c, void *data)
+>>      mc->no_sdcard =3D 1;
+>>      mc->no_floppy =3D 1;
+>>      mc->no_cdrom =3D 1;
+>> -    mc->no_sdcard =3D 1;
+>>      mc->no_parallel =3D 1;
+>>  }
+>> =20
 

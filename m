@@ -1,56 +1,55 @@
-Received: by 10.25.21.156 with SMTP id 28csp830818lfv;
-        Wed, 3 Aug 2016 09:29:04 -0700 (PDT)
-X-Received: by 10.237.39.34 with SMTP id n31mr850673qtd.55.1470241744876;
-        Wed, 03 Aug 2016 09:29:04 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp832045lfv;
+        Wed, 3 Aug 2016 09:31:56 -0700 (PDT)
+X-Received: by 10.200.57.108 with SMTP id t41mr887009qtb.33.1470241916659;
+        Wed, 03 Aug 2016 09:31:56 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 81si2649961qkt.63.2016.08.03.09.29.04
+        by mx.google.com with ESMTPS id l3si2656395qkf.79.2016.08.03.09.31.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Aug 2016 09:29:04 -0700 (PDT)
+        Wed, 03 Aug 2016 09:31:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35697 helo=lists.gnu.org)
+Received: from localhost ([::1]:35716 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bUz2W-0001JG-44
-	for alex.bennee@linaro.org; Wed, 03 Aug 2016 12:29:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35970)
+	id 1bUz5H-0004BQ-Uf
+	for alex.bennee@linaro.org; Wed, 03 Aug 2016 12:31:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35868)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1bUywz-0004HI-Pn
-	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 12:23:26 -0400
+	(envelope-from <berrange@redhat.com>) id 1bUywu-0004DK-5J
+	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 12:23:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1bUywv-0006lV-7G
-	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 12:23:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51790)
+	(envelope-from <berrange@redhat.com>) id 1bUywp-0006jC-Hi
+	for qemu-devel@nongnu.org; Wed, 03 Aug 2016 12:23:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33630)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <berrange@redhat.com>)
-	id 1bUywk-0006he-CR; Wed, 03 Aug 2016 12:23:06 -0400
+	id 1bUywf-0006fs-Ph; Wed, 03 Aug 2016 12:23:01 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F332B83F45;
-	Wed,  3 Aug 2016 16:23:05 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 55F2B478;
+	Wed,  3 Aug 2016 16:23:00 +0000 (UTC)
 Received: from t530wlan.home.berrange.com.com (vpn1-7-219.ams2.redhat.com
 	[10.36.7.219])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u73GMoam009808; Wed, 3 Aug 2016 12:23:02 -0400
+	id u73GMoak009808; Wed, 3 Aug 2016 12:22:58 -0400
 From: "Daniel P. Berrange" <berrange@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  3 Aug 2016 17:22:40 +0100
-Message-Id: <1470241360-3574-6-git-send-email-berrange@redhat.com>
+Date: Wed,  3 Aug 2016 17:22:38 +0100
+Message-Id: <1470241360-3574-4-git-send-email-berrange@redhat.com>
 In-Reply-To: <1470241360-3574-1-git-send-email-berrange@redhat.com>
 References: <1470241360-3574-1-git-send-email-berrange@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 03 Aug 2016 16:23:06 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 03 Aug 2016 16:23:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 5/5] char: convert qemu_chr_fe_write to
- qemu_chr_fe_write_all
+Subject: [Qemu-devel] [PATCH 3/5] sclpconsole: remove bogus check for -EAGAIN
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,75 +66,55 @@ Cc: Cornelia Huck <cornelia.huck@de.ibm.com>, qemu-arm@nongnu.org,
 	Amit Shah <amit.shah@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AkSOyQ70LCPn
+X-TUID: skara4SYiRsl
 
-The mux chardev was not checking the return value of any
-qemu_chr_fe_write() call so would silently loose data
-on EAGAIN.
+The write_console_data() method in sclpconsole-lm.c checks
+whether the return value of qemu_chr_fe_write() has the
+value of -EAGAIN and if so then increments the buffer offset
+by the value of EAGAIN. Fortunately qemu_chr_fe_write() will
+never return EAGAIN directly, rather it returns -1 with
+errno set to EAGAIN, so this broken code path was not
+reachable. The behaviour on EAGAIN was stil bad though,
+causing the write_console_data() to busy_wait repeatedly
+calling qemu_chr_fe_write() with no sleep between iters.
 
-Similarly the qemu_chr_fe_printf method would not check
-errors and was not in a position to retry even if it
-could check.
+Just remove all this loop logic and replace with a call
+to qemu_chr_fe_write_all().
 
 Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
 ---
- qemu-char.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ hw/char/sclpconsole-lm.c | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
 
-diff --git a/qemu-char.c b/qemu-char.c
-index a50b8fb..e8dde2d 100644
---- a/qemu-char.c
-+++ b/qemu-char.c
-@@ -440,7 +440,9 @@ void qemu_chr_fe_printf(CharDriverState *s, const char *fmt, ...)
-     va_list ap;
-     va_start(ap, fmt);
-     vsnprintf(buf, sizeof(buf), fmt, ap);
--    qemu_chr_fe_write(s, (uint8_t *)buf, strlen(buf));
+diff --git a/hw/char/sclpconsole-lm.c b/hw/char/sclpconsole-lm.c
+index a22ad8d..8cb0026 100644
+--- a/hw/char/sclpconsole-lm.c
++++ b/hw/char/sclpconsole-lm.c
+@@ -201,21 +201,9 @@ static int write_console_data(SCLPEvent *event, const uint8_t *buf, int len)
+         return len;
+     }
+ 
+-    buf_offset = buf;
+-    while (len > 0) {
+-        ret = qemu_chr_fe_write(scon->chr, buf, len);
+-        if (ret == 0) {
+-            /* a pty doesn't seem to be connected - no error */
+-            len = 0;
+-        } else if (ret == -EAGAIN || (ret > 0 && ret < len)) {
+-            len -= ret;
+-            buf_offset += ret;
+-        } else {
+-            len = 0;
+-        }
+-    }
+-
+-    return ret;
 +    /* XXX this blocks entire thread. Rewrite to use
 +     * qemu_chr_fe_write and background I/O callbacks */
-+    qemu_chr_fe_write_all(s, (uint8_t *)buf, strlen(buf));
-     va_end(ap);
++    return qemu_chr_fe_write_all(scon->chr, buf, len);
  }
  
-@@ -556,7 +558,9 @@ static int mux_chr_write(CharDriverState *chr, const uint8_t *buf, int len)
-                          (secs / 60) % 60,
-                          secs % 60,
-                          (int)(ti % 1000));
--                qemu_chr_fe_write(d->drv, (uint8_t *)buf1, strlen(buf1));
-+                /* XXX this blocks entire thread. Rewrite to use
-+                 * qemu_chr_fe_write and background I/O callbacks */
-+                qemu_chr_fe_write_all(d->drv, (uint8_t *)buf1, strlen(buf1));
-                 d->linestart = 0;
-             }
-             ret += qemu_chr_fe_write(d->drv, buf+i, 1);
-@@ -594,13 +598,15 @@ static void mux_print_help(CharDriverState *chr)
-                  "\n\rEscape-Char set to Ascii: 0x%02x\n\r\n\r",
-                  term_escape_char);
-     }
--    qemu_chr_fe_write(chr, (uint8_t *)cbuf, strlen(cbuf));
-+    /* XXX this blocks entire thread. Rewrite to use
-+     * qemu_chr_fe_write and background I/O callbacks */
-+    qemu_chr_fe_write_all(chr, (uint8_t *)cbuf, strlen(cbuf));
-     for (i = 0; mux_help[i] != NULL; i++) {
-         for (j=0; mux_help[i][j] != '\0'; j++) {
-             if (mux_help[i][j] == '%')
--                qemu_chr_fe_write(chr, (uint8_t *)ebuf, strlen(ebuf));
-+                qemu_chr_fe_write_all(chr, (uint8_t *)ebuf, strlen(ebuf));
-             else
--                qemu_chr_fe_write(chr, (uint8_t *)&mux_help[i][j], 1);
-+                qemu_chr_fe_write_all(chr, (uint8_t *)&mux_help[i][j], 1);
-         }
-     }
- }
-@@ -625,7 +631,7 @@ static int mux_proc_byte(CharDriverState *chr, MuxDriver *d, int ch)
-         case 'x':
-             {
-                  const char *term =  "QEMU: Terminated\n\r";
--                 qemu_chr_fe_write(chr, (uint8_t *)term, strlen(term));
-+                 qemu_chr_fe_write_all(chr, (uint8_t *)term, strlen(term));
-                  exit(0);
-                  break;
-             }
+ static int process_mdb(SCLPEvent *event, MDBO *mdbo)
 -- 
 2.7.4
 

@@ -1,222 +1,152 @@
-Received: by 10.25.21.156 with SMTP id 28csp1779668lfv;
-        Fri, 5 Aug 2016 05:15:47 -0700 (PDT)
-X-Received: by 10.200.50.199 with SMTP id a7mr12409970qtb.43.1470399347167;
-        Fri, 05 Aug 2016 05:15:47 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp1811527lfv;
+        Fri, 5 Aug 2016 06:19:45 -0700 (PDT)
+X-Received: by 10.55.176.130 with SMTP id z124mr11744167qke.125.1470403185338;
+        Fri, 05 Aug 2016 06:19:45 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l2si8771583qke.304.2016.08.05.05.15.46
+        by mx.google.com with ESMTPS id s8si8983650qkl.21.2016.08.05.06.19.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 Aug 2016 05:15:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 05 Aug 2016 06:19:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45084 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45352 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bVe2U-0006mh-JC
-	for alex.bennee@linaro.org; Fri, 05 Aug 2016 08:15:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58232)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bVf2O-0006ej-O5
+	for alex.bennee@linaro.org; Fri, 05 Aug 2016 09:19:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39801)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bVe2N-0006jc-13
-	for qemu-arm@nongnu.org; Fri, 05 Aug 2016 08:15:41 -0400
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVf1W-0005pE-Q6
+	for qemu-devel@nongnu.org; Fri, 05 Aug 2016 09:18:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bVe2K-0002Hr-LM
-	for qemu-arm@nongnu.org; Fri, 05 Aug 2016 08:15:37 -0400
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33400)
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVf1U-0005g2-B4
+	for qemu-devel@nongnu.org; Fri, 05 Aug 2016 09:18:49 -0400
+Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:36775)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1bVe2F-0002FV-2S; Fri, 05 Aug 2016 08:15:31 -0400
-Received: by mail-wm0-x244.google.com with SMTP id o80so3542740wme.0;
-	Fri, 05 Aug 2016 05:15:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=pYvd64D1FrEVQhlU/HEjO9Ei+i2zguMNFrERf2wEEu4=;
-	b=hcvXDJOiOhk5YfNjLwzF/zMhFbZY62J2pthGhfeNxPzQS+q2JmIhE3v6dr3CYBaoZo
-	QszIHM+VvOIVG2rkctgsfG5yrywiz9VJ1rPiwqcC7/4lCXmwCDRy8DTZ0tJSBa5PLCve
-	2MKj+djL+Bc1j/ASRvG6Ej1lhN1Jvyl2QMu7LjL7V8cOGFYR3KuDYk9fxO+VzD7o9hBV
-	c7eXcGbCi50+PnzMTNAaGUzDiAMXORSguBzGzkREnChAw1LP3WNBrznnyivJYF0b4Q26
-	uWWtBLvqBCpBDuAwDDspcXzXGR7WfymJpvHeeo4cJS53cM24O1baeeQlkHSoP+7oIdwg
-	TdKA==
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVf1U-0005fs-4c
+	for qemu-devel@nongnu.org; Fri, 05 Aug 2016 09:18:48 -0400
+Received: by mail-vk0-x22e.google.com with SMTP id n129so190750899vke.3
+	for <qemu-devel@nongnu.org>; Fri, 05 Aug 2016 06:18:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6mTxFLEsKw8i9nijA6x7Yz7lG4t9cKWBHaAS3cd7aIk=;
+	b=NOWkhxY8XMgLgYuXryG85TG8Vv6wn0TcDEJeNJGbj5Ude+13uvgYFC+vC2HbnWnF1P
+	Lq6zJ0nEu48e2zpZL45FzM0c1vyLnKKA7p7xhEu4MW8iTx2qR7q63MIthUqGBI96Cz/A
+	IPEXUb3kmtNMxLr5BkGIANF8pnoFTwi8Ny9Ow=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=pYvd64D1FrEVQhlU/HEjO9Ei+i2zguMNFrERf2wEEu4=;
-	b=QIVoeoiprG0Z1HYPzTXPjlUYHI7tf5gzwz7ePuprxQBsaNikpxR0e0XfeBK5AjW/Ra
-	GpnK0Iasu+80yOCTNztNdWB4QNAaQ6ggzu5xbWoKA0JH2f81mJ9ynDf83nF8+tGmcNSm
-	Qb/zgGebjdaUjhqVZWgmGL2is2NEHwFs7xM/tKWpxtf17qTfHQX4mEyd9zGkbJW5w7Q+
-	17krE7LYQUof2UxL+QpzYeurrT2ACYNwCh/LsrWHmQhh3y5sT+SM9RQHe/nOz4adglmA
-	qxlh2cJHrMuHaTkIdxXOiDZmm32XPaCZzc4b9uG4Re4/aOa1P7s+EooXRiUBnQ18vnFw
-	n/FQ==
-X-Gm-Message-State: AEkoouu/xGxH6yE8XmArV4/GwiRDuy7ymxaJj71G37uSBGeXtzUhXfOmX5Al1zNy7DX6Wg==
-X-Received: by 10.28.31.147 with SMTP id f141mr2986871wmf.69.1470399330159;
-	Fri, 05 Aug 2016 05:15:30 -0700 (PDT)
-Received: from [192.168.10.165] (94-39-152-88.adsl-ull.clienti.tiscali.it.
-	[94.39.152.88]) by smtp.googlemail.com with ESMTPSA id
-	p23sm8390243wme.8.2016.08.05.05.15.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 05 Aug 2016 05:15:28 -0700 (PDT)
-To: Lv Zheng <lv.zheng@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhao@linaro.org>
-References: <24044757332cd427e378053739e6f49980e0ac5d.1470392366.git.lv.zheng@intel.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <92ca7f37-9417-e122-a3cf-d3d85a1b89f7@redhat.com>
-Date: Fri, 5 Aug 2016 14:15:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6mTxFLEsKw8i9nijA6x7Yz7lG4t9cKWBHaAS3cd7aIk=;
+	b=Qacre9ejvzlLx7+UKYJNiCVb7FElr6fPf9sA4sHWgYyja/lS4rvF0xjn2CJDAPz9UW
+	H8l96CocZOdDB2P8/2zkzFd1Kdh55x64iazqMhyCw3voRo4eN4kRzQQlS9tFfNb8lZHq
+	7IRN9vBGTw2g5bUtjeAx2e0A8svpwDh6E1aZCMwFDJPBPuEcPagErGTaQpBZBpJu7G38
+	rQEeHVnl6gbZtj3jypYNr5quc5o5l67idQ+yzf8uW+zsO7PM0vfKlqPnB7pRJ0dg9jo9
+	bOwNTfFm0G5BKNsea/a7Yao06EAY2+ULZ+BBSJyKUZkNkLOY9QLLmHMjrDi7PVyc4LUK
+	Esww==
+X-Gm-Message-State: AEkoouuWJDgGr8LAMZkzAQkf21tBP3GQMGoLYNXG9X86USXaa8v1VUQFE2vVZaZU87wbcSyY5/8z6Qe6HdWu/D9z
+X-Received: by 10.31.93.129 with SMTP id r123mr40072739vkb.149.1470403127383; 
+	Fri, 05 Aug 2016 06:18:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <24044757332cd427e378053739e6f49980e0ac5d.1470392366.git.lv.zheng@intel.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Received: by 10.159.41.34 with HTTP; Fri, 5 Aug 2016 06:18:46 -0700 (PDT)
+In-Reply-To: <57A46B46.1090703@huawei.com>
+References: <CAN76PtTfrRFDNDXHFiOvavk4EkOqdXvfKOYJh5AmZPzErxmOkw@mail.gmail.com>
+	<20160805082857.GH9933@redhat.com> <57A46A1D.6000608@huawei.com>
+	<57A46B46.1090703@huawei.com>
+From: Kevin Zhao <kevin.zhao@linaro.org>
+Date: Fri, 5 Aug 2016 21:18:46 +0800
+Message-ID: <CAN76PtTr88=0sPB3j9ZTrUq3SBaXQC1jjNrez9mjuWWs6xDb9Q@mail.gmail.com>
+To: Claudio Fontana <claudio.fontana@huawei.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-arm] [PATCH] debugcon: Add -debugport option to allow
- changing debug console port number
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::22e
+Content-Type: text/plain; charset=UTF-8
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Help]: Does qemu-system-aarch64 support
+ virtio-9p? I got a problem when remap host file to guest in AArch64.
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Lv Zheng <zetalog@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RjQQocVCxZEO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RXnPTPTLd2Xs
+
+Hi Claudio,
+    Could you tell me what host and guest OS are you using? And the
+hardware is 96board or other Hisilicon Server?
+    I use SoftIron. 8 cores AArch64 servers.
 
 
+On 5 August 2016 at 18:32, Claudio Fontana <claudio.fontana@huawei.com>
+wrote:
 
-On 05/08/2016 12:19, Lv Zheng wrote:
-> Changing debugcon port to 0x402 allows the seabios AML table pre-defined
-> DBUG() control method to be able to dump the AML debugging information to
-> the re-directed debugging console.
-> 
-> If the debug port number is configurable, users can further specify a
-> proper IO port number for it to make external BIOS's debugging
-> facility functioning.
-> 
-> Signed-off-by: Lv Zheng <lv.zheng@intel.com>
-
-You can do this with
-
-   -global isa-debugcon.iobase=0x402
-
-Paolo
-
-> ---
->  hw/char/debugcon.c      |    4 ++++
->  hw/i386/acpi-build.c    |    3 ++-
->  include/sysemu/sysemu.h |    1 +
->  qemu-options.hx         |    9 +++++++++
->  vl.c                    |   15 +++++++++++++++
->  5 files changed, 31 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
-> index e7f025e..f966a09 100644
-> --- a/hw/char/debugcon.c
-> +++ b/hw/char/debugcon.c
-> @@ -105,6 +105,10 @@ static void debugcon_isa_realizefn(DeviceState *dev, Error **errp)
->          error_propagate(errp, err);
->          return;
->      }
-> +    if (debug_port != 0xe9) {
-> +        qdev_prop_set_uint32(dev, "iobase", debug_port);
-> +        qdev_prop_set_uint32(dev, "readback", debug_port);
-> +    }
->      memory_region_init_io(&s->io, OBJECT(dev), &debugcon_ops, s,
->                            TYPE_ISA_DEBUGCON_DEVICE, 1);
->      memory_region_add_subregion(isa_address_space_io(d),
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index a26a4bb..14c6224 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1442,7 +1442,8 @@ static void build_dbg_aml(Aml *table)
->      Aml *idx = aml_local(2);
->  
->      aml_append(scope,
-> -       aml_operation_region("DBG", AML_SYSTEM_IO, aml_int(0x0402), 0x01));
-> +       aml_operation_region("DBG", AML_SYSTEM_IO,
-> +                            aml_int(debug_port), 0x01));
->      field = aml_field("DBG", AML_BYTE_ACC, AML_NOLOCK, AML_PRESERVE);
->      aml_append(field, aml_named_field("DBGB", 8));
->      aml_append(scope, field);
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index ee7c760..9e0a30b 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -167,6 +167,7 @@ extern uint8_t qemu_extra_params_fw[2];
->  extern QEMUClockType rtc_clock;
->  extern const char *mem_path;
->  extern int mem_prealloc;
-> +extern uint32_t debug_port;
->  
->  #define MAX_NODES 128
->  #define NUMA_NODE_UNASSIGNED MAX_NODES
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index a71aaf8..05aedce 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -3123,6 +3123,15 @@ The default device is @code{vc} in graphical mode and @code{stdio} in
->  non graphical mode.
->  ETEXI
->  
-> +DEF("debugport", HAS_ARG, QEMU_OPTION_debugport, \
-> +    "-debugport n     Specify debug IO port number\n",
-> +    QEMU_ARCH_ALL)
-> +STEXI
-> +@item -debugport @var{n}
-> +@findex -debugport
-> +Specify the debug IO port number, default is 0xe9.
-> +ETEXI
-> +
->  DEF("pidfile", HAS_ARG, QEMU_OPTION_pidfile, \
->      "-pidfile file   write PID to 'file'\n", QEMU_ARCH_ALL)
->  STEXI
-> diff --git a/vl.c b/vl.c
-> index e7c2c62..710e14d 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -178,6 +178,7 @@ bool boot_strict;
->  uint8_t *boot_splash_filedata;
->  size_t boot_splash_filedata_size;
->  uint8_t qemu_extra_params_fw[2];
-> +uint32_t debug_port = 0xe9;
->  
->  int icount_align_option;
->  
-> @@ -2584,6 +2585,17 @@ static int debugcon_parse(const char *devname)
->      return 0;
->  }
->  
-> +static void debugcon_parse_port(const char *arg)
-> +{
-> +    uint32_t port;
-> +
-> +    port = strtoul(arg, NULL, 0);
-> +    if (port) {
-> +        printf("Re-assign debug console to port 0x%08x.\n", port);
-> +        debug_port = port;
-> +    }
-> +}
-> +
->  static gint machine_class_cmp(gconstpointer a, gconstpointer b)
->  {
->      const MachineClass *mc1 = a, *mc2 = b;
-> @@ -3580,6 +3592,9 @@ int main(int argc, char **argv, char **envp)
->              case QEMU_OPTION_debugcon:
->                  add_device_config(DEV_DEBUGCON, optarg);
->                  break;
-> +            case QEMU_OPTION_debugport:
-> +                debugcon_parse_port(optarg);
-> +                break;
->              case QEMU_OPTION_loadvm:
->                  loadvm = optarg;
->                  break;
-> 
+> On 05.08.2016 12:27, Claudio Fontana wrote:
+> > Hi,
+> >
+> > On 05.08.2016 10:28, Daniel P. Berrange wrote:
+> >> On Fri, Aug 05, 2016 at 10:23:58AM +0800, Kevin Zhao wrote:
+> >>> Hi All,
+> >>>      I have a problem may about Qemu and kindly need your help. Does
+> >>> qemu-system-aarch64 support virtio-9p ?
+> >>>      Recently I have tried to use qemu remapped the file from host to
+> >>> guest. As I know, Qemu has supported this so long as guest kernel has
+> >>> support 9p(virtfs). Reference to this link:
+> >>> http://wiki.qemu.org/Documentation/9psetup
+> >>> Fedora 24 AArch64 kernel has supported this:
+> >>> [root@sha-win-225 ~]# lsmod | grep 9p
+> >>> 9p                     56273  0
+> >>> fscache                87449  1 9p
+> >>> 9pnet_virtio            9122  0
+> >>> 9pnet                  83564  2 9p,9pnet_virtio
+> >>> virtio_ring            13866  5 virtio_net,virtio_pci,9pnet_
+> >>> virtio,virtio_mmio,virtio_scsi
+> >>> virtio                  9467  5 virtio_net,virtio_pci,9pnet_
+> >>> virtio,virtio_mmio,virtio_scsi
+> >>>
+> >>>     Now I use virsh to launch the VM, and the corresponding qemu
+> command I
+> >>> have pasted here:
+> >>> http://paste.openstack.org/show/549225/.
+> >>>     You can see that:
+> >>> * -fsdev
+> >>> local,security_model=mapped,id=fsdev-fs0,path=/var/lib/
+> libvirt/images/coreos
+> >>> -device
+> >>> virtio-9p-pci,id=fs0,fsdev=fsdev-fs0,mount_tag=share,bus=
+> pci.2,addr=0x1*
+> >>>      Here is the command that remapped the directory from host to
+> guest.
+> >>> After VM launched, I use the command to mount:
+> >>> * mount -t 9p -o trans=virtio share /tmp/shared/
+> >>> -oversion=9p2000.L,posixacl,cache=loose*
+> >>> But mount command will be blocked and output nothing.
+> >>
+> >> Try using  version=9p2000.u instead - I've noticed other versions have
+> >> been buggy in various kernel version/qemu version combinations. The
+> >> 9p2000.u version is what i use in libvirt-sandobx and so I know it will
+> >> work in general.
+> >
+> > We are using version=9p2000.L here with qemu-system-aarch64, and it
+> works well.
+> > We tested only on qemu-2.5 though.
+>
+> Forgot to mention though that we backported commit c8225aa1 "virtio-9p:
+> use accessor to get thread_pool" though,
+> as without it we have experienced crashes.
+>
+> Ciao, C.
+>
+>

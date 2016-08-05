@@ -1,83 +1,67 @@
-Received: by 10.25.21.156 with SMTP id 28csp1524030lfv;
-        Thu, 4 Aug 2016 16:30:44 -0700 (PDT)
-X-Received: by 10.55.146.2 with SMTP id u2mr9743239qkd.54.1470353444649;
-        Thu, 04 Aug 2016 16:30:44 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1575177lfv;
+        Thu, 4 Aug 2016 19:24:09 -0700 (PDT)
+X-Received: by 10.55.101.71 with SMTP id z68mr10516645qkb.189.1470363849424;
+        Thu, 04 Aug 2016 19:24:09 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f127si7204146qkj.86.2016.08.04.16.30.44
+        by mx.google.com with ESMTPS id n185si7560007qkd.242.2016.08.04.19.24.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 Aug 2016 16:30:44 -0700 (PDT)
+        Thu, 04 Aug 2016 19:24:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42112 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42440 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bVS68-0001nA-1V
-	for alex.bennee@linaro.org; Thu, 04 Aug 2016 19:30:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50050)
+	id 1bVUnv-0002n9-Rp
+	for alex.bennee@linaro.org; Thu, 04 Aug 2016 22:24:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42211)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>) id 1bVS65-0001n2-6N
-	for qemu-arm@nongnu.org; Thu, 04 Aug 2016 19:30:42 -0400
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVUnr-0002ln-0Z
+	for qemu-arm@nongnu.org; Thu, 04 Aug 2016 22:24:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>) id 1bVS60-0001zV-5K
-	for qemu-arm@nongnu.org; Thu, 04 Aug 2016 19:30:41 -0400
-Received: from exvmail.hynix.com ([166.125.252.79]:51555
-	helo=invmail.skhynix.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwangwoo.lee@sk.com>)
-	id 1bVS5z-0001yY-KR; Thu, 04 Aug 2016 19:30:36 -0400
-X-AuditID: a67dfc4e-f797e6d000000a40-0d-57a3d0158ea7
-Received: from nmail01.hynixad.com (10.156.98.81) by nmail08.hynixad.com
-	(10.156.98.88) with Microsoft SMTP Server (TLS) id 15.0.847.32;
-	Fri, 5 Aug 2016 08:30:29 +0900
-Received: from nmail01.hynixad.com ([::1]) by nmail01.hynixad.com
-	([fe80::b401:ed0f:ec2d:533c%24]) with mapi id 15.00.0847.030;
-	Fri, 5 Aug 2016 08:30:29 +0900
-From: "kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com>
-To: Igor Mammedov <imammedo@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>
-Thread-Topic: [Qemu-devel] [RFC PATCH 1/3] hw/arm/virt: add hotplug memory
-	support
-Thread-Index: AQHR4iCz63i60J7QhU+DySTPVw+aOaAvLcOAgAQZZ3D//+87gIAAB6sAgAARCoCAAX1wAIAASD2AgAR1XiA=
-Date: Thu, 4 Aug 2016 23:30:28 +0000
-Message-ID: <3f8bffbf6bb94905a7575acb4ae39114@nmail01.hynixad.com>
-References: <1468975744-12587-1-git-send-email-kwangwoo.lee@sk.com>
-	<1468975744-12587-2-git-send-email-kwangwoo.lee@sk.com>
-	<CAFEAcA_5jngVxajJxdJ0krz0inrkdjTNYYZ+5SNGOipoQo35ZA@mail.gmail.com>
-	<79b91f02b26441be993e372cef44002d@nmail01.hynixad.com>
-	<20160801094607.057cef2f@nial.brq.redhat.com>
-	<CAFEAcA_6TQym4k3wiFEiAwwErJF0NDyqE8gDacfWK+n-rTsQyg@mail.gmail.com>
-	<20160801111433.2af5c013@nial.brq.redhat.com>
-	<CAFEAcA9cbsq5oWCABMww3EWkV8cPsaGJrO0NyPyc4Ph7aA_MQg@mail.gmail.com>
-	<20160802141819.406aa754@nial.brq.redhat.com>
-In-Reply-To: <20160802141819.406aa754@nial.brq.redhat.com>
-Accept-Language: ko-KR, en-US
-Content-Language: ko-KR
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.92.132.196]
-Content-Type: text/plain; charset="ks_c_5601-1987"
-Content-Transfer-Encoding: base64
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVUno-0004qZ-IY
+	for qemu-arm@nongnu.org; Thu, 04 Aug 2016 22:24:01 -0400
+Received: from mail-ua0-x22c.google.com ([2607:f8b0:400c:c08::22c]:35111)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kevin.zhao@linaro.org>) id 1bVUno-0004qF-3N
+	for qemu-arm@nongnu.org; Thu, 04 Aug 2016 22:24:00 -0400
+Received: by mail-ua0-x22c.google.com with SMTP id i31so42704725uai.2
+	for <qemu-arm@nongnu.org>; Thu, 04 Aug 2016 19:23:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=sEh0mIbNAabwmeQE4tSNnL/T0fW/7Mh669v5kb0T+qk=;
+	b=YPYhTXlvoF40LRSf5slaPHpVAiZSRFtI0XysNk58MgTtuaj+dbGvAtXK6bRkwhMT4N
+	OHn6xInAXz3UTHneaYda3IeuU8qT+7U10g9UpYjtMbDHviqpjBM/Pws8cvia5+ZHIR2Q
+	1mS3BJRgXCEN0SDby1+HKbJ+gYJyRWIKHat84=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=sEh0mIbNAabwmeQE4tSNnL/T0fW/7Mh669v5kb0T+qk=;
+	b=m6T0+5IL9noKZQ7NdQ607O6W4yRmdsrugqhM4zZyzdxGdbirFJ8u8sDiba8dEiVwO5
+	MvrIJxV6Zyj/HivjpEZ+W7MZf/wKAmkUbIygtGwWliRA7O/BtlrTQHn5h3my94wcZlhe
+	SZ5loWu79MJx1G7AOfcWkHWYkOtuSp5EtvDwHVW/mDKaV//ELLtE5J/2xfalem5DNDOe
+	MHBa3cui5L0HXXiyFbwOIjv2pXfIoQgj8W0Bg0U2DBxEuaUJ9mfzFPNt4GHtX1CnRrfX
+	9r++sowODv6U22EKv1kqi38CqWl9yXylYklyE4Ccsgg3283zmsHtR2F7jkQZ24BJKEO7
+	uBww==
+X-Gm-Message-State: AEkoousoO6mLJ8FeYsiNBCIKVZS3MAaVOLKaf+IP3+nlviAgU8bnwLkA0xY9drdxrHR/V1HlXqY5hSSw2aFGAkr/
+X-Received: by 10.176.1.245 with SMTP id 108mr38873172ual.45.1470363838957;
+	Thu, 04 Aug 2016 19:23:58 -0700 (PDT)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrAIsWRmVeSWpSXmKPExsXCNUdUSVf0wuJwg0NHjCwa7oVaLFy1jNni
-	9NEOZov/v16xWuzf9o/VYs6ZBywWC7oXslkc793BYjHt1B1Wi6fLfrNazNvwgsmB26PlyFtW
-	jzvX9rB5zDsZ6PHk2mYmj/f7rrJ59E3/wBzAFsVlk5Kak1mWWqRvl8CVMefHK5aCdeoVu3ZO
-	YW9gXKPWxcjJISFgIrHvdAsjhC0mceHeerYuRi4OIYHVjBI3Ln9ghXAWMUosXbuBBaSKTcBQ
-	Yu+tfUAJDg4RgWCJV2+UQGqYBc4yS6z5+ogNpEYYKP7+0jGwehGBEImG+5NZIewkiR2tXUwg
-	vSwCKhJPZ/qBhHkFnCTe7DgPViIkMJtFYt7SQBCbU8BKYt6vZcwg5YwCshJXr8mAhJkFxCUW
-	f73GDHGzgMSSPeehbFGJl4//sULYihLfXn9nh6g3kliyej4ThK0oMaX7ITvEWkGJkzOfsEDU
-	S0ocXHGDZQKj+CwkK2YhaZ+FpH0WkvYFjCyrGIUz88pyEzNz9IqzMyrzMiv0kvNzNzEC43lZ
-	7R+/HYwvfmkdYhTgYFTi4a2IXxwuxJpYVlyZe4hRgoNZSYS3+zxQiDclsbIqtSg/vqg0J7X4
-	EKM0B4uSOO+3/33hQgLpiSWp2ampBalFMFkmDk6pBkb1PzM//pEW/LVjZuC1fd94b6z5lX3R
-	3OCavV/eeTuuDUpbL7m8s2zYcdfuoY7YHwGtL97NDWoPO6TWsVWpq10r8ezYHMmxQ3jLjLl2
-	TcdnVG+dFc+2Lf3SH939pg7XnQ64Tzzz9fqXCQw77gtcW/d3uhHjI9c3WVXstqLyJzpdwt02
-	TuDekcKpxFKckWioxVxUnAgAhrOlouMCAAA=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x
-X-Received-From: 166.125.252.79
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 1/3] hw/arm/virt: add
- hotplug memory support
+Received: by 10.159.41.34 with HTTP; Thu, 4 Aug 2016 19:23:58 -0700 (PDT)
+From: Kevin Zhao <kevin.zhao@linaro.org>
+Date: Fri, 5 Aug 2016 10:23:58 +0800
+Message-ID: <CAN76PtTfrRFDNDXHFiOvavk4EkOqdXvfKOYJh5AmZPzErxmOkw@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary=001a113e4b764fe2e1053949c2ff
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400c:c08::22c
+Subject: [Qemu-arm] [Help]: Does qemu-system-aarch64 support virtio-9p? I
+ got a problem when remap host file to guest in AArch64.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,81 +73,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Xiao Guangrong <guangrong.xiao@linux.intel.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"woosuk.chung@sk.com" <woosuk.chung@sk.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	"hyunchul3.kim@sk.com" <hyunchul3.kim@sk.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pCHVRQlxLZgo
+X-TUID: ceNBjQaODZ2R
 
-SGkgSWdvciwNCg0KVGhhbmsgeW91IGZvciB5b3VyIGd1aWRlIHRvIHNwbGl0IHRoZSBob3RwbHVn
-IHBhdGNoLg0KQ3VycmVudGx5IEknbSBsb29raW5nIGF0IHRoZSBMaW51eCBrZXJuZWwgY29kZXMg
-cmVsYXRlZCB3aXRoIGh1Z2UgcGFnZSBzaXplLg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0t
-LS0tDQo+IEZyb206IElnb3IgTWFtbWVkb3YgW21haWx0bzppbWFtbWVkb0ByZWRoYXQuY29tXQ0K
-PiBTZW50OiBUdWVzZGF5LCBBdWd1c3QgMDIsIDIwMTYgOToxOCBQTQ0KPiBUbzogUGV0ZXIgTWF5
-ZGVsbA0KPiBDYzogWGlhbyBHdWFuZ3Jvbmc7IEVkdWFyZG8gSGFia29zdDsgTWljaGFlbCBTLiBU
-c2lya2luOyBRRU1VIERldmVsb3BlcnM7IMGkv+y8rihDSFVORyBXT08gU1VLKSBNUyBTVzsNCj4g
-cWVtdS1hcm07IFNoYW5ub24gWmhhbzsgU2hhbm5vbiBaaGFvOyBQYW9sbyBCb256aW5pOyCx6Mf2
-w7YoS0lNIEhZVU5DSFVMKSBNUyBTVzsgwMyxpL/sKExFRSBLV0FOR1dPTykgTVMNCj4gU1c7IFJp
-Y2hhcmQgSGVuZGVyc29uDQo+IFN1YmplY3Q6IFJlOiBbUWVtdS1kZXZlbF0gW1JGQyBQQVRDSCAx
-LzNdIGh3L2FybS92aXJ0OiBhZGQgaG90cGx1ZyBtZW1vcnkgc3VwcG9ydA0KPiANCj4gT24gVHVl
-LCAyIEF1ZyAyMDE2IDA4OjU5OjQ2ICswMTAwDQo+IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZz4gd3JvdGU6DQo+IA0KPiA+IE9uIDEgQXVndXN0IDIwMTYgYXQgMTA6MTQs
-IElnb3IgTWFtbWVkb3YgPGltYW1tZWRvQHJlZGhhdC5jb20+IHdyb3RlOg0KPiA+ID4gT24gTW9u
-LCAxIEF1ZyAyMDE2IDA5OjEzOjM0ICswMTAwDQo+ID4gPiBQZXRlciBNYXlkZWxsIDxwZXRlci5t
-YXlkZWxsQGxpbmFyby5vcmc+IHdyb3RlOg0KPiA+ID4+IE9uIDEgQXVndXN0IDIwMTYgYXQgMDg6
-NDYsIElnb3IgTWFtbWVkb3YgPGltYW1tZWRvQHJlZGhhdC5jb20+IHdyb3RlOg0KPiA+ID4+ID4g
-QmFzZSBhbGlnbm1lbnQgY29tZXMgZnJvbSBtYXggc3VwcG9ydGVkIGh1Z2VwYWdlIHNpemUsDQo+
-ID4gPj4NCj4gPiA+PiBNYXggaHVnZXBhZ2Ugc2l6ZSBmb3IgYW55IGhvc3Q/IChpZiBzbywgc2hv
-dWxkIGJlIGRlZmluZWQNCj4gPiA+PiBpbiBhIGNvbW1vbiBoZWFkZXIgc29tZXdoZXJlKQ0KPiA+
-ID4+IE1heCBodWdlcGFnZSBzaXplIGZvciBBUk0gaG9zdHM/IChpZiBzbywgd2h5IGlzIFRDRw0K
-PiA+ID4+IGRpZmZlcmVudCBmcm9tIEtWTT8sIGFuZCBzaG91bGQgc3RpbGwgYmUgaW4gYSBjb21t
-b24NCj4gPiA+PiBoZWFkZXIgc29tZXdoZXJlKQ0KPiA+ID4gSXQncyB0aGUgc2FtZSBmb3IgVENH
-IGJ1dCBpdCBwcm9iYWJseSBkb2Vzbid0IG1hdHRlciBtdWNoIHRoZXJlLA0KPiA+ID4gbWFpbiB1
-c2FnZSBpcyB0byBwcm92aWRlIGJldHRlciBwZXJmb3JtYW5jZSB3aXRoIEtWTS4NCj4gPiA+DQo+
-ID4gPiBTbyBJJ2Qgc2F5IGl0J3MgaG9zdCBkZXBlbmRlZCAoZm9yIHg4NiBpdCdzIDFHYiksDQo+
-ID4gPiBwcm9iYWJseSBvdGhlciB2YWx1ZXMgZm9yIEFSTSBhbmQgUFBDDQo+ID4NCj4gPiBXZSBw
-cm9iYWJseSBkb24ndCB3YW50IHRvIG1ha2UgdGhlIG1lbW9yeSBsYXlvdXQgZGVwZW5kDQo+ID4g
-b24gdGhlIGhvc3QgYXJjaGl0ZWN0dXJlLCB0aG91Z2ggOi0oDQo+IEltcG9ydGFudCBoZXJlIGlz
-IG5vdCBjaGFuZ2UgaXQgZHluYW1pY2FsbHkgc28gaXQgd29uJ3QNCj4gYnJlYWsgbWlncmF0aW9u
-Lg0KPiBPdGhlcndpc2UgaXQgY291bGQgYmUgYSB2YWx1ZSB0aGF0IG1ha2VzIGEgc2Vuc2UgZm9y
-DQo+IHRoZSB1c2UtY2FzZSB3aGVyZSBwZXJmb3JtYW5jZSBtYXR0ZXJzIG1vc3QsIGkuZS4gS1ZN
-DQo+IHdoaWNoIG1ha2VzIHVzIHRvIGRlcml2ZSB2YWx1ZSBmcm9tIG1heCBzdXBwb3J0ZWQgcGFn
-ZQ0KPiBzaXplIGZvciBhIEtWTSBob3N0IChtZWFuaW5nIGd1ZXN0IGlzIHRoZSBzYW1lIGFyY2gp
-DQo+IA0KPiBJbiBjYXNlIG9mIHg4NiB2YWx1ZSBpcyBjb25zdGFudCBoYXJkY29kZWQgaW4gdGFy
-Z2V0DQo+IHNwZWNpZmljIGNvZGUgd2hpY2ggYXBwbGllcyB0byBib3RoIEtWTSBhbmQgVENHLg0K
-PiANCj4gUGVyaGFwcyB0aGVyZSBpcyBhIGJldHRlciB3YXkgdG8gaGFuZGxlIGl0IHdoaWNoIEkg
-anVzdA0KPiBkb24ndCBzZWUuDQo+IA0KPiA+DQo+ID4gPj4NCj4gPiA+PiA+IHdoaWxlDQo+ID4g
-Pj4gPiBzaXplIGFsaWdubWVudCBzaG91bGQgZGVwZW5kIG9uIGJhY2tlbmQncyBwYWdlIHNpemUN
-Cj4gPiA+Pg0KPiA+ID4+IFdoaWNoIHBhZ2Ugc2l6ZSBkbyB5b3UgaGF2ZSBpbiBtaW5kIGhlcmU/
-IFRBUkdFVF9QQUdFX1NJWkUNCj4gPiA+PiBpcyBvZnRlbiBub3QgdGhlIHJpZ2h0IGFuc3dlciwg
-c2luY2UgaXQgZG9lc24ndA0KPiA+ID4+IGNvcnJlc3BvbmQgZWl0aGVyIHRvIHRoZSBhY3R1YWwg
-cGFnZSBzaXplIGJlaW5nIHVzZWQNCj4gPiA+PiBieSB0aGUgaG9zdCBrZXJuZWwgb3IgdG8gdGhl
-IGFjdHVhbCBwYWdlIHNpemUgdXNlZA0KPiA+ID4+IGJ5IHRoZSBndWVzdCBrZXJuZWwuLi4NCj4g
-PiA+IGFsaWdubWVudCBjb21lcyBmcm9tIGhlcmU6IG1lbW9yeV9yZWdpb25fZ2V0X2FsaWdubWVu
-dCgpDQo+ID4gPg0KPiA+ID4gZXhlYzpjDQo+ID4gPiAgICBNQVgocGFnZV9zaXplLCBRRU1VX1ZN
-QUxMT0NfQUxJR04pDQo+ID4gPiBzbyBpdCdzIGVpdGhlciBiYWNrZW5kJ3MgcGFnZSBzaXplIG9y
-IGEgbWluIGNodW5rIFFFTVUNCj4gPiA+IGFsbG9jYXRlcyBtZW1vcnkgdG8gbWFrZSBLVk0vdmFs
-Z3JpbmQvd2hhdG5vdCBoYXBweS4NCj4gPg0KPiA+IFNpbmNlIHRoYXQncyBhbHdheXMgbGFyZ2Vy
-IHRoYW4gVEFSR0VUX1BBR0VfU0laRQ0KPiA+IHdoeSBhcmUgd2UgY2hlY2tpbmcgZm9yIGFuIGFs
-aWdubWVudCBoZXJlIHRoYXQncw0KPiA+IG5vdCBhY3R1YWxseSBzdWZmaWNpZW50IHRvIG1ha2Ug
-dGhpbmdzIHdvcms/DQo+IFlvdSBtZWFuIGZvbGxvd2luZyBodW5rOg0KPiANCj4gKyAgICAgICAg
-aWYgKFFFTVVfQUxJR05fVVAobWFjaGluZS0+bWF4cmFtX3NpemUsDQo+ICsgICAgICAgICAgICAg
-ICAgICAgICBUQVJHRVRfUEFHRV9TSVpFKSAhPSBtYWNoaW5lLT5tYXhyYW1fc2l6ZSkgew0KPiAN
-Cj4gSXQncyBhIGJpdCBsYXRlIHRvIGZpeCBmb3IgeDg2IHdpdGhvdXQgYnJlYWtpbmcgQ0xJLA0K
-PiBzaWRlIGVmZmVjdCB3b3VsZCBiZSBpbmFiaWxpdHkgdG8gaG90cGx1ZyB1cHRvIG1heG1lbSBp
-ZiBtYXhtZW0NCj4gaXMgbWlzYWxpZ25lZCB3cnQgdXNlZCBiYWNrZW5kIHBhZ2Ugc2l6ZQ0KPiAN
-Cj4gQVJDSF9WSVJUX0hPVFBMVUdfTUVNX0FMSUdOIHNob3VsZCBiZSB1c2VkIGluc3RlYWQgb2Yg
-VEFSR0VUX1BBR0VfU0laRQ0KPiANCj4gUFM6DQo+IEkgaGF2ZW4ndCByZXZpZXdlZCBzZXJpZXMg
-eWV0LCBidXQgSSdkIHNwbGl0IHRoaXMgcGF0Y2ggaW4gMw0KPiB0byBtYWtlIHJldmlldyBlYXNp
-ZXINCj4gICAxc3QgLSBpbnRyb2R1Y2UgbWFjaGluZSBsZXZlbCBob3RwbHVnIGhvb2tzDQo+ICAg
-Mm5kIC0gYWRkIE1lbW9yeUhvdHBsdWdTdGF0ZSB0byBWaXJ0TWFjaGluZVN0YXRlIGFuZCBpbml0
-aWFsaXplIGl0DQo+ICAgM3JkIC0gYWRkIHZpcnRfZGltbV9wbHVnKCkgaGFuZGxlcg0KDQpPSy4g
-SSdsbCB0cnkgdG8gc3BsaXQgaXQuDQoNCj4gPg0KPiA+IHRoYW5rcw0KPiA+IC0tIFBNTQ0KPiA+
-DQoNCkJlc3QgUmVnYXJkcywNCkt3YW5nd29vIExlZQ0K
+--001a113e4b764fe2e1053949c2ff
+Content-Type: text/plain; charset=UTF-8
+
+Hi All,
+     I have a problem may about Qemu and kindly need your help. Does
+qemu-system-aarch64 support virtio-9p ?
+     Recently I have tried to use qemu remapped the file from host to
+guest. As I know, Qemu has supported this so long as guest kernel has
+support 9p(virtfs). Reference to this link:
+http://wiki.qemu.org/Documentation/9psetup
+Fedora 24 AArch64 kernel has supported this:
+[root@sha-win-225 ~]# lsmod | grep 9p
+9p                     56273  0
+fscache                87449  1 9p
+9pnet_virtio            9122  0
+9pnet                  83564  2 9p,9pnet_virtio
+virtio_ring            13866  5 virtio_net,virtio_pci,9pnet_
+virtio,virtio_mmio,virtio_scsi
+virtio                  9467  5 virtio_net,virtio_pci,9pnet_
+virtio,virtio_mmio,virtio_scsi
+
+    Now I use virsh to launch the VM, and the corresponding qemu command I
+have pasted here:
+http://paste.openstack.org/show/549225/.
+    You can see that:
+* -fsdev
+local,security_model=mapped,id=fsdev-fs0,path=/var/lib/libvirt/images/coreos
+-device
+virtio-9p-pci,id=fs0,fsdev=fsdev-fs0,mount_tag=share,bus=pci.2,addr=0x1*
+     Here is the command that remapped the directory from host to guest.
+After VM launched, I use the command to mount:
+* mount -t 9p -o trans=virtio share /tmp/shared/
+-oversion=9p2000.L,posixacl,cache=loose*
+But mount command will be blocked and output nothing.
+     The Qemu version is QEMU emulator version 2.5.0 (Debian
+1:2.5+dfsg-5ubuntu10.2). Besides test fedora24 guest, I have got the same
+problem in Debian jessie.
+      Kindly need your help~You will be really appreciated.
+
+Best Regards,
+Kevin Zhao
+
+--001a113e4b764fe2e1053949c2ff
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div style=3D"font-size:12.8px">Hi All,<span style=3D"font=
+-size:12.8px">=C2=A0 =C2=A0 =C2=A0</span></div><div style=3D"font-size:12.8=
+px">=C2=A0 =C2=A0 =C2=A0I have a problem may about Qemu and kindly need you=
+r help. Does qemu-system-aarch64 support virtio-9p ?</div><div style=3D"fon=
+t-size:12.8px">=C2=A0 =C2=A0 =C2=A0Recently I have tried to use qemu remapp=
+ed the file from host to guest. As I know, Qemu has supported this so long =
+as guest kernel has support 9p(virtfs). Reference to this link:</div><div s=
+tyle=3D"font-size:12.8px"><a href=3D"http://wiki.qemu.org/Documentation/9ps=
+etup" rel=3D"noreferrer" target=3D"_blank" style=3D"font-size:12.8px">http:=
+//wiki.qemu.org/<wbr>Documentation/9psetup</a><br></div><div style=3D"font-=
+size:12.8px">Fedora 24 AArch64 kernel has supported this:</div><div style=
+=3D"font-size:12.8px"><span style=3D"background-color:rgb(204,204,204)">[ro=
+ot@sha-win-225 ~]# lsmod | grep 9p</span></div><div style=3D"font-size:12.8=
+px"><span style=3D"background-color:rgb(204,204,204)">9p =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 56273 =C2=A00</span></=
+div><div style=3D"font-size:12.8px"><span style=3D"background-color:rgb(204=
+,204,204)">fscache =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A08=
+7449 =C2=A01 9p</span></div><div style=3D"font-size:12.8px"><span style=3D"=
+background-color:rgb(204,204,204)">9pnet_virtio =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A09122 =C2=A00</span></div><div style=3D"font-size:12.8px"><spa=
+n style=3D"background-color:rgb(204,204,204)">9pnet =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A083564 =C2=A02 9p,9pnet_virtio</spa=
+n></div><div style=3D"font-size:12.8px"><span style=3D"background-color:rgb=
+(204,204,204)">virtio_ring =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A013866 =
+=C2=A05 virtio_net,virtio_pci,9pnet_<wbr>virtio,virtio_mmio,virtio_scsi</sp=
+an></div><div style=3D"font-size:12.8px"><span style=3D"background-color:rg=
+b(204,204,204)">virtio =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A09467 =C2=A05 virtio_net,virtio_pci,9pnet_<wbr>virtio,virtio_mmio,=
+virtio_scsi</span></div><div style=3D"font-size:12.8px"><br></div><div styl=
+e=3D"font-size:12.8px">=C2=A0 =C2=A0 Now I use virsh to launch the VM, and =
+the corresponding qemu command I have pasted here:</div><div style=3D"font-=
+size:12.8px"><a href=3D"http://paste.openstack.org/show/549225/" target=3D"=
+_blank">http://paste.openstack.org/<wbr>show/549225/</a>. =C2=A0</div><div =
+style=3D"font-size:12.8px">=C2=A0 =C2=A0 You can see that:<br></div><div st=
+yle=3D"font-size:12.8px"><span style=3D"background-color:rgb(204,204,204)">=
+<font color=3D"#000000"><b>=C2=A0-fsdev local,security_model=3Dmapped,<wbr>=
+id=3Dfsdev-fs0,path=3D/var/lib/<wbr>libvirt/images/coreos -device virtio-9p=
+-pci,id=3Dfs0,fsdev=3D<wbr>fsdev-fs0,mount_tag=3Dshare,bus=3D<wbr>pci.2,add=
+r=3D0x1</b></font></span><br></div><div style=3D"font-size:12.8px">=C2=A0 =
+=C2=A0 =C2=A0Here is the command that remapped the directory from host to g=
+uest. After VM launched, I use the command to mount:</div><div style=3D"fon=
+t-size:12.8px"><span style=3D"background-color:rgb(204,204,204)"><b>=C2=A0m=
+ount -t 9p -o trans=3Dvirtio share /tmp/shared/ -oversion=3D9p2000.L,posixa=
+cl,<wbr>cache=3Dloose</b></span><br></div><div style=3D"font-size:12.8px">B=
+ut mount command will be blocked and output nothing.</div><div style=3D"fon=
+t-size:12.8px">=C2=A0 =C2=A0 =C2=A0The Qemu version is QEMU emulator versio=
+n 2.5.0 (Debian 1:2.5+dfsg-5ubuntu10.2). Besides test fedora24 guest, I hav=
+e got the same problem in Debian jessie.=C2=A0</div><div style=3D"font-size=
+:12.8px">=C2=A0 =C2=A0 =C2=A0 Kindly need your help~You will be really appr=
+eciated.</div><div style=3D"font-size:12.8px"><br></div><div style=3D"font-=
+size:12.8px">Best Regards,</div><div style=3D"font-size:12.8px">Kevin Zhao<=
+/div></div>
+
+--001a113e4b764fe2e1053949c2ff--

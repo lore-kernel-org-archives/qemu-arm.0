@@ -1,70 +1,51 @@
-Received: by 10.25.21.156 with SMTP id 28csp105221lfv;
-        Mon, 8 Aug 2016 09:57:47 -0700 (PDT)
-X-Received: by 10.55.195.9 with SMTP id a9mr30864709qkj.237.1470675467142;
-        Mon, 08 Aug 2016 09:57:47 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp105856lfv;
+        Mon, 8 Aug 2016 09:59:07 -0700 (PDT)
+X-Received: by 10.55.93.71 with SMTP id r68mr3231513qkb.131.1470675547095;
+        Mon, 08 Aug 2016 09:59:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l64si17884840qki.318.2016.08.08.09.57.46
+        by mx.google.com with ESMTPS id y34si20546239qta.16.2016.08.08.09.59.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Aug 2016 09:57:47 -0700 (PDT)
+        Mon, 08 Aug 2016 09:59:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58806 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58810 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bWns2-00061N-LS
-	for alex.bennee@linaro.org; Mon, 08 Aug 2016 12:57:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42296)
+	id 1bWntK-0006p9-Ic
+	for alex.bennee@linaro.org; Mon, 08 Aug 2016 12:59:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bWnry-0005zS-A2
-	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 12:57:43 -0400
+	(envelope-from <no-reply@patchew.org>) id 1bWntF-0006mm-OR
+	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 12:59:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bWnrx-0005MA-B4
-	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 12:57:42 -0400
-Received: from mail-ua0-x22d.google.com ([2607:f8b0:400c:c08::22d]:36439)
+	(envelope-from <no-reply@patchew.org>) id 1bWntB-0005fa-GQ
+	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 12:59:00 -0400
+Resent-Date: Mon, 08 Aug 2016 12:59:00 -0400
+Resent-Message-Id: <E1bWntB-0005fa-GQ@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:24321)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bWnrx-0005M2-5G
-	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 12:57:41 -0400
-Received: by mail-ua0-x22d.google.com with SMTP id 97so27792081uav.3
-	for <qemu-arm@nongnu.org>; Mon, 08 Aug 2016 09:57:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=unooXrRLvihLKNRMkeFiumBq1roS1YBZSBTY7bmGxlo=;
-	b=b/mAycn8dDc2TlknxHBlsGsqqtlH60sSFXQ7PTLOCB3jMv/OurKbso0i2D/ePxp4wp
-	GfC2ZdmL3vt1zkQk8S8nqO2zW8oYmW8lEbp8d/2m5yHfrzpB8iBxeEeM+1gCI1qpBDjD
-	AGcKZ/daWcyPqhr5LK1u1TtdmW32RBMzuH4vM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=unooXrRLvihLKNRMkeFiumBq1roS1YBZSBTY7bmGxlo=;
-	b=RgwR/pOEyRsj5Aw+6/Q3HhqVRcNcZRWD6QrBNK6gpOJeTgXi1IIC932dY4CwrRKtrl
-	r2wJt1xmAJZsmkF1C1vG+wnIrqRndf3uMj0S6F3pc8TznUzwkfE9kcVmWecIPJH2kZFb
-	Ko1f4N7oZp9jOZocMFniqHFiQFGpLZZTcsgFKTezJ91LtGIJYOBDoEmjmGWjYbHEHEso
-	VDjJVzg22Y1KS7ubtXCcXKTl9PtyYRDxRRF+ENTqKO05KX+rdkfrPreWslA+5szKd3PR
-	Ch8A2pYN+vlxoKdKbU+Rwqd4PJu3FQ7HzGNLM9ipzuUQ+0qsboVl74R33zx8cjWinRVE
-	A8Ug==
-X-Gm-Message-State: AEkoouugIhgx+scWDxzH3tvRVF2nlz8LUwPkg9mZhtzeKEqJMmjlmly482knlNUKOiL8zc989AcyLe0kVuW4PBHz
-X-Received: by 10.159.35.47 with SMTP id 44mr4662654uae.38.1470675460630; Mon,
-	08 Aug 2016 09:57:40 -0700 (PDT)
+	(envelope-from <no-reply@patchew.org>)
+	id 1bWntB-0005fM-7f; Mon, 08 Aug 2016 12:58:57 -0400
+Received: from ex-std-node742.prod.rhcloud.com
+	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
+	mx.zohomail.com with SMTPS id 1470675528480915.6435849429944;
+	Mon, 8 Aug 2016 09:58:48 -0700 (PDT)
+In-Reply-To: <1470675071-23677-1-git-send-email-vijay.kilari@gmail.com>
 MIME-Version: 1.0
-Received: by 10.31.150.17 with HTTP; Mon, 8 Aug 2016 09:57:19 -0700 (PDT)
-In-Reply-To: <1470675071-23677-3-git-send-email-vijay.kilari@gmail.com>
-References: <1470675071-23677-1-git-send-email-vijay.kilari@gmail.com>
-	<1470675071-23677-3-git-send-email-vijay.kilari@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Aug 2016 17:57:19 +0100
-Message-ID: <CAFEAcA_e=PGkFX3sPn_gMPCM8niZ-zm+S4wXPDEX3gRhMpE=hQ@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22d
-Subject: Re: [Qemu-arm] [RFC PATCH v2 2/2] hw/intc/arm_gicv3_kvm: Implement
- get/put functions
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: vijay.kilari@gmail.com
+Date: Mon, 8 Aug 2016 09:58:48 -0700 (PDT)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+Message-ID: <E1bWntB-0005fM-7f@eggs.gnu.org>
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH v2 0/2] GICv3 live migration
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,43 +57,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "prasun.kapoor" <Prasun.Kapoor@cavium.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, famz@redhat.com, vijay.kilari@gmail.com,
+	Prasun.Kapoor@cavium.com, p.fedin@samsung.com,
+	qemu-devel@nongnu.org, Vijaya.Kumar@cavium.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1D/YP9+mcilC
+X-TUID: XZqpEBntM25T
 
-On 8 August 2016 at 17:51,  <vijay.kilari@gmail.com> wrote:
-> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->
-> This actually implements pre_save and post_load methods for in-kernel
-> vGICv3.
->
-> Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> [PMM:
->  * use decimal, not 0bnnn
->  * fixed typo in names of ICC_APR0R_EL1 and ICC_AP1R_EL1
->  * completely rearranged the get and put functions to read and write
->    the state in a natural order, rather than mixing distributor and
->    redistributor state together]
-> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
-> [Vijay:
->  * Update macro KVM_VGIC_ATTR
->  * Use 32 bit access for gicd and gicr
->  * GICD_IROUTER, GICD_TYPER, GICR_PROPBASER and GICR_PENDBASER reg
->    access  are changed from 64-bit to 32-bit access]
-> ---
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMTQ3
+MDY3NTA3MS0yMzY3Ny0xLWdpdC1zZW5kLWVtYWlsLXZpamF5LmtpbGFyaUBnbWFpbC5jb20KVHlw
+ZTogc2VyaWVzClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUkZDIFBBVENIIHYyIDAvMl0gR0lDdjMg
+bGl2ZSBtaWdyYXRpb24gc3VwcG9ydAoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4v
+YmFzaAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3
+YyAtbCkKZmFpbGVkPTAKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2Ug
+JEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0gg
+JG4vJHRvdGFsOiAkKGdpdCBzaG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAg
+aWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
+IC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkK
+ICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09
+CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20g
+aHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAg
+ICAgIHBhdGNoZXcvMTQ3MDY3NTA3MS0yMzY3Ny0xLWdpdC1zZW5kLWVtYWlsLXZpamF5LmtpbGFy
+aUBnbWFpbC5jb20gLT4gcGF0Y2hldy8xNDcwNjc1MDcxLTIzNjc3LTEtZ2l0LXNlbmQtZW1haWwt
+dmlqYXkua2lsYXJpQGdtYWlsLmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjUy
+NjM1ZTQgaHcvaW50Yy9hcm1fZ2ljdjNfa3ZtOiBJbXBsZW1lbnQgZ2V0L3B1dCBmdW5jdGlvbnMK
+MTUwNTNlOCBrZXJuZWw6IEFkZCBkZWZpbml0aW9ucyBmb3IgR0lDdjMgYXR0cmlidXRlcwoKPT09
+IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0ggMS8yOiBrZXJuZWw6IEFkZCBkZWZpbml0
+aW9ucyBmb3IgR0lDdjMgYXR0cmlidXRlcy4uLgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5l
+dmVyIHVzZSB0YWJzCiMyMjogRklMRTogbGludXgtaGVhZGVycy9hc20tYXJtNjQva3ZtLmg6MTgz
+OgorXkkoQVJNNjRfU1lTX1JFR19TSElGVF9NQVNLKG9wMCwgT1AwKSB8IFwkCgpFUlJPUjogc3Bh
+Y2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM0NzogRklMRTogbGludXgtaGVh
+ZGVycy9hc20tYXJtNjQva3ZtLmg6MjExOgorI2RlZmluZSAgIEtWTV9ERVZfQVJNX1ZHSUNfU1lT
+UkVHKG9wMCxvcDEsY3JuLGNybSxvcDIpIFwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBeCgpFUlJPUjogc3BhY2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYp
+CiM0NzogRklMRTogbGludXgtaGVhZGVycy9hc20tYXJtNjQva3ZtLmg6MjExOgorI2RlZmluZSAg
+IEtWTV9ERVZfQVJNX1ZHSUNfU1lTUkVHKG9wMCxvcDEsY3JuLGNybSxvcDIpIFwKICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IHNwYWNlIHJlcXVpcmVk
+IGFmdGVyIHRoYXQgJywnIChjdHg6VnhWKQojNDc6IEZJTEU6IGxpbnV4LWhlYWRlcnMvYXNtLWFy
+bTY0L2t2bS5oOjIxMToKKyNkZWZpbmUgICBLVk1fREVWX0FSTV9WR0lDX1NZU1JFRyhvcDAsb3Ax
+LGNybixjcm0sb3AyKSBcCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBeCgpFUlJPUjogc3BhY2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM0
+NzogRklMRTogbGludXgtaGVhZGVycy9hc20tYXJtNjQva3ZtLmg6MjExOgorI2RlZmluZSAgIEtW
+TV9ERVZfQVJNX1ZHSUNfU1lTUkVHKG9wMCxvcDEsY3JuLGNybSxvcDIpIFwKICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgpFUlJPUjogc3BhY2UgcmVx
+dWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM0ODogRklMRTogbGludXgtaGVhZGVycy9h
+c20tYXJtNjQva3ZtLmg6MjEyOgorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgX19BUk02NF9TWVNfUkVHKG9wMCxvcDEsY3JuLGNybSxvcDIpCiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IHNwYWNl
+IHJlcXVpcmVkIGFmdGVyIHRoYXQgJywnIChjdHg6VnhWKQojNDg6IEZJTEU6IGxpbnV4LWhlYWRl
+cnMvYXNtLWFybTY0L2t2bS5oOjIxMjoKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIF9fQVJNNjRfU1lTX1JFRyhvcDAsb3AxLGNybixjcm0sb3AyKQogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgpFUlJP
+Ujogc3BhY2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM0ODogRklMRTogbGlu
+dXgtaGVhZGVycy9hc20tYXJtNjQva3ZtLmg6MjEyOgorICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgX19BUk02NF9TWVNfUkVHKG9wMCxvcDEsY3JuLGNybSxvcDIpCiAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBeCgpFUlJPUjogc3BhY2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcgKGN0eDpWeFYpCiM0
+ODogRklMRTogbGludXgtaGVhZGVycy9hc20tYXJtNjQva3ZtLmg6MjEyOgorICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgX19BUk02NF9TWVNfUkVHKG9wMCxvcDEsY3JuLGNy
+bSxvcDIpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgXgoKdG90YWw6IDkgZXJyb3JzLCAwIHdhcm5pbmdzLCAzOCBs
+aW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmll
+dy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhl
+bSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgpDaGVj
+a2luZyBQQVRDSCAyLzI6IGh3L2ludGMvYXJtX2dpY3YzX2t2bTogSW1wbGVtZW50IGdldC9wdXQg
+ZnVuY3Rpb25zLi4uCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojMjkxOiBGSUxF
+OiBody9pbnRjL2FybV9naWN2M19rdm0uYzozMDA6CisgICAgICAgIC8vIFRPRE86IHRoZXJlIGlz
+IG5vIGtlcm5lbCBBUEkgZm9yIHJlYWRpbmcvd3JpdGluZyBjLT5sZXZlbAoKRVJST1I6IGRvIG5v
+dCB1c2UgQzk5IC8vIGNvbW1lbnRzCiMzNDc6IEZJTEU6IGh3L2ludGMvYXJtX2dpY3YzX2t2bS5j
+OjM1NjoKKyAgICAvLyBUT0RPOiB0aGVyZSBpcyBubyBrZXJuZWwgQVBJIGZvciByZWFkaW5nL3dy
+aXRpbmcgcy0+bGV2ZWwKCnRvdGFsOiAyIGVycm9ycywgMCB3YXJuaW5ncywgNTEyIGxpbmVzIGNo
+ZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYg
+YW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRo
+ZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQVVQg
+RU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDE=
 
-> +        // TODO: there is no kernel API for reading/writing c->level
-
-We have now defined this API so this code should use it.
-
-> +    // TODO: there is no kernel API for reading/writing s->level
-
-Also here (and similarly in the _get function).
-
-thanks
--- PMM

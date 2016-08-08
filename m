@@ -1,48 +1,50 @@
-Received: by 10.25.21.156 with SMTP id 28csp2952866lfv;
-        Mon, 8 Aug 2016 00:29:20 -0700 (PDT)
-X-Received: by 10.55.68.81 with SMTP id r78mr10393249qka.119.1470641360273;
-        Mon, 08 Aug 2016 00:29:20 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp2968631lfv;
+        Mon, 8 Aug 2016 01:16:49 -0700 (PDT)
+X-Received: by 10.55.159.82 with SMTP id i79mr27215004qke.192.1470644209468;
+        Mon, 08 Aug 2016 01:16:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g19si19210673qtc.40.2016.08.08.00.29.20
+        by mx.google.com with ESMTPS id u16si16668824qki.223.2016.08.08.01.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Aug 2016 00:29:20 -0700 (PDT)
+        Mon, 08 Aug 2016 01:16:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55436 helo=lists.gnu.org)
+Received: from localhost ([::1]:55591 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bWezv-0006pL-K2
-	for alex.bennee@linaro.org; Mon, 08 Aug 2016 03:29:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44574)
+	id 1bWfjs-0000JK-Sv
+	for alex.bennee@linaro.org; Mon, 08 Aug 2016 04:16:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55135)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lv.zheng@intel.com>) id 1bWezl-0006l6-Dm
-	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 03:29:13 -0400
+	(envelope-from <lv.zheng@intel.com>) id 1bWfjl-0000GC-SQ
+	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 04:16:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lv.zheng@intel.com>) id 1bWezj-0006nW-2Z
-	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 03:29:08 -0400
-Received: from mga09.intel.com ([134.134.136.24]:45321)
+	(envelope-from <lv.zheng@intel.com>) id 1bWfjj-0007H1-Bu
+	for qemu-arm@nongnu.org; Mon, 08 Aug 2016 04:16:40 -0400
+Received: from mga11.intel.com ([192.55.52.93]:63446)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lv.zheng@intel.com>)
-	id 1bWeza-0006kd-RU; Mon, 08 Aug 2016 03:28:59 -0400
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-	by orsmga102.jf.intel.com with ESMTP; 08 Aug 2016 00:28:58 -0700
+	id 1bWfjc-0007GS-3z; Mon, 08 Aug 2016 04:16:32 -0400
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+	by fmsmga102.fm.intel.com with ESMTP; 08 Aug 2016 01:16:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.28,488,1464678000"; d="scan'208";a="745657241"
+X-IronPort-AV: E=Sophos;i="5.28,489,1464678000"; d="scan'208";a="152237327"
 Received: from lvzheng-z530.sh.intel.com ([10.239.159.23])
-	by FMSMGA003.fm.intel.com with ESMTP; 08 Aug 2016 00:28:53 -0700
+	by fmsmga004.fm.intel.com with ESMTP; 08 Aug 2016 01:16:29 -0700
 From: Lv Zheng <lv.zheng@intel.com>
 To: "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
 	Shannon Zhao <shannon.zhao@linaro.org>
-Date: Mon,  8 Aug 2016 15:28:33 +0800
-Message-Id: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+Date: Mon,  8 Aug 2016 16:16:23 +0800
+Message-Id: <a0a25b78b9a593b7cf3c73b54342ee9b331688da.1470643610.git.lv.zheng@intel.com>
 X-Mailer: git-send-email 1.7.10
+In-Reply-To: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.24
-Subject: [Qemu-arm] [PATCH] ACPI: Add -acpifadt to allow FADT revision
+X-Received-From: 192.55.52.93
+Subject: [Qemu-arm] [PATCH v2] ACPI: Add -acpifadt to allow FADT revision
  changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -59,7 +61,7 @@ Cc: qemu-arm@nongnu.org, Lv Zheng <lv.zheng@intel.com>,
 	Lv Zheng <zetalog@gmail.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: usVsHNYLUXbJ
+X-TUID: P/aY4hz7zyD3
 
 This patch allows FADT to be built with different revisions. When the revision
 is greater than 1.0, 64-bit address fields may also be filled.
@@ -74,14 +76,18 @@ configured by the users.
 
 Signed-off-by: Lv Zheng <lv.zheng@intel.com>
 ---
+History:
+
+v2: Fix coding style issues.
+---
  hw/i386/acpi-build.c   |   62 ++++++++++++++++++++++++++++++++++++++++++------
  include/hw/acpi/acpi.h |    1 +
  qemu-options.hx        |    9 +++++++
- vl.c                   |   18 ++++++++++++++
- 4 files changed, 83 insertions(+), 7 deletions(-)
+ vl.c                   |   23 ++++++++++++++++++
+ 4 files changed, 88 insertions(+), 7 deletions(-)
 
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index ce7cbc5..1f664de 100644
+index ce7cbc5..4479695 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
 @@ -276,8 +276,22 @@ build_facs(GArray *table_data, BIOSLinker *linker)
@@ -91,13 +97,13 @@ index ce7cbc5..1f664de 100644
 +/* GAS */
 +static void
 +build_gas(struct AcpiGenericAddress *gas, uint8_t space_id,
-+	  uint8_t bit_width, uint8_t bit_offset,
-+	  uint8_t access_width, uint64_t address)
++          uint8_t bit_width, uint8_t bit_offset,
++          uint8_t access_width, uint64_t address)
 +{
 +    gas->space_id = space_id;
 +    gas->bit_width = bit_width;
 +    gas->bit_offset = bit_offset;
-+    gas->access_width= access_width;
++    gas->access_width = access_width;
 +    gas->address = address;
 +}
 +
@@ -220,7 +226,7 @@ index a71aaf8..cff34f6 100644
      "-acpitable [sig=str][,rev=n][,oem_id=str][,oem_table_id=str][,oem_rev=n][,asl_compiler_id=str][,asl_compiler_rev=n][,{data|file}=file1[:file2]...]\n"
      "                ACPI table description\n", QEMU_ARCH_I386)
 diff --git a/vl.c b/vl.c
-index e7c2c62..5fe2414 100644
+index e7c2c62..220e36d 100644
 --- a/vl.c
 +++ b/vl.c
 @@ -64,6 +64,7 @@ int main(int argc, char **argv)
@@ -239,17 +245,22 @@ index e7c2c62..5fe2414 100644
  int no_hpet = 0;
  int fd_bootchk = 1;
  static int no_reboot;
-@@ -2301,6 +2303,19 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
+@@ -2301,6 +2303,24 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
      return 0;
  }
  
 +static void fadt_parse(const char *arg)
 +{
-+    uint32_t rev;
++    unsigned long rev;
++    int err;
 +
-+    rev = strtoul(arg, NULL, 0);
++    err = qemu_strtoul(arg, NULL, 10, &rev);
++    if (err) {
++        error_printf("Invalid FADT revision.\n");
++        exit(1);
++    }
 +    if (rev != 1 && rev != 3 && rev != 5) {
-+        error_printf("Unsupported FADT revision %d,"
++        error_printf("Unsupported FADT revision %lu, "
 +                     "please specify 1,3,5.\n", rev);
 +        exit(1);
 +    }
@@ -259,7 +270,7 @@ index e7c2c62..5fe2414 100644
  static int device_help_func(void *opaque, QemuOpts *opts, Error **errp)
  {
      return qdev_device_help(opts);
-@@ -3622,6 +3637,9 @@ int main(int argc, char **argv, char **envp)
+@@ -3622,6 +3642,9 @@ int main(int argc, char **argv, char **envp)
                  qdev_prop_register_global(&slew_lost_ticks);
                  break;
              }

@@ -1,62 +1,78 @@
-Received: by 10.25.21.156 with SMTP id 28csp367373lfv;
-        Tue, 9 Aug 2016 00:27:07 -0700 (PDT)
-X-Received: by 10.55.87.194 with SMTP id l185mr33776163qkb.46.1470727627850;
-        Tue, 09 Aug 2016 00:27:07 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp651385lfv;
+        Tue, 9 Aug 2016 12:12:47 -0700 (PDT)
+X-Received: by 10.55.221.85 with SMTP id n82mr34277942qki.236.1470769967346;
+        Tue, 09 Aug 2016 12:12:47 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n188si20206934qkc.70.2016.08.09.00.27.07
+        by mx.google.com with ESMTPS id q2si12199585qke.265.2016.08.09.12.12.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Aug 2016 00:27:07 -0700 (PDT)
+        Tue, 09 Aug 2016 12:12:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33938 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bX1RL-0004d2-7G
-	for alex.bennee@linaro.org; Tue, 09 Aug 2016 03:27:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46987)
+	id 1bXCSE-0001a3-NH
+	for alex.bennee@linaro.org; Tue, 09 Aug 2016 15:12:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1bX1RG-0004bG-Qk
-	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 03:27:03 -0400
+	(envelope-from <bobby.prani@gmail.com>) id 1bXCIP-0007gk-IO
+	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 15:02:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1bX1RC-0002Ey-RJ
-	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 03:27:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43982)
+	(envelope-from <bobby.prani@gmail.com>) id 1bXCIN-0002hM-MG
+	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 15:02:36 -0400
+Received: from mail-yw0-x244.google.com ([2607:f8b0:4002:c05::244]:36096)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>)
-	id 1bX1RC-0002D6-Jw; Tue, 09 Aug 2016 03:26:58 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0530C811A2;
-	Tue,  9 Aug 2016 07:26:57 +0000 (UTC)
-Received: from [10.72.4.112] (vpn1-4-112.pek2.redhat.com [10.72.4.112])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u797Qq7I011816
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Tue, 9 Aug 2016 03:26:54 -0400
-To: chaojianhu <chaojianhu@hotmail.com>, qemu-devel@nongnu.org
-References: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <a00d4a5d-02f4-51a5-cad4-ec6018a30f96@redhat.com>
-Date: Tue, 9 Aug 2016 15:26:52 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
-MIME-Version: 1.0
-In-Reply-To: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 09 Aug 2016 07:26:57 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <bobby.prani@gmail.com>)
+	id 1bXCIN-0002hF-Ha; Tue, 09 Aug 2016 15:02:35 -0400
+Received: by mail-yw0-x244.google.com with SMTP id u134so910436ywg.3;
+	Tue, 09 Aug 2016 12:02:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=QkwVP7TjU2cRz/3mI7VPN56HGQ+d9FQZcVKhb9a0WB0=;
+	b=0FZwOxH3gHZjEDnNpCQ2xgAjWAsmkbRJQON4Z0Dj1oZJ7+7LTqlJ8jgglrMwN20xpV
+	HRvH565bvE27AYcGu8zz5ztDFfGMVFWMZIKuWk2CeOx23zvvhiS1pOyIjcYBhFVOPHT2
+	6OPEzDdZEo5prMjnDMFGBGtbF39B7YN44JHJ3Wtv7WaHSkge9BErZks46XX7ky9g1bH8
+	BczqigJJwcV6wNoeJbpKZoTXv05zSljlg/7a1evpC5lsKD+o/Wfp9OYhct5a+WEzfxz5
+	H0g0vTChkLbJc4T16gqtGX/Q2/S3r5AZ1WaQfs/Zd/mEKjhBmoEhXIPjZkHUFVCSE8i4
+	F5BQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=QkwVP7TjU2cRz/3mI7VPN56HGQ+d9FQZcVKhb9a0WB0=;
+	b=IhqE9lqH+pmP9HxWYIoW+FNCxDCTEMizljL163JuBz49bJi0nk58rZ0qcu+buZV5Ad
+	BhxIIn4un6bERjffLv96UiF5TBK8gxO/7Y9I94Vf07ATcgrgFdBAnZ29105854DXxNb5
+	KTSByQkd6Fp9wB6g0XjZVIlrVCD6MSr0AvJi94F5jmeKhCyMhRMNFPfBg6OB/sWfAEfA
+	kL+t9EY90ajha0ksh0t4YSOV5CyxNMTTXCAfB8gf3g3ItkgbtvjqgMU0fjrJYvz6FB/0
+	VZ7Qn2zd0UF+7YdFgcfAvUHTd9PutAhfD4TklvRHai0eEbux+DYvdn9892yMSOO1Lj4r
+	8Lmw==
+X-Gm-Message-State: AEkooutrhkanzzIw1NOmsvBGdF0fFnzEzRcWxxAzxr/X7jh7j+Iql6yagNpKKRcMIDeo5A==
+X-Received: by 10.129.166.194 with SMTP id d185mr77872266ywh.247.1470769355057;
+	Tue, 09 Aug 2016 12:02:35 -0700 (PDT)
+Received: from evgadesktop.attlocal.net
+	(108-232-152-155.lightspeed.tukrga.sbcglobal.net. [108.232.152.155])
+	by smtp.gmail.com with ESMTPSA id
+	t67sm16659070ywa.33.2016.08.09.12.02.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 09 Aug 2016 12:02:34 -0700 (PDT)
+From: Pranith Kumar <bobby.prani@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Date: Tue,  9 Aug 2016 15:02:28 -0400
+Message-Id: <20160809190229.27871-5-bobby.prani@gmail.com>
+X-Mailer: git-send-email 2.9.2
+In-Reply-To: <20160809190229.27871-1-bobby.prani@gmail.com>
+References: <20160809190229.27871-1-bobby.prani@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] hw/net: Fix a heap overflow in
- xlnx.xps-ethernetlite
+X-Received-From: 2607:f8b0:4002:c05::244
+Subject: [Qemu-arm] [PATCH 5/5] target-arm: Fix warn about implicit
+ conversion
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,43 +84,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, alistair.francis@xilinx.com
+Cc: pbonzini@redhat.com, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nGUqOJpAnFlo
+X-TUID: 8ueRMgZAUOf+
 
+Clang warns about an implicit conversion as follows:
 
+/mnt/devops/code/qemu/target-arm/neon_helper.c:1075:1: warning: implicit conversion from 'int' to 'int8_t' (aka 'signed char') changes value from 128 to -128 [-Wconstant-conversion]
+NEON_VOP_ENV(qrshl_s8, neon_s8, 4)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/devops/code/qemu/target-arm/neon_helper.c:116:83: note: expanded from macro 'NEON_VOP_ENV'
+uint32_t HELPER(glue(neon_,name))(CPUARMState *env, uint32_t arg1, uint32_t arg2) \
+                                                                                  ^
+/mnt/devops/code/qemu/target-arm/neon_helper.c:106:5: note: expanded from macro '\
+NEON_VOP_BODY'
+    NEON_DO##n; \
+    ^~~~~~~~~~
+<scratch space>:21:1: note: expanded from here
+NEON_DO4
+^~~~~~~~
+/mnt/devops/code/qemu/target-arm/neon_helper.c:93:5: note: expanded from macro 'NEON_DO4'
+    NEON_FN(vdest.v1, vsrc1.v1, vsrc2.v1); \
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/devops/code/qemu/target-arm/neon_helper.c:1054:23: note: expanded from macro 'NEON_FN'
+            dest = (1 << (sizeof(src1) * 8 - 1)); \
+                 ~  ~~^~~~~~~~~~~~~~~~~~~~~~~~~
 
-On 2016=E5=B9=B408=E6=9C=8809=E6=97=A5 11:52, chaojianhu wrote:
-> The .receive callback of xlnx.xps-ethernetlite doesn't check the length
-> of data before calling memcpy. As a result, the NetClientState object i=
-n
-> heap will be overflowed. All versions of qemu with xlnx.xps-ethernetlit=
-e
-> will be affected.
->
-> Reported-by: chaojianhu <chaojianhu@hotmail.com>
-> Signed-off-by: chaojianhu <chaojianhu@hotmail.com>
->
-> ---
->   hw/net/xilinx_ethlite.c | 4 ++++
->   1 file changed, 4 insertions(+)
->
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index 54db2b8..35de353 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -197,6 +197,10 @@ static ssize_t eth_rx(NetClientState *nc, const ui=
-nt8_t *buf, size_t size)
->       }
->  =20
->       D(qemu_log("%s %zd rxbase=3D%x\n", __func__, size, rxbase));
-> +    if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
-> +        D(qemu_log("ethlite packet is too big, size=3D%x\n", size));
-> +        return -1;
-> +    }
->       memcpy(&s->regs[rxbase + R_RX_BUF0], buf, size);
->  =20
->       s->regs[rxbase + R_RX_CTRL0] |=3D CTRL_S;
+Fix it by casting to appropriate type.
 
-Applied, thanks.
+Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
+---
+ target-arm/neon_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target-arm/neon_helper.c b/target-arm/neon_helper.c
+index 1f1844f..ebdf7c9 100644
+--- a/target-arm/neon_helper.c
++++ b/target-arm/neon_helper.c
+@@ -1051,7 +1051,7 @@ uint64_t HELPER(neon_qrshl_u64)(CPUARMState *env, uint64_t val, uint64_t shiftop
+     if (tmp >= (ssize_t)sizeof(src1) * 8) { \
+         if (src1) { \
+             SET_QC(); \
+-            dest = (1 << (sizeof(src1) * 8 - 1)); \
++            dest = (typeof(dest))(1 << (sizeof(src1) * 8 - 1)); \
+             if (src1 > 0) { \
+                 dest--; \
+             } \
+-- 
+2.9.2
+

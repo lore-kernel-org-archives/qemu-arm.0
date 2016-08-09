@@ -1,74 +1,62 @@
-Received: by 10.25.21.156 with SMTP id 28csp358020lfv;
-        Tue, 9 Aug 2016 00:00:38 -0700 (PDT)
-X-Received: by 10.237.46.6 with SMTP id j6mr32674065qtd.113.1470726038493;
-        Tue, 09 Aug 2016 00:00:38 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp367373lfv;
+        Tue, 9 Aug 2016 00:27:07 -0700 (PDT)
+X-Received: by 10.55.87.194 with SMTP id l185mr33776163qkb.46.1470727627850;
+        Tue, 09 Aug 2016 00:27:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i126si10768175qke.82.2016.08.09.00.00.38
+        by mx.google.com with ESMTPS id n188si20206934qkc.70.2016.08.09.00.27.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Aug 2016 00:00:38 -0700 (PDT)
+        Tue, 09 Aug 2016 00:27:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33832 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33938 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bX11h-0007fr-US
-	for alex.bennee@linaro.org; Tue, 09 Aug 2016 03:00:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40717)
+	id 1bX1RL-0004d2-7G
+	for alex.bennee@linaro.org; Tue, 09 Aug 2016 03:27:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46987)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bX0tw-0007x0-Ut
-	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 02:52:37 -0400
+	(envelope-from <jasowang@redhat.com>) id 1bX1RG-0004bG-Qk
+	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 03:27:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bX0tr-0003gP-RV
-	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 02:52:35 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:35088)
+	(envelope-from <jasowang@redhat.com>) id 1bX1RC-0002Ey-RJ
+	for qemu-arm@nongnu.org; Tue, 09 Aug 2016 03:27:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43982)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1bX0tr-0003gL-M3; Tue, 09 Aug 2016 02:52:31 -0400
-Received: by mail-oi0-x241.google.com with SMTP id w143so451514oiw.2;
-	Mon, 08 Aug 2016 23:52:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=13aVFHOKJ5a44RE3pyWKLuKkVwAjcIRzGErrqeiNqtU=;
-	b=KrpODa/pJuq2c6h8BebBVLYqq7WEpiVLeq23tpXq0AaibZ5I79/MeiSqNR7SxFZ597
-	KK7b5a0IQfYp4iqA9HL/T97YBc/0+1JD4eaBh9P0YvLXotIbX3/UdcIQ1ChcBFOW8XG2
-	0zrg0DC7bHgVk4aCDSbcCgL8rldcWtuVP9lTYU45uZWfC05ZZpT01iskIl4M42S/6lKP
-	hui/aM22ff/PEDQx22V40595v4iC9sD2FWv+wcgDREni41Ar2hSQnlRm1hxLvho34LH+
-	77FjUBeVAKifCJHWko2SCeO+voPDXNebpiP7JGqqB++Nr2pSSpScZ1ySH6pWYSrpe8L8
-	frNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=13aVFHOKJ5a44RE3pyWKLuKkVwAjcIRzGErrqeiNqtU=;
-	b=IGEyj4MtnA/TMVzayHIdO8NSnw4pDpJykgHR00A5ZqZMTiwadcOOU7YWUIbK9qqpaj
-	cS75qVR4/QwxGSHuawtbp8awein1q6/fowfqDH6P0DJbEvWpNdiIn+KUBS9osqXD048e
-	8YsIGbOvyDVLQg8SH32kGNKEH08zbJ7v2NJO9NFPTPiYzhx6xlVqC5CV31AMYx4//zNc
-	AYusygC8CZrXevNGqGuEv6byetMPwQw4deLW68ylquky6AijAnkldEVqF20P4Q7zvHw4
-	b9W/LqEistKLfMJLwJ1s2ujAcyFJ0+XssVn6V40ivdlbU++G1tpg8qO/YBsAzsOyBI6r
-	B5WA==
-X-Gm-Message-State: AEkoouv6syOdYHUel+sTfn7WgLxOsDDexdw9VCCjSO2uzoHmfHupu5fiOuDGSaWQsNDSWj2OSNH2UqKtBBdRVQ==
-X-Received: by 10.157.7.72 with SMTP id 66mr18206780ote.145.1470725551054;
-	Mon, 08 Aug 2016 23:52:31 -0700 (PDT)
+	(envelope-from <jasowang@redhat.com>)
+	id 1bX1RC-0002D6-Jw; Tue, 09 Aug 2016 03:26:58 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0530C811A2;
+	Tue,  9 Aug 2016 07:26:57 +0000 (UTC)
+Received: from [10.72.4.112] (vpn1-4-112.pek2.redhat.com [10.72.4.112])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u797Qq7I011816
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Tue, 9 Aug 2016 03:26:54 -0400
+To: chaojianhu <chaojianhu@hotmail.com>, qemu-devel@nongnu.org
+References: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <a00d4a5d-02f4-51a5-cad4-ec6018a30f96@redhat.com>
+Date: Tue, 9 Aug 2016 15:26:52 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
 MIME-Version: 1.0
-Received: by 10.157.56.244 with HTTP; Mon, 8 Aug 2016 23:52:30 -0700 (PDT)
-In-Reply-To: <CAFEAcA_e=PGkFX3sPn_gMPCM8niZ-zm+S4wXPDEX3gRhMpE=hQ@mail.gmail.com>
-References: <1470675071-23677-1-git-send-email-vijay.kilari@gmail.com>
-	<1470675071-23677-3-git-send-email-vijay.kilari@gmail.com>
-	<CAFEAcA_e=PGkFX3sPn_gMPCM8niZ-zm+S4wXPDEX3gRhMpE=hQ@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Tue, 9 Aug 2016 12:22:30 +0530
-Message-ID: <CALicx6uq_wb9BuUGd1OD4712aOoh+MdFAhbPnHyOSqBVuMSjMw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <BLU436-SMTP98842C445B9A4E4B033261DB1C0@phx.gbl>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 09 Aug 2016 07:26:57 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [RFC PATCH v2 2/2] hw/intc/arm_gicv3_kvm: Implement
- get/put functions
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] hw/net: Fix a heap overflow in
+ xlnx.xps-ethernetlite
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,52 +68,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "prasun.kapoor" <Prasun.Kapoor@cavium.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J1MGNLI7hV6q
+X-TUID: nGUqOJpAnFlo
 
-On Mon, Aug 8, 2016 at 10:27 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 8 August 2016 at 17:51,  <vijay.kilari@gmail.com> wrote:
->> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>
->> This actually implements pre_save and post_load methods for in-kernel
->> vGICv3.
->>
->> Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> [PMM:
->>  * use decimal, not 0bnnn
->>  * fixed typo in names of ICC_APR0R_EL1 and ICC_AP1R_EL1
->>  * completely rearranged the get and put functions to read and write
->>    the state in a natural order, rather than mixing distributor and
->>    redistributor state together]
->> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->> [Vijay:
->>  * Update macro KVM_VGIC_ATTR
->>  * Use 32 bit access for gicd and gicr
->>  * GICD_IROUTER, GICD_TYPER, GICR_PROPBASER and GICR_PENDBASER reg
->>    access  are changed from 64-bit to 32-bit access]
->> ---
->
->> +        // TODO: there is no kernel API for reading/writing c->level
->
-> We have now defined this API so this code should use it.
 
-You mean storing and restoring of irq->line_level of kernel?.
-I don't see any API defined in new vgic to read line level.
 
-The irq pending information is updated when line_level is changed in
-kernel. Hence pending (ispendr) holds information of pending status
-of interrupt. Do you see line level is still required to save & restore?
+On 2016=E5=B9=B408=E6=9C=8809=E6=97=A5 11:52, chaojianhu wrote:
+> The .receive callback of xlnx.xps-ethernetlite doesn't check the length
+> of data before calling memcpy. As a result, the NetClientState object i=
+n
+> heap will be overflowed. All versions of qemu with xlnx.xps-ethernetlit=
+e
+> will be affected.
+>
+> Reported-by: chaojianhu <chaojianhu@hotmail.com>
+> Signed-off-by: chaojianhu <chaojianhu@hotmail.com>
+>
+> ---
+>   hw/net/xilinx_ethlite.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+>
+> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+> index 54db2b8..35de353 100644
+> --- a/hw/net/xilinx_ethlite.c
+> +++ b/hw/net/xilinx_ethlite.c
+> @@ -197,6 +197,10 @@ static ssize_t eth_rx(NetClientState *nc, const ui=
+nt8_t *buf, size_t size)
+>       }
+>  =20
+>       D(qemu_log("%s %zd rxbase=3D%x\n", __func__, size, rxbase));
+> +    if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
+> +        D(qemu_log("ethlite packet is too big, size=3D%x\n", size));
+> +        return -1;
+> +    }
+>       memcpy(&s->regs[rxbase + R_RX_BUF0], buf, size);
+>  =20
+>       s->regs[rxbase + R_RX_CTRL0] |=3D CTRL_S;
 
->
->> +    // TODO: there is no kernel API for reading/writing s->level
->
-> Also here (and similarly in the _get function).
->
-> thanks
-> -- PMM
+Applied, thanks.

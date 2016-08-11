@@ -1,51 +1,53 @@
-Received: by 10.25.21.156 with SMTP id 28csp23945lfv;
-        Thu, 11 Aug 2016 02:12:09 -0700 (PDT)
-X-Received: by 10.55.92.193 with SMTP id q184mr9875996qkb.59.1470906729449;
-        Thu, 11 Aug 2016 02:12:09 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp24274lfv;
+        Thu, 11 Aug 2016 02:12:59 -0700 (PDT)
+X-Received: by 10.200.49.203 with SMTP id i11mr9490791qte.40.1470906779074;
+        Thu, 11 Aug 2016 02:12:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w123si989179qkd.222.2016.08.11.02.12.09
+        by mx.google.com with ESMTPS id x143si1015575qkx.22.2016.08.11.02.12.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Aug 2016 02:12:09 -0700 (PDT)
+        Thu, 11 Aug 2016 02:12:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47019 helo=lists.gnu.org)
+Received: from localhost ([::1]:47024 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bXm24-0003l4-RS
-	for alex.bennee@linaro.org; Thu, 11 Aug 2016 05:12:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50582)
+	id 1bXm2s-0004bL-CY
+	for alex.bennee@linaro.org; Thu, 11 Aug 2016 05:12:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50786)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bXm1z-0003ht-LD
-	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:12:04 -0400
+	(envelope-from <lv.zheng@intel.com>) id 1bXm2n-0004Ni-P2
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:12:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1bXm1v-0006Iw-G5
-	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:12:02 -0400
-Resent-Date: Thu, 11 Aug 2016 05:12:02 -0400
-Resent-Message-Id: <E1bXm1v-0006Iw-G5@eggs.gnu.org>
-Received: from sender163-mail.zoho.com ([74.201.84.163]:24259)
+	(envelope-from <lv.zheng@intel.com>) id 1bXm2m-0006QJ-BX
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:12:53 -0400
+Received: from mga02.intel.com ([134.134.136.20]:24758)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>)
-	id 1bXm1v-0006Ih-6z; Thu, 11 Aug 2016 05:11:59 -0400
-Received: from ex-std-node742.prod.rhcloud.com
-	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
-	mx.zohomail.com with SMTPS id 1470906711568342.3952379032788;
-	Thu, 11 Aug 2016 02:11:51 -0700 (PDT)
-Message-ID: <20160811091147.482797.97532@ex-std-node742.prod.rhcloud.com>
-In-Reply-To: <cover.1470905888.git.lv.zheng@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: lv.zheng@intel.com
-Date: Thu, 11 Aug 2016 02:11:51 -0700 (PDT)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 74.201.84.163
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/2] ACPI: Add FADT revision
- support
+	(envelope-from <lv.zheng@intel.com>)
+	id 1bXm2h-0006Op-72; Thu, 11 Aug 2016 05:12:47 -0400
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by orsmga101.jf.intel.com with ESMTP; 11 Aug 2016 02:12:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.28,504,1464678000"; d="scan'208";a="1023579170"
+Received: from unknown (HELO lvzheng-z530.sh.intel.com) ([10.239.159.146])
+	by fmsmga001.fm.intel.com with ESMTP; 11 Aug 2016 02:12:45 -0700
+From: Lv Zheng <lv.zheng@intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Richard Henderson <rth@twiddle.net>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhao@linaro.org>
+Date: Thu, 11 Aug 2016 17:12:38 +0800
+Message-Id: <ce250ff11b012d9bcc72a145b720a47e5bfc58b1.1470906564.git.lv.zheng@intel.com>
+X-Mailer: git-send-email 1.7.10
+In-Reply-To: <cover.1470906564.git.lv.zheng@intel.com>
+References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+	<cover.1470906564.git.lv.zheng@intel.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.20
+Subject: [Qemu-arm] [PATCH v4 1/2] ACPI: Cleanup -acpitable option code
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,46 +59,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: lv.zheng@intel.com, famz@redhat.com, mst@redhat.com, qemu-devel@nongnu.org,
-	zetalog@gmail.com, qemu-arm@nongnu.org, shannon.zhao@linaro.org,
-	imammedo@redhat.com, pbonzini@redhat.com, rth@twiddle.net
+Cc: qemu-arm@nongnu.org, Lv Zheng <lv.zheng@intel.com>,
+	Lv Zheng <zetalog@gmail.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kvrtbfYZhg4X
+X-TUID: e3h+TQ6L9C/B
 
-SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
-LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogY292
-ZXIuMTQ3MDkwNTg4OC5naXQubHYuemhlbmdAaW50ZWwuY29tClN1YmplY3Q6IFtRZW11LWRldmVs
-XSBbUEFUQ0ggdjMgMC8yXSBBQ1BJOiBBZGQgRkFEVCByZXZpc2lvbiBzdXBwb3J0ClR5cGU6IHNl
-cmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAoKQkFTRT1iYXNlCm49
-MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAtbCkKZmFpbGVkPTAKCmNv
-bW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGlu
-ICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBz
-aG93IC0tbm8tcGF0Y2ggLS1mb3JtYXQ9JXMgJGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAt
-LWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhl
-bgogICAgICAgIGZhaWxlZD0xCiAgICAgICAgZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9u
-ZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVh
-OWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29t
-L3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgIHBhdGNoZXcvY292ZXIu
-MTQ3MDkwNTg4OC5naXQubHYuemhlbmdAaW50ZWwuY29tIC0+IHBhdGNoZXcvY292ZXIuMTQ3MDkw
-NTg4OC5naXQubHYuemhlbmdAaW50ZWwuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVz
-dCcKMTNiOGE4MCBBQ1BJOiBBZGQgLWFjcGl0YWJsZSBmYWR0PSB0byBhbGxvdyBGQURUIHJldmlz
-aW9uIGNoYW5nZXMKZDM5NWM4NCBBQ1BJOiBDbGVhbnVwIC1hY3BpdGFibGUgb3B0aW9uIGNvZGUK
-Cj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMjogQUNQSTogQ2xlYW51cCAt
-YWNwaXRhYmxlIG9wdGlvbiBjb2RlLi4uCkNoZWNraW5nIFBBVENIIDIvMjogQUNQSTogQWRkIC1h
-Y3BpdGFibGUgZmFkdD0gdG8gYWxsb3cgRkFEVCByZXZpc2lvbiBjaGFuZ2VzLi4uCkVSUk9SOiBz
-cGFjZSBwcm9oaWJpdGVkIGJldHdlZW4gZnVuY3Rpb24gbmFtZSBhbmQgb3BlbiBwYXJlbnRoZXNp
-cyAnKCcKIzE1NjogRklMRTogaHcvaTM4Ni9hY3BpLWJ1aWxkLmM6MzU5OgorICAgICAgICBmYWR0
-X2xlbiA9IHNpemVvZiAoQWNwaUZhZHREZXNjcmlwdG9yUmV2MSk7CgpFUlJPUjogc3BhY2UgcHJv
-aGliaXRlZCBiZXR3ZWVuIGZ1bmN0aW9uIG5hbWUgYW5kIG9wZW4gcGFyZW50aGVzaXMgJygnCiMx
-NTg6IEZJTEU6IGh3L2kzODYvYWNwaS1idWlsZC5jOjM2MToKKyAgICAgICAgZmFkdF9sZW4gPSBz
-aXplb2YgKEFjcGlGYWR0RGVzY3JpcHRvclJldjVfMSk7Cgp0b3RhbDogMiBlcnJvcnMsIDAgd2Fy
-bmluZ3MsIDE5NyBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywg
-cGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZl
-cyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRB
-SU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2Rl
-OiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6
-Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2
-ZWxAZnJlZWxpc3RzLm9yZw==
+In -acpitable options, at least/most one data/file sub-option is mandatory,
+this patch cleans up the code to reflect this in a managed manner so that
+the follow-up mandatory sub-options can be added to -acpitable.
+
+Signed-off-by: Lv Zheng <lv.zheng@intel.com>
+---
+ hw/acpi/core.c   |   32 +++++++++++++++++++++++---------
+ qapi-schema.json |   27 ++++++++-------------------
+ qemu-options.hx  |    7 +++++--
+ 3 files changed, 36 insertions(+), 30 deletions(-)
+
+diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+index e890a5d..cd1f9e4 100644
+--- a/hw/acpi/core.c
++++ b/hw/acpi/core.c
+@@ -89,8 +89,6 @@ static int acpi_checksum(const uint8_t *data, int len)
+  * It is valid to call this function with
+  * (@blob == NULL && bloblen == 0 && !has_header).
+  *
+- * @hdrs->file and @hdrs->data are ignored.
+- *
+  * SIZE_MAX is considered "infinity" in this function.
+  *
+  * The number of tables that can be installed is not limited, but the 16-bit
+@@ -229,7 +227,8 @@ static void acpi_table_install(const char unsigned *blob, size_t bloblen,
+                                       ACPI_TABLE_PFX_SIZE, acpi_payload_size);
+ }
+ 
+-void acpi_table_add(const QemuOpts *opts, Error **errp)
++static void acpi_table_from_file(bool has_header, const char *file,
++                                 AcpiTableOptions *hdrs, Error **errp)
+ {
+     AcpiTableOptions *hdrs = NULL;
+     Error *err = NULL;
+@@ -249,12 +248,8 @@ void acpi_table_add(const QemuOpts *opts, Error **errp)
+     if (err) {
+         goto out;
+     }
+-    if (hdrs->has_file == hdrs->has_data) {
+-        error_setg(&err, "'-acpitable' requires one of 'data' or 'file'");
+-        goto out;
+-    }
+ 
+-    pathnames = g_strsplit(hdrs->has_file ? hdrs->file : hdrs->data, ":", 0);
++    pathnames = g_strsplit(file, ":", 0);
+     if (pathnames == NULL || pathnames[0] == NULL) {
+         error_setg(&err, "'-acpitable' requires at least one pathname");
+         goto out;
+@@ -291,7 +286,7 @@ void acpi_table_add(const QemuOpts *opts, Error **errp)
+         close(fd);
+     }
+ 
+-    acpi_table_install(blob, bloblen, hdrs->has_file, hdrs, &err);
++    acpi_table_install(blob, bloblen, has_header, hdrs, &err);
+ 
+ out:
+     g_free(blob);
+@@ -301,6 +296,25 @@ out:
+     error_propagate(errp, err);
+ }
+ 
++void acpi_table_add(const QemuOpts *opts, Error **errp)
++{
++    const char *val;
++
++    val = qemu_opt_get((QemuOpts *)opts, "file");
++    if (val) {
++        acpi_table_from_file(true, val, hdrs, errp);
++        return;
++    }
++
++    val = qemu_opt_get((QemuOpts *)opts, "data");
++    if (val) {
++        acpi_table_from_file(false, val, hdrs, errp);
++        return;
++    }
++
++    error_setg(errp, "'-acpitable' requires one of 'data' or 'file'");
++}
++
+ static bool acpi_table_builtin = false;
+ 
+ void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
+diff --git a/qapi-schema.json b/qapi-schema.json
+index 5658723..a5e219f 100644
+--- a/qapi-schema.json
++++ b/qapi-schema.json
+@@ -3597,17 +3597,18 @@
+ ##
+ # @AcpiTableOptions
+ #
+-# Specify an ACPI table on the command line to load.
++# Specify ACPI table options for the table loaded on the command line.
+ #
+-# At most one of @file and @data can be specified. The list of files specified
+-# by any one of them is loaded and concatenated in order. If both are omitted,
+-# @data is implied.
++# ACPI table can be loaded via 'file' and 'data' options. At most one of
++# 'file' and 'data' can be specified. The list of files specified by any one
++# of them is loaded and concatenated in order. If both # are omitted, 'data'
++# is implied.
+ #
+ # Other fields / optargs can be used to override fields of the generic ACPI
+ # table header; refer to the ACPI specification 5.0, section 5.2.6 System
+ # Description Table Header. If a header field is not overridden, then the
+-# corresponding value from the concatenated blob is used (in case of @file), or
+-# it is filled in with a hard-coded value (in case of @data).
++# corresponding value from the concatenated blob is used (in case of 'file'),
++# or it is filled in with a hard-coded value (in case of 'data').
+ #
+ # String fields are copied into the matching ACPI member from lowest address
+ # upwards, and silently truncated / NUL-padded to length.
+@@ -3628,16 +3629,6 @@
+ # @asl_compiler_rev: #optional revision number of the utility that created the
+ #                    table (4 bytes)
+ #
+-# @file: #optional colon (:) separated list of pathnames to load and
+-#        concatenate as table data. The resultant binary blob is expected to
+-#        have an ACPI table header. At least one file is required. This field
+-#        excludes @data.
+-#
+-# @data: #optional colon (:) separated list of pathnames to load and
+-#        concatenate as table data. The resultant binary blob must not have an
+-#        ACPI table header. At least one file is required. This field excludes
+-#        @file.
+-#
+ # Since 1.5
+ ##
+ { 'struct': 'AcpiTableOptions',
+@@ -3648,9 +3639,7 @@
+     '*oem_table_id':      'str',
+     '*oem_rev':           'uint32',
+     '*asl_compiler_id':   'str',
+-    '*asl_compiler_rev':  'uint32',
+-    '*file':              'str',
+-    '*data':              'str' }}
++    '*asl_compiler_rev':  'uint32' }}
+ 
+ ##
+ # @CommandLineParameterType:
+diff --git a/qemu-options.hx b/qemu-options.hx
+index a71aaf8..5fe7f87 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1493,10 +1493,13 @@ Disable HPET support.
+ ETEXI
+ 
+ DEF("acpitable", HAS_ARG, QEMU_OPTION_acpitable,
+-    "-acpitable [sig=str][,rev=n][,oem_id=str][,oem_table_id=str][,oem_rev=n][,asl_compiler_id=str][,asl_compiler_rev=n][,{data|file}=file1[:file2]...]\n"
++    "-acpitable {data|file}=file1[:file2]...\n"
++    "             [,sig=str][,rev=n]\n"
++    "             [,oem_id=str][,oem_table_id=str][,oem_rev=n]\n"
++    "             [,asl_compiler_id=str][,asl_compiler_rev=n]\n"
+     "                ACPI table description\n", QEMU_ARCH_I386)
+ STEXI
+-@item -acpitable [sig=@var{str}][,rev=@var{n}][,oem_id=@var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}] [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}][,data=@var{file1}[:@var{file2}]...]
++@item -acpitable data=@var{file1}[:@var{file2}]...[,sig=@var{str}][,rev=@var{n}][,oem_id=@var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}] [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}]
+ @findex -acpitable
+ Add ACPI table with specified header fields and context from specified files.
+ For file=, take whole ACPI table from the specified files, including all
+-- 
+1.7.10
 

@@ -1,70 +1,60 @@
-Received: by 10.25.21.156 with SMTP id 28csp57638lfv;
-        Thu, 11 Aug 2016 03:47:59 -0700 (PDT)
-X-Received: by 10.55.217.82 with SMTP id u79mr10288195qki.244.1470912479346;
-        Thu, 11 Aug 2016 03:47:59 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp105097lfv;
+        Thu, 11 Aug 2016 05:42:25 -0700 (PDT)
+X-Received: by 10.55.79.139 with SMTP id d133mr9906670qkb.99.1470919345717;
+        Thu, 11 Aug 2016 05:42:25 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o2si1200701qkc.162.2016.08.11.03.47.59
+        by mx.google.com with ESMTPS id 37si1435201qty.156.2016.08.11.05.42.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Aug 2016 03:47:59 -0700 (PDT)
+        Thu, 11 Aug 2016 05:42:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47525 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bXnWo-0006Xw-Ot
-	for alex.bennee@linaro.org; Thu, 11 Aug 2016 06:47:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46998)
+	id 1bXpJZ-0008FU-5G
+	for alex.bennee@linaro.org; Thu, 11 Aug 2016 08:42:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47205)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bXnWl-0006WR-FZ
-	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 06:47:56 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bXpJV-0008FM-6W
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 08:42:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bXnWk-0005pd-JH
-	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 06:47:55 -0400
-Received: from mail-ua0-x22e.google.com ([2607:f8b0:400c:c08::22e]:35234)
+	(envelope-from <imammedo@redhat.com>) id 1bXpJT-000063-I9
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 08:42:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46562)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bXnWk-0005pR-Fh
-	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 06:47:54 -0400
-Received: by mail-ua0-x22e.google.com with SMTP id n59so112357720uan.2
-	for <qemu-arm@nongnu.org>; Thu, 11 Aug 2016 03:47:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=2SsDfxai5fJh4ohfX8lmLXkkrf5U86GsNL08yBL12SM=;
-	b=jYpzwRbPp4+vEEkaVurPgZi+YVL7GT7wMVbBIGvzK0iSCQ/7n4yUy3hI0KuWYmgflu
-	83sA5hN9E3coNjVUhCi4yqQfiD6mPlSwZhriK7uiM6K/SwKYugGRhLv/8v/w66WNIB1L
-	c0mXEBhXSdp19dTOJHzn+c2n2R4TVKiMovg28=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=2SsDfxai5fJh4ohfX8lmLXkkrf5U86GsNL08yBL12SM=;
-	b=K9Ef6KeSA/w6kbw3/w54yp3Hxiomm2iBO9jDiqcglb+Ks2hGraoF5DrHak9ypoftOC
-	Q8j+cUYmW79agmSk6Lf9Iel19sE5v+Zl8Z3j7zM/2TXbBr3kO6JoVRZZ3sk7UZGcwi7a
-	gT6atVNXlA4jFnRNX1bHy+PvnA8VLVNwZBs0JFeGjrZvbML/XvoGRSt/md21RtT9TcHu
-	WVakLORhkCnUIYuThSIvVe1u3tBF8xtCZ9Rnje9y+PW6+0HY5vCxqmrrYa//WpE0E4Qf
-	x2PqIMiVQDFV61X6KJ9NLXTJbEsP/K0AVsnI3gUFvOOhsTGhjXL1YYUHWLRMy8ggx3sk
-	+XZQ==
-X-Gm-Message-State: AEkoouumNZQMQda6fsFHO/5WgMLy+bLdyfYqo0qmzqJP4r7O69WLmTtbb/QnuXhokFQm5JHFDhDHb/MxhTsiM0XE
-X-Received: by 10.31.92.86 with SMTP id q83mr4244453vkb.92.1470912473705; Thu,
-	11 Aug 2016 03:47:53 -0700 (PDT)
+	(envelope-from <imammedo@redhat.com>)
+	id 1bXpJT-00005s-9b; Thu, 11 Aug 2016 08:42:19 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9CC38796E3;
+	Thu, 11 Aug 2016 12:42:16 +0000 (UTC)
+Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7BCgDKt023472; Thu, 11 Aug 2016 08:42:14 -0400
+Date: Thu, 11 Aug 2016 14:42:13 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Lv Zheng <lv.zheng@intel.com>
+Message-ID: <20160811144213.6e4c9267@nial.brq.redhat.com>
+In-Reply-To: <f59fb42c320294fdf3e140aeaa6dd3aba95d837f.1470907810.git.lv.zheng@intel.com>
+References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+	<cover.1470907810.git.lv.zheng@intel.com>
+	<f59fb42c320294fdf3e140aeaa6dd3aba95d837f.1470907810.git.lv.zheng@intel.com>
 MIME-Version: 1.0
-Received: by 10.31.150.17 with HTTP; Thu, 11 Aug 2016 03:47:33 -0700 (PDT)
-In-Reply-To: <1470158147-16378-1-git-send-email-clg@kaod.org>
-References: <1470158147-16378-1-git-send-email-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Aug 2016 11:47:33 +0100
-Message-ID: <CAFEAcA_sa3eJx5WtZzkxYKsKkrT3OmyhXH46U+a7VaJJBdODwQ@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 11 Aug 2016 12:42:17 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22e
-Subject: Re: [Qemu-arm] [PATCH v3 00/10] arm: add ast2500 support
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v5 2/2] ACPI: Add -acpitable fadt= to allow
+ FADT revision changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,35 +66,262 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Lv Zheng <zetalog@gmail.com>, qemu-arm@nongnu.org,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tXdhatj5qMdw
+X-TUID: SN/lh/PZQdya
 
-On 2 August 2016 at 18:15, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->     On the AST2500, I am still having a little issue under uboot which
->     sets the vbar doing :
->
->         mcr     p15, 0, r0, c12, c0, 0  /* Set VBAR */
->
->     and this is trapped as an undefined instruction by qemu.
->
->     Looking at hw/arm/helper.c, the VBAR register seems to be defined
->     only for feature ARM_FEATURE_V7 (v7_cp_reginfo). The AST2500 SoC
->     uses a arm1176 which defines ARM_FEATURE_EL3 which gives us a
->     VBAR_EL3.  According to th specs, the arm1176jzf-s has a Vector
->     Base Address Register. So am I missing something in the board
->     definition or is uboot being too optimistic on the cpu features ?
->     This is confusing for me, some direction would be welcomed :)
+On Thu, 11 Aug 2016 17:36:45 +0800
+Lv Zheng <lv.zheng@intel.com> wrote:
 
-This looks like a bug in helper.c -- we originally added the VBAR
-definition as a bit of a hack since it's only supposed to exist
-in CPUs with the security extensions and at the time we didn't
-implement those at all. It should definitely exist in the 1176
-too, so we should move the definition around somewhere so it does.
-(The 1176 is the only non-v7 CPU with security extensions support,
-which is why it got missed I suspect.)
+> This patch allows FADT to be built with different revisions. When the revision
+> is greater than 1.0, 64-bit address fields may also be filled.
+> 
+> Note that FADT revision 2 has never been defined by the ACPI specification. So
+> this patch only adds an option -acpitable fadt= to allow revision 1,3,5 to be
+> configured by the users.
+> 
+> 1. Tested by booting a linux image, the 64-bit addresses are correctly filled
+>    in the dumped FADT.
+> 2. Tested by booting a Windows image, no boot failure can be seen.
 
-thanks
--- PMM
+series still doesn't say why do you need 64-bit addresses in FADT,
+current Seabios/OVMF allocates tables below 4Gb and gpe/pm
+register blocks are below 4gb as well so there is no point in
+accepting theses patches and adding extra CLI options as these
+patches do.
+
+If we'd ever need to bump FADT revision, I'd first try to increase it
+unconditionally and test/see if it would not upset legacy guests
+Windows starting from XP, RHEL4/5/6
+If it works then these patches are not necessary,
+(this approach worked  just fine for bumping up DSDT revision to 2
+it would be possible to use 64-bit math in ASL/AML).
+
+if it doesn't, I still won't do it this way but rather:
+ - make new revision used by default
+ - add compat property to piix4_pm/ich9-lpc to force legacy revision
+ - turn on legacy revision for old machine types using added above property
+
+That way we won't regress existing setups as old machines will stay
+the same and only new machine types will be affected. And users that
+actually want to play with legacy revision on new machine types could
+force it by using above property.
+
+> 
+> Signed-off-by: Lv Zheng <lv.zheng@intel.com>
+> ---
+>  hw/acpi/core.c         |   20 ++++++++++++-
+>  hw/i386/acpi-build.c   |   76 ++++++++++++++++++++++++++++++++++++++++++------
+>  include/hw/acpi/acpi.h |    1 +
+>  qemu-options.hx        |    8 ++++-
+>  4 files changed, 94 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index 85e0e94..832c86b 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -19,6 +19,7 @@
+>   * GNU GPL, version 2 or (at your option) any later version.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/hw.h"
+>  #include "hw/i386/pc.h"
+> @@ -54,6 +55,7 @@ static const char unsigned dfl_hdr[ACPI_TABLE_HDR_SIZE - ACPI_TABLE_PFX_SIZE] =
+>  
+>  char unsigned *acpi_tables;
+>  size_t acpi_tables_len;
+> +uint8_t acpi_fadt_rev = 1;
+>  
+>  static QemuOptsList qemu_acpi_opts = {
+>      .name = "acpi",
+> @@ -312,7 +314,23 @@ void acpi_table_add(const QemuOpts *opts, Error **errp)
+>          return;
+>      }
+>  
+> -    error_setg(errp, "'-acpitable' requires one of 'data' or 'file'");
+> +    val = qemu_opt_get((QemuOpts *)opts, "fadt");
+> +    if (val) {
+> +        unsigned long rev;
+> +        int err;
+> +
+> +        err = qemu_strtoul(val, NULL, 10, &rev);
+> +        if (err ||
+> +            (rev != 1 && rev != 3 && rev != 5)) {
+> +            error_setg(errp, "Unsupported FADT revision %s, "
+> +                       "please specify 1,3,5", val);
+> +            return;
+> +        }
+> +        acpi_fadt_rev = rev;
+> +        return;
+> +    }
+> +
+> +    error_setg(errp, "'-acpitable' requires one of 'data','file' or 'fadt'");
+>  }
+>  
+>  static bool acpi_table_builtin = false;
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index ce7cbc5..8be6578 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -276,8 +276,22 @@ build_facs(GArray *table_data, BIOSLinker *linker)
+>      facs->length = cpu_to_le32(sizeof(*facs));
+>  }
+>  
+> +/* GAS */
+> +static void
+> +build_gas(struct AcpiGenericAddress *gas, uint8_t space_id,
+> +          uint8_t bit_width, uint8_t bit_offset,
+> +          uint8_t access_width, uint64_t address)
+> +{
+> +    gas->space_id = space_id;
+> +    gas->bit_width = bit_width;
+> +    gas->bit_offset = bit_offset;
+> +    gas->access_width = access_width;
+> +    gas->address = address;
+> +}
+> +
+>  /* Load chipset information in FADT */
+> -static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
+> +static void fadt_setup(AcpiFadtDescriptorRev5_1 *fadt, AcpiPmInfo *pm,
+> +                       uint8_t revision)
+>  {
+>      fadt->model = 1;
+>      fadt->reserved1 = 0;
+> @@ -309,6 +323,25 @@ static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
+>          fadt->flags |= cpu_to_le32(1 << ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
+>      }
+>      fadt->century = RTC_CENTURY;
+> +
+> +    /* Build ACPI 2.0 (FADT version 3+) GAS fields */
+> +    if (revision >= 3) {
+> +        /* EVT, CNT, TMR register matches hw/acpi/core.c */
+> +        build_gas(&fadt->xpm1a_event_block, AML_SYSTEM_IO,
+> +                  32, 0, 0, cpu_to_le64(pm->io_base));
+> +        build_gas(&fadt->xpm1a_control_block, AML_SYSTEM_IO,
+> +                  16, 0, 0, cpu_to_le64(pm->io_base + 0x04));
+> +        build_gas(&fadt->xpm_timer_block, AML_SYSTEM_IO,
+> +                  32, 0, 0, cpu_to_le64(pm->io_base + 0x08));
+> +        build_gas(&fadt->xgpe0_block, AML_SYSTEM_IO,
+> +                  pm->gpe0_blk_len << 3, 0, 0, cpu_to_le64(pm->gpe0_blk));
+> +    }
+> +
+> +    /* Build dummy ACPI 5.0 fields */
+> +    if (revision >= 5) {
+> +        build_gas(&fadt->sleep_control, AML_SYSTEM_MEMORY, 0, 0, 0, 0);
+> +        build_gas(&fadt->sleep_status, AML_SYSTEM_MEMORY, 0, 0, 0, 0);
+> +    }
+>  }
+>  
+>  
+> @@ -316,11 +349,21 @@ static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
+>  static void
+>  build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+>             unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
+> -           const char *oem_id, const char *oem_table_id)
+> +           const char *oem_id, const char *oem_table_id, uint8_t revision)
+>  {
+> -    AcpiFadtDescriptorRev1 *fadt = acpi_data_push(table_data, sizeof(*fadt));
+> -    unsigned fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
+> -    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+> +    AcpiFadtDescriptorRev5_1 *fadt;
+> +    unsigned fw_ctrl_offset;
+> +    unsigned dsdt_entry_offset;
+> +    unsigned fadt_len;
+> +
+> +    if (revision == 1) {
+> +        fadt_len = sizeof(AcpiFadtDescriptorRev1);
+> +    } else {
+> +        fadt_len = sizeof(AcpiFadtDescriptorRev5_1);
+> +    }
+> +    fadt = acpi_data_push(table_data, fadt_len);
+> +    fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
+> +    dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+>  
+>      /* FACS address to be filled by Guest linker */
+>      bios_linker_loader_add_pointer(linker,
+> @@ -328,13 +371,28 @@ build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+>          ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+>  
+>      /* DSDT address to be filled by Guest linker */
+> -    fadt_setup(fadt, pm);
+>      bios_linker_loader_add_pointer(linker,
+>          ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
+>          ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+>  
+> -    build_header(linker, table_data,
+> -                 (void *)fadt, "FACP", sizeof(*fadt), 1, oem_id, oem_table_id);
+> +    if (revision > 2) {
+> +        fw_ctrl_offset = (char *)&fadt->Xfacs - table_data->data;
+> +        dsdt_entry_offset = (char *)&fadt->Xdsdt - table_data->data;
+> +
+> +        /* FACS address to be filled by Guest linker */
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->Xfacs),
+> +            ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> +
+> +        /* DSDT address to be filled by Guest linker */
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->Xdsdt),
+> +            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> +    }
+> +
+> +    fadt_setup(fadt, pm, revision);
+> +    build_header(linker, table_data, (void *)fadt, "FACP", fadt_len,
+> +                 revision, oem_id, oem_table_id);
+>  }
+>  
+>  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> @@ -2681,7 +2739,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      fadt = tables_blob->len;
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
+> -               slic_oem.id, slic_oem.table_id);
+> +               slic_oem.id, slic_oem.table_id, acpi_fadt_rev);
+>      aml_len += tables_blob->len - fadt;
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+> index 7b3d93c..63df38d 100644
+> --- a/include/hw/acpi/acpi.h
+> +++ b/include/hw/acpi/acpi.h
+> @@ -173,6 +173,7 @@ void acpi_update_sci(ACPIREGS *acpi_regs, qemu_irq irq);
+>  
+>  /* acpi.c */
+>  extern int acpi_enabled;
+> +extern uint8_t acpi_fadt_rev;
+>  extern char unsigned *acpi_tables;
+>  extern size_t acpi_tables_len;
+>  
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 5fe7f87..d61dd92 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1497,7 +1497,10 @@ DEF("acpitable", HAS_ARG, QEMU_OPTION_acpitable,
+>      "             [,sig=str][,rev=n]\n"
+>      "             [,oem_id=str][,oem_table_id=str][,oem_rev=n]\n"
+>      "             [,asl_compiler_id=str][,asl_compiler_rev=n]\n"
+> -    "                ACPI table description\n", QEMU_ARCH_I386)
+> +    "                ACPI table description\n"
+> +    "-acpitable fadt=n\n"
+> +    "                Configure FADT revision\n",
+> +    QEMU_ARCH_I386)
+>  STEXI
+>  @item -acpitable data=@var{file1}[:@var{file2}]...[,sig=@var{str}][,rev=@var{n}][,oem_id=@var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}] [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}]
+>  @findex -acpitable
+> @@ -1511,6 +1514,9 @@ If a SLIC table is supplied to QEMU, then the SLIC's oem_id and oem_table_id
+>  fields will override the same in the RSDT and the FADT (a.k.a. FACP), in order
+>  to ensure the field matches required by the Microsoft SLIC spec and the ACPI
+>  spec.
+> +
+> +@item -acpitable fadt=@var{n}
+> +Configure FADT revision to 1, 3, 5, default 1.
+>  ETEXI
+>  
+>  DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
+

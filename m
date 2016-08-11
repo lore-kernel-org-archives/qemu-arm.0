@@ -1,94 +1,304 @@
-Received: by 10.25.21.156 with SMTP id 28csp25688lfv;
-        Thu, 11 Aug 2016 02:17:02 -0700 (PDT)
-X-Received: by 10.55.204.151 with SMTP id n23mr10050503qkl.210.1470907022858;
-        Thu, 11 Aug 2016 02:17:02 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp26058lfv;
+        Thu, 11 Aug 2016 02:18:05 -0700 (PDT)
+X-Received: by 10.55.149.1 with SMTP id x1mr10053673qkd.270.1470907085897;
+        Thu, 11 Aug 2016 02:18:05 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v3si1015833qkh.77.2016.08.11.02.17.02
+        by mx.google.com with ESMTPS id b21si1023027qkc.60.2016.08.11.02.18.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Aug 2016 02:17:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 11 Aug 2016 02:18:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47045 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47048 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bXm6o-0007sv-BY
-	for alex.bennee@linaro.org; Thu, 11 Aug 2016 05:17:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50694)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bXm7p-0000Fk-6E
+	for alex.bennee@linaro.org; Thu, 11 Aug 2016 05:18:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52089)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lv.zheng@intel.com>) id 1bXm2f-0004BL-Av
-	for qemu-devel@nongnu.org; Thu, 11 Aug 2016 05:12:46 -0400
+	(envelope-from <lv.zheng@intel.com>) id 1bXm7k-00005L-I9
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:18:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lv.zheng@intel.com>) id 1bXm2a-0006Nq-Uo
-	for qemu-devel@nongnu.org; Thu, 11 Aug 2016 05:12:44 -0400
-Received: from mga01.intel.com ([192.55.52.88]:22817)
+	(envelope-from <lv.zheng@intel.com>) id 1bXm7g-0007fS-7x
+	for qemu-arm@nongnu.org; Thu, 11 Aug 2016 05:17:59 -0400
+Received: from mga14.intel.com ([192.55.52.115]:8149)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <lv.zheng@intel.com>)
-	id 1bXm2a-0006NW-M3; Thu, 11 Aug 2016 05:12:40 -0400
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-	by fmsmga101.fm.intel.com with ESMTP; 11 Aug 2016 02:12:40 -0700
+	id 1bXm7f-0007fK-Th; Thu, 11 Aug 2016 05:17:56 -0400
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+	by fmsmga103.fm.intel.com with ESMTP; 11 Aug 2016 02:17:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.28,504,1464678000"; d="scan'208";a="1033695946"
-Received: from unknown (HELO lvzheng-z530.sh.intel.com) ([10.239.159.146])
-	by orsmga002.jf.intel.com with ESMTP; 11 Aug 2016 02:12:38 -0700
-From: Lv Zheng <lv.zheng@intel.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Richard Henderson <rth@twiddle.net>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhao@linaro.org>
-Date: Thu, 11 Aug 2016 17:12:28 +0800
-Message-Id: <cover.1470906564.git.lv.zheng@intel.com>
-X-Mailer: git-send-email 1.7.10
-In-Reply-To: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+X-IronPort-AV: E=Sophos;i="5.28,504,1464678000"; d="scan'208";a="863592105"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+	by orsmga003.jf.intel.com with ESMTP; 11 Aug 2016 02:17:55 -0700
+Received: from fmsmsx102.amr.corp.intel.com (10.18.124.200) by
+	FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server
+	(TLS) id 14.3.248.2; Thu, 11 Aug 2016 02:17:54 -0700
+Received: from shsmsx104.ccr.corp.intel.com (10.239.4.70) by
+	FMSMSX102.amr.corp.intel.com (10.18.124.200) with Microsoft SMTP Server
+	(TLS) id 14.3.248.2; Thu, 11 Aug 2016 02:17:54 -0700
+Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.8]) by
+	SHSMSX104.ccr.corp.intel.com ([169.254.5.116]) with mapi id
+	14.03.0248.002; Thu, 11 Aug 2016 17:17:52 +0800
+From: "Zheng, Lv" <lv.zheng@intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, Peter Crosthwaite
+	<crosthwaite.peter@gmail.com>, Richard Henderson <rth@twiddle.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	"Shannon Zhao" <shannon.zhao@linaro.org>
+Thread-Topic: [PATCH v4 1/2] ACPI: Cleanup -acpitable option code
+Thread-Index: AQHR87CLgvD0Al+Y5EWEPRCT5PYoQqBDerpw
+Date: Thu, 11 Aug 2016 09:17:51 +0000
+Message-ID: <1AE640813FDE7649BE1B193DEA596E883BC0D119@SHSMSX101.ccr.corp.intel.com>
 References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+	<cover.1470906564.git.lv.zheng@intel.com>
+	<ce250ff11b012d9bcc72a145b720a47e5bfc58b1.1470906564.git.lv.zheng@intel.com>
+In-Reply-To: <ce250ff11b012d9bcc72a145b720a47e5bfc58b1.1470906564.git.lv.zheng@intel.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDU3YTc0ZTEtOWQ0OS00YmUxLWIyZDQtMDdmYzBiN2FlNTA4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX0lDIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE1LjkuNi42IiwiVHJ1c3RlZExhYmVsSGFzaCI6ImxRakxoaFwvMU1FT1h3clZyN1UwejdEeFhcL28xV1NuSGk4dzBybmF1RmFlVT0ifQ==
+x-ctpclassification: CTP_IC
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.88
-Subject: [Qemu-devel] [PATCH v4 0/2] ACPI: Add FADT revision support
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 192.55.52.115
+Subject: Re: [Qemu-arm] [PATCH v4 1/2] ACPI: Cleanup -acpitable option code
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Lv Zheng <lv.zheng@intel.com>,
-	Lv Zheng <zetalog@gmail.com>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pmoYw2JoHAVR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Lv Zheng <zetalog@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FGclnP+2qS9K
 
-This patchset adds revision support for FADT.
+Hi,=20
 
-History:
-v1:
-  Initial support
-v2:
-  Coding style cleanup
-v3:
-  Cleanup -acpitable code (remove useless hdrs->data/file)
-  Change -acpifadt to -acpitable fadt=
-  Shrink v1 FADT table length
-v4:
-  Coding style cleanup
+> From: Zheng, Lv
+> Subject: [PATCH v4 1/2] ACPI: Cleanup -acpitable option code
+>=20
+> In -acpitable options, at least/most one data/file sub-option is mandator=
+y,
+> this patch cleans up the code to reflect this in a managed manner so that
+> the follow-up mandatory sub-options can be added to -acpitable.
+>=20
+> Signed-off-by: Lv Zheng <lv.zheng@intel.com>
+> ---
+>  hw/acpi/core.c   |   32 +++++++++++++++++++++++---------
+>  qapi-schema.json |   27 ++++++++-------------------
+>  qemu-options.hx  |    7 +++++--
+>  3 files changed, 36 insertions(+), 30 deletions(-)
+>=20
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index e890a5d..cd1f9e4 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -89,8 +89,6 @@ static int acpi_checksum(const uint8_t *data, int len)
+>   * It is valid to call this function with
+>   * (@blob =3D=3D NULL && bloblen =3D=3D 0 && !has_header).
+>   *
+> - * @hdrs->file and @hdrs->data are ignored.
+> - *
+>   * SIZE_MAX is considered "infinity" in this function.
+>   *
+>   * The number of tables that can be installed is not limited, but the 16=
+-bit
+> @@ -229,7 +227,8 @@ static void acpi_table_install(const char unsigned
+> *blob, size_t bloblen,
+>                                        ACPI_TABLE_PFX_SIZE, acpi_payload_=
+size);
+>  }
+>=20
+> -void acpi_table_add(const QemuOpts *opts, Error **errp)
+> +static void acpi_table_from_file(bool has_header, const char *file,
+> +                                 AcpiTableOptions *hdrs, Error **errp)
+[Lv Zheng]=20
+It looks this patch still has problem here.
+Please ignore the v3/v4 submissions.
+Sorry for the noise.
 
-Lv Zheng (2):
-  ACPI: Cleanup -acpitable option code
-  ACPI: Add -acpitable fadt= to allow FADT revision changes
+Thanks
+Lv
 
- hw/acpi/core.c         |   50 +++++++++++++++++++++++++------
- hw/i386/acpi-build.c   |   76 ++++++++++++++++++++++++++++++++++++++++++------
- include/hw/acpi/acpi.h |    1 +
- qapi-schema.json       |   27 +++++------------
- qemu-options.hx        |   15 ++++++++--
- 5 files changed, 129 insertions(+), 40 deletions(-)
-
--- 
-1.7.10
+>  {
+>      AcpiTableOptions *hdrs =3D NULL;
+>      Error *err =3D NULL;
+> @@ -249,12 +248,8 @@ void acpi_table_add(const QemuOpts *opts,
+> Error **errp)
+>      if (err) {
+>          goto out;
+>      }
+> -    if (hdrs->has_file =3D=3D hdrs->has_data) {
+> -        error_setg(&err, "'-acpitable' requires one of 'data' or 'file'"=
+);
+> -        goto out;
+> -    }
+>=20
+> -    pathnames =3D g_strsplit(hdrs->has_file ? hdrs->file : hdrs->data, "=
+:", 0);
+> +    pathnames =3D g_strsplit(file, ":", 0);
+>      if (pathnames =3D=3D NULL || pathnames[0] =3D=3D NULL) {
+>          error_setg(&err, "'-acpitable' requires at least one pathname");
+>          goto out;
+> @@ -291,7 +286,7 @@ void acpi_table_add(const QemuOpts *opts, Error
+> **errp)
+>          close(fd);
+>      }
+>=20
+> -    acpi_table_install(blob, bloblen, hdrs->has_file, hdrs, &err);
+> +    acpi_table_install(blob, bloblen, has_header, hdrs, &err);
+>=20
+>  out:
+>      g_free(blob);
+> @@ -301,6 +296,25 @@ out:
+>      error_propagate(errp, err);
+>  }
+>=20
+> +void acpi_table_add(const QemuOpts *opts, Error **errp)
+> +{
+> +    const char *val;
+> +
+> +    val =3D qemu_opt_get((QemuOpts *)opts, "file");
+> +    if (val) {
+> +        acpi_table_from_file(true, val, hdrs, errp);
+> +        return;
+> +    }
+> +
+> +    val =3D qemu_opt_get((QemuOpts *)opts, "data");
+> +    if (val) {
+> +        acpi_table_from_file(false, val, hdrs, errp);
+> +        return;
+> +    }
+> +
+> +    error_setg(errp, "'-acpitable' requires one of 'data' or 'file'");
+> +}
+> +
+>  static bool acpi_table_builtin =3D false;
+>=20
+>  void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
+> diff --git a/qapi-schema.json b/qapi-schema.json
+> index 5658723..a5e219f 100644
+> --- a/qapi-schema.json
+> +++ b/qapi-schema.json
+> @@ -3597,17 +3597,18 @@
+>  ##
+>  # @AcpiTableOptions
+>  #
+> -# Specify an ACPI table on the command line to load.
+> +# Specify ACPI table options for the table loaded on the command line.
+>  #
+> -# At most one of @file and @data can be specified. The list of files
+> specified
+> -# by any one of them is loaded and concatenated in order. If both are
+> omitted,
+> -# @data is implied.
+> +# ACPI table can be loaded via 'file' and 'data' options. At most one of
+> +# 'file' and 'data' can be specified. The list of files specified by any=
+ one
+> +# of them is loaded and concatenated in order. If both # are omitted,
+> 'data'
+> +# is implied.
+>  #
+>  # Other fields / optargs can be used to override fields of the generic A=
+CPI
+>  # table header; refer to the ACPI specification 5.0, section 5.2.6 Syste=
+m
+>  # Description Table Header. If a header field is not overridden, then th=
+e
+> -# corresponding value from the concatenated blob is used (in case of
+> @file), or
+> -# it is filled in with a hard-coded value (in case of @data).
+> +# corresponding value from the concatenated blob is used (in case of
+> 'file'),
+> +# or it is filled in with a hard-coded value (in case of 'data').
+>  #
+>  # String fields are copied into the matching ACPI member from lowest
+> address
+>  # upwards, and silently truncated / NUL-padded to length.
+> @@ -3628,16 +3629,6 @@
+>  # @asl_compiler_rev: #optional revision number of the utility that
+> created the
+>  #                    table (4 bytes)
+>  #
+> -# @file: #optional colon (:) separated list of pathnames to load and
+> -#        concatenate as table data. The resultant binary blob is expecte=
+d to
+> -#        have an ACPI table header. At least one file is required. This =
+field
+> -#        excludes @data.
+> -#
+> -# @data: #optional colon (:) separated list of pathnames to load and
+> -#        concatenate as table data. The resultant binary blob must not h=
+ave
+> an
+> -#        ACPI table header. At least one file is required. This field ex=
+cludes
+> -#        @file.
+> -#
+>  # Since 1.5
+>  ##
+>  { 'struct': 'AcpiTableOptions',
+> @@ -3648,9 +3639,7 @@
+>      '*oem_table_id':      'str',
+>      '*oem_rev':           'uint32',
+>      '*asl_compiler_id':   'str',
+> -    '*asl_compiler_rev':  'uint32',
+> -    '*file':              'str',
+> -    '*data':              'str' }}
+> +    '*asl_compiler_rev':  'uint32' }}
+>=20
+>  ##
+>  # @CommandLineParameterType:
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index a71aaf8..5fe7f87 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1493,10 +1493,13 @@ Disable HPET support.
+>  ETEXI
+>=20
+>  DEF("acpitable", HAS_ARG, QEMU_OPTION_acpitable,
+> -    "-acpitable
+> [sig=3Dstr][,rev=3Dn][,oem_id=3Dstr][,oem_table_id=3Dstr][,oem_rev=3Dn][,=
+asl_compi
+> ler_id=3Dstr][,asl_compiler_rev=3Dn][,{data|file}=3Dfile1[:file2]...]\n"
+> +    "-acpitable {data|file}=3Dfile1[:file2]...\n"
+> +    "             [,sig=3Dstr][,rev=3Dn]\n"
+> +    "             [,oem_id=3Dstr][,oem_table_id=3Dstr][,oem_rev=3Dn]\n"
+> +    "             [,asl_compiler_id=3Dstr][,asl_compiler_rev=3Dn]\n"
+>      "                ACPI table description\n", QEMU_ARCH_I386)
+>  STEXI
+> -@item -acpitable
+> [sig=3D@var{str}][,rev=3D@var{n}][,oem_id=3D@var{str}][,oem_table_id=3D@v=
+ar{st
+> r}][,oem_rev=3D@var{n}]
+> [,asl_compiler_id=3D@var{str}][,asl_compiler_rev=3D@var{n}][,data=3D@var{=
+file1
+> }[:@var{file2}]...]
+> +@item -acpitable
+> data=3D@var{file1}[:@var{file2}]...[,sig=3D@var{str}][,rev=3D@var{n}][,oe=
+m_id=3D@
+> var{str}][,oem_table_id=3D@var{str}][,oem_rev=3D@var{n}]
+> [,asl_compiler_id=3D@var{str}][,asl_compiler_rev=3D@var{n}]
+>  @findex -acpitable
+>  Add ACPI table with specified header fields and context from specified f=
+iles.
+>  For file=3D, take whole ACPI table from the specified files, including a=
+ll
+> --
+> 1.7.10
 

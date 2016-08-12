@@ -1,82 +1,61 @@
-Received: by 10.25.21.156 with SMTP id 28csp182644lfv;
-        Fri, 12 Aug 2016 07:18:13 -0700 (PDT)
-X-Received: by 10.55.19.33 with SMTP id d33mr18555895qkh.225.1471011493202;
-        Fri, 12 Aug 2016 07:18:13 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp196514lfv;
+        Fri, 12 Aug 2016 07:50:46 -0700 (PDT)
+X-Received: by 10.200.46.216 with SMTP id i24mr18011105qta.79.1471013442562;
+        Fri, 12 Aug 2016 07:50:42 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c68si3386196qke.294.2016.08.12.07.18.12
+        by mx.google.com with ESMTPS id d132si3481505qke.186.2016.08.12.07.50.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Aug 2016 07:18:13 -0700 (PDT)
+        Fri, 12 Aug 2016 07:50:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52312 helo=lists.gnu.org)
+Received: from localhost ([::1]:52550 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bYDHo-0001Vo-Gw
-	for alex.bennee@linaro.org; Fri, 12 Aug 2016 10:18:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48938)
+	id 1bYDnF-00038e-WD
+	for alex.bennee@linaro.org; Fri, 12 Aug 2016 10:50:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40009)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bYDFI-00006P-2A
-	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 10:16:08 -0400
+	(envelope-from <clg@kaod.org>) id 1bYDNf-0007M9-3m
+	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 10:24:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bYDEy-0004It-FW
-	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 10:15:37 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34972)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1bYDEy-0004I3-7z; Fri, 12 Aug 2016 10:15:16 -0400
-Received: by mail-wm0-x243.google.com with SMTP id i5so3100780wmg.2;
-	Fri, 12 Aug 2016 07:15:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Y0Walu8VgDMAGscpyqPqbLAt6EZB9nvRY8GDcZ5YYak=;
-	b=eoBBw37SsKkpN5XwErHZF2xEvs2XCywiBfqGOQuus5RHcNt856LKJjP0oZPM7sGqG5
-	JTa/B+rqx3Q4F0YeyrCfFu3MwLaeFdASJQ/nACHoM5DxmYW7mlQkmkH1bG8lPBKzxrNj
-	x8NKfjxnEzXa022/mk0PT8R+42NiRFl8KudaI3AGjP5bC0EKgL4V3y8hly4PttIxb6HR
-	lEygkl2mJPeVVQaYtezOPBzhYSB0UQmYF3NRgiyY5YgeVuH36JZYL83HBzsCTE3GPQP1
-	I+KsyHThJAs1Gq1aA1qZggO+56XRnb2Ce1vWvaBOMDcZXDLERhUlp9itpY6UIXDmvVdP
-	5jMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Y0Walu8VgDMAGscpyqPqbLAt6EZB9nvRY8GDcZ5YYak=;
-	b=A4J+4RZqcLB519d3hMy/FOrMZ8pcQCgxr7v4HHPwIcz18EA2byg4VU6lavx8sW70Iu
-	PQ6c7BfOovZtRMuG9gZOjpOKWrjevYqJ+oXbth64YtkQUR0Ynci9H/nIBtzYemGCJ1oz
-	otf35Sea2hwnpFON3eofXMEaL5IgNgZ9MqqiJY5PPD2PBhO01TLojGMT1WlMIlwXqCt1
-	3RqHqiE6ofmk5uesTplZyMU/QNEMbNVzzu3DusAru+QJLpRCjKsaor5+CZUFjMZA1ol+
-	fVrkOXR6D5BdvJrjtd11r5d63vT92FFZf76hKImr7wTj6aRtpj6CQLNFZSHfefuEEpcD
-	X0DQ==
-X-Gm-Message-State: AEkooutwQ9aFvHDEI/yn4zSl6fZ3x3wMENxzd4VTpKr/PFSCdOxO+2Jnukp9xK4YRPxbzQ==
-X-Received: by 10.28.145.20 with SMTP id t20mr3016875wmd.74.1471008045645;
-	Fri, 12 Aug 2016 06:20:45 -0700 (PDT)
-Received: from bigtime.twiddle.net ([195.70.95.61])
-	by smtp.googlemail.com with ESMTPSA id
-	wc3sm7514336wjc.47.2016.08.12.06.20.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 12 Aug 2016 06:20:44 -0700 (PDT)
-To: Vijay Kilari <vijay.kilari@gmail.com>
-References: <1470133216-6758-1-git-send-email-vijay.kilari@gmail.com>
-	<1470133216-6758-3-git-send-email-vijay.kilari@gmail.com>
-	<540c4c1d-1590-4c64-116a-e6b41bd3475e@twiddle.net>
-	<CALicx6so0YyDumHm3VX0WiUCdkKQx1MQHXEzTzbMyUHXT+Z4AQ@mail.gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <a043438c-25a3-4a50-d105-78ee91ba032e@twiddle.net>
-Date: Fri, 12 Aug 2016 14:20:43 +0100
+	(envelope-from <clg@kaod.org>) id 1bYDNH-000599-Vv
+	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 10:24:13 -0400
+Received: from 6.mo6.mail-out.ovh.net ([87.98.177.69]:44728)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
+	id 1bYDNH-00057A-NV
+	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 10:23:51 -0400
+Received: from player738.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo6.mail-out.ovh.net (Postfix) with ESMTP id A2ACFFFA8A1
+	for <qemu-devel@nongnu.org>; Fri, 12 Aug 2016 10:28:10 +0200 (CEST)
+Received: from [192.168.1.11] (ARennes-257-1-62-53.w81-53.abo.wanadoo.fr
+	[81.53.141.53]) (Authenticated sender: clg@kaod.org)
+	by player738.ha.ovh.net (Postfix) with ESMTPSA id BE0548B1;
+	Fri, 12 Aug 2016 10:28:03 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1470158147-16378-1-git-send-email-clg@kaod.org>
+	<1470158147-16378-7-git-send-email-clg@kaod.org>
+	<CAFEAcA_V6k5mZGQfL2WMqZmzXyHuPm0ovdt7hr2xuBZWdaRtYw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <3cf9ddc6-ce37-53d5-8f22-a589128e83db@kaod.org>
+Date: Fri, 12 Aug 2016 10:28:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <CALicx6so0YyDumHm3VX0WiUCdkKQx1MQHXEzTzbMyUHXT+Z4AQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-devel] [RFC PATCH v1 2/2] utils: Add prefetch for
- Thunderx platform
+In-Reply-To: <CAFEAcA_V6k5mZGQfL2WMqZmzXyHuPm0ovdt7hr2xuBZWdaRtYw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 9842898464713444267
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeluddruddtgddtfeculddtuddrfeeltddrtddtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
+	timestamps) [generic]
+X-Received-From: 87.98.177.69
+Subject: Re: [Qemu-devel] [PATCH v3 06/10] palmetto-bmc: add board specific
+ configuration
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,52 +67,65 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"prasun.kapoor" <Prasun.Kapoor@cavium.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +G3diu9A3MS2
+X-TUID: NKkaDxhDQZau
 
-On 08/12/2016 12:32 PM, Vijay Kilari wrote:
-> On Sat, Aug 6, 2016 at 3:47 PM, Richard Henderson <rth@twiddle.net> wrote:
->> On 08/02/2016 03:50 PM, vijay.kilari@gmail.com wrote:
->>>
->>> +#define VEC_PREFETCH(base, index) \
->>> +        asm volatile ("prfm pldl1strm, [%x[a]]\n" : :
->>> [a]"r"(&base[(index)]))
+On 08/11/2016 12:27 PM, Peter Maydell wrote:
+> On 2 August 2016 at 18:15, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>> aspeed_board_init() now uses a board identifier to customize some valu=
+es
+>> specific to the board.
 >>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> ---
 >>
->> Is this not __builtin_prefetch(base + index) ?
+>>  Changes since v2:
 >>
->> I.e. you can defined this generically for all targets.
->
-> __builtin_prefetch() is available only in gcc 5.3 for arm64.
-
-So?  You can't really defend the position that you care about aarch64 code 
-quality if you're using gcc 4.x.  Essentially all of the performance work has 
-been done for later versions.
-
->> I'll note that you're also prefetching too much, off the end of the block,
->> and that you're probably not prefetching far enough.  You'd need to break
->> off the last iteration(s) of the loop.
+>>  - removed silicon-rev and cpu-model. This is now in the SoC.
 >>
->> I'll note that you're also prefetching too close.  The loop operates on
->> 8*vecsize units.  In the case of aarch64, 128 byte units.  Both i+32 and
->
-> 128 unit is specific to thunder. I will move this to thunder
-> specific function
+>>  Changes since v1:
+>>
+>>  - changed aspeed_init() prototype to use a 'const AspeedBoardConfig *=
+'
+>>  - fixed white space issues
+>>
+>>  hw/arm/aspeed.c | 22 ++++++++++++++++++----
+>>  1 file changed, 18 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>> index ad0a062b5624..4226b8dcd95c 100644
+>> --- a/hw/arm/aspeed.c
+>> +++ b/hw/arm/aspeed.c
+>> @@ -30,6 +30,19 @@ typedef struct AspeedBoardState {
+>>      MemoryRegion ram;
+>>  } AspeedBoardState;
+>>
+>> +typedef struct AspeedBoardConfig {
+>> +    const char *soc_name;
+>> +    uint32_t hw_strap1;
+>> +} AspeedBoardConfig;
+>> +
+>> +enum {
+>> +    PALMETTO_BMC
+>=20
+> Since you need to respin this set anyway, I shall pick a nit:
+> a trailing comma here would be preferable because then you
+> don't need to change the line when you add the next entry
+> to the enum.
 
-No, you misunderstand.
+yes. This is a good pratice. I will fix that in the next version.
 
-While it's true that thunderx is unique within other aarch64 implementations in 
-having a 128-byte cacheline size, the "128" I mention above has nothing to do 
-with that.
+Thanks for the review,
 
-The loop is operating on BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR bytes, which 
-is defined above as 8 * sizeof(vector), which happens to be 128.
+C.
 
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>=20
+> thanks
+> -- PMM
+>=20
 
-r~

@@ -1,59 +1,62 @@
-Received: by 10.25.21.156 with SMTP id 28csp214171lfv;
-        Fri, 12 Aug 2016 08:29:30 -0700 (PDT)
-X-Received: by 10.55.17.211 with SMTP id 80mr16964313qkr.208.1471015770363;
-        Fri, 12 Aug 2016 08:29:30 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp222826lfv;
+        Fri, 12 Aug 2016 08:50:21 -0700 (PDT)
+X-Received: by 10.237.49.130 with SMTP id 2mr18793630qth.38.1471017021299;
+        Fri, 12 Aug 2016 08:50:21 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z25si4918355qtz.88.2016.08.12.08.29.30
+        by mx.google.com with ESMTPS id d76si3634499qkc.301.2016.08.12.08.50.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Aug 2016 08:29:30 -0700 (PDT)
+        Fri, 12 Aug 2016 08:50:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52918 helo=lists.gnu.org)
+Received: from localhost ([::1]:53118 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bYEOn-0006QQ-K6
-	for alex.bennee@linaro.org; Fri, 12 Aug 2016 11:29:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52492)
+	id 1bYEiy-00089q-Gl
+	for alex.bennee@linaro.org; Fri, 12 Aug 2016 11:50:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45975)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bYE2u-0000u5-1O
-	for qemu-arm@nongnu.org; Fri, 12 Aug 2016 11:06:53 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bYDsc-0000Cb-4I
+	for qemu-arm@nongnu.org; Fri, 12 Aug 2016 10:56:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bYE2q-0002jw-O4
-	for qemu-arm@nongnu.org; Fri, 12 Aug 2016 11:06:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37566)
+	(envelope-from <imammedo@redhat.com>) id 1bYDsW-0007O4-9N
+	for qemu-arm@nongnu.org; Fri, 12 Aug 2016 10:56:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45574)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1bYE2q-0002jp-FO; Fri, 12 Aug 2016 11:06:48 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1bYDsV-0007Fq-V0; Fri, 12 Aug 2016 10:56:08 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 01E382EEF;
-	Fri, 12 Aug 2016 15:06:47 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 14E104E330;
+	Fri, 12 Aug 2016 14:55:57 +0000 (UTC)
 Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7CEp2kl023233; Fri, 12 Aug 2016 10:51:03 -0400
-Date: Fri, 12 Aug 2016 16:51:00 +0200
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7CEtsvL028434; Fri, 12 Aug 2016 10:55:54 -0400
+Date: Fri, 12 Aug 2016 16:55:53 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Lv Zheng <lv.zheng@intel.com>
-Message-ID: <20160812165100.7fc99c64@nial.brq.redhat.com>
-In-Reply-To: <596008a543fe75e5c91db0cf7fd0cf4b2a6a2ca1.1470907810.git.lv.zheng@intel.com>
+To: "Zheng, Lv" <lv.zheng@intel.com>
+Message-ID: <20160812165553.3934b505@nial.brq.redhat.com>
+In-Reply-To: <1AE640813FDE7649BE1B193DEA596E883BC0D4AC@SHSMSX101.ccr.corp.intel.com>
 References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
 	<cover.1470907810.git.lv.zheng@intel.com>
-	<596008a543fe75e5c91db0cf7fd0cf4b2a6a2ca1.1470907810.git.lv.zheng@intel.com>
+	<f59fb42c320294fdf3e140aeaa6dd3aba95d837f.1470907810.git.lv.zheng@intel.com>
+	<20160811144213.6e4c9267@nial.brq.redhat.com>
+	<1AE640813FDE7649BE1B193DEA596E883BC0D4AC@SHSMSX101.ccr.corp.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 12 Aug 2016 15:06:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 12 Aug 2016 14:55:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5 1/2] ACPI: Cleanup -acpitable option code
+Subject: Re: [Qemu-arm] [PATCH v5 2/2] ACPI: Add -acpitable fadt= to allow
+ FADT revision changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,185 +68,388 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Lv Zheng <zetalog@gmail.com>, armbru@redhat.com,
-	qemu-arm@nongnu.org, Shannon Zhao <shannon.zhao@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, eblake@redhat.com,
-	Richard Henderson <rth@twiddle.net>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Lv Zheng <zetalog@gmail.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lfm8DK8tsXqo
+X-TUID: WiVDdp7A79lN
 
-On Thu, 11 Aug 2016 17:36:38 +0800
-Lv Zheng <lv.zheng@intel.com> wrote:
+On Fri, 12 Aug 2016 00:47:04 +0000
+"Zheng, Lv" <lv.zheng@intel.com> wrote:
 
-> In -acpitable options, at least/most one data/file sub-option is mandatory,
-> this patch cleans up the code to reflect this in a managed manner so that
-> the follow-up mandatory sub-options can be added to -acpitable.
+> Hi, Igor
 > 
-> Signed-off-by: Lv Zheng <lv.zheng@intel.com>
-> ---
->  hw/acpi/core.c   |   32 +++++++++++++++++++++++---------
->  qapi-schema.json |   26 +++++++-------------------
->  qemu-options.hx  |    7 +++++--
->  3 files changed, 35 insertions(+), 30 deletions(-)
+> Thanks for the review.
 > 
-> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index e890a5d..85e0e94 100644
-> --- a/hw/acpi/core.c
-> +++ b/hw/acpi/core.c
-> @@ -89,8 +89,6 @@ static int acpi_checksum(const uint8_t *data, int len)
->   * It is valid to call this function with
->   * (@blob == NULL && bloblen == 0 && !has_header).
->   *
-> - * @hdrs->file and @hdrs->data are ignored.
-> - *
-unrelated change?
+> > From: Igor Mammedov [mailto:imammedo@redhat.com]
+> > Subject: Re: [PATCH v5 2/2] ACPI: Add -acpitable fadt= to allow FADT
+> > revision changes
+> > 
+> > On Thu, 11 Aug 2016 17:36:45 +0800
+> > Lv Zheng <lv.zheng@intel.com> wrote:
+> >   
+> > > This patch allows FADT to be built with different revisions. When the  
+> > revision  
+> > > is greater than 1.0, 64-bit address fields may also be filled.
+> > >
+> > > Note that FADT revision 2 has never been defined by the ACPI  
+> > specification. So  
+> > > this patch only adds an option -acpitable fadt= to allow revision 1,3,5 to  
+> > be  
+> > > configured by the users.
+> > >
+> > > 1. Tested by booting a linux image, the 64-bit addresses are correctly  
+> > filled  
+> > >    in the dumped FADT.
+> > > 2. Tested by booting a Windows image, no boot failure can be seen.  
+> > 
+> > series still doesn't say why do you need 64-bit addresses in FADT,
+> > current Seabios/OVMF allocates tables below 4Gb and gpe/pm
+> > register blocks are below 4gb as well so there is no point in
+> > accepting theses patches and adding extra CLI options as these
+> > patches do.  
+> [Lv Zheng] 
+> This patch is used by us to probe Windows FADT behavior.
+> Current known behavior includes:
+> 1. On x86, Windows requires BIOS to have 2 FADTs, 1 is in RSDT, and probably is a v1 table, the other is in XSDT, and probably is a v3+ table.
+RDST is not limited to rev 1 only
+it can as easily reference v2/3/4/5/6 tables
+differences between RSDT and XSDT is that the former is able to point
+to tables located below 4G only.
 
->   * SIZE_MAX is considered "infinity" in this function.
->   *
->   * The number of tables that can be installed is not limited, but the 16-bit
-> @@ -229,7 +227,8 @@ static void acpi_table_install(const char unsigned *blob, size_t bloblen,
->                                        ACPI_TABLE_PFX_SIZE, acpi_payload_size);
->  }
->  
-> -void acpi_table_add(const QemuOpts *opts, Error **errp)
-> +static void acpi_table_from_file(bool has_header, const char *file,
-> +                                 const QemuOpts *opts, Error **errp)
->  {
->      AcpiTableOptions *hdrs = NULL;
->      Error *err = NULL;
-> @@ -249,12 +248,8 @@ void acpi_table_add(const QemuOpts *opts, Error **errp)
->      if (err) {
->          goto out;
->      }
-> -    if (hdrs->has_file == hdrs->has_data) {
-> -        error_setg(&err, "'-acpitable' requires one of 'data' or 'file'");
-> -        goto out;
-> -    }
->  
-> -    pathnames = g_strsplit(hdrs->has_file ? hdrs->file : hdrs->data, ":", 0);
-> +    pathnames = g_strsplit(file, ":", 0);
->      if (pathnames == NULL || pathnames[0] == NULL) {
->          error_setg(&err, "'-acpitable' requires at least one pathname");
->          goto out;
-> @@ -291,7 +286,7 @@ void acpi_table_add(const QemuOpts *opts, Error **errp)
->          close(fd);
->      }
->  
-> -    acpi_table_install(blob, bloblen, hdrs->has_file, hdrs, &err);
-> +    acpi_table_install(blob, bloblen, has_header, hdrs, &err);
->  
->  out:
->      g_free(blob);
-> @@ -301,6 +296,25 @@ out:
->      error_propagate(errp, err);
->  }
->  
-> +void acpi_table_add(const QemuOpts *opts, Error **errp)
-> +{
-> +    const char *val;
-> +
-> +    val = qemu_opt_get((QemuOpts *)opts, "file");
-> +    if (val) {
-> +        acpi_table_from_file(true, val, opts, errp);
-> +        return;
-> +    }
-> +
-> +    val = qemu_opt_get((QemuOpts *)opts, "data");
-> +    if (val) {
-> +        acpi_table_from_file(false, val, opts, errp);
-> +        return;
-> +    }
-> +
-> +    error_setg(errp, "'-acpitable' requires one of 'data' or 'file'");
-> +}
-> +
->  static bool acpi_table_builtin = false;
->  
->  void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
-> diff --git a/qapi-schema.json b/qapi-schema.json
-> index 5658723..75b8b3b 100644
-> --- a/qapi-schema.json
-> +++ b/qapi-schema.json
-> @@ -3597,17 +3597,17 @@
->  ##
->  # @AcpiTableOptions
->  #
-> -# Specify an ACPI table on the command line to load.
-> +# Specify ACPI table options for the table loaded on the command line.
->  #
-> -# At most one of @file and @data can be specified. The list of files specified
-> -# by any one of them is loaded and concatenated in order.
+> 2. v2 FADT never exists in the spec, it is used in very early years, by IA64 prototype machines.
+> 3. If the FADT in RSDT takes effective, then Windows actually ignores 64-bit GAS fields, but uses 32-bit register fields.
+> But there are still many uncertainties:
+> 1. What if the FADT in XSDT takes effective?
+ACPI 6.0 spec says:
+"An ACPI-compatible OS must use the XSDT if present."
+hence XSDT referenced FADT must be used, but that's Windows
+so I won't bet that it actually does what spec mandates.
 
+> 2. What's the behavior on IA64/ARM platforms?
+For ARM virt machine, QEMU currently provides ACPI 5.1 variant of FADT.
 
-> -# If both are omitted, @data is implied.
-You are removing this bit of documentation, which is still true
+> If we could have an option here, we could continue the probing work, trying every combination. 
+> 
+> Thus the original purpose of this commit is - probing de-facto standard behavior.
+What I'd suggest is try to bump up revision unconditionally to 5.1 (same as ARM)
+so it would provide 64-bit fields although not really used by QEMU
+and upstream it (provided it won't break anything).
 
+As for probing part with 64-bit fields actually used,
+I'd keep it out of tree as it doesn't make sense for upstream
+QEMU to have it since all addresses are below 4Gb and it's not
+going to change to keep compatibility with legacy OSes.
 
-> +# ACPI table can be loaded via 'file' and 'data' options. At most one of
-> +# 'file' and 'data' can be specified. The list of files specified by any one
-> +# of them is loaded and concatenated in order.
->  #
->  # Other fields / optargs can be used to override fields of the generic ACPI
->  # table header; refer to the ACPI specification 5.0, section 5.2.6 System
->  # Description Table Header. If a header field is not overridden, then the
-> -# corresponding value from the concatenated blob is used (in case of @file), or
-> -# it is filled in with a hard-coded value (in case of @data).
-> +# corresponding value from the concatenated blob is used (in case of 'file'),
-> +# or it is filled in with a hard-coded value (in case of 'data').
->  #
->  # String fields are copied into the matching ACPI member from lowest address
->  # upwards, and silently truncated / NUL-padded to length.
-> @@ -3628,16 +3628,6 @@
->  # @asl_compiler_rev: #optional revision number of the utility that created the
->  #                    table (4 bytes)
->  #
-> -# @file: #optional colon (:) separated list of pathnames to load and
-> -#        concatenate as table data. The resultant binary blob is expected to
-> -#        have an ACPI table header. At least one file is required. This field
-> -#        excludes @data.
-> -#
-> -# @data: #optional colon (:) separated list of pathnames to load and
-> -#        concatenate as table data. The resultant binary blob must not have an
-> -#        ACPI table header. At least one file is required. This field excludes
-> -#        @file.
-> -#
->  # Since 1.5
->  ##
->  { 'struct': 'AcpiTableOptions',
-> @@ -3648,9 +3638,7 @@
->      '*oem_table_id':      'str',
->      '*oem_rev':           'uint32',
->      '*asl_compiler_id':   'str',
-> -    '*asl_compiler_rev':  'uint32',
-> -    '*file':              'str',
-> -    '*data':              'str' }}
-> +    '*asl_compiler_rev':  'uint32' }}
-it's probably is not ok to remove fields here
-as it might break existing users that expect them
+That would keep out of tree bits minimal and at the same time
+reduce maintenance headache on QEMU side since it won't have
+to maintain extra -acpitable option forever.
 
->  
->  ##
->  # @CommandLineParameterType:
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index a71aaf8..5fe7f87 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -1493,10 +1493,13 @@ Disable HPET support.
->  ETEXI
->  
->  DEF("acpitable", HAS_ARG, QEMU_OPTION_acpitable,
-> -    "-acpitable [sig=str][,rev=n][,oem_id=str][,oem_table_id=str][,oem_rev=n][,asl_compiler_id=str][,asl_compiler_rev=n][,{data|file}=file1[:file2]...]\n"
-> +    "-acpitable {data|file}=file1[:file2]...\n"
-> +    "             [,sig=str][,rev=n]\n"
-> +    "             [,oem_id=str][,oem_table_id=str][,oem_rev=n]\n"
-> +    "             [,asl_compiler_id=str][,asl_compiler_rev=n]\n"
->      "                ACPI table description\n", QEMU_ARCH_I386)
->  STEXI
-> -@item -acpitable [sig=@var{str}][,rev=@var{n}][,oem_id=@var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}] [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}][,data=@var{file1}[:@var{file2}]...]
-> +@item -acpitable data=@var{file1}[:@var{file2}]...[,sig=@var{str}][,rev=@var{n}][,oem_id=@var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}] [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}]
->  @findex -acpitable
->  Add ACPI table with specified header fields and context from specified files.
->  For file=, take whole ACPI table from the specified files, including all
+> 
+> > 
+> > If we'd ever need to bump FADT revision, I'd first try to increase it
+> > unconditionally and test/see if it would not upset legacy guests
+> > Windows starting from XP, RHEL4/5/6
+> > If it works then these patches are not necessary,
+> > (this approach worked  just fine for bumping up DSDT revision to 2
+> > it would be possible to use 64-bit math in ASL/AML).
+> > 
+> > if it doesn't, I still won't do it this way but rather:
+> >  - make new revision used by default
+> >  - add compat property to piix4_pm/ich9-lpc to force legacy revision
+> >  - turn on legacy revision for old machine types using added above
+> > property
+> > 
+> > That way we won't regress existing setups as old machines will stay
+> > the same and only new machine types will be affected. And users that
+> > actually want to play with legacy revision on new machine types could
+> > force it by using above property.
+> >   
+> [Lv Zheng] 
+> But it seems the code in this commit contains useful stuffs for qemu.
+> 
+> As I said previously, it seems Windows requires 2 FADTs.
+Windows boots just fine with 1 FADT so far.
+
+I wonder, what Windows version does require 2 FADTs?
+
+> So having a revision parameter for build_fadt() seems to be necessary.
+> Because if qemu wants to increase FADT revision, qemu may do this in this way:
+> 1. Invoke build_fadt() with revision 1, and put it into RSDT;
+> 2. Invoke build_fadt() with latest revision, and put it into XSDT.
+> Also we know latest revision FADT is useful, it contains reduced hardware support.
+> And some of new ACPI features rely this model.
+providing revision number is not enough, each revision might have
+its own FADT structure, and it would be a bunch of code to maintain
+only to play and see if Windows is happy about it.
+I'd keep that out of tree.
+
+> So I'm sure that this commit contains useful stuffs for qemu to do future extension.
+> 
+> But I don't know if you want to keep the new -acpitable fadt= option.
+> Let me ask:
+> 1. Are there any issues in PATCH 01? Maybe my understanding of qemu option code is not correct.
+I'd not touch -acpitable as you did even for out of tree code
+but instead add property to piix4_pm/ich9-lpc that would enable
+testing bits you need, for example "enable_64bit_gpe" then
+you could easily switch it on for tests by doing following:
+
+ $QEMU -global piix4_pm.enable_64bit_gpe=on ...
+
+grep for "disable_s3" option and see how it's used/implemented.
+
+That way you won't risk breaking -acpitable CLI option behavior
+and keep experiment bits relatively isolated (easier to rebase)
+and it would be easier to upstream some if they make sense for
+general usage.
+
+You also might want to look at the work Michael have done wrt XSDT[1]
+when we played with initial implementation of ACPI bits for ARM
+but in the end we've picked RSDT there as well.
+
+1) just google for "qemu-devel XSDT"
+
+> 2. IMO, this option should be useful for a long period because we need it to help probing Windows behavior, so can we have it upstreamed?
+> 
+> Best regards
+> Lv
+> 
+> > >
+> > > Signed-off-by: Lv Zheng <lv.zheng@intel.com>
+> > > ---
+> > >  hw/acpi/core.c         |   20 ++++++++++++-
+> > >  hw/i386/acpi-build.c   |   76  
+> > ++++++++++++++++++++++++++++++++++++++++++------  
+> > >  include/hw/acpi/acpi.h |    1 +
+> > >  qemu-options.hx        |    8 ++++-
+> > >  4 files changed, 94 insertions(+), 11 deletions(-)
+> > >
+> > > diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> > > index 85e0e94..832c86b 100644
+> > > --- a/hw/acpi/core.c
+> > > +++ b/hw/acpi/core.c
+> > > @@ -19,6 +19,7 @@
+> > >   * GNU GPL, version 2 or (at your option) any later version.
+> > >   */
+> > >  #include "qemu/osdep.h"
+> > > +#include "qemu/cutils.h"
+> > >  #include "sysemu/sysemu.h"
+> > >  #include "hw/hw.h"
+> > >  #include "hw/i386/pc.h"
+> > > @@ -54,6 +55,7 @@ static const char unsigned  
+> > dfl_hdr[ACPI_TABLE_HDR_SIZE - ACPI_TABLE_PFX_SIZE] =  
+> > >
+> > >  char unsigned *acpi_tables;
+> > >  size_t acpi_tables_len;
+> > > +uint8_t acpi_fadt_rev = 1;
+> > >
+> > >  static QemuOptsList qemu_acpi_opts = {
+> > >      .name = "acpi",
+> > > @@ -312,7 +314,23 @@ void acpi_table_add(const QemuOpts *opts,  
+> > Error **errp)  
+> > >          return;
+> > >      }
+> > >
+> > > -    error_setg(errp, "'-acpitable' requires one of 'data' or 'file'");
+> > > +    val = qemu_opt_get((QemuOpts *)opts, "fadt");
+> > > +    if (val) {
+> > > +        unsigned long rev;
+> > > +        int err;
+> > > +
+> > > +        err = qemu_strtoul(val, NULL, 10, &rev);
+> > > +        if (err ||
+> > > +            (rev != 1 && rev != 3 && rev != 5)) {
+> > > +            error_setg(errp, "Unsupported FADT revision %s, "
+> > > +                       "please specify 1,3,5", val);
+> > > +            return;
+> > > +        }
+> > > +        acpi_fadt_rev = rev;
+> > > +        return;
+> > > +    }
+> > > +
+> > > +    error_setg(errp, "'-acpitable' requires one of 'data','file' or 'fadt'");
+> > >  }
+> > >
+> > >  static bool acpi_table_builtin = false;
+> > > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> > > index ce7cbc5..8be6578 100644
+> > > --- a/hw/i386/acpi-build.c
+> > > +++ b/hw/i386/acpi-build.c
+> > > @@ -276,8 +276,22 @@ build_facs(GArray *table_data, BIOSLinker  
+> > *linker)  
+> > >      facs->length = cpu_to_le32(sizeof(*facs));
+> > >  }
+> > >
+> > > +/* GAS */
+> > > +static void
+> > > +build_gas(struct AcpiGenericAddress *gas, uint8_t space_id,
+> > > +          uint8_t bit_width, uint8_t bit_offset,
+> > > +          uint8_t access_width, uint64_t address)
+> > > +{
+> > > +    gas->space_id = space_id;
+> > > +    gas->bit_width = bit_width;
+> > > +    gas->bit_offset = bit_offset;
+> > > +    gas->access_width = access_width;
+> > > +    gas->address = address;
+> > > +}
+> > > +
+> > >  /* Load chipset information in FADT */
+> > > -static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
+> > > +static void fadt_setup(AcpiFadtDescriptorRev5_1 *fadt, AcpiPmInfo  
+> > *pm,  
+> > > +                       uint8_t revision)
+> > >  {
+> > >      fadt->model = 1;
+> > >      fadt->reserved1 = 0;
+> > > @@ -309,6 +323,25 @@ static void fadt_setup(AcpiFadtDescriptorRev1  
+> > *fadt, AcpiPmInfo *pm)  
+> > >          fadt->flags |= cpu_to_le32(1 <<  
+> > ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);  
+> > >      }
+> > >      fadt->century = RTC_CENTURY;
+> > > +
+> > > +    /* Build ACPI 2.0 (FADT version 3+) GAS fields */
+> > > +    if (revision >= 3) {
+> > > +        /* EVT, CNT, TMR register matches hw/acpi/core.c */
+> > > +        build_gas(&fadt->xpm1a_event_block, AML_SYSTEM_IO,
+> > > +                  32, 0, 0, cpu_to_le64(pm->io_base));
+> > > +        build_gas(&fadt->xpm1a_control_block, AML_SYSTEM_IO,
+> > > +                  16, 0, 0, cpu_to_le64(pm->io_base + 0x04));
+> > > +        build_gas(&fadt->xpm_timer_block, AML_SYSTEM_IO,
+> > > +                  32, 0, 0, cpu_to_le64(pm->io_base + 0x08));
+> > > +        build_gas(&fadt->xgpe0_block, AML_SYSTEM_IO,
+> > > +                  pm->gpe0_blk_len << 3, 0, 0, cpu_to_le64(pm->gpe0_blk));
+> > > +    }
+> > > +
+> > > +    /* Build dummy ACPI 5.0 fields */
+> > > +    if (revision >= 5) {
+> > > +        build_gas(&fadt->sleep_control, AML_SYSTEM_MEMORY, 0, 0, 0,  
+> > 0);  
+> > > +        build_gas(&fadt->sleep_status, AML_SYSTEM_MEMORY, 0, 0, 0, 0);
+> > > +    }
+> > >  }
+> > >
+> > >
+> > > @@ -316,11 +349,21 @@ static void  
+> > fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)  
+> > >  static void
+> > >  build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+> > >             unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
+> > > -           const char *oem_id, const char *oem_table_id)
+> > > +           const char *oem_id, const char *oem_table_id, uint8_t revision)
+> > >  {
+> > > -    AcpiFadtDescriptorRev1 *fadt = acpi_data_push(table_data,  
+> > sizeof(*fadt));  
+> > > -    unsigned fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data-
+> > >data;
+> > > -    unsigned dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+> > > +    AcpiFadtDescriptorRev5_1 *fadt;
+> > > +    unsigned fw_ctrl_offset;
+> > > +    unsigned dsdt_entry_offset;
+> > > +    unsigned fadt_len;
+> > > +
+> > > +    if (revision == 1) {
+> > > +        fadt_len = sizeof(AcpiFadtDescriptorRev1);
+> > > +    } else {
+> > > +        fadt_len = sizeof(AcpiFadtDescriptorRev5_1);
+> > > +    }
+> > > +    fadt = acpi_data_push(table_data, fadt_len);
+> > > +    fw_ctrl_offset = (char *)&fadt->firmware_ctrl - table_data->data;
+> > > +    dsdt_entry_offset = (char *)&fadt->dsdt - table_data->data;
+> > >
+> > >      /* FACS address to be filled by Guest linker */
+> > >      bios_linker_loader_add_pointer(linker,
+> > > @@ -328,13 +371,28 @@ build_fadt(GArray *table_data, BIOSLinker  
+> > *linker, AcpiPmInfo *pm,  
+> > >          ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> > >
+> > >      /* DSDT address to be filled by Guest linker */
+> > > -    fadt_setup(fadt, pm);
+> > >      bios_linker_loader_add_pointer(linker,
+> > >          ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsdt),
+> > >          ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > >
+> > > -    build_header(linker, table_data,
+> > > -                 (void *)fadt, "FACP", sizeof(*fadt), 1, oem_id, oem_table_id);
+> > > +    if (revision > 2) {
+> > > +        fw_ctrl_offset = (char *)&fadt->Xfacs - table_data->data;
+> > > +        dsdt_entry_offset = (char *)&fadt->Xdsdt - table_data->data;
+> > > +
+> > > +        /* FACS address to be filled by Guest linker */
+> > > +        bios_linker_loader_add_pointer(linker,
+> > > +            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->Xfacs),
+> > > +            ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> > > +
+> > > +        /* DSDT address to be filled by Guest linker */
+> > > +        bios_linker_loader_add_pointer(linker,
+> > > +            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->Xdsdt),
+> > > +            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > > +    }
+> > > +
+> > > +    fadt_setup(fadt, pm, revision);
+> > > +    build_header(linker, table_data, (void *)fadt, "FACP", fadt_len,
+> > > +                 revision, oem_id, oem_table_id);
+> > >  }
+> > >
+> > >  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> > > @@ -2681,7 +2739,7 @@ void acpi_build(AcpiBuildTables *tables,  
+> > MachineState *machine)  
+> > >      fadt = tables_blob->len;
+> > >      acpi_add_table(table_offsets, tables_blob);
+> > >      build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
+> > > -               slic_oem.id, slic_oem.table_id);
+> > > +               slic_oem.id, slic_oem.table_id, acpi_fadt_rev);
+> > >      aml_len += tables_blob->len - fadt;
+> > >
+> > >      acpi_add_table(table_offsets, tables_blob);
+> > > diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+> > > index 7b3d93c..63df38d 100644
+> > > --- a/include/hw/acpi/acpi.h
+> > > +++ b/include/hw/acpi/acpi.h
+> > > @@ -173,6 +173,7 @@ void acpi_update_sci(ACPIREGS *acpi_regs,  
+> > qemu_irq irq);  
+> > >
+> > >  /* acpi.c */
+> > >  extern int acpi_enabled;
+> > > +extern uint8_t acpi_fadt_rev;
+> > >  extern char unsigned *acpi_tables;
+> > >  extern size_t acpi_tables_len;
+> > >
+> > > diff --git a/qemu-options.hx b/qemu-options.hx
+> > > index 5fe7f87..d61dd92 100644
+> > > --- a/qemu-options.hx
+> > > +++ b/qemu-options.hx
+> > > @@ -1497,7 +1497,10 @@ DEF("acpitable", HAS_ARG,  
+> > QEMU_OPTION_acpitable,  
+> > >      "             [,sig=str][,rev=n]\n"
+> > >      "             [,oem_id=str][,oem_table_id=str][,oem_rev=n]\n"
+> > >      "             [,asl_compiler_id=str][,asl_compiler_rev=n]\n"
+> > > -    "                ACPI table description\n", QEMU_ARCH_I386)
+> > > +    "                ACPI table description\n"
+> > > +    "-acpitable fadt=n\n"
+> > > +    "                Configure FADT revision\n",
+> > > +    QEMU_ARCH_I386)
+> > >  STEXI
+> > >  @item -acpitable  
+> > data=@var{file1}[:@var{file2}]...[,sig=@var{str}][,rev=@var{n}][,oem_id=@
+> > var{str}][,oem_table_id=@var{str}][,oem_rev=@var{n}]
+> > [,asl_compiler_id=@var{str}][,asl_compiler_rev=@var{n}]  
+> > >  @findex -acpitable
+> > > @@ -1511,6 +1514,9 @@ If a SLIC table is supplied to QEMU, then the  
+> > SLIC's oem_id and oem_table_id  
+> > >  fields will override the same in the RSDT and the FADT (a.k.a. FACP), in  
+> > order  
+> > >  to ensure the field matches required by the Microsoft SLIC spec and the  
+> > ACPI  
+> > >  spec.
+> > > +
+> > > +@item -acpitable fadt=@var{n}
+> > > +Configure FADT revision to 1, 3, 5, default 1.
+> > >  ETEXI
+> > >
+> > >  DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,  
+> 
 

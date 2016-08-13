@@ -1,139 +1,233 @@
-Received: by 10.25.21.156 with SMTP id 28csp219828lfv;
-        Fri, 12 Aug 2016 08:43:01 -0700 (PDT)
-X-Received: by 10.55.36.131 with SMTP id k3mr17886947qkk.86.1471016581458;
-        Fri, 12 Aug 2016 08:43:01 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp475022lfv;
+        Fri, 12 Aug 2016 22:53:03 -0700 (PDT)
+X-Received: by 10.200.42.153 with SMTP id b25mr21603156qta.72.1471067583072;
+        Fri, 12 Aug 2016 22:53:03 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f184si3621058qkd.219.2016.08.12.08.43.01
+        by mx.google.com with ESMTPS id l67si5690711qkc.231.2016.08.12.22.53.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Aug 2016 08:43:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 12 Aug 2016 22:53:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53036 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55965 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bYEbs-0001CX-LE
-	for alex.bennee@linaro.org; Fri, 12 Aug 2016 11:43:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58520)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bYRsU-0006jA-HS
+	for alex.bennee@linaro.org; Sat, 13 Aug 2016 01:53:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58746)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bYEB6-0008Px-Fa
-	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 11:15:21 -0400
+	(envelope-from <wei@redhat.com>) id 1bYRsR-0006j1-45
+	for qemu-arm@nongnu.org; Sat, 13 Aug 2016 01:53:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bYEB4-0006XS-Ii
-	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 11:15:19 -0400
-Received: from mail-ua0-x22f.google.com ([2607:f8b0:400c:c08::22f]:34433)
+	(envelope-from <wei@redhat.com>) id 1bYRsM-00060l-5v
+	for qemu-arm@nongnu.org; Sat, 13 Aug 2016 01:52:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42220)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bYEB3-0006Ws-LE
-	for qemu-devel@nongnu.org; Fri, 12 Aug 2016 11:15:18 -0400
-Received: by mail-ua0-x22f.google.com with SMTP id k90so46666909uak.1
-	for <qemu-devel@nongnu.org>; Fri, 12 Aug 2016 08:15:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=BU2HdDnrW4vdKafaFWNycV01CL6nAbGPjB/1CbTWYIU=;
-	b=U63NicvHPuWqiC+dtgc86r3jkSOhrqPjCXjFGsyZygnRFhO1YnFaVCapFAvPv9UFWA
-	Fbj5p1JG8i5UmxC/44+cED4QBJG/BzoH6LBboxtXtBXHI5tf4TYmjh8UNRb0jy6AvbHV
-	lJz0OllKYQHPsOEznn61ziEunx4+wE41a62Qk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=BU2HdDnrW4vdKafaFWNycV01CL6nAbGPjB/1CbTWYIU=;
-	b=gttBxwrm1o5VMVmO5cJVXuz6Tjg/sL0iFwu9p3yXkPgvi3UiCdYufUWxc1w7K5KyEq
-	/7Ifx51hx6y/o8jSDOzGQxkXuH2K6EZZTEYYD3TxF5ASkslXS/V9ExUYaHoR3Cb0JPpm
-	mNNBnbGirNYOjvSQJ6e7j7n9Zc/MwE2eUA/hJeooXLBvja2E9GANea5qCvNzmt9jPYGS
-	Lccj/yR2JJNd5gddkOa/tqIyW9Xb1+xnh50EJos7u+U9KZYDAsq4VnFbJ3M4gAeVefAK
-	bBeWGHqoIex2I+cXNLVHm0BJP8syf9kjwTpO7+7/D1hKIZ+OQi9TWL9AwMkKjuHo6WO0
-	alvQ==
-X-Gm-Message-State: AEkoouvljCVxDh9Q1Y+93aZdS9rwB8DIGfJKON0cNc5rGRZ7Qkw4XVC+UoHPXIOiMZ1vrCygmoQpcNRxN3yfCuS1
-X-Received: by 10.176.0.212 with SMTP id 78mr6352874uaj.107.1471004438164;
-	Fri, 12 Aug 2016 05:20:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.9.149 with HTTP; Fri, 12 Aug 2016 05:20:17 -0700 (PDT)
-In-Reply-To: <CAFEAcA8HiOvUjK46NdDuUJd4hqzXMuF+M6XHhk_XDCw-5E+fgQ@mail.gmail.com>
-References: <20160809190229.27871-1-bobby.prani@gmail.com>
-	<20160809190229.27871-5-bobby.prani@gmail.com>
-	<CAFEAcA8HiOvUjK46NdDuUJd4hqzXMuF+M6XHhk_XDCw-5E+fgQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Aug 2016 13:20:17 +0100
-Message-ID: <CAFEAcA-Lmxqapg-EBYhuO2phuU11AZ6YqfDQT6c8uGXgQL2uBg@mail.gmail.com>
-To: Pranith Kumar <bobby.prani@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <wei@redhat.com>)
+	id 1bYRsL-00060b-To; Sat, 13 Aug 2016 01:52:54 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8814B61E45;
+	Sat, 13 Aug 2016 05:52:52 +0000 (UTC)
+Received: from rhlaptop.redhat.com (vpn-57-223.rdu2.redhat.com [10.10.57.223])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u7D5qpqB015203; Sat, 13 Aug 2016 01:52:51 -0400
+From: Wei Huang <wei@redhat.com>
+To: qemu-arm@nongnu.org
+Date: Sat, 13 Aug 2016 00:52:50 -0500
+Message-Id: <1471067570-7503-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Sat, 13 Aug 2016 05:52:52 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22f
-Subject: Re: [Qemu-devel] [PATCH 5/5] target-arm: Fix warn about implicit
- conversion
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH V1 1/1] arm64: Add an option to turn on/off
+ host-backed vPMU support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, "open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LJobnLfc4WVq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, drjones@redhat.com,
+	shannon.zhao@linaro.org, abologna@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PLXWF2jZaObh
 
-On 11 August 2016 at 11:50, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 9 August 2016 at 20:02, Pranith Kumar <bobby.prani@gmail.com> wrote:
->> Clang warns about an implicit conversion as follows:
->>
->> /mnt/devops/code/qemu/target-arm/neon_helper.c:1075:1: warning: implicit conversion from 'int' to 'int8_t' (aka 'signed char') changes value from 128 to -128 [-Wconstant-conversion]
->> NEON_VOP_ENV(qrshl_s8, neon_s8, 4)
->> ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> /mnt/devops/code/qemu/target-arm/neon_helper.c:116:83: note: expanded from macro 'NEON_VOP_ENV'
->> uint32_t HELPER(glue(neon_,name))(CPUARMState *env, uint32_t arg1, uint32_t arg2) \
->>                                                                                   ^
->> /mnt/devops/code/qemu/target-arm/neon_helper.c:106:5: note: expanded from macro '\
->> NEON_VOP_BODY'
->>     NEON_DO##n; \
->>     ^~~~~~~~~~
->> <scratch space>:21:1: note: expanded from here
->> NEON_DO4
->> ^~~~~~~~
->> /mnt/devops/code/qemu/target-arm/neon_helper.c:93:5: note: expanded from macro 'NEON_DO4'
->>     NEON_FN(vdest.v1, vsrc1.v1, vsrc2.v1); \
->>     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> /mnt/devops/code/qemu/target-arm/neon_helper.c:1054:23: note: expanded from macro 'NEON_FN'
->>             dest = (1 << (sizeof(src1) * 8 - 1)); \
->>                  ~  ~~^~~~~~~~~~~~~~~~~~~~~~~~~
->>
->> Fix it by casting to appropriate type.
->>
->> Signed-off-by: Pranith Kumar <bobby.prani@gmail.com>
->> ---
->>  target-arm/neon_helper.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/target-arm/neon_helper.c b/target-arm/neon_helper.c
->> index 1f1844f..ebdf7c9 100644
->> --- a/target-arm/neon_helper.c
->> +++ b/target-arm/neon_helper.c
->> @@ -1051,7 +1051,7 @@ uint64_t HELPER(neon_qrshl_u64)(CPUARMState *env, uint64_t val, uint64_t shiftop
->>      if (tmp >= (ssize_t)sizeof(src1) * 8) { \
->>          if (src1) { \
->>              SET_QC(); \
->> -            dest = (1 << (sizeof(src1) * 8 - 1)); \
->> +            dest = (typeof(dest))(1 << (sizeof(src1) * 8 - 1)); \
->>              if (src1 > 0) { \
->>                  dest--; \
->>              } \
->
-> A bit ugly but I guess it works. (The code is
-> deliberately setting dest to "most negative integer
-> that fits into src1 type".)
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This patch adds a pmu=[on/off] option to enable/disable host vPMU
+support in guest VM. There are several reasons to justify this option.
+First, host-backed vPMU can be problematic for cross-migration between
+different SoC as perf counters are architecture-dependent. It is more
+flexible to have an option to turn it on/off. Secondly this option
+matches the "pmu" option as supported in libvirt tool.
 
-Applied to master, thanks.
+Note that, like "has_el3", the "pmu" option is only made available on
+CPUs that support host-backed vPMU. They include:
+    * cortex-a53 + kvm
+    * cortex-a57 + kvm
+    * host + kvm
+This option is removed in other configs where it doesn't make sense
+(e.g. cortex-a57 + TCG); and the default pmu support is off. This patch
+has been tested under both DT/ACPI modes.
 
--- PMM
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ hw/arm/virt-acpi-build.c |  2 +-
+ hw/arm/virt.c            |  2 +-
+ target-arm/cpu.c         | 13 +++++++++++++
+ target-arm/cpu.h         |  3 ++-
+ target-arm/cpu64.c       |  6 ++++++
+ target-arm/kvm64.c       | 10 +++++-----
+ 6 files changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 28fc59c..22fb9d9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
+         gicc->uid = i;
+         gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+ 
+-        if (armcpu->has_pmu) {
++        if (armcpu->has_host_pmu) {
+             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+         }
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a193b5a..4975f38 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+ 
+     CPU_FOREACH(cpu) {
+         armcpu = ARM_CPU(cpu);
+-        if (!armcpu->has_pmu ||
++        if (!armcpu->has_host_pmu ||
+             !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
+             return;
+         }
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index ce8b8f4..a527128 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -509,6 +509,10 @@ static Property arm_cpu_rvbar_property =
+ static Property arm_cpu_has_el3_property =
+             DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
+ 
++/* use property name "pmu" to match with other archs and libvirt */
++static Property arm_cpu_has_host_pmu_property =
++    DEFINE_PROP_BOOL("pmu", ARMCPU, has_host_pmu, false);
++
+ static Property arm_cpu_has_mpu_property =
+             DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
+ 
+@@ -552,6 +556,11 @@ static void arm_cpu_post_init(Object *obj)
+ #endif
+     }
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_HOST_PMU)) {
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_host_pmu_property,
++                                 &error_abort);
++    }
++
+     if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
+                                  &error_abort);
+@@ -648,6 +657,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         cpu->id_aa64pfr0 &= ~0xf000;
+     }
+ 
++    if (!cpu->has_host_pmu) {
++        unset_feature(env, ARM_FEATURE_HOST_PMU);
++    }
++
+     if (!arm_feature(env, ARM_FEATURE_EL2)) {
+         /* Disable the hypervisor feature bits in the processor feature
+          * registers if we don't have EL2. These are id_pfr1[15:12] and
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 76d824d..f3f6d3f 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -580,7 +580,7 @@ struct ARMCPU {
+     /* CPU has security extension */
+     bool has_el3;
+     /* CPU has PMU (Performance Monitor Unit) */
+-    bool has_pmu;
++    bool has_host_pmu;
+ 
+     /* CPU has memory protection unit */
+     bool has_mpu;
+@@ -1129,6 +1129,7 @@ enum arm_features {
+     ARM_FEATURE_V8_SHA256, /* implements SHA256 part of v8 Crypto Extensions */
+     ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensions */
+     ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
++    ARM_FEATURE_HOST_PMU, /* PMU supported by host */
+ };
+ 
+ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+index 1635deb..19e8127 100644
+--- a/target-arm/cpu64.c
++++ b/target-arm/cpu64.c
+@@ -111,6 +111,9 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
++    if (kvm_enabled()) {
++        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
++    }
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+     cpu->midr = 0x411fd070;
+     cpu->revidr = 0x00000000;
+@@ -166,6 +169,9 @@ static void aarch64_a53_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+     set_feature(&cpu->env, ARM_FEATURE_CRC);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
++    if (kvm_enabled()) {
++        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
++    }
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+     cpu->midr = 0x410fd034;
+     cpu->revidr = 0x00000000;
+diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+index 5faa76c..588e5e3 100644
+--- a/target-arm/kvm64.c
++++ b/target-arm/kvm64.c
+@@ -469,6 +469,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+     set_feature(&features, ARM_FEATURE_VFP4);
+     set_feature(&features, ARM_FEATURE_NEON);
+     set_feature(&features, ARM_FEATURE_AARCH64);
++    set_feature(&features, ARM_FEATURE_HOST_PMU);
+ 
+     ahcc->features = features;
+ 
+@@ -501,11 +502,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+     }
+-    if (kvm_irqchip_in_kernel() &&
+-        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+-        cpu->has_pmu = true;
+-        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+-    }
++    /* enable vPMU based on KVM mode, hw capability, and user setting */
++    cpu->has_host_pmu &= kvm_irqchip_in_kernel() &&
++        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3);
++    cpu->kvm_init_features[0] |= cpu->has_host_pmu << KVM_ARM_VCPU_PMU_V3;
+ 
+     /* Do KVM_ARM_VCPU_INIT ioctl */
+     ret = kvm_arm_vcpu_init(cs);
+-- 
+2.4.11
+

@@ -1,128 +1,325 @@
-Received: by 10.25.21.156 with SMTP id 28csp478732lfv;
-        Fri, 12 Aug 2016 23:06:25 -0700 (PDT)
-X-Received: by 10.55.8.129 with SMTP id 123mr22330203qki.198.1471068385160;
-        Fri, 12 Aug 2016 23:06:25 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp1032869lfv;
+        Sun, 14 Aug 2016 08:44:00 -0700 (PDT)
+X-Received: by 10.55.64.21 with SMTP id n21mr2907120qka.137.1471189440000;
+        Sun, 14 Aug 2016 08:44:00 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z45si7067609qta.27.2016.08.12.23.06.24
+        by mx.google.com with ESMTPS id e2si10891638qtc.106.2016.08.14.08.43.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Aug 2016 23:06:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 14 Aug 2016 08:43:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55994 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:32954 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bYS5Q-0000tS-Jp
-	for alex.bennee@linaro.org; Sat, 13 Aug 2016 02:06:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59809)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bYxZv-0002h1-Ee
+	for alex.bennee@linaro.org; Sun, 14 Aug 2016 11:43:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bYS5N-0000tI-Jf
-	for qemu-arm@nongnu.org; Sat, 13 Aug 2016 02:06:22 -0400
+	(envelope-from <shankerd@codeaurora.org>) id 1bYxYy-0002Go-NC
+	for qemu-devel@nongnu.org; Sun, 14 Aug 2016 11:43:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bYS5I-0008Al-Hh
-	for qemu-arm@nongnu.org; Sat, 13 Aug 2016 02:06:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44990)
+	(envelope-from <shankerd@codeaurora.org>) id 1bYxYw-0006j9-4Y
+	for qemu-devel@nongnu.org; Sun, 14 Aug 2016 11:42:59 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:46392)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1bYS5I-0008Ab-Bb; Sat, 13 Aug 2016 02:06:16 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(envelope-from <shankerd@codeaurora.org>)
+	id 1bYxYq-0006id-RJ; Sun, 14 Aug 2016 11:42:53 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id 57AD161BE7; Sun, 14 Aug 2016 15:42:50 +0000 (UTC)
+Received: from shankerd-ubuntu.qualcomm.com (i-global254.qualcomm.com
+	[199.106.103.254])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8CB9761E50;
-	Sat, 13 Aug 2016 06:06:15 +0000 (UTC)
-Received: from [10.10.57.223] (vpn-57-223.rdu2.redhat.com [10.10.57.223])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7D66DoX020504
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Sat, 13 Aug 2016 02:06:14 -0400
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Andrea Bolognani <abologna@redhat.com>
-References: <1469723896-28049-1-git-send-email-wei@redhat.com>
-	<20160729065453.qq44y2hxohizk3yw@hawk.localdomain>
-	<1470053099.3971.11.camel@redhat.com>
-	<20160801130808.2igpsx52opi7ogvk@kamzik.localdomain>
-	<1470058019.3971.13.camel@redhat.com>
-	<CAFEAcA97p9GFrp+tX3pwqeVaSxjxVwuPvCAgZt5aYd_Yk+mGnA@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <da84a3fb-79d9-bb15-0784-9f635b6363cf@redhat.com>
-Date: Sat, 13 Aug 2016 01:06:13 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA97p9GFrp+tX3pwqeVaSxjxVwuPvCAgZt5aYd_Yk+mGnA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Sat, 13 Aug 2016 06:06:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RFC 1/1] arm64: add an option to
- turn on/off vpmu support
-X-BeenThere: qemu-arm@nongnu.org
+	(Authenticated sender: shankerd@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 7F5AB61B7B;
+	Sun, 14 Aug 2016 15:42:48 +0000 (UTC)
+From: Shanker Donthineni <shankerd@codeaurora.org>
+To: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>
+Date: Sun, 14 Aug 2016 10:42:21 -0500
+Message-Id: <1471189341-21103-1-git-send-email-shankerd@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 198.145.29.96
+Subject: [Qemu-devel] [PATCH v2] hw/vfio/platform: Add Qualcomm Technologies,
+ Inc HIDMA device support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fpllxyZOclMT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kaya Sinan <okaya@codeaurora.org>, Philip Elcan <pelcan@codeaurora.org>,
+	Shanker Donthineni <shankerd@codeaurora.org>,
+	Vikram Sethi <vikrams@codeaurora.org>, Eric Auger <eric.auger@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3ZlGS6IG2H1S
 
+This patch introduces the Qualcomm Technologies, Inc HIDMA device and
+allows passthrough the host HIDMA device to a guest machine using the
+vfio-platform framework.
 
+A platform device tree node is created for the guest machine which
+contains the compat string 'qcom,hidma-1.0', mmio regions, active high
+SPIs, and an optional property dma-coherent.
 
-On 08/01/2016 08:32 AM, Peter Maydell wrote:
-> On 1 August 2016 at 14:26, Andrea Bolognani <abologna@redhat.com> wrote:
->> On Mon, 2016-08-01 at 15:08 +0200, Andrew Jones wrote:
->>>> I'm not sure a warning is enough: if I start a guest and
->>>> explicitly ask for a PMU, I expect it to be there, or for
->>>> the guest not to start at all. How does x86 behave in this
->>>> regard?
->>>
->>> Peter had a good suggestion for this. We need to wrap the property
->>> addition in an arm_feature check like the has_el3 property. That will
->>> remove it from all cpu types that don't support it.
->>
->> Wouldn't that mean that you'd be unable to use
->>
->>   -cpu foo,pmu=off
->>
->> if CPU model 'foo' doesn't support a PMU? I'd expect that
->> to work.
-> 
-> The current precedent (has_el3) doesn't work like that: if
-> foo isn't a CPU which can support EL3 then the property doesn't
-> exist, and it's an error to try to set it.
+Signed-off-by: Vikram Sethi <vikrams@codeaurora.org>
+Signed-off-by: Shanker Donthineni <shankerd@codeaurora.org>
+---
+Changes sicnce v1:
+  combined patches [v1 1/2] and [v1 2/2].
+  added '#include "qemu/osdep.h'.
+  changed compact string to 'qcom,hidma-1.0' to match the host driver.
+  set dma-coherent property based on the IOMMU coherency status.
 
-V1 sent. I tried to follow everyone's advice. See the following:
+ hw/arm/sysbus-fdt.c               | 67 +++++++++++++++++++++++++++++++++++++++
+ hw/vfio/Makefile.objs             |  1 +
+ hw/vfio/qcom-hidma.c              | 58 +++++++++++++++++++++++++++++++++
+ include/hw/vfio/vfio-qcom-hidma.h | 50 +++++++++++++++++++++++++++++
+ 4 files changed, 176 insertions(+)
+ create mode 100644 hw/vfio/qcom-hidma.c
+ create mode 100644 include/hw/vfio/vfio-qcom-hidma.h
 
-* set default pmu=off
-* like el3, add a new feature ARM_FEATURE_HOST_PMU
-* "pmu" property becomes CPU dependent. Only cortex-a53/cortex-a57/host
-under certain mode support this option
-* change struct ARMCPU field name "has_pmu" ==> "has_host_pmu" because
-IMO "has_pmu" is misleading
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index 5debb33..bdf8cbb 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -27,6 +27,7 @@
+ #include "qemu-common.h"
+ #ifdef CONFIG_LINUX
+ #include <linux/vfio.h>
++#include <sys/ioctl.h>
+ #endif
+ #include "hw/arm/sysbus-fdt.h"
+ #include "qemu/error-report.h"
+@@ -36,6 +37,7 @@
+ #include "hw/vfio/vfio-platform.h"
+ #include "hw/vfio/vfio-calxeda-xgmac.h"
+ #include "hw/vfio/vfio-amd-xgbe.h"
++#include "hw/vfio/vfio-qcom-hidma.h"
+ #include "hw/arm/fdt.h"
+ 
+ /*
+@@ -262,6 +264,70 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
+     return 0;
+ }
+ 
++/**
++ * add_qcom_hidma_fdt_node
++ *
++ * Generates a simple node with following properties:
++ * compatible string, regs, active-high interrupts, and optional dma-coherent
++ */
++static int add_qcom_hidma_fdt_node(SysBusDevice *sbdev, void *opaque)
++{
++    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
++    struct VFIOGroup *group = vdev->vbasedev.group;
++    VFIODevice *vbasedev = &vdev->vbasedev;
++    PlatformBusFDTData *data = opaque;
++    const char *parent_node = data->pbus_node_name;
++    PlatformBusDevice *pbus = data->pbus;
++    uint32_t *irq_attr, *reg_attr;
++    uint64_t mmio_base, irq_number;
++    void *fdt = data->fdt;
++    int compat_str_len, i, ret;
++    char *nodename;
++
++    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
++                               vbasedev->name, mmio_base);
++    assert(nodename);
++    qemu_fdt_add_subnode(fdt, nodename);
++
++    compat_str_len = strlen(vdev->compat) + 1;
++    qemu_fdt_setprop(fdt, nodename, "compatible",
++                          vdev->compat, compat_str_len);
++
++    /* Check if the DMA cache coherency was enabled in IOMMU */
++    ret = ioctl(group->container->fd, VFIO_CHECK_EXTENSION, VFIO_DMA_CC_IOMMU);
++    if (ret > 0) {
++        qemu_fdt_setprop(fdt, nodename, "dma-coherent", "", 0);
++    }
++
++    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
++    assert(reg_attr);
++    for (i = 0; i < vbasedev->num_regions; i++) {
++        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
++        reg_attr[2 * i] = cpu_to_be32(mmio_base);
++        reg_attr[2 * i + 1] = cpu_to_be32(
++                                memory_region_size(vdev->regions[i]->mem));
++    }
++    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
++                     vbasedev->num_regions * 2 * sizeof(uint32_t));
++
++    irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
++    assert(irq_attr);
++    for (i = 0; i < vbasedev->num_irqs; i++) {
++        irq_number = platform_bus_get_irqn(pbus, sbdev , i)
++                         + data->irq_start;
++        irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
++        irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
++        irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++    }
++    qemu_fdt_setprop(fdt, nodename, "interrupts",
++                     irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
++    g_free(irq_attr);
++    g_free(reg_attr);
++    g_free(nodename);
++    return 0;
++}
++
+ /* AMD xgbe properties whose values are copied/pasted from host */
+ static HostProperty amd_xgbe_copied_properties[] = {
+     {"compatible", false},
+@@ -420,6 +486,7 @@ static const NodeCreationPair add_fdt_node_functions[] = {
+ #ifdef CONFIG_LINUX
+     {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
+     {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
++    {TYPE_VFIO_QCOM_HIDMA, add_qcom_hidma_fdt_node},
+ #endif
+     {"", NULL}, /* last element */
+ };
+diff --git a/hw/vfio/Makefile.objs b/hw/vfio/Makefile.objs
+index c25e32b..ac38c8f 100644
+--- a/hw/vfio/Makefile.objs
++++ b/hw/vfio/Makefile.objs
+@@ -5,4 +5,5 @@ obj-$(CONFIG_SOFTMMU) += platform.o
+ obj-$(CONFIG_SOFTMMU) += calxeda-xgmac.o
+ obj-$(CONFIG_SOFTMMU) += amd-xgbe.o
+ obj-$(CONFIG_SOFTMMU) += spapr.o
++obj-$(CONFIG_SOFTMMU) += qcom-hidma.o
+ endif
+diff --git a/hw/vfio/qcom-hidma.c b/hw/vfio/qcom-hidma.c
+new file mode 100644
+index 0000000..ddb3c34
+--- /dev/null
++++ b/hw/vfio/qcom-hidma.c
+@@ -0,0 +1,58 @@
++/*
++ * Qualcomm Technologies, Inc VFIO HiDMA platform device
++ *
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++#include "qemu/osdep.h"
++#include "hw/vfio/vfio-qcom-hidma.h"
++
++static void qcom_hidma_realize(DeviceState *dev, Error **errp)
++{
++    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(dev);
++    VFIOQcomHidmaDeviceClass *k = VFIO_QCOM_HIDMA_DEVICE_GET_CLASS(dev);
++
++    vdev->compat = g_strdup("qcom,hidma-1.0");
++
++    k->parent_realize(dev, errp);
++}
++
++static const VMStateDescription vfio_platform_vmstate = {
++    .name = TYPE_VFIO_QCOM_HIDMA,
++    .unmigratable = 1,
++};
++
++static void vfio_qcom_hidma_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    VFIOQcomHidmaDeviceClass *vcxc = VFIO_QCOM_HIDMA_DEVICE_CLASS(klass);
++
++    vcxc->parent_realize = dc->realize;
++    dc->realize = qcom_hidma_realize;
++    dc->desc = "VFIO QCOM HIDMA";
++    dc->vmsd = &vfio_platform_vmstate;
++}
++
++static const TypeInfo vfio_qcom_hidma_dev_info = {
++    .name = TYPE_VFIO_QCOM_HIDMA,
++    .parent = TYPE_VFIO_PLATFORM,
++    .instance_size = sizeof(VFIOQcomHidmaDevice),
++    .class_init = vfio_qcom_hidma_class_init,
++    .class_size = sizeof(VFIOQcomHidmaDeviceClass),
++};
++
++static void register_qcom_hidma_dev_type(void)
++{
++    type_register_static(&vfio_qcom_hidma_dev_info);
++}
++
++type_init(register_qcom_hidma_dev_type)
+diff --git a/include/hw/vfio/vfio-qcom-hidma.h b/include/hw/vfio/vfio-qcom-hidma.h
+new file mode 100644
+index 0000000..23cd66c
+--- /dev/null
++++ b/include/hw/vfio/vfio-qcom-hidma.h
+@@ -0,0 +1,50 @@
++/*
++ * Qualcomm Technologies, Inc VFIO HiDMA platform device
++ *
++ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ */
++
++#ifndef HW_VFIO_VFIO_QCOM_HIDMA_H
++#define HW_VFIO_VFIO_QCOM_HIDMA_H
++
++#include "hw/vfio/vfio-platform.h"
++
++#define TYPE_VFIO_QCOM_HIDMA "vfio-qcom-hidma"
++
++/**
++ * This device exposes:
++ * - MMIO regions corresponding to its register space
++ * - Active high IRQs
++ * - Optional property 'dma-coherent'
++ */
++typedef struct VFIOQcomHidmaDevice {
++    VFIOPlatformDevice vdev;
++} VFIOQcomHidmaDevice;
++
++typedef struct VFIOQcomHidmaDeviceClass {
++    /*< private >*/
++    VFIOPlatformDeviceClass parent_class;
++    /*< public >*/
++    DeviceRealize parent_realize;
++} VFIOQcomHidmaDeviceClass;
++
++#define VFIO_QCOM_HIDMA_DEVICE(obj) \
++     OBJECT_CHECK(VFIOQcomHidmaDevice, (obj), TYPE_VFIO_QCOM_HIDMA)
++#define VFIO_QCOM_HIDMA_DEVICE_CLASS(klass) \
++     OBJECT_CLASS_CHECK(VFIOQcomHidmaDeviceClass, (klass), \
++                        TYPE_VFIO_QCOM_HIDMA)
++#define VFIO_QCOM_HIDMA_DEVICE_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(VFIOQcomHidmaDeviceClass, (obj), \
++                      TYPE_VFIO_QCOM_HIDMA)
++
++#endif
+-- 
+Qualcomm Datacenter Technologies, Inc. on behalf of the Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.
 
-BTW answering Andrea's question above: "-cpu foo,pmu=off" won't be
-allowed in this patch if CPU "foo" doesn't support host-backed PMU. QEMU
-will fail to run in this case. Maybe this is what we want?
-
-Thanks,
--Wei
-
-> 
-> thanks
-> -- PMM
-> 

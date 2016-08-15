@@ -1,325 +1,495 @@
-Received: by 10.25.21.156 with SMTP id 28csp1032869lfv;
-        Sun, 14 Aug 2016 08:44:00 -0700 (PDT)
-X-Received: by 10.55.64.21 with SMTP id n21mr2907120qka.137.1471189440000;
-        Sun, 14 Aug 2016 08:44:00 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp1204801lfv;
+        Sun, 14 Aug 2016 18:34:38 -0700 (PDT)
+X-Received: by 10.237.55.65 with SMTP id i59mr30562734qtb.62.1471224878539;
+        Sun, 14 Aug 2016 18:34:38 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e2si10891638qtc.106.2016.08.14.08.43.59
+        by mx.google.com with ESMTPS id k123si10818903qkf.49.2016.08.14.18.34.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 14 Aug 2016 08:43:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 14 Aug 2016 18:34:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:32954 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34555 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bYxZv-0002h1-Ee
-	for alex.bennee@linaro.org; Sun, 14 Aug 2016 11:43:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43591)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bZ6nV-0007Ci-W3
+	for alex.bennee@linaro.org; Sun, 14 Aug 2016 21:34:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33027)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shankerd@codeaurora.org>) id 1bYxYy-0002Go-NC
-	for qemu-devel@nongnu.org; Sun, 14 Aug 2016 11:43:02 -0400
+	(envelope-from <lv.zheng@intel.com>) id 1bZ6nM-00078v-84
+	for qemu-arm@nongnu.org; Sun, 14 Aug 2016 21:34:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shankerd@codeaurora.org>) id 1bYxYw-0006j9-4Y
-	for qemu-devel@nongnu.org; Sun, 14 Aug 2016 11:42:59 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:46392)
+	(envelope-from <lv.zheng@intel.com>) id 1bZ6nJ-0001Ty-4p
+	for qemu-arm@nongnu.org; Sun, 14 Aug 2016 21:34:27 -0400
+Received: from mga09.intel.com ([134.134.136.24]:14974)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shankerd@codeaurora.org>)
-	id 1bYxYq-0006id-RJ; Sun, 14 Aug 2016 11:42:53 -0400
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 57AD161BE7; Sun, 14 Aug 2016 15:42:50 +0000 (UTC)
-Received: from shankerd-ubuntu.qualcomm.com (i-global254.qualcomm.com
-	[199.106.103.254])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: shankerd@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 7F5AB61B7B;
-	Sun, 14 Aug 2016 15:42:48 +0000 (UTC)
-From: Shanker Donthineni <shankerd@codeaurora.org>
-To: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>
-Date: Sun, 14 Aug 2016 10:42:21 -0500
-Message-Id: <1471189341-21103-1-git-send-email-shankerd@codeaurora.org>
-X-Mailer: git-send-email 1.9.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 198.145.29.96
-Subject: [Qemu-devel] [PATCH v2] hw/vfio/platform: Add Qualcomm Technologies,
- Inc HIDMA device support
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <lv.zheng@intel.com>)
+	id 1bZ6nB-0001RW-6s; Sun, 14 Aug 2016 21:34:17 -0400
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+	by orsmga102.jf.intel.com with ESMTP; 14 Aug 2016 18:34:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.28,522,1464678000"; d="scan'208";a="1035532673"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+	by orsmga002.jf.intel.com with ESMTP; 14 Aug 2016 18:34:02 -0700
+Received: from shsmsx103.ccr.corp.intel.com (10.239.4.69) by
+	FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server
+	(TLS) id 14.3.248.2; Sun, 14 Aug 2016 18:33:55 -0700
+Received: from shsmsx101.ccr.corp.intel.com ([169.254.1.8]) by
+	SHSMSX103.ccr.corp.intel.com ([169.254.4.181]) with mapi id
+	14.03.0248.002; Mon, 15 Aug 2016 09:33:43 +0800
+From: "Zheng, Lv" <lv.zheng@intel.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Thread-Topic: [PATCH v5 2/2] ACPI: Add -acpitable fadt= to allow FADT
+	revision changes
+Thread-Index: AQHR87PqpWpibtH/7Eqcyw5l6DvWpaBDLg2AgAFLK8D//6Z1AIAFIY/g
+Date: Mon, 15 Aug 2016 01:33:41 +0000
+Message-ID: <1AE640813FDE7649BE1B193DEA596E883BC0DC83@SHSMSX101.ccr.corp.intel.com>
+References: <409b2bbd046a53987a71e64d855e5761d441bbaf.1470641265.git.lv.zheng@intel.com>
+	<cover.1470907810.git.lv.zheng@intel.com>
+	<f59fb42c320294fdf3e140aeaa6dd3aba95d837f.1470907810.git.lv.zheng@intel.com>
+	<20160811144213.6e4c9267@nial.brq.redhat.com>
+	<1AE640813FDE7649BE1B193DEA596E883BC0D4AC@SHSMSX101.ccr.corp.intel.com>
+	<20160812030702.2iiu46wv4wwwepkd@redhat.com>
+In-Reply-To: <20160812030702.2iiu46wv4wwwepkd@redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGE0NzMyMjktNWYwNC00ZWI4LTgzNTItZTlmODZhYmM3YWE4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX0lDIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE1LjkuNi42IiwiVHJ1c3RlZExhYmVsSGFzaCI6IlNUelRJWVpCNVdNRVFqTlRpbnQ0aDhlMTd5YnlmUXJ3Tm5CZ0ZTTjhNQlk9In0=
+x-ctpclassification: CTP_IC
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.24
+Subject: Re: [Qemu-arm] [PATCH v5 2/2] ACPI: Add -acpitable fadt= to allow
+ FADT revision changes
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kaya Sinan <okaya@codeaurora.org>, Philip Elcan <pelcan@codeaurora.org>,
-	Shanker Donthineni <shankerd@codeaurora.org>,
-	Vikram Sethi <vikrams@codeaurora.org>, Eric Auger <eric.auger@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ZlGS6IG2H1S
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Lv Zheng <zetalog@gmail.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6WcWnZxrM8d+
 
-This patch introduces the Qualcomm Technologies, Inc HIDMA device and
-allows passthrough the host HIDMA device to a guest machine using the
-vfio-platform framework.
+Hi,
 
-A platform device tree node is created for the guest machine which
-contains the compat string 'qcom,hidma-1.0', mmio regions, active high
-SPIs, and an optional property dma-coherent.
+> From: Michael S. Tsirkin [mailto:mst@redhat.com]
+> Subject: Re: [PATCH v5 2/2] ACPI: Add -acpitable fadt=3D to allow FADT
+> revision changes
+>=20
+> On Fri, Aug 12, 2016 at 12:47:04AM +0000, Zheng, Lv wrote:
+> > Hi, Igor
+> >
+> > Thanks for the review.
+> >
+> > > From: Igor Mammedov [mailto:imammedo@redhat.com]
+> > > Subject: Re: [PATCH v5 2/2] ACPI: Add -acpitable fadt=3D to allow FAD=
+T
+> > > revision changes
+> > >
+> > > On Thu, 11 Aug 2016 17:36:45 +0800
+> > > Lv Zheng <lv.zheng@intel.com> wrote:
+> > >
+> > > > This patch allows FADT to be built with different revisions. When t=
+he
+> > > revision
+> > > > is greater than 1.0, 64-bit address fields may also be filled.
+> > > >
+> > > > Note that FADT revision 2 has never been defined by the ACPI
+> > > specification. So
+> > > > this patch only adds an option -acpitable fadt=3D to allow revision=
+ 1,3,5
+> to
+> > > be
+> > > > configured by the users.
+> > > >
+> > > > 1. Tested by booting a linux image, the 64-bit addresses are correc=
+tly
+> > > filled
+> > > >    in the dumped FADT.
+> > > > 2. Tested by booting a Windows image, no boot failure can be seen.
+> > >
+> > > series still doesn't say why do you need 64-bit addresses in FADT,
+> > > current Seabios/OVMF allocates tables below 4Gb and gpe/pm
+> > > register blocks are below 4gb as well so there is no point in
+> > > accepting theses patches and adding extra CLI options as these
+> > > patches do.
+> > [Lv Zheng]
+> > This patch is used by us to probe Windows FADT behavior.
+> > Current known behavior includes:
+> > 1. On x86, Windows requires BIOS to have 2 FADTs, 1 is in RSDT, and
+> probably is a v1 table, the other is in XSDT, and probably is a v3+ table=
+.
+>=20
+> What does "requires" mean here? It seems to work fine without.
 
-Signed-off-by: Vikram Sethi <vikrams@codeaurora.org>
-Signed-off-by: Shanker Donthineni <shankerd@codeaurora.org>
----
-Changes sicnce v1:
-  combined patches [v1 1/2] and [v1 2/2].
-  added '#include "qemu/osdep.h'.
-  changed compact string to 'qcom,hidma-1.0' to match the host driver.
-  set dma-coherent property based on the IOMMU coherency status.
+Let me reword:
+Windows requires BIOS to provide 2 FADTs when both RSDT and XSDT are provid=
+ed.
 
- hw/arm/sysbus-fdt.c               | 67 +++++++++++++++++++++++++++++++++++++++
- hw/vfio/Makefile.objs             |  1 +
- hw/vfio/qcom-hidma.c              | 58 +++++++++++++++++++++++++++++++++
- include/hw/vfio/vfio-qcom-hidma.h | 50 +++++++++++++++++++++++++++++
- 4 files changed, 176 insertions(+)
- create mode 100644 hw/vfio/qcom-hidma.c
- create mode 100644 include/hw/vfio/vfio-qcom-hidma.h
+>=20
+> > 2. v2 FADT never exists in the spec, it is used in very early years, by=
+ IA64
+> prototype machines.
+> > 3. If the FADT in RSDT takes effective, then Windows actually ignores 6=
+4-
+> bit GAS fields, but uses 32-bit register fields.
+> > But there are still many uncertainties:
+> > 1. What if the FADT in XSDT takes effective?
+> > 2. What's the behavior on IA64/ARM platforms?
+> > If we could have an option here, we could continue the probing work,
+> trying every combination.
+> >
+> > Thus the original purpose of this commit is - probing de-facto standard
+> behavior.
+>=20
+> Nice, but why do we need PATCH 2 upstream? Is it hard for you to
+> maintain
+> out of tree?
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 5debb33..bdf8cbb 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -27,6 +27,7 @@
- #include "qemu-common.h"
- #ifdef CONFIG_LINUX
- #include <linux/vfio.h>
-+#include <sys/ioctl.h>
- #endif
- #include "hw/arm/sysbus-fdt.h"
- #include "qemu/error-report.h"
-@@ -36,6 +37,7 @@
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
- #include "hw/vfio/vfio-amd-xgbe.h"
-+#include "hw/vfio/vfio-qcom-hidma.h"
- #include "hw/arm/fdt.h"
- 
- /*
-@@ -262,6 +264,70 @@ static int add_calxeda_midway_xgmac_fdt_node(SysBusDevice *sbdev, void *opaque)
-     return 0;
- }
- 
-+/**
-+ * add_qcom_hidma_fdt_node
-+ *
-+ * Generates a simple node with following properties:
-+ * compatible string, regs, active-high interrupts, and optional dma-coherent
-+ */
-+static int add_qcom_hidma_fdt_node(SysBusDevice *sbdev, void *opaque)
-+{
-+    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-+    struct VFIOGroup *group = vdev->vbasedev.group;
-+    VFIODevice *vbasedev = &vdev->vbasedev;
-+    PlatformBusFDTData *data = opaque;
-+    const char *parent_node = data->pbus_node_name;
-+    PlatformBusDevice *pbus = data->pbus;
-+    uint32_t *irq_attr, *reg_attr;
-+    uint64_t mmio_base, irq_number;
-+    void *fdt = data->fdt;
-+    int compat_str_len, i, ret;
-+    char *nodename;
-+
-+    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    nodename = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
-+                               vbasedev->name, mmio_base);
-+    assert(nodename);
-+    qemu_fdt_add_subnode(fdt, nodename);
-+
-+    compat_str_len = strlen(vdev->compat) + 1;
-+    qemu_fdt_setprop(fdt, nodename, "compatible",
-+                          vdev->compat, compat_str_len);
-+
-+    /* Check if the DMA cache coherency was enabled in IOMMU */
-+    ret = ioctl(group->container->fd, VFIO_CHECK_EXTENSION, VFIO_DMA_CC_IOMMU);
-+    if (ret > 0) {
-+        qemu_fdt_setprop(fdt, nodename, "dma-coherent", "", 0);
-+    }
-+
-+    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
-+    assert(reg_attr);
-+    for (i = 0; i < vbasedev->num_regions; i++) {
-+        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
-+        reg_attr[2 * i] = cpu_to_be32(mmio_base);
-+        reg_attr[2 * i + 1] = cpu_to_be32(
-+                                memory_region_size(vdev->regions[i]->mem));
-+    }
-+    qemu_fdt_setprop(fdt, nodename, "reg", reg_attr,
-+                     vbasedev->num_regions * 2 * sizeof(uint32_t));
-+
-+    irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-+    assert(irq_attr);
-+    for (i = 0; i < vbasedev->num_irqs; i++) {
-+        irq_number = platform_bus_get_irqn(pbus, sbdev , i)
-+                         + data->irq_start;
-+        irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
-+        irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-+        irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    }
-+    qemu_fdt_setprop(fdt, nodename, "interrupts",
-+                     irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
-+    g_free(irq_attr);
-+    g_free(reg_attr);
-+    g_free(nodename);
-+    return 0;
-+}
-+
- /* AMD xgbe properties whose values are copied/pasted from host */
- static HostProperty amd_xgbe_copied_properties[] = {
-     {"compatible", false},
-@@ -420,6 +486,7 @@ static const NodeCreationPair add_fdt_node_functions[] = {
- #ifdef CONFIG_LINUX
-     {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
-     {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
-+    {TYPE_VFIO_QCOM_HIDMA, add_qcom_hidma_fdt_node},
- #endif
-     {"", NULL}, /* last element */
- };
-diff --git a/hw/vfio/Makefile.objs b/hw/vfio/Makefile.objs
-index c25e32b..ac38c8f 100644
---- a/hw/vfio/Makefile.objs
-+++ b/hw/vfio/Makefile.objs
-@@ -5,4 +5,5 @@ obj-$(CONFIG_SOFTMMU) += platform.o
- obj-$(CONFIG_SOFTMMU) += calxeda-xgmac.o
- obj-$(CONFIG_SOFTMMU) += amd-xgbe.o
- obj-$(CONFIG_SOFTMMU) += spapr.o
-+obj-$(CONFIG_SOFTMMU) += qcom-hidma.o
- endif
-diff --git a/hw/vfio/qcom-hidma.c b/hw/vfio/qcom-hidma.c
-new file mode 100644
-index 0000000..ddb3c34
---- /dev/null
-+++ b/hw/vfio/qcom-hidma.c
-@@ -0,0 +1,58 @@
-+/*
-+ * Qualcomm Technologies, Inc VFIO HiDMA platform device
-+ *
-+ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ */
-+#include "qemu/osdep.h"
-+#include "hw/vfio/vfio-qcom-hidma.h"
-+
-+static void qcom_hidma_realize(DeviceState *dev, Error **errp)
-+{
-+    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(dev);
-+    VFIOQcomHidmaDeviceClass *k = VFIO_QCOM_HIDMA_DEVICE_GET_CLASS(dev);
-+
-+    vdev->compat = g_strdup("qcom,hidma-1.0");
-+
-+    k->parent_realize(dev, errp);
-+}
-+
-+static const VMStateDescription vfio_platform_vmstate = {
-+    .name = TYPE_VFIO_QCOM_HIDMA,
-+    .unmigratable = 1,
-+};
-+
-+static void vfio_qcom_hidma_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    VFIOQcomHidmaDeviceClass *vcxc = VFIO_QCOM_HIDMA_DEVICE_CLASS(klass);
-+
-+    vcxc->parent_realize = dc->realize;
-+    dc->realize = qcom_hidma_realize;
-+    dc->desc = "VFIO QCOM HIDMA";
-+    dc->vmsd = &vfio_platform_vmstate;
-+}
-+
-+static const TypeInfo vfio_qcom_hidma_dev_info = {
-+    .name = TYPE_VFIO_QCOM_HIDMA,
-+    .parent = TYPE_VFIO_PLATFORM,
-+    .instance_size = sizeof(VFIOQcomHidmaDevice),
-+    .class_init = vfio_qcom_hidma_class_init,
-+    .class_size = sizeof(VFIOQcomHidmaDeviceClass),
-+};
-+
-+static void register_qcom_hidma_dev_type(void)
-+{
-+    type_register_static(&vfio_qcom_hidma_dev_info);
-+}
-+
-+type_init(register_qcom_hidma_dev_type)
-diff --git a/include/hw/vfio/vfio-qcom-hidma.h b/include/hw/vfio/vfio-qcom-hidma.h
-new file mode 100644
-index 0000000..23cd66c
---- /dev/null
-+++ b/include/hw/vfio/vfio-qcom-hidma.h
-@@ -0,0 +1,50 @@
-+/*
-+ * Qualcomm Technologies, Inc VFIO HiDMA platform device
-+ *
-+ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ */
-+
-+#ifndef HW_VFIO_VFIO_QCOM_HIDMA_H
-+#define HW_VFIO_VFIO_QCOM_HIDMA_H
-+
-+#include "hw/vfio/vfio-platform.h"
-+
-+#define TYPE_VFIO_QCOM_HIDMA "vfio-qcom-hidma"
-+
-+/**
-+ * This device exposes:
-+ * - MMIO regions corresponding to its register space
-+ * - Active high IRQs
-+ * - Optional property 'dma-coherent'
-+ */
-+typedef struct VFIOQcomHidmaDevice {
-+    VFIOPlatformDevice vdev;
-+} VFIOQcomHidmaDevice;
-+
-+typedef struct VFIOQcomHidmaDeviceClass {
-+    /*< private >*/
-+    VFIOPlatformDeviceClass parent_class;
-+    /*< public >*/
-+    DeviceRealize parent_realize;
-+} VFIOQcomHidmaDeviceClass;
-+
-+#define VFIO_QCOM_HIDMA_DEVICE(obj) \
-+     OBJECT_CHECK(VFIOQcomHidmaDevice, (obj), TYPE_VFIO_QCOM_HIDMA)
-+#define VFIO_QCOM_HIDMA_DEVICE_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(VFIOQcomHidmaDeviceClass, (klass), \
-+                        TYPE_VFIO_QCOM_HIDMA)
-+#define VFIO_QCOM_HIDMA_DEVICE_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(VFIOQcomHidmaDeviceClass, (obj), \
-+                      TYPE_VFIO_QCOM_HIDMA)
-+
-+#endif
--- 
-Qualcomm Datacenter Technologies, Inc. on behalf of the Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.
+Not hard.
+I just may encounter problems if I want to put a document in Linux kernel r=
+elated to FADT support and Windows behavior proofs.
+I'll remove this option.
 
+>=20
+> > >
+> > > If we'd ever need to bump FADT revision, I'd first try to increase it
+> > > unconditionally and test/see if it would not upset legacy guests
+> > > Windows starting from XP, RHEL4/5/6
+> > > If it works then these patches are not necessary,
+> > > (this approach worked  just fine for bumping up DSDT revision to 2
+> > > it would be possible to use 64-bit math in ASL/AML).
+> > >
+> > > if it doesn't, I still won't do it this way but rather:
+> > >  - make new revision used by default
+> > >  - add compat property to piix4_pm/ich9-lpc to force legacy revision
+> > >  - turn on legacy revision for old machine types using added above
+> > > property
+> > >
+> > > That way we won't regress existing setups as old machines will stay
+> > > the same and only new machine types will be affected. And users that
+> > > actually want to play with legacy revision on new machine types could
+> > > force it by using above property.
+> > >
+> > [Lv Zheng]
+> > But it seems the code in this commit contains useful stuffs for qemu.
+> >
+> > As I said previously, it seems Windows requires 2 FADTs.
+> > So having a revision parameter for build_fadt() seems to be necessary.
+> > Because if qemu wants to increase FADT revision, qemu may do this in
+> this way:
+> > 1. Invoke build_fadt() with revision 1, and put it into RSDT;
+> > 2. Invoke build_fadt() with latest revision, and put it into XSDT.
+> > Also we know latest revision FADT is useful, it contains reduced
+> hardware support.
+> > And some of new ACPI features rely this model.
+> >
+> > So I'm sure that this commit contains useful stuffs for qemu to do futu=
+re
+> extension.
+> >
+> > But I don't know if you want to keep the new -acpitable fadt=3D option.
+> > Let me ask:
+> > 1. Are there any issues in PATCH 01? Maybe my understanding of qemu
+> option code is not correct.
+>=20
+> Didn't review yet, I'll let Igor review first.
+>=20
+> > 2. IMO, this option should be useful for a long period because we need =
+it
+> to help probing Windows behavior, so can we have it upstreamed?
+>=20
+> ATM PATCH 2 does not seem generally useful.
+
+OK. I see.
+
+Thanks
+Lv
+
+>=20
+> >
+> > Best regards
+> > Lv
+> >
+> > > >
+> > > > Signed-off-by: Lv Zheng <lv.zheng@intel.com>
+> > > > ---
+> > > >  hw/acpi/core.c         |   20 ++++++++++++-
+> > > >  hw/i386/acpi-build.c   |   76
+> > > ++++++++++++++++++++++++++++++++++++++++++------
+> > > >  include/hw/acpi/acpi.h |    1 +
+> > > >  qemu-options.hx        |    8 ++++-
+> > > >  4 files changed, 94 insertions(+), 11 deletions(-)
+> > > >
+> > > > diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> > > > index 85e0e94..832c86b 100644
+> > > > --- a/hw/acpi/core.c
+> > > > +++ b/hw/acpi/core.c
+> > > > @@ -19,6 +19,7 @@
+> > > >   * GNU GPL, version 2 or (at your option) any later version.
+> > > >   */
+> > > >  #include "qemu/osdep.h"
+> > > > +#include "qemu/cutils.h"
+> > > >  #include "sysemu/sysemu.h"
+> > > >  #include "hw/hw.h"
+> > > >  #include "hw/i386/pc.h"
+> > > > @@ -54,6 +55,7 @@ static const char unsigned
+> > > dfl_hdr[ACPI_TABLE_HDR_SIZE - ACPI_TABLE_PFX_SIZE] =3D
+> > > >
+> > > >  char unsigned *acpi_tables;
+> > > >  size_t acpi_tables_len;
+> > > > +uint8_t acpi_fadt_rev =3D 1;
+> > > >
+> > > >  static QemuOptsList qemu_acpi_opts =3D {
+> > > >      .name =3D "acpi",
+> > > > @@ -312,7 +314,23 @@ void acpi_table_add(const QemuOpts
+> *opts,
+> > > Error **errp)
+> > > >          return;
+> > > >      }
+> > > >
+> > > > -    error_setg(errp, "'-acpitable' requires one of 'data' or 'file=
+'");
+> > > > +    val =3D qemu_opt_get((QemuOpts *)opts, "fadt");
+> > > > +    if (val) {
+> > > > +        unsigned long rev;
+> > > > +        int err;
+> > > > +
+> > > > +        err =3D qemu_strtoul(val, NULL, 10, &rev);
+> > > > +        if (err ||
+> > > > +            (rev !=3D 1 && rev !=3D 3 && rev !=3D 5)) {
+> > > > +            error_setg(errp, "Unsupported FADT revision %s, "
+> > > > +                       "please specify 1,3,5", val);
+> > > > +            return;
+> > > > +        }
+> > > > +        acpi_fadt_rev =3D rev;
+> > > > +        return;
+> > > > +    }
+> > > > +
+> > > > +    error_setg(errp, "'-acpitable' requires one of 'data','file' o=
+r 'fadt'");
+> > > >  }
+> > > >
+> > > >  static bool acpi_table_builtin =3D false;
+> > > > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> > > > index ce7cbc5..8be6578 100644
+> > > > --- a/hw/i386/acpi-build.c
+> > > > +++ b/hw/i386/acpi-build.c
+> > > > @@ -276,8 +276,22 @@ build_facs(GArray *table_data, BIOSLinker
+> > > *linker)
+> > > >      facs->length =3D cpu_to_le32(sizeof(*facs));
+> > > >  }
+> > > >
+> > > > +/* GAS */
+> > > > +static void
+> > > > +build_gas(struct AcpiGenericAddress *gas, uint8_t space_id,
+> > > > +          uint8_t bit_width, uint8_t bit_offset,
+> > > > +          uint8_t access_width, uint64_t address)
+> > > > +{
+> > > > +    gas->space_id =3D space_id;
+> > > > +    gas->bit_width =3D bit_width;
+> > > > +    gas->bit_offset =3D bit_offset;
+> > > > +    gas->access_width =3D access_width;
+> > > > +    gas->address =3D address;
+> > > > +}
+> > > > +
+> > > >  /* Load chipset information in FADT */
+> > > > -static void fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo
+> *pm)
+> > > > +static void fadt_setup(AcpiFadtDescriptorRev5_1 *fadt, AcpiPmInfo
+> > > *pm,
+> > > > +                       uint8_t revision)
+> > > >  {
+> > > >      fadt->model =3D 1;
+> > > >      fadt->reserved1 =3D 0;
+> > > > @@ -309,6 +323,25 @@ static void
+> fadt_setup(AcpiFadtDescriptorRev1
+> > > *fadt, AcpiPmInfo *pm)
+> > > >          fadt->flags |=3D cpu_to_le32(1 <<
+> > > ACPI_FADT_F_FORCE_APIC_CLUSTER_MODEL);
+> > > >      }
+> > > >      fadt->century =3D RTC_CENTURY;
+> > > > +
+> > > > +    /* Build ACPI 2.0 (FADT version 3+) GAS fields */
+> > > > +    if (revision >=3D 3) {
+> > > > +        /* EVT, CNT, TMR register matches hw/acpi/core.c */
+> > > > +        build_gas(&fadt->xpm1a_event_block, AML_SYSTEM_IO,
+> > > > +                  32, 0, 0, cpu_to_le64(pm->io_base));
+> > > > +        build_gas(&fadt->xpm1a_control_block, AML_SYSTEM_IO,
+> > > > +                  16, 0, 0, cpu_to_le64(pm->io_base + 0x04));
+> > > > +        build_gas(&fadt->xpm_timer_block, AML_SYSTEM_IO,
+> > > > +                  32, 0, 0, cpu_to_le64(pm->io_base + 0x08));
+> > > > +        build_gas(&fadt->xgpe0_block, AML_SYSTEM_IO,
+> > > > +                  pm->gpe0_blk_len << 3, 0, 0, cpu_to_le64(pm-
+> >gpe0_blk));
+> > > > +    }
+> > > > +
+> > > > +    /* Build dummy ACPI 5.0 fields */
+> > > > +    if (revision >=3D 5) {
+> > > > +        build_gas(&fadt->sleep_control, AML_SYSTEM_MEMORY, 0, 0,
+> 0,
+> > > 0);
+> > > > +        build_gas(&fadt->sleep_status, AML_SYSTEM_MEMORY, 0, 0,
+> 0, 0);
+> > > > +    }
+> > > >  }
+> > > >
+> > > >
+> > > > @@ -316,11 +349,21 @@ static void
+> > > fadt_setup(AcpiFadtDescriptorRev1 *fadt, AcpiPmInfo *pm)
+> > > >  static void
+> > > >  build_fadt(GArray *table_data, BIOSLinker *linker, AcpiPmInfo *pm,
+> > > >             unsigned facs_tbl_offset, unsigned dsdt_tbl_offset,
+> > > > -           const char *oem_id, const char *oem_table_id)
+> > > > +           const char *oem_id, const char *oem_table_id, uint8_t
+> revision)
+> > > >  {
+> > > > -    AcpiFadtDescriptorRev1 *fadt =3D acpi_data_push(table_data,
+> > > sizeof(*fadt));
+> > > > -    unsigned fw_ctrl_offset =3D (char *)&fadt->firmware_ctrl -
+> table_data-
+> > > >data;
+> > > > -    unsigned dsdt_entry_offset =3D (char *)&fadt->dsdt - table_dat=
+a-
+> >data;
+> > > > +    AcpiFadtDescriptorRev5_1 *fadt;
+> > > > +    unsigned fw_ctrl_offset;
+> > > > +    unsigned dsdt_entry_offset;
+> > > > +    unsigned fadt_len;
+> > > > +
+> > > > +    if (revision =3D=3D 1) {
+> > > > +        fadt_len =3D sizeof(AcpiFadtDescriptorRev1);
+> > > > +    } else {
+> > > > +        fadt_len =3D sizeof(AcpiFadtDescriptorRev5_1);
+> > > > +    }
+> > > > +    fadt =3D acpi_data_push(table_data, fadt_len);
+> > > > +    fw_ctrl_offset =3D (char *)&fadt->firmware_ctrl - table_data->=
+data;
+> > > > +    dsdt_entry_offset =3D (char *)&fadt->dsdt - table_data->data;
+> > > >
+> > > >      /* FACS address to be filled by Guest linker */
+> > > >      bios_linker_loader_add_pointer(linker,
+> > > > @@ -328,13 +371,28 @@ build_fadt(GArray *table_data,
+> BIOSLinker
+> > > *linker, AcpiPmInfo *pm,
+> > > >          ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> > > >
+> > > >      /* DSDT address to be filled by Guest linker */
+> > > > -    fadt_setup(fadt, pm);
+> > > >      bios_linker_loader_add_pointer(linker,
+> > > >          ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt->dsd=
+t),
+> > > >          ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > > >
+> > > > -    build_header(linker, table_data,
+> > > > -                 (void *)fadt, "FACP", sizeof(*fadt), 1, oem_id,
+> oem_table_id);
+> > > > +    if (revision > 2) {
+> > > > +        fw_ctrl_offset =3D (char *)&fadt->Xfacs - table_data->data=
+;
+> > > > +        dsdt_entry_offset =3D (char *)&fadt->Xdsdt - table_data->d=
+ata;
+> > > > +
+> > > > +        /* FACS address to be filled by Guest linker */
+> > > > +        bios_linker_loader_add_pointer(linker,
+> > > > +            ACPI_BUILD_TABLE_FILE, fw_ctrl_offset, sizeof(fadt->Xf=
+acs),
+> > > > +            ACPI_BUILD_TABLE_FILE, facs_tbl_offset);
+> > > > +
+> > > > +        /* DSDT address to be filled by Guest linker */
+> > > > +        bios_linker_loader_add_pointer(linker,
+> > > > +            ACPI_BUILD_TABLE_FILE, dsdt_entry_offset, sizeof(fadt-
+> >Xdsdt),
+> > > > +            ACPI_BUILD_TABLE_FILE, dsdt_tbl_offset);
+> > > > +    }
+> > > > +
+> > > > +    fadt_setup(fadt, pm, revision);
+> > > > +    build_header(linker, table_data, (void *)fadt, "FACP", fadt_le=
+n,
+> > > > +                 revision, oem_id, oem_table_id);
+> > > >  }
+> > > >
+> > > >  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> > > > @@ -2681,7 +2739,7 @@ void acpi_build(AcpiBuildTables *tables,
+> > > MachineState *machine)
+> > > >      fadt =3D tables_blob->len;
+> > > >      acpi_add_table(table_offsets, tables_blob);
+> > > >      build_fadt(tables_blob, tables->linker, &pm, facs, dsdt,
+> > > > -               slic_oem.id, slic_oem.table_id);
+> > > > +               slic_oem.id, slic_oem.table_id, acpi_fadt_rev);
+> > > >      aml_len +=3D tables_blob->len - fadt;
+> > > >
+> > > >      acpi_add_table(table_offsets, tables_blob);
+> > > > diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+> > > > index 7b3d93c..63df38d 100644
+> > > > --- a/include/hw/acpi/acpi.h
+> > > > +++ b/include/hw/acpi/acpi.h
+> > > > @@ -173,6 +173,7 @@ void acpi_update_sci(ACPIREGS *acpi_regs,
+> > > qemu_irq irq);
+> > > >
+> > > >  /* acpi.c */
+> > > >  extern int acpi_enabled;
+> > > > +extern uint8_t acpi_fadt_rev;
+> > > >  extern char unsigned *acpi_tables;
+> > > >  extern size_t acpi_tables_len;
+> > > >
+> > > > diff --git a/qemu-options.hx b/qemu-options.hx
+> > > > index 5fe7f87..d61dd92 100644
+> > > > --- a/qemu-options.hx
+> > > > +++ b/qemu-options.hx
+> > > > @@ -1497,7 +1497,10 @@ DEF("acpitable", HAS_ARG,
+> > > QEMU_OPTION_acpitable,
+> > > >      "             [,sig=3Dstr][,rev=3Dn]\n"
+> > > >      "             [,oem_id=3Dstr][,oem_table_id=3Dstr][,oem_rev=3D=
+n]\n"
+> > > >      "             [,asl_compiler_id=3Dstr][,asl_compiler_rev=3Dn]\=
+n"
+> > > > -    "                ACPI table description\n", QEMU_ARCH_I386)
+> > > > +    "                ACPI table description\n"
+> > > > +    "-acpitable fadt=3Dn\n"
+> > > > +    "                Configure FADT revision\n",
+> > > > +    QEMU_ARCH_I386)
+> > > >  STEXI
+> > > >  @item -acpitable
+> > >
+> data=3D@var{file1}[:@var{file2}]...[,sig=3D@var{str}][,rev=3D@var{n}][,oe=
+m_id=3D@
+> > > var{str}][,oem_table_id=3D@var{str}][,oem_rev=3D@var{n}]
+> > > [,asl_compiler_id=3D@var{str}][,asl_compiler_rev=3D@var{n}]
+> > > >  @findex -acpitable
+> > > > @@ -1511,6 +1514,9 @@ If a SLIC table is supplied to QEMU, then
+> the
+> > > SLIC's oem_id and oem_table_id
+> > > >  fields will override the same in the RSDT and the FADT (a.k.a. FAC=
+P),
+> in
+> > > order
+> > > >  to ensure the field matches required by the Microsoft SLIC spec an=
+d
+> the
+> > > ACPI
+> > > >  spec.
+> > > > +
+> > > > +@item -acpitable fadt=3D@var{n}
+> > > > +Configure FADT revision to 1, 3, 5, default 1.
+> > > >  ETEXI
+> > > >
+> > > >  DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,

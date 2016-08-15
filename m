@@ -1,62 +1,63 @@
-Received: by 10.25.21.156 with SMTP id 28csp1538451lfv;
-        Mon, 15 Aug 2016 10:24:51 -0700 (PDT)
-X-Received: by 10.55.3.20 with SMTP id 20mr32719833qkd.34.1471281890991;
-        Mon, 15 Aug 2016 10:24:50 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp1547903lfv;
+        Mon, 15 Aug 2016 10:48:49 -0700 (PDT)
+X-Received: by 10.55.168.22 with SMTP id r22mr32396302qke.148.1471283329682;
+        Mon, 15 Aug 2016 10:48:49 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z24si14388692qtb.68.2016.08.15.10.24.50
+        by mx.google.com with ESMTPS id t75si13087547qkt.332.2016.08.15.10.48.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Aug 2016 10:24:50 -0700 (PDT)
+        Mon, 15 Aug 2016 10:48:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38178 helo=lists.gnu.org)
+       dkim=fail header.i=@yandex.ru;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=yandex.ru
+Received: from localhost ([::1]:38286 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bZLd4-0004id-Cd
-	for alex.bennee@linaro.org; Mon, 15 Aug 2016 13:24:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44665)
+	id 1bZM0H-0007yJ-3s
+	for alex.bennee@linaro.org; Mon, 15 Aug 2016 13:48:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49532)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1bZLd1-0004iN-0y
-	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 13:24:48 -0400
+	(envelope-from <afarallax@yandex.ru>) id 1bZM0C-0007wN-Ov
+	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 13:48:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <abologna@redhat.com>) id 1bZLcw-0000ig-Q6
-	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 13:24:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53712)
+	(envelope-from <afarallax@yandex.ru>) id 1bZM08-0005Kj-KL
+	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 13:48:43 -0400
+Received: from forward6p.cmail.yandex.net ([87.250.241.191]:55704)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <abologna@redhat.com>)
-	id 1bZLcw-0000i6-KC; Mon, 15 Aug 2016 13:24:42 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AF70F7F340;
-	Mon, 15 Aug 2016 17:24:41 +0000 (UTC)
-Received: from dhcp129-212.brq.redhat.com (dhcp129-212.brq.redhat.com
-	[10.34.129.212])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7FHOcM7011290
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 15 Aug 2016 13:24:40 -0400
-Message-ID: <1471281878.3003.13.camel@redhat.com>
-From: Andrea Bolognani <abologna@redhat.com>
-To: Wei Huang <wei@redhat.com>, qemu-arm@nongnu.org
-Date: Mon, 15 Aug 2016 19:24:38 +0200
-In-Reply-To: <57B1EA05.2050908@redhat.com>
-References: <1471067570-7503-1-git-send-email-wei@redhat.com>
-	<1471253464.3003.5.camel@redhat.com> <57B1EA05.2050908@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 15 Aug 2016 17:24:41 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <afarallax@yandex.ru>)
+	id 1bZM07-0005He-9K; Mon, 15 Aug 2016 13:48:40 -0400
+Received: from smtp2j.mail.yandex.net (smtp2j.mail.yandex.net [95.108.131.191])
+	by forward6p.cmail.yandex.net (Yandex) with ESMTP id 676BF21255;
+	Mon, 15 Aug 2016 20:48:27 +0300 (MSK)
+Received: from smtp2j.mail.yandex.net (localhost.localdomain [127.0.0.1])
+	by smtp2j.mail.yandex.net (Yandex) with ESMTP id B49841060C31;
+	Mon, 15 Aug 2016 20:48:25 +0300 (MSK)
+Received: by smtp2j.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
+	0JZEHn2Nch-mOXKcT0c; Mon, 15 Aug 2016 20:48:24 +0300
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+	(Client certificate not present)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+	t=1471283304; bh=xevefoThVxOBeyFHV5lCTkpoDrJzfsip/VC9pspU+N4=;
+	h=From:To:Cc:Subject:Date:Message-Id;
+	b=DCiTuFe9/Rq84SKk/9yciuXL2BCIa4oWyBzopsaF+pbGhKtBXk9Gz+eWqTWw6PDIJ
+	rB1QcbJHmLrUls4x2yR+vJLcXFGbYoUxROKldPe5IpPy7UO8fIRA2Wa1g+JfYztjC/
+	TPM5xgndZAT4tRswDfALEuxT4g0E8ie6D+1j1ezU=
+Authentication-Results: smtp2j.mail.yandex.net; dkim=pass header.i=@yandex.ru
+X-Yandex-ForeignMX: US
+X-Yandex-Suid-Status: 1 0,1 0,1 0,1 37377968
+From: Sergey Sorokin <afarallax@yandex.ru>
+To: qemu-devel@nongnu.org
+Date: Mon, 15 Aug 2016 20:48:13 +0300
+Message-Id: <1471283293-169850-1-git-send-email-afarallax@yandex.ru>
+X-Mailer: git-send-email 1.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH V1 1/1] arm64: Add an option to turn on/off
- host-backed vPMU support
+	[fuzzy]
+X-Received-From: 87.250.241.191
+Subject: [Qemu-arm] [PATCH] target-arm: Fix lpae bit in FSR on an alignment
+ fault
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,53 +69,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, shannon.zhao@linaro.org,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Sergey Sorokin <afarallax@yandex.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +2191mfQ+5kJ
+X-TUID: OgkEdBjbBA2k
 
-On Mon, 2016-08-15 at 11:12 -0500, Wei Huang wrote:
-> > Did you already try driving this with libvirt? It should work
-> > out of the box.
-> >=C2=A0
-> > If you haven't, I will do it :)
->=C2=A0
-> No, I haven't. All tests were done based on command line to QEMU. :-)
+If an alignment fault occurred and target EL is using AArch32,
+then DFSR/IFSR bit LPAE[9] must be set correctly.
 
-Fair enough :)
+Signed-off-by: Sergey Sorokin <afarallax@yandex.ru>
+---
+ target-arm/op_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I did some testing on my own using libvirt to drive a QEMU
-binary that included your patch, and it looks like everything
-is working as expected: if I turn PMU on using the appropriate
-XML element (<pmu state=3D'on'/>) I can access the performance
-counters from inside the guest; if I disable it explicitly or
-don't enable it, I can't.
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index 3e8588e..be27b21 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -194,7 +194,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+      * the LPAE long descriptor format, or the short descriptor format
+      */
+     if (arm_s1_regime_using_lpae_format(env, cpu_mmu_index(env, false))) {
+-        env->exception.fsr = 0x21;
++        env->exception.fsr = (1 << 9) | 0x21;
+     } else {
+         env->exception.fsr = 0x1;
+     }
+-- 
+1.9.3
 
-The host-side testing involved making sure the 'pmu' flag
-was passed, or not passed, to QEMU and the value, if any,
-matched the guest XML.
-
-The guest-side testing involved running
-
-=C2=A0 $ dmesg | grep -i pmu
-=C2=A0 $ perf list | grep 'Hardware event'
-
-and making sure some output was returned in both cases, and
-making sure the 'instructions' counter was not marked as '<not
-supported>' in the output of
-
-=C2=A0 $ perf stat true
-
-If the kind of testing I performed is not good enough, please
-let me know and I'll do another round.
-
-This was tested only with <cpu mode=3D'host-passthrough'/> (the
-libvirt equivalent of -cpu host), because the aarch64 CPU
-driver in libvirt is not currently capable of handling other
-CPU models for KVM guests.
-
-I also verified that TCG guests didn't accept the 'pmu' flag.
-
---=C2=A0
-Andrea Bolognani / Red Hat / Virtualization

@@ -1,84 +1,83 @@
-Received: by 10.25.21.156 with SMTP id 28csp1624113lfv;
-        Mon, 15 Aug 2016 14:05:20 -0700 (PDT)
-X-Received: by 10.55.114.69 with SMTP id n66mr36216256qkc.174.1471295120415;
-        Mon, 15 Aug 2016 14:05:20 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp1669552lfv;
+        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
+X-Received: by 10.55.16.78 with SMTP id a75mr36344771qkh.231.1471302487638;
+        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p129si13720746qka.153.2016.08.15.14.05.20
+        by mx.google.com with ESMTPS id u8si15393091qtc.132.2016.08.15.16.08.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Aug 2016 14:05:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38880 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:39213 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bZP4R-0004Ab-QL
-	for alex.bennee@linaro.org; Mon, 15 Aug 2016 17:05:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59414)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bZQzH-0000iH-2t
+	for alex.bennee@linaro.org; Mon, 15 Aug 2016 19:08:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51519)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bZP4N-0004AU-Ek
-	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 17:05:17 -0400
+	(envelope-from <wei@redhat.com>) id 1bZQxn-00007r-5k
+	for qemu-devel@nongnu.org; Mon, 15 Aug 2016 19:06:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bZP4I-0007Vk-8Z
-	for qemu-arm@nongnu.org; Mon, 15 Aug 2016 17:05:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54964)
+	(envelope-from <wei@redhat.com>) id 1bZQxj-0002jB-Px
+	for qemu-devel@nongnu.org; Mon, 15 Aug 2016 19:06:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38464)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <wei@redhat.com>)
-	id 1bZP4H-0007VO-Vd; Mon, 15 Aug 2016 17:05:10 -0400
+	id 1bZQxa-0002i7-Mo; Mon, 15 Aug 2016 19:06:22 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 64042C056818;
-	Mon, 15 Aug 2016 21:05:09 +0000 (UTC)
-Received: from [10.10.58.150] (vpn-58-150.rdu2.redhat.com [10.10.58.150])
+	by mx1.redhat.com (Postfix) with ESMTPS id 3E49B82C;
+	Mon, 15 Aug 2016 23:06:22 +0000 (UTC)
+Received: from [10.10.54.99] (vpn-54-99.rdu2.redhat.com [10.10.54.99])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7FL57tu012097
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Mon, 15 Aug 2016 17:05:08 -0400
-To: Andrew Jones <drjones@redhat.com>
+	id u7FLFMng018607; Mon, 15 Aug 2016 17:15:22 -0400
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <1471067570-7503-1-git-send-email-wei@redhat.com>
-	<20160815100938.vve6hknieytt2ys7@kamzik.localdomain>
+	<CAFEAcA-_hc71ScfUs8WOjJcM2SN+uR3ukjVt+BXUD9tMoRKKjw@mail.gmail.com>
 From: Wei Huang <wei@redhat.com>
-Message-ID: <5db15b5a-4ac7-ec19-dbc6-e5fec562c1e5@redhat.com>
-Date: Mon, 15 Aug 2016 16:05:07 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.0
+Message-ID: <57B230E9.5070808@redhat.com>
+Date: Mon, 15 Aug 2016 16:15:21 -0500
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:38.0)
+	Gecko/20100101 Thunderbird/38.7.0
 MIME-Version: 1.0
-In-Reply-To: <20160815100938.vve6hknieytt2ys7@kamzik.localdomain>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <CAFEAcA-_hc71ScfUs8WOjJcM2SN+uR3ukjVt+BXUD9tMoRKKjw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 15 Aug 2016 21:05:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 15 Aug 2016 23:06:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V1 1/1] arm64: Add an option to
- turn on/off host-backed vPMU support
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH V1 1/1] arm64: Add an option to turn on/off
+ host-backed vPMU support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	abologna@redhat.com, shannon.zhao@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hBRYOWmNlfWH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Andrea Bolognani <abologna@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pbSvHVoEmUYs
 
 
 
-On 08/15/2016 05:09 AM, Andrew Jones wrote:
-> On Sat, Aug 13, 2016 at 12:52:50AM -0500, Wei Huang wrote:
+On 8/15/16 11:13, Peter Maydell wrote:
+> On 13 August 2016 at 06:52, Wei Huang <wei@redhat.com> wrote:
 >> This patch adds a pmu=[on/off] option to enable/disable host vPMU
 >> support in guest VM. There are several reasons to justify this option.
 >> First, host-backed vPMU can be problematic for cross-migration between
@@ -93,30 +92,6 @@ On 08/15/2016 05:09 AM, Andrew Jones wrote:
 >>     * host + kvm
 >> This option is removed in other configs where it doesn't make sense
 >> (e.g. cortex-a57 + TCG); and the default pmu support is off. This patch
-> 
-> Some of the PMU registers are already emulated with TCG. While it
-> doesn't make much sense to use perf counters in a TCG guest for
-> measuring anything, it may have merit for emulation completeness
-> and debug. With that in mind, then I think we need to add the PMU
-> feature to all processors that support it, and thus the 'has_pmu'
-
-The TCG case you mentioned was one reason I changed the naming. The
-existing "has_pmu" variable was introduced recently and it didn't cover
-the case of TCG. Reading 5c0a3819, it is only turned on when KVM is
-enabled and PMU_V3_extension is available. If we want to extend the
-meaning of "has_pmu" for all PMU cases (i.e. KVM + TCG), we probably
-need to address cases of has_pmu=ON + TCG=ON.
-
-> name is better. As the feature is optional, I agree it does make
-> sense that it's off by default, and only available with the pmu=on
-> property.
-> 
-> I think there are more processors than just A53 and A57.
-
-host-backed vPMU is only available on A53/A57/host. But TCG supports
-more than A53/A57.
-
-> 
 >> has been tested under both DT/ACPI modes.
 >>
 >> Signed-off-by: Wei Huang <wei@redhat.com>
@@ -136,7 +111,7 @@ more than A53/A57.
 >> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
 >>          gicc->uid = i;
 >>          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
->>  
+>>
 >> -        if (armcpu->has_pmu) {
 >> +        if (armcpu->has_host_pmu) {
 >>              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
@@ -147,7 +122,7 @@ more than A53/A57.
 >> --- a/hw/arm/virt.c
 >> +++ b/hw/arm/virt.c
 >> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
->>  
+>>
 >>      CPU_FOREACH(cpu) {
 >>          armcpu = ARM_CPU(cpu);
 >> -        if (!armcpu->has_pmu ||
@@ -162,18 +137,18 @@ more than A53/A57.
 >> @@ -509,6 +509,10 @@ static Property arm_cpu_rvbar_property =
 >>  static Property arm_cpu_has_el3_property =
 >>              DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
->>  
+>>
 >> +/* use property name "pmu" to match with other archs and libvirt */
 >> +static Property arm_cpu_has_host_pmu_property =
 >> +    DEFINE_PROP_BOOL("pmu", ARMCPU, has_host_pmu, false);
 >> +
 >>  static Property arm_cpu_has_mpu_property =
 >>              DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
->>  
+>>
 >> @@ -552,6 +556,11 @@ static void arm_cpu_post_init(Object *obj)
 >>  #endif
 >>      }
->>  
+>>
 >> +    if (arm_feature(&cpu->env, ARM_FEATURE_HOST_PMU)) {
 >> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_host_pmu_property,
 >> +                                 &error_abort);
@@ -185,15 +160,10 @@ more than A53/A57.
 >> @@ -648,6 +657,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
 >>          cpu->id_aa64pfr0 &= ~0xf000;
 >>      }
->>  
+>>
 >> +    if (!cpu->has_host_pmu) {
 >> +        unset_feature(env, ARM_FEATURE_HOST_PMU);
 >> +    }
-> 
-> I think this is the right approach. But we should add the feature to all
-> processors that can have it, and then, after checking the property's
-> value, we remove it when it's not desired.
-> 
 >> +
 >>      if (!arm_feature(env, ARM_FEATURE_EL2)) {
 >>          /* Disable the hypervisor feature bits in the processor feature
@@ -208,7 +178,27 @@ more than A53/A57.
 >>      /* CPU has PMU (Performance Monitor Unit) */
 >> -    bool has_pmu;
 >> +    bool has_host_pmu;
->>  
+> 
+> Can you explain why you renamed this? "has_pmu" matches
+> the comment: it indicates that the emulated CPU has a PMU.
+> has_host_pmu would be something different (and would only
+
+The existing "has_pmu" was added and only enabled under KVM. So its
+existing meaning is a bit misleading. It doesn't address the case of TCG.
+
+
+> apply to KVM). It also looks weird in the code in the board
+> model: we should be saying "if the guest CPU has a PMU, wire
+> up its interrupt", not "if the host CPU has a PMU, wire
+> up a guest CPU interrupt".
+
+I can change it back to "has_pmu" as suggested by you and Drew; but we
+need to be careful of using it, especially under TCG mode. For instance,
+with "-M virt,accel=tcg -cpu host,pmu=off", we expect PMU is turned off.
+But TCG still emulates some PMU counters (e.g. pmccntr).
+
+> 
+>>
 >>      /* CPU has memory protection unit */
 >>      bool has_mpu;
 >> @@ -1129,6 +1129,7 @@ enum arm_features {
@@ -216,8 +206,15 @@ more than A53/A57.
 >>      ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensions */
 >>      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
 >> +    ARM_FEATURE_HOST_PMU, /* PMU supported by host */
+> 
+> ARM_FEATURE_ bits are for guest CPU features, not for
+> recording information about the host CPU.
+
+OK, will address it.
+
+> 
 >>  };
->>  
+>>
 >>  static inline int arm_feature(CPUARMState *env, int feature)
 >> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
 >> index 1635deb..19e8127 100644
@@ -230,9 +227,6 @@ more than A53/A57.
 >> +    if (kvm_enabled()) {
 >> +        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
 >> +    }
-> 
-> We shouldn't need the if (kvm_enabled()) here.
-> 
 >>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
 >>      cpu->midr = 0x411fd070;
 >>      cpu->revidr = 0x00000000;
@@ -244,7 +238,8 @@ more than A53/A57.
 >> +        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
 >> +    }
 > 
-> Or here.
+> This definitely looks like the wrong place to be checking
+> kvm_enabled().
 > 
 >>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
 >>      cpu->midr = 0x410fd034;
@@ -258,9 +253,9 @@ more than A53/A57.
 >>      set_feature(&features, ARM_FEATURE_NEON);
 >>      set_feature(&features, ARM_FEATURE_AARCH64);
 >> +    set_feature(&features, ARM_FEATURE_HOST_PMU);
->>  
+>>
 >>      ahcc->features = features;
->>  
+>>
 >> @@ -501,11 +502,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
 >>      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
 >>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
@@ -274,29 +269,13 @@ more than A53/A57.
 >> +    cpu->has_host_pmu &= kvm_irqchip_in_kernel() &&
 >> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3);
 >> +    cpu->kvm_init_features[0] |= cpu->has_host_pmu << KVM_ARM_VCPU_PMU_V3;
-> 
-> Hmm... so now if the user doesn't specify pmu=on (off by default) then we
-> silently disable it (I think that's a 2.6 compat issue), and if they do
-^^^^^^^^^^^^^ True. I will see if I can create a patch backward
-compatible with 2.6.
-
-> specify pmu=on, but KVM doesn't support it, then it's silently disabled,
-> which isn't nice. I think QEMU should error out in that case, explaining
-> that the user specified incompatible options, i.e. they selected accel=kvm
-> and pmu=on, but their KVM version (or cpu model) doesn't support PMU
-> emulation.
-
-True. This can be fixed.
-
-> 
->>  
+>>
 >>      /* Do KVM_ARM_VCPU_INIT ioctl */
 >>      ret = kvm_arm_vcpu_init(cs);
->> -- 
+>> --
 >> 2.4.11
 >>
->>
 > 
-> Thanks,
-> drew 
+> thanks
+> -- PMM
 > 

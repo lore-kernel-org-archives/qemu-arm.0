@@ -1,79 +1,72 @@
-Received: by 10.25.21.156 with SMTP id 28csp2104854lfv;
-        Tue, 16 Aug 2016 11:03:20 -0700 (PDT)
-X-Received: by 10.55.56.129 with SMTP id f123mr41925712qka.30.1471370600616;
-        Tue, 16 Aug 2016 11:03:20 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp2220360lfv;
+        Tue, 16 Aug 2016 16:45:23 -0700 (PDT)
+X-Received: by 10.55.112.193 with SMTP id l184mr30689001qkc.116.1471391123337;
+        Tue, 16 Aug 2016 16:45:23 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q62si17066070qkf.51.2016.08.16.11.03.20
+        by mx.google.com with ESMTPS id d10si17937268qkh.316.2016.08.16.16.45.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Aug 2016 11:03:20 -0700 (PDT)
+        Tue, 16 Aug 2016 16:45:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:43482 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44521 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bZihs-0000TF-2l
-	for alex.bennee@linaro.org; Tue, 16 Aug 2016 14:03:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37278)
+	id 1bZo2s-0006FC-RG
+	for alex.bennee@linaro.org; Tue, 16 Aug 2016 19:45:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bZihh-0000Oj-No
-	for qemu-arm@nongnu.org; Tue, 16 Aug 2016 14:03:14 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1bZo2p-0006Es-1n
+	for qemu-arm@nongnu.org; Tue, 16 Aug 2016 19:45:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bZihf-00074D-Su
-	for qemu-arm@nongnu.org; Tue, 16 Aug 2016 14:03:08 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:34991)
+	(envelope-from <vijay.kilari@gmail.com>) id 1bZo2o-00052B-5H
+	for qemu-arm@nongnu.org; Tue, 16 Aug 2016 19:45:18 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:34850)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1bZihV-00072k-L4; Tue, 16 Aug 2016 14:02:57 -0400
-Received: by mail-qk0-x242.google.com with SMTP id o1so7076632qkd.2;
-	Tue, 16 Aug 2016 11:02:57 -0700 (PDT)
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1bZo2o-000527-0Y; Tue, 16 Aug 2016 19:45:18 -0400
+Received: by mail-oi0-x243.google.com with SMTP id e80so8294555oig.2;
+	Tue, 16 Aug 2016 16:45:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=EwUrFWjJntV4Irn//k8n+9SWBTRPe598aJuw15VV5Nk=;
-	b=0qNE2Ds+mr6y4cHXJykutH1EZEtO/jl/gQ06lt81tvuClSpZJOpHru/7VZ31bfmvyQ
-	h3+5eMpeBWWQ/gbxTH6LqxeVy6GE9tSNgpIpZRR4dgWBYyx2mccAkhMQkFE0CUlyMw2G
-	2sY2yvoRbsZn5HtbHhchgt5pXL4jiravFNTyCYL+AxuvJDrWakBX/b8JYBqXRSYjE3Za
-	KsFZ2H4Tqpqn+98ICan8XvbxaIIVpzwt3aU0q3q2z7/3YBp/0DFnPWMdPM/hJb7q0whM
-	AmUX5c1e77vraACe8qOoe6H4tKpb/TFmjb5jXAPk/A5eypQOJpcSPYiXqWQOVMMGnC9b
-	aD2g==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8R86XCUSAyStLGzmJU548fBNaJy1pZgio60+yI1AQTk=;
+	b=QctDTNqW1ZE+QiCSVlKfVOFRkr0iyQWucCTrPAowZO5WU0IqFK5iUlM77SG+iyqcpv
+	JFi6tkOKtQyo53okvaN1zVjgw2Gnb9FEPzNYKSBT9rMuYgd37m86jcSuvsD1C9AhWZEf
+	OLQpeCDKmY/WZH+sxtLWW/QC8R3jlL+0PLkBPIrpUlDvrpgHkpe/pMhSdiczBtW7+42h
+	EipEwHCvx4ME35666qXbn4yi7Uo4awrXYtUGHjsHCln5SJQQSajZPUROMTLbDWdFIabe
+	xWhaNPdvxoZ5Qmtp1uR8iFTcgL628gHaJU/gNkAt7cFyBWRxzlr/D6DzEGoJKGO0xebo
+	o5jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=EwUrFWjJntV4Irn//k8n+9SWBTRPe598aJuw15VV5Nk=;
-	b=mYgwSNx9/DqzhHUTYGZs8TYxqMYUTsabX0h+uag/1iB9StdW7+80BPTdlXKGx6KV8m
-	uDM0hFQCEhPzvZTYRxqiAFmXwmIVHE119XMjLHhK2udW+0Cds3MKffjQYajJ9zdmIFh/
-	eP+6fjx9WChW2x+Y4Yc4sl0WNmzTV7eVophXKrr07i8yUoCJ1OMb6Mo7WYO5UmUdftpq
-	KyRYFjwwYnWcmMxF/UDwTGcY1sL9RZ35RKuBcthcm4Y2CL28i2gx7WRntmSdJJziCIPh
-	Jh0jW3lyTON4vOZooDefaeo38Gwh8mr+4CDm32weZrEG6abn0V4B/s+tihJ+ikP+LIeo
-	DbGg==
-X-Gm-Message-State: AEkoousLWc7BfvHcIxv9KDBJRsWDWLiCAIDFWe2AalprXx1vUY9B0kknWDGkCIgLQEL4PQ==
-X-Received: by 10.55.161.215 with SMTP id k206mr41964279qke.278.1471370575961; 
-	Tue, 16 Aug 2016 11:02:55 -0700 (PDT)
-Received: from bigtime.twiddle.net ([208.95.30.164])
-	by smtp.googlemail.com with ESMTPSA id
-	a193sm14428006qkc.24.2016.08.16.11.02.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 16 Aug 2016 11:02:55 -0700 (PDT)
-To: vijay.kilari@gmail.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	pbonzini@redhat.com
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8R86XCUSAyStLGzmJU548fBNaJy1pZgio60+yI1AQTk=;
+	b=Fz+H3R4yrDw4zom+z55ELejBtC52CeJOuEnkNEFXT0g+V6F2GJUXNtArp6rELK7C8R
+	7j+h9y96lg/dcKC4CoygXbvy0MmTrOcwIfkndnovkZvNPMC1kmq5NOlYlL1nl60i18L1
+	D/u+lUMFOSK/qiHktAX4MSrlMbiYyzIq7r6FGtxwVB1OQW2dX2kh5JNTNQtk3AwbLFaR
+	KfK16LuVqIAqUXRg8MTt4x7/iERr5d+GvZ5GF0KXYFPbrIpVa2B0uOmwJ7CmfjznoDsy
+	JP5lOE7+pQld3nHg9SSSVkigay5YBmje0aeUwmA9tGSwUw76zXDbdxCvgRs8OVb+U2Ao
+	kNCQ==
+X-Gm-Message-State: AEkoouss3PWT7PWjDf1YawTmXZoW7fcXq8wzUPDNctTgBr2HTnZQmWxG/5Lph5DZdxdULeuCjCZDzdrt27g9Zw==
+X-Received: by 10.202.91.66 with SMTP id p63mr19291497oib.55.1471391117318;
+	Tue, 16 Aug 2016 16:45:17 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.157.56.244 with HTTP; Tue, 16 Aug 2016 16:45:16 -0700 (PDT)
+In-Reply-To: <0f3abe4d-9640-2cc4-41db-7d5e5924e63d@twiddle.net>
 References: <1471348968-4614-1-git-send-email-vijay.kilari@gmail.com>
 	<1471348968-4614-3-git-send-email-vijay.kilari@gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <0f3abe4d-9640-2cc4-41db-7d5e5924e63d@twiddle.net>
-Date: Tue, 16 Aug 2016 11:02:52 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
-MIME-Version: 1.0
-In-Reply-To: <1471348968-4614-3-git-send-email-vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+	<0f3abe4d-9640-2cc4-41db-7d5e5924e63d@twiddle.net>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Wed, 17 Aug 2016 05:15:16 +0530
+Message-ID: <CALicx6uHyUNzgL4a2g+q-VDp-NmHvXiTeiwOn5-8i9ukNZ-FRQ@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c09::242
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-arm] [RFC PATCH v2 2/2] utils: Add prefetch for Thunderx
  platform
 X-BeenThere: qemu-arm@nongnu.org
@@ -87,27 +80,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Prasun.Kapoor@cavium.com, p.fedin@samsung.com, qemu-devel@nongnu.org,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"prasun.kapoor" <Prasun.Kapoor@cavium.com>,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nsIV9F23q+wI
+X-TUID: Qs5UMlJm7ncJ
 
-On 08/16/2016 05:02 AM, vijay.kilari@gmail.com wrote:
-> +static inline void prefetch_vector_loop(const VECTYPE *p, int index)
-> +{
-> +#if defined(__aarch64__)
-> +    if (is_thunderx_pass2_cpu()) {
-> +        /* Prefetch 4 cache lines ahead from index */
-> +        VEC_PREFETCH(p, index + (BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR * 4));
-> +    }
-> +#endif
-> +}
+On Tue, Aug 16, 2016 at 11:32 PM, Richard Henderson <rth@twiddle.net> wrote:
+> On 08/16/2016 05:02 AM, vijay.kilari@gmail.com wrote:
+>>
+>> +static inline void prefetch_vector_loop(const VECTYPE *p, int index)
+>> +{
+>> +#if defined(__aarch64__)
+>> +    if (is_thunderx_pass2_cpu()) {
+>> +        /* Prefetch 4 cache lines ahead from index */
+>> +        VEC_PREFETCH(p, index + (BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR
+>> * 4));
+>> +    }
+>> +#endif
+>> +}
+>
+>
+> Oh come now.  This is even worse than before.  A function call protecting a
+> mere prefetch within the main body of an inner loop?
+>
+> Did you not understand what I was asking for?
 
-Oh come now.  This is even worse than before.  A function call protecting a 
-mere prefetch within the main body of an inner loop?
+No, Could you please detail the problem?.
 
-Did you not understand what I was asking for?
-
-
-r~
+>
+>
+> r~

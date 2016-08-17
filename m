@@ -1,66 +1,64 @@
-Received: by 10.25.21.156 with SMTP id 28csp2479698lfv;
-        Wed, 17 Aug 2016 05:08:28 -0700 (PDT)
-X-Received: by 10.200.38.201 with SMTP id 9mr44665265qtp.135.1471435697354;
-        Wed, 17 Aug 2016 05:08:17 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp2524257lfv;
+        Wed, 17 Aug 2016 06:39:26 -0700 (PDT)
+X-Received: by 10.55.47.199 with SMTP id v190mr46111192qkh.45.1471441166240;
+        Wed, 17 Aug 2016 06:39:26 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 37si20827822qty.156.2016.08.17.05.08.17
+        by mx.google.com with ESMTPS id o129si19695183qka.188.2016.08.17.06.39.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Aug 2016 05:08:17 -0700 (PDT)
+        Wed, 17 Aug 2016 06:39:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47220 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47555 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bZzdo-000594-PG
-	for alex.bennee@linaro.org; Wed, 17 Aug 2016 08:08:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34887)
+	id 1ba141-0000GG-KN
+	for alex.bennee@linaro.org; Wed, 17 Aug 2016 09:39:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52176)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bZzdm-00058w-3i
-	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 08:08:15 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1ba13w-0000Ff-TV
+	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 09:39:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bZzdk-0003bf-Sl
-	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 08:08:13 -0400
-Received: from mail-ua0-x231.google.com ([2607:f8b0:400c:c08::231]:35164)
+	(envelope-from <pbonzini@redhat.com>) id 1ba13r-0003zl-VO
+	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 09:39:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55358)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bZzdk-0003bY-Lx
-	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 08:08:12 -0400
-Received: by mail-ua0-x231.google.com with SMTP id n59so168197311uan.2
-	for <qemu-arm@nongnu.org>; Wed, 17 Aug 2016 05:08:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:from:date:message-id:subject:to:cc;
-	bh=EOC2bm8rTvTwv8YlOPFmaQEpCN5DF673LiohhxpEsfo=;
-	b=ScsirWDC26FjT29pinXwiu9jXAGBfrdLBjXH7zs8axREZXTqPHVqbB0xA5G6bi5XE9
-	VZF1RNa+Jdga8GLb6UUblUgEk5b6WtG9Toz6Mc2ewUKnKAJoXUZTOweO2oxgWHIcwbA2
-	7jKftaUfu7MaY2yFSBPM7/DYZWIIFFuinhYtM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-	bh=EOC2bm8rTvTwv8YlOPFmaQEpCN5DF673LiohhxpEsfo=;
-	b=EpdnC/yRwjFZoWjWNuO7bqEICrDRhIksBkI961RWN/N5Z8ox8KEl1DCENGHDSizTW3
-	qRGHKwf2Hfe13oqPN13eBycPG9fS9bJgiJDiLkckxlEIR4xxsF7dyrnJ4l+t0Y3A2JhS
-	6ifOqKNSNnTJiKnp5aU+oCIcJVK5vON9gDibWDHgUC8lRPpx6jtyTkzsm48qxIKUiWAG
-	Yp1LUsv0RhvTSo1NLrI2BiNDTkEbsstqI3j6shvWvOhdYjDPzp184+UfRFInx/1tzNwP
-	mfm3HtKP5Wn/xSHTK8scyKrDwFRz8kfzKZcel14qa1aznPHjZNe29xgr3IfN9IJQM0+k
-	a4ZQ==
-X-Gm-Message-State: AEkooutE8T19olwDJH5IeLnRQ7WUiIBmYFqYsCe9wGRIX94TUh1SLyixdfOkA4hI0JbRfQy2+TQlb6boGQAX6iIK
-X-Received: by 10.176.0.234 with SMTP id 97mr20085372uaj.64.1471435691955;
-	Wed, 17 Aug 2016 05:08:11 -0700 (PDT)
+	(envelope-from <pbonzini@redhat.com>)
+	id 1ba13r-0003zh-N6; Wed, 17 Aug 2016 09:39:15 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EF4E1830;
+	Wed, 17 Aug 2016 13:39:14 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7HDdA1n024507
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 17 Aug 2016 09:39:12 -0400
+To: vijay.kilari@gmail.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	rth@twiddle.net
+References: <1471348968-4614-1-git-send-email-vijay.kilari@gmail.com>
+	<1471348968-4614-2-git-send-email-vijay.kilari@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <151e49bd-d79d-0035-c775-86be29df3ac2@redhat.com>
+Date: Wed, 17 Aug 2016 15:39:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
 MIME-Version: 1.0
-Received: by 10.176.4.195 with HTTP; Wed, 17 Aug 2016 05:08:11 -0700 (PDT)
-From: Kevin Zhao <kevin.zhao@linaro.org>
-Date: Wed, 17 Aug 2016 20:08:11 +0800
-Message-ID: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
-To: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary=001a113cfc3abab917053a4351d7
+In-Reply-To: <1471348968-4614-2-git-send-email-vijay.kilari@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 17 Aug 2016 13:39:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::231
-Subject: [Qemu-arm] Help: Does Qemu support virtio-pci for net-device and
- disk device?
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC PATCH v2 1/2] utils: Add helper to read arm
+ MIDR_EL1 register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,79 +70,161 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Hanson <thomas.hanson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Gema Gomez-Solano <gema.gomez-solano@linaro.org>
+Cc: Prasun.Kapoor@cavium.com, p.fedin@samsung.com, qemu-devel@nongnu.org,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PT1oJNCidOFx
+X-TUID: jZZch3Eglklx
 
---001a113cfc3abab917053a4351d7
-Content-Type: text/plain; charset=UTF-8
 
-Hi all,
-     Now I'm investigating net device hot plug and disk hotplug for
-AArch64. For virtio , the default address is virtio-mmio. After Libvirt
-1.3.5, user can explicitly specify the address-type to pci and so libvirt
-will pass the virtio-pci parameters to the Qemu.
-     Both my host and guest OS is Debian8, and Qemu version is 2.6.0.
-Libvirt version is 1.3.5.
-     For net-device, I change the address-type to pci, and libvirt pass the
-command below:
-     -device
-virtio-net-pci,netdev=hostnet0,id=net0,mac=52:54:00:0d:25:25,bus=pci.2,addr=0x1
 
-     After booting, the eth0 device disappear(eth0 occur when the address
-is virtio-mmio),
-but I can find another net-device enp2s1, also it can't work for dhcp:
-Running lspci: 02:01.0 Ethernet controller: Red Hat, Inc Virtio network
-device
-I'm not sure whether it worked.
+On 16/08/2016 14:02, vijay.kilari@gmail.com wrote:
+> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> 
+> Add helper API to read MIDR_EL1 registers to fetch
+> cpu identification information. This helps in
+> adding errata's and architecture specific features.
+> 
+> This is implemented only for arm architecture.
+> 
+> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> ---
+>  include/qemu/aarch64-cpuid.h |  9 +++++
+>  util/Makefile.objs           |  1 +
+>  util/aarch64-cpuid.c         | 94 ++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 104 insertions(+)
+> 
+> diff --git a/include/qemu/aarch64-cpuid.h b/include/qemu/aarch64-cpuid.h
+> new file mode 100644
+> index 0000000..3c11057
+> --- /dev/null
+> +++ b/include/qemu/aarch64-cpuid.h
+> @@ -0,0 +1,9 @@
+> +#ifndef QEMU_AARCH64_CPUID_H
+> +#define QEMU_AARCH64_CPUID_H
+> +
+> +#if defined (__aarch64__)
+> +uint64_t get_aarch64_cpu_id(void);
+> +bool is_thunderx_pass2_cpu(void);
+> +#endif
+> +
+> +#endif
+> diff --git a/util/Makefile.objs b/util/Makefile.objs
+> index 96cb1e0..aa07bc3 100644
+> --- a/util/Makefile.objs
+> +++ b/util/Makefile.objs
+> @@ -35,3 +35,4 @@ util-obj-y += log.o
+>  util-obj-y += qdist.o
+>  util-obj-y += qht.o
+>  util-obj-y += range.o
+> +util-obj-y += aarch64-cpuid.o
+> diff --git a/util/aarch64-cpuid.c b/util/aarch64-cpuid.c
+> new file mode 100644
+> index 0000000..42af704
+> --- /dev/null
+> +++ b/util/aarch64-cpuid.c
+> @@ -0,0 +1,94 @@
+> +/*
+> + * Dealing with arm cpu identification information.
+> + *
+> + * Copyright (C) 2016 Cavium, Inc.
+> + *
+> + * Authors:
+> + *  Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> + *
+> + * This work is licensed under the terms of the GNU LGPL, version 2.1
+> + * or later.  See the COPYING.LIB file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "qemu/cutils.h"
+> +#include "qemu/aarch64-cpuid.h"
+> +
+> +#if defined (__aarch64__)
+> +#define MIDR_IMPLEMENTER_SHIFT  24
+> +#define MIDR_IMPLEMENTER_MASK   (0xffULL << MIDR_IMPLEMENTER_SHIFT)
+> +#define MIDR_ARCHITECTURE_SHIFT 16
+> +#define MIDR_ARCHITECTURE_MASK  (0xf << MIDR_ARCHITECTURE_SHIFT)
+> +#define MIDR_PARTNUM_SHIFT      4
+> +#define MIDR_PARTNUM_MASK       (0xfff << MIDR_PARTNUM_SHIFT)
+> +
+> +#define MIDR_CPU_PART(imp, partnum) \
+> +        (((imp)                 << MIDR_IMPLEMENTER_SHIFT)  | \
+> +        (0xf                    << MIDR_ARCHITECTURE_SHIFT) | \
+> +        ((partnum)              << MIDR_PARTNUM_SHIFT))
+> +
+> +#define ARM_CPU_IMP_CAVIUM        0x43
+> +#define CAVIUM_CPU_PART_THUNDERX  0x0A1
+> +
+> +#define MIDR_THUNDERX_PASS2  \
+> +               MIDR_CPU_PART(ARM_CPU_IMP_CAVIUM, CAVIUM_CPU_PART_THUNDERX)
+> +#define CPU_MODEL_MASK  (MIDR_IMPLEMENTER_MASK | MIDR_ARCHITECTURE_MASK | \
+> +                         MIDR_PARTNUM_MASK)
+> +
+> +static uint64_t qemu_read_aarch64_midr_el1(void)
+> +{
+> +#ifdef CONFIG_LINUX
+> +    const char *file = "/sys/devices/system/cpu/cpu0/regs/identification/midr_el1";
+> +    char *buf;
+> +    uint64_t midr = 0;
+> +
+> +#define BUF_SIZE 32
+> +    buf = g_malloc0(BUF_SIZE);
+> +    if (!buf) {
+> +        return 0;
+> +    }
+> +
+> +    if (!g_file_get_contents(file, &buf, 0, NULL)) {
+> +        goto out;
+> +    }
+> +
+> +    if (qemu_strtoull(buf, NULL, 0, &midr) < 0) {
+> +        goto out;
+> +    }
+> +
+> +out:
+> +    g_free(buf);
+> +
+> +    return midr;
+> +#else
+> +    return 0;
+> +#endif
+> +}
+> +
+> +static bool is_thunderx_cpu;
+> +static uint64_t aarch64_midr_val;
+> +uint64_t get_aarch64_cpu_id(void)
+> +{
+> +#ifdef CONFIG_LINUX
+> +    static bool cpu_info_read;
+> +
+> +    if (unlikely(!cpu_info_read)) {
+> +        aarch64_midr_val = qemu_read_aarch64_midr_el1();
+> +        aarch64_midr_val &= CPU_MODEL_MASK;
+> +        cpu_info_read = 1;
+> +        if (aarch64_midr_val == MIDR_THUNDERX_PASS2) {
+> +            is_thunderx_cpu = 1;
+> +        }
+> +    }
+> +    return aarch64_midr_val;
+> +#else
+> +    return 0;
+> +#endif
+> +}
+> +
+> +bool is_thunderx_pass2_cpu(void)
+> +{
+> +   return is_thunderx_cpu;
 
-     For disk device,* when I change the address-type to pci, the whole
-qemu command is :*
-https://paste.fedoraproject.org/409553/,  but the VM can not boot
-successfully. Does Qemu not support device disk of virtio-pci in AArch64
-just as it in X86_64?
-     Thanks~Since I am not very familiar with Qemu, really looking forward
-to your response.
+This can be:
 
-Best Regards,
-Kevin Zhao
+   return get_aarch64_cpu_id() == MIDR_THUNDERX_PASS2;
 
---001a113cfc3abab917053a4351d7
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+without the is_thunderx_cpu variable.
 
-<div dir=3D"ltr">Hi all,<div>=C2=A0 =C2=A0 =C2=A0Now I&#39;m investigating =
-net device hot plug and disk hotplug for AArch64. For virtio , the default =
-address is virtio-mmio. After Libvirt 1.3.5, user can explicitly specify th=
-e address-type to pci and so libvirt will pass the virtio-pci parameters to=
- the Qemu.</div><div>=C2=A0 =C2=A0 =C2=A0Both my host and guest OS is Debia=
-n8, and Qemu version is 2.6.0. Libvirt version is 1.3.5.=C2=A0</div><div>=
-=C2=A0 =C2=A0 =C2=A0For net-device, I change the address-type to pci, and l=
-ibvirt pass the command below:=C2=A0</div><div>=C2=A0 =C2=A0 =C2=A0-device =
-virtio-net-pci,netdev=3Dhostnet0,id=3Dnet0,mac=3D52:54:00:0d:25:25,bus=3Dpc=
-i.2,addr=3D0x1</div><div><br></div><div>=C2=A0 =C2=A0 =C2=A0<span style=3D"=
-font-size:12.8px">After booting, the eth0 device disappear(eth0 occur when =
-the address is virtio-mmio),</span></div><div style=3D"font-size:12.8px">bu=
-t I can find another net-device=C2=A0<span style=3D"font-size:12.8px">enp2s=
-1</span><span style=3D"font-size:12.8px">, also it can&#39;t work for dhcp:=
-=C2=A0</span></div><div style=3D"font-size:12.8px">Running lspci:=C2=A0<spa=
-n style=3D"font-size:12.8px">02:01.0 Ethernet controller: Red Hat, Inc Virt=
-io network device</span></div><div style=3D"font-size:12.8px">I&#39;m not s=
-ure whether it worked.</div><div style=3D"font-size:12.8px"><br></div><div =
-style=3D"font-size:12.8px">=C2=A0 =C2=A0 =C2=A0For disk device,<b> when I c=
-hange the address-type to pci, the whole qemu command is :</b>=C2=A0</div><=
-div style=3D""><span style=3D"font-size:12.8px"><a href=3D"https://paste.fe=
-doraproject.org/409553/">https://paste.fedoraproject.org/409553/</a>, =C2=
-=A0but the VM can not boot successfully. Does Qemu not support device disk =
-of virtio-pci in AArch64 just as it in X86_64?</span></div><div style=3D"">=
-<span style=3D"font-size:12.8px">=C2=A0 =C2=A0 =C2=A0Thanks~Since I am not =
-very familiar with Qemu, really looking forward to your response.</span><br=
-></div><div style=3D""><span style=3D"font-size:12.8px"><br></span></div><d=
-iv style=3D""><span style=3D"font-size:12.8px">Best Regards,</span></div><d=
-iv style=3D""><span style=3D"font-size:12.8px">Kevin Zhao</span></div></div=
->
+Paolo
 
---001a113cfc3abab917053a4351d7--
+> +}
+> +#endif
+> 

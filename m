@@ -1,280 +1,241 @@
-Received: by 10.25.21.156 with SMTP id 28csp1669552lfv;
-        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
-X-Received: by 10.55.16.78 with SMTP id a75mr36344771qkh.231.1471302487638;
-        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp2586836lfv;
+        Wed, 17 Aug 2016 08:59:58 -0700 (PDT)
+X-Received: by 10.55.43.25 with SMTP id r25mr45835650qkh.256.1471449598539;
+        Wed, 17 Aug 2016 08:59:58 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u8si15393091qtc.132.2016.08.15.16.08.07
+        by mx.google.com with ESMTPS id i52si21443216qti.20.2016.08.17.08.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Aug 2016 16:08:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 17 Aug 2016 08:59:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39213 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48175 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bZQzH-0000iH-2t
-	for alex.bennee@linaro.org; Mon, 15 Aug 2016 19:08:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51519)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ba3G2-0000qQ-0U
+	for alex.bennee@linaro.org; Wed, 17 Aug 2016 11:59:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57347)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bZQxn-00007r-5k
-	for qemu-devel@nongnu.org; Mon, 15 Aug 2016 19:06:36 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1ba3Fw-0000pS-7R
+	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 11:59:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bZQxj-0002jB-Px
-	for qemu-devel@nongnu.org; Mon, 15 Aug 2016 19:06:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38464)
+	(envelope-from <eric.auger@redhat.com>) id 1ba3Fs-000887-19
+	for qemu-arm@nongnu.org; Wed, 17 Aug 2016 11:59:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39044)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>)
-	id 1bZQxa-0002i7-Mo; Mon, 15 Aug 2016 19:06:22 -0400
+	(envelope-from <eric.auger@redhat.com>)
+	id 1ba3Fr-000871-On; Wed, 17 Aug 2016 11:59:47 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3E49B82C;
-	Mon, 15 Aug 2016 23:06:22 +0000 (UTC)
-Received: from [10.10.54.99] (vpn-54-99.rdu2.redhat.com [10.10.54.99])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7FLFMng018607; Mon, 15 Aug 2016 17:15:22 -0400
+	by mx1.redhat.com (Postfix) with ESMTPS id 8C65085547;
+	Wed, 17 Aug 2016 15:59:46 +0000 (UTC)
+Received: from localhost.localdomain (vpn1-5-93.ams2.redhat.com [10.36.5.93])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u7HFxgkU030730
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Wed, 17 Aug 2016 11:59:44 -0400
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1471067570-7503-1-git-send-email-wei@redhat.com>
-	<CAFEAcA-_hc71ScfUs8WOjJcM2SN+uR3ukjVt+BXUD9tMoRKKjw@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <57B230E9.5070808@redhat.com>
-Date: Mon, 15 Aug 2016 16:15:21 -0500
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:38.0)
-	Gecko/20100101 Thunderbird/38.7.0
+References: <1470161247-10251-1-git-send-email-eric.auger@redhat.com>
+	<1470161247-10251-6-git-send-email-eric.auger@redhat.com>
+	<CAFEAcA8g+TjvG5zhwoijkx941bMHodkNHktHV6VM6afnCmCFTw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <ec35f9c6-482a-4349-f1c8-d30f54081a1d@redhat.com>
+Date: Wed, 17 Aug 2016 17:59:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.1.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-_hc71ScfUs8WOjJcM2SN+uR3ukjVt+BXUD9tMoRKKjw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8g+TjvG5zhwoijkx941bMHodkNHktHV6VM6afnCmCFTw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 15 Aug 2016 23:06:22 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 17 Aug 2016 15:59:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH V1 1/1] arm64: Add an option to turn on/off
- host-backed vPMU support
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [RFC v5 5/7] hw/intc/arm_gicv3_its: Implement
+ support for in-kernel ITS emulation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Jones <drjones@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, Tomasz Nowicki <tn@semihalf.com>,
+	Shlomo Pongratz <shlomopongratz@gmail.com>,
+	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Andrea Bolognani <abologna@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pbSvHVoEmUYs
+	Diana Craciun <diana.craciun@freescale.com>,
+	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uVH1xHz1gZLn
 
+Hi Peter,
 
-
-On 8/15/16 11:13, Peter Maydell wrote:
-> On 13 August 2016 at 06:52, Wei Huang <wei@redhat.com> wrote:
->> This patch adds a pmu=[on/off] option to enable/disable host vPMU
->> support in guest VM. There are several reasons to justify this option.
->> First, host-backed vPMU can be problematic for cross-migration between
->> different SoC as perf counters are architecture-dependent. It is more
->> flexible to have an option to turn it on/off. Secondly this option
->> matches the "pmu" option as supported in libvirt tool.
+On 12/08/2016 16:03, Peter Maydell wrote:
+> On 2 August 2016 at 19:07, Eric Auger <eric.auger@redhat.com> wrote:
+>> From: Pavel Fedin <p.fedin@samsung.com>
 >>
->> Note that, like "has_el3", the "pmu" option is only made available on
->> CPUs that support host-backed vPMU. They include:
->>     * cortex-a53 + kvm
->>     * cortex-a57 + kvm
->>     * host + kvm
->> This option is removed in other configs where it doesn't make sense
->> (e.g. cortex-a57 + TCG); and the default pmu support is off. This patch
->> has been tested under both DT/ACPI modes.
+>> The ITS control frame is in-kernel emulated while accesses to the
+>> GITS_TRANSLATER are mediated through the KVM_SIGNAL_MSI ioctl (MSI
+>> direct MSI injection advertised by the CAP_SIGNAL_MSI capability)
 >>
->> Signed-off-by: Wei Huang <wei@redhat.com>
+>> the kvm_gsi_direct_mapping is explicitly set to false to emphasize the
+>> difference with GICv2M. Direct mapping cannot work with ITS since
+>> the content of the MSI data is not the target interrupt ID but an
+>> eventd id.
+>>
+>> GSI routing is advertised (kvm_gsi_routing_allowed) as well as
+>> msi/irqfd signaling (kvm_msi_via_irqfd_allowed).
+>>
+>> Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
 >> ---
->>  hw/arm/virt-acpi-build.c |  2 +-
->>  hw/arm/virt.c            |  2 +-
->>  target-arm/cpu.c         | 13 +++++++++++++
->>  target-arm/cpu.h         |  3 ++-
->>  target-arm/cpu64.c       |  6 ++++++
->>  target-arm/kvm64.c       | 10 +++++-----
->>  6 files changed, 28 insertions(+), 8 deletions(-)
 >>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 28fc59c..22fb9d9 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
->>          gicc->uid = i;
->>          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+>> v3 -> v4:
+>> - include "qemu/osdep.h" and  "qapi/error.h"
+>> - rename KVM_VGIC_V3_ADDR_TYPE_ITS into KVM_VGIC_ITS_ADDR_TYPE
+>> - reword commit message
+>> - change kvm_msi_via_irqfd_allowed definition (attached to irqfd dynamic
+>>   availability + MSI controller availability)
+>> - create the ITS KVM device (previously abstracted by the GICv3 KVM device)
+>> - init sequence changed
+>> - absolute GITS_TRANSLATER GPA stored
+>> ---
+>>  hw/intc/Makefile.objs       |   1 +
+>>  hw/intc/arm_gicv3_its_kvm.c | 145 ++++++++++++++++++++++++++++++++++++++++++++
+>>  2 files changed, 146 insertions(+)
+>>  create mode 100644 hw/intc/arm_gicv3_its_kvm.c
 >>
->> -        if (armcpu->has_pmu) {
->> +        if (armcpu->has_host_pmu) {
->>              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->>          }
->>      }
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index a193b5a..4975f38 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
->>
->>      CPU_FOREACH(cpu) {
->>          armcpu = ARM_CPU(cpu);
->> -        if (!armcpu->has_pmu ||
->> +        if (!armcpu->has_host_pmu ||
->>              !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
->>              return;
->>          }
->> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
->> index ce8b8f4..a527128 100644
->> --- a/target-arm/cpu.c
->> +++ b/target-arm/cpu.c
->> @@ -509,6 +509,10 @@ static Property arm_cpu_rvbar_property =
->>  static Property arm_cpu_has_el3_property =
->>              DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
->>
->> +/* use property name "pmu" to match with other archs and libvirt */
->> +static Property arm_cpu_has_host_pmu_property =
->> +    DEFINE_PROP_BOOL("pmu", ARMCPU, has_host_pmu, false);
+>> diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
+>> index 23a39f7..9cca280 100644
+>> --- a/hw/intc/Makefile.objs
+>> +++ b/hw/intc/Makefile.objs
+>> @@ -22,6 +22,7 @@ common-obj-$(CONFIG_OPENPIC) += openpic.o
+>>  obj-$(CONFIG_APIC) += apic.o apic_common.o
+>>  obj-$(CONFIG_ARM_GIC_KVM) += arm_gic_kvm.o
+>>  obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_kvm.o
+>> +obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_its_kvm.o
+>>  obj-$(CONFIG_STELLARIS) += armv7m_nvic.o
+>>  obj-$(CONFIG_EXYNOS4) += exynos4210_gic.o exynos4210_combiner.o
+>>  obj-$(CONFIG_GRLIB) += grlib_irqmp.o
+>> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+>> new file mode 100644
+>> index 0000000..b6d92aa
+>> --- /dev/null
+>> +++ b/hw/intc/arm_gicv3_its_kvm.c
+>> @@ -0,0 +1,145 @@
+>> +/*
+>> + * KVM-based ITS implementation for a GICv3-based system
+>> + *
+>> + * Copyright (c) 2015 Samsung Electronics Co., Ltd.
+>> + * Written by Pavel Fedin <p.fedin@samsung.com>
+>> + *
+>> + * This library is free software; you can redistribute it and/or
+>> + * modify it under the terms of the GNU Lesser General Public
+>> + * License as published by the Free Software Foundation; either
+>> + * version 2 of the License, or (at your option) any later version.
+>> + *
+>> + * This library is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>> + * Lesser General Public License for more details.
+>> + *
+>> + * You should have received a copy of the GNU Lesser General Public
+>> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+>> + */
 >> +
->>  static Property arm_cpu_has_mpu_property =
->>              DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
->>
->> @@ -552,6 +556,11 @@ static void arm_cpu_post_init(Object *obj)
->>  #endif
->>      }
->>
->> +    if (arm_feature(&cpu->env, ARM_FEATURE_HOST_PMU)) {
->> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_host_pmu_property,
->> +                                 &error_abort);
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/error.h"
+>> +#include "hw/intc/arm_gicv3_its_common.h"
+>> +#include "sysemu/sysemu.h"
+>> +#include "sysemu/kvm.h"
+>> +#include "kvm_arm.h"
+>> +
+>> +#define TYPE_KVM_ARM_ITS "arm-its-kvm"
+>> +#define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
+>> +
+>> +static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
+>> +{
+>> +    struct kvm_msi msi;
+>> +
+>> +    msi.address_lo = s->gits_translater_gpa & 0xFFFFFFFFULL;
+>> +    msi.address_hi = s->gits_translater_gpa >> 32;
+> 
+> extract64() might be preferable?
+> 
+>> +    msi.data = value;
+>> +    msi.flags = KVM_MSI_VALID_DEVID;
+>> +    msi.devid = devid;
+>> +    memset(msi.pad, 0, sizeof(msi.pad));
+>> +
+>> +    return kvm_vm_ioctl(kvm_state, KVM_SIGNAL_MSI, &msi);
+>> +}
+>> +
+>> +typedef struct ItsInitNotifierParams {
+>> +    Notifier notifier;
+>> +    GICv3ITSState *s;
+>> +} ItsInitNotifierParams;
+>> +
+>> +/**
+>> + *
+>> + * We currently do not use kvm_arm_register_device to provide
+>> + * the kernel with the vITS control frame base address since the
+>> + * KVM_DEV_ARM_VGIC_CTRL_INIT init MUST be called after the
+>> + * KVM_ARM_SET_DEVICE_ADDR and the kvm_arm_register_device
+>> + * infra does not allow this.
+>> + */
+> 
+> I thought we'd fixed the kernel API so we didn't need to
+> have this workaround?
+The kernel fixes landed in kvmarm/master so I will respin the series
+accordingly.
+
+Thanks
+
+Eric
+> 
+>> +static void its_notify(Notifier *notifier, void *data)
+>> +{
+>> +    ItsInitNotifierParams *p = DO_UPCAST(ItsInitNotifierParams,
+>> +                                         notifier, notifier);
+>> +    GICv3ITSState *s = p->s;
+>> +    MemoryRegion *mr = &s->iomem_its_cntrl;
+>> +    MemoryRegionSection mrs;
+>> +    struct kvm_device_attr attr;
+>> +    uint64_t addr;
+>> +    int ret;
+>> +
+>> +    mrs = memory_region_find(mr, 0, 1);
+>> +    addr = mrs.offset_within_address_space;
+>> +
+>> +    attr.flags = 0;
+>> +    attr.group = KVM_DEV_ARM_VGIC_GRP_ADDR;
+>> +    attr.attr = KVM_VGIC_ITS_ADDR_TYPE;
+>> +    attr.addr =  (uintptr_t)&addr;
+>> +
+>> +    s->gits_translater_gpa = addr + ITS_CONTROL_SIZE + 0x40;
+>> +
+>> +    ret = kvm_device_ioctl(s->dev_fd, KVM_SET_DEVICE_ATTR, attr);
+>> +    if (ret) {
+>> +        error_setg_errno(&error_fatal, -ret,
+>> +                         "not able to set base address for vITS ctrl frame");
 >> +    }
 >> +
->>      if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
->>          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
->>                                   &error_abort);
->> @@ -648,6 +657,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>          cpu->id_aa64pfr0 &= ~0xf000;
->>      }
->>
->> +    if (!cpu->has_host_pmu) {
->> +        unset_feature(env, ARM_FEATURE_HOST_PMU);
->> +    }
->> +
->>      if (!arm_feature(env, ARM_FEATURE_EL2)) {
->>          /* Disable the hypervisor feature bits in the processor feature
->>           * registers if we don't have EL2. These are id_pfr1[15:12] and
->> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
->> index 76d824d..f3f6d3f 100644
->> --- a/target-arm/cpu.h
->> +++ b/target-arm/cpu.h
->> @@ -580,7 +580,7 @@ struct ARMCPU {
->>      /* CPU has security extension */
->>      bool has_el3;
->>      /* CPU has PMU (Performance Monitor Unit) */
->> -    bool has_pmu;
->> +    bool has_host_pmu;
-> 
-> Can you explain why you renamed this? "has_pmu" matches
-> the comment: it indicates that the emulated CPU has a PMU.
-> has_host_pmu would be something different (and would only
-
-The existing "has_pmu" was added and only enabled under KVM. So its
-existing meaning is a bit misleading. It doesn't address the case of TCG.
-
-
-> apply to KVM). It also looks weird in the code in the board
-> model: we should be saying "if the guest CPU has a PMU, wire
-> up its interrupt", not "if the host CPU has a PMU, wire
-> up a guest CPU interrupt".
-
-I can change it back to "has_pmu" as suggested by you and Drew; but we
-need to be careful of using it, especially under TCG mode. For instance,
-with "-M virt,accel=tcg -cpu host,pmu=off", we expect PMU is turned off.
-But TCG still emulates some PMU counters (e.g. pmccntr).
-
-> 
->>
->>      /* CPU has memory protection unit */
->>      bool has_mpu;
->> @@ -1129,6 +1129,7 @@ enum arm_features {
->>      ARM_FEATURE_V8_SHA256, /* implements SHA256 part of v8 Crypto Extensions */
->>      ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensions */
->>      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
->> +    ARM_FEATURE_HOST_PMU, /* PMU supported by host */
-> 
-> ARM_FEATURE_ bits are for guest CPU features, not for
-> recording information about the host CPU.
-
-OK, will address it.
-
-> 
->>  };
->>
->>  static inline int arm_feature(CPUARMState *env, int feature)
->> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
->> index 1635deb..19e8127 100644
->> --- a/target-arm/cpu64.c
->> +++ b/target-arm/cpu64.c
->> @@ -111,6 +111,9 @@ static void aarch64_a57_initfn(Object *obj)
->>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->>      set_feature(&cpu->env, ARM_FEATURE_CRC);
->>      set_feature(&cpu->env, ARM_FEATURE_EL3);
->> +    if (kvm_enabled()) {
->> +        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
->> +    }
->>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
->>      cpu->midr = 0x411fd070;
->>      cpu->revidr = 0x00000000;
->> @@ -166,6 +169,9 @@ static void aarch64_a53_initfn(Object *obj)
->>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->>      set_feature(&cpu->env, ARM_FEATURE_CRC);
->>      set_feature(&cpu->env, ARM_FEATURE_EL3);
->> +    if (kvm_enabled()) {
->> +        set_feature(&cpu->env, ARM_FEATURE_HOST_PMU);
->> +    }
-> 
-> This definitely looks like the wrong place to be checking
-> kvm_enabled().
-> 
->>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
->>      cpu->midr = 0x410fd034;
->>      cpu->revidr = 0x00000000;
->> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
->> index 5faa76c..588e5e3 100644
->> --- a/target-arm/kvm64.c
->> +++ b/target-arm/kvm64.c
->> @@ -469,6 +469,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
->>      set_feature(&features, ARM_FEATURE_VFP4);
->>      set_feature(&features, ARM_FEATURE_NEON);
->>      set_feature(&features, ARM_FEATURE_AARCH64);
->> +    set_feature(&features, ARM_FEATURE_HOST_PMU);
->>
->>      ahcc->features = features;
->>
->> @@ -501,11 +502,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->>      }
->> -    if (kvm_irqchip_in_kernel() &&
->> -        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
->> -        cpu->has_pmu = true;
->> -        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->> -    }
->> +    /* enable vPMU based on KVM mode, hw capability, and user setting */
->> +    cpu->has_host_pmu &= kvm_irqchip_in_kernel() &&
->> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3);
->> +    cpu->kvm_init_features[0] |= cpu->has_host_pmu << KVM_ARM_VCPU_PMU_V3;
->>
->>      /* Do KVM_ARM_VCPU_INIT ioctl */
->>      ret = kvm_arm_vcpu_init(cs);
->> --
->> 2.4.11
->>
+>> +    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
+>> +                      KVM_DEV_ARM_VGIC_CTRL_INIT, NULL, true);
+>> +}
 > 
 > thanks
 > -- PMM

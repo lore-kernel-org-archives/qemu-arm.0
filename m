@@ -1,71 +1,60 @@
-Received: by 10.25.21.156 with SMTP id 28csp301138lfv;
-        Thu, 18 Aug 2016 05:51:56 -0700 (PDT)
-X-Received: by 10.237.45.34 with SMTP id h31mr2099737qtd.101.1471524716231;
-        Thu, 18 Aug 2016 05:51:56 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp329501lfv;
+        Thu, 18 Aug 2016 06:53:17 -0700 (PDT)
+X-Received: by 10.55.132.71 with SMTP id g68mr2632910qkd.50.1471528379961;
+        Thu, 18 Aug 2016 06:52:59 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r4si1145682qkd.42.2016.08.18.05.51.55
+        by mx.google.com with ESMTPS id t1si1301852qkl.34.2016.08.18.06.52.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Aug 2016 05:51:56 -0700 (PDT)
+        Thu, 18 Aug 2016 06:52:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52569 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52802 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1baMnb-0005ZN-Nj
-	for alex.bennee@linaro.org; Thu, 18 Aug 2016 08:51:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59815)
+	id 1baNkh-00025k-90
+	for alex.bennee@linaro.org; Thu, 18 Aug 2016 09:52:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47726)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1baMnW-0005Yq-Mm
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 08:51:52 -0400
+	(envelope-from <okaya@codeaurora.org>) id 1baNka-00022M-DG
+	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 09:52:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1baMnT-0006t2-Nh
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 08:51:49 -0400
-Received: from mail-ua0-x232.google.com ([2607:f8b0:400c:c08::232]:32826)
+	(envelope-from <okaya@codeaurora.org>) id 1baNkU-0004Hd-Hm
+	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 09:52:51 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:58108)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1baMnT-0006sw-HR
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 08:51:47 -0400
-Received: by mail-ua0-x232.google.com with SMTP id 74so26220616uau.0
-	for <qemu-arm@nongnu.org>; Thu, 18 Aug 2016 05:51:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=wIjlHxrmqg/CfQh4uN6cIXydpYJmv9efHkdYqGJjUrg=;
-	b=KFO1WhU2xrp/bp/N1D/riXQuxJPqBhsxUDS9c/mzw5nNC2+h2bpkmWugfuZsQoUGb9
-	3OG79ZXqSXDVTgOOJ7TqWY7qUC3lgJLVojXZts9NZRF5BGuQrAEUzOQ8dPAYh4zZ9Me4
-	rNs5BNBy2NHxMPQxfzgd62g5iZVQ+JkfOnOJ8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=wIjlHxrmqg/CfQh4uN6cIXydpYJmv9efHkdYqGJjUrg=;
-	b=dOUV12ltyvGYlf016MSzNGpHip0E6tipApZI2VvnCXKvTNdfd/Q7YNmv/F7eE3j84p
-	b4kv981745i8poonlPio8g1g/GFHvE3YgI5HfeuFhBQzu2IhkRsG0ndVnDs+oi/2yXHG
-	zVJbU8WRDJkQxSg0Sm9m3hRwJTUfxsu963nM5XuARwn704t0iNhe9dK7PG+Qy/0tojCh
-	mjAbWUr6cxZsS4ZDDHxZf2RF+X5qMQwVXXyJHwwPT17z2Ro76wEqO6E7d28bNQhqkxqk
-	VnieeI7ckLoa4rYYQSu+eofVbNgBxvJTtsZMWaQ+yjl4zn567/dI9dFDpXx1N3AX7/8n
-	0jcA==
-X-Gm-Message-State: AEkoouvqj6RF5dZH+BhEicGeM9/abTz7e87Q6H6NJt7vims1CxxW2Jr+3rkW+Ioc9m7N6COyY4iMqfGESq5Bp+q0
-X-Received: by 10.176.0.234 with SMTP id 97mr982893uaj.64.1471524706871; Thu,
-	18 Aug 2016 05:51:46 -0700 (PDT)
+	(envelope-from <okaya@codeaurora.org>)
+	id 1baNkU-0004HF-Bj; Thu, 18 Aug 2016 09:52:46 -0400
+Received: by smtp.codeaurora.org (Postfix, from userid 1000)
+	id CD88C61CCE; Thu, 18 Aug 2016 13:52:43 +0000 (UTC)
+Received: from [10.228.68.89] (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: okaya@smtp.codeaurora.org)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 52E5A61CC8;
+	Thu, 18 Aug 2016 13:52:42 +0000 (UTC)
+To: Auger Eric <eric.auger@redhat.com>,
+	Shanker Donthineni <shankerd@codeaurora.org>, qemu-arm
+	<qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>
+References: <1471189341-21103-1-git-send-email-shankerd@codeaurora.org>
+	<f928f18f-22c5-4d8f-33c9-2701a66ab2bd@redhat.com>
+From: Sinan Kaya <okaya@codeaurora.org>
+Message-ID: <3fef4cd0-75df-0bb1-bd7d-dd6a966a05b1@codeaurora.org>
+Date: Thu, 18 Aug 2016 09:52:41 -0400
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
 MIME-Version: 1.0
-Received: by 10.176.4.195 with HTTP; Thu, 18 Aug 2016 05:51:46 -0700 (PDT)
-In-Reply-To: <CAN76PtRX_tgiTbdMZ=CdgwYF6+ux4rA1b+caH0R49vs=JPAEuA@mail.gmail.com>
-References: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
-	<20160817161303.jdglwirs522vn2wa@kamzik.localdomain>
-	<CAN76PtRX_tgiTbdMZ=CdgwYF6+ux4rA1b+caH0R49vs=JPAEuA@mail.gmail.com>
-From: Kevin Zhao <kevin.zhao@linaro.org>
-Date: Thu, 18 Aug 2016 20:51:46 +0800
-Message-ID: <CAN76PtTik1u-Eg=x0CBVPORfd1gDVM2m_J=MZRUcuwEMfM6wjg@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: multipart/alternative; boundary=001a113cfc3a6e80f3053a580b9f
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::232
-Subject: Re: [Qemu-arm] [Qemu-devel] Help: Does Qemu support virtio-pci for
- net-device and disk device?
+In-Reply-To: <f928f18f-22c5-4d8f-33c9-2701a66ab2bd@redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 198.145.29.96
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] hw/vfio/platform: Add
+ Qualcomm Technologies, Inc HIDMA device support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,296 +66,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Marcel Apfelbaum <mapfelba@redhat.com>,
-	Gema Gomez-Solano <gema.gomez-solano@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Andrea Bolognani <abologna@redhat.com>,
-	Thomas Hanson <thomas.hanson@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Laine Stump <lstump@redhat.com>
+Cc: Philip Elcan <pelcan@codeaurora.org>, Alexander Graf <agraf@suse.de>,
+	Vikram Sethi <vikrams@codeaurora.org>, Eric Auger <eric.auger@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ix5zuexXOuyb
+X-TUID: 8kZOLRSWFn9P
 
---001a113cfc3a6e80f3053a580b9f
-Content-Type: text/plain; charset=UTF-8
+On 8/18/2016 5:37 AM, Auger Eric wrote:
+> Some general comments:
+> - I preferred the previous series organization where we had the creation
+> of the VFIO device first and its sysbus-fdt dynamic instantiation in a
+> separate patch.
+> 
+> Peter requested sysbus-fdt stops growing and advised to split the fine
+> into generic helpers and specific dt creation functions in separate
+> files. This sounds the right moment to do it with looming new VFIO devices.
+> 
+> (*) Also I am now reconsidering the relevance of creating specific VFIO
+> devices per compat string. At the begining of VFIO QEMU integration
+> history we made that choice, advised by Alex (Graf), considering the
+> QEMU VFIO device could not be generic. With a little more experience now
+> we could see the specialization is currently done in the dt creation
+> function (sysbus-fdt) and in the kernel reset module. So I would now
+> advocate using a non abstract base VFIO device that could be
+> instantiated passing its compat string as property. Creating
+> hw/vfio/qcom-hidma.c and include/hw/vfio/vfio-qcom-hidma.h then would
+> become useless. Alex, what is your feeling now?
+> 
+> I think the split of sysbus-fdt and (*) - if approoved -  shall be
+> considered before introducing a new QEMU VFIO device. Are you willing to
+> work on it?
 
-Hi All,
-    Thanks for your all kindly response. Really Great and helpful :-)
+I really like generic device approach. It would save a ton of burden from
+developers.
 
-On 18 August 2016 at 20:30, Kevin Zhao <kevin.zhao@linaro.org> wrote:
+If somebody needs a specialized device, they can do so. For simple objects
+that just needs a compat string, it doesn't make sense to create a driver
+every single time.
 
-> Hi Jones:
->    Thanks~It is great that Qemu has been working on that :-)
->
-> On 18 August 2016 at 00:13, Andrew Jones <drjones@redhat.com> wrote:
->
->> On Wed, Aug 17, 2016 at 08:08:11PM +0800, Kevin Zhao wrote:
->> > Hi all,
->> >      Now I'm investigating net device hot plug and disk hotplug for
->> > AArch64. For virtio , the default address is virtio-mmio. After Libvirt
->> > 1.3.5, user can explicitly specify the address-type to pci and so
->> libvirt
->> > will pass the virtio-pci parameters to the Qemu.
->> >      Both my host and guest OS is Debian8, and Qemu version is 2.6.0.
->> > Libvirt version is 1.3.5.
->> >      For net-device, I change the address-type to pci, and libvirt pass
->> the
->> > command below:
->> >      -device
->> > virtio-net-pci,netdev=hostnet0,id=net0,mac=52:54:00:0d:25:
->> 25,bus=pci.2,addr=0x1
->> >
->> >      After booting, the eth0 device disappear(eth0 occur when the
->> address
->> > is virtio-mmio),
->> > but I can find another net-device enp2s1, also it can't work for dhcp:
->> > Running lspci: 02:01.0 Ethernet controller: Red Hat, Inc Virtio network
->> > device
->> > I'm not sure whether it worked.
->> >
->> >      For disk device,* when I change the address-type to pci, the whole
->> > qemu command is :*
->> > https://paste.fedoraproject.org/409553/,  but the VM can not boot
->> > successfully. Does Qemu not support device disk of virtio-pci in AArch64
->> > just as it in X86_64?
->> >      Thanks~Since I am not very familiar with Qemu, really looking
->> forward
->> > to your response.
->> >
->> > Best Regards,
->> > Kevin Zhao
->>
->> libvirt 1.3.5 is a bit old. Later versions no longer unconditionally add
->> the i82801b11 bridge, which was necessary to use PCI devices with the PCIe
->> host bridge mach-virt has. IMO, libvirt and qemu still have a long way to
->> go in order to configure a base/standard mach-virt PCIe machine.
->>
->>
-> Yeah, I am changing to libvirt 2.1.0, I find that I should use PCI by
-> manually add
-> the slots and bus to it.
->
-> 1) If we want to support both PCIe devices and PCI, then things are messy.
->>    Currently we propose dropping PCI support. mach-virt pretty much
->>    exclusively uses virtio, which can be set to PCIe mode (virtio-1.0)
->> 2) root complex ports, switches (upstream/downstream ports) are currently
->>    based on Intel parts. Marcel is thinking about creating generic models.
->> 3) libvirt needs to learn how to plug everything together, in proper PCIe
->>    fashion, leaving holes for hotplug.
->> 4) Probably more... I forget all the different issues we discovered when
->>    we started playing with this a few months ago.
->>
->> The good news is that x86 folk want all the same things for the q35 model.
->> mach-virt enthusiasts like us get to ride along pretty much for free.
->>
->> So, using virtio-pci with mach-virt and libvirt isn't possible right now,
->> not without manual changes to the XML. It might be nice to document how to
->> manually convert a guest, so developers who want to use virtio-pci don't
->> have to abandon libvirt. I'd have to look into that, or ask one of our
->> libvirt friends to help. Certainly the instructions would be for latest
->> libvirt though.
->>
->>
-> As you said,  that means that I can use PCIe as the bus for disk and
-> net-device.
-> I will try using pcie in libvirt. I will try the newest version of
-> libvirt.
-> Do I need to change <address type = 'pcie'> to enable it in AArch64 ?
-> The pcie bus will  be automatically assigned in libvirt ?
->
+Similarly, there is generic PCI host driver in the Linux kernel that works
+for systems that is CAM or ECAM compliant. If somebody needs to do more,
+they can implement their own PCI host driver too. 
 
-Just to remind that I made a mistake here, as Laine said now just manually
-adding pcie
-slots can work. He is going on push a patch to libvirt about automatically
-assigment.
+We are really looking for the same model.
 
->
->
->> Finally, FWIW, with a guest kernel of 4.6.4-301.fc24.aarch64. The
->> following qemu command line works for me.
->> (notice the use of PCIe), and my network interface gets labeled enp0s1.
->>
->> $QEMU -machine virt-2.6,accel=kvm -cpu host \
->>  -m 1024 -smp 1 -nographic \
->>  -bios /usr/share/AAVMF/AAVMF_CODE.fd \
->>  -device ioh3420,bus=pcie.0,id=pcie.1,port=1,chassis=1 \
->>  -device ioh3420,bus=pcie.0,id=pcie.2,port=2,chassis=2 \
->>  -device virtio-scsi-pci,disable-modern=off,disable-legacy=on,bus=pcie.1,addr=00.0,id=scsi0
->> \
->>  -drive file=/home/drjones/.local/libvirt/images/fedora.qcow2,format
->> =qcow2,if=none,id=drive-scsi0-0-0-0 \
->>  -device scsi-hd,bus=scsi0.0,channel=0,scsi-id=0,lun=0,drive=drive-sc
->> si0-0-0-0,id=scsi0-0-0-0,bootindex=1 \
->>  -netdev user,id=hostnet0 \
->>  -device virtio-net-pci,disable-modern=off,disable-legacy=on,bus=pcie
->> .2,addr=00.0,netdev=hostnet0,id=net0
->>
->> I prefer always using virtio-scsi for the disk, but a similar command
->> line can be used for a virtio-blk-pci disk.
->>
->> OK great! Because in Openstack Nova ,AArch64 need to realize the hotplug
-> only with
-> the virtio bus, so investigate the virtio-pci. :-)
-> Thanks again!
->
->
->> Thanks,
->> drew
->>
->
->
+I'm interested in virtualization of platform SATA and HIDMA devices. The
+only difference between these are the compatible strings. 
 
---001a113cfc3a6e80f3053a580b9f
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Why submit a new SATA AHCI driver for QEMU just to set the compat string?
 
-<div dir=3D"ltr">Hi All,=C2=A0<div>=C2=A0 =C2=A0 Thanks for your all kindly=
- response. Really Great and helpful :-)</div><div><div class=3D"gmail_extra=
-"><br><div class=3D"gmail_quote">On 18 August 2016 at 20:30, Kevin Zhao <sp=
-an dir=3D"ltr">&lt;<a href=3D"mailto:kevin.zhao@linaro.org" target=3D"_blan=
-k">kevin.zhao@linaro.org</a>&gt;</span> wrote:<br><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left=
-:1ex"><div dir=3D"ltr">Hi Jones:<div>=C2=A0 =C2=A0Thanks~It is great that Q=
-emu has been working on that :-)<br><div><div class=3D"gmail_extra"><br><di=
-v class=3D"gmail_quote"><div><div class=3D"h5">On 18 August 2016 at 00:13, =
-Andrew Jones <span dir=3D"ltr">&lt;<a href=3D"mailto:drjones@redhat.com" ta=
-rget=3D"_blank">drjones@redhat.com</a>&gt;</span> wrote:<br><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
-dding-left:1ex"><span>On Wed, Aug 17, 2016 at 08:08:11PM +0800, Kevin Zhao =
-wrote:<br>
-&gt; Hi all,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Now I&#39;m investigating net device hot plug and =
-disk hotplug for<br>
-&gt; AArch64. For virtio , the default address is virtio-mmio. After Libvir=
-t<br>
-&gt; 1.3.5, user can explicitly specify the address-type to pci and so libv=
-irt<br>
-&gt; will pass the virtio-pci parameters to the Qemu.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Both my host and guest OS is Debian8, and Qemu ver=
-sion is 2.6.0.<br>
-&gt; Libvirt version is 1.3.5.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 For net-device, I change the address-type to pci, =
-and libvirt pass the<br>
-&gt; command below:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 -device<br>
-&gt; virtio-net-pci,netdev=3Dhostnet0<wbr>,id=3Dnet0,mac=3D52:54:00:0d:25:<=
-wbr>25,bus=3Dpci.2,addr=3D0x1<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 After booting, the eth0 device disappear(eth0 occu=
-r when the address<br>
-&gt; is virtio-mmio),<br>
-&gt; but I can find another net-device enp2s1, also it can&#39;t work for d=
-hcp:<br>
-&gt; Running lspci: 02:01.0 Ethernet controller: Red Hat, Inc Virtio networ=
-k<br>
-&gt; device<br>
-&gt; I&#39;m not sure whether it worked.<br>
-&gt;<br>
-</span>&gt;=C2=A0 =C2=A0 =C2=A0 For disk device,* when I change the address=
--type to pci, the whole<br>
-&gt; qemu command is :*<br>
-<span>&gt; <a href=3D"https://paste.fedoraproject.org/409553/" rel=3D"noref=
-errer" target=3D"_blank">https://paste.fedoraproject.or<wbr>g/409553/</a>,=
-=C2=A0 but the VM can not boot<br>
-&gt; successfully. Does Qemu not support device disk of virtio-pci in AArch=
-64<br>
-&gt; just as it in X86_64?<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Thanks~Since I am not very familiar with Qemu, rea=
-lly looking forward<br>
-&gt; to your response.<br>
-&gt;<br>
-&gt; Best Regards,<br>
-&gt; Kevin Zhao<br>
-<br>
-</span>libvirt 1.3.5 is a bit old. Later versions no longer unconditionally=
- add<br>
-the i82801b11 bridge, which was necessary to use PCI devices with the PCIe<=
-br>
-host bridge mach-virt has. IMO, libvirt and qemu still have a long way to<b=
-r>
-go in order to configure a base/standard mach-virt PCIe machine.<br>
-<br></blockquote><div>=C2=A0</div></div></div><div>Yeah, I am changing to l=
-ibvirt 2.1.0, I find that I should use PCI by manually add</div><div>the sl=
-ots and bus to it.</div><span class=3D""><div><br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">
-1) If we want to support both PCIe devices and PCI, then things are messy.<=
-br>
-=C2=A0 =C2=A0Currently we propose dropping PCI support. mach-virt pretty mu=
-ch<br>
-=C2=A0 =C2=A0exclusively uses virtio, which can be set to PCIe mode (virtio=
--1.0)<br>
-2) root complex ports, switches (upstream/downstream ports) are currently<b=
-r>
-=C2=A0 =C2=A0based on Intel parts. Marcel is thinking about creating generi=
-c models.<br>
-3) libvirt needs to learn how to plug everything together, in proper PCIe<b=
-r>
-=C2=A0 =C2=A0fashion, leaving holes for hotplug.<br>
-4) Probably more... I forget all the different issues we discovered when<br=
->
-=C2=A0 =C2=A0we started playing with this a few months ago.<br>
-<br>
-The good news is that x86 folk want all the same things for the q35 model.<=
-br>
-mach-virt enthusiasts like us get to ride along pretty much for free.<br>
-<br>
-So, using virtio-pci with mach-virt and libvirt isn&#39;t possible right no=
-w,<br>
-not without manual changes to the XML. It might be nice to document how to<=
-br>
-manually convert a guest, so developers who want to use virtio-pci don&#39;=
-t<br>
-have to abandon libvirt. I&#39;d have to look into that, or ask one of our<=
-br>
-libvirt friends to help. Certainly the instructions would be for latest<br>
-libvirt though.<br>
-<br></blockquote><div><br></div></span><div>As you said, =C2=A0that means t=
-hat I can use PCIe as the bus for disk and net-device.</div><div>I will try=
- using pcie in libvirt. I will try the newest version of libvirt.=C2=A0</di=
-v><div>Do I need to change &lt;address type =3D &#39;pcie&#39;&gt; to enabl=
-e it in AArch64 ?</div><div>The pcie bus will =C2=A0be automatically assign=
-ed in libvirt ?=C2=A0</div></div></div></div></div></div></blockquote><div>=
-<br></div><div>Just to remind that I made a mistake here, as Laine said now=
- just manually adding pcie</div><div>slots can work. He is going on push a =
-patch to libvirt about automatically assigment.</div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
-eft:1ex"><div dir=3D"ltr"><div><div><div class=3D"gmail_extra"><div class=
-=3D"gmail_quote"><span class=3D""><div>=C2=A0</div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-lef=
-t:1ex">
-Finally, FWIW, with a guest kernel of 4.6.4-301.fc24.aarch64. The<br>
-following qemu command line works for me.<br>
-(notice the use of PCIe), and my network interface gets labeled enp0s1.<br>
-<br>
-$QEMU -machine virt-2.6,accel=3Dkvm -cpu host \<br>
-=C2=A0-m 1024 -smp 1 -nographic \<br>
-=C2=A0-bios /usr/share/AAVMF/AAVMF_CODE.fd \<br>
-=C2=A0-device ioh3420,bus=3Dpcie.0,id=3Dpcie.1,p<wbr>ort=3D1,chassis=3D1 \<=
-br>
-=C2=A0-device ioh3420,bus=3Dpcie.0,id=3Dpcie.2,p<wbr>ort=3D2,chassis=3D2 \<=
-br>
-=C2=A0-device virtio-scsi-pci,disable-modern<wbr>=3Doff,disable-legacy=3Don=
-,bus=3D<wbr>pcie.1,addr=3D00.0,id=3Dscsi0 \<br>
-=C2=A0-drive file=3D/home/drjones/.local/libv<wbr>irt/images/fedora.qcow2,f=
-ormat<wbr>=3Dqcow2,if=3Dnone,id=3Ddrive-scsi0-<wbr>0-0-0 \<br>
-=C2=A0-device scsi-hd,bus=3Dscsi0.0,channel=3D0,<wbr>scsi-id=3D0,lun=3D0,dr=
-ive=3Ddrive-sc<wbr>si0-0-0-0,id=3Dscsi0-0-0-0,booti<wbr>ndex=3D1 \<br>
-=C2=A0-netdev user,id=3Dhostnet0 \<br>
-=C2=A0-device virtio-net-pci,disable-modern=3D<wbr>off,disable-legacy=3Don,=
-bus=3Dpcie<wbr>.2,addr=3D00.0,netdev=3Dhostnet0,<wbr>id=3Dnet0<br>
-<br>
-I prefer always using virtio-scsi for the disk, but a similar command<br>
-line can be used for a virtio-blk-pci disk.<br>
-<br></blockquote></span><div>OK great! Because in Openstack Nova ,AArch64 n=
-eed to realize the hotplug only with</div><div>the virtio bus, so investiga=
-te the virtio-pci. :-)</div><div>Thanks again!=C2=A0</div><div>=C2=A0</div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Thanks,<br>
-drew<br>
-</blockquote></div><br></div></div></div></div>
-</blockquote></div><br></div></div></div>
-
---001a113cfc3a6e80f3053a580b9f--
+-- 
+Sinan Kaya
+Qualcomm Datacenter Technologies, Inc. as an affiliate of Qualcomm Technologies, Inc.
+Qualcomm Technologies, Inc. is a member of the Code Aurora Forum, a Linux Foundation Collaborative Project.

@@ -1,69 +1,60 @@
-Received: by 10.25.21.156 with SMTP id 28csp462391lfv;
-        Thu, 18 Aug 2016 12:06:08 -0700 (PDT)
-X-Received: by 10.237.44.195 with SMTP id g61mr4383339qtd.105.1471547168141;
-        Thu, 18 Aug 2016 12:06:08 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp461848lfv;
+        Thu, 18 Aug 2016 12:04:50 -0700 (PDT)
+X-Received: by 10.237.38.35 with SMTP id z32mr4326213qtc.69.1471547090635;
+        Thu, 18 Aug 2016 12:04:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m6si2175998qkd.274.2016.08.18.12.06.07
+        by mx.google.com with ESMTPS id 88si271592qth.150.2016.08.18.12.04.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Aug 2016 12:06:08 -0700 (PDT)
+        Thu, 18 Aug 2016 12:04:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54010 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53998 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1baSdj-0003rO-IT
-	for alex.bennee@linaro.org; Thu, 18 Aug 2016 15:06:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36032)
+	id 1baScU-00039W-1o
+	for alex.bennee@linaro.org; Thu, 18 Aug 2016 15:04:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35414)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1baSdg-0003p3-6c
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 15:06:05 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1baScE-00031s-L9
+	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 15:04:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1baSde-0006dF-6X
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 15:06:03 -0400
-Received: from mail-ua0-x22e.google.com ([2607:f8b0:400c:c08::22e]:33576)
+	(envelope-from <dgilbert@redhat.com>) id 1baSc8-0006Aj-Vn
+	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 15:04:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57682)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1baSde-0006d8-1e
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 15:06:02 -0400
-Received: by mail-ua0-x22e.google.com with SMTP id 74so44025914uau.0
-	for <qemu-arm@nongnu.org>; Thu, 18 Aug 2016 12:06:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=T6IkiToineVzKRR9u8XOVSU2umues7a17rNkk3DwQSI=;
-	b=K3GmKpkbUfrefdBCVXX9PGQFuuPG0NUmZGy4MriiIKt7LglOUWeRm5VsuPYFk9nG5W
-	sKMvY7/23ngH2jupZWjTFzg6ZQo/6Fidfs+IBYi4n5uh96vKWXmo5ZmSAKNznN5NBVIr
-	lsZA6py7saeh2/5kMuRQhRC1Cy8Ay12u4Mc6g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=T6IkiToineVzKRR9u8XOVSU2umues7a17rNkk3DwQSI=;
-	b=PZ6Woo7jGOMkScyFdzBGmj/sFseUUHrUO+bsfd1MpWq/hC24WAcYNJbe9C7WP4Br4H
-	pOmTlMnVi2IydLUJfqpE09D106NZHf9FlUvOWxFvX9aJok5p067pGOPQckGj2VdPzSST
-	I2FfY6FtLer/qMDIxLgtGM0kfBHXMEOW0D3Zksoad+MWWPz5N43pjgfr+f33JmZJBfXf
-	SKJ6IcrJtv+cYyJi21qOxAom5gcPX0xAFdS7p9GDyUgWkrEFLGQ4VatB0948UYdv3aT3
-	DobEKo/KsOEgzdJeHH3WVVz5xwHINZeG6sWoFJhCu4BWPLu1kZ8bsF1sp/r7dvyVFY05
-	cArQ==
-X-Gm-Message-State: AEkoouuSAk3UWqoU19mkxK9E15y+vrjuKObNjNMG61x+dJQ/w/KEB8B97d5t+T96Q7BLEIhApPrLg3dxG6r9s11S
-X-Received: by 10.176.80.4 with SMTP id b4mr1851249uaa.17.1471547161630; Thu,
-	18 Aug 2016 12:06:01 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.9.149 with HTTP; Thu, 18 Aug 2016 12:05:41 -0700 (PDT)
-In-Reply-To: <20160818190421.GE2009@work-vm>
+	(envelope-from <dgilbert@redhat.com>)
+	id 1baSc8-0006AD-Np; Thu, 18 Aug 2016 15:04:28 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 45F013B3C2;
+	Thu, 18 Aug 2016 19:04:27 +0000 (UTC)
+Received: from work-vm (ovpn-116-93.ams2.redhat.com [10.36.116.93])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7IJ4NMQ030212
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 18 Aug 2016 15:04:25 -0400
+Date: Thu, 18 Aug 2016 20:04:22 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20160818190421.GE2009@work-vm>
 References: <20160818140014.qhbctpmlg6umqkvm@kamzik.localdomain>
 	<CAFEAcA9oAi5++H0eYiE-SyHMtLFmD5haw+d0DsN+MLo29f9U_A@mail.gmail.com>
-	<20160818190421.GE2009@work-vm>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Aug 2016 20:05:41 +0100
-Message-ID: <CAFEAcA-bnav367B38xcjZt0-TLXh68ZWB3DoJwvu2RT3qRu-Sg@mail.gmail.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9oAi5++H0eYiE-SyHMtLFmD5haw+d0DsN+MLo29f9U_A@mail.gmail.com>
+User-Agent: Mutt/1.6.2 (2016-07-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 18 Aug 2016 19:04:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22e
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] hw/arm/virt: vmstate-static-checker.py results
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -76,37 +67,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, "Krzeminski,
-	Marcin \(Nokia - PL/Wroclaw\)" <marcin.krzeminski@nokia.com>,
+Cc: Andrew Jones <drjones@redhat.com>, marcin.krzeminski@nokia.com,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Amit Shah <amit.shah@redhat.com>
+	alistair.francis@xilinx.com, qemu-arm <qemu-arm@nongnu.org>,
+	Amit Shah <amit.shah@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xM+AZSLGP+ni
+X-TUID: U+iyExcKJIH9
 
-On 18 August 2016 at 20:04, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
-> Hmm, except there are two separate things with the name "xilinx_spi";
->      vmstate_xilinx_spi in hw/ssi/xilinx_spi.c
-> which is the state for the "xlnx.xps-spi" (aka TYPE_XILINX_SPI) object.
->
-> and for added confusion:
->       vmstate_m25p80 in hw/block/m25p80.c
-> which is the state for the "m25p80-generic" (aka TYPE_M25P80) object.
->      also calls itself "xilinx_spi".
->
-> These went in a pair of Peter Crosthwaite commits at about the same time 4.5 years
-> ago; I'm guessing it was just a copy-paste.
->
-> I think my preference would be to update the name for the m25p80 so it's
-> not got the clash; but it seems m25p80 contains definitions of about a zillion
-> flash devices all derived from the m25p80, so I think I'd have to try one of
-> them to see if the xilinx_spi name finds it's way onto the migration stream;
-> I suspect it doesn't.
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On 18 August 2016 at 15:00, Andrew Jones <drjones@redhat.com> wrote:
+> > We've recently started versioning mach-virt, v2.6 was the first versioned
+> > release. As an effort to try and make sure we're doing things right, I
+> > tried the vmstate-static-checker.py script. I compared a 2.6 machine
+> > from a QEMU built from the v2.6.0 tag with a 2.6 machine from a QEMU
+> > built from today's latest pull (5844365fe8). I see lots of errors. I have
+> > no experience in this area, so I can't even state whether they're truly
+> > a concern or not. I can say a few things;
+> >
+> >  1) Most of the errors look like the same problem. Something is wrong
+> >     with xilinx_spi state, which shows up everywhere. Here's an example
+> >
+> > Section "en25q64", Description "xilinx_spi": expected field "nonvolatile_cfg", got "cur_addr"; skipping rest
+> 
+> Well, something here is weird, because en25q64 and nonvolatile_cfg
+> aren't part of xilinx_spi at all, they're in hw/block/m25p80.c.
 
-Aha. Yeah, we should fix that. (I have a feeling the m25p80 devices are
-all only for boards where we don't care about migration-compat, but I'm
-not completely certain.)
+Hmm, except there are two separate things with the name "xilinx_spi";
+     vmstate_xilinx_spi in hw/ssi/xilinx_spi.c
+which is the state for the "xlnx.xps-spi" (aka TYPE_XILINX_SPI) object.
 
-thanks
--- PMM
+and for added confusion:
+      vmstate_m25p80 in hw/block/m25p80.c
+which is the state for the "m25p80-generic" (aka TYPE_M25P80) object.
+     also calls itself "xilinx_spi".
+
+These went in a pair of Peter Crosthwaite commits at about the same time 4.5 years
+ago; I'm guessing it was just a copy-paste.
+
+I think my preference would be to update the name for the m25p80 so it's
+not got the clash; but it seems m25p80 contains definitions of about a zillion
+flash devices all derived from the m25p80, so I think I'd have to try one of
+them to see if the xilinx_spi name finds it's way onto the migration stream;
+I suspect it doesn't.
+
+Dave
+
+> However we don't care about migration compatibility in the Xilinx
+> boards at all, so the simple fix is just not to try to test them.
+> Similarly, aspeed and imx are boards where we're not trying to
+> preserve migration compat.
+> 
+> >  2) Several of the remaining problems are also present on a check of the
+> >     x86_64 pc-i440fx-2.6 machine type. To be precise
+> >
+> > Section "am53c974", Description "esp": expected field "cmdlen", got "cmdbuf"; skipping rest
+> > Section "dc390", Description "esp": expected field "cmdlen", got "cmdbuf"; skipping rest
+> > Section "e1000-82544gc", Description "e1000": expected field "tx.ipcss", got "tx.props.ipcss"; skipping rest
+> > Section "e1000-82545em", Description "e1000": expected field "tx.ipcss", got "tx.props.ipcss"; skipping rest
+> > Section "e1000", Description "e1000": expected field "tx.ipcss", got "tx.props.ipcss"; skipping rest
+> > Section "esp", Description "esp": expected field "cmdlen", got "cmdbuf"; skipping rest
+> > Section "rtl8139", Description "rtl8139": expected field "tally_counters", got "tally_counters.TxOk"; skipping rest
+> 
+> Looking at just the e1000 for an example, this is a false positive
+> in your checker. In commit 093454e2 the struct we're putting the
+> ipcss/ipcso/etc fields was moved, so:
+> 
+> -        VMSTATE_UINT8(tx.ipcss, E1000State),
+> -        VMSTATE_UINT8(tx.ipcso, E1000State),
+> -        VMSTATE_UINT16(tx.ipcse, E1000State),
+> -        VMSTATE_UINT8(tx.tucss, E1000State),
+> -        VMSTATE_UINT8(tx.tucso, E1000State),
+> -        VMSTATE_UINT16(tx.tucse, E1000State),
+> -        VMSTATE_UINT32(tx.paylen, E1000State),
+> -        VMSTATE_UINT8(tx.hdr_len, E1000State),
+> -        VMSTATE_UINT16(tx.mss, E1000State),
+> +        VMSTATE_UINT8(tx.props.ipcss, E1000State),
+> +        VMSTATE_UINT8(tx.props.ipcso, E1000State),
+> +        VMSTATE_UINT16(tx.props.ipcse, E1000State),
+> +        VMSTATE_UINT8(tx.props.tucss, E1000State),
+> +        VMSTATE_UINT8(tx.props.tucso, E1000State),
+> +        VMSTATE_UINT16(tx.props.tucse, E1000State),
+> +        VMSTATE_UINT32(tx.props.paylen, E1000State),
+> +        VMSTATE_UINT8(tx.props.hdr_len, E1000State),
+> +        VMSTATE_UINT16(tx.props.mss, E1000State),
+> 
+> but the on-the-wire format doesn't include the names of the C struct
+> fields so this isn't a migration break.
+> 
+> >     x86 only has three additional messages, which look harmless to me
+> >
+> > Section "apic-common" does not exist in dest
+> > Section "apic" does not exist in dest
+> > Section "kvm-apic" does not exist in dest
+> >
+> >  3) I analyzed one error I saw, and see it should be fine, as the device
+> >     simply went from unmigratable to migratable (for TCG anyway)
+> >
+> > Section "arm-gicv3-common" Section "arm-gicv3-common" Description "arm_gicv3": minimum version error: 0 < 1
+> 
+> Yep, that should be fine.
+> 
+> thanks
+> -- PMM
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

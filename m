@@ -1,65 +1,82 @@
-Received: by 10.25.21.156 with SMTP id 28csp511909lfv;
-        Thu, 18 Aug 2016 14:26:51 -0700 (PDT)
-X-Received: by 10.55.17.211 with SMTP id 80mr4766195qkr.208.1471555611403;
-        Thu, 18 Aug 2016 14:26:51 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp213848lfv;
+        Fri, 19 Aug 2016 02:05:40 -0700 (PDT)
+X-Received: by 10.55.22.29 with SMTP id g29mr7345670qkh.267.1471597540433;
+        Fri, 19 Aug 2016 02:05:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c79si2556110qke.200.2016.08.18.14.26.51
+        by mx.google.com with ESMTPS id 6si3969392qkp.262.2016.08.19.02.05.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Aug 2016 14:26:51 -0700 (PDT)
+        Fri, 19 Aug 2016 02:05:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54419 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56310 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1baUpu-00005T-Ob
-	for alex.bennee@linaro.org; Thu, 18 Aug 2016 17:26:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45856)
+	id 1bafkB-0005lA-LX
+	for alex.bennee@linaro.org; Fri, 19 Aug 2016 05:05:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laine@redhat.com>) id 1baUpq-00005L-OS
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 17:26:48 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1bafk8-0005kq-3j
+	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 05:05:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laine@redhat.com>) id 1baUpm-00065b-GY
-	for qemu-arm@nongnu.org; Thu, 18 Aug 2016 17:26:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43238)
+	(envelope-from <vijay.kilari@gmail.com>) id 1bafk6-00078M-SK
+	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 05:05:36 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35422)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laine@redhat.com>)
-	id 1baUpm-00065X-8f; Thu, 18 Aug 2016 17:26:42 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B76A98C23;
-	Thu, 18 Aug 2016 21:26:41 +0000 (UTC)
-Received: from vlap.laine.org (ovpn-116-25.phx2.redhat.com [10.3.116.25])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u7ILQdtn020121
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 18 Aug 2016 17:26:40 -0400
-References: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
-	<20160817161303.jdglwirs522vn2wa@kamzik.localdomain>
-	<45cfb252-6690-f274-d641-d1d3bff29ae3@redhat.com>
-	<CAN76PtR-5NsEE_jqvmO=xdETOvh44c8q=t5AGimmPqU_N7bHJA@mail.gmail.com>
-From: Laine Stump <laine@redhat.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Message-ID: <84834596-6223-3dea-da94-74c3796fe470@redhat.com>
-Date: Thu, 18 Aug 2016 17:26:39 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1bafk6-000787-LX; Fri, 19 Aug 2016 05:05:34 -0400
+Received: by mail-oi0-x242.google.com with SMTP id e80so5680819oig.2;
+	Fri, 19 Aug 2016 02:05:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8znjuc45eay7iIYLFd9m42zQr78u8GhkXsG5lUIG0qQ=;
+	b=feSaqlOqWCAkB2teZaRXiwSKIcIM/z3XaIG6OM6lPHZ7ad3hMFFhoTanU5Z3O1pSnH
+	0LUwMOutHNr3oxQJmYkc7FtSmyzKImvfiU5/mP3n/pPXGygp0ug1PeR47wleu6CAvr/I
+	Na1DhfJoQdR6a0ptilAd83Afc1BaEbR9eIDQN6u9ZavEGaBHEw17TR4nEOgwUmoZRtYb
+	hUQH/QzQj1B9KnuMk8kz0e4VaeOKg4x1FnTEEX3eo8PaUwy68/0z725hGZi0Iqfah9RW
+	4XTtOUh8pWCbExtWBzmT1UOAbcrpftegLOBf1wrxvAnVrVUgpM6rCTfcaNvrLkhZWdI0
+	MjNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8znjuc45eay7iIYLFd9m42zQr78u8GhkXsG5lUIG0qQ=;
+	b=epV749lNsq9eXSHcZLB16FyXf8xuSxpn9+AYGGARDRdc4S/V4iHiYjPMKl3PL7W+et
+	qNDKiQvj1doby3JRcUmWWO/Z/er22oK8pBtjiI4o9hix7tEp3/ONr5i9Z9E6zgpJFi90
+	4EasZQvsAKVWuo0lIxPLhRIPGEedLBnmLvzaIV4R6OA1uTYWAbE7nnydd0eG16eFHfTf
+	qIvtPv0r8HyQXpN+RaPlRs9D4mOLGvV3QW4ToqHNpkmcP3OpRFcfUXFI19YnOdp4o695
+	KDuHF/Oqs+WjJApb+k22Go1Q1uQkkuf+dvXpxevidxzFPYaBVrpsHzj0DStfdsNgl0cs
+	ALag==
+X-Gm-Message-State: AEkoouvH7ptrgUPpEIn9hruUOZ9DhyElWr9uvmnnutAr53i56YS4By2A8/JgC1iJHkfLXSTDV8IiUuB/Yjw3KA==
+X-Received: by 10.157.36.113 with SMTP id p104mr4037453ota.192.1471597532431; 
+	Fri, 19 Aug 2016 02:05:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAN76PtR-5NsEE_jqvmO=xdETOvh44c8q=t5AGimmPqU_N7bHJA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 18 Aug 2016 21:26:41 +0000 (UTC)
+Received: by 10.157.56.244 with HTTP; Fri, 19 Aug 2016 02:05:31 -0700 (PDT)
+In-Reply-To: <CAFEAcA9BL3u7WJnqFEVxwyW=D-FtUW7UdDxPhhgiFKObkuXibg@mail.gmail.com>
+References: <1471348968-4614-1-git-send-email-vijay.kilari@gmail.com>
+	<1471348968-4614-2-git-send-email-vijay.kilari@gmail.com>
+	<151e49bd-d79d-0035-c775-86be29df3ac2@redhat.com>
+	<CALicx6vzQyvhQPM2qgN1wkT_M+vr2WL+H5pc9HhuB=kWVU-JnQ@mail.gmail.com>
+	<59517fd9-049c-adfc-5793-68165fe87f34@redhat.com>
+	<CALicx6tGZ1z68nTBdYrSTcdBzCQwzHtGJ-DixKJjKSq7-cfkHw@mail.gmail.com>
+	<f5f56ea7-795e-81d3-6892-f30772631e53@redhat.com>
+	<5e34688d-af70-9fed-33c7-96d86868d1a6@twiddle.net>
+	<CAFEAcA9J1_xGV7ScRzPNdU0qVa5nREa1ibPVHZgA8Nj7FXeGgw@mail.gmail.com>
+	<1d77e7f0-61b6-5533-f0b2-04eae0fed815@twiddle.net>
+	<CAFEAcA9BL3u7WJnqFEVxwyW=D-FtUW7UdDxPhhgiFKObkuXibg@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Fri, 19 Aug 2016 14:35:31 +0530
+Message-ID: <CALicx6svNmg9G1KDZX8AOW1nXd0bw5u1_JtGUoZA4Ft761VHfg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] Help: Does Qemu support virtio-pci for
- net-device and disk device?
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [RFC PATCH v2 1/2] utils: Add helper to read arm
+ MIDR_EL1 register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,130 +88,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Marcel Apfelbaum <mapfelba@redhat.com>, Kevin Zhao <kevin.zhao@linaro.org>,
-	Gema Gomez-Solano <gema.gomez-solano@linaro.org>,
-	Andrew Jones <drjones@redhat.com>, Andrea Bolognani <abologna@redhat.com>,
-	Thomas Hanson <thomas.hanson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0JGocS4kR+51
+X-TUID: 8RIHsRwMQ4Uk
 
-On 08/18/2016 08:43 AM, Kevin Zhao wrote:
-> Hi Laine,
->     Thanks :-) I also has a little questions below.
+On Thu, Aug 18, 2016 at 8:26 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 18 August 2016 at 15:46, Richard Henderson <rth@twiddle.net> wrote:
+>> On 08/18/2016 07:14 AM, Peter Maydell wrote:
+>>> While we're on the subject, can somebody explain to me why we
+>>> use ifuncs at all? I couldn't work out why it would be better than
+>>> just using a straightforward function pointer -- when I tried single
+>>> stepping through things the ifunc approach still seemed to indirect
+>>> through some table or other so it wasn't actually resolving to
+>>> a direct function call anyway.
 >
-> On 18 August 2016 at 01:00, Laine Stump <laine@redhat.com> wrote:
+>> No reason, I suppose.
+>>
+>> It's particularly helpful for libraries, where we don't really want the
+>> overhead of the initialization when it's not used.
 >
->> On 08/17/2016 12:13 PM, Andrew Jones wrote:
->>
->>> On Wed, Aug 17, 2016 at 08:08:11PM +0800, Kevin Zhao wrote:
->>>
->>>> Hi all,
->>>>       Now I'm investigating net device hot plug and disk hotplug for
->>>> AArch64. For virtio , the default address is virtio-mmio. After Libvirt
->>>> 1.3.5, user can explicitly specify the address-type to pci and so libvirt
->>>> will pass the virtio-pci parameters to the Qemu.
->>>>       Both my host and guest OS is Debian8, and Qemu version is 2.6.0.
->>>> Libvirt version is 1.3.5.
->>>>       For net-device, I change the address-type to pci, and libvirt pass
->>>> the
->>>> command below:
->>>>       -device
->>>> virtio-net-pci,netdev=hostnet0,id=net0,mac=52:54:00:0d:25:
->>>> 25,bus=pci.2,addr=0x1
->>>>
->>>>       After booting, the eth0 device disappear(eth0 occur when the
->>>> address
->>>> is virtio-mmio),
->>>> but I can find another net-device enp2s1, also it can't work for dhcp:
->>>> Running lspci: 02:01.0 Ethernet controller: Red Hat, Inc Virtio network
->>>> device
->>>> I'm not sure whether it worked.
->>>>
->>>>       For disk device,* when I change the address-type to pci, the whole
->>>> qemu command is :*
->>>> https://paste.fedoraproject.org/409553/,  but the VM can not boot
->>>> successfully. Does Qemu not support device disk of virtio-pci in AArch64
->>>> just as it in X86_64?
->>>>       Thanks~Since I am not very familiar with Qemu, really looking
->>>> forward
->>>> to your response.
->>>>
->>>> Best Regards,
->>>> Kevin Zhao
->>>>
->>> libvirt 1.3.5 is a bit old. Later versions no longer unconditionally add
->>> the i82801b11 bridge, which was necessary to use PCI devices with the PCIe
->>> host bridge mach-virt has. IMO, libvirt and qemu still have a long way to
->>> go in order to configure a base/standard mach-virt PCIe machine.
->>>
->>
->> Well, you can do it now, but you have to manually assign the PCI addresses
->> of devices (and if you want hotplug you need to live with Intel/TI-specific
->> PCIe controllers).
+> Ah, I see.
 >
-> OK. It seems that Qemu will drop PCI for machine-virt and turning to PCIE
-> in the future.
-
-This isn't a qemu issue, but a libvirt issue.
-
-> Do I need to do more for  Intel/TI-specific PCIe controllers?
-
-
->  what do I
-> need to add in the guest XML or more?
-
-As soon as my first set of patches is pushed, what you'll need to do is 
-to add:
-
-     <controller type='pci' model='pcie-root-port'/>
-
-for each virtio device.
-
-As soon as I've figured out a useful algorithm for adding the pcie 
-controllers automatically, you won't need to do anything at all. (Keep 
-in mind that any existing configurations will maintain their original 
-config. If you want an existing configuration to be switched to using 
-the new recommended (pcie) bus topology you will need to replace every 
-instance of:
-
-     <address type='pci' domain='0x0000' ......../>
-
-with a plain:
-
-     <address type='pci'/>
-
-This will force libvirt to reassign PCI addresses for the devices.
-
+>> But (1) we don't have many of these and (2) we really don't care *that* much
+>> about startup time.
+>>
+>> So a simple function pointer initialized by a constructor has the same
+>> effect.
 >
->>
->>
->>> 1) If we want to support both PCIe devices and PCI, then things are messy.
->>>     Currently we propose dropping PCI support. mach-virt pretty much
->>>     exclusively uses virtio, which can be set to PCIe mode (virtio-1.0)
->>>
->>
->> I have a libvirt patch just about ACKed for pushing upstream that will
->> automatically assign virtio-pci devices to a PCIe slot (if the qemu binary
->> supports virtio-1.0):
->>
->> https://www.redhat.com/archives/libvir-list/2016-August/msg00852.html
->>
+
+ The cutils does not have any initialization function that can init
+function/constructor pointer
+for zero_check function.
+
+Also creating separate function with most of repeated code for prefetch does
+not look good. So suggest to put check for prefetch outside the for loop and
+code for loop with and without prefetch
+
+I profiled and found that a single check inside the loop is adding 100ms delay
+for 8GB RAM migration. So moving check outside the loop is enough.
+
+Ex:
+
+   if (need_prefetch()) {
+
+       prefetch_vector(p, 0);
+
+        for (i = BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR;
+             i < len / sizeof(VECTYPE);
+             i += BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR) {
+
+            prefetch_vector_loop(p, i);
+
+            VECTYPE tmp0 = VEC_OR(p[i + 0], p[i + 1]);
+            VECTYPE tmp1 = VEC_OR(p[i + 2], p[i + 3]);
+            VECTYPE tmp2 = VEC_OR(p[i + 4], p[i + 5]);
+            VECTYPE tmp3 = VEC_OR(p[i + 6], p[i + 7]);
+           VECTYPE tmp01 = VEC_OR(tmp0, tmp1);
+           VECTYPE tmp23 = VEC_OR(tmp2, tmp3);
+            if (!ALL_EQ(VEC_OR(tmp01, tmp23), zero)) {
+                break;
+            }
+        }
+
+} else {
+
+        for (i = BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR;
+             i < len / sizeof(VECTYPE);
+             i += BUFFER_FIND_NONZERO_OFFSET_UNROLL_FACTOR) {
+
+            VECTYPE tmp0 = VEC_OR(p[i + 0], p[i + 1]);
+            VECTYPE tmp1 = VEC_OR(p[i + 2], p[i + 3]);
+            VECTYPE tmp2 = VEC_OR(p[i + 4], p[i + 5]);
+            VECTYPE tmp3 = VEC_OR(p[i + 6], p[i + 7]);
+           VECTYPE tmp01 = VEC_OR(tmp0, tmp1);
+           VECTYPE tmp23 = VEC_OR(tmp2, tmp3);
+            if (!ALL_EQ(VEC_OR(tmp01, tmp23), zero)) {
+                break;
+            }
+        }
+}
+
+Also,  If you want to make prefetch common for all arm64 platforms,
+Then thunder cache line is 128 bytes so the prefetch is performed
+at 128 byte index. If the platform has 64 byte cache line, then this
+prefetch will fill only 64 byte line instead of 128 bytes required for the loop.
+
+> That seems like it would be a worthwhile change since
+> (a) I think it's easier to understand than ifunc magic
+> (b) it means we don't unnecessarily restrict ourselves to a libc
+> with ifunc support (musl libc doesn't do ifuncs, for instance)
 >
-> What's the minimum version of  Qemu that support virito-1.0? Does Qemu 2.6
-> works?
-
-qemu as old as 2.4.0 has the "--disable-legacy" option for virtio 
-devices. I don't know if it was actually working properly back that far.
-
-
-> Also as  I see your patch for automatically assign virtio-pci to PCIE
-> slot,after it merged  I think thing will go much more easier.
-> Now I will manually add the slots and bus to pcie. Because I am not
-> familiar with it,  if it convenient, could you give me an available xml
-> file which PCIE disk and PCIE
-> net device can work for machine virt ?
-
-I think Andrea sent an example.
-
+> thanks
+> -- PMM

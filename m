@@ -1,91 +1,64 @@
-Received: by 10.25.21.156 with SMTP id 28csp379559lfv;
-        Fri, 19 Aug 2016 07:57:45 -0700 (PDT)
-X-Received: by 10.237.53.157 with SMTP id c29mr9308879qte.75.1471618665023;
-        Fri, 19 Aug 2016 07:57:45 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp405169lfv;
+        Fri, 19 Aug 2016 08:43:46 -0700 (PDT)
+X-Received: by 10.200.39.61 with SMTP id g58mr9515622qtg.129.1471621426004;
+        Fri, 19 Aug 2016 08:43:46 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v91si2883740qte.122.2016.08.19.07.57.44
+        by mx.google.com with ESMTPS id p41si3017908qtc.147.2016.08.19.08.43.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Aug 2016 07:57:45 -0700 (PDT)
+        Fri, 19 Aug 2016 08:43:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57645 helo=lists.gnu.org)
+Received: from localhost ([::1]:57777 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1balEu-0007ZQ-Dg
-	for alex.bennee@linaro.org; Fri, 19 Aug 2016 10:57:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49626)
+	id 1balxR-0004kw-Aa
+	for alex.bennee@linaro.org; Fri, 19 Aug 2016 11:43:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1balEm-0007WZ-SF
-	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 10:57:40 -0400
+	(envelope-from <abologna@redhat.com>) id 1balx9-0004cq-6z
+	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 11:43:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1balEk-0007NO-N3
-	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 10:57:35 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:35747)
+	(envelope-from <abologna@redhat.com>) id 1balx6-00082K-2T
+	for qemu-arm@nongnu.org; Fri, 19 Aug 2016 11:43:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57454)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1balEe-0007Ic-Bb; Fri, 19 Aug 2016 10:57:28 -0400
-Received: by mail-qt0-x241.google.com with SMTP id q11so854573qtb.2;
-	Fri, 19 Aug 2016 07:57:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=6ZL5C1mWF99IHJ+HYxFxtXuftYasFWFPQXhe6uVCFB4=;
-	b=pFrzPusIWDfmxAphBwNzt4dsC2+qmFtXPqtkOtwBOov7GHMJOgDpjrg0J/06twky+H
-	/Pzob2SOolGKYCFgc6QzXbh8N21S3bKYlrUPmU8iE0+/7kIAggHyWRyGhlo3ss1XxVzb
-	qofiFej9S/INJBUu873WcUYlbIbI8SZr4nVdWzfYz6zmKFKpGIx/xXmGKqcvsQC9xMaD
-	wKn1N/l/5237YSwqtkezAI70PNZtF9hg6F1BlEakgSL78Rv7U7W4QProKgWbVeJK/rY6
-	djNHZPyCrCazCM7GS3wIAr3gF1VCNPlwu7IKgGxKMdXWtCi0i3urqsYIzh5TxxufmbRQ
-	mMYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=6ZL5C1mWF99IHJ+HYxFxtXuftYasFWFPQXhe6uVCFB4=;
-	b=Q7dgiKL+6qrGlTpqIndYW6A944tZNGOT9+ef4wmwfB4WvXnMM5G1cPE+9mpCSPUE4m
-	gizhsiO/BbJp77P1bBsSikAt2COcIRHalPFaM6E9yyP6BbW8sKKJHVo13d/TDL8VIch8
-	U1TwzTPGx1wcge2CpKalJYxGeOrPcQGSsKaJIF6u+UP9SnvXT8449l1JWPKYAtzW6XEO
-	mSBoa3/Kdkfc2NgEuo0Rwnho66AFXHyO6Tv43IiLEBtyU8M2M5mwP3BfJX1WVm9tB7r3
-	jYxRfA4KOuIVAHF7c96NMC02oPbK0gNve8Wj2AGaCpx4pZ5M//iI2iMtVPTG8Q7s2NV/
-	JqUQ==
-X-Gm-Message-State: AEkoouvoedCb3Xy3bqfLnoJKy490Q0q3YmNrFUzb2Y+KBwu0xfppQi3LE5Awn8wXDwszlg==
-X-Received: by 10.237.49.130 with SMTP id 2mr9546491qth.38.1471618647453;
-	Fri, 19 Aug 2016 07:57:27 -0700 (PDT)
-Received: from bigtime.twiddle.net ([172.56.12.37])
-	by smtp.googlemail.com with ESMTPSA id
-	m4sm4000784qkf.29.2016.08.19.07.57.25
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 19 Aug 2016 07:57:26 -0700 (PDT)
-To: Vijay Kilari <vijay.kilari@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1471348968-4614-1-git-send-email-vijay.kilari@gmail.com>
-	<1471348968-4614-2-git-send-email-vijay.kilari@gmail.com>
-	<151e49bd-d79d-0035-c775-86be29df3ac2@redhat.com>
-	<CALicx6vzQyvhQPM2qgN1wkT_M+vr2WL+H5pc9HhuB=kWVU-JnQ@mail.gmail.com>
-	<59517fd9-049c-adfc-5793-68165fe87f34@redhat.com>
-	<CALicx6tGZ1z68nTBdYrSTcdBzCQwzHtGJ-DixKJjKSq7-cfkHw@mail.gmail.com>
-	<f5f56ea7-795e-81d3-6892-f30772631e53@redhat.com>
-	<5e34688d-af70-9fed-33c7-96d86868d1a6@twiddle.net>
-	<CAFEAcA9J1_xGV7ScRzPNdU0qVa5nREa1ibPVHZgA8Nj7FXeGgw@mail.gmail.com>
-	<1d77e7f0-61b6-5533-f0b2-04eae0fed815@twiddle.net>
-	<CAFEAcA9BL3u7WJnqFEVxwyW=D-FtUW7UdDxPhhgiFKObkuXibg@mail.gmail.com>
-	<CALicx6svNmg9G1KDZX8AOW1nXd0bw5u1_JtGUoZA4Ft761VHfg@mail.gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <0f46688d-7016-9504-8adf-13fb7c3bfffe@twiddle.net>
-Date: Fri, 19 Aug 2016 07:57:23 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
-MIME-Version: 1.0
-In-Reply-To: <CALicx6svNmg9G1KDZX8AOW1nXd0bw5u1_JtGUoZA4Ft761VHfg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	(envelope-from <abologna@redhat.com>)
+	id 1balx5-000810-QH; Fri, 19 Aug 2016 11:43:23 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BDEDE821C3;
+	Fri, 19 Aug 2016 15:43:22 +0000 (UTC)
+Received: from dhcp129-212.brq.redhat.com (dhcp129-212.brq.redhat.com
+	[10.34.129.212])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7JFhJrl014108
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 19 Aug 2016 11:43:20 -0400
+Message-ID: <1471621399.3820.64.camel@redhat.com>
+From: Andrea Bolognani <abologna@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Date: Fri, 19 Aug 2016 17:43:19 +0200
+In-Reply-To: <20160818063807.mqs7jdjau5uwyswx@hawk.localdomain>
+References: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
+	<20160817161303.jdglwirs522vn2wa@kamzik.localdomain>
+	<1471452093.3820.42.camel@redhat.com>
+	<20160818063807.mqs7jdjau5uwyswx@hawk.localdomain>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 19 Aug 2016 15:43:22 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [RFC PATCH v2 1/2] utils: Add helper to read arm
- MIDR_EL1 register
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] Help: Does Qemu support virtio-pci for
+ net-device and disk device?
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,80 +70,99 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Marcel Apfelbaum <mapfelba@redhat.com>, Kevin Zhao <kevin.zhao@linaro.org>,
+	Gema Gomez-Solano <gema.gomez-solano@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Thomas Hanson <thomas.hanson@linaro.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Laine Stump <lstump@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1ogS+ZlDuV0G
+X-TUID: Ud/2l4QXarE+
 
-On 08/19/2016 02:05 AM, Vijay Kilari wrote:
-> On Thu, Aug 18, 2016 at 8:26 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 18 August 2016 at 15:46, Richard Henderson <rth@twiddle.net> wrote:
->>> On 08/18/2016 07:14 AM, Peter Maydell wrote:
->>>> While we're on the subject, can somebody explain to me why we
->>>> use ifuncs at all? I couldn't work out why it would be better than
->>>> just using a straightforward function pointer -- when I tried single
->>>> stepping through things the ifunc approach still seemed to indirect
->>>> through some table or other so it wasn't actually resolving to
->>>> a direct function call anyway.
->>
->>> No reason, I suppose.
->>>
->>> It's particularly helpful for libraries, where we don't really want the
->>> overhead of the initialization when it's not used.
->>
->> Ah, I see.
->>
->>> But (1) we don't have many of these and (2) we really don't care *that* much
->>> about startup time.
->>>
->>> So a simple function pointer initialized by a constructor has the same
->>> effect.
->>
->
->  The cutils does not have any initialization function that can init
-> function/constructor pointer
-> for zero_check function.
+On Thu, 2016-08-18 at 08:38 +0200, Andrew Jones wrote:
+> > > Finally, FWIW, with a guest kernel of 4.6.4-301.fc24.aarch64. The
+> > > following qemu command line works for me.
+> > > (notice the use of PCIe), and my network interface gets labeled enp=
+0s1.
+> > >=C2=A0=C2=A0
+> > > $QEMU -machine virt-2.6,accel=3Dkvm -cpu host \
+> > >=C2=A0=C2=A0=C2=A0-m 1024 -smp 1 -nographic \
+> > >=C2=A0=C2=A0=C2=A0-bios /usr/share/AAVMF/AAVMF_CODE.fd \
+> > >=C2=A0=C2=A0=C2=A0-device ioh3420,bus=3Dpcie.0,id=3Dpcie.1,port=3D1,=
+chassis=3D1 \
+> > >=C2=A0=C2=A0=C2=A0-device ioh3420,bus=3Dpcie.0,id=3Dpcie.2,port=3D2,=
+chassis=3D2 \
+> > >=C2=A0=C2=A0=C2=A0-device virtio-scsi-pci,disable-modern=3Doff,disab=
+le-legacy=3Don,bus=3Dpcie.1,addr=3D00.0,id=3Dscsi0 \
+> > >=C2=A0=C2=A0=C2=A0-drive file=3D/home/drjones/.local/libvirt/images/=
+fedora.qcow2,format=3Dqcow2,if=3Dnone,id=3Ddrive-scsi0-0-0-0 \
+> > >=C2=A0=C2=A0=C2=A0-device scsi-hd,bus=3Dscsi0.0,channel=3D0,scsi-id=3D=
+0,lun=3D0,drive=3Ddrive-scsi0-0-0-0,id=3Dscsi0-0-0-0,bootindex=3D1 \
+> > >=C2=A0=C2=A0=C2=A0-netdev user,id=3Dhostnet0 \
+> > >=C2=A0=C2=A0=C2=A0-device virtio-net-pci,disable-modern=3Doff,disabl=
+e-legacy=3Don,bus=3Dpcie.2,addr=3D00.0,netdev=3Dhostnet0,id=3Dnet0
+> > >=C2=A0=C2=A0
+> > > I prefer always using virtio-scsi for the disk, but a similar comma=
+nd
+> > > line can be used for a virtio-blk-pci disk.
+> >=C2=A0
+> > Does the same command line work if you don't specify any of
+> > the disable-* options?
+> >=C2=A0
+> > I'm asking because I tried running a Fedora 24 guest through
+> > libvirt, which doesn't support those options yet, and I get
+> >=C2=A0
+> >=C2=A0=C2=A0=C2=A0virtio_blk virtio2: virtio: device uses modern inter=
+face but
+> >=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0does not have VIRTIO_F_VERSION_1
+> >=C2=A0=C2=A0=C2=A0virtio_blk: probe of virtio2 failed with error -22
+>=C2=A0
+> Doesn't work for me either. I can only boot with disable-modern=3Doff,
+> disable-legacy=3Don (at least when building my config the way I try to
+> build it...) I presume that's a guest kernel issue.
 
-static void __attribute__((constructor)) init_buffer_find_nonzero(void)
-{
-    ...
-}
+I tried Fedora 24 and Debian testing, and for both of them
+the result is the same: I can only boot the guest if I'm
+setting up a legacy-free PCIe topology and use virt-2.7 to
+obtain virtio-1.0 devices (see below); for every other
+permutation of
 
-> Also creating separate function with most of repeated code for prefetch does
-> not look good.
+=C2=A0 { PCI topology, PCIe topology } x { virt-2.6, virt-2.7 }
 
-Why do you say that?
+the guest doesn't boot at all.
 
-> So suggest to put check for prefetch outside the for loop and
-> code for loop with and without prefetch
+On the other hand, a RHEL 7.3 guest was able to boot *every
+single time*, even though the result was in some cases
+quite questionable (eg. legacy PCI devices plugged into
+ioh3420 ports).
 
-You're duplicating the inner loop either way, so that can't be your objection 
-to creating a separate function.
+> > Isn't the default for 2.6 disable-modern=3Doff,
+> > disable-legacy=3Doff? Or was that 2.7? I tried both anyway ;)
+>=C2=A0
+> Dunno. With the command line getting longer all the time, I just
+> have a script that generates one that works for me, and haven't
+> worried much about the defaults...
 
-> I profiled and found that a single check inside the loop is adding 100ms delay
-> for 8GB RAM migration.
+So I thought the default for 2.6 was supposed to be
 
-That's about what I expected.
+=C2=A0 disable-modern=3Doff,disable-legacy=3Doff=C2=A0=C2=A0[0.9+1.0]
 
-> Also,  If you want to make prefetch common for all arm64 platforms,
-> Then thunder cache line is 128 bytes so the prefetch is performed
-> at 128 byte index. If the platform has 64 byte cache line, then this
-> prefetch will fill only 64 byte line instead of 128 bytes required for the loop.
+but it turns out it's actually
 
-Yes, I had thought of that.
+=C2=A0 disable-modern=3Don,disable-legacy=3Doff =C2=A0 =C2=A0 =C2=A0 [0.9=
+]
 
-It would make sense to create two versions, that prefetch for and iterate over, 
-cacheline sizes of 64 and 128 (I don't know of any other common sizes).
+whereas the default for 2.7 is
 
-Preferably, we should then use sysconf(_SC_LEVEL1_DCACHE_LINESIZE) within the 
-init function above to choose the appropriate version.
+=C2=A0 disable-modern=3Doff,disable-legacy=3Don =C2=A0 =C2=A0 =C2=A0 [1.0=
+]
 
-But I see that glibc doesn't currently implement that for aarch64, so we do 
-want to have a fallback.  I know that the "official" cache line data isn't 
-(easily) available to userspace, but a close proxy is the size described by 
-dczid_el0.  That seems much better than groveling through a file under /sys.
+Is the idea that there would be a QEMU release with both
+0.9 and 1.0 enabled by default something that I just
+imagined? Or did the plan just change at some point?
 
-
-r~
+--=C2=A0
+Andrea Bolognani / Red Hat / Virtualization

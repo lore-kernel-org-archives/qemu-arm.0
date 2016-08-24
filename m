@@ -1,80 +1,60 @@
-Received: by 10.37.206.4 with SMTP id x4csp119254ybe;
-        Tue, 23 Aug 2016 21:39:22 -0700 (PDT)
-X-Received: by 10.55.126.194 with SMTP id z185mr1123275qkc.140.1472013562542;
-        Tue, 23 Aug 2016 21:39:22 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp204107lfv;
+        Wed, 24 Aug 2016 01:35:11 -0700 (PDT)
+X-Received: by 10.55.157.142 with SMTP id g136mr1839955qke.171.1472027711887;
+        Wed, 24 Aug 2016 01:35:11 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id f90si5119423qtb.57.2016.08.23.21.39.22
+        by mx.google.com with ESMTPS id m63si5592253qkb.20.2016.08.24.01.35.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Aug 2016 21:39:22 -0700 (PDT)
+        Wed, 24 Aug 2016 01:35:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49607 helo=lists.gnu.org)
+Received: from localhost ([::1]:50191 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bcPyE-00027J-7t
-	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:39:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54880)
+	id 1bcTeR-0003S7-Dd
+	for alex.bennee@linaro.org; Wed, 24 Aug 2016 04:35:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bcPy9-000270-Jr
-	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:39:18 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1bcTeM-0003Qb-MK
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 04:35:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1bcPy5-00015r-JK
-	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:39:17 -0400
-Received: from mail-it0-f66.google.com ([209.85.214.66]:33235)
+	(envelope-from <dgilbert@redhat.com>) id 1bcTeJ-0004LQ-Gn
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 04:35:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38322)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>)
-	id 1bcPy5-00015n-FI; Wed, 24 Aug 2016 00:39:13 -0400
-Received: by mail-it0-f66.google.com with SMTP id d65so946605ith.0;
-	Tue, 23 Aug 2016 21:39:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=/F5j/JUchj8gHQwTEvyLo/xLsq17lD/e3rJVfkzipX0=;
-	b=yfu88ksBByoXD1CiAhBMDYwhT8msFIPlnr6kMSiA0jOHmd8moJRM8MkiLglmutnb1q
-	eYr8jjvPrDP06pK1sd4aBDVfq+0C/i6exlfedN2T50lbG+JBt6zN2aE8ewGMpyQeBAp4
-	jGVmuxTAFq95teAHjjhhLOMjxRelPYPOpSdCabm8KtXvef35tXDNHdNeD3C9VV3W7Msc
-	FEqOJKzQalx023ZZJoG9f443uNwD1b6R2WnaSqupEqQztS3LKzekGvvD8hZlL8wt3a9h
-	FeEKbSt8MtJLJRFoE0s2eRc0NMiLflR4SzsDoFOxTH1oknsn+pvn2+xE1VYHJ3Lb81xv
-	f3Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=/F5j/JUchj8gHQwTEvyLo/xLsq17lD/e3rJVfkzipX0=;
-	b=kN0XGzLlqs0fb2Cth+AgspU1ZSRms5/6nPPVobJt/XRAgYiAu2WpcS8CT1f5ytjeRt
-	dKrnTtvZlhLIlWs5vxp6LmgyUTgASpI1a4X+ZRvGHfu3G0ztizU4O2mMwr0ukvYkqMMs
-	DkvllyNS0bUIbAh45ILNBVoSV/FZsEqlJ9tfsDuroogf+m0o+CCQ0fWf/KOfiz4QvLf3
-	TvFwY5G/3XJHeXgeMNek1D+iaKEelFhNULyHxwgriLI7rWP1SxhZmvSUd5vxz9YcMrBb
-	Wq9I948ORNV/8tzKXIzEfeXqg1zV45vVLAnjksN/M3R7i8w8IO7wmbDKk68mYl7A4/rQ
-	rCkg==
-X-Gm-Message-State: AE9vXwPBnnaKkJsRR42NX0j/9e7RHLagTie9MnXIZNsvgwSp0r6zG/iQm5kXruU8A4cdaA==
-X-Received: by 10.107.18.32 with SMTP id a32mr1875860ioj.12.1472013492682;
-	Tue, 23 Aug 2016 21:38:12 -0700 (PDT)
-Received: from [10.0.0.102] ([173.243.43.10])
-	by smtp.googlemail.com with ESMTPSA id
-	o15sm14693843ith.2.2016.08.23.21.38.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 23 Aug 2016 21:38:11 -0700 (PDT)
-To: qemu-devel@nongnu.org, rth@twiddle.net
+	(envelope-from <dgilbert@redhat.com>)
+	id 1bcTeJ-0004KJ-Ba; Wed, 24 Aug 2016 04:35:03 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 07983C00F08B;
+	Wed, 24 Aug 2016 08:35:02 +0000 (UTC)
+Received: from work-vm (ovpn-116-84.ams2.redhat.com [10.36.116.84])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u7O8Yw3U016509
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 24 Aug 2016 04:35:00 -0400
+Date: Wed, 24 Aug 2016 09:34:57 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Richard Henderson <rth@twiddle.net>
+Message-ID: <20160824083457.GA2032@work-vm>
 References: <1472012279-20581-1-git-send-email-rth@twiddle.net>
-	<20160824043048.109542.39014@ex-std-node742.prod.rhcloud.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <535318f1-8178-714d-7487-5aeb0661280b@redhat.com>
-Date: Wed, 24 Aug 2016 06:38:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.2.0
 MIME-Version: 1.0
-In-Reply-To: <20160824043048.109542.39014@ex-std-node742.prod.rhcloud.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1472012279-20581-1-git-send-email-rth@twiddle.net>
+User-Agent: Mutt/1.6.2 (2016-07-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 24 Aug 2016 08:35:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.214.66
-Subject: Re: [Qemu-arm] [PATCH 0/7] Improve buffer_is_zero
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/7] Improve buffer_is_zero
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,53 +66,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
-	vijay.kilari@gmail.com
+Cc: peter.maydell@linaro.org, vijay.kilari@gmail.com, liang.z.li@intel.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 27RlnF+/m511
+X-TUID: bIXjLP4vtB83
 
 
+cc'ing in Liang Li who did the original avx2 code.
 
-On 24/08/2016 06:30, no-reply@patchew.org wrote:
-> ERROR: Use of volatile is usually wrong: see Documentation/volatile-considered-harmful.txt
-> #44: FILE: util/cutils.c:289:
-> +        __asm volatile("vmovdqu -0x80(%1),%0\n\t"
+Dave
 
-Other errors can be ignored, but please use __asm__ __volatile__ here or
-just __asm__ (I don't think volatile is useful).
 
-Also, perhaps move this function to its own file since you're rewriting
-it anyway?
-
-Thanks,
-
-Paolo
-
-> ERROR: externs should be avoided in .c files
-> #44: FILE: util/cutils.c:289:
-> +        __asm volatile("vmovdqu -0x80(%1),%0\n\t"
+* Richard Henderson (rth@twiddle.net) wrote:
+> Patches 1-3 remove the use of ifunc from the implementation.
 > 
-> ERROR: Use of volatile is usually wrong: see Documentation/volatile-considered-harmful.txt
-> #72: FILE: util/cutils.c:317:
-> +        __asm volatile("vmovdqu -0x40(%1),%0\n\t"
+> Patch 5 adjusts the x86 implementation a bit more to take
+> advantage of ptest (in sse4.1) and unaligned accesses (in avx1).
 > 
-> ERROR: externs should be avoided in .c files
-> #72: FILE: util/cutils.c:317:
-> +        __asm volatile("vmovdqu -0x40(%1),%0\n\t"
+> Patches 2 and 6 are the result of my conversation with Vijaya
+> Kumar with respect to ThunderX.
 > 
-> ERROR: Use of volatile is usually wrong: see Documentation/volatile-considered-harmful.txt
-> #98: FILE: util/cutils.c:343:
-> +        __asm volatile("movdqu -0x40(%4),%0\n\t"
+> Patch 7 is the result of seeing some really really horrible code
+> produced for ppc64le (gcc 4.9 and mainline).
 > 
-> ERROR: externs should be avoided in .c files
-> #98: FILE: util/cutils.c:343:
-> +        __asm volatile("movdqu -0x40(%4),%0\n\t"
+> This has had limited testing.  What I don't know is the best way
+> to benchmark this -- the only way I know to trigger this is via
+> the console, by hand, which doesn't make for reasonable timing.
 > 
-> ERROR: Use of volatile is usually wrong: see Documentation/volatile-considered-harmful.txt
-> #132: FILE: util/cutils.c:374:
-> +        __asm volatile("movdqu -0x40(%4),%0\n\t"
 > 
-> ERROR: externs should be avoided in .c files
-> #132: FILE: util/cutils.c:374:
-> +        __asm volatile("movdqu -0x40(%4),%0\n\t"
+> r~
+> 
+> 
+> Richard Henderson (7):
+>   cutils: Remove SPLAT macro
+>   cutils: Export only buffer_is_zero
+>   cutils: Rearrange buffer_is_zero acceleration
+>   cutils: Add generic prefetch
+>   cutils: Rewrite x86 buffer zero checking
+>   cutils: Rewrite aarch64 buffer zero checking
+>   cutils: Rewrite ppc buffer zero checking
+> 
+>  configure             |  21 +-
+>  include/qemu/cutils.h |   2 -
+>  migration/ram.c       |   2 +-
+>  migration/rdma.c      |   5 +-
+>  util/cutils.c         | 526 +++++++++++++++++++++++++++++++++-----------------
+>  5 files changed, 352 insertions(+), 204 deletions(-)
+> 
+> -- 
+> 2.7.4
+> 
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

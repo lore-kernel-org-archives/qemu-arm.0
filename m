@@ -1,55 +1,75 @@
-Received: by 10.25.21.156 with SMTP id 28csp2199708lfv;
-        Tue, 23 Aug 2016 03:00:26 -0700 (PDT)
-X-Received: by 10.55.212.89 with SMTP id l86mr28964130qki.253.1471946426077;
-        Tue, 23 Aug 2016 03:00:26 -0700 (PDT)
+Received: by 10.25.21.156 with SMTP id 28csp66075lfv;
+        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
+X-Received: by 10.55.91.196 with SMTP id p187mr453566qkb.263.1472003661469;
+        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id k123si1682203qkf.49.2016.08.23.03.00.25
+        by mx.google.com with ESMTPS id i93si1343702qkh.29.2016.08.23.18.54.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Aug 2016 03:00:26 -0700 (PDT)
+        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45635 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49224 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bc8VN-0002eB-JI
-	for alex.bennee@linaro.org; Tue, 23 Aug 2016 06:00:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36727)
+	id 1bcNOW-0001qe-Tn
+	for alex.bennee@linaro.org; Tue, 23 Aug 2016 21:54:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bc8UV-0002J1-Ax
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 05:59:32 -0400
+	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNa-0001BH-C5
+	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bc8UR-0000DY-3M
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 05:59:30 -0400
-Received: from 4.mo6.mail-out.ovh.net ([87.98.184.159]:37539)
-	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bc8UQ-0000DA-QP
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 05:59:27 -0400
-Received: from player776.ha.ovh.net (b7.ovh.net [213.186.33.57])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 5B2F2FF8A19
-	for <qemu-devel@nongnu.org>; Tue, 23 Aug 2016 11:59:22 +0200 (CEST)
-Received: from hermes.kaod.org.com (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
-	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
-	by player776.ha.ovh.net (Postfix) with ESMTPSA id 23BF7400077;
-	Tue, 23 Aug 2016 11:59:18 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Aug 2016 11:59:12 +0200
-Message-Id: <1471946352-20779-1-git-send-email-clg@kaod.org>
-X-Mailer: git-send-email 2.7.4
+	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNX-0007aM-5w
+	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:22 -0400
+Received: from mail-ua0-f173.google.com ([209.85.217.173]:34746)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNW-0007ZB-Pp
+	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:19 -0400
+Received: by mail-ua0-f173.google.com with SMTP id k90so4459781uak.1
+	for <qemu-devel@nongnu.org>; Tue, 23 Aug 2016 18:53:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=kju7p1sgBwhhPw4ORm/uG8Z7+OepG624lEQL+8N09vc=;
+	b=PdN1bXV+sqGXJraAST5eYAtAj1dV1CBExtRye6AHntHNSwNfNjwdx7VGVCGlo30anA
+	uUPrb+70cKP2cU/tbBvrAUwhHLtfaOIk5vsMglTN5Rn86D6yoj2CIW+73T4yWMf0pJ9R
+	n8AvhEe7sAJwaBpfEL2jOAXsEJKjZNvTzsdXM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=kju7p1sgBwhhPw4ORm/uG8Z7+OepG624lEQL+8N09vc=;
+	b=QLwPsMcLNxFPBxzyZKEjO+wC/6+2/85xxsvqc/2X2IfcBthMUM3tStxsetCWYDACTR
+	7JEDGmwiKucIhuG6plkkjTeUQBJN+LJ+EJ6ybp7SxMtKDpfshtaLd8Y2bFkQi6cgIRZt
+	Cr45nLhvwjMDQiYG0KZ3UCg6DTAzN1CjbaE7YTF/8JrqaDhJDx6j6U9wZw1EvrCqWyRy
+	PBNpZscQfbj1vmQGut8iRiUBSG3wH8exwYkm6hBnV0jZLBRhnP4PmJ3xal17VEu3nJeg
+	pjpxAkZxd6OmAtjAR8jap+noKZ/IxJpXyjpOWimnrKXSjFGINdatAjA9RV9pXXi19NSM
+	BOFg==
+X-Gm-Message-State: AE9vXwPafNSLa7ZfPRvkL+cCn+hBE/G0Qv5X4dpNwPQkL8TB3MXW5md+wLcBjvQUxv1JO4mpNunJwkBJHBW+wySq
+X-Received: by 10.176.0.211 with SMTP id 77mr264501uaj.75.1472003537500; Tue,
+	23 Aug 2016 18:52:17 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 10.176.4.195 with HTTP; Tue, 23 Aug 2016 18:52:16 -0700 (PDT)
+In-Reply-To: <1471528312.3820.48.camel@redhat.com>
+References: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
+	<20160817161303.jdglwirs522vn2wa@kamzik.localdomain>
+	<45cfb252-6690-f274-d641-d1d3bff29ae3@redhat.com>
+	<CAN76PtR-5NsEE_jqvmO=xdETOvh44c8q=t5AGimmPqU_N7bHJA@mail.gmail.com>
+	<1471528312.3820.48.camel@redhat.com>
+From: Kevin Zhao <kevin.zhao@linaro.org>
+Date: Wed, 24 Aug 2016 09:52:16 +0800
+Message-ID: <CAN76PtTBAPxHkm41fOzDC39SSm92FM4Pam1-NVAwNEGAhXRn0g@mail.gmail.com>
+To: Andrea Bolognani <abologna@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.217.173
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2196067769577212689
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeluddrfeeggddvvdculddtuddrfeeltddrtddtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
-	timestamps) [generic]
-X-Received-From: 87.98.184.159
-Subject: [Qemu-devel] [PATCH] target-arm: Add VBAR support to ARM1176 CPUs
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] Help: Does Qemu support virtio-pci for net-device
+ and disk device?
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,106 +81,112 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Marcel Apfelbaum <mapfelba@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Jones <drjones@redhat.com>,
+	Gema Gomez-Solano <gema.gomez-solano@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Thomas Hanson <thomas.hanson@linaro.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Laine Stump <laine@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4KWLJHGz5+GF
+X-TUID: tF6cCWKYPtsR
 
-ARM1176 CPUs support the Vector Base Address Register but currently,
-qemu only supports VBAR on ARMv7 CPUs. Fix this by adding a new
-feature ARM_FEATURE_VBAR which is used for ARMv7 and ARM1176 CPUs.
+Great ~ Thanks for your valuable information~
+I will try with the xml and any update I will post here.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- target-arm/cpu.c    |    2 ++
- target-arm/cpu.h    |    1 +
- target-arm/helper.c |   18 ++++++++++++------
- 3 files changed, 15 insertions(+), 6 deletions(-)
+On 18 August 2016 at 21:51, Andrea Bolognani <abologna@redhat.com> wrote:
 
-Index: qemu-aspeed.git/target-arm/helper.c
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
---- qemu-aspeed.git.orig/target-arm/helper.c
-+++ qemu-aspeed.git/target-arm/helper.c
-@@ -1251,12 +1251,6 @@ static const ARMCPRegInfo v7_cp_reginfo[
-       .access =3D PL1_RW, .accessfn =3D access_tpm, .type =3D ARM_CP_ALI=
-AS,
-       .fieldoffset =3D offsetof(CPUARMState, cp15.c9_pminten),
-       .writefn =3D pmintenclr_write },
--    { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
--      .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 0,
--      .access =3D PL1_RW, .writefn =3D vbar_write,
--      .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s),
--                             offsetof(CPUARMState, cp15.vbar_ns) },
--      .resetvalue =3D 0 },
-     { .name =3D "CCSIDR", .state =3D ARM_CP_STATE_BOTH,
-       .opc0 =3D 3, .crn =3D 0, .crm =3D 0, .opc1 =3D 1, .opc2 =3D 0,
-       .access =3D PL1_R, .readfn =3D ccsidr_read, .type =3D ARM_CP_NO_RA=
-W },
-@@ -1410,6 +1404,15 @@ static const ARMCPRegInfo v6k_cp_reginfo
-       .resetvalue =3D 0 },
-     REGINFO_SENTINEL
- };
-+static const ARMCPRegInfo vbar_cp_reginfo[] =3D {
-+    { .name =3D "VBAR", .state =3D ARM_CP_STATE_BOTH,
-+      .opc0 =3D 3, .crn =3D 12, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 0,
-+      .access =3D PL1_RW, .writefn =3D vbar_write,
-+      .bank_fieldoffsets =3D { offsetof(CPUARMState, cp15.vbar_s),
-+                             offsetof(CPUARMState, cp15.vbar_ns) },
-+      .resetvalue =3D 0 },
-+    REGINFO_SENTINEL
-+};
-=20
- #ifndef CONFIG_USER_ONLY
-=20
-@@ -4486,6 +4489,9 @@ void register_cp_regs_for_features(ARMCP
-     if (arm_feature(env, ARM_FEATURE_V6K)) {
-         define_arm_cp_regs(cpu, v6k_cp_reginfo);
-     }
-+    if (arm_feature(env, ARM_FEATURE_VBAR)) {
-+        define_arm_cp_regs(cpu, vbar_cp_reginfo);
-+    }
-     if (arm_feature(env, ARM_FEATURE_V7MP) &&
-         !arm_feature(env, ARM_FEATURE_MPU)) {
-         define_arm_cp_regs(cpu, v7mp_cp_reginfo);
-Index: qemu-aspeed.git/target-arm/cpu.h
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
---- qemu-aspeed.git.orig/target-arm/cpu.h
-+++ qemu-aspeed.git/target-arm/cpu.h
-@@ -1129,6 +1129,7 @@ enum arm_features {
-     ARM_FEATURE_V8_SHA256, /* implements SHA256 part of v8 Crypto Extens=
-ions */
-     ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensio=
-ns */
-     ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings=
- */
-+    ARM_FEATURE_VBAR, /* has cp15 VBAR (ARM1176) */
- };
-=20
- static inline int arm_feature(CPUARMState *env, int feature)
-Index: qemu-aspeed.git/target-arm/cpu.c
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
---- qemu-aspeed.git.orig/target-arm/cpu.c
-+++ qemu-aspeed.git/target-arm/cpu.c
-@@ -584,6 +584,7 @@ static void arm_cpu_realizefn(DeviceStat
-         set_feature(env, ARM_FEATURE_LPAE);
-     }
-     if (arm_feature(env, ARM_FEATURE_V7)) {
-+        set_feature(env, ARM_FEATURE_VBAR);
-         set_feature(env, ARM_FEATURE_VAPA);
-         set_feature(env, ARM_FEATURE_THUMB2);
-         set_feature(env, ARM_FEATURE_MPIDR);
-@@ -867,6 +868,7 @@ static void arm1176_initfn(Object *obj)
-=20
-     cpu->dtb_compatible =3D "arm,arm1176";
-     set_feature(&cpu->env, ARM_FEATURE_V6K);
-+    set_feature(&cpu->env, ARM_FEATURE_VBAR);
-     set_feature(&cpu->env, ARM_FEATURE_VFP);
-     set_feature(&cpu->env, ARM_FEATURE_VAPA);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
+> On Thu, 2016-08-18 at 20:43 +0800, Kevin Zhao wrote:
+> > What's the minimum version of  Qemu that support virito-1.0?
+> > Does Qemu 2.6 works?
+>
+> 2.6 definitely has virtio 1.0 support, however libvirt does
+> not yet allow you to control whether a device uses 0.9, 1.0
+> or both. The default for 2.6 should be both IIRC.
+>
+> > Now I will manually add the slots and bus to pcie. Because
+> > I am not familiar with it,  if it convenient, could you give
+> > me an available xml file which PCIE disk and PCIE
+> > net device can work for machine virt ?
+>
+> The XML you're looking for is at the end of this message.
+>
+> Note that a Fedora 24 guest configured this way will not
+> boot at all if the machine type is virt-2.6; on the other
+> hand, an identically-configured RHEL 7.3 guest will boot
+> even with virt-2.6, but both the disk and the network
+> adapter will be legacy PCI instead of PCIe.
+>
+>
+> <domain type='kvm'>
+>   <name>abologna-f24</name>
+>   <uuid>f6d0428b-a034-4c4e-8ef2-f12f6aa9cab0</uuid>
+>   <memory unit='KiB'>2097152</memory>
+>   <currentMemory unit='KiB'>2097152</currentMemory>
+>   <vcpu placement='static'>4</vcpu>
+>   <os>
+>     <type arch='aarch64' machine='virt-2.7'>hvm</type>
+>     <loader readonly='yes' type='pflash'>/usr/share/
+> AAVMF/AAVMF_CODE.fd</loader>
+>     <nvram>/var/lib/libvirt/qemu/nvram/abologna-f24_VARS.fd</nvram>
+>     <boot dev='hd'/>
+>   </os>
+>   <features>
+>     <gic version='2'/>
+>   </features>
+>   <cpu mode='host-passthrough'/>
+>   <clock offset='utc'/>
+>   <on_poweroff>destroy</on_poweroff>
+>   <on_reboot>restart</on_reboot>
+>   <on_crash>restart</on_crash>
+>   <devices>
+>     <emulator>/usr/libexec/abologna-qemu-kvm</emulator>
+>     <disk type='file' device='disk'>
+>       <driver name='qemu' type='qcow2'/>
+>       <source file='/var/lib/libvirt/images/abologna-f24.qcow2'/>
+>       <target dev='vda' bus='virtio'/>
+>       <address type='pci' domain='0x0000' bus='0x01' slot='0x00'
+> function='0x0'/>
+>     </disk>
+>     <controller type='pci' index='0' model='pcie-root'/>
+>     <controller type='pci' index='1' model='pcie-root-port'>
+>       <model name='ioh3420'/>
+>       <target chassis='1' port='0x8'/>
+>       <address type='pci' domain='0x0000' bus='0x00' slot='0x01'
+> function='0x0'/>
+>     </controller>
+>     <controller type='pci' index='2' model='pcie-root-port'>
+>       <model name='ioh3420'/>
+>       <target chassis='2' port='0x10'/>
+>       <address type='pci' domain='0x0000' bus='0x00' slot='0x02'
+> function='0x0'/>
+>     </controller>
+>     <controller type='virtio-serial' index='0'>
+>       <address type='virtio-mmio'/>
+>     </controller>
+>     <interface type='network'>
+>       <mac address='52:54:00:10:07:41'/>
+>       <source network='default'/>
+>       <model type='virtio'/>
+>       <rom bar='off'/>
+>       <address type='pci' domain='0x0000' bus='0x02' slot='0x00'
+> function='0x0'/>
+>     </interface>
+>     <serial type='pty'>
+>       <target port='0'/>
+>     </serial>
+>     <console type='pty'>
+>       <target type='serial' port='0'/>
+>     </console>
+>     <channel type='unix'>
+>       <source mode='bind'/>
+>       <target type='virtio' name='org.qemu.guest_agent.0'/>
+>       <address type='virtio-serial' controller='0' bus='0' port='1'/>
+>     </channel>
+>   </devices>
+> </domain>
+>
+> --
+> Andrea Bolognani / Red Hat / Virtualization
+>

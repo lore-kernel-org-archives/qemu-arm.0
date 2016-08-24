@@ -1,176 +1,303 @@
-Received: by 10.25.21.156 with SMTP id 28csp115945lfv;
-        Tue, 23 Aug 2016 21:24:43 -0700 (PDT)
-X-Received: by 10.200.41.88 with SMTP id z24mr997039qtz.127.1472012683758;
-        Tue, 23 Aug 2016 21:24:43 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp116646lfv;
+        Tue, 23 Aug 2016 21:26:53 -0700 (PDT)
+X-Received: by 10.55.68.81 with SMTP id r78mr1034088qka.119.1472012813486;
+        Tue, 23 Aug 2016 21:26:53 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id a31si5098844qtb.7.2016.08.23.21.24.43
+        by mx.google.com with ESMTPS id 13si5072734qki.173.2016.08.23.21.26.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Aug 2016 21:24:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 23 Aug 2016 21:26:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49551 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49566 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bcPk3-00039N-6s
-	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:24:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51982)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bcPm8-0005FG-Sx
+	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:26:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52096)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bcPfB-0007IF-F4
-	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 00:19:42 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bcPfK-0007P8-MY
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bcPf5-0004dx-Kd
-	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 00:19:40 -0400
-Received: from mail-qt0-f196.google.com ([209.85.216.196]:35586)
+	(envelope-from <rth7680@gmail.com>) id 1bcPfI-0004nl-8V
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:49 -0400
+Received: from mail-qk0-f195.google.com ([209.85.220.195]:34803)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <rth7680@gmail.com>)
-	id 1bcPf5-0004ds-G1; Wed, 24 Aug 2016 00:19:35 -0400
-Received: by mail-qt0-f196.google.com with SMTP id q11so198965qtb.2;
-	Tue, 23 Aug 2016 21:19:35 -0700 (PDT)
+	id 1bcPf9-0004gZ-TE; Wed, 24 Aug 2016 00:19:39 -0400
+Received: by mail-qk0-f195.google.com with SMTP id r128so401753qkc.1;
+	Tue, 23 Aug 2016 21:19:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=PIsDltXtUETRDZ9GQ2f4/uflPk17rcMbPKv05p1WcYY=;
-	b=Fb/MXOWC8C1U57KUzYOd/8Gm5IE/bCdctsfuIrIBK8fhSZGiVR7RUl2uOMueSumoTm
-	7hrfZZ6V2MXpcyumv0hHPo7eWgErNkiTBVPElgNOnPql8KLHSheo/dSK+2DSx1ip9wHl
-	LdwBgo0n0X2Y+BdVxU6jBzcgzuh7+o50y60dbyGn9erlCtmJj4Gne/S4fvkvZVNeWG/s
-	6NMia6A3nwfIiel3dPOjXhFlvipwS/NKphWL3CHJb5X2ov6oClozJiK/5OAEkOhr6llD
-	LZa+gMEqe8T3lLtgfi+vMMkHKTNoNRzWsXGgMTuGkj39/CvMSzjGOxAPa62AtSTKJ3/m
-	Ggvg==
+	bh=SGH5Wb9OvBuvQy6SuBtCAyNAiD3mmKjxYEiP2SspwGU=;
+	b=a7hAZZ4TJh1LLpkykFsYOv/FnFhZOfTR2HeDWFZ0e5lsiVN5WVIUtReZiq+vCJRyY/
+	zVDLiO/Qc8jMCwgccRiu+CqMfG/YMIF3Fk/hyJvey4CG9Ey9MvxT2CfuWvV/46LP/H0m
+	fjkn8y+O1eoSp5CTGmSx9KYc4NhMXQIQjWMJ61cDYDmojGYYCGb+b5P/zh5mZNQoEu25
+	5MIX0MbOobPBNmr+xxTa3sEFVw/NsgBJrESO8AulY4JIXkNxVP/klKsqE62f5MmsxNRq
+	GCHsATAKzp8Kc7VWUuzdsGqsxifqZoWAazt493bp7KRxRpLTGl23Y/Jemy46AHp0eBao
+	VOdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references;
-	bh=PIsDltXtUETRDZ9GQ2f4/uflPk17rcMbPKv05p1WcYY=;
-	b=YuZVgxdM1kl1jAN0A45k5x44fFsE2XSKyPRhYhjr9+7Mj9qUTSfbc/djRkNuynkhY3
-	0u2Bq0r2kZby6/ow5OO/czdPelA3gubrXFTgTc9DWkg/NjE0Tn+7DclTaEeU2pbijx5E
-	PESV+9AitsBI8+7T91O6B1cYDwWY3ksY4EO8pd2/+11pZuQZ2Zb5rr6AK4sE/LyejQTF
-	NnFpleUvTSBEdrRbl+BvlAs+qdcn2zwg1qZRj9QkIrLPUDmklQjwkFedlVnpH6ODn5QX
-	BqHFV8dZbuZYrv0++6scS/Aj1HSrkhAEkoE0Iqkljm4M4sieAXVBjzhYgoNYheD/5F79
-	01Pg==
-X-Gm-Message-State: AE9vXwPSo/TO0HYJhPyOlfiIV4s0bLtsofwD/OlD4Bhn6aRS7R7/ehWchpHl2HhIJTev+g==
-X-Received: by 10.237.49.5 with SMTP id 5mr1056601qtg.136.1472012315131;
-	Tue, 23 Aug 2016 21:18:35 -0700 (PDT)
+	bh=SGH5Wb9OvBuvQy6SuBtCAyNAiD3mmKjxYEiP2SspwGU=;
+	b=YCbEf/2E50SMRu3zDTq3L4Hkh7bUYB3JWqMPoeQ1mgtr1d1By2crbRfuVUI4/IxSfs
+	vPEX7aHUo3zxaVBSCl9NmcxnrnWO0bUP77wAa5yhP/w8aqDWzgrBKCL2Q7/p4tTyFTkC
+	8A0Q6dheZJsxr3T3bxOqWW5HRA1x72/VMDTpfObUeeB4zFOTIOT/0THr3uKbNYZjByye
+	mSrsEIF3/hI09iWipC9hEKvgEZD4yxaf3eWAJ7ullJKhw4gCfa3KucOn7GjEg1SGb6cD
+	jlWm2MaPpw1oVXfcHEROpOXHTYMWHup2Geq72+kONwilsTRHFAflABbbCdkU7fvXrjQa
+	1cwA==
+X-Gm-Message-State: AE9vXwOjogq6SUsvVB5JIQWimqs7g5+a08KUY9gYzhhQjhbflbVosq/e+Ox6LrXfd2OipA==
+X-Received: by 10.55.33.130 with SMTP id f2mr1091327qki.141.1472012319420;
+	Tue, 23 Aug 2016 21:18:39 -0700 (PDT)
 Received: from bigtime.com (174-24-157-40.tukw.qwest.net. [174.24.157.40])
-	by smtp.gmail.com with ESMTPSA id t36sm3677369qtd.3.2016.08.23.21.18.33
+	by smtp.gmail.com with ESMTPSA id t36sm3677369qtd.3.2016.08.23.21.18.38
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 23 Aug 2016 21:18:34 -0700 (PDT)
+	Tue, 23 Aug 2016 21:18:39 -0700 (PDT)
 From: Richard Henderson <rth@twiddle.net>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 Aug 2016 21:17:54 -0700
-Message-Id: <1472012279-20581-3-git-send-email-rth@twiddle.net>
+Date: Tue, 23 Aug 2016 21:17:57 -0700
+Message-Id: <1472012279-20581-6-git-send-email-rth@twiddle.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1472012279-20581-1-git-send-email-rth@twiddle.net>
 References: <1472012279-20581-1-git-send-email-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.216.196
-Subject: [Qemu-devel] [PATCH 2/7] cutils: Export only buffer_is_zero
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.220.195
+Subject: [Qemu-arm] [PATCH 5/7] cutils: Rewrite x86 buffer zero checking
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: pbonzini@redhat.com, qemu-arm@nongnu.org, vijay.kilari@gmail.com,
 	peter.maydell@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fYhEr+4Mq1Kg
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X3cr0ZoAAwzJ
 
-Since the two users don't make use of the returned offset,
-beyond ensuring that the entire buffer is zero, consider the
-can_use_buffer_find_nonzero_offset and buffer_find_nonzero_offset
-functions internal.
+Use unaligned load operations.
+Add prefetches for the next loop iteration.
+Add versions for avx1 and sse4.1.
 
 Signed-off-by: Richard Henderson <rth@twiddle.net>
 ---
- include/qemu/cutils.h | 2 --
- migration/ram.c       | 2 +-
- migration/rdma.c      | 5 +----
- util/cutils.c         | 8 ++++----
- 4 files changed, 6 insertions(+), 11 deletions(-)
+ util/cutils.c | 169 +++++++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 145 insertions(+), 24 deletions(-)
 
-diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-index 3e4ea23..ca58577 100644
---- a/include/qemu/cutils.h
-+++ b/include/qemu/cutils.h
-@@ -168,8 +168,6 @@ int64_t qemu_strtosz_suffix_unit(const char *nptr, char **end,
- /* used to print char* safely */
- #define STR_OR_NULL(str) ((str) ? (str) : "null")
- 
--bool can_use_buffer_find_nonzero_offset(const void *buf, size_t len);
--size_t buffer_find_nonzero_offset(const void *buf, size_t len);
- bool buffer_is_zero(const void *buf, size_t len);
- 
- /*
-diff --git a/migration/ram.c b/migration/ram.c
-index a3d70c4..a6e1c63 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -73,7 +73,7 @@ static const uint8_t ZERO_TARGET_PAGE[TARGET_PAGE_SIZE];
- 
- static inline bool is_zero_range(uint8_t *p, uint64_t size)
- {
--    return buffer_find_nonzero_offset(p, size) == size;
-+    return buffer_is_zero(p, size);
- }
- 
- /* struct contains XBZRLE cache and a static page
-diff --git a/migration/rdma.c b/migration/rdma.c
-index 5110ec8..88bdb64 100644
---- a/migration/rdma.c
-+++ b/migration/rdma.c
-@@ -1934,10 +1934,7 @@ retry:
-              * memset() + madvise() the entire chunk without RDMA.
-              */
- 
--            if (can_use_buffer_find_nonzero_offset((void *)(uintptr_t)sge.addr,
--                                                   length)
--                   && buffer_find_nonzero_offset((void *)(uintptr_t)sge.addr,
--                                                    length) == length) {
-+            if (buffer_is_zero((void *)(uintptr_t)sge.addr, length)) {
-                 RDMACompress comp = {
-                                         .offset = current_addr,
-                                         .value = 0,
 diff --git a/util/cutils.c b/util/cutils.c
-index 1c8635c..621ca67 100644
+index 0f1ce1d..ec4bd78 100644
 --- a/util/cutils.c
 +++ b/util/cutils.c
-@@ -327,9 +327,9 @@ static bool avx2_support(void)
-     return b & bit_AVX2;
+@@ -266,21 +266,127 @@ static bool select_accel_fn(const void *buf, size_t len)
+     return select_accel_int(buf, len);
  }
  
--bool can_use_buffer_find_nonzero_offset(const void *buf, size_t len) \
-+static bool can_use_buffer_find_nonzero_offset(const void *buf, size_t len) \
-          __attribute__ ((ifunc("can_use_buffer_find_nonzero_offset_ifunc")));
--size_t buffer_find_nonzero_offset(const void *buf, size_t len) \
-+static size_t buffer_find_nonzero_offset(const void *buf, size_t len) \
-          __attribute__ ((ifunc("buffer_find_nonzero_offset_ifunc")));
+-#elif defined(CONFIG_AVX2_OPT)
++#elif defined(CONFIG_AVX2_OPT) || defined(__SSE2__)
+ #include <cpuid.h>
+ #include <x86intrin.h>
  
- static void *buffer_find_nonzero_offset_ifunc(void)
-@@ -350,12 +350,12 @@ static void *can_use_buffer_find_nonzero_offset_ifunc(void)
- }
++#ifdef CONFIG_AVX2_OPT
+ #pragma GCC push_options
+ #pragma GCC target("avx2")
+-#define AVX2_ZERO(X)  _mm256_testz_si256((X), (X))
+-ACCEL_BUFFER_ZERO(buffer_zero_avx2, 128, __m256i, AVX2_ZERO)
++
++static bool __attribute__((noinline))
++buffer_zero_avx2(const void *buf, size_t len)
++{
++    const __m256i *p = buf;
++    const __m256i *end = buf + len;
++    __m256i t;
++
++    do {
++        p += 4;
++        __builtin_prefetch(p);
++        /* Note that most AVX insns handle unaligned operands by
++           default; we only need take care for the initial load.  */
++        __asm volatile("vmovdqu -0x80(%1),%0\n\t"
++                       "vpor -0x60(%1),%0,%0\n\t"
++                       "vpor -0x40(%1),%0,%0\n\t"
++                       "vpor -0x20(%1),%0,%0"
++                       : "=x"(t) : "r"(p));
++        if (unlikely(!_mm256_testz_si256(t, t))) {
++            return false;
++        }
++    } while (p < end);
++    return true;
++}
++
++#pragma GCC pop_options
++#pragma GCC push_options
++#pragma GCC target("avx")
++
++static bool __attribute__((noinline))
++buffer_zero_avx(const void *buf, size_t len)
++{
++    const __m128i *p = buf;
++    const __m128i *end = buf + len;
++    __m128i t;
++
++    do {
++        p += 4;
++        __builtin_prefetch(p);
++        /* Note that most AVX insns handle unaligned operands by
++           default; we only need take care for the initial load.  */
++        __asm volatile("vmovdqu -0x40(%1),%0\n\t"
++                       "vpor -0x20(%1),%0,%0\n\t"
++                       "vpor -0x20(%1),%0,%0\n\t"
++                       "vpor -0x10(%1),%0,%0"
++                       : "=x"(t) : "r"(p));
++        if (unlikely(!_mm_testz_si128(t, t))) {
++            return false;
++        }
++    } while (p < end);
++    return true;
++}
++
  #pragma GCC pop_options
- #else
--bool can_use_buffer_find_nonzero_offset(const void *buf, size_t len)
-+static bool can_use_buffer_find_nonzero_offset(const void *buf, size_t len)
++#pragma GCC push_options
++#pragma GCC target("sse4")
+ 
++static bool __attribute__((noinline))
++buffer_zero_sse4(const void *buf, size_t len)
++{
++    const __m128i *p = buf;
++    const __m128i *end = buf + len;
++    __m128i t0, t1, t2, t3;
++
++    do {
++        p += 4;
++        __builtin_prefetch(p);
++        __asm volatile("movdqu -0x40(%4),%0\n\t"
++                       "movdqu -0x20(%4),%1\n\t"
++                       "movdqu -0x20(%4),%2\n\t"
++                       "movdqu -0x10(%4),%3\n\t"
++                       "por %1,%0\n\t"
++                       "por %3,%2\n\t"
++                       "por %2,%0"
++                       : "=x"(t0), "=x"(t1), "=x"(t2), "=x"(t3) : "r"(p));
++        if (unlikely(!_mm_testz_si128(t0, t0))) {
++            return false;
++        }
++    } while (p < end);
++    return true;
++}
++
++#pragma GCC pop_options
+ #pragma GCC push_options
+ #pragma GCC target("sse2")
+-#define SSE2_ZERO(X) \
+-    (_mm_movemask_epi8(_mm_cmpeq_epi8((X), _mm_setzero_si128())) == 0xFFFF)
+-ACCEL_BUFFER_ZERO(buffer_zero_sse2, 64, __m128i, SSE2_ZERO)
++#endif /* CONFIG_AVX2_OPT */
++
++static bool __attribute__((noinline))
++buffer_zero_sse2(const void *buf, size_t len)
++{
++    const __m128i *p = buf;
++    const __m128i *end = buf + len;
++    __m128i zero = _mm_setzero_si128();
++    __m128i t0, t1, t2, t3;
++
++    do {
++        p += 4;
++        __builtin_prefetch(p);
++        __asm volatile("movdqu -0x40(%4),%0\n\t"
++                       "movdqu -0x20(%4),%1\n\t"
++                       "movdqu -0x20(%4),%2\n\t"
++                       "movdqu -0x10(%4),%3\n\t"
++                       "por %1,%0\n\t"
++                       "por %3,%2\n\t"
++                       "por %2,%0"
++                       : "=x"(t0), "=x"(t1), "=x"(t2), "=x"(t3) : "r"(p));
++        if (unlikely(_mm_movemask_epi8(_mm_cmpeq_epi8(t0, zero)) == 0xFFFF)) {
++            return false;
++        }
++    } while (p < end);
++    return true;
++}
++
++#ifdef CONFIG_AVX2_OPT
+ #pragma GCC pop_options
+ 
+ #define CACHE_SSE2    1
+@@ -321,32 +427,47 @@ static void __attribute__((constructor)) init_cpuid_cache(void)
+     }
+     cpuid_cache = cache;
+ }
++#endif /* CONFIG_AVX2_OPT */
+ 
+ static bool select_accel_fn(const void *buf, size_t len)
  {
-     return can_use_buffer_find_nonzero_offset_inner(buf, len);
+-    uintptr_t ibuf = (uintptr_t)buf;
+-    if (len % 128 == 0 && ibuf % 32 == 0 && (cpuid_cache & CACHE_AVX2)) {
++#ifdef CONFIG_AVX2_OPT
++    int cache = cpuid_cache;
++
++    /* Force bits that the compiler tells us must be there.
++       This allows the compiler to optimize subsequent tests.  */
++#ifdef __AVX2__
++    cache |= CACHE_AVX2;
++#endif
++#ifdef __AVX__
++    cache |= CACHE_AVX1;
++#endif
++#ifdef __SSE4_1__
++    cache |= CACHE_SSE4;
++#endif
++#ifdef __SSE2__
++    cache |= CACHE_SSE2;
++#endif
++
++    if (len % 128 == 0 && (cache & CACHE_AVX2)) {
+         return buffer_zero_avx2(buf, len);
+     }
+-    if (len % 64 == 0 && ibuf % 16 == 0 && (cpuid_cache & CACHE_SSE2)) {
+-        return buffer_zero_sse2(buf, len);
++    if (len % 64 == 0) {
++        if (cache & CACHE_AVX1) {
++            return buffer_zero_avx(buf, len);
++        }
++        if (cache & CACHE_SSE4) {
++            return buffer_zero_sse4(buf, len);
++        }
++        if (cache & CACHE_SSE2) {
++            return buffer_zero_sse2(buf, len);
++        }
+     }
+-    return select_accel_int(buf, len);
+-}
+-
+-#elif defined __SSE2__
+-#include <emmintrin.h>
+-
+-#define SSE2_ZERO(X) \
+-    (_mm_movemask_epi8(_mm_cmpeq_epi8((X), _mm_setzero_si128())) == 0xFFFF)
+-ACCEL_BUFFER_ZERO(buffer_zero_sse2, 64, __m128i, SSE2_ZERO)
+-
+-static bool select_accel_fn(const void *buf, size_t len)
+-{
+-    uintptr_t ibuf = (uintptr_t)buf;
+-    if (len % 64 == 0 && ibuf % sizeof(__m128i) == 0) {
++#else
++    if (len % 64 == 0) {
+         return buffer_zero_sse2(buf, len);
+     }
++#endif
+     return select_accel_int(buf, len);
  }
  
--size_t buffer_find_nonzero_offset(const void *buf, size_t len)
-+static size_t buffer_find_nonzero_offset(const void *buf, size_t len)
- {
-     return buffer_find_nonzero_offset_inner(buf, len);
- }
 -- 
 2.7.4
 

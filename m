@@ -1,192 +1,153 @@
-Received: by 10.25.21.156 with SMTP id 28csp66075lfv;
-        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
-X-Received: by 10.55.91.196 with SMTP id p187mr453566qkb.263.1472003661469;
-        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp114445lfv;
+        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
+X-Received: by 10.200.56.35 with SMTP id q32mr1135784qtb.32.1472012407675;
+        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id i93si1343702qkh.29.2016.08.23.18.54.21
+        by mx.google.com with ESMTPS id o2si5067687qkc.114.2016.08.23.21.20.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Aug 2016 18:54:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49224 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49529 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bcNOW-0001qe-Tn
-	for alex.bennee@linaro.org; Tue, 23 Aug 2016 21:54:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56783)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bcPfb-0007bz-3L
+	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:20:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52146)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNa-0001BH-C5
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:23 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bcPfO-0007Uy-TH
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNX-0007aM-5w
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:22 -0400
-Received: from mail-ua0-f173.google.com ([209.85.217.173]:34746)
+	(envelope-from <rth7680@gmail.com>) id 1bcPfL-0004ow-Kn
+	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:54 -0400
+Received: from mail-qk0-f196.google.com ([209.85.220.196]:36017)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kevin.zhao@linaro.org>) id 1bcNNW-0007ZB-Pp
-	for qemu-devel@nongnu.org; Tue, 23 Aug 2016 21:53:19 -0400
-Received: by mail-ua0-f173.google.com with SMTP id k90so4459781uak.1
-	for <qemu-devel@nongnu.org>; Tue, 23 Aug 2016 18:53:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=kju7p1sgBwhhPw4ORm/uG8Z7+OepG624lEQL+8N09vc=;
-	b=PdN1bXV+sqGXJraAST5eYAtAj1dV1CBExtRye6AHntHNSwNfNjwdx7VGVCGlo30anA
-	uUPrb+70cKP2cU/tbBvrAUwhHLtfaOIk5vsMglTN5Rn86D6yoj2CIW+73T4yWMf0pJ9R
-	n8AvhEe7sAJwaBpfEL2jOAXsEJKjZNvTzsdXM=
+	(envelope-from <rth7680@gmail.com>)
+	id 1bcPfG-0004kX-33; Wed, 24 Aug 2016 00:19:46 -0400
+Received: by mail-qk0-f196.google.com with SMTP id v123so396726qkh.3;
+	Tue, 23 Aug 2016 21:19:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=HoF+gnoYL2j83RG/ET+zg4MnVBB1dDF2iOV5flMpfNo=;
+	b=GkGd3YflqXSVcy35hvmM2qrTcbuRIAZlRE/VqQnOOb6gqOPgwc/GXV5OWwQbHmN3Cj
+	iy5eKgdIwcnE0AglkBIw/nLt1hEnnLx4rAbS2ws6zjBd/grbsQKD0FsAC0+I4S2CNQ2G
+	R1THcOLSYQNUt4hswHWihkOJh+9ikWcjWqrne6BX6qG7WGrGMMflCpBCLpD8UPb3O/sF
+	QPqnxvJI3ktlIFMLIoHtGv2bEKq5dqKOtjtntsoeRp+J9hGuneJ00YntliW65GpKEFA6
+	bsUtREKnfHQxR4gCulJlPY+eWN7bA2vunhOPq5/bn+FAUdKs/Jp6XcKmmzoASo+OjipN
+	s22g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=kju7p1sgBwhhPw4ORm/uG8Z7+OepG624lEQL+8N09vc=;
-	b=QLwPsMcLNxFPBxzyZKEjO+wC/6+2/85xxsvqc/2X2IfcBthMUM3tStxsetCWYDACTR
-	7JEDGmwiKucIhuG6plkkjTeUQBJN+LJ+EJ6ybp7SxMtKDpfshtaLd8Y2bFkQi6cgIRZt
-	Cr45nLhvwjMDQiYG0KZ3UCg6DTAzN1CjbaE7YTF/8JrqaDhJDx6j6U9wZw1EvrCqWyRy
-	PBNpZscQfbj1vmQGut8iRiUBSG3wH8exwYkm6hBnV0jZLBRhnP4PmJ3xal17VEu3nJeg
-	pjpxAkZxd6OmAtjAR8jap+noKZ/IxJpXyjpOWimnrKXSjFGINdatAjA9RV9pXXi19NSM
-	BOFg==
-X-Gm-Message-State: AE9vXwPafNSLa7ZfPRvkL+cCn+hBE/G0Qv5X4dpNwPQkL8TB3MXW5md+wLcBjvQUxv1JO4mpNunJwkBJHBW+wySq
-X-Received: by 10.176.0.211 with SMTP id 77mr264501uaj.75.1472003537500; Tue,
-	23 Aug 2016 18:52:17 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.176.4.195 with HTTP; Tue, 23 Aug 2016 18:52:16 -0700 (PDT)
-In-Reply-To: <1471528312.3820.48.camel@redhat.com>
-References: <CAN76PtR4dBm8DgTMGE73zSN1aYzbYY-ohnAveUbm_XQmWKm+bQ@mail.gmail.com>
-	<20160817161303.jdglwirs522vn2wa@kamzik.localdomain>
-	<45cfb252-6690-f274-d641-d1d3bff29ae3@redhat.com>
-	<CAN76PtR-5NsEE_jqvmO=xdETOvh44c8q=t5AGimmPqU_N7bHJA@mail.gmail.com>
-	<1471528312.3820.48.camel@redhat.com>
-From: Kevin Zhao <kevin.zhao@linaro.org>
-Date: Wed, 24 Aug 2016 09:52:16 +0800
-Message-ID: <CAN76PtTBAPxHkm41fOzDC39SSm92FM4Pam1-NVAwNEGAhXRn0g@mail.gmail.com>
-To: Andrea Bolognani <abologna@redhat.com>
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references;
+	bh=HoF+gnoYL2j83RG/ET+zg4MnVBB1dDF2iOV5flMpfNo=;
+	b=MlVzWYmD+rvUgvJrmUFYPLlnI2OlVm3ZXTXvqQBYQLL/moR6Dt6k8UMN+GxpYQ6QZX
+	HRwCDqTo5iPw3NAxOY22Cm8BL5m0wNQtTrOdju6gUzAl23BL8ObCrBfjNA1WAvBFP+v0
+	xbJs8IN0JrKDh4FOsOWt7ASeERINdxNxYg6FSubGCKJTtplXU9yavCJPRXooK4lL+O+v
+	cv7FWIMsd3Ka/Y7Qp2OMCoRMjge4FOYTOVxYgOQPf22eihI5YozowZ1i0ULxY2opfcLs
+	DdVjCHzho4+nAK3UMKhWwKo5pruFzApEjSeaToydAj4VZTp6jLx8UCJR8sDFEsQMF7jr
+	R0+Q==
+X-Gm-Message-State: AE9vXwPBIJy+X8sFBShRc4ry7XFmhyctcIM0U8vgyiBZ8LpPPRGT21+z1IQ1Vowq1sUnZg==
+X-Received: by 10.55.45.1 with SMTP id t1mr1081887qkh.182.1472012325607;
+	Tue, 23 Aug 2016 21:18:45 -0700 (PDT)
+Received: from bigtime.com (174-24-157-40.tukw.qwest.net. [174.24.157.40])
+	by smtp.gmail.com with ESMTPSA id t36sm3677369qtd.3.2016.08.23.21.18.41
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 23 Aug 2016 21:18:43 -0700 (PDT)
+From: Richard Henderson <rth@twiddle.net>
+To: qemu-devel@nongnu.org
+Date: Tue, 23 Aug 2016 21:17:59 -0700
+Message-Id: <1472012279-20581-8-git-send-email-rth@twiddle.net>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1472012279-20581-1-git-send-email-rth@twiddle.net>
+References: <1472012279-20581-1-git-send-email-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.217.173
-Content-Type: text/plain; charset=UTF-8
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] Help: Does Qemu support virtio-pci for net-device
- and disk device?
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.220.196
+Subject: [Qemu-arm] [PATCH 7/7] cutils: Rewrite ppc buffer zero checking
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Marcel Apfelbaum <mapfelba@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Jones <drjones@redhat.com>,
-	Gema Gomez-Solano <gema.gomez-solano@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Thomas Hanson <thomas.hanson@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Laine Stump <laine@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tF6cCWKYPtsR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, vijay.kilari@gmail.com, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qooZQ1axr7Fr
 
-Great ~ Thanks for your valuable information~
-I will try with the xml and any update I will post here.
+GCC versions through 6 do a poor job with the indexed addressing,
+and (for ppc64le) issues unnecessary xxswapd insns.
 
-On 18 August 2016 at 21:51, Andrea Bolognani <abologna@redhat.com> wrote:
+Cc: qemu-ppc@nongnu.org
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Richard Henderson <rth@twiddle.net>
+---
+ util/cutils.c | 41 +++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 39 insertions(+), 2 deletions(-)
 
-> On Thu, 2016-08-18 at 20:43 +0800, Kevin Zhao wrote:
-> > What's the minimum version of  Qemu that support virito-1.0?
-> > Does Qemu 2.6 works?
->
-> 2.6 definitely has virtio 1.0 support, however libvirt does
-> not yet allow you to control whether a device uses 0.9, 1.0
-> or both. The default for 2.6 should be both IIRC.
->
-> > Now I will manually add the slots and bus to pcie. Because
-> > I am not familiar with it,  if it convenient, could you give
-> > me an available xml file which PCIE disk and PCIE
-> > net device can work for machine virt ?
->
-> The XML you're looking for is at the end of this message.
->
-> Note that a Fedora 24 guest configured this way will not
-> boot at all if the machine type is virt-2.6; on the other
-> hand, an identically-configured RHEL 7.3 guest will boot
-> even with virt-2.6, but both the disk and the network
-> adapter will be legacy PCI instead of PCIe.
->
->
-> <domain type='kvm'>
->   <name>abologna-f24</name>
->   <uuid>f6d0428b-a034-4c4e-8ef2-f12f6aa9cab0</uuid>
->   <memory unit='KiB'>2097152</memory>
->   <currentMemory unit='KiB'>2097152</currentMemory>
->   <vcpu placement='static'>4</vcpu>
->   <os>
->     <type arch='aarch64' machine='virt-2.7'>hvm</type>
->     <loader readonly='yes' type='pflash'>/usr/share/
-> AAVMF/AAVMF_CODE.fd</loader>
->     <nvram>/var/lib/libvirt/qemu/nvram/abologna-f24_VARS.fd</nvram>
->     <boot dev='hd'/>
->   </os>
->   <features>
->     <gic version='2'/>
->   </features>
->   <cpu mode='host-passthrough'/>
->   <clock offset='utc'/>
->   <on_poweroff>destroy</on_poweroff>
->   <on_reboot>restart</on_reboot>
->   <on_crash>restart</on_crash>
->   <devices>
->     <emulator>/usr/libexec/abologna-qemu-kvm</emulator>
->     <disk type='file' device='disk'>
->       <driver name='qemu' type='qcow2'/>
->       <source file='/var/lib/libvirt/images/abologna-f24.qcow2'/>
->       <target dev='vda' bus='virtio'/>
->       <address type='pci' domain='0x0000' bus='0x01' slot='0x00'
-> function='0x0'/>
->     </disk>
->     <controller type='pci' index='0' model='pcie-root'/>
->     <controller type='pci' index='1' model='pcie-root-port'>
->       <model name='ioh3420'/>
->       <target chassis='1' port='0x8'/>
->       <address type='pci' domain='0x0000' bus='0x00' slot='0x01'
-> function='0x0'/>
->     </controller>
->     <controller type='pci' index='2' model='pcie-root-port'>
->       <model name='ioh3420'/>
->       <target chassis='2' port='0x10'/>
->       <address type='pci' domain='0x0000' bus='0x00' slot='0x02'
-> function='0x0'/>
->     </controller>
->     <controller type='virtio-serial' index='0'>
->       <address type='virtio-mmio'/>
->     </controller>
->     <interface type='network'>
->       <mac address='52:54:00:10:07:41'/>
->       <source network='default'/>
->       <model type='virtio'/>
->       <rom bar='off'/>
->       <address type='pci' domain='0x0000' bus='0x02' slot='0x00'
-> function='0x0'/>
->     </interface>
->     <serial type='pty'>
->       <target port='0'/>
->     </serial>
->     <console type='pty'>
->       <target type='serial' port='0'/>
->     </console>
->     <channel type='unix'>
->       <source mode='bind'/>
->       <target type='virtio' name='org.qemu.guest_agent.0'/>
->       <address type='virtio-serial' controller='0' bus='0' port='1'/>
->     </channel>
->   </devices>
-> </domain>
->
-> --
-> Andrea Bolognani / Red Hat / Virtualization
->
+diff --git a/util/cutils.c b/util/cutils.c
+index fe860e8..30fac02 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -254,8 +254,45 @@ static bool select_accel_int(const void *buf, size_t len)
+ #undef pixel
+ #undef bool
+ #define bool _Bool
+-#define DO_ZERO(X)  vec_all_eq(X, (__vector unsigned char){ 0 })
+-ACCEL_BUFFER_ZERO(buffer_zero_ppc, 128, __vector unsigned char, DO_ZERO)
++
++static bool __attribute__((noinline))
++buffer_zero_ppc(const void *buf, size_t len)
++{
++    typedef unsigned char vec __attribute__((vector_size(16)));
++    const vec *p = buf;
++    const vec *end = buf + len;
++    vec t0, t1, t2, t3, zero = (vec){ 0 };
++
++    do {
++        p += 8;
++        __builtin_prefetch(p);
++        /* ??? GCC6 does poorly with power64le; extra xxswap.  */
++        __asm volatile("lvebx %0,%4,%5\n\t"
++                       "lvebx %1,%4,%6\n\t"
++                       "lvebx %2,%4,%7\n\t"
++                       "lvebx %3,%4,%8\n\t"
++                       "vor %0,%0,%1\n\t"
++                       "vor %1,%2,%3\n\t"
++                       "lvebx %2,%4,%9\n\t"
++                       "lvebx %3,%4,%10\n\t"
++                       "vor %0,%0,%1\n\t"
++                       "vor %1,%2,%3\n\t"
++                       "lvebx %2,%4,%11\n\t"
++                       "lvebx %3,%4,%12\n\t"
++                       "vor %0,%0,%1\n\t"
++                       "vor %1,%2,%3\n\t"
++                       "vor %0,%0,%1"
++                       : "=v"(t0), "=v"(t1), "=v"(t2), "=v"(t3)
++                       : "b"(p), "b"(-8 * 16), "b"(-7 * 16),
++                         "b"(-6 * 16), "b"(-5 * 16),
++                         "b"(-4 * 16), "b"(-3 * 16),
++                         "b"(-2 * 16), "b"(-1 * 16));
++        if (unlikely(vec_any_ne(t0, zero))) {
++            return false;
++        }
++    } while (p < end);
++    return true;
++}
+ 
+ static bool select_accel_fn(const void *buf, size_t len)
+ {
+-- 
+2.7.4
+

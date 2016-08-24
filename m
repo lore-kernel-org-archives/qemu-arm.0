@@ -1,153 +1,121 @@
-Received: by 10.25.21.156 with SMTP id 28csp114445lfv;
-        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
-X-Received: by 10.200.56.35 with SMTP id q32mr1135784qtb.32.1472012407675;
-        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.21.156 with SMTP id 28csp114840lfv;
+        Tue, 23 Aug 2016 21:21:20 -0700 (PDT)
+X-Received: by 10.55.142.196 with SMTP id q187mr1000682qkd.208.1472012480588;
+        Tue, 23 Aug 2016 21:21:20 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id o2si5067687qkc.114.2016.08.23.21.20.07
+        by mx.google.com with ESMTPS id n64si5052797qkn.194.2016.08.23.21.21.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Aug 2016 21:20:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Tue, 23 Aug 2016 21:21:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49529 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49536 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bcPfb-0007bz-3L
-	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:20:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52146)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bcPgm-0008KR-3H
+	for alex.bennee@linaro.org; Wed, 24 Aug 2016 00:21:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51979)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bcPfO-0007Uy-TH
-	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:58 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bcPfA-0007IB-LW
+	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 00:19:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bcPfL-0004ow-Kn
-	for qemu-arm@nongnu.org; Wed, 24 Aug 2016 00:19:54 -0400
-Received: from mail-qk0-f196.google.com ([209.85.220.196]:36017)
+	(envelope-from <rth7680@gmail.com>) id 1bcPf8-0004fO-DO
+	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 00:19:39 -0400
+Received: from mail-qt0-f194.google.com ([209.85.216.194]:35850)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <rth7680@gmail.com>)
-	id 1bcPfG-0004kX-33; Wed, 24 Aug 2016 00:19:46 -0400
-Received: by mail-qk0-f196.google.com with SMTP id v123so396726qkh.3;
-	Tue, 23 Aug 2016 21:19:45 -0700 (PDT)
+	id 1bcPf8-0004fJ-9T; Wed, 24 Aug 2016 00:19:38 -0400
+Received: by mail-qt0-f194.google.com with SMTP id u25so195949qtb.3;
+	Tue, 23 Aug 2016 21:19:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=HoF+gnoYL2j83RG/ET+zg4MnVBB1dDF2iOV5flMpfNo=;
-	b=GkGd3YflqXSVcy35hvmM2qrTcbuRIAZlRE/VqQnOOb6gqOPgwc/GXV5OWwQbHmN3Cj
-	iy5eKgdIwcnE0AglkBIw/nLt1hEnnLx4rAbS2ws6zjBd/grbsQKD0FsAC0+I4S2CNQ2G
-	R1THcOLSYQNUt4hswHWihkOJh+9ikWcjWqrne6BX6qG7WGrGMMflCpBCLpD8UPb3O/sF
-	QPqnxvJI3ktlIFMLIoHtGv2bEKq5dqKOtjtntsoeRp+J9hGuneJ00YntliW65GpKEFA6
-	bsUtREKnfHQxR4gCulJlPY+eWN7bA2vunhOPq5/bn+FAUdKs/Jp6XcKmmzoASo+OjipN
-	s22g==
+	bh=SsQE60ZrUbmIySaOG4Pc3Vr4J77O48kUotP+RshZH2w=;
+	b=uiCrOq+uHcEYa75Z174OqVumknrsYEaRy3fjSIHzpKMmz7weXuN5TAXAq5JwjNF/Sj
+	KrN/uwrSDe3oNvXTC+pBaRH7Dj+rPNE+2v1JYuXvarGvCy8njJlAmtlasGmq3qAGSAXt
+	PAeekuZwOUO/dog2sOnx7TwdkWluB8OuCLaH8B6MOgrOjf6jZxZ1ylzw8iCgWj+x7sKh
+	wGCTF8CEXW3Ibk/fAh3ikn7yQHS1Lzu3FZVgjfp9lwco2PyfGO4ZrbZi4NSHl0/mLIn9
+	czTfqAOxRJ10aMdRriFvA7nR/8nge6wCFxshdnLzFKSlIk9E1B6goHBSb+94XeTuuSpX
+	1law==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references;
-	bh=HoF+gnoYL2j83RG/ET+zg4MnVBB1dDF2iOV5flMpfNo=;
-	b=MlVzWYmD+rvUgvJrmUFYPLlnI2OlVm3ZXTXvqQBYQLL/moR6Dt6k8UMN+GxpYQ6QZX
-	HRwCDqTo5iPw3NAxOY22Cm8BL5m0wNQtTrOdju6gUzAl23BL8ObCrBfjNA1WAvBFP+v0
-	xbJs8IN0JrKDh4FOsOWt7ASeERINdxNxYg6FSubGCKJTtplXU9yavCJPRXooK4lL+O+v
-	cv7FWIMsd3Ka/Y7Qp2OMCoRMjge4FOYTOVxYgOQPf22eihI5YozowZ1i0ULxY2opfcLs
-	DdVjCHzho4+nAK3UMKhWwKo5pruFzApEjSeaToydAj4VZTp6jLx8UCJR8sDFEsQMF7jr
-	R0+Q==
-X-Gm-Message-State: AE9vXwPBIJy+X8sFBShRc4ry7XFmhyctcIM0U8vgyiBZ8LpPPRGT21+z1IQ1Vowq1sUnZg==
-X-Received: by 10.55.45.1 with SMTP id t1mr1081887qkh.182.1472012325607;
-	Tue, 23 Aug 2016 21:18:45 -0700 (PDT)
+	bh=SsQE60ZrUbmIySaOG4Pc3Vr4J77O48kUotP+RshZH2w=;
+	b=M2HvVgFhM62CmATM741sYWeduJmAV1fTQ5gjJ0r5O6613osw0KcVedJX99+l23crpK
+	SNxsPzT3QfGF6NmYxytVFFLsI6KEnhMnr2KYeu41EInAnY2dwsdLnVXp8EECnHpcQj3v
+	BDvWfaT5wPMwbCupVf91ynmOJkaq6jrLhOv2EffKXOsAIr1AQeW2TK/p20eKTLtDNaSH
+	JnS6doaSEQSaNi1yq2C0UZvGXRM+iFtevKmVfkKUfGKAbQBBsukTljNY2hBQLls5Dkzb
+	7QMslVm2DXFarc3RIPO6bxioQEL7CI1gN/HeiBTqwdYDZjBlmy7pDeZvpVPmyqH9Ne+i
+	sG2Q==
+X-Gm-Message-State: AE9vXwPaFZ8OiI1SSG/DfHLICUKCGhWU8BhrGw79eofEdLz2x6mbKIG8JqZf9hFNSJmi9w==
+X-Received: by 10.237.53.157 with SMTP id c29mr1069883qte.75.1472012318023;
+	Tue, 23 Aug 2016 21:18:38 -0700 (PDT)
 Received: from bigtime.com (174-24-157-40.tukw.qwest.net. [174.24.157.40])
-	by smtp.gmail.com with ESMTPSA id t36sm3677369qtd.3.2016.08.23.21.18.41
+	by smtp.gmail.com with ESMTPSA id t36sm3677369qtd.3.2016.08.23.21.18.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 23 Aug 2016 21:18:43 -0700 (PDT)
+	Tue, 23 Aug 2016 21:18:37 -0700 (PDT)
 From: Richard Henderson <rth@twiddle.net>
 To: qemu-devel@nongnu.org
-Date: Tue, 23 Aug 2016 21:17:59 -0700
-Message-Id: <1472012279-20581-8-git-send-email-rth@twiddle.net>
+Date: Tue, 23 Aug 2016 21:17:56 -0700
+Message-Id: <1472012279-20581-5-git-send-email-rth@twiddle.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1472012279-20581-1-git-send-email-rth@twiddle.net>
 References: <1472012279-20581-1-git-send-email-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.220.196
-Subject: [Qemu-arm] [PATCH 7/7] cutils: Rewrite ppc buffer zero checking
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.85.216.194
+Subject: [Qemu-devel] [PATCH 4/7] cutils: Add generic prefetch
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, vijay.kilari@gmail.com, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, pbonzini@redhat.com,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qooZQ1axr7Fr
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: pbonzini@redhat.com, qemu-arm@nongnu.org, vijay.kilari@gmail.com,
+	peter.maydell@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e7TBynL7XIGj
 
-GCC versions through 6 do a poor job with the indexed addressing,
-and (for ppc64le) issues unnecessary xxswapd insns.
+There's no real knowledge of the cacheline size,
+just prefetching one loop ahead.
 
-Cc: qemu-ppc@nongnu.org
-Cc: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Richard Henderson <rth@twiddle.net>
 ---
- util/cutils.c | 41 +++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 39 insertions(+), 2 deletions(-)
+ util/cutils.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/util/cutils.c b/util/cutils.c
-index fe860e8..30fac02 100644
+index 4d2edd6..0f1ce1d 100644
 --- a/util/cutils.c
 +++ b/util/cutils.c
-@@ -254,8 +254,45 @@ static bool select_accel_int(const void *buf, size_t len)
- #undef pixel
- #undef bool
- #define bool _Bool
--#define DO_ZERO(X)  vec_all_eq(X, (__vector unsigned char){ 0 })
--ACCEL_BUFFER_ZERO(buffer_zero_ppc, 128, __vector unsigned char, DO_ZERO)
-+
-+static bool __attribute__((noinline))
-+buffer_zero_ppc(const void *buf, size_t len)
-+{
-+    typedef unsigned char vec __attribute__((vector_size(16)));
-+    const vec *p = buf;
-+    const vec *end = buf + len;
-+    vec t0, t1, t2, t3, zero = (vec){ 0 };
-+
-+    do {
-+        p += 8;
-+        __builtin_prefetch(p);
-+        /* ??? GCC6 does poorly with power64le; extra xxswap.  */
-+        __asm volatile("lvebx %0,%4,%5\n\t"
-+                       "lvebx %1,%4,%6\n\t"
-+                       "lvebx %2,%4,%7\n\t"
-+                       "lvebx %3,%4,%8\n\t"
-+                       "vor %0,%0,%1\n\t"
-+                       "vor %1,%2,%3\n\t"
-+                       "lvebx %2,%4,%9\n\t"
-+                       "lvebx %3,%4,%10\n\t"
-+                       "vor %0,%0,%1\n\t"
-+                       "vor %1,%2,%3\n\t"
-+                       "lvebx %2,%4,%11\n\t"
-+                       "lvebx %3,%4,%12\n\t"
-+                       "vor %0,%0,%1\n\t"
-+                       "vor %1,%2,%3\n\t"
-+                       "vor %0,%0,%1"
-+                       : "=v"(t0), "=v"(t1), "=v"(t2), "=v"(t3)
-+                       : "b"(p), "b"(-8 * 16), "b"(-7 * 16),
-+                         "b"(-6 * 16), "b"(-5 * 16),
-+                         "b"(-4 * 16), "b"(-3 * 16),
-+                         "b"(-2 * 16), "b"(-1 * 16));
-+        if (unlikely(vec_any_ne(t0, zero))) {
-+            return false;
-+        }
-+    } while (p < end);
-+    return true;
-+}
+@@ -173,6 +173,8 @@ NAME(const void *buf, size_t len)                               \
+     do {                                                        \
+         const VECTYPE *p = buf;                                 \
+         VECTYPE t;                                              \
++        __builtin_prefetch(buf + SIZE);                         \
++        barrier();                                              \
+         if (SIZE == sizeof(VECTYPE) * 4) {                      \
+             t = (p[0] | p[1]) | (p[2] | p[3]);                  \
+         } else if (SIZE == sizeof(VECTYPE) * 8) {               \
+@@ -376,6 +378,9 @@ bool buffer_is_zero(const void *buf, size_t len)
+         return true;
+     }
  
- static bool select_accel_fn(const void *buf, size_t len)
- {
++    /* Fetch the beginning of the buffer while we select the accelerator.  */
++    __builtin_prefetch(buf);
++
+     /* Use an optimized zero check if possible.  Note that this also
+        includes a check for an unrolled loop over longs, as well as
+        the unsized, unaligned fallback to buffer_zero_base.  */
 -- 
 2.7.4
 

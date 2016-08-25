@@ -1,144 +1,141 @@
-Received: by 10.25.21.156 with SMTP id 28csp461251lfv;
-        Wed, 24 Aug 2016 10:51:42 -0700 (PDT)
-X-Received: by 10.55.58.70 with SMTP id h67mr5187476qka.215.1472061096029;
-        Wed, 24 Aug 2016 10:51:36 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 2si6307211qkz.220.2016.08.24.10.51.35
+Received: by 10.25.21.156 with SMTP id 28csp752142lfv;
+        Wed, 24 Aug 2016 23:37:40 -0700 (PDT)
+X-Received: by 10.237.43.162 with SMTP id e31mr8490737qtd.110.1472107060003;
+        Wed, 24 Aug 2016 23:37:40 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v49si9437667qta.102.2016.08.24.23.37.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Aug 2016 10:51:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Wed, 24 Aug 2016 23:37:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52531 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54752 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bccKt-00014S-Fn
-	for alex.bennee@linaro.org; Wed, 24 Aug 2016 13:51:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50744)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bcoIF-0001eg-9d
+	for alex.bennee@linaro.org; Thu, 25 Aug 2016 02:37:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44232)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bccIg-0008D3-C7
-	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 13:49:23 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1bcoI8-0001dj-3s
+	for qemu-arm@nongnu.org; Thu, 25 Aug 2016 02:37:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1bccIe-0008Mq-3v
-	for qemu-devel@nongnu.org; Wed, 24 Aug 2016 13:49:17 -0400
-Received: from mail-yw0-x241.google.com ([2607:f8b0:4002:c05::241]:33509)
+	(envelope-from <vijay.kilari@gmail.com>) id 1bcoI7-00022y-53
+	for qemu-arm@nongnu.org; Thu, 25 Aug 2016 02:37:32 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:33072)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>)
-	id 1bccId-0008Mm-Vw; Wed, 24 Aug 2016 13:49:16 -0400
-Received: by mail-yw0-x241.google.com with SMTP id z8so1153031ywa.0;
-	Wed, 24 Aug 2016 10:49:15 -0700 (PDT)
+	(envelope-from <vijay.kilari@gmail.com>)
+	id 1bcoI3-00022C-QO; Thu, 25 Aug 2016 02:37:27 -0400
+Received: by mail-oi0-x241.google.com with SMTP id s207so3790276oie.0;
+	Wed, 24 Aug 2016 23:37:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=7V5m+xgket869uzbs/HNBeoY/XBzVjtWvoyf/9UjHiI=;
-	b=oviKVLvhBpE8oRV5CFJlvNL4yOFVtV6KnjLxU48FQZsnYdhoBvky1GLuLDYyvsLy3k
-	XMOtc49aknLw59W6fRF8eGb81K4Z0yP4CPizgZy626oBzvkzMe0bMRzvnGi1XBU9VxW/
-	pih3DD6W5q3RLml+saCtb8TKZ9b0QO//YjejQ7+I6Na5tAMHzXp8atK6uqKTQOgfsiDt
-	gtT38DifMUHqNUwcwXr91p0JXkcxSYIerOKhyq3FyjxCiGnLTuQ4Ovdp0NIY2G770Wba
-	eUznF6DnWlrzyawkFsa2/WAQd/+5qdAMkR+jUuIvCMO0eOKXWS6ae36UWTfPZzvgfcbG
-	trTw==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=xmUnWW423NbTkBpOrlIsK2M/u7C2G5ckjAMBnQu0tkU=;
+	b=NtIJ4ZLIZYd83FsG/PkhN4qFVDk5Tt74CQb75u9aS96+q3wNRFCVKaHEHlw8lLO6G1
+	PADzLqCqBBTmx9K1OKf+gzEM09m6Kk/Sr7UzJDBEj+ZXUfPnLqzQ8dvRzMbKGGprtxiM
+	CZOCa9rQka5IJE/GysWolS9xT/ZyFmtY1mhuGQEQDVASlx1ckg3/MvhayrQul7JILIJh
+	ZtbtD43xEnIedJVeTAynM9Cw77F8c91waUBfZJamopjgEGZnjWcPMzl+f+UOOs97LxYt
+	BUxWcMxcVaNgACYWW/6QTkD2Gpvr81XXZyAPZ7xFWhFL8nwHDK9buh4eWrxEfPD4KIMa
+	F8HQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=7V5m+xgket869uzbs/HNBeoY/XBzVjtWvoyf/9UjHiI=;
-	b=c2hA1Z9yV538kddVmB2m4MV0P6/BhNWNXcQ5kKA6PfhRHGX62Kr6O1H8E+kNsM11ZW
-	kVT7WzWOEde2FESS7ynSf/9y8pVCPbWBiUHj1flRSqRUz1z9hHh2/AH+dko0AyYg7mUO
-	YlrQVZSfUctsLZVCCqd8+3EYvt3RKjYXubGemGsv4FiG1IK/At8Q2OYnNew0tOEUZxcK
-	KnmgFfhQ/5kvmF9iFaRnU0g69Mcpo9M5YW8nmEqWxoGQDnR+4L3dMjdnYXhzHDEjHyLp
-	8YKIBA1mptIu1ymU+uGU8hTCOWOlsdwYHGnA6cArkpeVDV5XI0Y+VsaACdtkzfVVVoHW
-	t1rQ==
-X-Gm-Message-State: AE9vXwNL3qjxGsiNvahOUYNIEu4fiOZ8dIcZ8xWyYHcAC1GHCUYEAB0R1xA2ql7PTvmTbA==
-X-Received: by 10.129.92.215 with SMTP id q206mr3645549ywb.8.1472060955523;
-	Wed, 24 Aug 2016 10:49:15 -0700 (PDT)
-Received: from bigtime.com (174-24-157-40.tukw.qwest.net. [174.24.157.40])
-	by smtp.gmail.com with ESMTPSA id
-	u201sm5950916ywf.48.2016.08.24.10.49.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 24 Aug 2016 10:49:15 -0700 (PDT)
-From: Richard Henderson <rth@twiddle.net>
-To: qemu-devel@nongnu.org
-Date: Wed, 24 Aug 2016 10:48:34 -0700
-Message-Id: <1472060915-6011-8-git-send-email-rth@twiddle.net>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1472060915-6011-1-git-send-email-rth@twiddle.net>
-References: <1472060915-6011-1-git-send-email-rth@twiddle.net>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=xmUnWW423NbTkBpOrlIsK2M/u7C2G5ckjAMBnQu0tkU=;
+	b=YZXVJ24vSFv/zOCwIeqTVyDhgrNHCjHvXooAhPgcfueHcpSrOd7qUBT+bu7zegkyn5
+	2nAm2oA1SV5oxKy0npUUXHLpuPUkykB4VN6LHFwXH3YDsHJ5KttIxHWkTbFcumNYXl80
+	jZW0495yIQvpfhzhnoljZ4b0H1gf04DpW7x7rTBCyiuyhhO5ZWCxJ2Lf+u1+vPNqmg5W
+	X/jEhzsfgkjQxP3opqnRmncqnR8ih+FOgzp2FbGFrAULMwxgXn3LigOH9Toc9vaE+iIa
+	/wDpQuCqyJJNv4TuVNejQPgqJxY2RpVzdS0nQqBKUDaHxCPAtyuiYIrH3OvC3dN448DO
+	1Y4g==
+X-Gm-Message-State: AEkoouuD7PIFE4veP7KT2dZ2mcOhquOVONdhL2nypthzT0yyLTCUwHsy7SrXDxvCxFVZpDbx/rgw6Y3Hx72wAQ==
+X-Received: by 10.202.206.20 with SMTP id e20mr5076581oig.136.1472107047261;
+	Wed, 24 Aug 2016 23:37:27 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.157.56.203 with HTTP; Wed, 24 Aug 2016 23:37:26 -0700 (PDT)
+In-Reply-To: <1472012279-20581-1-git-send-email-rth@twiddle.net>
+References: <1472012279-20581-1-git-send-email-rth@twiddle.net>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Thu, 25 Aug 2016 12:07:26 +0530
+Message-ID: <CALicx6v1BgkW8saxZcgLGt5Hd47MSgfOEQQ8-mdsTgYMgnqvJw@mail.gmail.com>
+To: Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4002:c05::241
-Subject: [Qemu-devel] [PATCH v2 7/8] cutils: Rewrite aarch64 buffer zero
- checking
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH 0/7] Improve buffer_is_zero
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: pbonzini@redhat.com, qemu-arm@nongnu.org, vijay.kilari@gmail.com,
-	peter.maydell@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9usLZwdVow8a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uXZr5nvSW9p0
 
-Provide 64-byte and 128-byte versions.
-Use dczid_el0 as a proxy for the cacheline size.
+Hi Richard,
 
-Cc: qemu-arm@nongnu.org
-Cc: vijay.kilari@gmail.com
-Signed-off-by: Richard Henderson <rth@twiddle.net>
----
- util/bufferiszero.c | 28 +++++++++++++++++++++++++---
- 1 file changed, 25 insertions(+), 3 deletions(-)
+  Migration fails on arm64 with these patches.
+On the destination VM, follow errors are appearing.
 
-diff --git a/util/bufferiszero.c b/util/bufferiszero.c
-index e5e4459..28a1419 100644
---- a/util/bufferiszero.c
-+++ b/util/bufferiszero.c
-@@ -340,13 +340,35 @@ static bool select_accel_fn(const void *buf, size_t len)
- #include "arm_neon.h"
- 
- #define DO_NONZERO(X)  (vgetq_lane_u64((X), 0) | vgetq_lane_u64((X), 1))
--ACCEL_BUFFER_ZERO(buffer_zero_neon, 128, uint64x2_t, DO_NONZERO)
-+ACCEL_BUFFER_ZERO(buffer_zero_neon_64, 64, uint64x2_t, DO_NONZERO)
-+ACCEL_BUFFER_ZERO(buffer_zero_neon_128, 128, uint64x2_t, DO_NONZERO)
-+
-+static uint32_t buffer_zero_line_mask;
-+static accel_zero_fn buffer_zero_accel;
-+
-+static void __attribute__((constructor)) init_buffer_zero_accel(void)
-+{
-+    uint64_t t;
-+
-+    /* Use the DZP block size as a proxy for the cacheline size,
-+       since the later is not available to userspace.  This seems
-+       to work in practice for existing implementations.  */
-+    asm("mrs %0, dczid_el0" : "=r"(t));
-+    if ((t & 15) * 16 >= 128) {
-+        buffer_zero_line_mask = 128 - 1;
-+        buffer_zero_accel = buffer_zero_neon_128;
-+    } else {
-+        buffer_zero_line_mask = 64 - 1;
-+        buffer_zero_accel = buffer_zero_neon_64;
-+    }
-+}
- 
- static bool select_accel_fn(const void *buf, size_t len)
- {
-     uintptr_t ibuf = (uintptr_t)buf;
--    if (len % 128 == 0 && ibuf % sizeof(uint64x2_t) == 0) {
--        return buffer_zero_neon(buf, len);
-+    if (likely(ibuf % sizeof(uint64_t) == 0)
-+        && (len & buffer_zero_line_mask) == 0) {
-+        return buffer_zero_accel(buf, len);
-     }
-     return select_accel_int(buf, len);
- }
--- 
-2.7.4
+qemu-system-aarch64: VQ 0 size 0x400 Guest index 0x0 inconsistent with
+Host index 0x1937: delta 0xe6c9
+qemu-system-aarch64: error while loading state for instance 0x0 of
+device 'virtio-mmio@000000000a003e00/virtio-net'
+qemu-system-aarch64: load of migration failed: Operation not permitted
+qemu-system-aarch64: network script /etc/qemu-ifdown failed with status 256
 
+Regards
+Vijay
+
+
+On Wed, Aug 24, 2016 at 9:47 AM, Richard Henderson <rth@twiddle.net> wrote:
+> Patches 1-3 remove the use of ifunc from the implementation.
+>
+> Patch 5 adjusts the x86 implementation a bit more to take
+> advantage of ptest (in sse4.1) and unaligned accesses (in avx1).
+>
+> Patches 2 and 6 are the result of my conversation with Vijaya
+> Kumar with respect to ThunderX.
+>
+> Patch 7 is the result of seeing some really really horrible code
+> produced for ppc64le (gcc 4.9 and mainline).
+>
+> This has had limited testing.  What I don't know is the best way
+> to benchmark this -- the only way I know to trigger this is via
+> the console, by hand, which doesn't make for reasonable timing.
+>
+>
+> r~
+>
+>
+> Richard Henderson (7):
+>   cutils: Remove SPLAT macro
+>   cutils: Export only buffer_is_zero
+>   cutils: Rearrange buffer_is_zero acceleration
+>   cutils: Add generic prefetch
+>   cutils: Rewrite x86 buffer zero checking
+>   cutils: Rewrite aarch64 buffer zero checking
+>   cutils: Rewrite ppc buffer zero checking
+>
+>  configure             |  21 +-
+>  include/qemu/cutils.h |   2 -
+>  migration/ram.c       |   2 +-
+>  migration/rdma.c      |   5 +-
+>  util/cutils.c         | 526 +++++++++++++++++++++++++++++++++-----------------
+>  5 files changed, 352 insertions(+), 204 deletions(-)
+>
+> --
+> 2.7.4
+>

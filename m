@@ -1,303 +1,103 @@
-Received: by 10.25.87.130 with SMTP id l124csp274852lfb;
-        Thu, 1 Sep 2016 09:42:58 -0700 (PDT)
-X-Received: by 10.36.127.7 with SMTP id r7mr21491949itc.49.1472748178023;
-        Thu, 01 Sep 2016 09:42:58 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id w62si20790023itc.114.2016.09.01.09.42.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 01 Sep 2016 09:42:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.87.130 with SMTP id l124csp900656lfb;
+        Fri, 2 Sep 2016 14:48:11 -0700 (PDT)
+X-Received: by 10.55.4.8 with SMTP id 8mr26257719qke.214.1472852891732;
+        Fri, 02 Sep 2016 14:48:11 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f1si9536310qtf.151.2016.09.02.14.48.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 02 Sep 2016 14:48:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44110 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bfwJn-00006Z-40
+	for alex.bennee@linaro.org; Fri, 02 Sep 2016 17:48:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60576)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1bfwIa-0007YE-Lq
+	for qemu-arm@nongnu.org; Fri, 02 Sep 2016 17:46:57 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <wei@redhat.com>) id 1bfwIX-0000Cu-H9
+	for qemu-arm@nongnu.org; Fri, 02 Sep 2016 17:46:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35652)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wei@redhat.com>)
+	id 1bfwIX-0000CQ-BT; Fri, 02 Sep 2016 17:46:53 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 31BBA13A9A;
-	Thu,  1 Sep 2016 16:42:57 +0000 (UTC)
-Received: from localhost.localdomain (vpn1-6-206.ams2.redhat.com [10.36.6.206])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u81GgoTn019522
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 1 Sep 2016 12:42:52 -0400
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 08/10] arm/arm64: gicv2:
- add an IPI test
-To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
-        kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alex.bennee@linaro.org
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
- <1468587641-7300-9-git-send-email-drjones@redhat.com>
-Cc: marc.zyngier@arm.com, wei@redhat.com, christoffer.dall@linaro.org
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b797ae8b-4cbf-f15e-e476-0976653dd0b4@redhat.com>
-Date: Thu, 1 Sep 2016 18:42:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.1.1
-MIME-Version: 1.0
-In-Reply-To: <1468587641-7300-9-git-send-email-drjones@redhat.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+	by mx1.redhat.com (Postfix) with ESMTPS id A56B222036;
+	Fri,  2 Sep 2016 21:46:51 +0000 (UTC)
+Received: from weilaptop.redhat.com (vpn-48-163.rdu2.redhat.com [10.10.48.163])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u82LkouS002543; Fri, 2 Sep 2016 17:46:50 -0400
+From: Wei Huang <wei@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  2 Sep 2016 16:46:49 -0500
+Message-Id: <1472852809-23042-1-git-send-email-wei@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Thu, 01 Sep 2016 16:42:57 +0000 (UTC)
-X-TUID: t/6GyAwDOelU
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 02 Sep 2016 21:46:51 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 1/1] ARM: ACPI: fix the AML ID format for CPU
+ devices
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, eric.auger@redhat.com,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jEzNOOL7IpQQ
 
-Hi Drew,
+Current QEMU will stall guest VM booting under ACPI mode when vcpu count
+is >= 12. Analyzing the booting log, it turns out that DSDT table can't
+be loaded correctly due to "Invalid character(s) in name (0x62303043),
+repaired: [C00*]". This is because existing QEMU uses a lower case AML
+ID for CPU devices (e.g. C000, C001, ..., C00a, C00b). The ACPI code
+inside guest VM detects this lower case character as an invalid character
+(see acpi_ut_valid_acpi_char() in drivers/acpi/acpica/utstring.c file)
+and converts it to "*". This causes duplicated IDs (i.e. "C00a" ==>"C00*"
+and "C00b" ==> "C00*"). So ACPI refuses to load the table.
 
-On 15/07/2016 15:00, Andrew Jones wrote:
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
-> v2: add more details in the output if a test fails,
->     report spurious interrupts if we get them
-> ---
->  arm/Makefile.common |   6 +-
->  arm/gic.c           | 194 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  arm/unittests.cfg   |   7 ++
->  3 files changed, 204 insertions(+), 3 deletions(-)
->  create mode 100644 arm/gic.c
-> 
-> diff --git a/arm/Makefile.common b/arm/Makefile.common
-> index 41239c37e0920..bc38183ab86e0 100644
-> --- a/arm/Makefile.common
-> +++ b/arm/Makefile.common
-> @@ -9,9 +9,9 @@ ifeq ($(LOADADDR),)
->  	LOADADDR = 0x40000000
->  endif
->  
-> -tests-common = \
-> -	$(TEST_DIR)/selftest.flat \
-> -	$(TEST_DIR)/spinlock-test.flat
-> +tests-common  = $(TEST_DIR)/selftest.flat
-> +tests-common += $(TEST_DIR)/spinlock-test.flat
-> +tests-common += $(TEST_DIR)/gic.flat
->  
->  all: test_cases
->  
-> diff --git a/arm/gic.c b/arm/gic.c
-> new file mode 100644
-> index 0000000000000..cf7ec1c90413c
-> --- /dev/null
-> +++ b/arm/gic.c
-> @@ -0,0 +1,194 @@
-> +/*
-> + * GIC tests
-> + *
-> + * GICv2
-> + *   . test sending/receiving IPIs
-> + *
-> + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU LGPL, version 2.
-> + */
-> +#include <libcflat.h>
-> +#include <asm/setup.h>
-> +#include <asm/processor.h>
-> +#include <asm/gic.h>
-> +#include <asm/smp.h>
-> +#include <asm/barrier.h>
-> +#include <asm/io.h>
-> +
-> +static int gic_version;
-> +static int acked[NR_CPUS], spurious[NR_CPUS];
-> +static cpumask_t ready;
-> +
-> +static void nr_cpu_check(int nr)
-> +{
-> +	if (nr_cpus < nr)
-> +		report_abort("At least %d cpus required", nr);
-> +}
-> +
-> +static void wait_on_ready(void)
-> +{
-> +	cpumask_set_cpu(smp_processor_id(), &ready);
-> +	while (!cpumask_full(&ready))
-> +		cpu_relax();
-> +}
-> +
-> +static void check_acked(cpumask_t *mask)
-> +{
-> +	int missing = 0, extra = 0, unexpected = 0;
-> +	int nr_pass, cpu, i;
-> +
-> +	/* Wait up to 5s for all interrupts to be delivered */
-> +	for (i = 0; i < 50; ++i) {
-> +		mdelay(100);
-> +		nr_pass = 0;
-> +		for_each_present_cpu(cpu) {
-Couldn't we use for_each_cpu(cpu, mask)?
-> +			smp_rmb();
-> +			nr_pass += cpumask_test_cpu(cpu, mask) ?
-> +				acked[cpu] == 1 : acked[cpu] == 0;
-> +		}
-> +		if (nr_pass == nr_cpus) {
-> +			report("Completed in %d ms", true, ++i * 100);
-> +			return;
-> +		}
-> +	}
-> +
-> +	for_each_present_cpu(cpu) {
-> +		if (cpumask_test_cpu(cpu, mask)) {
-here we can't since we count unexpected
+This patch fixes the problem by changing the format with a upper case
+character. It matches the CPU ID formats used in other parts of QEMU
+code.
 
-> +			if (!acked[cpu])
-> +				++missing;
-> +			else if (acked[cpu] > 1)
-> +				++extra;
-> +		} else {
-> +			if (acked[cpu])
-> +				++unexpected;
-> +		}
-> +	}
-> +
-> +	report("Timed-out (5s). ACKS: missing=%d extra=%d unexpected=%d",
-> +	       false, missing, extra, unexpected);
-> +}
-> +
-> +static void ipi_handler(struct pt_regs *regs __unused)
-> +{
-> +	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-> +
-> +	if (iar != GICC_INT_SPURIOUS) {
-> +		writel(iar, gicv2_cpu_base() + GIC_CPU_EOI);
-if EOIMode is set may need to DIR as well.
-> +		smp_rmb(); /* pairs with wmb in ipi_test functions */
-> +		++acked[smp_processor_id()];
-> +		smp_wmb(); /* pairs with rmb in check_acked */
-> +	} else {
-> +		++spurious[smp_processor_id()];
-> +		smp_wmb();
-> +	}
-> +}
-> +
-> +static void ipi_test_self(void)
-> +{
-> +	cpumask_t mask;
-> +
-> +	report_prefix_push("self");
-> +	memset(acked, 0, sizeof(acked));
-> +	smp_wmb();
-> +	cpumask_clear(&mask);
-> +	cpumask_set_cpu(0, &mask);
-> +	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> +	check_acked(&mask);
-> +	report_prefix_pop();
-> +}
-> +
-> +static void ipi_test_smp(void)
-> +{
-> +	cpumask_t mask;
-> +	unsigned long tlist;
-> +
-> +	report_prefix_push("target-list");
-> +	memset(acked, 0, sizeof(acked));
-> +	smp_wmb();
-> +	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
-> +	cpumask_bits(&mask)[0] = tlist;
-> +	writel((u8)tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> +	check_acked(&mask);
-> +	report_prefix_pop();
-> +
-> +	report_prefix_push("broadcast");
-> +	memset(acked, 0, sizeof(acked));
-> +	smp_wmb();
-> +	cpumask_copy(&mask, &cpu_present_mask);
-> +	cpumask_clear_cpu(0, &mask);
-> +	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> +	check_acked(&mask);
-> +	report_prefix_pop();
-> +}
-> +
-> +static void ipi_enable(void)
-> +{
-> +	gicv2_enable_defaults();
-> +#ifdef __arm__
-> +	install_exception_handler(EXCPTN_IRQ, ipi_handler);
-> +#else
-> +	install_irq_handler(EL1H_IRQ, ipi_handler);
-> +#endif
-> +	local_irq_enable();
-> +}
-> +
-> +static void ipi_recv(void)
-> +{
-> +	ipi_enable();
-> +	cpumask_set_cpu(smp_processor_id(), &ready);
-> +	while (1)
-> +		wfi();
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +	char pfx[8];
-> +	int cpu;
-> +
-> +	gic_version = gic_init();
-> +	if (!gic_version)
-> +		report_abort("No gic present!");
-> +
-> +	snprintf(pfx, 8, "gicv%d", gic_version);
-> +	report_prefix_push(pfx);
-> +
-> +	if (argc < 2) {
-> +
-spare void line
-> +		report_prefix_push("ipi");
-> +		ipi_enable();
-> +		ipi_test_self();
-> +		report_prefix_pop();
-> +
-same
-> +	} else if (!strcmp(argv[1], "ipi")) {
-> +
-same or maybe this is just another style convention?
-> +		report_prefix_push(argv[1]);
-> +		nr_cpu_check(2);
-> +		ipi_enable();
-> +
-> +		for_each_present_cpu(cpu) {
-> +			if (cpu == 0)
-> +				continue;
-> +			smp_boot_secondary(cpu, ipi_recv);
-> +		}
-> +		wait_on_ready();
-> +		ipi_test_self();
-> +		ipi_test_smp();
-> +
-> +		smp_rmb();
-> +		for_each_present_cpu(cpu) {
-> +			if (spurious[cpu]) {
-> +				printf("ipi: WARN: cpu%d got %d spurious "
-> +				       "interrupts\n",
-> +				       spurious[cpu], smp_processor_id());
-> +			}
-> +		}
-> +
-> +		report_prefix_pop();
-> +
-> +	} else {
-> +		report_abort("Unknown subtest '%s'", argv[1]);
-> +	}
-> +
-> +	return report_summary();
-> +}
-> diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> index ffd12e5794aa0..bb364675043f0 100644
-> --- a/arm/unittests.cfg
-> +++ b/arm/unittests.cfg
-> @@ -51,3 +51,10 @@ file = selftest.flat
->  smp = $MAX_SMP
->  extra_params = -append 'smp'
->  groups = selftest
-> +
-> +# Test GIC emulation
-> +[gicv2-ipi]
-> +file = gic.flat
-> +smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
-> +extra_params = -machine gic-version=2 -append 'ipi'
-> +groups = gic
-> 
-Aside the minor comments above,
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ hw/arm/virt-acpi-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 28fc59c..295ec86 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -53,7 +53,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+     uint16_t i;
+ 
+     for (i = 0; i < smp_cpus; i++) {
+-        Aml *dev = aml_device("C%03x", i);
++        Aml *dev = aml_device("C%.03X", i);
+         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
+         aml_append(scope, dev);
+-- 
+2.7.4
 
-Eric

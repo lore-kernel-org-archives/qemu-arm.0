@@ -1,67 +1,79 @@
-Received: by 10.25.87.130 with SMTP id l124csp249393lfb;
-        Mon, 5 Sep 2016 11:57:28 -0700 (PDT)
-X-Received: by 10.55.74.14 with SMTP id x14mr39451859qka.102.1473101848756;
-        Mon, 05 Sep 2016 11:57:28 -0700 (PDT)
+Received: by 10.25.87.130 with SMTP id l124csp299528lfb;
+        Mon, 5 Sep 2016 14:52:17 -0700 (PDT)
+X-Received: by 10.55.123.197 with SMTP id w188mr40806538qkc.60.1473112337842;
+        Mon, 05 Sep 2016 14:52:17 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t72si18428130qka.248.2016.09.05.11.57.28
+        by mx.google.com with ESMTPS id e125si19022346qkc.283.2016.09.05.14.52.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Sep 2016 11:57:28 -0700 (PDT)
+        Mon, 05 Sep 2016 14:52:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56376 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57224 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bgz5E-0005wS-3X
-	for alex.bennee@linaro.org; Mon, 05 Sep 2016 14:57:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38784)
+	id 1bh1oP-0008CG-CI
+	for alex.bennee@linaro.org; Mon, 05 Sep 2016 17:52:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bgyQH-0003h7-Oh
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 14:15:10 -0400
+	(envelope-from <digetx@gmail.com>) id 1bh1oM-0008Bq-7F
+	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 17:52:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bgyQG-0001J9-MT
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 14:15:09 -0400
-Received: from mail-ua0-x232.google.com ([2607:f8b0:400c:c08::232]:32873)
+	(envelope-from <digetx@gmail.com>) id 1bh1oJ-0000oW-1o
+	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 17:52:14 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:34920)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bgyQF-0001IP-TP
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 14:15:08 -0400
-Received: by mail-ua0-x232.google.com with SMTP id 31so31229024uao.0
-	for <qemu-arm@nongnu.org>; Mon, 05 Sep 2016 11:15:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=en7qIAG8jhK4LnBqCdfltzd7PGjCq9K1czdqJonyK0M=;
-	b=NLjNa7EI4XPAO1UbOrYjqUxHUZpw8DC2gNQD8RWhEFUE4lHITrhwwe49+NnHIkYdGD
-	75sVVTnfdwmqDkSNdJ7Fx4tIR6kSYmhqjauzZYa7MXYSd/aBPVSyJW5Hk5lNeOd/M3Qm
-	av9eJ0dGkzFFngcMC43jrEABB4hDsa8kdWJfk=
+	(envelope-from <digetx@gmail.com>)
+	id 1bh1oI-0000oI-Pw; Mon, 05 Sep 2016 17:52:10 -0400
+Received: by mail-lf0-x243.google.com with SMTP id s64so12374lfs.2;
+	Mon, 05 Sep 2016 14:52:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=N+yhN7wn5YXOrUtKO/rirraYUg/QvUSqXB8Oopr8YAQ=;
+	b=L3ICvrEKuZBx2oqz4DxoZYOyHGJke4PEWTvHondTpJZZqlg3ySxTIga4wfPQPA/V41
+	HfxoLFHZRk9BWREzWfJwaD/141QKvqZmLtSw1QjmtE09jVBYkQlEME0swlIz9jXBjms1
+	61Fvu7kNVTzLdNNmrg1mvMQMfr6cg/vB869SHMlXWq2q/VfE2DxQWwUbwqzG0WCk3Pz4
+	qxzZMaYxAokLnPx5DskOKdc3ucV+LWUU07L0UF9ljRhkwplD25KeZAs0YI3dxpr67Iy7
+	1hDLxfV7waecLUF2dZZh0KqXzbC/pwQ0UxD82E7oZ0BpbYvdnJDaRPqH8VwS9U0j56Yv
+	cvtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=en7qIAG8jhK4LnBqCdfltzd7PGjCq9K1czdqJonyK0M=;
-	b=PzuIFT/Z0A6sbmGnfvpLk8BL8hhIxUzFtwgeQZ1CgI3oCN6P8TAyi7SFXa2exPyQJG
-	xx6+GFStFcyk4FfXWZbB2pFBrOprHapP5W29++L8Myxnmf1RaF4zfhtE8F66mFT+YIJv
-	nwTGnRmMvWqa9Qs5a5dW3gQ76VEGUJdytBOJmpTbB+ilFIBi+eSuNupQXoVaoQiKLITo
-	tDWmojf/DqSPn1ETzhywS6EyDp4UONLAkmYEpdAOEN+/r/0yn65KCmv50i/9dc/GFdDU
-	UQtnsjaBX5K6dll4sydkLFYudqYwfj0IabCAPDc97IXDoXfvjctwqP+CMbldpqsxGeA0
-	Xv3A==
-X-Gm-Message-State: AE9vXwOf1+jG37b3Hzz++BVibWO6ClTVBNoz3M3v+6EObQg/eSpmoD8g501jbolIeXRH4GfdJuIyzD9TLQo1FuM/
-X-Received: by 10.176.0.120 with SMTP id 111mr10049559uai.17.1473099307544;
-	Mon, 05 Sep 2016 11:15:07 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.9.131 with HTTP; Mon, 5 Sep 2016 11:14:47 -0700 (PDT)
-In-Reply-To: <cover.1469110137.git.digetx@gmail.com>
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=N+yhN7wn5YXOrUtKO/rirraYUg/QvUSqXB8Oopr8YAQ=;
+	b=nNY+bB7g4YLQaBZ1xHODMqGIv290Ev9HA63QrvsJtf0tTJDpCfCqYg/Fk9zS09wr3U
+	1/RzAgLhE7z1hNWU0t8OIhFaA3XF9wwPNz1WHR/lE6n778BHcLgltTYyHU/uB2tvF9Vo
+	tW8ILO5a3j0PFITKAWord7MFdL+Z+QU4hJdjH+id2lcaveDvQZzPPQp4WLprfUM0T3vR
+	F45xKV6PN9KhbKsZ6u6AWAwWtnqk7uggRFJYX5WlCs3vOt8GNMDa5TCGiPHYTdXyIiRR
+	FZEgyv04HzegkEspVEYfdXAlCf4lLOlPNgLYo/TdLMmGzVBrFu5ZZ5vn6jKagnjH/4XT
+	Zg+Q==
+X-Gm-Message-State: AE9vXwPh78OmHJH2Q/L0AIz0LuZO5op5ir93yHEDfqLh/2iS4uQb4suiG+vjNlEB/zZLGQ==
+X-Received: by 10.25.18.20 with SMTP id h20mr5281730lfi.148.1473112328325;
+	Mon, 05 Sep 2016 14:52:08 -0700 (PDT)
+Received: from [192.168.1.145] (ppp109-252-52-17.pppoe.spdop.ru.
+	[109.252.52.17]) by smtp.googlemail.com with ESMTPSA id
+	w15sm635615lfi.16.2016.09.05.14.52.07
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 05 Sep 2016 14:52:07 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <cover.1469110137.git.digetx@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Sep 2016 19:14:47 +0100
-Message-ID: <CAFEAcA-vNVToZ1gONUhUxa-2zwEVmd_sVSJOTLzH6ry+OnxS_A@mail.gmail.com>
-To: Dmitry Osipenko <digetx@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	<CAFEAcA-vNVToZ1gONUhUxa-2zwEVmd_sVSJOTLzH6ry+OnxS_A@mail.gmail.com>
+From: Dmitry Osipenko <digetx@gmail.com>
+Message-ID: <034e2688-83f6-23df-4e4f-da68ef1f580a@gmail.com>
+Date: Tue, 6 Sep 2016 00:52:06 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.2.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-vNVToZ1gONUhUxa-2zwEVmd_sVSJOTLzH6ry+OnxS_A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::232
+X-Received-From: 2a00:1450:4010:c07::243
 Subject: Re: [Qemu-arm] [PATCH v15 00/15] PTimer fixes/features and ARM
  MPTimer conversion
 X-BeenThere: qemu-arm@nongnu.org
@@ -79,62 +91,31 @@ Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BSghhtraWv2n
+X-TUID: P3HlqMIFWOSH
 
-On 21 July 2016 at 15:31, Dmitry Osipenko <digetx@gmail.com> wrote:
-> Hello,
->
-> Currently, QEMU ARM MPTimer device model provides only a certain subset of
-> the emulation behavior. This patch series is supposed to add missing parts by
-> converting the MPTimer to use generic ptimer helper. It fixes some important
-> ptimer bugs and provides new features that are required for the ARM MPTimer.
->
-> Changelog:
->     V15: As per Peter's Maydell request: split ptimer policy patches,
->          so that first "policy" patch only sets default policy to all
->          of the timers without introducing new behaviour policies.
->
->          The "deferred trigger" ptimer policy from V14 is converted to
->          "continuous trigger" as it is more intuitive.
->
->          New ptimer policies added.
->
->          New ptimer patch "Actually stop timer in case of error".
->
->          Fixed ARM MPTimer periodic/oneshot "on the fly" mode switch
->          for the case when load = 0 and new mode has prescaler = 0.
->
->          Added QTests for each of the ptimer policies.
->
->          Added QTests for the ARM MPTimer.
->
->     V14: Set the ptimer policy in the ptimer_init() instead of adding
->          ptimer_set_policy(), keeping ptimer VMState unchanged and dropped
->          hw_error() hardening asserts as per Peter's Maydell V13 review
->          comments, addressed the rest of the review comments.
->
-> Dmitry Osipenko (15):
->   hw/ptimer: Change ptimer_get_count to return "1" for the expired timer
->   hw/ptimer: Fix counter - 1 returned by ptimer_get_count for the active
->     timer
->   hw/ptimer: Actually stop timer in case of error
->   hw/ptimer: Introduce timer policy feature
->   tests: Add ptimer tests
->   hw/ptimer: Add "wraparound after one period" policy
->   tests: ptimer: Add tests for "wraparound after one period" policy
->   hw/ptimer: Add "continuous trigger" policy
->   tests: ptimer: Add tests for "continuous trigger" policy
->   hw/ptimer: Add "no immediate trigger" policy
->   tests: ptimer: Add tests for "no immediate trigger" policy
->   hw/ptimer: Add "no immediate reload" policy
->   tests: ptimer: Add tests for "no immediate reload" policy
->   arm_mptimer: Convert to use ptimer
->   tests: Add tests for the ARM MPTimer
+On 05.09.2016 21:14, Peter Maydell wrote:
+> On 21 July 2016 at 15:31, Dmitry Osipenko <digetx@gmail.com> wrote:
+>> Hello,
+>>
+>> Currently, QEMU ARM MPTimer device model provides only a certain subset of
+>> the emulation behavior. This patch series is supposed to add missing parts by
+>> converting the MPTimer to use generic ptimer helper. It fixes some important
+>> ptimer bugs and provides new features that are required for the ARM MPTimer.
+>>
+[snip]
+> 
+> I tried "check this compiles and passes the tests for each commit",
+> and what I found was that you get a lot of new warnings running
+> 'make check' about "Timer with period zero, disabling", which were
+> not there before. Could you look into this and fix it, please?
+> 
+> thanks
+> -- PMM
+> 
 
-I tried "check this compiles and passes the tests for each commit",
-and what I found was that you get a lot of new warnings running
-'make check' about "Timer with period zero, disabling", which were
-not there before. Could you look into this and fix it, please?
+Sure, I'll silence those ptimer error messages by making them conditional of
+qtest_enabled(). The messages are actually harmless, however not very useful in
+the context of testing. Thanks a lot for returning to that series, I appreciate it.
 
-thanks
--- PMM
+-- 
+Dmitry

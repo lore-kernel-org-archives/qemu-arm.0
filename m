@@ -1,58 +1,58 @@
-Received: by 10.25.87.130 with SMTP id l124csp1792970lfb;
-        Sun, 4 Sep 2016 23:08:04 -0700 (PDT)
-X-Received: by 10.237.52.225 with SMTP id x88mr37537450qtd.24.1473055684220;
-        Sun, 04 Sep 2016 23:08:04 -0700 (PDT)
+Received: by 10.25.87.130 with SMTP id l124csp1793058lfb;
+        Sun, 4 Sep 2016 23:08:21 -0700 (PDT)
+X-Received: by 10.55.92.193 with SMTP id q184mr35276569qkb.139.1473055701268;
+        Sun, 04 Sep 2016 23:08:21 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id k124si16651403qkf.274.2016.09.04.23.08.04
+        by mx.google.com with ESMTPS id u123si16647870qkh.321.2016.09.04.23.08.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Sep 2016 23:08:04 -0700 (PDT)
+        Sun, 04 Sep 2016 23:08:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52424 helo=lists.gnu.org)
+Received: from localhost ([::1]:52428 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bgn4d-00071s-LQ
-	for alex.bennee@linaro.org; Mon, 05 Sep 2016 02:08:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45869)
+	id 1bgn4u-0007HA-Kz
+	for alex.bennee@linaro.org; Mon, 05 Sep 2016 02:08:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45813)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bgmxv-0001Wi-5o
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:01:10 -0400
+	(envelope-from <clg@kaod.org>) id 1bgmxn-0001Ov-6f
+	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:01:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1bgmxr-0001tA-53
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:01:07 -0400
-Received: from 17.mo7.mail-out.ovh.net ([188.165.35.227]:47190)
+	(envelope-from <clg@kaod.org>) id 1bgmxj-0001rq-3O
+	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:00:58 -0400
+Received: from 13.mo7.mail-out.ovh.net ([87.98.150.175]:43244)
 	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
-	id 1bgmxq-0001su-Sa
-	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:01:03 -0400
+	id 1bgmxi-0001rd-QV
+	for qemu-arm@nongnu.org; Mon, 05 Sep 2016 02:00:55 -0400
 Received: from player759.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 52147100024A
-	for <qemu-arm@nongnu.org>; Mon,  5 Sep 2016 08:01:02 +0200 (CEST)
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id B07841000248
+	for <qemu-arm@nongnu.org>; Mon,  5 Sep 2016 08:00:53 +0200 (CEST)
 Received: from hermes.kaod.org (alter.tetaneutral.net [91.224.149.189])
 	(Authenticated sender: clg@kaod.org)
-	by player759.ha.ovh.net (Postfix) with ESMTPSA id 08A4F640074;
-	Mon,  5 Sep 2016 08:00:58 +0200 (CEST)
+	by player759.ha.ovh.net (Postfix) with ESMTPSA id 6C5AE640074;
+	Mon,  5 Sep 2016 08:00:49 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon,  5 Sep 2016 08:00:07 +0200
-Message-Id: <1473055209-18864-9-git-send-email-clg@kaod.org>
+Date: Mon,  5 Sep 2016 08:00:05 +0200
+Message-Id: <1473055209-18864-7-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1473055209-18864-1-git-send-email-clg@kaod.org>
 References: <1473055209-18864-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 729020193367558929
+X-Ovh-Tracer-Id: 726486915715730193
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeeluddrheejgddutdejucdltddurdefledtrddttddmucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x (no
 	timestamps) [generic]
-X-Received-From: 188.165.35.227
-Subject: [Qemu-arm] [PATCH v4 08/10] aspeed: add a ast2500 SoC and support
- to the SCU and SDMC controllers
+X-Received-From: 87.98.150.175
+Subject: [Qemu-arm] [PATCH v4 06/10] palmetto-bmc: add board specific
+ configuration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,9 +68,10 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PBwivh42QmXu
+X-TUID: hcdn8KX3Jdbq
 
-Based on previous work done by Andrew Jeffery <andrew@aj.id.au>.
+aspeed_board_init() now uses a board identifier to customize some values
+specific to the board.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
@@ -79,224 +80,83 @@ Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
  Changes since v3:
 
- - added brackets around macro parameters
- - fixed trailing comma in enum
+ - added trailing comma to enum
 
  Changes since v2:
 
- - more precise definitions of the hw-strap1 register
+ - removed silicon-rev and cpu-model. This is now in the SoC.
 
- hw/arm/aspeed_soc.c          |  2 ++
- hw/misc/aspeed_scu.c         | 45 +++++++++++++++++++++++++-
- hw/misc/aspeed_sdmc.c        |  1 +
- include/hw/misc/aspeed_scu.h | 75 ++++++++++++++++++++++++++++++++++++++=
-++++++
- 4 files changed, 122 insertions(+), 1 deletion(-)
+ Changes since v1:
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index ec6ec3546908..2408dfe70c51 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -38,10 +38,12 @@ static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 =
-};
- static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, };
+ - changed aspeed_init() prototype to use a 'const AspeedBoardConfig *'
+ - fixed white space issues
+
+ hw/arm/aspeed.c | 22 ++++++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 3b901eaa6fb6..b4eb8049af97 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -31,6 +31,19 @@ typedef struct AspeedBoardState {
+     MemoryRegion ram;
+ } AspeedBoardState;
 =20
- #define AST2400_SDRAM_BASE       0x40000000
-+#define AST2500_SDRAM_BASE       0x80000000
-=20
- static const AspeedSoCInfo aspeed_socs[] =3D {
-     { "ast2400-a0", "arm926", AST2400_A0_SILICON_REV, AST2400_SDRAM_BASE=
- },
-     { "ast2400",    "arm926", AST2400_A0_SILICON_REV, AST2400_SDRAM_BASE=
- },
-+    { "ast2500-a1", "arm1176", AST2500_A1_SILICON_REV, AST2500_SDRAM_BAS=
-E },
- };
-=20
- /*
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index c7e2c8263f55..b1f3e6f6b87a 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -120,6 +120,41 @@ static const uint32_t ast2400_a0_resets[ASPEED_SCU_N=
-R_REGS] =3D {
-      [BMC_DEV_ID]      =3D 0x00002402U
- };
-=20
-+/* SCU70 bit 23: 0 24Mhz. bit 11:9: 0b001 AXI:ABH ratio 2:1 */
-+/* AST2500 revision A1 */
++typedef struct AspeedBoardConfig {
++    const char *soc_name;
++    uint32_t hw_strap1;
++} AspeedBoardConfig;
 +
-+static const uint32_t ast2500_a1_resets[ASPEED_SCU_NR_REGS] =3D {
-+     [SYS_RST_CTRL]    =3D 0xFFCFFEDCU,
-+     [CLK_SEL]         =3D 0xF3F40000U,
-+     [CLK_STOP_CTRL]   =3D 0x19FC3E8BU,
-+     [D2PLL_PARAM]     =3D 0x00026108U,
-+     [MPLL_PARAM]      =3D 0x00030291U,
-+     [HPLL_PARAM]      =3D 0x93000400U,
-+     [MISC_CTRL1]      =3D 0x00000010U,
-+     [PCI_CTRL1]       =3D 0x20001A03U,
-+     [PCI_CTRL2]       =3D 0x20001A03U,
-+     [PCI_CTRL3]       =3D 0x04000030U,
-+     [SYS_RST_STATUS]  =3D 0x00000001U,
-+     [SOC_SCRATCH1]    =3D 0x000000C0U, /* SoC completed DRAM init */
-+     [MISC_CTRL2]      =3D 0x00000023U,
-+     [RNG_CTRL]        =3D 0x0000000EU,
-+     [PINMUX_CTRL2]    =3D 0x0000F000U,
-+     [PINMUX_CTRL3]    =3D 0x03000000U,
-+     [PINMUX_CTRL4]    =3D 0x00000000U,
-+     [PINMUX_CTRL5]    =3D 0x0000A000U,
-+     [WDT_RST_CTRL]    =3D 0x023FFFF3U,
-+     [PINMUX_CTRL8]    =3D 0xFFFF0000U,
-+     [PINMUX_CTRL9]    =3D 0x000FFFFFU,
-+     [FREE_CNTR4]      =3D 0x000000FFU,
-+     [FREE_CNTR4_EXT]  =3D 0x000000FFU,
-+     [CPU2_BASE_SEG1]  =3D 0x80000000U,
-+     [CPU2_BASE_SEG4]  =3D 0x1E600000U,
-+     [CPU2_BASE_SEG5]  =3D 0xC0000000U,
-+     [UART_HPLL_CLK]   =3D 0x00001903U,
-+     [PCIE_CTRL]       =3D 0x0000007BU,
-+     [BMC_DEV_ID]      =3D 0x00002402U
++enum {
++    PALMETTO_BMC,
 +};
 +
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned si=
-ze)
++static const AspeedBoardConfig aspeed_boards[] =3D {
++    [PALMETTO_BMC] =3D { "ast2400-a0", 0x120CE416 },
++};
++
+ static void aspeed_board_init_flashes(AspeedSMCState *s, const char *fla=
+shtype,
+                                       Error **errp)
  {
-     AspeedSCUState *s =3D ASPEED_SCU(opaque);
-@@ -198,6 +233,10 @@ static void aspeed_scu_reset(DeviceState *dev)
-     case AST2400_A0_SILICON_REV:
-         reset =3D ast2400_a0_resets;
-         break;
-+    case AST2500_A0_SILICON_REV:
-+    case AST2500_A1_SILICON_REV:
-+        reset =3D ast2500_a1_resets;
-+        break;
-     default:
-         g_assert_not_reached();
+@@ -57,13 +70,14 @@ static void aspeed_board_init_flashes(AspeedSMCState =
+*s, const char *flashtype,
      }
-@@ -208,7 +247,11 @@ static void aspeed_scu_reset(DeviceState *dev)
-     s->regs[HW_STRAP2] =3D s->hw_strap2;
  }
 =20
--static uint32_t aspeed_silicon_revs[] =3D { AST2400_A0_SILICON_REV, };
-+static uint32_t aspeed_silicon_revs[] =3D {
-+    AST2400_A0_SILICON_REV,
-+    AST2500_A0_SILICON_REV,
-+    AST2500_A1_SILICON_REV,
-+};
-=20
- bool is_supported_silicon_rev(uint32_t silicon_rev)
+-static void aspeed_board_init(MachineState *machine)
++static void aspeed_board_init(MachineState *machine,
++                              const AspeedBoardConfig *cfg)
  {
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 6cc0301a6331..621d166890fa 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -196,6 +196,7 @@ static void aspeed_sdmc_reset(DeviceState *dev)
-         break;
+     AspeedBoardState *bmc;
+     AspeedSoCClass *sc;
 =20
-     case AST2500_A0_SILICON_REV:
-+    case AST2500_A1_SILICON_REV:
-         s->regs[R_CONF] |=3D
-             ASPEED_SDMC_HW_VERSION(1) |
-             ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index 4d3e770cec21..14ffc43de809 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -33,6 +33,7 @@ typedef struct AspeedSCUState {
+     bmc =3D g_new0(AspeedBoardState, 1);
+-    object_initialize(&bmc->soc, (sizeof(bmc->soc)), "ast2400-a0");
++    object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
+     object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
+                               &error_abort);
 =20
- #define AST2400_A0_SILICON_REV   0x02000303U
- #define AST2500_A0_SILICON_REV   0x04000303U
-+#define AST2500_A1_SILICON_REV   0x04010303U
+@@ -74,7 +88,7 @@ static void aspeed_board_init(MachineState *machine)
+                                 &bmc->ram);
+     object_property_add_const_link(OBJECT(&bmc->soc), "ram", OBJECT(&bmc=
+->ram),
+                                    &error_abort);
+-    object_property_set_int(OBJECT(&bmc->soc), 0x120CE416, "hw-strap1",
++    object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap1, "hw-strap=
+1",
+                             &error_abort);
+     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+                              &error_abort);
+@@ -93,7 +107,7 @@ static void aspeed_board_init(MachineState *machine)
 =20
- extern bool is_supported_silicon_rev(uint32_t silicon_rev);
+ static void palmetto_bmc_init(MachineState *machine)
+ {
+-    aspeed_board_init(machine);
++    aspeed_board_init(machine, &aspeed_boards[PALMETTO_BMC]);
+ }
 =20
-@@ -154,4 +155,78 @@ extern bool is_supported_silicon_rev(uint32_t silico=
-n_rev);
- #define     AST2400_SPI_BOOT                           2
- #define     AST2400_DIS_BOOT                           3
-=20
-+/*
-+ * Hardware strapping register definition (for Aspeed AST2500 SoC and
-+ * higher)
-+ *
-+ * 31     Enable SPI Flash Strap Auto Fetch Mode
-+ * 30     Enable GPIO Strap Mode
-+ * 29     Select UART Debug Port
-+ * 28     Reserved (1)
-+ * 27     Enable fast reset mode for ARM ICE debugger
-+ * 26     Enable eSPI flash mode
-+ * 25     Enable eSPI mode
-+ * 24     Select DDR4 SDRAM
-+ * 23     Select 25 MHz reference clock input mode
-+ * 22     Enable GPIOE pass-through mode
-+ * 21     Enable GPIOD pass-through mode
-+ * 20     Disable LPC to decode SuperIO 0x2E/0x4E address
-+ * 19     Enable ACPI function
-+ * 18     Select USBCKI input frequency
-+ * 17     Enable BMC 2nd boot watchdog timer
-+ * 16     SuperIO configuration address selection
-+ * 15     VGA Class Code selection
-+ * 14     Select dedicated LPC reset input
-+ * 13:12  SPI mode selection
-+ * 11:9   AXI/AHB clock frequency ratio selection
-+ * 8      Reserved (0)
-+ * 7      Define MAC#2 interface
-+ * 6      Define MAC#1 interface
-+ * 5      Enable dedicated VGA BIOS ROM
-+ * 4      Reserved (0)
-+ * 3:2    VGA memory size selection
-+ * 1      Reserved (1)
-+ * 0      Disable CPU boot
-+ */
-+#define SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE  (0x1 << 31)
-+#define SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE     (0x1 << 30)
-+#define SCU_AST2500_HW_STRAP_UART_DEBUG            (0x1 << 29)
-+#define     UART_DEBUG_UART1                           0
-+#define     UART_DEBUG_UART5                           1
-+#define SCU_AST2500_HW_STRAP_RESERVED28            (0x1 << 28)
-+
-+#define SCU_AST2500_HW_STRAP_FAST_RESET_DBG        (0x1 << 27)
-+#define SCU_AST2500_HW_STRAP_ESPI_FLASH_ENABLE     (0x1 << 26)
-+#define SCU_AST2500_HW_STRAP_ESPI_ENABLE           (0x1 << 25)
-+#define SCU_AST2500_HW_STRAP_DDR4_ENABLE           (0x1 << 24)
-+
-+#define SCU_AST2500_HW_STRAP_ACPI_ENABLE           (0x1 << 19)
-+#define SCU_AST2500_HW_STRAP_USBCKI_FREQ           (0x1 << 18)
-+#define     USBCKI_FREQ_24MHZ                          0
-+#define     USBCKI_FREQ_28MHZ                          1
-+
-+#define SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(x)  ((x) << 9)
-+#define SCU_AST2500_HW_STRAP_GET_AXI_AHB_RATIO(x)  (((x) >> 9) & 7)
-+#define SCU_AST2500_HW_STRAP_CPU_AXI_RATIO_MASK    (0x7 << 9)
-+#define     AXI_AHB_RATIO_UNDEFINED                    0
-+#define     AXI_AHB_RATIO_2_1                          1
-+#define     AXI_AHB_RATIO_3_1                          2
-+#define     AXI_AHB_RATIO_4_1                          3
-+#define     AXI_AHB_RATIO_5_1                          4
-+#define     AXI_AHB_RATIO_6_1                          5
-+#define     AXI_AHB_RATIO_7_1                          6
-+#define     AXI_AHB_RATIO_8_1                          7
-+
-+#define SCU_AST2500_HW_STRAP_RESERVED1             (0x1 << 1)
-+#define SCU_AST2500_HW_STRAP_DIS_BOOT              (0x1 << 0)
-+
-+#define AST2500_HW_STRAP1_DEFAULTS (                                    =
-\
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               =
-\
-+        SCU_HW_STRAP_2ND_BOOT_WDT |                                     =
-\
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     =
-\
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
-+        SCU_AST2500_HW_STRAP_RESERVED1)
-+
- #endif /* ASPEED_SCU_H */
+ static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
 --=20
 2.7.4
 

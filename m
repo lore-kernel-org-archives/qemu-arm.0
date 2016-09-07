@@ -1,79 +1,79 @@
-Received: by 10.25.87.130 with SMTP id l124csp312878lfb;
-        Wed, 7 Sep 2016 06:33:41 -0700 (PDT)
-X-Received: by 10.237.43.71 with SMTP id p65mr52354039qtd.116.1473255221127;
-        Wed, 07 Sep 2016 06:33:41 -0700 (PDT)
+Received: by 10.25.87.130 with SMTP id l124csp313158lfb;
+        Wed, 7 Sep 2016 06:34:16 -0700 (PDT)
+X-Received: by 10.55.200.201 with SMTP id t70mr37433413qkl.238.1473255255968;
+        Wed, 07 Sep 2016 06:34:15 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h7si14752830qte.47.2016.09.07.06.33.40
+        by mx.google.com with ESMTPS id d2si14227864qkj.71.2016.09.07.06.34.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Sep 2016 06:33:41 -0700 (PDT)
+        Wed, 07 Sep 2016 06:34:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41030 helo=lists.gnu.org)
+Received: from localhost ([::1]:41037 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bhcyy-0003Pq-DS
-	for alex.bennee@linaro.org; Wed, 07 Sep 2016 09:33:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46603)
+	id 1bhczX-0003tu-8d
+	for alex.bennee@linaro.org; Wed, 07 Sep 2016 09:34:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46574)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bhcpD-0001jp-AK
+	(envelope-from <digetx@gmail.com>) id 1bhcpC-0001iQ-V9
 	for qemu-arm@nongnu.org; Wed, 07 Sep 2016 09:23:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bhcpC-0005n9-2N
-	for qemu-arm@nongnu.org; Wed, 07 Sep 2016 09:23:35 -0400
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:35796)
+	(envelope-from <digetx@gmail.com>) id 1bhcp7-0005kG-LV
+	for qemu-arm@nongnu.org; Wed, 07 Sep 2016 09:23:33 -0400
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:33866)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <digetx@gmail.com>)
-	id 1bhcp5-0005iI-3o; Wed, 07 Sep 2016 09:23:27 -0400
-Received: by mail-lf0-x243.google.com with SMTP id s64so834419lfs.2;
-	Wed, 07 Sep 2016 06:23:27 -0700 (PDT)
+	id 1bhcp4-0005hd-Qy; Wed, 07 Sep 2016 09:23:26 -0400
+Received: by mail-lf0-x244.google.com with SMTP id 29so830675lfv.1;
+	Wed, 07 Sep 2016 06:23:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:references;
-	bh=An9vjf0aAO5RZQKS4vtNK5mkmqMsB2vyrpotWCROync=;
-	b=Y0YIROo+YFERbl1FhQCt+xSYIcO3lhqG/7zcsdsHcB0uLy+A2fOizODSjtMYpifIMY
-	1CnyK11HtfgADVHZBQaDIFTm4mAqq4JRu+Jy1j58sqic2nu1Pd8h6cTWTtSleB/aXWag
-	bUQHOK7X8qYqk6f5p2RB236uOotYgU2Dq11EKoTSdEMLG1HrcrN2nLCnw3fJ50moj4ot
-	h3uKSePB0DZExo4DyPp1tC3+HzdA5oTvlvXG+7Kj3OuibaW1apKrxPTPhZUXuqHTaDN4
-	MwbQhYlAsDyzIF2mD0HP/3WJoDjoMQJUDMWwla09g91/bQnFPK77GQrJTg8ryZ5EtOSY
-	uGBA==
+	bh=kBlC89+jislZ+IPNNYdKi0ZJ8fOfiOLrjgU05JvMSjs=;
+	b=rEFi14V6cNaqNiHLqAB/HbRxSUDPjQ+OgMQWuKXNtI1+fUjbuN4MqcK9R1p3aDsoEx
+	uWZG7VM2c8RW9ZTSvepltKrYH7uHll/BdW2cIUC/QwSUyVZmO5Ho+PG145D/pZ9wJh/A
+	oq6SW/wwJUgU5WpHnOfm96ODqTBphk/9vG5lIpCRkFbrQ6y69SXYqajc27IbnkA+vOHm
+	mFuyRTT0aPZmCVBQ7aVZ6jAZkqMie7SMED5bQHLMEOv3Hqsz9qPkW1xh0uORc7D+LShU
+	5nZRHZgvBvlSRRJECC/Shb79TrhN6/cS7RvI2lpXGpNmNk9IlFmldVn7fJ1DAMLOP4i1
+	xIUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:in-reply-to:references;
-	bh=An9vjf0aAO5RZQKS4vtNK5mkmqMsB2vyrpotWCROync=;
-	b=lQRfYHVXTULwLfTupZnY89XFT5M0cG8oAm7Vk3DbsyGLOTR7xeZFL/Yu5E4KjUSZ+x
-	imsUrZk+e3Rmdp9SYQiVMFT0eM5HwVctHPWfmPyAhx92+HaFgqEdK8gp8IAepRoBrekj
-	bezPa9RzMX/OON2++ZpdRQmEGrJxlORlCZajvqK3uJ3le4VqKRXgDF0SpKO5rlFXIwIO
-	hVfQi+TccKkEja1AXSsGrPkShwQWkRR1GKKI25kHCkUUWo4uwHDGK6vZ107EOEofNRuS
-	iLtyPAgBSl+Qe4/yLTi72Krm1NcedUNRr5+KhWTn/qA5g+v4Q1bfIgfDd5FBCBP26gLA
-	JOnQ==
-X-Gm-Message-State: AE9vXwOf9UDvqyT6qskff6mG5oPMFaHT/ifusFvoBWgx98kZXFAeEeI0J2IDz65ITA+Jcw==
-X-Received: by 10.46.9.195 with SMTP id 186mr580372ljj.4.1473254606304;
-	Wed, 07 Sep 2016 06:23:26 -0700 (PDT)
+	bh=kBlC89+jislZ+IPNNYdKi0ZJ8fOfiOLrjgU05JvMSjs=;
+	b=TDOvo0vURM+O44yD2NWQj0maKqdnza3lxT7DEJZkREJXXumwWsa/isu2dK+UE+bLZW
+	O3M0eGrKZ2d1VUmOh5suM5wRy0a/18ZJyEUroXrvnL+veZHgLxiOT/JDWMnpjMiY4YN4
+	LidQTzXeCVIZXyTKPLKAkYFxxJgOCjXnmnnc5SzCRE11e0O+BaXS6Adah2WbG9yIucd2
+	ehT94RjqJjdL2R6O4NkXfAR4zZZ2KxWnxpJe4MxkWhBjvXuAkRAkf38zO743hjKbclKi
+	Oi3eUpdxv69LfRgMN7D+PW4+SWuT7Heq0g9MYbFXXMgbT1tXjX/wPc0u8JWLssKFA2Fr
+	QGNg==
+X-Gm-Message-State: AE9vXwNvYDM+EhpC+g7p3j+x+LlEStT6v5eG1cRKDj9QSYk4UV/HtgUW/ozaY5MgdvVPig==
+X-Received: by 10.46.71.147 with SMTP id u141mr12438527lja.15.1473254602051;
+	Wed, 07 Sep 2016 06:23:22 -0700 (PDT)
 Received: from localhost.localdomain (ppp109-252-52-17.pppoe.spdop.ru.
 	[109.252.52.17])
-	by smtp.gmail.com with ESMTPSA id h29sm11375lfi.18.2016.09.07.06.23.25
+	by smtp.gmail.com with ESMTPSA id h29sm11375lfi.18.2016.09.07.06.23.21
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 07 Sep 2016 06:23:25 -0700 (PDT)
+	Wed, 07 Sep 2016 06:23:21 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org
-Date: Wed,  7 Sep 2016 16:22:23 +0300
-Message-Id: <4dc3ffac62a3199fcdc45ad1d2ebec859e9ab634.1473252818.git.digetx@gmail.com>
+Date: Wed,  7 Sep 2016 16:22:18 +0300
+Message-Id: <b485e92cac7725a75f7de9ca6b458ffa4082e099.1473252818.git.digetx@gmail.com>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <cover.1473252818.git.digetx@gmail.com>
 References: <cover.1473252818.git.digetx@gmail.com>
 In-Reply-To: <cover.1473252818.git.digetx@gmail.com>
 References: <cover.1473252818.git.digetx@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: [Qemu-arm] [PATCH v16 12/16] tests: ptimer: Add tests for "no
- immediate reload" policy
+X-Received-From: 2a00:1450:4010:c07::244
+Subject: [Qemu-arm] [PATCH v16 07/16] hw/ptimer: Add "continuous trigger"
+ policy
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,154 +89,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s+crbrzj99ZA
+X-TUID: HkmlAZtwXXJf
 
-PTIMER_POLICY_NO_IMMEDIATE_RELOAD makes ptimer to not to re-load
-counter on setting counter value to "0" or starting to run with "0".
+Currently, periodic timer that has load = delta = 0 performs trigger
+on timer reload and stops, printing a "period zero" error message.
+Introduce new policy that makes periodic timer to continuously trigger
+with a period interval in case of load = 0.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- tests/ptimer-test.c | 51 ++++++++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 44 insertions(+), 7 deletions(-)
+ hw/core/ptimer.c    | 18 +++++++++++++++++-
+ include/hw/ptimer.h |  4 ++++
+ 2 files changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/tests/ptimer-test.c b/tests/ptimer-test.c
-index 3e44b8d..bb49670 100644
---- a/tests/ptimer-test.c
-+++ b/tests/ptimer-test.c
-@@ -190,6 +190,8 @@ static void check_periodic(gconstpointer arg)
-     ptimer_state *ptimer = ptimer_init(bh, *policy);
-     bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-+    bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
-+    bool continuous_trigger = (*policy & PTIMER_POLICY_CONTINUOUS_TRIGGER);
- 
-     triggered = false;
- 
-@@ -245,7 +247,7 @@ static void check_periodic(gconstpointer arg)
-     g_assert_false(triggered);
- 
-     ptimer_set_count(ptimer, 0);
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 10);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, no_immediate_reload ? 0 : 10);
- 
-     if (no_immediate_trigger) {
-         g_assert_false(triggered);
-@@ -257,7 +259,14 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 * 12 + 100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-+    if (no_immediate_reload && (!continuous_trigger && !no_immediate_trigger)) {
-+        g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+        g_assert_false(triggered);
-+        return;
-+    }
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index e9b2e15..97ce8ae 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -45,7 +45,8 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+         ptimer_trigger(s);
+         delta = s->delta = s->limit;
+     }
+-    if (delta == 0 || s->period == 0) {
 +
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==,
-+                    7 + (wrap_policy ? 1 : 0) + (no_immediate_reload ? 1 : 0));
-     g_assert_true(triggered);
++    if (s->period == 0) {
+         if (!qtest_enabled()) {
+             fprintf(stderr, "Timer with period zero, disabling\n");
+         }
+@@ -58,6 +59,21 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+         delta += delta_adjust;
+     }
  
-     ptimer_stop(ptimer);
-@@ -266,7 +275,8 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 * 12 + 100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==,
-+                    7 + (wrap_policy ? 1 : 0) + (no_immediate_reload ? 1 : 0));
-     g_assert_false(triggered);
- 
-     ptimer_run(ptimer, 0);
-@@ -274,7 +284,8 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 + 100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==,
-+                    7 + (wrap_policy ? 1 : 0) + (no_immediate_reload ? 1 : 0));
-     g_assert_false(triggered);
- }
- 
-@@ -404,13 +415,15 @@ static void check_run_with_delta_0(gconstpointer arg)
-     ptimer_state *ptimer = ptimer_init(bh, *policy);
-     bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
-     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
-+    bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
-+    bool continuous_trigger = (*policy & PTIMER_POLICY_CONTINUOUS_TRIGGER);
- 
-     triggered = false;
- 
-     ptimer_set_period(ptimer, 2000000);
-     ptimer_set_limit(ptimer, 99, 0);
-     ptimer_run(ptimer, 1);
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 99);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, no_immediate_reload ? 0 : 99);
- 
-     if (no_immediate_trigger) {
-         g_assert_false(triggered);
-@@ -420,6 +433,11 @@ static void check_run_with_delta_0(gconstpointer arg)
- 
-     triggered = false;
- 
-+    if (no_immediate_reload) {
-+        ptimer_set_count(ptimer, 99);
-+        ptimer_run(ptimer, 1);
-+    }
-+
-     qemu_clock_step(2000000 + 100000);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 97);
-@@ -439,7 +457,7 @@ static void check_run_with_delta_0(gconstpointer arg)
- 
-     ptimer_set_count(ptimer, 0);
-     ptimer_run(ptimer, 0);
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 99);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, no_immediate_reload ? 0 : 99);
- 
-     if (no_immediate_trigger) {
-         g_assert_false(triggered);
-@@ -449,6 +467,21 @@ static void check_run_with_delta_0(gconstpointer arg)
- 
-     triggered = false;
- 
-+    if (no_immediate_reload) {
-+        qemu_clock_step(2000000 + 100000);
-+
-+        if (continuous_trigger || no_immediate_trigger) {
-+            g_assert_cmpuint(ptimer_get_count(ptimer), ==, 98);
-+            g_assert_true(triggered);
-+
-+            triggered = false;
-+        } else {
-+            g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+            g_assert_false(triggered);
-+            return;
++    if (delta == 0 && (s->policy_mask & PTIMER_POLICY_CONTINUOUS_TRIGGER)) {
++        if (s->enabled == 1) {
++            delta = 1;
 +        }
 +    }
 +
-     qemu_clock_step(2000000 + 100000);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 97);
-@@ -566,6 +599,10 @@ static void add_ptimer_tests(uint8_t policy)
-         g_strlcat(policy_name, "no_immediate_trigger,", 256);
-     }
- 
-+    if (policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD) {
-+        g_strlcat(policy_name, "no_immediate_reload,", 256);
++    if (delta == 0) {
++        if (!qtest_enabled()) {
++            fprintf(stderr, "Timer with delta zero, disabling\n");
++        }
++        timer_del(s->timer);
++        s->enabled = 0;
++        return;
 +    }
 +
-     qtest_add_data_func(
-         g_strdup_printf("/ptimer/set_count policy=%s", policy_name),
-         ppolicy, check_set_count);
-@@ -613,7 +650,7 @@ static void add_ptimer_tests(uint8_t policy)
+     /*
+      * Artificially limit timeout rate to something
+      * achievable under QEMU.  Otherwise, QEMU spends all
+diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+index a13a12e..4c9c700 100644
+--- a/include/hw/ptimer.h
++++ b/include/hw/ptimer.h
+@@ -38,6 +38,10 @@
+  * around.  */
+ #define PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD (1 << 0)
  
- static void add_all_ptimer_policies_comb_tests(void)
- {
--    int last_policy = PTIMER_POLICY_NO_IMMEDIATE_TRIGGER;
-+    int last_policy = PTIMER_POLICY_NO_IMMEDIATE_RELOAD;
-     int policy = PTIMER_POLICY_DEFAULT;
- 
-     for (; policy < (last_policy << 1); policy++) {
++/* Periodic timer that has load = 0 would continuously re-trigger every
++ * period.  */
++#define PTIMER_POLICY_CONTINUOUS_TRIGGER    (1 << 1)
++
+ /* ptimer.c */
+ typedef struct ptimer_state ptimer_state;
+ typedef void (*ptimer_cb)(void *opaque);
 -- 
 2.9.3
 

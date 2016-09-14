@@ -1,56 +1,53 @@
-Received: by 10.80.163.71 with SMTP id 65csp464818edn;
-        Sat, 10 Sep 2016 15:07:42 -0700 (PDT)
-X-Received: by 10.55.75.79 with SMTP id y76mr12532168qka.9.1473545262049;
-        Sat, 10 Sep 2016 15:07:42 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp1383357edn;
+        Tue, 13 Sep 2016 23:09:14 -0700 (PDT)
+X-Received: by 10.55.197.9 with SMTP id p9mr933583qki.225.1473833354827;
+        Tue, 13 Sep 2016 23:09:14 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z141si6752914qkb.227.2016.09.10.15.07.41
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id r48si2048749qtb.104.2016.09.13.23.09.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 10 Sep 2016 15:07:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Sep 2016 23:09:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35797 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:53313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1biqR3-0006R2-5b
-	for alex.bennee@linaro.org; Sat, 10 Sep 2016 18:07:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33592)
+	id 1bk3Ni-0001LW-Bc
+	for alex.bennee@linaro.org; Wed, 14 Sep 2016 02:09:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35733)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bijst-00075U-8u
-	for qemu-arm@nongnu.org; Sat, 10 Sep 2016 11:08:00 -0400
+	(envelope-from <wei@redhat.com>) id 1bk3Nf-0001L4-2g
+	for qemu-arm@nongnu.org; Wed, 14 Sep 2016 02:09:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bijsp-0000h3-96
-	for qemu-arm@nongnu.org; Sat, 10 Sep 2016 11:07:59 -0400
-Received: from metis.ext.4.pengutronix.de ([92.198.50.35]:36453)
+	(envelope-from <wei@redhat.com>) id 1bk3Na-0006US-Sn
+	for qemu-arm@nongnu.org; Wed, 14 Sep 2016 02:09:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59482)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bijsp-0000eb-1x
-	for qemu-arm@nongnu.org; Sat, 10 Sep 2016 11:07:55 -0400
-Received: from dude.hi.pengutronix.de ([2001:67c:670:100:1d::7])
-	by metis.ext.pengutronix.de with esmtps
-	(TLS1.2:RSA_AES_256_CBC_SHA1:256) (Exim 4.80)
-	(envelope-from <mol@pengutronix.de>)
-	id 1bijsd-0004bY-HV; Sat, 10 Sep 2016 17:07:43 +0200
-Received: from mol by dude.hi.pengutronix.de with local (Exim 4.87)
-	(envelope-from <mol@pengutronix.de>)
-	id 1bijsc-00008W-1o; Sat, 10 Sep 2016 17:07:42 +0200
-From: Michael Olbrich <m.olbrich@pengutronix.de>
-To: peter.maydell@linaro.org,
-	pbonzini@redhat.com
-Date: Sat, 10 Sep 2016 17:07:34 +0200
-Message-Id: <1473520054-402-1-git-send-email-m.olbrich@pengutronix.de>
-X-Mailer: git-send-email 2.8.1
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::7
-X-SA-Exim-Mail-From: mol@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
-	SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
+	(envelope-from <wei@redhat.com>)
+	id 1bk3Na-0006UE-NH; Wed, 14 Sep 2016 02:09:06 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BEFFFC00FBBF;
+	Wed, 14 Sep 2016 06:09:05 +0000 (UTC)
+Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
+	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8E694Sw002896; Wed, 14 Sep 2016 02:09:04 -0400
+From: Wei Huang <wei@redhat.com>
+To: qemu-arm@nongnu.org
+Date: Wed, 14 Sep 2016 02:09:01 -0400
+Message-Id: <1473833343-31531-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 14 Sep 2016 06:09:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 92.198.50.35
-X-Mailman-Approved-At: Sat, 10 Sep 2016 18:04:04 -0400
-Subject: [Qemu-arm] [PATCH] hw/arm/boot: allow using a command line
- specified dtb without a kernel
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH V2 0/2] Add option to configure guest vPMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,64 +59,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Olbrich <m.olbrich@pengutronix.de>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
+	abologna@redhat.com, shannon.zhao@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KnS6iBG3gvIU
+X-TUID: jcDgzgPDqbJl
 
-When kernel and device tree are specified in the QEMU commandline, then
-this device tree may be modified e.g. to add virtio_mmio devices.
-With a bootloader e.g. on a flash device these extra devices are not
-available.
-With this change, the device tree can be specified at the QEMU commandline.
-The modified device tree made available to the bootloader with the same
-mechanism already supported by device trees fully generated by QEMU.
+This patchset adds a pmu=[on/off] option to enable/disable vPMU support 
+for guest VM. There are several reasons to justify this option. First,
+vPMU can be problematic for cross-migration between different SoC as perf
+counters are architecture-dependent. It is more flexible to have an option
+to turn it on/off. Secondly Secondly this option matches the "pmu" option
+as supported in libvirt. To make sure backward compatible, a PMU property
+is added to mach-virt machine types.
 
-Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
----
- hw/arm/boot.c | 4 ++--
- vl.c          | 5 -----
- 2 files changed, 2 insertions(+), 7 deletions(-)
+V1->V2:
+  * keep the original field name as "has_pmu"
+  * add a warning message when PMU is turned on without KVM
+  * use the feature bit to check PMU availability, instead of using has_pmu
+  * add PMU compat support to mach-virt machine type
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 1b913a43ca65..942416d95a6f 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -773,6 +773,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-      */
-     assert(!(info->secure_board_setup && kvm_enabled()));
- 
-+    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
-+
-     /* Load the kernel.  */
-     if (!info->kernel_filename || info->firmware_loaded) {
- 
-@@ -833,8 +835,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-         elf_machine = EM_ARM;
-     }
- 
--    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
--
-     if (!info->secondary_cpu_reset_hook) {
-         info->secondary_cpu_reset_hook = default_reset_secondary;
-     }
-diff --git a/vl.c b/vl.c
-index ee557a1d3f8a..bbea51e0ce7d 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4335,11 +4335,6 @@ int main(int argc, char **argv, char **envp)
-         exit(1);
-     }
- 
--    if (!linux_boot && qemu_opt_get(machine_opts, "dtb")) {
--        error_report("-dtb only allowed with -kernel option");
--        exit(1);
--    }
--
-     if (semihosting_enabled() && !semihosting_get_argc() && kernel_filename) {
-         /* fall back to the -kernel/-append */
-         semihosting_arg_fallback(kernel_filename, kernel_cmdline);
+RFC->V1:
+  * set default pmu=off
+  * change struct ARMCPU field name "has_pmu" ==> "has_host_pmu"
+  * like el3, add a new feature ARM_FEATURE_HOST_PMU
+  * "pmu" property becomes CPU dependent. Only cortex-a53/cortex-a57/host
+    running on kvm supports this option.
+
+-Wei
+
+Wei Huang (2):
+  arm64: Add an option to turn on/off vPMU support
+  arm: virt: add PMU property to machvirt machine type
+
+ hw/arm/virt-acpi-build.c |  2 +-
+ hw/arm/virt.c            | 14 +++++++++++++-
+ target-arm/cpu.c         | 22 ++++++++++++++++++++++
+ target-arm/cpu.h         |  1 +
+ target-arm/cpu64.c       |  2 ++
+ target-arm/kvm64.c       | 17 +++++++++++++----
+ 6 files changed, 52 insertions(+), 6 deletions(-)
+
 -- 
-2.9.3
+1.8.3.1
 

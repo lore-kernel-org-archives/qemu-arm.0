@@ -1,299 +1,157 @@
-Received: by 10.80.163.71 with SMTP id 65csp1411903edn;
-        Wed, 14 Sep 2016 01:22:17 -0700 (PDT)
-X-Received: by 10.55.87.135 with SMTP id l129mr1537078qkb.0.1473841337431;
-        Wed, 14 Sep 2016 01:22:17 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp1417325edn;
+        Wed, 14 Sep 2016 01:46:21 -0700 (PDT)
+X-Received: by 10.55.21.13 with SMTP id f13mr1592650qkh.244.1473842780712;
+        Wed, 14 Sep 2016 01:46:20 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id a189si2355034qke.2.2016.09.14.01.22.17
+        by mx.google.com with ESMTPS id 11si2350028qkm.239.2016.09.14.01.46.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 14 Sep 2016 01:22:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Wed, 14 Sep 2016 01:46:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54151 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54318 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bk5SS-0006aN-QX
-	for alex.bennee@linaro.org; Wed, 14 Sep 2016 04:22:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36870)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bk5pk-0000oM-6S
+	for alex.bennee@linaro.org; Wed, 14 Sep 2016 04:46:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40872)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bk5Nm-00039P-SI
-	for qemu-devel@nongnu.org; Wed, 14 Sep 2016 04:17:30 -0400
+	(envelope-from <drjones@redhat.com>) id 1bk5h7-0002AU-Ou
+	for qemu-arm@nongnu.org; Wed, 14 Sep 2016 04:37:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bk5Nk-0001x7-9A
-	for qemu-devel@nongnu.org; Wed, 14 Sep 2016 04:17:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45012)
+	(envelope-from <drjones@redhat.com>) id 1bk5h6-0007Ut-Lk
+	for qemu-arm@nongnu.org; Wed, 14 Sep 2016 04:37:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47358)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1bk5Nc-0001vk-Uo; Wed, 14 Sep 2016 04:17:17 -0400
+	id 1bk5h6-0007UX-B0; Wed, 14 Sep 2016 04:37:24 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6F3413B3D2;
-	Wed, 14 Sep 2016 08:17:15 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AA4B6C04D31B;
+	Wed, 14 Sep 2016 08:37:23 +0000 (UTC)
 Received: from hawk.localdomain (ovpn-204-42.brq.redhat.com [10.40.204.42])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8E8HB2H006039
+	id u8E8bJlO020856
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 14 Sep 2016 04:17:13 -0400
-Date: Wed, 14 Sep 2016 10:17:10 +0200
+	verify=NO); Wed, 14 Sep 2016 04:37:22 -0400
+Date: Wed, 14 Sep 2016 10:37:19 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Wei Huang <wei@redhat.com>
-Message-ID: <20160914081710.gxthhvxpv24wgmnh@hawk.localdomain>
+Message-ID: <20160914083719.u63mw2myf3xza3wf@hawk.localdomain>
 References: <1473833343-31531-1-git-send-email-wei@redhat.com>
-	<1473833343-31531-2-git-send-email-wei@redhat.com>
+	<1473833343-31531-3-git-send-email-wei@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1473833343-31531-2-git-send-email-wei@redhat.com>
+In-Reply-To: <1473833343-31531-3-git-send-email-wei@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 14 Sep 2016 08:17:15 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 14 Sep 2016 08:37:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH V2 1/2] arm64: Add an option to turn on/off
- vPMU support
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V2 2/2] arm: virt: add PMU
+ property to machvirt machine type
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, abologna@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yOxMWq408Row
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dcU/E+lxEdYv
 
-On Wed, Sep 14, 2016 at 02:09:02AM -0400, Wei Huang wrote:
-> This patch adds a pmu=[on/off] option to enable/disable vPMU support
-> in guest VM. The pmu option is available only for cortex-a57/cortex-53/
-> host under both TCG and KVM modes. Additionally pmu can only be turned
-> on under KVM mode, otherwise a warning message will be printed out
-> (e.g. "-M virt,accel=tcg -cpu cortex-a57,pmu=on"). This property isn't
-
-The e.g. is a bit confusing here. Following the comment about a warning
-message makes me thing it should be an example of the warning message,
-but instead it's the command line parameters that generates a warning
-message. I'd just drop it.
-
-> available on ARMv7 and other processors. This patch has been tested under
-> DT and ACPI.
-
-The feature not being available everywhere is a key motivator for this
-series, and maybe should be written in the commit message. Right now
-the feature is only available on a57 and a53, but libvirt doesn't know
-that. With a property, libvirt can a) determine the feature doesn't
-exist, by the lack of property and b) enable/disable the feature. Also,
-by changing the default to 'off', libvirt can simply not emit a pmu=on,
-when no pmu is desired. This allows the feature-doesn't-exist and the
-feature-isn't-desired cases to be consistent.
-
+On Wed, Sep 14, 2016 at 02:09:03AM -0400, Wei Huang wrote:
+> CPU vPMU is now turned off by default, but it was ON in virt-2.7
+> machine type. To solve this problem, this patch adds a PMU option
+> in machine state, which is used to control CPU's vPMU status. This
+> PMU option is not exposed to command line and is turned on in
+> virt-2.7 machine type to make sure it is backward compatible.
 > 
 > Signed-off-by: Wei Huang <wei@redhat.com>
 > ---
->  hw/arm/virt-acpi-build.c |  2 +-
->  hw/arm/virt.c            |  2 +-
->  target-arm/cpu.c         | 22 ++++++++++++++++++++++
->  target-arm/cpu.h         |  1 +
->  target-arm/cpu64.c       |  2 ++
->  target-arm/kvm64.c       | 17 +++++++++++++----
->  6 files changed, 40 insertions(+), 6 deletions(-)
+>  hw/arm/virt.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 295ec86..8b3083e 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
->          gicc->uid = i;
->          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
->  
-> -        if (armcpu->has_pmu) {
-> +        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->          }
->      }
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a193b5a..a781ad0 100644
+> index a781ad0..83cfea7 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+> @@ -91,6 +91,7 @@ typedef struct {
+>      bool secure;
+>      bool highmem;
+>      int32_t gic_version;
+> +    bool pmu;
+>  } VirtMachineState;
+
+The compat bool doesn't need to be in machine state, so it should
+be in the class. See 'disallow_affinity_adjustment' in VirtMachineClass
+for an example of a adding a compat bool for a different reason. Also,
+I'd name it something like pmu_default_on.
+
 >  
->      CPU_FOREACH(cpu) {
->          armcpu = ARM_CPU(cpu);
-> -        if (!armcpu->has_pmu ||
-> +        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
->              !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
->              return;
+>  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+> @@ -1317,6 +1318,11 @@ static void machvirt_init(MachineState *machine)
+>              }
 >          }
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index ce8b8f4..d304597 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -19,6 +19,7 @@
->   */
 >  
->  #include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "internals.h"
-> @@ -509,6 +510,10 @@ static Property arm_cpu_rvbar_property =
->  static Property arm_cpu_has_el3_property =
->              DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
->  
-> +/* use property name "pmu" to match other archs and virt tools */
-> +static Property arm_cpu_has_pmu_property =
-> +    DEFINE_PROP_BOOL("pmu", ARMCPU, has_pmu, false);
-> +
->  static Property arm_cpu_has_mpu_property =
->              DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
->  
-> @@ -552,6 +557,11 @@ static void arm_cpu_post_init(Object *obj)
->  #endif
->      }
->  
-> +    if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
-> +                                 &error_abort);
-> +    }
-> +
->      if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
->          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
->                                   &error_abort);
-> @@ -576,6 +586,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      ARMCPU *cpu = ARM_CPU(dev);
->      ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
->      CPUARMState *env = &cpu->env;
-> +    static bool pmu_warned;
->  
->      /* Some features automatically imply others: */
->      if (arm_feature(env, ARM_FEATURE_V8)) {
-> @@ -648,6 +659,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          cpu->id_aa64pfr0 &= ~0xf000;
->      }
->  
-> +    if (cpu->has_pmu && !kvm_enabled()) {
-> +        cpu->has_pmu = false;
-> +        if (!pmu_warned) {
-> +            error_report("warning: pmu can't be enabled without KVM acceleration");
-> +            pmu_warned = true;
+> +        if (vms->pmu) {
+> +            /* Note: the property name is "pmu", not "has_pmu" */
+
+The comment is unnecessary. Please remove.
+
+> +            object_property_set_bool(cpuobj, true, "pmu", NULL);
 > +        }
-> +    }
-> +    if (!cpu->has_pmu) {
-> +        unset_feature(env, ARM_FEATURE_PMU);
-> +    }
 > +
->      if (!arm_feature(env, ARM_FEATURE_EL2)) {
->          /* Disable the hypervisor feature bits in the processor feature
->           * registers if we don't have EL2. These are id_pfr1[15:12] and
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 76d824d..5d9e6e7 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -1129,6 +1129,7 @@ enum arm_features {
->      ARM_FEATURE_V8_SHA256, /* implements SHA256 part of v8 Crypto Extensions */
->      ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensions */
->      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
-> +    ARM_FEATURE_PMU, /* has PMU support */
->  };
->  
->  static inline int arm_feature(CPUARMState *env, int feature)
-> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
-> index 1635deb..549cb1e 100644
-> --- a/target-arm/cpu64.c
-> +++ b/target-arm/cpu64.c
-> @@ -111,6 +111,7 @@ static void aarch64_a57_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
->      set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
->      cpu->midr = 0x411fd070;
->      cpu->revidr = 0x00000000;
-> @@ -166,6 +167,7 @@ static void aarch64_a53_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
->      set_feature(&cpu->env, ARM_FEATURE_CRC);
->      set_feature(&cpu->env, ARM_FEATURE_EL3);
-> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
->      cpu->midr = 0x410fd034;
->      cpu->revidr = 0x00000000;
-> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
-> index 5faa76c..933b27a 100644
-> --- a/target-arm/kvm64.c
-> +++ b/target-arm/kvm64.c
-> @@ -428,6 +428,11 @@ static inline void set_feature(uint64_t *features, int feature)
->      *features |= 1ULL << feature;
+>          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+>              object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
+>                                      "reset-cbar", &error_abort);
+> @@ -1510,6 +1516,8 @@ static void virt_2_7_instance_init(Object *obj)
+>      object_property_set_description(obj, "gic-version",
+>                                      "Set GIC version. "
+>                                      "Valid values are 2, 3 and host", NULL);
+> +    /* Default PMU is on for 2.7 */
+
+This comment is unnecessary. Please remove.
+
+> +    vms->pmu = true;
 >  }
 >  
-> +static inline void unset_feature(uint64_t *features, int feature)
-> +{
-> +    *features &= ~(1ULL << feature);
-> +}
-> +
->  bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+>  static void virt_machine_2_7_options(MachineClass *mc)
+> @@ -1522,7 +1530,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(2, 7)
+>  
+>  static void virt_2_6_instance_init(Object *obj)
 >  {
->      /* Identify the feature bits corresponding to the host CPU, and
-> @@ -469,6 +474,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
->      set_feature(&features, ARM_FEATURE_VFP4);
->      set_feature(&features, ARM_FEATURE_NEON);
->      set_feature(&features, ARM_FEATURE_AARCH64);
-> +    set_feature(&features, ARM_FEATURE_PMU);
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+>      virt_2_7_instance_init(obj);
+> +    /* Default PMU is off for 2.6 */
+> +    vms->pmu = false;
+
+You shouldn't need to touch 2.6 code. The compat bool is false
+by default (BSS init), which is the correct value for every
+machine type, except the 2.7 machine type.
+
+>  }
 >  
->      ahcc->features = features;
->  
-> @@ -482,6 +488,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      int ret;
->      uint64_t mpidr;
->      ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
->  
->      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
->          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
-> @@ -501,10 +508,12 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
-> -    if (kvm_irqchip_in_kernel() &&
-> -        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> -        cpu->has_pmu = true;
-> -        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-> +    /* enable PMU based on KVM mode, hw capability, and user setting */
-> +    cpu->has_pmu &= kvm_irqchip_in_kernel() &&
-> +        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3);
-> +    cpu->kvm_init_features[0] |= cpu->has_pmu << KVM_ARM_VCPU_PMU_V3;
-> +    if (!cpu->has_pmu) {
-> +        unset_feature(&env->features, ARM_FEATURE_PMU);
-
-nit: I think I'd like the following more
-
- if (cpu->has_pmu) {
-     cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
- } else {
-     unset_feature(&env->features, ARM_FEATURE_PMU);
- }
-
-but whatever.
-
-
->      }
->  
->      /* Do KVM_ARM_VCPU_INIT ioctl */
+>  static void virt_machine_2_6_options(MachineClass *mc)
 > -- 
 > 1.8.3.1
 > 
 >
 
-With some changes to the commit message
-
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Thanks,
+drew

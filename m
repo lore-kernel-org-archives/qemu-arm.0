@@ -1,70 +1,70 @@
-Received: by 10.80.163.71 with SMTP id 65csp1137897edn;
-        Tue, 20 Sep 2016 10:28:21 -0700 (PDT)
-X-Received: by 10.200.47.89 with SMTP id k25mr36629315qta.75.1474392501254;
-        Tue, 20 Sep 2016 10:28:21 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp1137955edn;
+        Tue, 20 Sep 2016 10:28:30 -0700 (PDT)
+X-Received: by 10.237.36.33 with SMTP id r30mr29548559qtc.99.1474392510646;
+        Tue, 20 Sep 2016 10:28:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p130si24886726qke.61.2016.09.20.10.28.20
+        by mx.google.com with ESMTPS id v186si24871433qkb.278.2016.09.20.10.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Sep 2016 10:28:21 -0700 (PDT)
+        Tue, 20 Sep 2016 10:28:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36931 helo=lists.gnu.org)
+Received: from localhost ([::1]:36935 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bmOqC-0000e8-Bk
-	for alex.bennee@linaro.org; Tue, 20 Sep 2016 13:28:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47860)
+	id 1bmOqM-0000mp-0A
+	for alex.bennee@linaro.org; Tue, 20 Sep 2016 13:28:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bmOjH-00035d-4H
-	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:21:11 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bmOkR-00049i-Cf
+	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:22:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bmOjF-00042g-MD
-	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:21:10 -0400
-Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34863)
+	(envelope-from <peter.maydell@linaro.org>) id 1bmOkP-0004H9-5Z
+	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:22:22 -0400
+Received: from mail-vk0-x22c.google.com ([2607:f8b0:400c:c05::22c]:35665)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bmOjF-00042V-HI
-	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:21:09 -0400
-Received: by mail-vk0-x230.google.com with SMTP id g9so34849160vkg.2
-	for <qemu-arm@nongnu.org>; Tue, 20 Sep 2016 10:21:09 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bmOkP-0004Gv-1t
+	for qemu-arm@nongnu.org; Tue, 20 Sep 2016 13:22:21 -0400
+Received: by mail-vk0-x22c.google.com with SMTP id g9so34897203vkg.2
+	for <qemu-arm@nongnu.org>; Tue, 20 Sep 2016 10:22:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=LyOiP/7PSepTxMcShVvhmX1y+LiSr5ovvqMEvvJZNOs=;
-	b=Qu/5RuXRkkTfKzqp/gcHiau+1TveUwg1qJun2mMUz91Mtsl7DQUiS9owevUQq4Sqgk
-	itWyT1PoiMGA9uenErXmL7hc2EjWKIZNhP/PsSELCDFidACARDJGk9bxETACyxwpHaDz
-	/meRWfdnZJDAYvrMoKMIs8KnhO1B2bL8HJ4Y8=
+	:cc; bh=7LW3c6NBFkh8J4aU4MPJBPRhVjcXEASp/Ft59Xz7lbo=;
+	b=h4NcwoexxJ+kZKlRY4SPuZTRf2tj2GBLVaePFpAuyrirtJUiyd9OBfAsD51KP2xapa
+	9PLPQkiMeONSaAoIU9/dBHZ8VaniRoqeOUPFIe69CKOWDmHoP1gRo1vb5R0XyStcZi/h
+	geDalgstUb9hXtucbRagGoxyBvXJkKsmap+tI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=LyOiP/7PSepTxMcShVvhmX1y+LiSr5ovvqMEvvJZNOs=;
-	b=K8NPqau8V8bVBzihTITVZ/IDzRPqiht3Dnrd56mDH7tQGxbEaGO/zCypczukg/dmXl
-	YiaCmeREg09yE1RSeejfMzEFM2yXsUY0Mwa0h0myMAqnPn7cHgo+0m0o4HKwRa0exjMF
-	+5LiPNtGWyLa1st4ldxq7ioNf4kRK2A/+xFvCvG/qHMQb3CBFqCfJdkE349BQDvj4Es7
-	L8igQVFqINOoAqZnag0cwb7uy/7+FsCq83XBSfun+nwuBwx/eWRbQkS/wcL73hl2XseM
-	tdFFxoc5DbM/5X+buQb9TuKQpErAfs7rfw5nI85JP9vRUkIhXOya+oUraeEtwX0ITL5m
-	ryuQ==
-X-Gm-Message-State: AE9vXwN0bqtXfjvsg7f4aKs20/7Fr5G3eoqd+Be683PBojx5ef47RiV6NasOidBq328N+XVuA9rc7IVSFubPQuRX
-X-Received: by 10.31.94.142 with SMTP id s136mr4489731vkb.3.1474392064924;
-	Tue, 20 Sep 2016 10:21:04 -0700 (PDT)
+	bh=7LW3c6NBFkh8J4aU4MPJBPRhVjcXEASp/Ft59Xz7lbo=;
+	b=LAPqdrcGRfUDUD+/eghWHDAKCD7KqF8DwzaFJ/aQETJTGy1LY0JvrD+scnb+ifJkfF
+	9AIIT0X7TeuH9W1ALfVzzsuWdFDqgQnJ7/NrcwUgH3XERg31ltM2Az0WWkiSpUeuIv4F
+	6OOpvywCpGp/XnyEF4Ulg2G3mxxclPezxCte04upy/yxuVEPZBySE7726i+MSGprU/nw
+	YDHLHvsjUnzpMHYrsTVwdY180YjlfHtROvw94yPv8d+qR6PZwpZCp2wXPfCvTv3WKTUD
+	rt58zWhCzUBER0D4qruNa4m6PX/9FYrZc3+V8xydLW8J5UwFPpGokyKhzNUPldou+xi5
+	yYiQ==
+X-Gm-Message-State: AE9vXwMyo62XPMQpNKdOAhF+WYibT//dXRjdAbXF6+g99hmsAfTtGWrglsNh2K85AnGpGfXyRCEzhDHXRYC4U6bS
+X-Received: by 10.31.81.2 with SMTP id f2mr5218782vkb.165.1474392136162; Tue,
+	20 Sep 2016 10:22:16 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.16.98 with HTTP; Tue, 20 Sep 2016 10:20:44 -0700 (PDT)
-In-Reply-To: <586d1643bf90bab81322ae34b9b68c10458249a9.1473252818.git.digetx@gmail.com>
+Received: by 10.31.16.98 with HTTP; Tue, 20 Sep 2016 10:21:55 -0700 (PDT)
+In-Reply-To: <b485e92cac7725a75f7de9ca6b458ffa4082e099.1473252818.git.digetx@gmail.com>
 References: <cover.1473252818.git.digetx@gmail.com>
-	<586d1643bf90bab81322ae34b9b68c10458249a9.1473252818.git.digetx@gmail.com>
+	<b485e92cac7725a75f7de9ca6b458ffa4082e099.1473252818.git.digetx@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Sep 2016 18:20:44 +0100
-Message-ID: <CAFEAcA_4xVH0PzytZpvyCTCgxm2TORg20C=UKHVApeVdkMvneA@mail.gmail.com>
+Date: Tue, 20 Sep 2016 18:21:55 +0100
+Message-ID: <CAFEAcA_QoFRgBvHTJzpVERJ2y_EiT=w483ep5atbe604U2WByQ@mail.gmail.com>
 To: Dmitry Osipenko <digetx@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::230
-Subject: Re: [Qemu-arm] [PATCH v16 05/16] hw/ptimer: Add "wraparound after
- one period" policy
+X-Received-From: 2607:f8b0:400c:c05::22c
+Subject: Re: [Qemu-arm] [PATCH v16 07/16] hw/ptimer: Add "continuous
+ trigger" policy
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,44 +80,56 @@ Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Itn1KbLKrAWh
+X-TUID: JX9zWkKulsIO
 
 On 7 September 2016 at 14:22, Dmitry Osipenko <digetx@gmail.com> wrote:
-> Currently, periodic counter wraps around immediately once counter reaches
-> "0", this is wrong behaviour for some of the timers, resulting in one period
-> being lost. Add new ptimer policy that provides correct behaviour for such
-> timers, so that counter stays with "0" for a one period before wrapping
-> around.
-
-This says it's just adding a new policy...
-
-> @@ -91,7 +96,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
->  {
->      uint64_t counter;
+> Currently, periodic timer that has load = delta = 0 performs trigger
+> on timer reload and stops, printing a "period zero" error message.
+> Introduce new policy that makes periodic timer to continuously trigger
+> with a period interval in case of load = 0.
 >
-> -    if (s->enabled) {
-> +    if (s->enabled && s->delta != 0) {
->          int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->          int64_t next = s->next_event;
->          bool expired = (now - next >= 0);
-> @@ -145,6 +150,14 @@ uint64_t ptimer_get_count(ptimer_state *s)
->                      div += 1;
->              }
->              counter = rem / div;
+> Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
+> ---
+>  hw/core/ptimer.c    | 18 +++++++++++++++++-
+>  include/hw/ptimer.h |  4 ++++
+>  2 files changed, 21 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+> index e9b2e15..97ce8ae 100644
+> --- a/hw/core/ptimer.c
+> +++ b/hw/core/ptimer.c
+> @@ -45,7 +45,8 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+>          ptimer_trigger(s);
+>          delta = s->delta = s->limit;
+>      }
+> -    if (delta == 0 || s->period == 0) {
 > +
-> +            if (!oneshot && s->delta == s->limit) {
-> +                /* Before wrapping around, timer should stay with counter = 0
-> +                   for a one period.  The delta has been adjusted by +1 for
-> +                   the wrapped around counter, so taking a modulo of limit + 1
-> +                   gives that period.  */
-> +                counter %= s->limit + 1;
-> +            }
+> +    if (s->period == 0) {
+>          if (!qtest_enabled()) {
+>              fprintf(stderr, "Timer with period zero, disabling\n");
 >          }
->      } else {
->          counter = s->delta;
+> @@ -58,6 +59,21 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+>          delta += delta_adjust;
+>      }
+>
+> +    if (delta == 0 && (s->policy_mask & PTIMER_POLICY_CONTINUOUS_TRIGGER)) {
+> +        if (s->enabled == 1) {
+> +            delta = 1;
+> +        }
+> +    }
+> +
+> +    if (delta == 0) {
+> +        if (!qtest_enabled()) {
+> +            fprintf(stderr, "Timer with delta zero, disabling\n");
+> +        }
+> +        timer_del(s->timer);
+> +        s->enabled = 0;
+> +        return;
+> +    }
+> +
 
-...but the changes in this function look like they affect
-behaviour even if that policy flag isn't set.
+Again, this looks like it's affecting behaviour even when the
+policy flag isn't set.
 
 thanks
 -- PMM

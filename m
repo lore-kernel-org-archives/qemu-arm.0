@@ -1,117 +1,149 @@
-Received: by 10.80.163.71 with SMTP id 65csp74187edn;
-        Thu, 22 Sep 2016 09:39:27 -0700 (PDT)
-X-Received: by 10.237.53.29 with SMTP id a29mr3091519qte.4.1474562367361;
-        Thu, 22 Sep 2016 09:39:27 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp83618edn;
+        Thu, 22 Sep 2016 10:07:07 -0700 (PDT)
+X-Received: by 10.237.54.164 with SMTP id f33mr3051717qtb.139.1474564027394;
+        Thu, 22 Sep 2016 10:07:07 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id w3si1687863qta.144.2016.09.22.09.39.27
+        by mx.google.com with ESMTPS id 87si1808678qks.19.2016.09.22.10.07.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Sep 2016 09:39:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Thu, 22 Sep 2016 10:07:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53082 helo=lists.gnu.org)
+Received: from localhost ([::1]:54073 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bn71y-0006kE-Of
-	for alex.bennee@linaro.org; Thu, 22 Sep 2016 12:39:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36901)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bn7Sk-000503-Ov
+	for alex.bennee@linaro.org; Thu, 22 Sep 2016 13:07:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bn6Nz-0003AN-D6
-	for qemu-arm@nongnu.org; Thu, 22 Sep 2016 11:58:08 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bn6mi-0006Mm-HW
+	for qemu-devel@nongnu.org; Thu, 22 Sep 2016 12:23:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bn6Nx-0000Ix-Ml
-	for qemu-arm@nongnu.org; Thu, 22 Sep 2016 11:58:06 -0400
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:33998)
+	(envelope-from <peter.maydell@linaro.org>) id 1bn6mg-0002nu-HD
+	for qemu-devel@nongnu.org; Thu, 22 Sep 2016 12:23:39 -0400
+Received: from mail-vk0-x234.google.com ([2607:f8b0:400c:c05::234]:33832)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bn6Nx-0000Ia-G0
-	for qemu-arm@nongnu.org; Thu, 22 Sep 2016 11:58:05 -0400
-Received: by mail-vk0-x22e.google.com with SMTP id u196so28833644vkd.1
-	for <qemu-arm@nongnu.org>; Thu, 22 Sep 2016 08:58:05 -0700 (PDT)
+	(envelope-from <peter.maydell@linaro.org>) id 1bn6mg-0002no-BP
+	for qemu-devel@nongnu.org; Thu, 22 Sep 2016 12:23:38 -0400
+Received: by mail-vk0-x234.google.com with SMTP id u196so29568063vkd.1
+	for <qemu-devel@nongnu.org>; Thu, 22 Sep 2016 09:23:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nhZGzFLDeKcAI/xOH2fG2Ql2zIOSqmIyqilgRHT7io0=;
-	b=YlbIx4D7+9hxrEdpdxqUVbTJ1TXzuaB3mkEgMiL9FJ6MlmAkwSjy+XvxWXqKi3pnz+
-	THLvQXt6/tBbUkbIwOJFm0IHAaP7CvKapSmNSQCwmqnpmrr8ZLSjeo0/vTYnp77xUh6M
-	xvXv4rsmgil2/9t8d17VRzxBbJo24XVQytu5o=
+	:cc; bh=XriTpep6kqD+QvYQ82ipWiq+/IhlBdvP99Uc6qhVLkM=;
+	b=F8Bx/rdidRMmeVNnU+PITQ7oRjXtdrUmwUJeBLzulo4MVCsxt63synpI4QLncl4p9p
+	MloA1WPqmxnzAw0PzqXzXZsKF8SUaZA8AfD7sUCx1UDPKdPS8IzgFwz6h1VjlWSVOaof
+	twVNdT5TTWNv1hvUgNVNusw06INoFfgg8FerE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=nhZGzFLDeKcAI/xOH2fG2Ql2zIOSqmIyqilgRHT7io0=;
-	b=cvUWj5Vu3QNeOmB9QseTVE0WsFys+OZCgKA1xwSUdNd+7wkc3YMk4QeVCrOCZM+rxM
-	HM5xqpav4H36K6sJWbCjjY7U8gaPP8cvFsygWneLvLq80N3HGRnaVsVKVikCZ38wl88l
-	4nnyhuRmXY75I7kgvRrAtxFKvaQA1yNUmggy9ePx7U55CaPTLJunD1TZ1YNJRi/LBmLe
-	Y0x8oiX1VGMw44dsyarUdMeFv45tTQlOMSWwXU96B9/o+HR0B5fwGDaoyips6ZecYeZw
-	G7Tur/ZFCnOCF2ONbyZR4jVyijAklmDPwDHnd4Dv8//piDPGuIGr5ec0wXSZk3OVUveZ
-	PztA==
-X-Gm-Message-State: AE9vXwNuQWGwlKRXbFkY1k7SUOwNocJ9emcCQeEvR8sbRxvyV+WFvXnvVM4IfM/vQGLLXgcGuKTrDS+VxOKNKAEL
-X-Received: by 10.31.51.70 with SMTP id z67mr1879445vkz.170.1474559884651;
-	Thu, 22 Sep 2016 08:58:04 -0700 (PDT)
+	bh=XriTpep6kqD+QvYQ82ipWiq+/IhlBdvP99Uc6qhVLkM=;
+	b=ViQkAHKrIyRXel/z98mLt711nr+mLhfYyAyr3cg+Zjk7Jc18FUIx7I/vS+FdoDSNKj
+	klxHJ4tnH2K08EIjdWU+umHXY2aO4ufuF02pkikolbnwYA/ka9NRixJMnPjHvMusBdah
+	lHALaTrdyM+lQYhSHagiG8aMlURyttW43CK36/BKSjf+Dk+0Ke3u2PDRX63PDUO4EwbA
+	0YwV+TN06QKvP1D0XbYZV3gcBDvuZrKeyK41KLzDSWz6K+ReIFmbSUR1CwH0mqDoD0R7
+	EfDvU0DrEsvOwgHyDgtBFetk+HGq0k3RNXXeeN/VR7+AARr3OtHK8dwa6E9lFz/O01QO
+	XrQg==
+X-Gm-Message-State: AE9vXwPwsBNF7nwdnaKwxi+P2rfPcNyd2S7PdYR0jhssRwYQcXqUpgfW+IQSVWO4nQoU70CGIe/xHNvQ3IZrDdEt
+X-Received: by 10.31.51.70 with SMTP id z67mr1950715vkz.170.1474561417715;
+	Thu, 22 Sep 2016 09:23:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.16.98 with HTTP; Thu, 22 Sep 2016 08:57:43 -0700 (PDT)
-In-Reply-To: <fdf21190-62cd-dd76-e31e-d32010c9418b@redhat.com>
-References: <1473442237-3746-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA9qgGw99w9HtZWLyKUwECQnK4b2U8kckmjAtA9+UF7e0A@mail.gmail.com>
-	<fdf21190-62cd-dd76-e31e-d32010c9418b@redhat.com>
+Received: by 10.31.16.98 with HTTP; Thu, 22 Sep 2016 09:23:17 -0700 (PDT)
+In-Reply-To: <1473520054-402-1-git-send-email-m.olbrich@pengutronix.de>
+References: <1473520054-402-1-git-send-email-m.olbrich@pengutronix.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Sep 2016 16:57:43 +0100
-Message-ID: <CAFEAcA8nS0Ao5b5_rvWeokAm2wKAKE5ggncGK3BQ-morLQFoHQ@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
+Date: Thu, 22 Sep 2016 17:23:17 +0100
+Message-ID: <CAFEAcA9UoqKSqH+b_zF435u+pZQCdGWu_KDGFW=MH+71Q_j6ng@mail.gmail.com>
+To: Michael Olbrich <m.olbrich@pengutronix.de>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 0/8] vITS support
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::234
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/boot: allow using a command line
+ specified dtb without a kernel
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Tomasz Nowicki <tn@semihalf.com>,
-	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Diana Craciun <diana.craciun@freescale.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z8jNKYG2fwez
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IHJsEpqEGWY7
 
-On 22 September 2016 at 16:53, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 22/09/2016 16:08, Peter Maydell wrote:
->> On 9 September 2016 at 18:30, Eric Auger <eric.auger@redhat.com> wrote:
->>> This series introduces support for in-kernel GICv3 ITS emulation.
->>>
->>> On dt guest the functionality is complete and was tested on Cavium ThunderX
->>> with virtio-net-pci and vhost-net.
->>>
->>> On ACPI guest the series was tested with virtio-net-pci only. For vhost-net,
->>> using MSIX we currently miss the ACPI IORT table generation linking the
->>> PCIe host controller with the ITS. The work is ongoing and will be submitted
->>> separately. Anyway the kernel ACPI IORT ITS node support is not upstreamed
->>> yet.
->>>
->>> The first patch is not really related to virtual ITS but advertises the KVM
->>> GSI routing support which goes along with MSI injection.
->>
->> Patches 7 and 8 are missing your signed-off-by line...
->
-> Sure I will add them on top of Shannon's ones. Most credit must be given
-> to him though.
+On 10 September 2016 at 16:07, Michael Olbrich <m.olbrich@pengutronix.de> wrote:
+> When kernel and device tree are specified in the QEMU commandline, then
+> this device tree may be modified e.g. to add virtio_mmio devices.
+> With a bootloader e.g. on a flash device these extra devices are not
+> available.
+> With this change, the device tree can be specified at the QEMU commandline.
+> The modified device tree made available to the bootloader with the same
+> mechanism already supported by device trees fully generated by QEMU.
 
-Yep; you just need to add yours since the patches have passed
-through you as well.
+Would you mind explaining your usecase in a little more detail
+(for instance which machine model are you using) ?
+
+> Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
+> ---
+>  hw/arm/boot.c | 4 ++--
+>  vl.c          | 5 -----
+>  2 files changed, 2 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 1b913a43ca65..942416d95a6f 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -773,6 +773,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+>       */
+>      assert(!(info->secure_board_setup && kvm_enabled()));
+>
+> +    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
+> +
+>      /* Load the kernel.  */
+>      if (!info->kernel_filename || info->firmware_loaded) {
+>
+> @@ -833,8 +835,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+>          elf_machine = EM_ARM;
+>      }
+>
+> -    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
+> -
+>      if (!info->secondary_cpu_reset_hook) {
+>          info->secondary_cpu_reset_hook = default_reset_secondary;
+>      }
+
+This change definitely makes sense -- we check info->dtb_filename
+in have_dtb() so we need to set it before we call that function,
+not afterwards.
+
+> diff --git a/vl.c b/vl.c
+> index ee557a1d3f8a..bbea51e0ce7d 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4335,11 +4335,6 @@ int main(int argc, char **argv, char **envp)
+>          exit(1);
+>      }
+>
+> -    if (!linux_boot && qemu_opt_get(machine_opts, "dtb")) {
+> -        error_report("-dtb only allowed with -kernel option");
+> -        exit(1);
+> -    }
+> -
+
+I can see why you want this change, but what worries me a little
+is that this is changing the behaviour of -dtb for all QEMU
+target architectures, not just ARM (they no longer get a helpful
+message on user error). I'm not sure how to address that, though.
 
 thanks
 -- PMM

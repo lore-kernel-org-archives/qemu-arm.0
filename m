@@ -1,78 +1,80 @@
-Received: by 10.80.163.71 with SMTP id 65csp535654edn;
-        Fri, 23 Sep 2016 12:40:05 -0700 (PDT)
-X-Received: by 10.55.162.13 with SMTP id l13mr10008027qke.72.1474659605030;
-        Fri, 23 Sep 2016 12:40:05 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp536423edn;
+        Fri, 23 Sep 2016 12:42:50 -0700 (PDT)
+X-Received: by 10.55.184.2 with SMTP id i2mr8985704qkf.48.1474659770704;
+        Fri, 23 Sep 2016 12:42:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q67si6183462qkq.261.2016.09.23.12.40.04
+        by mx.google.com with ESMTPS id x4si6189931qke.212.2016.09.23.12.42.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Sep 2016 12:40:05 -0700 (PDT)
+        Fri, 23 Sep 2016 12:42:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50480 helo=lists.gnu.org)
+Received: from localhost ([::1]:50525 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bnWKK-0004yu-En
-	for alex.bennee@linaro.org; Fri, 23 Sep 2016 15:40:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48331)
+	id 1bnWMz-00077O-UD
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 15:42:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1bnWKD-0004wR-Eh
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 15:39:58 -0400
+	(envelope-from <mar.krzeminski@gmail.com>) id 1bnWMt-00075w-I7
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 15:42:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mar.krzeminski@gmail.com>) id 1bnWKA-0001ZH-9Z
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 15:39:57 -0400
-Received: from mail-lf0-f66.google.com ([209.85.215.66]:34837)
+	(envelope-from <mar.krzeminski@gmail.com>) id 1bnWMo-0002pH-Kg
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 15:42:43 -0400
+Received: from mail-lf0-f50.google.com ([209.85.215.50]:34498)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mar.krzeminski@gmail.com>)
-	id 1bnWKA-0001ZA-0Y; Fri, 23 Sep 2016 15:39:54 -0400
-Received: by mail-lf0-f66.google.com with SMTP id s64so6179262lfs.2;
-	Fri, 23 Sep 2016 12:39:53 -0700 (PDT)
+	id 1bnWMo-0002p2-8L; Fri, 23 Sep 2016 15:42:38 -0400
+Received: by mail-lf0-f50.google.com with SMTP id y6so101121403lff.1;
+	Fri, 23 Sep 2016 12:42:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=to:from:subject:message-id:date:user-agent:mime-version;
-	bh=L70LooZo0ZY8Er5lxsbn4xNGKhjPliy7QQJ9Zu6yY0Y=;
-	b=P9AhG9JkR4Vp/I8JDA2H8P6LaWRlJc0pNyzLsst3CR50S/2ah4xa+12PrNJPGdCuw4
-	IE+Vux/YJJlLtkoqDClIMowonilvGuCyoa0EPCxVlLIS+SYjMuAbWrtOOCAEyTYhrhbo
-	37vRGsxYpNcAD1qrhDjxFedqBYu3CW2DqmOjUsdxDJPyn+Uv2u9xQbhmXYpbk2uAq9Wl
-	7ndbbNGi5XE+E1iUkuT3+eyM2zKVWAaWDGXQrDJYfirj7rMiyFuEXvjc79Rxx5pVZoGe
-	gU+MowO9b9rf44QMe5oPNT/QD3QI/P8y0LiohzaF8hBcyOl7U71zcGJmGb9kKQw7wWyM
-	Piww==
+	h=subject:to:references:from:message-id:date:user-agent:mime-version
+	:in-reply-to; bh=NwlfJMCyy49OJ7vIuTOxPWBFvcJzMa/ERrLnBRc2ykE=;
+	b=ktxwF2wIyjhzjUhzQHo4IcA3uuZimXCTpd5Pw9yFlaZvAmqmlKqLGsSZ7Qtuwxs5B4
+	3RxFMHIAK/UgHaUnN5LoWGYTp9HLaKIbUp7gThdK5W5oYz3K6TWf2pvyFrwrfZ8OpMqA
+	skfg1oQpn9Hwi2wyhyDop3mAd0oXjsNLJe6kLeb8QEIJSS/9sB1VF/LU/WguY/GHdno6
+	UQPOArsA1dgyqA0EuL02Yk2m/nOQ26qYkEtqlPvP5SBvuNPt0UicrSL21EX5WazGEpca
+	htrISpQfEPUDucZJ5xtoDQzGBNg8Tc+lnky/7YzsdIdSDUdPmORDjYqNBZypQcksHJ46
+	MDOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:to:from:subject:message-id:date:user-agent
-	:mime-version;
-	bh=L70LooZo0ZY8Er5lxsbn4xNGKhjPliy7QQJ9Zu6yY0Y=;
-	b=S8i9RYqkJFem7iKIl8w0RycaYwHAfg+CTLqYgX5e03EZY8x2OJ6KJZOQtMbBZ3S4T/
-	D7IJupaNUtxldgn2/yQ9dPw29rWOfmsttN2v7nLKnTuMdye4pgNZC1bqWhYqOCTuIZrj
-	eDIxtpsm4CQPgpfnNfU24glFnhXgOyPg2XjM8s04q3KnwOkWUOPNubXKe0VS/kPaLNgJ
-	v1Vk/Zvre9lLvuSmVWgtxhx1zsjOFa7YfA4FyWkxbY7rhkUZl/Eg6p4bXX2uRUjrRXqL
-	3sucekuR4g6mQBgY6AUcXX0Gm1cjVw2LzSnzJVld657EPT6LyxvEnDQz0pnhhHOeDerZ
-	SSJw==
-X-Gm-Message-State: AE9vXwOUgGFxCgQLYCzEk0uCJrniIQ47nG+GcV8Qlwxk+eQjolLPZXff0kJkhX9rXKLx5Q==
-X-Received: by 10.25.170.76 with SMTP id t73mr3105359lfe.70.1474659532539;
-	Fri, 23 Sep 2016 12:38:52 -0700 (PDT)
+	h=x-gm-message-state:subject:to:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to;
+	bh=NwlfJMCyy49OJ7vIuTOxPWBFvcJzMa/ERrLnBRc2ykE=;
+	b=a6iuJ+NBq2W2QWIZLDqTOorWpSSilzk0EjzO08x766u+w6UBnG32w8F2PN8PKb/GhN
+	vni/hMFYsoul+Vux0wyEUz2gPwJdc3Sc3cO+WxfL07IaRhzVsob2U+vfXv4samrel0w+
+	QCGFeo+Zh6nPsIHjsOX2mdCLvcH/R8dxs8K/and1U0tK2ofItYFh/L81ePDJK0CwlROd
+	23KCNc0NsEaQARXmDRKcMmABgT7Z6wVSUMyRcnJgE4jLIeWuLhQzHMYdeIzk+AitXpYU
+	xG9AapizJWnHFjePIgKrXraqnb+z6lrzOJkd2uWwiK3d72kg3Nzj/ROWoFa82OxBDwZc
+	XohQ==
+X-Gm-Message-State: AE9vXwNcAeazHDi8dbucL/6IxBgbqm7rYKCQnQn3Y01Hh4i5e683vHj7QefKfHDsHNmsNQ==
+X-Received: by 10.25.74.194 with SMTP id x185mr3588968lfa.146.1474659697054;
+	Fri, 23 Sep 2016 12:41:37 -0700 (PDT)
 Received: from [192.168.75.104] (89-70-149-145.dynamic.chello.pl.
-	[89.70.149.145]) by smtp.gmail.com with ESMTPSA id
-	x131sm1486470lff.44.2016.09.23.12.38.51
+	[89.70.149.145])
+	by smtp.gmail.com with ESMTPSA id a6sm1445170lfb.24.2016.09.23.12.41.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 23 Sep 2016 12:38:51 -0700 (PDT)
+	Fri, 23 Sep 2016 12:41:36 -0700 (PDT)
 To: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	qemu-arm <qemu-arm@nongnu.org>
+References: <6f7cd004-06b6-0ee5-86bc-082aa593ea64@gmail.com>
 From: "mar.krzeminski" <mar.krzeminski@gmail.com>
-Message-ID: <6f7cd004-06b6-0ee5-86bc-082aa593ea64@gmail.com>
-Date: Fri, 23 Sep 2016 21:38:50 +0200
+Message-ID: <fcd86bbd-f730-9a52-314e-fb582511673e@gmail.com>
+Date: Fri, 23 Sep 2016 21:41:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.3.0
 MIME-Version: 1.0
+In-Reply-To: <6f7cd004-06b6-0ee5-86bc-082aa593ea64@gmail.com>
 Content-Type: multipart/alternative;
-	boundary="------------0D1046E4280CE07391980867"
+	boundary="------------26DBD2BD217EA18FDB08BD34"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.215.66
-Subject: [Qemu-arm] 9p as rootfs
+X-Received-From: 209.85.215.50
+Subject: Re: [Qemu-arm] 9p as rootfs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,91 +88,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +3+RRjnIxE6g
+X-TUID: 9baXdmW0TwXI
 
 This is a multi-part message in MIME format.
---------------0D1046E4280CE07391980867
+--------------26DBD2BD217EA18FDB08BD34
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 
-Hello,
+And most important, while mounting as roots, error is:
 
-I have a problem in my custom arm machine to use 9p fs as a rootfs.
-
-9p command line i qemu:
-
-/-device virtio-9p-device,fsdev=host_fs,mount_tag=hostfs -fsdev 
-local,id=host_fs,security_model=none,path=/work/rootfs/
-
-Kernel cmd line:
-
-/--append "root=hostfs rootfstype=9p rootflags=trans=virtio noinitrd 
-console=ttyS3,115200"
-
-/Device tree entry:
-
-/        virtio: virtio_mmio@ff0a4000 {//
-//            compatible = "virtio,mmio";//
-//            reg = <0xff0a4000 0x200>;//
-//            interrupts = <0 72 1>;//
-//            status = "okay";//
-//        };
-
-
-/ I can mount this fs from kernel using fstab entry:
-/hostfs               /mnt/host            9p trans=virtio          0  0
-
-/Do you have any idea what am I doing wrong?
+[    1.086235] device: '9p-1': device_add
+[    1.087859] 9pnet_virtio: no channels available
+[    1.091619] device: '9p-1': device_unregister
+[    1.092783] device: '9p-1': device_create_release
+[    1.093534] VFS: Cannot open root device "host" or 
+unknown-block(0,0): error -2
 
 Thanks,
-Marcin/
-/
+Marcin
 
---------------0D1046E4280CE07391980867
+W dniu 23.09.2016 o 21:38, mar.krzeminski pisze:
+> Hello,
+>
+> I have a problem in my custom arm machine to use 9p fs as a rootfs.
+>
+> 9p command line i qemu:
+>
+> /-device virtio-9p-device,fsdev=host_fs,mount_tag=hostfs -fsdev 
+> local,id=host_fs,security_model=none,path=/work/rootfs/
+>
+> Kernel cmd line:
+>
+> /--append "root=hostfs rootfstype=9p rootflags=trans=virtio noinitrd 
+> console=ttyS3,115200"
+>
+> /Device tree entry:
+>
+> /        virtio: virtio_mmio@ff0a4000 {//
+> //            compatible = "virtio,mmio";//
+> //            reg = <0xff0a4000 0x200>;//
+> //            interrupts = <0 72 1>;//
+> //            status = "okay";//
+> //        };
+>
+>
+> / I can mount this fs from kernel using fstab entry:
+> /hostfs               /mnt/host            9p trans=virtio          0  0
+>
+> /Do you have any idea what am I doing wrong?
+>
+> Thanks,
+> Marcin/
+> / 
+
+
+--------------26DBD2BD217EA18FDB08BD34
 Content-Type: text/html; charset=utf-8
 Content-Transfer-Encoding: 8bit
 
 <html>
   <head>
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   </head>
   <body bgcolor="#FFFFFF" text="#000000">
-    <font size="-1">Hello,<br>
-      <br>
-      I have a problem in my custom arm machine to use 9p fs as a
-      rootfs.<br>
-      <br>
-      9p command line i qemu:<br>
-      <br>
-      <i>-device virtio-9p-device,fsdev=host_fs,mount_tag=hostfs -fsdev
-        local,id=host_fs,security_model=none,path=/work/rootfs</i><br>
-      <br>
-      Kernel cmd line:<br>
-      <br>
-      <i>--append "root=hostfs rootfstype=9p rootflags=trans=virtio
-        noinitrd console=ttyS3,115200"<br>
+    And most important, while mounting as roots, error is:<br>
+    <br>
+    [    1.086235] device: '9p-1': device_add<br>
+    [    1.087859] 9pnet_virtio: no channels available<br>
+    [    1.091619] device: '9p-1': device_unregister<br>
+    [    1.092783] device: '9p-1': device_create_release<br>
+    [    1.093534] VFS: Cannot open root device "host" or
+    unknown-block(0,0): error -2<br>
+    <br>
+    Thanks,<br>
+    Marcin<br>
+    <br>
+    <div class="moz-cite-prefix">W dniu 23.09.2016 o 21:38,
+      mar.krzeminski pisze:<br>
+    </div>
+    <blockquote
+      cite="mid:6f7cd004-06b6-0ee5-86bc-082aa593ea64@gmail.com"
+      type="cite">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <font size="-1">Hello,<br>
         <br>
-      </i>Device tree entry:<br>
-      <br>
-      <i>        virtio: virtio_mmio@ff0a4000 {</i><i><br>
-      </i><i>            compatible = "virtio,mmio";</i><i><br>
-      </i><i>            reg = &lt;0xff0a4000 0x200&gt;;</i><i><br>
-      </i><i>            interrupts = &lt;0 72 1&gt;;</i><i><br>
-      </i><i>            status = "okay";</i><i><br>
-      </i><i>        };<br>
+        I have a problem in my custom arm machine to use 9p fs as a
+        rootfs.<br>
         <br>
+        9p command line i qemu:<br>
         <br>
-      </i> I can mount this fs from kernel using fstab entry:<br>
-      <i>hostfs               /mnt/host            9p        
-        trans=virtio          0  0<br>
+        <i>-device virtio-9p-device,fsdev=host_fs,mount_tag=hostfs
+          -fsdev local,id=host_fs,security_model=none,path=/work/rootfs</i><br>
         <br>
-      </i>Do you have any idea what am I doing wrong?<br>
-      <br>
-      Thanks,<br>
-      Marcin<i><br>
-      </i></font>
+        Kernel cmd line:<br>
+        <br>
+        <i>--append "root=hostfs rootfstype=9p rootflags=trans=virtio
+          noinitrd console=ttyS3,115200"<br>
+          <br>
+        </i>Device tree entry:<br>
+        <br>
+        <i>        virtio: virtio_mmio@ff0a4000 {</i><i><br>
+        </i><i>            compatible = "virtio,mmio";</i><i><br>
+        </i><i>            reg = &lt;0xff0a4000 0x200&gt;;</i><i><br>
+        </i><i>            interrupts = &lt;0 72 1&gt;;</i><i><br>
+        </i><i>            status = "okay";</i><i><br>
+        </i><i>        };<br>
+          <br>
+          <br>
+        </i> I can mount this fs from kernel using fstab entry:<br>
+        <i>hostfs               /mnt/host            9p        
+          trans=virtio          0  0<br>
+          <br>
+        </i>Do you have any idea what am I doing wrong?<br>
+        <br>
+        Thanks,<br>
+        Marcin<i><br>
+        </i></font> </blockquote>
+    <br>
   </body>
 </html>
 
---------------0D1046E4280CE07391980867--
+--------------26DBD2BD217EA18FDB08BD34--

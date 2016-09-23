@@ -1,66 +1,67 @@
-Received: by 10.80.163.71 with SMTP id 65csp99370edn;
-        Thu, 22 Sep 2016 10:49:51 -0700 (PDT)
-X-Received: by 10.237.53.29 with SMTP id a29mr3449923qte.4.1474566591441;
-        Thu, 22 Sep 2016 10:49:51 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp283775edn;
+        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
+X-Received: by 10.200.40.143 with SMTP id i15mr6260022qti.34.1474612417226;
+        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r11si1941244qtb.104.2016.09.22.10.49.51
+        by mx.google.com with ESMTPS id h29si4177209qkh.34.2016.09.22.23.33.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Sep 2016 10:49:51 -0700 (PDT)
+        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55280 helo=lists.gnu.org)
+Received: from localhost ([::1]:41233 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bn886-0003Tp-PW
-	for alex.bennee@linaro.org; Thu, 22 Sep 2016 13:49:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39175)
+	id 1bnK3E-0005aA-MA
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 02:33:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bn6V1-0001m2-Jh
-	for qemu-arm@nongnu.org; Thu, 22 Sep 2016 12:05:24 -0400
+	(envelope-from <mol@pengutronix.de>) id 1bnK3B-0005Zv-0a
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bn6Uv-0003YB-JW
-	for qemu-arm@nongnu.org; Thu, 22 Sep 2016 12:05:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39776)
+	(envelope-from <mol@pengutronix.de>) id 1bnK36-0005V3-QL
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:31 -0400
+Received: from metis.ext.4.pengutronix.de ([92.198.50.35]:45708)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>)
-	id 1bn6Uv-0003Y4-DQ; Thu, 22 Sep 2016 12:05:17 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AE2B0C05678C;
-	Thu, 22 Sep 2016 16:05:16 +0000 (UTC)
-Received: from localhost.localdomain (vpn1-7-69.ams2.redhat.com [10.36.7.69])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u8MG5Cxu007476
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
-	Thu, 22 Sep 2016 12:05:14 -0400
+	(envelope-from <mol@pengutronix.de>) id 1bnK36-0005QP-Io
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:28 -0400
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+	by metis.ext.pengutronix.de with esmtps
+	(TLS1.2:RSA_AES_128_CBC_SHA1:128) (Exim 4.80)
+	(envelope-from <mol@pengutronix.de>)
+	id 1bnK2w-0005PU-Kc; Fri, 23 Sep 2016 08:33:18 +0200
+Received: from mol by pty.hi.pengutronix.de with local (Exim 4.84_2)
+	(envelope-from <mol@pengutronix.de>)
+	id 1bnK2v-0003bn-PV; Fri, 23 Sep 2016 08:33:17 +0200
+Date: Fri, 23 Sep 2016 08:33:17 +0200
+From: Michael Olbrich <m.olbrich@pengutronix.de>
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1473442237-3746-1-git-send-email-eric.auger@redhat.com>
-	<1473442237-3746-6-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA8cy4LxamAXu86DmpGUebpuvaoNdUWCySbbZYzRNjN6Fw@mail.gmail.com>
-	<c7f19ade-2d7b-9e09-91a9-e324b3c4efa1@redhat.com>
-	<CAFEAcA-i_AJXc_=Voa1x7QkjfXQ1dZCZinhjo8e9XZATBuFeyw@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <bf66fcbe-c9ca-16e6-1d5b-7d9a765da28c@redhat.com>
-Date: Thu, 22 Sep 2016 18:05:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.1.1
+Message-ID: <20160923063317.kmsbek755fcun5ea@pengutronix.de>
+References: <1473520054-402-1-git-send-email-m.olbrich@pengutronix.de>
+	<CAFEAcA9UoqKSqH+b_zF435u+pZQCdGWu_KDGFW=MH+71Q_j6ng@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-i_AJXc_=Voa1x7QkjfXQ1dZCZinhjo8e9XZATBuFeyw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 22 Sep 2016 16:05:16 +0000 (UTC)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9UoqKSqH+b_zF435u+pZQCdGWu_KDGFW=MH+71Q_j6ng@mail.gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 08:08:12 up 120 days, 16:32, 35 users,  load average: 0.00, 0.01,
+	0.05
+User-Agent: Mutt/1.6.2-neo (2016-06-11)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: mol@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+	SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v6 5/8] hw/intc/arm_gicv3_its: Implement
- support for in-kernel ITS emulation
+X-Received-From: 92.198.50.35
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/boot: allow using a command line
+ specified dtb without a kernel
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,50 +73,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Tomasz Nowicki <tn@semihalf.com>,
-	Shlomo Pongratz <shlomopongratz@gmail.com>,
-	Pavel Fedin <p.fedin@samsung.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Diana Craciun <diana.craciun@freescale.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: asRo1T1b2pPb
+X-TUID: hI1PAoNMgUEO
 
-Hi Peter,
-On 22/09/2016 17:59, Peter Maydell wrote:
-> On 22 September 2016 at 16:53, Auger Eric <eric.auger@redhat.com> wrote:
->> Hi Peter,
->>
->> On 22/09/2016 17:03, Peter Maydell wrote:
->>> Also, I think it would be simpler to just have kvm_its_send_msi() do
->>>
->>>    if (unlikely(!s->translater_gpa_known)) {
->>>        s->gits_translater_gpa = ...;
->>>        s->translater_gpa_known = true;
->>>    }
->> My issue precisely is to get the absolue GPA of the ITS translater.
->> kvm_its_send_msi is called by the region write callback which works on
->> relative address wrt start of the translation region while kvm ioctl
->> uses the absolute GPA. I did not see any other way to retrieve the
->> absolute GPA than using a machine init done notifier.
+On Thu, Sep 22, 2016 at 05:23:17PM +0100, Peter Maydell wrote:
+> On 10 September 2016 at 16:07, Michael Olbrich <m.olbrich@pengutronix.de> wrote:
+> > When kernel and device tree are specified in the QEMU commandline, then
+> > this device tree may be modified e.g. to add virtio_mmio devices.
+> > With a bootloader e.g. on a flash device these extra devices are not
+> > available.
+> > With this change, the device tree can be specified at the QEMU commandline.
+> > The modified device tree made available to the bootloader with the same
+> > mechanism already supported by device trees fully generated by QEMU.
 > 
-> I don't understand. There should be no difference between
-> (1) calculate gits_translater_gpa in the machine init done notifier
-> (2) calculate gits_translater_gpa the first time that we need it,
-> ie on first call to kvm_its_send_msi()
-> 
-> We don't use it anywhere else, do we ?
-Oh yes I now understand. Indeed I have all the data needed from
-kvm_its_send_msi parameters to compute it there. At the moment we do not
-use it anywhere else.
+> Would you mind explaining your usecase in a little more detail
+> (for instance which machine model are you using) ?
 
-I will proceed that way then.
+I'm using qemu for system integration testing. Including some bootloader /
+Linux kernel and userspace interaction. I'm currently using vexpress-a9 but
+I plan to investigate if the new imx6 machine is suitable for my use-case.
 
-Thanks
+In a setup without bootloader I already use a 9p rootfs. It's great for
+debugging and a lot easier to set up than networking and a NFS server.
 
-Eric
+With this patch (and some bootloader patches to handle the device tree) I
+can do the same when a bootloader is involved.
+
+> > Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
+> > ---
+> >  hw/arm/boot.c | 4 ++--
+> >  vl.c          | 5 -----
+> >  2 files changed, 2 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index 1b913a43ca65..942416d95a6f 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -773,6 +773,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+> >       */
+> >      assert(!(info->secure_board_setup && kvm_enabled()));
+> >
+> > +    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
+> > +
+> >      /* Load the kernel.  */
+> >      if (!info->kernel_filename || info->firmware_loaded) {
+> >
+> > @@ -833,8 +835,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
+> >          elf_machine = EM_ARM;
+> >      }
+> >
+> > -    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
+> > -
+> >      if (!info->secondary_cpu_reset_hook) {
+> >          info->secondary_cpu_reset_hook = default_reset_secondary;
+> >      }
 > 
-> thanks
-> -- PMM
+> This change definitely makes sense -- we check info->dtb_filename
+> in have_dtb() so we need to set it before we call that function,
+> not afterwards.
 > 
+> > diff --git a/vl.c b/vl.c
+> > index ee557a1d3f8a..bbea51e0ce7d 100644
+> > --- a/vl.c
+> > +++ b/vl.c
+> > @@ -4335,11 +4335,6 @@ int main(int argc, char **argv, char **envp)
+> >          exit(1);
+> >      }
+> >
+> > -    if (!linux_boot && qemu_opt_get(machine_opts, "dtb")) {
+> > -        error_report("-dtb only allowed with -kernel option");
+> > -        exit(1);
+> > -    }
+> > -
+> 
+> I can see why you want this change, but what worries me a little
+> is that this is changing the behaviour of -dtb for all QEMU
+> target architectures, not just ARM (they no longer get a helpful
+> message on user error). I'm not sure how to address that, though.
+
+Would a 'if !arm' be possible or useful here?
+
+Michael
+
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |

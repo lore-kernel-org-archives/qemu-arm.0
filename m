@@ -1,67 +1,62 @@
-Received: by 10.80.163.71 with SMTP id 65csp283775edn;
-        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
-X-Received: by 10.200.40.143 with SMTP id i15mr6260022qti.34.1474612417226;
-        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp284695edn;
+        Thu, 22 Sep 2016 23:37:35 -0700 (PDT)
+X-Received: by 10.200.37.111 with SMTP id 44mr6236989qtn.17.1474612655242;
+        Thu, 22 Sep 2016 23:37:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h29si4177209qkh.34.2016.09.22.23.33.37
+        by mx.google.com with ESMTPS id t42si4184101qte.36.2016.09.22.23.37.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Sep 2016 23:33:37 -0700 (PDT)
+        Thu, 22 Sep 2016 23:37:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41233 helo=lists.gnu.org)
+Received: from localhost ([::1]:41279 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bnK3E-0005aA-MA
-	for alex.bennee@linaro.org; Fri, 23 Sep 2016 02:33:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51826)
+	id 1bnK74-00088U-N1
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 02:37:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52539)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bnK3B-0005Zv-0a
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:34 -0400
+	(envelope-from <drjones@redhat.com>) id 1bnK70-00085s-Oi
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:37:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bnK36-0005V3-QL
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:31 -0400
-Received: from metis.ext.4.pengutronix.de ([92.198.50.35]:45708)
+	(envelope-from <drjones@redhat.com>) id 1bnK6w-0007yd-GE
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:37:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58594)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mol@pengutronix.de>) id 1bnK36-0005QP-Io
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:33:28 -0400
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
-	by metis.ext.pengutronix.de with esmtps
-	(TLS1.2:RSA_AES_128_CBC_SHA1:128) (Exim 4.80)
-	(envelope-from <mol@pengutronix.de>)
-	id 1bnK2w-0005PU-Kc; Fri, 23 Sep 2016 08:33:18 +0200
-Received: from mol by pty.hi.pengutronix.de with local (Exim 4.84_2)
-	(envelope-from <mol@pengutronix.de>)
-	id 1bnK2v-0003bn-PV; Fri, 23 Sep 2016 08:33:17 +0200
-Date: Fri, 23 Sep 2016 08:33:17 +0200
-From: Michael Olbrich <m.olbrich@pengutronix.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20160923063317.kmsbek755fcun5ea@pengutronix.de>
-References: <1473520054-402-1-git-send-email-m.olbrich@pengutronix.de>
-	<CAFEAcA9UoqKSqH+b_zF435u+pZQCdGWu_KDGFW=MH+71Q_j6ng@mail.gmail.com>
+	(envelope-from <drjones@redhat.com>)
+	id 1bnK6w-0007xw-6X; Fri, 23 Sep 2016 02:37:26 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7A493C04B934;
+	Fri, 23 Sep 2016 06:37:25 +0000 (UTC)
+Received: from hawk.localdomain (ovpn-204-80.brq.redhat.com [10.40.204.80])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8N6bKn5027220
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 23 Sep 2016 02:37:23 -0400
+Date: Fri, 23 Sep 2016 08:37:19 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Wei Huang <wei@redhat.com>
+Message-ID: <20160923063719.gugfuujmricxea2g@hawk.localdomain>
+References: <1474557203-4977-1-git-send-email-wei@redhat.com>
+	<1474557203-4977-2-git-send-email-wei@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA9UoqKSqH+b_zF435u+pZQCdGWu_KDGFW=MH+71Q_j6ng@mail.gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 08:08:12 up 120 days, 16:32, 35 users,  load average: 0.00, 0.01,
-	0.05
-User-Agent: Mutt/1.6.2-neo (2016-06-11)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: mol@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
-	SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
+In-Reply-To: <1474557203-4977-2-git-send-email-wei@redhat.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 23 Sep 2016 06:37:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 92.198.50.35
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/boot: allow using a command line
- specified dtb without a kernel
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V5 1/2] arm64: Add an option to
+ turn on/off vPMU support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,93 +68,221 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, abologna@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hI1PAoNMgUEO
+X-TUID: /akoGzlfPol6
 
-On Thu, Sep 22, 2016 at 05:23:17PM +0100, Peter Maydell wrote:
-> On 10 September 2016 at 16:07, Michael Olbrich <m.olbrich@pengutronix.de> wrote:
-> > When kernel and device tree are specified in the QEMU commandline, then
-> > this device tree may be modified e.g. to add virtio_mmio devices.
-> > With a bootloader e.g. on a flash device these extra devices are not
-> > available.
-> > With this change, the device tree can be specified at the QEMU commandline.
-> > The modified device tree made available to the bootloader with the same
-> > mechanism already supported by device trees fully generated by QEMU.
+On Thu, Sep 22, 2016 at 11:13:22AM -0400, Wei Huang wrote:
+> This patch adds a pmu=[on/off] option to enable/disable vPMU support
+> in guest vCPU. This option is only available for cortex-a57/cortex-53/
+> host under both TCG and KVM modes, but unavailable on ARMv7 and other
+> processors. It allows virt tools, such as libvirt, to determine the
+> exsitence of vPMU and configure it. Note that, if nothing specified,
+> the pmu option is set to AUTO as default, allowing machine-level PMU
+> property to override it. Also when pmu is turned on under non-KVM mode,
+> a warning message will be printed.
 > 
-> Would you mind explaining your usecase in a little more detail
-> (for instance which machine model are you using) ?
-
-I'm using qemu for system integration testing. Including some bootloader /
-Linux kernel and userspace interaction. I'm currently using vexpress-a9 but
-I plan to investigate if the new imx6 machine is suitable for my use-case.
-
-In a setup without bootloader I already use a 9p rootfs. It's great for
-debugging and a lot easier to set up than networking and a NFS server.
-
-With this patch (and some bootloader patches to handle the device tree) I
-can do the same when a bootloader is involved.
-
-> > Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
-> > ---
-> >  hw/arm/boot.c | 4 ++--
-> >  vl.c          | 5 -----
-> >  2 files changed, 2 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > index 1b913a43ca65..942416d95a6f 100644
-> > --- a/hw/arm/boot.c
-> > +++ b/hw/arm/boot.c
-> > @@ -773,6 +773,8 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-> >       */
-> >      assert(!(info->secure_board_setup && kvm_enabled()));
-> >
-> > +    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
-> > +
-> >      /* Load the kernel.  */
-> >      if (!info->kernel_filename || info->firmware_loaded) {
-> >
-> > @@ -833,8 +835,6 @@ static void arm_load_kernel_notify(Notifier *notifier, void *data)
-> >          elf_machine = EM_ARM;
-> >      }
-> >
-> > -    info->dtb_filename = qemu_opt_get(qemu_get_machine_opts(), "dtb");
-> > -
-> >      if (!info->secondary_cpu_reset_hook) {
-> >          info->secondary_cpu_reset_hook = default_reset_secondary;
-> >      }
+> Signed-off-by: Wei Huang <wei@redhat.com>
+> ---
+>  hw/arm/virt-acpi-build.c |  2 +-
+>  hw/arm/virt.c            |  2 +-
+>  target-arm/cpu.c         | 23 +++++++++++++++++++++++
+>  target-arm/cpu.h         |  3 ++-
+>  target-arm/cpu64.c       |  2 ++
+>  target-arm/kvm64.c       | 17 ++++++++++++++---
+>  6 files changed, 43 insertions(+), 6 deletions(-)
 > 
-> This change definitely makes sense -- we check info->dtb_filename
-> in have_dtb() so we need to set it before we call that function,
-> not afterwards.
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 295ec86..8b3083e 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -540,7 +540,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
+>          gicc->uid = i;
+>          gicc->flags = cpu_to_le32(ACPI_GICC_ENABLED);
+>  
+> -        if (armcpu->has_pmu) {
+> +        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+>              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+>          }
+>      }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index a193b5a..a781ad0 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -477,7 +477,7 @@ static void fdt_add_pmu_nodes(const VirtBoardInfo *vbi, int gictype)
+>  
+>      CPU_FOREACH(cpu) {
+>          armcpu = ARM_CPU(cpu);
+> -        if (!armcpu->has_pmu ||
+> +        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU) ||
+>              !kvm_arm_pmu_create(cpu, PPI(VIRTUAL_PMU_IRQ))) {
+>              return;
+>          }
+> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+> index ce8b8f4..ed7b884 100644
+> --- a/target-arm/cpu.c
+> +++ b/target-arm/cpu.c
+> @@ -19,6 +19,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "internals.h"
+> @@ -31,6 +32,7 @@
+>  #include "hw/arm/arm.h"
+>  #include "sysemu/sysemu.h"
+>  #include "sysemu/kvm.h"
+> +#include "sysemu/qtest.h"
+>  #include "kvm_arm.h"
+>  
+>  static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+> @@ -509,6 +511,10 @@ static Property arm_cpu_rvbar_property =
+>  static Property arm_cpu_has_el3_property =
+>              DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
+>  
+> +/* use property name "pmu" to match other archs and virt tools */
+> +static Property arm_cpu_has_pmu_property =
+> +    DEFINE_PROP_ON_OFF_AUTO("pmu", ARMCPU, has_pmu, ON_OFF_AUTO_AUTO);
+> +
+>  static Property arm_cpu_has_mpu_property =
+>              DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
+>  
+> @@ -552,6 +558,11 @@ static void arm_cpu_post_init(Object *obj)
+>  #endif
+>      }
+>  
+> +    if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
+> +                                 &error_abort);
+> +    }
+> +
+>      if (arm_feature(&cpu->env, ARM_FEATURE_MPU)) {
+>          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
+>                                   &error_abort);
+> @@ -576,6 +587,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      ARMCPU *cpu = ARM_CPU(dev);
+>      ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
+>      CPUARMState *env = &cpu->env;
+> +    static bool pmu_warned;
+>  
+>      /* Some features automatically imply others: */
+>      if (arm_feature(env, ARM_FEATURE_V8)) {
+> @@ -648,6 +660,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          cpu->id_aa64pfr0 &= ~0xf000;
+>      }
+>  
+> +    if (cpu->has_pmu == ON_OFF_AUTO_ON && !kvm_enabled()) {
+> +        cpu->has_pmu = ON_OFF_AUTO_OFF;
+> +        if (!pmu_warned && !qtest_enabled()) {
+> +            error_report("warning: pmu can't be enabled without KVM acceleration");
+> +            pmu_warned = true;
+> +        }
+> +    }
+> +    if (cpu->has_pmu == ON_OFF_AUTO_OFF) {
+> +        unset_feature(env, ARM_FEATURE_PMU);
+> +    }
+> +
+>      if (!arm_feature(env, ARM_FEATURE_EL2)) {
+>          /* Disable the hypervisor feature bits in the processor feature
+>           * registers if we don't have EL2. These are id_pfr1[15:12] and
+> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+> index 76d824d..a2de272 100644
+> --- a/target-arm/cpu.h
+> +++ b/target-arm/cpu.h
+> @@ -580,7 +580,7 @@ struct ARMCPU {
+>      /* CPU has security extension */
+>      bool has_el3;
+>      /* CPU has PMU (Performance Monitor Unit) */
+> -    bool has_pmu;
+> +    OnOffAuto has_pmu;
+>  
+>      /* CPU has memory protection unit */
+>      bool has_mpu;
+> @@ -1129,6 +1129,7 @@ enum arm_features {
+>      ARM_FEATURE_V8_SHA256, /* implements SHA256 part of v8 Crypto Extensions */
+>      ARM_FEATURE_V8_PMULL, /* implements PMULL part of v8 Crypto Extensions */
+>      ARM_FEATURE_THUMB_DSP, /* DSP insns supported in the Thumb encodings */
+> +    ARM_FEATURE_PMU, /* has PMU support */
+>  };
+>  
+>  static inline int arm_feature(CPUARMState *env, int feature)
+> diff --git a/target-arm/cpu64.c b/target-arm/cpu64.c
+> index 1635deb..549cb1e 100644
+> --- a/target-arm/cpu64.c
+> +++ b/target-arm/cpu64.c
+> @@ -111,6 +111,7 @@ static void aarch64_a57_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+>      set_feature(&cpu->env, ARM_FEATURE_CRC);
+>      set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+>      cpu->midr = 0x411fd070;
+>      cpu->revidr = 0x00000000;
+> @@ -166,6 +167,7 @@ static void aarch64_a53_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_V8_PMULL);
+>      set_feature(&cpu->env, ARM_FEATURE_CRC);
+>      set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+>      cpu->midr = 0x410fd034;
+>      cpu->revidr = 0x00000000;
+> diff --git a/target-arm/kvm64.c b/target-arm/kvm64.c
+> index 5faa76c..ff86550 100644
+> --- a/target-arm/kvm64.c
+> +++ b/target-arm/kvm64.c
+> @@ -428,6 +428,11 @@ static inline void set_feature(uint64_t *features, int feature)
+>      *features |= 1ULL << feature;
+>  }
+>  
+> +static inline void unset_feature(uint64_t *features, int feature)
+> +{
+> +    *features &= ~(1ULL << feature);
+> +}
+> +
+>  bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+>  {
+>      /* Identify the feature bits corresponding to the host CPU, and
+> @@ -469,6 +474,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUClass *ahcc)
+>      set_feature(&features, ARM_FEATURE_VFP4);
+>      set_feature(&features, ARM_FEATURE_NEON);
+>      set_feature(&features, ARM_FEATURE_AARCH64);
+> +    set_feature(&features, ARM_FEATURE_PMU);
+>  
+>      ahcc->features = features;
+>  
+> @@ -482,6 +488,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>      int ret;
+>      uint64_t mpidr;
+>      ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+>  
+>      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+>          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
+> @@ -501,10 +508,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>      if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+>      }
+> -    if (kvm_irqchip_in_kernel() &&
+> -        kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+> -        cpu->has_pmu = true;
+> +    if (!kvm_irqchip_in_kernel() ||
+> +        !kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+> +            cpu->has_pmu = ON_OFF_AUTO_OFF;
+> +    }
+> +    if (cpu->has_pmu == ON_OFF_AUTO_ON) {
+>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+> +    } else {
+> +        unset_feature(&env->features, ARM_FEATURE_PMU);
+>      }
+>  
+>      /* Do KVM_ARM_VCPU_INIT ioctl */
+> -- 
+> 1.8.3.1
 > 
-> > diff --git a/vl.c b/vl.c
-> > index ee557a1d3f8a..bbea51e0ce7d 100644
-> > --- a/vl.c
-> > +++ b/vl.c
-> > @@ -4335,11 +4335,6 @@ int main(int argc, char **argv, char **envp)
-> >          exit(1);
-> >      }
-> >
-> > -    if (!linux_boot && qemu_opt_get(machine_opts, "dtb")) {
-> > -        error_report("-dtb only allowed with -kernel option");
-> > -        exit(1);
-> > -    }
-> > -
-> 
-> I can see why you want this change, but what worries me a little
-> is that this is changing the behaviour of -dtb for all QEMU
-> target architectures, not just ARM (they no longer get a helpful
-> message on user error). I'm not sure how to address that, though.
+>
 
-Would a 'if !arm' be possible or useful here?
-
-Michael
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Reviewed-by: Andrew Jones <drjones@redhat.com> 

@@ -1,62 +1,54 @@
-Received: by 10.80.163.71 with SMTP id 65csp286093edn;
-        Thu, 22 Sep 2016 23:43:51 -0700 (PDT)
-X-Received: by 10.55.154.195 with SMTP id c186mr6855015qke.36.1474613031036;
-        Thu, 22 Sep 2016 23:43:51 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp313500edn;
+        Fri, 23 Sep 2016 01:34:17 -0700 (PDT)
+X-Received: by 10.55.49.203 with SMTP id x194mr6310733qkx.94.1474619657343;
+        Fri, 23 Sep 2016 01:34:17 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v32si4190079qtc.76.2016.09.22.23.43.50
+        by mx.google.com with ESMTPS id g19si4412399qta.42.2016.09.23.01.34.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Sep 2016 23:43:51 -0700 (PDT)
+        Fri, 23 Sep 2016 01:34:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41336 helo=lists.gnu.org)
+Received: from localhost ([::1]:42145 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bnKD8-0002b8-Gb
-	for alex.bennee@linaro.org; Fri, 23 Sep 2016 02:43:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53513)
+	id 1bnLw0-00079Q-Lj
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 04:34:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38260)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bnKD2-0002XE-OY
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:43:46 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9K-0008AQ-NX
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bnKCx-0002W9-OP
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 02:43:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53626)
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9F-0000Pa-HX
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:43:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48924)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1bnKCx-0002W1-Eb; Fri, 23 Sep 2016 02:43:39 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(envelope-from <eric.auger@redhat.com>)
+	id 1bnL9F-0000OG-7A; Fri, 23 Sep 2016 03:43:53 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B268288E60;
-	Fri, 23 Sep 2016 06:43:38 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-80.brq.redhat.com [10.40.204.80])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8N6hYk5002710
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Fri, 23 Sep 2016 02:43:36 -0400
-Date: Fri, 23 Sep 2016 08:43:33 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Wei Huang <wei@redhat.com>
-Message-ID: <20160923064333.ltpc3wcvz7of4mtk@hawk.localdomain>
-References: <1474557203-4977-1-git-send-email-wei@redhat.com>
-	<1474557203-4977-3-git-send-email-wei@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1474557203-4977-3-git-send-email-wei@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+	by mx1.redhat.com (Postfix) with ESMTPS id 432586AF0;
+	Fri, 23 Sep 2016 07:43:52 +0000 (UTC)
+Received: from localhost.localdomain.com (vpn1-6-207.ams2.redhat.com
+	[10.36.6.207])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8N7hlea032551; Fri, 23 Sep 2016 03:43:48 -0400
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
+Date: Fri, 23 Sep 2016 09:43:29 +0200
+Message-Id: <1474616617-366-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 23 Sep 2016 06:43:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 23 Sep 2016 07:43:52 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V5 2/2] arm: virt: add PMU
- property to mach-virt machine type
+Subject: [Qemu-arm] [PATCH v7 0/8] vITS support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,83 +60,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, abologna@redhat.com
+Cc: drjones@redhat.com, tn@semihalf.com, shlomopongratz@gmail.com,
+	shannon.zhao@linaro.org, diana.craciun@freescale.com,
+	christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H62MjZONLuCs
+X-TUID: 1zZzBRjMfxg9
 
-On Thu, Sep 22, 2016 at 11:13:23AM -0400, Wei Huang wrote:
-> CPU vPMU is now turned off by default, but it was ON in virt-2.7
-> machine type. To solve this problem, this patch adds a PMU option
-> in machine state, which is used to control CPU's vPMU status. This
-> PMU option is not exposed to command line and is turned on in
-> virt-2.7 machine type to make sure it is backward compatible.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  hw/arm/virt.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a781ad0..a211b22 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -84,6 +84,7 @@ typedef struct {
->      MachineClass parent;
->      VirtBoardInfo *daughterboard;
->      bool disallow_affinity_adjustment;
-> +    bool pmu_default_on;
->  } VirtMachineClass;
->  
->  typedef struct {
-> @@ -1287,6 +1288,8 @@ static void machvirt_init(MachineState *machine)
->  
->      for (n = 0; n < smp_cpus; n++) {
->          Object *cpuobj = object_new(typename);
-> +        ARMCPU *cpu = ARM_CPU(cpuobj);
-> +
->          if (!vmc->disallow_affinity_adjustment) {
->              /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
->               * GIC's target-list limitations. 32-bit KVM hosts currently
-> @@ -1317,6 +1320,12 @@ static void machvirt_init(MachineState *machine)
->              }
->          }
->  
-> +        if (cpu->has_pmu == ON_OFF_AUTO_AUTO &&
-> +            object_property_find(cpuobj, "pmu", NULL)) {
-> +            cpu->has_pmu = vmc->pmu_default_on && kvm_enabled() ?
-> +                ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
-> +        }
-> +
->          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
->              object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
->                                      "reset-cbar", &error_abort);
-> @@ -1514,6 +1523,9 @@ static void virt_2_7_instance_init(Object *obj)
->  
->  static void virt_machine_2_7_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
-> +    vmc->pmu_default_on = true;
->  }
->  DEFINE_VIRT_MACHINE_AS_LATEST(2, 7)
->  
-> @@ -1532,5 +1544,9 @@ static void virt_machine_2_6_options(MachineClass *mc)
->      virt_machine_2_7_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
->      vmc->disallow_affinity_adjustment = true;
-> +    /* Disable PMU for 2.6 and down as PMU support was first introduced
-> +     * and enabled in 2.7.
-> +     */
-> +    vmc->pmu_default_on = false;
->  }
->  DEFINE_VIRT_MACHINE(2, 6)
-> -- 
-> 1.8.3.1
-> 
->
+This series introduces support for in-kernel GICv3 ITS emulation.
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+On dt guest the functionality is complete and was tested on Cavium ThunderX
+with virtio-net-pci and vhost-net.
 
-I'll send the 2.8 machine type patch.
+On ACPI guest the series was tested with virtio-net-pci only. For vhost-net,
+using MSIX we currently miss the ACPI IORT table generation linking the
+PCIe host controller with the ITS. The work is ongoing and will be submitted
+separately. Anyway the kernel ACPI IORT ITS node support is not upstreamed
+yet.
+
+The first patch is not really related to virtual ITS but advertises the KVM
+GSI routing support which goes along with MSI injection.
+
+For ACPI ITS and PCIe support, use in-flight Tomasz' series:
+- [PATCH V10 0/8] Introduce ACPI world to ITS,
+  https://lkml.org/lkml/2016/9/6/153
+- Support for ARM64 ACPI based PCI host controller,
+  https://lwn.net/Articles/690995/
+
+Git Information:
+v7: https://github.com/eauger/qemu/tree/v2.7.0-vITS-v7
+v6: https://github.com/eauger/qemu/tree/v2.7.0-vITS-v6
+
+History:
+
+V6 => v7:
+- add my Signed-off-by on patches 7 and 8
+- add Peter's R-b on 1, 2
+- add/use kvm_msi_devid_required macro
+- add translater_gpa_known
+- in arm_gicv3_its_kvm.c, remove the notifier and directly
+  compute the ITS translater GPA in first kvm_its_send_msi()
+  call as suggested by Peter. Fix the memory region reference
+  leak. fix the comment typo.
+
+v5 => v6:
+- moved from RFC to PATCH since all the host kernel dependencies now are
+  fixed
+- use Shannon's MADT patches I was not aware of
+- smoother integration since the kernet ITS init sequence has now been
+  updated in 4.8
+- kvm_msi_use_devid flag handled in non archutecture specific code
+- vmstate_its fields removed and migration_blocker added
+
+v4 => v5:
+- fix compilation issue with arm-softmmu target
+- rebase on target-arm: Fix unreachable code in gicv3_class_name()
+- add ACPI support
+- kernel ITS init sequence is not yet similar to GICv2/V3 ones. This will
+  be addressed in a subsequent respin.
+
+v3 => v4:
+- Took into account Peter's comments (at the exception of sub-class
+  operation changes)
+- rebase on Andre's kernel ITS emulation series v8
+- rework KVM init sequence and KVM device creation/settings overall.
+  I do not use kvm_arm_register_device due to the way the kernel
+  API is devises (see discussion on the kernel ML)
+- change the computation of the GITS_TRANSLATER base address
+- fix compilation issues
+- new "arget-arm: move gicv3_class_name from machine to kvm_arm.h"
+
+v2 => v3:
+- Really added unmigratable flag, was overlooked in v2
+- Fixed checkpatch issue with initializing static variable to zero
+
+v1 => v2:
+- Added registers and reset method
+- Added unmigratable flag
+- Rebased on top of current master, use kvm_arch_fixup_msi_route() now
+
+Eric Auger (2):
+  hw/intc/arm_gic(v3)_kvm: Initialize gsi routing
+  target-arm: move gicv3_class_name from machine to kvm_arm.h
+
+Pavel Fedin (4):
+  hw/intc/arm_gicv3_its: Implement ITS base class
+  kvm-all: Pass requester ID to MSI routing functions
+  hw/intc/arm_gicv3_its: Implement support for in-kernel ITS emulation
+  arm/virt: Add ITS to the virt board
+
+Shannon Zhao (2):
+  ACPI: Add GIC Interrupt Translation Service Structure definition
+  ARM: Virt: ACPI: Add GIC ITS description in ACPI MADT table
+
+ hw/arm/virt-acpi-build.c               |  12 +++
+ hw/arm/virt.c                          |  47 +++++++++--
+ hw/intc/Makefile.objs                  |   2 +
+ hw/intc/arm_gic_kvm.c                  |  12 +++
+ hw/intc/arm_gicv3_its_common.c         | 148 +++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_its_kvm.c            | 121 +++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_kvm.c                |  13 +++
+ include/hw/acpi/acpi-defs.h            |  13 ++-
+ include/hw/intc/arm_gicv3_its_common.h |  78 +++++++++++++++++
+ include/sysemu/kvm.h                   |   9 ++
+ kvm-all.c                              |   9 ++
+ kvm-stub.c                             |   1 +
+ target-arm/kvm_arm.h                   |  35 +++++++-
+ target-arm/machine.c                   |  15 ----
+ 14 files changed, 492 insertions(+), 23 deletions(-)
+ create mode 100644 hw/intc/arm_gicv3_its_common.c
+ create mode 100644 hw/intc/arm_gicv3_its_kvm.c
+ create mode 100644 include/hw/intc/arm_gicv3_its_common.h
+
+-- 
+2.5.5
+

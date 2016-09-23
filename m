@@ -1,57 +1,57 @@
-Received: by 10.80.163.71 with SMTP id 65csp314681edn;
-        Fri, 23 Sep 2016 01:38:41 -0700 (PDT)
-X-Received: by 10.55.43.145 with SMTP id r17mr6303069qkr.22.1474619921891;
-        Fri, 23 Sep 2016 01:38:41 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp314724edn;
+        Fri, 23 Sep 2016 01:38:51 -0700 (PDT)
+X-Received: by 10.55.19.228 with SMTP id 97mr6111479qkt.34.1474619930980;
+        Fri, 23 Sep 2016 01:38:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r11si4408255qtb.104.2016.09.23.01.38.41
+        by mx.google.com with ESMTPS id t61si4399297qtd.143.2016.09.23.01.38.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Sep 2016 01:38:41 -0700 (PDT)
+        Fri, 23 Sep 2016 01:38:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42187 helo=lists.gnu.org)
+Received: from localhost ([::1]:42189 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bnM0H-0003Wp-6V
-	for alex.bennee@linaro.org; Fri, 23 Sep 2016 04:38:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38309)
+	id 1bnM0Q-0003jL-ET
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 04:38:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bnL9Q-0008Gi-33
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:08 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9V-0008NE-5k
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bnL9M-0000SO-IR
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47290)
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9U-0000VS-0X
+	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40778)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bnL9M-0000S4-8H; Fri, 23 Sep 2016 03:44:00 -0400
+	id 1bnL9T-0000Uf-Fh; Fri, 23 Sep 2016 03:44:07 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A002AC00B6E9;
-	Fri, 23 Sep 2016 07:43:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DAD4CC0567A0;
+	Fri, 23 Sep 2016 07:44:06 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn1-6-207.ams2.redhat.com
 	[10.36.6.207])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8N7hlec032551; Fri, 23 Sep 2016 03:43:56 -0400
+	id u8N7hlee032551; Fri, 23 Sep 2016 03:44:03 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
-Date: Fri, 23 Sep 2016 09:43:31 +0200
-Message-Id: <1474616617-366-3-git-send-email-eric.auger@redhat.com>
+Date: Fri, 23 Sep 2016 09:43:33 +0200
+Message-Id: <1474616617-366-5-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1474616617-366-1-git-send-email-eric.auger@redhat.com>
 References: <1474616617-366-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 23 Sep 2016 07:43:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 23 Sep 2016 07:44:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 2/8] hw/intc/arm_gicv3_its: Implement ITS base
- class
+Subject: [Qemu-arm] [PATCH v7 4/8] kvm-all: Pass requester ID to MSI routing
+ functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,333 +68,115 @@ Cc: drjones@redhat.com, tn@semihalf.com, shlomopongratz@gmail.com,
 	christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: alAJq0BT5cpD
+X-TUID: VaAJYEyKnFbE
 
 From: Pavel Fedin <p.fedin@samsung.com>
 
-This is the basic skeleton for both KVM and software-emulated ITS.
-Since we already prepare status structure, we also introduce complete
-VMState description. But, because we currently have no migratable
-implementations, we also set unmigratable flag.
+Introduce global kvm_msi_use_devid flag plus associated
+kvm_msi_devid_required() macro. Passes the device ID,
+if needed, while building the MSI route entry. Device IDs are
+required by the ARM GICv3 ITS (IRQ remapping function is based on
+this information).
 
 Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
-
 v6 -> v7:
-- added Peter's R-b
-- added translater_gpa_known field
+- add/use kvm_msi_devid_required() macro
 
 v5 -> v6:
-- rename iomem_its into iomem_its_translation
-- remove vmstate_its fields since the device is not yet
-  migratable
-- fix gicv3_its_trans_write print format
-- add migration_blocker
-
-v4 -> v5:
-- send_msi can return 0 meaning the MSI was rejected by guest. Handle this
-  value as an error
+- move the flag in include/sysemu/kvm.h and populate the devid
+  information in kvm-all.c
 
 v3 -> v4:
-- fix compilation error
-- msi_supported -> msi_nonbroken
-- streamid -> requester_id
-- use PRIx64
-- read ops uses _with_attrs form
-- 16/32b write access allowed to GITS_TRANSLATER
-- move its_class_name in kvm_arm.h and remove #ifdef TARGET_AARCH64
-- add new kvm device dev_fd field
-- add new gits_translater_gpa field in GICv3ITSState
+- OR route->flags with KVM_MSI_VALID_DEVID
 ---
- hw/intc/Makefile.objs                  |   1 +
- hw/intc/arm_gicv3_its_common.c         | 148 +++++++++++++++++++++++++++++++++
- include/hw/intc/arm_gicv3_its_common.h |  78 +++++++++++++++++
- target-arm/kvm_arm.h                   |  19 +++++
- 4 files changed, 246 insertions(+)
- create mode 100644 hw/intc/arm_gicv3_its_common.c
- create mode 100644 include/hw/intc/arm_gicv3_its_common.h
+ include/sysemu/kvm.h | 9 +++++++++
+ kvm-all.c            | 9 +++++++++
+ kvm-stub.c           | 1 +
+ 3 files changed, 19 insertions(+)
 
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 05ec21b..23a39f7 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -16,6 +16,7 @@ common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_common.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv3.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_dist.o
- common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_redist.o
-+common-obj-$(CONFIG_ARM_GIC) += arm_gicv3_its_common.o
- common-obj-$(CONFIG_OPENPIC) += openpic.o
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 3e17ba7..df67cc0 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -53,6 +53,7 @@ extern bool kvm_gsi_direct_mapping;
+ extern bool kvm_readonly_mem_allowed;
+ extern bool kvm_direct_msi_allowed;
+ extern bool kvm_ioeventfd_any_length_allowed;
++extern bool kvm_msi_use_devid;
  
- obj-$(CONFIG_APIC) += apic.o apic_common.o
-diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-new file mode 100644
-index 0000000..9d67c5c
---- /dev/null
-+++ b/hw/intc/arm_gicv3_its_common.c
-@@ -0,0 +1,148 @@
-+/*
-+ * ITS base class for a GICv3-based system
-+ *
-+ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
-+ * Written by Pavel Fedin
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/pci/msi.h"
-+#include "hw/intc/arm_gicv3_its_common.h"
-+#include "qemu/log.h"
-+
-+static void gicv3_its_pre_save(void *opaque)
-+{
-+    GICv3ITSState *s = (GICv3ITSState *)opaque;
-+    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
-+
-+    if (c->pre_save) {
-+        c->pre_save(s);
-+    }
-+}
-+
-+static int gicv3_its_post_load(void *opaque, int version_id)
-+{
-+    GICv3ITSState *s = (GICv3ITSState *)opaque;
-+    GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
-+
-+    if (c->post_load) {
-+        c->post_load(s);
-+    }
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_its = {
-+    .name = "arm_gicv3_its",
-+    .pre_save = gicv3_its_pre_save,
-+    .post_load = gicv3_its_post_load,
-+    .unmigratable = true,
-+};
-+
-+static MemTxResult gicv3_its_trans_read(void *opaque, hwaddr offset,
-+                                        uint64_t *data, unsigned size,
-+                                        MemTxAttrs attrs)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR, "ITS read at offset 0x%"PRIx64"\n", offset);
-+    return MEMTX_ERROR;
-+}
-+
-+static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
-+                                         uint64_t value, unsigned size,
-+                                         MemTxAttrs attrs)
-+{
-+    if (offset == 0x0040 && ((size == 2) || (size == 4))) {
-+        GICv3ITSState *s = ARM_GICV3_ITS_COMMON(opaque);
-+        GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
-+        int ret = c->send_msi(s, le64_to_cpu(value), attrs.requester_id);
-+
-+        if (ret <= 0) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "ITS: Error sending MSI: %s\n", strerror(-ret));
-+            return MEMTX_DECODE_ERROR;
-+        }
-+
-+        return MEMTX_OK;
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "ITS write at bad offset 0x%"PRIx64"\n", offset);
-+        return MEMTX_DECODE_ERROR;
-+    }
-+}
-+
-+static const MemoryRegionOps gicv3_its_trans_ops = {
-+    .read_with_attrs = gicv3_its_trans_read,
-+    .write_with_attrs = gicv3_its_trans_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(s);
-+
-+    memory_region_init_io(&s->iomem_its_cntrl, OBJECT(s), ops, s,
-+                          "control", ITS_CONTROL_SIZE);
-+    memory_region_init_io(&s->iomem_its_translation, OBJECT(s),
-+                          &gicv3_its_trans_ops, s,
-+                          "translation", ITS_TRANS_SIZE);
-+
-+    /* Our two regions are always adjacent, therefore we now combine them
-+     * into a single one in order to make our users' life easier.
-+     */
-+    memory_region_init(&s->iomem_main, OBJECT(s), "gicv3_its", ITS_SIZE);
-+    memory_region_add_subregion(&s->iomem_main, 0, &s->iomem_its_cntrl);
-+    memory_region_add_subregion(&s->iomem_main, ITS_CONTROL_SIZE,
-+                                &s->iomem_its_translation);
-+    sysbus_init_mmio(sbd, &s->iomem_main);
-+
-+    msi_nonbroken = true;
-+}
-+
-+static void gicv3_its_common_reset(DeviceState *dev)
-+{
-+    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
-+
-+    s->ctlr = 0;
-+    s->cbaser = 0;
-+    s->cwriter = 0;
-+    s->creadr = 0;
-+    memset(&s->baser, 0, sizeof(s->baser));
-+
-+    gicv3_its_post_load(s, 0);
-+}
-+
-+static void gicv3_its_common_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = gicv3_its_common_reset;
-+    dc->vmsd = &vmstate_its;
-+}
-+
-+static const TypeInfo gicv3_its_common_info = {
-+    .name = TYPE_ARM_GICV3_ITS_COMMON,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(GICv3ITSState),
-+    .class_size = sizeof(GICv3ITSCommonClass),
-+    .class_init = gicv3_its_common_class_init,
-+    .abstract = true,
-+};
-+
-+static void gicv3_its_common_register_types(void)
-+{
-+    type_register_static(&gicv3_its_common_info);
-+}
-+
-+type_init(gicv3_its_common_register_types)
-diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
-new file mode 100644
-index 0000000..1ba1894
---- /dev/null
-+++ b/include/hw/intc/arm_gicv3_its_common.h
-@@ -0,0 +1,78 @@
-+/*
-+ * ITS support for ARM GICv3
-+ *
-+ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
-+ * Written by Pavel Fedin
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef QEMU_ARM_GICV3_ITS_COMMON_H
-+#define QEMU_ARM_GICV3_ITS_COMMON_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/intc/arm_gicv3_common.h"
-+
-+#define ITS_CONTROL_SIZE 0x10000
-+#define ITS_TRANS_SIZE   0x10000
-+#define ITS_SIZE         (ITS_CONTROL_SIZE + ITS_TRANS_SIZE)
-+
-+struct GICv3ITSState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem_main;
-+    MemoryRegion iomem_its_cntrl;
-+    MemoryRegion iomem_its_translation;
-+
-+    GICv3State *gicv3;
-+
-+    int dev_fd; /* kvm device fd if backed by kvm vgic support */
-+    uint64_t gits_translater_gpa;
-+    bool translater_gpa_known;
-+
-+    /* Registers */
-+    uint32_t ctlr;
-+    uint64_t cbaser;
-+    uint64_t cwriter;
-+    uint64_t creadr;
-+    uint64_t baser[8];
-+
-+    Error *migration_blocker;
-+};
-+
-+typedef struct GICv3ITSState GICv3ITSState;
-+
-+void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops);
-+
-+#define TYPE_ARM_GICV3_ITS_COMMON "arm-gicv3-its-common"
-+#define ARM_GICV3_ITS_COMMON(obj) \
-+     OBJECT_CHECK(GICv3ITSState, (obj), TYPE_ARM_GICV3_ITS_COMMON)
-+#define ARM_GICV3_ITS_COMMON_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(GICv3ITSCommonClass, (klass), TYPE_ARM_GICV3_ITS_COMMON)
-+#define ARM_GICV3_ITS_COMMON_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(GICv3ITSCommonClass, (obj), TYPE_ARM_GICV3_ITS_COMMON)
-+
-+struct GICv3ITSCommonClass {
-+    /*< private >*/
-+    SysBusDeviceClass parent_class;
-+    /*< public >*/
-+
-+    int (*send_msi)(GICv3ITSState *s, uint32_t data, uint16_t devid);
-+    void (*pre_save)(GICv3ITSState *s);
-+    void (*post_load)(GICv3ITSState *s);
-+};
-+
-+typedef struct GICv3ITSCommonClass GICv3ITSCommonClass;
-+
-+#endif
-diff --git a/target-arm/kvm_arm.h b/target-arm/kvm_arm.h
-index a419368..544e404 100644
---- a/target-arm/kvm_arm.h
-+++ b/target-arm/kvm_arm.h
-@@ -255,4 +255,23 @@ struct kvm_guest_debug_arch;
- 
- void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
+ #if defined CONFIG_KVM || !defined NEED_CPU_H
+ #define kvm_enabled()           (kvm_allowed)
+@@ -169,6 +170,13 @@ extern bool kvm_ioeventfd_any_length_allowed;
+  */
+ #define kvm_ioeventfd_any_length_enabled() (kvm_ioeventfd_any_length_allowed)
  
 +/**
-+ * its_class_name
-+ *
-+ * Return the ITS class name to use depending on whether KVM acceleration
-+ * and KVM CAP_SIGNAL_MSI are supported
-+ *
-+ * Returns: class name to use or NULL
++ * kvm_msi_devid_required:
++ * Returns: true if KVM requires a device id to be provided while
++ * defining an MSI routing entry.
 + */
-+static inline const char *its_class_name(void)
-+{
-+    if (kvm_irqchip_in_kernel()) {
-+        /* KVM implementation requires this capability */
-+        return kvm_direct_msi_enabled() ? "arm-its-kvm" : NULL;
-+    } else {
-+        /* Software emulation is not implemented yet */
-+        return NULL;
-+    }
-+}
++#define kvm_msi_devid_required() (kvm_msi_use_devid)
 +
+ #else
+ #define kvm_enabled()           (0)
+ #define kvm_irqchip_in_kernel() (false)
+@@ -184,6 +192,7 @@ extern bool kvm_ioeventfd_any_length_allowed;
+ #define kvm_readonly_mem_enabled() (false)
+ #define kvm_direct_msi_enabled() (false)
+ #define kvm_ioeventfd_any_length_enabled() (false)
++#define kvm_msi_devid_required() (false)
  #endif
+ 
+ struct kvm_run;
+diff --git a/kvm-all.c b/kvm-all.c
+index 8a4382e..25e12c2 100644
+--- a/kvm-all.c
++++ b/kvm-all.c
+@@ -119,6 +119,7 @@ bool kvm_readonly_mem_allowed;
+ bool kvm_vm_attributes_allowed;
+ bool kvm_direct_msi_allowed;
+ bool kvm_ioeventfd_any_length_allowed;
++bool kvm_msi_use_devid;
+ 
+ static const KVMCapabilityInfo kvm_required_capabilites[] = {
+     KVM_CAP_INFO(USER_MEMORY),
+@@ -1275,6 +1276,10 @@ int kvm_irqchip_add_msi_route(KVMState *s, int vector, PCIDevice *dev)
+     kroute.u.msi.address_lo = (uint32_t)msg.address;
+     kroute.u.msi.address_hi = msg.address >> 32;
+     kroute.u.msi.data = le32_to_cpu(msg.data);
++    if (kvm_msi_devid_required()) {
++        kroute.flags = KVM_MSI_VALID_DEVID;
++        kroute.u.msi.devid = pci_requester_id(dev);
++    }
+     if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
+         kvm_irqchip_release_virq(s, virq);
+         return -EINVAL;
+@@ -1308,6 +1313,10 @@ int kvm_irqchip_update_msi_route(KVMState *s, int virq, MSIMessage msg,
+     kroute.u.msi.address_lo = (uint32_t)msg.address;
+     kroute.u.msi.address_hi = msg.address >> 32;
+     kroute.u.msi.data = le32_to_cpu(msg.data);
++    if (kvm_msi_devid_required()) {
++        kroute.flags = KVM_MSI_VALID_DEVID;
++        kroute.u.msi.devid = pci_requester_id(dev);
++    }
+     if (kvm_arch_fixup_msi_route(&kroute, msg.address, msg.data, dev)) {
+         return -EINVAL;
+     }
+diff --git a/kvm-stub.c b/kvm-stub.c
+index 3227127..b1b6b96 100644
+--- a/kvm-stub.c
++++ b/kvm-stub.c
+@@ -31,6 +31,7 @@ bool kvm_gsi_direct_mapping;
+ bool kvm_allowed;
+ bool kvm_readonly_mem_allowed;
+ bool kvm_ioeventfd_any_length_allowed;
++bool kvm_msi_use_devid;
+ 
+ int kvm_destroy_vcpu(CPUState *cpu)
+ {
 -- 
 2.5.5
 

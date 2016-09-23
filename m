@@ -1,268 +1,122 @@
-Received: by 10.80.163.71 with SMTP id 65csp315135edn;
-        Fri, 23 Sep 2016 01:40:25 -0700 (PDT)
-X-Received: by 10.200.56.168 with SMTP id f37mr6521979qtc.2.1474620025164;
-        Fri, 23 Sep 2016 01:40:25 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp315631edn;
+        Fri, 23 Sep 2016 01:42:27 -0700 (PDT)
+X-Received: by 10.237.60.116 with SMTP id u49mr5479354qte.6.1474620147047;
+        Fri, 23 Sep 2016 01:42:27 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g63si4396094qkc.286.2016.09.23.01.40.24
+        by mx.google.com with ESMTPS id p2si4400804qkf.291.2016.09.23.01.42.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Sep 2016 01:40:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 23 Sep 2016 01:42:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42206 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42211 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bnM1w-0005Mr-Hd
-	for alex.bennee@linaro.org; Fri, 23 Sep 2016 04:40:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38405)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bnM3u-0006gE-FP
+	for alex.bennee@linaro.org; Fri, 23 Sep 2016 04:42:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38473)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bnL9a-0008T0-8i
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:18 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9h-0000DU-Sd
+	for qemu-devel@nongnu.org; Fri, 23 Sep 2016 03:44:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bnL9X-0000YB-DW
-	for qemu-arm@nongnu.org; Fri, 23 Sep 2016 03:44:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51286)
+	(envelope-from <eric.auger@redhat.com>) id 1bnL9g-0000ba-Ul
+	for qemu-devel@nongnu.org; Fri, 23 Sep 2016 03:44:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57746)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bnL9X-0000Y3-3u; Fri, 23 Sep 2016 03:44:11 -0400
+	id 1bnL9e-0000aE-Ak; Fri, 23 Sep 2016 03:44:18 -0400
 Received: from int-mx09.intmail.prod.int.phx2.redhat.com
 	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8022133885F;
-	Fri, 23 Sep 2016 07:44:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B3E3C3D97E;
+	Fri, 23 Sep 2016 07:44:17 +0000 (UTC)
 Received: from localhost.localdomain.com (vpn1-6-207.ams2.redhat.com
 	[10.36.6.207])
 	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u8N7hlef032551; Fri, 23 Sep 2016 03:44:07 -0400
+	id u8N7hleh032551; Fri, 23 Sep 2016 03:44:14 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, p.fedin@samsung.com
-Date: Fri, 23 Sep 2016 09:43:34 +0200
-Message-Id: <1474616617-366-6-git-send-email-eric.auger@redhat.com>
+Date: Fri, 23 Sep 2016 09:43:36 +0200
+Message-Id: <1474616617-366-8-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1474616617-366-1-git-send-email-eric.auger@redhat.com>
 References: <1474616617-366-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 23 Sep 2016 07:44:10 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 23 Sep 2016 07:44:17 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 5/8] hw/intc/arm_gicv3_its: Implement support
- for in-kernel ITS emulation
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v7 7/8] ACPI: Add GIC Interrupt Translation
+ Service Structure definition
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: drjones@redhat.com, tn@semihalf.com, shlomopongratz@gmail.com,
 	shannon.zhao@linaro.org, diana.craciun@freescale.com,
 	christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4eE9ExX1NjHf
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7fHiXIzoTopV
 
-From: Pavel Fedin <p.fedin@samsung.com>
+From: Shannon Zhao <shannon.zhao@linaro.org>
 
-The ITS control frame is in-kernel emulated while accesses to the
-GITS_TRANSLATER are mediated through the KVM_SIGNAL_MSI ioctl (MSI
-direct MSI injection advertised by the CAP_SIGNAL_MSI capability)
+ACPI Spec 6.0 introduces GIC Interrupt Translation Service Structure.
+Here we add the definition of the Structure.
 
-the kvm_gsi_direct_mapping is explicitly set to false to emphasize the
-difference with GICv2M. Direct mapping cannot work with ITS since
-the content of the MSI data is not the target interrupt ID but an
-eventd id.
-
-GSI routing is advertised (kvm_gsi_routing_allowed) as well as
-msi/irqfd signaling (kvm_msi_via_irqfd_allowed).
-
-The MSI frame (GITS_TRANSLATER) absolute GPA is computed on first
-kvm_its_send_msi() call. It is then passed through KVM_SIGNAL_MSI
-ioctl.
-
-Signed-off-by: Pavel Fedin <p.fedin@samsung.com>
+Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
+
 v6 -> v7:
-- remove the notifier and compute the translater GPA on first
-  kvm_its_send_msi(), as suggested by Peter
-- fix the memory region reference leak
-- fix a comment typo
-
-v5 -> v6:
-- now the kernel ITS init sequence has changed let's use the
-  kvm_arm_register_device to set the CTRL frame base address
-- use extract64()
-- add migration blocker
-- remove kvm_gsi_routing_allowed setting which is set in GICv3
-  KVM device realize
-- add migration_blocker
-
-v3 -> v4:
-- include "qemu/osdep.h" and  "qapi/error.h"
-- rename KVM_VGIC_V3_ADDR_TYPE_ITS into KVM_VGIC_ITS_ADDR_TYPE
-- reword commit message
-- change kvm_msi_via_irqfd_allowed definition (attached to irqfd dynamic
-  availability + MSI controller availability)
-- create the ITS KVM device (previously abstracted by the GICv3 KVM device)
-- init sequence changed
-- absolute GITS_TRANSLATER GPA stored
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+- added my Sob
 ---
- hw/intc/Makefile.objs       |   1 +
- hw/intc/arm_gicv3_its_kvm.c | 121 ++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 122 insertions(+)
- create mode 100644 hw/intc/arm_gicv3_its_kvm.c
+ include/hw/acpi/acpi-defs.h | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 23a39f7..9cca280 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -22,6 +22,7 @@ common-obj-$(CONFIG_OPENPIC) += openpic.o
- obj-$(CONFIG_APIC) += apic.o apic_common.o
- obj-$(CONFIG_ARM_GIC_KVM) += arm_gic_kvm.o
- obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_kvm.o
-+obj-$(call land,$(CONFIG_ARM_GIC_KVM),$(TARGET_AARCH64)) += arm_gicv3_its_kvm.o
- obj-$(CONFIG_STELLARIS) += armv7m_nvic.o
- obj-$(CONFIG_EXYNOS4) += exynos4210_gic.o exynos4210_combiner.o
- obj-$(CONFIG_GRLIB) += grlib_irqmp.o
-diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-new file mode 100644
-index 0000000..fc246e0
---- /dev/null
-+++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -0,0 +1,121 @@
-+/*
-+ * KVM-based ITS implementation for a GICv3-based system
-+ *
-+ * Copyright (c) 2015 Samsung Electronics Co., Ltd.
-+ * Written by Pavel Fedin <p.fedin@samsung.com>
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 41c1d95..9c1b7cb 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -294,7 +294,8 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+ #define ACPI_APIC_GENERIC_DISTRIBUTOR   12
+ #define ACPI_APIC_GENERIC_MSI_FRAME     13
+ #define ACPI_APIC_GENERIC_REDISTRIBUTOR 14
+-#define ACPI_APIC_RESERVED              15   /* 15 and greater are reserved */
++#define ACPI_APIC_GENERIC_TRANSLATOR    15
++#define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+ 
+ /*
+  * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+@@ -395,6 +396,16 @@ struct AcpiMadtGenericRedistributor {
+ 
+ typedef struct AcpiMadtGenericRedistributor AcpiMadtGenericRedistributor;
+ 
++struct AcpiMadtGenericTranslator {
++    ACPI_SUB_HEADER_DEF
++    uint16_t reserved;
++    uint32_t translation_id;
++    uint64_t base_address;
++    uint32_t reserved2;
++} QEMU_PACKED;
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/intc/arm_gicv3_its_common.h"
-+#include "sysemu/sysemu.h"
-+#include "sysemu/kvm.h"
-+#include "kvm_arm.h"
-+#include "migration/migration.h"
++typedef struct AcpiMadtGenericTranslator AcpiMadtGenericTranslator;
 +
-+#define TYPE_KVM_ARM_ITS "arm-its-kvm"
-+#define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
-+
-+static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
-+{
-+    struct kvm_msi msi;
-+
-+    if (unlikely(!s->translater_gpa_known)) {
-+        MemoryRegion *mr = &s->iomem_its_translation;
-+        MemoryRegionSection mrs;
-+
-+        mrs = memory_region_find(mr, 0, 1);
-+        memory_region_unref(mrs.mr);
-+        s->gits_translater_gpa = mrs.offset_within_address_space + 0x40;
-+        s->translater_gpa_known = true;
-+    }
-+
-+    msi.address_lo = extract64(s->gits_translater_gpa, 0, 32);
-+    msi.address_hi = extract64(s->gits_translater_gpa, 32, 32);
-+    msi.data = le32_to_cpu(value);
-+    msi.flags = KVM_MSI_VALID_DEVID;
-+    msi.devid = devid;
-+    memset(msi.pad, 0, sizeof(msi.pad));
-+
-+    return kvm_vm_ioctl(kvm_state, KVM_SIGNAL_MSI, &msi);
-+}
-+
-+static void kvm_arm_its_realize(DeviceState *dev, Error **errp)
-+{
-+    GICv3ITSState *s = ARM_GICV3_ITS_COMMON(dev);
-+
-+    s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_ITS, false);
-+    if (s->dev_fd < 0) {
-+        error_setg_errno(errp, -s->dev_fd, "error creating in-kernel ITS");
-+        return;
-+    }
-+
-+    /* explicit init of the ITS */
-+    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CTRL,
-+                      KVM_DEV_ARM_VGIC_CTRL_INIT, NULL, true);
-+
-+    /* register the base address */
-+    kvm_arm_register_device(&s->iomem_its_cntrl, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-+                            KVM_VGIC_ITS_ADDR_TYPE, s->dev_fd);
-+
-+    gicv3_its_init_mmio(s, NULL);
-+
-+    /*
-+     * Block migration of a KVM GICv3 ITS device: the API for saving and
-+     * restoring the state in the kernel is not yet available
-+     */
-+    error_setg(&s->migration_blocker, "vITS migration is not implemented");
-+    migrate_add_blocker(s->migration_blocker);
-+
-+    kvm_msi_use_devid = true;
-+    kvm_gsi_direct_mapping = false;
-+    kvm_msi_via_irqfd_allowed = kvm_irqfds_enabled();
-+}
-+
-+static void kvm_arm_its_init(Object *obj)
-+{
-+    GICv3ITSState *s = KVM_ARM_ITS(obj);
-+
-+    object_property_add_link(obj, "parent-gicv3",
-+                             "kvm-arm-gicv3", (Object **)&s->gicv3,
-+                             object_property_allow_set_link,
-+                             OBJ_PROP_LINK_UNREF_ON_RELEASE,
-+                             &error_abort);
-+}
-+
-+static void kvm_arm_its_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    GICv3ITSCommonClass *icc = ARM_GICV3_ITS_COMMON_CLASS(klass);
-+
-+    dc->realize = kvm_arm_its_realize;
-+    icc->send_msi = kvm_its_send_msi;
-+}
-+
-+static const TypeInfo kvm_arm_its_info = {
-+    .name = TYPE_KVM_ARM_ITS,
-+    .parent = TYPE_ARM_GICV3_ITS_COMMON,
-+    .instance_size = sizeof(GICv3ITSState),
-+    .instance_init = kvm_arm_its_init,
-+    .class_init = kvm_arm_its_class_init,
-+};
-+
-+static void kvm_arm_its_register_types(void)
-+{
-+    type_register_static(&kvm_arm_its_info);
-+}
-+
-+type_init(kvm_arm_its_register_types)
+ /*
+  * Generic Timer Description Table (GTDT)
+  */
 -- 
 2.5.5
 

@@ -1,131 +1,150 @@
-Received: by 10.80.163.71 with SMTP id 65csp348661edn;
-        Fri, 30 Sep 2016 10:35:34 -0700 (PDT)
-X-Received: by 10.55.217.218 with SMTP id q87mr7602579qkl.285.1475256934369;
-        Fri, 30 Sep 2016 10:35:34 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp373471edn;
+        Fri, 30 Sep 2016 11:37:10 -0700 (PDT)
+X-Received: by 10.237.54.98 with SMTP id e89mr8838344qtb.5.1475260629786;
+        Fri, 30 Sep 2016 11:37:09 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u126si12668821qkc.66.2016.09.30.10.35.34
+        by mx.google.com with ESMTPS id 8si3866780qkq.98.2016.09.30.11.37.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Sep 2016 10:35:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 30 Sep 2016 11:37:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46019 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46284 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bq1if-0003Q5-Ta
-	for alex.bennee@linaro.org; Fri, 30 Sep 2016 13:35:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57633)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bq2gH-0003QQ-8X
+	for alex.bennee@linaro.org; Fri, 30 Sep 2016 14:37:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bq1hi-00031I-OK
-	for qemu-devel@nongnu.org; Fri, 30 Sep 2016 13:34:35 -0400
+	(envelope-from <eblake@redhat.com>) id 1bq2gD-0003QH-Qz
+	for qemu-arm@nongnu.org; Fri, 30 Sep 2016 14:37:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bq1hh-0006Ug-M5
-	for qemu-devel@nongnu.org; Fri, 30 Sep 2016 13:34:34 -0400
-Received: from mail-ua0-x22e.google.com ([2607:f8b0:400c:c08::22e]:34598)
+	(envelope-from <eblake@redhat.com>) id 1bq2gA-0004Uv-02
+	for qemu-arm@nongnu.org; Fri, 30 Sep 2016 14:37:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49740)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bq1hh-0006UN-He
-	for qemu-devel@nongnu.org; Fri, 30 Sep 2016 13:34:33 -0400
-Received: by mail-ua0-x22e.google.com with SMTP id l16so81829407uaa.1
-	for <qemu-devel@nongnu.org>; Fri, 30 Sep 2016 10:34:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=eIJj8zbptfo3EPA8TocGo3yKyKKzMZO/BLY6DL3qP/0=;
-	b=NBAVFLOVLdQho7KpHfgN5MA9yKpoQaYoY49RUMJ4QjuT1gBRGih9aeOARClZSQG5D3
-	jYavvTRBUHVmvStvgvPD38iC2e/7IgxXYqvymPtRl5oZHGkJPlZVQroRSKmuqa1PvSny
-	Ot6sqNTCOz5TJIjq2TzuHGMjWtjncsw1VgGBs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=eIJj8zbptfo3EPA8TocGo3yKyKKzMZO/BLY6DL3qP/0=;
-	b=mrdHaWen/aUrQ5zgFudqwgrdYj5nIzp9epLwf4DrnzihQcEak4FL5fS/WEyH0Gzu8b
-	gnRiKkm5+nselZDVsjF88gerZ2pMlj4Nms4fX5ng3eVZV+h4UNOkJW4eVAsLrKNLiXuf
-	bkrqw5t4zdYeo1awkoM/sgFdr4IejnQW5lxCXrdk9BLJAA6rW0og6ijwTIA8tG6DHMiW
-	MB2sxyNMpQFTY5YmoT+7q6D7X6NGVkTyRbGrQ2EFKdxevciQaycujMEGwZy6MUAy71Ra
-	e2AyrrILjRk9EV5ax53xSAI5sR7d86Gy6MIq0jsq3WY7T1qIBABSBdjR7kR1TVnwkE0Y
-	kC2w==
-X-Gm-Message-State: AA6/9RmPOdBk67qkSyt4zjWthfm6qCeYEBooM+2lNm2qryb7rufF+DSww91Ju2KX6WZ2ZSNhsABl/27a2PhofFpB
-X-Received: by 10.159.55.138 with SMTP id q10mr6180863uaq.131.1475256873100;
-	Fri, 30 Sep 2016 10:34:33 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.16.98 with HTTP; Fri, 30 Sep 2016 10:34:12 -0700 (PDT)
-In-Reply-To: <20160930104909.GD9606@toto>
+	(envelope-from <eblake@redhat.com>)
+	id 1bq2g9-0004Ud-MT; Fri, 30 Sep 2016 14:37:01 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E94CB8E3E2;
+	Fri, 30 Sep 2016 18:37:00 +0000 (UTC)
+Received: from [10.3.116.116] (ovpn-116-116.phx2.redhat.com [10.3.116.116])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u8UIb0tr019718; Fri, 30 Sep 2016 14:37:00 -0400
+To: Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <1475230780-8669-1-git-send-email-edgar.iglesias@gmail.com>
 	<4496a78f-e527-fae4-0bc5-a9f1c0d5c997@redhat.com>
 	<20160930104909.GD9606@toto>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Sep 2016 10:34:12 -0700
-Message-ID: <CAFEAcA_6VUj5VDNTiRz1-hST=-AQD+tOneMy1-x7qYjt68YLFQ@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	<CAFEAcA_6VUj5VDNTiRz1-hST=-AQD+tOneMy1-x7qYjt68YLFQ@mail.gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: url=http://people.redhat.com/eblake/eblake.gpg
+Organization: Red Hat, Inc.
+Message-ID: <83fc8d2a-2dd6-261c-ffdb-dda8881a5c25@redhat.com>
+Date: Fri, 30 Sep 2016 13:36:59 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_6VUj5VDNTiRz1-hST=-AQD+tOneMy1-x7qYjt68YLFQ@mail.gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="OvFTxCd0GCkXD9VALLGUfTFfLXWNX0Ppu"
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 30 Sep 2016 18:37:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::22e
-Subject: Re: [Qemu-devel] [PATCH v1 1/1] target-arm: A64: Fix decoding of
- iss_sf in disas_ld_lit
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 1/1] target-arm: A64: Fix
+ decoding of iss_sf in disas_ld_lit
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u57jRhxpsq16
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 99hapceyZZ3x
 
-On 30 September 2016 at 03:49, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Fri, Sep 30, 2016 at 12:42:27PM +0200, Thomas Huth wrote:
->> On 30.09.2016 12:19, Edgar E. Iglesias wrote:
->> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->> >
->> > Fix the decoding of iss_sf in disas_ld_lit.
->> > The SF (Sixty-Four) field in the ISS (Instruction Specific Syndrome)
->> > is a bit that specifies the width of the register that the
->> > instruction loads to.
->> >
->> > If cleared it specifies 32 bits.
->> > If set it specifies 64 bits.
->> >
->> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->> > ---
->> >  target-arm/translate-a64.c | 2 +-
->> >  1 file changed, 1 insertion(+), 1 deletion(-)
->> >
->> > diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
->> > index ddf52f5..eae25c3 100644
->> > --- a/target-arm/translate-a64.c
->> > +++ b/target-arm/translate-a64.c
->> > @@ -2025,7 +2025,7 @@ static void disas_ld_lit(DisasContext *s, uint32_t insn)
->> >          do_fp_ld(s, rt, tcg_addr, size);
->> >      } else {
->> >          /* Only unsigned 32bit loads target 32bit registers.  */
->> > -        bool iss_sf = opc == 0 ? 32 : 64;
->> > +        bool iss_sf = opc == 0 ? false : true;
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--OvFTxCd0GCkXD9VALLGUfTFfLXWNX0Ppu
+Content-Type: multipart/mixed; boundary="jH8vQhjckt6axL9PrTnA0gcOUEigoQRHl";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, Thomas Huth
+ <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <83fc8d2a-2dd6-261c-ffdb-dda8881a5c25@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v1 1/1] target-arm: A64: Fix decoding of
+ iss_sf in disas_ld_lit
+References: <1475230780-8669-1-git-send-email-edgar.iglesias@gmail.com>
+ <4496a78f-e527-fae4-0bc5-a9f1c0d5c997@redhat.com>
+ <20160930104909.GD9606@toto>
+ <CAFEAcA_6VUj5VDNTiRz1-hST=-AQD+tOneMy1-x7qYjt68YLFQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_6VUj5VDNTiRz1-hST=-AQD+tOneMy1-x7qYjt68YLFQ@mail.gmail.com>
+
+--jH8vQhjckt6axL9PrTnA0gcOUEigoQRHl
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+On 09/30/2016 12:34 PM, Peter Maydell wrote:
+>>>> +        bool iss_sf =3D opc =3D=3D 0 ? false : true;
+
+Feels like a double negative.
+
+>>>
+>>> You could simplify that to:
+>>>
+>>>       bool iss_sf =3D !(opc =3D=3D 0);
 >>
->> You could simplify that to:
+>> I don't really see how that is simpler/clearer.
 >>
->>       bool iss_sf = !(opc == 0);
->
-> I don't really see how that is simpler/clearer.
->
-> I considered:
-> bool iss_sf = opc != 0;
->
-> but felt the expanded one was clearer in particular as a patch for review.
+>> I considered:
+>> bool iss_sf =3D opc !=3D 0;
 
-I would probably personally have written it without the ?:, but
-I don't think it's significant enough to bother respinning.
+Or even shorter:
 
-thanks
--- PMM
+bool iss_sf =3D !opc;
+
+--=20
+Eric Blake   eblake redhat com    +1-919-301-3266
+Libvirt virtualization library http://libvirt.org
+
+
+--jH8vQhjckt6axL9PrTnA0gcOUEigoQRHl--
+
+--OvFTxCd0GCkXD9VALLGUfTFfLXWNX0Ppu
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+Comment: Public key at http://people.redhat.com/eblake/eblake.gpg
+Comment: Using GnuPG with Thunderbird - http://www.enigmail.net/
+
+iQEcBAEBCAAGBQJX7rDLAAoJEKeha0olJ0NqmGcH/j9WW7QdREPwvLuO2WDTM1kx
+6Jq1y9XngSlfwDTJd9NKE5jCaTfdBzGfgubkyg/JxYXVhzbHs73+QcU009KaUrdd
+yB0cN03Xx3I5oqUz4LtBeBdnX1B1DFeI958WY1pEbHwbv3VCMkfLcjMB8WE20OKb
+8V9Jf5YtR7tXKHOvWVYWat8qXdRd/DeaY3XqKjdjWSf3U3R0W8P851hxUg8xd9TB
+q+qHMKwL87e2P0nKYE6dzvNTd8dFtcSHn17EYhCxlKlxrVkY5HDZXIJEeQNu3aTD
+MnCCfRVFc/UzyoFQtwUMpJdZLWW9p9lT6aUmEVkEWkQSNBjo6XB9j4J4kDmNaAg=
+=M1y5
+-----END PGP SIGNATURE-----
+
+--OvFTxCd0GCkXD9VALLGUfTFfLXWNX0Ppu--

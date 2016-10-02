@@ -1,1237 +1,143 @@
-Received: by 10.80.163.71 with SMTP id 65csp1172538edn;
-        Sun, 2 Oct 2016 09:11:56 -0700 (PDT)
-X-Received: by 10.55.65.139 with SMTP id o133mr15517353qka.191.1475424716825;
-        Sun, 02 Oct 2016 09:11:56 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp1172623edn;
+        Sun, 2 Oct 2016 09:12:12 -0700 (PDT)
+X-Received: by 10.200.40.244 with SMTP id j49mr16562966qtj.43.1475424732182;
+        Sun, 02 Oct 2016 09:12:12 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g63si18398639qkc.286.2016.10.02.09.11.56
+        by mx.google.com with ESMTPS id 126si18415324qkd.320.2016.10.02.09.12.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 02 Oct 2016 09:11:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 02 Oct 2016 09:12:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60014 helo=lists.gnu.org)
+Received: from localhost ([::1]:60009 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bqjMq-0003Uk-2i
-	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:11:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58071)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bqjN5-00039K-Id
+	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:12:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58072)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjC6-0002iQ-M0
-	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:54 -0400
+	(envelope-from <digetx@gmail.com>) id 1bqjC6-0002iS-N0
+	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjC1-0003Im-JI
-	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:49 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34363)
+	(envelope-from <digetx@gmail.com>) id 1bqjC4-0003LU-9v
+	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:49 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:36684)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <digetx@gmail.com>)
-	id 1bqjBs-0003DP-6x; Sun, 02 Oct 2016 12:00:36 -0400
-Received: by mail-lf0-x244.google.com with SMTP id p80so147027lfp.1;
-	Sun, 02 Oct 2016 09:00:35 -0700 (PDT)
+	id 1bqjC3-0003KI-SZ; Sun, 02 Oct 2016 12:00:48 -0400
+Received: by mail-lf0-x242.google.com with SMTP id b75so429247lfg.3;
+	Sun, 02 Oct 2016 09:00:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:references;
-	bh=D1E7D44VjG+ICY4HU4yQrh4o8XzebyOTzXB5pYNSrIM=;
-	b=apKszy4VmRKJcNS08Pp5JEfF3c3IajIyt8riuXG0XxW4PT2r7ubur0Ul4ECos2C3MR
-	tZc+JZrvrUBKSnwDU2Eo+sTTMGKZ1O4A4Qc2u2cflA2iO68Yq3cNwwryeCThbJGsXQC8
-	HIkkX1bobHvsXbYsk6ymvSrDhXCdeAmb0auxKP4g6b6CbJpSUkUNbuPLB2JWiQvNrJU8
-	t1/BDhEVL2E279/E8KLRCBV3M5ggpkrtjM5rcjc+MkvGtJ24eEqYeHnv0PHvf7ZLcPeO
-	YvQ12LJuQjDkG+ruvDbzd43W6ZjUkxLVxQLvd7dL0I2PE14ycMtVpElcmfBzwdyIxngv
-	1lOw==
+	bh=qQ4EnurbmMZ5Ockl+4iG4WfWOj2tPLIFocLrU1+8g/E=;
+	b=trfoIWbIHoN5x/oql2OtOcqs0H5jSFnFGEZ7M55Qbr7x/pJPnDYOUGWiIDQbx0mDVT
+	rtQp2DJzc/2dCqYUWCDUKTagJbYPpoH8eZkElLVzQEfrmTW5GNeAQtqc2GLbtbjefNqD
+	XpThWYsWU7rhQ/PbNWkSEU264AZmSO/I87FIFH1JUPMoPUbMHx89pUxsrCRRSYSs3PfS
+	KvI+5th7nd860xgJkvwz5CnZ2o6mBYkBbZkPCqF7Fv0oMbQ3BQgBxkNbdXxG/VbOlAyw
+	99B25xHveQJVupp7u8B6Gn8YekPN1HHQ09uhjr5wwAqQgAFsyWBt3tIGPVpdq/inwfug
+	dkTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:in-reply-to:references;
-	bh=D1E7D44VjG+ICY4HU4yQrh4o8XzebyOTzXB5pYNSrIM=;
-	b=WOudfHbRt3H4Mff8I45ThH+xsz9rNk78IMZ2p/WoKxRNn+rgjoiBkKs3p8P5w5BlQv
-	lFQRuK6vwcZ9nQ9/q/ThtQ8XnGL8FJCOTAgez0Oxfl6/myWuUfedH5L6koPngmN2r4Ar
-	E7u0raHctp1FT1wVtg0PSRfkBaqQaFWFMBFeO5NHc1o+DztlaV4ZBzGGUjhw0VA56y4+
-	x5NY0837aUQ4urQHZKW48+Jf4e1J5sps7RGOZQujmtvTVS7RZnAy3sXHngzaB+Wn3wQa
-	apKyjUQCKjri8mS0qpZR1L8UWvOeinwNwK3lJ2Ns6tdB954PdPfUZMU9MrjaFSxpNf3F
-	mfKg==
-X-Gm-Message-State: AA6/9Rk7Bi7/k7FqVg7ipnfBHmk3wu0NLrN9JpmVbNCjCaELXqbvhqJBAk+rX4ooUWslDA==
-X-Received: by 10.25.196.199 with SMTP id u190mr6133561lff.97.1475424020086;
-	Sun, 02 Oct 2016 09:00:20 -0700 (PDT)
+	bh=qQ4EnurbmMZ5Ockl+4iG4WfWOj2tPLIFocLrU1+8g/E=;
+	b=MNTBwIMDrWIfj2+e9tz/kjfGh0sBg6j5g6OwKA1HNi3JINBf6T2ftrfEzUNX7QynzM
+	SmElmXS+LvO5BwcJvE1yUOCdNFFlQPIoOf9S1swK/xY0/f5FhhbDx3muRJF62kZcnT6E
+	0NAUS43McBAThvj1h7i0h+8sssaDv7KK7uyscL6C93A4gjmukSY9eiT4Z6+wWO7Tfn9t
+	4FyCq1aRa7SaILK8cA8FFcVpUnLJ+CcfPPVZSjOIzw/3SWHgO4Hp0Y6r/+3AFZh2ymLV
+	t3Fcm2kaMVFI2HRg9ucsnTYCH1TT8j7apjhuJsbc9vUyo0tYZelJBI5yH7rTBUMKpqGj
+	z29A==
+X-Gm-Message-State: AA6/9Rk+htd6Q5RzFbKAjA2SrZK9DTKAAnTJwA8/PnSxfpJSgzWMV5IEe/0UoqCax6cinA==
+X-Received: by 10.46.33.76 with SMTP id h73mr6265247ljh.37.1475424015743;
+	Sun, 02 Oct 2016 09:00:15 -0700 (PDT)
 Received: from localhost.localdomain (ppp109-252-52-17.pppoe.spdop.ru.
 	[109.252.52.17]) by smtp.gmail.com with ESMTPSA id
-	o84sm4864679lfi.34.2016.10.02.09.00.19
+	o84sm4864679lfi.34.2016.10.02.09.00.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 02 Oct 2016 09:00:19 -0700 (PDT)
+	Sun, 02 Oct 2016 09:00:15 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org
-Date: Sun,  2 Oct 2016 18:53:46 +0300
-Message-Id: <1c9a2f1c80f87e935b4a28919457c81b6b2256e9.1475421224.git.digetx@gmail.com>
+Date: Sun,  2 Oct 2016 18:53:41 +0300
+Message-Id: <ef39622d0ebfdc32a0877e59ffdf6910dc3db688.1475421224.git.digetx@gmail.com>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
 References: <cover.1475421224.git.digetx@gmail.com>
 In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
 References: <cover.1475421224.git.digetx@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: [Qemu-arm] [PATCH v17 14/14] tests: Add tests for the ARM MPTimer
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: [Qemu-devel] [PATCH v17 09/14] hw/ptimer: Add "no counter round
+ down" policy
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sMOJVeWfahRD
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 32WsFiOHtQH5
 
-ARM MPTimer is a per-CPU core timer, essential part of the ARM Cortex-A9
-MPCore. Add QTests for it.
+For most of the timers counter starts to decrement after first period
+expires. Due to rounding down performed by the ptimer_get_count, it returns
+counter - 1 for the running timer, so that for the ptimer user it looks
+like counter gets decremented immediately after running the timer. Add "no
+counter round down" policy that provides correct behaviour for those timers.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- tests/Makefile.include   |    3 +
- tests/test-arm-mptimer.c | 1105 ++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 1108 insertions(+)
- create mode 100644 tests/test-arm-mptimer.c
+ hw/core/ptimer.c    | 9 +++++++++
+ include/hw/ptimer.h | 4 ++++
+ 2 files changed, 13 insertions(+)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 777a0f4..980e3ae 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -292,6 +292,8 @@ check-qtest-arm-y += tests/ds1338-test$(EXESUF)
- gcov-files-arm-y += hw/misc/tmp105.c
- check-qtest-arm-y += tests/virtio-blk-test$(EXESUF)
- gcov-files-arm-y += arm-softmmu/hw/block/virtio-blk.c
-+check-qtest-arm-y += tests/test-arm-mptimer$(EXESUF)
-+gcov-files-arm-y += hw/timer/arm_mptimer.c
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index 2a69daf..3af82af 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -231,6 +231,15 @@ uint64_t ptimer_get_count(ptimer_state *s)
+                 }
+             }
+         }
++
++        if (s->policy_mask & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN) {
++            /* If now == last then delta == limit, i.e. the counter already
++               represents the correct value. It would be rounded down a 1ns
++               later.  */
++            if (now != last) {
++                counter += 1;
++            }
++        }
+     } else {
+         counter = s->delta;
+     }
+diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+index 5455340..48cccbd 100644
+--- a/include/hw/ptimer.h
++++ b/include/hw/ptimer.h
+@@ -51,6 +51,10 @@
+  * immediately, but after a one period.  */
+ #define PTIMER_POLICY_NO_IMMEDIATE_RELOAD   (1 << 3)
  
- check-qtest-microblazeel-y = $(check-qtest-microblaze-y)
- 
-@@ -668,6 +670,7 @@ tests/test-filter-redirector$(EXESUF): tests/test-filter-redirector.o $(qtest-ob
- tests/ivshmem-test$(EXESUF): tests/ivshmem-test.o contrib/ivshmem-server/ivshmem-server.o $(libqos-pc-obj-y)
- tests/vhost-user-bridge$(EXESUF): tests/vhost-user-bridge.o
- tests/test-uuid$(EXESUF): tests/test-uuid.o $(test-util-obj-y)
-+tests/test-arm-mptimer$(EXESUF): tests/test-arm-mptimer.o
- 
- tests/migration/stress$(EXESUF): tests/migration/stress.o
- 	$(call quiet-command, $(LINKPROG) -static -O3 $(PTHREAD_LIB) -o $@ $< ,"  LINK  $(TARGET_DIR)$@")
-diff --git a/tests/test-arm-mptimer.c b/tests/test-arm-mptimer.c
-new file mode 100644
-index 0000000..cb8f2df
---- /dev/null
-+++ b/tests/test-arm-mptimer.c
-@@ -0,0 +1,1105 @@
-+/*
-+ * QTest testcase for the ARM MPTimer
-+ *
-+ * Copyright (c) 2016 Dmitry Osipenko <digetx@gmail.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/timer.h"
-+#include "libqtest.h"
-+
-+#define TIMER_BLOCK_SCALE(s)    ((((s) & 0xff) + 1) * 10)
-+
-+#define TIMER_BLOCK_STEP(scaler, steps_nb) \
-+    clock_step(TIMER_BLOCK_SCALE(scaler) * (int64_t)(steps_nb) + 1)
-+
-+#define TIMER_BASE_PHYS 0x1e000600
-+
-+#define TIMER_LOAD      0x00
-+#define TIMER_COUNTER   0x04
-+#define TIMER_CONTROL   0x08
-+#define TIMER_INTSTAT   0x0C
-+
-+#define TIMER_CONTROL_ENABLE        (1 << 0)
-+#define TIMER_CONTROL_PERIODIC      (1 << 1)
-+#define TIMER_CONTROL_IT_ENABLE     (1 << 2)
-+#define TIMER_CONTROL_PRESCALER(p)  (((p) & 0xff) << 8)
-+
-+#define PERIODIC     1
-+#define ONESHOT      0
-+#define NOSCALE      0
-+
-+static int nonscaled = NOSCALE;
-+static int scaled = 122;
-+
-+static void timer_load(uint32_t load)
-+{
-+    writel(TIMER_BASE_PHYS + TIMER_LOAD, load);
-+}
-+
-+static void timer_start(int periodic, uint32_t scale)
-+{
-+    uint32_t ctl = TIMER_CONTROL_ENABLE | TIMER_CONTROL_PRESCALER(scale);
-+
-+    if (periodic) {
-+        ctl |= TIMER_CONTROL_PERIODIC;
-+    }
-+
-+    writel(TIMER_BASE_PHYS + TIMER_CONTROL, ctl);
-+}
-+
-+static void timer_stop(void)
-+{
-+    writel(TIMER_BASE_PHYS + TIMER_CONTROL, 0);
-+}
-+
-+static void timer_int_clr(void)
-+{
-+    writel(TIMER_BASE_PHYS + TIMER_INTSTAT, 1);
-+}
-+
-+static void timer_reset(void)
-+{
-+    timer_stop();
-+    timer_load(0);
-+    timer_int_clr();
-+}
-+
-+static uint32_t timer_get_and_clr_int_sts(void)
-+{
-+    uint32_t int_sts = readl(TIMER_BASE_PHYS + TIMER_INTSTAT);
-+
-+    if (int_sts) {
-+        timer_int_clr();
-+    }
-+
-+    return int_sts;
-+}
-+
-+static uint32_t timer_counter(void)
-+{
-+    return readl(TIMER_BASE_PHYS + TIMER_COUNTER);
-+}
-+
-+static void timer_set_counter(uint32_t value)
-+{
-+    writel(TIMER_BASE_PHYS + TIMER_COUNTER, value);
-+}
-+
-+static void test_timer_oneshot(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(9999999);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 9999);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+    g_assert_cmpuint(timer_counter(), ==, 9990000);
-+
-+    TIMER_BLOCK_STEP(scaler, 9990000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    TIMER_BLOCK_STEP(scaler, 9990000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_pause(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(999999999);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 999);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999999000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(scaler, 9000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999990000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_stop();
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999990000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(scaler, 90000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999990000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 999990000);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(scaler, 999990000);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+}
-+
-+static void test_timer_reload(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 90000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 90000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_load(UINT32_MAX);
-+
-+    TIMER_BLOCK_STEP(scaler, 90000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 90000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_periodic(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+    int repeat = 10;
-+
-+    timer_reset();
-+    timer_load(100);
-+    timer_start(PERIODIC, scaler);
-+
-+    while (repeat--) {
-+        clock_step(TIMER_BLOCK_SCALE(scaler) * (101 + repeat) + 1);
-+
-+        g_assert_cmpuint(timer_counter(), ==, 100 - repeat);
-+        g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+        clock_step(TIMER_BLOCK_SCALE(scaler) * (101 - repeat) - 1);
-+    }
-+}
-+
-+static void test_timer_oneshot_to_periodic(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(10000);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 9000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 14001);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 5000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+}
-+
-+static void test_timer_periodic_to_oneshot(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(99999999);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 999);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 99999000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 99999009);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+}
-+
-+static void test_timer_prescaler(void)
-+{
-+    timer_reset();
-+    timer_load(9999999);
-+    timer_start(ONESHOT, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 9999998);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    timer_reset();
-+    timer_load(9999999);
-+    timer_start(ONESHOT, 0xAB);
-+
-+    TIMER_BLOCK_STEP(0xAB, 9999998);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(0xAB, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+}
-+
-+static void test_timer_prescaler_on_the_fly(void)
-+{
-+    timer_reset();
-+    timer_load(9999999);
-+    timer_start(ONESHOT, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 999);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 9999000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(ONESHOT, 0xAB);
-+
-+    TIMER_BLOCK_STEP(0xAB, 9000);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 9990000);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_set_oneshot_counter_to_0(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_set_counter(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 10);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_set_periodic_counter_to_0(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_set_counter(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - (scaler ? 0 : 1));
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_reset();
-+    timer_set_counter(UINT32_MAX);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_set_counter(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_noload_oneshot(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_noload_periodic(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_zero_load_oneshot(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_zero_load_periodic(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_zero_load_oneshot_to_nonzero(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_load(999);
-+
-+    TIMER_BLOCK_STEP(scaler, 1001);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+}
-+
-+static void test_timer_zero_load_periodic_to_nonzero(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+    int i;
-+
-+    timer_reset();
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_load(1999999);
-+
-+    for (i = 1; i < 10; i++) {
-+        TIMER_BLOCK_STEP(scaler, 2000001);
-+
-+        g_assert_cmpuint(timer_counter(), ==, 1999999 - i);
-+        g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+        g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+    }
-+}
-+
-+static void test_timer_nonzero_load_oneshot_to_zero(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_load(UINT32_MAX);
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_nonzero_load_periodic_to_zero(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_load(UINT32_MAX);
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_set_periodic_counter_on_the_fly(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX / 2);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX / 2 - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_set_counter(UINT32_MAX);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_enable_and_set_counter(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_set_counter(UINT32_MAX);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_set_counter_and_enable(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_set_counter(UINT32_MAX);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_set_counter_disabled(void)
-+{
-+    timer_reset();
-+    timer_set_counter(999999999);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999999999);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_load_disabled(void)
-+{
-+    timer_reset();
-+    timer_load(999999999);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 999999999);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_oneshot_with_counter_0_on_start(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(999);
-+    timer_set_counter(0);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_periodic_with_counter_0_on_start(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+    int i;
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_set_counter(0);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX + (scaler ? 1 : 0) - 100);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX + (scaler ? 1 : 0) - 200);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_reset();
-+    timer_load(1999999);
-+    timer_set_counter(0);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    for (i = 2 - (!!scaler ? 1 : 0); i < 10; i++) {
-+        TIMER_BLOCK_STEP(scaler, 2000001);
-+
-+        g_assert_cmpuint(timer_counter(), ==, 1999999 - i);
-+        g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+        g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+    }
-+}
-+
-+static void test_periodic_counter(gconstpointer arg)
-+{
-+    const int test_load = 10;
-+    int scaler = *((int *) arg);
-+    int test_val;
-+
-+    timer_reset();
-+    timer_load(test_load);
-+    timer_start(PERIODIC, scaler);
-+
-+    clock_step(1);
-+
-+    for (test_val = 0; test_val <= test_load; test_val++) {
-+        clock_step(TIMER_BLOCK_SCALE(scaler) * test_load);
-+        g_assert_cmpint(timer_counter(), ==, test_val);
-+    }
-+}
-+
-+static void test_timer_set_counter_periodic_with_zero_load(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_start(PERIODIC, scaler);
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    timer_set_counter(999);
-+
-+    TIMER_BLOCK_STEP(scaler, 999);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_set_oneshot_load_to_0(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_set_periodic_load_to_0(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, UINT32_MAX - 100);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_load(0);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+}
-+
-+static void test_deferred_trigger(void)
-+{
-+    int mode = ONESHOT;
-+
-+again:
-+    timer_reset();
-+    timer_start(mode, 255);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    timer_reset();
-+    timer_load(2);
-+    timer_start(mode, 255);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(mode, 255);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_set_counter(0);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    timer_reset();
-+    timer_load(UINT32_MAX);
-+    timer_start(mode, 255);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_load(0);
-+
-+    clock_step(100);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+
-+    if (mode == ONESHOT) {
-+        mode = PERIODIC;
-+        goto again;
-+    }
-+}
-+
-+static void test_timer_zero_load_mode_switch(gconstpointer arg)
-+{
-+    int scaler = *((int *) arg);
-+
-+    timer_reset();
-+    timer_load(0);
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    timer_start(ONESHOT, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    timer_start(PERIODIC, scaler);
-+
-+    TIMER_BLOCK_STEP(scaler, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, !!scaler);
-+}
-+
-+static void test_timer_zero_load_prescaled_periodic_to_nonscaled_oneshot(void)
-+{
-+    timer_reset();
-+    timer_load(0);
-+    timer_start(PERIODIC, 255);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    timer_start(ONESHOT, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_zero_load_prescaled_oneshot_to_nonscaled_periodic(void)
-+{
-+    timer_reset();
-+    timer_load(0);
-+    timer_start(ONESHOT, 255);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(PERIODIC, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_zero_load_nonscaled_oneshot_to_prescaled_periodic(void)
-+{
-+    timer_reset();
-+    timer_load(0);
-+    timer_start(ONESHOT, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(PERIODIC, 255);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+static void test_timer_zero_load_nonscaled_periodic_to_prescaled_oneshot(void)
-+{
-+    timer_reset();
-+    timer_load(0);
-+    timer_start(PERIODIC, NOSCALE);
-+
-+    TIMER_BLOCK_STEP(NOSCALE, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    timer_start(ONESHOT, 255);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 1);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+
-+    TIMER_BLOCK_STEP(255, 1);
-+
-+    g_assert_cmpuint(timer_counter(), ==, 0);
-+    g_assert_cmpuint(timer_get_and_clr_int_sts(), ==, 0);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int *scaler = &nonscaled;
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("mptimer/deferred_trigger", test_deferred_trigger);
-+    qtest_add_func("mptimer/load_disabled", test_timer_load_disabled);
-+    qtest_add_func("mptimer/set_counter_disabled", test_timer_set_counter_disabled);
-+    qtest_add_func("mptimer/zero_load_prescaled_periodic_to_nonscaled_oneshot",
-+                   test_timer_zero_load_prescaled_periodic_to_nonscaled_oneshot);
-+    qtest_add_func("mptimer/zero_load_prescaled_oneshot_to_nonscaled_periodic",
-+                   test_timer_zero_load_prescaled_oneshot_to_nonscaled_periodic);
-+    qtest_add_func("mptimer/zero_load_nonscaled_oneshot_to_prescaled_periodic",
-+                   test_timer_zero_load_nonscaled_oneshot_to_prescaled_periodic);
-+    qtest_add_func("mptimer/zero_load_nonscaled_periodic_to_prescaled_oneshot",
-+                   test_timer_zero_load_nonscaled_periodic_to_prescaled_oneshot);
-+    qtest_add_func("mptimer/prescaler", test_timer_prescaler);
-+    qtest_add_func("mptimer/prescaler_on_the_fly", test_timer_prescaler_on_the_fly);
-+
-+tests_with_prescaler_arg:
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/oneshot scaler=%d", *scaler),
-+                        scaler, test_timer_oneshot);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/pause scaler=%d", *scaler),
-+                        scaler, test_timer_pause);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/reload scaler=%d", *scaler),
-+                        scaler, test_timer_reload);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/periodic scaler=%d", *scaler),
-+                        scaler, test_timer_periodic);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/oneshot_to_periodic scaler=%d", *scaler),
-+                        scaler, test_timer_oneshot_to_periodic);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/periodic_to_oneshot scaler=%d", *scaler),
-+                        scaler, test_timer_periodic_to_oneshot);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_oneshot_counter_to_0 scaler=%d", *scaler),
-+                        scaler, test_timer_set_oneshot_counter_to_0);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_periodic_counter_to_0 scaler=%d", *scaler),
-+                        scaler, test_timer_set_periodic_counter_to_0);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/noload_oneshot scaler=%d", *scaler),
-+                        scaler, test_timer_noload_oneshot);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/noload_periodic scaler=%d", *scaler),
-+                        scaler, test_timer_noload_periodic);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/zero_load_oneshot scaler=%d", *scaler),
-+                        scaler, test_timer_zero_load_oneshot);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/zero_load_periodic scaler=%d", *scaler),
-+                        scaler, test_timer_zero_load_periodic);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/zero_load_oneshot_to_nonzero scaler=%d", *scaler),
-+                        scaler, test_timer_zero_load_oneshot_to_nonzero);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/zero_load_periodic_to_nonzero scaler=%d", *scaler),
-+                        scaler, test_timer_zero_load_periodic_to_nonzero);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/nonzero_load_oneshot_to_zero scaler=%d", *scaler),
-+                        scaler, test_timer_nonzero_load_oneshot_to_zero);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/nonzero_load_periodic_to_zero scaler=%d", *scaler),
-+                        scaler, test_timer_nonzero_load_periodic_to_zero);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_periodic_counter_on_the_fly scaler=%d", *scaler),
-+                        scaler, test_timer_set_periodic_counter_on_the_fly);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/enable_and_set_counter scaler=%d", *scaler),
-+                        scaler, test_timer_enable_and_set_counter);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_counter_and_enable scaler=%d", *scaler),
-+                        scaler, test_timer_set_counter_and_enable);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/oneshot_with_counter_0_on_start scaler=%d", *scaler),
-+                        scaler, test_timer_oneshot_with_counter_0_on_start);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/periodic_with_counter_0_on_start scaler=%d", *scaler),
-+                        scaler, test_timer_periodic_with_counter_0_on_start);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/periodic_counter scaler=%d", *scaler),
-+                        scaler, test_periodic_counter);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_counter_periodic_with_zero_load scaler=%d", *scaler),
-+                        scaler, test_timer_set_counter_periodic_with_zero_load);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_oneshot_load_to_0 scaler=%d", *scaler),
-+                        scaler, test_timer_set_oneshot_load_to_0);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/set_periodic_load_to_0 scaler=%d", *scaler),
-+                        scaler, test_timer_set_periodic_load_to_0);
-+    qtest_add_data_func(
-+        g_strdup_printf("mptimer/zero_load_mode_switch scaler=%d", *scaler),
-+                        scaler, test_timer_zero_load_mode_switch);
-+
-+    if (scaler == &nonscaled) {
-+        scaler = &scaled;
-+        goto tests_with_prescaler_arg;
-+    }
-+
-+    qtest_start("-machine vexpress-a9");
-+    ret = g_test_run();
-+    qtest_end();
-+
-+    return ret;
-+}
++/* Make counter value of the running timer represent the actual value and
++ * not the one less.  */
++#define PTIMER_POLICY_NO_COUNTER_ROUND_DOWN (1 << 4)
++
+ /* ptimer.c */
+ typedef struct ptimer_state ptimer_state;
+ typedef void (*ptimer_cb)(void *opaque);
 -- 
 2.9.3
 

@@ -1,184 +1,184 @@
-Received: by 10.80.163.71 with SMTP id 65csp1171563edn;
-        Sun, 2 Oct 2016 09:09:07 -0700 (PDT)
-X-Received: by 10.200.53.82 with SMTP id z18mr2706160qtb.82.1475424547470;
-        Sun, 02 Oct 2016 09:09:07 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp1171881edn;
+        Sun, 2 Oct 2016 09:10:02 -0700 (PDT)
+X-Received: by 10.55.106.134 with SMTP id f128mr16092536qkc.309.1475424602762;
+        Sun, 02 Oct 2016 09:10:02 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x32si18476450qtd.35.2016.10.02.09.09.07
+        by mx.google.com with ESMTPS id i18si18478543qtc.24.2016.10.02.09.10.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 02 Oct 2016 09:09:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 02 Oct 2016 09:10:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59992 helo=lists.gnu.org)
+Received: from localhost ([::1]:59998 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bqjK6-0000Vf-PA
-	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:09:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57949)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bqjL0-0001kU-3a
+	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:10:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjC2-0002f9-8f
-	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:47 -0400
+	(envelope-from <digetx@gmail.com>) id 1bqjC4-0002gx-2F
+	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjBz-0003Hm-L1
-	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:46 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:33263)
+	(envelope-from <digetx@gmail.com>) id 1bqjC2-0003JL-Cm
+	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:47 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:34359)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <digetx@gmail.com>)
-	id 1bqjBz-0003H6-66; Sun, 02 Oct 2016 12:00:43 -0400
-Received: by mail-lf0-x241.google.com with SMTP id l131so7946132lfl.0;
-	Sun, 02 Oct 2016 09:00:42 -0700 (PDT)
+	id 1bqjBw-0003Fc-Tz; Sun, 02 Oct 2016 12:00:41 -0400
+Received: by mail-lf0-x243.google.com with SMTP id p80so146905lfp.1;
+	Sun, 02 Oct 2016 09:00:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:in-reply-to:references;
-	bh=CnG2NcT32VWre/5LKfN4/dgVbWhB4WIQiXbecTlwedY=;
-	b=ltEyDyRKF8iwz4oFHhvTJ3EwDWDCNRxbkEvofAIqdBtNQGxZkVMMlmxciRITAep+x7
-	tvTxgSDaTX70I+gbIGy8CvGR0nZJ9eCz8KTVAILivuRG4XBIrer1dJ0bFSItkLdNhF6w
-	CMDbnl1t5Dtu8qiJkRfycVaUu8Alvbjw00IlTJfUWajVUzEdX46HP5h6cmrRpOCtEmdl
-	fbprQaKqtzjViJcdPbOkZxXig1FtnMeNR1vFUfzKdCzdg/TtoobOvj01DIXHpKWhDGy/
-	uXoy9S0QKW8mPJ7X0eNQPw+E37jEfYiEnHUZSFCEjFKGZjDvQE3aIvDFJrirV//miBHh
-	acNQ==
+	h=from:to:cc:subject:date:message-id;
+	bh=34DRyAr+kKtNVSfG7CY2wmXhb7BRB2i6wwMN9AENHBY=;
+	b=nhyvIcPaLnfdzls9jm5j82Mh229qQmvCV+98fbyV93NVpsKR2WDidD0pfhiM+6PlU9
+	2thFuR1C78GOoAIh2/t51JMQ8ZfVem9ZQArWbYYhGvrXzsZjanevXYLD1oPuaAI+g5yG
+	1W0ZAxp7sIxD1UEXKhwNz/qIYUtGp+RiKl3hDfcVss1GjOuGGDIE0EDQritzVSvVPJsb
+	JmOLlh8IiVVX+OJUdDOI2ZIgiTuNDrtp8wA8QLaGo2qTl/4gt1+9VxGDXDsVH8ITqDjG
+	DjC34ogCUGCbcVXgJ42TT/owhUaqihrxd9qRL+7p7A901rDJXcvHen2wjH+x8vlaYpCe
+	duQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:in-reply-to:references;
-	bh=CnG2NcT32VWre/5LKfN4/dgVbWhB4WIQiXbecTlwedY=;
-	b=UgBvnqei4inumiFXZa9ktkBU4XSASDdf8mvXPSeVN1vtVPP5Ygj/zdSZzGPSbFZtcI
-	oQWSagx3GwH8/F4jOhyw5q3NeUOcnGjDisbpLOIdPPdvkuHhCPDKfwaLoHyrs9azOH3R
-	X/UWr/PC8QcY1dgoqdjdsxgNbLprPi8zFkcm7N0169lcx7GJw2qKfTlqEwiZzjQ8C0Yb
-	xnMgAcWzZ28UVsVvoMzPtcmtADH12ik013QGsA3M/0ejstcl0N5mxNc8vmcsu9EHVxJK
-	NEMWBH5A0aJTj06/OQXBrYg7xZjtDjd5Jx8m+01UIxeullCJuGg2oS9E55/5Ng4kxurB
-	pWmQ==
-X-Gm-Message-State: AA6/9RlfBxgsL8YA5EWQvdlA9SVVohcYI0u7sEXMgOSxgu6G2wEDW0QwiT+RgQ/u6rGsSw==
-X-Received: by 10.25.139.66 with SMTP id n63mr6897075lfd.111.1475424011197;
-	Sun, 02 Oct 2016 09:00:11 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=34DRyAr+kKtNVSfG7CY2wmXhb7BRB2i6wwMN9AENHBY=;
+	b=XBU8cNTa6l2pOOcHRggVixFOSd8BoED1QPna04bWTj0vy9rJlmvaJGTSwMrBbixbsZ
+	o1naBFQ6fGydzUPAWxqXgDuGZsRwAAT+tmwqxopiX5uwkSVVFsJsDU59EI70b2Pk5H4Q
+	Mw9OKc+FloNJ1Hp2AOvgDM7ze0K3m0gmGJwwB2Z3o5c/EhbeXPVF1WekfcLYFG+n4E6S
+	Yi3gGu+q77SjC6KEHUCKpDNQ3gutgqy/uZtT1MU+UAXY1Y7R2/OhfQNtno5KHuiJgD5l
+	6zwn841Ojxxe0zYp/+61D2YIvTTXhglCxqlmALekNfYabFlXxqpjz6rnoECZMGszNkFp
+	2Vuw==
+X-Gm-Message-State: AA6/9RnmaUmgOERSWpArmVkPXZv/73gy31N97l9KLJIlBMEEwvvNEcTEDIQvvPr/7NcYxQ==
+X-Received: by 10.25.136.198 with SMTP id k189mr6291469lfd.132.1475424008895; 
+	Sun, 02 Oct 2016 09:00:08 -0700 (PDT)
 Received: from localhost.localdomain (ppp109-252-52-17.pppoe.spdop.ru.
 	[109.252.52.17]) by smtp.gmail.com with ESMTPSA id
-	o84sm4864679lfi.34.2016.10.02.09.00.10
+	o84sm4864679lfi.34.2016.10.02.09.00.07
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 02 Oct 2016 09:00:10 -0700 (PDT)
+	Sun, 02 Oct 2016 09:00:08 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org
-Date: Sun,  2 Oct 2016 18:53:35 +0300
-Message-Id: <632b23dd11055d9bd5e338d66b38fac0bd51462e.1475421224.git.digetx@gmail.com>
+Date: Sun,  2 Oct 2016 18:53:32 +0300
+Message-Id: <cover.1475421224.git.digetx@gmail.com>
 X-Mailer: git-send-email 2.9.3
-In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
-References: <cover.1475421224.git.digetx@gmail.com>
-In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
-References: <cover.1475421224.git.digetx@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: [Qemu-devel] [PATCH v17 03/14] hw/ptimer: Add "continuous trigger"
- policy
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: [Qemu-arm] [PATCH v17 00/14] PTimer fixes/features and ARM MPTimer
+ conversion
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rup94jLZQS+3
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ajVegJfpoaq6
 
-Currently, periodic timer that has load = delta = 0 performs trigger
-on timer reload and stops, printing a "period zero" error message.
-Introduce new policy that makes periodic timer to continuously trigger
-with a period interval in case of load = 0.
+Hello,
 
-Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
----
- hw/core/ptimer.c    | 30 +++++++++++++++++++++++++++---
- include/hw/ptimer.h |  4 ++++
- 2 files changed, 31 insertions(+), 3 deletions(-)
+Currently, QEMU ARM MPTimer device model provides only a certain subset of
+the emulation behavior. This patch series is supposed to add missing parts by
+converting the MPTimer to use generic ptimer helper. It fixes some important
+ptimer bugs and provides new features that are required for the ARM MPTimer.
 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index 1f4122d..1aa0194 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -47,7 +47,8 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
-         ptimer_trigger(s);
-         delta = s->delta = s->limit;
-     }
--    if (delta == 0 || s->period == 0) {
-+
-+    if (s->period == 0) {
-         if (!qtest_enabled()) {
-             fprintf(stderr, "Timer with period zero, disabling\n");
-         }
-@@ -60,6 +61,21 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
-         delta += delta_adjust;
-     }
- 
-+    if (delta == 0 && (s->policy_mask & PTIMER_POLICY_CONTINUOUS_TRIGGER)) {
-+        if (s->enabled == 1 && s->limit == 0) {
-+            delta = 1;
-+        }
-+    }
-+
-+    if (delta == 0) {
-+        if (!qtest_enabled()) {
-+            fprintf(stderr, "Timer with delta zero, disabling\n");
-+        }
-+        timer_del(s->timer);
-+        s->enabled = 0;
-+        return;
-+    }
-+
-     /*
-      * Artificially limit timeout rate to something
-      * achievable under QEMU.  Otherwise, QEMU spends all
-@@ -90,7 +106,15 @@ static void ptimer_tick(void *opaque)
-     if (s->enabled == 2) {
-         s->enabled = 0;
-     } else {
--        ptimer_reload(s, DELTA_ADJUST);
-+        int delta_adjust = DELTA_ADJUST;
-+
-+        if (s->limit == 0) {
-+            /* If a "continuous trigger" policy is not used and limit == 0,
-+               we should error out.  */
-+            delta_adjust = 0;
-+        }
-+
-+        ptimer_reload(s, delta_adjust);
-     }
- }
- 
-@@ -98,7 +122,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
- {
-     uint64_t counter;
- 
--    if (s->enabled) {
-+    if (s->enabled && s->delta != 0) {
-         int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         int64_t next = s->next_event;
-         int64_t last = s->last_event;
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 03441cb..b2fb4f9 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -39,6 +39,10 @@
-  * around.  */
- #define PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD (1 << 0)
- 
-+/* Running periodic timer that has counter = limit = 0 would continuously
-+ * re-trigger every period.  */
-+#define PTIMER_POLICY_CONTINUOUS_TRIGGER    (1 << 1)
-+
- /* ptimer.c */
- typedef struct ptimer_state ptimer_state;
- typedef void (*ptimer_cb)(void *opaque);
+WARNING! I based V17 on top of the Paolo's patch [0], however I don't see
+the original mail of that patch on the ML nor in patches/patchew.
+
+[0] https://lists.nongnu.org/archive/html/qemu-devel/2016-09/msg06734.html
+
+Changelog:
+    V17: Extended ptimer tests uncovered the ptimer issues mentioned below,
+         changed the copyright text as Eric Blake suggested in the comment
+         to V16.
+
+         Ptimer policies patches cleaned a bit (should be a bit easier to
+         review, hopefully), added more comments, some fixes:
+
+         "wraparound after one period" now does what it claims without the
+         "no counter round down" policy.
+
+         "no immediate reload" policy won't trigger twice, on setting
+         counter to 0 and after the reload, if the "no immediate trigger"
+         policy not used.
+
+         If "continuous trigger" policy is used and periodic timer starts
+         to run with counter != 0, it won't stop on reaching 0. It was hidden
+         by some other policy.
+
+    V16: Suppressed ptimer warning messages under qtest.
+
+         Added a comment for the default policy in the "include/hw/ptimer.h"
+
+         Patches "Change ptimer_get_count to return "1" for the expired timer"
+         and "Fix counter - 1 returned by ptimer_get_count for the active timer"
+         are merged and converted into a "no counter round down" ptimer policy.
+
+         Added "hw/timer/arm_mptimer.c" into the "make check" GCOV.
+
+    V15: As per Peter's Maydell request: split ptimer policy patches,
+         so that first "policy" patch only sets default policy to all
+         of the timers without introducing new behaviour policies.
+
+         The "deferred trigger" ptimer policy from V14 is converted to
+         "continuous trigger" as it is more intuitive.
+
+         New ptimer policies added.
+
+         New ptimer patch "Actually stop timer in case of error".
+
+         Fixed ARM MPTimer periodic/oneshot "on the fly" mode switch
+         for the case when load = 0 and new mode has prescaler = 0.
+
+         Added QTests for each of the ptimer policies.
+
+         Added QTests for the ARM MPTimer.
+
+    V14: Set the ptimer policy in the ptimer_init() instead of adding
+         ptimer_set_policy(), keeping ptimer VMState unchanged and dropped
+         hw_error() hardening asserts as per Peter's Maydell V13 review
+         comments, addressed the rest of the review comments.
+
+    V13-V2: https://lists.gnu.org/archive/html/qemu-arm/2016-05/msg00269.html
+
+Dmitry Osipenko (14):
+  hw/ptimer: Add "wraparound after one period" policy
+  tests: ptimer: Add tests for "wraparound after one period" policy
+  hw/ptimer: Add "continuous trigger" policy
+  tests: ptimer: Add tests for "continuous trigger" policy
+  hw/ptimer: Add "no immediate trigger" policy
+  tests: ptimer: Add tests for "no immediate trigger" policy
+  hw/ptimer: Add "no immediate reload" policy
+  tests: ptimer: Add tests for "no immediate reload" policy
+  hw/ptimer: Add "no counter round down" policy
+  tests: ptimer: Add tests for "no counter round down" policy
+  tests: ptimer: Change the copyright comment
+  tests: ptimer: Replace 10000 with 1
+  arm_mptimer: Convert to use ptimer
+  tests: Add tests for the ARM MPTimer
+
+ hw/core/ptimer.c               |  130 ++++-
+ hw/timer/arm_mptimer.c         |  149 +++---
+ include/hw/ptimer.h            |   20 +
+ include/hw/timer/arm_mptimer.h |    5 +-
+ tests/Makefile.include         |    3 +
+ tests/ptimer-test-stubs.c      |    2 +-
+ tests/ptimer-test.c            |  362 ++++++++++---
+ tests/ptimer-test.h            |    2 +-
+ tests/test-arm-mptimer.c       | 1105 ++++++++++++++++++++++++++++++++++++++++
+ 9 files changed, 1616 insertions(+), 162 deletions(-)
+ create mode 100644 tests/test-arm-mptimer.c
+
 -- 
 2.9.3
 

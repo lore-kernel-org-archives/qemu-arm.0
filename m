@@ -1,70 +1,70 @@
-Received: by 10.80.163.71 with SMTP id 65csp1174386edn;
-        Sun, 2 Oct 2016 09:17:25 -0700 (PDT)
-X-Received: by 10.55.43.80 with SMTP id r77mr15617002qkh.34.1475425045169;
-        Sun, 02 Oct 2016 09:17:25 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp1175422edn;
+        Sun, 2 Oct 2016 09:20:35 -0700 (PDT)
+X-Received: by 10.237.37.189 with SMTP id x58mr14668762qtc.148.1475425235619;
+        Sun, 02 Oct 2016 09:20:35 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q11si9060902qkq.33.2016.10.02.09.17.25
+        by mx.google.com with ESMTPS id m189si18483789qkd.39.2016.10.02.09.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 02 Oct 2016 09:17:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 02 Oct 2016 09:20:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60041 helo=lists.gnu.org)
+Received: from localhost ([::1]:60060 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bqjS8-0007NC-Hp
-	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:17:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57948)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bqjVD-0001gb-1f
+	for alex.bennee@linaro.org; Sun, 02 Oct 2016 12:20:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58007)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjC2-0002f8-8X
-	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:48 -0400
+	(envelope-from <digetx@gmail.com>) id 1bqjC4-0002h2-3z
+	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <digetx@gmail.com>) id 1bqjBz-0003HH-0P
-	for qemu-devel@nongnu.org; Sun, 02 Oct 2016 12:00:46 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:33262)
+	(envelope-from <digetx@gmail.com>) id 1bqjC2-0003JX-Ff
+	for qemu-arm@nongnu.org; Sun, 02 Oct 2016 12:00:47 -0400
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:36680)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <digetx@gmail.com>)
-	id 1bqjBy-0003Ga-CV; Sun, 02 Oct 2016 12:00:42 -0400
-Received: by mail-lf0-x244.google.com with SMTP id l131so7946126lfl.0;
-	Sun, 02 Oct 2016 09:00:42 -0700 (PDT)
+	id 1bqjBx-0003G6-K4; Sun, 02 Oct 2016 12:00:42 -0400
+Received: by mail-lf0-x244.google.com with SMTP id b75so429180lfg.3;
+	Sun, 02 Oct 2016 09:00:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:in-reply-to:references;
-	bh=T4a/lHK6Aj/JHWaKNglwDY2PkE22jMkZWei2MqhP64o=;
-	b=Hy+70CVgr0CZM9duoHXlR6544LnKEWFPrjGj+69Xq7fKjkJEa5cTCI7MEF39Ly3IlN
-	YiNdeaBe2gxpNhnGJHPN4ToexO1ZrLfXvOyNuJhNeMe1DBo2Fxqq6z3tF4shGFOmWyEI
-	tub5UJCg3BfizGI6g96OpaXC0dP0Rp101Cj7MpLjpHLcJJolLnK2w+t8xmy36poqUz9P
-	Du+VSi3yikHgw644EdwC8cKgqcbSbciu/M9XUovmWzbmDSfMhY6ztAQkoc/ih3IIBtVw
-	EepYLlvpNNOkdigsawMV4N4LmjzWx2XWjkHLjdTdlVz0AGvawBguDow8VNIP308jkX5Z
-	6TPw==
+	bh=jQJXwzutTf4ZTTAydX4wOGD58j0DPnB2rdPv8Yyub9Q=;
+	b=kO3sbE03NkWWvr2dykMRyZ6sYar8HgfA6mmWCzuHusO5an6SU6QIrnVAzxLomgXQne
+	pRWYAAJ5MyC1dYRbMOsUCFn002M8PXtT9r49M6M5sK7RYSgBO5b4DdWAIeqXFWaKgFCh
+	1Jjvp1PxYigUmF7hNgvfibWKdYPMtpZJpAjEnHdP/x89avuSru5RzXhATWqBojxuza3G
+	y4UggiMcgJAwWWfYJ5BTofh9JJjTc9UsnobVEcNgnB48STSDR6OoNMzTcgUfuYcr2EGy
+	Mf7Y2LVJfRKnH+AJG0Zu4osoJCfzKL9qs2rY3FchRz/+I04NKdaZG04FJUjfPjmvTQo1
+	FWAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:in-reply-to:references;
-	bh=T4a/lHK6Aj/JHWaKNglwDY2PkE22jMkZWei2MqhP64o=;
-	b=MLp+ZTU26I6r9miS75Izm5V3eKzee2znj1Gb/BwvAeMDudxAYBbOAkCgWFtmUW9BzJ
-	sufM18TKcm8W+QaXBqfG0XZBoPC4xx28eM3VTcqwUILlHY0nOc3n84zMm5//AA2+ZQLP
-	ddOLEfWiMi7JL4BVaeSfE/DgvnoDUeCiSHjy3zJoMyUQ/jQ1/Joal26TjRrMxxSiNeWQ
-	SQABJd3L36ns3Ag4U6FgBewFPSUKDNuM65ihJHjNZByGNhqlHP/dzvJNovBqzYqjN4ec
-	k0fKEU9N0XO7/aLUXjYgJwYSRuffVYzDA7x3rDaDDAUdsKPL8h2DyBIQUC/YXgy1jgeD
-	DcDw==
-X-Gm-Message-State: AA6/9RlP9pQ08JuuqSdzNROkEIR+D24DNlVq3O7E0zc2q5JszBxFn4CWGyvJehNe8rd0fQ==
-X-Received: by 10.25.129.147 with SMTP id c141mr5297955lfd.59.1475424010418;
-	Sun, 02 Oct 2016 09:00:10 -0700 (PDT)
+	bh=jQJXwzutTf4ZTTAydX4wOGD58j0DPnB2rdPv8Yyub9Q=;
+	b=B1VRhGqQW+/9fP1WWqDm372skq1dG2tqjbRIni6sCC5kRl2dYSCF/b+qSNzBWbq0dU
+	PqZNHh3eJEqOP0gY2HXvHyy+2bEAgZJG1EV3LDW5XFfvLNFXg5nNFIxBhh6O7Rjtnihm
+	npePUizWs1L+V6I1F86aavII4qzNRWCnh4w/0J9OmwDxrwW5HmZpZI/a7GqwtyK68nSI
+	qNz17MPklohN90VV0uNTdsUjyDezARuGfSH+4gQ53a4OPoyT5i1FQ/wsYa0Vs4dGzz2g
+	Zs4k4/uljyEWmyiN6i1cu2nL46zvZkqvYVKWakXWVGbdzaRR5zSQLVefCW8UWg5s+T2c
+	V2PQ==
+X-Gm-Message-State: AA6/9RmHpMP0QGMnBBky7phY1f5/juQ1d6qMdtI3nV6NTk9d/+dO5dQF5z0afEE49Hy26A==
+X-Received: by 10.25.76.136 with SMTP id z130mr6403963lfa.126.1475424009664;
+	Sun, 02 Oct 2016 09:00:09 -0700 (PDT)
 Received: from localhost.localdomain (ppp109-252-52-17.pppoe.spdop.ru.
 	[109.252.52.17]) by smtp.gmail.com with ESMTPSA id
-	o84sm4864679lfi.34.2016.10.02.09.00.09
+	o84sm4864679lfi.34.2016.10.02.09.00.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 02 Oct 2016 09:00:10 -0700 (PDT)
+	Sun, 02 Oct 2016 09:00:09 -0700 (PDT)
 From: Dmitry Osipenko <digetx@gmail.com>
 To: QEMU Developers <qemu-devel@nongnu.org>,
 	qemu-arm@nongnu.org
-Date: Sun,  2 Oct 2016 18:53:34 +0300
-Message-Id: <ce27bb84ed9f2b64300dd4e90f3eff235a7dcedf.1475421224.git.digetx@gmail.com>
+Date: Sun,  2 Oct 2016 18:53:33 +0300
+Message-Id: <f22a670cf1f4be298b31640cb5f4be1df0f20ab6.1475421224.git.digetx@gmail.com>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
 References: <cover.1475421224.git.digetx@gmail.com>
@@ -72,327 +72,216 @@ In-Reply-To: <cover.1475421224.git.digetx@gmail.com>
 References: <cover.1475421224.git.digetx@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2a00:1450:4010:c07::244
-Subject: [Qemu-devel] [PATCH v17 02/14] tests: ptimer: Add tests for
- "wraparound after one period" policy
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v17 01/14] hw/ptimer: Add "wraparound after one
+ period" policy
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Peter Crosthwaite <crosthwaitepeter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QhvumunuxOiq
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KFdRuBEFKCUB
 
-PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD changes ptimer behaviour in a such way,
-that it would wrap around after one period instead of doing it immediately.
+Currently, periodic counter wraps around immediately once counter reaches
+"0", this is wrong behaviour for some of the timers, resulting in one period
+being lost. Add new ptimer policy that provides correct behaviour for such
+timers, so that counter stays with "0" for a one period before wrapping
+around.
 
 Signed-off-by: Dmitry Osipenko <digetx@gmail.com>
 ---
- tests/ptimer-test.c | 127 ++++++++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 104 insertions(+), 23 deletions(-)
+ hw/core/ptimer.c    | 58 +++++++++++++++++++++++++++++++++++++++--------------
+ include/hw/ptimer.h |  4 ++++
+ 2 files changed, 47 insertions(+), 15 deletions(-)
 
-diff --git a/tests/ptimer-test.c b/tests/ptimer-test.c
-index 7b0ddf6..b95958f 100644
---- a/tests/ptimer-test.c
-+++ b/tests/ptimer-test.c
-@@ -188,6 +188,7 @@ static void check_periodic(gconstpointer arg)
-     const uint8_t *policy = arg;
-     QEMUBH *bh = qemu_bh_new(ptimer_trigger, NULL);
-     ptimer_state *ptimer = ptimer_init(bh, *policy);
-+    bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index c45c835..1f4122d 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -13,6 +13,8 @@
+ #include "sysemu/replay.h"
+ #include "sysemu/qtest.h"
  
-     triggered = false;
- 
-@@ -195,20 +196,41 @@ static void check_periodic(gconstpointer arg)
-     ptimer_set_limit(ptimer, 10, 1);
-     ptimer_run(ptimer, 0);
- 
--    qemu_clock_step(2000000 * 10 + 100000);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 10);
-+    g_assert_false(triggered);
++#define DELTA_ADJUST    1
 +
-+    qemu_clock_step(100000);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 9);
-+    g_assert_false(triggered);
-+
-+    qemu_clock_step(2000000 * 10 - 100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 0 : 10);
-+    g_assert_true(triggered);
-+
-+    qemu_clock_step(100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 0 : 9);
-     g_assert_true(triggered);
- 
-     triggered = false;
- 
-     qemu_clock_step(2000000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 8);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 9 : 8);
-     g_assert_false(triggered);
- 
-     ptimer_set_count(ptimer, 20);
- 
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 20);
-+    g_assert_false(triggered);
-+
-+    qemu_clock_step(100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 19);
-+    g_assert_false(triggered);
-+
-     qemu_clock_step(2000000 * 11 + 100000);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 8);
-@@ -216,7 +238,24 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 * 10);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 8);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 9 : 8);
-+    g_assert_true(triggered);
-+
-+    triggered = false;
-+
-+    ptimer_set_count(ptimer, 3);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 3);
-+    g_assert_false(triggered);
-+
-+    qemu_clock_step(100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 2);
-+    g_assert_false(triggered);
-+
-+    qemu_clock_step(2000000 * 4);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 9 : 8);
-     g_assert_true(triggered);
- 
-     ptimer_stop(ptimer);
-@@ -224,7 +263,7 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 8);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 9 : 8);
-     g_assert_false(triggered);
- 
-     ptimer_set_count(ptimer, 3);
-@@ -232,14 +271,14 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 * 3 + 100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 9);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 0 : 9);
-     g_assert_true(triggered);
- 
-     triggered = false;
- 
-     qemu_clock_step(2000000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 8);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 9 : 8);
-     g_assert_false(triggered);
- 
-     ptimer_set_count(ptimer, 0);
-@@ -248,18 +287,23 @@ static void check_periodic(gconstpointer arg)
- 
-     triggered = false;
- 
--    qemu_clock_step(2000000 * 12 + 100000);
-+    qemu_clock_step(100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 7);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 9);
-+    g_assert_false(triggered);
-+
-+    qemu_clock_step(2000000 * 12);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-     g_assert_true(triggered);
- 
-     ptimer_stop(ptimer);
- 
-     triggered = false;
- 
--    qemu_clock_step(2000000 * 12 + 100000);
-+    qemu_clock_step(2000000 * 10);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 7);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-     g_assert_false(triggered);
- 
-     ptimer_run(ptimer, 0);
-@@ -267,7 +311,7 @@ static void check_periodic(gconstpointer arg)
- 
-     qemu_clock_step(2000000 + 100000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 7);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 8 : 7);
-     g_assert_false(triggered);
- }
- 
-@@ -276,6 +320,7 @@ static void check_on_the_fly_mode_change(gconstpointer arg)
-     const uint8_t *policy = arg;
-     QEMUBH *bh = qemu_bh_new(ptimer_trigger, NULL);
-     ptimer_state *ptimer = ptimer_init(bh, *policy);
-+    bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
- 
-     triggered = false;
- 
-@@ -285,6 +330,9 @@ static void check_on_the_fly_mode_change(gconstpointer arg)
- 
-     qemu_clock_step(2000000 * 9 + 100000);
- 
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+    g_assert_false(triggered);
-+
-     ptimer_run(ptimer, 0);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-@@ -292,7 +340,7 @@ static void check_on_the_fly_mode_change(gconstpointer arg)
- 
-     qemu_clock_step(2000000);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 9);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 0 : 9);
-     g_assert_true(triggered);
- 
-     triggered = false;
-@@ -301,7 +349,7 @@ static void check_on_the_fly_mode_change(gconstpointer arg)
- 
-     ptimer_run(ptimer, 1);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 1 : 0);
-     g_assert_false(triggered);
- 
-     qemu_clock_step(2000000 * 3);
-@@ -394,6 +442,7 @@ static void check_run_with_delta_0(gconstpointer arg)
-     const uint8_t *policy = arg;
-     QEMUBH *bh = qemu_bh_new(ptimer_trigger, NULL);
-     ptimer_state *ptimer = ptimer_init(bh, *policy);
-+    bool wrap_policy = (*policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD);
- 
-     triggered = false;
- 
-@@ -429,14 +478,21 @@ static void check_run_with_delta_0(gconstpointer arg)
- 
-     triggered = false;
- 
--    qemu_clock_step(2000000 + 100000);
-+    qemu_clock_step(100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 98);
-+    g_assert_false(triggered);
-+
-+    triggered = false;
-+
-+    qemu_clock_step(2000000);
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 97);
-     g_assert_false(triggered);
- 
-     qemu_clock_step(2000000 * 98);
- 
--    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 98);
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, wrap_policy ? 0 : 98);
-     g_assert_true(triggered);
- 
-     ptimer_stop(ptimer);
-@@ -463,6 +519,23 @@ static void check_periodic_with_load_0(gconstpointer arg)
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-     g_assert_false(triggered);
- 
-+    triggered = false;
-+
-+    ptimer_set_count(ptimer, 10);
-+    ptimer_run(ptimer, 0);
-+
-+    qemu_clock_step(2000000 * 10 + 100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+    g_assert_true(triggered);
-+
-+    triggered = false;
-+
-+    qemu_clock_step(2000000 + 100000);
-+
-+    g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-+    g_assert_false(triggered);
-+
-     ptimer_stop(ptimer);
- }
- 
-@@ -486,18 +559,12 @@ static void check_oneshot_with_load_0(gconstpointer arg)
- 
-     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
-     g_assert_false(triggered);
--
--    triggered = false;
--
--    qemu_clock_step(2000000 + 100000);
--
--    g_assert_false(triggered);
- }
- 
- static void add_ptimer_tests(uint8_t policy)
+ struct ptimer_state
  {
-     uint8_t *ppolicy = g_malloc(1);
--    char *policy_name = g_malloc(64);
-+    char *policy_name = g_malloc0(256);
+     uint8_t enabled; /* 0 = disabled, 1 = periodic, 2 = oneshot.  */
+@@ -35,16 +37,17 @@ static void ptimer_trigger(ptimer_state *s)
+     }
+ }
  
-     *ppolicy = policy;
+-static void ptimer_reload(ptimer_state *s)
++static void ptimer_reload(ptimer_state *s, int delta_adjust)
+ {
+     uint32_t period_frac = s->period_frac;
+     uint64_t period = s->period;
++    uint64_t delta = s->delta;
  
-@@ -505,6 +572,10 @@ static void add_ptimer_tests(uint8_t policy)
-         g_sprintf(policy_name, "default");
+-    if (s->delta == 0) {
++    if (delta == 0) {
+         ptimer_trigger(s);
+-        s->delta = s->limit;
++        delta = s->delta = s->limit;
+     }
+-    if (s->delta == 0 || s->period == 0) {
++    if (delta == 0 || s->period == 0) {
+         if (!qtest_enabled()) {
+             fprintf(stderr, "Timer with period zero, disabling\n");
+         }
+@@ -53,6 +56,10 @@ static void ptimer_reload(ptimer_state *s)
+         return;
      }
  
-+    if (policy & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD) {
-+        g_strlcat(policy_name, "wrap_after_one_period,", 256);
++    if (s->policy_mask & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD) {
++        delta += delta_adjust;
 +    }
 +
-     g_test_add_data_func(
-         g_strdup_printf("/ptimer/set_count policy=%s", policy_name),
-         ppolicy, check_set_count);
-@@ -550,6 +621,16 @@ static void add_ptimer_tests(uint8_t policy)
-         ppolicy, check_oneshot_with_load_0);
- }
+     /*
+      * Artificially limit timeout rate to something
+      * achievable under QEMU.  Otherwise, QEMU spends all
+@@ -62,15 +69,15 @@ static void ptimer_reload(ptimer_state *s)
+      * on the current generation of host machines.
+      */
  
-+static void add_all_ptimer_policies_comb_tests(void)
-+{
-+    int last_policy = PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD;
-+    int policy = PTIMER_POLICY_DEFAULT;
-+
-+    for (; policy < (last_policy << 1); policy++) {
-+        add_ptimer_tests(policy);
-+    }
-+}
-+
- int main(int argc, char **argv)
- {
-     int i;
-@@ -560,7 +641,7 @@ int main(int argc, char **argv)
-         main_loop_tlg.tl[i] = g_new0(QEMUTimerList, 1);
+-    if (s->enabled == 1 && (s->delta * period < 10000) && !use_icount) {
+-        period = 10000 / s->delta;
++    if (s->enabled == 1 && (delta * period < 10000) && !use_icount) {
++        period = 10000 / delta;
+         period_frac = 0;
      }
  
--    add_ptimer_tests(PTIMER_POLICY_DEFAULT);
-+    add_all_ptimer_policies_comb_tests();
+     s->last_event = s->next_event;
+-    s->next_event = s->last_event + s->delta * period;
++    s->next_event = s->last_event + delta * period;
+     if (period_frac) {
+-        s->next_event += ((int64_t)period_frac * s->delta) >> 32;
++        s->next_event += ((int64_t)period_frac * delta) >> 32;
+     }
+     timer_mod(s->timer, s->next_event);
+ }
+@@ -83,7 +90,7 @@ static void ptimer_tick(void *opaque)
+     if (s->enabled == 2) {
+         s->enabled = 0;
+     } else {
+-        ptimer_reload(s);
++        ptimer_reload(s, DELTA_ADJUST);
+     }
+ }
  
-     qtest_allowed = true;
+@@ -94,6 +101,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+     if (s->enabled) {
+         int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+         int64_t next = s->next_event;
++        int64_t last = s->last_event;
+         bool expired = (now - next >= 0);
+         bool oneshot = (s->enabled == 2);
  
+@@ -118,7 +126,7 @@ uint64_t ptimer_get_count(ptimer_state *s)
+             /* We need to divide time by period, where time is stored in
+                rem (64-bit integer) and period is stored in period/period_frac
+                (64.32 fixed point).
+-              
++
+                Doing full precision division is hard, so scale values and
+                do a 64-bit division.  The result should be rounded down,
+                so that the rounding error never causes the timer to go
+@@ -145,6 +153,26 @@ uint64_t ptimer_get_count(ptimer_state *s)
+                     div += 1;
+             }
+             counter = rem / div;
++
++            if (s->policy_mask & PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD) {
++                /* Before wrapping around, timer should stay with counter = 0
++                   for a one period.  */
++                if (!oneshot && s->delta == s->limit) {
++                    if (now == last) {
++                        /* Counter == delta here, check whether it was
++                           adjusted and if it was, then right now it is
++                           that "one period".  */
++                        if (counter == s->limit + DELTA_ADJUST) {
++                            return 0;
++                        }
++                    } else if (counter == s->limit) {
++                        /* Since the counter is rounded down and now != last,
++                           the counter == limit means that delta was adjusted
++                           by +1 and right now it is that adjusted period.  */
++                        return 0;
++                    }
++                }
++            }
+         }
+     } else {
+         counter = s->delta;
+@@ -157,7 +185,7 @@ void ptimer_set_count(ptimer_state *s, uint64_t count)
+     s->delta = count;
+     if (s->enabled) {
+         s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        ptimer_reload(s);
++        ptimer_reload(s, 0);
+     }
+ }
+ 
+@@ -174,7 +202,7 @@ void ptimer_run(ptimer_state *s, int oneshot)
+     s->enabled = oneshot ? 2 : 1;
+     if (was_disabled) {
+         s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        ptimer_reload(s);
++        ptimer_reload(s, 0);
+     }
+ }
+ 
+@@ -198,7 +226,7 @@ void ptimer_set_period(ptimer_state *s, int64_t period)
+     s->period_frac = 0;
+     if (s->enabled) {
+         s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        ptimer_reload(s);
++        ptimer_reload(s, 0);
+     }
+ }
+ 
+@@ -210,7 +238,7 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
+     s->period_frac = (1000000000ll << 32) / freq;
+     if (s->enabled) {
+         s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        ptimer_reload(s);
++        ptimer_reload(s, 0);
+     }
+ }
+ 
+@@ -223,7 +251,7 @@ void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
+         s->delta = limit;
+     if (s->enabled && reload) {
+         s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-        ptimer_reload(s);
++        ptimer_reload(s, 0);
+     }
+ }
+ 
+diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+index 26c7fdc..03441cb 100644
+--- a/include/hw/ptimer.h
++++ b/include/hw/ptimer.h
+@@ -35,6 +35,10 @@
+  */
+ #define PTIMER_POLICY_DEFAULT               0
+ 
++/* Periodic timer counter stays with "0" for a one period before wrapping
++ * around.  */
++#define PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD (1 << 0)
++
+ /* ptimer.c */
+ typedef struct ptimer_state ptimer_state;
+ typedef void (*ptimer_cb)(void *opaque);
 -- 
 2.9.3
 

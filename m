@@ -1,63 +1,72 @@
-Received: by 10.80.163.71 with SMTP id 65csp1451613edn;
-        Mon, 3 Oct 2016 02:13:50 -0700 (PDT)
-X-Received: by 10.55.81.197 with SMTP id f188mr18079507qkb.243.1475486030861;
-        Mon, 03 Oct 2016 02:13:50 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp1662686edn;
+        Mon, 3 Oct 2016 09:57:00 -0700 (PDT)
+X-Received: by 10.55.220.193 with SMTP id v184mr20761787qki.303.1475513820500;
+        Mon, 03 Oct 2016 09:57:00 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e79si13382545qkj.277.2016.10.03.02.13.50
+        by mx.google.com with ESMTPS id i66si21139012qke.14.2016.10.03.09.57.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 03 Oct 2016 02:13:50 -0700 (PDT)
+        Mon, 03 Oct 2016 09:57:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35403 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38231 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bqzJl-0000kM-Mr
-	for alex.bennee@linaro.org; Mon, 03 Oct 2016 05:13:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33972)
+	id 1br6Xz-0002RY-V0
+	for alex.bennee@linaro.org; Mon, 03 Oct 2016 12:57:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47195)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1bqzJh-0000kF-Kv
-	for qemu-arm@nongnu.org; Mon, 03 Oct 2016 05:13:46 -0400
+	(envelope-from <rutu.shah.26@gmail.com>) id 1br6Xs-0002O2-AU
+	for qemu-arm@nongnu.org; Mon, 03 Oct 2016 12:56:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1bqzJc-00004z-KL
-	for qemu-arm@nongnu.org; Mon, 03 Oct 2016 05:13:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32946)
+	(envelope-from <rutu.shah.26@gmail.com>) id 1br6Xo-0001ZX-6n
+	for qemu-arm@nongnu.org; Mon, 03 Oct 2016 12:56:52 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:36664)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>)
-	id 1bqzJc-0008WM-Em; Mon, 03 Oct 2016 05:13:40 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7D594461EA;
-	Mon,  3 Oct 2016 09:13:39 +0000 (UTC)
-Received: from javelin ([10.65.148.59])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u939DZ0B020935
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 3 Oct 2016 05:13:37 -0400
-Date: Mon, 3 Oct 2016 14:43:33 +0530 (IST)
-From: P J P <ppandit@redhat.com>
-X-X-Sender: pjp@javelin
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <CAFEAcA85-XdSaOYTWr2=JQVt+EBsmrSq-5QcbWe8hrSW0qZ7xA@mail.gmail.com>
-Message-ID: <alpine.LFD.2.20.1610031435080.21013@wniryva>
-References: <1475054208-20288-1-git-send-email-ppandit@redhat.com>
-	<CAFEAcA-zru_S2GeLNDYb4uTkOsEN7TyT_kb5kw0f+fftqOvKXA@mail.gmail.com>
-	<alpine.LFD.2.20.1610021122450.32504@wniryva>
-	<CAFEAcA85-XdSaOYTWr2=JQVt+EBsmrSq-5QcbWe8hrSW0qZ7xA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 03 Oct 2016 09:13:39 +0000 (UTC)
+	(envelope-from <rutu.shah.26@gmail.com>)
+	id 1br6Xg-0001XX-TD; Mon, 03 Oct 2016 12:56:41 -0400
+Received: by mail-pf0-x244.google.com with SMTP id n24so9050155pfb.3;
+	Mon, 03 Oct 2016 09:56:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=from:to:cc:subject:date:message-id;
+	bh=Wv6iCIupQGp0xuZXE2joT0vVjQRoNjxFASNevAXtkFE=;
+	b=jSR2Ff8CH5NO8sk0hI8LCWLAMf4fOQyKuVzJK5K+TPTymzIdFCP9xlZW+EJQ4+sxZ6
+	uuFM2hV6oW4OQSn0JSYPWtjkcZ2FtioUPnmJslg7m9D17lnm78xOLpseUDtbrMxqCMb9
+	9CaDueGEwvM2KnjbHdY/0NvlS4GvNJPePv0lf3RVi1LRmIJkXQlK1CeGWP1rA/+zjwNv
+	DMSjDk1saheemofPzBHMIjLM/j8tGz+z8FaSbsML2bwWuFmwEI4yJ8QS6M2WPGVBSYA1
+	smwOyLYcAwd4qAxIqIkU96Ir2mg7sLr2Nk1Wd00hBkeodkbC0bapLTZIhadGqT7sU2yM
+	5I3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Wv6iCIupQGp0xuZXE2joT0vVjQRoNjxFASNevAXtkFE=;
+	b=fb32X7+WB5GgSm6c7GR0t9SnwTo6mIOwFHB/IHYtjADwCifAIWl/kQ+b8eY6jddlJd
+	ABaW+IstWjU+9/T5lPhRauFe91GKBuQtd6pn83lRHOkDXPUVSJCYaFxvjsbN5a1whoI2
+	OF9flLr94nl6NdYaHs48bMQZ2vFvrS2tGtw6HxHmzZTe1j5pZPiWzAujV1rsoIlqJun1
+	eGIebKJRXgaMh7STjABhdtsdy64iWsTOm7i2T0jRPeZ/k1OAAz9i7XIzp61yTMjWAiv5
+	reOJrBZww+W86a3ZtlmLH//469+mn00478TcSVuVlWFWXgfNaJ03V8hewBkVoBR+gMtO
+	IncQ==
+X-Gm-Message-State: AA6/9RlRAGzhcXlmwbpT/OufKPxf5WuFzrCeh0J5CQp10iXKJXjVPcf8cnQjbSSJfet3dw==
+X-Received: by 10.98.213.68 with SMTP id d65mr38678928pfg.112.1475513799515;
+	Mon, 03 Oct 2016 09:56:39 -0700 (PDT)
+Received: from rutuja-HP-ProBook-4430s.pune.wibhu.com ([59.95.42.29])
+	by smtp.gmail.com with ESMTPSA id
+	yg10sm48690870pab.8.2016.10.03.09.56.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 03 Oct 2016 09:56:38 -0700 (PDT)
+From: rutu.shah.26@gmail.com
+To: qemu-devel@nongnu.org
+Date: Mon,  3 Oct 2016 22:26:25 +0530
+Message-Id: <1475513785-30275-1-git-send-email-rutu.shah.26@gmail.com>
+X-Mailer: git-send-email 1.9.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2] timer: a9gtimer: check auto-increment
- register value
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: [Qemu-arm] [PATCH] Reducing stack frame size in
+ stream_process_mem2s()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,41 +78,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Li Qiang <liqiang6-s@360.cn>,
-	Qemu Developers <qemu-devel@nongnu.org>
+Cc: stefanh@gmail.com, qemu-arm@nongnu.org,
+	Rutuja Shah <rutu.shah.26@gmail.com>, alistair.francis@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qvZmpY6zH5Sj
+X-TUID: SQSZenw2XISh
 
-  Hello Peter,
+From: Rutuja Shah <rutu.shah.26@gmail.com>
 
-+-- On Sun, 2 Oct 2016, Peter Maydell wrote --+
-| The timer can't autoincrement by more than a 32 bit value, but
-| the timer value is 64 bits, and since this code may be doing more than
-| one autoincrement it's better to use 64 bits.
+This patch allocates memory for txbuf array on the heap rather than the stack.
+As a result, the stack frame size is reduced.
 
-  Okay.
+Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
+---
+ hw/dma/xilinx_axidma.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-| If in doubt, you need to check the datasheet/technical reference manual for 
-| the hardware, in this case 
-| http://infocenter.arm.com/help/topic/com.arm.doc.100486_0401_10_en/ada1443777319205.html 
-| Zero is a valid value for the auto-increment register, and in fact it is the 
-| documented reset value.
-
-  Yes, I was following the same. It does mention zero as a valid reset value, 
-but does not mention about value to be writen to Timer Load Register. As in, 
-when user attempts to write to a register. 
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index b135a5f..6c63575 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -256,13 +256,14 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
+                                  StreamSlave *tx_control_dev)
+ {
+     uint32_t prev_d;
+-    unsigned char txbuf[16 * 1024];
++    unsigned char *txbuf;
+     unsigned int txlen;
  
-| gtb->status should be set whenever the timer comparator
-| fires, whether we are auto-incrementing or not, and
-| whatever the value of the auto-increment register is.
-| It is the "timer matched" interrupt output. (Your current
-| patch is wrong in that it has moved setting gtb->status
-| into the wrong place, as I mentioned above.)
+     if (!stream_running(s) || stream_idle(s)) {
+         return;
+     }
+ 
++    txbuf = g_malloc(16 * 1024);
+     while (1) {
+         stream_desc_load(s, s->regs[R_CURDESC]);
+ 
+@@ -304,6 +305,7 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
+             break;
+         }
+     }
++    g_free(txbuf);
+ }
+ 
+ static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
+-- 
+1.9.1
 
-  Done; I've sent a revised patch v3.
-
-Thank you.
---
-Prasad J Pandit / Red Hat Product Security Team
-47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F

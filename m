@@ -1,79 +1,56 @@
-Received: by 10.80.163.71 with SMTP id 65csp2328298edn;
-        Tue, 4 Oct 2016 13:56:35 -0700 (PDT)
-X-Received: by 10.176.69.141 with SMTP id u13mr3783417uau.176.1475614595378;
-        Tue, 04 Oct 2016 13:56:35 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp2344307edn;
+        Tue, 4 Oct 2016 14:39:13 -0700 (PDT)
+X-Received: by 10.55.183.1 with SMTP id h1mr5790385qkf.264.1475617153485;
+        Tue, 04 Oct 2016 14:39:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e5si5032296uae.105.2016.10.04.13.56.35
+        by mx.google.com with ESMTPS id m5si3899240qkd.87.2016.10.04.14.39.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 13:56:35 -0700 (PDT)
+        Tue, 04 Oct 2016 14:39:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45243 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45366 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brWlO-0004xc-Qw
-	for alex.bennee@linaro.org; Tue, 04 Oct 2016 16:56:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48448)
+	id 1brXQe-00070m-DQ
+	for alex.bennee@linaro.org; Tue, 04 Oct 2016 17:39:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1brWlJ-0004wc-Qt
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 16:56:30 -0400
+	(envelope-from <wei@redhat.com>) id 1brXQT-000705-Vd
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 17:39:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1brWlI-0006VS-Rm
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 16:56:29 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36048)
+	(envelope-from <wei@redhat.com>) id 1brXQQ-0002DZ-QF
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 17:39:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39662)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>)
-	id 1brWlC-0006Tg-Vd; Tue, 04 Oct 2016 16:56:23 -0400
-Received: by mail-wm0-x243.google.com with SMTP id b184so21503857wma.3;
-	Tue, 04 Oct 2016 13:56:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=yWIxZ7gPrSDlxyx0Zy6lQToHfwRWltacYgTFoms+7FU=;
-	b=Yc0BX+MaDYXDqB7ew9MWYB4nqHau5jpfSPLRzeEwdzTHrrNE3Gt3SQWgYmtb3OsuYD
-	oQNHZIhswKL7BTkEFWTAgiocE/ibgNWg30mmMsJi+sfpY44XH4WVnhSzTo52DEiRs4Dm
-	BvJy6WaPnVZ400z65kL6o1wv/cyDiWxd2he3U4WVyXKuXUbIBNo9Y46lub+AeXiCPLtZ
-	5waO5ShuT/VQ7RsCBi2YeEyM930ZMKrferj8EUMRLkIK2rkjf2zbYGeDzPToxCkk3p9s
-	t/YGJ4XBttzDLZl6hy3rWnh/Y3p6sonfEkawUDvQmpjYOICkR2YvDyDUvHBbHdlcUQEa
-	p24g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=yWIxZ7gPrSDlxyx0Zy6lQToHfwRWltacYgTFoms+7FU=;
-	b=cInGdUFwB3rUY7fuZlCNIcRGRSYq7soShVRfJIExW0PngAxcgh6tyQcc+v9sIqCAIr
-	EeWgBgDKaAMWnBdd7qF4S95swrJWzmdpgSw6Xt7XNfe8MsA1qAq3jk2HcvPu0t8KVOz8
-	i3YmRvnHyxO8hdOYWy8hCH9BIf049PH9UiCvNuviMPMpU2/av3/jdnKThHoHMhxyyetZ
-	sWaGc5iKUGoUTnAg21kj+Lbbay/vt8uRP4/c+XCsm1yv+6rtnYfZ2FR2FJvkPnWAo6he
-	bSxF2fKwyfrCrCUOxFD2sBceLHnL3ILIPZ+UJaQzPWAeQMOGUYhL4Qy0mtSizhEGWyu2
-	zm1g==
-X-Gm-Message-State: AA6/9RlDKLLwkHv/5CNyhzLRyIebCILOHi88zfgeb6dg1YxAesSWtj/bmDodmWvUNpzEAQ==
-X-Received: by 10.194.84.199 with SMTP id b7mr4686576wjz.147.1475614582046;
-	Tue, 04 Oct 2016 13:56:22 -0700 (PDT)
-Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
-	by smtp.gmail.com with ESMTPSA id
-	w203sm25962375wmw.7.2016.10.04.13.56.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Oct 2016 13:56:20 -0700 (PDT)
-Date: Tue, 4 Oct 2016 22:56:19 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: rutu.shah.26@gmail.com
-Message-ID: <20161004205619.GA31579@toto>
-References: <1475604703-3381-1-git-send-email-rutu.shah.26@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1475604703-3381-1-git-send-email-rutu.shah.26@gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
+	(envelope-from <wei@redhat.com>)
+	id 1brXQQ-0002DH-Kx; Tue, 04 Oct 2016 17:38:58 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 06E6E693F2;
+	Tue,  4 Oct 2016 21:38:58 +0000 (UTC)
+Received: from apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com
+	(apm-mustang-ev3-30.khw.lab.eng.bos.redhat.com [10.16.184.124])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u94LcsL6007849; Tue, 4 Oct 2016 17:38:57 -0400
+From: Wei Huang <wei@redhat.com>
+To: qemu-arm@nongnu.org
+Date: Tue,  4 Oct 2016 17:38:54 -0400
+Message-Id: <1475617134-28180-3-git-send-email-wei@redhat.com>
+In-Reply-To: <1475617134-28180-1-git-send-email-wei@redhat.com>
+References: <1475617134-28180-1-git-send-email-wei@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 04 Oct 2016 21:38:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [PATCHv2] Reducing stack frame size in
- stream_process_mem2s()
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH V6 2/2] arm: virt: add PMU property to mach-virt
+ machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,85 +62,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: stefanha@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alistair.francis@xilinx.com
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
+	abologna@redhat.com, shannon.zhao@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vIr3EP8XV8yG
+X-TUID: JWhitIW0tM3y
 
-On Tue, Oct 04, 2016 at 11:41:42PM +0530, rutu.shah.26@gmail.com wrote:
-> From: Rutuja Shah <rutu.shah.26@gmail.com>
-> 
-> Hi,
-> This patch allocates memory for txbuf in struct Stream rather than the stack.
-> As a result, the stack frame size is reduced of stream_process_mem2s().
+CPU vPMU is now turned off by default, but it was ON in virt-2.7
+machine type. To solve this problem, this patch adds a PMU option
+in machine state, which is used to control CPU's vPMU status. This
+PMU option is not exposed to command line and is turned on in
+virt-2.7 machine type to make sure it is backward compatible.
 
-Hi Rutuja,
+Signed-off-by: Wei Huang <wei@redhat.com>
+---
+ hw/arm/virt.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-A nit-pick:
-The commit message is not meant to be a converstation-like message, so
-normally we don't include greetings.
-The expected format is to have an empty line between the message and
-the SoB line.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d348b02..43832f3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -84,6 +84,7 @@ typedef struct {
+     MachineClass parent;
+     VirtBoardInfo *daughterboard;
+     bool disallow_affinity_adjustment;
++    bool pmu_default_on;
+ } VirtMachineClass;
+ 
+ typedef struct {
+@@ -1322,6 +1323,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     for (n = 0; n < smp_cpus; n++) {
+         Object *cpuobj = object_new(typename);
++        ARMCPU *cpu = ARM_CPU(cpuobj);
++
+         if (!vmc->disallow_affinity_adjustment) {
+             /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+              * GIC's target-list limitations. 32-bit KVM hosts currently
+@@ -1352,6 +1355,12 @@ static void machvirt_init(MachineState *machine)
+             }
+         }
+ 
++        if (cpu->has_pmu == ON_OFF_AUTO_AUTO &&
++            object_property_find(cpuobj, "pmu", NULL)) {
++            cpu->has_pmu = vmc->pmu_default_on && kvm_enabled() ?
++                ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
++        }
++
+         if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+             object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
+                                     "reset-cbar", &error_abort);
+@@ -1562,8 +1571,12 @@ static void virt_2_7_instance_init(Object *obj)
+ 
+ static void virt_machine_2_7_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_2_8_options(mc);
+     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_7);
++
++    vmc->pmu_default_on = true;
+ }
+ DEFINE_VIRT_MACHINE(2, 7)
+ 
+@@ -1582,5 +1595,9 @@ static void virt_machine_2_6_options(MachineClass *mc)
+     virt_machine_2_7_options(mc);
+     SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
+     vmc->disallow_affinity_adjustment = true;
++    /* Disable PMU for 2.6 and down as PMU support was first introduced
++     * and enabled in 2.7.
++     */
++    vmc->pmu_default_on = false;
+ }
+ DEFINE_VIRT_MACHINE(2, 6)
+-- 
+1.8.3.1
 
-Here's an example:
-
-Allocate memory for txbuf in struct Stream rather than on the stack.
-As a result, the stack frame size is reduced for stream_process_mem2s().
-
-Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
-
-
-Other than that, this looks good to me:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-> Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
-> ---
->  hw/dma/xilinx_axidma.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> index b135a5f..6065689 100644
-> --- a/hw/dma/xilinx_axidma.c
-> +++ b/hw/dma/xilinx_axidma.c
-> @@ -111,6 +111,7 @@ struct Stream {
->      unsigned int complete_cnt;
->      uint32_t regs[R_MAX];
->      uint8_t app[20];
-> +    unsigned char txbuf[16 * 1024];
->  };
->  
->  struct XilinxAXIDMAStreamSlave {
-> @@ -256,7 +257,6 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->                                   StreamSlave *tx_control_dev)
->  {
->      uint32_t prev_d;
-> -    unsigned char txbuf[16 * 1024];
->      unsigned int txlen;
->  
->      if (!stream_running(s) || stream_idle(s)) {
-> @@ -277,17 +277,17 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->          }
->  
->          txlen = s->desc.control & SDESC_CTRL_LEN_MASK;
-> -        if ((txlen + s->pos) > sizeof txbuf) {
-> +        if ((txlen + s->pos) > sizeof s->txbuf) {
->              hw_error("%s: too small internal txbuf! %d\n", __func__,
->                       txlen + s->pos);
->          }
->  
->          cpu_physical_memory_read(s->desc.buffer_address,
-> -                                 txbuf + s->pos, txlen);
-> +                                 s->txbuf + s->pos, txlen);
->          s->pos += txlen;
->  
->          if (stream_desc_eof(&s->desc)) {
-> -            stream_push(tx_data_dev, txbuf, s->pos);
-> +            stream_push(tx_data_dev, s->txbuf, s->pos);
->              s->pos = 0;
->              stream_complete(s);
->          }
-> -- 
-> 1.9.1
-> 

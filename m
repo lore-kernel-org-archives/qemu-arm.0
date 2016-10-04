@@ -1,74 +1,61 @@
-Received: by 10.80.163.71 with SMTP id 65csp2121836edn;
-        Tue, 4 Oct 2016 06:43:26 -0700 (PDT)
-X-Received: by 10.55.178.69 with SMTP id b66mr3878608qkf.146.1475588606524;
-        Tue, 04 Oct 2016 06:43:26 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp2138273edn;
+        Tue, 4 Oct 2016 07:13:27 -0700 (PDT)
+X-Received: by 10.55.27.32 with SMTP id b32mr3648929qkb.211.1475590407180;
+        Tue, 04 Oct 2016 07:13:27 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o134si2846135qke.64.2016.10.04.06.43.26
+        by mx.google.com with ESMTPS id l95si15902482qte.110.2016.10.04.07.13.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 06:43:26 -0700 (PDT)
+        Tue, 04 Oct 2016 07:13:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42693 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42892 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brQ0D-0002Bm-OU
-	for alex.bennee@linaro.org; Tue, 04 Oct 2016 09:43:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41099)
+	id 1brQTG-0003JM-LF
+	for alex.bennee@linaro.org; Tue, 04 Oct 2016 10:13:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rutu.shah.26@gmail.com>) id 1brPgs-0001wi-WB
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:23:28 -0400
+	(envelope-from <drjones@redhat.com>) id 1brQ5t-0007GF-M1
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:49:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rutu.shah.26@gmail.com>) id 1brPgs-0001I4-4l
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:23:26 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:34024)
+	(envelope-from <drjones@redhat.com>) id 1brQ5o-0007qk-Ow
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:49:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41800)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rutu.shah.26@gmail.com>)
-	id 1brPgo-0001BY-Ly; Tue, 04 Oct 2016 09:23:22 -0400
-Received: by mail-wm0-x243.google.com with SMTP id b201so14522504wmb.1;
-	Tue, 04 Oct 2016 06:23:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=nXpQnjueS2TdZiRsecPfs6AOAC7NP8JAgLQvpTDx2e8=;
-	b=UKNU1g7VvkWCLvELdh9MT1pZIH5wYQsi2B9YjdX3xVDcWLDmO/JWrO1HlKZx0AnwYI
-	uxKVoIT1CUggmNBAhKBLRo1hl4KU+fGN9pLVIS3indvpgXxBq5FDz3vVzmNno+bKsLt9
-	qFK43TioKDR1YVa0gqGHWIjEfxJ/5VXbo7mFAwoDF4RtVw4H7Ifuc8rhJTprHnkY3X3+
-	F58Ztgy3pN63Gmwx3igQXYgnfTFgRhymxoGNZl6n5ZCyRz+kgFSXRRNe+gd0OhqySocq
-	CjVIDuofjKrB7Spa/e1IbJaeCT5fFpo/+bFA2FCi+a5i90jbTxyCEBIHzbL87bYn8GUo
-	38Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=nXpQnjueS2TdZiRsecPfs6AOAC7NP8JAgLQvpTDx2e8=;
-	b=TIhzpz2dClYWAxnLqbGrPfBvwMrePwbMUJTFTvQaaYp7B55pdkdN/uIiwUIGU1jzvZ
-	3SwSbCg0gYOPqRpGsLk4dGeDGtdq4HTdJ18SyWLL2VWcobfkttoSYWrU20bMWbN4jsut
-	RkrGfu3/ohT2a6s5BNlWhlTm9FZq+z4wjLrW5BzwEruCZSFyz9SlupCVjFEdgrZ1A3Rc
-	uJRn+Ib+7UuxyQbZyfwF7uTegSZYso2MqFo59GZrlJmaHMS3kmd1c2AyrNZzfAC1G1jy
-	QLyli8Nu0o015UrHYyHPWwQFbMVgXKPbdT+H7geaqfoPHJKg6+xIbOvYUCnvWPomjqbk
-	gWkg==
-X-Gm-Message-State: AA6/9RlpYUFSYTmBxrktjK8m+7e8paCY1IsHRLDCKIQzvGygr+2oY6CPARZHVD4kIv5i4uPdWfElO4UfczS2bA==
-X-Received: by 10.194.94.101 with SMTP id db5mr1705220wjb.110.1475587400785;
-	Tue, 04 Oct 2016 06:23:20 -0700 (PDT)
+	(envelope-from <drjones@redhat.com>)
+	id 1brQ5o-0007qO-Hv; Tue, 04 Oct 2016 09:49:12 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E52258535A;
+	Tue,  4 Oct 2016 13:49:11 +0000 (UTC)
+Received: from kamzik.brq.redhat.com ([10.34.1.163])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u94Dn8N9002224
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 4 Oct 2016 09:49:10 -0400
+Date: Tue, 4 Oct 2016 15:49:08 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20161004134908.e3oayr7zkxbq6d3o@kamzik.brq.redhat.com>
+References: <1474641676-25017-1-git-send-email-drjones@redhat.com>
+	<CAFEAcA-98_+mdZO-YKW-_Or5=v4vDGS6NgHHmBX5i3a2pPQ0Tg@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.194.64.98 with HTTP; Tue, 4 Oct 2016 06:23:20 -0700 (PDT)
-In-Reply-To: <20161003222617.GA11832@toto>
-References: <1475513785-30275-1-git-send-email-rutu.shah.26@gmail.com>
-	<CAFE_T+QzrfgGwSkqfbL6dArsSH_dyFREM=mma1sBeokO7gpX6Q@mail.gmail.com>
-	<20161003222617.GA11832@toto>
-From: Rutuja Shah <rutu.shah.26@gmail.com>
-Date: Tue, 4 Oct 2016 18:53:20 +0530
-Message-ID: <CAFE_T+SVu+vh1RMO08eCQgOYsLzhGW-9CU3KZ7FYtpWbWmVLeg@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-98_+mdZO-YKW-_Or5=v4vDGS6NgHHmBX5i3a2pPQ0Tg@mail.gmail.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 04 Oct 2016 13:49:11 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [PATCH] Reducing stack frame size in
- stream_process_mem2s()
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/virt: add 2.8 machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,79 +67,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, alistair.francis@xilinx.com
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P4etEWABYFEw
+X-TUID: zoN2qetn2uCX
 
-Hi,
-Allocating txbuf in struct Stream seems to be good. I can see other
-pointers of struct Stream being allocated in xilinx_axidma_realize(),
-but I am not able to find their deallocation point anywhere?
-Regards
-Rutuja Shah
+On Tue, Oct 04, 2016 at 02:32:36PM +0100, Peter Maydell wrote:
+> On 23 September 2016 at 15:41, Andrew Jones <drjones@redhat.com> wrote:
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> >
+> > ---
+> >
+> > This will conflict with Wei's PMU property series (which is why I
+> > asked him to add it to that series...), but anyway, it'll be a minor
+> > resolution to make.
+> > ---
+> 
+> There wasn't a textual conflict but it (slightly belatedly)
+> occured to me that perhaps the "support KVM GICv3 ITS" patches
+> which went in to master in the same pullreq as this might
+> need some tweaks so the ITS doesn't get used in the 2.7
+> machine. Would you or Eric A like to have a look?
+>
 
+Good call. We should avoid guest visible changes, even when
+the changes complete already exposed devices. I'll send a
+patch.
 
-On Tue, Oct 4, 2016 at 3:56 AM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Mon, Oct 03, 2016 at 10:32:40PM +0530, Rutuja Shah wrote:
->> ++ stefan Sorry for the typo.
->> Regards
->> Rutuja Shah
->>
->>
->> On Mon, Oct 3, 2016 at 10:26 PM,  <rutu.shah.26@gmail.com> wrote:
->> > From: Rutuja Shah <rutu.shah.26@gmail.com>
->> >
->> > This patch allocates memory for txbuf array on the heap rather than the stack.
->> > As a result, the stack frame size is reduced.
->> >
->> > Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
->> > ---
->> >  hw/dma/xilinx_axidma.c | 4 +++-
->> >  1 file changed, 3 insertions(+), 1 deletion(-)
->> >
->> > diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
->> > index b135a5f..6c63575 100644
->> > --- a/hw/dma/xilinx_axidma.c
->> > +++ b/hw/dma/xilinx_axidma.c
->> > @@ -256,13 +256,14 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->> >                                   StreamSlave *tx_control_dev)
->> >  {
->> >      uint32_t prev_d;
->> > -    unsigned char txbuf[16 * 1024];
->> > +    unsigned char *txbuf;
->> >      unsigned int txlen;
->> >
->> >      if (!stream_running(s) || stream_idle(s)) {
->> >          return;
->> >      }
->> >
->> > +    txbuf = g_malloc(16 * 1024);
->
-> Hi,
->
-> Two comments.
->
-> We need to move the allocation from the data-path to initialization of the DMA objects. (e.g put txbuf into the Stream struct)
-> We also need to fix up the use of sizeof txbuf.
->
-> Best regards,
-> Edgar
->
->
->> >      while (1) {
->> >          stream_desc_load(s, s->regs[R_CURDESC]);
->> >
->> > @@ -304,6 +305,7 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->> >              break;
->> >          }
->> >      }
->> > +    g_free(txbuf);
->> >  }
->> >
->> >  static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
->> > --
->> > 1.9.1
->> >
+Thanks,
+drew

@@ -1,61 +1,70 @@
-Received: by 10.80.163.71 with SMTP id 65csp2138273edn;
-        Tue, 4 Oct 2016 07:13:27 -0700 (PDT)
-X-Received: by 10.55.27.32 with SMTP id b32mr3648929qkb.211.1475590407180;
-        Tue, 04 Oct 2016 07:13:27 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp2232906edn;
+        Tue, 4 Oct 2016 10:11:29 -0700 (PDT)
+X-Received: by 10.55.5.21 with SMTP id 21mr5018971qkf.231.1475601089768;
+        Tue, 04 Oct 2016 10:11:29 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l95si15902482qte.110.2016.10.04.07.13.27
+        by mx.google.com with ESMTPS id y124si3293362qkc.181.2016.10.04.10.11.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 07:13:27 -0700 (PDT)
+        Tue, 04 Oct 2016 10:11:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:42892 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44398 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brQTG-0003JM-LF
-	for alex.bennee@linaro.org; Tue, 04 Oct 2016 10:13:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47342)
+	id 1brTFZ-0000cw-5p
+	for alex.bennee@linaro.org; Tue, 04 Oct 2016 13:11:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brQ5t-0007GF-M1
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:49:18 -0400
+	(envelope-from <jonatan.okagao@gmail.com>) id 1brS68-0004Qq-BB
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 11:57:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brQ5o-0007qk-Ow
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 09:49:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41800)
+	(envelope-from <jonatan.okagao@gmail.com>) id 1brS66-0008A2-Fy
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 11:57:39 -0400
+Received: from mail-it0-x22e.google.com ([2607:f8b0:4001:c0b::22e]:36068)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1brQ5o-0007qO-Hv; Tue, 04 Oct 2016 09:49:12 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E52258535A;
-	Tue,  4 Oct 2016 13:49:11 +0000 (UTC)
-Received: from kamzik.brq.redhat.com ([10.34.1.163])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u94Dn8N9002224
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 4 Oct 2016 09:49:10 -0400
-Date: Tue, 4 Oct 2016 15:49:08 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161004134908.e3oayr7zkxbq6d3o@kamzik.brq.redhat.com>
-References: <1474641676-25017-1-git-send-email-drjones@redhat.com>
-	<CAFEAcA-98_+mdZO-YKW-_Or5=v4vDGS6NgHHmBX5i3a2pPQ0Tg@mail.gmail.com>
+	(envelope-from <jonatan.okagao@gmail.com>) id 1brS66-00089r-AV
+	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 11:57:38 -0400
+Received: by mail-it0-x22e.google.com with SMTP id 188so67211117iti.1
+	for <qemu-arm@nongnu.org>; Tue, 04 Oct 2016 08:57:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=vpdDWE3BvMcXR9TXgdgb9DlUCQBC6/AkF1VdyOtUleg=;
+	b=XGbw0GKBCzN/+I9gvyCRXoN8vpFszOt2w569yEVML2IoDktU/bly4dvu273bEYm8yO
+	n/W6n0GDLoEEN/Ur4L36ib2o/rsxqVLHzjbIE/SDz/xl7BCAPSnXVIJkXehUX7l8k8xK
+	7NQoYKEQBJmNixehdqBW7Mge/T/hRChTjoz0zLAMJ8rWQ4q9ZFcPFPvcYcFsCYR09x6n
+	Guh2CLuq6cVfmBD6KHpn1yorEvuYfeo9pu6yhHb5/CjfVDg7ZP8WiqNH2s5qoQRkSau7
+	JXBWzAZJPX2xRjaCxV6wy5NNmkY7XydwW1OifJTAXMLU1h2P7LTVWJDNNM4P5OPQtiLt
+	IHaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=vpdDWE3BvMcXR9TXgdgb9DlUCQBC6/AkF1VdyOtUleg=;
+	b=kjpzrh6Zm38202b0OZH7rnv2er/IkK6sSsrto8chIJMXQTRQHvTD6joPxctHj9HuOy
+	JyL5LXBkUnroZLI0rrlKj/FIPaa+GvPdw/zLEYnDUfifCVMAogA4BX8Pyk6d2S5OiLSb
+	q+b1ys77CZ0OF9h0BKJuTOSw+UgGEvr335onk5zPJigwDbayUVyatBniyASMuzU7sNbE
+	kylHGsk7cxLLwVFKKavFV1a1TrJrQuWS4uHAui3RNanIJ755tt/2UyeVT+kd3zPSDgVo
+	EAno1IW2hepdbUXsuz57UgeRyiPo0lRPeQUxLLM4J5Q0Qk9FkhsyFCXITnAL+BJNTVvm
+	IGUA==
+X-Gm-Message-State: AA6/9RmkgBGEp/GVPP7G0O7EdPtJV15qRa7Wc1braxuyZsZsFtU3Ouohlm8l+cOc8ILiwXEh/28KuHjJMqIlHQ==
+X-Received: by 10.36.214.193 with SMTP id o184mr5066958itg.5.1475596657130;
+	Tue, 04 Oct 2016 08:57:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-98_+mdZO-YKW-_Or5=v4vDGS6NgHHmBX5i3a2pPQ0Tg@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 04 Oct 2016 13:49:11 +0000 (UTC)
+Received: by 10.79.164.92 with HTTP; Tue, 4 Oct 2016 08:57:36 -0700 (PDT)
+From: jonatan okagao <jonatan.okagao@gmail.com>
+Date: Tue, 4 Oct 2016 16:57:36 +0100
+Message-ID: <CACOEKj0QS2wMT=+i9fM_rO5mK-6ihuJ=u9n_r8E=+uu2wsBZKg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary=001a114995f29492fa053e0c1e17
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/virt: add 2.8 machine type
+X-Received-From: 2607:f8b0:4001:c0b::22e
+X-Mailman-Approved-At: Tue, 04 Oct 2016 13:09:52 -0400
+Subject: [Qemu-arm] Reading coprocessors registers and dumping physical
+ addresses.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,33 +76,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zoN2qetn2uCX
+X-TUID: EleNyJKAl73P
 
-On Tue, Oct 04, 2016 at 02:32:36PM +0100, Peter Maydell wrote:
-> On 23 September 2016 at 15:41, Andrew Jones <drjones@redhat.com> wrote:
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> >
-> > ---
-> >
-> > This will conflict with Wei's PMU property series (which is why I
-> > asked him to add it to that series...), but anyway, it'll be a minor
-> > resolution to make.
-> > ---
-> 
-> There wasn't a textual conflict but it (slightly belatedly)
-> occured to me that perhaps the "support KVM GICv3 ITS" patches
-> which went in to master in the same pullreq as this might
-> need some tweaks so the ITS doesn't get used in the 2.7
-> machine. Would you or Eric A like to have a look?
+--001a114995f29492fa053e0c1e17
+Content-Type: text/plain; charset=UTF-8
+
+Hi all,
+
+I'm using qemu-system-arm and I want to read the values of coprocessors
+registers like (CP15,...) and to dump some physical addresses directly via
+gdb (gdb_stub).
+Is this possible?
+Should I modify the Qemu source code (especially the gdbstub.c) or is there
+an exciting solution for that?
+
+After a long search on the internet I only found the information that there
+is a method of using xml and target description, but I didn't find further
+information on how to do so !!
+
+Any help please?
+
+Best regards,
+Jonatan
+
+--001a114995f29492fa053e0c1e17
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi all,<br><br></div><div>I&#39;m using qemu-system-a=
+rm and I want to read the values of coprocessors registers like (CP15,...) =
+and to dump some physical addresses directly via gdb (gdb_stub).<br></div><=
+div>Is this possible?<br></div><div>Should I modify the Qemu source code (e=
+specially the gdbstub.c) or is there an exciting solution for that?<br><br>=
+</div><div>After a long search on the internet I only found the information=
+ that there is a method of using xml and target description, but I didn&#39=
+;t find further information on how to do so !!<br><br></div><div>Any help p=
+lease?<br></div><div><br></div><div>Best regards,<br>Jonatan<br></div></div=
 >
 
-Good call. We should avoid guest visible changes, even when
-the changes complete already exposed devices. I'll send a
-patch.
-
-Thanks,
-drew
+--001a114995f29492fa053e0c1e17--

@@ -1,71 +1,59 @@
-Received: by 10.80.163.71 with SMTP id 65csp2388082edn;
-        Tue, 4 Oct 2016 16:53:50 -0700 (PDT)
-X-Received: by 10.55.69.72 with SMTP id s69mr6374495qka.153.1475625230066;
-        Tue, 04 Oct 2016 16:53:50 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp2497314edn;
+        Tue, 4 Oct 2016 23:15:08 -0700 (PDT)
+X-Received: by 10.233.223.195 with SMTP id t186mr7333924qkf.46.1475648107970;
+        Tue, 04 Oct 2016 23:15:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x25si8106712qtc.138.2016.10.04.16.53.49
+        by mx.google.com with ESMTPS id q78si4793155qka.315.2016.10.04.23.15.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Oct 2016 16:53:50 -0700 (PDT)
+        Tue, 04 Oct 2016 23:15:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45782 helo=lists.gnu.org)
+Received: from localhost ([::1]:46670 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brZWv-0004q0-Ib
-	for alex.bennee@linaro.org; Tue, 04 Oct 2016 19:53:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59013)
+	id 1brfTv-00055k-Cj
+	for alex.bennee@linaro.org; Wed, 05 Oct 2016 02:15:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1brZWq-0004pu-FO
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 19:53:46 -0400
+	(envelope-from <clg@kaod.org>) id 1brfTp-000558-AQ
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 02:15:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1brZWl-0003t9-DY
-	for qemu-arm@nongnu.org; Tue, 04 Oct 2016 19:53:44 -0400
-Received: from out4-smtp.messagingengine.com ([66.111.4.28]:49771)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>)
-	id 1brZWj-0003pc-3C; Tue, 04 Oct 2016 19:53:39 -0400
-Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
-	by mailout.nyi.internal (Postfix) with ESMTP id 13AE720B01;
-	Tue,  4 Oct 2016 19:53:25 -0400 (EDT)
-Received: from frontend1 ([10.202.2.160])
-	by compute7.internal (MEProxy); Tue, 04 Oct 2016 19:53:25 -0400
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-sasl-enc:x-sasl-enc; s=mesmtp; bh=LF997
-	+4ZHuQhH808Ek4Dq7QxRVA=; b=KPPyX7bAPIAJWdOiQOHlqkEhu61+6ClfxlbvK
-	YJmBAl0O0s024pFOKZVWO89JyzCdrc7q6z5QYPzL7wutU0BlaaDUjKt6TxILsOzP
-	2wJkDEjEzt/W76BWW+ALBMi+CJbHrpesBGfSoxBTg0Okkor1tjXaWsBHyxyBDf7H
-	tZkSsQ=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-sasl-enc
-	:x-sasl-enc; s=smtpout; bh=LF997+4ZHuQhH808Ek4Dq7QxRVA=; b=KZGsb
-	QDiUj6W3LEz7ayMOU7X4itFt1+PVcEJICvQiBY6NvyktpU42xnG+rAC60EDbtPbW
-	P6IU26R0ve1/2S8q6VKYCqBSsZg8huW0fDr+lZalkIj0Ylejh7iHtgoeSZCt3X0o
-	ldidLS2J9kAx4OCRzIOnunckdbBeDSkVnYJf30=
-X-Sasl-enc: HGYpGS4WsWRe9xinei/jAkXNVGQPUj1T/y5iZrWBW2Vh 1475625203
-Received: from keelia (unknown [203.0.153.9])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 24700F29CE;
-	Tue,  4 Oct 2016 19:53:21 -0400 (EDT)
-Message-ID: <1475625198.5030.13.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
-	<peter.maydell@linaro.org>, Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Wed, 05 Oct 2016 10:23:18 +1030
-In-Reply-To: <1474977462-28032-7-git-send-email-clg@kaod.org>
+	(envelope-from <clg@kaod.org>) id 1brfTl-00050s-6b
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 02:15:01 -0400
+Received: from 9.mo1.mail-out.ovh.net ([178.32.108.172]:45701)
+	by eggs.gnu.org with esmtp (Exim 4.71) (envelope-from <clg@kaod.org>)
+	id 1brfTk-00050L-UB
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 02:14:57 -0400
+Received: from player726.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id EC2AEFCAF
+	for <qemu-arm@nongnu.org>; Wed,  5 Oct 2016 08:14:55 +0200 (CEST)
+Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
+	by player726.ha.ovh.net (Postfix) with ESMTPSA id 8A5472A006F;
+	Wed,  5 Oct 2016 08:14:51 +0200 (CEST)
+To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
 References: <1474977462-28032-1-git-send-email-clg@kaod.org>
 	<1474977462-28032-7-git-send-email-clg@kaod.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-hAUs9W0shWsXzA1t46fG"
-X-Mailer: Evolution 3.18.5.2-0ubuntu3 
-Mime-Version: 1.0
+	<1475625198.5030.13.camel@aj.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <aa0ae030-2fad-b2f7-6994-cc631220cf3c@kaod.org>
+Date: Wed, 5 Oct 2016 08:14:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
+MIME-Version: 1.0
+In-Reply-To: <1475625198.5030.13.camel@aj.id.au>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 11123609607888604080
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelvddrvdelgddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.28
+X-Received-From: 178.32.108.172
 Subject: Re: [Qemu-arm] [PATCH 6/6] aspeed: add support for the SMC segment
  registers
 X-BeenThere: qemu-arm@nongnu.org
@@ -82,197 +70,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YiwTnzas16HF
+X-TUID: Z5kOMzeWRSnj
 
+On 10/05/2016 01:53 AM, Andrew Jeffery wrote:
+> On Tue, 2016-09-27 at 13:57 +0200, C=C3=A9dric Le Goater wrote:
+>> The SMC controller on the Aspeed SoC has a set of registers to
+>> configure the mapping of each flash module in the SoC address
+>> space. Writing to these registers triggers a remap of the memory
+>> region and the spec requires a certain number of checks before doing
+>> so.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>=20
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>=20
+>> ---
+>>  hw/ssi/aspeed_smc.c | 135 +++++++++++++++++++++++++++++++++++++++++++=
++++++++--
+>>  1 file changed, 130 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+>> index ecf39ccfde0e..6e8403ebc246 100644
+>> --- a/hw/ssi/aspeed_smc.c
+>> +++ b/hw/ssi/aspeed_smc.c
+>> @@ -79,10 +79,10 @@
+>> =20
+>>  /* CEx Segment Address Register */
+>>  #define R_SEG_ADDR0       (0x30 / 4)
+>> -#define   SEG_SIZE_SHIFT       24   /* 8MB units */
+>> -#define   SEG_SIZE_MASK        0x7f
+>> +#define   SEG_END_SHIFT        24   /* 8MB units */
+>> +#define   SEG_END_MASK         0xff
+>=20
+> Was this a bug? The top bit is reserved as 0 in the 2500 datasheet, but
+> valid as your change suggests in the 2400.
 
---=-hAUs9W0shWsXzA1t46fG
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+This true that the allowed bits in the mask are smaller but they are=20
+also different on all SPI controllers. There is at least three=20
+different ranges, on the AST2400 FMC, the AST2500 FMC and on the=20
+AST2500 SPI.=20
 
-T24gVHVlLCAyMDE2LTA5LTI3IGF0IDEzOjU3ICswMjAwLCBDw6lkcmljIExlIEdvYXRlciB3cm90
-ZToKPiBUaGUgU01DIGNvbnRyb2xsZXIgb24gdGhlIEFzcGVlZCBTb0MgaGFzIGEgc2V0IG9mIHJl
-Z2lzdGVycyB0bwo+IGNvbmZpZ3VyZSB0aGUgbWFwcGluZyBvZiBlYWNoIGZsYXNoIG1vZHVsZSBp
-biB0aGUgU29DIGFkZHJlc3MKPiBzcGFjZS4gV3JpdGluZyB0byB0aGVzZSByZWdpc3RlcnMgdHJp
-Z2dlcnMgYSByZW1hcCBvZiB0aGUgbWVtb3J5Cj4gcmVnaW9uIGFuZCB0aGUgc3BlYyByZXF1aXJl
-cyBhIGNlcnRhaW4gbnVtYmVyIG9mIGNoZWNrcyBiZWZvcmUgZG9pbmcKPiBzby4KPiAKPiBTaWdu
-ZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPgoKUmV2aWV3ZWQtYnk6
-IEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdAYWouaWQuYXU+Cgo+IC0tLQo+IMKgaHcvc3NpL2FzcGVl
-ZF9zbWMuYyB8IDEzNSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKy0tCj4gwqAxIGZpbGUgY2hhbmdlZCwgMTMwIGluc2VydGlvbnMoKyksIDUgZGVsZXRp
-b25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2h3L3NzaS9hc3BlZWRfc21jLmMgYi9ody9zc2kvYXNw
-ZWVkX3NtYy5jCj4gaW5kZXggZWNmMzljY2ZkZTBlLi42ZTg0MDNlYmMyNDYgMTAwNjQ0Cj4gLS0t
-IGEvaHcvc3NpL2FzcGVlZF9zbWMuYwo+ICsrKyBiL2h3L3NzaS9hc3BlZWRfc21jLmMKPiBAQCAt
-NzksMTAgKzc5LDEwIEBACj4gwqAKPiDCoC8qIENFeCBTZWdtZW50IEFkZHJlc3MgUmVnaXN0ZXIg
-Ki8KPiDCoCNkZWZpbmUgUl9TRUdfQUREUjDCoMKgwqDCoMKgwqDCoCgweDMwIC8gNCkKPiAtI2Rl
-ZmluZcKgwqDCoFNFR19TSVpFX1NISUZUwqDCoMKgwqDCoMKgwqAyNMKgwqDCoC8qIDhNQiB1bml0
-cyAqLwo+IC0jZGVmaW5lwqDCoMKgU0VHX1NJWkVfTUFTS8KgwqDCoMKgwqDCoMKgwqAweDdmCj4g
-KyNkZWZpbmXCoMKgwqBTRUdfRU5EX1NISUZUwqDCoMKgwqDCoMKgwqDCoDI0wqDCoMKgLyogOE1C
-IHVuaXRzICovCj4gKyNkZWZpbmXCoMKgwqBTRUdfRU5EX01BU0vCoMKgwqDCoMKgwqDCoMKgwqAw
-eGZmCgpXYXMgdGhpcyBhIGJ1Zz8gVGhlIHRvcCBiaXQgaXMgcmVzZXJ2ZWQgYXMgMCBpbiB0aGUg
-MjUwMCBkYXRhc2hlZXQsIGJ1dAp2YWxpZCBhcyB5b3VyIGNoYW5nZSBzdWdnZXN0cyBpbiB0aGUg
-MjQwMC4KCj4gwqAjZGVmaW5lwqDCoMKgU0VHX1NUQVJUX1NISUZUwqDCoMKgwqDCoMKgMTbCoMKg
-wqAvKiBhZGRyZXNzIGJpdCBbQTI5LUEyM10gKi8KPiAtI2RlZmluZcKgwqDCoFNFR19TVEFSVF9N
-QVNLwqDCoMKgwqDCoMKgwqAweDdmCj4gKyNkZWZpbmXCoMKgwqBTRUdfU1RBUlRfTUFTS8KgwqDC
-oMKgwqDCoMKgMHhmZgoKQXMgYWJvdmUuCgo+IMKgI2RlZmluZSBSX1NFR19BRERSMcKgwqDCoMKg
-wqDCoMKgKDB4MzQgLyA0KQo+IMKgI2RlZmluZSBSX1NFR19BRERSMsKgwqDCoMKgwqDCoMKgKDB4
-MzggLyA0KQo+IMKgI2RlZmluZSBSX1NFR19BRERSM8KgwqDCoMKgwqDCoMKgKDB4M0MgLyA0KQo+
-IEBAIC0xMzUsOCArMTM1LDcgQEAKPiDCoC8qCj4gwqAgKiBEZWZhdWx0IHNlZ21lbnRzIG1hcHBp
-bmcgYWRkcmVzc2VzIGFuZCBzaXplIGZvciBlYWNoIHNsYXZlIHBlcgo+IMKgICogY29udHJvbGxl
-ci4gVGhlc2UgY2FuIGJlIGNoYW5nZWQgd2hlbiBib2FyZCBpcyBpbml0aWFsaXplZCB3aXRoIHRo
-ZQo+IC0gKiBTZWdtZW50IEFkZHJlc3MgUmVnaXN0ZXJzIGJ1dCB0aGV5IGRvbid0IHNlZW0gZG8g
-YmUgdXNlZCBvbiB0aGUKPiAtICogZmllbGQuCj4gKyAqIFNlZ21lbnQgQWRkcmVzcyBSZWdpc3Rl
-cnMuCj4gwqAgKi8KPiDCoHN0YXRpYyBjb25zdCBBc3BlZWRTZWdtZW50cyBhc3BlZWRfc2VnbWVu
-dHNfbGVnYWN5W10gPSB7Cj4gwqDCoMKgwqDCoHsgMHgxMDAwMDAwMCwgMzIgKiAxMDI0ICogMTAy
-NCB9LAo+IEBAIC0xOTEsNiArMTkwLDExOCBAQCBzdGF0aWMgY29uc3QgQXNwZWVkU01DQ29udHJv
-bGxlciBjb250cm9sbGVyc1tdID0gewo+IMKgwqDCoMKgwqDCoMKgQVNQRUVEX1NPQ19TUEkyX0ZM
-QVNIX0JBU0UsIDB4ODAwMDAwMCB9LAo+IMKgfTsKPiDCoAo+ICsvKgo+ICsgKiBUaGUgU2VnbWVu
-dCBSZWdpc3RlciB1c2VzIGEgOE1CIHVuaXQgdG8gZW5jb2RlIHRoZSBzdGFydCBhZGRyZXNzCj4g
-KyAqIGFuZCB0aGUgZW5kIGFkZHJlc3Mgb2YgdGhlIG1hcHBpbmcgd2luZG93IG9mIGEgZmxhc2gg
-U1BJIHNsYXZlIDoKPiArICoKPiArICrCoMKgwqDCoMKgwqDCoMKgfCBieXRlIDEgfCBieXRlIDIg
-fCBieXRlIDMgfCBieXRlIDQgfAo+ICsgKsKgwqDCoMKgwqDCoMKgwqArLS0tLS0tLS0rLS0tLS0t
-LS0rLS0tLS0tLS0rLS0tLS0tLS0rCj4gKyAqwqDCoMKgwqDCoMKgwqDCoHzCoMKgZW5kwqDCoMKg
-fMKgwqBzdGFydCB8wqDCoMKgMMKgwqDCoMKgfMKgwqDCoDDCoMKgwqDCoHwKPiArICoKPiArICov
-Cj4gK3N0YXRpYyBpbmxpbmUgdWludDMyX3QgYXNwZWVkX3NtY19zZWdtZW50X3RvX3JlZyhjb25z
-dCBBc3BlZWRTZWdtZW50cyAqc2VnKQo+ICt7Cj4gK8KgwqDCoMKgdWludDMyX3QgcmVnID0gMDsK
-PiArwqDCoMKgwqByZWcgfD0gKChzZWctPmFkZHIgPj4gMjMpICYgU0VHX1NUQVJUX01BU0spIDw8
-IFNFR19TVEFSVF9TSElGVDsKPiArwqDCoMKgwqByZWcgfD0gKCgoc2VnLT5hZGRyICsgc2VnLT5z
-aXplKSA+PiAyMykgJiBTRUdfRU5EX01BU0spIDw8IFNFR19FTkRfU0hJRlQ7Cj4gK8KgwqDCoMKg
-cmV0dXJuIHJlZzsKPiArfQo+ICsKPiArc3RhdGljIGlubGluZSB2b2lkIGFzcGVlZF9zbWNfcmVn
-X3RvX3NlZ21lbnQodWludDMyX3QgcmVnLCBBc3BlZWRTZWdtZW50cyAqc2VnKQo+ICt7Cj4gK8Kg
-wqDCoMKgc2VnLT5hZGRyID0gKChyZWcgPj4gU0VHX1NUQVJUX1NISUZUKSAmIFNFR19TVEFSVF9N
-QVNLKSA8PCAyMzsKPiArwqDCoMKgwqBzZWctPnNpemUgPSAoKChyZWcgPj4gU0VHX0VORF9TSElG
-VCkgJiBTRUdfRU5EX01BU0spIDw8IDIzKSAtIHNlZy0+YWRkcjsKPiArfQo+ICsKPiArc3RhdGlj
-IGJvb2wgYXNwZWVkX3NtY19mbGFzaF9vdmVybGFwKGNvbnN0IEFzcGVlZFNNQ1N0YXRlICpzLAo+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoGNvbnN0IEFzcGVlZFNlZ21lbnRzICpuZXcsCj4gK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgaW50IGNzKQo+ICt7Cj4gK8KgwqDCoMKgQXNwZWVkU2VnbWVudHMgc2VnOwo+ICvC
-oMKgwqDCoGludCBpOwo+ICsKPiArwqDCoMKgwqBmb3IgKGkgPSAwOyBpIDwgcy0+Y3RybC0+bWF4
-X3NsYXZlczsgaSsrKSB7Cj4gK8KgwqDCoMKgwqDCoMKgwqBpZiAoaSA9PSBjcykgewo+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqBjb250aW51ZTsKPiArwqDCoMKgwqDCoMKgwqDCoH0KPiArCj4g
-K8KgwqDCoMKgwqDCoMKgwqBhc3BlZWRfc21jX3JlZ190b19zZWdtZW50KHMtPnJlZ3NbUl9TRUdf
-QUREUjAgKyBpXSwgJnNlZyk7Cj4gKwo+ICvCoMKgwqDCoMKgwqDCoMKgaWYgKG5ldy0+YWRkciAr
-IG5ldy0+c2l6ZSA+IHNlZy5hZGRyICYmCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoG5ldy0+
-YWRkciA8IHNlZy5hZGRyICsgc2VnLnNpemUpIHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-cWVtdV9sb2dfbWFzayhMT0dfR1VFU1RfRVJST1IsICIlczogbmV3IHNlZ21lbnQgQ1MlZCBbIDB4
-JSIKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oEhXQUREUl9QUkl4IiAtIDB4JSJIV0FERFJfUFJJeCIgXSBvdmVybGFwcyB3aXRoICIKPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCJDUyVkIFsg
-MHglIkhXQUREUl9QUkl4IiAtIDB4JSJIV0FERFJfUFJJeCIgXVxuIiwKPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHMtPmN0cmwtPm5hbWUsIGNz
-LCBuZXctPmFkZHIsIG5ldy0+YWRkciArIG5ldy0+c2l6ZSwKPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGksIHNlZy5hZGRyLCBzZWcuYWRkciAr
-IHNlZy5zaXplKTsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuIHRydWU7Cj4gK8Kg
-wqDCoMKgwqDCoMKgwqB9Cj4gK8KgwqDCoMKgfQo+ICvCoMKgwqDCoHJldHVybiBmYWxzZTsKPiAr
-fQo+ICsKPiArc3RhdGljIHZvaWQgYXNwZWVkX3NtY19mbGFzaF9zZXRfc2VnbWVudChBc3BlZWRT
-TUNTdGF0ZSAqcywgaW50IGNzLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdWludDY0X3Qg
-bmV3KQo+ICt7Cj4gK8KgwqDCoMKgQXNwZWVkU01DRmxhc2ggKmZsID0gJnMtPmZsYXNoZXNbY3Nd
-Owo+ICvCoMKgwqDCoEFzcGVlZFNlZ21lbnRzIHNlZzsKPiArCj4gK8KgwqDCoMKgYXNwZWVkX3Nt
-Y19yZWdfdG9fc2VnbWVudChuZXcsICZzZWcpOwo+ICsKPiArwqDCoMKgwqAvKiBUaGUgc3RhcnQg
-YWRkcmVzcyBvZiBDUzAgaXMgcmVhZC1vbmx5ICovCj4gK8KgwqDCoMKgaWYgKGNzID09IDAgJiYg
-c2VnLmFkZHIgIT0gcy0+Y3RybC0+Zmxhc2hfd2luZG93X2Jhc2UpIHsKPiArwqDCoMKgwqDCoMKg
-wqDCoHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCIlczogVHJpZWQgdG8gY2hhbmdlIENTMCBzdGFydCBh
-ZGRyZXNzIHRvIDB4JSIKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBIV0FERFJfUFJJeCAiXG4iLCBzLT5jdHJsLT5uYW1lLCBzZWcuYWRkcik7Cj4gK8KgwqDC
-oMKgwqDCoMKgwqByZXR1cm47Cj4gK8KgwqDCoMKgfQo+ICsKPiArwqDCoMKgwqAvKgo+ICvCoMKg
-wqDCoMKgKiBUaGUgZW5kIGFkZHJlc3Mgb2YgdGhlIEFTVDI1MDAgc3BpIGNvbnRyb2xsZXJzIGlz
-IGFsc28KPiArwqDCoMKgwqDCoCogcmVhZC1vbmx5Lgo+ICvCoMKgwqDCoMKgKi8KPiArwqDCoMKg
-wqBpZiAoKHMtPmN0cmwtPnNlZ21lbnRzID09IGFzcGVlZF9zZWdtZW50c19hc3QyNTAwX3NwaTEg
-fHwKPiArwqDCoMKgwqDCoMKgwqDCoMKgcy0+Y3RybC0+c2VnbWVudHMgPT0gYXNwZWVkX3NlZ21l
-bnRzX2FzdDI1MDBfc3BpMikgJiYKPiArwqDCoMKgwqDCoMKgwqDCoGNzID09IHMtPmN0cmwtPm1h
-eF9zbGF2ZXMgJiYKPiArwqDCoMKgwqDCoMKgwqDCoHNlZy5hZGRyICsgc2VnLnNpemUgIT0gcy0+
-Y3RybC0+c2VnbWVudHNbY3NdLmFkZHIgKwo+ICvCoMKgwqDCoMKgwqDCoMKgcy0+Y3RybC0+c2Vn
-bWVudHNbY3NdLnNpemUpIHsKPiArwqDCoMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9HX0dV
-RVNUX0VSUk9SLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCIlczogVHJpZWQgdG8gY2hhbmdlIENTJWQgZW5kIGFkZHJlc3MgdG8gMHglIgo+ICvCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoEhXQUREUl9QUkl4ICJcbiIsIHMt
-PmN0cmwtPm5hbWUsIGNzLCBzZWcuYWRkcik7Cj4gK8KgwqDCoMKgwqDCoMKgwqByZXR1cm47Cj4g
-K8KgwqDCoMKgfQo+ICsKPiArwqDCoMKgwqAvKiBLZWVwIHRoZSBzZWdtZW50IGluIHRoZSBvdmVy
-YWxsIGZsYXNoIHdpbmRvdyAqLwo+ICvCoMKgwqDCoGlmIChzZWcuYWRkciArIHNlZy5zaXplIDw9
-IHMtPmN0cmwtPmZsYXNoX3dpbmRvd19iYXNlIHx8Cj4gK8KgwqDCoMKgwqDCoMKgwqBzZWcuYWRk
-ciA+IHMtPmN0cmwtPmZsYXNoX3dpbmRvd19iYXNlICsgcy0+Y3RybC0+Zmxhc2hfd2luZG93X3Np
-emUpIHsKPiArwqDCoMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLCAi
-JXM6IG5ldyBzZWdtZW50IGZvciBDUyVkIGlzIGludmFsaWQgOiAiCj4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIlsgMHglIkhXQUREUl9QUkl4IiAtIDB4JSJI
-V0FERFJfUFJJeCIgXVxuIiwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBzLT5jdHJsLT5uYW1lLCBjcywgc2VnLmFkZHIsIHNlZy5hZGRyICsgc2VnLnNpemUp
-Owo+ICvCoMKgwqDCoMKgwqDCoMKgcmV0dXJuOwo+ICvCoMKgwqDCoH0KPiArCj4gK8KgwqDCoMKg
-LyogQ2hlY2sgc3RhcnQgYWRkcmVzcyB2cy4gYWxpZ25tZW50ICovCj4gK8KgwqDCoMKgaWYgKHNl
-Zy5hZGRyICUgc2VnLnNpemUpIHsKPiArwqDCoMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9H
-X0dVRVNUX0VSUk9SLCAiJXM6IG5ldyBzZWdtZW50IGZvciBDUyVkIGlzIG5vdCAiCj4gK8KgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgImFsaWduZWQgOiBbIDB4JSJI
-V0FERFJfUFJJeCIgLSAweCUiSFdBRERSX1BSSXgiIF1cbiIsCj4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcy0+Y3RybC0+bmFtZSwgY3MsIHNlZy5hZGRyLCBz
-ZWcuYWRkciArIHNlZy5zaXplKTsKPiArwqDCoMKgwqB9Cj4gKwo+ICvCoMKgwqDCoC8qIEFuZCBz
-ZWdtZW50cyBzaG91bGQgbm90IG92ZXJsYXAgKi8KPiArwqDCoMKgwqBpZiAoYXNwZWVkX3NtY19m
-bGFzaF9vdmVybGFwKHMsICZzZWcsIGNzKSkgewo+ICvCoMKgwqDCoMKgwqDCoMKgcmV0dXJuOwo+
-ICvCoMKgwqDCoH0KPiArCj4gK8KgwqDCoMKgLyogQWxsIHNob3VsZCBiZSBmaW5lIG5vdyB0byBt
-b3ZlIHRoZSByZWdpb24gKi8KPiArwqDCoMKgwqBtZW1vcnlfcmVnaW9uX3RyYW5zYWN0aW9uX2Jl
-Z2luKCk7Cj4gK8KgwqDCoMKgbWVtb3J5X3JlZ2lvbl9zZXRfc2l6ZSgmZmwtPm1taW8sIHNlZy5z
-aXplKTsKPiArwqDCoMKgwqBtZW1vcnlfcmVnaW9uX3NldF9hZGRyZXNzKCZmbC0+bW1pbywgc2Vn
-LmFkZHIgLSBzLT5jdHJsLT5mbGFzaF93aW5kb3dfYmFzZSk7Cj4gK8KgwqDCoMKgbWVtb3J5X3Jl
-Z2lvbl9zZXRfZW5hYmxlZCgmZmwtPm1taW8sIHRydWUpOwo+ICvCoMKgwqDCoG1lbW9yeV9yZWdp
-b25fdHJhbnNhY3Rpb25fY29tbWl0KCk7Cj4gKwo+ICvCoMKgwqDCoHMtPnJlZ3NbUl9TRUdfQURE
-UjAgKyBjc10gPSBuZXc7Cj4gK30KPiArCj4gwqBzdGF0aWMgdWludDY0X3QgYXNwZWVkX3NtY19m
-bGFzaF9kZWZhdWx0X3JlYWQodm9pZCAqb3BhcXVlLCBod2FkZHIgYWRkciwKPiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdW5zaWduZWQgc2l6ZSkKPiDCoHsKPiBAQCAtMzE0
-LDYgKzQyNSwxMiBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfc21jX3Jlc2V0KERldmljZVN0YXRlICpk
-KQo+IMKgwqDCoMKgwqDCoMKgwqDCoHMtPnJlZ3Nbcy0+cl9jdHJsMCArIGldIHw9IENUUkxfQ0Vf
-U1RPUF9BQ1RJVkU7Cj4gwqDCoMKgwqDCoH0KPiDCoAo+ICvCoMKgwqDCoC8qIHNldHVwIGRlZmF1
-bHQgc2VnbWVudCByZWdpc3RlciB2YWx1ZXMgZm9yIGFsbCAqLwo+ICvCoMKgwqDCoGZvciAoaSA9
-IDA7IGkgPCBzLT5jdHJsLT5tYXhfc2xhdmVzOyArK2kpIHsKPiArwqDCoMKgwqDCoMKgwqDCoHMt
-PnJlZ3NbUl9TRUdfQUREUjAgKyBpXSA9Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzcGVl
-ZF9zbWNfc2VnbWVudF90b19yZWcoJnMtPmN0cmwtPnNlZ21lbnRzW2ldKTsKPiArwqDCoMKgwqB9
-Cj4gKwo+IMKgwqDCoMKgwqBhc3BlZWRfc21jX3VwZGF0ZV9jcyhzKTsKPiDCoH0KPiDCoAo+IEBA
-IC0zMzQsNiArNDUxLDcgQEAgc3RhdGljIHVpbnQ2NF90IGFzcGVlZF9zbWNfcmVhZCh2b2lkICpv
-cGFxdWUsIGh3YWRkciBhZGRyLCB1bnNpZ25lZCBpbnQgc2l6ZSkKPiDCoMKgwqDCoMKgwqDCoMKg
-wqBhZGRyID09IHMtPnJfdGltaW5ncyB8fAo+IMKgwqDCoMKgwqDCoMKgwqDCoGFkZHIgPT0gcy0+
-cl9jZV9jdHJsIHx8Cj4gwqDCoMKgwqDCoMKgwqDCoMKgYWRkciA9PSBSX0lOVFJfQ1RSTCB8fAo+
-ICvCoMKgwqDCoMKgwqDCoMKgKGFkZHIgPj0gUl9TRUdfQUREUjAgJiYgYWRkciA8IFJfU0VHX0FE
-RFIwICsgcy0+Y3RybC0+bWF4X3NsYXZlcykgfHwKPiDCoMKgwqDCoMKgwqDCoMKgwqAoYWRkciA+
-PSBzLT5yX2N0cmwwICYmIGFkZHIgPCBzLT5yX2N0cmwwICsgcy0+bnVtX2NzKSkgewo+IMKgwqDC
-oMKgwqDCoMKgwqDCoHJldHVybiBzLT5yZWdzW2FkZHJdOwo+IMKgwqDCoMKgwqB9IGVsc2Ugewo+
-IEBAIC0zNjUsNiArNDgzLDEzIEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9zbWNfd3JpdGUodm9pZCAq
-b3BhcXVlLCBod2FkZHIgYWRkciwgdWludDY0X3QgZGF0YSwKPiDCoMKgwqDCoMKgfSBlbHNlIGlm
-IChhZGRyID49IHMtPnJfY3RybDAgJiYgYWRkciA8IHMtPnJfY3RybDAgKyBzLT5udW1fY3MpIHsK
-PiDCoMKgwqDCoMKgwqDCoMKgwqBzLT5yZWdzW2FkZHJdID0gdmFsdWU7Cj4gwqDCoMKgwqDCoMKg
-wqDCoMKgYXNwZWVkX3NtY191cGRhdGVfY3Mocyk7Cj4gK8KgwqDCoMKgfSBlbHNlIGlmIChhZGRy
-ID49IFJfU0VHX0FERFIwICYmCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFkZHIg
-PCBSX1NFR19BRERSMCArIHMtPmN0cmwtPm1heF9zbGF2ZXMpIHsKPiArwqDCoMKgwqDCoMKgwqDC
-oGludCBjcyA9IGFkZHIgLSBSX1NFR19BRERSMDsKPiArCj4gK8KgwqDCoMKgwqDCoMKgwqBpZiAo
-dmFsdWUgIT0gcy0+cmVnc1tSX1NFR19BRERSMCArIGNzXSkgewo+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBhc3BlZWRfc21jX2ZsYXNoX3NldF9zZWdtZW50KHMsIGNzLCB2YWx1ZSk7Cj4gK8Kg
-wqDCoMKgwqDCoMKgwqB9Cj4gwqDCoMKgwqDCoH0gZWxzZSB7Cj4gwqDCoMKgwqDCoMKgwqDCoMKg
-cWVtdV9sb2dfbWFzayhMT0dfVU5JTVAsICIlczogbm90IGltcGxlbWVudGVkOiAweCUiIEhXQURE
-Ul9QUkl4ICJcbiIsCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoF9fZnVuY19fLCBhZGRyKTs=
+So I tried to find a common ground, that is a larger definition,
+to avoid complexity in this first step and support all SoC.
 
+A Next step could be to modify :=20
 
---=-hAUs9W0shWsXzA1t46fG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+	uint32_t aspeed_smc_segment_to_reg(const AspeedSegments *seg)
+	void aspeed_smc_reg_to_segment(uint32_t reg, AspeedSegments *seg)
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+to add the extra complexity and handle the range differences. Or add
+a new routine for this purpose with clear values for a human. The
+register definitions in the spec are really foggy.
 
-iQIcBAABCgAGBQJX9EDuAAoJEJ0dnzgO5LT5v4cP/2ap+6bt9EtGCMpeiQ3C2Xf0
-QluphqvYlK8qCTbCpVFqp/Ap7VboXcv8WEZc0JVRHIJ8nHcUDufwuoR5ff8GDPRo
-bqZzvDAvJmkJ9uAi6fbzbi7xvaO6yGq4+pkNuTLPHaz7GNtuVIHn0vNqlvJ0X1uh
-bmI5T0S6Gf80bFwN8aHLB9kGUuci+BCIZqboCThWjRZGUp8JvjGYdId2uXD5gbGB
-8xmN7fvVN6hT4xJNyBZyvNka096O0tiyTK5MJzbHLM/AkXpLLGsiq65rKwtOxmYI
-tVsHsUybMUtP0q5eADB/MfS4gMWrh8qeLoKDFFlK18SaxAxbp+gDw+qkgVXr6Lda
-qzqG5P8e0aah550SdkSIjbVejLodKrry8Lb5eNSlRlxxHrFgeFUaJ8ZmLscfDVtg
-2n7Ij+SJ3wg+S7+RNgF7PtBM5BhUUdJ6bVOXBDIwlEcvRFR8VLuMey9MRnrHBVoq
-weboJtM5uPtpyNeNptFlatk/FdfNOnFEV0Kz2FfNr4SXTgyQacHfBwatuwZQIiHt
-biZi/TWHnhVSlr79agMVSuIZskbuugOFJsVYqE1bmQomL4M+1bMMn78T1kh7rv67
-q7u8hLARe6O88RB1tKliX1g5PTYXkNvaXJ+zKDWi8Z3nwH4u/g6q5DRW8Xcrcz7v
-BpSBw+VLyN6+63HxN8F9
-=uEKt
------END PGP SIGNATURE-----
+Thanks
 
---=-hAUs9W0shWsXzA1t46fG--
+C.=20
+
+>>  #define   SEG_START_SHIFT      16   /* address bit [A29-A23] */
+>>
+>>  #define   SEG_START_SHIFT      16   /* address bit [A29-A23] */
+>> -#define   SEG_START_MASK       0x7f
+>> +#define   SEG_START_MASK       0xff
+>=20
+> As above.
+>=20
+>>  #define R_SEG_ADDR1       (0x34 / 4)
+>>  #define R_SEG_ADDR2       (0x38 / 4)
+>>  #define R_SEG_ADDR3       (0x3C / 4)
+>> @@ -135,8 +135,7 @@
+>>  /*
+>>   * Default segments mapping addresses and size for each slave per
+>>   * controller. These can be changed when board is initialized with th=
+e
+>> - * Segment Address Registers but they don't seem do be used on the
+>> - * field.
+>> + * Segment Address Registers.
+>>   */
+>>  static const AspeedSegments aspeed_segments_legacy[] =3D {
+>>      { 0x10000000, 32 * 1024 * 1024 },
+>> @@ -191,6 +190,118 @@ static const AspeedSMCController controllers[] =3D=
+ {
+>>        ASPEED_SOC_SPI2_FLASH_BASE, 0x8000000 },
+>>  };
+>> =20
+>> +/*
+>> + * The Segment Register uses a 8MB unit to encode the start address
+>> + * and the end address of the mapping window of a flash SPI slave :
+>> + *
+>> + *        | byte 1 | byte 2 | byte 3 | byte 4 |
+>> + *        +--------+--------+--------+--------+
+>> + *        |  end   |  start |   0    |   0    |
+>> + *
+>> + */
+>> +static inline uint32_t aspeed_smc_segment_to_reg(const AspeedSegments=
+ *seg)
+>> +{
+>> +    uint32_t reg =3D 0;
+>> +    reg |=3D ((seg->addr >> 23) & SEG_START_MASK) << SEG_START_SHIFT;
+>> +    reg |=3D (((seg->addr + seg->size) >> 23) & SEG_END_MASK) << SEG_=
+END_SHIFT;
+>> +    return reg;
+>> +}
+>> +
+>> +static inline void aspeed_smc_reg_to_segment(uint32_t reg, AspeedSegm=
+ents *seg)
+>> +{
+>> +    seg->addr =3D ((reg >> SEG_START_SHIFT) & SEG_START_MASK) << 23;
+>> +    seg->size =3D (((reg >> SEG_END_SHIFT) & SEG_END_MASK) << 23) - s=
+eg->addr;
+>> +}
+>> +
+>> +static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+>> +                                     const AspeedSegments *new,
+>> +                                     int cs)
+>> +{
+>> +    AspeedSegments seg;
+>> +    int i;
+>> +
+>> +    for (i =3D 0; i < s->ctrl->max_slaves; i++) {
+>> +        if (i =3D=3D cs) {
+>> +            continue;
+>> +        }
+>> +
+>> +        aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + i], &seg);
+>> +
+>> +        if (new->addr + new->size > seg.addr &&
+>> +            new->addr < seg.addr + seg.size) {
+>> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment CS%d [ 0x=
+%"
+>> +                          HWADDR_PRIx" - 0x%"HWADDR_PRIx" ] overlaps =
+with "
+>> +                          "CS%d [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx"=
+ ]\n",
+>> +                          s->ctrl->name, cs, new->addr, new->addr + n=
+ew->size,
+>> +                          i, seg.addr, seg.addr + seg.size);
+>> +            return true;
+>> +        }
+>> +    }
+>> +    return false;
+>> +}
+>> +
+>> +static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+>> +                                         uint64_t new)
+>> +{
+>> +    AspeedSMCFlash *fl =3D &s->flashes[cs];
+>> +    AspeedSegments seg;
+>> +
+>> +    aspeed_smc_reg_to_segment(new, &seg);
+>> +
+>> +    /* The start address of CS0 is read-only */
+>> +    if (cs =3D=3D 0 && seg.addr !=3D s->ctrl->flash_window_base) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Tried to change CS0 start address to 0x%"
+>> +                      HWADDR_PRIx "\n", s->ctrl->name, seg.addr);
+>> +        return;
+>> +    }
+>> +
+>> +    /*
+>> +     * The end address of the AST2500 spi controllers is also
+>> +     * read-only.
+>> +     */
+>> +    if ((s->ctrl->segments =3D=3D aspeed_segments_ast2500_spi1 ||
+>> +         s->ctrl->segments =3D=3D aspeed_segments_ast2500_spi2) &&
+>> +        cs =3D=3D s->ctrl->max_slaves &&
+>> +        seg.addr + seg.size !=3D s->ctrl->segments[cs].addr +
+>> +        s->ctrl->segments[cs].size) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Tried to change CS%d end address to 0x%"
+>> +                      HWADDR_PRIx "\n", s->ctrl->name, cs, seg.addr);
+>> +        return;
+>> +    }
+>> +
+>> +    /* Keep the segment in the overall flash window */
+>> +    if (seg.addr + seg.size <=3D s->ctrl->flash_window_base ||
+>> +        seg.addr > s->ctrl->flash_window_base + s->ctrl->flash_window=
+_size) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is i=
+nvalid : "
+>> +                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
+>> +                      s->ctrl->name, cs, seg.addr, seg.addr + seg.siz=
+e);
+>> +        return;
+>> +    }
+>> +
+>> +    /* Check start address vs. alignment */
+>> +    if (seg.addr % seg.size) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: new segment for CS%d is n=
+ot "
+>> +                      "aligned : [ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx=
+" ]\n",
+>> +                      s->ctrl->name, cs, seg.addr, seg.addr + seg.siz=
+e);
+>> +    }
+>> +
+>> +    /* And segments should not overlap */
+>> +    if (aspeed_smc_flash_overlap(s, &seg, cs)) {
+>> +        return;
+>> +    }
+>> +
+>> +    /* All should be fine now to move the region */
+>> +    memory_region_transaction_begin();
+>> +    memory_region_set_size(&fl->mmio, seg.size);
+>> +    memory_region_set_address(&fl->mmio, seg.addr - s->ctrl->flash_wi=
+ndow_base);
+>> +    memory_region_set_enabled(&fl->mmio, true);
+>> +    memory_region_transaction_commit();
+>> +
+>> +    s->regs[R_SEG_ADDR0 + cs] =3D new;
+>> +}
+>> +
+>>  static uint64_t aspeed_smc_flash_default_read(void *opaque, hwaddr ad=
+dr,
+>>                                                unsigned size)
+>>  {
+>> @@ -314,6 +425,12 @@ static void aspeed_smc_reset(DeviceState *d)
+>>          s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
+>>      }
+>> =20
+>> +    /* setup default segment register values for all */
+>> +    for (i =3D 0; i < s->ctrl->max_slaves; ++i) {
+>> +        s->regs[R_SEG_ADDR0 + i] =3D
+>> +            aspeed_smc_segment_to_reg(&s->ctrl->segments[i]);
+>> +    }
+>> +
+>>      aspeed_smc_update_cs(s);
+>>  }
+>> =20
+>> @@ -334,6 +451,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwad=
+dr addr, unsigned int size)
+>>          addr =3D=3D s->r_timings ||
+>>          addr =3D=3D s->r_ce_ctrl ||
+>>          addr =3D=3D R_INTR_CTRL ||
+>> +        (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_s=
+laves) ||
+>>          (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
+>>          return s->regs[addr];
+>>      } else {
+>> @@ -365,6 +483,13 @@ static void aspeed_smc_write(void *opaque, hwaddr=
+ addr, uint64_t data,
+>>      } else if (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)=
+ {
+>>          s->regs[addr] =3D value;
+>>          aspeed_smc_update_cs(s);
+>> +    } else if (addr >=3D R_SEG_ADDR0 &&
+>> +               addr < R_SEG_ADDR0 + s->ctrl->max_slaves) {
+>> +        int cs =3D addr - R_SEG_ADDR0;
+>> +
+>> +        if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
+>> +            aspeed_smc_flash_set_segment(s, cs, value);
+>> +        }
+>>      } else {
+>>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PR=
+Ix "\n",
+>>                        __func__, addr);
 

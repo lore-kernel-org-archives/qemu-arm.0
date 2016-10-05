@@ -1,62 +1,62 @@
-Received: by 10.80.163.71 with SMTP id 65csp2515567edn;
-        Wed, 5 Oct 2016 00:10:26 -0700 (PDT)
-X-Received: by 10.55.113.197 with SMTP id m188mr7330258qkc.55.1475651426527;
-        Wed, 05 Oct 2016 00:10:26 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp2517588edn;
+        Wed, 5 Oct 2016 00:16:17 -0700 (PDT)
+X-Received: by 10.233.237.145 with SMTP id c139mr7360682qkg.29.1475651777212;
+        Wed, 05 Oct 2016 00:16:17 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a9si4885667qka.246.2016.10.05.00.10.26
+        by mx.google.com with ESMTPS id p34si12137660qtc.119.2016.10.05.00.16.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Oct 2016 00:10:26 -0700 (PDT)
+        Wed, 05 Oct 2016 00:16:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46835 helo=lists.gnu.org)
+Received: from localhost ([::1]:46855 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brgLR-0005dk-C2
-	for alex.bennee@linaro.org; Wed, 05 Oct 2016 03:10:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44443)
+	id 1brgR6-0007LU-4S
+	for alex.bennee@linaro.org; Wed, 05 Oct 2016 03:16:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45607)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brgLN-0005dd-9n
-	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:10:22 -0400
+	(envelope-from <drjones@redhat.com>) id 1brgQx-0007L3-Tr
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:16:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brgLH-0002dV-O0
-	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:10:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38300)
+	(envelope-from <drjones@redhat.com>) id 1brgQs-0004Ib-SE
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:16:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53868)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <drjones@redhat.com>)
-	id 1brgLH-0002dI-Hm; Wed, 05 Oct 2016 03:10:15 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1brgQs-0004I5-Ik; Wed, 05 Oct 2016 03:16:02 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C5E7FB813C;
-	Wed,  5 Oct 2016 07:10:14 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9F25680F6C;
+	Wed,  5 Oct 2016 07:16:00 +0000 (UTC)
 Received: from hawk.localdomain (ovpn-204-44.brq.redhat.com [10.40.204.44])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u957AAZN020964
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u957FutL006174
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 5 Oct 2016 03:10:12 -0400
-Date: Wed, 5 Oct 2016 09:10:10 +0200
+	verify=NO); Wed, 5 Oct 2016 03:15:58 -0400
+Date: Wed, 5 Oct 2016 09:15:55 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Wei Huang <wei@redhat.com>
-Message-ID: <20161005071010.gesdbmv4l34edbkm@hawk.localdomain>
+Message-ID: <20161005071555.4atn6ndbcg6psago@hawk.localdomain>
 References: <1475617134-28180-1-git-send-email-wei@redhat.com>
-	<1475617134-28180-2-git-send-email-wei@redhat.com>
+	<1475617134-28180-3-git-send-email-wei@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1475617134-28180-2-git-send-email-wei@redhat.com>
+In-Reply-To: <1475617134-28180-3-git-send-email-wei@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 05 Oct 2016 07:10:15 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 05 Oct 2016 07:16:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 1/2] arm64: Add an option to
- turn on/off vPMU support
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 2/2] arm: virt: add PMU
+ property to mach-virt machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,30 +72,85 @@ Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, abologna@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DLC6XB7MlENf
+X-TUID: Sv3sXKiUh5AY
 
-On Tue, Oct 04, 2016 at 05:38:53PM -0400, Wei Huang wrote:
-> This patch adds a pmu=[on/off] option to enable/disable vPMU support
-> in guest vCPU. This option is only available for cortex-a57/cortex-53/
-> host under both TCG and KVM modes, but unavailable on ARMv7 and other
-> processors. It allows virt tools, such as libvirt, to determine the
-> exsitence of vPMU and configure it. Note that, if nothing specified,
-> the pmu option is set to AUTO as default, allowing machine-level PMU
-> property to override it. Also when pmu is turned on under non-KVM mode,
-> a warning message will be printed.
+On Tue, Oct 04, 2016 at 05:38:54PM -0400, Wei Huang wrote:
+> CPU vPMU is now turned off by default, but it was ON in virt-2.7
+> machine type. To solve this problem, this patch adds a PMU option
+> in machine state, which is used to control CPU's vPMU status. This
+> PMU option is not exposed to command line and is turned on in
+> virt-2.7 machine type to make sure it is backward compatible.
 > 
 > Signed-off-by: Wei Huang <wei@redhat.com>
 > ---
->  hw/arm/virt-acpi-build.c |  2 +-
->  hw/arm/virt.c            |  2 +-
->  target-arm/cpu.c         | 23 +++++++++++++++++++++++
->  target-arm/cpu.h         |  3 ++-
->  target-arm/cpu64.c       |  2 ++
->  target-arm/kvm64.c       | 17 ++++++++++++++---
->  6 files changed, 43 insertions(+), 6 deletions(-)
+>  hw/arm/virt.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index d348b02..43832f3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -84,6 +84,7 @@ typedef struct {
+>      MachineClass parent;
+>      VirtBoardInfo *daughterboard;
+>      bool disallow_affinity_adjustment;
+> +    bool pmu_default_on;
+>  } VirtMachineClass;
+>  
+>  typedef struct {
+> @@ -1322,6 +1323,8 @@ static void machvirt_init(MachineState *machine)
+>  
+>      for (n = 0; n < smp_cpus; n++) {
+>          Object *cpuobj = object_new(typename);
+> +        ARMCPU *cpu = ARM_CPU(cpuobj);
+> +
+>          if (!vmc->disallow_affinity_adjustment) {
+>              /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+>               * GIC's target-list limitations. 32-bit KVM hosts currently
+> @@ -1352,6 +1355,12 @@ static void machvirt_init(MachineState *machine)
+>              }
+>          }
+>  
+> +        if (cpu->has_pmu == ON_OFF_AUTO_AUTO &&
+> +            object_property_find(cpuobj, "pmu", NULL)) {
+> +            cpu->has_pmu = vmc->pmu_default_on && kvm_enabled() ?
+> +                ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
+> +        }
+> +
+>          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+>              object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
+>                                      "reset-cbar", &error_abort);
+> @@ -1562,8 +1571,12 @@ static void virt_2_7_instance_init(Object *obj)
+>  
+>  static void virt_machine_2_7_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_2_8_options(mc);
+>      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_7);
+> +
+
+nit: no need for the above blank line
+
+> +    vmc->pmu_default_on = true;
+>  }
+>  DEFINE_VIRT_MACHINE(2, 7)
+>  
+> @@ -1582,5 +1595,9 @@ static void virt_machine_2_6_options(MachineClass *mc)
+>      virt_machine_2_7_options(mc);
+>      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
+>      vmc->disallow_affinity_adjustment = true;
+> +    /* Disable PMU for 2.6 and down as PMU support was first introduced
+> +     * and enabled in 2.7.
+> +     */
+> +    vmc->pmu_default_on = false;
+>  }
+>  DEFINE_VIRT_MACHINE(2, 6)
+> -- 
+> 1.8.3.1
+> 
 >
 
-Please leave r-b's on patches that don't change. afaict this one
-didn't change, so [again]
+Besides the nit
 
 Reviewed-by: Andrew Jones <drjones@redhat.com> 

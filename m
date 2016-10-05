@@ -1,180 +1,133 @@
-Received: by 10.80.163.71 with SMTP id 65csp2748494edn;
-        Wed, 5 Oct 2016 09:02:18 -0700 (PDT)
-X-Received: by 10.55.20.78 with SMTP id e75mr9320848qkh.267.1475683338555;
-        Wed, 05 Oct 2016 09:02:18 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp2845715edn;
+        Wed, 5 Oct 2016 12:43:37 -0700 (PDT)
+X-Received: by 10.233.235.3 with SMTP id b3mr10477455qkg.77.1475696617204;
+        Wed, 05 Oct 2016 12:43:37 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7si5648326qka.36.2016.10.05.09.02.18
+        by mx.google.com with ESMTPS id u63si3778284qka.196.2016.10.05.12.43.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Oct 2016 09:02:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 05 Oct 2016 12:43:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50050 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:51001 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1broe9-0000HY-7e
-	for alex.bennee@linaro.org; Wed, 05 Oct 2016 12:02:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54195)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1brs6K-0005I4-2y
+	for alex.bennee@linaro.org; Wed, 05 Oct 2016 15:43:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1brobq-0007N3-UN
-	for qemu-devel@nongnu.org; Wed, 05 Oct 2016 11:59:56 -0400
+	(envelope-from <lvivier@redhat.com>) id 1brs2I-0001PB-CF
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 15:39:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1brobj-0004qn-JK
-	for qemu-devel@nongnu.org; Wed, 05 Oct 2016 11:59:53 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34005)
+	(envelope-from <lvivier@redhat.com>) id 1brs2G-0007cU-8D
+	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 15:39:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44786)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>)
-	id 1brobb-0004lp-Dx; Wed, 05 Oct 2016 11:59:39 -0400
-Received: by mail-oi0-x241.google.com with SMTP id r132so12536825oig.1;
-	Wed, 05 Oct 2016 08:59:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=W0A43MC4zNj7sAkiSAZiLvlsVFAQRSfVtuJLtAgkEB4=;
-	b=0JKbLZNJYDaX+DugnBFUth3ZSvtkAiKdO7pDPviMh7eQLYTcIfUh6K90abpAaegNBS
-	/kscbo1UdiyMWAsIXe4zp/BaCubYeww6NPF/xGb97Rih6xuw4mIcokIB/g7QJhejByuo
-	UAhnWd2vYXqcaErrFFbtJWKHQEZ2qex0kZc8m6CoFbdwaSA25y5wuXEHEKIBa96fAFm0
-	2adhGPoBqCQigxm6XeChQ1AaDLda/AVjMLVQG9UoQ6F8XNhgUUvj+UTc6dPvT8S2m5E5
-	Lg0UOtPtKSeAU+lGUIgH9uoLU0MaeDCvXvWIaktanlryMvZHqyH+2zg1JtjWeiGjzOUX
-	pRMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=W0A43MC4zNj7sAkiSAZiLvlsVFAQRSfVtuJLtAgkEB4=;
-	b=SY/miQHPW/3OgMqhkhM2IEfS7VbF3COaP1aAoxaTDezwgcffxZCCkfIgHeJOl0Z1Kc
-	ZZuUEV1TvE3E9qBOFwe5K0IpYgLwnEYlEsYGQgMn56obwB/vdA5pujWEk0ga/wZswvys
-	XNpdUs61sVYNWH7ROqaGsUyPcXbcQWmiYdpWrxLGR5E6By/nMHJawjR5REtR7NQXQZek
-	FWtdNzpOHbxpfasbhKauH6jGn420fjr+Q9JDEanOGu9ZltJDk0qJaQl2DBGaOSU5RWKL
-	fxaaA5OopmWcqtDpVgJ50n0d5YD2lAUpD0kAy8a2nRBfEGysx9jXJ6BB9RGqsbD6qGOS
-	nDjg==
-X-Gm-Message-State: AA6/9RldNfCEIsqjDdAwsQXSIR5+m6PC/MG4mVE4Dny9Xk9jCYZugczFG4fePBRMiglWv+vNinuzCTLZ0yyHUQ==
-X-Received: by 10.202.235.10 with SMTP id j10mr8669064oih.103.1475683178699;
-	Wed, 05 Oct 2016 08:59:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.182.181.7 with HTTP; Wed, 5 Oct 2016 08:59:08 -0700 (PDT)
-In-Reply-To: <20161004205619.GA31579@toto>
-References: <1475604703-3381-1-git-send-email-rutu.shah.26@gmail.com>
-	<20161004205619.GA31579@toto>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 5 Oct 2016 08:59:08 -0700
-X-Google-Sender-Auth: MxQ5qUB30L24s8bKRikkfwiePls
-Message-ID: <CAKmqyKNMegok16kHv2FWxeQrOQt=w7QL0HGVd8oKvYoAMsQbXA@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <lvivier@redhat.com>)
+	id 1brs2G-0007cH-2G; Wed, 05 Oct 2016 15:39:24 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8239C65F7F;
+	Wed,  5 Oct 2016 19:39:23 +0000 (UTC)
+Received: from thinkpad.redhat.com (ovpn-112-35.ams2.redhat.com [10.36.112.35])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u95Jcseg010540; Wed, 5 Oct 2016 15:39:19 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  5 Oct 2016 21:38:39 +0200
+Message-Id: <1475696333-8706-6-git-send-email-lvivier@redhat.com>
+In-Reply-To: <1475696333-8706-1-git-send-email-lvivier@redhat.com>
+References: <1475696333-8706-1-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Wed, 05 Oct 2016 19:39:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-devel] [PATCHv2] Reducing stack frame size in
- stream_process_mem2s()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 05/19] target-arm: move cpu_exec_realize() to
+ realize function
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, rutu.shah.26@gmail.com,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HpcNONs8OMLu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wr+IeYXXd4mu
 
-On Tue, Oct 4, 2016 at 1:56 PM, Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
-> On Tue, Oct 04, 2016 at 11:41:42PM +0530, rutu.shah.26@gmail.com wrote:
->> From: Rutuja Shah <rutu.shah.26@gmail.com>
->>
->> Hi,
->> This patch allocates memory for txbuf in struct Stream rather than the stack.
->> As a result, the stack frame size is reduced of stream_process_mem2s().
->
-> Hi Rutuja,
->
-> A nit-pick:
-> The commit message is not meant to be a converstation-like message, so
-> normally we don't include greetings.
-> The expected format is to have an empty line between the message and
-> the SoB line.
->
-> Here's an example:
->
-> Allocate memory for txbuf in struct Stream rather than on the stack.
-> As a result, the stack frame size is reduced for stream_process_mem2s().
->
-> Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
->
->
-> Other than that, this looks good to me:
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+I've removed the cannot_destroy_with_object_finalize_yet field as
+cpu_exec_init() is not called by arm_cpu_initfn() anymore
+(tested with QOM command provided by commit 4c315c27 with
+ "arm1026-arm-cpu")
 
-I agree with Edgar, just taking out the hi and adding a new line
-should be enough.
-That can probably be done when applying it?
+CC: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-arm@nongnu.org
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+ target-arm/cpu.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 5fda716..7920fb0 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -445,7 +445,6 @@ static void arm_cpu_initfn(Object *obj)
+ 
+     cs->env_ptr = &cpu->env;
+     cpu_exec_init(cs, &error_abort);
+-    cpu_exec_realize(cs, &error_abort);
+     cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
+                                          g_free, g_free);
+ 
+@@ -577,6 +576,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     ARMCPU *cpu = ARM_CPU(dev);
+     ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
+     CPUARMState *env = &cpu->env;
++    Error *local_err = NULL;
++
++    cpu_exec_realize(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
+ 
+     /* Some features automatically imply others: */
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+@@ -1534,17 +1540,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->debug_check_watchpoint = arm_debug_check_watchpoint;
+ 
+     cc->disas_set_info = arm_disas_set_info;
+-
+-    /*
+-     * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
+-     * the object in cpus -> dangling pointer after final
+-     * object_unref().
+-     *
+-     * Once this is fixed, the devices that create ARM CPUs should be
+-     * updated not to set cannot_destroy_with_object_finalize_yet,
+-     * unless they still screw up something else.
+-     */
+-    dc->cannot_destroy_with_object_finalize_yet = true;
+ }
+ 
+ static void cpu_register(const ARMCPUInfo *info)
+-- 
+2.7.4
 
-Thanks,
-
-Alistair
-
->
->
->> Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
->> ---
->>  hw/dma/xilinx_axidma.c | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
->> index b135a5f..6065689 100644
->> --- a/hw/dma/xilinx_axidma.c
->> +++ b/hw/dma/xilinx_axidma.c
->> @@ -111,6 +111,7 @@ struct Stream {
->>      unsigned int complete_cnt;
->>      uint32_t regs[R_MAX];
->>      uint8_t app[20];
->> +    unsigned char txbuf[16 * 1024];
->>  };
->>
->>  struct XilinxAXIDMAStreamSlave {
->> @@ -256,7 +257,6 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->>                                   StreamSlave *tx_control_dev)
->>  {
->>      uint32_t prev_d;
->> -    unsigned char txbuf[16 * 1024];
->>      unsigned int txlen;
->>
->>      if (!stream_running(s) || stream_idle(s)) {
->> @@ -277,17 +277,17 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
->>          }
->>
->>          txlen = s->desc.control & SDESC_CTRL_LEN_MASK;
->> -        if ((txlen + s->pos) > sizeof txbuf) {
->> +        if ((txlen + s->pos) > sizeof s->txbuf) {
->>              hw_error("%s: too small internal txbuf! %d\n", __func__,
->>                       txlen + s->pos);
->>          }
->>
->>          cpu_physical_memory_read(s->desc.buffer_address,
->> -                                 txbuf + s->pos, txlen);
->> +                                 s->txbuf + s->pos, txlen);
->>          s->pos += txlen;
->>
->>          if (stream_desc_eof(&s->desc)) {
->> -            stream_push(tx_data_dev, txbuf, s->pos);
->> +            stream_push(tx_data_dev, s->txbuf, s->pos);
->>              s->pos = 0;
->>              stream_complete(s);
->>          }
->> --
->> 1.9.1
->>
->

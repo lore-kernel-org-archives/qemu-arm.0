@@ -1,156 +1,131 @@
-Received: by 10.80.163.71 with SMTP id 65csp2517588edn;
-        Wed, 5 Oct 2016 00:16:17 -0700 (PDT)
-X-Received: by 10.233.237.145 with SMTP id c139mr7360682qkg.29.1475651777212;
-        Wed, 05 Oct 2016 00:16:17 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp2697766edn;
+        Wed, 5 Oct 2016 07:24:26 -0700 (PDT)
+X-Received: by 10.159.33.241 with SMTP id 104mr6678153uac.75.1475677465890;
+        Wed, 05 Oct 2016 07:24:25 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p34si12137660qtc.119.2016.10.05.00.16.16
+        by mx.google.com with ESMTPS id 41si11939426uas.61.2016.10.05.07.24.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Oct 2016 00:16:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 05 Oct 2016 07:24:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46855 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49479 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1brgR6-0007LU-4S
-	for alex.bennee@linaro.org; Wed, 05 Oct 2016 03:16:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45607)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1brn7Q-000232-P1
+	for alex.bennee@linaro.org; Wed, 05 Oct 2016 10:24:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54380)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brgQx-0007L3-Tr
-	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:16:13 -0400
+	(envelope-from <stefanha@gmail.com>) id 1brmqt-0005ox-CP
+	for qemu-devel@nongnu.org; Wed, 05 Oct 2016 10:07:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1brgQs-0004Ib-SE
-	for qemu-arm@nongnu.org; Wed, 05 Oct 2016 03:16:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53868)
+	(envelope-from <stefanha@gmail.com>) id 1brmqp-0000Ew-6L
+	for qemu-devel@nongnu.org; Wed, 05 Oct 2016 10:07:18 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:35887)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>)
-	id 1brgQs-0004I5-Ik; Wed, 05 Oct 2016 03:16:02 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9F25680F6C;
-	Wed,  5 Oct 2016 07:16:00 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-44.brq.redhat.com [10.40.204.44])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u957FutL006174
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Wed, 5 Oct 2016 03:15:58 -0400
-Date: Wed, 5 Oct 2016 09:15:55 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Wei Huang <wei@redhat.com>
-Message-ID: <20161005071555.4atn6ndbcg6psago@hawk.localdomain>
-References: <1475617134-28180-1-git-send-email-wei@redhat.com>
-	<1475617134-28180-3-git-send-email-wei@redhat.com>
+	(envelope-from <stefanha@gmail.com>)
+	id 1brmqo-0000EQ-Vi; Wed, 05 Oct 2016 10:07:15 -0400
+Received: by mail-wm0-x243.google.com with SMTP id b184so24770694wma.3;
+	Wed, 05 Oct 2016 07:07:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=QeeWpe+mXorWVzkwOLaOY8EFF/JX407Ue/3SxSUPx44=;
+	b=VOYcyFd72vIRT3dHa8OiB0Vyd8rrTWJCJfD5mgslCS/C2dxTlWP+VjmTCE/cT6zJlB
+	fkkkT/2zMU4//EbLJCHQ1GGfPUzaOAfYXY/+SLfNSFnpjGi6J5qUWwh21ed/uTLsLwlb
+	HovHQhU3KnK3KJP9+BCqKdFOj8XiICakOlPnFHwsfVJj7bV+Xy55n2rmAzFgpbxybKGv
+	vUt5gX9c23YE7D5yz8hACgpTCtRJQCrwdwQKUFeU4Y0gZNrLGIntGodcGOjYbNaFHH4m
+	lHg4U5vPRc6Jja9/Zsnqeobz7kCJoTXXDIW/takJ/WvnIZLuDCTUjBw/fL3/0ncvgMT+
+	YBiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=QeeWpe+mXorWVzkwOLaOY8EFF/JX407Ue/3SxSUPx44=;
+	b=VsHoanstPR1Ct5yIHXYs6og9uZf2Zm5t4Et31PebzAaIP1zFSuiVlB2DFD1SKGuN0y
+	BUUgJbUDAF9Xv8YCd1arYyyH8/YkhDRnwVQ3rMBSz6FjJfHIDOZyOpCYHaE5KOB2cykC
+	dyTjC7lEN+V77yT5bv488NU+jj1/FtwklAV1JpVAn3Wp9qSmO5Pgv/hSIfxzZ5XlJyPD
+	OpHlZKTIu9qzJb5W+znLlT7LNeyGGPzDXrcC4851OFE4iTUgQlqAD08LfqPry9K+2ovf
+	iK/OCUqI9HB8sVlECZ9w0qZ1L2dmcbbCBCa0mtJAdPfVMAUMYcPhmRVIVDWAco/yILIJ
+	wszQ==
+X-Gm-Message-State: AA6/9RnDGTXCUQbktu17gIR9fXTiuCDkvackrSs41hWluCfQr0xLwJ/SSALTr5ASo/19TQ==
+X-Received: by 10.194.84.199 with SMTP id b7mr7986594wjz.147.1475676434229;
+	Wed, 05 Oct 2016 07:07:14 -0700 (PDT)
+Received: from localhost (host81-154-58-16.range81-154.btcentralplus.com.
+	[81.154.58.16])
+	by smtp.gmail.com with ESMTPSA id y2sm9180858wji.42.2016.10.05.07.07.12
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 05 Oct 2016 07:07:12 -0700 (PDT)
+Date: Wed, 5 Oct 2016 15:07:11 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: rutu.shah.26@gmail.com
+Message-ID: <20161005140711.GI863@stefanha-x1.localdomain>
+References: <1475604703-3381-1-git-send-email-rutu.shah.26@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="dCSxeJc5W8HZXZrD"
 Content-Disposition: inline
-In-Reply-To: <1475617134-28180-3-git-send-email-wei@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 05 Oct 2016 07:16:00 +0000 (UTC)
+In-Reply-To: <1475604703-3381-1-git-send-email-rutu.shah.26@gmail.com>
+User-Agent: Mutt/1.7.0 (2016-08-17)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 2/2] arm: virt: add PMU
- property to mach-virt machine type
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-devel] [PATCHv2] Reducing stack frame size in
+ stream_process_mem2s()
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, abologna@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sv3sXKiUh5AY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@gmail.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alistair.francis@xilinx.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ikBnf2JF2x6B
 
-On Tue, Oct 04, 2016 at 05:38:54PM -0400, Wei Huang wrote:
-> CPU vPMU is now turned off by default, but it was ON in virt-2.7
-> machine type. To solve this problem, this patch adds a PMU option
-> in machine state, which is used to control CPU's vPMU status. This
-> PMU option is not exposed to command line and is turned on in
-> virt-2.7 machine type to make sure it is backward compatible.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
+
+--dCSxeJc5W8HZXZrD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Oct 04, 2016 at 11:41:42PM +0530, rutu.shah.26@gmail.com wrote:
+> From: Rutuja Shah <rutu.shah.26@gmail.com>
+>=20
+> Hi,
+> This patch allocates memory for txbuf in struct Stream rather than the st=
+ack.
+> As a result, the stack frame size is reduced of stream_process_mem2s().
+> Signed-off-by: Rutuja Shah <rutu.shah.26@gmail.com>
 > ---
->  hw/arm/virt.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index d348b02..43832f3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -84,6 +84,7 @@ typedef struct {
->      MachineClass parent;
->      VirtBoardInfo *daughterboard;
->      bool disallow_affinity_adjustment;
-> +    bool pmu_default_on;
->  } VirtMachineClass;
->  
->  typedef struct {
-> @@ -1322,6 +1323,8 @@ static void machvirt_init(MachineState *machine)
->  
->      for (n = 0; n < smp_cpus; n++) {
->          Object *cpuobj = object_new(typename);
-> +        ARMCPU *cpu = ARM_CPU(cpuobj);
-> +
->          if (!vmc->disallow_affinity_adjustment) {
->              /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
->               * GIC's target-list limitations. 32-bit KVM hosts currently
-> @@ -1352,6 +1355,12 @@ static void machvirt_init(MachineState *machine)
->              }
->          }
->  
-> +        if (cpu->has_pmu == ON_OFF_AUTO_AUTO &&
-> +            object_property_find(cpuobj, "pmu", NULL)) {
-> +            cpu->has_pmu = vmc->pmu_default_on && kvm_enabled() ?
-> +                ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
-> +        }
-> +
->          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
->              object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
->                                      "reset-cbar", &error_abort);
-> @@ -1562,8 +1571,12 @@ static void virt_2_7_instance_init(Object *obj)
->  
->  static void virt_machine_2_7_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_2_8_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_7);
-> +
+>  hw/dma/xilinx_axidma.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 
-nit: no need for the above blank line
+Thanks for your contribution!
 
-> +    vmc->pmu_default_on = true;
->  }
->  DEFINE_VIRT_MACHINE(2, 7)
->  
-> @@ -1582,5 +1595,9 @@ static void virt_machine_2_6_options(MachineClass *mc)
->      virt_machine_2_7_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
->      vmc->disallow_affinity_adjustment = true;
-> +    /* Disable PMU for 2.6 and down as PMU support was first introduced
-> +     * and enabled in 2.7.
-> +     */
-> +    vmc->pmu_default_on = false;
->  }
->  DEFINE_VIRT_MACHINE(2, 6)
-> -- 
-> 1.8.3.1
-> 
->
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Besides the nit
+--dCSxeJc5W8HZXZrD
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Reviewed-by: Andrew Jones <drjones@redhat.com> 
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJX9QkPAAoJEJykq7OBq3PIfREH/jJg7h92mEAwl0Ks/XlVnT0R
+hjidIabYCrI79LukdnagCC2mNjRcsp0EWNJQkrk7Gm4vRVfDmAJMHN7g6uVVE+mB
+kUUqHZBv8vbORDF9gbsClU84zAROtIRPjjcFo0dMdrstpkmBOEAaxhNkhI2JYxyD
+jJzhoQi6wIYQzVQZxNNR+l8KWQJn/JqQXreBkLzFkplfz0WRwXRO61IVTM4y0NQS
+BbVC2DZo8MO2DtxLF/HJ6/+9r3UODV+m83fa2RQZ8FhTvOxe/l6z3mzTzXWFxzQS
+mONRNrh4WJeQg9P2NrJkTzDuLcxMhQgHncmG0NKxBo6sUdFUSyBUygXmJQePVL8=
+=1aYZ
+-----END PGP SIGNATURE-----
+
+--dCSxeJc5W8HZXZrD--

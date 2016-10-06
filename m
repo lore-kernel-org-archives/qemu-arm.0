@@ -1,162 +1,131 @@
-Received: by 10.80.163.71 with SMTP id 65csp3167278edn;
-        Thu, 6 Oct 2016 04:49:06 -0700 (PDT)
-X-Received: by 10.200.55.59 with SMTP id o56mr13594325qtb.65.1475754546354;
-        Thu, 06 Oct 2016 04:49:06 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp3168136edn;
+        Thu, 6 Oct 2016 04:51:15 -0700 (PDT)
+X-Received: by 10.55.203.213 with SMTP id u82mr13322713qkl.311.1475754675420;
+        Thu, 06 Oct 2016 04:51:15 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u3si7553624qkd.105.2016.10.06.04.49.06
+        by mx.google.com with ESMTPS id q57si913982qtq.147.2016.10.06.04.51.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 04:49:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 06 Oct 2016 04:51:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55024 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:55034 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bs7Af-0008QR-NF
-	for alex.bennee@linaro.org; Thu, 06 Oct 2016 07:49:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41687)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bs7Ck-0001Gk-Pb
+	for alex.bennee@linaro.org; Thu, 06 Oct 2016 07:51:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41740)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs73b-00025C-TL
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 07:41:49 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bs73h-0002BO-HF
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 07:41:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs73a-0001r1-PP
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 07:41:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34053)
+	(envelope-from <eric.auger@redhat.com>) id 1bs73f-0001sT-IK
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 07:41:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48734)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bs73a-0001qv-Ft; Thu, 06 Oct 2016 07:41:46 -0400
+	id 1bs73d-0001rk-7A; Thu, 06 Oct 2016 07:41:49 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D5DFBC04B928;
-	Thu,  6 Oct 2016 11:41:45 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A164F1FAE7;
+	Thu,  6 Oct 2016 11:41:48 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-6-233.ams2.redhat.com [10.36.6.233])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u96BfVNX005464; Thu, 6 Oct 2016 07:41:43 -0400
+	ESMTP id u96BfVNY005464; Thu, 6 Oct 2016 07:41:46 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Thu,  6 Oct 2016 11:41:26 +0000
-Message-Id: <1475754090-22681-5-git-send-email-eric.auger@redhat.com>
+Date: Thu,  6 Oct 2016 11:41:27 +0000
+Message-Id: <1475754090-22681-6-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1475754090-22681-1-git-send-email-eric.auger@redhat.com>
 References: <1475754090-22681-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 06 Oct 2016 11:41:45 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 06 Oct 2016 11:41:48 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 4/8] memory: Add reserved_iova region type
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v4 5/8] memory: memory_region_find_by_name
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lPJPzEF1vgfx
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yv+/xCelJJsP
 
-Introduce a new reserved_iova region type. This type of iova region
-is bound to be used by the kernel to map some host physical addresses
-(typically MSI frames).
-
-A new initializer, memory_region_init_reserved_iova is introduced, as
-well as a test function, memory_region_is_reserved_iova.
+This new helper makes possible to search for a MemoryRegion matching
+a given name within a root MemoryRegion.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/exec/memory.h | 29 +++++++++++++++++++++++++++++
- memory.c              | 11 +++++++++++
- 2 files changed, 40 insertions(+)
+ include/exec/memory.h | 11 +++++++++++
+ memory.c              | 16 ++++++++++++++++
+ 2 files changed, 27 insertions(+)
 
 diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 10d7eac..f97b1f4 100644
+index f97b1f4..f62e5b5 100644
 --- a/include/exec/memory.h
 +++ b/include/exec/memory.h
-@@ -191,6 +191,7 @@ struct MemoryRegion {
-     /* The following fields should fit in a cache line */
-     bool romd_mode;
-     bool ram;
-+    bool reserved_iova;
-     bool subpage;
-     bool readonly; /* For RAM regions */
-     bool rom_device;
-@@ -385,6 +386,21 @@ void memory_region_init_ram(MemoryRegion *mr,
-                             Error **errp);
+@@ -1217,6 +1217,17 @@ MemoryRegionSection memory_region_find(MemoryRegion *mr,
+                                        hwaddr addr, uint64_t size);
  
  /**
-+ * memory_region_init_reserved_iova:  Initialize reserved iova memory region
++ * memory_region_find_by_name: Locates the first #MemoryRegion within @mr
++ * whose name matches @name
 + *
-+ * @mr: the #MemoryRegion to be initialized.
-+ * @owner: the object that tracks the region's reference count
-+ * @name: the name of the region.
-+ * @size: size of the region.
-+ * @errp: pointer to Error*, to store an error if it happens.
++ * @mr: the root MemoryRegion
++ * @name: name of the target MemoryRegion
++ *
++ * Returns the matched memory region or NULL
 + */
-+void memory_region_init_reserved_iova(MemoryRegion *mr,
-+                                      struct Object *owner,
-+                                      const char *name,
-+                                      uint64_t size,
-+                                      Error **errp);
++MemoryRegion *memory_region_find_by_name(MemoryRegion *mr, const char *name);
 +
 +/**
-  * memory_region_init_resizeable_ram:  Initialize memory region with resizeable
-  *                                     RAM.  Accesses into the region will
-  *                                     modify memory directly.  Only an initial
-@@ -573,6 +589,19 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
- }
- 
- /**
-+ * memory_region_is_reserved_iova: check whether a memory region corresponds to
-+   reserved iova
-+ *
-+ * Returns %true is a memory region is reserved iova
-+ *
-+ * @mr: the memory region being queried
-+ */
-+static inline bool memory_region_is_reserved_iova(MemoryRegion *mr)
-+{
-+    return mr->reserved_iova;
-+}
-+
-+/**
-  * memory_region_is_skip_dump: check whether a memory region should not be
-  *                             dumped
+  * memory_global_dirty_log_sync: synchronize the dirty log for all memory
   *
+  * Synchronizes the dirty page log for all address spaces.
 diff --git a/memory.c b/memory.c
-index 58f9269..00a0ebe 100644
+index 00a0ebe..3701b4f 100644
 --- a/memory.c
 +++ b/memory.c
-@@ -1309,6 +1309,17 @@ void memory_region_init_ram(MemoryRegion *mr,
-     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;
+@@ -2166,6 +2166,22 @@ MemoryRegionSection memory_region_find(MemoryRegion *mr,
+     return ret;
  }
  
-+void memory_region_init_reserved_iova(MemoryRegion *mr,
-+                                      Object *owner,
-+                                      const char *name,
-+                                      uint64_t size,
-+                                      Error **errp)
++MemoryRegion *memory_region_find_by_name(MemoryRegion *root,
++                                         const char *name)
 +{
-+    memory_region_init(mr, owner, name, size);
-+    mr->reserved_iova = true;
-+    mr->terminates = true;
++    MemoryRegion *other;
++
++    QTAILQ_FOREACH(other, &root->subregions, subregions_link) {
++        if (!strcmp(other->name, name)) {
++            memory_region_ref(other);
++            return other;
++        } else {
++            memory_region_find_by_name(other, name);
++        }
++    }
++    return NULL;
 +}
 +
- void memory_region_init_resizeable_ram(MemoryRegion *mr,
-                                        Object *owner,
-                                        const char *name,
+ bool memory_region_present(MemoryRegion *container, hwaddr addr)
+ {
+     MemoryRegion *mr;
 -- 
 1.9.1
 

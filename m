@@ -1,132 +1,131 @@
-Received: by 10.80.163.71 with SMTP id 65csp3117829edn;
-        Thu, 6 Oct 2016 02:51:12 -0700 (PDT)
-X-Received: by 10.55.74.6 with SMTP id x6mr4281918qka.316.1475747472126;
-        Thu, 06 Oct 2016 02:51:12 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp3118527edn;
+        Thu, 6 Oct 2016 02:53:01 -0700 (PDT)
+X-Received: by 10.237.38.132 with SMTP id q4mr12983221qtd.98.1475747581918;
+        Thu, 06 Oct 2016 02:53:01 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j5si7365845qkf.188.2016.10.06.02.51.11
+        by mx.google.com with ESMTPS id r63si328317qkb.310.2016.10.06.02.53.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 02:51:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 06 Oct 2016 02:53:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54329 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54339 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bs5KZ-0006wm-Jx
-	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:51:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44726)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bs5ML-0008Bt-BX
+	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:53:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5KP-0006qk-7U
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:04 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bs5KW-0006zv-CL
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 05:51:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5KN-0007BG-BJ
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60236)
+	(envelope-from <eric.auger@redhat.com>) id 1bs5KV-0007Fk-Cu
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 05:51:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60274)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bs5KN-0007B8-4l; Thu, 06 Oct 2016 05:50:59 -0400
+	id 1bs5KT-0007EJ-0e; Thu, 06 Oct 2016 05:51:05 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 857E13F755;
-	Thu,  6 Oct 2016 09:50:58 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 61A5A12B48;
+	Thu,  6 Oct 2016 09:51:04 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-6-233.ams2.redhat.com [10.36.6.233])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u969okS2016130; Thu, 6 Oct 2016 05:50:56 -0400
+	ESMTP id u969okS4016130; Thu, 6 Oct 2016 05:51:01 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Thu,  6 Oct 2016 09:50:39 +0000
-Message-Id: <1475747444-12552-4-git-send-email-eric.auger@redhat.com>
+Date: Thu,  6 Oct 2016 09:50:41 +0000
+Message-Id: <1475747444-12552-6-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 References: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.30]);
-	Thu, 06 Oct 2016 09:50:58 +0000 (UTC)
+	Thu, 06 Oct 2016 09:51:04 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 3/8] hw: vfio: common: Introduce
- vfio_register_msi_iova
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v3 5/8] memory: memory_region_find_by_name
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9m/toKrJjPBD
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W3298NFxI+vc
 
-vfio_register_msi_iova allows to register the MSI IOVA region.
-This IOVA window will be used by the kernel to map MSI doorbells.
-
-The function will become static in subsequent patches. However, since
-there is no user yet, the compiler argues; the function is currently
-not static and a dummy declaration needs to be added.
+This new helper makes possible to search for a MemoryRegion matching
+a given name within a root MemoryRegion.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ include/exec/memory.h | 11 +++++++++++
+ memory.c              | 16 ++++++++++++++++
+ 2 files changed, 27 insertions(+)
 
-v2 -> v3:
-- rename vfio_register_reserved_iova into vfio_register_msi_iova
-- VFIO_DMA_MAP_FLAG_MSI_RESERVED_IOVA renamed into
-  VFIO_DMA_MAP_FLAG_RESERVED_MSI_IOVA
----
- hw/vfio/common.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 4f4014e..fe8a855 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -212,6 +212,34 @@ static int vfio_dma_unmap(VFIOContainer *container,
-     return 0;
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index f97b1f4..f62e5b5 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -1217,6 +1217,17 @@ MemoryRegionSection memory_region_find(MemoryRegion *mr,
+                                        hwaddr addr, uint64_t size);
+ 
+ /**
++ * memory_region_find_by_name: Locates the first #MemoryRegion within @mr
++ * whose name matches @name
++ *
++ * @mr: the root MemoryRegion
++ * @name: name of the target MemoryRegion
++ *
++ * Returns the matched memory region or NULL
++ */
++MemoryRegion *memory_region_find_by_name(MemoryRegion *mr, const char *name);
++
++/**
+  * memory_global_dirty_log_sync: synchronize the dirty log for all memory
+  *
+  * Synchronizes the dirty page log for all address spaces.
+diff --git a/memory.c b/memory.c
+index 00a0ebe..3701b4f 100644
+--- a/memory.c
++++ b/memory.c
+@@ -2166,6 +2166,22 @@ MemoryRegionSection memory_region_find(MemoryRegion *mr,
+     return ret;
  }
  
-+/**
-+ * vfio_register_msi_iova: registers the MSI iova region
-+ *
-+ * @container: container handle
-+ * @iova: base IOVA of the MSI region
-+ * @size: size of the MSI IOVA region
-+ */
-+int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
-+                           ram_addr_t size);
-+int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
-+                           ram_addr_t size)
++MemoryRegion *memory_region_find_by_name(MemoryRegion *root,
++                                         const char *name)
 +{
-+    int ret;
-+    struct vfio_iommu_type1_dma_map map = {
-+        .argsz = sizeof(map),
-+        .flags = VFIO_DMA_MAP_FLAG_RESERVED_MSI_IOVA,
-+        .iova = iova,
-+        .size = size,
-+    };
++    MemoryRegion *other;
 +
-+    ret = ioctl(container->fd, VFIO_IOMMU_MAP_DMA, &map);
-+
-+    if (ret) {
-+        error_report("VFIO_MAP_DMA/RESERVED_MSI_IOVA: %m");
++    QTAILQ_FOREACH(other, &root->subregions, subregions_link) {
++        if (!strcmp(other->name, name)) {
++            memory_region_ref(other);
++            return other;
++        } else {
++            memory_region_find_by_name(other, name);
++        }
 +    }
-+    return ret;
++    return NULL;
 +}
 +
- static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
-                         ram_addr_t size, void *vaddr, bool readonly)
+ bool memory_region_present(MemoryRegion *container, hwaddr addr)
  {
+     MemoryRegion *mr;
 -- 
 1.9.1
 

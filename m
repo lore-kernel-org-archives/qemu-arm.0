@@ -1,195 +1,170 @@
-Received: by 10.80.163.71 with SMTP id 65csp3120579edn;
-        Thu, 6 Oct 2016 02:58:48 -0700 (PDT)
-X-Received: by 10.55.105.130 with SMTP id e124mr12851746qkc.183.1475747495433;
-        Thu, 06 Oct 2016 02:51:35 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.163.71 with SMTP id 65csp3121131edn;
+        Thu, 6 Oct 2016 03:00:17 -0700 (PDT)
+X-Received: by 10.200.56.233 with SMTP id g38mr13487600qtc.140.1475748017833;
+        Thu, 06 Oct 2016 03:00:17 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f97si4214372qkh.211.2016.10.06.02.51.35
+        by mx.google.com with ESMTPS id h20si752397qtb.151.2016.10.06.03.00.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 02:51:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 06 Oct 2016 03:00:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54335 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54373 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bs5Kw-0007GY-Oz
-	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:51:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44878)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bs5TN-0005Zl-8k
+	for alex.bennee@linaro.org; Thu, 06 Oct 2016 06:00:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5Kc-000748-Pk
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:15 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bs5Ke-00075L-1S
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 05:51:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5KY-0007Gs-Ji
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54636)
+	(envelope-from <eric.auger@redhat.com>) id 1bs5Kb-0007HY-Tz
+	for qemu-devel@nongnu.org; Thu, 06 Oct 2016 05:51:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60294)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bs5KY-0007Gg-Da; Thu, 06 Oct 2016 05:51:10 -0400
+	id 1bs5KV-0007Fl-JF; Thu, 06 Oct 2016 05:51:07 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ADB6BC05A281;
-	Thu,  6 Oct 2016 09:51:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DD814773;
+	Thu,  6 Oct 2016 09:51:06 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-6-233.ams2.redhat.com [10.36.6.233])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u969okS6016130; Thu, 6 Oct 2016 05:51:07 -0400
+	ESMTP id u969okS5016130; Thu, 6 Oct 2016 05:51:04 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Thu,  6 Oct 2016 09:50:43 +0000
-Message-Id: <1475747444-12552-8-git-send-email-eric.auger@redhat.com>
+Date: Thu,  6 Oct 2016 09:50:42 +0000
+Message-Id: <1475747444-12552-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 References: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 06 Oct 2016 09:51:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 06 Oct 2016 09:51:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 7/8] hw: vfio: common: vfio_prepare_msi_mapping
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v3 6/8] hw: platform-bus: Enable to map any
+ memory region onto the platform-bus
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gps4U3pXHijB
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wlYR9b8ZlytR
 
-Introduce an helper function to retrieve the iommu type1 capability
-chain info.
+The platform bus is currently used to map dynamically instantiable
+platform device MMIO regions. The platform bus also can be seen as a
+pool of free guest physical addresses. We would like to use that pool
+to allocate a contiguous reserved IOVA region usable for MSI message
+address IOMMU mapping.
 
-The first capability ready to be exploited is the msi geometry
-capability. vfio_prepare_msi_mapping allocates a MemoryRegion
-dedicated to host MSI IOVA mapping. Its size matches the host needs.
-This region is mapped on guest side on the platform bus memory container.
+This patch introduces platform_bus_map_region which enables to map any
+memory region onto the platform bus.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
 
-v3: creation
+v2 -> v3:
+include qapi/error.h
 ---
- hw/vfio/common.c | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 74 insertions(+)
+ hw/core/platform-bus.c    | 27 +++++++++++++++++----------
+ include/hw/platform-bus.h |  7 +++++++
+ 2 files changed, 24 insertions(+), 10 deletions(-)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index fe8a855..7d20c33 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -34,6 +34,8 @@
- #include "qemu/range.h"
- #include "sysemu/kvm.h"
- #include "trace.h"
-+#include "hw/platform-bus.h"
+diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
+index 329ac67..3fb6f6f 100644
+--- a/hw/core/platform-bus.c
++++ b/hw/core/platform-bus.c
+@@ -24,6 +24,7 @@
+ #include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
 +#include "qapi/error.h"
  
- struct vfio_group_head vfio_group_list =
-     QLIST_HEAD_INITIALIZER(vfio_group_list);
-@@ -948,12 +950,76 @@ retry:
-     return 0;
+ 
+ /*
+@@ -127,16 +128,14 @@ static void platform_bus_map_irq(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+     sysbus_connect_irq(sbdev, n, pbus->irqs[irqn]);
  }
  
-+static struct vfio_info_cap_header *
-+vfio_get_iommu_type1_info_cap(struct vfio_iommu_type1_info *info, uint16_t id)
-+{
-+    struct vfio_info_cap_header *hdr;
-+    void *ptr = info;
-+
-+    if (!(info->flags & VFIO_IOMMU_INFO_CAPS)) {
-+        return NULL;
-+    }
-+
-+    for (hdr = ptr + info->cap_offset; hdr != ptr; hdr = ptr + hdr->next) {
-+        if (hdr->id == id) {
-+            return hdr;
-+        }
-+    }
-+    return NULL;
-+}
-+
-+static void vfio_prepare_msi_mapping(struct vfio_iommu_type1_info *info,
-+                                     AddressSpace *as, Error **errp)
-+{
-+    struct vfio_iommu_type1_info_cap_msi_geometry *msi_geometry;
-+    MemoryRegion *pbus_region, *reserved_reg;
-+    struct vfio_info_cap_header *hdr;
-+    PlatformBusDevice *pbus;
-+
-+    hdr = vfio_get_iommu_type1_info_cap(info,
-+                                        VFIO_IOMMU_TYPE1_INFO_CAP_MSI_GEOMETRY);
-+    if (!hdr) {
-+        return;
-+    }
-+
-+    msi_geometry = container_of(hdr,
-+                                struct vfio_iommu_type1_info_cap_msi_geometry,
-+                                header);
-+
-+    if (msi_geometry->flags & VFIO_IOMMU_MSI_GEOMETRY_RESERVED) {
-+        return;
-+    }
-+
-+    /*
-+     * MSI must be iommu mapped: allocate a GPA region located on the
-+     * platform bus that the host will be able to use for MSI IOVA allocation
-+     */
-+    reserved_reg = memory_region_find_by_name(as->root, "reserved-iova");
-+    if (reserved_reg) {
-+        memory_region_unref(reserved_reg);
-+        return;
-+    }
-+
-+    pbus_region = memory_region_find_by_name(as->root, "platform bus");
-+    if (!pbus_region) {
-+        error_setg(errp, "no platform bus memory container found");
-+        return;
-+    }
-+    pbus = container_of(pbus_region, PlatformBusDevice, mmio);
-+    reserved_reg = g_new0(MemoryRegion, 1);
-+    memory_region_init_reserved_iova(reserved_reg, OBJECT(pbus),
-+                                     "reserved-iova",
-+                                     msi_geometry->size, &error_fatal);
-+    platform_bus_map_region(pbus, reserved_reg);
-+    memory_region_unref(pbus_region);
-+}
- 
- static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
+-static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+-                                  int n)
++void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr)
  {
-     VFIOContainer *container;
-     int ret, fd;
-     VFIOAddressSpace *space;
-+    Error *err;
+-    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
+-    uint64_t size = memory_region_size(sbdev_mr);
++    uint64_t size = memory_region_size(mr);
+     uint64_t alignment = (1ULL << (63 - clz64(size + size - 1)));
+     uint64_t off;
+     bool found_region = false;
  
-     space = vfio_get_address_space(as);
+-    if (memory_region_is_mapped(sbdev_mr)) {
++    if (memory_region_is_mapped(mr)) {
+         /* Region is already mapped, nothing to do */
+         return;
+     }
+@@ -153,13 +152,21 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+     }
  
-@@ -1011,6 +1077,14 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
-          * going to actually try in practice.
-          */
-         vfio_get_iommu_type1_info(fd, &pinfo);
-+        vfio_prepare_msi_mapping(pinfo, as, &err);
-+        if (err) {
-+            error_append_hint(&err,
-+                      "Make sure your machine instantiate a platform bus\n");
-+            error_report_err(err);
-+            goto free_container_exit;
-+        }
+     if (!found_region) {
+-        error_report("Platform Bus: Can not fit MMIO region of size %"PRIx64,
+-                     size);
+-        exit(1);
++        error_setg(&error_fatal,
++                   "Platform Bus: Can not fit region %s of size %"PRIx64,
++                   mr->name, size);
+     }
+ 
+-    /* Map the device's region into our Platform Bus MMIO space */
+-    memory_region_add_subregion(&pbus->mmio, off, sbdev_mr);
++    /* Map the region into our Platform Bus MMIO space */
++    memory_region_add_subregion(&pbus->mmio, off, mr);
++}
 +
-         /* Ignore errors */
-         if (ret || !(pinfo->flags & VFIO_IOMMU_INFO_PGSIZES)) {
-             /* Assume 4k IOVA page size */
++static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
++                                  int n)
++{
++    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
++
++    platform_bus_map_region(pbus, sbdev_mr);
+ }
+ 
+ /*
+diff --git a/include/hw/platform-bus.h b/include/hw/platform-bus.h
+index a00775c..6d3a664 100644
+--- a/include/hw/platform-bus.h
++++ b/include/hw/platform-bus.h
+@@ -54,4 +54,11 @@ int platform_bus_get_irqn(PlatformBusDevice *platform_bus, SysBusDevice *sbdev,
+ hwaddr platform_bus_get_mmio_addr(PlatformBusDevice *pbus, SysBusDevice *sbdev,
+                                   int n);
+ 
++/**
++ * platform_bus_map_region: map a MemoryRegion into the platform bus
++ * @pbus: platform bus handle
++ * @mr: memory region handle
++ */
++void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr);
++
+ #endif /* HW_PLATFORM_BUS_H */
 -- 
 1.9.1
 

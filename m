@@ -1,57 +1,56 @@
-Received: by 10.80.163.71 with SMTP id 65csp3119201edn;
-        Thu, 6 Oct 2016 02:55:04 -0700 (PDT)
-X-Received: by 10.237.33.225 with SMTP id m30mr4742885qtc.61.1475747704507;
-        Thu, 06 Oct 2016 02:55:04 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp3120579edn;
+        Thu, 6 Oct 2016 02:58:48 -0700 (PDT)
+X-Received: by 10.55.105.130 with SMTP id e124mr12851746qkc.183.1475747495433;
+        Thu, 06 Oct 2016 02:51:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y63si7358251qkc.251.2016.10.06.02.55.04
+        by mx.google.com with ESMTPS id f97si4214372qkh.211.2016.10.06.02.51.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 02:55:04 -0700 (PDT)
+        Thu, 06 Oct 2016 02:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54349 helo=lists.gnu.org)
+Received: from localhost ([::1]:54335 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bs5OJ-0001ct-WF
-	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:55:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44888)
+	id 1bs5Kw-0007GY-Oz
+	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:51:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44878)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5Kd-00074r-Km
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:16 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bs5Kc-000748-Pk
+	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5Kb-0007HL-BN
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44844)
+	(envelope-from <eric.auger@redhat.com>) id 1bs5KY-0007Gs-Ji
+	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54636)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bs5Kb-0007HB-2K; Thu, 06 Oct 2016 05:51:13 -0400
+	id 1bs5KY-0007Gg-Da; Thu, 06 Oct 2016 05:51:10 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7BC8AE035B;
-	Thu,  6 Oct 2016 09:51:12 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id ADB6BC05A281;
+	Thu,  6 Oct 2016 09:51:09 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-6-233.ams2.redhat.com [10.36.6.233])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u969okS7016130; Thu, 6 Oct 2016 05:51:09 -0400
+	ESMTP id u969okS6016130; Thu, 6 Oct 2016 05:51:07 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Thu,  6 Oct 2016 09:50:44 +0000
-Message-Id: <1475747444-12552-9-git-send-email-eric.auger@redhat.com>
+Date: Thu,  6 Oct 2016 09:50:43 +0000
+Message-Id: <1475747444-12552-8-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 References: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 06 Oct 2016 09:51:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Thu, 06 Oct 2016 09:51:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 8/8] hw: vfio: common: Adapt vfio_listeners for
- reserved_iova region
+Subject: [Qemu-arm] [RFC v3 7/8] hw: vfio: common: vfio_prepare_msi_mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,103 +66,130 @@ Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tsBm661e4Xbw
+X-TUID: gps4U3pXHijB
 
-In case of reserved iova region, let's declare this region to the
-kernel so that it can use it for IOVA/HPA bindings.
+Introduce an helper function to retrieve the iommu type1 capability
+chain info.
+
+The first capability ready to be exploited is the msi geometry
+capability. vfio_prepare_msi_mapping allocates a MemoryRegion
+dedicated to host MSI IOVA mapping. Its size matches the host needs.
+This region is mapped on guest side on the platform bus memory container.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
 ---
- hw/vfio/common.c | 48 +++++++++++++++++++++++++++++-------------------
- 1 file changed, 29 insertions(+), 19 deletions(-)
+
+v3: creation
+---
+ hw/vfio/common.c | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
 
 diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 7d20c33..0018538 100644
+index fe8a855..7d20c33 100644
 --- a/hw/vfio/common.c
 +++ b/hw/vfio/common.c
-@@ -221,10 +221,8 @@ static int vfio_dma_unmap(VFIOContainer *container,
-  * @iova: base IOVA of the MSI region
-  * @size: size of the MSI IOVA region
-  */
--int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
--                           ram_addr_t size);
--int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
--                           ram_addr_t size)
-+static int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
-+                                  ram_addr_t size)
- {
-     int ret;
-     struct vfio_iommu_type1_dma_map map = {
-@@ -313,6 +311,7 @@ static int vfio_host_win_del(VFIOContainer *container, hwaddr min_iova,
- static bool vfio_listener_skipped_section(MemoryRegionSection *section)
- {
-     return (!memory_region_is_ram(section->mr) &&
-+            !memory_region_is_reserved_iova(section->mr) &&
-             !memory_region_is_iommu(section->mr)) ||
-            /*
-             * Sizing an enabled 64-bit BAR can cause spurious mappings to
-@@ -396,7 +395,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
-     hwaddr iova, end;
-     Int128 llend, llsize;
-     void *vaddr;
--    int ret;
-+    int ret = -1;
-     VFIOHostDMAWindow *hostwin;
-     bool hostwin_found;
+@@ -34,6 +34,8 @@
+ #include "qemu/range.h"
+ #include "sysemu/kvm.h"
+ #include "trace.h"
++#include "hw/platform-bus.h"
++#include "qapi/error.h"
  
-@@ -492,27 +491,38 @@ static void vfio_listener_region_add(MemoryListener *listener,
-         return;
-     }
+ struct vfio_group_head vfio_group_list =
+     QLIST_HEAD_INITIALIZER(vfio_group_list);
+@@ -948,12 +950,76 @@ retry:
+     return 0;
+ }
  
--    /* Here we assume that memory_region_is_ram(section->mr)==true */
-+    /* Here we assume that the memory region is ram or reserved iova */
- 
--    vaddr = memory_region_get_ram_ptr(section->mr) +
--            section->offset_within_region +
--            (iova - section->offset_within_address_space);
-+    if (memory_region_is_ram(section->mr)) {
-+        vaddr = memory_region_get_ram_ptr(section->mr) +
-+                section->offset_within_region +
-+                (iova - section->offset_within_address_space);
- 
--    trace_vfio_listener_region_add_ram(iova, end, vaddr);
-+        trace_vfio_listener_region_add_ram(iova, end, vaddr);
- 
--    llsize = int128_sub(llend, int128_make64(iova));
-+        llsize = int128_sub(llend, int128_make64(iova));
- 
--    ret = vfio_dma_map(container, iova, int128_get64(llsize),
-+        ret = vfio_dma_map(container, iova, int128_get64(llsize),
-                        vaddr, section->readonly);
--    if (ret) {
--        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
--                     "0x%"HWADDR_PRIx", %p) = %d (%m)",
--                     container, iova, int128_get64(llsize), vaddr, ret);
--        goto fail;
-+        if (ret) {
-+            error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
-+                         "0x%"HWADDR_PRIx", %p) = %d (%m)",
-+                         container, iova, int128_get64(llsize), vaddr, ret);
-+            goto fail;
++static struct vfio_info_cap_header *
++vfio_get_iommu_type1_info_cap(struct vfio_iommu_type1_info *info, uint16_t id)
++{
++    struct vfio_info_cap_header *hdr;
++    void *ptr = info;
++
++    if (!(info->flags & VFIO_IOMMU_INFO_CAPS)) {
++        return NULL;
++    }
++
++    for (hdr = ptr + info->cap_offset; hdr != ptr; hdr = ptr + hdr->next) {
++        if (hdr->id == id) {
++            return hdr;
 +        }
++    }
++    return NULL;
++}
++
++static void vfio_prepare_msi_mapping(struct vfio_iommu_type1_info *info,
++                                     AddressSpace *as, Error **errp)
++{
++    struct vfio_iommu_type1_info_cap_msi_geometry *msi_geometry;
++    MemoryRegion *pbus_region, *reserved_reg;
++    struct vfio_info_cap_header *hdr;
++    PlatformBusDevice *pbus;
++
++    hdr = vfio_get_iommu_type1_info_cap(info,
++                                        VFIO_IOMMU_TYPE1_INFO_CAP_MSI_GEOMETRY);
++    if (!hdr) {
 +        return;
-+    } else if (memory_region_is_reserved_iova(section->mr)) {
-+        llsize = int128_sub(llend, int128_make64(iova));
-+        ret = vfio_register_msi_iova(container, iova, int128_get64(llsize));
-+        if (ret) {
-+            error_report("vfio_register_msi_iova(%p, 0x%"HWADDR_PRIx", "
-+                         "0x%"HWADDR_PRIx") = %d (%m)",
-+                         container, iova, int128_get64(llsize), ret);
-+            goto fail;
-+        }
++    }
++
++    msi_geometry = container_of(hdr,
++                                struct vfio_iommu_type1_info_cap_msi_geometry,
++                                header);
++
++    if (msi_geometry->flags & VFIO_IOMMU_MSI_GEOMETRY_RESERVED) {
 +        return;
-     }
++    }
++
++    /*
++     * MSI must be iommu mapped: allocate a GPA region located on the
++     * platform bus that the host will be able to use for MSI IOVA allocation
++     */
++    reserved_reg = memory_region_find_by_name(as->root, "reserved-iova");
++    if (reserved_reg) {
++        memory_region_unref(reserved_reg);
++        return;
++    }
++
++    pbus_region = memory_region_find_by_name(as->root, "platform bus");
++    if (!pbus_region) {
++        error_setg(errp, "no platform bus memory container found");
++        return;
++    }
++    pbus = container_of(pbus_region, PlatformBusDevice, mmio);
++    reserved_reg = g_new0(MemoryRegion, 1);
++    memory_region_init_reserved_iova(reserved_reg, OBJECT(pbus),
++                                     "reserved-iova",
++                                     msi_geometry->size, &error_fatal);
++    platform_bus_map_region(pbus, reserved_reg);
++    memory_region_unref(pbus_region);
++}
  
--    return;
--
- fail:
-     /*
-      * On the initfn path, store the first error in the container so we
+ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
+ {
+     VFIOContainer *container;
+     int ret, fd;
+     VFIOAddressSpace *space;
++    Error *err;
+ 
+     space = vfio_get_address_space(as);
+ 
+@@ -1011,6 +1077,14 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
+          * going to actually try in practice.
+          */
+         vfio_get_iommu_type1_info(fd, &pinfo);
++        vfio_prepare_msi_mapping(pinfo, as, &err);
++        if (err) {
++            error_append_hint(&err,
++                      "Make sure your machine instantiate a platform bus\n");
++            error_report_err(err);
++            goto free_container_exit;
++        }
++
+         /* Ignore errors */
+         if (ret || !(pinfo->flags & VFIO_IOMMU_INFO_PGSIZES)) {
+             /* Assume 4k IOVA page size */
 -- 
 1.9.1
 

@@ -1,56 +1,57 @@
-Received: by 10.80.163.71 with SMTP id 65csp3119194edn;
-        Thu, 6 Oct 2016 02:55:03 -0700 (PDT)
-X-Received: by 10.55.165.16 with SMTP id o16mr13660459qke.5.1475747702974;
-        Thu, 06 Oct 2016 02:55:02 -0700 (PDT)
+Received: by 10.80.163.71 with SMTP id 65csp3119201edn;
+        Thu, 6 Oct 2016 02:55:04 -0700 (PDT)
+X-Received: by 10.237.33.225 with SMTP id m30mr4742885qtc.61.1475747704507;
+        Thu, 06 Oct 2016 02:55:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w65si7368917qkg.266.2016.10.06.02.55.02
+        by mx.google.com with ESMTPS id y63si7358251qkc.251.2016.10.06.02.55.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Oct 2016 02:55:02 -0700 (PDT)
+        Thu, 06 Oct 2016 02:55:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54348 helo=lists.gnu.org)
+Received: from localhost ([::1]:54349 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bs5OI-0001bm-Dz
-	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:55:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44780)
+	id 1bs5OJ-0001ct-WF
+	for alex.bennee@linaro.org; Thu, 06 Oct 2016 05:55:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5KS-0006vg-I8
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:05 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bs5Kd-00074r-Km
+	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bs5KQ-0007D3-6R
-	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57140)
+	(envelope-from <eric.auger@redhat.com>) id 1bs5Kb-0007HL-BN
+	for qemu-arm@nongnu.org; Thu, 06 Oct 2016 05:51:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44844)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <eric.auger@redhat.com>)
-	id 1bs5KP-0007Ch-Ss; Thu, 06 Oct 2016 05:51:02 -0400
+	id 1bs5Kb-0007HB-2K; Thu, 06 Oct 2016 05:51:13 -0400
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com
 	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5325F4DD79;
-	Thu,  6 Oct 2016 09:51:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7BC8AE035B;
+	Thu,  6 Oct 2016 09:51:12 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-6-233.ams2.redhat.com [10.36.6.233])
 	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u969okS3016130; Thu, 6 Oct 2016 05:50:58 -0400
+	ESMTP id u969okS7016130; Thu, 6 Oct 2016 05:51:09 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Thu,  6 Oct 2016 09:50:40 +0000
-Message-Id: <1475747444-12552-5-git-send-email-eric.auger@redhat.com>
+Date: Thu,  6 Oct 2016 09:50:44 +0000
+Message-Id: <1475747444-12552-9-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 References: <1475747444-12552-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 06 Oct 2016 09:51:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 06 Oct 2016 09:51:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v3 4/8] memory: Add reserved_iova region type
+Subject: [Qemu-arm] [RFC v3 8/8] hw: vfio: common: Adapt vfio_listeners for
+ reserved_iova region
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,97 +67,103 @@ Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vCjtCR5Cj70i
+X-TUID: tsBm661e4Xbw
 
-Introduce a new reserved_iova region type. This type of iova region
-is bound to be used by the kernel to map some host physical addresses
-(typically MSI frames).
-
-A new initializer, memory_region_init_reserved_iova is introduced, as
-well as a test function, memory_region_is_reserved_iova.
+In case of reserved iova region, let's declare this region to the
+kernel so that it can use it for IOVA/HPA bindings.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/exec/memory.h | 29 +++++++++++++++++++++++++++++
- memory.c              | 11 +++++++++++
- 2 files changed, 40 insertions(+)
+ hw/vfio/common.c | 48 +++++++++++++++++++++++++++++-------------------
+ 1 file changed, 29 insertions(+), 19 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 10d7eac..f97b1f4 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -191,6 +191,7 @@ struct MemoryRegion {
-     /* The following fields should fit in a cache line */
-     bool romd_mode;
-     bool ram;
-+    bool reserved_iova;
-     bool subpage;
-     bool readonly; /* For RAM regions */
-     bool rom_device;
-@@ -385,6 +386,21 @@ void memory_region_init_ram(MemoryRegion *mr,
-                             Error **errp);
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 7d20c33..0018538 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -221,10 +221,8 @@ static int vfio_dma_unmap(VFIOContainer *container,
+  * @iova: base IOVA of the MSI region
+  * @size: size of the MSI IOVA region
+  */
+-int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
+-                           ram_addr_t size);
+-int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
+-                           ram_addr_t size)
++static int vfio_register_msi_iova(VFIOContainer *container, hwaddr iova,
++                                  ram_addr_t size)
+ {
+     int ret;
+     struct vfio_iommu_type1_dma_map map = {
+@@ -313,6 +311,7 @@ static int vfio_host_win_del(VFIOContainer *container, hwaddr min_iova,
+ static bool vfio_listener_skipped_section(MemoryRegionSection *section)
+ {
+     return (!memory_region_is_ram(section->mr) &&
++            !memory_region_is_reserved_iova(section->mr) &&
+             !memory_region_is_iommu(section->mr)) ||
+            /*
+             * Sizing an enabled 64-bit BAR can cause spurious mappings to
+@@ -396,7 +395,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+     hwaddr iova, end;
+     Int128 llend, llsize;
+     void *vaddr;
+-    int ret;
++    int ret = -1;
+     VFIOHostDMAWindow *hostwin;
+     bool hostwin_found;
  
- /**
-+ * memory_region_init_reserved_iova:  Initialize reserved iova memory region
-+ *
-+ * @mr: the #MemoryRegion to be initialized.
-+ * @owner: the object that tracks the region's reference count
-+ * @name: the name of the region.
-+ * @size: size of the region.
-+ * @errp: pointer to Error*, to store an error if it happens.
-+ */
-+void memory_region_init_reserved_iova(MemoryRegion *mr,
-+                                      struct Object *owner,
-+                                      const char *name,
-+                                      uint64_t size,
-+                                      Error **errp);
-+
-+/**
-  * memory_region_init_resizeable_ram:  Initialize memory region with resizeable
-  *                                     RAM.  Accesses into the region will
-  *                                     modify memory directly.  Only an initial
-@@ -573,6 +589,19 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
- }
+@@ -492,27 +491,38 @@ static void vfio_listener_region_add(MemoryListener *listener,
+         return;
+     }
  
- /**
-+ * memory_region_is_reserved_iova: check whether a memory region corresponds to
-+   reserved iova
-+ *
-+ * Returns %true is a memory region is reserved iova
-+ *
-+ * @mr: the memory region being queried
-+ */
-+static inline bool memory_region_is_reserved_iova(MemoryRegion *mr)
-+{
-+    return mr->reserved_iova;
-+}
-+
-+/**
-  * memory_region_is_skip_dump: check whether a memory region should not be
-  *                             dumped
-  *
-diff --git a/memory.c b/memory.c
-index 58f9269..00a0ebe 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1309,6 +1309,17 @@ void memory_region_init_ram(MemoryRegion *mr,
-     mr->dirty_log_mask = tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;
- }
+-    /* Here we assume that memory_region_is_ram(section->mr)==true */
++    /* Here we assume that the memory region is ram or reserved iova */
  
-+void memory_region_init_reserved_iova(MemoryRegion *mr,
-+                                      Object *owner,
-+                                      const char *name,
-+                                      uint64_t size,
-+                                      Error **errp)
-+{
-+    memory_region_init(mr, owner, name, size);
-+    mr->reserved_iova = true;
-+    mr->terminates = true;
-+}
-+
- void memory_region_init_resizeable_ram(MemoryRegion *mr,
-                                        Object *owner,
-                                        const char *name,
+-    vaddr = memory_region_get_ram_ptr(section->mr) +
+-            section->offset_within_region +
+-            (iova - section->offset_within_address_space);
++    if (memory_region_is_ram(section->mr)) {
++        vaddr = memory_region_get_ram_ptr(section->mr) +
++                section->offset_within_region +
++                (iova - section->offset_within_address_space);
+ 
+-    trace_vfio_listener_region_add_ram(iova, end, vaddr);
++        trace_vfio_listener_region_add_ram(iova, end, vaddr);
+ 
+-    llsize = int128_sub(llend, int128_make64(iova));
++        llsize = int128_sub(llend, int128_make64(iova));
+ 
+-    ret = vfio_dma_map(container, iova, int128_get64(llsize),
++        ret = vfio_dma_map(container, iova, int128_get64(llsize),
+                        vaddr, section->readonly);
+-    if (ret) {
+-        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                     "0x%"HWADDR_PRIx", %p) = %d (%m)",
+-                     container, iova, int128_get64(llsize), vaddr, ret);
+-        goto fail;
++        if (ret) {
++            error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx", %p) = %d (%m)",
++                         container, iova, int128_get64(llsize), vaddr, ret);
++            goto fail;
++        }
++        return;
++    } else if (memory_region_is_reserved_iova(section->mr)) {
++        llsize = int128_sub(llend, int128_make64(iova));
++        ret = vfio_register_msi_iova(container, iova, int128_get64(llsize));
++        if (ret) {
++            error_report("vfio_register_msi_iova(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx") = %d (%m)",
++                         container, iova, int128_get64(llsize), ret);
++            goto fail;
++        }
++        return;
+     }
+ 
+-    return;
+-
+ fail:
+     /*
+      * On the initfn path, store the first error in the container so we
 -- 
 1.9.1
 

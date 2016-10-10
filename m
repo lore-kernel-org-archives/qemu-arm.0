@@ -1,77 +1,46 @@
-Received: by 10.80.163.71 with SMTP id 65csp4070057edn;
-        Fri, 7 Oct 2016 21:26:29 -0700 (PDT)
-X-Received: by 10.200.47.68 with SMTP id k4mr15233426qta.127.1475900789311;
-        Fri, 07 Oct 2016 21:26:29 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp557669edc;
+        Mon, 10 Oct 2016 08:32:05 -0700 (PDT)
+X-Received: by 10.200.52.219 with SMTP id x27mr31337763qtb.67.1476113525819;
+        Mon, 10 Oct 2016 08:32:05 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d4si11571089qkf.184.2016.10.07.21.26.29
+        by mx.google.com with ESMTPS id 17si9692259qto.35.2016.10.10.08.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Oct 2016 21:26:29 -0700 (PDT)
+        Mon, 10 Oct 2016 08:32:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39257 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50841 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bsjDQ-0004iE-Uf
-	for alex.bennee@linaro.org; Sat, 08 Oct 2016 00:26:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34853)
+	id 1btcYf-0002ZX-5c
+	for alex.bennee@linaro.org; Mon, 10 Oct 2016 11:32:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bsjDM-0004gK-I3
-	for qemu-arm@nongnu.org; Sat, 08 Oct 2016 00:26:25 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1btcSy-00065r-GQ
+	for qemu-arm@nongnu.org; Mon, 10 Oct 2016 11:26:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bsjDK-0003Ly-E9
-	for qemu-arm@nongnu.org; Sat, 08 Oct 2016 00:26:23 -0400
-Received: from mail-vk0-x242.google.com ([2607:f8b0:400c:c05::242]:35101)
+	(envelope-from <pm215@archaic.org.uk>) id 1btcSx-0006v4-EK
+	for qemu-arm@nongnu.org; Mon, 10 Oct 2016 11:26:12 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47253)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>)
-	id 1bsjDK-0003LA-8n; Sat, 08 Oct 2016 00:26:22 -0400
-Received: by mail-vk0-x242.google.com with SMTP id 192so2546039vkl.2;
-	Fri, 07 Oct 2016 21:26:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=f2SNIQXqH/9W029gVsOaZ7uR4Z/Z70reRiXvduvc02E=;
-	b=DxCGxJ+Ei4TNtV0MENRYRsPin40rOZ5yXiwyJGkP8zH62HusbbPWlk32nHA3uRIwcE
-	j1whnZHPE2cwh9Y8+iTKCe6cRj5kqJDRE3xk8wzDUYjQJdi8azdwC/zCpbjjHjoPAXMV
-	Y2eCbcHl9J1/P7L3VW3BmywE7EF3sPv0tr6nw30LQRhSdBlHXtjCLFW/oz3CBI01xAuc
-	6d2V+BXSj5ax8zmcu4UrrJKQ1SvJ2oIL7eVaIT621tG+m3qx6Q8VCo7dUhVS7q6x3z6a
-	Rmnm00/n653z1ccZZnV/0vBWkoOmKsqUApCcIYTrNQc5c4CSvfA8bANxajEsFhbm/pNK
-	s6ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=f2SNIQXqH/9W029gVsOaZ7uR4Z/Z70reRiXvduvc02E=;
-	b=HYl+U6j6OIy2ETZMSPJbJU/RjrYhgle+HkGszZFN5PuYNXU4xpgwxzxJOU5QJZAb3T
-	EL8n0L42w4s8Lce2tPA0l1a98Mkpc/8MA05weM2gp1E7KDLsaPWX9Bfi74IDKN4vh1Mh
-	fb1X8pIqXwi9ECJTPwvhwEt2E8M59kMpM2EHNxXwaJ2bs6fbjYEiWD+rG6kYIjw1FAl0
-	8RG4ywifoRrIkN51Dlt+oQitrNFgTAK88qnGSnb+LV7YbwBZnEIdRP65+Ss+43trYsmh
-	zF+VuaAqQDpl/Zwcq6fQ/PvHhFCMeh9GpRi3AGs7JBTvUUqU4B06MHXGTfQ95EdxhBhZ
-	0t5A==
-X-Gm-Message-State: AA6/9Rnpad0GKM10HwdCowI1hSIHQIDmk1xnndIXIHhIvJAaEUQnhegKFL13/zQ7KJ68VEhRiDHhQd+CnIcX5A==
-X-Received: by 10.31.3.155 with SMTP id f27mr15178846vki.64.1475900780608;
-	Fri, 07 Oct 2016 21:26:20 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.93.135 with HTTP; Fri, 7 Oct 2016 21:26:20 -0700 (PDT)
-In-Reply-To: <CAFEAcA8+zb4BAQ4FFrY89U5SnuLnmzSOXZMRMXeX5F3zTLZFEw@mail.gmail.com>
-References: <1466528974-12183-1-git-send-email-peter.maydell@linaro.org>
-	<CAFEAcA8iPStWP4Pcf6Bxmn8gL5SnBDFyrPNDUpi8syc7PC_QiQ@mail.gmail.com>
-	<BLUPR0701MB1684CF1920D922BD00E93EE6F2230@BLUPR0701MB1684.namprd07.prod.outlook.com>
-	<CALicx6tbpSZDBYYzA0Uk5dHGoW-4_CTFuUnUDDe+NGieakts+g@mail.gmail.com>
-	<CALicx6tk2xkVf=Rz9KG-v-0xLb5=Tz1VidjuBDiqP0j-p+x=Pw@mail.gmail.com>
-	<CAFEAcA9wNtFSmoJD2jHOy2LWPNBa_f1WyG1VBO2d5pSD0LQjgA@mail.gmail.com>
-	<CAFEAcA8+zb4BAQ4FFrY89U5SnuLnmzSOXZMRMXeX5F3zTLZFEw@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Sat, 8 Oct 2016 09:56:20 +0530
-Message-ID: <CALicx6s-C=BAWw2MFkwduOKZmz-qCF_4OOQ=92jTo7nOiNC5fA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1btcSx-0006sP-7V; Mon, 10 Oct 2016 11:26:11 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1btcSp-0000P6-Ne; Mon, 10 Oct 2016 16:26:03 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 10 Oct 2016 16:26:03 +0100
+Message-Id: <1476113163-24578-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::242
-Subject: Re: [Qemu-arm] Fw:  [PATCH v2 0/6] Runtime pagesize computation
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] Fix masking of PC lower bits when doing
+ exception returns
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,42 +52,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "prasun.kapoor" <prasun.kapoor@cavium.com>,
-	Patch Tracking <patches@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, "Kumar,
-	Vijaya" <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Jerome Forissier <jerome.forissier@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XqjEnTfV2r8m
+X-TUID: IHrciK/sYYJ9
 
-Hi Peter,
+In commit 9b6a3ea7a699594 store_reg() was changed to mask
+both bits 0 and 1 of the new PC value when in ARM mode.
+Unfortunately this broke the exception return code paths
+when doing a return from ARM mode to Thumb mode: in some
+of these we write a new CPSR including new Thumb mode
+bit via gen_helper_cpsr_write_eret(), and then use store_reg()
+to write the new PC. In this case if the new CPSR specified
+Thumb mode then masking bit 1 of the PC is incorrect
+(these code paths correspond to the v8 ARM ARM pseudocode
+function AArch32.ExceptionReturn(), which always aligns the
+new PC appropriately for the new instruction set state).
 
-On Fri, Oct 7, 2016 at 7:50 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 19 July 2016 at 12:04, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 19 July 2016 at 12:01, Vijay Kilari <vijay.kilari@gmail.com> wrote:
->>> Hi Peter,
->>>
->>>   Any update on this patch set. Is it merged?
->>
->> No. It's an RFC patchset really, and it was posted during softfreeze,
->> so I never expected or intended it to be merged before the 2.7
->> release. It also needs a respin to address some of the review comments
->> I got on it.
->>
->> What would be useful in getting it further forward would be
->> some good performance benchmarking of more than just migration.
->> In particular whether it improves the speed in TCG emulation
->> mode of aarch64 guests and whether that assert in the definition
->> of TARGET_PAGE_BITS is particularly performance-draining.
->
-> If I do a respin of this patchset is anybody willing to do
-> the actual perf benchmarking of the TCG emulation?
-> Otherwise this is unlikely to go into 2.8.
+Instead of using store_reg() in exception-return code paths,
+call a new store_pc_exc_ret() which stores the raw new PC
+value to env->regs[15], and then mask it appropriately in
+the subsequent helper_cpsr_write_eret() where the new
+env->thumb state is available.
 
- I can help you. Let me know details on benchmarkings to be done.
-Also, a reference/details about running arm64 guests in TCG mode
-would be helpful.
+This fixes a bug introduced by 9b6a3ea7a699594 which caused
+crashes/hangs or otherwise bad behaviour for Linux when
+userspace was using Thumb.
 
-Regards
-Vijay
+Reported-by: Jerome Forissier <jerome.forissier@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This brings our handling of misaligned branch targets
+into compliance for ARMv7, I think. For ARMv8 there is
+one final corner case: interworking branches (BX,
+pseudocode BXWritePC) which select a misaligned ARM
+address are entirely UNPREDICTABLE in v7 but in v8 are
+CONSTRAINED UNPREDICTABLE to either force the address into
+alignment or generate a PC Alignment fault when executing
+from the address. I favour the second as more efficient
+but am not implementing it right now...
+---
+ target-arm/op_helper.c |  7 +++++++
+ target-arm/translate.c | 29 ++++++++++++++++++++---------
+ 2 files changed, 27 insertions(+), 9 deletions(-)
+
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index be27b21..cd94216 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -479,6 +479,13 @@ void HELPER(cpsr_write_eret)(CPUARMState *env, uint32_t val)
+ {
+     cpsr_write(env, val, CPSR_ERET_MASK, CPSRWriteExceptionReturn);
+ 
++    /* Generated code has already stored the new PC value, but
++     * without masking out its low bits, because which bits need
++     * masking depends on whether we're returning to Thumb or ARM
++     * state. Do the masking now.
++     */
++    env->regs[15] &= (env->thumb ? ~1 : ~3);
++
+     arm_call_el_change_hook(arm_env_get_cpu(env));
+ }
+ 
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 8df24bf..164b52a 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -4363,26 +4363,35 @@ static void gen_mrs_banked(DisasContext *s, int r, int sysm, int rn)
+     s->is_jmp = DISAS_UPDATE;
+ }
+ 
+-/* Generate an old-style exception return. Marks pc as dead. */
+-static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
++/* Store value to PC as for an exception return (ie don't
++ * mask bits). The subsequent call to gen_helper_cpsr_write_eret()
++ * will do the masking based on the new value of the Thumb bit.
++ */
++static void store_pc_exc_ret(DisasContext *s, TCGv_i32 pc)
+ {
+-    TCGv_i32 tmp;
+-    store_reg(s, 15, pc);
+-    tmp = load_cpu_field(spsr);
+-    gen_helper_cpsr_write_eret(cpu_env, tmp);
+-    tcg_temp_free_i32(tmp);
+-    s->is_jmp = DISAS_JUMP;
++    tcg_gen_mov_i32(cpu_R[15], pc);
++    tcg_temp_free_i32(pc);
+ }
+ 
+ /* Generate a v6 exception return.  Marks both values as dead.  */
+ static void gen_rfe(DisasContext *s, TCGv_i32 pc, TCGv_i32 cpsr)
+ {
++    store_pc_exc_ret(s, pc);
++    /* The cpsr_write_eret helper will mask the low bits of PC
++     * appropriately depending on the new Thumb bit, so it must
++     * be called after storing the new PC.
++     */
+     gen_helper_cpsr_write_eret(cpu_env, cpsr);
+     tcg_temp_free_i32(cpsr);
+-    store_reg(s, 15, pc);
+     s->is_jmp = DISAS_JUMP;
+ }
+ 
++/* Generate an old-style exception return. Marks pc as dead. */
++static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
++{
++    gen_rfe(s, pc, load_cpu_field(spsr));
++}
++
+ static void gen_nop_hint(DisasContext *s, int val)
+ {
+     switch (val) {
+@@ -9366,6 +9375,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                             } else if (i == rn) {
+                                 loaded_var = tmp;
+                                 loaded_base = 1;
++                            } else if (rn == 15 && exc_return) {
++                                store_pc_exc_ret(s, tmp);
+                             } else {
+                                 store_reg_from_load(s, i, tmp);
+                             }
+-- 
+2.7.4
+

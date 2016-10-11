@@ -1,48 +1,48 @@
-Received: by 10.80.166.35 with SMTP id d32csp104351edc;
-        Tue, 11 Oct 2016 10:12:53 -0700 (PDT)
-X-Received: by 10.55.130.7 with SMTP id e7mr5006585qkd.121.1476205973058;
-        Tue, 11 Oct 2016 10:12:53 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp104374edc;
+        Tue, 11 Oct 2016 10:12:56 -0700 (PDT)
+X-Received: by 10.55.114.68 with SMTP id n65mr4007098qkc.306.1476205976106;
+        Tue, 11 Oct 2016 10:12:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q88si1897326qkl.166.2016.10.11.10.12.52
+        by mx.google.com with ESMTPS id g19si1912755qta.42.2016.10.11.10.12.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 10:12:53 -0700 (PDT)
+        Tue, 11 Oct 2016 10:12:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57097 helo=lists.gnu.org)
+Received: from localhost ([::1]:57098 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bu0bk-0004py-EC
-	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:12:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33487)
+	id 1bu0bn-0004qq-Dq
+	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:12:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33540)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bu0Xc-0001DM-0S
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:37 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0Xe-0001Fj-2A
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bu0XZ-00045N-QY
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:34 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47282)
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0Xb-00046Y-JC
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:36 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47289)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1bu0XZ-00043i-Jz; Tue, 11 Oct 2016 13:08:33 -0400
+	id 1bu0Xb-00046H-7S; Tue, 11 Oct 2016 13:08:35 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1bu0XP-000171-D6; Tue, 11 Oct 2016 18:08:23 +0100
+	id 1bu0XO-00016j-N6; Tue, 11 Oct 2016 18:08:22 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 11 Oct 2016 18:08:17 +0100
-Message-Id: <1476205699-28857-6-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 11 Oct 2016 18:08:16 +0100
+Message-Id: <1476205699-28857-5-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
 References: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v3 5/7] migration/savevm.c: migrate non-default
- page size
+Subject: [Qemu-arm] [PATCH v3 4/7] cpu: Support a target CPU having a
+ variable page size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,106 +60,202 @@ Cc: patches@linaro.org, Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UBj9slsUk3PG
+X-TUID: qtDaPV5Lp1RG
 
-Add a subsection to vmstate_configuration which is present
-only if the guest is using a target page size which is
-different from the default. This allows us to helpfully
-diagnose attempts to migrate between machines which
-are using different target page sizes.
+Support target CPUs having a page size which isn't knownn
+at compile time. To use this, the CPU implementation should:
+ * define TARGET_PAGE_BITS_VARY
+ * not define TARGET_PAGE_BITS
+ * define TARGET_PAGE_BITS_MIN to the smallest value it
+   might possibly want for TARGET_PAGE_BITS
+ * call set_preferred_target_page_bits() in its realize
+   function to indicate the actual preferred target page
+   size for the CPU (and report any error from it)
+
+In CONFIG_USER_ONLY, the CPU implementation should continue
+to define TARGET_PAGE_BITS appropriately for the guest
+OS page size.
+
+Machines which want to take advantage of having the page
+size something larger than TARGET_PAGE_BITS_MIN must
+set the MachineClass minimum_page_bits field to a value
+which they guarantee will be no greater than the preferred
+page size for any CPU they create.
+
+Note that changing the target page size by setting
+minimum_page_bits is a migration compatibility break
+for that machine.
+
+For debugging purposes, attempts to use TARGET_PAGE_SIZE
+before it has been finally confirmed will assert.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- migration/savevm.c | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ exec.c                 | 42 ++++++++++++++++++++++++++++++++++++++++++
+ include/exec/cpu-all.h |  9 +++++++++
+ include/hw/boards.h    |  7 +++++++
+ include/qemu-common.h  | 12 ++++++++++++
+ vl.c                   | 10 ++++++++++
+ 5 files changed, 80 insertions(+)
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 33a2911..48a47fb 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -265,6 +265,7 @@ typedef struct SaveState {
-     bool skip_configuration;
-     uint32_t len;
-     const char *name;
-+    uint32_t target_page_bits;
- } SaveState;
+diff --git a/exec.c b/exec.c
+index 86b09ac..25d972f 100644
+--- a/exec.c
++++ b/exec.c
+@@ -93,6 +93,11 @@ static MemoryRegion io_mem_unassigned;
  
- static SaveState savevm_state = {
-@@ -286,6 +287,19 @@ static void configuration_pre_save(void *opaque)
+ #endif
  
-     state->len = strlen(current_name);
-     state->name = current_name;
-+    state->target_page_bits = TARGET_PAGE_BITS;
-+}
++#ifdef TARGET_PAGE_BITS_VARY
++int target_page_bits;
++bool target_page_bits_decided;
++#endif
 +
-+static int configuration_pre_load(void *opaque)
+ struct CPUTailQ cpus = QTAILQ_HEAD_INITIALIZER(cpus);
+ /* current CPU in the current thread. It is only valid inside
+    cpu_exec() */
+@@ -102,8 +107,37 @@ __thread CPUState *current_cpu;
+    2 = Adaptive rate instruction counting.  */
+ int use_icount;
+ 
++bool set_preferred_target_page_bits(int bits)
 +{
-+    SaveState *state = opaque;
-+
-+    /* If there is no target-page-bits subsection it means the source
-+     * predates the variable-target-page-bits support and is using the
-+     * minimum possible value for this CPU.
++    /* The target page size is the lowest common denominator for all
++     * the CPUs in the system, so we can only make it smaller, never
++     * larger. And we can't make it smaller once we've committed to
++     * a particular size.
 +     */
-+    state->target_page_bits = TARGET_PAGE_BITS_MIN;
-+    return 0;
- }
- 
- static int configuration_post_load(void *opaque, int version_id)
-@@ -298,12 +312,43 @@ static int configuration_post_load(void *opaque, int version_id)
-                      (int) state->len, state->name, current_name);
-         return -EINVAL;
-     }
-+
-+    if (state->target_page_bits != TARGET_PAGE_BITS) {
-+        error_report("Received TARGET_PAGE_BITS is %d but local is %d",
-+                     state->target_page_bits, TARGET_PAGE_BITS);
-+        return -EINVAL;
++#ifdef TARGET_PAGE_BITS_VARY
++    assert(bits >= TARGET_PAGE_BITS_MIN);
++    if (target_page_bits == 0 || target_page_bits > bits) {
++        if (target_page_bits_decided) {
++            return false;
++        }
++        target_page_bits = bits;
 +    }
-+
-     return 0;
- }
- 
-+/* The target-page-bits subsection is present only if the
-+ * target page size is not the same as the default (ie the
-+ * minimum page size for a variable-page-size guest CPU).
-+ * If it is present then it contains the actual target page
-+ * bits for the machine, and migration will fail if the
-+ * two ends don't agree about it.
-+ */
-+static bool vmstate_target_page_bits_needed(void *opaque)
-+{
-+    return TARGET_PAGE_BITS > TARGET_PAGE_BITS_MIN;
++#endif
++    return true;
 +}
 +
-+static const VMStateDescription vmstate_target_page_bits = {
-+    .name = "configuration/target-page-bits",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = vmstate_target_page_bits_needed,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(target_page_bits, SaveState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_configuration = {
-     .name = "configuration",
-     .version_id = 1,
-+    .pre_load = configuration_pre_load,
-     .post_load = configuration_post_load,
-     .pre_save = configuration_pre_save,
-     .fields = (VMStateField[]) {
-@@ -311,6 +356,10 @@ static const VMStateDescription vmstate_configuration = {
-         VMSTATE_VBUFFER_ALLOC_UINT32(name, SaveState, 0, NULL, 0, len),
-         VMSTATE_END_OF_LIST()
-     },
-+    .subsections = (const VMStateDescription*[]) {
-+        &vmstate_target_page_bits,
-+        NULL
-+    }
- };
+ #if !defined(CONFIG_USER_ONLY)
  
- static void dump_vmstate_vmsd(FILE *out_file,
++static void finalize_target_page_bits(void)
++{
++#ifdef TARGET_PAGE_BITS_VARY
++    if (target_page_bits == 0) {
++        target_page_bits = TARGET_PAGE_BITS_MIN;
++    }
++    target_page_bits_decided = true;
++#endif
++}
++
+ typedef struct PhysPageEntry PhysPageEntry;
+ 
+ struct PhysPageEntry {
+@@ -2797,6 +2831,14 @@ void cpu_register_map_client(QEMUBH *bh)
+ void cpu_exec_init_all(void)
+ {
+     qemu_mutex_init(&ram_list.mutex);
++    /* The data structures we set up here depend on knowing the page size,
++     * so no more changes can be made after this point.
++     * In an ideal world, nothing we did before we had finished the
++     * machine setup would care about the target page size, and we could
++     * do this much later, rather than requiring board models to state
++     * up front what their requirements are.
++     */
++    finalize_target_page_bits();
+     io_mem_init();
+     memory_map_init();
+     qemu_mutex_init(&map_client_list_lock);
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index b6a7059..861260d 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -189,6 +189,15 @@ void address_space_stq(AddressSpace *as, hwaddr addr, uint64_t val,
+ 
+ /* page related stuff */
+ 
++#ifdef TARGET_PAGE_BITS_VARY
++extern bool target_page_bits_decided;
++extern int target_page_bits;
++#define TARGET_PAGE_BITS ({ assert(target_page_bits_decided); \
++                            target_page_bits; })
++#else
++#define TARGET_PAGE_BITS_MIN TARGET_PAGE_BITS
++#endif
++
+ #define TARGET_PAGE_SIZE (1 << TARGET_PAGE_BITS)
+ #define TARGET_PAGE_MASK ~(TARGET_PAGE_SIZE - 1)
+ #define TARGET_PAGE_ALIGN(addr) (((addr) + TARGET_PAGE_SIZE - 1) & TARGET_PAGE_MASK)
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index e46a744..a51da9c 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -86,6 +86,12 @@ typedef struct {
+  *    Returns a @HotpluggableCPUList, which describes CPUs objects which
+  *    could be added with -device/device_add.
+  *    Caller is responsible for freeing returned list.
++ * @minimum_page_bits:
++ *    If non-zero, the board promises never to create a CPU with a page size
++ *    smaller than this, so QEMU can use a more efficient larger page
++ *    size than the target architecture's minimum. (Attempting to create
++ *    such a CPU will fail.) Note that changing this is a migration
++ *    compatibility break for the machine.
+  */
+ struct MachineClass {
+     /*< private >*/
+@@ -124,6 +130,7 @@ struct MachineClass {
+     ram_addr_t default_ram_size;
+     bool option_rom_has_mr;
+     bool rom_file_has_mr;
++    int minimum_page_bits;
+ 
+     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
+                                            DeviceState *dev);
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index 9e8b0bd..7e6e4fe 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -82,6 +82,18 @@ bool tcg_enabled(void);
+ void cpu_exec_init_all(void);
+ 
+ /**
++ * set_preferred_target_page_bits:
++ * @bits: number of bits needed to represent an address within the page
++ *
++ * Set the preferred target page size (the actual target page
++ * size may be smaller than any given CPU's preference).
++ * Returns true on success, false on failure (which can only happen
++ * if this is called after the system has already finalized its
++ * choice of page size and the requested page size is smaller than that).
++ */
++bool set_preferred_target_page_bits(int bits);
++
++/**
+  * Sends a (part of) iovec down a socket, yielding when the socket is full, or
+  * Receives data into a (part of) iovec from a socket,
+  * yielding when there is no data in the socket.
+diff --git a/vl.c b/vl.c
+index eb3c5ee..5feaae9 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4088,6 +4088,16 @@ int main(int argc, char **argv, char **envp)
+     }
+     object_property_add_child(object_get_root(), "machine",
+                               OBJECT(current_machine), &error_abort);
++
++    if (machine_class->minimum_page_bits) {
++        if (!set_preferred_target_page_bits(machine_class->minimum_page_bits)) {
++            /* This would be a board error: specifying a minimum smaller than
++             * a target's compile-time fixed setting.
++             */
++            g_assert_not_reached();
++        }
++    }
++
+     cpu_exec_init_all();
+ 
+     if (machine_class->hw_version) {
 -- 
 2.7.4
 

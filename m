@@ -1,114 +1,183 @@
-Received: by 10.80.166.35 with SMTP id d32csp342326edc;
-        Tue, 11 Oct 2016 02:22:03 -0700 (PDT)
-X-Received: by 10.55.23.105 with SMTP id i102mr2075439qkh.301.1476177723072;
-        Tue, 11 Oct 2016 02:22:03 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp378431edc;
+        Tue, 11 Oct 2016 04:03:19 -0700 (PDT)
+X-Received: by 10.55.99.17 with SMTP id x17mr2334915qkb.147.1476183799222;
+        Tue, 11 Oct 2016 04:03:19 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j37si1047584qte.49.2016.10.11.02.22.02
+        by mx.google.com with ESMTPS id o60si1192418qte.56.2016.10.11.04.03.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 02:22:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 11 Oct 2016 04:03:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54564 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:54920 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bttG6-0007AK-IB
-	for alex.bennee@linaro.org; Tue, 11 Oct 2016 05:22:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36033)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1btuq6-0006u9-24
+	for alex.bennee@linaro.org; Tue, 11 Oct 2016 07:03:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60398)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bttF3-0006UV-18
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 05:21:26 -0400
+	(envelope-from <no-reply@patchew.org>) id 1btuoa-0006HP-S7
+	for qemu-devel@nongnu.org; Tue, 11 Oct 2016 07:01:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bttE6-00042N-Ry
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 05:20:56 -0400
-Received: from mail-vk0-x22e.google.com ([2607:f8b0:400c:c05::22e]:33626)
+	(envelope-from <no-reply@patchew.org>) id 1btuoV-0005gs-9w
+	for qemu-devel@nongnu.org; Tue, 11 Oct 2016 07:01:43 -0400
+Resent-Date: Tue, 11 Oct 2016 07:01:43 -0400
+Resent-Message-Id: <E1btuoV-0005gs-9w@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21483)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bttE6-00041i-KB
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 05:19:58 -0400
-Received: by mail-vk0-x22e.google.com with SMTP id z126so13185965vkd.0
-	for <qemu-arm@nongnu.org>; Tue, 11 Oct 2016 02:19:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=rpL5o9ZLCEMqIKoWmpF7hQvWNnp49OoTR3UyLOi4S2c=;
-	b=G2t3229Edjhe3vP+bO8/oWVx6Ms+0j1K2dJ/Z0RlIhkVtlHozxjxUi4744srWXKIQ1
-	uqAk8hN0/LSGozfezpeBJOgUVOv24plKrF93C85r937F4ECN1UjWuZL8lx93ctrp/57X
-	SSnusYTceYmERTK6qCcDHNN5LomK+bci3e2NY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=rpL5o9ZLCEMqIKoWmpF7hQvWNnp49OoTR3UyLOi4S2c=;
-	b=eljgyYjhiS75n5G99jHc8zKTPWHZfp+qLCn7UXp7h3QTCpOYHgneCsmFdofBJBe0yJ
-	xXjsQauAPdZy+DzKe2wuJ/+E0bbHFS+wMUtS8VEMb/HI34YJXvaR+12tCFyqdSeSkN4l
-	8xmkQqn9SaI7DIKf1gi65biMXdGTvklRQZ6irv48YbFSom03Bxyc9KX68CL5Rqj3BVAV
-	BytFnq0Ctu/5nMNAToKDCNwZ3On2KT/yrG4R4MoNvBlM/OMs4/vaBNPIH5XxGdqZU8Rx
-	F6kF5RSHwYPg6x6+D47zQwoajtgFihrT0LjZfNKPIkEaflBAn/wfi9+9RjKLtTG43wiy
-	YzXg==
-X-Gm-Message-State: AA6/9Rmny4D0IbXdB/CItYAVx0SQoZHxjCiQxgcoH6Gauz4QORNH4TN2rleNg8TszznJLN0fG9juxsovjKLfzQ9t
-X-Received: by 10.31.16.73 with SMTP id g70mr2274927vki.175.1476177597993;
-	Tue, 11 Oct 2016 02:19:57 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Tue, 11 Oct 2016 02:19:37 -0700 (PDT)
+	(envelope-from <no-reply@patchew.org>) id 1btuoV-0005gZ-1x
+	for qemu-devel@nongnu.org; Tue, 11 Oct 2016 07:01:39 -0400
+Received: from ex-std-node742.prod.rhcloud.com
+	(ec2-52-6-146-230.compute-1.amazonaws.com [52.6.146.230]) by
+	mx.zohomail.com with SMTPS id 1476177347794299.872582206276;
+	Tue, 11 Oct 2016 02:15:47 -0700 (PDT)
+Message-ID: <20161011091540.498195.42518@ex-std-node742.prod.rhcloud.com>
 In-Reply-To: <1475760067-25756-1-git-send-email-peter.maydell@linaro.org>
-References: <1475760067-25756-1-git-send-email-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Oct 2016 10:19:37 +0100
-Message-ID: <CAFEAcA-z9E7yF_DKfH3-pM2DRVtFYXGbFQhY-gN4nRjAGVAvoQ@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22e
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/3] preliminaries for GICv3
- virt support
-X-BeenThere: qemu-arm@nongnu.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Tue, 11 Oct 2016 02:15:47 -0700 (PDT)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-devel] [PATCH 0/3] preliminaries for GICv3 virt support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Patch Tracking <patches@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bj4YGbbWsrIa
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: edgar.iglesias@gmail.com, qemu-arm@nongnu.org, famz@redhat.com,
+	qemu-devel@nongnu.org, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TWp4CUt8XJlL
 
-On 6 October 2016 at 14:21, Peter Maydell <peter.maydell@linaro.org> wrote:
-> This set of three straightforward patches is a preliminary
-> for adding virtualization support to the GICv3 emulation:
->  * add a (nop implementation of) MDCCINT_EL1, since KVM
->    will read/write it on worldswitch
->  * fix some bugs in the GICv3 trace events
->  * add trace events for the generic timers
->    (which I have been using for debugging)
->
-> I actually have almost all of the GICv3 virt code written,
-> but it currently has bugs which mean that a guest kernel
-> under KVM won't boot. Debugging in progress...
->
-> thanks
-> -- PMM
->
-> Peter Maydell (3):
->   target-arm: Implement dummy MDCCINT_EL1
->   target-arm: Add trace events for the generic timers
->   hw/intc/arm_gicv3: Fix ICC register tracepoints
->
->  Makefile.objs             |  1 +
->  hw/intc/arm_gicv3_cpuif.c | 23 +++++++++++++++--------
->  hw/intc/trace-events      | 14 +++++++-------
->  target-arm/helper.c       | 28 ++++++++++++++++++++++++----
->  4 files changed, 47 insertions(+), 19 deletions(-)
+SGksCgpZb3VyIHNlcmllcyBmYWlsZWQgYXV0b21hdGljIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5k
+IHRoZSB0ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZl
+IGRvY2tlciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHku
+CgpNZXNzYWdlLWlkOiAxNDc1NzYwMDY3LTI1NzU2LTEtZ2l0LXNlbmQtZW1haWwtcGV0ZXIubWF5
+ZGVsbEBsaW5hcm8ub3JnClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggMC8zXSBwcmVsaW1p
+bmFyaWVzIGZvciBHSUN2MyB2aXJ0IHN1cHBvcnQKVHlwZTogc2VyaWVzCgo9PT0gVEVTVCBTQ1JJ
+UFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCnNldCAtZQpnaXQgc3VibW9kdWxlIHVwZGF0ZSAtLWlu
+aXQgZHRjCiMgTGV0IGRvY2tlciB0ZXN0cyBkdW1wIGVudmlyb25tZW50IGluZm8KZXhwb3J0IFNI
+T1dfRU5WPTEKbWFrZSBKPTggZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNgptYWtlIEo9OCBkb2Nr
+ZXItdGVzdC1taW5nd0BmZWRvcmEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNj
+OGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dpdGNoZWQgdG8gYSBuZXcg
+YnJhbmNoICd0ZXN0Jwo0NjdlYzk4IGh3L2ludGMvYXJtX2dpY3YzOiBGaXggSUNDIHJlZ2lzdGVy
+IHRyYWNlcG9pbnRzCmIzNDhjZWQgdGFyZ2V0LWFybTogQWRkIHRyYWNlIGV2ZW50cyBmb3IgdGhl
+IGdlbmVyaWMgdGltZXJzCjA2MDg3NTMgdGFyZ2V0LWFybTogSW1wbGVtZW50IGR1bW15IE1EQ0NJ
+TlRfRUwxCgo9PT0gT1VUUFVUIEJFR0lOID09PQpTdWJtb2R1bGUgJ2R0YycgKGdpdDovL2dpdC5x
+ZW11LXByb2plY3Qub3JnL2R0Yy5naXQpIHJlZ2lzdGVyZWQgZm9yIHBhdGggJ2R0YycKQ2xvbmlu
+ZyBpbnRvICdkdGMnLi4uClN1Ym1vZHVsZSBwYXRoICdkdGMnOiBjaGVja2VkIG91dCAnNjVjYzRk
+Mjc0OGEyYzJlNmYyN2YxY2YzOWUwN2E1ZGJhYmQ4MGViZicKICBCVUlMRCAgIGNlbnRvczYKICBB
+UkNISVZFIHFlbXUudGd6CiAgQVJDSElWRSBkdGMudGd6CiAgQ09QWSAgICBSVU5ORVIKICBSVU4g
+ICAgIHRlc3QtcXVpY2sgaW4gY2VudG9zNgpQYWNrYWdlcyBpbnN0YWxsZWQ6ClNETC1kZXZlbC0x
+LjIuMTQtNy5lbDZfNy4xLng4Nl82NApjY2FjaGUtMy4xLjYtMi5lbDYueDg2XzY0CmVwZWwtcmVs
+ZWFzZS02LTgubm9hcmNoCmdjYy00LjQuNy0xNy5lbDYueDg2XzY0CmdpdC0xLjcuMS00LmVsNl83
+LjEueDg2XzY0CmdsaWIyLWRldmVsLTIuMjguOC01LmVsNi54ODZfNjQKbGliZmR0LWRldmVsLTEu
+NC4wLTEuZWw2Lng4Nl82NAptYWtlLTMuODEtMjMuZWw2Lng4Nl82NApwYWNrYWdlIGcrKyBpcyBu
+b3QgaW5zdGFsbGVkCnBpeG1hbi1kZXZlbC0wLjMyLjgtMS5lbDYueDg2XzY0CnRhci0xLjIzLTE1
+LmVsNl84Lng4Nl82NAp6bGliLWRldmVsLTEuMi4zLTI5LmVsNi54ODZfNjQKCkVudmlyb25tZW50
+IHZhcmlhYmxlczoKUEFDS0FHRVM9bGliZmR0LWRldmVsIGNjYWNoZSAgICAgdGFyIGdpdCBtYWtl
+IGdjYyBnKysgICAgIHpsaWItZGV2ZWwgZ2xpYjItZGV2ZWwgU0RMLWRldmVsIHBpeG1hbi1kZXZl
+bCAgICAgZXBlbC1yZWxlYXNlCkhPU1ROQU1FPTM3MWVjNzA1ZmRiYQpURVJNPXh0ZXJtCk1BS0VG
+TEFHUz0gLWo4CkhJU1RTSVpFPTEwMDAKSj04ClVTRVI9cm9vdApDQ0FDSEVfRElSPS92YXIvdG1w
+L2NjYWNoZQpFWFRSQV9DT05GSUdVUkVfT1BUUz0KVj0KU0hPV19FTlY9MQpNQUlMPS92YXIvc3Bv
+b2wvbWFpbC9yb290ClBBVEg9L3Vzci9saWIvY2NhY2hlOi91c3IvbGliNjQvY2NhY2hlOi91c3Iv
+bG9jYWwvc2JpbjovdXNyL2xvY2FsL2JpbjovdXNyL3NiaW46L3Vzci9iaW46L3NiaW46L2JpbgpQ
+V0Q9LwpMQU5HPWVuX1VTLlVURi04ClRBUkdFVF9MSVNUPQpISVNUQ09OVFJPTD1pZ25vcmVkdXBz
+ClNITFZMPTEKSE9NRT0vcm9vdApURVNUX0RJUj0vdG1wL3FlbXUtdGVzdApMT0dOQU1FPXJvb3QK
+TEVTU09QRU49fHwvdXNyL2Jpbi9sZXNzcGlwZS5zaCAlcwpGRUFUVVJFUz0gZHRjCkRFQlVHPQpH
+X0JST0tFTl9GSUxFTkFNRVM9MQpDQ0FDSEVfSEFTSERJUj0KXz0vdXNyL2Jpbi9lbnYKCkNvbmZp
+Z3VyZSBvcHRpb25zOgotLWVuYWJsZS13ZXJyb3IgLS10YXJnZXQtbGlzdD14ODZfNjQtc29mdG1t
+dSxhYXJjaDY0LXNvZnRtbXUgLS1wcmVmaXg9L3Zhci90bXAvcWVtdS1idWlsZC9pbnN0YWxsCk5v
+IEMrKyBjb21waWxlciBhdmFpbGFibGU7IGRpc2FibGluZyBDKysgc3BlY2lmaWMgb3B0aW9uYWwg
+Y29kZQpJbnN0YWxsIHByZWZpeCAgICAvdmFyL3RtcC9xZW11LWJ1aWxkL2luc3RhbGwKQklPUyBk
+aXJlY3RvcnkgICAgL3Zhci90bXAvcWVtdS1idWlsZC9pbnN0YWxsL3NoYXJlL3FlbXUKYmluYXJ5
+IGRpcmVjdG9yeSAgL3Zhci90bXAvcWVtdS1idWlsZC9pbnN0YWxsL2JpbgpsaWJyYXJ5IGRpcmVj
+dG9yeSAvdmFyL3RtcC9xZW11LWJ1aWxkL2luc3RhbGwvbGliCm1vZHVsZSBkaXJlY3RvcnkgIC92
+YXIvdG1wL3FlbXUtYnVpbGQvaW5zdGFsbC9saWIvcWVtdQpsaWJleGVjIGRpcmVjdG9yeSAvdmFy
+L3RtcC9xZW11LWJ1aWxkL2luc3RhbGwvbGliZXhlYwppbmNsdWRlIGRpcmVjdG9yeSAvdmFyL3Rt
+cC9xZW11LWJ1aWxkL2luc3RhbGwvaW5jbHVkZQpjb25maWcgZGlyZWN0b3J5ICAvdmFyL3RtcC9x
+ZW11LWJ1aWxkL2luc3RhbGwvZXRjCmxvY2FsIHN0YXRlIGRpcmVjdG9yeSAgIC92YXIvdG1wL3Fl
+bXUtYnVpbGQvaW5zdGFsbC92YXIKTWFudWFsIGRpcmVjdG9yeSAgL3Zhci90bXAvcWVtdS1idWls
+ZC9pbnN0YWxsL3NoYXJlL21hbgpFTEYgaW50ZXJwIHByZWZpeCAvdXNyL2duZW11bC9xZW11LSVN
+ClNvdXJjZSBwYXRoICAgICAgIC90bXAvcWVtdS10ZXN0L3NyYwpDIGNvbXBpbGVyICAgICAgICBj
+YwpIb3N0IEMgY29tcGlsZXIgICBjYwpDKysgY29tcGlsZXIgICAgICAKT2JqZWN0aXZlLUMgY29t
+cGlsZXIgY2MKQVJGTEFHUyAgICAgICAgICAgcnYKQ0ZMQUdTICAgICAgICAgICAgLU8yIC1VX0ZP
+UlRJRllfU09VUkNFIC1EX0ZPUlRJRllfU09VUkNFPTIgLWcgClFFTVVfQ0ZMQUdTICAgICAgIC1J
+L3Vzci9pbmNsdWRlL3BpeG1hbi0xICAgIC1wdGhyZWFkIC1JL3Vzci9pbmNsdWRlL2dsaWItMi4w
+IC1JL3Vzci9saWI2NC9nbGliLTIuMC9pbmNsdWRlICAgLWZQSUUgLURQSUUgLW02NCAtRF9HTlVf
+U09VUkNFIC1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQgLURfTEFSR0VGSUxFX1NPVVJDRSAtV3N0cmlj
+dC1wcm90b3R5cGVzIC1XcmVkdW5kYW50LWRlY2xzIC1XYWxsIC1XdW5kZWYgLVd3cml0ZS1zdHJp
+bmdzIC1XbWlzc2luZy1wcm90b3R5cGVzIC1mbm8tc3RyaWN0LWFsaWFzaW5nIC1mbm8tY29tbW9u
+IC1md3JhcHYgIC1XZW5kaWYtbGFiZWxzIC1XbWlzc2luZy1pbmNsdWRlLWRpcnMgLVdlbXB0eS1i
+b2R5IC1XbmVzdGVkLWV4dGVybnMgLVdmb3JtYXQtc2VjdXJpdHkgLVdmb3JtYXQteTJrIC1XaW5p
+dC1zZWxmIC1XaWdub3JlZC1xdWFsaWZpZXJzIC1Xb2xkLXN0eWxlLWRlY2xhcmF0aW9uIC1Xb2xk
+LXN0eWxlLWRlZmluaXRpb24gLVd0eXBlLWxpbWl0cyAtZnN0YWNrLXByb3RlY3Rvci1hbGwKTERG
+TEFHUyAgICAgICAgICAgLVdsLC0td2Fybi1jb21tb24gLVdsLC16LHJlbHJvIC1XbCwteixub3cg
+LXBpZSAtbTY0IC1nIAptYWtlICAgICAgICAgICAgICBtYWtlCmluc3RhbGwgICAgICAgICAgIGlu
+c3RhbGwKcHl0aG9uICAgICAgICAgICAgcHl0aG9uIC1CCnNtYmQgICAgICAgICAgICAgIC91c3Iv
+c2Jpbi9zbWJkCm1vZHVsZSBzdXBwb3J0ICAgIG5vCmhvc3QgQ1BVICAgICAgICAgIHg4Nl82NApo
+b3N0IGJpZyBlbmRpYW4gICBubwp0YXJnZXQgbGlzdCAgICAgICB4ODZfNjQtc29mdG1tdSBhYXJj
+aDY0LXNvZnRtbXUKdGNnIGRlYnVnIGVuYWJsZWQgbm8KZ3Byb2YgZW5hYmxlZCAgICAgbm8Kc3Bh
+cnNlIGVuYWJsZWQgICAgbm8Kc3RyaXAgYmluYXJpZXMgICAgeWVzCnByb2ZpbGVyICAgICAgICAg
+IG5vCnN0YXRpYyBidWlsZCAgICAgIG5vCnBpeG1hbiAgICAgICAgICAgIHN5c3RlbQpTREwgc3Vw
+cG9ydCAgICAgICB5ZXMgKDEuMi4xNCkKR1RLIHN1cHBvcnQgICAgICAgbm8gCkdUSyBHTCBzdXBw
+b3J0ICAgIG5vClZURSBzdXBwb3J0ICAgICAgIG5vIApUTFMgcHJpb3JpdHkgICAgICBOT1JNQUwK
+R05VVExTIHN1cHBvcnQgICAgbm8KR05VVExTIHJuZCAgICAgICAgbm8KbGliZ2NyeXB0ICAgICAg
+ICAgbm8KbGliZ2NyeXB0IGtkZiAgICAgbm8KbmV0dGxlICAgICAgICAgICAgbm8gCm5ldHRsZSBr
+ZGYgICAgICAgIG5vCmxpYnRhc24xICAgICAgICAgIG5vCmN1cnNlcyBzdXBwb3J0ICAgIG5vCnZp
+cmdsIHN1cHBvcnQgICAgIG5vCmN1cmwgc3VwcG9ydCAgICAgIG5vCm1pbmd3MzIgc3VwcG9ydCAg
+IG5vCkF1ZGlvIGRyaXZlcnMgICAgIG9zcwpCbG9jayB3aGl0ZWxpc3QgKHJ3KSAKQmxvY2sgd2hp
+dGVsaXN0IChybykgClZpcnRGUyBzdXBwb3J0ICAgIG5vClZOQyBzdXBwb3J0ICAgICAgIHllcwpW
+TkMgU0FTTCBzdXBwb3J0ICBubwpWTkMgSlBFRyBzdXBwb3J0ICBubwpWTkMgUE5HIHN1cHBvcnQg
+ICBubwp4ZW4gc3VwcG9ydCAgICAgICBubwpicmxhcGkgc3VwcG9ydCAgICBubwpibHVleiAgc3Vw
+cG9ydCAgICBubwpEb2N1bWVudGF0aW9uICAgICBubwpQSUUgICAgICAgICAgICAgICB5ZXMKdmRl
+IHN1cHBvcnQgICAgICAgbm8KbmV0bWFwIHN1cHBvcnQgICAgbm8KTGludXggQUlPIHN1cHBvcnQg
+bm8KQVRUUi9YQVRUUiBzdXBwb3J0IHllcwpJbnN0YWxsIGJsb2JzICAgICB5ZXMKS1ZNIHN1cHBv
+cnQgICAgICAgeWVzClJETUEgc3VwcG9ydCAgICAgIG5vClRDRyBpbnRlcnByZXRlciAgIG5vCmZk
+dCBzdXBwb3J0ICAgICAgIHllcwpwcmVhZHYgc3VwcG9ydCAgICB5ZXMKZmRhdGFzeW5jICAgICAg
+ICAgeWVzCm1hZHZpc2UgICAgICAgICAgIHllcwpwb3NpeF9tYWR2aXNlICAgICB5ZXMKbGliY2Fw
+LW5nIHN1cHBvcnQgbm8Kdmhvc3QtbmV0IHN1cHBvcnQgeWVzCnZob3N0LXNjc2kgc3VwcG9ydCB5
+ZXMKdmhvc3QtdnNvY2sgc3VwcG9ydCB5ZXMKVHJhY2UgYmFja2VuZHMgICAgbG9nCnNwaWNlIHN1
+cHBvcnQgICAgIG5vIApyYmQgc3VwcG9ydCAgICAgICBubwp4ZnNjdGwgc3VwcG9ydCAgICBubwpz
+bWFydGNhcmQgc3VwcG9ydCBubwpsaWJ1c2IgICAgICAgICAgICBubwp1c2IgbmV0IHJlZGlyICAg
+ICBubwpPcGVuR0wgc3VwcG9ydCAgICBubwpPcGVuR0wgZG1hYnVmcyAgICBubwpsaWJpc2NzaSBz
+dXBwb3J0ICBubwpsaWJuZnMgc3VwcG9ydCAgICBubwpidWlsZCBndWVzdCBhZ2VudCB5ZXMKUUdB
+IFZTUyBzdXBwb3J0ICAgbm8KUUdBIHczMiBkaXNrIGluZm8gbm8KUUdBIE1TSSBzdXBwb3J0ICAg
+bm8Kc2VjY29tcCBzdXBwb3J0ICAgbm8KY29yb3V0aW5lIGJhY2tlbmQgdWNvbnRleHQKY29yb3V0
+aW5lIHBvb2wgICAgeWVzCmRlYnVnIHN0YWNrIHVzYWdlIG5vCkdsdXN0ZXJGUyBzdXBwb3J0IG5v
+CkFyY2hpcGVsYWdvIHN1cHBvcnQgbm8KZ2NvdiAgICAgICAgICAgICAgZ2NvdgpnY292IGVuYWJs
+ZWQgICAgICBubwpUUE0gc3VwcG9ydCAgICAgICB5ZXMKbGlic3NoMiBzdXBwb3J0ICAgbm8KVFBN
+IHBhc3N0aHJvdWdoICAgeWVzClFPTSBkZWJ1Z2dpbmcgICAgIHllcwpsem8gc3VwcG9ydCAgICAg
+ICBubwpzbmFwcHkgc3VwcG9ydCAgICBubwpiemlwMiBzdXBwb3J0ICAgICBubwpOVU1BIGhvc3Qg
+c3VwcG9ydCBubwp0Y21hbGxvYyBzdXBwb3J0ICBubwpqZW1hbGxvYyBzdXBwb3J0ICBubwphdngy
+IG9wdGltaXphdGlvbiBubwpyZXBsaWNhdGlvbiBzdXBwb3J0IHllcwogIEdFTiAgICAgeDg2XzY0
+LXNvZnRtbXUvY29uZmlnLWRldmljZXMubWFrLnRtcAogIEdFTiAgICAgYWFyY2g2NC1zb2Z0bW11
+L2NvbmZpZy1kZXZpY2VzLm1hay50bXAKICBHRU4gICAgIGNvbmZpZy1ob3N0LmgKICBHRU4gICAg
+IHFlbXUtb3B0aW9ucy5kZWYKICBHRU4gICAgIHFtcC1jb21tYW5kcy5oCiAgR0VOICAgICBxYXBp
+LXR5cGVzLmgKICBHRU4gICAgIHFhcGktdmlzaXQuaAogIEdFTiAgICAgcWFwaS1ldmVudC5oCiAg
+R0VOICAgICB4ODZfNjQtc29mdG1tdS9jb25maWctZGV2aWNlcy5tYWsKICBHRU4gICAgIGFhcmNo
+NjQtc29mdG1tdS9jb25maWctZGV2aWNlcy5tYWsKICBHRU4gICAgIHFtcC1pbnRyb3NwZWN0LmgK
+bWFrZTogKioqIE5vIHJ1bGUgdG8gbWFrZSB0YXJnZXQgYC90bXAvcWVtdS10ZXN0L3NyYy90YXJn
+ZXQtYXJtL3RyYWNlLWV2ZW50cycsIG5lZWRlZCBieSBgL3Zhci90bXAvcWVtdS1idWlsZC90cmFj
+ZS1ldmVudHMtYWxsJy4gIFN0b3AuCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpv
+YnMuLi4uCnRlc3RzL2RvY2tlci9NYWtlZmlsZS5pbmNsdWRlOjEwNzogcmVjaXBlIGZvciB0YXJn
+ZXQgJ2RvY2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M2JyBmYWlsZWQKbWFrZTogKioqIFtkb2Nr
+ZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zNl0gRXJyb3IgMgo9PT0gT1VUUFVUIEVORCA9PT0KClRl
+c3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAyCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
+bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5
+b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 
-Patchew points out that I forgot to git-add target-arm/trace-events.
-Will resend shortly.
-
-thanks
--- PMM

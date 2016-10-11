@@ -1,45 +1,48 @@
-Received: by 10.80.166.35 with SMTP id d32csp103196edc;
-        Tue, 11 Oct 2016 10:10:39 -0700 (PDT)
-X-Received: by 10.55.197.157 with SMTP id k29mr5020136qkl.217.1476205839007;
-        Tue, 11 Oct 2016 10:10:39 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp103284edc;
+        Tue, 11 Oct 2016 10:10:47 -0700 (PDT)
+X-Received: by 10.237.58.38 with SMTP id n35mr4453343qte.45.1476205847479;
+        Tue, 11 Oct 2016 10:10:47 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u70si1905095qka.42.2016.10.11.10.10.38
+        by mx.google.com with ESMTPS id r70si1893198qkl.173.2016.10.11.10.10.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 10:10:38 -0700 (PDT)
+        Tue, 11 Oct 2016 10:10:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57086 helo=lists.gnu.org)
+Received: from localhost ([::1]:57087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bu0Za-0002wt-A2
-	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:10:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33432)
+	id 1bu0Zi-00035O-RO
+	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:10:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33474)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bu0XZ-0001Bn-Eu
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:34 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0Xb-0001Cg-HW
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1bu0XY-00043s-E9
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:33 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0XZ-000453-Gf
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:08:34 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47282)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1bu0XY-00043i-7E; Tue, 11 Oct 2016 13:08:32 -0400
+	id 1bu0XZ-00043i-AF; Tue, 11 Oct 2016 13:08:33 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1bu0XM-000161-HY; Tue, 11 Oct 2016 18:08:20 +0100
+	id 1bu0XQ-00017I-8h; Tue, 11 Oct 2016 18:08:24 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 11 Oct 2016 18:08:12 +0100
-Message-Id: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
+Date: Tue, 11 Oct 2016 18:08:18 +0100
+Message-Id: <1476205699-28857-7-git-send-email-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
+References: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v3 0/7] Runtime pagesize computation
+Subject: [Qemu-arm] [PATCH v3 6/7] target-arm: Make page size a runtime
+ setting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,93 +60,82 @@ Cc: patches@linaro.org, Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FyeC2J8MStq0
+X-TUID: rzxSadICNSyY
 
-(I posted version 2 way back in June...)
+Rather than defining TARGET_PAGE_BITS to always be 10,
+switch to using a value picked at runtime. This allows us
+to use 4K pages for modern ARM CPUs (and in particular all
+64-bit CPUs) without having to drop support for the old
+ARMv5 CPUs which had 1K pages.
 
-The basic idea here is that:
- * the target CPU implementation has to opt into variable page size
-   by defining TARGET_PAGE_BITS_VARY, and then calling
-   set_preferred_target_page_bits() in its realize function
-   with whatever the CPU as instantiated actually requires
- * the machine also has to opt in, by specifying a new MachineClass
-   field which states the value they guarantee will be no greater
-   than the preferred page size for any CPU they create
- * we finalize the decision about page size in cpu_exec_init_all()
-   (and then later attempts to create CPUs which can't cope with
-   that decision are failed)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target-arm/cpu.c | 24 ++++++++++++++++++++++++
+ target-arm/cpu.h |  9 +++++----
+ 2 files changed, 29 insertions(+), 4 deletions(-)
 
-I would ideally have liked to finalize things much later, but
-this is in practice hugely difficult because so many things
-(in particular all the address space/memory system code)
-assume the target page size is known.
-
-Note that setting minimum_page-bits for a machine is a migration
-compatibility break (the RAM migration format assumes both sides
-have the same idea of a page size). In v3 I have included a
-patch which adds the target-page-bits to the migration stream
-so that you get a reasonably nice error message if you try
-to migrate between source and destination which disagree about
-the page size.
-
-This could in theory be extended to the user-mode binaries,
-but for the moment I have just required them to define a
-fixed TARGET_PAGE_BITS.
-
-
-Patches 1-3 have been reviewed, so 4-7 are the interesting
-ones.
-
-REQUEST FOR TESTING/PERFORMANCE BENCHMARKING:
-
-I have only very lightly tested these and haven't attempted
-to measure performance at all. Further testing and
-benchmarking reports are therefore welcome.
-
-In particular I would like to know how much of an
-effect on TCG performance the assert() in the definition
-of TARGET_PAGE_BITS has, so comparisons of all three configs:
- * before this patchset (ie TARGET_PAGE_BITS compile time const)
- * with this patchset (with assert in TARGET_PAGE_BITS)
- * this patchset, but with the assert commented out
-
-
-Changes v2->v3:
- * rebased
- * added new patch to migrate the page size if it's not the default
- * virt-2.7 and earlier machines stick with the old
-   default page size to avoid a compat break
- * in patch 3, v_l1_size is pulled into a local when we're
-   using it as a loop upper bound
-
-thanks
--- PMM
-
-
-Peter Maydell (4):
-  cpu: Support a target CPU having a variable page size
-  migration/savevm.c: migrate non-default page size
-  target-arm: Make page size a runtime setting
-  hw/arm/virt: Set minimum_page_bits to 12
-
-Vijaya Kumar K (3):
-  migration: Remove static allocation of xzblre cache buffer
-  exec.c: Remove static allocation of sub_section of sub_page
-  translate-all.c: Compute L1 page table properties at runtime
-
- exec.c                 | 47 ++++++++++++++++++++++++++++++---
- hw/arm/virt.c          |  4 +++
- include/exec/cpu-all.h |  9 +++++++
- include/hw/boards.h    |  7 +++++
- include/qemu-common.h  | 12 +++++++++
- migration/ram.c        |  4 ++-
- migration/savevm.c     | 49 ++++++++++++++++++++++++++++++++++
- target-arm/cpu.c       | 24 +++++++++++++++++
- target-arm/cpu.h       |  9 ++++---
- translate-all.c        | 71 ++++++++++++++++++++++++++++++++------------------
- vl.c                   | 10 +++++++
- 11 files changed, 213 insertions(+), 33 deletions(-)
-
+diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+index 1b9540e..c94a324 100644
+--- a/target-arm/cpu.c
++++ b/target-arm/cpu.c
+@@ -576,6 +576,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     ARMCPU *cpu = ARM_CPU(dev);
+     ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
+     CPUARMState *env = &cpu->env;
++    int pagebits;
+ 
+     /* Some features automatically imply others: */
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+@@ -631,6 +632,29 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         set_feature(env, ARM_FEATURE_THUMB_DSP);
+     }
+ 
++    if (arm_feature(env, ARM_FEATURE_V7) &&
++        !arm_feature(env, ARM_FEATURE_M) &&
++        !arm_feature(env, ARM_FEATURE_MPU)) {
++        /* v7VMSA drops support for the old ARMv5 tiny pages, so we
++         * can use 4K pages.
++         */
++        pagebits = 12;
++    } else {
++        /* For CPUs which might have tiny 1K pages, or which have an
++         * MPU and might have small region sizes, stick with 1K pages.
++         */
++        pagebits = 10;
++    }
++    if (!set_preferred_target_page_bits(pagebits)) {
++        /* This can only ever happen for hotplugging a CPU, or if
++         * the board code incorrectly creates a CPU which it has
++         * promised via minimum_page_size that it will not.
++         */
++        error_setg(errp, "This CPU requires a smaller page size than the "
++                   "system is using");
++        return;
++    }
++
+     if (cpu->reset_hivecs) {
+             cpu->reset_sctlr |= (1 << 13);
+     }
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 76d824d..37d6eb3 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -1766,10 +1766,11 @@ bool write_cpustate_to_list(ARMCPU *cpu);
+ #if defined(CONFIG_USER_ONLY)
+ #define TARGET_PAGE_BITS 12
+ #else
+-/* The ARM MMU allows 1k pages.  */
+-/* ??? Linux doesn't actually use these, and they're deprecated in recent
+-   architecture revisions.  Maybe a configure option to disable them.  */
+-#define TARGET_PAGE_BITS 10
++/* ARMv7 and later CPUs have 4K pages minimum, but ARMv5 and v6
++ * have to support 1K tiny pages.
++ */
++#define TARGET_PAGE_BITS_VARY
++#define TARGET_PAGE_BITS_MIN 10
+ #endif
+ 
+ #if defined(TARGET_AARCH64)
 -- 
 2.7.4
 

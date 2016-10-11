@@ -1,60 +1,48 @@
-Received: by 10.80.166.35 with SMTP id d32csp105265edc;
-        Tue, 11 Oct 2016 10:14:51 -0700 (PDT)
-X-Received: by 10.200.49.85 with SMTP id h21mr4543303qtb.34.1476206091546;
-        Tue, 11 Oct 2016 10:14:51 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp115747edc;
+        Tue, 11 Oct 2016 10:37:44 -0700 (PDT)
+X-Received: by 10.55.164.141 with SMTP id n135mr4202758qke.222.1476207464185;
+        Tue, 11 Oct 2016 10:37:44 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 22si1896278qtq.133.2016.10.11.10.14.51
+        by mx.google.com with ESMTPS id y84si1943466qka.218.2016.10.11.10.37.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 10:14:51 -0700 (PDT)
+        Tue, 11 Oct 2016 10:37:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57109 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57213 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bu0de-00068r-Uv
-	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:14:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35157)
+	id 1bu0zn-000188-L9
+	for alex.bennee@linaro.org; Tue, 11 Oct 2016 13:37:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41030)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1bu0dY-00066W-9m
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:14:45 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0zi-000175-Mx
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:37:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1bu0dS-000649-Ew
-	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:14:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48414)
+	(envelope-from <pm215@archaic.org.uk>) id 1bu0zg-0005UT-P3
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 13:37:37 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47296)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>)
-	id 1bu0dS-00063q-8L; Tue, 11 Oct 2016 13:14:38 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5E80815568;
-	Tue, 11 Oct 2016 17:14:37 +0000 (UTC)
-Received: from javelin (vpn1-7-178.sin2.redhat.com [10.67.7.178])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9BHETKg019398
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 11 Oct 2016 13:14:33 -0400
-Date: Tue, 11 Oct 2016 22:44:28 +0530 (IST)
-From: P J P <ppandit@redhat.com>
-X-X-Sender: pjp@javelin
-To: qemu-devel@nongnu.org
-In-Reply-To: <20161011000558.498195.49291@ex-std-node742.prod.rhcloud.com>
-Message-ID: <alpine.LFD.2.20.1610112238260.7380@wniryva>
-References: <20161011000558.498195.49291@ex-std-node742.prod.rhcloud.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 11 Oct 2016 17:14:37 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bu0zg-0005Tt-IL; Tue, 11 Oct 2016 13:37:36 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bu0XN-00016N-LW; Tue, 11 Oct 2016 18:08:21 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 11 Oct 2016 18:08:14 +0100
+Message-Id: <1476205699-28857-3-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
+References: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4] timer: a9gtimer: remove loop
- to auto-increment comparator
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH v3 2/7] exec.c: Remove static allocation of
+ sub_section of sub_page
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,42 +54,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
-	liqiang6-s@360.cn
+Cc: patches@linaro.org, Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>, paolo@archaic.org.uk,
+	Laurent Desnogues <laurent.desnogues@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gM8MD7FXnRzo
+X-TUID: UtwEDqbKwQ8h
 
-+-- On Mon, 10 Oct 2016, no-reply@ec2-52-6-146-230.compute-1.amazonaws.com wrote --+
-| Your series failed automatic build test. Please find the testing commands and
-| their output below. If you have docker installed, you can probably reproduce it
-| locally.
+From: Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>
 
-  I tried to build it locally(without docker), cloned submodule 'dtc' and used 
-the same './configure' options as in the test. It built okay, no error.
+Allocate sub_section dynamically. Remove dependency
+on TARGET_PAGE_SIZE to make run-time page size detection
+for arm platforms.
 
-| === TEST SCRIPT BEGIN ===
-| #!/bin/bash
-| set -e
-| git submodule update --init dtc
-| # Let docker tests dump environment info
-| export SHOW_ENV=1
-| make J=8 docker-test-quick@centos6
-| make J=8 docker-test-mingw@fedora
-| === TEST SCRIPT END ===
-| 
-|   CC      hw/timer/arm_timer.o
-|   CC      hw/timer/arm_mptimer.o
-|   CC      hw/timer/a9gtimer.o
+Signed-off-by: Vijaya Kumar K <vijayak@cavium.com>
+Message-id: 1465808915-4887-3-git-send-email-vijayak@caviumnetworks.com
+[PMM: use flexible array member rather than separate malloc
+ so we don't need an extra pointer deref when using it]
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ exec.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-  It seems to build okay.
+diff --git a/exec.c b/exec.c
+index 374c364..86b09ac 100644
+--- a/exec.c
++++ b/exec.c
+@@ -153,7 +153,7 @@ typedef struct subpage_t {
+     MemoryRegion iomem;
+     AddressSpace *as;
+     hwaddr base;
+-    uint16_t sub_section[TARGET_PAGE_SIZE];
++    uint16_t sub_section[];
+ } subpage_t;
  
-| (gtester:6328): GLib-WARNING **: Failed to execute test binary: tests/test-qmp-output-visitor: Failed to fork (Resource temporarily unavailable)
-| /bin/sh: fork: retry: Resource temporarily unavailable
-| make: vfork: Resource temporarily unavailable
+ #define PHYS_SECTION_UNASSIGNED 0
+@@ -2205,8 +2205,7 @@ static subpage_t *subpage_init(AddressSpace *as, hwaddr base)
+ {
+     subpage_t *mmio;
+ 
+-    mmio = g_malloc0(sizeof(subpage_t));
+-
++    mmio = g_malloc0(sizeof(subpage_t) + TARGET_PAGE_SIZE * sizeof(uint16_t));
+     mmio->as = as;
+     mmio->base = base;
+     memory_region_init_io(&mmio->iomem, NULL, &subpage_ops, mmio,
+-- 
+2.7.4
 
-  This seems like a system issue, not related to the 'a9gtimer.c' patch.
-
---
-Prasad J Pandit / Red Hat Product Security Team
-47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F

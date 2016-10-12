@@ -1,108 +1,129 @@
-Received: by 10.80.166.35 with SMTP id d32csp277813edc;
-        Tue, 11 Oct 2016 18:02:16 -0700 (PDT)
-X-Received: by 10.200.48.49 with SMTP id f46mr6259566qte.64.1476234136636;
-        Tue, 11 Oct 2016 18:02:16 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp287742edc;
+        Tue, 11 Oct 2016 18:35:13 -0700 (PDT)
+X-Received: by 10.55.80.135 with SMTP id e129mr6881598qkb.74.1476236113713;
+        Tue, 11 Oct 2016 18:35:13 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a16si2705815qkb.78.2016.10.11.18.02.16
+        by mx.google.com with ESMTPS id j59si2765034qtb.16.2016.10.11.18.35.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Oct 2016 18:02:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 11 Oct 2016 18:35:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58633 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58708 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bu7w0-00045c-7R
-	for alex.bennee@linaro.org; Tue, 11 Oct 2016 21:02:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35145)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bu8Rt-00012c-2q
+	for alex.bennee@linaro.org; Tue, 11 Oct 2016 21:35:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40301)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bu7uj-0003UK-IZ
-	for qemu-devel@nongnu.org; Tue, 11 Oct 2016 21:00:58 -0400
+	(envelope-from <rth7680@gmail.com>) id 1bu8Rp-0000ya-44
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 21:35:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1bu7uh-0007Re-Gu
-	for qemu-devel@nongnu.org; Tue, 11 Oct 2016 21:00:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39328)
+	(envelope-from <rth7680@gmail.com>) id 1bu8Rn-0000Ba-Ao
+	for qemu-arm@nongnu.org; Tue, 11 Oct 2016 21:35:08 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:34874)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>)
-	id 1bu7ub-0007P0-5h; Tue, 11 Oct 2016 21:00:49 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 18BD97F6A4;
-	Wed, 12 Oct 2016 01:00:48 +0000 (UTC)
-Received: from localhost (vpn1-7-159.pek2.redhat.com [10.72.7.159])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9C10j5p007855; Tue, 11 Oct 2016 21:00:46 -0400
-Date: Wed, 12 Oct 2016 09:00:44 +0800
-From: Fam Zheng <famz@redhat.com>
-To: P J P <ppandit@redhat.com>
-Message-ID: <20161012010044.GA28536@lemon>
-References: <20161011000558.498195.49291@ex-std-node742.prod.rhcloud.com>
-	<alpine.LFD.2.20.1610112238260.7380@wniryva>
+	(envelope-from <rth7680@gmail.com>)
+	id 1bu8Rg-000061-Sk; Tue, 11 Oct 2016 21:35:01 -0400
+Received: by mail-pf0-x244.google.com with SMTP id s8so1607491pfj.2;
+	Tue, 11 Oct 2016 18:35:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=HR28pSC/H3GtNCgJleXQxD6W0ZJhYVL/gUKQ+vxGSAY=;
+	b=sw2ZjTYsoI8r130MBJNb7a28vxf0Oj40SckrrY+9z/rfZLczsWzOdDpZRCCgeDz7x5
+	xjvSurnuCmQMpxNYNGHOZ+BM+Gp1IshsIxnN9O4bG73OmC23k6kRuvB+jxJgcCUEShqS
+	QvokCSln9qyiJad4ViWnb1WJCTV+ZSXvqYdc/QNxEaUpHq75EdwLdu9XttMkBp/GYQYC
+	d2z7SdpSkIpqWHZm9ePsherh93CfGsj9ykslktTH1bnzmz28VKScn66weIjPG3WeUw/g
+	cP8oLKOADTG/t3Up2pmcCd0W8sLU5JB85sgGrGopOTlC/YXumnpwzPCr7cg5jzROBvlx
+	RtkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=HR28pSC/H3GtNCgJleXQxD6W0ZJhYVL/gUKQ+vxGSAY=;
+	b=hE9AvNVIIiWeuVidj5YsYLG0u5R7ykjaTtRfwstkBEkzeQUNpOFepSmlBUmuFZWTWk
+	dWqBD+t7dzAJB8aXXeIHHjrXt1sYkW0Vr1b9hvhdH0nm+h9qTuhHXrY6Lu/oLYBLS6OB
+	TGyTPhYTuiComX37RxePmHwjLyNiuMwTUb484R5pHacgKtHdmwFCBBhLeqA9Aq/mv831
+	l3aa88esusZbpEvRAfoovWx0mUxCEFJPzS0AQP+immo0HwpopOVmHk6CdgBl1KpCpGsh
+	vf78S11dHOQoJQfaCVuuPGNFFiOmFyDcQfh+zaqAGvmK9gFPFIUT/y9j/jAr4Zk0Q1V7
+	wPdA==
+X-Gm-Message-State: AA6/9Rmvcy/RH7hM1BFHaYU4NFP0obrHGvjIGesctKRBI820FK8dHWoJk6mg/+lnNNfcQQ==
+X-Received: by 10.99.106.6 with SMTP id f6mr5400289pgc.27.1476236100048;
+	Tue, 11 Oct 2016 18:35:00 -0700 (PDT)
+Received: from bigtime.twiddle.net ([187.217.227.243])
+	by smtp.googlemail.com with ESMTPSA id
+	j6sm7188782paa.44.2016.10.11.18.34.56
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 11 Oct 2016 18:34:59 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1476205699-28857-1-git-send-email-peter.maydell@linaro.org>
+	<20039503-ebed-fe18-be17-78d39643c9af@twiddle.net>
+	<CAFEAcA9s-mWFzqFdo81YOEJ=eU3oRtw8SA4QbkZ3kOKuNPcfhQ@mail.gmail.com>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <bec612f6-2f03-67f2-ee79-73f0f388360a@twiddle.net>
+Date: Tue, 11 Oct 2016 20:34:53 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.LFD.2.20.1610112238260.7380@wniryva>
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Wed, 12 Oct 2016 01:00:48 +0000 (UTC)
+In-Reply-To: <CAFEAcA9s-mWFzqFdo81YOEJ=eU3oRtw8SA4QbkZ3kOKuNPcfhQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v4] timer: a9gtimer: remove loop to
- auto-increment comparator
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: Re: [Qemu-arm] [PATCH v3 0/7] Runtime pagesize computation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, liqiang6-s@360.cn,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6+mT1E7iK1ZG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Patch Tracking <patches@linaro.org>,
+	Vijaya Kumar K <Vijaya.Kumar@caviumnetworks.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, paolo@archaic.org.uk,
+	Laurent Desnogues <laurent.desnogues@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hr+wGMFRvkxj
 
-On Tue, 10/11 22:44, P J P wrote:
-> +-- On Mon, 10 Oct 2016, no-reply@ec2-52-6-146-230.compute-1.amazonaws.com wrote --+
-> | Your series failed automatic build test. Please find the testing commands and
-> | their output below. If you have docker installed, you can probably reproduce it
-> | locally.
-> 
->   I tried to build it locally(without docker), cloned submodule 'dtc' and used 
-> the same './configure' options as in the test. It built okay, no error.
-> 
-> | === TEST SCRIPT BEGIN ===
-> | #!/bin/bash
-> | set -e
-> | git submodule update --init dtc
-> | # Let docker tests dump environment info
-> | export SHOW_ENV=1
-> | make J=8 docker-test-quick@centos6
-> | make J=8 docker-test-mingw@fedora
-> | === TEST SCRIPT END ===
-> | 
-> |   CC      hw/timer/arm_timer.o
-> |   CC      hw/timer/arm_mptimer.o
-> |   CC      hw/timer/a9gtimer.o
-> 
->   It seems to build okay.
->  
-> | (gtester:6328): GLib-WARNING **: Failed to execute test binary: tests/test-qmp-output-visitor: Failed to fork (Resource temporarily unavailable)
-> | /bin/sh: fork: retry: Resource temporarily unavailable
-> | make: vfork: Resource temporarily unavailable
-> 
->   This seems like a system issue, not related to the 'a9gtimer.c' patch.
+On 10/11/2016 03:18 PM, Peter Maydell wrote:
+> On 11 October 2016 at 12:20, Richard Henderson <rth@twiddle.net> wrote:
+>> On 10/11/2016 12:08 PM, Peter Maydell wrote:
+>>> I would ideally have liked to finalize things much later, but
+>>> this is in practice hugely difficult because so many things
+>>> (in particular all the address space/memory system code)
+>>> assume the target page size is known.
+>
+>> Unfortunate.  I suppose that 4k is still better than 1k, but
+>> I was hoping to get 16k or 64k (or higher) when the OS is
+>> configured to use such.  I.e. totally dynamically configurable
+>> upon write to the appropriate cpu register.
+>
+> I think that would run into problems with migration:
+> the migration stream all works in guest-pages of ram and
+> a mismatch means migration doesn't work.
 
-I think you are right, thanks for confirming!
+Perhaps migration should use definitions based off of TARGET_PAGE_BITS_MIN? 
+Dunno how big of a job that would be...
 
-Fam
+> The trouble is that all the data structures work in terms
+> of page sizes (even though we support sub-page allocations
+> those are still done by carving up a page-size chunk).
+> It could probably be done but it looked like a gargantuan
+> task so I decided this was a better compromise.
+
+Fair enough.  This is still an improvement for an interesting guest.
+
+
+r~
+

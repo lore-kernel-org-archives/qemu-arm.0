@@ -1,55 +1,69 @@
-Received: by 10.80.166.35 with SMTP id d32csp478628edc;
-        Thu, 13 Oct 2016 09:29:50 -0700 (PDT)
-X-Received: by 10.200.51.20 with SMTP id t20mr7702270qta.48.1476376190489;
-        Thu, 13 Oct 2016 09:29:50 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp492283edc;
+        Thu, 13 Oct 2016 09:59:37 -0700 (PDT)
+X-Received: by 10.233.220.129 with SMTP id q123mr8285263qkf.290.1476377977921;
+        Thu, 13 Oct 2016 09:59:37 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 41si6960943qku.104.2016.10.13.09.29.50
+        by mx.google.com with ESMTPS id d21si4968603qtd.2.2016.10.13.09.59.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Oct 2016 09:29:50 -0700 (PDT)
+        Thu, 13 Oct 2016 09:59:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41755 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41940 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1buitB-00082G-B8
-	for alex.bennee@linaro.org; Thu, 13 Oct 2016 12:29:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42217)
+	id 1bujM0-0006n7-U1
+	for alex.bennee@linaro.org; Thu, 13 Oct 2016 12:59:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50815)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1buiox-00045Z-JD
-	for qemu-arm@nongnu.org; Thu, 13 Oct 2016 12:25:29 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bujLw-0006kC-0v
+	for qemu-arm@nongnu.org; Thu, 13 Oct 2016 12:59:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1buiov-0007tn-Cb
-	for qemu-arm@nongnu.org; Thu, 13 Oct 2016 12:25:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33706)
+	(envelope-from <peter.maydell@linaro.org>) id 1bujLt-0005gl-Vw
+	for qemu-arm@nongnu.org; Thu, 13 Oct 2016 12:59:30 -0400
+Received: from mail-vk0-x230.google.com ([2607:f8b0:400c:c05::230]:34577)
 	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>)
-	id 1buiov-0007tH-3v; Thu, 13 Oct 2016 12:25:25 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 816974E33A;
-	Thu, 13 Oct 2016 16:25:24 +0000 (UTC)
-Received: from thinkpad.redhat.com (ovpn-112-33.ams2.redhat.com [10.36.112.33])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9DGP2ms010294; Thu, 13 Oct 2016 12:25:21 -0400
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 13 Oct 2016 18:24:47 +0200
-Message-Id: <1476375902-11715-6-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1476375902-11715-1-git-send-email-lvivier@redhat.com>
-References: <1476375902-11715-1-git-send-email-lvivier@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 13 Oct 2016 16:25:24 +0000 (UTC)
+	(envelope-from <peter.maydell@linaro.org>) id 1bujLt-0005gD-Ps
+	for qemu-arm@nongnu.org; Thu, 13 Oct 2016 12:59:29 -0400
+Received: by mail-vk0-x230.google.com with SMTP id b186so86154044vkb.1
+	for <qemu-arm@nongnu.org>; Thu, 13 Oct 2016 09:59:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=haqBnCcPy96ncxIqgd3ZmZsL1f6GbdCr2FocdASY6yY=;
+	b=Bh02T1TCpGIVT2NbgzRdYs6FRjG0xDqSftX6Oz6278Dq5XrZXRemHItygtqiWzIyLN
+	TuOQD2YomWilCKoitAl7peTrP0NG6DHQsqwas05UreCa02PyRGd/LKYtg2uD7pex2y0B
+	5T95PS53ENTHScz6ct7UpFMsScQmJ25sBF83M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=haqBnCcPy96ncxIqgd3ZmZsL1f6GbdCr2FocdASY6yY=;
+	b=j5x5tqZB+dTKVa/SAEqZ9j0gu4V3l68IpuD14sadadN8mYSIzqwMEg3IcyuxAr+PD2
+	G4F40YwWNWJCGt0CKOxMN6/w331muZnJW8Kgpn3EBew7CGNuP35UWyCIdnw2Ug1WqrOv
+	2PWo28baIwKNzYCiYzBhDZFPvA0zr5zAO+PqurcXJEgm1UuLmTP3YLaKKXKz15zVV+bs
+	ccgq2zNQ8CoV/upjffFD40ycsfLHS7u3sZSst8TI8YzfnSX0nHMPIAt4+lOls7b7Pgrl
+	CGYljblN1GjC6NHyv+rDXCrhRhsBL9cDCqU+3x3pLbyN+0t4ogq+Bn92itpTqgadjoZD
+	n4Ag==
+X-Gm-Message-State: AA6/9RmTzeLeBVfi9S+yJkECz560pyNeZ3wZ6HZM3jXgrSmDryGyt1aPo2joOQklybP1II5qmZn0ppK4n8LOZGZF
+X-Received: by 10.31.64.75 with SMTP id n72mr4591692vka.170.1476377969065;
+	Thu, 13 Oct 2016 09:59:29 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.195.70 with HTTP; Thu, 13 Oct 2016 09:59:08 -0700 (PDT)
+In-Reply-To: <1475833331-26882-1-git-send-email-marcin.krzeminski@nokia.com>
+References: <1475833331-26882-1-git-send-email-marcin.krzeminski@nokia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Oct 2016 17:59:08 +0100
+Message-ID: <CAFEAcA92+He9Fir_FeJEtx+Emd-HqjtHGimUbCgUn7X6gjnk5Q@mail.gmail.com>
+To: "Krzeminski, Marcin (Nokia - PL/Wroclaw)" <marcin.krzeminski@nokia.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 05/20] target-arm: move cpu_exec_realize() to
- realize function
+X-Received-From: 2607:f8b0:400c:c05::230
+Subject: Re: [Qemu-arm] [PATCH] nvic: allow to set pending status for not
+ active interrupts
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,110 +75,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: rfsw-patches@mlist.nokia.com, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ypjao5uGdT0a
+X-TUID: XqPv8z8UOMO8
 
-Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
-to arm_cpu_realizefn() as setting of cpu_index is now done
-in cpu_exec_realize().
+On 7 October 2016 at 10:42,  <marcin.krzeminski@nokia.com> wrote:
+> From: Marcin Krzeminski <marcin.krzeminski@nokia.com>
+>
+> According to ARM DUI 0552A 4.2.10. NVIC set pending status
+> also for disabled interrupts. This patch adds possibility
+> to emulate this in Qemu.
+>
+> Signed-off-by: Marcin Krzeminski <marcin.krzeminski@nokia.com>
+> ---
+>  hw/intc/arm_gic.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index b30cc91..85be6e4 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -147,7 +147,8 @@ static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
+>  {
+>      if (level) {
+>          GIC_SET_LEVEL(irq, cm);
+> -        if (GIC_TEST_EDGE_TRIGGER(irq) || GIC_TEST_ENABLED(irq, cm)) {
+> +        if (GIC_TEST_EDGE_TRIGGER(irq) || GIC_TEST_ENABLED(irq, cm)
+> +                || (!GIC_TEST_ACTIVE(irq, cm) &&  s->revision == REV_NVIC)) {
+>              DPRINTF("Set %d pending mask %x\n", irq, target);
+>              GIC_SET_PENDING(irq, target);
+>          }
+> --
 
-I've removed the cannot_destroy_with_object_finalize_yet field as
-unsafe references have been moved to cpu_exec_realize().
-(tested with QOM command provided by commit 4c315c27 with
- "arm1026-arm-cpu")
+Thanks for this patch. I agree that the current behaviour isn't
+correct.
 
-CC: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-arm@nongnu.org
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- target-arm/cpu.c | 39 +++++++++++++++++----------------------
- 1 file changed, 17 insertions(+), 22 deletions(-)
+I think it would be cleaner to define a new gic_set_irq_nvic() which
+has the NVIC specific behaviour, rather than sticking an "if this
+is really an NVIC" check into this function.
 
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 7e58134..54e7991 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -441,23 +441,12 @@ static void arm_cpu_initfn(Object *obj)
-     CPUState *cs = CPU(obj);
-     ARMCPU *cpu = ARM_CPU(obj);
-     static bool inited;
--    uint32_t Aff1, Aff0;
- 
-     cs->env_ptr = &cpu->env;
-     cpu_exec_init(cs);
--    cpu_exec_realize(cs, &error_abort);
-     cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
-                                          g_free, g_free);
- 
--    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
--     * We don't support setting cluster ID ([16..23]) (known as Aff2
--     * in later ARM ARM versions), or any of the higher affinity level fields,
--     * so these bits always RAZ.
--     */
--    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
--    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
--    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
--
- #ifndef CONFIG_USER_ONLY
-     /* Our inbound IRQ and FIQ lines */
-     if (kvm_enabled()) {
-@@ -577,6 +566,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     ARMCPU *cpu = ARM_CPU(dev);
-     ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
-     CPUARMState *env = &cpu->env;
-+    Error *local_err = NULL;
-+    uint32_t Aff1, Aff0;
-+
-+    cpu_exec_realize(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     /* Some features automatically imply others: */
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-@@ -632,6 +629,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         set_feature(env, ARM_FEATURE_THUMB_DSP);
-     }
- 
-+    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-+     * We don't support setting cluster ID ([16..23]) (known as Aff2
-+     * in later ARM ARM versions), or any of the higher affinity level fields,
-+     * so these bits always RAZ.
-+     */
-+    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
-+    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
-+    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-+
-     if (cpu->reset_hivecs) {
-             cpu->reset_sctlr |= (1 << 13);
-     }
-@@ -1534,17 +1540,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->debug_check_watchpoint = arm_debug_check_watchpoint;
- 
-     cc->disas_set_info = arm_disas_set_info;
--
--    /*
--     * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     *
--     * Once this is fixed, the devices that create ARM CPUs should be
--     * updated not to set cannot_destroy_with_object_finalize_yet,
--     * unless they still screw up something else.
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void cpu_register(const ARMCPUInfo *info)
--- 
-2.7.4
+You probably also want to check whether the logic for re-pending
+level triggered interrupts in gic_complete_irq() also needs a
+similar change:
 
+    if (s->revision == REV_11MPCORE || s->revision == REV_NVIC) {
+        /* Mark level triggered interrupts as pending if they are still
+           raised.  */
+        if (!GIC_TEST_EDGE_TRIGGER(irq) && GIC_TEST_ENABLED(irq, cm)
+            && GIC_TEST_LEVEL(irq, cm) && (GIC_TARGET(irq) & cm) != 0) {
+            DPRINTF("Set %d pending mask %x\n", irq, cm);
+            GIC_SET_PENDING(irq, cm);
+        }
+    }
+
+thanks
+-- PMM

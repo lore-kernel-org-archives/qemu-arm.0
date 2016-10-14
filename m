@@ -1,59 +1,59 @@
-Received: by 10.80.166.35 with SMTP id d32csp258711edc;
-        Fri, 14 Oct 2016 05:41:44 -0700 (PDT)
-X-Received: by 10.200.52.151 with SMTP id w23mr12392942qtb.115.1476448904452;
-        Fri, 14 Oct 2016 05:41:44 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp259027edc;
+        Fri, 14 Oct 2016 05:42:30 -0700 (PDT)
+X-Received: by 10.55.3.7 with SMTP id 7mr11125630qkd.291.1476448950646;
+        Fri, 14 Oct 2016 05:42:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 134si9584677qkl.51.2016.10.14.05.41.44
+        by mx.google.com with ESMTPS id o4si9584954qtc.52.2016.10.14.05.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Oct 2016 05:41:44 -0700 (PDT)
+        Fri, 14 Oct 2016 05:42:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47120 helo=lists.gnu.org)
+Received: from localhost ([::1]:47124 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bv1nz-0007mt-W6
-	for alex.bennee@linaro.org; Fri, 14 Oct 2016 08:41:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40792)
+	id 1bv1ok-0008DK-4X
+	for alex.bennee@linaro.org; Fri, 14 Oct 2016 08:42:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bv1nv-0007mQ-QM
-	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 08:41:40 -0400
+	(envelope-from <imammedo@redhat.com>) id 1bv1og-0008C8-Hm
+	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 08:42:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bv1nq-0005d3-J5
-	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 08:41:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46182)
+	(envelope-from <imammedo@redhat.com>) id 1bv1od-000617-7c
+	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 08:42:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51926)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <imammedo@redhat.com>)
-	id 1bv1nq-0005cq-Bt; Fri, 14 Oct 2016 08:41:34 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	id 1bv1oc-00060M-Uf; Fri, 14 Oct 2016 08:42:23 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7AC9AC05A283;
-	Fri, 14 Oct 2016 12:41:32 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6708FC04B924;
+	Fri, 14 Oct 2016 12:42:22 +0000 (UTC)
 Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9ECfTnZ002565; Fri, 14 Oct 2016 08:41:30 -0400
-Date: Fri, 14 Oct 2016 14:41:29 +0200
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9ECgJhX005529; Fri, 14 Oct 2016 08:42:20 -0400
+Date: Fri, 14 Oct 2016 14:42:18 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20161014144129.7826bfc8@nial.brq.redhat.com>
-In-Reply-To: <1476435295-21885-3-git-send-email-eric.auger@redhat.com>
+Message-ID: <20161014144218.10d072b5@nial.brq.redhat.com>
+In-Reply-To: <1476435295-21885-2-git-send-email-eric.auger@redhat.com>
 References: <1476435295-21885-1-git-send-email-eric.auger@redhat.com>
-	<1476435295-21885-3-git-send-email-eric.auger@redhat.com>
+	<1476435295-21885-2-git-send-email-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 14 Oct 2016 12:41:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 14 Oct 2016 12:42:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] ARM: Virt: ACPI: Build
- an IORT table with RC and ITS nodes
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] ACPI: Add IORT Structure
+ definition
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,73 +71,121 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, tn@semihalf.com,
 	christoffer.dall@linaro.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z/9zulBafGEK
+X-TUID: a42F+BO3HsNa
 
-On Fri, 14 Oct 2016 10:54:55 +0200
+On Fri, 14 Oct 2016 10:54:54 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
 > From: Prem Mallappa <prem.mallappa@broadcom.com>
 > 
-> This patch builds an IORT table that features a root complex node and
-> an ITS node. This complements the ITS description in the ACPI MADT
-> table and allows vhost-net on ACPI guest.
+> ACPI Spec 6.0 introduces IO Remapping Table Structure. This patch
+> introduces the definitions required to describe the IO relationship
+> between the PCIe root complex and the ITS.
+> 
+> This conforms to:
+> "IO Remapping Table System Software on ARM Platforms",
+> Document number: ARM DEN 0049B, October 2015.
 > 
 > Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+Preferred way to build/pack ACPI tables info is to use
+build_append_foo() functions.
+That way you won't have to care about endianness avoiding
+mistakes at assignment time. Also you won't need to declare
+intermediate structures to do packing and will have more
+compact code (only a single function) and better documented
+at that if every build_append_foo() is accompanied by
+comment matching field description from ACPI spec.
+Pls see build_amd_iommu() as example.
+
+If you redo this series that way it will become single patch.
+
 > 
 > ---
 > 
 > v1 -> v2:
-> - its_class_name() || !guest_info->no_its now wraps acpi_add_table
->   and build_iort
-> - add cpu_to_le*
-> - CCA = CPM = DACS = 1
-> - cleanup according to Drew's comments
-> - remove comments listing tables and spec revisions
+> - took into account Drew's comments:
+>   cleanup comments, remove most defines, add ACPI_IORT_NODE_HEADER_DEF
 > ---
->  hw/arm/virt-acpi-build.c | 73 ++++++++++++++++++++++++++++++++++++++++--------
->  1 file changed, 62 insertions(+), 11 deletions(-)
+>  include/hw/acpi/acpi-defs.h | 68 +++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 68 insertions(+)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index fa0655a..5fc0fd7 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-[...]
-
-> +static void
->  build_spcr(GArray *table_data, BIOSLinker *linker, VirtGuestInfo *guest_info)
->  {
->      AcpiSerialPortConsoleRedirection *spcr;
-> @@ -667,17 +724,6 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
->                               ACPI_BUILD_TABLE_FILE, tables_blob,
->                               64, false /* high memory */);
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 9c1b7cb..1cd1e69 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -609,4 +609,72 @@ typedef struct AcpiDmarHardwareUnit AcpiDmarHardwareUnit;
+>  /* Masks for Flags field above */
+>  #define ACPI_DMAR_INCLUDE_PCI_ALL   1
 >  
-> -    /*
-> -     * The ACPI v5.1 tables for Hardware-reduced ACPI platform are:
-> -     * RSDP
-> -     * RSDT
-> -     * FADT
-> -     * GTDT
-> -     * MADT
-> -     * MCFG
-> -     * DSDT
-> -     */
-deleting unrelated hunk?
-
-> -
->      /* DSDT is pointed to by FADT */
->      dsdt = tables_blob->len;
->      build_dsdt(tables_blob, tables->linker, guest_info);
-> @@ -703,6 +749,11 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
->          build_srat(tables_blob, tables->linker, guest_info);
->      }
->  
-> +    if (its_class_name() && !guest_info->no_its) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_iort(tables_blob, tables->linker, guest_info);
-> +    }
+> +/*
+> + * Input Output Remapping Table (IORT)
+> + * Conforms to "IO Remapping Table System Software on ARM Platforms",
+> + * Document number: ARM DEN 0049B, October 2015
+> + */
 > +
->      /* RSDT is pointed to by RSDP */
->      rsdt = tables_blob->len;
->      build_rsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
+> +struct AcpiIortTable {
+> +    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
+> +    uint32_t node_count;
+> +    uint32_t node_offset;
+> +    uint32_t reserved;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortTable AcpiIortTable;
+> +
+> +/*
+> + * IORT node types
+> + */
+> +
+> +#define ACPI_IORT_NODE_HEADER_DEF   /* Node format common fields */ \
+> +    uint8_t  type;          \
+> +    uint16_t length;        \
+> +    uint8_t  revision;      \
+> +    uint32_t reserved;      \
+> +    uint32_t mapping_count; \
+> +    uint32_t mapping_offset;\
+> +
+> +/* Values for node Type above */
+> +enum {
+> +        ACPI_IORT_NODE_ITS_GROUP = 0x00,
+> +        ACPI_IORT_NODE_NAMED_COMPONENT = 0x01,
+> +        ACPI_IORT_NODE_PCI_ROOT_COMPLEX = 0x02,
+> +        ACPI_IORT_NODE_SMMU = 0x03,
+> +        ACPI_IORT_NODE_SMMU_V3 = 0x04
+> +};
+> +
+> +struct AcpiIortIdMapping {
+> +    uint32_t input_base;
+> +    uint32_t id_count;
+> +    uint32_t output_base;
+> +    uint32_t output_reference;
+> +    uint32_t flags;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortIdMapping AcpiIortIdMapping;
+> +
+> +struct AcpiIortMemoryAccess {
+> +    uint32_t cache_coherency;
+> +    uint8_t  hints;
+> +    uint16_t reserved;
+> +    uint8_t  memory_flags;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortMemoryAccess AcpiIortMemoryAccess;
+> +
+> +struct AcpiIortItsGroup {
+> +    ACPI_IORT_NODE_HEADER_DEF
+> +    uint32_t its_count;
+> +    uint32_t identifiers[0];
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+> +
+> +struct AcpiIortRC {
+> +    ACPI_IORT_NODE_HEADER_DEF
+> +    AcpiIortMemoryAccess memory_properties;
+> +    uint32_t ats_attribute;
+> +    uint32_t pci_segment_number;
+> +    AcpiIortIdMapping id_mapping_array[0];
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortRC AcpiIortRC;
+> +
+>  #endif
 

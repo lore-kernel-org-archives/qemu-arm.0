@@ -1,58 +1,56 @@
-Received: by 10.80.166.35 with SMTP id d32csp514853edc;
-        Fri, 14 Oct 2016 16:02:00 -0700 (PDT)
-X-Received: by 10.55.185.69 with SMTP id j66mr4108626qkf.264.1476486120060;
-        Fri, 14 Oct 2016 16:02:00 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp515823edc;
+        Fri, 14 Oct 2016 16:04:56 -0700 (PDT)
+X-Received: by 10.237.33.225 with SMTP id m30mr14813076qtc.61.1476486296794;
+        Fri, 14 Oct 2016 16:04:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n66si11060388qka.157.2016.10.14.16.01.59
+        by mx.google.com with ESMTPS id n6si11085857qtc.94.2016.10.14.16.04.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 14 Oct 2016 16:02:00 -0700 (PDT)
+        Fri, 14 Oct 2016 16:04:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49777 helo=lists.gnu.org)
+Received: from localhost ([::1]:49788 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bvBUF-0002wt-N4
-	for alex.bennee@linaro.org; Fri, 14 Oct 2016 19:01:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38214)
+	id 1bvBX6-0004bj-Cx
+	for alex.bennee@linaro.org; Fri, 14 Oct 2016 19:04:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38453)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bvBUB-0002wl-8T
-	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 19:01:56 -0400
+	(envelope-from <lvivier@redhat.com>) id 1bvBVb-0003es-Us
+	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 19:03:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bvBU6-0002Kg-N7
-	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 19:01:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53376)
+	(envelope-from <lvivier@redhat.com>) id 1bvBVX-0002cF-Hh
+	for qemu-arm@nongnu.org; Fri, 14 Oct 2016 19:03:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43760)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1bvBU6-0002K9-Dx; Fri, 14 Oct 2016 19:01:50 -0400
+	id 1bvBVX-0002c1-7r; Fri, 14 Oct 2016 19:03:19 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B680F85365;
-	Fri, 14 Oct 2016 22:53:23 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 52623335F8C;
+	Fri, 14 Oct 2016 22:53:00 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-112-33.ams2.redhat.com [10.36.112.33])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9EMqoto012280; Fri, 14 Oct 2016 18:53:16 -0400
+	id u9EMqotl012280; Fri, 14 Oct 2016 18:52:51 -0400
 From: Laurent Vivier <lvivier@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
 	Bharata B Rao <bharata@linux.vnet.ibm.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 15 Oct 2016 00:52:49 +0200
-Message-Id: <1476485569-6744-4-git-send-email-lvivier@redhat.com>
-In-Reply-To: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
-References: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
+Date: Sat, 15 Oct 2016 00:52:46 +0200
+Message-Id: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 14 Oct 2016 22:53:25 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 14 Oct 2016 22:53:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 3/3] exec: call cpu_exec_exit() from a CPU
- unrealize common function
+Subject: [Qemu-arm] [PATCH v3 0/3] Split cpu_exec_init() into an init and a
+ realize part
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,114 +75,84 @@ Cc: Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 44uZ5DWvtVZv
+X-TUID: dJVWDDpkpZLn
 
-As cpu_exec_exit() mirrors the cpu_exec_realizefn(),
-rename it as cpu_exec_unrealizefn().
+Since commit 42ecaba ("target-i386: Call cpu_exec_init() on realize"),
+, commit 6dd0f83 ("target-ppc: Move cpu_exec_init() call to realize function"),
+and commit c6644fc ("s390x/cpu: Get rid of side effects when creating a vcpu"),
+cpu_exec_init() has been moved to realize function for some architectures
+to implement CPU htoplug. This allows any failures from cpu_exec_init() to be
+handled appropriately.
 
-Create and register a cpu_common_unrealizefn() function for
-the CPU device class and call cpu_exec_unrealizefn() from
-this function.
+This series tries to do the same work for all the other CPUs.
 
-Remove cpu_exec_exit() from cpu_common_finalize()
-(which mirrors init, not realize), and as x86_cpu_unrealizefn()
-overwrites the device class unrealize function, add a call to
-cpu_exec_unrealizefn() (as in ppc_cpu_unrealizefn()).
+But as the ARM Virtual Machine ("virt") needs the "memory" property of the CPU
+in the machine init function (the "memory" property is created in
+cpu_exec_init() we want to move to the realize part), split cpu_exec_init() in
+two parts: a realize part (cpu_exec_realizefn(), adding the CPU in the
+environment) and an init part (cpu_exec_initfn(), initializing the CPU, like
+adding the "memory" property). To mirror the realize part, add an unrealize
+part, and remove the cpu_exec_exit() call from the finalize part.
 
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
- exec.c                      | 2 +-
- include/qom/cpu.h           | 2 +-
- qom/cpu.c                   | 8 +++++++-
- target-i386/cpu.c           | 2 ++
- target-ppc/translate_init.c | 2 +-
- 5 files changed, 12 insertions(+), 4 deletions(-)
+This also allows to remove all the "cannot_destroy_with_object_finalize_yet"
+properties from the CPU device class.
 
-diff --git a/exec.c b/exec.c
-index 203eb52..3cd25db 100644
---- a/exec.c
-+++ b/exec.c
-@@ -596,7 +596,7 @@ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
- }
- #endif
- 
--void cpu_exec_exit(CPUState *cpu)
-+void cpu_exec_unrealizefn(CPUState *cpu)
- {
-     CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 5520c6c..633c3fc 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -948,7 +948,7 @@ void QEMU_NORETURN cpu_abort(CPUState *cpu, const char *fmt, ...)
-     GCC_FMT_ATTR(2, 3);
- void cpu_exec_initfn(CPUState *cpu);
- void cpu_exec_realizefn(CPUState *cpu, Error **errp);
--void cpu_exec_exit(CPUState *cpu);
-+void cpu_exec_unrealizefn(CPUState *cpu);
- 
- #ifdef CONFIG_SOFTMMU
- extern const struct VMStateDescription vmstate_cpu_common;
-diff --git a/qom/cpu.c b/qom/cpu.c
-index 85f1132..03d9190 100644
---- a/qom/cpu.c
-+++ b/qom/cpu.c
-@@ -345,6 +345,12 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
-     trace_init_vcpu(cpu);
- }
- 
-+static void cpu_common_unrealizefn(DeviceState *dev, Error **errp)
-+{
-+    CPUState *cpu = CPU(dev);
-+    cpu_exec_unrealizefn(cpu);
-+}
-+
- static void cpu_common_initfn(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
-@@ -369,7 +375,6 @@ static void cpu_common_initfn(Object *obj)
- static void cpu_common_finalize(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
--    cpu_exec_exit(cpu);
-     g_free(cpu->trace_dstate);
- }
- 
-@@ -403,6 +408,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
-     k->cpu_exec_exit = cpu_common_noop;
-     k->cpu_exec_interrupt = cpu_common_exec_interrupt;
-     dc->realize = cpu_common_realizefn;
-+    dc->unrealize = cpu_common_unrealizefn;
-     /*
-      * Reason: CPUs still need special care by board code: wiring up
-      * IRQs, adding reset handlers, halting non-first CPUs, ...
-diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index 3476d46..399a3e4 100644
---- a/target-i386/cpu.c
-+++ b/target-i386/cpu.c
-@@ -3253,6 +3253,8 @@ static void x86_cpu_unrealizefn(DeviceState *dev, Error **errp)
-         object_unparent(OBJECT(cpu->apic_state));
-         cpu->apic_state = NULL;
-     }
-+
-+    cpu_exec_unrealizefn(CPU(dev));
- }
- 
- typedef struct BitProperty {
-diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
-index 40dae70..2de6a06 100644
---- a/target-ppc/translate_init.c
-+++ b/target-ppc/translate_init.c
-@@ -9910,7 +9910,7 @@ static void ppc_cpu_unrealizefn(DeviceState *dev, Error **errp)
-     opc_handler_t **table, **table_2;
-     int i, j, k;
- 
--    cpu_exec_exit(CPU(dev));
-+    cpu_exec_unrealizefn(CPU(dev));
- 
-     for (i = 0; i < PPC_CPU_OPCODES_LEN; i++) {
-         if (env->opcodes[i] == &invalid_handler) {
+v3:
+- reorganize the series in 3 patches:
+  1- split cpu_exec_init() and call the init part from
+     cpu_common_initfn()
+  2- move all the cpu_exec_realize() calls to the
+     XXX_cpu_realizefn() functions
+  3- create a cpu_common_unrealizefn() function
+      and call the cpu_exec_unrealize() function from here,
+      except for ppc64 and i386 that have their own XX_cpu_unrealizefn()
+      functions
+- rename cpu_exec_init(), cpu_exec_realize(), cpu_exec_unrealize()
+  to cpu_exec_initfn(), cpu_exec_realizefn() and cpu_exec_unrealizefn(),
+- move cpu_exec_unrealizefn() to the device class unrealize
+  and declare it in qom/cpu.h instead of exec/exec-all.h
+
+v2:
+- rename cpu_exec_exit() as cpu_exec_unrealize(),
+  as it un-does what cpu_exec_realize() does,
+- remove cpu_exec_exit() from ppc_cpu_unrealizefn() as
+  it is called from cpu_common_finalize(),
+- add a patch to move all cpu_exec_init() from
+  all XX_cpu_initfn() to cpu_common_initfn(),
+- arm: move setting of cpu->mp_affinity to
+  arm_cpu_realizefn() as the cpu_index is now set in
+  cpu_exec_realizefn().
+- update some commit messages
+
+Laurent Vivier (3):
+  exec: split cpu_exec_init()
+  exec: rename cpu_exec_init() as cpu_exec_realizefn()
+  exec: call cpu_exec_exit() from a CPU unrealize common function
+
+ exec.c                      | 12 +++++++-----
+ include/exec/exec-all.h     |  1 -
+ include/qom/cpu.h           |  4 +++-
+ qom/cpu.c                   | 10 +++++++++-
+ target-alpha/cpu.c          | 15 +++++++--------
+ target-arm/cpu.c            | 39 +++++++++++++++++----------------------
+ target-cris/cpu.c           | 15 +++++++--------
+ target-i386/cpu.c           | 13 +++++++------
+ target-lm32/cpu.c           | 15 +++++++--------
+ target-m68k/cpu.c           | 15 +++++++--------
+ target-microblaze/cpu.c     | 14 +++++++-------
+ target-mips/cpu.c           | 15 +++++++--------
+ target-moxie/cpu.c          | 15 +++++++--------
+ target-openrisc/cpu.c       | 15 +++++++--------
+ target-ppc/translate_init.c |  4 ++--
+ target-s390x/cpu.c          |  8 +-------
+ target-sh4/cpu.c            | 15 +++++++--------
+ target-sparc/cpu.c          | 18 +++++++++---------
+ target-tilegx/cpu.c         | 15 +++++++--------
+ target-tricore/cpu.c        | 15 +++++++--------
+ target-unicore32/cpu.c      | 18 +++++++++---------
+ target-xtensa/cpu.c         | 15 +++++++--------
+ 22 files changed, 148 insertions(+), 158 deletions(-)
+
 -- 
 2.7.4
 

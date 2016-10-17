@@ -1,170 +1,283 @@
-Received: by 10.80.166.35 with SMTP id d32csp640034edc;
-        Mon, 17 Oct 2016 12:52:51 -0700 (PDT)
-X-Received: by 10.55.25.211 with SMTP id 80mr25365553qkz.230.1476733971688;
-        Mon, 17 Oct 2016 12:52:51 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 128si18772091qkd.320.2016.10.17.12.52.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 12:52:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.80.166.35 with SMTP id d32csp640382edc;
+        Mon, 17 Oct 2016 12:53:47 -0700 (PDT)
+X-Received: by 10.55.49.8 with SMTP id x8mr15832586qkx.188.1476734027907;
+        Mon, 17 Oct 2016 12:53:47 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id f38si18806415qtf.91.2016.10.17.12.53.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 12:53:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35538 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwDxr-0004bT-1L
-	for alex.bennee@linaro.org; Mon, 17 Oct 2016 15:52:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56524)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bwDkS-0001QI-Cs
-	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:39:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bwDkO-0007tM-Vl
-	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:39:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35236)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1bwDkO-0007sr-OG; Mon, 17 Oct 2016 15:38:56 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DB8E580F63;
-	Mon, 17 Oct 2016 19:38:55 +0000 (UTC)
-Received: from localhost.redhat.com (vpn1-5-170.ams2.redhat.com [10.36.5.170])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u9HJcVFY009529; Mon, 17 Oct 2016 15:38:52 -0400
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
-	pranav.sawargaonkar@gmail.com
-Date: Mon, 17 Oct 2016 19:38:27 +0000
-Message-Id: <1476733110-14293-6-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1476733110-14293-1-git-send-email-eric.auger@redhat.com>
-References: <1476733110-14293-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 17 Oct 2016 19:38:56 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 5/8] hw: platform-bus: Enable to map any memory
- region onto the platform-bus
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
-	drjones@redhat.com, christoffer.dall@linaro.org, fkan@apm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0gmOmjLH3Ccp
+	by mx1.redhat.com (Postfix) with ESMTPS id 8388A85A07;
+	Mon, 17 Oct 2016 19:53:45 +0000 (UTC)
+Received: from kamzik.brq.redhat.com ([10.34.1.163])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9HJredU028525
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Mon, 17 Oct 2016 15:53:42 -0400
+Date: Mon, 17 Oct 2016 21:53:40 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alex.bennee@linaro.org, marc.zyngier@arm.com,
+        wei@redhat.com, christoffer.dall@linaro.org
+Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 10/10] arm/arm64: gic:
+ don't just use zero
+Message-ID: <20161017195340.44qfipzkeb4trpuq@kamzik.brq.redhat.com>
+References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
+ <1468587641-7300-11-git-send-email-drjones@redhat.com>
+ <480c308b-4706-65f7-3c60-2156d801080f@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <480c308b-4706-65f7-3c60-2156d801080f@redhat.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Mon, 17 Oct 2016 19:53:45 +0000 (UTC)
+X-TUID: 5cnzB9whAj1G
 
-The platform bus is currently used to map dynamically instantiable
-platform device MMIO regions. The platform bus also can be seen as a
-pool of free guest physical addresses. We would like to use that pool
-to allocate a contiguous reserved IOVA region usable for MSI message
-address IOMMU mapping.
+On Fri, Sep 02, 2016 at 11:43:33AM +0200, Auger Eric wrote:
+> Hi Drew,
+> 
+> On 15/07/2016 15:00, Andrew Jones wrote:
+> > Allow user to select who sends ipis and with which irq,
+> > rather than just always sending irq=0 from cpu0.
+> > 
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > 
+> > ---
+> > v2: actually check that the irq received was the irq sent,
+> >     and (for gicv2) that the sender is the expected one.
+> > ---
+> >  arm/gic.c | 80 ++++++++++++++++++++++++++++++++++++++++++++++++++-------------
+> >  1 file changed, 64 insertions(+), 16 deletions(-)
+> > 
+> > diff --git a/arm/gic.c b/arm/gic.c
+> > index fc7ef241de3e2..d3ab97d4ae470 100644
+> > --- a/arm/gic.c
+> > +++ b/arm/gic.c
+> > @@ -11,6 +11,7 @@
+> >   * This work is licensed under the terms of the GNU LGPL, version 2.
+> >   */
+> >  #include <libcflat.h>
+> > +#include <util.h>
+> >  #include <asm/setup.h>
+> >  #include <asm/processor.h>
+> >  #include <asm/gic.h>
+> > @@ -33,6 +34,8 @@ static struct gic *gic;
+> >  static int gic_version;
+> >  static int acked[NR_CPUS], spurious[NR_CPUS];
+> >  static cpumask_t ready;
+> > +static int sender;
+> > +static u32 irq;
+> >  
+> >  static void nr_cpu_check(int nr)
+> >  {
+> > @@ -85,7 +88,16 @@ static void check_acked(cpumask_t *mask)
+> >  
+> >  static u32 gicv2_read_iar(void)
+> >  {
+> > -	return readl(gicv2_cpu_base() + GIC_CPU_INTACK);
+> > +	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
+> > +	int src = (iar >> 10) & 7;
+> > +
+> > +	if (src != sender) {
+> > +		report("cpu%d received IPI from unexpected source cpu%d "
+> > +		       "(expected cpu%d)",
+> > +		       false, smp_processor_id(), src, sender);
+> > +	}
+> > +
+> > +	return iar & 0x3ff;
+> you can use GICC_IAR_INT_ID_MASK instead
 
-This patch introduces platform_bus_map_region which enables to map any
-memory region onto the platform bus.
+OK
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> >  }
+> >  
+> >  static void gicv2_write_eoi(u32 irq)
+> > @@ -99,9 +111,15 @@ static void ipi_handler(struct pt_regs *regs __unused)
+> >  
+> >  	if (iar != GICC_INT_SPURIOUS) {
+> >  		gic->write_eoi(iar);
+> > -		smp_rmb(); /* pairs with wmb in ipi_test functions */
+> > -		++acked[smp_processor_id()];
+> > -		smp_wmb(); /* pairs with rmb in check_acked */
+> > +		if (iar == irq) {
+> > +			smp_rmb(); /* pairs with wmb in ipi_test functions */
+> > +			++acked[smp_processor_id()];
+> > +			smp_wmb(); /* pairs with rmb in check_acked */
+> > +		} else {
+> > +			report("cpu%d received unexpected irq %u "
+> > +			       "(expected %u)",
+> > +			       false, smp_processor_id(), iar, irq);
+> > +		}
+> >  	} else {
+> >  		++spurious[smp_processor_id()];
+> >  		smp_wmb();
+> > @@ -110,19 +128,19 @@ static void ipi_handler(struct pt_regs *regs __unused)
+> >  
+> >  static void gicv2_ipi_send_self(void)
+> >  {
+> > -	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> > +	writel(2 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> >  }
+> >  
+> >  static void gicv2_ipi_send_tlist(cpumask_t *mask)
+> >  {
+> >  	u8 tlist = (u8)cpumask_bits(mask)[0];
+> >  
+> > -	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> > +	writel(tlist << 16 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> >  }
+> >  
+> >  static void gicv2_ipi_send_broadcast(void)
+> >  {
+> > -	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> > +	writel(1 << 24 | irq, gicv2_dist_base() + GIC_DIST_SOFTINT);
+> >  }
+> >  
+> >  #define ICC_SGI1R_AFFINITY_1_SHIFT	16
+> > @@ -165,7 +183,7 @@ static void gicv3_ipi_send_tlist(cpumask_t *mask)
+> >  
+> >  		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
+> >  			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
+> > -			 /* irq << 24				| */
+> > +			 irq << 24				|
+> >  			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
+> >  			 tlist);
+> >  
+> > @@ -187,7 +205,7 @@ static void gicv3_ipi_send_self(void)
+> >  
+> >  static void gicv3_ipi_send_broadcast(void)
+> >  {
+> > -	gicv3_write_sgi1r(1ULL << 40);
+> > +	gicv3_write_sgi1r(1ULL << 40 | irq << 24);
+> >  	isb();
+> >  }
+> >  
+> > @@ -199,7 +217,7 @@ static void ipi_test_self(void)
+> >  	memset(acked, 0, sizeof(acked));
+> >  	smp_wmb();
+> >  	cpumask_clear(&mask);
+> > -	cpumask_set_cpu(0, &mask);
+> > +	cpumask_set_cpu(smp_processor_id(), &mask);
+> >  	gic->ipi.send_self();
+> >  	check_acked(&mask);
+> >  	report_prefix_pop();
+> > @@ -214,7 +232,7 @@ static void ipi_test_smp(void)
+> >  	memset(acked, 0, sizeof(acked));
+> >  	smp_wmb();
+> >  	cpumask_copy(&mask, &cpu_present_mask);
+> > -	for (i = 0; i < nr_cpus; i += 2)
+> > +	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
+> >  		cpumask_clear_cpu(i, &mask);
+> >  	gic->ipi.send_tlist(&mask);
+> >  	check_acked(&mask);
+> > @@ -224,7 +242,7 @@ static void ipi_test_smp(void)
+> >  	memset(acked, 0, sizeof(acked));
+> >  	smp_wmb();
+> >  	cpumask_copy(&mask, &cpu_present_mask);
+> > -	cpumask_clear_cpu(0, &mask);
+> > +	cpumask_clear_cpu(smp_processor_id(), &mask);
+> >  	gic->ipi.send_broadcast();
+> >  	check_acked(&mask);
+> >  	report_prefix_pop();
+> > @@ -241,6 +259,15 @@ static void ipi_enable(void)
+> >  	local_irq_enable();
+> >  }
+> >  
+> > +static void ipi_send(void)
+> > +{
+> > +	ipi_enable();
+> > +	wait_on_ready();
+> > +	ipi_test_self();
+> > +	ipi_test_smp();
+> > +	exit(report_summary());
+> > +}
+> > +
+> >  static void ipi_recv(void)
+> >  {
+> >  	ipi_enable();
+> > @@ -300,19 +327,40 @@ int main(int argc, char **argv)
+> >  		report_prefix_pop();
+> >  
+> >  	} else if (!strcmp(argv[1], "ipi")) {
+> > +		int off, i = 1;
+> > +		long val;
+> >  
+> >  		report_prefix_push(argv[1]);
+> > +
+> > +		while (--argc != 1) {
+> > +			off = parse_keyval(argv[++i], &val);
+> > +			if (off == -1)
+> > +				continue;
+> > +			argv[i][off] = '\0';
+> > +			if (strcmp(argv[i], "sender") == 0)
+> > +				sender = val;
+> > +			else if (strcmp(argv[i], "irq") == 0)
+> > +				irq = val;
+> > +		}
+> > +
+> >  		nr_cpu_check(2);
+> >  		ipi_enable();
+> >  
+> >  		for_each_present_cpu(cpu) {
+> >  			if (cpu == 0)
+> >  				continue;
+> > -			smp_boot_secondary(cpu, ipi_recv);
+> > +			if (cpu == sender)
+> > +				smp_boot_secondary(cpu, ipi_send);
+> > +			else
+> > +				smp_boot_secondary(cpu, ipi_recv);
+> > +		}
+> > +		if (sender == 0)  {
+> > +			wait_on_ready();
+> > +			ipi_test_self();
+> > +			ipi_test_smp();
+> > +		} else {
+> > +			ipi_recv();
+> >  		}
+> > -		wait_on_ready();
+> > -		ipi_test_self();
+> > -		ipi_test_smp();
+> >  
+> >  		smp_rmb();
+> >  		for_each_present_cpu(cpu) {
+> > 
+> 
+> I ran the tests on both Cavium & Seattle HW without noticing issues.
+> 
+> I guess the file organization & infra will need to change while adding
+> some new tests, removing some globals ... but that's a good start to
 
----
+Can you explain what you have in mind for removing some globals, changing
+things? I can change it now :-)  As for adding new tests, though, while
+I think we can extend arm/gic.c with more tests, anytime a unit test
+differs too much from a framework of a current unit test (group of tests)
+it should just create a new unit test file in arm/ and then do whatever
+it likes. The common code lib/* is where changes should be made if the
+framework doesn't work - but I should get that as close to right as
+possible before merging the series.
 
-v2 -> v3:
-include qapi/error.h
----
- hw/core/platform-bus.c    | 27 +++++++++++++++++----------
- include/hw/platform-bus.h |  7 +++++++
- 2 files changed, 24 insertions(+), 10 deletions(-)
+> show how to write new tests. I am a bit concerned by the LOCs and
+> redundancies with the kernel with possible out-of-sync macros but well I
+> think there is no other way.
 
-diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
-index 329ac67..3fb6f6f 100644
---- a/hw/core/platform-bus.c
-+++ b/hw/core/platform-bus.c
-@@ -24,6 +24,7 @@
- #include "exec/address-spaces.h"
- #include "qemu/error-report.h"
- #include "sysemu/sysemu.h"
-+#include "qapi/error.h"
- 
- 
- /*
-@@ -127,16 +128,14 @@ static void platform_bus_map_irq(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-     sysbus_connect_irq(sbdev, n, pbus->irqs[irqn]);
- }
- 
--static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
--                                  int n)
-+void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr)
- {
--    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
--    uint64_t size = memory_region_size(sbdev_mr);
-+    uint64_t size = memory_region_size(mr);
-     uint64_t alignment = (1ULL << (63 - clz64(size + size - 1)));
-     uint64_t off;
-     bool found_region = false;
- 
--    if (memory_region_is_mapped(sbdev_mr)) {
-+    if (memory_region_is_mapped(mr)) {
-         /* Region is already mapped, nothing to do */
-         return;
-     }
-@@ -153,13 +152,21 @@ static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-     }
- 
-     if (!found_region) {
--        error_report("Platform Bus: Can not fit MMIO region of size %"PRIx64,
--                     size);
--        exit(1);
-+        error_setg(&error_fatal,
-+                   "Platform Bus: Can not fit region %s of size %"PRIx64,
-+                   mr->name, size);
-     }
- 
--    /* Map the device's region into our Platform Bus MMIO space */
--    memory_region_add_subregion(&pbus->mmio, off, sbdev_mr);
-+    /* Map the region into our Platform Bus MMIO space */
-+    memory_region_add_subregion(&pbus->mmio, off, mr);
-+}
-+
-+static void platform_bus_map_mmio(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-+                                  int n)
-+{
-+    MemoryRegion *sbdev_mr = sysbus_mmio_get_region(sbdev, n);
-+
-+    platform_bus_map_region(pbus, sbdev_mr);
- }
- 
- /*
-diff --git a/include/hw/platform-bus.h b/include/hw/platform-bus.h
-index a00775c..6d3a664 100644
---- a/include/hw/platform-bus.h
-+++ b/include/hw/platform-bus.h
-@@ -54,4 +54,11 @@ int platform_bus_get_irqn(PlatformBusDevice *platform_bus, SysBusDevice *sbdev,
- hwaddr platform_bus_get_mmio_addr(PlatformBusDevice *pbus, SysBusDevice *sbdev,
-                                   int n);
- 
-+/**
-+ * platform_bus_map_region: map a MemoryRegion into the platform bus
-+ * @pbus: platform bus handle
-+ * @mr: memory region handle
-+ */
-+void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr);
-+
- #endif /* HW_PLATFORM_BUS_H */
--- 
-1.9.1
+Me neither. We've debated using kernel headers straight from a kernel
+source directory in the past, but opted against it. I don't think we'll
+need to synch too much though. If somebody writes a test that needs new
+defines, then that's when it can be synched.
 
+> 
+> I will spend some time writing some tests within the next weeks.
+
+Awesome. Of course that was some weeks ago that you wrote that :-)
+
+Thanks for the review of the series. I'll send a v4 soon.
+
+drew

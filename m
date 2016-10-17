@@ -1,315 +1,166 @@
-Received: by 10.80.166.35 with SMTP id d32csp625575edc;
-        Mon, 17 Oct 2016 12:15:19 -0700 (PDT)
-X-Received: by 10.55.69.20 with SMTP id s20mr24600363qka.56.1476731719006;
-        Mon, 17 Oct 2016 12:15:19 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id m204si18716717qke.44.2016.10.17.12.15.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 12:15:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.80.166.35 with SMTP id d32csp627849edc;
+        Mon, 17 Oct 2016 12:20:41 -0700 (PDT)
+X-Received: by 10.55.48.85 with SMTP id w82mr24810770qkw.142.1476732040920;
+        Mon, 17 Oct 2016 12:20:40 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id h4si18500084qtc.9.2016.10.17.12.20.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 17 Oct 2016 12:20:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35303 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bwDSi-0002Vp-7x
+	for alex.bennee@linaro.org; Mon, 17 Oct 2016 15:20:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48362)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bwDSY-0002TB-QN
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:20:32 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1bwDSU-0007S4-IJ
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:20:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33416)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1bwDSU-0007Ru-BL; Mon, 17 Oct 2016 15:20:26 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 242DC3D957;
-	Mon, 17 Oct 2016 19:15:16 +0000 (UTC)
-Received: from kamzik.brq.redhat.com ([10.34.1.163])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9HJFBDd015003
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 17 Oct 2016 15:15:13 -0400
-Date: Mon, 17 Oct 2016 21:15:10 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alex.bennee@linaro.org, marc.zyngier@arm.com,
-        wei@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 08/10] arm/arm64: gicv2:
- add an IPI test
-Message-ID: <20161017191510.da4k6dkxlksxub42@kamzik.brq.redhat.com>
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
- <1468587641-7300-9-git-send-email-drjones@redhat.com>
- <b797ae8b-4cbf-f15e-e476-0976653dd0b4@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 1376161E67;
+	Mon, 17 Oct 2016 19:20:25 +0000 (UTC)
+Received: from localhost (ovpn-116-159.phx2.redhat.com [10.3.116.159])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9HJKN9S032450; Mon, 17 Oct 2016 15:20:24 -0400
+Date: Mon, 17 Oct 2016 17:20:22 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <20161017192022.GA3275@thinpad.lan.raisama.net>
+References: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
+	<1476485569-6744-3-git-send-email-lvivier@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b797ae8b-4cbf-f15e-e476-0976653dd0b4@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Mon, 17 Oct 2016 19:15:16 +0000 (UTC)
-X-TUID: yRx8x3zHPnxA
+In-Reply-To: <1476485569-6744-3-git-send-email-lvivier@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 17 Oct 2016 19:20:25 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 2/3] exec: rename cpu_exec_init() as
+ cpu_exec_realizefn()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+	Greg Ungerer <gerg@uclinux.org>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Jia Liu <proljc@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZSB4xT/hmbQb
 
-On Thu, Sep 01, 2016 at 06:42:50PM +0200, Auger Eric wrote:
-> Hi Drew,
+On Sat, Oct 15, 2016 at 12:52:48AM +0200, Laurent Vivier wrote:
+> Modify all CPUs to call it from XXX_cpu_realizefn() function.
 > 
-> On 15/07/2016 15:00, Andrew Jones wrote:
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> > v2: add more details in the output if a test fails,
-> >     report spurious interrupts if we get them
-> > ---
-> >  arm/Makefile.common |   6 +-
-> >  arm/gic.c           | 194 ++++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  arm/unittests.cfg   |   7 ++
-> >  3 files changed, 204 insertions(+), 3 deletions(-)
-> >  create mode 100644 arm/gic.c
-> > 
-> > diff --git a/arm/Makefile.common b/arm/Makefile.common
-> > index 41239c37e0920..bc38183ab86e0 100644
-> > --- a/arm/Makefile.common
-> > +++ b/arm/Makefile.common
-> > @@ -9,9 +9,9 @@ ifeq ($(LOADADDR),)
-> >  	LOADADDR = 0x40000000
-> >  endif
-> >  
-> > -tests-common = \
-> > -	$(TEST_DIR)/selftest.flat \
-> > -	$(TEST_DIR)/spinlock-test.flat
-> > +tests-common  = $(TEST_DIR)/selftest.flat
-> > +tests-common += $(TEST_DIR)/spinlock-test.flat
-> > +tests-common += $(TEST_DIR)/gic.flat
-> >  
-> >  all: test_cases
-> >  
-> > diff --git a/arm/gic.c b/arm/gic.c
-> > new file mode 100644
-> > index 0000000000000..cf7ec1c90413c
-> > --- /dev/null
-> > +++ b/arm/gic.c
-> > @@ -0,0 +1,194 @@
-> > +/*
-> > + * GIC tests
-> > + *
-> > + * GICv2
-> > + *   . test sending/receiving IPIs
-> > + *
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#include <libcflat.h>
-> > +#include <asm/setup.h>
-> > +#include <asm/processor.h>
-> > +#include <asm/gic.h>
-> > +#include <asm/smp.h>
-> > +#include <asm/barrier.h>
-> > +#include <asm/io.h>
-> > +
-> > +static int gic_version;
-> > +static int acked[NR_CPUS], spurious[NR_CPUS];
-> > +static cpumask_t ready;
-> > +
-> > +static void nr_cpu_check(int nr)
-> > +{
-> > +	if (nr_cpus < nr)
-> > +		report_abort("At least %d cpus required", nr);
-> > +}
-> > +
-> > +static void wait_on_ready(void)
-> > +{
-> > +	cpumask_set_cpu(smp_processor_id(), &ready);
-> > +	while (!cpumask_full(&ready))
-> > +		cpu_relax();
-> > +}
-> > +
-> > +static void check_acked(cpumask_t *mask)
-> > +{
-> > +	int missing = 0, extra = 0, unexpected = 0;
-> > +	int nr_pass, cpu, i;
-> > +
-> > +	/* Wait up to 5s for all interrupts to be delivered */
-> > +	for (i = 0; i < 50; ++i) {
-> > +		mdelay(100);
-> > +		nr_pass = 0;
-> > +		for_each_present_cpu(cpu) {
-> Couldn't we use for_each_cpu(cpu, mask)?
-
-If we did, then we wouldn't be able to detect delivery of interrupts to
-the wrong cpus. Note, we don't run the second loop if everything looks
-good here. That one is just to better report a detected problem(s).
-
-> > +			smp_rmb();
-> > +			nr_pass += cpumask_test_cpu(cpu, mask) ?
-> > +				acked[cpu] == 1 : acked[cpu] == 0;
-> > +		}
-> > +		if (nr_pass == nr_cpus) {
-> > +			report("Completed in %d ms", true, ++i * 100);
-> > +			return;
-> > +		}
-> > +	}
-> > +
-> > +	for_each_present_cpu(cpu) {
-> > +		if (cpumask_test_cpu(cpu, mask)) {
-> here we can't since we count unexpected
+> Remove all the cannot_destroy_with_object_finalize_yet as
+> unsafe references have been moved to cpu_exec_realizefn().
+> (tested with QOM command provided by commit 4c315c27)
 > 
-> > +			if (!acked[cpu])
-> > +				++missing;
-> > +			else if (acked[cpu] > 1)
-> > +				++extra;
-> > +		} else {
-> > +			if (acked[cpu])
-> > +				++unexpected;
-> > +		}
-> > +	}
-> > +
-> > +	report("Timed-out (5s). ACKS: missing=%d extra=%d unexpected=%d",
-> > +	       false, missing, extra, unexpected);
-> > +}
-> > +
-> > +static void ipi_handler(struct pt_regs *regs __unused)
-> > +{
-> > +	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-> > +
-> > +	if (iar != GICC_INT_SPURIOUS) {
-> > +		writel(iar, gicv2_cpu_base() + GIC_CPU_EOI);
-> if EOIMode is set may need to DIR as well.
+> for arm:
+> 
+> Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
+> to arm_cpu_realizefn() as setting of cpu_index is now done
+> in cpu_exec_realizefn().
+> 
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+[...]
+> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
+> index 1b9540e..364a45d 100644
+> --- a/target-arm/cpu.c
+> +++ b/target-arm/cpu.c
+> @@ -441,22 +441,11 @@ static void arm_cpu_initfn(Object *obj)
+>      CPUState *cs = CPU(obj);
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      static bool inited;
+> -    uint32_t Aff1, Aff0;
+>  
+>      cs->env_ptr = &cpu->env;
+> -    cpu_exec_init(cs, &error_abort);
+>      cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
+>                                           g_free, g_free);
+>  
+> -    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
+> -     * We don't support setting cluster ID ([16..23]) (known as Aff2
+> -     * in later ARM ARM versions), or any of the higher affinity level fields,
+> -     * so these bits always RAZ.
+> -     */
+> -    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
+> -    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
+> -    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
+> -
+>  #ifndef CONFIG_USER_ONLY
+>      /* Our inbound IRQ and FIQ lines */
+>      if (kvm_enabled()) {
+[...]
+> @@ -631,6 +628,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          set_feature(env, ARM_FEATURE_THUMB_DSP);
+>      }
+>  
+> +    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
+> +     * We don't support setting cluster ID ([16..23]) (known as Aff2
+> +     * in later ARM ARM versions), or any of the higher affinity level fields,
+> +     * so these bits always RAZ.
+> +     */
+> +    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
+> +    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
+> +    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
+> +
 
-OK, I'll look into that
+This will override any value set in the "mp-affinity" property,
+The mp-affinity property can be set by the user in the
+command-line, and it is also set by machvirt_init() in
+hw/arm/virt.c.
 
-> > +		smp_rmb(); /* pairs with wmb in ipi_test functions */
-> > +		++acked[smp_processor_id()];
-> > +		smp_wmb(); /* pairs with rmb in check_acked */
-> > +	} else {
-> > +		++spurious[smp_processor_id()];
-> > +		smp_wmb();
-> > +	}
-> > +}
-> > +
-> > +static void ipi_test_self(void)
-> > +{
-> > +	cpumask_t mask;
-> > +
-> > +	report_prefix_push("self");
-> > +	memset(acked, 0, sizeof(acked));
-> > +	smp_wmb();
-> > +	cpumask_clear(&mask);
-> > +	cpumask_set_cpu(0, &mask);
-> > +	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	check_acked(&mask);
-> > +	report_prefix_pop();
-> > +}
-> > +
-> > +static void ipi_test_smp(void)
-> > +{
-> > +	cpumask_t mask;
-> > +	unsigned long tlist;
-> > +
-> > +	report_prefix_push("target-list");
-> > +	memset(acked, 0, sizeof(acked));
-> > +	smp_wmb();
-> > +	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
-> > +	cpumask_bits(&mask)[0] = tlist;
-> > +	writel((u8)tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	check_acked(&mask);
-> > +	report_prefix_pop();
-> > +
-> > +	report_prefix_push("broadcast");
-> > +	memset(acked, 0, sizeof(acked));
-> > +	smp_wmb();
-> > +	cpumask_copy(&mask, &cpu_present_mask);
-> > +	cpumask_clear_cpu(0, &mask);
-> > +	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	check_acked(&mask);
-> > +	report_prefix_pop();
-> > +}
-> > +
-> > +static void ipi_enable(void)
-> > +{
-> > +	gicv2_enable_defaults();
-> > +#ifdef __arm__
-> > +	install_exception_handler(EXCPTN_IRQ, ipi_handler);
-> > +#else
-> > +	install_irq_handler(EL1H_IRQ, ipi_handler);
-> > +#endif
-> > +	local_irq_enable();
-> > +}
-> > +
-> > +static void ipi_recv(void)
-> > +{
-> > +	ipi_enable();
-> > +	cpumask_set_cpu(smp_processor_id(), &ready);
-> > +	while (1)
-> > +		wfi();
-> > +}
-> > +
-> > +int main(int argc, char **argv)
-> > +{
-> > +	char pfx[8];
-> > +	int cpu;
-> > +
-> > +	gic_version = gic_init();
-> > +	if (!gic_version)
-> > +		report_abort("No gic present!");
-> > +
-> > +	snprintf(pfx, 8, "gicv%d", gic_version);
-> > +	report_prefix_push(pfx);
-> > +
-> > +	if (argc < 2) {
-> > +
-> spare void line
-> > +		report_prefix_push("ipi");
-> > +		ipi_enable();
-> > +		ipi_test_self();
-> > +		report_prefix_pop();
-> > +
-> same
-> > +	} else if (!strcmp(argv[1], "ipi")) {
-> > +
-> same or maybe this is just another style convention?
+Considering that each CPU is supposed to have a different value,
+I doubt there are existing use cases for mp-affinity being set
+directly by the user.
 
-Indeed it is. I don't think the kernel's checkpatch
-complains about it and I find it much easier to read.
+I suggest having a "cluster-size" property, instead of
+"mp-affinity". This way the mp_affinity field can be calculated
+on realize, based on the configured cluster-size.
 
-> > +		report_prefix_push(argv[1]);
-> > +		nr_cpu_check(2);
-> > +		ipi_enable();
-> > +
-> > +		for_each_present_cpu(cpu) {
-> > +			if (cpu == 0)
-> > +				continue;
-> > +			smp_boot_secondary(cpu, ipi_recv);
-> > +		}
-> > +		wait_on_ready();
-> > +		ipi_test_self();
-> > +		ipi_test_smp();
-> > +
-> > +		smp_rmb();
-> > +		for_each_present_cpu(cpu) {
-> > +			if (spurious[cpu]) {
-> > +				printf("ipi: WARN: cpu%d got %d spurious "
-> > +				       "interrupts\n",
-> > +				       spurious[cpu], smp_processor_id());
-> > +			}
-> > +		}
-> > +
-> > +		report_prefix_pop();
-> > +
-> > +	} else {
-> > +		report_abort("Unknown subtest '%s'", argv[1]);
-> > +	}
-> > +
-> > +	return report_summary();
-> > +}
-> > diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> > index ffd12e5794aa0..bb364675043f0 100644
-> > --- a/arm/unittests.cfg
-> > +++ b/arm/unittests.cfg
-> > @@ -51,3 +51,10 @@ file = selftest.flat
-> >  smp = $MAX_SMP
-> >  extra_params = -append 'smp'
-> >  groups = selftest
-> > +
-> > +# Test GIC emulation
-> > +[gicv2-ipi]
-> > +file = gic.flat
-> > +smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
-> > +extra_params = -machine gic-version=2 -append 'ipi'
-> > +groups = gic
-> > 
-> Aside the minor comments above,
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>      if (cpu->reset_hivecs) {
+>              cpu->reset_sctlr |= (1 << 13);
+>      }
+[...]
 
-Thanks!
-drew
+-- 
+Eduardo

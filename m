@@ -1,208 +1,239 @@
-Received: by 10.80.166.35 with SMTP id d32csp412609edc;
-        Mon, 17 Oct 2016 04:32:52 -0700 (PDT)
-X-Received: by 10.200.45.9 with SMTP id n9mr22814884qta.52.1476703971964;
-        Mon, 17 Oct 2016 04:32:51 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q4si17652258qkq.193.2016.10.17.04.32.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 04:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.80.166.35 with SMTP id d32csp436198edc;
+        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
+X-Received: by 10.55.136.5 with SMTP id k5mr22951450qkd.67.1476707089489;
+        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id l7si17777651qkd.209.2016.10.17.05.24.49
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60599 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bw69y-0001ma-Vy
-	for alex.bennee@linaro.org; Mon, 17 Oct 2016 07:32:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44089)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bw68R-0000wb-49
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 07:31:18 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bw68N-00078O-0T
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 07:31:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44852)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1bw68H-000771-VK; Mon, 17 Oct 2016 07:31:06 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D10F53F1E1;
-	Mon, 17 Oct 2016 11:31:04 +0000 (UTC)
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9HBUwu9016876; Mon, 17 Oct 2016 07:30:58 -0400
-Date: Mon, 17 Oct 2016 13:30:56 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20161017133056.739fa6fd@nial.brq.redhat.com>
-In-Reply-To: <1476485569-6744-4-git-send-email-lvivier@redhat.com>
-References: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
-	<1476485569-6744-4-git-send-email-lvivier@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 6EDBA81F07;
+	Mon, 17 Oct 2016 12:24:48 +0000 (UTC)
+Received: from kamzik.brq.redhat.com ([10.34.1.163])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9HCOhGT024728
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+	Mon, 17 Oct 2016 08:24:45 -0400
+Date: Mon, 17 Oct 2016 14:24:43 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
+        peter.maydell@linaro.org, alex.bennee@linaro.org, marc.zyngier@arm.com,
+        wei@redhat.com, christoffer.dall@linaro.org
+Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 03/10] arm/arm64: smp:
+ support more than 8 cpus
+Message-ID: <20161017122443.2v5r5xtqhi7ekgmw@kamzik.brq.redhat.com>
+References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
+ <1468587641-7300-4-git-send-email-drjones@redhat.com>
+ <11a885eb-d43e-528e-235a-13358edc6ea6@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <11a885eb-d43e-528e-235a-13358edc6ea6@redhat.com>
+User-Agent: Mutt/1.6.0.1 (2016-04-01)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 17 Oct 2016 11:31:05 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v3 3/3] exec: call cpu_exec_exit() from a
- CPU unrealize common function
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
-	Greg Ungerer <gerg@uclinux.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Chen Gang <gang.chen.5i5j@gmail.com>, Jia Liu <proljc@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vinQ7/RTxosx
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 17 Oct 2016 12:24:48 +0000 (UTC)
+X-TUID: WV/9tNWiIi3J
 
-On Sat, 15 Oct 2016 00:52:49 +0200
-Laurent Vivier <lvivier@redhat.com> wrote:
-
-> As cpu_exec_exit() mirrors the cpu_exec_realizefn(),
-> rename it as cpu_exec_unrealizefn().
+On Tue, Aug 30, 2016 at 04:28:52PM +0200, Auger Eric wrote:
+> Hi Drew,
 > 
-> Create and register a cpu_common_unrealizefn() function for
-> the CPU device class and call cpu_exec_unrealizefn() from
-> this function.
+> Proper commit message?
+> ... also selects the vgic model corresponding to the host
+
+Sure
+
+> > Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  arm/run                   | 19 ++++++++++++-------
+> >  arm/selftest.c            |  5 ++++-
+> >  lib/arm/asm/processor.h   |  9 +++++++--
+> >  lib/arm/asm/setup.h       |  4 ++--
+> >  lib/arm/setup.c           | 12 +++++++++++-
+> >  lib/arm64/asm/processor.h |  9 +++++++--
+> >  6 files changed, 43 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/arm/run b/arm/run
+> > index a2f35ef6a7e63..2d0698619606e 100755
+> > --- a/arm/run
+> > +++ b/arm/run
+> > @@ -31,13 +31,6 @@ if [ -z "$ACCEL" ]; then
+> >  	fi
+> >  fi
+> >  
+> > -if [ "$HOST" = "aarch64" ] && [ "$ACCEL" = "kvm" ]; then
+> > -	processor="host"
+> > -	if [ "$ARCH" = "arm" ]; then
+> > -		processor+=",aarch64=off"
+> > -	fi
+> > -fi
+> > -
+> >  qemu="${QEMU:-qemu-system-$ARCH_NAME}"
+> >  qpath=$(which $qemu 2>/dev/null)
+> >  
+> > @@ -53,6 +46,18 @@ fi
+> >  
+> >  M='-machine virt'
+> >  
+> > +if [ "$ACCEL" = "kvm" ]; then
+> > +	if $qemu $M,\? 2>&1 | grep gic-version > /dev/null; then
+> > +		M+=',gic-version=host'
+> > +	fi
+> > +	if [ "$HOST" = "aarch64" ]; then
+> > +		processor="host"
+> > +		if [ "$ARCH" = "arm" ]; then
+> > +			processor+=",aarch64=off"
+> > +		fi
+> > +	fi
+> > +fi
+> > +
+> >  if ! $qemu $M -device '?' 2>&1 | grep virtconsole > /dev/null; then
+> >  	echo "$qpath doesn't support virtio-console for chr-testdev. Exiting."
+> >  	exit 2
+> > diff --git a/arm/selftest.c b/arm/selftest.c
+> > index 196164f5313de..2f117f795d2dc 100644
+> > --- a/arm/selftest.c
+> > +++ b/arm/selftest.c
+> > @@ -312,9 +312,10 @@ static bool psci_check(void)
+> >  static cpumask_t smp_reported;
+> >  static void cpu_report(void)
+> >  {
+> > +	unsigned long mpidr = get_mpidr();
+> >  	int cpu = smp_processor_id();
+> >  
+> > -	report("CPU%d online", true, cpu);
+> > +	report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == cpu, cpu, mpidr);
+> >  	cpumask_set_cpu(cpu, &smp_reported);
+> >  	halt();
+> >  }
+> > @@ -343,6 +344,7 @@ int main(int argc, char **argv)
+> >  
+> >  	} else if (strcmp(argv[1], "smp") == 0) {
+> >  
+> > +		unsigned long mpidr = get_mpidr();
+> >  		int cpu;
+> >  
+> >  		report("PSCI version", psci_check());
+> > @@ -353,6 +355,7 @@ int main(int argc, char **argv)
+> >  			smp_boot_secondary(cpu, cpu_report);
+> >  		}
+> >  
+> > +		report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == 0, 0, mpidr);
+> >  		cpumask_set_cpu(0, &smp_reported);
+> >  		while (!cpumask_full(&smp_reported))
+> >  			cpu_relax();
+> > diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
+> > index f25e7eee3666c..d2048f5f5f7e6 100644
+> > --- a/lib/arm/asm/processor.h
+> > +++ b/lib/arm/asm/processor.h
+> > @@ -40,8 +40,13 @@ static inline unsigned int get_mpidr(void)
+> >  	return mpidr;
+> >  }
+> >  
+> > -/* Only support Aff0 for now, up to 4 cpus */
+> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
+> > +#define MPIDR_HWID_BITMASK 0xffffff
+> > +extern int mpidr_to_cpu(unsigned long mpidr);
+> > +
+> > +#define MPIDR_LEVEL_SHIFT(level) \
+> > +	(((1 << level) >> 1) << 3)
+> can't we have level << 3?
+> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
+> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
+> >  
+> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+> >  extern bool is_user(void);
+> > diff --git a/lib/arm/asm/setup.h b/lib/arm/asm/setup.h
+> > index cb8fdbd38dd5d..c501c6ddd8657 100644
+> > --- a/lib/arm/asm/setup.h
+> > +++ b/lib/arm/asm/setup.h
+> > @@ -10,8 +10,8 @@
+> >  #include <asm/page.h>
+> >  #include <asm/pgtable-hwdef.h>
+> >  
+> > -#define NR_CPUS			8
+> > -extern u32 cpus[NR_CPUS];
+> > +#define NR_CPUS			255
+> 256?
+
+The kernel defines KVM_MAX_VCPUS as VGIC_V3_MAX_CPUS, which is
+currently defined as 255. I was just being consistent.
+
+> > +extern u64 cpus[NR_CPUS];
+> maybe worth commenting the semantic of cpus[i]?
+
+sure
+
+> >  extern int nr_cpus;
+> what about MAX_CPUS instead of NR_CPUS?
+
+kernel uses NR_CPUS, I want to be consistent.
+
+> >  
+> >  #define NR_MEM_REGIONS		8
+> > diff --git a/lib/arm/setup.c b/lib/arm/setup.c
+> > index 7e7b39f11dde1..b6e2d5815e723 100644
+> > --- a/lib/arm/setup.c
+> > +++ b/lib/arm/setup.c
+> > @@ -24,12 +24,22 @@ extern unsigned long stacktop;
+> >  extern void io_init(void);
+> >  extern void setup_args_progname(const char *args);
+> >  
+> > -u32 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
+> > +u64 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
+> >  int nr_cpus;
+> >  
+> >  struct mem_region mem_regions[NR_MEM_REGIONS];
+> >  phys_addr_t __phys_offset, __phys_end;
+> >  
+> > +int mpidr_to_cpu(unsigned long mpidr)
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = 0; i < nr_cpus; ++i)
+> > +		if (cpus[i] == (mpidr & MPIDR_HWID_BITMASK))
+> > +			return i;
+> > +	return -1;
+> > +}
+> > +
+> >  static void cpu_set(int fdtnode __unused, u32 regval, void *info __unused)
+> >  {
+> >  	int cpu = nr_cpus++;
+> > diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
+> > index 9a208ff729b7e..7e448dc81a6aa 100644
+> > --- a/lib/arm64/asm/processor.h
+> > +++ b/lib/arm64/asm/processor.h
+> > @@ -78,8 +78,13 @@ static inline type get_##reg(void)				\
+> >  
+> >  DEFINE_GET_SYSREG64(mpidr)
+> >  
+> > -/* Only support Aff0 for now, gicv2 only */
+> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
+> > +#define MPIDR_HWID_BITMASK 0xff00ffffff
+> > +extern int mpidr_to_cpu(unsigned long mpidr);
+> > +
+> > +#define MPIDR_LEVEL_SHIFT(level) \
+> > +	(((1 << level) >> 1) << 3)
+> what about level 3? the macro would fail fetching affinity level 3.
 > 
-> Remove cpu_exec_exit() from cpu_common_finalize()
-> (which mirrors init, not realize), and as x86_cpu_unrealizefn()
-> overwrites the device class unrealize function, add a call to
-> cpu_exec_unrealizefn() (as in ppc_cpu_unrealizefn()).
+> Thanks
 > 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> ---
->  exec.c                      | 2 +-
->  include/qom/cpu.h           | 2 +-
->  qom/cpu.c                   | 8 +++++++-
->  target-i386/cpu.c           | 2 ++
->  target-ppc/translate_init.c | 2 +-
->  5 files changed, 12 insertions(+), 4 deletions(-)
-> 
-> diff --git a/exec.c b/exec.c
-> index 203eb52..3cd25db 100644
-> --- a/exec.c
-> +++ b/exec.c
-> @@ -596,7 +596,7 @@ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
->  }
->  #endif
->  
-> -void cpu_exec_exit(CPUState *cpu)
-> +void cpu_exec_unrealizefn(CPUState *cpu)
->  {
->      CPUClass *cc = CPU_GET_CLASS(cpu);
->  
-> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-> index 5520c6c..633c3fc 100644
-> --- a/include/qom/cpu.h
-> +++ b/include/qom/cpu.h
-> @@ -948,7 +948,7 @@ void QEMU_NORETURN cpu_abort(CPUState *cpu, const char *fmt, ...)
->      GCC_FMT_ATTR(2, 3);
->  void cpu_exec_initfn(CPUState *cpu);
->  void cpu_exec_realizefn(CPUState *cpu, Error **errp);
-> -void cpu_exec_exit(CPUState *cpu);
-> +void cpu_exec_unrealizefn(CPUState *cpu);
->  
->  #ifdef CONFIG_SOFTMMU
->  extern const struct VMStateDescription vmstate_cpu_common;
-> diff --git a/qom/cpu.c b/qom/cpu.c
-> index 85f1132..03d9190 100644
-> --- a/qom/cpu.c
-> +++ b/qom/cpu.c
-> @@ -345,6 +345,12 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
->      trace_init_vcpu(cpu);
->  }
->  
-> +static void cpu_common_unrealizefn(DeviceState *dev, Error **errp)
-> +{
-> +    CPUState *cpu = CPU(dev);
-> +    cpu_exec_unrealizefn(cpu);
-> +}
-> +
->  static void cpu_common_initfn(Object *obj)
->  {
->      CPUState *cpu = CPU(obj);
-> @@ -369,7 +375,6 @@ static void cpu_common_initfn(Object *obj)
->  static void cpu_common_finalize(Object *obj)
->  {
->      CPUState *cpu = CPU(obj);
-> -    cpu_exec_exit(cpu);
->      g_free(cpu->trace_dstate);
->  }
->  
-> @@ -403,6 +408,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
->      k->cpu_exec_exit = cpu_common_noop;
->      k->cpu_exec_interrupt = cpu_common_exec_interrupt;
->      dc->realize = cpu_common_realizefn;
-> +    dc->unrealize = cpu_common_unrealizefn;
->      /*
->       * Reason: CPUs still need special care by board code: wiring up
->       * IRQs, adding reset handlers, halting non-first CPUs, ...
-> diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-> index 3476d46..399a3e4 100644
-> --- a/target-i386/cpu.c
-> +++ b/target-i386/cpu.c
-> @@ -3253,6 +3253,8 @@ static void x86_cpu_unrealizefn(DeviceState *dev, Error **errp)
->          object_unparent(OBJECT(cpu->apic_state));
->          cpu->apic_state = NULL;
->      }
-> +
-> +    cpu_exec_unrealizefn(CPU(dev));
-perhaps it should mirror the same pattern as realize override
+> Eric
+> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
+> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
+> >  
+> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
+> >  extern bool is_user(void);
+> > 
+>
 
-i.e.
-child class is it has it's own unrealize()
-should have parent_unrealize field where it save original
-unrealize pointer before override.
-
-grep for parent_realize to see used pattern.
-
->  }
->  
->  typedef struct BitProperty {
-> diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
-> index 40dae70..2de6a06 100644
-> --- a/target-ppc/translate_init.c
-> +++ b/target-ppc/translate_init.c
-> @@ -9910,7 +9910,7 @@ static void ppc_cpu_unrealizefn(DeviceState *dev, Error **errp)
->      opc_handler_t **table, **table_2;
->      int i, j, k;
->  
-> -    cpu_exec_exit(CPU(dev));
-> +    cpu_exec_unrealizefn(CPU(dev));
->  
->      for (i = 0; i < PPC_CPU_OPCODES_LEN; i++) {
->          if (env->opcodes[i] == &invalid_handler) {
-
+Thanks,
+drew

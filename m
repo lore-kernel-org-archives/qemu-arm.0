@@ -1,194 +1,129 @@
-Received: by 10.80.166.35 with SMTP id d32csp641130edc;
-        Mon, 17 Oct 2016 12:55:48 -0700 (PDT)
-X-Received: by 10.237.38.68 with SMTP id z62mr27622705qtc.73.1476734148238;
-        Mon, 17 Oct 2016 12:55:48 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp642856edc;
+        Mon, 17 Oct 2016 13:00:14 -0700 (PDT)
+X-Received: by 10.55.111.68 with SMTP id k65mr15412853qkc.9.1476734414181;
+        Mon, 17 Oct 2016 13:00:14 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q62si16574662qka.275.2016.10.17.12.55.48
+        by mx.google.com with ESMTPS id b34si18771660qkh.220.2016.10.17.13.00.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 12:55:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 17 Oct 2016 13:00:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35560 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35594 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwE0h-0006gX-HL
-	for alex.bennee@linaro.org; Mon, 17 Oct 2016 15:55:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56597)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bwE4z-0002sf-I7
+	for alex.bennee@linaro.org; Mon, 17 Oct 2016 16:00:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56537)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bwDkc-0001ZT-8u
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 15:39:11 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1bwDkT-0001RV-M8
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:39:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1bwDkY-0007zI-S5
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 15:39:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36260)
+	(envelope-from <eric.auger@redhat.com>) id 1bwDkS-0007vb-L1
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 15:39:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59444)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1bwDkW-0007xi-Ev; Mon, 17 Oct 2016 15:39:04 -0400
+	id 1bwDkS-0007v9-FQ; Mon, 17 Oct 2016 15:39:00 -0400
 Received: from int-mx11.intmail.prod.int.phx2.redhat.com
 	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8179D66844;
-	Mon, 17 Oct 2016 19:39:03 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AB2D44E4D7;
+	Mon, 17 Oct 2016 19:38:59 +0000 (UTC)
 Received: from localhost.redhat.com (vpn1-5-170.ams2.redhat.com [10.36.5.170])
 	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u9HJcVFa009529; Mon, 17 Oct 2016 15:39:00 -0400
+	ESMTP id u9HJcVFZ009529; Mon, 17 Oct 2016 15:38:56 -0400
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger@redhat.com, eric.auger.pro@gmail.com, peter.maydell@linaro.org, 
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
 	pranav.sawargaonkar@gmail.com
-Date: Mon, 17 Oct 2016 19:38:29 +0000
-Message-Id: <1476733110-14293-8-git-send-email-eric.auger@redhat.com>
+Date: Mon, 17 Oct 2016 19:38:28 +0000
+Message-Id: <1476733110-14293-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1476733110-14293-1-git-send-email-eric.auger@redhat.com>
 References: <1476733110-14293-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 17 Oct 2016 19:39:03 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 17 Oct 2016 19:38:59 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v5 7/8] hw: vfio: common: vfio_prepare_msi_mapping
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC v5 6/8] hw: platform-bus: Add platform bus stub
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: diana.craciun@freescale.com, Bharat.Bhushan@freescale.com,
 	drjones@redhat.com, christoffer.dall@linaro.org, fkan@apm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NAqibidJSSQ7
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7us1ccnTYDwR
 
-Introduce an helper function to retrieve the iommu type1 capability
-chain info.
+platform_bus_map_region is bound to be called in VFIO common code.
 
-The first capability ready to be exploited is the msi resv
-capability. vfio_prepare_msi_mapping allocates a MemoryRegion
-dedicated to host MSI IOVA mapping. Its size matches the host needs.
-This region is mapped on guest side on the platform bus memory container.
+Let's compile this stub in case CONFIG_SOFTMMU is set (VFIO requirement)
+and CONFIG_PLATFORM_BUS is not set.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
-v4 -> v5:
-- use msi_resv struct
+ hw/core/Makefile.objs       |  2 +-
+ hw/core/platform-bus-stub.c | 27 +++++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+ create mode 100644 hw/core/platform-bus-stub.c
 
-v3 -> v4:
-- initialize err to NULL
-
-v3: creation
----
- hw/vfio/common.c | 68 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 4f4014e..1e2282c 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -34,6 +34,8 @@
- #include "qemu/range.h"
- #include "sysemu/kvm.h"
- #include "trace.h"
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index a4c94e5..f6ececc 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -18,5 +18,5 @@ common-obj-$(CONFIG_SOFTMMU) += qdev-properties-system.o
+ common-obj-$(CONFIG_SOFTMMU) += register.o
+ common-obj-$(CONFIG_SOFTMMU) += or-irq.o
+ common-obj-$(CONFIG_PLATFORM_BUS) += platform-bus.o
+-
++common-obj-$(call land,$(CONFIG_SOFTMMU),$(call lnot,$(CONFIG_PLATFORM_BUS))) += platform-bus-stub.o
+ obj-$(CONFIG_SOFTMMU) += generic-loader.o
+diff --git a/hw/core/platform-bus-stub.c b/hw/core/platform-bus-stub.c
+new file mode 100644
+index 0000000..41d4ab6
+--- /dev/null
++++ b/hw/core/platform-bus-stub.c
+@@ -0,0 +1,27 @@
++/*
++ * Platform Bus device stub
++ *
++ * platform_bus_map_region is used in VFIO common code
++ *
++ * Copyright Red Hat, Inc. 2016
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
 +#include "hw/platform-bus.h"
-+#include "qapi/error.h"
- 
- struct vfio_group_head vfio_group_list =
-     QLIST_HEAD_INITIALIZER(vfio_group_list);
-@@ -920,12 +922,70 @@ retry:
-     return 0;
- }
- 
-+static struct vfio_info_cap_header *
-+vfio_get_iommu_type1_info_cap(struct vfio_iommu_type1_info *info, uint16_t id)
++
++void platform_bus_map_region(PlatformBusDevice *pbus, MemoryRegion *mr)
 +{
-+    struct vfio_info_cap_header *hdr;
-+    void *ptr = info;
-+
-+    if (!(info->flags & VFIO_IOMMU_INFO_CAPS)) {
-+        return NULL;
-+    }
-+
-+    for (hdr = ptr + info->cap_offset; hdr != ptr; hdr = ptr + hdr->next) {
-+        if (hdr->id == id) {
-+            return hdr;
-+        }
-+    }
-+    return NULL;
 +}
-+
-+static void vfio_prepare_msi_mapping(struct vfio_iommu_type1_info *info,
-+                                     AddressSpace *as, Error **errp)
-+{
-+    struct vfio_iommu_type1_info_cap_msi_resv *msi_resv;
-+    MemoryRegion *pbus_region, *reserved_reg;
-+    struct vfio_info_cap_header *hdr;
-+    PlatformBusDevice *pbus;
-+
-+    hdr = vfio_get_iommu_type1_info_cap(info,
-+                                        VFIO_IOMMU_TYPE1_INFO_CAP_MSI_RESV);
-+    if (!hdr) {
-+        return;
-+    }
-+
-+    msi_resv = container_of(hdr, struct vfio_iommu_type1_info_cap_msi_resv,
-+                            header);
-+    /*
-+     * MSI must be iommu mapped: allocate a GPA region located on the
-+     * platform bus that the host will be able to use for MSI IOVA allocation
-+     */
-+    reserved_reg = memory_region_find_by_name(as->root, "reserved-iova");
-+    if (reserved_reg) {
-+        memory_region_unref(reserved_reg);
-+        return;
-+    }
-+
-+    pbus_region = memory_region_find_by_name(as->root, "platform bus");
-+    if (!pbus_region) {
-+        error_setg(errp, "no platform bus memory container found");
-+        return;
-+    }
-+    pbus = container_of(pbus_region, PlatformBusDevice, mmio);
-+    reserved_reg = g_new0(MemoryRegion, 1);
-+    memory_region_init_reserved_iova(reserved_reg, OBJECT(pbus),
-+                                     "reserved-iova",
-+                                     msi_resv->size, &error_fatal);
-+    platform_bus_map_region(pbus, reserved_reg);
-+    memory_region_unref(pbus_region);
-+}
- 
- static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
- {
-     VFIOContainer *container;
-     int ret, fd;
-     VFIOAddressSpace *space;
-+    Error *err = NULL;
- 
-     space = vfio_get_address_space(as);
- 
-@@ -983,6 +1043,14 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as)
-          * going to actually try in practice.
-          */
-         vfio_get_iommu_type1_info(fd, &pinfo);
-+        vfio_prepare_msi_mapping(pinfo, as, &err);
-+        if (err) {
-+            error_append_hint(&err,
-+                    "Make sure your machine instantiates a platform bus\n");
-+            error_report_err(err);
-+            goto free_container_exit;
-+        }
-+
-         /* Ignore errors */
-         if (ret || !(pinfo->flags & VFIO_IOMMU_INFO_PGSIZES)) {
-             /* Assume 4k IOVA page size */
 -- 
 1.9.1
 

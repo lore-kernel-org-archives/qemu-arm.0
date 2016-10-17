@@ -1,326 +1,185 @@
-Received: by 10.80.166.35 with SMTP id d32csp469077edc;
-        Mon, 17 Oct 2016 06:36:15 -0700 (PDT)
-X-Received: by 10.200.56.67 with SMTP id r3mr25707882qtb.120.1476711375625;
-        Mon, 17 Oct 2016 06:36:15 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id s192si17908747qke.260.2016.10.17.06.36.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 06:36:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.80.166.35 with SMTP id d32csp487342edc;
+        Mon, 17 Oct 2016 07:13:52 -0700 (PDT)
+X-Received: by 10.13.253.134 with SMTP id n128mr26390537ywf.20.1476713632465;
+        Mon, 17 Oct 2016 07:13:52 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id g1si8447400ywb.160.2016.10.17.07.13.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 17 Oct 2016 07:13:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33340 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bw8fn-0001nb-PO
+	for alex.bennee@linaro.org; Mon, 17 Oct 2016 10:13:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47451)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1bw8Uq-0001Ft-6l
+	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 10:02:36 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1bw8Um-0007Kc-7x
+	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 10:02:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50316)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1bw8Ud-0007HQ-NV; Mon, 17 Oct 2016 10:02:19 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8D940469;
-	Mon, 17 Oct 2016 13:36:14 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A150C80084;
+	Mon, 17 Oct 2016 14:02:18 +0000 (UTC)
 Received: from kamzik.brq.redhat.com ([10.34.1.163])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9HDa9Th013983
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 17 Oct 2016 09:36:11 -0400
-Date: Mon, 17 Oct 2016 15:36:09 +0200
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9HE2ErF009843
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 17 Oct 2016 10:02:16 -0400
+Date: Mon, 17 Oct 2016 16:02:14 +0200
 From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alex.bennee@linaro.org, marc.zyngier@arm.com,
-        wei@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 09/10] arm/arm64: gicv3:
- add an IPI test
-Message-ID: <20161017133609.2tp4xcnlnwvjjzvh@kamzik.brq.redhat.com>
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
- <1468587641-7300-10-git-send-email-drjones@redhat.com>
- <2979f1de-759b-bf5b-6bf8-c5dd3b0c721f@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20161017140214.vjn4iyeek6qc6xxb@kamzik.brq.redhat.com>
+References: <1476707466-14300-1-git-send-email-eric.auger@redhat.com>
+	<1476707466-14300-2-git-send-email-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2979f1de-759b-bf5b-6bf8-c5dd3b0c721f@redhat.com>
+In-Reply-To: <1476707466-14300-2-git-send-email-eric.auger@redhat.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Mon, 17 Oct 2016 13:36:14 +0000 (UTC)
-X-TUID: ZC4mOl4dmbCu
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 17 Oct 2016 14:02:18 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v3 1/2] ACPI: Add IORT Structure definition
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, tn@semihalf.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, shannon.zhao@linaro.org,
+	prem.mallappa@broadcom.com, christoffer.dall@linaro.org,
+	eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9PxOVwRLa38O
 
-On Thu, Sep 01, 2016 at 06:42:44PM +0200, Auger Eric wrote:
-> Hi Drew,
+On Mon, Oct 17, 2016 at 02:31:05PM +0200, Eric Auger wrote:
+> From: Prem Mallappa <prem.mallappa@broadcom.com>
 > 
-> On 15/07/2016 15:00, Andrew Jones wrote:
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > ---
-> > v2: use IRM for gicv3 broadcast
-> > ---
-> >  arm/gic.c         | 157 ++++++++++++++++++++++++++++++++++++++++++++++++++----
-> >  arm/unittests.cfg |   6 +++
-> >  2 files changed, 154 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/arm/gic.c b/arm/gic.c
-> > index cf7ec1c90413c..fc7ef241de3e2 100644
-> > --- a/arm/gic.c
-> > +++ b/arm/gic.c
-> > @@ -3,6 +3,8 @@
-> >   *
-> >   * GICv2
-> >   *   . test sending/receiving IPIs
-> > + * GICv3
-> > + *   . test sending/receiving IPIs
-> >   *
-> >   * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> >   *
-> > @@ -16,6 +18,18 @@
-> >  #include <asm/barrier.h>
-> >  #include <asm/io.h>
-> >  
-> > +struct gic {
-> > +	struct {
-> > +		void (*enable)(void);
-> > +		void (*send_self)(void);
-> > +		void (*send_tlist)(cpumask_t *);
-> > +		void (*send_broadcast)(void);
-> > +	} ipi;
-> > +	u32 (*read_iar)(void);
-> > +	void (*write_eoi)(u32);
-> > +};
-> > +
-> > +static struct gic *gic;
-> >  static int gic_version;
-> >  static int acked[NR_CPUS], spurious[NR_CPUS];
-> >  static cpumask_t ready;
-> > @@ -69,12 +83,22 @@ static void check_acked(cpumask_t *mask)
-> >  	       false, missing, extra, unexpected);
-> >  }
-> >  
-> > +static u32 gicv2_read_iar(void)
-> > +{
-> > +	return readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-> > +}
-> > +
-> > +static void gicv2_write_eoi(u32 irq)
-> > +{
-> > +	writel(irq, gicv2_cpu_base() + GIC_CPU_EOI);
-> > +}
-> > +
-> >  static void ipi_handler(struct pt_regs *regs __unused)
-> >  {
-> > -	u32 iar = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-> > +	u32 iar = gic->read_iar();
-> >  
-> >  	if (iar != GICC_INT_SPURIOUS) {
-> > -		writel(iar, gicv2_cpu_base() + GIC_CPU_EOI);
-> > +		gic->write_eoi(iar);
-> >  		smp_rmb(); /* pairs with wmb in ipi_test functions */
-> >  		++acked[smp_processor_id()];
-> >  		smp_wmb(); /* pairs with rmb in check_acked */
-> > @@ -84,6 +108,89 @@ static void ipi_handler(struct pt_regs *regs __unused)
-> >  	}
-> >  }
-> >  
-> > +static void gicv2_ipi_send_self(void)
-> > +{
-> > +	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +}
-> > +
-> > +static void gicv2_ipi_send_tlist(cpumask_t *mask)
-> > +{
-> > +	u8 tlist = (u8)cpumask_bits(mask)[0];
-> > +
-> > +	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +}
-> > +
-> > +static void gicv2_ipi_send_broadcast(void)
-> > +{
-> > +	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +}
-> > +
-> > +#define ICC_SGI1R_AFFINITY_1_SHIFT	16
-> > +#define ICC_SGI1R_AFFINITY_2_SHIFT	32
-> > +#define ICC_SGI1R_AFFINITY_3_SHIFT	48
-> > +#define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
-> > +	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
-> > +
-> > +static void gicv3_ipi_send_tlist(cpumask_t *mask)
-> > +{
-> This function really is indigestible to me. Can't we reuse the linux
-> kernel gic_compute_target_list routine. Since the code looks similar why
-> not trying to be as close as possible to the kernel?
+> ACPI Spec 6.0 introduces IO Remapping Table Structure. This patch
+> introduces the definitions required to describe the IO relationship
+> between the PCIe root complex and the ITS.
+> 
+> This conforms to:
+> "IO Remapping Table System Software on ARM Platforms",
+> Document number: ARM DEN 0049B, October 2015.
+> 
+> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> v2 -> v3:
+> - removed backlash at ACPI_IORT_NODE_HEADER_DEF last line
+> 
+> v1 -> v2:
+> - took into account Drew's comments:
+>   cleanup comments, remove most defines, add ACPI_IORT_NODE_HEADER_DEF
+> ---
+>  include/hw/acpi/acpi-defs.h | 68 +++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 68 insertions(+)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 9c1b7cb..90a5353 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -609,4 +609,72 @@ typedef struct AcpiDmarHardwareUnit AcpiDmarHardwareUnit;
+>  /* Masks for Flags field above */
+>  #define ACPI_DMAR_INCLUDE_PCI_ALL   1
+>  
+> +/*
+> + * Input Output Remapping Table (IORT)
+> + * Conforms to "IO Remapping Table System Software on ARM Platforms",
+> + * Document number: ARM DEN 0049B, October 2015
+> + */
+> +
+> +struct AcpiIortTable {
+> +    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
+> +    uint32_t node_count;
+> +    uint32_t node_offset;
+> +    uint32_t reserved;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortTable AcpiIortTable;
+> +
+> +/*
+> + * IORT node types
+> + */
+> +
+> +#define ACPI_IORT_NODE_HEADER_DEF   /* Node format common fields */ \
+> +    uint8_t  type;          \
+> +    uint16_t length;        \
+> +    uint8_t  revision;      \
+> +    uint32_t reserved;      \
+> +    uint32_t mapping_count; \
+> +    uint32_t mapping_offset;
+> +
+> +/* Values for node Type above */
+> +enum {
+> +        ACPI_IORT_NODE_ITS_GROUP = 0x00,
+> +        ACPI_IORT_NODE_NAMED_COMPONENT = 0x01,
+> +        ACPI_IORT_NODE_PCI_ROOT_COMPLEX = 0x02,
+> +        ACPI_IORT_NODE_SMMU = 0x03,
+> +        ACPI_IORT_NODE_SMMU_V3 = 0x04
+> +};
+> +
+> +struct AcpiIortIdMapping {
+> +    uint32_t input_base;
+> +    uint32_t id_count;
+> +    uint32_t output_base;
+> +    uint32_t output_reference;
+> +    uint32_t flags;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortIdMapping AcpiIortIdMapping;
+> +
+> +struct AcpiIortMemoryAccess {
+> +    uint32_t cache_coherency;
+> +    uint8_t  hints;
+> +    uint16_t reserved;
+> +    uint8_t  memory_flags;
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortMemoryAccess AcpiIortMemoryAccess;
+> +
+> +struct AcpiIortItsGroup {
+> +    ACPI_IORT_NODE_HEADER_DEF
+> +    uint32_t its_count;
+> +    uint32_t identifiers[0];
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+> +
+> +struct AcpiIortRC {
+> +    ACPI_IORT_NODE_HEADER_DEF
+> +    AcpiIortMemoryAccess memory_properties;
+> +    uint32_t ats_attribute;
+> +    uint32_t pci_segment_number;
+> +    AcpiIortIdMapping id_mapping_array[0];
+> +} QEMU_PACKED;
+> +typedef struct AcpiIortRC AcpiIortRC;
+> +
+>  #endif
+> -- 
+> 2.5.5
+> 
+>
 
-It is the same, but simplified :-) In Linux, gic_compute_target_list is
-not the only function you need for the implementation. You also need to
-look at the one caller, which is gic_raise_softirq. I'll add a couple of
-comments to this version, which simply inlines the kernel's version.
-
-Thanks,
-drew 
-
-> 
-> Thanks
-> 
-> Eric
-> > +	u16 tlist;
-> > +	int cpu;
-> > +
-> > +	for_each_cpu(cpu, mask) {
-> > +		u64 mpidr = cpus[cpu], sgi1r;
-> > +		u64 cluster_id = mpidr & ~0xffUL;
-> > +
-> > +		tlist = 0;
-> > +
-> > +		while (cpu < nr_cpus) {
-> > +			if ((mpidr & 0xff) >= 16) {
-> > +				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
-> > +					cpu, (int)(mpidr & 0xff));
-> > +				break;
-> > +			}
-> > +
-> > +			tlist |= 1 << (mpidr & 0xf);
-> > +
-> > +			cpu = cpumask_next(cpu, mask);
-> > +			if (cpu >= nr_cpus)
-> > +				break;
-> > +
-> > +			mpidr = cpus[cpu];
-> > +
-> > +			if (cluster_id != (mpidr & ~0xffUL)) {
-> > +				--cpu;
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
-> > +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
-> > +			 /* irq << 24				| */
-> > +			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
-> > +			 tlist);
-> > +
-> > +		gicv3_write_sgi1r(sgi1r);
-> > +	}
-> > +
-> > +	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
-> > +	isb();
-> > +}
-> > +
-> > +static void gicv3_ipi_send_self(void)
-> > +{
-> > +	cpumask_t mask;
-> > +
-> > +	cpumask_clear(&mask);
-> > +	cpumask_set_cpu(smp_processor_id(), &mask);
-> > +	gicv3_ipi_send_tlist(&mask);
-> > +}
-> > +
-> > +static void gicv3_ipi_send_broadcast(void)
-> > +{
-> > +	gicv3_write_sgi1r(1ULL << 40);
-> > +	isb();
-> > +}
-> > +
-> >  static void ipi_test_self(void)
-> >  {
-> >  	cpumask_t mask;
-> > @@ -93,7 +200,7 @@ static void ipi_test_self(void)
-> >  	smp_wmb();
-> >  	cpumask_clear(&mask);
-> >  	cpumask_set_cpu(0, &mask);
-> > -	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	gic->ipi.send_self();
-> >  	check_acked(&mask);
-> >  	report_prefix_pop();
-> >  }
-> > @@ -101,14 +208,15 @@ static void ipi_test_self(void)
-> >  static void ipi_test_smp(void)
-> >  {
-> >  	cpumask_t mask;
-> > -	unsigned long tlist;
-> > +	int i;
-> >  
-> >  	report_prefix_push("target-list");
-> >  	memset(acked, 0, sizeof(acked));
-> >  	smp_wmb();
-> > -	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
-> > -	cpumask_bits(&mask)[0] = tlist;
-> > -	writel((u8)tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	cpumask_copy(&mask, &cpu_present_mask);
-> > +	for (i = 0; i < nr_cpus; i += 2)
-> > +		cpumask_clear_cpu(i, &mask);
-> > +	gic->ipi.send_tlist(&mask);
-> >  	check_acked(&mask);
-> >  	report_prefix_pop();
-> >  
-> > @@ -117,14 +225,14 @@ static void ipi_test_smp(void)
-> >  	smp_wmb();
-> >  	cpumask_copy(&mask, &cpu_present_mask);
-> >  	cpumask_clear_cpu(0, &mask);
-> > -	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-> > +	gic->ipi.send_broadcast();
-> >  	check_acked(&mask);
-> >  	report_prefix_pop();
-> >  }
-> >  
-> >  static void ipi_enable(void)
-> >  {
-> > -	gicv2_enable_defaults();
-> > +	gic->ipi.enable();
-> >  #ifdef __arm__
-> >  	install_exception_handler(EXCPTN_IRQ, ipi_handler);
-> >  #else
-> > @@ -141,6 +249,28 @@ static void ipi_recv(void)
-> >  		wfi();
-> >  }
-> >  
-> > +struct gic gicv2 = {
-> > +	.ipi = {
-> > +		.enable = gicv2_enable_defaults,
-> > +		.send_self = gicv2_ipi_send_self,
-> > +		.send_tlist = gicv2_ipi_send_tlist,
-> > +		.send_broadcast = gicv2_ipi_send_broadcast,
-> > +	},
-> > +	.read_iar = gicv2_read_iar,
-> > +	.write_eoi = gicv2_write_eoi,
-> > +};
-> > +
-> > +struct gic gicv3 = {
-> > +	.ipi = {
-> > +		.enable = gicv3_enable_defaults,
-> > +		.send_self = gicv3_ipi_send_self,
-> > +		.send_tlist = gicv3_ipi_send_tlist,
-> > +		.send_broadcast = gicv3_ipi_send_broadcast,
-> > +	},
-> > +	.read_iar = gicv3_read_iar,
-> > +	.write_eoi = gicv3_write_eoir,
-> > +};
-> > +
-> >  int main(int argc, char **argv)
-> >  {
-> >  	char pfx[8];
-> > @@ -153,6 +283,15 @@ int main(int argc, char **argv)
-> >  	snprintf(pfx, 8, "gicv%d", gic_version);
-> >  	report_prefix_push(pfx);
-> >  
-> > +	switch (gic_version) {
-> > +	case 2:
-> > +		gic = &gicv2;
-> > +		break;
-> > +	case 3:
-> > +		gic = &gicv3;
-> > +		break;
-> > +	}
-> > +
-> >  	if (argc < 2) {
-> >  
-> >  		report_prefix_push("ipi");
-> > diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-> > index bb364675043f0..043a20e26e98c 100644
-> > --- a/arm/unittests.cfg
-> > +++ b/arm/unittests.cfg
-> > @@ -58,3 +58,9 @@ file = gic.flat
-> >  smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
-> >  extra_params = -machine gic-version=2 -append 'ipi'
-> >  groups = gic
-> > +
-> > +[gicv3-ipi]
-> > +file = gic.flat
-> > +smp = $MAX_SMP
-> > +extra_params = -machine gic-version=3 -append 'ipi'
-> > +groups = gic
-> > 
-> 
+Reviewed-by: Andrew Jones <drjones@redhat.com> 

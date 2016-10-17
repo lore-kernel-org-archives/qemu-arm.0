@@ -1,156 +1,120 @@
-Received: by 10.80.166.35 with SMTP id d32csp587356edc;
-        Mon, 17 Oct 2016 10:44:48 -0700 (PDT)
-X-Received: by 10.55.19.164 with SMTP id 36mr24570382qkt.219.1476726288878;
-        Mon, 17 Oct 2016 10:44:48 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp621096edc;
+        Mon, 17 Oct 2016 12:05:21 -0700 (PDT)
+X-Received: by 10.55.64.21 with SMTP id n21mr22721762qka.137.1476731121207;
+        Mon, 17 Oct 2016 12:05:21 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p29si18499775qta.7.2016.10.17.10.44.48
+        by mx.google.com with ESMTPS id e67si18706147qtb.13.2016.10.17.12.05.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Oct 2016 10:44:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 17 Oct 2016 12:05:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34738 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35212 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwBxw-0004ig-5c
-	for alex.bennee@linaro.org; Mon, 17 Oct 2016 13:44:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52693)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bwDDs-0005UZ-Ht
+	for alex.bennee@linaro.org; Mon, 17 Oct 2016 15:05:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bwBvO-00036u-1S
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 13:42:11 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bwCwn-0007DR-JB
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 14:47:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bwBvM-0008Vd-RV
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 13:42:10 -0400
-Received: from mail-vk0-x232.google.com ([2607:f8b0:400c:c05::232]:34571)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1bwBvM-0008VL-Ft
-	for qemu-devel@nongnu.org; Mon, 17 Oct 2016 13:42:08 -0400
-Received: by mail-vk0-x232.google.com with SMTP id b186so186026501vkb.1
-	for <qemu-devel@nongnu.org>; Mon, 17 Oct 2016 10:42:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Eksx2UO5/p/Rw1PV4sBS98swCp/o7wlUDAV3Kc8JXDw=;
-	b=Y0cqc5zHWdxqCIYAfztXxO/GHr9A9W3ihlnGV0wC4a9DL0+wNdhxtvUWi3HRE5jGPX
-	x5r1jbe5tp5b709/XvCjTF/IxCEPCllyulFaJfdEAC632SNLMGH52U9Waofqry07gaTd
-	1XQBIUQ5+oPkuN4FC4pDf4zsVJzFnuKD1mo88=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Eksx2UO5/p/Rw1PV4sBS98swCp/o7wlUDAV3Kc8JXDw=;
-	b=e8XGHZ+AIvoofMZoL9H/isT6uAzbd/Nkj1XytxIgn6FJ6DdLhyp4bLED/12Y0SR4j/
-	5OjhH3MfKuA8/DMpvR4J3li5M7O0f/OADx6sA+7TisyxOcWtA3+uCiiTd+nOQG9H77nU
-	UqV3l6sPPCmXSUUzjq2WOq4JdwQ6t/Y/dtKZ32T1Eft38GE51G758BvzM00QOsHlMuc2
-	AmPx1BDTYo4TC3eLOremBDjThDuFajnQQwUriUj6B6+Wn/rCYzXcenVzR71OeEccFNpG
-	q74WiBXvX5ZdBHBZnw9QyKe8UJe/PiBuR5WeFa/+itQCwcTpYALWlO0byXojnLGkX4pM
-	aERA==
-X-Gm-Message-State: AA6/9Rnpn8wGkFajgpBnvbtpCb1FD3Jpw+6G60aHY1b+X0dzW6NPQc5tR7KkkQ0GtiAuTjoknQP2wmFG00R9rych
-X-Received: by 10.31.64.75 with SMTP id n72mr15825138vka.170.1476726127844;
-	Mon, 17 Oct 2016 10:42:07 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1bwCwk-0003sk-Bz
+	for qemu-arm@nongnu.org; Mon, 17 Oct 2016 14:47:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55876)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1bwCwk-0003sI-6B; Mon, 17 Oct 2016 14:47:38 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0315180B22;
+	Mon, 17 Oct 2016 18:47:37 +0000 (UTC)
+Received: from localhost (ovpn-116-159.phx2.redhat.com [10.3.116.159])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9HIlZOt016632; Mon, 17 Oct 2016 14:47:35 -0400
+Date: Mon, 17 Oct 2016 16:47:34 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20161017184734.GZ3275@thinpad.lan.raisama.net>
+References: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
+	<20161017034404.GT25390@umbus.fritz.box>
 MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Mon, 17 Oct 2016 10:41:47 -0700 (PDT)
-In-Reply-To: <1476416631-2870-1-git-send-email-ppandit@redhat.com>
-References: <1476416631-2870-1-git-send-email-ppandit@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Oct 2016 18:41:47 +0100
-Message-ID: <CAFEAcA8ALpL_rdgPL7dQbhx6prVV+ipXSoQ7LGu4ue_ReL9O-A@mail.gmail.com>
-To: P J P <ppandit@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20161017034404.GT25390@umbus.fritz.box>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 17 Oct 2016 18:47:37 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::232
-Subject: Re: [Qemu-devel] [PATCH v6] timer: a9gtimer: remove loop to
- auto-increment comparator
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 0/3] Split cpu_exec_init() into an init
+ and a realize part
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Li Qiang <liqiang6-s@360.cn>,
-	Qemu Developers <qemu-devel@nongnu.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BqtmSJyiWoP+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+	Greg Ungerer <gerg@uclinux.org>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Jia Liu <proljc@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
+	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: noAsJ8Q5sHbe
 
-On 14 October 2016 at 04:43, P J P <ppandit@redhat.com> wrote:
-> From: Prasad J Pandit <pjp@fedoraproject.org>
->
-> ARM A9MP processor has a peripheral timer with an auto-increment
-> register, which holds an increment step value. A user could set
-> this value to zero. When auto-increment control bit is enabled,
-> it leads to an infinite loop in 'a9_gtimer_update' while
-> updating comparator value. Remove this loop incrementing the
-> comparator value.
->
-> Reported-by: Li Qiang <liqiang6-s@360.cn>
-> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
-> ---
->  hw/timer/a9gtimer.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
->
-> Update per
->   -> https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg02891.html
->
-> diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-> index 772f85f..03dfaf2 100644
-> --- a/hw/timer/a9gtimer.c
-> +++ b/hw/timer/a9gtimer.c
-> @@ -73,6 +73,7 @@ static void a9_gtimer_update(A9GTimerState *s, bool sync)
->
->      A9GTimerUpdate update = a9_gtimer_get_update(s);
->      int i;
-> +    uint64_t inc;
->      int64_t next_cdiff = 0;
->
->      for (i = 0; i < s->num_cpu; ++i) {
-> @@ -82,15 +83,15 @@ static void a9_gtimer_update(A9GTimerState *s, bool sync)
->          if ((s->control & R_CONTROL_TIMER_ENABLE) &&
->                  (gtb->control & R_CONTROL_COMP_ENABLE)) {
->              /* R2p0+, where the compare function is >= */
-> -            while (gtb->compare < update.new) {
-> +            if (gtb->compare < update.new) {
->                  DB_PRINT("Compare event happened for CPU %d\n", i);
->                  gtb->status = 1;
-> -                if (gtb->control & R_CONTROL_AUTO_INCREMENT) {
-> -                    DB_PRINT("Auto incrementing timer compare by %" PRId32 "\n",
-> -                             gtb->inc);
-> -                    gtb->compare += gtb->inc;
-> -                } else {
-> -                    break;
-> +                if (gtb->control & R_CONTROL_AUTO_INCREMENT && gtb->inc) {
-> +                    inc = update.new + gtb->inc - gtb->compare - 1;
-> +                    inc = QEMU_ALIGN_DOWN(inc, gtb->inc);
+On Mon, Oct 17, 2016 at 02:44:04PM +1100, David Gibson wrote:
+> On Sat, Oct 15, 2016 at 12:52:46AM +0200, Laurent Vivier wrote:
+> > Since commit 42ecaba ("target-i386: Call cpu_exec_init() on realize"),
+> > , commit 6dd0f83 ("target-ppc: Move cpu_exec_init() call to realize function"),
+> > and commit c6644fc ("s390x/cpu: Get rid of side effects when creating a vcpu"),
+> > cpu_exec_init() has been moved to realize function for some architectures
+> > to implement CPU htoplug. This allows any failures from cpu_exec_init() to be
+> > handled appropriately.
+> > 
+> > This series tries to do the same work for all the other CPUs.
+> > 
+> > But as the ARM Virtual Machine ("virt") needs the "memory" property of the CPU
+> > in the machine init function (the "memory" property is created in
+> > cpu_exec_init() we want to move to the realize part), split cpu_exec_init() in
+> > two parts: a realize part (cpu_exec_realizefn(), adding the CPU in the
+> > environment) and an init part (cpu_exec_initfn(), initializing the CPU, like
+> > adding the "memory" property). To mirror the realize part, add an unrealize
+> > part, and remove the cpu_exec_exit() call from the finalize part.
+> > 
+> > This also allows to remove all the "cannot_destroy_with_object_finalize_yet"
+> > properties from the CPU device class.
+> 
+> This is looking good to me - the v3 re-org has made it quite a bit
+> easier to follow.
+> 
+> Whose tree should this go via?
 
-Isn't this pair of lines equivalent to
-  uint64_t inc = QEMU_ALIGN_UP(update.new - gtb->compare, gtb->inc);
+I can merge it through the machine tree, if others agree.
 
-?
-
-I think using that macro makes it clearer that the code is correct.
-
-If you replace the above two lines (and the unnecessarily widely
-scoped declaration of inc) with that line then you can have
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-> +                    DB_PRINT("Auto incrementing timer compare by %"
-> +                                                        PRId64 "\n", inc);
-> +                    gtb->compare += inc;
->                  }
->              }
->              cdiff = (int64_t)gtb->compare - (int64_t)update.new + 1;
-> --
-> 2.5.5
-
-thanks
--- PMM
+-- 
+Eduardo

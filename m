@@ -1,239 +1,194 @@
-Received: by 10.80.166.35 with SMTP id d32csp436198edc;
-        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
-X-Received: by 10.55.136.5 with SMTP id k5mr22951450qkd.67.1476707089489;
-        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id l7si17777651qkd.209.2016.10.17.05.24.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Oct 2016 05:24:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.80.166.35 with SMTP id d32csp1105035edc;
+        Tue, 18 Oct 2016 10:16:52 -0700 (PDT)
+X-Received: by 10.55.69.20 with SMTP id s20mr1596089qka.56.1476811012143;
+        Tue, 18 Oct 2016 10:16:52 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id g3si21579540qtd.71.2016.10.18.10.16.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 18 Oct 2016 10:16:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:42993 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bwY0R-0006U4-Il
+	for alex.bennee@linaro.org; Tue, 18 Oct 2016 13:16:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38479)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1bwY0M-0006Tx-Hr
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 13:16:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1bwY0J-00011X-Py
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 13:16:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60610)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1bwY0J-00010r-IZ; Tue, 18 Oct 2016 13:16:43 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6EDBA81F07;
-	Mon, 17 Oct 2016 12:24:48 +0000 (UTC)
-Received: from kamzik.brq.redhat.com ([10.34.1.163])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9HCOhGT024728
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Mon, 17 Oct 2016 08:24:45 -0400
-Date: Mon, 17 Oct 2016 14:24:43 +0200
+	by mx1.redhat.com (Postfix) with ESMTPS id C24C9C05678E;
+	Tue, 18 Oct 2016 17:16:42 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9IHGdAA027988
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 18 Oct 2016 13:16:41 -0400
+Date: Tue, 18 Oct 2016 19:16:38 +0200
 From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, andre.przywara@arm.com,
-        peter.maydell@linaro.org, alex.bennee@linaro.org, marc.zyngier@arm.com,
-        wei@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 03/10] arm/arm64: smp:
- support more than 8 cpus
-Message-ID: <20161017122443.2v5r5xtqhi7ekgmw@kamzik.brq.redhat.com>
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
- <1468587641-7300-4-git-send-email-drjones@redhat.com>
- <11a885eb-d43e-528e-235a-13358edc6ea6@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20161018171638.vvpbc3ct4vztqntu@kamzik.brq.redhat.com>
+References: <1475617134-28180-1-git-send-email-wei@redhat.com>
+	<CAFEAcA_vTEjMK1Eex8Z41L2reWHK8oZ_XyekKv1r7eby+J+y7A@mail.gmail.com>
+	<20161014074828.ewvvz2hn3cwtfpve@hawk.localdomain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <11a885eb-d43e-528e-235a-13358edc6ea6@redhat.com>
+In-Reply-To: <20161014074828.ewvvz2hn3cwtfpve@hawk.localdomain>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 17 Oct 2016 12:24:48 +0000 (UTC)
-X-TUID: WV/9tNWiIi3J
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 18 Oct 2016 17:16:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 0/2] Add option to configure
+ guest vPMU
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
+	Andrea Bolognani <abologna@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7d+5rw7DD6ln
 
-On Tue, Aug 30, 2016 at 04:28:52PM +0200, Auger Eric wrote:
-> Hi Drew,
-> 
-> Proper commit message?
-> ... also selects the vgic model corresponding to the host
-
-Sure
-
-> > Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  arm/run                   | 19 ++++++++++++-------
-> >  arm/selftest.c            |  5 ++++-
-> >  lib/arm/asm/processor.h   |  9 +++++++--
-> >  lib/arm/asm/setup.h       |  4 ++--
-> >  lib/arm/setup.c           | 12 +++++++++++-
-> >  lib/arm64/asm/processor.h |  9 +++++++--
-> >  6 files changed, 43 insertions(+), 15 deletions(-)
+On Fri, Oct 14, 2016 at 09:48:28AM +0200, Andrew Jones wrote:
+> On Thu, Oct 13, 2016 at 05:19:37PM +0100, Peter Maydell wrote:
+> > On 4 October 2016 at 22:38, Wei Huang <wei@redhat.com> wrote:
+> > > This patchset adds a pmu=[on/off] option to enable/disable vPMU support
+> > > for guest VM. There are several reasons to justify this option. First,
+> > > vPMU can be problematic for cross-migration between different SoC as perf
+> > > counters are architecture-dependent. It is more flexible to have an option
+> > > to turn it on/off. Secondly this option matches the "pmu" option as
+> > > supported in libvirt. To make sure backward compatible, a PMU-related
+> > > property is added to mach-virt machine types.
+> > >
+> > > The following are testing results with this patchset. Other combinations
+> > > should have similar results:
+> > >   CONFIG (qemu-system-aarch64)                       vPMU   WARNING
+> > >   -M virt-2.8/virt,accel=kvm -cpu host               NO     NO
 > > 
-> > diff --git a/arm/run b/arm/run
-> > index a2f35ef6a7e63..2d0698619606e 100755
-> > --- a/arm/run
-> > +++ b/arm/run
-> > @@ -31,13 +31,6 @@ if [ -z "$ACCEL" ]; then
-> >  	fi
-> >  fi
-> >  
-> > -if [ "$HOST" = "aarch64" ] && [ "$ACCEL" = "kvm" ]; then
-> > -	processor="host"
-> > -	if [ "$ARCH" = "arm" ]; then
-> > -		processor+=",aarch64=off"
-> > -	fi
-> > -fi
-> > -
-> >  qemu="${QEMU:-qemu-system-$ARCH_NAME}"
-> >  qpath=$(which $qemu 2>/dev/null)
-> >  
-> > @@ -53,6 +46,18 @@ fi
-> >  
-> >  M='-machine virt'
-> >  
-> > +if [ "$ACCEL" = "kvm" ]; then
-> > +	if $qemu $M,\? 2>&1 | grep gic-version > /dev/null; then
-> > +		M+=',gic-version=host'
-> > +	fi
-> > +	if [ "$HOST" = "aarch64" ]; then
-> > +		processor="host"
-> > +		if [ "$ARCH" = "arm" ]; then
-> > +			processor+=",aarch64=off"
-> > +		fi
-> > +	fi
-> > +fi
-> > +
-> >  if ! $qemu $M -device '?' 2>&1 | grep virtconsole > /dev/null; then
-> >  	echo "$qpath doesn't support virtio-console for chr-testdev. Exiting."
-> >  	exit 2
-> > diff --git a/arm/selftest.c b/arm/selftest.c
-> > index 196164f5313de..2f117f795d2dc 100644
-> > --- a/arm/selftest.c
-> > +++ b/arm/selftest.c
-> > @@ -312,9 +312,10 @@ static bool psci_check(void)
-> >  static cpumask_t smp_reported;
-> >  static void cpu_report(void)
-> >  {
-> > +	unsigned long mpidr = get_mpidr();
-> >  	int cpu = smp_processor_id();
-> >  
-> > -	report("CPU%d online", true, cpu);
-> > +	report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == cpu, cpu, mpidr);
-> >  	cpumask_set_cpu(cpu, &smp_reported);
-> >  	halt();
-> >  }
-> > @@ -343,6 +344,7 @@ int main(int argc, char **argv)
-> >  
-> >  	} else if (strcmp(argv[1], "smp") == 0) {
-> >  
-> > +		unsigned long mpidr = get_mpidr();
-> >  		int cpu;
-> >  
-> >  		report("PSCI version", psci_check());
-> > @@ -353,6 +355,7 @@ int main(int argc, char **argv)
-> >  			smp_boot_secondary(cpu, cpu_report);
-> >  		}
-> >  
-> > +		report("CPU(%3d) mpidr=%lx", mpidr_to_cpu(mpidr) == 0, 0, mpidr);
-> >  		cpumask_set_cpu(0, &smp_reported);
-> >  		while (!cpumask_full(&smp_reported))
-> >  			cpu_relax();
-> > diff --git a/lib/arm/asm/processor.h b/lib/arm/asm/processor.h
-> > index f25e7eee3666c..d2048f5f5f7e6 100644
-> > --- a/lib/arm/asm/processor.h
-> > +++ b/lib/arm/asm/processor.h
-> > @@ -40,8 +40,13 @@ static inline unsigned int get_mpidr(void)
-> >  	return mpidr;
-> >  }
-> >  
-> > -/* Only support Aff0 for now, up to 4 cpus */
-> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
-> > +#define MPIDR_HWID_BITMASK 0xffffff
-> > +extern int mpidr_to_cpu(unsigned long mpidr);
-> > +
-> > +#define MPIDR_LEVEL_SHIFT(level) \
-> > +	(((1 << level) >> 1) << 3)
-> can't we have level << 3?
-> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
-> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
-> >  
-> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
-> >  extern bool is_user(void);
-> > diff --git a/lib/arm/asm/setup.h b/lib/arm/asm/setup.h
-> > index cb8fdbd38dd5d..c501c6ddd8657 100644
-> > --- a/lib/arm/asm/setup.h
-> > +++ b/lib/arm/asm/setup.h
-> > @@ -10,8 +10,8 @@
-> >  #include <asm/page.h>
-> >  #include <asm/pgtable-hwdef.h>
-> >  
-> > -#define NR_CPUS			8
-> > -extern u32 cpus[NR_CPUS];
-> > +#define NR_CPUS			255
-> 256?
-
-The kernel defines KVM_MAX_VCPUS as VGIC_V3_MAX_CPUS, which is
-currently defined as 255. I was just being consistent.
-
-> > +extern u64 cpus[NR_CPUS];
-> maybe worth commenting the semantic of cpus[i]?
-
-sure
-
-> >  extern int nr_cpus;
-> what about MAX_CPUS instead of NR_CPUS?
-
-kernel uses NR_CPUS, I want to be consistent.
-
-> >  
-> >  #define NR_MEM_REGIONS		8
-> > diff --git a/lib/arm/setup.c b/lib/arm/setup.c
-> > index 7e7b39f11dde1..b6e2d5815e723 100644
-> > --- a/lib/arm/setup.c
-> > +++ b/lib/arm/setup.c
-> > @@ -24,12 +24,22 @@ extern unsigned long stacktop;
-> >  extern void io_init(void);
-> >  extern void setup_args_progname(const char *args);
-> >  
-> > -u32 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
-> > +u64 cpus[NR_CPUS] = { [0 ... NR_CPUS-1] = (~0U) };
-> >  int nr_cpus;
-> >  
-> >  struct mem_region mem_regions[NR_MEM_REGIONS];
-> >  phys_addr_t __phys_offset, __phys_end;
-> >  
-> > +int mpidr_to_cpu(unsigned long mpidr)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i = 0; i < nr_cpus; ++i)
-> > +		if (cpus[i] == (mpidr & MPIDR_HWID_BITMASK))
-> > +			return i;
-> > +	return -1;
-> > +}
-> > +
-> >  static void cpu_set(int fdtnode __unused, u32 regval, void *info __unused)
-> >  {
-> >  	int cpu = nr_cpus++;
-> > diff --git a/lib/arm64/asm/processor.h b/lib/arm64/asm/processor.h
-> > index 9a208ff729b7e..7e448dc81a6aa 100644
-> > --- a/lib/arm64/asm/processor.h
-> > +++ b/lib/arm64/asm/processor.h
-> > @@ -78,8 +78,13 @@ static inline type get_##reg(void)				\
-> >  
-> >  DEFINE_GET_SYSREG64(mpidr)
-> >  
-> > -/* Only support Aff0 for now, gicv2 only */
-> > -#define mpidr_to_cpu(mpidr) ((int)((mpidr) & 0xff))
-> > +#define MPIDR_HWID_BITMASK 0xff00ffffff
-> > +extern int mpidr_to_cpu(unsigned long mpidr);
-> > +
-> > +#define MPIDR_LEVEL_SHIFT(level) \
-> > +	(((1 << level) >> 1) << 3)
-> what about level 3? the macro would fail fetching affinity level 3.
+> > What's the rationale for defaulting to no-pmu? Other cpu features
+> > we have tend to default to present unless you ask not to have them.
 > 
-> Thanks
+> The feature needs to be managed in order for users to be able to trade-off
+> features exposed vs. migratability. If the lack of an explicit pmu=on
+> means either you get a PMU, when it's available, or you don't, when it's
+> not, then managing the feature becomes more difficult. Also, libvirt
+> already manages this cpu property for x86, and there it defaults off.
+
+We discussed this today with Andrea. He says libvirt doesn't mind the
+default being on. x86 defaults pmu off, ppc defaults pmu on. I guess
+we might as well stick with on, it should make things easier.
+
 > 
-> Eric
-> > +#define MPIDR_AFFINITY_LEVEL(mpidr, level) \
-> > +	((mpidr >> MPIDR_LEVEL_SHIFT(level)) & 0xff)
-> >  
-> >  extern void start_usr(void (*func)(void *arg), void *arg, unsigned long sp_usr);
-> >  extern bool is_user(void);
+> Maybe we should revisit the other features that default on, but may
+> be turned off, to make sure they make sense. Can you point them out?
+> I took a quick look, but it appears the cpu property defaults are all
+> pretty much determined by vms->secure, which defaults to false.
+> 
 > > 
->
+> > >   -M virt-2.8/virt,accel=kvm -cpu host,pmu=off       NO     NO
+> > >   -M virt-2.8/virt,accel=kvm -cpu host,pmu=on        YES    NO
+> > >   -M virt-2.7,accel=kvm -cpu host                    YES    NO
+> > >   -M virt-2.7,accel=kvm -cpu host,pmu=off            NO     NO
+> > >   -M virt-2.7,accel=kvm -cpu host,pmu=on             YES    NO
+> > 
+> > in virt-2.7 you always got a pmu regardless, so why does pmu=off here give
+> > you no pmu?
+> 
+> Hmm, I think you're right that the property should just be a nop, or
+> even invalid (causing an error) for 2.7 and down.
+
+Hmm... a no-op property wouldn't be exactly compatible. An error message
+stating the property isn't allowed would be. That's not how QEMU currently
+handles compat though. compat is only supported for going from an older-
+version host to a newer-version host (and back). In those cases the
+command line is older-version compatible and works in both places.
+Starting on a newer-version, even when using a compat machine type,
+doesn't guarantee we can go to an older, because, for example, the command
+line may include properties that don't exist there.
+
+We could address this, if we really want. We'd need to keep the auto
+tri-state to detect that the user set the property. If they did, then
+we should complain and fail to start, never allowing virt-2.7
+instantiations to have the pmu property on the command line. I don't
+know if it's worth it though.
+
+> 
+> > 
+> > >   -M virt-2.6,accel=kvm -cpu host                    NO     NO
+> > >   -M virt-2.6,accel=kvm -cpu host,pmu=off            NO     NO
+> > >   -M virt-2.6,accel=kvm -cpu host,pmu=on             YES    NO
+> > >
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a57         NO     NO
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a57,pmu=off NO     NO
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a57,pmu=on  NO     "No KVM"
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a57              NO     NO
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a57,pmu=off      NO     NO
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a57,pmu=on       NO     "No KVM"
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a57              NO     NO
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a57,pmu=off      NO     NO
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a57,pmu=on       NO     "No KVM"
+> > 
+> > This patchset doesn't actually change whether the pmu is present
+> > or not under TCG so this is all a little bit odd.
+> 
+> The goal here is to allow the property on the command line, i.e. not
+> error and fail, when using tcg. Otherwise more than just s/kvm/tcg/
+> would be required when switching, and accel=kvm:tcg wouldn't work either.
+> 
+> > 
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a15         NO     NO
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a15,pmu=off NO     "No PMU property"
+> > >   -M virt-2.8/virt,accel=tcg -cpu cortex-a15,pmu=on  NO     "No PMU property"
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a15              NO     NO
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a15,pmu=off      NO     "No PMU property"
+> > >   -M virt-2.7,accel=tcg -cpu cortex-a15,pmu=on       NO     "No PMU property"
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a15              NO     NO
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a15,pmu=off      NO     "No PMU property"
+> > >   -M virt-2.6,accel=tcg -cpu cortex-a15,pmu=on       NO     "No PMU property"
+> > >
+> > >   * "NO KVM" msg
+> > >     warning: pmu can't be enabled without KVM acceleration
+> > >   * "No PMU property" msg
+> > >     can't apply global cortex-a15-arm-cpu.pmu=off: Property '.pmu' not found
+> > 
+> > I'm really not a fan of the tristate has_pmu, so I'm hoping
+> > there's a setup which lets us avoid it...
+> 
+> Probably keeping PMU on no matter what for 2.7 and down will allow
+> the removal of the tristate.
+
+If we switch to default on, then the only way to turn it off is with
+pmu=off added to the command line. So we'll know if pmu=off is given
+and we can just ignore it for virt-2.7. If we don't care about keeping
+the property off the virt-2.7 command line then there's no need for a
+tri-state.
 
 Thanks,
 drew

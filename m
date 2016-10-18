@@ -1,60 +1,46 @@
-Received: by 10.80.166.35 with SMTP id d32csp919283edc;
-        Tue, 18 Oct 2016 03:48:43 -0700 (PDT)
-X-Received: by 10.55.33.219 with SMTP id f88mr10454qki.10.1476787723223;
-        Tue, 18 Oct 2016 03:48:43 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp959734edc;
+        Tue, 18 Oct 2016 05:23:32 -0700 (PDT)
+X-Received: by 10.200.37.11 with SMTP id 11mr200492qtm.12.1476793412451;
+        Tue, 18 Oct 2016 05:23:32 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p42si20570422qtp.48.2016.10.18.03.48.43
+        by mx.google.com with ESMTPS id a42si20806844qtb.82.2016.10.18.05.23.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 18 Oct 2016 03:48:43 -0700 (PDT)
+        Tue, 18 Oct 2016 05:23:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40247 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41113 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwRwo-0002nQ-KY
-	for alex.bennee@linaro.org; Tue, 18 Oct 2016 06:48:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40314)
+	id 1bwTQZ-0000Ig-O9
+	for alex.bennee@linaro.org; Tue, 18 Oct 2016 08:23:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37702)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bwRwc-0002mL-Mu
-	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 06:48:34 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1bwTJb-00033R-1R
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 08:16:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1bwRwZ-0003HR-JT
-	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 06:48:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38834)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1bwRwZ-0003H7-Bb; Tue, 18 Oct 2016 06:48:27 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 379F88E75B;
-	Tue, 18 Oct 2016 10:48:25 +0000 (UTC)
-Received: from nial.brq.redhat.com (dhcp-1-118.brq.redhat.com [10.34.1.118])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9IAmImW017510; Tue, 18 Oct 2016 06:48:18 -0400
-Date: Tue, 18 Oct 2016 12:48:16 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20161018124816.1b88dc80@nial.brq.redhat.com>
-In-Reply-To: <20161017192022.GA3275@thinpad.lan.raisama.net>
-References: <1476485569-6744-1-git-send-email-lvivier@redhat.com>
-	<1476485569-6744-3-git-send-email-lvivier@redhat.com>
-	<20161017192022.GA3275@thinpad.lan.raisama.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 18 Oct 2016 10:48:26 +0000 (UTC)
+	(envelope-from <pm215@archaic.org.uk>) id 1bwTJZ-0007Il-Ld
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 08:16:19 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:47368)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1bwTJZ-0007Hj-DJ; Tue, 18 Oct 2016 08:16:17 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.84_2)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1bwTJW-0005ga-GB; Tue, 18 Oct 2016 13:16:14 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 18 Oct 2016 13:16:13 +0100
+Message-Id: <1476792973-18508-1-git-send-email-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 2/3] exec: rename cpu_exec_init() as
- cpu_exec_realizefn()
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] target-arm: Implement new HLT trap for
+ semihosting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,104 +52,191 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
-	Greg Ungerer <gerg@uclinux.org>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Jia Liu <proljc@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Laurent Vivier <lvivier@redhat.com>, drjones@redhat.com,
-	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
-	qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
-	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /7+bXxbR+MS2
+X-TUID: ef4fc/VZtvvy
 
-On Mon, 17 Oct 2016 17:20:22 -0200
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+Version 2.0 of the semihosting specification introduces new trap
+instructions for AArch32: HLT 0xF000 for A32 and HLT 0x3C for T32.
+Implement these (in the same way we implement the existing HLT
+semihosting trap for A64).
 
-> On Sat, Oct 15, 2016 at 12:52:48AM +0200, Laurent Vivier wrote:
-> > Modify all CPUs to call it from XXX_cpu_realizefn() function.
-> > 
-> > Remove all the cannot_destroy_with_object_finalize_yet as
-> > unsafe references have been moved to cpu_exec_realizefn().
-> > (tested with QOM command provided by commit 4c315c27)
-> > 
-> > for arm:
-> > 
-> > Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
-> > to arm_cpu_realizefn() as setting of cpu_index is now done
-> > in cpu_exec_realizefn().
-> > 
-> > Signed-off-by: Laurent Vivier <lvivier@redhat.com>  
-> [...]
-> > diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> > index 1b9540e..364a45d 100644
-> > --- a/target-arm/cpu.c
-> > +++ b/target-arm/cpu.c
-> > @@ -441,22 +441,11 @@ static void arm_cpu_initfn(Object *obj)
-> >      CPUState *cs = CPU(obj);
-> >      ARMCPU *cpu = ARM_CPU(obj);
-> >      static bool inited;
-> > -    uint32_t Aff1, Aff0;
-> >  
-> >      cs->env_ptr = &cpu->env;
-> > -    cpu_exec_init(cs, &error_abort);
-> >      cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
-> >                                           g_free, g_free);
-> >  
-> > -    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-> > -     * We don't support setting cluster ID ([16..23]) (known as Aff2
-> > -     * in later ARM ARM versions), or any of the higher affinity level fields,
-> > -     * so these bits always RAZ.
-> > -     */
-> > -    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
-> > -    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
-> > -    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-> > -
-> >  #ifndef CONFIG_USER_ONLY
-> >      /* Our inbound IRQ and FIQ lines */
-> >      if (kvm_enabled()) {  
-> [...]
-> > @@ -631,6 +628,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-> >          set_feature(env, ARM_FEATURE_THUMB_DSP);
-> >      }
-> >  
-> > +    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-> > +     * We don't support setting cluster ID ([16..23]) (known as Aff2
-> > +     * in later ARM ARM versions), or any of the higher affinity level fields,
-> > +     * so these bits always RAZ.
-> > +     */
-> > +    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
-> > +    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
-> > +    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-> > +  
->
-> This will override any value set in the "mp-affinity" property,
-> The mp-affinity property can be set by the user in the
-> command-line, and it is also set by machvirt_init() in
-> hw/arm/virt.c.
-> 
-> Considering that each CPU is supposed to have a different value,
-> I doubt there are existing use cases for mp-affinity being set
-> directly by the user.
-> 
-> I suggest having a "cluster-size" property, instead of
-> "mp-affinity". This way the mp_affinity field can be calculated
-> on realize, based on the configured cluster-size.
-CCing Drew as he knows more about MPIDR stuff more.
+The old traps via SVC and BKPT are unaffected.
 
-> 
-> >      if (cpu->reset_hivecs) {
-> >              cpu->reset_sctlr |= (1 << 13);
-> >      }  
-> [...]
-> 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+The public doc for the new spec is not quite done yet, but I
+wanted to get support for the new trap insns into QEMU 2.8
+(they're the only thing where a semihosting user can't probe
+to see whether the new-in-2.0 feature they want is present).
+
+I've added support for testing these trap instructions to
+the not-very-comprehensive semihosting tests at
+https://git.linaro.org/people/peter.maydell/semihosting-tests.git
+
+ linux-user/main.c      |  3 +++
+ target-arm/cpu.h       |  2 +-
+ target-arm/helper.c    | 11 ++++++++--
+ target-arm/translate.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++----
+ 4 files changed, 63 insertions(+), 7 deletions(-)
+
+diff --git a/linux-user/main.c b/linux-user/main.c
+index 0e31dad..b8f7729 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -806,6 +806,9 @@ void cpu_loop(CPUARMState *env)
+                 }
+             }
+             break;
++        case EXCP_SEMIHOST:
++            env->regs[0] = do_arm_semihosting(env);
++            break;
+         case EXCP_INTERRUPT:
+             /* just indicate that signals should be handled asap */
+             break;
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 2218c00..ea0d17e 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -52,7 +52,7 @@
+ #define EXCP_SMC            13   /* Secure Monitor Call */
+ #define EXCP_VIRQ           14
+ #define EXCP_VFIQ           15
+-#define EXCP_SEMIHOST       16   /* semihosting call (A64 only) */
++#define EXCP_SEMIHOST       16   /* semihosting call */
+ 
+ #define ARMV7M_EXCP_RESET   1
+ #define ARMV7M_EXCP_NMI     2
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index cb83ee2..25b15dc 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -6573,12 +6573,19 @@ static inline bool check_for_semihosting(CPUState *cs)
+         /* Only intercept calls from privileged modes, to provide some
+          * semblance of security.
+          */
+-        if (!semihosting_enabled() ||
+-            ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_USR)) {
++        if (cs->exception_index != EXCP_SEMIHOST &&
++            (!semihosting_enabled() ||
++             ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_USR))) {
+             return false;
+         }
+ 
+         switch (cs->exception_index) {
++        case EXCP_SEMIHOST:
++            /* This is always a semihosting call; the "is this usermode"
++             * and "is semihosting enabled" checks have been done at
++             * translate time.
++             */
++            break;
+         case EXCP_SWI:
+             /* Check for semihosting interrupt.  */
+             if (env->thumb) {
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 164b52a..ef62f8b 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -28,6 +28,7 @@
+ #include "qemu/log.h"
+ #include "qemu/bitops.h"
+ #include "arm_ldst.h"
++#include "exec/semihost.h"
+ 
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
+@@ -1144,6 +1145,33 @@ static inline void gen_lookup_tb(DisasContext *s)
+     s->is_jmp = DISAS_JUMP;
+ }
+ 
++static inline void gen_hlt(DisasContext *s, int imm)
++{
++    /* HLT. This has two purposes.
++     * Architecturally, it is an external halting debug instruction.
++     * Since QEMU doesn't implement external debug, we treat this as
++     * it is required for halting debug disabled: it will UNDEF.
++     * Secondly, "HLT 0x3C" is a T32 semihosting trap instruction,
++     * and "HLT 0xF000" is an A32 semihosting syscall. These traps
++     * must trigger semihosting even for ARMv7 and earlier, where
++     * HLT was an undefined encoding.
++     * In system mode, we don't allow userspace access to
++     * semihosting, to provide some semblance of security
++     * (and for consistency with our 32-bit semihosting).
++     */
++    if (semihosting_enabled() &&
++#ifndef CONFIG_USER_ONLY
++        s->current_el != 0 &&
++#endif
++        (imm == (s->thumb ? 0x3c : 0xf000))) {
++        gen_exception_internal_insn(s, 0, EXCP_SEMIHOST);
++        return;
++    }
++
++    gen_exception_insn(s, s->thumb ? 2 : 4, EXCP_UDEF, syn_uncategorized(),
++                       default_exception_el(s));
++}
++
+ static inline void gen_add_data_offset(DisasContext *s, unsigned int insn,
+                                        TCGv_i32 var)
+ {
+@@ -8395,6 +8423,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+         {
+             int imm16 = extract32(insn, 0, 4) | (extract32(insn, 8, 12) << 4);
+             switch (op1) {
++            case 0:
++                /* HLT */
++                gen_hlt(s, imm16);
++                break;
+             case 1:
+                 /* bkpt */
+                 ARCH(5);
+@@ -8419,7 +8451,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 gen_smc(s);
+                 break;
+             default:
+-                goto illegal_op;
++                g_assert_not_reached();
+             }
+             break;
+         }
+@@ -11451,19 +11483,33 @@ static void disas_thumb_insn(CPUARMState *env, DisasContext *s)
+             break;
+         }
+ 
+-        case 0xa: /* rev */
++        case 0xa: /* rev, and hlt */
++        {
++            int op1 = extract32(insn, 6, 2);
++
++            if (op1 == 2) {
++                /* HLT */
++                int imm6 = extract32(insn, 0, 6);
++
++                gen_hlt(s, imm6);
++                break;
++            }
++
++            /* Otherwise this is rev */
+             ARCH(6);
+             rn = (insn >> 3) & 0x7;
+             rd = insn & 0x7;
+             tmp = load_reg(s, rn);
+-            switch ((insn >> 6) & 3) {
++            switch (op1) {
+             case 0: tcg_gen_bswap32_i32(tmp, tmp); break;
+             case 1: gen_rev16(tmp); break;
+             case 3: gen_revsh(tmp); break;
+-            default: goto illegal_op;
++            default:
++                g_assert_not_reached();
+             }
+             store_reg(s, rd, tmp);
+             break;
++        }
+ 
+         case 6:
+             switch ((insn >> 5) & 7) {
+-- 
+2.7.4
 

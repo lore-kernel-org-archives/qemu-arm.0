@@ -1,73 +1,56 @@
-Received: by 10.80.166.35 with SMTP id d32csp1107996edc;
-        Tue, 18 Oct 2016 10:23:12 -0700 (PDT)
-X-Received: by 10.55.209.207 with SMTP id o76mr1539205qkl.276.1476811391953;
-        Tue, 18 Oct 2016 10:23:11 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp1158937edc;
+        Tue, 18 Oct 2016 12:23:46 -0700 (PDT)
+X-Received: by 10.55.106.2 with SMTP id f2mr2136546qkc.124.1476818626406;
+        Tue, 18 Oct 2016 12:23:46 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u24si21605639qtc.60.2016.10.18.10.23.11
+        by mx.google.com with ESMTPS id t129si10854861qkh.155.2016.10.18.12.23.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 18 Oct 2016 10:23:11 -0700 (PDT)
+        Tue, 18 Oct 2016 12:23:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43020 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:43447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwY6Z-0001tN-7S
-	for alex.bennee@linaro.org; Tue, 18 Oct 2016 13:23:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39342)
+	id 1bwZzF-0007d0-Pm
+	for alex.bennee@linaro.org; Tue, 18 Oct 2016 15:23:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bwY6R-0001s7-P3
-	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 13:23:04 -0400
+	(envelope-from <lvivier@redhat.com>) id 1bwZz8-0007bU-RM
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 15:23:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1bwY6Q-0002P1-UC
-	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 13:23:03 -0400
-Received: from mail-vk0-x22b.google.com ([2607:f8b0:400c:c05::22b]:35323)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1bwY6Q-0002Os-PC
-	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 13:23:02 -0400
-Received: by mail-vk0-x22b.google.com with SMTP id q126so449915vkd.2
-	for <qemu-arm@nongnu.org>; Tue, 18 Oct 2016 10:23:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TWooMWRIY9PrlNrEz/Uj1E3O+r3MauD5qM5V5BxjtQo=;
-	b=dwXmE8+75s3S7HEliRBWMksMNCdvsjHYZZe5khdpsHR4IZ+XbNk9x9oQ1ULbke8A+X
-	DLNhiWy5obudBkZD8fbrw5tzHUEb4PRxmBo/7VqywP1G52BgpXdQ3EdB4fdb43q341MM
-	qfCj4b7R/t4OJrguF7fznI++VfbDNm/N1QNCE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=TWooMWRIY9PrlNrEz/Uj1E3O+r3MauD5qM5V5BxjtQo=;
-	b=WGMivxnIRbBxizT2JT7ahfkbVsJQatYL9jeJ/VIOqwWS5I2YLQVhVjLMcpjDy6q+v9
-	Gkjb3ym9893Jx1XL0KlYbVsDtwA7pSC01wqGPONSDojc9BnalQT+ESiOK0Bwn5KHm7/u
-	HsrjAOolmO3m6MgRrjEz9kKGdaRvnx5vF5IfxNrK0itFLOFxsCnOTvbov7AekaOSb1ZS
-	s23I1RwieWrF0panMTly3XunRPNkwV3Bv7WPUMa/BH20gT17opd//UAwedakvibC57Sm
-	NnUzJEL1R4jOaSIIE15wcvqYZ8fzBD0Vznp4JTSSV211KKa346a4ECqWd0wUYm+tBRx5
-	67UA==
-X-Gm-Message-State: AA6/9RnJ9sqB/Dc4Sv472V5cqg3Kpa2Lgc4LaMa+PyOYVV280gVgScWxB/44+oSUnUHyNwa4iUqbIvqY8FZuveK4
-X-Received: by 10.31.0.67 with SMTP id 64mr1648174vka.173.1476811382111; Tue,
-	18 Oct 2016 10:23:02 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Tue, 18 Oct 2016 10:22:41 -0700 (PDT)
-In-Reply-To: <20161018171638.vvpbc3ct4vztqntu@kamzik.brq.redhat.com>
-References: <1475617134-28180-1-git-send-email-wei@redhat.com>
-	<CAFEAcA_vTEjMK1Eex8Z41L2reWHK8oZ_XyekKv1r7eby+J+y7A@mail.gmail.com>
-	<20161014074828.ewvvz2hn3cwtfpve@hawk.localdomain>
-	<20161018171638.vvpbc3ct4vztqntu@kamzik.brq.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Oct 2016 18:22:41 +0100
-Message-ID: <CAFEAcA-h0JsHXtLUc06CJhv8e9DMwvTA8TLe8NAzGYPfaO+1xg@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <lvivier@redhat.com>) id 1bwZz3-00060e-ST
+	for qemu-arm@nongnu.org; Tue, 18 Oct 2016 15:23:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40012)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1bwZz3-0005zn-Kt; Tue, 18 Oct 2016 15:23:33 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B264EA89D;
+	Tue, 18 Oct 2016 19:23:30 +0000 (UTC)
+Received: from thinkpad.redhat.com (ovpn-112-25.ams2.redhat.com [10.36.112.25])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9IJMt9j024602; Tue, 18 Oct 2016 15:23:00 -0400
+From: Laurent Vivier <lvivier@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Oct 2016 21:22:50 +0200
+Message-Id: <1476818573-5228-1-git-send-email-lvivier@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 18 Oct 2016 19:23:32 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22b
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 0/2] Add option to configure
- guest vPMU
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v4 0/3] Split cpu_exec_init() into an init and a
+ realize part
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,42 +62,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <shannon.zhao@linaro.org>,
-	Andrea Bolognani <abologna@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
+	Greg Ungerer <gerg@uclinux.org>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Jia Liu <proljc@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
+	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
+	qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
+	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z32LaETFdtkR
+X-TUID: USFrQ+L3xWND
 
-On 18 October 2016 at 18:16, Andrew Jones <drjones@redhat.com> wrote:
-> On Fri, Oct 14, 2016 at 09:48:28AM +0200, Andrew Jones wrote:
->> The feature needs to be managed in order for users to be able to trade-off
->> features exposed vs. migratability. If the lack of an explicit pmu=on
->> means either you get a PMU, when it's available, or you don't, when it's
->> not, then managing the feature becomes more difficult. Also, libvirt
->> already manages this cpu property for x86, and there it defaults off.
->
-> We discussed this today with Andrea. He says libvirt doesn't mind the
-> default being on. x86 defaults pmu off, ppc defaults pmu on. I guess
-> we might as well stick with on, it should make things easier.
+Since commit 42ecaba ("target-i386: Call cpu_exec_init() on realize"),
+, commit 6dd0f83 ("target-ppc: Move cpu_exec_init() call to realize function"),
+and commit c6644fc ("s390x/cpu: Get rid of side effects when creating a vcpu"),
+cpu_exec_init() has been moved to realize function for some architectures
+to implement CPU htoplug. This allows any failures from cpu_exec_init() to be
+handled appropriately.
 
-If we don't have a clear architectural consensus then I think we
-should stick with 'default is on'. That seems less confusing than
-"it was off, then in 2.7 it was on, then in 2.8 it's off again".
+This series tries to do the same work for all the other CPUs.
 
-> If we switch to default on, then the only way to turn it off is with
-> pmu=off added to the command line. So we'll know if pmu=off is given
-> and we can just ignore it for virt-2.7. If we don't care about keeping
-> the property off the virt-2.7 command line then there's no need for a
-> tri-state.
+But as the ARM Virtual Machine ("virt") needs the "memory" property of the CPU
+in the machine init function (the "memory" property is created in
+cpu_exec_init() we want to move to the realize part), split cpu_exec_init() in
+two parts: a realize part (cpu_exec_realizefn(), adding the CPU in the
+environment) and an init part (cpu_exec_initfn(), initializing the CPU, like
+adding the "memory" property). To mirror the realize part, add an unrealize
+part, and remove the cpu_exec_exit() call from the finalize part.
 
-I don't much mind what virt-2.7 does with pmu=anything, I
-just don't want a tri-state, and particularly I don't want
-a tri-state just to get a particular behaviour out of a
-machine=virt-2.7 command line that wouldn't have worked on the
-real 2.7 release.
+This also allows to remove all the "cannot_destroy_with_object_finalize_yet"
+properties from the CPU device class.
 
-So we should arrange it whichever way is most convenient, I think.
+v4:
+- arm: update mp_affinity in realize only if it s not set by the user
+- i386 and ppc: add an parent_unrealize to call the Device unrealize
+  because it is overwritten by the CPU unrealize
+- update commit messages
 
-thanks
--- PMM
+v3:
+- reorganize the series in 3 patches:
+  1- split cpu_exec_init() and call the init part from
+     cpu_common_initfn()
+  2- move all the cpu_exec_realize() calls to the
+     XXX_cpu_realizefn() functions
+  3- create a cpu_common_unrealizefn() function
+      and call the cpu_exec_unrealize() function from here,
+      except for ppc64 and i386 that have their own XX_cpu_unrealizefn()
+      functions
+- rename cpu_exec_init(), cpu_exec_realize(), cpu_exec_unrealize()
+  to cpu_exec_initfn(), cpu_exec_realizefn() and cpu_exec_unrealizefn(),
+- move cpu_exec_unrealizefn() to the device class unrealize
+  and declare it in qom/cpu.h instead of exec/exec-all.h
+
+v2:
+- rename cpu_exec_exit() as cpu_exec_unrealize(),
+  as it un-does what cpu_exec_realize() does,
+- remove cpu_exec_exit() from ppc_cpu_unrealizefn() as
+  it is called from cpu_common_finalize(),
+- add a patch to move all cpu_exec_init() from
+  all XX_cpu_initfn() to cpu_common_initfn(),
+- arm: move setting of cpu->mp_affinity to
+  arm_cpu_realizefn() as the cpu_index is now set in
+  cpu_exec_realizefn().
+- update some commit messages
+
+Laurent Vivier (3):
+  exec: split cpu_exec_init()
+  exec: move cpu_exec_init() calls to realize functions
+  exec: call cpu_exec_exit() from a CPU unrealize common function
+
+ exec.c                      | 12 +++++++-----
+ include/exec/exec-all.h     |  1 -
+ include/qom/cpu.h           |  4 +++-
+ qom/cpu.c                   | 10 +++++++++-
+ target-alpha/cpu.c          | 15 +++++++--------
+ target-arm/cpu.c            | 45 ++++++++++++++++++++++-----------------------
+ target-cris/cpu.c           | 15 +++++++--------
+ target-i386/cpu-qom.h       |  1 +
+ target-i386/cpu.c           | 20 ++++++++++++++------
+ target-lm32/cpu.c           | 15 +++++++--------
+ target-m68k/cpu.c           | 15 +++++++--------
+ target-microblaze/cpu.c     | 14 +++++++-------
+ target-mips/cpu.c           | 15 +++++++--------
+ target-moxie/cpu.c          | 15 +++++++--------
+ target-openrisc/cpu.c       | 15 +++++++--------
+ target-ppc/cpu-qom.h        |  1 +
+ target-ppc/translate_init.c | 11 +++++++++--
+ target-s390x/cpu.c          |  8 +-------
+ target-sh4/cpu.c            | 15 +++++++--------
+ target-sparc/cpu.c          | 18 +++++++++---------
+ target-tilegx/cpu.c         | 15 +++++++--------
+ target-tricore/cpu.c        | 15 +++++++--------
+ target-unicore32/cpu.c      | 18 +++++++++---------
+ target-xtensa/cpu.c         | 15 +++++++--------
+ 24 files changed, 169 insertions(+), 159 deletions(-)
+
+-- 
+2.7.4
+

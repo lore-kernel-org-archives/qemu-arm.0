@@ -1,45 +1,60 @@
-Received: by 10.80.166.35 with SMTP id d32csp229950edc;
-        Wed, 19 Oct 2016 04:14:21 -0700 (PDT)
-X-Received: by 10.55.33.65 with SMTP id h62mr2135513qkh.93.1476875661699;
-        Wed, 19 Oct 2016 04:14:21 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp236495edc;
+        Wed, 19 Oct 2016 04:29:43 -0700 (PDT)
+X-Received: by 10.200.48.49 with SMTP id f46mr5528849qte.64.1476876583774;
+        Wed, 19 Oct 2016 04:29:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m204si23948114qke.44.2016.10.19.04.14.21
+        by mx.google.com with ESMTPS id s68si23981197qkd.99.2016.10.19.04.29.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Oct 2016 04:14:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 19 Oct 2016 04:29:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47015 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47093 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwopB-0006oy-3d
-	for alex.bennee@linaro.org; Wed, 19 Oct 2016 07:14:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47704)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bwp43-00028u-6O
+	for alex.bennee@linaro.org; Wed, 19 Oct 2016 07:29:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50646)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bwomH-0004h1-J6
-	for qemu-devel@nongnu.org; Wed, 19 Oct 2016 07:11:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bwox3-0004Tw-J7
+	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 07:22:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bwomG-0000iE-Jr
-	for qemu-devel@nongnu.org; Wed, 19 Oct 2016 07:11:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49360)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1bwomA-0000bP-2z; Wed, 19 Oct 2016 07:11:14 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 118997D0E6;
-	Wed, 19 Oct 2016 11:11:11 +0000 (UTC)
-Received: from localhost (ovpn-116-104.phx2.redhat.com [10.3.116.104])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9JBB7rM016179; Wed, 19 Oct 2016 07:11:07 -0400
-Date: Wed, 19 Oct 2016 09:11:06 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161019111106.GD5057@thinpad.lan.raisama.net>
+	(envelope-from <peter.maydell@linaro.org>) id 1bwox2-0006wG-Rw
+	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 07:22:29 -0400
+Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:34522)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1bwox2-0006uL-L4
+	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 07:22:28 -0400
+Received: by mail-vk0-x236.google.com with SMTP id b186so23405496vkb.1
+	for <qemu-arm@nongnu.org>; Wed, 19 Oct 2016 04:22:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=pGYtPc/oq//jd/wk3OWEbjewbmYkauJyNHWm2RT9/Os=;
+	b=Lpwbuj24CFIc+68mk6OhDVJk0WOnMdfdvSU3NdnZrn5g+bjnQwC06h8AB1jLo5Pox2
+	HABPmv6688EwUN7aIMVyDp2u7Il4ZmzpdclaXoqXmJSwxIejZc27OUX3SCBaUtCreRzT
+	cvMnEiV5OpN11HrAlryD75x6PWAAxapFfBcPM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=pGYtPc/oq//jd/wk3OWEbjewbmYkauJyNHWm2RT9/Os=;
+	b=YENfalIY83A7OY61xaX3Q0zzu4RZ54g8zdcttmhImN25v6/8XDP0bEatrKUxHFTfuM
+	txQsl6pE6njss9Y1VnOOe0Wer3axEX4iLupPspyhrKTGSZDI4JDK6dKKoeRUlyoVvt1H
+	w0/08vxFx9VXP8VtNajTLIlM2wwfKtuKPcJrPVKGxqeVF8CvpRUhZoRkil0cU0ZSRwOF
+	39RHgTntRDWMpmYsn8eKg+D7nZG58Z/gflKd9/7aLJYJ+J9QNfXOVuDvFJ9oMiXi/305
+	nHJ+/84cfaN8im5v6sFG02u5S9mq6xTJBKtxY3NMTi8rzuD1ERLMKwEOe0PuGuq2FgSc
+	RqfQ==
+X-Gm-Message-State: AA6/9RkytQrPmN3qcA6iTb+gvrN8siUxp6q+nQ5Nu6th1JonnHcLfWjJZicslPfKUt84eDloLh3z4vo1x48rrp04
+X-Received: by 10.31.79.134 with SMTP id d128mr4511543vkb.165.1476876147724;
+	Wed, 19 Oct 2016 04:22:27 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.195.70 with HTTP; Wed, 19 Oct 2016 04:22:07 -0700 (PDT)
+In-Reply-To: <20161019111106.GD5057@thinpad.lan.raisama.net>
 References: <20161018142247.55d4aymduofvhy3r@kamzik.brq.redhat.com>
 	<20161018152207.GZ3275@thinpad.lan.raisama.net>
 	<20161018162202.pmui5rv3va7ubcrv@kamzik.brq.redhat.com>
@@ -50,35 +65,31 @@ References: <20161018142247.55d4aymduofvhy3r@kamzik.brq.redhat.com>
 	<CAFEAcA8nCjr2Zz2no3DikyGtRtYRm+ieouatfOJnynkzpJ+thg@mail.gmail.com>
 	<20161018204937.GB5057@thinpad.lan.raisama.net>
 	<CAFEAcA9Cd0TsLHgBr-GuOwYmrwcPW656YOP2msAGrhghDS3xBw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9Cd0TsLHgBr-GuOwYmrwcPW656YOP2msAGrhghDS3xBw@mail.gmail.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.7.0 (2016-08-17)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 19 Oct 2016 11:11:13 +0000 (UTC)
+	<20161019111106.GD5057@thinpad.lan.raisama.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 19 Oct 2016 12:22:07 +0100
+Message-ID: <CAFEAcA9acBXou9XwTAdjc=OQp-FaUpkiW7TdUAoe4wHT_RXZrQ@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] QOM properties vs C functions/fields (was Re:
- [PATCH v3 2/3] exec: rename cpu_exec_init() as cpu_exec_realizefn())
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::236
+Subject: Re: [Qemu-arm] QOM properties vs C functions/fields (was Re:
+ [Qemu-devel] [PATCH v3 2/3] exec: rename cpu_exec_init() as
+ cpu_exec_realizefn())
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Anthony Green <green@moxielogic.com>,
 	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
 	Max Filippov <jcmvbkbc@gmail.com>, Greg Ungerer <gerg@uclinux.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
 	Guan Xuetao <gxt@mprc.pku.edu.cn>, Jia Liu <proljc@gmail.com>,
 	Markus Armbruster <armbru@redhat.com>,
 	Bharata B Rao <bharata@linux.vnet.ibm.com>,
@@ -93,78 +104,24 @@ Cc: Anthony Green <green@moxielogic.com>,
 	Michael Walle <michael@walle.cc>,
 	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M0bK1w8MomVp
-Message-ID: <20161019111106.W2dRbIZFY3GDZVnX5gNjGF-hKIS_K35dr7RXzKjLTaE@z>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fjF0eLdSz/X/
 
-On Tue, Oct 18, 2016 at 10:08:21PM +0100, Peter Maydell wrote:
-> On 18 October 2016 at 21:49, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > On Tue, Oct 18, 2016 at 09:30:01PM +0100, Peter Maydell wrote:
-> >> Lots of stuff in a device's C struct is strictly internal
-> >> and not to be messed with. I thought that QOM properties
-> >> were essentially how a device defined its public (and
-> >> typically settable-only-once) config knobs. QOM properties
-> >> shouldn't be user-facing (read: stable, required to be
-> >> backwards-compatible) interface in general because
-> >> we don't really want to tie ourselves down that much.
-> >> In fact almost all our QOM objects are not usefully
-> >> user-facing at all.
-> >
-> > This interpretation surprises me, because it is the opposite of
-> > what I have seen us doing. Most of our QOM objects and properties
-> > are user-visible and user-configurable using -global, -device,
-> > -object, or qom-set (and probably other QMP commands).
-> 
-> Most of the devices I deal with are not and never will
-> be sensibly usable with -device. Exposing wiring up
-> of IRQ and GPIO lines or MMIO regions to the user is
-> never going to make sense. For x86 most devices are
-> probably pluggable (and usable with -device), but over
-> the whole source tree I think the embedded-style device
-> is in the majority. They're all still worth QOMifying
-> and having properties for the things board code wants
-> to modify, though.
+On 19 October 2016 at 12:11, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> BTW, if most devices aren't supposed to be used with -device,
+> possibly many of them don't have
+> cannot_instantiate_with_device_add_yet set properly.
 
-Even if they are not usable with -device, all properties are
-configurable using -global. There's no mechanism to avoid letting
-the user configure properties for devices. Is this really OK?
+They used to be covered by hw/core/sysbus.c setting
+it for them. In commit 33cd52b5d7b9adf that was removed,
+because under certain specialized circumstances it
+is now possible to dynamically add a sysbus device.
+If the machine model doesn't set mc->has_dynamic_sysbus
+they'll error out via a different route. If the machine
+model does set that option then it'll probably just do
+something unhelpful unless the user knew what they were
+doing.
 
-If internal-only usage is also an intended use case for QOM
-properties, fine. But I believe we need to communicate this more
-clearly, based on the previous thread (subject: "QOM: best way
-for parents to pass information to children?").
-
-BTW, if most devices aren't supposed to be used with -device,
-possibly many of them don't have
-cannot_instantiate_with_device_add_yet set properly. On the 2.6.2
-binaries in Fedora 24, I see:
-
-* 1671 device types (including CPU types)
-* 1011 CPU device types
-* 1076 no-user device types (including CPU types)
-* 660 non-CPU device types
-* 65 no-user non-CPU device types (10% of them)
-* 860 type_register_*() lines in the code
-  (this includes non-TYPE_DEVICE types, though)
-* 56 cannot_instantiate_with_device_add_yet=true lines in the code
-
-Commands I used to get the numbers above:
-
-  $ for f in /usr/bin/qemu-system-*;do \
-     (echo 'info qdm';echo quit;) | $f -machine none -nodefaults -monitor stdio -nographic 2>&1 \
-    done | grep ^name | sort -u > /tmp/devs
-  $ wc -l /tmp/devs
-  1671 /tmp/devs
-  $ grep no-user /tmp/devs | wc -l
-  1076
-  $ grep -- '-cpu"' /tmp/devs | wc -l
-  1011
-  $ grep -v -- '-cpu"' /tmp/devs | wc -l
-  660
-  $ grep -v -- '-cpu"' /tmp/devs | grep no-user | wc -l
-  65
-  $ 
-
--- 
-Eduardo
+thanks
+-- PMM

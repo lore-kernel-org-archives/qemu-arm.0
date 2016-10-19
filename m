@@ -1,73 +1,61 @@
-Received: by 10.80.166.35 with SMTP id d32csp195923edc;
-        Wed, 19 Oct 2016 02:50:15 -0700 (PDT)
-X-Received: by 10.55.151.199 with SMTP id z190mr5452232qkd.227.1476870615641;
-        Wed, 19 Oct 2016 02:50:15 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp205043edc;
+        Wed, 19 Oct 2016 03:12:36 -0700 (PDT)
+X-Received: by 10.55.204.215 with SMTP id n84mr5684111qkl.240.1476871956142;
+        Wed, 19 Oct 2016 03:12:36 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u63si23711248qka.196.2016.10.19.02.50.15
+        by mx.google.com with ESMTPS id g186si23746299qkc.121.2016.10.19.03.12.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Oct 2016 02:50:15 -0700 (PDT)
+        Wed, 19 Oct 2016 03:12:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46631 helo=lists.gnu.org)
+Received: from localhost ([::1]:46733 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwnVn-0003UA-36
-	for alex.bennee@linaro.org; Wed, 19 Oct 2016 05:50:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55895)
+	id 1bwnrP-0000el-HE
+	for alex.bennee@linaro.org; Wed, 19 Oct 2016 06:12:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bwnVf-0003Og-Ew
-	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 05:50:09 -0400
+	(envelope-from <ppandit@redhat.com>) id 1bwnqq-0000H6-Dx
+	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 06:12:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bwnVe-0005EG-Qj
-	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 05:50:07 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34727)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1bwnVe-0005DU-La; Wed, 19 Oct 2016 05:50:06 -0400
-Received: by mail-oi0-x244.google.com with SMTP id p136so1245810oic.1;
-	Wed, 19 Oct 2016 02:50:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=3ePzKvcRT9+Mi2ZoBjXrRpDwaOyU5Ctys3puVvWR/f4=;
-	b=Dr2Xp4obnfGf9oqDKcgR9+JxEYeBbjnloISF3WaUpSLMkxVO6dFkIGdwGglCLK+jNf
-	F8jE+4/OH3p58c32j3IhJBVszPSOfdyKB8EXKRq3GSOr/8BWuWKoZNNtmtGyjvOBXEbI
-	BBaNc18RdNLnE0cAqh6ObiYMfC3Bu4KlYF9UAGB7TgBmP7iV7UmrpDIRiVvLM+efvFU2
-	MJiA5uM5eYSWGuTo4MB4jjxVbVpQB1zw+nTeJH/AMqXvJmFgR0fcrsGgylgH/AZELCVc
-	cLQzb6TNMOA4bcLZ7uOUY7qXj/Ko8Vsx+PtXuHHegnsrzyAa93PQ3IwYH8i1bfXBUYVS
-	OXkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=3ePzKvcRT9+Mi2ZoBjXrRpDwaOyU5Ctys3puVvWR/f4=;
-	b=O/L6Fl0d6MctG+ZEwR4Kuw5FS2E39rgz17btE5OxyNUMMx5WFyna/Kwbj99llhYSq3
-	cMUJEexFz1mq675v1pl2r2PH3VyxOLiWeC/QIRc9Ncdt6OJCSfWOYhYQU/SzKM1jX/Qs
-	PzUYM1ruvNgjpBOUo3SiHiS0uUvOenwzi6B8i9b0S85AmsEnC66CNErfWhAf6x9guE+s
-	9cP6FdjQ3NBSmYx5dXi6NFAaRjmnZj+UXgkWi/ONQIIMdO/Ssh5KrXIfM/pW+0vNjnxy
-	evd8yKXTNm5REn7BRJVTeWeKDuGS3KQnVz5i+DnwWgvkf2PkABcqGFuLbmX+QoRM3EW5
-	DDJQ==
-X-Gm-Message-State: AA6/9RlbddMI3VzyXixAINEaENWpJEZmydb9d4U5WK/gD0TTlcdoVhYWRmYor9l296EWONxwk09IqJX9ObTXhg==
-X-Received: by 10.157.36.232 with SMTP id z95mr1399954ota.124.1476870605341;
-	Wed, 19 Oct 2016 02:50:05 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.182.78.198 with HTTP; Wed, 19 Oct 2016 02:49:34 -0700 (PDT)
-In-Reply-To: <alpine.LFD.2.20.1610182307550.1547@wniryva>
+	(envelope-from <ppandit@redhat.com>) id 1bwnql-0007KG-Fa
+	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 06:12:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34492)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
+	id 1bwnql-0007Jt-AJ; Wed, 19 Oct 2016 06:11:55 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8E7D23F1E8;
+	Wed, 19 Oct 2016 10:11:54 +0000 (UTC)
+Received: from javelin (vpn1-48-172.bne.redhat.com [10.64.48.172])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9JABf1l005769
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Wed, 19 Oct 2016 06:11:49 -0400
+Date: Wed, 19 Oct 2016 15:41:37 +0530 (IST)
+From: P J P <ppandit@redhat.com>
+X-X-Sender: pjp@javelin
+To: Alistair Francis <alistair.francis@xilinx.com>
+In-Reply-To: <CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
+Message-ID: <alpine.LFD.2.20.1610191539170.12629@wniryva>
 References: <1476784025-27293-1-git-send-email-ppandit@redhat.com>
 	<CAFEAcA8hkSJa5rVpNrL1D7w_U-1EKSf-t2G5jKzxceXL2rqRdg@mail.gmail.com>
 	<alpine.LFD.2.20.1610182307550.1547@wniryva>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 19 Oct 2016 11:49:34 +0200
-X-Google-Sender-Auth: vIgl1zHSFZ9qr4y_9cHqJVHN1CY
-Message-ID: <CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
-To: P J P <ppandit@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	<CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 19 Oct 2016 10:11:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::244
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] char: cadence: check divider
  against baud rate
 X-BeenThere: qemu-arm@nongnu.org
@@ -82,41 +70,23 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yewZSTb4pxK4
+X-TUID: h78UTzA8FImA
 
-On Tue, Oct 18, 2016 at 8:46 PM, P J P <ppandit@redhat.com> wrote:
-> +-- On Tue, 18 Oct 2016, Peter Maydell wrote --+
-> | > +    if (!s->r[R_BRGR] || !(s->r[R_BDIV] + 1)
-> | > +        || baud_rate < (s->r[R_BRGR] * (s->r[R_BDIV] + 1))) {
-> | > +        return;
-> | > +    }
-> | >      ssp.speed = baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
-> | >      packet_size = 1;
-> |
-> | It seems really unlikely that early return here is the correct thing, since
-> | it will result in our not correctly setting a bunch of the other
-> | stuff done later in this function that's unrelated to baud rate.
-> | What does the datasheet for this UART specify for this situation?
->
-> @Alistair.. wdyt?
+  Hello Alistair,
 
-I'm traveling this week, so I won't have a chance to check the data
-sheet until next week.
++-- On Wed, 19 Oct 2016, Alistair Francis wrote --+
+| Generally these types of IP just say 'undefined' in invalid situations
+| like this. If that is the case we shouldn't return but just set some
+| default value and allow the other functions in the setup to continue
+| on.
 
-Generally these types of IP just say 'undefined' in invalid situations
-like this. If that is the case we shouldn't return but just set some
-default value and allow the other functions in the setup to continue
-on.
+  Could you please point me to its data sheet? I went through quite a few that 
+I came across, but none was helpful.
 
-Thanks,
-
-Alistair
-
-> --
-> Prasad J Pandit / Red Hat Product Security Team
-> 47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F
->
+Thank you.
+--
+Prasad J Pandit / Red Hat Product Security Team
+47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F

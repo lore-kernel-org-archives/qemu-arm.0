@@ -1,64 +1,65 @@
-Received: by 10.80.166.35 with SMTP id d32csp305671edc;
-        Wed, 19 Oct 2016 06:59:20 -0700 (PDT)
-X-Received: by 10.237.34.51 with SMTP id n48mr6295568qtc.89.1476885560546;
-        Wed, 19 Oct 2016 06:59:20 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp653876edc;
+        Wed, 19 Oct 2016 22:56:10 -0700 (PDT)
+X-Received: by 10.55.212.221 with SMTP id s90mr10783449qks.169.1476942970498;
+        Wed, 19 Oct 2016 22:56:10 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 98si23325369qtc.118.2016.10.19.06.59.20
+        by mx.google.com with ESMTPS id u65si26692062qkb.94.2016.10.19.22.56.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Oct 2016 06:59:20 -0700 (PDT)
+        Wed, 19 Oct 2016 22:56:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:48794 helo=lists.gnu.org)
+Received: from localhost ([::1]:52584 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bwrOq-0004FF-1C
-	for alex.bennee@linaro.org; Wed, 19 Oct 2016 09:59:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38328)
+	id 1bx6Ko-0001FJ-03
+	for alex.bennee@linaro.org; Thu, 20 Oct 2016 01:56:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bwrM9-0002Mq-M6
-	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 09:56:34 -0400
+	(envelope-from <ppandit@redhat.com>) id 1bx6Ki-0001F9-Ew
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 01:56:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bwrM5-000434-PJ
-	for qemu-arm@nongnu.org; Wed, 19 Oct 2016 09:56:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47858)
+	(envelope-from <ppandit@redhat.com>) id 1bx6Kd-00085y-Kt
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 01:56:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47106)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1bwrM5-00042F-Eo; Wed, 19 Oct 2016 09:56:29 -0400
-Received: from int-mx09.intmail.prod.int.phx2.redhat.com
-	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
+	id 1bx6Kd-00084O-GW; Thu, 20 Oct 2016 01:55:59 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E5FD3C0567A0;
-	Wed, 19 Oct 2016 13:56:27 +0000 (UTC)
-Received: from [10.36.112.25] (ovpn-112-25.ams2.redhat.com [10.36.112.25])
-	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9JDuG0N032576; Wed, 19 Oct 2016 09:56:17 -0400
-To: Andrew Jones <drjones@redhat.com>
-References: <1476818573-5228-1-git-send-email-lvivier@redhat.com>
-	<1476818573-5228-3-git-send-email-lvivier@redhat.com>
-	<20161019081323.b4tle74njsh3locg@hawk.localdomain>
-	<7fd3c507-9a24-956e-d794-f15a87473f49@redhat.com>
-	<20161019134608.tmr5fidsjodor44a@kamzik.brq.redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <51f44fc8-bf56-3942-ebb3-5710ced06d1e@redhat.com>
-Date: Wed, 19 Oct 2016 15:56:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.3.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 10ACE3F1FF;
+	Thu, 20 Oct 2016 05:55:57 +0000 (UTC)
+Received: from javelin (vpn1-48-142.bne.redhat.com [10.64.48.142])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9K5tnUe004967
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 20 Oct 2016 01:55:52 -0400
+Date: Thu, 20 Oct 2016 11:25:47 +0530 (IST)
+From: P J P <ppandit@redhat.com>
+X-X-Sender: pjp@javelin
+To: Alistair Francis <alistair.francis@xilinx.com>
+In-Reply-To: <CAKmqyKMLvYDTvofMF=5k2sYNKPS+HtWYvz6RCdsd4AQG97H6nQ@mail.gmail.com>
+Message-ID: <alpine.LFD.2.20.1610201116520.27908@wniryva>
+References: <1476784025-27293-1-git-send-email-ppandit@redhat.com>
+	<CAFEAcA8hkSJa5rVpNrL1D7w_U-1EKSf-t2G5jKzxceXL2rqRdg@mail.gmail.com>
+	<alpine.LFD.2.20.1610182307550.1547@wniryva>
+	<CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
+	<alpine.LFD.2.20.1610191539170.12629@wniryva>
+	<CAKmqyKMLvYDTvofMF=5k2sYNKPS+HtWYvz6RCdsd4AQG97H6nQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20161019134608.tmr5fidsjodor44a@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+Content-Type: text/plain; charset=US-ASCII
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 19 Oct 2016 13:56:28 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 20 Oct 2016 05:55:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 2/3] exec: move
- cpu_exec_init() calls to realize functions
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] char: cadence: check divider
+ against baud rate
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,146 +71,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Max Filippov <jcmvbkbc@gmail.com>,
-	Greg Ungerer <gerg@uclinux.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Eduardo Habkost <ehabkost@redhat.com>, Jia Liu <proljc@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
-	qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /+9sjKQi9Nxv
+X-TUID: Dx6FCRgMtFHo
 
++-- On Wed, 19 Oct 2016, Alistair Francis wrote --+
+| I don't think the Cadence datasheets are public. If you can't find it
+| from a simple Google search I don't think you have access.
 
+  I see, okay.
 
-On 19/10/2016 15:46, Andrew Jones wrote:
-> On Wed, Oct 19, 2016 at 10:30:52AM +0200, Laurent Vivier wrote:
->>
->>
->> On 19/10/2016 10:13, Andrew Jones wrote:
->>> On Tue, Oct 18, 2016 at 09:22:52PM +0200, Laurent Vivier wrote:
->>>> Modify all CPUs to call it from XXX_cpu_realizefn() function.
->>>>
->>>> Remove all the cannot_destroy_with_object_finalize_yet as
->>>> unsafe references have been moved to cpu_exec_realizefn().
->>>> (tested with QOM command provided by commit 4c315c27)
->>>>
->>>> for arm:
->>>>
->>>> Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
->>>> to arm_cpu_realizefn() as setting of cpu_index is now done
->>>> in cpu_exec_realizefn(). To avoid to overwrite an user defined
->>>> value, we set it to an invalid value by default, and update
->>>> it in realize function only if the value is still invalid.
->>>>
->>>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->>>> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
->>>> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
->>>> ---
->>> [...]
->>>> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
->>>> index 1b9540e..f0d2074 100644
->>>> --- a/target-arm/cpu.c
->>>> +++ b/target-arm/cpu.c
->>>> @@ -33,6 +33,8 @@
->>>>  #include "sysemu/kvm.h"
->>>>  #include "kvm_arm.h"
->>>>  
->>>> +#define MP_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
->>>
->>> I would have defined this next to ARM64_AFFINITY_MASK in
->>> target-arm/cpu-qom.h
->>
->> It was my first idea, but all macros in cpu-qom.h start by ARM_ or
->> ARM64_, this one looks like a local macro (the name is too generic), so
->> I put it in cpu.c.
-> 
-> Feel free to prefix it with ARM64_ :-) How about
-> ARM64_AFFINITY_INVALID
-> 
->>
->>>> +
->>>>  static void arm_cpu_set_pc(CPUState *cs, vaddr value)
->>>>  {
->>>>      ARMCPU *cpu = ARM_CPU(cs);
->>>> @@ -441,22 +443,11 @@ static void arm_cpu_initfn(Object *obj)
->>>>      CPUState *cs = CPU(obj);
->>>>      ARMCPU *cpu = ARM_CPU(obj);
->>>>      static bool inited;
->>>> -    uint32_t Aff1, Aff0;
->>>>  
->>>>      cs->env_ptr = &cpu->env;
->>>> -    cpu_exec_init(cs, &error_abort);
->>>>      cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
->>>>                                           g_free, g_free);
->>>>  
->>>> -    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
->>>> -     * We don't support setting cluster ID ([16..23]) (known as Aff2
->>>> -     * in later ARM ARM versions), or any of the higher affinity level fields,
->>>> -     * so these bits always RAZ.
->>>> -     */
->>>> -    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
->>>> -    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
->>>> -    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
->>>> -
->>>>  #ifndef CONFIG_USER_ONLY
->>>>      /* Our inbound IRQ and FIQ lines */
->>>>      if (kvm_enabled()) {
->>>> @@ -576,6 +567,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>>>      ARMCPU *cpu = ARM_CPU(dev);
->>>>      ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
->>>>      CPUARMState *env = &cpu->env;
->>>> +    Error *local_err = NULL;
->>>> +    uint32_t Aff1, Aff0;
->>>> +
->>>> +    cpu_exec_realizefn(cs, &local_err);
->>>> +    if (local_err != NULL) {
->>>> +        error_propagate(errp, local_err);
->>>> +        return;
->>>> +    }
->>>>  
->>>>      /* Some features automatically imply others: */
->>>>      if (arm_feature(env, ARM_FEATURE_V8)) {
->>>> @@ -631,6 +630,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>>>          set_feature(env, ARM_FEATURE_THUMB_DSP);
->>>>      }
->>>>  
->>>> +    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
->>>> +     * We don't support setting cluster ID ([16..23]) (known as Aff2
->>>> +     * in later ARM ARM versions), or any of the higher affinity level fields,
->>>> +     * so these bits always RAZ.
->>>> +     */
->>>> +    if (cpu->mp_affinity == MP_AFFINITY_INVALID) {
->>>> +        Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
->>>> +        Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
->>>
->>> I think ARM_CPUS_PER_CLUSTER should be renamed to
->>> ARM_DEFAULT_CPUS_PER_CLUSTER and either moved from where
->>> it's currently defined (above arm_cpu_initfn) to just above
->>> arm_cpu_realizefn, or to the same place as ARM64_AFFINITY_MASK
->>> and MP_AFFINITY_INVALID.
->>>
->>> Aff0 and Aff1 could be declared in this scope, as they're only
->>> used here.
->>
->> The goal was to have as less diff as possible with my previous patch, so
->> I didn't move the declaration. This will not change the generated code.
-> 
-> I don't care much, but it's not just about generated code. It's also
-> about reviewers being able to dismiss those variables when they get
-> to the end of the scope (avoids too much brain clutter)
+I think it'll greatly help if device emulator writers include a link to its 
+specification/datasheet resources in the respective source file. At least if 
+these are publicly available. That way one knows for sure which specifications 
+to follow while debugging, instead of searching and sifting through multiple 
+different versions. OR Maybe there could a field in the MAINTAINERS file which 
+would point to respective reference resources. (just a thought)
 
-OK, I will modify the patch as you say.
-
-Thanks,
-Laurent
+Thank you.
+--
+Prasad J Pandit / Red Hat Product Security Team
+47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F

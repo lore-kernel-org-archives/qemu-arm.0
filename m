@@ -1,62 +1,85 @@
-Received: by 10.80.166.35 with SMTP id d32csp792235edc;
-        Thu, 20 Oct 2016 05:08:00 -0700 (PDT)
-X-Received: by 10.13.193.197 with SMTP id c188mr516724ywd.104.1476965280118;
-        Thu, 20 Oct 2016 05:08:00 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp947715edc;
+        Thu, 20 Oct 2016 10:22:04 -0700 (PDT)
+X-Received: by 10.37.68.193 with SMTP id r184mr3130286yba.198.1476984124644;
+        Thu, 20 Oct 2016 10:22:04 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y62si11222693yba.259.2016.10.20.05.07.59
+        by mx.google.com with ESMTPS id j2si6828770ywf.239.2016.10.20.10.22.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Oct 2016 05:08:00 -0700 (PDT)
+        Thu, 20 Oct 2016 10:22:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54359 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56257 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bxC8d-0000tl-EC
-	for alex.bennee@linaro.org; Thu, 20 Oct 2016 08:07:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39578)
+	id 1bxH2a-0006yW-0i
+	for alex.bennee@linaro.org; Thu, 20 Oct 2016 13:22:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37376)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bxC8U-0000r4-UT
-	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 08:07:52 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1bxH2S-0006rJ-U7
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 13:21:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bxC8Q-0007r5-G6
-	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 08:07:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36472)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1bxC8Q-0007qa-8p; Thu, 20 Oct 2016 08:07:46 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E0617769F7;
-	Thu, 20 Oct 2016 12:07:44 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9KC7bTh028735
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 20 Oct 2016 08:07:39 -0400
-Date: Thu, 20 Oct 2016 14:07:37 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20161020120737.dz5572e6jt2sgzfk@kamzik.brq.redhat.com>
-References: <1476962764-12166-1-git-send-email-lvivier@redhat.com>
-	<1476962764-12166-3-git-send-email-lvivier@redhat.com>
+	(envelope-from <edgar.iglesias@gmail.com>) id 1bxH2P-0001XW-Nz
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 13:21:56 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:35366)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1bxH2P-0001TX-BM; Thu, 20 Oct 2016 13:21:53 -0400
+Received: by mail-lf0-x242.google.com with SMTP id x79so1133420lff.2;
+	Thu, 20 Oct 2016 10:21:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=ezCeXFsgtNR/NzlHln6ZXEAb8bMcxkrAbEi7l5bhnPI=;
+	b=siG+QDJQWoMjhpRIkpH0rNhzIW1xqauyx358KLQavKGYg81GhvDD8Y42qA0ey5fXo/
+	JJqnMext3Gsf+kaueFW2WnzD34cT5sAg3Qja+6HbseO/hnoPJpEkIz1ml8ah/rWupOxi
+	nO9jwzWtXTtyHv0TH+qatILfH7eVdCzrBIp4W2frw126QfuFUXbOBB2AsQxz1FmEDXaA
+	26nRx2HYQw/+Iiyo/aIxcnLhlKQL9cWzOs9B2PH57Pv5pHL2TxPq79G4TfgRQ9XmwWnf
+	3JHnb1bbBWEsH0krAm/SZ4NIw6cRrfqGRf7kNJ9AwmDjxDQQiq55G7v48a/WjC4FptHW
+	80Fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=ezCeXFsgtNR/NzlHln6ZXEAb8bMcxkrAbEi7l5bhnPI=;
+	b=AbYk5MGq64PoUo1ON0vvaAqWSlMaD01Zk7C98I+hQS1xrxWfzmtdCEQ/E44gtbGkun
+	IyF+hD/0joJWDhLtYuJa2JmP5I1wbI8wu4ZKUoIFTgVc5b2dV7qyFtfvyR/R8PsWJiZn
+	xpTI5MiIRE0kpVfkiR9kAaxR8vnjoMCSQnKAcnQ1wRSC/Dq8PXfLGS6rjytOSDJn5Dei
+	2QZ/STCXWrs7pA/LtfK3VNsfyhl8iU9C2rqtcTxiFeKmRPgFkerXCkKW1aGGEMEjTQQj
+	ITJIC4CTRxAGB4/XHPhpruKdQt+nUDMeHXjPoQFrTTxpO9jH/0oW4ABNYQYOLz69itZp
+	6nnA==
+X-Gm-Message-State: AA6/9RnpocjuYNmmjWkASf7rYASklnOpq6y9y/UXgqVEgmcvV5bJjAsmDn+d+bWDHNx6vg==
+X-Received: by 10.25.75.65 with SMTP id y62mr3277110lfa.118.1476984107560;
+	Thu, 20 Oct 2016 10:21:47 -0700 (PDT)
+Received: from localhost (81-231-233-234-no56.tbcn.telia.com. [81.231.233.234])
+	by smtp.gmail.com with ESMTPSA id
+	o194sm7310540lfo.42.2016.10.20.10.21.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 20 Oct 2016 10:21:46 -0700 (PDT)
+Date: Thu, 20 Oct 2016 19:21:46 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: P J P <ppandit@redhat.com>
+Message-ID: <20161020172146.GA25226@toto>
+References: <1476784025-27293-1-git-send-email-ppandit@redhat.com>
+	<CAFEAcA8hkSJa5rVpNrL1D7w_U-1EKSf-t2G5jKzxceXL2rqRdg@mail.gmail.com>
+	<alpine.LFD.2.20.1610182307550.1547@wniryva>
+	<CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
+	<alpine.LFD.2.20.1610191539170.12629@wniryva>
+	<CAKmqyKMLvYDTvofMF=5k2sYNKPS+HtWYvz6RCdsd4AQG97H6nQ@mail.gmail.com>
+	<alpine.LFD.2.20.1610201116520.27908@wniryva>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1476962764-12166-3-git-send-email-lvivier@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 20 Oct 2016 12:07:45 +0000 (UTC)
+In-Reply-To: <alpine.LFD.2.20.1610201116520.27908@wniryva>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/3] exec: move
- cpu_exec_init() calls to realize functions
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] char: cadence: check divider
+ against baud rate
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,162 +91,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Greg Ungerer <gerg@uclinux.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Chen Gang <gang.chen.5i5j@gmail.com>, Jia Liu <proljc@gmail.com>,
-	Alexander Graf <agraf@suse.de>, Bharata B Rao <bharata@linux.vnet.ibm.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rueqaFMPJ4Zz
+X-TUID: 1TdyJ25oJxBo
 
-On Thu, Oct 20, 2016 at 01:26:03PM +0200, Laurent Vivier wrote:
-> Modify all CPUs to call it from XXX_cpu_realizefn() function.
+On Thu, Oct 20, 2016 at 11:25:47AM +0530, P J P wrote:
+> +-- On Wed, 19 Oct 2016, Alistair Francis wrote --+
+> | I don't think the Cadence datasheets are public. If you can't find it
+> | from a simple Google search I don't think you have access.
 > 
-> Remove all the cannot_destroy_with_object_finalize_yet as
-> unsafe references have been moved to cpu_exec_realizefn().
-> (tested with QOM command provided by commit 4c315c27)
+>   I see, okay.
 > 
-> for arm:
+> I think it'll greatly help if device emulator writers include a link to its 
+> specification/datasheet resources in the respective source file. At least if 
+> these are publicly available. That way one knows for sure which specifications 
+> to follow while debugging, instead of searching and sifting through multiple 
+> different versions. OR Maybe there could a field in the MAINTAINERS file which 
+> would point to respective reference resources. (just a thought)
+
+Hi,
+
+The UART is described in the Zynq TRMs, I think you can just
+google for zynq TRM and a reference to UG585 and UG1085 will come up.
+
+http://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-TRM.pdf
+http://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+
+AFAIK, the ZynqMP has a newer version of the cadence UART with a superset of
+the feature set. I don't think QEMU models any of the differences though.
+
+Cheers,
+Edgar
+
+
 > 
-> Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
-> to arm_cpu_realizefn() as setting of cpu_index is now done
-> in cpu_exec_realizefn(). To avoid to overwrite an user defined
-> value, we set it to an invalid value by default, and update
-> it in realize function only if the value is still invalid.
+> Thank you.
+> --
+> Prasad J Pandit / Red Hat Product Security Team
+> 47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F
 > 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
-[...]
-> diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-> index 3991173..a42495b 100644
-> --- a/target-arm/cpu-qom.h
-> +++ b/target-arm/cpu-qom.h
-> @@ -80,9 +80,11 @@ void arm_gt_stimer_cb(void *opaque);
->  #define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
->  #define ARM_AFF3_SHIFT 32
->  #define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
-> +#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
->  
->  #define ARM32_AFFINITY_MASK (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
->  #define ARM64_AFFINITY_MASK \
->      (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
-> +#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
->  
->  #endif
-> diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-> index 1b9540e..fb272a8 100644
-> --- a/target-arm/cpu.c
-> +++ b/target-arm/cpu.c
-> @@ -434,29 +434,16 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
->      }
->  }
->  
-> -#define ARM_CPUS_PER_CLUSTER 8
-> -
->  static void arm_cpu_initfn(Object *obj)
->  {
->      CPUState *cs = CPU(obj);
->      ARMCPU *cpu = ARM_CPU(obj);
->      static bool inited;
-> -    uint32_t Aff1, Aff0;
->  
->      cs->env_ptr = &cpu->env;
-> -    cpu_exec_init(cs, &error_abort);
->      cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
->                                           g_free, g_free);
->  
-> -    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-> -     * We don't support setting cluster ID ([16..23]) (known as Aff2
-> -     * in later ARM ARM versions), or any of the higher affinity level fields,
-> -     * so these bits always RAZ.
-> -     */
-> -    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
-> -    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
-> -    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-> -
->  #ifndef CONFIG_USER_ONLY
->      /* Our inbound IRQ and FIQ lines */
->      if (kvm_enabled()) {
-> @@ -576,6 +563,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      ARMCPU *cpu = ARM_CPU(dev);
->      ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
->      CPUARMState *env = &cpu->env;
-> +    Error *local_err = NULL;
-> +
-> +    cpu_exec_realizefn(cs, &local_err);
-> +    if (local_err != NULL) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
->  
->      /* Some features automatically imply others: */
->      if (arm_feature(env, ARM_FEATURE_V8)) {
-> @@ -631,6 +625,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          set_feature(env, ARM_FEATURE_THUMB_DSP);
->      }
->  
-> +    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-> +     * We don't support setting cluster ID ([16..23]) (known as Aff2
-> +     * in later ARM ARM versions), or any of the higher affinity level fields,
-> +     * so these bits always RAZ.
-> +     */
-> +    if (cpu->mp_affinity == ARM64_AFFINITY_INVALID) {
-> +        uint32_t Aff1 = cs->cpu_index / ARM_DEFAULT_CPUS_PER_CLUSTER;
-> +        uint32_t Aff0 = cs->cpu_index % ARM_DEFAULT_CPUS_PER_CLUSTER;
-
-These should have been uint8_t, but I should have pointed that out before
-and it probably doesn't really matter (it was uint32_t before...)
-
-> +        cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-> +    }
-> +
->      if (cpu->reset_hivecs) {
->              cpu->reset_sctlr |= (1 << 13);
->      }
-> @@ -1461,7 +1466,8 @@ static Property arm_cpu_properties[] = {
->      DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
->      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
->      DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-> -    DEFINE_PROP_UINT64("mp-affinity", ARMCPU, mp_affinity, 0),
-> +    DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-> +                        mp_affinity, ARM64_AFFINITY_INVALID),
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> @@ -1533,17 +1539,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
->      cc->debug_check_watchpoint = arm_debug_check_watchpoint;
->  
->      cc->disas_set_info = arm_disas_set_info;
-> -
-> -    /*
-> -     * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
-> -     * the object in cpus -> dangling pointer after final
-> -     * object_unref().
-> -     *
-> -     * Once this is fixed, the devices that create ARM CPUs should be
-> -     * updated not to set cannot_destroy_with_object_finalize_yet,
-> -     * unless they still screw up something else.
-> -     */
-> -    dc->cannot_destroy_with_object_finalize_yet = true;
->  }
-
-For the ARM part
-
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
-Thanks,
-drew

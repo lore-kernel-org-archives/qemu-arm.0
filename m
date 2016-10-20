@@ -1,58 +1,58 @@
-Received: by 10.80.166.35 with SMTP id d32csp774500edc;
-        Thu, 20 Oct 2016 04:26:49 -0700 (PDT)
-X-Received: by 10.55.191.135 with SMTP id p129mr200112qkf.279.1476962808933;
-        Thu, 20 Oct 2016 04:26:48 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp776192edc;
+        Thu, 20 Oct 2016 04:30:57 -0700 (PDT)
+X-Received: by 10.55.77.148 with SMTP id a142mr243085qkb.157.1476963057035;
+        Thu, 20 Oct 2016 04:30:57 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h189si27493808qkc.0.2016.10.20.04.26.48
+        by mx.google.com with ESMTPS id 136si27465595qkf.25.2016.10.20.04.30.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Oct 2016 04:26:48 -0700 (PDT)
+        Thu, 20 Oct 2016 04:30:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53961 helo=lists.gnu.org)
+Received: from localhost ([::1]:53986 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bxBUj-0001pf-Sr
-	for alex.bennee@linaro.org; Thu, 20 Oct 2016 07:26:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58248)
+	id 1bxBYm-00066N-2L
+	for alex.bennee@linaro.org; Thu, 20 Oct 2016 07:30:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bxBUZ-0001m1-U9
-	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 07:26:38 -0400
+	(envelope-from <lvivier@redhat.com>) id 1bxBUh-0001t2-4C
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 07:26:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1bxBUW-0007Qr-Up
-	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 07:26:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49148)
+	(envelope-from <lvivier@redhat.com>) id 1bxBUe-0007UL-Sc
+	for qemu-arm@nongnu.org; Thu, 20 Oct 2016 07:26:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39134)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1bxBUW-0007QV-Mn; Thu, 20 Oct 2016 07:26:32 -0400
+	id 1bxBUe-0007Tt-Kl; Thu, 20 Oct 2016 07:26:40 -0400
 Received: from int-mx14.intmail.prod.int.phx2.redhat.com
 	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A53977FD50;
-	Thu, 20 Oct 2016 11:26:31 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B6D6272658;
+	Thu, 20 Oct 2016 11:26:39 +0000 (UTC)
 Received: from thinkpad.redhat.com (ovpn-112-25.ams2.redhat.com [10.36.112.25])
 	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9KBQ411019916; Thu, 20 Oct 2016 07:26:23 -0400
+	id u9KBQ412019916; Thu, 20 Oct 2016 07:26:32 -0400
 From: Laurent Vivier <lvivier@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
 	Bharata B Rao <bharata@linux.vnet.ibm.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Oct 2016 13:26:03 +0200
-Message-Id: <1476962764-12166-3-git-send-email-lvivier@redhat.com>
+Date: Thu, 20 Oct 2016 13:26:04 +0200
+Message-Id: <1476962764-12166-4-git-send-email-lvivier@redhat.com>
 In-Reply-To: <1476962764-12166-1-git-send-email-lvivier@redhat.com>
 References: <1476962764-12166-1-git-send-email-lvivier@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 20 Oct 2016 11:26:32 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 20 Oct 2016 11:26:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 2/3] exec: move cpu_exec_init() calls to
- realize functions
+Subject: [Qemu-arm] [PATCH v5 3/3] exec: call cpu_exec_exit() from a CPU
+ unrealize common function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,829 +79,180 @@ Cc: Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ygYhwpUcgPb5
+X-TUID: AnD5pry4I/FL
 
-Modify all CPUs to call it from XXX_cpu_realizefn() function.
+As cpu_exec_exit() mirrors the cpu_exec_realizefn(),
+rename it as cpu_exec_unrealizefn().
 
-Remove all the cannot_destroy_with_object_finalize_yet as
-unsafe references have been moved to cpu_exec_realizefn().
-(tested with QOM command provided by commit 4c315c27)
+Create and register a cpu_common_unrealizefn() function for
+the CPU device class and call cpu_exec_unrealizefn() from
+this function.
 
-for arm:
-
-Setting of cpu->mp_affinity is moved from arm_cpu_initfn()
-to arm_cpu_realizefn() as setting of cpu_index is now done
-in cpu_exec_realizefn(). To avoid to overwrite an user defined
-value, we set it to an invalid value by default, and update
-it in realize function only if the value is still invalid.
+Remove cpu_exec_exit() from cpu_common_finalize()
+(which mirrors init, not realize), and as x86_cpu_unrealizefn()
+and ppc_cpu_unrealizefn() overwrite the device class unrealize function,
+add a call to a parent_unrealize pointer.
 
 Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- exec.c                      |  2 +-
- include/exec/exec-all.h     |  1 -
- include/qom/cpu.h           |  1 +
- target-alpha/cpu.c          | 15 +++++++--------
- target-arm/cpu-qom.h        |  2 ++
- target-arm/cpu.c            | 45 ++++++++++++++++++++-------------------------
- target-cris/cpu.c           | 15 +++++++--------
- target-i386/cpu.c           |  6 +++++-
- target-lm32/cpu.c           | 15 +++++++--------
- target-m68k/cpu.c           | 15 +++++++--------
- target-microblaze/cpu.c     | 14 +++++++-------
- target-mips/cpu.c           | 15 +++++++--------
- target-moxie/cpu.c          | 15 +++++++--------
- target-openrisc/cpu.c       | 15 +++++++--------
- target-ppc/translate_init.c |  2 +-
- target-s390x/cpu.c          |  8 +-------
- target-sh4/cpu.c            | 15 +++++++--------
- target-sparc/cpu.c          | 18 +++++++++---------
- target-tilegx/cpu.c         | 15 +++++++--------
- target-tricore/cpu.c        | 15 +++++++--------
- target-unicore32/cpu.c      | 18 +++++++++---------
- target-xtensa/cpu.c         | 15 +++++++--------
- 22 files changed, 133 insertions(+), 149 deletions(-)
+ exec.c                      | 2 +-
+ include/qom/cpu.h           | 2 +-
+ qom/cpu.c                   | 8 +++++++-
+ target-i386/cpu-qom.h       | 1 +
+ target-i386/cpu.c           | 9 +++++++++
+ target-ppc/cpu-qom.h        | 1 +
+ target-ppc/translate_init.c | 9 ++++++++-
+ 7 files changed, 28 insertions(+), 4 deletions(-)
 
 diff --git a/exec.c b/exec.c
-index a873f8b..dddaf69 100644
+index dddaf69..7e91f28 100644
 --- a/exec.c
 +++ b/exec.c
-@@ -634,7 +634,7 @@ void cpu_exec_initfn(CPUState *cpu)
- #endif
+@@ -596,7 +596,7 @@ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
  }
+ #endif
  
--void cpu_exec_init(CPUState *cpu, Error **errp)
-+void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+-void cpu_exec_exit(CPUState *cpu)
++void cpu_exec_unrealizefn(CPUState *cpu)
  {
-     CPUClass *cc ATTRIBUTE_UNUSED = CPU_GET_CLASS(cpu);
- 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 336a57c..9797d55 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -57,7 +57,6 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-                               uint32_t flags,
-                               int cflags);
- 
--void cpu_exec_init(CPUState *cpu, Error **errp);
- void QEMU_NORETURN cpu_loop_exit(CPUState *cpu);
- void QEMU_NORETURN cpu_loop_exit_restore(CPUState *cpu, uintptr_t pc);
+     CPUClass *cc = CPU_GET_CLASS(cpu);
  
 diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index d7648a9..5520c6c 100644
+index 5520c6c..633c3fc 100644
 --- a/include/qom/cpu.h
 +++ b/include/qom/cpu.h
-@@ -947,6 +947,7 @@ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx);
- void QEMU_NORETURN cpu_abort(CPUState *cpu, const char *fmt, ...)
+@@ -948,7 +948,7 @@ void QEMU_NORETURN cpu_abort(CPUState *cpu, const char *fmt, ...)
      GCC_FMT_ATTR(2, 3);
  void cpu_exec_initfn(CPUState *cpu);
-+void cpu_exec_realizefn(CPUState *cpu, Error **errp);
- void cpu_exec_exit(CPUState *cpu);
+ void cpu_exec_realizefn(CPUState *cpu, Error **errp);
+-void cpu_exec_exit(CPUState *cpu);
++void cpu_exec_unrealizefn(CPUState *cpu);
  
  #ifdef CONFIG_SOFTMMU
-diff --git a/target-alpha/cpu.c b/target-alpha/cpu.c
-index 6d01d7f..30d77ce 100644
---- a/target-alpha/cpu.c
-+++ b/target-alpha/cpu.c
-@@ -59,6 +59,13 @@ static void alpha_cpu_realizefn(DeviceState *dev, Error **errp)
+ extern const struct VMStateDescription vmstate_cpu_common;
+diff --git a/qom/cpu.c b/qom/cpu.c
+index 85f1132..03d9190 100644
+--- a/qom/cpu.c
++++ b/qom/cpu.c
+@@ -345,6 +345,12 @@ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+     trace_init_vcpu(cpu);
+ }
+ 
++static void cpu_common_unrealizefn(DeviceState *dev, Error **errp)
++{
++    CPUState *cpu = CPU(dev);
++    cpu_exec_unrealizefn(cpu);
++}
++
+ static void cpu_common_initfn(Object *obj)
  {
-     CPUState *cs = CPU(dev);
-     AlphaCPUClass *acc = ALPHA_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     qemu_init_vcpu(cs);
- 
-@@ -266,7 +273,6 @@ static void alpha_cpu_initfn(Object *obj)
-     CPUAlphaState *env = &cpu->env;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
-     tlb_flush(cs, 1);
- 
-     alpha_translate_init();
-@@ -309,13 +315,6 @@ static void alpha_cpu_class_init(ObjectClass *oc, void *data)
-     cc->disas_set_info = alpha_cpu_disas_set_info;
- 
-     cc->gdb_num_core_regs = 67;
--
--    /*
--     * Reason: alpha_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo alpha_cpu_type_info = {
-diff --git a/target-arm/cpu-qom.h b/target-arm/cpu-qom.h
-index 3991173..a42495b 100644
---- a/target-arm/cpu-qom.h
-+++ b/target-arm/cpu-qom.h
-@@ -80,9 +80,11 @@ void arm_gt_stimer_cb(void *opaque);
- #define ARM_AFF2_MASK  (0xFFULL << ARM_AFF2_SHIFT)
- #define ARM_AFF3_SHIFT 32
- #define ARM_AFF3_MASK  (0xFFULL << ARM_AFF3_SHIFT)
-+#define ARM_DEFAULT_CPUS_PER_CLUSTER 8
- 
- #define ARM32_AFFINITY_MASK (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK)
- #define ARM64_AFFINITY_MASK \
-     (ARM_AFF0_MASK|ARM_AFF1_MASK|ARM_AFF2_MASK|ARM_AFF3_MASK)
-+#define ARM64_AFFINITY_INVALID (~ARM64_AFFINITY_MASK)
- 
- #endif
-diff --git a/target-arm/cpu.c b/target-arm/cpu.c
-index 1b9540e..fb272a8 100644
---- a/target-arm/cpu.c
-+++ b/target-arm/cpu.c
-@@ -434,29 +434,16 @@ static void arm_disas_set_info(CPUState *cpu, disassemble_info *info)
-     }
- }
- 
--#define ARM_CPUS_PER_CLUSTER 8
--
- static void arm_cpu_initfn(Object *obj)
+     CPUState *cpu = CPU(obj);
+@@ -369,7 +375,6 @@ static void cpu_common_initfn(Object *obj)
+ static void cpu_common_finalize(Object *obj)
  {
-     CPUState *cs = CPU(obj);
-     ARMCPU *cpu = ARM_CPU(obj);
-     static bool inited;
--    uint32_t Aff1, Aff0;
- 
-     cs->env_ptr = &cpu->env;
--    cpu_exec_init(cs, &error_abort);
-     cpu->cp_regs = g_hash_table_new_full(g_int_hash, g_int_equal,
-                                          g_free, g_free);
- 
--    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
--     * We don't support setting cluster ID ([16..23]) (known as Aff2
--     * in later ARM ARM versions), or any of the higher affinity level fields,
--     * so these bits always RAZ.
--     */
--    Aff1 = cs->cpu_index / ARM_CPUS_PER_CLUSTER;
--    Aff0 = cs->cpu_index % ARM_CPUS_PER_CLUSTER;
--    cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
--
- #ifndef CONFIG_USER_ONLY
-     /* Our inbound IRQ and FIQ lines */
-     if (kvm_enabled()) {
-@@ -576,6 +563,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     ARMCPU *cpu = ARM_CPU(dev);
-     ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
-     CPUARMState *env = &cpu->env;
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     /* Some features automatically imply others: */
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-@@ -631,6 +625,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         set_feature(env, ARM_FEATURE_THUMB_DSP);
-     }
- 
-+    /* This cpu-id-to-MPIDR affinity is used only for TCG; KVM will override it.
-+     * We don't support setting cluster ID ([16..23]) (known as Aff2
-+     * in later ARM ARM versions), or any of the higher affinity level fields,
-+     * so these bits always RAZ.
-+     */
-+    if (cpu->mp_affinity == ARM64_AFFINITY_INVALID) {
-+        uint32_t Aff1 = cs->cpu_index / ARM_DEFAULT_CPUS_PER_CLUSTER;
-+        uint32_t Aff0 = cs->cpu_index % ARM_DEFAULT_CPUS_PER_CLUSTER;
-+        cpu->mp_affinity = (Aff1 << ARM_AFF1_SHIFT) | Aff0;
-+    }
-+
-     if (cpu->reset_hivecs) {
-             cpu->reset_sctlr |= (1 << 13);
-     }
-@@ -1461,7 +1466,8 @@ static Property arm_cpu_properties[] = {
-     DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
-     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
-     DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
--    DEFINE_PROP_UINT64("mp-affinity", ARMCPU, mp_affinity, 0),
-+    DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
-+                        mp_affinity, ARM64_AFFINITY_INVALID),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-@@ -1533,17 +1539,6 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->debug_check_watchpoint = arm_debug_check_watchpoint;
- 
-     cc->disas_set_info = arm_disas_set_info;
--
--    /*
--     * Reason: arm_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     *
--     * Once this is fixed, the devices that create ARM CPUs should be
--     * updated not to set cannot_destroy_with_object_finalize_yet,
--     * unless they still screw up something else.
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
+     CPUState *cpu = CPU(obj);
+-    cpu_exec_exit(cpu);
+     g_free(cpu->trace_dstate);
  }
  
- static void cpu_register(const ARMCPUInfo *info)
-diff --git a/target-cris/cpu.c b/target-cris/cpu.c
-index d680cfb..2e9ab97 100644
---- a/target-cris/cpu.c
-+++ b/target-cris/cpu.c
-@@ -142,6 +142,13 @@ static void cris_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     CRISCPUClass *ccc = CRIS_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
+@@ -403,6 +408,7 @@ static void cpu_class_init(ObjectClass *klass, void *data)
+     k->cpu_exec_exit = cpu_common_noop;
+     k->cpu_exec_interrupt = cpu_common_exec_interrupt;
+     dc->realize = cpu_common_realizefn;
++    dc->unrealize = cpu_common_unrealizefn;
+     /*
+      * Reason: CPUs still need special care by board code: wiring up
+      * IRQs, adding reset handlers, halting non-first CPUs, ...
+diff --git a/target-i386/cpu-qom.h b/target-i386/cpu-qom.h
+index e724004..7c9a07a 100644
+--- a/target-i386/cpu-qom.h
++++ b/target-i386/cpu-qom.h
+@@ -68,6 +68,7 @@ typedef struct X86CPUClass {
+     const char *model_description;
  
-     cpu_reset(cs);
-     qemu_init_vcpu(cs);
-@@ -187,7 +194,6 @@ static void cris_cpu_initfn(Object *obj)
-     static bool tcg_initialized;
+     DeviceRealize parent_realize;
++    DeviceUnrealize parent_unrealize;
+     void (*parent_reset)(CPUState *cpu);
+ } X86CPUClass;
  
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     env->pregs[PR_VR] = ccc->vr;
- 
-@@ -326,13 +332,6 @@ static void cris_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_stop_before_watchpoint = true;
- 
-     cc->disas_set_info = cris_disas_set_info;
--
--    /*
--     * Reason: cris_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo cris_cpu_type_info = {
 diff --git a/target-i386/cpu.c b/target-i386/cpu.c
-index d95514c..eedce4a 100644
+index eedce4a..4c8e869 100644
 --- a/target-i386/cpu.c
 +++ b/target-i386/cpu.c
-@@ -3271,7 +3271,11 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
-             cpu->phys_bits = 32;
-         }
-     }
--    cpu_exec_init(cs, &error_abort);
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     if (tcg_enabled()) {
-         tcg_x86_init();
-diff --git a/target-lm32/cpu.c b/target-lm32/cpu.c
-index a783d46..8d939a7 100644
---- a/target-lm32/cpu.c
-+++ b/target-lm32/cpu.c
-@@ -144,6 +144,13 @@ static void lm32_cpu_realizefn(DeviceState *dev, Error **errp)
+@@ -3356,6 +3356,8 @@ out:
+ static void x86_cpu_unrealizefn(DeviceState *dev, Error **errp)
  {
-     CPUState *cs = CPU(dev);
-     LM32CPUClass *lcc = LM32_CPU_GET_CLASS(dev);
+     X86CPU *cpu = X86_CPU(dev);
++    X86CPUClass *xcc = X86_CPU_GET_CLASS(dev);
 +    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     cpu_reset(cs);
- 
-@@ -160,7 +167,6 @@ static void lm32_cpu_initfn(Object *obj)
-     static bool tcg_initialized;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     env->flags = 0;
- 
-@@ -285,13 +291,6 @@ static void lm32_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_stop_before_watchpoint = true;
-     cc->debug_excp_handler = lm32_debug_excp_handler;
-     cc->disas_set_info = lm32_cpu_disas_set_info;
--
--    /*
--     * Reason: lm32_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void lm32_register_cpu_type(const LM32CPUInfo *info)
-diff --git a/target-m68k/cpu.c b/target-m68k/cpu.c
-index 116b784..17e4be2 100644
---- a/target-m68k/cpu.c
-+++ b/target-m68k/cpu.c
-@@ -159,6 +159,13 @@ static void m68k_cpu_realizefn(DeviceState *dev, Error **errp)
-     CPUState *cs = CPU(dev);
-     M68kCPU *cpu = M68K_CPU(dev);
-     M68kCPUClass *mcc = M68K_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     m68k_cpu_init_gdb(cpu);
- 
-@@ -176,7 +183,6 @@ static void m68k_cpu_initfn(Object *obj)
-     static bool inited;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled() && !inited) {
-         inited = true;
-@@ -222,13 +228,6 @@ static void m68k_cpu_class_init(ObjectClass *c, void *data)
-     cc->gdb_core_xml_file = "cf-core.xml";
- 
-     dc->vmsd = &vmstate_m68k_cpu;
--
--    /*
--     * Reason: m68k_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void register_cpu_type(const M68kCPUInfo *info)
-diff --git a/target-microblaze/cpu.c b/target-microblaze/cpu.c
-index 8edc00a..389c7b6 100644
---- a/target-microblaze/cpu.c
-+++ b/target-microblaze/cpu.c
-@@ -138,6 +138,13 @@ static void mb_cpu_realizefn(DeviceState *dev, Error **errp)
-     CPUMBState *env = &cpu->env;
-     uint8_t version_code = 0;
-     int i = 0;
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     qemu_init_vcpu(cs);
- 
-@@ -199,7 +206,6 @@ static void mb_cpu_initfn(Object *obj)
-     static bool tcg_initialized;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     set_float_rounding_mode(float_round_nearest_even, &env->fp_status);
- 
-@@ -267,12 +273,6 @@ static void mb_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_num_core_regs = 32 + 5;
- 
-     cc->disas_set_info = mb_disas_set_info;
--
--    /*
--     * Reason: mb_cpu_initfn() calls cpu_exec_init(), which saves the
--     * object in cpus -> dangling pointer after final object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo mb_cpu_type_info = {
-diff --git a/target-mips/cpu.c b/target-mips/cpu.c
-index 64ad112..65ca607 100644
---- a/target-mips/cpu.c
-+++ b/target-mips/cpu.c
-@@ -124,6 +124,13 @@ static void mips_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     MIPSCPUClass *mcc = MIPS_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     cpu_reset(cs);
-     qemu_init_vcpu(cs);
-@@ -138,7 +145,6 @@ static void mips_cpu_initfn(Object *obj)
-     CPUMIPSState *env = &cpu->env;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled()) {
-         mips_tcg_init();
-@@ -177,13 +183,6 @@ static void mips_cpu_class_init(ObjectClass *c, void *data)
- 
-     cc->gdb_num_core_regs = 73;
-     cc->gdb_stop_before_watchpoint = true;
--
--    /*
--     * Reason: mips_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo mips_cpu_type_info = {
-diff --git a/target-moxie/cpu.c b/target-moxie/cpu.c
-index 50a0899..b0be4a7 100644
---- a/target-moxie/cpu.c
-+++ b/target-moxie/cpu.c
-@@ -61,6 +61,13 @@ static void moxie_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     MoxieCPUClass *mcc = MOXIE_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     qemu_init_vcpu(cs);
-     cpu_reset(cs);
-@@ -75,7 +82,6 @@ static void moxie_cpu_initfn(Object *obj)
-     static int inited;
- 
-     cs->env_ptr = &cpu->env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled() && !inited) {
-         inited = 1;
-@@ -124,13 +130,6 @@ static void moxie_cpu_class_init(ObjectClass *oc, void *data)
-     cc->vmsd = &vmstate_moxie_cpu;
- #endif
-     cc->disas_set_info = moxie_cpu_disas_set_info;
--
--    /*
--     * Reason: moxie_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void moxielite_initfn(Object *obj)
-diff --git a/target-openrisc/cpu.c b/target-openrisc/cpu.c
-index 155913f..698e87b 100644
---- a/target-openrisc/cpu.c
-+++ b/target-openrisc/cpu.c
-@@ -81,6 +81,13 @@ static void openrisc_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     OpenRISCCPUClass *occ = OPENRISC_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     qemu_init_vcpu(cs);
-     cpu_reset(cs);
-@@ -95,7 +102,6 @@ static void openrisc_cpu_initfn(Object *obj)
-     static int inited;
- 
-     cs->env_ptr = &cpu->env;
--    cpu_exec_init(cs, &error_abort);
  
  #ifndef CONFIG_USER_ONLY
-     cpu_openrisc_mmu_init(cpu);
-@@ -180,13 +186,6 @@ static void openrisc_cpu_class_init(ObjectClass *oc, void *data)
-     dc->vmsd = &vmstate_openrisc_cpu;
- #endif
-     cc->gdb_num_core_regs = 32 + 3;
--
--    /*
--     * Reason: openrisc_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
+     cpu_remove_sync(CPU(dev));
+@@ -3366,6 +3368,12 @@ static void x86_cpu_unrealizefn(DeviceState *dev, Error **errp)
+         object_unparent(OBJECT(cpu->apic_state));
+         cpu->apic_state = NULL;
+     }
++
++    xcc->parent_unrealize(dev, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
  }
  
- static void cpu_register(const OpenRISCCPUInfo *info)
+ typedef struct BitProperty {
+@@ -3640,6 +3648,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     xcc->parent_realize = dc->realize;
++    xcc->parent_unrealize = dc->unrealize;
+     dc->realize = x86_cpu_realizefn;
+     dc->unrealize = x86_cpu_unrealizefn;
+     dc->props = x86_cpu_properties;
+diff --git a/target-ppc/cpu-qom.h b/target-ppc/cpu-qom.h
+index 713deef..d46c31a 100644
+--- a/target-ppc/cpu-qom.h
++++ b/target-ppc/cpu-qom.h
+@@ -174,6 +174,7 @@ typedef struct PowerPCCPUClass {
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
++    DeviceUnrealize parent_unrealize;
+     void (*parent_reset)(CPUState *cpu);
+ 
+     uint32_t pvr;
 diff --git a/target-ppc/translate_init.c b/target-ppc/translate_init.c
-index b66b40b..40dae70 100644
+index 40dae70..208fa1e 100644
 --- a/target-ppc/translate_init.c
 +++ b/target-ppc/translate_init.c
-@@ -9678,7 +9678,7 @@ static void ppc_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- #endif
- 
--    cpu_exec_init(cs, &local_err);
-+    cpu_exec_realizefn(cs, &local_err);
-     if (local_err != NULL) {
-         error_propagate(errp, local_err);
-         return;
-diff --git a/target-s390x/cpu.c b/target-s390x/cpu.c
-index 35ae2ce..9e2f239 100644
---- a/target-s390x/cpu.c
-+++ b/target-s390x/cpu.c
-@@ -207,7 +207,7 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
-         goto out;
-     }
- 
--    cpu_exec_init(cs, &err);
-+    cpu_exec_realizefn(cs, &err);
-     if (err != NULL) {
-         goto out;
-     }
-@@ -440,12 +440,6 @@ static void s390_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_core_xml_file = "s390x-core64.xml";
-     cc->gdb_arch_name = s390_gdb_arch_name;
- 
--    /*
--     * Reason: s390_cpu_realizefn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
-     s390_cpu_model_class_register_props(oc);
- }
- 
-diff --git a/target-sh4/cpu.c b/target-sh4/cpu.c
-index f589532..a38f6a6 100644
---- a/target-sh4/cpu.c
-+++ b/target-sh4/cpu.c
-@@ -244,6 +244,13 @@ static void superh_cpu_realizefn(DeviceState *dev, Error **errp)
+@@ -9906,11 +9906,17 @@ static void ppc_cpu_realizefn(DeviceState *dev, Error **errp)
+ static void ppc_cpu_unrealizefn(DeviceState *dev, Error **errp)
  {
-     CPUState *cs = CPU(dev);
-     SuperHCPUClass *scc = SUPERH_CPU_GET_CLASS(dev);
+     PowerPCCPU *cpu = POWERPC_CPU(dev);
++    PowerPCCPUClass *pcc = POWERPC_CPU_GET_CLASS(cpu);
+     CPUPPCState *env = &cpu->env;
 +    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
+     opc_handler_t **table, **table_2;
+     int i, j, k;
+ 
+-    cpu_exec_exit(CPU(dev));
++    pcc->parent_unrealize(dev, &local_err);
 +    if (local_err != NULL) {
 +        error_propagate(errp, local_err);
 +        return;
 +    }
  
-     cpu_reset(cs);
-     qemu_init_vcpu(cs);
-@@ -258,7 +265,6 @@ static void superh_cpu_initfn(Object *obj)
-     CPUSH4State *env = &cpu->env;
+     for (i = 0; i < PPC_CPU_OPCODES_LEN; i++) {
+         if (env->opcodes[i] == &invalid_handler) {
+@@ -10521,6 +10527,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     DeviceClass *dc = DEVICE_CLASS(oc);
  
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     env->movcal_backup_tail = &(env->movcal_backup);
- 
-@@ -303,13 +309,6 @@ static void superh_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_num_core_regs = 59;
- 
-     dc->vmsd = &vmstate_sh_cpu;
--
--    /*
--     * Reason: superh_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo superh_cpu_type_info = {
-diff --git a/target-sparc/cpu.c b/target-sparc/cpu.c
-index 800a25a..4e07b92 100644
---- a/target-sparc/cpu.c
-+++ b/target-sparc/cpu.c
-@@ -792,7 +792,9 @@ static bool sparc_cpu_has_work(CPUState *cs)
- 
- static void sparc_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-+    CPUState *cs = CPU(dev);
-     SPARCCPUClass *scc = SPARC_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
- #if defined(CONFIG_USER_ONLY)
-     SPARCCPU *cpu = SPARC_CPU(dev);
-     CPUSPARCState *env = &cpu->env;
-@@ -802,7 +804,13 @@ static void sparc_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- #endif
- 
--    qemu_init_vcpu(CPU(dev));
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    qemu_init_vcpu(cs);
- 
-     scc->parent_realize(dev, errp);
- }
-@@ -814,7 +822,6 @@ static void sparc_cpu_initfn(Object *obj)
-     CPUSPARCState *env = &cpu->env;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled()) {
-         gen_intermediate_code_init(env);
-@@ -867,13 +874,6 @@ static void sparc_cpu_class_init(ObjectClass *oc, void *data)
- #else
-     cc->gdb_num_core_regs = 72;
- #endif
--
--    /*
--     * Reason: sparc_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo sparc_cpu_type_info = {
-diff --git a/target-tilegx/cpu.c b/target-tilegx/cpu.c
-index 7017cb6..454793f 100644
---- a/target-tilegx/cpu.c
-+++ b/target-tilegx/cpu.c
-@@ -92,6 +92,13 @@ static void tilegx_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     TileGXCPUClass *tcc = TILEGX_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     cpu_reset(cs);
-     qemu_init_vcpu(cs);
-@@ -107,7 +114,6 @@ static void tilegx_cpu_initfn(Object *obj)
-     static bool tcg_initialized;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled() && !tcg_initialized) {
-         tcg_initialized = true;
-@@ -162,13 +168,6 @@ static void tilegx_cpu_class_init(ObjectClass *oc, void *data)
-     cc->set_pc = tilegx_cpu_set_pc;
-     cc->handle_mmu_fault = tilegx_cpu_handle_mmu_fault;
-     cc->gdb_num_core_regs = 0;
--
--    /*
--     * Reason: tilegx_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo tilegx_cpu_type_info = {
-diff --git a/target-tricore/cpu.c b/target-tricore/cpu.c
-index 35d4ee4..785b76b 100644
---- a/target-tricore/cpu.c
-+++ b/target-tricore/cpu.c
-@@ -69,6 +69,13 @@ static void tricore_cpu_realizefn(DeviceState *dev, Error **errp)
-     TriCoreCPU *cpu = TRICORE_CPU(dev);
-     TriCoreCPUClass *tcc = TRICORE_CPU_GET_CLASS(dev);
-     CPUTriCoreState *env = &cpu->env;
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     /* Some features automatically imply others */
-     if (tricore_feature(env, TRICORE_FEATURE_161)) {
-@@ -95,7 +102,6 @@ static void tricore_cpu_initfn(Object *obj)
-     CPUTriCoreState *env = &cpu->env;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled()) {
-         tricore_tcg_init();
-@@ -172,13 +178,6 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
-     cc->dump_state = tricore_cpu_dump_state;
-     cc->set_pc = tricore_cpu_set_pc;
-     cc->synchronize_from_tb = tricore_cpu_synchronize_from_tb;
--
--    /*
--     * Reason: tricore_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void cpu_register(const TriCoreCPUInfo *info)
-diff --git a/target-unicore32/cpu.c b/target-unicore32/cpu.c
-index e7a4984..c169972 100644
---- a/target-unicore32/cpu.c
-+++ b/target-unicore32/cpu.c
-@@ -101,9 +101,17 @@ static const UniCore32CPUInfo uc32_cpus[] = {
- 
- static void uc32_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-+    CPUState *cs = CPU(dev);
-     UniCore32CPUClass *ucc = UNICORE32_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
- 
--    qemu_init_vcpu(CPU(dev));
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    qemu_init_vcpu(cs);
- 
-     ucc->parent_realize(dev, errp);
- }
-@@ -116,7 +124,6 @@ static void uc32_cpu_initfn(Object *obj)
-     static bool inited;
- 
-     cs->env_ptr = env;
--    cpu_exec_init(cs, &error_abort);
- 
- #ifdef CONFIG_USER_ONLY
-     env->uncached_asr = ASR_MODE_USER;
-@@ -160,13 +167,6 @@ static void uc32_cpu_class_init(ObjectClass *oc, void *data)
-     cc->get_phys_page_debug = uc32_cpu_get_phys_page_debug;
- #endif
-     dc->vmsd = &vmstate_uc32_cpu;
--
--    /*
--     * Reason: uc32_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static void uc32_register_cpu_type(const UniCore32CPUInfo *info)
-diff --git a/target-xtensa/cpu.c b/target-xtensa/cpu.c
-index 5ad08a2..e8e9f91 100644
---- a/target-xtensa/cpu.c
-+++ b/target-xtensa/cpu.c
-@@ -99,6 +99,13 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-     XtensaCPUClass *xcc = XTENSA_CPU_GET_CLASS(dev);
-+    Error *local_err = NULL;
-+
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
-     cs->gdb_num_regs = xcc->config->gdb_regmap.num_regs;
- 
-@@ -117,7 +124,6 @@ static void xtensa_cpu_initfn(Object *obj)
- 
-     cs->env_ptr = env;
-     env->config = xcc->config;
--    cpu_exec_init(cs, &error_abort);
- 
-     if (tcg_enabled() && !tcg_inited) {
-         tcg_inited = true;
-@@ -158,13 +164,6 @@ static void xtensa_cpu_class_init(ObjectClass *oc, void *data)
- #endif
-     cc->debug_excp_handler = xtensa_breakpoint_handler;
-     dc->vmsd = &vmstate_xtensa_cpu;
--
--    /*
--     * Reason: xtensa_cpu_initfn() calls cpu_exec_init(), which saves
--     * the object in cpus -> dangling pointer after final
--     * object_unref().
--     */
--    dc->cannot_destroy_with_object_finalize_yet = true;
- }
- 
- static const TypeInfo xtensa_cpu_type_info = {
+     pcc->parent_realize = dc->realize;
++    pcc->parent_unrealize = dc->unrealize;
+     pcc->pvr_match = ppc_pvr_match_default;
+     pcc->interrupts_big_endian = ppc_cpu_interrupts_big_endian_always;
+     dc->realize = ppc_cpu_realizefn;
 -- 
 2.7.4
 

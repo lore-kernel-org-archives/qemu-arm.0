@@ -1,248 +1,150 @@
-Received: by 10.80.166.35 with SMTP id d32csp1341085edc;
-        Fri, 21 Oct 2016 05:49:31 -0700 (PDT)
-X-Received: by 10.55.132.68 with SMTP id g65mr928224qkd.8.1477054171450;
-        Fri, 21 Oct 2016 05:49:31 -0700 (PDT)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z132si1778378qkb.227.2016.10.21.05.49.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 Oct 2016 05:49:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.80.166.35 with SMTP id d32csp1498567edc;
+        Fri, 21 Oct 2016 11:26:26 -0700 (PDT)
+X-Received: by 10.55.120.193 with SMTP id t184mr2488201qkc.155.1477074386419;
+        Fri, 21 Oct 2016 11:26:26 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 42si2692057qky.239.2016.10.21.11.26.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 21 Oct 2016 11:26:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:33723 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bxeWP-0002Z1-Sp
+	for alex.bennee@linaro.org; Fri, 21 Oct 2016 14:26:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37300)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1bxeWK-0002Yv-8U
+	for qemu-arm@nongnu.org; Fri, 21 Oct 2016 14:26:21 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1bxeWH-0002YM-3x
+	for qemu-arm@nongnu.org; Fri, 21 Oct 2016 14:26:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42094)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1bxeWG-0002XI-Sg; Fri, 21 Oct 2016 14:26:17 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A4AD4C0567B1;
-	Fri, 21 Oct 2016 12:49:29 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id u9LCnOWJ019925
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Fri, 21 Oct 2016 08:49:27 -0400
-Date: Fri, 21 Oct 2016 14:49:24 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Andre Przywara <andre.przywara@arm.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, pbonzini@redhat.com,
-        qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
-        wei@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v3 07/10] arm/arm64: add
- initial gicv3 support
-Message-ID: <20161021124924.lv6ebl5u44ntnjtg@kamzik.brq.redhat.com>
-References: <1468587641-7300-1-git-send-email-drjones@redhat.com>
- <1468587641-7300-8-git-send-email-drjones@redhat.com>
- <0b1de847-a402-b816-a01d-c4bdcd248e75@arm.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id DAA284E4C6;
+	Fri, 21 Oct 2016 18:26:13 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-73.ams2.redhat.com
+	[10.36.116.73])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9LIQAdO021959
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Fri, 21 Oct 2016 14:26:11 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id A1EDB1138645; Fri, 21 Oct 2016 20:26:09 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20161018130007.k7hhxovkxiqiumfj@kamzik.brq.redhat.com>
+	<20161018131829.GQ3275@thinpad.lan.raisama.net>
+	<20161018142247.55d4aymduofvhy3r@kamzik.brq.redhat.com>
+	<20161018152207.GZ3275@thinpad.lan.raisama.net>
+	<20161018162202.pmui5rv3va7ubcrv@kamzik.brq.redhat.com>
+	<CAFEAcA8UtCr6wpz_3aYb694ixPhuRnyiTrHNwRjGWNYe+9t4aA@mail.gmail.com>
+	<20161018175737.3biqteztu3esvaaq@kamzik.brq.redhat.com>
+	<CAFEAcA-TxifV3Wfnv=6byJSABnLyPnbtfMsK+aPvwGd-p5sqLA@mail.gmail.com>
+	<20161018184532.GC3275@thinpad.lan.raisama.net>
+	<CAFEAcA8nCjr2Zz2no3DikyGtRtYRm+ieouatfOJnynkzpJ+thg@mail.gmail.com>
+	<20161018204937.GB5057@thinpad.lan.raisama.net>
+	<CAFEAcA9Cd0TsLHgBr-GuOwYmrwcPW656YOP2msAGrhghDS3xBw@mail.gmail.com>
+Date: Fri, 21 Oct 2016 20:26:09 +0200
+In-Reply-To: <CAFEAcA9Cd0TsLHgBr-GuOwYmrwcPW656YOP2msAGrhghDS3xBw@mail.gmail.com>
+	(Peter Maydell's message of "Tue, 18 Oct 2016 22:08:21 +0100")
+Message-ID: <87d1iteeym.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0b1de847-a402-b816-a01d-c4bdcd248e75@arm.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
+Content-Type: text/plain
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Fri, 21 Oct 2016 12:49:29 +0000 (UTC)
-X-TUID: HxOSXAChQRAy
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 21 Oct 2016 18:26:15 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] QOM properties vs C functions/fields
+ (was Re: [PATCH v3 2/3] exec: rename cpu_exec_init() as
+ cpu_exec_realizefn())
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Anthony Green <green@moxielogic.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+	Greg Ungerer <gerg@uclinux.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Chen Gang <gang.chen.5i5j@gmail.com>, Jia Liu <proljc@gmail.com>,
+	Alexander Graf <agraf@suse.de>, Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Greg Kurz <groug@kaod.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G/9r2g0A+UgR
 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Hi Andre,
+> On 18 October 2016 at 21:49, Eduardo Habkost <ehabkost@redhat.com> wrote:
+>> On Tue, Oct 18, 2016 at 09:30:01PM +0100, Peter Maydell wrote:
+>>> Lots of stuff in a device's C struct is strictly internal
+>>> and not to be messed with. I thought that QOM properties
+>>> were essentially how a device defined its public (and
+>>> typically settable-only-once) config knobs. QOM properties
+>>> shouldn't be user-facing (read: stable, required to be
+>>> backwards-compatible) interface in general because
+>>> we don't really want to tie ourselves down that much.
+>>> In fact almost all our QOM objects are not usefully
+>>> user-facing at all.
+>>
+>> This interpretation surprises me, because it is the opposite of
+>> what I have seen us doing. Most of our QOM objects and properties
+>> are user-visible and user-configurable using -global, -device,
+>> -object, or qom-set (and probably other QMP commands).
+>
+> Most of the devices I deal with are not and never will
+> be sensibly usable with -device. Exposing wiring up
+> of IRQ and GPIO lines or MMIO regions to the user is
+> never going to make sense. For x86 most devices are
+> probably pluggable (and usable with -device), but over
+> the whole source tree I think the embedded-style device
+> is in the majority. They're all still worth QOMifying
+> and having properties for the things board code wants
+> to modify, though.
 
-On Thu, Oct 20, 2016 at 06:29:01PM +0100, Andre Przywara wrote:
-> Hi Drew,
-> 
-> On 15/07/16 14:00, Andrew Jones wrote:
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > ---
-> > v2: configure irqs as NS GRP1
-> > ---
-> >  lib/arm/asm/arch_gicv3.h   | 184 ++++++++++++++++++++++++++
-> >  lib/arm/asm/gic-v3.h       | 321 +++++++++++++++++++++++++++++++++++++++++++++
-> >  lib/arm/asm/gic.h          |   1 +
-> >  lib/arm/gic.c              |  73 +++++++++++
-> >  lib/arm64/asm/arch_gicv3.h | 169 ++++++++++++++++++++++++
-> >  lib/arm64/asm/gic-v3.h     |   1 +
-> >  lib/arm64/asm/sysreg.h     |  44 +++++++
-> >  7 files changed, 793 insertions(+)
-> >  create mode 100644 lib/arm/asm/arch_gicv3.h
-> >  create mode 100644 lib/arm/asm/gic-v3.h
-> >  create mode 100644 lib/arm64/asm/arch_gicv3.h
-> >  create mode 100644 lib/arm64/asm/gic-v3.h
-> >  create mode 100644 lib/arm64/asm/sysreg.h
-> > 
-> > diff --git a/lib/arm/asm/arch_gicv3.h b/lib/arm/asm/arch_gicv3.h
-> > new file mode 100644
-> > index 0000000000000..d529a7eb62807
-> > --- /dev/null
-> > +++ b/lib/arm/asm/arch_gicv3.h
-> > @@ -0,0 +1,184 @@
-> > +/*
-> > + * All ripped off from arch/arm/include/asm/arch_gicv3.h
-> 
-> So I was wondering if - from a test suite's perspective - it's really
-> clever to pull in copies of Linux headers here.
-> First it's really a lot of text we pull in while not using most of it
-> (at least now). Also they keep changing (4.9-rc1 saw so me changes, for
-> instance). So do we update them?
+"Device not pluggable" does not imply "device has no configuration knobs
+a user may legitimately want to mess with".  Plenty of onboard devices
+have such knobs.
 
-The thought was we'd synchronize occasionally as needed. If somebody
-adds new gic tests that require new defines, then they'd just synch
-everything. I agree it's less than ideal to try and maintain duplicate
-copies of stuff though.
+Right now, users configure these mostly via board-agnostic options like
+-serial.  Anything that doesn't fit the mold can't be configured that
+way.
 
-> 
-> But more importantly those headers are also used in the emulation code,
-> so we would just copy any bugs or typos and would probably not detect
-> them here. IIRC there was a fix for a bitmask lately.
+However, A fully mature QOM as I envisage it would provide users access
+to QOM properties for onboard devices, too.  Not with -device,
+obviously, but with qom-set and similar, as Eduardo said.  If any of
+these properties are not for users, they should be marked as such.  Just
+like for pluggable devices.
 
-This is certainly a bigger concern. Duplicating blindly would indeed
-just copy bugs. OTOH, I found a couple of bitmask bugs in the kernel
-precisely because I was reviewing them while duplicating. I think I
-agree with you though that we should be extra cautious with macros,
-and even have the spec open to confirm register offsets aren't wrong
-while copying.
-
-> It's probably fine to copy the register offsets, but anything that
-> defines Linux specific things like default priorities or more complex
-> macros should be avoided, I think. This just makes kvm-unit-test copying
-> Linux behaviour.
-
-I agree the Linux defaults should not be the only inputs kvm-unit-tests
-uses. That was never the plan. In this series I've introduced
-gicv[23]_enable_defaults, which do indeed mimic Linux (but with much
-simplification). They serve two purposes, 1) I can confirm the framework
-works as least as well as Linux in order to provide a solid base for
-new tests and 2) unit tests that need a gic, but don't plan to test it
-specifically, and thus don't care much about how it's enabled, can use
-these enable functions just to get a functioning one. However, gic unit
-test writers (like you :-) should only use gic_init(), which does nothing
-other than probe DT for the base addresses.
-
-> 
-> Maybe we stick to the Linux naming, but pull in only the fields as we
-> need them? This would both limit the amount of lines being merged, as
-> would simplify the review effort (and quality), as people would just
-> need to look at a very limited number of defines, allowing them to
-> actually check it against the specification?
-
-It's a similar idea to what we were going to do - synchronizing as we
-go, but instead of seeding the file with everything Linux has today we
-only seed it with what we use today. If, however, somebody writes the
-test Christoffer and you both proposed independently, which is to write
-all registers and then read them all back to make sure they have the
-expected values after considering their behaviors, then we'll be
-importing nearly all register defines at once anyway. That said, we
-haven't written that test yet, so I can live with this initial series
-only taking what it needs.
-
-> 
-> I gave this a try and could reduce the header files significantly.
-> Please let me know if you need any bits from this effort to be shared.
-
-Yes please. I'll take your advise on this and post with minimal defines
-for now. Do you have patches that apply to my branch? If so, I'll
-integrate them for the v4 posting.
-
-> 
-> > + *
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#ifndef _ASMARM_ARCH_GICV3_H_
-> > +#define _ASMARM_ARCH_GICV3_H_
-> > +
-> > +#ifndef __ASSEMBLY__
-> > +
-> > +#include <libcflat.h>
-> > +#include <asm/barrier.h>
-> > +#include <asm/io.h>
-> > +
-> > +#define __stringify xstr
-> > +
-> > +
-> > +#define __ACCESS_CP15(CRn, Op1, CRm, Op2)	p15, Op1, %0, CRn, CRm, Op2
-> > +#define __ACCESS_CP15_64(Op1, CRm)		p15, Op1, %Q0, %R0, CRm
-> > +
-> > +#define ICC_EOIR1			__ACCESS_CP15(c12, 0, c12, 1)
-> > +#define ICC_DIR				__ACCESS_CP15(c12, 0, c11, 1)
-> > +#define ICC_IAR1			__ACCESS_CP15(c12, 0, c12, 0)
-> > +#define ICC_SGI1R			__ACCESS_CP15_64(0, c12)
-> > +#define ICC_PMR				__ACCESS_CP15(c4, 0, c6, 0)
-> > +#define ICC_CTLR			__ACCESS_CP15(c12, 0, c12, 4)
-> > +#define ICC_SRE				__ACCESS_CP15(c12, 0, c12, 5)
-> > +#define ICC_IGRPEN1			__ACCESS_CP15(c12, 0, c12, 7)
-> > +
-> > +#define ICC_HSRE			__ACCESS_CP15(c12, 4, c9, 5)
-> > +
-> > +#define ICH_VSEIR			__ACCESS_CP15(c12, 4, c9, 4)
-> > +#define ICH_HCR				__ACCESS_CP15(c12, 4, c11, 0)
-> > +#define ICH_VTR				__ACCESS_CP15(c12, 4, c11, 1)
-> > +#define ICH_MISR			__ACCESS_CP15(c12, 4, c11, 2)
-> > +#define ICH_EISR			__ACCESS_CP15(c12, 4, c11, 3)
-> > +#define ICH_ELSR			__ACCESS_CP15(c12, 4, c11, 5)
-> > +#define ICH_VMCR			__ACCESS_CP15(c12, 4, c11, 7)
-> > +
-> > +#define __LR0(x)			__ACCESS_CP15(c12, 4, c12, x)
-> > +#define __LR8(x)			__ACCESS_CP15(c12, 4, c13, x)
-> 
-> So for instance we clearly don't need those defines (the list registers
-> being hypervisor only).
-> 
-> > +
-> > +#define ICH_LR0				__LR0(0)
-> > +#define ICH_LR1				__LR0(1)
-> > +#define ICH_LR2				__LR0(2)
-> > +#define ICH_LR3				__LR0(3)
-> > +#define ICH_LR4				__LR0(4)
-> > +#define ICH_LR5				__LR0(5)
-> > +#define ICH_LR6				__LR0(6)
-> > +#define ICH_LR7				__LR0(7)
-> > +#define ICH_LR8				__LR8(0)
-> > +#define ICH_LR9				__LR8(1)
-> > +#define ICH_LR10			__LR8(2)
-> > +#define ICH_LR11			__LR8(3)
-> > +#define ICH_LR12			__LR8(4)
-> > +#define ICH_LR13			__LR8(5)
-> > +#define ICH_LR14			__LR8(6)
-> > +#define ICH_LR15			__LR8(7)
-> > +
-> > +/* LR top half */
-> > +#define __LRC0(x)			__ACCESS_CP15(c12, 4, c14, x)
-> > +#define __LRC8(x)			__ACCESS_CP15(c12, 4, c15, x)
-> > +
-> > +#define ICH_LRC0			__LRC0(0)
-> > +#define ICH_LRC1			__LRC0(1)
-> > +#define ICH_LRC2			__LRC0(2)
-> > +#define ICH_LRC3			__LRC0(3)
-> > +#define ICH_LRC4			__LRC0(4)
-> > +#define ICH_LRC5			__LRC0(5)
-> > +#define ICH_LRC6			__LRC0(6)
-> > +#define ICH_LRC7			__LRC0(7)
-> > +#define ICH_LRC8			__LRC8(0)
-> > +#define ICH_LRC9			__LRC8(1)
-> > +#define ICH_LRC10			__LRC8(2)
-> > +#define ICH_LRC11			__LRC8(3)
-> > +#define ICH_LRC12			__LRC8(4)
-> > +#define ICH_LRC13			__LRC8(5)
-> > +#define ICH_LRC14			__LRC8(6)
-> > +#define ICH_LRC15			__LRC8(7)
-> 
-> ....
-> > +
-> > +/*
-> > + * Cavium ThunderX erratum 23154
-> > + *
-> > + * The gicv3 of ThunderX requires a modified version for reading the
-> > + * IAR status to ensure data synchronization (access to icc_iar1_el1
-> > + * is not sync'ed before and after).
-> > + */
-> > +static inline u64 gicv3_read_iar_cavium_thunderx(void)
-> 
-> Are we looking at including those errata workarounds?
-> I think this may be needed if we want to run tests on those machines,
-> but may open up a can of worms....
-
-We can drop these erratas for now, and then add them as necessary. I
-wouldn't want kvm-unit-tests to discriminate hardware though.
-
-Thanks for looking at this!
-
-drew
+Perhaps non-pluggable devices tend to have more "not for users" QOM
+properties than pluggable ones, I don't know.  But that would be a
+*quantitative* difference, not a *qualitative* one.

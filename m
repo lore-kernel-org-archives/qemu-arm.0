@@ -1,70 +1,69 @@
-Received: by 10.80.166.35 with SMTP id d32csp2673458edc;
-        Mon, 24 Oct 2016 07:34:51 -0700 (PDT)
-X-Received: by 10.31.2.201 with SMTP id 192mr9377149vkc.171.1477319690955;
-        Mon, 24 Oct 2016 07:34:50 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp2708007edc;
+        Mon, 24 Oct 2016 08:38:02 -0700 (PDT)
+X-Received: by 10.31.217.196 with SMTP id q187mr5457941vkg.84.1477323482489;
+        Mon, 24 Oct 2016 08:38:02 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f89si5169430uaf.136.2016.10.24.07.34.50
+        by mx.google.com with ESMTPS id k4si5377841vke.134.2016.10.24.08.38.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 07:34:50 -0700 (PDT)
+        Mon, 24 Oct 2016 08:38:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47101 helo=lists.gnu.org)
+Received: from localhost ([::1]:47496 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bygKv-0000ea-KC
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 10:34:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51992)
+	id 1byhK5-0004Pe-8Q
+	for alex.bennee@linaro.org; Mon, 24 Oct 2016 11:38:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33461)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1byfyx-0007hq-Fm
-	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:13 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1byge4-0001Ye-Gk
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:54:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1byfyt-0007bC-PK
-	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:07 -0400
-Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:37928)
+	(envelope-from <peter.maydell@linaro.org>) id 1byge3-0001QN-9G
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:54:36 -0400
+Received: from mail-ua0-x232.google.com ([2607:f8b0:400c:c08::232]:34849)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1byfyt-0007aV-Br
-	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:03 -0400
-Received: by mail-ua0-x230.google.com with SMTP id t11so228306uaa.5
-	for <qemu-devel@nongnu.org>; Mon, 24 Oct 2016 07:12:03 -0700 (PDT)
+	id 1byge3-0001Ps-2E
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:54:35 -0400
+Received: by mail-ua0-x232.google.com with SMTP id 90so15749292uan.2
+	for <qemu-devel@nongnu.org>; Mon, 24 Oct 2016 07:54:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=5B3FCGn/WYTwunV9HOP/rNPUsGs16igLVmiNCmgWDnA=;
-	b=CJZ4VuJ7VpnCPq4EUFok4wCINS9ixY5q0spFhwGr8VS1KxS7DnfL8Nw0bFrYpc7DoA
-	Gz8D+tCcuqDO2Dv+OQLGd0ahG3NNNhUc03oaXPoZBcOlvJfFcyS9XHYnm0wZIsAAtirp
-	EwcCJZf+PxEyVxJ6XyogEMtDGPVEvh43KGg/U=
+	:cc; bh=0gcrQNKpQrEL/duOJ/LkyiozpHxHvUJsJ5WNqPyQE2g=;
+	b=cNl0HnAun/UcOcyby6dpXFLV/sKs2MUyXV7tSitN3gr/SVZWz9eM8VSzD9pzS+kpqL
+	Ht/FWsyo4ZFpVcRMwZPuKkBiHA858VtfP91C8315agMRn+0HpNBl4mKB7168ls1AlXPq
+	xmkvYMsC5S31n9NdEBlhFopjaO151oAcMel/Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=5B3FCGn/WYTwunV9HOP/rNPUsGs16igLVmiNCmgWDnA=;
-	b=E5bZXfJBLIHwyrHdtw4vw8X1LobQmW39nn1WVr5uFNbRkXCHwOY3yFJrRKG6KullDp
-	n4XZ73y6ruFSrpStdU7pz5xotGeVn4wf9qGdcE5o+jFuhx8p2vCFVONkR/SMiwdoblVO
-	gMs5/PeBctvi29OQrTXQhtgbPYyGCMlqOzjC+Ld3ajKaoGHgs42KSeBnH51PBTVCz+VO
-	z4kifD0Hve+mT607Y1fUfF1ORr4Ybo0/Ig8WOH3zo9PsPS1djRkRsnDVNI5IebWx0zL2
-	ZEuKTv/isG5lDT7JEaX0we3Q6Aa2W0qOk1PylNOi41p8r4idYjCPTEwIFVc4yJoJjvRM
-	1NhA==
-X-Gm-Message-State: ABUngvclWZ7GlZKnF7ABFIwLpscCs9+8Kso3gpURszUiISwgxYC3OB0Cg9NiHFRsgNJVDs2X8G0cwettfU4B49VV
-X-Received: by 10.31.216.4 with SMTP id p4mr7923886vkg.51.1477318322204; Mon,
-	24 Oct 2016 07:12:02 -0700 (PDT)
+	bh=0gcrQNKpQrEL/duOJ/LkyiozpHxHvUJsJ5WNqPyQE2g=;
+	b=F6BuLFhbJxRWaU3abb1khic+pQnzGRzExq08D2EMsTz0Mr6YJmHQJ5/K28Ik9qphJe
+	nK4RoSSsd8ZxXKeG9RB/su2mNMeP3Yt51hSqBXr3HVQeBLBts4rx8rl3ROpfA05R3joj
+	K1nEPOid1869toVvHHCzstQoU9RQux+zLKsIbYZEzK+/GtqQ/kl0G99d1m0x5cPi3r1k
+	H3wvQopRFWXCgHwn2WNtu9Vt4x7ZleiwT40mWQQmbSeZTRPSKrv82UrynWA/PaHLzCXV
+	K8IRKruOudp525kAyBJ9log0v2F7toBSQDmdetZZuhTUs5G1ttQtwICCyY2JlRw2KHow
+	Lvug==
+X-Gm-Message-State: ABUngveoUaCA9lJT4H7N/a9pGDuGDqDrWeOKOVhmGkhyD0HTvUAbGYtG1zsVA+eSxip3v0D/kTYZydPMrBBwTv+J
+X-Received: by 10.31.165.74 with SMTP id o71mr9549581vke.95.1477320873617;
+	Mon, 24 Oct 2016 07:54:33 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Mon, 24 Oct 2016 07:11:41 -0700 (PDT)
-In-Reply-To: <1476800269-31902-1-git-send-email-ppandit@redhat.com>
-References: <1476800269-31902-1-git-send-email-ppandit@redhat.com>
+Received: by 10.31.195.70 with HTTP; Mon, 24 Oct 2016 07:54:13 -0700 (PDT)
+In-Reply-To: <20161023091816.3839-1-zxq_yx_007@163.com>
+References: <20161023091816.3839-1-zxq_yx_007@163.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Oct 2016 15:11:41 +0100
-Message-ID: <CAFEAcA_nDuf8PHeMnNjqxjZ83V-atYTn0HN2=RgBfuNH9G+qjQ@mail.gmail.com>
-To: P J P <ppandit@redhat.com>
+Date: Mon, 24 Oct 2016 15:54:13 +0100
+Message-ID: <CAFEAcA-HoG4SscJVQXXve7k-yP-H-zDbZk9VWDVm2YJ+TcLEmA@mail.gmail.com>
+To: xiaoqiang zhao <zxq_yx_007@163.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::230
-Subject: Re: [Qemu-devel] [PATCH] timer: stm32f2xx_timer: add check for
- prescaler value
+X-Received-From: 2607:f8b0:400c:c08::232
+Subject: Re: [Qemu-devel] [PATCH 0/4] QOM'ify work for arm
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,46 +75,24 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tvAuBg/Z8dCj
+X-TUID: gwR+kG+FHzI5
 
-On 18 October 2016 at 15:17, P J P <ppandit@redhat.com> wrote:
-> From: Prasad J Pandit <pjp@fedoraproject.org>
+On 23 October 2016 at 10:18, xiaoqiang zhao <zxq_yx_007@163.com> wrote:
+> Here is my QOM'ify work relate with arm.
+> See each commit for details.
 >
-> The STM32F2XX Timer emulator uses a 16 bit prescaler value to
-> limit the timer clock rate. It does that by dividing the timer
-> frequency. If the prescaler 's->tim_psc' was set to be UINT_MAX,
-> it'd lead to divide by zero error. Limit prescaler value to 16
-> bits to avoid it.
->
-> Reported-by: Huawei PSIRT <psirt@huawei.com>
-> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
-> ---
->  hw/timer/stm32f2xx_timer.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
-> index bf0fb28..2cad36d 100644
-> --- a/hw/timer/stm32f2xx_timer.c
-> +++ b/hw/timer/stm32f2xx_timer.c
-> @@ -208,7 +208,7 @@ static void stm32f2xx_timer_write(void *opaque, hwaddr offset,
->          return;
->      case TIM_PSC:
->          timer_val = stm32f2xx_ns_to_ticks(s, now) - s->tick_offset;
-> -        s->tim_psc = value;
-> +        s->tim_psc = value & 0xFFFF;
->          value = timer_val;
->          break;
->      case TIM_CNT:
+> xiaoqiang zhao (4):
+>   hw/arm: QOM'ify musicpal.c
+>   hw/arm: QOM'ify pxa2xx_gpio.c
+>   hw/arm: QOM'ify strongarm.c
+>   hw/display: QOM'ify pl110.c
+
+
 
 Applied to target-arm.next, thanks.
-
-(That "value = timer_val;" line looks odd as it is dead code,
-but that's a different bug I think. Alistair, can you remember
-what you meant when you wrote that?)
 
 -- PMM

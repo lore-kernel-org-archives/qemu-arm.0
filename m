@@ -1,113 +1,201 @@
-Received: by 10.80.166.35 with SMTP id d32csp2555617edc;
-        Mon, 24 Oct 2016 03:20:49 -0700 (PDT)
-X-Received: by 10.237.39.71 with SMTP id n65mr14645101qtd.9.1477304449503;
-        Mon, 24 Oct 2016 03:20:49 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.37.193.4 with SMTP id r4csp2714742ybf;
+        Mon, 24 Oct 2016 04:27:29 -0700 (PDT)
+X-Received: by 10.55.142.130 with SMTP id q124mr13847493qkd.220.1477308449429;
+        Mon, 24 Oct 2016 04:27:29 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b6si10495883qkd.165.2016.10.24.03.20.49
+        by mx.google.com with ESMTPS id g1si10645818qtc.120.2016.10.24.04.27.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 03:20:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 24 Oct 2016 04:27:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45697 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45950 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bycN6-0006AP-Cg
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 06:20:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56424)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bydPc-0003U7-9Z
+	for alex.bennee@linaro.org; Mon, 24 Oct 2016 07:27:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40805)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bycN0-00069d-Nn
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 06:20:43 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1bydO7-0002l9-Es
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 07:25:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1bycMz-0005gA-PP
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 06:20:42 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:32773)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1bycMz-0005fm-Bf; Mon, 24 Oct 2016 06:20:41 -0400
-Received: by mail-vk0-x243.google.com with SMTP id 83so7323833vkd.0;
-	Mon, 24 Oct 2016 03:20:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Of/xFenrRgh9MzIaCWLSX1R+2j/C3EzJ8dCxS2nXqQ0=;
-	b=ldmxqLtpPcOMPgMWcRLaGX/G1tCt9D+RWyVzQyK5fk58UmLdzPZar+eajS1kI7FyOF
-	zV5OCcysihm+bBGngXhGMz2E/lOCMXnqgs3I52f08rZOMy5d2Am8WhhzA7j1aLTfA9Vn
-	PS/97OYY4mMaJS2DDgXSHvs8SNsxFgfJdXsjkxUV5gbofZ+ib1Xz/KdBhs5oSQzyC6zP
-	GY9Vt4bwUifypU4I39j9GErk4Bvs2GwqTgSPbb4wn9GpNO4h6BxOBgAA2ifLwsCCuOLj
-	We5rn/XqYvv92YTDz3XPHbRn6T8XG609ASwjdNs/79sDnpq5ToMTS4GLARnJ9+16NciN
-	RbGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Of/xFenrRgh9MzIaCWLSX1R+2j/C3EzJ8dCxS2nXqQ0=;
-	b=f/OG1nyih9Tegk0IvQ4OtluAEkuot8ZGuVlO4nUJswIGMMAGcXInKuvodhHc+5NOc5
-	hGvZpAxmJLwNJht+7+DFFZjxflkdbby7hME0TrAFlZffXeVCe7Pe5xG/ac/9bCxRsPTY
-	ZWROxv0Jyob6NEdiDvToATijTZqxDU6FzqgX6YdVeqMchE/JlKTybExOQdGmysC671dL
-	qmyZCT/xBz5u7EaMGA1C24ZNgM0DY9ubw716vjUqYsmXaKQ7BCnzlWtmFXOvz2xhMWUN
-	KpnV7lPaPEWjWka+VzyFJe2NSp4anvKjrBmCqwlaKy72Bqjc8hfZ0pNayWCAs6klxc38
-	7r1Q==
-X-Gm-Message-State: ABUngvepl8M+IhlDKYSgQ2UAjjHFh/IzbvNJF371rss1i4Ztv03tLUCxJ4lPtSuYWNxhhZIH9Mcr78NXE4+z3Q==
-X-Received: by 10.31.3.155 with SMTP id f27mr7292240vki.64.1477304440210; Mon,
-	24 Oct 2016 03:20:40 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.93.135 with HTTP; Mon, 24 Oct 2016 03:20:39 -0700 (PDT)
-In-Reply-To: <20161024093943.GC2190@work-vm>
+	(envelope-from <pbonzini@redhat.com>) id 1bydO6-0006Oh-DR
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 07:25:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47356)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1bydNy-0006MO-Uv; Mon, 24 Oct 2016 07:25:47 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2EFD861E67;
+	Mon, 24 Oct 2016 11:25:46 +0000 (UTC)
+Received: from [10.36.112.47] (ovpn-112-47.ams2.redhat.com [10.36.112.47])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9OBPdtQ009766
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+	Mon, 24 Oct 2016 07:25:43 -0400
+To: vijay.kilari@gmail.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	rth@twiddle.net
 References: <1477288523-10819-1-git-send-email-vijay.kilari@gmail.com>
-	<1477288523-10819-3-git-send-email-vijay.kilari@gmail.com>
-	<20161024093943.GC2190@work-vm>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Mon, 24 Oct 2016 15:50:39 +0530
-Message-ID: <CALicx6sh+uMYoUPCbSxVY-LogdLW_aak3MuueeYu1mkK5vyu2A@mail.gmail.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	<1477288523-10819-4-git-send-email-vijay.kilari@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <538a5505-fef3-fc2b-4411-bbaa8537c9c7@redhat.com>
+Date: Mon, 24 Oct 2016 13:25:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.3.0
+MIME-Version: 1.0
+In-Reply-To: <1477288523-10819-4-git-send-email-vijay.kilari@gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 24 Oct 2016 11:25:46 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 2/3] utils: Add helper to
- read arm MIDR_EL1 register
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v3 3/3] utils: Add prefetch for Thunderx
+ platform
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BMgTkT+ui99p
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: M1DkJtdBgd6e
 
-On Mon, Oct 24, 2016 at 3:09 PM, Dr. David Alan Gilbert
-<dgilbert@redhat.com> wrote:
-> * vijay.kilari@gmail.com (vijay.kilari@gmail.com) wrote:
->> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>
->> Add helper API to read MIDR_EL1 registers to fetch
->> cpu identification information. This helps in
->> adding errata's and architecture specific features.
->>
->> This is implemented only for arm architecture.
->>
->> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->> ---
->>  include/qemu/aarch64-cpuid.h |  9 +++++
->>  util/Makefile.objs           |  1 +
->>  util/aarch64-cpuid.c         | 87 ++++++++++++++++++++++++++++++++++++++++++++
->
-> It feels like there should be somewhere else to put this very ARM specific thing
-> that in util/ - not sure where though.
 
-  IRC, I tried it. But libutil is built before arch code compilation.
-So cannot put
-outside of util folder
+
+On 24/10/2016 07:55, vijay.kilari@gmail.com wrote:
+> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>=20
+> Thunderx pass2 chip requires explicit prefetch
+> instruction to give prefetch hint.
+>=20
+> To speed up live migration on Thunderx platform,
+> prefetch instruction is added in zero buffer check
+> function.The below results show live migration time improvement
+> with prefetch instruction. VM with 4 VCPUs, 8GB RAM is migrated.
+>=20
+> Without prefetch total migration time is ~13 seconds
+> adding prefetch total migration time is 9.5 seconds
+>=20
+> Code for decoding cache size is taken from Richard's
+> patch
+>=20
+> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+> ---
+>  util/bufferiszero.c | 37 ++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 36 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/util/bufferiszero.c b/util/bufferiszero.c
+> index 421d945..f50b8df 100644
+> --- a/util/bufferiszero.c
+> +++ b/util/bufferiszero.c
+> @@ -25,6 +25,10 @@
+>  #include "qemu-common.h"
+>  #include "qemu/cutils.h"
+>  #include "qemu/bswap.h"
+> +#include <math.h>
+> +
+> +static uint32_t cache_line_factor =3D 1;
+
+Let's express this in bytes, with a default value of 64 (so rename
+cache_line_factor->cache_line_size).
+
+> +static uint32_t prefetch_line_dist =3D 1;
+> =20
+>  static bool
+>  buffer_zero_int(const void *buf, size_t len)
+> @@ -49,7 +53,8 @@ buffer_zero_int(const void *buf, size_t len)
+>          const uint64_t *e =3D (uint64_t *)(((uintptr_t)buf + len) & -8=
+);
+> =20
+>          for (; p + 8 <=3D e; p +=3D 8) {
+> -            __builtin_prefetch(p + 8, 0, 0);
+> +            __builtin_prefetch(p +
+> +               (8 * cache_line_factor * prefetch_line_dist), 0, 0);
+
+You should precompute cache_line_bytes * prefetch_line_dist /
+sizeof(uint64_t) in a single variable, prefetch_distance.  This saves
+the effort of loading global variables repeatedly.  Then you can do
+
+    __builtin_prefetch(p + prefetch_distance, 0, 0);
+
+>              if (t) {
+>                  return false;
+>              }
+> @@ -293,6 +298,30 @@ bool test_buffer_is_zero_next_accel(void)
+>  }
+>  #endif
+> =20
+> +#if defined(__aarch64__)
+> +#include "qemu/aarch64-cpuid.h"
+> +
+> +static void __attribute__((constructor)) aarch64_init_cache_size(void)
+> +{
+> +    uint64_t t;
+> +
+> +    /* Use the DZP block size as a proxy for the cacheline size,
+> +       since the later is not available to userspace.  This seems
+> +       to work in practice for existing implementations.  */
+> +    asm("mrs %0, dczid_el0" : "=3Dr"(t));
+> +    if (pow(2, (t & 0xf)) * 4 >=3D 128) {
+> +        cache_line_factor =3D 2;
+> +    } else {
+> +        cache_line_factor =3D 1;
+> +    }
+> +
+> +    get_aarch64_cpu_id();
+> +    if (is_thunderx_pass2_cpu()) {
+> +        prefetch_line_dist =3D 3;
+> +    }
+> +}
+> +#endif
+> +
+>  /*
+>   * Checks if a buffer is all zeroes
+>   */
+> @@ -305,6 +334,12 @@ bool buffer_is_zero(const void *buf, size_t len)
+>      /* Fetch the beginning of the buffer while we select the accelerat=
+or.  */
+>      __builtin_prefetch(buf, 0, 0);
+> =20
+> +#if defined(__aarch64__)
+> +    if (is_thunderx_pass2_cpu()) {
+> +        __builtin_prefetch(buf + 16, 0, 0);
+> +        __builtin_prefetch(buf + 32, 0, 0);
+
+This should not be ThunderX or aarch64 specific; it should be a loop like
+
+    prefetch_distance_bytes =3D prefetch_line_dist * cache_line_size;
+    for (i =3D 0; i < prefetch_distance_bytes; i +=3D cache_line_size)
+         __builtin_prefetch(buf + i, 0, 0);
+
+In the default case, cache_line_bytes =3D=3D prefetch_distance_bytes (bot=
+h
+are 64) and you will get the same behavior as the existing
+
+    __builtin_prefetch(buf, 0, 0);
+
+Thanks,
+
+Paolo
+
+> +    }
+> +#endif
+>      /* Use an optimized zero check if possible.  Note that this also
+>         includes a check for an unrolled loop over 64-bit integers.  */
+>      return select_accel_fn(buf, len);
+>=20

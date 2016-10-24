@@ -1,126 +1,109 @@
-Received: by 10.80.166.35 with SMTP id d32csp2619419edc;
-        Mon, 24 Oct 2016 05:46:15 -0700 (PDT)
-X-Received: by 10.200.33.201 with SMTP id 9mr15539404qtz.141.1477313174977;
-        Mon, 24 Oct 2016 05:46:14 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp2620702edc;
+        Mon, 24 Oct 2016 05:49:15 -0700 (PDT)
+X-Received: by 10.55.17.143 with SMTP id 15mr13846236qkr.297.1477313355364;
+        Mon, 24 Oct 2016 05:49:15 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o128si10815626qkf.325.2016.10.24.05.46.14
+        by mx.google.com with ESMTPS id u87si10848521qki.135.2016.10.24.05.49.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 05:46:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 24 Oct 2016 05:49:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46512 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46522 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1byedp-0008FR-RP
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 08:46:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58408)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1byegk-0001AY-9o
+	for alex.bennee@linaro.org; Mon, 24 Oct 2016 08:49:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58838)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1byedh-0008Dq-Tx
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 08:46:06 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1byefF-0000fZ-MN
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 08:47:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1byede-00036J-1v
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 08:46:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54922)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1byedd-000367-T9; Mon, 24 Oct 2016 08:46:01 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8F49B9D0D7;
-	Mon, 24 Oct 2016 12:46:00 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9OCjuhn009779
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 24 Oct 2016 08:45:58 -0400
-Date: Mon, 24 Oct 2016 14:45:55 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20161024124555.brbzuq2zvwsqrtbl@kamzik.brq.redhat.com>
-References: <1476707466-14300-1-git-send-email-eric.auger@redhat.com>
-	<1476707466-14300-3-git-send-email-eric.auger@redhat.com>
-	<20161017140707.ygezwdokyw4lj53s@kamzik.brq.redhat.com>
-	<CAFEAcA8MGaRf5ytu3VcKGZj-kBAXoPdYvFN6k7Bx+zPaPsLXPQ@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1byefD-0003dO-S4
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 08:47:41 -0400
+Received: from mail-ua0-x22b.google.com ([2607:f8b0:400c:c08::22b]:36317)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1byefD-0003d0-E2
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 08:47:39 -0400
+Received: by mail-ua0-x22b.google.com with SMTP id m11so40736003uab.3
+	for <qemu-devel@nongnu.org>; Mon, 24 Oct 2016 05:47:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=zlTQOPUXmp2tIcrA53Cw9kc6omGbD5RCbwDRWBdtBzc=;
+	b=CAPaYxKWxNGyhp7wiVg/qpMuvhyE8WxH0uaIvy5oUmSwmaArYQNBoRYi/tefVbo/v2
+	5NOPiw6/c8ccpgypE8n+HeEqvRK2rh4O3q1OtGIKakfWtcsNryQMAuNBEDnuyIfQaV3A
+	rZMzxcXE62RBZ69e+uA4wHN7OwOLC5Se7k66Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=zlTQOPUXmp2tIcrA53Cw9kc6omGbD5RCbwDRWBdtBzc=;
+	b=JdrJMAj42rru8k0apGXKKy1Gg9H9lEqHrfIbnCD/+WBNiELM0OKJ7G4ZQxFPZGIUxd
+	vYlQKFfcgh50rjyhIlQbAJbb87VxzC3wk371ruoQZ7NOriHdwsGioLzrOqodaC22Towd
+	OwauYTcdfSjXHtuAcwdST2ZjjuAG2wKPPTZu5u2pWgTGcdh4kVPPhSI5gt7l2NdtSRc8
+	/T4F1dCHDuF2Rq8welCUxxAZ4o/c+wSAr2CYJSA2qmsuGlMNJOFiB4J9kxclb4VH5k6P
+	XBEyx4mv3mYs7pm//tYoxP79ruLl5ZlxSYXAuiTPopHL2wbTWM1RO1Ta0PEnXpZj7D6U
+	XClA==
+X-Gm-Message-State: ABUngvf2iOHpI8YEzUS28bVKomzZMGJlt5s1FvJwrd11fwLobrDab5WvRXx9iDfodnAAfLU78txgjBwf/aL9mwpO
+X-Received: by 10.31.65.195 with SMTP id o186mr7612505vka.3.1477313258289;
+	Mon, 24 Oct 2016 05:47:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8MGaRf5ytu3VcKGZj-kBAXoPdYvFN6k7Bx+zPaPsLXPQ@mail.gmail.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 24 Oct 2016 12:46:00 +0000 (UTC)
+Received: by 10.31.195.70 with HTTP; Mon, 24 Oct 2016 05:47:17 -0700 (PDT)
+In-Reply-To: <1476733226-11635-1-git-send-email-ppandit@redhat.com>
+References: <1476733226-11635-1-git-send-email-ppandit@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Oct 2016 13:47:17 +0100
+Message-ID: <CAFEAcA8g97rsH+9_-AnN=qZX4rubP3MWBwrnE_1E1P5RoOMY1Q@mail.gmail.com>
+To: P J P <ppandit@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 2/2] ARM: Virt: ACPI: Build
- an IORT table with RC and ITS nodes
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c08::22b
+Subject: Re: [Qemu-devel] [PATCH v7] timer: a9gtimer: remove loop to
+ auto-increment comparator
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Tomasz Nowicki <tn@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	Prem Mallappa <prem.mallappa@broadcom.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hkm/RERFr5bj
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Li Qiang <liqiang6-s@360.cn>,
+	Qemu Developers <qemu-devel@nongnu.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ly82GD/UPuOC
 
-On Mon, Oct 24, 2016 at 01:29:42PM +0100, Peter Maydell wrote:
-> On 17 October 2016 at 15:07, Andrew Jones <drjones@redhat.com> wrote:
-> > On Mon, Oct 17, 2016 at 02:31:06PM +0200, Eric Auger wrote:
-> >> From: Prem Mallappa <prem.mallappa@broadcom.com>
-> >>
-> >> This patch builds an IORT table that features a root complex node and
-> >> an ITS node. This complements the ITS description in the ACPI MADT
-> >> table and allows vhost-net on ACPI guest.
-> >>
-> >> Signed-off-by: Prem Mallappa <prem.mallappa@broadcom.com>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> >> @@ -667,17 +722,6 @@ void virt_acpi_build(VirtGuestInfo *guest_info, AcpiBuildTables *tables)
-> >>                               ACPI_BUILD_TABLE_FILE, tables_blob,
-> >>                               64, false /* high memory */);
-> >>
-> >> -    /*
-> >> -     * The ACPI v5.1 tables for Hardware-reduced ACPI platform are:
-> >> -     * RSDP
-> >> -     * RSDT
-> >> -     * FADT
-> >> -     * GTDT
-> >> -     * MADT
-> >> -     * MCFG
-> >> -     * DSDT
-> >> -     */
-> >> -
-> >
-> > I guess it's still debatable if the above change should be a separate
-> > patch or not. It'd probably be best if it was, or at least the commit
-> > message should contain an 'Also ...' sentence. Anyway, I'll leave it
-> > to the maintainers to decide.
-> 
-> Did you want to suggest a suitable addition to the commit message?
-> I have no idea; I'm just going to apply these to target-arm on the
-> basis of your review...
+On 17 October 2016 at 20:40, P J P <ppandit@redhat.com> wrote:
+> From: Prasad J Pandit <pjp@fedoraproject.org>
+>
+> ARM A9MP processor has a peripheral timer with an auto-increment
+> register, which holds an increment step value. A user could set
+> this value to zero. When auto-increment control bit is enabled,
+> it leads to an infinite loop in 'a9_gtimer_update' while
+> updating comparator value. Remove this loop incrementing the
+> comparator value.
+>
+> Reported-by: Li Qiang <liqiang6-s@360.cn>
+> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+> ---
+>  hw/timer/a9gtimer.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+>
+> Use QEMU_ALIGN_UP instead of QEMU_ALIGN_DOWN
+>   -> https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg03788.html
 
-How about
 
-"Also remove the comment block in virt_acpi_build that lists all the
- generated tables, rather than update it. It's redundant with the code,
- at best, and otherwise incomplete/misleading."
 
-Thanks,
-drew
+Applied to target-arm.next, thanks.
+
+-- PMM

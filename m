@@ -1,75 +1,78 @@
-Received: by 10.80.166.35 with SMTP id d32csp2469217edc;
-        Sun, 23 Oct 2016 22:59:53 -0700 (PDT)
-X-Received: by 10.55.74.6 with SMTP id x6mr14483643qka.316.1477288793189;
-        Sun, 23 Oct 2016 22:59:53 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp2495132edc;
+        Mon, 24 Oct 2016 00:25:11 -0700 (PDT)
+X-Received: by 10.55.182.135 with SMTP id g129mr14856240qkf.166.1477293911651;
+        Mon, 24 Oct 2016 00:25:11 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h20si9997825qtb.151.2016.10.23.22.59.52
+        by mx.google.com with ESMTPS id f186si10178914qkj.69.2016.10.24.00.25.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 23 Oct 2016 22:59:53 -0700 (PDT)
+        Mon, 24 Oct 2016 00:25:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44716 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:45058 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1byYIa-0005yH-4H
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 01:59:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51102)
+	id 1byZd8-000146-Gc
+	for alex.bennee@linaro.org; Mon, 24 Oct 2016 03:25:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1byYEt-00033s-3f
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 01:56:04 -0400
+	(envelope-from <armbru@redhat.com>) id 1byZd2-00013i-Mi
+	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 03:25:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1byYEr-0004jQ-Tn
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 01:56:03 -0400
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:33144)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1byYEr-0004if-L0; Mon, 24 Oct 2016 01:56:01 -0400
-Received: by mail-pf0-x243.google.com with SMTP id i85so15537367pfa.0;
-	Sun, 23 Oct 2016 22:56:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=HzeLJU/sYthXQXqZ/bY8P05PCcKkJ5Hi149DqcH8T/U=;
-	b=YFnkx/+8kqiFsdxOCd8OPgMtloVqgeVe+nAUUuYFcSTFUnoA5tGll8ALNfTMuS8opG
-	aiRqdDoQgl/oVUK8Ckkajz0FI328ZxFrLSv4jU/MF+DOdIa3rl/qESLIROKLsJAdvC7s
-	oMAZCgrmJiIuDNV1ET3akKlyongIXsyfwsBhTLhmNepxNb4ROgGa2Dc6vsVhV6jwJrel
-	JMzblkSuZtFGsb+MHmSCe65msPxlRroimSb01aYoi1dVm+SBDcHnzVgg/gy9eR2DZR0f
-	xUIaV7djr/74ZxTwaU5jBz7MzgLOSGm3+Hwz1YxjaEx9uKQzZiaZyH4yyuafpeegOM0S
-	xZEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=HzeLJU/sYthXQXqZ/bY8P05PCcKkJ5Hi149DqcH8T/U=;
-	b=WIcrzs8umPrPQegO//bo6JYkpCQJAxT8IEOWx7jzkZj4PGCDShwUKGSrvMu3RrxQV5
-	IDc2h+10/r0f7L+keVSZWHkHEHDRL/sTPsQpqZ0lOanenrNiGnZX5rGe5yHCBje+Fksp
-	P2n35SZtLic1RxbI3dZJPx557wBKe8i+romUlw2+s3k+Jz16jVbkGuEjv7pr/YEfsrqV
-	JnVEMR9W4MkBM/HS9PH8LvISQkfGM9fCNhv49vYfLOBEnmzE84R+83VMV1YquMyrvC9X
-	/TmYoDFnVqLO4kgZ8TLygonATwiW8vVW5KfDRNxJPo96o6SuCnKelWciopiBKH76Q9tO
-	SfhA==
-X-Gm-Message-State: ABUngvdjzM33mQLJVcY4e9EySUgeaPqxFRGUdclsOKF9wulYYZ0HkLBCD8PVKufIxLIpEQ==
-X-Received: by 10.98.82.75 with SMTP id g72mr25479124pfb.119.1477288559911;
-	Sun, 23 Oct 2016 22:55:59 -0700 (PDT)
-Received: from localhost.localdomain ([111.93.218.67])
-	by smtp.gmail.com with ESMTPSA id
-	c5sm21627558pfj.71.2016.10.23.22.55.57
-	(version=TLS1_1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 23 Oct 2016 22:55:59 -0700 (PDT)
-From: vijay.kilari@gmail.com
-To: qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
-	rth@twiddle.net
-Date: Mon, 24 Oct 2016 11:25:23 +0530
-Message-Id: <1477288523-10819-4-git-send-email-vijay.kilari@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1477288523-10819-1-git-send-email-vijay.kilari@gmail.com>
-References: <1477288523-10819-1-git-send-email-vijay.kilari@gmail.com>
+	(envelope-from <armbru@redhat.com>) id 1byZcz-00033j-I8
+	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 03:25:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48874)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1byZcz-00033T-AV; Mon, 24 Oct 2016 03:25:01 -0400
+Received: from int-mx10.intmail.prod.int.phx2.redhat.com
+	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 70F52624DC;
+	Mon, 24 Oct 2016 07:24:58 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-39.ams2.redhat.com
+	[10.36.116.39])
+	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9O7OrOi021107
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Mon, 24 Oct 2016 03:24:55 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 658F71138645; Mon, 24 Oct 2016 09:24:53 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20161018130007.k7hhxovkxiqiumfj@kamzik.brq.redhat.com>
+	<20161018131829.GQ3275@thinpad.lan.raisama.net>
+	<20161018142247.55d4aymduofvhy3r@kamzik.brq.redhat.com>
+	<20161018152207.GZ3275@thinpad.lan.raisama.net>
+	<20161018162202.pmui5rv3va7ubcrv@kamzik.brq.redhat.com>
+	<CAFEAcA8UtCr6wpz_3aYb694ixPhuRnyiTrHNwRjGWNYe+9t4aA@mail.gmail.com>
+	<20161018175737.3biqteztu3esvaaq@kamzik.brq.redhat.com>
+	<CAFEAcA-TxifV3Wfnv=6byJSABnLyPnbtfMsK+aPvwGd-p5sqLA@mail.gmail.com>
+	<20161018184532.GC3275@thinpad.lan.raisama.net>
+	<CAFEAcA8nCjr2Zz2no3DikyGtRtYRm+ieouatfOJnynkzpJ+thg@mail.gmail.com>
+	<20161018204937.GB5057@thinpad.lan.raisama.net>
+	<CAFEAcA9Cd0TsLHgBr-GuOwYmrwcPW656YOP2msAGrhghDS3xBw@mail.gmail.com>
+	<87d1iteeym.fsf@dusky.pond.sub.org>
+	<CAFEAcA_OqsPrQzD2pLWXkP18fu3ems=ZZwg62kL7roMm+TU+dg@mail.gmail.com>
+Date: Mon, 24 Oct 2016 09:24:53 +0200
+In-Reply-To: <CAFEAcA_OqsPrQzD2pLWXkP18fu3ems=ZZwg62kL7roMm+TU+dg@mail.gmail.com>
+	(Peter Maydell's message of "Sat, 22 Oct 2016 10:31:11 +0100")
+Message-ID: <87k2cy9pkq.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 24 Oct 2016 07:25:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: [Qemu-arm] [PATCH v3 3/3] utils: Add prefetch for Thunderx platform
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] QOM properties vs C functions/fields
+ (was Re: [PATCH v3 2/3] exec: rename cpu_exec_init() as
+ cpu_exec_realizefn())
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,102 +84,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, vijay.kilari@gmail.com,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Cc: Anthony Green <green@moxielogic.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+	Greg Ungerer <gerg@uclinux.org>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Jia Liu <proljc@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Bharata B Rao <bharata@linux.vnet.ibm.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, Andrew Jones <drjones@redhat.com>,
+	Chen Gang <gang.chen.5i5j@gmail.com>, Greg Kurz <groug@kaod.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Matthew Rosato <mjrosato@linux.vnet.ibm.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ekY6EOIMP5y9
+X-TUID: 6G3PPqw4owU9
 
-From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Thunderx pass2 chip requires explicit prefetch
-instruction to give prefetch hint.
+> On 21 October 2016 at 19:26, Markus Armbruster <armbru@redhat.com> wrote:
+>> "Device not pluggable" does not imply "device has no configuration knobs
+>> a user may legitimately want to mess with".  Plenty of onboard devices
+>> have such knobs.
+>>
+>> Right now, users configure these mostly via board-agnostic options like
+>> -serial.  Anything that doesn't fit the mold can't be configured that
+>> way.
+>>
+>> However, A fully mature QOM as I envisage it would provide users access
+>> to QOM properties for onboard devices, too.  Not with -device,
+>> obviously, but with qom-set and similar, as Eduardo said.  If any of
+>> these properties are not for users, they should be marked as such.  Just
+>> like for pluggable devices.
+>
+> Yes, you're right about this. (What's the command line
+> equivalent of qom-set?
 
-To speed up live migration on Thunderx platform,
-prefetch instruction is added in zero buffer check
-function.The below results show live migration time improvement
-with prefetch instruction. VM with 4 VCPUs, 8GB RAM is migrated.
+Command line isn't implemented.
 
-Without prefetch total migration time is ~13 seconds
-adding prefetch total migration time is 9.5 seconds
+>                        We have -global but that's a bit
+> awkward if I'm remembering its syntax correctly.)
 
-Code for decoding cache size is taken from Richard's
-patch
+-global changes a device property default value.  You can abuse it to
+set a specific device's property only when there's at most one instance.
 
-Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
----
- util/bufferiszero.c | 37 ++++++++++++++++++++++++++++++++++++-
- 1 file changed, 36 insertions(+), 1 deletion(-)
+>> Perhaps non-pluggable devices tend to have more "not for users" QOM
+>> properties than pluggable ones, I don't know.  But that would be a
+>> *quantitative* difference, not a *qualitative* one.
+>
+> I agree that it's not really qualitative, but a pluggable
+> device's properties are all by definition for the user
+> to set (since the user is the only one who can set them).
+> In a pre-plugged device, although there may be a lot of
+> properties, some of them won't be usefully changeable
+> in the context of this device in this board (ie if you
+> mess with them you'll just break things). We don't have
+> any way for the board to say "this stuff isn't for the
+> user", I think.
 
-diff --git a/util/bufferiszero.c b/util/bufferiszero.c
-index 421d945..f50b8df 100644
---- a/util/bufferiszero.c
-+++ b/util/bufferiszero.c
-@@ -25,6 +25,10 @@
- #include "qemu-common.h"
- #include "qemu/cutils.h"
- #include "qemu/bswap.h"
-+#include <math.h>
-+
-+static uint32_t cache_line_factor = 1;
-+static uint32_t prefetch_line_dist = 1;
- 
- static bool
- buffer_zero_int(const void *buf, size_t len)
-@@ -49,7 +53,8 @@ buffer_zero_int(const void *buf, size_t len)
-         const uint64_t *e = (uint64_t *)(((uintptr_t)buf + len) & -8);
- 
-         for (; p + 8 <= e; p += 8) {
--            __builtin_prefetch(p + 8, 0, 0);
-+            __builtin_prefetch(p +
-+               (8 * cache_line_factor * prefetch_line_dist), 0, 0);
-             if (t) {
-                 return false;
-             }
-@@ -293,6 +298,30 @@ bool test_buffer_is_zero_next_accel(void)
- }
- #endif
- 
-+#if defined(__aarch64__)
-+#include "qemu/aarch64-cpuid.h"
-+
-+static void __attribute__((constructor)) aarch64_init_cache_size(void)
-+{
-+    uint64_t t;
-+
-+    /* Use the DZP block size as a proxy for the cacheline size,
-+       since the later is not available to userspace.  This seems
-+       to work in practice for existing implementations.  */
-+    asm("mrs %0, dczid_el0" : "=r"(t));
-+    if (pow(2, (t & 0xf)) * 4 >= 128) {
-+        cache_line_factor = 2;
-+    } else {
-+        cache_line_factor = 1;
-+    }
-+
-+    get_aarch64_cpu_id();
-+    if (is_thunderx_pass2_cpu()) {
-+        prefetch_line_dist = 3;
-+    }
-+}
-+#endif
-+
- /*
-  * Checks if a buffer is all zeroes
-  */
-@@ -305,6 +334,12 @@ bool buffer_is_zero(const void *buf, size_t len)
-     /* Fetch the beginning of the buffer while we select the accelerator.  */
-     __builtin_prefetch(buf, 0, 0);
- 
-+#if defined(__aarch64__)
-+    if (is_thunderx_pass2_cpu()) {
-+        __builtin_prefetch(buf + 16, 0, 0);
-+        __builtin_prefetch(buf + 32, 0, 0);
-+    }
-+#endif
-     /* Use an optimized zero check if possible.  Note that this also
-        includes a check for an unrolled loop over 64-bit integers.  */
-     return select_accel_fn(buf, len);
--- 
-1.9.1
+The closest we have now is the x-prefix convention.
 
+Perhaps we could use a flag to mark certain properties as "not
+user-settable", similar to how we mark devices as "not pluggable"
+(really: can be created only by board code, not the user).

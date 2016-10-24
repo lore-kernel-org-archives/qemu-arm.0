@@ -1,96 +1,121 @@
-Received: by 10.80.166.35 with SMTP id d32csp2637300edc;
-        Mon, 24 Oct 2016 06:25:43 -0700 (PDT)
-X-Received: by 10.31.192.136 with SMTP id q130mr9168785vkf.138.1477315542964;
-        Mon, 24 Oct 2016 06:25:42 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp2673458edc;
+        Mon, 24 Oct 2016 07:34:51 -0700 (PDT)
+X-Received: by 10.31.2.201 with SMTP id 192mr9377149vkc.171.1477319690955;
+        Mon, 24 Oct 2016 07:34:50 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u123si4970169vkb.223.2016.10.24.06.25.42
+        by mx.google.com with ESMTPS id f89si5169430uaf.136.2016.10.24.07.34.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 06:25:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 24 Oct 2016 07:34:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46760 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47101 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1byfG1-0004vU-Rw
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 09:25:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40872)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bygKv-0000ea-KC
+	for alex.bennee@linaro.org; Mon, 24 Oct 2016 10:34:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51992)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1byfFy-0004vP-Vb
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 09:25:39 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1byfyx-0007hq-Fm
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1byfFu-0007VT-UW
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 09:25:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45994)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
-	id 1byfFu-0007VL-Ph; Mon, 24 Oct 2016 09:25:34 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4775380099;
-	Mon, 24 Oct 2016 13:25:33 +0000 (UTC)
-Received: from javelin (vpn-61-69.rdu2.redhat.com [10.10.61.69])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9ODPSMW016822
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 24 Oct 2016 09:25:30 -0400
-Date: Mon, 24 Oct 2016 18:55:27 +0530 (IST)
-From: P J P <ppandit@redhat.com>
-X-X-Sender: pjp@javelin
-To: Alistair Francis <alistair.francis@xilinx.com>
-In-Reply-To: <CAKmqyKMMFcbXPv9cE-G5P2n74vXcMtWAb0sFg_J7DP+vkyxKCg@mail.gmail.com>
-Message-ID: <alpine.LFD.2.20.1610241852550.14846@wniryva>
-References: <1476784025-27293-1-git-send-email-ppandit@redhat.com>
-	<CAFEAcA8hkSJa5rVpNrL1D7w_U-1EKSf-t2G5jKzxceXL2rqRdg@mail.gmail.com>
-	<alpine.LFD.2.20.1610182307550.1547@wniryva>
-	<CAKmqyKOMrcTAta-rHj-yFbdpPpT_wtpO-YWAqK=AVCuUuJTT4A@mail.gmail.com>
-	<alpine.LFD.2.20.1610191539170.12629@wniryva>
-	<CAKmqyKMLvYDTvofMF=5k2sYNKPS+HtWYvz6RCdsd4AQG97H6nQ@mail.gmail.com>
-	<alpine.LFD.2.20.1610201116520.27908@wniryva>
-	<20161020172146.GA25226@toto>
-	<alpine.LFD.2.20.1610211311300.18921@wniryva>
-	<CAKmqyKMMFcbXPv9cE-G5P2n74vXcMtWAb0sFg_J7DP+vkyxKCg@mail.gmail.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1byfyt-0007bC-PK
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:07 -0400
+Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:37928)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1byfyt-0007aV-Br
+	for qemu-devel@nongnu.org; Mon, 24 Oct 2016 10:12:03 -0400
+Received: by mail-ua0-x230.google.com with SMTP id t11so228306uaa.5
+	for <qemu-devel@nongnu.org>; Mon, 24 Oct 2016 07:12:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=5B3FCGn/WYTwunV9HOP/rNPUsGs16igLVmiNCmgWDnA=;
+	b=CJZ4VuJ7VpnCPq4EUFok4wCINS9ixY5q0spFhwGr8VS1KxS7DnfL8Nw0bFrYpc7DoA
+	Gz8D+tCcuqDO2Dv+OQLGd0ahG3NNNhUc03oaXPoZBcOlvJfFcyS9XHYnm0wZIsAAtirp
+	EwcCJZf+PxEyVxJ6XyogEMtDGPVEvh43KGg/U=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=5B3FCGn/WYTwunV9HOP/rNPUsGs16igLVmiNCmgWDnA=;
+	b=E5bZXfJBLIHwyrHdtw4vw8X1LobQmW39nn1WVr5uFNbRkXCHwOY3yFJrRKG6KullDp
+	n4XZ73y6ruFSrpStdU7pz5xotGeVn4wf9qGdcE5o+jFuhx8p2vCFVONkR/SMiwdoblVO
+	gMs5/PeBctvi29OQrTXQhtgbPYyGCMlqOzjC+Ld3ajKaoGHgs42KSeBnH51PBTVCz+VO
+	z4kifD0Hve+mT607Y1fUfF1ORr4Ybo0/Ig8WOH3zo9PsPS1djRkRsnDVNI5IebWx0zL2
+	ZEuKTv/isG5lDT7JEaX0we3Q6Aa2W0qOk1PylNOi41p8r4idYjCPTEwIFVc4yJoJjvRM
+	1NhA==
+X-Gm-Message-State: ABUngvclWZ7GlZKnF7ABFIwLpscCs9+8Kso3gpURszUiISwgxYC3OB0Cg9NiHFRsgNJVDs2X8G0cwettfU4B49VV
+X-Received: by 10.31.216.4 with SMTP id p4mr7923886vkg.51.1477318322204; Mon,
+	24 Oct 2016 07:12:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 24 Oct 2016 13:25:33 +0000 (UTC)
+Received: by 10.31.195.70 with HTTP; Mon, 24 Oct 2016 07:11:41 -0700 (PDT)
+In-Reply-To: <1476800269-31902-1-git-send-email-ppandit@redhat.com>
+References: <1476800269-31902-1-git-send-email-ppandit@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Oct 2016 15:11:41 +0100
+Message-ID: <CAFEAcA_nDuf8PHeMnNjqxjZ83V-atYTn0HN2=RgBfuNH9G+qjQ@mail.gmail.com>
+To: P J P <ppandit@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] char: cadence: check divider
- against baud rate
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c08::230
+Subject: Re: [Qemu-devel] [PATCH] timer: stm32f2xx_timer: add check for
+ prescaler value
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Huawei PSIRT <psirt@huawei.com>,
-	Qemu Developers <qemu-devel@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YrhRMr7voJOX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair23@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Huawei PSIRT <psirt@huawei.com>, Qemu Developers <qemu-devel@nongnu.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tvAuBg/Z8dCj
 
-+-- On Mon, 24 Oct 2016, Alistair Francis wrote --+
-| > | http://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-TRM.pdf
-| 
-| Did the TRM have enough detail for you to figure out how the hardware behaves?
+On 18 October 2016 at 15:17, P J P <ppandit@redhat.com> wrote:
+> From: Prasad J Pandit <pjp@fedoraproject.org>
+>
+> The STM32F2XX Timer emulator uses a 16 bit prescaler value to
+> limit the timer clock rate. It does that by dividing the timer
+> frequency. If the prescaler 's->tim_psc' was set to be UINT_MAX,
+> it'd lead to divide by zero error. Limit prescaler value to 16
+> bits to avoid it.
+>
+> Reported-by: Huawei PSIRT <psirt@huawei.com>
+> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+> ---
+>  hw/timer/stm32f2xx_timer.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
+> index bf0fb28..2cad36d 100644
+> --- a/hw/timer/stm32f2xx_timer.c
+> +++ b/hw/timer/stm32f2xx_timer.c
+> @@ -208,7 +208,7 @@ static void stm32f2xx_timer_write(void *opaque, hwaddr offset,
+>          return;
+>      case TIM_PSC:
+>          timer_val = stm32f2xx_ns_to_ticks(s, now) - s->tick_offset;
+> -        s->tim_psc = value;
+> +        s->tim_psc = value & 0xFFFF;
+>          value = timer_val;
+>          break;
+>      case TIM_CNT:
 
-  Yes, it defines range for 'Baud rate generator' and 'Baud rate divider' 
-register values and their default reset value. I've sent patch v2.
+Applied to target-arm.next, thanks.
 
-Thank you.
---
-Prasad J Pandit / Red Hat Product Security Team
-47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F
+(That "value = timer_val;" line looks odd as it is dead code,
+but that's a different bug I think. Alistair, can you remember
+what you meant when you wrote that?)
+
+-- PMM

@@ -1,55 +1,55 @@
-Received: by 10.80.166.35 with SMTP id d32csp3027564edc;
-        Mon, 24 Oct 2016 23:49:17 -0700 (PDT)
-X-Received: by 10.200.40.197 with SMTP id j5mr18223939qtj.43.1477378156945;
-        Mon, 24 Oct 2016 23:49:16 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp3088347edc;
+        Tue, 25 Oct 2016 02:37:30 -0700 (PDT)
+X-Received: by 10.55.72.11 with SMTP id v11mr16903981qka.50.1477388250538;
+        Tue, 25 Oct 2016 02:37:30 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w126si12630350qka.48.2016.10.24.23.49.16
+        by mx.google.com with ESMTPS id j125si12947803qkc.327.2016.10.25.02.37.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 23:49:16 -0700 (PDT)
+        Tue, 25 Oct 2016 02:37:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52236 helo=lists.gnu.org)
+Received: from localhost ([::1]:52922 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1byvXw-0004yy-6e
-	for alex.bennee@linaro.org; Tue, 25 Oct 2016 02:49:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39015)
+	id 1byyAj-0003v7-JJ
+	for alex.bennee@linaro.org; Tue, 25 Oct 2016 05:37:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1byvXr-0004xa-SO
-	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 02:49:12 -0400
+	(envelope-from <jcd@tribudubois.net>) id 1byyAf-0003uz-Rf
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 05:37:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ppandit@redhat.com>) id 1byvXn-00010S-0m
-	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 02:49:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54996)
+	(envelope-from <jcd@tribudubois.net>) id 1byyAc-0003xb-Oo
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 05:37:25 -0400
+Received: from relay6-d.mail.gandi.net ([2001:4b98:c:538::198]:51541)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
-	id 1byvXm-0000y2-S5; Tue, 25 Oct 2016 02:49:06 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7CA2E80F8F;
-	Tue, 25 Oct 2016 06:49:05 +0000 (UTC)
-Received: from javelin.localdomain (vpn-55-172.rdu2.redhat.com [10.10.55.172])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u9P6n1jL002212
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Tue, 25 Oct 2016 02:49:03 -0400
-From: P J P <ppandit@redhat.com>
-To: Qemu Developers <qemu-devel@nongnu.org>
-Date: Tue, 25 Oct 2016 12:19:00 +0530
-Message-Id: <1477378140-2670-1-git-send-email-ppandit@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 25 Oct 2016 06:49:05 +0000 (UTC)
+	(Exim 4.71) (envelope-from <jcd@tribudubois.net>)
+	id 1byyAc-0003wP-IO; Tue, 25 Oct 2016 05:37:22 -0400
+Received: from mfilter43-d.gandi.net (mfilter43-d.gandi.net [217.70.178.174])
+	by relay6-d.mail.gandi.net (Postfix) with ESMTP id 7E56BFB8F4;
+	Tue, 25 Oct 2016 11:37:20 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mfilter43-d.gandi.net
+Received: from relay6-d.mail.gandi.net ([IPv6:::ffff:217.70.183.198])
+	by mfilter43-d.gandi.net (mfilter43-d.gandi.net [::ffff:10.0.15.180])
+	(amavisd-new, port 10024)
+	with ESMTP id uR6s5XHIBLUl; Tue, 25 Oct 2016 11:37:18 +0200 (CEST)
+X-Originating-IP: 78.235.240.156
+Received: from localhost.localdomain (smm49-1-78-235-240-156.fbx.proxad.net
+	[78.235.240.156]) (Authenticated sender: jcd@tribudubois.net)
+	by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 80E17FB91B;
+	Tue, 25 Oct 2016 11:37:16 +0200 (CEST)
+From: Jean-Christophe Dubois <jcd@tribudubois.net>
+To: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	qemu-devel@nongnu.org
+Date: Tue, 25 Oct 2016 11:37:11 +0200
+Message-Id: <20161025093711.17407-1-jcd@tribudubois.net>
+X-Mailer: git-send-email 2.9.3
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH] char: cadence: correct reset value for baud rate
- registers
+X-Received-From: 2001:4b98:c:538::198
+Subject: [Qemu-arm] [PATCH] Versatile memory should not exceed 256MB.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,39 +61,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Prasad J Pandit <pjp@fedoraproject.org>,
-	Alistair Francis <alistair.francis@xilinx.com>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hMtTNTtKXa+R
+X-TUID: 4R70kytrmQnz
 
-From: Prasad J Pandit <pjp@fedoraproject.org>
+For now Qemu accpet a memory size greater than 256 MB but it would
+crash afterward.
 
-The Cadence UART device emulator stores 'baud rate generator'
-and 'baud rate divider' values, used in computing speed, in two
-registers. The device specification defines their range and
-their reset value. Use their correct value when resetting the
-device in cadence_uart_reset.
+Versatile devices are starting at 256 MB bondary.
 
-Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
 ---
- hw/char/cadence_uart.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/versatilepb.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index c176446..b8d4c28 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -471,7 +471,8 @@ static void cadence_uart_reset(DeviceState *dev)
-     s->r[R_IMR] = 0;
-     s->r[R_CISR] = 0;
-     s->r[R_RTRIG] = 0x00000020;
--    s->r[R_BRGR] = 0x0000000F;
-+    s->r[R_BRGR] = 0x0000028B;
-+    s->r[R_BDIV] = 0x0000000F;
-     s->r[R_TTRIG] = 0x00000020;
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 8ae5392..7f11651 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -198,6 +198,14 @@ static void versatile_init(MachineState *machine, int board_id)
+     int done_smc = 0;
+     DriveInfo *dinfo;
  
-     uart_rx_reset(s);
++    if (machine->ram_size > 0x10000000) {
++        /* devices are starting at address 0x10000000,
++         * Memory cannot overlap with devices.
++         */ 
++        fprintf(stderr, "Memory size cannot exceed 256MB\n");
++        exit(1);
++    }
++
+     if (!machine->cpu_model) {
+         machine->cpu_model = "arm926";
+     }
 -- 
-2.7.4
+2.9.3
 

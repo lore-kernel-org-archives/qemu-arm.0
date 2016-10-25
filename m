@@ -1,62 +1,61 @@
-Received: by 10.80.166.35 with SMTP id d32csp2530173edc;
-        Mon, 24 Oct 2016 02:14:03 -0700 (PDT)
-X-Received: by 10.200.55.184 with SMTP id d53mr14579414qtc.54.1477300443528;
-        Mon, 24 Oct 2016 02:14:03 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp2984662edc;
+        Mon, 24 Oct 2016 21:40:11 -0700 (PDT)
+X-Received: by 10.55.158.4 with SMTP id h4mr1283468qke.41.1477370411907;
+        Mon, 24 Oct 2016 21:40:11 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n124si10371312qke.65.2016.10.24.02.14.03
+        by mx.google.com with ESMTPS id u7si12358744qkf.36.2016.10.24.21.40.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 02:14:03 -0700 (PDT)
+        Mon, 24 Oct 2016 21:40:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:45369 helo=lists.gnu.org)
+Received: from localhost ([::1]:51593 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bybKU-0003Xx-Fd
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 05:14:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40063)
+	id 1bytX1-0007Nw-DY
+	for alex.bennee@linaro.org; Tue, 25 Oct 2016 00:40:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bybKI-0003Ws-NJ
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 05:13:58 -0400
+	(envelope-from <wei@redhat.com>) id 1bytWx-0007Ja-7K
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 00:40:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1bybKE-0002NB-3j
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 05:13:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37586)
+	(envelope-from <wei@redhat.com>) id 1bytWu-00038D-4z
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 00:40:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46946)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1bybKD-0002Mk-Tr; Mon, 24 Oct 2016 05:13:46 -0400
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com
-	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(Exim 4.71) (envelope-from <wei@redhat.com>)
+	id 1bytWt-00037j-Sw; Tue, 25 Oct 2016 00:40:04 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E78A690E65;
-	Mon, 24 Oct 2016 09:13:44 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-123.brq.redhat.com [10.40.204.123])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id u9O9Deve023679
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Mon, 24 Oct 2016 05:13:42 -0400
-Date: Mon, 24 Oct 2016 11:13:40 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Wei Huang <wei@redhat.com>
-Message-ID: <20161024091340.nhvlg2fvaopxixro@hawk.localdomain>
+	by mx1.redhat.com (Postfix) with ESMTPS id 313614E4EE;
+	Tue, 25 Oct 2016 04:40:02 +0000 (UTC)
+Received: from [10.10.57.197] (vpn-57-197.rdu2.redhat.com [10.10.57.197])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9P4dxfP005171; Tue, 25 Oct 2016 00:40:00 -0400
+To: Andrew Jones <drjones@redhat.com>
 References: <1477086782-10479-1-git-send-email-wei@redhat.com>
-	<1477086782-10479-3-git-send-email-wei@redhat.com>
+	<20161024084920.5qrrwa3wfdyr5kn5@hawk.localdomain>
+From: Wei Huang <wei@redhat.com>
+Message-ID: <155d69d3-c8fb-4ff1-7de9-ca72d4086ccb@redhat.com>
+Date: Mon, 24 Oct 2016 23:39:59 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1477086782-10479-3-git-send-email-wei@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+In-Reply-To: <20161024084920.5qrrwa3wfdyr5kn5@hawk.localdomain>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 24 Oct 2016 09:13:45 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 25 Oct 2016 04:40:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V7 2/2] arm: virt: add PMU
- property to mach-virt machine type
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V7 0/2] Add option to configure
+ guest vPMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,55 +71,144 @@ Cc: peter.maydell@linaro.org, shannon.zhao@linaro.org, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, abologna@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rlA1BhosZp6H
+X-TUID: p1DD7E+FLiNf
 
-On Fri, Oct 21, 2016 at 05:53:02PM -0400, Wei Huang wrote:
-> CPU vPMU is now turned ON by default, but this feature wasn't introduced
-> until virt-2.7 machine type. To solve this problem, this patch adds a
-> PMU option in machine state, which is used to control CPU's vPMU status.
-> This PMU option is not exposed to command line and is turned off in
-> virt-2.6 machine type.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  hw/arm/virt.c | 7 +++++++
->  1 file changed, 7 insertions(+)
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+On 10/24/2016 03:49 AM, Andrew Jones wrote:
+> On Fri, Oct 21, 2016 at 05:53:00PM -0400, Wei Huang wrote:
+>> This patchset adds a pmu=[on/off] option to enable/disable vPMU support 
+>> for guest VM. There are several reasons to justify this option. First,
+>> vPMU can be problematic for cross-migration between different SoC as perf
+>> counters are architecture-dependent. It is more flexible to have an option
+>> to turn it on/off. Secondly this option matches the "pmu" option as
+>> supported in libvirt. To make sure backward compatible, a PMU-related
+>> property is added to mach-virt machine types.
+>>
+>> The following are testing results with this patchset:
+>>  CONFIG (qemu-system-aarch64)                       vPMU   WARNING
+>>   -M virt-2.8/virt,accel=kvm -cpu host               YES    NO
+>>   -M virt-2.8/virt,accel=kvm -cpu host,pmu=off       NO     NO
+>>   -M virt-2.8/virt,accel=kvm -cpu host,pmu=on        YES    NO
+>>   -M virt-2.7,accel=kvm -cpu host                    YES    NO
+>>   -M virt-2.7,accel=kvm -cpu host,pmu=off            NO     NO
+>>   -M virt-2.7,accel=kvm -cpu host,pmu=on             YES    NO
+>>   -M virt-2.6,accel=kvm -cpu host                    NO     NO
+>>   -M virt-2.6,accel=kvm -cpu host,pmu=off            NO     NO
+>>   -M virt-2.6,accel=kvm -cpu host,pmu=on             NO     NO
+>>
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a57         NO     NO
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a57,pmu=off NO     "No PMU property"
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a57,pmu=on  NO     "No PMU property"
+>>   -M virt-2.7,accel=tcg -cpu cortex-a57              NO     NO
+>>   -M virt-2.7,accel=tcg -cpu cortex-a57,pmu=off      NO     "No PMU property"
+>>   -M virt-2.7,accel=tcg -cpu cortex-a57,pmu=on       NO     "No PMU property"
+>>   -M virt-2.6,accel=tcg -cpu cortex-a57              NO     NO
+>>   -M virt-2.6,accel=tcg -cpu cortex-a57,pmu=off      NO     "No PMU property"
+>>   -M virt-2.6,accel=tcg -cpu cortex-a57,pmu=on       NO     "No PMU property"
+>>
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a15         NO     NO
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a15,pmu=off NO     "No PMU property"
+>>   -M virt-2.8/virt,accel=tcg -cpu cortex-a15,pmu=on  NO     "No PMU property"
+>>   -M virt-2.7,accel=tcg -cpu cortex-a15              NO     NO
+>>   -M virt-2.7,accel=tcg -cpu cortex-a15,pmu=off      NO     "No PMU property"
+>>   -M virt-2.7,accel=tcg -cpu cortex-a15,pmu=on       NO     "No PMU property"
+>>   -M virt-2.6,accel=tcg -cpu cortex-a15              NO     NO
+>>   -M virt-2.6,accel=tcg -cpu cortex-a15,pmu=off      NO     "No PMU property"
+>>   -M virt-2.6,accel=tcg -cpu cortex-a15,pmu=on       NO     "No PMU property"
+>>
+>>   * "No PMU property" msg, e.g.
+>>     can't apply global cortex-a15-arm-cpu.pmu=off: Property '.pmu' not found
+>>
+>> V6->V7:
+>>   * change has_pmu variable type from OnOffAuto to Boolean
+>>   * only add "pmu" property to CPU under kvm mode, default ON
+> 
+> Hmm, if we don't allow the property with TCG then switching a guest from
+> KVM to TCG will require more than just an accelerator switch. That's a
+> bit annoying and I think we'd have to teach it to libvirt too. I'd prefer
+> 
+>  -M virt-2.8,accel=tcg -cpu cortex-a57         NO     NO
+>  -M virt-2.8,accel=tcg -cpu cortex-a57,pmu=off NO     NO
+>  -M virt-2.8,accel=tcg -cpu cortex-a57,pmu=on  NO     "Warning: PMU not
+> yet supported with TCG" (or something)
+
+I am fine with this request. But note that, if we enforce
+pmu-default=ON, we can't tell "-cpu cortex-a57" apart from
+"cortex-a57,pmu=on", implying that we have to print the warning msg for
+the case of "cortex-a57" as well (this was why we switch to tri-state
+before). To solve this problem, we have to switch from pmu-default=ON to
+pmu-default=OFF under TCG mode, something like:
+
+    if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+        qdev_property_add_static(DEVICE(obj),
+            &arm_cpu_has_pmu_property, &error_abort);
+        if (!kvm_enabled())
+            object_property_set_bool(obj, false, "pmu", NULL);
+    }
+
+Then we do:
+    if (cpu->has_pmu && !kvm_enabled()) {
+        cpu->has_pmu = false;
+        if (!pmu_warned && !qtest_enabled()) {
+            error_report("warning: pmu not supported under TCG");
+            pmu_warned = true;
+        }
+    }
+
+This will work. Are you and Peter OK with this solution?
+
+-Wei
+
 
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 074d11c..e64dc4a 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -85,6 +85,7 @@ typedef struct {
->      VirtBoardInfo *daughterboard;
->      bool disallow_affinity_adjustment;
->      bool no_its;
-> +    bool no_pmu;
->  } VirtMachineClass;
->  
->  typedef struct {
-> @@ -1353,6 +1354,10 @@ static void machvirt_init(MachineState *machine)
->              }
->          }
->  
-> +        if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
-> +            object_property_set_bool(cpuobj, false, "pmu", NULL);
-> +        }
-> +
->          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
->              object_property_set_int(cpuobj, vbi->memmap[VIRT_CPUPERIPHS].base,
->                                      "reset-cbar", &error_abort);
-> @@ -1588,5 +1593,7 @@ static void virt_machine_2_6_options(MachineClass *mc)
->      virt_machine_2_7_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
->      vmc->disallow_affinity_adjustment = true;
-> +    /* Disable PMU for 2.6 as PMU support was first introduced in 2.7 */
-> +    vmc->no_pmu = true;
->  }
->  DEFINE_VIRT_MACHINE(2, 6)
-> -- 
-> 1.8.3.1
 > 
-> 
+>>   * set no_pmu=true for machvirt-2.6
+>>
+>> V5->V6:
+>>   * adapt patches for new machine type 2.8
+>>
+>> V4->V5:
+>>   * remove comment change for has_pmu
+>>   * remove warning msg when pmu_default_on=TRUE && has_pmu=AUTO && tcg=TRUE
+>>
+>> V3->V4:
+>>   * change has_pmu from Boolean to OnOffAuto to handle different cases
+>>   * "pmu" property is re-defined as DEFINE_PROP_ON_OFF_AUTO
+>>
+>> V2->V3:
+>>   * revise patch 1 commit msg and if-else statement (Drew) 
+>>   * move property field into VirtMachineClass (Drew)
+>>
+>> V1->V2:
+>>   * keep the original field name as "has_pmu"
+>>   * add a warning message when PMU is turned on without KVM
+>>   * use the feature bit to check PMU availability, instead of using has_pmu
+>>   * add PMU compat support to mach-virt machine type
+>>
+>> RFC->V1:
+>>   * set default pmu=off
+>>   * change struct ARMCPU field name "has_pmu" ==> "has_host_pmu"
+>>   * like el3, add a new feature ARM_FEATURE_HOST_PMU
+>>   * "pmu" property becomes CPU dependent. Only cortex-a53/cortex-a57/host
+>>     running on kvm supports this option.
+>>
+>> Thanks,
+>> -Wei
+>>
+>> Wei Huang (2):
+>>   arm64: Add an option to turn on/off vPMU support
+>>   arm: virt: add PMU property to mach-virt machine type
+>>
+>>  hw/arm/virt-acpi-build.c |  2 +-
+>>  hw/arm/virt.c            |  9 ++++++++-
+>>  target-arm/cpu.c         | 14 ++++++++++++++
+>>  target-arm/cpu.h         |  1 +
+>>  target-arm/cpu64.c       |  2 ++
+>>  target-arm/kvm64.c       | 17 ++++++++++++++---
+>>  6 files changed, 40 insertions(+), 5 deletions(-)
+>>
+>> -- 
+>> 1.8.3.1
+>>
+>>

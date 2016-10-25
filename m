@@ -1,58 +1,55 @@
-Received: by 10.80.166.35 with SMTP id d32csp2925542edc;
-        Mon, 24 Oct 2016 18:10:26 -0700 (PDT)
-X-Received: by 10.31.179.69 with SMTP id c66mr13546751vkf.52.1477357826399;
-        Mon, 24 Oct 2016 18:10:26 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp3027564edc;
+        Mon, 24 Oct 2016 23:49:17 -0700 (PDT)
+X-Received: by 10.200.40.197 with SMTP id j5mr18223939qtj.43.1477378156945;
+        Mon, 24 Oct 2016 23:49:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f67si2153100vka.1.2016.10.24.18.10.26
+        by mx.google.com with ESMTPS id w126si12630350qka.48.2016.10.24.23.49.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Oct 2016 18:10:26 -0700 (PDT)
+        Mon, 24 Oct 2016 23:49:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51005 helo=lists.gnu.org)
+Received: from localhost ([::1]:52236 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1byqG1-0003o8-SL
-	for alex.bennee@linaro.org; Mon, 24 Oct 2016 21:10:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56671)
+	id 1byvXw-0004yy-6e
+	for alex.bennee@linaro.org; Tue, 25 Oct 2016 02:49:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39015)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jerry@smartechhomes.com>) id 1byqFy-0003nx-Lk
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 21:10:23 -0400
+	(envelope-from <ppandit@redhat.com>) id 1byvXr-0004xa-SO
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 02:49:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jerry@smartechhomes.com>) id 1byqFt-0001cV-La
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 21:10:22 -0400
-Received: from smartechhomes.com ([66.246.75.169]:47660)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jerry@smartechhomes.com>)
-	id 1byqFt-0001ZP-J6
-	for qemu-arm@nongnu.org; Mon, 24 Oct 2016 21:10:17 -0400
-Received: from pool-173-73-25-174.washdc.fios.verizon.net ([173.73.25.174]
-	helo=[206.223.85.7])
-	by smartechhomes.com with esmtpa (Exim 4.80 #2 (Debian))
-	id 1byqFX-000343-FU
-	for <qemu-arm@nongnu.org>; Mon, 24 Oct 2016 21:10:10 -0400
-To: qemu-arm@nongnu.org
-References: <d5394b04-170e-bdbf-2a23-bfd057cd1ad7@smartechhomes.com>
-From: Jerry Stuckle <jerry@smartechhomes.com>
-Message-ID: <a4c75a7b-fdf5-2ddd-762c-723f25677b9d@smartechhomes.com>
-Date: Mon, 24 Oct 2016 21:09:52 -0400
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <d5394b04-170e-bdbf-2a23-bfd057cd1ad7@smartechhomes.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-ACL-Warn: Your server announces itself ([206.223.85.7]) with a bare IP
-	address which is in breach of RFC2821
-X-SA-Exim-Connect-IP: 173.73.25.174
-X-SA-Exim-Mail-From: jerry@smartechhomes.com
-X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:57:07 +0000)
-X-SA-Exim-Scanned: Yes (on smartechhomes.com)
+	(envelope-from <ppandit@redhat.com>) id 1byvXn-00010S-0m
+	for qemu-arm@nongnu.org; Tue, 25 Oct 2016 02:49:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54996)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ppandit@redhat.com>)
+	id 1byvXm-0000y2-S5; Tue, 25 Oct 2016 02:49:06 -0400
+Received: from int-mx11.intmail.prod.int.phx2.redhat.com
+	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7CA2E80F8F;
+	Tue, 25 Oct 2016 06:49:05 +0000 (UTC)
+Received: from javelin.localdomain (vpn-55-172.rdu2.redhat.com [10.10.55.172])
+	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
+	ESMTP id u9P6n1jL002212
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Tue, 25 Oct 2016 02:49:03 -0400
+From: P J P <ppandit@redhat.com>
+To: Qemu Developers <qemu-devel@nongnu.org>
+Date: Tue, 25 Oct 2016 12:19:00 +0530
+Message-Id: <1477378140-2670-1-git-send-email-ppandit@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 25 Oct 2016 06:49:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.246.75.169
-Subject: Re: [Qemu-arm] Defining a bridge
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] char: cadence: correct reset value for baud rate
+ registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,51 +61,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Prasad J Pandit <pjp@fedoraproject.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dpIYwticRTZt
+X-TUID: hMtTNTtKXa+R
 
-Anyone have an idea on this?
+From: Prasad J Pandit <pjp@fedoraproject.org>
 
-On 10/21/2016 3:45 PM, Jerry Stuckle wrote:
-> Hi, all,
-> 
-> To start out, I am a programmer, not a Linux administrator.  So please
-> be gentle with me - I'm in over my head here. :)
-> 
-> 
-> To start, my setup is: Windows 7 as the base OS with two nics, wired and
-> wireless (only one active at a time).  Under this I have Oracle Virtual
-> Machine running Ubuntu 4.4.0-38-generic (latest stable release).  I have
-> set up a bridge in Ubuntu's Network Manager as described on
-> http://ask.xmodulo.com/configure-linux-bridge-network-manager-ubuntu.html.
->  The bridge is defined as "bridge0" and works correctly in Ubuntu.
-> 
-> I start QEMU under Ubuntu with:
-> 
-> qemu-system-arm -m 1024M \
-> 	-sd /export/armhf.qcow2 \
-> 	-M vexpress-a9 \
-> 	-cpu cortex-a9 \
-> 	-kernel /export/boot/vmlinuz \
-> 	-initrd /export/boot/initrd.img \
-> 	-append "root=/dev/mmcblk0p2" \
-> 	-device virtio-net-device,netdev=net0 \
-> 	-netdev bridge,br=bridge0,id=net0,helper=/usr/lib/qemu/qemu-bridge-helper
-> 
-> Guest system is Debian 3.2.0-4-vexpress, again the latest stable
-> version.  I get a SLIRP connection just fine when I don't specify the
-> -device and -netdev parameters.  The "lshw" shows the driver to be
-> smsc911x, but I don't know how to relate that to which NIC is being
-> emulated (it at least works).
-> 
-> When I do specify the -device and -netdev parameters, I get no network.
-> The log shows nothing unusual other than no network device is found.
-> 
-> Are there any known problems with a setup like this?  If not, does
-> anyone have an idea as to what I am doing wrong?  I appreciate any and
-> all suggestions.
-> 
-> Jerry
-> 
+The Cadence UART device emulator stores 'baud rate generator'
+and 'baud rate divider' values, used in computing speed, in two
+registers. The device specification defines their range and
+their reset value. Use their correct value when resetting the
+device in cadence_uart_reset.
+
+Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+---
+ hw/char/cadence_uart.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index c176446..b8d4c28 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -471,7 +471,8 @@ static void cadence_uart_reset(DeviceState *dev)
+     s->r[R_IMR] = 0;
+     s->r[R_CISR] = 0;
+     s->r[R_RTRIG] = 0x00000020;
+-    s->r[R_BRGR] = 0x0000000F;
++    s->r[R_BRGR] = 0x0000028B;
++    s->r[R_BDIV] = 0x0000000F;
+     s->r[R_TTRIG] = 0x00000020;
+ 
+     uart_rx_reset(s);
+-- 
+2.7.4
 

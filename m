@@ -1,78 +1,64 @@
-Received: by 10.80.166.35 with SMTP id d32csp220723edc;
-        Wed, 26 Oct 2016 11:53:57 -0700 (PDT)
-X-Received: by 10.55.155.7 with SMTP id d7mr3228137qke.81.1477508037518;
-        Wed, 26 Oct 2016 11:53:57 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp239442edc;
+        Wed, 26 Oct 2016 12:36:56 -0700 (PDT)
+X-Received: by 10.55.159.140 with SMTP id i134mr3294162qke.172.1477510616214;
+        Wed, 26 Oct 2016 12:36:56 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id 138si2001288qkl.88.2016.10.26.11.53.57
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id b124si2114961qkd.125.2016.10.26.12.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Oct 2016 11:53:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Wed, 26 Oct 2016 12:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36890 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:37124 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bzTKn-0001t7-40
-	for alex.bennee@linaro.org; Wed, 26 Oct 2016 14:53:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55698)
+	id 1bzU0N-0006xL-Lg
+	for alex.bennee@linaro.org; Wed, 26 Oct 2016 15:36:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bzTJs-0001Iy-5u
-	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 14:53:01 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1bzU0K-0006x3-FY
+	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 15:36:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bzTJp-0005gr-1I
-	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 14:53:00 -0400
-Received: from mail-oi0-f46.google.com ([209.85.218.46]:35710)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1bzTJo-0005gV-RF; Wed, 26 Oct 2016 14:52:56 -0400
-Received: by mail-oi0-f46.google.com with SMTP id i127so5449569oia.2;
-	Wed, 26 Oct 2016 11:52:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=3zXQIvH9VX9XZ6Th9f2KTzDcbCsybHdT7I5dwN9AzVY=;
-	b=JkacbVeSBQaN6R+Vz1cW0GEFYsUkvBS7pUTg73jAh1gIpRAM8ihN6tktY332VYrhak
-	MHKcediz7PBUDUz3ElnkCv9wp3UfbpTOpt2QxNWwyOv4fzpfdxMLI7iLeyX2GrT2K9Sv
-	H080oO9ITgAlCVZ3nrh66QxEPazdpCNRi0xhPbrw05QuL/81V1WgqELRyGWARzv0wj82
-	x8WLqsRmE6QOguAJNH9xx7sDE1GIyr9pJK68pZ78bTJXv+bfYA8hwImy9DTKudKyg+L8
-	5LKN0NIhNdMGV75Nk6cwj/dvH6ffvCFwSZqPQaa6VnSXut4wSPqrzUeVE1Te3ERcV0fV
-	Klow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=3zXQIvH9VX9XZ6Th9f2KTzDcbCsybHdT7I5dwN9AzVY=;
-	b=Au6W014UuvfMBJIyfsFEBDpkBQN6j/fVyN98uHnvOKvemsBsV5Oc7otFQKtUDhml3S
-	dooAZObzGIpBY021jgPrYSdU5JOW0FKdx7J6QC2xUGFOwpJW9QmFRRUpMxvIquyU5huS
-	jJmyS+fLrxFFHFE2/aQX+H+I/rHpOH0m78d9KhUGOqdKvRIQk72H1gWtOYtIrEP3hHhZ
-	swWotrbxTo5IYzqDHExe91HOZtFTLVu984WK1pNU6J/Gh+cFNX6TzmhIxERHMlPC0ahR
-	uDQOS+iTXPQdp3N89EBN/Jn+mC+Sbw1oMD/QL5825ZHrrDRMcTFRgyF+q4LkfyAbwaBq
-	ep9w==
-X-Gm-Message-State: ABUngveeq3ibddehPbhcYGNFoWLb51QXbtlPKla+lgCvIH5jUIVxCPhBUwg3kT2jBM4g9PhgbBIxe1aTi/3xVA==
-X-Received: by 10.202.104.214 with SMTP id o83mr3050720oik.100.1477507914672; 
-	Wed, 26 Oct 2016 11:51:54 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1bzU0H-0003d7-Ew
+	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 15:36:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51108)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1bzU0H-0003cJ-9B; Wed, 26 Oct 2016 15:36:49 -0400
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com
+	(int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 35FE2C04B922;
+	Wed, 26 Oct 2016 19:36:48 +0000 (UTC)
+Received: from localhost (ovpn-116-163.phx2.redhat.com [10.3.116.163])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9QJakvI001547; Wed, 26 Oct 2016 15:36:47 -0400
+Date: Wed, 26 Oct 2016 17:36:45 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20161026193645.GD5057@thinpad.lan.raisama.net>
+References: <1477499426-9550-1-git-send-email-ehabkost@redhat.com>
+	<1477499426-9550-9-git-send-email-ehabkost@redhat.com>
+	<CAFEAcA9cr63HyXR+USsXJcF5txwJy0t2pw7NenCTHAAH=pRnUw@mail.gmail.com>
+	<20161026165753.GC5057@thinpad.lan.raisama.net>
+	<CAFEAcA885YFMCE=ZFbo=7iitwRuc1nyUzyJK38=T+KLOw46mNg@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 10.182.122.34 with HTTP; Wed, 26 Oct 2016 11:51:24 -0700 (PDT)
-In-Reply-To: <alpine.LFD.2.20.1610261210330.21732@wniryva>
-References: <1477315364-15134-1-git-send-email-ppandit@redhat.com>
-	<CAKmqyKOXQhAh+5pK4XbvkJ664fAzRXqBGYfq61u7RV2kjOU6QQ@mail.gmail.com>
-	<alpine.LFD.2.20.1610252318530.15276@wniryva>
-	<CAKmqyKOHh2q-qMGvL3SxesD5Tx3yiWXddf390M8mwu7+2ZK8jQ@mail.gmail.com>
-	<alpine.LFD.2.20.1610261210330.21732@wniryva>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 26 Oct 2016 11:51:24 -0700
-X-Google-Sender-Auth: rKycQBHRIBa61s03MmaAbXRSoB0
-Message-ID: <CAKmqyKOeT3eEOkjdnxN-fd_Ubnn+kjD_cr2eT-+LxHPKQg8SdA@mail.gmail.com>
-To: P J P <ppandit@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA885YFMCE=ZFbo=7iitwRuc1nyUzyJK38=T+KLOw46mNg@mail.gmail.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.7.0 (2016-08-17)
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 26 Oct 2016 19:36:48 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.218.46
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] char: cadence: check baud
- rate generator and divider values
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 8/8] qdev: Warning about using
+ object_class_property_add() in new code
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,40 +70,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Qemu Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Huawei PSIRT <psirt@huawei.com>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UHmEyXJsinQD
+X-TUID: CeTR6wL4r9ov
 
-On Tue, Oct 25, 2016 at 11:50 PM, P J P <ppandit@redhat.com> wrote:
-> +-- On Tue, 25 Oct 2016, Alistair Francis wrote --+
-> | I think your email crossed with Peter. Have a look at what he said.
-> | That should clarify everything.
->
->   I saw, I'll mask values with 0xFFFF and 0xFF; But it's not clear if ignoring
-> values 0 - 3, means leaving registers uninitialised and adding checks at each
-> usage point to ensure their value is valid. If so, do we return from
-> uart_parameters_setup(), when either value is invalid ? Earlier you'd
-> suggested using default values
->
->   -> https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg04397.html
+On Wed, Oct 26, 2016 at 06:57:12PM +0100, Peter Maydell wrote:
+> On 26 October 2016 at 17:57, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > On Wed, Oct 26, 2016 at 05:48:03PM +0100, Peter Maydell wrote:
+> >> On 26 October 2016 at 17:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> >> > The only remaining user of object_class_property_add() is
+> >> > arm_cpu_post_init(), but removing it may take some work. While we
+> >> > don't change it, warn people to not use the function in new code.
+> >>
+> >> This is about the third time I've seen this commit
+> >> message go past, but:
+> >>
+> >>   git grep object_class_property_add target-arm   => no hits
+> >
+> > Erm. I meant qdev_property_add_static(). Sorry.
+> > Commit message needs to be rewritten as:
+> >
+> >     qdev: Warning about using qdev_property_add_static() in new code
+> >
+> >     The only remaining user of qdev_property_add_static() is
+> >     arm_cpu_post_init(), but removing it may take some work. While we
+> >     don't change it, warn people to not use the function in new code.
+> 
+> Can we say what the recommended replacement function is?
 
-From what I can tell I would say that any writes to the divider
-register that have a value lower then 3 are ignored and the register
-isn't updated.
+It's mentioned in the comment I added[1]. I assume I don't need to duplicate
+the comment contents in the commit message.
 
-That way we will always have a valid value as the register is reset to 0xF.
+[1] "Do not use this in new code. Either use qdev_class_set_props(), or
+    register regular QOM properties using object_property_add() or
+    object_class_property_add()."
 
-Thanks,
-
-Alistair
-
->
-> Thank you.
-> --
-> Prasad J Pandit / Red Hat Product Security Team
-> 47AF CE69 3A90 54AA 9045 1053 DD13 3D32 FE5B 041F
->
+-- 
+Eduardo

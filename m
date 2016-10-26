@@ -1,54 +1,70 @@
-Received: by 10.80.166.35 with SMTP id d32csp177227edc;
-        Wed, 26 Oct 2016 10:12:54 -0700 (PDT)
-X-Received: by 10.36.41.129 with SMTP id p123mr7284783itp.105.1477501974019;
-        Wed, 26 Oct 2016 10:12:54 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp187439edc;
+        Wed, 26 Oct 2016 10:34:49 -0700 (PDT)
+X-Received: by 10.176.68.134 with SMTP id n6mr2102583uan.160.1477503289846;
+        Wed, 26 Oct 2016 10:34:49 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 86si3408160ioq.55.2016.10.26.10.12.53
+        by mx.google.com with ESMTPS id k2si1204021uak.165.2016.10.26.10.34.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Oct 2016 10:12:54 -0700 (PDT)
+        Wed, 26 Oct 2016 10:34:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36203 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36336 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bzRkz-0007oK-92
-	for alex.bennee@linaro.org; Wed, 26 Oct 2016 13:12:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41027)
+	id 1bzS6A-0001OL-Ty
+	for alex.bennee@linaro.org; Wed, 26 Oct 2016 13:34:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bzR6Z-0006jC-7f
-	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 12:31:10 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bzRNJ-0004Dc-F2
+	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 12:48:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1bzR6Y-0003Up-CV
-	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 12:31:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35068)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1bzR6S-0003T0-Qe; Wed, 26 Oct 2016 12:31:00 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 19187155E3;
-	Wed, 26 Oct 2016 16:31:00 +0000 (UTC)
-Received: from localhost (ovpn-116-163.phx2.redhat.com [10.3.116.163])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9QGUw95001439; Wed, 26 Oct 2016 12:30:59 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed, 26 Oct 2016 14:30:26 -0200
-Message-Id: <1477499426-9550-9-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1477499426-9550-1-git-send-email-ehabkost@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1bzRNI-0007zR-R6
+	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 12:48:25 -0400
+Received: from mail-ua0-x22d.google.com ([2607:f8b0:400c:c08::22d]:38031)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1bzRNI-0007z6-EQ
+	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 12:48:24 -0400
+Received: by mail-ua0-x22d.google.com with SMTP id h7so7133282uab.5
+	for <qemu-devel@nongnu.org>; Wed, 26 Oct 2016 09:48:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=UHxDRtMShTH3moJRwvuO3dTYjqtdV5Y215n3q4+E1O4=;
+	b=iv3DQiDMFibBBVMknrG+A8O3pVZ0Dyb1zufUckfdV5/gowvYuGBevdE9IuU37TJOe1
+	4yWb6vYH8zBlDfiz3umnIEo4VJjofEWPF8Sho18WLj2tBf2Hx1zU2ZjOlz9KdXAsC+iG
+	rZhrC4y3hVtErEuW/VIjxSZnmndVwUf35cM8s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=UHxDRtMShTH3moJRwvuO3dTYjqtdV5Y215n3q4+E1O4=;
+	b=LnDwbOOiXyoNtrdretbdfMJeOzoOtFiJCULWgDhCkXMQI8LTT1vftGGdgf0DmgbvdH
+	gvnyZjcK9PMSVvrXq1ydCINq7YFwBIARbgSHXHqbXMCi36n646na0uvorae5CzE6JuwD
+	t5VEcUkOvImVFlSyrdbTibrnyL9ME1TCCI8lLHIsVdJCm/qqfpIAovrDtfCGG7Z4x/9Z
+	XHB4W9DzSEQcJDC9FNLLYqhRRg9hIy6GDzYx7XVYITaJg8FAIQzCi2ljH+IefsxzmaxE
+	WDMLTalirbXEUIzESHSJcqO3xgCTrmD7Z7ne4gXrPGpUPyjbY6RD67GvTG817Y93pJ67
+	Cr5Q==
+X-Gm-Message-State: ABUngve6Z3fjxQNDWSsG5dSngNDlN16DWr1MzgOuP+X1w88QDcESecFX/2Q2+7ox+GSjxzvvhC+6mxjqbnCSMQBO
+X-Received: by 10.176.3.237 with SMTP id 100mr1729708uau.120.1477500503653;
+	Wed, 26 Oct 2016 09:48:23 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.31.195.70 with HTTP; Wed, 26 Oct 2016 09:48:03 -0700 (PDT)
+In-Reply-To: <1477499426-9550-9-git-send-email-ehabkost@redhat.com>
 References: <1477499426-9550-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 26 Oct 2016 16:31:00 +0000 (UTC)
+	<1477499426-9550-9-git-send-email-ehabkost@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 26 Oct 2016 17:48:03 +0100
+Message-ID: <CAFEAcA9cr63HyXR+USsXJcF5txwJy0t2pw7NenCTHAAH=pRnUw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v3 8/8] qdev: Warning about using
+X-Received-From: 2607:f8b0:400c:c08::22d
+Subject: Re: [Qemu-devel] [PATCH v3 8/8] qdev: Warning about using
  object_class_property_add() in new code
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -61,40 +77,25 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +4Areg5v/4yC
+X-TUID: tNb/8kU1nkUj
 
-The only remaining user of object_class_property_add() is
-arm_cpu_post_init(), but removing it may take some work. While we
-don't change it, warn people to not use the function in new code.
+On 26 October 2016 at 17:30, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> The only remaining user of object_class_property_add() is
+> arm_cpu_post_init(), but removing it may take some work. While we
+> don't change it, warn people to not use the function in new code.
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- hw/core/qdev.c | 4 ++++
- 1 file changed, 4 insertions(+)
+This is about the third time I've seen this commit
+message go past, but:
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index a88753c..53cbaad 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -813,6 +813,10 @@ static void qdev_property_set_to_default(DeviceState *dev, Property *prop,
-  * Add a static QOM property to @dev for qdev property @prop.
-  * On error, store error in @errp.  Static properties access data in a struct.
-  * The type of the QOM property is derived from prop->info.
-+ *
-+ * Do not use this in new code. Either use qdev_class_set_props(),
-+ * or register regular QOM properties using object_property_add() or
-+ * object_class_property_add().
-  */
- void qdev_property_add_static(DeviceState *dev, Property *prop,
-                               Error **errp)
--- 
-2.7.4
+  git grep object_class_property_add target-arm   => no hits
 
+So I'm not sure what it's referring to...
+
+thanks
+-- PMM

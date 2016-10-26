@@ -1,96 +1,90 @@
-Received: by 10.80.166.35 with SMTP id d32csp292001edc;
-        Wed, 26 Oct 2016 14:58:04 -0700 (PDT)
-X-Received: by 10.55.15.152 with SMTP id 24mr3572406qkp.45.1477519084700;
-        Wed, 26 Oct 2016 14:58:04 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.80.166.35 with SMTP id d32csp305763edc;
+        Wed, 26 Oct 2016 15:38:11 -0700 (PDT)
+X-Received: by 10.55.157.80 with SMTP id g77mr4194356qke.12.1477521491125;
+        Wed, 26 Oct 2016 15:38:11 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v125si2405856qkc.279.2016.10.26.14.58.04
+        by mx.google.com with ESMTPS id y29si2554466qtc.0.2016.10.26.15.38.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 26 Oct 2016 14:58:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 26 Oct 2016 15:38:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37673 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37891 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bzWCy-0007hb-4r
-	for alex.bennee@linaro.org; Wed, 26 Oct 2016 17:58:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33213)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1bzWpm-0003sD-Fo
+	for alex.bennee@linaro.org; Wed, 26 Oct 2016 18:38:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58451)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bzW1H-0007Wv-Gc
-	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 17:46:00 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1bzWpi-0003s4-FR
+	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 18:38:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1bzW1G-00042c-3V
-	for qemu-devel@nongnu.org; Wed, 26 Oct 2016 17:45:59 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:34111)
+	(envelope-from <peter.maydell@linaro.org>) id 1bzWph-0007xX-EJ
+	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 18:38:06 -0400
+Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:34499)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1bzW1F-00042N-O3; Wed, 26 Oct 2016 17:45:57 -0400
-Received: by mail-oi0-x242.google.com with SMTP id p136so1233385oic.1;
-	Wed, 26 Oct 2016 14:45:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=Ayjl+mcFqNWvvolcPHijEe/ubgWphK827M3pcVJAjIk=;
-	b=Yu2qsC32b6cQD6ouHJ001HatnM0y+6OMvbhhbfk3dckVtArztWlqROBu6RUMTkKooi
-	w2LiZPlxyNo9yRi8QGv9x8Z8uJAHrVW/Sd7Y+/Z+Ask4QSQtZiFHRXG1qm/gbzqXO0+Y
-	e12BK1iM/vudvTV6MIAks/sRQ+jCg01IgMZp/oVoz34LYV3Ai/Zmtpk/NHampNYXG3ht
-	AJYLQl6Hhd7yQAfDnsa60xDi2t/ECPcCZM/hT1ab0A6yiV+t+3YRhqwNfjnd1JX5EY+R
-	Ad02knUWRZbbDmOPHqgbvfewojUQ2y9hrBA2egeXoaAC/Yb04lLcNUCKQQ5XPrXCrq/6
-	m0zg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1bzWph-0007xF-9R
+	for qemu-arm@nongnu.org; Wed, 26 Oct 2016 18:38:05 -0400
+Received: by mail-ua0-x230.google.com with SMTP id 6so6943729uau.1
+	for <qemu-arm@nongnu.org>; Wed, 26 Oct 2016 15:38:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=XKN9y5jXRKKzzWaGAHhDR+xHYSmsjZ9ykpPlhis6t8o=;
+	b=dWV0c9VR/2Y7v9kubsTAvjyzKKowd5k2sgWbVDnxXcSgLKdP61IWQgAOwbTEy1ytFm
+	A5UbPNiUmuWXBa3td4fLiSnvUkn4hxMgeb/PhT448FCv8JtMezbi0mIVF3lvIuKE8sUA
+	PSfr3QcoW5T3zUl1qjIpR9jNwclXUKOLoWzPU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=Ayjl+mcFqNWvvolcPHijEe/ubgWphK827M3pcVJAjIk=;
-	b=gK4oyFZxcGylSsaVqlDfHIAl0VGZTx+5yBm6FqWFIYAV8GiTpzdi+4PuDdg0yCHzdQ
-	qB2Cz+9v7A7wV0uFkgH4/0cKQl/TyhSggaVX3geUH4GIuI640DgYAHATjPLqSTEH/n1T
-	HQ9Swsu7Sb+BUyWUH1Ag9FULbZR6w2UJ3HGfFe9OMGQZ7C1vhzcSmFHPb5h+QZ7FXh8t
-	lAPKamtQ5HGXIX/Xt4spRaUUpS4EdZCVK5RK+wup/4i9Wbyt7lN08m6dC+JaXhbcq+r4
-	EGgxqU/MTXwU5H/HxgqRc1V1oxzv8wu6LusY6UFr5ntM8NeRuxjray02OE5p99d0gpQu
-	vdgw==
-X-Gm-Message-State: ABUngverO+s4bz8262TwEwpsjaBwVO8PbzDUxn+exgXytpQ7MUsXQwcnLssifS8Hrx90RDnAiALJhcjWpeMJKA==
-X-Received: by 10.157.36.232 with SMTP id z95mr3341311ota.124.1477518356864;
-	Wed, 26 Oct 2016 14:45:56 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=XKN9y5jXRKKzzWaGAHhDR+xHYSmsjZ9ykpPlhis6t8o=;
+	b=SzwsBz/CZHJFyjlfYAcOA6xvIXpkPuMiBCQix2ERtfYqo2DbJYdkXtoItxI0Eeta2U
+	j5jDIQfdzEBzmaEl15+5nbpovsIZo6lFj2jRCbgHhvLC3IA4SlEuGeBKyi3AORTaf7GZ
+	k4dM9OEOhayDAnZLg6kDq5DATU6nqYFy0JTD40JBA8HQO5/9WuaWQy86eDt0wUmJ+34b
+	aRcZm6v8R+hllTOV6f1bD7v2VHaSuQQkyQPRY4pQJBXaxUk4D1NEn4+verLR9MBM3Piz
+	Z9cBccRMO+7K7kEPOV5W4eqSlxuknUxTsuFfKYqRlZTG652oebp3HBtgWy1ubLiuSVaV
+	yiFw==
+X-Gm-Message-State: ABUngveZRtR8znncQkhAz5tBuZICd3xs3r7kKDoby3pNLrN4Fkl1miEuuJ3rTDvIrPbxXXgwjH8zo91gQhjW66JI
+X-Received: by 10.176.68.230 with SMTP id n93mr3312561uan.175.1477521484513;
+	Wed, 26 Oct 2016 15:38:04 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.182.122.34 with HTTP; Wed, 26 Oct 2016 14:45:26 -0700 (PDT)
+Received: by 10.31.195.70 with HTTP; Wed, 26 Oct 2016 15:37:43 -0700 (PDT)
 In-Reply-To: <1477516945-9891-1-git-send-email-ppandit@redhat.com>
 References: <1477516945-9891-1-git-send-email-ppandit@redhat.com>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Wed, 26 Oct 2016 14:45:26 -0700
-X-Google-Sender-Auth: BbsV4R74oLW4N0_vdCMH8MM30To
-Message-ID: <CAKmqyKOuX7cZuYa7xCc69b322S3XpM_0VQMc0DQ4b=Gvq3UM+w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 26 Oct 2016 23:37:43 +0100
+Message-ID: <CAFEAcA_VLx0vtOJqzqdmo8RpvGa7VR6TAb+HtpbL8woTy3kENw@mail.gmail.com>
 To: P J P <ppandit@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-devel] [PATCH v3] char: cadence: check baud rate
- generator and divider values
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400c:c08::230
+Subject: Re: [Qemu-arm] [PATCH v3] char: cadence: check baud rate generator
+ and divider values
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Prasad J Pandit <pjp@fedoraproject.org>,
 	Qemu Developers <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Huawei PSIRT <psirt@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LKDvP+vVMAFy
+	qemu-arm <qemu-arm@nongnu.org>, Huawei PSIRT <psirt@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: g9ZBM9VQQmcJ
 
-On Wed, Oct 26, 2016 at 2:22 PM, P J P <ppandit@redhat.com> wrote:
+On 26 October 2016 at 22:22, P J P <ppandit@redhat.com> wrote:
 > From: Prasad J Pandit <pjp@fedoraproject.org>
 >
 > The Cadence UART device emulator calculates speed by dividing the
@@ -117,9 +111,6 @@ On Wed, Oct 26, 2016 at 2:22 PM, P J P <ppandit@redhat.com> wrote:
 >  /*
 >   * Device model for Cadence UART
 > + *   -> http://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-TRM.pdf
-
-Nit pick, I would put the URL under the title below.
-
 > + *
 > + * Reference: Xilinx Zynq 7000 reference manual
 > + *   - Chapter 19 UART Controller
@@ -133,14 +124,6 @@ Nit pick, I would put the URL under the title below.
 >          break;
 > +    case R_BRGR: /* Baud rate generator */
 > +        s->r[offset] = 0x028B; /* default reset value */
-
-Why do we still have the reset value here, I thought we were just
-ignoring the invalid writes? You don't need to reset it.
-
-Thanks,
-
-Alistair
-
 > +        if (value >= 0x01) {
 > +            s->r[offset] = value & 0xFFFF;
 > +        }
@@ -154,7 +137,10 @@ Alistair
 >      default:
 >          s->r[offset] = value;
 >      }
-> --
-> 2.7.4
->
->
+
+You're relying on the register values never being
+invalid to avoid the divide by zero, which means
+you need to check them post-migration too.
+
+thanks
+-- PMM

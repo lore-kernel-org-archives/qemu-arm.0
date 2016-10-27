@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p4sm9002898wjo.9.2016.10.27.08.11.02
+        by smtp.gmail.com with ESMTPSA id ya1sm9036453wjb.23.2016.10.27.08.19.55
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Oct 2016 08:11:04 -0700 (PDT)
+        Thu, 27 Oct 2016 08:19:55 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id D0ADE3E0312;
-	Thu, 27 Oct 2016 16:10:59 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id 85FFB3E04D2;
+	Thu, 27 Oct 2016 16:11:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: pbonzini@redhat.com
 Cc: qemu-devel@nongnu.org,
@@ -22,66 +22,129 @@ Cc: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org,
 	claudio.fontana@huawei.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alexander Spyridakis <a.spyridakis@virtualopensystems.com>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v5 10/33] target-arm/arm-powerctl: wake up sleeping CPUs
-Date: Thu, 27 Oct 2016 16:10:07 +0100
-Message-Id: <20161027151030.20863-11-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM cores)
+Subject: [PATCH v5 31/33] target-arm: ensure BQL taken for ARM_CP_IO register access
+Date: Thu, 27 Oct 2016 16:10:28 +0100
+Message-Id: <20161027151030.20863-32-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.10.1
 In-Reply-To: <20161027151030.20863-1-alex.bennee@linaro.org>
 References: <20161027151030.20863-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2gxfJW5aG/0i
+X-TUID: X41f+JFo9JWF
 
-Testing with Alexander's bare metal syncronisation tests fails in MTTCG
-leaving one CPU spinning forever waiting for the second CPU to wake up.
-We simply need to kick the vCPU once we have processed the PSCI power on
-call.
+Most ARMCPRegInfo structures just allow updating of the CPU field.
+However some have more complex operations that *may* be have cross vCPU
+effects therefor need to be serialised. The most obvious examples at the
+moment are things that affect the GICv3 IRQ controller. To avoid
+applying this requirement to all registers with custom access functions
+we check for if the type is marked ARM_CP_IO.
 
-As the power control API is for system emulation only as is the
-qemu_kick_cpu function we also ensure we only build arm-powerctl for
-SoftMMU builds.
+By default all MMIO access to devices already takes the BQL to serialise
+hardware emulation.
 
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-CC: Alexander Spyridakis <a.spyridakis@virtualopensystems.com>
-Message-Id: <1439220437-23957-20-git-send-email-fred.konrad@greensocs.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-
 ---
-v3
-  - re-base caught arm_powerctl re-factor
-  - include cpu.h header for kick definition
-  - fix Makefile.objs to only build for softmmu
----
- target-arm/Makefile.objs  | 2 +-
- target-arm/arm-powerctl.c | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ hw/intc/arm_gicv3_cpuif.c |  3 +++
+ target-arm/op_helper.c    | 39 +++++++++++++++++++++++++++++++++++----
+ 2 files changed, 38 insertions(+), 4 deletions(-)
 
-diff --git a/target-arm/Makefile.objs b/target-arm/Makefile.objs
-index f206411..847fb52 100644
---- a/target-arm/Makefile.objs
-+++ b/target-arm/Makefile.objs
-@@ -9,4 +9,4 @@ obj-y += neon_helper.o iwmmxt_helper.o
- obj-y += gdbstub.o
- obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
- obj-y += crypto_helper.o
--obj-y += arm-powerctl.o
-+obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
-diff --git a/target-arm/arm-powerctl.c b/target-arm/arm-powerctl.c
-index 6519d52..fbb7a15 100644
---- a/target-arm/arm-powerctl.c
-+++ b/target-arm/arm-powerctl.c
-@@ -166,6 +166,8 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
-     /* Start the new CPU at the requested address */
-     cpu_set_pc(target_cpu_state, entry);
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index bca30c4..8ea4b5b 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -13,6 +13,7 @@
+  */
  
-+    qemu_cpu_kick(target_cpu_state);
+ #include "qemu/osdep.h"
++#include "qemu/main-loop.h"
+ #include "trace.h"
+ #include "gicv3_internal.h"
+ #include "cpu.h"
+@@ -128,6 +129,8 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs->cpu);
+     CPUARMState *env = &cpu->env;
+ 
++    g_assert(qemu_mutex_iothread_locked());
 +
-     /* We are good to go */
-     return QEMU_ARM_POWERCTL_RET_SUCCESS;
+     trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
+                              cs->hppi.grp, cs->hppi.prio);
+ 
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index cd94216..4f0c754 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -17,6 +17,7 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/main-loop.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "internals.h"
+@@ -734,28 +735,58 @@ void HELPER(set_cp_reg)(CPUARMState *env, void *rip, uint32_t value)
+ {
+     const ARMCPRegInfo *ri = rip;
+ 
+-    ri->writefn(env, ri, value);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        ri->writefn(env, ri, value);
++        qemu_mutex_unlock_iothread();
++    } else {
++        ri->writefn(env, ri, value);
++    }
  }
+ 
+ uint32_t HELPER(get_cp_reg)(CPUARMState *env, void *rip)
+ {
+     const ARMCPRegInfo *ri = rip;
++    uint32_t res;
+ 
+-    return ri->readfn(env, ri);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        res = ri->readfn(env, ri);
++        qemu_mutex_unlock_iothread();
++    } else {
++        res = ri->readfn(env, ri);
++    }
++
++    return res;
+ }
+ 
+ void HELPER(set_cp_reg64)(CPUARMState *env, void *rip, uint64_t value)
+ {
+     const ARMCPRegInfo *ri = rip;
+ 
+-    ri->writefn(env, ri, value);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        ri->writefn(env, ri, value);
++        qemu_mutex_unlock_iothread();
++    } else {
++        ri->writefn(env, ri, value);
++    }
+ }
+ 
+ uint64_t HELPER(get_cp_reg64)(CPUARMState *env, void *rip)
+ {
+     const ARMCPRegInfo *ri = rip;
++    uint64_t res;
++
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        res = ri->readfn(env, ri);
++        qemu_mutex_unlock_iothread();
++    } else {
++        res = ri->readfn(env, ri);
++    }
+ 
+-    return ri->readfn(env, ri);
++    return res;
+ }
+ 
+ void HELPER(msr_i_pstate)(CPUARMState *env, uint32_t op, uint32_t imm)
 -- 
 2.10.1

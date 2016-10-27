@@ -1,21 +1,21 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p83sm289704wma.18.2016.08.11.08.24.24
+        by smtp.gmail.com with ESMTPSA id p4sm9002898wjo.9.2016.10.27.08.11.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Aug 2016 08:24:31 -0700 (PDT)
+        Thu, 27 Oct 2016 08:11:04 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 932523E0297;
-	Thu, 11 Aug 2016 16:24:30 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id D0ADE3E0312;
+	Thu, 27 Oct 2016 16:10:59 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: mttcg@listserver.greensocs.com,
-	qemu-devel@nongnu.org,
+To: pbonzini@redhat.com
+Cc: qemu-devel@nongnu.org,
+	mttcg@listserver.greensocs.com,
 	fred.konrad@greensocs.com,
 	a.rigo@virtualopensystems.com,
 	cota@braap.org,
 	bobby.prani@gmail.com,
-	nikunj@linux.vnet.ibm.com
-Cc: mark.burton@greensocs.com,
-	pbonzini@redhat.com,
+	nikunj@linux.vnet.ibm.com,
+	mark.burton@greensocs.com,
 	jan.kiszka@siemens.com,
 	serge.fdrv@gmail.com,
 	rth@twiddle.net,
@@ -24,16 +24,16 @@ Cc: mark.burton@greensocs.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Alexander Spyridakis <a.spyridakis@virtualopensystems.com>,
 	qemu-arm@nongnu.org (open list:ARM)
-Subject: [RFC v4 10/28] target-arm/arm-powerctl: wake up sleeping CPUs
-Date: Thu, 11 Aug 2016 16:24:06 +0100
-Message-Id: <1470929064-4092-11-git-send-email-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1470929064-4092-1-git-send-email-alex.bennee@linaro.org>
-References: <1470929064-4092-1-git-send-email-alex.bennee@linaro.org>
+Subject: [PATCH v5 10/33] target-arm/arm-powerctl: wake up sleeping CPUs
+Date: Thu, 27 Oct 2016 16:10:07 +0100
+Message-Id: <20161027151030.20863-11-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.10.1
+In-Reply-To: <20161027151030.20863-1-alex.bennee@linaro.org>
+References: <20161027151030.20863-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sOs/dIGXeNFz
+X-TUID: 2gxfJW5aG/0i
 
 Testing with Alexander's bare metal syncronisation tests fails in MTTCG
 leaving one CPU spinning forever waiting for the second CPU to wake up.
@@ -84,4 +84,4 @@ index 6519d52..fbb7a15 100644
      return QEMU_ARM_POWERCTL_RET_SUCCESS;
  }
 -- 
-2.7.4
+2.10.1

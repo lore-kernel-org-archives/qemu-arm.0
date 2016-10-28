@@ -1,62 +1,74 @@
-Received: by 10.80.166.35 with SMTP id d32csp828703edc;
-        Thu, 27 Oct 2016 13:53:28 -0700 (PDT)
-X-Received: by 10.31.146.131 with SMTP id u125mr8486421vkd.16.1477601607712;
-        Thu, 27 Oct 2016 13:53:27 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp1013667edc;
+        Fri, 28 Oct 2016 00:00:35 -0700 (PDT)
+X-Received: by 10.55.132.132 with SMTP id g126mr8543747qkd.96.1477638035782;
+        Fri, 28 Oct 2016 00:00:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i187si4485552vkd.94.2016.10.27.13.53.27
+        by mx.google.com with ESMTPS id j123si5960310qke.255.2016.10.28.00.00.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 27 Oct 2016 13:53:27 -0700 (PDT)
+        Fri, 28 Oct 2016 00:00:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44554 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:47025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1bzrfz-0008Hi-4L
-	for alex.bennee@linaro.org; Thu, 27 Oct 2016 16:53:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56085)
+	id 1c019X-00072E-9i
+	for alex.bennee@linaro.org; Fri, 28 Oct 2016 03:00:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bzrfv-0008HQ-0F
-	for qemu-arm@nongnu.org; Thu, 27 Oct 2016 16:53:24 -0400
+	(envelope-from <vijay.kilari@gmail.com>) id 1c019S-000728-Ik
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 03:00:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wei@redhat.com>) id 1bzrfr-0005Re-TS
-	for qemu-arm@nongnu.org; Thu, 27 Oct 2016 16:53:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46020)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <wei@redhat.com>)
-	id 1bzrfr-0005Pz-La; Thu, 27 Oct 2016 16:53:19 -0400
-Received: from int-mx11.intmail.prod.int.phx2.redhat.com
-	(int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F7CEC057FA5;
-	Thu, 27 Oct 2016 20:53:18 +0000 (UTC)
-Received: from [10.10.49.82] (vpn-49-82.rdu2.redhat.com [10.10.49.82])
-	by int-mx11.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9RKrGsY027075; Thu, 27 Oct 2016 16:53:16 -0400
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <CAFEAcA_5+bm4xN_m3G+vY9StEvk2s-eqbtdXjcudn+2oFqaS7Q@mail.gmail.com>
-	<d26e1644-06b0-12e7-2d3c-7e871fe1ecfd@redhat.com>
-	<CAFEAcA8heQy52Z5BtrijWrQQ0Rka1rhgw+JObTYnT6a3jQ2s_g@mail.gmail.com>
-From: Wei Huang <wei@redhat.com>
-Message-ID: <379c3411-a2ff-1004-370e-e6bb976c1d7a@redhat.com>
-Date: Thu, 27 Oct 2016 15:53:16 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <vijay.kilari@gmail.com>) id 1c019O-0004py-G2
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 03:00:30 -0400
+Received: from mail-vk0-x241.google.com ([2607:f8b0:400c:c05::241]:35572)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
+	id 1c019O-0004pV-BJ; Fri, 28 Oct 2016 03:00:26 -0400
+Received: by mail-vk0-x241.google.com with SMTP id 130so2355954vkg.2;
+	Fri, 28 Oct 2016 00:00:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=MR7rtSdQ//GZlU8FaF64LJH2oSlD5I8N0UFuE0sfcLI=;
+	b=U9GHsClSl8oz4QWIqy6xzNuav0oefCHYWLv+cysaDI27M/kPlyUv0mOQdPxAEgmGB6
+	edd6P1kzN/+yzPeIEXNlKRWcSEvjvjvRRj6+KWn1TiWDt97LDCM9Xvsbbv5iXiLJ5R0G
+	A1q/7k7NSBG53VSD+C3NJN6I6xDvNVG6/nHBnkt8+RvSD1o9Db2CwMPHz/hg35+F3js+
+	981TxHZH+Q8wN0RY3tPDADanerjjgepzQUj3HKnIgzhFid57gu3CRzWZNLmfjiN/W+1A
+	DM4clFZHbOAAZLSQBiwFCkgIN1n4MlqZ/Y1S6dhz/AU1NP8oFvOCzdhD3hlC8eS0CiPl
+	VqgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=MR7rtSdQ//GZlU8FaF64LJH2oSlD5I8N0UFuE0sfcLI=;
+	b=DemVJw1R5tw80oZGjiZkWSnk9ifu56XxHR9mMQVkAI5WIztxVv4Hxhc7yFmMKDKI3b
+	4YgQ1+W2wlK45bMPkcx7BcjpLjraJ84zUrbWR9WCej1A8MtzDfuRInVUU6EIwwM2ldzr
+	2ub9/v4WQg3z7b50JLmeeuX28wNzUrti/x7/+sHlnC1JZMefHtLBTk26rYjKzJYVfLJw
+	ckzMCoJg3OSejYqsF3iFI5yP8t2v//m3UVlfHnQM92211Xst9fn5A8K/MKUQovRRqCFz
+	/+RUSSxE8AbqeNsx1bmAQxWgG883MuP0lnUjmnZxPEpNtw7Jaw72v6cjCAc9I4JPhFaF
+	UffQ==
+X-Gm-Message-State: ABUngvddUOvLuu8mPVXGyzwCbocQj8V0CSwLq9ce1Pdc9qoXlnVaKA/EL6S+JSWJ/n4Od9QLf6qXlyxAhz7DOw==
+X-Received: by 10.31.77.198 with SMTP id a189mr10160877vkb.64.1477638023089;
+	Fri, 28 Oct 2016 00:00:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8heQy52Z5BtrijWrQQ0Rka1rhgw+JObTYnT6a3jQ2s_g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 27 Oct 2016 20:53:18 +0000 (UTC)
+Received: by 10.31.93.135 with HTTP; Fri, 28 Oct 2016 00:00:22 -0700 (PDT)
+In-Reply-To: <CAFEAcA9+wRsWSrJe893EshBvu2pgdV-LSSO1z=toxbaKiGaaZw@mail.gmail.com>
+References: <1477397577-25251-1-git-send-email-vijay.kilari@gmail.com>
+	<1477397577-25251-3-git-send-email-vijay.kilari@gmail.com>
+	<CAFEAcA9+wRsWSrJe893EshBvu2pgdV-LSSO1z=toxbaKiGaaZw@mail.gmail.com>
+From: Vijay Kilari <vijay.kilari@gmail.com>
+Date: Fri, 28 Oct 2016 12:30:22 +0530
+Message-ID: <CALicx6tCzQORa+crRtSMDcKwf6DRKtH6Cj856Bq9Hb_Ze7p7EA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V8 0/2] Add option to configure
- guest vPMU
+X-Received-From: 2607:f8b0:400c:c05::241
+Subject: Re: [Qemu-arm] [PATCH v4 2/3] utils: Add helper to read arm
+ MIDR_EL1 register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,111 +80,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>,
-	Andrea Bolognani <abologna@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wzpZeoW8JL0j
+X-TUID: cb8i3kA5cqmy
 
-
-
-On 10/27/2016 12:15 PM, Peter Maydell wrote:
-> On 27 October 2016 at 18:06, Wei Huang <wei@redhat.com> wrote:
+On Thu, Oct 27, 2016 at 9:33 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 25 October 2016 at 13:12,  <vijay.kilari@gmail.com> wrote:
+>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
 >>
+>> Add helper API to read MIDR_EL1 registers to fetch
+>> cpu identification information. This helps in
+>> adding errata's and architecture specific features.
 >>
->> On 10/27/2016 09:28 AM, Peter Maydell wrote:
->>> On 26 October 2016 at 07:28, Wei Huang <wei@redhat.com> wrote:
->>>> This patchset adds a pmu=[on/off] option to enable/disable vPMU support
->>>> for guest VM. There are several reasons to justify this option. First,
->>>> vPMU can be problematic for cross-migration between different SoC as perf
->>>> counters are architecture-dependent. It is more flexible to have an option
->>>> to turn it on/off. Secondly this option matches the "pmu" option as
->>>> supported in libvirt. To make sure backward compatible, a PMU-related
->>>> property is added to mach-virt machine types.
->>>
->>> (Sorry, sent this as a reply to the v7 patch; resending to
->>> attach it to the right thread...)
->>>
->>> So what actually are we defining as "the PMU exists" here?
+>> This is implemented only for arm architecture.
 >>
->> "PMU exists" means that PMUv3 presence can be detected and related
->> driver can be loaded for guest VM:
->> * For DT: perf_event.c checks the presence of "armv8-pmuv3" in DT and do
->> armv8pmu_probe_pmu().
->> * For ACPI: Jeremy Linton submitted an ACPI-based ARM driver for
->> upstream. This can be loaded when "PMU exists" is detected.
+>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>> ---
+>>  include/qemu/aarch64-cpuid.h | 29 +++++++++++++++++++++
+>>  util/Makefile.objs           |  1 +
+>>  util/aarch64-cpuid.c         | 61 ++++++++++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 91 insertions(+)
 >>
->> Link:
->> http://lists.infradead.org/pipermail/linux-arm-kernel/2016-March/415372.html
->>
->>> The PMU exists in ARMv7 and we do actually implement it
->>> in TCG for v7 and v8 cores (though it is a minimal
->>> architecturally-valid implementation which implements no events,
->>> only the cycle counter).
->>
->> This option shouldn't affect the existing TCG implementation. It only
->> touch the recent hardware-assisted vPMU implemented by Shannon. In other
->> words, it adds an option for users to turn off Shannon's vPMU (for the
->> reasons of migration compatibility, etc)
-> 
-> Right, but at the moment the commit message says there's no
-> PMU in TCG at all. What's missing that causes there not to be one?
-> (I think maybe we just don't report it in the feature register,
-> which might be a bug.)
-
-This sounds like a bug (or incomplete). In current version of QEMU, if I
-forced vPMU declaration in the feature register under TCG mode, PMU
-driver will be loaded in VM. But as soon as "perf stat" is executed,
-guest VM panic. I think some features, like PMU IRQ, is still missing
-for TCG to turn vPMU on. I will debug it further.
-
-> 
->>> Should the PMU registers in TCG which we currently provide on
->>> any v7-and-better CPU be hung off ARM_FEATURE_PMU instead ?
->>> (this would result in the behaviour of virt-2.6 for TCG
->>> changing in that we stop providing the PMU when we did
->>> before, but I guess that's OK.)
->>>
->>
->> So you want to disable cycle_count for TCG mode? Reading ARM doc, I
->> think cycle_count is minimally required for ARM (correct me if I am
->> wrong). Here is the description for PMCR.N bits:
->>
->> "Number of event counters. A RO field that indicates the number counters
->> implemented. A value of 0b00000 in this field indicates that only the
->> Cycle Count Register PMCCNTR_EL0 is implemented. The value of this field
->> is the number of event counters implemented. This value is in the range
->> of 0b00000 , in which case only the PMCCNTR_EL0 is  implemented, to
->> 0b11111 , which indicates that the PMCCNTR_EL0 and 31 event counters are
->> implemented."
->>
->> If we want to disable cycle_count, QEMU has to declare PMCR
->> in-accessible, right?
-> 
-> The cycle counter is required if the PMU exists, but the whole PMU
-> is optional. If the user says 'pmu=off' then shouldn't we be
-> disabling the implementation in TCG?
-> 
-
-Let me clarify. Assuming we can get TCG mode to support VM's PMU driver
-(see discussion above, only cycle counter supported for TCG), will the
-following be sufficient?
-(1) ,pmu=on
-perf driver can be loaded in VM, and "perf" command can use HW counters
-to profile.
-(2) ,pmu=off
-perf feature can't be detected, so the perf driver can't be loaded
-inside VM. "perf" can't use HW perf counters. But PMU registers (PMCR,
-PMCCNTR, ...) can still be accessed inside VM.
-
-OR
-
-You prefer to disable access permission for PMU registers in (2). Note:
-this is very strict. I am not sure if current KVM already follows this rule.
-
-
-> thanks
-> -- PMM
-> 
+>> diff --git a/include/qemu/aarch64-cpuid.h b/include/qemu/aarch64-cpuid.h
+>> new file mode 100644
+>> index 0000000..8f776e8
+>> --- /dev/null
+>> +++ b/include/qemu/aarch64-cpuid.h
+>> @@ -0,0 +1,29 @@
+>> +#ifndef QEMU_AARCH64_CPUID_H
+>> +#define QEMU_AARCH64_CPUID_H
+>> +
+>> +#if defined(__aarch64__)
+>> +#define MIDR_IMPLEMENTER_SHIFT  24
+>> +#define MIDR_IMPLEMENTER_MASK   (0xffULL << MIDR_IMPLEMENTER_SHIFT)
+>> +#define MIDR_ARCHITECTURE_SHIFT 16
+>> +#define MIDR_ARCHITECTURE_MASK  (0xf << MIDR_ARCHITECTURE_SHIFT)
+>> +#define MIDR_PARTNUM_SHIFT      4
+>> +#define MIDR_PARTNUM_MASK       (0xfff << MIDR_PARTNUM_SHIFT)
+>> +
+>> +#define MIDR_CPU_PART(imp, partnum) \
+>> +        (((imp)                 << MIDR_IMPLEMENTER_SHIFT)  | \
+>> +        (0xf                    << MIDR_ARCHITECTURE_SHIFT) | \
+>> +        ((partnum)              << MIDR_PARTNUM_SHIFT))
+>> +
+>> +#define ARM_CPU_IMP_CAVIUM        0x43
+>> +#define CAVIUM_CPU_PART_THUNDERX  0x0A1
+>> +
+>> +#define MIDR_THUNDERX_PASS2  \
+>> +               MIDR_CPU_PART(ARM_CPU_IMP_CAVIUM, CAVIUM_CPU_PART_THUNDERX)
+>> +#define CPU_MODEL_MASK  (MIDR_IMPLEMENTER_MASK | MIDR_ARCHITECTURE_MASK | \
+>> +                         MIDR_PARTNUM_MASK)
+>> +
+>> +uint64_t get_aarch64_cpu_id(void);
+>> +bool is_thunderx_pass2_cpu(void);
+>> +#endif
+>> +
+>> +#endif
+>> diff --git a/util/Makefile.objs b/util/Makefile.objs
+>> index 36c7dcc..d14a455 100644
+>> --- a/util/Makefile.objs
+>> +++ b/util/Makefile.objs
+>> @@ -37,3 +37,4 @@ util-obj-y += log.o
+>>  util-obj-y += qdist.o
+>>  util-obj-y += qht.o
+>>  util-obj-y += range.o
+>> +util-obj-y += aarch64-cpuid.o
+>> diff --git a/util/aarch64-cpuid.c b/util/aarch64-cpuid.c
+>> new file mode 100644
+>> index 0000000..536ece1
+>> --- /dev/null
+>> +++ b/util/aarch64-cpuid.c
+>> @@ -0,0 +1,61 @@
+>> +/*
+>> + * Dealing with arm cpu identification information.
+>> + *
+>> + * Copyright (C) 2016 Cavium, Inc.
+>> + *
+>> + * Authors:
+>> + *  Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+>> + *
+>> + * This work is licensed under the terms of the GNU LGPL, version 2.1
+>> + * or later.  See the COPYING.LIB file in the top-level directory.
+>> + */
+>> +
+>> +#include <math.h>
+>> +#include "qemu/osdep.h"
+>
+> osdep.h must always be the first #include, before anything else.
+>
+> What do we need math.h for anyway?
+>
+>> +#include "qemu-common.h"
+>
+> What do we need qemu-common.h for ?
+>
+>> +#include "qemu/cutils.h"
+>> +#include "qemu/aarch64-cpuid.h"
+>> +
+>> +#if defined(__aarch64__)
+>> +static uint64_t qemu_read_aarch64_midr_el1(void)
+>> +{
+>> +#ifdef CONFIG_LINUX
+>
+> When will CONFIG_LINUX not be defined but __aarch64__ is?
+  The contents of this file is compiled only for aarch64 and hence
+all the contents are under this __aarch64__.
+Also the code is only for linux, have added CONFIG_LINUX.

@@ -1,58 +1,71 @@
-Received: by 10.80.166.35 with SMTP id d32csp1198207edc;
-        Fri, 28 Oct 2016 07:22:14 -0700 (PDT)
-X-Received: by 10.55.184.2 with SMTP id i2mr12831170qkf.196.1477664534410;
-        Fri, 28 Oct 2016 07:22:14 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp1244753edc;
+        Fri, 28 Oct 2016 09:01:38 -0700 (PDT)
+X-Received: by 10.13.243.1 with SMTP id c1mr13130666ywf.182.1477670498079;
+        Fri, 28 Oct 2016 09:01:38 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s59si8545833qtd.74.2016.10.28.07.22.14
+        by mx.google.com with ESMTPS id l64si3730254ywg.314.2016.10.28.09.01.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Oct 2016 07:22:14 -0700 (PDT)
+        Fri, 28 Oct 2016 09:01:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:49408 helo=lists.gnu.org)
+Received: from localhost ([::1]:50034 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c082v-0007pl-56
-	for alex.bennee@linaro.org; Fri, 28 Oct 2016 10:22:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36180)
+	id 1c09b6-0008IQ-Nw
+	for alex.bennee@linaro.org; Fri, 28 Oct 2016 12:01:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1c082e-0007gt-Iq
-	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 10:21:57 -0400
+	(envelope-from <alistair23@gmail.com>) id 1c09B8-0001Vo-M1
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 11:34:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <famz@redhat.com>) id 1c082a-0005OL-GN
-	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 10:21:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41520)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <famz@redhat.com>)
-	id 1c082a-0005Nv-7y; Fri, 28 Oct 2016 10:21:52 -0400
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com
-	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 576D47AE9B;
-	Fri, 28 Oct 2016 14:21:51 +0000 (UTC)
-Received: from localhost (vpn1-4-123.pek2.redhat.com [10.72.4.123])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9SELntU022944; Fri, 28 Oct 2016 10:21:50 -0400
-Date: Fri, 28 Oct 2016 22:21:49 +0800
-From: Fam Zheng <famz@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20161028142149.GD8431@lemon>
-References: <1477596278-1470-1-git-send-email-ppandit@redhat.com>
-	<147766342608.143.15390303781959856001@9040ca97f87d>
+	(envelope-from <alistair23@gmail.com>) id 1c09B7-00038M-KU
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 11:34:46 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:35693)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1c09Az-00033E-9j; Fri, 28 Oct 2016 11:34:37 -0400
+Received: by mail-oi0-x243.google.com with SMTP id n202so4121577oig.2;
+	Fri, 28 Oct 2016 08:34:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=UAxvvBJcNvTDyfjzulq4RIOZkvuEzwTf0FC1NSxE+F8=;
+	b=usCGWdE/e8nRHjhNJ4wG6be/4TOknQtqS6R475F3u2eXe+Q9kD5QkKDzmEOTtOZkt4
+	4BkfY/K8+QmQx2h2zzqcU9xIk4CoP+RjKacW3IVjhduIKAvrfoTVvTpRIszWSb8efv/h
+	4FtzDnvjSbp74tK0bWENI1tIY+YJz7jrS+e8LYHK7d7dvSz1OI7TrBnv7HkabToQxPMP
+	b0b+2zTte7wNnrxXuXToSb0aNleKWb5DAj+RMWhoSOn1sJbp6WP6juTGnrY4NnYx9BZm
+	iDB2mVoDsjkUWVF5fHO+IAg/dND41y6LP2MT9Lielq76BYacAXschGzwoddeQ28LUBV1
+	YeMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=UAxvvBJcNvTDyfjzulq4RIOZkvuEzwTf0FC1NSxE+F8=;
+	b=Xj3ulvZeUw1ZgFBT9crUePmsqmBxMO0BU+TLXpJXgOCm5Fl9wr7HGa4zpB3GMNQFNE
+	f4iRkMKi89vqsHF6tTahlrUQ7J+vncqpGABaRUF+O1pC1XakvhWpaU68+CNECyGYpmBv
+	7Y/dFlBa14eRT2+YiQp/kC2+gRWyhl3TnK91lx14S/j52pdY0Kwh99+5BFLynwWCymI8
+	fEcbybzqD7pZ0/i7mNZQghtk1F51Y7e2E2oCSs8PkNSgjPDB7gL9vA5qFk4u2zma6dOM
+	O0n7sI8KGpnIRUli9uLq7JGxtb4g958SbDFcyhRh1kePUbCEYpsHB1BmA6JNkZXsEZZH
+	wHiQ==
+X-Gm-Message-State: ABUngvfRXVeNdS4wNHT3EP8ITW8nFHHQnx2liYznWY7uC2p1OSv5nyQmuIXyuDFN6qPDbfgkIF8E5qlo6EE29w==
+X-Received: by 10.202.197.71 with SMTP id v68mr4328732oif.71.1477668875893;
+	Fri, 28 Oct 2016 08:34:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <147766342608.143.15390303781959856001@9040ca97f87d>
-User-Agent: Mutt/1.7.1 (2016-10-04)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 28 Oct 2016 14:21:51 +0000 (UTC)
+Received: by 10.182.122.34 with HTTP; Fri, 28 Oct 2016 08:34:05 -0700 (PDT)
+In-Reply-To: <1477596278-1470-1-git-send-email-ppandit@redhat.com>
+References: <1477596278-1470-1-git-send-email-ppandit@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Fri, 28 Oct 2016 08:34:05 -0700
+X-Google-Sender-Auth: gfx-VmRMdL6f5PrfKmViCvv2niY
+Message-ID: <CAKmqyKOMveh+4Hkt6F5qS8D0qSofhBK1dsTzSDTa_Uj6GOmL1w@mail.gmail.com>
+To: P J P <ppandit@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4] char: cadence: check baud
  rate generator and divider values
 X-BeenThere: qemu-arm@nongnu.org
@@ -66,67 +79,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, pjp@fedoraproject.org,
-	alistair.francis@xilinx.com, qemu-arm@nongnu.org,
-	ppandit@redhat.com, psirt@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Qemu Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Huawei PSIRT <psirt@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Cu9JrJG0o3l
+X-TUID: Imp/GeidRnNd
 
-On Fri, 10/28 07:03, no-reply@patchew.org wrote:
-> In file included from /usr/x86_64-w64-mingw32/sys-root/mingw/lib/glib-2.0/include/glibconfig.h:9:0,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/gtypes.h:32,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/galloca.h:32,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib.h:30,
->                  from /tmp/qemu-test/src/include/glib-compat.h:19,
->                  from /tmp/qemu-test/src/include/qemu/osdep.h:107,
->                  from trace/generated-tracers.c:3:
-> trace/generated-tracers.c: In function '_simple_trace_visit_type_str':
-> trace/generated-tracers.c:50123:42: error: passing argument 1 of 'strlen' from incompatible pointer type [-Werror=incompatible-pointer-types]
->      size_t argobj_len = obj ? MIN(strlen(obj), MAX_TRACE_STRLEN) : 0;
->                                           ^
-> /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/gmacros.h:291:23: note: in definition of macro 'MIN'
->  #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
->                        ^
-> In file included from /tmp/qemu-test/src/include/qemu/osdep.h:69:0,
->                  from trace/generated-tracers.c:3:
-> /usr/x86_64-w64-mingw32/sys-root/mingw/include/string.h:55:18: note: expected 'const char *' but argument is of type 'char **'
->    size_t __cdecl strlen(const char *_Str);
->                   ^~~~~~
-> In file included from /usr/x86_64-w64-mingw32/sys-root/mingw/lib/glib-2.0/include/glibconfig.h:9:0,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/gtypes.h:32,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/galloca.h:32,
->                  from /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib.h:30,
->                  from /tmp/qemu-test/src/include/glib-compat.h:19,
->                  from /tmp/qemu-test/src/include/qemu/osdep.h:107,
->                  from trace/generated-tracers.c:3:
-> trace/generated-tracers.c:50123:42: error: passing argument 1 of 'strlen' from incompatible pointer type [-Werror=incompatible-pointer-types]
->      size_t argobj_len = obj ? MIN(strlen(obj), MAX_TRACE_STRLEN) : 0;
->                                           ^
-> /usr/x86_64-w64-mingw32/sys-root/mingw/include/glib-2.0/glib/gmacros.h:291:36: note: in definition of macro 'MIN'
->  #define MIN(a, b)  (((a) < (b)) ? (a) : (b))
->                                     ^
-> In file included from /tmp/qemu-test/src/include/qemu/osdep.h:69:0,
->                  from trace/generated-tracers.c:3:
-> /usr/x86_64-w64-mingw32/sys-root/mingw/include/string.h:55:18: note: expected 'const char *' but argument is of type 'char **'
->    size_t __cdecl strlen(const char *_Str);
->                   ^~~~~~
-> trace/generated-tracers.c:50134:34: error: passing argument 2 of 'trace_record_write_str' from incompatible pointer type [-Werror=incompatible-pointer-types]
->      trace_record_write_str(&rec, obj, argobj_len);
->                                   ^~~
-> In file included from trace/generated-tracers.c:17892:0:
-> /tmp/qemu-test/src/trace/simple.h:42:6: note: expected 'const char *' but argument is of type 'char **'
->  void trace_record_write_str(TraceBufferRecord *rec, const char *s, uint32_t slen);
->       ^~~~~~~~~~~~~~~~~~~~~~
-> cc1: all warnings being treated as errors
-> /tmp/qemu-test/src/rules.mak:60: recipe for target 'trace/generated-tracers.o' failed
-> make: *** [trace/generated-tracers.o] Error 1
-> make[1]: *** [docker-run] Error 2
-> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-vo_8jsgn/src'
-> make: *** [docker-run-test-mingw@fedora] Error 2
-> === OUTPUT END ===
+On Thu, Oct 27, 2016 at 12:24 PM, P J P <ppandit@redhat.com> wrote:
+> From: Prasad J Pandit <pjp@fedoraproject.org>
+>
+> The Cadence UART device emulator calculates speed by dividing the
+> baud rate by a 'baud rate generator' & 'baud rate divider' value.
+> The device specification defines these register values to be
+> non-zero and within certain limits. Add checks for these limits
+> to avoid errors like divide by zero.
+>
+> Reported-by: Huawei PSIRT <psirt@huawei.com>
+> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
 
-You can ignore this one, it's not in this patch and is just fixed on master -
-the series was applied by patchew earlier than that.
+This looks good to me. I'll spin up a new patch for the migration fix
+next week (I won't have time today).
 
-Fam
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+
+Thanks,
+
+Alistair
+
+> ---
+>  hw/char/cadence_uart.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
+>
+> Update: remove default reset value assignment.
+>   -> https://lists.gnu.org/archive/html/qemu-devel/2016-10/msg07206.html
+>
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index e3bc52f..4a3c4c6 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -1,6 +1,11 @@
+>  /*
+>   * Device model for Cadence UART
+>   *
+> + * Reference: Xilinx Zynq 7000 reference manual
+> + *   - http://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-TRM.pdf
+> + *   - Chapter 19 UART Controller
+> + *   - Appendix B for Register details
+> + *
+>   * Copyright (c) 2010 Xilinx Inc.
+>   * Copyright (c) 2012 Peter A.G. Crosthwaite (peter.crosthwaite@petalogix.com)
+>   * Copyright (c) 2012 PetaLogix Pty Ltd.
+> @@ -410,6 +415,16 @@ static void uart_write(void *opaque, hwaddr offset,
+>              break;
+>          }
+>          break;
+> +    case R_BRGR: /* Baud rate generator */
+> +        if (value >= 0x01) {
+> +            s->r[offset] = value & 0xFFFF;
+> +        }
+> +        break;
+> +    case R_BDIV:    /* Baud rate divider */
+> +        if (value >= 0x04) {
+> +            s->r[offset] = value & 0xFF;
+> +        }
+> +        break;
+>      default:
+>          s->r[offset] = value;
+>      }
+> --
+> 2.7.4
+>
+>

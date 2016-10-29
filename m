@@ -1,109 +1,122 @@
-Received: by 10.80.166.35 with SMTP id d32csp1444845edc;
-        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
-X-Received: by 10.55.73.84 with SMTP id w81mr12497799qka.191.1477705763169;
-        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m185si9798663qkf.232.2016.10.28.18.49.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.80.166.35 with SMTP id d32csp1781247edc;
+        Sat, 29 Oct 2016 14:10:49 -0700 (PDT)
+X-Received: by 10.99.160.17 with SMTP id r17mr30109297pge.49.1477775449077;
+        Sat, 29 Oct 2016 14:10:49 -0700 (PDT)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id t90si18468406pfk.190.2016.10.29.14.10.48;
+        Sat, 29 Oct 2016 14:10:49 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:52774 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c0Ilu-00009t-M4
-	for alex.bennee@linaro.org; Fri, 28 Oct 2016 21:49:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36684)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1c0Il4-0007y4-Vy
-	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 21:48:31 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1c0Il4-0007fB-7H
-	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 21:48:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33750)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1c0Il4-0007ek-1h; Fri, 28 Oct 2016 21:48:30 -0400
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 34BFE46D;
-	Sat, 29 Oct 2016 01:48:29 +0000 (UTC)
-Received: from localhost (ovpn-116-56.phx2.redhat.com [10.3.116.56])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id u9T1mSw3009202; Fri, 28 Oct 2016 21:48:28 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 28 Oct 2016 23:48:07 -0200
-Message-Id: <1477705687-31175-9-git-send-email-ehabkost@redhat.com>
-In-Reply-To: <1477705687-31175-1-git-send-email-ehabkost@redhat.com>
-References: <1477705687-31175-1-git-send-email-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Sat, 29 Oct 2016 01:48:29 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v4 8/8] qdev: Warning about using
- qdev_property_add_static() in new code
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Daniel P. Berrange" <berrange@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U7imCeP2nvSu
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1753187AbcJ2VKr (ORCPT <rfc822;xinliang.liu@linaro.org>
+        + 7 others); Sat, 29 Oct 2016 17:10:47 -0400
+Received: from mx2.suse.de ([195.135.220.15]:41419 "EHLO mx2.suse.de"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1752607AbcJ2VKp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 29 Oct 2016 17:10:45 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (charybdis-ext.suse.de [195.135.220.254])
+        by mx2.suse.de (Postfix) with ESMTP id 20CBCAB9D;
+        Sat, 29 Oct 2016 21:10:42 +0000 (UTC)
+From:   Alexander Graf <agraf@suse.de>
+To:     qemu-devel@nongnu.org
+Cc:     peter.maydell@linaro.org, pbonzini@redhat.com, kvm@vger.kernel.org,
+        qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu
+Subject: [RFC 2/2] ARM: KVM: Enable in-kernel timers with user space gic
+Date:   Sat, 29 Oct 2016 23:10:49 +0200
+Message-Id: <1477775449-115472-2-git-send-email-agraf@suse.de>
+X-Mailer: git-send-email 1.8.5.6
+In-Reply-To: <1477775449-115472-1-git-send-email-agraf@suse.de>
+References: <1477775449-115472-1-git-send-email-agraf@suse.de>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: zPIU+VrwvsAz
 
-The only remaining user of qdev_property_add_static() is
-arm_cpu_post_init(), but removing it may take some work. While we
-don't change it, warn people to not use the function in new code.
+When running with KVM enabled, you can choose between emulating the
+gic in kernel or user space. If the kernel supports in-kernel virtualization
+of the interrupt controller, it will default to that. If not, if will
+default to user space emulation.
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Unfortunately when running in user mode gic emulation, we miss out on
+timer events which are only available from kernel space. This patch leverages
+the new kernel/user space pending line synchronization for those timer events.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
 ---
-Changes series v1 -> v3:
-* (none)
+ hw/arm/virt.c    | 10 ++++++++++
+ target-arm/cpu.h |  3 +++
+ target-arm/kvm.c | 19 +++++++++++++++++++
+ 3 files changed, 32 insertions(+)
 
-Changes series v3 -> v4:
-* Rewrote commit message to refer to correct function name
-* s/qdev_class_set_props/device_class_set_props/ (function had
-  been renamed in series v3)
----
- hw/core/qdev.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index e695fa8..ae772fc 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -812,6 +812,10 @@ static void qdev_property_set_to_default(DeviceState *dev, Property *prop,
-  * Add a static QOM property to @dev for qdev property @prop.
-  * On error, store error in @errp.  Static properties access data in a struct.
-  * The type of the QOM property is derived from prop->info.
-+ *
-+ * Do not use this in new code. Either use device_class_set_props(),
-+ * or register regular QOM properties using object_property_add() or
-+ * object_class_property_add().
-  */
- void qdev_property_add_static(DeviceState *dev, Property *prop,
-                               Error **errp)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 070bbf8..8ac81e3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -622,6 +622,16 @@ static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
+     } else if (type == 2) {
+         create_v2m(vbi, pic);
+     }
++
++#ifdef CONFIG_KVM
++    if (kvm_enabled() && !kvm_irqchip_in_kernel()) {
++        if (!kvm_check_extension(kvm_state, KVM_CAP_ARM_TIMER)) {
++            error_report("KVM with user space irqchip only works when the "
++                         "host kernel supports KVM_CAP_ARM_TIMER");
++            exit(1);
++        }
++    }
++#endif
+ }
+ 
+ static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
+diff --git a/target-arm/cpu.h b/target-arm/cpu.h
+index 19d967b..7686082 100644
+--- a/target-arm/cpu.h
++++ b/target-arm/cpu.h
+@@ -659,6 +659,9 @@ struct ARMCPU {
+ 
+     ARMELChangeHook *el_change_hook;
+     void *el_change_hook_opaque;
++
++    /* Used to synchronize KVM and QEMU timer levels */
++    uint8_t timer_irq_level;
+ };
+ 
+ static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
+diff --git a/target-arm/kvm.c b/target-arm/kvm.c
+index c00b94e..0d8b642 100644
+--- a/target-arm/kvm.c
++++ b/target-arm/kvm.c
+@@ -527,6 +527,25 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
+ 
+ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
+ {
++    ARMCPU *cpu;
++
++    if (kvm_irqchip_in_kernel()) {
++        /*
++         * We only need to sync timer states with user-space interrupt
++         * controllers, so return early and save cycles if we don't.
++         */
++        return MEMTXATTRS_UNSPECIFIED;
++    }
++
++    cpu = ARM_CPU(cs);
++
++    /* Synchronize our internal vtimer irq line with the kvm one */
++    if (run->s.regs.timer_irq_level != cpu->timer_irq_level) {
++        qemu_set_irq(ARM_CPU(cs)->gt_timer_outputs[GTIMER_VIRT],
++                     run->s.regs.timer_irq_level & KVM_ARM_TIMER_VTIMER);
++        cpu->timer_irq_level = run->s.regs.timer_irq_level;
++    }
++
+     return MEMTXATTRS_UNSPECIFIED;
+ }
+ 
 -- 
-2.7.4
+1.8.5.6
 

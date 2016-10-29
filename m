@@ -1,62 +1,109 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id l19sm7893833wmg.5.2016.10.28.02.17.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 28 Oct 2016 02:17:09 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 068EE3E01C6;
-	Fri, 28 Oct 2016 10:17:09 +0100 (BST)
-References: <20161027151030.20863-1-alex.bennee@linaro.org> <20161027151030.20863-31-alex.bennee@linaro.org> <fa288bec-8178-590a-db42-abb4c6986db4@twiddle.net> <87bmy498bg.fsf@linaro.org> <CAFEAcA9Nrm9P=RHti1L_HkSvG1PkoOypbJ82Jgo_bLV7Cdy_WQ@mail.gmail.com>
-User-agent: mu4e 0.9.17; emacs 25.1.50.12
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, Paolo Bonzini
- <pbonzini@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, MTTCG
- Devel <mttcg@greensocs.com>, KONRAD =?utf-8?B?RnLDqWTDqXJpYw==?=
- <fred.konrad@greensocs.com>, Alvise Rigo <a.rigo@virtualopensystems.com>,
- "Emilio G. Cota" <cota@braap.org>, Pranith Kumar <bobby.prani@gmail.com>,
- Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, Mark Burton
- <mark.burton@greensocs.com>, Jan Kiszka <jan.kiszka@siemens.com>, Fedorov
- Sergey <serge.fdrv@gmail.com>, Claudio Fontana
- <claudio.fontana@huawei.com>, "open list\:ARM" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v5 30/33] target-arm/cpu: don't reset TLB structures, use cputlb to do it
-In-reply-to: <CAFEAcA9Nrm9P=RHti1L_HkSvG1PkoOypbJ82Jgo_bLV7Cdy_WQ@mail.gmail.com>
-Date: Fri, 28 Oct 2016 10:17:08 +0100
-Message-ID: <87a8do96jv.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: UjjIqimnIyUl
+Received: by 10.80.166.35 with SMTP id d32csp1444845edc;
+        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
+X-Received: by 10.55.73.84 with SMTP id w81mr12497799qka.191.1477705763169;
+        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id m185si9798663qkf.232.2016.10.28.18.49.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 28 Oct 2016 18:49:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:52774 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c0Ilu-00009t-M4
+	for alex.bennee@linaro.org; Fri, 28 Oct 2016 21:49:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36684)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1c0Il4-0007y4-Vy
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 21:48:31 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ehabkost@redhat.com>) id 1c0Il4-0007fB-7H
+	for qemu-arm@nongnu.org; Fri, 28 Oct 2016 21:48:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33750)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1c0Il4-0007ek-1h; Fri, 28 Oct 2016 21:48:30 -0400
+Received: from int-mx14.intmail.prod.int.phx2.redhat.com
+	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 34BFE46D;
+	Sat, 29 Oct 2016 01:48:29 +0000 (UTC)
+Received: from localhost (ovpn-116-56.phx2.redhat.com [10.3.116.56])
+	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id u9T1mSw3009202; Fri, 28 Oct 2016 21:48:28 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 28 Oct 2016 23:48:07 -0200
+Message-Id: <1477705687-31175-9-git-send-email-ehabkost@redhat.com>
+In-Reply-To: <1477705687-31175-1-git-send-email-ehabkost@redhat.com>
+References: <1477705687-31175-1-git-send-email-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Sat, 29 Oct 2016 01:48:29 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v4 8/8] qdev: Warning about using
+ qdev_property_add_static() in new code
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: U7imCeP2nvSu
 
+The only remaining user of qdev_property_add_static() is
+arm_cpu_post_init(), but removing it may take some work. While we
+don't change it, warn people to not use the function in new code.
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes series v1 -> v3:
+* (none)
 
-> On 28 October 2016 at 09:38, Alex Bennée <alex.bennee@linaro.org> wrote:
->>
->> Richard Henderson <rth@twiddle.net> writes:
->>> And don't we (or if not, shouldn't we)
->>> handle the tlb_flush generically for reset?
->>
->> Probably. tlb_flush seems to be one of those things liberally sprinkled
->> in the arch code for all sorts of things but certainly cpu_reset is one
->> we could make the call from generic code.
->
-> I think the theory I formed last time I looked at it is that
-> if your CPU has no state which would require you to flush the
-> TLB when it changes, then there's no need to flush the TLB
-> on reset -- any entries still in the TLB from before reset are
-> still valid after reset. For ARM a CPU reset will reset state
-> like the ASID and the MMU-enabled bit which require a TLB flush
-> on change, so we have to call tlb_flush here.
->
-> You could argue that the set of CPUs which don't require a
-> tlb flush on reset are not worth trying to optimise for
-> like this and we should just do it generically.
+Changes series v3 -> v4:
+* Rewrote commit message to refer to correct function name
+* s/qdev_class_set_props/device_class_set_props/ (function had
+  been renamed in series v3)
+---
+ hw/core/qdev.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Well it can't harm anyone. It would just mean all CPUs whatever their
-semantics would have to re-fill the TLBs after a reset. I guess that
-might be a concern for reset latency under TCG but I doubt anyone would
-notice.
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index e695fa8..ae772fc 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -812,6 +812,10 @@ static void qdev_property_set_to_default(DeviceState *dev, Property *prop,
+  * Add a static QOM property to @dev for qdev property @prop.
+  * On error, store error in @errp.  Static properties access data in a struct.
+  * The type of the QOM property is derived from prop->info.
++ *
++ * Do not use this in new code. Either use device_class_set_props(),
++ * or register regular QOM properties using object_property_add() or
++ * object_class_property_add().
+  */
+ void qdev_property_add_static(DeviceState *dev, Property *prop,
+                               Error **errp)
+-- 
+2.7.4
 
---
-Alex Bennée

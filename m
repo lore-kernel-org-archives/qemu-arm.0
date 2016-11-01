@@ -1,169 +1,123 @@
-Received: by 10.80.166.35 with SMTP id d32csp611062edc;
-        Tue, 1 Nov 2016 04:36:07 -0700 (PDT)
-X-Received: by 10.99.115.14 with SMTP id o14mr49018320pgc.44.1478000167068;
-        Tue, 01 Nov 2016 04:36:07 -0700 (PDT)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a18si30013828pgf.207.2016.11.01.04.36.06;
-        Tue, 01 Nov 2016 04:36:07 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.80.166.35 with SMTP id d32csp717564edc;
+        Tue, 1 Nov 2016 08:28:43 -0700 (PDT)
+X-Received: by 10.31.193.71 with SMTP id r68mr7805212vkf.114.1478014123348;
+        Tue, 01 Nov 2016 08:28:43 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id e38si13787786uaa.196.2016.11.01.08.28.43
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 01 Nov 2016 08:28:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1423285AbcKALgF (ORCPT <rfc822;xinliang.liu@linaro.org>
-        + 7 others); Tue, 1 Nov 2016 07:36:05 -0400
-Received: from mail-ua0-f180.google.com ([209.85.217.180]:36610 "EHLO
-        mail-ua0-f180.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1423238AbcKALgE (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 1 Nov 2016 07:36:04 -0400
-Received: by mail-ua0-f180.google.com with SMTP id b35so54396249uaa.3
-        for <kvm@vger.kernel.org>; Tue, 01 Nov 2016 04:36:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=hzwHVKKGoaKi1O+x+0pEJ/5HJUY8EoDcE98OjOB71gk=;
-        b=GyMH3o6bJk6zctAhHCS9vtcIcXKLWqUAWmsCqupzbkNLcnPzTjm0SK90MspZugro8K
-         enBlMT6jax5KjMNiaufgl2tU8AkgUIUd+AxNqvkZaA+OChL9bCe432tiTrm6K+9oJbb5
-         IjF8I9+wQNicocyG9ON4tYXprxy3JzxRM/fBQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=hzwHVKKGoaKi1O+x+0pEJ/5HJUY8EoDcE98OjOB71gk=;
-        b=WHimhg1PbSuZZKeXTayoMRmXIxTAMQgxmG6ca3SZlKtbbi1GBjGc5ZXf/ILQM53YXj
-         Sf8gY8bZJk7U/bctFteKX1Ho1b7WrQnrl7Qi+pcBiQx86N1YUWuPNojlGSQ/ZOlKTK6Z
-         VYtVa7bE4JXBTEZ6wOsKr6Waudi7sCLMSqOr4PfWxnGiW3/kkfp/qmwG1iA44H85vxIv
-         wjxJWLviYFsrV5G/LJFx6mHYaXTAJjJYKy91MyXbiBgloywTCo8hv0RA3AStjtv/6YGS
-         ZU5mySfAS+NLwnxYdqRp6vAevnKlyo+RjL7dhA5BRfBV6KTR57j4hnNPlPxDbN1YuW86
-         wZBQ==
-X-Gm-Message-State: ABUngvcm63k9ZsPaeMd0agFtw7cURtyDJNvqLEWMf5UtUN29xKHgc1UUqVyhaDyQabUEHY4aWfSgkn2t+QW1XNoG
-X-Received: by 10.176.3.137 with SMTP id 9mr17154167uau.120.1478000163088;
- Tue, 01 Nov 2016 04:36:03 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.31.195.70 with HTTP; Tue, 1 Nov 2016 04:35:42 -0700 (PDT)
-In-Reply-To: <1477775449-115472-2-git-send-email-agraf@suse.de>
-References: <1477775449-115472-1-git-send-email-agraf@suse.de> <1477775449-115472-2-git-send-email-agraf@suse.de>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 1 Nov 2016 11:35:42 +0000
-Message-ID: <CAFEAcA9ABvy52WDX++ACUQNo+UiRJkyC+X_mT+QhMxqE154Nqw@mail.gmail.com>
-Subject: Re: [RFC 2/2] ARM: KVM: Enable in-kernel timers with user space gic
-To:     Alexander Graf <agraf@suse.de>
-Cc:     QEMU Developers <qemu-devel@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-        "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>
-Content-Type: text/plain; charset=UTF-8
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: nYkYnqL/Q07V
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:48576 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c1azS-0007nw-MT
+	for alex.bennee@linaro.org; Tue, 01 Nov 2016 11:28:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46424)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <stefan@weilnetz.de>) id 1c1azM-0007lf-Pf
+	for qemu-arm@nongnu.org; Tue, 01 Nov 2016 11:28:37 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <stefan@weilnetz.de>) id 1c1azJ-0004Y7-MO
+	for qemu-arm@nongnu.org; Tue, 01 Nov 2016 11:28:36 -0400
+Received: from mail.weilnetz.de ([37.221.199.173]:43812)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <stefan@weilnetz.de>)
+	id 1c1azJ-0004Xb-GH; Tue, 01 Nov 2016 11:28:33 -0400
+Received: from localhost (v220110690675601.yourvserver.net.local [127.0.0.1])
+	by mail.weilnetz.de (Postfix) with ESMTP id 63EDC11810AA;
+	Tue,  1 Nov 2016 16:28:32 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at weilnetz.de
+Received: from mail.weilnetz.de ([127.0.0.1])
+	by localhost (v220110690675601.yourvserver.net [127.0.0.1])
+	(amavisd-new, port 10024)
+	with ESMTP id 6Jxf6iCSPVKM; Tue,  1 Nov 2016 16:28:29 +0100 (CET)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+	by mail.weilnetz.de (Postfix) with ESMTP id 269C411810A3;
+	Tue,  1 Nov 2016 16:28:29 +0100 (CET)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id F2279466BFF; Tue,  1 Nov 2016 16:28:28 +0100 (CET)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Date: Tue,  1 Nov 2016 16:28:19 +0100
+Message-Id: <20161101152819.18906-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.10.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 37.221.199.173
+Subject: [Qemu-arm] [PATCH] hw/intc/arm_gicv3_its: Fix typo in member names
+ of GICv3ITSState
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Pavel Fedin <p.fedin@samsung.com>, Stefan Weil <sw@weilnetz.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tzEdvQzqU/h/
 
-On 29 October 2016 at 22:10, Alexander Graf <agraf@suse.de> wrote:
-> When running with KVM enabled, you can choose between emulating the
-> gic in kernel or user space. If the kernel supports in-kernel virtualization
-> of the interrupt controller, it will default to that. If not, if will
-> default to user space emulation.
->
-> Unfortunately when running in user mode gic emulation, we miss out on
-> timer events which are only available from kernel space. This patch leverages
-> the new kernel/user space pending line synchronization for those timer events.
->
-> Signed-off-by: Alexander Graf <agraf@suse.de>
-> ---
->  hw/arm/virt.c    | 10 ++++++++++
->  target-arm/cpu.h |  3 +++
->  target-arm/kvm.c | 19 +++++++++++++++++++
->  3 files changed, 32 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 070bbf8..8ac81e3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -622,6 +622,16 @@ static void create_gic(VirtBoardInfo *vbi, qemu_irq *pic, int type,
->      } else if (type == 2) {
->          create_v2m(vbi, pic);
->      }
-> +
-> +#ifdef CONFIG_KVM
-> +    if (kvm_enabled() && !kvm_irqchip_in_kernel()) {
-> +        if (!kvm_check_extension(kvm_state, KVM_CAP_ARM_TIMER)) {
-> +            error_report("KVM with user space irqchip only works when the "
-> +                         "host kernel supports KVM_CAP_ARM_TIMER");
-> +            exit(1);
-> +        }
-> +    }
-> +#endif
+translater -> translator (found by codespell)
 
-I think this belongs somewhere in target-arm/kvm.c rather
-than in hw/arm/virt.c -- it's not the only board model that
-supports KVM.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ hw/intc/arm_gicv3_its_kvm.c            | 10 +++++-----
+ include/hw/intc/arm_gicv3_its_common.h |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
->  }
->
->  static void create_uart(const VirtBoardInfo *vbi, qemu_irq *pic, int uart,
-> diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-> index 19d967b..7686082 100644
-> --- a/target-arm/cpu.h
-> +++ b/target-arm/cpu.h
-> @@ -659,6 +659,9 @@ struct ARMCPU {
->
->      ARMELChangeHook *el_change_hook;
->      void *el_change_hook_opaque;
-> +
-> +    /* Used to synchronize KVM and QEMU timer levels */
-> +    uint8_t timer_irq_level;
->  };
->
->  static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
-> diff --git a/target-arm/kvm.c b/target-arm/kvm.c
-> index c00b94e..0d8b642 100644
-> --- a/target-arm/kvm.c
-> +++ b/target-arm/kvm.c
-> @@ -527,6 +527,25 @@ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
->
->  MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
->  {
-> +    ARMCPU *cpu;
-> +
-> +    if (kvm_irqchip_in_kernel()) {
-> +        /*
-> +         * We only need to sync timer states with user-space interrupt
-> +         * controllers, so return early and save cycles if we don't.
-> +         */
-> +        return MEMTXATTRS_UNSPECIFIED;
-> +    }
-> +
-> +    cpu = ARM_CPU(cs);
-> +
-> +    /* Synchronize our internal vtimer irq line with the kvm one */
-> +    if (run->s.regs.timer_irq_level != cpu->timer_irq_level) {
-> +        qemu_set_irq(ARM_CPU(cs)->gt_timer_outputs[GTIMER_VIRT],
+diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+index fc246e0..c3e074d 100644
+--- a/hw/intc/arm_gicv3_its_kvm.c
++++ b/hw/intc/arm_gicv3_its_kvm.c
+@@ -33,18 +33,18 @@ static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
+ {
+     struct kvm_msi msi;
+ 
+-    if (unlikely(!s->translater_gpa_known)) {
++    if (unlikely(!s->translator_gpa_known)) {
+         MemoryRegion *mr = &s->iomem_its_translation;
+         MemoryRegionSection mrs;
+ 
+         mrs = memory_region_find(mr, 0, 1);
+         memory_region_unref(mrs.mr);
+-        s->gits_translater_gpa = mrs.offset_within_address_space + 0x40;
+-        s->translater_gpa_known = true;
++        s->gits_translator_gpa = mrs.offset_within_address_space + 0x40;
++        s->translator_gpa_known = true;
+     }
+ 
+-    msi.address_lo = extract64(s->gits_translater_gpa, 0, 32);
+-    msi.address_hi = extract64(s->gits_translater_gpa, 32, 32);
++    msi.address_lo = extract64(s->gits_translator_gpa, 0, 32);
++    msi.address_hi = extract64(s->gits_translator_gpa, 32, 32);
+     msi.data = le32_to_cpu(value);
+     msi.flags = KVM_MSI_VALID_DEVID;
+     msi.devid = devid;
+diff --git a/include/hw/intc/arm_gicv3_its_common.h b/include/hw/intc/arm_gicv3_its_common.h
+index 1ba1894..00aa04d 100644
+--- a/include/hw/intc/arm_gicv3_its_common.h
++++ b/include/hw/intc/arm_gicv3_its_common.h
+@@ -38,8 +38,8 @@ struct GICv3ITSState {
+     GICv3State *gicv3;
+ 
+     int dev_fd; /* kvm device fd if backed by kvm vgic support */
+-    uint64_t gits_translater_gpa;
+-    bool translater_gpa_known;
++    uint64_t gits_translator_gpa;
++    bool translator_gpa_known;
+ 
+     /* Registers */
+     uint32_t ctlr;
+-- 
+2.10.1
 
-You just set up a local variable, so you don't need to inline "ARM_CPU(cs)".
-
-> +                     run->s.regs.timer_irq_level & KVM_ARM_TIMER_VTIMER);
-
-This is setting a bear trap for the person who comes along later
-to add the next interrupt, because the level argument to qemu_set_irq()
-should be 0 or 1. That happens to be true for the KVM_ARM_TIMER_VTIMER
-bit but won't be for the cut-n-pasted version with the next bit name...
-
-> +        cpu->timer_irq_level = run->s.regs.timer_irq_level;
-> +    }
-> +
->      return MEMTXATTRS_UNSPECIFIED;
->  }
-
-Does this code do the right thing across a vcpu reset or
-a full-system reset?
-
->
-> --
-> 1.8.5.6
-
-thanks
--- PMM

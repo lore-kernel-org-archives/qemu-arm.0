@@ -1,100 +1,94 @@
-Received: by 10.80.166.35 with SMTP id d32csp538115edc;
-        Thu, 3 Nov 2016 02:07:03 -0700 (PDT)
-X-Received: by 10.99.238.17 with SMTP id e17mr12521033pgi.154.1478164023548;
-        Thu, 03 Nov 2016 02:07:03 -0700 (PDT)
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id ta2si6974022pac.306.2016.11.03.02.07.02;
-        Thu, 03 Nov 2016 02:07:03 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Received: by 10.80.166.35 with SMTP id d32csp746821edc;
+        Thu, 3 Nov 2016 09:54:31 -0700 (PDT)
+X-Received: by 10.55.79.86 with SMTP id d83mr8388009qkb.24.1478192071043;
+        Thu, 03 Nov 2016 09:54:31 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w77si4725906qkb.46.2016.11.03.09.54.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 03 Nov 2016 09:54:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1756328AbcKCJHB (ORCPT <rfc822;xinliang.liu@linaro.org>
-        + 7 others); Thu, 3 Nov 2016 05:07:01 -0400
-Received: from mx2.suse.de ([195.135.220.15]:52635 "EHLO mx2.suse.de"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1755796AbcKCJHA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 3 Nov 2016 05:07:00 -0400
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
-        by mx2.suse.de (Postfix) with ESMTP id 148D5ABFC;
-        Thu,  3 Nov 2016 09:06:55 +0000 (UTC)
-Subject: Re: [RFC 2/2] ARM: KVM: Enable in-kernel timers with user space gic
-To:     Christoffer Dall <christoffer.dall@linaro.org>
-References: <1477775449-115472-1-git-send-email-agraf@suse.de>
- <1477775449-115472-2-git-send-email-agraf@suse.de>
- <CAFEAcA9ABvy52WDX++ACUQNo+UiRJkyC+X_mT+QhMxqE154Nqw@mail.gmail.com>
- <581A08F3.1050501@suse.de> <20161102161943.GA11122@cbox>
-Cc:     Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        kvm-devel <kvm@vger.kernel.org>,
-        "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>
-From:   Alexander Graf <agraf@suse.de>
-Message-ID: <581AFE2E.2040008@suse.de>
-Date:   Thu, 3 Nov 2016 10:06:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
- Thunderbird/38.3.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34090 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c2LHa-0007tF-Hc
+	for alex.bennee@linaro.org; Thu, 03 Nov 2016 12:54:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48461)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1c2LHW-0007sD-IP
+	for qemu-arm@nongnu.org; Thu, 03 Nov 2016 12:54:27 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1c2LHT-0001Ct-H8
+	for qemu-arm@nongnu.org; Thu, 03 Nov 2016 12:54:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53616)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1c2LHT-0001CQ-Am; Thu, 03 Nov 2016 12:54:23 -0400
+Received: from int-mx13.intmail.prod.int.phx2.redhat.com
+	(int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 35986C04B31B;
+	Thu,  3 Nov 2016 16:54:22 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-30.ams2.redhat.com
+	[10.36.116.30])
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
+	id uA3GsKtZ031607
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=NO); Thu, 3 Nov 2016 12:54:21 -0400
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E4AE111386CE; Thu,  3 Nov 2016 17:54:19 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Radim =?utf-8?B?S3LEjW3DocWZ?= <rkrcmar@redhat.com>
+References: <20161005133530.5702-1-rkrcmar@redhat.com>
+Date: Thu, 03 Nov 2016 17:54:19 +0100
+In-Reply-To: <20161005133530.5702-1-rkrcmar@redhat.com> ("Radim
+	=?utf-8?B?S3LEjW3DocWZIidz?=
+	message of "Wed, 5 Oct 2016 15:35:28 +0200")
+Message-ID: <87k2ckwll0.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20161102161943.GA11122@cbox>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: y56dQgYOcdr0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 03 Nov 2016 16:54:22 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/2] qom+coccinelle: add and use
+ object_new_with_class()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Eduardo Habkost <ehabkost@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nBNNEcPIQceo
 
-On 11/02/2016 05:19 PM, Christoffer Dall wrote:
-> On Wed, Nov 02, 2016 at 04:40:35PM +0100, Alexander Graf wrote:
->> On 11/01/2016 12:35 PM, Peter Maydell wrote:
->>> On 29 October 2016 at 22:10, Alexander Graf <agraf@suse.de> wrote:
-> [...]
->
->>>> +        cpu->timer_irq_level = run->s.regs.timer_irq_level;
->>>> +    }
->>>> +
->>>>       return MEMTXATTRS_UNSPECIFIED;
->>>>   }
->>> Does this code do the right thing across a vcpu reset or
->>> a full-system reset?
->> Good question. I'm not 100% sure - but I don't know for sure whether
->> it's guaranteed without user space irqchip even.
->>
->> In essence, the code above merely synchronizes kvm state to qemu
->> state and is fully unaffected from any reset sequence. This is good,
->> as the line status is transient. So from a QEMU pov, we really only
->> copy the state of the vcpu interrupt line into the QEMU interrupt
->> line. Pulling that line down would be responsibility of the
->> KVM_ARM_VCPU_INIT ioctl if it also clears the timer registers I
->> guess.
->>
->> However, I don't see any clearing of cntv_ctrl inside KVM or from
->> QEMU. How do we ensure that the irq active bit is off on reset?
->
-> In kvm_timer_vcpu_reset we cset cntv_ctl = 0, and that function gets
-> called from the PSCI handler or whenever userspace calls the set target
-> ioctl thingy.
+Radim Kr=C4=8Dm=C3=A1=C5=99 <rkrcmar@redhat.com> writes:
 
-Ah, ok, that should pull the "run" line down automatically.
+> This series performs a simple replacement of
+> object_new(object_class_get_name(class)) by object_new_with_class(class)
+> in the spirit of existing object_new_with_type().
 
->
->> The other part that could get in the way of working system reset is
->> the interrupt controller emulation itself which resets all internal
->> irq line state. So on reset we'd always end up with the irq line
->> down from a gic pov, but with the vtimer line pending or not pending
->> depending on previous state. I doubt it's really going to hurt
->> though.
-> I suppose it should resample the line, but if the GIC clears everything
-> and the arch timer line goes down, you're in the right starting state
-> again.  Right?
-
-Yup, I don't see any reason it wouldn't work :). Even if the GIC didn't 
-clear everything things should still just work as long as the timer 
-reset function gets called, as it unconditionally synchronizes the state.
-
-
-Alex
-
+Who's going to take this one?  Still more review needed?

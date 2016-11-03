@@ -1,189 +1,100 @@
-Received: by 10.80.166.35 with SMTP id d32csp368191edc;
-        Wed, 2 Nov 2016 15:57:59 -0700 (PDT)
-X-Received: by 10.237.55.72 with SMTP id i66mr5021457qtb.83.1478127479285;
-        Wed, 02 Nov 2016 15:57:59 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f75si2465386qke.326.2016.11.02.15.57.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 02 Nov 2016 15:57:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.80.166.35 with SMTP id d32csp538115edc;
+        Thu, 3 Nov 2016 02:07:03 -0700 (PDT)
+X-Received: by 10.99.238.17 with SMTP id e17mr12521033pgi.154.1478164023548;
+        Thu, 03 Nov 2016 02:07:03 -0700 (PDT)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id ta2si6974022pac.306.2016.11.03.02.07.02;
+        Thu, 03 Nov 2016 02:07:03 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:58127 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c24Tm-0002Kq-Rm
-	for alex.bennee@linaro.org; Wed, 02 Nov 2016 18:57:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57596)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <juro.bystricky@intel.com>) id 1c2455-0007uR-DS
-	for qemu-arm@nongnu.org; Wed, 02 Nov 2016 18:32:28 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <juro.bystricky@intel.com>) id 1c2452-0003Nv-8E
-	for qemu-arm@nongnu.org; Wed, 02 Nov 2016 18:32:27 -0400
-Received: from mga02.intel.com ([134.134.136.20]:16535)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <juro.bystricky@intel.com>)
-	id 1c2451-0003Ne-RK
-	for qemu-arm@nongnu.org; Wed, 02 Nov 2016 18:32:24 -0400
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-	by orsmga101.jf.intel.com with ESMTP; 02 Nov 2016 15:32:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.31,436,1473145200"; d="scan'208";a="26787615"
-Received: from juro-precision-t5610.jf.intel.com ([10.7.198.149])
-	by orsmga005.jf.intel.com with ESMTP; 02 Nov 2016 15:32:21 -0700
-From: Juro Bystricky <juro.bystricky@intel.com>
-To: qemu-arm@nongnu.org
-Date: Wed,  2 Nov 2016 15:31:03 -0700
-Message-Id: <1478125863-33365-1-git-send-email-juro.bystricky@intel.com>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.20
-X-Mailman-Approved-At: Wed, 02 Nov 2016 18:57:57 -0400
-Subject: [Qemu-arm] [PATCH] arm: Support for Base Priority Mask Register
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jurobystricky@hotmail.com, Juro Bystricky <juro.bystricky@intel.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KDJqJvxFbyxc
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1756328AbcKCJHB (ORCPT <rfc822;xinliang.liu@linaro.org>
+        + 7 others); Thu, 3 Nov 2016 05:07:01 -0400
+Received: from mx2.suse.de ([195.135.220.15]:52635 "EHLO mx2.suse.de"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1755796AbcKCJHA (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 3 Nov 2016 05:07:00 -0400
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+        by mx2.suse.de (Postfix) with ESMTP id 148D5ABFC;
+        Thu,  3 Nov 2016 09:06:55 +0000 (UTC)
+Subject: Re: [RFC 2/2] ARM: KVM: Enable in-kernel timers with user space gic
+To:     Christoffer Dall <christoffer.dall@linaro.org>
+References: <1477775449-115472-1-git-send-email-agraf@suse.de>
+ <1477775449-115472-2-git-send-email-agraf@suse.de>
+ <CAFEAcA9ABvy52WDX++ACUQNo+UiRJkyC+X_mT+QhMxqE154Nqw@mail.gmail.com>
+ <581A08F3.1050501@suse.de> <20161102161943.GA11122@cbox>
+Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>,
+        "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>
+From:   Alexander Graf <agraf@suse.de>
+Message-ID: <581AFE2E.2040008@suse.de>
+Date:   Thu, 3 Nov 2016 10:06:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101
+ Thunderbird/38.3.0
+MIME-Version: 1.0
+In-Reply-To: <20161102161943.GA11122@cbox>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: y56dQgYOcdr0
 
-Currently there is no emulation of the ARM BASEPRI register. Only reading/writing
-the register is implemented, but no functionality.
-The BASEPRI register defines the minimum priority for exception processing.
-When BASEPRI is set to a nonzero value, it prevents the activation of all
-exceptions with the same or lower priority level as the BASEPRI value.
+On 11/02/2016 05:19 PM, Christoffer Dall wrote:
+> On Wed, Nov 02, 2016 at 04:40:35PM +0100, Alexander Graf wrote:
+>> On 11/01/2016 12:35 PM, Peter Maydell wrote:
+>>> On 29 October 2016 at 22:10, Alexander Graf <agraf@suse.de> wrote:
+> [...]
+>
+>>>> +        cpu->timer_irq_level = run->s.regs.timer_irq_level;
+>>>> +    }
+>>>> +
+>>>>       return MEMTXATTRS_UNSPECIFIED;
+>>>>   }
+>>> Does this code do the right thing across a vcpu reset or
+>>> a full-system reset?
+>> Good question. I'm not 100% sure - but I don't know for sure whether
+>> it's guaranteed without user space irqchip even.
+>>
+>> In essence, the code above merely synchronizes kvm state to qemu
+>> state and is fully unaffected from any reset sequence. This is good,
+>> as the line status is transient. So from a QEMU pov, we really only
+>> copy the state of the vcpu interrupt line into the QEMU interrupt
+>> line. Pulling that line down would be responsibility of the
+>> KVM_ARM_VCPU_INIT ioctl if it also clears the timer registers I
+>> guess.
+>>
+>> However, I don't see any clearing of cntv_ctrl inside KVM or from
+>> QEMU. How do we ensure that the irq active bit is off on reset?
+>
+> In kvm_timer_vcpu_reset we cset cntv_ctl = 0, and that function gets
+> called from the PSCI handler or whenever userspace calls the set target
+> ioctl thingy.
 
-This patchset implements the expected functionality. BASEPRI reads/writes are
-implemented via helper routines (MSR/MRS), so a write to BASEPRI will result
-in a call gic_update with a new BASEPRI value. Only writes to BASEPRI are tracked,
-and gic_update is called only if BASEPRI has changed.
+Ah, ok, that should pull the "run" line down automatically.
 
-http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0552a/CHDBIBGJ.html
+>
+>> The other part that could get in the way of working system reset is
+>> the interrupt controller emulation itself which resets all internal
+>> irq line state. So on reset we'd always end up with the irq line
+>> down from a gic pov, but with the vtimer line pending or not pending
+>> depending on previous state. I doubt it's really going to hurt
+>> though.
+> I suppose it should resample the line, but if the GIC clears everything
+> and the arch timer line goes down, you're in the right starting state
+> again.  Right?
 
-Signed-off-by: Juro Bystricky <juro.bystricky@intel.com>
----
- hw/intc/arm_gic.c                |  3 ++-
- hw/intc/armv7m_nvic.c            | 14 ++++++++++++++
- include/hw/intc/arm_gic_common.h | 10 ++++++++++
- target-arm/cpu.h                 |  1 +
- target-arm/helper.c              |  8 ++++++--
- 5 files changed, 33 insertions(+), 3 deletions(-)
+Yup, I don't see any reason it wouldn't work :). Even if the GIC didn't 
+clear everything things should still just work as long as the timer 
+reset function gets called, as it unconditionally synchronizes the state.
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index b30cc91..1917390 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -102,7 +102,8 @@ void gic_update(GICState *s)
- 
-         irq_level = fiq_level = 0;
- 
--        if (best_prio < s->priority_mask[cpu]) {
-+        if (best_prio < s->priority_mask[cpu] &&
-+                            (s->basepri == 0 || best_prio < s->basepri)) {
-             s->current_pending[cpu] = best_irq;
-             if (best_prio < s->running_priority[cpu]) {
-                 int group = GIC_TEST_GROUP(best_irq, cm);
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 06d8db6..e4cf3a7 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -153,6 +153,19 @@ void armv7m_nvic_complete_irq(void *opaque, int irq)
-     gic_complete_irq(&s->gic, 0, irq, MEMTXATTRS_UNSPECIFIED);
- }
- 
-+
-+/* Re-evaluate interrupts if BASEPRI register has changed */
-+void armv7m_nvic_basepri_write(void *opaque, uint32_t val)
-+{
-+    nvic_state *nv = (nvic_state *)opaque;
-+    GICState *s = &nv->gic;
-+
-+    if (val != s->basepri) {
-+        s->basepri = val;
-+        gic_update(s);
-+    }
-+}
-+
- static uint32_t nvic_readl(nvic_state *s, uint32_t offset)
- {
-     ARMCPU *cpu;
-@@ -486,6 +499,7 @@ static void armv7m_nvic_reset(DeviceState *dev)
-     s->gic.priority_mask[0] = 0x100;
-     /* The NVIC as a whole is always enabled. */
-     s->gic.ctlr = 1;
-+    s->gic.basepri = 0;
-     systick_reset(s);
- }
- 
-diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
-index f4c349a..c132555 100644
---- a/include/hw/intc/arm_gic_common.h
-+++ b/include/hw/intc/arm_gic_common.h
-@@ -100,6 +100,16 @@ typedef struct GICState {
- 
-     uint32_t num_cpu;
- 
-+    /* BASEPRI register:
-+     * The processor does not process any exception with a priority value
-+     * greater than or equal to BASEPRI.
-+     *
-+     * 0x00 = no effect
-+     * Nonzero = defines the base priority for exception processing.
-+     */
-+
-+    uint32_t basepri;
-+
-     MemoryRegion iomem; /* Distributor */
-     /* This is just so we can have an opaque pointer which identifies
-      * both this GIC and which CPU interface we should be accessing.
-diff --git a/target-arm/cpu.h b/target-arm/cpu.h
-index ca5c849..c96bd87 100644
---- a/target-arm/cpu.h
-+++ b/target-arm/cpu.h
-@@ -1271,6 +1271,7 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
- void armv7m_nvic_set_pending(void *opaque, int irq);
- int armv7m_nvic_acknowledge_irq(void *opaque);
- void armv7m_nvic_complete_irq(void *opaque, int irq);
-+void armv7m_nvic_basepri_write(void *opaque, uint32_t val);
- 
- /* Interface for defining coprocessor registers.
-  * Registers are defined in tables of arm_cp_reginfo structs
-diff --git a/target-arm/helper.c b/target-arm/helper.c
-index 25b15dc..beb6a80 100644
---- a/target-arm/helper.c
-+++ b/target-arm/helper.c
-@@ -8302,12 +8302,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
-         }
-         break;
-     case 17: /* BASEPRI */
--        env->v7m.basepri = val & 0xff;
-+        val &= 0xff;
-+        env->v7m.basepri = val;
-+        armv7m_nvic_basepri_write(env->nvic, val);
-         break;
-     case 18: /* BASEPRI_MAX */
-         val &= 0xff;
--        if (val != 0 && (val < env->v7m.basepri || env->v7m.basepri == 0))
-+        if (val != 0 && (val < env->v7m.basepri || env->v7m.basepri == 0)) {
-             env->v7m.basepri = val;
-+            armv7m_nvic_basepri_write(env->nvic, val);
-+        }
-         break;
-     case 19: /* FAULTMASK */
-         if (val & 1) {
--- 
-2.7.4
+
+Alex
 

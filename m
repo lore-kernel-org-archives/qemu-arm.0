@@ -1,75 +1,74 @@
-Received: by 10.80.166.35 with SMTP id d32csp1203695edc;
-        Fri, 4 Nov 2016 07:54:20 -0700 (PDT)
-X-Received: by 10.202.235.143 with SMTP id j137mr14122545oih.62.1478271260127;
-        Fri, 04 Nov 2016 07:54:20 -0700 (PDT)
+Received: by 10.80.166.35 with SMTP id d32csp1205541edc;
+        Fri, 4 Nov 2016 07:58:50 -0700 (PDT)
+X-Received: by 10.202.107.76 with SMTP id g73mr14223165oic.1.1478271530717;
+        Fri, 04 Nov 2016 07:58:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h22si8400864ote.268.2016.11.04.07.54.19
+        by mx.google.com with ESMTPS id w137si8961397oia.170.2016.11.04.07.58.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Nov 2016 07:54:20 -0700 (PDT)
+        Fri, 04 Nov 2016 07:58:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
+       dkim=fail header.i=@linaro.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39246 helo=lists.gnu.org)
+       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39257 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c2fso-0003an-RE
-	for alex.bennee@linaro.org; Fri, 04 Nov 2016 10:54:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34346)
+	id 1c2fxB-000538-Dr
+	for alex.bennee@linaro.org; Fri, 04 Nov 2016 10:58:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35365)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1c2fsi-0003ad-Lh
-	for qemu-arm@nongnu.org; Fri, 04 Nov 2016 10:54:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1c2fx7-00052x-42
+	for qemu-arm@nongnu.org; Fri, 04 Nov 2016 10:58:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <vijay.kilari@gmail.com>) id 1c2fsh-0000VL-QM
-	for qemu-arm@nongnu.org; Fri, 04 Nov 2016 10:54:12 -0400
-Received: from mail-vk0-x244.google.com ([2607:f8b0:400c:c05::244]:36805)
+	(envelope-from <peter.maydell@linaro.org>) id 1c2fx6-00050c-FX
+	for qemu-arm@nongnu.org; Fri, 04 Nov 2016 10:58:45 -0400
+Received: from mail-ua0-x230.google.com ([2607:f8b0:400c:c08::230]:34806)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <vijay.kilari@gmail.com>)
-	id 1c2fsh-0000Tr-IX; Fri, 04 Nov 2016 10:54:11 -0400
-Received: by mail-vk0-x244.google.com with SMTP id w194so3269586vkw.3;
-	Fri, 04 Nov 2016 07:54:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1c2fx6-0004zb-96
+	for qemu-arm@nongnu.org; Fri, 04 Nov 2016 10:58:44 -0400
+Received: by mail-ua0-x230.google.com with SMTP id 51so68133594uai.1
+	for <qemu-arm@nongnu.org>; Fri, 04 Nov 2016 07:58:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=yJH3kr6IlKXP3qC8rksZP64zL0k8GQFnL2MwvHy/VFU=;
-	b=qzThYnJmC/0cBs0KekfQbKlhQwGSPTLjJijDVww2/OnqMs2FPYwRUNoUcCzU1UYdxy
-	kgxX4EF534K/roikqRNnRR4wtP0ufVw9/v81GD8lxytenKiMwsHHLpBNP3v7zrOkyaX2
-	wNdTkcNDfm1/Z3SI8Y4Zuqh1QWMk8aLap0/5CjYcfUkS+agWQy+KrYDMc40Xay3165Fj
-	ewC6DL18e4QOXn7b4f+HfiDXkE0tA02kyfy3LPPVUsTVCZN1HqRb2lC+8rEXldDLD87C
-	yMPaR991f2jS4RJnr3SfBGbWfw5z6BOMcrUxVvhdIwMFFh3vwqkoKuM4mRWhoj9Qs6a8
-	WoXQ==
+	:cc; bh=7eFIwQI8u3O4b0rwxVLZX9UEl/3lOJSUwScJ0tcKiyY=;
+	b=MxftlLhQnhbxetTcOqJleDxCU5usNkFK8thMYUMJBXPp4sERzC51LwG+1XRLkflVIl
+	WdCgsfU3j18JyKKVxRPn+E6/jhvU3VybTT2/ScP1fNkqUjwQclFRIwz77WXV1jR5jGOg
+	9mCsF5buUSgXPG6MVy5+j0g/35aym7RXP9AsQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=yJH3kr6IlKXP3qC8rksZP64zL0k8GQFnL2MwvHy/VFU=;
-	b=Rno/GUHntqPLbkRMizW8TDVYu8MWoEr2wICW0BNrOlyK/1lgcMin/26BN2RRogGzVe
-	VSVjdZyUad0o0NlvDHBJs3Xdn0VTjpPHUKmjrm03Pu58TRFLYMpgPON1VmdpNlgD5Fua
-	AgI7Z5tJRiTyuYd2Lo3AvDHLMbbyG2RCTuHZT5M3KMxYGRR8qdER+gE6j41mB/OCGfRy
-	5JXCYxwsMYSwCJgLrW6Lth+qBpRQrbi4rFvD+bB7Ud4oysQXgmvGw2Oed9I+jEDUAnHR
-	gDXEb2RwkKJDR/SBMLnj8Gmg01qBTWYRGYXmCx9r6bYRq1pzFcQKAEIPs1EocboTf10T
-	XvQw==
-X-Gm-Message-State: ABUngvfUQWHAdXf1TQbg0W2/ranJnmVzCYRUSz2QfCtrLlZeoqt8Ty6axi7xXvanv4YCzlZcg7IfaS/yGEJTOQ==
-X-Received: by 10.31.8.72 with SMTP id 69mr10419064vki.159.1478271249664; Fri,
-	04 Nov 2016 07:54:09 -0700 (PDT)
+	bh=7eFIwQI8u3O4b0rwxVLZX9UEl/3lOJSUwScJ0tcKiyY=;
+	b=c+fqxxDW05XSf/POYfz+63+oIxUjclQCRcrR2E9+aoKY9p1srR6hn8C1JFjjNMjAQ3
+	84pctkd2j0WuFrdjoPFvO8QOVRA7SMZ0AtaWCCMURFZL+zrWd9Kk95PU5o/0MnQlBvRH
+	GRWfW0h8hhcchofOQTHTIhebrg43RHfWWEdqmAjJ2BU1V5eWwIdqKB8cFCkRnENIJ2g3
+	4yr4l99f9uJOr6ldFluPof689jRQ1rXfeoBXa8g4OrKDqC4TFzDouhsz2iT1JZgAUSuA
+	Y4YtzvDhycqVxc6LcbictMC+YWRcR6q4DQWVGIvROoHt3vwx9IwTl1KK94rySms2w3Mu
+	tbDw==
+X-Gm-Message-State: ABUngvcC6up+5tCCnqMSySGnZJ/EejKa28H8Qupo57CiJf63Ogu/e4qn/I6aa4uorAomvTl2Y/XUn9EPupWbU5hk
+X-Received: by 10.176.2.110 with SMTP id 101mr11723810uas.8.1478271517759;
+	Fri, 04 Nov 2016 07:58:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.93.135 with HTTP; Fri, 4 Nov 2016 07:54:09 -0700 (PDT)
-In-Reply-To: <CALicx6sgPM_qBnnYGCsRk8XUarKZSiOJEJGTgjYOppzquAj70A@mail.gmail.com>
+Received: by 10.31.195.70 with HTTP; Fri, 4 Nov 2016 07:58:15 -0700 (PDT)
+In-Reply-To: <CALicx6sH_owFkb19odpL77-Nr16aqVKvmTKYaW-HyYR8+vERAg@mail.gmail.com>
 References: <1477397577-25251-1-git-send-email-vijay.kilari@gmail.com>
 	<1477397577-25251-3-git-send-email-vijay.kilari@gmail.com>
 	<CAFEAcA9+wRsWSrJe893EshBvu2pgdV-LSSO1z=toxbaKiGaaZw@mail.gmail.com>
 	<CALicx6tCzQORa+crRtSMDcKwf6DRKtH6Cj856Bq9Hb_Ze7p7EA@mail.gmail.com>
 	<CAFEAcA_AFW-N5siUp1+kM3Z2+ixwKbD35YK+97tCX-g3ENXpPA@mail.gmail.com>
 	<CALicx6sgPM_qBnnYGCsRk8XUarKZSiOJEJGTgjYOppzquAj70A@mail.gmail.com>
-From: Vijay Kilari <vijay.kilari@gmail.com>
-Date: Fri, 4 Nov 2016 20:24:09 +0530
-Message-ID: <CALicx6sH_owFkb19odpL77-Nr16aqVKvmTKYaW-HyYR8+vERAg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+	<CALicx6sH_owFkb19odpL77-Nr16aqVKvmTKYaW-HyYR8+vERAg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Nov 2016 14:58:15 +0000
+Message-ID: <CAFEAcA_wbFsPBdgbwbnbPAy4pW0v070E8PMDd5iHvKHsb1RBvg@mail.gmail.com>
+To: Vijay Kilari <vijay.kilari@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::244
+X-Received-From: 2607:f8b0:400c:c08::230
 Subject: Re: [Qemu-arm] [PATCH v4 2/3] utils: Add helper to read arm
  MIDR_EL1 register
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,67 +89,17 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QwZx6ojNhiYk
+X-TUID: d30pok487TE3
 
-Hi Peter
+On 4 November 2016 at 14:54, Vijay Kilari <vijay.kilari@gmail.com> wrote:
+> What do you suggest for this?.
 
-On Fri, Oct 28, 2016 at 3:39 PM, Vijay Kilari <vijay.kilari@gmail.com> wrote:
-> On Fri, Oct 28, 2016 at 2:33 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->> On 28 October 2016 at 08:00, Vijay Kilari <vijay.kilari@gmail.com> wrote:
->>> On Thu, Oct 27, 2016 at 9:33 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>> On 25 October 2016 at 13:12,  <vijay.kilari@gmail.com> wrote:
->>>>> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>>>>
->>>>> Add helper API to read MIDR_EL1 registers to fetch
->>>>> cpu identification information. This helps in
->>>>> adding errata's and architecture specific features.
->>>>>
->>>>> This is implemented only for arm architecture.
->>>>>
->>>>> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->>
->>>>> diff --git a/util/Makefile.objs b/util/Makefile.objs
->>>>> index 36c7dcc..d14a455 100644
->>>>> --- a/util/Makefile.objs
->>>>> +++ b/util/Makefile.objs
->>>>> @@ -37,3 +37,4 @@ util-obj-y += log.o
->>>>>  util-obj-y += qdist.o
->>>>>  util-obj-y += qht.o
->>>>>  util-obj-y += range.o
->>>>> +util-obj-y += aarch64-cpuid.o
->>
->>>>
->>>>> +#include "qemu/cutils.h"
->>>>> +#include "qemu/aarch64-cpuid.h"
->>>>> +
->>>>> +#if defined(__aarch64__)
->>>>> +static uint64_t qemu_read_aarch64_midr_el1(void)
->>>>> +{
->>>>> +#ifdef CONFIG_LINUX
->>>>
->>>> When will CONFIG_LINUX not be defined but __aarch64__ is?
->>>   The contents of this file is compiled only for aarch64
->>
->> Your makefile change compiles it for everything.
->>
->>> and hence
->>> all the contents are under this __aarch64__.
->>> Also the code is only for linux, have added CONFIG_LINUX.
->>
->> ...and you haven't answered the question: in what
->> circumstances could __aarch64__ be defined but
->> CONFIG_LINUX is not, ie why is there any point in
->> checking both defines?
->
-> Ok. You mean __aarch64__ and __linux__ both are defined by gcc.
-> we can rely on __aarch64__ define  here?.
->
-> AFAIK, the caller of this function bufferiszero.c is compiled
-> for everything, I case of bufferiszero.c is compiled for other than
-> linux for aarch64, compilation might fail. In such case, the header file
-> needs to have dummy/empty functions.
+Some general principles:
+ * be consistent
+ * don't check things you don't need to
+ * prefer functions that exist in all configs (which may be
+   dummy functions in some cases) rather than guarding
+   callsites and #include lines with #ifdefs
 
-What do you suggest for this?.
-
-Regards
-Vijay
+thanks
+-- PMM

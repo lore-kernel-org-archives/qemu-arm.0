@@ -1,132 +1,157 @@
-Received: by 10.25.150.194 with SMTP id y185csp1598171lfd;
-        Tue, 8 Nov 2016 05:47:54 -0800 (PST)
-X-Received: by 10.202.50.133 with SMTP id y127mr1995392oiy.101.1478612874723;
-        Tue, 08 Nov 2016 05:47:54 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o70si17964015ota.190.2016.11.08.05.47.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Nov 2016 05:47:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Received: by 10.25.150.194 with SMTP id y185csp1782389lfd;
+        Tue, 8 Nov 2016 12:21:47 -0800 (PST)
+X-Received: by 10.237.42.40 with SMTP id c37mr15111087qtd.92.1478636507565;
+        Tue, 08 Nov 2016 12:21:47 -0800 (PST)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id m62si5679276qkb.14.2016.11.08.12.21.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 08 Nov 2016 12:21:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33146 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c46kj-0004Y3-EQ
-	for alex.bennee@linaro.org; Tue, 08 Nov 2016 08:47:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43098)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1c46jb-00045g-7r
-	for qemu-devel@nongnu.org; Tue, 08 Nov 2016 08:46:44 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1c46jW-0000FG-7u
-	for qemu-devel@nongnu.org; Tue, 08 Nov 2016 08:46:43 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:50434)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1c46jV-0000F2-Ur; Tue, 08 Nov 2016 08:46:38 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue102) with ESMTPSA (Nemesis) id 0LxfAZ-1csnQZ2KmR-017G2R;
-	Tue, 08 Nov 2016 14:46:32 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <1478607473-25851-1-git-send-email-thuth@redhat.com>
-	<1478607473-25851-4-git-send-email-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <4a2c93db-875c-e64f-2ecb-253e6a15c834@vivier.eu>
-Date: Tue, 8 Nov 2016 14:46:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C085A19CF46;
+	Tue,  8 Nov 2016 20:21:44 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uA8KLfU9000643;
+	Tue, 8 Nov 2016 15:21:42 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: pbonzini@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org,
+        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
+        christoffer.dall@linaro.org, Andrew Jones <drjones@redhat.com>
+Subject: [kvm-unit-tests PATCH v4 00/11] arm/arm64: add gic framework
+Date: Tue,  8 Nov 2016 21:21:28 +0100
+Message-Id: <1478636499-14339-1-git-send-email-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1478607473-25851-4-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:mvioyfPB+KTBwsqqMjicO9FWuRTocVzCnSI5h1u3KkIGQ0z8Wd9
-	ppUVha8oLhFghsaH1ZxrcYDlw/27eX4HiUmOp5IgYskEWq4YgqYjdhAGxNRj/qcUrnx+9g+
-	NLk4+cnljYF9jHMlNx5i29Bhy5G1YFY9P5B1zrRDlAjqvc8PIoY2QjQg9sm+YUaP8dLHeVR
-	wlvbzKDkQ8Axsk9X3FGjQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:vZg30VqKza8=:WxEf/HKpfq043UPrdZafU3
-	lvWmhFPgkKu8B4PgPOuHGg7wdrFeSQ127O3WWmDr82s6fMhMw8HB7hGIIy8DLCm3t6EwGqYm7
-	cWoqYU+Yyv7xTHU/TRirX+9y47TcfWYxrC2NZtoE9qQbzcZuCQt8Ogg1mPPuriG4XFF+4Tsoy
-	NuS+qCGDcpn+T7SNwbCcKUUN2oQZJNe8PDymAq2Au6okivSqV9v/t0z0V42XNQh6tg9ExYxeG
-	rII8RW1gpDW2fAuFSdInNHL8pizVlvcKvNItOfpaoKjTME6HcW8QxTBb+erC6YTuav2MKWNTL
-	8qKKUWCs6vvRYtNkVMNnJAT2uAFx+Vx7io3WoKYG82N+wjW7Lb91R6c4LFGXeZuiSHgsYHKmE
-	KqijQhABM24cmDwbjywLtMG7fXVhqEWQM6us3HtbcDyxni+qSafmnClVLE8Gpfwuh7Xjccsyu
-	S2gVs9vgi5lEuIzyuuT7RZXFgsXULm/m32vOcbZD+0hgz+ZbcN71M99U9VL2nrWXzCctei3HV
-	hujZ0XSkJaUlHWWKSud0kgQaKigHu0q8sEdfXweCzJx44JuFVWR3QHTR9xPl9kkiQ66Lh25Tp
-	dVofbEo58Plm5ed1wX5dAUl1ZXwVNrOnFAu1uBg73rF9NTf7R3W7nCaSfGCjH3ks9Lfqca3gN
-	8JIXrqVXDmnJSPVvYAx6PW15KGNRce7BUX9+tB2pfPZeUWHSn59VEeWkFYEiZz9aDOfPUna8v
-	pVtERMdcf7+D4eCP
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-devel] [PATCH v2 3/5] m68k: Update the 68k sections in
- the MAINTAINERS file
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <famz@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XomGYi+N7FpE
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Tue, 08 Nov 2016 20:21:46 +0000 (UTC)
+X-TUID: vHuDjnJhc2IO
 
-Le 08/11/2016 à 13:17, Thomas Huth a écrit :
-> disas/m68k.c obviously belong to the m68k CPU section in
-> the MAINTAINERS file, but remove the hw/m68k/ directory
-> here since it only contains machine (not CPU) related
-> files, as requested by Laurent. Add the machine related
-> files to the right machine sections instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+v4:
+ - Eric's r-b's
+ - Andre's suggestion to only take defines we need
+ - several other changes listed in individual patches
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+v3:
+ - Rebased on latest master
+ - Added Alex's r-b's
 
-> ---
->  MAINTAINERS | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 451e7cc..5d8b584 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -148,7 +148,7 @@ M68K
->  M: Laurent Vivier <laurent@vivier.eu>
->  S: Maintained
->  F: target-m68k/
-> -F: hw/m68k/
-> +F: disas/m68k.c
->  
->  MicroBlaze
->  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> @@ -550,6 +550,7 @@ M68K Machines
->  an5206
->  S: Orphan
->  F: hw/m68k/an5206.c
-> +F: hw/m68k/mcf5206.c
->  
->  dummy_m68k
->  S: Orphan
-> @@ -558,6 +559,9 @@ F: hw/m68k/dummy_m68k.c
->  mcf5208
->  S: Orphan
->  F: hw/m68k/mcf5208.c
-> +F: hw/m68k/mcf_intc.c
-> +F: hw/char/mcf_uart.c
-> +F: hw/net/mcf_fec.c
->  
->  MicroBlaze Machines
->  -------------------
-> 
+v2:
+ Rebased on latest master + my "populate argv[0]" series (will
+ send a REPOST for that shortly. Additionally a few patches got
+ fixes/features;
+ 07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
+       all interrupts as non-secure Group-1" in order to continue
+       working over TCG, as the gicv3 code for TCG removed a hack
+       it had there to make Linux happy.
+ 08/10 added more output for when things fail (if they fail)
+ 09/10 switched gicv3 broadcast implementation to using IRM. This
+       found a bug in a recent (but not tip) kernel, which I was
+       about to fix, but then I saw MarcZ beat me to it.
+ 10/10 actually check that the input irq is the received irq
 
+
+Import defines, and steal enough helper functions, from Linux to
+enable programming of the gic (v2 and v3). Then use the framework
+to add an initial test (an ipi test; self, target-list, broadcast).
+
+It's my hope that this framework will be a suitable base on which
+more tests may be easily added, particularly because we have
+vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
+vgic-new and tcg gicv3 are merged now)
+
+To run it, along with other tests, just do
+
+ ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+ make
+ export QEMU=$PATH_TO_QEMU
+ ./run_tests.sh
+
+To run it separately do, e.g.
+
+$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 123 -machine gic-version=3 -append ipi
+      ^^ note, we can go nuts with nr-cpus on TCG :-)
+
+Or, a KVM example using a different "sender" cpu and irq (other than zero)
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
+
+
+Patches:
+01-05: fixes and functionality needed by the later gic patches
+06-07: enable gicv2 and gicv2 IPI test
+08-10: enable gicv3 and gicv3 IPI test
+   11: extend the IPI tests to take variable sender and irq
+
+Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v4
+
+
+Andrew Jones (10):
+  lib: xstr: allow multiple args
+  arm64: fix get_"sysreg32" and make MPIDR 64bit
+  arm/arm64: smp: support more than 8 cpus
+  arm/arm64: add some delay routines
+  arm/arm64: irq enable/disable
+  arm/arm64: add initial gicv2 support
+  arm/arm64: gicv2: add an IPI test
+  arm/arm64: add initial gicv3 support
+  arm/arm64: gicv3: add an IPI test
+  arm/arm64: gic: don't just use zero
+
+Peter Xu (1):
+  libcflat: add IS_ALIGNED() macro, and page sizes
+
+ arm/Makefile.common        |   7 +-
+ arm/gic.c                  | 417 +++++++++++++++++++++++++++++++++++++++++++++
+ arm/run                    |  19 ++-
+ arm/selftest.c             |   5 +-
+ arm/unittests.cfg          |  13 ++
+ lib/arm/asm/arch_gicv3.h   |  65 +++++++
+ lib/arm/asm/gic-v2.h       |  28 +++
+ lib/arm/asm/gic-v3.h       |  92 ++++++++++
+ lib/arm/asm/gic.h          |  51 ++++++
+ lib/arm/asm/processor.h    |  38 ++++-
+ lib/arm/asm/setup.h        |   4 +-
+ lib/arm/gic.c              | 131 ++++++++++++++
+ lib/arm/processor.c        |  15 ++
+ lib/arm/setup.c            |  12 +-
+ lib/arm64/asm/arch_gicv3.h |  66 +++++++
+ lib/arm64/asm/gic-v2.h     |   1 +
+ lib/arm64/asm/gic-v3.h     |   1 +
+ lib/arm64/asm/gic.h        |   1 +
+ lib/arm64/asm/processor.h  |  53 +++++-
+ lib/arm64/asm/sysreg.h     |  44 +++++
+ lib/arm64/processor.c      |  15 ++
+ lib/libcflat.h             |  10 +-
+ 22 files changed, 1062 insertions(+), 26 deletions(-)
+ create mode 100644 arm/gic.c
+ create mode 100644 lib/arm/asm/arch_gicv3.h
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic-v3.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm/gic.c
+ create mode 100644 lib/arm64/asm/arch_gicv3.h
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic-v3.h
+ create mode 100644 lib/arm64/asm/gic.h
+ create mode 100644 lib/arm64/asm/sysreg.h
+
+-- 
+2.7.4

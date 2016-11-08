@@ -1,55 +1,55 @@
-Received: by 10.25.150.194 with SMTP id y185csp1556105lfd;
-        Tue, 8 Nov 2016 04:18:14 -0800 (PST)
-X-Received: by 10.202.63.214 with SMTP id m205mr7570349oia.123.1478607494583;
-        Tue, 08 Nov 2016 04:18:14 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp1556147lfd;
+        Tue, 8 Nov 2016 04:18:20 -0800 (PST)
+X-Received: by 10.202.108.8 with SMTP id h8mr1478345oic.146.1478607500391;
+        Tue, 08 Nov 2016 04:18:20 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r188si18803913oie.223.2016.11.08.04.18.14
+        by mx.google.com with ESMTPS id o187si18886195oia.11.2016.11.08.04.18.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Nov 2016 04:18:14 -0800 (PST)
+        Tue, 08 Nov 2016 04:18:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60522 helo=lists.gnu.org)
+Received: from localhost ([::1]:60525 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c45Lx-0001D2-RR
-	for alex.bennee@linaro.org; Tue, 08 Nov 2016 07:18:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45872)
+	id 1c45M3-0001Jv-Ld
+	for alex.bennee@linaro.org; Tue, 08 Nov 2016 07:18:19 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45960)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1c45Lr-0001AJ-FY
-	for qemu-arm@nongnu.org; Tue, 08 Nov 2016 07:18:08 -0500
+	(envelope-from <thuth@redhat.com>) id 1c45Ly-0001HP-Nr
+	for qemu-arm@nongnu.org; Tue, 08 Nov 2016 07:18:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1c45Ln-0003wY-G6
-	for qemu-arm@nongnu.org; Tue, 08 Nov 2016 07:18:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53190)
+	(envelope-from <thuth@redhat.com>) id 1c45Lx-00044u-RQ
+	for qemu-arm@nongnu.org; Tue, 08 Nov 2016 07:18:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50498)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1c45Ln-0003w5-Aj; Tue, 08 Nov 2016 07:18:03 -0500
+	id 1c45Lx-00044V-LP; Tue, 08 Nov 2016 07:18:13 -0500
 Received: from int-mx10.intmail.prod.int.phx2.redhat.com
 	(int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CCEB7AE99;
-	Tue,  8 Nov 2016 12:18:02 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id F18C7804F8;
+	Tue,  8 Nov 2016 12:18:12 +0000 (UTC)
 Received: from thh440s.redhat.com (ovpn-116-42.ams2.redhat.com [10.36.116.42])
 	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with
-	ESMTP id uA8CHsvj027755; Tue, 8 Nov 2016 07:17:59 -0500
+	ESMTP id uA8CHsvn027755; Tue, 8 Nov 2016 07:18:10 -0500
 From: Thomas Huth <thuth@redhat.com>
 To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Date: Tue,  8 Nov 2016 13:17:49 +0100
-Message-Id: <1478607473-25851-2-git-send-email-thuth@redhat.com>
+Date: Tue,  8 Nov 2016 13:17:53 +0100
+Message-Id: <1478607473-25851-6-git-send-email-thuth@redhat.com>
 In-Reply-To: <1478607473-25851-1-git-send-email-thuth@redhat.com>
 References: <1478607473-25851-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 08 Nov 2016 12:18:02 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 08 Nov 2016 12:18:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/5] MAINTAINERS: Add some ARM related files to
- the corresponding sections
+Subject: [Qemu-arm] [PATCH 5/5] MAINTAINERS: Add Fam and Jsnow for Bitmap
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,83 +68,49 @@ Cc: Fam Zheng <famz@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tpo7k/0aW8Yn
+X-TUID: fSQoH2BQD9N3
 
-The files w/cpu/a*mpcore.c are already assigned to the ARM CPU
-section, but the corresponding headers include/hw/cpu/a*mpcore.h
-are still missing.
+From: John Snow <jsnow@redhat.com>
 
-The file hw/*/imx* are already assigned to the i.MX31 machine, but
-the corresponding header files include/hw/*/imx* are still missing.
+These files are currently unmaintained.
 
-The file hw/misc/arm_integrator_debug.c seems to belong to Integrator
-CP, hw/cpu/realview_mpcore.c seems to belong to Real View, and
-hw/misc/mst_fpga.c seems to belong to PXA2XX.
+I'm proposing that Fam and I co-maintain them; under the model that
+whomever between us isn't authoring a given series will be responsible
+for reviewing it.
 
-And the files hw/misc/zynq* and include/hw/misc/zynq* seem to belong
-to the Xilinx Zynq machine.
-
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: John Snow <jsnow@redhat.com>
+Acked-by: Fam Zheng <famz@redhat.com>
+Acked-by: Max Reitz <mreitz@redhat.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- MAINTAINERS | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ MAINTAINERS | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 82c814a..d7eef43 100644
+index 05b1c97..d8575ab 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -118,6 +118,7 @@ S: Maintained
- F: target-arm/
- F: hw/arm/
- F: hw/cpu/a*mpcore.c
-+F: include/hw/cpu/a*mpcore.h
- F: disas/arm.c
- F: disas/arm-a64.cc
- F: disas/libvixl/
-@@ -420,6 +421,7 @@ M: Peter Chubb <peter.chubb@nicta.com.au>
- L: qemu-arm@nongnu.org
- S: Odd fixes
- F: hw/*/imx*
-+F: include/hw/*/imx*
- F: hw/arm/kzm.c
- F: include/hw/arm/fsl-imx31.h
+@@ -1158,6 +1158,20 @@ F: block/qapi.c
+ F: qapi/block*.json
+ T: git git://repo.or.cz/qemu/armbru.git block-next
  
-@@ -428,6 +430,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
++Dirty Bitmaps
++M: Fam Zheng <famz@redhat.com>
++M: John Snow <jsnow@redhat.com>
++L: qemu-block@nongnu.org
++S: Supported
++F: util/hbitmap.c
++F: block/dirty-bitmap.c
++F: include/qemu/hbitmap.h
++F: include/block/dirty-bitmap.h
++F: tests/test-hbitmap.c
++F: docs/bitmaps.md
++T: git git://github.com/famz/qemu.git bitmaps
++T: git git://github.com/jnsnow/qemu.git bitmaps
++
+ Character device backends
+ M: Paolo Bonzini <pbonzini@redhat.com>
  S: Maintained
- F: hw/arm/integratorcp.c
-+F: hw/misc/arm_integrator_debug.c
- 
- Musicpal
- M: Jan Kiszka <jan.kiszka@web.de>
-@@ -452,6 +455,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/realview*
-+F: hw/cpu/realview_mpcore.c
- F: hw/intc/realview_gic.c
- F: include/hw/intc/realview_gic.h
- 
-@@ -464,6 +468,7 @@ F: hw/arm/spitz.c
- F: hw/arm/tosa.c
- F: hw/arm/z2.c
- F: hw/*/pxa2xx*
-+F: hw/misc/mst_fpga.c
- F: include/hw/arm/pxa.h
- 
- Stellaris
-@@ -485,7 +490,8 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/*/xilinx_*
- F: hw/*/cadence_*
--F: hw/misc/zynq_slcr.c
-+F: hw/misc/zynq*
-+F: include/hw/misc/zynq*
- X: hw/ssi/xilinx_*
- 
- Xilinx ZynqMP
 -- 
 1.8.3.1
 

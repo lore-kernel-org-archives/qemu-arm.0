@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id n3sm43482896wjq.34.2016.11.09.06.58.03
+        by smtp.gmail.com with ESMTPSA id w66sm7455635wme.4.2016.11.09.06.58.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Nov 2016 06:58:05 -0800 (PST)
+        Wed, 09 Nov 2016 06:58:10 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 079AB3E04A5;
+	by zen.linaro.local (Postfix) with ESMTP id 2DA1F3E04AC;
 	Wed,  9 Nov 2016 14:57:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: pbonzini@redhat.com
@@ -22,129 +22,109 @@ Cc: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org,
 	claudio.fontana@huawei.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [PATCH v6 16/19] target-arm: ensure BQL taken for ARM_CP_IO register access
-Date: Wed,  9 Nov 2016 14:57:45 +0000
-Message-Id: <20161109145748.27282-17-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PATCH v6 18/19] target-arm: don't generate WFE/YIELD calls for MTTCG
+Date: Wed,  9 Nov 2016 14:57:47 +0000
+Message-Id: <20161109145748.27282-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.10.1
 In-Reply-To: <20161109145748.27282-1-alex.bennee@linaro.org>
 References: <20161109145748.27282-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PiPB9v+jv7cd
+X-TUID: EzxUGVb/ObJ9
 
-Most ARMCPRegInfo structures just allow updating of the CPU field.
-However some have more complex operations that *may* be have cross vCPU
-effects therefor need to be serialised. The most obvious examples at the
-moment are things that affect the GICv3 IRQ controller. To avoid
-applying this requirement to all registers with custom access functions
-we check for if the type is marked ARM_CP_IO.
-
-By default all MMIO access to devices already takes the BQL to serialise
-hardware emulation.
+The WFE and YIELD instructions are really only hints and in TCG's case
+they were useful to move the scheduling on from one vCPU to the next. In
+the parallel context (MTTCG) this just causes an unnecessary cpu_exit
+and contention of the BQL.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/intc/arm_gicv3_cpuif.c |  3 +++
- target-arm/op_helper.c    | 39 +++++++++++++++++++++++++++++++++++----
- 2 files changed, 38 insertions(+), 4 deletions(-)
+ target-arm/op_helper.c     |  7 +++++++
+ target-arm/translate-a64.c |  8 ++++++--
+ target-arm/translate.c     | 20 ++++++++++++++++----
+ 3 files changed, 29 insertions(+), 6 deletions(-)
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index bca30c4..8ea4b5b 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -13,6 +13,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
- #include "trace.h"
- #include "gicv3_internal.h"
- #include "cpu.h"
-@@ -128,6 +129,8 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
-     ARMCPU *cpu = ARM_CPU(cs->cpu);
-     CPUARMState *env = &cpu->env;
- 
-+    g_assert(qemu_mutex_iothread_locked());
-+
-     trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
-                              cs->hppi.grp, cs->hppi.prio);
- 
 diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
-index cd94216..4f0c754 100644
+index 41beabc..3a36bf9 100644
 --- a/target-arm/op_helper.c
 +++ b/target-arm/op_helper.c
-@@ -17,6 +17,7 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/main-loop.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
- #include "internals.h"
-@@ -734,28 +735,58 @@ void HELPER(set_cp_reg)(CPUARMState *env, void *rip, uint32_t value)
- {
-     const ARMCPRegInfo *ri = rip;
+@@ -435,6 +435,13 @@ void HELPER(yield)(CPUARMState *env)
+     ARMCPU *cpu = arm_env_get_cpu(env);
+     CPUState *cs = CPU(cpu);
  
--    ri->writefn(env, ri, value);
-+    if (ri->type & ARM_CP_IO) {
-+        qemu_mutex_lock_iothread();
-+        ri->writefn(env, ri, value);
-+        qemu_mutex_unlock_iothread();
-+    } else {
-+        ri->writefn(env, ri, value);
-+    }
- }
- 
- uint32_t HELPER(get_cp_reg)(CPUARMState *env, void *rip)
- {
-     const ARMCPRegInfo *ri = rip;
-+    uint32_t res;
- 
--    return ri->readfn(env, ri);
-+    if (ri->type & ARM_CP_IO) {
-+        qemu_mutex_lock_iothread();
-+        res = ri->readfn(env, ri);
-+        qemu_mutex_unlock_iothread();
-+    } else {
-+        res = ri->readfn(env, ri);
-+    }
++    /* When running in MTTCG we don't generate jumps to the yield and
++     * WFE helpers as it won't affect the scheduling of other vCPUs.
++     * If we wanted to more completely model WFE/SEV so we don't busy
++     * spin unnecessarily we would need to do something more involved.
++     */
++    g_assert(!parallel_cpus);
 +
-+    return res;
+     /* This is a non-trappable hint instruction that generally indicates
+      * that the guest is currently busy-looping. Yield control back to the
+      * top level loop so that a more deserving VCPU has a chance to run.
+diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+index de48747..6e44838 100644
+--- a/target-arm/translate-a64.c
++++ b/target-arm/translate-a64.c
+@@ -1341,10 +1341,14 @@ static void handle_hint(DisasContext *s, uint32_t insn,
+         s->is_jmp = DISAS_WFI;
+         return;
+     case 1: /* YIELD */
+-        s->is_jmp = DISAS_YIELD;
++        if (!parallel_cpus) {
++            s->is_jmp = DISAS_YIELD;
++        }
+         return;
+     case 2: /* WFE */
+-        s->is_jmp = DISAS_WFE;
++        if (!parallel_cpus) {
++            s->is_jmp = DISAS_WFE;
++        }
+         return;
+     case 4: /* SEV */
+     case 5: /* SEVL */
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 0ad9070..9417e8e 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -4368,20 +4368,32 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+     gen_rfe(s, pc, load_cpu_field(spsr));
  }
  
- void HELPER(set_cp_reg64)(CPUARMState *env, void *rip, uint64_t value)
++/*
++ * For WFI we will halt the vCPU until an IRQ. For WFE and YIELD we
++ * only call the helper when running single threaded TCG code to ensure
++ * the next round-robin scheduled vCPU gets a crack. In MTTCG mode we
++ * just skip this instruction. Currently the SEV/SEVL instructions
++ * which are *one* of many ways to wake the CPU from WFE are not
++ * implemented so we can't sleep like WFI does.
++ */
+ static void gen_nop_hint(DisasContext *s, int val)
  {
-     const ARMCPRegInfo *ri = rip;
- 
--    ri->writefn(env, ri, value);
-+    if (ri->type & ARM_CP_IO) {
-+        qemu_mutex_lock_iothread();
-+        ri->writefn(env, ri, value);
-+        qemu_mutex_unlock_iothread();
-+    } else {
-+        ri->writefn(env, ri, value);
-+    }
- }
- 
- uint64_t HELPER(get_cp_reg64)(CPUARMState *env, void *rip)
- {
-     const ARMCPRegInfo *ri = rip;
-+    uint64_t res;
-+
-+    if (ri->type & ARM_CP_IO) {
-+        qemu_mutex_lock_iothread();
-+        res = ri->readfn(env, ri);
-+        qemu_mutex_unlock_iothread();
-+    } else {
-+        res = ri->readfn(env, ri);
-+    }
- 
--    return ri->readfn(env, ri);
-+    return res;
- }
- 
- void HELPER(msr_i_pstate)(CPUARMState *env, uint32_t op, uint32_t imm)
+     switch (val) {
+     case 1: /* yield */
+-        gen_set_pc_im(s, s->pc);
+-        s->is_jmp = DISAS_YIELD;
++        if (!parallel_cpus) {
++            gen_set_pc_im(s, s->pc);
++            s->is_jmp = DISAS_YIELD;
++        }
+         break;
+     case 3: /* wfi */
+         gen_set_pc_im(s, s->pc);
+         s->is_jmp = DISAS_WFI;
+         break;
+     case 2: /* wfe */
+-        gen_set_pc_im(s, s->pc);
+-        s->is_jmp = DISAS_WFE;
++        if (!parallel_cpus) {
++            gen_set_pc_im(s, s->pc);
++            s->is_jmp = DISAS_WFE;
++        }
+         break;
+     case 4: /* sev */
+     case 5: /* sevl */
 -- 
 2.10.1

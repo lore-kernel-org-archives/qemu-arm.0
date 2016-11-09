@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id g17sm43532340wjs.38.2016.11.09.06.58.02
+        by smtp.gmail.com with ESMTPSA id n3sm43482896wjq.34.2016.11.09.06.58.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Nov 2016 06:58:03 -0800 (PST)
+        Wed, 09 Nov 2016 06:58:05 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id D7C7D3E0481;
-	Wed,  9 Nov 2016 14:57:57 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 079AB3E04A5;
+	Wed,  9 Nov 2016 14:57:58 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: pbonzini@redhat.com
 Cc: qemu-devel@nongnu.org,
@@ -22,197 +22,129 @@ Cc: qemu-devel@nongnu.org,
 	peter.maydell@linaro.org,
 	claudio.fontana@huawei.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v6 14/19] target-arm/powerctl: defer cpu reset work to CPU context
-Date: Wed,  9 Nov 2016 14:57:43 +0000
-Message-Id: <20161109145748.27282-15-alex.bennee@linaro.org>
+	qemu-arm@nongnu.org (open list:ARM cores)
+Subject: [PATCH v6 16/19] target-arm: ensure BQL taken for ARM_CP_IO register access
+Date: Wed,  9 Nov 2016 14:57:45 +0000
+Message-Id: <20161109145748.27282-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.10.1
 In-Reply-To: <20161109145748.27282-1-alex.bennee@linaro.org>
 References: <20161109145748.27282-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Y8lxPVkueJR7
+X-TUID: PiPB9v+jv7cd
 
-When switching a new vCPU on we want to complete a bunch of the setup
-work before we start scheduling the vCPU thread. To do this cleanly we
-defer vCPU setup to async work which will run the vCPUs execution
-context as the thread is woken up. The scheduling of the work will kick
-the vCPU awake.
+Most ARMCPRegInfo structures just allow updating of the CPU field.
+However some have more complex operations that *may* be have cross vCPU
+effects therefor need to be serialised. The most obvious examples at the
+moment are things that affect the GICv3 IRQ controller. To avoid
+applying this requirement to all registers with custom access functions
+we check for if the type is marked ARM_CP_IO.
 
-This avoids potential races in MTTCG system emulation.
+By default all MMIO access to devices already takes the BQL to serialise
+hardware emulation.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target-arm/arm-powerctl.c | 144 +++++++++++++++++++++++++++-------------------
- 1 file changed, 86 insertions(+), 58 deletions(-)
+ hw/intc/arm_gicv3_cpuif.c |  3 +++
+ target-arm/op_helper.c    | 39 +++++++++++++++++++++++++++++++++++----
+ 2 files changed, 38 insertions(+), 4 deletions(-)
 
-diff --git a/target-arm/arm-powerctl.c b/target-arm/arm-powerctl.c
-index fbb7a15..0ef4b29 100644
---- a/target-arm/arm-powerctl.c
-+++ b/target-arm/arm-powerctl.c
-@@ -48,11 +48,85 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
-     return NULL;
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index bca30c4..8ea4b5b 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -13,6 +13,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/main-loop.h"
+ #include "trace.h"
+ #include "gicv3_internal.h"
+ #include "cpu.h"
+@@ -128,6 +129,8 @@ void gicv3_cpuif_update(GICv3CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs->cpu);
+     CPUARMState *env = &cpu->env;
+ 
++    g_assert(qemu_mutex_iothread_locked());
++
+     trace_gicv3_cpuif_update(gicv3_redist_affid(cs), cs->hppi.irq,
+                              cs->hppi.grp, cs->hppi.prio);
+ 
+diff --git a/target-arm/op_helper.c b/target-arm/op_helper.c
+index cd94216..4f0c754 100644
+--- a/target-arm/op_helper.c
++++ b/target-arm/op_helper.c
+@@ -17,6 +17,7 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/main-loop.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "internals.h"
+@@ -734,28 +735,58 @@ void HELPER(set_cp_reg)(CPUARMState *env, void *rip, uint32_t value)
+ {
+     const ARMCPRegInfo *ri = rip;
+ 
+-    ri->writefn(env, ri, value);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        ri->writefn(env, ri, value);
++        qemu_mutex_unlock_iothread();
++    } else {
++        ri->writefn(env, ri, value);
++    }
  }
  
-+struct cpu_on_info {
-+    uint64_t entry;
-+    uint64_t context_id;
-+    uint32_t target_el;
-+    bool target_aa64;
-+};
-+
-+
-+static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
-+                                      run_on_cpu_data data)
-+{
-+    ARMCPU *target_cpu = ARM_CPU(target_cpu_state);
-+    struct cpu_on_info *info = (struct cpu_on_info *) data.host_ptr;
-+
-+    /* Initialize the cpu we are turning on */
-+    cpu_reset(target_cpu_state);
-+    target_cpu->powered_off = false;
-+    target_cpu_state->halted = 0;
-+
-+    if (info->target_aa64) {
-+        if ((info->target_el < 3) && arm_feature(&target_cpu->env, ARM_FEATURE_EL3)) {
-+            /*
-+             * As target mode is AArch64, we need to set lower
-+             * exception level (the requested level 2) to AArch64
-+             */
-+            target_cpu->env.cp15.scr_el3 |= SCR_RW;
-+        }
-+
-+        if ((info->target_el < 2) && arm_feature(&target_cpu->env, ARM_FEATURE_EL2)) {
-+            /*
-+             * As target mode is AArch64, we need to set lower
-+             * exception level (the requested level 1) to AArch64
-+             */
-+            target_cpu->env.cp15.hcr_el2 |= HCR_RW;
-+        }
-+
-+        target_cpu->env.pstate = aarch64_pstate_mode(info->target_el, true);
-+    } else {
-+        /* We are requested to boot in AArch32 mode */
-+        static uint32_t mode_for_el[] = { 0,
-+                                          ARM_CPU_MODE_SVC,
-+                                          ARM_CPU_MODE_HYP,
-+                                          ARM_CPU_MODE_SVC };
-+
-+        cpsr_write(&target_cpu->env, mode_for_el[info->target_el], CPSR_M,
-+                   CPSRWriteRaw);
-+    }
-+
-+    if (info->target_el == 3) {
-+        /* Processor is in secure mode */
-+        target_cpu->env.cp15.scr_el3 &= ~SCR_NS;
-+    } else {
-+        /* Processor is not in secure mode */
-+        target_cpu->env.cp15.scr_el3 |= SCR_NS;
-+    }
-+
-+    /* We check if the started CPU is now at the correct level */
-+    assert(info->target_el == arm_current_el(&target_cpu->env));
-+
-+    if (info->target_aa64) {
-+        target_cpu->env.xregs[0] = info->context_id;
-+        target_cpu->env.thumb = false;
-+    } else {
-+        target_cpu->env.regs[0] = info->context_id;
-+        target_cpu->env.thumb = info->entry & 1;
-+        info->entry &= 0xfffffffe;
-+    }
-+
-+    /* Start the new CPU at the requested address */
-+    cpu_set_pc(target_cpu_state, info->entry);
-+    g_free(info);
-+}
-+
- int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
-                    uint32_t target_el, bool target_aa64)
+ uint32_t HELPER(get_cp_reg)(CPUARMState *env, void *rip)
  {
-     CPUState *target_cpu_state;
-     ARMCPU *target_cpu;
-+    struct cpu_on_info *info;
+     const ARMCPRegInfo *ri = rip;
++    uint32_t res;
  
-     DPRINTF("cpu %" PRId64 " (EL %d, %s) @ 0x%" PRIx64 " with R0 = 0x%" PRIx64
-             "\n", cpuid, target_el, target_aa64 ? "aarch64" : "aarch32", entry,
-@@ -109,64 +183,18 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
-         return QEMU_ARM_POWERCTL_INVALID_PARAM;
-     }
- 
--    /* Initialize the cpu we are turning on */
--    cpu_reset(target_cpu_state);
--    target_cpu->powered_off = false;
--    target_cpu_state->halted = 0;
--
--    if (target_aa64) {
--        if ((target_el < 3) && arm_feature(&target_cpu->env, ARM_FEATURE_EL3)) {
--            /*
--             * As target mode is AArch64, we need to set lower
--             * exception level (the requested level 2) to AArch64
--             */
--            target_cpu->env.cp15.scr_el3 |= SCR_RW;
--        }
--
--        if ((target_el < 2) && arm_feature(&target_cpu->env, ARM_FEATURE_EL2)) {
--            /*
--             * As target mode is AArch64, we need to set lower
--             * exception level (the requested level 1) to AArch64
--             */
--            target_cpu->env.cp15.hcr_el2 |= HCR_RW;
--        }
--
--        target_cpu->env.pstate = aarch64_pstate_mode(target_el, true);
--    } else {
--        /* We are requested to boot in AArch32 mode */
--        static uint32_t mode_for_el[] = { 0,
--                                          ARM_CPU_MODE_SVC,
--                                          ARM_CPU_MODE_HYP,
--                                          ARM_CPU_MODE_SVC };
--
--        cpsr_write(&target_cpu->env, mode_for_el[target_el], CPSR_M,
--                   CPSRWriteRaw);
--    }
--
--    if (target_el == 3) {
--        /* Processor is in secure mode */
--        target_cpu->env.cp15.scr_el3 &= ~SCR_NS;
--    } else {
--        /* Processor is not in secure mode */
--        target_cpu->env.cp15.scr_el3 |= SCR_NS;
--    }
--
--    /* We check if the started CPU is now at the correct level */
--    assert(target_el == arm_current_el(&target_cpu->env));
--
--    if (target_aa64) {
--        target_cpu->env.xregs[0] = context_id;
--        target_cpu->env.thumb = false;
--    } else {
--        target_cpu->env.regs[0] = context_id;
--        target_cpu->env.thumb = entry & 1;
--        entry &= 0xfffffffe;
--    }
--
--    /* Start the new CPU at the requested address */
--    cpu_set_pc(target_cpu_state, entry);
--
--    qemu_cpu_kick(target_cpu_state);
-+    /* To avoid racing with a CPU we are just kicking off we do the
-+     * final bit of preparation for the work in the target CPUs
-+     * context.
-+     */
-+    info = g_new(struct cpu_on_info, 1);
-+    info->entry = entry;
-+    info->context_id = context_id;
-+    info->target_el = target_el;
-+    info->target_aa64 = target_aa64;
+-    return ri->readfn(env, ri);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        res = ri->readfn(env, ri);
++        qemu_mutex_unlock_iothread();
++    } else {
++        res = ri->readfn(env, ri);
++    }
 +
-+    async_run_on_cpu(target_cpu_state, arm_set_cpu_on_async_work,
-+                     RUN_ON_CPU_HOST_PTR(info));
++    return res;
+ }
  
-     /* We are good to go */
-     return QEMU_ARM_POWERCTL_RET_SUCCESS;
+ void HELPER(set_cp_reg64)(CPUARMState *env, void *rip, uint64_t value)
+ {
+     const ARMCPRegInfo *ri = rip;
+ 
+-    ri->writefn(env, ri, value);
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        ri->writefn(env, ri, value);
++        qemu_mutex_unlock_iothread();
++    } else {
++        ri->writefn(env, ri, value);
++    }
+ }
+ 
+ uint64_t HELPER(get_cp_reg64)(CPUARMState *env, void *rip)
+ {
+     const ARMCPRegInfo *ri = rip;
++    uint64_t res;
++
++    if (ri->type & ARM_CP_IO) {
++        qemu_mutex_lock_iothread();
++        res = ri->readfn(env, ri);
++        qemu_mutex_unlock_iothread();
++    } else {
++        res = ri->readfn(env, ri);
++    }
+ 
+-    return ri->readfn(env, ri);
++    return res;
+ }
+ 
+ void HELPER(msr_i_pstate)(CPUARMState *env, uint32_t op, uint32_t imm)
 -- 
 2.10.1

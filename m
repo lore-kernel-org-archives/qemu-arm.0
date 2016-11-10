@@ -1,157 +1,253 @@
-Received: by 10.25.150.194 with SMTP id y185csp875708lfd;
-        Thu, 10 Nov 2016 08:08:11 -0800 (PST)
-X-Received: by 10.55.66.73 with SMTP id p70mr7046125qka.63.1478794090221;
-        Thu, 10 Nov 2016 08:08:10 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp875841lfd;
+        Thu, 10 Nov 2016 08:08:25 -0800 (PST)
+X-Received: by 10.129.167.3 with SMTP id e3mr6594023ywh.60.1478794105608;
+        Thu, 10 Nov 2016 08:08:25 -0800 (PST)
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id k123si3736588qkf.238.2016.11.10.08.08.09
+        by mx.google.com with ESMTPS id y128si1465295ywe.473.2016.11.10.08.08.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 08:08:10 -0800 (PST)
+        Thu, 10 Nov 2016 08:08:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3A90531B32A;
-	Thu, 10 Nov 2016 16:08:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A33548FD01;
+	Thu, 10 Nov 2016 16:08:24 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAAG86nl023413;
-	Thu, 10 Nov 2016 11:08:06 -0500
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAAG86nr023413;
+	Thu, 10 Nov 2016 11:08:22 -0500
 From: Andrew Jones <drjones@redhat.com>
 To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
         qemu-arm@nongnu.org
 Cc: pbonzini@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org,
         alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
         christoffer.dall@linaro.org
-Subject: [kvm-unit-tests PATCH v4 00/11] arm/arm64: add gic framework
-Date: Thu, 10 Nov 2016 17:07:53 +0100
-Message-Id: <1478794084-5273-1-git-send-email-drjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Subject: [kvm-unit-tests PATCH v4 06/11] arm/arm64: add initial gicv2 support
+Date: Thu, 10 Nov 2016 17:07:59 +0100
+Message-Id: <1478794084-5273-7-git-send-email-drjones@redhat.com>
+In-Reply-To: <1478794084-5273-1-git-send-email-drjones@redhat.com>
+References: <1478794084-5273-1-git-send-email-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Thu, 10 Nov 2016 16:08:09 +0000 (UTC)
-X-TUID: fnByAP7lvJaJ
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Thu, 10 Nov 2016 16:08:24 +0000 (UTC)
+X-TUID: 5BVbfuaeobpX
 
+Add some gicv2 support. This just adds init and enable
+functions, allowing unit tests to start messing with it.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+
+---
 v4:
- - Eric's r-b's
- - Andre's suggestion to only take defines we need
- - several other changes listed in individual patches
-
-v3:
- - Rebased on latest master
- - Added Alex's r-b's
-
-v2:
- Rebased on latest master + my "populate argv[0]" series (will
- send a REPOST for that shortly. Additionally a few patches got
- fixes/features;
- 07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
-       all interrupts as non-secure Group-1" in order to continue
-       working over TCG, as the gicv3 code for TCG removed a hack
-       it had there to make Linux happy.
- 08/10 added more output for when things fail (if they fail)
- 09/10 switched gicv3 broadcast implementation to using IRM. This
-       found a bug in a recent (but not tip) kernel, which I was
-       about to fix, but then I saw MarcZ beat me to it.
- 10/10 actually check that the input irq is the received irq
-
-
-Import defines, and steal enough helper functions, from Linux to
-enable programming of the gic (v2 and v3). Then use the framework
-to add an initial test (an ipi test; self, target-list, broadcast).
-
-It's my hope that this framework will be a suitable base on which
-more tests may be easily added, particularly because we have
-vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
-vgic-new and tcg gicv3 are merged now)
-
-To run it, along with other tests, just do
-
- ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
- make
- export QEMU=$PATH_TO_QEMU
- ./run_tests.sh
-
-To run it separately do, e.g.
-
-$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
- -device virtio-serial-device \
- -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
- -display none -serial stdio \
- -kernel arm/gic.flat \
- -smp 123 -machine gic-version=3 -append ipi
-      ^^ note, we can go nuts with nr-cpus on TCG :-)
-
-Or, a KVM example using a different "sender" cpu and irq (other than zero)
-
-$QEMU -machine virt,accel=kvm -cpu host \
- -device virtio-serial-device \
- -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
- -display none -serial stdio \
- -kernel arm/gic.flat \
- -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
-
-
-Patches:
-01-05: fixes and functionality needed by the later gic patches
-06-07: enable gicv2 and gicv2 IPI test
-08-10: enable gicv3 and gicv3 IPI test
-   11: extend the IPI tests to take variable sender and irq
-
-Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v4
-
-
-Andrew Jones (10):
-  lib: xstr: allow multiple args
-  arm64: fix get_"sysreg32" and make MPIDR 64bit
-  arm/arm64: smp: support more than 8 cpus
-  arm/arm64: add some delay routines
-  arm/arm64: irq enable/disable
-  arm/arm64: add initial gicv2 support
-  arm/arm64: gicv2: add an IPI test
-  arm/arm64: add initial gicv3 support
-  arm/arm64: gicv3: add an IPI test
-  arm/arm64: gic: don't just use zero
-
-Peter Xu (1):
-  libcflat: add IS_ALIGNED() macro, and page sizes
-
- arm/Makefile.common        |   7 +-
- arm/gic.c                  | 417 +++++++++++++++++++++++++++++++++++++++++++++
- arm/run                    |  19 ++-
- arm/selftest.c             |   5 +-
- arm/unittests.cfg          |  13 ++
- lib/arm/asm/arch_gicv3.h   |  65 +++++++
- lib/arm/asm/gic-v2.h       |  28 +++
- lib/arm/asm/gic-v3.h       |  92 ++++++++++
- lib/arm/asm/gic.h          |  51 ++++++
- lib/arm/asm/processor.h    |  38 ++++-
- lib/arm/asm/setup.h        |   4 +-
- lib/arm/gic.c              | 131 ++++++++++++++
- lib/arm/processor.c        |  15 ++
- lib/arm/setup.c            |  12 +-
- lib/arm64/asm/arch_gicv3.h |  66 +++++++
- lib/arm64/asm/gic-v2.h     |   1 +
- lib/arm64/asm/gic-v3.h     |   1 +
- lib/arm64/asm/gic.h        |   1 +
- lib/arm64/asm/processor.h  |  53 +++++-
- lib/arm64/asm/sysreg.h     |  44 +++++
- lib/arm64/processor.c      |  15 ++
- lib/libcflat.h             |  10 +-
- 22 files changed, 1062 insertions(+), 26 deletions(-)
- create mode 100644 arm/gic.c
- create mode 100644 lib/arm/asm/arch_gicv3.h
+ - only take defines from kernel we need now [Andre]
+ - moved defines to asm/gic.h so they'll be shared with v3 [drew]
+ - simplify enable by not caring if we reinit the distributor [drew]
+ - init all GICD_INT_DEF_PRI_X4 registers [Eric]
+---
+ arm/Makefile.common    |  1 +
+ lib/arm/asm/gic-v2.h   | 28 +++++++++++++++++++
+ lib/arm/asm/gic.h      | 44 +++++++++++++++++++++++++++++
+ lib/arm/gic.c          | 75 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ lib/arm64/asm/gic-v2.h |  1 +
+ lib/arm64/asm/gic.h    |  1 +
+ 6 files changed, 150 insertions(+)
  create mode 100644 lib/arm/asm/gic-v2.h
- create mode 100644 lib/arm/asm/gic-v3.h
  create mode 100644 lib/arm/asm/gic.h
  create mode 100644 lib/arm/gic.c
- create mode 100644 lib/arm64/asm/arch_gicv3.h
  create mode 100644 lib/arm64/asm/gic-v2.h
- create mode 100644 lib/arm64/asm/gic-v3.h
  create mode 100644 lib/arm64/asm/gic.h
- create mode 100644 lib/arm64/asm/sysreg.h
 
+diff --git a/arm/Makefile.common b/arm/Makefile.common
+index ccb554d9251a..41239c37e092 100644
+--- a/arm/Makefile.common
++++ b/arm/Makefile.common
+@@ -42,6 +42,7 @@ cflatobjs += lib/arm/mmu.o
+ cflatobjs += lib/arm/bitops.o
+ cflatobjs += lib/arm/psci.o
+ cflatobjs += lib/arm/smp.o
++cflatobjs += lib/arm/gic.o
+ 
+ libeabi = lib/arm/libeabi.a
+ eabiobjs = lib/arm/eabi_compat.o
+diff --git a/lib/arm/asm/gic-v2.h b/lib/arm/asm/gic-v2.h
+new file mode 100644
+index 000000000000..f91530f88355
+--- /dev/null
++++ b/lib/arm/asm/gic-v2.h
+@@ -0,0 +1,28 @@
++/*
++ * All GIC* defines are lifted from include/linux/irqchip/arm-gic.h
++ *
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#ifndef _ASMARM_GIC_V2_H_
++#define _ASMARM_GIC_V2_H_
++
++#ifndef _ASMARM_GIC_H_
++#error Do not directly include <asm/gic-v2.h>. Include <asm/gic.h>
++#endif
++
++struct gicv2_data {
++	void *dist_base;
++	void *cpu_base;
++	unsigned int irq_nr;
++};
++extern struct gicv2_data gicv2_data;
++
++#define gicv2_dist_base()		(gicv2_data.dist_base)
++#define gicv2_cpu_base()		(gicv2_data.cpu_base)
++
++extern int gicv2_init(void);
++extern void gicv2_enable_defaults(void);
++
++#endif /* _ASMARM_GIC_V2_H_ */
+diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
+new file mode 100644
+index 000000000000..ec92f1064dc0
+--- /dev/null
++++ b/lib/arm/asm/gic.h
+@@ -0,0 +1,44 @@
++/*
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#ifndef _ASMARM_GIC_H_
++#define _ASMARM_GIC_H_
++
++#include <asm/gic-v2.h>
++
++#define GIC_CPU_CTRL			0x00
++#define GIC_CPU_PRIMASK			0x04
++
++#define GICC_ENABLE			0x1
++#define GICC_INT_PRI_THRESHOLD		0xf0
++
++#define GIC_DIST_CTRL			0x000
++#define GIC_DIST_CTR			0x004
++#define GIC_DIST_ENABLE_SET		0x100
++#define GIC_DIST_PRI			0x400
++
++#define GICD_ENABLE			0x1
++#define GICD_INT_EN_SET_SGI		0x0000ffff
++#define GICD_INT_DEF_PRI		0xa0
++#define GICD_INT_DEF_PRI_X4		((GICD_INT_DEF_PRI << 24) |\
++					(GICD_INT_DEF_PRI << 16) |\
++					(GICD_INT_DEF_PRI << 8) |\
++					GICD_INT_DEF_PRI)
++
++#define GICD_TYPER_IRQS(typer)		((((typer) & 0x1f) + 1) * 32)
++
++#ifndef __ASSEMBLY__
++
++/*
++ * gic_init will try to find all known gics, and then
++ * initialize the gic data for the one found.
++ * returns
++ *  0   : no gic was found
++ *  > 0 : the gic version of the gic found
++ */
++extern int gic_init(void);
++
++#endif /* !__ASSEMBLY__ */
++#endif /* _ASMARM_GIC_H_ */
+diff --git a/lib/arm/gic.c b/lib/arm/gic.c
+new file mode 100644
+index 000000000000..91d78c9a0cc2
+--- /dev/null
++++ b/lib/arm/gic.c
+@@ -0,0 +1,75 @@
++/*
++ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU LGPL, version 2.
++ */
++#include <devicetree.h>
++#include <asm/gic.h>
++#include <asm/io.h>
++
++struct gicv2_data gicv2_data;
++
++/*
++ * Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt
++ */
++static bool
++gic_get_dt_bases(const char *compatible, void **base1, void **base2)
++{
++	struct dt_pbus_reg reg;
++	struct dt_device gic;
++	struct dt_bus bus;
++	int node, ret;
++
++	dt_bus_init_defaults(&bus);
++	dt_device_init(&gic, &bus, NULL);
++
++	node = dt_device_find_compatible(&gic, compatible);
++	assert(node >= 0 || node == -FDT_ERR_NOTFOUND);
++
++	if (node == -FDT_ERR_NOTFOUND)
++		return false;
++
++	dt_device_bind_node(&gic, node);
++
++	ret = dt_pbus_translate(&gic, 0, &reg);
++	assert(ret == 0);
++	*base1 = ioremap(reg.addr, reg.size);
++
++	ret = dt_pbus_translate(&gic, 1, &reg);
++	assert(ret == 0);
++	*base2 = ioremap(reg.addr, reg.size);
++
++	return true;
++}
++
++int gicv2_init(void)
++{
++	return gic_get_dt_bases("arm,cortex-a15-gic",
++			&gicv2_data.dist_base, &gicv2_data.cpu_base);
++}
++
++int gic_init(void)
++{
++	if (gicv2_init())
++		return 2;
++	return 0;
++}
++
++void gicv2_enable_defaults(void)
++{
++	void *dist = gicv2_dist_base();
++	void *cpu_base = gicv2_cpu_base();
++	unsigned int i;
++
++	gicv2_data.irq_nr = GICD_TYPER_IRQS(readl(dist + GIC_DIST_CTR));
++	if (gicv2_data.irq_nr > 1020)
++		gicv2_data.irq_nr = 1020;
++
++	for (i = 0; i < gicv2_data.irq_nr; i += 4)
++		writel(GICD_INT_DEF_PRI_X4, dist + i + GIC_DIST_PRI);
++
++	writel(GICD_INT_EN_SET_SGI, dist + GIC_DIST_ENABLE_SET);
++	writel(GICD_ENABLE, dist + GIC_DIST_CTRL);
++	writel(GICC_INT_PRI_THRESHOLD, cpu_base + GIC_CPU_PRIMASK);
++	writel(GICC_ENABLE, cpu_base + GIC_CPU_CTRL);
++}
+diff --git a/lib/arm64/asm/gic-v2.h b/lib/arm64/asm/gic-v2.h
+new file mode 100644
+index 000000000000..52226624a209
+--- /dev/null
++++ b/lib/arm64/asm/gic-v2.h
+@@ -0,0 +1 @@
++#include "../../arm/asm/gic-v2.h"
+diff --git a/lib/arm64/asm/gic.h b/lib/arm64/asm/gic.h
+new file mode 100644
+index 000000000000..e5eb302a31b4
+--- /dev/null
++++ b/lib/arm64/asm/gic.h
+@@ -0,0 +1 @@
++#include "../../arm/asm/gic.h"
 -- 
 2.7.4

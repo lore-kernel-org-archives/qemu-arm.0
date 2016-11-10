@@ -1,88 +1,88 @@
-Received: by 10.25.150.194 with SMTP id y185csp924946lfd;
-        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
-X-Received: by 10.194.93.101 with SMTP id ct5mr5534294wjb.11.1478800091629;
-        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp927858lfd;
+        Thu, 10 Nov 2016 09:54:49 -0800 (PST)
+X-Received: by 10.28.227.9 with SMTP id a9mr6957659wmh.85.1478800489078;
+        Thu, 10 Nov 2016 09:54:49 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
-        by mx.google.com with ESMTPS id f184si7101452wme.33.2016.11.10.09.48.11
+Received: from mail-wm0-x241.google.com (mail-wm0-x241.google.com. [2a00:1450:400c:c09::241])
+        by mx.google.com with ESMTPS id 76si7128263wmj.42.2016.11.10.09.54.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
+        Thu, 10 Nov 2016 09:54:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) client-ip=2a00:1450:400c:c09::241;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x244.google.com with SMTP id g23so4596288wme.1;
-        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::241 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-wm0-x241.google.com with SMTP id g23so4629317wme.1;
+        Thu, 10 Nov 2016 09:54:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=sender:subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-transfer-encoding;
-        bh=PGcvMewySOvFh0yC0LYDs+iguPNQB6F0m4wxQcwyGgE=;
-        b=RPgGd03c3UNOqrHN03F/P6aNmggPsD8sh1vaJGc4IyfsLCSuPqhpW21A+Gi/QlQPri
-         NE8LzJIqlISlrFWhuVFbjzjjRC3qBZtN06dN4/PpsqI9vzvKxETVCXr95OGMPezn+NoX
-         DCgcoChPB4HzvdYHJRquK6bhhN2uHGKF9UymD01QBVSxvFb/glpmuzBHCDc5pUDtCUab
-         GLbFWfGHc0/L3N6LURgf6jjQM+V0gZE5SrzhTGWAt/cQwSkP7A9oxwjrh+284fYe3yUY
-         n9EmveycjPr7lH5fu7v0JEuQsEwQnJcUnNel5vwRQAWUS6lJWdVtNqDAsMJbEGMw4s8I
-         bSMA==
+        bh=f0EfKgLTyVRGl+5Wsken3qMs+4FrudoAJffLzS3pTAQ=;
+        b=TgTtY9O9W7qrE1i7npP9qh/3F5w/PhWyVolCXBTis8mZFF/k1roc2ht3ZTsn2ZMs35
+         TovLffIa1/DlKIcQL/DVKFgWJ37HLi8HDLIKEEJZmXMVh96hP4/k6zQ++necVHgLaw9O
+         2Kcuvm6UhWULZLFRSBGxGB66rvXSP5ptnBg+C43nFiWBZ/6M9k/vcOz/OmS4PWqCtd4y
+         9j4JtkfWMe/KKY02tTOKfF5rft7+PtCbzmGQcnqIQzJsI7sAlqzMmVuiapWXAMhVpWB6
+         i+vS3EzDtBjfJeRm914y+Itum/NWqRn5bo9d/R87zeVjchtw45dauXuCj0vKu5sLkGwD
+         C0PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=PGcvMewySOvFh0yC0LYDs+iguPNQB6F0m4wxQcwyGgE=;
-        b=TC5jlPHP1syRZTxkpI5OGHQcO/VNxZEUax37Qg59YlvIYNkdb5DJZP90Bjr8Q7qCBU
-         p7Z4puq+lDl7ISJbdKrup5GHGimIDY5bWk+BVi7tpK/wErGpFu+B46oXBG0BekMMfGaa
-         NDW06n8r1e6ic9/JWKQie9PN8BxngvM+TXFvdzawQ4hR5pjWFVci/YVQ7Ltc51UzNrdP
-         ghPVlUOvQIyVAvsoZjGUV1hlsyfFsgNlIyH6iG1lfZ3ekXvBlM5nJg7XibOfOtMci+46
-         lBN4D5zTRTSKmbSp8SuJzpmlkRyqa2rBA7NVKrt8CAwASQA/AWKPJBKFNNzT3AYrQ+Fo
-         j3Sg==
-X-Gm-Message-State: ABUngvcmIiBQP+BVA7q2aaH8xMWP5IfXHMrLfqouzjFsZFqz2YVaeOIQ2KToaSe/LfKTFQ==
-X-Received: by 10.28.103.134 with SMTP id b128mr7505746wmc.54.1478800091199;
-        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
+        bh=f0EfKgLTyVRGl+5Wsken3qMs+4FrudoAJffLzS3pTAQ=;
+        b=IQN97D5nfLNuPk9/ooWS58NEKGgR5ct64pdydpCLievMf/j0Aogt4hxznyFOkcRKUX
+         xkFOUmt4e5t3PRpBSlEVL6s/Eg4htHGoOz+JZn2KO6Iq9xswL8KvuIekfAmcJX9tR1vf
+         3vYwCOK0mz7ST2QCfJ+ArxOt1zoCKHj3ntCE4WuSpX9NRsmkQscft3+KhsQZzsquzjc8
+         MvOV/LJUar0J8N3Wow46lyUC/urxNMvwpXiXDL7cKxsBHsWjh70Kt/bSyyjE2jD5xIUv
+         HzFDg6J+Ou5VpQNAsEBplAJ5pP27IwAUiULhUmu/YKnnPcN2YUriILwqGFIhtipJZXdL
+         5WOQ==
+X-Gm-Message-State: ABUngvfEZqt2v/RFluTRqDR0IONd5rVUdAVV4U/lhsEWymm1n2wiJfuYNgI1BHYPPjCbIg==
+X-Received: by 10.194.47.42 with SMTP id a10mr5523657wjn.216.1478800488729;
+        Thu, 10 Nov 2016 09:54:48 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net ([87.111.149.139])
-        by smtp.googlemail.com with ESMTPSA id cl10sm6736573wjb.4.2016.11.10.09.48.03
+        by smtp.googlemail.com with ESMTPSA id q125sm7458870wmd.2.2016.11.10.09.54.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:48:10 -0800 (PST)
+        Thu, 10 Nov 2016 09:54:48 -0800 (PST)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v6 15/19] target-arm/cpu: don't reset TLB structures, use
- cputlb to do it
+Subject: Re: [PATCH v6 16/19] target-arm: ensure BQL taken for ARM_CP_IO
+ register access
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, pbonzini@redhat.com
 References: <20161109145748.27282-1-alex.bennee@linaro.org>
- <20161109145748.27282-16-alex.bennee@linaro.org>
+ <20161109145748.27282-17-alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, mttcg@greensocs.com, fred.konrad@greensocs.com,
  a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
  nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com,
  jan.kiszka@siemens.com, serge.fdrv@gmail.com, peter.maydell@linaro.org,
- claudio.fontana@huawei.com, "open list:ARM" <qemu-arm@nongnu.org>
+ claudio.fontana@huawei.com, "open list:ARM cores" <qemu-arm@nongnu.org>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <23bbb76b-3009-373e-273e-b22e5a37a19b@twiddle.net>
-Date: Thu, 10 Nov 2016 18:48:01 +0100
+Message-ID: <0cdd6634-cc16-91ae-41b3-061e4ae0e81d@twiddle.net>
+Date: Thu, 10 Nov 2016 18:54:43 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20161109145748.27282-16-alex.bennee@linaro.org>
+In-Reply-To: <20161109145748.27282-17-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 2s2wXUBb2DoW
+X-TUID: 8wwLuw/J+Hvs
 
 On 11/09/2016 03:57 PM, Alex Bennée wrote:
-> +#ifdef CONFIG_SOFTMMU
-> +    memset(env, 0, offsetof(CPUARMState, tlb_table));
-> +    tlb_flush(s, 0);
-> +#else
->      memset(env, 0, offsetof(CPUARMState, features));
-> +#endif
+> Most ARMCPRegInfo structures just allow updating of the CPU field.
+> However some have more complex operations that *may* be have cross vCPU
+> effects therefor need to be serialised. The most obvious examples at the
+> moment are things that affect the GICv3 IRQ controller. To avoid
+> applying this requirement to all registers with custom access functions
+> we check for if the type is marked ARM_CP_IO.
+>
+> By default all MMIO access to devices already takes the BQL to serialise
+> hardware emulation.
+>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_cpuif.c |  3 +++
+>  target-arm/op_helper.c    | 39 +++++++++++++++++++++++++++++++++++----
+>  2 files changed, 38 insertions(+), 4 deletions(-)
 
-I'd really prefer to see the tlb_flush be moved into parent_reset, so that we 
-handle it identically for all targets.
-
-As for the memset, do we really need to distinguish softmmu?  I don't like you 
-picking out a variable name within CPU_COMMON.  Better to use empty struct 
-markers, like the
-
-       struct {} start_init_save;
-
-that x86 uses.
+Reviewed-by: Richard Henderson <rth@twiddle.net>
 
 
 r~

@@ -1,82 +1,88 @@
-Received: by 10.25.150.194 with SMTP id y185csp919082lfd;
-        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
-X-Received: by 10.28.230.197 with SMTP id e66mr6966788wmi.12.1478799348127;
-        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp924946lfd;
+        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
+X-Received: by 10.194.93.101 with SMTP id ct5mr5534294wjb.11.1478800091629;
+        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
-Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
-        by mx.google.com with ESMTPS id m1si6353961wjt.59.2016.11.10.09.35.48
+Received: from mail-wm0-x244.google.com (mail-wm0-x244.google.com. [2a00:1450:400c:c09::244])
+        by mx.google.com with ESMTPS id f184si7101452wme.33.2016.11.10.09.48.11
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
+        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) client-ip=2a00:1450:400c:c09::244;
 Authentication-Results: mx.google.com;
        dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-wm0-x243.google.com with SMTP id u144so4509930wmu.0;
-        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::244 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-wm0-x244.google.com with SMTP id g23so4596288wme.1;
+        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=sender:subject:to:references:cc:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-transfer-encoding;
-        bh=GTtqZyz/e3u/VnlNhzzc1uQgUcnG6zGr/aldx8BG+Oc=;
-        b=UeBGjdBK15I1SnwO5ZpcF9qcfwaKYQxCMXLlSHymLIiWsV/7EeBIc9VQj4mNFTGUBN
-         driNc1JG/yUW4fXuAkzJS18YIbhwhn3hsNfJLSy93qgIMn+TbmEEh/ovNMjEEhM92sYY
-         tv8h3IrkYxwrQ5Bu8ojdye5fhyThXnSjh4PFApSqM7lvAe669RDIXAw/V0++V4tccRYA
-         F4oJeo39ar0rhQB2ygi6O2EgZ0osvP6PlcKqUbFU4yiJWWnLfoLVkxlWWq2H4r5eaIgN
-         FVOB74r7h7CcGhTAvguK8Tl50kDXGJkjoZ11CZHGEo/cDzHkF33/2LrmYutnExcuoMZi
-         W58A==
+        bh=PGcvMewySOvFh0yC0LYDs+iguPNQB6F0m4wxQcwyGgE=;
+        b=RPgGd03c3UNOqrHN03F/P6aNmggPsD8sh1vaJGc4IyfsLCSuPqhpW21A+Gi/QlQPri
+         NE8LzJIqlISlrFWhuVFbjzjjRC3qBZtN06dN4/PpsqI9vzvKxETVCXr95OGMPezn+NoX
+         DCgcoChPB4HzvdYHJRquK6bhhN2uHGKF9UymD01QBVSxvFb/glpmuzBHCDc5pUDtCUab
+         GLbFWfGHc0/L3N6LURgf6jjQM+V0gZE5SrzhTGWAt/cQwSkP7A9oxwjrh+284fYe3yUY
+         n9EmveycjPr7lH5fu7v0JEuQsEwQnJcUnNel5vwRQAWUS6lJWdVtNqDAsMJbEGMw4s8I
+         bSMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20130820;
         h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
          :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=GTtqZyz/e3u/VnlNhzzc1uQgUcnG6zGr/aldx8BG+Oc=;
-        b=k2Ie9izt9C7zMSj6gctiuKcBURbfzwq6xHrxBweJZAmoaIWieagG7PpCKOMdaM2zdU
-         6dGdZbeqfcbVktPHJxQnaQVBHM1O0hPFKLff3YCu0fJhN3isVetn1lbNOLnfLr17OOoN
-         9Azlhoa0rzY9gZc4CnGWzVp55uruEhE9hJEu5niJ216/i63ASEGcSK4ajss/Bgpaw4eu
-         uwjgLZlhzIAcAmLk02rq9r7boTEDR/uD2ADEDAHly00SP3BG2TNh+o0RsBy+I/QoLCHW
-         acFGjGxHHcG5jHYDNeZKGe7eVJWnQ+yCLxNZU7YvixsrvJd4khvAwTnPATAPtp62ajRy
-         5xIA==
-X-Gm-Message-State: ABUngvfDM+ZNmEA0ACVhoKziVQv0sS7vX8W1FzW+XisMuY/wnUm33QmVSHTIV4Ybf3sAlA==
-X-Received: by 10.28.88.18 with SMTP id m18mr7434286wmb.26.1478799347769;
-        Thu, 10 Nov 2016 09:35:47 -0800 (PST)
+        bh=PGcvMewySOvFh0yC0LYDs+iguPNQB6F0m4wxQcwyGgE=;
+        b=TC5jlPHP1syRZTxkpI5OGHQcO/VNxZEUax37Qg59YlvIYNkdb5DJZP90Bjr8Q7qCBU
+         p7Z4puq+lDl7ISJbdKrup5GHGimIDY5bWk+BVi7tpK/wErGpFu+B46oXBG0BekMMfGaa
+         NDW06n8r1e6ic9/JWKQie9PN8BxngvM+TXFvdzawQ4hR5pjWFVci/YVQ7Ltc51UzNrdP
+         ghPVlUOvQIyVAvsoZjGUV1hlsyfFsgNlIyH6iG1lfZ3ekXvBlM5nJg7XibOfOtMci+46
+         lBN4D5zTRTSKmbSp8SuJzpmlkRyqa2rBA7NVKrt8CAwASQA/AWKPJBKFNNzT3AYrQ+Fo
+         j3Sg==
+X-Gm-Message-State: ABUngvcmIiBQP+BVA7q2aaH8xMWP5IfXHMrLfqouzjFsZFqz2YVaeOIQ2KToaSe/LfKTFQ==
+X-Received: by 10.28.103.134 with SMTP id b128mr7505746wmc.54.1478800091199;
+        Thu, 10 Nov 2016 09:48:11 -0800 (PST)
 Return-Path: <rth7680@gmail.com>
 Received: from bigtime.twiddle.net ([87.111.149.139])
-        by smtp.googlemail.com with ESMTPSA id di9sm6590982wjc.37.2016.11.10.09.35.42
+        by smtp.googlemail.com with ESMTPSA id cl10sm6736573wjb.4.2016.11.10.09.48.03
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:35:47 -0800 (PST)
+        Thu, 10 Nov 2016 09:48:10 -0800 (PST)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v6 14/19] target-arm/powerctl: defer cpu reset work to CPU
- context
+Subject: Re: [PATCH v6 15/19] target-arm/cpu: don't reset TLB structures, use
+ cputlb to do it
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, pbonzini@redhat.com
 References: <20161109145748.27282-1-alex.bennee@linaro.org>
- <20161109145748.27282-15-alex.bennee@linaro.org>
+ <20161109145748.27282-16-alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, mttcg@greensocs.com, fred.konrad@greensocs.com,
  a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
  nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com,
  jan.kiszka@siemens.com, serge.fdrv@gmail.com, peter.maydell@linaro.org,
  claudio.fontana@huawei.com, "open list:ARM" <qemu-arm@nongnu.org>
 From: Richard Henderson <rth@twiddle.net>
-Message-ID: <07d61168-e2cc-f5ca-ed01-600774d5db3e@twiddle.net>
-Date: Thu, 10 Nov 2016 18:35:39 +0100
+Message-ID: <23bbb76b-3009-373e-273e-b22e5a37a19b@twiddle.net>
+Date: Thu, 10 Nov 2016 18:48:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20161109145748.27282-15-alex.bennee@linaro.org>
+In-Reply-To: <20161109145748.27282-16-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: VL52ozCgIbW/
+X-TUID: 2s2wXUBb2DoW
 
 On 11/09/2016 03:57 PM, Alex Bennée wrote:
-> +        /* We are requested to boot in AArch32 mode */
-> +        static uint32_t mode_for_el[] = { 0,
-> +                                          ARM_CPU_MODE_SVC,
-> +                                          ARM_CPU_MODE_HYP,
-> +                                          ARM_CPU_MODE_SVC };
+> +#ifdef CONFIG_SOFTMMU
+> +    memset(env, 0, offsetof(CPUARMState, tlb_table));
+> +    tlb_flush(s, 0);
+> +#else
+>      memset(env, 0, offsetof(CPUARMState, features));
+> +#endif
 
-I know you're just moving most of this code, but, const.
+I'd really prefer to see the tlb_flush be moved into parent_reset, so that we 
+handle it identically for all targets.
 
-Otherwise,
+As for the memset, do we really need to distinguish softmmu?  I don't like you 
+picking out a variable name within CPU_COMMON.  Better to use empty struct 
+markers, like the
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+       struct {} start_init_save;
+
+that x86 uses.
 
 
 r~

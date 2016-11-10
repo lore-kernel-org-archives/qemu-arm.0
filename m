@@ -1,265 +1,82 @@
-Received: by 10.25.150.194 with SMTP id y185csp912651lfd;
-        Thu, 10 Nov 2016 09:21:55 -0800 (PST)
-X-Received: by 10.55.102.130 with SMTP id a124mr6785671qkc.292.1478798515601;
-        Thu, 10 Nov 2016 09:21:55 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x206si3933810qkb.136.2016.11.10.09.21.55
+Received: by 10.25.150.194 with SMTP id y185csp919082lfd;
+        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+X-Received: by 10.28.230.197 with SMTP id e66mr6966788wmi.12.1478799348127;
+        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from mail-wm0-x243.google.com (mail-wm0-x243.google.com. [2a00:1450:400c:c09::243])
+        by mx.google.com with ESMTPS id m1si6353961wjt.59.2016.11.10.09.35.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:21:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) client-ip=2a00:1450:400c:c09::243;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx10.intmail.prod.int.phx2.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A15CF4DD53;
-	Thu, 10 Nov 2016 17:21:54 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx10.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAAHLMjl006894;
-	Thu, 10 Nov 2016 12:21:52 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: pbonzini@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org,
-        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
-        christoffer.dall@linaro.org
-Subject: [kvm-unit-tests PATCH v5 11/11] arm/arm64: gic: don't just use zero
-Date: Thu, 10 Nov 2016 18:21:21 +0100
-Message-Id: <1478798481-25030-12-git-send-email-drjones@redhat.com>
-In-Reply-To: <1478798481-25030-1-git-send-email-drjones@redhat.com>
-References: <1478798481-25030-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Thu, 10 Nov 2016 17:21:54 +0000 (UTC)
-X-TUID: dTPmMenzx6im
+       dkim=pass header.i=@gmail.com;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 2a00:1450:400c:c09::243 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Received: by mail-wm0-x243.google.com with SMTP id u144so4509930wmu.0;
+        Thu, 10 Nov 2016 09:35:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=sender:subject:to:references:cc:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding;
+        bh=GTtqZyz/e3u/VnlNhzzc1uQgUcnG6zGr/aldx8BG+Oc=;
+        b=UeBGjdBK15I1SnwO5ZpcF9qcfwaKYQxCMXLlSHymLIiWsV/7EeBIc9VQj4mNFTGUBN
+         driNc1JG/yUW4fXuAkzJS18YIbhwhn3hsNfJLSy93qgIMn+TbmEEh/ovNMjEEhM92sYY
+         tv8h3IrkYxwrQ5Bu8ojdye5fhyThXnSjh4PFApSqM7lvAe669RDIXAw/V0++V4tccRYA
+         F4oJeo39ar0rhQB2ygi6O2EgZ0osvP6PlcKqUbFU4yiJWWnLfoLVkxlWWq2H4r5eaIgN
+         FVOB74r7h7CcGhTAvguK8Tl50kDXGJkjoZ11CZHGEo/cDzHkF33/2LrmYutnExcuoMZi
+         W58A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+        bh=GTtqZyz/e3u/VnlNhzzc1uQgUcnG6zGr/aldx8BG+Oc=;
+        b=k2Ie9izt9C7zMSj6gctiuKcBURbfzwq6xHrxBweJZAmoaIWieagG7PpCKOMdaM2zdU
+         6dGdZbeqfcbVktPHJxQnaQVBHM1O0hPFKLff3YCu0fJhN3isVetn1lbNOLnfLr17OOoN
+         9Azlhoa0rzY9gZc4CnGWzVp55uruEhE9hJEu5niJ216/i63ASEGcSK4ajss/Bgpaw4eu
+         uwjgLZlhzIAcAmLk02rq9r7boTEDR/uD2ADEDAHly00SP3BG2TNh+o0RsBy+I/QoLCHW
+         acFGjGxHHcG5jHYDNeZKGe7eVJWnQ+yCLxNZU7YvixsrvJd4khvAwTnPATAPtp62ajRy
+         5xIA==
+X-Gm-Message-State: ABUngvfDM+ZNmEA0ACVhoKziVQv0sS7vX8W1FzW+XisMuY/wnUm33QmVSHTIV4Ybf3sAlA==
+X-Received: by 10.28.88.18 with SMTP id m18mr7434286wmb.26.1478799347769;
+        Thu, 10 Nov 2016 09:35:47 -0800 (PST)
+Return-Path: <rth7680@gmail.com>
+Received: from bigtime.twiddle.net ([87.111.149.139])
+        by smtp.googlemail.com with ESMTPSA id di9sm6590982wjc.37.2016.11.10.09.35.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Nov 2016 09:35:47 -0800 (PST)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH v6 14/19] target-arm/powerctl: defer cpu reset work to CPU
+ context
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, pbonzini@redhat.com
+References: <20161109145748.27282-1-alex.bennee@linaro.org>
+ <20161109145748.27282-15-alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, mttcg@greensocs.com, fred.konrad@greensocs.com,
+ a.rigo@virtualopensystems.com, cota@braap.org, bobby.prani@gmail.com,
+ nikunj@linux.vnet.ibm.com, mark.burton@greensocs.com,
+ jan.kiszka@siemens.com, serge.fdrv@gmail.com, peter.maydell@linaro.org,
+ claudio.fontana@huawei.com, "open list:ARM" <qemu-arm@nongnu.org>
+From: Richard Henderson <rth@twiddle.net>
+Message-ID: <07d61168-e2cc-f5ca-ed01-600774d5db3e@twiddle.net>
+Date: Thu, 10 Nov 2016 18:35:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <20161109145748.27282-15-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: VL52ozCgIbW/
 
-Allow user to select who sends ipis and with which irq,
-rather than just always sending irq=0 from cpu0.
+On 11/09/2016 03:57 PM, Alex Bennée wrote:
+> +        /* We are requested to boot in AArch32 mode */
+> +        static uint32_t mode_for_el[] = { 0,
+> +                                          ARM_CPU_MODE_SVC,
+> +                                          ARM_CPU_MODE_HYP,
+> +                                          ARM_CPU_MODE_SVC };
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+I know you're just moving most of this code, but, const.
 
----
-v4: improve structure and make sure spurious checking is
-    done even when the sender isn't cpu0
-v2: actually check that the irq received was the irq sent,
-    and (for gicv2) that the sender is the expected one.
----
- arm/gic.c | 99 ++++++++++++++++++++++++++++++++++++++++++++++-----------------
- 1 file changed, 73 insertions(+), 26 deletions(-)
+Otherwise,
 
-diff --git a/arm/gic.c b/arm/gic.c
-index ca68f8ad1cb9..af9e745e2e5c 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -11,6 +11,7 @@
-  * This work is licensed under the terms of the GNU LGPL, version 2.
-  */
- #include <libcflat.h>
-+#include <util.h>
- #include <asm/setup.h>
- #include <asm/processor.h>
- #include <asm/gic.h>
-@@ -34,6 +35,8 @@ static struct gic *gic;
- static int gic_version;
- static int acked[NR_CPUS], spurious[NR_CPUS];
- static cpumask_t ready;
-+static int sender;
-+static u32 irq;
- 
- static void nr_cpu_check(int nr)
- {
-@@ -86,7 +89,16 @@ static void check_acked(cpumask_t *mask)
- 
- static u32 gicv2_read_iar(void)
- {
--	return readl(gicv2_cpu_base() + GICC_IAR);
-+	u32 iar = readl(gicv2_cpu_base() + GICC_IAR);
-+	int src = (iar >> 10) & 7;
-+
-+	if (src != sender) {
-+		report("cpu%d received IPI from unexpected source cpu%d "
-+		       "(expected cpu%d)",
-+		       false, smp_processor_id(), src, sender);
-+	}
-+
-+	return iar;
- }
- 
- static u32 gicv2_irqnr(u32 iar)
-@@ -111,9 +123,15 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- 	if (irqnr != GICC_INT_SPURIOUS) {
- 		gic->write_eoi(irqstat);
--		smp_rmb(); /* pairs with wmb in ipi_test functions */
--		++acked[smp_processor_id()];
--		smp_wmb(); /* pairs with rmb in check_acked */
-+		if (irqnr == irq) {
-+			smp_rmb(); /* pairs with wmb in ipi_test functions */
-+			++acked[smp_processor_id()];
-+			smp_wmb(); /* pairs with rmb in check_acked */
-+		} else {
-+			report("cpu%d received unexpected irq %u "
-+			       "(expected %u)",
-+			       false, smp_processor_id(), irqnr, irq);
-+		}
- 	} else {
- 		++spurious[smp_processor_id()];
- 		smp_wmb();
-@@ -122,19 +140,19 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 
- static void gicv2_ipi_send_self(void)
- {
--	writel(2 << 24, gicv2_dist_base() + GICD_SGIR);
-+	writel(2 << 24 | irq, gicv2_dist_base() + GICD_SGIR);
- }
- 
- static void gicv2_ipi_send_tlist(cpumask_t *mask)
- {
- 	u8 tlist = (u8)cpumask_bits(mask)[0];
- 
--	writel(tlist << 16, gicv2_dist_base() + GICD_SGIR);
-+	writel(tlist << 16 | irq, gicv2_dist_base() + GICD_SGIR);
- }
- 
- static void gicv2_ipi_send_broadcast(void)
- {
--	writel(1 << 24, gicv2_dist_base() + GICD_SGIR);
-+	writel(1 << 24 | irq, gicv2_dist_base() + GICD_SGIR);
- }
- 
- #define ICC_SGI1R_AFFINITY_1_SHIFT	16
-@@ -200,7 +218,7 @@ static void gicv3_ipi_send_tlist(cpumask_t *mask)
- 		/* Send the IPIs for the target list of this cluster */
- 		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
--			 /* irq << 24				| */
-+			 irq << 24				|
- 			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
- 			 tlist);
- 
-@@ -222,7 +240,7 @@ static void gicv3_ipi_send_self(void)
- 
- static void gicv3_ipi_send_broadcast(void)
- {
--	gicv3_write_sgi1r(1ULL << 40);
-+	gicv3_write_sgi1r(1ULL << 40 | irq << 24);
- 	isb();
- }
- 
-@@ -234,7 +252,7 @@ static void ipi_test_self(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_clear(&mask);
--	cpumask_set_cpu(0, &mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -249,7 +267,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	for (i = 0; i < nr_cpus; i += 2)
-+	for (i = smp_processor_id() & 1; i < nr_cpus; i += 2)
- 		cpumask_clear_cpu(i, &mask);
- 	gic->ipi.send_tlist(&mask);
- 	check_acked(&mask);
-@@ -259,7 +277,7 @@ static void ipi_test_smp(void)
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
--	cpumask_clear_cpu(0, &mask);
-+	cpumask_clear_cpu(smp_processor_id(), &mask);
- 	gic->ipi.send_broadcast();
- 	check_acked(&mask);
- 	report_prefix_pop();
-@@ -276,6 +294,27 @@ static void ipi_enable(void)
- 	local_irq_enable();
- }
- 
-+static void ipi_send(void)
-+{
-+	int cpu;
-+
-+	ipi_enable();
-+	wait_on_ready();
-+	ipi_test_self();
-+	ipi_test_smp();
-+
-+	smp_rmb();
-+	for_each_present_cpu(cpu) {
-+		if (spurious[cpu]) {
-+			printf("ipi: WARN: cpu%d got %d spurious "
-+			       "interrupts\n",
-+			       spurious[cpu], smp_processor_id());
-+		}
-+	}
-+
-+	exit(report_summary());
-+}
-+
- static void ipi_recv(void)
- {
- 	ipi_enable();
-@@ -284,6 +323,14 @@ static void ipi_recv(void)
- 		wfi();
- }
- 
-+static void ipi_test(void)
-+{
-+	if (smp_processor_id() == sender)
-+		ipi_send();
-+	else
-+		ipi_recv();
-+}
-+
- struct gic gicv2 = {
- 	.ipi = {
- 		.enable = gicv2_enable_defaults,
-@@ -337,30 +384,30 @@ int main(int argc, char **argv)
- 		report_prefix_pop();
- 
- 	} else if (!strcmp(argv[1], "ipi")) {
-+		int off, i = 1;
-+		long val;
- 
- 		report_prefix_push(argv[1]);
- 		nr_cpu_check(2);
- 
--		for_each_present_cpu(cpu) {
--			if (cpu == 0)
-+		while (--argc != 1) {
-+			off = parse_keyval(argv[++i], &val);
-+			if (off == -1)
- 				continue;
--			smp_boot_secondary(cpu, ipi_recv);
-+			argv[i][off] = '\0';
-+			if (strcmp(argv[i], "sender") == 0)
-+				sender = val;
-+			else if (strcmp(argv[i], "irq") == 0)
-+				irq = val;
- 		}
--		ipi_enable();
--		wait_on_ready();
--		ipi_test_self();
--		ipi_test_smp();
- 
--		smp_rmb();
- 		for_each_present_cpu(cpu) {
--			if (spurious[cpu]) {
--				printf("ipi: WARN: cpu%d got %d spurious "
--				       "interrupts\n",
--				       spurious[cpu], smp_processor_id());
--			}
-+			if (cpu == 0)
-+				continue;
-+			smp_boot_secondary(cpu, ipi_test);
- 		}
- 
--		report_prefix_pop();
-+		ipi_test();
- 
- 	} else {
- 		report_abort("Unknown subtest '%s'", argv[1]);
--- 
-2.7.4
+Reviewed-by: Richard Henderson <rth@twiddle.net>
+
+
+r~

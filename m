@@ -1,434 +1,161 @@
-Received: by 10.25.150.194 with SMTP id y185csp875949lfd;
-        Thu, 10 Nov 2016 08:08:36 -0800 (PST)
-X-Received: by 10.55.3.2 with SMTP id 2mr7246373qkd.65.1478794116035;
-        Thu, 10 Nov 2016 08:08:36 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id n84si3742889qki.165.2016.11.10.08.08.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 08:08:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.150.194 with SMTP id y185csp897953lfd;
+        Thu, 10 Nov 2016 08:51:57 -0800 (PST)
+X-Received: by 10.28.216.9 with SMTP id p9mr7453164wmg.11.1478796716946;
+        Thu, 10 Nov 2016 08:51:56 -0800 (PST)
+Return-Path: <andre.przywara@arm.com>
+Received: from cam-admin0.cambridge.arm.com (cam-admin0.cambridge.arm.com. [217.140.96.50])
+        by mx.google.com with ESMTP id h10si6133845wjv.68.2016.11.10.08.51.56;
+        Thu, 10 Nov 2016 08:51:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.96.50 as permitted sender) client-ip=217.140.96.50;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1732C4E4D4;
-	Thu, 10 Nov 2016 16:08:35 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAAG86nv023413;
-	Thu, 10 Nov 2016 11:08:32 -0500
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: pbonzini@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org,
-        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
-        christoffer.dall@linaro.org
-Subject: [kvm-unit-tests PATCH v4 10/11] arm/arm64: gicv3: add an IPI test
-Date: Thu, 10 Nov 2016 17:08:03 +0100
-Message-Id: <1478794084-5273-11-git-send-email-drjones@redhat.com>
-In-Reply-To: <1478794084-5273-1-git-send-email-drjones@redhat.com>
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.96.50 as permitted sender) smtp.mailfrom=andre.przywara@arm.com
+Received: from [192.168.67.35] ([10.1.207.46])
+	by cam-admin0.cambridge.arm.com (8.12.6/8.12.6) with ESMTP id uAAGptWr028592;
+	Thu, 10 Nov 2016 16:51:55 GMT
+Subject: Re: [kvm-unit-tests PATCH v4 00/11] arm/arm64: add gic framework
+To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
+   kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <1478794084-5273-1-git-send-email-drjones@redhat.com>
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Thu, 10 Nov 2016 16:08:35 +0000 (UTC)
-X-TUID: 9K2Wmai6JgRT
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, alex.bennee@linaro.org,
+   marc.zyngier@arm.com, eric.auger@redhat.com, christoffer.dall@linaro.org
+From: Andre Przywara <andre.przywara@arm.com>
+Organization: ARM Ltd.
+Message-ID: <77355b5b-9e26-16f9-4243-e11ef4d4c8ce@arm.com>
+Date: Thu, 10 Nov 2016 16:52:30 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1478794084-5273-1-git-send-email-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-TUID: emanmyX4kLCm
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+Hi,
 
----
-v4:
- - heavily comment gicv3_ipi_send_tlist() [Eric]
- - changes needed for gicv2 iar/irqstat fix to other patch
-v2:
- - use IRM for gicv3 broadcast
----
- arm/gic.c                  | 195 ++++++++++++++++++++++++++++++++++++++++++---
- arm/unittests.cfg          |   6 ++
- lib/arm/asm/arch_gicv3.h   |  23 ++++++
- lib/arm64/asm/arch_gicv3.h |  22 +++++
- 4 files changed, 236 insertions(+), 10 deletions(-)
+so is this actually v4 just resent?
+Or is this is a new version with s/5/4/?
+I can't spot any of the key changes quickly ...
 
-diff --git a/arm/gic.c b/arm/gic.c
-index efefab7296d4..d98ca6b9efd5 100644
---- a/arm/gic.c
-+++ b/arm/gic.c
-@@ -3,6 +3,8 @@
-  *
-  * GICv2
-  *   + test sending/receiving IPIs
-+ * GICv3
-+ *   + test sending/receiving IPIs
-  *
-  * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-  *
-@@ -16,6 +18,19 @@
- #include <asm/barrier.h>
- #include <asm/io.h>
- 
-+struct gic {
-+	struct {
-+		void (*enable)(void);
-+		void (*send_self)(void);
-+		void (*send_tlist)(cpumask_t *);
-+		void (*send_broadcast)(void);
-+	} ipi;
-+	u32 (*read_iar)(void);
-+	u32 (*irqnr)(u32 iar);
-+	void (*write_eoi)(u32);
-+};
-+
-+static struct gic *gic;
- static int gic_version;
- static int acked[NR_CPUS], spurious[NR_CPUS];
- static cpumask_t ready;
-@@ -69,13 +84,33 @@ static void check_acked(cpumask_t *mask)
- 	       false, missing, extra, unexpected);
- }
- 
-+static u32 gicv2_read_iar(void)
-+{
-+	return readl(gicv2_cpu_base() + GIC_CPU_INTACK);
-+}
-+
-+static u32 gicv2_irqnr(u32 iar)
-+{
-+	return iar & GICC_IAR_INT_ID_MASK;
-+}
-+
-+static void gicv2_write_eoi(u32 irqstat)
-+{
-+	writel(irqstat, gicv2_cpu_base() + GIC_CPU_EOI);
-+}
-+
-+static u32 gicv3_irqnr(u32 iar)
-+{
-+	return iar;
-+}
-+
- static void ipi_handler(struct pt_regs *regs __unused)
- {
--	u32 irqstat = readl(gicv2_cpu_base() + GIC_CPU_INTACK);
--	u32 irqnr = irqstat & GICC_IAR_INT_ID_MASK;
-+	u32 irqstat = gic->read_iar();
-+	u32 irqnr = gic->irqnr(irqstat);
- 
- 	if (irqnr != GICC_INT_SPURIOUS) {
--		writel(irqstat, gicv2_cpu_base() + GIC_CPU_EOI);
-+		gic->write_eoi(irqstat);
- 		smp_rmb(); /* pairs with wmb in ipi_test functions */
- 		++acked[smp_processor_id()];
- 		smp_wmb(); /* pairs with rmb in check_acked */
-@@ -85,6 +120,112 @@ static void ipi_handler(struct pt_regs *regs __unused)
- 	}
- }
- 
-+static void gicv2_ipi_send_self(void)
-+{
-+	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+static void gicv2_ipi_send_tlist(cpumask_t *mask)
-+{
-+	u8 tlist = (u8)cpumask_bits(mask)[0];
-+
-+	writel(tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+static void gicv2_ipi_send_broadcast(void)
-+{
-+	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+}
-+
-+#define ICC_SGI1R_AFFINITY_1_SHIFT	16
-+#define ICC_SGI1R_AFFINITY_2_SHIFT	32
-+#define ICC_SGI1R_AFFINITY_3_SHIFT	48
-+#define MPIDR_TO_SGI_AFFINITY(cluster_id, level) \
-+	(MPIDR_AFFINITY_LEVEL(cluster_id, level) << ICC_SGI1R_AFFINITY_## level ## _SHIFT)
-+
-+static void gicv3_ipi_send_tlist(cpumask_t *mask)
-+{
-+	u16 tlist;
-+	int cpu;
-+
-+	/*
-+	 * For each cpu in the mask collect its peers, which are also in
-+	 * the mask, in order to form target lists.
-+	 */
-+	for_each_cpu(cpu, mask) {
-+		u64 mpidr = cpus[cpu], sgi1r;
-+		u64 cluster_id;
-+
-+		/*
-+		 * GICv3 can send IPIs to up 16 peer cpus with a single
-+		 * write to ICC_SGI1R_EL1 (using the target list). Peers
-+		 * are cpus that have nearly identical MPIDRs, the only
-+		 * difference being Aff0. The matching upper affinity
-+		 * levels form the cluster ID.
-+		 */
-+		cluster_id = mpidr & ~0xffUL;
-+		tlist = 0;
-+
-+		/*
-+		 * Sort of open code for_each_cpu in order to have a
-+		 * nested for_each_cpu loop.
-+		 */
-+		while (cpu < nr_cpus) {
-+			if ((mpidr & 0xff) >= 16) {
-+				printf("cpu%d MPIDR:aff0 is %d (>= 16)!\n",
-+					cpu, (int)(mpidr & 0xff));
-+				break;
-+			}
-+
-+			tlist |= 1 << (mpidr & 0xf);
-+
-+			cpu = cpumask_next(cpu, mask);
-+			if (cpu >= nr_cpus)
-+				break;
-+
-+			mpidr = cpus[cpu];
-+
-+			if (cluster_id != (mpidr & ~0xffUL)) {
-+				/*
-+				 * The next cpu isn't in our cluster. Roll
-+				 * back the cpu index allowing the outer
-+				 * for_each_cpu to find it again with
-+				 * cpumask_next
-+				 */
-+				--cpu;
-+				break;
-+			}
-+		}
-+
-+		/* Send the IPIs for the target list of this cluster */
-+		sgi1r = (MPIDR_TO_SGI_AFFINITY(cluster_id, 3)	|
-+			 MPIDR_TO_SGI_AFFINITY(cluster_id, 2)	|
-+			 /* irq << 24				| */
-+			 MPIDR_TO_SGI_AFFINITY(cluster_id, 1)	|
-+			 tlist);
-+
-+		gicv3_write_sgi1r(sgi1r);
-+	}
-+
-+	/* Force the above writes to ICC_SGI1R_EL1 to be executed */
-+	isb();
-+}
-+
-+static void gicv3_ipi_send_self(void)
-+{
-+	cpumask_t mask;
-+
-+	cpumask_clear(&mask);
-+	cpumask_set_cpu(smp_processor_id(), &mask);
-+	gicv3_ipi_send_tlist(&mask);
-+}
-+
-+static void gicv3_ipi_send_broadcast(void)
-+{
-+	gicv3_write_sgi1r(1ULL << 40);
-+	isb();
-+}
-+
- static void ipi_test_self(void)
- {
- 	cpumask_t mask;
-@@ -94,7 +235,7 @@ static void ipi_test_self(void)
- 	smp_wmb();
- 	cpumask_clear(&mask);
- 	cpumask_set_cpu(0, &mask);
--	writel(2 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	gic->ipi.send_self();
- 	check_acked(&mask);
- 	report_prefix_pop();
- }
-@@ -102,14 +243,15 @@ static void ipi_test_self(void)
- static void ipi_test_smp(void)
- {
- 	cpumask_t mask;
--	unsigned long tlist;
-+	int i;
- 
- 	report_prefix_push("target-list");
- 	memset(acked, 0, sizeof(acked));
- 	smp_wmb();
--	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
--	cpumask_bits(&mask)[0] = tlist;
--	writel((u8)tlist << 16, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	cpumask_copy(&mask, &cpu_present_mask);
-+	for (i = 0; i < nr_cpus; i += 2)
-+		cpumask_clear_cpu(i, &mask);
-+	gic->ipi.send_tlist(&mask);
- 	check_acked(&mask);
- 	report_prefix_pop();
- 
-@@ -118,14 +260,14 @@ static void ipi_test_smp(void)
- 	smp_wmb();
- 	cpumask_copy(&mask, &cpu_present_mask);
- 	cpumask_clear_cpu(0, &mask);
--	writel(1 << 24, gicv2_dist_base() + GIC_DIST_SOFTINT);
-+	gic->ipi.send_broadcast();
- 	check_acked(&mask);
- 	report_prefix_pop();
- }
- 
- static void ipi_enable(void)
- {
--	gicv2_enable_defaults();
-+	gic->ipi.enable();
- #ifdef __arm__
- 	install_exception_handler(EXCPTN_IRQ, ipi_handler);
- #else
-@@ -142,6 +284,30 @@ static void ipi_recv(void)
- 		wfi();
- }
- 
-+struct gic gicv2 = {
-+	.ipi = {
-+		.enable = gicv2_enable_defaults,
-+		.send_self = gicv2_ipi_send_self,
-+		.send_tlist = gicv2_ipi_send_tlist,
-+		.send_broadcast = gicv2_ipi_send_broadcast,
-+	},
-+	.read_iar = gicv2_read_iar,
-+	.irqnr = gicv2_irqnr,
-+	.write_eoi = gicv2_write_eoi,
-+};
-+
-+struct gic gicv3 = {
-+	.ipi = {
-+		.enable = gicv3_enable_defaults,
-+		.send_self = gicv3_ipi_send_self,
-+		.send_tlist = gicv3_ipi_send_tlist,
-+		.send_broadcast = gicv3_ipi_send_broadcast,
-+	},
-+	.read_iar = gicv3_read_iar,
-+	.irqnr = gicv3_irqnr,
-+	.write_eoi = gicv3_write_eoir,
-+};
-+
- int main(int argc, char **argv)
- {
- 	char pfx[8];
-@@ -154,6 +320,15 @@ int main(int argc, char **argv)
- 	snprintf(pfx, 8, "gicv%d", gic_version);
- 	report_prefix_push(pfx);
- 
-+	switch (gic_version) {
-+	case 2:
-+		gic = &gicv2;
-+		break;
-+	case 3:
-+		gic = &gicv3;
-+		break;
-+	}
-+
- 	if (argc < 2) {
- 
- 		report_prefix_push("ipi");
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index 68bf5cd6008f..ce3cee73c4bf 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -61,3 +61,9 @@ file = gic.flat
- smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
- extra_params = -machine gic-version=2 -append 'ipi'
- groups = gic
-+
-+[gicv3-ipi]
-+file = gic.flat
-+smp = $MAX_SMP
-+extra_params = -machine gic-version=3 -append 'ipi'
-+groups = gic
-diff --git a/lib/arm/asm/arch_gicv3.h b/lib/arm/asm/arch_gicv3.h
-index 81a1e5f6c29c..cbcec024a2a6 100644
---- a/lib/arm/asm/arch_gicv3.h
-+++ b/lib/arm/asm/arch_gicv3.h
-@@ -16,10 +16,28 @@
- #define __stringify xstr
- 
- #define __ACCESS_CP15(CRn, Op1, CRm, Op2)	p15, Op1, %0, CRn, CRm, Op2
-+#define __ACCESS_CP15_64(Op1, CRm)		p15, Op1, %Q0, %R0, CRm
- 
-+#define ICC_EOIR1			__ACCESS_CP15(c12, 0, c12, 1)
-+#define ICC_IAR1			__ACCESS_CP15(c12, 0, c12, 0)
-+#define ICC_SGI1R			__ACCESS_CP15_64(0, c12)
- #define ICC_PMR				__ACCESS_CP15(c4, 0, c6, 0)
- #define ICC_IGRPEN1			__ACCESS_CP15(c12, 0, c12, 7)
- 
-+static inline void gicv3_write_eoir(u32 irq)
-+{
-+	asm volatile("mcr " __stringify(ICC_EOIR1) : : "r" (val));
-+	isb();
-+}
-+
-+static inline u32 gicv3_read_iar(void)
-+{
-+	u32 irqstat;
-+	asm volatile("mrc " __stringify(ICC_IAR1) : "=r" (irqstat));
-+	dsb(sy);
-+	return irqstat;
-+}
-+
- static inline void gicv3_write_pmr(u32 val)
- {
- 	asm volatile("mcr " __stringify(ICC_PMR) : : "r" (val));
-@@ -31,6 +49,11 @@ static inline void gicv3_write_grpen1(u32 val)
- 	isb();
- }
- 
-+static inline void gicv3_write_sgi1r(u64 val)
-+{
-+	asm volatile("mcrr " __stringify(ICC_SGI1R) : : "r" (val));
-+}
-+
- static inline u64 gicv3_read_typer(const volatile void __iomem *addr)
- {
- 	u64 val = readl(addr);
-diff --git a/lib/arm64/asm/arch_gicv3.h b/lib/arm64/asm/arch_gicv3.h
-index 6d353567f56a..874775828016 100644
---- a/lib/arm64/asm/arch_gicv3.h
-+++ b/lib/arm64/asm/arch_gicv3.h
-@@ -10,6 +10,9 @@
- 
- #include <asm/sysreg.h>
- 
-+#define ICC_EOIR1_EL1			sys_reg(3, 0, 12, 12, 1)
-+#define ICC_IAR1_EL1			sys_reg(3, 0, 12, 12, 0)
-+#define ICC_SGI1R_EL1			sys_reg(3, 0, 12, 11, 5)
- #define ICC_PMR_EL1			sys_reg(3, 0, 4, 6, 0)
- #define ICC_GRPEN1_EL1			sys_reg(3, 0, 12, 12, 7)
- 
-@@ -27,6 +30,20 @@
-  * sets the GP register's most significant bits to 0 with an explicit cast.
-  */
- 
-+static inline void gicv3_write_eoir(u32 irq)
-+{
-+	asm volatile("msr_s " __stringify(ICC_EOIR1_EL1) ", %0" : : "r" ((u64)irq));
-+	isb();
-+}
-+
-+static inline u32 gicv3_read_iar(void)
-+{
-+	u64 irqstat;
-+	asm volatile("mrs_s %0, " __stringify(ICC_IAR1_EL1) : "=r" (irqstat));
-+	dsb(sy);
-+	return (u64)irqstat;
-+}
-+
- static inline void gicv3_write_pmr(u32 val)
- {
- 	asm volatile("msr_s " __stringify(ICC_PMR_EL1) ", %0" : : "r" ((u64)val));
-@@ -38,6 +55,11 @@ static inline void gicv3_write_grpen1(u32 val)
- 	isb();
- }
- 
-+static inline void gicv3_write_sgi1r(u64 val)
-+{
-+	asm volatile("msr_s " __stringify(ICC_SGI1R_EL1) ", %0" : : "r" (val));
-+}
-+
- #define gicv3_read_typer(c)		readq(c)
- 
- #endif /* __ASSEMBLY__ */
--- 
-2.7.4
+Cheers,
+Andre.
+
+On 10/11/16 16:07, Andrew Jones wrote:
+> v4:
+>  - Eric's r-b's
+>  - Andre's suggestion to only take defines we need
+>  - several other changes listed in individual patches
+> 
+> v3:
+>  - Rebased on latest master
+>  - Added Alex's r-b's
+> 
+> v2:
+>  Rebased on latest master + my "populate argv[0]" series (will
+>  send a REPOST for that shortly. Additionally a few patches got
+>  fixes/features;
+>  07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
+>        all interrupts as non-secure Group-1" in order to continue
+>        working over TCG, as the gicv3 code for TCG removed a hack
+>        it had there to make Linux happy.
+>  08/10 added more output for when things fail (if they fail)
+>  09/10 switched gicv3 broadcast implementation to using IRM. This
+>        found a bug in a recent (but not tip) kernel, which I was
+>        about to fix, but then I saw MarcZ beat me to it.
+>  10/10 actually check that the input irq is the received irq
+> 
+> 
+> Import defines, and steal enough helper functions, from Linux to
+> enable programming of the gic (v2 and v3). Then use the framework
+> to add an initial test (an ipi test; self, target-list, broadcast).
+> 
+> It's my hope that this framework will be a suitable base on which
+> more tests may be easily added, particularly because we have
+> vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
+> vgic-new and tcg gicv3 are merged now)
+> 
+> To run it, along with other tests, just do
+> 
+>  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+>  make
+>  export QEMU=$PATH_TO_QEMU
+>  ./run_tests.sh
+> 
+> To run it separately do, e.g.
+> 
+> $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+>  -device virtio-serial-device \
+>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+>  -display none -serial stdio \
+>  -kernel arm/gic.flat \
+>  -smp 123 -machine gic-version=3 -append ipi
+>       ^^ note, we can go nuts with nr-cpus on TCG :-)
+> 
+> Or, a KVM example using a different "sender" cpu and irq (other than zero)
+> 
+> $QEMU -machine virt,accel=kvm -cpu host \
+>  -device virtio-serial-device \
+>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+>  -display none -serial stdio \
+>  -kernel arm/gic.flat \
+>  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
+> 
+> 
+> Patches:
+> 01-05: fixes and functionality needed by the later gic patches
+> 06-07: enable gicv2 and gicv2 IPI test
+> 08-10: enable gicv3 and gicv3 IPI test
+>    11: extend the IPI tests to take variable sender and irq
+> 
+> Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v4
+> 
+> 
+> Andrew Jones (10):
+>   lib: xstr: allow multiple args
+>   arm64: fix get_"sysreg32" and make MPIDR 64bit
+>   arm/arm64: smp: support more than 8 cpus
+>   arm/arm64: add some delay routines
+>   arm/arm64: irq enable/disable
+>   arm/arm64: add initial gicv2 support
+>   arm/arm64: gicv2: add an IPI test
+>   arm/arm64: add initial gicv3 support
+>   arm/arm64: gicv3: add an IPI test
+>   arm/arm64: gic: don't just use zero
+> 
+> Peter Xu (1):
+>   libcflat: add IS_ALIGNED() macro, and page sizes
+> 
+>  arm/Makefile.common        |   7 +-
+>  arm/gic.c                  | 417 +++++++++++++++++++++++++++++++++++++++++++++
+>  arm/run                    |  19 ++-
+>  arm/selftest.c             |   5 +-
+>  arm/unittests.cfg          |  13 ++
+>  lib/arm/asm/arch_gicv3.h   |  65 +++++++
+>  lib/arm/asm/gic-v2.h       |  28 +++
+>  lib/arm/asm/gic-v3.h       |  92 ++++++++++
+>  lib/arm/asm/gic.h          |  51 ++++++
+>  lib/arm/asm/processor.h    |  38 ++++-
+>  lib/arm/asm/setup.h        |   4 +-
+>  lib/arm/gic.c              | 131 ++++++++++++++
+>  lib/arm/processor.c        |  15 ++
+>  lib/arm/setup.c            |  12 +-
+>  lib/arm64/asm/arch_gicv3.h |  66 +++++++
+>  lib/arm64/asm/gic-v2.h     |   1 +
+>  lib/arm64/asm/gic-v3.h     |   1 +
+>  lib/arm64/asm/gic.h        |   1 +
+>  lib/arm64/asm/processor.h  |  53 +++++-
+>  lib/arm64/asm/sysreg.h     |  44 +++++
+>  lib/arm64/processor.c      |  15 ++
+>  lib/libcflat.h             |  10 +-
+>  22 files changed, 1062 insertions(+), 26 deletions(-)
+>  create mode 100644 arm/gic.c
+>  create mode 100644 lib/arm/asm/arch_gicv3.h
+>  create mode 100644 lib/arm/asm/gic-v2.h
+>  create mode 100644 lib/arm/asm/gic-v3.h
+>  create mode 100644 lib/arm/asm/gic.h
+>  create mode 100644 lib/arm/gic.c
+>  create mode 100644 lib/arm64/asm/arch_gicv3.h
+>  create mode 100644 lib/arm64/asm/gic-v2.h
+>  create mode 100644 lib/arm64/asm/gic-v3.h
+>  create mode 100644 lib/arm64/asm/gic.h
+>  create mode 100644 lib/arm64/asm/sysreg.h
+> 

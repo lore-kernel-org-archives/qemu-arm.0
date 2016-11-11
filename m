@@ -1,310 +1,54 @@
-Received: by 10.25.150.194 with SMTP id y185csp1391084lfd;
-        Fri, 11 Nov 2016 07:24:53 -0800 (PST)
-X-Received: by 10.55.18.7 with SMTP id c7mr4061094qkh.246.1478877893740;
-        Fri, 11 Nov 2016 07:24:53 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id h49si8881qtc.162.2016.11.11.07.24.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Nov 2016 07:24:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.150.194 with SMTP id y185csp1392044lfd;
+        Fri, 11 Nov 2016 07:27:05 -0800 (PST)
+X-Received: by 10.194.93.101 with SMTP id ct5mr9587560wjb.11.1478878025182;
+        Fri, 11 Nov 2016 07:27:05 -0800 (PST)
+Return-Path: <andre.przywara@arm.com>
+Received: from cam-admin0.cambridge.arm.com (cam-admin0.cambridge.arm.com. [217.140.96.50])
+        by mx.google.com with ESMTP id i72si11468261wmg.98.2016.11.11.07.27.04;
+        Fri, 11 Nov 2016 07:27:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of andre.przywara@arm.com designates 217.140.96.50 as permitted sender) client-ip=217.140.96.50;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BDB36C04D2AC;
-	Fri, 11 Nov 2016 15:24:52 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-166.brq.redhat.com [10.40.204.166])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uABFOluQ014440
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Fri, 11 Nov 2016 10:24:50 -0500
-Date: Fri, 11 Nov 2016 16:24:47 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, kvm@vger.kernel.org, marc.zyngier@arm.com,
-        andre.przywara@arm.com, qemu-devel@nongnu.org, eric.auger@redhat.com,
-        qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu,
-        christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v5 06/11] arm/arm64: add
- initial gicv2 support
-Message-ID: <20161111152447.4ndjfplw3rs52vol@hawk.localdomain>
+       spf=pass (google.com: domain of andre.przywara@arm.com designates 217.140.96.50 as permitted sender) smtp.mailfrom=andre.przywara@arm.com
+Received: from [192.168.67.35] ([10.1.207.46])
+	by cam-admin0.cambridge.arm.com (8.12.6/8.12.6) with ESMTP id uABFR3Wr029235;
+	Fri, 11 Nov 2016 15:27:03 GMT
+Subject: Re: [kvm-unit-tests PATCH v5 03/11] arm/arm64: smp: support more than
+ 8 cpus
+To: Andrew Jones <drjones@redhat.com>, kvm@vger.kernel.org,
+   kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <1478798481-25030-1-git-send-email-drjones@redhat.com>
- <1478798481-25030-7-git-send-email-drjones@redhat.com>
- <87vavu6pc7.fsf@linaro.org>
+ <1478798481-25030-4-git-send-email-drjones@redhat.com>
+Cc: pbonzini@redhat.com, peter.maydell@linaro.org, alex.bennee@linaro.org,
+   marc.zyngier@arm.com, eric.auger@redhat.com, christoffer.dall@linaro.org
+From: Andre Przywara <andre.przywara@arm.com>
+Organization: ARM Ltd.
+Message-ID: <caf9e57a-a8f7-8595-2004-3be0d3224ce6@arm.com>
+Date: Fri, 11 Nov 2016 15:27:38 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <1478798481-25030-4-git-send-email-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87vavu6pc7.fsf@linaro.org>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Fri, 11 Nov 2016 15:24:52 +0000 (UTC)
-X-TUID: MLgrb1U80DPd
+X-TUID: VngPC5EucAkW
 
-On Fri, Nov 11, 2016 at 02:52:40PM +0000, Alex BennÈe wrote:
+Hi,
+
+On 10/11/16 17:21, Andrew Jones wrote:
+> By adding support for launching with gicv3 we can break the 8 vcpu
+> limit. This patch adds support to smp code and also selects the
+> vgic model corresponding to the host. The vgic model may also be
+> manually selected by adding e.g. -machine gic-version=3 to
+> extra_params.
 > 
-> Andrew Jones <drjones@redhat.com> writes:
+> Reviewed-by: Alex Benn√©e <alex.bennee@linaro.org>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 > 
-> > Add some gicv2 support. This just adds init and enable
-> > functions, allowing unit tests to start messing with it.
-> >
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> >
-> > ---
-> > v5: share/use only the modern register names [Andre]
-> > v4:
-> >  - only take defines from kernel we need now [Andre]
-> >  - moved defines to asm/gic.h so they'll be shared with v3 [drew]
-> >  - simplify enable by not caring if we reinit the distributor [drew]
-> >  - init all GICD_INT_DEF_PRI_X4 registers [Eric]
-> > ---
-> >  arm/Makefile.common    |  1 +
-> >  lib/arm/asm/gic-v2.h   | 34 ++++++++++++++++++++++
-> >  lib/arm/asm/gic.h      | 37 ++++++++++++++++++++++++
-> >  lib/arm/gic.c          | 76 ++++++++++++++++++++++++++++++++++++++++++++++++++
-> >  lib/arm64/asm/gic-v2.h |  1 +
-> >  lib/arm64/asm/gic.h    |  1 +
-> >  6 files changed, 150 insertions(+)
-> >  create mode 100644 lib/arm/asm/gic-v2.h
-> >  create mode 100644 lib/arm/asm/gic.h
-> >  create mode 100644 lib/arm/gic.c
-> >  create mode 100644 lib/arm64/asm/gic-v2.h
-> >  create mode 100644 lib/arm64/asm/gic.h
-> >
-> > diff --git a/arm/Makefile.common b/arm/Makefile.common
-> > index ccb554d9251a..41239c37e092 100644
-> > --- a/arm/Makefile.common
-> > +++ b/arm/Makefile.common
-> > @@ -42,6 +42,7 @@ cflatobjs += lib/arm/mmu.o
-> >  cflatobjs += lib/arm/bitops.o
-> >  cflatobjs += lib/arm/psci.o
-> >  cflatobjs += lib/arm/smp.o
-> > +cflatobjs += lib/arm/gic.o
-> >
-> >  libeabi = lib/arm/libeabi.a
-> >  eabiobjs = lib/arm/eabi_compat.o
-> > diff --git a/lib/arm/asm/gic-v2.h b/lib/arm/asm/gic-v2.h
-> > new file mode 100644
-> > index 000000000000..c2d5fecd4886
-> > --- /dev/null
-> > +++ b/lib/arm/asm/gic-v2.h
-> > @@ -0,0 +1,34 @@
-> > +/*
-> > + * All GIC* defines are lifted from include/linux/irqchip/arm-gic.h
-> > + *
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#ifndef _ASMARM_GIC_V2_H_
-> > +#define _ASMARM_GIC_V2_H_
-> > +
-> > +#ifndef _ASMARM_GIC_H_
-> > +#error Do not directly include <asm/gic-v2.h>. Include <asm/gic.h>
-> > +#endif
-> > +
-> > +#define GICD_ENABLE			0x1
-> > +#define GICC_ENABLE			0x1
-> > +
-> > +#ifndef __ASSEMBLY__
-> > +
-> > +struct gicv2_data {
-> > +	void *dist_base;
-> > +	void *cpu_base;
-> > +	unsigned int irq_nr;
-> > +};
-> > +extern struct gicv2_data gicv2_data;
-> > +
-> > +#define gicv2_dist_base()		(gicv2_data.dist_base)
-> > +#define gicv2_cpu_base()		(gicv2_data.cpu_base)
-> > +
-> > +extern int gicv2_init(void);
-> > +extern void gicv2_enable_defaults(void);
-> > +
-> > +#endif /* !__ASSEMBLY__ */
-> > +#endif /* _ASMARM_GIC_V2_H_ */
-> > diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-> > new file mode 100644
-> > index 000000000000..d44e47bcf404
-> > --- /dev/null
-> > +++ b/lib/arm/asm/gic.h
-> > @@ -0,0 +1,37 @@
-> > +/*
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#ifndef _ASMARM_GIC_H_
-> > +#define _ASMARM_GIC_H_
-> > +
-> > +#include <asm/gic-v2.h>
-> > +
-> > +#define GICD_CTLR			0x0000
-> > +#define GICD_TYPER			0x0004
-> > +#define GICD_ISENABLER			0x0100
-> > +#define GICD_IPRIORITYR			0x0400
-> 
-> Maybe GICD_ISENABLER_BASE and GICD_IPRIORITYR_BASE as they are the start
-> of a series of registers? Also what happened to the formatting?
+> ---
+> v5: left cpus a u32 for now. Changing to u64 requires a change to
+>     devicetree. Will do it later. [Andre]
 
-These names match the kernel's naming (and the ARM spec) The formatting
-is fine after applying, diff just bumped them over prepending the '+'
+Given that we address this in the future:
 
-> 
-> > +
-> > +#define GICD_TYPER_IRQS(typer)		((((typer) & 0x1f) + 1)
-> > * 32)
-> > +#define GICD_INT_EN_SET_SGI		0x0000ffff
-> > +#define GICD_INT_DEF_PRI_X4		0xa0a0a0a0
-> 
-> This doesn't seem to be used and I'm not sure what GICD_TYPER_IRQS it is
-> trying to achieve.
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 
-All used in lib/arm/gic.c. See the spec for how to interpret the
-ITLinesNumber field of GICD_TYPER
-
-> 
-> A comment above and here to make it clear we are talking about offsets
-> in the distributor and cpu register maps would aid confusion.
-
-Better not add them then, as I wouldn't want to *aid* confusion :-)
-
-I can add some comments (I do add a couple for gicv3), but I think
-here it's pretty clear by the name prefix (GICD vs. GICC).
-
-> 
-> > +
-> > +#define GICC_CTLR			0x0000
-> > +#define GICC_PMR			0x0004
-> > +
-> > +#define GICC_INT_PRI_THRESHOLD		0xf0
-> > +
-> > +#ifndef __ASSEMBLY__
-> > +
-> > +/*
-> > + * gic_init will try to find all known gics, and then
-> > + * initialize the gic data for the one found.
-> > + * returns
-> > + *  0   : no gic was found
-> > + *  > 0 : the gic version of the gic found
-> > + */
-> > +extern int gic_init(void);
-> 
-> If we are going to make the library API agnostic I guess returning NULL
-> or an ops structure would be best here?
-
-While this function is gic-version agnostic, it's also the only function
-that identifies the gic version to the unit test. unit test writers may
-need to know what they have. Indeed, they may only care about one type,
-and then call report_skip or something when they don't get the version
-they want. Anyway, if a unit test really doesn't care, it can simply use
-this like a bool, telling them they have a supported gic or not.
-
-The ops structure doesn't need to be returned, that'll be
-pseudo-private, only referenced by lib wrapper functions.
-
-> 
-> > +
-> > +#endif /* !__ASSEMBLY__ */
-> > +#endif /* _ASMARM_GIC_H_ */
-> > diff --git a/lib/arm/gic.c b/lib/arm/gic.c
-> > new file mode 100644
-> > index 000000000000..d655105e058b
-> > --- /dev/null
-> > +++ b/lib/arm/gic.c
-> > @@ -0,0 +1,76 @@
-> > +/*
-> > + * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-> > + *
-> > + * This work is licensed under the terms of the GNU LGPL, version 2.
-> > + */
-> > +#include <devicetree.h>
-> > +#include <asm/gic.h>
-> > +#include <asm/io.h>
-> > +
-> > +struct gicv2_data gicv2_data;
-> > +
-> > +/*
-> > + * Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt
-> > + */
-> > +static bool
-> > +gic_get_dt_bases(const char *compatible, void **base1, void **base2)
-> > +{
-> > +	struct dt_pbus_reg reg;
-> > +	struct dt_device gic;
-> > +	struct dt_bus bus;
-> > +	int node, ret;
-> > +
-> > +	dt_bus_init_defaults(&bus);
-> > +	dt_device_init(&gic, &bus, NULL);
-> > +
-> > +	node = dt_device_find_compatible(&gic, compatible);
-> > +	assert(node >= 0 || node == -FDT_ERR_NOTFOUND);
-> > +
-> > +	if (node == -FDT_ERR_NOTFOUND)
-> > +		return false;
-> > +
-> > +	dt_device_bind_node(&gic, node);
-> > +
-> > +	ret = dt_pbus_translate(&gic, 0, &reg);
-> > +	assert(ret == 0);
-> > +	*base1 = ioremap(reg.addr, reg.size);
-> > +
-> > +	ret = dt_pbus_translate(&gic, 1, &reg);
-> > +	assert(ret == 0);
-> > +	*base2 = ioremap(reg.addr, reg.size);
-> > +
-> > +	return true;
-> > +}
-> > +
-> > +int gicv2_init(void)
-> > +{
-> > +	return gic_get_dt_bases("arm,cortex-a15-gic",
-> > +			&gicv2_data.dist_base, &gicv2_data.cpu_base);
-> > +}
-> > +
-> > +int gic_init(void)
-> > +{
-> > +	if (gicv2_init())
-> > +		return 2;
-> > +	return 0;
-> > +}
-> > +
-> > +void gicv2_enable_defaults(void)
-> > +{
-> > +	void *dist = gicv2_dist_base();
-> > +	void *cpu_base = gicv2_cpu_base();
-> > +	unsigned int i;
-> > +
-> > +	gicv2_data.irq_nr = GICD_TYPER_IRQS(readl(dist + GICD_TYPER));
-> > +	if (gicv2_data.irq_nr > 1020)
-> > +		gicv2_data.irq_nr = 1020;
-> > +
-> > +	for (i = 0; i < gicv2_data.irq_nr; i += 4)
-> > +		writel(GICD_INT_DEF_PRI_X4, dist + GICD_IPRIORITYR + i);
-> > +
-> > +	writel(GICD_INT_EN_SET_SGI, dist + GICD_ISENABLER + 0);
-> > +	writel(GICD_ENABLE, dist + GICD_CTLR);
-> > +
-> > +	writel(GICC_INT_PRI_THRESHOLD, cpu_base + GICC_PMR);
-> > +	writel(GICC_ENABLE, cpu_base + GICC_CTLR);
-> > +}
-> > diff --git a/lib/arm64/asm/gic-v2.h b/lib/arm64/asm/gic-v2.h
-> > new file mode 100644
-> > index 000000000000..52226624a209
-> > --- /dev/null
-> > +++ b/lib/arm64/asm/gic-v2.h
-> > @@ -0,0 +1 @@
-> > +#include "../../arm/asm/gic-v2.h"
-> > diff --git a/lib/arm64/asm/gic.h b/lib/arm64/asm/gic.h
-> > new file mode 100644
-> > index 000000000000..e5eb302a31b4
-> > --- /dev/null
-> > +++ b/lib/arm64/asm/gic.h
-> > @@ -0,0 +1 @@
-> > +#include "../../arm/asm/gic.h"
->
-
-Thanks,
-drew

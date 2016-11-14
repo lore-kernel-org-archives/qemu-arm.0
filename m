@@ -1,99 +1,168 @@
-Received: by 10.25.150.194 with SMTP id y185csp1173178lfd;
-        Mon, 14 Nov 2016 11:44:47 -0800 (PST)
-X-Received: by 10.37.162.70 with SMTP id b64mr2629559ybi.34.1479152687631;
-        Mon, 14 Nov 2016 11:44:47 -0800 (PST)
-Return-Path: <rth7680@gmail.com>
-Received: from mail-yw0-x233.google.com (mail-yw0-x233.google.com. [2607:f8b0:4002:c05::233])
-        by mx.google.com with ESMTPS id b202si1576196yba.189.2016.11.14.11.44.47
+Received: by 10.25.150.194 with SMTP id y185csp1204970lfd;
+        Mon, 14 Nov 2016 13:08:46 -0800 (PST)
+X-Received: by 10.55.21.81 with SMTP id f78mr20624514qkh.210.1479157726245;
+        Mon, 14 Nov 2016 13:08:46 -0800 (PST)
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id v88si11369262qte.71.2016.11.14.13.08.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Nov 2016 11:44:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:4002:c05::233 as permitted sender) client-ip=2607:f8b0:4002:c05::233;
+        Mon, 14 Nov 2016 13:08:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 2607:f8b0:4002:c05::233 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Received: by mail-yw0-x233.google.com with SMTP id r204so75189788ywb.0;
-        Mon, 14 Nov 2016 11:44:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=sender:subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=eecslRcSjizpo/YsF/VoMyGB7ZcE5izlsFmexaUcvfI=;
-        b=r/hdoej6xdAVuPSZWyehXL+6JXZjIWWaGj1iJacnQ455zd5VwS9432Rl329S9ZCPiJ
-         Aho5NXL4bzJF3D4HZtjUGSSfRDp7DE8Ucw8xpvqXlSSPYhkcndEbFc3wJjPQxLoNqXkS
-         LwYYDsGcKgV4vBtTdW8GEkVGRqUKHGfHq5s6PcoUd4BYk0lsdTltZ4SsWEnfBDLZfIIY
-         gf+BiUXnyr9NDx+9ZxDWMB6Zj7uxu2DtdnPloKk6F5ZFoSVId0xlVa3Z7wlKG3VVMFZl
-         Jstjv3jZufTHuvYnTp+7UyNGDvWEHQuqeWoat7EC4OyfakNCDOGB+q8yuDH+5g+9a9Vo
-         cBmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=eecslRcSjizpo/YsF/VoMyGB7ZcE5izlsFmexaUcvfI=;
-        b=JuKYaH+FqsZ2EbbQ0Dlq/WS2rPyg6jTUc2NLnyREVvxvmv+w3ALAglQfo/EVncaV2Q
-         6TJiBDRW8k+BAHACasuyYcIyEBffhkdhuWYJ/sOGmc9FwvMfWKERLwKupZ/5WmuPRu0O
-         2cCA4u7kNYNd5SjD1znS64eBK4IsO7B/YLQs0xLbbJlfH+sCTDmY17HE8rLdww1xucfH
-         N7SsOtgsYyyGx4fQLo3yeYjF+lTyjXFOLl+bFBi6NsSR+eLY5WDBjantD7lYUP69Jw1v
-         ySnqZQDtnOFDkKwdafNtbUvvjWkRWuhEtzWOYZ4QdIAETUSG188L1Vms45stPEUDbKH+
-         T0FQ==
-X-Gm-Message-State: ABUngveqv/UJscT+ZMGChZXC7C+pRjX69DSatGgPcqtWtjkEE0LJUG5ZopnSfaDmWgup+g==
-X-Received: by 10.157.13.23 with SMTP id 23mr7317317oti.149.1479152687198;
-        Mon, 14 Nov 2016 11:44:47 -0800 (PST)
-Return-Path: <rth7680@gmail.com>
-Received: from bigtime.twiddle.net (mf25636d0.tmodns.net. [208.54.86.242])
-        by smtp.googlemail.com with ESMTPSA id w129sm6671603oie.1.2016.11.14.11.44.38
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Nov 2016 11:44:46 -0800 (PST)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [RFC 1/2] qom/cpu: move tlb_flush to cpu_common_reset
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20161114174010.31040-1-alex.bennee@linaro.org>
- <20161114174010.31040-2-alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
- Aurelien Jarno <aurelien@aurel32.net>, Yongbok Kim <yongbok.kim@imgtec.com>,
- Anthony Green <green@moxielogic.com>, Jia Liu <proljc@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- "open list:ARM" <qemu-arm@nongnu.org>,
- "open list:PowerPC" <qemu-ppc@nongnu.org>
-From: Richard Henderson <rth@twiddle.net>
-Message-ID: <88351c7a-4b33-b3ed-962b-cf7d71ea71e0@twiddle.net>
-Date: Mon, 14 Nov 2016 20:25:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
+Received: from int-mx09.intmail.prod.int.phx2.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AEE597AEA7;
+	Mon, 14 Nov 2016 21:08:44 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
+	by int-mx09.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAEL8fjT014878;
+	Mon, 14 Nov 2016 16:08:42 -0500
+From: Andrew Jones <drjones@redhat.com>
+To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: pbonzini@redhat.com, andre.przywara@arm.com, peter.maydell@linaro.org,
+        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
+        christoffer.dall@linaro.org
+Subject: [kvm-unit-tests PATCH v6 00/11] arm/arm64: add gic framework
+Date: Mon, 14 Nov 2016 22:08:28 +0100
+Message-Id: <1479157719-31021-1-git-send-email-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20161114174010.31040-2-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Q0CCg7mWYnM8
+X-Scanned-By: MIMEDefang 2.68 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 14 Nov 2016 21:08:45 +0000 (UTC)
+X-TUID: La/zWvnD2MmU
 
-On 11/14/2016 06:40 PM, Alex Bennée wrote:
-> It is a common thing amongst the various cpu reset functions want to
-> flush the SoftMMU's TLB entries. This is done either by calling
-> tlb_flush directly or by way of a general memset of the CPU
-> structure (sometimes both).
->
-> This moves the tlb_flush call to the common reset function and
-> additionally ensures it is only done for the CONFIG_SOFTMMU case and
-> when tcg is enabled.
->
-> In some target cases we add an empty end_of_reset_fields structure to the
-> target vCPU structure so have a clear end point for any memset which
-> is resetting value in the structure before CPU_COMMON (where the TLB
-> structures are).
->
-> While this is a nice clean-up in general it is also a precursor for
-> changes coming to cputlb for MTTCG where the clearing of entries
-> can't be done arbitrarily across vCPUs. Currently the cpu_reset
-> function is usually called from the context of another vCPU as the
-> architectural power up sequence is run. By using the cputlb API
-> functions we can ensure the right behaviour in the future.
+v6:
+ - rebased to latest master
+ - several other changes thanks to Andre and Alex, changes in
+   individual patch change logs
+ - some code cleanups
 
-Reviewed-by: Richard Henderson <rth@twiddle.net>
+v5:
+ - fix arm32/gicv3 compile [drew]
+ - use modern register names [Andre]
+ - one Andre r-b
+
+v4:
+ - Eric's r-b's
+ - Andre's suggestion to only take defines we need
+ - several other changes listed in individual patches
+
+v3:
+ - Rebased on latest master
+ - Added Alex's r-b's
+
+v2:
+ Rebased on latest master + my "populate argv[0]" series (will
+ send a REPOST for that shortly. Additionally a few patches got
+ fixes/features;
+ 07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
+       all interrupts as non-secure Group-1" in order to continue
+       working over TCG, as the gicv3 code for TCG removed a hack
+       it had there to make Linux happy.
+ 08/10 added more output for when things fail (if they fail)
+ 09/10 switched gicv3 broadcast implementation to using IRM. This
+       found a bug in a recent (but not tip) kernel, which I was
+       about to fix, but then I saw MarcZ beat me to it.
+ 10/10 actually check that the input irq is the received irq
 
 
-r~
+Import defines, and steal enough helper functions, from Linux to
+enable programming of the gic (v2 and v3). Then use the framework
+to add an initial test (an ipi test; self, target-list, broadcast).
+
+It's my hope that this framework will be a suitable base on which
+more tests may be easily added, particularly because we have
+vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
+vgic-new and tcg gicv3 are merged now)
+
+To run it, along with other tests, just do
+
+ ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
+ make
+ export QEMU=$PATH_TO_QEMU
+ ./run_tests.sh
+
+To run it separately do, e.g.
+
+$QEMU -machine virt,accel=tcg -cpu cortex-a57 \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 123 -machine gic-version=3 -append ipi
+      ^^ note, we can go nuts with nr-cpus on TCG :-)
+
+Or, a KVM example using a different "sender" cpu and irq (other than zero)
+
+$QEMU -machine virt,accel=kvm -cpu host \
+ -device virtio-serial-device \
+ -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
+ -display none -serial stdio \
+ -kernel arm/gic.flat \
+ -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
+
+
+Patches:
+01-05: fixes and functionality needed by the later gic patches
+06-07: enable gicv2 and gicv2 IPI test
+08-10: enable gicv3 and gicv3 IPI test
+   11: extend the IPI tests to take variable sender and irq
+
+Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v6
+
+
+Andrew Jones (10):
+  lib: xstr: allow multiple args
+  arm64: fix get_"sysreg32" and make MPIDR 64bit
+  arm/arm64: smp: support more than 8 cpus
+  arm/arm64: add some delay routines
+  arm/arm64: irq enable/disable
+  arm/arm64: add initial gicv2 support
+  arm/arm64: gicv2: add an IPI test
+  arm/arm64: add initial gicv3 support
+  arm/arm64: gicv3: add an IPI test
+  arm/arm64: gic: don't just use zero
+
+Peter Xu (1):
+  libcflat: add IS_ALIGNED() macro, and page sizes
+
+ arm/Makefile.common        |   9 +-
+ arm/gic.c                  | 340 +++++++++++++++++++++++++++++++++++++++++++++
+ arm/run                    |  19 ++-
+ arm/selftest.c             |   5 +-
+ arm/unittests.cfg          |  14 ++
+ lib/arm/asm/arch_gicv3.h   |  70 ++++++++++
+ lib/arm/asm/gic-v2.h       |  36 +++++
+ lib/arm/asm/gic-v3.h       | 112 +++++++++++++++
+ lib/arm/asm/gic.h          | 106 ++++++++++++++
+ lib/arm/asm/processor.h    |  42 +++++-
+ lib/arm/asm/setup.h        |   4 +-
+ lib/arm/gic.c              | 267 +++++++++++++++++++++++++++++++++++
+ lib/arm/processor.c        |  15 ++
+ lib/arm/setup.c            |  10 ++
+ lib/arm64/asm/arch_gicv3.h |  66 +++++++++
+ lib/arm64/asm/gic-v2.h     |   1 +
+ lib/arm64/asm/gic-v3.h     |   1 +
+ lib/arm64/asm/gic.h        |   1 +
+ lib/arm64/asm/processor.h  |  53 +++++--
+ lib/arm64/asm/sysreg.h     |  44 ++++++
+ lib/arm64/processor.c      |  15 ++
+ lib/libcflat.h             |  10 +-
+ 22 files changed, 1212 insertions(+), 28 deletions(-)
+ create mode 100644 arm/gic.c
+ create mode 100644 lib/arm/asm/arch_gicv3.h
+ create mode 100644 lib/arm/asm/gic-v2.h
+ create mode 100644 lib/arm/asm/gic-v3.h
+ create mode 100644 lib/arm/asm/gic.h
+ create mode 100644 lib/arm/gic.c
+ create mode 100644 lib/arm64/asm/arch_gicv3.h
+ create mode 100644 lib/arm64/asm/gic-v2.h
+ create mode 100644 lib/arm64/asm/gic-v3.h
+ create mode 100644 lib/arm64/asm/gic.h
+ create mode 100644 lib/arm64/asm/sysreg.h
+
+-- 
+2.7.4

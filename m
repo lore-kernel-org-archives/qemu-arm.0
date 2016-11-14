@@ -1,182 +1,97 @@
-Received: by 10.25.150.194 with SMTP id y185csp911154lfd;
-        Thu, 10 Nov 2016 09:18:44 -0800 (PST)
-X-Received: by 10.200.39.43 with SMTP id g40mr6609632qtg.58.1478798324419;
-        Thu, 10 Nov 2016 09:18:44 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id n29si3943656qtb.40.2016.11.10.09.18.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Nov 2016 09:18:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.150.194 with SMTP id y185csp1026753lfd;
+        Mon, 14 Nov 2016 06:32:14 -0800 (PST)
+X-Received: by 10.99.189.1 with SMTP id a1mr29226406pgf.142.1479133934737;
+        Mon, 14 Nov 2016 06:32:14 -0800 (PST)
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d124si22421151pga.215.2016.11.14.06.32.14;
+        Mon, 14 Nov 2016 06:32:14 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5FFF861B86;
-	Thu, 10 Nov 2016 17:18:43 +0000 (UTC)
-Received: from hawk.localdomain (ovpn-204-43.brq.redhat.com [10.40.204.43])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAAHIcup010603
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Thu, 10 Nov 2016 12:18:40 -0500
-Date: Thu, 10 Nov 2016 18:18:37 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Andre Przywara <andre.przywara@arm.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
-        alex.bennee@linaro.org, marc.zyngier@arm.com, eric.auger@redhat.com,
-        christoffer.dall@linaro.org
-Subject: Re: [kvm-unit-tests PATCH v4 00/11] arm/arm64: add gic framework
-Message-ID: <20161110171837.c6f75le4twifrigp@hawk.localdomain>
-References: <1478794084-5273-1-git-send-email-drjones@redhat.com>
- <77355b5b-9e26-16f9-4243-e11ef4d4c8ce@arm.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <77355b5b-9e26-16f9-4243-e11ef4d4c8ce@arm.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Thu, 10 Nov 2016 17:18:43 +0000 (UTC)
-X-TUID: /zJddgkFGQjT
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1752396AbcKNOcK (ORCPT <rfc822;xinliang.liu@linaro.org>
+        + 7 others); Mon, 14 Nov 2016 09:32:10 -0500
+Received: from mx2.suse.de ([195.135.220.15]:57069 "EHLO mx2.suse.de"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1752009AbcKNOcI (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 14 Nov 2016 09:32:08 -0500
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay1.suse.de (charybdis-ext.suse.de [195.135.220.254])
+        by mx2.suse.de (Postfix) with ESMTP id CA6C9AAB7;
+        Mon, 14 Nov 2016 14:32:06 +0000 (UTC)
+From:   Alexander Graf <agraf@suse.de>
+To:     QEMU Developers <qemu-devel@nongnu.org>
+Cc:     Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>
+Subject: [PATCH RFC v2 1/2] linux-headers: update
+Date:   Mon, 14 Nov 2016 15:32:14 +0100
+Message-Id: <1479133935-63848-2-git-send-email-agraf@suse.de>
+X-Mailer: git-send-email 1.8.5.6
+In-Reply-To: <1479133935-63848-1-git-send-email-agraf@suse.de>
+References: <1479133935-63848-1-git-send-email-agraf@suse.de>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: I3k/MWN+Gk/n
 
-On Thu, Nov 10, 2016 at 04:52:30PM +0000, Andre Przywara wrote:
-> Hi,
-> 
-> so is this actually v4 just resent?
-> Or is this is a new version with s/5/4/?
-> I can't spot any of the key changes quickly ...
+This patch updates the Linux headers to include the in-progress user
+space ARM timer patches. It is explicitly RFC, as the patches are not
+merged yet.
+---
+ linux-headers/asm-arm/kvm.h   | 1 +
+ linux-headers/asm-arm64/kvm.h | 1 +
+ linux-headers/linux/kvm.h     | 6 ++++++
+ 3 files changed, 8 insertions(+)
 
-Argh... Forgot to edit my bash history after pulling it up to send.
-OK, the real v5 is coming...
+diff --git a/linux-headers/asm-arm/kvm.h b/linux-headers/asm-arm/kvm.h
+index 541268c..5d58ec2 100644
+--- a/linux-headers/asm-arm/kvm.h
++++ b/linux-headers/asm-arm/kvm.h
+@@ -105,6 +105,7 @@ struct kvm_debug_exit_arch {
+ };
+ 
+ struct kvm_sync_regs {
++	__u8 timer_irq_level;
+ };
+ 
+ struct kvm_arch_memory_slot {
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+index fd5a276..0e1cbd1 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -143,6 +143,7 @@ struct kvm_debug_exit_arch {
+ #define KVM_GUESTDBG_USE_HW		(1 << 17)
+ 
+ struct kvm_sync_regs {
++	__u8 timer_irq_level;
+ };
+ 
+ struct kvm_arch_memory_slot {
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index 4806e06..737113c 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -870,6 +870,7 @@ struct kvm_ppc_smmu_info {
+ #define KVM_CAP_S390_USER_INSTR0 130
+ #define KVM_CAP_MSI_DEVID 131
+ #define KVM_CAP_PPC_HTM 132
++#define KVM_CAP_ARM_TIMER 133
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
+@@ -1327,4 +1328,9 @@ struct kvm_assigned_msix_entry {
+ #define KVM_X2APIC_API_USE_32BIT_IDS            (1ULL << 0)
+ #define KVM_X2APIC_API_DISABLE_BROADCAST_QUIRK  (1ULL << 1)
+ 
++/* Available with KVM_CAP_ARM_TIMER */
++
++/* Bits for run->arm_timer.timesource */
++#define KVM_ARM_TIMER_VTIMER           (1 << 0)
++
+ #endif /* __LINUX_KVM_H */
+-- 
+1.8.5.6
 
-Thanks,
-Your Friendly Spammer
-
-> 
-> Cheers,
-> Andre.
-> 
-> On 10/11/16 16:07, Andrew Jones wrote:
-> > v4:
-> >  - Eric's r-b's
-> >  - Andre's suggestion to only take defines we need
-> >  - several other changes listed in individual patches
-> > 
-> > v3:
-> >  - Rebased on latest master
-> >  - Added Alex's r-b's
-> > 
-> > v2:
-> >  Rebased on latest master + my "populate argv[0]" series (will
-> >  send a REPOST for that shortly. Additionally a few patches got
-> >  fixes/features;
-> >  07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
-> >        all interrupts as non-secure Group-1" in order to continue
-> >        working over TCG, as the gicv3 code for TCG removed a hack
-> >        it had there to make Linux happy.
-> >  08/10 added more output for when things fail (if they fail)
-> >  09/10 switched gicv3 broadcast implementation to using IRM. This
-> >        found a bug in a recent (but not tip) kernel, which I was
-> >        about to fix, but then I saw MarcZ beat me to it.
-> >  10/10 actually check that the input irq is the received irq
-> > 
-> > 
-> > Import defines, and steal enough helper functions, from Linux to
-> > enable programming of the gic (v2 and v3). Then use the framework
-> > to add an initial test (an ipi test; self, target-list, broadcast).
-> > 
-> > It's my hope that this framework will be a suitable base on which
-> > more tests may be easily added, particularly because we have
-> > vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
-> > vgic-new and tcg gicv3 are merged now)
-> > 
-> > To run it, along with other tests, just do
-> > 
-> >  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
-> >  make
-> >  export QEMU=$PATH_TO_QEMU
-> >  ./run_tests.sh
-> > 
-> > To run it separately do, e.g.
-> > 
-> > $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
-> >  -device virtio-serial-device \
-> >  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
-> >  -display none -serial stdio \
-> >  -kernel arm/gic.flat \
-> >  -smp 123 -machine gic-version=3 -append ipi
-> >       ^^ note, we can go nuts with nr-cpus on TCG :-)
-> > 
-> > Or, a KVM example using a different "sender" cpu and irq (other than zero)
-> > 
-> > $QEMU -machine virt,accel=kvm -cpu host \
-> >  -device virtio-serial-device \
-> >  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
-> >  -display none -serial stdio \
-> >  -kernel arm/gic.flat \
-> >  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
-> > 
-> > 
-> > Patches:
-> > 01-05: fixes and functionality needed by the later gic patches
-> > 06-07: enable gicv2 and gicv2 IPI test
-> > 08-10: enable gicv3 and gicv3 IPI test
-> >    11: extend the IPI tests to take variable sender and irq
-> > 
-> > Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v4
-> > 
-> > 
-> > Andrew Jones (10):
-> >   lib: xstr: allow multiple args
-> >   arm64: fix get_"sysreg32" and make MPIDR 64bit
-> >   arm/arm64: smp: support more than 8 cpus
-> >   arm/arm64: add some delay routines
-> >   arm/arm64: irq enable/disable
-> >   arm/arm64: add initial gicv2 support
-> >   arm/arm64: gicv2: add an IPI test
-> >   arm/arm64: add initial gicv3 support
-> >   arm/arm64: gicv3: add an IPI test
-> >   arm/arm64: gic: don't just use zero
-> > 
-> > Peter Xu (1):
-> >   libcflat: add IS_ALIGNED() macro, and page sizes
-> > 
-> >  arm/Makefile.common        |   7 +-
-> >  arm/gic.c                  | 417 +++++++++++++++++++++++++++++++++++++++++++++
-> >  arm/run                    |  19 ++-
-> >  arm/selftest.c             |   5 +-
-> >  arm/unittests.cfg          |  13 ++
-> >  lib/arm/asm/arch_gicv3.h   |  65 +++++++
-> >  lib/arm/asm/gic-v2.h       |  28 +++
-> >  lib/arm/asm/gic-v3.h       |  92 ++++++++++
-> >  lib/arm/asm/gic.h          |  51 ++++++
-> >  lib/arm/asm/processor.h    |  38 ++++-
-> >  lib/arm/asm/setup.h        |   4 +-
-> >  lib/arm/gic.c              | 131 ++++++++++++++
-> >  lib/arm/processor.c        |  15 ++
-> >  lib/arm/setup.c            |  12 +-
-> >  lib/arm64/asm/arch_gicv3.h |  66 +++++++
-> >  lib/arm64/asm/gic-v2.h     |   1 +
-> >  lib/arm64/asm/gic-v3.h     |   1 +
-> >  lib/arm64/asm/gic.h        |   1 +
-> >  lib/arm64/asm/processor.h  |  53 +++++-
-> >  lib/arm64/asm/sysreg.h     |  44 +++++
-> >  lib/arm64/processor.c      |  15 ++
-> >  lib/libcflat.h             |  10 +-
-> >  22 files changed, 1062 insertions(+), 26 deletions(-)
-> >  create mode 100644 arm/gic.c
-> >  create mode 100644 lib/arm/asm/arch_gicv3.h
-> >  create mode 100644 lib/arm/asm/gic-v2.h
-> >  create mode 100644 lib/arm/asm/gic-v3.h
-> >  create mode 100644 lib/arm/asm/gic.h
-> >  create mode 100644 lib/arm/gic.c
-> >  create mode 100644 lib/arm64/asm/arch_gicv3.h
-> >  create mode 100644 lib/arm64/asm/gic-v2.h
-> >  create mode 100644 lib/arm64/asm/gic-v3.h
-> >  create mode 100644 lib/arm64/asm/gic.h
-> >  create mode 100644 lib/arm64/asm/sysreg.h
-> > 
-> --
-> To unsubscribe from this list: send the line "unsubscribe kvm" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html

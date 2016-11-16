@@ -1,72 +1,72 @@
-Received: by 10.25.150.194 with SMTP id y185csp302057lfd;
-        Wed, 16 Nov 2016 11:40:44 -0800 (PST)
-X-Received: by 10.200.51.119 with SMTP id u52mr3049447qta.226.1479325244770;
-        Wed, 16 Nov 2016 11:40:44 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp302315lfd;
+        Wed, 16 Nov 2016 11:41:25 -0800 (PST)
+X-Received: by 10.200.38.102 with SMTP id v35mr3006435qtv.100.1479325285289;
+        Wed, 16 Nov 2016 11:41:25 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v90si7260704qte.313.2016.11.16.11.40.44
+        by mx.google.com with ESMTPS id p2si13226063qkb.257.2016.11.16.11.41.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Nov 2016 11:40:44 -0800 (PST)
+        Wed, 16 Nov 2016 11:41:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        dkim=fail header.i=@gmail.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:54338 helo=lists.gnu.org)
+Received: from localhost ([::1]:54351 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c764Z-00070C-H4
-	for alex.bennee@linaro.org; Wed, 16 Nov 2016 14:40:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45553)
+	id 1c765E-0007wK-1V
+	for alex.bennee@linaro.org; Wed, 16 Nov 2016 14:41:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45380)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1c75qf-0004HA-LZ
-	for qemu-devel@nongnu.org; Wed, 16 Nov 2016 14:26:23 -0500
+	(envelope-from <rth7680@gmail.com>) id 1c75qW-00046X-B5
+	for qemu-devel@nongnu.org; Wed, 16 Nov 2016 14:26:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1c75qd-0005zd-EN
-	for qemu-devel@nongnu.org; Wed, 16 Nov 2016 14:26:21 -0500
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:35650)
+	(envelope-from <rth7680@gmail.com>) id 1c75qV-0005uv-5L
+	for qemu-devel@nongnu.org; Wed, 16 Nov 2016 14:26:12 -0500
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:33780)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1c75qd-0005yO-6v; Wed, 16 Nov 2016 14:26:19 -0500
-Received: by mail-wm0-x242.google.com with SMTP id a20so14361385wme.2;
-	Wed, 16 Nov 2016 11:26:19 -0800 (PST)
+	id 1c75qU-0005uP-S7; Wed, 16 Nov 2016 14:26:11 -0500
+Received: by mail-wm0-x244.google.com with SMTP id u144so14302400wmu.0;
+	Wed, 16 Nov 2016 11:26:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=9K/gIUkRGdN7VqhrnINzUBvBRiOEK87DJVZEPSV1EFs=;
-	b=wZHJ9lFwOCujs948jmDIkt2YEakwhmUPkjXlQTXNrZ3bvBHRc8sxwUaXI+aRUFN/NP
-	dcXKZ31tRDX8Tz9ZYyGZhgZ94lU24mpNmVWJb30m+2oBgr6nE+ISQlJFaL2/trWkOQtC
-	B9WEfiFMMCiEHns8bWiLEkwoc6xcyibKLSYwYkO+SVdELTeaJbK63uOuoD/z8+55G5b8
-	+1dn4vRElLzBghDT973waMMy7ry86KQPjjwglxlUPRehzW57buZG7mpQHIbMejU9u+9x
-	+IoVJGRcj2gO+zAU+844rHGYmSFeObT6EflrNIF5Ucr1Hx8dvlKB2TcVblj2mG6wlqGy
-	dp7g==
+	bh=U9ufyizhnOl2mBBBR6lYTyN6XkszjzvuP0aoLQ0M4Ec=;
+	b=qM3bU9lqWRavyS0/GekwTw+3+owneJ2TWu3K98Oplbrk187VSA1NYPhNSNSsvf1hp7
+	9Sqs8JSeeMD3OEbuljwcDL0H2UqGGv3cugPx+zIVUqt9KQUmiAUkiVuTGPxMdnypmgf8
+	Lbk5nuBwm8euOSJq1bGhsj4lYa+mNqVmOrN0cwgbwgE/DZiX5IWGkz+/MnsXh7jjMsbD
+	0c9bq7ECF5/UNW2OE4P/siQtwrF8PS5A+116Ifl+wb+sCpxFswJFjMGag6v6mk6npwJD
+	a5mhxj1dZ5XcIU8c8SxOX7vI1BwGpTPJZylGTitP51OmpwpMAS1NbBkuoRO0PTy+GfG0
+	EzkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references;
-	bh=9K/gIUkRGdN7VqhrnINzUBvBRiOEK87DJVZEPSV1EFs=;
-	b=aheqsVZ4cbtE3pY+ZUQvM/CLQQUEWYs7j0RXh/dh1BMCICcJ+7fdieUicXkOhiMs4e
-	hrK1iDpL7gKkzWW8gmc0+c5asuMeeszlFrEfJ3sCH5LV6Ki0MYDu4ZhCX3al+1RvoYq6
-	z24krps2aYsT8HiJ9IKlDtTj0xbjOhimBr7szTmPFpDphux2wuwFcwhP0FGj7qS7PsFO
-	OoaBT5Iba5BPG8BukoC3LNBG8a7WupvZB+5uauDzDo7zayNm2s5mclCOYTuboRQ02V96
-	T+VnGnSHhFaWaq2bfz88JwQUSJOudPkWLWb6UOphsJZ+rP999fjKioCQwqC/OPw3aRGw
-	AOUg==
-X-Gm-Message-State: ABUngvdBrz1nY13KbTzvsuNIAz1VdBMTbIXMOgGVeboNIfh2xlCelRYC0Ksolm65uPD8Xw==
-X-Received: by 10.28.107.21 with SMTP id g21mr11912529wmc.131.1479324377773;
-	Wed, 16 Nov 2016 11:26:17 -0800 (PST)
+	bh=U9ufyizhnOl2mBBBR6lYTyN6XkszjzvuP0aoLQ0M4Ec=;
+	b=kbnAFWe+9+KY6YDb17UGEqAKQS+B6UaVoIXZZnZHvhkIdsLAh6zUHXrfX/OVIfLuBv
+	b+qVnCZ0DbFnmJynwEr/PRX/nqjz5izgBBdU07rDR2kftoG1xB+puMRGneiEeEzsYjOj
+	GXpIyEgFSfhCj+Mw3HIYu/rKnEDN+VCf5ygZ1B/gBL9qGylKLIkPyQqeYqD3BLyxDrFi
+	iAYuk6qViOY+AF7U2H7qwLJoLsWo1O5l9m6/udbSeWNgQU3VhxLMA3kzXfWHzirttpzc
+	J+4mq/98iW5zT7Af7r1xAEAaHfuWxl7Cpg5Nd6sBgJJll1tVGMz73Lkxsd+/Fs/BGblU
+	JpKw==
+X-Gm-Message-State: ABUngvdVavzUhLGMQEZvawKvWIb0k6iwMREN5IfVkpT36rODziPpPBArTJs0Uo/Ry+aY0w==
+X-Received: by 10.28.48.7 with SMTP id w7mr11164984wmw.115.1479324369229;
+	Wed, 16 Nov 2016 11:26:09 -0800 (PST)
 Received: from bigtime.twiddle.net ([87.111.149.139])
-	by smtp.gmail.com with ESMTPSA id 197sm686930wmy.16.2016.11.16.11.26.16
+	by smtp.gmail.com with ESMTPSA id 197sm686930wmy.16.2016.11.16.11.26.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 16 Nov 2016 11:26:17 -0800 (PST)
+	Wed, 16 Nov 2016 11:26:08 -0800 (PST)
 From: Richard Henderson <rth@twiddle.net>
 To: qemu-devel@nongnu.org
-Date: Wed, 16 Nov 2016 20:25:29 +0100
-Message-Id: <1479324335-2074-20-git-send-email-rth@twiddle.net>
+Date: Wed, 16 Nov 2016 20:25:23 +0100
+Message-Id: <1479324335-2074-14-git-send-email-rth@twiddle.net>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1479324335-2074-1-git-send-email-rth@twiddle.net>
 References: <1479324335-2074-1-git-send-email-rth@twiddle.net>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2a00:1450:400c:c09::242
-Subject: [Qemu-devel] [PATCH 19/25] tcg/arm: Handle ctz and clz opcodes
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: [Qemu-devel] [PATCH 13/25] target-arm: Use clz opcode
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,82 +81,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qqaHRSg9WX2/
+X-TUID: nQbAKs0HmpfM
 
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Richard Henderson <rth@twiddle.net>
 ---
- tcg/arm/tcg-target.h     |  4 ++--
- tcg/arm/tcg-target.inc.c | 27 +++++++++++++++++++++++++++
- 2 files changed, 29 insertions(+), 2 deletions(-)
+ target-arm/helper-a64.c    | 10 ----------
+ target-arm/helper-a64.h    |  2 --
+ target-arm/helper.c        |  5 -----
+ target-arm/helper.h        |  1 -
+ target-arm/translate-a64.c |  8 ++++----
+ target-arm/translate.c     |  6 +++---
+ 6 files changed, 7 insertions(+), 25 deletions(-)
 
-diff --git a/tcg/arm/tcg-target.h b/tcg/arm/tcg-target.h
-index 02cc242..4cb94dc 100644
---- a/tcg/arm/tcg-target.h
-+++ b/tcg/arm/tcg-target.h
-@@ -110,8 +110,8 @@ extern bool use_idiv_instructions;
- #define TCG_TARGET_HAS_eqv_i32          0
- #define TCG_TARGET_HAS_nand_i32         0
- #define TCG_TARGET_HAS_nor_i32          0
--#define TCG_TARGET_HAS_clz_i32          0
--#define TCG_TARGET_HAS_ctz_i32          0
-+#define TCG_TARGET_HAS_clz_i32          use_armv5t_instructions
-+#define TCG_TARGET_HAS_ctz_i32          use_armv7_instructions
- #define TCG_TARGET_HAS_deposit_i32      use_armv7_instructions
- #define TCG_TARGET_HAS_extract_i32      use_armv7_instructions
- #define TCG_TARGET_HAS_sextract_i32     use_armv7_instructions
-diff --git a/tcg/arm/tcg-target.inc.c b/tcg/arm/tcg-target.inc.c
-index 6765a9d..7595c04 100644
---- a/tcg/arm/tcg-target.inc.c
-+++ b/tcg/arm/tcg-target.inc.c
-@@ -261,6 +261,9 @@ typedef enum {
-     ARITH_BIC = 0xe << 21,
-     ARITH_MVN = 0xf << 21,
+diff --git a/target-arm/helper-a64.c b/target-arm/helper-a64.c
+index 98b97df..77999ff 100644
+--- a/target-arm/helper-a64.c
++++ b/target-arm/helper-a64.c
+@@ -54,11 +54,6 @@ int64_t HELPER(sdiv64)(int64_t num, int64_t den)
+     return num / den;
+ }
  
-+    INSN_CLZ       = 0x016f0f10,
-+    INSN_RBIT      = 0x06ff0f30,
-+
-     INSN_LDR_IMM   = 0x04100000,
-     INSN_LDR_REG   = 0x06100000,
-     INSN_STR_IMM   = 0x04000000,
-@@ -1832,6 +1835,28 @@ static inline void tcg_out_op(TCGContext *s, TCGOpcode opc,
+-uint64_t HELPER(clz64)(uint64_t x)
+-{
+-    return clz64(x);
+-}
+-
+ uint64_t HELPER(cls64)(uint64_t x)
+ {
+     return clrsb64(x);
+@@ -69,11 +64,6 @@ uint32_t HELPER(cls32)(uint32_t x)
+     return clrsb32(x);
+ }
+ 
+-uint32_t HELPER(clz32)(uint32_t x)
+-{
+-    return clz32(x);
+-}
+-
+ uint64_t HELPER(rbit64)(uint64_t x)
+ {
+     return revbit64(x);
+diff --git a/target-arm/helper-a64.h b/target-arm/helper-a64.h
+index dd32000..d320f96 100644
+--- a/target-arm/helper-a64.h
++++ b/target-arm/helper-a64.h
+@@ -18,10 +18,8 @@
+  */
+ DEF_HELPER_FLAGS_2(udiv64, TCG_CALL_NO_RWG_SE, i64, i64, i64)
+ DEF_HELPER_FLAGS_2(sdiv64, TCG_CALL_NO_RWG_SE, s64, s64, s64)
+-DEF_HELPER_FLAGS_1(clz64, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_1(cls64, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_1(cls32, TCG_CALL_NO_RWG_SE, i32, i32)
+-DEF_HELPER_FLAGS_1(clz32, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
+ DEF_HELPER_3(vfp_cmpes_a64, i64, f32, f32, ptr)
+diff --git a/target-arm/helper.c b/target-arm/helper.c
+index b5b65ca..0cafdbc 100644
+--- a/target-arm/helper.c
++++ b/target-arm/helper.c
+@@ -5718,11 +5718,6 @@ uint32_t HELPER(uxtb16)(uint32_t x)
+     return res;
+ }
+ 
+-uint32_t HELPER(clz)(uint32_t x)
+-{
+-    return clz32(x);
+-}
+-
+ int32_t HELPER(sdiv)(int32_t num, int32_t den)
+ {
+     if (den == 0)
+diff --git a/target-arm/helper.h b/target-arm/helper.h
+index 84aa637..df86bf7 100644
+--- a/target-arm/helper.h
++++ b/target-arm/helper.h
+@@ -1,4 +1,3 @@
+-DEF_HELPER_FLAGS_1(clz, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(sxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(uxtb16, TCG_CALL_NO_RWG_SE, i32, i32)
+ 
+diff --git a/target-arm/translate-a64.c b/target-arm/translate-a64.c
+index e90487b..12621ff 100644
+--- a/target-arm/translate-a64.c
++++ b/target-arm/translate-a64.c
+@@ -3953,11 +3953,11 @@ static void handle_clz(DisasContext *s, unsigned int sf,
+     tcg_rn = cpu_reg(s, rn);
+ 
+     if (sf) {
+-        gen_helper_clz64(tcg_rd, tcg_rn);
++        tcg_gen_clzi_i64(tcg_rd, tcg_rn, 64);
+     } else {
+         TCGv_i32 tcg_tmp32 = tcg_temp_new_i32();
+         tcg_gen_extrl_i64_i32(tcg_tmp32, tcg_rn);
+-        gen_helper_clz(tcg_tmp32, tcg_tmp32);
++        tcg_gen_clzi_i32(tcg_tmp32, tcg_tmp32, 32);
+         tcg_gen_extu_i32_i64(tcg_rd, tcg_tmp32);
+         tcg_temp_free_i32(tcg_tmp32);
+     }
+@@ -7590,7 +7590,7 @@ static void handle_2misc_64(DisasContext *s, int opcode, bool u,
+     switch (opcode) {
+     case 0x4: /* CLS, CLZ */
+         if (u) {
+-            gen_helper_clz64(tcg_rd, tcg_rn);
++            tcg_gen_clzi_i64(tcg_rd, tcg_rn, 64);
+         } else {
+             gen_helper_cls64(tcg_rd, tcg_rn);
          }
-         break;
- 
-+    case INDEX_op_ctz_i32:
-+        tcg_out_dat_reg(s, COND_AL, INSN_RBIT, TCG_REG_TMP, 0, args[1], 0);
-+        a1 = TCG_REG_TMP;
-+        goto do_clz;
-+
-+    case INDEX_op_clz_i32:
-+        a1 = args[1];
-+    do_clz:
-+        a0 = args[0];
-+        a2 = args[2];
-+        c = const_args[2];
-+        if (c && a2 == 32) {
-+            tcg_out_dat_reg(s, COND_AL, INSN_CLZ, a0, 0, a1, 0);
-+            break;
-+        }
-+        tcg_out_dat_imm(s, COND_AL, ARITH_CMP, 0, a1, 0);
-+        tcg_out_dat_reg(s, COND_NE, INSN_CLZ, a0, 0, a1, 0);
-+        if (c || a0 != a2) {
-+            tcg_out_dat_rIK(s, COND_EQ, ARITH_MOV, ARITH_MVN, a0, 0, a2, c);
-+        }
-+        break;
-+
-     case INDEX_op_brcond_i32:
-         tcg_out_dat_rIN(s, COND_AL, ARITH_CMP, ARITH_CMN, 0,
-                        args[0], args[1], const_args[1]);
-@@ -1966,6 +1991,8 @@ static const TCGTargetOpDef arm_op_defs[] = {
-     { INDEX_op_sar_i32, { "r", "r", "ri" } },
-     { INDEX_op_rotl_i32, { "r", "r", "ri" } },
-     { INDEX_op_rotr_i32, { "r", "r", "ri" } },
-+    { INDEX_op_clz_i32, { "r", "r", "rIK" } },
-+    { INDEX_op_ctz_i32, { "r", "r", "rIK" } },
- 
-     { INDEX_op_brcond_i32, { "r", "rIN" } },
-     { INDEX_op_setcond_i32, { "r", "r", "rIN" } },
+@@ -10260,7 +10260,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+                     goto do_cmop;
+                 case 0x4: /* CLS */
+                     if (u) {
+-                        gen_helper_clz32(tcg_res, tcg_op);
++                        tcg_gen_clzi_i32(tcg_res, tcg_op, 32);
+                     } else {
+                         gen_helper_cls32(tcg_res, tcg_op);
+                     }
+diff --git a/target-arm/translate.c b/target-arm/translate.c
+index 08da9ac..c9186b6 100644
+--- a/target-arm/translate.c
++++ b/target-arm/translate.c
+@@ -7037,7 +7037,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                             switch (size) {
+                             case 0: gen_helper_neon_clz_u8(tmp, tmp); break;
+                             case 1: gen_helper_neon_clz_u16(tmp, tmp); break;
+-                            case 2: gen_helper_clz(tmp, tmp); break;
++                            case 2: tcg_gen_clzi_i32(tmp, tmp, 32); break;
+                             default: abort();
+                             }
+                             break;
+@@ -8219,7 +8219,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 ARCH(5);
+                 rd = (insn >> 12) & 0xf;
+                 tmp = load_reg(s, rm);
+-                gen_helper_clz(tmp, tmp);
++                tcg_gen_clzi_i32(tmp, tmp, 32);
+                 store_reg(s, rd, tmp);
+             } else {
+                 goto illegal_op;
+@@ -9992,7 +9992,7 @@ static int disas_thumb2_insn(CPUARMState *env, DisasContext *s, uint16_t insn_hw
+                     tcg_temp_free_i32(tmp2);
+                     break;
+                 case 0x18: /* clz */
+-                    gen_helper_clz(tmp, tmp);
++                    tcg_gen_clzi_i32(tmp, tmp, 32);
+                     break;
+                 case 0x20:
+                 case 0x21:
 -- 
 2.7.4
 

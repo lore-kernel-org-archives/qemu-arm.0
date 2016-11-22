@@ -1,75 +1,60 @@
-Received: by 10.25.150.194 with SMTP id y185csp714406lfd;
-        Sat, 19 Nov 2016 13:17:21 -0800 (PST)
-X-Received: by 10.55.6.13 with SMTP id 13mr7224875qkg.272.1479590241040;
-        Sat, 19 Nov 2016 13:17:21 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2126610lfd;
+        Tue, 22 Nov 2016 08:56:38 -0800 (PST)
+X-Received: by 10.55.92.199 with SMTP id q190mr22626853qkb.303.1479833798094;
+        Tue, 22 Nov 2016 08:56:38 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h38si4224229qtc.9.2016.11.19.13.17.20
+        by mx.google.com with ESMTPS id m38si9514806qtf.200.2016.11.22.08.56.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 19 Nov 2016 13:17:21 -0800 (PST)
+        Tue, 22 Nov 2016 08:56:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42796 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56669 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c8D0i-0006MO-4d
-	for alex.bennee@linaro.org; Sat, 19 Nov 2016 16:17:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41000)
+	id 1c9EN3-0000v1-JG
+	for alex.bennee@linaro.org; Tue, 22 Nov 2016 11:56:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45651)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1c8D0e-0006Kr-2b
-	for qemu-arm@nongnu.org; Sat, 19 Nov 2016 16:17:16 -0500
+	(envelope-from <clg@kaod.org>) id 1c9EMx-0000ur-7Q
+	for qemu-arm@nongnu.org; Tue, 22 Nov 2016 11:56:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <programmingkidx@gmail.com>) id 1c8D0d-0005EJ-Dv
-	for qemu-arm@nongnu.org; Sat, 19 Nov 2016 16:17:16 -0500
-Received: from mail-io0-x242.google.com ([2607:f8b0:4001:c06::242]:33001)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <programmingkidx@gmail.com>)
-	id 1c8D0Z-0005DR-An; Sat, 19 Nov 2016 16:17:11 -0500
-Received: by mail-io0-x242.google.com with SMTP id j92so2014663ioi.0;
-	Sat, 19 Nov 2016 13:17:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
-	h=mime-version:message-id:cc:content-transfer-encoding:from:subject
-	:date:to; bh=MV/Gn1uV1rlQiN1OmWKwrd03B1zPHmSAuzRm2SUqehw=;
-	b=Dz9W0JQRztJcI2b/Bk+5nEQrE76OrE+8qv+9N4oFrnNqWUvNUMt4a/buHn7hk2fnEi
-	WrilDMu02B08/yjMwE/k4/uplLxo1e00MoB9TmoQcksoI5x2Watg5i3Ax6cl9s442T1Y
-	C6vUhQXzzUa0rv6t6eFVcbPUnfpEjTSd58v+nQ4MPk+nbpLYufGuJ3WcVaD1XvZEbQ+o
-	7OFqMsx002Q+QEMBMs2uRA7D0pzugJS9ibnpsfSaWaukQoGn7tXYZfwHJOyhJa2qLP6+
-	NwYESuOUXyp30uwzCoXSJJnAWQgENRprS8yDChFt7wqCaXQZDW/9qryjCi/z2aWyxzTf
-	qoLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:message-id:cc
-	:content-transfer-encoding:from:subject:date:to;
-	bh=MV/Gn1uV1rlQiN1OmWKwrd03B1zPHmSAuzRm2SUqehw=;
-	b=ImACRn9Dg1xUesXH9hrA07J+3vwgPeo4oofY9IB9cONRrx0DLv2QFUJWYmtnh5QZXd
-	43vCOPdp9M/BzHTfa0nyZ+Lb1mXILWPsi7vx8IQkkfdz8eWSlLgEfBgKSAWiwcjQmX3B
-	NHbmibMpw7KGKWXD940RcVCTLSG2gHmrsyGNmhR91SJei0xGTl4n3chfwW7A/qAw9Pzy
-	nZXLIqTSaFbj6+W/zBBi7SdsJ54XbqrScNLyjNiw/3YoAbsuLUP+4y7jk5bqLVYqpcHE
-	kWF1OThoiRqQ+st9koa1rx3Rxi7x+ZPXceoWglc+2KhIw6TsGUO9pJLoTVGouREn2Dg5
-	RafA==
-X-Gm-Message-State: AKaTC02Zt30YyD3/tY+YezRirIXe1yiNYQGt8krKIddn8AF7C8fPRkHQGUSY0hkOvcdLPA==
-X-Received: by 10.107.131.195 with SMTP id n64mr6128108ioi.161.1479590230567; 
-	Sat, 19 Nov 2016 13:17:10 -0800 (PST)
-Received: from [192.168.0.8] (d199-74-164-53.col.wideopenwest.com.
-	[74.199.53.164]) by smtp.gmail.com with ESMTPSA id
-	x99sm5365039ioi.17.2016.11.19.13.17.09
-	(version=TLS1 cipher=AES128-SHA bits=128/128);
-	Sat, 19 Nov 2016 13:17:09 -0800 (PST)
-Mime-Version: 1.0 (Apple Message framework v753.1)
-Content-Type: text/plain; charset=US-ASCII; delsp=yes; format=flowed
-Message-Id: <3FA1822E-FBB0-479F-B4D2-46FB62D4A13D@gmail.com>
+	(envelope-from <clg@kaod.org>) id 1c9EMs-0007nH-9j
+	for qemu-arm@nongnu.org; Tue, 22 Nov 2016 11:56:31 -0500
+Received: from 1.mo69.mail-out.ovh.net ([178.33.251.173]:36743)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1c9EMs-0007m2-36
+	for qemu-arm@nongnu.org; Tue, 22 Nov 2016 11:56:26 -0500
+Received: from player798.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo69.mail-out.ovh.net (Postfix) with ESMTP id D4E94BDDF
+	for <qemu-arm@nongnu.org>; Tue, 22 Nov 2016 17:56:23 +0100 (CET)
+Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
+	by player798.ha.ovh.net (Postfix) with ESMTPSA id 0BDC05400AA;
+	Tue, 22 Nov 2016 17:56:14 +0100 (CET)
+To: Alastair D'Silva <alastair@au1.ibm.com>, qemu-arm@nongnu.org
+References: <1479357400-17441-1-git-send-email-alastair@au1.ibm.com>
+	<1479357400-17441-5-git-send-email-alastair@au1.ibm.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <948f93ef-50d3-a450-c69f-faefd078f00d@kaod.org>
+Date: Tue, 22 Nov 2016 17:56:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1479357400-17441-5-git-send-email-alastair@au1.ibm.com>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-From: G 3 <programmingkidx@gmail.com>
-Date: Sat, 19 Nov 2016 16:17:06 -0500
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.753.1)
+X-Ovh-Tracer-Id: 8698139734211529495
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrvdehgdelfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:4001:c06::242
-Subject: [Qemu-arm] Suggested command-line for ARM
+	[fuzzy]
+X-Received-From: 178.33.251.173
+Subject: Re: [Qemu-arm] [PATCH 4/4] arm: Add an RX8900 RTC to the ASpeed
+ board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,19 +66,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel qemu-devel <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	Alastair D'Silva <alastair@d-silva.org>, qemu-devel@nongnu.org,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ptl/Bf0qXHVQ
+X-TUID: ZfNO5sDRLPYD
 
-I tried making a suggested command-line section in your ARM wiki  
-page, but my lack of experience with ARM prevents me from testing it.  
-What do you think of this as the suggested command-line for qemu- 
-system-aarch64:
+On 11/17/2016 05:36 AM, Alastair D'Silva wrote:
+> From: Alastair D'Silva <alastair@d-silva.org>
+> 
+> Connect an RX8900 RTC to i2c12 of the AST2500 SOC at address 0x32
 
-qemu-system-aarch64 -m <memory size> -M <machine name> -drive  
-if=none,file=<hard drive file name>,id=hd0 -device virtio-blk- 
-device,drive=hd0 -netdev type=tap,id=net0 -device virtio-net- 
-device,netdev=net0
+If this is a board device, we should include it under a machine routine.
 
-If you know of a better one, please let me know. 
+Is that for the palmetto ? The ast2500 does not have a RTC.
+
+Thanks,
+
+C. 
+
+> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> ---
+>  hw/arm/aspeed.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index c7206fd..554ae20 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -100,6 +100,8 @@ static void aspeed_board_init(MachineState *machine,
+>  {
+>
+>      AspeedBoardState *bmc;
+>      AspeedSoCClass *sc;
+> +    I2CBus *i2c12;
+> +    DeviceState *rx8900;
+>  
+>      bmc = g_new0(AspeedBoardState, 1);
+>      object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
+> @@ -137,6 +139,12 @@ static void aspeed_board_init(MachineState *machine,
+>      aspeed_board_binfo.ram_size = ram_size;
+>      aspeed_board_binfo.loader_start = sc->info->sdram_base;
+>  
+> +    i2c12 = aspeed_i2c_get_bus((DeviceState *)&bmc->soc.i2c, 11);
+> +    rx8900 = i2c_create_slave(i2c12, "rx8900", 0x32);
+> +
+> +    qdev_connect_gpio_out_named(rx8900, "rx8900-interrupt-out", 0,
+> +            qdev_get_gpio_in(DEVICE(&bmc->soc.vic), 22));
+> +
+>      arm_load_kernel(ARM_CPU(first_cpu), &aspeed_board_binfo);
+>  }
+>  
+> 
+

@@ -1,186 +1,148 @@
-Received: by 10.25.150.194 with SMTP id y185csp2176962lfd;
-        Tue, 22 Nov 2016 10:45:18 -0800 (PST)
-X-Received: by 10.237.61.202 with SMTP id j10mr14214252qtf.121.1479840318073;
-        Tue, 22 Nov 2016 10:45:18 -0800 (PST)
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id m62si17111031qkd.305.2016.11.22.10.45.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Nov 2016 10:45:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 10.25.150.194 with SMTP id y185csp2267441lfd;
+        Tue, 22 Nov 2016 14:34:38 -0800 (PST)
+X-Received: by 10.55.185.133 with SMTP id j127mr23840434qkf.39.1479854078432;
+        Tue, 22 Nov 2016 14:34:38 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id p4si17664131qkc.59.2016.11.22.14.34.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 22 Nov 2016 14:34:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com (int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:58306 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c9Je9-0004IU-2Y
+	for alex.bennee@linaro.org; Tue, 22 Nov 2016 17:34:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52662)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <alastair@au1.ibm.com>) id 1c9JbJ-00028E-Nk
+	for qemu-devel@nongnu.org; Tue, 22 Nov 2016 17:31:42 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alastair@au1.ibm.com>) id 1c9JbE-0005zQ-NF
+	for qemu-devel@nongnu.org; Tue, 22 Nov 2016 17:31:41 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:43327)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
+	id 1c9JbE-0005yj-DU
+	for qemu-devel@nongnu.org; Tue, 22 Nov 2016 17:31:36 -0500
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
+	uAMMT7eV023803
+	for <qemu-devel@nongnu.org>; Tue, 22 Nov 2016 17:31:34 -0500
+Received: from e23smtp07.au.ibm.com (e23smtp07.au.ibm.com [202.81.31.140])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 26vuqfqjry-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-devel@nongnu.org>; Tue, 22 Nov 2016 17:31:34 -0500
+Received: from localhost
+	by e23smtp07.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
+	Wed, 23 Nov 2016 08:31:32 +1000
+Received: from d23dlp01.au.ibm.com (202.81.31.203)
+	by e23smtp07.au.ibm.com (202.81.31.204) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Wed, 23 Nov 2016 08:31:29 +1000
+Received: from d23relay10.au.ibm.com (d23relay10.au.ibm.com [9.190.26.77])
+	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 092552CE8056;
+	Wed, 23 Nov 2016 09:31:29 +1100 (EST)
+Received: from d23av06.au.ibm.com (d23av06.au.ibm.com [9.190.235.151])
+	by d23relay10.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	uAMMVTN954984884; Wed, 23 Nov 2016 09:31:29 +1100
+Received: from d23av06.au.ibm.com (localhost [127.0.0.1])
+	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uAMMVSTs009605; Wed, 23 Nov 2016 09:31:28 +1100
+Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
+	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uAMMVSch009602; Wed, 23 Nov 2016 09:31:28 +1100
+Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
+	(using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C34754DD77;
-	Tue, 22 Nov 2016 18:45:16 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uAMIjB6J016789
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
-	Tue, 22 Nov 2016 13:45:14 -0500
-Date: Tue, 22 Nov 2016 19:45:11 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, andre.przywara@arm.com,
-        eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
-        christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v6 00/11] arm/arm64: add gic
- framework
-Message-ID: <20161122184511.w5tlxxjphq5fo25b@kamzik.brq.redhat.com>
-References: <1479157719-31021-1-git-send-email-drjones@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1479157719-31021-1-git-send-email-drjones@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Tue, 22 Nov 2016 18:45:17 +0000 (UTC)
-X-TUID: XORPIVt8CrGG
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id DF0D3A0283;
+	Wed, 23 Nov 2016 09:31:27 +1100 (AEDT)
+From: "Alastair D'Silva" <alastair@au1.ibm.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+	<clg@kaod.org>, qemu-arm@nongnu.org
+Date: Wed, 23 Nov 2016 09:31:27 +1100
+In-Reply-To: <3888651b-fd60-e827-a9f8-575a8f01be72@redhat.com>
+References: <1479357400-17441-1-git-send-email-alastair@au1.ibm.com>
+	<1479357400-17441-3-git-send-email-alastair@au1.ibm.com>
+	<debe3f9c-d3ec-aad0-0424-7228bf60765b@kaod.org>
+	<3888651b-fd60-e827-a9f8-575a8f01be72@redhat.com>
+Organization: IBM Australia
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.20.5 (3.20.5-1.fc24) 
+Mime-Version: 1.0
+X-TM-AS-MML: disable
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16112222-0044-0000-0000-00000204868C
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16112222-0045-0000-0000-00000606F663
+Message-Id: <1479853887.11116.95.camel@au1.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-11-22_11:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
+	definitions=main-1611220380
+Content-Transfer-Encoding: base64
+X-MIME-Autoconverted: from 8bit to base64 by mx0a-001b2d01.pphosted.com id
+	uAMMT7eV023803
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
+Subject: Re: [Qemu-devel] [PATCH 2/4] qtest: Support named interrupts
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yQQLKLh9BVeX
 
-
-Andre, Alex, Eric, anybody,
-
-Any more comments on this? If not, I'll send a pull request
-to Radim and Paolo to finally get this merged.
-
-Thanks,
-drew
-
-
-On Mon, Nov 14, 2016 at 10:08:28PM +0100, Andrew Jones wrote:
-> v6:
->  - rebased to latest master
->  - several other changes thanks to Andre and Alex, changes in
->    individual patch change logs
->  - some code cleanups
-> 
-> v5:
->  - fix arm32/gicv3 compile [drew]
->  - use modern register names [Andre]
->  - one Andre r-b
-> 
-> v4:
->  - Eric's r-b's
->  - Andre's suggestion to only take defines we need
->  - several other changes listed in individual patches
-> 
-> v3:
->  - Rebased on latest master
->  - Added Alex's r-b's
-> 
-> v2:
->  Rebased on latest master + my "populate argv[0]" series (will
->  send a REPOST for that shortly. Additionally a few patches got
->  fixes/features;
->  07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
->        all interrupts as non-secure Group-1" in order to continue
->        working over TCG, as the gicv3 code for TCG removed a hack
->        it had there to make Linux happy.
->  08/10 added more output for when things fail (if they fail)
->  09/10 switched gicv3 broadcast implementation to using IRM. This
->        found a bug in a recent (but not tip) kernel, which I was
->        about to fix, but then I saw MarcZ beat me to it.
->  10/10 actually check that the input irq is the received irq
-> 
-> 
-> Import defines, and steal enough helper functions, from Linux to
-> enable programming of the gic (v2 and v3). Then use the framework
-> to add an initial test (an ipi test; self, target-list, broadcast).
-> 
-> It's my hope that this framework will be a suitable base on which
-> more tests may be easily added, particularly because we have
-> vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
-> vgic-new and tcg gicv3 are merged now)
-> 
-> To run it, along with other tests, just do
-> 
->  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
->  make
->  export QEMU=$PATH_TO_QEMU
->  ./run_tests.sh
-> 
-> To run it separately do, e.g.
-> 
-> $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
->  -device virtio-serial-device \
->  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->  -display none -serial stdio \
->  -kernel arm/gic.flat \
->  -smp 123 -machine gic-version=3 -append ipi
->       ^^ note, we can go nuts with nr-cpus on TCG :-)
-> 
-> Or, a KVM example using a different "sender" cpu and irq (other than zero)
-> 
-> $QEMU -machine virt,accel=kvm -cpu host \
->  -device virtio-serial-device \
->  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->  -display none -serial stdio \
->  -kernel arm/gic.flat \
->  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
-> 
-> 
-> Patches:
-> 01-05: fixes and functionality needed by the later gic patches
-> 06-07: enable gicv2 and gicv2 IPI test
-> 08-10: enable gicv3 and gicv3 IPI test
->    11: extend the IPI tests to take variable sender and irq
-> 
-> Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v6
-> 
-> 
-> Andrew Jones (10):
->   lib: xstr: allow multiple args
->   arm64: fix get_"sysreg32" and make MPIDR 64bit
->   arm/arm64: smp: support more than 8 cpus
->   arm/arm64: add some delay routines
->   arm/arm64: irq enable/disable
->   arm/arm64: add initial gicv2 support
->   arm/arm64: gicv2: add an IPI test
->   arm/arm64: add initial gicv3 support
->   arm/arm64: gicv3: add an IPI test
->   arm/arm64: gic: don't just use zero
-> 
-> Peter Xu (1):
->   libcflat: add IS_ALIGNED() macro, and page sizes
-> 
->  arm/Makefile.common        |   9 +-
->  arm/gic.c                  | 340 +++++++++++++++++++++++++++++++++++++++++++++
->  arm/run                    |  19 ++-
->  arm/selftest.c             |   5 +-
->  arm/unittests.cfg          |  14 ++
->  lib/arm/asm/arch_gicv3.h   |  70 ++++++++++
->  lib/arm/asm/gic-v2.h       |  36 +++++
->  lib/arm/asm/gic-v3.h       | 112 +++++++++++++++
->  lib/arm/asm/gic.h          | 106 ++++++++++++++
->  lib/arm/asm/processor.h    |  42 +++++-
->  lib/arm/asm/setup.h        |   4 +-
->  lib/arm/gic.c              | 267 +++++++++++++++++++++++++++++++++++
->  lib/arm/processor.c        |  15 ++
->  lib/arm/setup.c            |  10 ++
->  lib/arm64/asm/arch_gicv3.h |  66 +++++++++
->  lib/arm64/asm/gic-v2.h     |   1 +
->  lib/arm64/asm/gic-v3.h     |   1 +
->  lib/arm64/asm/gic.h        |   1 +
->  lib/arm64/asm/processor.h  |  53 +++++--
->  lib/arm64/asm/sysreg.h     |  44 ++++++
->  lib/arm64/processor.c      |  15 ++
->  lib/libcflat.h             |  10 +-
->  22 files changed, 1212 insertions(+), 28 deletions(-)
->  create mode 100644 arm/gic.c
->  create mode 100644 lib/arm/asm/arch_gicv3.h
->  create mode 100644 lib/arm/asm/gic-v2.h
->  create mode 100644 lib/arm/asm/gic-v3.h
->  create mode 100644 lib/arm/asm/gic.h
->  create mode 100644 lib/arm/gic.c
->  create mode 100644 lib/arm64/asm/arch_gicv3.h
->  create mode 100644 lib/arm64/asm/gic-v2.h
->  create mode 100644 lib/arm64/asm/gic-v3.h
->  create mode 100644 lib/arm64/asm/gic.h
->  create mode 100644 lib/arm64/asm/sysreg.h
-> 
-> -- 
-> 2.7.4
-> 
-> 
+T24gVHVlLCAyMDE2LTExLTIyIGF0IDE4OjI0ICswMTAwLCBQYW9sbyBCb256aW5pIHdyb3Rl
+Og0KDQo+IA0KPiBPbiAyMi8xMS8yMDE2IDE4OjIyLCBDw6lkcmljIExlIEdvYXRlciB3cm90
+ZToNCj4gPiANCj4gPiA+IA0KPiA+ID4gKw0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBnX2Fz
+c2VydCh3b3Jkc1sxXSk7IC8qIGRldmljZSAqLw0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBn
+X2Fzc2VydCh3b3Jkc1syXSk7IC8qIGdwaW8gbGlzdCAqLw0KPiA+ID4gK8KgwqDCoMKgwqDC
+oMKgwqBnX2Fzc2VydCh3b3Jkc1szXSk7IC8qIGdwaW8gbGluZSBpbiBsaXN0ICovDQo+ID4g
+PiArwqDCoMKgwqDCoMKgwqDCoGdfYXNzZXJ0KHdvcmRzWzRdKTsgLyogbGV2ZWwgKi8NCj4g
+PiA+ICvCoMKgwqDCoMKgwqDCoMKgZGV2ID0gREVWSUNFKG9iamVjdF9yZXNvbHZlX3BhdGgo
+d29yZHNbMV0sIE5VTEwpKTsNCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgaWYgKCFkZXYpIHsN
+Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBxdGVzdF9zZW5kX3ByZWZpeChjaHIp
+Ow0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHF0ZXN0X3NlbmQoY2hyLCAiRkFJ
+TCBVbmtub3duIGRldmljZVxuIik7DQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+cmV0dXJuOw0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqB9DQo+ID4gPiArDQo+ID4gPiArwqDC
+oMKgwqDCoMKgwqDCoGlycV9udW0gPSBhdG9pKHdvcmRzWzNdKTsNCj4gPiA+ICvCoMKgwqDC
+oMKgwqDCoMKgbGV2ZWwgPSBhdG9pKHdvcmRzWzRdKTsNCj4gPiA+ICsNCj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgUUxJU1RfRk9SRUFDSChuZ2wsICZkZXYtPmdwaW9zLCBub2RlKSB7DQo+
+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaWYgKHN0cmNtcCh3b3Jkc1syXSwgbmds
+LT5uYW1lKSA9PSAwICYmIG5nbC0+bnVtX2luDQo+ID4gPiA+IGlycV9udW0pIHsNCj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlycSA9IG5nbC0+aW5baXJxX251
+bV07DQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfQ0KPiA+ID4gK8KgwqDCoMKg
+wqDCoMKgwqB9DQo+ID4gPiArDQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGlmIChpcnEgPT0g
+TlVMTCkgew0KPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHF0ZXN0X3NlbmRfcHJl
+Zml4KGNocik7DQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcXRlc3Rfc2VuZChj
+aHIsICJGQUlMIFVua25vd24gSVJRXG4iKTsNCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqByZXR1cm47DQo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoH0NCj4gPiA+ICsNCj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9zZXRfaXJxKGlycSwgbGV2ZWwpOw0KPiANCj4gVGhp
+cyBzZWVtcyB3cm9uZy7CoMKgVGhlIElSUSBzaG91bGQgbm90IGJlIG1vZGlmaWFibGUgYnkg
+dGhlIHRlc3QuDQo+IA0KPiBQYW9sbw0KPsKgDQoNClRoYW5rcyBQYW9sbywgY291bGQgeW91
+IHBsZWFzZSBhZHZpc2UgYXMgdG8gd2h5IHRoYXQgaXM/DQoNClRoZSBzaXR1YXRpb24gSSBh
+bSBhZGRyZXNzaW5nIGlzIHRoYXQgSSBkZXZpY2UgdW5kZXIgdGVzdCB0aGF0IGNoYW5nZXMN
+CmJlaGF2aW91ciB3aGVuIGEgR1BJTyBsaW5lIGlzIHJhaXNlZC4gSXMgdGhlcmUgYW5vdGhl
+ciB3YXkgSSBzaG91bGQgYmUNCnJhaXNpbmcgdGhhdCBsaW5lIGZyb20gd2l0aGluIHF0ZXN0
+Pw0KDQotLSANCkFsYXN0YWlyIEQnU2lsdmENCk9wZW4gU291cmNlIERldmVsb3Blcg0KTGlu
+dXggVGVjaG5vbG9neSBDZW50cmUsIElCTSBBdXN0cmFsaWENCm1vYjogMDQyMyA3NjIgODE5
+DQoNCg==

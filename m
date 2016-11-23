@@ -1,335 +1,70 @@
-Received: by 10.25.150.194 with SMTP id y185csp2659874lfd;
-        Wed, 23 Nov 2016 08:54:30 -0800 (PST)
-X-Received: by 10.55.165.10 with SMTP id o10mr3446961qke.233.1479920070194;
-        Wed, 23 Nov 2016 08:54:30 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2659899lfd;
+        Wed, 23 Nov 2016 08:54:33 -0800 (PST)
+X-Received: by 10.55.48.66 with SMTP id w63mr3516014qkw.294.1479920072936;
+        Wed, 23 Nov 2016 08:54:32 -0800 (PST)
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id v90si12451997qte.313.2016.11.23.08.54.29
+        by mx.google.com with ESMTPS id w28si12477070qtw.261.2016.11.23.08.54.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Nov 2016 08:54:30 -0800 (PST)
+        Wed, 23 Nov 2016 08:54:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com
 Received: from int-mx13.intmail.prod.int.phx2.redhat.com (int-mx13.intmail.prod.int.phx2.redhat.com [10.5.11.26])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 453E620265;
-	Wed, 23 Nov 2016 16:54:29 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 08B5CC057FA5;
+	Wed, 23 Nov 2016 16:54:32 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (kamzik.brq.redhat.com [10.34.1.143])
-	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uANGs8Rb001736;
-	Wed, 23 Nov 2016 11:54:26 -0500
+	by int-mx13.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP id uANGs8Rc001736;
+	Wed, 23 Nov 2016 11:54:29 -0500
 From: Andrew Jones <drjones@redhat.com>
 To: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org,
         qemu-arm@nongnu.org
 Cc: peter.maydell@linaro.org, marc.zyngier@arm.com, andre.przywara@arm.com,
         eric.auger@redhat.com, pbonzini@redhat.com, alex.bennee@linaro.org,
-        christoffer.dall@linaro.org
-Subject: [kvm-unit-tests PATCH v7 07/11] arm/arm64: gicv2: add an IPI test
-Date: Wed, 23 Nov 2016 17:54:02 +0100
-Message-Id: <20161123165406.32661-8-drjones@redhat.com>
+        christoffer.dall@linaro.org, Peter Xu <peterx@redhat.com>
+Subject: [kvm-unit-tests PATCH v7 08/11] libcflat: add IS_ALIGNED() macro, and page sizes
+Date: Wed, 23 Nov 2016 17:54:03 +0100
+Message-Id: <20161123165406.32661-9-drjones@redhat.com>
 In-Reply-To: <20161123165406.32661-1-drjones@redhat.com>
 References: <20161123165406.32661-1-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.68 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Wed, 23 Nov 2016 16:54:29 +0000 (UTC)
-X-TUID: WYO3x0RqpqiY
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Wed, 23 Nov 2016 16:54:32 +0000 (UTC)
+X-TUID: 4hpltUbbEylR
 
+From: Peter Xu <peterx@redhat.com>
+
+These macros will be useful to do page alignment checks.
+
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Peter Xu <peterx@redhat.com>
+[drew: also added SZ_64K and changed to shifts]
 Signed-off-by: Andrew Jones <drjones@redhat.com>
----
-v6: move the spurious check to its own check_ function [drew]
-v5: use modern registers [Andre]
-v4: properly mask irqnr in ipi_handler
-v2: add more details in the output if a test fails,
-    report spurious interrupts if we get them
----
- arm/Makefile.common  |   8 +--
- arm/gic.c            | 199 +++++++++++++++++++++++++++++++++++++++++++++++++++
- arm/unittests.cfg    |   8 +++
- lib/arm/asm/gic-v2.h |   2 +
- lib/arm/asm/gic.h    |   4 ++
- 5 files changed, 217 insertions(+), 4 deletions(-)
- create mode 100644 arm/gic.c
 
-diff --git a/arm/Makefile.common b/arm/Makefile.common
-index 6f56015c43c4..2fe7aeeca6d4 100644
---- a/arm/Makefile.common
-+++ b/arm/Makefile.common
-@@ -9,10 +9,10 @@ ifeq ($(LOADADDR),)
- 	LOADADDR = 0x40000000
- endif
+---
+v6: change to shifts [Alex]
+---
+ lib/libcflat.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/lib/libcflat.h b/lib/libcflat.h
+index c3fa4f24c499..bdcc561ccafd 100644
+--- a/lib/libcflat.h
++++ b/lib/libcflat.h
+@@ -33,6 +33,12 @@
+ #define __ALIGN_MASK(x, mask)	(((x) + (mask)) & ~(mask))
+ #define __ALIGN(x, a)		__ALIGN_MASK(x, (typeof(x))(a) - 1)
+ #define ALIGN(x, a)		__ALIGN((x), (a))
++#define IS_ALIGNED(x, a)	(((x) & ((typeof(x))(a) - 1)) == 0)
++
++#define SZ_4K			(1 << 12)
++#define SZ_64K			(1 << 16)
++#define SZ_2M			(1 << 21)
++#define SZ_1G			(1 << 30)
  
--tests-common = \
--	$(TEST_DIR)/selftest.flat \
--	$(TEST_DIR)/spinlock-test.flat \
--	$(TEST_DIR)/pci-test.flat
-+tests-common  = $(TEST_DIR)/selftest.flat
-+tests-common += $(TEST_DIR)/spinlock-test.flat
-+tests-common += $(TEST_DIR)/pci-test.flat
-+tests-common += $(TEST_DIR)/gic.flat
- 
- all: test_cases
- 
-diff --git a/arm/gic.c b/arm/gic.c
-new file mode 100644
-index 000000000000..b42c2b1ca1e1
---- /dev/null
-+++ b/arm/gic.c
-@@ -0,0 +1,199 @@
-+/*
-+ * GIC tests
-+ *
-+ * GICv2
-+ *   + test sending/receiving IPIs
-+ *
-+ * Copyright (C) 2016, Red Hat Inc, Andrew Jones <drjones@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU LGPL, version 2.
-+ */
-+#include <libcflat.h>
-+#include <asm/setup.h>
-+#include <asm/processor.h>
-+#include <asm/gic.h>
-+#include <asm/smp.h>
-+#include <asm/barrier.h>
-+#include <asm/io.h>
-+
-+static int gic_version;
-+static int acked[NR_CPUS], spurious[NR_CPUS];
-+static cpumask_t ready;
-+
-+static void nr_cpu_check(int nr)
-+{
-+	if (nr_cpus < nr)
-+		report_abort("At least %d cpus required", nr);
-+}
-+
-+static void wait_on_ready(void)
-+{
-+	cpumask_set_cpu(smp_processor_id(), &ready);
-+	while (!cpumask_full(&ready))
-+		cpu_relax();
-+}
-+
-+static void check_acked(cpumask_t *mask)
-+{
-+	int missing = 0, extra = 0, unexpected = 0;
-+	int nr_pass, cpu, i;
-+
-+	/* Wait up to 5s for all interrupts to be delivered */
-+	for (i = 0; i < 50; ++i) {
-+		mdelay(100);
-+		nr_pass = 0;
-+		for_each_present_cpu(cpu) {
-+			smp_rmb();
-+			nr_pass += cpumask_test_cpu(cpu, mask) ?
-+				acked[cpu] == 1 : acked[cpu] == 0;
-+		}
-+		if (nr_pass == nr_cpus) {
-+			report("Completed in %d ms", true, ++i * 100);
-+			return;
-+		}
-+	}
-+
-+	for_each_present_cpu(cpu) {
-+		if (cpumask_test_cpu(cpu, mask)) {
-+			if (!acked[cpu])
-+				++missing;
-+			else if (acked[cpu] > 1)
-+				++extra;
-+		} else {
-+			if (acked[cpu])
-+				++unexpected;
-+		}
-+	}
-+
-+	report("Timed-out (5s). ACKS: missing=%d extra=%d unexpected=%d",
-+	       false, missing, extra, unexpected);
-+}
-+
-+static void check_spurious(void)
-+{
-+	int cpu;
-+
-+	smp_rmb();
-+	for_each_present_cpu(cpu) {
-+		if (spurious[cpu])
-+			printf("ipi: WARN: cpu%d got %d spurious interrupts\n",
-+				spurious[cpu], smp_processor_id());
-+	}
-+}
-+
-+static void ipi_handler(struct pt_regs *regs __unused)
-+{
-+	u32 irqstat = readl(gicv2_cpu_base() + GICC_IAR);
-+	u32 irqnr = irqstat & GICC_IAR_INT_ID_MASK;
-+
-+	if (irqnr != GICC_INT_SPURIOUS) {
-+		writel(irqstat, gicv2_cpu_base() + GICC_EOIR);
-+		smp_rmb(); /* pairs with wmb in ipi_test functions */
-+		++acked[smp_processor_id()];
-+		smp_wmb(); /* pairs with rmb in check_acked */
-+	} else {
-+		++spurious[smp_processor_id()];
-+		smp_wmb();
-+	}
-+}
-+
-+static void ipi_test_self(void)
-+{
-+	cpumask_t mask;
-+
-+	report_prefix_push("self");
-+	memset(acked, 0, sizeof(acked));
-+	smp_wmb();
-+	cpumask_clear(&mask);
-+	cpumask_set_cpu(0, &mask);
-+	writel(2 << 24, gicv2_dist_base() + GICD_SGIR);
-+	check_acked(&mask);
-+	report_prefix_pop();
-+}
-+
-+static void ipi_test_smp(void)
-+{
-+	cpumask_t mask;
-+	unsigned long tlist;
-+
-+	report_prefix_push("target-list");
-+	memset(acked, 0, sizeof(acked));
-+	smp_wmb();
-+	tlist = cpumask_bits(&cpu_present_mask)[0] & 0xaa;
-+	cpumask_bits(&mask)[0] = tlist;
-+	writel((u8)tlist << 16, gicv2_dist_base() + GICD_SGIR);
-+	check_acked(&mask);
-+	report_prefix_pop();
-+
-+	report_prefix_push("broadcast");
-+	memset(acked, 0, sizeof(acked));
-+	smp_wmb();
-+	cpumask_copy(&mask, &cpu_present_mask);
-+	cpumask_clear_cpu(0, &mask);
-+	writel(1 << 24, gicv2_dist_base() + GICD_SGIR);
-+	check_acked(&mask);
-+	report_prefix_pop();
-+}
-+
-+static void ipi_enable(void)
-+{
-+	gicv2_enable_defaults();
-+#ifdef __arm__
-+	install_exception_handler(EXCPTN_IRQ, ipi_handler);
-+#else
-+	install_irq_handler(EL1H_IRQ, ipi_handler);
-+#endif
-+	local_irq_enable();
-+}
-+
-+static void ipi_recv(void)
-+{
-+	ipi_enable();
-+	cpumask_set_cpu(smp_processor_id(), &ready);
-+	while (1)
-+		wfi();
-+}
-+
-+int main(int argc, char **argv)
-+{
-+	char pfx[8];
-+	int cpu;
-+
-+	gic_version = gic_init();
-+	if (!gic_version)
-+		report_abort("No gic present!");
-+
-+	snprintf(pfx, sizeof(pfx), "gicv%d", gic_version);
-+	report_prefix_push(pfx);
-+
-+	if (argc < 2) {
-+
-+		report_prefix_push("ipi");
-+		ipi_enable();
-+		ipi_test_self();
-+		check_spurious();
-+		report_prefix_pop();
-+
-+	} else if (strcmp(argv[1], "ipi") == 0) {
-+
-+		report_prefix_push(argv[1]);
-+		nr_cpu_check(2);
-+
-+		for_each_present_cpu(cpu) {
-+			if (cpu == 0)
-+				continue;
-+			smp_boot_secondary(cpu, ipi_recv);
-+		}
-+		ipi_enable();
-+		wait_on_ready();
-+		ipi_test_self();
-+		ipi_test_smp();
-+		check_spurious();
-+		report_prefix_pop();
-+
-+	} else {
-+		report_abort("Unknown subtest '%s'", argv[1]);
-+	}
-+
-+	return report_summary();
-+}
-diff --git a/arm/unittests.cfg b/arm/unittests.cfg
-index ae32a42a91c3..e631c35e2bbb 100644
---- a/arm/unittests.cfg
-+++ b/arm/unittests.cfg
-@@ -55,6 +55,14 @@ smp = $MAX_SMP
- extra_params = -append 'smp'
- groups = selftest
- 
-+# pci-testdev
- [pci-test]
- file = pci-test.flat
- groups = pci
-+
-+# Test GIC emulation
-+[gicv2-ipi]
-+file = gic.flat
-+smp = $((($MAX_SMP < 8)?$MAX_SMP:8))
-+extra_params = -machine gic-version=2 -append 'ipi'
-+groups = gic
-diff --git a/lib/arm/asm/gic-v2.h b/lib/arm/asm/gic-v2.h
-index c2d5fecd4886..8b3f7ed6790c 100644
---- a/lib/arm/asm/gic-v2.h
-+++ b/lib/arm/asm/gic-v2.h
-@@ -13,7 +13,9 @@
- #endif
- 
- #define GICD_ENABLE			0x1
-+
- #define GICC_ENABLE			0x1
-+#define GICC_IAR_INT_ID_MASK		0x3ff
- 
- #ifndef __ASSEMBLY__
- 
-diff --git a/lib/arm/asm/gic.h b/lib/arm/asm/gic.h
-index e3580bd1d42d..d816b96e46b4 100644
---- a/lib/arm/asm/gic.h
-+++ b/lib/arm/asm/gic.h
-@@ -13,6 +13,7 @@
- #define GICD_TYPER			0x0004
- #define GICD_ISENABLER			0x0100
- #define GICD_IPRIORITYR			0x0400
-+#define GICD_SGIR			0x0f00
- 
- #define GICD_TYPER_IRQS(typer)		((((typer) & 0x1f) + 1) * 32)
- #define GICD_INT_EN_SET_SGI		0x0000ffff
-@@ -21,8 +22,11 @@
- /* CPU interface registers */
- #define GICC_CTLR			0x0000
- #define GICC_PMR			0x0004
-+#define GICC_IAR			0x000c
-+#define GICC_EOIR			0x0010
- 
- #define GICC_INT_PRI_THRESHOLD		0xf0
-+#define GICC_INT_SPURIOUS		0x3ff
- 
- #ifndef __ASSEMBLY__
- 
+ typedef uint8_t		u8;
+ typedef int8_t		s8;
 -- 
 2.9.3

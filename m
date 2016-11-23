@@ -1,179 +1,126 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id w79sm1924113wmw.0.2016.11.23.02.09.51
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Nov 2016 02:09:51 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 16DF73E009F;
-	Wed, 23 Nov 2016 10:09:51 +0000 (GMT)
-References: <1479157719-31021-1-git-send-email-drjones@redhat.com> <20161122184511.w5tlxxjphq5fo25b@kamzik.brq.redhat.com>
-User-agent: mu4e 0.9.17; emacs 25.1.50.20
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Andrew Jones <drjones@redhat.com>
-Cc: kvm@vger.kernel.org, kvmarm@lists.cs.columbia.edu, qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org, marc.zyngier@arm.com, andre.przywara@arm.com, eric.auger@redhat.com, pbonzini@redhat.com, christoffer.dall@linaro.org
-Subject: Re: [Qemu-devel] [kvm-unit-tests PATCH v6 00/11] arm/arm64: add gic framework
-In-reply-to: <20161122184511.w5tlxxjphq5fo25b@kamzik.brq.redhat.com>
-Date: Wed, 23 Nov 2016 10:09:51 +0000
-Message-ID: <87shqio6c0.fsf@linaro.org>
+Received: by 10.25.150.194 with SMTP id y185csp2487962lfd;
+        Wed, 23 Nov 2016 02:34:51 -0800 (PST)
+X-Received: by 10.55.114.70 with SMTP id n67mr2135262qkc.185.1479897291238;
+        Wed, 23 Nov 2016 02:34:51 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r186si19006292qkc.41.2016.11.23.02.34.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 23 Nov 2016 02:34:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60779 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c9Ut7-0006Pk-V8
+	for alex.bennee@linaro.org; Wed, 23 Nov 2016 05:34:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52250)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c9Ut4-0006P9-LC
+	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 05:34:47 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1c9Usz-0008WK-OG
+	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 05:34:46 -0500
+Received: from mail-wj0-x244.google.com ([2a00:1450:400c:c01::244]:34848)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1c9Usz-0008Ve-H2; Wed, 23 Nov 2016 05:34:41 -0500
+Received: by mail-wj0-x244.google.com with SMTP id f8so713039wje.2;
+	Wed, 23 Nov 2016 02:34:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20120113;
+	h=sender:subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=7tV0SL7BxTaySbP9veKTAlbCu/nOlzaJUMIRw/+0eDw=;
+	b=p1fVQXprNohz1Wk9wwftxS9Hg0017w2/DqAUsU0sP+uoZGTZzYm4EW3muzp+522k3+
+	3G5sxiNJ/FZ4+en5yOZYlzDre6Mi0XfbB40G4O5n84HfscWJZBHjtkab1cliKlCQOldU
+	ohyOtkYsY7ph5QxGEHIKnScVUT2ezcvCBOhUHHHIyuNdZwfeEh4eSG4l5PLm0fQQ1qDH
+	N265xQnvsxNaQJCGs86EsJJvZASrsRkA0vt5KdFj1diDJOwdtrPprRquFRu/2lKo/PCh
+	mBWnSIaSc6QgJHI7PZZCtEclORavrhyypq5cxBn83Ho3Xf+U0oYoGx6BsdslpY/ckz9Z
+	A/vw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:sender:subject:to:references:cc:from:message-id
+	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=7tV0SL7BxTaySbP9veKTAlbCu/nOlzaJUMIRw/+0eDw=;
+	b=AhCe6/emX18GwlrbNdpp60k9oA0Xg88xvmneV/wIqQQam8UHv2qnZUYG85YMrV1Kll
+	fv34i5zxHl5fvrEDpnF7yHigBdY+pjkXxm9ndaGJjSaES1I8q/z0QopRi8QZFcTNHDar
+	Pa3BMUpxTsw/zPIGHKNDAaRLL/k+4t1fR7IW7C1Qsq2JBchmBeK1awMTJ7bAlzZ8LRnd
+	DIjlcO43mqRdpWsSbReq7wlnSOqyfLZ4czqXUg+xcbphvPqh25you5Y86IDFDogGb//h
+	j3KpR9JP6u73+TfUH4SjmS25PHUAa7odwn/hm4YsK7WBoC8ShJ2D/0dhA+NP1ItfvOXy
+	0YIg==
+X-Gm-Message-State: AKaTC02RcKDiZACifzVzcRjoKFJ1pM5S7aIULxwuFJrexAI6FfC/xom+7+p/fuXzXe70Yg==
+X-Received: by 10.194.165.136 with SMTP id yy8mr2947841wjb.14.1479897280319;
+	Wed, 23 Nov 2016 02:34:40 -0800 (PST)
+Received: from [192.168.10.165] (94-39-142-71.adsl-ull.clienti.tiscali.it.
+	[94.39.142.71]) by smtp.googlemail.com with ESMTPSA id
+	gk6sm17778925wjc.46.2016.11.23.02.34.39
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 23 Nov 2016 02:34:39 -0800 (PST)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <1479357400-17441-1-git-send-email-alastair@au1.ibm.com>
+	<1479357400-17441-3-git-send-email-alastair@au1.ibm.com>
+	<debe3f9c-d3ec-aad0-0424-7228bf60765b@kaod.org>
+	<3888651b-fd60-e827-a9f8-575a8f01be72@redhat.com>
+	<1479853887.11116.95.camel@au1.ibm.com>
+	<6d4e34f8-4b0b-85f2-93d6-6f0b3e2e7fb3@redhat.com>
+	<1479856790.11116.111.camel@au1.ibm.com>
+	<1761115996.1384447.1479894181425.JavaMail.zimbra@redhat.com>
+	<20161123100558.GW9606@toto>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <f392c106-0d26-e083-14bb-449fe973a03f@redhat.com>
+Date: Wed, 23 Nov 2016 11:34:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: D6jAOpYA27Ya
+In-Reply-To: <20161123100558.GW9606@toto>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2a00:1450:400c:c01::244
+Subject: Re: [Qemu-arm] [PATCH 2/4] qtest: Support named interrupts
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alastair D'Silva <alastair@au1.ibm.com>,
+	Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZiJpIDxrC/xQ
 
 
-Andrew Jones <drjones@redhat.com> writes:
 
-> Andre, Alex, Eric, anybody,
->
-> Any more comments on this? If not, I'll send a pull request
-> to Radim and Paolo to finally get this merged.
+On 23/11/2016 11:05, Edgar E. Iglesias wrote:
+>> > 
+>> > But in general, the idea is that the qtest acts as the CPU.  The test
+>> > cases can control the passing of time precisely, and they can _observe_
+>> > additional events (such as interrupts or GPIO lines) but they don't inject
+>> > anything that the CPU cannot inject.  The reason is to make the tests
+>> > more like small programs.  It does mean that you are limited by the
+>> > connections of the board.
+> Hi Paolo,
+> 
+> At some point we added support for using Qtest together with emulated
+> CPUs. In those cases, Qtest acts more like a test access port that can
+> access stuff within the VM. It can be used to test devices in combination
+> with guest SW.
+> 
+> IMO, raising and lowering signals is useful and extending it to support
+> named interrupts seems like a useful feature to me...
 
-Looks good to me. I successfully re-based my TCG tests on top and they
-work fine ;-)
+Fair enough!
 
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-
->
-> Thanks,
-> drew
->
->
-> On Mon, Nov 14, 2016 at 10:08:28PM +0100, Andrew Jones wrote:
->> v6:
->>  - rebased to latest master
->>  - several other changes thanks to Andre and Alex, changes in
->>    individual patch change logs
->>  - some code cleanups
->>
->> v5:
->>  - fix arm32/gicv3 compile [drew]
->>  - use modern register names [Andre]
->>  - one Andre r-b
->>
->> v4:
->>  - Eric's r-b's
->>  - Andre's suggestion to only take defines we need
->>  - several other changes listed in individual patches
->>
->> v3:
->>  - Rebased on latest master
->>  - Added Alex's r-b's
->>
->> v2:
->>  Rebased on latest master + my "populate argv[0]" series (will
->>  send a REPOST for that shortly. Additionally a few patches got
->>  fixes/features;
->>  07/10 got same fix as kernel 7c9b973061 "irqchip/gic-v3: Configure
->>        all interrupts as non-secure Group-1" in order to continue
->>        working over TCG, as the gicv3 code for TCG removed a hack
->>        it had there to make Linux happy.
->>  08/10 added more output for when things fail (if they fail)
->>  09/10 switched gicv3 broadcast implementation to using IRM. This
->>        found a bug in a recent (but not tip) kernel, which I was
->>        about to fix, but then I saw MarcZ beat me to it.
->>  10/10 actually check that the input irq is the received irq
->>
->>
->> Import defines, and steal enough helper functions, from Linux to
->> enable programming of the gic (v2 and v3). Then use the framework
->> to add an initial test (an ipi test; self, target-list, broadcast).
->>
->> It's my hope that this framework will be a suitable base on which
->> more tests may be easily added, particularly because we have
->> vgic-new and tcg gicv3 emulation getting close to merge. (v3 UPDATE:
->> vgic-new and tcg gicv3 are merged now)
->>
->> To run it, along with other tests, just do
->>
->>  ./configure [ --arch=[arm|arm64] --cross-prefix=$PREFIX ]
->>  make
->>  export QEMU=$PATH_TO_QEMU
->>  ./run_tests.sh
->>
->> To run it separately do, e.g.
->>
->> $QEMU -machine virt,accel=tcg -cpu cortex-a57 \
->>  -device virtio-serial-device \
->>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->>  -display none -serial stdio \
->>  -kernel arm/gic.flat \
->>  -smp 123 -machine gic-version=3 -append ipi
->>       ^^ note, we can go nuts with nr-cpus on TCG :-)
->>
->> Or, a KVM example using a different "sender" cpu and irq (other than zero)
->>
->> $QEMU -machine virt,accel=kvm -cpu host \
->>  -device virtio-serial-device \
->>  -device virtconsole,chardev=ctd -chardev testdev,id=ctd \
->>  -display none -serial stdio \
->>  -kernel arm/gic.flat \
->>  -smp 48 -machine gic-version=3 -append 'ipi sender=42 irq=1'
->>
->>
->> Patches:
->> 01-05: fixes and functionality needed by the later gic patches
->> 06-07: enable gicv2 and gicv2 IPI test
->> 08-10: enable gicv3 and gicv3 IPI test
->>    11: extend the IPI tests to take variable sender and irq
->>
->> Available here: https://github.com/rhdrjones/kvm-unit-tests/commits/arm/gic-v6
->>
->>
->> Andrew Jones (10):
->>   lib: xstr: allow multiple args
->>   arm64: fix get_"sysreg32" and make MPIDR 64bit
->>   arm/arm64: smp: support more than 8 cpus
->>   arm/arm64: add some delay routines
->>   arm/arm64: irq enable/disable
->>   arm/arm64: add initial gicv2 support
->>   arm/arm64: gicv2: add an IPI test
->>   arm/arm64: add initial gicv3 support
->>   arm/arm64: gicv3: add an IPI test
->>   arm/arm64: gic: don't just use zero
->>
->> Peter Xu (1):
->>   libcflat: add IS_ALIGNED() macro, and page sizes
->>
->>  arm/Makefile.common        |   9 +-
->>  arm/gic.c                  | 340 +++++++++++++++++++++++++++++++++++++++++++++
->>  arm/run                    |  19 ++-
->>  arm/selftest.c             |   5 +-
->>  arm/unittests.cfg          |  14 ++
->>  lib/arm/asm/arch_gicv3.h   |  70 ++++++++++
->>  lib/arm/asm/gic-v2.h       |  36 +++++
->>  lib/arm/asm/gic-v3.h       | 112 +++++++++++++++
->>  lib/arm/asm/gic.h          | 106 ++++++++++++++
->>  lib/arm/asm/processor.h    |  42 +++++-
->>  lib/arm/asm/setup.h        |   4 +-
->>  lib/arm/gic.c              | 267 +++++++++++++++++++++++++++++++++++
->>  lib/arm/processor.c        |  15 ++
->>  lib/arm/setup.c            |  10 ++
->>  lib/arm64/asm/arch_gicv3.h |  66 +++++++++
->>  lib/arm64/asm/gic-v2.h     |   1 +
->>  lib/arm64/asm/gic-v3.h     |   1 +
->>  lib/arm64/asm/gic.h        |   1 +
->>  lib/arm64/asm/processor.h  |  53 +++++--
->>  lib/arm64/asm/sysreg.h     |  44 ++++++
->>  lib/arm64/processor.c      |  15 ++
->>  lib/libcflat.h             |  10 +-
->>  22 files changed, 1212 insertions(+), 28 deletions(-)
->>  create mode 100644 arm/gic.c
->>  create mode 100644 lib/arm/asm/arch_gicv3.h
->>  create mode 100644 lib/arm/asm/gic-v2.h
->>  create mode 100644 lib/arm/asm/gic-v3.h
->>  create mode 100644 lib/arm/asm/gic.h
->>  create mode 100644 lib/arm/gic.c
->>  create mode 100644 lib/arm64/asm/arch_gicv3.h
->>  create mode 100644 lib/arm64/asm/gic-v2.h
->>  create mode 100644 lib/arm64/asm/gic-v3.h
->>  create mode 100644 lib/arm64/asm/gic.h
->>  create mode 100644 lib/arm64/asm/sysreg.h
->>
->> --
->> 2.7.4
->>
->>
-
-
---
-Alex Bennée
+Paolo

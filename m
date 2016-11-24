@@ -1,79 +1,61 @@
-Received: by 10.25.150.194 with SMTP id y185csp2836249lfd;
-        Wed, 23 Nov 2016 16:15:33 -0800 (PST)
-X-Received: by 10.200.39.51 with SMTP id g48mr5117605qtg.256.1479946533563;
-        Wed, 23 Nov 2016 16:15:33 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2887913lfd;
+        Wed, 23 Nov 2016 19:01:37 -0800 (PST)
+X-Received: by 10.55.176.131 with SMTP id z125mr86296qke.286.1479956497064;
+        Wed, 23 Nov 2016 19:01:37 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 129si20778366qkg.268.2016.11.23.16.15.33
+        by mx.google.com with ESMTPS id g34si13793855qtc.112.2016.11.23.19.01.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Nov 2016 16:15:33 -0800 (PST)
+        Wed, 23 Nov 2016 19:01:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
+       dkim=fail header.i=@gibson.dropbear.id.au;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37028 helo=lists.gnu.org)
+Received: from localhost ([::1]:37637 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c9hhN-0005vF-20
-	for alex.bennee@linaro.org; Wed, 23 Nov 2016 19:15:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45226)
+	id 1c9kI4-0000Co-Ib
+	for alex.bennee@linaro.org; Wed, 23 Nov 2016 22:01:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52077)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1c9hhJ-0005ti-DT
-	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 19:15:30 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1c9kI0-0000CW-Dz
+	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 22:01:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1c9hhE-00011U-FK
-	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 19:15:29 -0500
-Received: from out5-smtp.messagingengine.com ([66.111.4.29]:37674)
+	(envelope-from <dgibson@ozlabs.org>) id 1c9kHx-0004S3-Cc
+	for qemu-arm@nongnu.org; Wed, 23 Nov 2016 22:01:32 -0500
+Received: from ozlabs.org ([103.22.144.67]:33553)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1c9hhE-00010X-4F; Wed, 23 Nov 2016 19:15:24 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 2731820698;
-	Wed, 23 Nov 2016 19:15:22 -0500 (EST)
-Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Wed, 23 Nov 2016 19:15:22 -0500
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=mesmtp; bh=Bkz4WwNLOTLEVvuUiM0jjLcCp5A=; b=KfKMpc
-	5V+BYoV9t5OiCHtnQhLJ2W8CN5n0uQlJn+pA5784rWPWP7g5IqZEDdawtiGTWyZw
-	5zTbYgVLhPW601tt+qNE7y9FV4jBjLVWabyDvLAMEQ1aNtK+gSNbqYBd+alB9mrV
-	4zaSvhPxUiACYj2tvRdUmCs3UE6k+t/vJAD+k=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=smtpout; bh=Bkz4WwNLOTLEVv
-	uUiM0jjLcCp5A=; b=aBSBi04gidtarl/73yGD2dMJ7QVqOcwgTER6tvqo6e/yrn
-	Z4gueyf7oVeZZ03lTIqn0YzpDYcdaEpbZYNOnybmxulgy7jnP11c3OZ/mWQ5QY+G
-	8mSbD+rl8oxiHK7CeLCGUyDOk10VPUFpq4K7pesvp+44zC8NujIjMv8B7lXmo=
-X-ME-Sender: <xms:GjE2WBZvS6JSyUVdMRUvoq_mh-4RifZhxR2v1ZPOrUxuNvYQgbsnZQ>
-X-Sasl-enc: DM0FY0Idwvsdq72H5iOUyANrPHK8nn0QehuFG7cT4yw5 1479946521
-Received: from [172.16.172.59] (ppp203-122-213-247.static.internode.on.net
-	[203.122.213.247])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 7B1CB7E9B9;
-	Wed, 23 Nov 2016 19:15:19 -0500 (EST)
-Message-ID: <1479946512.2503.48.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Alastair D'Silva
-	<alastair@au1.ibm.com>, qemu-arm@nongnu.org
-Date: Thu, 24 Nov 2016 10:45:12 +1030
-In-Reply-To: <db1b87d9-8e3a-af86-a7ac-c960698f606e@kaod.org>
-References: <1479357400-17441-1-git-send-email-alastair@au1.ibm.com>
-	<1479357400-17441-5-git-send-email-alastair@au1.ibm.com>
-	<948f93ef-50d3-a450-c69f-faefd078f00d@kaod.org>
-	<1479861992.11116.112.camel@au1.ibm.com>
-	<db1b87d9-8e3a-af86-a7ac-c960698f606e@kaod.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-wL8Ychlz1rxCR2Xie8vt"
-X-Mailer: Evolution 3.22.1-0ubuntu2 
-Mime-Version: 1.0
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1c9kHw-0004QI-1j; Wed, 23 Nov 2016 22:01:29 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 3tPP9b41w0z9t9b; Thu, 24 Nov 2016 14:01:23 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1479956483;
+	bh=MvXnwsHQwdltFJiNHc+XqAHNZKwVwWHYz4xKPtKabUg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GgKJW3jICLliyvRfDJBs6YNrYwblrYrDXQZ2QvDznHvs0UgieONtDw4wLZQV/Z+bI
+	TiZJzwNAK3YO6kxbqGvvo88/4g6oUQ0qUQ4LpnXBryk7wEShW8jd4nAFSbrKEpekGi
+	Wbt9c2altyHH/j2br7x+jGua2gd6kXPiw2HoEAR4=
+Date: Thu, 24 Nov 2016 12:51:19 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20161124015119.GS17795@umbus.fritz.box>
+References: <1479777133-23567-1-git-send-email-ehabkost@redhat.com>
+	<20161122223450.GD21830@thinpad.lan.raisama.net>
+	<20161123171047.GA27297@thinpad.lan.raisama.net>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="4PJudQiuYY5+cwwi"
+Content-Disposition: inline
+In-Reply-To: <20161123171047.GA27297@thinpad.lan.raisama.net>
+User-Agent: Mutt/1.7.1 (2016-10-04)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.111.4.29
-Subject: Re: [Qemu-arm] [PATCH 4/4] arm: Add an RX8900 RTC to the ASpeed
- board
+X-Received-From: 103.22.144.67
+Subject: Re: [Qemu-arm] -nodefaults and available buses (was Re:
+ [Qemu-devel] [RFC 00/15] qmp: Report supported device types on
+ 'query-machines')
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,78 +67,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, libvir-list@redhat.com,
+	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Laine Stump <laine@redhat.com>,
+	Marcel Apfelbaum <marcel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Andrea Bolognani <abologna@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Jia Liu <proljc@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G7h7Sd/ESsAk
+X-TUID: HBKahrUjdHKM
 
 
---=-wL8Ychlz1rxCR2Xie8vt
-Content-Type: text/plain; charset="UTF-8"
+--4PJudQiuYY5+cwwi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, 2016-11-23 at 09:48 +0100, C=C3=A9dric Le Goater wrote:
-> On 11/23/2016 01:46 AM, Alastair D'Silva wrote:
-> > On Tue, 2016-11-22 at 17:56 +0100, C=C3=A9dric Le Goater wrote:
-> > > On 11/17/2016 05:36 AM, Alastair D'Silva wrote:
-> > > >=20
-> > > > > > > > From: Alastair D'Silva <alastair@d-silva.org>
-> > > >=20
-> > > > Connect an RX8900 RTC to i2c12 of the AST2500 SOC at address 0x32
-> > >=20
-> > > If this is a board device, we should include it under a machine
-> > > routine.
-> > >=20
-> > > Is that for the palmetto ? The ast2500 does not have a RTC.
-> > >=20
-> > > Thanks,
-> > >=20
-> > > C.=C2=A0
+On Wed, Nov 23, 2016 at 03:10:47PM -0200, Eduardo Habkost wrote:
+> (CCing the maintainers of the machines that crash when using
+> -nodefaults)
+>=20
+> On Tue, Nov 22, 2016 at 08:34:50PM -0200, Eduardo Habkost wrote:
+> [...]
+> > "default defaults" vs "-nodefault defaults"
+> > -------------------------------------------
 > >=20
-> > Ok
+> > Two bad news:
+> >=20
+> > 1) We need to differentiate buses created by the machine with
+> >    "-nodefaults" and buses that are created only without
+> >    "-nodefaults".
+> >=20
+> > libvirt use -nodefaults when starting QEMU, so knowing which
+> > buses are available when using -nodefaults is more interesting
+> > for them.
+> >=20
+> > Other software, on the other hand, might be interested in the
+> > results without -nodefaults.
+> >=20
+> > We need to be able model both cases in the new interface.
+> > Suggestions are welcome.
 >=20
-> =C2=A0
-> I suppose we could change aspeed_board_init() to return=C2=A0
-> a AspeedSoCState* and use the soc object in the specific=C2=A0
-> <machine>_init routines to add devices.=C2=A0
+> The good news is that the list is short. The only[1] machines
+> where the list of buses seem to change when using -nodefaults
+> are:
 >=20
-> Andrew, what is your opinion on that ?=C2=A0
+> * mpc8544ds
+> * ppce500
+> * mpc8544ds
+> * ppce500
+> * s390-ccw-virtio-*
+>=20
+> On all cases above, the only difference is that a virtio bus is
+> available if not using -nodefaults.
 
-I see the I2C bus configuration as a declarative problem. In a similar
-vein we already have AspeedBoardConfig, so I think we should try to
-describe the buses and attached devices there. That way we can have a
-generic aspeed_i2c_bus_init() routine that we call inside
-aspeed_board_init().
+Hrm.. that's odd.  Well, it makes sense for the s390 which has special
+virtio arrangements.  However, the others are all embedded ppc
+machines, whose virtio should be bog-standard virtio-pci.  I'm
+wondering if the addition of the virtio "bus" is a side-effect of the
+NIC or storage device created without -nodefaults being virtio.
 
-This would avoid encoding the buses and their slaves in the board-
-specific init code.
+> Considering that the list is short, I plan to rename
+> 'supported-device-types' to 'always-available-buses', and
+> document that it will include only the buses that are not
+> disabled by -nodefaults.
+>=20
+> [1] I mean, the only ones from the set that don't crash with
+>     -nodefaults. The ones below could not be tested:
+>=20
+> > 2) A lot of machine-types won't start if using
+> >    "-nodefaults -machine <machine>" without any extra devices or
+> >    drives.
+> >=20
+> > Lots of machines require some drives or devices to be created
+> > (especially ARM machines that require a SD drive to be
+> > available).
+> >=20
+> > Some machines will make QEMU exit, some of them simply segfault.
+> > I am looking for ways to work around it so we can still validate
+> > -nodefaults-based info on the test code.
+>=20
+> The following machines won't work with -nodefaults:
+>=20
+> These make QEMU segfault:
+> * cubieboard
+> * petalogix-ml605
+> * or32-sim
+> * virtex-ml507
+> * Niagara
+>=20
+> These exit with a "missing SecureDigital device" error:
+> * akita
+> * borzoi
+> * cheetah
+> * connex
+> * mainstone
+> * n800
+> * n810
+> * spitz
+> * sx1
+> * sx1-v1
+> * terrier
+> * tosa
+> * verdex
+> * z2
+>=20
 
-Is that a reasonable alternative? I agree that we need to use a
-different approach to that which the current patch is using.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Andrew
---=-wL8Ychlz1rxCR2Xie8vt
+--4PJudQiuYY5+cwwi
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-iQIcBAABCgAGBQJYNjEQAAoJEJ0dnzgO5LT5g2oP/3/EvqS6pMvFEQFUklCQvQV/
-TczhrNUktOaQyWm4C2hO+Jg6AjYDz1Qpt3iPxhv0pUW3BuZkB3Wuar4Td/GtBlkQ
-Zgc7ERGsnZzp9IysxTcBIJdCwWF7SZIoPuHnpDLeIwgmG80vJPit+9yzLFGu9Tb6
-TRNU7idNJzHYyId5xoPu7u/WpH8AVGMQiVxwLNIsdqEHPys29SFu893oszHVdLGK
-NOp1QFyzMtYtEkOaLRJKL4wm2lQzaPbatkqu3gFOwWTzZQgci2m+As5iththyTun
-pGrjtKLU09afWAlJPhuVBA7yIW4rbLUQXoS2rKqdHKoGoRlnhL0IurqfmYCHpghj
-Mxrt/+HUe/0qU0QsLeUwQZfVSTDpSg/HizoA4RAt1T3ye+46ayZscsDi6Azg6mZU
-gMqpeha84sowA3oyTQKYL4VwXaY51PabfdjQm0MkBIdk2m/8FN9mGMdT1FKOp6BX
-6jYn0XWikWtcQkeOunEgxhCmglggVfXcYrBwbLvsBhFjIUJeXeZMFYr3Smipel71
-ECCMRE/l+8eK9OIPLubsCmG3josywh897a6f0qhROVOLIX2jwU+FD6TZQrUJUMu/
-A2g0OdoUnguVTkRgYpJ5qzc/PdxLiUSj1oiCcIZCmPzpIOYgG8n78CxDV4Ei9dbi
-UN3J3smzRURTUKPbh16L
-=SFLC
+iQIcBAEBCAAGBQJYNkeUAAoJEGw4ysog2bOSf1QQANDVo0i3C+CU+wvcPCQkThIe
+i1kFpw7wzRVm0bbE23kUavv5jwKLlTSOqwEbGRx7KqNSOpWjF82AJ6ro8iRQL6eM
+QFA9NImOVQrR7qFHtjkThDnGb7JlHjd6ryZzKyK1wvj2YXx6r+c9DTBGRBlcRXql
+lHTD+aA3nDok2fYG5ZX7iEZgvm5xX+xg8Ympj7qP995hpwEKIGKg+MJYRvU1/HXB
+mSkVs5niY1eAW3O14+Le4mR7/SeMk0aSXcudOsnr1341iKq4KfQnm++LVcI/hgQP
+jqRgkatW9oQO96UL3u0QHyF+BiT8MHC22S/GGA1SoxyYr265mJMxsj/TxmzffwgF
+jyoC8woAb7y+L/rdGkZNwXJvciDEipHahhOScYgq43Osub8c5NkPYxEPvrciNvIp
+OVmAOj6lrQI512mcHpb4DRawXE+S45whBSLpqV/kU5C0sX0xPISzq66DLkdT6GoM
+78pRmekPWK65WPoFCeMJBsnljJUlk16QxssFjLW7+mhDXfGf07NjGWZIiS1E2bCV
+RFcteQCtlWJF7wMTnm9EvJ7uxycFV9ibrYMwMOVy4UL3jpVCIm1VaTjECii6Vbhj
+J4tOAYdRjt7wLaBaa7gfhIHnjQStAdqLxceMar0XbhP22Yd6jbbnIQYjqQnIMVrj
+1CRMrDgsoaktF/vxEKGX
+=WpA1
 -----END PGP SIGNATURE-----
 
---=-wL8Ychlz1rxCR2Xie8vt--
-
+--4PJudQiuYY5+cwwi--

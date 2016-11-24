@@ -1,186 +1,185 @@
-Received: by 10.25.150.194 with SMTP id y185csp162758lfd;
-        Thu, 24 Nov 2016 05:40:05 -0800 (PST)
-X-Received: by 10.200.56.186 with SMTP id f55mr1920629qtc.75.1479994805297;
-        Thu, 24 Nov 2016 05:40:05 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.150.194 with SMTP id y185csp246145lfd;
+        Thu, 24 Nov 2016 08:31:37 -0800 (PST)
+X-Received: by 10.55.78.147 with SMTP id c141mr3167686qkb.4.1480005097568;
+        Thu, 24 Nov 2016 08:31:37 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f28si15121407qte.167.2016.11.24.05.40.05
+        by mx.google.com with ESMTPS id s59si15514660qtd.111.2016.11.24.08.31.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 Nov 2016 05:40:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 24 Nov 2016 08:31:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40116 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40955 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1c9uFw-0002Gt-Ou
-	for alex.bennee@linaro.org; Thu, 24 Nov 2016 08:40:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49140)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1c9wvx-00078o-12
+	for alex.bennee@linaro.org; Thu, 24 Nov 2016 11:31:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1c9uFs-0002GW-Ox
-	for qemu-arm@nongnu.org; Thu, 24 Nov 2016 08:40:01 -0500
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1c9wuy-00077N-HK
+	for qemu-devel@nongnu.org; Thu, 24 Nov 2016 11:30:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1c9uFo-0001Aj-Py
-	for qemu-arm@nongnu.org; Thu, 24 Nov 2016 08:40:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54714)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1c9uFo-00019F-Fr; Thu, 24 Nov 2016 08:39:56 -0500
-Received: from int-mx14.intmail.prod.int.phx2.redhat.com
-	(int-mx14.intmail.prod.int.phx2.redhat.com [10.5.11.27])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AD26BCA636;
-	Thu, 24 Nov 2016 13:39:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-44.ams2.redhat.com
-	[10.36.116.44])
-	by int-mx14.intmail.prod.int.phx2.redhat.com (8.14.4/8.14.4) with ESMTP
-	id uAODdpLT024008
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=NO); Thu, 24 Nov 2016 08:39:53 -0500
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 590441132C2F; Thu, 24 Nov 2016 14:39:51 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
+	(envelope-from <cornelia.huck@de.ibm.com>) id 1c9wuu-0002Be-Fu
+	for qemu-devel@nongnu.org; Thu, 24 Nov 2016 11:30:36 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:51892
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cornelia.huck@de.ibm.com>)
+	id 1c9wuu-0002BM-9o
+	for qemu-devel@nongnu.org; Thu, 24 Nov 2016 11:30:32 -0500
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
+	uAOGTuWp127833
+	for <qemu-devel@nongnu.org>; Thu, 24 Nov 2016 11:30:31 -0500
+Received: from e06smtp14.uk.ibm.com (e06smtp14.uk.ibm.com [195.75.94.110])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 26wxhs8ybu-1
+	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
+	for <qemu-devel@nongnu.org>; Thu, 24 Nov 2016 11:30:30 -0500
+Received: from localhost
+	by e06smtp14.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-devel@nongnu.org> from <cornelia.huck@de.ibm.com>;
+	Thu, 24 Nov 2016 16:30:27 -0000
+Received: from d06dlp03.portsmouth.uk.ibm.com (9.149.20.15)
+	by e06smtp14.uk.ibm.com (192.168.101.144) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	Thu, 24 Nov 2016 16:30:22 -0000
+Received: from b06cxnps3075.portsmouth.uk.ibm.com
+	(d06relay10.portsmouth.uk.ibm.com [9.149.109.195])
+	by d06dlp03.portsmouth.uk.ibm.com (Postfix) with ESMTP id D894A1B08067; 
+	Thu, 24 Nov 2016 16:32:40 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+	[9.149.105.58])
+	by b06cxnps3075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id uAOGUHlM52101264; Thu, 24 Nov 2016 16:30:21 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 778BA4C05C;
+	Thu, 24 Nov 2016 15:28:35 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id DA63B4C052;
+	Thu, 24 Nov 2016 15:28:34 +0000 (GMT)
+Received: from gondolin (unknown [9.152.224.150])
+	by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Thu, 24 Nov 2016 15:28:34 +0000 (GMT)
+Date: Thu, 24 Nov 2016 17:30:19 +0100
+From: Cornelia Huck <cornelia.huck@de.ibm.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+In-Reply-To: <20161124015119.GS17795@umbus.fritz.box>
 References: <1479777133-23567-1-git-send-email-ehabkost@redhat.com>
 	<20161122223450.GD21830@thinpad.lan.raisama.net>
 	<20161123171047.GA27297@thinpad.lan.raisama.net>
-Date: Thu, 24 Nov 2016 14:39:51 +0100
-In-Reply-To: <20161123171047.GA27297@thinpad.lan.raisama.net> (Eduardo
-	Habkost's message of "Wed, 23 Nov 2016 15:10:47 -0200")
-Message-ID: <87oa15dmjc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+	<20161124015119.GS17795@umbus.fritz.box>
+Organization: IBM Deutschland Research & Development GmbH Vorsitzende des
+	Aufsichtsrats: Martina Koederitz
+	=?UTF-8?B?R2VzY2jDpGZ0c2bDvGhydW5nOg==?=
+	Dirk Wittkopp Sitz der Gesellschaft: =?UTF-8?B?QsO2Ymxpbmdlbg==?=
+	Registergericht: Amtsgericht Stuttgart, HRB 243294
+X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.23; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.68 on 10.5.11.27
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 24 Nov 2016 13:39:55 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] -nodefaults and available buses (was
- Re: [RFC 00/15] qmp: Report supported device types on 'query-machines')
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Content-Scanned: Fidelis XPS MAILER
+x-cbid: 16112416-0016-0000-0000-0000027025D9
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 16112416-0017-0000-0000-000023F0BEEA
+Message-Id: <20161124173019.1d3f1b39.cornelia.huck@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
+	definitions=2016-11-24_04:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	spamscore=0 suspectscore=0
+	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
+	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
+	definitions=main-1611240289
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-devel] -nodefaults and available buses (was Re: [RFC
+ 00/15] qmp: Report supported device types on 'query-machines')
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>, Jia Liu <proljc@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Alexey Kardashevskiy <aik@ozlabs.ru>,
+	Markus Armbruster <armbru@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-devel@nongnu.org,
 	Beniamino Galvani <b.galvani@gmail.com>, libvir-list@redhat.com,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Laine Stump <laine@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Laine Stump <laine@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Marcel Apfelbaum <marcel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jia Liu <proljc@gmail.com>,
 	Andrea Bolognani <abologna@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JsGWFdglUC3u
+	Artyom Tarasenko <atar4qemu@gmail.com>, Greg Kurz <groug@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z0jP7t27WIDi
 
-Eduardo Habkost <ehabkost@redhat.com> writes:
+On Thu, 24 Nov 2016 12:51:19 +1100
+David Gibson <david@gibson.dropbear.id.au> wrote:
 
-> (CCing the maintainers of the machines that crash when using
-> -nodefaults)
->
-> On Tue, Nov 22, 2016 at 08:34:50PM -0200, Eduardo Habkost wrote:
-> [...]
->> "default defaults" vs "-nodefault defaults"
->> -------------------------------------------
->> 
->> Two bad news:
->> 
->> 1) We need to differentiate buses created by the machine with
->>    "-nodefaults" and buses that are created only without
->>    "-nodefaults".
->> 
->> libvirt use -nodefaults when starting QEMU, so knowing which
->> buses are available when using -nodefaults is more interesting
->> for them.
+> On Wed, Nov 23, 2016 at 03:10:47PM -0200, Eduardo Habkost wrote:
+> > (CCing the maintainers of the machines that crash when using
+> > -nodefaults)
+> > 
+> > On Tue, Nov 22, 2016 at 08:34:50PM -0200, Eduardo Habkost wrote:
+> > [...]
+> > > "default defaults" vs "-nodefault defaults"
+> > > -------------------------------------------
+> > > 
+> > > Two bad news:
+> > > 
+> > > 1) We need to differentiate buses created by the machine with
+> > >    "-nodefaults" and buses that are created only without
+> > >    "-nodefaults".
+> > > 
+> > > libvirt use -nodefaults when starting QEMU, so knowing which
+> > > buses are available when using -nodefaults is more interesting
+> > > for them.
+> > > 
+> > > Other software, on the other hand, might be interested in the
+> > > results without -nodefaults.
+> > > 
+> > > We need to be able model both cases in the new interface.
+> > > Suggestions are welcome.
+> > 
+> > The good news is that the list is short. The only[1] machines
+> > where the list of buses seem to change when using -nodefaults
+> > are:
+> > 
+> > * mpc8544ds
+> > * ppce500
+> > * mpc8544ds
+> > * ppce500
+> > * s390-ccw-virtio-*
+> > 
+> > On all cases above, the only difference is that a virtio bus is
+> > available if not using -nodefaults.
+> 
+> Hrm.. that's odd.  Well, it makes sense for the s390 which has special
+> virtio arrangements.  
 
-Yes.
+I don't think it makes much sense for s390 either... is this a 'virtio'
+bus or a 'virtio-{pci,ccw}' bus? The transport bus should be present
+with -nodefaults; the virtio bus is basically a glue bus for virtio
+devices...
 
->> Other software, on the other hand, might be interested in the
->> results without -nodefaults.
+> However, the others are all embedded ppc
+> machines, whose virtio should be bog-standard virtio-pci.  I'm
+> wondering if the addition of the virtio "bus" is a side-effect of the
+> NIC or storage device created without -nodefaults being virtio.
 
-Maybe.
+I'd suspect the default NICs (which are virtio at least in the s390
+case).
 
-Related: other machine options, such as usb=on.
-
->> We need to be able model both cases in the new interface.
->> Suggestions are welcome.
->
-> The good news is that the list is short. The only[1] machines
-> where the list of buses seem to change when using -nodefaults
-> are:
->
-> * mpc8544ds
-> * ppce500
-> * mpc8544ds
-> * ppce500
-> * s390-ccw-virtio-*
->
-> On all cases above, the only difference is that a virtio bus is
-> available if not using -nodefaults.
->
-> Considering that the list is short, I plan to rename
-> 'supported-device-types' to 'always-available-buses', and
-> document that it will include only the buses that are not
-> disabled by -nodefaults.
->
-> [1] I mean, the only ones from the set that don't crash with
->     -nodefaults. The ones below could not be tested:
->
->> 2) A lot of machine-types won't start if using
->>    "-nodefaults -machine <machine>" without any extra devices or
->>    drives.
->> 
->> Lots of machines require some drives or devices to be created
->> (especially ARM machines that require a SD drive to be
->> available).
->> 
->> Some machines will make QEMU exit, some of them simply segfault.
->> I am looking for ways to work around it so we can still validate
->> -nodefaults-based info on the test code.
->
-> The following machines won't work with -nodefaults:
->
-> These make QEMU segfault:
-> * cubieboard
-> * petalogix-ml605
-> * or32-sim
-> * virtex-ml507
-> * Niagara
-
-Bugs.
-
-> These exit with a "missing SecureDigital device" error:
-> * akita
-> * borzoi
-> * cheetah
-> * connex
-> * mainstone
-> * n800
-> * n810
-> * spitz
-> * sx1
-> * sx1-v1
-> * terrier
-> * tosa
-> * verdex
-> * z2
-
-Bugs only if there is no other way to provide the SD device.  I believe
-some variation if -drive if=sd,... should do fine.

@@ -1,72 +1,61 @@
-Received: by 10.25.150.194 with SMTP id y185csp1709103lfd;
-        Mon, 28 Nov 2016 04:01:57 -0800 (PST)
-X-Received: by 10.55.215.220 with SMTP id t89mr17697833qkt.27.1480334517396;
-        Mon, 28 Nov 2016 04:01:57 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp1816592lfd;
+        Mon, 28 Nov 2016 07:21:37 -0800 (PST)
+X-Received: by 10.237.53.102 with SMTP id b35mr21244197qte.266.1480346496945;
+        Mon, 28 Nov 2016 07:21:36 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 60si24456320qtc.74.2016.11.28.04.01.57
+        by mx.google.com with ESMTPS id g126si32259828qkb.252.2016.11.28.07.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Nov 2016 04:01:57 -0800 (PST)
+        Mon, 28 Nov 2016 07:21:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58131 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59408 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBKdA-0008Cw-7b
-	for alex.bennee@linaro.org; Mon, 28 Nov 2016 07:01:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46486)
+	id 1cBNkN-0004jY-Oh
+	for alex.bennee@linaro.org; Mon, 28 Nov 2016 10:21:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cBKcz-0008BK-F7
-	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 07:01:46 -0500
+	(envelope-from <clg@kaod.org>) id 1cBNkD-0004fF-9u
+	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 10:21:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1cBKcy-0006qe-Mk
-	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 07:01:45 -0500
-Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:36467)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1cBKcy-0006qH-HN
-	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 07:01:44 -0500
-Received: by mail-ua0-x234.google.com with SMTP id b35so139933201uaa.3
-	for <qemu-arm@nongnu.org>; Mon, 28 Nov 2016 04:01:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=mQ7E3RbMXULPek1UKYEh8Qlrd4LAKGGQBlLY/aWRpOw=;
-	b=ZxpwDXPwjLMzcO9IjWBhX9s8Tc+Jvq5Z3dwaxtKbVkOtEnOXKz8yZZCK+3vKaS3g5G
-	GSJKyvryP45JeKJhiP7AqHEH7B6sj0w9HIMPj5o8iIqoNBHLFAagD+ItJbrKWObm6arQ
-	T9zzIM4mgJqNpnVLGoAm2llqyV87Q7jmudxBQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=mQ7E3RbMXULPek1UKYEh8Qlrd4LAKGGQBlLY/aWRpOw=;
-	b=bZRMg7FvZVcAla6OD1pdrhR1XebtMlpP2oWtodLfCXuCZtQUMpvHUw6xnO9Dkfkird
-	VHxvEZwRSzVXcUcwyiv3Wg3Ug/xj43vlXb06AvMMjXMAOngd9tnaEsVrgmSUkgv6xXBq
-	/CHHFRKCVs7Oak0FTz74qSI1gZ/1wxVXRmKt7FeaBPtlksjZN/OrAQ1BegHzjiltI5WL
-	i0Srf/l8e5n9FXhfkxiXx6IzgVq2FHznWFczhJjlH49qB+d9GL7w0XPsCqqNw3oRg4WN
-	jjWlMEqPgo/UbpANypEhOonYNGwMQp9WGdwHAurJLMIrkmJeUbD6o3p3ZJOcVWQUzeOj
-	I0cA==
-X-Gm-Message-State: AKaTC01I0xZUpjjcy27T2MOoDUGWhwl77oip3kyvKYZMvsh9NiMLBlXUPMdAYgh3Bs8aF7u6tBZ4Stuh222ty0v2
-X-Received: by 10.176.83.12 with SMTP id x12mr16165046uax.131.1480334503290;
-	Mon, 28 Nov 2016 04:01:43 -0800 (PST)
+	(envelope-from <clg@kaod.org>) id 1cBNkA-0002dC-46
+	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 10:21:25 -0500
+Received: from 11.mo4.mail-out.ovh.net ([46.105.34.195]:60277)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBNk9-0002YJ-UM
+	for qemu-arm@nongnu.org; Mon, 28 Nov 2016 10:21:22 -0500
+Received: from player750.ha.ovh.net (b7.ovh.net [213.186.33.57])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id F0DD71FC46
+	for <qemu-arm@nongnu.org>; Mon, 28 Nov 2016 16:21:18 +0100 (CET)
+Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: clg@kaod.org)
+	by player750.ha.ovh.net (Postfix) with ESMTPSA id D6CB3180073;
+	Mon, 28 Nov 2016 16:21:15 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1471946352-20779-1-git-send-email-clg@kaod.org>
+	<CAFEAcA_+tECGsnVnp7YKYFXWZDoi9n7mQRjFAoWGZ6hRs2FFpQ@mail.gmail.com>
+	<f5ef5137-47a3-c345-ae34-0893e20de116@kaod.org>
+	<CAFEAcA-gRO5E9TPZHMpWHZ9kv-5EGTgkgdY5cJeGyXSq5hk_MA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <f9310c6b-719f-db68-8a1b-993bf9ffec44@kaod.org>
+Date: Mon, 28 Nov 2016 16:21:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 10.31.185.4 with HTTP; Mon, 28 Nov 2016 04:01:22 -0800 (PST)
-In-Reply-To: <CAFEAcA-SfGLuDwwDwFSPwrN87=3U+9ByxdTa899b9D3xA0kFnQ@mail.gmail.com>
-References: <1479904764-15532-1-git-send-email-vijay.kilari@gmail.com>
-	<1479904764-15532-4-git-send-email-vijay.kilari@gmail.com>
-	<CAFEAcA-SfGLuDwwDwFSPwrN87=3U+9ByxdTa899b9D3xA0kFnQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Nov 2016 12:01:22 +0000
-Message-ID: <CAFEAcA9zE9atZ2qfJMaVd0NSeAHz+LtsH6OrDMpC45mVG2uNNQ@mail.gmail.com>
-To: Vijay Kilari <vijay.kilari@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA-gRO5E9TPZHMpWHZ9kv-5EGTgkgdY5cJeGyXSq5hk_MA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+X-Ovh-Tracer-Id: 5435281802747349936
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeeigdejhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c08::234
-Subject: Re: [Qemu-arm] [PATCH v6 3/4] hw/intc/arm_gicv3_kvm: Save and
- Restore ICC_SRE_EL1 register
+	[fuzzy]
+X-Received-From: 46.105.34.195
+Subject: Re: [Qemu-arm] [PATCH] target-arm: Add VBAR support to ARM1176 CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,79 +67,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Pavel Fedin <p.fedin@samsung.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Vijaya Kumar K <Vijaya.Kumar@cavium.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Christoffer Dall <christoffer.dall@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a5qdJOJIfKN3
+X-TUID: SNzIMGqZgXBF
 
-On 28 November 2016 at 11:54, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 23 November 2016 at 12:39,  <vijay.kilari@gmail.com> wrote:
->> From: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
+On 11/28/2016 11:40 AM, Peter Maydell wrote:
+> On 24 November 2016 at 14:29, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
+e:
+>> On 09/05/2016 04:39 PM, Peter Maydell wrote:
+>>> We implement VBAR in v7-without-EL3 even though architecturally
+>>> it should only exist in v7-with-EL3 because we have some
+>>> legacy board models which we implement as without-EL3 but
+>>> where the guest (Linux) assumes it's running on a with-EL3
+>>> CPU in NS mode. I'd rather we stick to the architectural
+>>> definition for 1176 if we can rather than expanding the
+>>> "things we do which aren't architectural" set if there's
+>>> no legacy config that requires it. (If it is necessary
+>>> to define it for 1176 always then that's OK, I'd just
+>>> prefer not to unless we know we have to.)
 >>
->> Save and Restore ICC_SRE_EL1 register. ICC_SRE_EL1 register
->> value is used by kernel to check if SRE bit is set or not.
+>> According to the ARM spec, 1176 is a v6 with a couple of
+>> extensions, among which v6k and TrustZone. So it has Secure
+>> and Non-Secure VBAR and MVBAR registers.
 >>
->> Signed-off-by: Vijaya Kumar K <Vijaya.Kumar@cavium.com>
->> ---
->>  hw/intc/arm_gicv3_kvm.c            | 4 ++++
->>  include/hw/intc/arm_gicv3_common.h | 1 +
->>  2 files changed, 5 insertions(+)
+>> Looking at :
 >>
->> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
->> index a317fbf..77af32d 100644
->> --- a/hw/intc/arm_gicv3_kvm.c
->> +++ b/hw/intc/arm_gicv3_kvm.c
->> @@ -65,6 +65,8 @@
->>      KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 3)
->>  #define ICC_CTLR_EL1    \
->>      KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 4)
->> +#define ICC_SRE_EL1 \
->> +    KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 5)
->>  #define ICC_IGRPEN0_EL1 \
->>      KVM_DEV_ARM_VGIC_SYSREG(3, 0, 12, 12, 6)
->>  #define ICC_IGRPEN1_EL1 \
->> @@ -404,6 +406,7 @@ static void kvm_arm_gicv3_put(GICv3State *s)
->>          GICv3CPUState *c = &s->cpu[ncpu];
->>          int num_pri_bits;
+>>   https://en.wikipedia.org/wiki/List_of_ARM_microarchitectures
 >>
->> +        kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, true);
->>          kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
->>                          &c->icc_ctlr_el1[GICV3_NS], true);
->>          kvm_gicc_access(s, ICC_IGRPEN0_EL1, ncpu,
->> @@ -557,6 +560,7 @@ static void kvm_arm_gicv3_get(GICv3State *s)
->>          GICv3CPUState *c = &s->cpu[ncpu];
->>          int num_pri_bits;
+>> May be, we should instead introduce a new ARMv6Z architecture
+>> for the 1176 cpu which would represent a ARMv6 + TrustZone ?
 >>
->> +        kvm_gicc_access(s, ICC_SRE_EL1, ncpu, &c->icc_sre_el1, false);
->>          kvm_gicc_access(s, ICC_CTLR_EL1, ncpu,
->>                          &c->icc_ctlr_el1[GICV3_NS], false);
->>          kvm_gicc_access(s, ICC_IGRPEN0_EL1, ncpu,
->> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
->> index 341a311..183c7f8 100644
->> --- a/include/hw/intc/arm_gicv3_common.h
->> +++ b/include/hw/intc/arm_gicv3_common.h
->> @@ -166,6 +166,7 @@ struct GICv3CPUState {
->>      uint8_t gicr_ipriorityr[GIC_INTERNAL];
 >>
->>      /* CPU interface */
->> +    uint64_t icc_sre_el1;
->>      uint64_t icc_ctlr_el1[2];
->>      uint64_t icc_pmr_el1;
->>      uint64_t icc_bpr[3];
+>> But I am a bit confused with this EL3 feature. 1176 does not
+>> have EL3 to my understanding (I am beyond my ARM skills there).
+>=20
+> EL3 =3D=3D TrustZone's Monitor mode level of privilege. In
+> ARMv8 the privilege level model was tidied up a bit so it's
+> more cleanly arranged in levels EL0 (user) EL1 (kernel)
+> EL2 (hypervisor) EL3 (secure monitor), and the old 32-bit
+> setup can be expressed in terms of that (User being EL0,
+> the various Sys/Fiq/Irq/etc modes being EL1, Hyp at EL2
+> and Mon at EL3). For QEMU we implemented TrustZone support
+> after the v8 spec was published, so we had the opportunity
+> to do it in a way that fit nicely with 64-bit TZ support.
+> So ARM_FEATURE_EL3 is our "does this CPU have TrustZone"
+> flag, in the same way that ARM_FEATURE_EL2 is "does it have
+> the Virtualization extensions".
 >
-> If you're adding a new structure field you must also update
-> the vmstate struct in arm_gicv3_common.c.
+> We also support 1176-without-TrustZone, which doesn't
+> exist in real hardware but which we have for backwards
+> compatibility with code that runs on our 1176 boards
+> which we implemented before we had TZ support in the
+> CPU implementation.
 
-...and if you put the patch which adds the new struct field
-to GICv3CPUState and the vmstate first, then you can avoid
-bumping the version numbers in vmstate because migration will
-have always been disabled. So it's better to do it that way
-round.
+Thanks for the explanation. It is clearer now.
 
-thanks
--- PMM
+> What I'm suggesting is that we shoulld provide VBAR
+> only in the 1176-with-TZ CPUs, not in the 1176-no-TZ
+> CPUs, unless we must provide it for the latter as a
+> back-compat requirement.
+
+I don't for the back-compat requirement.=20
+
+But I need to rework the patch to keep VBAR in any case=20
+for the v7-without-EL3 CPUs and remove it for the 1176 CPUs=20
+when 'has_el3' is not set.
+
+Thanks,
+
+C.=20
+
+>> So why is it part of the feature list in arm1176_initfn ?
+>> Is that a way to define the MVBAR and SCR regs ?
+>=20
+> The CPU object defaults to TZ-enabled, and then the
+> board model can disable it. (See for instance the
+> code in hw/arm/realview.c which sets the has_el3 property
+> on the CPU object to false.)
+>=20
+> thanks
+> -- PMM
+>=20
+

@@ -1,59 +1,59 @@
-Received: by 10.25.150.194 with SMTP id y185csp2421159lfd;
-        Tue, 29 Nov 2016 08:03:54 -0800 (PST)
-X-Received: by 10.55.49.76 with SMTP id x73mr24035480qkx.188.1480435434296;
-        Tue, 29 Nov 2016 08:03:54 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2421199lfd;
+        Tue, 29 Nov 2016 08:03:57 -0800 (PST)
+X-Received: by 10.55.158.199 with SMTP id h190mr27370163qke.202.1480435437782;
+        Tue, 29 Nov 2016 08:03:57 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n89si27881551qtd.91.2016.11.29.08.03.54
+        by mx.google.com with ESMTPS id a16si27828780qtb.121.2016.11.29.08.03.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 08:03:54 -0800 (PST)
+        Tue, 29 Nov 2016 08:03:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37792 helo=lists.gnu.org)
+Received: from localhost ([::1]:37794 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBksr-0005B6-3x
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:03:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39999)
+	id 1cBksu-0005EG-Hj
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:03:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkdA-0008HJ-Hd
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:45 -0500
+	(envelope-from <clg@kaod.org>) id 1cBkcE-0007VK-6O
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkd6-0005el-Kd
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:40 -0500
-Received: from 3.mo1.mail-out.ovh.net ([46.105.60.232]:49131)
+	(envelope-from <clg@kaod.org>) id 1cBkc9-0005K6-As
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:42 -0500
+Received: from 7.mo1.mail-out.ovh.net ([87.98.158.110]:41825)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkd6-0005eN-EJ
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:36 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkc9-0005Je-5S
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:37 -0500
 Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id A25C91F850
-	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:47:30 +0100 (CET)
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id D1D681F93D
+	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:46:35 +0100 (CET)
 Received: from hermes.lab.toulouse-stg.fr.ibm.com
 	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
 	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id 14AC812009B;
-	Tue, 29 Nov 2016 16:47:23 +0100 (CET)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id 4456A120094;
+	Tue, 29 Nov 2016 16:46:28 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Nov 2016 16:43:58 +0100
-Message-Id: <1480434248-27138-21-git-send-email-clg@kaod.org>
+Date: Tue, 29 Nov 2016 16:43:51 +0100
+Message-Id: <1480434248-27138-14-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1480434248-27138-1-git-send-email-clg@kaod.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11750454379731323665
+X-Ovh-Tracer-Id: 11734973257941093137
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeejgddvtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.60.232
-Subject: [Qemu-arm] [PATCH for-2.9 20/30] aspeed/smc: add a 'sdram_base'
- property
+X-Received-From: 87.98.158.110
+Subject: [Qemu-arm] [PATCH for-2.9 13/30] aspeed/smc: set the number of
+ flash modules for the FMC controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,67 +71,89 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I1JfwhSNG0M/
+X-TUID: zl9X///Sx9a7
 
-The setting of the DRAM address of the DMA transaction depends on the
-DRAM base address of the SoC, so we add a property to give this
-information to the model.
+Add a new configuration field at the board level and propagate the
+value using the "num-cs" property of the FMC controller model.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/arm/aspeed_soc.c         | 5 ++++-
- hw/ssi/aspeed_smc.c         | 1 +
- include/hw/ssi/aspeed_smc.h | 3 +++
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ hw/arm/aspeed.c     | 6 ++++++
+ hw/arm/aspeed_soc.c | 8 ++++----
+ 2 files changed, 10 insertions(+), 4 deletions(-)
 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index bc70b387890c..40c13838fb2d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -36,6 +36,7 @@ typedef struct AspeedBoardConfig {
+     uint32_t hw_strap1;
+     const char *fmc_model;
+     const char *spi_model;
++    uint32_t num_cs;
+ } AspeedBoardConfig;
+=20
+ enum {
+@@ -85,18 +86,21 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+         .hw_strap1 =3D PALMETTO_BMC_HW_STRAP1,
+         .fmc_model =3D "n25q256a",
+         .spi_model =3D "mx25l25635e",
++        .num_cs    =3D 1,
+     },
+     [AST2500_EVB]  =3D {
+         .soc_name  =3D "ast2500-a1",
+         .hw_strap1 =3D AST2500_EVB_HW_STRAP1,
+         .fmc_model =3D "n25q256a",
+         .spi_model =3D "mx25l25635e",
++        .num_cs    =3D 1,
+     },
+     [ROMULUS_BMC]  =3D {
+         .soc_name  =3D "ast2500-a1",
+         .hw_strap1 =3D ROMULUS_BMC_HW_STRAP1,
+         .fmc_model =3D "n25q256a",
+         .spi_model =3D "mx66l1g45g",
++        .num_cs    =3D 2,
+     },
+ };
+=20
+@@ -143,6 +147,8 @@ static void aspeed_board_init(MachineState *machine,
+                            &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap1, "hw-strap=
+1",
+                             &error_abort);
++    object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
++                            &error_abort);
+     object_property_set_bool(OBJECT(&bmc->soc), true, "realized",
+                              &error_abort);
+=20
 diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index b3e7f07b615d..4fb777e6df6e 100644
+index d111d2e1feca..b3e7f07b615d 100644
 --- a/hw/arm/aspeed_soc.c
 +++ b/hw/arm/aspeed_soc.c
-@@ -253,7 +253,10 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+@@ -153,6 +153,8 @@ static void aspeed_soc_init(Object *obj)
+     object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
+     object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
+     qdev_set_parent_bus(DEVICE(&s->fmc), sysbus_get_default());
++    object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs",
++                              &error_abort);
+=20
+     for (i =3D 0; i < sc->info->spis_num; i++) {
+         object_initialize(&s->spi[i], sizeof(s->spi[i]),
+@@ -250,10 +252,8 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
 or **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
                         qdev_get_gpio_in(DEVICE(&s->vic), 12));
 =20
-     /* FMC, The number of CS is set at the board level */
--    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err);
-+    object_property_set_int(OBJECT(&s->fmc), sc->info->sdram_base, "sdra=
-m-base",
-+                            &err);
-+    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &local_e=
+-    /* FMC */
+-    object_property_set_int(OBJECT(&s->fmc), 1, "num-cs", &err);
+-    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &local_e=
 rr);
-+    error_propagate(&err, local_err);
+-    error_propagate(&err, local_err);
++    /* FMC, The number of CS is set at the board level */
++    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err);
      if (err) {
          error_propagate(errp, err);
          return;
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 8e7e3bd9e335..24c78aa57537 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -819,6 +819,7 @@ static const VMStateDescription vmstate_aspeed_smc =3D=
- {
- };
-=20
- static Property aspeed_smc_properties[] =3D {
-+    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
-     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 39ee601940e8..88a904849801 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -96,6 +96,9 @@ typedef struct AspeedSMCState {
-     uint8_t r_timings;
-     uint8_t conf_enable_w0;
-=20
-+    /* for DMA support */
-+    uint64_t sdram_base;
-+
-     AspeedSMCFlash *flashes;
- } AspeedSMCState;
-=20
 --=20
 2.7.4
 

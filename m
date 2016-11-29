@@ -1,59 +1,58 @@
-Received: by 10.25.150.194 with SMTP id y185csp2422471lfd;
-        Tue, 29 Nov 2016 08:06:02 -0800 (PST)
-X-Received: by 10.200.42.170 with SMTP id b39mr27031825qta.55.1480435562876;
-        Tue, 29 Nov 2016 08:06:02 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2422591lfd;
+        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
+X-Received: by 10.55.203.22 with SMTP id d22mr27534478qkj.240.1480435574149;
+        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b18si27876279qtc.75.2016.11.29.08.06.02
+        by mx.google.com with ESMTPS id s13si27835944qte.138.2016.11.29.08.06.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 08:06:02 -0800 (PST)
+        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37803 helo=lists.gnu.org)
+Received: from localhost ([::1]:37804 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBkuv-0006NV-FO
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:06:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39763)
+	id 1cBkv6-0006V7-NX
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:06:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40047)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkcj-0007tb-Tg
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:15 -0500
+	(envelope-from <clg@kaod.org>) id 1cBkdF-0008Jx-Hy
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkcf-0005Ww-OV
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:13 -0500
-Received: from 10.mo1.mail-out.ovh.net ([178.32.96.102]:51825)
+	(envelope-from <clg@kaod.org>) id 1cBkdA-0005gH-Aj
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:45 -0500
+Received: from 16.mo1.mail-out.ovh.net ([178.33.104.224]:40955)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkcf-0005Wn-F5
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:09 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkdA-0005fx-1s
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:40 -0500
 Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 24A3D1F889
-	for <qemu-devel@nongnu.org>; Tue, 29 Nov 2016 16:47:08 +0100 (CET)
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 690E81F94F
+	for <qemu-devel@nongnu.org>; Tue, 29 Nov 2016 16:47:38 +0100 (CET)
 Received: from hermes.lab.toulouse-stg.fr.ibm.com
 	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
 	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id 442521200A8;
-	Tue, 29 Nov 2016 16:47:00 +0100 (CET)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id A10C3120092;
+	Tue, 29 Nov 2016 16:47:30 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Nov 2016 16:43:55 +0100
-Message-Id: <1480434248-27138-18-git-send-email-clg@kaod.org>
+Date: Tue, 29 Nov 2016 16:43:59 +0100
+Message-Id: <1480434248-27138-22-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1480434248-27138-1-git-send-email-clg@kaod.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11743980454236031761
+X-Ovh-Tracer-Id: 11752706180572023569
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeejgddvtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 178.32.96.102
-Subject: [Qemu-devel] [PATCH for-2.9 17/30] aspeed/smc: handle SPI flash
- Command mode
+X-Received-From: 178.33.104.224
+Subject: [Qemu-devel] [PATCH for-2.9 21/30] aspeed/smc: add support for DMAs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,255 +71,334 @@ Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mdWdO4q30TEY
+X-TUID: g4GiU8KNIf8L
 
-The Aspeed SMC controllers have a mode (Command mode) in which
-accesses to the flash content are no different than doing MMIOs. The
-controller generates all the necessary commands to load (or store)
-data in memory.
+Some of SMC controllers on the Aspeed SoCs support DMA to access the
+flash modules. It can operate in a normal mode, to copy to or from the
+flash module mapping window, or in a checksum calculation mode, to
+evaluate the best clock settings for reads.
 
-However, accesses are restricted to the segment window assigned the
-the flash module by the controller. This window is defined by the
-Segment Address Register.
+When DMA is enabled, a DMA request is built and passed on to a bottom
+half to handle the memory transaction. The CPU is notified of the
+completion with an IRQ if it was enabled.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/ssi/aspeed_smc.c | 174 ++++++++++++++++++++++++++++++++++++++++++++++=
-++----
- 1 file changed, 162 insertions(+), 12 deletions(-)
+ hw/ssi/aspeed_smc.c | 234 ++++++++++++++++++++++++++++++++++++++++++++++=
+++++--
+ 1 file changed, 227 insertions(+), 7 deletions(-)
 
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 72a44150b0a1..eec087199a22 100644
+index 24c78aa57537..9596ea94a3bc 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -69,6 +69,7 @@
- #define R_CTRL0           (0x10 / 4)
- #define   CTRL_CMD_SHIFT           16
- #define   CTRL_CMD_MASK            0xff
-+#define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
- #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
- #define   CTRL_CMD_MODE_MASK       0x3
- #define     CTRL_READMODE          0x0
-@@ -135,6 +136,16 @@
+@@ -26,8 +26,10 @@
+ #include "hw/sysbus.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/log.h"
++#include "qemu/coroutine.h"
+ #include "include/qemu/error-report.h"
+ #include "exec/address-spaces.h"
++#include "sysemu/dma.h"
+=20
+ #include "hw/ssi/aspeed_smc.h"
+=20
+@@ -104,10 +106,10 @@
+ #define   DMA_CTRL_DELAY_SHIFT  8
+ #define   DMA_CTRL_FREQ_MASK    0xf
+ #define   DMA_CTRL_FREQ_SHIFT   4
+-#define   DMA_CTRL_MODE         (1 << 3)
++#define   DMA_CTRL_CALIB        (1 << 3)
+ #define   DMA_CTRL_CKSUM        (1 << 2)
+-#define   DMA_CTRL_DIR          (1 << 1)
+-#define   DMA_CTRL_EN           (1 << 0)
++#define   DMA_CTRL_WRITE        (1 << 1)
++#define   DMA_CTRL_ENABLE       (1 << 0)
+=20
+ /* DMA Flash Side Address */
+ #define R_DMA_FLASH_ADDR  (0x84 / 4)
+@@ -136,6 +138,14 @@
  #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
  #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
 =20
-+/* Flash opcodes. */
-+#define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
-+#define SPI_OP_WRDI       0x04    /* Write disable */
-+#define SPI_OP_RDSR       0x05    /* Read status register */
-+#define SPI_OP_WREN       0x06    /* Write enable */
++/*
++ * DMA address and size encoding
++ */
++#define DMA_LENGTH(x)           (((x) & ~0xFE000003))
++#define DMA_DRAM_ADDR(base, x)  (((x) & ~0xE0000003) | base)
++#define DMA_FLASH_ADDR(x)       (((x) & ~0xE0000003) | \
++                                 ASPEED_SOC_FMC_FLASH_BASE)
 +
-+/* Used for Macronix and Winbond flashes. */
-+#define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
-+#define SPI_OP_EX4B       0xe9    /* Exit 4-byte mode */
-+
- /*
-  * Default segments mapping addresses and size for each slave per
-  * controller. These can be changed when board is initialized with the
-@@ -357,6 +368,98 @@ static inline bool aspeed_smc_is_writable(const Aspe=
-edSMCFlash *fl)
-     return s->regs[s->r_conf] & (1 << (s->conf_enable_w0 + fl->id));
+ /* Flash opcodes. */
+ #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
+ #define SPI_OP_WRDI       0x04    /* Write disable */
+@@ -629,9 +639,6 @@ static void aspeed_smc_reset(DeviceState *d)
+=20
+     memset(s->regs, 0, sizeof s->regs);
+=20
+-    /* Pretend DMA is done (u-boot initialization) */
+-    s->regs[R_INTR_CTRL] =3D INTR_CTRL_DMA_STATUS;
+-
+     /* Unselect all slaves */
+     for (i =3D 0; i < s->num_cs; ++i) {
+         s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
+@@ -675,6 +682,11 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr=
+ addr, unsigned int size)
+         addr =3D=3D s->r_timings ||
+         addr =3D=3D s->r_ce_ctrl ||
+         addr =3D=3D R_INTR_CTRL ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
+         (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
+es) ||
+         (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
+         return s->regs[addr];
+@@ -685,6 +697,202 @@ static uint64_t aspeed_smc_read(void *opaque, hwadd=
+r addr, unsigned int size)
+     }
  }
 =20
-+static inline int aspeed_smc_flash_cmd(const AspeedSMCFlash *fl)
++typedef struct AspeedDmaCo {
++    AspeedSMCState *s;
++    int len;
++    uint32_t flash_addr;
++    uint32_t dram_addr;
++    uint32_t checksum;
++    bool direction;
++} AspeedDmaCo;
++
++static void coroutine_fn aspeed_smc_dma_done(AspeedDmaCo *dmaco)
 +{
-+    AspeedSMCState *s =3D fl->controller;
-+    int cmd =3D (s->regs[s->r_ctrl0 + fl->id] >> CTRL_CMD_SHIFT) & CTRL_=
-CMD_MASK;
++    AspeedSMCState *s =3D dmaco->s;
 +
-+    /* This is the default value for read mode. In other modes, the
-+     * command should be defined */
-+    if (aspeed_smc_flash_mode(fl) =3D=3D CTRL_READMODE) {
-+        cmd =3D SPI_OP_READ;
++    s->regs[R_INTR_CTRL] |=3D INTR_CTRL_DMA_STATUS;
++    if (s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_EN) {
++        qemu_irq_raise(s->irq);
 +    }
-+
-+    if (!cmd) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no command defined for mode =
-%d\n",
-+                      __func__, aspeed_smc_flash_mode(fl));
-+    }
-+
-+    return cmd;
 +}
 +
-+static inline int aspeed_smc_flash_is_4byte(const AspeedSMCFlash *fl)
++static bool coroutine_fn aspeed_smc_dma_update(AspeedDmaCo *dmaco)
 +{
-+    AspeedSMCState *s =3D fl->controller;
++    AspeedSMCState *s =3D dmaco->s;
++    bool ret;
 +
-+    if (s->ctrl->segments =3D=3D aspeed_segments_spi) {
-+        return s->regs[s->r_ctrl0] & CTRL_AST2400_SPI_4BYTE;
++    /* add locking on R_DMA_CTRL ? */
++    if (s->regs[R_DMA_CTRL] & DMA_CTRL_ENABLE) {
++        s->regs[R_DMA_FLASH_ADDR] =3D dmaco->flash_addr;
++        s->regs[R_DMA_DRAM_ADDR] =3D dmaco->dram_addr;
++        s->regs[R_DMA_LEN] =3D dmaco->len - 4;
++        s->regs[R_DMA_CHECKSUM] =3D dmaco->checksum;
++        ret =3D true;
 +    } else {
-+        return s->regs[s->r_ce_ctrl] & (1 << (CTRL_EXTENDED0 + fl->id));
-+    }
-+}
-+
-+static void aspeed_smc_flash_select(const AspeedSMCFlash *fl)
-+{
-+    AspeedSMCState *s =3D fl->controller;
-+
-+    s->regs[s->r_ctrl0 + fl->id] &=3D ~CTRL_CE_STOP_ACTIVE;
-+    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
-+}
-+
-+static void aspeed_smc_flash_unselect(const AspeedSMCFlash *fl)
-+{
-+    AspeedSMCState *s =3D fl->controller;
-+
-+    s->regs[s->r_ctrl0 + fl->id] |=3D CTRL_CE_STOP_ACTIVE;
-+    qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
-+}
-+
-+static uint32_t aspeed_smc_check_segment_addr(AspeedSMCFlash *fl, uint32=
-_t addr)
-+{
-+    AspeedSMCState *s =3D fl->controller;
-+    AspeedSegments seg;
-+
-+    aspeed_smc_reg_to_segment(s->regs[R_SEG_ADDR0 + fl->id], &seg);
-+    if ((addr & (seg.size - 1)) !=3D addr) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid address 0x%08x for CS%d segment : "
-+                      "[ 0x%"HWADDR_PRIx" - 0x%"HWADDR_PRIx" ]\n",
-+                      s->ctrl->name, addr, fl->id, seg.addr,
-+                      seg.addr + seg.size);
++        ret =3D false;
 +    }
 +
-+    addr &=3D seg.size - 1;
-+    return addr;
++    return ret;
 +}
 +
-+static void aspeed_smc_flash_setup_read(AspeedSMCFlash *fl, uint32_t add=
-r)
++/*
++ * Accumulate the result of the reads in a register. It will be used
++ * later to do timing calibration.
++ */
++static void coroutine_fn aspeed_smc_dma_checksum(void* opaque)
 +{
-+    AspeedSMCState *s =3D fl->controller;
-+    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
++    AspeedDmaCo *dmaco =3D opaque;
++    uint32_t data;
++
++    while (dmaco->len) {
++        /* check for disablement and update register values */
++        if (!aspeed_smc_dma_update(dmaco)) {
++            goto out;
++        }
++
++        cpu_physical_memory_read(dmaco->flash_addr, &data, 4);
++        dmaco->checksum +=3D data;
++        dmaco->flash_addr +=3D 4;
++        dmaco->len -=3D 4;
++    }
++
++    aspeed_smc_dma_done(dmaco);
++out:
++    g_free(dmaco);
++}
++
++static void coroutine_fn aspeed_smc_dma_rw(void* opaque)
++{
++    AspeedDmaCo *dmaco =3D opaque;
++    uint32_t data;
++
++    while (dmaco->len) {
++        /* check for disablement and update register values */
++        if (!aspeed_smc_dma_update(dmaco)) {
++            goto out;
++        }
++
++        if (dmaco->direction) {
++            dma_memory_read(&address_space_memory, dmaco->dram_addr, &da=
+ta, 4);
++            cpu_physical_memory_write(dmaco->flash_addr, &data, 4);
++        } else {
++            cpu_physical_memory_read(dmaco->flash_addr, &data, 4);
++            dma_memory_write(&address_space_memory, dmaco->dram_addr,
++                             &data, 4);
++        }
++
++        dmaco->flash_addr +=3D 4;
++        dmaco->dram_addr +=3D 4;
++        dmaco->len -=3D 4;
++    }
++
++    aspeed_smc_dma_done(dmaco);
++out:
++    g_free(dmaco);
++}
++
++
++static void aspeed_smc_dma_stop(AspeedSMCState *s)
++{
++    /*
++     * When the DMA is disabled, INTR_CTRL_DMA_STATUS=3D0 means the
++     * engine is idle
++     */
++    s->regs[R_INTR_CTRL] &=3D ~INTR_CTRL_DMA_STATUS;
++    s->regs[R_DMA_CHECKSUM] =3D 0x0;
++    s->regs[R_DMA_FLASH_ADDR] =3D 0;
++    s->regs[R_DMA_DRAM_ADDR] =3D 0;
++    s->regs[R_DMA_LEN] =3D 0;
 +
 +    /*
-+     * To be checked: I am not sure the Aspeed SPI controller needs to
-+     * enable writes when running in READ/FREAD command mode
++     * Lower DMA irq even in any case. The IRQ control register could
++     * have been cleared before disabling the DMA.
 +     */
-+
-+    /* access can not exceed CS segment */
-+    addr =3D aspeed_smc_check_segment_addr(fl, addr);
-+
-+    /* TODO: do we have to send 4BYTE each time ? */
-+    if (aspeed_smc_flash_is_4byte(fl)) {
-+        ssi_transfer(s->spi, SPI_OP_EN4B);
-+    }
-+
-+    ssi_transfer(s->spi, cmd);
-+
-+    if (aspeed_smc_flash_is_4byte(fl)) {
-+        ssi_transfer(s->spi, (addr >> 24) & 0xff);
-+    }
-+    ssi_transfer(s->spi, (addr >> 16) & 0xff);
-+    ssi_transfer(s->spi, (addr >> 8) & 0xff);
-+    ssi_transfer(s->spi, (addr & 0xff));
++    qemu_irq_lower(s->irq);
 +}
 +
- static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigne=
-d size)
- {
-     AspeedSMCFlash *fl =3D opaque;
-@@ -364,19 +467,55 @@ static uint64_t aspeed_smc_flash_read(void *opaque,=
- hwaddr addr, unsigned size)
-     uint64_t ret =3D 0;
-     int i;
-=20
--    if (aspeed_smc_is_usermode(fl)) {
-+    switch (aspeed_smc_flash_mode(fl)) {
-+    case CTRL_USERMODE:
-         for (i =3D 0; i < size; i++) {
-             ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
-         }
--    } else {
--        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
--                      __func__);
--        ret =3D -1;
-+        break;
-+    case CTRL_READMODE:
-+    case CTRL_FREADMODE:
-+        aspeed_smc_flash_select(fl);
-+        aspeed_smc_flash_setup_read(fl, addr);
++typedef struct AspeedDmaRequest {
++    Coroutine *co;
++    QEMUBH *bh;
++} AspeedDmaRequest;
 +
-+        for (i =3D 0; i < size; i++) {
-+            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
-+        }
-+
-+        aspeed_smc_flash_unselect(fl);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
-+                      __func__, aspeed_smc_flash_mode(fl));
-     }
-=20
-     return ret;
- }
-=20
-+static void aspeed_smc_flash_setup_write(AspeedSMCFlash *fl, uint32_t ad=
-dr)
++static void aspeed_smc_dma_run(void *opaque)
 +{
-+    AspeedSMCState *s =3D fl->controller;
-+    uint8_t cmd =3D aspeed_smc_flash_cmd(fl);
++    AspeedDmaRequest *dmareq =3D opaque;
 +
-+    /* Flash access can not exceed CS segment */
-+    addr =3D aspeed_smc_check_segment_addr(fl, addr);
-+
-+    /* TODO: do we have to send 4BYTE each time ? */
-+    if (aspeed_smc_flash_is_4byte(fl)) {
-+        ssi_transfer(s->spi, SPI_OP_EN4B);
-+    }
-+
-+    ssi_transfer(s->spi, SPI_OP_WREN);
-+    ssi_transfer(s->spi, cmd);
-+
-+    if (aspeed_smc_flash_is_4byte(fl)) {
-+        ssi_transfer(s->spi, (addr >> 24) & 0xff);
-+    }
-+    ssi_transfer(s->spi, (addr >> 16) & 0xff);
-+    ssi_transfer(s->spi, (addr >> 8) & 0xff);
-+    ssi_transfer(s->spi, (addr & 0xff));
++    qemu_coroutine_enter(dmareq->co);
++    qemu_bh_delete(dmareq->bh);
++    g_free(dmareq);
 +}
 +
- static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t d=
-ata,
-                            unsigned size)
- {
-@@ -390,14 +529,25 @@ static void aspeed_smc_flash_write(void *opaque, hw=
-addr addr, uint64_t data,
-         return;
-     }
-=20
--    if (!aspeed_smc_is_usermode(fl)) {
--        qemu_log_mask(LOG_UNIMP, "%s: usermode not implemented\n",
--                      __func__);
--        return;
--    }
-+    switch (aspeed_smc_flash_mode(fl)) {
-+    case CTRL_USERMODE:
-+        for (i =3D 0; i < size; i++) {
-+            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
-+        }
-+        break;
-+    case CTRL_WRITEMODE:
-+        aspeed_smc_flash_select(fl);
-+        aspeed_smc_flash_setup_write(fl, addr);
++static void aspeed_smc_dma_schedule(Coroutine *co)
++{
++    AspeedDmaRequest *dmareq;
 +
-+        for (i =3D 0; i < size; i++) {
-+            ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
++    dmareq =3D g_new0(AspeedDmaRequest, 1);
++
++    dmareq->co =3D co;
++    dmareq->bh =3D qemu_bh_new(aspeed_smc_dma_run, dmareq);
++    qemu_bh_schedule(dmareq->bh);
++}
++
++static void aspeed_smc_dma_start(void *opaque)
++{
++    AspeedSMCState *s =3D opaque;
++    AspeedDmaCo *dmaco;
++    Coroutine *co;
++
++    /* freed in the coroutine */
++    dmaco =3D g_new0(AspeedDmaCo, 1);
++
++    /* A DMA transaction has a minimum of 4 bytes */
++    dmaco->len        =3D s->regs[R_DMA_LEN] + 4;
++    dmaco->flash_addr =3D s->regs[R_DMA_FLASH_ADDR];
++    dmaco->dram_addr  =3D s->regs[R_DMA_DRAM_ADDR];
++    dmaco->direction  =3D (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE);
++    dmaco->s          =3D s;
++
++    if (s->regs[R_DMA_CTRL] & DMA_CTRL_CKSUM) {
++        co =3D qemu_coroutine_create(aspeed_smc_dma_checksum, dmaco);
++    } else {
++        co =3D qemu_coroutine_create(aspeed_smc_dma_rw, dmaco);
++    }
++
++    aspeed_smc_dma_schedule(co);
++}
++
++/*
++ * This is to run one DMA at a time. When INTR_CTRL_DMA_STATUS becomes
++ * 1, the DMA has completed and a new DMA can start even if the result
++ * of the previous was not collected.
++ */
++static bool aspeed_smc_dma_in_progress(AspeedSMCState *s)
++{
++    bool ret =3D (s->regs[R_DMA_CTRL] & DMA_CTRL_ENABLE) &&
++        !(s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_STATUS);
++    return ret;
++}
++
++static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
++{
++    if (dma_ctrl & DMA_CTRL_ENABLE) {
++        /* add locking on R_DMA_CTRL ? */
++        if (aspeed_smc_dma_in_progress(s)) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA in progress\n",
++                          __func__);
++            return;
 +        }
++
++        s->regs[R_DMA_CTRL] =3D dma_ctrl;
++
++        aspeed_smc_dma_start(s);
++    } else {
++        s->regs[R_DMA_CTRL] =3D dma_ctrl;
++
++        aspeed_smc_dma_stop(s);
++    }
++}
++
+ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+                              unsigned int size)
+ {
+@@ -715,6 +923,16 @@ static void aspeed_smc_write(void *opaque, hwaddr ad=
+dr, uint64_t data,
+         if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
+             aspeed_smc_flash_set_segment(s, cs, value);
+         }
++    } else if (addr =3D=3D R_INTR_CTRL) {
++        s->regs[addr] =3D value;
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) {
++        aspeed_smc_dma_ctrl(s, value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) {
++        s->regs[addr] =3D DMA_DRAM_ADDR(s->sdram_base, value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) {
++        s->regs[addr] =3D DMA_FLASH_ADDR(value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) {
++        s->regs[addr] =3D DMA_LENGTH(value);
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+                       __func__, addr);
+@@ -747,6 +965,9 @@ static void aspeed_smc_realize(DeviceState *dev, Erro=
+r **errp)
+     s->r_timings =3D s->ctrl->r_timings;
+     s->conf_enable_w0 =3D s->ctrl->conf_enable_w0;
 =20
--    for (i =3D 0; i < size; i++) {
--        ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
-+        aspeed_smc_flash_unselect(fl);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid flash mode %d\n",
-+                      __func__, aspeed_smc_flash_mode(fl));
-     }
- }
++    /* DMA irq */
++    sysbus_init_irq(sbd, &s->irq);
++
+     /* Enforce some real HW limits */
+     if (s->num_cs > s->ctrl->max_slaves) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
+@@ -757,7 +978,6 @@ static void aspeed_smc_realize(DeviceState *dev, Erro=
+r **errp)
+     s->spi =3D ssi_create_bus(dev, "spi");
+=20
+     /* Setup cs_lines for slaves */
+-    sysbus_init_irq(sbd, &s->irq);
+     s->cs_lines =3D g_new0(qemu_irq, s->num_cs);
+     ssi_auto_connect_slaves(dev, s->cs_lines, s->spi);
 =20
 --=20
 2.7.4

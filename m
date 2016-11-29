@@ -1,58 +1,59 @@
-Received: by 10.25.150.194 with SMTP id y185csp2418209lfd;
-        Tue, 29 Nov 2016 07:58:52 -0800 (PST)
-X-Received: by 10.200.40.55 with SMTP id 52mr28124464qtq.283.1480435131935;
-        Tue, 29 Nov 2016 07:58:51 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2418222lfd;
+        Tue, 29 Nov 2016 07:58:54 -0800 (PST)
+X-Received: by 10.237.37.23 with SMTP id v23mr24275350qtc.168.1480435133999;
+        Tue, 29 Nov 2016 07:58:53 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n186si35229399qkd.140.2016.11.29.07.58.51
+        by mx.google.com with ESMTPS id l14si35244142qkl.13.2016.11.29.07.58.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 07:58:51 -0800 (PST)
+        Tue, 29 Nov 2016 07:58:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37758 helo=lists.gnu.org)
+Received: from localhost ([::1]:37759 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBkny-00013S-MB
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 10:58:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39517)
+	id 1cBko0-00015C-Pq
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 10:58:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39012)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkbz-0007K5-Hu
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:30 -0500
+	(envelope-from <clg@kaod.org>) id 1cBkbG-0006hQ-6F
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:45:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkbu-0005CY-1Y
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:27 -0500
-Received: from 18.mo1.mail-out.ovh.net ([46.105.35.72]:39211)
+	(envelope-from <clg@kaod.org>) id 1cBkbB-0004jz-0S
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:45:41 -0500
+Received: from 15.mo1.mail-out.ovh.net ([188.165.38.232]:49240)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkbt-0005Bp-Rf
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:46:21 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkbA-0004j4-QF
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:45:36 -0500
 Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 982471F8BD
-	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:46:20 +0100 (CET)
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 10EEA1F889
+	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:45:35 +0100 (CET)
 Received: from hermes.lab.toulouse-stg.fr.ibm.com
 	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
 	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id 00BFF120094;
-	Tue, 29 Nov 2016 16:46:12 +0100 (CET)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id 7EFDA120084;
+	Tue, 29 Nov 2016 16:45:27 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Nov 2016 16:43:49 +0100
-Message-Id: <1480434248-27138-12-git-send-email-clg@kaod.org>
+Date: Tue, 29 Nov 2016 16:43:43 +0100
+Message-Id: <1480434248-27138-6-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1480434248-27138-1-git-send-email-clg@kaod.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11730751132256078609
+X-Ovh-Tracer-Id: 11717803281956506385
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeejgddvtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.35.72
-Subject: [Qemu-arm] [PATCH for-2.9 11/30] aspeed/scu: fix SCU region size
+X-Received-From: 188.165.38.232
+Subject: [Qemu-arm] [PATCH for-2.9 05/30] aspeed: attach the second SPI
+ controller object to the SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,28 +71,28 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HQEy4RoVRmKj
+X-TUID: VjlZQMGbC6Am
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
 Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/misc/aspeed_scu.c | 2 +-
+ hw/arm/aspeed_soc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 34e86385d837..95022d3607ad 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -86,7 +86,7 @@
- #define BMC_DEV_ID           TO_REG(0x1A4)
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 3a6b91f14b45..82e27129a900 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -124,7 +124,7 @@ static void aspeed_soc_init(Object *obj)
+     for (i =3D 0; i < sc->info->spis_num; i++) {
+         object_initialize(&s->spi[i], sizeof(s->spi[i]),
+                           sc->info->spi_typename[i]);
+-        object_property_add_child(obj, "spi", OBJECT(&s->spi[i]), NULL);
++        object_property_add_child(obj, "spi[*]", OBJECT(&s->spi[i]), NUL=
+L);
+         qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
+     }
 =20
- #define PROT_KEY_UNLOCK 0x1688A8A8
--#define SCU_IO_REGION_SIZE 0x20000
-+#define SCU_IO_REGION_SIZE 0x1000
-=20
- static const uint32_t ast2400_a0_resets[ASPEED_SCU_NR_REGS] =3D {
-      [SYS_RST_CTRL]    =3D 0xFFCFFEDCU,
 --=20
 2.7.4
 

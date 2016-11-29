@@ -1,59 +1,59 @@
-Received: by 10.25.150.194 with SMTP id y185csp2426573lfd;
-        Tue, 29 Nov 2016 08:13:04 -0800 (PST)
-X-Received: by 10.233.239.204 with SMTP id d195mr23421313qkg.313.1480435984395;
-        Tue, 29 Nov 2016 08:13:04 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2427415lfd;
+        Tue, 29 Nov 2016 08:14:41 -0800 (PST)
+X-Received: by 10.233.216.71 with SMTP id u68mr27430309qkf.161.1480436080947;
+        Tue, 29 Nov 2016 08:14:40 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u62si35200050qkd.232.2016.11.29.08.13.04
+        by mx.google.com with ESMTPS id f67si35279739qkj.69.2016.11.29.08.14.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 08:13:04 -0800 (PST)
+        Tue, 29 Nov 2016 08:14:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37843 helo=lists.gnu.org)
+Received: from localhost ([::1]:37854 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBl1j-0004Xf-4c
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:13:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40277)
+	id 1cBl3H-0005tT-HV
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:14:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkdi-0000Im-I2
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:48:15 -0500
+	(envelope-from <clg@kaod.org>) id 1cBkdI-0008NG-VW
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkde-0005oO-G5
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:48:14 -0500
-Received: from 11.mo1.mail-out.ovh.net ([188.165.48.29]:52315)
+	(envelope-from <clg@kaod.org>) id 1cBkdH-0005iC-QG
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:49 -0500
+Received: from 16.mo1.mail-out.ovh.net ([178.33.104.224]:51073)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkde-0005oD-9t
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:48:10 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkdH-0005hy-Fn
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 10:47:47 -0500
 Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id BCC161F93D
-	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:48:08 +0100 (CET)
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 34A5D1F922
+	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 16:47:46 +0100 (CET)
 Received: from hermes.lab.toulouse-stg.fr.ibm.com
 	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
 	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id 2F7F51200B6;
-	Tue, 29 Nov 2016 16:48:01 +0100 (CET)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id 45A7C1200B4;
+	Tue, 29 Nov 2016 16:47:38 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Nov 2016 16:44:03 +0100
-Message-Id: <1480434248-27138-26-git-send-email-clg@kaod.org>
+Date: Tue, 29 Nov 2016 16:44:00 +0100
+Message-Id: <1480434248-27138-23-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1480434248-27138-1-git-send-email-clg@kaod.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11761150430051404561
+X-Ovh-Tracer-Id: 11754676504539794193
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeejgddvtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 188.165.48.29
-Subject: [Qemu-arm] [PATCH for-2.9 25/30] block: add a model option for MTD
- devices
+X-Received-From: 178.33.104.224
+Subject: [Qemu-arm] [PATCH for-2.9 22/30] aspeed/smc: handle dummy bytes
+ when doing fast reads
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,108 +71,162 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UwnnzVXluuI8
+X-TUID: 09JdMd/dL/qM
 
-This could be used to define the flash model to use on some boards
-definitions.
+When doing fast read, a certain amount of dummy bytes should be sent
+before the read. This number is configurable in the controler CE0
+Control Register and needs to be modeled using fake transfers the
+flash module.
+
+When the controller is configured for Command mode, the SPI command
+used to do the read is stored in the CE0 control register but, in User
+mode, we need to snoop into the flow of bytes to catch the command. It
+should be the first byte after CS select.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- blockdev.c                | 12 ++++++++++++
- include/sysemu/blockdev.h |  1 +
- qemu-options.hx           |  4 +++-
- 3 files changed, 16 insertions(+), 1 deletion(-)
+ hw/ssi/aspeed_smc.c         | 58 ++++++++++++++++++++++++++++++++++++++-=
+------
+ include/hw/ssi/aspeed_smc.h |  1 +
+ 2 files changed, 51 insertions(+), 8 deletions(-)
 
-diff --git a/blockdev.c b/blockdev.c
-index 245e1e1d177a..bcc99365b86c 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -742,6 +742,10 @@ QemuOptsList qemu_legacy_drive_opts =3D {
-             .type =3D QEMU_OPT_STRING,
-             .help =3D "pci address (virtio only)",
-         },{
-+            .name =3D "model",
-+            .type =3D QEMU_OPT_STRING,
-+            .help =3D "flash model (mtd only)",
-+        },{
-             .name =3D "serial",
-             .type =3D QEMU_OPT_STRING,
-             .help =3D "disk serial number",
-@@ -790,6 +794,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInterfa=
-ceType block_default_type)
-     bool read_only =3D false;
-     bool copy_on_read;
-     const char *serial;
-+    const char *model;
-     const char *filename;
-     Error *local_err =3D NULL;
-     int i;
-@@ -1076,6 +1081,12 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInte=
-rfaceType block_default_type)
-         qdict_put(bs_opts, "rerror", qstring_from_str(rerror));
-     }
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 9596ea94a3bc..733fd8b09c06 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -71,7 +71,9 @@
+ #define R_CTRL0           (0x10 / 4)
+ #define   CTRL_CMD_SHIFT           16
+ #define   CTRL_CMD_MASK            0xff
++#define   CTRL_DUMMY_HIGH_SHIFT    14
+ #define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
++#define   CTRL_DUMMY_LOW_SHIFT     6 /* 2 bits [7:6] */
+ #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
+ #define   CTRL_CMD_MODE_MASK       0x3
+ #define     CTRL_READMODE          0x0
+@@ -151,6 +153,7 @@
+ #define SPI_OP_WRDI       0x04    /* Write disable */
+ #define SPI_OP_RDSR       0x05    /* Read status register */
+ #define SPI_OP_WREN       0x06    /* Write enable */
++#define SPI_OP_READ_FAST  0x0b    /* Read data bytes (high frequency) */
 =20
-+    model =3D qemu_opt_get(legacy_opts, "model");
-+    if (model && type !=3D IF_MTD) {
-+        error_report("model is not supported by this bus type");
-+        goto fail;
-+    }
+ /* Used for Macronix and Winbond flashes. */
+ #define SPI_OP_EN4B       0xb7    /* Enter 4-byte mode */
+@@ -510,6 +513,12 @@ static void aspeed_smc_flash_setup_read(AspeedSMCFla=
+sh *fl, uint32_t addr)
+     /* access can not exceed CS segment */
+     addr =3D aspeed_smc_check_segment_addr(fl, addr);
+=20
++    /*
++     * Remember command as we might need to send dummy bytes before
++     * reading data
++     */
++    fl->cmd =3D cmd;
 +
-     /* Actual block device init: Functionality shared with blockdev-add =
-*/
-     blk =3D blockdev_init(filename, bs_opts, &local_err);
-     bs_opts =3D NULL;
-@@ -1102,6 +1113,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInter=
-faceType block_default_type)
-     dinfo->unit =3D unit_id;
-     dinfo->devaddr =3D devaddr;
-     dinfo->serial =3D g_strdup(serial);
-+    dinfo->model =3D g_strdup(model);
+     /* TODO: do we have to send 4BYTE each time ? */
+     if (aspeed_smc_flash_is_4byte(fl)) {
+         ssi_transfer(s->spi, SPI_OP_EN4B);
+@@ -525,27 +534,50 @@ static void aspeed_smc_flash_setup_read(AspeedSMCFl=
+ash *fl, uint32_t addr)
+     ssi_transfer(s->spi, (addr & 0xff));
+ }
 =20
-     blk_set_legacy_dinfo(blk, dinfo);
++static int aspeed_smc_flash_dummies(const AspeedSMCFlash *fl)
++{
++    AspeedSMCState *s =3D fl->controller;
++    uint32_t r_ctrl0 =3D s->regs[s->r_ctrl0 + fl->id];
++    uint32_t dummy_high =3D (r_ctrl0 >> CTRL_DUMMY_HIGH_SHIFT) & 0x1;
++    uint32_t dummy_low =3D (r_ctrl0 >> CTRL_DUMMY_LOW_SHIFT) & 0x3;
++
++    return ((dummy_high << 2) | dummy_low) * 8;
++}
++
++static uint64_t aspeed_smc_flash_do_read(AspeedSMCFlash *fl, unsigned si=
+ze)
++{
++    AspeedSMCState *s =3D fl->controller;
++    uint64_t ret =3D 0;
++    int i;
++
++    if (fl->cmd =3D=3D SPI_OP_READ_FAST) {
++        for (i =3D 0; i < aspeed_smc_flash_dummies(fl); i++) {
++            ssi_transfer(s->spi, 0x0);
++        }
++    }
++    fl->cmd =3D 0;
++
++    for (i =3D 0; i < size; i++) {
++        ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
++    }
++    return ret;
++}
++
+ static uint64_t aspeed_smc_flash_read(void *opaque, hwaddr addr, unsigne=
+d size)
+ {
+     AspeedSMCFlash *fl =3D opaque;
+-    const AspeedSMCState *s =3D fl->controller;
+     uint64_t ret =3D 0;
+-    int i;
 =20
-diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
-index 16432f350805..10c66e5e86a4 100644
---- a/include/sysemu/blockdev.h
-+++ b/include/sysemu/blockdev.h
-@@ -39,6 +39,7 @@ struct DriveInfo {
-     int cyls, heads, secs, trans;
-     QemuOpts *opts;
-     char *serial;
-+    char *model;
-     QTAILQ_ENTRY(DriveInfo) next;
- };
+     switch (aspeed_smc_flash_mode(fl)) {
+     case CTRL_USERMODE:
+-        for (i =3D 0; i < size; i++) {
+-            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+-        }
++        ret =3D aspeed_smc_flash_do_read(fl, size);
+         break;
+     case CTRL_READMODE:
+     case CTRL_FREADMODE:
+         aspeed_smc_flash_select(fl);
+         aspeed_smc_flash_setup_read(fl, addr);
 =20
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 4a5b29f349f7..16add85bd0f5 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -517,7 +517,7 @@ DEF("drive", HAS_ARG, QEMU_OPTION_drive,
-     "-drive [file=3Dfile][,if=3Dtype][,bus=3Dn][,unit=3Dm][,media=3Dd][,=
-index=3Di]\n"
-     "       [,cyls=3Dc,heads=3Dh,secs=3Ds[,trans=3Dt]][,snapshot=3Don|of=
-f]\n"
-     "       [,cache=3Dwritethrough|writeback|none|directsync|unsafe][,fo=
-rmat=3Df]\n"
--    "       [,serial=3Ds][,addr=3DA][,rerror=3Dignore|stop|report]\n"
-+    "       [,serial=3Ds][,model=3Dm][,addr=3DA][,rerror=3Dignore|stop|r=
-eport]\n"
-     "       [,werror=3Dignore|stop|report|enospc][,id=3Dname][,aio=3Dthr=
-eads|native]\n"
-     "       [,readonly=3Don|off][,copy-on-read=3Don|off]\n"
-     "       [,discard=3Dignore|unmap][,detect-zeroes=3Don|off|unmap]\n"
-@@ -570,6 +570,8 @@ the format.  Can be used to specify format=3Draw to a=
-void interpreting
- an untrusted format header.
- @item serial=3D@var{serial}
- This option specifies the serial number to assign to the device.
-+@item model=3D@var{model}
-+This option specifies the model to use to create a flash device (if=3Dmt=
-d only).
- @item addr=3D@var{addr}
- Specify the controller's PCI address (if=3Dvirtio only).
- @item werror=3D@var{action},rerror=3D@var{action}
+-        for (i =3D 0; i < size; i++) {
+-            ret |=3D ssi_transfer(s->spi, 0x0) << (8 * i);
+-        }
++        ret =3D aspeed_smc_flash_do_read(fl, size);
+=20
+         aspeed_smc_flash_unselect(fl);
+         break;
+@@ -596,6 +628,15 @@ static void aspeed_smc_flash_write(void *opaque, hwa=
+ddr addr, uint64_t data,
+=20
+     switch (aspeed_smc_flash_mode(fl)) {
+     case CTRL_USERMODE:
++        /*
++         * First write after chip select is the chip command. Remember
++         * it as we might need to send dummy bytes before reading
++         * data. It will be reseted when the chip is unselected.
++         */
++        if (!fl->cmd) {
++            fl->cmd =3D data & 0xff;
++        }
++
+         for (i =3D 0; i < size; i++) {
+             ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+         }
+@@ -629,6 +670,7 @@ static const MemoryRegionOps aspeed_smc_flash_ops =3D=
+ {
+ static void aspeed_smc_flash_update_cs(AspeedSMCFlash *fl)
+ {
+     AspeedSMCState *s =3D fl->controller;
++    fl->cmd =3D 0;
+     qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
+ }
+=20
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 88a904849801..3ae0a369073d 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -52,6 +52,7 @@ typedef struct AspeedSMCFlash {
+=20
+     uint8_t id;
+     uint32_t size;
++    uint8_t cmd;
+=20
+     MemoryRegion mmio;
+     DeviceState *flash;
 --=20
 2.7.4
 

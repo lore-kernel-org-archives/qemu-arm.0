@@ -1,58 +1,59 @@
-Received: by 10.25.150.194 with SMTP id y185csp2422591lfd;
-        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
-X-Received: by 10.55.203.22 with SMTP id d22mr27534478qkj.240.1480435574149;
-        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2425193lfd;
+        Tue, 29 Nov 2016 08:10:38 -0800 (PST)
+X-Received: by 10.55.72.86 with SMTP id v83mr24391246qka.262.1480435838652;
+        Tue, 29 Nov 2016 08:10:38 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s13si27835944qte.138.2016.11.29.08.06.13
+        by mx.google.com with ESMTPS id t85si35206431qkl.237.2016.11.29.08.10.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 08:06:14 -0800 (PST)
+        Tue, 29 Nov 2016 08:10:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37804 helo=lists.gnu.org)
+Received: from localhost ([::1]:37825 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBkv6-0006V7-NX
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:06:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40047)
+	id 1cBkzN-0001pD-Aq
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 11:10:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40249)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkdF-0008Jx-Hy
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:50 -0500
+	(envelope-from <clg@kaod.org>) id 1cBkde-0000F0-UA
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:48:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1cBkdA-0005gH-Aj
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:45 -0500
-Received: from 16.mo1.mail-out.ovh.net ([178.33.104.224]:40955)
+	(envelope-from <clg@kaod.org>) id 1cBkda-0005nP-03
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:48:10 -0500
+Received: from 20.mo1.mail-out.ovh.net ([188.165.45.168]:55301)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkdA-0005fx-1s
-	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:47:40 -0500
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cBkdZ-0005n2-QC
+	for qemu-devel@nongnu.org; Tue, 29 Nov 2016 10:48:05 -0500
 Received: from player795.ha.ovh.net (b9.ovh.net [213.186.33.59])
-	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 690E81F94F
-	for <qemu-devel@nongnu.org>; Tue, 29 Nov 2016 16:47:38 +0100 (CET)
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 2F64A1F974
+	for <qemu-devel@nongnu.org>; Tue, 29 Nov 2016 16:48:01 +0100 (CET)
 Received: from hermes.lab.toulouse-stg.fr.ibm.com
 	(deibp9eh1--blueice2n7.emea.ibm.com [195.212.29.169])
 	(Authenticated sender: clg@kaod.org)
-	by player795.ha.ovh.net (Postfix) with ESMTPSA id A10C3120092;
-	Tue, 29 Nov 2016 16:47:30 +0100 (CET)
+	by player795.ha.ovh.net (Postfix) with ESMTPSA id 944AE12007E;
+	Tue, 29 Nov 2016 16:47:53 +0100 (CET)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 Nov 2016 16:43:59 +0100
-Message-Id: <1480434248-27138-22-git-send-email-clg@kaod.org>
+Date: Tue, 29 Nov 2016 16:44:02 +0100
+Message-Id: <1480434248-27138-25-git-send-email-clg@kaod.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1480434248-27138-1-git-send-email-clg@kaod.org>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 11752706180572023569
+X-Ovh-Tracer-Id: 11759180103287343889
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeejgddvtdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 178.33.104.224
-Subject: [Qemu-devel] [PATCH for-2.9 21/30] aspeed/smc: add support for DMAs
+X-Received-From: 188.165.45.168
+Subject: [Qemu-devel] [PATCH for-2.9 24/30] aspeed: use first SPI flash as a
+ boot ROM
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,335 +72,96 @@ Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g4GiU8KNIf8L
+X-TUID: hOuD3Q66MDtU
 
-Some of SMC controllers on the Aspeed SoCs support DMA to access the
-flash modules. It can operate in a normal mode, to copy to or from the
-flash module mapping window, or in a checksum calculation mode, to
-evaluate the best clock settings for reads.
-
-When DMA is enabled, a DMA request is built and passed on to a bottom
-half to handle the memory transaction. The CPU is notified of the
-completion with an IRQ if it was enabled.
+Fill a ROM region with the flash content to support U-Boot. This is a
+little hacky but until we can boot from a MMIO region, it seems
+difficult to do anything else.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 ---
- hw/ssi/aspeed_smc.c | 234 ++++++++++++++++++++++++++++++++++++++++++++++=
-++++--
- 1 file changed, 227 insertions(+), 7 deletions(-)
+ hw/arm/aspeed.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 24c78aa57537..9596ea94a3bc 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -26,8 +26,10 @@
- #include "hw/sysbus.h"
- #include "sysemu/sysemu.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 40c13838fb2d..a92c2f1c362b 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -20,6 +20,8 @@
  #include "qemu/log.h"
-+#include "qemu/coroutine.h"
- #include "include/qemu/error-report.h"
- #include "exec/address-spaces.h"
-+#include "sysemu/dma.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
++#include "hw/loader.h"
++#include "qemu/error-report.h"
 =20
- #include "hw/ssi/aspeed_smc.h"
+ static struct arm_boot_info aspeed_board_binfo =3D {
+     .board_id =3D -1, /* device-tree-only board */
+@@ -104,6 +106,28 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+     },
+ };
 =20
-@@ -104,10 +106,10 @@
- #define   DMA_CTRL_DELAY_SHIFT  8
- #define   DMA_CTRL_FREQ_MASK    0xf
- #define   DMA_CTRL_FREQ_SHIFT   4
--#define   DMA_CTRL_MODE         (1 << 3)
-+#define   DMA_CTRL_CALIB        (1 << 3)
- #define   DMA_CTRL_CKSUM        (1 << 2)
--#define   DMA_CTRL_DIR          (1 << 1)
--#define   DMA_CTRL_EN           (1 << 0)
-+#define   DMA_CTRL_WRITE        (1 << 1)
-+#define   DMA_CTRL_ENABLE       (1 << 0)
-=20
- /* DMA Flash Side Address */
- #define R_DMA_FLASH_ADDR  (0x84 / 4)
-@@ -136,6 +138,14 @@
- #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
- #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
-=20
-+/*
-+ * DMA address and size encoding
-+ */
-+#define DMA_LENGTH(x)           (((x) & ~0xFE000003))
-+#define DMA_DRAM_ADDR(base, x)  (((x) & ~0xE0000003) | base)
-+#define DMA_FLASH_ADDR(x)       (((x) & ~0xE0000003) | \
-+                                 ASPEED_SOC_FMC_FLASH_BASE)
++#define FIRMWARE_ADDR 0x0
 +
- /* Flash opcodes. */
- #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
- #define SPI_OP_WRDI       0x04    /* Write disable */
-@@ -629,9 +639,6 @@ static void aspeed_smc_reset(DeviceState *d)
-=20
-     memset(s->regs, 0, sizeof s->regs);
-=20
--    /* Pretend DMA is done (u-boot initialization) */
--    s->regs[R_INTR_CTRL] =3D INTR_CTRL_DMA_STATUS;
--
-     /* Unselect all slaves */
-     for (i =3D 0; i < s->num_cs; ++i) {
-         s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
-@@ -675,6 +682,11 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr=
- addr, unsigned int size)
-         addr =3D=3D s->r_timings ||
-         addr =3D=3D s->r_ce_ctrl ||
-         addr =3D=3D R_INTR_CTRL ||
-+        (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
-+        (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) ||
-+        (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) ||
-+        (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) ||
-+        (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
-         (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
-es) ||
-         (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
-         return s->regs[addr];
-@@ -685,6 +697,202 @@ static uint64_t aspeed_smc_read(void *opaque, hwadd=
-r addr, unsigned int size)
-     }
- }
-=20
-+typedef struct AspeedDmaCo {
-+    AspeedSMCState *s;
-+    int len;
-+    uint32_t flash_addr;
-+    uint32_t dram_addr;
-+    uint32_t checksum;
-+    bool direction;
-+} AspeedDmaCo;
-+
-+static void coroutine_fn aspeed_smc_dma_done(AspeedDmaCo *dmaco)
++static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_siz=
+e,
++                           Error **errp)
 +{
-+    AspeedSMCState *s =3D dmaco->s;
++    BlockBackend *blk =3D blk_by_legacy_dinfo(dinfo);
++    uint8_t *storage;
 +
-+    s->regs[R_INTR_CTRL] |=3D INTR_CTRL_DMA_STATUS;
-+    if (s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_EN) {
-+        qemu_irq_raise(s->irq);
-+    }
-+}
-+
-+static bool coroutine_fn aspeed_smc_dma_update(AspeedDmaCo *dmaco)
-+{
-+    AspeedSMCState *s =3D dmaco->s;
-+    bool ret;
-+
-+    /* add locking on R_DMA_CTRL ? */
-+    if (s->regs[R_DMA_CTRL] & DMA_CTRL_ENABLE) {
-+        s->regs[R_DMA_FLASH_ADDR] =3D dmaco->flash_addr;
-+        s->regs[R_DMA_DRAM_ADDR] =3D dmaco->dram_addr;
-+        s->regs[R_DMA_LEN] =3D dmaco->len - 4;
-+        s->regs[R_DMA_CHECKSUM] =3D dmaco->checksum;
-+        ret =3D true;
-+    } else {
-+        ret =3D false;
++    if (rom_size > blk_getlength(blk)) {
++        rom_size =3D blk_getlength(blk);
 +    }
 +
-+    return ret;
-+}
-+
-+/*
-+ * Accumulate the result of the reads in a register. It will be used
-+ * later to do timing calibration.
-+ */
-+static void coroutine_fn aspeed_smc_dma_checksum(void* opaque)
-+{
-+    AspeedDmaCo *dmaco =3D opaque;
-+    uint32_t data;
-+
-+    while (dmaco->len) {
-+        /* check for disablement and update register values */
-+        if (!aspeed_smc_dma_update(dmaco)) {
-+            goto out;
-+        }
-+
-+        cpu_physical_memory_read(dmaco->flash_addr, &data, 4);
-+        dmaco->checksum +=3D data;
-+        dmaco->flash_addr +=3D 4;
-+        dmaco->len -=3D 4;
++    storage =3D g_new0(uint8_t, rom_size);
++    if (blk_pread(blk, 0, storage, rom_size) < 0) {
++        error_setg(errp, "failed to read the initial flash content");
++        return;
 +    }
 +
-+    aspeed_smc_dma_done(dmaco);
-+out:
-+    g_free(dmaco);
++    rom_add_blob_fixed("aspeed.boot_rom", storage, rom_size, addr);
++    g_free(storage);
 +}
 +
-+static void coroutine_fn aspeed_smc_dma_rw(void* opaque)
-+{
-+    AspeedDmaCo *dmaco =3D opaque;
-+    uint32_t data;
-+
-+    while (dmaco->len) {
-+        /* check for disablement and update register values */
-+        if (!aspeed_smc_dma_update(dmaco)) {
-+            goto out;
-+        }
-+
-+        if (dmaco->direction) {
-+            dma_memory_read(&address_space_memory, dmaco->dram_addr, &da=
-ta, 4);
-+            cpu_physical_memory_write(dmaco->flash_addr, &data, 4);
-+        } else {
-+            cpu_physical_memory_read(dmaco->flash_addr, &data, 4);
-+            dma_memory_write(&address_space_memory, dmaco->dram_addr,
-+                             &data, 4);
-+        }
-+
-+        dmaco->flash_addr +=3D 4;
-+        dmaco->dram_addr +=3D 4;
-+        dmaco->len -=3D 4;
-+    }
-+
-+    aspeed_smc_dma_done(dmaco);
-+out:
-+    g_free(dmaco);
-+}
-+
-+
-+static void aspeed_smc_dma_stop(AspeedSMCState *s)
-+{
-+    /*
-+     * When the DMA is disabled, INTR_CTRL_DMA_STATUS=3D0 means the
-+     * engine is idle
-+     */
-+    s->regs[R_INTR_CTRL] &=3D ~INTR_CTRL_DMA_STATUS;
-+    s->regs[R_DMA_CHECKSUM] =3D 0x0;
-+    s->regs[R_DMA_FLASH_ADDR] =3D 0;
-+    s->regs[R_DMA_DRAM_ADDR] =3D 0;
-+    s->regs[R_DMA_LEN] =3D 0;
-+
-+    /*
-+     * Lower DMA irq even in any case. The IRQ control register could
-+     * have been cleared before disabling the DMA.
-+     */
-+    qemu_irq_lower(s->irq);
-+}
-+
-+typedef struct AspeedDmaRequest {
-+    Coroutine *co;
-+    QEMUBH *bh;
-+} AspeedDmaRequest;
-+
-+static void aspeed_smc_dma_run(void *opaque)
-+{
-+    AspeedDmaRequest *dmareq =3D opaque;
-+
-+    qemu_coroutine_enter(dmareq->co);
-+    qemu_bh_delete(dmareq->bh);
-+    g_free(dmareq);
-+}
-+
-+static void aspeed_smc_dma_schedule(Coroutine *co)
-+{
-+    AspeedDmaRequest *dmareq;
-+
-+    dmareq =3D g_new0(AspeedDmaRequest, 1);
-+
-+    dmareq->co =3D co;
-+    dmareq->bh =3D qemu_bh_new(aspeed_smc_dma_run, dmareq);
-+    qemu_bh_schedule(dmareq->bh);
-+}
-+
-+static void aspeed_smc_dma_start(void *opaque)
-+{
-+    AspeedSMCState *s =3D opaque;
-+    AspeedDmaCo *dmaco;
-+    Coroutine *co;
-+
-+    /* freed in the coroutine */
-+    dmaco =3D g_new0(AspeedDmaCo, 1);
-+
-+    /* A DMA transaction has a minimum of 4 bytes */
-+    dmaco->len        =3D s->regs[R_DMA_LEN] + 4;
-+    dmaco->flash_addr =3D s->regs[R_DMA_FLASH_ADDR];
-+    dmaco->dram_addr  =3D s->regs[R_DMA_DRAM_ADDR];
-+    dmaco->direction  =3D (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE);
-+    dmaco->s          =3D s;
-+
-+    if (s->regs[R_DMA_CTRL] & DMA_CTRL_CKSUM) {
-+        co =3D qemu_coroutine_create(aspeed_smc_dma_checksum, dmaco);
-+    } else {
-+        co =3D qemu_coroutine_create(aspeed_smc_dma_rw, dmaco);
-+    }
-+
-+    aspeed_smc_dma_schedule(co);
-+}
-+
-+/*
-+ * This is to run one DMA at a time. When INTR_CTRL_DMA_STATUS becomes
-+ * 1, the DMA has completed and a new DMA can start even if the result
-+ * of the previous was not collected.
-+ */
-+static bool aspeed_smc_dma_in_progress(AspeedSMCState *s)
-+{
-+    bool ret =3D (s->regs[R_DMA_CTRL] & DMA_CTRL_ENABLE) &&
-+        !(s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_STATUS);
-+    return ret;
-+}
-+
-+static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
-+{
-+    if (dma_ctrl & DMA_CTRL_ENABLE) {
-+        /* add locking on R_DMA_CTRL ? */
-+        if (aspeed_smc_dma_in_progress(s)) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA in progress\n",
-+                          __func__);
-+            return;
-+        }
-+
-+        s->regs[R_DMA_CTRL] =3D dma_ctrl;
-+
-+        aspeed_smc_dma_start(s);
-+    } else {
-+        s->regs[R_DMA_CTRL] =3D dma_ctrl;
-+
-+        aspeed_smc_dma_stop(s);
-+    }
-+}
-+
- static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
-                              unsigned int size)
+ static void aspeed_board_init_flashes(AspeedSMCState *s, const char *fla=
+shtype,
+                                       Error **errp)
  {
-@@ -715,6 +923,16 @@ static void aspeed_smc_write(void *opaque, hwaddr ad=
-dr, uint64_t data,
-         if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
-             aspeed_smc_flash_set_segment(s, cs, value);
-         }
-+    } else if (addr =3D=3D R_INTR_CTRL) {
-+        s->regs[addr] =3D value;
-+    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) {
-+        aspeed_smc_dma_ctrl(s, value);
-+    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) {
-+        s->regs[addr] =3D DMA_DRAM_ADDR(s->sdram_base, value);
-+    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) {
-+        s->regs[addr] =3D DMA_FLASH_ADDR(value);
-+    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) {
-+        s->regs[addr] =3D DMA_LENGTH(value);
-     } else {
-         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
-"\n",
-                       __func__, addr);
-@@ -747,6 +965,9 @@ static void aspeed_smc_realize(DeviceState *dev, Erro=
-r **errp)
-     s->r_timings =3D s->ctrl->r_timings;
-     s->conf_enable_w0 =3D s->ctrl->conf_enable_w0;
+@@ -135,6 +159,7 @@ static void aspeed_board_init(MachineState *machine,
+ {
+     AspeedBoardState *bmc;
+     AspeedSoCClass *sc;
++    DriveInfo *drive0 =3D drive_get(IF_MTD, 0, 0);
 =20
-+    /* DMA irq */
-+    sysbus_init_irq(sbd, &s->irq);
+     bmc =3D g_new0(AspeedBoardState, 1);
+     object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
+@@ -168,6 +193,22 @@ static void aspeed_board_init(MachineState *machine,
+     aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_abor=
+t);
+     aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error_a=
+bort);
+=20
++    /* Install first FMC flash content as a boot rom. */
++    if (drive0) {
++        AspeedSMCFlash *fl =3D &bmc->soc.fmc.flashes[0];
++        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
 +
-     /* Enforce some real HW limits */
-     if (s->num_cs > s->ctrl->max_slaves) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
-@@ -757,7 +978,6 @@ static void aspeed_smc_realize(DeviceState *dev, Erro=
-r **errp)
-     s->spi =3D ssi_create_bus(dev, "spi");
-=20
-     /* Setup cs_lines for slaves */
--    sysbus_init_irq(sbd, &s->irq);
-     s->cs_lines =3D g_new0(qemu_irq, s->num_cs);
-     ssi_auto_connect_slaves(dev, s->cs_lines, s->spi);
-=20
++        /*
++         * create a ROM region using the default mapping window size of
++         * the flash module.
++         */
++        memory_region_init_rom(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
++                               fl->size, &error_abort);
++        memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
++                                    boot_rom);
++        write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort);
++    }
++
+     aspeed_board_binfo.kernel_filename =3D machine->kernel_filename;
+     aspeed_board_binfo.initrd_filename =3D machine->initrd_filename;
+     aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
 --=20
 2.7.4
 

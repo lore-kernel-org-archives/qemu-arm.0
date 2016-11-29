@@ -1,78 +1,49 @@
-Received: by 10.25.150.194 with SMTP id y185csp2231883lfd;
-        Tue, 29 Nov 2016 01:16:53 -0800 (PST)
-X-Received: by 10.55.66.73 with SMTP id p70mr25792115qka.63.1480411013818;
-        Tue, 29 Nov 2016 01:16:53 -0800 (PST)
+Received: by 10.25.150.194 with SMTP id y185csp2343602lfd;
+        Tue, 29 Nov 2016 05:37:26 -0800 (PST)
+X-Received: by 10.55.132.4 with SMTP id g4mr23215108qkd.2.1480426646620;
+        Tue, 29 Nov 2016 05:37:26 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m73si34346119qki.220.2016.11.29.01.16.53
+        by mx.google.com with ESMTPS id o1si27510628qta.5.2016.11.29.05.37.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 01:16:53 -0800 (PST)
+        Tue, 29 Nov 2016 05:37:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@livius-net.20150623.gappssmtp.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35501 helo=lists.gnu.org)
+Received: from localhost ([::1]:37140 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBeWy-0005JG-MX
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 04:16:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39941)
+	id 1cBib7-0006AR-Cv
+	for alex.bennee@linaro.org; Tue, 29 Nov 2016 08:37:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ilg@livius.net>) id 1cBeWv-0005Iv-9C
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 04:16:50 -0500
+	(envelope-from <no-reply@patchew.org>) id 1cBib2-00069F-KA
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 08:37:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ilg@livius.net>) id 1cBeWr-0006tU-Qp
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 04:16:49 -0500
-Received: from mail-wj0-f180.google.com ([209.85.210.180]:34165)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ilg@livius.net>) id 1cBeWr-0006t0-JA
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 04:16:45 -0500
-Received: by mail-wj0-f180.google.com with SMTP id mp19so139351066wjc.1
-	for <qemu-arm@nongnu.org>; Tue, 29 Nov 2016 01:16:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=livius-net.20150623.gappssmtp.com; s=20150623;
-	h=from:content-transfer-encoding:mime-version:subject:message-id:date
-	:to; bh=rn59x0HwLGBddoBfhTk/SWSUTe1j8hlUhI7X5vFV9EY=;
-	b=hxV8vjIWvv3pqd6h9rzH8s7f2Ux4q/UNa6p4bcdc3+uFRi+aMeoj3TNDC5zLVn1ye5
-	wZer1e6YTrjzNs2ZLtyrPu4M7gTA+xVGelawv204qhFBL/fenhJ43GQ/sQqLTLTNl7BR
-	f5FiqZG+5uU9mQWdCX0jcx88f85ydPiXvrQzTTpPi/hGE/ArpUIOM6/RVMbeLV4uxEQo
-	mlto7SishLYTF0Vi68kSSlOMMDAcf8DQEdqczEl2QgpIGpcNZqXYuDEQ3K+cIAJxtBHZ
-	kewHt1euC/xf+e1J4ORVdo44hXz07H1PS9XIFkPcCE03hzAZ+NVsfrhdnND+SriSJV1o
-	y+uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:from:content-transfer-encoding:mime-version
-	:subject:message-id:date:to;
-	bh=rn59x0HwLGBddoBfhTk/SWSUTe1j8hlUhI7X5vFV9EY=;
-	b=d7PhaiFhB+J503ikjnlEPWc1eN7fTXMbJLAgcMbey0674PhdRjs1JN2iszFoMjbwNZ
-	aO0xZxZldjXoYIqBPm0dxDH30GQjOD+FBfGyAR3jAcs/smAFwG2NgHwQDCmHmBTnmtcp
-	2wPwmNWVQJdtO7nM35kHDtzYsgWoPncdWXLz54VXG0EOVgErrpkwf7F7BY7YphZgcCqr
-	SIipoa1bIOi/uYC4xpt9z8GUB2CEwg0GdcX4Yaf8WY+BaqspIK4dddgtGQeyH7rAc+Dw
-	lH2YJf326vPw+Ch4yFpbBP2cHJlP6B93rOi4ElMJfgeadFfFZf0C9HqKbS8ZoKAawOnl
-	SQHw==
-X-Gm-Message-State: AKaTC01CsCKFwmn5jwQtz9L2hJqQ7q3X88Jd0r/KNhEEYE/iiZNLyCx1DSad+isTdVPTbQ==
-X-Received: by 10.194.238.163 with SMTP id vl3mr22208854wjc.169.1480410944431; 
-	Tue, 29 Nov 2016 01:15:44 -0800 (PST)
-Received: from [172.16.62.12] ([109.99.239.84])
-	by smtp.gmail.com with ESMTPSA id
-	f134sm1705501wmf.19.2016.11.29.01.15.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 Nov 2016 01:15:43 -0800 (PST)
-From: Liviu Ionescu <ilg@livius.net>
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Mime-Version: 1.0 (Mac OS X Mail 10.1 \(3251\))
-Message-Id: <31636028-96EF-4040-9AB6-410DA3B0E514@livius.net>
-Date: Tue, 29 Nov 2016 11:15:42 +0200
-To: qemu-devel qemu-devel <Qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
-	qemu-discuss@nongnu.org
-X-Mailer: Apple Mail (2.3251)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.210.180
-Subject: [Qemu-arm] GNU ARM Eclipse QEMU: support for active graphical
- buttons added
+	(envelope-from <no-reply@patchew.org>) id 1cBiay-0000pg-LC
+	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 08:37:20 -0500
+Resent-Date: Tue, 29 Nov 2016 08:37:20 -0500
+Resent-Message-Id: <E1cBiay-0000pg-LC@eggs.gnu.org>
+Received: from sender163-mail.zoho.com ([74.201.84.163]:21352)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1cBiay-0000ou-Dq; Tue, 29 Nov 2016 08:37:16 -0500
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1480426622258774.0817190518836;
+	Tue, 29 Nov 2016 05:37:02 -0800 (PST)
+Message-ID: <148042662061.139.8078035742561370423@5b492b8a941d>
+In-Reply-To: <20161128195701.24912-1-lersek@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: lersek@redhat.com
+Date: Tue, 29 Nov 2016 05:37:02 -0800 (PST)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 74.201.84.163
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-2.8 0/2] loader fixes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,18 +55,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, mst@redhat.com,
+	qemu-devel@nongnu.org, alistair.francis@xilinx.com,
+	michael@walle.cc, qemu-arm@nongnu.org, zhaoshenglong@huawei.com,
+	pbonzini@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Es385rz4UmmE
+X-TUID: 7CnFdNwBPBoE
 
-For those interested in Cortex-M boards emulation:
-
-http://gnuarmeclipse.github.io/blog/2016/11/28/qemu-v2-7-0-20161128-released/
-
-Any feedback is highly appreciated.
-
-
-Regards,
-
-Liviu
+SGksCgpZb3VyIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUt
+ZGV2ZWxdIFtQQVRDSCBmb3ItMi44IDAvMl0gbG9hZGVyIGZpeGVzClR5cGU6IHNlcmllcwpNZXNz
+YWdlLWlkOiAyMDE2MTEyODE5NTcwMS4yNDkxMi0xLWxlcnNla0ByZWRoYXQuY29tCgo9PT0gVEVT
+VCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCgpCQVNFPWJhc2UKbj0xCnRvdGFsPSQoZ2l0
+IGxvZyAtLW9uZWxpbmUgJEJBU0UuLiB8IHdjIC1sKQpmYWlsZWQ9MAoKIyBVc2VmdWwgZ2l0IG9w
+dGlvbnMKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0t
+bG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAt
+LXJldmVyc2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tp
+bmcgUEFUQ0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAg
+ICBpZiAhIGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gu
+cGwgLS1tYWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBm
+aQogICAgbj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9
+PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dp
+dGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwphNzAwNzA5IGxvYWRlcjogZml4IHVuZGVmaW5l
+ZCBiZWhhdmlvciBpbiByb21fb3JkZXJfY29tcGFyZSgpCjU0YWUwMWIgbG9hZGVyOiBmaXggaGFu
+ZGxpbmcgb2YgY3VzdG9tIGFkZHJlc3Mgc3BhY2VzIHdoZW4gYWRkaW5nIFJPTSBibG9icwoKPT09
+IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tpbmcgUEFUQ0ggMS8yOiBsb2FkZXI6IGZpeCBoYW5kbGlu
+ZyBvZiBjdXN0b20gYWRkcmVzcyBzcGFjZXMgd2hlbiBhZGRpbmcgUk9NIGJsb2JzLi4uCkNoZWNr
+aW5nIFBBVENIIDIvMjogbG9hZGVyOiBmaXggdW5kZWZpbmVkIGJlaGF2aW9yIGluIHJvbV9vcmRl
+cl9jb21wYXJlKCkuLi4KRVJST1I6ICIoZm9vKikiIHNob3VsZCBiZSAiKGZvbyAqKSIKIzY5OiBG
+SUxFOiBody9jb3JlL2xvYWRlci5jOjgyMToKKyAgICByZXR1cm4gKCh1aW50cHRyX3QpKHZvaWQq
+KXJvbS0+YXMgPiAodWludHB0cl90KSh2b2lkKilpdGVtLT5hcykgfHwKCnRvdGFsOiAxIGVycm9y
+cywgMCB3YXJuaW5ncywgOCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9i
+bGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBv
+c2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4g
+TUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0
+aCBjb2RlOiAxCgoKLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
+W2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
+ZXctZGV2ZWxAZnJlZWxpc3RzLm9yZw==
 

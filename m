@@ -1,211 +1,220 @@
-Received: by 10.25.159.131 with SMTP id i125csp44335lfe;
-        Tue, 29 Nov 2016 18:01:31 -0800 (PST)
-X-Received: by 10.200.58.65 with SMTP id w59mr26198640qte.54.1480471291118;
-        Tue, 29 Nov 2016 18:01:31 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.131 with SMTP id i125csp337531lfe;
+        Wed, 30 Nov 2016 07:12:54 -0800 (PST)
+X-Received: by 10.200.57.55 with SMTP id s52mr2234480qtb.191.1480518774145;
+        Wed, 30 Nov 2016 07:12:54 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e70si36350272qkh.139.2016.11.29.18.01.30
+        by mx.google.com with ESMTPS id 2si37875234qkb.172.2016.11.30.07.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 18:01:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 Nov 2016 07:12:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au;
-       dkim=fail header.i=@messagingengine.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40411 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:44594 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBuDC-0004YC-Fx
-	for alex.bennee@linaro.org; Tue, 29 Nov 2016 21:01:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44601)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cC6Z2-0002L5-QF
+	for alex.bennee@linaro.org; Wed, 30 Nov 2016 10:12:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60611)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1cBuD6-0004Xs-0a
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 21:01:25 -0500
+	(envelope-from <clg@kaod.org>) id 1cC6W0-0000Iv-8Z
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 10:09:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1cBuD1-0007Pk-Et
-	for qemu-arm@nongnu.org; Tue, 29 Nov 2016 21:01:24 -0500
-Received: from out5-smtp.messagingengine.com ([66.111.4.29]:47267)
+	(envelope-from <clg@kaod.org>) id 1cC6Vv-0006az-A4
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 10:09:44 -0500
+Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:46077)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1cBuD1-0007PC-8x; Tue, 29 Nov 2016 21:01:19 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 4C0BD207DC;
-	Tue, 29 Nov 2016 21:01:17 -0500 (EST)
-Received: from frontend1 ([10.202.2.160])
-	by compute4.internal (MEProxy); Tue, 29 Nov 2016 21:01:17 -0500
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=aj.id.au; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc
-	:x-sasl-enc; s=mesmtp; bh=NwJRozU3QDH/HS5w9jykfwNjrvg=; b=eKJfyc
-	e7dqCzSLgXBAiw/F/fa9xzgQa6Vb42Z8bcHy7cfD7P+qavt7Kfi8FoNbjAN6EdKR
-	XDkwLbyY+uwAssy5n+59kFYnj6paYJkZZ675QFXqwmddtaQfw13/zfjcVLqQ5Rwk
-	KnJvzh1p4Yembpj9oIIxD9O+nyrgNHRoupegQ=
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc:x-sasl-enc; s=smtpout; bh=NwJRozU3QDH/HS
-	5w9jykfwNjrvg=; b=C2P2kEc9JIFc3OIxIIDIAzUu924BNI5rXTYDmY4FBD4NaP
-	K5zR+6NhV+Je2Ucpo2z2Nc8npv15PNJTuH3EaTKcfUKKuWR+PXtg9/mM9gS9Nvod
-	m57FFgCFF5LsmhiEHmSqsZ3E+rqxeMPndOJa54rnk66+qsQbvCJpcejapK5X4=
-X-ME-Sender: <xms:7TI-WINgOuEQd-Dyr6OtmEqvMomtU6pWR_r7OVgZvXmcEtOS40t6Xw>
-X-Sasl-enc: U51fM4g84VzhzeBXbXfuTi0NMnumzZKA4fVEE2dk+fEe 1480471276
-Received: from [10.104.0.15] (unknown [203.0.153.9])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 8D0167E456;
-	Tue, 29 Nov 2016 21:01:14 -0500 (EST)
-Message-ID: <1480471266.2503.103.camel@aj.id.au>
-From: Andrew Jeffery <andrew@aj.id.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Peter Maydell
-	<peter.maydell@linaro.org>
-Date: Wed, 30 Nov 2016 12:31:06 +1030
-In-Reply-To: <1480434248-27138-29-git-send-email-clg@kaod.org>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1cC6Vv-0006Zu-1B
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 10:09:39 -0500
+Received: from player699.ha.ovh.net (b9.ovh.net [213.186.33.59])
+	by mo69.mail-out.ovh.net (Postfix) with ESMTP id C91E69A33
+	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 16:09:35 +0100 (CET)
+Received: from hermes.kaod.org (LFbn-1-2234-107.w90-76.abo.wanadoo.fr
+	[90.76.55.107]) (Authenticated sender: postmaster@kaod.org)
+	by player699.ha.ovh.net (Postfix) with ESMTPSA id EEBA62400A6;
+	Wed, 30 Nov 2016 16:09:25 +0100 (CET)
+To: Kevin Wolf <kwolf@redhat.com>
 References: <1480434248-27138-1-git-send-email-clg@kaod.org>
-	<1480434248-27138-29-git-send-email-clg@kaod.org>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-g/EZdLGL20cGmki9jwUr"
-X-Mailer: Evolution 3.22.1-0ubuntu2 
-Mime-Version: 1.0
+	<1480434248-27138-26-git-send-email-clg@kaod.org>
+	<921d5257-fff3-5cde-3da2-b58c94e5c792@kaod.org>
+	<20161129180803.GC7080@noname.redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <fc7bced6-9e03-f0a5-b991-52566a42d288@kaod.org>
+Date: Wed, 30 Nov 2016 16:09:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <20161129180803.GC7080@noname.redhat.com>
+Content-Type: text/plain; charset=windows-1252
+X-Ovh-Tracer-Id: 16982792720841280398
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrfeelfedrfeelgdeikecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.111.4.29
-Subject: Re: [Qemu-arm] [PATCH for-2.9 28/30] aspeed: add a watchdog
- controller
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.56.233
+Subject: Re: [Qemu-devel] [PATCH for-2.9 25/30] block: add a model option
+ for MTD devices
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Marcin Krzeminski <marcin.krzeminski@nokia.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bQDDkV7HB2K5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Qemu-block <qemu-block@nongnu.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Marcin Krzeminski <marcin.krzeminski@nokia.com>,
+	qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NG9LI+DWSAll
 
-
---=-g/EZdLGL20cGmki9jwUr
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, 2016-11-29 at 16:44 +0100, C=C3=A9dric Le Goater wrote:
-> This enables reboot of a guest from U-Boot and Linux.
+On 11/29/2016 07:08 PM, Kevin Wolf wrote:
+> Am 29.11.2016 um 18:30 hat C=E9dric Le Goater geschrieben:
+>> On 11/29/2016 04:44 PM, C=E9dric Le Goater wrote:
+>>> This could be used to define the flash model to use on some boards
+>>> definitions.
+>>
+>> As this patch was part of a larger set, I did not send the whole=20
+>> set to qemu-block@ list. Could you please take a look at the proposal =
+?=20
 >=20
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-
-Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
-
-> ---
-> =C2=A0hw/arm/aspeed_soc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0| 13 +++++++++++++
-> =C2=A0include/hw/arm/aspeed_soc.h |=C2=A0=C2=A02 ++
-> =C2=A02 files changed, 15 insertions(+)
+> This is a device level option rather than a block backend one. We messe=
+d
+> up -drive in its early days by including some device options, but we
+> don't generally want to add to this.
 >=20
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 4fb777e6df6e..6df76382f007 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -31,6 +31,7 @@
-> =C2=A0#define ASPEED_SOC_SCU_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A00x1E6E2000
-> =C2=A0#define ASPEED_SOC_SRAM_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A00x1E720000
-> =C2=A0#define ASPEED_SOC_TIMER_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A00x1E782000
-> +#define ASPEED_SOC_WDT_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A00x1E785000
-> =C2=A0#define ASPEED_SOC_I2C_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A00x1E78A000
-> =C2=A0
-> =C2=A0static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
-> @@ -170,6 +171,10 @@ static void aspeed_soc_init(Object *obj)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0sc->info->silicon_rev);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_alias(obj, "ram-size", =
-OBJECT(&s->sdmc),
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0"ram-size", &error_abort);
-> +
-> +=C2=A0=C2=A0=C2=A0=C2=A0object_initialize(&s->wdt, sizeof(s->wdt), TYPE_=
-ASPEED_WDT);
-> +=C2=A0=C2=A0=C2=A0=C2=A0object_property_add_child(obj, "wdt", OBJECT(&s-=
->wdt), NULL);
-> +=C2=A0=C2=A0=C2=A0=C2=A0qdev_set_parent_bus(DEVICE(&s->wdt), sysbus_get_=
-default());
-> =C2=A0}
-> =C2=A0
-> =C2=A0static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> @@ -289,6 +294,14 @@ static void aspeed_soc_realize(DeviceState *dev,
-> Error **errp)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0=
-,
-> ASPEED_SOC_SDMC_BASE);
-> +
-> +=C2=A0=C2=A0=C2=A0=C2=A0/* Watch dog */
-> +=C2=A0=C2=A0=C2=A0=C2=A0object_property_set_bool(OBJECT(&s->wdt), true, =
-"realized",
-> &err);
-> +=C2=A0=C2=A0=C2=A0=C2=A0if (err) {
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0error_propagate(errp, er=
-r);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0return;
-> +=C2=A0=C2=A0=C2=A0=C2=A0}
-> +=C2=A0=C2=A0=C2=A0=C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&s->wdt), 0,
-> ASPEED_SOC_WDT_BASE);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static void aspeed_soc_class_init(ObjectClass *oc, void *data)
-> diff --git a/include/hw/arm/aspeed_soc.h
-> b/include/hw/arm/aspeed_soc.h
-> index 1ab5deaa0813..dbec0c159885 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -19,6 +19,7 @@
-> =C2=A0#include "hw/timer/aspeed_timer.h"
-> =C2=A0#include "hw/i2c/aspeed_i2c.h"
-> =C2=A0#include "hw/ssi/aspeed_smc.h"
-> +#include "hw/watchdog/wdt_aspeed.h"
-> =C2=A0
-> =C2=A0#define ASPEED_SPIS_NUM=C2=A0=C2=A02
-> =C2=A0
-> @@ -37,6 +38,7 @@ typedef struct AspeedSoCState {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSMCState fmc;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSMCState spi[ASPEED_SPIS_NUM];
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0AspeedSDMCState sdmc;
-> +=C2=A0=C2=A0=C2=A0=C2=A0AspeedWDTState wdt;
-> =C2=A0} AspeedSoCState;
-> =C2=A0
-> =C2=A0#define TYPE_ASPEED_SOC "aspeed-soc"
---=-g/EZdLGL20cGmki9jwUr
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+> The correct way would be to add a qdev property for this and specify it
+> with -device or -global.
 
------BEGIN PGP SIGNATURE-----
+OK. I see. I should use something like this on the command line :
 
-iQIcBAABCgAGBQJYPjLjAAoJEJ0dnzgO5LT5fMYP/jCKztHiRPX60ORO7x7LuRgn
-N6tXzFt9xM6NAVxIAWUzR71qYDIaLd5A/KUnfo56uQiEtFJjjsvHbcnTCIP9j6Wm
-b1blwadCdyNZw2WjT32GnJsOaJp2kiF/i6Ztlg0l5VbhUV2D5z/jWaE8Tz8ihN6L
-MhnAoxPnul5iITQgfwwmwsGtnRxSbv1cX2YtM66cipgj5i0FFdQDre64VWkf5ulr
-w5LA5Jc8PZzitDHVp0g+ICtKSNUW8pWgyUXj2hpzUcII5ULUE6rCUfxXP4Xrzhj7
-fhFc9oPocjNAaVISzYw/RpDTA7WaV3cxYGAgbBzcglLfBDK0IKy06cZbaDpxjK5o
-RBr/qFJDopV3nsmUzIC50rvkfaSu7AssD1mv0Nt4kDTAxqoOQ7dU3K9wm88mWpth
-xVlOpFsGCVIjQotoU3ahIiO+DCgB8Sq5hhRaVjBno4sKo9iLZRbUJ/b9Cbq6T/La
-v1JRgSydTHbkCCsGzffxO3DLL2TnJzqQI8vdiLj39gJB+F3GLEmnd1Qu/Umluad7
-W/sPxg9fcgSQKjcmZFJ7Cwz4gCZ6ZDlXhfKTUNnIHwFdsiDBp/MyyauHzJndIlqE
-8CJ0RqdcTI+LNGsNGDEbjk8FxYHTQUDE9CYHFwbqefrxVD3qR7jWN1u44zSRFvtT
-J6zHyRZGbcFFdHSdtLUv
-=pJGR
------END PGP SIGNATURE-----
+	-drive file=3Dflash-romulus-test,format=3Draw,if=3Dmtd,id=3Dbmc \
+	-device mx25l25635e,drive=3Dbmc \
+	-drive file=3Dflash-romulus-test2,format=3Draw,if=3Dmtd,id=3Dbmc2 \
+	-device mx25l25635e,drive=3Dbmc2 \
+	-drive file=3Dromulus.pnor,format=3Draw,if=3Dmtd,id=3Dpnor \
+	-device mx66l1g45g,drive=3Dpnor=20
 
---=-g/EZdLGL20cGmki9jwUr--
+and retrieve the attached m25p80 device from the drive with the=20
+routine blk_get_attached_dev(). That is changing a bit the way
+the platform is initialized but it is cleaner as no default=20
+devices are automatically added.
+
+Thanks,
+
+C.=20
+
+> Kevin
+>=20
+>>> Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
+>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>> ---
+>>>  blockdev.c                | 12 ++++++++++++
+>>>  include/sysemu/blockdev.h |  1 +
+>>>  qemu-options.hx           |  4 +++-
+>>>  3 files changed, 16 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/blockdev.c b/blockdev.c
+>>> index 245e1e1d177a..bcc99365b86c 100644
+>>> --- a/blockdev.c
+>>> +++ b/blockdev.c
+>>> @@ -742,6 +742,10 @@ QemuOptsList qemu_legacy_drive_opts =3D {
+>>>              .type =3D QEMU_OPT_STRING,
+>>>              .help =3D "pci address (virtio only)",
+>>>          },{
+>>> +            .name =3D "model",
+>>> +            .type =3D QEMU_OPT_STRING,
+>>> +            .help =3D "flash model (mtd only)",
+>>> +        },{
+>>>              .name =3D "serial",
+>>>              .type =3D QEMU_OPT_STRING,
+>>>              .help =3D "disk serial number",
+>>> @@ -790,6 +794,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInt=
+erfaceType block_default_type)
+>>>      bool read_only =3D false;
+>>>      bool copy_on_read;
+>>>      const char *serial;
+>>> +    const char *model;
+>>>      const char *filename;
+>>>      Error *local_err =3D NULL;
+>>>      int i;
+>>> @@ -1076,6 +1081,12 @@ DriveInfo *drive_new(QemuOpts *all_opts, Block=
+InterfaceType block_default_type)
+>>>          qdict_put(bs_opts, "rerror", qstring_from_str(rerror));
+>>>      }
+>>> =20
+>>> +    model =3D qemu_opt_get(legacy_opts, "model");
+>>> +    if (model && type !=3D IF_MTD) {
+>>> +        error_report("model is not supported by this bus type");
+>>> +        goto fail;
+>>> +    }
+>>> +
+>>>      /* Actual block device init: Functionality shared with blockdev-=
+add */
+>>>      blk =3D blockdev_init(filename, bs_opts, &local_err);
+>>>      bs_opts =3D NULL;
+>>> @@ -1102,6 +1113,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockI=
+nterfaceType block_default_type)
+>>>      dinfo->unit =3D unit_id;
+>>>      dinfo->devaddr =3D devaddr;
+>>>      dinfo->serial =3D g_strdup(serial);
+>>> +    dinfo->model =3D g_strdup(model);
+>>> =20
+>>>      blk_set_legacy_dinfo(blk, dinfo);
+>>> =20
+>>> diff --git a/include/sysemu/blockdev.h b/include/sysemu/blockdev.h
+>>> index 16432f350805..10c66e5e86a4 100644
+>>> --- a/include/sysemu/blockdev.h
+>>> +++ b/include/sysemu/blockdev.h
+>>> @@ -39,6 +39,7 @@ struct DriveInfo {
+>>>      int cyls, heads, secs, trans;
+>>>      QemuOpts *opts;
+>>>      char *serial;
+>>> +    char *model;
+>>>      QTAILQ_ENTRY(DriveInfo) next;
+>>>  };
+>>> =20
+>>> diff --git a/qemu-options.hx b/qemu-options.hx
+>>> index 4a5b29f349f7..16add85bd0f5 100644
+>>> --- a/qemu-options.hx
+>>> +++ b/qemu-options.hx
+>>> @@ -517,7 +517,7 @@ DEF("drive", HAS_ARG, QEMU_OPTION_drive,
+>>>      "-drive [file=3Dfile][,if=3Dtype][,bus=3Dn][,unit=3Dm][,media=3D=
+d][,index=3Di]\n"
+>>>      "       [,cyls=3Dc,heads=3Dh,secs=3Ds[,trans=3Dt]][,snapshot=3Do=
+n|off]\n"
+>>>      "       [,cache=3Dwritethrough|writeback|none|directsync|unsafe]=
+[,format=3Df]\n"
+>>> -    "       [,serial=3Ds][,addr=3DA][,rerror=3Dignore|stop|report]\n=
+"
+>>> +    "       [,serial=3Ds][,model=3Dm][,addr=3DA][,rerror=3Dignore|st=
+op|report]\n"
+>>>      "       [,werror=3Dignore|stop|report|enospc][,id=3Dname][,aio=3D=
+threads|native]\n"
+>>>      "       [,readonly=3Don|off][,copy-on-read=3Don|off]\n"
+>>>      "       [,discard=3Dignore|unmap][,detect-zeroes=3Don|off|unmap]=
+\n"
+>>> @@ -570,6 +570,8 @@ the format.  Can be used to specify format=3Draw =
+to avoid interpreting
+>>>  an untrusted format header.
+>>>  @item serial=3D@var{serial}
+>>>  This option specifies the serial number to assign to the device.
+>>> +@item model=3D@var{model}
+>>> +This option specifies the model to use to create a flash device (if=3D=
+mtd only).
+>>>  @item addr=3D@var{addr}
+>>>  Specify the controller's PCI address (if=3Dvirtio only).
+>>>  @item werror=3D@var{action},rerror=3D@var{action}
+>>>
+>>
 

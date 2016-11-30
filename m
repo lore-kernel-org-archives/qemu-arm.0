@@ -1,79 +1,79 @@
-Received: by 10.25.159.131 with SMTP id i125csp115277lfe;
-        Tue, 29 Nov 2016 21:42:32 -0800 (PST)
-X-Received: by 10.55.27.141 with SMTP id m13mr31801042qkh.28.1480484552165;
-        Tue, 29 Nov 2016 21:42:32 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp115389lfe;
+        Tue, 29 Nov 2016 21:43:00 -0800 (PST)
+X-Received: by 10.55.127.7 with SMTP id a7mr26792710qkd.204.1480484580155;
+        Tue, 29 Nov 2016 21:43:00 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n19si22707352qtf.176.2016.11.29.21.42.31
+        by mx.google.com with ESMTPS id f28si29395494qte.167.2016.11.29.21.42.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Nov 2016 21:42:32 -0800 (PST)
+        Tue, 29 Nov 2016 21:43:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41029 helo=lists.gnu.org)
+Received: from localhost ([::1]:41031 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cBxf5-00044L-Fj
-	for alex.bennee@linaro.org; Wed, 30 Nov 2016 00:42:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44826)
+	id 1cBxfX-0004Qi-FX
+	for alex.bennee@linaro.org; Wed, 30 Nov 2016 00:42:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cBxZv-0000QG-9M
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:13 -0500
+	(envelope-from <alastair@au1.ibm.com>) id 1cBxZy-0000T3-JW
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cBxZs-0005KL-2D
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:11 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:55000)
+	(envelope-from <alastair@au1.ibm.com>) id 1cBxZv-0005NL-0a
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:14 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:51668)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cBxZr-0005Jp-P6
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:08 -0500
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+	id 1cBxZu-0005MD-LX
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 00:37:10 -0500
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
 	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uAU5Y56D032866
-	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 00:37:06 -0500
+	uAU5Y5AP145247
+	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 00:37:09 -0500
 Received: from e23smtp09.au.ibm.com (e23smtp09.au.ibm.com [202.81.31.142])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 271r8j2h7f-1
+	by mx0a-001b2d01.pphosted.com with ESMTP id 271n08h369-1
 	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 00:37:06 -0500
+	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 00:37:09 -0500
 Received: from localhost
 	by e23smtp09.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
-	Wed, 30 Nov 2016 15:37:04 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
+	Wed, 30 Nov 2016 15:37:06 +1000
+Received: from d23dlp01.au.ibm.com (202.81.31.203)
 	by e23smtp09.au.ibm.com (202.81.31.206) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
 	Wed, 30 Nov 2016 15:37:03 +1000
-Received: from d23relay06.au.ibm.com (d23relay06.au.ibm.com [9.185.63.219])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id 670C23578060;
+Received: from d23relay07.au.ibm.com (d23relay07.au.ibm.com [9.190.26.37])
+	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 94DC42CE8046;
 	Wed, 30 Nov 2016 16:37:02 +1100 (EST)
-Received: from d23av03.au.ibm.com (d23av03.au.ibm.com [9.190.234.97])
-	by d23relay06.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uAU5b29Q39059532; Wed, 30 Nov 2016 16:37:02 +1100
-Received: from d23av03.au.ibm.com (localhost [127.0.0.1])
-	by d23av03.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uAU5b1qb027188; Wed, 30 Nov 2016 16:37:02 +1100
+Received: from d23av05.au.ibm.com (d23av05.au.ibm.com [9.190.234.119])
+	by d23relay07.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	uAU5b2VN32702674; Wed, 30 Nov 2016 16:37:02 +1100
+Received: from d23av05.au.ibm.com (localhost [127.0.0.1])
+	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uAU5b1PO022586; Wed, 30 Nov 2016 16:37:02 +1100
 Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av03.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uAU5b10b027185; Wed, 30 Nov 2016 16:37:01 +1100
+	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uAU5b1rd022577; Wed, 30 Nov 2016 16:37:01 +1100
 Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
 	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 07970A0306;
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 19363A0388;
 	Wed, 30 Nov 2016 16:37:01 +1100 (AEDT)
 From: "Alastair D'Silva" <alastair@au1.ibm.com>
 To: qemu-arm@nongnu.org
-Date: Wed, 30 Nov 2016 16:36:26 +1100
+Date: Wed, 30 Nov 2016 16:36:28 +1100
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20161130053629.23340-1-alastair@au1.ibm.com>
 References: <20161130053629.23340-1-alastair@au1.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16113005-0052-0000-0000-000001F68D70
+x-cbid: 16113005-0052-0000-0000-000001F68D71
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16113005-0053-0000-0000-000007544545
-Message-Id: <20161130053629.23340-4-alastair@au1.ibm.com>
+x-cbparentid: 16113005-0053-0000-0000-000007544547
+Message-Id: <20161130053629.23340-6-alastair@au1.ibm.com>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
 	definitions=2016-11-30_02:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
@@ -83,7 +83,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
 	definitions=main-1611300092
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
 X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH v2 3/6] qtest: Support named interrupts
+Subject: [Qemu-devel] [PATCH v2 5/6] tests: Test all implemented RX8900
+ functionality
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,497 +102,924 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6yslHIa7MoMI
+X-TUID: 8HLUkN7QUqwj
 
 From: Alastair D'Silva <alastair@d-silva.org>
 
-The QTest framework cannot work with named interrupts. This patch
-adds support for them, as well as the ability to manipulate them
-from within a test.
-
-Read actions are via callbacks, which allows for pulsed interrupts
-to be read (the polled method used for the unnamed interrupts
-cannot read pulsed interrupts as the value is reverted before the
-test sees the changes).
-
 Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
 ---
- hw/core/irq.c    |  17 +++++-----
- include/hw/irq.h |  12 +++++--
- qtest.c          | 102 ++++++++++++++++++++++++++++++++++++++++++-------------
- tests/libqtest.c |  87 ++++++++++++++++++++++++++++++++++++++++++++---
- tests/libqtest.h |  59 ++++++++++++++++++++++++++++++++
- 5 files changed, 238 insertions(+), 39 deletions(-)
+ tests/Makefile.include |   2 +
+ tests/rx8900-test.c    | 881 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 883 insertions(+)
+ create mode 100644 tests/rx8900-test.c
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index 49ff2e6..6b0e694 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -134,15 +134,16 @@ qemu_irq *qemu_irq_proxy(qemu_irq **target, int n)
-     return qemu_allocate_irqs(proxy_irq_handler, target, n);
- }
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index e98d3b6..e52e355 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -300,6 +300,7 @@ check-qtest-sparc64-y = tests/endianness-test$(EXESUF)
  
--void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n)
-+qemu_irq qemu_irq_dup(qemu_irq in)
- {
--    int i;
--    qemu_irq *old_irqs = qemu_allocate_irqs(NULL, NULL, n);
--    for (i = 0; i < n; i++) {
--        *old_irqs[i] = *gpio_in[i];
--        gpio_in[i]->handler = handler;
--        gpio_in[i]->opaque = &old_irqs[i];
--    }
-+    qemu_irq out = qemu_allocate_irq(in->handler, in->opaque, in->n);
-+    return out;
+ check-qtest-arm-y = tests/tmp105-test$(EXESUF)
+ check-qtest-arm-y += tests/ds1338-test$(EXESUF)
++check-qtest-arm-y += tests/rx8900-test$(EXESUF)
+ check-qtest-arm-y += tests/m25p80-test$(EXESUF)
+ gcov-files-arm-y += hw/misc/tmp105.c
+ check-qtest-arm-y += tests/virtio-blk-test$(EXESUF)
+@@ -637,6 +638,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-test.o \
+ tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-obj-y)
+ tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
+ tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
++tests/rx8900-test$(EXESUF): tests/rx8900-test.o $(libqos-imx-obj-y)
+ tests/m25p80-test$(EXESUF): tests/m25p80-test.o
+ tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
+ tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
+diff --git a/tests/rx8900-test.c b/tests/rx8900-test.c
+new file mode 100644
+index 0000000..f822a41
+--- /dev/null
++++ b/tests/rx8900-test.c
+@@ -0,0 +1,881 @@
++/*
++ * QTest testcase for the Epson RX8900SA/CE RTC
++ *
++ * Copyright (c) 2016 IBM Corporation
++ * Authors:
++ *  Alastair D'Silva <alastair@d-silva.org>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/timer/rx8900_regs.h"
++#include "libqtest.h"
++#include "libqos/i2c.h"
++#include "qemu/timer.h"
++
++#define IMX25_I2C_0_BASE 0x43F80000
++#define RX8900_TEST_ID "rx8900-test"
++#define RX8900_ADDR 0x32
++#define RX8900_INTERRUPT_OUT "rx8900-interrupt-out"
++#define RX8900_FOUT_ENABLE "rx8900-fout-enable"
++#define RX8900_FOUT "rx8900-fout"
++
++static I2CAdapter *i2c;
++static uint8_t addr;
++
++static inline uint8_t bcd2bin(uint8_t x)
++{
++    return (x & 0x0f) + (x >> 4) * 10;
 +}
 +
-+void qemu_irq_intercept_in(qemu_irq gpio_in, qemu_irq_handler handler, void *opaque)
++static inline uint8_t bin2bcd(uint8_t x)
 +{
-+    gpio_in->handler = handler;
-+    gpio_in->opaque = opaque;
- }
- 
- static const TypeInfo irq_type_info = {
-diff --git a/include/hw/irq.h b/include/hw/irq.h
-index 4c4c2ea..86d1d1e 100644
---- a/include/hw/irq.h
-+++ b/include/hw/irq.h
-@@ -58,8 +58,14 @@ qemu_irq qemu_irq_split(qemu_irq irq1, qemu_irq irq2);
-  */
- qemu_irq *qemu_irq_proxy(qemu_irq **target, int n);
- 
--/* For internal use in qtest.  Similar to qemu_irq_split, but operating
--   on an existing vector of qemu_irq.  */
--void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n);
++    return (x / 10 << 4) | (x % 10);
++}
++
++static void qmp_rx8900_set_temperature(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'temperature', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
++static void qmp_rx8900_set_voltage(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'supply voltage', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
 +/**
-+ * Duplicate an IRQ
-+ * @param in the IRQ to deplicate
-+ * @return a copy of the IRQ
++ * Read an RX8900 register
++ * @param reg the address of the register
++ * @return the value of the register
 + */
-+qemu_irq qemu_irq_dup(qemu_irq in);
-+
-+/* For internal use in qtest. */
-+void qemu_irq_intercept_in(qemu_irq gpio_in, qemu_irq_handler handler, void *opaque);
- 
- #endif
-diff --git a/qtest.c b/qtest.c
-index 46b99ae..2e09634 100644
---- a/qtest.c
-+++ b/qtest.c
-@@ -40,7 +40,6 @@ static DeviceState *irq_intercept_dev;
- static FILE *qtest_log_fp;
- static CharBackend qtest_chr;
- static GString *inbuf;
--static int irq_levels[MAX_IRQ];
- static qemu_timeval start_time;
- static bool qtest_opened;
- 
-@@ -160,10 +159,16 @@ static bool qtest_opened;
-  *
-  *  IRQ raise NUM
-  *  IRQ lower NUM
-+ *  IRQ_NAMED NAME NUM LEVEL
-  *
-  * where NUM is an IRQ number.  For the PC, interrupts can be intercepted
-  * simply with "irq_intercept_in ioapic" (note that IRQ0 comes out with
-  * NUM=0 even though it is remapped to GSI 2).
-+ *
-+ *  > irq_set NAME NUM LEVEL
-+ *  < OK
-+ *
-+ *  Set the named input IRQ to the level (0/1)
-  */
- 
- static int hex2nib(char ch)
-@@ -243,17 +248,31 @@ static void GCC_FMT_ATTR(2, 3) qtest_sendf(CharBackend *chr,
-     va_end(ap);
- }
- 
-+typedef struct qtest_irq {
-+    qemu_irq old_irq;
-+    char *name;
-+    bool last_level;
-+} qtest_irq;
-+
- static void qtest_irq_handler(void *opaque, int n, int level)
- {
--    qemu_irq old_irq = *(qemu_irq *)opaque;
--    qemu_set_irq(old_irq, level);
-+    qtest_irq *data = (qtest_irq *)opaque;
-+    level = !!level;
-+
-+    qemu_set_irq(data->old_irq, level);
- 
--    if (irq_levels[n] != level) {
-+    if (level != data->last_level) {
-         CharBackend *chr = &qtest_chr;
--        irq_levels[n] = level;
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "IRQ %s %d\n",
--                    level ? "raise" : "lower", n);
-+
-+        if (data->name) {
-+            qtest_sendf(chr, "IRQ_NAMED %s %d %d\n",
-+                    data->name, n, level);
-+        } else {
-+            qtest_sendf(chr, "IRQ %s %d\n", level ? "raise" : "lower", n);
-+        }
-+
-+        data->last_level = level;
-     }
- }
- 
-@@ -289,7 +308,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         if (!dev) {
-             qtest_send_prefix(chr);
-             qtest_send(chr, "FAIL Unknown device\n");
--	    return;
-+            return;
-         }
- 
-         if (irq_intercept_dev) {
-@@ -299,33 +318,73 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             } else {
-                 qtest_send(chr, "OK\n");
-             }
--	    return;
-+            return;
-         }
- 
-         QLIST_FOREACH(ngl, &dev->gpios, node) {
--            /* We don't support intercept of named GPIOs yet */
--            if (ngl->name) {
--                continue;
--            }
-             if (words[0][14] == 'o') {
-                 int i;
-                 for (i = 0; i < ngl->num_out; ++i) {
--                    qemu_irq *disconnected = g_new0(qemu_irq, 1);
--                    qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler,
--                                                      disconnected, i);
-+                    qtest_irq *data = g_new0(qtest_irq, 1);
-+                    data->name = ngl->name;
-+                    qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler, data,
-+                            i);
- 
--                    *disconnected = qdev_intercept_gpio_out(dev, icpt,
-+                    data->old_irq = qdev_intercept_gpio_out(dev, icpt,
-                                                             ngl->name, i);
-                 }
-             } else {
--                qemu_irq_intercept_in(ngl->in, qtest_irq_handler,
--                                      ngl->num_in);
-+                int i;
-+                for (i = 0; i < ngl->num_in; ++i) {
-+                    qtest_irq *data = g_new0(qtest_irq, 1);
-+                    data->name = ngl->name;
-+                    data->old_irq = qemu_irq_dup(ngl->in[i]);
-+
-+                    qemu_irq_intercept_in(ngl->in[i], qtest_irq_handler, data);
-+                }
-             }
-         }
-         irq_intercept_dev = dev;
-         qtest_send_prefix(chr);
-         qtest_send(chr, "OK\n");
- 
-+    } else if (strcmp(words[0], "irq_set") == 0) {
-+        DeviceState *dev;
-+        NamedGPIOList *ngl;
-+        int level;
-+        qemu_irq irq = NULL;
-+        int irq_num;
-+
-+        g_assert(words[1]); /* device */
-+        g_assert(words[2]); /* gpio list */
-+        g_assert(words[3]); /* gpio line in list */
-+        g_assert(words[4]); /* level */
-+        dev = DEVICE(object_resolve_path(words[1], NULL));
-+        if (!dev) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown device\n");
-+            return;
-+        }
-+
-+        irq_num = atoi(words[3]);
-+        level = atoi(words[4]);
-+
-+        QLIST_FOREACH(ngl, &dev->gpios, node) {
-+            if (strcmp(words[2], ngl->name) == 0 && ngl->num_in > irq_num) {
-+                irq = ngl->in[irq_num];
-+            }
-+        }
-+
-+        if (irq == NULL) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown IRQ\n");
-+            return;
-+        }
-+
-+        qemu_set_irq(irq, level);
-+
-+        qtest_send_prefix(chr);
-+        qtest_send(chr, "OK\n");
-     } else if (strcmp(words[0], "outb") == 0 ||
-                strcmp(words[0], "outw") == 0 ||
-                strcmp(words[0], "outl") == 0) {
-@@ -622,8 +681,6 @@ static int qtest_can_read(void *opaque)
- 
- static void qtest_event(void *opaque, int event)
- {
--    int i;
--
-     switch (event) {
-     case CHR_EVENT_OPENED:
-         /*
-@@ -632,9 +689,6 @@ static void qtest_event(void *opaque, int event)
-          * used.  Injects an extra reset even when it's not used, and
-          * that can mess up tests, e.g. -boot once.
-          */
--        for (i = 0; i < ARRAY_SIZE(irq_levels); i++) {
--            irq_levels[i] = 0;
--        }
-         qemu_gettimeofday(&start_time);
-         qtest_opened = true;
-         if (qtest_log_fp) {
-diff --git a/tests/libqtest.c b/tests/libqtest.c
-index 6f69752..43da151 100644
---- a/tests/libqtest.c
-+++ b/tests/libqtest.c
-@@ -21,12 +21,16 @@
- #include <sys/wait.h>
- #include <sys/un.h>
- 
-+#include <glib.h>
-+
- #include "qapi/qmp/json-parser.h"
- #include "qapi/qmp/json-streamer.h"
- #include "qapi/qmp/qjson.h"
- 
-+
- #define MAX_IRQ 256
- #define SOCKET_TIMEOUT 50
-+#define IRQ_KEY_LENGTH 64
- 
- QTestState *global_qtest;
- 
-@@ -34,12 +38,22 @@ struct QTestState
- {
-     int fd;
-     int qmp_fd;
-+    GHashTable *irq_handlers;
-     bool irq_level[MAX_IRQ];
-     GString *rx;
-     pid_t qemu_pid;  /* our child QEMU process */
-     bool big_endian;
- };
- 
-+typedef struct irq_action {
-+    void (*cb)(void *opaque, const char *name, int irq, bool level);
-+    void *opaque;
-+    const char *name;
-+    int n;
-+    bool level;
-+} irq_action;
-+
-+
- static GHookList abrt_hooks;
- static GList *qtest_instances;
- static struct sigaction sigact_old;
-@@ -216,6 +230,8 @@ QTestState *qtest_init(const char *extra_args)
- 
-     s->big_endian = qtest_query_target_endianness(s);
- 
-+    s->irq_handlers = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
-+
-     return s;
- }
- 
-@@ -224,6 +240,8 @@ void qtest_quit(QTestState *s)
-     qtest_instances = g_list_remove(qtest_instances, s);
-     g_hook_destroy_link(&abrt_hooks, g_hook_find_data(&abrt_hooks, TRUE, s));
- 
-+    g_hash_table_destroy(s->irq_handlers);
-+
-     /* Uninstall SIGABRT handler on last instance */
-     if (!qtest_instances) {
-         cleanup_sigabrt_handler();
-@@ -304,11 +322,35 @@ static GString *qtest_recv_line(QTestState *s)
-     return line;
- }
- 
-+void qtest_irq_attach(QTestState *s, const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque)
++static uint8_t read_register(RX8900Addresses reg)
 +{
-+    char key[IRQ_KEY_LENGTH];
-+    irq_action *action = g_new0(irq_action, 1);
++    uint8_t val;
++    uint8_t reg_address = (uint8_t)reg;
 +
-+    action->cb = irq_cb;
-+    action->name = name;
-+    action->n = irq;
-+    action->opaque = opaque;
-+    action->level = false;
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, &val, 1);
 +
-+    g_assert_cmpint(snprintf(key, sizeof(key), "%s.%d",
-+            name, irq), <, sizeof(key));
-+
-+    g_hash_table_insert(s->irq_handlers, g_strdup(key), action);
++    return val;
 +}
 +
-+#define MAX_ACTIONS 256
- static gchar **qtest_rsp(QTestState *s, int expected_args)
- {
-     GString *line;
-     gchar **words;
-     int i;
-+    int action_index;
-+    int action_count = 0;
-+    bool action_raise[MAX_ACTIONS];
-+    irq_action *actions[MAX_ACTIONS];
- 
- redo:
-     line = qtest_recv_line(s);
-@@ -325,10 +367,29 @@ redo:
-         g_assert_cmpint(irq, >=, 0);
-         g_assert_cmpint(irq, <, MAX_IRQ);
- 
--        if (strcmp(words[1], "raise") == 0) {
--            s->irq_level[irq] = true;
--        } else {
--            s->irq_level[irq] = false;
-+        s->irq_level[irq] = (strcmp(words[1], "raise") == 0);
-+
-+        g_strfreev(words);
-+        goto redo;
-+    } else if (strcmp(words[0], "IRQ_NAMED") == 0) {
-+        bool level;
-+        char key[IRQ_KEY_LENGTH];
-+        irq_action *action;
-+
-+        g_assert(words[1] != NULL);
-+        g_assert(words[2] != NULL);
-+        g_assert(words[3] != NULL);
-+
-+        level = (words[3][0] == '1');
-+
-+        g_assert_cmpint(snprintf(key, sizeof(key), "%s.%s",
-+                words[1], words[2]), <, sizeof(key));
-+
-+        action = g_hash_table_lookup(s->irq_handlers, key);
-+
-+        if (action) {
-+            action_raise[action_count] = level;
-+            actions[action_count++] = action;
-         }
- 
-         g_strfreev(words);
-@@ -346,6 +407,17 @@ redo:
-         g_strfreev(words);
-     }
- 
-+/* Defer processing of IRQ actions until all communications have been handled,
-+ * otherwise, interrupt handler that cause further communication can disrupt
-+ * the communication stream
++/**
++ * Write to an RX8900 register
++ * @param reg the address of the register
++ * @param val the value to write
 + */
-+    for (action_index = 0; action_index < action_count; action_index++) {
-+        irq_action *action = actions[action_index];
-+        action->cb(action->opaque, action->name, action->n,
-+                action_raise[action_index]);
-+        action->level = action_raise[action_index];
++static uint8_t write_register(RX8900Addresses reg, uint8_t val)
++{
++    uint8_t buf[2];
++
++    buf[0] = reg;
++    buf[1] = val;
++
++    i2c_send(i2c, addr, buf, 2);
++
++    return val;
++}
++
++/**
++ * Set bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void set_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value |= mask;
++    write_register(reg, value);
++}
++
++/**
++ * Clear bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void clear_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value &= ~mask;
++    write_register(reg, value);
++}
++
++/**
++ * Read a number of sequential RX8900 registers
++ * @param reg the address of the first register
++ * @param buf (out) an output buffer to stash the register values
++ * @param count the number of registers to read
++ */
++static void read_registers(RX8900Addresses reg, uint8_t *buf, uint8_t count)
++{
++    uint8_t reg_address = (uint8_t)reg;
++
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, buf, count);
++}
++
++/**
++ * Write to a sequential number of RX8900 registers
++ * @param reg the address of the first register
++ * @param buffer a buffer of values to write
++ * @param count the sumber of registers to write
++ */
++static void write_registers(RX8900Addresses reg, uint8_t *buffer, uint8_t count)
++{
++    uint8_t buf[RX8900_NVRAM_SIZE + 1];
++
++    buf[0] = (uint8_t)reg;
++    memcpy(buf + 1, buffer, count);
++
++    i2c_send(i2c, addr, buf, count + 1);
++}
++
++/**
++ * Set the time on the RX8900
++ * @param secs the seconds to set
++ * @param mins the minutes to set
++ * @param hours the hours to set
++ * @param weekday the day of the week to set (0 = Sunday)
++ * @param day the day of the month to set
++ * @param month the month to set
++ * @param year the year to set
++ */
++static void set_time(uint8_t secs, uint8_t mins, uint8_t hours,
++        uint8_t weekday, uint8_t day, uint8_t month, uint8_t year)
++{
++    uint8_t buf[7];
++
++    buf[0] = bin2bcd(secs);
++    buf[1] = bin2bcd(mins);
++    buf[2] = bin2bcd(hours);
++    buf[3] = BIT(weekday);
++    buf[4] = bin2bcd(day);
++    buf[5] = bin2bcd(month);
++    buf[6] = bin2bcd(year);
++
++    write_registers(SECONDS, buf, 7);
++}
++
++
++/**
++ * Check basic communication
++ */
++static void send_and_receive(void)
++{
++    uint8_t buf[7];
++    time_t now = time(NULL);
++    struct tm *tm_ptr;
++
++    /* retrieve the date */
++    read_registers(SECONDS, buf, 7);
++
++    tm_ptr = gmtime(&now);
++
++    /* check retrieved time against local time */
++    g_assert_cmpuint(bcd2bin(buf[0]), == , tm_ptr->tm_sec);
++    g_assert_cmpuint(bcd2bin(buf[1]), == , tm_ptr->tm_min);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , tm_ptr->tm_hour);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , tm_ptr->tm_mday);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 1 + tm_ptr->tm_mon);
++    g_assert_cmpuint(2000 + bcd2bin(buf[6]), == , 1900 + tm_ptr->tm_year);
++}
++
++/**
++ * Check that the temperature can be altered via properties
++ */
++static void check_temperature(void)
++{
++   /* Check the initial temperature is 25C */
++    uint8_t temperature;
++
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 135);
++
++    /* Set the temperature to 40C and check the temperature again */
++    qmp_rx8900_set_temperature(RX8900_TEST_ID, 40.0f);
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 157);
++}
++
++/**
++ * Check that the time rolls over correctly
++ */
++static void check_rollover(void)
++{
++    uint8_t buf[7];
++
++
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Wait for the clock to rollover */
++    sleep(2);
++
++    memset(buf, 0, sizeof(buf));
++
++    /* Check that the clock rolled over */
++    /* Read from registers starting at 0x00 */
++    buf[0] = 0x00;
++
++    read_registers(SECONDS, buf, 7);
++
++    /* Ignore seconds as there may be some noise,
++     * we expect 00:00:xx Tuesday 1/3/2016
++     */
++    g_assert_cmpuint(bcd2bin(buf[1]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[3]), == , 0x04);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , 1);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 3);
++    g_assert_cmpuint(bcd2bin(buf[6]), == , 16);
++}
++
++uint32_t interrupt_counts[RX8900_INTERRUPT_SOURCES];
++
++/**
++ * Reset the interrupt counts
++ */
++static void count_reset(void)
++{
++    for (int source = 0; source < RX8900_INTERRUPT_SOURCES; source++) {
++        interrupt_counts[source] = 0;
++    }
++}
++
++/**
++ * Handle an RX8900 interrupt (update the counts for that interrupt type)
++ */
++static void handle_interrupt(void *opaque, const char *name, int irq,
++        bool level)
++{
++    if (!level) {
++        return;
 +    }
 +
-     return words;
- }
- 
-@@ -918,3 +990,10 @@ bool qtest_big_endian(QTestState *s)
- {
-     return s->big_endian;
- }
++    uint8_t flags = read_register(FLAG_REGISTER);
 +
-+void qtest_irq_set(QTestState *s, const char *id, const char *gpiolist, int n,
-+        bool level)
-+{
-+    qtest_sendf(s, "irq_set %s %s %d %d\n", id, gpiolist, n, level);
-+    qtest_rsp(s, 0);
++    for (int flag = 0; flag < 8; flag++) {
++        if (flags & BIT(flag)) {
++            interrupt_counts[flag]++;
++        }
++    }
++
++    write_register(FLAG_REGISTER, 0x00);
 +}
-diff --git a/tests/libqtest.h b/tests/libqtest.h
-index 90f182e..c74373c 100644
---- a/tests/libqtest.h
-+++ b/tests/libqtest.h
-@@ -176,6 +176,34 @@ void qtest_irq_intercept_in(QTestState *s, const char *string);
- void qtest_irq_intercept_out(QTestState *s, const char *string);
- 
- /**
-+ * irq_attach:
-+ * @s: #QTestState instance to operate on.
-+ * @name: the name of the GPIO list containing the IRQ
-+ * @irq: The IRQ number within the GPIO list to attach to
-+ * @irq_cb: The callback to execute when the interrupt changes
-+ * @opaque: opaque info to pass to the callback
-+ *
-+ * Attach a callback to an intercepted interrupt
-+ */
-+void qtest_irq_attach(QTestState *s, const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque);
++
++uint32_t fout_counts;
 +
 +/**
-+ * qtest_irq_set
-+ * Set an interrupt level
-+ * @s: #QTestState instance to operate on.
-+ * @id: the device to inject interrupts for
-+ * @gpiolist: the GPIO list containing the IRQ
-+ * @n: the GPIO within the list
-+ * @level: the IRQ level
-+ *
-+ * Set an interrupt to a nominated level
++ * Handle an Fout state change
 + */
-+void qtest_irq_set(QTestState *s, const char *id, const char *gpiolist, int n,
-+        bool level);
-+
-+/**
-  * qtest_outb:
-  * @s: #QTestState instance to operate on.
-  * @addr: I/O port to write to.
-@@ -626,6 +654,37 @@ static inline void irq_intercept_out(const char *string)
- }
- 
- /**
-+ * irq_attach:
-+ * @name: the name of the gpio list containing the IRQ
-+ * @irq: The IRQ to attach to
-+ * @irq_cb: The callback to execute when the interrupt changes
-+ * @opaque: opaque info to pass to the callback
-+ *
-+ * Attach a callback to an intecepted interrupt
-+ */
-+static inline void irq_attach(const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque)
++static void handle_fout(void *opaque, const char *name, int irq, bool level)
 +{
-+    qtest_irq_attach(global_qtest, name, irq, irq_cb, opaque);
++    if (!level) {
++        return;
++    }
++
++    fout_counts++;
 +}
 +
 +/**
-+ * qtest_irq_set
-+ * Set an interrupt level
-+ * @id: the device to inject interrupts for
-+ * @gpiolist: the GPIO list containing the line to seh
-+ * @n: the line to set within the list
-+ * @level: the IRQ level
++ * Reset the fout count
 + */
-+static inline void irq_set(const char *id, const char *gpiolist, int n,
-+        bool level)
++static void fout_count_reset(void)
 +{
-+    qtest_irq_set(global_qtest, id, gpiolist, n, level);
++    fout_counts = 0;
 +}
 +
 +
 +/**
-  * outb:
-  * @addr: I/O port to write to.
-  * @value: Value being written.
++ * Sleep for some real time while counting interrupts
++ * @param delay the delay in microseconds
++ * @param loop the loop time in microseconds
++ */
++static void wait_for(uint64_t delay, uint64_t loop)
++{
++    struct timeval end, now;
++
++    gettimeofday(&end, NULL);
++    delay += end.tv_usec;
++    end.tv_sec += delay / 1000000;
++    end.tv_usec = delay % 1000000;
++
++    while (gettimeofday(&now, NULL),
++            now.tv_sec < end.tv_sec || now.tv_usec < end.tv_usec) {
++        clock_step(loop * 1000);
++        usleep(loop);
++    }
++}
++
++/**
++ * Sleep for some emulated time while counting interrupts
++ * @param delay the delay in nanoseconds
++ * @param loop the loop time in nanoseconds
++ */
++static void wait_cycles(uint64_t delay, uint64_t loop)
++{
++    uint64_t counter;
++
++    for (counter = 0; counter < delay; counter += loop) {
++        clock_step(loop);
++    }
++}
++
++
++/**
++ * Check that when the update timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_update_interrupt_disabled(void)
++{
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    /* Wait for the clock to rollover, this will cover both seconds & minutes
++     */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per second updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_seconds(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per second updates */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5.1f * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], >=, 5);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], <=, 6);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per minute updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_minutes(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per minute updates */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5 * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 1);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the alarm timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_alarm_interrupt_disabled(void)
++{
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_month(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_month_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(2); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_week(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_week_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 3, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that the reset function
++ */
++static void check_reset(void)
++{
++    set_bits_in_register(FLAG_REGISTER, FLAG_MASK_UF);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_RESET);
++
++    g_assert_cmpuint(read_register(FLAG_REGISTER), ==,
++            0x00);
++}
++
++/**
++ * Check that Fout operates at 1Hz
++ */
++static void check_fout_1hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL1;
++    ext_reg &= ~EXT_MASK_FSEL0;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 1000000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 2);
++}
++
++/**
++ * Check that Fout operates at 1024Hz
++ */
++static void check_fout_1024hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 100000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 1024 * 2);
++}
++
++/**
++ * Check that Fout operates at 32768Hz
++ */
++static void check_fout_32768hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 15000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    /* There appears to be some rounding errors in the timer,
++     * we'll tolerate it for now
++     */
++    g_assert_cmpuint(fout_counts, >=, 32768 * 2);
++    g_assert_cmpuint(fout_counts, <=, 65540);
++}
++
++/**
++ * Check the countdown timer operates at 1 Hz
++ */
++static void check_countdown_1hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 5);
++    write_register(TIMER_COUNTER_1, 0);
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 64 Hz
++ */
++static void check_countdown_64hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x40);
++    write_register(TIMER_COUNTER_1, 0x01); /* 5 * 64 */
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 4096 Hz
++ */
++static void check_countdown_4096hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0xFF);
++    write_register(TIMER_COUNTER_1, 0x0F); /* 4095 */
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(999755859ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(244141ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 1 minute
++ */
++static void check_countdown_1m(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x01);
++    write_register(TIMER_COUNTER_1, 0x00);
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(59 * 1000000000ULL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1000000000LL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check that the voltage can be altered via properties
++ */
++static void check_voltage(void)
++{
++    uint8_t flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* start from a good state */
++    g_assert_cmpuint(flags, == , 0x00);
++
++    /* 1.9V triggers VDET but not VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.9f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0x00);
++
++
++    /* 1.5V should trigger both VDET & VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.5f);
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0);
++}
++
++
++
++int main(int argc, char **argv)
++{
++    QTestState *s = NULL;
++    int ret;
++    char args[255];
++    snprintf(args, sizeof(args), "-display none -machine imx25-pdk "
++            "-device rx8900,bus=i2c.0,address=0x%x,id=%s"
++#ifdef RX8900_TRACE
++            " -trace events=/tmp/events"
++#endif
++            ,
++            RX8900_ADDR, RX8900_TEST_ID);
++
++    g_test_init(&argc, &argv, NULL);
++
++    s = qtest_start(args);
++    i2c = imx_i2c_create(IMX25_I2C_0_BASE);
++    addr = RX8900_ADDR;
++
++    irq_intercept_out(RX8900_TEST_ID);
++    irq_attach(RX8900_INTERRUPT_OUT, 0, handle_interrupt, NULL);
++    irq_attach(RX8900_FOUT, 0, handle_fout, NULL);
++
++    qtest_add_func("/rx8900/reset", check_reset);
++    qtest_add_func("/rx8900/tx-rx", send_and_receive);
++    qtest_add_func("/rx8900/temperature", check_temperature);
++    qtest_add_func("/rx8900/rollover", check_rollover);
++    qtest_add_func("/rx8900/update-interrupt-disabled",
++            check_update_interrupt_disabled);
++    qtest_add_func("/rx8900/update-interrupt-seconds",
++            check_update_interrupt_seconds);
++    qtest_add_func("/rx8900/update-interrupt-minutes",
++            check_update_interrupt_minutes);
++    qtest_add_func("/rx8900/alarm-interrupt-disabled",
++            check_alarm_interrupt_disabled);
++    qtest_add_func("/rx8900/alarm-interrupt-month",
++            check_alarm_interrupt_day_of_month);
++    qtest_add_func("/rx8900/alarm-interrupt-month-negative",
++            check_alarm_interrupt_day_of_month_negative);
++    qtest_add_func("/rx8900/alarm-interrupt-week",
++            check_alarm_interrupt_day_of_week);
++    qtest_add_func("/rx8900/alarm-interrupt-week-negative",
++            check_alarm_interrupt_day_of_week_negative);
++    qtest_add_func("/rx8900/fout_1hz", check_fout_1hz);
++    qtest_add_func("/rx8900/fout_1024hz", check_fout_1024hz);
++    qtest_add_func("/rx8900/fout_32768hz", check_fout_32768hz);
++    qtest_add_func("/rx8900/countdown_1hz", check_countdown_1hz);
++    qtest_add_func("/rx8900/countdown_64hz", check_countdown_64hz);
++    qtest_add_func("/rx8900/countdown_4096hz", check_countdown_4096hz);
++    qtest_add_func("/rx8900/countdown_1m", check_countdown_1m);
++    qtest_add_func("/rx8900/low_voltage", check_voltage);
++
++    ret = g_test_run();
++
++    if (s) {
++        qtest_quit(s);
++    }
++    g_free(i2c);
++
++    return ret;
++}
 -- 
 2.9.3
 

@@ -1,251 +1,273 @@
-Received: by 10.25.159.131 with SMTP id i125csp616711lfe;
-        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
-X-Received: by 10.55.72.86 with SMTP id v83mr31293154qka.262.1480562065128;
-        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.131 with SMTP id i125csp629234lfe;
+        Wed, 30 Nov 2016 20:02:59 -0800 (PST)
+X-Received: by 10.200.47.180 with SMTP id l49mr33914097qta.212.1480564979207;
+        Wed, 30 Nov 2016 20:02:59 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a4si39333389qkd.7.2016.11.30.19.14.24
+        by mx.google.com with ESMTPS id t3si39428784qkc.99.2016.11.30.20.02.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 Nov 2016 20:02:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@ozlabs-ru.20150623.gappssmtp.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47811 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:47964 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cCHpI-0003CY-J0
-	for alex.bennee@linaro.org; Wed, 30 Nov 2016 22:14:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45622)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cCIaI-0001sn-Kh
+	for alex.bennee@linaro.org; Wed, 30 Nov 2016 23:02:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55594)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1cCHon-0003CO-F8
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:54 -0500
+	(envelope-from <SRS0=Bfgi=XQ=redhat.com=mst@kernel.org>)
+	id 1cCIWN-0007BP-A3
+	for qemu-arm@nongnu.org; Wed, 30 Nov 2016 22:58:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1cCHoi-0001s9-IF
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:53 -0500
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:36434)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1cCHoi-0001ro-CH
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:48 -0500
-Received: by mail-pf0-x241.google.com with SMTP id c4so11060804pfb.3
-	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 19:13:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
-	h=subject:to:references:cc:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=s82CTLf5gHchzELN3GkjXz2Fc7S1ZX4o3j9ltJ49fcA=;
-	b=htRbrKLwrGGYhaPShxSQBgjSt3wSPWVDZqtoDE4NBMybdituEIvgrcSMsjiFNMySzt
-	Lf3IkuWNr3Oh09xoxh/h5Wf++Fz/pXjtk5GrrvqPMkH/TXVzIKrV3tZ8hMJHtTmo5P/4
-	U1Zv81T1LvrT9H4Sy5IljpZiRkb/jPcuu8fpdYne7f6Nlmh3d+4MmYogf1ocROpSWxDS
-	m6QrN3mZcrrpNVMSwsqmZBfJ8f3eoOGgVvjtOtyhk1YRyqBGII1B100PWagbUyCAcB4r
-	qc5lJsbgCcZCF9tfowiCuTq+fMXiirdMKjXR0uHnGQNihDaV60C3IGM6oexXg9TL9HAM
-	/ASA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=s82CTLf5gHchzELN3GkjXz2Fc7S1ZX4o3j9ltJ49fcA=;
-	b=Zw1nYdhKxQMNcI44L0NKdNiD/ahwmr1rw1Mqd76zhPDDCLdY/XLWcLKJx6IxfaW6a9
-	XnjfToP3mSXZ5+h/taAscL6JEe2cnPrDu91/t9NWzeLkw3sr4rZuvRRhUxJ75yi1KrNk
-	7zEHqVXDN/FqsArltGnSwGnq8Wq442bgwxqUFFk+hoHaBJDvMbWuMHrpeGE583s8rqGY
-	sB8wPmVb/sIsK1VBnSD1dFRc1iBVnE4Vt/ckbqLVHVSRub0m355EZsUzaYrRHyv3IprH
-	h1AwOC2g5HYlKUuuvR+U645Dx1Jdjqb7UmGnTOSovLR8UXbw6SQ8eIy+W1Q9SA3weOQm
-	Ka+A==
-X-Gm-Message-State: AKaTC0166cX+dvBhBGOHAm2ybRD+2hG+lopPMtLGCuMrBiZw88bGPVthzmoMatBjv2D2LQ==
-X-Received: by 10.99.114.2 with SMTP id n2mr65185476pgc.130.1480562027421;
-	Wed, 30 Nov 2016 19:13:47 -0800 (PST)
-Received: from [10.61.2.175] ([122.99.82.10])
-	by smtp.googlemail.com with ESMTPSA id
-	p1sm51074649pgc.29.2016.11.30.19.13.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Nov 2016 19:13:46 -0800 (PST)
-To: Alastair D'Silva <alastair@au1.ibm.com>, qemu-arm@nongnu.org
-References: <20161130053629.23340-1-alastair@au1.ibm.com>
-	<20161130053629.23340-3-alastair@au1.ibm.com>
-From: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <5b170e3d-ba83-da06-a4b5-fa45600be1c6@ozlabs.ru>
-Date: Thu, 1 Dec 2016 14:13:41 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <SRS0=Bfgi=XQ=redhat.com=mst@kernel.org>)
+	id 1cCIWL-0004PE-Nd
+	for qemu-arm@nongnu.org; Wed, 30 Nov 2016 22:58:55 -0500
+Received: from mail.kernel.org ([198.145.29.136]:58500)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <SRS0=Bfgi=XQ=redhat.com=mst@kernel.org>)
+	id 1cCIWL-0004P5-EW; Wed, 30 Nov 2016 22:58:53 -0500
+Received: from mail.kernel.org (localhost [127.0.0.1])
+	by mail.kernel.org (Postfix) with ESMTP id 4664F20279;
+	Thu,  1 Dec 2016 03:58:51 +0000 (UTC)
+Received: from redhat.com (pool-173-76-102-160.bstnma.fios.verizon.net
+	[173.76.102.160])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id E47B720263;
+	Thu,  1 Dec 2016 03:58:48 +0000 (UTC)
+Date: Thu, 1 Dec 2016 05:58:47 +0200
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <1480564455-23933-4-git-send-email-mst@redhat.com>
+References: <1480564455-23933-1-git-send-email-mst@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20161130053629.23340-3-alastair@au1.ibm.com>
-Content-Type: text/plain; charset=koi8-r
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: Re: [Qemu-devel] [PATCH v2 2/6] hw/i2c: Add a NULL check for i2c
- slave init callbacks
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1480564455-23933-1-git-send-email-mst@redhat.com>
+X-Mailer: git-send-email 2.8.0.287.g0deeb61
+X-Mutt-Fcc: =sent
+X-Virus-Scanned: ClamAV using ClamSMTP
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 198.145.29.136
+Subject: [Qemu-arm] [PULL 3/5] loader: fix handling of custom address spaces
+ when adding ROM blobs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	qemu-devel@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Alastair D'Silva <alastair@d-silva.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BjZPBDEyl094
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gfBRs8oW4MRS
 
-On 30/11/16 16:36, Alastair D'Silva wrote:
-> From: Alastair D'Silva <alastair@d-silva.org>
-> 
-> Add a NULL check for i2c slave init callbacks, so that we no longer
-> need to implement empty init functions.
-> 
-> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
-> ---
->  hw/arm/pxa2xx.c   | 9 +--------
->  hw/arm/tosa.c     | 7 -------
->  hw/arm/z2.c       | 7 -------
->  hw/i2c/core.c     | 6 +++++-
->  hw/timer/ds1338.c | 6 ------
->  5 files changed, 6 insertions(+), 29 deletions(-)
-> 
-> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-> index 21ea1d6..bdcf6bc 100644
-> --- a/hw/arm/pxa2xx.c
-> +++ b/hw/arm/pxa2xx.c
-> @@ -1449,17 +1449,10 @@ static const VMStateDescription vmstate_pxa2xx_i2c = {
->      }
->  };
->  
-> -static int pxa2xx_i2c_slave_init(I2CSlave *i2c)
-> -{
-> -    /* Nothing to do.  */
-> -    return 0;
-> -}
-> -
->  static void pxa2xx_i2c_slave_class_init(ObjectClass *klass, void *data)
->  {
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> -    k->init = pxa2xx_i2c_slave_init;
->      k->event = pxa2xx_i2c_event;
->      k->recv = pxa2xx_i2c_rx;
->      k->send = pxa2xx_i2c_tx;
-> @@ -2070,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
->      }
->      if (!revision)
->          revision = "pxa270";
-> -    
-> +
+From: Laszlo Ersek <lersek@redhat.com>
 
-Unrelated change.
+* Commit 3e76099aacb4 ("loader: Allow a custom AddressSpace when loading
+  ROMs") introduced the "Rom.as" field:
 
+  (1) It modified the utility callers of rom_insert() to take "as" as a
+      new parameter from *their* callers, and set "rom->as" from that
+      parameter. The functions covered were rom_add_file() and
+      rom_add_elf_program().
 
->      s->cpu = cpu_arm_init(revision);
->      if (s->cpu == NULL) {
->          fprintf(stderr, "Unable to find CPU definition\n");
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index 1ee12f4..39d9dbb 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -202,12 +202,6 @@ static int tosa_dac_recv(I2CSlave *s)
->      return -1;
->  }
->  
-> -static int tosa_dac_init(I2CSlave *i2c)
-> -{
-> -    /* Nothing to do.  */
-> -    return 0;
-> -}
-> -
->  static void tosa_tg_init(PXA2xxState *cpu)
->  {
->      I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
-> @@ -275,7 +269,6 @@ static void tosa_dac_class_init(ObjectClass *klass, void *data)
->  {
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> -    k->init = tosa_dac_init;
->      k->event = tosa_dac_event;
->      k->recv = tosa_dac_recv;
->      k->send = tosa_dac_send;
-> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-> index 68a92f3..b3a6bbd 100644
-> --- a/hw/arm/z2.c
-> +++ b/hw/arm/z2.c
-> @@ -263,12 +263,6 @@ static int aer915_recv(I2CSlave *slave)
->      return retval;
->  }
->  
-> -static int aer915_init(I2CSlave *i2c)
-> -{
-> -    /* Nothing to do.  */
-> -    return 0;
-> -}
-> -
->  static VMStateDescription vmstate_aer915_state = {
->      .name = "aer915",
->      .version_id = 1,
-> @@ -285,7 +279,6 @@ static void aer915_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> -    k->init = aer915_init;
->      k->event = aer915_event;
->      k->recv = aer915_recv;
->      k->send = aer915_send;
-> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-> index abd4c4c..ae3ca94 100644
-> --- a/hw/i2c/core.c
-> +++ b/hw/i2c/core.c
-> @@ -260,7 +260,11 @@ static int i2c_slave_qdev_init(DeviceState *dev)
->      I2CSlave *s = I2C_SLAVE(dev);
->      I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(s);
->  
-> -    return sc->init(s);
-> +    if (sc->init) {
-> +        return sc->init(s);
-> +    } else {
+  (2) It also modified rom_insert() itself, to auto-assign
+      "&address_space_memory", in case the external caller passed -- and
+      the utility caller forwarded -- as=NULL.
 
+  Except, commit 3e76099aacb4 forgot to update the third utility caller of
+  rom_insert(), under point (1), namely rom_add_blob().
 
-"else" and "}" below are not needed.
+* Later, commit 5e774eb3bd264 ("loader: Add AddressSpace loading support
+  to uImages") added the load_uimage_as() function, and the
+  rom_add_blob_fixed_as() function-like macro, with the necessary changes
+  elsewhere to propagate the new "as" parameter to rom_add_blob():
 
+    load_uimage_as()
+      load_uboot_image()
+        rom_add_blob_fixed_as()
+          rom_add_blob()
 
-> +        return 0;
-> +    }
+  At this point, the signature (and workings) of rom_add_blob() had been
+  broken already, and the rom_add_blob_fixed_as() macro passed its "_as"
+  parameter to rom_add_blob() as "callback_opaque". Given that the
+  "fw_callback" parameter itself was set to NULL (correctly), this did no
+  additional damage (the opaque arg would never be used), but ultimately
+  it broke the new functionality of load_uimage_as().
 
+* The load_uimage_as() function would be put to use in one of the later
+  patches, commit e481a1f63c93 ("generic-loader: Add a generic loader").
 
+* We can fix this only in a unified patch now. Append "AddressSpace *as"
+  to the signature of rom_add_blob(), and handle the new parameter. Pass
+  NULL from all current callers, except from rom_add_blob_fixed_as(),
+  where "_as" has to be bumped to the proper position.
 
+* Note that rom_add_file() rejects the case when both "mr" and "as" are
+  passed in as non-NULL. The action that this is apparently supposed to
+  prevent is the
 
->  }
->  
->  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
-> diff --git a/hw/timer/ds1338.c b/hw/timer/ds1338.c
-> index 0112949..f5d04dd 100644
-> --- a/hw/timer/ds1338.c
-> +++ b/hw/timer/ds1338.c
-> @@ -198,11 +198,6 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
->      return 0;
->  }
->  
-> -static int ds1338_init(I2CSlave *i2c)
-> -{
-> -    return 0;
-> -}
-> -
->  static void ds1338_reset(DeviceState *dev)
->  {
->      DS1338State *s = DS1338(dev);
-> @@ -220,7 +215,6 @@ static void ds1338_class_init(ObjectClass *klass, void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
->  
-> -    k->init = ds1338_init;
->      k->event = ds1338_event;
->      k->recv = ds1338_recv;
->      k->send = ds1338_send;
-> 
+    rom->mr = mr;
 
+  assignment (that's the only place where the "mr" parameter is used in
+  rom_add_file()). In rom_add_blob() though, we have no "mr" parameter,
+  and the actions done on the fw_cfg branch:
 
+    if (fw_file_name && fw_cfg) {
+        if (mc->rom_file_has_mr) {
+            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
+            mr = rom->mr;
+        } else {
+            data = rom->data;
+        }
+
+  reflect those that are performed by rom_add_file() too (with mr==NULL):
+
+    if (rom->fw_file && fw_cfg) {
+        if ((!option_rom || mc->option_rom_has_mr) &&
+            mc->rom_file_has_mr) {
+            data = rom_set_mr(rom, OBJECT(fw_cfg), devpath);
+        } else {
+            data = rom->data;
+        }
+
+  Hence we need no additional restrictions in rom_add_blob().
+
+* Stable is not affected as both problematic commits appeared first in
+  v2.8.0-rc0.
+
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Alistair Francis <alistair.francis@xilinx.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Michael Walle <michael@walle.cc>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Fixes: 3e76099aacb4dae0d37ebf95305369e03d1491e6
+Fixes: 5e774eb3bd264c76484906f4bd0fb38e00b8090e
+Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/lm32/lm32_hwsetup.h   | 2 +-
+ include/hw/loader.h      | 6 +++---
+ hw/arm/virt-acpi-build.c | 2 +-
+ hw/core/loader.c         | 4 +++-
+ hw/i386/acpi-build.c     | 2 +-
+ 5 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
+index b71e6ea..23e1878 100644
+--- a/hw/lm32/lm32_hwsetup.h
++++ b/hw/lm32/lm32_hwsetup.h
+@@ -75,7 +75,7 @@ static inline void hwsetup_create_rom(HWSetup *hw,
+         hwaddr base)
+ {
+     rom_add_blob("hwsetup", hw->data, TARGET_PAGE_SIZE,
+-                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL);
++                 TARGET_PAGE_SIZE, base, NULL, NULL, NULL, NULL);
+ }
+ 
+ static inline void hwsetup_add_u8(HWSetup *hw, uint8_t u)
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 0381706..0c864cf 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -180,7 +180,7 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+                            size_t max_len, hwaddr addr,
+                            const char *fw_file_name,
+                            FWCfgReadCallback fw_callback,
+-                           void *callback_opaque);
++                           void *callback_opaque, AddressSpace *as);
+ int rom_add_elf_program(const char *name, void *data, size_t datasize,
+                         size_t romsize, hwaddr addr, AddressSpace *as);
+ int rom_check_and_register_reset(void);
+@@ -194,7 +194,7 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ #define rom_add_file_fixed(_f, _a, _i)          \
+     rom_add_file(_f, NULL, _a, _i, false, NULL, NULL)
+ #define rom_add_blob_fixed(_f, _b, _l, _a)      \
+-    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL)
++    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, NULL)
+ #define rom_add_file_mr(_f, _mr, _i)            \
+     rom_add_file(_f, NULL, 0, _i, false, _mr, NULL)
+ #define rom_add_file_as(_f, _as, _i)            \
+@@ -202,7 +202,7 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ #define rom_add_file_fixed_as(_f, _a, _i, _as)          \
+     rom_add_file(_f, NULL, _a, _i, false, NULL, _as)
+ #define rom_add_blob_fixed_as(_f, _b, _l, _a, _as)      \
+-    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, _as)
++    rom_add_blob(_f, _b, _l, _l, _a, NULL, NULL, NULL, _as)
+ 
+ #define PC_ROM_MIN_VGA     0xc0000
+ #define PC_ROM_MIN_OPTION  0xc8000
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f953610..d4160df 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -809,7 +809,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+                                        uint64_t max_size)
+ {
+     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, virt_acpi_build_update, build_state);
++                        name, virt_acpi_build_update, build_state, NULL);
+ }
+ 
+ static const VMStateDescription vmstate_virt_acpi_build = {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 6e022b5..c0d645a 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -978,7 +978,8 @@ err:
+ 
+ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+                    size_t max_len, hwaddr addr, const char *fw_file_name,
+-                   FWCfgReadCallback fw_callback, void *callback_opaque)
++                   FWCfgReadCallback fw_callback, void *callback_opaque,
++                   AddressSpace *as)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+     Rom *rom;
+@@ -986,6 +987,7 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+ 
+     rom           = g_malloc0(sizeof(*rom));
+     rom->name     = g_strdup(name);
++    rom->as       = as;
+     rom->addr     = addr;
+     rom->romsize  = max_len ? max_len : len;
+     rom->datasize = len;
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 45a2ccf..9708cdc 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2936,7 +2936,7 @@ static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+                                        uint64_t max_size)
+ {
+     return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, acpi_build_update, build_state);
++                        name, acpi_build_update, build_state, NULL);
+ }
+ 
+ static const VMStateDescription vmstate_acpi_build = {
 -- 
-Alexey
+MST
+

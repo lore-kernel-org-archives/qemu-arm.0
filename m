@@ -1,83 +1,81 @@
-Received: by 10.25.159.131 with SMTP id i125csp616036lfe;
-        Wed, 30 Nov 2016 19:11:43 -0800 (PST)
-X-Received: by 10.55.40.229 with SMTP id o98mr30799260qko.260.1480561903571;
-        Wed, 30 Nov 2016 19:11:43 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp616711lfe;
+        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
+X-Received: by 10.55.72.86 with SMTP id v83mr31293154qka.262.1480562065128;
+        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 19si39325627qku.8.2016.11.30.19.11.43
+        by mx.google.com with ESMTPS id a4si39333389qkd.7.2016.11.30.19.14.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 Nov 2016 19:11:43 -0800 (PST)
+        Wed, 30 Nov 2016 19:14:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ozlabs-ru.20150623.gappssmtp.com;
+       dkim=fail header.i=@ozlabs-ru.20150623.gappssmtp.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47796 helo=lists.gnu.org)
+Received: from localhost ([::1]:47811 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cCHmg-0001Vd-ST
-	for alex.bennee@linaro.org; Wed, 30 Nov 2016 22:11:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44596)
+	id 1cCHpI-0003CY-J0
+	for alex.bennee@linaro.org; Wed, 30 Nov 2016 22:14:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1cCHmB-0001VH-B1
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:11:12 -0500
+	(envelope-from <aik@ozlabs.ru>) id 1cCHon-0003CO-F8
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aik@ozlabs.ru>) id 1cCHm6-00018F-KO
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:11:11 -0500
-Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:36465)
+	(envelope-from <aik@ozlabs.ru>) id 1cCHoi-0001s9-IF
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:53 -0500
+Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:36434)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1cCHm6-00017C-6g
-	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:11:06 -0500
-Received: by mail-pg0-x244.google.com with SMTP id x23so3120089pgx.3
-	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 19:11:05 -0800 (PST)
+	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1cCHoi-0001ro-CH
+	for qemu-devel@nongnu.org; Wed, 30 Nov 2016 22:13:48 -0500
+Received: by mail-pf0-x241.google.com with SMTP id c4so11060804pfb.3
+	for <qemu-devel@nongnu.org>; Wed, 30 Nov 2016 19:13:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
 	h=subject:to:references:cc:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Uo3NKh3dXMnlUgj55lxFFN7t9JRPoHGYfnKgU2nAKDM=;
-	b=unrOwvjnP18Iguc/mPPPcIQuLgOo234iuu/FocB2yLyq0wVuF75nVuiYsXF+0G32I9
-	pFU91I9QYn9fjmnWk0vxJkb8+s1SbUFHaKPPmipWw3ndN7uzmqXT9XB3S1vDeqY8kmnG
-	LX+fqZNRH/Me7C8bcUUB/z2YXnBSfCmBOz3IQGJY91beIkPBjaLzpuqJFDVZURu7wljx
-	vuxBzP8kFBUhuM5wN5YG+NvB31AC2ZTjnYKmwvgPo5oPNwV55eXicWD6kp29OeF9qyIJ
-	LhxVIjPbYFS5dppIcEUYgIMp50DsdA/ZzKXH+1O/er2sEqnZEhePry20bFAIja4oQjz2
-	qwxA==
+	bh=s82CTLf5gHchzELN3GkjXz2Fc7S1ZX4o3j9ltJ49fcA=;
+	b=htRbrKLwrGGYhaPShxSQBgjSt3wSPWVDZqtoDE4NBMybdituEIvgrcSMsjiFNMySzt
+	Lf3IkuWNr3Oh09xoxh/h5Wf++Fz/pXjtk5GrrvqPMkH/TXVzIKrV3tZ8hMJHtTmo5P/4
+	U1Zv81T1LvrT9H4Sy5IljpZiRkb/jPcuu8fpdYne7f6Nlmh3d+4MmYogf1ocROpSWxDS
+	m6QrN3mZcrrpNVMSwsqmZBfJ8f3eoOGgVvjtOtyhk1YRyqBGII1B100PWagbUyCAcB4r
+	qc5lJsbgCcZCF9tfowiCuTq+fMXiirdMKjXR0uHnGQNihDaV60C3IGM6oexXg9TL9HAM
+	/ASA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20130820;
 	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=Uo3NKh3dXMnlUgj55lxFFN7t9JRPoHGYfnKgU2nAKDM=;
-	b=bAjDYhb0KwkLN2zAjOX1THKs06BG0iQ1f313LWcsgZJG13FEZMqbQr/+a0V2P6vpxr
-	Ts9hnd1fue+dWCioyjjJaRZ7nq3X+HwejREFGcDvIyU0AuPOA8nL36JLCvg4z4L/mere
-	S9UHNTJ0S+qekVpvoAxBC8mu5Lny8zs6OdklpMVtbsoxnlzn4lsFPPzms3xAclsC+3lr
-	umPuKuic+kdO7rpgVlmP4qkAk08kl8atgUFzQ1zgafi35NHP5wGNSxo7gsjYGQ39SCTE
-	0GOMOWl/6HSZtpBah8RZ2SsyeVOBt2tffM9WjMQBmB6V4TaqkxZ0MyZunMNhGtXGCGnW
-	ZqxA==
-X-Gm-Message-State: AKaTC01DCWAmOtGbDJuTEm3a37q7Xu7rZeB/P9XjncMgfb2GHdwxXxnLIlsL+VaA7mHatA==
-X-Received: by 10.84.215.137 with SMTP id l9mr79583088pli.21.1480561845623;
-	Wed, 30 Nov 2016 19:10:45 -0800 (PST)
+	bh=s82CTLf5gHchzELN3GkjXz2Fc7S1ZX4o3j9ltJ49fcA=;
+	b=Zw1nYdhKxQMNcI44L0NKdNiD/ahwmr1rw1Mqd76zhPDDCLdY/XLWcLKJx6IxfaW6a9
+	XnjfToP3mSXZ5+h/taAscL6JEe2cnPrDu91/t9NWzeLkw3sr4rZuvRRhUxJ75yi1KrNk
+	7zEHqVXDN/FqsArltGnSwGnq8Wq442bgwxqUFFk+hoHaBJDvMbWuMHrpeGE583s8rqGY
+	sB8wPmVb/sIsK1VBnSD1dFRc1iBVnE4Vt/ckbqLVHVSRub0m355EZsUzaYrRHyv3IprH
+	h1AwOC2g5HYlKUuuvR+U645Dx1Jdjqb7UmGnTOSovLR8UXbw6SQ8eIy+W1Q9SA3weOQm
+	Ka+A==
+X-Gm-Message-State: AKaTC0166cX+dvBhBGOHAm2ybRD+2hG+lopPMtLGCuMrBiZw88bGPVthzmoMatBjv2D2LQ==
+X-Received: by 10.99.114.2 with SMTP id n2mr65185476pgc.130.1480562027421;
+	Wed, 30 Nov 2016 19:13:47 -0800 (PST)
 Received: from [10.61.2.175] ([122.99.82.10])
 	by smtp.googlemail.com with ESMTPSA id
-	d15sm105863884pfl.46.2016.11.30.19.10.41
+	p1sm51074649pgc.29.2016.11.30.19.13.43
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 30 Nov 2016 19:10:44 -0800 (PST)
-To: Alastair D'Silva <alastair@au1.ibm.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
-	<clg@kaod.org>, qemu-arm@nongnu.org
+	Wed, 30 Nov 2016 19:13:46 -0800 (PST)
+To: Alastair D'Silva <alastair@au1.ibm.com>, qemu-arm@nongnu.org
 References: <20161130053629.23340-1-alastair@au1.ibm.com>
-	<20161130053629.23340-2-alastair@au1.ibm.com>
-	<3d8a8cdf-5f33-4803-7048-203ed8195f9e@kaod.org>
-	<1480552932.2452.30.camel@au1.ibm.com>
+	<20161130053629.23340-3-alastair@au1.ibm.com>
 From: Alexey Kardashevskiy <aik@ozlabs.ru>
-Message-ID: <0e2c21dc-2fed-0d2c-3797-8a6bc5079c43@ozlabs.ru>
-Date: Thu, 1 Dec 2016 14:10:39 +1100
+Message-ID: <5b170e3d-ba83-da06-a4b5-fa45600be1c6@ozlabs.ru>
+Date: Thu, 1 Dec 2016 14:13:41 +1100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <1480552932.2452.30.camel@au1.ibm.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20161130053629.23340-3-alastair@au1.ibm.com>
+Content-Type: text/plain; charset=koi8-r
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400e:c05::244
-Subject: Re: [Qemu-devel] [PATCH v2 1/6] arm: Uniquely name imx25 I2C buses.
+X-Received-From: 2607:f8b0:400e:c00::241
+Subject: Re: [Qemu-devel] [PATCH v2 2/6] hw/i2c: Add a NULL check for i2c
+ slave init callbacks
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,84 +87,164 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+	qemu-devel@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	Alastair D'Silva <alastair@d-silva.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kL5nLDK3Kx8r
+X-TUID: BjZPBDEyl094
 
-On 01/12/16 11:42, Alastair D'Silva wrote:
-> On Wed, 2016-11-30 at 09:18 +0100, Cédric Le Goater wrote:
->> On 11/30/2016 06:36 AM, Alastair D'Silva wrote:
->>> From: Alastair D'Silva <alastair@d-silva.org>
->>>
->>> The imx25 chip provides 3 i2c buses, but they have all been named
->>> "i2c", which makes it difficult to predict which bus a device will
->>> be connected to when specified on the command line.
->>>
->>> This patch addresses the issue by naming the buses uniquely:
->>>   i2c.0 i2c.1 i2c.2
-
-It is still not guaranteed that first in the command will get "i2c.0" name,
-second - "i2c.1", etc.
-
-Just pass id=i2cX via the command line explicitly when creating a i2c bus
-device and use it as a bus id, and I am pretty sure QEMU will add a period
-and a number itself.
-
-
-
->>>
->>> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
->>> ---
->>>  hw/arm/imx25_pdk.c | 4 +---
->>>  hw/i2c/imx_i2c.c   | 6 +++++-
->>>  2 files changed, 6 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
->>> index 025b608..c6f04d3 100644
->>> --- a/hw/arm/imx25_pdk.c
->>> +++ b/hw/arm/imx25_pdk.c
->>> @@ -138,9 +138,7 @@ static void imx25_pdk_init(MachineState
->>> *machine)
->>>           * We add it here (only on qtest usage) to be able to do a
->>> bit
->>>           * of simple qtest. See "make check" for details.
->>>           */
->>> -        i2c_create_slave((I2CBus *)qdev_get_child_bus(DEVICE(&s-
->>>> soc.i2c[0]),
->>> -                                                      "i2c"),
->>> -                         "ds1338", 0x68);
->>> +        i2c_create_slave(s->soc.i2c[0].bus, "ds1338", 0x68);
->>>      }
->>>  }
->>>  
->>> diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
->>> index 37e5a62..7be10fb 100644
->>> --- a/hw/i2c/imx_i2c.c
->>> +++ b/hw/i2c/imx_i2c.c
->>> @@ -305,12 +305,16 @@ static const VMStateDescription
->>> imx_i2c_vmstate = {
->>>  static void imx_i2c_realize(DeviceState *dev, Error **errp)
->>>  {
->>>      IMXI2CState *s = IMX_I2C(dev);
->>> +    static int bus_count;
->>
->> hmm, the static is ugly :/ 
->>
->> Isn't there other ways to achieve this naming ? 
->>
->> Thanks,
->>
->> C.  
->>
+On 30/11/16 16:36, Alastair D'Silva wrote:
+> From: Alastair D'Silva <alastair@d-silva.org>
 > 
-> I'm not seeing an obvious way around it. The busses are realized
-> independently (so I can't implement what we do with the aspeed i2c
-> busses), and it is named before fsl-imx25:fsl_imx25_realize() can apply
-> specific properties to the bus.
+> Add a NULL check for i2c slave init callbacks, so that we no longer
+> need to implement empty init functions.
 > 
-> If you have any suggestions, I'm all ears.
+> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+> ---
+>  hw/arm/pxa2xx.c   | 9 +--------
+>  hw/arm/tosa.c     | 7 -------
+>  hw/arm/z2.c       | 7 -------
+>  hw/i2c/core.c     | 6 +++++-
+>  hw/timer/ds1338.c | 6 ------
+>  5 files changed, 6 insertions(+), 29 deletions(-)
+> 
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index 21ea1d6..bdcf6bc 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -1449,17 +1449,10 @@ static const VMStateDescription vmstate_pxa2xx_i2c = {
+>      }
+>  };
+>  
+> -static int pxa2xx_i2c_slave_init(I2CSlave *i2c)
+> -{
+> -    /* Nothing to do.  */
+> -    return 0;
+> -}
+> -
+>  static void pxa2xx_i2c_slave_class_init(ObjectClass *klass, void *data)
+>  {
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> -    k->init = pxa2xx_i2c_slave_init;
+>      k->event = pxa2xx_i2c_event;
+>      k->recv = pxa2xx_i2c_rx;
+>      k->send = pxa2xx_i2c_tx;
+> @@ -2070,7 +2063,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
+>      }
+>      if (!revision)
+>          revision = "pxa270";
+> -    
+> +
+
+Unrelated change.
+
+
+>      s->cpu = cpu_arm_init(revision);
+>      if (s->cpu == NULL) {
+>          fprintf(stderr, "Unable to find CPU definition\n");
+> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+> index 1ee12f4..39d9dbb 100644
+> --- a/hw/arm/tosa.c
+> +++ b/hw/arm/tosa.c
+> @@ -202,12 +202,6 @@ static int tosa_dac_recv(I2CSlave *s)
+>      return -1;
+>  }
+>  
+> -static int tosa_dac_init(I2CSlave *i2c)
+> -{
+> -    /* Nothing to do.  */
+> -    return 0;
+> -}
+> -
+>  static void tosa_tg_init(PXA2xxState *cpu)
+>  {
+>      I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
+> @@ -275,7 +269,6 @@ static void tosa_dac_class_init(ObjectClass *klass, void *data)
+>  {
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> -    k->init = tosa_dac_init;
+>      k->event = tosa_dac_event;
+>      k->recv = tosa_dac_recv;
+>      k->send = tosa_dac_send;
+> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+> index 68a92f3..b3a6bbd 100644
+> --- a/hw/arm/z2.c
+> +++ b/hw/arm/z2.c
+> @@ -263,12 +263,6 @@ static int aer915_recv(I2CSlave *slave)
+>      return retval;
+>  }
+>  
+> -static int aer915_init(I2CSlave *i2c)
+> -{
+> -    /* Nothing to do.  */
+> -    return 0;
+> -}
+> -
+>  static VMStateDescription vmstate_aer915_state = {
+>      .name = "aer915",
+>      .version_id = 1,
+> @@ -285,7 +279,6 @@ static void aer915_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> -    k->init = aer915_init;
+>      k->event = aer915_event;
+>      k->recv = aer915_recv;
+>      k->send = aer915_send;
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index abd4c4c..ae3ca94 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -260,7 +260,11 @@ static int i2c_slave_qdev_init(DeviceState *dev)
+>      I2CSlave *s = I2C_SLAVE(dev);
+>      I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(s);
+>  
+> -    return sc->init(s);
+> +    if (sc->init) {
+> +        return sc->init(s);
+> +    } else {
+
+
+"else" and "}" below are not needed.
+
+
+> +        return 0;
+> +    }
+
+
+
+
+>  }
+>  
+>  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
+> diff --git a/hw/timer/ds1338.c b/hw/timer/ds1338.c
+> index 0112949..f5d04dd 100644
+> --- a/hw/timer/ds1338.c
+> +++ b/hw/timer/ds1338.c
+> @@ -198,11 +198,6 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>      return 0;
+>  }
+>  
+> -static int ds1338_init(I2CSlave *i2c)
+> -{
+> -    return 0;
+> -}
+> -
+>  static void ds1338_reset(DeviceState *dev)
+>  {
+>      DS1338State *s = DS1338(dev);
+> @@ -220,7 +215,6 @@ static void ds1338_class_init(ObjectClass *klass, void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>  
+> -    k->init = ds1338_init;
+>      k->event = ds1338_event;
+>      k->recv = ds1338_recv;
+>      k->send = ds1338_send;
+> 
 
 
 -- 

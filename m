@@ -1,236 +1,1027 @@
-Received: by 10.25.159.131 with SMTP id i125csp95831lfe;
-        Thu, 1 Dec 2016 21:52:58 -0800 (PST)
-X-Received: by 10.200.35.105 with SMTP id b38mr36885032qtb.28.1480657978644;
-        Thu, 01 Dec 2016 21:52:58 -0800 (PST)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.131 with SMTP id i125csp96365lfe;
+        Thu, 1 Dec 2016 21:54:51 -0800 (PST)
+X-Received: by 10.200.46.249 with SMTP id i54mr36945953qta.13.1480658091432;
+        Thu, 01 Dec 2016 21:54:51 -0800 (PST)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n3si2159401qta.222.2016.12.01.21.52.58
+        by mx.google.com with ESMTPS id j9si2175488qtj.101.2016.12.01.21.54.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Dec 2016 21:52:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 01 Dec 2016 21:54:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60800 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60808 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cCgmH-0002Ip-Fa
-	for alex.bennee@linaro.org; Fri, 02 Dec 2016 00:52:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59887)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cCgo6-00046x-2B
+	for alex.bennee@linaro.org; Fri, 02 Dec 2016 00:54:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCggm-0006ga-CY
-	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:18 -0500
+	(envelope-from <alastair@au1.ibm.com>) id 1cCggp-0006iS-95
+	for qemu-arm@nongnu.org; Fri, 02 Dec 2016 00:47:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCggj-0001O0-4W
-	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:16 -0500
-Received: from 001b2d01.pphosted.com ([148.163.156.1]:48799
+	(envelope-from <alastair@au1.ibm.com>) id 1cCggl-0001QK-HC
+	for qemu-arm@nongnu.org; Fri, 02 Dec 2016 00:47:19 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:38539
 	helo=mx0a-001b2d01.pphosted.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cCggi-0001Nd-R6
-	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:13 -0500
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uB25d96H137337
-	for <qemu-devel@nongnu.org>; Fri, 2 Dec 2016 00:47:11 -0500
-Received: from e23smtp02.au.ibm.com (e23smtp02.au.ibm.com [202.81.31.144])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 2731h46dub-1
+	id 1cCggl-0001Pg-9p
+	for qemu-arm@nongnu.org; Fri, 02 Dec 2016 00:47:15 -0500
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
+	uB25dAM8050384
+	for <qemu-arm@nongnu.org>; Fri, 2 Dec 2016 00:47:14 -0500
+Received: from e23smtp03.au.ibm.com (e23smtp03.au.ibm.com [202.81.31.145])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 272xu7yx7j-1
 	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Fri, 02 Dec 2016 00:47:11 -0500
+	for <qemu-arm@nongnu.org>; Fri, 02 Dec 2016 00:47:14 -0500
 Received: from localhost
-	by e23smtp02.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e23smtp03.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
-	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
-	Fri, 2 Dec 2016 15:47:09 +1000
+	for <qemu-arm@nongnu.org> from <alastair@au1.ibm.com>;
+	Fri, 2 Dec 2016 15:47:11 +1000
 Received: from d23dlp02.au.ibm.com (202.81.31.213)
-	by e23smtp02.au.ibm.com (202.81.31.208) with IBM ESMTP SMTP Gateway:
+	by e23smtp03.au.ibm.com (202.81.31.209) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 2 Dec 2016 15:47:07 +1000
-Received: from d23relay10.au.ibm.com (d23relay10.au.ibm.com [9.190.26.77])
-	by d23dlp02.au.ibm.com (Postfix) with ESMTP id E08E12BB005B;
-	Fri,  2 Dec 2016 16:47:06 +1100 (EST)
-Received: from d23av06.au.ibm.com (d23av06.au.ibm.com [9.190.235.151])
-	by d23relay10.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uB25l6mb7668132; Fri, 2 Dec 2016 16:47:06 +1100
-Received: from d23av06.au.ibm.com (localhost [127.0.0.1])
-	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uB25l6D8031454; Fri, 2 Dec 2016 16:47:06 +1100
+	Fri, 2 Dec 2016 15:47:09 +1000
+Received: from d23relay07.au.ibm.com (d23relay07.au.ibm.com [9.190.26.37])
+	by d23dlp02.au.ibm.com (Postfix) with ESMTP id A20A52BB005B;
+	Fri,  2 Dec 2016 16:47:08 +1100 (EST)
+Received: from d23av05.au.ibm.com (d23av05.au.ibm.com [9.190.234.119])
+	by d23relay07.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	uB25l8Gc27787514; Fri, 2 Dec 2016 16:47:08 +1100
+Received: from d23av05.au.ibm.com (localhost [127.0.0.1])
+	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uB25l7Su014233; Fri, 2 Dec 2016 16:47:08 +1100
 Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uB25l578031449; Fri, 2 Dec 2016 16:47:05 +1100
+	by d23av05.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uB25l7nI014229; Fri, 2 Dec 2016 16:47:07 +1100
 Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
 	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 7A882A01FA;
-	Fri,  2 Dec 2016 16:47:05 +1100 (AEDT)
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 4BA01A01FA;
+	Fri,  2 Dec 2016 16:47:07 +1100 (AEDT)
 From: "Alastair D'Silva" <alastair@au1.ibm.com>
 To: qemu-arm@nongnu.org
-Date: Fri,  2 Dec 2016 16:46:13 +1100
+Date: Fri,  2 Dec 2016 16:46:16 +1100
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20161202054617.6749-1-alastair@au1.ibm.com>
 References: <20161202054617.6749-1-alastair@au1.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16120205-0004-0000-0000-000001C293D4
+x-cbid: 16120205-0008-0000-0000-000000EC909C
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16120205-0005-0000-0000-0000093B39F0
-Message-Id: <20161202054617.6749-4-alastair@au1.ibm.com>
+x-cbparentid: 16120205-0009-0000-0000-000008A03DA0
+Message-Id: <20161202054617.6749-7-alastair@au1.ibm.com>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
 	definitions=2016-12-02_03:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=1
+	spamscore=0 suspectscore=3
 	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
 	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
 	definitions=main-1612020099
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH v3 3/7] hw/i2c: Add a NULL check for i2c slave
- init callbacks
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 148.163.158.5
+Subject: [Qemu-arm] [PATCH v3 6/7] tests: Test all implemented RX8900
+ functionality
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
 	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>,
 	Alastair D'Silva <alastair@d-silva.org>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aEKWBlGBLNbO
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RTv04ijEGRGX
 
 From: Alastair D'Silva <alastair@d-silva.org>
 
-Add a NULL check for i2c slave init callbacks, so that we no longer need to implement empty init functions.
-
 Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
 ---
- hw/arm/pxa2xx.c   | 7 -------
- hw/arm/tosa.c     | 7 -------
- hw/arm/z2.c       | 7 -------
- hw/i2c/core.c     | 6 +++++-
- hw/timer/ds1338.c | 6 ------
- 5 files changed, 5 insertions(+), 28 deletions(-)
+ tests/Makefile.include |   2 +
+ tests/rx8900-test.c    | 882 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 884 insertions(+)
+ create mode 100644 tests/rx8900-test.c
 
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index 8aa0f8a..bdcf6bc 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -1449,17 +1449,10 @@ static const VMStateDescription vmstate_pxa2xx_i2c = {
-     }
- };
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index e98d3b6..e52e355 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -300,6 +300,7 @@ check-qtest-sparc64-y = tests/endianness-test$(EXESUF)
  
--static int pxa2xx_i2c_slave_init(I2CSlave *i2c)
--{
--    /* Nothing to do.  */
--    return 0;
--}
--
- static void pxa2xx_i2c_slave_class_init(ObjectClass *klass, void *data)
- {
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
--    k->init = pxa2xx_i2c_slave_init;
-     k->event = pxa2xx_i2c_event;
-     k->recv = pxa2xx_i2c_rx;
-     k->send = pxa2xx_i2c_tx;
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index 1ee12f4..39d9dbb 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -202,12 +202,6 @@ static int tosa_dac_recv(I2CSlave *s)
-     return -1;
- }
- 
--static int tosa_dac_init(I2CSlave *i2c)
--{
--    /* Nothing to do.  */
--    return 0;
--}
--
- static void tosa_tg_init(PXA2xxState *cpu)
- {
-     I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
-@@ -275,7 +269,6 @@ static void tosa_dac_class_init(ObjectClass *klass, void *data)
- {
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
--    k->init = tosa_dac_init;
-     k->event = tosa_dac_event;
-     k->recv = tosa_dac_recv;
-     k->send = tosa_dac_send;
-diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-index 68a92f3..b3a6bbd 100644
---- a/hw/arm/z2.c
-+++ b/hw/arm/z2.c
-@@ -263,12 +263,6 @@ static int aer915_recv(I2CSlave *slave)
-     return retval;
- }
- 
--static int aer915_init(I2CSlave *i2c)
--{
--    /* Nothing to do.  */
--    return 0;
--}
--
- static VMStateDescription vmstate_aer915_state = {
-     .name = "aer915",
-     .version_id = 1,
-@@ -285,7 +279,6 @@ static void aer915_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
--    k->init = aer915_init;
-     k->event = aer915_event;
-     k->recv = aer915_recv;
-     k->send = aer915_send;
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index abd4c4c..ae3ca94 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -260,7 +260,11 @@ static int i2c_slave_qdev_init(DeviceState *dev)
-     I2CSlave *s = I2C_SLAVE(dev);
-     I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(s);
- 
--    return sc->init(s);
-+    if (sc->init) {
-+        return sc->init(s);
-+    } else {
-+        return 0;
+ check-qtest-arm-y = tests/tmp105-test$(EXESUF)
+ check-qtest-arm-y += tests/ds1338-test$(EXESUF)
++check-qtest-arm-y += tests/rx8900-test$(EXESUF)
+ check-qtest-arm-y += tests/m25p80-test$(EXESUF)
+ gcov-files-arm-y += hw/misc/tmp105.c
+ check-qtest-arm-y += tests/virtio-blk-test$(EXESUF)
+@@ -637,6 +638,7 @@ tests/bios-tables-test$(EXESUF): tests/bios-tables-test.o \
+ tests/pxe-test$(EXESUF): tests/pxe-test.o tests/boot-sector.o $(libqos-obj-y)
+ tests/tmp105-test$(EXESUF): tests/tmp105-test.o $(libqos-omap-obj-y)
+ tests/ds1338-test$(EXESUF): tests/ds1338-test.o $(libqos-imx-obj-y)
++tests/rx8900-test$(EXESUF): tests/rx8900-test.o $(libqos-imx-obj-y)
+ tests/m25p80-test$(EXESUF): tests/m25p80-test.o
+ tests/i440fx-test$(EXESUF): tests/i440fx-test.o $(libqos-pc-obj-y)
+ tests/q35-test$(EXESUF): tests/q35-test.o $(libqos-pc-obj-y)
+diff --git a/tests/rx8900-test.c b/tests/rx8900-test.c
+new file mode 100644
+index 0000000..1769659
+--- /dev/null
++++ b/tests/rx8900-test.c
+@@ -0,0 +1,882 @@
++/*
++ * QTest testcase for the Epson RX8900SA/CE RTC
++ *
++ * Copyright (c) 2016 IBM Corporation
++ * Authors:
++ *  Alastair D'Silva <alastair@d-silva.org>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/timer/rx8900_regs.h"
++#include "libqtest.h"
++#include "libqos/i2c.h"
++#include "qemu/timer.h"
++
++#define IMX25_I2C_0_BASE 0x43F80000
++#define RX8900_TEST_ID "rx8900-test"
++#define RX8900_ADDR 0x32
++#define RX8900_INTERRUPT_OUT "rx8900-interrupt-out"
++#define RX8900_FOUT_ENABLE "rx8900-fout-enable"
++#define RX8900_FOUT "rx8900-fout"
++
++static I2CAdapter *i2c;
++static uint8_t addr;
++
++static inline uint8_t bcd2bin(uint8_t x)
++{
++    return (x & 0x0f) + (x >> 4) * 10;
++}
++
++static inline uint8_t bin2bcd(uint8_t x)
++{
++    return (x / 10 << 4) | (x % 10);
++}
++
++static void qmp_rx8900_set_temperature(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'temperature', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
++static void qmp_rx8900_set_voltage(const char *id, double value)
++{
++    QDict *response;
++
++    response = qmp("{ 'execute': 'qom-set', 'arguments': { 'path': %s, "
++                   "'property': 'voltage', 'value': %f } }", id, value);
++    g_assert(qdict_haskey(response, "return"));
++    QDECREF(response);
++}
++
++/**
++ * Read an RX8900 register
++ * @param reg the address of the register
++ * @return the value of the register
++ */
++static uint8_t read_register(RX8900Addresses reg)
++{
++    uint8_t val;
++    uint8_t reg_address = (uint8_t)reg;
++
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, &val, 1);
++
++    return val;
++}
++
++/**
++ * Write to an RX8900 register
++ * @param reg the address of the register
++ * @param val the value to write
++ */
++static uint8_t write_register(RX8900Addresses reg, uint8_t val)
++{
++    uint8_t buf[2];
++
++    buf[0] = reg;
++    buf[1] = val;
++
++    i2c_send(i2c, addr, buf, 2);
++
++    return val;
++}
++
++/**
++ * Set bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void set_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value |= mask;
++    write_register(reg, value);
++}
++
++/**
++ * Clear bits in a register
++ * @param reg the address of the register
++ * @param mask a mask of the bits to set
++ */
++static void clear_bits_in_register(RX8900Addresses reg, uint8_t mask)
++{
++    uint8_t value = read_register(reg);
++    value &= ~mask;
++    write_register(reg, value);
++}
++
++/**
++ * Read a number of sequential RX8900 registers
++ * @param reg the address of the first register
++ * @param buf (out) an output buffer to stash the register values
++ * @param count the number of registers to read
++ */
++static void read_registers(RX8900Addresses reg, uint8_t *buf, uint8_t count)
++{
++    uint8_t reg_address = (uint8_t)reg;
++
++    i2c_send(i2c, addr, &reg_address, 1);
++    i2c_recv(i2c, addr, buf, count);
++}
++
++/**
++ * Write to a sequential number of RX8900 registers
++ * @param reg the address of the first register
++ * @param buffer a buffer of values to write
++ * @param count the sumber of registers to write
++ */
++static void write_registers(RX8900Addresses reg, uint8_t *buffer, uint8_t count)
++{
++    uint8_t buf[RX8900_NVRAM_SIZE + 1];
++
++    buf[0] = (uint8_t)reg;
++    memcpy(buf + 1, buffer, count);
++
++    i2c_send(i2c, addr, buf, count + 1);
++}
++
++/**
++ * Set the time on the RX8900
++ * @param secs the seconds to set
++ * @param mins the minutes to set
++ * @param hours the hours to set
++ * @param weekday the day of the week to set (0 = Sunday)
++ * @param day the day of the month to set
++ * @param month the month to set
++ * @param year the year to set
++ */
++static void set_time(uint8_t secs, uint8_t mins, uint8_t hours,
++        uint8_t weekday, uint8_t day, uint8_t month, uint8_t year)
++{
++    uint8_t buf[7];
++
++    buf[0] = bin2bcd(secs);
++    buf[1] = bin2bcd(mins);
++    buf[2] = bin2bcd(hours);
++    buf[3] = BIT(weekday);
++    buf[4] = bin2bcd(day);
++    buf[5] = bin2bcd(month);
++    buf[6] = bin2bcd(year);
++
++    write_registers(SECONDS, buf, 7);
++}
++
++
++/**
++ * Check basic communication
++ */
++static void send_and_receive(void)
++{
++    uint8_t buf[7];
++    time_t now = time(NULL);
++    struct tm *tm_ptr;
++
++    /* retrieve the date */
++    read_registers(SECONDS, buf, 7);
++
++    tm_ptr = gmtime(&now);
++
++    /* check retrieved time against local time */
++    g_assert_cmpuint(bcd2bin(buf[0]), == , tm_ptr->tm_sec);
++    g_assert_cmpuint(bcd2bin(buf[1]), == , tm_ptr->tm_min);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , tm_ptr->tm_hour);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , tm_ptr->tm_mday);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 1 + tm_ptr->tm_mon);
++    g_assert_cmpuint(2000 + bcd2bin(buf[6]), == , 1900 + tm_ptr->tm_year);
++}
++
++/**
++ * Check that the temperature can be altered via properties
++ */
++static void check_temperature(void)
++{
++   /* Check the initial temperature is 25C */
++    uint8_t temperature;
++
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 133);
++
++    /* Set the temperature to 40C and check the temperature again */
++    qmp_rx8900_set_temperature(RX8900_TEST_ID, 40.0f);
++    temperature = read_register(TEMPERATURE);
++    g_assert_cmpuint(temperature, == , 157);
++}
++
++/**
++ * Check that the time rolls over correctly
++ */
++static void check_rollover(void)
++{
++    uint8_t buf[7];
++
++
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Wait for the clock to rollover */
++    sleep(2);
++
++    memset(buf, 0, sizeof(buf));
++
++    /* Check that the clock rolled over */
++    /* Read from registers starting at 0x00 */
++    buf[0] = 0x00;
++
++    read_registers(SECONDS, buf, 7);
++
++    /* Ignore seconds as there may be some noise,
++     * we expect 00:00:xx Tuesday 1/3/2016
++     */
++    g_assert_cmpuint(bcd2bin(buf[1]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[2]), == , 0);
++    g_assert_cmpuint(bcd2bin(buf[3]), == , 0x04);
++    g_assert_cmpuint(bcd2bin(buf[4]), == , 1);
++    g_assert_cmpuint(bcd2bin(buf[5]), == , 3);
++    g_assert_cmpuint(bcd2bin(buf[6]), == , 16);
++}
++
++uint32_t interrupt_counts[RX8900_INTERRUPT_SOURCES];
++
++/**
++ * Reset the interrupt counts
++ */
++static void count_reset(void)
++{
++    for (int source = 0; source < RX8900_INTERRUPT_SOURCES; source++) {
++        interrupt_counts[source] = 0;
 +    }
- }
- 
- DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
-diff --git a/hw/timer/ds1338.c b/hw/timer/ds1338.c
-index 0112949..f5d04dd 100644
---- a/hw/timer/ds1338.c
-+++ b/hw/timer/ds1338.c
-@@ -198,11 +198,6 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
-     return 0;
- }
- 
--static int ds1338_init(I2CSlave *i2c)
--{
--    return 0;
--}
--
- static void ds1338_reset(DeviceState *dev)
- {
-     DS1338State *s = DS1338(dev);
-@@ -220,7 +215,6 @@ static void ds1338_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
--    k->init = ds1338_init;
-     k->event = ds1338_event;
-     k->recv = ds1338_recv;
-     k->send = ds1338_send;
++}
++
++/**
++ * Handle an RX8900 interrupt (update the counts for that interrupt type)
++ */
++static void handle_interrupt(void *opaque, const char *name, int irq,
++        bool level)
++{
++    if (!level) {
++        return;
++    }
++
++    uint8_t flags = read_register(FLAG_REGISTER);
++
++    for (int flag = 0; flag < 8; flag++) {
++        if (flags & BIT(flag)) {
++            interrupt_counts[flag]++;
++        }
++    }
++
++    write_register(FLAG_REGISTER, 0x00);
++}
++
++uint32_t fout_counts;
++
++/**
++ * Handle an Fout state change
++ */
++static void handle_fout(void *opaque, const char *name, int irq, bool level)
++{
++    if (!level) {
++        return;
++    }
++
++    fout_counts++;
++}
++
++/**
++ * Reset the fout count
++ */
++static void fout_count_reset(void)
++{
++    fout_counts = 0;
++}
++
++
++/**
++ * Sleep for some real time while counting interrupts
++ * @param delay the delay in microseconds
++ * @param loop the loop time in microseconds
++ */
++static void wait_for(uint64_t delay, uint64_t loop)
++{
++    struct timeval end, now;
++
++    gettimeofday(&end, NULL);
++    delay += end.tv_usec;
++    end.tv_sec += delay / 1000000;
++    end.tv_usec = delay % 1000000;
++
++    while (gettimeofday(&now, NULL),
++            now.tv_sec < end.tv_sec || now.tv_usec < end.tv_usec) {
++        clock_step(loop * 1000);
++        usleep(loop);
++    }
++}
++
++/**
++ * Sleep for some emulated time while counting interrupts
++ * @param delay the delay in nanoseconds
++ * @param loop the loop time in nanoseconds
++ */
++static void wait_cycles(uint64_t delay, uint64_t loop)
++{
++    uint64_t counter;
++
++    for (counter = 0; counter < delay; counter += loop) {
++        clock_step(loop);
++    }
++}
++
++
++/**
++ * Check that when the update timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_update_interrupt_disabled(void)
++{
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    /* Wait for the clock to rollover, this will cover both seconds & minutes
++     */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per second updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_seconds(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per second updates */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5.1f * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], >=, 5);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], <=, 6);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the update timer interrupt is enabled and configured for
++ * per minute updates, that we get the appropriate number of interrupts
++ */
++static void check_update_interrupt_minutes(void)
++{
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    /* Enable the update interrupt for per minute updates */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_USEL);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    count_reset();
++    wait_for(5 * 1000000ULL, 1000);
++
++    /* Disable the update interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_UIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 1);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++
++/**
++ * Check that when the alarm timer interrupt is disabled, that no interrupts
++ * occur
++ */
++static void check_alarm_interrupt_disabled(void)
++{
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_month(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(1); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_month_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = bin2bcd(2); /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of month mode */
++    set_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * occurs
++ */
++static void check_alarm_interrupt_day_of_week(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 1, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 1);
++}
++
++/**
++ * Check that when the alarm timer interrupt is enabled, that an interrupt
++ * does not occur
++ */
++static void check_alarm_interrupt_day_of_week_negative(void)
++{
++
++    /* Set an alarm for midnight */
++    uint8_t buf[3];
++
++    buf[0] = bin2bcd(0); /* minutes */
++    buf[1] = bin2bcd(0); /* hours */
++    buf[2] = 0x01 << 2; /* day */
++
++    write_registers(ALARM_MINUTE, buf, 3);
++
++    /* Set alarm to day of week mode */
++    clear_bits_in_register(EXTENSION_REGISTER, EXT_MASK_WADA);
++
++    /* Enable the alarm interrupt */
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    /* Wait for the clock to rollover */
++    set_time(59, 59, 23, 3, 29, 2, 16);
++
++    count_reset();
++    wait_for(2 * 1000000, 1000);
++
++    /* Disable the alarm interrupt */
++    clear_bits_in_register(CONTROL_REGISTER, CTRL_MASK_AIE);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_UF], ==, 0);
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_AF], ==, 0);
++}
++
++/**
++ * Check that the reset function
++ */
++static void check_reset(void)
++{
++    set_bits_in_register(FLAG_REGISTER, FLAG_MASK_UF);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_RESET);
++
++    g_assert_cmpuint(read_register(FLAG_REGISTER), ==,
++            0x00);
++}
++
++/**
++ * Check that Fout operates at 1Hz
++ */
++static void check_fout_1hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL1;
++    ext_reg &= ~EXT_MASK_FSEL0;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 1000000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 2);
++}
++
++/**
++ * Check that Fout operates at 1024Hz
++ */
++static void check_fout_1024hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 100000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    g_assert_cmpuint(fout_counts, ==, 1024 * 2);
++}
++
++/**
++ * Check that Fout operates at 32768Hz
++ */
++static void check_fout_32768hz(void)
++{
++    uint8_t ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_FSEL0;
++    ext_reg &= ~EXT_MASK_FSEL1;
++    write_register(EXTENSION_REGISTER, ext_reg);
++
++    /* Enable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, true);
++
++    fout_count_reset();
++    wait_cycles(2 * 1000000000ULL, 15000);
++
++    /* disable Fout */
++    irq_set(RX8900_TEST_ID, RX8900_FOUT_ENABLE, 0, false);
++
++    /* There appears to be some rounding errors in the timer,
++     * we'll tolerate it for now
++     */
++    g_assert_cmpuint(fout_counts, >=, 32768 * 2);
++    g_assert_cmpuint(fout_counts, <=, 65540);
++}
++
++/**
++ * Check the countdown timer operates at 1 Hz
++ */
++static void check_countdown_1hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 5);
++    write_register(TIMER_COUNTER_1, 0);
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 64 Hz
++ */
++static void check_countdown_64hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x40);
++    write_register(TIMER_COUNTER_1, 0x01); /* 5 * 64 */
++
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg &= ~EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(5 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1 * 1000000000ULL, 1000000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 4096 Hz
++ */
++static void check_countdown_4096hz(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0xFF);
++    write_register(TIMER_COUNTER_1, 0x0F); /* 4095 */
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg |= EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(999755859ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(244141ULL, 10000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check the countdown timer operates at 1 minute
++ */
++static void check_countdown_1m(void)
++{
++    uint8_t ext_reg;
++
++    write_register(TIMER_COUNTER_0, 0x01);
++    write_register(TIMER_COUNTER_1, 0x00);
++    ext_reg = read_register(EXTENSION_REGISTER);
++    ext_reg &= ~EXT_MASK_TSEL0;
++    ext_reg |= EXT_MASK_TSEL1;
++    ext_reg |= EXT_MASK_TE;
++    write_register(EXTENSION_REGISTER, ext_reg);
++    set_bits_in_register(CONTROL_REGISTER, CTRL_MASK_TIE);
++
++    count_reset();
++    wait_cycles(59 * 1000000000ULL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 0);
++
++    wait_cycles(1000000001LL, 100000);
++
++    g_assert_cmpuint(interrupt_counts[FLAG_REG_TF], ==, 1);
++}
++
++/**
++ * Check that the voltage can be altered via properties
++ */
++static void check_voltage(void)
++{
++    uint8_t flags = read_register(FLAG_REGISTER) &
++            (FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* start from a good state */
++    g_assert_cmpuint(flags, == , 0x00);
++
++    /* 1.9V triggers VDET but not VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.9f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0x00);
++
++
++    /* 1.5V should trigger both VDET & VLF */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 1.5f);
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++
++    /* Clearing the flag should reassert it as the voltage is still low */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* Set the voltage to a good level, the low voltage flag should persist */
++    qmp_rx8900_set_voltage(RX8900_TEST_ID, 3.3f);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , FLAG_MASK_VDET | FLAG_MASK_VLF);
++
++    /* We should be able to clear the flag with a good voltage */
++    write_register(FLAG_REGISTER, 0x00);
++
++    flags = read_register(FLAG_REGISTER) & (FLAG_MASK_VDET | FLAG_MASK_VLF);
++    g_assert_cmpuint(flags, == , 0);
++}
++
++
++
++int main(int argc, char **argv)
++{
++    QTestState *s = NULL;
++    int ret;
++    char args[255];
++    snprintf(args, sizeof(args), "-display none -machine imx25-pdk "
++            "-device rx8900,bus=i2c-bus.0,address=0x%x,id=%s"
++#ifdef RX8900_TRACE
++            " -trace events=/tmp/events"
++#endif
++            ,
++            RX8900_ADDR, RX8900_TEST_ID);
++
++    g_test_init(&argc, &argv, NULL);
++
++    s = qtest_start(args);
++    i2c = imx_i2c_create(IMX25_I2C_0_BASE);
++    addr = RX8900_ADDR;
++
++    irq_intercept_out(RX8900_TEST_ID);
++    irq_attach(RX8900_INTERRUPT_OUT, 0, handle_interrupt, NULL);
++    irq_attach(RX8900_FOUT, 0, handle_fout, NULL);
++
++    qtest_add_func("/rx8900/reset", check_reset);
++    qtest_add_func("/rx8900/tx-rx", send_and_receive);
++    qtest_add_func("/rx8900/temperature", check_temperature);
++    qtest_add_func("/rx8900/rollover", check_rollover);
++    qtest_add_func("/rx8900/update-interrupt-disabled",
++            check_update_interrupt_disabled);
++    qtest_add_func("/rx8900/update-interrupt-seconds",
++            check_update_interrupt_seconds);
++    qtest_add_func("/rx8900/update-interrupt-minutes",
++            check_update_interrupt_minutes);
++    qtest_add_func("/rx8900/alarm-interrupt-disabled",
++            check_alarm_interrupt_disabled);
++    qtest_add_func("/rx8900/alarm-interrupt-month",
++            check_alarm_interrupt_day_of_month);
++    qtest_add_func("/rx8900/alarm-interrupt-month-negative",
++            check_alarm_interrupt_day_of_month_negative);
++    qtest_add_func("/rx8900/alarm-interrupt-week",
++            check_alarm_interrupt_day_of_week);
++    qtest_add_func("/rx8900/alarm-interrupt-week-negative",
++            check_alarm_interrupt_day_of_week_negative);
++    qtest_add_func("/rx8900/fout_1hz", check_fout_1hz);
++    qtest_add_func("/rx8900/fout_1024hz", check_fout_1024hz);
++    qtest_add_func("/rx8900/fout_32768hz", check_fout_32768hz);
++    qtest_add_func("/rx8900/countdown_1hz", check_countdown_1hz);
++    qtest_add_func("/rx8900/countdown_64hz", check_countdown_64hz);
++    qtest_add_func("/rx8900/countdown_4096hz", check_countdown_4096hz);
++    qtest_add_func("/rx8900/countdown_1m", check_countdown_1m);
++    qtest_add_func("/rx8900/low_voltage", check_voltage);
++
++    ret = g_test_run();
++
++    if (s) {
++        qtest_quit(s);
++    }
++    g_free(i2c);
++
++    return ret;
++}
 -- 
 2.9.3
 

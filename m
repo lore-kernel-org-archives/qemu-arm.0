@@ -1,90 +1,91 @@
-Received: by 10.25.159.131 with SMTP id i125csp95553lfe;
-        Thu, 1 Dec 2016 21:52:08 -0800 (PST)
-X-Received: by 10.200.43.120 with SMTP id 53mr35758623qtv.253.1480657928122;
-        Thu, 01 Dec 2016 21:52:08 -0800 (PST)
+Received: by 10.25.159.131 with SMTP id i125csp95831lfe;
+        Thu, 1 Dec 2016 21:52:58 -0800 (PST)
+X-Received: by 10.200.35.105 with SMTP id b38mr36885032qtb.28.1480657978644;
+        Thu, 01 Dec 2016 21:52:58 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 87si2152599qkq.272.2016.12.01.21.52.07
+        by mx.google.com with ESMTPS id n3si2159401qta.222.2016.12.01.21.52.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Dec 2016 21:52:08 -0800 (PST)
+        Thu, 01 Dec 2016 21:52:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60793 helo=lists.gnu.org)
+Received: from localhost ([::1]:60800 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cCglT-00019t-Ht
-	for alex.bennee@linaro.org; Fri, 02 Dec 2016 00:52:07 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59935)
+	id 1cCgmH-0002Ip-Fa
+	for alex.bennee@linaro.org; Fri, 02 Dec 2016 00:52:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59887)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCggo-0006i0-Jq
-	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:21 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCggl-0001Pq-4Z
+	(envelope-from <alastair@au1.ibm.com>) id 1cCggm-0006ga-CY
 	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:18 -0500
-Received: from 001b2d01.pphosted.com ([148.163.156.1]:35594
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <alastair@au1.ibm.com>) id 1cCggj-0001O0-4W
+	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:16 -0500
+Received: from 001b2d01.pphosted.com ([148.163.156.1]:48799
 	helo=mx0a-001b2d01.pphosted.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cCggk-0001P0-S8
-	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:15 -0500
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
+	id 1cCggi-0001Nd-R6
+	for qemu-devel@nongnu.org; Fri, 02 Dec 2016 00:47:13 -0500
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
 	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uB25d9Fg119371
-	for <qemu-devel@nongnu.org>; Fri, 2 Dec 2016 00:47:13 -0500
-Received: from e23smtp06.au.ibm.com (e23smtp06.au.ibm.com [202.81.31.148])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 2730g4t7h4-1
+	uB25d96H137337
+	for <qemu-devel@nongnu.org>; Fri, 2 Dec 2016 00:47:11 -0500
+Received: from e23smtp02.au.ibm.com (e23smtp02.au.ibm.com [202.81.31.144])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2731h46dub-1
 	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Fri, 02 Dec 2016 00:47:13 -0500
+	for <qemu-devel@nongnu.org>; Fri, 02 Dec 2016 00:47:11 -0500
 Received: from localhost
-	by e23smtp06.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	by e23smtp02.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
 	Only! Violators will be prosecuted
 	for <qemu-devel@nongnu.org> from <alastair@au1.ibm.com>;
-	Fri, 2 Dec 2016 15:47:11 +1000
-Received: from d23dlp01.au.ibm.com (202.81.31.203)
-	by e23smtp06.au.ibm.com (202.81.31.212) with IBM ESMTP SMTP Gateway:
+	Fri, 2 Dec 2016 15:47:09 +1000
+Received: from d23dlp02.au.ibm.com (202.81.31.213)
+	by e23smtp02.au.ibm.com (202.81.31.208) with IBM ESMTP SMTP Gateway:
 	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 2 Dec 2016 15:47:08 +1000
+	Fri, 2 Dec 2016 15:47:07 +1000
 Received: from d23relay10.au.ibm.com (d23relay10.au.ibm.com [9.190.26.77])
-	by d23dlp01.au.ibm.com (Postfix) with ESMTP id 7DC192CE805B;
-	Fri,  2 Dec 2016 16:47:07 +1100 (EST)
-Received: from d23av02.au.ibm.com (d23av02.au.ibm.com [9.190.235.138])
+	by d23dlp02.au.ibm.com (Postfix) with ESMTP id E08E12BB005B;
+	Fri,  2 Dec 2016 16:47:06 +1100 (EST)
+Received: from d23av06.au.ibm.com (d23av06.au.ibm.com [9.190.235.151])
 	by d23relay10.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uB25l7bL2097480; Fri, 2 Dec 2016 16:47:07 +1100
-Received: from d23av02.au.ibm.com (localhost [127.0.0.1])
-	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uB25l6cR015163; Fri, 2 Dec 2016 16:47:07 +1100
+	uB25l6mb7668132; Fri, 2 Dec 2016 16:47:06 +1100
+Received: from d23av06.au.ibm.com (localhost [127.0.0.1])
+	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
+	uB25l6D8031454; Fri, 2 Dec 2016 16:47:06 +1100
 Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av02.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uB25l6iD015157; Fri, 2 Dec 2016 16:47:06 +1100
+	by d23av06.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
+	uB25l578031449; Fri, 2 Dec 2016 16:47:05 +1100
 Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
 	(using TLSv1.2 with cipher DHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 07457A01FC;
-	Fri,  2 Dec 2016 16:47:06 +1100 (AEDT)
+	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 7A882A01FA;
+	Fri,  2 Dec 2016 16:47:05 +1100 (AEDT)
 From: "Alastair D'Silva" <alastair@au1.ibm.com>
 To: qemu-arm@nongnu.org
-Date: Fri,  2 Dec 2016 16:46:14 +1100
+Date: Fri,  2 Dec 2016 16:46:13 +1100
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20161202054617.6749-1-alastair@au1.ibm.com>
 References: <20161202054617.6749-1-alastair@au1.ibm.com>
 X-TM-AS-MML: disable
 X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16120205-0040-0000-0000-000002D195F4
+x-cbid: 16120205-0004-0000-0000-000001C293D4
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16120205-0041-0000-0000-00000BCF230A
-Message-Id: <20161202054617.6749-5-alastair@au1.ibm.com>
+x-cbparentid: 16120205-0005-0000-0000-0000093B39F0
+Message-Id: <20161202054617.6749-4-alastair@au1.ibm.com>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
 	definitions=2016-12-02_03:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=3
+	spamscore=0 suspectscore=1
 	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
 	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
 	definitions=main-1612020099
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
 X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH v3 4/7] qtest: Support named interrupts
+Subject: [Qemu-devel] [PATCH v3 3/7] hw/i2c: Add a NULL check for i2c slave
+ init callbacks
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,500 +103,134 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 03Iz5jICvaZV
+X-TUID: aEKWBlGBLNbO
 
 From: Alastair D'Silva <alastair@d-silva.org>
 
-The QTest framework cannot work with named interrupts. This patch
-adds support for them, as well as the ability to manipulate them
-from within a test.
-
-Read actions are via callbacks, which allows for pulsed interrupts
-to be read (the polled method used for the unnamed interrupts
-cannot read pulsed interrupts as the value is reverted before the
-test sees the changes).
+Add a NULL check for i2c slave init callbacks, so that we no longer need to implement empty init functions.
 
 Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
 ---
- hw/core/irq.c    |  18 +++++-----
- include/hw/irq.h |  13 +++++--
- qtest.c          | 102 ++++++++++++++++++++++++++++++++++++++++++-------------
- tests/libqtest.c |  88 ++++++++++++++++++++++++++++++++++++++++++++---
- tests/libqtest.h |  59 ++++++++++++++++++++++++++++++++
- 5 files changed, 241 insertions(+), 39 deletions(-)
+ hw/arm/pxa2xx.c   | 7 -------
+ hw/arm/tosa.c     | 7 -------
+ hw/arm/z2.c       | 7 -------
+ hw/i2c/core.c     | 6 +++++-
+ hw/timer/ds1338.c | 6 ------
+ 5 files changed, 5 insertions(+), 28 deletions(-)
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index 49ff2e6..75f915b 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -134,15 +134,17 @@ qemu_irq *qemu_irq_proxy(qemu_irq **target, int n)
-     return qemu_allocate_irqs(proxy_irq_handler, target, n);
- }
- 
--void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n)
-+qemu_irq qemu_irq_dup(qemu_irq in)
- {
--    int i;
--    qemu_irq *old_irqs = qemu_allocate_irqs(NULL, NULL, n);
--    for (i = 0; i < n; i++) {
--        *old_irqs[i] = *gpio_in[i];
--        gpio_in[i]->handler = handler;
--        gpio_in[i]->opaque = &old_irqs[i];
--    }
-+    qemu_irq out = qemu_allocate_irq(in->handler, in->opaque, in->n);
-+    return out;
-+}
-+
-+void qemu_irq_intercept_in(qemu_irq gpio_in, qemu_irq_handler handler,
-+        void *opaque)
-+{
-+    gpio_in->handler = handler;
-+    gpio_in->opaque = opaque;
- }
- 
- static const TypeInfo irq_type_info = {
-diff --git a/include/hw/irq.h b/include/hw/irq.h
-index 4c4c2ea..2583fd1 100644
---- a/include/hw/irq.h
-+++ b/include/hw/irq.h
-@@ -58,8 +58,15 @@ qemu_irq qemu_irq_split(qemu_irq irq1, qemu_irq irq2);
-  */
- qemu_irq *qemu_irq_proxy(qemu_irq **target, int n);
- 
--/* For internal use in qtest.  Similar to qemu_irq_split, but operating
--   on an existing vector of qemu_irq.  */
--void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n);
-+/**
-+ * Duplicate an IRQ
-+ * @param in the IRQ to deplicate
-+ * @return a copy of the IRQ
-+ */
-+qemu_irq qemu_irq_dup(qemu_irq in);
-+
-+/* For internal use in qtest. */
-+void qemu_irq_intercept_in(qemu_irq gpio_in, qemu_irq_handler handler,
-+        void *opaque);
- 
- #endif
-diff --git a/qtest.c b/qtest.c
-index 46b99ae..2e09634 100644
---- a/qtest.c
-+++ b/qtest.c
-@@ -40,7 +40,6 @@ static DeviceState *irq_intercept_dev;
- static FILE *qtest_log_fp;
- static CharBackend qtest_chr;
- static GString *inbuf;
--static int irq_levels[MAX_IRQ];
- static qemu_timeval start_time;
- static bool qtest_opened;
- 
-@@ -160,10 +159,16 @@ static bool qtest_opened;
-  *
-  *  IRQ raise NUM
-  *  IRQ lower NUM
-+ *  IRQ_NAMED NAME NUM LEVEL
-  *
-  * where NUM is an IRQ number.  For the PC, interrupts can be intercepted
-  * simply with "irq_intercept_in ioapic" (note that IRQ0 comes out with
-  * NUM=0 even though it is remapped to GSI 2).
-+ *
-+ *  > irq_set NAME NUM LEVEL
-+ *  < OK
-+ *
-+ *  Set the named input IRQ to the level (0/1)
-  */
- 
- static int hex2nib(char ch)
-@@ -243,17 +248,31 @@ static void GCC_FMT_ATTR(2, 3) qtest_sendf(CharBackend *chr,
-     va_end(ap);
- }
- 
-+typedef struct qtest_irq {
-+    qemu_irq old_irq;
-+    char *name;
-+    bool last_level;
-+} qtest_irq;
-+
- static void qtest_irq_handler(void *opaque, int n, int level)
- {
--    qemu_irq old_irq = *(qemu_irq *)opaque;
--    qemu_set_irq(old_irq, level);
-+    qtest_irq *data = (qtest_irq *)opaque;
-+    level = !!level;
-+
-+    qemu_set_irq(data->old_irq, level);
- 
--    if (irq_levels[n] != level) {
-+    if (level != data->last_level) {
-         CharBackend *chr = &qtest_chr;
--        irq_levels[n] = level;
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "IRQ %s %d\n",
--                    level ? "raise" : "lower", n);
-+
-+        if (data->name) {
-+            qtest_sendf(chr, "IRQ_NAMED %s %d %d\n",
-+                    data->name, n, level);
-+        } else {
-+            qtest_sendf(chr, "IRQ %s %d\n", level ? "raise" : "lower", n);
-+        }
-+
-+        data->last_level = level;
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 8aa0f8a..bdcf6bc 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1449,17 +1449,10 @@ static const VMStateDescription vmstate_pxa2xx_i2c = {
      }
- }
- 
-@@ -289,7 +308,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-         if (!dev) {
-             qtest_send_prefix(chr);
-             qtest_send(chr, "FAIL Unknown device\n");
--	    return;
-+            return;
-         }
- 
-         if (irq_intercept_dev) {
-@@ -299,33 +318,73 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             } else {
-                 qtest_send(chr, "OK\n");
-             }
--	    return;
-+            return;
-         }
- 
-         QLIST_FOREACH(ngl, &dev->gpios, node) {
--            /* We don't support intercept of named GPIOs yet */
--            if (ngl->name) {
--                continue;
--            }
-             if (words[0][14] == 'o') {
-                 int i;
-                 for (i = 0; i < ngl->num_out; ++i) {
--                    qemu_irq *disconnected = g_new0(qemu_irq, 1);
--                    qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler,
--                                                      disconnected, i);
-+                    qtest_irq *data = g_new0(qtest_irq, 1);
-+                    data->name = ngl->name;
-+                    qemu_irq icpt = qemu_allocate_irq(qtest_irq_handler, data,
-+                            i);
- 
--                    *disconnected = qdev_intercept_gpio_out(dev, icpt,
-+                    data->old_irq = qdev_intercept_gpio_out(dev, icpt,
-                                                             ngl->name, i);
-                 }
-             } else {
--                qemu_irq_intercept_in(ngl->in, qtest_irq_handler,
--                                      ngl->num_in);
-+                int i;
-+                for (i = 0; i < ngl->num_in; ++i) {
-+                    qtest_irq *data = g_new0(qtest_irq, 1);
-+                    data->name = ngl->name;
-+                    data->old_irq = qemu_irq_dup(ngl->in[i]);
-+
-+                    qemu_irq_intercept_in(ngl->in[i], qtest_irq_handler, data);
-+                }
-             }
-         }
-         irq_intercept_dev = dev;
-         qtest_send_prefix(chr);
-         qtest_send(chr, "OK\n");
- 
-+    } else if (strcmp(words[0], "irq_set") == 0) {
-+        DeviceState *dev;
-+        NamedGPIOList *ngl;
-+        int level;
-+        qemu_irq irq = NULL;
-+        int irq_num;
-+
-+        g_assert(words[1]); /* device */
-+        g_assert(words[2]); /* gpio list */
-+        g_assert(words[3]); /* gpio line in list */
-+        g_assert(words[4]); /* level */
-+        dev = DEVICE(object_resolve_path(words[1], NULL));
-+        if (!dev) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown device\n");
-+            return;
-+        }
-+
-+        irq_num = atoi(words[3]);
-+        level = atoi(words[4]);
-+
-+        QLIST_FOREACH(ngl, &dev->gpios, node) {
-+            if (strcmp(words[2], ngl->name) == 0 && ngl->num_in > irq_num) {
-+                irq = ngl->in[irq_num];
-+            }
-+        }
-+
-+        if (irq == NULL) {
-+            qtest_send_prefix(chr);
-+            qtest_send(chr, "FAIL Unknown IRQ\n");
-+            return;
-+        }
-+
-+        qemu_set_irq(irq, level);
-+
-+        qtest_send_prefix(chr);
-+        qtest_send(chr, "OK\n");
-     } else if (strcmp(words[0], "outb") == 0 ||
-                strcmp(words[0], "outw") == 0 ||
-                strcmp(words[0], "outl") == 0) {
-@@ -622,8 +681,6 @@ static int qtest_can_read(void *opaque)
- 
- static void qtest_event(void *opaque, int event)
- {
--    int i;
--
-     switch (event) {
-     case CHR_EVENT_OPENED:
-         /*
-@@ -632,9 +689,6 @@ static void qtest_event(void *opaque, int event)
-          * used.  Injects an extra reset even when it's not used, and
-          * that can mess up tests, e.g. -boot once.
-          */
--        for (i = 0; i < ARRAY_SIZE(irq_levels); i++) {
--            irq_levels[i] = 0;
--        }
-         qemu_gettimeofday(&start_time);
-         qtest_opened = true;
-         if (qtest_log_fp) {
-diff --git a/tests/libqtest.c b/tests/libqtest.c
-index 6f69752..36b3960 100644
---- a/tests/libqtest.c
-+++ b/tests/libqtest.c
-@@ -21,12 +21,16 @@
- #include <sys/wait.h>
- #include <sys/un.h>
- 
-+#include <glib.h>
-+
- #include "qapi/qmp/json-parser.h"
- #include "qapi/qmp/json-streamer.h"
- #include "qapi/qmp/qjson.h"
- 
-+
- #define MAX_IRQ 256
- #define SOCKET_TIMEOUT 50
-+#define IRQ_KEY_LENGTH 64
- 
- QTestState *global_qtest;
- 
-@@ -34,12 +38,22 @@ struct QTestState
- {
-     int fd;
-     int qmp_fd;
-+    GHashTable *irq_handlers;
-     bool irq_level[MAX_IRQ];
-     GString *rx;
-     pid_t qemu_pid;  /* our child QEMU process */
-     bool big_endian;
  };
  
-+typedef struct irq_action {
-+    void (*cb)(void *opaque, const char *name, int irq, bool level);
-+    void *opaque;
-+    const char *name;
-+    int n;
-+    bool level;
-+} irq_action;
-+
-+
- static GHookList abrt_hooks;
- static GList *qtest_instances;
- static struct sigaction sigact_old;
-@@ -216,6 +230,9 @@ QTestState *qtest_init(const char *extra_args)
- 
-     s->big_endian = qtest_query_target_endianness(s);
- 
-+    s->irq_handlers = g_hash_table_new_full(g_str_hash, g_str_equal, g_free,
-+            g_free);
-+
-     return s;
- }
- 
-@@ -224,6 +241,8 @@ void qtest_quit(QTestState *s)
-     qtest_instances = g_list_remove(qtest_instances, s);
-     g_hook_destroy_link(&abrt_hooks, g_hook_find_data(&abrt_hooks, TRUE, s));
- 
-+    g_hash_table_destroy(s->irq_handlers);
-+
-     /* Uninstall SIGABRT handler on last instance */
-     if (!qtest_instances) {
-         cleanup_sigabrt_handler();
-@@ -304,11 +323,35 @@ static GString *qtest_recv_line(QTestState *s)
-     return line;
- }
- 
-+void qtest_irq_attach(QTestState *s, const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque)
-+{
-+    char key[IRQ_KEY_LENGTH];
-+    irq_action *action = g_new0(irq_action, 1);
-+
-+    action->cb = irq_cb;
-+    action->name = name;
-+    action->n = irq;
-+    action->opaque = opaque;
-+    action->level = false;
-+
-+    g_assert_cmpint(snprintf(key, sizeof(key), "%s.%d",
-+            name, irq), <, sizeof(key));
-+
-+    g_hash_table_insert(s->irq_handlers, g_strdup(key), action);
-+}
-+
-+#define MAX_ACTIONS 256
- static gchar **qtest_rsp(QTestState *s, int expected_args)
+-static int pxa2xx_i2c_slave_init(I2CSlave *i2c)
+-{
+-    /* Nothing to do.  */
+-    return 0;
+-}
+-
+ static void pxa2xx_i2c_slave_class_init(ObjectClass *klass, void *data)
  {
-     GString *line;
-     gchar **words;
-     int i;
-+    int action_index;
-+    int action_count = 0;
-+    bool action_raise[MAX_ACTIONS];
-+    irq_action *actions[MAX_ACTIONS];
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
  
- redo:
-     line = qtest_recv_line(s);
-@@ -325,10 +368,29 @@ redo:
-         g_assert_cmpint(irq, >=, 0);
-         g_assert_cmpint(irq, <, MAX_IRQ);
+-    k->init = pxa2xx_i2c_slave_init;
+     k->event = pxa2xx_i2c_event;
+     k->recv = pxa2xx_i2c_rx;
+     k->send = pxa2xx_i2c_tx;
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index 1ee12f4..39d9dbb 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -202,12 +202,6 @@ static int tosa_dac_recv(I2CSlave *s)
+     return -1;
+ }
  
--        if (strcmp(words[1], "raise") == 0) {
--            s->irq_level[irq] = true;
--        } else {
--            s->irq_level[irq] = false;
-+        s->irq_level[irq] = (strcmp(words[1], "raise") == 0);
-+
-+        g_strfreev(words);
-+        goto redo;
-+    } else if (strcmp(words[0], "IRQ_NAMED") == 0) {
-+        bool level;
-+        char key[IRQ_KEY_LENGTH];
-+        irq_action *action;
-+
-+        g_assert(words[1] != NULL);
-+        g_assert(words[2] != NULL);
-+        g_assert(words[3] != NULL);
-+
-+        level = (words[3][0] == '1');
-+
-+        g_assert_cmpint(snprintf(key, sizeof(key), "%s.%s",
-+                words[1], words[2]), <, sizeof(key));
-+
-+        action = g_hash_table_lookup(s->irq_handlers, key);
-+
-+        if (action) {
-+            action_raise[action_count] = level;
-+            actions[action_count++] = action;
-         }
+-static int tosa_dac_init(I2CSlave *i2c)
+-{
+-    /* Nothing to do.  */
+-    return 0;
+-}
+-
+ static void tosa_tg_init(PXA2xxState *cpu)
+ {
+     I2CBus *bus = pxa2xx_i2c_bus(cpu->i2c[0]);
+@@ -275,7 +269,6 @@ static void tosa_dac_class_init(ObjectClass *klass, void *data)
+ {
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
  
-         g_strfreev(words);
-@@ -346,6 +408,17 @@ redo:
-         g_strfreev(words);
-     }
+-    k->init = tosa_dac_init;
+     k->event = tosa_dac_event;
+     k->recv = tosa_dac_recv;
+     k->send = tosa_dac_send;
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index 68a92f3..b3a6bbd 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -263,12 +263,6 @@ static int aer915_recv(I2CSlave *slave)
+     return retval;
+ }
  
-+/* Defer processing of IRQ actions until all communications have been handled,
-+ * otherwise, interrupt handler that cause further communication can disrupt
-+ * the communication stream
-+ */
-+    for (action_index = 0; action_index < action_count; action_index++) {
-+        irq_action *action = actions[action_index];
-+        action->cb(action->opaque, action->name, action->n,
-+                action_raise[action_index]);
-+        action->level = action_raise[action_index];
+-static int aer915_init(I2CSlave *i2c)
+-{
+-    /* Nothing to do.  */
+-    return 0;
+-}
+-
+ static VMStateDescription vmstate_aer915_state = {
+     .name = "aer915",
+     .version_id = 1,
+@@ -285,7 +279,6 @@ static void aer915_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+ 
+-    k->init = aer915_init;
+     k->event = aer915_event;
+     k->recv = aer915_recv;
+     k->send = aer915_send;
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index abd4c4c..ae3ca94 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -260,7 +260,11 @@ static int i2c_slave_qdev_init(DeviceState *dev)
+     I2CSlave *s = I2C_SLAVE(dev);
+     I2CSlaveClass *sc = I2C_SLAVE_GET_CLASS(s);
+ 
+-    return sc->init(s);
++    if (sc->init) {
++        return sc->init(s);
++    } else {
++        return 0;
 +    }
-+
-     return words;
  }
  
-@@ -918,3 +991,10 @@ bool qtest_big_endian(QTestState *s)
+ DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
+diff --git a/hw/timer/ds1338.c b/hw/timer/ds1338.c
+index 0112949..f5d04dd 100644
+--- a/hw/timer/ds1338.c
++++ b/hw/timer/ds1338.c
+@@ -198,11 +198,6 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+     return 0;
+ }
+ 
+-static int ds1338_init(I2CSlave *i2c)
+-{
+-    return 0;
+-}
+-
+ static void ds1338_reset(DeviceState *dev)
  {
-     return s->big_endian;
- }
-+
-+void qtest_irq_set(QTestState *s, const char *id, const char *gpiolist, int n,
-+        bool level)
-+{
-+    qtest_sendf(s, "irq_set %s %s %d %d\n", id, gpiolist, n, level);
-+    qtest_rsp(s, 0);
-+}
-diff --git a/tests/libqtest.h b/tests/libqtest.h
-index 90f182e..c74373c 100644
---- a/tests/libqtest.h
-+++ b/tests/libqtest.h
-@@ -176,6 +176,34 @@ void qtest_irq_intercept_in(QTestState *s, const char *string);
- void qtest_irq_intercept_out(QTestState *s, const char *string);
+     DS1338State *s = DS1338(dev);
+@@ -220,7 +215,6 @@ static void ds1338_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
  
- /**
-+ * irq_attach:
-+ * @s: #QTestState instance to operate on.
-+ * @name: the name of the GPIO list containing the IRQ
-+ * @irq: The IRQ number within the GPIO list to attach to
-+ * @irq_cb: The callback to execute when the interrupt changes
-+ * @opaque: opaque info to pass to the callback
-+ *
-+ * Attach a callback to an intercepted interrupt
-+ */
-+void qtest_irq_attach(QTestState *s, const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque);
-+
-+/**
-+ * qtest_irq_set
-+ * Set an interrupt level
-+ * @s: #QTestState instance to operate on.
-+ * @id: the device to inject interrupts for
-+ * @gpiolist: the GPIO list containing the IRQ
-+ * @n: the GPIO within the list
-+ * @level: the IRQ level
-+ *
-+ * Set an interrupt to a nominated level
-+ */
-+void qtest_irq_set(QTestState *s, const char *id, const char *gpiolist, int n,
-+        bool level);
-+
-+/**
-  * qtest_outb:
-  * @s: #QTestState instance to operate on.
-  * @addr: I/O port to write to.
-@@ -626,6 +654,37 @@ static inline void irq_intercept_out(const char *string)
- }
- 
- /**
-+ * irq_attach:
-+ * @name: the name of the gpio list containing the IRQ
-+ * @irq: The IRQ to attach to
-+ * @irq_cb: The callback to execute when the interrupt changes
-+ * @opaque: opaque info to pass to the callback
-+ *
-+ * Attach a callback to an intecepted interrupt
-+ */
-+static inline void irq_attach(const char *name, int irq,
-+        void (*irq_cb)(void *opaque, const char *name, int irq, bool level),
-+        void *opaque)
-+{
-+    qtest_irq_attach(global_qtest, name, irq, irq_cb, opaque);
-+}
-+
-+/**
-+ * qtest_irq_set
-+ * Set an interrupt level
-+ * @id: the device to inject interrupts for
-+ * @gpiolist: the GPIO list containing the line to seh
-+ * @n: the line to set within the list
-+ * @level: the IRQ level
-+ */
-+static inline void irq_set(const char *id, const char *gpiolist, int n,
-+        bool level)
-+{
-+    qtest_irq_set(global_qtest, id, gpiolist, n, level);
-+}
-+
-+
-+/**
-  * outb:
-  * @addr: I/O port to write to.
-  * @value: Value being written.
+-    k->init = ds1338_init;
+     k->event = ds1338_event;
+     k->recv = ds1338_recv;
+     k->send = ds1338_send;
 -- 
 2.9.3
 

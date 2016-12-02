@@ -1,1278 +1,1997 @@
-Received: by 10.25.159.131 with SMTP id i125csp56573lfe;
-        Thu, 1 Dec 2016 19:30:55 -0800 (PST)
-X-Received: by 10.200.45.75 with SMTP id o11mr41800915qta.254.1480649455256;
-        Thu, 01 Dec 2016 19:30:55 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 10.25.159.131 with SMTP id i125csp66690lfe;
+        Thu, 1 Dec 2016 20:08:46 -0800 (PST)
+X-Received: by 10.55.207.18 with SMTP id e18mr35054761qkj.48.1480651726300;
+        Thu, 01 Dec 2016 20:08:46 -0800 (PST)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r70si1917595qka.93.2016.12.01.19.30.54
+        by mx.google.com with ESMTPS id t14si1967696qkt.296.2016.12.01.20.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Dec 2016 19:30:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 01 Dec 2016 20:08:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:60356 helo=lists.gnu.org)
+       dkim=fail header.i=@ozlabs-ru.20150623.gappssmtp.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60481 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1cCeYn-0007f9-Ir
-	for alex.bennee@linaro.org; Thu, 01 Dec 2016 22:30:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38023)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1cCf9Q-0006Sv-Nv
+	for alex.bennee@linaro.org; Thu, 01 Dec 2016 23:08:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52370)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCeYc-0007dK-RG
-	for qemu-arm@nongnu.org; Thu, 01 Dec 2016 22:30:49 -0500
+	(envelope-from <aik@ozlabs.ru>) id 1cCf8R-00069q-LR
+	for qemu-devel@nongnu.org; Thu, 01 Dec 2016 23:07:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alastair@au1.ibm.com>) id 1cCeYW-00054W-3O
-	for qemu-arm@nongnu.org; Thu, 01 Dec 2016 22:30:42 -0500
-Received: from 001b2d01.pphosted.com ([148.163.156.1]:36523
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alastair@au1.ibm.com>)
-	id 1cCeYV-000548-Bu
-	for qemu-arm@nongnu.org; Thu, 01 Dec 2016 22:30:35 -0500
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.17/8.16.0.17) with SMTP id
-	uB23SbLK120373
-	for <qemu-arm@nongnu.org>; Thu, 1 Dec 2016 22:30:34 -0500
-Received: from e23smtp01.au.ibm.com (e23smtp01.au.ibm.com [202.81.31.143])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 272tsqv5dv-1
-	(version=TLSv1.2 cipher=AES256-SHA bits=256 verify=NOT)
-	for <qemu-arm@nongnu.org>; Thu, 01 Dec 2016 22:30:33 -0500
-Received: from localhost
-	by e23smtp01.au.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-arm@nongnu.org> from <alastair@au1.ibm.com>;
-	Fri, 2 Dec 2016 13:30:30 +1000
-Received: from d23dlp03.au.ibm.com (202.81.31.214)
-	by e23smtp01.au.ibm.com (202.81.31.207) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	Fri, 2 Dec 2016 13:30:28 +1000
-Received: from d23relay09.au.ibm.com (d23relay09.au.ibm.com [9.185.63.181])
-	by d23dlp03.au.ibm.com (Postfix) with ESMTP id AB9693578058;
-	Fri,  2 Dec 2016 14:30:27 +1100 (EST)
-Received: from d23av04.au.ibm.com (d23av04.au.ibm.com [9.190.235.139])
-	by d23relay09.au.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
-	uB23URlh1376686; Fri, 2 Dec 2016 14:30:27 +1100
-Received: from d23av04.au.ibm.com (localhost [127.0.0.1])
-	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVout) with ESMTP id
-	uB23UQRr014964; Fri, 2 Dec 2016 14:30:27 +1100
-Received: from ozlabs.au.ibm.com (ozlabs.au.ibm.com [9.192.253.14])
-	by d23av04.au.ibm.com (8.14.4/8.14.4/NCO v10.0 AVin) with ESMTP id
-	uB23UQwF014953; Fri, 2 Dec 2016 14:30:26 +1100
-Received: from adsilva.ozlabs.ibm.com (haven.au.ibm.com [9.192.254.114])
-	(using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ozlabs.au.ibm.com (Postfix) with ESMTPSA id 0E4EAA0138;
-	Fri,  2 Dec 2016 14:30:26 +1100 (AEDT)
-From: "Alastair D'Silva" <alastair@au1.ibm.com>
-To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-arm@nongnu.org
-Date: Fri, 02 Dec 2016 14:30:25 +1100
-In-Reply-To: <993b87ea-604a-b284-84e4-e98e6980d515@ozlabs.ru>
+	(envelope-from <aik@ozlabs.ru>) id 1cCf8M-0001C7-3r
+	for qemu-devel@nongnu.org; Thu, 01 Dec 2016 23:07:43 -0500
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:36619)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <aik@ozlabs.ru>) id 1cCf8L-0001Ax-B9
+	for qemu-devel@nongnu.org; Thu, 01 Dec 2016 23:07:38 -0500
+Received: by mail-pg0-x244.google.com with SMTP id x23so6585325pgx.3
+	for <qemu-devel@nongnu.org>; Thu, 01 Dec 2016 20:07:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=ozlabs-ru.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:references:cc:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=XkuQKyBsicgs1C3uiJ9+jdw9isFenm2RCgIkoWmjfr8=;
+	b=OXPsL06JA31OnFpzBEaqQlPp1/uTygbrbTidTWO8kv06Di0a3LqswZ0Z4lQbV99Gk5
+	ss9bRSLxkEcW9+tggdC6TfABYqgxf5mujgUawgGH+IPxlL72B5CGorV4x7TIuvoU6g+D
+	hon2Zoi7D3UkMTREJNPvZVAwL2L3EEMOY4gVv0uFHYbJ2HmBU8/Mo8S+H3yK3gV8cWcZ
+	013h7FDXu/Pdbdppo5IdM9xCna1fULEXLIjwcb9OTFK+vWo0lYTJpKMq6kpd7hticcWm
+	dqJmapbo53c8R9rAh/evP2LN1ZPZ7dLirvxWgyRrEPExOrx6PhTE6363p1qH7zYQdJon
+	djCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20130820;
+	h=x-gm-message-state:subject:to:references:cc:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=XkuQKyBsicgs1C3uiJ9+jdw9isFenm2RCgIkoWmjfr8=;
+	b=l4iZrX3tolCVWooy48Bzm9Cmu2gv5rhMMKG9dleERkO06pYDlMu3OjFCzmafYIStJM
+	hrHqCMUg0aCYKZHUMicgV5unUH3CXloDJ5hNzIktkEXiaZ4ifKt/wlFfwfTqqgg7Av5I
+	lO0zsU9awbFi5cuVUOOjtr4CqJO2Fn1w1aEgOOLzMrXLd3tjJOIwqJWA0UOB7itCW9LO
+	dvWdf5XhV0/0eZ0Mfq1ZhdbEceVCz8Fo50cvpAJKj1Rpm7karwy3yIPaRgJ+rljx9XTM
+	x9Mavl9Jof2Meiq4Z1h41NaRGLTMnZuc1a2p7R05Nf/Ny4BXK85uSyS3/MhET/BjKee7
+	CktA==
+X-Gm-Message-State: AKaTC01bObg1UuQqqCCcLTMzi/9VDk3S7hcrLphqI2qkY0b5cSdBXJ+EXD6bjbd7y8Kr4Q==
+X-Received: by 10.98.133.9 with SMTP id u9mr42338001pfd.137.1480651653973;
+	Thu, 01 Dec 2016 20:07:33 -0800 (PST)
+Received: from [10.61.2.175] ([122.99.82.10])
+	by smtp.googlemail.com with ESMTPSA id
+	d15sm3370737pfl.46.2016.12.01.20.07.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 01 Dec 2016 20:07:33 -0800 (PST)
+To: Alastair D'Silva <alastair@au1.ibm.com>, qemu-arm@nongnu.org
 References: <20161130053629.23340-1-alastair@au1.ibm.com>
 	<20161130053629.23340-5-alastair@au1.ibm.com>
 	<6c328f0d-af92-4732-b1e2-5255c91536fc@ozlabs.ru>
 	<1480637970.16973.3.camel@au1.ibm.com>
 	<993b87ea-604a-b284-84e4-e98e6980d515@ozlabs.ru>
-Organization: IBM Australia
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.22.1 (3.22.1-2.fc25) 
-Mime-Version: 1.0
-X-TM-AS-MML: disable
-X-Content-Scanned: Fidelis XPS MAILER
-x-cbid: 16120203-1617-0000-0000-00000188C207
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 16120203-1618-0000-0000-000047478853
-Message-Id: <1480649425.16973.5.camel@au1.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10432:, ,
-	definitions=2016-12-02_02:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	spamscore=0 suspectscore=0
-	malwarescore=0 phishscore=0 adultscore=0 bulkscore=0 classifier=spam
-	adjust=0 reason=mlx scancount=1 engine=8.0.1-1609300000
-	definitions=main-1612020060
-Content-Transfer-Encoding: base64
-X-MIME-Autoconverted: from 8bit to base64 by mx0a-001b2d01.pphosted.com id
-	uB23SbLK120373
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 4/6] hw/timer: Add Epson
- RX8900 RTC support
-X-BeenThere: qemu-arm@nongnu.org
+	<1480649425.16973.5.camel@au1.ibm.com>
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+Message-ID: <30622747-cc4f-4f02-320f-7b061476c0da@ozlabs.ru>
+Date: Fri, 2 Dec 2016 15:07:26 +1100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1480649425.16973.5.camel@au1.ibm.com>
+Content-Type: text/plain; charset=koi8-r
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: Re: [Qemu-devel] [PATCH v2 4/6] hw/timer: Add Epson RX8900 RTC
+ support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
 	qemu-devel@nongnu.org, Chris Smart <chris@distroguy.com>,
-	=?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
 	Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TUGDO3f4XgQS
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a2pVAEiXvLsY
 
-T24gRnJpLCAyMDE2LTEyLTAyIGF0IDEzOjQ4ICsxMTAwLCBBbGV4ZXkgS2FyZGFzaGV2c2tp
-eSB3cm90ZToNCj4gT24gMDIvMTIvMTYgMTE6MTksIEFsYXN0YWlyIEQnU2lsdmEgd3JvdGU6
-DQo+ID4gT24gVGh1LCAyMDE2LTEyLTAxIGF0IDE2OjUzICsxMTAwLCBBbGV4ZXkgS2FyZGFz
-aGV2c2tpeSB3cm90ZToNCj4gPiANCj4gPiA+IE9uIDMwLzExLzE2IDE2OjM2LCBBbGFzdGFp
-ciBEJ1NpbHZhIHdyb3RlOg0KPiA+ID4gPiBGcm9tOiBBbGFzdGFpciBEJ1NpbHZhIDxhbGFz
-dGFpckBkLXNpbHZhLm9yZz4NCj4gPiA+ID4gDQo+ID4gPiA+IFRoaXMgcGF0Y2ggYWRkcyBz
-dXBwb3J0IGZvciB0aGUgRXBzb24gUlg4OTAwIEkyQyBSVEMuDQo+ID4gPiA+IA0KPiA+ID4g
-PiBUaGUgZm9sbG93aW5nIGNoaXAgZmVhdHVyZXMgYXJlIGltcGxlbWVudGVkOg0KPiA+ID4g
-PiDCoC0gUlRDICh3YWxsY2xvY2sgYmFzZWQsIHB0aW1lciAxMHggb3ZlcnNhbXBsaW5nIHRv
-IHBpY2sgdXANCj4gPiA+ID4gCXdhbGxjbG9jayB0cmFuc2l0aW9ucykNCj4gPiA+ID4gwqAt
-IFRpbWUgdXBkYXRlIGludGVycnVwdCAocGVyIHNlY29uZC9taW51dGUsIHdhbGxjbG9jayBi
-YXNlZCkNCj4gPiA+ID4gwqAtIEFsYXJtcyAod2FsbGNsb2NrIGJhc2VkKQ0KPiA+ID4gPiDC
-oC0gVGVtcGVyYXR1cmUgKHNldCB2aWEgYSBwcm9wZXJ0eSkNCj4gPiA+ID4gwqAtIENvdW50
-ZG93biB0aW1lciAoZW11bGF0ZWQgY2xvY2sgdmlhIHB0aW1lcikNCj4gPiA+ID4gwqAtIEZP
-VVQgdmlhIEdQSU8gKGVtdWxhdGVkIGNsb2NrIHZpYSBwdGltZXIpDQo+ID4gPiA+IA0KPiA+
-ID4gPiBUaGUgZm9sbG93aW5nIGNoaXAgZmVhdHVyZXMgYXJlIHVuaW1wbGVtZW50ZWQ6DQo+
-ID4gPiA+IMKgLSBMb3cgdm9sdGFnZSBkZXRlY3Rpb24NCj4gPiA+ID4gwqAtIGkyYyB0aW1l
-b3V0DQo+ID4gPiA+IA0KPiA+ID4gPiBUaGUgaW1wbGVtZW50YXRpb24gZXhwb3J0cyB0aGUg
-Zm9sbG93aW5nIG5hbWVkIEdQSU9zOg0KPiA+ID4gPiByeDg5MDAtaW50ZXJydXB0LW91dA0K
-PiA+ID4gPiByeDg5MDAtZm91dC1lbmFibGUNCj4gPiA+ID4gcng4OTAwLWZvdXQNCj4gPiA+
-ID4gDQo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IEFsYXN0YWlyIEQnU2lsdmEgPGFsYXN0YWly
-QGQtc2lsdmEub3JnPg0KPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBTbWFydCA8Y2hy
-aXNAZGlzdHJvZ3V5LmNvbT4NCj4gPiA+ID4gLS0tDQo+ID4gPiA+IMKgZGVmYXVsdC1jb25m
-aWdzL2FybS1zb2Z0bW11Lm1hayB8wqDCoMKgMSArDQo+ID4gPiA+IMKgaHcvdGltZXIvTWFr
-ZWZpbGUub2Jqc8KgwqDCoMKgwqDCoMKgwqDCoMKgfMKgwqDCoDIgKw0KPiA+ID4gPiDCoGh3
-L3RpbWVyL3J4ODkwMC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfCA4OTANCj4g
-PiA+ID4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPiA+ID4g
-PiDCoGh3L3RpbWVyL3J4ODkwMF9yZWdzLmjCoMKgwqDCoMKgwqDCoMKgwqDCoHwgMTM5ICsr
-KysrKysNCj4gPiA+ID4gwqBody90aW1lci90cmFjZS1ldmVudHPCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgfMKgwqAzMSArKw0KPiA+ID4gPiDCoDUgZmlsZXMgY2hhbmdlZCwgMTA2MyBpbnNl
-cnRpb25zKCspDQo+ID4gPiA+IMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L3RpbWVyL3J4ODkw
-MC5jDQo+ID4gPiA+IMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L3RpbWVyL3J4ODkwMF9yZWdz
-LmgNCj4gPiA+ID4gDQo+ID4gPiA+IGRpZmYgLS1naXQgYS9kZWZhdWx0LWNvbmZpZ3MvYXJt
-LXNvZnRtbXUubWFrIGIvZGVmYXVsdC0NCj4gPiA+ID4gY29uZmlncy9hcm0tDQo+ID4gPiA+
-IHNvZnRtbXUubWFrDQo+ID4gPiA+IGluZGV4IDZkZTNlMTYuLmFkYjYwMGUgMTAwNjQ0DQo+
-ID4gPiA+IC0tLSBhL2RlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsNCj4gPiA+ID4g
-KysrIGIvZGVmYXVsdC1jb25maWdzL2FybS1zb2Z0bW11Lm1haw0KPiA+ID4gPiBAQCAtMjks
-NiArMjksNyBAQCBDT05GSUdfU01DOTFDMTExPXkNCj4gPiA+ID4gwqBDT05GSUdfQUxMV0lO
-TkVSX0VNQUM9eQ0KPiA+ID4gPiDCoENPTkZJR19JTVhfRkVDPXkNCj4gPiA+ID4gwqBDT05G
-SUdfRFMxMzM4PXkNCj4gPiA+ID4gK0NPTkZJR19SWDg5MDA9eQ0KPiA+ID4gPiDCoENPTkZJ
-R19QRkxBU0hfQ0ZJMDE9eQ0KPiA+ID4gPiDCoENPTkZJR19QRkxBU0hfQ0ZJMDI9eQ0KPiA+
-ID4gPiDCoENPTkZJR19NSUNST0RSSVZFPXkNCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2h3L3Rp
-bWVyL01ha2VmaWxlLm9ianMgYi9ody90aW1lci9NYWtlZmlsZS5vYmpzDQo+ID4gPiA+IGlu
-ZGV4IDdiYThjMjMuLmZhMDI4YWMgMTAwNjQ0DQo+ID4gPiA+IC0tLSBhL2h3L3RpbWVyL01h
-a2VmaWxlLm9ianMNCj4gPiA+ID4gKysrIGIvaHcvdGltZXIvTWFrZWZpbGUub2Jqcw0KPiA+
-ID4gPiBAQCAtMyw2ICszLDcgQEAgY29tbW9uLW9iai0kKENPTkZJR19BUk1fTVBUSU1FUikg
-Kz0NCj4gPiA+ID4gYXJtX21wdGltZXIubw0KPiA+ID4gPiDCoGNvbW1vbi1vYmotJChDT05G
-SUdfQTlfR1RJTUVSKSArPSBhOWd0aW1lci5vDQo+ID4gPiA+IMKgY29tbW9uLW9iai0kKENP
-TkZJR19DQURFTkNFKSArPSBjYWRlbmNlX3R0Yy5vDQo+ID4gPiA+IMKgY29tbW9uLW9iai0k
-KENPTkZJR19EUzEzMzgpICs9IGRzMTMzOC5vDQo+ID4gPiA+ICtjb21tb24tb2JqLSQoQ09O
-RklHX1JYODkwMCkgKz0gcng4OTAwLm8NCj4gPiA+ID4gwqBjb21tb24tb2JqLSQoQ09ORklH
-X0hQRVQpICs9IGhwZXQubw0KPiA+ID4gPiDCoGNvbW1vbi1vYmotJChDT05GSUdfSTgyNTQp
-ICs9IGk4MjU0X2NvbW1vbi5vIGk4MjU0Lm8NCj4gPiA+ID4gwqBjb21tb24tb2JqLSQoQ09O
-RklHX000OFQ1OSkgKz0gbTQ4dDU5Lm8NCj4gPiA+ID4gQEAgLTE3LDYgKzE4LDcgQEAgY29t
-bW9uLW9iai0kKENPTkZJR19JTVgpICs9IGlteF9lcGl0Lm8NCj4gPiA+ID4gwqBjb21tb24t
-b2JqLSQoQ09ORklHX0lNWCkgKz0gaW14X2dwdC5vDQo+ID4gPiA+IMKgY29tbW9uLW9iai0k
-KENPTkZJR19MTTMyKSArPSBsbTMyX3RpbWVyLm8NCj4gPiA+ID4gwqBjb21tb24tb2JqLSQo
-Q09ORklHX01JTEtZTUlTVCkgKz0gbWlsa3ltaXN0LXN5c2N0bC5vDQo+ID4gPiA+ICtjb21t
-b24tb2JqLSQoQ09ORklHX1JYODkwMCkgKz0gcng4OTAwLm8NCj4gPiA+ID4gwqANCj4gPiA+
-ID4gwqBvYmotJChDT05GSUdfRVhZTk9TNCkgKz0gZXh5bm9zNDIxMF9tY3Qubw0KPiA+ID4g
-PiDCoG9iai0kKENPTkZJR19FWFlOT1M0KSArPSBleHlub3M0MjEwX3B3bS5vDQo+ID4gPiA+
-IGRpZmYgLS1naXQgYS9ody90aW1lci9yeDg5MDAuYyBiL2h3L3RpbWVyL3J4ODkwMC5jDQo+
-ID4gPiA+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+ID4gPiA+IGluZGV4IDAwMDAwMDAuLmU2
-MzQ4MTkNCj4gPiA+ID4gLS0tIC9kZXYvbnVsbA0KPiA+ID4gPiArKysgYi9ody90aW1lci9y
-eDg5MDAuYw0KPiA+ID4gPiBAQCAtMCwwICsxLDg5MCBAQA0KPiA+ID4gPiArLyoNCj4gPiA+
-ID4gKyAqIEVwc29uIFJYODkwMFNBL0NFIFJlYWx0aW1lIENsb2NrIE1vZHVsZQ0KPiA+ID4g
-PiArICoNCj4gPiA+ID4gKyAqIENvcHlyaWdodCAoYykgMjAxNiBJQk0gQ29ycG9yYXRpb24N
-Cj4gPiA+ID4gKyAqIEF1dGhvcnM6DQo+ID4gPiA+ICsgKsKgwqBBbGFzdGFpciBEJ1NpbHZh
-IDxhbGFzdGFpckBkLXNpbHZhLm9yZz4NCj4gPiA+ID4gKyAqwqDCoENocmlzIFNtYXJ0IDxj
-aHJpc0BkaXN0cm9ndXkuY29tPg0KPiA+ID4gPiArICoNCj4gPiA+ID4gKyAqIFRoaXMgY29k
-ZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgR1BMIHZlcnNpb24gMiBvcg0KPiA+ID4gPiBsYXRl
-ci7CoMKgU2VlDQo+ID4gPiA+ICsgKiB0aGUgQ09QWUlORyBmaWxlIGluIHRoZSB0b3AtbGV2
-ZWwgZGlyZWN0b3J5Lg0KPiA+ID4gPiArICoNCj4gPiA+ID4gKyAqIERhdGFzaGVldCBhdmFp
-bGFibGUgYXQ6DQo+ID4gPiA+ICsgKsKgwqBodHRwczovL3N1cHBvcnQuZXBzb24uYml6L3Rk
-L2FwaS9kb2NfY2hlY2sucGhwP2RsPWFwcF9SWDg5DQo+ID4gPiA+IDAwQ0UNCj4gPiA+ID4g
-Jmxhbmc9ZW4NCj4gPiA+ID4gKyAqDQo+ID4gPiA+ICsgKiBOb3QgaW1wbGVtZW50ZWQ6DQo+
-ID4gPiA+ICsgKsKgwqBJbXBsZW1lbnQgaTJjIHRpbWVvdXQNCj4gPiA+ID4gKyAqLw0KPiA+
-ID4gPiArDQo+ID4gPiA+ICsjaW5jbHVkZSAicWVtdS9vc2RlcC5oIg0KPiA+ID4gPiArI2lu
-Y2x1ZGUgInFlbXUtY29tbW9uLmgiDQo+ID4gPiA+ICsjaW5jbHVkZSAiaHcvaTJjL2kyYy5o
-Ig0KPiA+ID4gPiArI2luY2x1ZGUgImh3L3RpbWVyL3J4ODkwMF9yZWdzLmgiDQo+ID4gPiA+
-ICsjaW5jbHVkZSAiaHcvcHRpbWVyLmgiDQo+ID4gPiA+ICsjaW5jbHVkZSAicWVtdS9tYWlu
-LWxvb3AuaCINCj4gPiA+ID4gKyNpbmNsdWRlICJxZW11L2JjZC5oIg0KPiA+ID4gPiArI2lu
-Y2x1ZGUgInFlbXUvbG9nLmgiDQo+ID4gPiA+ICsjaW5jbHVkZSAicWFwaS9lcnJvci5oIg0K
-PiA+ID4gPiArI2luY2x1ZGUgInFhcGkvdmlzaXRvci5oIg0KPiA+ID4gPiArI2luY2x1ZGUg
-InRyYWNlLmgiDQo+ID4gPiA+ICsNCj4gPiA+ID4gKyAjaW5jbHVkZSA8c3lzL3RpbWUuaD4N
-Cj4gPiA+ID4gKw0KPiA+ID4gPiArICNpbmNsdWRlIDxleGVjaW5mby5oPg0KPiA+ID4gDQo+
-ID4gPiBOb3QgbmVlZGVkIGVtcHR5IGxpbmVzIGFuZCBzcGFjZXMgYmVmb3JlICIjaW5jbHVk
-ZSIuDQo+ID4gPiANCj4gPiANCj4gPiBPaywgdGhlc2Ugd2VyZSBsZWZ0b3ZlcnMgYW5kIGRv
-bid0IGJlbG9uZyB0aGVyZSBhbnl3YXkuDQo+ID4gDQo+ID4gPiANCj4gPiA+ID4gKw0KPiA+
-ID4gPiArI2RlZmluZSBUWVBFX1JYODkwMCAicng4OTAwIg0KPiA+ID4gPiArI2RlZmluZSBS
-WDg5MDAob2JqKSBPQkpFQ1RfQ0hFQ0soUlg4OTAwU3RhdGUsIChvYmopLA0KPiA+ID4gPiBU
-WVBFX1JYODkwMCkNCj4gPiA+ID4gKw0KPiA+ID4gPiArdHlwZWRlZiBzdHJ1Y3QgUlg4OTAw
-U3RhdGUgew0KPiA+ID4gPiArwqDCoMKgwqBJMkNTbGF2ZSBwYXJlbnRfb2JqOw0KPiA+ID4g
-PiArDQo+ID4gPiA+ICvCoMKgwqDCoHB0aW1lcl9zdGF0ZSAqc2VjX3RpbWVyOyAvKiB0cmln
-Z2VyZWQgb25jZSBwZXIgc2Vjb25kICovDQo+ID4gPiA+ICvCoMKgwqDCoHB0aW1lcl9zdGF0
-ZSAqZm91dF90aW1lcjsNCj4gPiA+ID4gK8KgwqDCoMKgcHRpbWVyX3N0YXRlICpjb3VudGRv
-d25fdGltZXI7DQo+ID4gPiA+ICvCoMKgwqDCoGJvb2wgZm91dDsNCj4gPiA+IA0KPiA+ID4g
-SXMgdGhpcyAiRk9FIiBvbiB0aGUgY2hpcD8NCj4gPiA+IA0KPiA+IA0KPiA+IE5vLCBpdCB0
-cmFja3MgdGhlIHN0YXRlIG9mIHRoZSBmb3V0IHdhdmVmb3JtLiBJJ2xsIHJlbmFtZSBpdCB0
-bw0KPiA+IGZvdXRfc3RhdGUuDQo+IA0KPiBTaW5jZSBpdCBpcyBib29sLCBmb3V0X2VuYWJs
-ZWQgbWFrZXMgbW9yZSBzZW5zZS4NCj4gDQoNCk5vIGl0IGRvZXMndCwgaXQncyBub3QgYW4g
-ZW5hYmxlZCBjb250cm9sLCBidXQgdGhlIHBoYXNlIG9mIHRoZQ0Kd2F2ZWZvcm0uDQoNCj4g
-DQo+ID4gDQo+ID4gPiANCj4gPiA+ID4gK8KgwqDCoMKgaW50NjRfdCBvZmZzZXQ7DQo+ID4g
-PiA+ICvCoMKgwqDCoHVpbnQ4X3Qgd2Vla2RheTsgLyogU2F2ZWQgZm9yIGRlZmVycmVkIG9m
-ZnNldCBjYWxjdWxhdGlvbiwNCj4gPiA+ID4gMC02wqANCj4gPiA+ID4gKi8NCj4gPiA+ID4g
-K8KgwqDCoMKgdWludDhfdCB3ZGF5X29mZnNldDsNCj4gPiA+ID4gK8KgwqDCoMKgdWludDhf
-dCBudnJhbVtSWDg5MDBfTlZSQU1fU0laRV07DQo+ID4gPiA+ICvCoMKgwqDCoGludDMyX3Qg
-cHRyOyAvKiBXcmFwcGVkIHRvIHN0YXkgd2l0aGluIFJYODkwMF9OVlJBTV9TSVpFDQo+ID4g
-PiA+ICovDQo+ID4gPiANCj4gPiA+IEl0IGlzIHJhdGhlciAibnZyYW1fb2Zmc2V0IiB0aGFu
-IHNvbWUgcG9pbnRlci4NCj4gPiA+IA0KPiA+IA0KPiA+IE9rDQo+ID4gDQo+ID4gPiANCj4g
-PiA+ID4gK8KgwqDCoMKgYm9vbCBhZGRyX2J5dGU7DQo+ID4gPiA+ICvCoMKgwqDCoHVpbnQ4
-X3QgbGFzdF9pbnRlcnJ1cHRfc2Vjb25kczsNCj4gPiA+IA0KPiA+ID4gcy9sYXN0X2ludGVy
-cnVwdF9zZWNvbmRzL2xhc3RfdXBkYXRlX2ludGVycnVwdF9zZWNvbmRzLw0KPiA+ID4gDQo+
-ID4gDQo+ID4gTm8sIHRoaXMgaXMgbW9yZSBnZW5lcmljIHRoYW4gdGhlIHVwZGF0ZSBpbnRl
-cnJ1cHQuDQo+IA0KPiANCj4gbGFzdF91cGRhdGVfaW50ZXJydXB0X21pbnV0ZXMgaXMgdXBk
-YXRlZCBpbiB1cGRhdGVfY29udHJvbF9yZWdpc3RlcigpDQo+IGFuZA0KPiByeDg5MDBfdGlt
-ZXJfdGljaygpDQo+IA0KPiBsYXN0X2ludGVycnVwdF9zZWNvbmRzIGlzIHVwZGF0ZWQgaW4g
-dXBkYXRlX2NvbnRyb2xfcmVnaXN0ZXIoKSBhbmQNCj4gcng4OTAwX3RpbWVyX3RpY2soKSBh
-cyB3ZWxsLg0KPiANCj4gWWVzLCB0aGUgY29uZGl0aW9ucyBhcmUgc29tZXRpbWUgZGlmZmVy
-ZW50IGJ1dCBpdCBpcyBzdGlsbCBxdWl0ZSBoYXJkDQo+IHRvDQo+IHRlbGwgaG93IG9uZSBp
-cyBtb3JlIGdlbmVyaWMgdGhhbiB0aGUgb3RoZXIuIEFsbCBJIGFtIHNheWluZyBoZXJlIGlz
-DQo+IHRoYXQNCj4gdGhlIG5hbWVzIGFyZSBub3QgY2xlYXIgYW5kIHRoZXJlIGlzIG5vIGNv
-bW1lbnQgYWJvdXQgdGhlbSBlaXRoZXIuDQoNCkknbGwgYWRkIHNvbWUgY29tbWVudHMuDQoN
-Cj4gDQo+ID4gPiANCj4gPiA+ID4gK8KgwqDCoMKgdWludDhfdCBsYXN0X3VwZGF0ZV9pbnRl
-cnJ1cHRfbWludXRlczsNCj4gPiA+ID4gK8KgwqDCoMKgZG91YmxlIHN1cHBseV92b2x0YWdl
-Ow0KPiA+ID4gPiArwqDCoMKgwqBxZW11X2lycSBpbnRlcnJ1cHRfcGluOw0KPiA+ID4gDQo+
-ID4gPiBJcyB0aGlzICJJTlQiIG9uIHRoZSBjaGlwPw0KPiA+ID4gDQo+ID4gDQo+ID4gWWVz
-DQo+IA0KPiBJJ2Qgc3VnZ2VzdCBhZGRpbmcgYSBzaG9ydCBjb21tZW50IC8qIElOVCBwaW4g
-Ki8gYXQgdGhlIGVuZCBvZiB0aGUNCj4gbGluZS4NCg0KSSBkb24ndCB0aGluayBpdCdzIGEg
-aHVnZSBsb2dpY2FsIGxlYXAgaGVyZSB0byBhc3NvY2lhdGUNCiJpbnRlcnJ1cHRfcGluIiB3
-aXRoIHRoZSBpbnRlcnJ1cHQgcGluIG9mIHRoZSBkZXZpY2UuDQoNCj4gPiANCj4gPiA+ID4g
-K8KgwqDCoMKgcWVtdV9pcnEgZm91dF9waW47DQo+ID4gPiANCj4gPiA+IElzIHRoaXMgIkZP
-VVQiIG9uIHRoZSBjaGlwPw0KPiA+ID4gDQo+ID4gDQo+ID4gWWVzDQo+IA0KPiANCj4gU2Ft
-ZSBoZXJlLg0KDQpEaXR0bw0KDQo+ID4gDQo+ID4gPiANCj4gPiA+ID4gK30gUlg4OTAwU3Rh
-dGU7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK3N0YXRpYyBjb25zdCBWTVN0YXRlRGVzY3JpcHRp
-b24gdm1zdGF0ZV9yeDg5MDAgPSB7DQo+ID4gPiA+ICvCoMKgwqDCoC5uYW1lID0gInJ4ODkw
-MCIsDQo+ID4gPiA+ICvCoMKgwqDCoC52ZXJzaW9uX2lkID0gMiwNCj4gPiA+IA0KPiA+ID4g
-DQo+ID4gPiB2bXN0YXRlIHZlcnNpb24gaXMgMiBmb3IgYSBicmFuZCBuZXcgZGV2aWNlIG1l
-YW5zIHRoYXQgdGhlcmUgaXMNCj4gPiA+IGFub3RoZXINCj4gPiA+IGRldmljZSB3aGljaCBj
-YW4gbWlncmF0ZSB0byBpdD8gSSB0aGluayB5b3Ugd2FudCB2ZXJzaW9uX2lkPTEgYW5kDQo+
-ID4gPiBnZXQNCj4gPiA+IHJpZA0KPiA+ID4gb2YgX1YgYmVsb3cuDQo+ID4gPiANCj4gPiAN
-Cj4gPiBPaw0KPiA+IA0KPiA+ID4gDQo+ID4gPiANCj4gPiA+ID4gK8KgwqDCoMKgLm1pbmlt
-dW1fdmVyc2lvbl9pZCA9IDEsDQo+ID4gPiA+ICvCoMKgwqDCoC5maWVsZHMgPSAoVk1TdGF0
-ZUZpZWxkW10pIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBWTVNUQVRFX0kyQ19TTEFW
-RShwYXJlbnRfb2JqLCBSWDg5MDBTdGF0ZSksDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-Vk1TVEFURV9QVElNRVIoc2VjX3RpbWVyLCBSWDg5MDBTdGF0ZSksDQo+ID4gPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgVk1TVEFURV9QVElNRVIoZm91dF90aW1lciwgUlg4OTAwU3RhdGUpLA0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfUFRJTUVSKGNvdW50ZG93bl90aW1l
-ciwgUlg4OTAwU3RhdGUpLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfQk9P
-TChmb3V0LCBSWDg5MDBTdGF0ZSksDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgVk1TVEFU
-RV9JTlQ2NChvZmZzZXQsIFJYODkwMFN0YXRlKSwNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqBWTVNUQVRFX1VJTlQ4X1Yod2Vla2RheSwgUlg4OTAwU3RhdGUsIDIpLA0KPiA+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfVUlOVDhfVih3ZGF5X29mZnNldCwgUlg4OTAwU3Rh
-dGUsIDIpLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoFZNU1RBVEVfVUlOVDhfQVJSQVko
-bnZyYW0sIFJYODkwMFN0YXRlLA0KPiA+ID4gPiBSWDg5MDBfTlZSQU1fU0laRSksDQo+ID4g
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgVk1TVEFURV9JTlQzMihwdHIsIFJYODkwMFN0YXRlKSwN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBWTVNUQVRFX0JPT0woYWRkcl9ieXRlLCBSWDg5
-MDBTdGF0ZSksDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgVk1TVEFURV9VSU5UOF9WKGxh
-c3RfaW50ZXJydXB0X3NlY29uZHMsIFJYODkwMFN0YXRlLA0KPiA+ID4gPiAyKSwNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqBWTVNUQVRFX1VJTlQ4X1YobGFzdF91cGRhdGVfaW50ZXJy
-dXB0X21pbnV0ZXMsDQo+ID4gPiA+IFJYODkwMFN0YXRlLCAyKSwNCj4gPiA+ID4gK8KgwqDC
-oMKgwqDCoMKgwqBWTVNUQVRFX0VORF9PRl9MSVNUKCkNCj4gPiA+ID4gK8KgwqDCoMKgfQ0K
-PiA+ID4gPiArfTsNCj4gPiA+ID4gKw0KPiA+ID4gPiArc3RhdGljIHZvaWQgcng4OTAwX3Jl
-c2V0KERldmljZVN0YXRlICpkZXYpOw0KPiA+ID4gPiArc3RhdGljIHZvaWQgZGlzYWJsZV9j
-b3VudGRvd25fdGltZXIoUlg4OTAwU3RhdGUgKnMpOw0KPiA+ID4gDQo+ID4gPiBUaGlzIG9u
-ZSBub3QgbmVlZGVkLg0KPiA+ID4gDQo+ID4gDQo+ID4gT2sNCj4gPiANCj4gPiA+IA0KPiA+
-ID4gPiArc3RhdGljIHZvaWQgZW5hYmxlX2NvdW50ZG93bl90aW1lcihSWDg5MDBTdGF0ZSAq
-cyk7DQo+ID4gPiA+ICtzdGF0aWMgdm9pZCBkaXNhYmxlX3RpbWVyKFJYODkwMFN0YXRlICpz
-KTsNCj4gPiA+ID4gK3N0YXRpYyB2b2lkIGVuYWJsZV90aW1lcihSWDg5MDBTdGF0ZSAqcyk7
-DQo+ID4gPiA+IEZyb20gYSBxdWljayBsb29rLCBhbGwgdGhlc2UgZnVuY3Rpb25zIGNvdWxk
-IGJlIG1vdmVkIHJpZ2h0DQo+ID4gPiA+IGhlcmUsDQo+ID4gPiA+IGNhbm5vdCB0aGV5Pw0K
-PiA+IA0KPiA+IE9rLCBleGNlcHQgZm9yIHJlc2V0LCB3aGljaCBJIHByZWZlciB0byBsZWF2
-ZSBuZXh0IHRvIHRoZSBvdGhlcg0KPiA+IGluaXQNCj4gPiBjb2RlIHNvIHRoYXQgYXNzb2Np
-YXRlZCBjb2RlIGlzIGtlcHQgdG9ndGhlci4NCj4gPiA+IA0KPiA+ID4gPiArDQo+ID4gPiA+
-ICtzdGF0aWMgdm9pZCBjYXB0dXJlX2N1cnJlbnRfdGltZShSWDg5MDBTdGF0ZSAqcykNCj4g
-PiA+ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKgLyogQ2FwdHVyZSB0aGUgY3VycmVudCB0aW1l
-IGludG8gdGhlIHNlY29uZGFyeSByZWdpc3RlcnMNCj4gPiA+ID4gK8KgwqDCoMKgwqAqIHdo
-aWNoIHdpbGwgYmUgYWN0dWFsbHkgcmVhZCBieSB0aGUgZGF0YSB0cmFuc2Zlcg0KPiA+ID4g
-PiBvcGVyYXRpb24uDQo+ID4gPiA+ICvCoMKgwqDCoMKgKi8NCj4gPiA+ID4gK8KgwqDCoMKg
-c3RydWN0IHRtIG5vdzsNCj4gPiA+ID4gK8KgwqDCoMKgcWVtdV9nZXRfdGltZWRhdGUoJm5v
-dywgcy0+b2Zmc2V0KTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bU0VDT05EU10gPSB0
-b19iY2Qobm93LnRtX3NlYyk7DQo+ID4gPiA+ICvCoMKgwqDCoHMtPm52cmFtW01JTlVURVNd
-ID0gdG9fYmNkKG5vdy50bV9taW4pOw0KPiA+ID4gPiArwqDCoMKgwqBzLT5udnJhbVtIT1VS
-U10gPSB0b19iY2Qobm93LnRtX2hvdXIpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDC
-oHMtPm52cmFtW1dFRUtEQVldID0gMHgwMSA8PCAoKG5vdy50bV93ZGF5ICsgcy0NCj4gPiA+
-ID4gPndkYXlfb2Zmc2V0KSAlDQo+ID4gPiA+IDcpOw0KPiA+ID4gDQo+ID4gPiBzLzB4MDEv
-MS8gPw0KPiA+IA0KPiA+IFdlZWtkYXkgaXMgYSB3YWxraW5nIGJpdCwgSSB0aGluayBoZXgg
-bm90YXRpb24gaXMgY2xlYXJlci4NCj4gDQo+IA0KPiAiMSIgaXMgYSBwdXJlIG9uZS4gMHgw
-MSBzdWdnZXN0cyBhIGJpdCBtYXNrIHNvIGl0IG1heSBiZSBwb3NzaWJsZSB0bw0KPiBzaGlm
-dA0KPiBzb21lIG90aGVyIHZhbHVlLiBJIGNhbm5vdCB0aGluayBob3cgMHgwMSBpcyBjbGVh
-cmVyLCBJIGFza2VkIFBhdWwsDQo+IGhlDQo+IGNhbm5vdCBlaXRoZXIgOykNCj4gDQoNCkZy
-b20gdGhlIGRhdGFzaGVldDoNClRoZSBkYXkgZGF0YSB2YWx1ZXMgYXJlIGNvdW50ZWQgYXMg
-Zm9sbG93czogRGF5IDAxaCwgRGF5IDAyaCwgRGF5IDA0aCwNCkRheSAwOGgsIERheSAxMGgs
-IERheSAyMGgsIERheSA0MGgsIERheSAwMWgsIERheSAwMmgsIGV0Yy7CoMKgwqANCg0KPiAN
-Cj4gPiANCj4gPiA+IA0KPiA+ID4gPiArwqDCoMKgwqBzLT5udnJhbVtEQVldID0gdG9fYmNk
-KG5vdy50bV9tZGF5KTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bTU9OVEhdID0gdG9f
-YmNkKG5vdy50bV9tb24gKyAxKTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bWUVBUl0g
-PSB0b19iY2Qobm93LnRtX3llYXIgJSAxMDApOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKg
-wqDCoHMtPm52cmFtW0VYVF9TRUNPTkRTXSA9IHMtPm52cmFtW1NFQ09ORFNdOw0KPiA+ID4g
-PiArwqDCoMKgwqBzLT5udnJhbVtFWFRfTUlOVVRFU10gPSBzLT5udnJhbVtNSU5VVEVTXTsN
-Cj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bRVhUX0hPVVJTXSA9IHMtPm52cmFtW0hPVVJT
-XTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bRVhUX1dFRUtEQVldID0gcy0+bnZyYW1b
-V0VFS0RBWV07DQo+ID4gPiA+ICvCoMKgwqDCoHMtPm52cmFtW0VYVF9EQVldID0gcy0+bnZy
-YW1bREFZXTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bRVhUX01PTlRIXSA9IHMtPm52
-cmFtW01PTlRIXTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bRVhUX1lFQVJdID0gcy0+
-bnZyYW1bWUVBUl07DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgdHJhY2Vfcng4OTAw
-X2NhcHR1cmVfY3VycmVudF90aW1lKG5vdy50bV9ob3VyLCBub3cudG1fbWluLA0KPiA+ID4g
-PiBub3cudG1fc2VjLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgKG5vdy50
-bV93ZGF5ICsgcy0+d2RheV9vZmZzZXQpICUgNywNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoG5vdy50bV9tZGF5LCBub3cudG1fbW9uLCBub3cudG1feWVhciArIDE5MDAs
-DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzLT5udnJhbVtIT1VSU10sIHMt
-Pm52cmFtW01JTlVURVNdLCBzLQ0KPiA+ID4gPiA+bnZyYW1bU0VDT05EU10sDQo+ID4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzLT5udnJhbVtXRUVLREFZXSwgcy0+bnZyYW1b
-REFZXSwgcy0+bnZyYW1bTU9OVEhdLCANCj4gPiA+ID4gcy0NCj4gPiA+ID4gPiBudnJhbVtZ
-RUFSXSk7DQo+ID4gPiA+IA0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsvKioN
-Cj4gPiA+ID4gKyAqIEluY3JlbWVudCB0aGUgaW50ZXJuYWwgcmVnaXN0ZXIgcG9pbnRlciwg
-ZGVhbGluZyB3aXRoDQo+ID4gPiA+IHdyYXBwaW5nDQo+ID4gPiA+ICsgKiBAcGFyYW0gcyB0
-aGUgUlRDIHRvIG9wZXJhdGUgb24NCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZv
-aWQgaW5jX3JlZ3B0cihSWDg5MDBTdGF0ZSAqcykNCj4gPiA+ID4gK3sNCj4gPiA+ID4gK8Kg
-wqDCoMKgLyogVGhlIHJlZ2lzdGVyIHBvaW50ZXIgd3JhcHMgYXJvdW5kIGFmdGVyIDB4MUYN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqAqLw0KPiA+ID4gPiArwqDCoMKgwqBzLT5wdHIgPSAocy0+
-cHRyICsgMSkgJiAoUlg4OTAwX05WUkFNX1NJWkUgLSAxKTsNCj4gPiA+ID4gK8KgwqDCoMKg
-dHJhY2Vfcng4OTAwX3JlZ3B0cl91cGRhdGUocy0+cHRyKTsNCj4gPiA+ID4gKw0KPiA+ID4g
-PiArwqDCoMKgwqBpZiAocy0+cHRyID09IDB4MDApIHsNCj4gPiA+IA0KPiA+ID4gDQo+ID4g
-PiBNYWdpYyBjb25zdGFudCAweDAwLiBJcyB0aGlzIG9mZnNldCBpbiBudnJhbT8gVGhlbiBt
-YWtlIGl0IGp1c3QNCj4gPiA+IDAsDQo+ID4gPiBvdGhlcndpc2UgaXQgbG9va3MgbGlrZSBh
-IG1hc2suDQo+ID4gDQo+ID4gUmVwbGFjZWQgd2l0aCBTVEFSVF9BRERSRVNTIGZyb20gUlg4
-OTAwQWRkcmVzc2VzLg0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-dHJhY2Vfcng4OTAwX3JlZ3B0cl9vdmVyZmxvdygpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoGNhcHR1cmVfY3VycmVudF90aW1lKHMpOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4g
-PiA+ICt9DQo+ID4gPiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICogUmVjZWl2ZSBh
-biBJMkMgRXZlbnQNCj4gPiA+ID4gKyAqIEBwYXJhbSBpMmMgdGhlIGkyYyBkZXZpY2UgaW5z
-dGFuY2UNCj4gPiA+ID4gKyAqIEBwYXJhbSBldmVudCB0aGUgZXZlbnQgdG8gaGFuZGxlDQo+
-ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9ldmVudChJMkNTbGF2
-ZSAqaTJjLCBlbnVtIGkyY19ldmVudCBldmVudCkNCj4gPiA+ID4gK3sNCj4gPiA+ID4gK8Kg
-wqDCoMKgUlg4OTAwU3RhdGUgKnMgPSBSWDg5MDAoaTJjKTsNCj4gPiA+ID4gKw0KPiA+ID4g
-PiArwqDCoMKgwqBzd2l0Y2ggKGV2ZW50KSB7DQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgSTJD
-X1NUQVJUX1JFQ1Y6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgLyogSW4gaC93LCB0aW1l
-IGNhcHR1cmUgaGFwcGVucyBvbiBhbnkgU1RBUlQNCj4gPiA+ID4gY29uZGl0aW9uLA0KPiA+
-ID4gPiBub3QganVzdCBhDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqAqIFNUQVJUX1JF
-Q1YuIEZvciB0aGUgZW11bGF0aW9uLCBpdCBkb2Vzbid0IGFjdHVhbGx5DQo+ID4gPiA+IG1h
-dHRlciwNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoCogc2luY2UgYSBTVEFSVF9SRUNW
-IGhhcyB0byBvY2N1ciBiZWZvcmUgdGhlIGRhdGEgY2FuDQo+ID4gPiA+IGJlDQo+ID4gPiA+
-IHJlYWQuDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqAqLw0KPiA+ID4gPiArwqDCoMKg
-wqDCoMKgwqDCoGNhcHR1cmVfY3VycmVudF90aW1lKHMpOw0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoGJyZWFrOw0KPiA+ID4gPiArwqDCoMKgwqBjYXNlIEkyQ19TVEFSVF9TRU5EOg0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHMtPmFkZHJfYnl0ZSA9IHRydWU7DQo+ID4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7DQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgSTJDX0ZJ
-TklTSDoNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBpZiAocy0+d2Vla2RheSA8IDcpIHsN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC8qIFdlIGRlZmVyIHRoZSB3ZWVr
-ZGF5IGNhbGN1bGF0aW9uIGFzIGl0IGlzDQo+ID4gPiA+IGhhbmRlZCB0bw0KPiA+ID4gPiB1
-cyBiZWZvcmUNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgKiB0aGUgZGF0
-ZSBoYXMgYmVlbiB1cGRhdGVkLiBJZiB3ZSBjYWxjdWxhdGUgdGhlDQo+ID4gPiA+IHdlZWtk
-YXkgb2Zmc2V0DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCogd2hlbiBp
-dCBpcyBwYXNzZWQgdG8gdXMsIHdlIHdpbGwgaW5jb3JyZWN0bHkNCj4gPiA+ID4gZGV0ZXJt
-aW5lIGl0DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCogYmFzZWQgb24g
-dGhlIGN1cnJlbnQgZW11bGF0ZWQgZGF0ZSwgcmF0aGVyIHRoYW4NCj4gPiA+ID4gdGhlDQo+
-ID4gPiA+IGRhdGUgdGhhdA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAq
-IGhhcyBiZWVuIHdyaXR0ZW4uDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCovDQo+ID4gPiANCj4gPiA+IFRoZSBSWDg5MDAgc3BlYyBkb2VzIG5vdCB1c2Ugd29yZCAi
-b2Zmc2V0IiBhdCBhbGwgc28gSSBjYW5ub3QNCj4gPiA+IG1ha2UNCj4gPiA+IHNlbnNlDQo+
-ID4gPiBmcm9tIHRoZSBwYXJhZ3JhcGggYWJvdmUgLSB3aHkgZXhhY3RseSBkbyB5b3UgbmVl
-ZCAyIG9mZnNldHMNCj4gPiA+ICgib2Zmc2V0IiBhbmQNCj4gPiA+ICJ3ZGF5X29mZnNldCIp
-IGFuZCB3aHkgd2Vla2RheSBjYW5ub3QgYmUgY2FsY3VsYXRlZCB3aGVuIGl0IGlzDQo+ID4g
-PiBuZWVkZWQNCj4gPiA+IGZyb20NCj4gPiA+IHRoZSBjdXJyZW50IHRpbWUgKyAib2Zmc2V0
-Ij8NCj4gPiA+IA0KPiA+IA0KPiA+IFRoZSBvZmZzZXRzIHJlZmVyIHRvIHRoZSBkaWZmZXJl
-bmNlIGJldHdlZW4gdGhlIGhvc3QgY2xvY2sgJiB0aGUNCj4gPiBlbXVsYXRlZCBjbG9jay4g
-VGhlIHdlZWtkYXkgY2Fubm90IGJlIGNhbGN1bGF0ZWQgYXMgdGhlIFJYODkwMCBkb2VzDQo+
-ID4gbm90DQo+ID4gdmFsaWRhdGUgdGhlIHdlZWtkYXkgLSB0aGUgdXNlciBjYW4gc2V0IHRo
-ZSB3ZWVrZGF5IHRvIGFueXRoaW5nLg0KPiANCj4gDQo+IFVmZmYuIE5vdyBJIGFtIHRvdGFs
-bHkgY29uZnVzZWQuIFlvdSBzYXkgInRoZSB3ZWVrZGF5IGNhbm5vdCBiZQ0KPiBjYWxjdWxh
-dGVkIg0KPiBidXQgdGhlIGNvbW1lbnQgc2F5cyB5b3UgZGVmZXIgaXRzIGNhbGN1bGF0aW9u
-LiBUaGUgY29tbWVudCBuZWVkcyBhbg0KPiB1cGRhdGUuDQoNClNvcnJ5LCBteSBiYWQsIHRo
-ZSB3ZWVrZGF5IGNhbm5vdCBiZSBjYWxjdWxhdGVkIHdpdGhvdXQgdGhlIHdlZWtkYXkNCm9m
-ZnNldCwgYXMgdGhlIHdlZWtkYXkgaXMgbm90IGd1YXJhbnRlZWQgdG8gYmUgY29ycmVjdCBm
-b3IgdGhhdCBkYXRlLg0KDQo+IA0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdG0gbm93Ow0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgcWVtdV9nZXRfdGltZWRhdGUoJm5vdywgcy0+b2Zmc2V0KTsNCj4gPiA+ID4g
-Kw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcy0+d2RheV9vZmZzZXQgPSAo
-cy0+d2Vla2RheSAtIG5vdy50bV93ZGF5ICsgNykgJQ0KPiA+ID4gPiA3Ow0KPiA+ID4gPiAr
-DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB0cmFjZV9yeDg5MDBfZXZlbnRf
-d2Vla2RheShzLT53ZWVrZGF5LCBCSVQocy0NCj4gPiA+ID4gPiB3ZWVrZGF5KSwNCj4gPiA+
-ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-cy0+d2RheV9vZmZzZXQpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBzLT53ZWVrZGF5ID0gNzsNCj4gPiA+IA0KPiA+ID4gSSdkIHJhdGhlciB1c2Ug
-MHhmZiAoZGVmaW5lZCBpbiBhIG1hY3JvKSBhcyBhbiBpbnZhbGlkIHdlZWtkYXkuDQo+ID4g
-PiANCj4gPiANCj4gPiBPaw0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgfQ0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGJyZWFrOw0KPiA+ID4gPiArDQo+ID4g
-PiA+ICvCoMKgwqDCoGRlZmF1bHQ6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7
-DQo+ID4gPiANCj4gPiA+IA0KPiA+ID4gTm90IG5lZWRlZCAiZGVmYXVsdCIgY2FzZS4NCj4g
-PiA+IA0KPiA+IA0KPiA+IFRoaXMgaXMgYSBoaW50IHRvIHN0YXRpYyBhbmFseXNlcnMgKGFu
-ZCBkZXZlbG9wZXJzKSB0aGF0IHRoZSBvdGhlcg0KPiA+IGVudW1lcmF0aW9uIGNhc2VzIHdl
-cmUgbm90IGZvcmdvdHRlbiwgYnV0IGludGVudGlvbmFsbHkgaGF2ZSBubw0KPiA+IGFjdGlv
-bi4NCj4gDQo+IA0KPiBPdXQgb2YgY3VyaW9zaXR5IC0gd2hhdCBzdGF0aWMgYW5hbHl6ZXIg
-ZG9lcyBjb21wbGFpbiBhYm91dCB0aGlzPyBJDQo+IGxvb2tlZA0KPiBhdCB0aGUga2VybmVs
-IGFuZCBRRU1VIHRyZWVzIGFuZCBzZWVtcyB0aGF0IGl0IGlzIG5vdCBjb21tb24gdGhpbmcg
-dG8NCj4gbGVhdmUNCj4gYW4gZW1wdHkgImRlZmF1bHQiIGNhc2UuDQoNCkVjbGlwc2UgQ29k
-YW4gd2lsbCBmbGFnIG1pc3NpbmcgZW51bSBlbGVtZW50cyBpbiBhIHN3aXRjaC4NCg0KPiAN
-Cj4gPiANCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4g
-PiA+ICsvKioNCj4gPiA+ID4gKyAqIFBlcmZvcm0gYW4gaTJjIHJlY2VpdmUgYWN0aW9uDQo+
-ID4gPiA+ICsgKiBAcGFyYW0gaTJjIHRoZSBpMmMgZGV2aWNlIGluc3RhbmNlDQo+ID4gPiA+
-ICsgKiBAcmV0dXJuIHRoZSB2YWx1ZSBvZiB0aGUgY3VycmVudCByZWdpc3Rlcg0KPiA+ID4g
-PiArICogQHBvc3QgdGhlIGludGVybmFsIHJlZ2lzdGVyIHBvaW50ZXIgaXMgaW5jcmVtZW50
-ZWQNCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIGludCByeDg5MDBfcmVjdihJMkNT
-bGF2ZSAqaTJjKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqBSWDg5MDBTdGF0ZSAq
-cyA9IFJYODkwMChpMmMpOw0KPiA+ID4gPiArwqDCoMKgwqB1aW50OF90IHJlcyA9IHMtPm52
-cmFtW3MtPnB0cl07DQo+ID4gPiA+ICvCoMKgwqDCoHRyYWNlX3J4ODkwMF9yZWFkX3JlZ2lz
-dGVyKHMtPnB0ciwgcmVzKTsNCj4gPiA+ID4gK8KgwqDCoMKgaW5jX3JlZ3B0cihzKTsNCj4g
-PiA+ID4gK8KgwqDCoMKgcmV0dXJuIHJlczsNCj4gPiA+ID4gK30NCj4gPiA+ID4gKw0KPiA+
-ID4gPiArLyoqDQo+ID4gPiA+ICsgKiBWYWxpZGF0ZSB0aGUgZXh0ZW5zaW9uIHJlZ2lzdGVy
-IGFuZCBwZXJmb3JtIGFjdGlvbnMgYmFzZWQNCj4gPiA+ID4gb24NCj4gPiA+ID4gdGhlIGJp
-dHMNCj4gPiA+ID4gKyAqIEBwYXJhbSBzIHRoZSBSVEMgdG8gb3BlcmF0ZSBvbg0KPiA+ID4g
-PiArICogQHBhcmFtIGRhdGEgdGhlIG5ldyBkYXRhIGZvciB0aGUgZXh0ZW5zaW9uIHJlZ2lz
-dGVyDQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHVwZGF0ZV9leHRlbnNp
-b25fcmVnaXN0ZXIoUlg4OTAwU3RhdGUgKnMsIHVpbnQ4X3QNCj4gPiA+ID4gZGF0YSkNCj4g
-PiA+ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKGRhdGEgJiBFWFRfTUFTS19URVNUKSB7
-DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9sb2dfbWFzayhMT0dfR1VFU1RfRVJS
-T1IsDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAiVGVzdCBiaXQgaXMgZW5h
-YmxlZCBidXQgaXMgZm9yYmlkZGVuIGJ5IHRoZQ0KPiA+ID4gPiBtYW51ZmFjdHVyZXIiKTsN
-Cj4gPiA+IA0KPiA+ID4gUUVNVSB1c2VzIGluZGVudHMgdW5kZXIgb3BlbmluZyBicmFja2V0
-Lg0KPiA+ID4gDQo+ID4gDQo+ID4gRGViYXRhYmxlLCBpdCdzIG5vdCBwcmVzY3JpYmVkIGlu
-IHRoZSBjb2Rpbmcgc3R5bGUsIGFuZCBleGlzdGluZw0KPiA+IGNvZGUNCj4gPiB2YXJpZXMu
-IENhbiB5b3UgcG9pbnQgbWUgYXQgd2hlcmUgdGhhdCBpcyBzdGF0ZWQ/DQo+IA0KPiBOb3Bl
-IGJ1dCBpdCBpcyBhbGwgb3ZlciB0aGUgcGxhY2UuIFlvdSBtYXkgc2VlIG9jY2FzaW5hbGx5
-IGRpZmZlcmVudA0KPiBzdHlsZXMNCj4gYnV0IG5vdCBpbiBtYWluIGZpbGVzIHN1Y2ggYXMg
-dmwuYyBvciBody9wY2kvcGNpLmMuDQo+IA0KPiANCj4gPiANCj4gPiA+IEluIGdlbmVyYWws
-IEkgdXNlIHZpbSB3aXRoDQo+ID4gPiBzZXQgZXhwYW5kdGFiDQo+ID4gPiBzZXQgdGFic3Rv
-cD00DQo+ID4gPiBzZXQgc2hpZnR3aWR0aD00DQo+ID4gPiBzZXQgY2lubz06MCwoMA0KPiA+
-ID4gDQo+ID4gPiANCj4gPiA+IFRoZSBjb2Rpbmcgc3R5bGUgYWxzbyBzYXlzIGFib3V0IDgw
-IGNoYXJhY3RlcnMgbGltaXQgKGFuZCBzb21lIG9mDQo+ID4gPiB5b3VyDQo+ID4gPiBwYXRj
-aGVkIGZhaWxlZCB0aGlzKSBhbmQgbWFrZXMgbm8gZXhjZXB0aW9uLCBob3dldmVyIHBlb3Bs
-ZQ0KPiA+ID4gb2Z0ZW7CoA0KPiA+IA0KPiA+IEFjdHVhbGx5LCBpdCBkb2VzOg0KPiANCj4g
-DQo+IE9rLCBnb29kIHRvIGtub3cuIFdoZW4gSSBzdHVkaWVkIHRoZSBjb2Rpbmcgc3R5bGUg
-bGFzdCB0aW1lLCBpdCBqdXN0DQo+IHdhcw0KPiBub3QgdGhlcmUuDQo+IA0KPiANCj4gPiAi
-U29tZXRpbWVzIGl0IGlzIGhhcmQgdG8gZG8sIGVzcGVjaWFsbHkgd2hlbiBkZWFsaW5nIHdp
-dGggUUVNVQ0KPiA+IHN1YnN5c3RlbXMgdGhhdCB1c2UgbG9uZyBmdW5jdGlvbiBvciBzeW1i
-b2wgbmFtZXMuwqDCoEV2ZW4gaW4gdGhhdA0KPiA+IGNhc2UsDQo+ID4gZG8gbm90IG1ha2Ug
-bGluZXMgbXVjaCBsb25nZXIgdGhhbiA4MCBjaGFyYWN0ZXJzLiINCj4gPiANCj4gPiA+IGZv
-bGxvdw0KPiA+ID4gdGhlIGtlcm5lbCBydWxlIG5vdCB0byBzcGxpdCBzdHJpbmdzIGV2ZW4g
-aWYgdGhleSBkbyBub3QgZml0IDgwDQo+ID4gPiBjaGFyYWN0ZXJzDQo+ID4gPiBsaW1pdC4N
-Cj4gPiA+IA0KPiA+ID4gDQo+ID4gPiBBbmQgcGxlYXNlIHJ1biAuL3NjcmlwdHMvY2hlY2tw
-YXRjaC5wbCBvbiBwYXRjaGVzIGJlZm9yZSBwb3N0aW5nLA0KPiA+ID4gMy82DQo+ID4gPiBh
-bmQNCj4gPiA+IDUvNiBmYWlsZWQgYmVjYXVzZSBvZiB0b28gbG9uZyBsaW5lcy4NCj4gPiAN
-Cj4gPiBJIGhhdmUgdGhpcyBzZXQgdXAgYXMgYSBnaXQgY29tbWl0IGhvb2ssIHNvIEknbSBu
-b3Qgc3VyZSBob3cgdGhpcw0KPiA+IHNsaXBwZWQgaW4sIGJ1dCBzdXJlLCBJIGNhbiByZXJ1
-biBpdCBiZWZvcmUgc3VibWl0dGluZy4NCj4gPiANCj4gPiA+IA0KPiA+ID4gPiArwqDCoMKg
-wqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKChkYXRhIF4gcy0+bnZyYW1b
-RVhURU5TSU9OX1JFR0lTVEVSXSkgJg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgKEVYVF9NQVNLX0ZTRUwwIHwgRVhUX01BU0tfRlNFTDEpKSB7DQo+ID4gPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgdWludDhfdCBmc2VsID0gKGRhdGEgJiAoRVhUX01BU0tfRlNFTDAgfA0K
-PiA+ID4gPiBFWFRfTUFTS19GU0VMMSkpDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoD4+IEVYVF9SRUdfRlNFTDA7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgLyogRlNFTHggaGFzIGNoYW5nZWQgKi8NCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBz
-d2l0Y2ggKGZzZWwpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBjYXNlIDB4MDE6DQo+
-ID4gPiANCj4gPiA+IE1hZ2ljIHZhbHVlIG9mIDB4MDEsIDB4MDIgaGVyZSBhbmQgYmVsb3cu
-DQo+ID4gPiANCj4gPiANCj4gPiBJIHRoaW5rIHRoaXMgdXNlIGNhc2UgaXMgcmVhc29uYWJs
-ZSwgd2UgYXJlIG1hdGNoaW5nIGFnYWluc3QgdGhlIDINCj4gPiBGU0VMDQo+ID4gYml0cy4N
-Cj4gDQo+IEknZCBsaXRlcmFsbHkgZG8gdGhpczoNCj4gDQo+IHN3aXRjaCAoZGF0YSAmIChF
-WFRfTUFTS19GU0VMMCB8IEVYVF9NQVNLX0ZTRUwxKSkgew0KPiBjYXNlIEVYVF9NQVNLX0ZT
-RUwwOg0KPiAJdHJhY2Vfcng4OTAwX3NldF9mb3V0KDEwMjQpOw0KPiAJcHRpbWVyX3NldF9s
-aW1pdChzLT5mb3V0X3RpbWVyLCAzMiwgMSk7DQo+IAlicmVhazsNCj4gY2FzZSBFWFRfTUFT
-S19GU0VMMToNCj4gCXRyYWNlX3J4ODkwMF9zZXRfZm91dCgxKTsNCj4gCXB0aW1lcl9zZXRf
-bGltaXQocy0+Zm91dF90aW1lciwgMzI3NjgsIDEpOw0KPiAJYnJlYWs7DQo+IGNhc2UgMDoN
-Cj4gY2FzZSBFWFRfTUFTS19GU0VMMCB8IEVYVF9NQVNLX0ZTRUwwOg0KPiAJdHJhY2Vfcng4
-OTAwX3NldF9mb3V0KDMyNzY4KTsNCj4gCXB0aW1lcl9zZXRfbGltaXQocy0+Zm91dF90aW1l
-ciwgMSwgMSk7DQo+IAlicmVhazsNCj4gfQ0KPiANCj4gRWFzaWVyIHRvIHJlYWQgYW5kIHlv
-dSBjYW4gYmUgc3VyZSB0aGF0IG5vdGhpbmcgaXMgbWlzc2VkIGFuZCBhbGwNCj4gYml0cw0K
-PiBjb21iaW5hdGlvbnMgYXJlIGNvdmVyZWQuDQoNCk9rDQoNCj4gDQo+ID4gDQo+ID4gPiAN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHRyYWNlX3J4ODkwMF9zZXRfZm91
-dCgxMDI0KTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHB0aW1lcl9zZXRf
-bGltaXQocy0+Zm91dF90aW1lciwgMzIsIDEpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgYnJlYWs7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgY2FzZSAweDAyOg0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdHJhY2Vfcng4OTAwX3NldF9mb3V0
-KDEpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcHRpbWVyX3NldF9saW1p
-dChzLT5mb3V0X3RpbWVyLCAzMjc2OCwgMSk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBicmVhazsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBkZWZhdWx0Og0KPiA+
-ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdHJhY2Vfcng4OTAwX3NldF9mb3V0KDMy
-NzY4KTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHB0aW1lcl9zZXRfbGlt
-aXQocy0+Zm91dF90aW1lciwgMSwgMSk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBicmVhazsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqB9DQo+ID4gPiA+ICvCoMKg
-wqDCoH0NCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBpZiAoKGRhdGEgXiBzLT5udnJh
-bVtFWFRFTlNJT05fUkVHSVNURVJdKSAmDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAoRVhUX01BU0tfVFNFTDAgfCBFWFRfTUFTS19UU0VMMSkpIHsNCj4gPiA+ID4gK8Kg
-wqDCoMKgwqDCoMKgwqB1aW50OF90IHRzZWwgPSAoZGF0YSAmIChFWFRfTUFTS19UU0VMMCB8
-DQo+ID4gPiA+IEVYVF9NQVNLX1RTRUwxKSkNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgPj4gRVhUX1JFR19UU0VMMDsNCj4gPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqAvKiBUU0VMeCBoYXMgY2hhbmdlZCAqLw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oHN3aXRjaCAodHNlbCkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGNhc2UgMHgwMDoN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHRyYWNlX3J4ODkwMF9zZXRfY291
-bnRkb3duX3RpbWVyKDY0KTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHB0
-aW1lcl9zZXRfbGltaXQocy0+Y291bnRkb3duX3RpbWVyLCA0MDk2IC8gNjQsDQo+ID4gPiA+
-IDEpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYnJlYWs7DQo+ID4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgY2FzZSAweDAxOg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgdHJhY2Vfcng4OTAwX3NldF9jb3VudGRvd25fdGltZXIoMSk7DQo+ID4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwdGltZXJfc2V0X2xpbWl0KHMtPmNvdW50ZG93
-bl90aW1lciwgNDA5NiwgMSk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBi
-cmVhazsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBjYXNlIDB4MDI6DQo+ID4gPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X2NvdW50ZG93bl90aW1l
-cl9wZXJfbWludXRlKCk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwdGlt
-ZXJfc2V0X2xpbWl0KHMtPmNvdW50ZG93bl90aW1lciwgNDA2OSAqIDYwLA0KPiA+ID4gPiAx
-KTsNCj4gPiA+IA0KPiA+ID4gcy80MDY5LzQwOTYvID8NCj4gPiA+IEFuZCB3aHkgNDA5Nj8g
-UGxlYXNlIGRlZmluZSBpdCBpbiBhIG1hY3JvLg0KPiA+IA0KPiA+IE9rDQo+ID4gDQo+ID4g
-PiANCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGJyZWFrOw0KPiA+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoGNhc2UgMHgwMzoNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoHRyYWNlX3J4ODkwMF9zZXRfY291bnRkb3duX3RpbWVyKDQwOTYpOw0KPiA+ID4g
-PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcHRpbWVyX3NldF9saW1pdChzLT5jb3VudGRv
-d25fdGltZXIsIDEsIDEpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYnJl
-YWs7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgfQ0KPiA+ID4gPiArwqDCoMKgwqB9DQo+
-ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKGRhdGEgJiBFWFRfTUFTS19URSkgew0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGVuYWJsZV9jb3VudGRvd25fdGltZXIocyk7DQo+
-ID4gPiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBzLT5udnJh
-bVtFWFRFTlNJT05fUkVHSVNURVJdID0gZGF0YTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+bnZy
-YW1bRVhUX0VYVEVOU0lPTl9SRUdJU1RFUl0gPSBkYXRhOw0KPiA+ID4gPiArDQo+ID4gPiA+
-ICt9DQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFZhbGlkYXRlIHRoZSBjb250cm9sIHJl
-Z2lzdGVyIGFuZCBwZXJmb3JtIGFjdGlvbnMgYmFzZWQgb24NCj4gPiA+ID4gdGhlDQo+ID4g
-PiA+IGJpdHMNCj4gPiA+ID4gKyAqIEBwYXJhbSBzIHRoZSBSVEMgdG8gb3BlcmF0ZSBvbg0K
-PiA+ID4gPiArICogQHBhcmFtIGRhdGEgdGhlIG5ldyB2YWx1ZSBmb3IgdGhlIGNvbnRyb2wg
-cmVnaXN0ZXINCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArDQo+ID4gPiA+ICtzdGF0aWMgdm9p
-ZCB1cGRhdGVfY29udHJvbF9yZWdpc3RlcihSWDg5MDBTdGF0ZSAqcywgdWludDhfdA0KPiA+
-ID4gPiBkYXRhKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqB1aW50OF90IGRpZmZt
-YXNrID0gfnMtPm52cmFtW0NPTlRST0xfUkVHSVNURVJdICYgZGF0YTsNCj4gPiA+ID4gKw0K
-PiA+ID4gPiArwqDCoMKgwqBpZiAoZGlmZm1hc2sgJiBDVFJMX01BU0tfV1AwKSB7DQo+ID4g
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgZGF0YSAmPSB+Q1RSTF9NQVNLX1dQMDsNCj4gPiA+ID4g
-K8KgwqDCoMKgwqDCoMKgwqBxZW11X2xvZ19tYXNrKExPR19HVUVTVF9FUlJPUiwNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCJBdHRlbXB0IHRvIHdyaXRlIHRvIHdyaXRl
-IHByb3RlY3RlZCBiaXQgJWQgaW4NCj4gPiA+ID4gY29udHJvbA0KPiA+ID4gPiByZWdpc3Rl
-ciIsDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBDVFJMX1JFR19XUDApOw0K
-PiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKGRp
-ZmZtYXNrICYgQ1RSTF9NQVNLX1dQMSkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGRh
-dGEgJj0gfkNUUkxfTUFTS19XUDE7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9s
-b2dfbWFzayhMT0dfR1VFU1RfRVJST1IsDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAiQXR0ZW1wdCB0byB3cml0ZSB0byB3cml0ZSBwcm90ZWN0ZWQgYml0ICVkIGluDQo+
-ID4gPiA+IGNvbnRyb2wNCj4gPiA+ID4gcmVnaXN0ZXIiLA0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgQ1RSTF9SRUdfV1AxKTsNCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+
-ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChkYXRhICYgQ1RSTF9NQVNLX1JFU0VUKSB7
-DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgZGF0YSAmPSB+Q1RSTF9NQVNLX1JFU0VUOw0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHJ4ODkwMF9yZXNldChERVZJQ0UocykpOw0KPiA+
-ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKGRpZmZt
-YXNrICYgQ1RSTF9NQVNLX1VJRSkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoC8qIFVw
-ZGF0ZSBpbnRlcnJ1cHRzIHdlcmUgb2ZmIGFuZCBhcmUgbm93IG9uICovDQo+ID4gPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgc3RydWN0IHRtIG5vdzsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDC
-oMKgwqDCoMKgwqDCoHRyYWNlX3J4ODkwMF9lbmFibGVfdXBkYXRlX3RpbWVyKCk7DQo+ID4g
-PiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBxZW11X2dldF90aW1lZGF0ZSgmbm93
-LCBzLT5vZmZzZXQpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+
-bGFzdF91cGRhdGVfaW50ZXJydXB0X21pbnV0ZXMgPSBub3cudG1fbWluOw0KPiA+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoHMtPmxhc3RfaW50ZXJydXB0X3NlY29uZHMgPSBub3cudG1fc2Vj
-Ow0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGVuYWJsZV90aW1lcihzKTsNCj4gPiA+ID4g
-K8KgwqDCoMKgfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChkaWZmbWFzayAm
-IENUUkxfTUFTS19BSUUpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqAvKiBBbGFybSBp
-bnRlcnJ1cHRzIHdlcmUgb2ZmIGFuZCBhcmUgbm93IG9uICovDQo+ID4gPiA+ICvCoMKgwqDC
-oMKgwqDCoMKgc3RydWN0IHRtIG5vdzsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoHRyYWNlX3J4ODkwMF9lbmFibGVfYWxhcm0oKTsNCj4gPiA+ID4gKw0KPiA+ID4g
-PiArwqDCoMKgwqDCoMKgwqDCoHFlbXVfZ2V0X3RpbWVkYXRlKCZub3csIHMtPm9mZnNldCk7
-DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBzLT5sYXN0X2ludGVycnVw
-dF9zZWNvbmRzID0gbm93LnRtX3NlYzsNCj4gPiA+IA0KPiA+ID4gDQo+ID4gPiBzLT5sYXN0
-X3VwZGF0ZV9pbnRlcnJ1cHRfbWludXRlcyBpcyBza2lwcGVkIGhlcmUgZm9yIGEgcmVhc29u
-Pw0KPiA+ID4gDQo+ID4gDQo+ID4gWWVzLCB0aGF0IHBlcnRhaW5zIHRvIHRoZSB1cGRhdGUg
-aW50ZXJydXB0cywgYW5kIHdlIGFyZSBkZWFsaW5nDQo+ID4gd2l0aA0KPiA+IHRoZSBhbGFy
-bSBoZXJlLg0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgZW5hYmxl
-X3RpbWVyKHMpOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8Kg
-wqDCoMKgaWYgKCEoZGF0YSAmIChDVFJMX01BU0tfVUlFIHwgQ1RSTF9NQVNLX0FJRSkpKSB7
-DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgZGlzYWJsZV90aW1lcihzKTsNCj4gPiA+ID4g
-K8KgwqDCoMKgfQ0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IENhbiBVSUUgYW5kIEFJRSBiZSBi
-b3RoIHNldD8gSWYgbm90LCAiZWxzZSIgY291bGQgYmUgdXNlZCBpbiB0d28NCj4gPiA+ICJp
-ZiINCj4gPiA+IGFib3ZlDQo+ID4gPiB0byBkb2N1bWVudCB0aGlzLg0KPiA+ID4gDQo+ID4g
-DQo+ID4gWWVzLg0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKg
-cy0+bnZyYW1bQ09OVFJPTF9SRUdJU1RFUl0gPSBkYXRhOw0KPiA+ID4gPiArwqDCoMKgwqBz
-LT5udnJhbVtFWFRfQ09OVFJPTF9SRUdJU1RFUl0gPSBkYXRhOw0KPiA+ID4gPiArfQ0KPiA+
-ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFZhbGlkYXRlIHRoZSBmbGFnIHJl
-Z2lzdGVyDQo+ID4gPiA+ICsgKiBAcGFyYW0gcyB0aGUgUlRDIHRvIG9wZXJhdGUgb24NCj4g
-PiA+ID4gKyAqIEBwYXJhbSBkYXRhIHRoZSBuZXcgdmFsdWUgZm9yIHRoZSBmbGFnIHJlZ2lz
-dGVyDQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHZhbGlkYXRlX2ZsYWdf
-cmVnaXN0ZXIoUlg4OTAwU3RhdGUgKnMsIHVpbnQ4X3QNCj4gPiA+ID4gKmRhdGEpDQo+ID4g
-PiA+ICt7DQo+ID4gPiA+ICvCoMKgwqDCoHVpbnQ4X3QgZGlmZm1hc2sgPSB+cy0+bnZyYW1b
-RkxBR19SRUdJU1RFUl0gJiAqZGF0YTsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBp
-ZiAoZGlmZm1hc2sgJiBGTEFHX01BU0tfVkRFVCkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoCpkYXRhICY9IH5GTEFHX01BU0tfVkRFVDsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqBxZW11X2xvZ19tYXNrKExPR19HVUVTVF9FUlJPUiwNCj4gPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCJPbmx5IDAgY2FuIGJlIHdyaXR0ZW4gdG8gVkRFVCBiaXQgJWQgaW4g
-dGhlIGZsYWcNCj4gPiA+ID4gcmVnaXN0ZXIiLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgRkxBR19SRUdfVkRFVCk7DQo+ID4gPiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4g
-Kw0KPiA+ID4gPiArwqDCoMKgwqBpZiAoZGlmZm1hc2sgJiBGTEFHX01BU0tfVkxGKSB7DQo+
-ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgKmRhdGEgJj0gfkZMQUdfTUFTS19WTEY7DQo+ID4g
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9sb2dfbWFzayhMT0dfR1VFU1RfRVJST1IsDQo+
-ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAiT25seSAwIGNhbiBiZSB3cml0dGVu
-IHRvIFZMRiBiaXQgJWQgaW4gdGhlIGZsYWcNCj4gPiA+ID4gcmVnaXN0ZXIiLA0KPiA+ID4g
-PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgRkxBR19SRUdfVkxGKTsNCj4gPiA+ID4gK8Kg
-wqDCoMKgfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChkaWZmbWFzayAmIEZM
-QUdfTUFTS19VTlVTRURfMikgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoCpkYXRhICY9
-IH5GTEFHX01BU0tfVU5VU0VEXzI7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9s
-b2dfbWFzayhMT0dfR1VFU1RfRVJST1IsDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAiT25seSAwIGNhbiBiZSB3cml0dGVuIHRvIHVudXNlZCBiaXQgJWQgaW4gdGhlDQo+
-ID4gPiA+IGZsYWcNCj4gPiA+ID4gcmVnaXN0ZXIiLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgRkxBR19SRUdfVU5VU0VEXzIpOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+
-ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgaWYgKGRpZmZtYXNrICYgRkxBR19NQVNLX1VO
-VVNFRF82KSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgKmRhdGEgJj0gfkZMQUdfTUFT
-S19VTlVTRURfNjsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBxZW11X2xvZ19tYXNrKExP
-R19HVUVTVF9FUlJPUiwNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCJPbmx5
-IDAgY2FuIGJlIHdyaXR0ZW4gdG8gdW51c2VkIGJpdCAlZCBpbiB0aGUNCj4gPiA+ID4gZmxh
-Zw0KPiA+ID4gPiByZWdpc3RlciIsDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBGTEFHX1JFR19VTlVTRURfNik7DQo+ID4gPiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4gKw0K
-PiA+ID4gPiArwqDCoMKgwqBpZiAoZGlmZm1hc2sgJiBGTEFHX01BU0tfVU5VU0VEXzcpIHsN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqAqZGF0YSAmPSB+RkxBR19NQVNLX1VOVVNFRF83
-Ow0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VS
-Uk9SLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIk9ubHkgMCBjYW4gYmUg
-d3JpdHRlbiB0byB1bnVzZWQgYml0ICVkIGluIHRoZQ0KPiA+ID4gPiBmbGFnDQo+ID4gPiA+
-IHJlZ2lzdGVyIiwNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoEZMQUdfUkVH
-X1VOVVNFRF83KTsNCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArfQ0KPiA+ID4gPiAr
-DQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFRpY2sgdGhlIHBlciBzZWNvbmQgdGltZXIg
-KGNhbiBiZSBjYWxsZWQgbW9yZSBmcmVxdWVudGx5IGFzDQo+ID4gPiA+IGl0DQo+ID4gPiA+
-IGVhcmx5IGV4aXRzDQo+ID4gPiA+ICsgKiBpZiB0aGUgd2FsbCBjbG9jayBoYXMgbm90IHBy
-b2dyZXNzZWQpDQo+ID4gPiA+ICsgKiBAcGFyYW0gb3BhcXVlIHRoZSBSVEMgdG8gdGljaw0K
-PiA+ID4gPiArICovDQo+ID4gPiA+ICtzdGF0aWMgdm9pZCByeDg5MDBfdGltZXJfdGljayh2
-b2lkICpvcGFxdWUpDQo+ID4gPiA+ICt7DQo+ID4gPiA+ICvCoMKgwqDCoFJYODkwMFN0YXRl
-ICpzID0gKFJYODkwMFN0YXRlICopb3BhcXVlOw0KPiA+ID4gPiArwqDCoMKgwqBzdHJ1Y3Qg
-dG0gbm93Ow0KPiA+ID4gPiArwqDCoMKgwqBib29sIGZpcmVfaW50ZXJydXB0ID0gZmFsc2U7
-DQo+ID4gPiA+ICvCoMKgwqDCoGJvb2wgYWxhcm1fd2Vla19kYXlfbWF0Y2hlczsNCj4gPiA+
-ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBxZW11X2dldF90aW1lZGF0ZSgmbm93LCBzLT5vZmZz
-ZXQpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChub3cudG1fc2VjID09IHMt
-Pmxhc3RfaW50ZXJydXB0X3NlY29uZHMpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBy
-ZXR1cm47DQo+ID4gPiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKg
-wqBzLT5sYXN0X2ludGVycnVwdF9zZWNvbmRzID0gbm93LnRtX3NlYzsNCj4gPiA+ID4gKw0K
-PiA+ID4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfdGljaygpOw0KPiA+ID4gPiArDQo+ID4g
-PiA+ICvCoMKgwqDCoC8qIFVwZGF0ZSB0aW1lciBpbnRlcnJ1cHQgKi8NCj4gPiA+ID4gK8Kg
-wqDCoMKgaWYgKHMtPm52cmFtW0NPTlRST0xfUkVHSVNURVJdICYgQ1RSTF9NQVNLX1VJRSkg
-ew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGlmICgocy0+bnZyYW1bRVhURU5TSU9OX1JF
-R0lTVEVSXSAmIEVYVF9NQVNLX1VTRUwpICYmDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoG5vdy50bV9taW4gIT0gcy0NCj4gPiA+ID4gPmxhc3RfdXBkYXRl
-X2ludGVycnVwdF9taW51dGVzKSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBzLT5sYXN0X3VwZGF0ZV9pbnRlcnJ1cHRfbWludXRlcyA9IG5vdy50bV9taW47DQo+ID4g
-PiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzLT5udnJhbVtGTEFHX1JFR0lTVEVSXSB8
-PSBGTEFHX01BU0tfVUY7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBmaXJl
-X2ludGVycnVwdCA9IHRydWU7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgfSBlbHNlIGlm
-ICghKHMtPm52cmFtW0VYVEVOU0lPTl9SRUdJU1RFUl0gJg0KPiA+ID4gPiBFWFRfTUFTS19V
-U0VMKSkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLyogcGVyIHNlY29u
-ZCB1cGRhdGUgaW50ZXJydXB0ICovDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBzLT5udnJhbVtGTEFHX1JFR0lTVEVSXSB8PSBGTEFHX01BU0tfVUY7DQo+ID4gPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBmaXJlX2ludGVycnVwdCA9IHRydWU7DQo+ID4gPiA+
-ICvCoMKgwqDCoMKgwqDCoMKgfQ0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4g
-PiA+ID4gK8KgwqDCoMKgLyogQWxhcm0gaW50ZXJydXB0ICovDQo+ID4gPiA+ICvCoMKgwqDC
-oGFsYXJtX3dlZWtfZGF5X21hdGNoZXMgPSBzLT5udnJhbVtBTEFSTV9XRUVLX0RBWV0gPT0N
-Cj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCgocy0+bnZyYW1bRVhURU5TSU9O
-X1JFR0lTVEVSXSAmIEVYVF9NQVNLX1dBREEpID8NCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB0b19iY2Qobm93LnRtX21kYXkpIDoNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAweDAxIDw8ICgo
-bm93LnRtX3dkYXkgKyBzLT53ZGF5X29mZnNldCkgJQ0KPiA+ID4gPiA3KSk7DQo+ID4gPiAN
-Cj4gPiA+IA0KPiA+ID4gMHgwMSBpcyBhIG1hc2sgb3IgZW51bSBvciBqdXN0ICIxIiB3aGlj
-aCBuZWVkcyB0byBiZSBzaGlmdGVkPw0KPiA+ID4gDQo+ID4gDQo+ID4gV2Vla2RheSBpcyBh
-IHdhbGtpbmcgYml0LCBJIHRoaW5rIGhleCBpcyB0aGUgbW9zdCBhcHByb3ByaWF0ZQ0KPiA+
-IG5vdGF0aW9uLg0KPiA+IA0KPiA+ID4gQWxzbywgaXQgaXMgaGFyZCB0byByZWFkIGFuIGV4
-cHJlc3Npb24gd2l0aCAiPSIsICI9PSIgYW5kICI/IiwNCj4gPiA+ICJpZiINCj4gPiA+IHdv
-dWxkDQo+ID4gPiBiZSBiZXR0ZXIgaGVyZSBpbWhvLg0KPiA+ID4gDQo+ID4gDQo+ID4gT2sg
-KGl0IHJlYWQgYSBsb3QgYmV0dGVyIGJlZm9yZSBpdCB3YXMgd3JhcHBlZCkuDQo+ID4gDQo+
-ID4gPiANCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBpZiAoKHMtPm52cmFtW0NPTlRS
-T0xfUkVHSVNURVJdICYgQ1RSTF9NQVNLX0FJRSkgJiYNCj4gPiA+ID4gbm93LnRtX3NlYw0K
-PiA+ID4gPiA9PSAwKSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgaWYgKHMtPm52cmFt
-W0FMQVJNX01JTlVURV0gPT0gdG9fYmNkKG5vdy50bV9taW4pICYmDQo+ID4gPiA+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHMtPm52cmFtW0FMQVJNX0hPVVJdID09IHRv
-X2JjZChub3cudG1faG91cikgJiYNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgYWxhcm1fd2Vla19kYXlfbWF0Y2hlcykgew0KPiA+ID4gDQo+ID4gPiBJdCBz
-aG91bGQgYmUgb25lICJpZiIsIG5vdCB0d28uDQo+ID4gPiANCj4gPiANCj4gPiBPaw0KPiA+
-ID4gDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB0cmFjZV9yeDg5MDBfdHJp
-Z2dlcl9hbGFybSgpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcy0+bnZy
-YW1bRkxBR19SRUdJU1RFUl0gfD0gRkxBR19NQVNLX0FGOw0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgZmlyZV9pbnRlcnJ1cHQgPSB0cnVlOw0KPiA+ID4gPiArwqDCoMKg
-wqDCoMKgwqDCoH0NCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICvC
-oMKgwqDCoGlmIChmaXJlX2ludGVycnVwdCkgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oHRyYWNlX3J4ODkwMF9maXJlX2ludGVycnVwdCgpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoHFlbXVfaXJxX3B1bHNlKHMtPmludGVycnVwdF9waW4pOw0KPiA+ID4gPiArwqDCoMKg
-wqB9DQo+ID4gPiA+ICt9DQo+ID4gPiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICog
-RGlzYWJsZSB0aGUgcGVyIHNlY29uZCB0aW1lcg0KPiA+ID4gPiArICogQHBhcmFtIHMgdGhl
-IFJUQyB0byBvcGVyYXRlIG9uDQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lk
-IGRpc2FibGVfdGltZXIoUlg4OTAwU3RhdGUgKnMpDQo+ID4gPiA+ICt7DQo+ID4gPiA+ICvC
-oMKgwqDCoHRyYWNlX3J4ODkwMF9kaXNhYmxlX3RpbWVyKCk7DQo+ID4gPiA+ICvCoMKgwqDC
-oHB0aW1lcl9zdG9wKHMtPnNlY190aW1lcik7DQo+ID4gPiA+ICt9DQo+ID4gPiA+ICsNCj4g
-PiA+ID4gKy8qKg0KPiA+ID4gPiArICogRW5hYmxlIHRoZSBwZXIgc2Vjb25kIHRpbWVyDQo+
-ID4gPiA+ICsgKiBAcGFyYW0gcyB0aGUgUlRDIHRvIG9wZXJhdGUgb24NCj4gPiA+ID4gKyAq
-Lw0KPiA+ID4gPiArc3RhdGljIHZvaWQgZW5hYmxlX3RpbWVyKFJYODkwMFN0YXRlICpzKQ0K
-PiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfZW5hYmxlX3RpbWVy
-KCk7DQo+ID4gPiA+ICvCoMKgwqDCoHB0aW1lcl9ydW4ocy0+c2VjX3RpbWVyLCAwKTsNCj4g
-PiA+ID4gK30NCj4gPiA+ID4gKw0KPiA+ID4gPiArLyoqDQo+ID4gPiA+ICsgKiBIYW5kbGUg
-Rk9VVF9FTkFCTEUgKEZPRSkgbGluZQ0KPiA+ID4gPiArICogRW5hYmxlcy9kaXNhYmxlcyB0
-aGUgRk9VVCBsaW5lDQo+ID4gPiA+ICsgKiBAcGFyYW0gb3BhcXVlIHRoZSBkZXZpY2UgaW5z
-dGFuY2UNCj4gPiA+ID4gKyAqIEBwYXJhbSBuIHRoZSBJUlEgbnVtYmVyDQo+ID4gPiA+ICsg
-KiBAcGFyYW0gbGV2ZWwgdHJ1ZSBpZiB0aGUgbGluZSBoYXMgYmVlbiByYWlzZWQNCj4gPiA+
-ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQgcng4OTAwX2ZvdXRfZW5hYmxlX2hhbmRs
-ZXIodm9pZCAqb3BhcXVlLCBpbnQgbiwNCj4gPiA+ID4gaW50DQo+ID4gPiA+IGxldmVsKQ0K
-PiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqBSWDg5MDBTdGF0ZSAqcyA9IFJYODkwMChv
-cGFxdWUpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChsZXZlbCkgew0KPiA+
-ID4gPiArwqDCoMKgwqDCoMKgwqDCoHRyYWNlX3J4ODkwMF9lbmFibGVfZm91dCgpOw0KPiA+
-ID4gPiArwqDCoMKgwqDCoMKgwqDCoHB0aW1lcl9ydW4ocy0+Zm91dF90aW1lciwgMCk7DQo+
-ID4gPiA+ICvCoMKgwqDCoH0gZWxzZSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgLyog
-ZGlzYWJsZSBmb3V0ICovDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgdHJhY2Vfcng4OTAw
-X2Rpc2FibGVfZm91dCgpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHB0aW1lcl9zdG9w
-KHMtPmZvdXRfdGltZXIpOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICt9DQo+ID4g
-PiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICogVGljayB0aGUgRk9VVCB0aW1lcg0K
-PiA+ID4gPiArICogQHBhcmFtIG9wYXF1ZSB0aGUgZGV2aWNlIGluc3RhbmNlDQo+ID4gPiA+
-ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9mb3V0X3RpY2sodm9pZCAqb3Bh
-cXVlKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqBSWDg5MDBTdGF0ZSAqcyA9IChS
-WDg5MDBTdGF0ZSAqKW9wYXF1ZTsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqB0cmFj
-ZV9yeDg5MDBfZm91dF90b2dnbGUoKTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+Zm91dCA9ICFz
-LT5mb3V0Ow0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGlmIChzLT5mb3V0KSB7DQo+
-ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcWVtdV9pcnFfcmFpc2Uocy0+Zm91dF9waW4pOw0K
-PiA+ID4gPiArwqDCoMKgwqB9IGVsc2Ugew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHFl
-bXVfaXJxX2xvd2VyKHMtPmZvdXRfcGluKTsNCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4g
-PiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICog
-RGlzYWJsZSB0aGUgY291bnRkb3duIHRpbWVyDQo+ID4gPiA+ICsgKiBAcGFyYW0gcyB0aGUg
-UlRDIHRvIG9wZXJhdGUgb24NCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQg
-ZGlzYWJsZV9jb3VudGRvd25fdGltZXIoUlg4OTAwU3RhdGUgKnMpDQo+ID4gPiA+ICt7DQo+
-ID4gPiA+ICvCoMKgwqDCoHRyYWNlX3J4ODkwMF9kaXNhYmxlX2NvdW50ZG93bigpOw0KPiA+
-ID4gPiArwqDCoMKgwqBwdGltZXJfc3RvcChzLT5jb3VudGRvd25fdGltZXIpOw0KPiA+ID4g
-PiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIEVuYWJsZSB0aGUg
-Y291bnRkb3duIHRpbWVyDQo+ID4gPiA+ICsgKiBAcGFyYW0gcyB0aGUgUlRDIHRvIG9wZXJh
-dGUgb24NCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQgZW5hYmxlX2NvdW50
-ZG93bl90aW1lcihSWDg5MDBTdGF0ZSAqcykNCj4gPiA+ID4gK3sNCj4gPiA+ID4gK8KgwqDC
-oMKgdHJhY2Vfcng4OTAwX2VuYWJsZV9jb3VudGRvd24oKTsNCj4gPiA+ID4gK8KgwqDCoMKg
-cHRpbWVyX3J1bihzLT5jb3VudGRvd25fdGltZXIsIDApOw0KPiA+ID4gPiArfQ0KPiA+ID4g
-PiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFRpY2sgdGhlIGNvdW50ZG93biB0aW1l
-cg0KPiA+ID4gPiArICogQHBhcmFtIG9wYXF1ZSB0aGUgZGV2aWNlIGluc3RhbmNlDQo+ID4g
-PiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9jb3VudGRvd25fdGljayh2
-b2lkICpvcGFxdWUpDQo+ID4gPiA+ICt7DQo+ID4gPiA+ICvCoMKgwqDCoFJYODkwMFN0YXRl
-ICpzID0gKFJYODkwMFN0YXRlICopb3BhcXVlOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKg
-wqDCoHVpbnQxNl90IGNvdW50ID0gcy0+bnZyYW1bVElNRVJfQ09VTlRFUl8wXSArDQo+ID4g
-PiANCj4gPiA+IE5pdDogaW4gY2FzZXMgbGlrZSB0aGlzIGl0IGlzIHVzdWFsbHkgInwiLCBu
-b3QgIisiLg0KPiA+ID4gDQo+ID4gDQo+ID4gT2sNCj4gPiANCj4gPiA+IA0KPiA+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgKChzLT5udnJhbVtUSU1FUl9DT1VOVEVSXzFdICYg
-MHgwRikgPDwgOCk7DQo+ID4gPiA+ICvCoMKgwqDCoHRyYWNlX3J4ODkwMF9jb3VudGRvd25f
-dGljayhjb3VudCk7DQo+ID4gPiA+ICvCoMKgwqDCoGNvdW50LS07DQo+ID4gPiA+ICsNCj4g
-PiA+ID4gK8KgwqDCoMKgcy0+bnZyYW1bVElNRVJfQ09VTlRFUl8wXSA9ICh1aW50OF90KShj
-b3VudCAmIDB4MDBmZik7DQo+ID4gPiA+ICvCoMKgwqDCoHMtPm52cmFtW1RJTUVSX0NPVU5U
-RVJfMV0gPSAodWludDhfdCkoKGNvdW50ICYgMHgwZjAwKSA+Pg0KPiA+ID4gPiA4KTsNCj4g
-PiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBpZiAoY291bnQgPT0gMCkgew0KPiA+ID4gPiAr
-wqDCoMKgwqDCoMKgwqDCoHRyYWNlX3J4ODkwMF9jb3VudGRvd25fZWxhcHNlZCgpOw0KPiA+
-ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgZGlzYWJsZV9jb3VudGRvd25fdGlt
-ZXIocyk7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBzLT5udnJhbVtG
-TEFHX1JFR0lTVEVSXSB8PSBGTEFHX01BU0tfVEY7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8Kg
-wqDCoMKgwqDCoMKgwqBpZiAocy0+bnZyYW1bQ09OVFJPTF9SRUdJU1RFUl0gJiBDVFJMX01B
-U0tfVElFKSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB0cmFjZV9yeDg5
-MDBfZmlyZV9pbnRlcnJ1cHQoKTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oHFlbXVfaXJxX3B1bHNlKHMtPmludGVycnVwdF9waW4pOw0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoH0NCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+
-ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFZlcmlmeSB0aGUgY3VycmVudCB2b2x0YWdlIGFu
-ZCByYWlzZSBmbGFncyBpZiBpdCBpcyBsb3cNCj4gPiA+ID4gKyAqIEBwYXJhbSBzIHRoZSBS
-VEMgdG8gb3BlcmF0ZSBvbg0KPiA+ID4gPiArICovDQo+ID4gPiA+ICtzdGF0aWMgdm9pZCBj
-aGVja192b2x0YWdlKFJYODkwMFN0YXRlICpzKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDC
-oMKgwqBpZiAoIShzLT5udnJhbVtCQUNLVVBfRlVOQ1RJT05dICYgQkFDS1VQX01BU0tfVkRF
-VE9GRikpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBpZiAocy0+c3VwcGx5X3ZvbHRh
-Z2UgPCAyLjBmKSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzLT5udnJh
-bVtGTEFHX1JFR0lTVEVSXSB8PSBGTEFHX01BU0tfVkRFVDsNCj4gPiA+ID4gK8KgwqDCoMKg
-wqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBpZiAocy0+
-c3VwcGx5X3ZvbHRhZ2UgPCAxLjZmKSB7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBzLT5udnJhbVtGTEFHX1JFR0lTVEVSXSB8PSBGTEFHX01BU0tfVkxGOw0KPiA+ID4g
-PiArwqDCoMKgwqDCoMKgwqDCoH0NCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArfQ0K
-PiA+ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFJlY2VpdmUgYSBieXRlIG9m
-IGRhdGEgZnJvbSBpMmMNCj4gPiA+ID4gKyAqIEBwYXJhbSBpMmMgdGhlIGkyYyBkZXZpY2Ug
-dGhhdCBpcyByZWNlaXZpbmcgZGF0YQ0KPiA+ID4gPiArICogQHBhcmFtIGRhdGEgdGhlIGRh
-dGEgdGhhdCB3YXMgcmVjZWl2ZWQNCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIGlu
-dCByeDg5MDBfc2VuZChJMkNTbGF2ZSAqaTJjLCB1aW50OF90IGRhdGEpDQo+ID4gPiA+ICt7
-DQo+ID4gPiA+ICvCoMKgwqDCoFJYODkwMFN0YXRlICpzID0gUlg4OTAwKGkyYyk7DQo+ID4g
-PiA+ICvCoMKgwqDCoHN0cnVjdCB0bSBub3c7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDC
-oMKgdHJhY2Vfcng4OTAwX2kyY19kYXRhX3JlY2VpdmUoZGF0YSk7DQo+ID4gPiA+ICsNCj4g
-PiA+ID4gK8KgwqDCoMKgaWYgKHMtPmFkZHJfYnl0ZSkgew0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoHMtPnB0ciA9IGRhdGEgJiAoUlg4OTAwX05WUkFNX1NJWkUgLSAxKTsNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqB0cmFjZV9yeDg5MDBfcmVncHRyX3VwZGF0ZShzLT5wdHIp
-Ow0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHMtPmFkZHJfYnl0ZSA9IGZhbHNlOw0KPiA+
-ID4gPiArwqDCoMKgwqDCoMKgwqDCoHJldHVybiAwOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+
-ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgdHJhY2Vfcng4OTAwX3NldF9yZWdpc3Rlcihz
-LT5wdHIsIGRhdGEpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoHFlbXVfZ2V0X3Rp
-bWVkYXRlKCZub3csIHMtPm9mZnNldCk7DQo+ID4gPiA+ICvCoMKgwqDCoHN3aXRjaCAocy0+
-cHRyKSB7DQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgU0VDT05EUzoNCj4gPiA+ID4gK8KgwqDC
-oMKgY2FzZSBFWFRfU0VDT05EUzoNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBub3cudG1f
-c2VjID0gZnJvbV9iY2QoZGF0YSAmIDB4N2YpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
-oHMtPm9mZnNldCA9IHFlbXVfdGltZWRhdGVfZGlmZigmbm93KTsNCj4gPiA+ID4gK8KgwqDC
-oMKgwqDCoMKgwqBicmVhazsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBjYXNlIE1J
-TlVURVM6DQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgRVhUX01JTlVURVM6DQo+ID4gPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgbm93LnRtX21pbiA9IGZyb21fYmNkKGRhdGEgJiAweDdmKTsNCj4g
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBzLT5vZmZzZXQgPSBxZW11X3RpbWVkYXRlX2RpZmYo
-Jm5vdyk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7DQo+ID4gPiA+ICsNCj4g
-PiA+ID4gK8KgwqDCoMKgY2FzZSBIT1VSUzoNCj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBFWFRf
-SE9VUlM6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgbm93LnRtX2hvdXIgPSBmcm9tX2Jj
-ZChkYXRhICYgMHgzZik7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+b2Zmc2V0ID0g
-cWVtdV90aW1lZGF0ZV9kaWZmKCZub3cpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGJy
-ZWFrOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgV0VFS0RBWToNCj4gPiA+
-ID4gK8KgwqDCoMKgY2FzZSBFWFRfV0VFS0RBWTogew0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoGludCB1c2VyX3dkYXkgPSBjdHozMihkYXRhKTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqAvKiBUaGUgZGF5IGZpZWxkIGlzIHN1cHBvc2VkIHRvIGNvbnRhaW4gYSB2YWx1ZSBp
-bg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgKiB0aGUgcmFuZ2UgMC02LiBPdGhlcndp
-c2UgYmVoYXZpb3IgaXMgdW5kZWZpbmVkLg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-Ki8NCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBzd2l0Y2ggKGRhdGEpIHsNCj4gPiA+ID4g
-K8KgwqDCoMKgwqDCoMKgwqBjYXNlIDB4MDE6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-Y2FzZSAweDAyOg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGNhc2UgMHgwNDoNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqBjYXNlIDB4MDg6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgY2FzZSAweDEwOg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGNhc2UgMHgyMDoNCj4g
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBjYXNlIDB4NDA6DQo+ID4gPiA+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqBicmVhazsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBkZWZhdWx0
-Og0KPiA+ID4gDQo+ID4gPiBJbnN0ZWFkIG9mIHRoZSBzd2l0Y2g6DQo+ID4gPiANCj4gPiA+
-IGlmIChkYXRhICYgMHg4MCkgew0KPiA+IA0KPiA+IFdlZWtkYXkgaXMgYSB3YWxraW5nIGJp
-dCwgdGhlIHByb3Bvc2VkIGNoZWNrIGFsbG93cyBpbnZhbGlkIHZhbHVlcy4NCj4gDQo+IA0K
-PiBBaCwgcmlnaHQsIHNob3VsZCBoYXZlIGJlZW4gaWYoZGF0YT09MHg4MCkuDQo+IA0KPiBB
-Y3R1YWxseSB5b3Ugd2FudCB0byB0ZXN0IHRoYXQNCj4gKCgxPDxjdHozMihkYXRhKSkgPT0g
-ZGF0YSkgJiYgKHVzZXJfd2RheSA8IDcpDQoNCkl0J3Mgc2hvcnQgYW5kIGNsZXZlciwgYnV0
-IHRoZSBwcm9ibGVtIHdpdGggY2xldmVyIGNvZGUgaXMgaXQgcmVxdWlyZXMNCmNsZXZlciBw
-ZW9wbGUgdG8gdW5kZXJzdGFuZCBpdC4gSSBoYWQgdG8gc3RvcCBhbmQgdGhpbmsgYWJvdXQg
-d2hhdCB0aGF0DQp3YXMgZG9pbmcuDQoNCj4gDQo+ID4gDQo+ID4gPiANCj4gPiA+ID4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLA0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAiUlg4OTAwIC0gd2Vl
-a2RheSBkYXRhICcleCcgaXMgb3V0IG9mIHJhbmdlLCAiDQo+ID4gPiA+ICvCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAidW5kZWZpbmVkIGJlaGF2
-aW9yIHdpbGwgcmVzdWx0IiwNCj4gPiA+ID4gZGF0YSk7DQo+ID4gPiANCj4gPiA+IA0KPiA+
-ID4gYnR3IG90aGVyIGNhc2VzIG9mIHN3aXRjaCAocy0+cHRyKSBkbyBub3QgZG8gc3VjaCBh
-IGNoZWNrLCBqdXN0DQo+ID4gPiAiJjB4N2YiIG9yDQo+ID4gPiAiJjB4M2YiLCB3aHkgaXMg
-dGhlIHdlZWtkYXkgY2FzZSBzbyBzcGVjaWFsPw0KPiA+ID4gDQo+ID4gDQo+ID4gV2Vla2Rh
-eSBpcyBhIHdhbGtpbmcgYml0LCBub3QgYSBudW1iZXIuDQo+IA0KPiBJdCBpcyBzdGlsbCBu
-b3QgY2xlYXIgd2h5IHlvdSBjaGVjayBkYXRhIHZhbGlkaXR5IGZvciBhIHdlZWtkYXkgYnV0
-DQo+IG5vdA0KPiBvdGhlciB0aGluZ3Mgd2hpY2ggeW91IGp1c3QgbWFzay4gSGFzICJob3Vy
-cyA9PSAweDNmIiBkZWZpbmVkDQo+IGJlaGF2aW91ciwNCj4gZm9yIGV4YW1wbGU/DQo+IA0K
-DQpUaGUgdmFsdWVzIHdoaWNoIGFyZSBtYXNrZWQgYXJlIEJDRCBlbmNvZGVkLCB0aGUgbWFz
-ayBpcyBzdWZmaWNpZW50IGZvcg0KZnVsbCB2YWxpZGF0aW9uIG9mIHZhbHVlLg0KDQo+IA0K
-PiA+IA0KPiA+ID4gDQo+ID4gPiANCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oGJyZWFrOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoH0NCj4gPiA+ID4gK8KgwqDCoMKg
-wqDCoMKgwqBzLT53ZWVrZGF5ID0gdXNlcl93ZGF5Ow0KPiA+ID4gPiArwqDCoMKgwqDCoMKg
-wqDCoGJyZWFrOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8Kg
-wqDCoMKgY2FzZSBEQVk6DQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgRVhUX0RBWToNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqBub3cudG1fbWRheSA9IGZyb21fYmNkKGRhdGEgJiAweDNm
-KTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBzLT5vZmZzZXQgPSBxZW11X3RpbWVkYXRl
-X2RpZmYoJm5vdyk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgYnJlYWs7DQo+ID4gPiA+
-ICsNCj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBNT05USDoNCj4gPiA+ID4gK8KgwqDCoMKgY2Fz
-ZSBFWFRfTU9OVEg6DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgbm93LnRtX21vbiA9IGZy
-b21fYmNkKGRhdGEgJiAweDFmKSAtIDE7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+
-b2Zmc2V0ID0gcWVtdV90aW1lZGF0ZV9kaWZmKCZub3cpOw0KPiA+ID4gPiArwqDCoMKgwqDC
-oMKgwqDCoGJyZWFrOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgWUVBUjoN
-Cj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBFWFRfWUVBUjoNCj4gPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqBub3cudG1feWVhciA9IGZyb21fYmNkKGRhdGEpICsgMTAwOw0KPiA+ID4gPiArwqDC
-oMKgwqDCoMKgwqDCoHMtPm9mZnNldCA9IHFlbXVfdGltZWRhdGVfZGlmZigmbm93KTsNCj4g
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDC
-oMKgwqBjYXNlIEVYVEVOU0lPTl9SRUdJU1RFUjoNCj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBF
-WFRfRVhURU5TSU9OX1JFR0lTVEVSOg0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHVwZGF0
-ZV9leHRlbnNpb25fcmVnaXN0ZXIocywgZGF0YSk7DQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgYnJlYWs7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBGTEFHX1JFR0lT
-VEVSOg0KPiA+ID4gPiArwqDCoMKgwqBjYXNlIEVYVF9GTEFHX1JFR0lTVEVSOg0KPiA+ID4g
-PiArwqDCoMKgwqDCoMKgwqDCoHZhbGlkYXRlX2ZsYWdfcmVnaXN0ZXIocywgJmRhdGEpOw0K
-PiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgcy0+bnZyYW1bRkxBR19SRUdJ
-U1RFUl0gPSBkYXRhOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHMtPm52cmFtW0VYVF9G
-TEFHX1JFR0lTVEVSXSA9IGRhdGE7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgwqDC
-oMKgwqBjaGVja192b2x0YWdlKHMpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGJyZWFr
-Ow0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoGNhc2UgQ09OVFJPTF9SRUdJU1RFUjoN
-Cj4gPiA+ID4gK8KgwqDCoMKgY2FzZSBFWFRfQ09OVFJPTF9SRUdJU1RFUjoNCj4gPiA+ID4g
-K8KgwqDCoMKgwqDCoMKgwqB1cGRhdGVfY29udHJvbF9yZWdpc3RlcihzLCBkYXRhKTsNCj4g
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBicmVhazsNCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDC
-oMKgwqBkZWZhdWx0Og0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHMtPm52cmFtW3MtPnB0
-cl0gPSBkYXRhOw0KPiA+ID4gPiArwqDCoMKgwqB9DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8Kg
-wqDCoMKgaW5jX3JlZ3B0cihzKTsNCj4gPiA+ID4gK8KgwqDCoMKgcmV0dXJuIDA7DQo+ID4g
-PiA+ICt9DQo+ID4gPiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICogR2V0IHRoZSBk
-ZXZpY2UgdGVtcGVyYXR1cmUgaW4gQ2VsY2l1cyBhcyBhIHByb3BlcnR5DQo+ID4gPiA+ICsg
-KiBAcGFyYW0gb2JqIHRoZSBkZXZpY2UNCj4gPiA+ID4gKyAqIEBwYXJhbSB2DQo+ID4gPiA+
-ICsgKiBAcGFyYW0gbmFtZSB0aGUgcHJvcGVydHkgbmFtZQ0KPiA+ID4gPiArICogQHBhcmFt
-IG9wYXF1ZQ0KPiA+ID4gPiArICogQHBhcmFtIGVycnAgYW4gZXJyb3Igb2JqZWN0IHRvIHBv
-cHVsYXRlIG9uIGZhaWx1cmUNCj4gPiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQg
-cng4OTAwX2dldF90ZW1wZXJhdHVyZShPYmplY3QgKm9iaiwgVmlzaXRvciAqdiwNCj4gPiA+
-ID4gY29uc3QNCj4gPiA+ID4gY2hhciAqbmFtZSwNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqB2b2lkICpvcGFxdWUsIEVycm9yICoqZXJycCkNCj4gPiA+ID4gK3sNCj4gPiA+ID4gK8Kg
-wqDCoMKgUlg4OTAwU3RhdGUgKnMgPSBSWDg5MDAob2JqKTsNCj4gPiA+ID4gK8KgwqDCoMKg
-ZG91YmxlIHZhbHVlID0gKHMtPm52cmFtW1RFTVBFUkFUVVJFXSAqIDIuMGYgLSAxODcuMWYp
-IC8NCj4gPiA+ID4gMy4yMThmOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoHRyYWNl
-X3J4ODkwMF9yZWFkX3RlbXBlcmF0dXJlKHMtPm52cmFtW1RFTVBFUkFUVVJFXSwNCj4gPiA+
-ID4gdmFsdWUpOw0KPiA+ID4gDQo+ID4gPiBOaXQ6IHMvcmVhZC9nZXQvDQo+ID4gPiANCj4g
-PiANCj4gPiBPaw0KPiA+IA0KPiA+ID4gDQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKg
-dmlzaXRfdHlwZV9udW1iZXIodiwgbmFtZSwgJnZhbHVlLCBlcnJwKTsNCj4gPiA+ID4gK30N
-Cj4gPiA+ID4gKw0KPiA+ID4gPiArLyoqDQo+ID4gPiA+ICsgKiBTZXQgdGhlIGRldmljZSB0
-ZW1wZXJhdHVyZSBpbiBDZWxjaXVzIGFzIGEgcHJvcGVydHkNCj4gPiA+ID4gKyAqIEBwYXJh
-bSBvYmogdGhlIGRldmljZQ0KPiA+ID4gPiArICogQHBhcmFtIHYNCj4gPiA+ID4gKyAqIEBw
-YXJhbSBuYW1lIHRoZSBwcm9wZXJ0eSBuYW1lDQo+ID4gPiA+ICsgKiBAcGFyYW0gb3BhcXVl
-DQo+ID4gPiA+ICsgKiBAcGFyYW0gZXJycCBhbiBlcnJvciBvYmplY3QgdG8gcG9wdWxhdGUg
-b24gZmFpbHVyZQ0KPiA+ID4gPiArICovDQo+ID4gPiA+ICtzdGF0aWMgdm9pZCByeDg5MDBf
-c2V0X3RlbXBlcmF0dXJlKE9iamVjdCAqb2JqLCBWaXNpdG9yICp2LA0KPiA+ID4gPiBjb25z
-dA0KPiA+ID4gPiBjaGFyICpuYW1lLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZvaWQg
-Km9wYXF1ZSwgRXJyb3IgKiplcnJwKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqBS
-WDg5MDBTdGF0ZSAqcyA9IFJYODkwMChvYmopOw0KPiA+ID4gPiArwqDCoMKgwqBFcnJvciAq
-bG9jYWxfZXJyID0gTlVMTDsNCj4gPiA+ID4gK8KgwqDCoMKgZG91YmxlIHRlbXA7IC8qIGRl
-Z3JlZXMgQ2VsY2l1cyAqLw0KPiA+ID4gPiArwqDCoMKgwqB2aXNpdF90eXBlX251bWJlcih2
-LCBuYW1lLCAmdGVtcCwgJmxvY2FsX2Vycik7DQo+ID4gPiA+ICvCoMKgwqDCoGlmIChsb2Nh
-bF9lcnIpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBlcnJvcl9wcm9wYWdhdGUoZXJy
-cCwgbG9jYWxfZXJyKTsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqByZXR1cm47DQo+ID4g
-PiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4gK8KgwqDCoMKgaWYgKHRlbXAgPj0gMTAwIHx8IHRl
-bXAgPCAtNTgpIHsNCj4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqBlcnJvcl9zZXRnKGVycnAs
-ICJ2YWx1ZSAlZsKwQyBpcyBvdXQgb2YgcmFuZ2UiLCB0ZW1wKTsNCj4gPiA+ID4gK8KgwqDC
-oMKgwqDCoMKgwqByZXR1cm47DQo+ID4gPiA+ICvCoMKgwqDCoH0NCj4gPiA+ID4gKw0KPiA+
-ID4gPiArwqDCoMKgwqBzLT5udnJhbVtURU1QRVJBVFVSRV0gPSAodWludDhfdCkgKCh0ZW1w
-ICogMy4yMThmICsNCj4gPiA+ID4gMTg3LjE5ZikgLw0KPiA+ID4gPiAyKTsNCj4gPiA+ID4g
-Kw0KPiA+ID4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X3RlbXBlcmF0dXJlKHMtPm52
-cmFtW1RFTVBFUkFUVVJFXSwgdGVtcCk7DQo+ID4gPiA+ICt9DQo+ID4gPiA+ICsNCj4gPiA+
-ID4gKy8qKg0KPiA+ID4gPiArICogR2V0IHRoZSBkZXZpY2Ugc3VwcGx5IHZvbHRhZ2UgYXMg
-YSBwcm9wZXJ0eQ0KPiA+ID4gPiArICogQHBhcmFtIG9iaiB0aGUgZGV2aWNlDQo+ID4gPiA+
-ICsgKiBAcGFyYW0gdg0KPiA+ID4gPiArICogQHBhcmFtIG5hbWUgdGhlIHByb3BlcnR5IG5h
-bWUNCj4gPiA+ID4gKyAqIEBwYXJhbSBvcGFxdWUNCj4gPiA+ID4gKyAqIEBwYXJhbSBlcnJw
-IGFuIGVycm9yIG9iamVjdCB0byBwb3B1bGF0ZSBvbiBmYWlsdXJlDQo+ID4gPiA+ICsgKi8N
-Cj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9nZXRfdm9sdGFnZShPYmplY3QgKm9iaiwg
-VmlzaXRvciAqdiwgY29uc3QNCj4gPiA+ID4gY2hhcg0KPiA+ID4gPiAqbmFtZSwNCj4gPiA+
-ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqB2b2lkICpvcGFxdWUsIEVycm9yICoqZXJycCkNCj4gPiA+
-ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKgUlg4OTAwU3RhdGUgKnMgPSBSWDg5MDAob2JqKTsN
-Cj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqB2aXNpdF90eXBlX251bWJlcih2LCBuYW1l
-LCAmcy0+c3VwcGx5X3ZvbHRhZ2UsIGVycnApOw0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IHJ4
-ODkwMF9nZXRfdGVtcGVyYXR1cmUoKSBnb3QgYSB0cmFjZSBwb2ludCwgdGhpcyBvbmUgZGlk
-IG5vdCA7KQ0KPiA+ID4gDQo+ID4gDQo+ID4gVGhpcyBkaWQgbm90IHBlcmZvcm0gYSB0cmFu
-c2Zvcm1hdGlvbiBvbiB0aGUgZGF0YS4NCj4gPiANCj4gPiA+ID4gK30NCj4gPiA+ID4gKw0K
-PiA+ID4gPiArLyoqDQo+ID4gPiA+ICsgKiBTZXQgdGhlIGRldmljZSBzdXBwbHkgdm9sdGFn
-ZSBhcyBhIHByb3BlcnR5DQo+ID4gPiA+ICsgKiBAcGFyYW0gb2JqIHRoZSBkZXZpY2UNCj4g
-PiA+ID4gKyAqIEBwYXJhbSB2DQo+ID4gPiA+ICsgKiBAcGFyYW0gbmFtZSB0aGUgcHJvcGVy
-dHkgbmFtZQ0KPiA+ID4gPiArICogQHBhcmFtIG9wYXF1ZQ0KPiA+ID4gPiArICogQHBhcmFt
-IGVycnAgYW4gZXJyb3Igb2JqZWN0IHRvIHBvcHVsYXRlIG9uIGZhaWx1cmUNCj4gPiA+ID4g
-KyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQgcng4OTAwX3NldF92b2x0YWdlKE9iamVjdCAq
-b2JqLCBWaXNpdG9yICp2LCBjb25zdA0KPiA+ID4gPiBjaGFyDQo+ID4gPiA+ICpuYW1lLA0K
-PiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZvaWQgKm9wYXF1ZSwgRXJyb3IgKiplcnJwKQ0K
-PiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqBSWDg5MDBTdGF0ZSAqcyA9IFJYODkwMChv
-YmopOw0KPiA+ID4gPiArwqDCoMKgwqBFcnJvciAqbG9jYWxfZXJyID0gTlVMTDsNCj4gPiA+
-ID4gK8KgwqDCoMKgZG91YmxlIHRlbXA7DQo+ID4gPiA+ICvCoMKgwqDCoHZpc2l0X3R5cGVf
-bnVtYmVyKHYsIG5hbWUsICZ0ZW1wLCAmbG9jYWxfZXJyKTsNCj4gPiA+ID4gK8KgwqDCoMKg
-aWYgKGxvY2FsX2Vycikgew0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoGVycm9yX3Byb3Bh
-Z2F0ZShlcnJwLCBsb2NhbF9lcnIpOw0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoHJldHVy
-bjsNCj4gPiA+ID4gK8KgwqDCoMKgfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoHMt
-PnN1cHBseV92b2x0YWdlID0gdGVtcDsNCj4gPiA+ID4gK8KgwqDCoMKgdHJhY2Vfcng4OTAw
-X3NldF92b2x0YWdlKHMtPnN1cHBseV92b2x0YWdlKTsNCj4gPiA+ID4gKw0KPiA+ID4gPiAr
-wqDCoMKgwqBjaGVja192b2x0YWdlKHMpOw0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4g
-PiA+ICsNCj4gPiA+ID4gKy8qKg0KPiA+ID4gPiArICogQ29uZmlndXJlIGRldmljZSBwcm9w
-ZXJ0aWVzDQo+ID4gPiA+ICsgKiBAcGFyYW0gb2JqIHRoZSBkZXZpY2UNCj4gPiA+ID4gKyAq
-Lw0KPiA+ID4gPiArc3RhdGljIHZvaWQgcng4OTAwX2luaXRmbihPYmplY3QgKm9iaikNCj4g
-PiA+ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKgb2JqZWN0X3Byb3BlcnR5X2FkZChvYmosICJ0
-ZW1wZXJhdHVyZSIsICJudW1iZXIiLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcng4OTAwX2dldF90ZW1wZXJhdHVyZSwNCj4g
-PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oHJ4ODkwMF9zZXRfdGVtcGVyYXR1cmUsIE5VTEwsIE5VTEwsDQo+ID4gPiA+IE5VTEwpOw0K
-PiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoG9iamVjdF9wcm9wZXJ0eV9hZGQob2JqLCAi
-c3VwcGx5IHZvbHRhZ2UiLCAibnVtYmVyIiwNCj4gPiA+IA0KPiA+ID4gcy9zdXBwbHkgdm9s
-dGFnZS92b2x0YWdlLw0KPiA+ID4gQXMgaGF2aW5nIHNwYWNlcyBpbiBhIHByb3BlcnR5IG5h
-bWUgbWFrZXMgaXQgaGFyZGVyIHRvIHVzZSBpbiB0aGUNCj4gPiA+IFFFTVUgY2xpDQo+ID4g
-PiBhbmQgdGhlcmUgaXMganVzdCBvbmUgdm9sdGFnZSBzbyAic3VwcGx5IiBpcyBub3QgcmVh
-bGx5IG5lZWRlZC4NCj4gPiA+IA0KPiA+IA0KPiA+IE9rDQo+ID4gDQo+ID4gPiANCj4gPiA+
-IA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgcng4OTAwX2dldF92b2x0YWdlLA0KPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcng4OTAwX3NldF92b2x0YWdlLCBOVUxM
-LCBOVUxMLCBOVUxMKTsNCj4gPiA+ID4gK30NCj4gPiA+ID4gKw0KPiA+ID4gPiArLyoqDQo+
-ID4gPiA+ICsgKiBSZXNldCB0aGUgZGV2aWNlDQo+ID4gPiA+ICsgKiBAcGFyYW0gZGV2IHRo
-ZSBSWDg5MDAgZGV2aWNlIHRvIHJlc2V0DQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRp
-YyB2b2lkIHJ4ODkwMF9yZXNldChEZXZpY2VTdGF0ZSAqZGV2KQ0KPiA+ID4gPiArew0KPiA+
-ID4gPiArwqDCoMKgwqBSWDg5MDBTdGF0ZSAqcyA9IFJYODkwMChkZXYpOw0KPiA+ID4gPiAr
-DQo+ID4gPiA+ICvCoMKgwqDCoHRyYWNlX3J4ODkwMF9yZXNldCgpOw0KPiA+ID4gPiArDQo+
-ID4gPiA+ICvCoMKgwqDCoC8qIFRoZSBjbG9jayBpcyBydW5uaW5nIGFuZCBzeW5jaHJvbml6
-ZWQgd2l0aCB0aGUgaG9zdCAqLw0KPiA+ID4gPiArwqDCoMKgwqBzLT5vZmZzZXQgPSAwOw0K
-PiA+ID4gPiArwqDCoMKgwqBzLT53ZWVrZGF5ID0gNzsgLyogU2V0IHRvIGFuIGludmFsaWQg
-dmFsdWUgKi8NCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBzLT5udnJhbVtFWFRFTlNJ
-T05fUkVHSVNURVJdID0gRVhUX01BU0tfVFNFTDE7DQo+ID4gPiA+ICvCoMKgwqDCoHMtPm52
-cmFtW0NPTlRST0xfUkVHSVNURVJdID0gQ1RSTF9NQVNLX0NTRUwwOw0KPiA+ID4gPiArwqDC
-oMKgwqBzLT5udnJhbVtGTEFHX1JFR0lTVEVSXSAmPSBGTEFHX01BU0tfVkRFVCB8IEZMQUdf
-TUFTS19WTEY7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+cHRyID0gMDsNCj4g
-PiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfcmVncHRyX3VwZGF0ZShz
-LT5wdHIpOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoHMtPmFkZHJfYnl0ZSA9IGZh
-bHNlOw0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAq
-IFJlYWxpemUgYW4gUlg4OTAwIGRldmljZSBpbnN0YW5jZQ0KPiA+ID4gPiArICogU2V0IHVw
-IHRpbWVycw0KPiA+ID4gPiArICogQ29uZmlndXJlIEdQSU8gbGluZXMNCj4gPiA+ID4gKyAq
-IEBwYXJhbSBkZXYgdGhlIGRldmljZSBpbnN0YW5jZSB0byByZWFsaXplDQo+ID4gPiA+ICsg
-KiBAcGFyYW0gZXJycCBhbiBlcnJvciBvYmplY3QgdG8gcG9wdWxhdGUgb24gZXJyb3INCj4g
-PiA+ID4gKyAqLw0KPiA+ID4gPiArc3RhdGljIHZvaWQgcng4OTAwX3JlYWxpemUoRGV2aWNl
-U3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKg
-wqBSWDg5MDBTdGF0ZSAqcyA9IFJYODkwMChkZXYpOw0KPiA+ID4gPiArwqDCoMKgwqBJMkNT
-bGF2ZSAqaTJjID0gSTJDX1NMQVZFKGRldik7DQo+ID4gPiA+ICvCoMKgwqDCoFFFTVVCSCAq
-Ymg7DQo+ID4gPiA+ICvCoMKgwqDCoGNoYXIgbmFtZVs2NF07DQo+ID4gPiA+ICsNCj4gPiA+
-ID4gK8KgwqDCoMKgcy0+Zm91dCA9IGZhbHNlOw0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKg
-wqDCoG1lbXNldChzLT5udnJhbSwgMCwgUlg4OTAwX05WUkFNX1NJWkUpOw0KPiA+ID4gPiAr
-wqDCoMKgwqAvKiBUZW1wZXJhdHVyZSBmb3JtdWxhdGlvbiBmcm9tIHRoZSBkYXRhc2hlZXQN
-Cj4gPiA+ID4gK8KgwqDCoMKgwqAqICggVEVNUFsgNzowIF0gKiAyIC0gMTg3LjE5KSAvIDMu
-MjE4DQo+ID4gPiA+ICvCoMKgwqDCoMKgKg0KPiA+ID4gPiArwqDCoMKgwqDCoCogU2V0IHRo
-ZSBpbml0aWFsIHN0YXRlIHRvIDI1IGRlZ3JlZXMgQ2VsY2l1cw0KPiA+ID4gPiArwqDCoMKg
-wqDCoCovDQo+ID4gPiA+ICvCoMKgwqDCoHMtPm52cmFtW1RFTVBFUkFUVVJFXSA9IDEzNTsg
-LyogKDI1ICogMy4yMTggKyAxODcuMTkpIC8gMg0KPiA+ID4gPiAqLw0KPiA+ID4gDQo+ID4g
-PiANCj4gPiA+IE1heSBiZQ0KPiA+ID4gI2RlZmluZSBSWDg5MDBfQ19UT19URU1QKGMpCSgo
-KGMpICogMy4yMTggKyAxODcuMTkpIC8gMikNCj4gPiA+ID8NCj4gPiA+IA0KPiA+ID4gWW91
-IGRvIHRoaXMgbWF0aCBpbiBmZXcgcGxhY2VzLg0KPiA+IA0KPiA+IE9rDQo+ID4gDQo+ID4g
-PiANCj4gPiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBiaCA9IHFlbXVfYmhfbmV3KHJ4ODkw
-MF90aW1lcl90aWNrLCBzKTsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+c2VjX3RpbWVyID0gcHRp
-bWVyX2luaXQoYmgsIFBUSU1FUl9QT0xJQ1lfREVGQVVMVCk7DQo+ID4gPiA+ICvCoMKgwqDC
-oC8qIHdlIHRyaWdnZXIgdGhlIHRpbWVyIGF0IDEwSHogYW5kIGNoZWNrIGZvciByb2xsb3Zl
-ciwgYXMNCj4gPiA+ID4gdGhlDQo+ID4gPiA+IHFlbXUNCj4gPiA+ID4gK8KgwqDCoMKgwqAq
-IGNsb2NrIGRvZXMgbm90IGFkdmFuY2UgaW4gcmVhbHRpbWUgaW4gdGhlIHRlc3QNCj4gPiA+
-ID4gZW52aXJvbm1lbnQsDQo+ID4gPiA+ICvCoMKgwqDCoMKgKiBsZWFkaW5nIHRvIHVuc3Rh
-YmxlIHRlc3QgcmVzdWx0cw0KPiA+ID4gPiArwqDCoMKgwqDCoCovDQo+ID4gPiA+ICvCoMKg
-wqDCoHB0aW1lcl9zZXRfZnJlcShzLT5zZWNfdGltZXIsIDEwKTsNCj4gPiA+ID4gK8KgwqDC
-oMKgcHRpbWVyX3NldF9saW1pdChzLT5zZWNfdGltZXIsIDEsIDEpOw0KPiA+ID4gPiArDQo+
-ID4gPiA+ICvCoMKgwqDCoGJoID0gcWVtdV9iaF9uZXcocng4OTAwX2ZvdXRfdGljaywgcyk7
-DQo+ID4gPiA+ICvCoMKgwqDCoHMtPmZvdXRfdGltZXIgPSBwdGltZXJfaW5pdChiaCwgUFRJ
-TUVSX1BPTElDWV9ERUZBVUxUKTsNCj4gPiA+ID4gK8KgwqDCoMKgLyogZnJlcXVlbmN5IGRv
-dWJsZWQgdG8gZ2VuZXJhdGUgNTAlIGR1dHkgY3ljbGUgc3F1YXJlDQo+ID4gPiA+IHdhdmUg
-Ki8NCj4gPiA+ID4gK8KgwqDCoMKgcHRpbWVyX3NldF9mcmVxKHMtPmZvdXRfdGltZXIsIDMy
-NzY4ICogMik7DQo+ID4gPiA+ICvCoMKgwqDCoHB0aW1lcl9zZXRfbGltaXQocy0+Zm91dF90
-aW1lciwgMSwgMSk7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgYmggPSBxZW11X2Jo
-X25ldyhyeDg5MDBfY291bnRkb3duX3RpY2ssIHMpOw0KPiA+ID4gPiArwqDCoMKgwqBzLT5j
-b3VudGRvd25fdGltZXIgPSBwdGltZXJfaW5pdChiaCwNCj4gPiA+ID4gUFRJTUVSX1BPTElD
-WV9ERUZBVUxUKTsNCj4gPiA+ID4gK8KgwqDCoMKgcHRpbWVyX3NldF9mcmVxKHMtPmNvdW50
-ZG93bl90aW1lciwgNDA5Nik7DQo+ID4gPiA+ICvCoMKgwqDCoHB0aW1lcl9zZXRfbGltaXQo
-cy0+Y291bnRkb3duX3RpbWVyLCA0MDk2LCAxKTsNCj4gPiA+ID4gKw0KPiA+ID4gPiArDQo+
-ID4gPiANCj4gPiA+IA0KPiA+ID4gQW4gZXh0cmEgZW1wdHkgbGluZS4NCj4gPiA+IA0KPiA+
-IA0KPiA+IFRoaXMgaXMgaW50ZW50aW9uYWwsIHRvIHNlcGFyYXRlIHRoZSBkaWZmZXJlbnQg
-b3BlcmF0aW9ucy4NCj4gDQo+IE9uZSBpcyBlbm91Z2ggdGhvdWdoLiBJZiB5b3UgdGhpbmsg
-dGhlIG5leHQgYmxvY2sgaXMgc28gc2VwYXJhdGUsDQo+IHRoZW4gZ2l2ZQ0KPiBpdCBhIGNv
-bW1lbnQuDQoNClRydWUNCg0KPiANCj4gPiANCj4gPiA+ID4gK8KgwqDCoMKgc25wcmludGYo
-bmFtZSwgc2l6ZW9mKG5hbWUpLCAicng4OTAwLWludGVycnVwdC1vdXQiKTsNCj4gPiA+ID4g
-K8KgwqDCoMKgcWRldl9pbml0X2dwaW9fb3V0X25hbWVkKCZpMmMtPnFkZXYsICZzLT5pbnRl
-cnJ1cHRfcGluLA0KPiA+ID4gPiBuYW1lLA0KPiA+ID4gPiAxKTsNCj4gPiA+ID4gK8KgwqDC
-oMKgdHJhY2Vfcng4OTAwX3Bpbl9uYW1lKCJJbnRlcnJ1cHQiLCBuYW1lKTsNCj4gPiA+IA0K
-PiA+ID4gSSB3b3VsZCBqdXN0IHBhc3MgYSBzdHJpbmcgdG8gcWRldl9pbml0X2dwaW9fb3V0
-X25hbWVkKCkgYW5kDQo+ID4gPiBkaXRjaA0KPiA+ID4gQG5hbWUNCj4gPiA+IGZyb20gdHJh
-Y2Vwb2ludHMgYXMgdGhleSB1c2UgdW5pcXVlIHN0cmluZ3MgYW55d2F5LiBBbmQgSSdkIGFs
-c28NCj4gPiANCj4gPiBUaGUgc2FtZSB0cmFjZSBpcyByZXVzZWQNCj4gDQo+IFRoZSBmaXJz
-dCBwYXJhbWV0ZXIgb2YgcmV1c2VkIHRyYWNlIGlzIHVuaXF1ZSBhbnl3YXkuDQo+IA0KWWVz
-LCBidXQgdGhlIG5hbWUgdmFsdWUtYWRkcy4NCg0KPiANCj4gPiANCj4gPiA+IGRpdGNoDQo+
-ID4gPiB0cmFjZV9yeDg5MDBfcGluX25hbWUgdHJhY2Vwb2ludHMgYXMgdGhleSBkbyBub3Qg
-c2VlbSB2ZXJ5IHVzZWZ1bA0KPiA+ID4gLQ0KPiA+ID4gdGhleSBkbw0KPiA+ID4gbm90IHJl
-cG9ydCBhbiBlcnJvciBvciBhIHN1Y2Nlc3MuDQo+ID4gDQo+ID4gSXQgbWFrZXMgaXQgZWFz
-aWVyIHdoZW4gZGVidWdnaW5nIHRvIHZhbGlkYXRlIHRoYXQgeW91ciBpZGVhIG9mIHRoZQ0K
-PiA+IG5hbWVkIGludGVycnVwdCBtYXRjaGVzIHRoZSBpbXBsZW1lbnRhdGlvbi4NCj4gDQo+
-IEkgYW0gbWlzc2luZyB0aGUgcG9pbnQgaGVyZS4gSWYgdGhlIHRyYWNlIHByaW50ZWQgYSBz
-dHJpbmcgZnJvbSBpMmMtDQo+ID5xZGV2LA0KPiB0aGVuIHllcywgdGhlIHRyYWNlIGNvdWxk
-IGJlIHVzZWQgdG8gdGVsbCBpZiB0aGUgYWN0dWFsIG5hbWUgbWF0Y2hlcw0KPiB3aGF0DQo+
-IHlvdSBwYXNzZWQgdG8gcWRldl9pbml0X2dwaW9faW5fbmFtZWQoKSBidXQgaW4gdGhpcyBj
-b2RlIHRoZSB0cmFjZQ0KPiB3aWxsDQo+IGFsd2F5cyBwcmludCB0aGUgc3RyaW5nIHlvdSBz
-bnByaW50ZigpIDIgbGluZXMgYWJvdmUuIFF1aXRlIHVzZWxlc3MuDQo+IA0KDQpJdCB3YXMg
-dXNlZnVsIHRvIG1lIGluIGRldmVsb3BtZW50LCBpdCBtYXkgYmUgdXNlZnVsIGluIHRoZSBm
-dXR1cmUuDQpUaGluayBvZiBpdCBhcyBhbiBhbm5vdW5jZW1lbnQgb2YgInRoaXMgaXMgd2hl
-cmUgeW91IGNhbiBmaW5kIG1lIi4NCg0KPiA+ID4gPiArDQo+ID4gPiA+ICvCoMKgwqDCoHNu
-cHJpbnRmKG5hbWUsIHNpemVvZihuYW1lKSwgInJ4ODkwMC1mb3V0LWVuYWJsZSIpOw0KPiA+
-ID4gPiArwqDCoMKgwqBxZGV2X2luaXRfZ3Bpb19pbl9uYW1lZCgmaTJjLT5xZGV2LA0KPiA+
-ID4gPiByeDg5MDBfZm91dF9lbmFibGVfaGFuZGxlciwgbmFtZSwgMSk7DQo+ID4gPiA+ICvC
-oMKgwqDCoHRyYWNlX3J4ODkwMF9waW5fbmFtZSgiRm91dC1lbmFibGUiLCBuYW1lKTsNCj4g
-PiA+ID4gKw0KPiA+ID4gPiArwqDCoMKgwqBzbnByaW50ZihuYW1lLCBzaXplb2YobmFtZSks
-ICJyeDg5MDAtZm91dCIpOw0KPiA+ID4gPiArwqDCoMKgwqBxZGV2X2luaXRfZ3Bpb19vdXRf
-bmFtZWQoJmkyYy0+cWRldiwgJnMtPmZvdXRfcGluLCBuYW1lLA0KPiA+ID4gPiAxKTsNCj4g
-PiA+ID4gK8KgwqDCoMKgdHJhY2Vfcng4OTAwX3Bpbl9uYW1lKCJGb3V0IiwgbmFtZSk7DQo+
-ID4gPiA+ICsNCj4gPiA+ID4gK8KgwqDCoMKgcy0+c3VwcGx5X3ZvbHRhZ2UgPSAzLjNmOw0K
-PiA+ID4gPiArwqDCoMKgwqB0cmFjZV9yeDg5MDBfc2V0X3ZvbHRhZ2Uocy0+c3VwcGx5X3Zv
-bHRhZ2UpOw0KPiA+ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4g
-KyAqIFNldCB1cCB0aGUgZGV2aWNlIGNhbGxiYWNrcw0KPiA+ID4gPiArICogQHBhcmFtIGts
-YXNzIHRoZSBkZXZpY2UgY2xhc3MNCj4gPiA+ID4gKyAqIEBwYXJhbSBkYXRhDQo+ID4gPiA+
-ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9jbGFzc19pbml0KE9iamVjdENs
-YXNzICprbGFzcywgdm9pZCAqZGF0YSkNCj4gPiA+ID4gK3sNCj4gPiA+ID4gK8KgwqDCoMKg
-RGV2aWNlQ2xhc3MgKmRjID0gREVWSUNFX0NMQVNTKGtsYXNzKTsNCj4gPiA+ID4gK8KgwqDC
-oMKgSTJDU2xhdmVDbGFzcyAqayA9IEkyQ19TTEFWRV9DTEFTUyhrbGFzcyk7DQo+ID4gPiA+
-ICsNCj4gPiA+ID4gK8KgwqDCoMKgay0+ZXZlbnQgPSByeDg5MDBfZXZlbnQ7DQo+ID4gPiA+
-ICvCoMKgwqDCoGstPnJlY3YgPSByeDg5MDBfcmVjdjsNCj4gPiA+ID4gK8KgwqDCoMKgay0+
-c2VuZCA9IHJ4ODkwMF9zZW5kOw0KPiA+ID4gPiArwqDCoMKgwqBkYy0+cmVhbGl6ZSA9IHJ4
-ODkwMF9yZWFsaXplOw0KPiA+ID4gPiArwqDCoMKgwqBkYy0+cmVzZXQgPSByeDg5MDBfcmVz
-ZXQ7DQo+ID4gPiA+ICvCoMKgwqDCoGRjLT52bXNkID0gJnZtc3RhdGVfcng4OTAwOw0KPiA+
-ID4gPiArfQ0KPiA+ID4gPiArDQo+ID4gPiA+ICtzdGF0aWMgY29uc3QgVHlwZUluZm8gcng4
-OTAwX2luZm8gPSB7DQo+ID4gPiA+ICvCoMKgwqDCoC5uYW1lID0gVFlQRV9SWDg5MDAsDQo+
-ID4gPiA+ICvCoMKgwqDCoC5wYXJlbnQgPSBUWVBFX0kyQ19TTEFWRSwNCj4gPiA+ID4gK8Kg
-wqDCoMKgLmluc3RhbmNlX3NpemUgPSBzaXplb2YoUlg4OTAwU3RhdGUpLA0KPiA+ID4gPiAr
-wqDCoMKgwqAuaW5zdGFuY2VfaW5pdCA9IHJ4ODkwMF9pbml0Zm4sDQo+ID4gPiA+ICvCoMKg
-wqDCoC5jbGFzc19pbml0ID0gcng4OTAwX2NsYXNzX2luaXQsDQo+ID4gPiA+ICt9Ow0KPiA+
-ID4gPiArDQo+ID4gPiA+ICsvKioNCj4gPiA+ID4gKyAqIFJlZ2lzdGVyIHRoZSBkZXZpY2Ug
-d2l0aCBRRU1VDQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHJ4ODkwMF9y
-ZWdpc3Rlcl90eXBlcyh2b2lkKQ0KPiA+ID4gPiArew0KPiA+ID4gPiArwqDCoMKgwqB0eXBl
-X3JlZ2lzdGVyX3N0YXRpYygmcng4OTAwX2luZm8pOw0KPiA+ID4gPiArfQ0KPiA+ID4gPiAr
-DQo+ID4gPiA+ICt0eXBlX2luaXQocng4OTAwX3JlZ2lzdGVyX3R5cGVzKQ0KPiA+ID4gPiBk
-aWZmIC0tZ2l0IGEvaHcvdGltZXIvcng4OTAwX3JlZ3MuaCBiL2h3L3RpbWVyL3J4ODkwMF9y
-ZWdzLmgNCj4gPiA+ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQNCj4gPiA+ID4gaW5kZXggMDAw
-MDAwMC4uY2ZlYzUzNQ0KPiA+ID4gPiAtLS0gL2Rldi9udWxsDQo+ID4gPiA+ICsrKyBiL2h3
-L3RpbWVyL3J4ODkwMF9yZWdzLmgNCj4gPiA+IA0KPiA+ID4gV2h5IGNhbm5vdCB0aGUgY29u
-dGVudCBvZiB0aGlzIGhlYWRlciBnbyB0byBody90aW1lci9yeDg5MDAuYyA/DQo+ID4gPiBE
-bw0KPiA+ID4geW91DQo+ID4gPiBleHBlY3Qgc29tZSBmdXR1cmUgY29kZSB0byB1c2UgdGhl
-c2UgZGVmaW5pdGlvbnM/IElmIHNvLCBwbGVhc2UNCj4gPiA+IGFkZCBhDQo+ID4gPiBub3Rl
-DQo+ID4gPiB0byB0aGUgY29tbWl0IGxvZy4NCj4gPiA+IA0KPiA+IA0KPiA+IFRoZXNlIGFy
-ZSBzaGFyZWQgd2l0aCB0aGUgdGVzdCBjb2RlLg0KPiANCj4gQWgsIG15IGJhZCwgSSBkaWQg
-Z3JlcCBhbmQgc29tZWhvdyBtaXNzZWQgdGVzdHMvcng4OTAwLXRlc3QuYy4NCj4gDQo+IA0K
-PiA+IA0KPiA+ID4gDQo+ID4gPiA+IEBAIC0wLDAgKzEsMTM5IEBADQo+ID4gPiA+ICsvKg0K
-PiA+ID4gPiArICogRXBzb24gUlg4OTAwU0EvQ0UgUmVhbHRpbWUgQ2xvY2sgTW9kdWxlDQo+
-ID4gPiA+ICsgKg0KPiA+ID4gPiArICogQ29weXJpZ2h0IChjKSAyMDE2IElCTSBDb3Jwb3Jh
-dGlvbg0KPiA+ID4gPiArICogQXV0aG9yczoNCj4gPiA+ID4gKyAqwqDCoEFsYXN0YWlyIEQn
-U2lsdmEgPGFsYXN0YWlyQGQtc2lsdmEub3JnPg0KPiA+ID4gPiArICoNCj4gPiA+ID4gKyAq
-IFRoaXMgY29kZSBpcyBsaWNlbnNlZCB1bmRlciB0aGUgR1BMIHZlcnNpb24gMiBvcg0KPiA+
-ID4gPiBsYXRlci7CoMKgU2VlDQo+ID4gPiA+ICsgKiB0aGUgQ09QWUlORyBmaWxlIGluIHRo
-ZSB0b3AtbGV2ZWwgZGlyZWN0b3J5Lg0KPiA+ID4gPiArICoNCj4gPiA+ID4gKyAqIERhdGFz
-aGVldCBhdmFpbGFibGUgYXQ6DQo+ID4gPiA+ICsgKsKgwqBodHRwczovL3N1cHBvcnQuZXBz
-b24uYml6L3RkL2FwaS9kb2NfY2hlY2sucGhwP2RsPWFwcF9SWDg5DQo+ID4gPiA+IDAwQ0UN
-Cj4gPiA+ID4gJmxhbmc9ZW4NCj4gPiA+ID4gKyAqDQo+ID4gPiA+ICsgKi8NCj4gPiA+ID4g
-Kw0KPiA+ID4gPiArI2lmbmRlZiBSWDg5MDBfUkVHU19IDQo+ID4gPiA+ICsjZGVmaW5lIFJY
-ODkwMF9SRUdTX0gNCj4gPiA+ID4gKw0KPiA+ID4gPiArI2luY2x1ZGUgInFlbXUvYml0b3Bz
-LmgiDQo+ID4gPiA+ICsNCj4gPiA+ID4gKyNkZWZpbmUgUlg4OTAwX05WUkFNX1NJWkUgMHgy
-MA0KPiA+ID4gPiArDQo+ID4gPiA+ICt0eXBlZGVmIGVudW0gUlg4OTAwQWRkcmVzc2VzIHsN
-Cj4gPiA+ID4gK8KgwqDCoMKgU0VDT05EUyA9IDB4MDAsDQo+ID4gPiA+ICvCoMKgwqDCoE1J
-TlVURVMgPSAweDAxLA0KPiA+ID4gPiArwqDCoMKgwqBIT1VSUyA9IDB4MDIsDQo+ID4gPiA+
-ICvCoMKgwqDCoFdFRUtEQVkgPSAweDAzLA0KPiA+ID4gPiArwqDCoMKgwqBEQVkgPSAweDA0
-LA0KPiA+ID4gPiArwqDCoMKgwqBNT05USCA9IDB4MDUsDQo+ID4gPiA+ICvCoMKgwqDCoFlF
-QVIgPSAweDA2LA0KPiA+ID4gPiArwqDCoMKgwqBSQU0gPSAweDA3LA0KPiA+ID4gPiArwqDC
-oMKgwqBBTEFSTV9NSU5VVEUgPSAweDA4LA0KPiA+ID4gPiArwqDCoMKgwqBBTEFSTV9IT1VS
-ID0gMHgwOSwNCj4gPiA+ID4gK8KgwqDCoMKgQUxBUk1fV0VFS19EQVkgPSAweDBBLA0KPiA+
-ID4gPiArwqDCoMKgwqBUSU1FUl9DT1VOVEVSXzAgPSAweDBCLA0KPiA+ID4gPiArwqDCoMKg
-wqBUSU1FUl9DT1VOVEVSXzEgPSAweDBDLA0KPiA+ID4gPiArwqDCoMKgwqBFWFRFTlNJT05f
-UkVHSVNURVIgPSAweDBELA0KPiA+ID4gPiArwqDCoMKgwqBGTEFHX1JFR0lTVEVSID0gMFgw
-RSwNCj4gPiA+ID4gK8KgwqDCoMKgQ09OVFJPTF9SRUdJU1RFUiA9IDBYMEYsDQo+ID4gPiA+
-ICvCoMKgwqDCoEVYVF9TRUNPTkRTID0gMHgwMTAsIC8qIEFsaWFzIG9mIFNFQ09ORFMgKi8N
-Cj4gPiA+ID4gK8KgwqDCoMKgRVhUX01JTlVURVMgPSAweDExLCAvKiBBbGlhcyBvZiBNSU5V
-VEVTICovDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9IT1VSUyA9IDB4MTIsIC8qIEFsaWFzIG9m
-IEhPVVJTICovDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9XRUVLREFZID0gMHgxMywgLyogQWxp
-YXMgb2YgV0VFS0RBWSAqLw0KPiA+ID4gPiArwqDCoMKgwqBFWFRfREFZID0gMHgxNCwgLyog
-QWxpYXMgb2YgREFZICovDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9NT05USCA9IDB4MTUsIC8q
-IEFsaWFzIG9mIE1PTlRIICovDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9ZRUFSID0gMHgxNiwg
-LyogQWxpYXMgb2YgWUVBUiAqLw0KPiA+ID4gPiArwqDCoMKgwqBURU1QRVJBVFVSRSA9IDB4
-MTcsDQo+ID4gPiA+ICvCoMKgwqDCoEJBQ0tVUF9GVU5DVElPTiA9IDB4MTgsDQo+ID4gPiA+
-ICvCoMKgwqDCoE5PX1VTRV8xID0gMHgxOSwNCj4gPiA+ID4gK8KgwqDCoMKgTk9fVVNFXzIg
-PSAweDFBLA0KPiA+ID4gPiArwqDCoMKgwqBFWFRfVElNRVJfQ09VTlRFUl8wID0gMHgxQiwg
-LyogQWxpYXMgb2YgVElNRVJfQ09VTlRFUl8wICovDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9U
-SU1FUl9DT1VOVEVSXzEgPSAweDFDLCAvKiBBbGlhcyBvZiBUSU1FUl9DT1VOVEVSXzEgKi8N
-Cj4gPiA+ID4gK8KgwqDCoMKgRVhUX0VYVEVOU0lPTl9SRUdJU1RFUiA9IDB4MUQsIC8qIEFs
-aWFzIG9mDQo+ID4gPiA+IEVYVEVOU0lPTl9SRUdJU1RFUg0KPiA+ID4gPiAqLw0KPiA+ID4g
-PiArwqDCoMKgwqBFWFRfRkxBR19SRUdJU1RFUiA9IDBYMUUsIC8qIEFsaWFzIG9mIEZMQUdf
-UkVHSVNURVIgKi8NCj4gPiA+ID4gK8KgwqDCoMKgRVhUX0NPTlRST0xfUkVHSVNURVIgPSAw
-WDFGIC8qIEFsaWFzIG9mIENPTlRST0xfUkVHSVNURVINCj4gPiA+ID4gKi8NCj4gPiA+ID4g
-K30gUlg4OTAwQWRkcmVzc2VzOw0KPiA+ID4gPiArDQo+ID4gPiA+ICt0eXBlZGVmIGVudW0g
-RXh0UmVnQml0cyB7DQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9SRUdfVFNFTDAgPSAwLA0KPiA+
-ID4gPiArwqDCoMKgwqBFWFRfUkVHX1RTRUwxID0gMSwNCj4gPiA+ID4gK8KgwqDCoMKgRVhU
-X1JFR19GU0VMMCA9IDIsDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9SRUdfRlNFTDEgPSAzLA0K
-PiA+ID4gPiArwqDCoMKgwqBFWFRfUkVHX1RFID0gNCwNCj4gPiA+ID4gK8KgwqDCoMKgRVhU
-X1JFR19VU0VMID0gNSwNCj4gPiA+ID4gK8KgwqDCoMKgRVhUX1JFR19XQURBID0gNiwNCj4g
-PiA+ID4gK8KgwqDCoMKgRVhUX1JFR19URVNUID0gNw0KPiA+ID4gPiArfSBFeHRSZWdCaXRz
-Ow0KPiA+ID4gPiArDQo+ID4gPiA+ICt0eXBlZGVmIGVudW0gRXh0UmVnTWFza3Mgew0KPiA+
-ID4gPiArwqDCoMKgwqBFWFRfTUFTS19UU0VMMCA9IEJJVCgwKSwNCj4gPiA+ID4gK8KgwqDC
-oMKgRVhUX01BU0tfVFNFTDEgPSBCSVQoMSksDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9NQVNL
-X0ZTRUwwID0gQklUKDIpLA0KPiA+ID4gPiArwqDCoMKgwqBFWFRfTUFTS19GU0VMMSA9IEJJ
-VCgzKSwNCj4gPiA+ID4gK8KgwqDCoMKgRVhUX01BU0tfVEUgPSBCSVQoNCksDQo+ID4gPiA+
-ICvCoMKgwqDCoEVYVF9NQVNLX1VTRUwgPSBCSVQoNSksDQo+ID4gPiA+ICvCoMKgwqDCoEVY
-VF9NQVNLX1dBREEgPSBCSVQoNiksDQo+ID4gPiA+ICvCoMKgwqDCoEVYVF9NQVNLX1RFU1Qg
-PSBCSVQoNykNCj4gPiA+ID4gK30gRXh0UmVnTWFza3M7DQo+ID4gPiA+ICsNCj4gPiA+ID4g
-K3R5cGVkZWYgZW51bSBDdHJsUmVnQml0cyB7DQo+ID4gPiA+ICvCoMKgwqDCoENUUkxfUkVH
-X1JFU0VUID0gMCwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9SRUdfV1AwID0gMSwNCj4gPiA+
-ID4gK8KgwqDCoMKgQ1RSTF9SRUdfV1AxID0gMiwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9S
-RUdfQUlFID0gMywNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9SRUdfVElFID0gNCwNCj4gPiA+
-ID4gK8KgwqDCoMKgQ1RSTF9SRUdfVUlFID0gNSwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9S
-RUdfQ1NFTDAgPSA2LA0KPiA+ID4gPiArwqDCoMKgwqBDVFJMX1JFR19DU0VMMSA9IDcNCj4g
-PiA+ID4gK30gQ3RybFJlZ0JpdHM7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK3R5cGVkZWYgZW51
-bSBDdHJsUmVnTWFzayB7DQo+ID4gPiA+ICvCoMKgwqDCoENUUkxfTUFTS19SRVNFVCA9IEJJ
-VCgwKSwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9NQVNLX1dQMCA9IEJJVCgxKSwNCj4gPiA+
-ID4gK8KgwqDCoMKgQ1RSTF9NQVNLX1dQMSA9IEJJVCgyKSwNCj4gPiA+ID4gK8KgwqDCoMKg
-Q1RSTF9NQVNLX0FJRSA9IEJJVCgzKSwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9NQVNLX1RJ
-RSA9IEJJVCg0KSwNCj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9NQVNLX1VJRSA9IEJJVCg1KSwN
-Cj4gPiA+ID4gK8KgwqDCoMKgQ1RSTF9NQVNLX0NTRUwwID0gQklUKDYpLA0KPiA+ID4gPiAr
-wqDCoMKgwqBDVFJMX01BU0tfQ1NFTDEgPSBCSVQoNykNCj4gPiA+ID4gK30gQ3RybFJlZ01h
-c2s7DQo+ID4gPiA+ICsNCj4gPiA+ID4gK3R5cGVkZWYgZW51bSBGbGFnUmVnQml0cyB7DQo+
-ID4gPiA+ICvCoMKgwqDCoEZMQUdfUkVHX1ZERVQgPSAwLA0KPiA+ID4gPiArwqDCoMKgwqBG
-TEFHX1JFR19WTEYgPSAxLA0KPiA+ID4gPiArwqDCoMKgwqBGTEFHX1JFR19VTlVTRURfMiA9
-IDIsDQo+ID4gPiA+ICvCoMKgwqDCoEZMQUdfUkVHX0FGID0gMywNCj4gPiA+ID4gK8KgwqDC
-oMKgRkxBR19SRUdfVEYgPSA0LA0KPiA+ID4gPiArwqDCoMKgwqBGTEFHX1JFR19VRiA9IDUs
-DQo+ID4gPiA+ICvCoMKgwqDCoEZMQUdfUkVHX1VOVVNFRF82ID0gNiwNCj4gPiA+ID4gK8Kg
-wqDCoMKgRkxBR19SRUdfVU5VU0VEXzcgPSA3DQo+ID4gPiA+ICt9IEZsYWdSZWdCaXRzOw0K
-PiA+ID4gPiArDQo+ID4gPiA+ICsjZGVmaW5lIFJYODkwMF9JTlRFUlJVUFRfU09VUkNFUyA2
-DQo+ID4gPiA+ICt0eXBlZGVmIGVudW0gRmxhZ1JlZ01hc2sgew0KPiA+ID4gPiArwqDCoMKg
-wqBGTEFHX01BU0tfVkRFVCA9IEJJVCgwKSwNCj4gPiA+ID4gK8KgwqDCoMKgRkxBR19NQVNL
-X1ZMRiA9IEJJVCgxKSwNCj4gPiA+ID4gK8KgwqDCoMKgRkxBR19NQVNLX1VOVVNFRF8yID0g
-QklUKDIpLA0KPiA+ID4gPiArwqDCoMKgwqBGTEFHX01BU0tfQUYgPSBCSVQoMyksDQo+ID4g
-PiA+ICvCoMKgwqDCoEZMQUdfTUFTS19URiA9IEJJVCg0KSwNCj4gPiA+ID4gK8KgwqDCoMKg
-RkxBR19NQVNLX1VGID0gQklUKDUpLA0KPiA+ID4gPiArwqDCoMKgwqBGTEFHX01BU0tfVU5V
-U0VEXzYgPSBCSVQoNiksDQo+ID4gPiA+ICvCoMKgwqDCoEZMQUdfTUFTS19VTlVTRURfNyA9
-IEJJVCg3KQ0KPiA+ID4gPiArfSBGbGFnUmVnTWFzazsNCj4gPiA+ID4gKw0KPiA+ID4gPiAr
-dHlwZWRlZiBlbnVtIEJhY2t1cFJlZ0JpdHMgew0KPiA+ID4gPiArwqDCoMKgwqBCQUNLVVBf
-UkVHX0JLU01QMCA9IDAsDQo+ID4gPiA+ICvCoMKgwqDCoEJBQ0tVUF9SRUdfQktTTVAxID0g
-MSwNCj4gPiA+ID4gK8KgwqDCoMKgQkFDS1VQX1JFR19TV09GRiA9IDIsDQo+ID4gPiA+ICvC
-oMKgwqDCoEJBQ0tVUF9SRUdfVkRFVE9GRiA9IDMNCj4gPiA+ID4gK30gQmFja3VwUmVnQml0
-czsNCj4gPiA+ID4gKw0KPiA+ID4gPiArdHlwZWRlZiBlbnVtIEJhY2t1cFJlZ01hc2sgew0K
-PiA+ID4gPiArwqDCoMKgwqBCQUNLVVBfTUFTS19CS1NNUDAgPSBCSVQoMCksDQo+ID4gPiA+
-ICvCoMKgwqDCoEJBQ0tVUF9NQVNLX0JLU01QMSA9IEJJVCgxKSwNCj4gPiA+ID4gK8KgwqDC
-oMKgQkFDS1VQX01BU0tfU1dPRkYgPSBCSVQoMiksDQo+ID4gPiA+ICvCoMKgwqDCoEJBQ0tV
-UF9NQVNLX1ZERVRPRkYgPSBCSVQoMykNCj4gPiA+ID4gK30gQmFja3VwUmVnTWFzazsNCj4g
-PiA+ID4gKw0KPiA+ID4gPiArI2VuZGlmDQo+ID4gPiA+IGRpZmYgLS1naXQgYS9ody90aW1l
-ci90cmFjZS1ldmVudHMgYi9ody90aW1lci90cmFjZS1ldmVudHMNCj4gPiA+ID4gaW5kZXgg
-MzQ5NWM0MS4uMDU3ZTQxNCAxMDA2NDQNCj4gPiA+ID4gLS0tIGEvaHcvdGltZXIvdHJhY2Ut
-ZXZlbnRzDQo+ID4gPiA+ICsrKyBiL2h3L3RpbWVyL3RyYWNlLWV2ZW50cw0KPiA+ID4gPiBA
-QCAtNDksMyArNDksMzQgQEAgYXNwZWVkX3RpbWVyX2N0cmxfcHVsc2VfZW5hYmxlKHVpbnQ4
-X3QgaSwNCj4gPiA+ID4gYm9vbA0KPiA+ID4gPiBlbmFibGUpICJUaW1lciAlIiBQUkl1OCAi
-OiAlZCINCj4gPiA+ID4gwqBhc3BlZWRfdGltZXJfc2V0X2N0cmwyKHVpbnQzMl90IHZhbHVl
-KSAiVmFsdWU6IDB4JSIgUFJJeDMyDQo+ID4gPiA+IMKgYXNwZWVkX3RpbWVyX3NldF92YWx1
-ZShpbnQgdGltZXIsIGludCByZWcsIHVpbnQzMl90IHZhbHVlKQ0KPiA+ID4gPiAiVGltZXIN
-Cj4gPiA+ID4gJWQgcmVnaXN0ZXIgJWQ6IDB4JSIgUFJJeDMyDQo+ID4gPiA+IMKgYXNwZWVk
-X3RpbWVyX3JlYWQodWludDY0X3Qgb2Zmc2V0LCB1bnNpZ25lZCBzaXplLCB1aW50NjRfdA0K
-PiA+ID4gPiB2YWx1ZSkNCj4gPiA+ID4gIkZyb20gMHglIiBQUkl4NjQgIjogb2Ygc2l6ZSAl
-dTogMHglIiBQUkl4NjQNCj4gPiA+ID4gKw0KPiA+ID4gPiArIyBody90aW1lci9yeDg5MDAu
-Yw0KPiA+ID4gPiArcng4OTAwX2NhcHR1cmVfY3VycmVudF90aW1lKGludCBob3VyLCBpbnQg
-bWludXRlLCBpbnQgc2Vjb25kLA0KPiA+ID4gPiBpbnQNCj4gPiA+ID4gd2Vla2RheSwgaW50
-IG1kYXksIGludCBtb250aCwgaW50IHllYXIsIGludCByYXdfaG91cnMsIGludA0KPiA+ID4g
-PiByYXdfbWludXRlcywgaW50IHJhd19zZWNvbmRzLCBpbnQgcmF3X3dlZWtkYXksIGludCBy
-YXdfZGF5LCBpbnQNCj4gPiA+ID4gcmF3X21vbnRoLCBpbnQgcmF3X3llYXIpICJVcGRhdGUg
-Y3VycmVudCB0aW1lIHRvICUwMmQ6JTAyZDolMDJkDQo+ID4gPiA+ICVkDQo+ID4gPiA+ICVk
-LyVkLyVkICgweCUwMnglMDJ4JTAyeCUwMnglMDJ4JTAyeCUwMngpIg0KPiA+ID4gPiArcng4
-OTAwX3JlZ3B0cl91cGRhdGUodWludDMyX3QgcHRyKSAiT3BlcmF0aW5nIG9uIHJlZ2lzdGVy
-DQo+ID4gPiA+IDB4JTAyeCINCj4gPiA+ID4gK3J4ODkwMF9yZWdwdHJfb3ZlcmZsb3codm9p
-ZCkgIlJlZ2lzdGVyIHBvaW50ZXIgaGFzIG92ZXJmbG93ZWQsDQo+ID4gPiA+IHdyYXBwaW5n
-IHRvIDAiDQo+ID4gPiA+ICtyeDg5MDBfZXZlbnRfd2Vla2RheShpbnQgd2Vla2RheSwgaW50
-IHdlZWttYXNrLCBpbnQNCj4gPiA+ID4gd2Vla2RheV9vZmZzZXQpICJTZXQgd2Vla2RheSB0
-byAlZCAoMHglMDJ4KSwgd2RheV9vZmZzZXQ9JWQiDQo+ID4gPiA+ICtyeDg5MDBfcmVhZF9y
-ZWdpc3RlcihpbnQgYWRkcmVzcywgaW50IHZhbCkgIlJlYWQgcmVnaXN0ZXIgMHgleA0KPiA+
-ID4gPiA9DQo+ID4gPiA+IDB4JXgiDQo+ID4gPiA+ICtyeDg5MDBfc2V0X2ZvdXQoaW50IGh6
-KSAiU2V0dGluZyBmb3V0IHRvICVkSHoiDQo+ID4gPiA+ICtyeDg5MDBfc2V0X2NvdW50ZG93
-bl90aW1lcihpbnQgaHopICJTZXR0aW5nIGNvdW50ZG93biB0aW1lciB0bw0KPiA+ID4gPiAl
-ZA0KPiA+ID4gPiBIeiINCj4gPiA+ID4gK3J4ODkwMF9zZXRfY291bnRkb3duX3RpbWVyX3Bl
-cl9taW51dGUodm9pZCkgIlNldHRpbmcgY291bnRkb3duDQo+ID4gPiA+IHRpbWVyIHRvIHBl
-ciBtaW51dGUgdXBkYXRlcyINCj4gPiA+ID4gK3J4ODkwMF9lbmFibGVfdXBkYXRlX3RpbWVy
-KHZvaWQpICJFbmFibGluZyB1cGRhdGUgdGltZXIiDQo+ID4gPiA+ICtyeDg5MDBfZW5hYmxl
-X2FsYXJtKHZvaWQpICJFbmFibGluZyBhbGFybSINCj4gPiA+ID4gK3J4ODkwMF90cmlnZ2Vy
-X2FsYXJtKHZvaWQpICJUcmlnZ2VyaW5nIGFsYXJtIg0KPiA+ID4gPiArcng4OTAwX3RpY2so
-dm9pZCkgIlRpY2siDQo+ID4gPiANCj4gPiA+IFdoZW4gdHJhY2VzIGFyZSBwcmludGVkLCB0
-aGUgd2hvbGUgbmFtZSBpcyBwcmludGVkIGFzIHdlbGwgc28geW91DQo+ID4gPiBjYW4NCj4g
-PiA+IGVhc2lseSBkcm9wICJUaWNrIiBhbmQganVzdCBtYWtlIGl0IGFuIGVtcHR5IHN0cmlu
-ZzoNCj4gPiA+IA0KPiA+ID4gK3J4ODkwMF90aWNrKHZvaWQpICIiDQo+ID4gPiANCj4gPiA+
-IFRoaXMgY2FuIGJlIGRvbmUgdG8gbW9yZSB0aGFuIGEgaGFsZiBvZiB0cmFjZXMuDQo+ID4g
-DQo+ID4gVGhpcyB3b3VsZCBtYWtlIGl0IGhhcmRlciB0byBpbnRlcnByZXQsIGFzIG9uZSB3
-b3VsZCB0aGVuIG5vdCBiZQ0KPiA+IGFibGUNCj4gPiB0byBza2ltIGRvd24gdGhlIG1lc3Nh
-Z2UgY29sdW1uLCBidXQgd291bGQgaW5zdGVhZCBoYXZlIHRvIGp1bXANCj4gPiBiZXR3ZWVu
-DQo+ID4gdGhlIGxvY2F0aW9uICYgbWVzc2FnZSB0byBkZXRlcm1pbmUgd2hhdCBoYXBwZW5l
-ZC4NCj4gDQo+IEp1bXAgYmV0d2VlbiBjb2x1bW5zPyBUaGVzZSBhcmUgcHJpbnRlZCBpbiBz
-dGRlcnIgbGlrZToNCj4gDQo+IDI0OTQ1QDE0ODA2NDMxOTUuMzQyMzQ1OnNwYXByX3BjaV9t
-c2lfc2V0dXAgZGV2Im5lYy11c2IteGhjaSIgdmVjdG9yDQo+IDE1LA0KPiBhZGRyPTQwMDAw
-MDAwMDAwDQo+IDI0OTQ1QDE0ODA2NDMxOTUuMzQyMzUxOnNwYXByX3BjaV9ydGFzX2libV9j
-aGFuZ2VfbXNpIGNmZ2FkZHIgMCBmdW5jDQo+IDQsDQo+IHJlcXVlc3RlZCAxNiwgZmlyc3Qg
-aXJxIDQxMDQNCj4gDQo+IEkgY29uZmlndXJlIHRyYWNlcyBhczoNCj4gLS1lbmFibGUtdHJh
-Y2UtYmFja2VuZD1sb2cNCj4gDQo+IG9yIChmb3Igb2xkZXIgUUVNVXMpDQo+IC0tZW5hYmxl
-LXRyYWNlLWJhY2tlbmQ9c3RkZXJyDQo+IA0KT2sNCg0KPiANCj4gPiA+ID4gK3J4ODkwMF9m
-aXJlX2ludGVycnVwdCh2b2lkKSAiUHVsc2luZyBpbnRlcnJ1cHQiDQo+ID4gPiA+ICtyeDg5
-MDBfZGlzYWJsZV90aW1lcih2b2lkKSAiRGlzYWJsaW5nIHRpbWVyIg0KPiA+ID4gPiArcng4
-OTAwX2VuYWJsZV90aW1lcih2b2lkKSAiRW5hYmxpbmcgdGltZXIiDQo+ID4gPiA+ICtyeDg5
-MDBfZGlzYWJsZV9mb3V0KHZvaWQpICJEaXNhYmxpbmcgZm91dCINCj4gPiA+ID4gK3J4ODkw
-MF9lbmFibGVfZm91dCh2b2lkKSAiRW5hYmxpbmcgZm91dCINCj4gPiA+ID4gK3J4ODkwMF9m
-b3V0X3RvZ2dsZSh2b2lkKSAiVG9nZ2xpbmcgZm91dCINCj4gPiA+ID4gK3J4ODkwMF9kaXNh
-YmxlX2NvdW50ZG93bih2b2lkKSAiRGlzYWJsaW5nIGNvdW50ZG93biB0aW1lciINCj4gPiA+
-ID4gK3J4ODkwMF9lbmFibGVfY291bnRkb3duKHZvaWQpICJFbmFibGluZyBjb3VudGRvd24g
-dGltZXIiDQo+ID4gPiA+ICtyeDg5MDBfY291bnRkb3duX3RpY2soaW50IGNvdW50KSAiQ291
-bnRkb3duIHRpY2ssIGNvdW50PSVkIg0KPiA+ID4gPiArcng4OTAwX2NvdW50ZG93bl9lbGFw
-c2VkKHZvaWQpICJDb3VudGRvd24gZWxhcHNlZCINCj4gPiA+ID4gK3J4ODkwMF9pMmNfZGF0
-YV9yZWNlaXZlKHVpbnQ4X3QgZGF0YSkgIlJlY2VpdmVkIEkyQyBkYXRhDQo+ID4gPiA+IDB4
-JTAyeCINCj4gPiA+ID4gK3J4ODkwMF9zZXRfcmVnaXN0ZXIodWludDMyX3QgYWRkciwgdWlu
-dDhfdCBkYXRhKSAiU2V0IGRhdGENCj4gPiA+ID4gMHglMDJ4PTB4JTAyeCINCj4gPiA+ID4g
-K3J4ODkwMF9yZWFkX3RlbXBlcmF0dXJlKHVpbnQ4X3QgcmF3LCBkb3VibGUgdmFsKSAiUmVh
-ZA0KPiA+ID4gPiB0ZW1wZXJhdHVyZQ0KPiA+ID4gPiBwcm9wZXJ0eSwgMHgleCA9ICVmwrBD
-Ig0KPiA+ID4gDQo+ID4gPiBDYW4gYmUganVzdCAiMHgleCAlZsKwQyINCj4gPiA+IA0KPiA+
-IA0KPiA+IEkgZG9uJ3Qgc2VlIHRoYXQgYXMgYW4gaW1wcm92ZW1lbnQuDQo+IA0KPiBXb3Jk
-cyAicmVhZCIgYW5kICJ0ZW1wZXJhdHVyZSIgZG8gbm90IGFwcGVhciB0d2ljZSwgdGhlIHdv
-cmQNCj4gInByb3BlcnR5IiBpcw0KPiB1c2VsZXNzIGhlcmUsIHRoZSBsaW5lIGdldHMgc2hv
-cnRlciB3aGljaCBtYXR0ZXJzIHdoZW4geW91IHJ1biBtYW55DQo+IHRlcm1pbmFscyBuZXh0
-IHRvIGVhY2ggb3RoZXIuIFRoaXMgaXMgYW4gaW1wcm92ZW1lbnQuDQoNCkR1ZSB0byB0aGUg
-d3JhcHBpbmcsIGFsbCBJIHNhdyB3YXMgdGhhdCB0aGUgJz0nIHdhcyBtaXNzaW5nLCBPay4N
-Cg0KPiANCj4gTG9vayBhdCBibG9jay90cmFjZS1ldmVudHMgb3IgLi90cmFjZS1ldmVudHMg
-b3IgbmV0L3RyYWNlLWV2ZW50cyAtDQo+IHBlb3BsZQ0KPiB1c3VhbGx5IHRyeSBhdm9pZGlu
-ZyBkdXBsaWNhdGlvbnMuDQo+IA0KPiANCj4gPiANCj4gPiA+IA0KPiA+ID4gPiArcng4OTAw
-X3NldF90ZW1wZXJhdHVyZSh1aW50OF90IHJhdywgZG91YmxlIHZhbCkgIlNldA0KPiA+ID4g
-PiB0ZW1wZXJhdHVyZQ0KPiA+ID4gPiBwcm9wZXJ0eSwgMHgleCA9ICVmwrBDIg0KPiA+ID4g
-PiArcng4OTAwX3Jlc2V0KHZvaWQpICJSZXNldCINCj4gPiA+ID4gK3J4ODkwMF9waW5fbmFt
-ZShjb25zdCBjaGFyICp0eXBlLCBjb25zdCBjaGFyICpuYW1lKSAiJyVzJyBwaW4NCj4gPiA+
-ID4gaXMNCj4gPiA+ID4gJyVzJyINCj4gPiA+ID4gK3J4ODkwMF9zZXRfdm9sdGFnZShkb3Vi
-bGUgdm9sdGFnZSkgIkRldmljZSB2b2x0YWdlIHNldCB0byAlZiINCj4gPiA+ID4gDQo+ID4g
-DQo+ID4gVGhhbmtzIGZvciB0aGUgcmV2aWV3LCBpdCdzIHF1aXRlIGRldGFpbGVkICh3aGlj
-aCBpcyBncmVhdCkuIEkndmUNCj4gPiBhY3Rpb25lZCB0aGUgbm9uLWNvbnRlbmRlZCByZWNv
-bW1lbmRhdGlvbnMgYW5kIHdpbGwgcmVzdWJtaXQuDQo+IA0KPiANCj4gDQoNCg==
+On 02/12/16 14:30, Alastair D'Silva wrote:
+> On Fri, 2016-12-02 at 13:48 +1100, Alexey Kardashevskiy wrote:
+>> On 02/12/16 11:19, Alastair D'Silva wrote:
+>>> On Thu, 2016-12-01 at 16:53 +1100, Alexey Kardashevskiy wrote:
+>>>
+>>>> On 30/11/16 16:36, Alastair D'Silva wrote:
+>>>>> From: Alastair D'Silva <alastair@d-silva.org>
+>>>>>
+>>>>> This patch adds support for the Epson RX8900 I2C RTC.
+>>>>>
+>>>>> The following chip features are implemented:
+>>>>>  - RTC (wallclock based, ptimer 10x oversampling to pick up
+>>>>> 	wallclock transitions)
+>>>>>  - Time update interrupt (per second/minute, wallclock based)
+>>>>>  - Alarms (wallclock based)
+>>>>>  - Temperature (set via a property)
+>>>>>  - Countdown timer (emulated clock via ptimer)
+>>>>>  - FOUT via GPIO (emulated clock via ptimer)
+>>>>>
+>>>>> The following chip features are unimplemented:
+>>>>>  - Low voltage detection
+>>>>>  - i2c timeout
+>>>>>
+>>>>> The implementation exports the following named GPIOs:
+>>>>> rx8900-interrupt-out
+>>>>> rx8900-fout-enable
+>>>>> rx8900-fout
+>>>>>
+>>>>> Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
+>>>>> Signed-off-by: Chris Smart <chris@distroguy.com>
+>>>>> ---
+>>>>>  default-configs/arm-softmmu.mak |   1 +
+>>>>>  hw/timer/Makefile.objs          |   2 +
+>>>>>  hw/timer/rx8900.c               | 890
+>>>>> ++++++++++++++++++++++++++++++++++++++++
+>>>>>  hw/timer/rx8900_regs.h          | 139 +++++++
+>>>>>  hw/timer/trace-events           |  31 ++
+>>>>>  5 files changed, 1063 insertions(+)
+>>>>>  create mode 100644 hw/timer/rx8900.c
+>>>>>  create mode 100644 hw/timer/rx8900_regs.h
+>>>>>
+>>>>> diff --git a/default-configs/arm-softmmu.mak b/default-
+>>>>> configs/arm-
+>>>>> softmmu.mak
+>>>>> index 6de3e16..adb600e 100644
+>>>>> --- a/default-configs/arm-softmmu.mak
+>>>>> +++ b/default-configs/arm-softmmu.mak
+>>>>> @@ -29,6 +29,7 @@ CONFIG_SMC91C111=y
+>>>>>  CONFIG_ALLWINNER_EMAC=y
+>>>>>  CONFIG_IMX_FEC=y
+>>>>>  CONFIG_DS1338=y
+>>>>> +CONFIG_RX8900=y
+>>>>>  CONFIG_PFLASH_CFI01=y
+>>>>>  CONFIG_PFLASH_CFI02=y
+>>>>>  CONFIG_MICRODRIVE=y
+>>>>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>>>>> index 7ba8c23..fa028ac 100644
+>>>>> --- a/hw/timer/Makefile.objs
+>>>>> +++ b/hw/timer/Makefile.objs
+>>>>> @@ -3,6 +3,7 @@ common-obj-$(CONFIG_ARM_MPTIMER) +=
+>>>>> arm_mptimer.o
+>>>>>  common-obj-$(CONFIG_A9_GTIMER) += a9gtimer.o
+>>>>>  common-obj-$(CONFIG_CADENCE) += cadence_ttc.o
+>>>>>  common-obj-$(CONFIG_DS1338) += ds1338.o
+>>>>> +common-obj-$(CONFIG_RX8900) += rx8900.o
+>>>>>  common-obj-$(CONFIG_HPET) += hpet.o
+>>>>>  common-obj-$(CONFIG_I8254) += i8254_common.o i8254.o
+>>>>>  common-obj-$(CONFIG_M48T59) += m48t59.o
+>>>>> @@ -17,6 +18,7 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
+>>>>>  common-obj-$(CONFIG_IMX) += imx_gpt.o
+>>>>>  common-obj-$(CONFIG_LM32) += lm32_timer.o
+>>>>>  common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+>>>>> +common-obj-$(CONFIG_RX8900) += rx8900.o
+>>>>>  
+>>>>>  obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+>>>>>  obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+>>>>> diff --git a/hw/timer/rx8900.c b/hw/timer/rx8900.c
+>>>>> new file mode 100644
+>>>>> index 0000000..e634819
+>>>>> --- /dev/null
+>>>>> +++ b/hw/timer/rx8900.c
+>>>>> @@ -0,0 +1,890 @@
+>>>>> +/*
+>>>>> + * Epson RX8900SA/CE Realtime Clock Module
+>>>>> + *
+>>>>> + * Copyright (c) 2016 IBM Corporation
+>>>>> + * Authors:
+>>>>> + *  Alastair D'Silva <alastair@d-silva.org>
+>>>>> + *  Chris Smart <chris@distroguy.com>
+>>>>> + *
+>>>>> + * This code is licensed under the GPL version 2 or
+>>>>> later.  See
+>>>>> + * the COPYING file in the top-level directory.
+>>>>> + *
+>>>>> + * Datasheet available at:
+>>>>> + *  https://support.epson.biz/td/api/doc_check.php?dl=app_RX89
+>>>>> 00CE
+>>>>> &lang=en
+>>>>> + *
+>>>>> + * Not implemented:
+>>>>> + *  Implement i2c timeout
+>>>>> + */
+>>>>> +
+>>>>> +#include "qemu/osdep.h"
+>>>>> +#include "qemu-common.h"
+>>>>> +#include "hw/i2c/i2c.h"
+>>>>> +#include "hw/timer/rx8900_regs.h"
+>>>>> +#include "hw/ptimer.h"
+>>>>> +#include "qemu/main-loop.h"
+>>>>> +#include "qemu/bcd.h"
+>>>>> +#include "qemu/log.h"
+>>>>> +#include "qapi/error.h"
+>>>>> +#include "qapi/visitor.h"
+>>>>> +#include "trace.h"
+>>>>> +
+>>>>> + #include <sys/time.h>
+>>>>> +
+>>>>> + #include <execinfo.h>
+>>>>
+>>>> Not needed empty lines and spaces before "#include".
+>>>>
+>>>
+>>> Ok, these were leftovers and don't belong there anyway.
+>>>
+>>>>
+>>>>> +
+>>>>> +#define TYPE_RX8900 "rx8900"
+>>>>> +#define RX8900(obj) OBJECT_CHECK(RX8900State, (obj),
+>>>>> TYPE_RX8900)
+>>>>> +
+>>>>> +typedef struct RX8900State {
+>>>>> +    I2CSlave parent_obj;
+>>>>> +
+>>>>> +    ptimer_state *sec_timer; /* triggered once per second */
+>>>>> +    ptimer_state *fout_timer;
+>>>>> +    ptimer_state *countdown_timer;
+>>>>> +    bool fout;
+>>>>
+>>>> Is this "FOE" on the chip?
+>>>>
+>>>
+>>> No, it tracks the state of the fout waveform. I'll rename it to
+>>> fout_state.
+>>
+>> Since it is bool, fout_enabled makes more sense.
+>>
+> 
+> No it does't, it's not an enabled control, but the phase of the
+> waveform.
+
+I do not mind that "enabled" may be bad name but you are not helping :)
+
+A "phase" can be false or true? What does "true" phase of a waveform mean?
+
+I cannot find neither "phase" nor "waveform" words in the spec.
+
+
+> 
+>>
+>>>
+>>>>
+>>>>> +    int64_t offset;
+>>>>> +    uint8_t weekday; /* Saved for deferred offset calculation,
+>>>>> 0-6 
+>>>>> */
+>>>>> +    uint8_t wday_offset;
+>>>>> +    uint8_t nvram[RX8900_NVRAM_SIZE];
+>>>>> +    int32_t ptr; /* Wrapped to stay within RX8900_NVRAM_SIZE
+>>>>> */
+>>>>
+>>>> It is rather "nvram_offset" than some pointer.
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +    bool addr_byte;
+>>>>> +    uint8_t last_interrupt_seconds;
+>>>>
+>>>> s/last_interrupt_seconds/last_update_interrupt_seconds/
+>>>>
+>>>
+>>> No, this is more generic than the update interrupt.
+>>
+>>
+>> last_update_interrupt_minutes is updated in update_control_register()
+>> and
+>> rx8900_timer_tick()
+>>
+>> last_interrupt_seconds is updated in update_control_register() and
+>> rx8900_timer_tick() as well.
+>>
+>> Yes, the conditions are sometime different but it is still quite hard
+>> to
+>> tell how one is more generic than the other. All I am saying here is
+>> that
+>> the names are not clear and there is no comment about them either.
+> 
+> I'll add some comments.
+> 
+>>
+>>>>
+>>>>> +    uint8_t last_update_interrupt_minutes;
+>>>>> +    double supply_voltage;
+>>>>> +    qemu_irq interrupt_pin;
+>>>>
+>>>> Is this "INT" on the chip?
+>>>>
+>>>
+>>> Yes
+>>
+>> I'd suggest adding a short comment /* INT pin */ at the end of the
+>> line.
+> 
+> I don't think it's a huge logical leap here to associate
+> "interrupt_pin" with the interrupt pin of the device.
+
+
+I do not know about others but when I am reading a hardware-related code, I
+really like to see precise references to the hardware spec. I had to look
+through the code about "fout_pin" vs. "fout" and I am still not getting the
+"fout" thing right.
+
+
+>>>
+>>>>> +    qemu_irq fout_pin;
+>>>>
+>>>> Is this "FOUT" on the chip?
+>>>>
+>>>
+>>> Yes
+>>
+>>
+>> Same here.
+> 
+> Ditto
+> 
+>>>
+>>>>
+>>>>> +} RX8900State;
+>>>>> +
+>>>>> +static const VMStateDescription vmstate_rx8900 = {
+>>>>> +    .name = "rx8900",
+>>>>> +    .version_id = 2,
+>>>>
+>>>>
+>>>> vmstate version is 2 for a brand new device means that there is
+>>>> another
+>>>> device which can migrate to it? I think you want version_id=1 and
+>>>> get
+>>>> rid
+>>>> of _V below.
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>
+>>>>> +    .minimum_version_id = 1,
+>>>>> +    .fields = (VMStateField[]) {
+>>>>> +        VMSTATE_I2C_SLAVE(parent_obj, RX8900State),
+>>>>> +        VMSTATE_PTIMER(sec_timer, RX8900State),
+>>>>> +        VMSTATE_PTIMER(fout_timer, RX8900State),
+>>>>> +        VMSTATE_PTIMER(countdown_timer, RX8900State),
+>>>>> +        VMSTATE_BOOL(fout, RX8900State),
+>>>>> +        VMSTATE_INT64(offset, RX8900State),
+>>>>> +        VMSTATE_UINT8_V(weekday, RX8900State, 2),
+>>>>> +        VMSTATE_UINT8_V(wday_offset, RX8900State, 2),
+>>>>> +        VMSTATE_UINT8_ARRAY(nvram, RX8900State,
+>>>>> RX8900_NVRAM_SIZE),
+>>>>> +        VMSTATE_INT32(ptr, RX8900State),
+>>>>> +        VMSTATE_BOOL(addr_byte, RX8900State),
+>>>>> +        VMSTATE_UINT8_V(last_interrupt_seconds, RX8900State,
+>>>>> 2),
+>>>>> +        VMSTATE_UINT8_V(last_update_interrupt_minutes,
+>>>>> RX8900State, 2),
+>>>>> +        VMSTATE_END_OF_LIST()
+>>>>> +    }
+>>>>> +};
+>>>>> +
+>>>>> +static void rx8900_reset(DeviceState *dev);
+>>>>> +static void disable_countdown_timer(RX8900State *s);
+>>>>
+>>>> This one not needed.
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +static void enable_countdown_timer(RX8900State *s);
+>>>>> +static void disable_timer(RX8900State *s);
+>>>>> +static void enable_timer(RX8900State *s);
+>>>>> From a quick look, all these functions could be moved right
+>>>>> here,
+>>>>> cannot they?
+>>>
+>>> Ok, except for reset, which I prefer to leave next to the other
+>>> init
+>>> code so that associated code is kept togther.
+>>>>
+>>>>> +
+>>>>> +static void capture_current_time(RX8900State *s)
+>>>>> +{
+>>>>> +    /* Capture the current time into the secondary registers
+>>>>> +     * which will be actually read by the data transfer
+>>>>> operation.
+>>>>> +     */
+>>>>> +    struct tm now;
+>>>>> +    qemu_get_timedate(&now, s->offset);
+>>>>> +    s->nvram[SECONDS] = to_bcd(now.tm_sec);
+>>>>> +    s->nvram[MINUTES] = to_bcd(now.tm_min);
+>>>>> +    s->nvram[HOURS] = to_bcd(now.tm_hour);
+>>>>> +
+>>>>> +    s->nvram[WEEKDAY] = 0x01 << ((now.tm_wday + s-
+>>>>>> wday_offset) %
+>>>>> 7);
+>>>>
+>>>> s/0x01/1/ ?
+>>>
+>>> Weekday is a walking bit, I think hex notation is clearer.
+>>
+>>
+>> "1" is a pure one. 0x01 suggests a bit mask so it may be possible to
+>> shift
+>> some other value. I cannot think how 0x01 is clearer, I asked Paul,
+>> he
+>> cannot either ;)
+>>
+> 
+> From the datasheet:
+> The day data values are counted as follows: Day 01h, Day 02h, Day 04h,
+> Day 08h, Day 10h, Day 20h, Day 40h, Day 01h, Day 02h, etc.   
+
+So it is not a mask. "1" it is.
+
+
+
+>>
+>>>
+>>>>
+>>>>> +    s->nvram[DAY] = to_bcd(now.tm_mday);
+>>>>> +    s->nvram[MONTH] = to_bcd(now.tm_mon + 1);
+>>>>> +    s->nvram[YEAR] = to_bcd(now.tm_year % 100);
+>>>>> +
+>>>>> +    s->nvram[EXT_SECONDS] = s->nvram[SECONDS];
+>>>>> +    s->nvram[EXT_MINUTES] = s->nvram[MINUTES];
+>>>>> +    s->nvram[EXT_HOURS] = s->nvram[HOURS];
+>>>>> +    s->nvram[EXT_WEEKDAY] = s->nvram[WEEKDAY];
+>>>>> +    s->nvram[EXT_DAY] = s->nvram[DAY];
+>>>>> +    s->nvram[EXT_MONTH] = s->nvram[MONTH];
+>>>>> +    s->nvram[EXT_YEAR] = s->nvram[YEAR];
+>>>>> +
+>>>>> +    trace_rx8900_capture_current_time(now.tm_hour, now.tm_min,
+>>>>> now.tm_sec,
+>>>>> +            (now.tm_wday + s->wday_offset) % 7,
+>>>>> +            now.tm_mday, now.tm_mon, now.tm_year + 1900,
+>>>>> +            s->nvram[HOURS], s->nvram[MINUTES], s-
+>>>>>> nvram[SECONDS],
+>>>>> +            s->nvram[WEEKDAY], s->nvram[DAY], s->nvram[MONTH], 
+>>>>> s-
+>>>>>> nvram[YEAR]);
+>>>>>
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Increment the internal register pointer, dealing with
+>>>>> wrapping
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void inc_regptr(RX8900State *s)
+>>>>> +{
+>>>>> +    /* The register pointer wraps around after 0x1F
+>>>>> +     */
+>>>>> +    s->ptr = (s->ptr + 1) & (RX8900_NVRAM_SIZE - 1);
+>>>>> +    trace_rx8900_regptr_update(s->ptr);
+>>>>> +
+>>>>> +    if (s->ptr == 0x00) {
+>>>>
+>>>>
+>>>> Magic constant 0x00. Is this offset in nvram? Then make it just
+>>>> 0,
+>>>> otherwise it looks like a mask.
+>>>
+>>> Replaced with START_ADDRESS from RX8900Addresses.
+>>>
+>>>>
+>>>>> +        trace_rx8900_regptr_overflow();
+>>>>> +        capture_current_time(s);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Receive an I2C Event
+>>>>> + * @param i2c the i2c device instance
+>>>>> + * @param event the event to handle
+>>>>> + */
+>>>>> +static void rx8900_event(I2CSlave *i2c, enum i2c_event event)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(i2c);
+>>>>> +
+>>>>> +    switch (event) {
+>>>>> +    case I2C_START_RECV:
+>>>>> +        /* In h/w, time capture happens on any START
+>>>>> condition,
+>>>>> not just a
+>>>>> +         * START_RECV. For the emulation, it doesn't actually
+>>>>> matter,
+>>>>> +         * since a START_RECV has to occur before the data can
+>>>>> be
+>>>>> read.
+>>>>> +         */
+>>>>> +        capture_current_time(s);
+>>>>> +        break;
+>>>>> +    case I2C_START_SEND:
+>>>>> +        s->addr_byte = true;
+>>>>> +        break;
+>>>>> +    case I2C_FINISH:
+>>>>> +        if (s->weekday < 7) {
+>>>>> +            /* We defer the weekday calculation as it is
+>>>>> handed to
+>>>>> us before
+>>>>> +             * the date has been updated. If we calculate the
+>>>>> weekday offset
+>>>>> +             * when it is passed to us, we will incorrectly
+>>>>> determine it
+>>>>> +             * based on the current emulated date, rather than
+>>>>> the
+>>>>> date that
+>>>>> +             * has been written.
+>>>>> +             */
+>>>>
+>>>> The RX8900 spec does not use word "offset" at all so I cannot
+>>>> make
+>>>> sense
+>>>> from the paragraph above - why exactly do you need 2 offsets
+>>>> ("offset" and
+>>>> "wday_offset") and why weekday cannot be calculated when it is
+>>>> needed
+>>>> from
+>>>> the current time + "offset"?
+>>>>
+>>>
+>>> The offsets refer to the difference between the host clock & the
+>>> emulated clock. The weekday cannot be calculated as the RX8900 does
+>>> not
+>>> validate the weekday - the user can set the weekday to anything.
+>>
+>>
+>> Ufff. Now I am totally confused. You say "the weekday cannot be
+>> calculated"
+>> but the comment says you defer its calculation. The comment needs an
+>> update.
+> 
+> Sorry, my bad, the weekday cannot be calculated without the weekday
+> offset, as the weekday is not guaranteed to be correct for that date.
+
+
+Short description of the whole weekday business in a comment would help.
+
+
+
+>>
+>>>
+>>>>
+>>>>> +            struct tm now;
+>>>>> +            qemu_get_timedate(&now, s->offset);
+>>>>> +
+>>>>> +            s->wday_offset = (s->weekday - now.tm_wday + 7) %
+>>>>> 7;
+>>>>> +
+>>>>> +            trace_rx8900_event_weekday(s->weekday, BIT(s-
+>>>>>> weekday),
+>>>>>
+>>>>> +                    s->wday_offset);
+>>>>> +
+>>>>> +            s->weekday = 7;
+>>>>
+>>>> I'd rather use 0xff (defined in a macro) as an invalid weekday.
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +        }
+>>>>> +        break;
+>>>>> +
+>>>>> +    default:
+>>>>> +        break;
+>>>>
+>>>>
+>>>> Not needed "default" case.
+>>>>
+>>>
+>>> This is a hint to static analysers (and developers) that the other
+>>> enumeration cases were not forgotten, but intentionally have no
+>>> action.
+>>
+>>
+>> Out of curiosity - what static analyzer does complain about this? I
+>> looked
+>> at the kernel and QEMU trees and seems that it is not common thing to
+>> leave
+>> an empty "default" case.
+> 
+> Eclipse Codan will flag missing enum elements in a switch.
+>
+>>
+>>>
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Perform an i2c receive action
+>>>>> + * @param i2c the i2c device instance
+>>>>> + * @return the value of the current register
+>>>>> + * @post the internal register pointer is incremented
+>>>>> + */
+>>>>> +static int rx8900_recv(I2CSlave *i2c)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(i2c);
+>>>>> +    uint8_t res = s->nvram[s->ptr];
+>>>>> +    trace_rx8900_read_register(s->ptr, res);
+>>>>> +    inc_regptr(s);
+>>>>> +    return res;
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Validate the extension register and perform actions based
+>>>>> on
+>>>>> the bits
+>>>>> + * @param s the RTC to operate on
+>>>>> + * @param data the new data for the extension register
+>>>>> + */
+>>>>> +static void update_extension_register(RX8900State *s, uint8_t
+>>>>> data)
+>>>>> +{
+>>>>> +    if (data & EXT_MASK_TEST) {
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Test bit is enabled but is forbidden by the
+>>>>> manufacturer");
+>>>>
+>>>> QEMU uses indents under opening bracket.
+>>>>
+>>>
+>>> Debatable, it's not prescribed in the coding style, and existing
+>>> code
+>>> varies. Can you point me at where that is stated?
+>>
+>> Nope but it is all over the place. You may see occasinally different
+>> styles
+>> but not in main files such as vl.c or hw/pci/pci.c.
+>>
+>>
+>>>
+>>>> In general, I use vim with
+>>>> set expandtab
+>>>> set tabstop=4
+>>>> set shiftwidth=4
+>>>> set cino=:0,(0
+>>>>
+>>>>
+>>>> The coding style also says about 80 characters limit (and some of
+>>>> your
+>>>> patched failed this) and makes no exception, however people
+>>>> often 
+>>>
+>>> Actually, it does:
+>>
+>>
+>> Ok, good to know. When I studied the coding style last time, it just
+>> was
+>> not there.
+>>
+>>
+>>> "Sometimes it is hard to do, especially when dealing with QEMU
+>>> subsystems that use long function or symbol names.  Even in that
+>>> case,
+>>> do not make lines much longer than 80 characters."
+>>>
+>>>> follow
+>>>> the kernel rule not to split strings even if they do not fit 80
+>>>> characters
+>>>> limit.
+>>>>
+>>>>
+>>>> And please run ./scripts/checkpatch.pl on patches before posting,
+>>>> 3/6
+>>>> and
+>>>> 5/6 failed because of too long lines.
+>>>
+>>> I have this set up as a git commit hook, so I'm not sure how this
+>>> slipped in, but sure, I can rerun it before submitting.
+>>>
+>>>>
+>>>>> +    }
+>>>>> +
+>>>>> +    if ((data ^ s->nvram[EXTENSION_REGISTER]) &
+>>>>> +            (EXT_MASK_FSEL0 | EXT_MASK_FSEL1)) {
+>>>>> +        uint8_t fsel = (data & (EXT_MASK_FSEL0 |
+>>>>> EXT_MASK_FSEL1))
+>>>>> +                >> EXT_REG_FSEL0;
+>>>>> +        /* FSELx has changed */
+>>>>> +        switch (fsel) {
+>>>>> +        case 0x01:
+>>>>
+>>>> Magic value of 0x01, 0x02 here and below.
+>>>>
+>>>
+>>> I think this use case is reasonable, we are matching against the 2
+>>> FSEL
+>>> bits.
+>>
+>> I'd literally do this:
+>>
+>> switch (data & (EXT_MASK_FSEL0 | EXT_MASK_FSEL1)) {
+>> case EXT_MASK_FSEL0:
+>> 	trace_rx8900_set_fout(1024);
+>> 	ptimer_set_limit(s->fout_timer, 32, 1);
+>> 	break;
+>> case EXT_MASK_FSEL1:
+>> 	trace_rx8900_set_fout(1);
+>> 	ptimer_set_limit(s->fout_timer, 32768, 1);
+>> 	break;
+>> case 0:
+>> case EXT_MASK_FSEL0 | EXT_MASK_FSEL0:
+>> 	trace_rx8900_set_fout(32768);
+>> 	ptimer_set_limit(s->fout_timer, 1, 1);
+>> 	break;
+>> }
+>>
+>> Easier to read and you can be sure that nothing is missed and all
+>> bits
+>> combinations are covered.
+> 
+> Ok
+> 
+>>
+>>>
+>>>>
+>>>>> +            trace_rx8900_set_fout(1024);
+>>>>> +            ptimer_set_limit(s->fout_timer, 32, 1);
+>>>>> +            break;
+>>>>> +        case 0x02:
+>>>>> +            trace_rx8900_set_fout(1);
+>>>>> +            ptimer_set_limit(s->fout_timer, 32768, 1);
+>>>>> +            break;
+>>>>> +        default:
+>>>>> +            trace_rx8900_set_fout(32768);
+>>>>> +            ptimer_set_limit(s->fout_timer, 1, 1);
+>>>>> +            break;
+>>>>> +        }
+>>>>> +    }
+>>>>> +
+>>>>> +    if ((data ^ s->nvram[EXTENSION_REGISTER]) &
+>>>>> +            (EXT_MASK_TSEL0 | EXT_MASK_TSEL1)) {
+>>>>> +        uint8_t tsel = (data & (EXT_MASK_TSEL0 |
+>>>>> EXT_MASK_TSEL1))
+>>>>> +                >> EXT_REG_TSEL0;
+>>>>> +        /* TSELx has changed */
+>>>>> +        switch (tsel) {
+>>>>> +        case 0x00:
+>>>>> +            trace_rx8900_set_countdown_timer(64);
+>>>>> +            ptimer_set_limit(s->countdown_timer, 4096 / 64,
+>>>>> 1);
+>>>>> +            break;
+>>>>> +        case 0x01:
+>>>>> +            trace_rx8900_set_countdown_timer(1);
+>>>>> +            ptimer_set_limit(s->countdown_timer, 4096, 1);
+>>>>> +            break;
+>>>>> +        case 0x02:
+>>>>> +            trace_rx8900_set_countdown_timer_per_minute();
+>>>>> +            ptimer_set_limit(s->countdown_timer, 4069 * 60,
+>>>>> 1);
+>>>>
+>>>> s/4069/4096/ ?
+>>>> And why 4096? Please define it in a macro.
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +            break;
+>>>>> +        case 0x03:
+>>>>> +            trace_rx8900_set_countdown_timer(4096);
+>>>>> +            ptimer_set_limit(s->countdown_timer, 1, 1);
+>>>>> +            break;
+>>>>> +        }
+>>>>> +    }
+>>>>> +
+>>>>> +    if (data & EXT_MASK_TE) {
+>>>>> +        enable_countdown_timer(s);
+>>>>> +    }
+>>>>> +
+>>>>> +    s->nvram[EXTENSION_REGISTER] = data;
+>>>>> +    s->nvram[EXT_EXTENSION_REGISTER] = data;
+>>>>> +
+>>>>> +}
+>>>>> +/**
+>>>>> + * Validate the control register and perform actions based on
+>>>>> the
+>>>>> bits
+>>>>> + * @param s the RTC to operate on
+>>>>> + * @param data the new value for the control register
+>>>>> + */
+>>>>> +
+>>>>> +static void update_control_register(RX8900State *s, uint8_t
+>>>>> data)
+>>>>> +{
+>>>>> +    uint8_t diffmask = ~s->nvram[CONTROL_REGISTER] & data;
+>>>>> +
+>>>>> +    if (diffmask & CTRL_MASK_WP0) {
+>>>>> +        data &= ~CTRL_MASK_WP0;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Attempt to write to write protected bit %d in
+>>>>> control
+>>>>> register",
+>>>>> +            CTRL_REG_WP0);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & CTRL_MASK_WP1) {
+>>>>> +        data &= ~CTRL_MASK_WP1;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Attempt to write to write protected bit %d in
+>>>>> control
+>>>>> register",
+>>>>> +            CTRL_REG_WP1);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (data & CTRL_MASK_RESET) {
+>>>>> +        data &= ~CTRL_MASK_RESET;
+>>>>> +        rx8900_reset(DEVICE(s));
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & CTRL_MASK_UIE) {
+>>>>> +        /* Update interrupts were off and are now on */
+>>>>> +        struct tm now;
+>>>>> +
+>>>>> +        trace_rx8900_enable_update_timer();
+>>>>> +
+>>>>> +        qemu_get_timedate(&now, s->offset);
+>>>>> +
+>>>>> +        s->last_update_interrupt_minutes = now.tm_min;
+>>>>> +        s->last_interrupt_seconds = now.tm_sec;
+>>>>> +        enable_timer(s);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & CTRL_MASK_AIE) {
+>>>>> +        /* Alarm interrupts were off and are now on */
+>>>>> +        struct tm now;
+>>>>> +
+>>>>> +        trace_rx8900_enable_alarm();
+>>>>> +
+>>>>> +        qemu_get_timedate(&now, s->offset);
+>>>>> +
+>>>>> +        s->last_interrupt_seconds = now.tm_sec;
+>>>>
+>>>>
+>>>> s->last_update_interrupt_minutes is skipped here for a reason?
+>>>>
+>>>
+>>> Yes, that pertains to the update interrupts, and we are dealing
+>>> with
+>>> the alarm here.
+>>>
+>>>>
+>>>>> +        enable_timer(s);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (!(data & (CTRL_MASK_UIE | CTRL_MASK_AIE))) {
+>>>>> +        disable_timer(s);
+>>>>> +    }
+>>>>
+>>>>
+>>>> Can UIE and AIE be both set? If not, "else" could be used in two
+>>>> "if"
+>>>> above
+>>>> to document this.
+>>>>
+>>>
+>>> Yes.
+>>>
+>>>>
+>>>>> +
+>>>>> +    s->nvram[CONTROL_REGISTER] = data;
+>>>>> +    s->nvram[EXT_CONTROL_REGISTER] = data;
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Validate the flag register
+>>>>> + * @param s the RTC to operate on
+>>>>> + * @param data the new value for the flag register
+>>>>> + */
+>>>>> +static void validate_flag_register(RX8900State *s, uint8_t
+>>>>> *data)
+>>>>> +{
+>>>>> +    uint8_t diffmask = ~s->nvram[FLAG_REGISTER] & *data;
+>>>>> +
+>>>>> +    if (diffmask & FLAG_MASK_VDET) {
+>>>>> +        *data &= ~FLAG_MASK_VDET;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Only 0 can be written to VDET bit %d in the flag
+>>>>> register",
+>>>>> +            FLAG_REG_VDET);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & FLAG_MASK_VLF) {
+>>>>> +        *data &= ~FLAG_MASK_VLF;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Only 0 can be written to VLF bit %d in the flag
+>>>>> register",
+>>>>> +            FLAG_REG_VLF);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & FLAG_MASK_UNUSED_2) {
+>>>>> +        *data &= ~FLAG_MASK_UNUSED_2;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Only 0 can be written to unused bit %d in the
+>>>>> flag
+>>>>> register",
+>>>>> +            FLAG_REG_UNUSED_2);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & FLAG_MASK_UNUSED_6) {
+>>>>> +        *data &= ~FLAG_MASK_UNUSED_6;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Only 0 can be written to unused bit %d in the
+>>>>> flag
+>>>>> register",
+>>>>> +            FLAG_REG_UNUSED_6);
+>>>>> +    }
+>>>>> +
+>>>>> +    if (diffmask & FLAG_MASK_UNUSED_7) {
+>>>>> +        *data &= ~FLAG_MASK_UNUSED_7;
+>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +            "Only 0 can be written to unused bit %d in the
+>>>>> flag
+>>>>> register",
+>>>>> +            FLAG_REG_UNUSED_7);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Tick the per second timer (can be called more frequently as
+>>>>> it
+>>>>> early exits
+>>>>> + * if the wall clock has not progressed)
+>>>>> + * @param opaque the RTC to tick
+>>>>> + */
+>>>>> +static void rx8900_timer_tick(void *opaque)
+>>>>> +{
+>>>>> +    RX8900State *s = (RX8900State *)opaque;
+>>>>> +    struct tm now;
+>>>>> +    bool fire_interrupt = false;
+>>>>> +    bool alarm_week_day_matches;
+>>>>> +
+>>>>> +    qemu_get_timedate(&now, s->offset);
+>>>>> +
+>>>>> +    if (now.tm_sec == s->last_interrupt_seconds) {
+>>>>> +        return;
+>>>>> +    }
+>>>>> +
+>>>>> +    s->last_interrupt_seconds = now.tm_sec;
+>>>>> +
+>>>>> +    trace_rx8900_tick();
+>>>>> +
+>>>>> +    /* Update timer interrupt */
+>>>>> +    if (s->nvram[CONTROL_REGISTER] & CTRL_MASK_UIE) {
+>>>>> +        if ((s->nvram[EXTENSION_REGISTER] & EXT_MASK_USEL) &&
+>>>>> +                now.tm_min != s-
+>>>>>> last_update_interrupt_minutes) {
+>>>>> +            s->last_update_interrupt_minutes = now.tm_min;
+>>>>> +            s->nvram[FLAG_REGISTER] |= FLAG_MASK_UF;
+>>>>> +            fire_interrupt = true;
+>>>>> +        } else if (!(s->nvram[EXTENSION_REGISTER] &
+>>>>> EXT_MASK_USEL)) {
+>>>>> +            /* per second update interrupt */
+>>>>> +            s->nvram[FLAG_REGISTER] |= FLAG_MASK_UF;
+>>>>> +            fire_interrupt = true;
+>>>>> +        }
+>>>>> +    }
+>>>>> +
+>>>>> +    /* Alarm interrupt */
+>>>>> +    alarm_week_day_matches = s->nvram[ALARM_WEEK_DAY] ==
+>>>>> +            ((s->nvram[EXTENSION_REGISTER] & EXT_MASK_WADA) ?
+>>>>> +                    to_bcd(now.tm_mday) :
+>>>>> +                    0x01 << ((now.tm_wday + s->wday_offset) %
+>>>>> 7));
+>>>>
+>>>>
+>>>> 0x01 is a mask or enum or just "1" which needs to be shifted?
+>>>>
+>>>
+>>> Weekday is a walking bit, I think hex is the most appropriate
+>>> notation.
+>>>
+>>>> Also, it is hard to read an expression with "=", "==" and "?",
+>>>> "if"
+>>>> would
+>>>> be better here imho.
+>>>>
+>>>
+>>> Ok (it read a lot better before it was wrapped).
+>>>
+>>>>
+>>>>> +
+>>>>> +    if ((s->nvram[CONTROL_REGISTER] & CTRL_MASK_AIE) &&
+>>>>> now.tm_sec
+>>>>> == 0) {
+>>>>> +        if (s->nvram[ALARM_MINUTE] == to_bcd(now.tm_min) &&
+>>>>> +                s->nvram[ALARM_HOUR] == to_bcd(now.tm_hour) &&
+>>>>> +                alarm_week_day_matches) {
+>>>>
+>>>> It should be one "if", not two.
+>>>>
+>>>
+>>> Ok
+>>>>
+>>>>> +            trace_rx8900_trigger_alarm();
+>>>>> +            s->nvram[FLAG_REGISTER] |= FLAG_MASK_AF;
+>>>>> +            fire_interrupt = true;
+>>>>> +        }
+>>>>> +    }
+>>>>> +
+>>>>> +    if (fire_interrupt) {
+>>>>> +        trace_rx8900_fire_interrupt();
+>>>>> +        qemu_irq_pulse(s->interrupt_pin);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Disable the per second timer
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void disable_timer(RX8900State *s)
+>>>>> +{
+>>>>> +    trace_rx8900_disable_timer();
+>>>>> +    ptimer_stop(s->sec_timer);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Enable the per second timer
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void enable_timer(RX8900State *s)
+>>>>> +{
+>>>>> +    trace_rx8900_enable_timer();
+>>>>> +    ptimer_run(s->sec_timer, 0);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Handle FOUT_ENABLE (FOE) line
+>>>>> + * Enables/disables the FOUT line
+>>>>> + * @param opaque the device instance
+>>>>> + * @param n the IRQ number
+>>>>> + * @param level true if the line has been raised
+>>>>> + */
+>>>>> +static void rx8900_fout_enable_handler(void *opaque, int n,
+>>>>> int
+>>>>> level)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(opaque);
+>>>>> +
+>>>>> +    if (level) {
+>>>>> +        trace_rx8900_enable_fout();
+>>>>> +        ptimer_run(s->fout_timer, 0);
+>>>>> +    } else {
+>>>>> +        /* disable fout */
+>>>>> +        trace_rx8900_disable_fout();
+>>>>> +        ptimer_stop(s->fout_timer);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Tick the FOUT timer
+>>>>> + * @param opaque the device instance
+>>>>> + */
+>>>>> +static void rx8900_fout_tick(void *opaque)
+>>>>> +{
+>>>>> +    RX8900State *s = (RX8900State *)opaque;
+>>>>> +
+>>>>> +    trace_rx8900_fout_toggle();
+>>>>> +    s->fout = !s->fout;
+>>>>> +
+>>>>> +    if (s->fout) {
+>>>>> +        qemu_irq_raise(s->fout_pin);
+>>>>> +    } else {
+>>>>> +        qemu_irq_lower(s->fout_pin);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +
+>>>>> +/**
+>>>>> + * Disable the countdown timer
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void disable_countdown_timer(RX8900State *s)
+>>>>> +{
+>>>>> +    trace_rx8900_disable_countdown();
+>>>>> +    ptimer_stop(s->countdown_timer);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Enable the countdown timer
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void enable_countdown_timer(RX8900State *s)
+>>>>> +{
+>>>>> +    trace_rx8900_enable_countdown();
+>>>>> +    ptimer_run(s->countdown_timer, 0);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Tick the countdown timer
+>>>>> + * @param opaque the device instance
+>>>>> + */
+>>>>> +static void rx8900_countdown_tick(void *opaque)
+>>>>> +{
+>>>>> +    RX8900State *s = (RX8900State *)opaque;
+>>>>> +
+>>>>> +    uint16_t count = s->nvram[TIMER_COUNTER_0] +
+>>>>
+>>>> Nit: in cases like this it is usually "|", not "+".
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +            ((s->nvram[TIMER_COUNTER_1] & 0x0F) << 8);
+>>>>> +    trace_rx8900_countdown_tick(count);
+>>>>> +    count--;
+>>>>> +
+>>>>> +    s->nvram[TIMER_COUNTER_0] = (uint8_t)(count & 0x00ff);
+>>>>> +    s->nvram[TIMER_COUNTER_1] = (uint8_t)((count & 0x0f00) >>
+>>>>> 8);
+>>>>> +
+>>>>> +    if (count == 0) {
+>>>>> +        trace_rx8900_countdown_elapsed();
+>>>>> +
+>>>>> +        disable_countdown_timer(s);
+>>>>> +
+>>>>> +        s->nvram[FLAG_REGISTER] |= FLAG_MASK_TF;
+>>>>> +
+>>>>> +        if (s->nvram[CONTROL_REGISTER] & CTRL_MASK_TIE) {
+>>>>> +            trace_rx8900_fire_interrupt();
+>>>>> +            qemu_irq_pulse(s->interrupt_pin);
+>>>>> +        }
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Verify the current voltage and raise flags if it is low
+>>>>> + * @param s the RTC to operate on
+>>>>> + */
+>>>>> +static void check_voltage(RX8900State *s)
+>>>>> +{
+>>>>> +    if (!(s->nvram[BACKUP_FUNCTION] & BACKUP_MASK_VDETOFF)) {
+>>>>> +        if (s->supply_voltage < 2.0f) {
+>>>>> +            s->nvram[FLAG_REGISTER] |= FLAG_MASK_VDET;
+>>>>> +        }
+>>>>> +
+>>>>> +        if (s->supply_voltage < 1.6f) {
+>>>>> +            s->nvram[FLAG_REGISTER] |= FLAG_MASK_VLF;
+>>>>> +        }
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Receive a byte of data from i2c
+>>>>> + * @param i2c the i2c device that is receiving data
+>>>>> + * @param data the data that was received
+>>>>> + */
+>>>>> +static int rx8900_send(I2CSlave *i2c, uint8_t data)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(i2c);
+>>>>> +    struct tm now;
+>>>>> +
+>>>>> +    trace_rx8900_i2c_data_receive(data);
+>>>>> +
+>>>>> +    if (s->addr_byte) {
+>>>>> +        s->ptr = data & (RX8900_NVRAM_SIZE - 1);
+>>>>> +        trace_rx8900_regptr_update(s->ptr);
+>>>>> +        s->addr_byte = false;
+>>>>> +        return 0;
+>>>>> +    }
+>>>>> +
+>>>>> +    trace_rx8900_set_register(s->ptr, data);
+>>>>> +
+>>>>> +    qemu_get_timedate(&now, s->offset);
+>>>>> +    switch (s->ptr) {
+>>>>> +    case SECONDS:
+>>>>> +    case EXT_SECONDS:
+>>>>> +        now.tm_sec = from_bcd(data & 0x7f);
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case MINUTES:
+>>>>> +    case EXT_MINUTES:
+>>>>> +        now.tm_min = from_bcd(data & 0x7f);
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case HOURS:
+>>>>> +    case EXT_HOURS:
+>>>>> +        now.tm_hour = from_bcd(data & 0x3f);
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case WEEKDAY:
+>>>>> +    case EXT_WEEKDAY: {
+>>>>> +        int user_wday = ctz32(data);
+>>>>> +        /* The day field is supposed to contain a value in
+>>>>> +         * the range 0-6. Otherwise behavior is undefined.
+>>>>> +         */
+>>>>> +        switch (data) {
+>>>>> +        case 0x01:
+>>>>> +        case 0x02:
+>>>>> +        case 0x04:
+>>>>> +        case 0x08:
+>>>>> +        case 0x10:
+>>>>> +        case 0x20:
+>>>>> +        case 0x40:
+>>>>> +            break;
+>>>>> +        default:
+>>>>
+>>>> Instead of the switch:
+>>>>
+>>>> if (data & 0x80) {
+>>>
+>>> Weekday is a walking bit, the proposed check allows invalid values.
+>>
+>>
+>> Ah, right, should have been if(data==0x80).
+>>
+>> Actually you want to test that
+>> ((1<<ctz32(data)) == data) && (user_wday < 7)
+> 
+> It's short and clever, but the problem with clever code is it requires
+> clever people to understand it. I had to stop and think about what that
+> was doing.
+
+
+The only "clever" bit about it that it uses ctz() (which is not very
+common) but the code uses it anyway.
+
+You comment says "a value in the range 0-6" but the code does not actually
+compare with 0 and 6, and values up to 0x40 (way beyond 6) are allowed - I
+stopped to think why is that.
+
+
+> 
+>>
+>>>
+>>>>
+>>>>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>>>>> +                "RX8900 - weekday data '%x' is out of range, "
+>>>>> +                        "undefined behavior will result",
+>>>>> data);
+>>>>
+>>>>
+>>>> btw other cases of switch (s->ptr) do not do such a check, just
+>>>> "&0x7f" or
+>>>> "&0x3f", why is the weekday case so special?
+>>>>
+>>>
+>>> Weekday is a walking bit, not a number.
+>>
+>> It is still not clear why you check data validity for a weekday but
+>> not
+>> other things which you just mask. Has "hours == 0x3f" defined
+>> behaviour,
+>> for example?
+>>
+> 
+> The values which are masked are BCD encoded, the mask is sufficient for
+> full validation of value.
+
+
+0x2F is not valid for hours or minutes but you allow it.
+
+
+> 
+>>
+>>>
+>>>>
+>>>>
+>>>>> +            break;
+>>>>> +        }
+>>>>> +        s->weekday = user_wday;
+>>>>> +        break;
+>>>>> +    }
+>>>>> +
+>>>>> +    case DAY:
+>>>>> +    case EXT_DAY:
+>>>>> +        now.tm_mday = from_bcd(data & 0x3f);
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case MONTH:
+>>>>> +    case EXT_MONTH:
+>>>>> +        now.tm_mon = from_bcd(data & 0x1f) - 1;
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case YEAR:
+>>>>> +    case EXT_YEAR:
+>>>>> +        now.tm_year = from_bcd(data) + 100;
+>>>>> +        s->offset = qemu_timedate_diff(&now);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case EXTENSION_REGISTER:
+>>>>> +    case EXT_EXTENSION_REGISTER:
+>>>>> +        update_extension_register(s, data);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case FLAG_REGISTER:
+>>>>> +    case EXT_FLAG_REGISTER:
+>>>>> +        validate_flag_register(s, &data);
+>>>>> +
+>>>>> +        s->nvram[FLAG_REGISTER] = data;
+>>>>> +        s->nvram[EXT_FLAG_REGISTER] = data;
+>>>>> +
+>>>>> +        check_voltage(s);
+>>>>> +        break;
+>>>>> +
+>>>>> +    case CONTROL_REGISTER:
+>>>>> +    case EXT_CONTROL_REGISTER:
+>>>>> +        update_control_register(s, data);
+>>>>> +        break;
+>>>>> +
+>>>>> +    default:
+>>>>> +        s->nvram[s->ptr] = data;
+>>>>> +    }
+>>>>> +
+>>>>> +    inc_regptr(s);
+>>>>> +    return 0;
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Get the device temperature in Celcius as a property
+>>>>> + * @param obj the device
+>>>>> + * @param v
+>>>>> + * @param name the property name
+>>>>> + * @param opaque
+>>>>> + * @param errp an error object to populate on failure
+>>>>> + */
+>>>>> +static void rx8900_get_temperature(Object *obj, Visitor *v,
+>>>>> const
+>>>>> char *name,
+>>>>> +                                   void *opaque, Error **errp)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(obj);
+>>>>> +    double value = (s->nvram[TEMPERATURE] * 2.0f - 187.1f) /
+>>>>> 3.218f;
+>>>>> +
+>>>>> +    trace_rx8900_read_temperature(s->nvram[TEMPERATURE],
+>>>>> value);
+>>>>
+>>>> Nit: s/read/get/
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +
+>>>>> +    visit_type_number(v, name, &value, errp);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Set the device temperature in Celcius as a property
+>>>>> + * @param obj the device
+>>>>> + * @param v
+>>>>> + * @param name the property name
+>>>>> + * @param opaque
+>>>>> + * @param errp an error object to populate on failure
+>>>>> + */
+>>>>> +static void rx8900_set_temperature(Object *obj, Visitor *v,
+>>>>> const
+>>>>> char *name,
+>>>>> +                                   void *opaque, Error **errp)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(obj);
+>>>>> +    Error *local_err = NULL;
+>>>>> +    double temp; /* degrees Celcius */
+>>>>> +    visit_type_number(v, name, &temp, &local_err);
+>>>>> +    if (local_err) {
+>>>>> +        error_propagate(errp, local_err);
+>>>>> +        return;
+>>>>> +    }
+>>>>> +    if (temp >= 100 || temp < -58) {
+>>>>> +        error_setg(errp, "value %fœC is out of range", temp);
+>>>>> +        return;
+>>>>> +    }
+>>>>> +
+>>>>> +    s->nvram[TEMPERATURE] = (uint8_t) ((temp * 3.218f +
+>>>>> 187.19f) /
+>>>>> 2);
+>>>>> +
+>>>>> +    trace_rx8900_set_temperature(s->nvram[TEMPERATURE], temp);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Get the device supply voltage as a property
+>>>>> + * @param obj the device
+>>>>> + * @param v
+>>>>> + * @param name the property name
+>>>>> + * @param opaque
+>>>>> + * @param errp an error object to populate on failure
+>>>>> + */
+>>>>> +static void rx8900_get_voltage(Object *obj, Visitor *v, const
+>>>>> char
+>>>>> *name,
+>>>>> +                                   void *opaque, Error **errp)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(obj);
+>>>>> +
+>>>>> +    visit_type_number(v, name, &s->supply_voltage, errp);
+>>>>
+>>>>
+>>>> rx8900_get_temperature() got a trace point, this one did not ;)
+>>>>
+>>>
+>>> This did not perform a transformation on the data.
+>>>
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Set the device supply voltage as a property
+>>>>> + * @param obj the device
+>>>>> + * @param v
+>>>>> + * @param name the property name
+>>>>> + * @param opaque
+>>>>> + * @param errp an error object to populate on failure
+>>>>> + */
+>>>>> +static void rx8900_set_voltage(Object *obj, Visitor *v, const
+>>>>> char
+>>>>> *name,
+>>>>> +                                   void *opaque, Error **errp)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(obj);
+>>>>> +    Error *local_err = NULL;
+>>>>> +    double temp;
+>>>>> +    visit_type_number(v, name, &temp, &local_err);
+>>>>> +    if (local_err) {
+>>>>> +        error_propagate(errp, local_err);
+>>>>> +        return;
+>>>>> +    }
+>>>>> +
+>>>>> +    s->supply_voltage = temp;
+>>>>> +    trace_rx8900_set_voltage(s->supply_voltage);
+>>>>> +
+>>>>> +    check_voltage(s);
+>>>>> +}
+>>>>> +
+>>>>> +
+>>>>> +/**
+>>>>> + * Configure device properties
+>>>>> + * @param obj the device
+>>>>> + */
+>>>>> +static void rx8900_initfn(Object *obj)
+>>>>> +{
+>>>>> +    object_property_add(obj, "temperature", "number",
+>>>>> +                        rx8900_get_temperature,
+>>>>> +                        rx8900_set_temperature, NULL, NULL,
+>>>>> NULL);
+>>>>> +
+>>>>> +    object_property_add(obj, "supply voltage", "number",
+>>>>
+>>>> s/supply voltage/voltage/
+>>>> As having spaces in a property name makes it harder to use in the
+>>>> QEMU cli
+>>>> and there is just one voltage so "supply" is not really needed.
+>>>>
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>
+>>>>> +                        rx8900_get_voltage,
+>>>>> +                        rx8900_set_voltage, NULL, NULL, NULL);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Reset the device
+>>>>> + * @param dev the RX8900 device to reset
+>>>>> + */
+>>>>> +static void rx8900_reset(DeviceState *dev)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(dev);
+>>>>> +
+>>>>> +    trace_rx8900_reset();
+>>>>> +
+>>>>> +    /* The clock is running and synchronized with the host */
+>>>>> +    s->offset = 0;
+>>>>> +    s->weekday = 7; /* Set to an invalid value */
+>>>>> +
+>>>>> +    s->nvram[EXTENSION_REGISTER] = EXT_MASK_TSEL1;
+>>>>> +    s->nvram[CONTROL_REGISTER] = CTRL_MASK_CSEL0;
+>>>>> +    s->nvram[FLAG_REGISTER] &= FLAG_MASK_VDET | FLAG_MASK_VLF;
+>>>>> +
+>>>>> +    s->ptr = 0;
+>>>>> +
+>>>>> +    trace_rx8900_regptr_update(s->ptr);
+>>>>> +
+>>>>> +    s->addr_byte = false;
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Realize an RX8900 device instance
+>>>>> + * Set up timers
+>>>>> + * Configure GPIO lines
+>>>>> + * @param dev the device instance to realize
+>>>>> + * @param errp an error object to populate on error
+>>>>> + */
+>>>>> +static void rx8900_realize(DeviceState *dev, Error **errp)
+>>>>> +{
+>>>>> +    RX8900State *s = RX8900(dev);
+>>>>> +    I2CSlave *i2c = I2C_SLAVE(dev);
+>>>>> +    QEMUBH *bh;
+>>>>> +    char name[64];
+>>>>> +
+>>>>> +    s->fout = false;
+>>>>> +
+>>>>> +    memset(s->nvram, 0, RX8900_NVRAM_SIZE);
+>>>>> +    /* Temperature formulation from the datasheet
+>>>>> +     * ( TEMP[ 7:0 ] * 2 - 187.19) / 3.218
+>>>>> +     *
+>>>>> +     * Set the initial state to 25 degrees Celcius
+>>>>> +     */
+>>>>> +    s->nvram[TEMPERATURE] = 135; /* (25 * 3.218 + 187.19) / 2
+>>>>> */
+>>>>
+>>>>
+>>>> May be
+>>>> #define RX8900_C_TO_TEMP(c)	(((c) * 3.218 + 187.19) / 2)
+>>>> ?
+>>>>
+>>>> You do this math in few places.
+>>>
+>>> Ok
+>>>
+>>>>
+>>>>> +
+>>>>> +    bh = qemu_bh_new(rx8900_timer_tick, s);
+>>>>> +    s->sec_timer = ptimer_init(bh, PTIMER_POLICY_DEFAULT);
+>>>>> +    /* we trigger the timer at 10Hz and check for rollover, as
+>>>>> the
+>>>>> qemu
+>>>>> +     * clock does not advance in realtime in the test
+>>>>> environment,
+>>>>> +     * leading to unstable test results
+>>>>> +     */
+>>>>> +    ptimer_set_freq(s->sec_timer, 10);
+>>>>> +    ptimer_set_limit(s->sec_timer, 1, 1);
+>>>>> +
+>>>>> +    bh = qemu_bh_new(rx8900_fout_tick, s);
+>>>>> +    s->fout_timer = ptimer_init(bh, PTIMER_POLICY_DEFAULT);
+>>>>> +    /* frequency doubled to generate 50% duty cycle square
+>>>>> wave */
+>>>>> +    ptimer_set_freq(s->fout_timer, 32768 * 2);
+>>>>> +    ptimer_set_limit(s->fout_timer, 1, 1);
+>>>>> +
+>>>>> +    bh = qemu_bh_new(rx8900_countdown_tick, s);
+>>>>> +    s->countdown_timer = ptimer_init(bh,
+>>>>> PTIMER_POLICY_DEFAULT);
+>>>>> +    ptimer_set_freq(s->countdown_timer, 4096);
+>>>>> +    ptimer_set_limit(s->countdown_timer, 4096, 1);
+>>>>> +
+>>>>> +
+>>>>
+>>>>
+>>>> An extra empty line.
+>>>>
+>>>
+>>> This is intentional, to separate the different operations.
+>>
+>> One is enough though. If you think the next block is so separate,
+>> then give
+>> it a comment.
+> 
+> True
+> 
+>>
+>>>
+>>>>> +    snprintf(name, sizeof(name), "rx8900-interrupt-out");
+>>>>> +    qdev_init_gpio_out_named(&i2c->qdev, &s->interrupt_pin,
+>>>>> name,
+>>>>> 1);
+>>>>> +    trace_rx8900_pin_name("Interrupt", name);
+>>>>
+>>>> I would just pass a string to qdev_init_gpio_out_named() and
+>>>> ditch
+>>>> @name
+>>>> from tracepoints as they use unique strings anyway. And I'd also
+>>>
+>>> The same trace is reused
+>>
+>> The first parameter of reused trace is unique anyway.
+>>
+> Yes, but the name value-adds.
+
+Nope, not at all. See the comment below.
+
+
+> 
+>>
+>>>
+>>>> ditch
+>>>> trace_rx8900_pin_name tracepoints as they do not seem very useful
+>>>> -
+>>>> they do
+>>>> not report an error or a success.
+>>>
+>>> It makes it easier when debugging to validate that your idea of the
+>>> named interrupt matches the implementation.
+>>
+>> I am missing the point here. If the trace printed a string from i2c-
+>>> qdev,
+>> then yes, the trace could be used to tell if the actual name matches
+>> what
+>> you passed to qdev_init_gpio_in_named() but in this code the trace
+>> will
+>> always print the string you snprintf() 2 lines above. Quite useless.
+>>
+> 
+> It was useful to me in development, it may be useful in the future.
+
+I seriously doubt it but it is not me whose "reviewed-by" you need anyway
+and Cedric gave you one, this should do it :)
+
+
+> Think of it as an announcement of "this is where you can find me".
+
+
+The "rx8900_pin_name" tracepoint name is pretty precise in this case
+already - only one function uses it and enabling it will give you 3 lines
+of traces while one would do exact same job - tells you that
+rx8900_realize() is called. Again, it prints static strings only, and the
+strings are define right there.
+
+
+> 
+>>>>> +
+>>>>> +    snprintf(name, sizeof(name), "rx8900-fout-enable");
+>>>>> +    qdev_init_gpio_in_named(&i2c->qdev,
+>>>>> rx8900_fout_enable_handler, name, 1);
+>>>>> +    trace_rx8900_pin_name("Fout-enable", name);
+>>>>> +
+>>>>> +    snprintf(name, sizeof(name), "rx8900-fout");
+>>>>> +    qdev_init_gpio_out_named(&i2c->qdev, &s->fout_pin, name,
+>>>>> 1);
+>>>>> +    trace_rx8900_pin_name("Fout", name);
+>>>>> +
+>>>>> +    s->supply_voltage = 3.3f;
+>>>>> +    trace_rx8900_set_voltage(s->supply_voltage);
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * Set up the device callbacks
+>>>>> + * @param klass the device class
+>>>>> + * @param data
+>>>>> + */
+>>>>> +static void rx8900_class_init(ObjectClass *klass, void *data)
+>>>>> +{
+>>>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>>>> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+>>>>> +
+>>>>> +    k->event = rx8900_event;
+>>>>> +    k->recv = rx8900_recv;
+>>>>> +    k->send = rx8900_send;
+>>>>> +    dc->realize = rx8900_realize;
+>>>>> +    dc->reset = rx8900_reset;
+>>>>> +    dc->vmsd = &vmstate_rx8900;
+>>>>> +}
+>>>>> +
+>>>>> +static const TypeInfo rx8900_info = {
+>>>>> +    .name = TYPE_RX8900,
+>>>>> +    .parent = TYPE_I2C_SLAVE,
+>>>>> +    .instance_size = sizeof(RX8900State),
+>>>>> +    .instance_init = rx8900_initfn,
+>>>>> +    .class_init = rx8900_class_init,
+>>>>> +};
+>>>>> +
+>>>>> +/**
+>>>>> + * Register the device with QEMU
+>>>>> + */
+>>>>> +static void rx8900_register_types(void)
+>>>>> +{
+>>>>> +    type_register_static(&rx8900_info);
+>>>>> +}
+>>>>> +
+>>>>> +type_init(rx8900_register_types)
+>>>>> diff --git a/hw/timer/rx8900_regs.h b/hw/timer/rx8900_regs.h
+>>>>> new file mode 100644
+>>>>> index 0000000..cfec535
+>>>>> --- /dev/null
+>>>>> +++ b/hw/timer/rx8900_regs.h
+>>>>
+>>>> Why cannot the content of this header go to hw/timer/rx8900.c ?
+>>>> Do
+>>>> you
+>>>> expect some future code to use these definitions? If so, please
+>>>> add a
+>>>> note
+>>>> to the commit log.
+>>>>
+>>>
+>>> These are shared with the test code.
+>>
+>> Ah, my bad, I did grep and somehow missed tests/rx8900-test.c.
+>>
+>>
+>>>
+>>>>
+>>>>> @@ -0,0 +1,139 @@
+>>>>> +/*
+>>>>> + * Epson RX8900SA/CE Realtime Clock Module
+>>>>> + *
+>>>>> + * Copyright (c) 2016 IBM Corporation
+>>>>> + * Authors:
+>>>>> + *  Alastair D'Silva <alastair@d-silva.org>
+>>>>> + *
+>>>>> + * This code is licensed under the GPL version 2 or
+>>>>> later.  See
+>>>>> + * the COPYING file in the top-level directory.
+>>>>> + *
+>>>>> + * Datasheet available at:
+>>>>> + *  https://support.epson.biz/td/api/doc_check.php?dl=app_RX89
+>>>>> 00CE
+>>>>> &lang=en
+>>>>> + *
+>>>>> + */
+>>>>> +
+>>>>> +#ifndef RX8900_REGS_H
+>>>>> +#define RX8900_REGS_H
+>>>>> +
+>>>>> +#include "qemu/bitops.h"
+>>>>> +
+>>>>> +#define RX8900_NVRAM_SIZE 0x20
+>>>>> +
+>>>>> +typedef enum RX8900Addresses {
+>>>>> +    SECONDS = 0x00,
+>>>>> +    MINUTES = 0x01,
+>>>>> +    HOURS = 0x02,
+>>>>> +    WEEKDAY = 0x03,
+>>>>> +    DAY = 0x04,
+>>>>> +    MONTH = 0x05,
+>>>>> +    YEAR = 0x06,
+>>>>> +    RAM = 0x07,
+>>>>> +    ALARM_MINUTE = 0x08,
+>>>>> +    ALARM_HOUR = 0x09,
+>>>>> +    ALARM_WEEK_DAY = 0x0A,
+>>>>> +    TIMER_COUNTER_0 = 0x0B,
+>>>>> +    TIMER_COUNTER_1 = 0x0C,
+>>>>> +    EXTENSION_REGISTER = 0x0D,
+>>>>> +    FLAG_REGISTER = 0X0E,
+>>>>> +    CONTROL_REGISTER = 0X0F,
+>>>>> +    EXT_SECONDS = 0x010, /* Alias of SECONDS */
+>>>>> +    EXT_MINUTES = 0x11, /* Alias of MINUTES */
+>>>>> +    EXT_HOURS = 0x12, /* Alias of HOURS */
+>>>>> +    EXT_WEEKDAY = 0x13, /* Alias of WEEKDAY */
+>>>>> +    EXT_DAY = 0x14, /* Alias of DAY */
+>>>>> +    EXT_MONTH = 0x15, /* Alias of MONTH */
+>>>>> +    EXT_YEAR = 0x16, /* Alias of YEAR */
+>>>>> +    TEMPERATURE = 0x17,
+>>>>> +    BACKUP_FUNCTION = 0x18,
+>>>>> +    NO_USE_1 = 0x19,
+>>>>> +    NO_USE_2 = 0x1A,
+>>>>> +    EXT_TIMER_COUNTER_0 = 0x1B, /* Alias of TIMER_COUNTER_0 */
+>>>>> +    EXT_TIMER_COUNTER_1 = 0x1C, /* Alias of TIMER_COUNTER_1 */
+>>>>> +    EXT_EXTENSION_REGISTER = 0x1D, /* Alias of
+>>>>> EXTENSION_REGISTER
+>>>>> */
+>>>>> +    EXT_FLAG_REGISTER = 0X1E, /* Alias of FLAG_REGISTER */
+>>>>> +    EXT_CONTROL_REGISTER = 0X1F /* Alias of CONTROL_REGISTER
+>>>>> */
+>>>>> +} RX8900Addresses;
+>>>>> +
+>>>>> +typedef enum ExtRegBits {
+>>>>> +    EXT_REG_TSEL0 = 0,
+>>>>> +    EXT_REG_TSEL1 = 1,
+>>>>> +    EXT_REG_FSEL0 = 2,
+>>>>> +    EXT_REG_FSEL1 = 3,
+>>>>> +    EXT_REG_TE = 4,
+>>>>> +    EXT_REG_USEL = 5,
+>>>>> +    EXT_REG_WADA = 6,
+>>>>> +    EXT_REG_TEST = 7
+>>>>> +} ExtRegBits;
+>>>>> +
+>>>>> +typedef enum ExtRegMasks {
+>>>>> +    EXT_MASK_TSEL0 = BIT(0),
+>>>>> +    EXT_MASK_TSEL1 = BIT(1),
+>>>>> +    EXT_MASK_FSEL0 = BIT(2),
+>>>>> +    EXT_MASK_FSEL1 = BIT(3),
+>>>>> +    EXT_MASK_TE = BIT(4),
+>>>>> +    EXT_MASK_USEL = BIT(5),
+>>>>> +    EXT_MASK_WADA = BIT(6),
+>>>>> +    EXT_MASK_TEST = BIT(7)
+>>>>> +} ExtRegMasks;
+>>>>> +
+>>>>> +typedef enum CtrlRegBits {
+>>>>> +    CTRL_REG_RESET = 0,
+>>>>> +    CTRL_REG_WP0 = 1,
+>>>>> +    CTRL_REG_WP1 = 2,
+>>>>> +    CTRL_REG_AIE = 3,
+>>>>> +    CTRL_REG_TIE = 4,
+>>>>> +    CTRL_REG_UIE = 5,
+>>>>> +    CTRL_REG_CSEL0 = 6,
+>>>>> +    CTRL_REG_CSEL1 = 7
+>>>>> +} CtrlRegBits;
+>>>>> +
+>>>>> +typedef enum CtrlRegMask {
+>>>>> +    CTRL_MASK_RESET = BIT(0),
+>>>>> +    CTRL_MASK_WP0 = BIT(1),
+>>>>> +    CTRL_MASK_WP1 = BIT(2),
+>>>>> +    CTRL_MASK_AIE = BIT(3),
+>>>>> +    CTRL_MASK_TIE = BIT(4),
+>>>>> +    CTRL_MASK_UIE = BIT(5),
+>>>>> +    CTRL_MASK_CSEL0 = BIT(6),
+>>>>> +    CTRL_MASK_CSEL1 = BIT(7)
+>>>>> +} CtrlRegMask;
+>>>>> +
+>>>>> +typedef enum FlagRegBits {
+>>>>> +    FLAG_REG_VDET = 0,
+>>>>> +    FLAG_REG_VLF = 1,
+>>>>> +    FLAG_REG_UNUSED_2 = 2,
+>>>>> +    FLAG_REG_AF = 3,
+>>>>> +    FLAG_REG_TF = 4,
+>>>>> +    FLAG_REG_UF = 5,
+>>>>> +    FLAG_REG_UNUSED_6 = 6,
+>>>>> +    FLAG_REG_UNUSED_7 = 7
+>>>>> +} FlagRegBits;
+>>>>> +
+>>>>> +#define RX8900_INTERRUPT_SOURCES 6
+>>>>> +typedef enum FlagRegMask {
+>>>>> +    FLAG_MASK_VDET = BIT(0),
+>>>>> +    FLAG_MASK_VLF = BIT(1),
+>>>>> +    FLAG_MASK_UNUSED_2 = BIT(2),
+>>>>> +    FLAG_MASK_AF = BIT(3),
+>>>>> +    FLAG_MASK_TF = BIT(4),
+>>>>> +    FLAG_MASK_UF = BIT(5),
+>>>>> +    FLAG_MASK_UNUSED_6 = BIT(6),
+>>>>> +    FLAG_MASK_UNUSED_7 = BIT(7)
+>>>>> +} FlagRegMask;
+>>>>> +
+>>>>> +typedef enum BackupRegBits {
+>>>>> +    BACKUP_REG_BKSMP0 = 0,
+>>>>> +    BACKUP_REG_BKSMP1 = 1,
+>>>>> +    BACKUP_REG_SWOFF = 2,
+>>>>> +    BACKUP_REG_VDETOFF = 3
+>>>>> +} BackupRegBits;
+>>>>> +
+>>>>> +typedef enum BackupRegMask {
+>>>>> +    BACKUP_MASK_BKSMP0 = BIT(0),
+>>>>> +    BACKUP_MASK_BKSMP1 = BIT(1),
+>>>>> +    BACKUP_MASK_SWOFF = BIT(2),
+>>>>> +    BACKUP_MASK_VDETOFF = BIT(3)
+>>>>> +} BackupRegMask;
+>>>>> +
+>>>>> +#endif
+>>>>> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+>>>>> index 3495c41..057e414 100644
+>>>>> --- a/hw/timer/trace-events
+>>>>> +++ b/hw/timer/trace-events
+>>>>> @@ -49,3 +49,34 @@ aspeed_timer_ctrl_pulse_enable(uint8_t i,
+>>>>> bool
+>>>>> enable) "Timer %" PRIu8 ": %d"
+>>>>>  aspeed_timer_set_ctrl2(uint32_t value) "Value: 0x%" PRIx32
+>>>>>  aspeed_timer_set_value(int timer, int reg, uint32_t value)
+>>>>> "Timer
+>>>>> %d register %d: 0x%" PRIx32
+>>>>>  aspeed_timer_read(uint64_t offset, unsigned size, uint64_t
+>>>>> value)
+>>>>> "From 0x%" PRIx64 ": of size %u: 0x%" PRIx64
+>>>>> +
+>>>>> +# hw/timer/rx8900.c
+>>>>> +rx8900_capture_current_time(int hour, int minute, int second,
+>>>>> int
+>>>>> weekday, int mday, int month, int year, int raw_hours, int
+>>>>> raw_minutes, int raw_seconds, int raw_weekday, int raw_day, int
+>>>>> raw_month, int raw_year) "Update current time to %02d:%02d:%02d
+>>>>> %d
+>>>>> %d/%d/%d (0x%02x%02x%02x%02x%02x%02x%02x)"
+>>>>> +rx8900_regptr_update(uint32_t ptr) "Operating on register
+>>>>> 0x%02x"
+>>>>> +rx8900_regptr_overflow(void) "Register pointer has overflowed,
+>>>>> wrapping to 0"
+>>>>> +rx8900_event_weekday(int weekday, int weekmask, int
+>>>>> weekday_offset) "Set weekday to %d (0x%02x), wday_offset=%d"
+>>>>> +rx8900_read_register(int address, int val) "Read register 0x%x
+>>>>> =
+>>>>> 0x%x"
+>>>>> +rx8900_set_fout(int hz) "Setting fout to %dHz"
+>>>>> +rx8900_set_countdown_timer(int hz) "Setting countdown timer to
+>>>>> %d
+>>>>> Hz"
+>>>>> +rx8900_set_countdown_timer_per_minute(void) "Setting countdown
+>>>>> timer to per minute updates"
+>>>>> +rx8900_enable_update_timer(void) "Enabling update timer"
+>>>>> +rx8900_enable_alarm(void) "Enabling alarm"
+>>>>> +rx8900_trigger_alarm(void) "Triggering alarm"
+>>>>> +rx8900_tick(void) "Tick"
+>>>>
+>>>> When traces are printed, the whole name is printed as well so you
+>>>> can
+>>>> easily drop "Tick" and just make it an empty string:
+>>>>
+>>>> +rx8900_tick(void) ""
+>>>>
+>>>> This can be done to more than a half of traces.
+>>>
+>>> This would make it harder to interpret, as one would then not be
+>>> able
+>>> to skim down the message column, but would instead have to jump
+>>> between
+>>> the location & message to determine what happened.
+>>
+>> Jump between columns? These are printed in stderr like:
+>>
+>> 24945@1480643195.342345:spapr_pci_msi_setup dev"nec-usb-xhci" vector
+>> 15,
+>> addr=40000000000
+>> 24945@1480643195.342351:spapr_pci_rtas_ibm_change_msi cfgaddr 0 func
+>> 4,
+>> requested 16, first irq 4104
+>>
+>> I configure traces as:
+>> --enable-trace-backend=log
+>>
+>> or (for older QEMUs)
+>> --enable-trace-backend=stderr
+>>
+> Ok
+> 
+>>
+>>>>> +rx8900_fire_interrupt(void) "Pulsing interrupt"
+>>>>> +rx8900_disable_timer(void) "Disabling timer"
+>>>>> +rx8900_enable_timer(void) "Enabling timer"
+>>>>> +rx8900_disable_fout(void) "Disabling fout"
+>>>>> +rx8900_enable_fout(void) "Enabling fout"
+>>>>> +rx8900_fout_toggle(void) "Toggling fout"
+>>>>> +rx8900_disable_countdown(void) "Disabling countdown timer"
+>>>>> +rx8900_enable_countdown(void) "Enabling countdown timer"
+>>>>> +rx8900_countdown_tick(int count) "Countdown tick, count=%d"
+>>>>> +rx8900_countdown_elapsed(void) "Countdown elapsed"
+>>>>> +rx8900_i2c_data_receive(uint8_t data) "Received I2C data
+>>>>> 0x%02x"
+>>>>> +rx8900_set_register(uint32_t addr, uint8_t data) "Set data
+>>>>> 0x%02x=0x%02x"
+>>>>> +rx8900_read_temperature(uint8_t raw, double val) "Read
+>>>>> temperature
+>>>>> property, 0x%x = %fœC"
+>>>>
+>>>> Can be just "0x%x %fœC"
+>>>>
+>>>
+>>> I don't see that as an improvement.
+>>
+>> Words "read" and "temperature" do not appear twice, the word
+>> "property" is
+>> useless here, the line gets shorter which matters when you run many
+>> terminals next to each other. This is an improvement.
+> 
+> Due to the wrapping, all I saw was that the '=' was missing, Ok.
+
+
+I am fine with '=', this a minor thing :)
+
+
+> 
+>>
+>> Look at block/trace-events or ./trace-events or net/trace-events -
+>> people
+>> usually try avoiding duplications.
+>>
+>>
+>>>
+>>>>
+>>>>> +rx8900_set_temperature(uint8_t raw, double val) "Set
+>>>>> temperature
+>>>>> property, 0x%x = %fœC"
+>>>>> +rx8900_reset(void) "Reset"
+>>>>> +rx8900_pin_name(const char *type, const char *name) "'%s' pin
+>>>>> is
+>>>>> '%s'"
+>>>>> +rx8900_set_voltage(double voltage) "Device voltage set to %f"
+>>>>>
+>>>
+>>> Thanks for the review, it's quite detailed (which is great). I've
+>>> actioned the non-contended recommendations and will resubmit.
+>>
+>>
+>>
+> 
+
+
+-- 
+Alexey

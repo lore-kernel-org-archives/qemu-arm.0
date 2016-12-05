@@ -1,67 +1,79 @@
-Received: by 10.25.159.131 with SMTP id i125csp1619460lfe;
-        Mon, 5 Dec 2016 07:55:44 -0800 (PST)
-X-Received: by 10.176.0.169 with SMTP id 38mr45429082uaj.34.1480953344633;
-        Mon, 05 Dec 2016 07:55:44 -0800 (PST)
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-vk0-x233.google.com (mail-vk0-x233.google.com. [2607:f8b0:400c:c05::233])
-        by mx.google.com with ESMTPS id 44si3665604uau.47.2016.12.05.07.55.44
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 138sm1029274wms.20.2016.12.05.09.04.45
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 05 Dec 2016 07:55:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::233 as permitted sender) client-ip=2607:f8b0:400c:c05::233;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 2607:f8b0:400c:c05::233 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE dis=NONE) header.from=linaro.org
-Received: by mail-vk0-x233.google.com with SMTP id w194so180839182vkw.2
-        for <alex.bennee@linaro.org>; Mon, 05 Dec 2016 07:55:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=nYSZxFlazpDq0YSR4PnjkT0a3PMQ1uPaAmISSBavHPM=;
-        b=aoVkG2E5IaMjr6um5W9PNURbquypXjmiOUlNYWdefN1RzZwHje7SLJGC6SaxsNsAFq
-         BpFPbGq54PJmEuacMtP7fEesiR5tlZB6z9J3d5lQmsdUd1rWWRfzTyDLSoEyBKTXOeZY
-         ak1n79zSJ563UuLCnSiKLYk1HrA/qVvySRaSY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=nYSZxFlazpDq0YSR4PnjkT0a3PMQ1uPaAmISSBavHPM=;
-        b=lrmUt7C5x/GjQOarJLol+99xoRiTuiFSt3IjMOX9GVbBMksX7VTI3XLwqgo3cReKLH
-         6ig7oLOL5TorZ1m3NeA+lam3UUJU6OlmINldG0NI2CBTL/hS0LMEpNSKoerzxpGVp81z
-         J7aUEz/2eM6vQMGSLyQegdygSDKaPYIXIc3mL5WdphB5XWYj+BnVhWhOiojn4NuHYVDQ
-         vNKpsbMnAXMjRRa7c7krw8H9/YjeufG/5vY6jEBn8BDGdAenZFwz5QDF3iWV9w5X8ns6
-         kXBQ+ntD8z8W32w+SnefyVB7JEaaYyq9UsqGejLUY/gkVKM0pVLRhuxYbuEsJPoBo6nB
-         XheQ==
-X-Gm-Message-State: AKaTC03uSjIZ0rEvHl0Hzi42i0XsBp7/g3oyJTQA/dJ0slE+LLtZL+9rhOjAeZA18S4V6iN3IDCr5oDx2pSgAlFCGhc=
-X-Received: by 10.31.8.8 with SMTP id 8mr21159613vki.173.1480953344222; Mon,
- 05 Dec 2016 07:55:44 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.176.14 with HTTP; Mon, 5 Dec 2016 07:55:23 -0800 (PST)
-In-Reply-To: <b6c3b949-ef2a-31f4-ce86-712ce7b64a3f@twiddle.net>
-References: <20161202173454.19179-1-alex.bennee@linaro.org>
- <8737i21vl8.fsf@linaro.org> <b6c3b949-ef2a-31f4-ce86-712ce7b64a3f@twiddle.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Dec 2016 15:55:23 +0000
-Message-ID: <CAFEAcA9k6u41vMcemdoFZ-imH6e6YAsoSMNMgr3km+G544s=uA@mail.gmail.com>
-Subject: Re: [PATCH for-2.8] target-arm/translate-a64: fix gen_load_exclusive
+        Mon, 05 Dec 2016 09:04:45 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 4988E3E019C;
+	Mon,  5 Dec 2016 17:04:45 +0000 (GMT)
+References: <20161202173454.19179-1-alex.bennee@linaro.org> <8737i21vl8.fsf@linaro.org> <b6c3b949-ef2a-31f4-ce86-712ce7b64a3f@twiddle.net>
+User-agent: mu4e 0.9.18; emacs 25.1.90.2
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <rth@twiddle.net>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Stefan Hajnoczi <stefanha@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"Emilio G. Cota" <cota@braap.org>, "open list:ARM" <qemu-arm@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-TUID: hD1N8E090GOC
+Cc: stefanha@redhat.com, peter.maydell@linaro.org, qemu-devel@nongnu.org, cota@braap.org, "open list\:ARM" <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH for-2.8] target-arm/translate-a64: fix gen_load_exclusive
+In-reply-to: <b6c3b949-ef2a-31f4-ce86-712ce7b64a3f@twiddle.net>
+Date: Mon, 05 Dec 2016 17:04:45 +0000
+Message-ID: <87twaiz4r6.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: Y8AvyvhcF7Wq
 
-On 5 December 2016 at 15:42, Richard Henderson <rth@twiddle.net> wrote:
+
+Richard Henderson <rth@twiddle.net> writes:
+
+> On 12/05/2016 03:09 AM, Alex Bennée wrote:
+>>
+>> Alex Bennée <alex.bennee@linaro.org> writes:
+>>
+>>> While testing rth's latest TCG patches with risu I found ldaxp was
+>>> broken. Investigating further I found it was broken by 1dd089d0 when
+>>> the cmpxchg atomic work was merged.
+>>
+>> CC'ing Paolo/Richard
+>>
+>> Do you guys have any final TCG fixes planned for 2.8 that can take this
+>> fix for the ldaxp regression?
+>
+> I don't have any pending patchs for 2.8, no.
+>
+>>> As part of that change the code
+>>> attempted to be clever by doing a single 64 bit load and then shuffle
+>>> the data around to set the two 32 bit registers.
+>
+> It's not trying to be "clever", it's trying to be correct, giving an atomic
+> 64-bit load.
+
+Ahh right I see. What happens if the backend is 32bit, will it issue two
+loads anyway?
+
+>
+> The fact that we didn't attempt an atomic 128-bit load here for the 64-bit pair
+> is a bug.  We have support for that in helper_atomic_ldo_le_mmu; I'm not sure
+> why I didn't use that here.
+>
+>>> As I couldn't quite follow the endian magic I've simply partially
+>>> reverted the change to the original code gen_load_exclusive code. This
+>>> doesn't affect the cmpxchg functionality as that is all done on in
+>>> gen_store_exclusive part which is untouched.
+>
 > We'll have to fix it properly eventually.  But perhaps 2.9 is soon enough,
 > since that's when mttcg will go in.
 
-Could you provide a reviewed-by (or an explicit nak) for Alex's
-patch, please? I didn't look at this area of the code when it
-went in so I'm not really in position to review it even if it
-goes via my tree.
+I guess the easiest way would be to punt these paired loads to a helper?
 
-thanks
--- PMM
+However regardless of the atomicity the actual values loaded into
+the registers are wrong so that behaviour is a regression vs 2.7.
+
+I don't know how often these load-exclusive paired operations are used
+in real code but I think we should at least fix it so the values are
+loaded properly for 2.8 and do the proper atomic fix for 2.9.
+
+>
+>
+> r~
+
+
+--
+Alex Bennée
